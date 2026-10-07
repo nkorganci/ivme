@@ -1,0 +1,40 @@
+# Ortak ayarlar. Gizli değerler (şifre vb.) burada YOK; ortam değişkeniyle verilir.
+# Geliştirme için: --spring.profiles.active=dev (application-dev.yml). Üretim: README'deki ortam değişkenleri.
+server:
+  port: ${PORT:8081}
+  servlet:
+    session:
+      timeout: 12h
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${YKS_COOKIE_SECURE:false}   # HTTPS arkasında true yap
+
+spring:
+  application:
+    name: hedef-yks
+  datasource:
+    url: ${YKS_DB_URL}
+    username: ${YKS_DB_KULLANICI}
+    password: ${YKS_DB_SIFRE}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate          # tabloları yalnızca Flyway oluşturur; Hibernate yalnız doğrular
+  flyway:
+    enabled: true
+    clean-disabled: true          # yanlışlıkla veritabanı silinmesin
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+app:
+  public-base-url: ${YKS_SITE_ADRESI}      # QR kodların işaret ettiği adres, örn. https://yks.ornek.com
+  images:
+    dir: ${YKS_RESIM_KLASORU}              # soru görsellerinin kök klasörü (Windows yolu olabilir)
+  admin:
+    username: ${YKS_ADMIN_KULLANICI:admin}
+    email: ${YKS_ADMIN_EPOSTA:admin@localhost}
+    password: ${YKS_ADMIN_SIFRE:}          # yalnız İLK kurulumda yönetici oluşturmak için; sonra kaldırılabilir
+  sample-data: ""                          # dev profilinde örnek CSV yolu

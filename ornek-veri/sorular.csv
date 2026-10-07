@@ -1,0 +1,51 @@
+﻿code,exam_type,subject,topic,year,source,image,correct_answer,choice_count,solution_url,active
+TYT-0001,TYT,Türkçe,Sözcükte Anlam,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/turkce/TYT-0001.webp,E,5,https://meb.ai/7V8SPH,true
+TYT-0052,TYT,Türkçe,Cümlede Anlam,2023,OGM YKS Çıkmış Soru Kitapçığı 2023 TYT,TYT/turkce/TYT-0052.webp,D,5,https://meb.ai/jhCAIx,true
+TYT-0103,TYT,Türkçe,Paragrafta Anlam,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/turkce/TYT-0103.webp,A,5,https://meb.ai/bB2tmV,true
+TYT-0172,TYT,Türkçe,Paragrafta Anlam,2021,OGM YKS Çıkmış Soru Kitapçığı 2021 TYT,TYT/turkce/TYT-0172.webp,C,5,https://meb.ai/UZZQoAA,true
+TYT-0247,TYT,Türkçe,Paragrafta Anlam,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 TYT,TYT/turkce/TYT-0247.webp,C,5,https://meb.ai/UcLaTaL,true
+TYT-0310,TYT,Türkçe,Yazım Kuralları,2023,OGM YKS Çıkmış Soru Kitapçığı 2023 TYT,TYT/turkce/TYT-0310.webp,D,5,https://meb.ai/zR3bHM,true
+TYT-0541,TYT,Matematik,Sayı Kümeleri,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/matematik/TYT-0541.webp,D,5,https://meb.ai/UjqdwLp,true
+TYT-0601,TYT,Matematik,Bölünebilme Kuralları,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 TYT,TYT/matematik/TYT-0601.webp,B,5,https://meb.ai/U5sk3uC,true
+TYT-0661,TYT,Matematik,Denklemler ve Eşitsizlikler ile İlgili Uygulamalar,2019,OGM YKS Çıkmış Soru Kitapçığı 2019 TYT,TYT/matematik/TYT-0661.webp,D,5,https://meb.ai/m1xXhH,true
+TYT-0721,TYT,Matematik,Denklemler ve Eşitsizlikler ile İlgili Uygulamalar,2024,OGM YKS Çıkmış Soru Kitapçığı 2024 TYT,TYT/matematik/TYT-0721.webp,E,5,https://meb.ai/UIaAXhg,true
+TYT-0781,TYT,Matematik,Fonksiyonlar,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/matematik/TYT-0781.webp,A,5,https://meb.ai/UKdldrb,true
+TYT-0841,TYT,Matematik,Dik Üçgen ve Trigonometri,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/matematik/TYT-0841.webp,A,5,https://meb.ai/zVB8BH,true
+TYT-0900,TYT,Fizik,Fizik Biliminin Önemi,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/fizik/TYT-0900.webp,E,5,https://meb.ai/Sq30rG,true
+TYT-0921,TYT,Fizik,Isı ve Sıcaklık,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 TYT,TYT/fizik/TYT-0921.webp,D,5,https://meb.ai/zPDMJ0,true
+TYT-0942,TYT,Fizik,Kaldırma Kuvveti,2020,OGM YKS Çıkmış Soru Kitapçığı 2020 TYT,TYT/fizik/TYT-0942.webp,A,5,https://meb.ai/UL6gAhQ,true
+TYT-0963,TYT,Kimya,Kimya Disiplinleri ve Kimyacıların Çalışma Alanları,2022,OGM YKS Çıkmış Soru Kitapçığı 2022 TYT,TYT/kimya/TYT-0963.webp,A,5,https://meb.ai/TEbvUU,true
+TYT-0984,TYT,Kimya,Güçlü Etkileşimler,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 TYT,TYT/kimya/TYT-0984.webp,C,5,https://meb.ai/XLdyzc,true
+TYT-1005,TYT,Kimya,Homojen ve Heterojen Karışımlar,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/kimya/TYT-1005.webp,A,5,https://meb.ai/R70pbT,true
+TYT-1024,TYT,Biyoloji,Biyoloji ve Canlıların Ortak Özellikleri,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 TYT,TYT/biyoloji/TYT-1024.webp,C,5,https://meb.ai/bg33yd,true
+TYT-1042,TYT,Biyoloji,Hücre,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 TYT,TYT/biyoloji/TYT-1042.webp,E,5,https://meb.ai/rhqrDw,true
+TYT-1060,TYT,Biyoloji,Kalıtım ve Biyolojik Çeşitlilik,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/biyoloji/TYT-1060.webp,D,5,https://meb.ai/PqYqlj,true
+TYT-0361,TYT,Tarih,İlk ve Orta Çağlarda Türk Dünyası,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/tarih/TYT-0361.webp,B,5,https://meb.ai/W3zVvt,true
+TYT-0383,TYT,Tarih,Klasik Çağ’da Osmanlı Toplum Düzeni,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 TYT,TYT/tarih/TYT-0383.webp,A,5,https://meb.ai/8AhQ4u,true
+TYT-0406,TYT,Coğrafya,Coğrafya Bilimi ve Bölümlenmesi,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/cografya/TYT-0406.webp,C,5,https://meb.ai/xonzuU,true
+TYT-0428,TYT,Coğrafya,Nüfus ve Göç,2019,OGM YKS Çıkmış Soru Kitapçığı 2019 TYT,TYT/cografya/TYT-0428.webp,C,5,https://meb.ai/1OgNxE,true
+TYT-0451,TYT,Felsefe,Felsefenin Anlamı,2019,OGM YKS Çıkmış Soru Kitapçığı 2019 TYT,TYT/felsefe/TYT-0451.webp,C,5,https://meb.ai/59vQBr,true
+TYT-0496,TYT,Felsefe,Sanat Felsefesinin Konusu ve Problemleri,2021,OGM YKS Çıkmış Soru Kitapçığı 2021 TYT,TYT/felsefe/TYT-0496.webp,A,5,https://meb.ai/T9UjN1,true
+TYT_DinKulturu-0001,TYT,Din Kültürü,İslam’da Bilgi Kaynakları,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 TYT,TYT/din-kulturu/TYT_DinKulturu-0001.webp,B,5,https://meb.ai/UszlN0x,true
+TYT_DinKulturu-0023,TYT,Din Kültürü,Kur’an’dan Mesajlar: Rum Suresi 18-27. Ayetler,2024,OGM YKS Çıkmış Soru Kitapçığı 2024 TYT,TYT/din-kulturu/TYT_DinKulturu-0023.webp,D,5,https://meb.ai/YRXpDD,true
+AYT_Sayisal-0001,AYT,Matematik,Temel Kavramlar,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 AYT,AYT/matematik/AYT_Sayisal-0001.webp,B,5,https://meb.ai/UHke5nj,true
+AYT_Sayisal-0061,AYT,Matematik,Kümeler,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 AYT,AYT/matematik/AYT_Sayisal-0061.webp,A,5,https://meb.ai/UXv2KRe,true
+AYT_Sayisal-0121,AYT,Matematik,Permütasyon Kombinasyon,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 AYT,AYT/matematik/AYT_Sayisal-0121.webp,A,5,https://meb.ai/UWQr0MN,true
+AYT_Sayisal-0181,AYT,Matematik,Üstel ve Logaritmik Fonksiyonlar,2019,OGM YKS Çıkmış Soru Kitapçığı 2019 AYT,AYT/matematik/AYT_Sayisal-0181.webp,C,5,https://meb.ai/4pfIET,true
+AYT_Sayisal-0241,AYT,Matematik,Türev,2024,OGM YKS Çıkmış Soru Kitapçığı 2024 AYT,AYT/matematik/AYT_Sayisal-0241.webp,B,5,https://meb.ai/Rg7As3,true
+AYT_Sayisal-0301,AYT,Matematik,Çember ve Daire,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 AYT,AYT/matematik/AYT_Sayisal-0301.webp,D,5,https://meb.ai/UsDB5bc,true
+AYT_Sayisal-0350,AYT,Fizik,Vektörler,2023,OGM YKS Çıkmış Soru Kitapçığı 2023 AYT,AYT/fizik/AYT_Sayisal-0350.webp,D,5,https://meb.ai/UJ0LyD6,true
+AYT_Sayisal-0392,AYT,Fizik,Elektriksel Potansiyel,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 AYT,AYT/fizik/AYT_Sayisal-0392.webp,B,5,https://meb.ai/UzN7xmu,true
+AYT_Sayisal-0434,AYT,Fizik,Kepler Kanunları,2025,OGM YKS Çıkmış Soru Kitapçığı 2025 AYT,AYT/fizik/AYT_Sayisal-0434.webp,B,5,https://meb.ai/U7PEKEu,true
+AYT_Sayisal-0476,AYT,Kimya,Atomun Kuantum Modeli,2019,OGM YKS Çıkmış Soru Kitapçığı 2019 AYT,AYT/kimya/AYT_Sayisal-0476.webp,B,5,https://meb.ai/dv5B6p,true
+AYT_Sayisal-0515,AYT,Kimya,Oluşum Entalpisi,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 AYT,AYT/kimya/AYT_Sayisal-0515.webp,D,5,https://meb.ai/VdIkgD,true
+AYT_Sayisal-0554,AYT,Kimya,Elektrot Potansiyelleri,2023,OGM YKS Çıkmış Soru Kitapçığı 2023 AYT,AYT/kimya/AYT_Sayisal-0554.webp,A,5,https://meb.ai/UW0vbll,true
+AYT_Sayisal-0589,AYT,Biyoloji,"Denetleyici ve Düzenleyici Sistem, Duyu Organları",2018,OGM YKS Çıkmış Soru Kitapçığı 2018 AYT,AYT/biyoloji/AYT_Sayisal-0589.webp,D,5,https://meb.ai/nrYrjE,true
+AYT_Sayisal-0628,AYT,Biyoloji,Üriner Sistem,2023,OGM YKS Çıkmış Soru Kitapçığı 2023 AYT,AYT/biyoloji/AYT_Sayisal-0628.webp,C,5,https://meb.ai/yN02bY,true
+AYT_Sayisal-0667,AYT,Biyoloji,Genetik Şifre ve Protein Sentezi,2026,OGM YKS Çıkmış Soru Kitapçığı 2026 AYT,AYT/biyoloji/AYT_Sayisal-0667.webp,C,5,https://meb.ai/1xv1m4,true
+AYT_EsitAgirlik-0001,AYT,Türk Dili ve Edebiyatı,Sözcükte Anlam,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 AYT,AYT/turk-dili-ve-edebiyati/AYT_EsitAgirlik-0001.webp,B,5,https://meb.ai/9ompdL,true
+AYT_EsitAgirlik-0055,AYT,Türk Dili ve Edebiyatı,Şiir Bilgisi,2020,OGM YKS Çıkmış Soru Kitapçığı 2020 AYT,AYT/turk-dili-ve-edebiyati/AYT_EsitAgirlik-0055.webp,B,5,https://meb.ai/Oz27XF,true
+AYT_EsitAgirlik-0109,AYT,Türk Dili ve Edebiyatı,Divan Edebiyatı,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 AYT,AYT/turk-dili-ve-edebiyati/AYT_EsitAgirlik-0109.webp,C,5,https://meb.ai/UlFeyeE,true
+AYT_EsitAgirlik-0163,AYT,Türk Dili ve Edebiyatı,Millî Edebiyat Dönemi Türk Edebiyatı,2022,OGM YKS Çıkmış Soru Kitapçığı 2022 AYT,AYT/turk-dili-ve-edebiyati/AYT_EsitAgirlik-0163.webp,B,5,https://meb.ai/Y3s6E3,true
+AYT_EsitAgirlik-0216,AYT,Tarih-1,Tarih ve Zaman,2018,OGM YKS Çıkmış Soru Kitapçığı 2018 AYT,AYT/tarih-1/AYT_EsitAgirlik-0216.webp,D,5,https://meb.ai/uiIoJb,true
+AYT_EsitAgirlik-0261,AYT,Tarih-1,Sultan ve Osmanlı Merkez Teşkilatı,2022,OGM YKS Çıkmış Soru Kitapçığı 2022 AYT,AYT/tarih-1/AYT_EsitAgirlik-0261.webp,C,5,https://meb.ai/UZHe0Os,true

@@ -1,0 +1,16 @@
+# Testler ayrı veritabanında çalışır: yks_hazirlik_test (uygulama/veritabani-sifirla.bat ile oluşur).
+spring:
+  datasource:
+    url: ${YKS_TEST_DB_URL:jdbc:postgresql://localhost:5432/yks_hazirlik_test}
+    username: ${YKS_DB_KULLANICI:root}
+    password: ${YKS_DB_SIFRE:root}
+
+app:
+  public-base-url: http://localhost:5173
+  images:
+    dir: ../ornek-veri/resimler
+  admin:
+    username: root
+    email: root@localhost
+    password: root
+  sample-data: ""

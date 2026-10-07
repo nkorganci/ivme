@@ -1,0 +1,20 @@
+# YALNIZ GELİŞTİRME (profil: dev). Buradaki root/root değerleri üretimde KULLANILMAZ.
+spring:
+  datasource:
+    url: ${YKS_DB_URL:jdbc:postgresql://localhost:5432/yks_hazirlik}
+    username: ${YKS_DB_KULLANICI:root}
+    password: ${YKS_DB_SIFRE:root}
+
+app:
+  public-base-url: ${YKS_SITE_ADRESI:http://localhost:5173}
+  images:
+    dir: ${YKS_RESIM_KLASORU:../ornek-veri/resimler}   # mvn spring-boot:run, backend\ klasöründen çalışır
+  admin:
+    username: ${YKS_ADMIN_KULLANICI:root}
+    email: ${YKS_ADMIN_EPOSTA:root@localhost}
+    password: ${YKS_ADMIN_SIFRE:root}                  # geliştirme yöneticisi: root / root
+  sample-data: ${YKS_ORNEK_VERI:../ornek-veri/sorular.csv}   # soru tablosu boşsa içe aktarılır
+
+logging:
+  level:
+    com.hedefyks: DEBUG
