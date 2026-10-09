@@ -2,6 +2,7 @@ package com.hedefyks;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -106,5 +107,37 @@ class ProgressPeriodTest extends TestBase {
                 Instant.parse("2026-10-09T14:00:00Z"));
         assertThat(result.breakdown().stream().filter(row -> row.kind().equals("QUESTION_TYPE"))
                 .map(ProgressService.Breakdown::label)).containsExactly("Paragraf");
+    }
+
+    @Test
+    void aktif_sure_giris_ve_kapanmis_oturum_ayri_ve_yerel_gune_bagli() throws Exception {
+        User ayse = user("ayse", Role.USER);
+        User mehmet = user("mehmet", Role.USER);
+        Question q = question("TIME", "Matematik", "A");
+        attempt(ayse, q, "2026-03-08T05:02:00Z", "A", "A", true);
+        jdbc.update("UPDATE question_attempts SET active_seconds = 90 WHERE user_id = ?", ayse.getId());
+        UUID key = UUID.randomUUID();
+        jdbc.update("""
+                INSERT INTO activity_events(user_id,session_key,event_type,created_at) VALUES
+                  (?,?,'LOGIN','2026-03-08T05:01:00Z'::timestamptz),
+                  (?,?,'LOGOUT','2026-03-08T06:01:00Z'::timestamptz)
+                """, ayse.getId(), key, ayse.getId(), key);
+        jdbc.update("""
+                INSERT INTO activity_events(user_id,session_key,event_type,created_at)
+                VALUES (?,?,'LOGIN','2026-03-08T05:03:00Z'::timestamptz)
+                """, mehmet.getId(), UUID.randomUUID());
+        var timeline = progress.timelineAt(ayse.getId(), ProgressService.Period.DAY, "America/New_York",
+                Instant.parse("2026-03-08T16:00:00Z"));
+        assertThat(timeline.days()).hasSize(1);
+        assertThat(timeline.days().getFirst().activeSeconds()).isEqualTo(90);
+        assertThat(timeline.days().getFirst().logins()).isEqualTo(1);
+        assertThat(timeline.days().getFirst().closedSessions()).isEqualTo(1);
+        assertThat(timeline.days().getFirst().sessionSeconds()).isEqualTo(3600);
+        MockHttpSession session = login("ayse", "Sifre1234");
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM activity_events WHERE user_id = ? AND event_type = 'LOGIN'",
+                Long.class, ayse.getId())).isEqualTo(2);
+        send(session, post("/api/auth/logout"), null).andExpect(status().isNoContent());
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM activity_events WHERE user_id = ? AND event_type = 'LOGOUT'",
+                Long.class, ayse.getId())).isEqualTo(2);
     }
 }

@@ -4,6 +4,7 @@ import com.hedefyks.auth.AuthDtos.LoginRequest;
 import com.hedefyks.auth.AuthDtos.RegisterRequest;
 import com.hedefyks.auth.AuthDtos.UserDto;
 import com.hedefyks.common.ApiException;
+import com.hedefyks.progress.LoginActivity;
 import com.hedefyks.user.AppUserDetails;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
@@ -39,6 +40,7 @@ public class AuthController {
     private final PasswordEncoder encoder;
     private final AuthenticationManager authManager;
     private final SecurityContextRepository contextRepository;
+    private final LoginActivity loginActivity;
 
     // Kaba kuvvet koruması: aynı IP + kullanıcı için 10 dk'da 8, aynı IP için toplam 40 hatalı giriş; IP başına saatte 10 kayıt
     private final SlidingWindowLimiter loginPerUser = new SlidingWindowLimiter(8, Duration.ofMinutes(10));
@@ -46,11 +48,12 @@ public class AuthController {
     private final SlidingWindowLimiter registerPerIp = new SlidingWindowLimiter(10, Duration.ofHours(1));
 
     public AuthController(UserRepository users, PasswordEncoder encoder, AuthenticationManager authManager,
-                          SecurityContextRepository contextRepository) {
+                          SecurityContextRepository contextRepository, LoginActivity loginActivity) {
         this.users = users;
         this.encoder = encoder;
         this.authManager = authManager;
         this.contextRepository = contextRepository;
+        this.loginActivity = loginActivity;
     }
 
     @PostMapping("/register")
@@ -114,6 +117,7 @@ public class AuthController {
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
         contextRepository.saveContext(context, request, response);
+        loginActivity.login(principal.id(), request.getSession());
         return UserDto.of(signedIn);
     }
 
@@ -150,9 +154,10 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(HttpServletRequest request) {
+    public ResponseEntity<Void> logout(@AuthenticationPrincipal AppUserDetails me, HttpServletRequest request) {
         var session = request.getSession(false);
         if (session != null) {
+            loginActivity.logout(me.id(), session);
             session.invalidate();
         }
         SecurityContextHolder.clearContext();

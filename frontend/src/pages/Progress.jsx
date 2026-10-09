@@ -12,6 +12,7 @@ const ROWS = [
 const BREAKDOWNS = [
   ['SUBJECT', 'Dersler'], ['TOPIC', 'Konular'], ['QUESTION_TYPE', 'Soru tipleri'],
 ];
+const duration = (seconds) => `${Math.floor(seconds / 3600)} sa ${Math.floor(seconds % 3600 / 60)} dk`;
 
 export default function Progress() {
   usePageTitle('İlerlemem');
@@ -19,6 +20,7 @@ export default function Progress() {
   const zone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Istanbul';
   const { data, loading, error, retry } = useAsync(
     () => api.get('/api/progress/first-attempts' + qs({ period, zone })), [period, zone]);
+  const timeline = useAsync(() => api.get('/api/progress/timeline' + qs({ period, zone })), [period, zone]);
   const date = (value) => new Intl.DateTimeFormat('tr-TR', { dateStyle: 'long', timeZone: zone }).format(new Date(value));
   return <>
     <h1>İlerlemem</h1>
@@ -58,5 +60,19 @@ export default function Progress() {
         </tr>)}</tbody>
       </table></div>
     </section>)}
+    <section className="card table-card" aria-label="Çalışma zaman çizelgesi">
+      <h2>Çalışma zaman çizelgesi</h2>
+      <p className="muted small" style={{ padding: '0 14px' }}>Aktif süre gönderilmiş soru olaylarından gelir. Oturum süresi yalnız açıkça çıkış yapılan girişlerde ölçülür ve giriş gününe yazılır.</p>
+      {timeline.loading && <Loading text="Zaman çizelgesi yükleniyor…" />}
+      {timeline.error && <ErrorBox error={timeline.error} onRetry={timeline.retry} />}
+      {timeline.data && <div className="progress-breakdown-scroll"><table className="table progress-breakdown">
+        <thead><tr><th scope="col">Gün</th><th scope="col">Aktif süre</th><th scope="col">Giriş</th>
+          <th scope="col">Kapanan oturum</th><th scope="col">Oturum süresi</th></tr></thead>
+        <tbody>{timeline.data.days.map((day) => <tr key={day.date}>
+          <th scope="row">{new Intl.DateTimeFormat('tr-TR', { timeZone: 'UTC', day: 'numeric', month: 'short' }).format(new Date(`${day.date}T12:00:00Z`))}</th>
+          <td>{duration(day.activeSeconds)}</td><td>{day.logins}</td><td>{day.closedSessions}</td><td>{duration(day.sessionSeconds)}</td>
+        </tr>)}</tbody>
+      </table></div>}
+    </section>
   </>;
 }

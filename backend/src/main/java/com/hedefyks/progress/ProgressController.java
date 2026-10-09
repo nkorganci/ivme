@@ -22,4 +22,11 @@ public class ProgressController {
             @RequestParam String zone) {
         return service.summary(me.id(), period, zone);
     }
+
+    @GetMapping("/timeline")
+    public ProgressService.Timeline timeline(@AuthenticationPrincipal AppUserDetails me,
+            @RequestParam(defaultValue = "DAY") ProgressService.Period period,
+            @RequestParam String zone) {
+        return service.timeline(me.id(), period, zone);
+    }
 }

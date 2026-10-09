@@ -10,6 +10,9 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +27,12 @@ public class ProgressService {
     public record Summary(Period period, String zone, Instant startsAt, Instant endsAt,
                           long correct, long wrong, long blank, long total, double successPercent,
                           List<Breakdown> breakdown) {}
+    public record TimelineDay(LocalDate date, long activeSeconds, long logins,
+                              long closedSessions, long sessionSeconds) {}
+    public record Timeline(Period period, String zone, List<TimelineDay> days) {}
+    private static final class MutableDay {
+        long active, logins, closed, session;
+    }
 
     private static final String BREAKDOWN_SQL = """
             WITH events AS (
@@ -113,5 +122,53 @@ public class ProgressService {
         double percent = total == 0 ? 0 : Math.round(correct * 1000.0 / total) / 10.0;
         return new Summary(period, zone.getId(), from, until, correct, wrong, blank, total, percent,
                 breakdown);
+    }
+
+    public Timeline timeline(Long userId, Period period, String zoneName) {
+        return timelineAt(userId, period, zoneName, Instant.now());
+    }
+
+    public Timeline timelineAt(Long userId, Period period, String zoneName, Instant now) {
+        Summary summary = summaryAt(userId, period, zoneName, now);
+        ZoneId zone = ZoneId.of(summary.zone());
+        Map<LocalDate, MutableDay> days = new LinkedHashMap<>();
+        LocalDate date = summary.startsAt().atZone(zone).toLocalDate();
+        LocalDate end = summary.endsAt().atZone(zone).toLocalDate();
+        while (date.isBefore(end)) {
+            days.put(date, new MutableDay());
+            date = date.plusDays(1);
+        }
+        var from = OffsetDateTime.ofInstant(summary.startsAt(), ZoneOffset.UTC);
+        var until = OffsetDateTime.ofInstant(summary.endsAt(), ZoneOffset.UTC);
+        jdbc.query("""
+                SELECT created_at, active_seconds FROM question_attempts
+                WHERE user_id = ? AND created_at >= ? AND created_at < ?
+                """, rs -> {
+            LocalDate day = rs.getObject("created_at", OffsetDateTime.class).atZoneSameInstant(zone).toLocalDate();
+            days.get(day).active += rs.getLong("active_seconds");
+        }, userId, from, until);
+        jdbc.query("""
+                SELECT l.created_at, o.closed_at,
+                       greatest(0, extract(epoch FROM o.closed_at - l.created_at)) AS seconds
+                FROM activity_events l LEFT JOIN LATERAL (
+                  SELECT min(created_at) AS closed_at FROM activity_events
+                  WHERE user_id = l.user_id AND session_key = l.session_key
+                    AND event_type = 'LOGOUT' AND created_at >= l.created_at
+                ) o ON true
+                WHERE l.user_id = ? AND l.event_type = 'LOGIN'
+                  AND l.created_at >= ? AND l.created_at < ?
+                """, rs -> {
+            LocalDate day = rs.getObject("created_at", OffsetDateTime.class).atZoneSameInstant(zone).toLocalDate();
+            MutableDay item = days.get(day);
+            item.logins++;
+            if (rs.getObject("closed_at") != null) {
+                item.closed++;
+                item.session += rs.getLong("seconds");
+            }
+        }, userId, from, until);
+        List<TimelineDay> rows = new ArrayList<>();
+        days.forEach((day, item) -> rows.add(new TimelineDay(day, item.active, item.logins,
+                item.closed, item.session)));
+        return new Timeline(period, summary.zone(), rows);
     }
 }
