@@ -24,3 +24,5 @@ Tarih: 2026-10-09. Durum: sürüyor. Bu dilim soru başına pratik olaylarını 
 - Ders/konu/alt konu/soru tipi taksonomisinin olay anındaki sürümü ve ilk deneme istatistikleri. Toplam/çözülen/kalan ilk sayıları [Adım 7/8 kaydında](10_SORU_KAPSAMI.md) eklendi.
 - Konu notu/ipuçları sekmesi kaynaklı içerik hattı tamamlanınca açılacak. Karalamada çevrim dışı kalıcılık henüz yok; ağ hatasında çizim sayfa açık kaldığı sürece tutulur, yeniden deneme ile kaydedilebilir.
 - Görünür/odaklı sekme süresinin gerçek cihazlarda ölçümü ve kullanıcının yaklaşık süre açıklaması. Mevcut sayaç sunucunun güvenilir süre ölçümü olarak sunulmaz.
+
+**Durum: AÇIK.** Tamamlanan çözüm dilimleri [06.01–06.03](12_NUMARALI_IS_LISTESI.md) `BITTI`; oturum, süre ve taksonomi işleri [06.04–06.06](12_NUMARALI_IS_LISTESI.md) açıktır.

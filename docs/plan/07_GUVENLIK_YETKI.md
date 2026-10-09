@@ -20,7 +20,7 @@
 
 **Saklama kararı:** Ham giriş/aktiflik/çıkış olayları (`activity_events`) en fazla 90 gün tutulur; uygulama açıldığında ve her gün 03:00 UTC'de eski olaylar silinir. Bu tabloya olay yazma henüz uygulanmadığından mevcut gerçek veride silinecek kayıt yoktur. Soru çözme ve sınav geçmişi 90 günlük bu kurala dahil değildir. Günlük/haftalık/aylık uzun dönem grafiklerinin hangi toplu kayıtlardan üretileceği ve öğrencinin veri dışa aktarma/silme akışı ilerleme adımında tamamlanacak.
 
-**Tünel sınırı:** Spring Boot varsayılan olarak yalnız `127.0.0.1` üzerinde dinler; `X-Forwarded-*` başlıkları kullanılmaz. Böylece uygulama bu başlıklarla sahte HTTPS/Host/istemci bilgisi kabul etmez. Üretim örnek ayarında QR için sabit `https://net.ivme.dev`, güvenli oturum çerezi ve `PORT=5173` vardır. Kullanıcının çalışan Cloudflare Tunnel hedefi `http://localhost:5173` olarak doğrulandı (2026-10-09); üretim paketi de bu portu kullanacak. Servis kapalıyken alan adı 502 döndürür. Normal tarayıcıdaki hata nedeni henüz doğrulanmadı; gizli pencerede çalışması eklenti veya site verisi etkisini düşündürür. Farklı ağa açma kararı ayrıca gözden geçirilir.
+**Tünel sınırı:** Spring Boot varsayılan olarak yalnız `127.0.0.1` üzerinde dinler; `X-Forwarded-*` başlıkları kullanılmaz. Böylece uygulama bu başlıklarla sahte HTTPS/Host/istemci bilgisi kabul etmez. Üretim örnek ayarında QR için sabit `https://net.ivme.dev`, güvenli oturum çerezi ve `PORT=5173` vardır. Kullanıcının çalışan Cloudflare Tunnel hedefi `http://localhost:5173` olarak doğrulandı (2026-10-09); üretim paketi de bu portu kullanacak. Servis kapalıyken alan adı 502 döndürür. Kullanıcı daha sonra normal tarayıcıda da alan adını açabildiğini bildirdi; önceki hata nedeni doğrulanmadı. Farklı ağda gerçek kullanıcı akışı ayrıca denetlenecek.
 
 **Bildirim gizliliği:** İçerik operatörü soru hatasını ve açıklamayı görebilir; bildiren öğrencinin kullanıcı adı API yanıtından ve arayüzden çıkarılmıştır. Serbest metin öğrenci tarafından kişisel bilgi içerebilir; operatör rolü ayrı hesapla sınırlı tutulur.
 
@@ -44,3 +44,5 @@
 - Üretim için ayrı sınırlı DB rolü, güçlü hesap parolaları ve internetten erişim provası.
 
 Bu liste bitmeden Adım 4 tamamlandı veya site paylaşmaya hazır sayılmaz.
+
+**Durum: AÇIK.** Tamamlanan ve kalan küçük işler [04.01–04.09](12_NUMARALI_IS_LISTESI.md) altında numaralandırıldı.

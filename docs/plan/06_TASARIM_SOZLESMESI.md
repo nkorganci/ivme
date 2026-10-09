@@ -33,3 +33,7 @@ Mevcut çalışan arayüzde şıklar soru görselinin altındaki içerik akış�
 ## İnceleme ve kabul
 
 Prototip yerel dosya olarak açılır. Masaüstünde 1280 px, telefonda 390 px; görsel/şık okunabilirliği, sekme ve karalama etkileşimi, klavye odağı ve taşma kontrol edilir. Ana sayfa, test kurma, ilerleme, hesap ve yönetici ekranları bu sözleşmeye göre küçük kod parçalarıyla ele alınır. Kullanıcı farklı bir düzen/renk/öncelik isterse bu dosyada tarihli karar eklenir; 3. adım onay/uygulama kontrolünden sonra tamamlanır.
+
+Kullanıcı [03.01](12_NUMARALI_IS_LISTESI.md) soru ekranı yerleşimini ve mor vurguyu onayladı. Sözleşmenin kalan gerçek ekranlara uygulanması ayrı numaralı işlerdir.
+
+**BITTI**

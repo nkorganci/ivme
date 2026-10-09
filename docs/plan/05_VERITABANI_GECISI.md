@@ -37,3 +37,7 @@ Mevcut `feedback` tablosu öğrencinin kolay/orta/zor oyunu ve soru sorun bildir
 # 2026-10-09 ek geçiş kaydı
 
 Serbest pratik için `V9__pratik_turu.sql` eklendi. Önce eski tam yedek geçici DB'ye yüklenip V9 ve tarayıcı akışları denendi. Ardından gerçek `ivme` DB'sinde V8 → V9 geçişi yerel uygulama başlatmasıyla uygulandı; soru sayısı 80.097, kullanıcı sayısı 3 kaldı. Ayrıntı [Adım 6 kaydında](09_SORU_DENEMELERI.md). Bu satır önceki V1–V8 geçiş kaydını değiştirmez.
+
+Temel DB adı/göç işi [02.01–02.03](12_NUMARALI_IS_LISTESI.md) ve gerçek V9 geçişi tamamlandı. Gerçek DB'ye V10/V11 uygulaması ayrı [05.03](12_NUMARALI_IS_LISTESI.md) işidir.
+
+**BITTI**

@@ -13,7 +13,7 @@ Bu belge [yol haritası](00_YOL_HARITASI.md) ile birlikte güncellenir. Mevcut k
 | PDF/AI işleri | Mevcut Python veri hattı, çevrimdışı ve tekrar çalıştırılabilir işler | Kuyruk/ayrı işçi ancak birikim ve gecikme ölçülünce |
 | Arama | Önce konu filtresi ve PostgreSQL tam metin araması | Gerçek arama başarısızlığı ölçülürse embedding/vektör araması |
 
-Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır. Yerelde `localhost:8081` üretim biçiminde prova edilir. `net.ivme.dev` tünelinin origin'i yerel süreçtir; veritabanı veya Vite geliştirme sunucusu dışarı açılmaz. Tünel erişim kontrolünün uygulama içi yetkilendirmeyi değiştirmediği kabul edilir.
+Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır. Paylaşımda Spring Boot üretim paketi `localhost:5173` üzerinde arayüz ve API'yi birlikte sunar; `localhost:8081` yalnız ayrı yerel geliştirme/prova ayarıdır. Veritabanı dışarı açılmaz. Tünel erişim kontrolü uygulama içi yetkilendirmeyi değiştirmez.
 
 ## 2. Veri doğruluğu
 
@@ -45,11 +45,13 @@ Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır
 **Bir AI geliştirme oturumuna verilecek kısa görev:**
 
 ```text
-İvme deposu: uygulama/. Önce docs/plan/00_YOL_HARITASI.md ve ilgili API bölümünü oku.
-Sadece Adım N, şu kabul ölçütü: ...
+İvme deposu: uygulama/. Önce docs/plan/12_NUMARALI_IS_LISTESI.md,
+seçili NN.NN görev dosyası ve ilgili API bölümünü oku.
+Sadece NN.NN, şu kabul ölçütü: ...
 Mevcut kullanıcı değişikliklerini koru. İlgili UI'ı masaüstü/telefonda kontrol et.
 Gerekli testleri çalıştır; plan durumunu, API/README'yi güncelle.
-Yalnız kendi dosyalarını stage et, feature branch'e commit ve ivme remote'a push et.
+Yalnız kendi dosyalarını stage et ve feature branch'e yerel commit yap.
+Planın repo ve dış klasör kopyasını eşitle. Kullanıcı yorum verene dek push yapma.
 Sonuçta: ne değişti, UI kontrolü, test, commit, kalan sorun.
 ```
 
@@ -68,12 +70,14 @@ Sonuçta: ne değişti, UI kontrolü, test, commit, kalan sorun.
 |---|---|---|
 | `uygulama/frontend`, `backend`, `docs`, küçük sentetik örnek veri | Ürün kodu, göçler, testler, belgeler | Evet |
 | `uygulama/docs/plan` | Yaşayan plan, ilkeler, kaynak listesi | Evet |
-| `D:\workspace\Computer General\ivme projesi yapilacak olanlar` | Planın kolay erişim kopyası | Bu klasör Git deposu dışında; repo sürümü push edilir |
+| `D:\workspace\Computer General\ivme projesi yapilacak olanlar` | Planın kolay erişim kopyası | Git deposu dışında; repo sürümüyle her iş sonunda eşitlenir |
 | `D:\workspace\ivme\Kaynaklar`, `veri-hatti` | Mevcut kaynak/işleme hattı; ayrı envanter sonrası taşınabilir kod | Yalnız kod ve küçük sentetik örnekler seçilerek |
 | PDF, toplu görsel, gerçek öğrenci verisi, yedek, `.env`, `node_modules`, derleme çıktısı | Büyük/gizli/üretilmiş veri | Hayır |
 
-Mevcut `origin` başka GitHub deposuna bakıyor; bu proje için açıkça `ivme` remote'u kullan. Feature branch'te küçük, konu odaklı commit oluştur; `main` birleşimi ayrı inceleme adımıdır. Var olan commit edilmemiş değişiklikleri otomatik olarak stage etme. Her kullanıcı fikri için: ilgili adımı güncelle → bağımlılığı yeniden sırala → kodu yap → UI/test → belge → commit/push. Bir iş yarım kalırsa durum `sürüyor` ve eksik kabul ölçütü açık kalır; “tamamlandı” yazılmaz.
+Mevcut `origin` başka GitHub deposuna bakıyor; ilerideki nihai yayın için yalnız `ivme` remote'unu kullan. Feature branch'te küçük, konu odaklı **yerel commit** oluştur; kullanıcı tüm işleri yorumlayana kadar push yapma. `main` birleşimi ayrı inceleme adımıdır. Var olan commit edilmemiş değişiklikleri otomatik olarak stage etme. Her kullanıcı fikri için: ilgili numaralı işi güncelle → bağımlılığı yeniden sırala → kodu yap → UI/test → belge → yerel commit. Bir iş yarım kalırsa `BITTI` yazılmaz; eksik kabul ölçütü ve sonraki eylem açık kalır.
 
 ## 7. Ölçülecek kalite
 
 İlk pilotta uygulama erişilebilirliği, giriş ve soru çözme başarısı, sonuç doğruluğu, yeni sorunun açılma hızı, geri yükleme süresi, içerik kırpım/cevap eşleşme hatası, zayıf alan önerisinin isabeti ve AI başına gerçek maliyet izlenir. Hedef değerler pilot verisiyle belirlenir; doğrulanmamış “%99 doğru” gibi rakamlar vaat edilmez. Öğrenci ekranında kısa açıklama ve “hatalı bildir” yolu bulunur.
+
+**Durum: YAŞAYAN REFERANS.** İşlerin `BITTI` durumu [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur.

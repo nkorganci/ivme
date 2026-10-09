@@ -6,8 +6,8 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 
 | Kaynak | Amaç | Durum / sonraki kontrol |
 |---|---|---|
-| `D:\workspace\ivme\uygulama\README.md` | Çalışan uygulama, kurulum ve mevcut özellikler | Adım 1'de kodla karşılaştır |
-| `D:\workspace\ivme\uygulama\docs\API-ve-mimari.md` | Mevcut API ve beş tablo sözleşmesi | Yeni adımlarla sürümle |
+| `D:\workspace\ivme\uygulama\README.md` | Çalışan uygulama, kurulum ve mevcut özellikler | İlgili numaralı işte güncelle |
+| `D:\workspace\ivme\uygulama\docs\API-ve-mimari.md` | Büyüyen API ve veri modeli sözleşmesi | İlgili numaralı işte sürümle |
 | `D:\workspace\ivme\README.md` | Eski yerel statik site ve veri hattı genel haritası | Yeni ürünün kaynağı ile karıştırma |
 | `D:\workspace\ivme\veri-hatti\` | PDF soru üretimi ve etiketleme betikleri | Adım 1 ve 12'de kalite/envanter |
 | `D:\workspace\ivme\Kaynaklar\` | PDF, müfredat ve diğer ham malzeme | Kaynak ve kapsam tablosu çıkar |
@@ -34,3 +34,5 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 ## Yeni sınav içeriği ekleme şablonu
 
 `Sınav türü` → `ders` → `konu` → `alt konu/beceri` → `soru tipi` → `önkoşul`; kaynak bilgisi; örnek soru/cevap/çözüm; kalite kontrol örneklemi. Bu şablon TYT/AYT'ye bağlı olmayan ilk yeni sınav paketinde doğrulanacak.
+
+**Durum: YAŞAYAN REFERANS.** Kaynak envanteri yeni numaralı işlerde gerektiğinde güncellenir; tamamlanan işler [iş listesindedir](12_NUMARALI_IS_LISTESI.md).

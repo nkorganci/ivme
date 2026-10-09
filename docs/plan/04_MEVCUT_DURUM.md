@@ -16,3 +16,7 @@ Bu kayıt [yol haritasının](00_YOL_HARITASI.md) 1. adımını kapatır. Sayıl
 **Güvenli geçiş:** `yks_hazirlik` silinmeyecek. `pg_dump -Fc` ile Git dışı yedek alınır; ayrı `ivme` DB'sine geri yüklenir; her ikisinin tablo sayıları karşılaştırılır. Uygulama yeni DB'de Flyway göçlerini çalıştırır. `veritabani-sifirla.bat` veri silen eski geliştirme betiğidir; geçiş aracı olarak kullanılmaz.
 
 **2026-10-09 güncellemesi:** Bu tablodaki soru/veritabanı/Git çalışma ağacı sayıları 1. adımın tarihsel envanteridir. Güncel uygulama `ivme` DB'sinde 80.097 soru ve Flyway V8 kullanır; ayrıntı [Adım 2](05_VERITABANI_GECISI.md), [Adım 4](07_GUVENLIK_YETKI.md) ve [Adım 5](08_TUNEL_VE_UI_PROVASI.md) kayıtlarındadır. Önceden yarım kalmış iki koleksiyon ve UI değişiklikleri 42 arka yüz testi, masaüstü/mobil 20/20 E2E ve tünel provasıyla incelendi; yerel feature branch'te commit edilir, kullanıcının son isteği nedeniyle henüz push yapılmaz.
+
+Bu belge [01.01–01.02](12_NUMARALI_IS_LISTESI.md) başlangıç envanterinin tarihsel kaydıdır; güncel ilerleme numaralı iş listesindedir.
+
+**BITTI**

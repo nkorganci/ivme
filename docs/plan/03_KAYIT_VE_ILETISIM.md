@@ -31,3 +31,7 @@ Flyway `V4__user_contact.sql` sütunu ekler; önceki `V3__soru_koleksiyonu.sql` 
 **Açık sınır:** E-posta/SMS gönderim ve sahiplik doğrulaması için henüz hizmet yapılandırılmadı. Bu bilgiler doğrulanmış iletişim kanalı veya ikinci faktör olarak kullanılmaz.
 
 **Doğrulama (2026-10-08):** Mevcut çalışma ağacında 27 Java testi ve React üretim derlemesi; yalnız bu commit'in temiz checkout'unda 18 Java testi ve React üretim derlemesi geçti. Kayıt ekranı masaüstü ve 390 px mobil cihaz emülasyonunda incelendi; mobilde yatay taşma yok. Canlı tünelde uçtan uca giriş yapılmadı.
+
+Bu belgenin kapsamı [04.01](12_NUMARALI_IS_LISTESI.md) kayıt ve iletişim alanlarıdır. E-posta/SMS sahiplik doğrulaması ve canlı yayın kontrolü ayrı işlerdir.
+
+**BITTI**

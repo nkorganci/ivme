@@ -22,4 +22,6 @@ Tarih: 2026-10-09. Durum: sürüyor. Gerçek `ivme` veritabanındaki iki ayrıca
 
 İlk üretim başlatma saniyelerinde kısa bir 502 görüldü; sonraki istekler 200 döndü. Origin kapatıldığında 502 beklenir. Kullanıcının normal tarayıcı profilindeki hata bu provada yeniden üretilemedi; eklenti veya yalnız o alan adına ait site verisi etkisi olasıdır, kesin neden değildir. E2E görüntüleri Git dışındaki `veri/ui-e2e/` klasöründedir.
 
-**Açık işler:** Gerçek `ivmeadmin` ve `ivmeoperator` parolalarını yerel Hesap ekranından ayrı, güçlü parolalarla değiştirme; sınırlı DB rolü ve görsel yedeği; üretim ayar dosyası; gerçek veritabanıyla kalıcı başlatma/yeniden başlatma ve normal tarayıcı profilinde kontrol. Kullanıcının son isteği gereği GitHub push yapılmadı.
+**Açık işler:** Gerçek `ivmeadmin` ve `ivmeoperator` parolalarını yerel Hesap ekranından ayrı, güçlü parolalarla değiştirme; sınırlı DB rolü ve görsel yedeği; üretim ayar dosyası; gerçek veritabanıyla kalıcı başlatma/yeniden başlatma ve gerçek cihazda tam kullanıcı akışı. Kullanıcı normal tarayıcı profilinde `net.ivme.dev` adresinin artık açıldığını bildirdi; bu gözlem tam giriş/soru akışı provası değildir. Kullanıcının son isteği gereği GitHub push yapılmadı.
+
+**Durum: AÇIK.** Tünel kanıtı [05.01–05.02](12_NUMARALI_IS_LISTESI.md) `BITTI`; canlıya alma denetimleri [05.03–05.05](12_NUMARALI_IS_LISTESI.md) açıktır.
