@@ -132,6 +132,7 @@ class ExamFlowTest extends TestBase {
         send(admin, get("/api/operator/feedback"), null).andExpect(status().isForbidden());
         MockHttpSession operator = login("operator", "Sifre1234");
         JsonNode list = read(send(operator, get("/api/operator/feedback?category=QUESTION_ISSUE&resolved=false"), null).andExpect(status().isOk()));
+        assertThat(list.get("content").get(0).has("username")).isFalse();
         long feedbackId = list.get("content").get(0).get("id").asLong();
         send(operator, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch("/api/operator/feedback/" + feedbackId), "{\"resolved\":true}")
                 .andExpect(status().isOk()).andExpect(jsonPath("$.resolved").value(true));

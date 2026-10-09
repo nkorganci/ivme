@@ -147,7 +147,7 @@ public class AdminService {
     }
 
     private AdminFeedback toAdmin(Feedback f) {
-        return new AdminFeedback(f.getId(), f.getCategory(), f.getUser().getUsername(),
+        return new AdminFeedback(f.getId(), f.getCategory(),
                 f.getQuestion() == null ? null : f.getQuestion().getId(),
                 f.getQuestion() == null ? null : f.getQuestion().getCode(),
                 f.getDifficultyVote(), f.getRating(), f.getMessage(), f.isResolved(), f.getResolvedAt(), f.getCreatedAt());

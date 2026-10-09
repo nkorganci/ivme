@@ -35,7 +35,7 @@ public final class AdminDtos {
             @Size(max = 500, message = "Çözüm bağlantısı en fazla 500 karakter.") String solutionUrl,
             boolean active) {}
 
-    public record AdminFeedback(Long id, FeedbackCategory category, String username, Long questionId,
+    public record AdminFeedback(Long id, FeedbackCategory category, Long questionId,
                                 String questionCode, Difficulty difficultyVote, Integer rating, String message,
                                 boolean resolved, Instant resolvedAt, Instant createdAt) {}
 

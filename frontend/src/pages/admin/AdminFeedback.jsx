@@ -73,7 +73,6 @@ export default function AdminFeedback() {
             <li key={f.id} className={`card feedback-item${f.resolved ? ' resolved' : ''}`}>
               <div className="feedback-head">
                 <span className="badge badge-primary">{categoryLabel(f.category)}</span>
-                <strong>{f.username}</strong>
                 <span className="muted small">{formatDate(f.createdAt)}</span>
                 {f.resolved && <span className="badge badge-ok">✓ Çözüldü</span>}
               </div>

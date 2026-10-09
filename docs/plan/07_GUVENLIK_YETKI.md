@@ -20,6 +20,8 @@
 
 **Tünel sınırı:** Spring Boot varsayılan olarak yalnız `127.0.0.1` üzerinde dinler; `X-Forwarded-*` başlıkları kullanılmaz. Böylece uygulama bu başlıklarla sahte HTTPS/Host/istemci bilgisi kabul etmez. Üretim örnek ayarında QR için sabit `https://net.ivme.dev` ve güvenli oturum çerezi vardır. Cloudflare Tunnel hedefi `http://localhost:8081` olmalıdır. Farklı ağa açma kararı ayrıca gözden geçirilir.
 
+**Bildirim gizliliği:** İçerik operatörü soru hatasını ve açıklamayı görebilir; bildiren öğrencinin kullanıcı adı API yanıtından ve arayüzden çıkarılmıştır. Serbest metin öğrenci tarafından kişisel bilgi içerebilir; operatör rolü ayrı hesapla sınırlı tutulur.
+
 ## Açık kontrol listesi
 
 - Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
