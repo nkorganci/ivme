@@ -12,6 +12,12 @@ const fixture = {
   id: 1099, title: 'NOKTALAMA İŞARETLERİ', exam: 'TYT', subject: 'turkce',
   kind: 'topic_summary', pageCount: 1, status: 'available', verifiedTopic: 'Noktalama İşaretleri',
 };
+const chicagoDate = (date) => {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).formatToParts(date).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
 let goals = [];
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
@@ -149,15 +155,26 @@ try {
       if (page === '/hesap') await waitFor('document.body.innerText.includes("Hesabımı sil")');
       if (page === '/hedefler') {
         await waitFor('document.body.innerText.includes("Henüz hedef oluşturmadın")');
-        await evaluate('document.querySelector("form.card select").value = "MONTH"; document.querySelector("form.card select").dispatchEvent(new Event("change", {bubbles: true}))');
+        await waitFor('document.body.innerText.includes("Bugünkü hedefler") && document.body.innerText.includes("Bu haftaki hedefler")');
         await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Hedef oluştur")?.click()');
         await waitFor('document.body.innerText.includes("Hedef oluşturuldu")');
         await waitFor('document.body.innerText.includes("Düzenle")');
+        await waitFor('document.body.innerText.includes("İlerleme: 0 / 10")');
+        await waitFor('[...document.querySelectorAll("section")].find(x => x.getAttribute("aria-label") === "Bugünkü hedefler")?.innerText.includes("0/10")');
+        await evaluate('document.querySelector("form.card select").value = "WEEK"; document.querySelector("form.card select").dispatchEvent(new Event("change", {bubbles: true}))');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Hedef oluştur")?.click()');
+        await waitFor('[...document.querySelectorAll("section")].find(x => x.getAttribute("aria-label") === "Bu haftaki hedefler")?.innerText.includes("0/10")');
         await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Düzenle")?.click()');
         await waitFor('!!document.querySelector(".goal-edit")');
         await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Durdur")?.click()');
         await waitFor('document.body.innerText.includes("Hedef durduruldu")');
         await waitFor('!document.querySelector(".goal-edit")');
+        const yesterday = chicagoDate(new Date(Date.now() - 86400000));
+        goals = [{ id: 99, period: 'DAY', metric: 'UNIQUE_QUESTIONS', subject: null,
+          targetCount: 10, startsOn: yesterday, endsOn: yesterday, zone: 'America/Chicago',
+          status: 'ACTIVE', progressCount: 5, remainingCount: 5 }];
+        await cdp('Page.navigate', { url: site + page });
+        await waitFor('document.body.innerText.includes("daha küçük bir hedefle yeniden başlayabilirsin")');
       }
       if (page === '/soru/TEST-1') {
         await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');

@@ -170,6 +170,8 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .progress-breakdown th[scope="row"] { padding: 7px 12px; text-align: left; font-weight: 500; overflow-wrap: anywhere; }
 .progress-breakdown th[scope="row"] { white-space: normal; }
 .goal-row { border-top: 1px solid var(--line); padding: 14px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.goal-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 700px) { .goal-overview { grid-template-columns: 1fr; } }
 .goal-row p { margin: 4px 0; }
 .goal-actions, .goal-edit { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
 .goal-edit { flex-basis: 100%; }

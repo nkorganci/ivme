@@ -53,9 +53,34 @@ export default function Goals() {
     finally { setBusy(false); }
   };
 
+  const current = (period) => (goals.data || []).filter((goal) => {
+    const today = localToday(goal.zone);
+    return goal.period === period && goal.status === 'ACTIVE'
+      && goal.startsOn <= today && goal.endsOn >= today;
+  });
+  const missedDay = (goals.data || []).find((goal) => goal.period === 'DAY'
+    && goal.status === 'ACTIVE' && goal.endsOn < localToday(goal.zone)
+    && Date.parse(localToday(goal.zone)) - Date.parse(goal.endsOn) <= 7 * 86400000
+    && goal.remainingCount > 0);
+
   return <>
     <h1>Hedeflerim</h1>
     <p className="muted">Hedefin dönemi, oluşturulduğu saat diliminde sabit kalır. Geçmiş hedeflerin saklanır.</p>
+    {!goals.loading && !goals.error && <div className="goal-overview">
+      {[['DAY', 'Bugünkü hedefler'], ['WEEK', 'Bu haftaki hedefler']].map(([period, title]) => {
+        const active = current(period);
+        return <section className="card" key={period} aria-label={title}>
+          <h2>{title}</h2>
+          {active.length === 0 ? <p className="muted">Bu dönem için etkin hedefin yok.</p>
+            : active.map((goal) => <p key={goal.id}>
+              <strong>{label(METRICS, goal.metric)}</strong>{goal.subject ? ` · ${goal.subject}` : ''}: {' '}
+              {goal.progressCount}/{goal.targetCount} · {goal.remainingCount === 0
+                ? 'Tamamlandı' : `${goal.remainingCount} kaldı`}
+            </p>)}
+        </section>;
+      })}
+    </div>}
+    {missedDay && <Alert type="info">Son günlük hedefin tamamlanmamış. İstersen bugün daha küçük bir hedefle yeniden başlayabilirsin.</Alert>}
     <form className="card" onSubmit={create}>
       <h2>Yeni hedef</h2>
       <div className="filters">

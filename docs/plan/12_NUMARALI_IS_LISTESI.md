@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **09.04 — Bugün/hafta hedef görünümü ve nazik öneri**. 08.04 kod/test tamamlandı, 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **10.02 — Açıklanabilir zayıf alan önerisi hesabı**. 08.04 kod/test tamamlandı, 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -113,7 +113,7 @@
 | 09.01 | BITTI | Soru/test/deneme hedefi veri modeli ve dönem kuralı | [37_09_01_HEDEF_DONEM_MODELI.md](37_09_01_HEDEF_DONEM_MODELI.md) | — (tamamlandı) |
 | 09.02 | BITTI | Günlük/haftalık/aylık hedef oluştur/düzenle/durdur UI | [38_09_02_HEDEF_YONETIMI.md](38_09_02_HEDEF_YONETIMI.md) | — (tamamlandı) |
 | 09.03 | BITTI | Çift saymayan ilerleme ve gün sonu/zaman dilimi testleri | [39_09_03_HEDEF_ILERLEMESI.md](39_09_03_HEDEF_ILERLEMESI.md) | — (tamamlandı) |
-| **09.04** | **SIRADAKI** | **Bugün ve hafta hedeflerinin açık görünümü; kaçırılan güne yargılayıcı olmayan öneri** | 09.03 sonrası | GPT-6 Luna · Medium |
+| 09.04 | BITTI | Bugün ve hafta hedeflerinin açık görünümü; kaçırılan güne yargılayıcı olmayan öneri | [40_09_04_HEDEF_OZETI.md](40_09_04_HEDEF_OZETI.md) | — (tamamlandı) |
 
 ## 10 — Zayıf alan önerisi
 
@@ -121,7 +121,7 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 10.01 | BITTI | Soru tipi → beceri → alt konu → önkoşul taksonomisi ve 50 gerçek kodlu taslak örnek | [25_10_01_TAKSONOMI_VE_ORNEK.md](25_10_01_TAKSONOMI_VE_ORNEK.md) | — (tamamlandı) |
-| 10.02 | YAPILACAK | İlk deneme, süre ve örneklem eşiğiyle açıklanabilir öneri hesabı | 10.01 ve 08.03 sonrası | GPT-6.1 Sol · High |
+| **10.02** | **SIRADAKI** | **İlk deneme, süre ve örneklem eşiğiyle açıklanabilir öneri hesabı** | 10.01 ve 08.03 sonrası | GPT-6.1 Sol · High |
 | 10.03 | YAPILACAK | “Neden?” ve “Şimdi çalış” öğrenci ekranı; yanlış etiket bildirimi | 10.02 sonrası | GPT-6 Luna · Medium |
 
 ## 11 — Yönetici toplamları
