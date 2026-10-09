@@ -13,7 +13,7 @@
 | İş | Somut çıktı ve kabul |
 |---|---|
 | 12.05 | BITTI: `veri-hatti/ogm-indirme` katalogu ile kartların kaynak kimliği karşılaştırıldı; ilk iki kart/sayfa kanıtı ve TYT Türkçe alt konu örneği [12.05 denetiminde](26_12_05_OGM_KAYNAK_KONU_BAGI.md). Belirsiz Soru Bankası kökeni inceleme kuyruğunda; değişmeyen dosyalar atlanıyor. |
-| 13.04 | `Kaynaklar/ogm-materyal` içindeki konu özeti, ders anlatım sunusu, konu anlatımı PDF'lerini soru bankası/test/denemeden ayır. Dosya varlığı, tür, sınav/ders, başlık, konu kimliği, göreli yol, sürüm/checksum kayıtları; tam PDF arşivini Git'e alma. |
+| 13.04 | BITTI: konu özeti/sunu/video notu PDF'leri soru/test/denemeden ayrıldı; tür, sınav/ders, başlık, aday konu kimliği, göreli yol, checksum ve dosya durumu [artımlı katalogda](27_13_04_OGM_KONU_PDF_KATALOGU.md). Tam PDF arşivi Git dışında. |
 | 13.05 | Yetkili öğrenci için katalog API'si ve PDF açma yolu; izinli kök altında kanonik yol, PDF türü ve kimlik kontrolü. Menü/liste/görüntüleyici masaüstü ve telefonda denenir. Yanıt satır içi PDF'dir; dış dosya yolu açığa çıkmaz. |
 | 07.08 | PDF'den konuya bağlı pratik/test kurucusuna giriş; sayı ve soru geçmişi tercihi; seçilen konudan çıkmama, kaynak ve soru sayısı doğrulaması. |
 | 07.09 | Kaliteli zorluk etiketlerinden aday sayıları ve filtre; etiketsiz veya yetersiz havuzun anlaşılır durumu; sıralama ve yenilemede seçim korunur. |
