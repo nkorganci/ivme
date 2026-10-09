@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **06.05 — Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışı**. 04.09'un yerel yedek/geri yükleme provası geçti, ayrı fiziksel hedef bekliyor; 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **06.06 — Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu**. 06.05'in sayaç düzeltmesi geçti, gerçek cihaz denemesi açık; 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 06.05 ile devam et. Model: GPT-6 Luna · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/09_SORU_DENEMELERI.md dosyalarını oku; görünür sekme/boşta kalma süresini ölç, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 06.06 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/09_SORU_DENEMELERI.md ve docs/plan/25_10_01_TAKSONOMI_VE_ORNEK.md dosyalarını oku; yalnız onaylı etiketleri anlık kaydet, fayda oyunu sınırla, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -76,8 +76,8 @@
 | 06.02 | BITTI | Tekrar dene, cevabı göster ve atla olayları; eski ilk denemeyi koruma | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | — (tamamlandı) |
 | 06.03 | BITTI | Soruya ve kullanıcıya bağlı karalama; masaüstü/mobil prova | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | — (tamamlandı) |
 | 06.04 | BITTI | Pratik denemeyi `study_session` ile ilişkilendirme; yenilemede geçmiş ve UI | [14_07_04_OTURUM_DENEMELERI.md](14_07_04_OTURUM_DENEMELERI.md) | — (tamamlandı) |
-| **06.05** | **SIRADAKI** | **Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışını ölçme** | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6 Luna · Medium |
-| 06.06 | YAPILACAK | Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu; etiket yoksa açık boş durum | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6.1 Sol · Medium |
+| 06.05 | YAPILACAK | Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışını ölçme; sayaç düzeltmesi geçti, fiziksel cihaz açık | [32_06_05_AKTIF_SURE.md](32_06_05_AKTIF_SURE.md) | GPT-6 Luna · Medium |
+| **06.06** | **SIRADAKI** | **Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu; etiket yoksa açık boş durum** | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6.1 Sol · Medium |
 
 ## 07 — Soru ve oturum seçimi
 

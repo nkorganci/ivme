@@ -26,3 +26,5 @@ Tarih: 2026-10-09. Durum: sürüyor. Bu dilim soru başına pratik olaylarını 
 - Görünür/odaklı sekme süresinin gerçek cihazlarda ölçümü ve kullanıcının yaklaşık süre açıklaması. Mevcut sayaç sunucunun güvenilir süre ölçümü olarak sunulmaz.
 
 **Durum: AÇIK.** Tamamlanan çözüm dilimleri [06.01–06.04](12_NUMARALI_IS_LISTESI.md) `BITTI`; süre ve taksonomi işleri [06.05–06.06](12_NUMARALI_IS_LISTESI.md) açıktır.
+
+**06.05 ara kayıt · 2026-10-09:** Geciken tarayıcı aralığı yerine monotonic zaman, görünürlük/odak ve 60 saniyelik boşta kalma eşiği kullanan yaklaşık aktif süre hesabı [06.05 kaydında](32_06_05_AKTIF_SURE.md) test edildi. Fiziksel telefon ve pencere geçişi kanıtı bekleniyor; 06.05 açık kalır.

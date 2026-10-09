@@ -1,26 +1,31 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { api, qs } from './api.js';
+import { ActiveTime } from './activeTime.js';
 
 /** Görünür ve odaklı sekmede, son etkileşimden sonraki en çok 60 saniyeyi yaklaşık aktif süre sayar. */
 function useActiveSeconds(questionId) {
-  const seconds = useRef(0);
-  const lastInteraction = useRef(Date.now());
+  const focused = () => document.hasFocus() || window.matchMedia('(pointer: coarse)').matches;
+  const clock = useRef(null);
+  if (!clock.current) clock.current = new ActiveTime(performance.now(), document.visibilityState === 'visible', focused());
   useEffect(() => {
-    seconds.current = 0;
-    lastInteraction.current = Date.now();
-    const mark = () => { lastInteraction.current = Date.now(); };
+    clock.current = new ActiveTime(performance.now(), document.visibilityState === 'visible', focused());
+    const mark = () => clock.current.interact(performance.now());
+    const onVisibility = () => clock.current.setVisibility(performance.now(), document.visibilityState === 'visible');
+    const onFocus = () => clock.current.setFocus(performance.now(), focused());
+    const onBlur = () => clock.current.setFocus(performance.now(), focused());
     const events = ['pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
     events.forEach((e) => window.addEventListener(e, mark, { passive: true }));
-    const tick = setInterval(() => {
-      if (document.visibilityState === 'visible' && document.hasFocus()
-          && Date.now() - lastInteraction.current < 60000) seconds.current += 1;
-    }, 1000);
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('focus', onFocus);
+    window.addEventListener('blur', onBlur);
     return () => {
-      clearInterval(tick);
       events.forEach((e) => window.removeEventListener(e, mark));
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('blur', onBlur);
     };
   }, [questionId]);
-  return { read: () => Math.min(21600, seconds.current), reset: () => { seconds.current = 0; } };
+  return { read: () => clock.current.read(performance.now()), reset: () => clock.current.reset(performance.now()) };
 }
 
 /** Kaybolan ağ yanıtında aynı olay kimliğini tekrar kullanır; sunucu çift kayıt açmaz. */
