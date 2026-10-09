@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** 12.03 metin katmanı/OCR ve inceleme kuyruğu pilotu; [12.02 kaynak sözleşmesi](22_12_02_SORU_KAYNAK_SOZLESMESI.md) girdidir. 04.07'nin yetkili rol kurulumu beklenirken bağımsız kaynak işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** 12.04 tekrar çalıştırılabilir toplu iş ve hata raporu; [12.03 metin/OCR pilotu](23_12_03_METIN_OCR_PILOTU.md) girdidir. 04.07'nin yetkili rol kurulumu beklenirken bağımsız kaynak işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 
