@@ -1,14 +1,10 @@
 package com.hedefyks.progress;
 
-import com.hedefyks.common.ApiException;
-import java.time.DateTimeException;
-import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -87,26 +83,9 @@ public class ProgressService {
     }
 
     public Summary summaryAt(Long userId, Period period, String zoneName, Instant now) {
-        if (period == null) throw ApiException.badRequest("Dönem gerekli.");
-        if (zoneName == null || zoneName.isBlank() || zoneName.length() > 64) {
-            throw ApiException.badRequest("Geçerli bir saat dilimi seç.");
-        }
-        ZoneId zone;
-        try { zone = ZoneId.of(zoneName); }
-        catch (DateTimeException e) { throw ApiException.badRequest("Geçerli bir saat dilimi seç."); }
-        LocalDate day = now.atZone(zone).toLocalDate();
-        LocalDate start = switch (period) {
-            case DAY -> day;
-            case WEEK -> day.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
-            case MONTH -> day.withDayOfMonth(1);
-        };
-        LocalDate end = switch (period) {
-            case DAY -> start.plusDays(1);
-            case WEEK -> start.plusWeeks(1);
-            case MONTH -> start.plusMonths(1);
-        };
-        Instant from = start.atStartOfDay(zone).toInstant();
-        Instant until = end.atStartOfDay(zone).toInstant();
+        GoalPeriod window = GoalPeriod.containing(period, zoneName, now);
+        Instant from = window.startsAt();
+        Instant until = window.endsAt();
         List<Breakdown> breakdown = jdbc.query(BREAKDOWN_SQL, (rs, row) -> new Breakdown(
                 rs.getString("kind"), rs.getString("subject"), rs.getString("label"),
                 rs.getLong("correct"), rs.getLong("wrong"), rs.getLong("blank"), rs.getLong("total")),
@@ -120,7 +99,7 @@ public class ProgressService {
                 .mapToLong(Breakdown::blank).sum();
         long total = correct + wrong + blank;
         double percent = total == 0 ? 0 : Math.round(correct * 1000.0 / total) / 10.0;
-        return new Summary(period, zone.getId(), from, until, correct, wrong, blank, total, percent,
+        return new Summary(period, window.zoneId(), from, until, correct, wrong, blank, total, percent,
                 breakdown);
     }
 
