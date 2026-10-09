@@ -49,7 +49,7 @@
 
 ### Adım 3 — Tasarım sistemi ve ekran prototipleri
 
-**Özet:** Profesyonel, sakin ve okunabilir bir öğrenci arayüzü tasarla. **Yapılacak:** Menü haritası, masaüstü/tablet/telefon düzeni, tipografi, renk/kontrast, boş-hata-yükleniyor durumları, form bileşenleri, erişilebilir odak/klavye akışı; ana sayfa, konu sayfası, soru çözme, test kurma, ilerleme, hesap ve yönetim için düşük maliyetli prototip. Soru ekranı: solda soru görseli, altında şıklar; sağda `Karalama`, `QR/Çözüm`, `Konu notu/İpucu` sekmeleri; dar ekranda sağ panel altta veya sekmeyle açılır. **UI kontrolü:** En az bir büyük ve bir telefon ekranında soru okunabilirliği, şık tıklama, klavye ve tasarım onayı. **Bitti sayılır:** Onaylı ekran sözleşmesi ve bileşen listesi; kod değişimleri küçük parçalar halinde yapılabilir. **Durum:** sürüyor (2026-10-08). **Kayıt:** [ekran sözleşmesi](06_TASARIM_SOZLESMESI.md) ve [etkileşimli soru prototipi](../prototip/soru-ekrani.html) hazır. 1280/390 px kontrolünde taşma yok; sekme ve şık etkileşimi çalıştı. Kullanıcı değerlendirmesi ve diğer ekranların uygulama karşılığı açık.
+**Özet:** Profesyonel, sakin ve okunabilir bir öğrenci arayüzü tasarla. **Yapılacak:** Menü haritası, masaüstü/tablet/telefon düzeni, tipografi, renk/kontrast, boş-hata-yükleniyor durumları, form bileşenleri, erişilebilir odak/klavye akışı; ana sayfa, konu sayfası, soru çözme, test kurma, ilerleme, hesap ve yönetim için düşük maliyetli prototip. Soru ekranı: solda soru görseli, altında şıklar; sağda `Karalama`, `QR/Çözüm`, `Konu notu/İpucu` sekmeleri; dar ekranda sağ panel altta veya sekmeyle açılır. **UI kontrolü:** En az bir büyük ve bir telefon ekranında soru okunabilirliği, şık tıklama, klavye ve tasarım onayı. **Bitti sayılır:** Onaylı ekran sözleşmesi ve bileşen listesi; kod değişimleri küçük parçalar halinde yapılabilir. **Durum:** tamamlandı (2026-10-08). **Kayıt:** [ekran sözleşmesi](06_TASARIM_SOZLESMESI.md) ve [etkileşimli soru prototipi](../prototip/soru-ekrani.html) 1280/390 px kontrolünden geçti; kullanıcı yerleşim ve mor vurguyu onayladı. Gerçek uygulamaya aktarım ilgili işlev adımlarında yapılacak.
 
 ### Adım 4 — Güvenlik, gizlilik ve yönetici kapsamı
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** Adım 3 prototipine kullanıcı geri bildirimi; bu sırada bağımsız Adım 4 güvenlik/yetki denetimi. Ardından Adım 5 yerel/tünel paylaşımı gelir. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
+**Sıradaki planlı iş:** Adım 4 güvenlik ve yetki sınırları; ardından Adım 5 yerel/tünel paylaşımı. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; saklama/silme süresi; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

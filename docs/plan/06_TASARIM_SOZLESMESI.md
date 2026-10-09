@@ -2,6 +2,8 @@
 
 Bu belge 3. adımın karar ve kontrol listesidir. [Etkileşimli soru ekranı prototipi](../prototip/soru-ekrani.html) sentetik içerikle hazırlanmıştır; gerçek soru veya öğrenci verisi içermez. Prototip ürün API'sine bağlı değildir.
 
+**Onay (2026-10-08):** Kullanıcı soru ekranındaki yerleşim ve mor vurgu için “Uygun, devam et” yanıtını verdi. Gerçek uygulamaya aktarım ilgili işlev adımlarında küçük parçalarla yapılacak.
+
 ## Gezinme ve ekranlar
 
 | Ekran | Ana görev | Birincil eylem / durum |
