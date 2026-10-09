@@ -61,7 +61,7 @@
 
 ### Adım 6 — Soru başına çözüm deneyimi
 
-**Özet:** Her sorunun tüm denemelerini güvenilir biçimde tut. **Yapılacak:** İlk yanıt, tekrar dene, cevap göster, atla; doğru/yanlış, seçilen şık, sunucu zamanı, aktif süre, ders/konu/alt konu/soru tipi, kaynak, oturum kimliği; tekrar gönderme ve ağ kopması için idempotency; cevap değiştiğinde eski kayıtların korunması; bireysel kolay/orta/zor geri bildirimi. Karalama soru ve kullanıcı bazında saklanır; büyük çizimler gerekirse dosya deposunda. QR yalnız sorunun giriş gerektiren adresine gider. **UI kontrolü:** Yanlış sonrası tekrar, cevap gösterme izni, sekmeler, mobil karalama ve kayıt başarısızlığı. **Bitti sayılır:** Yenileme/giriş/başka cihaz sonrası deneme geçmişi doğru; istemci doğru cevabı izin verilmeden alamaz. **Durum:** sürüyor (2026-10-09). **Kayıt:** [kayıtlı pratik ve açık kalan UI/oturum işleri](09_SORU_DENEMELERI.md); 44 arka yüz testi ve masaüstü/mobil 22/22 E2E geçti. Gerçek DB'ye V9 uygulandı; 80.097 soru ve 3 hesap korundu.
+**Özet:** Her sorunun tüm denemelerini güvenilir biçimde tut. **Yapılacak:** İlk yanıt, tekrar dene, cevap göster, atla; doğru/yanlış, seçilen şık, sunucu zamanı, aktif süre, ders/konu/alt konu/soru tipi, kaynak, oturum kimliği; tekrar gönderme ve ağ kopması için idempotency; cevap değiştiğinde eski kayıtların korunması; bireysel kolay/orta/zor geri bildirimi. Karalama soru ve kullanıcı bazında saklanır; büyük çizimler gerekirse dosya deposunda. QR yalnız sorunun giriş gerektiren adresine gider. **UI kontrolü:** Yanlış sonrası tekrar, cevap gösterme izni, sekmeler, mobil karalama ve kayıt başarısızlığı. **Bitti sayılır:** Yenileme/giriş/başka cihaz sonrası deneme geçmişi doğru; istemci doğru cevabı izin verilmeden alamaz. **Durum:** sürüyor (2026-10-09). **Kayıt:** [kayıtlı pratik, karalama ve açık oturum işleri](09_SORU_DENEMELERI.md); V10/test DB'sinde 44 test geçti, 2 atlandı; masaüstü/mobil 26/26 E2E geçti. Gerçek DB V9 ve çalışan site korunuyor; V10 yeniden başlatmada uygulanır.
 
 ### Adım 7 — Seçilebilir çalışma ve deneme oturumları
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** Adım 4 güvenlik ve yetki sınırları; ardından Adım 5 yerel/tünel paylaşımı. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
+**Sıradaki planlı iş:** Adım 6'nın kalan oturum ve soru taksonomisi işleri; ardından Adım 7 seçilebilir çalışma. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri paralel açık kalır. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

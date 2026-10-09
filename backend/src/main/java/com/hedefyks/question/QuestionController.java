@@ -23,6 +23,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,14 +38,16 @@ public class QuestionController {
     private final ImageStorage images;
     private final QrService qr;
     private final AttemptService attempts;
+    private final BoardService boards;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
-                              AttemptService attempts) {
+                              AttemptService attempts, BoardService boards) {
         this.service = service;
         this.questions = questions;
         this.images = images;
         this.qr = qr;
         this.attempts = attempts;
+        this.boards = boards;
     }
 
     @GetMapping("/filters")
@@ -93,6 +96,17 @@ public class QuestionController {
     public PracticeState practiceEvent(@PathVariable Long id, @Valid @RequestBody AttemptRequest req,
                                        @AuthenticationPrincipal AppUserDetails me) {
         return attempts.submit(id, me.id(), req);
+    }
+
+    @GetMapping("/{id}/board")
+    public BoardService.Board board(@PathVariable Long id, @AuthenticationPrincipal AppUserDetails me) {
+        return boards.get(id, me.id());
+    }
+
+    @PutMapping("/{id}/board")
+    public BoardService.Board saveBoard(@PathVariable Long id, @RequestBody BoardService.SaveBoard req,
+                                        @AuthenticationPrincipal AppUserDetails me) {
+        return boards.save(id, me.id(), req);
     }
 
     @GetMapping("/{id}/image")

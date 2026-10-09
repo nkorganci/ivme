@@ -128,6 +128,37 @@ await go('/soru/TYT-0001');
 await waitFor("document.querySelector('.choices')", 'şık düğmeleri');
 await sleep(800);
 ok('Soru görseli yüklendi', await ev("(() => { const i = document.querySelector('img[src*=\"/api/questions/\"][src$=\"/image\"]'); return !!i && i.complete && i.naturalWidth > 50; })()"));
+await waitFor("document.querySelector('.board-status')?.textContent.includes('Kaydedildi')", 'karalama yüklenmesi');
+await ev("document.querySelector('.board-canvas').scrollIntoView({block: 'center'})");
+await sleep(150);
+const boardRect = await ev("(() => { const r = document.querySelector('.board-canvas').getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; })()");
+const from = { x: boardRect.x + boardRect.width * .25, y: boardRect.y + boardRect.height * .25 };
+const to = { x: boardRect.x + boardRect.width * .75, y: boardRect.y + boardRect.height * .75 };
+if (mobil) {
+  await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: from.x, y: from.y, id: 1 }] });
+  await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: to.x, y: to.y, id: 1 }] });
+  await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+} else {
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: from.x, y: from.y, button: 'left', clickCount: 1 });
+  await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: to.x, y: to.y, button: 'left', buttons: 1 });
+  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: to.x, y: to.y, button: 'left', clickCount: 1 });
+}
+const boardId = await ev("document.querySelector('img[src*=\"/api/questions/\"][src$=\"/image\"]').src.match(/questions\\/(\\d+)/)[1]");
+const boardData = () => ev(`fetch('/api/questions/${boardId}/board').then(r => r.json())`);
+let boardSaved = false;
+for (let i = 0; i < 40; i++) {
+  if ((await boardData()).strokes.length === 1) { boardSaved = true; break; }
+  await sleep(150);
+}
+ok('Karalama çizgisi kaydedildi', boardSaved);
+await waitFor("document.querySelector('.board-status')?.textContent.includes('Kaydedildi')", 'karalamanın kayıt durumu');
+await go('/soru/TYT-0001');
+await waitFor("document.querySelector('.board-status')?.textContent.includes('Kaydedildi')", 'karalamanın yeniden yüklenmesi');
+ok('Karalama yenilemeden sonra duruyor', (await boardData()).strokes.length === 1);
+ok('Karalama tuvalde yeniden çizildi', await ev("(() => { const c = document.querySelector('.board-canvas'); const data = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; for (let i = 3; i < data.length; i += 4) if (data[i]) return true; return false; })()"));
+await clickText('QR ve bağlantı', '[role=tab]');
+ok('QR sekmesi açıldı', await ev("!!document.querySelector('#panel-qr img[src*=" + JSON.stringify('/qr?') + "]')"));
+await clickText('Karalama', '[role=tab]');
 await clickText('', '.choice');                                            // ilk şık (A)
 await ev("document.querySelector('.choice').click()");
 await clickText('Cevabı Kontrol Et');

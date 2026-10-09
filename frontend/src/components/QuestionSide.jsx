@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { StarValue } from './Stars.jsx';
+import QuestionBoard from './QuestionBoard.jsx';
 import RatingForm from './RatingForm.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
@@ -8,11 +10,21 @@ const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
 /** Soru sayfasının dar yan paneli: kompakt künye + katlanır bölümler (varsayılan kapalı). */
 export default function QuestionSide({ q, onRated }) {
+  const [tab, setTab] = useState('board');
+  const [boardAvailable, setBoardAvailable] = useState(true);
   const votes = q.difficultyVotes || {};
   const total = DIFFICULTIES.reduce((t, d) => t + (votes[d] || 0), 0);
 
   return (
     <aside className="card qside" aria-label="Soru bilgileri">
+      <div className="qside-tabs" role="tablist" aria-label="Soru araçları">
+        {boardAvailable && <button type="button" role="tab" id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onClick={() => setTab('board')}>Karalama</button>}
+        <button type="button" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onClick={() => setTab('qr')}>QR ve bağlantı</button>
+      </div>
+      {boardAvailable && <div id="panel-board" role="tabpanel" aria-labelledby="tab-board" hidden={tab !== 'board'}>
+        <QuestionBoard questionId={q.id} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />
+      </div>}
+      <div id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden={tab !== 'qr'}><QrCard question={q} /></div>
       <dl className="meta">
         <dt>Koleksiyon</dt>
         <dd>{bankLabel(q.bank)}</dd>
@@ -68,12 +80,6 @@ export default function QuestionSide({ q, onRated }) {
         </div>
       </details>
 
-      <details className="fold">
-        <summary>QR kodu ve bağlantı</summary>
-        <div className="fold-body">
-          <QrCard question={q} />
-        </div>
-      </details>
     </aside>
   );
 }
