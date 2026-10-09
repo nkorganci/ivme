@@ -76,6 +76,7 @@ export default function Account() {
     setState({ busy: true, error: '', done: false });
     try {
       await api.put('/api/account/password', { currentPassword: form.currentPassword, newPassword: form.newPassword });
+      await refreshUser();
       setForm(EMPTY);
       setState({ busy: false, error: '', done: true });
     } catch (err) {
@@ -90,7 +91,8 @@ export default function Account() {
       <p className="muted lead">
         {user.username} · {user.email}
       </p>
-      {!user.contactComplete && user.role !== 'ADMIN' &&
+      {user.passwordChangeRequired && <Alert type="error">Bu hesap geçici bir şifre kullanıyor. Canlı yayından önce burada en az 15 karakterlik yeni bir şifre belirle.</Alert>}
+      {!user.contactComplete && user.role === 'USER' &&
         <Alert type="error">Devam etmek için e-posta ve cep telefonu bilgilerini kaydet.</Alert>}
       {!contactReady ? <Loading text="İletişim bilgileri yükleniyor…" /> : (
         <form className="card form-card" onSubmit={saveContact} noValidate>

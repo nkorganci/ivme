@@ -107,8 +107,12 @@
 
 **Sıradaki planlı iş:** Adım 4 güvenlik ve yetki sınırları; ardından Adım 5 yerel/tünel paylaşımı. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
-**Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; saklama/silme süresi; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
+**Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 
 ### 2026-10-08 — Kayıt ve ilk giriş önceliği
 
 Kullanıcı isteğiyle kayıt akışı Adım 4'ten önce uygulamaya alındı: yeni öğrenci kullanıcı adı, şifre, e-posta ve cep telefonu girer; mevcut öğrenci ilk girişte eksik iletişim bilgisini Hesap ekranında tamamlar. İletişim bilgisi değişikliği mevcut şifreyi ister. Numara biçimi doğrulanır ve standart biçimde saklanır; SMS/e-posta gönderimi olmadığı için adres/numara sahipliği doğrulanmış sayılmaz ve hesap kurtarmada kullanılmaz. Yeni şifreler en az 15 karakterdir; mevcut BCrypt depolaması için 72 UTF-8 bayt sınırı uygulanır. Ayrıntılı sözleşme ve kontrol listesi [kayıt notunda](03_KAYIT_VE_ILETISIM.md); genel güvenlik, DB adı ve tünel adımları açık kalır.
+
+### 2026-10-08 — Yerel yetkili hesaplar ve etkinlik saklama
+
+Yönetici adı `ivmeadmin`, ayrı içerik operatörü adı `ivmeoperator` olarak belirlendi. Kullanıcının seçtiği ortak geçici parola yalnız yerel `ivme` veritabanında BCrypt ile tutulur; üretim, parola değiştirme işareti olan yetkili hesapla başlamaz. Ham etkinlik olayları 90 gün sonra otomatik silinir. Gerçek uygulama verisi, doğrulama ve açık işler [Adım 4 güvenlik kaydında](07_GUVENLIK_YETKI.md). Gelecekte kullanıcıya soru sorulursa **Soru 1**, **Soru 2** biçiminde belirgin numaralandırılır.

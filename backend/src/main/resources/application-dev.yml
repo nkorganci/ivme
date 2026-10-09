@@ -1,4 +1,4 @@
-# YALNIZ GELİŞTİRME (profil: dev). Buradaki root/root değerleri üretimde KULLANILMAZ.
+# YALNIZ YEREL GELİŞTİRME (profil: dev). Yönetici parolası kaynak kodda tutulmaz.
 spring:
   datasource:
     url: ${YKS_DB_URL:jdbc:postgresql://localhost:5432/ivme}
@@ -10,9 +10,9 @@ app:
   images:
     dir: ${YKS_RESIM_KLASORU:../ornek-veri/resimler}   # mvn spring-boot:run, backend\ klasöründen çalışır
   admin:
-    username: ${YKS_ADMIN_KULLANICI:root}
+    username: ${YKS_ADMIN_KULLANICI:ivmeadmin}
     email: ${YKS_ADMIN_EPOSTA:root@localhost}
-    password: ${YKS_ADMIN_SIFRE:root}                  # geliştirme yöneticisi: root / root
+    password: ${YKS_ADMIN_SIFRE:}                      # sadece açıkça verilirse yeni hesap oluşturur
   sample-data: ${YKS_ORNEK_VERI:../ornek-veri/sorular.csv}   # soru tablosu boşsa içe aktarılır
 
 logging:

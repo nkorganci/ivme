@@ -33,6 +33,9 @@ public class User {
     @Column(name = "password_hash")
     private String passwordHash;
 
+    @Column(name = "password_change_required", nullable = false)
+    private boolean passwordChangeRequired;
+
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 

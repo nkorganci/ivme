@@ -113,12 +113,19 @@ class AuthTest extends TestBase {
 
     @Test
     void sifreDegistirme() throws Exception {
-        user("ayse", Role.USER);
+        var ayse = user("ayse", Role.USER);
+        ayse.setPasswordChangeRequired(true);
+        users.save(ayse);
         MockHttpSession session = login("ayse", "Sifre1234");
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(true));
         send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/password"),
                 "{\"currentPassword\":\"yanlis\",\"newPassword\":\"YeniSifre99\"}").andExpect(status().isBadRequest());
         send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/password"),
                 "{\"currentPassword\":\"Sifre1234\",\"newPassword\":\"YeniGucluSifre2026\"}").andExpect(status().isNoContent());
+        assertThat(users.findById(ayse.getId()).orElseThrow().isPasswordChangeRequired()).isFalse();
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(false));
         mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"login\":\"ayse\",\"password\":\"Sifre1234\"}")).andExpect(status().isUnauthorized());
         mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)

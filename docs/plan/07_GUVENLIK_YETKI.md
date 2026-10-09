@@ -16,7 +16,9 @@
 
 **Test:** Seçili dosyaların temiz çalışma ağacında 20 arka yüz testi ve React üretim derlemesi geçti. Yetki testinde yöneticinin soru ve sınav, operatörün sınav API'sine doğrudan erişimi 403 olarak doğrulandı.
 
-**Veri ve hesap kararı:** Gerçek `ivme` veritabanındaki öğrenci ve yönetici hesaplarının parolaları değiştirilmedi. İçerik operatörü hesabı gerçek veritabanına eklenmedi. Kullanıcı seçtiği ayrı hesabı hazırladığında rol, kontrollü olarak `OPERATOR` yapılacak. Yerel testteki `operator_test` yalnız `ivme_test` içindedir.
+**Yerel hesap kararı:** Kullanıcının seçtiği `ivmeadmin` (`ADMIN`) ve `ivmeoperator` (`OPERATOR`) hesapları gerçek `ivme` veritabanında hazırlandı; ikisi de kullanıcının istediği aynı geçici parolayı kullanır. Önce yalnız `users` tablosunun Git dışı yedeği alındı. Eski `root` yönetici hesabı `ivmeadmin` olarak yeniden adlandırıldı; öğrenci hesabına dokunulmadı. Geçici parola açık metin olarak kaynak koda/belgeye yazılmadı ve iki hesapta `password_change_required=true` işaretlendi. `dev` profilindeki otomatik `root` yönetici oluşturma kaldırıldı. Hesap ekranında parola değişince işaret temizlenir; üretim açılışı işaretli `ADMIN`/`OPERATOR` hesabını reddeder. İki hesap da en az 15 karakterlik farklı, güçlü parolaya geçirilmeden tünel üzerinden yayın yapılmaz. Yerel API giriş denemesinde iki rolün kendi uç noktası 200, karşı rolünki 403 döndü.
+
+**Saklama kararı:** Ham giriş/aktiflik/çıkış olayları (`activity_events`) en fazla 90 gün tutulur; uygulama açıldığında ve her gün 03:00 UTC'de eski olaylar silinir. Bu tabloya olay yazma henüz uygulanmadığından mevcut gerçek veride silinecek kayıt yoktur. Soru çözme ve sınav geçmişi 90 günlük bu kurala dahil değildir. Günlük/haftalık/aylık uzun dönem grafiklerinin hangi toplu kayıtlardan üretileceği ve öğrencinin veri dışa aktarma/silme akışı ilerleme adımında tamamlanacak.
 
 **Tünel sınırı:** Spring Boot varsayılan olarak yalnız `127.0.0.1` üzerinde dinler; `X-Forwarded-*` başlıkları kullanılmaz. Böylece uygulama bu başlıklarla sahte HTTPS/Host/istemci bilgisi kabul etmez. Üretim örnek ayarında QR için sabit `https://net.ivme.dev` ve güvenli oturum çerezi vardır. Cloudflare Tunnel hedefi `http://localhost:8081` olmalıdır. Farklı ağa açma kararı ayrıca gözden geçirilir.
 
@@ -34,7 +36,7 @@
 - CSRF, oturum süresi/çıkış, giriş hızı ve güvenli çerez denetimi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel symlink hedefleri ve hata yanıtında bilgi sızıntısı testi; izinli uzantı ve dosya imzası denetimi eklendi.
-- Etkinlik verisinin saklama/silme ve dışa aktarma kararı; yedek ve geri yükleme provası.
+- Etkinlik verisi için öğrenciye açıklama, uzun dönem toplulaştırma ve dışa aktarma/silme akışı; yedek ve geri yükleme provası. Ham olayların 90 günlük otomatik silinmesi uygulandı.
 - Üretim için ayrı sınırlı DB rolü, güçlü hesap parolaları ve internetten erişim provası.
 
 Bu liste bitmeden Adım 4 tamamlandı veya site paylaşmaya hazır sayılmaz.

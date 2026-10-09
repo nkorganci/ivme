@@ -17,6 +17,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 class AdminSeederTest {
 
     @Test
+    void uretimGeciciParolaliOperatorHesabiniReddeder() {
+        UserRepository users = mock(UserRepository.class);
+        User operator = new User();
+        operator.setRole(Role.OPERATOR);
+        operator.setPasswordChangeRequired(true);
+        when(users.findByRoleIn(anyCollection())).thenReturn(List.of(operator));
+
+        AdminSeeder seeder = new AdminSeeder(new AppProperties(null, null, null, null),
+                users, mock(PasswordEncoder.class), mock(Environment.class));
+        assertThatThrownBy(() -> seeder.run(mock(ApplicationArguments.class)))
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessageContaining("Geçici parolalı");
+    }
+
+    @Test
     void uretimEskiYetkiliHesabinRootParolasiniReddeder() {
         UserRepository users = mock(UserRepository.class);
         PasswordEncoder encoder = mock(PasswordEncoder.class);

@@ -4,6 +4,8 @@
 
 > **2026-10-08 yetki güncellemesi:** `/yonetim` yalnız toplu kullanıcı ve tamamlanan sınav sayısını gösterir. Soru, bildirim ve içe aktarma işlemleri ayrı `OPERATOR` hesabıyla `/icerik-bakimi` altında yürütülür; API kökü `/api/operator`. Üretimde varsayılan geliştirme parolasıyla ayrıcalıklı hesap başlatılmaz. Ayrıntı ve açık yayın kontrolleri [Adım 4 güvenlik kaydında](docs/plan/07_GUVENLIK_YETKI.md). Aşağıdaki eski yönetim/API ve üretim yönergeleri bu kayda göre güncellenecektir; şu aşamada tünel yayını için kullanılmamalı.
 
+> **Yerel hesaplar:** `ivmeadmin` yönetici, `ivmeoperator` içerik operatörüdür. İkisi de kullanıcının seçtiği geçici parolayla yalnız yerel deneme içindir. Hesap › Şifre değiştir ekranında her iki hesabın parolası ayrı ayrı en az 15 karakterlik yeni parolayla değiştirilmeden üretim açılmaz. Ham etkinlik olayları 90 gün sonra silinir. Ayrıntı [Adım 4 kaydında](docs/plan/07_GUVENLIK_YETKI.md).
+
 Soru bankası, süreli deneme sınavı, sonuç/geçmiş, geri bildirim ve basit yönetim ekranı olan, tarayıcıdan kullanılan bir YKS hazırlık sitesi.
 Hedef: 10–50 kişilik ilk deneme; mimari 5.000+ kullanıcıya yeniden yazmadan büyüyebilecek kadar temiz tutuldu (aşırı mühendislik yok).
 

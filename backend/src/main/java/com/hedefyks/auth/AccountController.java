@@ -70,6 +70,7 @@ public class AccountController {
         }
         PasswordRules.checkBytes(req.newPassword(), "newPassword");
         user.setPasswordHash(encoder.encode(req.newPassword()));
+        user.setPasswordChangeRequired(false);
         return ResponseEntity.noContent().build();
     }
 }

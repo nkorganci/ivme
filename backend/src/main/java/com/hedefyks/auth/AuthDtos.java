@@ -66,14 +66,16 @@ public final class AuthDtos {
         @Override public String toString() { return "ContactDto[redacted]"; }
     }
 
-    public record UserDto(Long id, String username, String email, Role role, boolean contactComplete) {
+    public record UserDto(Long id, String username, String email, Role role,
+                          boolean contactComplete, boolean passwordChangeRequired) {
         public static UserDto of(User u) {
             return new UserDto(u.getId(), u.getUsername(), u.getEmail(), u.getRole(),
-                    u.getPhone() != null && !u.getPhone().isBlank());
+                    u.getPhone() != null && !u.getPhone().isBlank(), u.isPasswordChangeRequired());
         }
 
         @Override public String toString() {
-            return "UserDto[id=" + id + ", role=" + role + ", contactComplete=" + contactComplete + "]";
+            return "UserDto[id=" + id + ", role=" + role + ", contactComplete=" + contactComplete
+                    + ", passwordChangeRequired=" + passwordChangeRequired + "]";
         }
     }
 }

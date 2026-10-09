@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 /**
  * Yönetici hesabını açılışta, şifre YALNIZ yapılandırmadan (ortam değişkeni) gelirse oluşturur.
  * Hesap zaten varsa dokunmaz (arayüzden değiştirilen şifre ezilmez).
- * Kaynak kodda gerçek şifre yoktur; root/root yalnız application-dev.yml içindeki geliştirme değeridir.
+ * Kaynak kodda gerçek şifre yoktur.
  */
 @Component
 class AdminSeeder implements ApplicationRunner {
@@ -41,6 +41,9 @@ class AdminSeeder implements ApplicationRunner {
         boolean dev = env.acceptsProfiles(Profiles.of("dev", "test"));
         if (!dev) {
             for (User privileged : users.findByRoleIn(List.of(Role.ADMIN, Role.OPERATOR))) {
+                if (privileged.isPasswordChangeRequired()) {
+                    throw new IllegalStateException("Geçici parolalı yetkili hesapla üretim başlatılamaz; hesabın parolasını yerelde değiştir.");
+                }
                 if (encoder.matches("root", privileged.getPasswordHash())) {
                     throw new IllegalStateException("Varsayılan root parolası olan yetkili hesapla üretim başlatılamaz; parolayı değiştir.");
                 }
