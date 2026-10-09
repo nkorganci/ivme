@@ -20,6 +20,10 @@ export default function Account() {
   const [contactReady, setContactReady] = useState(false);
   const [contactErrors, setContactErrors] = useState({});
   const [contactState, setContactState] = useState({ busy: false, error: '', done: false });
+  const [exportPassword, setExportPassword] = useState('');
+  const [exportState, setExportState] = useState({ busy: false, error: '', done: false });
+  const [deleteForm, setDeleteForm] = useState({ currentPassword: '', confirmation: '' });
+  const [deleteState, setDeleteState] = useState({ busy: false, error: '' });
 
   useEffect(() => {
     let active = true;
@@ -85,6 +89,37 @@ export default function Account() {
     }
   };
 
+  const exportData = async (e) => {
+    e.preventDefault();
+    setExportState({ busy: true, error: '', done: false });
+    try {
+      const data = await api.post('/api/account/export', { currentPassword: exportPassword });
+      const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `ivme-verilerim-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setExportPassword('');
+      setExportState({ busy: false, error: '', done: true });
+    } catch (err) {
+      setExportState({ busy: false, error: err.message, done: false });
+    }
+  };
+
+  const deleteAccount = async (e) => {
+    e.preventDefault();
+    setDeleteState({ busy: true, error: '' });
+    try {
+      await api.post('/api/account/delete', deleteForm);
+      window.location.replace('/giris');
+    } catch (err) {
+      setDeleteState({ busy: false, error: err.message });
+    }
+  };
+
   return (
     <>
       <h1>Hesap</h1>
@@ -145,6 +180,34 @@ export default function Account() {
           {state.busy ? 'Kaydediliyor…' : 'Şifreyi değiştir'}
         </button>
       </form>
+      {user.role === 'USER' && <>
+        <form className="card form-card" onSubmit={exportData}>
+          <h2>Verilerimi indir</h2>
+          <p className="muted">Hesap bilgilerin, sınav ve pratik kayıtların, cevapların, karalamaların, geri bildirimlerin ve varsa hedeflerin JSON dosyasına eklenir. Şifre özeti ve diğer kullanıcıların verileri eklenmez.</p>
+          <Field label="Mevcut şifre" type="password" autoComplete="current-password" required
+            value={exportPassword} onChange={(e) => setExportPassword(e.target.value)} />
+          {exportState.error && <Alert type="error">{exportState.error}</Alert>}
+          {exportState.done && <Alert type="success">Dosya indirildi.</Alert>}
+          <button type="submit" className="btn btn-secondary" disabled={exportState.busy || !exportPassword}>
+            {exportState.busy ? 'Hazırlanıyor…' : 'Verilerimi indir'}
+          </button>
+        </form>
+        <form className="card form-card" onSubmit={deleteAccount}>
+          <h2>Hesabımı sil</h2>
+          <Alert type="warn">Bu işlem hesabını ve kişisel çalışma geçmişini uygulamadan siler. Önce verilerini indirmen önerilir. Önceden alınmış yedekler ayrı saklanabilir.</Alert>
+          <Field label="Mevcut şifre" type="password" autoComplete="current-password" required
+            value={deleteForm.currentPassword}
+            onChange={(e) => setDeleteForm((f) => ({ ...f, currentPassword: e.target.value }))} />
+          <Field label="Onay için HESABIMI SIL yaz" type="text" autoComplete="off" required
+            value={deleteForm.confirmation}
+            onChange={(e) => setDeleteForm((f) => ({ ...f, confirmation: e.target.value }))} />
+          {deleteState.error && <Alert type="error">{deleteState.error}</Alert>}
+          <button type="submit" className="btn btn-danger"
+            disabled={deleteState.busy || !deleteForm.currentPassword || deleteForm.confirmation !== 'HESABIMI SIL'}>
+            {deleteState.busy ? 'Siliniyor…' : 'Hesabımı sil'}
+          </button>
+        </form>
+      </>}
     </>
   );
 }

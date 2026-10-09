@@ -77,6 +77,8 @@ main:focus { outline: none; }
 .alert > div { flex: 1; }
 .alert-info { background: var(--primary-soft); border-color: #c7d2fe; color: #3730a3; } .alert-error { background: var(--bad-soft); border-color: #fecaca; color: #991b1b; }
 .alert-success { background: var(--ok-soft); border-color: #a7f3d0; color: #065f46; } .alert-warn { background: var(--warn-soft); border-color: #fde68a; color: #92400e; }
+.btn-danger { background: #b91c1c; color: #fff; border-color: #b91c1c; }
+.btn-danger:hover { background: #991b1b; border-color: #991b1b; }
 .state { text-align: center; padding: 24px 12px; color: var(--muted); }
 .state-error { color: #991b1b; } .state-title { font-weight: 700; color: var(--text); font-size: var(--fs-lg); }
 .spinner { display: inline-block; width: 24px; height: 24px; border: 3px solid var(--line); border-top-color: var(--primary); border-radius: 50%; animation: spin .8s linear infinite; }

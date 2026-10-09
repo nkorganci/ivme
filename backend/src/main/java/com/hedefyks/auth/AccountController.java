@@ -6,14 +6,18 @@ import com.hedefyks.auth.AuthDtos.UpdateContactRequest;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.user.AppUserDetails;
 import com.hedefyks.user.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +29,37 @@ public class AccountController {
 
     private final UserRepository users;
     private final PasswordEncoder encoder;
+    private final AccountDataService accountData;
 
-    public AccountController(UserRepository users, PasswordEncoder encoder) {
+    public AccountController(UserRepository users, PasswordEncoder encoder, AccountDataService accountData) {
         this.users = users;
         this.encoder = encoder;
+        this.accountData = accountData;
+    }
+
+    public record ConfirmPassword(@NotBlank String currentPassword) {}
+    public record ConfirmDeletion(@NotBlank String currentPassword, String confirmation) {}
+
+    @PostMapping("/export")
+    public ResponseEntity<Map<String, Object>> export(@AuthenticationPrincipal AppUserDetails me,
+            @Valid @RequestBody ConfirmPassword req) {
+        return ResponseEntity.ok()
+                .header("Cache-Control", "no-store")
+                .body(accountData.export(me.id(), req.currentPassword()));
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<Void> delete(@AuthenticationPrincipal AppUserDetails me,
+            @Valid @RequestBody ConfirmDeletion req, HttpServletRequest request) {
+        if (!"HESABIMI SIL".equals(req.confirmation())) {
+            throw new ApiException(HttpStatus.BAD_REQUEST, "Onay metnini tam olarak yaz.",
+                    Map.of("confirmation", "HESABIMI SIL yaz."));
+        }
+        accountData.erase(me.id(), req.currentPassword());
+        var session = request.getSession(false);
+        if (session != null) session.invalidate();
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/contact")

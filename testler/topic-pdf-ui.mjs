@@ -19,6 +19,7 @@ const server = createServer((req, res) => {
     res.end(JSON.stringify(value));
   };
   if (pathname === '/api/auth/me') return json({ id: 1, username: 'test', role: 'USER', contactComplete: true, passwordChangeRequired: false });
+  if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json([]);
   if (pathname === '/api/questions/availability') {
@@ -94,6 +95,7 @@ try {
       ['/konu-anlatimlari/1099', 'Bu konudan soru çöz'],
       ['/pratik/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/sinav/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
+      ['/hesap', 'Verilerimi indir'],
     ]) {
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
@@ -104,6 +106,7 @@ try {
           throw new Error(`${width}px ${page}: kapsam filtresi görünür kaldı`);
         }
       }
+      if (page === '/hesap') await waitFor('document.body.innerText.includes("Hesabımı sil")');
       if (await evaluate('document.documentElement.scrollWidth > innerWidth + 1')) {
         throw new Error(`${width}px ${page}: yatay taşma`);
       }

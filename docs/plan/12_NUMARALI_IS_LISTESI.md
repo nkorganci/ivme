@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **07.09 — Doğrulanmış soru havuzunda zorluk tercihi**; [07.08 PDF–soru geçişi](29_07_08_PDF_SORU_GECISI.md) ilk doğrulanmış kaynak diliminde tamamlandı. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
+**Sıradaki tek iş:** **04.09 — Veritabanı ve soru görsellerinin ayrı yerde yedeği**. 07.09 doğrulanmış zorluk etiketi/başarı örneklemi oluşana kadar açık kalır; 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 07.09 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/29_07_08_PDF_SORU_GECISI.md dosyalarını oku; doğrulanmış zorluk verisini denetle, yoksa etiketsiz/yetersiz havuzu açık göster, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 04.09 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/08_TUNEL_VE_UI_PROVASI.md dosyalarını oku; ayrı yedek hedefini ve geri yükleme kanıtını doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -52,8 +52,8 @@
 | 04.05 | BITTI | Yeni API'lerin iki hesapla nesne sahipliği ve negatif erişim denetimi; UI'da erişim yok | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | — (tamamlandı) |
 | 04.06 | KULLANICI | İki yetkili hesabın geçici parolasını ayrı, güçlü parolalarla Hesap ekranından değiştirme; sonra üretim açılışı | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | Kullanıcı · model gerekmez |
 | 04.07 | YAPILACAK | Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi; kurulum yetkili hesap bekliyor | [20_04_07_SINIRLI_DB_ROLU.md](20_04_07_SINIRLI_DB_ROLU.md) | GPT-6.1 Sol · High |
-| 04.08 | YAPILACAK | Öğrencinin veri dışa aktarma/hesap silme akışı; erişim ve UI kontrolü | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | GPT-6.1 Sol · High |
-| 04.09 | YAPILACAK | Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) | GPT-6.1 Sol · Medium |
+| 04.08 | BITTI | Öğrencinin veri dışa aktarma/hesap silme akışı; erişim ve UI kontrolü | [30_04_08_VERI_DISA_AKTARMA_SILME.md](30_04_08_VERI_DISA_AKTARMA_SILME.md) | — (tamamlandı) |
+| **04.09** | **SIRADAKI** | **Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası** | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) | GPT-6.1 Sol · Medium |
 | 04.10 | BITTI | Kullanıcı isteğiyle kayıt, parola değiştirme ve yönetici oluşturma alt sınırını 8 karaktere eşitleme | [03_KAYIT_VE_ILETISIM.md](03_KAYIT_VE_ILETISIM.md) | — (tamamlandı) |
 
 ## 05 — Yerel yayın ve tünel
@@ -92,7 +92,7 @@
 | 07.06 | BITTI | Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı | [17_07_06_SURELI_PRATIK.md](17_07_06_SURELI_PRATIK.md) | — (tamamlandı) |
 | 07.07 | BITTI | Pratik oturum geçmişi/yeniden açma; hesap ve telefonda boş/hata durumları | [19_07_07_PRATIK_GECMISI.md](19_07_07_PRATIK_GECMISI.md) | — (tamamlandı) |
 | 07.08 | BITTI | OGM konu PDF'sinden doğrulanmış üç soru kimliğiyle pratik/test kurucusuna geçiş; sayı ve geçmiş tercihi, kapsam kilidi | [29_07_08_PDF_SORU_GECISI.md](29_07_08_PDF_SORU_GECISI.md) | — (tamamlandı) |
-| **07.09** | **SIRADAKI** | **Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası | GPT-6.1 Sol · Medium |
+| 07.09 | YAPILACAK | Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu; güvenilir etiket/örneklem bekliyor | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası | GPT-6.1 Sol · Medium |
 | 07.10 | YAPILACAK | Doğrulanmış alt konu/soru tipi etiketleri geldikten sonra pratik ve sınavda bu filtreleri açma | 10.01 ve soru etiket verisi sonrası; [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) | GPT-6 Luna · Medium |
 
 ## 08 — Öğrenci istatistikleri
