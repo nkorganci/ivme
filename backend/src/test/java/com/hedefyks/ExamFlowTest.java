@@ -77,7 +77,7 @@ class ExamFlowTest extends TestBase {
 
     @Test
     void baskaKullaniciSinavaErisemez() throws Exception {
-        question("T-1", "Matematik", "A");
+        Question q = question("T-1", "Matematik", "A");
         user("ayse", Role.USER);
         user("ali", Role.USER);
         MockHttpSession ayse = login("ayse", "Sifre1234");
@@ -85,8 +85,15 @@ class ExamFlowTest extends TestBase {
 
         MockHttpSession ali = login("ali", "Sifre1234");
         send(ali, get("/api/exams/" + examId), null).andExpect(status().isNotFound());
+        send(ali, put("/api/exams/" + examId + "/answers"),
+                "{\"questionId\":" + q.getId() + ",\"answer\":\"A\"}").andExpect(status().isNotFound());
         send(ali, post("/api/exams/" + examId + "/submit"), null).andExpect(status().isNotFound());
+        send(ali, get("/api/exams/" + examId + "/result"), null).andExpect(status().isNotFound());
+        send(ali, get("/api/exams"), null).andExpect(jsonPath("$.totalElements").value(0));
+        send(ali, get("/api/exams/summary"), null).andExpect(jsonPath("$.examCount").value(0));
         send(ayse, get("/api/exams/summary"), null).andExpect(jsonPath("$.activeExam.id").value(examId));
+        send(ayse, post("/api/exams/" + examId + "/submit"), null).andExpect(status().isOk());
+        send(ali, get("/api/exams/" + examId + "/result"), null).andExpect(status().isNotFound());
     }
 
     @Test

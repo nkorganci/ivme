@@ -22,7 +22,7 @@
 
 ## Açık kontrol listesi
 
-- Her öğrenci verisi API'sinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi.
+- Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
 - CSRF, oturum süresi/çıkış, giriş hızı ve güvenli çerez denetimi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel yolunun kök dışına çıkması, dosya türü ve hata yanıtında bilgi sızıntısı testi.
