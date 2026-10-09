@@ -75,7 +75,7 @@
 
 ### Adım 9 — Hedef ve çalışma ritmi
 
-**Özet:** Öğrenci günlük/haftalık/aylık soru, test ve deneme hedefleri koyar. **Yapılacak:** Hedef periyodu, soru/test/deneme sayısı, tamamlanma koşulu, ders tercihi, geçmiş hedeflerin saklanması, kaçırılan günlere yargılayıcı olmayan öneri; soru çözüm tekrarları ve tekil sorular hedefte ayrı tanımlanır. **UI kontrolü:** Hedef oluştur/düzenle/durdur, bugünkü durum ve haftalık görünüm. **Bitti sayılır:** Aynı oturum iki kez sayılmaz; zaman dilimi değişimi ve gün sonu sınırı tutarlı. **Durum:** YAPILACAK.
+**Özet:** Öğrenci günlük/haftalık/aylık soru, test ve deneme hedefleri koyar. **Yapılacak:** Hedef periyodu, soru/test/deneme sayısı, tamamlanma koşulu, ders tercihi, geçmiş hedeflerin saklanması, kaçırılan günlere yargılayıcı olmayan öneri; soru çözüm tekrarları ve tekil sorular hedefte ayrı tanımlanır. **UI kontrolü:** Hedef oluştur/düzenle/durdur, bugünkü durum ve haftalık görünüm. **Bitti sayılır:** Aynı oturum iki kez sayılmaz; zaman dilimi değişimi ve gün sonu sınırı tutarlı. **Durum:** ACIK (2026-10-09); [09.01 dönem modeli](37_09_01_HEDEF_DONEM_MODELI.md) ve [09.02 hedef yönetimi](38_09_02_HEDEF_YONETIMI.md) test DB ile masaüstü/mobil tarayıcı provasından geçti. İlerleme sayımı 09.03 kapsamında.
 
 ### Adım 10 — Zayıf alan ve soru tipi analizi
 

@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **09.02 — Günlük/haftalık/aylık hedef oluşturma, düzenleme ve durdurma**. 08.04 kod/test tamamlandı, 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **09.03 — Çift saymayan hedef ilerlemesi ve dönem sınırı testleri**. 08.04 kod/test tamamlandı, 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -111,8 +111,8 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 09.01 | BITTI | Soru/test/deneme hedefi veri modeli ve dönem kuralı | [37_09_01_HEDEF_DONEM_MODELI.md](37_09_01_HEDEF_DONEM_MODELI.md) | — (tamamlandı) |
-| **09.02** | **SIRADAKI** | **Günlük/haftalık/aylık hedef oluştur/düzenle/durdur UI** | 09.01 sonrası | GPT-6 Luna · Medium |
-| 09.03 | YAPILACAK | Çift saymayan ilerleme ve gün sonu/zaman dilimi testleri | 09.02 sonrası | GPT-6 Luna · Medium |
+| 09.02 | BITTI | Günlük/haftalık/aylık hedef oluştur/düzenle/durdur UI | [38_09_02_HEDEF_YONETIMI.md](38_09_02_HEDEF_YONETIMI.md) | — (tamamlandı) |
+| **09.03** | **SIRADAKI** | **Çift saymayan ilerleme ve gün sonu/zaman dilimi testleri** | 09.02 sonrası | GPT-6 Luna · Medium |
 
 ## 10 — Zayıf alan önerisi
 

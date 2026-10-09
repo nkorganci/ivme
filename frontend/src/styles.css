@@ -169,6 +169,11 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .progress-breakdown { min-width: 480px; }
 .progress-breakdown th[scope="row"] { padding: 7px 12px; text-align: left; font-weight: 500; overflow-wrap: anywhere; }
 .progress-breakdown th[scope="row"] { white-space: normal; }
+.goal-row { border-top: 1px solid var(--line); padding: 14px 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.goal-row p { margin: 4px 0; }
+.goal-actions, .goal-edit { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.goal-edit { flex-basis: 100%; }
+.goal-edit label { display: grid; gap: 4px; }
 .table.clickable tbody tr { cursor: pointer; } .table tbody tr:hover { background: #f8fafc; }
 .pager { display: flex; align-items: center; justify-content: center; gap: 8px 12px; margin: 12px 0; flex-wrap: wrap; font-size: var(--fs-sm); }
 .pager-nums { display: inline-flex; align-items: center; gap: 4px; }

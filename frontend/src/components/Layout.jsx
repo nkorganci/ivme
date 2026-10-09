@@ -14,6 +14,7 @@ const ITEMS = [
   ['/sinav/yeni', 'Sınav Başlat', 'play'],
   ['/gecmis', 'Geçmişim', 'clock'],
   ['/ilerleme', 'İlerlemem', 'clock'],
+  ['/hedefler', 'Hedeflerim', 'clock'],
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
 const RAIL_KEY = 'yks.sidebar';

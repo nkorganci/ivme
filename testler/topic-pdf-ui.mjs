@@ -12,6 +12,7 @@ const fixture = {
   id: 1099, title: 'NOKTALAMA İŞARETLERİ', exam: 'TYT', subject: 'turkce',
   kind: 'topic_summary', pageCount: 1, status: 'available', verifiedTopic: 'Noktalama İşaretleri',
 };
+let goals = [];
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const json = (value, status = 200) => {
@@ -22,6 +23,31 @@ const server = createServer((req, res) => {
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json([]);
+  if (pathname === '/api/goals' && req.method === 'GET') return json(goals);
+  if (pathname === '/api/goals' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (part) => { body += part; });
+    return req.on('end', () => {
+      const input = JSON.parse(body);
+      goals = [{ id: goals.length + 1, ...input, startsOn: '2026-10-09', endsOn: '2026-10-31',
+        status: 'ACTIVE' }, ...goals];
+      json(goals[0], 201);
+    });
+  }
+  if (/^\/api\/goals\/\d+$/.test(pathname) && req.method === 'PATCH') {
+    let body = '';
+    req.on('data', (part) => { body += part; });
+    return req.on('end', () => {
+      const goal = goals.find((item) => item.id === Number(pathname.split('/').at(-1)));
+      Object.assign(goal, JSON.parse(body));
+      json(goal);
+    });
+  }
+  if (/^\/api\/goals\/\d+\/stop$/.test(pathname) && req.method === 'POST') {
+    const goal = goals.find((item) => item.id === Number(pathname.split('/')[3]));
+    goal.status = 'ENDED';
+    return json(goal);
+  }
   if (pathname === '/api/questions/code/TEST-1') return json({
     id: 41, code: 'TEST-1', bank: 'CIKMIS', examType: 'TYT', subject: 'Türkçe', topic: 'Noktalama',
     choiceCount: 5, hasSolutionImage: false, avgRating: null, ratingCount: 0,
@@ -107,8 +133,10 @@ try {
       ['/pratik/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/sinav/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/hesap', 'Verilerimi indir'],
+      ['/hedefler', 'Hedeflerim ve geçmiş'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
     ]) {
+      if (page === '/hedefler') goals = [];
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
       if (page.includes('yeni')) {
@@ -119,6 +147,18 @@ try {
         }
       }
       if (page === '/hesap') await waitFor('document.body.innerText.includes("Hesabımı sil")');
+      if (page === '/hedefler') {
+        await waitFor('document.body.innerText.includes("Henüz hedef oluşturmadın")');
+        await evaluate('document.querySelector("form.card select").value = "MONTH"; document.querySelector("form.card select").dispatchEvent(new Event("change", {bubbles: true}))');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Hedef oluştur")?.click()');
+        await waitFor('document.body.innerText.includes("Hedef oluşturuldu")');
+        await waitFor('document.body.innerText.includes("Düzenle")');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Düzenle")?.click()');
+        await waitFor('!!document.querySelector(".goal-edit")');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Durdur")?.click()');
+        await waitFor('document.body.innerText.includes("Hedef durduruldu")');
+        await waitFor('!document.querySelector(".goal-edit")');
+      }
       if (page === '/soru/TEST-1') {
         await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');
         await evaluate('[...document.querySelectorAll("summary")].find(x => x.innerText.includes("Bu soru faydalı mı?"))?.click()');

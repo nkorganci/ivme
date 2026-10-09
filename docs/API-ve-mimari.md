@@ -45,6 +45,10 @@ Sınavda `selectionMode` verilmezse `MIXED` kabul edilir. `NEW` daha önce cevap
 
 Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı `QuestionAvailabilityService` tanımından gelir. Oluşturulan soru kimlikleri `session_questions.position`, seçilen mod ve kaynak/sınav/ders/konu filtreleri `study_sessions` ile saklanır; yanıt anahtarı oturum API'sine konmaz. `time_limit_seconds` sunucuda saklanır; `deadlineAt = started_at + time_limit_seconds` ve `serverNow` sayaç gösterimi için döner. Sunucu bitişten sonra yeni cevap/olay kabul etmez; süre dolan oturum ilk okumada kapanır. Bitiş sonucu, soru başına ilk ve son çalışma turunun kayıtlı `is_correct` alanlarından hesaplanır: turda doğru yanıt varsa doğru, yalnız yanlış yanıt varsa yanlış, yanıt yoksa boş. Sonuçtaki son tur toplamı ve ilk tur toplamı ayrı gösterilir. Soru anahtarı sonradan değişse de eski tur puanı değişmez. Başlatma ekranı devam eden son pratiği gösterir; soru ekranı oturum sırasındaki önceki/sonraki soruya gider. `sessionId` ile gönderilen yanıtlar ve soru başı durum yalnız o oturumun olaylarından hesaplanır. Kimliksiz eski pratik ayrı kalır; daha sonraki bağımsız yanıt eski oturumun durumunu değiştirmez. Alt konu/soru tipi etiketleri henüz boş olduğu için bu filtreler gösterilmez.
 
+## Öğrenci hedefleri
+
+`GET /api/goals` öğrencinin son 100 hedefini yeni kayıt önce döndürür. `POST /api/goals` `{period,metric,subject?,targetCount,zone}` ile içinde bulunulan yerel gün, hafta veya ay için hedef oluşturur (201). `period` `DAY|WEEK|MONTH`, `metric` `UNIQUE_QUESTIONS|ATTEMPTS|TESTS|EXAMS`, `targetCount` 1–10000 ve `zone` geçerli IANA saat dilimidir. `PATCH /api/goals/{id}` `{targetCount,subject?}` ile yalnız etkin ve dönemi bitmemiş hedefi düzenler. `POST /api/goals/{id}/stop` hedefi durdurur; tekrar çağrı aynı sonucu döndürür. Başka öğrencinin kimliği 404 döner. `startsOn` ve `endsOn` hedefin sabit saat dilimindeki dahil tarihleridir. İlerleme sayımı 09.03 işindedir.
+
 ## OGM konu anlatımı PDF'leri
 
 | İstek | İşlev |
