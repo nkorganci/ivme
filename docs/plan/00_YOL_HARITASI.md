@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | Bu dosya ürün kapsamı; [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durum kaynağıdır. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kolay erişim kopyası her adımda eşitlenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.04 görev dosyası](14_07_04_OTURUM_DENEMELERI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.05 görev dosyası](16_07_05_PRATIK_SECIMI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** [07.04 — Pratik yanıtını oturuma bağlama ve soru geçişi](14_07_04_OTURUM_DENEMELERI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** [07.05 — Pratikte aday modu ve konu filtreleri](16_07_05_PRATIK_SECIMI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 
@@ -123,4 +123,4 @@ Kullanıcının yeni kararıyla kayıt, Hesap ekranından parola değiştirme ve
 
 ### 2026-10-09 — OGM konu PDF'si ve soruya geçiş
 
-`Kaynaklar/ogm-materyal` içine yeni ve mevcut soru bankaları ile konu anlatımları girecek. Öğrenci konu anlatımını **yalnız özgün PDF olarak** açacak. Menüde “Konu anlatımları” alanından PDF'ye, oradan doğrulanmış aynı konunun sorularına/pratik veya teste geçecek; sayı, geçmiş modu ve mevcutsa zorluk tercihi kullanıcıya kolay anlaşılır biçimde sunulacak. OGM katalog ve soru kartı hattı ilk referanstır; ad benzerliği tek başına konu eşlemesi sayılmaz. İşler [12.05, 13.04–13.05 ve 07.08–07.09](12_NUMARALI_IS_LISTESI.md) olarak eklendi; [uygulama kabulü](15_OGM_PDF_VE_KONU_SORU_BAGI.md) ayrı tutulur. Sıradaki 07.04 değişmedi.
+`Kaynaklar/ogm-materyal` içine yeni ve mevcut soru bankaları ile konu anlatımları girecek. Öğrenci konu anlatımını **yalnız özgün PDF olarak** açacak. Menüde “Konu anlatımları” alanından PDF'ye, oradan doğrulanmış aynı konunun sorularına/pratik veya teste geçecek; sayı, geçmiş modu ve mevcutsa zorluk tercihi kullanıcıya kolay anlaşılır biçimde sunulacak. OGM katalog ve soru kartı hattı ilk referanstır; ad benzerliği tek başına konu eşlemesi sayılmaz. İşler [12.05, 13.04–13.05 ve 07.08–07.09](12_NUMARALI_IS_LISTESI.md) olarak eklendi; [uygulama kabulü](15_OGM_PDF_VE_KONU_SORU_BAGI.md) ayrı tutulur. Bu karar alınırken sıradaki 07.04 çalışması korunmuştur.

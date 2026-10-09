@@ -5,7 +5,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalış
 ## Mevcut özellikler
 
 - Öğrenci kayıt/giriş: kullanıcı adı, e-posta, cep telefonu ve en az 8 karakterli parola. E-posta ve telefon şu anda ayrıca doğrulanmaz. Oturum çerezi ve CSRF koruması vardır.
-- Süresiz pratik: kaynak/konu ve sayı seçilerek kalıcı soru sıralı oturum açılır; sayfa yenileme ve tekrar girişten sonra son açık oturuma dönülür. Pratik denemelerini oturuma bağlama ve süreli pratik sonraki adımlardır.
+- Süresiz pratik: kaynak/konu ve sayı seçilerek kalıcı soru sıralı oturum açılır; yanıtlar ve soru durumları oturuma bağlanır, önceki/sonraki soru sırası korunur; sayfa yenileme ve tekrar girişten sonra son açık oturuma dönülür. Dört pratik seçim modu ve süreli pratik sonraki adımlardır.
 - `CIKMIS` ve `OGM` soru koleksiyonları; sınav türü, ders ve konu filtresi; soru/çözüm görseli, QR, zorluk oyu ve geri bildirim. Serbest pratikte ilk yanıt, ikinci deneme, cevabı gösterme ve atlama olayları öğrenciye özel olarak kaydedilir; doğru şık yanlış yanıtın hemen ardından açılmaz.
 - Süreli veya süresiz deneme; sınav sırasında cevap anahtarı gizli, bitiminde sonuç ve geçmiş kalıcıdır. Serbest pratikteki soru başı kayıtlar ile sınav geçmişi ayrı akışlardır; çalışma oturumu seçimi ve kişisel analiz henüz bağlı değildir.
 - `ADMIN` rolü `/yonetim` ve `/api/admin/stats` üzerinden yalnız toplu sayıları görür. `OPERATOR` rolü `/icerik-bakimi` ve `/api/operator` üzerinden içerik bakımını yapar. Öğrenci yalnız kendi sınav verisini görür.

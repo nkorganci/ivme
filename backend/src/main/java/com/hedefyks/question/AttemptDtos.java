@@ -14,7 +14,8 @@ public final class AttemptDtos {
             @NotNull UUID clientEventId,
             @NotNull AttemptEventType eventType,
             String answer,
-            @Min(0) @Max(21600) Integer activeSeconds) {}
+            @Min(0) @Max(21600) Integer activeSeconds,
+            Long sessionId) {}
 
     public record AttemptItem(Long id, AttemptEventType eventType, String selectedAnswer,
                               Boolean correct, int activeSeconds, Instant createdAt) {

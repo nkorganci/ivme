@@ -4,6 +4,8 @@ import { useAsync, usePageTitle } from '../hooks.js';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import { formatDate } from '../format.js';
 
+const STATUS = { NOT_STARTED: 'Henüz başlanmadı', IN_PROGRESS: 'Çalışılıyor', COMPLETED: 'Tamamlandı' };
+
 export default function PracticeSession() {
   const { id } = useParams();
   usePageTitle('Pratik Oturumu');
@@ -21,6 +23,7 @@ export default function PracticeSession() {
         {data.questions.map((q) => <li key={q.questionId}>
           <Link to={`/soru/${encodeURIComponent(q.code)}${qs({ sessionId: data.id, bank: q.bank })}`}>
             <strong>{q.position}. soru</strong><span>{q.code} · {q.subject}{q.topic ? ` · ${q.topic}` : ''}</span>
+            <span className={`practice-status practice-status-${q.status.toLowerCase()}`}>{STATUS[q.status]}</span>
           </Link>
         </li>)}
       </ol>

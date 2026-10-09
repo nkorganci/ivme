@@ -18,6 +18,8 @@ export default function QuestionDetail() {
   const { data: q, loading, error, retry, reload } = useAsync(() => api.get(`/api/questions/code/${encodeURIComponent(code)}`), [code]);
   const filters = Object.fromEntries(FILTER_KEYS.map((k) => [k, search.get(k) || '']));
   const sessionId = search.get('sessionId');
+  const { data: session, loading: sessionLoading, error: sessionError } = useAsync(
+    () => sessionId ? api.get(`/api/study-sessions/${encodeURIComponent(sessionId)}`) : Promise.resolve(null), [sessionId]);
   usePageTitle(q ? `Soru ${q.code}` : 'Soru');
 
   // Adreste ?bank= yoksa (QR / doğrudan bağlantı) sol menüde sorunun koleksiyonu vurgulansın.
@@ -28,6 +30,8 @@ export default function QuestionDetail() {
   useEffect(() => () => setQuestionBank(''), [setQuestionBank]);
 
   if (loading) return <Loading text="Soru yükleniyor…" />;
+  if (sessionId && sessionLoading) return <Loading text="Pratik oturumu yükleniyor…" />;
+  if (sessionId && sessionError) return <ErrorBox error={sessionError} />;
   if (error) {
     return (
       <>
@@ -36,12 +40,17 @@ export default function QuestionDetail() {
       </>
     );
   }
+  if (sessionId && q && !session?.questions?.some((item) => item.questionId === q.id)) {
+    return <ErrorBox error={{ message: 'Bu soru pratik oturumunda yok.' }} />;
+  }
   // key: başka soruya geçince tüm yerel durum (seçim, sonuç, çözüm) sıfırlanır.
-  return q ? <QuestionView key={q.id} q={q} filters={filters} sessionId={sessionId} reload={reload} /> : null;
+  return q ? <QuestionView key={`${q.id}:${sessionId || ''}`} q={q} filters={filters} session={session} reload={reload} /> : null;
 }
 
-function QuestionView({ q, filters, sessionId, reload }) {
+function QuestionView({ q, filters, session, reload }) {
   const navigate = useNavigate();
+  const sessionId = session?.id;
+  const sessionPosition = session?.questions.findIndex((item) => item.questionId === q.id) ?? -1;
   // Koleksiyon adres çubuğunda yoksa (örn. QR ile gelindiyse) sorunun kendi koleksiyonu kullanılır.
   const scope = { ...filters, bank: filters.bank || q.bank };
   const backQuery = qs({ ...scope, bank: '' });
@@ -52,7 +61,7 @@ function QuestionView({ q, filters, sessionId, reload }) {
   const [moving, setMoving] = useState(false);
   const [solution, setSolution] = useState(false);
   const solutionRef = useRef(null);
-  const practice = usePractice(q.id);
+  const practice = usePractice(q.id, sessionId);
   const state = practice.state;
   useEffect(() => {
     if (state?.attempts?.length) setReady(false);
@@ -90,7 +99,12 @@ function QuestionView({ q, filters, sessionId, reload }) {
   };
 
   const go = async (direction) => {
-    if (sessionId) return;
+    if (sessionId) {
+      const next = session.questions[sessionPosition + (direction === 'next' ? 1 : -1)];
+      if (!next) setInfo(direction === 'next' ? 'Oturumun son sorusundasın.' : 'Oturumun ilk sorusundasın.');
+      else navigate(`/soru/${encodeURIComponent(next.code)}${qs({ sessionId, bank: next.bank })}`);
+      return;
+    }
     if (moving) return;
     setMoving(true);
     setInfo('');
@@ -202,18 +216,18 @@ function QuestionView({ q, filters, sessionId, reload }) {
           <button type="button" className="btn btn-secondary btn-sm" onClick={skip}>Soruyu atla</button>
         </div>}
         <div className="qbar">
-          {!sessionId && <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('prev')} title="Önceki soru (←)">
+          <button type="button" className="btn btn-secondary" disabled={moving || (sessionId && sessionPosition === 0)} onClick={() => go('prev')} title="Önceki soru (←)">
             ‹ Önceki
-          </button>}
+          </button>
           <ChoiceButtons count={q.choiceCount} value={selected || (!ready ? lastAnswer?.selectedAnswer : null)}
             onSelect={(answer) => { setSelected(answer); practice.selectionChanged(); }} disabled={!canChoose}
             correct={!ready ? state?.correctAnswer : null} wrong={!ready && !state?.correctAnswer && lastAnswer?.selectedAnswer} />
           <button type="button" className="btn btn-primary" disabled={!selected || !canChoose} onClick={check} title="Cevabı kontrol et (Enter)">
             {practice.busy ? 'Kaydediliyor…' : 'Cevabı Kontrol Et'}
           </button>
-          {!sessionId && <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('next')} title="Sonraki soru (→)">
+          <button type="button" className="btn btn-secondary" disabled={moving || (sessionId && sessionPosition === session.questions.length - 1)} onClick={() => go('next')} title="Sonraki soru (→)">
             Sonraki ›
-          </button>}
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 # 07.04 — Pratik yanıtını oturuma bağlama ve soru geçişi
 
-**Durum:** SIRADAKI · **Bağımlılık:** [07.03](13_07_03_PRATIK_OTURUMU.md) BITTI.
+**Durum:** BITTI · **Bağımlılık:** [07.03](13_07_03_PRATIK_OTURUMU.md) BITTI.
 
 ## Kısa amaç
 
@@ -17,4 +17,6 @@
 
 ## Oturum sonu kaydı
 
-`Tarih · değişiklik · UI · test · yerel commit · açık risk` ekle. [İş listesini](12_NUMARALI_IS_LISTESI.md) ve dış klasör kopyasını eşitle; bitince **07.04 BITTI**, **07.05 SIRADAKI** yap. GitHub'a push yapma.
+2026-10-09 · Oturum kimlikli GET/POST pratik olayları, sahiplik/soru üyeliği denetimi, tur bazlı soru durumu ve kaydedilen oturum sırasıyla gezinme eklendi. Bağımsız pratik ayrı kaldı; sonradan gelen bağımsız yanıt oturum durumunu değiştirmiyor. Masaüstü ve mobil listede sıra/durum, soru ekranında önceki/sonraki ve yenileme kontrol edildi. `StudySessionTest` 3/3, `AttemptTest` 2/2, ön yüz derlemesi ve izole yerel pakette masaüstü/mobil E2E ayrı ayrı 37/37 geçti. Gerçek `ivme` DB ve çalışan 5173/8081 servisleri değiştirilmedi; canlıya alma [05.03](12_NUMARALI_IS_LISTESI.md) kapsamında açık. Yerel commit: bu görev tamamlanınca Git geçmişinde.
+
+**BITTI**

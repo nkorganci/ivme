@@ -12,6 +12,8 @@ import java.util.UUID;
 public final class StudySessionDtos {
     private StudySessionDtos() {}
 
+    public enum QuestionStatus { NOT_STARTED, IN_PROGRESS, COMPLETED }
+
     public record CreateRequest(
             QuestionBank bank, ExamType examType, String subject, String topic,
             @NotNull(message = "Soru sayısı gerekli.")
@@ -21,7 +23,7 @@ public final class StudySessionDtos {
             @NotNull(message = "İstek kimliği gerekli.") UUID clientRequestId) {}
 
     public record SessionQuestion(Long questionId, int position, String code, QuestionBank bank,
-                                  String subject, String topic) {}
+                                  String subject, String topic, QuestionStatus status) {}
 
     public record Session(Long id, Instant startedAt, int questionCount, List<SessionQuestion> questions) {}
 }

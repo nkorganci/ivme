@@ -6,6 +6,7 @@ import com.hedefyks.exam.ExamStatus;
 import com.hedefyks.question.AttemptDtos.AttemptRequest;
 import com.hedefyks.question.AttemptDtos.AttemptItem;
 import com.hedefyks.question.AttemptDtos.PracticeState;
+import com.hedefyks.study.StudySessionService;
 import com.hedefyks.user.UserRepository;
 import java.util.List;
 import java.util.Objects;
@@ -21,25 +22,30 @@ public class AttemptService {
     private final QuestionAttemptRepository attempts;
     private final UserRepository users;
     private final ExamQuestionRepository examQuestions;
+    private final StudySessionService studySessions;
 
     public AttemptService(QuestionRepository questions, QuestionAttemptRepository attempts,
-                          UserRepository users, ExamQuestionRepository examQuestions) {
+                          UserRepository users, ExamQuestionRepository examQuestions,
+                          StudySessionService studySessions) {
         this.questions = questions;
         this.attempts = attempts;
         this.users = users;
         this.examQuestions = examQuestions;
+        this.studySessions = studySessions;
     }
 
     @Transactional(readOnly = true)
-    public PracticeState state(Long questionId, Long userId) {
+    public PracticeState state(Long questionId, Long userId, Long sessionId) {
         Question q = active(questionId);
-        return toState(q, attempts.findByUserIdAndQuestionIdOrderByPracticeRoundAscIdAsc(userId, questionId));
+        if (sessionId != null) studySessions.requireQuestion(userId, sessionId, questionId, false);
+        return toState(q, attempts.findForScope(userId, questionId, sessionId));
     }
 
     @Transactional
     public PracticeState submit(Long questionId, Long userId, AttemptRequest req) {
         Question q = active(questionId);
         users.lockById(userId).orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı."));
+        if (req.sessionId() != null) studySessions.requireQuestion(userId, req.sessionId(), questionId, true);
         String answer = req.eventType() == AttemptEventType.ANSWER
                 ? Answers.normalize(req.answer(), q.getChoiceCount()) : null;
         if (req.eventType() == AttemptEventType.ANSWER && answer == null) {
@@ -51,13 +57,14 @@ public class AttemptService {
         QuestionAttempt duplicate = attempts.findByUserIdAndClientEventId(userId, req.clientEventId()).orElse(null);
         if (duplicate != null) {
             if (!duplicate.getQuestionId().equals(questionId) || duplicate.getEventType() != req.eventType()
-                    || !Objects.equals(duplicate.getSelectedAnswer(), answer)) {
+                    || !Objects.equals(duplicate.getSelectedAnswer(), answer)
+                    || !Objects.equals(duplicate.getSessionId(), req.sessionId())) {
                 throw ApiException.conflict("Olay kimliği başka bir işlemde kullanılmış.");
             }
-            return state(questionId, userId);
+            return state(questionId, userId, req.sessionId());
         }
 
-        List<QuestionAttempt> all = attempts.findByUserIdAndQuestionIdOrderByPracticeRoundAscIdAsc(userId, questionId);
+        List<QuestionAttempt> all = attempts.findForScope(userId, questionId, req.sessionId());
         int round = all.isEmpty() ? 1 : all.get(all.size() - 1).getPracticeRound();
         int currentRound = round;
         List<QuestionAttempt> current = all.stream().filter(a -> a.getPracticeRound() == currentRound).toList();
@@ -75,6 +82,7 @@ public class AttemptService {
         QuestionAttempt attempt = new QuestionAttempt();
         attempt.setUserId(userId);
         attempt.setQuestionId(questionId);
+        attempt.setSessionId(req.sessionId());
         attempt.setClientEventId(req.clientEventId());
         attempt.setEventType(req.eventType());
         attempt.setPracticeRound(round);
@@ -83,7 +91,7 @@ public class AttemptService {
         attempt.setCorrect(answer == null ? null : answer.equals(q.getCorrectAnswer()));
         attempt.setActiveSeconds(req.activeSeconds() == null ? 0 : req.activeSeconds());
         attempts.saveAndFlush(attempt);
-        return state(questionId, userId);
+        return state(questionId, userId, req.sessionId());
     }
 
     @Transactional(readOnly = true)

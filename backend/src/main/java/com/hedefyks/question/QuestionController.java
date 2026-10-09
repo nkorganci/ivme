@@ -96,8 +96,9 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}/practice")
-    public PracticeState practice(@PathVariable Long id, @AuthenticationPrincipal AppUserDetails me) {
-        return attempts.state(id, me.id());
+    public PracticeState practice(@PathVariable Long id, @RequestParam(required = false) Long sessionId,
+                                  @AuthenticationPrincipal AppUserDetails me) {
+        return attempts.state(id, me.id(), sessionId);
     }
 
     @PostMapping("/{id}/practice")

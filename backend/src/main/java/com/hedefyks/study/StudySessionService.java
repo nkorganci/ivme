@@ -7,6 +7,7 @@ import com.hedefyks.question.QuestionSelectionMode;
 import com.hedefyks.study.StudySessionDtos.CreateRequest;
 import com.hedefyks.study.StudySessionDtos.Session;
 import com.hedefyks.study.StudySessionDtos.SessionQuestion;
+import com.hedefyks.study.StudySessionDtos.QuestionStatus;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -61,13 +62,30 @@ public class StudySessionService {
                 .query((rs, row) -> new Header(rs.getLong("id"), rs.getTimestamp("started_at").toInstant()))
                 .optional().orElseThrow(() -> ApiException.notFound("Pratik oturumu bulunamadı."));
         List<SessionQuestion> questions = jdbc.sql("""
-                SELECT sq.question_id, sq.position, q.code, q.bank, q.subject, q.topic
+                WITH latest_round AS (
+                  SELECT question_id, max(practice_round) AS round
+                  FROM question_attempts WHERE session_id = :sessionId AND user_id = :userId
+                  GROUP BY question_id
+                ), progress AS (
+                  SELECT a.question_id,
+                         bool_or(a.event_type <> 'ANSWER' OR a.is_correct = true) AS completed
+                  FROM question_attempts a JOIN latest_round l
+                    ON l.question_id = a.question_id AND l.round = a.practice_round
+                  WHERE a.session_id = :sessionId AND a.user_id = :userId
+                  GROUP BY a.question_id
+                )
+                SELECT sq.question_id, sq.position, q.code, q.bank, q.subject, q.topic,
+                       CASE WHEN p.question_id IS NULL THEN 'NOT_STARTED'
+                            WHEN p.completed THEN 'COMPLETED' ELSE 'IN_PROGRESS' END AS progress_status
                 FROM session_questions sq JOIN questions q ON q.id = sq.question_id
+                LEFT JOIN progress p ON p.question_id = sq.question_id
                 WHERE sq.session_id = :sessionId ORDER BY sq.position
                 """).param("sessionId", sessionId)
+                .param("userId", userId)
                 .query((rs, row) -> new SessionQuestion(rs.getLong("question_id"), rs.getInt("position"),
                         rs.getString("code"), com.hedefyks.question.QuestionBank.valueOf(rs.getString("bank")),
-                        rs.getString("subject"), rs.getString("topic"))).list();
+                        rs.getString("subject"), rs.getString("topic"),
+                        QuestionStatus.valueOf(rs.getString("progress_status")))).list();
         return new Session(header.id(), header.startedAt(), questions.size(), questions);
     }
 
@@ -78,6 +96,19 @@ public class StudySessionService {
                   AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
                 ORDER BY started_at DESC, id DESC LIMIT 1
                 """).param("userId", userId).query(Long.class).optional().map(id -> get(userId, id));
+    }
+
+    @Transactional(readOnly = true)
+    public void requireQuestion(Long userId, Long sessionId, Long questionId, boolean requireOpen) {
+        String sql = """
+                SELECT EXISTS (SELECT 1 FROM study_sessions s
+                  JOIN session_questions sq ON sq.session_id = s.id
+                  WHERE s.id = :sessionId AND s.user_id = :userId AND s.mode = 'PRACTICE'
+                    AND sq.question_id = :questionId
+                """ + (requireOpen ? " AND s.status = 'IN_PROGRESS'" : "") + ")";
+        boolean allowed = jdbc.sql(sql).param("sessionId", sessionId).param("userId", userId)
+                .param("questionId", questionId).query(Boolean.class).single();
+        if (!allowed) throw ApiException.notFound("Bu soru pratik oturumunda bulunamadı.");
     }
 
     private Optional<Long> byRequest(Long userId, java.util.UUID requestId) {

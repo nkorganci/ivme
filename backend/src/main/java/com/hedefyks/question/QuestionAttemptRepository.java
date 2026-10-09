@@ -8,7 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface QuestionAttemptRepository extends JpaRepository<QuestionAttempt, Long> {
-    List<QuestionAttempt> findByUserIdAndQuestionIdOrderByPracticeRoundAscIdAsc(Long userId, Long questionId);
+    @Query("""
+            select a from QuestionAttempt a
+            where a.userId = :userId and a.questionId = :questionId
+              and ((:sessionId is null and a.sessionId is null) or a.sessionId = :sessionId)
+            order by a.practiceRound, a.id
+            """)
+    List<QuestionAttempt> findForScope(@Param("userId") Long userId, @Param("questionId") Long questionId,
+                                        @Param("sessionId") Long sessionId);
 
     Optional<QuestionAttempt> findByUserIdAndClientEventId(Long userId, UUID clientEventId);
 

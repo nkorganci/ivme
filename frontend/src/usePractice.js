@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { api } from './api.js';
+import { api, qs } from './api.js';
 
 /** Görünür ve odaklı sekmede, son etkileşimden sonraki en çok 60 saniyeyi yaklaşık aktif süre sayar. */
 function useActiveSeconds(questionId) {
@@ -24,7 +24,7 @@ function useActiveSeconds(questionId) {
 }
 
 /** Kaybolan ağ yanıtında aynı olay kimliğini tekrar kullanır; sunucu çift kayıt açmaz. */
-export function usePractice(questionId) {
+export function usePractice(questionId, sessionId = null) {
   const [state, setState] = useState(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -35,15 +35,15 @@ export function usePractice(questionId) {
   const load = useCallback(async () => {
     setLoading(true);
     setError('');
-    try { setState(await api.get(`/api/questions/${questionId}/practice`)); }
+    try { setState(await api.get(`/api/questions/${questionId}/practice` + qs({ sessionId }))); }
     catch (e) { setError(e.message); }
     finally { setLoading(false); }
-  }, [questionId]);
+  }, [questionId, sessionId]);
   useEffect(() => { load(); }, [load]);
 
   const submit = async (eventType, answer = null) => {
     if (busy || loading) return null;
-    const key = `${eventType}:${answer || ''}`;
+    const key = `${sessionId || ''}:${eventType}:${answer || ''}`;
     if (!pending.current || pending.current.key !== key) {
       pending.current = { key, id: crypto.randomUUID(), seconds: active.read() };
     }
@@ -55,6 +55,7 @@ export function usePractice(questionId) {
         eventType,
         answer,
         activeSeconds: pending.current.seconds,
+        sessionId: sessionId || undefined,
       });
       setState(next);
       pending.current = null;

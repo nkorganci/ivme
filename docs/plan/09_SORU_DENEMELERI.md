@@ -20,9 +20,9 @@ Tarih: 2026-10-09. Durum: sürüyor. Bu dilim soru başına pratik olaylarını 
 
 ## Sonraki alt işler
 
-- `study_sessions` ve `session_questions` ile süresiz pratik oturumu ve sunucu tarafı soru sırası [07.03](13_07_03_PRATIK_OTURUMU.md) kapsamında tamamlandı. Denemelere oturum kimliği bağlama [07.04](14_07_04_OTURUM_DENEMELERI.md), yeni/önceki/yanlış pratik seçimi [07.05](12_NUMARALI_IS_LISTESI.md) işidir.
+- `study_sessions` ve `session_questions` ile süresiz pratik oturumu ve sunucu tarafı soru sırası [07.03](13_07_03_PRATIK_OTURUMU.md) kapsamında tamamlandı. Denemelere oturum kimliği bağlama [07.04](14_07_04_OTURUM_DENEMELERI.md) kapsamında tamamlandı; yeni/önceki/yanlış pratik seçimi [07.05](16_07_05_PRATIK_SECIMI.md) işidir.
 - Ders/konu/alt konu/soru tipi taksonomisinin olay anındaki sürümü ve ilk deneme istatistikleri. Toplam/çözülen/kalan ilk sayıları [Adım 7/8 kaydında](10_SORU_KAPSAMI.md) eklendi.
 - Konu notu/ipuçları sekmesi kaynaklı içerik hattı tamamlanınca açılacak. Karalamada çevrim dışı kalıcılık henüz yok; ağ hatasında çizim sayfa açık kaldığı sürece tutulur, yeniden deneme ile kaydedilebilir.
 - Görünür/odaklı sekme süresinin gerçek cihazlarda ölçümü ve kullanıcının yaklaşık süre açıklaması. Mevcut sayaç sunucunun güvenilir süre ölçümü olarak sunulmaz.
 
-**Durum: AÇIK.** Tamamlanan çözüm dilimleri [06.01–06.03](12_NUMARALI_IS_LISTESI.md) `BITTI`; oturum, süre ve taksonomi işleri [06.04–06.06](12_NUMARALI_IS_LISTESI.md) açıktır.
+**Durum: AÇIK.** Tamamlanan çözüm dilimleri [06.01–06.04](12_NUMARALI_IS_LISTESI.md) `BITTI`; süre ve taksonomi işleri [06.05–06.06](12_NUMARALI_IS_LISTESI.md) açıktır.

@@ -24,12 +24,12 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 | `GET /api/questions/code/{code}`, `GET /api/questions/{id}` | Soru künyesi; doğru cevap içermez |
 | `GET /api/questions/{id}/neighbor?direction&bank&examType&subject&topic` | Filtre içindeki komşu soru |
 | `GET /api/questions/{id}/image`, `/solution-image`, `/qr` | Soru/çözüm görseli ve sabit adrese QR; çözüm görseli yalnız cevap görüldükten veya sınav tesliminden sonra (operatör ön izlemesi hariç) |
-| `GET /api/questions/{id}/practice` | Yalnız giriş yapan öğrencinin son turu ve yanıt olayları; doğru cevap başlangıçta ve yanlış sonrası gizli |
-| `POST /api/questions/{id}/practice` | `{clientEventId,eventType,answer?,activeSeconds?}`; `ANSWER`, `REVEAL`, `SKIP` kayıtları; aynı UUID tekrarında çift kayıt yok |
+| `GET /api/questions/{id}/practice?sessionId?` | Yalnız giriş yapan öğrencinin ilgili oturumdaki (kimlik yoksa bağımsız pratikteki) son turu ve olayları; doğru cevap başlangıçta ve yanlış sonrası gizli |
+| `POST /api/questions/{id}/practice` | `{clientEventId,eventType,answer?,activeSeconds?,sessionId?}`; `ANSWER`, `REVEAL`, `SKIP` kayıtları; oturum kimliği varsa sahibi ve soru üyeliği doğrulanır; aynı UUID tekrarında çift kayıt yok |
 | `GET /api/questions/{id}/board` | Oturumdaki öğrencinin soru çizimi: `{version,strokes}`; kayıt yoksa sürüm `0` ve boş dizi |
 | `PUT /api/questions/{id}/board` | `{version,strokes}`; yalnız kendi çizimini kaydeder, eski sürüme `409` döner |
 | `POST /api/study-sessions` | `{bank?,examType?,subject?,topic?,questionCount,clientRequestId}`; 1–120 etkin soruyla süresiz pratik kurar; aynı UUID ağ tekrarında aynı oturumu döndürür |
-| `GET /api/study-sessions/active`, `GET /api/study-sessions/{id}` | Kendi son açık pratiği (yoksa 204) veya seçilen pratiğin kalıcı soru sırası; başka kullanıcı için 404 |
+| `GET /api/study-sessions/active`, `GET /api/study-sessions/{id}` | Kendi son açık pratiği (yoksa 204) veya seçilen pratiğin kalıcı soru sırası ve soru başı `NOT_STARTED`, `IN_PROGRESS`, `COMPLETED` durumu; başka kullanıcı için 404 |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes}` | `NEW`, `REPEAT`, `WRONG`, `MIXED` aday havuzundan süreli/süresiz sınav; eksik havuzda 400 |
 | `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, otomatik kayıt ve sonuç |
 | `GET /api/exams?page&size`, `GET /api/exams/summary` | Sahibine ait geçmiş ve özet |
@@ -41,7 +41,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 
 Sınavda `selectionMode` verilmezse `MIXED` kabul edilir. `NEW` daha önce cevaplanmamış, `REPEAT` en az bir kez cevaplanmış, `WRONG` en az bir kez yanlış cevaplanmış, `MIXED` tüm etkin sorulardır. Pratik cevapları ve teslim edilmiş sınavlar birlikte değerlendirilir; aynı soru tek adaydır. İstenen sayı aday sayısından büyükse sınav hiç oluşturulmaz. Seçim modu sınav kaydında saklanır; sınav oluşturulduktan sonra soru sırası kalıcıdır.
 
-Süresiz pratik oturumu bu aşamada `MIXED` havuzundan seçilir. Oluşturulan soru kimlikleri `session_questions.position` ile saklanır; yanıt anahtarı oturum API'sine konmaz. Başlatma ekranı devam eden son pratiği gösterir, soru ekranından oturum listesine dönüş vardır. Denemelerin oturum kimliğine bağlanması, dört seçim modu, zamanlı pratik ve bitiş/sonuç sonraki işlere aittir.
+Süresiz pratik oturumu bu aşamada `MIXED` havuzundan seçilir. Oluşturulan soru kimlikleri `session_questions.position` ile saklanır; yanıt anahtarı oturum API'sine konmaz. Başlatma ekranı devam eden son pratiği gösterir; soru ekranı oturum sırasındaki önceki/sonraki soruya gider. `sessionId` ile gönderilen yanıtlar ve soru başı durum yalnız o oturumun olaylarından hesaplanır. Kimliksiz eski pratik ayrı kalır; daha sonraki bağımsız yanıt eski oturumun durumunu değiştirmez. Dört seçim modu, zamanlı pratik ve bitiş/sonuç sonraki işlere aittir.
 
 ## Operatör ve yönetici uçları
 
