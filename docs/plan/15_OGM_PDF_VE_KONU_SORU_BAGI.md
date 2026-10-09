@@ -12,7 +12,7 @@
 
 | İş | Somut çıktı ve kabul |
 |---|---|
-| 12.05 | `veri-hatti/ogm-indirme` katalogu ile `veri-hatti/ogm-sorular` kartlarının kaynak kimliğini ve mevcut etiketlerini küçük örneklemde karşılaştır. Soru bankası PDF/kartı → kaynak → doğrulanmış konu kimliği bağı; belirsizler inceleme listesine. Yeni dosya eklenince yalnız değişeni işle. |
+| 12.05 | BITTI: `veri-hatti/ogm-indirme` katalogu ile kartların kaynak kimliği karşılaştırıldı; ilk iki kart/sayfa kanıtı ve TYT Türkçe alt konu örneği [12.05 denetiminde](26_12_05_OGM_KAYNAK_KONU_BAGI.md). Belirsiz Soru Bankası kökeni inceleme kuyruğunda; değişmeyen dosyalar atlanıyor. |
 | 13.04 | `Kaynaklar/ogm-materyal` içindeki konu özeti, ders anlatım sunusu, konu anlatımı PDF'lerini soru bankası/test/denemeden ayır. Dosya varlığı, tür, sınav/ders, başlık, konu kimliği, göreli yol, sürüm/checksum kayıtları; tam PDF arşivini Git'e alma. |
 | 13.05 | Yetkili öğrenci için katalog API'si ve PDF açma yolu; izinli kök altında kanonik yol, PDF türü ve kimlik kontrolü. Menü/liste/görüntüleyici masaüstü ve telefonda denenir. Yanıt satır içi PDF'dir; dış dosya yolu açığa çıkmaz. |
 | 07.08 | PDF'den konuya bağlı pratik/test kurucusuna giriş; sayı ve soru geçmişi tercihi; seçilen konudan çıkmama, kaynak ve soru sayısı doğrulaması. |

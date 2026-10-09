@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** 12.05 OGM soru bankası/kart kaynak ve konu kimliği denetimi; [10.01 taksonomi taslağı](25_10_01_TAKSONOMI_VE_ORNEK.md) ve [12.04 toplu kaynak taraması](24_12_04_TOPLU_IS_VE_HATA_RAPORU.md) girdidir. 04.07'nin yetkili rol kurulumu beklenirken bağımsız kaynak işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** 13.04 OGM konu anlatımı PDF'lerinin artımlı kataloğu; [12.05 kaynak/konu bağı denetimi](26_12_05_OGM_KAYNAK_KONU_BAGI.md) girdidir. 04.07'nin yetkili rol kurulumu beklenirken bağımsız kaynak işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **12.05 — OGM soru bankası/kart kaynak ve konu kimliği denetimi**; [10.01 taksonomi taslağı](25_10_01_TAKSONOMI_VE_ORNEK.md) ve [12.04 kaynak taraması](24_12_04_TOPLU_IS_VE_HATA_RAPORU.md) girdi. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
+**Sıradaki tek iş:** **13.04 — OGM konu anlatımı PDF'lerinin artımlı kataloğu**; [12.05 kaynak/konu bağı denetimi](26_12_05_OGM_KAYNAK_KONU_BAGI.md) ve [OGM kaynak hedefi](15_OGM_PDF_VE_KONU_SORU_BAGI.md) girdi. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 12.05 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/25_10_01_TAKSONOMI_VE_ORNEK.md dosyalarını oku; yalnız bu işi yap, kaynak/konu bağını doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 13.04 ile devam et. Model: GPT-6 Luna · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/26_12_05_OGM_KAYNAK_KONU_BAGI.md dosyalarını oku; yalnız bu işi yap, PDF kataloğunu doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -141,7 +141,7 @@
 | 12.02 | BITTI | Kaynak sayfa/kırpım/metin/şık/cevap/checksum sözleşmesi | [22_12_02_SORU_KAYNAK_SOZLESMESI.md](22_12_02_SORU_KAYNAK_SOZLESMESI.md) | — (tamamlandı) |
 | 12.03 | BITTI | Metin katmanı/OCR ve inceleme kuyruğu pilotu | [23_12_03_METIN_OCR_PILOTU.md](23_12_03_METIN_OCR_PILOTU.md) | — (tamamlandı) |
 | 12.04 | BITTI | Tekrar çalıştırılabilir toplu iş ve hata raporu; kademeli kaynak taraması | [24_12_04_TOPLU_IS_VE_HATA_RAPORU.md](24_12_04_TOPLU_IS_VE_HATA_RAPORU.md) | — (tamamlandı) |
-| **12.05** | **SIRADAKI** | **OGM soru bankası ve mevcut kartların kaynak/konu kimliğini denetle; doğrulanmış PDF–soru bağı ve artımlı katalog** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve kaynak envanteri sonrası | GPT-6.1 Sol · Medium |
+| 12.05 | BITTI | OGM kart kaynak/konu kimliği denetimi, sayfa bağı örneği ve artımlı inceleme kataloğu | [26_12_05_OGM_KAYNAK_KONU_BAGI.md](26_12_05_OGM_KAYNAK_KONU_BAGI.md) | — (tamamlandı) |
 
 ## 13 — Ders notları
 
@@ -151,7 +151,7 @@
 | 13.01 | YAPILACAK | Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6 Luna · Medium |
 | 13.02 | YAPILACAK | AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF | 13.01 sonrası | GPT-6.1 Sol · Medium |
 | 13.03 | YAPILACAK | İçerik aramasında kaynaklı 1–3 pasaj ve doğru PDF sayfasına dönüş denetimi; öğrenciye ayrı metin notu açma kararı yok | 13.02 sonrası | GPT-6.1 Sol · Medium |
-| 13.04 | YAPILACAK | OGM konu anlatımı PDF'lerinin artımlı kataloğu: tür, ders, sınav, konu, kaynak yolu ve checksum | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve 12.05 ile eşgüdüm | GPT-6 Luna · Medium |
+| **13.04** | **SIRADAKI** | **OGM konu anlatımı PDF'lerinin artımlı kataloğu: tür, ders, sınav, konu, kaynak yolu ve checksum** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve 12.05 ile eşgüdüm | GPT-6 Luna · Medium |
 | 13.05 | YAPILACAK | Öğrenci menüsünde “Konu anlatımları”, filtreli liste ve yalnız özgün PDF'yi güvenli satır içi açma | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 13.04 sonrası | GPT-6.1 Sol · High |
 
 ## 14 — AI etiketleme
