@@ -38,4 +38,23 @@ class AuthRateLimitTest extends TestBase {
             loginFrom("198.51.100.20", "ali", "yanlis").andExpect(status().isUnauthorized());
         }
     }
+
+    @Test
+    void disBaglantidanGelenSahteCloudflareIpBasligiYokSayilir() throws Exception {
+        user("deniz", Role.USER);
+        for (int i = 0; i < 8; i++) {
+            mvc.perform(post("/api/auth/login").with(csrf())
+                            .with(req -> { req.setRemoteAddr("192.0.2.40"); return req; })
+                            .header("CF-Connecting-IP", "203.0.113." + (10 + i))
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"login\":\"deniz\",\"password\":\"yanlis\"}"))
+                    .andExpect(status().isUnauthorized());
+        }
+        mvc.perform(post("/api/auth/login").with(csrf())
+                        .with(req -> { req.setRemoteAddr("192.0.2.40"); return req; })
+                        .header("CF-Connecting-IP", "203.0.113.99")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"login\":\"deniz\",\"password\":\"Sifre1234\"}"))
+                .andExpect(status().isTooManyRequests());
+    }
 }
