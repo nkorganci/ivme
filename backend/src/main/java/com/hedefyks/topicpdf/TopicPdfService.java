@@ -19,6 +19,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 /** Reads the reviewed source catalog; filesystem paths never enter API responses. */
@@ -26,25 +27,52 @@ import org.springframework.stereotype.Service;
 public class TopicPdfService {
 
     public record Item(int id, String title, String exam, String subject, String kind,
-                       Integer grade, Integer pageCount, String status) {}
+                       Integer grade, Integer pageCount, String status, String verifiedTopic) {}
     public record Filters(List<String> exams, List<String> subjects, List<String> kinds) {}
     private record Entry(Item item, String relativePath, String sha256) {}
+    private record ApprovedLink(String pdfSha256, String topic, List<String> questionCodes) {}
 
     private final Path catalogDir;
     private final Path sourceRoot;
     private final Map<Integer, Entry> byId;
     private final List<Entry> ordered;
+    private final Map<Integer, ApprovedLink> approvedLinks;
 
     public TopicPdfService(ObjectMapper mapper,
                            @Value("${app.topic-pdfs.catalog-dir:}") String catalogPath,
                            @Value("${app.topic-pdfs.source-dir:}") String sourcePath) {
         this.catalogDir = catalogPath.isBlank() ? null : Path.of(catalogPath).toAbsolutePath().normalize();
         this.sourceRoot = sourcePath.isBlank() ? null : Path.of(sourcePath).toAbsolutePath().normalize();
+        this.approvedLinks = readApprovedLinks(mapper);
         this.byId = readCatalog(mapper);
         this.ordered = byId.values().stream()
                 .sorted(Comparator.comparing((Entry e) -> e.item().title(), String.CASE_INSENSITIVE_ORDER)
                         .thenComparingInt(e -> e.item().id()))
                 .toList();
+    }
+
+    private Map<Integer, ApprovedLink> readApprovedLinks(ObjectMapper mapper) {
+        Map<Integer, ApprovedLink> links = new HashMap<>();
+        try (InputStream in = new ClassPathResource("topic-pdf-links.json").getInputStream()) {
+            JsonNode root = mapper.readTree(in);
+            if (root.path("version").asInt() != 1) throw new IllegalStateException("Konu PDF bağı sürümü bilinmiyor.");
+            for (JsonNode node : root.path("links")) {
+                int id = node.path("catalogId").asInt(-1);
+                String sha = node.path("pdfSha256").asText("");
+                String topic = node.path("topic").asText("");
+                List<String> codes = new java.util.ArrayList<>();
+                node.path("questionCodes").forEach(code -> codes.add(code.asText("")));
+                if (id < 0 || !sha.matches("[0-9a-f]{64}") || topic.isBlank()
+                        || codes.isEmpty() || codes.stream().anyMatch(String::isBlank)
+                        || codes.size() != codes.stream().distinct().count()
+                        || links.putIfAbsent(id, new ApprovedLink(sha, topic, List.copyOf(codes))) != null) {
+                    throw new IllegalStateException("Onaylı konu PDF bağı geçersiz.");
+                }
+            }
+        } catch (IOException ex) {
+            throw new IllegalStateException("Onaylı konu PDF bağları okunamadı.", ex);
+        }
+        return Map.copyOf(links);
     }
 
     private Map<Integer, Entry> readCatalog(ObjectMapper mapper) {
@@ -62,7 +90,7 @@ public class TopicPdfService {
                         node.path("kind").asText(""),
                         node.path("grade").isNumber() ? node.path("grade").asInt() : null,
                         node.path("page_count").isNumber() ? node.path("page_count").asInt() : null,
-                        status);
+                        status, null);
                 entries.put(id, new Entry(item, node.path("relative_path").asText(""),
                         node.path("source_sha256").asText("")));
             }
@@ -108,10 +136,27 @@ public class TopicPdfService {
             } catch (ApiException ex) {
                 Item item = entry.item();
                 return new Item(item.id(), item.title(), item.exam(), item.subject(), item.kind(),
-                        item.grade(), item.pageCount(), "missing_file");
+                        item.grade(), item.pageCount(), "missing_file", null);
             }
         }
-        return entry.item();
+        Item item = entry.item();
+        ApprovedLink link = approvedLinks.get(id);
+        String topic = "available".equals(item.status()) && link != null
+                && entry.sha256().equals(link.pdfSha256()) ? link.topic() : null;
+        return new Item(item.id(), item.title(), item.exam(), item.subject(), item.kind(),
+                item.grade(), item.pageCount(), item.status(), topic);
+    }
+
+    public List<String> approvedQuestionCodes(int id) {
+        ApprovedLink link = approvedLinks.get(id);
+        Entry entry = byId.get(id);
+        if (link == null || entry == null || !entry.sha256().equals(link.pdfSha256())
+                || !"available".equals(entry.item().status())
+                || !"TYT".equals(entry.item().exam()) || !"turkce".equals(entry.item().subject())) {
+            throw ApiException.notFound("Doğrulanmış konu soru bağı bulunamadı.");
+        }
+        file(id); // Recheck the original PDF and its checksum before using the reviewed link.
+        return link.questionCodes();
     }
 
     public Resource file(int id) {

@@ -51,10 +51,10 @@ Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı 
 |---|---|
 | `GET /api/topic-pdfs/filters` | Katalogdaki sınav, ders ve içerik türü seçenekleri |
 | `GET /api/topic-pdfs?exam&subject&kind&q&page&size` | Başlık araması ve filtrelerle sayfalı konu anlatımı listesi; durum `available`, `missing_file` veya `video_only` |
-| `GET /api/topic-pdfs/{id}` | Tek kayıt ve dosyanın güncel açılabilirlik durumu |
+| `GET /api/topic-pdfs/{id}` | Tek kayıt, dosyanın güncel açılabilirlik durumu ve varsa onaylı `verifiedTopic` |
 | `GET /api/topic-pdfs/{id}/file` | Uygun PDF'yi `application/pdf`, `inline`, `Cache-Control: no-store` ile açar |
 
-Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir; bu geçiş 07.08 kapsamındadır.
+Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir. `topic-pdf-links.json` içindeki onaylı bağlantıda PDF checksum'ı tekrar doğrulanır. `GET /api/questions/availability?topicPdfId=` ve pratik/sınav oluşturma isteklerindeki `topicPdfId` yalnız onaylı soru kodlarıyla sınırlandırılır; istemci kaynak/ders/konu göndererek havuzu genişletemez.
 
 ## Operatör ve yönetici uçları
 

@@ -59,8 +59,9 @@ public class QuestionController {
 
     @GetMapping("/availability")
     public QuestionAvailabilityService.Availability availability(QuestionFilter filter,
+                                                                 @RequestParam(required = false) Integer topicPdfId,
                                                                  @AuthenticationPrincipal AppUserDetails me) {
-        return availability.count(me.id(), filter);
+        return availability.count(me.id(), filter, topicPdfId);
     }
 
     @GetMapping

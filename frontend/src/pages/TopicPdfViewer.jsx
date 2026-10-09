@@ -28,6 +28,11 @@ export default function TopicPdfViewer() {
     {error && <ErrorBox error={error} onRetry={retry} />}
     {data?.status !== 'available' && data && <Empty title="Bu PDF şu anda açılamıyor."><p>Başka bir konu anlatımı seçebilirsin.</p></Empty>}
     {data?.status === 'available' && <section className="card topic-pdf-viewer">
+      {data.verifiedTopic && <div className="topic-pdf-actions">
+        <p>Doğrulanmış konu: <strong>{data.verifiedTopic}</strong>. Bu bağlantıda yalnız kaynakları incelenmiş sorular kullanılır.</p>
+        <Link className="btn btn-primary" to={`/pratik/yeni?topicPdfId=${data.id}`}>Bu konudan soru çöz</Link>{' '}
+        <Link className="btn btn-secondary" to={`/sinav/yeni?topicPdfId=${data.id}`}>Test oluştur</Link>
+      </div>}
       <p><a className="btn btn-secondary" href={fileUrl} target="_blank" rel="noreferrer">PDF'yi tam ekranda aç</a></p>
       {!mobile && <iframe title={`${data.title} PDF`} src={fileUrl} />}
       {mobile && <p className="muted small">PDF aynı sitenin güvenli dosya yolunda tam ekranda açılır.</p>}

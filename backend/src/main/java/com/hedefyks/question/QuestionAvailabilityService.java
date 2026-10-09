@@ -1,5 +1,6 @@
 package com.hedefyks.question;
 
+import com.hedefyks.topicpdf.TopicPdfService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +29,18 @@ public class QuestionAvailabilityService {
             """;
 
     private final JdbcClient jdbc;
+    private final TopicPdfService topicPdfs;
 
-    public QuestionAvailabilityService(JdbcClient jdbc) {
+    public QuestionAvailabilityService(JdbcClient jdbc, TopicPdfService topicPdfs) {
         this.jdbc = jdbc;
+        this.topicPdfs = topicPdfs;
     }
 
     public Availability count(Long userId, QuestionFilter filter) {
+        return count(userId, filter, null);
+    }
+
+    public Availability count(Long userId, QuestionFilter filter, Integer topicPdfId) {
         StringBuilder sql = new StringBuilder(MINE).append("""
                 SELECT count(*) AS total, count(m.question_id) AS solved,
                        count(*) - count(m.question_id) AS remaining,
@@ -43,19 +50,24 @@ public class QuestionAvailabilityService {
                 """);
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        addFilters(sql, params, filter);
+        addFilters(sql, params, effectiveFilter(filter, topicPdfId), topicPdfId);
         return jdbc.sql(sql.toString()).params(params).query((rs, n) -> new Availability(
                 rs.getLong("total"), rs.getLong("solved"), rs.getLong("remaining"), rs.getLong("ever_wrong"))).single();
     }
 
     public List<Long> randomIds(Long userId, QuestionFilter filter, QuestionSelectionMode mode, int limit) {
+        return randomIds(userId, filter, mode, limit, null);
+    }
+
+    public List<Long> randomIds(Long userId, QuestionFilter filter, QuestionSelectionMode mode,
+                                int limit, Integer topicPdfId) {
         StringBuilder sql = new StringBuilder(MINE).append("""
                 SELECT q.id FROM questions q LEFT JOIN mine m ON m.question_id = q.id
                 WHERE q.active = true
                 """);
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        addFilters(sql, params, filter);
+        addFilters(sql, params, effectiveFilter(filter, topicPdfId), topicPdfId);
         switch (mode) {
             case NEW -> sql.append(" AND m.question_id IS NULL");
             case REPEAT -> sql.append(" AND m.question_id IS NOT NULL");
@@ -67,10 +79,24 @@ public class QuestionAvailabilityService {
         return jdbc.sql(sql.toString()).params(params).query(Long.class).list();
     }
 
-    private static void addFilters(StringBuilder sql, Map<String, Object> params, QuestionFilter filter) {
+    public QuestionFilter effectiveFilter(QuestionFilter filter, Integer topicPdfId) {
+        if (topicPdfId == null) return filter;
+        topicPdfs.approvedQuestionCodes(topicPdfId);
+        return new QuestionFilter(QuestionBank.OGM, ExamType.TYT, "Türkçe",
+                topicPdfs.detail(topicPdfId).verifiedTopic());
+    }
+
+    private void addFilters(StringBuilder sql, Map<String, Object> params,
+                            QuestionFilter filter, Integer topicPdfId) {
         if (filter.bank() != null) { sql.append(" AND q.bank = :bank"); params.put("bank", filter.bank().name()); }
         if (filter.examType() != null) { sql.append(" AND q.exam_type = :examType"); params.put("examType", filter.examType().name()); }
         if (filter.subject() != null) { sql.append(" AND q.subject = :subject"); params.put("subject", filter.subject()); }
-        if (filter.topic() != null) { sql.append(" AND q.topic = :topic"); params.put("topic", filter.topic()); }
+        if (topicPdfId == null && filter.topic() != null) {
+            sql.append(" AND q.topic = :topic"); params.put("topic", filter.topic());
+        }
+        if (topicPdfId != null) {
+            sql.append(" AND q.code IN (:approvedCodes)");
+            params.put("approvedCodes", topicPdfs.approvedQuestionCodes(topicPdfId));
+        }
     }
 }

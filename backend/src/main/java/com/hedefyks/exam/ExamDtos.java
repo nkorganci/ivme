@@ -24,7 +24,7 @@ public final class ExamDtos {
             QuestionSelectionMode selectionMode,
             @Min(value = 0, message = "Süre negatif olamaz.")
             @Max(value = 600, message = "Süre en fazla 600 dakika olabilir.")
-            Integer timeLimitMinutes) {}
+            Integer timeLimitMinutes, Integer topicPdfId) {}
 
     public record AnswerRequest(@NotNull(message = "questionId gerekli.") Long questionId, String answer) {}
 

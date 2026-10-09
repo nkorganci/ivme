@@ -51,9 +51,10 @@ public class ExamService {
     // ---------------------------------------------------------------- oluşturma / devam
 
     public ExamSession create(Long userId, CreateExamRequest req) {
-        QuestionFilter filter = new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic());
+        QuestionFilter filter = availability.effectiveFilter(
+                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic()), req.topicPdfId());
         QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
-        var counts = availability.count(userId, filter);
+        var counts = availability.count(userId, filter, req.topicPdfId());
         long candidates = switch (selection) {
             case NEW -> counts.remaining();
             case REPEAT -> counts.solved();
@@ -63,7 +64,7 @@ public class ExamService {
         if (candidates < req.questionCount()) {
             throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
         }
-        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount());
+        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
         Map<Long, Question> byId = new HashMap<>();
         questions.findAllById(ids).forEach(q -> byId.put(q.getId(), q));

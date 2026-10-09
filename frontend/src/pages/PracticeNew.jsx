@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { useFilterRows, usePageTitle } from '../hooks.js';
 import FilterSelects from '../components/FilterSelects.jsx';
@@ -12,6 +12,9 @@ const MODE_LABELS = { MIXED: 'Karışık', NEW: 'Yalnız yeni', REPEAT: 'Daha ö
 export default function PracticeNew() {
   usePageTitle('Pratik Başlat');
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const topicPdfId = searchParams.get('topicPdfId');
+  const scoped = topicPdfId !== null;
   const requestId = useRef(crypto.randomUUID());
   const [bank, setBank] = useState('');
   const [filter, setFilter] = useState({ examType: '', subject: '', topic: '' });
@@ -41,12 +44,12 @@ export default function PracticeNew() {
     setLoading(true);
     setAvailability(null);
     setAvailabilityError('');
-    api.get('/api/questions/availability' + qs({ bank, ...filter }))
+    api.get('/api/questions/availability' + qs(scoped ? { topicPdfId } : { bank, ...filter }))
       .then((data) => { if (current) setAvailability(data); })
       .catch((e) => { if (current) setAvailabilityError(e.message); })
       .finally(() => { if (current) setLoading(false); });
     return () => { current = false; };
-  }, [bank, filter.examType, filter.subject, filter.topic]);
+  }, [bank, filter.examType, filter.subject, filter.topic, topicPdfId]);
 
   const n = Number(count);
   const validCount = Number.isInteger(n) && n >= 1 && n <= 120;
@@ -70,6 +73,7 @@ export default function PracticeNew() {
         questionCount: n,
         durationMinutes: timed ? duration : undefined,
         clientRequestId: requestId.current,
+        topicPdfId: scoped ? Number(topicPdfId) : undefined,
       });
       navigate(`/pratik/${session.id}`);
     } catch (e) {
@@ -89,11 +93,15 @@ export default function PracticeNew() {
       {activeError && <Alert type="warn">Devam eden oturum alınamadı: {activeError}</Alert>}
       <form className="card form-card" onSubmit={submit} noValidate>
         <h2>Yeni pratik oluştur</h2>
+        {scoped && <p className="muted">Konu PDF'sinden doğrulanmış sorular seçiliyor. Kaynak, sınav ve konu kapsamı sabittir. <Link to="/pratik/yeni">Tüm sorulardan seç</Link></p>}
+        {scoped && <Alert type="info">Henüz doğrulanmış zorluk etiketi yok. Soru geçmişi ve sayıya göre seçim yapabilirsin.</Alert>}
+        {!scoped && <>
         <Field as="select" label="Kaynak" value={bank} onChange={(e) => { setBank(e.target.value); setFilter({ examType: '', subject: '', topic: '' }); }}>
           <option value="">Hepsi</option>
           {Object.entries(BANKS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
         </Field>
         <FilterSelects rows={rows} value={filter} onChange={setFilter} />
+        </>}
         {availability && <Field as="select" label="Soru geçmişi" value={selectionMode} onChange={(e) => setSelectionMode(e.target.value)}>
           <option value="MIXED">Karışık · {formatNumber(availability.total)} soru</option>
           <option value="NEW">Yalnız yeni · {formatNumber(availability.remaining)} soru</option>

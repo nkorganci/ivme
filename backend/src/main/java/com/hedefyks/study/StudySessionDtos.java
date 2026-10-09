@@ -25,7 +25,7 @@ public final class StudySessionDtos {
             Integer questionCount,
             @Min(value = 1, message = "Süre en az 1 dakika olmalı.")
             @Max(value = 240, message = "Süre en fazla 240 dakika olabilir.")
-            Integer durationMinutes,
+            Integer durationMinutes, Integer topicPdfId,
             @NotNull(message = "İstek kimliği gerekli.") UUID clientRequestId) {}
 
     public record SessionQuestion(Long questionId, int position, String code, QuestionBank bank,
