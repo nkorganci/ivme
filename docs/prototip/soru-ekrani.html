@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İvme · Soru ekranı prototipi</title>
+  <style>
+    :root { font: 16px/1.5 system-ui,"Segoe UI",sans-serif; color:#1e293b; background:#f2f5fa; --accent:#4f46e5; --line:#dce4ee; }
+    * { box-sizing:border-box; } body { margin:0; } button,a { font:inherit; } button { cursor:pointer; }
+    :focus-visible { outline:3px solid #8b83ff; outline-offset:3px; } .skip { position:absolute; left:-9999px; } .skip:focus { left:12px; top:12px; z-index:10; background:white; padding:8px; }
+    header { background:#fff; border-bottom:1px solid var(--line); } .top { max-width:1440px; margin:auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { color:var(--accent); font-weight:800; font-size:1.4rem; text-decoration:none; } .top nav { display:flex; gap:20px; } .top nav a { color:#475569; text-decoration:none; } .top nav a[aria-current] { color:var(--accent); font-weight:700; }
+    .avatar { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:#e9e8ff; color:#3831a4; font-weight:700; }
+    main { max-width:1440px; margin:auto; padding:24px; min-width:0; } .crumb { color:#64748b; font-size:.9rem; margin:0 0 16px; } h1 { font-size:1.4rem; margin:0; } .heading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; }
+    .grid { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:20px; align-items:start; } .card { min-width:0; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:0 6px 24px #1c25400a; }
+    .question { padding:24px; } .tags { color:#64748b; font-size:.9rem; margin-bottom:14px; } .paper { min-width:0; overflow-wrap:anywhere; border:1px solid var(--line); border-radius:12px; background:#fff; padding:28px; min-height:250px; }
+    .paper p { margin:0 0 16px; } .paper strong { font-size:1.16rem; } h2 { font-size:1.1rem; margin:24px 0 12px; }
+    .choices { display:grid; gap:10px; } .choice { width:100%; min-height:48px; display:flex; align-items:center; gap:12px; text-align:left; padding:8px 14px; border:1px solid #cbd5e1; border-radius:10px; background:white; }
+    .choice b { width:28px; height:28px; flex:none; display:grid; place-items:center; border-radius:50%; background:#f1f5f9; } .choice[aria-pressed="true"] { border-color:var(--accent); background:#f4f3ff; } .choice[aria-pressed="true"] b { background:var(--accent); color:white; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; } .btn { min-height:44px; padding:8px 16px; border-radius:10px; border:1px solid #cbd5e1; background:#fff; color:#1e293b; font-weight:650; }
+    .btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; } .btn:disabled { opacity:.5; cursor:default; } .message { min-height:24px; margin:12px 0 0; font-weight:600; }
+    aside { overflow:hidden; } .tabs { display:flex; overflow-x:auto; border-bottom:1px solid var(--line); } .tabs button { flex:1; min-width:100px; padding:13px 8px; border:0; border-bottom:3px solid transparent; background:#fff; color:#475569; font-weight:650; white-space:nowrap; }
+    .tabs button[aria-selected="true"] { color:var(--accent); border-color:var(--accent); } .panel { padding:18px; } .panel[hidden] { display:none; } .panel h2 { margin:0 0 10px; } .panel p { color:#475569; font-size:.9rem; }
+    canvas { display:block; width:100%; height:270px; border:1px dashed #b8c4d5; border-radius:10px; background:white; touch-action:none; } .toolbar { display:flex; justify-content:space-between; gap:8px; margin-top:10px; }
+    .qr { width:160px; height:160px; display:grid; place-items:center; margin:14px auto; border:8px solid #fff; outline:1px solid var(--line); background:repeating-linear-gradient(45deg,#1e293b 0 8px,#fff 8px 16px); color:#fff; text-shadow:0 1px 5px #000; font-weight:700; }
+    .note { padding:12px; background:#f6f7fb; border-radius:10px; } .fine { color:#64748b; font-size:.85rem; }
+    @media (max-width:960px) { .grid { grid-template-columns:minmax(0,1fr); } aside { max-width:none; } }
+    @media (max-width:620px) { .top { padding:10px 16px; } .top nav { display:none; } main { padding:16px; } .question { padding:16px; } .paper { padding:18px; } .heading { align-items:start; } .tabs button { min-width:0; font-size:.84rem; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#icerik">İçeriğe geç</a>
+  <header><div class="top"><a class="brand" href="#">İvme</a><nav aria-label="Ana gezinme"><a href="#">Ana sayfa</a><a href="#" aria-current="page">Sorular</a><a href="#">Test kur</a><a href="#">İlerleme</a></nav><span class="avatar" aria-label="Örnek öğrenci">Ö</span></div></header>
+  <main id="icerik"><p class="crumb">Soru bankası / Türkçe / Sözcükte anlam</p><div class="heading"><h1>Türkçe · Sözcükte anlam</h1><span class="fine">Örnek soru · 1 / 10</span></div>
+    <div class="grid"><section class="card question" aria-label="Soru çözme"><div class="tags">TYT · Türkçe · Sözcükte anlam</div><div class="paper"><p><strong>“İvme” sözcüğü aşağıdaki cümlelerin hangisinde mecaz anlamda kullanılmıştır?</strong></p><p>Bu metin yerleşim denemesi için yazılmış örnektir. Gerçek uygulamada burada PDF'den alınan soru görseli bulunur.</p></div>
+      <h2>Yanıtın</h2><div class="choices" role="group" aria-label="Yanıt seçenekleri"><button class="choice" aria-pressed="false" data-answer="A"><b>A</b> Ölçülen hız değişimi</button><button class="choice" aria-pressed="false" data-answer="B"><b>B</b> Öğrenmedeki hızlanma</button><button class="choice" aria-pressed="false" data-answer="C"><b>C</b> Sayısal bir değer</button><button class="choice" aria-pressed="false" data-answer="D"><b>D</b> Bir fizik formülü</button><button class="choice" aria-pressed="false" data-answer="E"><b>E</b> Araç göstergesi</button></div>
+      <div class="actions"><button class="btn" type="button">Önceki</button><button id="check" class="btn primary" type="button" disabled>Yanıtı kontrol et</button><button id="reveal" class="btn" type="button">Cevabı göster</button><button class="btn" type="button">Sonraki</button></div><p id="message" class="message" role="status" aria-live="polite"></p>
+    </section><aside class="card" aria-label="Soru araçları"><div class="tabs" role="tablist" aria-label="Soru yardımcıları"><button role="tab" id="tab-draw" aria-controls="panel-draw" aria-selected="true">Karalama</button><button role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected="false">QR / Çözüm</button><button role="tab" id="tab-note" aria-controls="panel-note" aria-selected="false">Konu notu</button></div>
+      <section class="panel" role="tabpanel" id="panel-draw" aria-labelledby="tab-draw"><h2>Karalama alanı</h2><p>Çözüm için buraya çiz. Bu prototip çizimi kaydetmez.</p><canvas id="board" aria-label="Karalama tuvali"></canvas><div class="toolbar"><span class="fine">Fare veya dokunmatik kalem</span><button id="clear" class="btn" type="button">Temizle</button></div></section>
+      <section class="panel" role="tabpanel" id="panel-qr" aria-labelledby="tab-qr" hidden><h2>QR ve çözüm</h2><p>Gerçek soruda QR, giriş gerektiren kalıcı soru adresine gider. Çözüm bağlantısı uygun zamanda görünür.</p><div class="qr" aria-label="QR yer tutucu">QR örneği</div><p class="fine">Bu kare gerçek QR kod değildir.</p></section>
+      <section class="panel" role="tabpanel" id="panel-note" aria-labelledby="tab-note" hidden><h2>Konu notu</h2><div class="note">Sözcüğün gerçek ve mecaz anlamını cümledeki kullanımından ayır. Kaynaklı kısa notlar içerik incelemesinden sonra gösterilir.</div><p class="fine">Örnek not · yayımlanmış ders notu değil.</p></section>
+    </aside></div>
+  </main>
+  <script>
+    const tabs=[...document.querySelectorAll('[role=tab]')];
+    function openTab(tab) { tabs.forEach(t=>{ const active=t===tab; t.setAttribute('aria-selected',active); document.getElementById(t.getAttribute('aria-controls')).hidden=!active; t.tabIndex=active?0:-1; }); tab.focus(); }
+    tabs.forEach(tab=>{ tab.tabIndex=tab.getAttribute('aria-selected')==='true'?0:-1; tab.addEventListener('click',()=>openTab(tab)); });
+    document.querySelector('.tabs').addEventListener('keydown',e=>{ if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return; e.preventDefault(); const i=tabs.indexOf(document.activeElement); openTab(tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length]); });
+    const choices=[...document.querySelectorAll('.choice')], check=document.getElementById('check'), message=document.getElementById('message'); let answer='';
+    choices.forEach(c=>c.addEventListener('click',()=>{ answer=c.dataset.answer; choices.forEach(x=>x.setAttribute('aria-pressed',x===c)); check.disabled=false; message.textContent=''; }));
+    check.addEventListener('click',()=>{ message.textContent=answer==='B'?'Doğru. Mecaz anlam öğrenmedeki hızlanmayı anlatıyor.':'Yanlış. Tekrar deneyebilir veya cevabı gösterebilirsin.'; });
+    document.getElementById('reveal').addEventListener('click',()=>{ message.textContent='Doğru cevap: B. Bu örnek bilgi gerçek soru kaydı değildir.'; });
+    const canvas=document.getElementById('board'), ctx=canvas.getContext('2d'); let drawing=false;
+    function sizeBoard(){ const data=canvas.width?canvas.toDataURL():null; canvas.width=canvas.clientWidth*devicePixelRatio; canvas.height=canvas.clientHeight*devicePixelRatio; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); ctx.lineWidth=2; ctx.lineCap='round'; ctx.strokeStyle='#263a66'; if(data){const img=new Image();img.onload=()=>ctx.drawImage(img,0,0,canvas.clientWidth,canvas.clientHeight);img.src=data;} }
+    sizeBoard(); addEventListener('resize',sizeBoard);
+    function point(e){const r=canvas.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top];}
+    canvas.addEventListener('pointerdown',e=>{drawing=true;canvas.setPointerCapture(e.pointerId);ctx.beginPath();ctx.moveTo(...point(e));});
+    canvas.addEventListener('pointermove',e=>{if(!drawing)return;ctx.lineTo(...point(e));ctx.stroke();});
+    canvas.addEventListener('pointerup',()=>drawing=false);canvas.addEventListener('pointercancel',()=>drawing=false);
+    document.getElementById('clear').addEventListener('click',()=>ctx.clearRect(0,0,canvas.width,canvas.height));
+  </script>
+</body>
+</html>
