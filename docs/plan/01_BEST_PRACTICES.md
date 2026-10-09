@@ -83,3 +83,11 @@ Mevcut `origin` başka GitHub deposuna bakıyor; ilerideki nihai yayın için ya
 İlk pilotta uygulama erişilebilirliği, giriş ve soru çözme başarısı, sonuç doğruluğu, yeni sorunun açılma hızı, geri yükleme süresi, içerik kırpım/cevap eşleşme hatası, zayıf alan önerisinin isabeti ve AI başına gerçek maliyet izlenir. Hedef değerler pilot verisiyle belirlenir; doğrulanmamış “%99 doğru” gibi rakamlar vaat edilmez. Öğrenci ekranında kısa açıklama ve “hatalı bildir” yolu bulunur.
 
 **Durum: YAŞAYAN REFERANS.** İşlerin `BITTI` durumu [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur.
+
+## 8. Codex modelini işe göre seçme
+
+- Her açık numaralı işteki **Önerilen model / çaba** sütunu başlangıç seçimidir. Kısa, sınırı net belge/envanter işleri için GPT-6 Luna; birden çok katmanı ve güvenlik/veri tutarlılığını etkileyen işler için GPT-6.1 Sol kullan. GPT-6 Astra yalnız 16.02 gibi sistemin tamamını kapsayan pilot değerlendirmesinde varsayılan öneridir.
+- Çaba düzeyi: `Low` rutin/dar iş, `Medium` olağan çok dosyalı iş, `High` güvenlik, veri göçü veya zor hata ayıklama. `XHigh/Max` varsayılan seçilmez; yalnız ölçülen ihtiyaç varsa yükseltilir.
+- Projeye özel `.codex/config.toml`, **bir sonraki yeni oturumun** model ve çaba varsayılanını taşır. Her iş bitince `SIRADAKI` görevine göre bu dosyayı güncelle; yeni oturum başlayınca atama uygulanır. Bu repo için başlangıç varsayılanı GPT-6 Luna · Medium.
+- Aktif oturumun modeli proje ayar dosyasını değiştirince kendiliğinden değişmez. Codex arayüzünde `/model` ile etkin oturum seçilir. Bu çalışma ortamında ajan model seçicisini çağıran bir araç bulunmadığından, model değişikliğinin gerçekleştiği iddia edilmez; görev istenen modelde yeni oturumla başlatılır. Model hesap/çalışma alanında yoksa erişilebilir Luna/Sol seçeneği kullanılır ve kayda yazılır.
+- Her iş için aynı tam bağlamı taşımak yerine yalnız iş listesi, görev belgesi ve ilgili kodu yükle; proje model ayarı token azaltmanın yerini tutmaz. OpenAI'ın güncel Codex seçimi ve config bilgileri [kaynaklarda](02_REFERANSLAR.md).

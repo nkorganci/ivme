@@ -124,3 +124,7 @@ Kullanıcının yeni kararıyla kayıt, Hesap ekranından parola değiştirme ve
 ### 2026-10-09 — OGM konu PDF'si ve soruya geçiş
 
 `Kaynaklar/ogm-materyal` içine yeni ve mevcut soru bankaları ile konu anlatımları girecek. Öğrenci konu anlatımını **yalnız özgün PDF olarak** açacak. Menüde “Konu anlatımları” alanından PDF'ye, oradan doğrulanmış aynı konunun sorularına/pratik veya teste geçecek; sayı, geçmiş modu ve mevcutsa zorluk tercihi kullanıcıya kolay anlaşılır biçimde sunulacak. OGM katalog ve soru kartı hattı ilk referanstır; ad benzerliği tek başına konu eşlemesi sayılmaz. İşler [12.05, 13.04–13.05 ve 07.08–07.09](12_NUMARALI_IS_LISTESI.md) olarak eklendi; [uygulama kabulü](15_OGM_PDF_VE_KONU_SORU_BAGI.md) ayrı tutulur. Bu karar alınırken sıradaki 07.04 çalışması korunmuştur.
+
+### 2026-10-09 — Codex iş/model eşlemesi
+
+Kullanıcının token tasarrufu isteğiyle açık her alt işe model ve çaba önerisi [numaralı listeye](12_NUMARALI_IS_LISTESI.md) yazıldı. Başlangıç varsayılanı sıradaki 07.06 için GPT-6 Luna · Medium; güvenlik, veri göçü ve çok katmanlı işler Sol'a; bütünsel pilot denetimi Astra'ya ayrıldı. Repo `.codex/config.toml` sonraki yeni oturumda varsayılanı uygular. Aktif oturum modelini dosya güncellemesi değiştirmez; geçiş Codex'in `/model` seçicisiyle yapılır.

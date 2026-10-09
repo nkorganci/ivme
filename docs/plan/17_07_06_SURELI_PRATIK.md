@@ -1,6 +1,6 @@
 # 07.06 — Süreli pratik ve sonuç
 
-**Durum:** SIRADAKI · **Bağımlılık:** [07.05](16_07_05_PRATIK_SECIMI.md) BITTI.
+**Durum:** SIRADAKI · **Bağımlılık:** [07.05](16_07_05_PRATIK_SECIMI.md) BITTI. · **Model:** GPT-6 Luna · Medium (testler veya katmanlar arası tutarlılık çözülemezse GPT-6.1 Sol · Medium'a yükselt).
 
 ## Kısa amaç
 

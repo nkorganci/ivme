@@ -33,6 +33,9 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 - [OWASP Top 10:2025](https://top10.owasp.org/2025/0x00_2025-Introduction/) — erişim kontrolü, kimlik doğrulama ve güvenlik kayıtları için inceleme çerçevesi.
 - [NIST SP 800-63B: şifre kuralları](https://pages.nist.gov/800-63-4/sp800-63b.html) — tek faktörlü girişte uzun şifre, parola yöneticisi desteği ve gereksiz karakter sınıfı zorunluluğundan kaçınma.
 - [OWASP: şifre saklama](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) — mevcut BCrypt saklama yönteminde iş faktörü ve 72 bayt sınırı.
+- [Codex modelleri ve model seçimi](https://learn.chatgpt.com/docs/models) — Luna'yı net ve tekrarlanabilir işlerde, GPT-6.1 Sol'u karmaşık kod/uzun işlerde seçme; erişim plana ve çalışma alanına bağlı.
+- [Codex config.toml temel ayarları](https://learn.chatgpt.com/docs/config-file/config-basic) — repo için güvenilen `.codex/config.toml` model ve çaba varsayılanı; yeni oturumda uygulanır.
+- [Codex `/model` komutu](https://learn.chatgpt.com/docs/developer-commands) — etkin oturumdaki modeli ve düşünme düzeyini model seçicisinden değiştirme.
 
 ## Yeni sınav içeriği ekleme şablonu
 
