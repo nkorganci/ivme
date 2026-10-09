@@ -4,6 +4,7 @@ import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
+import Progress from './pages/Progress.jsx';
 import QuestionCollection from './pages/QuestionCollection.jsx';
 import QuestionDetail from './pages/QuestionDetail.jsx';
 import ExamNew from './pages/ExamNew.jsx';
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="/pratik/:id" element={<PracticeSession />} />
             <Route path="/sinav/:id/sonuc" element={<ExamResult />} />
             <Route path="/gecmis" element={<History />} />
+            <Route path="/ilerleme" element={<Progress />} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
           <Route path="/hesap" element={<Account />} />

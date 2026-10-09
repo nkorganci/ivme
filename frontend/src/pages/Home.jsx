@@ -104,6 +104,7 @@ export default function Home() {
         <Link to="/gecmis" className="btn btn-secondary">
           Geçmiş
         </Link>
+        <Link to="/ilerleme" className="btn btn-secondary">İlerlemem</Link>
       </div>
     </>
   );
