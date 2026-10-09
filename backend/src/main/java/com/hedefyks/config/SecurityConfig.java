@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -50,12 +51,18 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http, ObjectMapper mapper, SecurityContextRepository contextRepository)
+    SecurityFilterChain filterChain(HttpSecurity http, ObjectMapper mapper,
+                                    SecurityContextRepository contextRepository,
+                                    @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies)
             throws Exception {
+        CookieCsrfTokenRepository csrfTokens = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        if (secureCookies) {
+            csrfTokens.setCookieCustomizer(cookie -> cookie.secure(true));
+        }
         http
                 .securityContext(c -> c.securityContextRepository(contextRepository))
                 .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrfTokenRepository(csrfTokens)
                         .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth

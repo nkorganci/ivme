@@ -16,7 +16,7 @@
 
 **Test:** Seçili dosyaların temiz çalışma ağacında 20 arka yüz testi ve React üretim derlemesi geçti. Yetki testinde yöneticinin soru ve sınav, operatörün sınav API'sine doğrudan erişimi 403 olarak doğrulandı.
 
-**Yerel hesap kararı:** Kullanıcının seçtiği `ivmeadmin` (`ADMIN`) ve `ivmeoperator` (`OPERATOR`) hesapları gerçek `ivme` veritabanında hazırlandı; ikisi de kullanıcının istediği aynı geçici parolayı kullanır. Önce yalnız `users` tablosunun Git dışı yedeği alındı. Eski `root` yönetici hesabı `ivmeadmin` olarak yeniden adlandırıldı; öğrenci hesabına dokunulmadı. Geçici parola açık metin olarak kaynak koda/belgeye yazılmadı ve iki hesapta `password_change_required=true` işaretlendi. `dev` profilindeki otomatik `root` yönetici oluşturma kaldırıldı. Hesap ekranında parola değişince işaret temizlenir; üretim açılışı işaretli `ADMIN`/`OPERATOR` hesabını reddeder. İki hesap da en az 15 karakterlik farklı, güçlü parolaya geçirilmeden tünel üzerinden yayın yapılmaz. Yerel API giriş denemesinde iki rolün kendi uç noktası 200, karşı rolünki 403 döndü.
+**Yerel hesap kararı:** Kullanıcının seçtiği `ivmeadmin` (`ADMIN`) ve `ivmeoperator` (`OPERATOR`) hesapları gerçek `ivme` veritabanında hazırlandı; ikisi de kullanıcının istediği aynı geçici parolayı kullanır. Önce yalnız `users` tablosunun Git dışı yedeği alındı. Eski `root` yönetici hesabı `ivmeadmin` olarak yeniden adlandırıldı; öğrenci hesabına dokunulmadı. Geçici parola açık metin olarak kaynak koda/belgeye yazılmadı; her hesap için ayrı tuzlu BCrypt özeti oluşturuldu ve ikisi de `password_change_required=true` işaretlendi. `dev` profilindeki otomatik `root` yönetici oluşturma kaldırıldı. Hesap ekranında parola değişince işaret temizlenir; üretim açılışı işaretli `ADMIN`/`OPERATOR` hesabını reddeder. İki hesap da en az 15 karakterlik farklı, güçlü parolaya geçirilmeden tünel üzerinden yayın yapılmaz. Yerel API giriş denemesinde iki rolün kendi uç noktası 200, karşı rolünki 403 döndü.
 
 **Saklama kararı:** Ham giriş/aktiflik/çıkış olayları (`activity_events`) en fazla 90 gün tutulur; uygulama açıldığında ve her gün 03:00 UTC'de eski olaylar silinir. Bu tabloya olay yazma henüz uygulanmadığından mevcut gerçek veride silinecek kayıt yoktur. Soru çözme ve sınav geçmişi 90 günlük bu kurala dahil değildir. Günlük/haftalık/aylık uzun dönem grafiklerinin hangi toplu kayıtlardan üretileceği ve öğrencinin veri dışa aktarma/silme akışı ilerleme adımında tamamlanacak.
 
@@ -28,12 +28,14 @@
 
 **Giriş hızı ve CSRF:** Aynı IP ve kullanıcı için hatalı giriş sınırı ile başarılı girişte bu sayacın temizlenmesi ayrı API testleriyle doğrulandı. Oturum açılmış olsa bile CSRF belirteci taşımayan parola değişikliği 403 ile reddedilir; parola hash'i değişmez. Tünel trafiğindeki gerçek istemci IP davranışı dış erişim provasına bırakıldı.
 
+**Güvenli çerez:** `YKS_COOKIE_SECURE=true` olduğunda hem oturum hem de JavaScript'in CSRF başlığına kopyaladığı `XSRF-TOKEN` çerezi `Secure` olur. Tünel ile uygulama arası HTTP olduğundan CSRF çerezi için bu açık ayar gerekir. Test profilinde çerezin `Secure` niteliği doğrulandı; gerçek HTTPS yanıtı ayrıca dış erişim provasına bırakıldı.
+
 **Yerel görsel kökü:** Önceki `veri/resimler/ogm` bağlantısı taşınmış, artık var olmayan `D:\workspace\Eczacimiz Nazile\site\data\ogm\img` yoluna bakıyordu. Eski bağlantıya dokunmadan Git dışı `veri/resimler-pilot` kökü oluşturuldu: `ogm` gerçek `D:\workspace\ivme\site\data\ogm\img` klasörüne, `tyt`/`ayt` mevcut görsel klasörlerine bağlanır. `backend-baslat.bat` bu kökü bulursa kullanır. Rastgele seçilen 30 sorunun dosyası ve WebP imzası doğrulandı; kaynak dosyalar taşınmadı.
 
 ## Açık kontrol listesi
 
 - Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
-- Oturum süresi/çıkış ve güvenli çerez denetimi. Giriş hızı ve parola değişikliğinde CSRF reddi test edildi.
+- Oturum süresi/çıkış ve tünel üzerinden `Set-Cookie` denetimi. Giriş hızı, parola değişikliğinde CSRF reddi ve `Secure` CSRF çerezi test edildi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel symlink hedefleri ve hata yanıtında bilgi sızıntısı testi; izinli uzantı ve dosya imzası denetimi eklendi.
 - Etkinlik verisi için öğrenciye açıklama, uzun dönem toplulaştırma ve dışa aktarma/silme akışı; yedek ve geri yükleme provası. Ham olayların 90 günlük otomatik silinmesi uygulandı.

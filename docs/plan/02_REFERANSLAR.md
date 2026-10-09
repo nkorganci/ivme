@@ -20,6 +20,7 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 - [Cloudflare Tunnel: HTTPS origin sorun giderme](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) — origin protokolü ve tünel rotası denetimi.
 - [Cloudflare HTTP başlıkları](https://developers.cloudflare.com/fundamentals/reference/http-headers/) — `CF-Connecting-IP` davranışı; tünel dışından gelen istemci başlığına güvenme.
 - [Spring Boot 3.5: forwarded headers](https://docs.spring.io/spring-boot/3.5/how-to/webserver.html) ve [Spring Framework güvenlik notu](https://docs.spring.io/spring-framework/reference/web/webmvc/filters.html) — güvenilmeyen `X-Forwarded-*` başlıklarının işlenmemesi kararı.
+- [Spring Security: CSRF çerez deposu](https://docs.spring.io/spring-security/reference/6.5/servlet/exploits/csrf.html) — `XSRF-TOKEN` çerezi ve `X-XSRF-TOKEN` başlığı; tünel ayarında çerezin `Secure` niteliğini ayrıca sabitleme (2026-10-09).
 - [PostgreSQL: SQL dump, özel biçim ve geri yükleme](https://www.postgresql.org/docs/current/backup-dump.html) — `pg_dump -Fc` ve `pg_restore` yaklaşımı; düzenli geri yükleme testi.
 - [PyMuPDF: PDF metin çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-text.html) ve [görsel çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-images.html) — mevcut Python hattına uygunluğu Adım 12'de ölç.
 - [Tesseract OCR: girdi biçimleri](https://github.com/tesseract-ocr/tessdoc/blob/main/InputFormats.md) — doğrudan PDF okuyamaz; taranmış PDF için önce görüntüye çevirme/OCR katmanı gerekir.
