@@ -3,6 +3,7 @@ package com.hedefyks.config;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import org.slf4j.Logger;
@@ -40,6 +41,19 @@ class AdminSeeder implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         boolean dev = env.acceptsProfiles(Profiles.of("dev", "test"));
         if (!dev) {
+            if (!Boolean.TRUE.equals(env.getProperty("server.servlet.session.cookie.secure", Boolean.class))) {
+                throw new IllegalStateException("Üretimde güvenli oturum çerezi gerekli (YKS_COOKIE_SECURE=true).");
+            }
+            URI site;
+            try {
+                site = URI.create(props.publicBaseUrl());
+            } catch (RuntimeException e) {
+                throw new IllegalStateException("Üretimde geçerli HTTPS site adresi gerekli (YKS_SITE_ADRESI).", e);
+            }
+            if (!"https".equalsIgnoreCase(site.getScheme()) || site.getHost() == null
+                    || site.getUserInfo() != null || site.getQuery() != null || site.getFragment() != null) {
+                throw new IllegalStateException("Üretimde geçerli HTTPS site adresi gerekli (YKS_SITE_ADRESI).");
+            }
             for (User privileged : users.findByRoleIn(List.of(Role.ADMIN, Role.OPERATOR))) {
                 if (privileged.isPasswordChangeRequired()) {
                     throw new IllegalStateException("Geçici parolalı yetkili hesapla üretim başlatılamaz; hesabın parolasını yerelde değiştir.");
