@@ -1,6 +1,6 @@
 @echo off
 rem Hedef YKS arka yuz (Spring Boot, port 8081) - gelistirme profili.
-rem Gerekenler: JDK 21 (C:\Tools\jdk-21), Maven, PostgreSQL (yks_hazirlik veritabani).
+rem Gerekenler: JDK 21 (C:\Tools\jdk-21), Maven, PostgreSQL (ivme veritabani).
 if not defined JAVA_HOME_YKS set "JAVA_HOME_YKS=C:\Tools\jdk-21"
 if not exist "%JAVA_HOME_YKS%\bin\java.exe" (
   echo JDK 21 bulunamadi: %JAVA_HOME_YKS%

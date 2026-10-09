@@ -23,7 +23,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-/** Ortak test altyapısı: yks_hazirlik_test veritabanını her testte temizler (yalnız "_test" ile biten veritabanında!). */
+/** Ortak test altyapısı: ivme_test veritabanını her testte temizler (yalnız "_test" ile biten veritabanında!). */
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

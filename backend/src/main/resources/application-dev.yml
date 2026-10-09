@@ -1,7 +1,7 @@
 # YALNIZ GELİŞTİRME (profil: dev). Buradaki root/root değerleri üretimde KULLANILMAZ.
 spring:
   datasource:
-    url: ${YKS_DB_URL:jdbc:postgresql://localhost:5432/yks_hazirlik}
+    url: ${YKS_DB_URL:jdbc:postgresql://localhost:5432/ivme}
     username: ${YKS_DB_KULLANICI:root}
     password: ${YKS_DB_SIFRE:root}
 

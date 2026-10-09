@@ -6,7 +6,7 @@
 | Durum | Plan; ürün kararları uygulanmış sayılmaz. |
 | Tek kaynak | Bu dosya. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` klasöründeki kopya kolay erişim içindir. Her adımda ikisi birlikte güncellenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md).
+**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -45,7 +45,7 @@
 
 ### Adım 2 — Veritabanı adı ve veri modeli
 
-**Özet:** Kalıcı öğrenci ilerlemesinin şemasını kur. **Yapılacak:** Yerel PostgreSQL'de `ivme` veritabanını oluştur; pgAdmin oturumu ile PostgreSQL rol kimliğini ayrı doğrula; mevcut `yks_hazirlik` verisi varsa önce yedek ve göç kararı al; uygulama bağlantısını ortam değişkeninden `ivme`ye geçir; Flyway ile `attempts`, `study_sessions`, `session_questions`, `question_feedback`, `goals`, `activity_events`, soru taksonomisi/önkoşul ilişkileri için gerekli en küçük tabloları ekle. Kullanıcı/soru/oturum dış anahtarları, tekil kısıtlar ve sorgu indeksleri tasarla. **UI kontrolü:** Eski giriş, soru ve geçmiş verisi kaybolmadan çalışmalı; yeni kayıt için boş durum anlaşılır olmalı. **Bitti sayılır:** Temiz kurulum ve mevcut veri göçü denenmiş, geri yükleme denenmiş, tablo yapısı API belgesinde. **Durum:** planlandı.
+**Özet:** Kalıcı öğrenci ilerlemesinin şemasını kur. **Yapılacak:** Yerel PostgreSQL'de `ivme` veritabanını oluştur; pgAdmin oturumu ile PostgreSQL rol kimliğini ayrı doğrula; mevcut `yks_hazirlik` verisi varsa önce yedek ve göç kararı al; uygulama bağlantısını ortam değişkeninden `ivme`ye geçir; Flyway ile `attempts`, `study_sessions`, `session_questions`, `question_feedback`, `goals`, `activity_events`, soru taksonomisi/önkoşul ilişkileri için gerekli en küçük tabloları ekle. Kullanıcı/soru/oturum dış anahtarları, tekil kısıtlar ve sorgu indeksleri tasarla. **UI kontrolü:** Eski giriş, soru ve geçmiş verisi kaybolmadan çalışmalı; yeni kayıt için boş durum anlaşılır olmalı. **Bitti sayılır:** Temiz kurulum ve mevcut veri göçü denenmiş, geri yükleme denenmiş, tablo yapısı API belgesinde. **Durum:** tamamlandı (2026-10-08). **Kayıt:** [geçiş, şema ve doğrulama](05_VERITABANI_GECISI.md). Mevcut `feedback` tablosu soru oyu için yeniden kullanıldı. Kaynak/hedef sayıları eşit; ayrı test DB'sinde masaüstü/telefon UI kontrolü ve 27 test geçti. Eski hesabın `root/root` girişi yeni kopyada kabul edilmedi; gerçek hesap şifresi değiştirilmeden sonraki güvenlik adımında çözülecek.
 
 ### Adım 3 — Tasarım sistemi ve ekran prototipleri
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** Adım 2: yedekten `ivme` veritabanına güvenli geçiş ve kalıcı ilerleme şemasının ilk parçası. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
+**Sıradaki planlı iş:** Adım 3: ekran sözleşmesi ve tasarım sistemi. Sonrasında Adım 4 güvenlik ve Adım 5 yerel/tünel paylaşımı gelir. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; saklama/silme süresi; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

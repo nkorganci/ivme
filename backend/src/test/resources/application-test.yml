@@ -1,7 +1,7 @@
-# Testler ayrı veritabanında çalışır: yks_hazirlik_test (uygulama/veritabani-sifirla.bat ile oluşur).
+# Testler ayrı veritabanında çalışır: ivme_test (testleri çalıştırmadan önce oluşturulur).
 spring:
   datasource:
-    url: ${YKS_TEST_DB_URL:jdbc:postgresql://localhost:5432/yks_hazirlik_test}
+    url: ${YKS_TEST_DB_URL:jdbc:postgresql://localhost:5432/ivme_test}
     username: ${YKS_DB_KULLANICI:root}
     password: ${YKS_DB_SIFRE:root}
 

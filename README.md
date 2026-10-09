@@ -1,5 +1,7 @@
 # Hedef YKS — YKS hazırlık web uygulaması (MVP)
 
+> **2026-10-08 güncel veritabanı:** Yerel uygulama artık `ivme`, testler `ivme_test` kullanır. Eski `yks_hazirlik` verisi korunarak taşındı. Kurulum, yedek ve yeni tablolar için [veritabanı geçiş kaydı](docs/plan/05_VERITABANI_GECISI.md) geçerlidir; aşağıdaki eski `yks_hazirlik` kurulum ve sıfırlama yönergelerini uygulamayın.
+
 Soru bankası, süreli deneme sınavı, sonuç/geçmiş, geri bildirim ve basit yönetim ekranı olan, tarayıcıdan kullanılan bir YKS hazırlık sitesi.
 Hedef: 10–50 kişilik ilk deneme; mimari 5.000+ kullanıcıya yeniden yazmadan büyüyebilecek kadar temiz tutuldu (aşırı mühendislik yok).
 

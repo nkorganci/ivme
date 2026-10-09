@@ -1,5 +1,7 @@
 # Hedef YKS — Mimari ve API sözleşmesi
 
+> **2026-10-08 şema eklemesi:** Etkin yerel DB `ivme`dir. `study_sessions`, `session_questions`, `question_attempts`, `goals`, `taxonomy_nodes`, `question_taxonomy`, `taxonomy_prerequisites` ve `activity_events` tablolarının kısıtları [geçiş kaydında](plan/05_VERITABANI_GECISI.md) tanımlıdır. Bu tablolar için API henüz açılmadı; aşağıdaki mevcut uç noktalar çalışmaya devam eder.
+
 Amaç: 10–50 kişilik MVP; sonra ölçeklenebilir. **Aşırı mühendislik yok.** Çalıştırma ve yapılandırma için bkz. [../README.md](../README.md).
 Uygulama genel amaçlıdır: kodda/arayüzde/belgede kişisel ad veya hesap geçmez; başlıklar giriş yapan kullanıcının adına göre kişiselleşir ("Merhaba, {ad}", sekme başlığı "{Sayfa} · {ad} · Hedef YKS").
 

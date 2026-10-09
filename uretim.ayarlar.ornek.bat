@@ -3,7 +3,7 @@ rem ORNEK ayar dosyasi. Bu dosyayi "uretim.ayarlar.bat" adiyla KOPYALA, degerler
 rem uretim.ayarlar.bat .gitignore'dadir; gercek sifreler depoya girmez.
 
 rem --- Veritabani (PostgreSQL). Uretimde root/root KULLANMA: kendi kullanici ve sifreni olustur.
-set YKS_DB_URL=jdbc:postgresql://localhost:5432/yks_hazirlik
+set YKS_DB_URL=jdbc:postgresql://localhost:5432/ivme
 set YKS_DB_KULLANICI=root
 set YKS_DB_SIFRE=BURAYA_VERITABANI_SIFRESI
 
