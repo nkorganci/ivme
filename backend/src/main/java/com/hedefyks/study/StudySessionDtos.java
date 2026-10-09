@@ -2,6 +2,7 @@ package com.hedefyks.study;
 
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.QuestionBank;
+import com.hedefyks.question.QuestionSelectionMode;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ public final class StudySessionDtos {
 
     public record CreateRequest(
             QuestionBank bank, ExamType examType, String subject, String topic,
+            QuestionSelectionMode selectionMode,
             @NotNull(message = "Soru sayısı gerekli.")
             @Min(value = 1, message = "En az 1 soru seçmelisin.")
             @Max(value = 120, message = "En fazla 120 soru seçebilirsin.")
@@ -25,5 +27,7 @@ public final class StudySessionDtos {
     public record SessionQuestion(Long questionId, int position, String code, QuestionBank bank,
                                   String subject, String topic, QuestionStatus status) {}
 
-    public record Session(Long id, Instant startedAt, int questionCount, List<SessionQuestion> questions) {}
+    public record Session(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
+                          QuestionBank bank, ExamType examType, String subject, String topic,
+                          int questionCount, List<SessionQuestion> questions) {}
 }

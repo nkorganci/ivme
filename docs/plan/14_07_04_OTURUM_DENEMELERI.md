@@ -13,7 +13,7 @@
 3. React soru ekranı oturum kimliğini isteğe geçirsin, önceki/sonraki düğmeleri oturum sırasına bağlasın; oturum listesindeki durumlar yenileme/geri girişten sonra aynı kalsın. Boş, yükleniyor, hata ve dar ekran akışını kontrol et.
 4. İki hesapla sahiplik, oturum dışı soru, yinelenen istek, eski bağımsız pratik ve masaüstü/telefon uçtan uca akışlarını doğrula. Gerçek DB ve canlı süreçleri değiştirme; yalnız `ivme_test` ve gerekirse yedekten geçici DB kullan.
 
-**Bu işte ertelenenler:** Dört pratik seçim modu/alt konu filtreleri **07.05**; süreli pratik/bitiş/sonuç **07.06**; geçmiş listesi **07.07**.
+**Bu işte ertelenenler:** Dört pratik seçim modu **07.05** kapsamında tamamlandı. Doğrulanmış alt konu/soru tipi filtresi **07.10**; süreli pratik/bitiş/sonuç **07.06**; geçmiş listesi **07.07** açık.
 
 ## Oturum sonu kaydı
 

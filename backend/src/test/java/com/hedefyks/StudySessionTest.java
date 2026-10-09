@@ -113,6 +113,56 @@ class StudySessionTest extends TestBase {
         send(mehmet, get(onePath + "?sessionId=" + id), null).andExpect(status().isNotFound());
     }
 
+    @Test
+    void dortSecimModuAyniAdayTaniminiKullanirVeFiltreSaklanir() throws Exception {
+        var wrong = question("P-1", "Türkçe", "B");
+        var correct = question("P-2", "Türkçe", "A");
+        var fresh = question("P-3", "Türkçe", "C");
+        question("P-4", "Matematik", "D");
+        user("ayse", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        send(ayse, post("/api/questions/" + wrong.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "A", null)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + correct.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "A", null)).andExpect(status().isOk());
+
+        JsonNode newSession = selected(ayse, "NEW", 1, "Türkçe");
+        assertThat(newSession.at("/questions/0/questionId").asLong()).isEqualTo(fresh.getId());
+        assertThat(newSession.at("/selectionMode").asText()).isEqualTo("NEW");
+        assertThat(newSession.at("/subject").asText()).isEqualTo("Türkçe");
+        assertThat(newSession.at("/topic").asText()).isEqualTo("Konu");
+        assertThat(newSession.at("/bank").asText()).isEqualTo("CIKMIS");
+        assertThat(newSession.at("/examType").asText()).isEqualTo("TYT");
+        JsonNode reloaded = read(send(ayse, get("/api/study-sessions/" + newSession.get("id").asLong()), null)
+                .andExpect(status().isOk()));
+        assertThat(reloaded).isEqualTo(newSession);
+
+        JsonNode wrongSession = selected(ayse, "WRONG", 1, "Türkçe");
+        assertThat(wrongSession.at("/questions/0/questionId").asLong()).isEqualTo(wrong.getId());
+        JsonNode repeat = selected(ayse, "REPEAT", 2, "Türkçe");
+        assertThat(repeat.get("questions").findValuesAsText("questionId")).hasSize(2);
+        assertThat(repeat.get("questions").toString()).doesNotContain("P-3", "P-4");
+        JsonNode mixed = selected(ayse, "MIXED", 3, "Türkçe");
+        assertThat(mixed.get("questionCount").asInt()).isEqualTo(3);
+
+        send(ayse, post("/api/study-sessions"), selectedRequest("NEW", 2, "Türkçe"))
+                .andExpect(status().isBadRequest());
+        send(ayse, post("/api/study-sessions"), selectedRequest("WRONG", 2, "Türkçe"))
+                .andExpect(status().isBadRequest());
+    }
+
+    private JsonNode selected(org.springframework.mock.web.MockHttpSession session, String mode, int count,
+                              String subject) throws Exception {
+        return read(send(session, post("/api/study-sessions"), selectedRequest(mode, count, subject))
+                .andExpect(status().isCreated()));
+    }
+
+    private static String selectedRequest(String mode, int count, String subject) {
+        return "{\"bank\":\"CIKMIS\",\"examType\":\"TYT\",\"topic\":\"Konu\",\"subject\":\"" + subject
+                + "\",\"questionCount\":" + count + ",\"selectionMode\":\"" + mode
+                + "\",\"clientRequestId\":\"" + UUID.randomUUID() + "\"}";
+    }
+
     private static String event(UUID key, String type, String answer, Long sessionId) {
         return "{\"clientEventId\":\"" + key + "\",\"eventType\":\"" + type + "\",\"answer\":"
                 + (answer == null ? "null" : "\"" + answer + "\"") + ",\"sessionId\":" + sessionId + "}";

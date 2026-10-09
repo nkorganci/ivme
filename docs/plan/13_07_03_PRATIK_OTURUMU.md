@@ -13,7 +13,7 @@
 3. React'ta erişilebilir küçük bir “Pratik başlat / devam et” akışı kur. Sayı, mevcut aday sayısı, yetersiz soru, boş/yükleniyor/hata durumları ve dar ekran görünümünü kontrol et. Soruya ulaşmak için var olan pratik sayfasını kullan.
 4. İki kullanıcı, az/yok soru, yinelenmeyen sıra, yenileme ve eski sınav/pratik uyumluluğu için anlamlı test yap. Ayrı test DB kullan; gerçek `ivme` DB'yi ve çalışan `8081/5173` süreçlerini değiştirme. Canlı V10/V11 geçişi ayrı **05.03** işidir.
 
-**Bu dilimde ertelenen işler:** Denemeyi oturum sorusuna bağlama **07.04/06.04**; tüm seçim modları, alt konu ve soru tipi **07.05**; süreli pratik ve sonuç **07.06**; geçmiş listesi **07.07**. Gerekli teknik veri alanı bu işte hazırlanabilir, ama bu UI/kurallar bitmiş sayılmaz.
+**Bu dilimde ertelenen işler:** Denemeyi oturum sorusuna bağlama **07.04/06.04** ve dört seçim modu **07.05** daha sonra tamamlandı. Alt konu/soru tipi doğrulanmış etiketler sonrası **07.10**; süreli pratik ve sonuç **07.06**; geçmiş listesi **07.07** açık.
 
 ## UI ve BITTI ölçütü
 

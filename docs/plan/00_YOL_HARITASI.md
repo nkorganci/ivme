@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | Bu dosya ürün kapsamı; [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durum kaynağıdır. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kolay erişim kopyası her adımda eşitlenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.05 görev dosyası](16_07_05_PRATIK_SECIMI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.06 görev dosyası](17_07_06_SURELI_PRATIK.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -65,7 +65,7 @@
 
 ### Adım 7 — Seçilebilir çalışma ve deneme oturumları
 
-**Özet:** Öğrenci hangi soruyu, kaç tane ve hangi sürede çözeceğini kurar. **Yapılacak:** Sınav türü/koleksiyon/ders/konu/alt konu/soru tipi, sayı, süreli/süresiz, yalnız yeni/yalnız önceki/karışık, önceden yanlışlarım seçimi; eşleşen ve kalan soru sayısı; yeterli soru yoksa açık uyarı; rastgele ama tekrarlanabilir oturum sırası; otomatik kayıt, süre bitişi, boş sorular ve sonuç. Pratik ile gerçek deneme kuralları ayrı; sonuçlar sonradan cevap anahtarı değişse de sabit. **UI kontrolü:** Kurulum, başlatma, ara verme/geri gelme, süre bitişi ve sonuç. **Bitti sayılır:** Her seçenekle çalışan en az bir anlamlı uçtan uca senaryo; aynı soru yanlışlıkla oturumda iki kez gelmez. **Durum:** ACIK (2026-10-09); [aday sayıları](10_SORU_KAPSAMI.md) ve [sınavda dört seçim modu](11_SINAV_SORU_SECIMI.md) eklendi. 07.03 süresiz pratik oturumu da eklendi; denemeleri oturuma bağlama ve süreli pratik açık.
+**Özet:** Öğrenci hangi soruyu, kaç tane ve hangi sürede çözeceğini kurar. **Yapılacak:** Sınav türü/koleksiyon/ders/konu/alt konu/soru tipi, sayı, süreli/süresiz, yalnız yeni/yalnız önceki/karışık, önceden yanlışlarım seçimi; eşleşen ve kalan soru sayısı; yeterli soru yoksa açık uyarı; rastgele ama tekrarlanabilir oturum sırası; otomatik kayıt, süre bitişi, boş sorular ve sonuç. Pratik ile gerçek deneme kuralları ayrı; sonuçlar sonradan cevap anahtarı değişse de sabit. **UI kontrolü:** Kurulum, başlatma, ara verme/geri gelme, süre bitişi ve sonuç. **Bitti sayılır:** Her seçenekle çalışan en az bir anlamlı uçtan uca senaryo; aynı soru yanlışlıkla oturumda iki kez gelmez. **Durum:** ACIK (2026-10-09); [aday sayıları](10_SORU_KAPSAMI.md), [sınavda dört seçim modu](11_SINAV_SORU_SECIMI.md), kalıcı süresiz pratik ve [pratikte dört seçim modu](16_07_05_PRATIK_SECIMI.md) eklendi. Alt konu/soru tipi için doğrulanmış etiketler, süreli pratik ve sonuç açıktır.
 
 ### Adım 8 — Öğrenci ilerleme ve kullanım panosu
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** [07.05 — Pratikte aday modu ve konu filtreleri](16_07_05_PRATIK_SECIMI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** [07.06 — Süreli pratik ve sonuç](17_07_06_SURELI_PRATIK.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

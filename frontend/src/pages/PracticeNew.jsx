@@ -7,6 +7,8 @@ import { Field } from '../components/Field.jsx';
 import { Alert, ErrorBox, Loading } from '../components/States.jsx';
 import { BANKS, formatNumber } from '../format.js';
 
+const MODE_LABELS = { MIXED: 'Karışık', NEW: 'Yalnız yeni', REPEAT: 'Daha önce çözdüğüm', WRONG: 'En az bir kez yanlış yaptığım' };
+
 export default function PracticeNew() {
   usePageTitle('Pratik Başlat');
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ export default function PracticeNew() {
   const [bank, setBank] = useState('');
   const [filter, setFilter] = useState({ examType: '', subject: '', topic: '' });
   const [count, setCount] = useState('10');
+  const [selectionMode, setSelectionMode] = useState('MIXED');
   const [availability, setAvailability] = useState(null);
   const [availabilityError, setAvailabilityError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -45,7 +48,9 @@ export default function PracticeNew() {
 
   const n = Number(count);
   const validCount = Number.isInteger(n) && n >= 1 && n <= 120;
-  const enough = availability && availability.total >= n;
+  const available = availability ? ({ MIXED: availability.total, NEW: availability.remaining,
+    REPEAT: availability.solved, WRONG: availability.everWrong })[selectionMode] : 0;
+  const enough = availability && available >= n;
   const submit = async (e) => {
     e.preventDefault();
     setError('');
@@ -57,6 +62,7 @@ export default function PracticeNew() {
         examType: filter.examType || undefined,
         subject: filter.subject || undefined,
         topic: filter.topic || undefined,
+        selectionMode,
         questionCount: n,
         clientRequestId: requestId.current,
       });
@@ -72,7 +78,7 @@ export default function PracticeNew() {
       <h1>Süresiz pratik</h1>
       <p className="muted lead">Soruları seç, kendi hızında çöz. Oturuma daha sonra devam edebilirsin.</p>
       {active && <section className="card resume">
-        <div><h2>Devam eden pratiğin var</h2><p className="muted">{active.questionCount} soru · Süresiz</p></div>
+        <div><h2>Devam eden pratiğin var</h2><p className="muted">{active.questionCount} soru · {MODE_LABELS[active.selectionMode] || 'Karışık'} · Süresiz</p></div>
         <Link to={`/pratik/${active.id}`} className="btn btn-secondary">Pratiğe devam et</Link>
       </section>}
       {activeError && <Alert type="warn">Devam eden oturum alınamadı: {activeError}</Alert>}
@@ -83,14 +89,20 @@ export default function PracticeNew() {
           {Object.entries(BANKS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
         </Field>
         <FilterSelects rows={rows} value={filter} onChange={setFilter} />
+        {availability && <Field as="select" label="Soru geçmişi" value={selectionMode} onChange={(e) => setSelectionMode(e.target.value)}>
+          <option value="MIXED">Karışık · {formatNumber(availability.total)} soru</option>
+          <option value="NEW">Yalnız yeni · {formatNumber(availability.remaining)} soru</option>
+          <option value="REPEAT">Daha önce çözdüğüm · {formatNumber(availability.solved)} soru</option>
+          <option value="WRONG">En az bir kez yanlış yaptığım · {formatNumber(availability.everWrong)} soru</option>
+        </Field>}
         {loading ? <Loading text="Soru sayısı yükleniyor…" /> : availabilityError ? <ErrorBox error={{ message: availabilityError }} /> :
-          <p className="muted">Bu seçimde <strong>{formatNumber(availability?.total)}</strong> soru var.</p>}
-        {!loading && availability?.total === 0 && <Alert type="warn">Bu filtrede soru yok. Başka bir kaynak veya konu seç.</Alert>}
+          <p className="muted">Bu seçimde <strong>{formatNumber(available)}</strong> uygun soru var.</p>}
+        {!loading && availability && available === 0 && <Alert type="warn">Bu seçimde soru yok. Filtreyi veya soru geçmişini değiştir.</Alert>}
         <Field label="Soru sayısı (1–120)" type="number" inputMode="numeric" min="1" max="120"
           value={count} onChange={(e) => setCount(e.target.value)}
           error={!validCount ? 'Soru sayısı 1 ile 120 arasında tam sayı olmalı.' : undefined} />
         {validCount && availability && !enough && <Alert type="warn">
-          Bu seçimde yalnızca {formatNumber(availability.total)} soru var. Sayıyı azalt veya filtreyi değiştir.
+          Bu seçimde yalnızca {formatNumber(available)} soru var. Sayıyı azalt veya seçimi değiştir.
         </Alert>}
         {error && <Alert type="error">{error}</Alert>}
         <button type="submit" className="btn btn-primary" disabled={busy || loading || !validCount || !enough}>

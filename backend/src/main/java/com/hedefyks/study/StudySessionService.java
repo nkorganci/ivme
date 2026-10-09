@@ -3,6 +3,8 @@ package com.hedefyks.study;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.question.QuestionAvailabilityService;
 import com.hedefyks.question.QuestionFilter;
+import com.hedefyks.question.QuestionBank;
+import com.hedefyks.question.ExamType;
 import com.hedefyks.question.QuestionSelectionMode;
 import com.hedefyks.study.StudySessionDtos.CreateRequest;
 import com.hedefyks.study.StudySessionDtos.Session;
@@ -31,17 +33,31 @@ public class StudySessionService {
         if (previous.isPresent()) return get(userId, previous.get());
 
         QuestionFilter filter = new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic());
-        if (availability.count(userId, filter).total() < req.questionCount()) {
-            throw ApiException.badRequest("Bu seçimde yeterli soru yok. Soru sayısını azalt veya filtreyi değiştir.");
+        QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
+        var counts = availability.count(userId, filter);
+        long candidates = switch (selection) {
+            case NEW -> counts.remaining();
+            case REPEAT -> counts.solved();
+            case WRONG -> counts.everWrong();
+            case MIXED -> counts.total();
+        };
+        if (candidates < req.questionCount()) {
+            throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
         }
-        List<Long> ids = availability.randomIds(userId, filter, QuestionSelectionMode.MIXED, req.questionCount());
+        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount());
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
 
         Optional<Long> inserted = jdbc.sql("""
-                INSERT INTO study_sessions (user_id, mode, selection_mode, client_request_id)
-                VALUES (:userId, 'PRACTICE', 'MIXED', :requestId)
+                INSERT INTO study_sessions (user_id, mode, selection_mode, client_request_id,
+                                            filter_bank, filter_exam_type, filter_subject, filter_topic)
+                VALUES (:userId, 'PRACTICE', :selection, :requestId,
+                        :bank, :examType, :subject, :topic)
                 ON CONFLICT (user_id, client_request_id) DO NOTHING RETURNING id
                 """).param("userId", userId).param("requestId", req.clientRequestId())
+                .param("selection", selection.name())
+                .param("bank", filter.bank() == null ? null : filter.bank().name())
+                .param("examType", filter.examType() == null ? null : filter.examType().name())
+                .param("subject", filter.subject()).param("topic", filter.topic())
                 .query(Long.class).optional();
         if (inserted.isEmpty()) return get(userId, byRequest(userId, req.clientRequestId()).orElseThrow());
 
@@ -56,10 +72,15 @@ public class StudySessionService {
     @Transactional(readOnly = true)
     public Session get(Long userId, Long sessionId) {
         Header header = jdbc.sql("""
-                SELECT id, started_at FROM study_sessions
+                SELECT id, started_at, selection_mode, filter_bank, filter_exam_type,
+                       filter_subject, filter_topic FROM study_sessions
                 WHERE id = :sessionId AND user_id = :userId AND mode = 'PRACTICE'
                 """).param("sessionId", sessionId).param("userId", userId)
-                .query((rs, row) -> new Header(rs.getLong("id"), rs.getTimestamp("started_at").toInstant()))
+                .query((rs, row) -> new Header(rs.getLong("id"), rs.getTimestamp("started_at").toInstant(),
+                        QuestionSelectionMode.valueOf(rs.getString("selection_mode")),
+                        rs.getString("filter_bank") == null ? null : QuestionBank.valueOf(rs.getString("filter_bank")),
+                        rs.getString("filter_exam_type") == null ? null : ExamType.valueOf(rs.getString("filter_exam_type")),
+                        rs.getString("filter_subject"), rs.getString("filter_topic")))
                 .optional().orElseThrow(() -> ApiException.notFound("Pratik oturumu bulunamadı."));
         List<SessionQuestion> questions = jdbc.sql("""
                 WITH latest_round AS (
@@ -86,7 +107,8 @@ public class StudySessionService {
                         rs.getString("code"), com.hedefyks.question.QuestionBank.valueOf(rs.getString("bank")),
                         rs.getString("subject"), rs.getString("topic"),
                         QuestionStatus.valueOf(rs.getString("progress_status")))).list();
-        return new Session(header.id(), header.startedAt(), questions.size(), questions);
+        return new Session(header.id(), header.startedAt(), header.selectionMode(), header.bank(),
+                header.examType(), header.subject(), header.topic(), questions.size(), questions);
     }
 
     @Transactional(readOnly = true)
@@ -118,5 +140,6 @@ public class StudySessionService {
                 """).param("userId", userId).param("requestId", requestId).query(Long.class).optional();
     }
 
-    private record Header(Long id, Instant startedAt) {}
+    private record Header(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
+                          QuestionBank bank, ExamType examType, String subject, String topic) {}
 }

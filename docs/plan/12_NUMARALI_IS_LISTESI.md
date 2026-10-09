@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **07.05 — Pratikte aday modu ve konu filtreleri**; görev dosyası [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md).
+**Sıradaki tek iş:** **07.06 — Süreli pratik ve sonuç**; görev dosyası [17_07_06_SURELI_PRATIK.md](17_07_06_SURELI_PRATIK.md).
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
 
@@ -12,7 +12,7 @@
 - Her `NN.NN` işi tek oturumda tamamlanabilecek küçük bir çıktıdır. Aynı alanda kısa işler aynı oturumda sürdürülebilir; **bağlam büyüdüğünde veya bağımsız işe geçerken yeni oturum açmak uygundur, zorunlu değildir**. Yeni oturum önce yalnız bu listeyi, seçilen görev dosyasını, ilgili API/kodu ve `git status` sonucunu okusun.
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Her yeni oturumun ilk mesajı: `İvme 07.05 ile devam et. docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/16_07_05_PRATIK_SECIMI.md dosyalarını oku; yalnız bu işi yap, UI/testi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara ilerleyince bu cümledeki numara ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Her yeni oturumun ilk mesajı: `İvme 07.06 ile devam et. docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/17_07_06_SURELI_PRATIK.md dosyalarını oku; yalnız bu işi yap, UI/testi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara ilerleyince bu cümledeki numara ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -57,7 +57,7 @@
 |---|---|---|---|
 | 05.01 | BITTI | `net.ivme.dev` → `localhost:5173` rotası; aynı kökende paket ve tünel provası | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) |
 | 05.02 | BITTI | Normal tarayıcıdan alan adının açılması (kullanıcı gözlemi); genel uygulama kabulü değildir | Kullanıcı bildirimi |
-| 05.03 | YAPILACAK | Gerçek DB yedeği sonrası V10–V12'yi kontrollü uygulama; canlı API ve UI doğrulama | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md), [13_07_03_PRATIK_OTURUMU.md](13_07_03_PRATIK_OTURUMU.md) |
+| 05.03 | YAPILACAK | Gerçek DB yedeği sonrası V10–V13'ü kontrollü uygulama; canlı API ve UI doğrulama | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md), [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) |
 | 05.04 | YAPILACAK | Üretim paketinin kalıcı başlatma, uyku/yeniden başlama ve hata sonrası dönüş provası | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) |
 | 05.05 | YAPILACAK | Gerçek telefon/dış ağda giriş, soru, QR, oturum ve güvenli çerez akışı | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) |
 
@@ -80,11 +80,12 @@
 | 07.02 | BITTI | Sınav kurucusunda yeni/önceki/yanlış/karışık seçim ve sayı-süre koruması | [11_SINAV_SORU_SECIMI.md](11_SINAV_SORU_SECIMI.md) |
 | 07.03 | BITTI | Süresiz pratik oturumu oluştur/sürdür; tekil soru sırasını koru, yenilemede devam et | [13_07_03_PRATIK_OTURUMU.md](13_07_03_PRATIK_OTURUMU.md) |
 | 07.04 | BITTI | Oturum sorusuna cevap denemesi bağlama, sonraki/önceki ve tamamlanan soru durumu | [14_07_04_OTURUM_DENEMELERI.md](14_07_04_OTURUM_DENEMELERI.md) |
-| **07.05** | **SIRADAKI** | **Pratikte dört aday modu, konu/alt konu/tip filtresi ve yetersiz havuz uyarısı** | [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) |
-| 07.06 | YAPILACAK | Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı | 07.05 sonrası |
+| 07.05 | BITTI | Pratikte dört aday modu, kaynak/sınav/ders/konu filtresi ve yetersiz havuz uyarısı; alt konu/tip veri envanteri | [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) |
+| **07.06** | **SIRADAKI** | **Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı** | [17_07_06_SURELI_PRATIK.md](17_07_06_SURELI_PRATIK.md) |
 | 07.07 | YAPILACAK | Pratik oturum geçmişi/yeniden açma; hesap ve telefonda boş/hata durumları | 07.06 sonrası |
 | 07.08 | YAPILACAK | OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; soru sayısı ve yeni/önceki/yanlış/karışık tercihini hazırla | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01, 12.05, 13.05 sonrası |
 | 07.09 | YAPILACAK | Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası |
+| 07.10 | YAPILACAK | Doğrulanmış alt konu/soru tipi etiketleri geldikten sonra pratik ve sınavda bu filtreleri açma | 10.01 ve soru etiket verisi sonrası; [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) |
 
 ## 08 — Öğrenci istatistikleri
 

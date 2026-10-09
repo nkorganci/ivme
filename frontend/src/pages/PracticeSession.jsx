@@ -5,6 +5,7 @@ import { ErrorBox, Loading } from '../components/States.jsx';
 import { formatDate } from '../format.js';
 
 const STATUS = { NOT_STARTED: 'Henüz başlanmadı', IN_PROGRESS: 'Çalışılıyor', COMPLETED: 'Tamamlandı' };
+const MODE = { MIXED: 'Karışık', NEW: 'Yalnız yeni', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
 
 export default function PracticeSession() {
   const { id } = useParams();
@@ -15,10 +16,11 @@ export default function PracticeSession() {
   return (
     <>
       <div className="page-head">
-        <div><h1>Pratik oturumun</h1><p className="muted">{data.questionCount} soru · Süresiz · {formatDate(data.startedAt)}</p></div>
+        <div><h1>Pratik oturumun</h1><p className="muted">{data.questionCount} soru · {MODE[data.selectionMode] || 'Karışık'} · Süresiz · {formatDate(data.startedAt)}</p></div>
         <Link className="btn btn-secondary" to="/pratik/yeni">Yeni pratik</Link>
       </div>
       <p className="muted">Soru sırası kaydedildi. Bir sorudan sonra bu listeye dönüp sıradakini açabilirsin.</p>
+      {(data.subject || data.topic || data.examType) && <p className="muted">Seçim: {[data.examType, data.subject, data.topic].filter(Boolean).join(' · ')}</p>}
       <ol className="card practice-list">
         {data.questions.map((q) => <li key={q.questionId}>
           <Link to={`/soru/${encodeURIComponent(q.code)}${qs({ sessionId: data.id, bank: q.bank })}`}>
