@@ -4,16 +4,16 @@
 
 **Sıradaki tek iş:** **07.08 — Doğrulanmış OGM konu PDF'sinden ilgili soru kurucusuna geçiş**; [13.05 PDF görüntüleme](28_13_05_KONU_PDF_GORUNTULEME.md) tamamlandı. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
 
-**Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
+**Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
 ## Kullanım ve yeni oturum
 
 - `BITTI`: Kod/belge dilimi tamamlandı ve kayıttaki kapsam doğrulandı. Üst adım, tüm alt maddeleri `BITTI` olmadan bitmiş sayılmaz. `SIRADAKI`: bir sonraki bağımsız iş. `YAPILACAK`: açık iş. `KULLANICI`: ileride kullanıcının kendi ortamında yapacağı işlem.
 - Her `NN.NN` işi tek oturumda tamamlanabilecek küçük bir çıktıdır. Aynı alanda kısa işler aynı oturumda sürdürülebilir; **bağlam büyüdüğünde veya bağımsız işe geçerken yeni oturum açmak uygundur, zorunlu değildir**. Yeni oturum önce yalnız bu listeyi, seçilen görev dosyasını, ilgili API/kodu ve `git status` sonucunu okusun.
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
-- İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
+- İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 07.08 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/28_13_05_KONU_PDF_GORUNTULEME.md dosyalarını oku; yalnız doğrulanmış PDF–konu–soru bağlarıyla çalış, UI ve API'yi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 07.08 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/28_13_05_KONU_PDF_GORUNTULEME.md dosyalarını oku; yalnız doğrulanmış PDF–konu–soru bağlarıyla çalış, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -91,7 +91,7 @@
 | 07.05 | BITTI | Pratikte dört aday modu, kaynak/sınav/ders/konu filtresi ve yetersiz havuz uyarısı; alt konu/tip veri envanteri | [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) | — (tamamlandı) |
 | 07.06 | BITTI | Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı | [17_07_06_SURELI_PRATIK.md](17_07_06_SURELI_PRATIK.md) | — (tamamlandı) |
 | 07.07 | BITTI | Pratik oturum geçmişi/yeniden açma; hesap ve telefonda boş/hata durumları | [19_07_07_PRATIK_GECMISI.md](19_07_07_PRATIK_GECMISI.md) | — (tamamlandı) |
-| **07.08** | **SIRADAKI** | **OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; soru sayısı ve yeni/önceki/yanlış/karışık tercihini hazırla** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01, 12.05, 13.05 sonrası | GPT-6.1 Sol · Medium |
+| **07.08** | **SIRADAKI** | **OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; önce onaylı PDF–konu–soru bağı, sonra sayı ve geçmiş tercihi** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 2026-10-09 ön inceleme: dokuz PDF bağı yalnız başlık adayı, doğrulanmış üçlü bağ yok | GPT-6.1 Sol · Medium |
 | 07.09 | YAPILACAK | Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası | GPT-6.1 Sol · Medium |
 | 07.10 | YAPILACAK | Doğrulanmış alt konu/soru tipi etiketleri geldikten sonra pratik ve sınavda bu filtreleri açma | 10.01 ve soru etiket verisi sonrası; [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) | GPT-6 Luna · Medium |
 

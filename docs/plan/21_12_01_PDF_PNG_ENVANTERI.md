@@ -8,7 +8,7 @@ Mevcut kaynak PDF'leri, soru kırpımı/görsel üretimi, cevap ve konu bilgisin
 
 ## Oturum sonu
 
-Tarih · envanter · örnekleme yöntemi/bulguları · test · yerel commit · açık risk. Repo ve dış plan kopyasını eşitle.
+Tarih · envanter · örnekleme yöntemi/bulguları · test · yerel commit · açık risk. Planı repo içinde güncelle.
 
 ## 2026-10-09 envanteri
 

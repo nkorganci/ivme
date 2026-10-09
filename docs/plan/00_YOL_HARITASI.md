@@ -4,9 +4,9 @@
 |---|---|
 | Güncelleme | 2026-10-09 |
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
-| Tek kaynak | Bu dosya ürün kapsamı; [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durum kaynağıdır. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kolay erişim kopyası her adımda eşitlenir. |
+| Tek kaynak | `uygulama/docs/plan` ürün planının tek çalışma kaynağıdır; bu dosya kapsamı, [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durumunu tutar. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.06 görev dosyası](17_07_06_SURELI_PRATIK.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 07.08 görev dosyası](15_OGM_PDF_VE_KONU_SORU_BAGI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 

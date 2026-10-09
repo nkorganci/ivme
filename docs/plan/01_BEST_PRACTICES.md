@@ -56,7 +56,7 @@ Sadece NN.NN, şu kabul ölçütü: ...
 Mevcut kullanıcı değişikliklerini koru. İlgili UI'ı masaüstü/telefonda kontrol et.
 Gerekli testleri çalıştır; plan durumunu, API/README'yi güncelle.
 Yalnız kendi dosyalarını stage et ve feature branch'e yerel commit yap.
-Planın repo ve dış klasör kopyasını eşitle. Kullanıcı yorum verene dek push yapma.
+Planı yalnız repo içindeki `docs/plan` altında güncelle. Kullanıcı yorum verene dek push yapma.
 Sonuçta: ne değişti, UI kontrolü, test, commit, kalan sorun.
 ```
 
@@ -75,7 +75,6 @@ Sonuçta: ne değişti, UI kontrolü, test, commit, kalan sorun.
 |---|---|---|
 | `uygulama/frontend`, `backend`, `docs`, küçük sentetik örnek veri | Ürün kodu, göçler, testler, belgeler | Evet |
 | `uygulama/docs/plan` | Yaşayan plan, ilkeler, kaynak listesi | Evet |
-| `D:\workspace\Computer General\ivme projesi yapilacak olanlar` | Planın kolay erişim kopyası | Git deposu dışında; repo sürümüyle her iş sonunda eşitlenir |
 | `D:\workspace\ivme\Kaynaklar`, `veri-hatti` | Mevcut kaynak/işleme hattı; ayrı envanter sonrası taşınabilir kod | Yalnız kod ve küçük sentetik örnekler seçilerek |
 | PDF, toplu görsel, gerçek öğrenci verisi, yedek, `.env`, `node_modules`, derleme çıktısı | Büyük/gizli/üretilmiş veri | Hayır |
 

@@ -18,9 +18,15 @@
 | 07.08 | PDF'den konuya bağlı pratik/test kurucusuna giriş; sayı ve soru geçmişi tercihi; seçilen konudan çıkmama, kaynak ve soru sayısı doğrulaması. |
 | 07.09 | Kaliteli zorluk etiketlerinden aday sayıları ve filtre; etiketsiz veya yetersiz havuzun anlaşılır durumu; sıralama ve yenilemede seçim korunur. |
 
+## 07.08 ön inceleme — 2026-10-09
+
+Konu PDF kataloğundaki dokuz `topic_code` kaydının tamamı `candidate_title_match` durumunda; bu kayıtlar yalnız başlık eşleşmesidir. 12.05 denetiminde sayfa metniyle doğrulanan altı soru kartı `tyt.turkce.sozcuk` kodunu taşır, ancak dokuz aday PDF'nin hiçbiri bu kodda değildir. Üstelik `veri/sorular-ogm.csv` içindeki `3a-tyt-turkce-85-01` gibi "Noktalama İşaretleri" kaynaklı soruların mevcut `topic` alanı daha geniş "Ses Bilgisi ve Yazım"dır; yalnız mevcut konu filtresi kullanılırsa ilgisiz sorular da havuza girer. Bu nedenle mevcut veride öğrenciye açılabilecek doğrulanmış PDF–konu–soru üçlü bağı bulunmadı. 07.08 `SIRADAKI` kalır; aday bağlantıları ürün ekranında gösterilmez.
+
+Sonraki adım: Bir konu PDF'sinin içerik/sayfa kanıtıyla konu kimliğini incele; aynı kimlikteki öğrenci soru havuzunun kaynak ve soru kayıtlarını doğrula. Onaylı bağ için kalıcı, sürümlü PDF–soru kimliği kaydı oluştur. API bu kaydı tekrar doğrulayıp yalnız onaylı soru kimlikleri içinde gerçek uygun sayılarını döndürmeli; kurucular bağlantıdan gelen dar havuzu korumalı. Pratik ve sınav oluşturma isteklerinde sunucu kapsamı yeniden denetlenmeli.
+
 ## Kaynak ve sınırlar
 
 - Gerçek yerel kaynak: `D:\workspace\ivme\Kaynaklar\ogm-materyal\`; `veri-hatti\ogm-indirme\katalog.json` ve `veri-hatti\ogm-sorular\` mevcut başlangıçtır. Önce dosya ve kart sayıları yeniden ölçülür; eski indeks sayıları güncel kabul edilmez.
 - Öğrencinin konu anlatımı ekranında yalnız özgün PDF açılır. Gelecekteki AI ipucu için PDF metin/OCR çıkarımı ayrı iç iş hattıdır (13.01–13.03); PDF görüntüleme şartını değiştirmez.
 - Yerel kaynakları ve üretilmiş toplu görselleri Git'e ekleme. Katalogda yalnız gerekli metadata/kod bulunur; kaynak yolu normalize edilir ve dizin dışına çıkış engellenir.
-- Her dilimde UI kontrolü, gerekli API/test, iki plan kopyasının eşitlenmesi ve **yerel commit** gerekir. Kullanıcı değerlendirmesine kadar push yapılmaz.
+- Her dilimde UI kontrolü, gerekli API/test, repo içindeki planın güncellenmesi ve **yerel commit** gerekir. Kullanıcı değerlendirmesine kadar push yapılmaz.

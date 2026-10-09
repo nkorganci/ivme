@@ -17,6 +17,6 @@
 
 ## Oturum sonu kaydı
 
-`Tarih · değişiklik · UI · test · yerel commit · açık risk` ekle. [İş listesini](12_NUMARALI_IS_LISTESI.md) ve dış klasör kopyasını eşitle; bitince **07.06 BITTI**, **07.07 SIRADAKI** yap. GitHub'a push yapma.
+`Tarih · değişiklik · UI · test · yerel commit · açık risk` ekle. [İş listesini](12_NUMARALI_IS_LISTESI.md) repo içinde güncelle; bitince **07.06 BITTI**, **07.07 SIRADAKI** yap. GitHub'a push yapma.
 
 2026-10-09 · Süre alanı, sunucu başlangıcından kesin bitiş, süre sonunda kapanma, zamanlı yazma reddi, idempotent bitirme ve kayıtlı ilk/son tur sonuçları eklendi. Süresiz ve oturumsuz akış korundu. · Edge ile 1280/390 px kurucu, açık oturum ve sonuç ekranları sahte API verisiyle görsel olarak kontrol edildi; yatay taşma ve tarayıcı hatası yok. · `StudySessionTest` + `AttemptTest` geçti; `npm run build` geçti. Gerçek DB ve canlı süreç değiştirilmedi. · Yerel commit: bu işin Git kaydı. · Açık risk: canlı V10–V13 geçişi ve gerçek cihaz provası 05.03/05.05 kapsamında; bu UI kontrolü test verisiyle yapıldı.
