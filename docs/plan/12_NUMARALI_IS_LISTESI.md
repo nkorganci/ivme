@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **12.02 — Kaynak sayfa/kırpım/metin/şık/cevap/checksum sözleşmesi**. 04.07'nin yerel betiği hazır; canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
+**Sıradaki tek iş:** **12.03 — Metin katmanı/OCR ve inceleme kuyruğu pilotu**; [22_12_02_SORU_KAYNAK_SOZLESMESI.md](22_12_02_SORU_KAYNAK_SOZLESMESI.md) sözleşmesini kullan. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 12.02 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/21_12_01_PDF_PNG_ENVANTERI.md dosyalarını oku; yalnız bu işi yap, sözleşmeyi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 12.03 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/22_12_02_SORU_KAYNAK_SOZLESMESI.md dosyalarını oku; yalnız bu işi yap, pilotu doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -138,8 +138,8 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 12.01 | BITTI | Mevcut PDF/PNG hattı envanteri ve dengeli kalite örneği | [21_12_01_PDF_PNG_ENVANTERI.md](21_12_01_PDF_PNG_ENVANTERI.md) | — (tamamlandı) |
-| **12.02** | **SIRADAKI** | **Kaynak sayfa/kırpım/metin/şık/cevap/checksum sözleşmesi** | 12.01 sonrası | GPT-6.1 Sol · Medium |
-| 12.03 | YAPILACAK | Metin katmanı/OCR ve inceleme kuyruğu pilotu | 12.02 sonrası | GPT-6.1 Sol · Medium |
+| 12.02 | BITTI | Kaynak sayfa/kırpım/metin/şık/cevap/checksum sözleşmesi | [22_12_02_SORU_KAYNAK_SOZLESMESI.md](22_12_02_SORU_KAYNAK_SOZLESMESI.md) | — (tamamlandı) |
+| **12.03** | **SIRADAKI** | **Metin katmanı/OCR ve inceleme kuyruğu pilotu** | 12.02 sonrası | GPT-6.1 Sol · Medium |
 | 12.04 | YAPILACAK | Tekrar çalıştırılabilir toplu iş ve hata raporu; sonra kademeli ölçek | 12.03 sonrası | GPT-6 Luna · Medium |
 | 12.05 | YAPILACAK | OGM soru bankası ve mevcut kartların kaynak/konu kimliğini denetle; doğrulanmış PDF–soru bağı ve artımlı katalog | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve kaynak envanteri sonrası | GPT-6.1 Sol · Medium |
 

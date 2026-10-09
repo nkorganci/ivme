@@ -33,6 +33,8 @@ Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır
 5. Soruyla notu konu kimliği, beceri ve gerektiğinde metin eşleşmesiyle bağla. Her ipucu kaynağına dönebilir olsun. OCR ve AI sonuçları sürümlü, gözden geçirilebilir ve yeniden üretilebilir olmalı.
 6. Önce yüzlerce çeşitli soru ve birkaç ders notunda pilot yap; doğruluk, manuel düzeltme süresi ve soru başı maliyeti ölç. Ancak sonra 80 bin soruya kademeli iş planla. Aynı kaynak checksum'ı yeniden işlenmesin; hatalı satırlar diğerlerini durdurmasın.
 
+Bu kaydın v1 kaynak, sayfa/kırpım, metin/şık, cevap kanıtı ve SHA-256 alanları [12.02 sözleşmesinde](22_12_02_SORU_KAYNAK_SOZLESMESI.md) tanımlıdır. Mevcut uygulama CSV'si bu kanıtın tamamını taşımadığından, dosya adından otomatik doldurma yapılmaz.
+
 Öğrenciye sunulan OGM konu anlatımı **özgün PDF** olarak açılır. Metin/OCR ve Markdown parçaları yalnız gelecekteki arama/AI iş hattına hizmet eder; PDF'nin yerini almaz. `Kaynaklar/ogm-materyal` altındaki dosyaları kataloglarken öğrenciye mutlak disk yolu verilmez: yetkili API kimlikten izinli kanonik yola gider, PDF türünü doğrular ve satır içi sunar. Soru bağlantısı yalnız onaylı ortak konu kimliğiyle kurulur; belirsiz eşleşme incelemeye kalır. Zorluk kaynağı (editör etiketi, öğrenci oyu, ölçülen başarı) ayrı tutulur.
 
 ## 4. AI kullanımı: en az token, ölçülebilir kalite
