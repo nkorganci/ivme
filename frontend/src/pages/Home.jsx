@@ -88,6 +88,7 @@ export default function Home() {
 
       <h2 className="section-title">Hızlı eylemler</h2>
       <div className="quick">
+        <Link to="/pratik/yeni" className="btn btn-primary">Pratik başlat</Link>
         <Link to="/sinav/yeni" className="btn btn-primary">
           Sınav başlat
         </Link>

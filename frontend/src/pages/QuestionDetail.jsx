@@ -17,6 +17,7 @@ export default function QuestionDetail() {
   const [search] = useSearchParams();
   const { data: q, loading, error, retry, reload } = useAsync(() => api.get(`/api/questions/code/${encodeURIComponent(code)}`), [code]);
   const filters = Object.fromEntries(FILTER_KEYS.map((k) => [k, search.get(k) || '']));
+  const sessionId = search.get('sessionId');
   usePageTitle(q ? `Soru ${q.code}` : 'Soru');
 
   // Adreste ?bank= yoksa (QR / doğrudan bağlantı) sol menüde sorunun koleksiyonu vurgulansın.
@@ -36,10 +37,10 @@ export default function QuestionDetail() {
     );
   }
   // key: başka soruya geçince tüm yerel durum (seçim, sonuç, çözüm) sıfırlanır.
-  return q ? <QuestionView key={q.id} q={q} filters={filters} reload={reload} /> : null;
+  return q ? <QuestionView key={q.id} q={q} filters={filters} sessionId={sessionId} reload={reload} /> : null;
 }
 
-function QuestionView({ q, filters, reload }) {
+function QuestionView({ q, filters, sessionId, reload }) {
   const navigate = useNavigate();
   // Koleksiyon adres çubuğunda yoksa (örn. QR ile gelindiyse) sorunun kendi koleksiyonu kullanılır.
   const scope = { ...filters, bank: filters.bank || q.bank };
@@ -89,6 +90,7 @@ function QuestionView({ q, filters, reload }) {
   };
 
   const go = async (direction) => {
+    if (sessionId) return;
     if (moving) return;
     setMoving(true);
     setInfo('');
@@ -138,7 +140,9 @@ function QuestionView({ q, filters, reload }) {
     <div className="qpage">
       <h1 className="sr-only">Soru {q.code}</h1>
       <div className="qstrip">
-        <Link to={bankPath(q.bank) + backQuery}>← {bankLabel(q.bank)}</Link>
+        <Link to={sessionId ? `/pratik/${sessionId}` : bankPath(q.bank) + backQuery}>
+          ← {sessionId ? 'Pratik soruları' : bankLabel(q.bank)}
+        </Link>
         <strong className="code">{q.code}</strong>
         <span className="badge badge-primary">{q.examType}</span>
         <span className="badge badge-muted">{q.subject}</span>
@@ -198,18 +202,18 @@ function QuestionView({ q, filters, reload }) {
           <button type="button" className="btn btn-secondary btn-sm" onClick={skip}>Soruyu atla</button>
         </div>}
         <div className="qbar">
-          <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('prev')} title="Önceki soru (←)">
+          {!sessionId && <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('prev')} title="Önceki soru (←)">
             ‹ Önceki
-          </button>
+          </button>}
           <ChoiceButtons count={q.choiceCount} value={selected || (!ready ? lastAnswer?.selectedAnswer : null)}
             onSelect={(answer) => { setSelected(answer); practice.selectionChanged(); }} disabled={!canChoose}
             correct={!ready ? state?.correctAnswer : null} wrong={!ready && !state?.correctAnswer && lastAnswer?.selectedAnswer} />
           <button type="button" className="btn btn-primary" disabled={!selected || !canChoose} onClick={check} title="Cevabı kontrol et (Enter)">
             {practice.busy ? 'Kaydediliyor…' : 'Cevabı Kontrol Et'}
           </button>
-          <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('next')} title="Sonraki soru (→)">
+          {!sessionId && <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('next')} title="Sonraki soru (→)">
             Sonraki ›
-          </button>
+          </button>}
         </div>
       </div>
     </div>

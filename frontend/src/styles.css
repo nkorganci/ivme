@@ -324,6 +324,12 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
 /* ===== Koleksiyon listesi: dar ekranda kart satırlar ===== */
+.practice-list { list-style: none; padding: 0; overflow: hidden; }
+.practice-list li + li { border-top: 1px solid var(--line); }
+.practice-list a { display: flex; align-items: center; gap: 16px; min-height: 52px; padding: 10px 14px; text-decoration: none; color: var(--text); }
+.practice-list a:hover, .practice-list a:focus-visible { background: #f7f5ff; }
+.practice-list strong { min-width: 64px; color: var(--primary); }
+@media (max-width: 700px) { .practice-list a { align-items: flex-start; flex-direction: column; gap: 2px; } }
 .qcards { display: none; list-style: none; margin: 0; padding: 0; }
 .qcards li + li { border-top: 1px solid #f1f5f9; }
 .qcard { display: block; min-height: 44px; padding: 9px 12px; color: var(--text); text-decoration: none; }

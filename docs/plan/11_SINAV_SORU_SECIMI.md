@@ -12,8 +12,8 @@ Tarih: 2026-10-09. Durum: sınav kurucusu dilimi. Serbest pratik oturumu hâlâ 
 
 İki öğrenciyle dört aday havuzu, yetersiz sayı, sınavda kalıcı seçim modu ve eski sınav akışı ayrı `ivme_test` DB'sinde doğrulandı: 46 test geçti, 2 test atlandı. V9 yedeğinden geri alınan geçici `ivme_e2e` DB'si V11'e yükseldi. Ayrı `8082/5174` sunucularında masaüstü ve telefon Chrome akışları ayrı ayrı 31/31 denetim geçti; az soru uyarısı, yeni soru seçimi, sınav başlangıcı ve teslim sonrası akış kontrol edildi. Görüntüler Git dışı `veri/ui-selection/` altındadır. Canlı `8081/5173` süreçleri ve gerçek `ivme` verisi bu provada değiştirilmedi.
 
-`study_sessions` üzerinden cevap anında geri bildirim veren kalıcı pratik oturumu, oturuma bağlı deneme olayları ve pratik oturumunun süre bitişi henüz tamamlanmadı. Bu akış gerçek sınavdan ayrı ele alınacak. Alt konu/soru tipi filtresi, onaylı taksonomi verisi hazır olduğunda eklenir.
+`study_sessions` üzerinden süresiz pratik oluşturma ve soru sırasını sürdürme [07.03](13_07_03_PRATIK_OTURUMU.md) kapsamında eklendi. Oturuma bağlı deneme olayları [07.04](14_07_04_OTURUM_DENEMELERI.md), pratik seçim modları [07.05](12_NUMARALI_IS_LISTESI.md), süre bitişi [07.06](12_NUMARALI_IS_LISTESI.md) işidir. Alt konu/soru tipi filtresi, onaylı taksonomi verisi hazır olduğunda eklenir.
 
-Bu belgenin [07.02](12_NUMARALI_IS_LISTESI.md) sınav soru seçimi dilimi tamamlandı. Gerçek DB'de V11 açılışı [05.03](12_NUMARALI_IS_LISTESI.md), pratik oturumu [07.03](13_07_03_PRATIK_OTURUMU.md) açık işleridir.
+Bu belgenin [07.02](12_NUMARALI_IS_LISTESI.md) sınav soru seçimi dilimi tamamlandı. Gerçek DB'de V11 açılışı [05.03](12_NUMARALI_IS_LISTESI.md) açık işidir. Süresiz pratik oturumu [07.03](13_07_03_PRATIK_OTURUMU.md) kapsamında ayrı eklendi.
 
 **BITTI**

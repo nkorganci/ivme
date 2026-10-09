@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 class SpaForwardController {
 
-    @GetMapping({"/giris", "/kayit", "/sorular", "/cikmis-sorular", "/soru-bankasi", "/soru/{code}", "/sinav/yeni", "/sinav/{id}", "/sinav/{id}/sonuc",
+    @GetMapping({"/giris", "/kayit", "/sorular", "/cikmis-sorular", "/soru-bankasi", "/soru/{code}", "/pratik/yeni", "/pratik/{id}", "/sinav/yeni", "/sinav/{id}", "/sinav/{id}/sonuc",
             "/gecmis", "/geri-bildirim", "/hesap", "/yonetim", "/icerik-bakimi"})
     String spa() {
         return "forward:/index.html";

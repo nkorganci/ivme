@@ -7,6 +7,8 @@ import Home from './pages/Home.jsx';
 import QuestionCollection from './pages/QuestionCollection.jsx';
 import QuestionDetail from './pages/QuestionDetail.jsx';
 import ExamNew from './pages/ExamNew.jsx';
+import PracticeNew from './pages/PracticeNew.jsx';
+import PracticeSession from './pages/PracticeSession.jsx';
 import Exam from './pages/Exam.jsx';
 import ExamResult from './pages/ExamResult.jsx';
 import History from './pages/History.jsx';
@@ -49,6 +51,8 @@ export default function App() {
             <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
             <Route path="/soru/:code" element={<QuestionDetail />} />
             <Route path="/sinav/yeni" element={<ExamNew />} />
+            <Route path="/pratik/yeni" element={<PracticeNew />} />
+            <Route path="/pratik/:id" element={<PracticeSession />} />
             <Route path="/sinav/:id/sonuc" element={<ExamResult />} />
             <Route path="/gecmis" element={<History />} />
             <Route path="/geri-bildirim" element={<Feedback />} />

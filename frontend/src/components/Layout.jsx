@@ -9,6 +9,7 @@ const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
   ['/cikmis-sorular', 'AYT-TYT Çıkmış Sorular', 'book'],
   ['/soru-bankasi', 'Soru Bankası', 'layers'],
+  ['/pratik/yeni', 'Pratik Başlat', 'play'],
   ['/sinav/yeni', 'Sınav Başlat', 'play'],
   ['/gecmis', 'Geçmişim', 'clock'],
   ['/geri-bildirim', 'Geri Bildirim', 'message'],

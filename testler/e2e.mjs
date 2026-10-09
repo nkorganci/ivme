@@ -111,7 +111,7 @@ await shot('03-ana-sayfa');
 // sol menü: masaüstünde sabit menü, mobilde hamburger ile açılan çekmece (öğeler DOM'da her durumda vardır)
 if (mobil) { await clickText('', 'header.mobilebar button'); await sleep(300); }
 const menuLabels = await ev("[...document.querySelectorAll('.sidebar .sidenav a')].map((a) => a.getAttribute('aria-label'))");
-ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Sınav Başlat', 'Geçmişim', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
+ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
 await shot('03b-sol-menu');
 if (mobil) await ev("document.querySelector('.scrim')?.click()");
 
@@ -203,6 +203,29 @@ await sleep(600);
 t = await text();
 ok('Soru Bankası sorusu açıldı (geri bağlantısı koleksiyon adını söylüyor)', t.includes('← Soru Bankası'), t.slice(0, 160).replace(/\n/g, ' | '));
 await shot('05d-soru-bankasi-soru');
+
+// ---------------------------------------------------------------- kalıcı süresiz pratik
+await go('/pratik/yeni');
+await waitText('Pratiği başlat', 8000);
+await waitFor("!document.querySelector('button[type=submit]').disabled", 'pratik havuzu');
+await fill('Soru sayısı', '2');
+await clickText('Pratiği başlat', 'button');
+await waitFor("/^\\/pratik\\/\\d+$/.test(location.pathname)", 'pratik oturumu', 10000);
+const practicePath = await ev('location.pathname');
+await waitFor("document.querySelectorAll('.practice-list li').length === 2", 'iki sıralı pratik sorusu');
+const practiceCodes = await ev("[...document.querySelectorAll('.practice-list li a')].map(a => a.innerText.trim())");
+ok('Pratik oturumu iki soruyu tekil ve sıralı gösteriyor', practiceCodes.length === 2 && practiceCodes[0] !== practiceCodes[1]);
+await shot('05e-pratik-oturum');
+await clickText('1. soru', 'a');
+await waitFor("location.pathname.startsWith('/soru/') && document.body.innerText.includes('Pratik soruları')", 'pratik sorusu');
+ok('Pratik sorusundan oturuma dönüş bağlantısı var', (await text()).includes('Pratik soruları'));
+await go(practicePath);
+await waitFor("document.querySelectorAll('.practice-list li').length === 2", 'yeniden açılan pratik');
+ok('Yenilemeden sonra soru sırası aynı', JSON.stringify(practiceCodes) === JSON.stringify(await ev("[...document.querySelectorAll('.practice-list li a')].map(a => a.innerText.trim())")));
+await go('/pratik/yeni');
+await waitText('Devam eden pratiğin var', 8000);
+ok('Başlatma ekranı devam eden oturumu gösteriyor', (await text()).includes('Pratiğe devam et'));
+await shot('05f-pratik-devam');
 
 // ---------------------------------------------------------------- sınav
 await go('/sinav/yeni');

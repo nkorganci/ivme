@@ -1,6 +1,6 @@
 # 07.03 — Süresiz pratik oturumunu oluşturma ve sürdürme
 
-**Durum:** SIRADAKI · **Bağımlılık:** [07.01 ve 07.02](12_NUMARALI_IS_LISTESI.md) BITTI. Bu dosya bir sonraki çalışma oturumunun tek ürün görevidir.
+**Durum:** BITTI · **Bağımlılık:** [07.01 ve 07.02](12_NUMARALI_IS_LISTESI.md) BITTI.
 
 ## Kısa amaç
 
@@ -22,3 +22,7 @@ Masaüstü ve telefon ekranında öğrenci 1) uygun sayı seçer, 2) süresiz ot
 ## Oturum sonu kaydı
 
 `Tarih · karar/kapsam · UI kontrolü · test ve sonuç · commit · açık risk · sonraki numara` biçiminde buraya kısa kayıt ekle. Repo `docs/plan` ve dış plan klasörünü eşitle; yalnız ilgili dosyaları yerel feature branch'te commit et. **GitHub'a push yapma.**
+
+**2026-10-09 kayıt:** `V12` kullanıcı/istek kimliğini tekilleştirdi. API süresiz `MIXED` oturumu ve tekil soru sırası saklıyor, yalnız sahibi okuyor, doğru cevabı döndürmüyor. React'ta başlatma, devam etme ve oturum soru listesi eklendi; doğrudan SPA yolları sunucudan açılıyor. `StudySessionTest` 2/2, ön yüz derlemesi ve yedekten ayrılmış `ivme_e2e_0703` DB'sinde 1280/390 px Chrome akışları ayrı ayrı 35/35 geçti. Ekran görüntüleri Git dışı `veri/ui-study-session/` klasöründe. Gerçek `ivme` DB V9 ve çalışan 8081/5173 süreçleri değiştirilmedi. Deneme-oturum bağı, oturum içi geçiş ve tamamlanma durumu **07.04**'e bırakıldı. Yerel commit bu görevle birlikte oluşturulur; push yapılmaz.
+
+**BITTI**
