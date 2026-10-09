@@ -7,6 +7,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalış
 - Öğrenci kayıt/giriş: kullanıcı adı, e-posta, cep telefonu ve en az 8 karakterli parola. E-posta ve telefon şu anda ayrıca doğrulanmaz. Oturum çerezi ve CSRF koruması vardır.
 - Pratik: kaynak/sınav türü/ders/konu, yeni/önceki/yanlış/karışık soru geçmişi, sayı ve süreli/süresiz çalışma seçilerek kalıcı soru sıralı oturum açılır. Uygun soru sayısı gösterilir; yanıtlar ve durumlar oturuma bağlanır. Süre sonunda veya açık bitirme ile sonuç oluşur; Geçmişim ve Hesap ekranından oturumlara dönülür. Alt konu/soru tipi etiketleri sonraki adımdadır.
 - `CIKMIS` ve `OGM` soru koleksiyonları; sınav türü, ders ve konu filtresi; soru/çözüm görseli, QR, zorluk oyu ve geri bildirim. Serbest pratikte ilk yanıt, ikinci deneme, cevabı gösterme ve atlama olayları öğrenciye özel olarak kaydedilir; doğru şık yanlış yanıtın hemen ardından açılmaz.
+- Konu anlatımları: öğrenci özgün OGM PDF'lerini sınav, ders ve kaynak türüne göre arayıp site içinde açar. Eksik dosya ve yalnız video kaydı listede açıkça belirtilir. Aday konu başlığı henüz soru çözme bağı olarak kullanılmaz.
 - Süreli veya süresiz deneme; sınav sırasında cevap anahtarı gizli, bitiminde sonuç ve geçmiş kalıcıdır. Serbest pratikteki soru başı kayıtlar ile sınav geçmişi ayrı akışlardır; çalışma oturumu seçimi ve kişisel analiz henüz bağlı değildir.
 - `ADMIN` rolü `/yonetim` ve `/api/admin/stats` üzerinden yalnız toplu sayıları görür. `OPERATOR` rolü `/icerik-bakimi` ve `/api/operator` üzerinden içerik bakımını yapar. Öğrenci yalnız kendi sınav verisini görür.
 - Ham `activity_events` kayıtları için 90 gün saklama görevi vardır; giriş/aktiflik/çıkış olaylarının üretimi ve gösterimi henüz bağlı değildir.
@@ -20,6 +21,8 @@ Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Yerel veritaba
 3. Yerel ayrıcalıklı hesaplar `ivmeadmin` ve `ivmeoperator` olarak oluşturulmuştur. Geçici parolaları yalnız yerel giriş için geçerlidir; ikisini de ayrı ayrı **Hesap → Şifre değiştir** ekranından en az 8 karakterli, farklı parolalara çevirin. Üretim açılışı bu tamamlanmadan reddedilir. Geçici hesaplarla tünelden giriş engellenir.
 
 Gerçek sırlar, PostgreSQL yedekleri, soru CSV'leri ve görseller `veri/` gibi Git dışı konumlarda tutulur. Görsel kökü `YKS_RESIM_KLASORU` ile ayarlanır; `backend-baslat.bat` yerel `veri/resimler-pilot` varsa onu seçer.
+
+Konu PDF listesi için önce `D:\workspace\ivme\.venv\Scripts\python.exe scripts\ogm-konu-pdf-katalog.py --limit 2236 --resume` çalıştırılır. Geliştirme profili katalog ve kaynak kökünü `backend/` çalışma dizinine göre bulur. Üretimde `YKS_KONU_PDF_KATALOGU` ve `YKS_OGM_PDF_KAYNAGI` yolları `uretim.ayarlar.bat` içinde tanımlanır; kaynak PDF'ler ve üretilen katalog Git dışıdır. Katalog yeniden üretildikten sonra API'nin yeni kayıtları okuması için arka yüz yeniden başlatılır.
 
 ## Soru verisi
 

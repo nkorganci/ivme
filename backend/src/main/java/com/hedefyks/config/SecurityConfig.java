@@ -65,6 +65,10 @@ public class SecurityConfig {
                         .csrfTokenRepository(csrfTokens)
                         .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))
                 .headers(headers -> {
+                    headers.frameOptions(frame -> frame.disable());
+                    headers.addHeaderWriter((request, response) -> response.setHeader("X-Frame-Options",
+                            request.getRequestURI().matches("^/api/topic-pdfs/[0-9]+/file$")
+                                    ? "SAMEORIGIN" : "DENY"));
                     if (secureCookies) {
                         headers.httpStrictTransportSecurity(hsts -> hsts
                                 .requestMatcher(request -> true)

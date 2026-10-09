@@ -35,6 +35,9 @@ app:
   public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:
     dir: ${YKS_RESIM_KLASORU}              # soru görsellerinin kök klasörü (Windows yolu olabilir)
+  topic-pdfs:
+    catalog-dir: ${YKS_KONU_PDF_KATALOGU:}  # 13.04 çıktısındaki entries klasörü
+    source-dir: ${YKS_OGM_PDF_KAYNAGI:}     # özgün OGM PDF kökü
   admin:
     username: ${YKS_ADMIN_KULLANICI:admin}
     email: ${YKS_ADMIN_EPOSTA:admin@localhost}

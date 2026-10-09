@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **13.05 — Konu anlatımları listesi ve güvenli PDF açma**; [13.04 artımlı PDF kataloğu](27_13_04_OGM_KONU_PDF_KATALOGU.md) girdi. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
+**Sıradaki tek iş:** **07.08 — Doğrulanmış OGM konu PDF'sinden ilgili soru kurucusuna geçiş**; [13.05 PDF görüntüleme](28_13_05_KONU_PDF_GORUNTULEME.md) tamamlandı. 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 13.05 ile devam et. Model: GPT-6.1 Sol · High. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/27_13_04_OGM_KONU_PDF_KATALOGU.md dosyalarını oku; yalnız bu işi yap, PDF erişimini ve UI'yi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 07.08 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/15_OGM_PDF_VE_KONU_SORU_BAGI.md ve docs/plan/28_13_05_KONU_PDF_GORUNTULEME.md dosyalarını oku; yalnız doğrulanmış PDF–konu–soru bağlarıyla çalış, UI ve API'yi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -91,7 +91,7 @@
 | 07.05 | BITTI | Pratikte dört aday modu, kaynak/sınav/ders/konu filtresi ve yetersiz havuz uyarısı; alt konu/tip veri envanteri | [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) | — (tamamlandı) |
 | 07.06 | BITTI | Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı | [17_07_06_SURELI_PRATIK.md](17_07_06_SURELI_PRATIK.md) | — (tamamlandı) |
 | 07.07 | BITTI | Pratik oturum geçmişi/yeniden açma; hesap ve telefonda boş/hata durumları | [19_07_07_PRATIK_GECMISI.md](19_07_07_PRATIK_GECMISI.md) | — (tamamlandı) |
-| 07.08 | YAPILACAK | OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; soru sayısı ve yeni/önceki/yanlış/karışık tercihini hazırla | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01, 12.05, 13.05 sonrası | GPT-6.1 Sol · Medium |
+| **07.08** | **SIRADAKI** | **OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; soru sayısı ve yeni/önceki/yanlış/karışık tercihini hazırla** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01, 12.05, 13.05 sonrası | GPT-6.1 Sol · Medium |
 | 07.09 | YAPILACAK | Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası | GPT-6.1 Sol · Medium |
 | 07.10 | YAPILACAK | Doğrulanmış alt konu/soru tipi etiketleri geldikten sonra pratik ve sınavda bu filtreleri açma | 10.01 ve soru etiket verisi sonrası; [16_07_05_PRATIK_SECIMI.md](16_07_05_PRATIK_SECIMI.md) | GPT-6 Luna · Medium |
 
@@ -152,7 +152,7 @@
 | 13.02 | YAPILACAK | AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF | 13.01 sonrası | GPT-6.1 Sol · Medium |
 | 13.03 | YAPILACAK | İçerik aramasında kaynaklı 1–3 pasaj ve doğru PDF sayfasına dönüş denetimi; öğrenciye ayrı metin notu açma kararı yok | 13.02 sonrası | GPT-6.1 Sol · Medium |
 | 13.04 | BITTI | OGM konu PDF'lerinin tür, ders, sınav, göreli yol ve checksum artımlı kataloğu | [27_13_04_OGM_KONU_PDF_KATALOGU.md](27_13_04_OGM_KONU_PDF_KATALOGU.md) | — (tamamlandı) |
-| **13.05** | **SIRADAKI** | **Öğrenci menüsünde “Konu anlatımları”, filtreli liste ve yalnız özgün PDF'yi güvenli satır içi açma** | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 13.04 sonrası | GPT-6.1 Sol · High |
+| 13.05 | BITTI | Öğrenci menüsünde “Konu anlatımları”, filtreli liste ve özgün PDF'yi güvenli açma | [28_13_05_KONU_PDF_GORUNTULEME.md](28_13_05_KONU_PDF_GORUNTULEME.md) | — (tamamlandı) |
 
 ## 14 — AI etiketleme
 

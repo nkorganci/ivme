@@ -20,6 +20,11 @@ set PORT=5173
 rem --- Soru gorsellerinin kok klasoru (bu bilgisayardaki Git disi pilot klasor)
 set YKS_RESIM_KLASORU=%~dp0veri\resimler-pilot
 
+rem --- 13.04 ile uretilen konu PDF katalogu ve ozgun OGM kaynak kokudur.
+rem Katalogu once scripts\ogm-konu-pdf-katalog.py --limit 2236 --resume ile olustur.
+set YKS_KONU_PDF_KATALOGU=%~dp0veri\ogm-konu-pdf-katalog\entries
+set YKS_OGM_PDF_KAYNAGI=%~dp0..\kaynaklar\ogm-materyal
+
 rem --- Mevcut ivmeadmin ve ivmeoperator hesaplarinin sifresini once yerel Hesap ekraninda degistir.
 rem Yeni bir yonetici hesabina ihtiyac yoksa YKS_ADMIN_SIFRE tanimlama.
 

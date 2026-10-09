@@ -98,6 +98,9 @@ export default function Home() {
         <Link to="/soru-bankasi" className="btn btn-secondary">
           Soru Bankası
         </Link>
+        <Link to="/konu-anlatimlari" className="btn btn-secondary">
+          Konu anlatımları
+        </Link>
         <Link to="/gecmis" className="btn btn-secondary">
           Geçmiş
         </Link>

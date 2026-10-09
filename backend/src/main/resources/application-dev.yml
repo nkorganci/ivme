@@ -14,6 +14,9 @@ spring:
 app:
   images:
     dir: ${YKS_RESIM_KLASORU:../ornek-veri/resimler}   # mvn spring-boot:run, backend\ klasöründen çalışır
+  topic-pdfs:
+    catalog-dir: ${YKS_KONU_PDF_KATALOGU:../veri/ogm-konu-pdf-katalog/entries}
+    source-dir: ${YKS_OGM_PDF_KAYNAGI:../../kaynaklar/ogm-materyal}
   admin:
     username: ${YKS_ADMIN_KULLANICI:ivmeadmin}
     email: ${YKS_ADMIN_EPOSTA:root@localhost}

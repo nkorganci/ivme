@@ -16,6 +16,8 @@ import Feedback from './pages/Feedback.jsx';
 import Account from './pages/Account.jsx';
 import Admin from './pages/Admin.jsx';
 import Operator from './pages/Operator.jsx';
+import TopicPdfs from './pages/TopicPdfs.jsx';
+import TopicPdfViewer from './pages/TopicPdfViewer.jsx';
 import { useAuth } from './auth.jsx';
 
 function RoleHome() {
@@ -49,6 +51,8 @@ export default function App() {
             <Route path="/sorular" element={<OldQuestions />} />
             <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
             <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
+            <Route path="/konu-anlatimlari" element={<TopicPdfs />} />
+            <Route path="/konu-anlatimlari/:id" element={<TopicPdfViewer />} />
             <Route path="/soru/:code" element={<QuestionDetail />} />
             <Route path="/sinav/yeni" element={<ExamNew />} />
             <Route path="/pratik/yeni" element={<PracticeNew />} />

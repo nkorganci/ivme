@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** 13.05 öğrenci konu anlatımları listesi ve güvenli özgün PDF açma; [13.04 artımlı PDF kataloğu](27_13_04_OGM_KONU_PDF_KATALOGU.md) girdidir. 04.07'nin yetkili rol kurulumu beklenirken bağımsız kaynak işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** 07.08 doğrulanmış OGM konu PDF'sinden aynı konunun soru kurucusuna geçiş; [13.05 özgün PDF görüntüleme](28_13_05_KONU_PDF_GORUNTULEME.md) tamamlandı. 04.07'nin yetkili rol kurulumu beklenirken bağımsız ürün işi sürer. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

@@ -45,6 +45,17 @@ Sınavda `selectionMode` verilmezse `MIXED` kabul edilir. `NEW` daha önce cevap
 
 Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı `QuestionAvailabilityService` tanımından gelir. Oluşturulan soru kimlikleri `session_questions.position`, seçilen mod ve kaynak/sınav/ders/konu filtreleri `study_sessions` ile saklanır; yanıt anahtarı oturum API'sine konmaz. `time_limit_seconds` sunucuda saklanır; `deadlineAt = started_at + time_limit_seconds` ve `serverNow` sayaç gösterimi için döner. Sunucu bitişten sonra yeni cevap/olay kabul etmez; süre dolan oturum ilk okumada kapanır. Bitiş sonucu, soru başına ilk ve son çalışma turunun kayıtlı `is_correct` alanlarından hesaplanır: turda doğru yanıt varsa doğru, yalnız yanlış yanıt varsa yanlış, yanıt yoksa boş. Sonuçtaki son tur toplamı ve ilk tur toplamı ayrı gösterilir. Soru anahtarı sonradan değişse de eski tur puanı değişmez. Başlatma ekranı devam eden son pratiği gösterir; soru ekranı oturum sırasındaki önceki/sonraki soruya gider. `sessionId` ile gönderilen yanıtlar ve soru başı durum yalnız o oturumun olaylarından hesaplanır. Kimliksiz eski pratik ayrı kalır; daha sonraki bağımsız yanıt eski oturumun durumunu değiştirmez. Alt konu/soru tipi etiketleri henüz boş olduğu için bu filtreler gösterilmez.
 
+## OGM konu anlatımı PDF'leri
+
+| İstek | İşlev |
+|---|---|
+| `GET /api/topic-pdfs/filters` | Katalogdaki sınav, ders ve içerik türü seçenekleri |
+| `GET /api/topic-pdfs?exam&subject&kind&q&page&size` | Başlık araması ve filtrelerle sayfalı konu anlatımı listesi; durum `available`, `missing_file` veya `video_only` |
+| `GET /api/topic-pdfs/{id}` | Tek kayıt ve dosyanın güncel açılabilirlik durumu |
+| `GET /api/topic-pdfs/{id}/file` | Uygun PDF'yi `application/pdf`, `inline`, `Cache-Control: no-store` ile açar |
+
+Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir; bu geçiş 07.08 kapsamındadır.
+
 ## Operatör ve yönetici uçları
 
 `GET /api/admin/stats` yalnız `ADMIN` içindir. Eski `/api/admin/questions`, `/api/admin/feedback` ve `/api/admin/import` yolları kapalıdır. `OPERATOR` şunları kullanır: `GET /api/operator/questions`, `GET/PUT /api/operator/questions/{id}`, `GET /api/operator/feedback`, `PATCH /api/operator/feedback/{id}`, `GET /api/operator/reported-questions`, `POST /api/operator/import`. İçe alma `file` (CSV/JSON), `mode=INSERT_ONLY|UPSERT`, `dryRun=true|false` alır. `dryRun` varsayılan olarak `true`; tek dosyada doğrulama hatası varsa yazma yapılmaz. `code` kalıcı tekil soru kimliğidir; `bank` ve `solution_image` ithalat alanlarıdır.
