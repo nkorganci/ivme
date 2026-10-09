@@ -24,7 +24,7 @@ spring:
     hibernate:
       ddl-auto: validate          # tabloları yalnızca Flyway oluşturur; Hibernate yalnız doğrular
   flyway:
-    enabled: true
+    enabled: ${YKS_FLYWAY_ETKIN:true}  # sınırlı çalışma rolünde false; göçler ayrı yetkili işlemde uygulanır
     clean-disabled: true          # yanlışlıkla veritabanı silinmesin
   servlet:
     multipart:

@@ -2,10 +2,15 @@
 rem ORNEK ayar dosyasi. Bu dosyayi "uretim.ayarlar.bat" adiyla KOPYALA, degerleri doldur.
 rem uretim.ayarlar.bat .gitignore'dadir; gercek sifreler depoya girmez.
 
-rem --- Veritabani (PostgreSQL). Uretimde root/root KULLANMA: kendi kullanici ve sifreni olustur.
+rem --- Veritabani (PostgreSQL). Sadece tablo/veri yetkili uygulama rolu kullan.
+rem Rol ve sifre icin once scripts\kur-uygulama-rolu.ps1 betigini yetkili DB hesabi ile calistir.
+rem Sifreyi Git disi veri\gizli\ivme_app_password.txt dosyasindan yerel ayar dosyana aktar.
 set YKS_DB_URL=jdbc:postgresql://localhost:5432/ivme
-set YKS_DB_KULLANICI=root
+set YKS_DB_KULLANICI=ivme_app
 set YKS_DB_SIFRE=BURAYA_VERITABANI_SIFRESI
+rem V10–V13 yetkili hesapla 05.03 adiminda uygulandiktan sonra bu degeri false yap.
+rem Sema gocunu sinirli uygulama rolune birakma.
+set YKS_FLYWAY_ETKIN=false
 
 rem --- Sabit dis adres. Cloudflare Tunnel bunu HTTPS olarak yayinlar; QR kodlar burada acilir.
 set YKS_SITE_ADRESI=https://net.ivme.dev
