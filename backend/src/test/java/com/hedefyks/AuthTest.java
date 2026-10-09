@@ -146,6 +146,24 @@ class AuthTest extends TestBase {
     }
 
     @Test
+    void geciciYetkiliHesapTuneldenGirisYapamaz() throws Exception {
+        var admin = user("yonetici", Role.ADMIN);
+        admin.setPasswordChangeRequired(true);
+        users.save(admin);
+        String credentials = "{\"login\":\"yonetici\",\"password\":\"Sifre1234\"}";
+
+        mvc.perform(post("/api/auth/login").with(csrf()).header("CF-Connecting-IP", "203.0.113.5")
+                        .contentType(MediaType.APPLICATION_JSON).content(credentials))
+                .andExpect(status().isForbidden());
+        mvc.perform(post("/api/auth/login").with(csrf()).header("X-Forwarded-Host", "net.ivme.dev")
+                        .contentType(MediaType.APPLICATION_JSON).content(credentials))
+                .andExpect(status().isForbidden());
+        mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content(credentials))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(true));
+    }
+
+    @Test
     void eskiKullaniciTelefonunuSifreyleTamamlar() throws Exception {
         user("ayse", Role.USER);
         MockHttpSession session = login("ayse", "Sifre1234");

@@ -5,6 +5,7 @@ import com.hedefyks.auth.AuthDtos.RegisterRequest;
 import com.hedefyks.auth.AuthDtos.UserDto;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.user.AppUserDetails;
+import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -98,6 +99,13 @@ public class AuthController {
             // Hangi alanın yanlış olduğunu söylemeyiz (kullanıcı adı sızdırmamak için)
             throw new ApiException(HttpStatus.UNAUTHORIZED, "Kullanıcı adı veya şifre hatalı");
         }
+        AppUserDetails principal = (AppUserDetails) auth.getPrincipal();
+        User signedIn = users.findById(principal.id())
+                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı."));
+        if (signedIn.isPasswordChangeRequired() && signedIn.getRole() != Role.USER
+                && !isLocalRequest(request)) {
+            throw new ApiException(HttpStatus.FORBIDDEN, "Geçici yetkili hesabı yalnız yerel bilgisayarda kullanılabilir.");
+        }
         loginPerUser.clear(userKey);
         if (request.getSession(false) != null) {
             request.changeSessionId();                       // oturum sabitlemeye karşı
@@ -106,9 +114,21 @@ public class AuthController {
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
         contextRepository.saveContext(context, request, response);
-        AppUserDetails principal = (AppUserDetails) auth.getPrincipal();
-        return UserDto.of(users.findById(principal.id())
-                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı.")));
+        return UserDto.of(signedIn);
+    }
+
+    private static boolean isLocalRequest(HttpServletRequest request) {
+        if (request.getHeader("CF-Connecting-IP") != null) return false;
+        String remote = request.getRemoteAddr();
+        if (!"127.0.0.1".equals(remote) && !"::1".equals(remote)
+                && !"0:0:0:0:0:0:0:1".equals(remote)) return false;
+        String host = request.getServerName();
+        String forwardedHost = request.getHeader("X-Forwarded-Host");
+        return localHost(host) && (forwardedHost == null || localHost(forwardedHost));
+    }
+
+    private static boolean localHost(String host) {
+        return host != null && host.matches("(?i)^(localhost|127\\.0\\.0\\.1|\\[::1\\]|::1)(:\\d{1,5})?$");
     }
 
     private static ApiException tooManyRequests(String message) {
