@@ -30,7 +30,7 @@ const server = createServer((req, res) => {
     return req.on('end', () => {
       const input = JSON.parse(body);
       goals = [{ id: goals.length + 1, ...input, startsOn: '2026-10-09', endsOn: '2026-10-31',
-        status: 'ACTIVE' }, ...goals];
+        status: 'ACTIVE', progressCount: 0, remainingCount: input.targetCount }, ...goals];
       json(goals[0], 201);
     });
   }

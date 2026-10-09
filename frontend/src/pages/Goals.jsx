@@ -89,6 +89,10 @@ export default function Goals() {
           <div><strong>{label(PERIODS, goal.period)} · {label(METRICS, goal.metric)}</strong>
             <p className="muted small">{goal.subject || 'Tüm dersler'} · {goal.startsOn} – {goal.endsOn} · {goal.zone}</p>
             <p>Hedef: {goal.targetCount} · {goal.status === 'ENDED' ? 'Durduruldu' : open ? 'Aktif' : 'Dönem bitti'}</p>
+            <label className="goal-progress">İlerleme: {goal.progressCount} / {goal.targetCount}
+              <progress value={Math.min(goal.progressCount, goal.targetCount)} max={goal.targetCount} />
+            </label>
+            <p className="muted small">{goal.remainingCount === 0 ? 'Hedef tamamlandı' : `${goal.remainingCount} kaldı`}</p>
           </div>
           {open && <div className="goal-actions">
             <button type="button" className="btn btn-secondary" disabled={busy} onClick={() => {

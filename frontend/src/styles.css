@@ -174,6 +174,8 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .goal-actions, .goal-edit { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
 .goal-edit { flex-basis: 100%; }
 .goal-edit label { display: grid; gap: 4px; }
+.goal-progress { display: grid; gap: 4px; max-width: 280px; }
+.goal-progress progress { width: 100%; accent-color: var(--primary); }
 .table.clickable tbody tr { cursor: pointer; } .table tbody tr:hover { background: #f8fafc; }
 .pager { display: flex; align-items: center; justify-content: center; gap: 8px 12px; margin: 12px 0; flex-wrap: wrap; font-size: var(--fs-sm); }
 .pager-nums { display: inline-flex; align-items: center; gap: 4px; }

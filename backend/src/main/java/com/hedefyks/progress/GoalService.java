@@ -17,24 +17,43 @@ public class GoalService {
     public record Edit(Integer targetCount, String subject) {}
     public record Goal(Long id, String period, String metric, String subject, int targetCount,
                        LocalDate startsOn, LocalDate endsOn, String zone, String status,
-                       Instant createdAt, Instant updatedAt, Instant stoppedAt) {}
+                       Instant createdAt, Instant updatedAt, Instant stoppedAt,
+                       long progressCount, long remainingCount) {
+        Goal withProgress(long count) {
+            return new Goal(id, period, metric, subject, targetCount, startsOn, endsOn, zone,
+                    status, createdAt, updatedAt, stoppedAt, count, Math.max(0, targetCount - count));
+        }
+    }
 
     private static final String COLUMNS = "id, period, metric, subject, target_count, starts_on, ends_on, "
             + "zone_id, status, created_at, updated_at, stopped_at";
     private final JdbcTemplate jdbc;
+    private final GoalProgressService progress;
 
-    public GoalService(JdbcTemplate jdbc) { this.jdbc = jdbc; }
+    public GoalService(JdbcTemplate jdbc, GoalProgressService progress) {
+        this.jdbc = jdbc;
+        this.progress = progress;
+    }
 
     @Transactional(readOnly = true)
     public List<Goal> list(Long userId) {
+        return listAt(userId, Instant.now());
+    }
+
+    public List<Goal> listAt(Long userId, Instant now) {
         return jdbc.query("SELECT " + COLUMNS + " FROM goals WHERE user_id = ? ORDER BY created_at DESC, id DESC LIMIT 100",
-                (rs, n) -> row(rs), userId);
+                (rs, n) -> row(rs), userId).stream().map(goal -> withProgress(userId, goal, now)).toList();
     }
 
     @Transactional(readOnly = true)
     public Goal get(Long userId, Long id) {
+        return getAt(userId, id, Instant.now());
+    }
+
+    public Goal getAt(Long userId, Long id, Instant now) {
         return jdbc.query("SELECT " + COLUMNS + " FROM goals WHERE id = ? AND user_id = ?",
                 (rs, n) -> row(rs), id, userId).stream().findFirst()
+                .map(goal -> withProgress(userId, goal, now))
                 .orElseThrow(() -> ApiException.notFound("Hedef bulunamadı."));
     }
 
@@ -103,6 +122,11 @@ public class GoalService {
                 rs.getObject("ends_on", LocalDate.class), rs.getString("zone_id"), rs.getString("status"),
                 rs.getObject("created_at", OffsetDateTime.class).toInstant(),
                 rs.getObject("updated_at", OffsetDateTime.class).toInstant(),
-                rs.getObject("stopped_at") == null ? null : rs.getObject("stopped_at", OffsetDateTime.class).toInstant());
+                rs.getObject("stopped_at") == null ? null : rs.getObject("stopped_at", OffsetDateTime.class).toInstant(),
+                0, 0);
+    }
+
+    private Goal withProgress(Long userId, Goal goal, Instant now) {
+        return goal.withProgress(progress.count(userId, goal, now));
     }
 }
