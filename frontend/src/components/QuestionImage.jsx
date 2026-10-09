@@ -70,9 +70,16 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
 
   useEffect(() => {
     if (!zoom) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setZoom(false);
+    const previous = document.activeElement;
+    const dialog = wrap.current?.querySelector('.lightbox');
+    const close = dialog?.querySelector('button');
+    close?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); setZoom(false); return; }
+      if (e.key === 'Tab') { e.preventDefault(); close?.focus(); }
+    };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); previous?.focus?.(); };
   }, [zoom]);
 
   if (failed) {
@@ -109,7 +116,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
         {fit ? '↔ Genişlet' : '⤢ Sığdır'}
       </button>
       {zoom && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={() => setZoom(false)}>
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={(e) => e.target === e.currentTarget && setZoom(false)}>
           <button type="button" className="icon-btn lightbox-close" aria-label="Kapat" autoFocus>
             ×
           </button>

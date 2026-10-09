@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { StarValue } from './Stars.jsx';
 import QuestionBoard from './QuestionBoard.jsx';
 import RatingForm from './RatingForm.jsx';
@@ -11,15 +11,25 @@ const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 /** Soru sayfasının dar yan paneli: kompakt künye + katlanır bölümler (varsayılan kapalı). */
 export default function QuestionSide({ q, onRated }) {
   const [tab, setTab] = useState('board');
+  const tabRefs = useRef({});
   const [boardAvailable, setBoardAvailable] = useState(true);
   const votes = q.difficultyVotes || {};
   const total = DIFFICULTIES.reduce((t, d) => t + (votes[d] || 0), 0);
+  const availableTabs = [...(boardAvailable ? ['board'] : []), 'qr'];
+  const selectTab = (next) => { setTab(next); tabRefs.current[next]?.focus(); };
+  const onTabKeyDown = (event, current) => {
+    const index = availableTabs.indexOf(current);
+    const nextIndex = event.key === 'ArrowRight' ? (index + 1) % availableTabs.length
+      : event.key === 'ArrowLeft' ? (index + availableTabs.length - 1) % availableTabs.length
+        : event.key === 'Home' ? 0 : event.key === 'End' ? availableTabs.length - 1 : -1;
+    if (nextIndex >= 0) { event.preventDefault(); selectTab(availableTabs[nextIndex]); }
+  };
 
   return (
     <aside className="card qside" aria-label="Soru bilgileri">
       <div className="qside-tabs" role="tablist" aria-label="Soru araçları">
-        {boardAvailable && <button type="button" role="tab" id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onClick={() => setTab('board')}>Karalama</button>}
-        <button type="button" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onClick={() => setTab('qr')}>QR ve bağlantı</button>
+        {boardAvailable && <button ref={(el) => { tabRefs.current.board = el; }} type="button" role="tab" tabIndex={tab === 'board' ? 0 : -1} id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onKeyDown={(e) => onTabKeyDown(e, 'board')} onClick={() => setTab('board')}>Karalama</button>}
+        <button ref={(el) => { tabRefs.current.qr = el; }} type="button" role="tab" tabIndex={tab === 'qr' ? 0 : -1} id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onKeyDown={(e) => onTabKeyDown(e, 'qr')} onClick={() => setTab('qr')}>QR ve bağlantı</button>
       </div>
       {boardAvailable && <div id="panel-board" role="tabpanel" aria-labelledby="tab-board" hidden={tab !== 'board'}>
         <QuestionBoard questionId={q.id} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />

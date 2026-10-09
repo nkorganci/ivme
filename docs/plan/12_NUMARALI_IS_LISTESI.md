@@ -38,7 +38,7 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 03.01 | BITTI | Soru ekranı yerleşimi ve mor vurgu onayı; 1280/390 px prototip | [06_TASARIM_SOZLESMESI.md](06_TASARIM_SOZLESMESI.md) | — (tamamlandı) |
-| 03.02 | YAPILACAK | Prototipin kalan ekranlarına geçerken erişilebilir bileşen denetimi | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6 Luna · Medium |
+| 03.02 | BITTI | Ortak bileşen erişilebilirlik temeli: klavye/odak, etiketli durumlar, 16 px metin ve 44 px hedefler | [18_03_02_ERISILEBILIR_BILESEN_DENETIMI.md](18_03_02_ERISILEBILIR_BILESEN_DENETIMI.md) | — (tamamlandı) |
 
 ## 04 — Hesap, yetki ve güvenlik
 
