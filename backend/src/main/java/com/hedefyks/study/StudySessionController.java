@@ -2,6 +2,8 @@ package com.hedefyks.study;
 
 import com.hedefyks.study.StudySessionDtos.CreateRequest;
 import com.hedefyks.study.StudySessionDtos.Session;
+import com.hedefyks.study.StudySessionDtos.HistoryItem;
+import com.hedefyks.common.PageResponse;
 import com.hedefyks.user.AppUserDetails;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,6 +36,13 @@ public class StudySessionController {
     public ResponseEntity<Session> active(@AuthenticationPrincipal AppUserDetails me) {
         return service.latestActive(me.id()).map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
+    }
+
+    @GetMapping
+    public PageResponse<HistoryItem> history(@AuthenticationPrincipal AppUserDetails me,
+                                             @RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "10") int size) {
+        return service.history(me.id(), page, size);
     }
 
     @GetMapping("/{id}")

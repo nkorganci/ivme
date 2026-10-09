@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { api } from '../api.js';
 import { useAuth } from '../auth.jsx';
 import { usePageTitle } from '../hooks.js';
@@ -91,6 +91,11 @@ export default function Account() {
       <p className="muted lead">
         {user.username} · {user.email}
       </p>
+      {user.role === 'USER' && user.contactComplete && <section className="card account-history">
+        <h2>Çalışma geçmişin</h2>
+        <p className="muted">Pratik oturumlarına dön veya tamamlananların sonucuna bak.</p>
+        <Link to="/gecmis?tab=practice" className="btn btn-secondary">Pratik geçmişime git</Link>
+      </section>}
       {user.passwordChangeRequired && <Alert type="error">Bu hesap geçici bir şifre kullanıyor. Canlı yayından önce burada en az 8 karakterlik yeni bir şifre belirle.</Alert>}
       {!user.contactComplete && user.role === 'USER' &&
         <Alert type="error">Devam etmek için e-posta ve cep telefonu bilgilerini kaydet.</Alert>}

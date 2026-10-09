@@ -211,6 +211,39 @@ class StudySessionTest extends TestBase {
                 .andExpect(status().isOk())).get("endedAt")).isEqualTo(finished.get("endedAt"));
     }
 
+    @Test
+    void pratikGecmisiSahibeOzelSiraliVeSuresiDolanOturumuKapatir() throws Exception {
+        question("H-1", "Türkçe", "B");
+        user("ayse", Role.USER);
+        user("mehmet", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        var mehmet = login("mehmet", "Sifre1234");
+        long old = read(send(ayse, post("/api/study-sessions"), request(UUID.randomUUID(), "Türkçe", 1))
+                .andExpect(status().isCreated())).get("id").asLong();
+        String timed = request(UUID.randomUUID(), "Türkçe", 1)
+                .replace("\"clientRequestId\"", "\"durationMinutes\":1,\"clientRequestId\"");
+        long expired = read(send(ayse, post("/api/study-sessions"), timed)
+                .andExpect(status().isCreated())).get("id").asLong();
+        jdbc.update("update study_sessions set started_at = now() - interval '5 minutes' where id = ?", old);
+        jdbc.update("update study_sessions set started_at = now() - interval '2 minutes' where id = ?", expired);
+        read(send(mehmet, post("/api/study-sessions"), request(UUID.randomUUID(), "Türkçe", 1))
+                .andExpect(status().isCreated()));
+        JsonNode history = read(send(ayse, get("/api/study-sessions?page=0&size=1"), null)
+                .andExpect(status().isOk()));
+        assertThat(history.at("/totalElements").asInt()).isEqualTo(2);
+        assertThat(history.at("/totalPages").asInt()).isEqualTo(2);
+        assertThat(history.at("/content/0/id").asLong()).isEqualTo(expired);
+        assertThat(history.at("/content/0/status").asText()).isEqualTo("COMPLETED");
+        assertThat(history.at("/content/0/questionCount").asInt()).isEqualTo(1);
+        JsonNode next = read(send(ayse, get("/api/study-sessions?page=1&size=1"), null)
+                .andExpect(status().isOk()));
+        assertThat(next.at("/content/0/id").asLong()).isEqualTo(old);
+        assertThat(next.at("/content/0/status").asText()).isEqualTo("IN_PROGRESS");
+        assertThat(read(send(mehmet, get("/api/study-sessions"), null)
+                .andExpect(status().isOk())).at("/totalElements").asInt()).isEqualTo(1);
+        send(mehmet, get("/api/study-sessions/" + old), null).andExpect(status().isNotFound());
+    }
+
     private JsonNode selected(org.springframework.mock.web.MockHttpSession session, String mode, int count,
                               String subject) throws Exception {
         return read(send(session, post("/api/study-sessions"), selectedRequest(mode, count, subject))

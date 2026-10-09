@@ -67,7 +67,7 @@
 
 ### Adım 7 — Seçilebilir çalışma ve deneme oturumları
 
-**Özet:** Öğrenci hangi soruyu, kaç tane ve hangi sürede çözeceğini kurar. **Yapılacak:** Sınav türü/koleksiyon/ders/konu/alt konu/soru tipi, sayı, süreli/süresiz, yalnız yeni/yalnız önceki/karışık, önceden yanlışlarım seçimi; eşleşen ve kalan soru sayısı; yeterli soru yoksa açık uyarı; rastgele ama tekrarlanabilir oturum sırası; otomatik kayıt, süre bitişi, boş sorular ve sonuç. Pratik ile gerçek deneme kuralları ayrı; sonuçlar sonradan cevap anahtarı değişse de sabit. **UI kontrolü:** Kurulum, başlatma, ara verme/geri gelme, süre bitişi ve sonuç. **Bitti sayılır:** Her seçenekle çalışan en az bir anlamlı uçtan uca senaryo; aynı soru yanlışlıkla oturumda iki kez gelmez. **Durum:** ACIK (2026-10-09); [aday sayıları](10_SORU_KAPSAMI.md), [sınavda dört seçim modu](11_SINAV_SORU_SECIMI.md), kalıcı süresiz pratik ve [pratikte dört seçim modu](16_07_05_PRATIK_SECIMI.md) eklendi. Alt konu/soru tipi için doğrulanmış etiketler, süreli pratik ve sonuç açıktır.
+**Özet:** Öğrenci hangi soruyu, kaç tane ve hangi sürede çözeceğini kurar. **Yapılacak:** Sınav türü/koleksiyon/ders/konu/alt konu/soru tipi, sayı, süreli/süresiz, yalnız yeni/yalnız önceki/karışık, önceden yanlışlarım seçimi; eşleşen ve kalan soru sayısı; yeterli soru yoksa açık uyarı; rastgele ama tekrarlanabilir oturum sırası; otomatik kayıt, süre bitişi, boş sorular ve sonuç. Pratik ile gerçek deneme kuralları ayrı; sonuçlar sonradan cevap anahtarı değişse de sabit. **UI kontrolü:** Kurulum, başlatma, ara verme/geri gelme, süre bitişi ve sonuç. **Bitti sayılır:** Her seçenekle çalışan en az bir anlamlı uçtan uca senaryo; aynı soru yanlışlıkla oturumda iki kez gelmez. **Durum:** ACIK (2026-10-09); [aday sayıları](10_SORU_KAPSAMI.md), [sınavda dört seçim modu](11_SINAV_SORU_SECIMI.md), kalıcı süresiz pratik, [pratikte dört seçim modu](16_07_05_PRATIK_SECIMI.md), [süreli pratik](17_07_06_SURELI_PRATIK.md) ve [pratik geçmişi](19_07_07_PRATIK_GECMISI.md) eklendi. Alt konu/soru tipi için doğrulanmış etiketler ve gerçek cihaz provası açıktır.
 
 ### Adım 8 — Öğrenci ilerleme ve kullanım panosu
 
@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** [07.06 — Süreli pratik ve sonuç](17_07_06_SURELI_PRATIK.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** [04.05 — Yeni API'lerde nesne sahipliği ve negatif erişim denetimi](07_GUVENLIK_YETKI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

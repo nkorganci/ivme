@@ -35,6 +35,10 @@ public final class StudySessionDtos {
     public record Result(int correct, int wrong, int blank,
                          int firstCorrect, int firstWrong, int firstBlank) {}
 
+    public record HistoryItem(Long id, Instant startedAt, Instant endedAt, String status,
+                              QuestionSelectionMode selectionMode, Integer timeLimitSeconds,
+                              int questionCount) {}
+
     public record Session(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
                           QuestionBank bank, ExamType examType, String subject, String topic,
                           int questionCount, Integer timeLimitSeconds, Instant deadlineAt,

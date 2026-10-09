@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { useAuth } from '../auth.jsx';
 import { useAsync, usePageParam, usePageTitle } from '../hooks.js';
@@ -7,16 +7,64 @@ import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { displayName, formatDate, formatDuration, formatPercent } from '../format.js';
 
 const SIZE = 10;
+const PRACTICE_MODE = { MIXED: 'Karışık', NEW: 'Yeni sorular', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
 
 export default function History() {
+  const [params] = useSearchParams();
+  const practice = params.get('tab') === 'practice';
+  usePageTitle('Geçmişim');
+  return <>
+    <h1>Geçmişim</h1>
+    <nav className="history-tabs" aria-label="Geçmiş türü">
+      <Link to="/gecmis" className={`btn ${practice ? 'btn-secondary' : 'btn-primary'}`} aria-current={!practice ? 'page' : undefined}>Sınavlar</Link>
+      <Link to="/gecmis?tab=practice" className={`btn ${practice ? 'btn-primary' : 'btn-secondary'}`} aria-current={practice ? 'page' : undefined}>Pratikler</Link>
+    </nav>
+    {practice ? <PracticeHistory /> : <ExamHistory />}
+  </>;
+}
+
+function PracticeHistory() {
+  const [page, setPage] = usePageParam();
+  const { data, loading, error, retry } = useAsync(() => api.get('/api/study-sessions' + qs({ page, size: SIZE })), [page]);
+  return <section id="pratik">
+    <h2 className="section-title">Pratik oturumların</h2>
+    {loading && <Loading text="Pratik geçmişi yükleniyor…" />}
+    {error && <ErrorBox error={error} onRetry={retry} />}
+    {data?.totalElements === 0 && <section className="card"><Empty title="Henüz pratik oturumun yok.">
+      <p>İlk pratiğini başlatınca açık ve tamamlanan oturumların burada görünecek.</p>
+      <Link to="/pratik/yeni" className="btn btn-primary">Pratik başlat</Link>
+    </Empty></section>}
+    {data?.totalElements > 0 && data.content.length === 0 && <section className="card">
+      <Empty title="Bu sayfada pratik oturumu yok."><p>Önceki sayfaya dönerek kayıtlarını görebilirsin.</p></Empty>
+    </section>}
+    {data?.content.length > 0 && <div className="history-grid">
+      {data.content.map((item) => <article key={item.id} className="card history-card">
+        <h3>{item.questionCount} soruluk pratik</h3>
+        <p className="muted small">{formatDate(item.startedAt)}</p>
+        <p className="chips">
+          <span className="chip">{PRACTICE_MODE[item.selectionMode] || 'Karışık'}</span>
+          <span className="chip">{item.timeLimitSeconds ? `${item.timeLimitSeconds / 60} dakika` : 'Süresiz'}</span>
+          <span className={`chip ${item.status === 'COMPLETED' ? 'chip-ok' : 'chip-primary'}`}>
+            {item.status === 'COMPLETED' ? 'Tamamlandı' : 'Devam ediyor'}
+          </span>
+        </p>
+        <Link to={`/pratik/${item.id}`} className="btn btn-secondary">
+          {item.status === 'COMPLETED' ? 'Sonucu gör' : 'Devam et'}
+        </Link>
+      </article>)}
+    </div>}
+    {data && <Pager page={data.page} totalPages={data.totalPages} onChange={setPage} />}
+  </section>;
+}
+
+function ExamHistory() {
   const { user } = useAuth();
-  usePageTitle('Sınav Geçmişi');
   const [page, setPage] = usePageParam();
   const { data, loading, error, retry } = useAsync(() => api.get('/api/exams' + qs({ page, size: SIZE })), [page]);
 
   return (
     <>
-      <h1>{displayName(user)} · Sınav Geçmişin</h1>
+      <h2 className="section-title">{displayName(user)} · Sınav geçmişin</h2>
       {loading && <Loading />}
       {error && <ErrorBox error={error} onRetry={retry} />}
       {data && data.content.length === 0 && (

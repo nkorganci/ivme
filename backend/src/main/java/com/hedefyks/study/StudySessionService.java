@@ -12,6 +12,8 @@ import com.hedefyks.study.StudySessionDtos.SessionQuestion;
 import com.hedefyks.study.StudySessionDtos.QuestionStatus;
 import com.hedefyks.study.StudySessionDtos.AnswerResult;
 import com.hedefyks.study.StudySessionDtos.Result;
+import com.hedefyks.study.StudySessionDtos.HistoryItem;
+import com.hedefyks.common.PageResponse;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -145,6 +147,31 @@ public class StudySessionService {
                   AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
                 ORDER BY started_at DESC, id DESC LIMIT 1
                 """).param("userId", userId).query(Long.class).optional().map(id -> get(userId, id));
+    }
+
+    @Transactional
+    public PageResponse<HistoryItem> history(Long userId, int page, int size) {
+        closeExpired(userId);
+        int safePage = Math.max(0, page);
+        int safeSize = Math.max(1, Math.min(size, 100));
+        long total = jdbc.sql("""
+                SELECT count(*) FROM study_sessions
+                WHERE user_id = :userId AND mode = 'PRACTICE'
+                """).param("userId", userId).query(Long.class).single();
+        List<HistoryItem> items = jdbc.sql("""
+                SELECT s.id, s.started_at, s.ended_at, s.status, s.selection_mode,
+                       s.time_limit_seconds, (SELECT count(*) FROM session_questions sq
+                         WHERE sq.session_id = s.id) AS question_count
+                FROM study_sessions s WHERE s.user_id = :userId AND s.mode = 'PRACTICE'
+                ORDER BY s.started_at DESC, s.id DESC LIMIT :size OFFSET :offset
+                """).param("userId", userId).param("size", safeSize)
+                .param("offset", (long) safePage * safeSize)
+                .query((rs, row) -> new HistoryItem(rs.getLong("id"), rs.getTimestamp("started_at").toInstant(),
+                        rs.getTimestamp("ended_at") == null ? null : rs.getTimestamp("ended_at").toInstant(),
+                        rs.getString("status"), QuestionSelectionMode.valueOf(rs.getString("selection_mode")),
+                        (Integer) rs.getObject("time_limit_seconds"), rs.getInt("question_count"))).list();
+        return new PageResponse<>(items, safePage, safeSize, total,
+                (int) Math.ceil((double) total / safeSize));
     }
 
     @Transactional

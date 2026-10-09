@@ -30,6 +30,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 | `PUT /api/questions/{id}/board` | `{version,strokes}`; yalnız kendi çizimini kaydeder, eski sürüme `409` döner |
 | `POST /api/study-sessions` | `{bank?,examType?,subject?,topic?,selectionMode?,questionCount,durationMinutes?,clientRequestId}`; `NEW`, `REPEAT`, `WRONG`, `MIXED` (varsayılan) havuzundan 1–120 soruyla pratik kurar. Süre yoksa süresiz, varsa 1–240 dakika; az adayda 400; aynı UUID ağ tekrarında aynı oturumu döndürür |
 | `GET /api/study-sessions/active`, `GET /api/study-sessions/{id}` | Kendi son açık pratiği (yoksa 204) veya seçilen pratiğin kalıcı soru sırası, seçim modu/filtreleri, sunucu saati, kesin bitişi ve soru başı durumu; başka kullanıcı için 404. Biten oturumda ilk/son tur sonuçları ve toplamlar döner |
+| `GET /api/study-sessions?page&size` | Kendi pratik oturumlarını en yeni önce sayfalar; açık/süre bitmiş durumunu, soru sayısını, modu ve süreyi döner. Başka hesabın oturumu listelenmez |
 | `POST /api/study-sessions/{id}/finish` | Kendi süreli pratiğini kapatır; tekrarda aynı bitiş/sonuç. Başka kullanıcıya 404, süresiz açık oturuma 409 |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes}` | `NEW`, `REPEAT`, `WRONG`, `MIXED` aday havuzundan süreli/süresiz sınav; eksik havuzda 400 |
 | `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, otomatik kayıt ve sonuç |
