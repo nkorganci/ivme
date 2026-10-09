@@ -22,12 +22,16 @@
 
 **Bildirim gizliliği:** İçerik operatörü soru hatasını ve açıklamayı görebilir; bildiren öğrencinin kullanıcı adı API yanıtından ve arayüzden çıkarılmıştır. Serbest metin öğrenci tarafından kişisel bilgi içerebilir; operatör rolü ayrı hesapla sınırlı tutulur.
 
+**Görsel sınırı:** Yerel görsel deposu yalnız WebP, PNG, JPEG ve GIF uzantılarını kabul eder; sunmadan önce dosya imzasını denetler. HTML/SVG ya da görsel uzantısıyla gizlenmiş HTML sunulmaz. Mevcut `ivme` veritabanındaki 80.097 görsel yolunun tamamı `.webp` uzantılıdır. İçe alma sırasında `exists` yalnız yol/uzantıyı kontrol eder; içerik imzası yükleme anında denetlenir.
+
+**Yerel görsel kökü:** Önceki `veri/resimler/ogm` bağlantısı taşınmış, artık var olmayan `D:\workspace\Eczacimiz Nazile\site\data\ogm\img` yoluna bakıyordu. Eski bağlantıya dokunmadan Git dışı `veri/resimler-pilot` kökü oluşturuldu: `ogm` gerçek `D:\workspace\ivme\site\data\ogm\img` klasörüne, `tyt`/`ayt` mevcut görsel klasörlerine bağlanır. `backend-baslat.bat` bu kökü bulursa kullanır. Rastgele seçilen 30 sorunun dosyası ve WebP imzası doğrulandı; kaynak dosyalar taşınmadı.
+
 ## Açık kontrol listesi
 
 - Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
 - CSRF, oturum süresi/çıkış, giriş hızı ve güvenli çerez denetimi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
-- Görsel yolunun kök dışına çıkması, dosya türü ve hata yanıtında bilgi sızıntısı testi.
+- Görsel symlink hedefleri ve hata yanıtında bilgi sızıntısı testi; izinli uzantı ve dosya imzası denetimi eklendi.
 - Etkinlik verisinin saklama/silme ve dışa aktarma kararı; yedek ve geri yükleme provası.
 - Üretim için ayrı sınırlı DB rolü, güçlü hesap parolaları ve internetten erişim provası.
 
