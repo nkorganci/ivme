@@ -24,7 +24,7 @@
 
 **Bildirim gizliliği:** İçerik operatörü soru hatasını ve açıklamayı görebilir; bildiren öğrencinin kullanıcı adı API yanıtından ve arayüzden çıkarılmıştır. Serbest metin öğrenci tarafından kişisel bilgi içerebilir; operatör rolü ayrı hesapla sınırlı tutulur.
 
-**Görsel sınırı:** Yerel görsel deposu yalnız WebP, PNG, JPEG ve GIF uzantılarını kabul eder; sunmadan önce dosya imzasını denetler. HTML/SVG ya da görsel uzantısıyla gizlenmiş HTML sunulmaz. Mevcut `ivme` veritabanındaki 80.097 görsel yolunun tamamı `.webp` uzantılıdır. İçe alma sırasında `exists` yalnız yol/uzantıyı kontrol eder; içerik imzası yükleme anında denetlenir.
+**Görsel sınırı:** Yerel görsel deposu yalnız WebP, PNG, JPEG ve GIF uzantılarını kabul eder; sunmadan önce dosya imzasını denetler. HTML/SVG ya da görsel uzantısıyla gizlenmiş HTML sunulmaz. Yol hem normalleştirilmiş hem gerçek dosya konumuyla denetlenir; başlangıçta mevcut doğrudan alt klasör görsel bağlantıları tanınır, onların içinden başka klasöre kaçan bağlantılar reddedilir. Yerel OGM pilot bağlantısında gerçek görsel servis edildi; sembolik dosya bağlantısı oluşturan test bu Windows ortamında izin olmadığı için atlandı. Mevcut `ivme` veritabanındaki 80.097 görsel yolunun tamamı `.webp` uzantılıdır. İçe alma sırasında `exists` yol/uzantı/gerçek kök konumunu kontrol eder; içerik imzası yükleme anında denetlenir.
 
 **Giriş hızı ve CSRF:** Aynı IP ve kullanıcı için hatalı giriş sınırı ile başarılı girişte bu sayacın temizlenmesi ayrı API testleriyle doğrulandı. Oturum açılmış olsa bile CSRF belirteci taşımayan parola değişikliği 403 ile reddedilir; parola hash'i değişmez. Tünel trafiğindeki gerçek istemci IP davranışı dış erişim provasına bırakıldı.
 
@@ -37,7 +37,7 @@
 - Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
 - Oturum süresi/çıkış ve tünel üzerinden `Set-Cookie` denetimi. Giriş hızı, parola değişikliğinde CSRF reddi ve `Secure` CSRF çerezi test edildi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
-- Görsel symlink hedefleri ve hata yanıtında bilgi sızıntısı testi; izinli uzantı ve dosya imzası denetimi eklendi.
+- Hata yanıtında bilgi sızıntısı testi; görsel gerçek yol, izinli uzantı ve dosya imzası denetimi eklendi. Sembolik bağlantı kaçış testi bu Windows ortamında atlandı; Linux CI veya symlink izni olan makinede çalıştırılmalı.
 - Etkinlik verisi için öğrenciye açıklama, uzun dönem toplulaştırma ve dışa aktarma/silme akışı; yedek ve geri yükleme provası. Ham olayların 90 günlük otomatik silinmesi uygulandı.
 - Üretim için ayrı sınırlı DB rolü, güçlü hesap parolaları ve internetten erişim provası.
 

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import org.springframework.core.io.FileSystemResource;
@@ -17,9 +19,29 @@ import org.springframework.stereotype.Component;
 public class LocalImageStorage implements ImageStorage {
 
     private final Path root;
+    private final List<Path> allowedRealRoots;
 
     public LocalImageStorage(AppProperties props) {
         this.root = Path.of(props.images().dir()).toAbsolutePath().normalize();
+        List<Path> allowed = new ArrayList<>();
+        try {
+            Path realRoot = root.toRealPath();
+            allowed.add(realRoot);
+            // İlk açılışta tanımlı doğrudan alt klasör bağlantıları güvenilir görsel bağlarıdır.
+            try (var children = Files.list(root)) {
+                children.filter(Files::isDirectory).forEach(child -> {
+                    try {
+                        Path realChild = child.toRealPath();
+                        if (!realChild.startsWith(realRoot)) allowed.add(realChild);
+                    } catch (IOException ignored) {
+                        // Kırık bağlantı servis edilmez.
+                    }
+                });
+            }
+        } catch (IOException ignored) {
+            allowed.add(root); // Kök henüz yoksa daha sonra oluşan normal dosyalar çalışır.
+        }
+        this.allowedRealRoots = List.copyOf(allowed);
     }
 
     @Override
@@ -37,17 +59,24 @@ public class LocalImageStorage implements ImageStorage {
         if (relativePath == null || relativePath.isBlank()) {
             return Optional.empty();
         }
-        String name = relativePath.toLowerCase(Locale.ROOT);
-        if (!name.endsWith(".webp") && !name.endsWith(".png") && !name.endsWith(".jpg")
-                && !name.endsWith(".jpeg") && !name.endsWith(".gif")) {
+        if (!isImageName(relativePath)) {
             return Optional.empty();
         }
         try {
             Path p = root.resolve(relativePath).normalize();
-            return p.startsWith(root) && Files.isRegularFile(p) ? Optional.of(p) : Optional.empty();
-        } catch (InvalidPathException e) {
+            if (!p.startsWith(root) || !Files.isRegularFile(p)) return Optional.empty();
+            Path real = p.toRealPath();
+            if (!isImageName(real.getFileName().toString())) return Optional.empty();
+            return allowedRealRoots.stream().anyMatch(real::startsWith) ? Optional.of(real) : Optional.empty();
+        } catch (InvalidPathException | IOException e) {
             return Optional.empty();
         }
+    }
+
+    private static boolean isImageName(String name) {
+        String lower = name.toLowerCase(Locale.ROOT);
+        return lower.endsWith(".webp") || lower.endsWith(".png") || lower.endsWith(".jpg")
+                || lower.endsWith(".jpeg") || lower.endsWith(".gif");
     }
 
     private static boolean hasImageSignature(Path path) {
