@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     ResponseEntity<ErrorBody> integrity(DataIntegrityViolationException e) {
-        log.warn("Veri bütünlüğü hatası: {}", e.getMostSpecificCause().getMessage());
+        log.warn("Veri bütünlüğü hatası (kısıt ihlali).");
         return body(HttpStatus.CONFLICT, "Bu kayıt zaten var veya başka bir kayıtla çakışıyor.", null);
     }
 

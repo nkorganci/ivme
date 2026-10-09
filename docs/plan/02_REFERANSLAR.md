@@ -22,6 +22,8 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 - [PyMuPDF: PDF metin çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-text.html) ve [görsel çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-images.html) — mevcut Python hattına uygunluğu Adım 12'de ölç.
 - [Tesseract OCR: girdi biçimleri](https://github.com/tesseract-ocr/tessdoc/blob/main/InputFormats.md) — doğrudan PDF okuyamaz; taranmış PDF için önce görüntüye çevirme/OCR katmanı gerekir.
 - [OWASP Top 10:2025](https://top10.owasp.org/2025/0x00_2025-Introduction/) — erişim kontrolü, kimlik doğrulama ve güvenlik kayıtları için inceleme çerçevesi.
+- [NIST SP 800-63B: şifre kuralları](https://pages.nist.gov/800-63-4/sp800-63b.html) — tek faktörlü girişte uzun şifre, parola yöneticisi desteği ve gereksiz karakter sınıfı zorunluluğundan kaçınma.
+- [OWASP: şifre saklama](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) — mevcut BCrypt saklama yönteminde iş faktörü ve 72 bayt sınırı.
 
 ## Yeni sınav içeriği ekleme şablonu
 

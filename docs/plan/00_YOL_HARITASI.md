@@ -105,6 +105,10 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Şimdi:** Bu üç plan belgesini gözden geçirip depoya koymak; mevcut çalışma ağacını korumak. **Sonraki uygulama oturumu:** Adım 1 envanteri bitir, ardından `ivme` veritabanı için Adım 2'ye geç. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
+**Sıradaki planlı iş:** Adım 1 envanteri bitir, ardından `ivme` veritabanı için Adım 2'ye geç. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; saklama/silme süresi; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
+
+### 2026-10-08 — Kayıt ve ilk giriş önceliği
+
+Kullanıcı isteğiyle kayıt akışı Adım 4'ten önce uygulamaya alındı: yeni öğrenci kullanıcı adı, şifre, e-posta ve cep telefonu girer; mevcut öğrenci ilk girişte eksik iletişim bilgisini Hesap ekranında tamamlar. İletişim bilgisi değişikliği mevcut şifreyi ister. Numara biçimi doğrulanır ve standart biçimde saklanır; SMS/e-posta gönderimi olmadığı için adres/numara sahipliği doğrulanmış sayılmaz ve hesap kurtarmada kullanılmaz. Yeni şifreler en az 15 karakterdir; mevcut BCrypt depolaması için 72 UTF-8 bayt sınırı uygulanır. Ayrıntılı sözleşme ve kontrol listesi [kayıt notunda](03_KAYIT_VE_ILETISIM.md); genel güvenlik, DB adı ve tünel adımları açık kalır.
