@@ -11,6 +11,9 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 | `D:\workspace\ivme\README.md` | Eski yerel statik site ve veri hattı genel haritası | Yeni ürünün kaynağı ile karıştırma |
 | `D:\workspace\ivme\veri-hatti\` | PDF soru üretimi ve etiketleme betikleri | Adım 1 ve 12'de kalite/envanter |
 | `D:\workspace\ivme\Kaynaklar\` | PDF, müfredat ve diğer ham malzeme | Kaynak ve kapsam tablosu çıkar |
+| `D:\workspace\ivme\Kaynaklar\ogm-materyal\` | OGM konu anlatımı, konu özeti, sunu, soru bankası ve test PDF'lerinin gerçek yerel arşivi | 13.04'te ders/kaynak türüne göre yeniden say; içerik Git'e girmez |
+| `D:\workspace\ivme\veri-hatti\ogm-indirme\katalog.json` ve `ICINDEKILER.md` | PDF başlığı, kaynak türü, sınav/ders ve göreli dosya yolu başlangıç kataloğu | Yeni eklenen PDF'lerde artımlı güncelleme ve dosya varlığı denetimi |
+| `D:\workspace\ivme\veri-hatti\ogm-sorular\` | Mevcut OGM soru kartları, kaynak ve konu etiketleme hattı | 12.05'te kart/kaynak/konu bağı ve belirsiz etiket örneği denetimi |
 | `D:\workspace\ivme\uygulama\ornek-veri\` | Küçük örnek veri | Örneklerin sentetik ve doğru eşleşmiş olduğunu doğrula |
 
 ## Dış teknik kaynaklar (2026-10-08'de kontrol edildi)

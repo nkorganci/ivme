@@ -87,9 +87,9 @@
 
 **Özet:** Var olan yaklaşık 80 bin soruyu görsel ve metin olarak izlenebilir biçimde işle. **Yapılacak:** Mevcut Python hattını önce değerlendir; PDF sayfası/koordinat, soru kırpımı, şık, cevap anahtarı, çözüm/QR, kaynak sürümü ve checksum ile tekil `question_id` eşleştir; gömülü metin varsa çıkar, taramada OCR uygula, formül/şekil şüphelilerini inceleme kuyruğuna at; yinelenenleri işaretle; orijinal PDF ve soru görselini sakla. Web için çözünürlüğe göre optimize edilmiş görsel, AI için aranabilir metin ve gerektiğinde özgün kırpım birlikte kullanılır. 80 bin sorunun tamamını ilk gün AI'ya göndermeden önce küçük örneklemde kalite ve birim maliyeti ölç. **UI kontrolü:** Kırpım, şıklar, doğru cevap ve çözüm bağı her kaynak türünde örneklenir. **Bitti sayılır:** Tekrar çalıştırılabilir, durup devam eden aktarım; hata raporu ve kaynak sayfasına iz sürme. **Durum:** YAPILACAK.
 
-### Adım 13 — Ders notlarını aranabilir bilgi tabanına dönüştürme
+### Adım 13 — OGM konu PDF'leri ve iç bilgi tabanı
 
-**Özet:** PDF notları öğrenciye ilgili konuda kısa, kaynaklı yardım olarak sun. **Yapılacak:** Her PDF için sayfa, başlık hiyerarşisi, konu kimliği ve sürüm kaydet; metni önce doğrudan çıkar, taramada OCR; tablo/formül/şekli ayrıca sakla; temizlenmiş parçaları Markdown + yapılandırılmış JSON kayıtlarına çevir; orijinal sayfa bağlantısını koru; anahtar kelime/konu aramasıyla başla, gerektiğinde semantik arama ekle. Öğrenciye uzun PDF dökmek yerine ilgili 1–3 pasaj, örnek ve kaynak sayfası göster. **UI kontrolü:** “Konu notu” sekmesinde doğru konu ve açılabilir kaynak; alakasız not yok. **Bitti sayılır:** Seçilmiş konularda insanın doğruladığı yüksek isabet ve doğru kaynak atfı. **Durum:** YAPILACAK.
+**Özet:** OGM konu anlatımlarını sitede özgün PDF olarak aç; sorularla doğrulanmış konu kimliği üzerinden bağla. **Yapılacak:** Yerel OGM kataloğundaki konu PDF'lerini sınıflandır, artımlı metadata kaydı oluştur, öğrenciye filtrelenebilir “Konu anlatımları” bölümü ve güvenli PDF görüntüleyici ver. Gelecekteki AI ipuçları için PDF sayfası/başlık/konu/sürüm ve metin/OCR parçalarını yalnız iç bilgi tabanında tut; bu parçalar öğrenci için PDF'nin yerine geçmez. **UI kontrolü:** PDF masaüstü/telefonda açılır; aynı konunun doğrulanmış sorularına geçiş ve boş durum nettir. **Bitti sayılır:** Örnek kaynaklarda doğru PDF, doğru konu bağı ve yetki/yol güvenliği sınanır. **Durum:** YAPILACAK. [OGM alt işleri](15_OGM_PDF_VE_KONU_SORU_BAGI.md).
 
 ### Adım 14 — AI ile soru etiketleme pilotu
 
@@ -120,3 +120,7 @@ Yönetici adı `ivmeadmin`, ayrı içerik operatörü adı `ivmeoperator` olarak
 ### 2026-10-09 — Parola alt sınırı
 
 Kullanıcının yeni kararıyla kayıt, Hesap ekranından parola değiştirme ve üretimde yapılandırmayla yeni yönetici oluşturma için alt sınır **8 karakter** oldu. BCrypt 72 UTF-8 bayt üst sınırı, geçici ayrıcalıklı parola engeli, CSRF ve giriş hızı koruması sürer. [04.10](12_NUMARALI_IS_LISTESI.md) kapsamında kayıt ve değiştirme sınır testleri eklenir.
+
+### 2026-10-09 — OGM konu PDF'si ve soruya geçiş
+
+`Kaynaklar/ogm-materyal` içine yeni ve mevcut soru bankaları ile konu anlatımları girecek. Öğrenci konu anlatımını **yalnız özgün PDF olarak** açacak. Menüde “Konu anlatımları” alanından PDF'ye, oradan doğrulanmış aynı konunun sorularına/pratik veya teste geçecek; sayı, geçmiş modu ve mevcutsa zorluk tercihi kullanıcıya kolay anlaşılır biçimde sunulacak. OGM katalog ve soru kartı hattı ilk referanstır; ad benzerliği tek başına konu eşlemesi sayılmaz. İşler [12.05, 13.04–13.05 ve 07.08–07.09](12_NUMARALI_IS_LISTESI.md) olarak eklendi; [uygulama kabulü](15_OGM_PDF_VE_KONU_SORU_BAGI.md) ayrı tutulur. Sıradaki 07.04 değişmedi.

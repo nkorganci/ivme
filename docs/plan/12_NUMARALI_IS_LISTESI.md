@@ -83,6 +83,8 @@
 | 07.05 | YAPILACAK | Pratikte dört aday modu, konu/alt konu/tip filtresi ve yetersiz havuz uyarısı | 07.04 sonrası; etiket verisi denetimi |
 | 07.06 | YAPILACAK | Süreli pratik sayacı, süre bitişi, boş sorular ve sonuç; sınav kuralından ayrı | 07.05 sonrası |
 | 07.07 | YAPILACAK | Pratik oturum geçmişi/yeniden açma; hesap ve telefonda boş/hata durumları | 07.06 sonrası |
+| 07.08 | YAPILACAK | OGM konu PDF'sinden aynı doğrulanmış konunun sorularına geçiş; soru sayısı ve yeni/önceki/yanlış/karışık tercihini hazırla | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01, 12.05, 13.05 sonrası |
+| 07.09 | YAPILACAK | Uygun soru havuzunda kolay/orta/zor tercihi, gerçek eşleşme sayısı ve yetersiz havuz durumu | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 07.08 sonrası |
 
 ## 08 — Öğrenci istatistikleri
 
@@ -125,14 +127,17 @@
 | 12.02 | YAPILACAK | Kaynak sayfa/kırpım/metin/şık/cevap/checksum sözleşmesi | 12.01 sonrası |
 | 12.03 | YAPILACAK | Metin katmanı/OCR ve inceleme kuyruğu pilotu | 12.02 sonrası |
 | 12.04 | YAPILACAK | Tekrar çalıştırılabilir toplu iş ve hata raporu; sonra kademeli ölçek | 12.03 sonrası |
+| 12.05 | YAPILACAK | OGM soru bankası ve mevcut kartların kaynak/konu kimliğini denetle; doğrulanmış PDF–soru bağı ve artımlı katalog | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve kaynak envanteri sonrası |
 
 ## 13 — Ders notları
 
 | No | Durum | Tek çıktı / kontrol | Kanıt |
 |---|---|---|---|
-| 13.01 | YAPILACAK | Kaynak PDF sayfası, başlık, konu ve sürümle not kayıt biçimi | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) |
-| 13.02 | YAPILACAK | PDF metni/OCR, formül ve tablolar için küçük pilot | 13.01 sonrası |
-| 13.03 | YAPILACAK | Kaynaklı 1–3 pasaj araması ve konu sekmesi UI denetimi | 13.02 sonrası |
+| 13.01 | YAPILACAK | Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) |
+| 13.02 | YAPILACAK | AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF | 13.01 sonrası |
+| 13.03 | YAPILACAK | İçerik aramasında kaynaklı 1–3 pasaj ve doğru PDF sayfasına dönüş denetimi; öğrenciye ayrı metin notu açma kararı yok | 13.02 sonrası |
+| 13.04 | YAPILACAK | OGM konu anlatımı PDF'lerinin artımlı kataloğu: tür, ders, sınav, konu, kaynak yolu ve checksum | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 10.01 ve 12.05 ile eşgüdüm |
+| 13.05 | YAPILACAK | Öğrenci menüsünde “Konu anlatımları”, filtreli liste ve yalnız özgün PDF'yi güvenli satır içi açma | [15_OGM_PDF_VE_KONU_SORU_BAGI.md](15_OGM_PDF_VE_KONU_SORU_BAGI.md); 13.04 sonrası |
 
 ## 14 — AI etiketleme
 
