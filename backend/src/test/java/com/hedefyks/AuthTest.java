@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -130,6 +131,18 @@ class AuthTest extends TestBase {
                         .content("{\"login\":\"ayse\",\"password\":\"Sifre1234\"}")).andExpect(status().isUnauthorized());
         mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"login\":\"ayse\",\"password\":\"YeniGucluSifre2026\"}")).andExpect(status().isOk());
+    }
+
+    @Test
+    void oturumluHesapDegisikligiCsrfOlmadanReddedilir() throws Exception {
+        var ayse = user("ayse", Role.USER);
+        MockHttpSession session = login("ayse", "Sifre1234");
+        String originalHash = ayse.getPasswordHash();
+
+        mvc.perform(put("/api/account/password").session(session).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"currentPassword\":\"Sifre1234\",\"newPassword\":\"YeniGucluSifre2026\"}"))
+                .andExpect(status().isForbidden());
+        assertThat(users.findById(ayse.getId()).orElseThrow().getPasswordHash()).isEqualTo(originalHash);
     }
 
     @Test
