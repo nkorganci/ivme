@@ -4,7 +4,7 @@ Güncelleme: 2026-10-09. React 19/Vite ön yüzü geliştirmede `127.0.0.1:5173`
 
 ## Kimlik ve erişim
 
-`POST /api/auth/register` `{username,email,phone,password}` → 201; `POST /api/auth/login` `{login,password}`; `POST /api/auth/logout`; `GET /api/auth/me`. `login` kullanıcı adı veya e-posta olabilir. Kayıtta e-posta ve telefon zorunlu, ancak şimdilik doğrulanmaz. Parola en az 15 karakter ve BCrypt sınırı gereği en çok 72 UTF-8 bayttır. `GET/PUT /api/account/contact` ve `PUT /api/account/password` kendi hesap bilgileri içindir; değişiklikte mevcut parola gerekir. `UserDto` içindeki `passwordChangeRequired` ayrıcalıklı hesabın geçici parola durumunu gösterir.
+`POST /api/auth/register` `{username,email,phone,password}` → 201; `POST /api/auth/login` `{login,password}`; `POST /api/auth/logout`; `GET /api/auth/me`. `login` kullanıcı adı veya e-posta olabilir. Kayıtta e-posta ve telefon zorunlu, ancak şimdilik doğrulanmaz. Parola en az 8 karakter ve BCrypt sınırı gereği en çok 72 UTF-8 bayttır. `GET/PUT /api/account/contact` ve `PUT /api/account/password` kendi hesap bilgileri içindir; değişiklikte mevcut parola gerekir. `UserDto` içindeki `passwordChangeRequired` ayrıcalıklı hesabın geçici parola durumunu gösterir.
 
 Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler `XSRF-TOKEN` çerezinden `X-XSRF-TOKEN` başlığı gerektirir. Üretimde iki çerez de `Secure`, HTTPS dış adresi zorunludur. `X-Forwarded-*` işlenmez. Yalnız loopback'ten gelen `CF-Connecting-IP` giriş/kayıt hız sınırı için değerlendirilir. Geçici parolalı `ADMIN`/`OPERATOR` dış alan adından giriş yapamaz ve üretim başlatılamaz.
 

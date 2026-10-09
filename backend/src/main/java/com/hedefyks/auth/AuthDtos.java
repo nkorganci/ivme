@@ -27,7 +27,7 @@ public final class AuthDtos {
             String phone,
 
             @NotBlank(message = "Şifre gerekli.")
-            @Size(min = 15, max = 72, message = "Şifre 15–72 karakter olmalı.")
+            @Size(min = 8, max = 72, message = "Şifre 8–72 karakter olmalı.")
             String password) {
         @Override public String toString() { return "RegisterRequest[redacted]"; }
     }
@@ -44,7 +44,7 @@ public final class AuthDtos {
             @NotBlank(message = "Mevcut şifre gerekli.")
             @Size(max = 1024, message = "Şifre çok uzun.") String currentPassword,
             @NotBlank(message = "Yeni şifre gerekli.")
-            @Size(min = 15, max = 72, message = "Yeni şifre 15–72 karakter olmalı.")
+            @Size(min = 8, max = 72, message = "Yeni şifre 8–72 karakter olmalı.")
             String newPassword) {
         @Override public String toString() { return "ChangePasswordRequest[redacted]"; }
     }

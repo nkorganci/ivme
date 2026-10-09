@@ -50,15 +50,15 @@ class AdminSeederTest {
     }
 
     @Test
-    void uretimdeYeniYoneticiSifresiEnAzOnBesKarakterOlur() {
+    void uretimdeYeniYoneticiSifresiEnAzSekizKarakterOlur() {
         UserRepository users = mock(UserRepository.class);
         AdminSeeder seeder = new AdminSeeder(new AppProperties("https://net.ivme.dev", null,
-                new AppProperties.Admin("yonetici", "yonetici@example.invalid", "kisa-parola"), null),
+                new AppProperties.Admin("yonetici", "yonetici@example.invalid", "kisa123"), null),
                 users, mock(PasswordEncoder.class), productionEnv());
 
         assertThatThrownBy(() -> seeder.run(mock(ApplicationArguments.class)))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("en az 15 karakter");
+                .hasMessageContaining("en az 8 karakter");
     }
 
     @Test

@@ -66,7 +66,7 @@ export default function Account() {
     e.preventDefault();
     const next = {};
     if (!form.currentPassword) next.currentPassword = 'Mevcut şifreni gir.';
-    if (form.newPassword.length < 15) next.newPassword = 'Yeni şifre en az 15 karakter olmalı.';
+    if (form.newPassword.length < 8) next.newPassword = 'Yeni şifre en az 8 karakter olmalı.';
     else if (new TextEncoder().encode(form.newPassword).length > 72) next.newPassword = 'Şifre en fazla 72 bayt olmalı.';
     if (form.confirm !== form.newPassword) next.confirm = 'Şifreler eşleşmiyor.';
     setErrors(next);
@@ -91,7 +91,7 @@ export default function Account() {
       <p className="muted lead">
         {user.username} · {user.email}
       </p>
-      {user.passwordChangeRequired && <Alert type="error">Bu hesap geçici bir şifre kullanıyor. Canlı yayından önce burada en az 15 karakterlik yeni bir şifre belirle.</Alert>}
+      {user.passwordChangeRequired && <Alert type="error">Bu hesap geçici bir şifre kullanıyor. Canlı yayından önce burada en az 8 karakterlik yeni bir şifre belirle.</Alert>}
       {!user.contactComplete && user.role === 'USER' &&
         <Alert type="error">Devam etmek için e-posta ve cep telefonu bilgilerini kaydet.</Alert>}
       {!contactReady ? <Loading text="İletişim bilgileri yükleniyor…" /> : (
@@ -121,7 +121,7 @@ export default function Account() {
           label="Yeni şifre"
           type="password"
           autoComplete="new-password"
-          hint="En az 15 karakter; boşluk kullanabilirsin."
+          hint="En az 8 karakter; daha uzun bir şifre tercih et."
           value={form.newPassword}
           onChange={set('newPassword')}
           error={errors.newPassword}

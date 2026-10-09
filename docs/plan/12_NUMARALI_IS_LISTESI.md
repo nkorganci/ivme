@@ -49,6 +49,7 @@
 | 04.07 | YAPILACAK | Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) |
 | 04.08 | YAPILACAK | Öğrencinin veri dışa aktarma/hesap silme akışı; erişim ve UI kontrolü | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) |
 | 04.09 | YAPILACAK | Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) |
+| 04.10 | BITTI | Kullanıcı isteğiyle kayıt, parola değiştirme ve yönetici oluşturma alt sınırını 8 karaktere eşitleme | [03_KAYIT_VE_ILETISIM.md](03_KAYIT_VE_ILETISIM.md) |
 
 ## 05 — Yerel yayın ve tünel
 

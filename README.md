@@ -4,7 +4,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalış
 
 ## Mevcut özellikler
 
-- Öğrenci kayıt/giriş: kullanıcı adı, e-posta, cep telefonu ve en az 15 karakterli parola. E-posta ve telefon şu anda ayrıca doğrulanmaz. Oturum çerezi ve CSRF koruması vardır.
+- Öğrenci kayıt/giriş: kullanıcı adı, e-posta, cep telefonu ve en az 8 karakterli parola. E-posta ve telefon şu anda ayrıca doğrulanmaz. Oturum çerezi ve CSRF koruması vardır.
 - `CIKMIS` ve `OGM` soru koleksiyonları; sınav türü, ders ve konu filtresi; soru/çözüm görseli, QR, zorluk oyu ve geri bildirim. Serbest pratikte ilk yanıt, ikinci deneme, cevabı gösterme ve atlama olayları öğrenciye özel olarak kaydedilir; doğru şık yanlış yanıtın hemen ardından açılmaz.
 - Süreli veya süresiz deneme; sınav sırasında cevap anahtarı gizli, bitiminde sonuç ve geçmiş kalıcıdır. Serbest pratikteki soru başı kayıtlar ile sınav geçmişi ayrı akışlardır; çalışma oturumu seçimi ve kişisel analiz henüz bağlı değildir.
 - `ADMIN` rolü `/yonetim` ve `/api/admin/stats` üzerinden yalnız toplu sayıları görür. `OPERATOR` rolü `/icerik-bakimi` ve `/api/operator` üzerinden içerik bakımını yapar. Öğrenci yalnız kendi sınav verisini görür.
@@ -16,7 +16,7 @@ Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Yerel veritaba
 
 1. `backend-baslat.bat` Spring Boot geliştirme profilini `127.0.0.1:8081` üzerinde başlatır. Ardından `frontend-baslat.bat` Vite'ı `127.0.0.1:5173` üzerinde başlatır. `baslat.bat` ikisini birlikte açar.
 2. `http://localhost:5173` adresine gidin. Vite `/api` isteklerini yerel arka yüze yönlendirir. `net.ivme.dev` Cloudflare Tunnel üzerinden aynı 5173 portuna gider; uygulama kapalıysa alan adı çalışmaz.
-3. Yerel ayrıcalıklı hesaplar `ivmeadmin` ve `ivmeoperator` olarak oluşturulmuştur. Geçici parolaları yalnız yerel giriş için geçerlidir; ikisini de ayrı ayrı **Hesap → Şifre değiştir** ekranından en az 15 karakterli, farklı parolalara çevirin. Üretim açılışı bu tamamlanmadan reddedilir. Geçici hesaplarla tünelden giriş engellenir.
+3. Yerel ayrıcalıklı hesaplar `ivmeadmin` ve `ivmeoperator` olarak oluşturulmuştur. Geçici parolaları yalnız yerel giriş için geçerlidir; ikisini de ayrı ayrı **Hesap → Şifre değiştir** ekranından en az 8 karakterli, farklı parolalara çevirin. Üretim açılışı bu tamamlanmadan reddedilir. Geçici hesaplarla tünelden giriş engellenir.
 
 Gerçek sırlar, PostgreSQL yedekleri, soru CSV'leri ve görseller `veri/` gibi Git dışı konumlarda tutulur. Görsel kökü `YKS_RESIM_KLASORU` ile ayarlanır; `backend-baslat.bat` yerel `veri/resimler-pilot` varsa onu seçer.
 

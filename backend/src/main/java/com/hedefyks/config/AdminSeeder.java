@@ -71,9 +71,9 @@ class AdminSeeder implements ApplicationRunner {
         if (users.existsByUsername(admin.username())) {
             return;
         }
-        if (!dev && (admin.password().codePointCount(0, admin.password().length()) < 15
+        if (!dev && (admin.password().codePointCount(0, admin.password().length()) < 8
                 || admin.password().getBytes(StandardCharsets.UTF_8).length > 72)) {
-            throw new IllegalStateException("Üretimde yönetici şifresi en az 15 karakter ve en fazla 72 UTF-8 bayt olmalı (YKS_ADMIN_SIFRE).");
+            throw new IllegalStateException("Üretimde yönetici şifresi en az 8 karakter ve en fazla 72 UTF-8 bayt olmalı (YKS_ADMIN_SIFRE).");
         }
         User u = new User();
         u.setUsername(admin.username());

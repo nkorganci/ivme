@@ -52,6 +52,23 @@ class AuthTest extends TestBase {
     }
 
     @Test
+    void sekizKarakterliYeniSifreKabulEdilirYediKarakterReddedilir() throws Exception {
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"username\":\"Yedi\",\"email\":\"yedi@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc1234\"}"))
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.alanlar.password").exists());
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"username\":\"Sekiz\",\"email\":\"sekiz@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc12345\"}"))
+                .andExpect(status().isCreated());
+        MockHttpSession session = login("Sekiz", "abc12345");
+        send(session, put("/api/account/password"),
+                "{\"currentPassword\":\"abc12345\",\"newPassword\":\"abcdef7\"}")
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.alanlar.newPassword").exists());
+        send(session, put("/api/account/password"),
+                "{\"currentPassword\":\"abc12345\",\"newPassword\":\"abcdef78\"}")
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
     void gecersizTelefonReddedilir() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"12345\",\"password\":\"GucluBirSifre2026\"}"))

@@ -27,7 +27,7 @@ export default function Register() {
     if (!/^[\p{L}\p{N}_.-]{3,30}$/u.test(username)) next.username = 'Kullanıcı adı 3–30 karakter olmalı (harf, rakam, _ . -).';
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) next.email = 'Geçerli bir e-posta adresi gir.';
     if (!form.phone.trim()) next.phone = 'Cep telefonu gerekli.';
-    if (form.password.length < 15) next.password = 'Şifre en az 15 karakter olmalı.';
+    if (form.password.length < 8) next.password = 'Şifre en az 8 karakter olmalı.';
     else if (new TextEncoder().encode(form.password).length > 72) next.password = 'Şifre en fazla 72 bayt olmalı.';
     if (form.confirm !== form.password) next.confirm = 'Şifreler eşleşmiyor.';
     setErrors(next);
@@ -60,7 +60,7 @@ export default function Register() {
           label="Şifre"
           type="password"
           autoComplete="new-password"
-          hint="En az 15 karakter; boşluk kullanabilirsin."
+          hint="En az 8 karakter; daha uzun bir şifre tercih et."
           value={form.password}
           onChange={set('password')}
           error={errors.password}
