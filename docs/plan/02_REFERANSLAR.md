@@ -1,6 +1,6 @@
 # İvme — kaynaklar ve referans envanteri
 
-Bu dosya kaynak konumlarını, yayın hakkı durumunu ve dış teknik kaynakları tutar. Planın kendisi [00_YOL_HARITASI.md](00_YOL_HARITASI.md), uygulama ilkeleri [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) içindedir. Kaynak içeriğini buraya kopyalamak veya PDF/görselleri Git'e eklemek gerekmez.
+Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi [00_YOL_HARITASI.md](00_YOL_HARITASI.md), uygulama ilkeleri [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) içindedir. Kaynak içeriğini buraya kopyalamak veya PDF/görselleri Git'e eklemek gerekmez.
 
 ## Yerel referanslar
 
@@ -10,8 +10,8 @@ Bu dosya kaynak konumlarını, yayın hakkı durumunu ve dış teknik kaynaklar�
 | `D:\workspace\ivme\uygulama\docs\API-ve-mimari.md` | Mevcut API ve beş tablo sözleşmesi | Yeni adımlarla sürümle |
 | `D:\workspace\ivme\README.md` | Eski yerel statik site ve veri hattı genel haritası | Yeni ürünün kaynağı ile karıştırma |
 | `D:\workspace\ivme\veri-hatti\` | PDF soru üretimi ve etiketleme betikleri | Adım 1 ve 12'de kalite/envanter |
-| `D:\workspace\ivme\Kaynaklar\` | PDF, müfredat ve diğer ham malzeme | Kaynak/hak/kapsam tablosu çıkar |
-| `D:\workspace\ivme\uygulama\ornek-veri\` | Küçük örnek veri | Sentetik ve yayınlanabilir olduğunu doğrula |
+| `D:\workspace\ivme\Kaynaklar\` | PDF, müfredat ve diğer ham malzeme | Kaynak ve kapsam tablosu çıkar |
+| `D:\workspace\ivme\uygulama\ornek-veri\` | Küçük örnek veri | Örneklerin sentetik ve doğru eşleşmiş olduğunu doğrula |
 
 ## Dış teknik kaynaklar (2026-10-08'de kontrol edildi)
 
@@ -23,10 +23,6 @@ Bu dosya kaynak konumlarını, yayın hakkı durumunu ve dış teknik kaynaklar�
 - [Tesseract OCR: girdi biçimleri](https://github.com/tesseract-ocr/tessdoc/blob/main/InputFormats.md) — doğrudan PDF okuyamaz; taranmış PDF için önce görüntüye çevirme/OCR katmanı gerekir.
 - [OWASP Top 10:2025](https://top10.owasp.org/2025/0x00_2025-Introduction/) — erişim kontrolü, kimlik doğrulama ve güvenlik kayıtları için inceleme çerçevesi.
 
-## İçerik hakları ve yayın kararı kaydı
-
-OGM/diğer kaynakların herkese açık sitede gösterimi, türetilmiş görsel/metin saklanması ve üçüncü taraf AI işleyişi **kaynak bazında doğrulanacak**. “PDF internette var” otomatik yeniden yayın izni sayılmaz. Burada her kaynak için `sahip`, `lisans/izin bağlantısı`, `izinli kullanım`, `AI işleme izni`, `kontrol tarihi`, `karar` alanları tutulacak. Şu anda herhangi bir kaynak için bu karar tamamlandı kabul edilmez.
-
 ## Yeni sınav içeriği ekleme şablonu
 
-`Sınav türü` → `ders` → `konu` → `alt konu/beceri` → `soru tipi` → `önkoşul`; kaynak ve hak bilgisi; örnek soru/cevap/çözüm; kalite kontrol örneklemi. Bu şablon TYT/AYT'ye bağlı olmayan ilk yeni sınav paketinde doğrulanacak.
+`Sınav türü` → `ders` → `konu` → `alt konu/beceri` → `soru tipi` → `önkoşul`; kaynak bilgisi; örnek soru/cevap/çözüm; kalite kontrol örneklemi. Bu şablon TYT/AYT'ye bağlı olmayan ilk yeni sınav paketinde doğrulanacak.

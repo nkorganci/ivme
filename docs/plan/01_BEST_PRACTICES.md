@@ -26,7 +26,7 @@ Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır
 
 ## 3. Soru/PDF ve ders notu iş hattı
 
-1. Kaynağı değişmeden sakla: PDF, hak/lisans notu, indirme tarihi, SHA-256. Web'e veya AI hizmetine aktarım hakkı doğrulanmadan kaynak yayınlama.
+1. Kaynağı değişmeden sakla: PDF, indirme tarihi ve SHA-256. Böylece üretilen soru ve notlar özgün dosya ve sayfaya izlenebilir.
 2. PDF metin katmanı varsa doğrudan metin çıkar; yoksa sayfa görselinde OCR uygula. Soru görselini ayrı koru. Metin, şık, formül, şekil, tablo ve cevap anahtarını tek bir düz metne körlemesine birleştirme.
 3. Normalleştirilmiş soru kaydı: `id`, kaynak, sayfa, kırpım, sınav, ders, konu, alt konu, soru tipi, soru/şık metni, doğru cevap, çözüm, görsel yolu, güven/inceleme durumu. Eksik alan `null` kalır; uydurulmaz.
 4. Not kaydı: `note_id`, kaynak PDF/sayfa, başlık zinciri, konu kimliği, metin/Markdown, formül/şekil bağlantısı, sürüm ve yayın durumu. Tek bir devasa PDF metni yerine başlık ve sayfa sınırlarında küçük, anlamlı parçalar tut.
@@ -67,7 +67,7 @@ Sonuçta: ne değişti, UI kontrolü, test, commit, kalan sorun.
 | `uygulama/frontend`, `backend`, `docs`, küçük sentetik örnek veri | Ürün kodu, göçler, testler, belgeler | Evet |
 | `uygulama/docs/plan` | Yaşayan plan, ilkeler, kaynak listesi | Evet |
 | `D:\workspace\Computer General\ivme projesi yapilacak olanlar` | Planın kolay erişim kopyası | Bu klasör Git deposu dışında; repo sürümü push edilir |
-| `D:\workspace\ivme\Kaynaklar`, `veri-hatti` | Mevcut kaynak/işleme hattı; ayrı envanter sonrası taşınabilir kod | Yalnız kod ve lisanslı küçük örnekler seçilerek |
+| `D:\workspace\ivme\Kaynaklar`, `veri-hatti` | Mevcut kaynak/işleme hattı; ayrı envanter sonrası taşınabilir kod | Yalnız kod ve küçük sentetik örnekler seçilerek |
 | PDF, toplu görsel, gerçek öğrenci verisi, yedek, `.env`, `node_modules`, derleme çıktısı | Büyük/gizli/üretilmiş veri | Hayır |
 
 Mevcut `origin` başka GitHub deposuna bakıyor; bu proje için açıkça `ivme` remote'u kullan. Feature branch'te küçük, konu odaklı commit oluştur; `main` birleşimi ayrı inceleme adımıdır. Var olan commit edilmemiş değişiklikleri otomatik olarak stage etme. Her kullanıcı fikri için: ilgili adımı güncelle → bağımlılığı yeniden sırala → kodu yap → UI/test → belge → commit/push. Bir iş yarım kalırsa durum `sürüyor` ve eksik kabul ölçütü açık kalır; “tamamlandı” yazılmaz.
