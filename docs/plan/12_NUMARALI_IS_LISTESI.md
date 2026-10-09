@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **08.03 — Ders/konu/soru tipi kırılımı**. 06.05 gerçek cihaz denemesi, 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **08.04 — Aktif süre, giriş ve oturum süresi ayrımı**. 06.05 gerçek cihaz denemesi, 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -102,8 +102,8 @@
 |---|---|---|---|
 | 08.01 | BITTI | Filtreli toplam/çözülen/kalanın tekil soru kuralıyla hesaplanması | [10_SORU_KAPSAMI.md](10_SORU_KAPSAMI.md) | — (tamamlandı) |
 | 08.02 | BITTI | Gün/hafta/ay ilk deneme doğru-yanlış-boş ve zaman dilimi sınırı | [34_08_02_ILK_DENEME_DONEMLERI.md](34_08_02_ILK_DENEME_DONEMLERI.md) | — (tamamlandı) |
-| **08.03** | **SIRADAKI** | **Ders/konu/soru tipi kırılımı; toplam ile detay ve boş veri eşleşmesi** | 08.02 sonrası | GPT-6.1 Sol · Medium |
-| 08.04 | YAPILACAK | Aktif süre, giriş ve oturum süresi ayrımı; öğrenci zaman çizelgesi | 06.05 sonrası | GPT-6.1 Sol · Medium |
+| 08.03 | BITTI | Ders/konu/soru tipi kırılımı; toplam ile detay ve boş veri eşleşmesi | [35_08_03_ISTATISTIK_KIRILIMLARI.md](35_08_03_ISTATISTIK_KIRILIMLARI.md) | — (tamamlandı) |
+| **08.04** | **SIRADAKI** | **Aktif süre, giriş ve oturum süresi ayrımı; öğrenci zaman çizelgesi** | 06.05 sonrası | GPT-6.1 Sol · Medium |
 
 ## 09 — Hedefler
 

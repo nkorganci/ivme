@@ -9,6 +9,9 @@ const PERIODS = [
 const ROWS = [
   ['correct', 'Doğru', 'ok'], ['wrong', 'Yanlış', 'bad'], ['blank', 'Boş', 'warn'],
 ];
+const BREAKDOWNS = [
+  ['SUBJECT', 'Dersler'], ['TOPIC', 'Konular'], ['QUESTION_TYPE', 'Soru tipleri'],
+];
 
 export default function Progress() {
   usePageTitle('İlerlemem');
@@ -43,5 +46,17 @@ export default function Progress() {
         <p className="muted small">Başarı oranı = doğru / doğru + yanlış + boş.</p>
       </>}
     </section>}
+    {data?.total > 0 && BREAKDOWNS.map(([kind, title]) => <section className="card table-card" key={kind}
+      aria-label={`${title} kırılımı`}>
+      <h2>{title}</h2>
+      <div className="progress-breakdown-scroll"><table className="table progress-breakdown">
+        <thead><tr><th scope="col">{kind === 'SUBJECT' ? 'Ders' : 'Ders / ' + (kind === 'TOPIC' ? 'konu' : 'soru tipi')}</th>
+          <th scope="col">Doğru</th><th scope="col">Yanlış</th><th scope="col">Boş</th><th scope="col">Toplam</th></tr></thead>
+        <tbody>{data.breakdown?.filter((row) => row.kind === kind).map((row) => <tr key={`${row.subject}/${row.label}`}>
+          <th scope="row">{kind === 'SUBJECT' ? row.label : `${row.subject} / ${row.label}`}</th>
+          <td>{row.correct}</td><td>{row.wrong}</td><td>{row.blank}</td><td>{row.total}</td>
+        </tr>)}</tbody>
+      </table></div>
+    </section>)}
   </>;
 }

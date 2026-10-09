@@ -165,6 +165,10 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .table td:first-child { white-space: nowrap; }
 .table th { text-align: left; font-size: var(--fs-xs); color: var(--muted); padding: 7px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
 .table td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+.progress-breakdown-scroll { overflow-x: auto; }
+.progress-breakdown { min-width: 480px; }
+.progress-breakdown th[scope="row"] { padding: 7px 12px; text-align: left; font-weight: 500; overflow-wrap: anywhere; }
+.progress-breakdown th[scope="row"] { white-space: normal; }
 .table.clickable tbody tr { cursor: pointer; } .table tbody tr:hover { background: #f8fafc; }
 .pager { display: flex; align-items: center; justify-content: center; gap: 8px 12px; margin: 12px 0; flex-wrap: wrap; font-size: var(--fs-sm); }
 .pager-nums { display: inline-flex; align-items: center; gap: 4px; }

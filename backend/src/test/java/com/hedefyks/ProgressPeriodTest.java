@@ -63,6 +63,12 @@ class ProgressPeriodTest extends TestBase {
         assertThat(day.wrong()).isEqualTo(1);
         assertThat(day.blank()).isEqualTo(1);
         assertThat(day.total()).isEqualTo(2);
+        for (String kind : new String[]{"SUBJECT", "TOPIC", "QUESTION_TYPE"}) {
+            assertThat(day.breakdown().stream().filter(row -> row.kind().equals(kind))
+                    .mapToLong(ProgressService.Breakdown::total).sum()).isEqualTo(day.total());
+        }
+        assertThat(day.breakdown().stream().filter(row -> row.kind().equals("QUESTION_TYPE"))
+                .map(ProgressService.Breakdown::label)).containsExactly("Onaylı soru tipi yok");
         assertThat(progress.summaryAt(ayse.getId(), ProgressService.Period.WEEK, "America/New_York", now).correct())
                 .isEqualTo(1);
         assertThat(progress.summaryAt(ayse.getId(), ProgressService.Period.MONTH, "America/New_York", now).total())
@@ -75,5 +81,30 @@ class ProgressPeriodTest extends TestBase {
                 .andExpect(status().isBadRequest());
         send(session, get("/api/progress/first-attempts?period=DAY&zone=America/New_York"), null)
                 .andExpect(status().isOk()).andExpect(jsonPath("$.period").value("DAY"));
+    }
+
+    @Test
+    void soru_tipi_ilk_pratik_olayinin_onayli_anlik_etiketinden_gelir() {
+        User ayse = user("ayse", Role.USER);
+        Question q = question("TYPE", "Türkçe", "A");
+        String nodeCode = "PARAGRAF_" + UUID.randomUUID();
+        Long nodeId = jdbc.queryForObject("""
+                INSERT INTO taxonomy_nodes(kind,code,name) VALUES ('QUESTION_TYPE',?,'Paragraf') RETURNING id
+                """, Long.class, nodeCode);
+        jdbc.update("""
+                INSERT INTO question_taxonomy(question_id,node_id,source,approval_status,taxonomy_version)
+                VALUES (?,?,'HUMAN','APPROVED','v1')
+                """, q.getId(), nodeId);
+        attempt(ayse, q, "2026-10-09T12:00:00Z", "A", "A", true);
+        Long attemptId = jdbc.queryForObject("SELECT id FROM question_attempts WHERE user_id = ?", Long.class, ayse.getId());
+        jdbc.update("""
+                INSERT INTO attempt_taxonomy_snapshot(attempt_id,node_id,node_kind,node_code,node_name,taxonomy_version)
+                VALUES (?,?,'QUESTION_TYPE',?,'Paragraf','v1')
+                """, attemptId, nodeId, nodeCode);
+        jdbc.update("UPDATE taxonomy_nodes SET name = 'Sonradan değişen ad' WHERE id = ?", nodeId);
+        var result = progress.summaryAt(ayse.getId(), ProgressService.Period.DAY, "Europe/Istanbul",
+                Instant.parse("2026-10-09T14:00:00Z"));
+        assertThat(result.breakdown().stream().filter(row -> row.kind().equals("QUESTION_TYPE"))
+                .map(ProgressService.Breakdown::label)).containsExactly("Paragraf");
     }
 }
