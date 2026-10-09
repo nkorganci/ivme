@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { PAGE_SIZE } from '../config.js';
@@ -27,6 +28,18 @@ export default function QuestionCollection({ bank }) {
   };
   const hasFilter = Object.values(filter).some(Boolean);
   const detailQuery = qs({ bank, ...filter }); // soru sayfasına taşınan filtreler
+  const [progress, setProgress] = useState(null);
+  const [progressError, setProgressError] = useState('');
+
+  useEffect(() => {
+    let current = true;
+    setProgress(null);
+    setProgressError('');
+    api.get('/api/questions/availability' + qs({ bank, ...filter }))
+      .then((counts) => { if (current) setProgress(counts); })
+      .catch((e) => { if (current && e.status !== 404) setProgressError('İlerleme sayıları alınamadı.'); });
+    return () => { current = false; };
+  }, [bank, filter.examType, filter.subject, filter.topic]);
 
   // Filtre değişince sayfa 0'a döner (adres çubuğunda yalnız dolu filtreler tutulur).
   const setFilter = (next) => setParams(new URLSearchParams(qs(next).slice(1)));
@@ -52,6 +65,14 @@ export default function QuestionCollection({ bank }) {
           </button>
         </FilterSelects>
       </section>
+
+      {progress && <section className="card progress-strip" aria-label="Soru ilerlemen">
+        <div><span>Toplam</span><strong>{formatNumber(progress.total)}</strong></div>
+        <div><span>Çözdüğün</span><strong>{formatNumber(progress.solved)}</strong></div>
+        <div><span>Kalan</span><strong>{formatNumber(progress.remaining)}</strong></div>
+        <div><span>En az bir kez yanlış</span><strong>{formatNumber(progress.everWrong)}</strong></div>
+      </section>}
+      {progressError && <p className="muted small" role="status">{progressError}</p>}
 
       {loading && <Loading text="Sorular yükleniyor…" />}
       {error && <ErrorBox error={error} onRetry={retry} />}

@@ -20,6 +20,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 |---|---|
 | `GET /api/questions/filters?bank=CIKMIS|OGM` | Koleksiyona göre sınav türü/ders/konu ve sayı |
 | `GET /api/questions?bank&examType&subject&topic&page&size` | Sayfalı etkin soru listesi |
+| `GET /api/questions/availability?bank&examType&subject&topic` | Kendi toplam/çözülen/kalan/en az bir kez yanlış yapılan tekil soru sayıları |
 | `GET /api/questions/code/{code}`, `GET /api/questions/{id}` | Soru künyesi; doğru cevap içermez |
 | `GET /api/questions/{id}/neighbor?direction&bank&examType&subject&topic` | Filtre içindeki komşu soru |
 | `GET /api/questions/{id}/image`, `/solution-image`, `/qr` | Soru/çözüm görseli ve sabit adrese QR; çözüm görseli yalnız cevap görüldükten veya sınav tesliminden sonra (operatör ön izlemesi hariç) |
@@ -33,6 +34,8 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 | `POST /api/feedback` | `RATING`, `QUESTION_ISSUE` veya `GENERAL` geri bildirimi |
 
 `CIKMIS` ve `OGM` koleksiyonları `questions.bank` ile ayrılır. `questions.solution_image` varsa ve erişim izni oluştuysa çözüm görseli soru ekranında gösterilir. Soru görseli ve çözüm görseli veritabanında dosya değil, `YKS_RESIM_KLASORU` altındaki göreli yoldur; gerçek dosya yolu kökün dışına çıkamaz. QR üretimde sabit `YKS_SITE_ADRESI/soru/{code}` adresini kullanır. Karalama `strokes` alanı 0–1 arası koordinatlardan oluşan çizgi/nokta dizileridir; en çok 100 çizgi, çizgi başına 250 nokta ve 64 KiB JSON kabul edilir. Serbest pratikte iki yanıt hakkından sonra öğrenci cevap gösterir veya soruyu atlar; sonraki çalışma yeni turdur. `question_attempts.correct_answer` olay anında kopyalanır, aktif saniye görünür/odaklı sekmede yaklaşık ölçülür. Eski stateless `/api/questions/{id}/check` kaldırıldı. Sınav oturumu cevap anahtarını teslimden önce döndürmez. `exam_questions.correct_answer` teslimde kopyalanır; sonraki soru düzenlemesi eski sonucu değiştirmez.
+
+İlerleme sayıları yalnız etkin sorularda hesaplanır. `solved`, öğrencinin en az bir `ANSWER` olayı veya teslim edilmiş sınavda cevapladığı tekil sorudur; `remaining = total - solved`. `everWrong`, bu cevaplardan herhangi birinde yanlış yapılan tekil sorudur; sonradan düzeltilse de burada kalır. Cevabı gösterme/atlama ve teslim edilmemiş sınav, çözülen sayısını artırmaz. Filtreler soru listesiyle aynıdır. Bu ilk kapsam sayısıdır; günlük/haftalık grafik ve aktif süre panosu sonraki dilimdedir.
 
 ## Operatör ve yönetici uçları
 

@@ -196,6 +196,10 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .board-status.board-error { color: var(--bad); }
 .board-retry { margin-top: 6px; }
 .board-help { margin: 6px 0 10px; }
+.progress-strip { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.progress-strip div { display: flex; flex-direction: column; min-width: 108px; }
+.progress-strip span { color: var(--muted); font-size: var(--fs-xs); }
+.progress-strip strong { color: var(--primary-dark); font-size: var(--fs-lg); }
 .meta { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin: 2px 0 6px; padding-top: 8px; border-top: 1px solid var(--line); font-size: var(--fs-xs); }
 .meta dt { color: var(--muted); } .meta dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
 .fold { border-top: 1px solid var(--line); }

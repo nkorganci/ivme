@@ -39,20 +39,28 @@ public class QuestionController {
     private final QrService qr;
     private final AttemptService attempts;
     private final BoardService boards;
+    private final QuestionAvailabilityService availability;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
-                              AttemptService attempts, BoardService boards) {
+                              AttemptService attempts, BoardService boards, QuestionAvailabilityService availability) {
         this.service = service;
         this.questions = questions;
         this.images = images;
         this.qr = qr;
         this.attempts = attempts;
         this.boards = boards;
+        this.availability = availability;
     }
 
     @GetMapping("/filters")
     public List<FilterRow> filters(@RequestParam(required = false) QuestionBank bank) {
         return service.filters(bank);
+    }
+
+    @GetMapping("/availability")
+    public QuestionAvailabilityService.Availability availability(QuestionFilter filter,
+                                                                 @AuthenticationPrincipal AppUserDetails me) {
+        return availability.count(me.id(), filter);
     }
 
     @GetMapping
