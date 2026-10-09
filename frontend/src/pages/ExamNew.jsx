@@ -7,7 +7,7 @@ import FilterSelects, { countMatching } from '../components/FilterSelects.jsx';
 import Segmented from '../components/Segmented.jsx';
 import { Field } from '../components/Field.jsx';
 import { Alert } from '../components/States.jsx';
-import { displayName, formatNumber } from '../format.js';
+import { BANKS, displayName, formatNumber } from '../format.js';
 
 const QUICK_COUNTS = [10, 20, 30, 40].map((n) => ({ value: String(n), label: String(n) }));
 const TIME_MODES = [
@@ -19,7 +19,8 @@ const suggest = (n) => String(Math.round(n * 1.5));
 export default function ExamNew() {
   const { user } = useAuth();
   usePageTitle('Sınav Başlat');
-  const rows = useFilterRows();
+  const [bank, setBank] = useState(''); // boş = tüm koleksiyonlar
+  const rows = useFilterRows(bank);
   const navigate = useNavigate();
   const [filter, setFilter] = useState({ examType: '', subject: '', topic: '' });
   const [count, setCount] = useState('20');
@@ -52,6 +53,7 @@ export default function ExamNew() {
     setState({ busy: true, error: '' });
     try {
       const exam = await api.post('/api/exams', {
+        bank: bank || undefined,
         examType: filter.examType || undefined,
         subject: filter.subject || undefined,
         topic: filter.topic || undefined,
@@ -70,6 +72,22 @@ export default function ExamNew() {
       <h1>{displayName(user)}, yeni sınav oluştur</h1>
       <form className="card form-card" onSubmit={submit} noValidate>
         <h2>Soru seçimi</h2>
+        <Field
+          as="select"
+          label="Kaynak"
+          value={bank}
+          onChange={(e) => {
+            setBank(e.target.value);
+            setFilter({ examType: '', subject: '', topic: '' });
+          }}
+        >
+          <option value="">Hepsi</option>
+          {Object.entries(BANKS).map(([key, b]) => (
+            <option key={key} value={key}>
+              {b.label}
+            </option>
+          ))}
+        </Field>
         <FilterSelects rows={rows} value={filter} onChange={setFilter} />
         {rows.length > 0 && (
           <p className="muted">

@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useOutletContext } from 'react-router-dom';
 import { useAuth } from '../auth.jsx';
 import { Loading } from './States.jsx';
 
@@ -6,6 +6,7 @@ import { Loading } from './States.jsx';
 export default function RequireAuth({ admin = false, operator = false, student = false }) {
   const { user, loading } = useAuth();
   const location = useLocation();
+  const parentContext = useOutletContext();
 
   if (loading) return <Loading text="Oturum kontrol ediliyor…" />;
   if (!user) return <Navigate to="/giris" replace state={{ from: location.pathname + location.search }} />;
@@ -15,5 +16,5 @@ export default function RequireAuth({ admin = false, operator = false, student =
   if (admin && user.role !== 'ADMIN') return <Navigate to="/" replace />;
   if (operator && user.role !== 'OPERATOR') return <Navigate to="/" replace />;
   if (student && user.role !== 'USER') return <Navigate to="/" replace />;
-  return <Outlet />;
+  return <Outlet context={parentContext} />;
 }

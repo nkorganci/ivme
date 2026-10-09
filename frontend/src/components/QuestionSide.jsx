@@ -2,7 +2,7 @@ import { StarValue } from './Stars.jsx';
 import RatingForm from './RatingForm.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
-import { DIFFICULTIES, difficultyLabel } from '../format.js';
+import { DIFFICULTIES, bankLabel, difficultyLabel } from '../format.js';
 
 const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
@@ -14,6 +14,8 @@ export default function QuestionSide({ q, onRated }) {
   return (
     <aside className="card qside" aria-label="Soru bilgileri">
       <dl className="meta">
+        <dt>Koleksiyon</dt>
+        <dd>{bankLabel(q.bank)}</dd>
         <dt>Sınav</dt>
         <dd>{q.examType}</dd>
         <dt>Ders</dt>

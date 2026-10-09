@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { imageUrl } from '../api.js';
+import { imageUrl, solutionImageUrl } from '../api.js';
 
 const FIT_KEY = 'yks.imgfit';
 const FIT_OFFSET = 200;   // üst çubuk + şerit + alt kontrol çubuğu + boşluklar (px)
@@ -9,7 +9,7 @@ const MIN_SHARE = 0.62;   // sığdırma, görseli tam genişlik boyutunun %62's
  * Soru görseli: ortalı, tıklayınca büyür; yüklenemezse bilgi kutusu gösterir.
  * "Sığdır" açıkken görsel, mümkünse kaydırmadan tamamı ekrana sığacak boyutta gösterilir; kapalıyken kapsayıcı genişliğini doldurur.
  */
-export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
+export default function QuestionImage({ id, version, alt = 'Soru görseli', solution = false, onReady }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [zoom, setZoom] = useState(false);
@@ -18,7 +18,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
   const [box, setBox] = useState({ w: 0, h: window.innerHeight });
   const wrap = useRef(null);
   const imgRef = useRef(null);
-  const src = imageUrl(id, version);
+  const src = solution ? solutionImageUrl(id) : imageUrl(id, version);
 
   useEffect(() => {
     setFailed(false);
@@ -33,7 +33,9 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
     if (i && i.complete && i.naturalWidth) {
       setNatural({ w: i.naturalWidth, h: i.naturalHeight });
       setLoaded(true);
+      onReady?.();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
   useEffect(() => {
@@ -61,7 +63,8 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
   const fitWidth = useMemo(() => {
     if (!fit || !natural || box.w < 600) return undefined;   // dar ekranda (telefon) genişlikle sınırlıdır; yüksekliğe göre küçültme okunabilirliği bozar
     const byWidth = Math.min(box.w / natural.w, 1);
-    const byHeight = Math.max(box.h - FIT_OFFSET, 360) / natural.h;
+    const offset = window.innerWidth >= 900 ? FIT_OFFSET - 50 : FIT_OFFSET;   // geniş ekranda üst çubuk yok (sol menü)
+    const byHeight = Math.max(box.h - offset, 360) / natural.h;
     return Math.round(natural.w * Math.min(byWidth, Math.max(byHeight, MIN_SHARE * byWidth)));
   }, [fit, natural, box]);
 
@@ -74,8 +77,8 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
 
   if (failed) {
     return (
-      <div className="image-fail" role="img" aria-label="Görsel yüklenemedi">
-        <span aria-hidden="true">🖼</span> Görsel yüklenemedi
+      <div className="image-fail" role="img" aria-label={solution ? 'Çözüm görseli yüklenemedi' : 'Görsel yüklenemedi'}>
+        <span aria-hidden="true">🖼</span> {solution ? 'Çözüm görseli yüklenemedi' : 'Görsel yüklenemedi'}
       </div>
     );
   }
@@ -91,6 +94,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
           onLoad={(e) => {
             setNatural({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight });
             setLoaded(true);
+            onReady?.();
           }}
           onError={() => setFailed(true)}
         />

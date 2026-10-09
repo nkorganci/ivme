@@ -1,7 +1,7 @@
 package com.hedefyks.question;
 
 /** Soru bankası / sınav filtresi; boş alanlar "hepsi" demektir. */
-public record QuestionFilter(ExamType examType, String subject, String topic) {
+public record QuestionFilter(QuestionBank bank, ExamType examType, String subject, String topic) {
 
     public QuestionFilter {
         subject = blankToNull(subject);

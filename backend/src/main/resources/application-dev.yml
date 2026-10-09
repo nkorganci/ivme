@@ -12,7 +12,6 @@ spring:
     password: ${YKS_DB_SIFRE:root}
 
 app:
-  public-base-url: ${YKS_SITE_ADRESI:http://localhost:5173}
   images:
     dir: ${YKS_RESIM_KLASORU:../ornek-veri/resimler}   # mvn spring-boot:run, backend\ klasöründen çalışır
   admin:

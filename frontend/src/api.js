@@ -96,4 +96,5 @@ export const api = {
 };
 
 export const imageUrl = (id, version) => `/api/questions/${id}/image${version ? '?v=' + encodeURIComponent(version) : ''}`;
+export const solutionImageUrl = (id) => `/api/questions/${id}/solution-image`;
 export const qrUrl = (id, size = 200) => `/api/questions/${id}/qr?size=${size}`;

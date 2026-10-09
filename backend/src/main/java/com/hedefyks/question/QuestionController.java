@@ -9,6 +9,7 @@ import com.hedefyks.question.QuestionDtos.QuestionDetail;
 import com.hedefyks.question.QuestionDtos.QuestionListItem;
 import com.hedefyks.storage.ImageStorage;
 import com.hedefyks.user.AppUserDetails;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.time.Duration;
 import java.util.List;
@@ -43,8 +44,8 @@ public class QuestionController {
     }
 
     @GetMapping("/filters")
-    public List<FilterRow> filters() {
-        return service.filters();
+    public List<FilterRow> filters(@RequestParam(required = false) QuestionBank bank) {
+        return service.filters(bank);
     }
 
     @GetMapping
@@ -95,12 +96,29 @@ public class QuestionController {
                 .body(resource);
     }
 
-    @GetMapping("/{id}/qr")
-    public ResponseEntity<byte[]> qr(@PathVariable Long id, @RequestParam(defaultValue = "300") int size) {
+    @GetMapping("/{id}/solution-image")
+    public ResponseEntity<Resource> solutionImage(@PathVariable Long id) {
         Question q = questions.findById(id).orElseThrow(() -> ApiException.notFound("Soru bulunamadı."));
+        if (q.getSolutionImage() == null) {
+            throw ApiException.notFound("Bu sorunun çözüm görseli yok.");
+        }
+        Resource resource = images.load(q.getSolutionImage());
+        MediaType type = MediaTypeFactory.getMediaType(resource).orElse(MediaType.APPLICATION_OCTET_STREAM);
+        return ResponseEntity.ok()
+                .contentType(type)
+                .cacheControl(CacheControl.maxAge(Duration.ofHours(1)).cachePrivate())
+                .body(resource);
+    }
+
+    @GetMapping("/{id}/qr")
+    public ResponseEntity<byte[]> qr(@PathVariable Long id, @RequestParam(defaultValue = "300") int size,
+                                     HttpServletRequest request) {
+        Question q = questions.findById(id).orElseThrow(() -> ApiException.notFound("Soru bulunamadı."));
+        String url = qr.questionUrl(request, q.getCode());
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_PNG)
+                .header("X-Question-Url", url)                       // QR'ın taşıdığı adres (kontrol için)
                 .cacheControl(CacheControl.maxAge(Duration.ofHours(1)).cachePrivate())
-                .body(qr.png(q.getCode(), size));
+                .body(qr.png(url, size));
     }
 }

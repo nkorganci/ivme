@@ -28,6 +28,9 @@ public class Question {
     private String code;
 
     @Enumerated(EnumType.STRING)
+    private QuestionBank bank = QuestionBank.CIKMIS;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "exam_type")
     private ExamType examType;
 
@@ -50,6 +53,10 @@ public class Question {
 
     @Column(name = "solution_url")
     private String solutionUrl;
+
+    /** Çözüm görselinin göreli yolu (çözümlü sorularda). */
+    @Column(name = "solution_image")
+    private String solutionImage;
 
     private boolean active = true;
 

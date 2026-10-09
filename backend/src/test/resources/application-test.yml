@@ -6,7 +6,6 @@ spring:
     password: ${YKS_DB_SIFRE:root}
 
 app:
-  public-base-url: http://localhost:5173
   images:
     dir: ../ornek-veri/resimler
   admin:

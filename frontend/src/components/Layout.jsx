@@ -1,55 +1,72 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth.jsx';
 import { APP_NAME } from '../config.js';
 import { displayName } from '../format.js';
+import Icon from './Icons.jsx';
 
-const LINKS = [
-  ['/', 'Ana Sayfa'],
-  ['/sorular', 'Soru Bankası'],
-  ['/sinav/yeni', 'Sınav Başlat'],
-  ['/gecmis', 'Geçmişim'],
-  ['/geri-bildirim', 'Geri Bildirim'],
+const ITEMS = [
+  ['/', 'Ana Sayfa', 'home'],
+  ['/cikmis-sorular', 'AYT-TYT Çıkmış Sorular', 'book'],
+  ['/soru-bankasi', 'Soru Bankası', 'layers'],
+  ['/sinav/yeni', 'Sınav Başlat', 'play'],
+  ['/gecmis', 'Geçmişim', 'clock'],
+  ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
+const RAIL_KEY = 'yks.sidebar';
 
-function isActive(path, to) {
+// Soru sayfasında vurgulanacak koleksiyon: adresteki ?bank=, yoksa yüklenen sorunun koleksiyonu (loaded).
+function isActive(path, search, to, loaded) {
   if (to === '/') return path === '/';
-  if (to === '/sorular') return path.startsWith('/sorular') || path.startsWith('/soru/');
+  if (path.startsWith('/soru/')) {
+    const bank = new URLSearchParams(search).get('bank') || loaded;
+    return (to === '/soru-bankasi' && bank === 'OGM') || (to === '/cikmis-sorular' && bank === 'CIKMIS');
+  }
   return path.startsWith(to);
 }
 
-/** Üst gezinme çubuğu + sayfa içeriği. */
+/**
+ * Sol menü + içerik. Masaüstünde sabit menü (ray moduna daralır; tercih localStorage'da),
+ * soru sayfasında varsayılan ray; dar ekranda üst ince çubuk + sol çekmece.
+ */
 export default function Layout() {
   const { user, logout } = useAuth();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [userOpen, setUserOpen] = useState(false);
-  const userRef = useRef(null);
+  const [pref, setPref] = useState(() => localStorage.getItem(RAIL_KEY) === 'rail'); // true = ray
+  const [questionOpen, setQuestionOpen] = useState(false); // soru sayfasında kullanıcı menüyü genişletti mi
+  const [drawer, setDrawer] = useState(false);
+  const [questionBank, setQuestionBank] = useState(''); // soru sayfası, yüklenen sorunun koleksiyonunu Outlet bağlamıyla bildirir
+  const onQuestion = pathname.startsWith('/soru/');
+  const rail = onQuestion ? !questionOpen : pref;
+  const name = displayName(user);
 
   useEffect(() => {
-    setMenuOpen(false);
-    setUserOpen(false);
+    setDrawer(false);
   }, [pathname]);
 
   useEffect(() => {
-    const onDown = (e) => userRef.current && !userRef.current.contains(e.target) && setUserOpen(false);
-    const onKey = (e) => {
-      if (e.key === 'Escape') {
-        setUserOpen(false);
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', onDown);
+    if (!onQuestion) setQuestionOpen(false);
+  }, [onQuestion]);
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && setDrawer(false);
     document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('mousedown', onDown);
-      document.removeEventListener('keydown', onKey);
-    };
+    return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  const links = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim']]
-    : user.role === 'OPERATOR' ? [['/icerik-bakimi', 'İçerik bakımı']] : LINKS;
+  const toggleRail = () => {
+    if (onQuestion) {
+      setQuestionOpen((o) => !o);
+      return;
+    }
+    const next = !pref;
+    localStorage.setItem(RAIL_KEY, next ? 'rail' : 'full');
+    setPref(next);
+  };
+
+  const items = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim', 'shield']]
+    : user.role === 'OPERATOR' ? [['/icerik-bakimi', 'İçerik bakımı', 'shield']] : ITEMS;
 
   const signOut = async () => {
     await logout().catch(() => {});
@@ -57,56 +74,71 @@ export default function Layout() {
   };
 
   return (
-    <>
+    <div className={`shell${rail ? ' rail' : ''}`}>
       <a className="skip-link" href="#icerik">
         İçeriğe geç
       </a>
-      <header className="topbar">
-        <div className="topbar-inner">
+      {drawer && <div className="scrim" onClick={() => setDrawer(false)} />}
+      <aside id="sol-menu" className={`sidebar${drawer ? ' open' : ''}`} aria-label="Ana gezinme">
+        <div className="side-head">
+          <Link to="/" className="brand" title={APP_NAME} aria-label={`${APP_NAME} ana sayfa`}>
+            <span className="brand-mark" aria-hidden="true">
+              H
+            </span>
+            <span className="label">{APP_NAME}</span>
+          </Link>
           <button
             type="button"
-            className="icon-btn hamburger"
-            aria-label="Menüyü aç/kapat"
-            aria-expanded={menuOpen}
-            aria-controls="ana-menu"
-            onClick={() => setMenuOpen((o) => !o)}
+            className="icon-btn side-toggle"
+            onClick={toggleRail}
+            aria-label={rail ? 'Menüyü genişlet' : 'Menüyü daralt'}
+            title={rail ? 'Menüyü genişlet' : 'Menüyü daralt'}
           >
-            {menuOpen ? '✕' : '☰'}
+            <Icon name={rail ? 'expand' : 'collapse'} />
+          </button>
+        </div>
+        <nav className="sidenav">
+          {items.map(([to, text, icon]) => {
+            const active = isActive(pathname, search, to, questionBank);
+            return (
+              <Link key={to} to={to} className={active ? 'active' : ''} aria-current={active ? 'page' : undefined} aria-label={text} title={text}>
+                <Icon name={icon} />
+                <span className="label">{text}</span>
+              </Link>
+            );
+          })}
+        </nav>
+        <div className="side-user">
+          <div className="who" title={name}>
+            <span className="avatar" aria-hidden="true">
+              {name.charAt(0)}
+            </span>
+            <span className="label user-name">{name}</span>
+          </div>
+          <Link to="/hesap" className={`side-link${pathname === '/hesap' ? ' active' : ''}`} aria-label="Hesap" title="Hesap">
+            <Icon name="user" />
+            <span className="label">Hesap</span>
+          </Link>
+          <button type="button" className="side-link" onClick={signOut} aria-label="Çıkış" title="Çıkış">
+            <Icon name="logout" />
+            <span className="label">Çıkış</span>
+          </button>
+        </div>
+      </aside>
+
+      <div className="shell-main">
+        <header className="mobilebar">
+          <button type="button" className="icon-btn" aria-label="Menüyü aç" aria-expanded={drawer} aria-controls="sol-menu" onClick={() => setDrawer(true)}>
+            <Icon name="menu" />
           </button>
           <Link to="/" className="brand">
             {APP_NAME}
           </Link>
-          <nav id="ana-menu" className={`mainnav${menuOpen ? ' open' : ''}`} aria-label="Ana gezinme">
-            {links.map(([to, text]) => (
-              <Link key={to} to={to} className={isActive(pathname, to) ? 'active' : ''} aria-current={isActive(pathname, to) ? 'page' : undefined}>
-                {text}
-              </Link>
-            ))}
-          </nav>
-          <div className="usermenu" ref={userRef}>
-            <button type="button" className="user-btn" aria-haspopup="menu" aria-expanded={userOpen} onClick={() => setUserOpen((o) => !o)}>
-              <span className="avatar" aria-hidden="true">
-                {displayName(user).charAt(0)}
-              </span>
-              <span className="user-name">{displayName(user)}</span>
-              <span aria-hidden="true">▾</span>
-            </button>
-            {userOpen && (
-              <div className="dropdown" role="menu">
-                <Link to="/hesap" role="menuitem">
-                  Hesap
-                </Link>
-                <button type="button" role="menuitem" onClick={signOut}>
-                  Çıkış
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </header>
-      <main id="icerik" className={`container${pathname.startsWith('/soru/') ? ' wide' : ''}`} tabIndex={-1}>
-        <Outlet />
-      </main>
-    </>
+        </header>
+        <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
+          <Outlet context={{ setQuestionBank }} />
+        </main>
+      </div>
+    </div>
   );
 }

@@ -35,8 +35,8 @@ public class QuestionService {
         this.feedback = feedback;
     }
 
-    public List<FilterRow> filters() {
-        return questions.filterRows().stream()
+    public List<FilterRow> filters(QuestionBank bank) {
+        return (bank == null ? questions.filterRows() : questions.filterRowsByBank(bank)).stream()
                 .sorted(Comparator.comparing(FilterRow::examType)
                         .thenComparing(FilterRow::subject, TR)
                         .thenComparing(FilterRow::topic, Comparator.nullsLast(TR)))
@@ -86,7 +86,7 @@ public class QuestionService {
         }
         Evaluation mine = feedback.findMine(userId, q.getId(), FeedbackCategory.RATING)
                 .map(f -> new Evaluation(f.getDifficultyVote(), f.getRating())).orElse(null);
-        return new QuestionDetail(q.getId(), q.getCode(), q.getExamType(), q.getSubject(), q.getTopic(),
-                q.getYear(), q.getSource(), q.getChoiceCount(), avg, agg.count(), votes, mine);
+        return new QuestionDetail(q.getId(), q.getCode(), q.getBank(), q.getExamType(), q.getSubject(), q.getTopic(),
+                q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine);
     }
 }

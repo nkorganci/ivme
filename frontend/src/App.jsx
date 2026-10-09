@@ -1,10 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
-import QuestionBank from './pages/QuestionBank.jsx';
+import QuestionCollection from './pages/QuestionCollection.jsx';
 import QuestionDetail from './pages/QuestionDetail.jsx';
 import ExamNew from './pages/ExamNew.jsx';
 import Exam from './pages/Exam.jsx';
@@ -23,6 +23,12 @@ function RoleHome() {
   return <Home />;
 }
 
+/** Eski /sorular adresi: sorgu dizesi korunarak çıkmış sorulara yönlenir. */
+function OldQuestions() {
+  const { search } = useLocation();
+  return <Navigate to={`/cikmis-sorular${search}`} replace />;
+}
+
 export default function App() {
   return (
     <Routes>
@@ -30,7 +36,7 @@ export default function App() {
       <Route path="/kayit" element={<Register />} />
 
       <Route element={<RequireAuth />}>
-        {/* Sınav ekranı kendi üst çubuğunu kullanır, genel gezinme çubuğu yoktur. */}
+        {/* Sınav ekranı kendi üst çubuğunu kullanır, sol menüsü yoktur. */}
         <Route element={<RequireAuth student />}>
           <Route path="/sinav/:id" element={<Exam />} />
         </Route>
@@ -38,7 +44,9 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<RoleHome />} />
           <Route element={<RequireAuth student />}>
-            <Route path="/sorular" element={<QuestionBank />} />
+            <Route path="/sorular" element={<OldQuestions />} />
+            <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
+            <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
             <Route path="/soru/:code" element={<QuestionDetail />} />
             <Route path="/sinav/yeni" element={<ExamNew />} />
             <Route path="/sinav/:id/sonuc" element={<ExamResult />} />

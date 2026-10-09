@@ -1,6 +1,7 @@
 package com.hedefyks.exam;
 
 import com.hedefyks.question.ExamType;
+import com.hedefyks.question.QuestionBank;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +15,7 @@ public final class ExamDtos {
     private ExamDtos() {}
 
     public record CreateExamRequest(
-            ExamType examType, String subject, String topic,
+            QuestionBank bank, ExamType examType, String subject, String topic,
             @NotNull(message = "Soru sayısı gerekli.")
             @Min(value = 1, message = "En az 1 soru seçmelisin.")
             @Max(value = 120, message = "En fazla 120 soru seçebilirsin.")

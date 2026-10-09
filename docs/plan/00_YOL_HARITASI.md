@@ -2,11 +2,11 @@
 
 | Alan | Değer |
 |---|---|
-| Güncelleme | 2026-10-08 |
-| Durum | Plan; ürün kararları uygulanmış sayılmaz. |
+| Güncelleme | 2026-10-09 |
+| Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | Bu dosya. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` klasöründeki kopya kolay erişim içindir. Her adımda ikisi birlikte güncellenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md).
+**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -23,9 +23,9 @@
 3. İlgili UI ekranını kullanıcı açısından kontrol et: masaüstü ve dar ekran; boş, yükleniyor, hata, başarılı, erişim yok durumları; klavye kullanımı. Kullanıcının beğenmediği kararları aynı adımda düzelt, gerekirse kabul ölçütünü güncelle.
 4. Yalnız o adımla ilgili anlamlı testleri çalıştır; veri göçünde geri dönüş/yedek; güvenlikte yetki ve sızıntı testleri. Sonucu ve eksikleri aşağıdaki adım kaydına yaz.
 5. `00_YOL_HARITASI.md`, gerekirse `01_BEST_PRACTICES.md`, API belgesi ve README'yi aynı değişiklikte güncelle. Kaynak PDF/örnek/araştırma dosyaları `02_REFERANSLAR.md` üzerinden ayrı tutulur.
-6. İlgili dosyaları açıkça `git add` et, commit oluştur ve **`ivme` uzak deposundaki feature branch'e push** et. Kullanıcıya commit, görülen UI, test ve kalan riskleri bildir. Başka kişiye ait değişiklikleri veya sırları stage etme. Push başarısızsa kayıtla ve bir sonraki adıma geçmeden çöz.
+6. İlgili dosyaları açıkça `git add` et ve feature branch'te commit oluştur. **Kullanıcının son kararı gereği tüm işler bitip kullanıcı yorum verene kadar GitHub'a push yapma.** Commit, UI kontrolü, test ve kalan riskleri kaydet; sırları stage etme. Nihai push için yalnız `ivme` uzak deposunu kullan.
 
-**Adım kayıt şablonu:** `Durum: planlandı | sürüyor | doğrulama bekliyor | tamamlandı`; `Tarih`; `Karar/değişiklik`; `UI kontrolü`; `Test`; `Commit/push`; `Sonraki bağımlılık`. Kararlar değişince eski satırı silme; kısa tarihli notla neden değiştiğini yaz. Öncelik sırası bu plana göre değişebilir.
+**Adım kayıt şablonu:** `Durum: planlandı | sürüyor | doğrulama bekliyor | tamamlandı`; `Tarih`; `Karar/değişiklik`; `UI kontrolü`; `Test`; `Commit/uzak depo durumu`; `Sonraki bağımlılık`. Kararlar değişince eski satırı silme; kısa tarihli notla neden değiştiğini yaz. Öncelik sırası bu plana göre değişebilir.
 
 ## Kabul edilmiş ürün tanımları
 
@@ -57,7 +57,7 @@
 
 ### Adım 5 — Bilgisayarda çalıştırma ve `net.ivme.dev` paylaşımı
 
-**Özet:** Önce tek bilgisayarda kararlı çalıştır, ardından Cloudflare Tunnel ile deneme grubuna aç. **Yapılacak:** React üretim çıktısını Spring Boot üzerinden `/` ve `/api` aynı kökende sun; uygulama ve `cloudflared` Windows hizmeti veya denetimli başlatma yöntemi; tünelde `net.ivme.dev` → `http://localhost:8081`; PostgreSQL ve geliştirme portları yalnız yerel; HTTPS dış erişim, güvenli cookie, doğru QR adresi; bilgisayar uyku/yeniden başlama senaryosu; yedek ve geri yükleme. İlk kapalı pilot için gerekirse Cloudflare Access davet listesi ekle; halka açık kayıt daha sonra ürün kararıdır. **UI kontrolü:** Yerel ve başka cihazdan giriş, soru görseli, QR, oturum, çıkış, telefon görünümü. **Bitti sayılır:** Tünel üzerinden uçtan uca akış ve yeniden başlatma testi geçmiş; erişim sınırı belgelenmiş. **Durum:** planlandı.
+**Özet:** Önce tek bilgisayarda kararlı çalıştır, ardından Cloudflare Tunnel ile deneme grubuna aç. **Yapılacak:** React üretim çıktısını Spring Boot üzerinden `/` ve `/api` aynı kökende, kullanıcının çalışan tünel hedefi olan `http://localhost:5173` portunda sun; `cloudflared` ile uygulamanın denetimli başlatılması; PostgreSQL ve uygulama portlarının yalnız yerel dinlemesi; HTTPS dış erişim, güvenli cookie, sabit QR adresi; bilgisayar uyku/yeniden başlama senaryosu; yedek ve geri yükleme. Geliştirme Vite sunucusu aynı portu yalnız yerel çalışmada kullanır; paylaşımda üretim paketi kullanılır. İlk kapalı pilot için gerekirse Cloudflare Access davet listesi ekle; halka açık kayıt daha sonra ürün kararıdır. **UI kontrolü:** Yerel ve başka cihazdan giriş, soru görseli, QR, oturum, çıkış, telefon görünümü. **Bitti sayılır:** Tünel üzerinden uçtan uca akış ve yeniden başlatma testi geçmiş; erişim sınırı belgelenmiş. **Durum:** sürüyor (2026-10-09). **Kayıt:** [20/20 masaüstü ve mobil E2E ile gerçek tünel üretim paketi provası](08_TUNEL_VE_UI_PROVASI.md) geçti. Gerçek DB'deki geçici yetkili parolalar ve kalıcı yeniden başlatma denetimi açık.
 
 ### Adım 6 — Soru başına çözüm deneyimi
 

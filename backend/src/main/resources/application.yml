@@ -32,7 +32,7 @@ spring:
       max-request-size: 20MB
 
 app:
-  public-base-url: ${YKS_SITE_ADRESI}      # QR kodların işaret ettiği adres, örn. https://yks.ornek.com
+  public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:
     dir: ${YKS_RESIM_KLASORU}              # soru görsellerinin kök klasörü (Windows yolu olabilir)
   admin:
@@ -40,3 +40,5 @@ app:
     email: ${YKS_ADMIN_EPOSTA:admin@localhost}
     password: ${YKS_ADMIN_SIFRE:}          # yalnız İLK kurulumda yönetici oluşturmak için; sonra kaldırılabilir
   sample-data: ""                          # dev profilinde örnek CSV yolu
+  import-file: ${YKS_IMPORT_DOSYASI:}      # İSTEĞE BAĞLI: açılışta bu CSV/JSON toplu yüklenir (README "Tüm soruları yükleme")
+  import-mode: ${YKS_IMPORT_MODU:INSERT_ONLY}

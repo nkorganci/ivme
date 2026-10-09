@@ -13,6 +13,7 @@ public final class QuestionSpecs {
         return (root, query, cb) -> {
             List<Predicate> p = new ArrayList<>();
             if (active != null) p.add(cb.equal(root.get("active"), active));
+            if (f.bank() != null) p.add(cb.equal(root.get("bank"), f.bank()));
             if (f.examType() != null) p.add(cb.equal(root.get("examType"), f.examType()));
             if (f.subject() != null) p.add(cb.equal(root.get("subject"), f.subject()));
             if (f.topic() != null) p.add(cb.equal(root.get("topic"), f.topic()));

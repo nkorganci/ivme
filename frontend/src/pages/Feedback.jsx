@@ -49,7 +49,7 @@ export default function Feedback() {
       <h1>{displayName(user)}, görüşün bizim için değerli</h1>
       <p className="muted lead">
         Uygulamayla ilgili görüş ve önerilerini buradan iletebilirsin. Belirli bir soruyla ilgili geri bildirimi ise ilgili{' '}
-        <Link to="/sorular">soru sayfasından</Link> verebilirsin.
+        <Link to="/cikmis-sorular">soru sayfasından</Link> verebilirsin.
       </p>
       {done ? (
         <section className="card form-card">

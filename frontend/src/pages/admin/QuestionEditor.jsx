@@ -5,7 +5,7 @@ import Modal from '../../components/Modal.jsx';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import { Field } from '../../components/Field.jsx';
 import { Alert, ErrorBox, Loading } from '../../components/States.jsx';
-import { LETTERS } from '../../format.js';
+import { LETTERS, bankLabel } from '../../format.js';
 
 /** Soru düzenleme penceresi: soruyu yükler, formu gösterir. */
 export default function QuestionEditor({ id, rows, onClose, onSaved }) {
@@ -32,6 +32,7 @@ function EditorForm({ q, rows, onClose, onSaved }) {
     correctAnswer: q.correctAnswer || 'A',
     choiceCount: String(q.choiceCount || 5),
     solutionUrl: q.solutionUrl || '',
+    solutionImage: q.solutionImage || '',
     active: !!q.active,
   });
   const [errors, setErrors] = useState({});
@@ -56,6 +57,7 @@ function EditorForm({ q, rows, onClose, onSaved }) {
         correctAnswer: f.correctAnswer,
         choiceCount: Number(f.choiceCount),
         solutionUrl: f.solutionUrl.trim() || null,
+        solutionImage: f.solutionImage.trim() || null,
         active: f.active,
       });
       onSaved(saved);
@@ -68,7 +70,7 @@ function EditorForm({ q, rows, onClose, onSaved }) {
   return (
     <form onSubmit={save} noValidate>
       <p className="muted">
-        Kod: <strong>{q.code}</strong> (değişmez) · Açık bildirim: {q.openReportCount}
+        Kod: <strong>{q.code}</strong> (değişmez) · Koleksiyon: <strong>{bankLabel(q.bank)}</strong> (değişmez) · Açık bildirim: {q.openReportCount}
       </p>
       <div className="editor-preview">
         <QuestionImage id={q.id} version={q.updatedAt} alt={`${q.code} önizleme`} />
@@ -85,6 +87,13 @@ function EditorForm({ q, rows, onClose, onSaved }) {
         <Field label="Yıl" type="number" inputMode="numeric" value={f.year} onChange={set('year')} error={errors.year} />
         <Field label="Kaynak" value={f.source} onChange={set('source')} error={errors.source} />
         <Field label="Görsel yolu" value={f.image} onChange={set('image')} error={errors.image} hint="Görsel kök klasörüne göre göreli yol." />
+        <Field
+          label="Çözüm görseli yolu"
+          value={f.solutionImage}
+          onChange={set('solutionImage')}
+          error={errors.solutionImage}
+          hint="İsteğe bağlı; görsel kök klasörüne göre göreli yol."
+        />
         <Field label="Çözüm bağlantısı" type="url" value={f.solutionUrl} onChange={set('solutionUrl')} error={errors.solutionUrl} />
         <Field as="select" label="Doğru cevap" value={f.correctAnswer} onChange={set('correctAnswer')} error={errors.correctAnswer}>
           {LETTERS.map((l) => (

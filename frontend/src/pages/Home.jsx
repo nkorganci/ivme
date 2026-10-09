@@ -91,8 +91,11 @@ export default function Home() {
         <Link to="/sinav/yeni" className="btn btn-primary">
           Sınav başlat
         </Link>
-        <Link to="/sorular" className="btn btn-secondary">
-          Soru bankası
+        <Link to="/cikmis-sorular" className="btn btn-secondary">
+          AYT-TYT Çıkmış Sorular
+        </Link>
+        <Link to="/soru-bankasi" className="btn btn-secondary">
+          Soru Bankası
         </Link>
         <Link to="/gecmis" className="btn btn-secondary">
           Geçmiş

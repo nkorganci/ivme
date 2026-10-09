@@ -16,6 +16,8 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 ## Dış teknik kaynaklar (2026-10-08'de kontrol edildi)
 
 - [Cloudflare Tunnel: kurulum ve yerel servise yayın rotası](https://developers.cloudflare.com/tunnel/get-started/) — `net.ivme.dev` için public hostname → yerel servis eşlemesi. Tünel URL'si yerel servis URL'si değildir.
+- [Cloudflare Tunnel: yayımlanan uygulama rotası](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) — kullanıcının mevcut rotası `net.ivme.dev` → `http://localhost:5173`.
+- [Vite 8: server seçenekleri](https://v8.vite.dev/config/server-options) — geliştirme/önizleme sunucusunda loopback dinleme ve izin verilen alan adını sınırlama.
 - [Cloudflare Access: self-hosted web uygulaması](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) — davetli pilot erişim seçeneği; uygulamanın öğrenci/yönetici yetkilendirmesini ayrıca kur.
 - [Cloudflare Tunnel: HTTPS origin sorun giderme](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) — origin protokolü ve tünel rotası denetimi.
 - [Cloudflare HTTP başlıkları](https://developers.cloudflare.com/fundamentals/reference/http-headers/) — `CF-Connecting-IP` davranışı; tünel dışından gelen istemci başlığına güvenme.

@@ -105,8 +105,9 @@ export default function AdminImport() {
             <code>correct_answer</code> (A–E).
           </p>
           <p>
-            <strong>İsteğe bağlı:</strong> <code>topic</code>, <code>year</code>, <code>source</code>, <code>choice_count</code> (4–5, varsayılan 5),{' '}
-            <code>solution_url</code>, <code>active</code> (varsayılan true).
+            <strong>İsteğe bağlı:</strong> <code>bank</code> (CIKMIS = AYT-TYT Çıkmış Sorular, OGM = Soru Bankası; varsayılan CIKMIS), <code>topic</code>, <code>year</code>,{' '}
+            <code>source</code>, <code>choice_count</code> (4–5, varsayılan 5), <code>solution_url</code>, <code>solution_image</code> (çözüm görseli; kök klasöre göre göreli yol),{' '}
+            <code>active</code> (varsayılan true).
           </p>
           <p>CSV: UTF-8; ayraç <code>,</code> <code>;</code> veya sekme (başlıktan otomatik anlaşılır). JSON: nesne dizisi.</p>
         </details>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { api } from './api.js';
+import { api, qs } from './api.js';
 import { useAuth } from './auth.jsx';
 import { APP_NAME } from './config.js';
 import { displayName } from './format.js';
@@ -43,9 +43,9 @@ export function ignoreHotkey(e) {
   return !!document.querySelector('[aria-modal="true"]');
 }
 
-/** Açılır listeler için tek seferlik filtre verisi (aktif sorular). */
-export function useFilterRows() {
-  const { data } = useAsync(() => api.get('/api/questions/filters'), []);
+/** Açılır listeler için filtre verisi (aktif sorular); bank boşsa tüm koleksiyonlar. */
+export function useFilterRows(bank = '') {
+  const { data } = useAsync(() => api.get('/api/questions/filters' + qs({ bank })), [bank]);
   return data || [];
 }
 
@@ -58,7 +58,6 @@ export function usePageParam() {
     if (p > 0) next.set('page', String(p));
     else next.delete('page');
     setParams(next);
-    window.scrollTo({ top: 0 });
   };
   return [page, setPage];
 }

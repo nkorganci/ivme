@@ -85,6 +85,7 @@ public class AdminService {
         q.setYear(u.year());
         q.setSource(blankToNull(u.source()));
         q.setImage(normalizeImage(u.image()));
+        q.setSolutionImage(u.solutionImage() == null || u.solutionImage().isBlank() ? null : normalizeImage(u.solutionImage()));
         String answer = u.correctAnswer().trim().toUpperCase();
         if (answer.charAt(0) - 'A' >= u.choiceCount()) {
             throw ApiException.badRequest("Doğru cevap şık sayısının dışında.");
@@ -141,8 +142,8 @@ public class AdminService {
     private AdminQuestion toAdmin(Question q, long openReports, Object[] rating) {
         Double avg = rating == null || rating[1] == null ? null : Math.round(((Double) rating[1]) * 10) / 10.0;
         long count = rating == null ? 0 : (Long) rating[2];
-        return new AdminQuestion(q.getId(), q.getCode(), q.getExamType(), q.getSubject(), q.getTopic(),
-                q.getYear(), q.getSource(), q.getImage(), q.getCorrectAnswer(), q.getChoiceCount(), q.getSolutionUrl(),
+        return new AdminQuestion(q.getId(), q.getCode(), q.getBank(), q.getExamType(), q.getSubject(), q.getTopic(),
+                q.getYear(), q.getSource(), q.getImage(), q.getSolutionImage(), q.getCorrectAnswer(), q.getChoiceCount(), q.getSolutionUrl(),
                 q.isActive(), openReports, avg, count, q.getUpdatedAt());
     }
 

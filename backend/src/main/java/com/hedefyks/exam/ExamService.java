@@ -13,6 +13,7 @@ import com.hedefyks.exam.ExamDtos.SubjectStat;
 import com.hedefyks.exam.ExamDtos.Summary;
 import com.hedefyks.question.Answers;
 import com.hedefyks.question.Question;
+import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionFilter;
 import com.hedefyks.question.QuestionRepository;
 import java.math.BigDecimal;
@@ -49,7 +50,7 @@ public class ExamService {
     // ---------------------------------------------------------------- oluşturma / devam
 
     public ExamSession create(Long userId, CreateExamRequest req) {
-        QuestionFilter filter = new QuestionFilter(req.examType(), req.subject(), req.topic());
+        QuestionFilter filter = new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic());
         List<Long> ids = randomIds(filter, req.questionCount());
         if (ids.isEmpty()) {
             throw ApiException.badRequest("Seçtiğin filtrelere uygun soru bulunamadı.");
@@ -212,13 +213,16 @@ public class ExamService {
 
     private static String title(QuestionFilter f) {
         String base = (f.examType() != null ? f.examType().name() + " " : "") + (f.subject() != null ? f.subject() : "Karma");
-        return f.topic() != null ? base + " – " + f.topic() : base;
+        if (f.topic() != null) base = base + " – " + f.topic();
+        if (f.bank() != null) base = base + " · " + (f.bank() == QuestionBank.OGM ? "Soru Bankası" : "Çıkmış Sorular");
+        return base;
     }
 
     /** Filtreye uyan aktif sorulardan rastgele n tanesinin kimliği (sıra da rastgele). */
     private List<Long> randomIds(QuestionFilter f, int n) {
         StringBuilder sql = new StringBuilder("select id from questions where active = true");
         Map<String, Object> params = new HashMap<>();
+        if (f.bank() != null) { sql.append(" and bank = :bank"); params.put("bank", f.bank().name()); }
         if (f.examType() != null) { sql.append(" and exam_type = :examType"); params.put("examType", f.examType().name()); }
         if (f.subject() != null) { sql.append(" and subject = :subject"); params.put("subject", f.subject()); }
         if (f.topic() != null) { sql.append(" and topic = :topic"); params.put("topic", f.topic()); }

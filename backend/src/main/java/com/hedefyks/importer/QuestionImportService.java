@@ -5,6 +5,7 @@ import com.hedefyks.importer.QuestionFileParser.Parsed;
 import com.hedefyks.importer.QuestionFileParser.RawRow;
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.Question;
+import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.storage.ImageStorage;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class QuestionImportService {
 
     static final int MAX_ISSUES = 1000;
     private static final Set<String> KNOWN = Set.of("code", "exam_type", "subject", "topic", "year",
-            "source", "image", "correct_answer", "choice_count", "solution_url", "active");
+            "source", "image", "correct_answer", "choice_count", "solution_url", "active", "bank", "solution_image");
     private static final List<String> REQUIRED = List.of("code", "exam_type", "subject", "image", "correct_answer");
     private static final Pattern CODE = Pattern.compile("^[\\p{L}\\p{N}_.-]+$");
 
@@ -49,8 +50,8 @@ public class QuestionImportService {
     }
 
     /** Doğrulanmış satır. */
-    private record Candidate(int row, String code, ExamType examType, String subject, String topic,
-                             Integer year, String source, String image, String correctAnswer,
+    private record Candidate(int row, String code, QuestionBank bank, ExamType examType, String subject, String topic,
+                             Integer year, String source, String image, String solutionImage, String correctAnswer,
                              int choiceCount, String solutionUrl, boolean active) {}
 
     /** Toplanan sorunlar; listeler sınırlı, sayaçlar tam. */
@@ -173,6 +174,26 @@ public class QuestionImportService {
             issues.warn(row, code, "image", "Görsel dosyası resim klasöründe bulunamadı: " + image);
         }
 
+        // Çözüm görseli (isteğe bağlı): aynı yol kuralları; dosya yoksa yalnız uyarı
+        String solutionImage = v.getOrDefault("solution_image", "").replace('\\', '/');
+        while (solutionImage.startsWith("/")) solutionImage = solutionImage.substring(1);
+        if (solutionImage.isEmpty()) {
+            solutionImage = null;
+        } else if (solutionImage.length() > 300) {
+            issues.error(row, code, "solution_image", "Çözüm görseli yolu en fazla 300 karakter olabilir.");
+        } else if (solutionImage.contains("..") || solutionImage.matches("^[A-Za-z]:.*")) {
+            issues.error(row, code, "solution_image", "Çözüm görseli yolu klasör dışına çıkamaz; kök klasöre göre göreli olmalı.");
+        } else if (!images.exists(solutionImage)) {
+            issues.warn(row, code, "solution_image", "Çözüm görseli resim klasöründe bulunamadı: " + solutionImage);
+        }
+
+        QuestionBank bank = QuestionBank.CIKMIS;
+        String bk = v.getOrDefault("bank", "").toUpperCase(Locale.ROOT);
+        if (!bk.isEmpty()) {
+            try { bank = QuestionBank.valueOf(bk); }
+            catch (IllegalArgumentException e) { issues.error(row, code, "bank", "bank CIKMIS veya OGM olmalı: " + bk); }
+        }
+
         int choiceCount = 5;
         String cc = v.getOrDefault("choice_count", "");
         if (!cc.isEmpty()) {
@@ -206,7 +227,7 @@ public class QuestionImportService {
         }
 
         if (issues.errorCount > before) return null;
-        return new Candidate(row, code, examType, subject, topic, year, source, image, answer,
+        return new Candidate(row, code, bank, examType, subject, topic, year, source, image, solutionImage, answer,
                 choiceCount, solutionUrl, active);
     }
 
@@ -274,6 +295,8 @@ public class QuestionImportService {
         if (!Objects.equals(q.getImage(), c.image())) m.put("image", "");
         if (q.getChoiceCount() != c.choiceCount()) m.put("choice_count", "");
         if (!Objects.equals(q.getSolutionUrl(), c.solutionUrl())) m.put("solution_url", "");
+        if (q.getBank() != c.bank()) m.put("bank", "");
+        if (!Objects.equals(q.getSolutionImage(), c.solutionImage())) m.put("solution_image", "");
         if (q.isActive() != c.active()) m.put("active", "");
         return m;
     }
@@ -285,6 +308,8 @@ public class QuestionImportService {
         q.setYear(c.year());
         q.setSource(c.source());
         q.setImage(c.image());
+        q.setSolutionImage(c.solutionImage());
+        q.setBank(c.bank());
         q.setCorrectAnswer(c.correctAnswer());
         q.setChoiceCount(c.choiceCount());
         q.setSolutionUrl(c.solutionUrl());
