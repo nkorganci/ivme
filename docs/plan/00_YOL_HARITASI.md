@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** [04.05 — Yeni API'lerde nesne sahipliği ve negatif erişim denetimi](07_GUVENLIK_YETKI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** [04.07 — Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi](07_GUVENLIK_YETKI.md). Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Adım 4/5'in üretim güvenliği ve kalıcı başlatma işleri ayrıca açıktır. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

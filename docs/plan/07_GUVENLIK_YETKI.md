@@ -36,7 +36,7 @@
 
 ## Açık kontrol listesi
 
-- Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
+- Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi tamamlandı (04.05). Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri de geçti.
 - Oturum süresi/çıkış ve tünel üzerinden `Set-Cookie` denetimi. Giriş hızı, parola değişikliğinde CSRF reddi, `Secure` CSRF çerezi ve HSTS başlığı test edildi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel gerçek yol, izinli uzantı, dosya imzası ve hatalı görsel API yanıtında bilgi sızıntısı denetimi eklendi. Sembolik bağlantı kaçış testi bu Windows ortamında atlandı; Linux CI veya symlink izni olan makinede çalıştırılmalı.
@@ -46,3 +46,5 @@
 Bu liste bitmeden Adım 4 tamamlandı veya site paylaşmaya hazır sayılmaz.
 
 **Durum: AÇIK.** Tamamlanan ve kalan küçük işler [04.01–04.09](12_NUMARALI_IS_LISTESI.md) altında numaralandırıldı.
+
+**04.05 kaydı · 2026-10-09:** İki öğrenciyle pratik oturumu okuma/listeleme/bitirme, oturuma bağlı soru durumunu okuma ve yanıt yazma, bağımsız pratik denemesi, karalama ve uygun soru sayısının kullanıcıya ayrılması negatif test edildi. Başkasının oturumu 404; rolü olmayan misafir 401; ADMIN/OPERATOR için öğrenci API'leri 403. `ProgressAccessTest`, `StudySessionTest`, `BoardTest`, `ExamFlowTest` geçti. Edge'de 390 px doğrudan `/pratik/yeni`, `/pratik/{id}`, `/gecmis?tab=practice` ziyaretleri ADMIN/OPERATOR için öğrenci içeriğine açılmadı, misafir giriş ekranına yönlendirildi; tarayıcı hatası görülmedi. Canlı DB ve süreç değiştirilmedi. Yerel commit bu işin Git kaydında. Açık risk: gerçek dış ağ ve farklı cihaz provası 05.05 kapsamındadır.

@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **04.05 — Yeni API'lerde nesne sahipliği ve negatif erişim denetimi**; [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md).
+**Sıradaki tek iş:** **04.07 — Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi**; [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md).
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Repo içindeki bu dosya ile `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` kopyası birlikte güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi güncelle, dış kopyayı eşitle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 04.05 ile devam et. Model: GPT-6.1 Sol · High. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/07_GUVENLIK_YETKI.md dosyalarını oku; yalnız bu işi yap, UI/testi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 04.07 ile devam et. Model: GPT-6.1 Sol · High. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/07_GUVENLIK_YETKI.md dosyalarını oku; yalnız bu işi yap, UI/testi doğrula, iki plan kopyasını güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -49,9 +49,9 @@
 | 04.02 | BITTI | `ivmeadmin` toplu istatistik, `ivmeoperator` içerik bakımı rol ayrımı | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | — (tamamlandı) |
 | 04.03 | BITTI | CSRF, oturum, hız sınırı, güvenli çerez/HSTS ve görsel yol sınırı için uygulanmış ilk korumalar | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | — (tamamlandı) |
 | 04.04 | BITTI | Ham etkinlik kayıtlarına 90 gün saklama | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | — (tamamlandı) |
-| **04.05** | **SIRADAKI** | **Yeni API'lerin iki hesapla nesne sahipliği ve negatif erişim denetimi; UI'da erişim yok** | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | GPT-6.1 Sol · High |
+| 04.05 | BITTI | Yeni API'lerin iki hesapla nesne sahipliği ve negatif erişim denetimi; UI'da erişim yok | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | — (tamamlandı) |
 | 04.06 | KULLANICI | İki yetkili hesabın geçici parolasını ayrı, güçlü parolalarla Hesap ekranından değiştirme; sonra üretim açılışı | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | Kullanıcı · model gerekmez |
-| 04.07 | YAPILACAK | Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | GPT-6.1 Sol · High |
+| **04.07** | **SIRADAKI** | **Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi** | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | GPT-6.1 Sol · High |
 | 04.08 | YAPILACAK | Öğrencinin veri dışa aktarma/hesap silme akışı; erişim ve UI kontrolü | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | GPT-6.1 Sol · High |
 | 04.09 | YAPILACAK | Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) | GPT-6.1 Sol · Medium |
 | 04.10 | BITTI | Kullanıcı isteğiyle kayıt, parola değiştirme ve yönetici oluşturma alt sınırını 8 karaktere eşitleme | [03_KAYIT_VE_ILETISIM.md](03_KAYIT_VE_ILETISIM.md) | — (tamamlandı) |
