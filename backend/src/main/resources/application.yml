@@ -2,6 +2,8 @@
 # Geliştirme için: --spring.profiles.active=dev (application-dev.yml). Üretim: README'deki ortam değişkenleri.
 server:
   port: ${PORT:8081}
+  address: ${YKS_BIND_ADDRESS:127.0.0.1}
+  forward-headers-strategy: none   # tünel istemcisinden gelen X-Forwarded-* başlıklarına güvenme
   servlet:
     session:
       timeout: 12h

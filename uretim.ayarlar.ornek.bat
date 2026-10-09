@@ -7,15 +7,15 @@ set YKS_DB_URL=jdbc:postgresql://localhost:5432/ivme
 set YKS_DB_KULLANICI=root
 set YKS_DB_SIFRE=BURAYA_VERITABANI_SIFRESI
 
-rem --- Sitenin disaridan acilan adresi (QR kodlar bu adrese gider). Tunel/alan adi adresini yaz.
-set YKS_SITE_ADRESI=https://BURAYA-ADRES
+rem --- Sabit dis adres. Cloudflare Tunnel bunu HTTPS olarak yayinlar; QR kodlar burada acilir.
+set YKS_SITE_ADRESI=https://net.ivme.dev
 
 rem --- Soru gorsellerinin kok klasoru
 set YKS_RESIM_KLASORU=D:\yks-resimler
 
 rem --- Ilk yonetici hesabi (hesap bir kez olusunca sifreyi ezmez; sifreyi sonra Hesap sayfasindan degistirebilirsin)
 set YKS_ADMIN_KULLANICI=yonetici
-set YKS_ADMIN_SIFRE=BURAYA-EN-AZ-10-KARAKTERLIK-GUCLU-SIFRE
+set YKS_ADMIN_SIFRE=BURAYA-EN-AZ-15-KARAKTERLIK-GUCLU-SIFRE
 
 rem --- HTTPS arkasindaysan (tunel/alan adi) true birak
 set YKS_COOKIE_SECURE=true

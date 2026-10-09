@@ -18,6 +18,8 @@ Bu dosya kaynak konumlarını ve dış teknik kaynakları tutar. Planın kendisi
 - [Cloudflare Tunnel: kurulum ve yerel servise yayın rotası](https://developers.cloudflare.com/tunnel/get-started/) — `net.ivme.dev` için public hostname → yerel servis eşlemesi. Tünel URL'si yerel servis URL'si değildir.
 - [Cloudflare Access: self-hosted web uygulaması](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) — davetli pilot erişim seçeneği; uygulamanın öğrenci/yönetici yetkilendirmesini ayrıca kur.
 - [Cloudflare Tunnel: HTTPS origin sorun giderme](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) — origin protokolü ve tünel rotası denetimi.
+- [Cloudflare HTTP başlıkları](https://developers.cloudflare.com/fundamentals/reference/http-headers/) — `CF-Connecting-IP` davranışı; tünel dışından gelen istemci başlığına güvenme.
+- [Spring Boot 3.5: forwarded headers](https://docs.spring.io/spring-boot/3.5/how-to/webserver.html) ve [Spring Framework güvenlik notu](https://docs.spring.io/spring-framework/reference/web/webmvc/filters.html) — güvenilmeyen `X-Forwarded-*` başlıklarının işlenmemesi kararı.
 - [PostgreSQL: SQL dump, özel biçim ve geri yükleme](https://www.postgresql.org/docs/current/backup-dump.html) — `pg_dump -Fc` ve `pg_restore` yaklaşımı; düzenli geri yükleme testi.
 - [PyMuPDF: PDF metin çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-text.html) ve [görsel çıkarma](https://pymupdf.readthedocs.io/en/latest/recipes-images.html) — mevcut Python hattına uygunluğu Adım 12'de ölç.
 - [Tesseract OCR: girdi biçimleri](https://github.com/tesseract-ocr/tessdoc/blob/main/InputFormats.md) — doğrudan PDF okuyamaz; taranmış PDF için önce görüntüye çevirme/OCR katmanı gerekir.

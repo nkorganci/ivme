@@ -18,11 +18,13 @@
 
 **Veri ve hesap kararı:** Gerçek `ivme` veritabanındaki öğrenci ve yönetici hesaplarının parolaları değiştirilmedi. İçerik operatörü hesabı gerçek veritabanına eklenmedi. Kullanıcı seçtiği ayrı hesabı hazırladığında rol, kontrollü olarak `OPERATOR` yapılacak. Yerel testteki `operator_test` yalnız `ivme_test` içindedir.
 
+**Tünel sınırı:** Spring Boot varsayılan olarak yalnız `127.0.0.1` üzerinde dinler; `X-Forwarded-*` başlıkları kullanılmaz. Böylece uygulama bu başlıklarla sahte HTTPS/Host/istemci bilgisi kabul etmez. Üretim örnek ayarında QR için sabit `https://net.ivme.dev` ve güvenli oturum çerezi vardır. Cloudflare Tunnel hedefi `http://localhost:8081` olmalıdır. Farklı ağa açma kararı ayrıca gözden geçirilir.
+
 ## Açık kontrol listesi
 
 - Her öğrenci verisi API'sinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi.
 - CSRF, oturum süresi/çıkış, giriş hızı ve güvenli çerez denetimi.
-- Tünel arkasında güvenilen vekil başlıkları, sabit genel adres ve gerçek istemci IP'si kararı.
+- Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel yolunun kök dışına çıkması, dosya türü ve hata yanıtında bilgi sızıntısı testi.
 - Etkinlik verisinin saklama/silme ve dışa aktarma kararı; yedek ve geri yükleme provası.
 - Üretim için ayrı sınırlı DB rolü, güçlü hesap parolaları ve internetten erişim provası.
