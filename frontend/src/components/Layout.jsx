@@ -48,7 +48,8 @@ export default function Layout() {
     };
   }, []);
 
-  const links = user.role === 'ADMIN' ? [...LINKS, ['/yonetim', 'Yönetim']] : LINKS;
+  const links = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim']]
+    : user.role === 'OPERATOR' ? [['/icerik-bakimi', 'İçerik bakımı']] : LINKS;
 
   const signOut = async () => {
     await logout().catch(() => {});

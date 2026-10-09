@@ -89,15 +89,26 @@ class AuthTest extends TestBase {
     void yetkiKurallari() throws Exception {
         user("ayse", Role.USER);
         user("yonetici", Role.ADMIN);
+        user("operator", Role.OPERATOR);
         mvc.perform(get("/api/questions/filters")).andExpect(status().isUnauthorized());
         mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
                 .content("{\"login\":\"ayse\",\"password\":\"Sifre1234\"}")).andExpect(status().isForbidden());   // CSRF yok
 
         MockHttpSession userSession = login("ayse", "Sifre1234");
         mvc.perform(get("/api/admin/stats").session(userSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/operator/questions").session(userSession)).andExpect(status().isForbidden());
         MockHttpSession adminSession = login("yonetici", "Sifre1234");
         mvc.perform(get("/api/admin/stats").session(adminSession)).andExpect(status().isOk())
-                .andExpect(jsonPath("$.userCount").value(2));
+                .andExpect(jsonPath("$.userCount").value(1))
+                .andExpect(jsonPath("$.questionCount").doesNotExist());
+        mvc.perform(get("/api/operator/questions").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/admin/feedback").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/questions/filters").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/exams/summary").session(adminSession)).andExpect(status().isForbidden());
+        MockHttpSession operatorSession = login("operator", "Sifre1234");
+        mvc.perform(get("/api/admin/stats").session(operatorSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/operator/questions").session(operatorSession)).andExpect(status().isOk());
+        mvc.perform(get("/api/exams/summary").session(operatorSession)).andExpect(status().isForbidden());
     }
 
     @Test

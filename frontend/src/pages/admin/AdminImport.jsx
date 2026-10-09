@@ -54,7 +54,7 @@ export default function AdminImport() {
     body.append('mode', mode);
     body.append('dryRun', String(asDryRun));
     try {
-      const r = await api.upload('/api/admin/import', body);
+      const r = await api.upload('/api/operator/import', body);
       const errors = r.errors || [];
       const warnings = r.warnings || [];
       setReport({ ...r, errors, warnings, errorCount: r.errorCount ?? errors.length, warningCount: r.warningCount ?? warnings.length });

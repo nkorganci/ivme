@@ -23,7 +23,7 @@ export default function AdminQuestions() {
   const [page, setPage] = useState(0);
   const [notice, setNotice] = useState('');
 
-  const url = '/api/admin/questions' + qs({ query, ...filter, active, page, size: PAGE_SIZE });
+  const url = '/api/operator/questions' + qs({ query, ...filter, active, page, size: PAGE_SIZE });
   const { data, loading, error, retry, reload } = useAsync(() => api.get(url), [url]);
 
   const search = (e) => {

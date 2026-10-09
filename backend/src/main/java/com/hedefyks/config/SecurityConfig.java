@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -59,8 +60,13 @@ public class SecurityConfig {
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/admin/stats").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/**").denyAll()
+                        .requestMatchers("/api/operator/**").hasRole("OPERATOR")
+                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/account/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/questions/*/image", "/api/questions/*/solution-image")
+                            .hasAnyRole("USER", "OPERATOR")
+                        .requestMatchers("/api/**").hasRole("USER")
                         .anyRequest().permitAll())                      // ön yüz dosyaları
                 .exceptionHandling(e -> e
                         .authenticationEntryPoint((req, res, ex) ->

@@ -5,7 +5,6 @@ import com.hedefyks.admin.AdminDtos.AdminQuestion;
 import com.hedefyks.admin.AdminDtos.QuestionUpdate;
 import com.hedefyks.admin.AdminDtos.ReportedQuestion;
 import com.hedefyks.admin.AdminDtos.ResolveRequest;
-import com.hedefyks.admin.AdminDtos.Stats;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
 import com.hedefyks.feedback.FeedbackCategory;
@@ -29,22 +28,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-/** Yalnız ADMIN (SecurityConfig: /api/admin/** → hasRole ADMIN). */
+/** Yalnız içerik OPERATOR rolü; ürün yöneticisinin toplu panelinden ayrıdır. */
 @RestController
-@RequestMapping("/api/admin")
-public class AdminController {
+@RequestMapping("/api/operator")
+public class OperatorController {
 
     private final AdminService service;
     private final QuestionImportService importer;
 
-    public AdminController(AdminService service, QuestionImportService importer) {
+    public OperatorController(AdminService service, QuestionImportService importer) {
         this.service = service;
         this.importer = importer;
-    }
-
-    @GetMapping("/stats")
-    public Stats stats() {
-        return service.stats();
     }
 
     @GetMapping("/questions")

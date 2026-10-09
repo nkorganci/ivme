@@ -15,8 +15,7 @@ public final class AdminDtos {
 
     private AdminDtos() {}
 
-    public record Stats(long userCount, long questionCount, long activeQuestionCount, long submittedExamCount,
-                        long openFeedbackCount, long reportedQuestionCount) {}
+    public record Stats(long userCount, long submittedExamCount) {}
 
     public record AdminQuestion(Long id, String code, ExamType examType, String subject, String topic,
                                 Integer year, String source, String image,

@@ -9,7 +9,7 @@ import { LETTERS } from '../../format.js';
 
 /** Soru düzenleme penceresi: soruyu yükler, formu gösterir. */
 export default function QuestionEditor({ id, rows, onClose, onSaved }) {
-  const { data, loading, error, retry } = useAsync(() => api.get(`/api/admin/questions/${id}`), [id]);
+  const { data, loading, error, retry } = useAsync(() => api.get(`/api/operator/questions/${id}`), [id]);
   return (
     <Modal title="Soruyu düzenle" onClose={onClose} wide>
       {loading && <Loading />}
@@ -46,7 +46,7 @@ function EditorForm({ q, rows, onClose, onSaved }) {
     setState({ busy: true, error: '' });
     setErrors({});
     try {
-      const saved = await api.put(`/api/admin/questions/${q.id}`, {
+      const saved = await api.put(`/api/operator/questions/${q.id}`, {
         examType: f.examType,
         subject: f.subject.trim(),
         topic: f.topic.trim() || null,

@@ -16,6 +16,7 @@ import com.hedefyks.question.Question;
 import com.hedefyks.question.QuestionFilter;
 import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.question.QuestionSpecs;
+import com.hedefyks.user.Role;
 import com.hedefyks.user.UserRepository;
 import jakarta.persistence.criteria.Predicate;
 import java.time.Instant;
@@ -23,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -49,10 +49,7 @@ public class AdminService {
 
     @Transactional(readOnly = true)
     public Stats stats() {
-        return new Stats(users.count(), questions.count(), questions.countByActiveTrue(),
-                exams.countByStatus(ExamStatus.SUBMITTED),
-                feedback.countByResolvedFalseAndCategoryIn(Set.of(FeedbackCategory.QUESTION_ISSUE, FeedbackCategory.GENERAL)),
-                feedback.reportedQuestionCount(FeedbackCategory.QUESTION_ISSUE));
+        return new Stats(users.countByRole(Role.USER), exams.countByStatus(ExamStatus.SUBMITTED));
     }
 
     // ------------------------------------------------------------------ sorular
