@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | Bu dosya. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` klasöründeki kopya kolay erişim içindir. Her adımda ikisi birlikte güncellenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md).
+**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -61,7 +61,7 @@
 
 ### Adım 6 — Soru başına çözüm deneyimi
 
-**Özet:** Her sorunun tüm denemelerini güvenilir biçimde tut. **Yapılacak:** İlk yanıt, tekrar dene, cevap göster, atla; doğru/yanlış, seçilen şık, sunucu zamanı, aktif süre, ders/konu/alt konu/soru tipi, kaynak, oturum kimliği; tekrar gönderme ve ağ kopması için idempotency; cevap değiştiğinde eski kayıtların korunması; bireysel kolay/orta/zor geri bildirimi. Karalama soru ve kullanıcı bazında saklanır; büyük çizimler gerekirse dosya deposunda. QR yalnız sorunun giriş gerektiren adresine gider. **UI kontrolü:** Yanlış sonrası tekrar, cevap gösterme izni, sekmeler, mobil karalama ve kayıt başarısızlığı. **Bitti sayılır:** Yenileme/giriş/başka cihaz sonrası deneme geçmişi doğru; istemci doğru cevabı izin verilmeden alamaz. **Durum:** planlandı.
+**Özet:** Her sorunun tüm denemelerini güvenilir biçimde tut. **Yapılacak:** İlk yanıt, tekrar dene, cevap göster, atla; doğru/yanlış, seçilen şık, sunucu zamanı, aktif süre, ders/konu/alt konu/soru tipi, kaynak, oturum kimliği; tekrar gönderme ve ağ kopması için idempotency; cevap değiştiğinde eski kayıtların korunması; bireysel kolay/orta/zor geri bildirimi. Karalama soru ve kullanıcı bazında saklanır; büyük çizimler gerekirse dosya deposunda. QR yalnız sorunun giriş gerektiren adresine gider. **UI kontrolü:** Yanlış sonrası tekrar, cevap gösterme izni, sekmeler, mobil karalama ve kayıt başarısızlığı. **Bitti sayılır:** Yenileme/giriş/başka cihaz sonrası deneme geçmişi doğru; istemci doğru cevabı izin verilmeden alamaz. **Durum:** sürüyor (2026-10-09). **Kayıt:** [kayıtlı pratik ve açık kalan UI/oturum işleri](09_SORU_DENEMELERI.md); 44 arka yüz testi ve masaüstü/mobil 22/22 E2E geçti. Gerçek DB'ye V9 uygulandı; 80.097 soru ve 3 hesap korundu.
 
 ### Adım 7 — Seçilebilir çalışma ve deneme oturumları
 

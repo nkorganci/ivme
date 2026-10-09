@@ -2,13 +2,14 @@ package com.hedefyks.question;
 
 import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
-import com.hedefyks.question.QuestionDtos.CheckRequest;
-import com.hedefyks.question.QuestionDtos.CheckResponse;
+import com.hedefyks.question.AttemptDtos.AttemptRequest;
+import com.hedefyks.question.AttemptDtos.PracticeState;
 import com.hedefyks.question.QuestionDtos.FilterRow;
 import com.hedefyks.question.QuestionDtos.QuestionDetail;
 import com.hedefyks.question.QuestionDtos.QuestionListItem;
 import com.hedefyks.storage.ImageStorage;
 import com.hedefyks.user.AppUserDetails;
+import com.hedefyks.user.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.time.Duration;
@@ -35,12 +36,15 @@ public class QuestionController {
     private final QuestionRepository questions;
     private final ImageStorage images;
     private final QrService qr;
+    private final AttemptService attempts;
 
-    public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr) {
+    public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
+                              AttemptService attempts) {
         this.service = service;
         this.questions = questions;
         this.images = images;
         this.qr = qr;
+        this.attempts = attempts;
     }
 
     @GetMapping("/filters")
@@ -80,9 +84,15 @@ public class QuestionController {
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @PostMapping("/{id}/check")
-    public CheckResponse check(@PathVariable Long id, @Valid @RequestBody CheckRequest req) {
-        return service.check(id, req.answer());
+    @GetMapping("/{id}/practice")
+    public PracticeState practice(@PathVariable Long id, @AuthenticationPrincipal AppUserDetails me) {
+        return attempts.state(id, me.id());
+    }
+
+    @PostMapping("/{id}/practice")
+    public PracticeState practiceEvent(@PathVariable Long id, @Valid @RequestBody AttemptRequest req,
+                                       @AuthenticationPrincipal AppUserDetails me) {
+        return attempts.submit(id, me.id(), req);
     }
 
     @GetMapping("/{id}/image")
@@ -97,9 +107,10 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}/solution-image")
-    public ResponseEntity<Resource> solutionImage(@PathVariable Long id) {
+    public ResponseEntity<Resource> solutionImage(@PathVariable Long id,
+                                                  @AuthenticationPrincipal AppUserDetails me) {
         Question q = questions.findById(id).orElseThrow(() -> ApiException.notFound("Soru bulunamadı."));
-        if (q.getSolutionImage() == null) {
+        if (q.getSolutionImage() == null || (me.role() != Role.OPERATOR && !attempts.canSeeSolution(id, me.id()))) {
             throw ApiException.notFound("Bu sorunun çözüm görseli yok.");
         }
         Resource resource = images.load(q.getSolutionImage());

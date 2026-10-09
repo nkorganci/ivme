@@ -33,3 +33,7 @@ Mevcut `feedback` tablosu öğrencinin kolay/orta/zor oyunu ve soru sorun bildir
 2. Dolu eski DB'den geçiyorsan, önce Git dışına `pg_dump -Fc -h localhost -U root -d yks_hazirlik -f <yedek.dump>` al; yeni boş `ivme`ye `pg_restore -h localhost -U root -d ivme --exit-on-error --no-owner --no-privileges <yedek.dump>` ile geri yükle. Aynı tablo sayılarını karşılaştır.
 3. `backend-baslat.bat` yeni varsayılan DB'ye bağlanır ve eksik Flyway göçlerini uygular. İlk paylaşım öncesi geliştirme yönetici parolası, ayrı DB rolü ve güvenli çerez ayarı 4–5. adımlarda tamamlanır.
 4. Geri dönüş gerekirse eski `yks_hazirlik` DB'si ve dump yerinde durur. Yeni yazılan denemeler oluştuğunda geri dönmeden önce ayrıca `ivme` yedeği alınmalıdır.
+
+# 2026-10-09 ek geçiş kaydı
+
+Serbest pratik için `V9__pratik_turu.sql` eklendi. Önce eski tam yedek geçici DB'ye yüklenip V9 ve tarayıcı akışları denendi. Ardından gerçek `ivme` DB'sinde V8 → V9 geçişi yerel uygulama başlatmasıyla uygulandı; soru sayısı 80.097, kullanıcı sayısı 3 kaldı. Ayrıntı [Adım 6 kaydında](09_SORU_DENEMELERI.md). Bu satır önceki V1–V8 geçiş kaydını değiştirmez.

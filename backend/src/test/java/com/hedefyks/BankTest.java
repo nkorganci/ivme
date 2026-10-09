@@ -13,6 +13,7 @@ import com.hedefyks.question.Question;
 import com.hedefyks.question.QuestionBank;
 import com.hedefyks.user.Role;
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
@@ -62,6 +63,10 @@ class BankTest extends TestBase {
         send(session, get("/api/questions/" + with.getId()), null).andExpect(jsonPath("$.hasSolutionImage").value(true))
                 .andExpect(jsonPath("$.bank").value("OGM"));
         send(session, get("/api/questions/" + without.getId()), null).andExpect(jsonPath("$.hasSolutionImage").value(false));
+        send(session, get("/api/questions/" + with.getId() + "/solution-image"), null).andExpect(status().isNotFound());
+        send(session, post("/api/questions/" + with.getId() + "/practice"),
+                "{\"clientEventId\":\"" + UUID.randomUUID() + "\",\"eventType\":\"REVEAL\"}")
+                .andExpect(status().isOk()).andExpect(jsonPath("$.correctAnswer").value("B"));
         send(session, get("/api/questions/" + with.getId() + "/solution-image"), null).andExpect(status().isOk());
         send(session, get("/api/questions/" + without.getId() + "/solution-image"), null).andExpect(status().isNotFound());
     }

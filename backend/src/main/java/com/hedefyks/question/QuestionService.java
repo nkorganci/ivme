@@ -4,7 +4,6 @@ import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
 import com.hedefyks.feedback.FeedbackCategory;
 import com.hedefyks.feedback.FeedbackRepository;
-import com.hedefyks.question.QuestionDtos.CheckResponse;
 import com.hedefyks.question.QuestionDtos.Evaluation;
 import com.hedefyks.question.QuestionDtos.FilterRow;
 import com.hedefyks.question.QuestionDtos.QuestionDetail;
@@ -62,13 +61,6 @@ public class QuestionService {
         var spec = QuestionSpecs.filter(filter, true).and(QuestionSpecs.idAfter(id, next));
         Sort sort = next ? Sort.by("id").ascending() : Sort.by("id").descending();
         return questions.findBy(spec, q -> q.sortBy(sort).first()).map(q -> toDetail(q, userId));
-    }
-
-    public CheckResponse check(Long id, String answer) {
-        Question q = findActive(id);
-        String a = Answers.normalize(answer, q.getChoiceCount());
-        if (a == null) throw ApiException.badRequest("Bir şık seç.");
-        return new CheckResponse(a.equals(q.getCorrectAnswer()), q.getCorrectAnswer(), q.getSolutionUrl());
     }
 
     public Question findActive(Long id) {

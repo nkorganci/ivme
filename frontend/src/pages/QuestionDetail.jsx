@@ -8,6 +8,7 @@ import QuestionSide from '../components/QuestionSide.jsx';
 import Strip from '../components/Strip.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import { bankLabel, bankPath } from '../format.js';
+import { usePractice } from '../usePractice.js';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic'];
 
@@ -44,31 +45,47 @@ function QuestionView({ q, filters, reload }) {
   const scope = { ...filters, bank: filters.bank || q.bank };
   const backQuery = qs({ ...scope, bank: '' });
   const [selected, setSelected] = useState(null);
-  const [result, setResult] = useState(null);
-  const [checking, setChecking] = useState(false);
+  const [ready, setReady] = useState(true);
   const [error, setError] = useState('');
   const [info, setInfo] = useState('');
   const [moving, setMoving] = useState(false);
   const [solution, setSolution] = useState(false);
   const solutionRef = useRef(null);
+  const practice = usePractice(q.id);
+  const state = practice.state;
+  useEffect(() => {
+    if (state?.attempts?.length) setReady(false);
+  }, [state?.round, state?.attempts?.length]);
+  const lastAnswer = state?.attempts?.findLast((a) => a.eventType === 'ANSWER');
+  const canChoose = !!state && !practice.loading && !practice.busy && ready
+    && (state.canAnswer || state.roundComplete);
 
   const check = async () => {
-    if (!selected || result || checking) return;
-    setChecking(true);
+    if (!selected || !canChoose) return;
     setError('');
-    try {
-      setResult(await api.post(`/api/questions/${q.id}/check`, { answer: selected }));
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setChecking(false);
+    const next = await practice.submit('ANSWER', selected);
+    if (next) {
+      setSelected(null);
+      setReady(false);
+      setSolution(false);
     }
   };
 
-  const reset = () => {
-    setResult(null);
+  const retry = () => {
     setSelected(null);
+    setReady(true);
     setSolution(false);
+    practice.selectionChanged();
+  };
+
+  const reveal = async () => {
+    const next = await practice.submit('REVEAL');
+    if (next) { setSelected(null); setReady(false); }
+  };
+
+  const skip = async () => {
+    const next = await practice.submit('SKIP');
+    if (next) { setSelected(null); setReady(false); }
   };
 
   const go = async (direction) => {
@@ -108,7 +125,14 @@ function QuestionView({ q, filters, reload }) {
     return () => window.removeEventListener('keydown', onKey);
   });
 
-  const videoUrl = result?.solutionUrl && /^https?:\/\//i.test(result.solutionUrl) ? result.solutionUrl : null;
+  const videoUrl = !ready && state?.solutionUrl && /^https?:\/\//i.test(state.solutionUrl) ? state.solutionUrl : null;
+  const status = ready && state?.roundComplete ? '' : state?.roundComplete
+    ? state.correctAnswer
+      ? lastAnswer?.correct ? '✓ Doğru!' : `Cevap gösterildi: ${state.correctAnswer}`
+      : 'Soru atlandı.'
+    : lastAnswer && !ready
+      ? `✗ Yanlış. ${state.remainingAttempts ? 'Bir kez daha deneyebilirsin.' : 'Cevabı gösterebilir veya soruyu atlayabilirsin.'}`
+      : '';
 
   return (
     <div className="qpage">
@@ -142,35 +166,46 @@ function QuestionView({ q, filters, reload }) {
       </div>
 
       <div className="qdock">
-        {result ? (
-          <Strip tone={result.correct ? 'ok' : 'bad'}>
-            <span>{result.correct ? '✓ Doğru!' : `✗ Yanlış. Doğru cevap: ${result.correctAnswer}`}</span>
+        {practice.loading ? <Strip tone="info">Deneme geçmişi yükleniyor…</Strip> : null}
+        {(practice.error || error) && <Strip tone="bad">✗ {practice.error || error}
+          {!state && <button type="button" className="btn btn-secondary" onClick={practice.load}>Yeniden dene</button>}
+        </Strip>}
+        {status && (
+          <Strip tone={lastAnswer?.correct ? 'ok' : state?.correctAnswer ? 'info' : 'bad'}>
+            <span>{status}</span>
             {videoUrl && (
               <a href={videoUrl} target="_blank" rel="noopener noreferrer">
                 ▶ Video<span className="hide-sm"> çözümü</span>
               </a>
             )}
-            {q.hasSolutionImage && !solution && (
+            {q.hasSolutionImage && !!state?.correctAnswer && !solution && (
               <button type="button" className="btn btn-secondary" onClick={() => setSolution(true)}>
                 Çözümü göster
               </button>
             )}
-            <button type="button" className="btn btn-secondary push" onClick={reset}>
-              Tekrar dene
-            </button>
+            {!ready && (state?.roundComplete || state?.canAnswer) && (
+              <button type="button" className="btn btn-secondary push" onClick={retry}>
+                {state.roundComplete ? 'Yeniden çalış' : 'Tekrar dene'}
+              </button>
+            )}
           </Strip>
-        ) : error ? (
-          <Strip tone="bad">✗ {error}</Strip>
-        ) : info ? (
+        )}
+        {info && !status && !error && !practice.error && (
           <Strip tone="info">{info}</Strip>
-        ) : null}
+        )}
+        {state?.canReveal && !practice.busy && <div className="practice-actions">
+          <button type="button" className="btn btn-secondary btn-sm" onClick={reveal}>Cevabı göster</button>
+          <button type="button" className="btn btn-secondary btn-sm" onClick={skip}>Soruyu atla</button>
+        </div>}
         <div className="qbar">
           <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('prev')} title="Önceki soru (←)">
             ‹ Önceki
           </button>
-          <ChoiceButtons count={q.choiceCount} value={selected} onSelect={setSelected} disabled={!!result} correct={result?.correctAnswer} />
-          <button type="button" className="btn btn-primary" disabled={!selected || !!result || checking} onClick={check} title="Cevabı kontrol et (Enter)">
-            {checking ? 'Kontrol ediliyor…' : 'Cevabı Kontrol Et'}
+          <ChoiceButtons count={q.choiceCount} value={selected || (!ready ? lastAnswer?.selectedAnswer : null)}
+            onSelect={(answer) => { setSelected(answer); practice.selectionChanged(); }} disabled={!canChoose}
+            correct={!ready ? state?.correctAnswer : null} wrong={!ready && !state?.correctAnswer && lastAnswer?.selectedAnswer} />
+          <button type="button" className="btn btn-primary" disabled={!selected || !canChoose} onClick={check} title="Cevabı kontrol et (Enter)">
+            {practice.busy ? 'Kaydediliyor…' : 'Cevabı Kontrol Et'}
           </button>
           <button type="button" className="btn btn-secondary" disabled={moving} onClick={() => go('next')} title="Sonraki soru (→)">
             Sonraki ›

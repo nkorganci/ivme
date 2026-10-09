@@ -1,0 +1,30 @@
+package com.hedefyks.question;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+public final class AttemptDtos {
+    private AttemptDtos() {}
+
+    public record AttemptRequest(
+            @NotNull UUID clientEventId,
+            @NotNull AttemptEventType eventType,
+            String answer,
+            @Min(0) @Max(21600) Integer activeSeconds) {}
+
+    public record AttemptItem(Long id, AttemptEventType eventType, String selectedAnswer,
+                              Boolean correct, int activeSeconds, Instant createdAt) {
+        static AttemptItem of(QuestionAttempt a) {
+            return new AttemptItem(a.getId(), a.getEventType(), a.getSelectedAnswer(),
+                    a.getCorrect(), a.getActiveSeconds(), a.getCreatedAt());
+        }
+    }
+
+    public record PracticeState(int round, List<AttemptItem> attempts, int remainingAttempts,
+                                boolean canAnswer, boolean canReveal, boolean roundComplete,
+                                String correctAnswer, String solutionUrl) {}
+}

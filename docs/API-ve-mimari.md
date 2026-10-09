@@ -22,14 +22,15 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 | `GET /api/questions?bank&examType&subject&topic&page&size` | Sayfalı etkin soru listesi |
 | `GET /api/questions/code/{code}`, `GET /api/questions/{id}` | Soru künyesi; doğru cevap içermez |
 | `GET /api/questions/{id}/neighbor?direction&bank&examType&subject&topic` | Filtre içindeki komşu soru |
-| `GET /api/questions/{id}/image`, `/solution-image`, `/qr` | Soru/çözüm görseli ve sabit adrese QR |
-| `POST /api/questions/{id}/check` `{answer}` | Serbest pratikte doğruluk ve doğru cevap; henüz kalıcı deneme yazmaz |
+| `GET /api/questions/{id}/image`, `/solution-image`, `/qr` | Soru/çözüm görseli ve sabit adrese QR; çözüm görseli yalnız cevap görüldükten veya sınav tesliminden sonra (operatör ön izlemesi hariç) |
+| `GET /api/questions/{id}/practice` | Yalnız giriş yapan öğrencinin son turu ve yanıt olayları; doğru cevap başlangıçta ve yanlış sonrası gizli |
+| `POST /api/questions/{id}/practice` | `{clientEventId,eventType,answer?,activeSeconds?}`; `ANSWER`, `REVEAL`, `SKIP` kayıtları; aynı UUID tekrarında çift kayıt yok |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,timeLimitMinutes}` | Rastgele sınav oluşturma |
 | `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, otomatik kayıt ve sonuç |
 | `GET /api/exams?page&size`, `GET /api/exams/summary` | Sahibine ait geçmiş ve özet |
 | `POST /api/feedback` | `RATING`, `QUESTION_ISSUE` veya `GENERAL` geri bildirimi |
 
-`CIKMIS` ve `OGM` koleksiyonları `questions.bank` ile ayrılır. `questions.solution_image` varsa çözüm görseli soru ekranında gösterilir. Soru görseli ve çözüm görseli veritabanında dosya değil, `YKS_RESIM_KLASORU` altındaki göreli yoldur; gerçek dosya yolu kökün dışına çıkamaz. QR üretimde sabit `YKS_SITE_ADRESI/soru/{code}` adresini kullanır. Sınav oturumu cevap anahtarını teslimden önce döndürmez. `exam_questions.correct_answer` teslimde kopyalanır; sonraki soru düzenlemesi eski sonucu değiştirmez.
+`CIKMIS` ve `OGM` koleksiyonları `questions.bank` ile ayrılır. `questions.solution_image` varsa ve erişim izni oluştuysa çözüm görseli soru ekranında gösterilir. Soru görseli ve çözüm görseli veritabanında dosya değil, `YKS_RESIM_KLASORU` altındaki göreli yoldur; gerçek dosya yolu kökün dışına çıkamaz. QR üretimde sabit `YKS_SITE_ADRESI/soru/{code}` adresini kullanır. Serbest pratikte iki yanıt hakkından sonra öğrenci cevap gösterir veya soruyu atlar; sonraki çalışma yeni turdur. `question_attempts.correct_answer` olay anında kopyalanır, aktif saniye görünür/odaklı sekmede yaklaşık ölçülür. Eski stateless `/api/questions/{id}/check` kaldırıldı. Sınav oturumu cevap anahtarını teslimden önce döndürmez. `exam_questions.correct_answer` teslimde kopyalanır; sonraki soru düzenlemesi eski sonucu değiştirmez.
 
 ## Operatör ve yönetici uçları
 
@@ -37,4 +38,4 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 
 ## Veritabanı ve henüz bağlanmamış alanlar
 
-Flyway `V1`–`V8` göçleri PostgreSQL `ivme` veritabanını yönetir; test DB `ivme_test`'tir. Çalışan akışlar `users`, `questions`, `exams`, `exam_questions`, `feedback` tablolarını kullanır. `study_sessions`, `session_questions`, `question_attempts`, `goals`, `taxonomy_nodes`, `question_taxonomy`, `taxonomy_prerequisites`, `activity_events` tabloları sonraki ürün adımları için hazırlanmıştır; var olmaları işlevlerin tamamlandığı anlamına gelmez. Ham `activity_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Göç ve geri yükleme ayrıntıları [Adım 2 kaydında](plan/05_VERITABANI_GECISI.md); açık güvenlik işleri [Adım 4 kaydında](plan/07_GUVENLIK_YETKI.md) bulunur.
+Flyway `V1`–`V9` göçleri PostgreSQL `ivme` veritabanını yönetir; test DB `ivme_test`'tir. Çalışan akışlar `users`, `questions`, `exams`, `exam_questions`, `feedback` ve serbest pratik için `question_attempts` tablolarını kullanır. `V9` ile `question_attempts.practice_round` eklendi. `study_sessions`, `session_questions`, `goals`, `taxonomy_nodes`, `question_taxonomy`, `taxonomy_prerequisites`, `activity_events` tabloları sonraki ürün adımları için hazırlanmıştır; var olmaları işlevlerin tamamlandığı anlamına gelmez. Ham `activity_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Göç ve geri yükleme ayrıntıları [Adım 2 kaydında](plan/05_VERITABANI_GECISI.md); [Adım 6 deneme kaydı](plan/09_SORU_DENEMELERI.md) açık işleri listeler.

@@ -131,8 +131,14 @@ ok('Soru görseli yüklendi', await ev("(() => { const i = document.querySelecto
 await clickText('', '.choice');                                            // ilk şık (A)
 await ev("document.querySelector('.choice').click()");
 await clickText('Cevabı Kontrol Et');
+await waitText('Yanlış', 6000);
+ok('İlk yanlışta doğru cevap gizli', !(await ev("!!document.querySelector('.choice.correct')")));
+await go('/soru/TYT-0001');
+await waitText('Yanlış', 6000);
+ok('Yanlış deneme yenilemeden sonra kayıtlı', (await text()).includes('Tekrar dene'));
+await clickText('Cevabı göster');
 await waitFor("document.querySelector('.choice.correct')", 'doğru şık işareti');
-ok('Cevap kontrolünde doğru şık vurgulandı', await ev("!!document.querySelector('.choice.correct')"));
+ok('Açıkça cevap gösterilince doğru şık vurgulandı', await ev("!!document.querySelector('.choice.correct')"));
 ok('Video çözüm bağlantısı göründü', (await text()).includes('Video'));
 await shot('05-soru-detay');
 // değerlendirme: Zor + 4 yıldız → Kaydet → topluluk özeti güncellenir (yan paneldeki katlanır bölümler önce açılır)

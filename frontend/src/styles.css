@@ -205,6 +205,8 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .qresult.info { background: var(--primary-soft); color: #3730a3; border-color: #c7d2fe; } .qresult.warn { background: var(--warn-soft); color: #92400e; border-color: #fde68a; }
 .qresult a { color: inherit; } .qresult .push { margin-left: auto; }
 .qresult .btn { min-height: 28px; background: rgba(255, 255, 255, .8); }
+.practice-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; padding: 4px 14px; border-bottom: 1px solid var(--line); }
+.practice-actions .btn { min-height: 30px; }
 .qbar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 12px; padding: 6px 14px; max-width: 1400px; margin: 0 auto; }
 .choices { display: flex; gap: 8px; justify-content: center; }
 .choice { position: relative; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #cbd5e1; background: #fff; font-size: var(--fs-md); font-weight: 700; transition: background .15s; }
