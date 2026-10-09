@@ -22,6 +22,17 @@ const server = createServer((req, res) => {
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json([]);
+  if (pathname === '/api/questions/code/TEST-1') return json({
+    id: 41, code: 'TEST-1', bank: 'CIKMIS', examType: 'TYT', subject: 'Türkçe', topic: 'Noktalama',
+    choiceCount: 5, hasSolutionImage: false, avgRating: null, ratingCount: 0,
+    difficultyVotes: {}, myEvaluation: null, approvedLabels: [],
+    helpfulness: { helpful: 0, notHelpful: 0, mine: null, canVote: true },
+  });
+  if (pathname === '/api/questions/41/practice') return json({ round: 1, attempts: [], remainingAttempts: 2,
+    canAnswer: true, canReveal: true, roundComplete: false, correctAnswer: null, solutionUrl: null });
+  if (pathname === '/api/questions/41/helpfulness' && req.method === 'POST') {
+    return json({ helpful: 1, notHelpful: 0, mine: true, canVote: true });
+  }
   if (pathname === '/api/questions/availability') {
     const query = new URL(req.url, 'http://localhost').searchParams;
     return query.get('topicPdfId') === '1099'
@@ -96,6 +107,7 @@ try {
       ['/pratik/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/sinav/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/hesap', 'Verilerimi indir'],
+      ['/soru/TEST-1', 'Onaylı etiket yok'],
     ]) {
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
@@ -107,6 +119,12 @@ try {
         }
       }
       if (page === '/hesap') await waitFor('document.body.innerText.includes("Hesabımı sil")');
+      if (page === '/soru/TEST-1') {
+        await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');
+        await evaluate('[...document.querySelectorAll("summary")].find(x => x.innerText.includes("Bu soru faydalı mı?"))?.click()');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Faydalı")?.click()');
+        await waitFor('document.body.innerText.includes("Faydalı: 1")');
+      }
       if (await evaluate('document.documentElement.scrollWidth > innerWidth + 1')) {
         throw new Error(`${width}px ${page}: yatay taşma`);
       }

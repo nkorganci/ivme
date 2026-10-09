@@ -31,7 +31,7 @@ public class AccountDataService {
     public Map<String, Object> export(Long userId, String password) {
         User user = verifiedStudent(userId, password);
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("formatVersion", 1);
+        data.put("formatVersion", 2);
         data.put("exportedAt", Instant.now().toString());
         data.put("profile", Map.of("id", user.getId(), "username", user.getUsername(),
                 "email", user.getEmail(), "phone", user.getPhone() == null ? "" : user.getPhone(),
@@ -49,9 +49,15 @@ public class AccountDataService {
         data.put("sessionQuestions", jdbc.queryForList("SELECT sq.session_id, sq.question_id, sq.position "
                 + "FROM session_questions sq JOIN study_sessions s ON s.id = sq.session_id "
                 + "WHERE s.user_id = ? ORDER BY sq.session_id, sq.position", userId));
-        data.put("questionAttempts", jdbc.queryForList("SELECT question_id, session_id, event_type, practice_round, "
+        data.put("questionAttempts", jdbc.queryForList("SELECT id, question_id, session_id, event_type, practice_round, "
                 + "selected_answer, is_correct, active_seconds, created_at "
                 + "FROM question_attempts WHERE user_id = ? ORDER BY id", userId));
+        data.put("attemptTaxonomySnapshots", jdbc.queryForList("SELECT s.attempt_id, s.node_kind, s.node_code, "
+                + "s.node_name, s.taxonomy_version FROM attempt_taxonomy_snapshot s "
+                + "JOIN question_attempts a ON a.id = s.attempt_id WHERE a.user_id = ? "
+                + "ORDER BY s.attempt_id, s.node_kind, s.node_code", userId));
+        data.put("questionHelpfulness", jdbc.queryForList("SELECT question_id, helpful, updated_at "
+                + "FROM question_helpfulness WHERE user_id = ? ORDER BY question_id", userId));
         data.put("questionBoards", jdbc.queryForList("SELECT question_id, strokes_json, version, updated_at "
                 + "FROM question_boards WHERE user_id = ? ORDER BY question_id", userId));
         data.put("feedback", jdbc.queryForList("SELECT question_id, category, difficulty_vote, rating, message, "

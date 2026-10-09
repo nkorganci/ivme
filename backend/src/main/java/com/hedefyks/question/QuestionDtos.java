@@ -1,6 +1,7 @@
 package com.hedefyks.question;
 
 import java.util.Map;
+import java.util.List;
 
 public final class QuestionDtos {
 
@@ -22,6 +23,7 @@ public final class QuestionDtos {
     public record QuestionDetail(Long id, String code, QuestionBank bank, ExamType examType, String subject,
                                  String topic, Integer year, String source, int choiceCount, boolean hasSolutionImage,
                                  Double avgRating, long ratingCount, Map<String, Long> difficultyVotes,
-                                 Evaluation myEvaluation) {}
+                                 Evaluation myEvaluation, List<QuestionTaxonomyService.Label> approvedLabels,
+                                 QuestionHelpfulnessService.Summary helpfulness) {}
 
 }

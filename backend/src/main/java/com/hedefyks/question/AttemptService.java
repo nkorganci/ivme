@@ -23,15 +23,17 @@ public class AttemptService {
     private final UserRepository users;
     private final ExamQuestionRepository examQuestions;
     private final StudySessionService studySessions;
+    private final QuestionTaxonomyService taxonomy;
 
     public AttemptService(QuestionRepository questions, QuestionAttemptRepository attempts,
                           UserRepository users, ExamQuestionRepository examQuestions,
-                          StudySessionService studySessions) {
+                          StudySessionService studySessions, QuestionTaxonomyService taxonomy) {
         this.questions = questions;
         this.attempts = attempts;
         this.users = users;
         this.examQuestions = examQuestions;
         this.studySessions = studySessions;
+        this.taxonomy = taxonomy;
     }
 
     @Transactional(readOnly = true)
@@ -91,6 +93,7 @@ public class AttemptService {
         attempt.setCorrect(answer == null ? null : answer.equals(q.getCorrectAnswer()));
         attempt.setActiveSeconds(req.activeSeconds() == null ? 0 : req.activeSeconds());
         attempts.saveAndFlush(attempt);
+        taxonomy.snapshot(attempt.getId(), questionId);
         // Ağ isteği son saniyede başladıysa, kayıt tamamlandığı anda da süreyi doğrula.
         if (req.sessionId() != null) studySessions.requireQuestion(userId, req.sessionId(), questionId, true);
         return state(questionId, userId, req.sessionId());
@@ -107,7 +110,7 @@ public class AttemptService {
                 .orElseThrow(() -> ApiException.notFound("Soru bulunamadı."));
     }
 
-    private static PracticeState toState(Question q, List<QuestionAttempt> all) {
+    private PracticeState toState(Question q, List<QuestionAttempt> all) {
         int round = all.isEmpty() ? 1 : all.get(all.size() - 1).getPracticeRound();
         List<QuestionAttempt> current = all.stream().filter(a -> a.getPracticeRound() == round).toList();
         boolean complete = complete(current);
@@ -115,7 +118,8 @@ public class AttemptService {
         QuestionAttempt seen = current.stream()
                 .filter(a -> a.getEventType() == AttemptEventType.REVEAL || Boolean.TRUE.equals(a.getCorrect()))
                 .findFirst().orElse(null);
-        return new PracticeState(round, current.stream().map(AttemptItem::of).toList(),
+        return new PracticeState(round, current.stream()
+                .map(a -> AttemptItem.of(a, taxonomy.snapshotFor(a.getId()))).toList(),
                 complete ? 0 : remaining, !complete && remaining > 0, !complete, complete,
                 seen == null ? null : seen.getCorrectAnswer(), seen == null ? null : q.getSolutionUrl());
     }

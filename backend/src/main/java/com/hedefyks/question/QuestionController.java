@@ -40,9 +40,11 @@ public class QuestionController {
     private final AttemptService attempts;
     private final BoardService boards;
     private final QuestionAvailabilityService availability;
+    private final QuestionHelpfulnessService helpfulness;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
-                              AttemptService attempts, BoardService boards, QuestionAvailabilityService availability) {
+                              AttemptService attempts, BoardService boards, QuestionAvailabilityService availability,
+                              QuestionHelpfulnessService helpfulness) {
         this.service = service;
         this.questions = questions;
         this.images = images;
@@ -50,6 +52,7 @@ public class QuestionController {
         this.attempts = attempts;
         this.boards = boards;
         this.availability = availability;
+        this.helpfulness = helpfulness;
     }
 
     @GetMapping("/filters")
@@ -100,6 +103,14 @@ public class QuestionController {
     public PracticeState practice(@PathVariable Long id, @RequestParam(required = false) Long sessionId,
                                   @AuthenticationPrincipal AppUserDetails me) {
         return attempts.state(id, me.id(), sessionId);
+    }
+
+    public record HelpfulnessVote(Boolean helpful) {}
+
+    @PostMapping("/{id}/helpfulness")
+    public QuestionHelpfulnessService.Summary voteHelpfulness(@PathVariable Long id,
+            @RequestBody HelpfulnessVote vote, @AuthenticationPrincipal AppUserDetails me) {
+        return helpfulness.vote(id, me.id(), vote.helpful());
     }
 
     @PostMapping("/{id}/practice")

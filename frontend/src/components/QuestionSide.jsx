@@ -4,15 +4,19 @@ import QuestionBoard from './QuestionBoard.jsx';
 import RatingForm from './RatingForm.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
+import { api } from '../api.js';
 import { DIFFICULTIES, bankLabel, difficultyLabel } from '../format.js';
 
 const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
 /** Soru sayfasının dar yan paneli: kompakt künye + katlanır bölümler (varsayılan kapalı). */
-export default function QuestionSide({ q, onRated }) {
+export default function QuestionSide({ q, onRated, canVote }) {
   const [tab, setTab] = useState('board');
   const tabRefs = useRef({});
   const [boardAvailable, setBoardAvailable] = useState(true);
+  const [help, setHelp] = useState(q.helpfulness);
+  const [helpError, setHelpError] = useState('');
+  const [helpBusy, setHelpBusy] = useState(false);
   const votes = q.difficultyVotes || {};
   const total = DIFFICULTIES.reduce((t, d) => t + (votes[d] || 0), 0);
   const availableTabs = [...(boardAvailable ? ['board'] : []), 'qr'];
@@ -23,6 +27,13 @@ export default function QuestionSide({ q, onRated }) {
       : event.key === 'ArrowLeft' ? (index + availableTabs.length - 1) % availableTabs.length
         : event.key === 'Home' ? 0 : event.key === 'End' ? availableTabs.length - 1 : -1;
     if (nextIndex >= 0) { event.preventDefault(); selectTab(availableTabs[nextIndex]); }
+  };
+  const voteHelp = async (helpful) => {
+    setHelpBusy(true);
+    setHelpError('');
+    try { setHelp(await api.post(`/api/questions/${q.id}/helpfulness`, { helpful })); }
+    catch (error) { setHelpError(error.message); }
+    finally { setHelpBusy(false); }
   };
 
   return (
@@ -44,6 +55,10 @@ export default function QuestionSide({ q, onRated }) {
         <dd>{q.subject}</dd>
         <dt>Konu</dt>
         <dd>{q.topic || '—'}</dd>
+        <dt>Alt konu</dt>
+        <dd>{q.approvedLabels?.filter((label) => label.kind === 'SUBTOPIC').map((label) => label.name).join(', ') || 'Onaylı etiket yok'}</dd>
+        <dt>Soru tipi</dt>
+        <dd>{q.approvedLabels?.filter((label) => label.kind === 'QUESTION_TYPE').map((label) => label.name).join(', ') || 'Onaylı etiket yok'}</dd>
         <dt>Yıl</dt>
         <dd>{q.year || '—'}</dd>
         <dt>Kaynak</dt>
@@ -73,6 +88,18 @@ export default function QuestionSide({ q, onRated }) {
               </ul>
             </>
           )}
+        </div>
+      </details>
+
+      <details className="fold">
+        <summary>Bu soru faydalı mı?</summary>
+        <div className="fold-body">
+          <p className="muted small">Faydalı: {help?.helpful || 0} · Faydalı değil: {help?.notHelpful || 0}</p>
+          {(help?.canVote || canVote) ? <div className="rate-row">
+            <button type="button" className="btn btn-secondary btn-sm" aria-pressed={help.mine === true} disabled={helpBusy} onClick={() => voteHelp(true)}>Faydalı</button>
+            <button type="button" className="btn btn-secondary btn-sm" aria-pressed={help.mine === false} disabled={helpBusy} onClick={() => voteHelp(false)}>Faydalı değil</button>
+          </div> : <p className="muted small">Oy vermek için önce soruyu çöz.</p>}
+          {helpError && <p role="alert">{helpError}</p>}
         </div>
       </details>
 

@@ -186,7 +186,7 @@ function QuestionView({ q, filters, session, reload }) {
             </section>
           )}
         </div>
-        <QuestionSide q={q} onRated={reload} />
+        <QuestionSide q={q} onRated={reload} canVote={!!state?.attempts?.some((a) => a.eventType !== 'SKIP')} />
       </div>
 
       <div className="qdock">

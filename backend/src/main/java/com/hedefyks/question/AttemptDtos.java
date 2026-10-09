@@ -18,10 +18,11 @@ public final class AttemptDtos {
             Long sessionId) {}
 
     public record AttemptItem(Long id, AttemptEventType eventType, String selectedAnswer,
-                              Boolean correct, int activeSeconds, Instant createdAt) {
-        static AttemptItem of(QuestionAttempt a) {
+                              Boolean correct, int activeSeconds, Instant createdAt,
+                              List<QuestionTaxonomyService.Label> taxonomySnapshot) {
+        static AttemptItem of(QuestionAttempt a, List<QuestionTaxonomyService.Label> labels) {
             return new AttemptItem(a.getId(), a.getEventType(), a.getSelectedAnswer(),
-                    a.getCorrect(), a.getActiveSeconds(), a.getCreatedAt());
+                    a.getCorrect(), a.getActiveSeconds(), a.getCreatedAt(), labels);
         }
     }
 

@@ -28,10 +28,15 @@ public class QuestionService {
 
     private final QuestionRepository questions;
     private final FeedbackRepository feedback;
+    private final QuestionTaxonomyService taxonomy;
+    private final QuestionHelpfulnessService helpfulness;
 
-    public QuestionService(QuestionRepository questions, FeedbackRepository feedback) {
+    public QuestionService(QuestionRepository questions, FeedbackRepository feedback,
+                           QuestionTaxonomyService taxonomy, QuestionHelpfulnessService helpfulness) {
         this.questions = questions;
         this.feedback = feedback;
+        this.taxonomy = taxonomy;
+        this.helpfulness = helpfulness;
     }
 
     public List<FilterRow> filters(QuestionBank bank) {
@@ -79,6 +84,7 @@ public class QuestionService {
         Evaluation mine = feedback.findMine(userId, q.getId(), FeedbackCategory.RATING)
                 .map(f -> new Evaluation(f.getDifficultyVote(), f.getRating())).orElse(null);
         return new QuestionDetail(q.getId(), q.getCode(), q.getBank(), q.getExamType(), q.getSubject(), q.getTopic(),
-                q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine);
+                q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine,
+                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId));
     }
 }

@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **06.06 — Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu**. 06.05'in sayaç düzeltmesi geçti, gerçek cihaz denemesi açık; 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **08.02 — Gün/hafta/ay ilk deneme istatistiği ve zaman dilimi sınırı**. 06.05 gerçek cihaz denemesi, 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 06.06 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md, docs/plan/09_SORU_DENEMELERI.md ve docs/plan/25_10_01_TAKSONOMI_VE_ORNEK.md dosyalarını oku; yalnız onaylı etiketleri anlık kaydet, fayda oyunu sınırla, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 08.02 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/00_YOL_HARITASI.md dosyalarını oku; gün/hafta/ay ilk deneme sayılarını zaman dilimi sınırıyla uygula, test DB ve UI'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -77,7 +77,7 @@
 | 06.03 | BITTI | Soruya ve kullanıcıya bağlı karalama; masaüstü/mobil prova | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | — (tamamlandı) |
 | 06.04 | BITTI | Pratik denemeyi `study_session` ile ilişkilendirme; yenilemede geçmiş ve UI | [14_07_04_OTURUM_DENEMELERI.md](14_07_04_OTURUM_DENEMELERI.md) | — (tamamlandı) |
 | 06.05 | YAPILACAK | Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışını ölçme; sayaç düzeltmesi geçti, fiziksel cihaz açık | [32_06_05_AKTIF_SURE.md](32_06_05_AKTIF_SURE.md) | GPT-6 Luna · Medium |
-| **06.06** | **SIRADAKI** | **Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu; etiket yoksa açık boş durum** | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6.1 Sol · Medium |
+| 06.06 | BITTI | Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu; etiket yoksa açık boş durum | [33_06_06_ETIKET_ANLIK_KAYIT_FAYDA_OYU.md](33_06_06_ETIKET_ANLIK_KAYIT_FAYDA_OYU.md) | — (tamamlandı) |
 
 ## 07 — Soru ve oturum seçimi
 
@@ -101,7 +101,7 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 08.01 | BITTI | Filtreli toplam/çözülen/kalanın tekil soru kuralıyla hesaplanması | [10_SORU_KAPSAMI.md](10_SORU_KAPSAMI.md) | — (tamamlandı) |
-| 08.02 | YAPILACAK | Gün/hafta/ay ilk deneme doğru-yanlış-boş ve zaman dilimi sınırı | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6.1 Sol · Medium |
+| **08.02** | **SIRADAKI** | **Gün/hafta/ay ilk deneme doğru-yanlış-boş ve zaman dilimi sınırı** | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6.1 Sol · Medium |
 | 08.03 | YAPILACAK | Ders/konu/soru tipi kırılımı; toplam ile detay ve boş veri eşleşmesi | 08.02 sonrası | GPT-6.1 Sol · Medium |
 | 08.04 | YAPILACAK | Aktif süre, giriş ve oturum süresi ayrımı; öğrenci zaman çizelgesi | 06.05 sonrası | GPT-6.1 Sol · Medium |
 

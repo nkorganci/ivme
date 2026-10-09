@@ -9,6 +9,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface QuestionAttemptRepository extends JpaRepository<QuestionAttempt, Long> {
     @Query("""
+            select count(a) > 0 from QuestionAttempt a
+            where a.userId = :userId and a.questionId = :questionId
+              and a.eventType <> com.hedefyks.question.AttemptEventType.SKIP
+            """)
+    boolean hasEngaged(@Param("userId") Long userId, @Param("questionId") Long questionId);
+    @Query("""
             select a from QuestionAttempt a
             where a.userId = :userId and a.questionId = :questionId
               and ((:sessionId is null and a.sessionId is null) or a.sessionId = :sessionId)
