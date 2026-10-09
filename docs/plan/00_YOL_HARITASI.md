@@ -6,7 +6,7 @@
 | Durum | Plan; ürün kararları uygulanmış sayılmaz. |
 | Tek kaynak | Bu dosya. `D:\workspace\Computer General\ivme projesi yapilacak olanlar\` klasöründeki kopya kolay erişim içindir. Her adımda ikisi birlikte güncellenir. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md).
+**İlgili belgeler:** [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -41,7 +41,7 @@
 
 ### Adım 1 — Envanter, ürün sözleşmesi ve Git düzeni
 
-**Özet:** Mevcut kodu kaybetmeden çalışılabilir temel belirle. **Yapılacak:** Uygulama, statik eski site ve Python veri hattını ayrı envanterle; mevcut özellik/eksik tablosu oluştur; 80 bin kaydın kaynağını ve kapsamını say; eski `yks_hazirlik` ile istenen `ivme` DB geçişini karar kaydına al; varsayılan `origin` ile yeni `ivme` uzak deposunu açıkça ayır; çalışma ağacındaki eski değişiklikleri ayrı gözden geçir. **UI kontrolü:** Mevcut ana sayfa, soru, sınav, geçmiş ve yönetim ekranlarını ekran görüntüsü veya kısa kontrol listesiyle doğrula. **Bitti sayılır:** Tek sayfalık gerçek durum ve hangi özelliklerin zaten çalıştığı belli; yalnız plan dosyaları feature branch'te push edilmiş; eski değişiklikler korunmuş. **Durum:** planlandı (plan belgesi bu adımın ilk çıktısı).
+**Özet:** Mevcut kodu kaybetmeden çalışılabilir temel belirle. **Yapılacak:** Uygulama, statik eski site ve Python veri hattını ayrı envanterle; mevcut özellik/eksik tablosu oluştur; 80 bin kaydın kaynağını ve kapsamını say; eski `yks_hazirlik` ile istenen `ivme` DB geçişini karar kaydına al; varsayılan `origin` ile yeni `ivme` uzak deposunu açıkça ayır; çalışma ağacındaki eski değişiklikleri ayrı gözden geçir. **UI kontrolü:** Mevcut ana sayfa, soru, sınav, geçmiş ve yönetim ekranlarını ekran görüntüsü veya kısa kontrol listesiyle doğrula. **Bitti sayılır:** Tek sayfalık gerçek durum ve hangi özelliklerin zaten çalıştığı belli; yalnız plan dosyaları feature branch'te push edilmiş; eski değişiklikler korunmuş. **Durum:** tamamlandı (2026-10-08). **Kayıt:** [envanter ve UI kontrol listesi](04_MEVCUT_DURUM.md); çalışan tarayıcı kontrolü 2. adımın göç doğrulamasına bırakıldı. Eski kod değişiklikleri korunuyor.
 
 ### Adım 2 — Veritabanı adı ve veri modeli
 
@@ -105,7 +105,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** Adım 1 envanteri bitir, ardından `ivme` veritabanı için Adım 2'ye geç. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
+**Sıradaki planlı iş:** Adım 2: yedekten `ivme` veritabanına güvenli geçiş ve kalıcı ilerleme şemasının ilk parçası. Her adım sonunda UI kontrolü ve ilgili dosya güncellemesi yapılır. Adımlar kullanıcı fikirleriyle yeniden sıralanabilir; tarihli karar yazılmadan eski kapsam sessizce değiştirilmez.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; saklama/silme süresi; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 
