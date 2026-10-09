@@ -9,6 +9,7 @@ import Strip from '../components/Strip.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import { bankLabel, bankPath } from '../format.js';
 import { usePractice } from '../usePractice.js';
+import PracticeTimer from '../components/PracticeTimer.jsx';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic'];
 
@@ -43,6 +44,10 @@ export default function QuestionDetail() {
   if (sessionId && q && !session?.questions?.some((item) => item.questionId === q.id)) {
     return <ErrorBox error={{ message: 'Bu soru pratik oturumunda yok.' }} />;
   }
+  if (session?.status === 'COMPLETED') return <section className="card form-card">
+    <h1>Pratik tamamlandı</h1><p>Yanıtlar sabitlendi. Sonucu oturum ekranında görebilirsin.</p>
+    <Link className="btn btn-primary" to={`/pratik/${session.id}`}>Sonuca dön</Link>
+  </section>;
   // key: başka soruya geçince tüm yerel durum (seçim, sonuç, çözüm) sıfırlanır.
   return q ? <QuestionView key={`${q.id}:${sessionId || ''}`} q={q} filters={filters} session={session} reload={reload} /> : null;
 }
@@ -161,6 +166,7 @@ function QuestionView({ q, filters, session, reload }) {
         <span className="badge badge-primary">{q.examType}</span>
         <span className="badge badge-muted">{q.subject}</span>
         {q.topic && <span className="muted">{q.topic}</span>}
+        {session?.deadlineAt && <PracticeTimer session={session} onExpire={() => navigate(`/pratik/${session.id}`)} />}
       </div>
 
       <div className="qlayout">

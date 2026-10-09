@@ -91,6 +91,8 @@ public class AttemptService {
         attempt.setCorrect(answer == null ? null : answer.equals(q.getCorrectAnswer()));
         attempt.setActiveSeconds(req.activeSeconds() == null ? 0 : req.activeSeconds());
         attempts.saveAndFlush(attempt);
+        // Ağ isteği son saniyede başladıysa, kayıt tamamlandığı anda da süreyi doğrula.
+        if (req.sessionId() != null) studySessions.requireQuestion(userId, req.sessionId(), questionId, true);
         return state(questionId, userId, req.sessionId());
     }
 

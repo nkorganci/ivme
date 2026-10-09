@@ -39,7 +39,7 @@ class StudySessionTest extends TestBase {
         assertThat(created.at("/questions/1/position").asInt()).isEqualTo(2);
 
         JsonNode again = read(send(ayse, post("/api/study-sessions"), body).andExpect(status().isCreated()));
-        assertThat(again).isEqualTo(created);
+        assertSameSession(again, created);
         assertThat(jdbc.queryForObject("select count(*) from study_sessions", Integer.class)).isEqualTo(1);
         assertThat(jdbc.queryForObject("select count(*) from session_questions", Integer.class)).isEqualTo(2);
         mvc.perform(get("/api/study-sessions/" + id).session(ayse)).andExpect(status().isOk())
@@ -135,7 +135,7 @@ class StudySessionTest extends TestBase {
         assertThat(newSession.at("/examType").asText()).isEqualTo("TYT");
         JsonNode reloaded = read(send(ayse, get("/api/study-sessions/" + newSession.get("id").asLong()), null)
                 .andExpect(status().isOk()));
-        assertThat(reloaded).isEqualTo(newSession);
+        assertSameSession(reloaded, newSession);
 
         JsonNode wrongSession = selected(ayse, "WRONG", 1, "Türkçe");
         assertThat(wrongSession.at("/questions/0/questionId").asLong()).isEqualTo(wrong.getId());
@@ -151,10 +151,78 @@ class StudySessionTest extends TestBase {
                 .andExpect(status().isBadRequest());
     }
 
+    @Test
+    void sureliPratikSunucuSaatindeBiterVeSonucDenemeAninaSabitlenir() throws Exception {
+        var one = question("T-1", "Türkçe", "B");
+        var two = question("T-2", "Türkçe", "A");
+        question("T-3", "Türkçe", "C");
+        user("ayse", Role.USER);
+        user("mehmet", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        var mehmet = login("mehmet", "Sifre1234");
+        String body = request(UUID.randomUUID(), "Türkçe", 3).replace("\"clientRequestId\"", "\"durationMinutes\":1,\"clientRequestId\"");
+        JsonNode created = read(send(ayse, post("/api/study-sessions"), body).andExpect(status().isCreated()));
+        long id = created.get("id").asLong();
+        assertThat(created.get("timeLimitSeconds").asInt()).isEqualTo(60);
+        assertThat(created.get("deadlineAt").asText()).isNotBlank();
+        send(ayse, post("/api/questions/" + one.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "D", id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + one.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "B", id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + two.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "D", id)).andExpect(status().isOk());
+        send(mehmet, post("/api/study-sessions/" + id + "/finish"), null).andExpect(status().isNotFound());
+        jdbc.update("update study_sessions set started_at = now() - interval '2 minutes' where id = ?", id);
+        JsonNode finished = read(send(ayse, get("/api/study-sessions/" + id), null).andExpect(status().isOk()));
+        assertThat(finished.get("status").asText()).isEqualTo("COMPLETED");
+        assertThat(finished.at("/result/correct").asInt()).isEqualTo(1);
+        assertThat(finished.at("/result/wrong").asInt()).isEqualTo(1);
+        assertThat(finished.at("/result/blank").asInt()).isEqualTo(1);
+        assertThat(finished.at("/result/firstCorrect").asInt()).isEqualTo(1);
+        send(ayse, post("/api/questions/" + one.getId() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "B", id)).andExpect(status().isConflict());
+        JsonNode again = read(send(ayse, post("/api/study-sessions/" + id + "/finish"), null)
+                .andExpect(status().isOk()));
+        assertThat(again.get("endedAt")).isEqualTo(finished.get("endedAt"));
+        jdbc.update("update questions set correct_answer = 'A' where id = ?", one.getId());
+        JsonNode afterCorrection = read(send(ayse, get("/api/study-sessions/" + id), null).andExpect(status().isOk()));
+        assertThat(afterCorrection.get("result")).isEqualTo(finished.get("result"));
+        mvc.perform(get("/api/study-sessions/active").session(ayse)).andExpect(status().isNoContent());
+    }
+
+    @Test
+    void erkenBitirmeTekrariVeGecersizSure() throws Exception {
+        question("T-1", "Türkçe", "B");
+        user("ayse", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        for (int minutes : new int[] {0, 241}) {
+            String invalid = request(UUID.randomUUID(), "Türkçe", 1)
+                    .replace("\"clientRequestId\"", "\"durationMinutes\":" + minutes + ",\"clientRequestId\"");
+            send(ayse, post("/api/study-sessions"), invalid).andExpect(status().isBadRequest());
+        }
+        String body = request(UUID.randomUUID(), "Türkçe", 1)
+                .replace("\"clientRequestId\"", "\"durationMinutes\":5,\"clientRequestId\"");
+        long id = read(send(ayse, post("/api/study-sessions"), body).andExpect(status().isCreated()))
+                .get("id").asLong();
+        JsonNode finished = read(send(ayse, post("/api/study-sessions/" + id + "/finish"), null)
+                .andExpect(status().isOk()));
+        assertThat(finished.at("/result/blank").asInt()).isEqualTo(1);
+        assertThat(read(send(ayse, post("/api/study-sessions/" + id + "/finish"), null)
+                .andExpect(status().isOk())).get("endedAt")).isEqualTo(finished.get("endedAt"));
+    }
+
     private JsonNode selected(org.springframework.mock.web.MockHttpSession session, String mode, int count,
                               String subject) throws Exception {
         return read(send(session, post("/api/study-sessions"), selectedRequest(mode, count, subject))
                 .andExpect(status().isCreated()));
+    }
+
+    private static void assertSameSession(JsonNode actual, JsonNode expected) {
+        var a = actual.deepCopy();
+        var b = expected.deepCopy();
+        ((com.fasterxml.jackson.databind.node.ObjectNode) a).remove("serverNow");
+        ((com.fasterxml.jackson.databind.node.ObjectNode) b).remove("serverNow");
+        assertThat(a).isEqualTo(b);
     }
 
     private static String selectedRequest(String mode, int count, String subject) {

@@ -39,4 +39,9 @@ public class StudySessionController {
     public Session get(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
         return service.get(me.id(), id);
     }
+
+    @PostMapping("/{id}/finish")
+    public Session finish(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
+        return service.finish(me.id(), id);
+    }
 }

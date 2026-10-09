@@ -16,6 +16,8 @@ export default function PracticeNew() {
   const [bank, setBank] = useState('');
   const [filter, setFilter] = useState({ examType: '', subject: '', topic: '' });
   const [count, setCount] = useState('10');
+  const [timed, setTimed] = useState(false);
+  const [minutes, setMinutes] = useState('20');
   const [selectionMode, setSelectionMode] = useState('MIXED');
   const [availability, setAvailability] = useState(null);
   const [availabilityError, setAvailabilityError] = useState('');
@@ -48,13 +50,15 @@ export default function PracticeNew() {
 
   const n = Number(count);
   const validCount = Number.isInteger(n) && n >= 1 && n <= 120;
+  const duration = Number(minutes);
+  const validDuration = !timed || (Number.isInteger(duration) && duration >= 1 && duration <= 240);
   const available = availability ? ({ MIXED: availability.total, NEW: availability.remaining,
     REPEAT: availability.solved, WRONG: availability.everWrong })[selectionMode] : 0;
   const enough = availability && available >= n;
   const submit = async (e) => {
     e.preventDefault();
     setError('');
-    if (!validCount || !enough || busy) return;
+    if (!validCount || !validDuration || !enough || busy) return;
     setBusy(true);
     try {
       const session = await api.post('/api/study-sessions', {
@@ -64,6 +68,7 @@ export default function PracticeNew() {
         topic: filter.topic || undefined,
         selectionMode,
         questionCount: n,
+        durationMinutes: timed ? duration : undefined,
         clientRequestId: requestId.current,
       });
       navigate(`/pratik/${session.id}`);
@@ -75,10 +80,10 @@ export default function PracticeNew() {
 
   return (
     <>
-      <h1>Süresiz pratik</h1>
-      <p className="muted lead">Soruları seç, kendi hızında çöz. Oturuma daha sonra devam edebilirsin.</p>
+      <h1>Pratik başlat</h1>
+      <p className="muted lead">Soruları ve çalışma süreni seç. Açık oturumuna daha sonra devam edebilirsin.</p>
       {active && <section className="card resume">
-        <div><h2>Devam eden pratiğin var</h2><p className="muted">{active.questionCount} soru · {MODE_LABELS[active.selectionMode] || 'Karışık'} · Süresiz</p></div>
+        <div><h2>Devam eden pratiğin var</h2><p className="muted">{active.questionCount} soru · {MODE_LABELS[active.selectionMode] || 'Karışık'} · {active.timeLimitSeconds ? `${active.timeLimitSeconds / 60} dakika` : 'Süresiz'}</p></div>
         <Link to={`/pratik/${active.id}`} className="btn btn-secondary">Pratiğe devam et</Link>
       </section>}
       {activeError && <Alert type="warn">Devam eden oturum alınamadı: {activeError}</Alert>}
@@ -101,11 +106,18 @@ export default function PracticeNew() {
         <Field label="Soru sayısı (1–120)" type="number" inputMode="numeric" min="1" max="120"
           value={count} onChange={(e) => setCount(e.target.value)}
           error={!validCount ? 'Soru sayısı 1 ile 120 arasında tam sayı olmalı.' : undefined} />
+        <Field as="select" label="Süre" value={timed ? 'timed' : 'untimed'} onChange={(e) => setTimed(e.target.value === 'timed')}>
+          <option value="untimed">Süresiz</option><option value="timed">Süreli</option>
+        </Field>
+        {timed && <Field label="Süre (dakika, 1–240)" type="number" inputMode="numeric" min="1" max="240"
+          value={minutes} onChange={(e) => setMinutes(e.target.value)}
+          error={!validDuration ? 'Süre 1 ile 240 arasında tam sayı olmalı.' : undefined} />}
+        {timed && <p className="muted">Süre dolunca oturum kapanır; yanıtlanmayan sorular boş sayılır.</p>}
         {validCount && availability && !enough && <Alert type="warn">
           Bu seçimde yalnızca {formatNumber(available)} soru var. Sayıyı azalt veya seçimi değiştir.
         </Alert>}
         {error && <Alert type="error">{error}</Alert>}
-        <button type="submit" className="btn btn-primary" disabled={busy || loading || !validCount || !enough}>
+        <button type="submit" className="btn btn-primary" disabled={busy || loading || !validCount || !validDuration || !enough}>
           {busy ? 'Oturum hazırlanıyor…' : 'Pratiği başlat'}
         </button>
       </form>
