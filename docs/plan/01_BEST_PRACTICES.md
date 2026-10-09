@@ -23,6 +23,7 @@ Tek köken: tarayıcı aynı `net.ivme.dev` adresinden arayüz ve `/api`yi alır
 - Aktif süre yalnız görünür ve etkileşimli aralıkların toplamıdır; sunucuda olağandışı değerler sınırlandırılır. Okuma, çözme ve oturum açık kalma süresi aynı metrik değildir.
 - İstatistik sorgularında kullanıcı sahipliği veritabanı düzeyine kadar korunur; testlerde iki farklı hesapla çapraz erişim denenir. Yönetici toplamları ile öğrenci kişisel panosu ayrı servislerdir.
 - Her kategoriye makine tarafından anlaşılır sabit kimlik ver; görünen ad değişebilir. `exam_type` sabit `TYT/AYT` enumu olarak büyümeye zorlanmaz; taksonomi veri tablosu ve sürümle genişler. Soru birden çok beceri etiketi alabilir; bir ana konu da bulunur.
+- TYT Türkçe için [sürümlü taslak taksonomi ve 50 gerçek kodlu örnek](25_10_01_TAKSONOMI_VE_ORNEK.md) vardır. Kaynak konudan çıkarılan etiketler `proposed` kalır; inceleme/insan onayı olmadan öğrenciye sunulmaz.
 
 ## 3. Soru/PDF ve ders notu iş hattı
 
