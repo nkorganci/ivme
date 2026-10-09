@@ -91,13 +91,16 @@ class BankTest extends TestBase {
         user("ayse", Role.USER);
         MockHttpSession session = login("ayse", "Sifre1234");
 
-        JsonNode exam = read(send(session, post("/api/exams"), "{\"bank\":\"OGM\",\"questionCount\":10}").andExpect(status().isCreated()));
+        send(session, post("/api/exams"), "{\"bank\":\"OGM\",\"questionCount\":10}")
+                .andExpect(status().isBadRequest());
+        JsonNode exam = read(send(session, post("/api/exams"), "{\"bank\":\"OGM\",\"questionCount\":2}")
+                .andExpect(status().isCreated()));
         assertThat(exam.get("questionCount").asInt()).isEqualTo(2);
         assertThat(exam.get("title").asText()).endsWith("Soru Bankası");
         for (JsonNode qn : exam.get("questions")) {
             assertThat(qn.get("code").asText()).startsWith("O-");
         }
-        JsonNode all = read(send(session, post("/api/exams"), "{\"questionCount\":10}").andExpect(status().isCreated()));
+        JsonNode all = read(send(session, post("/api/exams"), "{\"questionCount\":3}").andExpect(status().isCreated()));
         assertThat(all.get("questionCount").asInt()).isEqualTo(3);
     }
 

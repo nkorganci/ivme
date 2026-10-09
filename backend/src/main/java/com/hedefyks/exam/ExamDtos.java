@@ -2,6 +2,7 @@ package com.hedefyks.exam;
 
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.QuestionBank;
+import com.hedefyks.question.QuestionSelectionMode;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public final class ExamDtos {
             @Min(value = 1, message = "En az 1 soru seçmelisin.")
             @Max(value = 120, message = "En fazla 120 soru seçebilirsin.")
             Integer questionCount,
+            QuestionSelectionMode selectionMode,
             @Min(value = 0, message = "Süre negatif olamaz.")
             @Max(value = 600, message = "Süre en fazla 600 dakika olabilir.")
             Integer timeLimitMinutes) {}
@@ -32,7 +34,8 @@ public final class ExamDtos {
     public record SessionQuestion(Long questionId, int position, String code, String subject, String topic,
                                   int choiceCount, String selectedAnswer) {}
 
-    public record ExamSession(Long id, String title, ExamStatus status, int questionCount, Integer timeLimitMinutes,
+    public record ExamSession(Long id, String title, ExamStatus status, QuestionSelectionMode selectionMode,
+                              int questionCount, Integer timeLimitMinutes,
                               Instant startedAt, Long remainingSeconds, List<SessionQuestion> questions) {}
 
     public record HistoryItem(Long id, String title, int questionCount, int correctCount, int wrongCount,

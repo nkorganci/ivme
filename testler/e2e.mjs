@@ -207,6 +207,14 @@ await shot('05d-soru-bankasi-soru');
 // ---------------------------------------------------------------- sınav
 await go('/sinav/yeni');
 await waitText('Sınavı Başlat', 8000);
+await waitFor("[...document.querySelectorAll('label')].some(l => l.textContent === 'Soru geçmişi')", 'soru geçmişi seçimi');
+const selectHistory = async (value) => ev(`(() => { const l = [...document.querySelectorAll('label')].find(l => l.textContent === 'Soru geçmişi'); const s = document.getElementById(l.htmlFor); s.value = ${JSON.stringify(value)}; s.dispatchEvent(new Event('change', { bubbles: true })); return s.value; })()`);
+await selectHistory('REPEAT');
+await waitFor("document.querySelector('button[type=submit]').disabled", 'yetersiz eski soru uyarısı');
+ok('Yetersiz eski soru sayısı sınavı engelledi', await ev("document.querySelector('button[type=submit]').disabled"));
+await selectHistory('NEW');
+await waitFor("!document.querySelector('button[type=submit]').disabled", 'yeni soru havuzu');
+ok('Yeni soru havuzu sınava hazır', await ev("!document.querySelector('button[type=submit]').disabled"));
 await shot('06-sinav-baslat');
 await fill('Soru sayısı', '5');
 await clickText('Sınavı Başlat', 'button');
@@ -215,6 +223,7 @@ await waitFor("document.querySelector('.choices')", 'sınav şıkları');
 await sleep(600);
 const examPath = await ev('location.pathname');
 ok('Sınav oluşturuldu: ' + examPath, /^\/sinav\/\d+$/.test(examPath));
+ok('Sınav yeni sorular modunu sakladı', await ev(`fetch('/api/exams/${examPath.split('/')[2]}').then(r => r.json()).then(e => e.selectionMode === 'NEW')`));
 await shot('07-sinav');
 await ev("document.querySelector('.choice').click()");                      // 1. soru: A
 await sleep(400);

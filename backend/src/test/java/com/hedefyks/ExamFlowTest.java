@@ -24,12 +24,15 @@ class ExamFlowTest extends TestBase {
         user("operator", Role.OPERATOR);
         MockHttpSession session = login("ayse", "Sifre1234");
 
-        JsonNode exam = read(send(session, post("/api/exams"),
+        send(session, post("/api/exams"),
                 "{\"examType\":\"TYT\",\"subject\":\"Matematik\",\"questionCount\":10,\"timeLimitMinutes\":35}")
+                .andExpect(status().isBadRequest());
+        JsonNode exam = read(send(session, post("/api/exams"),
+                "{\"examType\":\"TYT\",\"subject\":\"Matematik\",\"questionCount\":3,\"timeLimitMinutes\":35}")
                 .andExpect(status().isCreated()));
         long examId = exam.get("id").asLong();
         assertThat(exam.get("title").asText()).isEqualTo("TYT Matematik");
-        assertThat(exam.get("questionCount").asInt()).isEqualTo(3);               // 10 istendi, 3 soru var
+        assertThat(exam.get("questionCount").asInt()).isEqualTo(3);
         assertThat(exam.get("remainingSeconds").asLong()).isBetween(2000L, 2100L);
         assertThat(exam.toString()).doesNotContain("correct");                    // sınav sırasında cevap sızmaz
 
@@ -81,7 +84,7 @@ class ExamFlowTest extends TestBase {
         user("ayse", Role.USER);
         user("ali", Role.USER);
         MockHttpSession ayse = login("ayse", "Sifre1234");
-        long examId = read(send(ayse, post("/api/exams"), "{\"questionCount\":5}")).get("id").asLong();
+        long examId = read(send(ayse, post("/api/exams"), "{\"questionCount\":1}")).get("id").asLong();
 
         MockHttpSession ali = login("ali", "Sifre1234");
         send(ali, get("/api/exams/" + examId), null).andExpect(status().isNotFound());

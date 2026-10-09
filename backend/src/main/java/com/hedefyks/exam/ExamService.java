@@ -15,7 +15,9 @@ import com.hedefyks.question.Answers;
 import com.hedefyks.question.Question;
 import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionFilter;
+import com.hedefyks.question.QuestionAvailabilityService;
 import com.hedefyks.question.QuestionRepository;
+import com.hedefyks.question.QuestionSelectionMode;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
@@ -26,7 +28,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,29 +38,39 @@ public class ExamService {
     private final ExamRepository exams;
     private final ExamQuestionRepository examQuestions;
     private final QuestionRepository questions;
-    private final JdbcClient jdbc;
+    private final QuestionAvailabilityService availability;
 
     public ExamService(ExamRepository exams, ExamQuestionRepository examQuestions, QuestionRepository questions,
-                       JdbcClient jdbc) {
+                       QuestionAvailabilityService availability) {
         this.exams = exams;
         this.examQuestions = examQuestions;
         this.questions = questions;
-        this.jdbc = jdbc;
+        this.availability = availability;
     }
 
     // ---------------------------------------------------------------- oluşturma / devam
 
     public ExamSession create(Long userId, CreateExamRequest req) {
         QuestionFilter filter = new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic());
-        List<Long> ids = randomIds(filter, req.questionCount());
-        if (ids.isEmpty()) {
-            throw ApiException.badRequest("Seçtiğin filtrelere uygun soru bulunamadı.");
+        QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
+        var counts = availability.count(userId, filter);
+        long candidates = switch (selection) {
+            case NEW -> counts.remaining();
+            case REPEAT -> counts.solved();
+            case WRONG -> counts.everWrong();
+            case MIXED -> counts.total();
+        };
+        if (candidates < req.questionCount()) {
+            throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
         }
+        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount());
+        if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
         Map<Long, Question> byId = new HashMap<>();
         questions.findAllById(ids).forEach(q -> byId.put(q.getId(), q));
 
         Exam exam = new Exam();
         exam.setUserId(userId);
+        exam.setSelectionMode(selection);
         exam.setTitle(title(filter));
         exam.setExamType(filter.examType());
         exam.setSubject(filter.subject());
@@ -218,19 +229,6 @@ public class ExamService {
         return base;
     }
 
-    /** Filtreye uyan aktif sorulardan rastgele n tanesinin kimliği (sıra da rastgele). */
-    private List<Long> randomIds(QuestionFilter f, int n) {
-        StringBuilder sql = new StringBuilder("select id from questions where active = true");
-        Map<String, Object> params = new HashMap<>();
-        if (f.bank() != null) { sql.append(" and bank = :bank"); params.put("bank", f.bank().name()); }
-        if (f.examType() != null) { sql.append(" and exam_type = :examType"); params.put("examType", f.examType().name()); }
-        if (f.subject() != null) { sql.append(" and subject = :subject"); params.put("subject", f.subject()); }
-        if (f.topic() != null) { sql.append(" and topic = :topic"); params.put("topic", f.topic()); }
-        sql.append(" order by random() limit :n");
-        params.put("n", n);
-        return jdbc.sql(sql.toString()).params(params).query(Long.class).list();
-    }
-
     private static Long remaining(Exam e) {
         if (e.getTimeLimitMinutes() == null) return null;
         long elapsed = Duration.between(e.getStartedAt(), Instant.now()).getSeconds();
@@ -243,7 +241,8 @@ public class ExamService {
                 .map(r -> new SessionQuestion(r.getQuestion().getId(), r.getPosition(), r.getQuestionCode(),
                         r.getSubject(), r.getTopic(), r.getQuestion().getChoiceCount(), r.getSelectedAnswer()))
                 .toList();
-        return new ExamSession(e.getId(), e.getTitle(), e.getStatus(), e.getQuestionCount(), e.getTimeLimitMinutes(),
+        return new ExamSession(e.getId(), e.getTitle(), e.getStatus(), e.getSelectionMode(),
+                e.getQuestionCount(), e.getTimeLimitMinutes(),
                 e.getStartedAt(), open ? remaining(e) : null, qs);
     }
 

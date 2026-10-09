@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../api.js';
+import { api, qs } from '../api.js';
 import { useAuth } from '../auth.jsx';
 import { useFilterRows, usePageTitle } from '../hooks.js';
 import FilterSelects, { countMatching } from '../components/FilterSelects.jsx';
@@ -24,6 +24,9 @@ export default function ExamNew() {
   const navigate = useNavigate();
   const [filter, setFilter] = useState({ examType: '', subject: '', topic: '' });
   const [count, setCount] = useState('20');
+  const [selectionMode, setSelectionMode] = useState('MIXED');
+  const [progress, setProgress] = useState(null);
+  const [progressLoading, setProgressLoading] = useState(true);
   const [timed, setTimed] = useState(true);
   const [minutes, setMinutes] = useState(suggest(20));
   const [minutesTouched, setMinutesTouched] = useState(false);
@@ -32,7 +35,19 @@ export default function ExamNew() {
 
   const n = Number(count);
   const countValid = Number.isInteger(n) && n >= 1 && n <= 120;
-  const available = countMatching(rows, filter);
+  useEffect(() => {
+    let current = true;
+    setProgress(null);
+    setProgressLoading(true);
+    api.get('/api/questions/availability' + qs({ bank, ...filter }))
+      .then((data) => { if (current) setProgress(data); })
+      .catch((e) => { if (current && e.status === 404) setSelectionMode('MIXED'); })
+      .finally(() => { if (current) setProgressLoading(false); });
+    return () => { current = false; };
+  }, [bank, filter.examType, filter.subject, filter.topic]);
+
+  const available = progress ? ({ NEW: progress.remaining, REPEAT: progress.solved,
+    WRONG: progress.everWrong, MIXED: progress.total })[selectionMode] : countMatching(rows, filter);
 
   // Soru sayısı değişince süre önerisi güncellenir (süre elle değiştirilmediyse).
   const changeCount = (value) => {
@@ -45,6 +60,7 @@ export default function ExamNew() {
     e.preventDefault();
     const next = {};
     if (!countValid) next.questionCount = 'Soru sayısı 1 ile 120 arasında bir tam sayı olmalı.';
+    else if (!progressLoading && rows.length && available < n) next.questionCount = `Bu seçimde yalnızca ${formatNumber(available)} soru var.`;
     const m = Number(minutes);
     if (timed && !(Number.isInteger(m) && m >= 1 && m <= 600)) next.timeLimitMinutes = 'Süre 1 ile 600 dakika arasında olmalı.';
     setErrors(next);
@@ -58,6 +74,7 @@ export default function ExamNew() {
         subject: filter.subject || undefined,
         topic: filter.topic || undefined,
         questionCount: n,
+        selectionMode: progress ? selectionMode : 'MIXED',
         timeLimitMinutes: timed ? m : undefined,
       });
       navigate(`/sinav/${exam.id}`);
@@ -89,15 +106,21 @@ export default function ExamNew() {
           ))}
         </Field>
         <FilterSelects rows={rows} value={filter} onChange={setFilter} />
+        {progress && <Field as="select" label="Soru geçmişi" value={selectionMode} onChange={(e) => setSelectionMode(e.target.value)}>
+          <option value="MIXED">Karışık · {formatNumber(progress.total)} soru</option>
+          <option value="NEW">Yalnız yeni · {formatNumber(progress.remaining)} soru</option>
+          <option value="REPEAT">Daha önce çözdüğüm · {formatNumber(progress.solved)} soru</option>
+          <option value="WRONG">En az bir kez yanlış yaptığım · {formatNumber(progress.everWrong)} soru</option>
+        </Field>}
         {rows.length > 0 && (
           <p className="muted">
-            Bu filtrede <strong>{formatNumber(available)}</strong> soru var.
+            Bu seçimde <strong>{formatNumber(available)}</strong> soru var.
           </p>
         )}
-        {rows.length > 0 && available === 0 && <Alert type="warn">Seçtiğin filtreye uyan soru yok. Filtreleri değiştir.</Alert>}
-        {available > 0 && countValid && available < n && (
+        {rows.length > 0 && available === 0 && <Alert type="warn">Bu seçimde soru yok. Filtreyi veya soru geçmişini değiştir.</Alert>}
+        {countValid && available > 0 && available < n && (
           <Alert type="warn">
-            Seçtiğin filtrede yalnızca {formatNumber(available)} soru var; sınav en fazla bu kadar soruyla başlar.
+            Bu seçimde yalnızca {formatNumber(available)} soru var. Soru sayısını azalt veya seçimi değiştir.
           </Alert>
         )}
 
@@ -134,7 +157,7 @@ export default function ExamNew() {
         )}
 
         {state.error && <Alert type="error">{state.error}</Alert>}
-        <button type="submit" className="btn btn-primary btn-lg" disabled={state.busy || (rows.length > 0 && available === 0)}>
+        <button type="submit" className="btn btn-primary btn-lg" disabled={state.busy || progressLoading || (rows.length > 0 && available < n)}>
           {state.busy ? 'Hazırlanıyor…' : 'Sınavı Başlat'}
         </button>
       </form>
