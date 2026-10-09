@@ -24,6 +24,8 @@
 
 **Görsel sınırı:** Yerel görsel deposu yalnız WebP, PNG, JPEG ve GIF uzantılarını kabul eder; sunmadan önce dosya imzasını denetler. HTML/SVG ya da görsel uzantısıyla gizlenmiş HTML sunulmaz. Mevcut `ivme` veritabanındaki 80.097 görsel yolunun tamamı `.webp` uzantılıdır. İçe alma sırasında `exists` yalnız yol/uzantıyı kontrol eder; içerik imzası yükleme anında denetlenir.
 
+**Giriş hızı:** Aynı IP ve kullanıcı için hatalı giriş sınırı ile başarılı girişte bu sayacın temizlenmesi ayrı API testleriyle doğrulandı. Tünel trafiğindeki gerçek istemci IP davranışı dış erişim provasına bırakıldı.
+
 **Yerel görsel kökü:** Önceki `veri/resimler/ogm` bağlantısı taşınmış, artık var olmayan `D:\workspace\Eczacimiz Nazile\site\data\ogm\img` yoluna bakıyordu. Eski bağlantıya dokunmadan Git dışı `veri/resimler-pilot` kökü oluşturuldu: `ogm` gerçek `D:\workspace\ivme\site\data\ogm\img` klasörüne, `tyt`/`ayt` mevcut görsel klasörlerine bağlanır. `backend-baslat.bat` bu kökü bulursa kullanır. Rastgele seçilen 30 sorunun dosyası ve WebP imzası doğrulandı; kaynak dosyalar taşınmadı.
 
 ## Açık kontrol listesi
