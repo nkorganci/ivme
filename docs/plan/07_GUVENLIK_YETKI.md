@@ -52,3 +52,5 @@ Bu liste bitmeden Adım 4 tamamlandı veya site paylaşmaya hazır sayılmaz.
 **04.07 ara kayıt · 2026-10-09:** Sınırlı rol betiği, Flyway'i üretim çalışma rolünden ayıran ayar ve Git gizli dosya denetimi [04.07 görev kaydında](20_04_07_SINIRLI_DB_ROLU.md). Canlı `root` rolü yeni rol oluşturamaz; `postgres` yetkili bağlantısı bekleniyor. 04.07 açık kalır.
 
 **04.08 kaydı · 2026-10-09:** Öğrencinin şifreyle JSON dışa aktarma ve şifre + yazılı onayla hesap silme akışı [04.08 görev kaydında](30_04_08_VERI_DISA_AKTARMA_SILME.md). Başka öğrenci ve ortak soru korunur; canlı veri üzerinde silme denenmedi. Eski yedeklerin saklama/silme kararı 04.09 ile birlikte gözden geçirilecek.
+
+**04.09 ara kayıt · 2026-10-09:** DB ve üç görsel kökü yedekleme betiği, aynı disk provası, checksum ve geri yükleme kanıtı [04.09 kaydında](31_04_09_YEDEK_PROVASI.md). C: ve D: aynı fiziksel disk olduğundan ayrı yerde yedek koşulu henüz sağlanmadı.

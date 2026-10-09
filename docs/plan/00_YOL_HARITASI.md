@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | `uygulama/docs/plan` ürün planının tek çalışma kaynağıdır; bu dosya kapsamı, [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durumunu tutar. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 04.09 görev dosyası](08_TUNEL_VE_UI_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 06.05 görev dosyası](09_SORU_DENEMELERI.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -107,7 +107,7 @@
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** 04.09 veritabanı ve soru görsellerinin ayrı yerde yedeği ile geri yükleme provası. 04.08 öğrenci verisi dışa aktarma/silme [izole testlerde](30_04_08_VERI_DISA_AKTARMA_SILME.md) tamamlandı. 07.09 doğrulanmış zorluk verisi bekliyor; 04.07 yetkili rol kurulumu da yetkili PostgreSQL bağlantısı bekliyor. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** 06.05 görünür sekme/boşta kalma süresi ve gerçek cihaz davranışı. 04.09'un [yerel yedek provası](31_04_09_YEDEK_PROVASI.md) geçti; ayrı fiziksel hedef bekliyor. 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL bağlantısı bekliyor. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 

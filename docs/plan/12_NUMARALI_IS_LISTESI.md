@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **04.09 — Veritabanı ve soru görsellerinin ayrı yerde yedeği**. 07.09 doğrulanmış zorluk etiketi/başarı örneklemi oluşana kadar açık kalır; 04.07'nin canlı rol kurulumu `postgres` yetkili erişimini bekliyor.
+**Sıradaki tek iş:** **06.05 — Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışı**. 04.09'un yerel yedek/geri yükleme provası geçti, ayrı fiziksel hedef bekliyor; 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -13,7 +13,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 04.09 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/08_TUNEL_VE_UI_PROVASI.md dosyalarını oku; ayrı yedek hedefini ve geri yükleme kanıtını doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 06.05 ile devam et. Model: GPT-6 Luna · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/09_SORU_DENEMELERI.md dosyalarını oku; görünür sekme/boşta kalma süresini ölç, UI ve API'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -53,7 +53,7 @@
 | 04.06 | KULLANICI | İki yetkili hesabın geçici parolasını ayrı, güçlü parolalarla Hesap ekranından değiştirme; sonra üretim açılışı | [07_GUVENLIK_YETKI.md](07_GUVENLIK_YETKI.md) | Kullanıcı · model gerekmez |
 | 04.07 | YAPILACAK | Uygulamaya sınırlı PostgreSQL rolü ve gizli ayar denetimi; kurulum yetkili hesap bekliyor | [20_04_07_SINIRLI_DB_ROLU.md](20_04_07_SINIRLI_DB_ROLU.md) | GPT-6.1 Sol · High |
 | 04.08 | BITTI | Öğrencinin veri dışa aktarma/hesap silme akışı; erişim ve UI kontrolü | [30_04_08_VERI_DISA_AKTARMA_SILME.md](30_04_08_VERI_DISA_AKTARMA_SILME.md) | — (tamamlandı) |
-| **04.09** | **SIRADAKI** | **Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası** | [08_TUNEL_VE_UI_PROVASI.md](08_TUNEL_VE_UI_PROVASI.md) | GPT-6.1 Sol · Medium |
+| 04.09 | YAPILACAK | Ayrı yerde DB ve soru görseli yedeği ile geri yükleme provası; aynı disk provası geçti, ayrı hedef bekliyor | [31_04_09_YEDEK_PROVASI.md](31_04_09_YEDEK_PROVASI.md) | GPT-6.1 Sol · Medium |
 | 04.10 | BITTI | Kullanıcı isteğiyle kayıt, parola değiştirme ve yönetici oluşturma alt sınırını 8 karaktere eşitleme | [03_KAYIT_VE_ILETISIM.md](03_KAYIT_VE_ILETISIM.md) | — (tamamlandı) |
 
 ## 05 — Yerel yayın ve tünel
@@ -76,7 +76,7 @@
 | 06.02 | BITTI | Tekrar dene, cevabı göster ve atla olayları; eski ilk denemeyi koruma | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | — (tamamlandı) |
 | 06.03 | BITTI | Soruya ve kullanıcıya bağlı karalama; masaüstü/mobil prova | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | — (tamamlandı) |
 | 06.04 | BITTI | Pratik denemeyi `study_session` ile ilişkilendirme; yenilemede geçmiş ve UI | [14_07_04_OTURUM_DENEMELERI.md](14_07_04_OTURUM_DENEMELERI.md) | — (tamamlandı) |
-| 06.05 | YAPILACAK | Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışını ölçme | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6 Luna · Medium |
+| **06.05** | **SIRADAKI** | **Görünür sekme/boşta kalma süresi ve gerçek cihaz davranışını ölçme** | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6 Luna · Medium |
 | 06.06 | YAPILACAK | Onaylı soru tipi/alt konu anlık kaydı ve fayda oyu; etiket yoksa açık boş durum | [09_SORU_DENEMELERI.md](09_SORU_DENEMELERI.md) | GPT-6.1 Sol · Medium |
 
 ## 07 — Soru ve oturum seçimi
