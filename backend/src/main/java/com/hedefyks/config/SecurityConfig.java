@@ -64,6 +64,14 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(csrfTokens)
                         .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))
+                .headers(headers -> {
+                    if (secureCookies) {
+                        headers.httpStrictTransportSecurity(hsts -> hsts
+                                .requestMatcher(request -> true)
+                                .includeSubDomains(false)
+                                .maxAgeInSeconds(15552000));
+                    }
+                })
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()

@@ -28,7 +28,7 @@
 
 **Giriş hızı ve CSRF:** Aynı IP ve kullanıcı için hatalı giriş sınırı ile başarılı girişte bu sayacın temizlenmesi ayrı API testleriyle doğrulandı. Loopback dışından gelen sahte `CF-Connecting-IP` başlıkları hız sınırını aşamaz (negatif test). Oturum açılmış olsa bile CSRF belirteci taşımayan parola değişikliği 403 ile reddedilir; parola hash'i değişmez. Tünel trafiğindeki gerçek istemci IP davranışı dış erişim provasına bırakıldı.
 
-**Güvenli çerez:** `YKS_COOKIE_SECURE=true` olduğunda hem oturum hem de JavaScript'in CSRF başlığına kopyaladığı `XSRF-TOKEN` çerezi `Secure` olur. Tünel ile uygulama arası HTTP olduğundan CSRF çerezi için bu açık ayar gerekir. Test profilinde çerezin `Secure` niteliği doğrulandı; gerçek HTTPS yanıtı ayrıca dış erişim provasına bırakıldı.
+**Güvenli çerez ve HTTPS:** Üretim ayarında `YKS_COOKIE_SECURE` varsayılanı `true`, yalnız yerel `dev` profilinde `false` olur. `true` iken hem oturum hem de JavaScript'in CSRF başlığına kopyaladığı `XSRF-TOKEN` çerezi `Secure` olur; ayrıca 180 günlük, alt alan adlarını kapsamayan HSTS başlığı gönderilir. Tünel ile uygulama arası HTTP olduğundan CSRF çerezi ve HSTS için açık ayar gerekir. Test profilinde CSRF çerezi ile HSTS başlığı doğrulandı; gerçek HTTPS yanıtı ayrıca dış erişim provasına bırakıldı.
 
 **Yerel görsel kökü:** Önceki `veri/resimler/ogm` bağlantısı taşınmış, artık var olmayan `D:\workspace\Eczacimiz Nazile\site\data\ogm\img` yoluna bakıyordu. Eski bağlantıya dokunmadan Git dışı `veri/resimler-pilot` kökü oluşturuldu: `ogm` gerçek `D:\workspace\ivme\site\data\ogm\img` klasörüne, `tyt`/`ayt` mevcut görsel klasörlerine bağlanır. `backend-baslat.bat` bu kökü bulursa kullanır. Rastgele seçilen 30 sorunun dosyası ve WebP imzası doğrulandı; kaynak dosyalar taşınmadı.
 
@@ -37,7 +37,7 @@
 ## Açık kontrol listesi
 
 - Yeni ilerleme API'lerinde nesne sahipliği ve iki kullanıcıyla çapraz erişim testi. Mevcut sınav API'sinin oturum/cevap/teslim/sonuç/geçmiş/özet çapraz hesap testleri geçti.
-- Oturum süresi/çıkış ve tünel üzerinden `Set-Cookie` denetimi. Giriş hızı, parola değişikliğinde CSRF reddi ve `Secure` CSRF çerezi test edildi.
+- Oturum süresi/çıkış ve tünel üzerinden `Set-Cookie` denetimi. Giriş hızı, parola değişikliğinde CSRF reddi, `Secure` CSRF çerezi ve HSTS başlığı test edildi.
 - Tünel arkasında istemci IP'sinin doğrulanması ve hız sınırı testi; `CF-Connecting-IP` yalnız yerel tünel bağlantısında değerlendirilir.
 - Görsel gerçek yol, izinli uzantı, dosya imzası ve hatalı görsel API yanıtında bilgi sızıntısı denetimi eklendi. Sembolik bağlantı kaçış testi bu Windows ortamında atlandı; Linux CI veya symlink izni olan makinede çalıştırılmalı.
 - Etkinlik verisi için öğrenciye açıklama, uzun dönem toplulaştırma ve dışa aktarma/silme akışı; DB yedeğinin ve görsellerin ayrı yerde saklanması. Ham olayların 90 günlük otomatik silinmesi ve yerel DB geri yükleme provası uygulandı.

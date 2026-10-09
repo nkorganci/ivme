@@ -16,5 +16,6 @@ class SecureCsrfCookieTest extends TestBase {
                 .andExpect(status().isUnauthorized()).andReturn().getResponse();
         assertThat(response.getCookie("XSRF-TOKEN")).isNotNull();
         assertThat(response.getCookie("XSRF-TOKEN").getSecure()).isTrue();
+        assertThat(response.getHeader("Strict-Transport-Security")).contains("max-age=15552000");
     }
 }

@@ -1,4 +1,10 @@
 # YALNIZ YEREL GELİŞTİRME (profil: dev). Yönetici parolası kaynak kodda tutulmaz.
+server:
+  servlet:
+    session:
+      cookie:
+        secure: ${YKS_COOKIE_SECURE:false}
+
 spring:
   datasource:
     url: ${YKS_DB_URL:jdbc:postgresql://localhost:5432/ivme}
