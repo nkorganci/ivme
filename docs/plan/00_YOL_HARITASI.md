@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | `uygulama/docs/plan` ürün planının tek çalışma kaynağıdır; bu dosya kapsamı, [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durumunu tutar. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 14.03 görev dosyası](53_14_03_DOGRULUK_MALIYET_OLCEK.md), [aktif süre kaydı](32_06_05_AKTIF_SURE.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve açık bağımlılıklar](12_NUMARALI_IS_LISTESI.md), [14.03 doğruluk kararı](53_14_03_DOGRULUK_MALIYET_OLCEK.md), [15.04 güvenli ipucu aktarımı](57_15_04_IPUCU_GUVENLI_AKTARIM.md), [aktif süre kaydı](32_06_05_AKTIF_SURE.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -109,7 +109,7 @@ Yedi kaynak konudan birer görsel AI taslağı çıkarıldı; birinde `emin değ
 
 ### Adım 15 — Kaynaklı ipucu ve öğrenme desteği
 
-**10 Ekim uygulama notu:** 200 Ollama soru tipi etiketi yalnız geliştirme için geçici kabul edildi; öğretmen doğrulaması ve kaynaklı not/editör onayı bekler. 15.02 istekli ipucu ve teslim sonrası açıklama kodu, içerik olmadan test verisiyle tamamlandı. Gerçek öğrenci ipucu yayını açık iş olarak [numaralı listede](12_NUMARALI_IS_LISTESI.md) izlenir.
+**10 Ekim uygulama notu:** 200 AI soru tipi etiketi yalnız geliştirme için geçici kabul edildi; öğretmen doğrulaması ve kaynaklı not/editör onayı bekler. 15.02 istekli ipucu ve teslim sonrası açıklama kodu, 15.04 güvenli aktarım yolu içerik olmadan test verisiyle tamamlandı. Gerçek öğrenci ipucu yayını açık iş olarak [numaralı listede](12_NUMARALI_IS_LISTESI.md) izlenir.
 
 **Özet:** Öğrenci çözdükten sonra kısa püf noktası, yanlış nedeni ve ilgili notu görür. **Yapılacak:** Onaylı soru etiketi + onaylı ders notu parçası + çözümden kısa açıklama üret; her öneriye kaynak sayfası ve içerik sürümü bağla; yanlış cevap/hayal ürünü bilgi tespiti için editör kontrolü; maliyet için yalnız seçili sorularda önceden üretme ve saklama; özel öğrenci verisini harici modele göndermeden önce açık ürün kararı. Öğrenci kendi başına çözmeden yanıtı sızdıran ipucu gösterilmez; pratikte isteğe bağlı, sınavda teslim sonrası. **UI kontrolü:** Kısa, anlaşılır, kaynağa dönen ipucu; “yararsız/hatalı” bildirimi. **Bitti sayılır:** Pilot konu setinde öğretmen/uzman incelemesi, fayda geri bildirimi ve hata oranı raporu. **Durum:** YAPILACAK.
 
@@ -119,7 +119,7 @@ Yedi kaynak konudan birer görsel AI taslağı çıkarıldı; birinde `emin değ
 
 ## İlk iş paketi ve karar kapıları
 
-**Sıradaki planlı iş:** 06.06 onaylı soru etiketinin deneme anında kaydı ve fayda oyu. 06.05'in [sayaç düzeltmesi](32_06_05_AKTIF_SURE.md) test edildi, fiziksel cihaz provası açık. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL bağlantısı bekliyor. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
+**Sıradaki planlı iş:** Şu an bağımlılıklardan bağımsız açık alt iş yoktur. 15.04 aktarım yolu test DB'de tamamlandı; 15.03 ve 14.03 gerçek insan kararı, 06.05 fiziksel cihaz, 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor. Üretim 05.03–05.05 güvenlik/erişim kapılarından sonra ilerler. Tamamlanan ve açık tüm alt işler [numaralı listede](12_NUMARALI_IS_LISTESI.md) tutulur. Kullanıcı fikriyle öncelik değişirse liste ve ilgili görev dosyası tarihli kararla güncellenir.
 
 **Karar gerektiren noktalar:** İlk pilotun Cloudflare Access ile davetli mi yoksa uygulama kaydıyla açık mı olacağı; yeni sınav taksonomisinin ilk örneği; ders notu ve AI içeriğini kimin onaylayacağı. Ham etkinlik olayları için 90 günlük saklama kararı alındı; diğer veriler için silme/dışa aktarma akışı ayrıca tasarlanacak. Bu kararlar ilgili adıma gelince somut ekran/veri örnekleriyle alınır.
 
@@ -141,4 +141,4 @@ Kullanıcının yeni kararıyla kayıt, Hesap ekranından parola değiştirme ve
 
 ### 2026-10-09 — Codex iş/model eşlemesi
 
-Kullanıcının token tasarrufu isteğiyle açık her alt işe model ve çaba önerisi [numaralı listeye](12_NUMARALI_IS_LISTESI.md) yazıldı. Başlangıç varsayılanı sıradaki 07.06 için GPT-6 Luna · Medium; güvenlik, veri göçü ve çok katmanlı işler Sol'a; bütünsel pilot denetimi Astra'ya ayrıldı. Repo `.codex/config.toml` sonraki yeni oturumda varsayılanı uygular. Aktif oturum modelini dosya güncellemesi değiştirmez; geçiş Codex'in `/model` seçicisiyle yapılır.
+Kullanıcının token tasarrufu isteğiyle açık her alt işe model ve çaba **önerisi** [numaralı listeye](12_NUMARALI_IS_LISTESI.md) yazıldı. Yerel Ollama tekrarlı ve ölçülebilir AI taslaklarında kullanılabilir; 9B'nin yedi soruluk pilotu [14.03 kaydındadır](53_14_03_DOGRULUK_MALIYET_OLCEK.md). Güvenlik, veri göçü ve çok katmanlı işler güçlü model ve bağımsız test gerektirir. Repo `.codex/config.toml` sonraki yeni oturum için varsayılanı taşır; aktif sohbetin modelini değiştirmez.

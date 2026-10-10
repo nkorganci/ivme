@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-10
 
-**Sıradaki tek bağımsız iş:** **15.04 — Onaylı kaynaklı ipucunu güvenli içe aktarma**. 15.02 pratikte istekli ipucu ve sınavda teslim sonrası açıklama kodu/test UI'si tamamlandı; gerçek onaylı ipucu yoktur. Kullanıcının 10 Ekim kararıyla 200 Ollama tipi geliştirme sırasında **AI geçici kabul** olarak kullanılabilir; 200'ü de `DEVELOPMENT_ONLY` ve `human_review_required=true` olarak ayrı çıktıya alındı. Ana CSV'de 0/200 insan onayı sürer; AI öğretmen onayı diye kaydedilmez. 14.01 ve 14.03 Türkçe öğretmeninin kararını, 15.03 gerçek onaylı ipucu/uzman denetimini bekler. 06.05 gerçek cihazı, 04.09 ayrı yedek hedefini, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekler.
+**Sıradaki bağımsız iş:** Şu an açık bağımlılıklardan bağımsız uygulanabilecek yeni madde yok. 15.04 aktarım kodu test DB'de tamamlandı; gerçek onaylı ipucu yoktur. Kullanıcının 10 Ekim kararıyla 200 AI tipi geliştirme sırasında **AI geçici kabul** olarak kullanılabilir; 200'ü de `DEVELOPMENT_ONLY` ve `human_review_required=true` olarak ayrı çıktıya alındı. Ana CSV'de 0/200 insan onayı sürer; AI öğretmen onayı diye kaydedilmez. 14.01 ve 14.03 Türkçe öğretmeninin kararını, 15.03 gerçek onaylı not/ipucu ve uzman denetimini bekler. 06.05 ve 05.05 gerçek cihazı, 04.09 ayrı yedek hedefini, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekler. 16 pilotu 04/05 güvenlik ve yayın kapılarından sonradır.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -13,6 +13,7 @@
 | Türkçe öğretmeni | [Çevrimdışı Türkçe paketindeki](54_14_01_OGRETMEN_INCELEME_DEVRI.md) 200 TYT Türkçe soru görselini bağımsız inceleyip tip, kısa gerekçe veya belirsizlik/ret nedeni kaydeder; son JSON karar dosyasını kullanıcıya verir. İlk 63 soru önceliklidir, ardından kalan 137 soru da incelenir. | 200 kararın paket kimliği, soru/görsel özeti, öğretmen kimliği ve gerekçeyle doğrulanması; 14.01 insan etiket sayımı. |
 | Kullanıcı / Codex | Öğretmene `veri/ogretmen-inceleme-tyt-turkce-200.zip` dosyasını iletir. Dönen JSON'u `scripts/ogretmen-inceleme-aktar.py` ile önce kuru denetler, sonra ana CSV'ye aktarır; AI/öğretmen ayrımlarını 14.03'te ölçer. | [14.01 devri](54_14_01_OGRETMEN_INCELEME_DEVRI.md) ve [14.03 raporu](53_14_03_DOGRULUK_MALIYET_OLCEK.md). |
 | Fizik için kullanıcı; diğer dersler için ilgili branş öğretmeni | O dersin taksonomisi ve kaynaklı örneklem hazırlandığında görselleri bağımsız etiketler. Türkçe tip kodları başka derse uygulanmaz. | Her ders için ayrı insan karar dosyası ve sınıf bazlı AI karşılaştırması. |
+| Branş öğretmeni ve içerik editörü | Öğrenciye açılacak gerçek ders notunun konusunu/kaynağını ve kısa ipucunun doğruluğunu, cevap sızıntısını ayrı ayrı onaylar. | [15.04 aktarım kapısının](57_15_04_IPUCU_GUVENLI_AKTARIM.md) kabul ettiği gerçek onaylı JSON; 15.03 içerik denetimi. |
 
 **Şimdiki durum:** Türkçe CSV'de 200 AI ön incelemesi vardır, **0/200 insan onayı** vardır. AI notlarıyla pilot inceleme yapılabilir; doğruluk, altın etiket ve geniş ölçek kararı için öğretmen kararları gerekir. Kullanıcının Türkçe sorularını bizzat etiketlemesi beklenmez.
 
@@ -25,7 +26,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - **Önerilen model / çaba** sütunu varsayılandır, zorunluluk değildir. Yerel Ollama modeli sınırlı ve doğrulanabilir toplu taslak işlerinde kullanılabilir; kod, güvenlik ve yayın kararlarında test/inceleme kapısı korunur. `.codex/config.toml` yeni oturum için varsayılan model önerisini taşır; açık oturumun modelini değiştirmez. Yerel modelle çalışan ayrı bir Codex CLI oturumu (`--oss`) bu sohbetin modelini veya token kullanımını geriye dönük değiştirmez.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 15.04 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/56_15_02_IPUCU_ACIKLAMA_AKISI.md dosyalarını oku; onaylı kaynaklı ipucunu 15.01 kapısından geçirip V18 tablosuna güvenli aktar, test DB'de doğrula, insan/AI kökenini koru, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumda önce bu listedeki açık bağımlılıkları ve kullanıcıdan gelen yeni kanıtları kontrol et; bağımlılığı çözülen ilk maddeyi uygula. Gerçek insan onayı olmadan 14.01/14.03/15.03 veya içerik yayınına `BITTI` yazma.
 
 ## 01 — Envanter ve Git
 
@@ -187,7 +188,7 @@
 | 15.01 | BITTI | Onaylı soru/not kaynağıyla kısa ipucu veri modeli ve yerel yayın kapısı | [55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md](55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md) | — (tamamlandı) |
 | 15.02 | BITTI | Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI; onaysız içerik kapalı | [56_15_02_IPUCU_ACIKLAMA_AKISI.md](56_15_02_IPUCU_ACIKLAMA_AKISI.md) | — (tamamlandı) |
 | 15.03 | YAPILACAK | Gerçek kaynaklı ipucunda uzman incelemesi ve yararlı/hatalı geri bildirimi; onaylı içerik bekliyor | 15.02 ve 15.04 sonrası | GPT-6 Luna · Low |
-| **15.04** | **SIRADAKI** | 15.01 yayın kapısından geçen onaylı ipucunu V18'e doğrulanmış kökenle aktarma; gerçek içerik gelene kadar sentetik test | 15.01 ve 15.02 sonrası | GPT-6.1 Sol · Medium |
+| 15.04 | BITTI | Onaylı ipucunu 15.01 kapısından ve DB insan tipi denetiminden geçirerek V18'e aktarma; yalnız sentetik test, gerçek içerik yok | [57_15_04_IPUCU_GUVENLI_AKTARIM.md](57_15_04_IPUCU_GUVENLI_AKTARIM.md) | — (tamamlandı) |
 
 ## 16 — Pilot ve büyüme
 
