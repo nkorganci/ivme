@@ -1,6 +1,6 @@
 # 14.01 — İnsan etiketli altın örnek
 
-**Durum:** SIRADAKI (inceleme kuyruğu hazır; insan onayı 0/200) · **Tarih:** 2026-10-09 · **Girdi:** [10.01 taksonomi](25_10_01_TAKSONOMI_VE_ORNEK.md), [12.02 kaynak sözleşmesi](22_12_02_SORU_KAYNAK_SOZLESMESI.md).
+**Durum:** YAPILACAK (200/200 geçici pilot kabulü; insan onayı 0/200) · **Tarih:** 2026-10-09 · **Girdi:** [10.01 taksonomi](25_10_01_TAKSONOMI_VE_ORNEK.md), [12.02 kaynak sözleşmesi](22_12_02_SORU_KAYNAK_SOZLESMESI.md).
 
 ## Hazırlanan örnek
 
@@ -30,4 +30,8 @@ D:\workspace\ivme\.venv\Scripts\python.exe -W error scripts\altin-ornek-kuyrugu.
 
 `--check`, kaynaklardan deterministik seçim ve kaynak alanlarını yeniden hesaplar; 200 benzersiz kimliği, yedi kota dağılımını, görsel checksum'larını, izinli kodları ve onay satırlarında inceleyen/zaman/kanıt alanlarını doğrular. `--write` kuyruğu sıfırdan üretir ve **mevcut insan incelemesini siler**; inceleme başladıktan sonra kullanılmaz. Kaynak görsel değişirse kontrol reddeder, yeni inceleme gerekir. CSV öğrenciye veya `question_taxonomy` tablosuna otomatik yüklenmez.
 
-**Bugünkü kanıt:** Kuyruk üretildi; `--check` 200 benzersiz, 0 onay, 200 bekleyen satırla geçti. Masaüstü/telefon UI ve canlı DB etkisi yok; bu çevrimdışı hazırlık işidir. **14.01 ancak 200–500 satır gerçek insan tarafından incelenip onay/ret/belirsizlik kararları kaydedildiğinde ve altın küme için yeterli onaylı sınıf dağılımı denetlendiğinde BITTI olur.** Sonraki 14.02 AI taslak ve inceleme ekranı işi bu kapıyı atlamaz.
+**İlk kanıt:** Kuyruk üretildi; `--check` 200 benzersiz, 0 onay, 200 bekleyen satırla geçti.
+
+**2026-10-09 kullanıcı kararı:** Kullanıcı 200 etiketi şimdi kabul edip daha sonra soruları tek tek manuel incelemek istedi. Bunun üzerine 200 satır `provisional` yapıldı; `reviewer_id`, `reviewed_at_utc`, `reviewed_question_type_code` ve `review_evidence` boş bırakıldı. `--check` 200 geçici, 0 insan onayı sonucunu verdi. Bu kabul yalnız **pilot hazırlığı içindir**; altın veri, insan onayı veya öğrenci yayını değildir. 14.02'nin yerel inceleme ekranı hazırlığı bu kararla öne alındı. [14.02 kaydı](52_14_02_AI_TASLAK_VE_INCELEME.md) arayüzün sınırlarını tutar.
+
+**14.01 ancak** 200–500 satır gerçek insan tarafından incelenip onay/ret/belirsizlik kararları kaydedildiğinde ve altın küme için yeterli onaylı sınıf dağılımı denetlendiğinde `BITTI` olur. `--write` bu kararları sileceği için manuel inceleme başladıktan sonra kullanılmaz. Canlı DB etkisi yoktur.

@@ -1,4 +1,4 @@
-"""Build or validate the offline 14.01 human review queue (never approve labels)."""
+"""Build, provisionally accept, or validate the offline 14.01 review queue."""
 
 import argparse
 import csv
@@ -111,6 +111,7 @@ def validate_review_file():
     allowed = {node["code"] for node in json.loads(TAXONOMY.read_text(encoding="utf-8"))["nodes"]
                if node["kind"] == "QUESTION_TYPE"}
     approved = 0
+    provisional = 0
     for row in rows:
         image = SOURCE_ROOT / row["source_image"]
         assert image.is_file() and image.resolve().is_relative_to(SOURCE_ROOT.resolve())
@@ -119,7 +120,7 @@ def validate_review_file():
         assert set(row["allowed_question_type_codes"].split("|")) == allowed
         assert row["suggested_question_type_code"] in allowed
         status = row["review_status"]
-        assert status in {"pending", "approved", "rejected", "uncertain"}
+        assert status in {"pending", "provisional", "approved", "rejected", "uncertain"}
         if status == "approved":
             assert row["reviewed_question_type_code"] in allowed
             assert all(row[key].strip() for key in
@@ -129,11 +130,31 @@ def validate_review_file():
         elif status == "pending":
             assert not any(row[key].strip() for key in
                            ("reviewer_id", "reviewed_at_utc", "reviewed_question_type_code", "review_evidence"))
+        elif status == "provisional":
+            assert not any(row[key].strip() for key in
+                           ("reviewer_id", "reviewed_at_utc", "reviewed_question_type_code", "review_evidence"))
+            assert row["review_note"] == "Pilot use accepted by user; per-question human review pending"
+            provisional += 1
         else:
             assert row["reviewer_id"].strip() and row["reviewed_at_utc"].strip()
             assert datetime.fromisoformat(row["reviewed_at_utc"]).tzinfo == timezone.utc
             assert row["review_note"].strip()
-    print(f"review queue PASS: 200 unique; human approved={approved}; pending={sum(r['review_status'] == 'pending' for r in rows)}")
+    print(f"review queue PASS: 200 unique; human approved={approved}; provisional={provisional}; pending={sum(r['review_status'] == 'pending' for r in rows)}")
+
+
+def provisionally_accept():
+    with OUTPUT.open(encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    assert len(rows) == 200 and all(row["review_status"] == "pending" for row in rows), \
+        "provisional acceptance requires 200 untouched pending rows"
+    for row in rows:
+        row["review_status"] = "provisional"
+        row["review_note"] = "Pilot use accepted by user; per-question human review pending"
+    with OUTPUT.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=FIELDS, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    validate_review_file()
 
 
 def main():
@@ -141,9 +162,12 @@ def main():
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true")
     mode.add_argument("--check", action="store_true")
+    mode.add_argument("--provisional", action="store_true")
     args = parser.parse_args()
     if args.write:
         OUTPUT.write_text(render(), encoding="utf-8", newline="")
+    elif args.provisional:
+        provisionally_accept()
     else:
         # Source-derived columns must remain reproducible; reviewer columns may change.
         expected = list(csv.DictReader(io.StringIO(render())))
@@ -154,7 +178,7 @@ def main():
         for candidate, row in zip(expected, actual):
             assert all(candidate[key] == row[key] for key in source_fields), row["question_code"]
         validate_review_file()
-    print(f"queue mode={'write' if args.write else 'check'}")
+    print(f"queue mode={'write' if args.write else 'provisional' if args.provisional else 'check'}")
 
 
 if __name__ == "__main__":

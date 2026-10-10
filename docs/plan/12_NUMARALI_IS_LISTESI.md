@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **14.01 — İnsan etiketli dengeli altın örnek**. 200 soruluk inceleme kuyruğu hazır; insan onayı 0/200. 08.04, 09.01–09.04, 10.02–10.03, 11.01–11.05 ve 13.01–13.03 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **14.02 — Sürümlü AI taslağı ve inceleme pilotu**. Kullanıcı kararıyla 14.01'in 200 sorusu geçici pilot için kabul edildi; gerçek insan onayı 0/200 ve 14.01 açık. Yerel inceleme ekranı hazır; AI taslak pilotu açık. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -162,8 +162,8 @@
 | No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
 |---|---|---|---|---|
 |---|---|---|---|
-| **14.01** | **SIRADAKI** | **200–500 insan etiketli örnek ve izinli taksonomi; 200 satırlık kuyruk hazır, 0 insan onayı** | [51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md) | GPT-6 Luna · Medium |
-| 14.02 | YAPILACAK | Sürümlü AI taslağı, belirsizlik ve inceleme ekranı pilotu | 14.01 sonrası | GPT-6.1 Sol · Medium |
+| 14.01 | YAPILACAK | 200–500 insan etiketli örnek; 200 geçici kabul, 0 gerçek insan onayı | [51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md) | GPT-6 Luna · Medium |
+| **14.02** | **SIRADAKI** | **Sürümlü AI taslağı, belirsizlik ve inceleme ekranı pilotu; yerel inceleme ekranı hazır, AI taslağı açık** | [52_14_02_AI_TASLAK_VE_INCELEME.md](52_14_02_AI_TASLAK_VE_INCELEME.md) | GPT-6.1 Sol · Medium |
 | 14.03 | YAPILACAK | Ders/tip bazlı doğruluk, maliyet ve ölçek kararı | 14.02 sonrası | GPT-6.1 Sol · Medium |
 
 ## 15 — Kaynaklı ipucu
