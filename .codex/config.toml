@@ -1,4 +1,4 @@
 # İvme projesi için maliyet etkin varsayılan. Açık işin model ataması farklıysa,
 # sıradaki yeni oturum başlamadan önce bu iki değer görev listesine göre ayarlanır.
-model = "gpt-6-luna"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"

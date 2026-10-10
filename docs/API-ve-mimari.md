@@ -51,7 +51,7 @@ Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı 
 
 ## Zayıf alan önerisi
 
-`GET /api/recommendations?subject=Türkçe` yalnız oturumdaki öğrencinin son 90 gündeki ilk cevaplarını kullanır. Yalnız onaylı soru tipi etiketi hesaba girer. 30 etiketli tekil soru ve üç ayrı tip olmadan `INSUFFICIENT_DATA` döner. En az beş örnekli tipte son 30 gün iki kat ağırlıklı başarı %60'ın altındaysa veya yeterli aktif süre örneğinde ders ortalamasının 1,5 katından uzunsa `SUGGESTIONS` içinde soru tipi, beceri, alt konu, önkoşul, doğru/yanlış ve süre gerekçesi döner. Yeterli veri olup belirgin alan yoksa `NO_CLEAR_WEAKNESS` döner. Bu eğitim ipucudur; öğrenci UI'si 10.03 işindedir.
+`GET /api/recommendations?subject=Türkçe` yalnız oturumdaki öğrencinin son 90 gündeki ilk cevaplarını kullanır. Yalnız onaylı soru tipi etiketi hesaba girer. 30 etiketli tekil soru ve üç ayrı tip olmadan `INSUFFICIENT_DATA` döner. En az beş örnekli tipte son 30 gün iki kat ağırlıklı başarı %60'ın altındaysa veya yeterli aktif süre örneğinde ders ortalamasının 1,5 katından uzunsa `SUGGESTIONS` içinde soru tipi, beceri, alt konu, önkoşul, doğru/yanlış, süre gerekçesi ve etkin `exampleQuestionId/exampleQuestionCode` döner. Yeterli veri olup belirgin alan yoksa `NO_CLEAR_WEAKNESS` döner. Öğrenci ekranındaki `Şimdi çalış` örnek soruyu açar; etiket hatası `POST /api/feedback` ile `QUESTION_ISSUE`, örnek soru kimliği ve açıklama olarak bildirilir. Bu eğitim ipucudur.
 
 ## OGM konu anlatımı PDF'leri
 

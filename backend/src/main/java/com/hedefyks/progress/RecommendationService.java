@@ -22,10 +22,11 @@ public class RecommendationService {
     public record Suggestion(String questionTypeCode, String questionType, String skill,
                              String subtopic, String prerequisite, long questions,
                              long correct, long wrong, double recentWeightedSuccess,
-                             Long averageActiveSeconds, boolean slowerThanSubject) {}
+                             Long averageActiveSeconds, boolean slowerThanSubject,
+                             long exampleQuestionId, String exampleQuestionCode) {}
     public record Result(String subject, long labeledQuestions, int distinctTypes,
                          String status, List<Suggestion> suggestions) {}
-    private record Evidence(long questionId, long typeId, String code, String type,
+    private record Evidence(long questionId, String questionCode, long typeId, String code, String type,
                             String skill, String subtopic, String prerequisite,
                             boolean correct, int activeSeconds, Instant occurredAt) {}
     private static final int MIN_TOTAL = 30;
@@ -61,7 +62,7 @@ public class RecommendationService {
                 AND type_node.kind = 'QUESTION_TYPE' AND type_node.active
               WHERE f.rn = 1 AND f.source_order = 1
             )
-            SELECT l.question_id, t.id AS type_id, t.code, t.name AS type_name,
+            SELECT l.question_id, q.code AS question_code, t.id AS type_id, t.code, t.name AS type_name,
                    sk.name AS skill_name, st.name AS subtopic_name,
                    (SELECT string_agg(DISTINCT pre_st.name, ' + ' ORDER BY pre_st.name)
                     FROM taxonomy_prerequisites tp
@@ -69,7 +70,8 @@ public class RecommendationService {
                     JOIN taxonomy_nodes pre_st ON pre_st.id = pre_sk.parent_id AND pre_st.kind = 'SUBTOPIC'
                     WHERE tp.node_id = sk.id) AS prerequisite,
                    l.is_correct, l.active_seconds, l.occurred_at
-            FROM labeled l JOIN taxonomy_nodes t ON t.id = l.type_id AND t.kind = 'QUESTION_TYPE' AND t.active
+            FROM labeled l JOIN questions q ON q.id = l.question_id AND q.active
+            JOIN taxonomy_nodes t ON t.id = l.type_id AND t.kind = 'QUESTION_TYPE' AND t.active
             JOIN taxonomy_nodes sk ON sk.id = t.parent_id AND sk.kind = 'SKILL' AND sk.active
             JOIN taxonomy_nodes st ON st.id = sk.parent_id AND st.kind = 'SUBTOPIC' AND st.active
             WHERE l.subject = ? AND l.occurred_at >= ? AND l.occurred_at < ?
@@ -90,7 +92,8 @@ public class RecommendationService {
         }
         String normalized = subject.trim();
         List<Evidence> rows = jdbc.query(SQL, (rs, n) -> new Evidence(
-                rs.getLong("question_id"), rs.getLong("type_id"), rs.getString("code"),
+                rs.getLong("question_id"), rs.getString("question_code"),
+                rs.getLong("type_id"), rs.getString("code"),
                 rs.getString("type_name"), rs.getString("skill_name"),
                 rs.getString("subtopic_name"), rs.getString("prerequisite"),
                 rs.getBoolean("is_correct"), rs.getInt("active_seconds"),
@@ -130,10 +133,11 @@ public class RecommendationService {
             boolean slow = timed >= MIN_PER_TYPE && allTimed >= MIN_TOTAL
                     && (double) seconds / timed > subjectAverage * 1.5;
             if (success >= 60 && !slow) continue;
-            Evidence first = group.getFirst();
+            Evidence first = group.stream().filter(row -> !row.correct()).findFirst().orElse(group.getFirst());
             suggestions.add(new Suggestion(first.code(), first.type(), first.skill(), first.subtopic(),
                     first.prerequisite(), group.size(), correct, group.size() - correct,
-                    success, timed == 0 ? null : Math.round((double) seconds / timed), slow));
+                    success, timed == 0 ? null : Math.round((double) seconds / timed), slow,
+                    first.questionId(), first.questionCode()));
         }
         suggestions.sort(Comparator.comparingDouble(Suggestion::recentWeightedSuccess)
                 .thenComparing(Suggestion::questionTypeCode));

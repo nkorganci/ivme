@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **10.03 — Öğrenciye açıklanabilir öneri ekranı**. 08.04 ve 09.01–09.04 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **11.01 — Kayıtlı/aktif kullanıcı ve dönemlik toplu kullanım hesabı**. 08.04, 09.01–09.04 ve 10.02–10.03 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -122,14 +122,14 @@
 |---|---|---|---|
 | 10.01 | BITTI | Soru tipi → beceri → alt konu → önkoşul taksonomisi ve 50 gerçek kodlu taslak örnek | [25_10_01_TAKSONOMI_VE_ORNEK.md](25_10_01_TAKSONOMI_VE_ORNEK.md) | — (tamamlandı) |
 | 10.02 | BITTI | İlk deneme, süre ve örneklem eşiğiyle açıklanabilir öneri hesabı | [41_10_02_ZAYIF_ALAN_HESABI.md](41_10_02_ZAYIF_ALAN_HESABI.md) | — (tamamlandı) |
-| **10.03** | **SIRADAKI** | **“Neden?” ve “Şimdi çalış” öğrenci ekranı; yanlış etiket bildirimi** | 10.02 sonrası | GPT-6 Luna · Medium |
+| 10.03 | BITTI | “Neden?” ve “Şimdi çalış” öğrenci ekranı; yanlış etiket bildirimi | [42_10_03_ONERI_EKRANI.md](42_10_03_ONERI_EKRANI.md) | — (tamamlandı) |
 
 ## 11 — Yönetici toplamları
 
 | No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
 |---|---|---|---|---|
 |---|---|---|---|
-| 11.01 | YAPILACAK | Kayıtlı/aktif kullanıcı ve dönemlik kullanım toplulaştırması | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6.1 Sol · Medium |
+| **11.01** | **SIRADAKI** | **Kayıtlı/aktif kullanıcı ve dönemlik kullanım toplulaştırması** | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6.1 Sol · Medium |
 | 11.02 | YAPILACAK | Yalnız toplu yönetici paneli; küçük grup gizleme | 11.01 sonrası | GPT-6.1 Sol · High |
 | 11.03 | YAPILACAK | ADMIN/OPERATOR/USER çapraz erişim negatif testleri | 11.02 sonrası | GPT-6.1 Sol · High |
 

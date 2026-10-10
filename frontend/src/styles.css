@@ -178,6 +178,11 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .goal-edit label { display: grid; gap: 4px; }
 .goal-progress { display: grid; gap: 4px; max-width: 280px; }
 .goal-progress progress { width: 100%; accent-color: var(--primary); }
+.recommendation-subject { max-width: 320px; margin: 16px 0; }
+.recommendation-card details { margin: 12px 0; }
+.recommendation-card summary { cursor: pointer; font-weight: 600; }
+.recommendation-card details p { margin: 8px 0; }
+.recommendation-card .goal-actions { margin: 14px 0 8px; }
 .table.clickable tbody tr { cursor: pointer; } .table tbody tr:hover { background: #f8fafc; }
 .pager { display: flex; align-items: center; justify-content: center; gap: 8px 12px; margin: 12px 0; flex-wrap: wrap; font-size: var(--fs-sm); }
 .pager-nums { display: inline-flex; align-items: center; gap: 4px; }

@@ -75,6 +75,8 @@ class RecommendationTest extends TestBase {
         assertThat(weak.correct()).isEqualTo(3);
         assertThat(weak.recentWeightedSuccess()).isEqualTo(30);
         assertThat(weak.prerequisite()).isEqualTo("Alt konu 1");
+        assertThat(weak.exampleQuestionCode()).startsWith("R-0-");
+        assertThat(weak.exampleQuestionId()).isPositive();
         assertThat(recommendations.forSubjectAt(mehmet.getId(), "Türkçe", now).status())
                 .isEqualTo("INSUFFICIENT_DATA");
         send(login("ayse", "Sifre1234"), get("/api/recommendations?subject=Türkçe"), null)

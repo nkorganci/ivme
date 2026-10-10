@@ -19,6 +19,8 @@ const chicagoDate = (date) => {
   return `${parts.year}-${parts.month}-${parts.day}`;
 };
 let goals = [];
+let recommendationFixture = false;
+let recommendationStatus = 'SUGGESTIONS';
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const json = (value, status = 200) => {
@@ -28,7 +30,18 @@ const server = createServer((req, res) => {
   if (pathname === '/api/auth/me') return json({ id: 1, username: 'test', role: 'USER', contactComplete: true, passwordChangeRequired: false });
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
-  if (pathname === '/api/questions/filters') return json([]);
+  if (pathname === '/api/questions/filters') return json(recommendationFixture
+    ? [{ bank: 'CIKMIS', examType: 'TYT', subject: 'Türkçe', topic: 'Noktalama', count: 3 }] : []);
+  if (pathname === '/api/recommendations') return json(recommendationStatus === 'SUGGESTIONS'
+    ? { subject: 'Türkçe', labeledQuestions: 30, distinctTypes: 3, status: 'SUGGESTIONS', suggestions: [{
+      questionTypeCode: 'tyt.turkce.tip.noktalama', questionType: 'Noktalama sorusu',
+      skill: 'Noktalama kuralını uygulama', subtopic: 'Noktalama İşaretleri',
+      prerequisite: 'Yazım Kuralları', questions: 10, correct: 3, wrong: 7,
+      recentWeightedSuccess: 30, averageActiveSeconds: 45, slowerThanSubject: false,
+      exampleQuestionId: 41, exampleQuestionCode: 'TEST-1',
+    }] } : { subject: 'Türkçe', labeledQuestions: 0, distinctTypes: 0,
+      status: 'INSUFFICIENT_DATA', suggestions: [] });
+  if (pathname === '/api/feedback' && req.method === 'POST') return json({ id: 1 }, 201);
   if (pathname === '/api/progress/first-attempts') return json({
     period: 'DAY', zone: 'America/Chicago', startsAt: '2026-10-09T05:00:00Z',
     endsAt: '2026-10-10T05:00:00Z', correct: 1, wrong: 0, blank: 0,
@@ -150,9 +163,11 @@ try {
       ['/hesap', 'Verilerimi indir'],
       ['/ilerleme', 'Çalışma zaman çizelgesi'],
       ['/hedefler', 'Hedeflerim ve geçmiş'],
+      ['/oneriler', 'Çalışma önerileri'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
     ]) {
       if (page === '/hedefler') goals = [];
+      if (page === '/oneriler') { recommendationFixture = true; recommendationStatus = 'SUGGESTIONS'; }
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
       if (page.includes('yeni')) {
@@ -189,6 +204,26 @@ try {
           status: 'ACTIVE', progressCount: 5, remainingCount: 5 }];
         await cdp('Page.navigate', { url: site + page });
         await waitFor('document.body.innerText.includes("daha küçük bir hedefle yeniden başlayabilirsin")');
+      }
+      if (page === '/oneriler') {
+        await waitFor('document.querySelector("select")?.options.length === 2');
+        await evaluate('document.querySelector("select").value = "Türkçe"; document.querySelector("select").dispatchEvent(new Event("change", {bubbles:true}))');
+        await waitFor('document.body.innerText.includes("Noktalama sorusu")');
+        await waitFor('[...document.querySelectorAll("a")].find(x => x.getAttribute("href") === "/soru/TEST-1")?.innerText.includes("Şimdi çalış")');
+        await evaluate('document.querySelector("summary")?.click()');
+        await waitFor('document.body.innerText.includes("Ağırlıklı ilk deneme başarısı %30")');
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Etiket hatası bildir")?.click()');
+        await waitFor('document.body.innerText.includes("Etiketteki sorunu anlat")');
+        await evaluate('document.querySelector(".recommendation-card textarea")?.focus()');
+        await cdp('Input.insertText', { text: 'Bu soru tipi farklı olmalı' });
+        await evaluate('[...document.querySelectorAll("button")].find(x => x.innerText === "Bildir")?.click()');
+        await waitFor('document.body.innerText.includes("Etiket bildirimin alındı")');
+        recommendationStatus = 'INSUFFICIENT_DATA';
+        await cdp('Page.navigate', { url: site + page });
+        await waitFor('document.querySelector("select")?.options.length === 2');
+        await evaluate('document.querySelector("select").value = "Türkçe"; document.querySelector("select").dispatchEvent(new Event("change", {bubbles:true}))');
+        await waitFor('document.body.innerText.includes("yeterli onaylı ve çeşitli ilk deneme yok")');
+        recommendationFixture = false;
       }
       if (page === '/soru/TEST-1') {
         await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');
