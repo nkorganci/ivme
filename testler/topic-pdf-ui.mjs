@@ -29,6 +29,15 @@ const server = createServer((req, res) => {
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json([]);
+  if (pathname === '/api/progress/first-attempts') return json({
+    period: 'DAY', zone: 'America/Chicago', startsAt: '2026-10-09T05:00:00Z',
+    endsAt: '2026-10-10T05:00:00Z', correct: 1, wrong: 0, blank: 0,
+    total: 1, successPercent: 100, breakdown: [],
+  });
+  if (pathname === '/api/progress/timeline') return json({
+    period: 'DAY', zone: 'America/Chicago', days: [{ date: '2026-10-09', activeSeconds: 90,
+      logins: 1, closedSessions: 1, sessionSeconds: 3600 }],
+  });
   if (pathname === '/api/goals' && req.method === 'GET') return json(goals);
   if (pathname === '/api/goals' && req.method === 'POST') {
     let body = '';
@@ -139,6 +148,7 @@ try {
       ['/pratik/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/sinav/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
       ['/hesap', 'Verilerimi indir'],
+      ['/ilerleme', 'Çalışma zaman çizelgesi'],
       ['/hedefler', 'Hedeflerim ve geçmiş'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
     ]) {
@@ -153,6 +163,10 @@ try {
         }
       }
       if (page === '/hesap') await waitFor('document.body.innerText.includes("Hesabımı sil")');
+      if (page === '/ilerleme') {
+        await waitFor('document.body.innerText.includes("1 sa 0 dk")');
+        await waitFor('document.body.innerText.includes("Aktif süre gönderilmiş soru olaylarından gelir")');
+      }
       if (page === '/hedefler') {
         await waitFor('document.body.innerText.includes("Henüz hedef oluşturmadın")');
         await waitFor('document.body.innerText.includes("Bugünkü hedefler") && document.body.innerText.includes("Bu haftaki hedefler")');

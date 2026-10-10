@@ -71,7 +71,7 @@
 
 ### Adım 8 — Öğrenci ilerleme ve kullanım panosu
 
-**Özet:** Günlük, haftalık, aylık ve tüm zamanların somut ilerlemesini göster. **Yapılacak:** Tekil çözülen ve toplam deneme, doğru/yanlış/boş, ilk deneme başarı oranı, aktif süre, ders/alt konu/soru tipi kırılımı, toplam/çözülen/kalan, zaman çizelgesi, oturum/deneme geçmişi; gün/hafta/ay tarih aralıklarının kullanıcının saat dilimiyle tutarlı hesaplanması; aktivite ve oturum süresinin ayrı gösterimi; boş veri ve az veri mesajı. **UI kontrolü:** Dönem filtresi, grafik ile tablo eşleşmesi, telefonda okunabilirlik. **Bitti sayılır:** Ham olaylardan hesaplanan örnek senaryolarla panel sayıları bire bir uyuşur. **Durum:** ACIK (2026-10-09); [filtreli toplam/çözülen/kalan sayıları](10_SORU_KAPSAMI.md) eklendi, dönem panosu açık.
+**Özet:** Günlük, haftalık, aylık ve tüm zamanların somut ilerlemesini göster. **Yapılacak:** Tekil çözülen ve toplam deneme, doğru/yanlış/boş, ilk deneme başarı oranı, aktif süre, ders/alt konu/soru tipi kırılımı, toplam/çözülen/kalan, zaman çizelgesi, oturum/deneme geçmişi; gün/hafta/ay tarih aralıklarının kullanıcının saat dilimiyle tutarlı hesaplanması; aktivite ve oturum süresinin ayrı gösterimi; boş veri ve az veri mesajı. **UI kontrolü:** Dönem filtresi, grafik ile tablo eşleşmesi, telefonda okunabilirlik. **Bitti sayılır:** Ham olaylardan hesaplanan örnek senaryolarla panel sayıları bire bir uyuşur. **Durum:** ACIK (2026-10-09); [filtreli toplam/çözülen/kalan sayıları](10_SORU_KAPSAMI.md), ilk deneme dönemleri, kırılımlar ve [08.04 zaman çizelgesi](36_08_04_ZAMAN_CIZELGESI.md) kod/test ve masaüstü/mobil tarayıcı kontrolüyle tamamlandı. Fiziksel cihaz ölçümü 06.05, tüm zamanlar kapsamı ayrıca açıktır.
 
 ### Adım 9 — Hedef ve çalışma ritmi
 
