@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **13.01 — Kaynaklı iç not kayıt biçimi**. 08.04, 09.01–09.04, 10.02–10.03 ve 11.01–11.05 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **13.02 — PDF metni/OCR küçük pilotu**. 08.04, 09.01–09.04, 10.02–10.03, 11.01–11.05 ve 13.01 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -151,8 +151,8 @@
 | No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
 |---|---|---|---|---|
 |---|---|---|---|
-| **13.01** | **SIRADAKI** | **Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF** | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6 Luna · Medium |
-| 13.02 | YAPILACAK | AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF | 13.01 sonrası | GPT-6.1 Sol · Medium |
+| 13.01 | BITTI | Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF | [48_13_01_IC_NOT_KAYIT_BICIMI.md](48_13_01_IC_NOT_KAYIT_BICIMI.md) | — (tamamlandı) |
+| **13.02** | **SIRADAKI** | **AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF** | 13.01 sonrası | GPT-6.1 Sol · Medium |
 | 13.03 | YAPILACAK | İçerik aramasında kaynaklı 1–3 pasaj ve doğru PDF sayfasına dönüş denetimi; öğrenciye ayrı metin notu açma kararı yok | 13.02 sonrası | GPT-6.1 Sol · Medium |
 | 13.04 | BITTI | OGM konu PDF'lerinin tür, ders, sınav, göreli yol ve checksum artımlı kataloğu | [27_13_04_OGM_KONU_PDF_KATALOGU.md](27_13_04_OGM_KONU_PDF_KATALOGU.md) | — (tamamlandı) |
 | 13.05 | BITTI | Öğrenci menüsünde “Konu anlatımları”, filtreli liste ve özgün PDF'yi güvenli açma | [28_13_05_KONU_PDF_GORUNTULEME.md](28_13_05_KONU_PDF_GORUNTULEME.md) | — (tamamlandı) |
