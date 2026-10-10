@@ -49,6 +49,10 @@ Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı 
 
 `GET /api/goals` öğrencinin son 100 hedefini yeni kayıt önce döndürür. `POST /api/goals` `{period,metric,subject?,targetCount,zone}` ile içinde bulunulan yerel gün, hafta veya ay için hedef oluşturur (201). `period` `DAY|WEEK|MONTH`, `metric` `UNIQUE_QUESTIONS|ATTEMPTS|TESTS|EXAMS`, `targetCount` 1–10000 ve `zone` geçerli IANA saat dilimidir. `PATCH /api/goals/{id}` `{targetCount,subject?}` ile yalnız etkin ve dönemi bitmemiş hedefi düzenler. `POST /api/goals/{id}/stop` hedefi durdurur; tekrar çağrı aynı sonucu döndürür. Başka öğrencinin kimliği 404 döner. `startsOn` ve `endsOn` hedefin sabit saat dilimindeki dahil tarihleridir. Yanıtlar `progressCount` ve sıfırdan küçük olmayan `remainingCount` içerir. İlk kez cevaplanan tekil soru, pratik ve teslim edilmiş sınavın ilk cevap olayıyla sayılır; `ATTEMPTS` her pratik cevabı ve teslim edilmiş sınavdaki cevaplanmış her soruyu sayar. `TESTS` yalnız bitmiş süreli pratik oturumlarını, `EXAMS` yalnız teslim edilmiş sınavları bitiş zamanlarında birer kez sayar. Dersli test hedefi yalnız aynı ders filtresiyle kurulmuş oturumu sayar. Dönem başlangıcı dahil, ertesi gün/hafta/ay sınırı hariçtir; durdurulan hedefin ilerlemesi durdurma anında donar.
 
+## Zayıf alan önerisi
+
+`GET /api/recommendations?subject=Türkçe` yalnız oturumdaki öğrencinin son 90 gündeki ilk cevaplarını kullanır. Yalnız onaylı soru tipi etiketi hesaba girer. 30 etiketli tekil soru ve üç ayrı tip olmadan `INSUFFICIENT_DATA` döner. En az beş örnekli tipte son 30 gün iki kat ağırlıklı başarı %60'ın altındaysa veya yeterli aktif süre örneğinde ders ortalamasının 1,5 katından uzunsa `SUGGESTIONS` içinde soru tipi, beceri, alt konu, önkoşul, doğru/yanlış ve süre gerekçesi döner. Yeterli veri olup belirgin alan yoksa `NO_CLEAR_WEAKNESS` döner. Bu eğitim ipucudur; öğrenci UI'si 10.03 işindedir.
+
 ## OGM konu anlatımı PDF'leri
 
 | İstek | İşlev |
