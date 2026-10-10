@@ -30,7 +30,7 @@ with tempfile.TemporaryDirectory() as directory:
             assert len(json.load(response)) == 200
         with urlopen(base + "/api/drafts") as response:
             drafts = json.load(response)
-            assert len(drafts) == 7 and drafts["TYT-0001"]["question_type_code"]
+            assert len(drafts) == 200 and drafts["TYT-0001"]["question_type_code"]
         with urlopen(base + "/image/TYT-0100") as response:
             assert response.status == 200 and response.headers["Content-Type"] == "image/webp"
 
@@ -55,7 +55,8 @@ with tempfile.TemporaryDirectory() as directory:
         assert len(rows) == 200
         assert sum(row["review_status"] == "approved" for row in rows) == 1
         assert next(row for row in rows if row["question_code"] == "TYT-0100")["reviewer_id"] == "smoke-reviewer"
-        print("review screen PASS: 200 rows, image, invalid approval rejected, valid approval saved to temporary CSV")
+        assert sum(bool(row["ai_reviewer_id"]) for row in rows) == 200
+        print("review screen PASS: 200 AI notes retained, image, invalid approval rejected, valid approval saved to temporary CSV")
     finally:
         server.shutdown()
         server.server_close()

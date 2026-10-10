@@ -159,10 +159,14 @@ def run(model, all_questions):
                     "prompt_tokens": response.get("prompt_eval_count"),
                     "output_tokens": response.get("eval_count"),
                     "total_duration_ns": response.get("total_duration")}
+            data["errors"] = [error for error in data["errors"]
+                              if error["question_code"] != code]
             data["drafts"].append(item)
             write_atomic(output, data)
             print(f"draft {code}: {label or 'emin değilim'}; review={','.join(reasons) or 'normal'}")
         except (HTTPError, URLError, KeyError, ValueError, TypeError, json.JSONDecodeError) as error:
+            data["errors"] = [item for item in data["errors"]
+                              if item["question_code"] != code]
             data["errors"].append({"question_code": code, "error": str(error)})
             write_atomic(output, data)
             print(f"error {code}: {error}")

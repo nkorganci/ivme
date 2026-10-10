@@ -17,7 +17,7 @@ SPEC.loader.exec_module(QUEUE)
 OUTPUT, SOURCE_ROOT, TAXONOMY, FIELDS, sha256 = (
     QUEUE.OUTPUT, QUEUE.SOURCE_ROOT, QUEUE.TAXONOMY, QUEUE.FIELDS, QUEUE.sha256
 )
-AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-qwen35-pilot-7.json"
+AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-qwen35-v2-200.json"
 DRAFT_FILE = AI_DRAFTS
 
 
@@ -38,13 +38,13 @@ button.primary{background:#674291;color:white}button:focus-visible,input:focus-v
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.muted{color:#51465f}.error{color:#9b1729}.success{color:#22663a}
 @media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:12px}}
 </style>
-<main><h1>14.02 · Soru etiketi incelemesi</h1>
-<p>Geçici pilot etiketleri tek tek kontrol edin. Kaydettiğiniz kararlar yerel CSV'ye yazılır; öğrenci veritabanına aktarılmaz.</p>
+<main><h1>14.03 · Soru etiketi incelemesi</h1>
+<p>200 sorunun AI ön inceleme notları burada görünür. İnsan incelemesini daha sonra yapabilirsiniz. Kaydettiğiniz insan kararları yerel CSV'ye yazılır; öğrenci veritabanına aktarılmaz.</p>
 <div class="panel row"><label for="reviewer">İnceleyen kimliği</label><input id="reviewer" style="max-width:240px" autocomplete="name" required>
 <span id="counts" aria-live="polite"></span></div>
 <div class="panel row"><button id="previous">Önceki</button><label for="jump">Soru</label><select id="jump" style="max-width:270px"></select><button id="next">Sonraki</button></div>
 <div class="grid"><div class="panel"><h2 id="title"></h2><p id="source" class="muted"></p><img id="image" alt="İncelenen sorunun kaynak görseli"></div>
-<div class="panel"><p id="current"></p><p id="suggestion" class="muted"></p><p id="aiDraft" class="muted"></p>
+<div class="panel"><p id="current"></p><p id="suggestion" class="muted"></p><p id="aiDraft" class="muted"></p><p id="aiReviewNote"></p>
 <label for="label">İncelenen soru tipi</label><select id="label"></select>
 <label for="evidence">Sorudaki kanıt / gerekçe</label><textarea id="evidence" placeholder="Sorunun hangi ifadesi veya görseli bu etiketi destekliyor?"></textarea>
 <label for="note">Ret / belirsizlik nedeni</label><textarea id="note" placeholder="Etiket neden belirsiz veya taksonomi dışında?"></textarea>
@@ -56,7 +56,7 @@ const $=id=>document.getElementById(id);
 async function load(){const [rowResponse,draftResponse]=await Promise.all([fetch('/api/rows'),fetch('/api/drafts')]);
   if(!rowResponse.ok||!draftResponse.ok)throw new Error('Kuyruk veya AI taslağı doğrulanamadı');
   rows=await rowResponse.json();drafts=await draftResponse.json();
-  $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${i+1}. ${r.question_code}</option>`).join('');show();}
+  $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${r.ai_human_review_priority==='oncelikli'?'★ ':''}${i+1}. ${r.question_code}</option>`).join('');show();}
 function show(){const r=rows[index];if(!r)return;
   $('jump').value=index;$('title').textContent=`${index+1}/200 · ${r.question_code}`;
   $('source').textContent=`${r.source_topic} · ${r.source_year} · Görsel SHA-256: ${r.image_sha256.slice(0,12)}…`;
@@ -64,12 +64,13 @@ function show(){const r=rows[index];if(!r)return;
   $('current').textContent=`Durum: ${r.review_status}${r.reviewer_id?' · '+r.reviewer_id:''}`;
   $('suggestion').textContent=`Kaynak konudan gelen taslak: ${r.suggested_question_type_code} (insan onayı değildir)`;
   const draft=drafts[r.question_code];
-  $('aiDraft').textContent=draft?`AI taslağı: ${draft.abstain?'Emin değilim':draft.question_type_code} · güven ${draft.confidence} (kalibre edilmedi) · ${draft.evidence}`:'Bu soruda AI taslağı yok.';
+  $('aiDraft').textContent=draft?`AI son öneri: ${r.ai_question_type_code||'Emin değilim'} · modelin ham ikinci önerisi: ${draft.abstain?'Emin değilim':draft.question_type_code} · model güven beyanı ${draft.confidence} (kalibre edilmedi)`:'Bu soruda AI taslağı yok.';
+  $('aiReviewNote').textContent=r.ai_review_note?`AI inceleyen: ${r.ai_reviewer_id} · Kanıt: ${r.ai_review_evidence} · İnceleme notu (${r.ai_human_review_priority}): ${r.ai_review_note}`:'';
   const codes=r.allowed_question_type_codes.split('|');
   $('label').innerHTML='<option value="">Seçiniz</option>'+codes.map(code=>`<option value="${code}">${code}</option>`).join('');
   $('label').value=r.reviewed_question_type_code||'';
   $('evidence').value=r.review_evidence||'';$('note').value=r.review_status==='provisional'?'':r.review_note||'';
-  $('message').textContent='';$('counts').textContent=`İnsan onayı: ${rows.filter(x=>x.review_status==='approved').length}/200 · Geçici: ${rows.filter(x=>x.review_status==='provisional').length}`;
+  $('message').textContent='';$('counts').textContent=`İnsan onayı: ${rows.filter(x=>x.review_status==='approved').length}/200 · AI öncelikli: ${rows.filter(x=>x.ai_human_review_priority==='oncelikli').length} · Geçici: ${rows.filter(x=>x.review_status==='provisional').length}`;
 }
 async function save(status){const r=rows[index],reviewer=$('reviewer').value.trim();
   if(!reviewer){$('message').textContent='Önce inceleyen kimliğini girin.';return;}
@@ -78,7 +79,7 @@ async function save(status){const r=rows[index],reviewer=$('reviewer').value.tri
   const response=await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
   const result=await response.json();if(!response.ok){$('message').textContent=result.error||'Kayıt başarısız';$('message').className='error';return;}
   rows[index]=result.row;$('message').textContent='Karar CSV’ye kaydedildi.';$('message').className='success';
-  $('counts').textContent=`İnsan onayı: ${rows.filter(x=>x.review_status==='approved').length}/200 · Geçici: ${rows.filter(x=>x.review_status==='provisional').length}`;
+  $('counts').textContent=`İnsan onayı: ${rows.filter(x=>x.review_status==='approved').length}/200 · AI öncelikli: ${rows.filter(x=>x.ai_human_review_priority==='oncelikli').length} · Geçici: ${rows.filter(x=>x.review_status==='provisional').length}`;
   $('current').textContent=`Durum: ${result.row.review_status} · ${result.row.reviewer_id}`;
 }
 $('previous').onclick=()=>{index=Math.max(0,index-1);show()};$('next').onclick=()=>{index=Math.min(rows.length-1,index+1);show()};
@@ -108,15 +109,27 @@ class Handler(BaseHTTPRequestHandler):
 
     def drafts(self):
         data = json.loads(DRAFT_FILE.read_text(encoding="utf-8"))
-        if data["schema_version"] != 1 or data["run"]["status"] != "draft":
-            raise ValueError("AI taslak dosyası sürümü veya durumu geçersiz")
-        if data["run"]["taxonomy_version"] != "tyt-turkce-v1":
-            raise ValueError("AI taslak taksonomisi uyuşmuyor")
+        if "results" in data:
+            if (data.get("prompt_version") != "taxonomy-boundaries-v2"
+                    or data.get("model") != "qwen3.5:4b" or data.get("errors")
+                    or len(data["results"]) != 200):
+                raise ValueError("İkinci AI taslağı eksik veya geçersiz")
+            items = [{"question_code": item["question_code"],
+                      "image_sha256": item["image_sha256"],
+                      "question_type_code": item["clearer_prompt_type"],
+                      "abstain": item["abstain"], "confidence": item["confidence"],
+                      "evidence": item["evidence"]} for item in data["results"]]
+        else:
+            if data["schema_version"] != 1 or data["run"]["status"] != "draft":
+                raise ValueError("AI taslak dosyası sürümü veya durumu geçersiz")
+            if data["run"]["taxonomy_version"] != "tyt-turkce-v1":
+                raise ValueError("AI taslak taksonomisi uyuşmuyor")
+            items = data["drafts"]
         questions = {row["question_code"]: row for row in self.rows()}
         allowed = {node["code"] for node in json.loads(TAXONOMY.read_text(encoding="utf-8"))["nodes"]
                    if node["kind"] == "QUESTION_TYPE"}
         result = {}
-        for item in data["drafts"]:
+        for item in items:
             code = item["question_code"]
             if (code in result or code not in questions
                     or item["image_sha256"] != questions[code]["image_sha256"]
@@ -212,7 +225,7 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--draft-file", type=Path, default=AI_DRAFTS,
-                        help="Validated AI draft JSON; defaults to seven local Qwen drafts")
+                        help="Validated AI draft JSON; defaults to 200 local Qwen drafts")
     args = parser.parse_args()
     DRAFT_FILE = args.draft_file.resolve()
     server = ThreadingHTTPServer(("127.0.0.1", 8765), Handler)

@@ -30,6 +30,9 @@ FIELDS = (
     "suggested_question_type_code", "suggestion_basis", "reviewer_id",
     "reviewed_at_utc", "reviewed_question_type_code", "review_evidence",
     "review_status", "review_note",
+    "ai_reviewer_id", "ai_model_digest", "ai_reviewed_at_utc",
+    "ai_question_type_code", "ai_confidence", "ai_review_evidence",
+    "ai_review_note", "ai_human_review_priority",
 )
 
 
@@ -93,6 +96,14 @@ def render():
                 "review_evidence": "",
                 "review_status": "pending",
                 "review_note": "",
+                "ai_reviewer_id": "",
+                "ai_model_digest": "",
+                "ai_reviewed_at_utc": "",
+                "ai_question_type_code": "",
+                "ai_confidence": "",
+                "ai_review_evidence": "",
+                "ai_review_note": "",
+                "ai_human_review_priority": "",
             })
     assert len(rows) == 200 and len({row["question_code"] for row in rows}) == 200
     buffer = io.StringIO()
@@ -139,6 +150,20 @@ def validate_review_file():
             assert row["reviewer_id"].strip() and row["reviewed_at_utc"].strip()
             assert datetime.fromisoformat(row["reviewed_at_utc"]).tzinfo == timezone.utc
             assert row["review_note"].strip()
+        if row["ai_reviewer_id"]:
+            assert row["ai_reviewer_id"] in {"qwen3.5:4b (AI taslağı)",
+                                              "qwen3.5:4b (AI taslağı v2)",
+                                              "Codex AI QA + qwen3.5:4b (taslak v2)"}
+            assert len(row["ai_model_digest"]) == 64
+            assert datetime.fromisoformat(row["ai_reviewed_at_utc"]).tzinfo == timezone.utc
+            assert row["ai_human_review_priority"] in {"normal", "oncelikli"}
+            assert row["ai_review_note"].strip()
+            if row["ai_question_type_code"]:
+                assert row["ai_question_type_code"] in allowed
+                assert 0 <= float(row["ai_confidence"]) <= 1
+                assert row["ai_review_evidence"].strip()
+        else:
+            assert not any(row[key] for key in FIELDS[15:])
     print(f"review queue PASS: 200 unique; human approved={approved}; provisional={provisional}; pending={sum(r['review_status'] == 'pending' for r in rows)}")
 
 

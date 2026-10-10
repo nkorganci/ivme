@@ -1,0 +1,82 @@
+{
+  "model": "qwen3.5:4b",
+  "model_digest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+  "prompt_version": "taxonomy-boundaries-v2",
+  "prompt_sha256": "d061a318cc90fb1d0adc517ae1846654b8842c547c2fd20de2e7e3559a3d3e48",
+  "question_codes": [
+    "TYT-0062",
+    "TYT-0098",
+    "TYT-0001",
+    "TYT-0199",
+    "TYT-0100",
+    "TYT-0118"
+  ],
+  "results": [
+    {
+      "question_code": "TYT-0062",
+      "image_sha256": "534618fae50df8b571ce14cbd17abc2c9e4605fac48888f3abd75760c0167ecd",
+      "source_topic_type": "tyt.turkce.tip.paragraf_yapi",
+      "first_prompt_type": "tyt.turkce.tip.cumle_yorum",
+      "clearer_prompt_type": "tyt.turkce.tip.paragraf_yapi",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçada numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?' şeklinde olup, bu ifade doğrudan bir paragraf yapısı sorusunu (cümle sırası/yerleşimi, akışı bozan cümle) tanımlar.",
+      "duration_ns": 3988541500
+    },
+    {
+      "question_code": "TYT-0098",
+      "image_sha256": "eddba381b427d5299a32be563145afd142ca01a34b9d9ef32685ee33181b5b57",
+      "source_topic_type": "tyt.turkce.tip.paragraf_yapi",
+      "first_prompt_type": "tyt.turkce.tip.cumle_yorum",
+      "clearer_prompt_type": "tyt.turkce.tip.paragraf_yapi",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçada numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?' şeklindedir. Bu ifade doğrudan bir paragraf yapısı sorusunu (cümle sırası/yerleşimi, akışı bozan cümle) işaret eder.",
+      "duration_ns": 4256062700
+    },
+    {
+      "question_code": "TYT-0001",
+      "image_sha256": "599628d16787ff6032336c0e756927c21dfe545648bb840140dc0da6094d9ee8",
+      "source_topic_type": "tyt.turkce.tip.sozcuk_baglam",
+      "first_prompt_type": "tyt.turkce.tip.cumle_yorum",
+      "clearer_prompt_type": "tyt.turkce.tip.sozcuk_baglam",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçada boş bırakılan yerlere aşağıdakilerden hangisi sırasıyla getirilmelidir?' şeklinde sorulmuştur. Bu ifade, metindeki boşlukları doldurmak için bağlamı analiz etmemizi ve uygun sözcükleri seçmemizi gerektirir.",
+      "duration_ns": 4005997600
+    },
+    {
+      "question_code": "TYT-0199",
+      "image_sha256": "f0c0085eab40bbedccc2777084fba1efcead9898d20c2b8b5386bdd1682cab2a",
+      "source_topic_type": "tyt.turkce.tip.paragraf_anlam",
+      "first_prompt_type": "tyt.turkce.tip.paragraf_yapi",
+      "clearer_prompt_type": "tyt.turkce.tip.paragraf_yapi",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçanın anlatımında aşağıdakilerden hangisi yoktur?' şeklinde olup, metnin yapısını ve içindeki anlatım tekniklerini (karşılaştırma, koşul öne sürme, tanımlama vb.) sorguluyor. Bu, paragrafın yapısal bileşenlerini analiz etmeyi gerektirir.",
+      "duration_ns": 4489379400
+    },
+    {
+      "question_code": "TYT-0100",
+      "image_sha256": "0c8a30e93bab23dff9d8a90dd8fa3440615037a4440160e0d677126ed93287fe",
+      "source_topic_type": "tyt.turkce.tip.paragraf_anlam",
+      "first_prompt_type": "tyt.turkce.tip.paragraf_anlam",
+      "clearer_prompt_type": "tyt.turkce.tip.paragraf_anlam",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçadaki altı çizili ifadelerden hangilerine gönderme yapılmamıştır?' şeklinde olup, metnin genel yapısını ve anlatım tekniklerini (karakter isimlendirmesi, monolog kullanımı, noktalama eksikliği) analiz ederek yazarın hangi yöntemleri *kullandığını* veya *kullanmadığını* belirlemeyi hedefler. Bu, paragrafın ana düşüncesini ve içerdiği teknikleri anlamayı gerektirir.",
+      "duration_ns": 5498469900
+    },
+    {
+      "question_code": "TYT-0118",
+      "image_sha256": "450ed4611f1c5fbd0577df61a484a73e39b2e5dc2e6e95d59e063abe3c3e182e",
+      "source_topic_type": "tyt.turkce.tip.paragraf_anlam",
+      "first_prompt_type": "tyt.turkce.tip.paragraf_anlam",
+      "clearer_prompt_type": "tyt.turkce.tip.paragraf_anlam",
+      "abstain": false,
+      "confidence": 0.95,
+      "evidence": "Soru kökü 'Bu parçanın anlatımıyla ilgili...' ifadesiyle başlar ve seçeneklerde 'Kişileştirmeye yer verilmiş', 'Birinci kişili anlatım kullanılmıştır' gibi genel anlatım özellikleri veya 'Örneklemeye başvurulmuştur' gibi spesifik bir teknik kullanım sorulmaktadır. Bu, metnin genel anlamını, içeriğini ve yazarın sunduğu düşünceleri analiz etmeyi gerektirir.",
+      "duration_ns": 5196787400
+    }
+  ]
+}

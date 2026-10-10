@@ -24,6 +24,8 @@ Mevcut V5 şeması `taxonomy_nodes` (ebeveyn, tür, kod, ad), `question_taxonomy
 
 Yıllar: 2018: 8, 2019–2022: 7'şer, 2023: 5, 2024–2025: 4'er, 2026: 1. Yedi konunun birer kaynak metni gözle kontrol edildi ve geniş türle uyumluydu. Diğer 43 kaydın ayrıntılı soru tipi insan tarafından tek tek doğrulanmadı; kaynak `konu` etiketinden yapılan eşleme bütün satırlarda `topic_only_mapping` inceleme nedeni taşır. Paragraf ana düşünce/çıkarım gibi daha dar tipler bu kayıtlardan tahmin edilmez. Bu 50 kayıt, 10.02'de az veri ve kategori kırılımını sınamak için **örnek dağılım** sağlar; model doğruluğu veya öğrencinin zayıf alanı hakkında sonuç değildir.
 
+**Sonraki denetim:** Bu 50 soru, [14.01'deki 200 sorunun](../../ornek-veri/altin-ornek-inceleme-200.csv) alt kümesidir. Kaynak konu eşlemesiyle verilen `question_type_code` gerçek inceleme etiketi değildir; daha sonraki iki AI geçişi bazı önerilerle ayrılmıştır. Bu örnek CSV, kaynak eşlemesini yeniden üretmek için korunur. İnceleme önceliği ve geçici AI önerisi 200 soruluk dosyada tutulur; doğrulanmış soru tipi yalnız insan kararıyla oluşur.
+
 ## Tekrar üretme ve kontrol
 
 ```powershell

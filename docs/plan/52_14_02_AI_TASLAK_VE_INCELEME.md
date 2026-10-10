@@ -48,3 +48,5 @@ Yedi taslak, sıfır API hatası; kaynak konu eşlemesiyle **iki çatışma** (`
 İnceleme ekranında gerçek batch dosyası HTTP 200 ile açıldı. Masaüstü 1280×900 görüntüsü okunaklıydı. İlk dar ekran kontrolünde yatay taşma görüldü; uzun checksum kısaltılıp panel metni sarıldı. CDP ile gerçek 390×844 CSS görünümünde `innerWidth=bodyWidth=htmlWidth=390` doğrulandı; görsel ve karar alanları dar ekranda okunaklıydı. Geçerli kararın geçici CSV'ye yazılması, eksik gerekçeli kararın reddi test edildi. Kullanıcının kendi cihazındaki kabulü 14.01 manuel incelemesinde yapılacaktır.
 
 14.02 yalnız **yedi soruluk taslak ve inceleme ekranı pilotu** için bitti. 200 soruya ölçekleme veya doğruluk sonucu çıkarılmadı; bu karar 14.03'te insan etiketleriyle verilecek.
+
+**Sonraki kullanıcı kararı:** 2026-10-09'da 200 sorunun AI ile ön incelenmesi istendi. Bu, 14.03'te ayrı `ai_` notları olarak yürütülür; önceki yedi soruluk pilotun kapsamını veya insan altın etiket koşulunu geriye dönük değiştirmez.

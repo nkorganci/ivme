@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **14.03 — Ders/tip doğruluğu, maliyet ve ölçek kararı**. 14.02 yedi soruluk gerçek `qwen3.5:4b` pilotu ve inceleme ekranıyla `BITTI`; iki kaynak konu çatışması görüldü. 14.01'de 200 soru geçici pilot için kabul edilmiş olsa da gerçek insan onayı 0/200; doğruluk ve ölçek kararı bu incelemeyi bekliyor. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
+**Sıradaki tek iş:** **14.03 — Ders/tip doğruluğu, maliyet ve ölçek kararı**. Yedi soruluk 14.02 pilotundan sonra 200 TYT Türkçe sorusu iki kez yerel AI ile incelendi; 43 model önerisi değişti, 15 açık AI hatası kaynak soru köküyle kalite kontrolde düzeltildi. CSV'de 200 AI notu, 63 öncelikli insan kontrolü ve 0/200 gerçek insan onayı var. AI önerileri altın etiket değildir; doğruluk ve geniş ölçek kararı insan altın verisini bekliyor. Kullanıcı fizik sorularını uzman olarak etiketleyebileceğini belirtti; bu Türkçe kümesinde alan dışı hakem olarak kullanılmaz. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -164,7 +164,7 @@
 |---|---|---|---|
 | 14.01 | YAPILACAK | 200–500 insan etiketli örnek; 200 geçici kabul, 0 gerçek insan onayı | [51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md) | GPT-6 Luna · Medium |
 | 14.02 | BITTI | Sürümlü gerçek yerel modelde 7 görsel taslak, belirsizlik/çatışma ve masaüstü/mobil inceleme ekranı pilotu | [52_14_02_AI_TASLAK_VE_INCELEME.md](52_14_02_AI_TASLAK_VE_INCELEME.md) | — (tamamlandı) |
-| **14.03** | **SIRADAKI** | **Ders/tip doğruluğu, maliyet ve ölçek kararı; ilk maliyet/hata gözlemi var, insan altın etiketleri bekleniyor** | [53_14_03_DOGRULUK_MALIYET_OLCEK.md](53_14_03_DOGRULUK_MALIYET_OLCEK.md) | GPT-6.1 Sol · Medium |
+| **14.03** | **DEVAM** | **200 soruluk iki AI geçişi, 15 AI QA düzeltmesi, 63 öncelikli kontrol; insan altın etiketi ve doğruluk kararı bekleniyor** | [53_14_03_DOGRULUK_MALIYET_OLCEK.md](53_14_03_DOGRULUK_MALIYET_OLCEK.md) | GPT-6.1 Sol · Medium |
 
 ## 15 — Kaynaklı ipucu
 
