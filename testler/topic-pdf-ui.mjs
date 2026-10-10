@@ -21,7 +21,7 @@ const chicagoDate = (date) => {
 let goals = [];
 let recommendationFixture = false;
 let recommendationStatus = 'SUGGESTIONS';
-let adminMode = false;
+let currentRole = 'USER';
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const json = (value, status = 200) => {
@@ -29,7 +29,7 @@ const server = createServer((req, res) => {
     res.end(JSON.stringify(value));
   };
   if (pathname === '/api/auth/me') return json({ id: 1, username: 'test',
-    role: adminMode ? 'ADMIN' : 'USER', contactComplete: true, passwordChangeRequired: false });
+    role: currentRole, contactComplete: true, passwordChangeRequired: false });
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json(recommendationFixture
@@ -175,7 +175,7 @@ try {
     ]) {
       if (page === '/hedefler') goals = [];
       if (page === '/oneriler') { recommendationFixture = true; recommendationStatus = 'SUGGESTIONS'; }
-      adminMode = page === '/yonetim';
+      currentRole = page === '/yonetim' ? 'ADMIN' : 'USER';
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
       if (page.includes('yeni')) {
@@ -239,6 +239,17 @@ try {
         if (await evaluate('document.body.innerText.includes("test@example.com")')) {
           throw new Error(`${width}px yönetici ekranında bireysel veri görüldü`);
         }
+        await cdp('Page.navigate', { url: site + '/hedefler' });
+        await new Promise((done) => setTimeout(done, 150));
+        await waitFor('location.pathname === "/yonetim"');
+        currentRole = 'OPERATOR';
+        await cdp('Page.navigate', { url: site + '/yonetim' });
+        await new Promise((done) => setTimeout(done, 150));
+        await waitFor('location.pathname === "/icerik-bakimi"');
+        currentRole = 'USER';
+        await cdp('Page.navigate', { url: site + '/yonetim' });
+        await new Promise((done) => setTimeout(done, 150));
+        await waitFor('location.pathname === "/"');
       }
       if (page === '/soru/TEST-1') {
         await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');
