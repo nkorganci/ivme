@@ -56,14 +56,7 @@ def write_atomic(path, data):
     temporary.replace(path)
 
 
-def run(model, all_questions):
-    tags = api("/api/tags")
-    matches = [item for item in tags["models"] if model in (item.get("name"), item.get("model"))]
-    if len(matches) != 1:
-        raise ValueError(f"Model kurulu değil veya tekil değil: {model}")
-    digest = matches[0]["digest"]
-    if not digest or len(digest) != 64:
-        raise ValueError("Model digest bulunamadı")
+def build_spec():
     taxonomy = json.loads(TAXONOMY.read_text(encoding="utf-8"))
     allowed = {node["code"]: node["name"] for node in taxonomy["nodes"]
                if node["kind"] == "QUESTION_TYPE"}
@@ -86,19 +79,38 @@ def run(model, all_questions):
               "Güven değeri öznel tahmindir, kalibre edilmiş olasılık değildir.\n"
               + description)
     prompt_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    generation = {"format": schema, "stream": False, "think": False,
+                  "options": {"temperature": 0}}
+    request_hash = hashlib.sha256(json.dumps(
+        {"prompt": prompt, **generation}, ensure_ascii=False, sort_keys=True
+    ).encode("utf-8")).hexdigest()
+    return allowed, prompt, generation, prompt_hash, request_hash
+
+
+def run(model, all_questions):
+    tags = api("/api/tags")
+    matches = [item for item in tags["models"] if model in (item.get("name"), item.get("model"))]
+    if len(matches) != 1:
+        raise ValueError(f"Model kurulu değil veya tekil değil: {model}")
+    digest = matches[0]["digest"]
+    if not digest or len(digest) != 64:
+        raise ValueError("Model digest bulunamadı")
+    allowed, prompt, generation, prompt_hash, request_hash = build_spec()
     safe_model = re.sub(r"[^A-Za-z0-9_.-]", "_", model).lstrip(".")
     output = OUTPUT_DIR / f"{safe_model}-{digest[:12]}-{PROMPT_VERSION}.json"
     if output.exists():
         data = json.loads(output.read_text(encoding="utf-8"))
         metadata = data["run"]
         if (metadata["model_version"] != digest or metadata["prompt_sha256"] != prompt_hash
+                or metadata.get("request_sha256") != request_hash
                 or metadata["taxonomy_version"] != "tyt-turkce-v1"):
             raise ValueError("Önbellek modeli, promptu veya taksonomisi değişmiş")
     else:
         data = {"schema_version": 1, "run": {
             "id": f"ollama-{digest[:12]}-{PROMPT_VERSION}", "model_family": model,
             "model_version": digest, "prompt_version": PROMPT_VERSION,
-            "prompt_sha256": prompt_hash, "taxonomy_version": "tyt-turkce-v1",
+            "prompt_sha256": prompt_hash, "request_sha256": request_hash,
+            "taxonomy_version": "tyt-turkce-v1",
             "source": "local Ollama vision", "status": "draft",
             "started_at_utc": datetime.now(timezone.utc).isoformat(),
         }, "drafts": [], "errors": []}
@@ -118,8 +130,7 @@ def run(model, all_questions):
             continue
         request = {"model": model, "prompt": prompt,
                    "images": [base64.b64encode(content).decode("ascii")],
-                   "format": schema, "stream": False,
-                   "options": {"temperature": 0}}
+                   **generation}
         try:
             response = api("/api/generate", request)
             if response.get("done") is not True or response.get("done_reason") != "stop":

@@ -17,7 +17,7 @@ SPEC.loader.exec_module(QUEUE)
 OUTPUT, SOURCE_ROOT, TAXONOMY, FIELDS, sha256 = (
     QUEUE.OUTPUT, QUEUE.SOURCE_ROOT, QUEUE.TAXONOMY, QUEUE.FIELDS, QUEUE.sha256
 )
-AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-pilot-7.json"
+AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-qwen35-pilot-7.json"
 DRAFT_FILE = AI_DRAFTS
 
 
@@ -28,7 +28,7 @@ HTML = """<!doctype html>
 <style>
 body{font:16px/1.5 system-ui,sans-serif;background:#f7f5fb;color:#242032;margin:0}
 main{max-width:1100px;margin:auto;padding:20px}h1{font-size:1.5rem}p{margin:.4rem 0 1rem}
-.panel{background:white;border:1px solid #dad4e5;border-radius:14px;padding:18px;margin:12px 0}
+.panel{background:white;border:1px solid #dad4e5;border-radius:14px;padding:18px;margin:12px 0;min-width:0;overflow-wrap:anywhere}
 .grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,1fr);gap:16px}
 img{max-width:100%;height:auto;border:1px solid #ddd;border-radius:8px}
 label{display:block;font-weight:600;margin:12px 0 4px}input,select,textarea,button{font:inherit}
@@ -59,7 +59,7 @@ async function load(){const [rowResponse,draftResponse]=await Promise.all([fetch
   $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${i+1}. ${r.question_code}</option>`).join('');show();}
 function show(){const r=rows[index];if(!r)return;
   $('jump').value=index;$('title').textContent=`${index+1}/200 · ${r.question_code}`;
-  $('source').textContent=`${r.source_topic} · ${r.source_year} · Görsel SHA-256: ${r.image_sha256}`;
+  $('source').textContent=`${r.source_topic} · ${r.source_year} · Görsel SHA-256: ${r.image_sha256.slice(0,12)}…`;
   $('image').src='/image/'+encodeURIComponent(r.question_code);
   $('current').textContent=`Durum: ${r.review_status}${r.reviewer_id?' · '+r.reviewer_id:''}`;
   $('suggestion').textContent=`Kaynak konudan gelen taslak: ${r.suggested_question_type_code} (insan onayı değildir)`;
@@ -212,7 +212,7 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--draft-file", type=Path, default=AI_DRAFTS,
-                        help="Validated AI draft JSON; defaults to seven visual session drafts")
+                        help="Validated AI draft JSON; defaults to seven local Qwen drafts")
     args = parser.parse_args()
     DRAFT_FILE = args.draft_file.resolve()
     server = ThreadingHTTPServer(("127.0.0.1", 8765), Handler)
