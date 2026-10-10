@@ -8,3 +8,5 @@ backend/src/main/resources/static/
 .vscode/
 uretim.ayarlar.bat
 veri/
+__pycache__/
+*.pyc
