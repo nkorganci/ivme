@@ -27,7 +27,7 @@ class RoleBoundaryTest extends TestBase {
         List<String> rootFields = new ArrayList<>();
         stats.fieldNames().forEachRemaining(rootFields::add);
         assertThat(rootFields).containsExactlyInAnyOrder(
-                "userCount", "submittedExamCount", "usage");
+                "userCount", "submittedExamCount", "usage", "content");
         List<String> usageFields = new ArrayList<>();
         stats.get("usage").fieldNames().forEachRemaining(usageFields::add);
         assertThat(usageFields).containsExactlyInAnyOrder(
@@ -35,6 +35,9 @@ class RoleBoundaryTest extends TestBase {
                 "studySessions", "examsStarted", "answersSubmitted");
         assertThat(stats.get("userCount").isNull()).isTrue();
         assertThat(stats.get("usage").get("activeUsers").isNull()).isTrue();
+        List<String> contentFields = new ArrayList<>();
+        stats.get("content").fieldNames().forEachRemaining(contentFields::add);
+        assertThat(contentFields).containsExactlyInAnyOrder("total", "cikmis", "ogm", "tyt", "ayt");
         for (MockHttpSession session : new MockHttpSession[]{operator, student}) {
             send(session, get("/api/admin/stats"), null).andExpect(status().isForbidden());
         }

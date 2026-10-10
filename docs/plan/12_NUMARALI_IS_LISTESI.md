@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **11.04 — Yöneticiye içerik kapsamı toplamları**. 08.04, 09.01–09.04, 10.02–10.03 ve 11.01–11.03 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **11.05 — Temel hizmet hatalarının anonim dönemlik ölçümü**. 08.04, 09.01–09.04, 10.02–10.03 ve 11.01–11.04 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -132,8 +132,8 @@
 | 11.01 | BITTI | Kayıtlı/aktif kullanıcı ve dönemlik kullanım toplulaştırması | [43_11_01_TOPLU_KULLANIM_HESABI.md](43_11_01_TOPLU_KULLANIM_HESABI.md) | — (tamamlandı) |
 | 11.02 | BITTI | Yalnız toplu yönetici paneli; küçük grup gizleme | [44_11_02_YONETICI_GIZLILIK_PANOSU.md](44_11_02_YONETICI_GIZLILIK_PANOSU.md) | — (tamamlandı) |
 | 11.03 | BITTI | ADMIN/OPERATOR/USER çapraz erişim negatif testleri | [45_11_03_ROL_SINIRI.md](45_11_03_ROL_SINIRI.md) | — (tamamlandı) |
-| **11.04** | **SIRADAKI** | **Etkin ve koleksiyona atanmış soru kapsamının yalnız toplu yönetici sayıları** | 11.03 sonrası | GPT-6.1 Sol · Medium |
-| 11.05 | YAPILACAK | Temel hizmet hatalarının anonim dönemlik ölçümü ve yönetici görünümü | 11.04 sonrası | GPT-6.1 Sol · Medium |
+| 11.04 | BITTI | Etkin ve koleksiyona atanmış soru kapsamının yalnız toplu yönetici sayıları | [46_11_04_ICERIK_KAPSAMI.md](46_11_04_ICERIK_KAPSAMI.md) | — (tamamlandı) |
+| **11.05** | **SIRADAKI** | **Temel hizmet hatalarının anonim dönemlik ölçümü ve yönetici görünümü** | 11.04 sonrası | GPT-6.1 Sol · Medium |
 
 ## 12 — Soru PDF iş hattı
 

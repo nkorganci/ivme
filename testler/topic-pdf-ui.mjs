@@ -47,7 +47,8 @@ const server = createServer((req, res) => {
   if (pathname === '/api/admin/stats') return json({ userCount: 5, submittedExamCount: null,
     usage: { period: 'DAY', zone: 'Europe/Istanbul', startsAt: '2026-10-08T21:00:00Z',
       endsAt: '2026-10-09T21:00:00Z', activeUsers: 5, studySessions: null,
-      examsStarted: null, answersSubmitted: 10 } });
+      examsStarted: null, answersSubmitted: 10 },
+    content: { total: 3, cikmis: 2, ogm: 1, tyt: 2, ayt: 1 } });
   if (pathname === '/api/progress/first-attempts') return json({
     period: 'DAY', zone: 'America/Chicago', startsAt: '2026-10-09T05:00:00Z',
     endsAt: '2026-10-10T05:00:00Z', correct: 1, wrong: 0, blank: 0,
@@ -235,6 +236,8 @@ try {
       }
       if (page === '/yonetim') {
         await waitFor('document.body.innerText.includes("Etkin öğrenci")');
+        await waitFor('document.body.innerText.includes("İçerik kapsamı")');
+        await waitFor('document.body.innerText.includes("Etkin soru kayıtlarıdır")');
         await waitFor('document.body.innerText.includes("5–9") && document.body.innerText.includes("5’ten az")');
         if (await evaluate('document.body.innerText.includes("test@example.com")')) {
           throw new Error(`${width}px yönetici ekranında bireysel veri görüldü`);

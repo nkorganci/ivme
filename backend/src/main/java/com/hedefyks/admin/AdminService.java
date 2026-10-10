@@ -40,14 +40,16 @@ public class AdminService {
     private final ExamRepository exams;
     private final FeedbackRepository feedback;
     private final AdminUsageService usage;
+    private final AdminContentService content;
 
     public AdminService(UserRepository users, QuestionRepository questions, ExamRepository exams,
-                        FeedbackRepository feedback, AdminUsageService usage) {
+                        FeedbackRepository feedback, AdminUsageService usage, AdminContentService content) {
         this.users = users;
         this.questions = questions;
         this.exams = exams;
         this.feedback = feedback;
         this.usage = usage;
+        this.content = content;
     }
 
     @Transactional(readOnly = true)
@@ -61,7 +63,7 @@ public class AdminService {
                         periodUsage.endsAt(), bucket(active),
                         active < 5 ? null : bucket(periodUsage.studySessions()),
                         active < 5 ? null : bucket(periodUsage.examsStarted()),
-                        active < 5 ? null : bucket(periodUsage.answersSubmitted())));
+                        active < 5 ? null : bucket(periodUsage.answersSubmitted())), content.coverage());
     }
 
     /** 0–4 arası tüm sayılar gizlenir; diğerleri beşlik aralığın alt sınırıdır. */

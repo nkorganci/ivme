@@ -12,6 +12,10 @@ const USAGE_CARDS = [
   ['activeUsers', 'Etkin öğrenci'], ['studySessions', 'Başlatılan pratik'],
   ['examsStarted', 'Başlatılan sınav'], ['answersSubmitted', 'Gönderilen cevap'],
 ];
+const CONTENT_CARDS = [
+  ['total', 'Etkin toplam'], ['cikmis', 'Çıkmış sorular'], ['ogm', 'OGM soru bankası'],
+  ['tyt', 'TYT'], ['ayt', 'AYT'],
+];
 const PERIODS = [['DAY', 'Bugün'], ['WEEK', 'Bu hafta'], ['MONTH', 'Bu ay']];
 const bucketLabel = (value) => value == null ? '5’ten az'
   : `${formatNumber(value)}–${formatNumber(value + 4)}`;
@@ -43,6 +47,14 @@ export default function AdminStats() {
     <div className="stats">
       {USAGE_CARDS.map(([key, label]) => <div key={key} className="card stat">
         <p className="stat-value">{bucketLabel(data.usage[key])}</p>
+        <p className="stat-label">{label}</p>
+      </div>)}
+    </div>
+    <h2>İçerik kapsamı</h2>
+    <p className="muted small">Etkin soru kayıtlarıdır; görsel dosyaların açılabilirliği bu sayıya dahil değildir.</p>
+    <div className="stats">
+      {CONTENT_CARDS.map(([key, label]) => <div key={key} className="card stat">
+        <p className="stat-value">{formatNumber(data.content[key])}</p>
         <p className="stat-label">{label}</p>
       </div>)}
     </div></>}
