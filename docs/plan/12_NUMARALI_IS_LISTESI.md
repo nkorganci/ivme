@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **11.05 — Temel hizmet hatalarının anonim dönemlik ölçümü**. 08.04, 09.01–09.04, 10.02–10.03 ve 11.01–11.04 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **13.01 — Kaynaklı iç not kayıt biçimi**. 08.04, 09.01–09.04, 10.02–10.03 ve 11.01–11.05 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -133,7 +133,7 @@
 | 11.02 | BITTI | Yalnız toplu yönetici paneli; küçük grup gizleme | [44_11_02_YONETICI_GIZLILIK_PANOSU.md](44_11_02_YONETICI_GIZLILIK_PANOSU.md) | — (tamamlandı) |
 | 11.03 | BITTI | ADMIN/OPERATOR/USER çapraz erişim negatif testleri | [45_11_03_ROL_SINIRI.md](45_11_03_ROL_SINIRI.md) | — (tamamlandı) |
 | 11.04 | BITTI | Etkin ve koleksiyona atanmış soru kapsamının yalnız toplu yönetici sayıları | [46_11_04_ICERIK_KAPSAMI.md](46_11_04_ICERIK_KAPSAMI.md) | — (tamamlandı) |
-| **11.05** | **SIRADAKI** | **Temel hizmet hatalarının anonim dönemlik ölçümü ve yönetici görünümü** | 11.04 sonrası | GPT-6.1 Sol · Medium |
+| 11.05 | BITTI | Temel hizmet hatalarının anonim dönemlik ölçümü ve yönetici görünümü | [47_11_05_ANONIM_HATA_OLCUMU.md](47_11_05_ANONIM_HATA_OLCUMU.md) | — (tamamlandı) |
 
 ## 12 — Soru PDF iş hattı
 
@@ -151,7 +151,7 @@
 | No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
 |---|---|---|---|---|
 |---|---|---|---|
-| 13.01 | YAPILACAK | Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6 Luna · Medium |
+| **13.01** | **SIRADAKI** | **Gelecekteki AI desteği için kaynak PDF sayfası, başlık, konu ve sürümle iç not kayıt biçimi; öğrenci görünümü PDF** | [00_YOL_HARITASI.md](00_YOL_HARITASI.md) | GPT-6 Luna · Medium |
 | 13.02 | YAPILACAK | AI arka planı için PDF metni/OCR, formül ve tablolarla küçük pilot; öğrenci görünümü PDF | 13.01 sonrası | GPT-6.1 Sol · Medium |
 | 13.03 | YAPILACAK | İçerik aramasında kaynaklı 1–3 pasaj ve doğru PDF sayfasına dönüş denetimi; öğrenciye ayrı metin notu açma kararı yok | 13.02 sonrası | GPT-6.1 Sol · Medium |
 | 13.04 | BITTI | OGM konu PDF'lerinin tür, ders, sınav, göreli yol ve checksum artımlı kataloğu | [27_13_04_OGM_KONU_PDF_KATALOGU.md](27_13_04_OGM_KONU_PDF_KATALOGU.md) | — (tamamlandı) |

@@ -19,6 +19,7 @@ import com.hedefyks.question.QuestionSpecs;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.UserRepository;
 import com.hedefyks.progress.ProgressService;
+import com.hedefyks.common.ServiceErrorMetrics;
 import jakarta.persistence.criteria.Predicate;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -41,15 +42,18 @@ public class AdminService {
     private final FeedbackRepository feedback;
     private final AdminUsageService usage;
     private final AdminContentService content;
+    private final ServiceErrorMetrics errors;
 
     public AdminService(UserRepository users, QuestionRepository questions, ExamRepository exams,
-                        FeedbackRepository feedback, AdminUsageService usage, AdminContentService content) {
+                        FeedbackRepository feedback, AdminUsageService usage, AdminContentService content,
+                        ServiceErrorMetrics errors) {
         this.users = users;
         this.questions = questions;
         this.exams = exams;
         this.feedback = feedback;
         this.usage = usage;
         this.content = content;
+        this.errors = errors;
     }
 
     @Transactional(readOnly = true)
@@ -63,7 +67,9 @@ public class AdminService {
                         periodUsage.endsAt(), bucket(active),
                         active < 5 ? null : bucket(periodUsage.studySessions()),
                         active < 5 ? null : bucket(periodUsage.examsStarted()),
-                        active < 5 ? null : bucket(periodUsage.answersSubmitted())), content.coverage());
+                        active < 5 ? null : bucket(periodUsage.answersSubmitted()),
+                        active < 5 ? null : bucket(errors.count(periodUsage.startsAt(), periodUsage.endsAt()))),
+                content.coverage());
     }
 
     /** 0–4 arası tüm sayılar gizlenir; diğerleri beşlik aralığın alt sınırıdır. */

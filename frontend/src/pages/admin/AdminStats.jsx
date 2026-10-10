@@ -11,6 +11,7 @@ const CARDS = [
 const USAGE_CARDS = [
   ['activeUsers', 'Etkin öğrenci'], ['studySessions', 'Başlatılan pratik'],
   ['examsStarted', 'Başlatılan sınav'], ['answersSubmitted', 'Gönderilen cevap'],
+  ['serviceErrors', 'Beklenmeyen API hatası'],
 ];
 const CONTENT_CARDS = [
   ['total', 'Etkin toplam'], ['cikmis', 'Çıkmış sorular'], ['ogm', 'OGM soru bankası'],
@@ -42,6 +43,7 @@ export default function AdminStats() {
       </div>)}
     </div>
     <h2>{PERIODS.find(([value]) => value === period)?.[1]} kullanım</h2>
+    <p className="muted small">Hata sayısı yalnız yakalanan beklenmeyen API hatalarını kapsar; uygulama başlatma ve bağlantı hataları dahil değildir.</p>
     <p className="muted small">{range.format(new Date(data.usage.startsAt))} – {' '}
       {range.format(new Date(new Date(data.usage.endsAt).getTime() - 1))} · {data.usage.zone}</p>
     <div className="stats">

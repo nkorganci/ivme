@@ -32,7 +32,7 @@ class RoleBoundaryTest extends TestBase {
         stats.get("usage").fieldNames().forEachRemaining(usageFields::add);
         assertThat(usageFields).containsExactlyInAnyOrder(
                 "period", "zone", "startsAt", "endsAt", "activeUsers",
-                "studySessions", "examsStarted", "answersSubmitted");
+                "studySessions", "examsStarted", "answersSubmitted", "serviceErrors");
         assertThat(stats.get("userCount").isNull()).isTrue();
         assertThat(stats.get("usage").get("activeUsers").isNull()).isTrue();
         List<String> contentFields = new ArrayList<>();

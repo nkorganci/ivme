@@ -65,6 +65,7 @@ class AdminUsageTest extends TestBase {
                     VALUES (?,?,?,'ANSWER','A','A',true)
                     """, student.getId(), q.getId(), UUID.randomUUID());
         }
+        jdbc.update("INSERT INTO service_error_events(category) SELECT 'UNEXPECTED_API' FROM generate_series(1, 5)");
         var admin = login("yonetici", "Sifre1234");
         send(admin, get("/api/admin/stats"), null)
                 .andExpect(status().isOk())
@@ -72,6 +73,7 @@ class AdminUsageTest extends TestBase {
                 .andExpect(jsonPath("$.submittedExamCount").isEmpty())
                 .andExpect(jsonPath("$.usage.activeUsers").value(5))
                 .andExpect(jsonPath("$.usage.answersSubmitted").value(5))
+                .andExpect(jsonPath("$.usage.serviceErrors").value(5))
                 .andExpect(jsonPath("$.usage.studySessions").isEmpty());
         send(login("ayse", "Sifre1234"), get("/api/admin/stats"), null)
                 .andExpect(status().isForbidden());

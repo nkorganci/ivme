@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-/** Ham oturum/etkinlik olayları en çok 90 gün tutulur. */
+/** Ham oturum/etkinlik ve anonim hata olayları en çok 90 gün tutulur. */
 @Component
 public class ActivityRetention {
 
@@ -20,5 +20,6 @@ public class ActivityRetention {
     @Scheduled(cron = "0 0 3 * * *", zone = "UTC")
     public void removeExpiredEvents() {
         jdbc.update("DELETE FROM activity_events WHERE created_at < now() - interval '90 days'");
+        jdbc.update("DELETE FROM service_error_events WHERE occurred_at < now() - interval '90 days'");
     }
 }

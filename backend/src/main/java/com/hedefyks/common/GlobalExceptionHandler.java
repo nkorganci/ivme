@@ -27,6 +27,9 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 public class GlobalExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private final ServiceErrorMetrics metrics;
+
+    public GlobalExceptionHandler(ServiceErrorMetrics metrics) { this.metrics = metrics; }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record ErrorBody(String hata, Map<String, String> alanlar) {}
@@ -86,6 +89,7 @@ public class GlobalExceptionHandler {
             throw e;
         }
         log.error("Beklenmeyen hata", e);
+        metrics.recordUnexpected();
         return body(HttpStatus.INTERNAL_SERVER_ERROR, "Beklenmeyen bir hata oluştu. Lütfen tekrar dene.", null);
     }
 }

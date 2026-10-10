@@ -17,7 +17,8 @@ public final class AdminDtos {
     private AdminDtos() {}
 
     public record Usage(String period, String zone, Instant startsAt, Instant endsAt,
-                        Long activeUsers, Long studySessions, Long examsStarted, Long answersSubmitted) {}
+                        Long activeUsers, Long studySessions, Long examsStarted, Long answersSubmitted,
+                        Long serviceErrors) {}
     public record Stats(Long userCount, Long submittedExamCount, Usage usage,
                         AdminContentService.Coverage content) {}
 

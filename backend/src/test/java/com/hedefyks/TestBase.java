@@ -42,7 +42,7 @@ public abstract class TestBase {
         if (db == null || !db.endsWith("_test")) {
             throw new IllegalStateException("Testler yalnız *_test veritabanında çalışır, bağlı olunan: " + db);
         }
-        jdbc.execute("TRUNCATE feedback, exam_questions, exams, questions, users RESTART IDENTITY CASCADE");
+        jdbc.execute("TRUNCATE service_error_events, feedback, exam_questions, exams, questions, users RESTART IDENTITY CASCADE");
     }
 
     protected Question question(String code, String subject, String correct) {
