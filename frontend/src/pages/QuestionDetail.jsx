@@ -65,6 +65,10 @@ function QuestionView({ q, filters, session, reload }) {
   const [info, setInfo] = useState('');
   const [moving, setMoving] = useState(false);
   const [solution, setSolution] = useState(false);
+  const [hint, setHint] = useState(null);
+  const [explanation, setExplanation] = useState(null);
+  const [hintBusy, setHintBusy] = useState(false);
+  const [hintError, setHintError] = useState('');
   const solutionRef = useRef(null);
   const practice = usePractice(q.id, sessionId);
   const state = practice.state;
@@ -90,6 +94,8 @@ function QuestionView({ q, filters, session, reload }) {
     setSelected(null);
     setReady(true);
     setSolution(false);
+    setHint(null);
+    setExplanation(null);
     practice.selectionChanged();
   };
 
@@ -101,6 +107,19 @@ function QuestionView({ q, filters, session, reload }) {
   const skip = async () => {
     const next = await practice.submit('SKIP');
     if (next) { setSelected(null); setReady(false); }
+  };
+
+  const loadHelp = async (kind) => {
+    if (hintBusy) return;
+    setHintBusy(true);
+    setHintError('');
+    try {
+      const result = await api.get(`/api/questions/${q.id}/${kind}`);
+      if (kind === 'hint') setHint(result);
+      else setExplanation(result);
+      if (!result) setHintError('Bu soru için onaylı içerik henüz yok.');
+    } catch (e) { setHintError(e.message); }
+    finally { setHintBusy(false); }
   };
 
   const go = async (direction) => {
@@ -174,6 +193,22 @@ function QuestionView({ q, filters, session, reload }) {
           <section className="card image-card">
             <QuestionImage id={q.id} alt={`${q.code} kodlu soru`} />
           </section>
+          {q.hasApprovedHint && <section className="card hint-card" aria-label="Kaynaklı öğrenme desteği">
+            {!state?.correctAnswer && !hint && <button type="button" className="btn btn-secondary"
+              disabled={hintBusy} onClick={() => loadHelp('hint')}>
+              {hintBusy ? 'İpucu yükleniyor…' : 'İpucu iste'}
+            </button>}
+            {!state?.correctAnswer && hint && <p><strong>İpucu:</strong> {hint.text}</p>}
+            {state?.correctAnswer && !explanation && <button type="button" className="btn btn-secondary"
+              disabled={hintBusy} onClick={() => loadHelp('explanation')}>
+              {hintBusy ? 'Açıklama yükleniyor…' : 'Kısa açıklamayı göster'}
+            </button>}
+            {state?.correctAnswer && explanation && <>
+              <p><strong>Kısa açıklama:</strong> {explanation.text}</p>
+              <a href={explanation.sourcePdfUrl} target="_blank" rel="noopener noreferrer">Kaynak notun sayfasını aç</a>
+            </>}
+            {hintError && <p role="alert" className="text-danger">{hintError}</p>}
+          </section>}
           {solution && (
             <section className="card image-card solution-card" ref={solutionRef} aria-label="Çözüm">
               <div className="solution-head">

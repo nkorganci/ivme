@@ -9,6 +9,7 @@ import com.hedefyks.exam.ExamDtos.HistoryItem;
 import com.hedefyks.exam.ExamDtos.SubmitRequest;
 import com.hedefyks.exam.ExamDtos.Summary;
 import com.hedefyks.user.AppUserDetails;
+import com.hedefyks.question.HintService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExamController {
 
     private final ExamService service;
+    private final HintService hints;
 
-    public ExamController(ExamService service) {
+    public ExamController(ExamService service, HintService hints) {
         this.service = service;
+        this.hints = hints;
     }
 
     @PostMapping
@@ -71,5 +74,12 @@ public class ExamController {
     @GetMapping("/{id}/result")
     public ExamResult result(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
         return service.result(me.id(), id);
+    }
+
+    @GetMapping("/{id}/questions/{questionId}/explanation")
+    public ResponseEntity<HintService.Explanation> explanation(@AuthenticationPrincipal AppUserDetails me,
+            @PathVariable Long id, @PathVariable Long questionId) {
+        return hints.examExplanation(id, questionId, me.id()).map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 }

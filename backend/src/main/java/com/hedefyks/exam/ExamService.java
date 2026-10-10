@@ -18,6 +18,7 @@ import com.hedefyks.question.QuestionFilter;
 import com.hedefyks.question.QuestionAvailabilityService;
 import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.question.QuestionSelectionMode;
+import com.hedefyks.question.HintService;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
@@ -39,13 +40,15 @@ public class ExamService {
     private final ExamQuestionRepository examQuestions;
     private final QuestionRepository questions;
     private final QuestionAvailabilityService availability;
+    private final HintService hints;
 
     public ExamService(ExamRepository exams, ExamQuestionRepository examQuestions, QuestionRepository questions,
-                       QuestionAvailabilityService availability) {
+                       QuestionAvailabilityService availability, HintService hints) {
         this.exams = exams;
         this.examQuestions = examQuestions;
         this.questions = questions;
         this.availability = availability;
+        this.hints = hints;
     }
 
     // ---------------------------------------------------------------- oluşturma / devam
@@ -258,7 +261,8 @@ public class ExamService {
         for (ExamQuestion r : rows) {
             String status = r.getSelectedAnswer() == null ? "BLANK" : Boolean.TRUE.equals(r.getCorrect()) ? "CORRECT" : "WRONG";
             qs.add(new ResultQuestion(r.getPosition(), r.getQuestion().getId(), r.getQuestionCode(), r.getSubject(),
-                    r.getTopic(), r.getSelectedAnswer(), r.getCorrectAnswer(), status));
+                    r.getTopic(), r.getSelectedAnswer(), r.getCorrectAnswer(), status,
+                    hints.available(r.getQuestion().getId())));
             int[] s = subjects.computeIfAbsent(r.getSubject(), k -> new int[4]);
             s[0]++;
             s[switch (status) { case "CORRECT" -> 1; case "WRONG" -> 2; default -> 3; }]++;

@@ -1,8 +1,8 @@
 # İvme — numaralı iş listesi
 
-**Güncelleme:** 2026-10-09
+**Güncelleme:** 2026-10-10
 
-**Sıradaki tek bağımsız iş:** **15.02 — Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI**. 15.01 kaynaklı ipucu sözleşmesi ve yerel yayın kapısı tamamlandı; öğrenciye açılacak onaylı içerik henüz yok. 14.03 doğruluk ve ölçek kararı Türkçe öğretmeninin 200 soruluk karar dosyasını bekliyor. CSV'de 200 AI notu, 63 öncelikli insan kontrolü ve 0/200 gerçek insan onayı var. AI önerileri altın etiket değildir. Kullanıcı fizik sorularını uzman olarak etiketleyebilir; Türkçe kümesini Türkçe öğretmeni inceleyecek. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
+**Sıradaki tek bağımsız iş:** **15.04 — Onaylı kaynaklı ipucunu güvenli içe aktarma**. 15.02 pratikte istekli ipucu ve sınavda teslim sonrası açıklama kodu/test UI'si tamamlandı; gerçek onaylı ipucu yoktur. Kullanıcının 10 Ekim kararıyla 200 Ollama tipi geliştirme sırasında **AI geçici kabul** olarak kullanılabilir; 200'ü de `DEVELOPMENT_ONLY` ve `human_review_required=true` olarak ayrı çıktıya alındı. Ana CSV'de 0/200 insan onayı sürer; AI öğretmen onayı diye kaydedilmez. 14.01 ve 14.03 Türkçe öğretmeninin kararını, 15.03 gerçek onaylı ipucu/uzman denetimini bekler. 06.05 gerçek cihazı, 04.09 ayrı yedek hedefini, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekler.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -16,14 +16,16 @@
 
 **Şimdiki durum:** Türkçe CSV'de 200 AI ön incelemesi vardır, **0/200 insan onayı** vardır. AI notlarıyla pilot inceleme yapılabilir; doğruluk, altın etiket ve geniş ölçek kararı için öğretmen kararları gerekir. Kullanıcının Türkçe sorularını bizzat etiketlemesi beklenmez.
 
+**10 Ekim geçici kabul:** 200 Ollama etiketi geliştirme/test akışlarında öğretmen etiketinin geçici yerine kullanılabilir. [AI geçici çıktı](56_15_02_IPUCU_ACIKLAMA_AKISI.md) `veri/ai-gecici-etiket-200.csv` dosyasına ayrı üretilir; gerçek `reviewer_id`, `review_status=approved`, altın doğruluk ve öğrenciye yayın onayı **verilmez**. Türkçe öğretmeni geldiğinde 63 öncelikli soru dahil 200'ün tamamı yeniden kontrol edilir. Ders notu/editör ipucu onayı da bu karardan bağımsızdır.
+
 ## Kullanım ve yeni oturum
 
 - `BITTI`: Kod/belge dilimi tamamlandı ve kayıttaki kapsam doğrulandı. Üst adım, tüm alt maddeleri `BITTI` olmadan bitmiş sayılmaz. `SIRADAKI`: bir sonraki bağımsız iş. `YAPILACAK`: açık iş. `KULLANICI`: ileride kullanıcının kendi ortamında yapacağı işlem.
 - Her `NN.NN` işi tek oturumda tamamlanabilecek küçük bir çıktıdır. Aynı alanda kısa işler aynı oturumda sürdürülebilir; **bağlam büyüdüğünde veya bağımsız işe geçerken yeni oturum açmak uygundur, zorunlu değildir**. Yeni oturum önce yalnız bu listeyi, seçilen görev dosyasını, ilgili API/kodu ve `git status` sonucunu okusun.
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
-- Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 15.02 ile devam et. Model: GPT-6 Luna · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/00_YOL_HARITASI.md dosyalarını oku; pratikte istekli ipucu ve sınavda teslim sonrası açıklama UI'yi onaysız içerik kapalı kalarak uygula, test DB ve UI'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- **Önerilen model / çaba** sütunu varsayılandır, zorunluluk değildir. Yerel Ollama modeli sınırlı ve doğrulanabilir toplu taslak işlerinde kullanılabilir; kod, güvenlik ve yayın kararlarında test/inceleme kapısı korunur. `.codex/config.toml` yeni oturum için varsayılan model önerisini taşır; açık oturumun modelini değiştirmez. Yerel modelle çalışan ayrı bir Codex CLI oturumu (`--oss`) bu sohbetin modelini veya token kullanımını geriye dönük değiştirmez.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 15.04 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/56_15_02_IPUCU_ACIKLAMA_AKISI.md dosyalarını oku; onaylı kaynaklı ipucunu 15.01 kapısından geçirip V18 tablosuna güvenli aktar, test DB'de doğrula, insan/AI kökenini koru, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -175,6 +177,7 @@
 | 14.01 | YAPILACAK | 200–500 insan etiketli örnek; 200 geçici kabul, 0 gerçek insan onayı | [51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md) | GPT-6 Luna · Medium |
 | 14.02 | BITTI | Sürümlü gerçek yerel modelde 7 görsel taslak, belirsizlik/çatışma ve masaüstü/mobil inceleme ekranı pilotu | [52_14_02_AI_TASLAK_VE_INCELEME.md](52_14_02_AI_TASLAK_VE_INCELEME.md) | — (tamamlandı) |
 | **14.03** | **DEVAM** | **200 soruluk iki AI geçişi, 15 AI QA düzeltmesi, 63 öncelikli kontrol; insan altın etiketi ve doğruluk kararı bekleniyor** | [53_14_03_DOGRULUK_MALIYET_OLCEK.md](53_14_03_DOGRULUK_MALIYET_OLCEK.md) | GPT-6.1 Sol · Medium |
+| 14.04 | BITTI | 200 AI etiketini öğretmen kaydıyla karıştırmadan geliştirme için ayrı geçici çıktıya al | [56_15_02_IPUCU_ACIKLAMA_AKISI.md](56_15_02_IPUCU_ACIKLAMA_AKISI.md) | — (tamamlandı) |
 
 ## 15 — Kaynaklı ipucu
 
@@ -182,8 +185,9 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 15.01 | BITTI | Onaylı soru/not kaynağıyla kısa ipucu veri modeli ve yerel yayın kapısı | [55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md](55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md) | — (tamamlandı) |
-| **15.02** | **SIRADAKI** | Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI; onaysız içerik kapalı kalır | 15.01 sonrası | GPT-6 Luna · Medium |
-| 15.03 | YAPILACAK | Uzman incelemesi ve yararlı/hatalı geri bildirimi | 15.02 sonrası | GPT-6 Luna · Low |
+| 15.02 | BITTI | Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI; onaysız içerik kapalı | [56_15_02_IPUCU_ACIKLAMA_AKISI.md](56_15_02_IPUCU_ACIKLAMA_AKISI.md) | — (tamamlandı) |
+| 15.03 | YAPILACAK | Gerçek kaynaklı ipucunda uzman incelemesi ve yararlı/hatalı geri bildirimi; onaylı içerik bekliyor | 15.02 ve 15.04 sonrası | GPT-6 Luna · Low |
+| **15.04** | **SIRADAKI** | 15.01 yayın kapısından geçen onaylı ipucunu V18'e doğrulanmış kökenle aktarma; gerçek içerik gelene kadar sentetik test | 15.01 ve 15.02 sonrası | GPT-6.1 Sol · Medium |
 
 ## 16 — Pilot ve büyüme
 

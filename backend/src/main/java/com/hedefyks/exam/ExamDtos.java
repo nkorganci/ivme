@@ -45,7 +45,8 @@ public final class ExamDtos {
     public record SubjectStat(String subject, int total, int correct, int wrong, int blank) {}
 
     public record ResultQuestion(int position, Long questionId, String code, String subject, String topic,
-                                 String selectedAnswer, String correctAnswer, String status) {}
+                                 String selectedAnswer, String correctAnswer, String status,
+                                 boolean hasExplanation) {}
 
     public record ExamResult(Long id, String title, int questionCount, int correctCount, int wrongCount,
                              int blankCount, BigDecimal percent, BigDecimal net, int durationSeconds,

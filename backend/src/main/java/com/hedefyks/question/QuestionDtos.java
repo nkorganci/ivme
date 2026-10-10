@@ -24,6 +24,6 @@ public final class QuestionDtos {
                                  String topic, Integer year, String source, int choiceCount, boolean hasSolutionImage,
                                  Double avgRating, long ratingCount, Map<String, Long> difficultyVotes,
                                  Evaluation myEvaluation, List<QuestionTaxonomyService.Label> approvedLabels,
-                                 QuestionHelpfulnessService.Summary helpfulness) {}
+                                 QuestionHelpfulnessService.Summary helpfulness, boolean hasApprovedHint) {}
 
 }

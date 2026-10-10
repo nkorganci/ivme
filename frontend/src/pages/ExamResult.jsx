@@ -156,6 +156,7 @@ function ResultView({ r }) {
                     <Link to={`/soru/${encodeURIComponent(q.code)}`} className="btn btn-secondary">
                       Soru sayfasını aç
                     </Link>
+                    {q.hasExplanation && <ExamExplanation examId={r.id} questionId={q.questionId} />}
                   </div>
                 )}
               </li>
@@ -174,4 +175,29 @@ function ResultView({ r }) {
       </div>
     </>
   );
+}
+
+function ExamExplanation({ examId, questionId }) {
+  const [content, setContent] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const load = async () => {
+    if (busy) return;
+    setBusy(true);
+    setError('');
+    try {
+      const result = await api.get(`/api/exams/${examId}/questions/${questionId}/explanation`);
+      if (result) setContent(result);
+      else setError('Bu soru için onaylı açıklama artık mevcut değil.');
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  };
+  return <div className="hint-card">
+    {!content && <button type="button" className="btn btn-secondary" disabled={busy} onClick={load}>
+      {busy ? 'Açıklama yükleniyor…' : 'Kısa açıklamayı göster'}
+    </button>}
+    {content && <><p><strong>Kısa açıklama:</strong> {content.text}</p>
+      <a href={content.sourcePdfUrl} target="_blank" rel="noopener noreferrer">Kaynak notun sayfasını aç</a></>}
+    {error && <p role="alert" className="text-danger">{error}</p>}
+  </div>;
 }

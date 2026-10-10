@@ -41,10 +41,11 @@ public class QuestionController {
     private final BoardService boards;
     private final QuestionAvailabilityService availability;
     private final QuestionHelpfulnessService helpfulness;
+    private final HintService hints;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
                               AttemptService attempts, BoardService boards, QuestionAvailabilityService availability,
-                              QuestionHelpfulnessService helpfulness) {
+                              QuestionHelpfulnessService helpfulness, HintService hints) {
         this.service = service;
         this.questions = questions;
         this.images = images;
@@ -53,6 +54,7 @@ public class QuestionController {
         this.boards = boards;
         this.availability = availability;
         this.helpfulness = helpfulness;
+        this.hints = hints;
     }
 
     @GetMapping("/filters")
@@ -103,6 +105,20 @@ public class QuestionController {
     public PracticeState practice(@PathVariable Long id, @RequestParam(required = false) Long sessionId,
                                   @AuthenticationPrincipal AppUserDetails me) {
         return attempts.state(id, me.id(), sessionId);
+    }
+
+    @GetMapping("/{id}/hint")
+    public ResponseEntity<HintService.PracticeHint> hint(@PathVariable Long id,
+                                                         @AuthenticationPrincipal AppUserDetails me) {
+        return hints.practiceHint(id, me.id()).map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
+    }
+
+    @GetMapping("/{id}/explanation")
+    public ResponseEntity<HintService.Explanation> explanation(@PathVariable Long id,
+                                                               @AuthenticationPrincipal AppUserDetails me) {
+        return hints.practiceExplanation(id, me.id()).map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
     public record HelpfulnessVote(Boolean helpful) {}

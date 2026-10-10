@@ -109,6 +109,8 @@ Yedi kaynak konudan birer görsel AI taslağı çıkarıldı; birinde `emin değ
 
 ### Adım 15 — Kaynaklı ipucu ve öğrenme desteği
 
+**10 Ekim uygulama notu:** 200 Ollama soru tipi etiketi yalnız geliştirme için geçici kabul edildi; öğretmen doğrulaması ve kaynaklı not/editör onayı bekler. 15.02 istekli ipucu ve teslim sonrası açıklama kodu, içerik olmadan test verisiyle tamamlandı. Gerçek öğrenci ipucu yayını açık iş olarak [numaralı listede](12_NUMARALI_IS_LISTESI.md) izlenir.
+
 **Özet:** Öğrenci çözdükten sonra kısa püf noktası, yanlış nedeni ve ilgili notu görür. **Yapılacak:** Onaylı soru etiketi + onaylı ders notu parçası + çözümden kısa açıklama üret; her öneriye kaynak sayfası ve içerik sürümü bağla; yanlış cevap/hayal ürünü bilgi tespiti için editör kontrolü; maliyet için yalnız seçili sorularda önceden üretme ve saklama; özel öğrenci verisini harici modele göndermeden önce açık ürün kararı. Öğrenci kendi başına çözmeden yanıtı sızdıran ipucu gösterilmez; pratikte isteğe bağlı, sınavda teslim sonrası. **UI kontrolü:** Kısa, anlaşılır, kaynağa dönen ipucu; “yararsız/hatalı” bildirimi. **Bitti sayılır:** Pilot konu setinde öğretmen/uzman incelemesi, fayda geri bildirimi ve hata oranı raporu. **Durum:** YAPILACAK.
 
 ### Adım 16 — Pilot, bakım ve büyüme kararı

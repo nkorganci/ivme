@@ -30,13 +30,16 @@ public class QuestionService {
     private final FeedbackRepository feedback;
     private final QuestionTaxonomyService taxonomy;
     private final QuestionHelpfulnessService helpfulness;
+    private final HintService hints;
 
     public QuestionService(QuestionRepository questions, FeedbackRepository feedback,
-                           QuestionTaxonomyService taxonomy, QuestionHelpfulnessService helpfulness) {
+                           QuestionTaxonomyService taxonomy, QuestionHelpfulnessService helpfulness,
+                           HintService hints) {
         this.questions = questions;
         this.feedback = feedback;
         this.taxonomy = taxonomy;
         this.helpfulness = helpfulness;
+        this.hints = hints;
     }
 
     public List<FilterRow> filters(QuestionBank bank) {
@@ -85,6 +88,6 @@ public class QuestionService {
                 .map(f -> new Evaluation(f.getDifficultyVote(), f.getRating())).orElse(null);
         return new QuestionDetail(q.getId(), q.getCode(), q.getBank(), q.getExamType(), q.getSubject(), q.getTopic(),
                 q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine,
-                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId));
+                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId), hints.available(q.getId()));
     }
 }

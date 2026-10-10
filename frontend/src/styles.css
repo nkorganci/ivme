@@ -209,6 +209,10 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .qmain { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
 .image-card { padding: 8px; margin: 0; text-align: center; min-width: 0; }
 .solution-card { scroll-margin-top: calc(var(--topbar-h) + 8px); }
+.hint-card { padding: 16px; margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface, #fff); }
+.hint-card p { margin: 0 0 10px; }
+.hint-card .btn { margin-bottom: 4px; }
+.hint-card [role="alert"] { color: #a51d2d; margin-top: 8px; }
 .solution-head { display: flex; align-items: center; justify-content: space-between; padding: 0 4px 4px; font-size: var(--fs-sm); }
 .solution-head .icon-btn { width: 44px; height: 44px; }
 .image-wrap { position: relative; }
