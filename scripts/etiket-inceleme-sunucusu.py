@@ -1,5 +1,6 @@
 """Local-only 14.02 review screen for the 200-question CSV; no student API writes."""
 
+import argparse
 import csv
 import importlib.util
 import json
@@ -17,6 +18,7 @@ OUTPUT, SOURCE_ROOT, TAXONOMY, FIELDS, sha256 = (
     QUEUE.OUTPUT, QUEUE.SOURCE_ROOT, QUEUE.TAXONOMY, QUEUE.FIELDS, QUEUE.sha256
 )
 AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-pilot-7.json"
+DRAFT_FILE = AI_DRAFTS
 
 
 LOCK = threading.Lock()
@@ -52,6 +54,7 @@ button.primary{background:#674291;color:white}button:focus-visible,input:focus-v
 let rows=[],drafts={},index=0;
 const $=id=>document.getElementById(id);
 async function load(){const [rowResponse,draftResponse]=await Promise.all([fetch('/api/rows'),fetch('/api/drafts')]);
+  if(!rowResponse.ok||!draftResponse.ok)throw new Error('Kuyruk veya AI taslağı doğrulanamadı');
   rows=await rowResponse.json();drafts=await draftResponse.json();
   $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${i+1}. ${r.question_code}</option>`).join('');show();}
 function show(){const r=rows[index];if(!r)return;
@@ -103,14 +106,36 @@ class Handler(BaseHTTPRequestHandler):
         with OUTPUT.open(encoding="utf-8", newline="") as stream:
             return list(csv.DictReader(stream))
 
+    def drafts(self):
+        data = json.loads(DRAFT_FILE.read_text(encoding="utf-8"))
+        if data["schema_version"] != 1 or data["run"]["status"] != "draft":
+            raise ValueError("AI taslak dosyası sürümü veya durumu geçersiz")
+        if data["run"]["taxonomy_version"] != "tyt-turkce-v1":
+            raise ValueError("AI taslak taksonomisi uyuşmuyor")
+        questions = {row["question_code"]: row for row in self.rows()}
+        allowed = {node["code"] for node in json.loads(TAXONOMY.read_text(encoding="utf-8"))["nodes"]
+                   if node["kind"] == "QUESTION_TYPE"}
+        result = {}
+        for item in data["drafts"]:
+            code = item["question_code"]
+            if (code in result or code not in questions
+                    or item["image_sha256"] != questions[code]["image_sha256"]
+                    or (item["abstain"] and item["question_type_code"] is not None)
+                    or (not item["abstain"] and item["question_type_code"] not in allowed)):
+                raise ValueError(f"AI taslağı kaynakla uyuşmuyor: {code}")
+            result[code] = item
+        return result
+
     def do_GET(self):
         if self.path == "/":
             self.send_bytes(200, HTML.encode("utf-8"), "text/html; charset=utf-8")
         elif self.path == "/api/rows":
             self.send_json(200, self.rows())
         elif self.path == "/api/drafts":
-            data = json.loads(AI_DRAFTS.read_text(encoding="utf-8"))
-            self.send_json(200, {item["question_code"]: item for item in data["drafts"]})
+            try:
+                self.send_json(200, self.drafts())
+            except (KeyError, ValueError, OSError) as error:
+                self.send_json(409, {"error": str(error)})
         elif self.path.startswith("/image/"):
             code = unquote(self.path[len("/image/"):])
             row = next((row for row in self.rows() if row["question_code"] == code), None)
@@ -185,6 +210,11 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--draft-file", type=Path, default=AI_DRAFTS,
+                        help="Validated AI draft JSON; defaults to seven visual session drafts")
+    args = parser.parse_args()
+    DRAFT_FILE = args.draft_file.resolve()
     server = ThreadingHTTPServer(("127.0.0.1", 8765), Handler)
     print("İnceleme ekranı: http://127.0.0.1:8765")
     server.serve_forever()
