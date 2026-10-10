@@ -101,6 +101,8 @@
 
 **14.01–14.02 kullanıcı kararı (2026-10-09):** Kullanıcı 200 etiketi geçici kabul edip sonra tek tek manuel inceleyecek. 14.01 kuyruğu `provisional` durumuna alındı; gerçek insan onayı 0/200. Bu nedenle 14.01 açık kalır, fakat kullanıcının kararıyla [14.02 yerel inceleme ekranı](52_14_02_AI_TASLAK_VE_INCELEME.md) çalışması öne alınır. AI taslak doğruluğu için altın veri gereksinimi devam eder; geçici etiketler öğrenciye yayınlanmaz.
 
+Yedi kaynak konudan birer görsel AI taslağı çıkarıldı; birinde `emin değilim` kararı verildi. Çıktı sürümlü dosyada ve inceleme ekranında taslak olarak görünür. Tam model checkpoint kimliği bu oturumda bulunmadığından yeniden üretilebilir batch ve maliyet denetimi 14.02'de açık kalır.
+
 ### Adım 15 — Kaynaklı ipucu ve öğrenme desteği
 
 **Özet:** Öğrenci çözdükten sonra kısa püf noktası, yanlış nedeni ve ilgili notu görür. **Yapılacak:** Onaylı soru etiketi + onaylı ders notu parçası + çözümden kısa açıklama üret; her öneriye kaynak sayfası ve içerik sürümü bağla; yanlış cevap/hayal ürünü bilgi tespiti için editör kontrolü; maliyet için yalnız seçili sorularda önceden üretme ve saklama; özel öğrenci verisini harici modele göndermeden önce açık ürün kararı. Öğrenci kendi başına çözmeden yanıtı sızdıran ipucu gösterilmez; pratikte isteğe bağlı, sınavda teslim sonrası. **UI kontrolü:** Kısa, anlaşılır, kaynağa dönen ipucu; “yararsız/hatalı” bildirimi. **Bitti sayılır:** Pilot konu setinde öğretmen/uzman incelemesi, fayda geri bildirimi ve hata oranı raporu. **Durum:** YAPILACAK.

@@ -16,6 +16,7 @@ SPEC.loader.exec_module(QUEUE)
 OUTPUT, SOURCE_ROOT, TAXONOMY, FIELDS, sha256 = (
     QUEUE.OUTPUT, QUEUE.SOURCE_ROOT, QUEUE.TAXONOMY, QUEUE.FIELDS, QUEUE.sha256
 )
+AI_DRAFTS = Path(__file__).resolve().parents[1] / "ornek-veri/ai-etiket-pilot-7.json"
 
 
 LOCK = threading.Lock()
@@ -41,16 +42,17 @@ button.primary{background:#674291;color:white}button:focus-visible,input:focus-v
 <span id="counts" aria-live="polite"></span></div>
 <div class="panel row"><button id="previous">Önceki</button><label for="jump">Soru</label><select id="jump" style="max-width:270px"></select><button id="next">Sonraki</button></div>
 <div class="grid"><div class="panel"><h2 id="title"></h2><p id="source" class="muted"></p><img id="image" alt="İncelenen sorunun kaynak görseli"></div>
-<div class="panel"><p id="current"></p><p id="suggestion" class="muted"></p>
+<div class="panel"><p id="current"></p><p id="suggestion" class="muted"></p><p id="aiDraft" class="muted"></p>
 <label for="label">İncelenen soru tipi</label><select id="label"></select>
 <label for="evidence">Sorudaki kanıt / gerekçe</label><textarea id="evidence" placeholder="Sorunun hangi ifadesi veya görseli bu etiketi destekliyor?"></textarea>
 <label for="note">Ret / belirsizlik nedeni</label><textarea id="note" placeholder="Etiket neden belirsiz veya taksonomi dışında?"></textarea>
 <div class="row"><button class="primary" id="approve">İnsan onayı olarak kaydet</button><button id="uncertain">Belirsiz</button><button id="reject">Reddet</button></div>
 <p id="message" role="status" aria-live="polite"></p></div></div></main>
 <script>
-let rows=[],index=0;
+let rows=[],drafts={},index=0;
 const $=id=>document.getElementById(id);
-async function load(){const response=await fetch('/api/rows');rows=await response.json();
+async function load(){const [rowResponse,draftResponse]=await Promise.all([fetch('/api/rows'),fetch('/api/drafts')]);
+  rows=await rowResponse.json();drafts=await draftResponse.json();
   $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${i+1}. ${r.question_code}</option>`).join('');show();}
 function show(){const r=rows[index];if(!r)return;
   $('jump').value=index;$('title').textContent=`${index+1}/200 · ${r.question_code}`;
@@ -58,6 +60,8 @@ function show(){const r=rows[index];if(!r)return;
   $('image').src='/image/'+encodeURIComponent(r.question_code);
   $('current').textContent=`Durum: ${r.review_status}${r.reviewer_id?' · '+r.reviewer_id:''}`;
   $('suggestion').textContent=`Kaynak konudan gelen taslak: ${r.suggested_question_type_code} (insan onayı değildir)`;
+  const draft=drafts[r.question_code];
+  $('aiDraft').textContent=draft?`AI taslağı: ${draft.abstain?'Emin değilim':draft.question_type_code} · güven ${draft.confidence} (kalibre edilmedi) · ${draft.evidence}`:'Bu soruda AI taslağı yok.';
   const codes=r.allowed_question_type_codes.split('|');
   $('label').innerHTML='<option value="">Seçiniz</option>'+codes.map(code=>`<option value="${code}">${code}</option>`).join('');
   $('label').value=r.reviewed_question_type_code||'';
@@ -104,6 +108,9 @@ class Handler(BaseHTTPRequestHandler):
             self.send_bytes(200, HTML.encode("utf-8"), "text/html; charset=utf-8")
         elif self.path == "/api/rows":
             self.send_json(200, self.rows())
+        elif self.path == "/api/drafts":
+            data = json.loads(AI_DRAFTS.read_text(encoding="utf-8"))
+            self.send_json(200, {item["question_code"]: item for item in data["drafts"]})
         elif self.path.startswith("/image/"):
             code = unquote(self.path[len("/image/"):])
             row = next((row for row in self.rows() if row["question_code"] == code), None)

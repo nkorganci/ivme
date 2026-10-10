@@ -28,6 +28,9 @@ with tempfile.TemporaryDirectory() as directory:
     try:
         with urlopen(base + "/api/rows") as response:
             assert len(json.load(response)) == 200
+        with urlopen(base + "/api/drafts") as response:
+            drafts = json.load(response)
+            assert len(drafts) == 7 and drafts["TYT-0001"]["abstain"] is True
         with urlopen(base + "/image/TYT-0100") as response:
             assert response.status == 200 and response.headers["Content-Type"] == "image/webp"
 
