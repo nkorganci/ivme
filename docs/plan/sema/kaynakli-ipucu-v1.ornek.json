@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "hint_id": "hint:TYT-0318:1",
+  "question": {
+    "code": "TYT-0318",
+    "image_sha256": "a5b276a75e9430e4a0b7ed57acc01bcdf5fcf88da71746cf01a049ac2daeb59f",
+    "taxonomy_version": "tyt-turkce-v1",
+    "question_type_code": "tyt.turkce.tip.noktalama"
+  },
+  "note": {
+    "note_id": "ogm-note:6342a710662d876b4b633d8d0026807b",
+    "review_version": 1,
+    "catalog_id": 1099,
+    "pdf_sha256": "f316e8d16b41e3f1041d3009e0b8dcf2ad87a078e320ad6cb87177981321dbf4",
+    "page": 1
+  },
+  "content": {
+    "pre_answer_hint": null,
+    "post_submission_explanation": null
+  },
+  "review": {
+    "status": "draft",
+    "version": 1,
+    "reviewer_id": null,
+    "reviewed_at_utc": null,
+    "answer_leak_checked": false
+  }
+}

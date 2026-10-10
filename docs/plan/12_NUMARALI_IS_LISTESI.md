@@ -2,9 +2,19 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **14.03 — Ders/tip doğruluğu, maliyet ve ölçek kararı**. Yedi soruluk 14.02 pilotundan sonra 200 TYT Türkçe sorusu iki kez yerel AI ile incelendi; 43 model önerisi değişti, 15 açık AI hatası kaynak soru köküyle kalite kontrolde düzeltildi. CSV'de 200 AI notu, 63 öncelikli insan kontrolü ve 0/200 gerçek insan onayı var. AI önerileri altın etiket değildir; doğruluk ve geniş ölçek kararı insan altın verisini bekliyor. Kullanıcı fizik sorularını uzman olarak etiketleyebileceğini belirtti; bu Türkçe kümesinde alan dışı hakem olarak kullanılmaz. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
+**Sıradaki tek bağımsız iş:** **15.02 — Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI**. 15.01 kaynaklı ipucu sözleşmesi ve yerel yayın kapısı tamamlandı; öğrenciye açılacak onaylı içerik henüz yok. 14.03 doğruluk ve ölçek kararı Türkçe öğretmeninin 200 soruluk karar dosyasını bekliyor. CSV'de 200 AI notu, 63 öncelikli insan kontrolü ve 0/200 gerçek insan onayı var. AI önerileri altın etiket değildir. Kullanıcı fizik sorularını uzman olarak etiketleyebilir; Türkçe kümesini Türkçe öğretmeni inceleyecek. 06.05 gerçek cihaz kabulünü, 04.09 ayrı fiziksel hedefi, 07.09 doğrulanmış zorluk verisini, 04.07 yetkili PostgreSQL erişimini bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
+
+## YAPILMASI GEREKENLER — insan incelemesi
+
+| Kim | Yapılacak işlem | Tamamlanma kanıtı |
+|---|---|---|
+| Türkçe öğretmeni | [Çevrimdışı Türkçe paketindeki](54_14_01_OGRETMEN_INCELEME_DEVRI.md) 200 TYT Türkçe soru görselini bağımsız inceleyip tip, kısa gerekçe veya belirsizlik/ret nedeni kaydeder; son JSON karar dosyasını kullanıcıya verir. İlk 63 soru önceliklidir, ardından kalan 137 soru da incelenir. | 200 kararın paket kimliği, soru/görsel özeti, öğretmen kimliği ve gerekçeyle doğrulanması; 14.01 insan etiket sayımı. |
+| Kullanıcı / Codex | Öğretmene `veri/ogretmen-inceleme-tyt-turkce-200.zip` dosyasını iletir. Dönen JSON'u `scripts/ogretmen-inceleme-aktar.py` ile önce kuru denetler, sonra ana CSV'ye aktarır; AI/öğretmen ayrımlarını 14.03'te ölçer. | [14.01 devri](54_14_01_OGRETMEN_INCELEME_DEVRI.md) ve [14.03 raporu](53_14_03_DOGRULUK_MALIYET_OLCEK.md). |
+| Fizik için kullanıcı; diğer dersler için ilgili branş öğretmeni | O dersin taksonomisi ve kaynaklı örneklem hazırlandığında görselleri bağımsız etiketler. Türkçe tip kodları başka derse uygulanmaz. | Her ders için ayrı insan karar dosyası ve sınıf bazlı AI karşılaştırması. |
+
+**Şimdiki durum:** Türkçe CSV'de 200 AI ön incelemesi vardır, **0/200 insan onayı** vardır. AI notlarıyla pilot inceleme yapılabilir; doğruluk, altın etiket ve geniş ölçek kararı için öğretmen kararları gerekir. Kullanıcının Türkçe sorularını bizzat etiketlemesi beklenmez.
 
 ## Kullanım ve yeni oturum
 
@@ -13,7 +23,7 @@
 - İşe başlamadan `SIRADAKI` maddesinin kapsamını ve varsa önceki bağımlılıklarını oku. Fikir değişirse bu listeyi ve görev dosyasını önce güncelle; yeni maddeye yeni numara ver, eski numarayı yeniden kullanma. Bir iş yarım kalırsa `YAPILACAK` kalır; tamamlanan dilimi ve eksiği kısa notla ayır.
 - İş bitince ilgili UI durumunu masaüstü/telefonda ve gerekli testi doğrula, görev kaydını ve bu listeyi repo içinde güncelle, yalnız ilgili dosyaları feature branch'te **yerel commit** yap. **Kullanıcı tüm işler bitip yorum verene kadar GitHub'a push yapma.** Canlı DB/servis üzerinde doğrulanmamış bir özelliği yalnız test DB kanıtıyla canlıya alınmış sayma.
 - Her açık iş için **Önerilen model / çaba** sütunundaki seçimi kullan. Yeni oturumdan önce `.codex/config.toml` etkin `SIRADAKI` işin önerisine ayarlanıp aynı yerel commit'e eklenir; ayar yeni oturumda geçerlidir. Etkin oturum modelini proje dosyası değiştirmez; model seçicisi yoksa bu sınır kullanıcıya açıkça söylenir.
-- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 08.02 ile devam et. Model: GPT-6.1 Sol · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/00_YOL_HARITASI.md dosyalarını oku; gün/hafta/ay ilk deneme sayılarını zaman dilimi sınırıyla uygula, test DB ve UI'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
+- Durum sütunu ve kanıt kısa tutulur; ayrıntı bağlantılı görev belgesinde veya commit'tedir. Yeni oturumun ilk mesajı: `İvme 15.02 ile devam et. Model: GPT-6 Luna · Medium. Önce docs/plan/12_NUMARALI_IS_LISTESI.md ve docs/plan/00_YOL_HARITASI.md dosyalarını oku; pratikte istekli ipucu ve sınavda teslim sonrası açıklama UI'yi onaysız içerik kapalı kalarak uygula, test DB ve UI'yi doğrula, repo içindeki planı güncelle, yerel commit yap, push yapma.` Numara/model ilerleyince bu cümledeki numara, model ve dosya adı değiştirilir.
 
 ## 01 — Envanter ve Git
 
@@ -171,8 +181,8 @@
 | No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
 |---|---|---|---|---|
 |---|---|---|---|
-| 15.01 | YAPILACAK | Onaylı soru/not kaynağıyla kısa ipucu veri modeli | 13.03 ve 14.02 sonrası | GPT-6.1 Sol · Medium |
-| 15.02 | YAPILACAK | Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI | 15.01 sonrası | GPT-6 Luna · Medium |
+| 15.01 | BITTI | Onaylı soru/not kaynağıyla kısa ipucu veri modeli ve yerel yayın kapısı | [55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md](55_15_01_KAYNAKLI_IPUCU_VERI_MODELI.md) | — (tamamlandı) |
+| **15.02** | **SIRADAKI** | Pratikte istekli ipucu, sınavda teslim sonrası açıklama UI; onaysız içerik kapalı kalır | 15.01 sonrası | GPT-6 Luna · Medium |
 | 15.03 | YAPILACAK | Uzman incelemesi ve yararlı/hatalı geri bildirimi | 15.02 sonrası | GPT-6 Luna · Low |
 
 ## 16 — Pilot ve büyüme

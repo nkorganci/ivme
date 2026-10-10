@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TYT Türkçe · Öğretmen incelemesi</title>
+<style>
+body{margin:0;background:#f7f5fb;color:#242032;font:16px/1.5 system-ui,sans-serif}
+main{max-width:1160px;margin:auto;padding:16px}h1{font-size:1.5rem}
+.panel{background:white;border:1px solid #dad4e5;border-radius:12px;padding:16px;margin:12px 0;min-width:0;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:16px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+img{max-width:100%;height:auto;border:1px solid #ddd;border-radius:8px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input,select,textarea,button{font:inherit}input,select,textarea{box-sizing:border-box;width:100%;padding:10px;border:1px solid #81758f;border-radius:8px}
+textarea{min-height:78px}button{min-height:44px;padding:8px 14px;border-radius:8px;border:1px solid #674291;background:white;cursor:pointer}
+button.primary{background:#674291;color:white}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #bd94ff}
+.muted{color:#51465f}.error{color:#9b1729}.success{color:#22663a}
+@media(max-width:700px){.grid{grid-template-columns:1fr}main{padding:12px}}
+</style>
+<main>
+<h1>TYT Türkçe · 200 soru öğretmen incelemesi</h1>
+<p>Bu paket internetsiz çalışır. Önce soru görseline göre kendi kararınızı verin. AI ve kaynak önerileri “Önerileri aç” bölümünde gizlidir.</p>
+<div class="panel">
+  <label for="reviewer">İnceleyen öğretmenin adı veya kimliği</label>
+  <input id="reviewer" autocomplete="name" style="max-width:340px">
+  <p id="counts" aria-live="polite"></p>
+  <div class="row"><button class="primary" id="download">Kararları dosyaya indir</button>
+    <label for="importFile">Önceki karar dosyasını yükle</label><input id="importFile" type="file" accept="application/json,.json" style="max-width:310px"></div>
+  <p class="muted">Tarayıcıya geçici kayıt yapılır. Çalışmayı kaybetmemek için her oturum sonunda karar dosyasını indirin ve son dosyayı saklayın.</p>
+</div>
+<div class="panel row"><button id="previous">Önceki</button><label for="jump">Soru</label><select id="jump" style="max-width:280px"></select><button id="next">Sonraki</button></div>
+<div class="grid">
+  <section class="panel"><h2 id="title"></h2><p id="year" class="muted"></p><img id="image" alt="Kaynak soru görseli"></section>
+  <section class="panel">
+    <p id="current"></p>
+    <label for="label">Sorunun ölçtüğü tip</label><select id="label"></select>
+    <label for="evidence">Soru kökünden kısa gerekçe</label><textarea id="evidence" placeholder="Örnek: Düşüncenin akışını bozan cümleyi soruyor."></textarea>
+    <label for="note">Belirsizlik veya ret nedeni</label><textarea id="note" placeholder="Taksonomiye uymuyorsa ya da görsel okunmuyorsa nedenini yazın."></textarea>
+    <div class="row"><button class="primary" id="approve">Onayla</button><button id="uncertain">Belirsiz</button><button id="reject">Reddet</button></div>
+    <details id="suggestions"><summary>Önerileri aç (karardan sonra bakılması önerilir)</summary>
+      <p id="sourceSuggestion"></p><p id="aiSuggestion"></p><p id="aiNote"></p></details>
+    <p id="message" role="status" aria-live="polite"></p>
+  </section>
+</div>
+</main>
+<script>
+const DATA=__PACKAGE_DATA__;
+const rows=DATA.rows, byCode=Object.fromEntries(rows.map(r=>[r.question_code,r]));
+const storageKey='ivme-teacher-review-'+DATA.package_id;
+let decisions={}, index=0;
+const $=id=>document.getElementById(id);
+function statusMessage(value,error=false){$('message').textContent=value;$('message').className=error?'error':'success'}
+function persist(){try{localStorage.setItem(storageKey,JSON.stringify({reviewer:$('reviewer').value,decisions}));}catch(_){statusMessage('Tarayıcı otomatik kaydedemedi. Kararları dosyaya indirin.',true)}}
+function counts(){const values=Object.values(decisions);$('counts').textContent=`Kaydedilen: ${values.length}/200 · Onay: ${values.filter(x=>x.review_status==='approved').length} · Belirsiz/ret: ${values.filter(x=>x.review_status!=='approved').length}`;
+  $('jump').innerHTML=rows.map((r,i)=>`<option value="${i}">${decisions[r.question_code]?'✓ ':''}${i+1}. ${r.question_code}</option>`).join('');$('jump').value=index;}
+function show(){const r=rows[index],d=decisions[r.question_code];
+  $('title').textContent=`${index+1}/200 · ${r.question_code}`;$('year').textContent=`${r.source_year} · Görsel SHA-256: ${r.image_sha256.slice(0,12)}…`;
+  $('image').src='images/'+r.question_code+'.webp';$('current').textContent=d?`Kaydedilen karar: ${d.review_status} · ${d.reviewer_id}`:'Bu soru henüz incelenmedi.';
+  $('label').innerHTML='<option value="">Seçiniz</option>'+DATA.types.map(t=>`<option value="${t.code}">${t.name}</option>`).join('');
+  $('label').value=d?.reviewed_question_type_code||'';$('evidence').value=d?.review_evidence||'';$('note').value=d?.review_note||'';
+  $('sourceSuggestion').textContent=`Kaynak konu önerisi: ${r.source_topic} → ${r.suggested_question_type_code}`;
+  $('aiSuggestion').textContent=`Son AI önerisi: ${r.ai_question_type_code||'Belirsiz'} · ${r.ai_review_evidence}`;
+  $('aiNote').textContent=`AI notu: ${r.ai_review_note}`;$('suggestions').open=false;statusMessage('');counts();}
+function save(status){const r=rows[index],reviewer=$('reviewer').value.trim(),label=$('label').value,evidence=$('evidence').value.trim(),note=$('note').value.trim();
+  if(!reviewer){statusMessage('Önce öğretmen kimliğini girin.',true);return}
+  if(status==='approved'&&(!label||!evidence)){statusMessage('Onay için soru tipi ve soru kökünden gerekçe gerekli.',true);return}
+  if(status!=='approved'&&!note){statusMessage('Belirsizlik veya ret nedeni gerekli.',true);return}
+  decisions[r.question_code]={question_code:r.question_code,image_sha256:r.image_sha256,reviewer_id:reviewer,
+    reviewed_at_utc:new Date().toISOString(),reviewed_question_type_code:status==='approved'?label:'',
+    review_evidence:status==='approved'?evidence:'',review_status:status,review_note:note};
+  persist();$('current').textContent=`Kaydedilen karar: ${status} · ${reviewer}`;counts();statusMessage('Karar bu tarayıcıda kaydedildi. Karar dosyasını da indirin.');}
+function exportDecisions(){const data={schema:'ivme-teacher-review-v1',package_id:DATA.package_id,exported_at_utc:new Date().toISOString(),decisions:Object.values(decisions)};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`tyt-turkce-ogretmen-kararlari-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);statusMessage(`${data.decisions.length} karar dosyaya indirildi.`)}
+async function importDecisions(file){try{const data=JSON.parse(await file.text());if(data.schema!=='ivme-teacher-review-v1'||data.package_id!==DATA.package_id||!Array.isArray(data.decisions))throw Error('Paket kimliği veya biçim uyuşmuyor');
+  const next={};for(const d of data.decisions){const r=byCode[d.question_code];if(!r||next[d.question_code]||d.image_sha256!==r.image_sha256||!['approved','uncertain','rejected'].includes(d.review_status)||!d.reviewer_id?.trim())throw Error('Geçersiz karar kaydı');
+    if(d.review_status==='approved'&&(!DATA.types.some(t=>t.code===d.reviewed_question_type_code)||!d.review_evidence?.trim()))throw Error('Eksik onay etiketi veya gerekçe');
+    if(d.review_status!=='approved'&&!d.review_note?.trim())throw Error('Eksik belirsizlik/ret nedeni');next[d.question_code]=d;}
+  decisions=next;$('reviewer').value=data.decisions[0]?.reviewer_id||$('reviewer').value;persist();show();statusMessage(`${data.decisions.length} karar yüklendi.`)}catch(error){statusMessage('Karar dosyası yüklenemedi: '+error.message,true)}}
+try{const saved=JSON.parse(localStorage.getItem(storageKey)||'null');if(saved?.decisions){decisions=saved.decisions;$('reviewer').value=saved.reviewer||''}}catch(_){}
+$('previous').onclick=()=>{index=Math.max(0,index-1);show()};$('next').onclick=()=>{index=Math.min(rows.length-1,index+1);show()};$('jump').onchange=()=>{index=Number($('jump').value);show()};
+$('approve').onclick=()=>save('approved');$('uncertain').onclick=()=>save('uncertain');$('reject').onclick=()=>save('rejected');
+$('download').onclick=exportDecisions;$('importFile').onchange=event=>{if(event.target.files[0])importDecisions(event.target.files[0]);event.target.value=''};
+show();
+</script>
+</html>
