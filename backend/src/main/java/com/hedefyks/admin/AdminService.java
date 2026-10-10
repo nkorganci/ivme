@@ -18,6 +18,7 @@ import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.question.QuestionSpecs;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.UserRepository;
+import com.hedefyks.progress.ProgressService;
 import jakarta.persistence.criteria.Predicate;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -38,18 +39,34 @@ public class AdminService {
     private final QuestionRepository questions;
     private final ExamRepository exams;
     private final FeedbackRepository feedback;
+    private final AdminUsageService usage;
 
     public AdminService(UserRepository users, QuestionRepository questions, ExamRepository exams,
-                        FeedbackRepository feedback) {
+                        FeedbackRepository feedback, AdminUsageService usage) {
         this.users = users;
         this.questions = questions;
         this.exams = exams;
         this.feedback = feedback;
+        this.usage = usage;
     }
 
     @Transactional(readOnly = true)
-    public Stats stats() {
-        return new Stats(users.countByRole(Role.USER), exams.countByStatus(ExamStatus.SUBMITTED));
+    public Stats stats(ProgressService.Period period) {
+        var periodUsage = usage.usage(period, "Europe/Istanbul");
+        long active = periodUsage.activeUsers();
+        long registered = users.countByRole(Role.USER);
+        return new Stats(bucket(registered),
+                registered < 5 ? null : bucket(exams.countByStatus(ExamStatus.SUBMITTED)),
+                new AdminDtos.Usage(period.name(), periodUsage.zone(), periodUsage.startsAt(),
+                        periodUsage.endsAt(), bucket(active),
+                        active < 5 ? null : bucket(periodUsage.studySessions()),
+                        active < 5 ? null : bucket(periodUsage.examsStarted()),
+                        active < 5 ? null : bucket(periodUsage.answersSubmitted())));
+    }
+
+    /** 0–4 arası tüm sayılar gizlenir; diğerleri beşlik aralığın alt sınırıdır. */
+    private static Long bucket(long value) {
+        return value < 5 ? null : value / 5 * 5;
     }
 
     // ------------------------------------------------------------------ sorular

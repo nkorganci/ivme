@@ -21,13 +21,15 @@ const chicagoDate = (date) => {
 let goals = [];
 let recommendationFixture = false;
 let recommendationStatus = 'SUGGESTIONS';
+let adminMode = false;
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const json = (value, status = 200) => {
     res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify(value));
   };
-  if (pathname === '/api/auth/me') return json({ id: 1, username: 'test', role: 'USER', contactComplete: true, passwordChangeRequired: false });
+  if (pathname === '/api/auth/me') return json({ id: 1, username: 'test',
+    role: adminMode ? 'ADMIN' : 'USER', contactComplete: true, passwordChangeRequired: false });
   if (pathname === '/api/account/contact') return json({ email: 'test@example.com', phone: '+905551112233' });
   if (pathname === '/api/study-sessions/active') { res.writeHead(204); return res.end(); }
   if (pathname === '/api/questions/filters') return json(recommendationFixture
@@ -42,6 +44,10 @@ const server = createServer((req, res) => {
     }] } : { subject: 'Türkçe', labeledQuestions: 0, distinctTypes: 0,
       status: 'INSUFFICIENT_DATA', suggestions: [] });
   if (pathname === '/api/feedback' && req.method === 'POST') return json({ id: 1 }, 201);
+  if (pathname === '/api/admin/stats') return json({ userCount: 5, submittedExamCount: null,
+    usage: { period: 'DAY', zone: 'Europe/Istanbul', startsAt: '2026-10-08T21:00:00Z',
+      endsAt: '2026-10-09T21:00:00Z', activeUsers: 5, studySessions: null,
+      examsStarted: null, answersSubmitted: 10 } });
   if (pathname === '/api/progress/first-attempts') return json({
     period: 'DAY', zone: 'America/Chicago', startsAt: '2026-10-09T05:00:00Z',
     endsAt: '2026-10-10T05:00:00Z', correct: 1, wrong: 0, blank: 0,
@@ -164,10 +170,12 @@ try {
       ['/ilerleme', 'Çalışma zaman çizelgesi'],
       ['/hedefler', 'Hedeflerim ve geçmiş'],
       ['/oneriler', 'Çalışma önerileri'],
+      ['/yonetim', 'Yönetim · Kullanım özeti'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
     ]) {
       if (page === '/hedefler') goals = [];
       if (page === '/oneriler') { recommendationFixture = true; recommendationStatus = 'SUGGESTIONS'; }
+      adminMode = page === '/yonetim';
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
       if (page.includes('yeni')) {
@@ -224,6 +232,13 @@ try {
         await evaluate('document.querySelector("select").value = "Türkçe"; document.querySelector("select").dispatchEvent(new Event("change", {bubbles:true}))');
         await waitFor('document.body.innerText.includes("yeterli onaylı ve çeşitli ilk deneme yok")');
         recommendationFixture = false;
+      }
+      if (page === '/yonetim') {
+        await waitFor('document.body.innerText.includes("Etkin öğrenci")');
+        await waitFor('document.body.innerText.includes("5–9") && document.body.innerText.includes("5’ten az")');
+        if (await evaluate('document.body.innerText.includes("test@example.com")')) {
+          throw new Error(`${width}px yönetici ekranında bireysel veri görüldü`);
+        }
       }
       if (page === '/soru/TEST-1') {
         await waitFor('document.body.innerText.includes("Bu soru faydalı mı?")');

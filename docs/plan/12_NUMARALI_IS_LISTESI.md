@@ -2,7 +2,7 @@
 
 **Güncelleme:** 2026-10-09
 
-**Sıradaki tek iş:** **11.02 — Yalnız toplu yönetici paneli ve küçük grup gizleme**. 08.04, 09.01–09.04 ve 10.02–10.03 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
+**Sıradaki tek iş:** **11.03 — ADMIN/OPERATOR/USER çapraz erişim negatif testleri**. 08.04, 09.01–09.04 ve 10.02–10.03 `BITTI`; 06.05 gerçek cihaz kabulünü bekliyor. 04.09 ayrı fiziksel hedef, 07.09 doğrulanmış zorluk verisi, 04.07 yetkili PostgreSQL erişimi bekliyor.
 
 **Durum kaynağı:** Bu liste. [00_YOL_HARITASI.md](00_YOL_HARITASI.md) ürün hedefini ve geniş adımların kabul ölçütlerini, [01_BEST_PRACTICES.md](01_BEST_PRACTICES.md) çalışma kurallarını açıklar. Plan yalnız repo içindeki `docs/plan` altında güncellenir.
 
@@ -130,8 +130,8 @@
 |---|---|---|---|---|
 |---|---|---|---|
 | 11.01 | BITTI | Kayıtlı/aktif kullanıcı ve dönemlik kullanım toplulaştırması | [43_11_01_TOPLU_KULLANIM_HESABI.md](43_11_01_TOPLU_KULLANIM_HESABI.md) | — (tamamlandı) |
-| **11.02** | **SIRADAKI** | **Yalnız toplu yönetici paneli; küçük grup gizleme** | 11.01 sonrası | GPT-6.1 Sol · High |
-| 11.03 | YAPILACAK | ADMIN/OPERATOR/USER çapraz erişim negatif testleri | 11.02 sonrası | GPT-6.1 Sol · High |
+| 11.02 | BITTI | Yalnız toplu yönetici paneli; küçük grup gizleme | [44_11_02_YONETICI_GIZLILIK_PANOSU.md](44_11_02_YONETICI_GIZLILIK_PANOSU.md) | — (tamamlandı) |
+| **11.03** | **SIRADAKI** | **ADMIN/OPERATOR/USER çapraz erişim negatif testleri** | 11.02 sonrası | GPT-6.1 Sol · High |
 
 ## 12 — Soru PDF iş hattı
 

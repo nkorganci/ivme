@@ -57,10 +57,22 @@ class AdminUsageTest extends TestBase {
         assertThat(result.examsStarted()).isZero();
         assertThat(result.answersSubmitted()).isEqualTo(2);
 
+        User[] extra = {user("ogrenci3", Role.USER), user("ogrenci4", Role.USER), user("ogrenci5", Role.USER)};
+        for (User student : new User[]{ayse, mehmet, extra[0], extra[1], extra[2]}) {
+            jdbc.update("""
+                    INSERT INTO question_attempts(user_id,question_id,client_event_id,event_type,
+                                                  selected_answer,correct_answer,is_correct)
+                    VALUES (?,?,?,'ANSWER','A','A',true)
+                    """, student.getId(), q.getId(), UUID.randomUUID());
+        }
         var admin = login("yonetici", "Sifre1234");
         send(admin, get("/api/admin/stats"), null)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.userCount").value(2));
+                .andExpect(jsonPath("$.userCount").value(5))
+                .andExpect(jsonPath("$.submittedExamCount").isEmpty())
+                .andExpect(jsonPath("$.usage.activeUsers").value(5))
+                .andExpect(jsonPath("$.usage.answersSubmitted").value(5))
+                .andExpect(jsonPath("$.usage.studySessions").isEmpty());
         send(login("ayse", "Sifre1234"), get("/api/admin/stats"), null)
                 .andExpect(status().isForbidden());
     }

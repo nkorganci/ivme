@@ -16,7 +16,9 @@ public final class AdminDtos {
 
     private AdminDtos() {}
 
-    public record Stats(long userCount, long submittedExamCount) {}
+    public record Usage(String period, String zone, Instant startsAt, Instant endsAt,
+                        Long activeUsers, Long studySessions, Long examsStarted, Long answersSubmitted) {}
+    public record Stats(Long userCount, Long submittedExamCount, Usage usage) {}
 
     public record AdminQuestion(Long id, String code, QuestionBank bank, ExamType examType, String subject,
                                 String topic, Integer year, String source, String image, String solutionImage,

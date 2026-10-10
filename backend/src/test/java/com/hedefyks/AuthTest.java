@@ -117,7 +117,7 @@ class AuthTest extends TestBase {
         mvc.perform(get("/api/operator/questions").session(userSession)).andExpect(status().isForbidden());
         MockHttpSession adminSession = login("yonetici", "Sifre1234");
         mvc.perform(get("/api/admin/stats").session(adminSession)).andExpect(status().isOk())
-                .andExpect(jsonPath("$.userCount").value(1))
+                .andExpect(jsonPath("$.userCount").isEmpty())
                 .andExpect(jsonPath("$.questionCount").doesNotExist());
         mvc.perform(get("/api/operator/questions").session(adminSession)).andExpect(status().isForbidden());
         mvc.perform(get("/api/admin/feedback").session(adminSession)).andExpect(status().isForbidden());

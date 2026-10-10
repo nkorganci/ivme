@@ -130,7 +130,7 @@ class ExamFlowTest extends TestBase {
                 .andExpect(status().isCreated());
 
         MockHttpSession admin = login("yonetici", "Sifre1234");
-        send(admin, get("/api/admin/stats"), null).andExpect(jsonPath("$.userCount").value(1))
+        send(admin, get("/api/admin/stats"), null).andExpect(jsonPath("$.userCount").isEmpty())
                 .andExpect(jsonPath("$.reportedQuestionCount").doesNotExist());
         send(admin, get("/api/operator/feedback"), null).andExpect(status().isForbidden());
         MockHttpSession operator = login("operator", "Sifre1234");
