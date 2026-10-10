@@ -6,7 +6,7 @@
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | `uygulama/docs/plan` ürün planının tek çalışma kaynağıdır; bu dosya kapsamı, [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durumunu tutar. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
-**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 06.06 görev dosyası](09_SORU_DENEMELERI.md), [aktif süre kaydı](32_06_05_AKTIF_SURE.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
+**İlgili belgeler:** [numaralı iş listesi ve yeni oturum kuralı](12_NUMARALI_IS_LISTESI.md), [sıradaki 14.01 görev dosyası](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md), [aktif süre kaydı](32_06_05_AKTIF_SURE.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
 ## Ürün amacı ve ilk sınır
 
@@ -96,6 +96,8 @@
 ### Adım 14 — AI ile soru etiketleme pilotu
 
 **Özet:** Eksik kategori, soru tipi ve önkoşul bilgisini kontrollü tamamla. **Yapılacak:** 200–500 dengeli örnek soru için insan etiketli altın veri; modelin yalnız mevcut taksonomiden seçim yapması ve `emin değilim` diyebilmesi; `question_id`, kaynak, model/sürüm, güven puanı, önerilen etiket, kanıt ve inceleme durumunu saklama; düşük güvenli veya çelişkili örnekleri insan kuyruğuna alma; batch işleme, önbellek ve birim maliyet raporu. 80 bin soruya ölçekleme kararı pilot doğruluğuna bağlı. **UI kontrolü:** Bakım aracında öneri/kanıt/onay/red ve kaynak görseli; öğrenciye onaysız etiket gitmez. **Bitti sayılır:** Ders/soru tipi bazlı ölçülmüş doğruluk, maliyet ve yanlış sınıflandırma analizi. **Durum:** YAPILACAK.
+
+**14.01 hazırlık kaydı (2026-10-09):** [200 gerçek soruluk inceleme kuyruğu](51_14_01_INSAN_ETIKETLI_ALTIN_ORNEK.md) hazır ve kaynak checksum'ları doğrulandı. İnsan onayı 0/200 olduğundan alt iş hâlâ `SIRADAKI`, Adım 14 de açıktır. Yedi sınıfın hepsi temsil edilir; kaynak kıtlığı nedeniyle sayıları eşit değildir.
 
 ### Adım 15 — Kaynaklı ipucu ve öğrenme desteği
 
