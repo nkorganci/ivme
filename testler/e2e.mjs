@@ -111,7 +111,7 @@ await shot('03-ana-sayfa');
 // sol menü: masaüstünde sabit menü, mobilde hamburger ile açılan çekmece (öğeler DOM'da her durumda vardır)
 if (mobil) { await clickText('', 'header.mobilebar button'); await sleep(300); }
 const menuLabels = await ev("[...document.querySelectorAll('.sidebar .sidenav a')].map((a) => a.getAttribute('aria-label'))");
-ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
+ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Konu anlatımları', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'İlerlemem', 'Hedeflerim', 'Çalışma önerileri', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
 await shot('03b-sol-menu');
 if (mobil) await ev("document.querySelector('.scrim')?.click()");
 
@@ -220,12 +220,12 @@ await shot('05d-pratik-secim');
 await clickText('Pratiği başlat', 'button');
 await waitFor("/^\\/pratik\\/\\d+$/.test(location.pathname)", 'pratik oturumu', 10000);
 const practicePath = await ev('location.pathname');
-await waitFor("document.querySelectorAll('.practice-list li').length === 2", 'iki sıralı pratik sorusu');
+await waitFor("document.querySelectorAll('.practice-list li a').length === 2", 'iki sıralı pratik sorusu');
+await shot('05e-pratik-oturum');
 ok('Pratik yeni soru modunu sakladı', (await text()).includes('Yalnız yeni'));
 const practiceCodes = await ev("[...document.querySelectorAll('.practice-list li a')].map(a => a.querySelectorAll('span')[0]?.innerText.trim())");
 const secondPracticePath = await ev("new URL(document.querySelectorAll('.practice-list li a')[1].href).pathname");
 ok('Pratik oturumu iki soruyu tekil ve sıralı gösteriyor', practiceCodes.length === 2 && practiceCodes[0] !== practiceCodes[1]);
-await shot('05e-pratik-oturum');
 await clickText('1. soru', 'a');
 await waitFor("location.pathname.startsWith('/soru/') && document.body.innerText.includes('Pratik soruları')", 'pratik sorusu');
 ok('Pratik sorusundan oturuma dönüş bağlantısı var', (await text()).includes('Pratik soruları'));

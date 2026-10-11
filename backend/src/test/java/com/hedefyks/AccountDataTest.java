@@ -36,7 +36,7 @@ class AccountDataTest extends TestBase {
                 owner.getId(), question.getId(), "Kendi notum");
         jdbc.update("INSERT INTO goals(user_id,period,metric,target_count,starts_on,ends_on) "
                 + "VALUES (?,'DAY','ATTEMPTS',1,current_date,current_date)", owner.getId());
-        jdbc.update("INSERT INTO activity_events(user_id,session_key,event_type) VALUES (?,?,'LOGIN')",
+        jdbc.update("INSERT INTO activity_events(user_id,session_key,event_type) VALUES (?,?,'ACTIVE')",
                 owner.getId(), UUID.randomUUID());
         jdbc.update("INSERT INTO feedback(user_id,question_id,category,message) VALUES (?,?,'QUESTION_ISSUE',?)",
                 other.getId(), question.getId(), "Başka kullanıcı notu");
@@ -55,7 +55,8 @@ class AccountDataTest extends TestBase {
         assertThat(data.get("questionAttempts").size()).isEqualTo(1);
         assertThat(data.get("questionBoards").size()).isEqualTo(1);
         assertThat(data.get("goals").size()).isEqualTo(1);
-        assertThat(data.get("activityEvents").size()).isEqualTo(1);
+        // login() records LOGIN automatically; the explicit ACTIVE event is exported too.
+        assertThat(data.get("activityEvents").size()).isEqualTo(2);
 
         send(ownerSession, post("/api/account/delete"),
                 "{\"currentPassword\":\"Sifre1234\",\"confirmation\":\"yanlış\"}")
