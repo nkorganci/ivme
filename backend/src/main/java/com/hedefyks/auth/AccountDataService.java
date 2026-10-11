@@ -65,7 +65,7 @@ public class AccountDataService {
         data.put("goals", jdbc.queryForList("SELECT period, metric, subject, target_count, starts_on, ends_on, "
                 + "status, created_at FROM goals WHERE user_id = ? ORDER BY id", userId));
         data.put("studyProgramWeeks", jdbc.queryForList("SELECT week_start, selected_start, selected_end, "
-                + "zone_id, cells::text AS cells, updated_at FROM student_program_weeks "
+                + "zone_id, cells::text AS cells, time_boundaries::text AS time_boundaries, updated_at FROM student_program_weeks "
                 + "WHERE user_id = ? ORDER BY week_start", userId));
         data.put("activityEvents", jdbc.queryForList("SELECT session_key, event_type, active_seconds, created_at "
                 + "FROM activity_events WHERE user_id = ? ORDER BY id", userId));

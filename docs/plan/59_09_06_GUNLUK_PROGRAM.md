@@ -18,3 +18,9 @@ Flyway `V19`, `student_program_weeks` tablosunu ekler. Bir öğrenci/hafta için
 - Gerçek cihazda tarih seçici, yatay tablo kaydırma ve kopyala/boş akışı ayrıca gözle kontrol edilmelidir. Canlı `ivme` veritabanına göç ve yayın yapılmadı.
 
 **Yerel commit:** Bu kayıt, uygulama değişiklikleriyle aynı commit'te tutulur. **Sonraki bağımlılık:** Canlı veritabanı geçişi ve fiziksel cihaz kabulü.
+
+## 2026-10-11 — Esnek saat aralıkları
+
+Saat sütununda her satırın başlangıcı ve bitişi düzenlenir. Bitiş, sonraki satırın başlangıcıyla aynı sınırdır. Bir sınır değişince o sınır ve sonraki sınırlar aynı dakika farkıyla kayar; önceki satırın bitişi de ortak sınırdan güncellenir. Böylece boşluk ve çakışma oluşmaz. Aralıklar en az 5 dakika, saatler aynı gün içinde olmalıdır. Her hafta için 15 saat sınırı `V20` ile `time_boundaries` JSON alanında saklanır; eski kayıtlar 08:00–22:00 varsayılanını alır. Kopyala seçimi saatleri de taşır, boş program varsayılan saatlerle başlar. Geçmiş haftaların saatleri de salt okunurdur. Eski API istemcileri saat alanını göndermediğinde kayıtlı saatler korunur.
+
+`StudyProgramTest` ve `AccountDataTest` geçti; zaman kaydırma denetimi ve `npm run build` geçti. Geliştirme servisleri yeniden başlatıldı. Yerel `ivme` veritabanında Flyway sürümü 20, arka yüz 8081 ve ön yüz 5173 üzerinde yanıt veriyor. Yukarıdaki 09.06 kontrol notu ilk uygulama anındaki durumu kaydeder.

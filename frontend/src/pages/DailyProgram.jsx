@@ -1,13 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api, qs } from '../api.js';
 import { Alert, ErrorBox, Loading } from '../components/States.jsx';
+import { DEFAULT_BOUNDARIES, shiftTimeBoundary } from '../programTime.js';
 
 const DAYS = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
-const HOURS = Array.from({ length: 14 }, (_, index) => {
-  const start = String(index + 8).padStart(2, '0');
-  const end = String(index + 9).padStart(2, '0');
-  return `${start}:00–${end}:00`;
-});
 const localDate = () => {
   const now = new Date();
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -26,7 +22,7 @@ const maxDate = (a, b) => a > b ? a : b;
 const shortDate = (day) => new Intl.DateTimeFormat('tr-TR', {
   month: 'long', day: 'numeric', timeZone: 'UTC',
 }).format(new Date(`${day}T12:00:00Z`));
-const blank = () => Array(HOURS.length).fill('');
+const blank = () => Array(DEFAULT_BOUNDARIES.length - 1).fill('');
 const currentWeek = () => {
   const start = monday(localDate());
   return { start, end: addDays(start, 6) };
@@ -54,11 +50,14 @@ function makeWeeks(start, end, saved, source, mode) {
         }
       }
     }
+    const timeBoundaries = covered || !editable
+      ? record?.timeBoundaries || DEFAULT_BOUNDARIES
+      : mode === 'copy' && sourceWeek ? sourceWeek.timeBoundaries || DEFAULT_BOUNDARIES : DEFAULT_BOUNDARIES;
     result.push({ weekStart, visibleStart, visibleEnd,
       selectedStart: covered || !editable ? record?.selectedStart || visibleStart : visibleStart,
       selectedEnd: covered || !editable ? record?.selectedEnd || visibleEnd : visibleEnd,
       zone: record?.zone || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Istanbul',
-      cells, editable });
+      cells, timeBoundaries: [...timeBoundaries], editable });
   }
   return result;
 }
@@ -128,6 +127,19 @@ export default function DailyProgram() {
     setDirty(true); setMessage('');
   };
 
+  const editTime = (weekStart, boundary, value) => {
+    const row = weeks.find((item) => item.weekStart === weekStart);
+    if (!row?.editable) return;
+    const shifted = shiftTimeBoundary(row.timeBoundaries, boundary, value);
+    if (!shifted) {
+      setError(new Error('Saatler 00:00–23:59 arasında ve aralıklar en az 5 dakika olmalı.'));
+      return;
+    }
+    setWeeks((rows) => rows.map((item) => item.weekStart === weekStart
+      ? { ...item, timeBoundaries: shifted } : item));
+    setDirty(true); setMessage(''); setError(null);
+  };
+
   const save = async () => {
     setError(null); setMessage(''); setSaving(true);
     try {
@@ -139,7 +151,7 @@ export default function DailyProgram() {
           cells[day] = row.cells[day] || blank();
         }
         return { weekStart: row.weekStart, selectedStart: row.selectedStart,
-          selectedEnd: row.selectedEnd, zone: row.zone, cells };
+          selectedEnd: row.selectedEnd, zone: row.zone, cells, timeBoundaries: row.timeBoundaries };
       }) });
       const byStart = new Map(result.map((row) => [row.weekStart, row]));
       setWeeks((rows) => rows.map((row) => ({ ...row, ...byStart.get(row.weekStart),
@@ -173,20 +185,32 @@ export default function DailyProgram() {
     {!loading && !pending && weeks.map((week, position) => <section className="card program-week" key={week.weekStart}>
       <div className="program-week-head"><h3>{position + 1}. hafta · {shortDate(week.weekStart)} – {shortDate(addDays(week.weekStart, 6))}</h3>
         {!week.editable && <span className="chip">Geçmiş hafta · salt okunur</span>}</div>
+      <p className="muted small">Bir saati değiştirince sonraki saatler aynı farkla kayar; bitiş saati sonraki satırın başlangıcıdır.</p>
       <div className="table-wrap"><table className="table program-table"><thead><tr><th scope="col">Saat</th>
         {DAYS.map((name, index) => {
           const day = addDays(week.weekStart, index);
           const selected = week.visibleStart <= day && day <= week.visibleEnd;
           return <th scope="col" key={day}>{name}{selected && <span>{shortDate(day)}</span>}</th>;
-        })}</tr></thead><tbody>{HOURS.map((hour, slot) => <tr key={hour}><th scope="row">{hour}</th>
+        })}</tr></thead><tbody>{week.timeBoundaries.slice(0, -1).map((startTime, slot) => {
+          const endTime = week.timeBoundaries[slot + 1];
+          return <tr key={slot}><th scope="row"><div className="program-time-range">
+            <input type="time" aria-label={`${position + 1}. hafta ${slot + 1}. aralık başlangıcı`}
+              value={startTime} readOnly={!week.editable}
+              onChange={(event) => editTime(week.weekStart, slot, event.target.value)} />
+            <span aria-hidden="true">–</span>
+            <input type="time" aria-label={`${position + 1}. hafta ${slot + 1}. aralık bitişi`}
+              value={endTime} readOnly={!week.editable}
+              onChange={(event) => editTime(week.weekStart, slot + 1, event.target.value)} />
+          </div></th>
           {DAYS.map((_, index) => {
             const day = addDays(week.weekStart, index);
             const selected = week.visibleStart <= day && day <= week.visibleEnd;
             return <td key={day} className={selected ? '' : 'program-empty'}>{selected && <textarea
-              aria-label={`${shortDate(day)} ${hour}`} maxLength={250} rows={2}
+              aria-label={`${shortDate(day)} ${startTime}–${endTime}`} maxLength={250} rows={2}
               value={week.cells[day]?.[slot] || ''} readOnly={!week.editable}
               onChange={(event) => editCell(week.weekStart, day, slot, event.target.value)} />}</td>;
-          })}</tr>)}</tbody></table></div>
+          })}</tr>;
+        })}</tbody></table></div>
     </section>)}
     {!loading && !pending && weeks.some((row) => row.editable) && <div className="program-save">
       <span className="muted small">{dirty ? 'Kaydedilmemiş değişiklik var.' : 'Programı değiştirdiğinde kaydet.'}</span>

@@ -38,6 +38,19 @@ class StudyProgramTest extends TestBase {
         assertThat(saved.size()).isEqualTo(1);
         assertThat(saved.get(0).get("selectedStart").asText()).isEqualTo(selected.toString());
         assertThat(saved.get(0).get("cells").get(selected.toString()).get(0).asText()).isEqualTo("Matematik çalış");
+        assertThat(saved.get(0).get("timeBoundaries").get(0).asText()).isEqualTo("08:00");
+        List<String> changedTimes = new ArrayList<>();
+        for (int hour = 8; hour <= 22; hour++) changedTimes.add("%02d:30".formatted(hour));
+        Map<String, Object> changedWeek = new LinkedHashMap<>(week);
+        changedWeek.put("timeBoundaries", changedTimes);
+        var changed = read(send(ayse, put("/api/study-program"),
+                json.writeValueAsString(Map.of("weeks", List.of(changedWeek)))).andExpect(status().isOk()));
+        assertThat(changed.get(0).get("timeBoundaries").get(14).asText()).isEqualTo("22:30");
+        assertThat(read(send(ayse, get("/api/study-program?start=" + selected + "&end=" + selected), null)
+                .andExpect(status().isOk())).get(0).get("timeBoundaries").get(1).asText()).isEqualTo("09:30");
+        changedTimes.set(1, "08:31");
+        send(ayse, put("/api/study-program"), json.writeValueAsString(Map.of("weeks", List.of(changedWeek))))
+                .andExpect(status().isBadRequest());
         assertThat(read(send(mehmet, get("/api/study-program?start=" + selected + "&end=" + selected), null)
                 .andExpect(status().isOk())).size()).isZero();
         assertThat(read(send(ayse, get("/api/study-program?start=" + selected + "&end=" + selected), null)
