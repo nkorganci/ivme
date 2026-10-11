@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api, qs } from '../api.js';
 import { Alert, ErrorBox, Loading } from '../components/States.jsx';
-import { DEFAULT_BOUNDARIES, shiftTimeBoundary } from '../programTime.js';
+import { DEFAULT_BOUNDARIES, normalize24Hour, shiftTimeBoundary } from '../programTime.js';
 
 const DAYS = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
 const localDate = () => {
@@ -27,6 +27,26 @@ const currentWeek = () => {
   const start = monday(localDate());
   return { start, end: addDays(start, 6) };
 };
+
+function TimeField({ value, label, readOnly, onCommit, onInvalid }) {
+  const [draft, setDraft] = useState(value);
+  useEffect(() => setDraft(value), [value]);
+
+  const commit = () => {
+    if (readOnly || draft === value) return;
+    const normalized = normalize24Hour(draft);
+    if (!normalized) {
+      onInvalid(); setDraft(value); return;
+    }
+    if (!onCommit(normalized)) setDraft(value);
+  };
+
+  return <input type="text" inputMode="numeric" maxLength={5} placeholder="SS:dd"
+    aria-label={label} title="24 saat biçiminde yaz (ör. 14:30)"
+    value={draft} readOnly={readOnly}
+    onChange={(event) => setDraft(event.target.value)} onBlur={commit}
+    onKeyDown={(event) => { if (event.key === 'Enter') event.currentTarget.blur(); }} />;
+}
 
 function makeWeeks(start, end, saved, source, mode) {
   const byStart = new Map(saved.map((row) => [row.weekStart, row]));
@@ -129,15 +149,16 @@ export default function DailyProgram() {
 
   const editTime = (weekStart, boundary, value) => {
     const row = weeks.find((item) => item.weekStart === weekStart);
-    if (!row?.editable) return;
+    if (!row?.editable) return false;
     const shifted = shiftTimeBoundary(row.timeBoundaries, boundary, value);
     if (!shifted) {
       setError(new Error('Saatler 00:00–23:59 arasında ve aralıklar en az 5 dakika olmalı.'));
-      return;
+      return false;
     }
     setWeeks((rows) => rows.map((item) => item.weekStart === weekStart
       ? { ...item, timeBoundaries: shifted } : item));
     setDirty(true); setMessage(''); setError(null);
+    return true;
   };
 
   const save = async () => {
@@ -194,13 +215,15 @@ export default function DailyProgram() {
         })}</tr></thead><tbody>{week.timeBoundaries.slice(0, -1).map((startTime, slot) => {
           const endTime = week.timeBoundaries[slot + 1];
           return <tr key={slot}><th scope="row"><div className="program-time-range">
-            <input type="time" aria-label={`${position + 1}. hafta ${slot + 1}. aralık başlangıcı`}
+            <TimeField label={`${position + 1}. hafta ${slot + 1}. aralık başlangıcı`}
               value={startTime} readOnly={!week.editable}
-              onChange={(event) => editTime(week.weekStart, slot, event.target.value)} />
+              onInvalid={() => setError(new Error('Saati 24 saat biçiminde yaz (ör. 14:30).'))}
+              onCommit={(value) => editTime(week.weekStart, slot, value)} />
             <span aria-hidden="true">–</span>
-            <input type="time" aria-label={`${position + 1}. hafta ${slot + 1}. aralık bitişi`}
+            <TimeField label={`${position + 1}. hafta ${slot + 1}. aralık bitişi`}
               value={endTime} readOnly={!week.editable}
-              onChange={(event) => editTime(week.weekStart, slot + 1, event.target.value)} />
+              onInvalid={() => setError(new Error('Saati 24 saat biçiminde yaz (ör. 14:30).'))}
+              onCommit={(value) => editTime(week.weekStart, slot + 1, value)} />
           </div></th>
           {DAYS.map((_, index) => {
             const day = addDays(week.weekStart, index);

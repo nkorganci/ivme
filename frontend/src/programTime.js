@@ -9,6 +9,15 @@ const minutes = (value) => {
 
 const clock = (value) => `${String(Math.floor(value / 60)).padStart(2, '0')}:${String(value % 60).padStart(2, '0')}`;
 
+export function normalize24Hour(value) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(value.trim());
+  if (!match) return null;
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  return hour < 24 && minute < 60
+    ? `${String(hour).padStart(2, '0')}:${match[2]}` : null;
+}
+
 export function shiftTimeBoundary(boundaries, index, value) {
   const nextTime = minutes(value);
   const previousTime = minutes(boundaries[index]);
