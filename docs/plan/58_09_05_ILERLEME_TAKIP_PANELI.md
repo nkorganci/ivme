@@ -17,3 +17,7 @@ Konu işaretleri `localStorage` içinde hesap kimliğine ayrılmış anahtarda t
 - Yeni API veya veritabanı geçişi yoktur. Kaynağın Excel'den yeniden üretilmesi halinde uygulama içindeki plan kopyası otomatik güncellenmez; içerik yeniden aktarılmalıdır.
 
 **Yerel commit:** Bu kayıt, uygulama değişiklikleriyle aynı commit'te tutulur. **Sonraki bağımlılık:** Çok cihazlı konu durumu istenirse öğrenciye özel sunucu kaydı tasarlanır.
+
+## 2026-10-11 — Panel sadeleştirmesi
+
+Kullanıcının yeni isteğiyle panelde yalnız **Günlük, Haftalık ve Aylık** dönemleri bırakıldı. Faz, konu takvimi/işaretleri, çalışma programı, ayrı deneme listesi, sınav ders hedefleri ve uygulama istatistiği kartları kaldırıldı. Uygulama içindeki plan kopyası da bu üç dönemin hedef alanlarına indirildi. Eski `takip/` kaynağına dokunulmadı. Eski kapsam yukarıda geçmiş karar olarak saklanmıştır.

@@ -1,101 +1,7 @@
 {
-  "ders_hedefleri": [
-    {
-      "ders": "TYT Türkçe",
-      "baslangic_net": 22.5,
-      "sinav_hedef_net": 34,
-      "kalan_net": 11.5
-    },
-    {
-      "ders": "TYT Sosyal",
-      "baslangic_net": 12.5,
-      "sinav_hedef_net": 16,
-      "kalan_net": 3.5
-    },
-    {
-      "ders": "TYT Matematik",
-      "baslangic_net": 7,
-      "sinav_hedef_net": 27,
-      "kalan_net": 20
-    },
-    {
-      "ders": "TYT Fen",
-      "baslangic_net": 6.75,
-      "sinav_hedef_net": 15,
-      "kalan_net": 8.25
-    },
-    {
-      "ders": "AYT Matematik",
-      "baslangic_net": 6,
-      "sinav_hedef_net": 21,
-      "kalan_net": 15
-    },
-    {
-      "ders": "AYT Fizik",
-      "baslangic_net": 3.5,
-      "sinav_hedef_net": 8,
-      "kalan_net": 4.5
-    },
-    {
-      "ders": "AYT Kimya",
-      "baslangic_net": 10.75,
-      "sinav_hedef_net": 12,
-      "kalan_net": 1.25
-    },
-    {
-      "ders": "AYT Biyoloji",
-      "baslangic_net": 6.75,
-      "sinav_hedef_net": 11,
-      "kalan_net": 4.25
-    }
-  ],
-  "fazlar": [
-    {
-      "faz": "1 · TYT TEMEL",
-      "bas": "2026-09-28",
-      "bit": "2026-11-30",
-      "gunluk": 150,
-      "tyt": 150,
-      "ayt": 0,
-      "deneme": "1 TYT (Cmt)",
-      "ne": "TYT Matematik, Geometri, TYT Fen, Türkçe konuları"
-    },
-    {
-      "faz": "2 · AYT'YE GEÇİŞ",
-      "bas": "2026-12-01",
-      "bit": "2027-02-28",
-      "gunluk": 180,
-      "tyt": 110,
-      "ayt": 70,
-      "deneme": "1 TYT (Cmt) + 2 haftada 1 AYT (Paz)",
-      "ne": "TYT konularını bitir (Ocak sonu), AYT Mat–Fizik–Biyoloji başlar"
-    },
-    {
-      "faz": "3 · AYT BİTİŞ",
-      "bas": "2027-03-01",
-      "bit": "2027-04-30",
-      "gunluk": 200,
-      "tyt": 60,
-      "ayt": 140,
-      "deneme": "1 TYT (Cmt) + 1 AYT (Paz)",
-      "ne": "Tüm AYT konuları 30 Nisan'a kadar biter"
-    },
-    {
-      "faz": "4 · DENEME",
-      "bas": "2027-05-01",
-      "bit": "2027-06-19",
-      "gunluk": 170,
-      "tyt": 85,
-      "ayt": 85,
-      "deneme": "2 TYT (Çar, Cmt) + 2 AYT (Per, Paz)",
-      "ne": "Yeni konu yok: deneme + yanlış analizi + eksik konu"
-    }
-  ],
   "gunluk_hedefler": [
     {
       "tarih": "2026-09-28",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -103,8 +9,6 @@
     },
     {
       "tarih": "2026-09-29",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -112,8 +16,6 @@
     },
     {
       "tarih": "2026-09-30",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -121,8 +23,6 @@
     },
     {
       "tarih": "2026-10-01",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -130,8 +30,6 @@
     },
     {
       "tarih": "2026-10-02",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -139,8 +37,6 @@
     },
     {
       "tarih": "2026-10-03",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -148,8 +44,6 @@
     },
     {
       "tarih": "2026-10-04",
-      "hafta": 1,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -157,8 +51,6 @@
     },
     {
       "tarih": "2026-10-05",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -166,8 +58,6 @@
     },
     {
       "tarih": "2026-10-06",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -175,8 +65,6 @@
     },
     {
       "tarih": "2026-10-07",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -184,8 +72,6 @@
     },
     {
       "tarih": "2026-10-08",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -193,8 +79,6 @@
     },
     {
       "tarih": "2026-10-09",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -202,8 +86,6 @@
     },
     {
       "tarih": "2026-10-10",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -211,8 +93,6 @@
     },
     {
       "tarih": "2026-10-11",
-      "hafta": 2,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -220,8 +100,6 @@
     },
     {
       "tarih": "2026-10-12",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -229,8 +107,6 @@
     },
     {
       "tarih": "2026-10-13",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -238,8 +114,6 @@
     },
     {
       "tarih": "2026-10-14",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -247,8 +121,6 @@
     },
     {
       "tarih": "2026-10-15",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -256,8 +128,6 @@
     },
     {
       "tarih": "2026-10-16",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -265,8 +135,6 @@
     },
     {
       "tarih": "2026-10-17",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -274,8 +142,6 @@
     },
     {
       "tarih": "2026-10-18",
-      "hafta": 3,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -283,8 +149,6 @@
     },
     {
       "tarih": "2026-10-19",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -292,8 +156,6 @@
     },
     {
       "tarih": "2026-10-20",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -301,8 +163,6 @@
     },
     {
       "tarih": "2026-10-21",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -310,8 +170,6 @@
     },
     {
       "tarih": "2026-10-22",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -319,8 +177,6 @@
     },
     {
       "tarih": "2026-10-23",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -328,8 +184,6 @@
     },
     {
       "tarih": "2026-10-24",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -337,8 +191,6 @@
     },
     {
       "tarih": "2026-10-25",
-      "hafta": 4,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -346,8 +198,6 @@
     },
     {
       "tarih": "2026-10-26",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -355,8 +205,6 @@
     },
     {
       "tarih": "2026-10-27",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -364,8 +212,6 @@
     },
     {
       "tarih": "2026-10-28",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -373,8 +219,6 @@
     },
     {
       "tarih": "2026-10-29",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -382,8 +226,6 @@
     },
     {
       "tarih": "2026-10-30",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -391,8 +233,6 @@
     },
     {
       "tarih": "2026-10-31",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -400,8 +240,6 @@
     },
     {
       "tarih": "2026-11-01",
-      "hafta": 5,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -409,8 +247,6 @@
     },
     {
       "tarih": "2026-11-02",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -418,8 +254,6 @@
     },
     {
       "tarih": "2026-11-03",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -427,8 +261,6 @@
     },
     {
       "tarih": "2026-11-04",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -436,8 +268,6 @@
     },
     {
       "tarih": "2026-11-05",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -445,8 +275,6 @@
     },
     {
       "tarih": "2026-11-06",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -454,8 +282,6 @@
     },
     {
       "tarih": "2026-11-07",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -463,8 +289,6 @@
     },
     {
       "tarih": "2026-11-08",
-      "hafta": 6,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -472,8 +296,6 @@
     },
     {
       "tarih": "2026-11-09",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -481,8 +303,6 @@
     },
     {
       "tarih": "2026-11-10",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -490,8 +310,6 @@
     },
     {
       "tarih": "2026-11-11",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -499,8 +317,6 @@
     },
     {
       "tarih": "2026-11-12",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -508,8 +324,6 @@
     },
     {
       "tarih": "2026-11-13",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -517,8 +331,6 @@
     },
     {
       "tarih": "2026-11-14",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -526,8 +338,6 @@
     },
     {
       "tarih": "2026-11-15",
-      "hafta": 7,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -535,8 +345,6 @@
     },
     {
       "tarih": "2026-11-16",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -544,8 +352,6 @@
     },
     {
       "tarih": "2026-11-17",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -553,8 +359,6 @@
     },
     {
       "tarih": "2026-11-18",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -562,8 +366,6 @@
     },
     {
       "tarih": "2026-11-19",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -571,8 +373,6 @@
     },
     {
       "tarih": "2026-11-20",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -580,8 +380,6 @@
     },
     {
       "tarih": "2026-11-21",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -589,8 +387,6 @@
     },
     {
       "tarih": "2026-11-22",
-      "hafta": 8,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -598,8 +394,6 @@
     },
     {
       "tarih": "2026-11-23",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -607,8 +401,6 @@
     },
     {
       "tarih": "2026-11-24",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -616,8 +408,6 @@
     },
     {
       "tarih": "2026-11-25",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -625,8 +415,6 @@
     },
     {
       "tarih": "2026-11-26",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -634,8 +422,6 @@
     },
     {
       "tarih": "2026-11-27",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -643,8 +429,6 @@
     },
     {
       "tarih": "2026-11-28",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -652,8 +436,6 @@
     },
     {
       "tarih": "2026-11-29",
-      "hafta": 9,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -661,8 +443,6 @@
     },
     {
       "tarih": "2026-11-30",
-      "hafta": 10,
-      "faz": "1 · TYT TEMEL",
       "tyt_soru": 150,
       "tyt_dogru": 120,
       "ayt_soru": 0,
@@ -670,8 +450,6 @@
     },
     {
       "tarih": "2026-12-01",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -679,8 +457,6 @@
     },
     {
       "tarih": "2026-12-02",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -688,8 +464,6 @@
     },
     {
       "tarih": "2026-12-03",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -697,8 +471,6 @@
     },
     {
       "tarih": "2026-12-04",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -706,8 +478,6 @@
     },
     {
       "tarih": "2026-12-05",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -715,8 +485,6 @@
     },
     {
       "tarih": "2026-12-06",
-      "hafta": 10,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -724,8 +492,6 @@
     },
     {
       "tarih": "2026-12-07",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -733,8 +499,6 @@
     },
     {
       "tarih": "2026-12-08",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -742,8 +506,6 @@
     },
     {
       "tarih": "2026-12-09",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -751,8 +513,6 @@
     },
     {
       "tarih": "2026-12-10",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -760,8 +520,6 @@
     },
     {
       "tarih": "2026-12-11",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -769,8 +527,6 @@
     },
     {
       "tarih": "2026-12-12",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -778,8 +534,6 @@
     },
     {
       "tarih": "2026-12-13",
-      "hafta": 11,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -787,8 +541,6 @@
     },
     {
       "tarih": "2026-12-14",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -796,8 +548,6 @@
     },
     {
       "tarih": "2026-12-15",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -805,8 +555,6 @@
     },
     {
       "tarih": "2026-12-16",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -814,8 +562,6 @@
     },
     {
       "tarih": "2026-12-17",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -823,8 +569,6 @@
     },
     {
       "tarih": "2026-12-18",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -832,8 +576,6 @@
     },
     {
       "tarih": "2026-12-19",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -841,8 +583,6 @@
     },
     {
       "tarih": "2026-12-20",
-      "hafta": 12,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -850,8 +590,6 @@
     },
     {
       "tarih": "2026-12-21",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -859,8 +597,6 @@
     },
     {
       "tarih": "2026-12-22",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -868,8 +604,6 @@
     },
     {
       "tarih": "2026-12-23",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -877,8 +611,6 @@
     },
     {
       "tarih": "2026-12-24",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -886,8 +618,6 @@
     },
     {
       "tarih": "2026-12-25",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -895,8 +625,6 @@
     },
     {
       "tarih": "2026-12-26",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -904,8 +632,6 @@
     },
     {
       "tarih": "2026-12-27",
-      "hafta": 13,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -913,8 +639,6 @@
     },
     {
       "tarih": "2026-12-28",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -922,8 +646,6 @@
     },
     {
       "tarih": "2026-12-29",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -931,8 +653,6 @@
     },
     {
       "tarih": "2026-12-30",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -940,8 +660,6 @@
     },
     {
       "tarih": "2026-12-31",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -949,8 +667,6 @@
     },
     {
       "tarih": "2027-01-01",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -958,8 +674,6 @@
     },
     {
       "tarih": "2027-01-02",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -967,8 +681,6 @@
     },
     {
       "tarih": "2027-01-03",
-      "hafta": 14,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -976,8 +688,6 @@
     },
     {
       "tarih": "2027-01-04",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -985,8 +695,6 @@
     },
     {
       "tarih": "2027-01-05",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -994,8 +702,6 @@
     },
     {
       "tarih": "2027-01-06",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1003,8 +709,6 @@
     },
     {
       "tarih": "2027-01-07",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1012,8 +716,6 @@
     },
     {
       "tarih": "2027-01-08",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1021,8 +723,6 @@
     },
     {
       "tarih": "2027-01-09",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1030,8 +730,6 @@
     },
     {
       "tarih": "2027-01-10",
-      "hafta": 15,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1039,8 +737,6 @@
     },
     {
       "tarih": "2027-01-11",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1048,8 +744,6 @@
     },
     {
       "tarih": "2027-01-12",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1057,8 +751,6 @@
     },
     {
       "tarih": "2027-01-13",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1066,8 +758,6 @@
     },
     {
       "tarih": "2027-01-14",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1075,8 +765,6 @@
     },
     {
       "tarih": "2027-01-15",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1084,8 +772,6 @@
     },
     {
       "tarih": "2027-01-16",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1093,8 +779,6 @@
     },
     {
       "tarih": "2027-01-17",
-      "hafta": 16,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1102,8 +786,6 @@
     },
     {
       "tarih": "2027-01-18",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1111,8 +793,6 @@
     },
     {
       "tarih": "2027-01-19",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1120,8 +800,6 @@
     },
     {
       "tarih": "2027-01-20",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1129,8 +807,6 @@
     },
     {
       "tarih": "2027-01-21",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1138,8 +814,6 @@
     },
     {
       "tarih": "2027-01-22",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1147,8 +821,6 @@
     },
     {
       "tarih": "2027-01-23",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1156,8 +828,6 @@
     },
     {
       "tarih": "2027-01-24",
-      "hafta": 17,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1165,8 +835,6 @@
     },
     {
       "tarih": "2027-01-25",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1174,8 +842,6 @@
     },
     {
       "tarih": "2027-01-26",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1183,8 +849,6 @@
     },
     {
       "tarih": "2027-01-27",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1192,8 +856,6 @@
     },
     {
       "tarih": "2027-01-28",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1201,8 +863,6 @@
     },
     {
       "tarih": "2027-01-29",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1210,8 +870,6 @@
     },
     {
       "tarih": "2027-01-30",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1219,8 +877,6 @@
     },
     {
       "tarih": "2027-01-31",
-      "hafta": 18,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1228,8 +884,6 @@
     },
     {
       "tarih": "2027-02-01",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1237,8 +891,6 @@
     },
     {
       "tarih": "2027-02-02",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1246,8 +898,6 @@
     },
     {
       "tarih": "2027-02-03",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1255,8 +905,6 @@
     },
     {
       "tarih": "2027-02-04",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1264,8 +912,6 @@
     },
     {
       "tarih": "2027-02-05",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1273,8 +919,6 @@
     },
     {
       "tarih": "2027-02-06",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1282,8 +926,6 @@
     },
     {
       "tarih": "2027-02-07",
-      "hafta": 19,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1291,8 +933,6 @@
     },
     {
       "tarih": "2027-02-08",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1300,8 +940,6 @@
     },
     {
       "tarih": "2027-02-09",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1309,8 +947,6 @@
     },
     {
       "tarih": "2027-02-10",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1318,8 +954,6 @@
     },
     {
       "tarih": "2027-02-11",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1327,8 +961,6 @@
     },
     {
       "tarih": "2027-02-12",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1336,8 +968,6 @@
     },
     {
       "tarih": "2027-02-13",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1345,8 +975,6 @@
     },
     {
       "tarih": "2027-02-14",
-      "hafta": 20,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1354,8 +982,6 @@
     },
     {
       "tarih": "2027-02-15",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1363,8 +989,6 @@
     },
     {
       "tarih": "2027-02-16",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1372,8 +996,6 @@
     },
     {
       "tarih": "2027-02-17",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1381,8 +1003,6 @@
     },
     {
       "tarih": "2027-02-18",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1390,8 +1010,6 @@
     },
     {
       "tarih": "2027-02-19",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1399,8 +1017,6 @@
     },
     {
       "tarih": "2027-02-20",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1408,8 +1024,6 @@
     },
     {
       "tarih": "2027-02-21",
-      "hafta": 21,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1417,8 +1031,6 @@
     },
     {
       "tarih": "2027-02-22",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1426,8 +1038,6 @@
     },
     {
       "tarih": "2027-02-23",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1435,8 +1045,6 @@
     },
     {
       "tarih": "2027-02-24",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1444,8 +1052,6 @@
     },
     {
       "tarih": "2027-02-25",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1453,8 +1059,6 @@
     },
     {
       "tarih": "2027-02-26",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1462,8 +1066,6 @@
     },
     {
       "tarih": "2027-02-27",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1471,8 +1073,6 @@
     },
     {
       "tarih": "2027-02-28",
-      "hafta": 22,
-      "faz": "2 · AYT'YE GEÇİŞ",
       "tyt_soru": 110,
       "tyt_dogru": 88,
       "ayt_soru": 70,
@@ -1480,8 +1080,6 @@
     },
     {
       "tarih": "2027-03-01",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1489,8 +1087,6 @@
     },
     {
       "tarih": "2027-03-02",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1498,8 +1094,6 @@
     },
     {
       "tarih": "2027-03-03",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1507,8 +1101,6 @@
     },
     {
       "tarih": "2027-03-04",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1516,8 +1108,6 @@
     },
     {
       "tarih": "2027-03-05",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1525,8 +1115,6 @@
     },
     {
       "tarih": "2027-03-06",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1534,8 +1122,6 @@
     },
     {
       "tarih": "2027-03-07",
-      "hafta": 23,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1543,8 +1129,6 @@
     },
     {
       "tarih": "2027-03-08",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1552,8 +1136,6 @@
     },
     {
       "tarih": "2027-03-09",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1561,8 +1143,6 @@
     },
     {
       "tarih": "2027-03-10",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1570,8 +1150,6 @@
     },
     {
       "tarih": "2027-03-11",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1579,8 +1157,6 @@
     },
     {
       "tarih": "2027-03-12",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1588,8 +1164,6 @@
     },
     {
       "tarih": "2027-03-13",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1597,8 +1171,6 @@
     },
     {
       "tarih": "2027-03-14",
-      "hafta": 24,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1606,8 +1178,6 @@
     },
     {
       "tarih": "2027-03-15",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1615,8 +1185,6 @@
     },
     {
       "tarih": "2027-03-16",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1624,8 +1192,6 @@
     },
     {
       "tarih": "2027-03-17",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1633,8 +1199,6 @@
     },
     {
       "tarih": "2027-03-18",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1642,8 +1206,6 @@
     },
     {
       "tarih": "2027-03-19",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1651,8 +1213,6 @@
     },
     {
       "tarih": "2027-03-20",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1660,8 +1220,6 @@
     },
     {
       "tarih": "2027-03-21",
-      "hafta": 25,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1669,8 +1227,6 @@
     },
     {
       "tarih": "2027-03-22",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1678,8 +1234,6 @@
     },
     {
       "tarih": "2027-03-23",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1687,8 +1241,6 @@
     },
     {
       "tarih": "2027-03-24",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1696,8 +1248,6 @@
     },
     {
       "tarih": "2027-03-25",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1705,8 +1255,6 @@
     },
     {
       "tarih": "2027-03-26",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1714,8 +1262,6 @@
     },
     {
       "tarih": "2027-03-27",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1723,8 +1269,6 @@
     },
     {
       "tarih": "2027-03-28",
-      "hafta": 26,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1732,8 +1276,6 @@
     },
     {
       "tarih": "2027-03-29",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1741,8 +1283,6 @@
     },
     {
       "tarih": "2027-03-30",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1750,8 +1290,6 @@
     },
     {
       "tarih": "2027-03-31",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1759,8 +1297,6 @@
     },
     {
       "tarih": "2027-04-01",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1768,8 +1304,6 @@
     },
     {
       "tarih": "2027-04-02",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1777,8 +1311,6 @@
     },
     {
       "tarih": "2027-04-03",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1786,8 +1318,6 @@
     },
     {
       "tarih": "2027-04-04",
-      "hafta": 27,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1795,8 +1325,6 @@
     },
     {
       "tarih": "2027-04-05",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1804,8 +1332,6 @@
     },
     {
       "tarih": "2027-04-06",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1813,8 +1339,6 @@
     },
     {
       "tarih": "2027-04-07",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1822,8 +1346,6 @@
     },
     {
       "tarih": "2027-04-08",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1831,8 +1353,6 @@
     },
     {
       "tarih": "2027-04-09",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1840,8 +1360,6 @@
     },
     {
       "tarih": "2027-04-10",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1849,8 +1367,6 @@
     },
     {
       "tarih": "2027-04-11",
-      "hafta": 28,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1858,8 +1374,6 @@
     },
     {
       "tarih": "2027-04-12",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1867,8 +1381,6 @@
     },
     {
       "tarih": "2027-04-13",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1876,8 +1388,6 @@
     },
     {
       "tarih": "2027-04-14",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1885,8 +1395,6 @@
     },
     {
       "tarih": "2027-04-15",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1894,8 +1402,6 @@
     },
     {
       "tarih": "2027-04-16",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1903,8 +1409,6 @@
     },
     {
       "tarih": "2027-04-17",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1912,8 +1416,6 @@
     },
     {
       "tarih": "2027-04-18",
-      "hafta": 29,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1921,8 +1423,6 @@
     },
     {
       "tarih": "2027-04-19",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1930,8 +1430,6 @@
     },
     {
       "tarih": "2027-04-20",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1939,8 +1437,6 @@
     },
     {
       "tarih": "2027-04-21",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1948,8 +1444,6 @@
     },
     {
       "tarih": "2027-04-22",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1957,8 +1451,6 @@
     },
     {
       "tarih": "2027-04-23",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1966,8 +1458,6 @@
     },
     {
       "tarih": "2027-04-24",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1975,8 +1465,6 @@
     },
     {
       "tarih": "2027-04-25",
-      "hafta": 30,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1984,8 +1472,6 @@
     },
     {
       "tarih": "2027-04-26",
-      "hafta": 31,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -1993,8 +1479,6 @@
     },
     {
       "tarih": "2027-04-27",
-      "hafta": 31,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -2002,8 +1486,6 @@
     },
     {
       "tarih": "2027-04-28",
-      "hafta": 31,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -2011,8 +1493,6 @@
     },
     {
       "tarih": "2027-04-29",
-      "hafta": 31,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -2020,8 +1500,6 @@
     },
     {
       "tarih": "2027-04-30",
-      "hafta": 31,
-      "faz": "3 · AYT BİTİŞ",
       "tyt_soru": 60,
       "tyt_dogru": 48,
       "ayt_soru": 140,
@@ -2029,8 +1507,6 @@
     },
     {
       "tarih": "2027-05-01",
-      "hafta": 31,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2038,8 +1514,6 @@
     },
     {
       "tarih": "2027-05-02",
-      "hafta": 31,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2047,8 +1521,6 @@
     },
     {
       "tarih": "2027-05-03",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2056,8 +1528,6 @@
     },
     {
       "tarih": "2027-05-04",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2065,8 +1535,6 @@
     },
     {
       "tarih": "2027-05-05",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2074,8 +1542,6 @@
     },
     {
       "tarih": "2027-05-06",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2083,8 +1549,6 @@
     },
     {
       "tarih": "2027-05-07",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2092,8 +1556,6 @@
     },
     {
       "tarih": "2027-05-08",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2101,8 +1563,6 @@
     },
     {
       "tarih": "2027-05-09",
-      "hafta": 32,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2110,8 +1570,6 @@
     },
     {
       "tarih": "2027-05-10",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2119,8 +1577,6 @@
     },
     {
       "tarih": "2027-05-11",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2128,8 +1584,6 @@
     },
     {
       "tarih": "2027-05-12",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2137,8 +1591,6 @@
     },
     {
       "tarih": "2027-05-13",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2146,8 +1598,6 @@
     },
     {
       "tarih": "2027-05-14",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2155,8 +1605,6 @@
     },
     {
       "tarih": "2027-05-15",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2164,8 +1612,6 @@
     },
     {
       "tarih": "2027-05-16",
-      "hafta": 33,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2173,8 +1619,6 @@
     },
     {
       "tarih": "2027-05-17",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2182,8 +1626,6 @@
     },
     {
       "tarih": "2027-05-18",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2191,8 +1633,6 @@
     },
     {
       "tarih": "2027-05-19",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2200,8 +1640,6 @@
     },
     {
       "tarih": "2027-05-20",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2209,8 +1647,6 @@
     },
     {
       "tarih": "2027-05-21",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2218,8 +1654,6 @@
     },
     {
       "tarih": "2027-05-22",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2227,8 +1661,6 @@
     },
     {
       "tarih": "2027-05-23",
-      "hafta": 34,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2236,8 +1668,6 @@
     },
     {
       "tarih": "2027-05-24",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2245,8 +1675,6 @@
     },
     {
       "tarih": "2027-05-25",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2254,8 +1682,6 @@
     },
     {
       "tarih": "2027-05-26",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2263,8 +1689,6 @@
     },
     {
       "tarih": "2027-05-27",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2272,8 +1696,6 @@
     },
     {
       "tarih": "2027-05-28",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2281,8 +1703,6 @@
     },
     {
       "tarih": "2027-05-29",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2290,8 +1710,6 @@
     },
     {
       "tarih": "2027-05-30",
-      "hafta": 35,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2299,8 +1717,6 @@
     },
     {
       "tarih": "2027-05-31",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2308,8 +1724,6 @@
     },
     {
       "tarih": "2027-06-01",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2317,8 +1731,6 @@
     },
     {
       "tarih": "2027-06-02",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2326,8 +1738,6 @@
     },
     {
       "tarih": "2027-06-03",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2335,8 +1745,6 @@
     },
     {
       "tarih": "2027-06-04",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2344,8 +1752,6 @@
     },
     {
       "tarih": "2027-06-05",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2353,8 +1759,6 @@
     },
     {
       "tarih": "2027-06-06",
-      "hafta": 36,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2362,8 +1766,6 @@
     },
     {
       "tarih": "2027-06-07",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2371,8 +1773,6 @@
     },
     {
       "tarih": "2027-06-08",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2380,8 +1780,6 @@
     },
     {
       "tarih": "2027-06-09",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2389,8 +1787,6 @@
     },
     {
       "tarih": "2027-06-10",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2398,8 +1794,6 @@
     },
     {
       "tarih": "2027-06-11",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2407,8 +1801,6 @@
     },
     {
       "tarih": "2027-06-12",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2416,8 +1808,6 @@
     },
     {
       "tarih": "2027-06-13",
-      "hafta": 37,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2425,8 +1815,6 @@
     },
     {
       "tarih": "2027-06-14",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2434,8 +1822,6 @@
     },
     {
       "tarih": "2027-06-15",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2443,8 +1829,6 @@
     },
     {
       "tarih": "2027-06-16",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2452,8 +1836,6 @@
     },
     {
       "tarih": "2027-06-17",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2461,8 +1843,6 @@
     },
     {
       "tarih": "2027-06-18",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2470,8 +1850,6 @@
     },
     {
       "tarih": "2027-06-19",
-      "hafta": 38,
-      "faz": "4 · DENEME",
       "tyt_soru": 85,
       "tyt_dogru": 68,
       "ayt_soru": 85,
@@ -2830,8 +2208,7 @@
       "soru_hedefi": 450,
       "planli_deneme": 0,
       "tyt_net_hedefi": 50,
-      "ayt_net_hedefi": 27,
-      "bu_ay_bitecek_konular": "Başlangıç haftası: rutini kur"
+      "ayt_net_hedefi": 27
     },
     {
       "ay": "Ekim 2026",
@@ -2840,8 +2217,7 @@
       "soru_hedefi": 4650,
       "planli_deneme": 5,
       "tyt_net_hedefi": 58,
-      "ayt_net_hedefi": 29,
-      "bu_ay_bitecek_konular": "Türkçe: Sözcükte Anlam, Cümlede Anlam, Paragraf, Ses Bilgisi · Sosyal: Tarih Bilimi ve İlk Uygarlıklar, Coğ. Doğa-İnsan, Dünya'nın Hareketleri · TYT Mat: Temel Kavramlar, Sayı Basamakları, Bölme ve Bölünebilme, EBOB – EKOK, Rasyonel Sayılar, Basit Eşitsizlikler, Mutlak Değer · Geometri: Doğruda ve Üçgende Açılar, Dik Üçgen ve Trigonometrik Bağıntılar · Fizik: Fizik Bilimine Giriş, Madde ve Özellikleri, Hareket ve Kuvvet · Kimya: Kimya Bilimi, Atom ve Periyodik Sistem · Biyoloji: Canlıların Ortak Özellikleri, Canlıların Temel Bileşenleri"
+      "ayt_net_hedefi": 29
     },
     {
       "ay": "Kasım 2026",
@@ -2850,8 +2226,7 @@
       "soru_hedefi": 4500,
       "planli_deneme": 4,
       "tyt_net_hedefi": 67,
-      "ayt_net_hedefi": 32,
-      "bu_ay_bitecek_konular": "Türkçe: Yazım Kuralları, Noktalama İşaretleri, Sözcükte Yapı · Sosyal: İlk ve Orta Çağda Türkler, Coğ. Harita ve İklim, Felsefe · TYT Mat: Üslü Sayılar, Köklü Sayılar, Çarpanlara Ayırma, Oran – Orantı, Denklem Çözme, Prob. Sayı – Kesir, Prob. Yaş – İşçi – Havuz · Geometri: İkizkenar ve Eşkenar Üçgen, Açıortay ve Kenarortay, Üçgende Eşlik ve Benzerlik · Fizik: İş – Güç – Enerji, Isı, Sıcaklık ve Genleşme, Elektrostatik · Kimya: Türler Arası Etkileşimler, Maddenin Halleri, Doğa ve Kimya · Biyoloji: Hücre ve Organeller, Hücre Zarından Madde Geçişi, Canlıların Sınıflandırılması"
+      "ayt_net_hedefi": 32
     },
     {
       "ay": "Aralık 2026",
@@ -2860,8 +2235,7 @@
       "soru_hedefi": 5580,
       "planli_deneme": 6,
       "tyt_net_hedefi": 74,
-      "ayt_net_hedefi": 35,
-      "bu_ay_bitecek_konular": "Türkçe: Sözcük Türleri, Fiiller · Sosyal: İslam ve Türk-İslam Devletleri, Coğ. Yer Şekilleri, Nüfus, Yerleşme · TYT Mat: Prob. Hız, Prob. Yüzde – Kâr – Zarar, Prob. Karışım – Grafik, Kümeler – Kartezyen Çarpım, Mantık, Fonksiyonlar · Geometri: Üçgende Alan, Açı – Kenar Bağıntıları · Fizik: Elektrik Akımı ve Devreler, Manyetizma, Basınç, Kaldırma Kuvveti · Kimya: Temel Kanunlar ve Mol, Kimyasal Tepkimeler ve Hesaplamalar · Biyoloji: Hücre Bölünmeleri ve Üreme, Kalıtım, Ekosistem Ekolojisi ve Çevre Sorunları"
+      "ayt_net_hedefi": 35
     },
     {
       "ay": "Ocak 2027",
@@ -2870,8 +2244,7 @@
       "soru_hedefi": 5580,
       "planli_deneme": 8,
       "tyt_net_hedefi": 79,
-      "ayt_net_hedefi": 38,
-      "bu_ay_bitecek_konular": "Türkçe: Cümlenin Ögeleri, Fiilde Çatı, Cümle Türleri, Anlatım Bozuklukları · Sosyal: Osmanlı, Din Kültürü · TYT Mat: Polinomlar, 2. Dereceden Denklemler, Permütasyon – Kombinasyon – Olasılık, Veri – İstatistik · Geometri: Çokgenler, Dörtgenler, Yamuk ve Deltoid · AYT Mat: Fonksiyonlar, Polinomlar · Fizik: Dalgalar, Optik, Vektörler, Bağıl Hareket, Newton'un Hareket Yasaları · Kimya: Karışımlar, Asitler, Bazlar ve Tuzlar, Kimya Her Yerde, Modern Atom Teorisi, Gazlar · Biyoloji: Sinir Sistemi, Endokrin Sistem, Duyu Organları"
+      "ayt_net_hedefi": 38
     },
     {
       "ay": "Şubat 2027",
@@ -2880,8 +2253,7 @@
       "soru_hedefi": 5040,
       "planli_deneme": 6,
       "tyt_net_hedefi": 83,
-      "ayt_net_hedefi": 43,
-      "bu_ay_bitecek_konular": "Sosyal: Osmanlı, Milli Mücadele ve İnkılaplar, Coğ. Ekonomi, Bölgeler, Afetler · Geometri: Çember ve Daire, Analitik Geometri, Katı Cisimler · AYT Mat: 2. Derece Denklemler & Karmaşık Sayılar, Parabol, Eşitsizlikler, Trigonometri · Fizik: Bir Boyutta Sabit İvmeli Hareket, Atışlar, İş, Enerji ve Korunum, İtme ve Çizgisel Momentum, Tork ve Denge, Kütle Merkezi, Basit Makineler · Kimya: Sıvı Çözeltiler ve Çözünürlük, Tepkimelerde Enerji, Tepkimelerde Hız · Biyoloji: Destek ve Hareket Sistemi, Sindirim Sistemi, Dolaşım ve Bağışıklık, Solunum Sistemi"
+      "ayt_net_hedefi": 43
     },
     {
       "ay": "Mart 2027",
@@ -2890,8 +2262,7 @@
       "soru_hedefi": 6200,
       "planli_deneme": 8,
       "tyt_net_hedefi": 87,
-      "ayt_net_hedefi": 46,
-      "bu_ay_bitecek_konular": "Geometri: Çemberin Analitik İncelemesi, Dönüşüm Geometrisi · AYT Mat: Logaritma, Diziler, Limit ve Süreklilik, Türev · Fizik: Elektriksel Kuvvet, Alan, Potansiyel, Düzgün Elektrik Alan ve Sığa, Manyetizma ve İndüksiyon, Alternatif Akım ve Transformatör · Kimya: Kimyasal Denge, Asit – Baz Dengesi, Çözünürlük Dengesi · Biyoloji: Üriner Sistem, Üreme Sistemi ve Gelişim, Genden Proteine"
+      "ayt_net_hedefi": 46
     },
     {
       "ay": "Nisan 2027",
@@ -2900,8 +2271,7 @@
       "soru_hedefi": 6000,
       "planli_deneme": 8,
       "tyt_net_hedefi": 90,
-      "ayt_net_hedefi": 50,
-      "bu_ay_bitecek_konular": "AYT Mat: İntegral, Sayma, Binom ve Olasılık · Fizik: Çembersel Hareket ve Kütle Çekim, Basit Harmonik Hareket, Dalga Mekaniği, Atom Fiziği ve Modern Fizik · Kimya: Kimya ve Elektrik, Karbon Kimyasına Giriş, Organik Bileşikler, Enerji Kaynakları · Biyoloji: Canlılarda Enerji Dönüşümleri, Bitki Biyolojisi, Komünite ve Popülasyon Ekolojisi, Canlılar ve Çevre"
+      "ayt_net_hedefi": 50
     },
     {
       "ay": "Mayıs 2027",
@@ -2910,8 +2280,7 @@
       "soru_hedefi": 5270,
       "planli_deneme": 18,
       "tyt_net_hedefi": 92,
-      "ayt_net_hedefi": 52,
-      "bu_ay_bitecek_konular": "Yeni konu yok – genel tekrar + ÖSYM çıkmış sorular + eksik konular"
+      "ayt_net_hedefi": 52
     },
     {
       "ay": "Haziran 2027",
@@ -2920,1582 +2289,7 @@
       "soru_hedefi": 3230,
       "planli_deneme": 8,
       "tyt_net_hedefi": 92,
-      "ayt_net_hedefi": 52,
-      "bu_ay_bitecek_konular": "Hafif tekrar – yeni konu yok"
-    }
-  ],
-  "konu_takvimi": [
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Sözcükte Anlam",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Cümlede Anlam",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Paragraf (her gün – sürekli)",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Ses Bilgisi",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Yazım Kuralları",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Noktalama İşaretleri",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Sözcükte Yapı",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Sözcük Türleri",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Fiiller (Kip, Ek Fiil, Fiilimsi)",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Cümlenin Ögeleri",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Fiilde Çatı",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Cümle Türleri",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Türkçe",
-      "konu": "Anlatım Bozuklukları",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: Tarih Bilimi ve İlk Uygarlıklar",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Coğrafya: Doğa-İnsan, Dünya'nın Hareketleri",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: İlk ve Orta Çağda Türkler",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Coğrafya: Harita ve İklim",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Felsefe",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: İslam ve Türk-İslam Devletleri",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Coğrafya: Yer Şekilleri, Nüfus, Yerleşme",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: Osmanlı (Kuruluş – Yükselme)",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Din Kültürü",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: Osmanlı (Değişim – Dağılma)",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Tarih: Milli Mücadele ve İnkılaplar",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Sosyal",
-      "konu": "Coğrafya: Ekonomi, Bölgeler, Afetler",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Temel Kavramlar",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Sayı Basamakları",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Bölme ve Bölünebilme",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "EBOB – EKOK",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Rasyonel Sayılar",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Basit Eşitsizlikler",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Mutlak Değer",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Üslü Sayılar",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Köklü Sayılar",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Çarpanlara Ayırma",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Oran – Orantı",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Denklem Çözme",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Problemler: Sayı – Kesir",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Problemler: Yaş – İşçi – Havuz",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Problemler: Hız",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Problemler: Yüzde – Kâr – Zarar",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Problemler: Karışım – Grafik",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Kümeler – Kartezyen Çarpım",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Mantık",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Fonksiyonlar (TYT)",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Polinomlar (TYT)",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "2. Dereceden Denklemler (TYT)",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Permütasyon – Kombinasyon – Olasılık",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "TYT Mat",
-      "konu": "Veri – İstatistik",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Doğruda ve Üçgende Açılar",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Dik Üçgen ve Trigonometrik Bağıntılar",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "İkizkenar ve Eşkenar Üçgen",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Açıortay ve Kenarortay",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Üçgende Eşlik ve Benzerlik",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Üçgende Alan",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Açı – Kenar Bağıntıları",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Çokgenler",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Dörtgenler",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Yamuk ve Deltoid",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Çember ve Daire",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Analitik Geometri (Nokta – Doğru)",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Katı Cisimler",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Çemberin Analitik İncelemesi",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "TYT+AYT",
-      "ders": "Geometri",
-      "konu": "Dönüşüm Geometrisi",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Fonksiyonlar (AYT)",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Polinomlar (AYT)",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "2. Derece Denklemler & Karmaşık Sayılar",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Parabol",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Eşitsizlikler (AYT)",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Trigonometri",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Logaritma",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Diziler",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Limit ve Süreklilik",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Türev",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "İntegral",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "AYT Mat",
-      "konu": "Sayma, Binom ve Olasılık (AYT)",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Fizik Bilimine Giriş",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Madde ve Özellikleri",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Hareket ve Kuvvet",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "İş – Güç – Enerji",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Isı, Sıcaklık ve Genleşme",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Elektrostatik",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Elektrik Akımı ve Devreler",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Manyetizma",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Basınç",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Kaldırma Kuvveti",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Dalgalar",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Fizik",
-      "konu": "Optik",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Vektörler",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Bağıl Hareket",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Newton'un Hareket Yasaları",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Bir Boyutta Sabit İvmeli Hareket",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Atışlar",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "İş, Enerji ve Korunum",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "İtme ve Çizgisel Momentum",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Tork ve Denge",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Kütle Merkezi",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Basit Makineler",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Elektriksel Kuvvet, Alan, Potansiyel",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Düzgün Elektrik Alan ve Sığa",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Manyetizma ve İndüksiyon",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Alternatif Akım ve Transformatör",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Çembersel Hareket ve Kütle Çekim",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Basit Harmonik Hareket",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Dalga Mekaniği",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Fizik",
-      "konu": "Atom Fiziği ve Modern Fizik",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Kimya Bilimi",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Atom ve Periyodik Sistem",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Türler Arası Etkileşimler",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Maddenin Halleri",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Doğa ve Kimya",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Temel Kanunlar ve Mol",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Kimyasal Tepkimeler ve Hesaplamalar",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Karışımlar",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Asitler, Bazlar ve Tuzlar",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Kimya",
-      "konu": "Kimya Her Yerde",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Modern Atom Teorisi",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Gazlar",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Sıvı Çözeltiler ve Çözünürlük",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Tepkimelerde Enerji",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Tepkimelerde Hız",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Kimyasal Denge",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Asit – Baz Dengesi",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Çözünürlük Dengesi",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Kimya ve Elektrik",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Karbon Kimyasına Giriş",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Organik Bileşikler",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Kimya",
-      "konu": "Enerji Kaynakları",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Canlıların Ortak Özellikleri",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Canlıların Temel Bileşenleri",
-      "bitis_ayi": "Ekim 2026",
-      "bitis_tarihi": "2026-10-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Hücre ve Organeller",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Hücre Zarından Madde Geçişi",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Canlıların Sınıflandırılması",
-      "bitis_ayi": "Kasım 2026",
-      "bitis_tarihi": "2026-11-30"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Hücre Bölünmeleri ve Üreme",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Kalıtım",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "TYT",
-      "ders": "Biyoloji",
-      "konu": "Ekosistem Ekolojisi ve Çevre Sorunları",
-      "bitis_ayi": "Aralık 2026",
-      "bitis_tarihi": "2026-12-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Sinir Sistemi",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Endokrin Sistem",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Duyu Organları",
-      "bitis_ayi": "Ocak 2027",
-      "bitis_tarihi": "2027-01-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Destek ve Hareket Sistemi",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Sindirim Sistemi",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Dolaşım ve Bağışıklık",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Solunum Sistemi",
-      "bitis_ayi": "Şubat 2027",
-      "bitis_tarihi": "2027-02-28"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Üriner (Boşaltım) Sistem",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Üreme Sistemi ve Gelişim",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Genden Proteine",
-      "bitis_ayi": "Mart 2027",
-      "bitis_tarihi": "2027-03-31"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Canlılarda Enerji Dönüşümleri",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Bitki Biyolojisi",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Komünite ve Popülasyon Ekolojisi",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    },
-    {
-      "sinav": "AYT",
-      "ders": "Biyoloji",
-      "konu": "Canlılar ve Çevre",
-      "bitis_ayi": "Nisan 2027",
-      "bitis_tarihi": "2027-04-30"
-    }
-  ],
-  "haftalik_program": [
-    [
-      "Saat",
-      "Pazartesi",
-      "Salı",
-      "Çarşamba",
-      "Perşembe",
-      "Cuma",
-      "Cumartesi",
-      "Pazar"
-    ],
-    [
-      "08:00–09:00",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf",
-      "Türkçe: 40 paragraf"
-    ],
-    [
-      "09:10–10:00",
-      "Türkçe dil bilgisi",
-      "Sosyal (40 soru)",
-      "Türkçe dil bilgisi",
-      "Sosyal (40 soru)",
-      "Türkçe dil bilgisi",
-      "DENEME 10:15–13:00",
-      "Haftanın tekrarı"
-    ],
-    [
-      "10:00–12:00",
-      "Matematik ÖZEL DERS",
-      "MATEMATİK *",
-      "MATEMATİK *",
-      "MATEMATİK *",
-      "MATEMATİK *",
-      "(deneme)",
-      "Haftanın tekrarı"
-    ],
-    [
-      "13:40–15:00",
-      "TYT Mat test",
-      "Geometri",
-      "TYT Mat test",
-      "Geometri",
-      "TYT Mat test",
-      "Deneme yanlış analizi",
-      "Eksik konu"
-    ],
-    [
-      "15:10–16:00",
-      "Fizik **",
-      "Fizik **",
-      "Fizik **",
-      "Fizik **",
-      "Fizik **",
-      "Deneme yanlış analizi",
-      "Eksik konu"
-    ],
-    [
-      "16:10–17:00",
-      "Kimya **",
-      "Biyoloji **",
-      "Kimya **",
-      "Biyoloji **",
-      "Kimya **",
-      "—",
-      "—"
-    ],
-    [
-      "17:10–18:00",
-      "Biyoloji **",
-      "Kimya **",
-      "Biyoloji **",
-      "Kimya **",
-      "Biyoloji **",
-      "—",
-      "Gelecek hafta planı"
-    ],
-    [
-      "21:00–22:00",
-      "Eksik konu / yapamadığım sorular",
-      "Eksik konu / yapamadığım sorular",
-      "Eksik konu / yapamadığım sorular",
-      "Eksik konu / yapamadığım sorular",
-      "Eksik konu / yapamadığım sorular",
-      "—",
-      "—"
-    ]
-  ],
-  "sinav_tarihi": "2027-06-19",
-  "kaynak": "Nazile YKS Takip V2",
-  "deneme_plani": [
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-1",
-      "tarih": "2026-10-03",
-      "beklenen_net": 51
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-2",
-      "tarih": "2026-10-10",
-      "beklenen_net": 52.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-3",
-      "tarih": "2026-10-17",
-      "beklenen_net": 54.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-4",
-      "tarih": "2026-10-24",
-      "beklenen_net": 56
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-5",
-      "tarih": "2026-10-31",
-      "beklenen_net": 58
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-6",
-      "tarih": "2026-11-07",
-      "beklenen_net": 60
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-7",
-      "tarih": "2026-11-14",
-      "beklenen_net": 62
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-8",
-      "tarih": "2026-11-21",
-      "beklenen_net": 64.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-9",
-      "tarih": "2026-11-28",
-      "beklenen_net": 66.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-10",
-      "tarih": "2026-12-05",
-      "beklenen_net": 68
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-11",
-      "tarih": "2026-12-12",
-      "beklenen_net": 69.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-12",
-      "tarih": "2026-12-19",
-      "beklenen_net": 71.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-13",
-      "tarih": "2026-12-26",
-      "beklenen_net": 73
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-14",
-      "tarih": "2027-01-02",
-      "beklenen_net": 74.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-15",
-      "tarih": "2027-01-09",
-      "beklenen_net": 75.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-16",
-      "tarih": "2027-01-16",
-      "beklenen_net": 76.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-17",
-      "tarih": "2027-01-23",
-      "beklenen_net": 77.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-18",
-      "tarih": "2027-01-30",
-      "beklenen_net": 79
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-19",
-      "tarih": "2027-02-06",
-      "beklenen_net": 80
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-20",
-      "tarih": "2027-02-13",
-      "beklenen_net": 81
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-21",
-      "tarih": "2027-02-20",
-      "beklenen_net": 82
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-22",
-      "tarih": "2027-02-27",
-      "beklenen_net": 83
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-23",
-      "tarih": "2027-03-06",
-      "beklenen_net": 84
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-24",
-      "tarih": "2027-03-13",
-      "beklenen_net": 84.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-25",
-      "tarih": "2027-03-20",
-      "beklenen_net": 85.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-26",
-      "tarih": "2027-03-27",
-      "beklenen_net": 86.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-27",
-      "tarih": "2027-04-03",
-      "beklenen_net": 87.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-28",
-      "tarih": "2027-04-10",
-      "beklenen_net": 88
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-29",
-      "tarih": "2027-04-17",
-      "beklenen_net": 88.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-30",
-      "tarih": "2027-04-24",
-      "beklenen_net": 89.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-31",
-      "tarih": "2027-05-01",
-      "beklenen_net": 90
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-32",
-      "tarih": "2027-05-05",
-      "beklenen_net": 90.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-33",
-      "tarih": "2027-05-08",
-      "beklenen_net": 90.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-34",
-      "tarih": "2027-05-12",
-      "beklenen_net": 91
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-35",
-      "tarih": "2027-05-15",
-      "beklenen_net": 91
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-36",
-      "tarih": "2027-05-19",
-      "beklenen_net": 91
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-37",
-      "tarih": "2027-05-22",
-      "beklenen_net": 91.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-38",
-      "tarih": "2027-05-26",
-      "beklenen_net": 91.5
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-39",
-      "tarih": "2027-05-29",
-      "beklenen_net": 92
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-40",
-      "tarih": "2027-06-02",
-      "beklenen_net": 92
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-41",
-      "tarih": "2027-06-05",
-      "beklenen_net": 92
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-42",
-      "tarih": "2027-06-09",
-      "beklenen_net": 92
-    },
-    {
-      "sinav": "TYT",
-      "deneme": "TYT-43",
-      "tarih": "2027-06-12",
-      "beklenen_net": 92
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-1",
-      "tarih": "2026-12-06",
-      "beklenen_net": 32.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-2",
-      "tarih": "2026-12-20",
-      "beklenen_net": 34
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-3",
-      "tarih": "2027-01-03",
-      "beklenen_net": 35.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-4",
-      "tarih": "2027-01-17",
-      "beklenen_net": 36.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-5",
-      "tarih": "2027-01-31",
-      "beklenen_net": 38
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-6",
-      "tarih": "2027-02-14",
-      "beklenen_net": 40.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-7",
-      "tarih": "2027-02-28",
-      "beklenen_net": 43
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-8",
-      "tarih": "2027-03-07",
-      "beklenen_net": 43.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-9",
-      "tarih": "2027-03-14",
-      "beklenen_net": 44.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-10",
-      "tarih": "2027-03-21",
-      "beklenen_net": 45
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-11",
-      "tarih": "2027-03-28",
-      "beklenen_net": 45.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-12",
-      "tarih": "2027-04-04",
-      "beklenen_net": 46.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-13",
-      "tarih": "2027-04-11",
-      "beklenen_net": 47.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-14",
-      "tarih": "2027-04-18",
-      "beklenen_net": 48.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-15",
-      "tarih": "2027-04-25",
-      "beklenen_net": 49.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-16",
-      "tarih": "2027-05-02",
-      "beklenen_net": 50
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-17",
-      "tarih": "2027-05-06",
-      "beklenen_net": 50.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-18",
-      "tarih": "2027-05-09",
-      "beklenen_net": 50.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-19",
-      "tarih": "2027-05-13",
-      "beklenen_net": 51
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-20",
-      "tarih": "2027-05-16",
-      "beklenen_net": 51
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-21",
-      "tarih": "2027-05-20",
-      "beklenen_net": 51.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-22",
-      "tarih": "2027-05-23",
-      "beklenen_net": 51.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-23",
-      "tarih": "2027-05-27",
-      "beklenen_net": 51.5
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-24",
-      "tarih": "2027-05-30",
-      "beklenen_net": 52
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-25",
-      "tarih": "2027-06-03",
-      "beklenen_net": 52
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-26",
-      "tarih": "2027-06-06",
-      "beklenen_net": 52
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-27",
-      "tarih": "2027-06-10",
-      "beklenen_net": 52
-    },
-    {
-      "sinav": "AYT",
-      "deneme": "AYT-28",
-      "tarih": "2027-06-13",
-      "beklenen_net": 52
+      "ayt_net_hedefi": 52
     }
   ]
 }

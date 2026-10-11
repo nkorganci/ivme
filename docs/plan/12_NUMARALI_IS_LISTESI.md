@@ -127,7 +127,7 @@
 | 09.02 | BITTI | Günlük/haftalık/aylık hedef oluştur/düzenle/durdur UI | [38_09_02_HEDEF_YONETIMI.md](38_09_02_HEDEF_YONETIMI.md) | — (tamamlandı) |
 | 09.03 | BITTI | Çift saymayan ilerleme ve gün sonu/zaman dilimi testleri | [39_09_03_HEDEF_ILERLEMESI.md](39_09_03_HEDEF_ILERLEMESI.md) | — (tamamlandı) |
 | 09.04 | BITTI | Bugün ve hafta hedeflerinin açık görünümü; kaçırılan güne yargılayıcı olmayan öneri | [40_09_04_HEDEF_OZETI.md](40_09_04_HEDEF_OZETI.md) | — (tamamlandı) |
-| 09.05 | BITTI | Excel kökenli günlük/haftalık/aylık çalışma planı, deneme ve konu takvimini ayrı takip panelinde göster | [58_09_05_ILERLEME_TAKIP_PANELI.md](58_09_05_ILERLEME_TAKIP_PANELI.md) | — (tamamlandı) |
+| 09.05 | BITTI | Excel kökenli günlük/haftalık/aylık hedefleri ayrı takip panelinde göster | [58_09_05_ILERLEME_TAKIP_PANELI.md](58_09_05_ILERLEME_TAKIP_PANELI.md) | — (tamamlandı) |
 
 ## 10 — Zayıf alan önerisi
 
