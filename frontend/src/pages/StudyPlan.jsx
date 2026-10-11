@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { usePageTitle } from '../hooks.js';
 import plan from '../data/ilerleme-plani.json';
+import DailyProgram from './DailyProgram.jsx';
 
-const TABS = [['day', 'Günlük'], ['week', 'Haftalık'], ['month', 'Aylık']];
+const TABS = [['day', 'Günlük'], ['week', 'Haftalık'], ['month', 'Aylık'], ['program', 'Günlük Program']];
 const format = (value) => new Intl.DateTimeFormat('tr-TR', {
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
 }).format(new Date(`${value}T12:00:00Z`));
@@ -31,13 +32,13 @@ export default function StudyPlan() {
         className={`btn ${tab === id ? 'btn-primary' : 'btn-secondary'}`}
         aria-pressed={tab === id} onClick={() => setTab(id)}>{label}</button>)}
     </nav>
-    <div className="plan-toolbar">
+    {tab !== 'program' && <div className="plan-toolbar">
       <label className="field"><span className="field-label">Plan tarihi</span>
         <input type="date" value={date} min={plan.gunluk_hedefler[0].tarih}
           max={plan.gunluk_hedefler.at(-1).tarih} onChange={(event) => setDate(event.target.value)} />
       </label>
       <button type="button" className="btn btn-secondary" onClick={() => setDate(dateToday())}>Bugüne dön</button>
-    </div>
+    </div>}
 
     {tab === 'day' && <section className="card">
       <h2>{format(date)} · Günlük</h2>
@@ -68,5 +69,6 @@ export default function StudyPlan() {
         <Target title="AYT net hedefi" value={month.ayt_net_hedefi} unit="net" />
       </div> : <p>Bu tarih için aylık plan yok.</p>}
     </section>}
+    {tab === 'program' && <DailyProgram />}
   </div>;
 }

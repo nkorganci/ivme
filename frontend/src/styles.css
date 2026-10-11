@@ -183,6 +183,22 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .plan-targets { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 10px; margin: 12px 0; }
 .plan-target { display: flex; flex-direction: column; gap: 3px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #f8fafc; }
 .plan-target strong { font-size: var(--fs-lg); color: var(--primary-dark); }
+.program-range { display: flex; align-items: end; flex-wrap: wrap; gap: 8px 12px; }
+.program-range .field { min-width: 180px; margin: 0; }
+.program-actions, .program-save { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.program-choice p { margin-top: 0; }
+.program-save { justify-content: space-between; margin: 12px 0; }
+.program-week-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.program-week-head h3 { margin: 0 0 10px; }
+.program-table { min-width: 1080px; table-layout: fixed; }
+.program-table th:first-child { width: 120px; }
+.program-table thead th { text-align: center; white-space: normal; }
+.program-table thead th span { display: block; color: var(--primary-dark); font-size: var(--fs-sm); }
+.program-table tbody th { white-space: nowrap; }
+.program-table td { padding: 4px; vertical-align: top; }
+.program-table textarea { display: block; width: 100%; min-height: 58px; resize: vertical; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; font-size: var(--fs-sm); }
+.program-table textarea:read-only { background: #f8fafc; color: var(--text); }
+.program-table .program-empty { background: #f8fafc; }
 .recommendation-subject { max-width: 320px; margin: 16px 0; }
 .recommendation-card details { margin: 12px 0; }
 .recommendation-card summary { cursor: pointer; font-weight: 600; }
