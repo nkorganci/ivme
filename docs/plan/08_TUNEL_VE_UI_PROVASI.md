@@ -25,3 +25,9 @@ Tarih: 2026-10-09. Durum: sürüyor. Gerçek `ivme` veritabanındaki iki ayrıca
 **Açık işler:** Gerçek `ivmeadmin` ve `ivmeoperator` parolalarını yerel Hesap ekranından ayrı, güçlü parolalarla değiştirme; sınırlı DB rolü ve görsel yedeği; üretim ayar dosyası; gerçek veritabanıyla kalıcı başlatma/yeniden başlatma ve gerçek cihazda tam kullanıcı akışı. Kullanıcı normal tarayıcı profilinde `net.ivme.dev` adresinin artık açıldığını bildirdi; bu gözlem tam giriş/soru akışı provası değildir. Kullanıcının son isteği gereği GitHub push yapılmadı.
 
 **Durum: AÇIK.** Tünel kanıtı [05.01–05.02](12_NUMARALI_IS_LISTESI.md) `BITTI`; canlıya alma denetimleri [05.03–05.05](12_NUMARALI_IS_LISTESI.md) açıktır.
+
+## 2026-10-11 — Normal profilde eski JavaScript
+
+Günlük Program güncellemesinden sonra Vite geliştirme sunucusunun `/src/programTime.js` çıktısı tünel üzerinden `Cache-Control: max-age=14400` ile sunuldu; yerel Vite yanıtı `no-cache` idi. Normal tarayıcı profili eski dosyayı tutarken yeni `DailyProgram.jsx` yüklendi. Vite hata kaydında yeni kodun istediği `normalize24Hour` dışa aktarımının eski dosyada bulunmadığı görüldü. Gizli pencerenin açılması bu gözlemle uyumludur; tek başına reklam engelleyiciyi kanıtlamaz.
+
+Güncel React çıktısı Spring Boot paketine kopyalanıp tünelin `5173` hedefinde Vite yerine tek Java süreci başlatıldı. Dış `/` ve sürümlü `/assets/index-B7mSJcK-.js` 200, oturumsuz `/api/auth/me` beklenen 401 yanıtını verdi. İlk açılış saniyelerinde kısa 502 görülebilir. Bu başlatma `dev` profili ve mevcut yerel veritabanı ayarlarını kullanır; README'deki üretim ayarları ve açık güvenlik işleri hâlâ tamamlanmalıdır. Normal profilde bir kez sert yenileme veya bu siteye ait eski önbelleği temizleme gerekebilir.
