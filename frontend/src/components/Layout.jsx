@@ -15,6 +15,7 @@ const ITEMS = [
   ['/gecmis', 'Geçmişim', 'clock'],
   ['/ilerleme', 'İlerlemem', 'clock'],
   ['/hedefler', 'Hedeflerim', 'clock'],
+  ['/ilerleme-takip', 'İlerleme Takip Paneli', 'layers'],
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];

@@ -2,7 +2,7 @@
 
 | Alan | Değer |
 |---|---|
-| Güncelleme | 2026-10-09 |
+| Güncelleme | 2026-10-11 |
 | Durum | Yaşayan plan; yalnız adım kayıtlarında doğrulanan işler tamamlanmış sayılır. |
 | Tek kaynak | `uygulama/docs/plan` ürün planının tek çalışma kaynağıdır; bu dosya kapsamı, [12_NUMARALI_IS_LISTESI.md](12_NUMARALI_IS_LISTESI.md) küçük işlerin güncel durumunu tutar. |
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
@@ -75,7 +75,7 @@
 
 ### Adım 9 — Hedef ve çalışma ritmi
 
-**Özet:** Öğrenci günlük/haftalık/aylık soru, test ve deneme hedefleri koyar. **Yapılacak:** Hedef periyodu, soru/test/deneme sayısı, tamamlanma koşulu, ders tercihi, geçmiş hedeflerin saklanması, kaçırılan günlere yargılayıcı olmayan öneri; soru çözüm tekrarları ve tekil sorular hedefte ayrı tanımlanır. **UI kontrolü:** Hedef oluştur/düzenle/durdur, bugünkü durum ve haftalık görünüm. **Bitti sayılır:** Aynı oturum iki kez sayılmaz; zaman dilimi değişimi ve gün sonu sınırı tutarlı. **Durum:** ACIK (2026-10-09); [09.01 dönem modeli](37_09_01_HEDEF_DONEM_MODELI.md), [09.02 hedef yönetimi](38_09_02_HEDEF_YONETIMI.md), [09.03 ilerleme sayımı](39_09_03_HEDEF_ILERLEMESI.md) ve [09.04 bugün/hafta özeti](40_09_04_HEDEF_OZETI.md) test DB ile masaüstü/mobil tarayıcı provasından geçti. Canlı DB ve fiziksel cihaz kabulü açık.
+**Özet:** Öğrenci günlük/haftalık/aylık soru, test ve deneme hedefleri koyar. **Yapılacak:** Hedef periyodu, soru/test/deneme sayısı, tamamlanma koşulu, ders tercihi, geçmiş hedeflerin saklanması, kaçırılan günlere yargılayıcı olmayan öneri; soru çözüm tekrarları ve tekil sorular hedefte ayrı tanımlanır. **UI kontrolü:** Hedef oluştur/düzenle/durdur, bugünkü durum ve haftalık görünüm. **Bitti sayılır:** Aynı oturum iki kez sayılmaz; zaman dilimi değişimi ve gün sonu sınırı tutarlı. **Durum:** ACIK (2026-10-11); [09.01 dönem modeli](37_09_01_HEDEF_DONEM_MODELI.md), [09.02 hedef yönetimi](38_09_02_HEDEF_YONETIMI.md), [09.03 ilerleme sayımı](39_09_03_HEDEF_ILERLEMESI.md) ve [09.04 bugün/hafta özeti](40_09_04_HEDEF_OZETI.md) test DB ile masaüstü/mobil tarayıcı provasından geçti. [09.05 İlerleme Takip Paneli](58_09_05_ILERLEME_TAKIP_PANELI.md) Excel kökenli planı ayrıca gösterir. Canlı DB ve fiziksel cihaz kabulü açık.
 
 ### Adım 10 — Zayıf alan ve soru tipi analizi
 

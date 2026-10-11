@@ -6,6 +6,7 @@ import Register from './pages/Register.jsx';
 import Home from './pages/Home.jsx';
 import Progress from './pages/Progress.jsx';
 import Goals from './pages/Goals.jsx';
+import StudyPlan from './pages/StudyPlan.jsx';
 import Recommendations from './pages/Recommendations.jsx';
 import QuestionCollection from './pages/QuestionCollection.jsx';
 import QuestionDetail from './pages/QuestionDetail.jsx';
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/gecmis" element={<History />} />
             <Route path="/ilerleme" element={<Progress />} />
             <Route path="/hedefler" element={<Goals />} />
+            <Route path="/ilerleme-takip" element={<StudyPlan />} />
             <Route path="/oneriler" element={<Recommendations />} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
