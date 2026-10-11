@@ -1,8 +1,8 @@
-// Örnek veri üretici: site/data/ogmck/sorular.js içinden ~50 soru seçer,
+// Örnek veri üretici: icerik/data/ogmck/sorular.js içinden ~50 soru seçer,
 // görselleri resimler/ altına kopyalar ve sorular.csv dosyasını yazar.
 // Kullanım:  node ornek_uret.mjs          → ~50 soruluk örnek veri (ornek-veri/, depoya girer)
 //            node ornek_uret.mjs --tum    → eldeki TÜM tek cevaplı çıkmış sorular (veri/sorular-tum.csv + veri/resimler/, depo dışı: .gitignore)
-// Bu betik yalnızca kaynak soru verisinin bulunduğu çalışma alanında çalışır (site/data/ogmck gerekir);
+// Bu betik yalnızca kaynak soru verisinin bulunduğu çalışma alanında çalışır (icerik/data/ogmck gerekir);
 // üretilmiş çıktılar (sorular.csv ve resimler/) depoda hazır gelir, normal kullanımda çalıştırmak gerekmez.
 // Not: sorularda zorluk alanı yoktur (zorluk yalnız kullanıcı oyu olarak toplanır).
 import fs from 'node:fs';
@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const burasi = path.dirname(fileURLToPath(import.meta.url));
 const kok = path.resolve(burasi, '..', '..');
-const veriKlasoru = path.join(kok, 'site', 'data', 'ogmck');
+const veriKlasoru = path.join(kok, 'icerik', 'data', 'ogmck');
 const js = fs.readFileSync(path.join(veriKlasoru, 'sorular.js'), 'utf8');
 const veri = JSON.parse(js.slice(js.indexOf('{'), js.lastIndexOf('}') + 1));
 

@@ -144,7 +144,7 @@ def pilot():
     for code in OGM_IDS:
         record = ogm_by_id[code]
         report.append(inspect_question(code, ROOT / "kaynaklar/ogm-materyal" / ogm["dosya"],
-            ROOT / "site" / record["gorsel"], record["sayfa"], None,
+            ROOT / "icerik" / record["gorsel"], record["sayfa"], None,
             record.get("metin"), record.get("cevaplar", []), "ogm"))
     ocr_check = None
     if (TESSDATA / "tur.traineddata").is_file():
@@ -192,7 +192,7 @@ def candidates(source_kind):
             for item in data["kayitlar"]:
                 code = item["id"]
                 yield code, (code, ROOT / "kaynaklar/ogm-materyal" / data["dosya"],
-                    ROOT / "site" / item["gorsel"], item["sayfa"], None,
+                    ROOT / "icerik" / item["gorsel"], item["sayfa"], None,
                     item.get("metin"), item.get("cevaplar", []), "ogm"), None
     else:
         raise ValueError(source_kind)

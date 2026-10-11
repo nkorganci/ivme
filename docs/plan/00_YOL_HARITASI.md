@@ -8,6 +8,8 @@
 | Kod deposu | `D:\workspace\ivme\uygulama` → `https://github.com/nkorganci/ivme`, çalışma kolu `feature/ivme-yol-haritasi` |
 **İlgili belgeler:** [numaralı iş listesi ve açık bağımlılıklar](12_NUMARALI_IS_LISTESI.md), [14.03 doğruluk kararı](53_14_03_DOGRULUK_MALIYET_OLCEK.md), [15.04 güvenli ipucu aktarımı](57_15_04_IPUCU_GUVENLI_AKTARIM.md), [aktif süre kaydı](32_06_05_AKTIF_SURE.md), [yedek provası](31_04_09_YEDEK_PROVASI.md), [07.08 uygulama kaydı](29_07_08_PDF_SORU_GECISI.md), [uygulama README](../../README.md), [mevcut API/mimari](../API-ve-mimari.md), [çalışma ilkeleri](01_BEST_PRACTICES.md), [kaynak ve referanslar](02_REFERANSLAR.md), [mevcut durum](04_MEVCUT_DURUM.md), [veritabanı geçişi](05_VERITABANI_GECISI.md), [tünel ve UI provası](08_TUNEL_VE_UI_PROVASI.md), [soru denemeleri](09_SORU_DENEMELERI.md).
 
+**Tek site düzeni (2026-10-11):** Eski statik arayüz kaldırıldı; içerik kaynağı ve korunacak belgeler [tek site düzeni kaydında](59_TEK_SITE_DUZENI.md) listelendi. Bu belge içindeki eski `site/` yolları tarihsel adım kayıtlarıdır.
+
 ## Ürün amacı ve ilk sınır
 
 Öğrenci bir konuyu öğrenir, seviyesine uygun soruları çözer, her denemesinden geri bildirim alır ve hangi alt beceriyi tekrar çalışacağını görür. TYT/AYT ilk içerik kümesidir; sınav türü, ders, konu, alt konu ve soru tipi veriyle tanımlanır. TUS, DUS, dil ve diğer sınavlar sonraki içerik paketleri olarak eklenir. İlk kullanım yaklaşık 50 kişi; tasarım ve veri modeli daha büyük kullanım için genişletilebilir olmalı, ilk sürümde dağıtık sistem kurulmaz.

@@ -1,5 +1,5 @@
 // "Soru Bankası" (OGM kaynakları) için içe aktarma dosyası üretir: veri/sorular-ogm.csv
-// Kaynak: site/data/ogm/q/*.js (kartlar) + site/data/ogm/img/ (görseller). Bu betik yalnızca kaynak verinin
+// Kaynak: icerik/data/ogm/q/*.js (kartlar) + icerik/data/ogm/img/ (görseller). Bu betik yalnızca kaynak verinin
 // bulunduğu çalışma alanında çalışır; çıktılar depoya girmez (veri/ .gitignore'dadır).
 //
 // Kullanım:  node ogm_uret.mjs            → CSV'yi yazar, görselleri veri/resimler-pilot/ogm altına KLASÖR BAĞLANTISI (junction) ile bağlar
@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 
 const burasi = path.dirname(fileURLToPath(import.meta.url));
 const uygulama = path.resolve(burasi, '..');
-const ogm = path.resolve(uygulama, '..', 'site', 'data', 'ogm');
+const ogm = path.resolve(uygulama, '..', 'icerik', 'data', 'ogm');
 const veri = path.join(uygulama, 'veri');
 const kopyala = process.argv.includes('--kopyala');
 
@@ -74,7 +74,7 @@ fs.writeFileSync(path.join(veri, 'sorular-ogm.csv'), '﻿' + satirlar.join('\n')
 console.log(`Kart: ${kartlar.length} | alınan: ${sayac.alinan} (çözüm görselli ${sayac.cozumlu}, video bağlantılı ${sayac.video})`);
 console.log(`Atlanan: ÖSYM çıkmış ${sayac.cikmis}, çok cevaplı/cevapsız ${sayac.cevapsiz}, görselsiz ${sayac.gorselsiz}; çözüm görseli bulunamayan ${sayac.cozumGorselsiz}`);
 
-// Görseller: veri/resimler-pilot/ogm → site/data/ogm/img; eski veri/resimler bağlantılarına dokunulmaz.
+// Görseller: veri/resimler-pilot/ogm → icerik/data/ogm/img; eski veri/resimler bağlantılarına dokunulmaz.
 const hedef = path.join(veri, 'resimler-pilot', 'ogm');
 fs.mkdirSync(path.dirname(hedef), { recursive: true });
 let bagVar = false;

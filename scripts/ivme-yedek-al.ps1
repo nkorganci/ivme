@@ -9,7 +9,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $sourceRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
 $imageRoots = [ordered]@{
-    ogm = 'D:\workspace\ivme\site\data\ogm\img'
+    ogm = (Join-Path $sourceRoot '..\icerik\data\ogm\img')
     tyt = (Join-Path $sourceRoot 'veri\resimler\TYT')
     ayt = (Join-Path $sourceRoot 'veri\resimler\AYT')
 }
