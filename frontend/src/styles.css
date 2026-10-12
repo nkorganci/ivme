@@ -159,6 +159,22 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 
 /* ===== Tablo, sayfalama, sekme ===== */
 .table-card { padding: 0; overflow: hidden; }
+.tracking-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.tracking-toolbar strong { margin: 0 8px; }
+.tracking-scroll { overflow-x: auto; padding: 0; }
+.tracking-table { width: 100%; min-width: 980px; border-collapse: collapse; table-layout: fixed; }
+.tracking-table th, .tracking-table td { border: 1px solid var(--line); padding: 7px; vertical-align: top; }
+.tracking-table thead th { background: var(--primary-soft); text-align: center; font-size: var(--fs-sm); }
+.tracking-table thead th:first-child, .tracking-table tbody th { width: 150px; }
+.tracking-table tbody th { background: #f8fafc; }
+.tracking-date { display: block; color: var(--muted); font-size: var(--fs-xs); font-weight: 400; }
+.tracking-time { width: 100%; min-height: 44px; padding: 5px 6px; border: 1px solid #cbd5e1; border-radius: 7px; font-size: var(--fs-sm); text-align: center; background: #fff; }
+.tracking-row-actions { display: flex; justify-content: center; gap: 4px; margin-top: 4px; }
+.tracking-row-actions button { min-height: 28px; padding: 1px 4px; border: 0; border-radius: 4px; color: var(--primary-dark); background: transparent; font-size: .75rem; }
+.tracking-row-actions button:hover { background: var(--primary-soft); }
+.tracking-table textarea { display: block; width: 100%; min-height: 44px; padding: 5px 6px; border: 1px solid transparent; border-radius: 7px; background: transparent; resize: none; overflow: hidden; font-size: var(--fs-sm); }
+.tracking-table textarea:hover, .tracking-table textarea:focus { border-color: #cbd5e1; background: #fff; }
+.tracking-table textarea[readonly], .tracking-table input[readonly] { color: var(--muted); cursor: default; }
 .table-card > h2, .table-card > h3 { padding: 12px 14px 0; margin: 0 0 4px; }
 .table-wrap { overflow-x: auto; }
 .table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }

@@ -21,6 +21,7 @@ import Admin from './pages/Admin.jsx';
 import Operator from './pages/Operator.jsx';
 import TopicPdfs from './pages/TopicPdfs.jsx';
 import TopicPdfViewer from './pages/TopicPdfViewer.jsx';
+import StudentTracking from './pages/StudentTracking.jsx';
 import { useAuth } from './auth.jsx';
 
 function RoleHome() {
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/gecmis" element={<History />} />
             <Route path="/ilerleme" element={<Progress />} />
             <Route path="/hedefler" element={<Goals />} />
+            <Route path="/ogrenci-takip" element={<StudentTracking />} />
             <Route path="/oneriler" element={<Recommendations />} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
