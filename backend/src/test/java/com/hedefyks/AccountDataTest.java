@@ -36,9 +36,6 @@ class AccountDataTest extends TestBase {
                 owner.getId(), question.getId(), "Kendi notum");
         jdbc.update("INSERT INTO goals(user_id,period,metric,target_count,starts_on,ends_on) "
                 + "VALUES (?,'DAY','ATTEMPTS',1,current_date,current_date)", owner.getId());
-        jdbc.update("INSERT INTO student_program_weeks(user_id,week_start,selected_start,selected_end,zone_id,cells) "
-                + "VALUES (?, date_trunc('week', current_date)::date, date_trunc('week', current_date)::date, "
-                + "date_trunc('week', current_date)::date, 'Europe/Istanbul', '{}'::jsonb)", owner.getId());
         jdbc.update("INSERT INTO activity_events(user_id,session_key,event_type) VALUES (?,?,'ACTIVE')",
                 owner.getId(), UUID.randomUUID());
         jdbc.update("INSERT INTO feedback(user_id,question_id,category,message) VALUES (?,?,'QUESTION_ISSUE',?)",
@@ -58,7 +55,6 @@ class AccountDataTest extends TestBase {
         assertThat(data.get("questionAttempts").size()).isEqualTo(1);
         assertThat(data.get("questionBoards").size()).isEqualTo(1);
         assertThat(data.get("goals").size()).isEqualTo(1);
-        assertThat(data.get("studyProgramWeeks").size()).isEqualTo(1);
         // login() records LOGIN automatically; the explicit ACTIVE event is exported too.
         assertThat(data.get("activityEvents").size()).isEqualTo(2);
 
@@ -76,7 +72,7 @@ class AccountDataTest extends TestBase {
         assertThat(users.findById(other.getId())).isPresent();
         assertThat(questions.findById(question.getId())).isPresent();
         for (String table : new String[]{"exams", "study_sessions", "question_attempts", "question_boards",
-                "feedback", "goals", "student_program_weeks", "activity_events"}) {
+                "feedback", "goals", "activity_events"}) {
             assertThat(jdbc.queryForObject("SELECT count(*) FROM " + table + " WHERE user_id = ?",
                     Long.class, owner.getId())).isZero();
         }
