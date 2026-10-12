@@ -53,6 +53,10 @@ class StudyProgramTest extends TestBase {
                 .andExpect(status().isBadRequest());
         assertThat(read(send(mehmet, get("/api/study-program?start=" + selected + "&end=" + selected), null)
                 .andExpect(status().isOk())).size()).isZero();
+        assertThat(read(send(mehmet, get("/api/study-program/index"), null)
+                .andExpect(status().isOk())).size()).isZero();
+        assertThat(read(send(ayse, get("/api/study-program/index"), null)
+                .andExpect(status().isOk())).get(0).asText()).isEqualTo(monday.toString());
         assertThat(read(send(ayse, get("/api/study-program?start=" + selected + "&end=" + selected), null)
                 .andExpect(status().isOk())).size()).isEqualTo(1);
 

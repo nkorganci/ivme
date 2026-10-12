@@ -48,6 +48,12 @@ public class StudyProgramService {
         return query(userId, monday(start), monday(end));
     }
 
+    @Transactional(readOnly = true)
+    public List<LocalDate> index(Long userId) {
+        return jdbc.queryForList("SELECT week_start FROM student_program_weeks WHERE user_id = ? ORDER BY week_start",
+                LocalDate.class, userId);
+    }
+
     @Transactional
     public List<Week> save(Long userId, Save input) {
         if (input == null || input.weeks() == null || input.weeks().isEmpty()

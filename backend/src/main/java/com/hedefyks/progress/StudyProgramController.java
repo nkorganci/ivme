@@ -24,6 +24,11 @@ public class StudyProgramController {
         return program.list(me.id(), start, end);
     }
 
+    @GetMapping("/index")
+    public List<LocalDate> index(@AuthenticationPrincipal AppUserDetails me) {
+        return program.index(me.id());
+    }
+
     @PutMapping
     public List<StudyProgramService.Week> save(@AuthenticationPrincipal AppUserDetails me,
             @RequestBody StudyProgramService.Save input) {
