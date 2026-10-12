@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <yks.build.directory>${project.basedir}/target</yks.build.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-csv.version>1.14.1</commons-csv.version>
         <zxing.version>3.5.4</zxing.version>
@@ -88,6 +89,7 @@
     </dependencies>
 
     <build>
+        <directory>${yks.build.directory}</directory>
         <finalName>hedef-yks</finalName>
         <plugins>
             <plugin>

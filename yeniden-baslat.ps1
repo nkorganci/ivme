@@ -2,8 +2,6 @@ $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
 $backend = Join-Path $repo 'backend'
 $frontend = Join-Path $repo 'frontend'
-$jar = Join-Path $backend 'target\hedef-yks.jar'
-$backup = Join-Path $backend 'target\hedef-yks.jar.restart-backup'
 $images = (Join-Path $repo 'veri\resimler-pilot').Replace('\', '/')
 $javaHome = 'C:\Tools\jdk-21'
 
@@ -13,9 +11,9 @@ if (-not (Test-Path -LiteralPath (Join-Path $javaHome 'bin\java.exe'))) {
 $env:JAVA_HOME = $javaHome
 $env:Path = "$(Join-Path $javaHome 'bin');$env:Path"
 
-function Start-Program {
+function Start-Program([string]$jarPath) {
     Start-Process -FilePath (Join-Path $javaHome 'bin\java.exe') -ArgumentList @(
-        '-jar', 'target\hedef-yks.jar', '--spring.profiles.active=dev', '--server.port=5173',
+        '-jar', ('"' + $jarPath + '"'), '--spring.profiles.active=dev', '--server.port=5173',
         "--app.images.dir=$images"
     ) -WorkingDirectory $backend -WindowStyle Hidden -PassThru
 }
@@ -31,42 +29,70 @@ if ($LASTEXITCODE -ne 0) { throw 'Ön yüz dosyaları pakete kopyalanamadı.' }
 
 Push-Location $backend
 try {
-    & mvn.cmd -q -DskipTests compile
-    if ($LASTEXITCODE -ne 0) { throw 'Arka yüz derlenemedi.' }
-
     $listener = Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+    $runningKind = $null
+    $oldJar = $null
     if ($listener) {
         $running = Get-CimInstance Win32_Process -Filter "ProcessId=$($listener.OwningProcess)"
-        if (-not $running -or $running.CommandLine -notmatch 'hedef-yks\.jar' -or
-                $running.CommandLine -notmatch 'server\.port=5173') {
+        if ($running -and $running.CommandLine -match 'hedef-yks\.jar' -and
+                $running.CommandLine -match 'server\.port=5173') {
+            $runningKind = 'jar'
+            $jarMatch = [regex]::Match($running.CommandLine, '-jar\s+(?:"([^"]+)"|(\S+))')
+            if ($jarMatch.Success) {
+                $oldJar = if ($jarMatch.Groups[1].Success) { $jarMatch.Groups[1].Value } else { $jarMatch.Groups[2].Value }
+                if (-not [IO.Path]::IsPathRooted($oldJar)) { $oldJar = Join-Path $backend $oldJar }
+            }
+        } elseif ($running -and $running.CommandLine -like "*$frontend*" -and
+                $running.CommandLine -match 'vite[\\/]bin[\\/]vite\.js') {
+            $runningKind = 'vite'
+        } else {
             throw '5173 portunda farklı bir uygulama çalışıyor; durdurulmadı.'
         }
     }
 
-    if (Test-Path -LiteralPath $jar) { Copy-Item -LiteralPath $jar -Destination $backup -Force }
-    if ($listener) { Stop-Process -Id $listener.OwningProcess -Force }
-
-    & mvn.cmd -q -DskipTests package
-    if ($LASTEXITCODE -ne 0) {
-        if (Test-Path -LiteralPath $backup) {
-            Copy-Item -LiteralPath $backup -Destination $jar -Force
-            $null = Start-Program
-        }
-        throw 'Yeni paket oluşturulamadı. Önceki paket yeniden başlatıldı.'
+    $slot = if ($oldJar -and $oldJar -match 'target[\\/]deploy-a[\\/]') { 'deploy-b' } else { 'deploy-a' }
+    $newJar = Join-Path $backend "target\$slot\hedef-yks.jar"
+    & mvn.cmd -q -DskipTests "-Dyks.build.directory=target/$slot" clean package
+    if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $newJar)) {
+        throw 'Yeni paket oluşturulamadı; çalışan uygulama korunuyor.'
     }
 
-    $started = Start-Program
+    if ($listener) {
+        Write-Host "5173 portundaki $runningKind sureci durduruluyor (PID $($listener.OwningProcess))."
+        Stop-Process -Id $listener.OwningProcess -Force
+        for ($wait = 0; $wait -lt 20; $wait++) {
+            if (-not (Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue)) { break }
+            Start-Sleep -Milliseconds 500
+        }
+        if (Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue) {
+            throw '5173 portu bosalmadi; yeni surum baslatilmadi.'
+        }
+    }
+
+    $started = Start-Program $newJar
 } finally { Pop-Location }
+
+$expectedIndex = Get-Content -LiteralPath (Join-Path $repo 'frontend\dist\index.html') -Raw
+$assetMatch = [regex]::Match($expectedIndex, '/assets/index-[^" ]+\.js')
+if (-not $assetMatch.Success) { throw 'Derlenen on yuz dosyasi bulunamadi.' }
+$expectedAsset = $assetMatch.Value
 
 for ($attempt = 0; $attempt -lt 30; $attempt++) {
     Start-Sleep -Seconds 1
-    if ($started.HasExited) { throw 'Uygulama başlatıldı ancak hemen kapandı.' }
+    if ($started.HasExited) { break }
     try {
-        $response = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/' -UseBasicParsing -TimeoutSec 2
-        if ($response.StatusCode -eq 200) {
-            Write-Host 'Uygulama hazır: http://localhost:5173'
+        $response = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/?surum-kontrolu=1' -UseBasicParsing -TimeoutSec 2 -Headers @{ 'Cache-Control' = 'no-cache' }
+        if ($response.StatusCode -eq 200 -and $response.Content.Contains($expectedAsset)) {
+            $route = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/ogrenci-takip' -UseBasicParsing -TimeoutSec 2
+            if ($route.StatusCode -ne 200) { continue }
+            Write-Host "Uygulama hazir: http://localhost:5173 ($expectedAsset)"
             exit 0
         }
     } catch { }
 }
-throw 'Uygulama başlatıldı fakat 30 saniyede hazır olmadı.'
+if (-not $started.HasExited) { Stop-Process -Id $started.Id -Force }
+if ($oldJar -and (Test-Path -LiteralPath $oldJar)) {
+    $null = Start-Program $oldJar
+    Write-Warning 'Yeni sürüm açılamadı; önceki paket yeniden başlatıldı.'
+}
+throw "Uygulama baslatildi ancak beklenen on yuz surumu 30 saniyede gorulmedi: $expectedAsset"

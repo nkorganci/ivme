@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { addRow, changeDuration, cloneRows, makeRows, parseInterval, removeRow, rowStart, validRows } from '../frontend/src/studentSchedule.js';
+import { addRow, changeDuration, changeInterval, cloneRows, makeRows, parseInterval, parseTimeRange, removeRow, rowStart, validRows } from '../frontend/src/studentSchedule.js';
 
 test('16 başlangıç satırı ve 24 saatlik saat biçimi', () => {
   const rows = makeRows();
@@ -36,4 +36,23 @@ test('24:00 sınırı aşılmaz; boş hafta saatleri korur', () => {
   assert.equal(blank[0].minutes, rows[0].minutes);
   assert.equal(blank[0].cells[0], '');
   assert.equal(rows[0].cells[0], 'Okuma');
+});
+
+test('başlangıç ve bitiş düzenlemesi komşu aralıkları kaydırır', () => {
+  let rows = changeInterval(makeRows(), 0, parseTimeRange('06:00-07:00'));
+  assert.equal(rowStart(rows, 0), 6 * 60);
+  assert.equal(rowStart(rows, 1), 7 * 60);
+  rows = changeInterval(rows, 3, parseTimeRange('09:30-12:00'));
+  assert.equal(rowStart(rows, 3), 9 * 60 + 30);
+  assert.equal(rowStart(rows, 4), 12 * 60);
+  assert.equal(rows[2].minutes, 90);
+  assert.equal(validRows(rows), true);
+});
+
+test('09:00-12:00 ilk satırda sonraki saatleri kaydırır ve 24:00 sınırında durur', () => {
+  const rows = changeInterval(makeRows(), 0, parseTimeRange('09:00-12:00'));
+  assert.equal(rowStart(rows, 0), 9 * 60);
+  assert.equal(rowStart(rows, 1), 12 * 60);
+  assert.equal(rowStart(rows, rows.length - 1) + rows.at(-1).minutes, 24 * 60);
+  assert.equal(rows.length, 13);
 });

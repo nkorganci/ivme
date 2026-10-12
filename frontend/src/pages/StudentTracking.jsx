@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useAuth } from '../auth.jsx';
 import Modal from '../components/Modal.jsx';
 import { usePageTitle } from '../hooks.js';
-import { addRow, changeDuration, cloneRows, formatTime, makeRows, parseInterval, removeRow, rowStart, validRows } from '../studentSchedule.js';
+import { addRow, changeInterval, cloneRows, formatTime, makeRows, parseTimeRange, removeRow, rowStart, validRows } from '../studentSchedule.js';
 
 const DAYS = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
 const DATE_FORMAT = new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long' });
@@ -85,18 +85,21 @@ export default function StudentTracking() {
 
   const commitTime = (index) => {
     if (past) return;
-    const start = rowStart(rows, index);
     const draft = drafts[index];
     if (draft === undefined) return;
-    const minutes = parseInterval(draft, start);
+    const range = parseTimeRange(draft);
     setDrafts((current) => { const next = { ...current }; delete next[index]; return next; });
-    if (minutes === null) {
-      setError(`${formatTime(start)} ile başlayan aralık geçersiz. Bitiş, başlangıçtan sonra ve en geç 24:00 olmalı.`);
+    if (range === null) {
+      setError('Saat aralığı geçersiz. Bitiş, başlangıçtan sonra ve en geç 24:00 olmalı.');
       return;
     }
-    const next = changeDuration(rows, index, minutes);
+    const next = changeInterval(rows, index, range);
     if (!next) {
-      setError('Bu aralık günün sonunu 24:00 ötesine taşır. Bir satırı kaldırın veya süreyi kısaltın.');
+      setError('Saatler çakışıyor veya günün sonunu 24:00 ötesine taşıyor. Önceki ve sonraki aralıkları kontrol edin.');
+      return;
+    }
+    if (rows.slice(next.length).some((row) => row.cells.some((cell) => cell.trim()))) {
+      setError('Bu değişiklik gün sonundaki dolu hücreleri kaldırır. Önce bu notları taşıyın veya daha kısa bir aralık seçin.');
       return;
     }
     updateRows(next);
@@ -152,7 +155,8 @@ export default function StudentTracking() {
       <strong>{DATE_FORMAT.format(monday)} – {DATE_FORMAT.format(dateAt(monday, 6))} {dateAt(monday, 6).getFullYear()}</strong>
       <button type="button" className="btn btn-secondary" onClick={goNext}>Sonraki hafta</button>
       <button type="button" className="btn btn-secondary" onClick={goToday}>Bu hafta</button>
-      {!past && <button type="button" className="btn btn-primary" onClick={save}>Kaydet</button>}
+      <button type="button" className="btn btn-primary" onClick={save} disabled={past}
+        title={past ? 'Geçmiş haftalar düzenlenemez' : 'Bu haftayı kaydet'}>Kaydet</button>
     </div>
     {past && <p className="muted small">Geçmiş haftalar görüntülenebilir, düzenlenemez.</p>}
     {!past && dirty && <p className="muted small">Kaydedilmemiş değişiklikler var.</p>}

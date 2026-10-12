@@ -27,8 +27,8 @@ export default defineConfig({
 
     allowedHosts: ['net.ivme.dev'],
 
-    // Disable Vite HMR through Cloudflare Tunnel
-    hmr: false,
+    // Yerel geliştirmede açık sayfa kaynak değişince güncellensin.
+    hmr: true,
   },
 
   preview: {

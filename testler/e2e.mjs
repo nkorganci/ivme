@@ -111,7 +111,7 @@ await shot('03-ana-sayfa');
 // sol menü: masaüstünde sabit menü, mobilde hamburger ile açılan çekmece (öğeler DOM'da her durumda vardır)
 if (mobil) { await clickText('', 'header.mobilebar button'); await sleep(300); }
 const menuLabels = await ev("[...document.querySelectorAll('.sidebar .sidenav a')].map((a) => a.getAttribute('aria-label'))");
-ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Konu anlatımları', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'İlerlemem', 'Hedeflerim', 'Çalışma önerileri', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
+ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Konu anlatımları', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'İlerlemem', 'Hedeflerim', 'Öğrenci Takip Portalı', 'Çalışma önerileri', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
 await shot('03b-sol-menu');
 if (mobil) await ev("document.querySelector('.scrim')?.click()");
 
