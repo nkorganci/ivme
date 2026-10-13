@@ -1,0 +1,881 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-13",
+  "groups": [
+    {
+      "id": "tyt-turkce",
+      "exam": "TYT",
+      "subject": "Türkçe",
+      "curriculumId": "turkce",
+      "labelGroups": [
+        "tyt-turkce"
+      ],
+      "lessons": [
+        {
+          "id": "sozcukte-anlam",
+          "title": "Sözcükte Anlam",
+          "topics": [
+            "Sözcükte anlam"
+          ],
+          "learn": [
+            "Anlamı sözcüğün cümledeki görevinden çıkar. Temel anlam ilk anlamdır; yan anlam bu anlamla bağını koruyan yeni kullanımdır. Mecaz kullanımda sözcük temel anlamından uzaklaşır. Terim ise belirli bir bilim, sanat veya mesleğin kavramını karşılar.",
+            "Anlam eşleştirmede sözcüğün yerine kısa bir açıklama koy. Aynı açıklama iki cümlede de anlamı koruyorsa eşleşme desteklenir. Boşluk tamamlarken bütün boşlukları birlikte denetle."
+          ],
+          "steps": [
+            "Kökün anlam türü mü, kullanım eşliği mi, boşluk tamamlama mı istediğini belirle.",
+            "Hedef sözcüğü bütün cümleyle birlikte oku; yerine anlamını açıklayan kısa bir ifade koy.",
+            "Her seçeneği bu açıklamayla karşılaştır; birden çok boşluk varsa hepsini ayrı ayrı sınayıp birlikte karar ver."
+          ],
+          "pitfall": "Bir sözcük her cümlede aynı anlam türünde kullanılmaz. Yalnız sözcüğün sözlükteki ilk anlamına veya kulağa doğal gelmesine göre seçim yapma.",
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 11,
+              "anchors": [
+                "Yan Anlam",
+                "Terim Anlam",
+                "Mecaz Anlam"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-0001",
+              "answer": "E",
+              "anchors": [
+                "moleküler",
+                "boş bırakılan"
+              ],
+              "explanation": "Araştırmada tekniklerin kullanılmasını ve bilim dalının gelişmesini birlikte ifade eden çift, iki boşluğun da anlamını tamamlar. Tek boşluğu uygun doldurmak yeterli değildir."
+            },
+            {
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-01-01",
+              "answer": "E",
+              "anchors": [
+                "bakıyor",
+                "hastaya"
+              ],
+              "explanation": "Memurun evrakla ilgilenmesiyle hekimin hastayla ilgilenmesi aynı kullanım ilişkisini kurar. Diğer seçeneklerde görme, yönelme veya öğüt verme anlamları öne çıkar."
+            }
+          ],
+          "practice": {
+            "question": "“Eleştirmenin keskin gözlemleri metindeki küçük tutarsızlıkları ortaya çıkardı.” cümlesinde “keskin” hangi anlamda kullanılmıştır?",
+            "choices": [
+              "Temel anlam",
+              "Yan anlam",
+              "Mecaz anlam",
+              "Terim anlam"
+            ],
+            "answer": 2,
+            "explanation": "C · Mecaz anlam. Sözcük fiziksel bir kesme özelliğini değil, gözlemin ayırt etme gücünü anlatır. A temel fiziksel anlamı, B o anlamla bağını koruyan kullanımı, D bir alanın özel kavramını gerektirir; bu cümlede bu koşullar yoktur."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Anlam bilgisi",
+          "topics": [
+            "Sözcükte anlam",
+            "Cümlede anlam",
+            "Paragrafta konu ve ana düşünce",
+            "Paragrafta yapı",
+            "Paragrafta anlatım teknikleri",
+            "Paragrafta düşünceyi geliştirme yolları",
+            "Sözel mantık"
+          ]
+        },
+        {
+          "name": "Dil bilgisi",
+          "topics": [
+            "Ses bilgisi",
+            "Yazım kuralları",
+            "Noktalama işaretleri",
+            "Sözcük türleri",
+            "İsim ve sıfat tamlamaları",
+            "Fiil, ek fiil ve fiilimsi",
+            "Cümlenin ögeleri",
+            "Cümle türleri",
+            "Anlatım bozuklukları"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ayt-edebiyat",
+      "exam": "AYT",
+      "subject": "Türk Dili ve Edebiyatı",
+      "curriculumId": "edebiyat",
+      "labelGroups": [
+        "ayt-turk-dili-ve-edebiyati"
+      ],
+      "lessons": [
+        {
+          "id": "siirde-ahenk",
+          "title": "Şiirde Ölçü, Uyak ve Redif",
+          "topics": [
+            "Şiir bilgisi"
+          ],
+          "learn": [
+            "Hece ölçüsü dizelerdeki hece sayısının eşitliğine dayanır. Redif, dize sonlarında aynı anlam ve görevle yinelenen ek veya sözlerdir. Uyak incelemesinde önce redifi ayır, sonra kalan ortak sesleri karşılaştır.",
+            "Nazım birimi, nazım biçimi ve nazım türü farklı sorulara cevap verir: dize topluluğu, biçimsel düzen ve işlenen konu. Birini bilmek ötekini tek başına kanıtlamaz."
+          ],
+          "steps": [
+            "Sorunun yanlış olanı mı, doğru olanı mı istediğini işaretle.",
+            "Hece sayısını her dizede ayrı say; dize sonlarındaki aynı anlam ve görevli ekleri veya sözleri ayır.",
+            "Kalan sesleri eşleştirerek uyak örgüsünü harflerle yaz. Her seçeneği şiirin ayrı bir özelliğiyle denetle."
+          ],
+          "pitfall": "Yalnız dize sonlarının benzemesi redif demek değildir; anlam ve görev de eş olmalıdır. Şairin dönemi ölçüyü tek başına kanıtlamaz.",
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 13,
+              "anchors": [
+                "NAZIM BİRİMİ"
+              ]
+            },
+            {
+              "catalogId": 39,
+              "page": 14,
+              "anchors": [
+                "Hece Ölçüsü",
+                "NAZIM TÜRÜ"
+              ]
+            },
+            {
+              "catalogId": 39,
+              "page": 15,
+              "anchors": [
+                "REDİF",
+                "aynı görev ve anlamdaki"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0050",
+              "answer": "B",
+              "anchors": [
+                "Sarma kafiye",
+                "Redife"
+              ],
+              "explanation": "İlk üç dize ortak seslerle bağlanır, son dize ayrılır: düzen aaab olur. Sarma uyak abba gerektirir. Bu yüzden sarma düzen bulunduğunu söyleyen B seçeneği yanlıştır."
+            },
+            {
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-20-03",
+              "answer": "E",
+              "anchors": [
+                "11’li hece",
+                "dörtlük"
+              ],
+              "explanation": "Dizeler onar hecedir. Soruda söylenemeyecek özellik arandığından 11'li ölçü diyen E seçeneği elenir. Ölçüyü çağrışımla değil sayarak denetlemek gerekir."
+            }
+          ],
+          "practice": {
+            "question": "İki dize sonundaki sözcüklerde bulunan “-lar” ekleri aynı çoğul görevini taşımaktadır. Bu eklerin ses benzerliği hangi kavramla açıklanır?",
+            "choices": [
+              "Redif",
+              "Yarım uyak",
+              "Zengin uyak",
+              "Aruz ölçüsü"
+            ],
+            "answer": 0,
+            "explanation": "A · Redif. Aynı anlam ve görevde yinelenen ekler rediftir. Uyak türüne karar vermek için rediften önce kalan ortak seslere bakılır; bu ekler tek başına uyak sayılmaz. Aruz ise ölçüyle ilgilidir."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Metin ve sanat",
+          "topics": [
+            "Edebiyatın temel kavramları",
+            "Şiir bilgisi",
+            "Söz sanatları",
+            "Metin türleri",
+            "Edebî akımlar"
+          ]
+        },
+        {
+          "name": "Türk edebiyatı dönemleri",
+          "topics": [
+            "İslamiyet öncesi Türk edebiyatı",
+            "Geçiş dönemi eserleri",
+            "Halk edebiyatı",
+            "Divan edebiyatı",
+            "Tanzimat edebiyatı",
+            "Servetifünun ve Fecriati",
+            "Millî Edebiyat",
+            "Cumhuriyet dönemi Türk edebiyatı"
+          ]
+        },
+        {
+          "name": "Türler ve eserler",
+          "topics": [
+            "Roman ve hikâye",
+            "Tiyatro",
+            "Öğretici metinler",
+            "Şair, yazar ve eser eşleştirmeleri"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-tarih",
+      "exam": "TYT",
+      "subject": "Tarih",
+      "curriculumId": "tarih",
+      "labelGroups": [
+        "tyt-tarih",
+        "ayt-tarih",
+        "ayt-tarih-1",
+        "ayt-tarih-2"
+      ],
+      "lessons": [
+        {
+          "id": "tarih-bilimi",
+          "title": "Tarih Bilimi ve Belgeden Çıkarım",
+          "topics": [
+            "Tarih bilimi ve zaman"
+          ],
+          "learn": [
+            "Tarih, insan faaliyetlerini yer, zaman, sebep ve sonuç ilişkileri içinde belgelerle inceler. Nesnellik, anlatılanı kişisel tercihe göre değiştirmeden kaynak kanıtına bağlı kalmayı gerektirir.",
+            "Bir soru yalnız verilen bilgiye göre çıkarım istiyorsa, doğru olduğunu başka yerden bildiğin bir olgu bile parçada desteklenmedikçe cevap gerekçesi olmaz. Kaynak türü ile kaynaktan çıkarılabilecek yargıyı ayrı değerlendir."
+          ],
+          "steps": [
+            "Kökteki “yalnız bu bilgiye göre” sınırını belirle.",
+            "Her öncül için parçada onu destekleyen bilgiyi göster; destek yoksa dış bilgiyle tamamlamaya çalışma.",
+            "Kaynağın aktardığı olay ile yorumunu ayır; nesnellik sorusunda gerçeğe bağlılık vurgusunu ara."
+          ],
+          "pitfall": "Hunlarla ilgili bildiğin başka askerî özellikleri, yalnız silah kullanımını anlatan bir parçadan çıkaramazsın. Doğru bilgi ile bu metinden çıkarılabilir bilgi aynı şey değildir.",
+          "sources": [
+            {
+              "catalogId": 28,
+              "page": 11,
+              "anchors": [
+                "objektif",
+                "belgeler",
+                "Birinci el kaynaklar"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-0361",
+              "answer": "B",
+              "anchors": [
+                "Yalnız bu bilgiye",
+                "savaş aletlerini"
+              ],
+              "explanation": "Parça yay, ok ve kementi etkili kullanmaya kanıt verir. Onlu sistem ve hilal taktiği hakkında bilgi içermez. Bu nedenle yalnız II desteklenir; cevap B'dir."
+            },
+            {
+              "bank": "OGM",
+              "code": "3a-tyt-tarih-01-03",
+              "answer": "D",
+              "anchors": [
+                "sadık",
+                "objektif"
+              ],
+              "explanation": "Tarih yazanın tarihsel gerçeğe sadık kalması vurgusu, nesnel tarih yazımını destekler. Başka bilimlerden yararlanma veya millî benlik bu alıntının doğrudan konusu değildir; cevap D'dir."
+            }
+          ],
+          "practice": {
+            "question": "Bir belge bir ordunun köprü kurup nehri geçtiğini anlatıyor; ordunun yönetim düzeni hakkında bilgi vermiyor. Yalnız bu belgeye dayanarak hangisi söylenebilir?",
+            "choices": [
+              "Orduda onlu sistem vardır.",
+              "Askerler yalnız süvarilerden oluşur.",
+              "Nehri aşmak için bir yapıdan yararlanılmıştır.",
+              "Devlet demokratik yönetilir."
+            ],
+            "answer": 2,
+            "explanation": "C · Köprü bilgisi geçişte bir yapıdan yararlanıldığını destekler. Diğer seçenekler ordunun teşkilatı ve yönetimi hakkında belgede bulunmayan ayrıntılar ekler."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "İlk ve orta çağ",
+          "topics": [
+            "Tarih bilimi ve zaman",
+            "İlk uygarlıklar",
+            "İlk Türk devletleri",
+            "İslam tarihi ve uygarlığı",
+            "Türklerin İslamiyet’i kabulü",
+            "Türk İslam devletleri"
+          ]
+        },
+        {
+          "name": "Osmanlı tarihi",
+          "topics": [
+            "Osmanlı kuruluş ve yükselme",
+            "Osmanlı kültür ve medeniyeti",
+            "Osmanlı’da değişim ve Avrupa",
+            "19. yüzyılda Osmanlı"
+          ]
+        },
+        {
+          "name": "Yakın dönem",
+          "topics": [
+            "20. yüzyıl başlarında Osmanlı",
+            "Millî Mücadele",
+            "Atatürk ilke ve inkılapları",
+            "Atatürk dönemi dış politika"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-cografya",
+      "exam": "TYT",
+      "subject": "Coğrafya",
+      "curriculumId": "cografya",
+      "labelGroups": [
+        "tyt-cografya",
+        "ayt-cografya",
+        "ayt-cografya-1",
+        "ayt-cografya-2"
+      ],
+      "lessons": [
+        {
+          "id": "harita-bilgisi",
+          "title": "Harita Türü ve Ölçek",
+          "topics": [
+            "Harita bilgisi ve izohipsler"
+          ],
+          "learn": [
+            "Haritanın amacı başlıkta, işaretlerin anlamı lejantta, küçültme oranı ölçekte bulunur. Bir soruda önce hangi alanın ve hangi bilginin görülmesi gerektiğini belirle; sonra uygun haritayı seç.",
+            "Aynı yerin farklı ölçekli haritalarında gerçek uzaklık ve coğrafi koordinat değişmez. Haritada kaplanan alan ile ayrıntıyı gösterme gücü değişebilir. Ölçek paydası küçüldükçe ölçek büyür."
+          ],
+          "steps": [
+            "Sorunun kapsadığı yerleri ve aradığı bilgi türünü belirle.",
+            "Harita başlığını bu amaçla karşılaştır: bütün gerekli yerler aynı haritada bulunmalı.",
+            "Ölçek sorusunda gerçekte sabit olan özelliklerle çizimde değişen özellikleri ayır; uzunluk hesabında birimleri eşitle."
+          ],
+          "pitfall": "Kâğıttaki uzunlukla gerçek uzaklığı karıştırma. Bir ülkenin haritası, iki uzak ülke arasındaki bütün ülkeleri gösterme ihtiyacını karşılamaz.",
+          "sources": [
+            {
+              "catalogId": 23,
+              "page": 26,
+              "anchors": [
+                "Başlık",
+                "Lejant",
+                "Ölçek"
+              ]
+            },
+            {
+              "catalogId": 23,
+              "page": 27,
+              "anchors": [
+                "gerçek uzunluk",
+                "coğrafi koordinatlar",
+                "Ayrıntıyı gösterme gücü"
+              ]
+            },
+            {
+              "catalogId": 23,
+              "page": 28,
+              "anchors": [
+                "Harita uzunluğu",
+                "Gerçek uzunluk"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-0410",
+              "answer": "A",
+              "anchors": [
+                "Güney Kore",
+                "Dünya Siyasi"
+              ],
+              "explanation": "Türkiye'yi, Güney Kore'yi ve aralarındaki ülkeleri birlikte göstermek için dünya siyasi haritası gerekir. Daha dar bölge veya tek ülke haritası bu kapsamı sağlamaz; cevap A'dır."
+            },
+            {
+              "bank": "OGM",
+              "code": "3a-tyt-cografya-10-02",
+              "answer": "D",
+              "anchors": [
+                "Gerçek uzunluk",
+                "Harita alanı"
+              ],
+              "explanation": "Ölçek değişince gerçek uzunluk ve koordinatlar sabit kalır; harita alanı ile ayrıntıyı gösterme gücü değişir. II ve IV'ü birleştiren D seçeneği uygundur."
+            }
+          ],
+          "practice": {
+            "question": "1/250.000 ölçekli bir haritada iki nokta arası 4 cm'dir. Bu iki nokta arasındaki gerçek uzaklık kaç kilometredir?",
+            "choices": [
+              "1",
+              "2,5",
+              "10",
+              "100"
+            ],
+            "answer": 2,
+            "explanation": "C · 10 km. 4 × 250.000 = 1.000.000 cm; 100.000 cm = 1 km olduğundan sonuç 10 km'dir. 2,5 km yalnız bir santimetrenin karşılığıdır; diğer değerler birim dönüşümünü karşılamaz."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Doğal sistemler",
+          "topics": [
+            "Coğrafyanın konusu",
+            "Dünya’nın şekli ve hareketleri",
+            "Coğrafi konum",
+            "Harita bilgisi ve izohipsler",
+            "Atmosfer ve iklim",
+            "İç ve dış kuvvetler",
+            "Su, toprak ve bitki örtüsü"
+          ]
+        },
+        {
+          "name": "Beşerî sistemler",
+          "topics": [
+            "Nüfusun özellikleri",
+            "Yerleşme ve göç",
+            "Ekonomik faaliyetler",
+            "Bölgeler",
+            "Doğal afetler",
+            "Çevre ve toplum"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-felsefe",
+      "exam": "TYT",
+      "subject": "Felsefe",
+      "curriculumId": "felsefe",
+      "labelGroups": [
+        "tyt-felsefe",
+        "ayt-felsefe",
+        "ayt-felsefe-grubu"
+      ],
+      "lessons": [
+        {
+          "id": "bilginin-imkani",
+          "title": "Bilgi Felsefesi: İmkân, Kaynak ve Ölçüt",
+          "topics": [
+            "Bilgi felsefesi"
+          ],
+          "learn": [
+            "Bilginin mümkün olup olmadığı, hangi kaynaktan geldiği ve neye göre doğru sayıldığı ayrı problemlerdir. İmkân sorusu doğru bilgiye ulaşılabilirliği; kaynak sorusu akıl, deneyim veya sezgi gibi dayanakları; ölçüt sorusu doğruluğun nasıl değerlendirildiğini inceler.",
+            "Bir paragrafta duyular veya deney örnek olarak geçebilir. Sonuç doğru bilginin kesinliğini sorguluyorsa temel problem imkândır. Parçadaki örnek sözcüğüyle son savı birbirine karıştırma."
+          ],
+          "steps": [
+            "Parçanın savını kendi cümlenle bir kez ifade et.",
+            "Savın “ulaşabilir miyiz”, “nereden gelir” veya “neye göre doğrudur” sorularından hangisine cevap verdiğini belirle.",
+            "Seçenekleri savın tamamıyla karşılaştır; yalnız filozof adı veya anahtar sözcükle seçim yapma."
+          ],
+          "pitfall": "Kuşku anlatılan her metin doğru bilginin imkânsızlığını savunmaz; kuşku bir yöntemin başlangıcı da olabilir. Soruda aktarılan sonuca bağlı kal.",
+          "sources": [
+            {
+              "catalogId": 24,
+              "page": 29,
+              "anchors": [
+                "Doğru Bilginin İmkânı Problemi",
+                "ölçütü"
+              ]
+            },
+            {
+              "catalogId": 24,
+              "page": 30,
+              "anchors": [
+                "doğru bilgiye ulaşılabileceği",
+                "kaynağı"
+              ]
+            },
+            {
+              "catalogId": 24,
+              "page": 31,
+              "anchors": [
+                "Rasyonalizm",
+                "Empirizm",
+                "Kritisizm"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-0467",
+              "answer": "D",
+              "anchors": [
+                "doğru ve kesin",
+                "kuşku"
+              ],
+              "explanation": "Bilimsel görüşlerin daha sonra değişebilmesi örneği, doğru ve kesin bilginin mümkün olup olmadığına bağlanır. Metin yalnız bilgi kaynağını sormaz; cevap D'dir. Bu kayıt din soruları yerine çözülen ek felsefe bölümündendir."
+            },
+            {
+              "bank": "OGM",
+              "code": "3a-tyt-felsefe-19-01",
+              "answer": "C",
+              "anchors": [
+                "mutlak hakikat yoktur",
+                "Doğru bilgi"
+              ],
+              "explanation": "Diyalogda algıdan söz edilse de varılan sav mutlak doğruluğun bulunmadığıdır. Baskın problem doğru bilginin imkânıdır; kaynak anahtar sözcüğüne takılmadan C seçilir."
+            }
+          ],
+          "practice": {
+            "question": "“Duyular insanı yanıltabilir; kesin ve değişmez bir bilgiye ulaşabileceğimizden emin olamayız.” diyen bir kişi öncelikle hangi problemi tartışmaktadır?",
+            "choices": [
+              "Sanatın işlevi",
+              "Doğru bilginin imkânı",
+              "Devletin kaynağı",
+              "Güzelliğin ölçütü"
+            ],
+            "answer": 1,
+            "explanation": "B · Doğru bilginin imkânı. Duyular örneği, kesin bilgiye ulaşılabilirliğini sorgulamak için kullanılmıştır. Sanat, devlet ve güzellik bu savın konusu değildir."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Felsefenin alanları",
+          "topics": [
+            "Felsefeyi tanıma",
+            "Düşünme ve akıl yürütme",
+            "Bilgi felsefesi",
+            "Varlık felsefesi",
+            "Bilim felsefesi",
+            "Ahlak felsefesi",
+            "Siyaset felsefesi",
+            "Sanat felsefesi",
+            "Din felsefesi"
+          ]
+        },
+        {
+          "name": "Felsefe tarihi",
+          "topics": [
+            "İlk Çağ felsefesi",
+            "Orta Çağ felsefesi",
+            "15–17. yüzyıl felsefesi",
+            "18–19. yüzyıl felsefesi",
+            "20. yüzyıl felsefesi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-din",
+      "exam": "TYT",
+      "subject": "Din Kültürü",
+      "curriculumId": "din",
+      "labelGroups": [
+        "tyt-din-kulturu",
+        "ayt-din-kulturu"
+      ],
+      "lessons": [
+        {
+          "id": "ibadet-kapsami",
+          "title": "İbadetin Kapsamı ve Salih Amel",
+          "topics": [
+            "İslam ve ibadet"
+          ],
+          "learn": [
+            "OGM anlatımında ibadet yalnız belirli vakit ve biçimi olan uygulamalarla sınırlanmaz. Allah'ın hoşnutluğunu kazanma amacı taşıyan güzel ve faydalı davranışlar salih amel kapsamında ele alınır.",
+            "Metin sorularında davranış, niyet ve çıkarılabilecek sonuç birlikte incelenir. Dinen doğru olabilen bir bilgi, soruda verilen metinden çıkarılamıyorsa o parçanın sonucu olarak seçilemez."
+          ],
+          "steps": [
+            "Soru kökündeki “sayılmaz” veya “çıkarılamaz” olumsuzluğunu belirle.",
+            "Davranışın niteliğini ve metinde belirtilen niyeti birlikte değerlendir.",
+            "Her seçeneği metindeki dayanakla eşleştir; metinde bulunmayan sonucu dış bilgiyle tamamlamaya çalışma."
+          ],
+          "pitfall": "Genel ibadet tanımından her davranışın otomatik olarak ibadet olduğu sonucu çıkmaz; kaynakta belirtilen iyi davranış ve niyet koşullarını koru.",
+          "sources": [
+            {
+              "catalogId": 91,
+              "page": 9,
+              "anchors": [
+                "salih amel",
+                "niyetiyle"
+              ]
+            },
+            {
+              "catalogId": 91,
+              "page": 10,
+              "anchors": [
+                "hoşnutluğunu",
+                "Sorumluluklarımızı"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT_DinKulturu-0012",
+              "answer": "D",
+              "anchors": [
+                "çıkarılamaz",
+                "şükretmek"
+              ],
+              "explanation": "Parça ibadetin genişliğini ve Allah'ın rızasını amaçlamayı açıklar; şükretme amacını ayrıca temellendirmez. D seçeneği bu metinden çıkarılamaz. Bu, şükrün dinî değerini reddetmek değildir."
+            },
+            {
+              "bank": "OGM",
+              "code": "sb-40175",
+              "answer": "D",
+              "anchors": [
+                "Salih amel",
+                "otobüsle"
+              ],
+              "explanation": "Metnin tanımı güzel, doğru ve faydalı davranış vurgusu taşır. Yalnız işe otobüsle gitme bilgisi bu niteliği veya amacı göstermediğinden D seçilir. Sorudaki sınırlı bilgiye göre karar verilir."
+            }
+          ],
+          "practice": {
+            "question": "Bir öğrenci Allah'ın hoşnutluğunu kazanma niyetiyle ihtiyaç sahibi arkadaşının ders araçlarını tamamlamasına yardım ediyor. Bu davranış OGM'deki genel ibadet açıklamasıyla nasıl ilişkilendirilir?",
+            "choices": [
+              "Yalnız belirli vakti olan ibadetler geçerlidir.",
+              "Her sıradan davranış koşulsuz olarak ibadettir.",
+              "Güzel davranış ve belirtilen niyet nedeniyle salih amel kapsamında değerlendirilir.",
+              "Faydalı davranışın niyetle hiçbir ilişkisi yoktur."
+            ],
+            "answer": 2,
+            "explanation": "C · İyi ve faydalı davranış ile Allah'ın hoşnutluğunu amaçlama birlikte verilmiştir. A kapsamı daraltır; B koşulları kaldırır; D kaynakta belirtilen niyeti yok sayar."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "İnanç ve ibadet",
+          "topics": [
+            "Bilgi ve inanç",
+            "Din ve İslam",
+            "İslam ve ibadet",
+            "Kur’an-ı Kerim ve ana konuları",
+            "Hz. Muhammed’in örnekliği",
+            "İslam düşüncesinde yorumlar"
+          ]
+        },
+        {
+          "name": "Din ve hayat",
+          "topics": [
+            "Din, ahlak ve değerler",
+            "Güncel dinî meseleler",
+            "Yaşayan dinler ve ortak özellikler"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-biyoloji",
+      "exam": "TYT",
+      "subject": "Biyoloji",
+      "curriculumId": "biyoloji",
+      "labelGroups": [
+        "tyt-biyoloji",
+        "ayt-biyoloji"
+      ],
+      "lessons": [
+        {
+          "id": "canlilarin-ortak-ozellikleri",
+          "title": "Canlıların Ortak Özellikleri ve Enerji",
+          "topics": [
+            "Canlıların ortak özellikleri"
+          ],
+          "learn": [
+            "Canlılar hücrelerden oluşur ve yaşamsal faaliyetleri için enerji kullanır. ATP elde etmekle oksijen kullanmak aynı koşul değildir: oksijensiz solunum ve fermantasyon da ATP üretimi sağlayabilir.",
+            "Bir özelliğin bazı canlılarda bulunması onu bütün canlıların ortak özelliği yapmaz. “Tüm”, “her” ve “yalnız” ifadelerini denetlerken uygun bir karşı örnek ara."
+          ],
+          "steps": [
+            "Kökte ortak özellik mi, ortak olmayan özellik mi arandığını belirle.",
+            "Her önermeyi yalnız insan veya bitki üzerinden değil farklı canlı grupları üzerinden sınamayı dene.",
+            "Enerji gereksinimini ATP üretimiyle ilişkilendir; oksijen şartını bütün canlılara yayma."
+          ],
+          "pitfall": "Her tek hücreli canlı prokaryot değildir. Ayrıca oksijensiz solunumla fermantasyon aynı süreç değildir; ikisi de oksijen kullanmadan ATP elde etmeye örnek olabilir.",
+          "sources": [
+            {
+              "catalogId": 22,
+              "page": 11,
+              "anchors": [
+                "Hücresel Yapı",
+                "Bütün canlılar"
+              ]
+            },
+            {
+              "catalogId": 22,
+              "page": 12,
+              "anchors": [
+                "Her tek hücreli canlı prokaryot değildir"
+              ]
+            },
+            {
+              "catalogId": 22,
+              "page": 13,
+              "anchors": [
+                "ATP",
+                "oksijensiz",
+                "fermantasyon"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-1024",
+              "answer": "C",
+              "anchors": [
+                "ortak",
+                "Oksijen kullanma"
+              ],
+              "explanation": "Enerji kullanımı ortaktır; oksijen kullanımı ortak değildir. Oksijen kullanmadan ATP elde edebilen canlılar karşı örnek oluşturur. C seçeneği ortak olmayan özelliktir."
+            },
+            {
+              "bank": "OGM",
+              "code": "dd-tyt-biyoloji-01-01",
+              "answer": "E",
+              "anchors": [
+                "fermantasyon",
+                "ATP sentezini"
+              ],
+              "explanation": "Sorudaki oksijenli solunum, oksijensiz solunum ve fermantasyon ATP sentezi sağlayabilir. Üçünü birlikte içeren E seçeneği uygundur; kaynağın çözümü de bu üç süreci birlikte açıklar."
+            }
+          ],
+          "practice": {
+            "question": "Bir mikroorganizmanın oksijen kullanmadan fermantasyonla ATP ürettiği biliniyor. Bu bilgi hangi genellemeyi çürütür?",
+            "choices": [
+              "Canlılar enerji kullanır.",
+              "Bütün canlılar ATP üretmek için oksijen kullanır.",
+              "Canlıların hücresel yapısı vardır.",
+              "Fermantasyon ATP üretimine katkı sağlayabilir."
+            ],
+            "answer": 1,
+            "explanation": "B · Verilen mikroorganizma oksijen zorunluluğuna karşı örnektir. Enerji gereksinimini veya hücresel yapıyı reddetmez; D ise verilen bilgiyle uyumludur."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Canlılığın temeli",
+          "topics": [
+            "Canlıların ortak özellikleri",
+            "Canlıların yapısındaki bileşikler",
+            "Hücre ve organeller",
+            "Hücre zarından madde geçişleri",
+            "Canlıların sınıflandırılması"
+          ]
+        },
+        {
+          "name": "Kalıtım ve ekoloji",
+          "topics": [
+            "Hücre bölünmeleri",
+            "Eşeysiz ve eşeyli üreme",
+            "Kalıtımın genel ilkeleri",
+            "Ekosistem ekolojisi",
+            "Güncel çevre sorunları"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tyt-kimya",
+      "exam": "TYT",
+      "subject": "Kimya",
+      "curriculumId": "kimya",
+      "labelGroups": [
+        "tyt-kimya",
+        "ayt-kimya"
+      ],
+      "lessons": [
+        {
+          "id": "atom-modelleri",
+          "title": "Atom Modelleri: Kanıt ve Sınırlar",
+          "topics": [
+            "Atom ve yapısı"
+          ],
+          "learn": [
+            "Atom modellerini yalnız adlarıyla değil açıkladıkları gözlemler ve yetersiz kaldıkları durumlarla öğren. Rutherford modeli pozitif yükün çekirdekte toplanmasını ve atomun büyük ölçüde boşluklu yapısını açıklar.",
+            "Bohr modeli belirli enerji düzeylerini kullanır ve tek elektronlu tanecikleri açıklamada işlevlidir. Çok elektronlu atomları aynı başarıyla açıklayamaz. Modern modelin orbital kavramını daha eski modellere taşıma."
+          ],
+          "steps": [
+            "Önce hangi modele göre cevap istendiğini belirle.",
+            "Her yargıyı o modelin kabulü, gözlemsel dayanağı veya sınırlılığı olarak ayır.",
+            "Başka modele ait doğru bir bilgiyi, sorulan modelin özelliği saymadan öncülleri tek tek denetle."
+          ],
+          "pitfall": "Bugünkü bilgimizin doğru olması, aynı bilginin Rutherford veya Bohr tarafından ileri sürüldüğü anlamına gelmez. Yörünge ile orbital kavramlarını aynı modelin terimleri gibi kullanma.",
+          "sources": [
+            {
+              "catalogId": 26,
+              "page": 25,
+              "anchors": [
+                "atom modeli",
+                "Modelin Eksiklikleri"
+              ]
+            },
+            {
+              "catalogId": 26,
+              "page": 26,
+              "anchors": [
+                "çekirdektedir",
+                "Tek elektronlu",
+                "çok elektronlu"
+              ]
+            }
+          ],
+          "examples": [
+            {
+              "bank": "CIKMIS",
+              "code": "TYT-0970",
+              "answer": "D",
+              "anchors": [
+                "Rutherford",
+                "orbitallerde"
+              ],
+              "explanation": "Pozitif yükün çekirdekte bulunması ve atomun boşluklu olması Rutherford'a uygundur. Orbital önermesi bu modele ait değildir. I ve III'ü birleştiren D seçilir."
+            },
+            {
+              "bank": "OGM",
+              "code": "cd-2021-mini-deneme-1-01-53",
+              "answer": "D",
+              "anchors": [
+                "tek elektronlu",
+                "çok elektronlu"
+              ],
+              "explanation": "Tek elektronlu türleri açıklayıp çok elektronlularda yetersiz kalan model Bohr modelidir. Tanımlanan sınır D seçeneğini destekler."
+            }
+          ],
+          "practice": {
+            "question": "Bir model tek elektronlu taneciklerin davranışını açıklayabiliyor; çok elektronlu atomlarda yetersiz kalıyor. OGM'deki model karşılaştırmasına göre hangisiyle eşleşir?",
+            "choices": [
+              "Dalton",
+              "Thomson",
+              "Rutherford",
+              "Bohr"
+            ],
+            "answer": 3,
+            "explanation": "D · Bohr. Tek elektronlu türlerle sınırlı açıklama bu modelin ayırt edici sınırıdır. Diğer modellerin temel kabulleri bu enerji düzeyi açıklamasını karşılamaz."
+          }
+        }
+      ],
+      "units": [
+        {
+          "name": "Kimyanın temelleri",
+          "topics": [
+            "Kimya bilimi ve güvenlik",
+            "Atom ve yapısı",
+            "Periyodik sistem",
+            "Kimyasal türler arası etkileşimler",
+            "Maddenin hâlleri",
+            "Kimyanın temel kanunları",
+            "Mol kavramı",
+            "Kimyasal tepkimeler ve hesaplamalar"
+          ]
+        },
+        {
+          "name": "Karışımlar ve çevre",
+          "topics": [
+            "Karışımlar ve ayırma yöntemleri",
+            "Asitler, bazlar ve tuzlar",
+            "Kimya her yerde",
+            "Doğa ve kimya"
+          ]
+        }
+      ]
+    }
+  ]
+}

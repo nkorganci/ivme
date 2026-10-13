@@ -1,4 +1,6 @@
+import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Loading } from './components/States.jsx';
 import Layout from './components/Layout.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
@@ -23,6 +25,9 @@ import TopicPdfs from './pages/TopicPdfs.jsx';
 import TopicPdfViewer from './pages/TopicPdfViewer.jsx';
 import StudentTracking from './pages/StudentTracking.jsx';
 import { useAuth } from './auth.jsx';
+
+const SourceNotes = lazy(() => import('./pages/SourceNotes.jsx'));
+const SourceLabels = lazy(() => import('./pages/SourceLabels.jsx'));
 
 function RoleHome() {
   const { user } = useAuth();
@@ -52,6 +57,9 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<RoleHome />} />
           <Route element={<RequireAuth student />}>
+            <Route path="/kaynakli-ders-notlari" element={<Navigate to="/kaynakli-ders-notlari/tyt-turkce" replace />} />
+            <Route path="/kaynakli-ders-notlari/:subjectId" element={<Suspense fallback={<Loading text="Kaynaklı ders notları yükleniyor…" />}><SourceNotes /></Suspense>} />
+            <Route path="/kaynakli-ders-notlari/etiketler" element={<Suspense fallback={<Loading text="Soru etiketleri yükleniyor…" />}><SourceLabels /></Suspense>} />
             <Route path="/sorular" element={<OldQuestions />} />
             <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
             <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />

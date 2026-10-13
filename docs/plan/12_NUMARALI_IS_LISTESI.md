@@ -199,4 +199,16 @@
 | 16.02 | YAPILACAK | Performans, erişilebilirlik, yedek geri yükleme ve içerik hata raporu | 16.01 sonrası | GPT-6 Astra · Medium |
 | 16.03 | YAPILACAK | Bulgulara göre yeni numaralı işler ve büyüme kararı | 16.02 sonrası | GPT-6 Luna · Medium |
 
+## 17 — Kaynaklı ders notları ve etiket dizini
+
+| No | Durum | Tek çıktı / kontrol | Kanıt | Önerilen model / çaba |
+|---|---|---|---|---|
+| 17.01 | BITTI | İstenen yedi branşın 53.019 etkin yerel sorusuna kaynak izli taslak etiket; boş etiket yok, insan onayı değil | [Kaynaklı notlar kaydı](../KAYNAKLI_DERS_NOTLARI.md) | — (tamamlandı) |
+| 17.02 | BITTI | Ayrı menü, 19 etiket grubu, doğrudan adres açma ve 1280/390 px tarayıcı denetimi | [Kaynaklı notlar kaydı](../KAYNAKLI_DERS_NOTLARI.md) | — (tamamlandı) |
+| 17.03 | DEVAM | 21 konu rehberi, 44 kalıp, Türkçe'de 15/16 başlık; AYT Edebiyat ve diğer TYT/AYT konularının genişletilmesi açık | [Devam noktası](../KAYNAKLI_DERS_NOTLARI.md#kalan-çalışma-ve-devam-noktası) | Mevcut oturum |
+| 17.04 | YAPILACAK | ÖSYM kitapçıklarıyla arşiv tamlığı; yerel Türkçe'de yılda 34/40 kayıt sınırını kapatma | 17.01 sonrası, salt okunur kaynak karşılaştırması | Mevcut oturum |
+| 17.05 | YAPILACAK | Gerçek branş öğretmeni not/etiket incelemesi ve 12 ders uyuşmazlığı/2 iptal soru için ayrı banka düzeltme değerlendirmesi | Asistan incelemesi insan onayı değildir | Branş öğretmeni / içerik bakım işi |
+| 17.06 | BITTI | 53.019 kaynak kaydı ve 22 temel PDF/2.403 sayfa envanteri; metinsiz/görsel kayıtları ayırma | [Analiz kaydı](../KAYNAKLI_SORU_ANALIZI.md) | — (tamamlandı) |
+| 17.07 | BITTI | Ayrı PostgreSQL araştırma şeması, kaynak/metin/görsel özetleri, sürümlü devir notu ve tekrar kullanma komutları | [Araştırma hafızası](../KAYNAKLI_SORU_ANALIZI.md#veritabanında-tekrar-kullanılabilir-araştırma) | — (tamamlandı) |
+
 **Bu dosya yaşayan iş listesidir; açık işler bulunduğu için BITTI değildir.**

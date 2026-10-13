@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import { AuthProvider } from './auth.jsx';
 import { APP_NAME } from './config.js';
+import './theme.css';
 import './styles.css';
 
 document.title = APP_NAME;

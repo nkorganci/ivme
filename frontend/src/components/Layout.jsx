@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth.jsx';
 import { APP_NAME } from '../config.js';
 import { displayName } from '../format.js';
 import Icon from './Icons.jsx';
+import { SOURCE_NOTE_SUBJECTS } from '../sourceNoteSubjects.js';
 
 const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
+  ['/kaynakli-ders-notlari', 'Kaynaklı Ders Notları', 'book'],
   ['/cikmis-sorular', 'AYT-TYT Çıkmış Sorular', 'book'],
   ['/soru-bankasi', 'Soru Bankası', 'layers'],
   ['/konu-anlatimlari', 'Konu anlatımları', 'book'],
@@ -20,6 +22,13 @@ const ITEMS = [
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
 const RAIL_KEY = 'yks.sidebar';
+const NOTES_PATH = '/kaynakli-ders-notlari';
+const NOTES_ITEMS = [
+  [`${NOTES_PATH}/analiz`, 'Analiz ve çalışma planı'],
+  ...SOURCE_NOTE_SUBJECTS.map(([id, label]) => [`${NOTES_PATH}/${id}`, label]),
+  [`${NOTES_PATH}/etiketler`, 'Soru Etiketleri'],
+];
+
 
 // Soru sayfasında vurgulanacak koleksiyon: adresteki ?bank=, yoksa yüklenen sorunun koleksiyonu (loaded).
 function isActive(path, search, to, loaded) {
@@ -43,6 +52,8 @@ export default function Layout() {
   const [questionOpen, setQuestionOpen] = useState(false); // soru sayfasında kullanıcı menüyü genişletti mi
   const [drawer, setDrawer] = useState(false);
   const [questionBank, setQuestionBank] = useState(''); // soru sayfası, yüklenen sorunun koleksiyonunu Outlet bağlamıyla bildirir
+  const notesActive = pathname === NOTES_PATH || pathname.startsWith(`${NOTES_PATH}/`);
+  const [notesOpen, setNotesOpen] = useState(notesActive);
   const onQuestion = pathname.startsWith('/soru/');
   const rail = onQuestion ? !questionOpen : pref;
   const name = displayName(user);
@@ -60,6 +71,10 @@ export default function Layout() {
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
+
+  useEffect(() => {
+    if (notesActive) setNotesOpen(true);
+  }, [notesActive]);
 
   const toggleRail = () => {
     if (onQuestion) {
@@ -106,6 +121,26 @@ export default function Layout() {
         <nav className="sidenav">
           {items.map(([to, text, icon]) => {
             const active = isActive(pathname, search, to, questionBank);
+            if (to === NOTES_PATH) return <div className="side-nav-group" key={to}>
+              <button type="button" className={`side-nav-toggle${active ? ' active' : ''}`}
+                aria-expanded={notesOpen && !rail} aria-controls="notes-subnav"
+                aria-label={`${text} alt menüsünü ${notesOpen && !rail ? 'kapat' : 'aç'}`}
+                onClick={() => {
+                  if (rail) {
+                    toggleRail();
+                    setNotesOpen(true);
+                  } else setNotesOpen((open) => !open);
+                }}>
+                <Icon name={icon} />
+                <span className="label">{text}</span>
+                <span className="side-nav-chevron label" aria-hidden="true">{notesOpen ? '▴' : '▾'}</span>
+              </button>
+              {notesOpen && !rail && <div id="notes-subnav" className="side-subnav">
+                {NOTES_ITEMS.map(([path, label]) => <NavLink key={path} to={path}
+                  className={({ isActive: selected }) => selected ? 'active' : ''}
+                  aria-label={label} title={label}>{label}</NavLink>)}
+              </div>}
+            </div>;
             return (
               <Link key={to} to={to} className={active ? 'active' : ''} aria-current={active ? 'page' : undefined} aria-label={text} title={text}>
                 <Icon name={icon} />

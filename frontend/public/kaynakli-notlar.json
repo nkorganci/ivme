@@ -1,0 +1,2831 @@
+{
+  "analysisSummary": {
+    "needsVisualReview": 5792,
+    "primaryPdfPages": 2403,
+    "primaryPdfs": 22,
+    "records": 53019
+  },
+  "groups": [
+    {
+      "analysis": {
+        "missingText": 0,
+        "needsReview": 1171,
+        "shortOrVisualText": 0,
+        "sourceRecords": 4093,
+        "sourceTopicCount": 41
+      },
+      "curriculumId": "turkce",
+      "exam": "TYT",
+      "id": "tyt-turkce",
+      "inventory": {
+        "CIKMIS": 306,
+        "OGM": 3787
+      },
+      "labelGroups": [
+        "tyt-turkce"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "TYT-0001",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0001;field=konu",
+              "explanation": "Araştırmada tekniklerin kullanılmasını ve bilim dalının gelişmesini birlikte ifade eden çift, iki boşluğun da anlamını tamamlar. Tek boşluğu uygun doldurmak yeterli değildir.",
+              "sourceFingerprint": "99e175eb2cddbb3105ae235ca4da5d03a78a973f5df9014d0ddd46d4274b85f6",
+              "sourceLabel": "Sözcükte Anlam",
+              "year": "2018"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-01-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-01-01;field=konu_basligi",
+              "explanation": "Memurun evrakla ilgilenmesiyle hekimin hastayla ilgilenmesi aynı kullanım ilişkisini kurar. Diğer seçeneklerde görme, yönelme veya öğüt verme anlamları öne çıkar.",
+              "sourceFingerprint": "0540e1530546fd7ba2ccbe720af18301688f0ab7be0a549634c46b77c1731573",
+              "sourceLabel": "Sözcükte Anlam",
+              "year": ""
+            }
+          ],
+          "id": "sozcukte-anlam",
+          "learn": [
+            "Anlamı sözcüğün cümledeki görevinden çıkar. Temel anlam ilk anlamdır; yan anlam bu anlamla bağını koruyan yeni kullanımdır. Mecaz kullanımda sözcük temel anlamından uzaklaşır. Terim ise belirli bir bilim, sanat veya mesleğin kavramını karşılar.",
+            "Anlam eşleştirmede sözcüğün yerine kısa bir açıklama koy. Aynı açıklama iki cümlede de anlamı koruyorsa eşleşme desteklenir. Boşluk tamamlarken bütün boşlukları birlikte denetle."
+          ],
+          "patterns": [
+            {
+              "id": "baglamda-anlam",
+              "logic": "Sözcüğün yerine kısa bir açıklama koy ve aynı açıklamayı seçeneklerde dene.",
+              "mini": {
+                "answer": "Burada açıklığa kavuşturma anlatılır. Cümlenin bütünü fiziksel ışık anlamını desteklemez.",
+                "question": "“Sorunlara ışık tuttu.” cümlesinde ışık gerçekten aydınlatma aracı mı?"
+              },
+              "recognize": "Bir sözcüğün başka cümlede aynı anlamla kullanılması veya anlam türü sorulur.",
+              "tip": "Terim olup olmadığını cümlenin alanıyla birlikte belirle.",
+              "title": "Aynı sözcük, farklı anlam",
+              "trap": "Sözcüğün ilk sözlük anlamını bütün kullanımlara taşımak."
+            },
+            {
+              "id": "bosluk-tamamlama",
+              "logic": "Her boşluğun anlam ve yapı koşulunu ayrı belirle; seçeneği bütün boşluklarda birlikte sınayarak karar ver.",
+              "mini": {
+                "answer": "Seçenek elenir. Boşluklar ayrı adaylar değil aynı cümle bütününün parçalarıdır.",
+                "question": "Bir seçenek ilk boşlukta uygun, ikinci boşlukta cümlenin anlamını tersine çeviriyor."
+              },
+              "recognize": "İki veya daha çok boşluğa sırayla sözcük yerleştirilir.",
+              "tip": "İlk boşlukta uyan seçeneği işaretlemeden ikinci boşluğu mutlaka oku.",
+              "title": "Boşlukları birlikte tamamla",
+              "trap": "Yalnız kulağa doğal gelmesini yeterli bulmak."
+            }
+          ],
+          "pitfall": "Bir sözcük her cümlede aynı anlam türünde kullanılmaz. Yalnız sözcüğün sözlükteki ilk anlamına veya kulağa doğal gelmesine göre seçim yapma.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Temel anlam",
+              "Yan anlam",
+              "Mecaz anlam",
+              "Terim anlam"
+            ],
+            "explanation": "C · Mecaz anlam. Sözcük fiziksel bir kesme özelliğini değil, gözlemin ayırt etme gücünü anlatır. A temel fiziksel anlamı, B o anlamla bağını koruyan kullanımı, D bir alanın özel kavramını gerektirir; bu cümlede bu koşullar yoktur.",
+            "question": "“Eleştirmenin keskin gözlemleri metindeki küçük tutarsızlıkları ortaya çıkardı.” cümlesinde “keskin” hangi anlamda kullanılmıştır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 11
+            }
+          ],
+          "steps": [
+            "Kökün anlam türü mü, kullanım eşliği mi, boşluk tamamlama mı istediğini belirle.",
+            "Hedef sözcüğü bütün cümleyle birlikte oku; yerine anlamını açıklayan kısa bir ifade koy.",
+            "Her seçeneği bu açıklamayla karşılaştır; birden çok boşluk varsa hepsini ayrı ayrı sınayıp birlikte karar ver."
+          ],
+          "title": "Sözcükte Anlam",
+          "topics": [
+            "Sözcükte anlam"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "TYT-0034",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0034;field=konu",
+              "explanation": "Coğrafi tanım kişisel beğeni bildirmeden adanın özelliklerini verir. Nesnellik, çoğunluğun beğenisi değil, kişisel değerlendirme gerektirmeyen yargıdır.",
+              "sourceFingerprint": "15228224d4ea3d90302a93f4d92a7cf5a2a3ae55f4d97bc86989c72137d24d02",
+              "sourceLabel": "Cümlede Anlam",
+              "year": "2018"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-10-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-10-01;field=konu_basligi",
+              "explanation": "Sözlerin sırası II–IV–I–III–V olur. Önce şehri tanımlayan grup, ardından amaç grubu ve yüklem çevresi kurulur; baştan üçüncü I olduğundan A seçilir.",
+              "sourceFingerprint": "f44f5887e4a6b1169820727f4d57f5c447acca04e3bc70cb77ffe5132772470b",
+              "sourceLabel": "Cümlede Anlam",
+              "year": ""
+            }
+          ],
+          "id": "cumlede-anlam",
+          "learn": [
+            "Cümlede anlam sorusu tek bir görev değildir: kişisel yorum arama, yargılar arasındaki ilişkiyi bulma, sözleri sıralama ve bilgiyi birleştirme ayrı yollar gerektirir. Önce kökün görevini belirle, sonra cümleyi o görevle oku."
+          ],
+          "patterns": [
+            {
+              "id": "nesnellik",
+              "logic": "Kişisel beğeni gerektiren değerlendirmeyi gözlem veya tanımdan ayır.",
+              "mini": {
+                "answer": "İlk yargı sayımla kontrol edilir; ikinci yargı okuyucunun değerlendirmesine bağlıdır.",
+                "question": "“Bu roman 240 sayfadır.” / “Bu roman çok etkileyicidir.”"
+              },
+              "recognize": "Kişisel düşünce içermez, nesnel yargıdır gibi bir görev aranır.",
+              "tip": "“Herkes böyle düşünüyor” bir yargıyı nesnel yapmaz.",
+              "title": "Öznel mi, nesnel mi?",
+              "trap": "Olumlu bir yargıyı nesnel, olumsuz bir yargıyı öznel sanmak."
+            },
+            {
+              "id": "anlam-iliskisi",
+              "logic": "Gerekçe gerçekleşmiş mi, bir hedef mi var, yoksa gerçekleşme bir şarta mı bağlı?",
+              "mini": {
+                "answer": "Gitme eyleminin hedefi kitabı almaktır. Kitabı gerçekten aldığını bu cümleden çıkaramazsın.",
+                "question": "“Kitabı almak için kütüphaneye gitti.”"
+              },
+              "recognize": "Yargılar arasındaki ilişkiyi veya aynı anlamı koruyan cümleyi sorar.",
+              "tip": "Bağlacı değiştirmekten önce iki yargının ilişkisini açıkla.",
+              "title": "Neden, amaç ve koşul",
+              "trap": "Her “için” kullanımına aynı etiketi vermek."
+            },
+            {
+              "id": "sirala-birlestir",
+              "logic": "Önce birbirine bağlı söz gruplarını kur; sonra yargıyı tamamla. Birleştirmede her bilginin korunmasını denetle.",
+              "mini": {
+                "answer": "Birleştirilmiş cümle araştırmanın tamamlandığını ve açıklamanın yarın yapılacağını birlikte korumalıdır; açıklama bugün yapılmış gibi yazılamaz.",
+                "question": "“Araştırma bitti. Sonuçlar yarın açıklanacak.”"
+              },
+              "recognize": "Sözleri sıraya koyma veya iki cümleyi tek cümlede birleştirme görevi vardır.",
+              "tip": "Kurallı cümlede yüklemi sona yerleştirmek iyi bir başlangıçtır; tek başına çözüm değildir.",
+              "title": "Sıralama ve bilgi koruma",
+              "trap": "Doğal duyulan ama zaman, özne veya koşul bilgisini değiştiren seçeneği almak."
+            }
+          ],
+          "pitfall": "“İçin” sözcüğü tek başına neden ya da amaç kanıtı değildir; gerçekleşmiş gerekçe ile hedeflenen sonucu ayır.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Amaç-sonuç",
+              "Karşılaştırma",
+              "Tanımlama",
+              "Koşul"
+            ],
+            "explanation": "A · Yeniden okumanın hedefi daha iyi anlamaktır. Cümle, bu hedefin kesin olarak gerçekleştiğini söylemez.",
+            "question": "“Daha iyi anlamak için metni yeniden okudu.” cümlesinde hangi ilişki vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 17
+            },
+            {
+              "catalogId": 29,
+              "page": 19
+            }
+          ],
+          "steps": [
+            "Kökün nesnellik, ilişki veya sıralama istediğini belirle.",
+            "Yargıyı kısa bir cümleyle ifade et; neden, amaç veya şart ilişkisini test et.",
+            "Seçeneğin cümleye yeni bilgi ekleyip eklemediğini kontrol et."
+          ],
+          "title": "Cümlede Anlam",
+          "topics": [
+            "Cümlede anlam"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0119",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0119;field=metin",
+              "explanation": "Parça, sonuca ulaşmanın yanı sıra süreçte engelleri aşmanın da doyum sağlayabileceğini anlatır. D bu dengeyi korur; sonucu yalnız güçlüklerin değerli kıldığı biçiminde daraltmaz.",
+              "sourceFingerprint": "cfdffcb8877e885b70c532fff69e5a22ef0ea756035c2b30e7d5cf803b93c32c",
+              "sourceLabel": "Paragrafta Ana Düşünce",
+              "year": "2019"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-34-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-34-01;field=konu_basligi",
+              "explanation": "Kahramanın gösteriş yapmadan üstlendiği maddi kayıp, fedakârlık temasını destekler. Metinde geçen zenginlik, metnin iletmek istediği temel değer değildir.",
+              "sourceFingerprint": "b5b9608881e85ea491a9c8c535a1ea54efd6854f62bbccdeb619693be0f52316",
+              "sourceLabel": "Paragrafta Ana Düşünce",
+              "year": ""
+            }
+          ],
+          "id": "paragrafta-dusunce",
+          "learn": [
+            "Konu, metnin ne hakkında olduğunu; ana düşünce, bu konu hakkında hangi mesajın iletildiğini anlatır. Yardımcı düşünceler bu mesajı destekler. Bir örnek ayrıntısını bütün paragrafın mesajı yerine koyma."
+          ],
+          "patterns": [
+            {
+              "id": "ana-dusunce",
+              "logic": "Örneklerin hangi genel yargıyı desteklediğini bul.",
+              "mini": {
+                "answer": "Ana mesaj tek bir sporcunun başarısı değil, gelişmede çalışmanın rolü olabilir; bunu parçanın tamamıyla sınamalısın.",
+                "question": "Bir metin farklı sporcuların çalışarak geliştiğini anlatıyor."
+              },
+              "recognize": "Asıl anlatılmak istenen, vurgulanan düşünce veya tema sorulur.",
+              "tip": "Özetin hem konuyu hem yazarın o konuya bakışını içersin.",
+              "title": "Asıl mesajı bul",
+              "trap": "Metindeki tek örneği kapsayan dar şık veya metnin ötesine geçen genelleme."
+            },
+            {
+              "id": "yardimci-dusunce",
+              "logic": "Her şık için metinde bir dayanak ara; kapsamı genişleten sözcükleri karşılaştır.",
+              "mini": {
+                "answer": "“Bütün okurlar kısa öyküleri sever” sonucu çıkarılamaz; nicelik değiştirilmiştir.",
+                "question": "Metin “bazı okurlar kısa öyküleri sever” diyor."
+              },
+              "recognize": "Değinilmemiştir, ulaşılamaz veya söylenemez gibi kökler bulunur.",
+              "tip": "“Bazı” ile “bütün”, “olabilir” ile “kesinlikle” aynı iddia değildir.",
+              "title": "Çıkarılabilir mi, çıkarılamaz mı?",
+              "trap": "Gerçek hayatta doğru olanı metinde de söylenmiş kabul etmek."
+            }
+          ],
+          "pitfall": "Son cümle her zaman ana düşünce değildir. Metne göre karar ver; dışarıdan doğru bilgi ekleme.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Hatasız konuşmak öğrenmenin başlangıcıdır.",
+              "Hataları değerlendirip düzeltmek öğrenmeyi destekler.",
+              "Dil öğrenmek yalnız dinlemeyle olur.",
+              "Her hata öğrenmeyi engeller."
+            ],
+            "explanation": "B · Metin hata yapmanın kendisini değil, hatayı fark edip düzeltmenin öğrenmeye katkısını vurgular.",
+            "question": "“Bir dil öğrenirken hata yapmak doğaldır. Hatalarını fark edip düzelten kişi ilerler; hiç hata yapmamayı bekleyen kişi konuşmaktan kaçınabilir.” metninin ana düşüncesi hangisidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 33
+            },
+            {
+              "catalogId": 29,
+              "page": 34
+            }
+          ],
+          "steps": [
+            "Kökün konu, ana düşünce veya desteklenen yargı istediğini belirle.",
+            "Parçayı tek cümleyle özetle; örneklerin ortak amacını bul.",
+            "Seçeneğin kapsamını ve kesinlik derecesini metinle karşılaştır."
+          ],
+          "title": "Paragrafta Konu, Ana ve Yardımcı Düşünce",
+          "topics": [
+            "Paragrafta konu ve ana düşünce"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "TYT-0062",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0062;field=konu",
+              "explanation": "İncinin ticaretini anlatan ilk cümle, sonraki cümlelerin oluşum sürecinden ayrılır. İlk cümle çıkarıldığında istiridye ve oluşum süreci arasında kesintisiz bağ kurulur.",
+              "sourceFingerprint": "6f902cdb85974b54c98af90a39484c35d0c93c34d91675622aed567ed53e6977",
+              "sourceLabel": "Paragrafın Yapısı",
+              "year": "2018"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-46-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-46-01;field=metin",
+              "explanation": "İlk bölüm ülkenin genel özelliklerini, V ile başlayan bölüm sömürgecilik karşısındaki durumunu geliştirir. Yeni alt konu V'te başladığı için cevap D'dir.",
+              "sourceFingerprint": "22a20640b48ae667f24e2e136ebc5b15170536d49782dc702a59f17f377e6d4b",
+              "sourceLabel": "Paragrafın Yapısı",
+              "year": ""
+            }
+          ],
+          "id": "paragrafta-yapi",
+          "learn": [
+            "Paragraftaki cümleler aynı düşünceyi dil ve anlam bağlarıyla geliştirir. Akış sorusunda konu alanı kadar cümlenin önceki ve sonraki cümleye bağlanıp bağlanmadığı da önemlidir."
+          ],
+          "patterns": [
+            {
+              "id": "akisi-bozan",
+              "logic": "Şüpheli cümleyi çıkar ve iki yanındaki cümleyi birlikte oku.",
+              "mini": {
+                "answer": "Fincan cümlesini çıkarınca yetişme süreci kesintisiz ilerliyorsa akışı bozan aday odur; yalnız “kahve” ortaklığı yeterli değildir.",
+                "question": "Üç cümle kahvenin yetişmesini, aradaki bir cümle kahve fincanlarının tarihini anlatıyor."
+              },
+              "recognize": "Hangi cümlenin düşüncenin akışını bozduğu sorulur.",
+              "tip": "Konu adı aynı kalsa bile bakış açısı veya anlatım amacı değişebilir.",
+              "title": "Akışı bozan cümle",
+              "trap": "Yalnız farklı kelime içeren cümleyi elemek."
+            },
+            {
+              "id": "bolme-siralama",
+              "logic": "Yeni alt konunun başladığı sınırı ve geriye gönderme yapan ifadeleri izle.",
+              "mini": {
+                "answer": "Öncesinde su tüketimini azaltan bir neden bulunmalı; sonrasındaki cümle de bu sonuçla uyumlu ilerlemelidir.",
+                "question": "Bir cümle “Bu nedenle su tüketimi azaldı.” diye başlıyor."
+              },
+              "recognize": "İkinci paragrafın başlangıcı veya bir cümlenin yeri sorulur.",
+              "tip": "“Bu sonuç” diyorsa sonucu hazırlayan cümle daha önce gelmelidir.",
+              "title": "Bölme, sıralama ve cümle yerleştirme",
+              "trap": "Yalnız tek tarafa uyan bağlantıyı yeterli görmek."
+            }
+          ],
+          "pitfall": "Aynı sözcüğün tekrar etmesi, bütün cümlelerin aynı alt konuyu işlediğini kanıtlamaz.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "I",
+              "II",
+              "III",
+              "IV"
+            ],
+            "explanation": "C · III saksıların rengini anlatır; çıkarıldığında ekim, sulama ve filizlenme sırası korunur.",
+            "question": "I: Tohum önce nemli toprağa yerleştirilir. II: Ardından düzenli sulanır. III: Saksılar farklı renklerde üretilebilir. IV: Bir süre sonra filiz görülür. Oluşum sürecinin akışını hangi cümle bozar?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 35
+            }
+          ],
+          "steps": [
+            "Her cümlenin görevini birkaç sözcükle belirle.",
+            "Zamir, bağlaç, neden-sonuç ve zaman bağlarını takip et.",
+            "Çıkarma veya bölme denemesinde oluşan iki komşuluğu da kontrol et."
+          ],
+          "title": "Paragrafta Akış ve Yapı",
+          "topics": [
+            "Paragrafta yapı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0136",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0136;field=konu",
+              "explanation": "Kentteki nesneler tek tek örneklendirilir. Bu liste düşünceyi somutlaştırır; yalnız bir olay sırası anlatılmadığı için öyküleme, uzman sözü aktarılmadığı için tanık gösterme seçilmez.",
+              "sourceFingerprint": "d8134ae3568f17ac2096ac784b6637bb27fc77379a7ef120bdfa7f4aecec53b2",
+              "sourceLabel": "Paragrafta Anlam",
+              "year": "2020"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-19-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-19-01;field=konu_basligi",
+              "explanation": "Parça lirik şiirin niteliğini açıklamaya yönelir. Bir olay dizisi veya görünüş tasviri metnin temel işleyişi değildir; kaynak anahtarı açıklamadır.",
+              "sourceFingerprint": "d77785cdeeeffdaaf412880989a4fdbfd76826810dd9eacc613afa3e2afa9976",
+              "sourceLabel": "Paragrafta Anlatım",
+              "year": ""
+            }
+          ],
+          "id": "paragrafta-anlatim",
+          "learn": [
+            "Anlatım biçimi metnin genel işleyişidir; düşünceyi geliştirme yolu, düşünceyi açıklamak veya desteklemek için kullanılan araçtır. Açıklayıcı bir metin aynı zamanda örneklendirme ve karşılaştırma içerebilir."
+          ],
+          "patterns": [
+            {
+              "id": "anlatim-bicimi",
+              "logic": "Olay ilerliyorsa öyküleme; görünüş canlanıyorsa betimleme; bilgi veriliyorsa açıklama; bir karşı görüş sorgulanıyorsa tartışma adaydır.",
+              "mini": {
+                "answer": "Olay sırasından çok görünüş ve duyusal ayrıntılar öndeyse betimleme ağır basar.",
+                "question": "Bir metin kıyı kasabasının sokaklarını, renklerini ve kokularını canlandırıyor."
+              },
+              "recognize": "Anlatım biçimi veya anlatımında kullanılan yol sorulur.",
+              "tip": "Metnin baskın amacını belirle; tek bir fiil veya sıfata bağlanma.",
+              "title": "Metnin yaptığı işi tanı",
+              "trap": "Bilgi veren her metni tartışma sanmak."
+            },
+            {
+              "id": "dusunceyi-gelistirme",
+              "logic": "Tanım kavramın ne olduğunu açıklar; örnek somutlaştırır; karşılaştırma ortak veya farklı yönleri gösterir; tanık gösterme bir görüşten destek alır.",
+              "mini": {
+                "answer": "Kâğıt ve cam adları genel yargıyı somutlaştırdığı için örneklendirme vardır.",
+                "question": "“Geri dönüşüm farklı maddelere uygulanır; kâğıt ve cam buna örnektir.”"
+              },
+              "recognize": "Örneklendirme, tanımlama, karşılaştırma veya tanık gösterme seçenekleri bulunur.",
+              "tip": "Şıkkın adını değil, metindeki işlevi kanıtla.",
+              "title": "Düşünce nasıl destekleniyor?",
+              "trap": "Tarih veya sayı geçen her cümleyi sayısal veriyle kanıtlama saymak."
+            }
+          ],
+          "pitfall": "Bir kişinin adının geçmesi tanık gösterme değildir; görüşü destekleyen sözü veya düşüncesi kullanılmalıdır.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Tanık gösterme",
+              "Örneklendirme",
+              "Benzetme",
+              "Sayısal veriyle kanıtlama"
+            ],
+            "explanation": "B · Genel yargı kıyı ve ova örnekleriyle somutlaştırılmıştır; uzman sözü, benzetme veya sayısal veri verilmemiştir.",
+            "question": "“Rüzgâr türbinleri farklı yerlerde kurulabilir; kıyı bölgeleri ve açık ovalar bunlara örnektir.” cümlesinde hangi düşünceyi geliştirme yolu vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 24
+            },
+            {
+              "catalogId": 29,
+              "page": 25
+            },
+            {
+              "catalogId": 29,
+              "page": 26
+            },
+            {
+              "catalogId": 29,
+              "page": 27
+            }
+          ],
+          "steps": [
+            "Metin olay mı anlatıyor, görünüş mü canlandırıyor, bilgi mi veriyor, bir görüş mü savunuyor?",
+            "Tanım, örnek, karşılaştırma veya uzman sözüne dayalı desteği ayrıca ara.",
+            "Seçeneği somut bir cümleyle destekle; olmayan özelliği sezgiyle var sayma."
+          ],
+          "title": "Anlatım Biçimleri ve Düşünceyi Geliştirme",
+          "topics": [
+            "Paragrafta anlatım teknikleri",
+            "Paragrafta düşünceyi geliştirme yolları"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "TYT-0296",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0296;field=metin",
+              "explanation": "İşit- kökü ile kullanılan biçim karşılaştırıldığında ünlü düşmesi yoktur. Düşme kararı, yalnız sözcüğün kısa veya uzun görünmesine göre verilemez.",
+              "sourceFingerprint": "ee1d88c6fa1ca1d3ee5d5a44c386518cdecc5eb59caa8ae7f432baba2cdd9a92",
+              "sourceLabel": "Ses Olayları",
+              "year": "2018"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-73-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-73-01;field=metin",
+              "explanation": "Geçirdiğim, trafikte, acıyorum ve kahrediyor gibi kullanımlarda diğer seçeneklerin dayanakları aranabilir; ünsüz düşmesine örnek bulunmaz. Cevap B'dir.",
+              "sourceFingerprint": "f0d9927f8d7f1785b91a220a56ce2da1813b0b4b97a5dbb915e8968d273d2a1e",
+              "sourceLabel": "Ses Olayları",
+              "year": ""
+            }
+          ],
+          "id": "ses-bilgisi",
+          "learn": [
+            "Ses olayını bulmak için sözcüğün kökünü ve aldığı eki karşılaştır. Değişenin ünlü mü ünsüz mü olduğunu belirlemeden olaya isim verme."
+          ],
+          "patterns": [
+            {
+              "id": "ses-degisimi",
+              "logic": "Başlangıç biçimi ile kullanılan biçim arasındaki somut değişimi belirle.",
+              "mini": {
+                "answer": "p ünsüzü b olur; bu ünsüz yumuşamasıdır. Bir ünlü kaybolmadığı için ünlü düşmesi değildir.",
+                "question": "“kitap + ı → kitabı” dönüşümünde ne değişir?"
+              },
+              "recognize": "Altı çizili sözcükteki ses olayı sorulur.",
+              "tip": "Değişimi küçük bir okla yaz: kitap + ı → kitabı.",
+              "title": "Kök + ek karşılaştırması",
+              "trap": "Her p, ç, t, k gördüğünde yumuşama var sanmak."
+            },
+            {
+              "id": "ses-yoktur",
+              "logic": "Dört seçeneği metindeki dönüşümlerle kanıtla; geride kalan aday için tekrar kontrol yap.",
+              "mini": {
+                "answer": "Kökteki ı düştüğü için ünlü düşmesine kanıt verir; bu örnek tek başına ünsüz düşmesini göstermez.",
+                "question": "“ağız + ı → ağzı” örneği hangi seçeneğe kanıt verir?"
+              },
+              "recognize": "Ses olaylarından hangisi yoktur diye sorar.",
+              "tip": "Bir sözcük birden fazla değişim içerebilir; yalnız ilk fark ettiğin olaya bakma.",
+              "title": "Metinde olmayan ses olayını bul",
+              "trap": "Ezberlediğin ses olayına metinde örnek varmış gibi davranmak."
+            }
+          ],
+          "pitfall": "Kökte bulunmayan bir sesi hayal ederek düşme var sayma. Yumuşama ile ekin sertleşmesini karıştırma.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Ünlü düşmesi",
+              "Ünsüz türemesi",
+              "Ünsüz düşmesi",
+              "Ünlü daralması"
+            ],
+            "explanation": "A · Kökteki ikinci u düşer. Yeni ünsüz eklenmez, ünsüz kaybolmaz ve geniş ünlü dar ünlüye dönüşmez.",
+            "question": "“burun + u → burnu” dönüşümünde hangi ses olayı vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 39
+            },
+            {
+              "catalogId": 29,
+              "page": 40
+            }
+          ],
+          "steps": [
+            "Sözcüğün kökünü ve ekini ayır.",
+            "Kaybolan, eklenen veya değişen sesi göster.",
+            "Yoktur sorusunda kalan her seçenek için metinden ayrı örnek bul."
+          ],
+          "title": "Ses Bilgisi",
+          "topics": [
+            "Ses bilgisi"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0300",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0300;field=konu",
+              "explanation": "IV'teki ifade “kimi zaman da” olmalıdır. Buradaki da bağlaçtır; yer veya bulunma durumu bildiren ek olarak bitiştirilemez.",
+              "sourceFingerprint": "1b658a08b8c771969e7e852e6008dc1d73827b4c88df2d5e01695ceac72e99b9",
+              "sourceLabel": "Yazım Kuralları",
+              "year": "2018"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-79-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-79-01;field=metin",
+              "explanation": "A'daki yan yana ayrı yazılır ve cümle doğru yazılmıştır. Diğer seçeneklerde karmakarışık, mahcup, vaat ve pek çoğumuz yazımları kontrol edilmelidir.",
+              "sourceFingerprint": "e2c26dfbc5af10f31d1dca296d701bbd34c17872bdac0ce7a50de4dbbef0aa9c",
+              "sourceLabel": "Yazım Kuralları",
+              "year": ""
+            }
+          ],
+          "id": "yazim-kurallari",
+          "learn": [
+            "Yazım sorusunda sözcüğün cümledeki görevini ve ilgili kuralı belirle. Bağlaç, ek, ikileme ve pekiştirme birbirinden farklı kurallara bağlıdır; hepsini tek bir ses denemesiyle çözmeye çalışma."
+          ],
+          "patterns": [
+            {
+              "id": "ek-baglac",
+              "logic": "İfadenin isme eklenerek görev kurmasını, ayrı bir ilişki kuran bağlaçtan ayır.",
+              "mini": {
+                "answer": "İlk de yer bildirir ve ektir; ikinci de katılma anlamı kuran bağlaçtır ve ayrı yazılır.",
+                "question": "“Evde bekledim.” / “Ben de bekledim.”"
+              },
+              "recognize": "de/da, ki veya soru ekinin yazımı sınanır.",
+              "tip": "Cümleyi anlamıyla oku; tek bir mekanik denemeye dayanma.",
+              "title": "Ek mi, bağlaç mı?",
+              "trap": "Benzer sesli ek ve bağlacı aynı kuralla yazmak."
+            },
+            {
+              "id": "ayri-bitisik",
+              "logic": "Önce sözün hangi yapı olduğunu tanı; sonra o yapının kuralını uygula.",
+              "mini": {
+                "answer": "İkileme olan ağır ağır ayrı; pekiştirme olan sapasağlam bitişik yazılır.",
+                "question": "“ağır ağır” ile “sapasağlam” nasıl yazılır?"
+              },
+              "recognize": "İkileme, pekiştirme veya birleşik sözün doğru yazımı aranır.",
+              "tip": "İkilemeleri pekiştirmeli sıfat ve zarflardan ayır.",
+              "title": "Ayrı mı, bitişik mi?",
+              "trap": "“İki sözcük gibi duyuluyorsa ayrıdır” kuralı uydurmak."
+            }
+          ],
+          "pitfall": "de'yi silme denemesi yardımcı olabilir ama cümlenin görev ve anlam çözümlemesinin yerini tutmaz.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Ben de yarın geleceğim.",
+              "Kitap masa da duruyor.",
+              "Sende bizimle gel.",
+              "Okul da üç saat kaldım."
+            ],
+            "explanation": "A · Katılma anlamı taşıyan de bağlaçtır. B'de masada, C'de sen de, D'de okulda yazılmalıdır.",
+            "question": "Hangisinde de/da doğru yazılmıştır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 41
+            },
+            {
+              "catalogId": 29,
+              "page": 50
+            }
+          ],
+          "steps": [
+            "Önce hangi yazım kuralının sınandığını belirle.",
+            "İfadenin cümledeki görevini kontrol et.",
+            "Doğru yazımı bütün cümleye yerleştirip anlamı yeniden oku."
+          ],
+          "title": "Yazım Kuralları",
+          "topics": [
+            "Yazım kuralları"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0318",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0318;field=metin",
+              "explanation": "İlk boşluk konuşma öncesi iki nokta; ikinci boşluk virgül; tamamlanan anlatı cümlesi nokta; sürüp giden sıralama üç nokta; son bölüm virgül gerektirir. D dizisi bütünü karşılar.",
+              "sourceFingerprint": "a7e1feac4e2333fca3ef2338600395ecf1079e9ce0b092ef08e4fff4b81d13ad",
+              "sourceLabel": "Noktalama İşaretleri",
+              "year": "2018"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-85-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-85-01;field=konu_basligi",
+              "explanation": "Cümle sınırı, konuşmaya bağlanan ifade ve konuşma çizgisi birlikte değerlendirilir. Tırnaksız alıntıdan sonra kullanılan virgül de D dizisini destekler.",
+              "sourceFingerprint": "ad4cb1a63716e280441494444a446ad3603d990f4c9c331e571b6c0c8440946a",
+              "sourceLabel": "Noktalama İşaretleri",
+              "year": ""
+            }
+          ],
+          "id": "noktalama-isaretleri",
+          "learn": [
+            "İşareti duraklama süresine göre değil cümlenin yapısı ve işlevine göre seç. Cümle bitişi, açıklama, sıralama ve alıntı farklı işaretler gerektirir."
+          ],
+          "patterns": [
+            {
+              "id": "isaret-tamamlama",
+              "logic": "Her boşluğa bir işlev ver; sonra diziyi bir bütün olarak oku.",
+              "mini": {
+                "answer": "Önceki yargıyı açıklayan örnek listesi başladığından iki nokta uygundur.",
+                "question": "“Çantamda üç araç var ( ) defter, kalem ve cetvel.”"
+              },
+              "recognize": "Birden fazla parantez yerine uygun işaret dizisi istenir.",
+              "tip": "Tek bir boşluğa uyan seçeneği hemen işaretleme.",
+              "title": "Boşluklara işaret yerleştirme",
+              "trap": "Konuşma öncesi açıklama ile konuşmadan sonraki aktarma fiilini aynı işaretle bağlamak."
+            },
+            {
+              "id": "virgul-noktali-virgul",
+              "logic": "Ayırdığın şey tek tek ögeler mi, kendi içinde virgül taşıyan gruplar mı?",
+              "mini": {
+                "answer": "Grupların birbirine karışmaması için grup sınırında noktalı virgül kullanılabilir; önce yapıyı görmek gerekir.",
+                "question": "Bir listede iki grubun kendi üyeleri virgüllerle ayrılıyor."
+              },
+              "recognize": "Eş görevli ögeler, gruplar veya sıralı cümleler arasında seçim gerekir.",
+              "tip": "Önce cümlenin gruplarını bul; sonra sınır işaretini seç.",
+              "title": "Virgül ile noktalı virgülü ayır",
+              "trap": "Noktalı virgülü yalnız “daha uzun durma” işareti saymak."
+            }
+          ],
+          "pitfall": "Her uzun duraklamaya noktalı virgül koyma. Tamlamanın iki unsurunu veya ikilemenin sözcüklerini virgülle ayırma.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "İki nokta",
+              "Soru işareti",
+              "Kesme işareti",
+              "Ünlem"
+            ],
+            "explanation": "A · Sonraki bölüm, iki şey ifadesinin hangi nesneleri anlattığını açıklar.",
+            "question": "“Yanımda iki şey vardı ( ) defter ve kalem.” boşluğuna hangisi gelir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 57
+            },
+            {
+              "catalogId": 29,
+              "page": 58
+            },
+            {
+              "catalogId": 29,
+              "page": 60
+            },
+            {
+              "catalogId": 29,
+              "page": 61
+            }
+          ],
+          "steps": [
+            "Önce yüklemleri ve cümle sınırlarını belirle.",
+            "Her boşluğun işlevini ayrı adlandır.",
+            "İşaret dizisini parçanın tamamında yeniden denetle."
+          ],
+          "title": "Noktalama İşaretleri",
+          "topics": [
+            "Noktalama işaretleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "TYT-0336",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0336;field=konu",
+              "explanation": "V'teki tüm, meslektaşlar ismini belirtir; ismin yerine geçmez. Bu nedenle zamir değildir. Aynı sözcükleri her bağlamda aynı tür kabul etmek yanlış seçim doğurur.",
+              "sourceFingerprint": "8f636eac818d2328f5842ae52593cf43564817b26081541295276436b01702bc",
+              "sourceLabel": "İsim Soylu Sözcükler",
+              "year": "2019"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "dd-tyt-turkce-44-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/dd-tyt-turkce.json#id=dd-tyt-turkce-44-01;field=konu_basligi",
+              "explanation": "A'da tek bir varlığa verilmiş özel ad bulunmaz. Kişi, cadde, eser ve dağ adları içeren diğer seçenekler özel isim örnekleridir.",
+              "sourceFingerprint": "c0107a9d7c4ddafdd7fb7b067776fbfc32e31b98fe65fbce5b0a46cd1465f6e1",
+              "sourceLabel": "İsim Soylu Sözcükler",
+              "year": ""
+            }
+          ],
+          "id": "sozcuk-turleri",
+          "learn": [
+            "Sözcük türünü tek başına kelimeye bakarak değil cümlede yaptığı işe göre bul. İsim varlığı adlandırır; sıfat bir ismi niteler veya belirtir; zamir ismin yerini tutar; zarf fiil, fiilimsi, sıfat veya başka bir zarfı etkileyebilir."
+          ],
+          "patterns": [
+            {
+              "id": "sifat-zamir",
+              "logic": "Bir isme eşlik ediyorsa belirtme; ismin yerini tek başına tutuyorsa zamirlik ilişkisini incele.",
+              "mini": {
+                "answer": "İlkinde bu ismi belirtir; ikincisinde bunu ismin yerini tutar.",
+                "question": "“Bu kitabı aldım.” / “Bunu aldım.”"
+              },
+              "recognize": "İşaret veya belgisizlik bildiren sözcüğün türü sorulur.",
+              "tip": "Hedef sözcüğün yanındaki ismi bul.",
+              "title": "Sıfat mı, zamir mi?",
+              "trap": "Sözcüğe ezberden sabit tür vermek."
+            },
+            {
+              "id": "zarf-gorevi",
+              "logic": "Nitelenen unsur isimse sıfatı; fiil, fiilimsi, sıfat veya zarfsa zarf görevini incele.",
+              "mini": {
+                "answer": "İlk güzel ismi niteler; ikinci güzel çizme eyleminin nasıl yapıldığını belirtir.",
+                "question": "“Güzel bir resim çizdi.” / “Güzel çizdi.”"
+              },
+              "recognize": "Sıfat ve zarf ayrımı veya sözcüğün görevi aranır.",
+              "tip": "Soru sözcüğü değil bağlandığı unsur belirleyicidir.",
+              "title": "Hangi sözcüğü etkiliyor?",
+              "trap": "İçinde “çok” geçen her grubu aynı türde saymak."
+            }
+          ],
+          "pitfall": "Her “bu” zamir değildir; bu kitap ifadesinde bu bir ismi belirtir. Zarfın yalnız fiili etkilediğini sanma.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "İşaret sıfatı",
+              "Kişi zamiri",
+              "Durum zarfı",
+              "Bağlaç"
+            ],
+            "explanation": "A · Şu, defter ismini işaret ederek belirtir; ismin yerine kullanılmamıştır.",
+            "question": "“Şu defteri bana verir misin?” cümlesindeki “şu”nun görevi nedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 78
+            },
+            {
+              "catalogId": 29,
+              "page": 81
+            },
+            {
+              "catalogId": 29,
+              "page": 85
+            },
+            {
+              "catalogId": 29,
+              "page": 93
+            }
+          ],
+          "steps": [
+            "Sözcüğün hangi unsura bağlandığını belirle.",
+            "Bir ismi mi belirtiyor, onun yerini mi tutuyor, eylemi mi etkiliyor?",
+            "Kararını aynı sözcüğün farklı cümlelerde değişebileceğini dikkate alarak kontrol et."
+          ],
+          "title": "Sözcük Türleri",
+          "topics": [
+            "Sözcük türleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0339",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0339;field=metin",
+              "explanation": "IV'te isim tamlamaları bulunur; ancak bir ismi sıfatla niteleyen veya belirten grup yoktur. İsim tamlaması ile sıfat tamlaması ayrı aranmalıdır.",
+              "sourceFingerprint": "7bf1a5a27ac62202b644d3fd9f64028b96a55ff2d1f847785ae4860d42a9c73e",
+              "sourceLabel": "Tamlamalar",
+              "year": "2020"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-112-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-112-01;field=metin",
+              "explanation": "II ve III'te sıfat görevli sanılabilecek ifadeler yüklem veya zarf görevindedir; sıfat tamlaması kuran isim ilişkisi aranır. Kaynak anahtarı B'dir.",
+              "sourceFingerprint": "dfeca5fe43de066960da652fc74450c63c7f21a3428c471d83bd63788a6f4621",
+              "sourceLabel": "Tamlamalar",
+              "year": ""
+            }
+          ],
+          "id": "tamlamalar",
+          "learn": [
+            "Önce tamlamanın merkezindeki ismi bul; öteki unsurun aitlik ilişkisi mi, niteleme veya belirtme mi kurduğunu incele. Belirtili isim tamlamasında ilgi ve iyelik ekleri, belirtisizde tamlananın iyelik eki yol gösterir."
+          ],
+          "patterns": [
+            {
+              "id": "isim-tamlamasi",
+              "logic": "Tamlayanla tamlanan arasındaki ilişkiyi kur, ilgi ve iyelik eklerini birlikte incele.",
+              "mini": {
+                "answer": "Okulun–bahçesi belirtili isim tamlamasıdır; geniş sıfatı araya girmiştir.",
+                "question": "“Okulun geniş bahçesi” nasıl çözülür?"
+              },
+              "recognize": "İsim tamlamasının türü veya unsurları sorulur.",
+              "tip": "Araya sıfat girse veya unsurlar yer değiştirse de ilişki sürer.",
+              "title": "Aitlik ilişkisi ve ekler",
+              "trap": "Yalnız sözcük sayısına göre tamlama türü seçmek."
+            },
+            {
+              "id": "sifat-tamlamasi",
+              "logic": "Bir sıfatın bir ismi niteleyip belirtmesini göster; yüklem olan niteliği ayır.",
+              "mini": {
+                "answer": "İlki sıfat tamlamasıdır; ikincisinde eski sözcüğü yargı kuran yüklem görevindedir.",
+                "question": "“Eski defter” / “Defter eskidir.”"
+              },
+              "recognize": "Sıfat tamlaması bulunur veya bulunmaz diye sorar.",
+              "tip": "“Güzel ev” ile “ev güzel” aynı söz grubu değildir.",
+              "title": "İsim niteleniyor mu?",
+              "trap": "Her niteleme bildiren sözcüğü sıfat tamlaması sanmak."
+            }
+          ],
+          "pitfall": "Yan yana duran her iki isim tamlama kurmaz. Tamlama grubu cümlenin ögeleri bulunurken parçalanmamalıdır.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Belirtili isim tamlaması",
+              "Sıfat tamlaması",
+              "İkileme",
+              "Zarf-fiil grubu"
+            ],
+            "explanation": "A · Kitabın ilgi eki, kapağı iyelik eki taşır; iki isim aitlik ilişkisiyle bağlanır.",
+            "question": "“Kitabın kapağı” söz grubunda hangi tür ilişki vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 90
+            },
+            {
+              "catalogId": 29,
+              "page": 91
+            }
+          ],
+          "steps": [
+            "Merkez ismi ve ona bağlı söz grubunu belirle.",
+            "Tamlayan ile tamlananın eklerini kontrol et.",
+            "Araya giren sıfatları veya yer değiştiren unsurları aynı ilişki içinde birleştir."
+          ],
+          "title": "İsim ve Sıfat Tamlamaları",
+          "topics": [
+            "İsim ve sıfat tamlamaları"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0343",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0343;field=metin",
+              "explanation": "I ve IV'te fiilimsi bulunmaz. Doğum ve ölüm gibi kalıcı isimleri, sırf fiilden türemiş oldukları için fiilimsi saymamak gerekir.",
+              "sourceFingerprint": "eb4ecdbdc81a98e8221543aca7dfc191be80e5da7ca7d9ebe04fb8dfcf8ea933",
+              "sourceLabel": "Fiilimsiler",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-106-07",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-106-07;field=metin",
+              "explanation": "İsim-fiil, sıfat-fiil, zarf-fiil, sıfat-fiil ve sıfat-fiil sırası izlenir. Yıkanmak, istediğim, yatıp, yürüyen ve oynaştığı kullanımlarının görevleri tek tek denetlenir.",
+              "sourceFingerprint": "8ad1c6a2fbae29d0fb6f77f14baf9e8808a1a1fab311a1f0e21817a550b57b26",
+              "sourceLabel": "Fiilimsiler",
+              "year": ""
+            }
+          ],
+          "id": "fiil-ek-fiil-fiilimsi",
+          "learn": [
+            "Çekimli fiil kip ve kişiye bağlanarak yargı kurar. Fiilimsi fiil kökünden türeyip isim, sıfat veya zarf görevi üstlenir. Ek fiil isim soylu sözcüğü yüklem yapabilir veya fiilin birleşik zamanını kurabilir."
+          ],
+          "patterns": [
+            {
+              "id": "fiilimsi-turu",
+              "logic": "Fiil kökünü bul, sonra isme mi eyleme mi bağlandığını veya isim görevi mi yaptığını belirle.",
+              "mini": {
+                "answer": "Gülen çocuğu niteleyen sıfat-fiil; koşarak gelme eylemini belirten zarf-fiildir. Geldi çekimli fiildir.",
+                "question": "“Gülen çocuk koşarak geldi.”"
+              },
+              "recognize": "Fiilimsi sayısı, türü veya bulunmadığı cümle sorulur.",
+              "tip": "Eki tanımak başlangıçtır; görevle doğrula.",
+              "title": "Fiilimsinin türünü bul",
+              "trap": "Kalıcı isimleri ve çekimli fiilleri fiilimsi saymak."
+            },
+            {
+              "id": "ek-fiil",
+              "logic": "İsim soylu sözcükte yargı kurma ile fiilde birleşik zaman kurmayı ayır.",
+              "mini": {
+                "answer": "İlkinde ek fiil isim soylu sözcüğü yüklem yapar; ikincisinde fiilin birleşik zamanı kurulur.",
+                "question": "“Öğretmendi.” / “Çalışıyordu.”"
+              },
+              "recognize": "Ek fiilin görevi veya çekimli fiilin zamanı sorulur.",
+              "tip": "Önce kökün fiil mi isim mi olduğunu belirle.",
+              "title": "Yüklem ve birleşik zaman",
+              "trap": "Her -di görülen biçimi aynı çekim yapısı saymak."
+            }
+          ],
+          "pitfall": "-ma her yerde isim-fiil, -acak her yerde sıfat-fiil değildir. Ek benzerliği yerine görev ve yargı ilişkisine bak.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Zarf-fiil",
+              "Çekimli fiil",
+              "Sıfat-fiil",
+              "İsim-fiil"
+            ],
+            "explanation": "A · Girişin nasıl yapıldığını belirten fiilimsi vardır. Cümlenin çekimli fiili girdi sözcüğüdür.",
+            "question": "“Koşarak sınıfa girdi.” cümlesindeki “koşarak”ın görevi nedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 101
+            },
+            {
+              "catalogId": 29,
+              "page": 103
+            },
+            {
+              "catalogId": 29,
+              "page": 107
+            }
+          ],
+          "steps": [
+            "Sözcüğün fiil kökünü ve cümledeki görevini belirle.",
+            "Kip-kişi ekiyle yargı kurup kurmadığını kontrol et.",
+            "Fiilimsi ekini görsen bile kalıcı isimleşmeyi ve bağlamı ayrıca denetle."
+          ],
+          "title": "Fiil, Ek Fiil ve Fiilimsi",
+          "topics": [
+            "Fiil, ek fiil ve fiilimsi"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-0347",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0347;field=konu",
+              "explanation": "Sıfat-fiilli uzun grup özneyi; kendini belirtili nesneyi; yaşarken zarf tümlecini oluşturur. Yüklem sona alınarak sıra C ile eşleştirilir.",
+              "sourceFingerprint": "e32685fbc8157b134524d3b225dd26606c8d546d5d424defd6e49feb38f39ae0",
+              "sourceLabel": "Cümlenin Ögeleri",
+              "year": "2018"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-115-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-115-01;field=konu_basligi",
+              "explanation": "Şiirlerinde yer tamlayıcısı, şehirlerin etkisini belirten bütün grup özne, açıkça zarf tümleci, görülür yüklemdir. Tamlamanın içindeki şehir adları ayrı ögelere bölünmez.",
+              "sourceFingerprint": "070eee99ea6cb79a19e9cf9f50480099fc304d4b7845fe07a4b9926fb3b690f6",
+              "sourceLabel": "Cümlenin Ögeleri",
+              "year": ""
+            }
+          ],
+          "id": "cumlenin-ogeleri",
+          "learn": [
+            "Ögeleri bulmaya yüklemden başla. Soruları yükleme yönelt; söz gruplarını anlam bütünlüğü içinde koru. Aynı ek farklı anlam ilişkileri kurabildiği için yalnız eke bakarak öge seçme."
+          ],
+          "patterns": [
+            {
+              "id": "oge-sirasi",
+              "logic": "Yüklemden başlayıp anlam gruplarına sorular yönelt; sonra metindeki sıraya dön.",
+              "mini": {
+                "answer": "Yüklem bıraktı; öğrenciler özne, kitapları belirtili nesne, kütüphaneye yer tamlayıcısı, dün zarf tümlecidir.",
+                "question": "“Dün öğrenciler kitapları kütüphaneye bıraktı.”"
+              },
+              "recognize": "Cümlenin öge sıralanışı sorulur.",
+              "tip": "Önce analiz et, sonra sırala.",
+              "title": "Ögeleri sırasıyla bul",
+              "trap": "Uzun özneyi yalnız son isimden ibaret sanmak."
+            },
+            {
+              "id": "grubu-koruma",
+              "logic": "Bir gruba aynı yüklem sorusu yöneliyorsa bütünü bir öge olarak sınamayı dene.",
+              "mini": {
+                "answer": "Dönen kim sorusunun cevabı bahçede oynayan çocuklar grubunun tamamıdır; bahçede burada ana yüklemin ayrı yer tamlayıcısı değildir.",
+                "question": "“Bahçede oynayan çocuklar eve döndü.”"
+              },
+              "recognize": "Tamlama veya fiilimsi içeren uzun bir cümle verilir.",
+              "tip": "Tamlayanı tamlanandan ayırmadan oku.",
+              "title": "Söz grubunu parçalama",
+              "trap": "Her sözcüğe tek başına öge adı vermek."
+            }
+          ],
+          "pitfall": "İçinde fiilimsi olan her grubu ayrı yüklem sayma. -e, -de ve -den ekleri zaman veya neden bildirdiğinde yer tamlayıcısı olmayabilir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Özne",
+              "Belirtili nesne",
+              "Zarf tümleci",
+              "Yüklem"
+            ],
+            "explanation": "C · Nasıl çözdü sorusunu yanıtlar. Özne öğrenciler, nesne soruyu, yüklem çözdü sözcüğüdür.",
+            "question": "“Öğrenciler soruyu dikkatle çözdü.” cümlesinde “dikkatle” hangi ögedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 114
+            },
+            {
+              "catalogId": 29,
+              "page": 115
+            },
+            {
+              "catalogId": 29,
+              "page": 116
+            }
+          ],
+          "steps": [
+            "Yargıyı taşıyan yüklemi bul.",
+            "Özneyi belirle, ardından nesne ve tümleçleri yükleme sorulan sorularla ayır.",
+            "Tamlama ve fiilimsi gruplarını bölmeden öge sırasını yeniden oku."
+          ],
+          "title": "Cümlenin Ögeleri",
+          "topics": [
+            "Cümlenin ögeleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-0359",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0359;field=konu",
+              "explanation": "III'ün yüklemi isim soylu adres sözcüğüdür. Öteki cümlelerin temel yüklemleri fiildir; cümle içindeki izlemek veya öğrenmek sözcükleri temel yüklemin yerine konmaz.",
+              "sourceFingerprint": "f66426a01ce4b1b19c939ccb5388c34dc6f86269221064914130b25f7a8915d8",
+              "sourceLabel": "Cümle Türleri",
+              "year": "2024"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-121-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-121-01;field=konu_basligi",
+              "explanation": "Temel yüklem gördüm çekimli fiilidir. Cümleyi isim cümlesi sayan IV yanlıştır; yapı, yer ve anlam yargıları ayrı ayrı kontrol edilir.",
+              "sourceFingerprint": "e0cb5d5d23a879a189d23948a0271a433746aa526c6cef9b4f2f6a9c5a0f631a",
+              "sourceLabel": "Cümle Türleri",
+              "year": ""
+            }
+          ],
+          "id": "cumle-turleri",
+          "learn": [
+            "Cümleyi sınıflarken dört ekseni ayrı kontrol et: yüklemin türü, yüklemin yeri, anlam ve yapı. Bir eksendeki sonuç diğerini otomatik belirlemez."
+          ],
+          "patterns": [
+            {
+              "id": "yuklem-turu",
+              "logic": "Temel yargıyı bul; yalnız cümlede geçen bir eylemi yüklem sayma.",
+              "mini": {
+                "answer": "Yüklem isim-fiil görevli okumaktır; cümlede fiil kökü bulunması tek başına fiil cümlesi kanıtı değildir.",
+                "question": "“En sevdiğim iş okumaktır.”"
+              },
+              "recognize": "İsim veya fiil cümlesi ya da diğerlerinden farklı cümle sorulur.",
+              "tip": "Eksik ek fiil isim yüklemini görünmez kılmaz.",
+              "title": "Yüklemin türü",
+              "trap": "İçinde fiilimsi bulunan her cümleyi fiil cümlesi sanmak."
+            },
+            {
+              "id": "ayri-eksenler",
+              "logic": "Her yargıyı kendi ölçütüyle denetle; doğru olan bir özelliği ötekilere taşıma.",
+              "mini": {
+                "answer": "İki olumsuzluk birlikte seviyorum anlamı kurabilir. Biçim ile anlamı ayrı değerlendir.",
+                "question": "“Bu kitabı sevmiyor değilim.”"
+              },
+              "recognize": "Bir cümle hakkında birden fazla sınıflama yargısı verilir.",
+              "tip": "Kurallılık yüklemin yeriyle, olumluluk yargının anlamıyla ilgilidir.",
+              "title": "Anlam, yer ve yapı",
+              "trap": "Olumsuzluk ekini görüp anlamı yeniden okumamak."
+            }
+          ],
+          "pitfall": "Yüklem dışındaki bir fiilimsi, cümleyi fiil cümlesi yapmaz. Olumsuz görünen bir yapı anlamca olumlu olabilir.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "İsim cümlesi",
+              "Fiil cümlesi",
+              "Yüklemsiz cümle",
+              "Soru cümlesi"
+            ],
+            "explanation": "A · Serin isim soylu yüklemdir; fiil çekimiyle kurulmuş temel yargı yoktur.",
+            "question": "“Bugün hava serin.” cümlesi yükleminin türüne göre nasıldır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 118
+            }
+          ],
+          "steps": [
+            "Yüklemi bul ve isim mi fiil mi olduğunu belirle.",
+            "Yüklemin yerini ve yargının olumlu-olumsuz anlamını kontrol et.",
+            "Yapıyı ayrıca incele; sorunun istediği eksene göre karşılaştır."
+          ],
+          "title": "Cümle Türleri",
+          "topics": [
+            "Cümle türleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-0360",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0360;field=konu",
+              "explanation": "C'deki yakın anlamlı sıfatlar aynı anlamı işlevsiz biçimde tekrar eder. Parçada eleştirilen yaklaşım gereksiz sözlerle anlatımı ağırlaştırmaktır.",
+              "sourceFingerprint": "21e20e64c029ad5c3f3b127331d892daf1a0f493f8ae8f8b8c708f5ec21ef7fb",
+              "sourceLabel": "Anlatım Bozukluğu",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-127-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-127-01;field=metin",
+              "explanation": "İki özelliğin olumluluk-olumsuzluk bağlantısında yüklem ortaklığı sorun doğurur. İleri görüşlüydü ama yaratıcı değildi biçiminde ilk yargıyı tamamlamak gerekir.",
+              "sourceFingerprint": "0ef8feb7d2c55def17d029846e56acfa639f2e7dee36c1c620db78498c2f7445",
+              "sourceLabel": "Anlatım Bozukluğu",
+              "year": ""
+            }
+          ],
+          "id": "anlatim-bozukluklari",
+          "learn": [
+            "Önce anlam sorunuyla yapı sorununu ayır. Gereksiz sözcük, çelişki ve yanlış bağlama anlamı; eksik öge veya uyuşmazlık yapıyı bozabilir. Düzeltmenin anlamı koruyup sorunu gidermesi gerekir."
+          ],
+          "patterns": [
+            {
+              "id": "anlam-denetimi",
+              "logic": "Aynı anlamı iki kez söyleyen veya kesinlik-ihtimal gibi çelişen iddiaları kuran ifadeleri karşılaştır.",
+              "mini": {
+                "answer": "Kesinlik ile olasılık aynı yargıda çatışır; amaçlanan anlamı koruyacak biçimde birini seçmek gerekir.",
+                "question": "“Kesinlikle yarın gelmiş olabilir.”"
+              },
+              "recognize": "Anlamca bozuk olan cümle veya gereksiz sözcük sorulur.",
+              "tip": "Sözcüğü çıkarınca bilgi kaybolmuyorsa gereksizlik adayını incele.",
+              "title": "Gereksiz söz ve çelişki",
+              "trap": "Yakın anlamlı bütün sözcükleri her bağlamda gereksiz saymak."
+            },
+            {
+              "id": "yapi-denetimi",
+              "logic": "Ortak sözcüğün her yargıya uyup uymadığını ayrı kontrol et.",
+              "mini": {
+                "answer": "İkinci yargı kitaptan hoşlandım biçimini gerektirir; nesneyle yer tamlayıcısının görevleri aynı değildir.",
+                "question": "“Kitabı okudum ve çok hoşlandım.”"
+              },
+              "recognize": "Birden fazla yargının ortak öge veya yüklemle bağlandığı cümle verilir.",
+              "tip": "İki cümleyi geçici olarak ayırıp eksik öğeyi görünür kıl.",
+              "title": "Eksik ögeyi yerine koy",
+              "trap": "İkinci yüklemi ilk yargıya anlamı denetlemeden taşımak."
+            }
+          ],
+          "pitfall": "Cümleyi yalnız kulağa hoş gelmesi için değiştirme; somut sorunu ve en küçük düzeltmeyi göster.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Gereksiz sözcük kullanımı",
+              "Ünsüz düşmesi",
+              "Özel adın yanlış yazımı",
+              "Soru eki eksikliği"
+            ],
+            "explanation": "A · İade etmek zaten geri verme anlamı taşır; geri sözcüğü aynı bilgiyi tekrarlar.",
+            "question": "“Geri iade etti.” ifadesindeki sorun nedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 121
+            },
+            {
+              "catalogId": 29,
+              "page": 122
+            },
+            {
+              "catalogId": 29,
+              "page": 124
+            }
+          ],
+          "steps": [
+            "Cümlenin vermek istediği bilgiyi belirle.",
+            "Şüpheli sözcüğü çıkarma veya eksik ögeyi yerine koyma denemesi yap.",
+            "Düzeltilmiş cümlenin hem anlam hem dil bilgisi bakımından tutarlı olduğunu kontrol et."
+          ],
+          "title": "Anlatım Bozuklukları",
+          "topics": [
+            "Anlatım bozuklukları"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 29,
+          "title": "TYT Türkçe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-turkce/tyt-turkce.pdf"
+        }
+      ],
+      "readyTopicCount": 15,
+      "subject": "Türkçe",
+      "units": [
+        {
+          "name": "Anlam bilgisi",
+          "topics": [
+            "Sözcükte anlam",
+            "Cümlede anlam",
+            "Paragrafta konu ve ana düşünce",
+            "Paragrafta yapı",
+            "Paragrafta anlatım teknikleri",
+            "Paragrafta düşünceyi geliştirme yolları",
+            "Sözel mantık"
+          ]
+        },
+        {
+          "name": "Dil bilgisi",
+          "topics": [
+            "Ses bilgisi",
+            "Yazım kuralları",
+            "Noktalama işaretleri",
+            "Sözcük türleri",
+            "İsim ve sıfat tamlamaları",
+            "Fiil, ek fiil ve fiilimsi",
+            "Cümlenin ögeleri",
+            "Cümle türleri",
+            "Anlatım bozuklukları"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 960,
+        "needsReview": 5208,
+        "shortOrVisualText": 0,
+        "sourceRecords": 7476,
+        "sourceTopicCount": 179
+      },
+      "curriculumId": "edebiyat",
+      "exam": "AYT",
+      "id": "ayt-edebiyat",
+      "inventory": {
+        "CIKMIS": 216,
+        "OGM": 7260
+      },
+      "labelGroups": [
+        "ayt-turk-dili-ve-edebiyati"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0050",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0050;field=konu",
+              "explanation": "İlk üç dize ortak seslerle bağlanır, son dize ayrılır: düzen aaab olur. Sarma uyak abba gerektirir. Bu yüzden sarma düzen bulunduğunu söyleyen B seçeneği yanlıştır.",
+              "sourceFingerprint": "5ea66c832c4bcc92f7566b6d9f98562631d37f826a141385c7f2e3c1818dd396",
+              "sourceLabel": "Şiir Bilgisi",
+              "year": "2018"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-20-03",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-20-03;field=konu_basligi",
+              "explanation": "Dizeler onar hecedir. Soruda söylenemeyecek özellik arandığından 11'li ölçü diyen E seçeneği elenir. Ölçüyü çağrışımla değil sayarak denetlemek gerekir.",
+              "sourceFingerprint": "6930c01fca98941fe206a2532ed6f527d0cf8ba26505b3a035df4996d5d3b21f",
+              "sourceLabel": "Şiir Bilgisi",
+              "year": ""
+            }
+          ],
+          "id": "siirde-ahenk",
+          "learn": [
+            "Hece ölçüsü dizelerdeki hece sayısının eşitliğine dayanır. Redif, dize sonlarında aynı anlam ve görevle yinelenen ek veya sözlerdir. Uyak incelemesinde önce redifi ayır, sonra kalan ortak sesleri karşılaştır.",
+            "Nazım birimi, nazım biçimi ve nazım türü farklı sorulara cevap verir: dize topluluğu, biçimsel düzen ve işlenen konu. Birini bilmek ötekini tek başına kanıtlamaz."
+          ],
+          "patterns": [
+            {
+              "id": "uyak-redif",
+              "logic": "Dize sonlarında aynı anlam ve görevli ek veya sözleri ayır; kalan ortak sesleri incele.",
+              "mini": {
+                "answer": "Bu ekler redif olarak ayrılır. Uyak kararını bunlardan önce kalan seslerle verirsin.",
+                "question": "İki dize sonunda aynı çoğul görevindeki -lar ekleri var."
+              },
+              "recognize": "Uyak türü, redif veya uyak örgüsü sorulur.",
+              "tip": "Ses benzerliği ile görev benzerliğini ayrı test et.",
+              "title": "Önce redif, sonra uyak",
+              "trap": "Aynı yazılan her parçayı otomatik redif saymak."
+            },
+            {
+              "id": "olcu",
+              "logic": "Dizelerin hece sayısını tek tek karşılaştır; şair adı veya dönemiyle kestirme yapma.",
+              "mini": {
+                "answer": "Sa-bah / gü-ne-şi / do-ğar: 2 + 3 + 2 = 7. Başka dizelerin de aynı sayıyı taşıyıp taşımadığını ayrıca saymalısın.",
+                "question": "“Sabah güneşi doğar” dizesi kaç hecedir?"
+              },
+              "recognize": "Hece ölçüsü veya şiirin biçimsel özellikleri hakkında öncüller verilir.",
+              "tip": "Bir ölçü iddiasını bütün dizelerde sınamadan kabul etme.",
+              "title": "Ölçüyü gerçekten say",
+              "trap": "Bir dizenin sayısını bütün şiire yaymak."
+            }
+          ],
+          "pitfall": "Yalnız dize sonlarının benzemesi redif demek değildir; anlam ve görev de eş olmalıdır. Şairin dönemi ölçüyü tek başına kanıtlamaz.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Redif",
+              "Yarım uyak",
+              "Zengin uyak",
+              "Aruz ölçüsü"
+            ],
+            "explanation": "A · Redif. Aynı anlam ve görevde yinelenen ekler rediftir. Uyak türüne karar vermek için rediften önce kalan ortak seslere bakılır; bu ekler tek başına uyak sayılmaz. Aruz ise ölçüyle ilgilidir.",
+            "question": "İki dize sonundaki sözcüklerde bulunan “-lar” ekleri aynı çoğul görevini taşımaktadır. Bu eklerin ses benzerliği hangi kavramla açıklanır?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 13
+            },
+            {
+              "catalogId": 39,
+              "page": 14
+            },
+            {
+              "catalogId": 39,
+              "page": 15
+            }
+          ],
+          "steps": [
+            "Sorunun yanlış olanı mı, doğru olanı mı istediğini işaretle.",
+            "Hece sayısını her dizede ayrı say; dize sonlarındaki aynı anlam ve görevli ekleri veya sözleri ayır.",
+            "Kalan sesleri eşleştirerek uyak örgüsünü harflerle yaz. Her seçeneği şiirin ayrı bir özelliğiyle denetle."
+          ],
+          "title": "Şiirde Ölçü, Uyak ve Redif",
+          "topics": [
+            "Şiir bilgisi"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 39,
+          "title": "AYT Türk Dili ve Edebiyatı Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tde/ayt-tde.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Türk Dili ve Edebiyatı",
+      "units": [
+        {
+          "name": "Metin ve sanat",
+          "topics": [
+            "Edebiyatın temel kavramları",
+            "Şiir bilgisi",
+            "Söz sanatları",
+            "Metin türleri",
+            "Edebî akımlar"
+          ]
+        },
+        {
+          "name": "Türk edebiyatı dönemleri",
+          "topics": [
+            "İslamiyet öncesi Türk edebiyatı",
+            "Geçiş dönemi eserleri",
+            "Halk edebiyatı",
+            "Divan edebiyatı",
+            "Tanzimat edebiyatı",
+            "Servetifünun ve Fecriati",
+            "Millî Edebiyat",
+            "Cumhuriyet dönemi Türk edebiyatı"
+          ]
+        },
+        {
+          "name": "Türler ve eserler",
+          "topics": [
+            "Roman ve hikâye",
+            "Tiyatro",
+            "Öğretici metinler",
+            "Şair, yazar ve eser eşleştirmeleri"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 370,
+        "needsReview": 2232,
+        "shortOrVisualText": 0,
+        "sourceRecords": 4083,
+        "sourceTopicCount": 168
+      },
+      "curriculumId": "tarih",
+      "exam": "TYT",
+      "id": "tyt-tarih",
+      "inventory": {
+        "CIKMIS": 45,
+        "OGM": 4038
+      },
+      "labelGroups": [
+        "tyt-tarih",
+        "ayt-tarih",
+        "ayt-tarih-1",
+        "ayt-tarih-2"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0361",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0361",
+              "explanation": "Parça yay, ok ve kementi etkili kullanmaya kanıt verir. Onlu sistem ve hilal taktiği hakkında bilgi içermez. Bu nedenle yalnız II desteklenir; cevap B'dir.",
+              "sourceFingerprint": "233dd13425d0faea5ddb756b7e888e5963b66b33b0f1e705a6146cd05d473700",
+              "sourceLabel": "Boylardan Devlete",
+              "year": "2018"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-tarih-01-03",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-tarih.json#id=3a-tyt-tarih-01-03",
+              "explanation": "Tarih yazanın tarihsel gerçeğe sadık kalması vurgusu, nesnel tarih yazımını destekler. Başka bilimlerden yararlanma veya millî benlik bu alıntının doğrudan konusu değildir; cevap D'dir.",
+              "sourceFingerprint": "8cb0745c2ee8877886a17ecb71d6933b67e3fb46688627b583fc5a123eaa3283",
+              "sourceLabel": "Tarih ve Zaman",
+              "year": ""
+            }
+          ],
+          "id": "tarih-bilimi",
+          "learn": [
+            "Tarih, insan faaliyetlerini yer, zaman, sebep ve sonuç ilişkileri içinde belgelerle inceler. Nesnellik, anlatılanı kişisel tercihe göre değiştirmeden kaynak kanıtına bağlı kalmayı gerektirir.",
+            "Bir soru yalnız verilen bilgiye göre çıkarım istiyorsa, doğru olduğunu başka yerden bildiğin bir olgu bile parçada desteklenmedikçe cevap gerekçesi olmaz. Kaynak türü ile kaynaktan çıkarılabilecek yargıyı ayrı değerlendir."
+          ],
+          "patterns": [
+            {
+              "id": "belgeden-cikarim",
+              "logic": "Her öncülü belgede destekleyen ifadeyi bul; bildiğin başka bir tarih bilgisini kanıt yerine koyma.",
+              "mini": {
+                "answer": "Ok kullanımını destekler; komuta sistemi veya uygulanan savaş taktiği için ayrıca kanıt gerekir.",
+                "question": "Belge bir ordunun ok kullandığını söylüyor."
+              },
+              "recognize": "Yalnız bu bilgiye göre veya ulaşılabilir gibi bir sınır bulunur.",
+              "tip": "Doğru olmak ile bu kaynaktan çıkarılabilir olmak ayrı koşullardır.",
+              "title": "Yalnız verilen bilgiden çıkarım",
+              "trap": "Dönemin bütün özelliklerini tek kısa parçaya taşımak."
+            },
+            {
+              "id": "kaynak-yontem",
+              "logic": "Kaynağın olayla zaman ilişkisini ve sunduğu kanıtın türünü ayır; anlatımı kişisel tercihle değiştirme.",
+              "mini": {
+                "answer": "Ferman döneme ait birincil kanıt olabilir; sonraki araştırma ise bu kaynakları yorumlayan başka bir katmandır.",
+                "question": "Bir araştırmacı döneme ait ferman ile yıllar sonra yazılmış araştırmayı karşılaştırıyor."
+              },
+              "recognize": "Tarih yazımının özelliği veya kaynak türü sorulur.",
+              "tip": "Olayın dönemine ait belgeyle sonradan o belgelerden yararlanılarak yazılan eseri ayrı değerlendir.",
+              "title": "Kaynak ve nesnellik",
+              "trap": "Eski olan her metni olayın birinci el kaynağı saymak."
+            }
+          ],
+          "pitfall": "Hunlarla ilgili bildiğin başka askerî özellikleri, yalnız silah kullanımını anlatan bir parçadan çıkaramazsın. Doğru bilgi ile bu metinden çıkarılabilir bilgi aynı şey değildir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Orduda onlu sistem vardır.",
+              "Askerler yalnız süvarilerden oluşur.",
+              "Nehri aşmak için bir yapıdan yararlanılmıştır.",
+              "Devlet demokratik yönetilir."
+            ],
+            "explanation": "C · Köprü bilgisi geçişte bir yapıdan yararlanıldığını destekler. Diğer seçenekler ordunun teşkilatı ve yönetimi hakkında belgede bulunmayan ayrıntılar ekler.",
+            "question": "Bir belge bir ordunun köprü kurup nehri geçtiğini anlatıyor; ordunun yönetim düzeni hakkında bilgi vermiyor. Yalnız bu belgeye dayanarak hangisi söylenebilir?"
+          },
+          "sources": [
+            {
+              "catalogId": 28,
+              "page": 11
+            }
+          ],
+          "steps": [
+            "Kökteki “yalnız bu bilgiye göre” sınırını belirle.",
+            "Her öncül için parçada onu destekleyen bilgiyi göster; destek yoksa dış bilgiyle tamamlamaya çalışma.",
+            "Kaynağın aktardığı olay ile yorumunu ayır; nesnellik sorusunda gerçeğe bağlılık vurgusunu ara."
+          ],
+          "title": "Tarih Bilimi ve Belgeden Çıkarım",
+          "topics": [
+            "Tarih bilimi ve zaman"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 28,
+          "title": "TYT Tarih Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-tarih/tyt-tarih.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Tarih",
+      "units": [
+        {
+          "name": "İlk ve orta çağ",
+          "topics": [
+            "Tarih bilimi ve zaman",
+            "İlk uygarlıklar",
+            "İlk Türk devletleri",
+            "İslam tarihi ve uygarlığı",
+            "Türklerin İslamiyet’i kabulü",
+            "Türk İslam devletleri"
+          ]
+        },
+        {
+          "name": "Osmanlı tarihi",
+          "topics": [
+            "Osmanlı kuruluş ve yükselme",
+            "Osmanlı kültür ve medeniyeti",
+            "Osmanlı’da değişim ve Avrupa",
+            "19. yüzyılda Osmanlı"
+          ]
+        },
+        {
+          "name": "Yakın dönem",
+          "topics": [
+            "20. yüzyıl başlarında Osmanlı",
+            "Millî Mücadele",
+            "Atatürk ilke ve inkılapları",
+            "Atatürk dönemi dış politika"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 75,
+        "needsReview": 1395,
+        "shortOrVisualText": 0,
+        "sourceRecords": 3403,
+        "sourceTopicCount": 110
+      },
+      "curriculumId": "cografya",
+      "exam": "TYT",
+      "id": "tyt-cografya",
+      "inventory": {
+        "CIKMIS": 45,
+        "OGM": 3358
+      },
+      "labelGroups": [
+        "tyt-cografya",
+        "ayt-cografya",
+        "ayt-cografya-1",
+        "ayt-cografya-2"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "TYT-0410",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0410",
+              "explanation": "Türkiye'yi, Güney Kore'yi ve aralarındaki ülkeleri birlikte göstermek için dünya siyasi haritası gerekir. Daha dar bölge veya tek ülke haritası bu kapsamı sağlamaz; cevap A'dır.",
+              "sourceFingerprint": "b1c02bcc502ba6f56f424dd28cfdb67a3840f1667b56f9bd6c4d9f77deb38e1a",
+              "sourceLabel": "Harita Okuryazarlığı",
+              "year": "2022"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-cografya-10-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-cografya.json#id=3a-tyt-cografya-10-02",
+              "explanation": "Ölçek değişince gerçek uzunluk ve koordinatlar sabit kalır; harita alanı ile ayrıntıyı gösterme gücü değişir. II ve IV'ü birleştiren D seçeneği uygundur.",
+              "sourceFingerprint": "dee661e21e66476a36be39b041ea2b583e8616756becdc4975d52c1e99ea6027",
+              "sourceLabel": "Harita Bilimi",
+              "year": ""
+            }
+          ],
+          "id": "harita-bilgisi",
+          "learn": [
+            "Haritanın amacı başlıkta, işaretlerin anlamı lejantta, küçültme oranı ölçekte bulunur. Bir soruda önce hangi alanın ve hangi bilginin görülmesi gerektiğini belirle; sonra uygun haritayı seç.",
+            "Aynı yerin farklı ölçekli haritalarında gerçek uzaklık ve coğrafi koordinat değişmez. Haritada kaplanan alan ile ayrıntıyı gösterme gücü değişebilir. Ölçek paydası küçüldükçe ölçek büyür."
+          ],
+          "patterns": [
+            {
+              "id": "harita-secimi",
+              "logic": "Gösterilecek alanın kapsamıyla bilgi türünü birlikte belirle.",
+              "mini": {
+                "answer": "Tek ülke haritası yeterli olmaz; gerekli bütün alanı kapsayan siyasi harita aranır.",
+                "question": "İki ayrı kıtadaki ülkeler ve aralarındaki ülkeler birlikte incelenecek."
+              },
+              "recognize": "Hangi haritanın bir kişinin bilgi ihtiyacını karşılayacağı sorulur.",
+              "tip": "Haritanın yalnız bir bölgeyi doğru göstermesi bütün ihtiyacı karşıladığı anlamına gelmez.",
+              "title": "Amaca uygun harita seçimi",
+              "trap": "İstenen ülkeleri aynı anda kapsamayan haritayı seçmek."
+            },
+            {
+              "id": "olcek-degisimi",
+              "logic": "Gerçekte sabit olan uzaklık ve koordinatı, çizimde değişen alan ve ayrıntıdan ayır.",
+              "mini": {
+                "answer": "Yerlerin gerçek koordinatları değişmez. Çizimdeki uzaklık ve gösterilebilen ayrıntı değişebilir.",
+                "question": "Aynı yerin haritası daha küçük ölçekte çiziliyor."
+              },
+              "recognize": "Aynı bölgenin farklı ölçekli haritaları karşılaştırılır.",
+              "tip": "Payda küçüldükçe ölçek büyür; önce kesir ilişkisini düşün.",
+              "title": "Ölçek değişince ne değişir?",
+              "trap": "Haritadaki mesafe küçüldü diye gerçek mesafenin değiştiğini sanmak."
+            },
+            {
+              "id": "uzunluk-hesabi",
+              "logic": "Harita uzunluğunu ölçek paydasıyla çarp; sonucu istenen birime dönüştür.",
+              "mini": {
+                "answer": "3 × 100.000 cm = 300.000 cm = 3 km. Önce aynı birimde hesap yaptın, sonra çevirdin.",
+                "question": "1/100.000 haritada 3 cm kaç kilometredir?"
+              },
+              "recognize": "Ölçek ve santimetre cinsinden uzunluk verilir.",
+              "tip": "Uzunluk ve alan hesabını birbirine karıştırma.",
+              "title": "Harita uzunluğunu gerçeğe çevir",
+              "trap": "Santimetre sonucunu kilometreymiş gibi yazmak."
+            }
+          ],
+          "pitfall": "Kâğıttaki uzunlukla gerçek uzaklığı karıştırma. Bir ülkenin haritası, iki uzak ülke arasındaki bütün ülkeleri gösterme ihtiyacını karşılamaz.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "1",
+              "2,5",
+              "10",
+              "100"
+            ],
+            "explanation": "C · 10 km. 4 × 250.000 = 1.000.000 cm; 100.000 cm = 1 km olduğundan sonuç 10 km'dir. 2,5 km yalnız bir santimetrenin karşılığıdır; diğer değerler birim dönüşümünü karşılamaz.",
+            "question": "1/250.000 ölçekli bir haritada iki nokta arası 4 cm'dir. Bu iki nokta arasındaki gerçek uzaklık kaç kilometredir?"
+          },
+          "sources": [
+            {
+              "catalogId": 23,
+              "page": 26
+            },
+            {
+              "catalogId": 23,
+              "page": 27
+            },
+            {
+              "catalogId": 23,
+              "page": 28
+            }
+          ],
+          "steps": [
+            "Sorunun kapsadığı yerleri ve aradığı bilgi türünü belirle.",
+            "Harita başlığını bu amaçla karşılaştır: bütün gerekli yerler aynı haritada bulunmalı.",
+            "Ölçek sorusunda gerçekte sabit olan özelliklerle çizimde değişen özellikleri ayır; uzunluk hesabında birimleri eşitle."
+          ],
+          "title": "Harita Türü ve Ölçek",
+          "topics": [
+            "Harita bilgisi ve izohipsler"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 23,
+          "title": "TYT Coğrafya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-cografya/tyt-cografya.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Coğrafya",
+      "units": [
+        {
+          "name": "Doğal sistemler",
+          "topics": [
+            "Coğrafyanın konusu",
+            "Dünya’nın şekli ve hareketleri",
+            "Coğrafi konum",
+            "Harita bilgisi ve izohipsler",
+            "Atmosfer ve iklim",
+            "İç ve dış kuvvetler",
+            "Su, toprak ve bitki örtüsü"
+          ]
+        },
+        {
+          "name": "Beşerî sistemler",
+          "topics": [
+            "Nüfusun özellikleri",
+            "Yerleşme ve göç",
+            "Ekonomik faaliyetler",
+            "Bölgeler",
+            "Doğal afetler",
+            "Çevre ve toplum"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 225,
+        "needsReview": 3370,
+        "shortOrVisualText": 0,
+        "sourceRecords": 3370,
+        "sourceTopicCount": 35
+      },
+      "curriculumId": "felsefe",
+      "exam": "TYT",
+      "id": "tyt-felsefe",
+      "inventory": {
+        "CIKMIS": 90,
+        "OGM": 3280
+      },
+      "labelGroups": [
+        "tyt-felsefe",
+        "ayt-felsefe",
+        "ayt-felsefe-grubu"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0467",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 189 · Bilgi Felsefesinin Konusu ve Bilginin İmkânı Problemi",
+              "explanation": "Bilimsel görüşlerin daha sonra değişebilmesi örneği, doğru ve kesin bilginin mümkün olup olmadığına bağlanır. Metin yalnız bilgi kaynağını sormaz; cevap D'dir. Bu kayıt din soruları yerine çözülen ek felsefe bölümündendir.",
+              "sourceFingerprint": "7682ebee016e5e5b916574cae17ed6db94cd4ab088bd5916b634243f209af916",
+              "sourceLabel": "Bilgi Felsefesinin Konusu ve Bilginin İmkânı Problemi",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-tyt-felsefe-19-01",
+              "evidenceRef": "kaynaklar/ogm-materyal/Felsefe/TYT/3 Adim Soru Bankasi - TYT Felsefe.pdf · PDF s. 49 · Bilgi Felsefesinin Konusu ve Problemleri",
+              "explanation": "Diyalogda algıdan söz edilse de varılan sav mutlak doğruluğun bulunmadığıdır. Baskın problem doğru bilginin imkânıdır; kaynak anahtar sözcüğüne takılmadan C seçilir.",
+              "sourceFingerprint": "d458c56ee7c0c1aba806cbf5a7b59142ad578ed36be617baaee17e2891b9393c",
+              "sourceLabel": "Bilgi Felsefesinin Konusu ve Bilginin İmkânı Problemi",
+              "year": ""
+            }
+          ],
+          "id": "bilginin-imkani",
+          "learn": [
+            "Bilginin mümkün olup olmadığı, hangi kaynaktan geldiği ve neye göre doğru sayıldığı ayrı problemlerdir. İmkân sorusu doğru bilgiye ulaşılabilirliği; kaynak sorusu akıl, deneyim veya sezgi gibi dayanakları; ölçüt sorusu doğruluğun nasıl değerlendirildiğini inceler.",
+            "Bir paragrafta duyular veya deney örnek olarak geçebilir. Sonuç doğru bilginin kesinliğini sorguluyorsa temel problem imkândır. Parçadaki örnek sözcüğüyle son savı birbirine karıştırma."
+          ],
+          "patterns": [
+            {
+              "id": "problem-ayrimi",
+              "logic": "Son savın ulaşılabilirliği mi, bilginin nereden geldiğini mi, doğruluğu nasıl belirleyeceğimizi mi sorguladığını bul.",
+              "mini": {
+                "answer": "Algı örneği araçtır; son sav doğru bilginin imkânıyla ilgilidir.",
+                "question": "Bir metin algı yanılmalarını anlatıp kesin bilgiye ulaşılamayacağını savunuyor."
+              },
+              "recognize": "Paragrafın bilgi felsefesinin hangi sorusunu tartıştığı sorulur.",
+              "tip": "Örnek sözcüğü değil ulaşılan sonucu esas al.",
+              "title": "İmkân mı, kaynak mı, ölçüt mü?",
+              "trap": "Duyular geçince her metni yalnız kaynak problemi saymak."
+            },
+            {
+              "id": "sav-temellendirme",
+              "logic": "Önce savı ve gerekçeyi ayrı yaz; sonra seçeneklerin savla çelişip çelişmediğini kontrol et.",
+              "mini": {
+                "answer": "Başlangıçta kuşku kullanması, sonuçta doğru bilgiyi bütünüyle reddettiğini göstermez.",
+                "question": "Bir düşünür kuşku duyarak başlayıp sonunda kesin bir bilgiye ulaştığını söylüyor."
+              },
+              "recognize": "Metindeki görüşe uygun yaklaşım veya çıkarım sorulur.",
+              "tip": "Filozofun başka bir görüşünü değil bu parçada aktarılan görüşünü cevapla.",
+              "title": "Filozofun savını gerekçesiyle eşleştir",
+              "trap": "Kuşkunun yöntem olarak kullanılmasıyla bilgiye ulaşmanın imkânsız sayılmasını aynı görmek."
+            }
+          ],
+          "pitfall": "Kuşku anlatılan her metin doğru bilginin imkânsızlığını savunmaz; kuşku bir yöntemin başlangıcı da olabilir. Soruda aktarılan sonuca bağlı kal.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Sanatın işlevi",
+              "Doğru bilginin imkânı",
+              "Devletin kaynağı",
+              "Güzelliğin ölçütü"
+            ],
+            "explanation": "B · Doğru bilginin imkânı. Duyular örneği, kesin bilgiye ulaşılabilirliğini sorgulamak için kullanılmıştır. Sanat, devlet ve güzellik bu savın konusu değildir.",
+            "question": "“Duyular insanı yanıltabilir; kesin ve değişmez bir bilgiye ulaşabileceğimizden emin olamayız.” diyen bir kişi öncelikle hangi problemi tartışmaktadır?"
+          },
+          "sources": [
+            {
+              "catalogId": 24,
+              "page": 29
+            },
+            {
+              "catalogId": 24,
+              "page": 30
+            },
+            {
+              "catalogId": 24,
+              "page": 31
+            }
+          ],
+          "steps": [
+            "Parçanın savını kendi cümlenle bir kez ifade et.",
+            "Savın “ulaşabilir miyiz”, “nereden gelir” veya “neye göre doğrudur” sorularından hangisine cevap verdiğini belirle.",
+            "Seçenekleri savın tamamıyla karşılaştır; yalnız filozof adı veya anahtar sözcükle seçim yapma."
+          ],
+          "title": "Bilgi Felsefesi: İmkân, Kaynak ve Ölçüt",
+          "topics": [
+            "Bilgi felsefesi"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 24,
+          "title": "TYT-AYT Felsefe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Felsefe",
+      "units": [
+        {
+          "name": "Felsefenin alanları",
+          "topics": [
+            "Felsefeyi tanıma",
+            "Düşünme ve akıl yürütme",
+            "Bilgi felsefesi",
+            "Varlık felsefesi",
+            "Bilim felsefesi",
+            "Ahlak felsefesi",
+            "Siyaset felsefesi",
+            "Sanat felsefesi",
+            "Din felsefesi"
+          ]
+        },
+        {
+          "name": "Felsefe tarihi",
+          "topics": [
+            "İlk Çağ felsefesi",
+            "Orta Çağ felsefesi",
+            "15–17. yüzyıl felsefesi",
+            "18–19. yüzyıl felsefesi",
+            "20. yüzyıl felsefesi"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 127,
+        "needsReview": 863,
+        "shortOrVisualText": 9,
+        "sourceRecords": 863,
+        "sourceTopicCount": 48
+      },
+      "curriculumId": "din",
+      "exam": "TYT",
+      "id": "tyt-din",
+      "inventory": {
+        "CIKMIS": 45,
+        "OGM": 818
+      },
+      "labelGroups": [
+        "tyt-din-kulturu",
+        "ayt-din-kulturu"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT_DinKulturu-0012",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT_DinKulturu.pdf · PDF s. 18 · İslam’da İbadet ve Kapsamı",
+              "explanation": "Parça ibadetin genişliğini ve Allah'ın rızasını amaçlamayı açıklar; şükretme amacını ayrıca temellendirmez. D seçeneği bu metinden çıkarılamaz. Bu, şükrün dinî değerini reddetmek değildir.",
+              "sourceFingerprint": "f35bcacb34e3935aab9ce70026e5ac8b44958e51d51540da8f32c55ee3af651c",
+              "sourceLabel": "İslam’da İbadet ve Kapsamı",
+              "year": "2022"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "sb-40175",
+              "evidenceRef": "OGM Soru Bankası · 9.3.1: 9.3.1. İslam’da ibadet kavramını ve ibadetin kapsamını açıklar.",
+              "explanation": "Metnin tanımı güzel, doğru ve faydalı davranış vurgusu taşır. Yalnız işe otobüsle gitme bilgisi bu niteliği veya amacı göstermediğinden D seçilir. Sorudaki sınırlı bilgiye göre karar verilir.",
+              "sourceFingerprint": "85313c3c25fdb33f99e3bea200e13aa93a679e0626b4ea92df7f7d72a521b771",
+              "sourceLabel": "İslam ve İbadet",
+              "year": ""
+            }
+          ],
+          "id": "ibadet-kapsami",
+          "learn": [
+            "OGM anlatımında ibadet yalnız belirli vakit ve biçimi olan uygulamalarla sınırlanmaz. Allah'ın hoşnutluğunu kazanma amacı taşıyan güzel ve faydalı davranışlar salih amel kapsamında ele alınır.",
+            "Metin sorularında davranış, niyet ve çıkarılabilecek sonuç birlikte incelenir. Dinen doğru olabilen bir bilgi, soruda verilen metinden çıkarılamıyorsa o parçanın sonucu olarak seçilemez."
+          ],
+          "patterns": [
+            {
+              "id": "kavram-davranis",
+              "logic": "Davranışın niteliğiyle metinde verilen niyeti birlikte incele.",
+              "mini": {
+                "answer": "Faydalı davranış ile niyet birlikte verilmiştir; genel ibadet ve salih amel açıklamasıyla ilişki kurulabilir.",
+                "question": "Bir kişi Allah'ın hoşnutluğunu amaçlayarak ihtiyaç sahibine yardım ediyor."
+              },
+              "recognize": "Bir davranışın salih amel veya ibadet kapsamında değerlendirilmesi sorulur.",
+              "tip": "Kaynağın tanımındaki bütün koşulları koru.",
+              "title": "Kavramı davranışla ilişkilendir",
+              "trap": "Her gündelik davranışı niyet ve nitelikten bağımsız aynı saymak."
+            },
+            {
+              "id": "metne-baglilik",
+              "logic": "Her seçeneğin metindeki dayanağını göster; dış bilgiyi parçaya ekleme.",
+              "mini": {
+                "answer": "Kapsamla ilgili yargı desteklenebilir; anlatılmayan amacı bu metnin kesin sonucu gibi gösteremezsin.",
+                "question": "Parça ibadetin kapsamını açıklıyor, başka bir amacını ayrıca anlatmıyor."
+              },
+              "recognize": "Çıkarılamaz, sayılmaz veya ortak mesaj gibi kökler bulunur.",
+              "tip": "Bir şık metinden çıkmıyor diye onun her durumda yanlış olduğu sonucu doğmaz.",
+              "title": "Metinden çıkarılamayan yargı",
+              "trap": "Doğru dinî bilgiyi her paragraftan çıkarılabilir saymak."
+            }
+          ],
+          "pitfall": "Genel ibadet tanımından her davranışın otomatik olarak ibadet olduğu sonucu çıkmaz; kaynakta belirtilen iyi davranış ve niyet koşullarını koru.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Yalnız belirli vakti olan ibadetler geçerlidir.",
+              "Her sıradan davranış koşulsuz olarak ibadettir.",
+              "Güzel davranış ve belirtilen niyet nedeniyle salih amel kapsamında değerlendirilir.",
+              "Faydalı davranışın niyetle hiçbir ilişkisi yoktur."
+            ],
+            "explanation": "C · İyi ve faydalı davranış ile Allah'ın hoşnutluğunu amaçlama birlikte verilmiştir. A kapsamı daraltır; B koşulları kaldırır; D kaynakta belirtilen niyeti yok sayar.",
+            "question": "Bir öğrenci Allah'ın hoşnutluğunu kazanma niyetiyle ihtiyaç sahibi arkadaşının ders araçlarını tamamlamasına yardım ediyor. Bu davranış OGM'deki genel ibadet açıklamasıyla nasıl ilişkilendirilir?"
+          },
+          "sources": [
+            {
+              "catalogId": 91,
+              "page": 9
+            },
+            {
+              "catalogId": 91,
+              "page": 10
+            }
+          ],
+          "steps": [
+            "Soru kökündeki “sayılmaz” veya “çıkarılamaz” olumsuzluğunu belirle.",
+            "Davranışın niteliğini ve metinde belirtilen niyeti birlikte değerlendir.",
+            "Her seçeneği metindeki dayanakla eşleştir; metinde bulunmayan sonucu dış bilgiyle tamamlamaya çalışma."
+          ],
+          "title": "İbadetin Kapsamı ve Salih Amel",
+          "topics": [
+            "İslam ve ibadet"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 91,
+          "title": "İSLAM VE İBADET",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/gletfola0pk.pdf"
+        },
+        {
+          "catalogId": 92,
+          "title": "BİLGİ VE İNANÇ",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/yunpl5pcl5w.pdf"
+        },
+        {
+          "catalogId": 93,
+          "title": "DİN VE İSLAM",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/kcjrn4ayqvw.pdf"
+        },
+        {
+          "catalogId": 94,
+          "title": "KUR'AN'A GÖRE HZ. MUHAMMED",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/53pzkege0cz.pdf"
+        },
+        {
+          "catalogId": 95,
+          "title": "İSLAM DÜŞÜNCESİNDE İTİKADİ, SİYASİ VE FIKHİ YORUMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/1cjxaclkeid.pdf"
+        },
+        {
+          "catalogId": 96,
+          "title": "İNANÇLA İLGİLİ MESELELER",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/y1etond3i33.pdf"
+        },
+        {
+          "catalogId": 97,
+          "title": "YAHUDİLİK VE HRİSTİYANLIK",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/itpsrpczr3q.pdf"
+        },
+        {
+          "catalogId": 98,
+          "title": "KUR'AN'DA BAZI KAVRAMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/knrx2znav4a.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Din Kültürü",
+      "units": [
+        {
+          "name": "İnanç ve ibadet",
+          "topics": [
+            "Bilgi ve inanç",
+            "Din ve İslam",
+            "İslam ve ibadet",
+            "Kur’an-ı Kerim ve ana konuları",
+            "Hz. Muhammed’in örnekliği",
+            "İslam düşüncesinde yorumlar"
+          ]
+        },
+        {
+          "name": "Din ve hayat",
+          "topics": [
+            "Din, ahlak ve değerler",
+            "Güncel dinî meseleler",
+            "Yaşayan dinler ve ortak özellikler"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 860,
+        "needsReview": 3983,
+        "shortOrVisualText": 4,
+        "sourceRecords": 3983,
+        "sourceTopicCount": 18
+      },
+      "curriculumId": "biyoloji",
+      "exam": "TYT",
+      "id": "tyt-biyoloji",
+      "inventory": {
+        "CIKMIS": 54,
+        "OGM": 3929
+      },
+      "labelGroups": [
+        "tyt-biyoloji",
+        "ayt-biyoloji"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-1024",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 388 · Biyoloji ve Canlıların Ortak Özellikleri",
+              "explanation": "Enerji kullanımı ortaktır; oksijen kullanımı ortak değildir. Oksijen kullanmadan ATP elde edebilen canlılar karşı örnek oluşturur. C seçeneği ortak olmayan özelliktir.",
+              "sourceFingerprint": "298e8a1ad696d64658bcc5ca78c02e241f07dcde5486d06242d3270052310042",
+              "sourceLabel": "Biyoloji ve Canlıların Ortak Özellikleri",
+              "year": "2025"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "dd-tyt-biyoloji-01-01",
+              "evidenceRef": "kaynaklar/ogm-materyal/Biyoloji/TYT/Dort Dortluk Konu Pekistirme - TYT Biyoloji.pdf · PDF s. 11 · Biyoloji ve Canlıların Ortak Özellikleri",
+              "explanation": "Sorudaki oksijenli solunum, oksijensiz solunum ve fermantasyon ATP sentezi sağlayabilir. Üçünü birlikte içeren E seçeneği uygundur; kaynağın çözümü de bu üç süreci birlikte açıklar.",
+              "sourceFingerprint": "04aadb91b5224bf9a8bc1c7fbd217b970f8e279b0bd9236e193b3c5f9ed6b2f4",
+              "sourceLabel": "Biyoloji ve Canlıların Ortak Özellikleri",
+              "year": ""
+            }
+          ],
+          "id": "canlilarin-ortak-ozellikleri",
+          "learn": [
+            "Canlılar hücrelerden oluşur ve yaşamsal faaliyetleri için enerji kullanır. ATP elde etmekle oksijen kullanmak aynı koşul değildir: oksijensiz solunum ve fermantasyon da ATP üretimi sağlayabilir.",
+            "Bir özelliğin bazı canlılarda bulunması onu bütün canlıların ortak özelliği yapmaz. “Tüm”, “her” ve “yalnız” ifadelerini denetlerken uygun bir karşı örnek ara."
+          ],
+          "patterns": [
+            {
+              "id": "ortaklik-karsi-ornek",
+              "logic": "Genellemeyi farklı canlı gruplarında test et; bir geçerli karşı örnek bulursan evrensel iddia elenir.",
+              "mini": {
+                "answer": "Bu örnek oksijen kullanımının bütün canlılar için zorunlu olduğu iddiasını çürütür; enerji gereksinimini çürütmez.",
+                "question": "Bir canlı oksijen kullanmadan ATP elde edebiliyor."
+              },
+              "recognize": "Ortak özellik değildir veya bütün canlılar gibi bir genelleme sınanır.",
+              "tip": "Yalnız insan üzerinden düşünme.",
+              "title": "Tüm canlılar için geçerli mi?",
+              "trap": "Bazı canlılarda gözlenen özelliği hepsine yaymak."
+            },
+            {
+              "id": "enerji-yolu",
+              "logic": "Enerji gereksinimini, bu ihtiyacı karşılayan farklı süreçlerden ayır.",
+              "mini": {
+                "answer": "Üçü de ATP elde edilmesine katkı sağlayabilir; sorunun ayrıca istediği ortak koşulları bağımsız denetle.",
+                "question": "Oksijenli solunum, oksijensiz solunum ve fermantasyon seçenekleri birlikte verilmiş."
+              },
+              "recognize": "ATP üretimi ve solunum/fermantasyonla ilgili öncüller verilir.",
+              "tip": "Oksijensiz solunum ile fermantasyonun ayrı süreçler olduğunu koru.",
+              "title": "Ortak ihtiyaç, farklı süreç",
+              "trap": "Oksijen yoksa ATP üretilemez demek."
+            }
+          ],
+          "pitfall": "Her tek hücreli canlı prokaryot değildir. Ayrıca oksijensiz solunumla fermantasyon aynı süreç değildir; ikisi de oksijen kullanmadan ATP elde etmeye örnek olabilir.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Canlılar enerji kullanır.",
+              "Bütün canlılar ATP üretmek için oksijen kullanır.",
+              "Canlıların hücresel yapısı vardır.",
+              "Fermantasyon ATP üretimine katkı sağlayabilir."
+            ],
+            "explanation": "B · Verilen mikroorganizma oksijen zorunluluğuna karşı örnektir. Enerji gereksinimini veya hücresel yapıyı reddetmez; D ise verilen bilgiyle uyumludur.",
+            "question": "Bir mikroorganizmanın oksijen kullanmadan fermantasyonla ATP ürettiği biliniyor. Bu bilgi hangi genellemeyi çürütür?"
+          },
+          "sources": [
+            {
+              "catalogId": 22,
+              "page": 11
+            },
+            {
+              "catalogId": 22,
+              "page": 12
+            },
+            {
+              "catalogId": 22,
+              "page": 13
+            }
+          ],
+          "steps": [
+            "Kökte ortak özellik mi, ortak olmayan özellik mi arandığını belirle.",
+            "Her önermeyi yalnız insan veya bitki üzerinden değil farklı canlı grupları üzerinden sınamayı dene.",
+            "Enerji gereksinimini ATP üretimiyle ilişkilendir; oksijen şartını bütün canlılara yayma."
+          ],
+          "title": "Canlıların Ortak Özellikleri ve Enerji",
+          "topics": [
+            "Canlıların ortak özellikleri"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 22,
+          "title": "TYT Biyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-biyoloji/tyt-biyoloji.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Biyoloji",
+      "units": [
+        {
+          "name": "Canlılığın temeli",
+          "topics": [
+            "Canlıların ortak özellikleri",
+            "Canlıların yapısındaki bileşikler",
+            "Hücre ve organeller",
+            "Hücre zarından madde geçişleri",
+            "Canlıların sınıflandırılması"
+          ]
+        },
+        {
+          "name": "Kalıtım ve ekoloji",
+          "topics": [
+            "Hücre bölünmeleri",
+            "Eşeysiz ve eşeyli üreme",
+            "Kalıtımın genel ilkeleri",
+            "Ekosistem ekolojisi",
+            "Güncel çevre sorunları"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 890,
+        "needsReview": 4822,
+        "shortOrVisualText": 8,
+        "sourceRecords": 4822,
+        "sourceTopicCount": 31
+      },
+      "curriculumId": "kimya",
+      "exam": "TYT",
+      "id": "tyt-kimya",
+      "inventory": {
+        "CIKMIS": 63,
+        "OGM": 4759
+      },
+      "labelGroups": [
+        "tyt-kimya",
+        "ayt-kimya"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0970",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 370 · Atom Modelleri",
+              "explanation": "Pozitif yükün çekirdekte bulunması ve atomun boşluklu olması Rutherford'a uygundur. Orbital önermesi bu modele ait değildir. I ve III'ü birleştiren D seçilir.",
+              "sourceFingerprint": "bc486ba5ff964fc13e4fe70f157bc657f12cf6a6ce20421aaa469c2777d7d5a4",
+              "sourceLabel": "Atom Modelleri",
+              "year": "2024"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "cd-2021-mini-deneme-1-01-53",
+              "evidenceRef": "kaynaklar/ogm-materyal/Genel Denemeler/TYT/Cevrim Ici Denemeler/2021 Mini Deneme 1.pdf · PDF s. 16 · metin modeli alt konu puanı 0.987",
+              "explanation": "Tek elektronlu türleri açıklayıp çok elektronlularda yetersiz kalan model Bohr modelidir. Tanımlanan sınır D seçeneğini destekler.",
+              "sourceFingerprint": "f2d5d1614a1d10901e5134c79ec919f79e350f725a4e2e9265888bb9e2884b2c",
+              "sourceLabel": "Atom Modelleri",
+              "year": ""
+            }
+          ],
+          "id": "atom-modelleri",
+          "learn": [
+            "Atom modellerini yalnız adlarıyla değil açıkladıkları gözlemler ve yetersiz kaldıkları durumlarla öğren. Rutherford modeli pozitif yükün çekirdekte toplanmasını ve atomun büyük ölçüde boşluklu yapısını açıklar.",
+            "Bohr modeli belirli enerji düzeylerini kullanır ve tek elektronlu tanecikleri açıklamada işlevlidir. Çok elektronlu atomları aynı başarıyla açıklayamaz. Modern modelin orbital kavramını daha eski modellere taşıma."
+          ],
+          "patterns": [
+            {
+              "id": "modele-gore",
+              "logic": "Bilgiyi günümüzde doğru oluşuna göre değil sorulan modelin kabulleriyle değerlendir.",
+              "mini": {
+                "answer": "Bu terim sorulan modelin kabulü değildir. Modern bilgiyi önceki modele taşımadan öncülü elemelisin.",
+                "question": "Rutherford modeli sorusunda elektronların orbitallerde bulunduğu söyleniyor."
+              },
+              "recognize": "Bir atom modeline göre doğru öncüller sorulur.",
+              "tip": "Model adını çözümün başına yaz; başka modelin terimlerini ayır.",
+              "title": "Hangi modele göre?",
+              "trap": "Orbital kavramını Rutherford'un modeliyle açıklamak."
+            },
+            {
+              "id": "model-siniri",
+              "logic": "Gözlemi, modelin açıklamasını ve modelin sınırını ayrı eşleştir.",
+              "mini": {
+                "answer": "Modelin kapsam sınırı tarif edilmiştir. Diğer özellikleri de kaynaktaki model tablosuyla karşılaştırarak karar ver.",
+                "question": "Bir model tek elektronlu türlerde işe yarıyor, çok elektronlularda yetersiz kalıyor."
+              },
+              "recognize": "Bir modelin açıkladığı veya açıklayamadığı durum verilir.",
+              "tip": "Tek elektronlu türlerle sınırlı açıklama Bohr modeli için ayırt edici bir sınırdır.",
+              "title": "Kanıt ve açıklama sınırı",
+              "trap": "Modelin bir eksikliğini bütün açıklamalarının değersiz olduğu biçiminde yorumlamak."
+            }
+          ],
+          "pitfall": "Bugünkü bilgimizin doğru olması, aynı bilginin Rutherford veya Bohr tarafından ileri sürüldüğü anlamına gelmez. Yörünge ile orbital kavramlarını aynı modelin terimleri gibi kullanma.",
+          "practice": {
+            "answer": 3,
+            "choices": [
+              "Dalton",
+              "Thomson",
+              "Rutherford",
+              "Bohr"
+            ],
+            "explanation": "D · Bohr. Tek elektronlu türlerle sınırlı açıklama bu modelin ayırt edici sınırıdır. Diğer modellerin temel kabulleri bu enerji düzeyi açıklamasını karşılamaz.",
+            "question": "Bir model tek elektronlu taneciklerin davranışını açıklayabiliyor; çok elektronlu atomlarda yetersiz kalıyor. OGM'deki model karşılaştırmasına göre hangisiyle eşleşir?"
+          },
+          "sources": [
+            {
+              "catalogId": 26,
+              "page": 25
+            },
+            {
+              "catalogId": 26,
+              "page": 26
+            }
+          ],
+          "steps": [
+            "Önce hangi modele göre cevap istendiğini belirle.",
+            "Her yargıyı o modelin kabulü, gözlemsel dayanağı veya sınırlılığı olarak ayır.",
+            "Başka modele ait doğru bir bilgiyi, sorulan modelin özelliği saymadan öncülleri tek tek denetle."
+          ],
+          "title": "Atom Modelleri: Kanıt ve Sınırlar",
+          "topics": [
+            "Atom ve yapısı"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 26,
+          "title": "TYT Kimya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-kimya/tyt-kimya.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Kimya",
+      "units": [
+        {
+          "name": "Kimyanın temelleri",
+          "topics": [
+            "Kimya bilimi ve güvenlik",
+            "Atom ve yapısı",
+            "Periyodik sistem",
+            "Kimyasal türler arası etkileşimler",
+            "Maddenin hâlleri",
+            "Kimyanın temel kanunları",
+            "Mol kavramı",
+            "Kimyasal tepkimeler ve hesaplamalar"
+          ]
+        },
+        {
+          "name": "Karışımlar ve çevre",
+          "topics": [
+            "Karışımlar ve ayırma yöntemleri",
+            "Asitler, bazlar ve tuzlar",
+            "Kimya her yerde",
+            "Doğa ve kimya"
+          ]
+        }
+      ]
+    }
+  ],
+  "lessonCount": 21,
+  "patternCount": 44,
+  "reviewedAt": "2026-10-13",
+  "schemaVersion": 1,
+  "sources": {
+    "22": {
+      "fileUrl": "/api/topic-pdfs/22/file",
+      "pageCount": 174,
+      "sha256": "581afc9165223a2dfef0bb09131ab8494ddf324a38b857d545c4bf03108b42de",
+      "title": "TYT Biyoloji Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-biyoloji/tyt-biyoloji.pdf"
+    },
+    "23": {
+      "fileUrl": "/api/topic-pdfs/23/file",
+      "pageCount": 122,
+      "sha256": "856b00b864260d069e6793709cc272c7f447bf71fbfbf2556bc755b4ba3752c3",
+      "title": "TYT Coğrafya Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-cografya/tyt-cografya.pdf"
+    },
+    "24": {
+      "fileUrl": "/api/topic-pdfs/24/file",
+      "pageCount": 130,
+      "sha256": "10302360ca5b7665ff14f2988e54ec89d23c4000f856ebb230e4f4a3280ec7e9",
+      "title": "TYT-AYT Felsefe Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
+    },
+    "26": {
+      "fileUrl": "/api/topic-pdfs/26/file",
+      "pageCount": 96,
+      "sha256": "a9da1015a556e3bbfb49699c17256ca8a240e9f5cad1144b1bd5cf140265f200",
+      "title": "TYT Kimya Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-kimya/tyt-kimya.pdf"
+    },
+    "28": {
+      "fileUrl": "/api/topic-pdfs/28/file",
+      "pageCount": 188,
+      "sha256": "cacc95f39b77700cef14ed6685b9e482af3bc7d6fbcffbbe485b9933f73a2c5f",
+      "title": "TYT Tarih Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-tarih/tyt-tarih.pdf"
+    },
+    "29": {
+      "fileUrl": "/api/topic-pdfs/29/file",
+      "pageCount": 128,
+      "sha256": "0df06ce03c229c94e9e6e30ce8c7c677c9c4ec3ec28253086cdd44afefe98da8",
+      "title": "TYT Türkçe Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-turkce/tyt-turkce.pdf"
+    },
+    "39": {
+      "fileUrl": "/api/topic-pdfs/39/file",
+      "pageCount": 178,
+      "sha256": "dd3fe23ad9fefb3993b7464b182d3c19470c2252b9f5ddef8a9ced54317b5090",
+      "title": "AYT Türk Dili ve Edebiyatı Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tde/ayt-tde.pdf"
+    },
+    "91": {
+      "fileUrl": "/api/topic-pdfs/91/file",
+      "pageCount": 43,
+      "sha256": "dac9324ecd9ae1a2712d2ad51cf993ff75c36ea0aea2a1e84065f9f8ad784c35",
+      "title": "İSLAM VE İBADET",
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/gletfola0pk.pdf"
+    }
+  },
+  "subjectOverview": [
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 955,
+      "readyTopics": 0,
+      "records": 4917,
+      "sources": [
+        {
+          "catalogId": 30,
+          "title": "AYT Biyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-biyoloji/ayt-biyoloji.pdf"
+        }
+      ],
+      "subject": "Biyoloji"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 255,
+      "readyTopics": 0,
+      "records": 4003,
+      "sources": [
+        {
+          "catalogId": 31,
+          "title": "AYT Coğrafya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-cografya/ayt-cografya.pdf"
+        }
+      ],
+      "subject": "Coğrafya"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 54,
+      "sources": [
+        {
+          "catalogId": 31,
+          "title": "AYT Coğrafya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-cografya/ayt-cografya.pdf"
+        }
+      ],
+      "subject": "Coğrafya-1"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 99,
+      "sources": [
+        {
+          "catalogId": 31,
+          "title": "AYT Coğrafya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-cografya/ayt-cografya.pdf"
+        }
+      ],
+      "subject": "Coğrafya-2"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 60,
+      "sources": [
+        {
+          "catalogId": 91,
+          "title": "İSLAM VE İBADET",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/gletfola0pk.pdf"
+        },
+        {
+          "catalogId": 92,
+          "title": "BİLGİ VE İNANÇ",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/yunpl5pcl5w.pdf"
+        },
+        {
+          "catalogId": 93,
+          "title": "DİN VE İSLAM",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/kcjrn4ayqvw.pdf"
+        },
+        {
+          "catalogId": 94,
+          "title": "KUR'AN'A GÖRE HZ. MUHAMMED",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/53pzkege0cz.pdf"
+        },
+        {
+          "catalogId": 95,
+          "title": "İSLAM DÜŞÜNCESİNDE İTİKADİ, SİYASİ VE FIKHİ YORUMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/1cjxaclkeid.pdf"
+        },
+        {
+          "catalogId": 96,
+          "title": "İNANÇLA İLGİLİ MESELELER",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/y1etond3i33.pdf"
+        },
+        {
+          "catalogId": 97,
+          "title": "YAHUDİLİK VE HRİSTİYANLIK",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/itpsrpczr3q.pdf"
+        },
+        {
+          "catalogId": 98,
+          "title": "KUR'AN'DA BAZI KAVRAMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/knrx2znav4a.pdf"
+        }
+      ],
+      "subject": "Din Kültürü"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 1446,
+      "sources": [
+        {
+          "catalogId": 24,
+          "title": "TYT-AYT Felsefe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
+        },
+        {
+          "catalogId": 34,
+          "title": "AYT Mantık Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-mantik/ayt-mantik.pdf"
+        },
+        {
+          "catalogId": 36,
+          "title": "AYT Psikoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-psikoloji/ayt-psikoloji.pdf"
+        },
+        {
+          "catalogId": 37,
+          "title": "AYT Sosyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-sosyoloji/ayt-sosyoloji.pdf"
+        }
+      ],
+      "subject": "Felsefe"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 162,
+      "sources": [
+        {
+          "catalogId": 24,
+          "title": "TYT-AYT Felsefe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
+        },
+        {
+          "catalogId": 34,
+          "title": "AYT Mantık Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-mantik/ayt-mantik.pdf"
+        },
+        {
+          "catalogId": 36,
+          "title": "AYT Psikoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-psikoloji/ayt-psikoloji.pdf"
+        },
+        {
+          "catalogId": 37,
+          "title": "AYT Sosyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-sosyoloji/ayt-sosyoloji.pdf"
+        }
+      ],
+      "subject": "Felsefe Grubu"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 1054,
+      "readyTopics": 0,
+      "records": 6207,
+      "sources": [
+        {
+          "catalogId": 33,
+          "title": "AYT Kimya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-kimya/ayt-kimya.pdf"
+        }
+      ],
+      "subject": "Kimya"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 3789,
+      "sources": [
+        {
+          "catalogId": 38,
+          "title": "AYT Tarih Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tarih/ayt-tarih.pdf"
+        }
+      ],
+      "subject": "Tarih"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 90,
+      "sources": [
+        {
+          "catalogId": 38,
+          "title": "AYT Tarih Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tarih/ayt-tarih.pdf"
+        }
+      ],
+      "subject": "Tarih-1"
+    },
+    {
+      "exam": "AYT",
+      "guideId": null,
+      "needsVisualReview": 0,
+      "readyTopics": 0,
+      "records": 99,
+      "sources": [
+        {
+          "catalogId": 38,
+          "title": "AYT Tarih Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tarih/ayt-tarih.pdf"
+        }
+      ],
+      "subject": "Tarih-2"
+    },
+    {
+      "exam": "AYT",
+      "guideId": "ayt-edebiyat",
+      "needsVisualReview": 960,
+      "readyTopics": 1,
+      "records": 7476,
+      "sources": [
+        {
+          "catalogId": 39,
+          "title": "AYT Türk Dili ve Edebiyatı Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tde/ayt-tde.pdf"
+        }
+      ],
+      "subject": "Türk Dili ve Edebiyatı"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-biyoloji",
+      "needsVisualReview": 864,
+      "readyTopics": 1,
+      "records": 3983,
+      "sources": [
+        {
+          "catalogId": 22,
+          "title": "TYT Biyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-biyoloji/tyt-biyoloji.pdf"
+        }
+      ],
+      "subject": "Biyoloji"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-cografya",
+      "needsVisualReview": 75,
+      "readyTopics": 1,
+      "records": 3403,
+      "sources": [
+        {
+          "catalogId": 23,
+          "title": "TYT Coğrafya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-cografya/tyt-cografya.pdf"
+        }
+      ],
+      "subject": "Coğrafya"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-din",
+      "needsVisualReview": 136,
+      "readyTopics": 1,
+      "records": 863,
+      "sources": [
+        {
+          "catalogId": 91,
+          "title": "İSLAM VE İBADET",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/gletfola0pk.pdf"
+        },
+        {
+          "catalogId": 92,
+          "title": "BİLGİ VE İNANÇ",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/yunpl5pcl5w.pdf"
+        },
+        {
+          "catalogId": 93,
+          "title": "DİN VE İSLAM",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/kcjrn4ayqvw.pdf"
+        },
+        {
+          "catalogId": 94,
+          "title": "KUR'AN'A GÖRE HZ. MUHAMMED",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/53pzkege0cz.pdf"
+        },
+        {
+          "catalogId": 95,
+          "title": "İSLAM DÜŞÜNCESİNDE İTİKADİ, SİYASİ VE FIKHİ YORUMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/1cjxaclkeid.pdf"
+        },
+        {
+          "catalogId": 96,
+          "title": "İNANÇLA İLGİLİ MESELELER",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/y1etond3i33.pdf"
+        },
+        {
+          "catalogId": 97,
+          "title": "YAHUDİLİK VE HRİSTİYANLIK",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/itpsrpczr3q.pdf"
+        },
+        {
+          "catalogId": 98,
+          "title": "KUR'AN'DA BAZI KAVRAMLAR",
+          "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/knrx2znav4a.pdf"
+        }
+      ],
+      "subject": "Din Kültürü"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-felsefe",
+      "needsVisualReview": 225,
+      "readyTopics": 1,
+      "records": 3370,
+      "sources": [
+        {
+          "catalogId": 24,
+          "title": "TYT-AYT Felsefe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
+        }
+      ],
+      "subject": "Felsefe"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-kimya",
+      "needsVisualReview": 898,
+      "readyTopics": 1,
+      "records": 4822,
+      "sources": [
+        {
+          "catalogId": 26,
+          "title": "TYT Kimya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-kimya/tyt-kimya.pdf"
+        }
+      ],
+      "subject": "Kimya"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-tarih",
+      "needsVisualReview": 370,
+      "readyTopics": 1,
+      "records": 4083,
+      "sources": [
+        {
+          "catalogId": 28,
+          "title": "TYT Tarih Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-tarih/tyt-tarih.pdf"
+        }
+      ],
+      "subject": "Tarih"
+    },
+    {
+      "exam": "TYT",
+      "guideId": "tyt-turkce",
+      "needsVisualReview": 0,
+      "readyTopics": 15,
+      "records": 4093,
+      "sources": [
+        {
+          "catalogId": 29,
+          "title": "TYT Türkçe Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-turkce/tyt-turkce.pdf"
+        }
+      ],
+      "subject": "Türkçe"
+    }
+  ]
+}
