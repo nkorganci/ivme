@@ -168,6 +168,7 @@ function SourceEvidence({ lesson, sources }) {
   return <details className="source-notes-evidence">
     <summary>Kaynaklar ve incelenen örnek sorular</summary>
     <p className="muted small">Rehber konuya aittir. Aşağıdaki sorular yöntemin kontrol örnekleridir; bütün soruların tek tek çözüm analizi tamamlanmış sayılmaz.</p>
+    {lesson.comparisonNote && <p className="source-comparison-note"><strong>Karşılaştırma kapsamı:</strong> {lesson.comparisonNote}</p>}
     <ul className="source-notes-citation">{lesson.sources.map((ref) => {
       const source = sources[ref.catalogId];
       return <li key={`${ref.catalogId}:${ref.page}`}>
@@ -233,8 +234,10 @@ export default function SourceNotes() {
   const group = data?.groups.find((item) => item.id === subjectId);
   const requested = params.get('konu');
   const pending = params.get('baslik');
-  const knownPending = group?.units.some((unit) => unit.topics.includes(pending));
-  const lesson = group && !knownPending && (requested ? group.lessons.find((item) => item.id === requested) : group.lessons[0]);
+  const knownTopic = group?.units.some((unit) => unit.topics.includes(pending));
+  const linkedLesson = knownTopic && group.lessons.find((item) => item.topics.includes(pending));
+  const knownPending = knownTopic && !linkedLesson;
+  const lesson = group && !knownPending && (linkedLesson || (requested ? group.lessons.find((item) => item.id === requested) : group.lessons[0]));
   const topicCount = group?.units.reduce((sum, unit) => sum + unit.topics.length, 0);
   usePageTitle(lesson ? `${lesson.title} · ${group.exam} ${group.subject}` : 'Kaynaklı Ders Notları');
 

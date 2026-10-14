@@ -1,0 +1,46 @@
+{
+  "groupId": "tyt-turkce",
+  "outlineAdditions": {"tyt-turkce": {"Dil bilgisi": ["Sözcükte yapı", "Fiilde çatı"]}},
+  "lessons": [
+    {
+      "id": "sozcukte-yapi",
+      "title": "Sözcükte Yapı: Kök, Gövde ve Ekin Görevi",
+      "topics": ["Sözcükte yapı"],
+      "learn": [
+        "Kök, sözcüğün anlamıyla ilişkisini koruyan en küçük anlamlı parçadır. Gövde, köke yapım eki getirilmiş biçimdir. Çekim eki sözcüğün cümlede başka sözcüklerle ilişkisini kurar; yapım eki yeni bir sözcük oluşturur. Çok ek görmek, çok yapım eki görmek demek değildir.",
+        "Ekin yazılışıyla görevi ayrı şeylerdir. “Gelmiş”teki -miş çekimli fiilde zaman bildirirken “solmuş yaprak”ta sıfat-fiil kurar. Kökün türüyle sözcüğün son hâlinin türünü de ayrı incele: göz isim kökü, gözle- fiil gövdesidir."
+      ],
+      "steps": ["İstenen şeyin kök türü, yapım eki veya çekim eki görevi olduğunu belirle.", "Sözcüğü bağlamıyla oku; anlam ilişkisini bozmadan kökü bul.", "Ekleri sırayla ayır; her ekin yeni sözcük mü kurduğunu, ilişki veya çekim mi sağladığını açıkla.", "Kökü, gövdeyi ve sözcüğün cümledeki görevini ayrı adlandırarak son kontrolü yap."],
+      "pitfall": "Her benzer ses dizisi aynı ek değildir. İyelik ekini kişi eki, isimden türemiş bir fiili fiil köklü sözcük sanma. Yapım eki türü değiştirmeden de yeni sözcük yapabilir.",
+      "sources": [{"catalogId":29,"page":69,"anchors":["İsim (Ad) Kökü","Fiil (Eylem) Kökü"]},{"catalogId":29,"page":72,"anchors":["Kişi Ekleri","sıfat fiil ekleri"]},{"catalogId":29,"page":73,"anchors":["İsimden İsim Yapım Ekleri","Fiilden İsim Yapım Ekleri"]},{"catalogId":29,"page":74,"anchors":["Kök + Yapım Eki = Gövde"]}],
+      "examples": [
+        {"bank":"CIKMIS","code":"TYT-0289","answer":"D","anchors":["yapım","kendinden"],"explanation":"Görselde IV ile işaretli sözcük kendinden'dir. Kendi sözcüğündeki -nden çekim görevi taşır; yeni sözcük türetmez. Diğer işaretli sözcüklerde süreç, doğal, saygılı ve yeterlik biçimleri yapım eki içerir. Alt çizgilerin hangi sözcüğe ait olduğu ayrıca görselden kontrol edildi."},
+        {"bank":"OGM","code":"3a-tyt-turkce-64-01","answer":"D","anchors":["çürümüşleri","farklı bir görevde"],"explanation":"D'deki çürümüşleri, çürümüş olanları karşılayan adlaşmış sıfat-fiildir. Öteki seçeneklerde -miş eki çekimli yüklemde öğrenilen geçmiş zamanı bildirir. Aynı ek biçimi, bağlamda farklı görev üstlenir."}
+      ],
+      "patterns": [
+        {"id":"kok-govde","title":"Kök mü, gövde mi?","recognize":"İsim kökünden türemiştir veya gövdeden türemiştir gibi bir özellik sorulur.","logic":"Son sözcüğün türünü geçici olarak bir yana bırak; anlamı koruyan kökü ve aradaki yapım eklerini bul.","tip":"Göz → gözle- → gözlem zincirinde kök isimdir; arada fiil gövdesi oluşur.","trap":"Fiil olan son biçimden hareketle kökün de fiil olduğunu söylemek.","mini":{"question":"“Gözlemci” sözcüğünün kökü isim mi, fiil mi?","answer":"Göz isim köküdür. Göz-le-m-ci çözümlemesinde sonraki ekler gövdeler oluşturur; kökün türünü son ek belirlemez."}},
+        {"id":"yapim-cekim","title":"Yeni sözcük mü, çekim mi?","recognize":"Yapım eki almamıştır, çekim eki vardır veya yapısı farklıdır görevi verilir.","logic":"Her eki ayrı sınayarak yeni bir kavram oluşturma ile çoğul, durum, sahiplik ve kişi ilişkisini ayır.","tip":"Kitap-lar-da iki çekim eki aldığı hâlde yapım eki almaz; kitap-lık ise yeni bir sözcüktür.","trap":"Ek sayısını türemişlik ölçütü saymak veya yapım ekinin mutlaka tür değiştireceğini düşünmek.","mini":{"question":"“Yolcularımızdan” sözcüğünde hangi ek yeni sözcük kurar?","answer":"Yol-cu yeni bir ad oluşturur. -lar çoğul, -ımız iyelik, -dan ayrılma hâli bildirir; bunlar çekim ekleridir."}},
+        {"id":"ekin-gorevi","title":"Aynı ek, farklı görev","recognize":"Aynı yazılan ekin farklı görevde olduğu seçenek aranır.","logic":"Sözcük yargıyı mı tamamlıyor, bir adı mı niteliyor, bir varlığın kime ait olduğunu mu bildiriyor? Bağlamdaki görevi bul.","tip":"Ekleri ezber listesiyle eşleştirmeden önce cümledeki yüklemi belirle.","trap":"“Okuyorum”daki kişi ekiyle “kitabım”daki iyelik ekini aynı görevde saymak.","mini":{"question":"“Çiçek solmuş.” ile “Solmuş çiçeği kaldırdı.” cümlelerindeki -muş aynı görevde mi?","answer":"İlkinde çekimli fiilin zaman ekidir. İkincisinde çiçeği niteleyen sıfat-fiil kurar. Sesçe aynı olmak görevce aynı olmak değildir."}}
+      ],
+      "practice":{"question":"Hangi sözcük yapım eki almadan yalnız çekim ekleriyle kurulmuştur?","choices":["Kitaplarımızdan","Kitaplık","Gözlükçü","Tuzsuz"],"answer":0,"explanation":"A · Kitap-lar-ımız-dan: çoğul, iyelik ve ayrılma ekleri çekim ekidir. Kitap-lık, göz-lük-çü ve tuz-suz yapım eki taşır. Eklerin çokluğu tek başına türemişlik göstermez."}
+    },
+    {
+      "id":"fiilde-cati",
+      "title":"Fiilde Çatı: Kim Yapıyor, Nesne Alabiliyor mu?",
+      "topics":["Fiilde çatı"],
+      "comparisonStatus":"past_question_not_found",
+      "comparisonNote":"Bu rehber OGM konu anlatımı ve incelenen OGM sorusuna dayanır. Mevcut yerel TYT Türkçe çıkmış soru kayıtlarında doğrudan çatı sorusu eşleştirilemedi; çıkmış soru karşılaştırması tamamlanmış değildir. Bu durum, konunun resmî arşivde hiç sorulmadığı anlamına gelmez.",
+      "learn":["Çatı, yüklem olan fiilin özne ve nesneyle ilişkisidir. Önce yüklemi bul; isim cümlesinde çatı aranmaz. Özneye göre inceleme ile nesneye göre inceleme iki ayrı eksendir: bir fiil hem etken hem geçişli olabilir.","Edilgende iş başkası tarafından yapılır; dönüşlüde özne işi yapar ve işten etkilenir. Ekler benzer olabildiği için yalnız -l veya -n görmek karar verdirmez. Geçişlilik, cümlede nesnenin yazılı olmasına değil, fiilin bağlamdaki anlamıyla nesne alabilmesine bağlıdır."],
+      "steps":["Yüklemi bul; isimse çatı arama.","İşi yapanı ve işten etkileneni belirle; etken, edilgen, dönüşlü veya işteş ilişkisini açıklayarak karar ver.","Fiilin bu anlamıyla neyi/kimi sorusuna nesne alıp alamadığını kontrol et.","Oldurgan/ettirgen soruluyorsa çatı ekinden önceki fiilin geçişli olup olmadığına dön."],
+      "pitfall":"Her -ş işteşlik, her -n edilgenlik değildir. “Yetişti” sözcüğünün son seslerinden işteşlik çıkarma; birlikte veya karşılıklı yapma ilişkisi aramalısın.",
+      "sources":[{"catalogId":29,"page":110,"anchors":["İsim cümlelerinde çatı özelliği aranmaz","Etken Fiil"]},{"catalogId":29,"page":111,"anchors":["Dönüşlü Fiil","İşteş Fiil"]},{"catalogId":29,"page":112,"anchors":["nesnenin kullanılması şart değildir","Geçişsiz Fiil"]},{"catalogId":29,"page":113,"anchors":["Oldurgan Fiil","Ettirgen Fiil"]}],
+      "examples":[{"bank":"OGM","code":"dd-tyt-turkce-50-08","answer":"D","anchors":["İşteş fiiller","yetişti"],"explanation":"D'deki yetişti, imdada ulaşmayı bildirir; karşılıklı veya birlikte yapılan bir eylem değildir. Öteki seçeneklerde tanışma/barışma karşılıklılık, cıvıldaşma/kaçışma birlikte yapma ilişkisi taşır. -ş sesine bakarak karar vermek yerine eylemin anlamı sınanır."}],
+      "patterns":[
+        {"id":"ozne-iliskisi","title":"Etken, edilgen, dönüşlü","recognize":"İşi yapanın ve işten etkilenenin durumuna göre çatı sorulur.","logic":"Özne işi mi yapıyor, başkası tarafından yapılan işten mi etkileniyor, ikisini birden mi üstleniyor?","tip":"“Çocuk tarandı” ifadesi bağlama göre belirsiz olabilir; kimin taradığına ilişkin ek kanıt ara.","trap":"Örtülü özne belirtilince edilgen fiili etken sanmak.","mini":{"question":"“Kapı görevli tarafından açıldı.” cümlesi etken mi?","answer":"Aç-ıl-dı edilgendir. Görevlinin belirtilmesi, kapının işi yapan gerçek özne olduğu anlamına gelmez."}},
+        {"id":"isteslik","title":"Karşılıklı veya birlikte yapma","recognize":"İşteş fiil kullanılmıştır/kullanılmamıştır kökü vardır.","logic":"Eylemin anlamında en az iki katılımcı arasında karşılıklılık veya birlikte yapma ilişkisi ara.","tip":"Tanış- ile yetiş- aynı son sesleri paylaşsa da aynı çatı ilişkisini taşımaz.","trap":"Her -ş sesini işteşlik eki kabul etmek.","mini":{"question":"“Çocuklar bahçede gülüştü.” ile “Çocuklar otobüse yetişti.” aynı çatı ilişkisini mi kurar?","answer":"Gülüşme birlikte gerçekleşen bir eylemdir. Yetişme, özne çoğul olsa da sırf bu yüzden işteş olmaz."}},
+        {"id":"nesne-iliskisi","title":"Nesne var mı, nesne alabilir mi?","recognize":"Geçişli/geçişsiz veya oldurgan/ettirgen ayrımı istenir.","logic":"Fiilin bağlamdaki anlamıyla nesne alabilmesini sınayıp sonra eklenmiş çatı ekinin neyi değiştirdiğine bak.","tip":"“Okudu” cümlesinde nesne yazılmasa da bir kitabı okumak mümkündür.","trap":"Cümlede nesne görünmeyen bütün fiilleri geçişsiz saymak.","mini":{"question":"“Bebek güldü.” → “Oyuncak bebeği güldürdü.” dönüşümünde ne değişti?","answer":"Gül- nesne alamazken gül-dür- nesne alır; geçişsiz fiil geçişli yapılmıştır. Bu oldurganlıktır; geçişli fiilin ettirgen yapılmasıyla karıştırılmaz."}}
+      ],
+      "practice":{"question":"“Defter öğretmen tarafından incelendi.” cümlesinin yükleminde özneye göre hangi çatı vardır?","choices":["Etken","Edilgen","İşteş","Dönüşlü"],"answer":1,"explanation":"B · İncele-n-di edilgendir; defter inceleme işini yapmaz, işten etkilenir. “Öğretmen tarafından” işi yapanı dolaylı olarak bildirir ve edilgen yapıyı etken yapmaz."}
+    }
+  ]
+}

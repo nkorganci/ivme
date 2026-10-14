@@ -176,6 +176,8 @@ async function main() {
           await send('Page.navigate', { url: `${base}/kaynakli-ders-notlari/${group.id}?konu=${lesson.id}` });
           await waitFor(`document.querySelector('article h2')?.textContent === ${JSON.stringify(lesson.title)}`, `${lesson.id} konu bağlantısı`);
           assert.equal(await evaluate(`document.querySelectorAll('article').length`), 1, 'Yalnız seçilen konu gösterilmeli');
+          assert.equal(await evaluate(`document.querySelectorAll('.source-notes-example').length`), lesson.examples.length);
+          if (lesson.comparisonNote) assert.equal(await evaluate(`document.querySelector('.source-comparison-note')?.textContent`), `Karşılaştırma kapsamı: ${lesson.comparisonNote}`);
           for (let index = 0; index < lesson.patterns.length; index++) {
             await evaluate(`document.querySelectorAll('[role=tab]')[${index}].click()`);
             await waitFor(`document.querySelector('[role=tabpanel] h4')?.textContent === ${JSON.stringify(lesson.patterns[index].title)}`, `${lesson.id} soru kalıbı`);
@@ -215,6 +217,8 @@ async function main() {
       await send('Page.navigate', { url: `${base}/kaynakli-ders-notlari/tyt-turkce?baslik=${encodeURIComponent('Sözel mantık')}` });
       await waitFor(`document.querySelector('.source-notes-pending h2')?.textContent === 'Sözel mantık'`, 'incelenmemiş konu');
       assert.ok(await evaluate(`document.querySelector('.source-notes-pending a[href^="/api/topic-pdfs/"]') !== null`), 'Bekleyen konuda kaynak yolu bulunmalı');
+      await send('Page.navigate', { url: `${base}/kaynakli-ders-notlari/tyt-turkce?baslik=${encodeURIComponent('Sözcükte yapı')}` });
+      await waitFor(`document.querySelector('article h2')?.textContent === 'Sözcükte Yapı: Kök, Gövde ve Ekin Görevi'`, 'Eski başlık bağlantısı hazır rehberi açmalı');
       if (width < 500) await evaluate(`document.querySelector('button[aria-label="Menüyü aç"]').click()`);
       assert.equal(await evaluate(`document.querySelectorAll('#notes-subnav a').length`), SOURCE_NOTE_SUBJECTS.length + 2);
       await evaluate(`document.querySelector('#notes-subnav a[href="/kaynakli-ders-notlari/analiz"]').click()`);

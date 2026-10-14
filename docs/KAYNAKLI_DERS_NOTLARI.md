@@ -1,78 +1,62 @@
-# Kaynaklı ders notları ve soru etiketi dizini
+# Kaynaklı ders notları: durum ve devam kaydı
 
-13 Ekim 2026 tarihli devam kaydı. Bu belge, yarım kalan etiket yayınını ve UI denetimini tamamlayan dilimi; ders notları için gerçekten hazırlanan içerikten ayırır.
+13 Ekim 2026. Güncel öğretim kapsamı ve devir noktaları. Ayrıntılı kaynak izi ve yeniden kullanma komutları [araştırma hafızasında](KAYNAKLI_SORU_ANALIZI.md) kayıtlıdır.
 
-## Tamamlanan dilim
+## Güncel kapsam
 
-- **53.019 etkin yerel soru**, 19 sınav/ders grubunda etiketlendi. Türkçe/Edebiyat 11.569; Tarih/Coğrafya 15.620; Felsefe, Din Kültürü, Biyoloji ve Kimya 25.830. Kaynak ve çıktı kimlik kümeleri birebir aynı, boş birincil etiket sıfır.
-- **39.201 kayıt** ek inceleme işaretli. Diğer kayıtlar da öğretmen onaylı değildir. Kaynakta dar konu kanıtı yoksa üst konu korunur; alt konudaki belirsizlik gizlenmez.
-- **12 olası ders uyuşmazlığı** ve **2 iptal soru** arayüzde ayrıca işaretlidir. İptal işaretleri yerel etiket dizinine aittir; mevcut soru bankasının cevap/puanlama davranışı bu işte değiştirilmedi.
-- Türkçe, AYT Edebiyat, Tarih, Coğrafya, Felsefe, Din Kültürü, Biyoloji, Kimya için **21 konu rehberi / 44 soru kalıbı** hazırlandı. Her rehber PDF sayfaları, bir çıkmış ve bir OGM sorusuyla karşılaştırılır. **42 kaynak soru** ve **51 farklı PDF sayfa bağı** yeniden üretimde denetlenir.
-- Bu sekiz dersin **105 başlıklı konu dizini** görünür; **22 başlık** rehbere bağlıdır. Türkçe'de anlatım teknikleri/düşünceyi geliştirme aynı rehberdedir; 16 plan başlığından **15**'i hazır, Sözel Mantık kaynak incelemesindedir. Dizin bağımsız olarak doğrulanmış tam ÖSYM müfredatı sayılmaz.
-- Ayrı öğrenci menüsü `/kaynakli-ders-notlari` altındadır. Soru görüntüleyicisine ve özgün PDF dosyasına mevcut adresleriyle bağlanır. Soru bankası, CSV'ler ve öğrenci kayıtlarına yazmaz.
+- **53.019 etkin yerel soru referansı**, **19** sınav/ders grubu, **1.110** özgün kaynak etiketi. Kimlik kümeleri eşit, boş birincil etiket sıfır. Etiketler bağımsız pedagojik alt konu veya sınavda çıkma olasılığı değildir.
+- **39.201** kayıt ek inceleme işaretli; **12** olası ders uyuşmazlığı ve **2** iptal soru etiket dizininde korunur. Soru bankasının konu, cevap veya puanlama davranışı bu çalışma kapsamında değiştirilmez.
+- **44 rehber / 104 soru kalıbı**, **87 örnek bağı / 86 farklı kaynak soru**, **131 farklı PDF sayfa dayanağı**. Bütün rehberler `teacher_pending`, veritabanında `DRAFT` durumundadır. Kaynak kontrolü öğretmen onayı değildir.
+- Sekiz dersin dizininde **107 başlık**, rehbere bağlı **46 başlık** vardır. Geniş başlığa giriş rehberi hazırlanması bütün dar alt konuların, sanatçıların veya eserlerin tamamlandığı anlamına gelmez.
+- TYT Türkçe: **16 rehber / 17 hazır başlık / 18 dizin başlığı**. Sözcükte Yapı ve Fiilde Çatı eklendi. Anlatım teknikleri/düşünceyi geliştirme yolları ortak rehberdir. Sözel Mantık doğrulanmış dayanak bekler.
+- AYT Edebiyat: **16 rehber / 17 dizin başlığı**. Temel kavramlar/metin türleri ortak rehberdir. Söz sanatları, akımlar, dönemler, roman-hikâye, tiyatro, öğretici metinler ve yazar-eser bağları giriş düzeyinde işlendi. Ayrıntılı alt konu genişletmeleri açıktır.
+- TYT Tarih, Coğrafya, Felsefe, Din Kültürü, Biyoloji ve Kimya'da **ikişer rehber** vardır. Bu devamda Atatürk İlkeleri, Atmosfer/İklim, Varlık Felsefesi, Bilgi/İnanç, Hücre ve Periyodik Sistem eklendi. Ayrı AYT rehberleri açık iştir.
+- Seçilmiş anlatım arşivi **22 OGM PDF / 2.403 sayfa**; metinsiz/kısa veya görsele bağımlı **5.792 kayıt** ayrıca inceleme bekler. Bağımsız ÖSYM arşiv tamlık denetimi yapılmış değildir.
 
-## Bu devamda giderilen sorunlar
+## Bu devamda yapılanlar
 
-1. Etiket yayın denetimi, `Roman: Dil Bilgisi (Alt Konu Belirsiz)` gibi gerçek bir üst konu taşıyan etiketleri yanlışlıkla tamamen etiketsiz sayıyordu. Tamamen boş/yer tutucu etiketler reddedilir; belirsiz alt konu ancak zorunlu inceleme işaretiyle yayımlanabilir.
-2. Sunucuda yeni React adresleri için yönlendirme yoktu. Doğrudan açma ve yenileme için `/kaynakli-ders-notlari` ile bir alt adresi eklendi; 10 rota testi vardır.
-3. Tarih kaynaklarında gerekçe içinde kalan ders uyuşmazlığı, yayın JSON'unda ayrı bayrağa çevrildi. Felsefe Grubu dalı, kaynak başlığı, dosya/sayfa ve inceleme gerekçesi korundu.
-4. Ders notları ekranındaki eski “alt konu dağılımı henüz yok” ifadesi güncellendi; sayılar artık yayın üretiminde etkin envanterden hesaplanır.
-5. Güven değerleri Türkçe gösterilir; sayısal eşleme puanı ölçülmüş doğruluk olasılığı olarak sunulmaz. Ders notundan etiket ekranına geçiş doğru ders filtresini açar. Hatalı yüklemelerde yeniden deneme vardır.
-6. Mobilde konu dizini kapalı başlar; ders metnine uzun bir dizini geçmeden ulaşılır. Konu ve ders değiştiğinde alıştırma, yanıt ve açık düşünme provası sıfırlanır. Konu araması, kalıp sekmeleri, yanlış yanıt sonrası çalışma yönlendirmesi ve TYT/AYT hazırlık planı eklendi.
-7. Araştırmanın kaynak, metin, sayfa, görsel özeti ve rehberleri yerel PostgreSQL `source_research` şemasında sürümlenir. Ayrıntı ve yeniden kullanma komutları [araştırma hafızası kaydındadır](KAYNAKLI_SORU_ANALIZI.md).
+1. Önceki `33e023c` commit'i, devir notları ve PostgreSQL arşivi okunarak devam edildi. Değişmeyen PDF metinleri yeniden çıkarılmadan kayıtlı sayfalardan geri çağrıldı.
+2. **23 yeni rehber / 60 kalıp** eklendi. Ders → kategori → konu → kalıp akışında kavram ayrımı, çözüm adımları, çeldirici ve özgün düşünme provası sunulur. Yanıt sonrası kavram, kök veya yönteme dönülür. Özgün mini örnekler kurumların sınav sorusu gibi sunulmaz.
+3. Eski `?baslik=` bağlantısı artık hazırlanmış konuya aitse rehberi açar. Mobil dizin ve konu/ders değişiminde yanıt sıfırlama korunur.
+4. Fiilde Çatı PDF ve uygun OGM sorusuna dayanır; yerel çıkmış soru eşleşmesi bulunamadığı kaynak bölümünde açıklanır. Bu, resmî arşivde hiç sorulmadığı iddiası değildir. Eksik karşılaştırma yalnız durum ve açıklamayla yayımlanabilir; diğer 43 rehberin iki koleksiyon şartı korunur.
+5. **10 checksum bağlı gözlem** sürümlendi. Dört yeni soru görselinde alt çizgi/sütun ilişkileri; Edebiyat PDF 39 s. 26 ve 137'deki iki tablo incelendi. Önceki iki görsel notu korunur. Kaynak değişirse eski gözlem geçerli sayılmaz.
+6. `mt-tyt-turkce-02-25`, Fiilde Çatı etiketine rağmen cümlede anlam görevi ister. `3a-tyt-biyoloji-16-02` görselindeki I/II/III öncülleri D'yi desteklerken yerel anahtar B'dir. İkisi rehber örneklerinden dışlanır; banka cevabı veya etiketi değiştirilmez. Özgün anahtar/öğretmen incelemesi açıktır.
+7. `incele_kaynakli_arastirma.py` soru, konu veya PDF sayfasını metin, görsel yolu, checksum, cevap kaydı ve gözlemlerle geri çağırır. Konu araması kaynak etiketine göredir; kendi başına pedagojik doğrulama değildir. Her koleksiyona ayrı örnek sınırı uygulanır.
+8. PDF önbelleği yeni atıf verilen sayfalarda eksik vektör çizim kontrolünü tamamlar. Yalnız görüntüden okunan iki sayfa `ASSISTANT_REVIEWED` olur; çizim tespiti tek başına görsel inceleme değildir.
 
-## Öğretim taslakları
+## Yeniden üretim ve doğrulama
 
-| Ders | Hazır başlık | PDF sayacı |
-|---|---|---|
-| TYT Türkçe | Sözcükte Anlam | OGM MEBİ Türkçe, 11 |
-| AYT Edebiyat | Şiirde Ölçü, Uyak ve Redif | OGM MEBİ Edebiyat, 13–15 |
-| TYT Tarih | Tarih Bilimi ve Belgeden Çıkarım | OGM MEBİ Tarih, 11 |
-| TYT Coğrafya | Harita Türü ve Ölçek | OGM MEBİ Coğrafya, 26–28 |
-| TYT Felsefe | Bilgi Felsefesi: İmkân, Kaynak ve Ölçüt | OGM MEBİ TYT/AYT Felsefe, 29–31 |
-| TYT Din Kültürü | İbadetin Kapsamı ve Salih Amel | OGM İslam ve İbadet video notları, 9–10 |
-| TYT Biyoloji | Canlıların Ortak Özellikleri ve Enerji | OGM MEBİ Biyoloji, 11–13 |
-| TYT Kimya | Atom Modelleri: Kanıt ve Sınırlar | OGM MEBİ Kimya, 25–26 |
-
-Tanımlar kaynakların kısa özeti; çözüm yöntemleri asistanın karşılaştırmalı öğretim önerileridir. Özgün alıştırmalar kurumların soruları gibi sunulmaz. Kaynak soru metni, şiir veya görseller bu notlara kopyalanmaz. Bütün notlar `teacher_pending` durumundadır.
-
-## Dosyalar ve yeniden üretim
-
-Etiketlerin kaynak CSV çıktıları `ornek-veri/etiketler/` altında, branş yöntemleri [Türkçe](TURKCE_ETIKETLEME.md), [Tarih/Coğrafya](TARIH_COGRAFYA_ETIKETLEME.md) ve [diğer branşlar](DIGER_BRANSLAR_ETIKETLEME.md) belgelerindedir. Büyük PDF/soru kaynakları Git dışında kalır.
-
-Notların temel girdisi `ornek-veri/kaynakli-ders-notlari.json`, genişletmeleri `ornek-veri/kaynakli-notlar/*.json`; öğrenci çıktısı `frontend/public/kaynakli-notlar.json` dosyasıdır. Kalıp sayıları ve hazır konu kapsamı bu dosyalardan hesaplanır. Kaynak PDF checksum'u ve soru metni fingerprint'i tutulur. Sayfa numaraları **1 tabanlı PDF sayacı**dır.
-
-Uygulama kökünden, `pymupdf` bulunan proje Python ortamıyla:
+Girdiler `ornek-veri/kaynakli-ders-notlari.json`, `ornek-veri/kaynakli-notlar/*.json` ve `ornek-veri/kaynakli-arastirma-gozlemleri.json`; öğrenci çıktısı `frontend/public/kaynakli-notlar.json`. Sayfalar 1 tabanlı PDF sayacıdır. Örnekler etkin ve doğru ders/sınavda olmalı, kaynak ve CSV cevapları eşleşmeli; iptal, ders uyuşmazlığı veya dışlama notu taşımamalıdır. Ham soru/PDF tam metinleri öğrenci JSON'una kopyalanmaz.
 
 ```powershell
-python -X utf8 scripts/kaynakli_etiket_turkce.py --check
-python -X utf8 scripts/kaynakli_etiket_tarih_cografya.py --check
-python -X utf8 scripts/kaynakli_etiket_diger.py --check
 python -X utf8 scripts/analiz_kaynakli_sorular.py --check
 python -X utf8 scripts/yayinla_kaynakli_etiketler.py --check
 python -X utf8 scripts/yayinla_kaynakli_notlar.py --check
 python -X utf8 testler/source-data-test.py
+python -X utf8 testler/source-observations-test.py
+python -X utf8 scripts/kaynakli_arastirma_db.py --write
+python -X utf8 testler/source-research-db-test.py
 ```
 
-Yayın çıktısı güncellenecekse son iki yayın betiğini `--write` ile çalıştırın. `--check`, kaynak sayfalarında belirtilen kavramların bulunmasını, örneklerin etkin ve doğru sınav/branşta olmasını, iptal/uyuşmazlık işareti taşımamasını, yerel CSV ile kaynak çıkarımının cevap anahtarlarının uyumunu ve deterministik çıktı eşitliğini denetler. Bu, çözüm gerekçelerinin bağımsız öğretmen doğrulaması değildir.
+Proje Python ortamında `pymupdf` bulunmalıdır. Not değişince önce yayın betiğini `--write` ile çalıştırın; ardından `frontend/` içinde `npm run build`, kökte `node testler/source-labels-ui.mjs` çalıştırın.
 
-## Doğrulama kanıtı
+Bu devamın doğrulamaları:
 
-- Üç branş üreticisinin ve iki yayın betiğinin kaynak/çıktı denetimi geçti.
-- `testler/source-data-test.py`: **11 test**, boş/yer tutucu, belirsizlik, yinelenen/eksik/fazla kimlik, değişen kaynak konusu, ders uyuşmazlığı, Türkçe PDF/satır sonu dayanağı ve soru kökü–parça kelimesi ayrımı.
-- `SourceNotesRoutesTest`: **11 test**, veritabanından bağımsız MVC adres yönlendirmesi.
-- `frontend/` içinde `npm run build`: geçti. Ortak uygulama paketinin mevcut boyut uyarısı sürüyor; bu işte geniş kapsamlı paket düzenlemesi yapılmadı.
-- `node testler/source-labels-ui.mjs`: gerçek Chrome/Edge, **1280 ve 390 px**; 19 etiket grubu, 8 ders, **21 konu / 44 kalıp**, konu araması/seçimi, düşünme provaları, yanlış/doğru yanıt ve yeniden deneme, filtre/sayfalama, iptal uyarısı, yükleme hatası, geçersiz adres ve yatay taşma.
-- Ekran görüntüleri Windows geçici dizininde `kaynakli-etiketler-{1280,390}.png` ve `kaynakli-notlar-{1280,390}.png` adlarıyla üretilir; masaüstü/mobil görünüm ayrıca görsel olarak incelendi.
+- Envanter, etiket ve not denetimleri geçti: 53.019 kimlik, 44 rehber ve 87 örnek bağı.
+- **13** kaynak veri ve **2** checksum/gözlem regresyon testi geçti. Eksik karşılaştırmayı açıklamasız yayımlama ve çelişkili örneği geri alma reddedilir.
+- `npm run build` geçti; mevcut ortak paket boyutu uyarısı sürer.
+- Gerçek tarayıcıda **1280 ve 390 px**: 19 etiket grubu, sekiz ders, **44 rehber / 104 kalıp**, bütün düşünme provaları, doğru/yanlış yanıt akışı, filtre, sayfalama, yeniden deneme, eski başlık bağlantısı ve yatay taşma kontrolü geçti. Sandbox içindeki Chrome/Edge CDP bağlantısı yanıt vermedi; yetkili dış çalıştırma başarılı oldu.
+- Araştırma arşivi kontrol seti **8 test**: kapsam, JSON eşitliği, öğretmen onayı sınırı, Türkçe arama, görsel gözlemler, çelişkili kayıt, PDF tablo incelemesi ve atıf sayfalarında çizim kontrolü. Güncel aktarım kimliği `veri/source-research/last-run.json` içindedir.
+- Backend'in 11 adres yönlendirme testi önceki dilimde geçti; bu devamda backend adres kodu değiştirilmedi.
 
-Tarayıcı testi derlenmiş ön yüz ve statik içerikle, **yalıtılmış API yanıtları** üzerinde çalışır; gerçek görsel/PDF API akışı uçtan uca denenmiş sayılmaz. Yerel PostgreSQL araştırma aktarımı ayrıca `kaynakli_arastirma_db.py` ile yapılır ve sayım/idempotans/arama kontrolleri ayrı kanıttır. Genel `mvn test`, diğer bekleyen uygulama göçleri veya canlı servis yeniden başlatma bu işte yapılmadı.
+Tarayıcı testi derlenmiş ön yüz ve yalıtılmış API yanıtları üzerindedir; canlı görsel/PDF API akışının uçtan uca testi değildir. Canlı servis yeniden başlatılmaz, diğer bekleyen uygulama göçleri çalıştırılmaz. Araştırma PostgreSQL `source_research` şemasında saklanır; öğrenci tablolarına yazılmaz.
 
-## Kalan çalışma ve devam noktası
+## Sonraki çalışma
 
-1. Türkçe'de Sözel Mantık kaynak dayanağını ve kaynak etiketlerindeki Sözcükte Yapı/Fiilde Çatı kapsamını doğrulayın. Diğer 15 plan başlığı rehbere bağlıdır; bu, bütün soruların tek tek incelendiği anlamına gelmez.
-2. Aynı yöntemi kullanıcı sırasıyla Tarih, Coğrafya, Felsefe, Din Kültürü, Biyoloji ve Kimya'nın kalan konularına uygulayın; AYT ders notlarının kapsamını ayrıca açın. AYT Felsefe Grubu'nda Psikoloji, Sosyoloji ve Mantık birbirine karıştırılmamalıdır.
-3. ÖSYM kitapçıklarıyla bağımsız arşiv tamlık denetimi yapın. Yerel TYT Türkçe 2018–2026 arşivi yılda 34 kayıttır; 40 soruluk testin tüm soruları değildir. Bu boşluk kapanmadan “bütün çıkmış sorular analiz edildi” demeyin.
-4. 12 ders uyuşmazlığı ve iptal sorularının mevcut soru bankası davranışını ayrı veri düzeltme işi olarak ele alın; bu salt okunur çalışma kendiliğinden bankaya aktarılmamalıdır.
-5. Notların ve dar etiketlerin gerçek branş öğretmeni incelemesi açık iştir. Asistan karşılaştırması insan onayı olarak kaydedilmemelidir.
+1. Sözel Mantık için uygun soru/anlatım dayanağını doğrulayın. Fiilde Çatı için çıkmış örnek eşleştirmesi açıktır.
+2. Tarihte İlk Uygarlıklar/İlk Türk Devletleri; Coğrafyada konum/Dünya hareketleri; Felsefede akıl yürütme/ahlak; Din'de din-ahlak; Biyolojide bileşikler/madde geçişleri; Kimyada etkileşimler/maddenin hâlleriyle devam edin. AYT kapsamını ayrı sınav gruplarıyla açın.
+3. Edebiyatta dar alt konuları genişletin. Şiir Bilgisi rehberinin mevcut ahenk odağı, bütün nazım biçimlerinin ve türlerinin bağımsız rehberlerinin tamamı değildir.
+4. Biyoloji cevap çelişkisini özgün kitapçık/anahtarla ve öğretmenle doğrulayın. Etiket uyuşmazlıklarını ve iptal sorularını bankaya aktarmak ayrı veri düzeltme işidir.
+5. ÖSYM arşiv tamlığı, 5.792 kaydın görsel incelemesi ve gerçek branş öğretmeni onayı açıktır. Yerel Türkçe 2018–2026 arşivi yılda 34 kayıttır; 40 soruluk testin bütünü değildir.
 
-Bu kayıt **tam müfredat analizinin tamamlandığı iddiası değildir**. Etiket/UI altyapısını, 21 somut konu rehberini, araştırma arşivini ve kalan adımları gösterir. Yalnız bu işe ait dosyalar/hunk'lar yerel commit edilir; push yapılmaz.
+Yalnız bu işe ait dosyalar yerel commit'e alınır; diğer bekleyen değişiklikler dahil edilmez. Push yapılmaz.

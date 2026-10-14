@@ -21,6 +21,28 @@ INPUT = APP / "ornek-veri/kaynakli-ders-notlari.json"
 OUTPUT = APP / "frontend/public/kaynakli-notlar.json"
 CATALOG = ROOT / "veri-hatti/ogm-indirme/katalog.json"
 PDF_ROOT = ROOT / "Kaynaklar/ogm-materyal"
+OBSERVATIONS = APP / "ornek-veri/kaynakli-arastirma-gozlemleri.json"
+
+
+def load_observations():
+    data = json.loads(OBSERVATIONS.read_text(encoding="utf-8"))
+    if data.get("schemaVersion") != 1:
+        raise ValueError("Desteklenmeyen gözlem şeması")
+    found = {}
+    for item in data["observations"]:
+        evidence = item["evidence"]
+        if (item["key"] in found or not item.get("note", "").strip()
+                or evidence.get("teacher_approved") is not False
+                or evidence.get("inspection") not in {"assistant_image_review", "assistant_text_review"}):
+            raise ValueError(f"Geçersiz/yinelenen araştırma gözlemi: {item['key']}")
+        found[item["key"]] = item
+    return found
+
+
+def check_example_review(key, observations):
+    review = observations.get(":".join(key))
+    if review and review["evidence"].get("excludeFromGuides"):
+        raise ValueError(f"Araştırmada çelişkili/uygunsuz bulunan örnek: {key}")
 
 
 def normalized(value):
@@ -62,11 +84,26 @@ def question_sources(wanted):
     return records
 
 
+def check_comparison(lesson, banks):
+    status = lesson.get("comparisonStatus", "both_banks")
+    if status == "both_banks" and banks == {"CIKMIS", "OGM"}:
+        return
+    if (status == "past_question_not_found" and banks == {"OGM"}
+            and lesson.get("comparisonNote", "").strip()):
+        return
+    raise ValueError(f"Çıkmış/OGM karşılaştırması eksik veya durumu geçersiz: {lesson['id']}")
+
+
 def build():
+    observations = load_observations()
     data = json.loads(INPUT.read_text(encoding="utf-8"))
     supplements = APP / "ornek-veri/kaynakli-notlar"
     for path in sorted(supplements.glob("*.json")):
         extra = json.loads(path.read_text(encoding="utf-8"))
+        for group in data["groups"]:
+            for unit in group["units"]:
+                additions = extra.get("outlineAdditions", {}).get(group["id"], {}).get(unit["name"], [])
+                unit["topics"].extend(additions)
         if "groupId" in extra:
             group = next(group for group in data["groups"] if group["id"] == extra["groupId"])
             group["lessons"].extend(extra["lessons"])
@@ -158,6 +195,7 @@ def build():
             example_banks = set()
             for example in lesson["examples"]:
                 key = (example["bank"], example["code"])
+                check_example_review(key, observations)
                 row = active[key]
                 label = labels[key]
                 if row["exam_type"] != group["exam"] or row["subject"] != group["subject"]:
@@ -178,8 +216,7 @@ def build():
                 example["evidenceRef"] = label["evidence_ref"]
                 example["sourceFingerprint"] = digest(question.get("metin", "").encode("utf-8"))
                 example_banks.add(example["bank"])
-            if example_banks != {"CIKMIS", "OGM"}:
-                raise ValueError(f"Çıkmış/OGM karşılaştırması eksik: {lesson['id']}")
+            check_comparison(lesson, example_banks)
     result["sources"] = sources
     analysis_path = APP / "ornek-veri/kaynakli-analiz-ozet.json"
     analysis = json.loads(analysis_path.read_text(encoding="utf-8"))
@@ -225,6 +262,7 @@ def build():
     }
     result["lessonCount"] = sum(len(group["lessons"]) for group in result["groups"])
     result["patternCount"] = sum(len(lesson["patterns"]) for group in result["groups"] for lesson in group["lessons"])
+    result["exampleCount"] = sum(len(lesson["examples"]) for group in result["groups"] for lesson in group["lessons"])
     return json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
@@ -242,7 +280,7 @@ def main():
         raise ValueError("Not yayını eksik veya eski; --write ile yeniden üretin.")
     result = json.loads(content)
     print(f"{len(result['groups'])} ders, {result['lessonCount']} öğretim taslağı; "
-          f"PDF sayfaları ve {result['lessonCount'] * 2} kaynak soru bağı doğrulandı.")
+          f"PDF sayfaları ve {result['exampleCount']} kaynak soru bağı doğrulandı.")
 
 
 if __name__ == "__main__":

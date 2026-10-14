@@ -20,7 +20,7 @@ from urllib.parse import urlparse
 import pymupdf
 
 from yayinla_kaynakli_etiketler import source_rows
-from yayinla_kaynakli_notlar import normalized, question_sources
+from yayinla_kaynakli_notlar import OBSERVATIONS, load_observations, normalized, question_sources
 
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
@@ -92,6 +92,31 @@ def status(connection):
     return {"database": connection[2], **(json.loads(value) if value else {"runs": 0})}
 
 
+def validate_observations(observations, questions, pages):
+    question_map = {f"{row['bank']}:{row['code']}": row for row in questions}
+    page_map = {(row["catalog_id"], row["page_number"]): row for row in pages}
+    for item in observations.values():
+        proof = item["evidence"]
+        if item["key"].startswith("PDF:"):
+            row = page_map.get((proof.get("catalogId"), proof.get("page")))
+            if (not row or item["key"] != f"PDF:{row['catalog_id']}:{row['page_number']}"
+                    or proof.get("documentSha256") != row["document_sha256"]
+                    or proof.get("pageTextSha256") != row["text_sha256"]):
+                raise ValueError(f"PDF gözleminin kaynağı değişmiş/eksik: {item['key']}")
+            if proof["inspection"] == "assistant_image_review":
+                row["visual_review_status"] = "ASSISTANT_REVIEWED"
+        else:
+            row = question_map.get(item["key"])
+            if (not row or proof.get("sourceTextSha256") != row["text_sha256"]
+                    or proof.get("imageSha256") != row["image_sha256"]
+                    or (proof.get("sourceAnswer") is not None
+                        and proof["sourceAnswer"] != row.get("evidence", {}).get("correct_answer"))
+                    or (proof["inspection"] == "assistant_image_review" and not row["image_sha256"])):
+                raise ValueError(f"Soru gözleminin kaynağı değişmiş/eksik: {item['key']}")
+            row["inspection_status"] = ("ASSISTANT_IMAGE_REVIEWED" if proof["inspection"] == "assistant_image_review"
+                                        else "ASSISTANT_TEXT_REVIEWED")
+
+
 def prepare():
     STATE.mkdir(parents=True, exist_ok=True)
     pdf_cache = STATE / "pdf-cache"
@@ -129,7 +154,15 @@ def prepare():
                           "official_url": item["url"], "page_count": item["pages"]})
         cached_pdf = pdf_cache / f"{item['catalogId']}-{fingerprint}-{extractor}.json"
         if cached_pdf.exists():
-            pages.extend(json.loads(cached_pdf.read_text(encoding="utf-8")))
+            extracted_pages = json.loads(cached_pdf.read_text(encoding="utf-8"))
+            unchecked = [page for page in extracted_pages if page["has_vector_graphics"] is None
+                         and (item["catalogId"], page["page_number"]) in cited_pages]
+            if unchecked:
+                with pymupdf.open(path) as pdf:
+                    for page in unchecked:
+                        page["has_vector_graphics"] = bool(pdf[page["page_number"] - 1].get_drawings())
+                cached_pdf.write_text(json_text(extracted_pages) + "\n", encoding="utf-8")
+            pages.extend(extracted_pages)
             continue
         extracted_pages = []
         with pymupdf.open(path) as pdf:
@@ -146,7 +179,7 @@ def prepare():
 
     examples = {(example["bank"], example["code"]) for group in notes["groups"]
                 for lesson in group["lessons"] for example in lesson["examples"]}
-    image_reviewed = {("CIKMIS", "TYT-0336"), ("CIKMIS", "TYT-0296")}
+    observations = load_observations()
     questions = question_sources(set(labels))
     if questions.keys() != labels.keys():
         raise ValueError("Kaynak soru eşleşmesi eksik")
@@ -176,13 +209,13 @@ def prepare():
                          "proposed_label": row["label"], "source_text": text, "text_sha256": sha(text.encode("utf-8")),
                          "image_path": str(path.resolve()) if path.is_file() else None, "image_sha256": image_hash,
                          "extraction_status": "VISUAL_ONLY" if not plain else "SHORT_TEXT" if len(plain) < 40 else "TEXT_AVAILABLE",
-                         "inspection_status": "ASSISTANT_IMAGE_REVIEWED" if key in image_reviewed
-                             else "ASSISTANT_TEXT_REVIEWED" if key in examples else "SOURCE_LINKED",
+                         "inspection_status": "ASSISTANT_TEXT_REVIEWED" if key in examples else "SOURCE_LINKED",
                          "evidence": {**row, "correct_answer": active[key]["correct_answer"],
                                       "source_image": source.get("gorsel"), "source_page": source.get("sayfa"),
                                       "teacher_approved": False}})
+    validate_observations(observations, evidence, pages)
     cache_path.write_text(json_text(cache) + "\n", encoding="utf-8")
-    inputs = [*paths, notes_path, analysis_path, DDL,
+    inputs = [*paths, notes_path, analysis_path, DDL, OBSERVATIONS,
               *sorted((APP / "ornek-veri/kaynakli-notlar").glob("*.json")),
               *[APP / "scripts" / name for name in ("kaynakli_arastirma_db.py", "analiz_kaynakli_sorular.py",
                                                     "yayinla_kaynakli_notlar.py", "yayinla_kaynakli_etiketler.py")],
@@ -202,6 +235,8 @@ def prepare():
                "visualOnlyQuestions": sum(row["extraction_status"] == "VISUAL_ONLY" for row in evidence),
                "shortTextQuestions": sum(row["extraction_status"] == "SHORT_TEXT" for row in evidence),
                "missingImages": sum(row["image_sha256"] is None for row in evidence),
+               "observations": len(observations),
+               "excludedExamples": sum(bool(item["evidence"].get("excludeFromGuides")) for item in observations.values()),
                "teacherApproved": 0}
     return run_key, manifest, summary, notes, analysis, documents, pages, evidence, handoff
 
@@ -238,10 +273,14 @@ def write_archive(connection):
           INSERT INTO source_research.documents SELECT (payload->>'catalog_id')::int,payload->>'sha256',payload->>'title',
           payload->>'local_path',payload->>'official_url',(payload->>'page_count')::int FROM source_import_payload ON CONFLICT DO NOTHING;""")
         add("pages", pages, """
-          INSERT INTO source_research.document_pages(catalog_id,document_sha256,page_number,extractor_version,text_content,text_sha256,has_images,has_vector_graphics,extraction_status)
+          INSERT INTO source_research.document_pages(catalog_id,document_sha256,page_number,extractor_version,text_content,text_sha256,has_images,has_vector_graphics,extraction_status,visual_review_status)
           SELECT (payload->>'catalog_id')::int,payload->>'document_sha256',(payload->>'page_number')::int,
           payload->>'extractor_version',payload->>'text_content',payload->>'text_sha256',(payload->>'has_images')::boolean,
-          (payload->>'has_vector_graphics')::boolean,payload->>'extraction_status' FROM source_import_payload ON CONFLICT DO NOTHING;""")
+          (payload->>'has_vector_graphics')::boolean,payload->>'extraction_status',coalesce(payload->>'visual_review_status','NOT_REVIEWED')
+          FROM source_import_payload ON CONFLICT (catalog_id,document_sha256,page_number,extractor_version) DO UPDATE SET
+          has_vector_graphics=coalesce(source_research.document_pages.has_vector_graphics,EXCLUDED.has_vector_graphics),
+          visual_review_status=CASE WHEN EXCLUDED.visual_review_status='ASSISTANT_REVIEWED' THEN EXCLUDED.visual_review_status
+            ELSE source_research.document_pages.visual_review_status END;""")
         statements.append(f"INSERT INTO source_research.run_documents SELECT '{run_key}',catalog_id,sha256 FROM source_research.documents WHERE (catalog_id,sha256) IN (SELECT catalog_id,sha256 FROM source_research.documents WHERE "
                           + " OR ".join(f"(catalog_id={row['catalog_id']} AND sha256='{row['sha256']}')" for row in documents) + ") ON CONFLICT DO NOTHING;")
         add("questions", evidence, f"""
@@ -259,8 +298,7 @@ def write_archive(connection):
           INSERT INTO source_research.topic_guides(run_key,group_id,topic_id,title,content)
           SELECT '{run_key}',payload->>'group',payload->'lesson'->>'id',payload->'lesson'->>'title',payload->'lesson'
           FROM source_import_payload ON CONFLICT DO NOTHING;""")
-        observations = [{"key": "CIKMIS:TYT-0336", "note": "Kaynak görselindeki V numaralı sözcük tüm; meslektaşlar ismini belirttiği için zamir değil sıfattır.", "evidence": {"inspection": "assistant_image_review", "teacher_approved": False}},
-                        {"key": "CIKMIS:TYT-0296", "note": "Kaynak görselinde V işitilen sözcüğüdür; işit- kökünde ünlü düşmesi yoktur.", "evidence": {"inspection": "assistant_image_review", "teacher_approved": False}}]
+        observations = list(load_observations().values())
         add("observations", observations, f"""
           INSERT INTO source_research.observations SELECT '{run_key}',payload->>'key',payload->>'note',payload->'evidence'
           FROM source_import_payload ON CONFLICT DO NOTHING;""")

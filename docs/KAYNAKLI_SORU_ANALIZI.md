@@ -30,7 +30,7 @@ Bu karşılaştırmadan konuya ait üç kalıp hazırlanır: **nesnellik**, **an
 
 Yeni arayüz tek seferde yalnız seçilmiş konuyu gösterir. Ders → kategori → konu → soru kalıbı seçilir. Her kalıpta kökü tanıma, düşünme mantığı, püf noktası, çeldirici ve özgün düşünme provası bulunur. Ardından konuya ait genel çözüm sırası ve özgün alıştırma gelir. Yanıt sonrası öğrenci kendi hatasının türüne göre kavrama, soru köküne veya uygulama adımlarına döner. Tek yanıttan öğrencinin tüm konuyu bildiği sonucu çıkarılmaz.
 
-Şimdiki somut içerik: **21 konu rehberi / 44 kalıp / 42 karşılaştırılmış kaynak soru / 51 farklı PDF sayfa dayanağı**. TYT Türkçe'deki 16 plan başlığından **15**'ine rehber bağlandı; anlatım biçimleri ile düşünceyi geliştirme yolları aynı karşılaştırmalı rehberde ele alındığı için Türkçe'de 14 ayrı rehber vardır. **Sözel mantık** için kaynak dayanağı henüz doğrulanmadı; hazır gösterilmez. AYT Edebiyat ve sonraki altı branşta ilk rehberler vardır; kalan konu/alt konu incelemeleri açıktır.
+Şimdiki somut içerik: **44 konu rehberi / 104 kalıp / 87 örnek bağı (86 farklı soru) / 131 farklı PDF sayfa dayanağı**. TYT Türkçe'deki 18 plan başlığından **17**'sine rehber bağlandı; ortak başlıklar nedeniyle Türkçe'de 16 ayrı rehber vardır. AYT Edebiyatın 17 dizin başlığı 16 giriş rehberine bağlıdır. Bu başlık kapsamı, her dönemin bütün sanatçı/eserlerinin veya bütün dar alt konuların tamamlandığı anlamına gelmez. **Sözel mantık** için kaynak dayanağı henüz doğrulanmadı; hazır gösterilmez. Tarih, Coğrafya, Felsefe, Din Kültürü, Biyoloji ve Kimya'da ikişer rehber vardır; diğer konu/alt konu incelemeleri açıktır. Fiilde Çatı yalnız uygun OGM sorusu ve PDF ile karşılaştırılmıştır; yerel çıkmış soru eşleşmesi bulunamadığı bilgisi arayüzde açıkça gösterilir.
 
 Ana menüde **Analiz ve çalışma planı**, TYT/AYT'nin 19 kaynak grubunu ve temel PDF'lerini gösterir. Hazır konuya çalışma bağlantısı; henüz hazır olmayan AYT branşlarına gerçek kaynak ve hazırlık durumu verilir. Eksik rehbere sahte içerik eklenmez.
 
@@ -42,8 +42,8 @@ Yerel `ivme` PostgreSQL veritabanında **`source_research`** şeması kullanıl�
 - `documents`, `document_pages`, `run_documents`: 22 PDF'nin kurum adresi, yerel yolu, SHA-256 özeti ve 1 tabanlı sayfa metinleri. Metin çıkarıcısının sürümü ve raster görsel varlığı kaydedilir. Vektör çizim kontrolü rehberde kullanılan sayfalarda yapılır; diğerlerinde bu alan `NULL` (henüz kontrol edilmedi) kalır. **Metin çıkarımı veya çizim tespiti, şeklin yorumlandığı anlamına gelmez**; görsel inceleme durumu ayrı tutulur.
 - `question_evidence`: 53.019 kaynak sorunun koleksiyon/kod kimliği, öneri etiketi, eldeki kaynak metni, metin/görsel checksum'u, PDF/kayıt referansları ve inceleme durumu. Metinsiz/görsele bağımlı sorular ayrı sorgulanabilir. Soru bankasının konu veya cevabı değiştirilmez.
 - `topic_inventory`: 1.110 kaynak başlığı için sayım, belirsizlik ve kalıp adayları.
-- `topic_guides`: 21 konu rehberinin kaynakları, 44 soru kalıbı, gerekçeler ve özgün alıştırmaları; durumları yalnız `DRAFT`.
-- `observations`: doğrudan görüntü üzerinden yapılan inceleme notları. Bu devamda `TYT-0336` üzerindeki V işaretinin “tüm”, `TYT-0296` üzerindeki V işaretinin “işitilen” olduğu görselden ayrıca kontrol edildi. Bu iki kayıt asistan görsel incelemesidir; öğretmen onayı değildir.
+- `topic_guides`: 44 konu rehberinin kaynakları, 104 soru kalıbı, gerekçeler ve özgün alıştırmaları; durumları yalnız `DRAFT`.
+- `observations`: **10** checksum bağlı gözlem. Önceki iki görsel notu korunur; TYT-0289, OGM edebiyat 19-10, TYT Din 0002 ve sb-40141 görsellerindeki alt çizgi/sütun ilişkileri kontrol edildi. Edebiyat PDF 39 s. 26 ve 137 tabloları görüntüden okundu. OGM `mt-tyt-turkce-02-25` konu uyuşmazlığı ve `3a-tyt-biyoloji-16-02` cevap çelişkisi ayrıca saklanır. Gözlemler asistan incelemesidir; öğretmen onayı değildir. Kaynak metin/görsel veya PDF/sayfa checksum'u değişirse aktarım eski gözlemi geçerli saymayı reddeder.
 
 Yerel arşiv, PDF/soru metinlerini içerir; öğrenciye sunulan JSON veya Git raporları bunların toplu tam metnini yayımlamaz. Görseller özgün dosya konumlarında kalır; SHA-256 ve yollarıyla izlenir. `veri/source-research/image-cache.json` değişmeyen görselleri tekrar hash'lememek için boyut/mtime/checksum önbelleğidir; `pdf-cache/` PDF checksum'u ve çıkarıcı sürümüne göre sayfa metinlerini yeniden kullanır. PDF'lerde şekil, ok, eksen veya alt çizgi gerekli olduğunda özgün sayfa/görsel açılmalı; OCR tek başına yeterli sayılmamalıdır.
 
@@ -60,7 +60,26 @@ python -X utf8 scripts/kaynakli_arastirma_db.py --export
 
 1. Bu belgeyi ve [konu rehberlerinin durum kaydını](KAYNAKLI_DERS_NOTLARI.md) oku; `--status` ve `--find` ile eldeki kanıtı getir. Aynı kaynakları baştan sınıflandırma.
 2. Kaynak checksum'u değişmediyse mevcut sayfa metni, soru referansı ve gözlem notunu kullan. Kaynak değiştiyse eski sonucu silmeden yeni sürüm oluştur.
-3. Sonraki içerik sırası: Türkçe'deki doğrulanmamış Sözel Mantık ve kaynak etiketlerinde ayrı duran Sözcükte Yapı/Fiilde Çatı kapsamını denetle; AYT Edebiyatın kalan başlıklarını tamamla; ardından Tarih, Coğrafya, Felsefe, Din Kültürü, Biyoloji ve Kimya rehberlerini genişlet.
+3. Sözcükte Yapı ve Fiilde Çatı rehberleri eklendi; bunları yeniden sıfırdan inceleme. Türkçe Sözel Mantık açık kalır; yerel arşivde ve seçilen temel anlatımda doğrulanmış karşılaştırma bulunmadı. Sonraki sıra: Tarihte İlk Uygarlıklar/İlk Türk Devletleri, Coğrafyada konum ve Dünya hareketleri, Felsefede akıl yürütme/ahlak, Din'de din-ahlak, Biyolojide bileşikler/madde geçişleri, Kimyada etkileşimler/maddenin hâlleri. AYT branşlarının ayrı rehberleri ve Edebiyatın ayrıntılı alt konuları da açık iştir.
 4. Metinsiz veya şekle bağlı sorularda önce görseli incele. İncelenmemiş kayıtları `SOURCE_LINKED` bırak; “analiz edildi” durumuna otomatik yükseltme. Uydurma çözüm veya öğretmen onayı oluşturma.
 
 Tam kaynak envanteri taranmıştır; **bütün soruların insan düzeyinde çözüldüğü veya tüm konu rehberlerinin tamamlandığı iddia edilmez**. Araştırmanın yeniden kullanılabilir izi ile gerçekten hazırlanmış öğretim içeriği ayrı tutulur.
+
+## Bu devamın somut sonuçları ve yeniden başlama noktası
+
+- 23 yeni rehber ve 60 kalıp eklendi. Türkçe dil bilgisi dizinine eksik iki başlık eklendi; Edebiyatta biçim/tür, anlam ilişkisi, dönem/üyelik, anlatıcı/teknik ve yazar/eser ayrımları işlendi. Diğer altı branşta birer yeni konu hazırlandı.
+- Başlığı `?baslik=` ile açan eski bağlantılar, artık rehberi hazırlanmışsa doğrudan o rehberi gösterir.
+- `ornek-veri/kaynakli-arastirma-gozlemleri.json` tekrar kullanılacak inceleme notlarının sürümlenen girdisidir. İki uygunsuz kayıt için `excludeFromGuides` vardır; yayın üreticisi bu kayıtları örnek göstermeyi reddeder. Bu bir banka düzeltmesi değildir.
+- Biyoloji `3a-tyt-biyoloji-16-02`: görselde I/II/III öncülleri D'yi destekler, yerel metin ve CSV anahtarı B'dir. Asistanın D önerisi kaynak cevabının yerine yazılmadı. Özgün kitapçık/cevap anahtarı ve branş öğretmeni incelemesi gerekir.
+- PDF önbelleğinde yeni atıf verilen sayfalar için eksik vektör çizim tespiti tamamlanır. Veritabanı aynı checksum'lu sayfanın yalnız inceleme metadatasını zenginleştirir; eski metin ve kaynak sürümleri korunur. Çizim bulunması, görselin yorumlandığı anlamına gelmez.
+- Fiilde Çatı rehberinde `past_question_not_found` + açıklama zorunludur. Diğer 43 rehberde iki koleksiyon da bulunur. Örnek sayısı sabit `rehber × 2` varsayımıyla hesaplanmaz.
+
+Yeni salt okunur kanıt geri çağırma aracı, metni yeniden PDF'den çıkarmadan soruyu, cevap kaydını, görsel yolunu, checksum'ları ve inceleme notlarını getirir. Konu araması **kaynak etiketine göre** örnek döndürür; etiketin pedagojik doğruluğunu kendiliğinden kanıtlamaz. Her koleksiyona ayrı örnek sınırı uygulanır.
+
+```powershell
+python -X utf8 scripts/incele_kaynakli_arastirma.py --question TYT-0289 --bank CIKMIS
+python -X utf8 scripts/incele_kaynakli_arastirma.py --topic "Fiilde Çatı" --subject Türkçe --limit 5
+python -X utf8 scripts/incele_kaynakli_arastirma.py --pdf-page 39:137
+```
+
+Güncel aktarımın kimliği `veri/source-research/last-run.json` içindedir. Bu belge araştırma manifestine dahil olduğundan kendi güncel run anahtarı belgeye gömülmez. Ham soru/PDF metinleri ve yerel önbellek Git dışında kalır.

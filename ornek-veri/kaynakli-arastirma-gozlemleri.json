@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "key": "CIKMIS:TYT-0336",
+      "note": "Kaynak görselindeki V sözcüğü tüm; meslektaşlar ismini belirttiğinden zamir değil sıfattır. Önceki araştırmanın görsel notu korunmuştur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "8f636eac818d2328f5842ae52593cf43564817b26081541295276436b01702bc",
+        "imageSha256": "7d53c97bf1bcd3643e797a5449b061eb4594a1c38c882c377690616b7d9a0b8b",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "CIKMIS:TYT-0296",
+      "note": "Kaynak görselindeki V sözcüğü işitilen; işit- kökünde ünlü düşmesi yoktur. Önceki araştırmanın görsel notu korunmuştur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "ee1d88c6fa1ca1d3ee5d5a44c386518cdecc5eb59caa8ae7f432baba2cdd9a92",
+        "imageSha256": "12d058840868e32523ef0722ac2bb71477ff25aea3e5ae34111ddc8e42c2b7cf",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "CIKMIS:TYT-0289",
+      "note": "Görselde I süreç, II doğal, III saygılı, IV kendinden, V yeterliğe işaretlidir. IV çekim eki içerir; kaynak D anahtarıyla uyumludur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "4e05f479cfcf0004625fba06944d0629f056e641414b4bab951a68d200675ddc",
+        "imageSha256": "18b56ae0e0dde6a9203a18cf2b98e724d19632caa6398e1fc3050716dd3e17ca",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:3a-ayt-turk-dili-ve-edebiyati-19-10",
+      "note": "Alt çizgiler büyük/küçük ve çıkan/inen karşıtlık çiftlerindedir; tezat ve kaynak E anahtarı uyumludur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "11be6216b492026129723006896148c3b5b207b3f9aea6a7b162b1edf7972f2c",
+        "imageSha256": "1d2252c5b4e2bf54d5153bd3d4f4e8681e6a7d3f3f70293265a59a9553478475",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "CIKMIS:TYT_DinKulturu-0002",
+      "note": "Görselde sütun sırası Furkan, Zeynep, Efe; C satırı Sadık haber, Selim akıl, Salim duyu şeklindedir. OCR satırları karışsa da görsel eşleştirmesi C anahtarını doğrular.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "7f9087081ac7b19756ba12f2c5186e53d43bb4778823f1c011a503bdb478d78c",
+        "imageSha256": "0fb93a6f0683c3cc3e4f0b70c5415f4c8e2b2b4bf70a531a294ece8f9b370baa",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:sb-40141",
+      "note": "Görselde I duyularla algılama, II akılla işleyip değerlendirme, III peygamberlerin verdiği haberlerdir. A satırı Salim Duyular, Selim Akıl, Vahiy sırasını verir.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "44d8314e529bffd7879dc696411ce6d1012afb76319a17ef7081d3f03de48de4",
+        "imageSha256": "19538e5af9efbcd0036e1492f8759b2ee9b7f8d13ffa0d6f4166eb95274b27cc",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:mt-tyt-turkce-02-25",
+      "note": "Kaynak Fiilde Çatı etiketi taşısa da kök iki cümle arasındaki anlam ilişkisini sorar. Çatı rehberine örnek olarak alınmadı; kaynak etiket ve banka değiştirilmedi.",
+      "evidence": {
+        "inspection": "assistant_text_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "4cb1d70d13bafca35c7c1134da9d5ab452fce2908068dd10e7b6b6bc1713bf8b",
+        "imageSha256": "bdf16afacaed2f1c1d8af2d01079f49afa69a81449c96196a0a51d683f4fa743",
+        "excludeFromGuides": true
+      }
+    },
+    {
+      "key": "OGM:3a-tyt-biyoloji-16-02",
+      "note": "Kaynak görselinde I temel birim hücre, II mikroskop gelişimiyle yeni bilgi, III bütün canlılar hücrelerden oluşur öncülleri vardır; D I-II-III seçeneğidir. Yerel çıkarım ve CSV anahtarı B iken asistan değerlendirmesi D yönündedir. Bağımsız öğretmen/özgün PDF anahtar incelemesi bekler; bankada düzeltme yapılmadı ve rehber örneğinden dışlandı.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "238ed58b8f243b5c65b5781942f289091990f19b1c750c932adfc09c811f9167",
+        "imageSha256": "66bd4b01569c2f4a110782c9073e66ea0ffaf7849759bc9f5d3f0b0be914e2f4",
+        "excludeFromGuides": true,
+        "sourceAnswer": "B",
+        "assistantProposedAnswer": "D",
+        "issue": "answer_conflict_pending_review"
+      }
+    },
+    {
+      "key": "PDF:39:26",
+      "note": "Görseldeki alegori tablosunda Kün Togdı-adalet, Ay Toldı-mutluluk, Ögdülmiş-akıl, Odgurmış-akıbet eşleri doğrulandı.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "catalogId": 39,
+        "page": 26,
+        "documentSha256": "dd3fe23ad9fefb3993b7464b182d3c19470c2252b9f5ddef8a9ced54317b5090",
+        "pageTextSha256": "12b9b927052022ee3b72654a35a1e23c8ad0cf25f3912d5d562adeecb21de975"
+      }
+    },
+    {
+      "key": "PDF:39:137",
+      "note": "Görselde karşılaştırma tablosunun sütunları Trajedi, Komedi, Dram. Üç birlik satırında ilk ikisinde uyulur, dramda uyulmaz; öldürme/yaralama satırında trajedide sahnelenmez, diğer ikisinde sahnelenir. Metin çıkarımındaki sıra görselden kontrol edildi.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "catalogId": 39,
+        "page": 137,
+        "documentSha256": "dd3fe23ad9fefb3993b7464b182d3c19470c2252b9f5ddef8a9ced54317b5090",
+        "pageTextSha256": "0ee447d6b65142f6325e2d1937d01d9528565a5e79b910ef73ce38fc4dde20c2"
+      }
+    }
+  ]
+}

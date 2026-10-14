@@ -8,6 +8,7 @@ from pathlib import Path
 APP = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(APP / "scripts"))
 from kaynakli_arastirma_db import db_connection, query, status
+from incele_kaynakli_arastirma import inspect
 
 
 class ResearchArchiveTest(unittest.TestCase):
@@ -48,6 +49,37 @@ class ResearchArchiveTest(unittest.TestCase):
         evidence = json.loads(result.stdout)
         self.assertTrue(any(item["topic_id"] == "cumlede-anlam" for item in evidence["guides"]))
         self.assertTrue(any(item["catalog_id"] == 29 and item["page_number"] == 17 for item in evidence["pdfPages"]))
+
+    def test_inspection_recovers_visual_notes_and_source_checksums(self):
+        result = inspect(self.connection, question="TYT_DinKulturu-0002", bank="CIKMIS")
+        self.assertEqual(len(result["questions"]), 1)
+        question = result["questions"][0]
+        self.assertEqual(question["inspection_status"], "ASSISTANT_IMAGE_REVIEWED")
+        self.assertEqual(result["observations"][0]["evidence"]["imageSha256"], question["image_sha256"])
+
+    def test_topic_inspection_keeps_conflict_and_bank_scope(self):
+        result = inspect(self.connection, topic="fiilde çatı", subject="Türkçe", limit=1)
+        self.assertEqual(sum(row["records"] for row in result["totals"]), 2)
+        self.assertTrue(all(row["bank"] == "OGM" for row in result["questions"]))
+        self.assertTrue(any(row["object_key"] == "OGM:mt-tyt-turkce-02-25"
+                            and row["evidence"]["excludeFromGuides"] for row in result["observations"]))
+        self.assertEqual(inspect(self.connection, question="' OR true --")["questions"], [])
+
+    def test_pdf_inspection_recovers_reviewed_table_and_source_url(self):
+        result = inspect(self.connection, pdf_page=(39, 137))
+        self.assertEqual(len(result["pages"]), 1)
+        self.assertEqual(result["pages"][0]["visual_review_status"], "ASSISTANT_REVIEWED")
+        self.assertIsNotNone(result["pages"][0]["has_vector_graphics"])
+        self.assertTrue(result["pages"][0]["official_url"].startswith("https://"))
+
+    def test_all_cited_pages_have_vector_presence_checked(self):
+        missing = int(query(self.connection, f"""SELECT count(*) FROM source_research.topic_guides g,
+          jsonb_array_elements(g.content->'sources') s WHERE g.run_key='{self.key}' AND NOT EXISTS (
+            SELECT 1 FROM source_research.document_pages p JOIN source_research.run_documents rd
+              ON rd.catalog_id=p.catalog_id AND rd.document_sha256=p.document_sha256
+            WHERE rd.run_key=g.run_key AND p.catalog_id=(s->>'catalogId')::int
+              AND p.page_number=(s->>'page')::int AND p.has_vector_graphics IS NOT NULL)"""))
+        self.assertEqual(missing, 0)
 
 
 if __name__ == "__main__":

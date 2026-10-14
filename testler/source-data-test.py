@@ -89,6 +89,23 @@ class LabelPublicationTest(unittest.TestCase):
 
 
 class NoteEvidenceTest(unittest.TestCase):
+    def test_missing_past_question_requires_explicit_scope(self):
+        with self.assertRaises(ValueError):
+            notes.check_comparison({"id": "sample"}, {"OGM"})
+        with self.assertRaises(ValueError):
+            notes.check_comparison({"id": "sample", "comparisonStatus": "past_question_not_found"}, {"OGM"})
+        notes.check_comparison({"id": "sample", "comparisonStatus": "past_question_not_found",
+                                "comparisonNote": "Yerel arşivde eşleşmedi."}, {"OGM"})
+        with self.assertRaises(ValueError):
+            notes.check_comparison({"id": "sample", "comparisonStatus": "past_question_not_found",
+                                    "comparisonNote": "Yerel arşivde eşleşmedi."}, {"CIKMIS", "OGM"})
+
+    def test_conflicting_source_cannot_return_as_teaching_example(self):
+        observations = notes.load_observations()
+        for key in (("OGM", "3a-tyt-biyoloji-16-02"), ("OGM", "mt-tyt-turkce-02-25")):
+            with self.subTest(key=key), self.assertRaisesRegex(ValueError, "çelişkili/uygunsuz"):
+                notes.check_example_review(key, observations)
+
     def test_turkish_letters_and_pdf_line_breaks_match(self):
         notes.check_anchors(["DOĞRU BİLGİ", "ölçütü"], "Doğru\nbilgi ve ölçütü", "fixture")
 

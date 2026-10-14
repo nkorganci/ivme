@@ -5,6 +5,7 @@
     "primaryPdfs": 22,
     "records": 53019
   },
+  "exampleCount": 87,
   "groups": [
     {
       "analysis": {
@@ -106,6 +107,214 @@
           "title": "Sözcükte Anlam",
           "topics": [
             "Sözcükte anlam"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "TYT-0289",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0289;field=metin",
+              "explanation": "Görselde IV ile işaretli sözcük kendinden'dir. Kendi sözcüğündeki -nden çekim görevi taşır; yeni sözcük türetmez. Diğer işaretli sözcüklerde süreç, doğal, saygılı ve yeterlik biçimleri yapım eki içerir. Alt çizgilerin hangi sözcüğe ait olduğu ayrıca görselden kontrol edildi.",
+              "sourceFingerprint": "4e05f479cfcf0004625fba06944d0629f056e641414b4bab951a68d200675ddc",
+              "sourceLabel": "Sözcükte Yapı",
+              "year": "2018"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-turkce-64-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-turkce.json#id=3a-tyt-turkce-64-01;field=konu_basligi",
+              "explanation": "D'deki çürümüşleri, çürümüş olanları karşılayan adlaşmış sıfat-fiildir. Öteki seçeneklerde -miş eki çekimli yüklemde öğrenilen geçmiş zamanı bildirir. Aynı ek biçimi, bağlamda farklı görev üstlenir.",
+              "sourceFingerprint": "4150850f2bf1deb1f0580de3357f9dd5401a06c5dd969b62aaa0cbf8ef5d5a1b",
+              "sourceLabel": "Sözcükte Yapı",
+              "year": ""
+            }
+          ],
+          "id": "sozcukte-yapi",
+          "learn": [
+            "Kök, sözcüğün anlamıyla ilişkisini koruyan en küçük anlamlı parçadır. Gövde, köke yapım eki getirilmiş biçimdir. Çekim eki sözcüğün cümlede başka sözcüklerle ilişkisini kurar; yapım eki yeni bir sözcük oluşturur. Çok ek görmek, çok yapım eki görmek demek değildir.",
+            "Ekin yazılışıyla görevi ayrı şeylerdir. “Gelmiş”teki -miş çekimli fiilde zaman bildirirken “solmuş yaprak”ta sıfat-fiil kurar. Kökün türüyle sözcüğün son hâlinin türünü de ayrı incele: göz isim kökü, gözle- fiil gövdesidir."
+          ],
+          "patterns": [
+            {
+              "id": "kok-govde",
+              "logic": "Son sözcüğün türünü geçici olarak bir yana bırak; anlamı koruyan kökü ve aradaki yapım eklerini bul.",
+              "mini": {
+                "answer": "Göz isim köküdür. Göz-le-m-ci çözümlemesinde sonraki ekler gövdeler oluşturur; kökün türünü son ek belirlemez.",
+                "question": "“Gözlemci” sözcüğünün kökü isim mi, fiil mi?"
+              },
+              "recognize": "İsim kökünden türemiştir veya gövdeden türemiştir gibi bir özellik sorulur.",
+              "tip": "Göz → gözle- → gözlem zincirinde kök isimdir; arada fiil gövdesi oluşur.",
+              "title": "Kök mü, gövde mi?",
+              "trap": "Fiil olan son biçimden hareketle kökün de fiil olduğunu söylemek."
+            },
+            {
+              "id": "yapim-cekim",
+              "logic": "Her eki ayrı sınayarak yeni bir kavram oluşturma ile çoğul, durum, sahiplik ve kişi ilişkisini ayır.",
+              "mini": {
+                "answer": "Yol-cu yeni bir ad oluşturur. -lar çoğul, -ımız iyelik, -dan ayrılma hâli bildirir; bunlar çekim ekleridir.",
+                "question": "“Yolcularımızdan” sözcüğünde hangi ek yeni sözcük kurar?"
+              },
+              "recognize": "Yapım eki almamıştır, çekim eki vardır veya yapısı farklıdır görevi verilir.",
+              "tip": "Kitap-lar-da iki çekim eki aldığı hâlde yapım eki almaz; kitap-lık ise yeni bir sözcüktür.",
+              "title": "Yeni sözcük mü, çekim mi?",
+              "trap": "Ek sayısını türemişlik ölçütü saymak veya yapım ekinin mutlaka tür değiştireceğini düşünmek."
+            },
+            {
+              "id": "ekin-gorevi",
+              "logic": "Sözcük yargıyı mı tamamlıyor, bir adı mı niteliyor, bir varlığın kime ait olduğunu mu bildiriyor? Bağlamdaki görevi bul.",
+              "mini": {
+                "answer": "İlkinde çekimli fiilin zaman ekidir. İkincisinde çiçeği niteleyen sıfat-fiil kurar. Sesçe aynı olmak görevce aynı olmak değildir.",
+                "question": "“Çiçek solmuş.” ile “Solmuş çiçeği kaldırdı.” cümlelerindeki -muş aynı görevde mi?"
+              },
+              "recognize": "Aynı yazılan ekin farklı görevde olduğu seçenek aranır.",
+              "tip": "Ekleri ezber listesiyle eşleştirmeden önce cümledeki yüklemi belirle.",
+              "title": "Aynı ek, farklı görev",
+              "trap": "“Okuyorum”daki kişi ekiyle “kitabım”daki iyelik ekini aynı görevde saymak."
+            }
+          ],
+          "pitfall": "Her benzer ses dizisi aynı ek değildir. İyelik ekini kişi eki, isimden türemiş bir fiili fiil köklü sözcük sanma. Yapım eki türü değiştirmeden de yeni sözcük yapabilir.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Kitaplarımızdan",
+              "Kitaplık",
+              "Gözlükçü",
+              "Tuzsuz"
+            ],
+            "explanation": "A · Kitap-lar-ımız-dan: çoğul, iyelik ve ayrılma ekleri çekim ekidir. Kitap-lık, göz-lük-çü ve tuz-suz yapım eki taşır. Eklerin çokluğu tek başına türemişlik göstermez.",
+            "question": "Hangi sözcük yapım eki almadan yalnız çekim ekleriyle kurulmuştur?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 69
+            },
+            {
+              "catalogId": 29,
+              "page": 72
+            },
+            {
+              "catalogId": 29,
+              "page": 73
+            },
+            {
+              "catalogId": 29,
+              "page": 74
+            }
+          ],
+          "steps": [
+            "İstenen şeyin kök türü, yapım eki veya çekim eki görevi olduğunu belirle.",
+            "Sözcüğü bağlamıyla oku; anlam ilişkisini bozmadan kökü bul.",
+            "Ekleri sırayla ayır; her ekin yeni sözcük mü kurduğunu, ilişki veya çekim mi sağladığını açıkla.",
+            "Kökü, gövdeyi ve sözcüğün cümledeki görevini ayrı adlandırarak son kontrolü yap."
+          ],
+          "title": "Sözcükte Yapı: Kök, Gövde ve Ekin Görevi",
+          "topics": [
+            "Sözcükte yapı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "comparisonNote": "Bu rehber OGM konu anlatımı ve incelenen OGM sorusuna dayanır. Mevcut yerel TYT Türkçe çıkmış soru kayıtlarında doğrudan çatı sorusu eşleştirilemedi; çıkmış soru karşılaştırması tamamlanmış değildir. Bu durum, konunun resmî arşivde hiç sorulmadığı anlamına gelmez.",
+          "comparisonStatus": "past_question_not_found",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "dd-tyt-turkce-50-08",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/dd-tyt-turkce.json#id=dd-tyt-turkce-50-08;field=metin",
+              "explanation": "D'deki yetişti, imdada ulaşmayı bildirir; karşılıklı veya birlikte yapılan bir eylem değildir. Öteki seçeneklerde tanışma/barışma karşılıklılık, cıvıldaşma/kaçışma birlikte yapma ilişkisi taşır. -ş sesine bakarak karar vermek yerine eylemin anlamı sınanır.",
+              "sourceFingerprint": "746e3446845eb3f75bf4d7fcdd909979d8334ccb064e9f716581068029a7f2b6",
+              "sourceLabel": "Fiilde Çatı",
+              "year": ""
+            }
+          ],
+          "id": "fiilde-cati",
+          "learn": [
+            "Çatı, yüklem olan fiilin özne ve nesneyle ilişkisidir. Önce yüklemi bul; isim cümlesinde çatı aranmaz. Özneye göre inceleme ile nesneye göre inceleme iki ayrı eksendir: bir fiil hem etken hem geçişli olabilir.",
+            "Edilgende iş başkası tarafından yapılır; dönüşlüde özne işi yapar ve işten etkilenir. Ekler benzer olabildiği için yalnız -l veya -n görmek karar verdirmez. Geçişlilik, cümlede nesnenin yazılı olmasına değil, fiilin bağlamdaki anlamıyla nesne alabilmesine bağlıdır."
+          ],
+          "patterns": [
+            {
+              "id": "ozne-iliskisi",
+              "logic": "Özne işi mi yapıyor, başkası tarafından yapılan işten mi etkileniyor, ikisini birden mi üstleniyor?",
+              "mini": {
+                "answer": "Aç-ıl-dı edilgendir. Görevlinin belirtilmesi, kapının işi yapan gerçek özne olduğu anlamına gelmez.",
+                "question": "“Kapı görevli tarafından açıldı.” cümlesi etken mi?"
+              },
+              "recognize": "İşi yapanın ve işten etkilenenin durumuna göre çatı sorulur.",
+              "tip": "“Çocuk tarandı” ifadesi bağlama göre belirsiz olabilir; kimin taradığına ilişkin ek kanıt ara.",
+              "title": "Etken, edilgen, dönüşlü",
+              "trap": "Örtülü özne belirtilince edilgen fiili etken sanmak."
+            },
+            {
+              "id": "isteslik",
+              "logic": "Eylemin anlamında en az iki katılımcı arasında karşılıklılık veya birlikte yapma ilişkisi ara.",
+              "mini": {
+                "answer": "Gülüşme birlikte gerçekleşen bir eylemdir. Yetişme, özne çoğul olsa da sırf bu yüzden işteş olmaz.",
+                "question": "“Çocuklar bahçede gülüştü.” ile “Çocuklar otobüse yetişti.” aynı çatı ilişkisini mi kurar?"
+              },
+              "recognize": "İşteş fiil kullanılmıştır/kullanılmamıştır kökü vardır.",
+              "tip": "Tanış- ile yetiş- aynı son sesleri paylaşsa da aynı çatı ilişkisini taşımaz.",
+              "title": "Karşılıklı veya birlikte yapma",
+              "trap": "Her -ş sesini işteşlik eki kabul etmek."
+            },
+            {
+              "id": "nesne-iliskisi",
+              "logic": "Fiilin bağlamdaki anlamıyla nesne alabilmesini sınayıp sonra eklenmiş çatı ekinin neyi değiştirdiğine bak.",
+              "mini": {
+                "answer": "Gül- nesne alamazken gül-dür- nesne alır; geçişsiz fiil geçişli yapılmıştır. Bu oldurganlıktır; geçişli fiilin ettirgen yapılmasıyla karıştırılmaz.",
+                "question": "“Bebek güldü.” → “Oyuncak bebeği güldürdü.” dönüşümünde ne değişti?"
+              },
+              "recognize": "Geçişli/geçişsiz veya oldurgan/ettirgen ayrımı istenir.",
+              "tip": "“Okudu” cümlesinde nesne yazılmasa da bir kitabı okumak mümkündür.",
+              "title": "Nesne var mı, nesne alabilir mi?",
+              "trap": "Cümlede nesne görünmeyen bütün fiilleri geçişsiz saymak."
+            }
+          ],
+          "pitfall": "Her -ş işteşlik, her -n edilgenlik değildir. “Yetişti” sözcüğünün son seslerinden işteşlik çıkarma; birlikte veya karşılıklı yapma ilişkisi aramalısın.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Etken",
+              "Edilgen",
+              "İşteş",
+              "Dönüşlü"
+            ],
+            "explanation": "B · İncele-n-di edilgendir; defter inceleme işini yapmaz, işten etkilenir. “Öğretmen tarafından” işi yapanı dolaylı olarak bildirir ve edilgen yapıyı etken yapmaz.",
+            "question": "“Defter öğretmen tarafından incelendi.” cümlesinin yükleminde özneye göre hangi çatı vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 29,
+              "page": 110
+            },
+            {
+              "catalogId": 29,
+              "page": 111
+            },
+            {
+              "catalogId": 29,
+              "page": 112
+            },
+            {
+              "catalogId": 29,
+              "page": 113
+            }
+          ],
+          "steps": [
+            "Yüklemi bul; isimse çatı arama.",
+            "İşi yapanı ve işten etkileneni belirle; etken, edilgen, dönüşlü veya işteş ilişkisini açıklayarak karar ver.",
+            "Fiilin bu anlamıyla neyi/kimi sorusuna nesne alıp alamadığını kontrol et.",
+            "Oldurgan/ettirgen soruluyorsa çatı ekinden önceki fiilin geçişli olup olmadığına dön."
+          ],
+          "title": "Fiilde Çatı: Kim Yapıyor, Nesne Alabiliyor mu?",
+          "topics": [
+            "Fiilde çatı"
           ]
         },
         {
@@ -1275,7 +1484,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-turkce/tyt-turkce.pdf"
         }
       ],
-      "readyTopicCount": 15,
+      "readyTopicCount": 17,
       "subject": "Türkçe",
       "units": [
         {
@@ -1301,7 +1510,9 @@
             "Fiil, ek fiil ve fiilimsi",
             "Cümlenin ögeleri",
             "Cümle türleri",
-            "Anlatım bozuklukları"
+            "Anlatım bozuklukları",
+            "Sözcükte yapı",
+            "Fiilde çatı"
           ]
         }
       ]
@@ -1415,6 +1626,1519 @@
           "topics": [
             "Şiir bilgisi"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0099",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0099;field=konu",
+              "explanation": "III–I–IV–II sırası, gider/gider/yıkılsın/gider sonlarıyla aaxa düzenini sağlar. Anlam da gurbetin kişiyi yıpratmasıyla tamamlanır. Sıralama yalnız dize sonlarının benzerliğine göre yapılmaz.",
+              "sourceFingerprint": "934c6e6bea14bac46549d13a9e34dacf4c7380f74788eda73ef11dccdf501463",
+              "sourceLabel": "Halk Edebiyatı",
+              "year": "2021"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-28-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-28-01;field=konu_basligi",
+              "explanation": "Konu sırası güzellik, kahramanlık, eleştiri ve ölüm acısıdır; karşılıkları güzelleme, koçaklama, taşlama, ağıttır. B bütün boşlukları birlikte doğru tamamlar.",
+              "sourceFingerprint": "7617386846e1d1f8103fcf153d4e3416709f3761b629c6bbba4d5dd1845fa8c8",
+              "sourceLabel": "Halk Şiiri",
+              "year": ""
+            }
+          ],
+          "id": "halk-edebiyati",
+          "learn": [
+            "Halk edebiyatını anonim, âşık tarzı ve dinî-tasavvufi geleneklere ayırarak öğren. Anonimlik üreticinin bilinmemesiyle ilgilidir; yalnız sade dil kullanılması anonimlik kanıtı olmaz. Ölçü, nazım birimi, uyak ve konu birlikte değerlendirilir.",
+            "Biçimle türü ayrı tut: koşma biçiminde güzelleme, koçaklama, taşlama veya ağıt söylenebilir. Mânide aaxa uyak düzeni ve çoğunlukla yedili hece; türküde bent/kavuştak ayrımı önemli ipuçlarıdır. Dinî konuda yazılan her şiir de otomatik olarak aynı tasavvufi tür değildir."
+          ],
+          "patterns": [
+            {
+              "id": "bicim-tur",
+              "logic": "Önce biçimsel kuruluşu, sonra işlenen konuyu ayrı birer cümleyle belirt.",
+              "mini": {
+                "answer": "Biçimi koşma, konuya göre türü koçaklamadır. Tema, biçimsel kuruluşun yerine geçmez.",
+                "question": "Koşma düzeninde yazılmış bir şiir yiğitliği övüyorsa biçimi ve türü nasıl ayrılır?"
+              },
+              "recognize": "Koşma, mâni, türkü ile güzelleme/taşlama gibi adlar karşılaştırılır.",
+              "tip": "“Koşma biçiminde koçaklama” iki farklı soruya aynı anda cevap verir.",
+              "title": "Biçim başka, konu türü başka",
+              "trap": "Kahramanlık anlattığı için her şiirin aynı nazım biçiminde olduğunu düşünmek."
+            },
+            {
+              "id": "mani-siralama",
+              "logic": "Uyak düzenini harfleştir; üçüncü dizenin bağımsız uyaklanmasını ve anlam bağını denetle.",
+              "mini": {
+                "answer": "İlk, ikinci ve dördüncü sonlar eşleştiğinden aaxa olur. Bunun mâni olması için ölçü ve anlam kuruluşu da ayrıca denetlenir.",
+                "question": "Dize sonları gül/gül/yol/gül ise uyak ilişkisi nasıl gösterilir?"
+              },
+              "recognize": "Karışık dizelerden mâni oluşturma veya mâni türünü bulma istenir.",
+              "tip": "aaxa, aaba gösterimiyle aynı ilişkidir; harfin kendisi önemli değildir.",
+              "title": "Mâniyi ses ve anlamla kur",
+              "trap": "Yalnız dört dize veya yedi hece görünce tüm koşulların sağlandığını düşünmek."
+            },
+            {
+              "id": "gelenek-islev",
+              "logic": "Üretim ortamı, söyleyen kişi ve dinsel/öğretici işlevi birlikte değerlendir.",
+              "mini": {
+                "answer": "Nutuk ayrımını. İlahi aşkın genel anlatımı ile yeni müride davranış öğütleme işlevi aynı değildir.",
+                "question": "Bir şiir tarikata yeni girenlere adap ve yol öğretiyor. Konu hangi tür ayrımını destekler?"
+              },
+              "recognize": "Şiirin geleneği veya ilahi/nefes/nutuk türü sorulur.",
+              "tip": "Tarikata yeni girene yol yordam öğütlenmesi nutuk için ayırıcı ipucudur.",
+              "title": "Anonim, âşık ve tekke şiiri",
+              "trap": "Dinî kelime geçen bütün şiirleri ilahi olarak etiketlemek."
+            }
+          ],
+          "pitfall": "Dörtlük olması bir şiiri tek başına mâni yapmaz. Koşma bir biçim, koçaklama ise konuyla ilgili bir türdür; bu iki bilgiyi rakip seçenekler gibi düşünme.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Biçimsel bir sınıflandırma yapıldığını",
+              "Kesinlikle güzelleme türünde olduğunu",
+              "Konuya göre ayrıca sınıflandırılabileceğini",
+              "Ölçü ve uyakla incelenebileceğini"
+            ],
+            "explanation": "B · Koşmalar farklı konuları işleyebilir. Güzelleme kararında güzellik veya sevgi temasının kanıtı gerekir; biçim adı bu kanıtın yerine geçmez.",
+            "question": "Bir şiirin koşma biçiminde olması hangi bilgiyi tek başına vermez?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 28
+            },
+            {
+              "catalogId": 39,
+              "page": 29
+            },
+            {
+              "catalogId": 39,
+              "page": 32
+            },
+            {
+              "catalogId": 39,
+              "page": 33
+            },
+            {
+              "catalogId": 39,
+              "page": 30
+            },
+            {
+              "catalogId": 39,
+              "page": 31
+            }
+          ],
+          "steps": [
+            "Kökün gelenek, biçim, konuya göre tür veya şair istediğini belirle.",
+            "Dize grubu, ölçü ve uyak düzenini mümkünse metin üzerinden denetle.",
+            "Tür sorusunda güzellik, kahramanlık, eleştiri veya ölüm acısı gibi baskın konuyu bul.",
+            "Dizeleri sıralarken ses düzeniyle birlikte anlamın tamamlanmasını da kontrol et."
+          ],
+          "title": "Halk Edebiyatı: Gelenek, Nazım Biçimi ve Konu",
+          "topics": [
+            "Halk edebiyatı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0107",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0107;field=konu",
+              "explanation": "Beyitler arası duygu ve düşünce birliği yek-ahenk gazeli tanımlar. Fuzûlî'nin mesnevisi Leyla vü Mecnun'dur; A iki boşluğu birlikte tamamlar. Yek-avaz, aynı konu ölçütü değildir.",
+              "sourceFingerprint": "acae0228c58b118103a5a8daa25a125bf66d4c1bba422b9b8c6ae30320f691a8",
+              "sourceLabel": "Divan Edebiyatı",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "sb-9121",
+              "evidenceRef": "uygulama/veri/sorular-ogm.csv#code=sb-9121;field=topic",
+              "explanation": "Bir şairin beş mesnevisinden oluşan eser grubunun adı hamsedir. Nazire eşleştirmesi bu nedenle yanlıştır. Kök, terimle örtüşmeyen açıklamayı ister.",
+              "sourceFingerprint": "04cd6b349854052918361c2dadd6cee63ac21db23c464fac5203aa5a5c9859b9",
+              "sourceLabel": "Şiir Bilgisi",
+              "year": ""
+            }
+          ],
+          "id": "divan-edebiyati",
+          "learn": [
+            "Divan şiirinde biçimi nazım birimi, uyak düzeni ve kuruluş; türü işlenen konu belirler. Gazel ve kaside benzer uyak düzeni kullanabildiği için aa/ba/ca dizilişi tek başına ikisini ayırmaz. Mesnevide her beyit kendi arasında uyaklanır; bu yapı uzun anlatıya elverişlidir.",
+            "Terimleri karşılaştırmalı öğren: yek-ahenk gazelde konu birliği, yek-avaz gazelde söyleyiş güzelliği; hamse beş mesneviden oluşan eser grubu; nazire başka şiire benzer biçim ve ölçüyle yazılan şiir ilişkisidir. Mersiye, naat ve münacat ise biçim adı değil konuya ilişkin türlerdir."
+          ],
+          "patterns": [
+            {
+              "id": "bicim-konu",
+              "logic": "Kuruluşu ve konuyu ayrı incele; biçimi bulunca türün kendiliğinden belli olduğunu varsayma.",
+              "mini": {
+                "answer": "Mesnevi. Aşk konusu tek başına biçimi belirlemez; aa/bb/cc kuruluşu ayırıcı kanıttır.",
+                "question": "Her beyit kendi içinde uyaklı, uzun bir aşk anlatısında hangi biçim adayı güçlenir?"
+              },
+              "recognize": "Gazel/kaside/mesnevi ile naat/mersiye gibi terimler verilir.",
+              "tip": "Kaside naat türünde olabilir; iki ad farklı eksenleri gösterir.",
+              "title": "Nazım biçimi ile türü ayır",
+              "trap": "Aynı uyak düzenini tek bir biçime özgü saymak."
+            },
+            {
+              "id": "terim-ayrimi",
+              "logic": "Her tanımda ölçütün konu, söyleyiş veya eser sayısı olduğunu belirle.",
+              "mini": {
+                "answer": "Yek-ahenk. Bütün beyitlerin aynı söyleyiş güzelliğine sahip olduğunu ayrıca söylemeden yek-avaz sonucuna gidilmez.",
+                "question": "Bir gazelin tüm beyitleri aynı konuyu işliyor. Bu bilgi hangi terimi destekler?"
+              },
+              "recognize": "Açıklama-terim eşleştirmesinde yanlış olan aranır.",
+              "tip": "Konu birliği ve söyleyiş güzelliği farklı ölçütlerdir.",
+              "title": "Yek-ahenk, yek-avaz, hamse",
+              "trap": "Benzer sesli terimlerin tanımlarını birbirine taşımak."
+            }
+          ],
+          "pitfall": "Yek-ahenk ile yek-avazı, hamse ile nazireyi karıştırma. Aynı kafiye düzenini paylaşan iki biçimi yalnız harf dizilişinden ayırmaya çalışma.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Nazire",
+              "Mersiye",
+              "Hamse",
+              "Münacat"
+            ],
+            "explanation": "C · Hamse. Nazire şiirler arası bir yazma ilişkisini, mersiye ölüm acısını, münacat Allah'a yakarışı ifade eder; eser grubunun sayısal kuruluşunu karşılamaz.",
+            "question": "Bir şairin beş mesnevisinden oluşan eser grubuna ne denir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 43
+            },
+            {
+              "catalogId": 39,
+              "page": 44
+            },
+            {
+              "catalogId": 39,
+              "page": 45
+            },
+            {
+              "catalogId": 39,
+              "page": 48
+            }
+          ],
+          "steps": [
+            "İstenen şeyin nazım biçimi, tür, bölüm veya eser grubu olduğunu saptayıp o eksende kal.",
+            "Şiirin birim ve uyak yapısını çıkar; ortak özellikleri ayırıcı sanma.",
+            "Terimi kendi tanımıyla karşılaştır; benzer adları bir çift olarak denetle.",
+            "Boşluk veya eşleştirme varsa bütün bağları ayrı ayrı doğrula."
+          ],
+          "title": "Divan Edebiyatı: Biçim, Terim ve Eser Bağları",
+          "topics": [
+            "Divan edebiyatı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0140",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0140;field=konu",
+              "explanation": "Kıskançlık, Suphi ve Nabizade Nazım'ın romanı birlikte Zehra'yı tanımlar. Eserin ölümünden sonra Servet-i Fünûn'da yayımlanması yazarı Servetifünun topluluğunun üyesi yapmaz; E seçilir.",
+              "sourceFingerprint": "18409bdfd1c2350cfe5ea626178d904d4f7a06d9095de98efcb76b3091f0558b",
+              "sourceLabel": "Tanzimat Dönemi Türk Edebiyatı",
+              "year": "2018"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "dd-ayt-turk-dili-ve-edebiyati-38-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/dd-ayt-turk-dili-ve-edebiyati.json#id=dd-ayt-turk-dili-ve-edebiyati-38-01;field=konu_basligi",
+              "explanation": "Şinasi'nin şiir çevirilerinin toplandığı eser Tercüme-i Manzume'dir. Telemak çeviri romanla ilişkilidir; “çeviri” ortak sözcüğü tür farkını ortadan kaldırmaz.",
+              "sourceFingerprint": "5bfc59f0c04f71c208116783aef2b64e24570a9ff73a13e585db4b0302d8d9f4",
+              "sourceLabel": "Tanzimat Dönemi Şiiri",
+              "year": ""
+            }
+          ],
+          "id": "tanzimat-edebiyati",
+          "learn": [
+            "Tanzimat'ta Batı etkisindeki yeni türler ve toplumsal kavramlar eski biçimlerle birlikte görülebilir. Birinci dönemde toplumsal fayda, ikinci dönem şiirinde bireysel konular ve estetik kaygı öne çıkar; bu genel çerçeve her sanatçı ve eser için mutlak kural değildir.",
+            "Eser eşleştirirken türü de kaydet. Şinasi'nin Tercüme-i Manzume'si şiir çevirileriyle; Nabizade Nazım'ın Zehra'sı psikolojik roman denemesiyle ilişkilidir. “İlk” ifadesinin nitelemesini atma: ilk yerli roman, ilk edebî roman ve ilk realist roman farklı iddialardır."
+          ],
+          "patterns": [
+            {
+              "id": "donem-anlayisi",
+              "logic": "Biçim, tema ve sanat amacı için ayrı kanıtlar topla.",
+              "mini": {
+                "answer": "Geleneksel biçim ile yeni toplumsal içerik. Biçim tek başına eserin divan edebiyatı döneminde yazıldığını kanıtlamaz.",
+                "question": "Bir şair kaside biçiminde hürriyet ve adalet işliyorsa hangi birliktelik mümkündür?"
+              },
+              "recognize": "Tanzimat dönemlerinin sanat anlayışı veya şiir özellikleri sorulur.",
+              "tip": "Aruz veya eski nazım biçimi kullanılması, yeni toplumsal içeriği dışlamaz.",
+              "title": "Eski biçim, yeni içerik",
+              "trap": "Batı etkisine girildiğinde bütün eski biçimlerin bir anda terk edildiğini düşünmek."
+            },
+            {
+              "id": "eser-tur-ilk",
+              "logic": "Eseri yazar, tür ve özel nitelik üçlüsüyle eşleştir.",
+              "mini": {
+                "answer": "Hayır. Yerli oluş ile akım/teknik özelliği farklı ölçütlerdir; soru hangi ölçütü istiyorsa onu kaynak bilgisiyle eşleştir.",
+                "question": "“İlk yerli roman” ile “ilk realist roman” aynı eser olmak zorunda mı?"
+              },
+              "recognize": "Yazar-eser boşluğu, ilk örnek veya bilgi yanlışı sorulur.",
+              "tip": "Çeviri roman ile şiir çevirisi aynı başlık altında ezberlenmemeli.",
+              "title": "Eser ve “ilk” bilgisini nitelemesiyle öğren",
+              "trap": "“İlk” kelimesinden sonraki tür veya nitelemeyi okumadan cevap vermek."
+            }
+          ],
+          "pitfall": "Eserin bir dergide daha sonra yayımlanması, yazarın bağlı olduğu dönemi tek başına değiştirmez. Zehra için “ilk psikolojik roman denemesi” ile Eylül için kullanılan “ilk psikolojik roman” bilgisini aynılaştırma.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Hepsi Batı etkisindedir.",
+              "Şinasi — Tercüme-i Manzume — şiir çevirileri",
+              "Hepsi aynı türdedir.",
+              "Bir dergide yayımlanmıştır."
+            ],
+            "explanation": "B · Yazar, eser ve tür birlikte kodlanır. Genel Batı etkisi veya yayımlanma ortamı birçok eserde ortak olduğundan tek başına güvenli eşleştirme sağlamaz.",
+            "question": "Tanzimat eserlerini öğrenirken hangi kayıt daha ayırt edicidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 55
+            },
+            {
+              "catalogId": 39,
+              "page": 56
+            },
+            {
+              "catalogId": 39,
+              "page": 119
+            },
+            {
+              "catalogId": 39,
+              "page": 121
+            }
+          ],
+          "steps": [
+            "Soru dönem anlayışı mı, eser-yazar mı, belirli bir türün ilk örneği mi istiyor?",
+            "Parçadan tema, sanat amacı, tür ve özel eser ipuçlarını ayrı çıkar.",
+            "Genel dönem bilgisini, yazar ve eserle ilgili ikinci kanıtla denetle.",
+            "İlk, ilk deneme, ilk çeviri gibi nitelemeleri aynen koruyarak seçenekleri karşılaştır."
+          ],
+          "title": "Tanzimat: Dönemi, Türü ve Sanatçı Kanıtını Ayır",
+          "topics": [
+            "Tanzimat edebiyatı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0151",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0151;field=konu",
+              "explanation": "Bildiriyle ortaya çıkan topluluk Fecriati'dir. Cenap Şahabettin Servetifünun'la ilişkilidir; Fecriati üyeliği sorusunda dışta kalır. Sanat anlayışı ortaklığı üyelik kanıtı değildir.",
+              "sourceFingerprint": "b83b954f6582d0d551f0e36c4ac8cf007563c0bb3133641795612889d2fd1320",
+              "sourceLabel": "Servetifünun Dönemi Türk Edebiyatı / Fecriati Dönemi Türk Edebiyatı",
+              "year": "2019"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "dd-ayt-turk-dili-ve-edebiyati-43-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/dd-ayt-turk-dili-ve-edebiyati.json#id=dd-ayt-turk-dili-ve-edebiyati-43-02;field=konu_basligi",
+              "explanation": "Sanatlı tamlamalar ve hayalî/bireysel yaşantı vurgusu verilen seçenekler içinde Servetifünun'u destekler. Tek başına doğa sözcükleri yerine dil ve duyarlık birlikte değerlendirilir.",
+              "sourceFingerprint": "8125d0feeb95190e00b7c865b8a4db3e8d35a749068edf43bba5801ff928e57a",
+              "sourceLabel": "Servetifünun Dönemi Şiiri",
+              "year": ""
+            }
+          ],
+          "id": "servetifunun-fecriati",
+          "learn": [
+            "Servetifünun ile Fecriati sanat ve estetik kaygı bakımından ortaklık taşır; topluluk tarihleri ve üyelikleri aynı değildir. Dergi adı, bir topluluğun üyesi olma ve aynı yıllarda bağımsız eser verme ayrı ilişkilerdir.",
+            "Fecriati'nin bildirgeyle ortaya çıkması ve bireysel sanat anlayışı ayırıcı ipuçlarıdır. Ahmet Haşim'de musiki, çağrışım ve anlam kapalılığı; Servetifünun şiirinde sanatlı dil ve bireysel duyarlık öne çıkabilir. Bir metni yalnız bir ortak özelliğinden kesin topluluğa bağlama."
+          ],
+          "patterns": [
+            {
+              "id": "topluluk-uyelik",
+              "logic": "Dönemi tanıdıktan sonra her sanatçının somut topluluk bağını kontrol et.",
+              "mini": {
+                "answer": "Hayır. Yayın ortamı bir ilişki, topluluk üyeliği başka bir ilişkidir. Üyeliğin ayrıca doğrulanması gerekir.",
+                "question": "Bir sanatçının aynı dergide yazı yayımlaması o dergi çevresindeki bütün topluluklara üye olduğunu gösterir mi?"
+              },
+              "recognize": "Bu topluluğun üyesi değildir veya bildirgeden topluluk bulma sorulur.",
+              "tip": "Fecriati'nin bildiri özelliğini sanatçı listesinden ayrı hatırla.",
+              "title": "Kim üye, kim aynı dönemde?",
+              "trap": "Ortak dergi veya ortak estetik anlayışı doğrudan üyelik saymak."
+            },
+            {
+              "id": "dil-tema",
+              "logic": "Tamlamalar, bireysel yaşantı, musiki ve çağrışım kanıtlarını beraber değerlendir.",
+              "mini": {
+                "answer": "Hayır. Tema birçok şairde ortak olabilir. Musiki ve çağrışım gibi özellikler bile tek başına kesin yazarlık kanıtı değildir; eser/şair bağı gerekir.",
+                "question": "Bir şiirde yalnız “akşam” geçmesi Ahmet Haşim'e ait olduğunu kanıtlar mı?"
+              },
+              "recognize": "Şiirin dönem/anlayışı dil ve içerikten sorulur.",
+              "tip": "Aynı anlayışın farklı sanatçılarında ortak özellikler olabilir; seçenekleri karşılaştır.",
+              "title": "Dili ve duyarlığı birlikte oku",
+              "trap": "Tek bir akşam veya tabiat sözcüğünden şair adı çıkarmak."
+            }
+          ],
+          "pitfall": "Servet-i Fünun dergisinde yayımlanmak ile Servetifünun topluluğuna üye olmak aynı şey değildir. Dönem içinde yaşayan her yazarı topluluğa katma.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Bildirgenin hangi topluluğa ait olduğunu kontrol etmek",
+              "Sanatçının üyelik kaydını karşılaştırmak",
+              "Aynı yıllarda yazdığı için mutlaka o topluluğa üyedir demek",
+              "Dergiyle üyelik ilişkisini ayrı tutmak"
+            ],
+            "explanation": "C · Aynı dönem, ortak anlayış veya aynı dergide yayımlanma tek başına topluluk üyeliği göstermez. Üyelik ayrı bir kaynak bilgisidir.",
+            "question": "Topluluk üyeliği sorusunda hangi akıl yürütme güvenilmezdir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 59
+            },
+            {
+              "catalogId": 39,
+              "page": 62
+            },
+            {
+              "catalogId": 39,
+              "page": 63
+            }
+          ],
+          "steps": [
+            "Kökün topluluk üyeliği mi, anlayış mı, şiirin dönemi mi istediğini ayır.",
+            "Metinden dil, tema, biçim ve yayın ortamına ilişkin ipuçlarını çıkar.",
+            "Üyelik sorusunda sanatçıların topluluk bağını ayrıca denetle.",
+            "Genel dönem kuralına uymayan eser ihtimalini metindeki kanıtla değerlendir."
+          ],
+          "title": "Servetifünun ve Fecriati: Anlayış ile Üyeliği Ayır",
+          "topics": [
+            "Servetifünun ve Fecriati"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0160",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0160;field=konu",
+              "explanation": "Sade söyleyiş, didaktik yaklaşım ve halk şiiri/hece birlikteliği verilen seçeneklerde Millî Edebiyat'ı destekler. Bir tek özelliğe dayanmak yerine özellik kümesi karşılaştırılır.",
+              "sourceFingerprint": "d818f0e7559692d8972d8fd14a6ec9392e2c337b3c4f5516c8a42b316622f94b",
+              "sourceLabel": "Millî Edebiyat Dönemi Türk Edebiyatı",
+              "year": "2018"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "md-ayt-esit-agirlik-07-19",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/md-ayt-esit-agirlik.json#id=md-ayt-esit-agirlik-07-19;field=metin",
+              "explanation": "Dil hareketi Yeni Lisan, yayın organı Genç Kalemler'dir. İki boşluk aynı ilişki içinde tamamlanır; eser adı ile dergi adı birbirine karıştırılmaz.",
+              "sourceFingerprint": "cb680d239b71483d176fdab913c63596ca5fef75050b7bd54a8e4af1457e18b5",
+              "sourceLabel": "Millî Edebiyat Dönemi Türk Edebiyatı",
+              "year": ""
+            }
+          ],
+          "id": "milli-edebiyat",
+          "learn": [
+            "Millî Edebiyat'ı dilde sadeleşme, konuşma diline yaklaşma, halk kültürü ve ulusal konulara yönelme üzerinden öğren. Genç Kalemler ile Yeni Lisan bağı, hareketin kuruluşunu tanıtan somut bir ipucudur.",
+            "Hece ve halk şiiri biçimleri genel eğilimdir; dönemde eser veren herkesin aynı ölçüyü kullanması gerekmez. Aynı zaman aralığı, aynı sanat programı demek değildir. Tema, dil, biçim ve sanatçı bağı birlikte değerlendirilir."
+          ],
+          "patterns": [
+            {
+              "id": "kurulus-bagi",
+              "logic": "Her ismin dergi mi, yazı mı, hareket mi olduğunu ayırıp ilişkisini kur.",
+              "mini": {
+                "answer": "Yeni Lisan, Genç Kalemler dergisi çevresindeki sadeleşme hareketiyle ilişkilidir; dergi adı ve makale/hareket adı farklı görevler taşır.",
+                "question": "“Yeni Lisan” ve “Genç Kalemler” adlarını nasıl bağlarsın?"
+              },
+              "recognize": "Yeni Lisan, Genç Kalemler veya hareketin başlangıcı üzerinden boşluk doldurulur.",
+              "tip": "Yeni Lisan–Genç Kalemler bağını iki ayrı etiket olarak değil bir yayın ilişkisiyle hatırla.",
+              "title": "Dergi, makale ve hareket",
+              "trap": "Kitap, dergi ve makale adlarını aynı listede tür belirtmeden ezberlemek."
+            },
+            {
+              "id": "egilim-istisna",
+              "logic": "Sade dil, halk kültürü, ulusal tema ve heceyi birlikte değerlendir; sanatçı istisnalarını ayrıca kontrol et.",
+              "mini": {
+                "answer": "Olabilir. Yaygın eğilim tarihsel dönemi tek başına dışlamaz; sanatçının programı ve şiirin özellikleri ayrıca incelenir.",
+                "question": "Dönemde hece yaygınsa aruzla yazılmış bir şiir tarihsel olarak o dönemde olamaz mı?"
+              },
+              "recognize": "Dönem özellikleri veya bu dönemdeki şiir anlayışı sorulur.",
+              "tip": "“Genellikle” ile “bütün sanatçılar” aynı kapsamda değildir.",
+              "title": "Genel eğilimden mutlak kural çıkarma",
+              "trap": "Dönemin her sanatçısına aynı biçim ve ölçüyü yüklemek."
+            }
+          ],
+          "pitfall": "Millî konu işlendiği için bütün şiirleri hece ölçüsünde sanma. Mehmet Akif ve Yahya Kemal gibi aynı dönemde farklı çizgilerde eser veren isimler genel şemayı ezbere uygulamayı boşa çıkarır.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Hece yaygın bir eğilimdir.",
+              "Ölçü metinden ayrıca denetlenmelidir.",
+              "Aruz kullanan hiçbir sanatçı aynı yıllarda eser vermemiştir.",
+              "Genel özelliklerde istisnalar olabilir."
+            ],
+            "explanation": "C · Yaygınlık, istisnasızlık değildir. Tarihsel dönem ile sanatçının bağlı olduğu program ve kullandığı ölçü ayrı değerlendirilir.",
+            "question": "Bir dönem için “genellikle hece kullanılır” bilgisinden hangisi çıkarılamaz?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 64
+            }
+          ],
+          "steps": [
+            "Dergi/makale, dönem özelliği veya sanatçı-eser sorulduğunu belirle.",
+            "Dil, ölçü ve içerik ipuçlarını ayrı ayrı çıkar.",
+            "Genç Kalemler–Yeni Lisan ilişkisini kuruluş kanıtı olarak denetle.",
+            "Genel eğilimlerden tüm sanatçılara istisnasız hüküm çıkarmadan seçeneği sınayarak karar ver."
+          ],
+          "title": "Millî Edebiyat: Dil, Biçim ve Ulusal Yöneliş",
+          "topics": [
+            "Millî Edebiyat"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0166",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0166;field=konu",
+              "explanation": "Değirmen, Kağnı, Ses, Yeni Dünya ve Sırça Köşk kitapları Sabahattin Ali'ye aittir. Toplumcu yönelim bağlamı destekler; isim eşleştirmesini kesinleştiren kanıt eser grubudur.",
+              "sourceFingerprint": "8f1e729397dc68de6f5e9657c806b952504f54f6de8f0922dc87d662e9f7f9dc",
+              "sourceLabel": "Cumhuriyet Dönemi Türk Edebiyatı",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-40-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-40-02;field=konu_basligi",
+              "explanation": "C seçeneğinde gündelik, sade bir söyleyişle kişisel bir anı aktarılır; verilen Garip açıklamasına en uygun örnektir. Yalnız serbest ölçü değil, dil ve anlatım amacı birlikte değerlendirilir.",
+              "sourceFingerprint": "0b7552db2bffa013a658c16b40f32d668a112713f80c928161850abbb96bb783",
+              "sourceLabel": "1940 Sonrası Türk Şiiri - Türk Dünyası Şiiri",
+              "year": ""
+            }
+          ],
+          "id": "cumhuriyet-edebiyati",
+          "learn": [
+            "Cumhuriyet edebiyatı tek bir sanat programı değildir. Şiirde Garip'in gündelik söyleyişi ve sıradan insanı öne çıkarmasıyla İkinci Yeni'nin yoğun imge ve alışılmamış bağdaştırmaları farklı yollardır. Serbest ölçü ortaklığı iki anlayışı aynı yapmaz.",
+            "Hikâyede toplumcu gerçekçi, bireyin iç dünyasını esas alan, millî/dinî duyarlıklı ve modernist eğilimler bulunur. Anlayış, yazar ve eser bağlarını birlikte öğren; bir sanatçının bütün kitaplarını tek temaya indirgeme."
+          ],
+          "patterns": [
+            {
+              "id": "garip-ikinci-yeni",
+              "logic": "Sıradan söyleyişle anlam kapalılığı ve alışılmamış bağdaştırmaları karşılaştır.",
+              "mini": {
+                "answer": "Hayır. Dil ve imge yoğunluğu İkinci Yeni adayını ayrıca incelemeyi gerektirir; ölçü ortaklığı anlayışı belirlemez.",
+                "question": "Bir şiir serbest ölçülü ve yoğun, alışılmamış imgelerle kurulmuş. Serbestlik tek başına Garip'i gösterir mi?"
+              },
+              "recognize": "Garip/İkinci Yeni anlayışına uygun şiir veya özellik sorulur.",
+              "tip": "Her ikisinde serbest ölçü bulunabilir; ayırıcı kanıtı dilde ara.",
+              "title": "Açık gündelik söyleyiş mi, yoğun imge mi?",
+              "trap": "Uyak yoksa Garip'tir demek."
+            },
+            {
+              "id": "hikaye-egilim",
+              "logic": "Çatışmanın sosyoekonomik koşullara mı, kişinin psikolojik yaşantısına mı odaklandığını belirle.",
+              "mini": {
+                "answer": "Bireyin iç dünyasına odaklanmayı. Mekânda köy geçmesi, anlatının baskın odağını kendiliğinden toplumcu gerçekçi yapmaz.",
+                "question": "Bir hikâye kişinin yabancılaşmasını ve kendi iç hesaplaşmasını merkeze alıyorsa ilk hangi ayrımı incelersin?"
+              },
+              "recognize": "Hikâye anlayışı veya yazarın eğilimi betimlenir.",
+              "tip": "Birden fazla unsur bulunabilir; baskın odağı kanıtla.",
+              "title": "Toplumsal koşul mu, iç dünya mı?",
+              "trap": "Her köy hikâyesini veya her iç konuşmayı tek bir eğilimle kesinleştirmek."
+            },
+            {
+              "id": "eser-kumesi",
+              "logic": "Bilinen ilk eserden aday üret; listedeki ikinci eserle o adayı sınayarak kesinleştir.",
+              "mini": {
+                "answer": "Her iki kitabın Sabahattin Ali'ye ait olduğunu ayrı ayrı hatırlayıp eşleştirirsin; ortak toplumsal tema tek başına yazarlık kanıtı olmaz.",
+                "question": "Bir listede Değirmen ve Kağnı birlikte veriliyor. Nasıl kontrol edersin?"
+              },
+              "recognize": "Kitap listesiyle sanatçı buldurulur.",
+              "tip": "Hikâye kitabı ile romanı aynı tür gibi ezberleme.",
+              "title": "Birden fazla eseri birlikte doğrula",
+              "trap": "İlk tanıdık eserde durup yanlış yazara ait diğer eseri görmemek."
+            }
+          ],
+          "pitfall": "Serbest ölçü görmek Garip veya İkinci Yeni'yi tek başına seçtirmez. Cumhuriyet döneminde yazılmış olmak belirli bir topluluğa üyelik göstermez.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Serbest ölçü kullanılması",
+              "Gündelik açık söyleyişin öne çıkması",
+              "Alışılmamış bağdaştırmaların yoğunluğu",
+              "Dil üzerinde anlamı kapatan dönüşümler yapılması"
+            ],
+            "explanation": "A · Serbest ölçü birden fazla anlayışta bulunur. Dilde açıklık, imge ve bağdaştırma tercihleri daha ayırıcı kanıtlardır.",
+            "question": "Garip ile İkinci Yeni'yi karşılaştırırken hangi özellik tek başına ayırıcı değildir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 80
+            },
+            {
+              "catalogId": 39,
+              "page": 81
+            },
+            {
+              "catalogId": 39,
+              "page": 105
+            },
+            {
+              "catalogId": 39,
+              "page": 106
+            }
+          ],
+          "steps": [
+            "Sorunun şiir anlayışı mı, hikâye eğilimi mi, yazar-eser bağı mı istediğini belirle.",
+            "Dil açıklığı, imge yoğunluğu, toplumsal veya bireysel odak gibi kanıtları çıkar.",
+            "Aynı dönemdeki aday anlayışları ayırıcı özellikleriyle karşılaştır.",
+            "Yazar sorusunda eser adını ikinci kanıt olarak doğrula."
+          ],
+          "title": "Cumhuriyet Edebiyatı: Şiir ve Hikâyede Farklı Yollar",
+          "topics": [
+            "Cumhuriyet dönemi Türk edebiyatı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0081",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0081;field=konu",
+              "explanation": "Olayı yaşayan ben-anlatıcı kendi niyetini ve duygusunu aktarır. Başka kişilerin iç dünyasına sınırsız erişim gösterilmediğinden hâkim bakış açısı iddiası desteklenmez; söylenemeyecek yargı A'dır.",
+              "sourceFingerprint": "7c9a3d5c36a52288834c888cb1a66937f3a72b008301957cc9640e40c0f3cd86",
+              "sourceLabel": "Nesir Bilgisi",
+              "year": "2019"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "mt-ayt-turk-dili-ve-edebiyati-08-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/mt-ayt-turk-dili-ve-edebiyati.json#id=mt-ayt-turk-dili-ve-edebiyati-08-01;field=konu_basligi",
+              "explanation": "Kahramanın zihni resim, geçmiş olay, suçluluk ve haklılık arasında kesintili çağrışımlarla ilerler. Bu dağınık düşünce örgüsü bilinç akışını destekler; sırf düşünce aktarılması iç çözümleme demek değildir.",
+              "sourceFingerprint": "4c7c407ff5d8d94da0379a9ea35d67c7422b9194f8cba65eacdd524290910316",
+              "sourceLabel": "Hikâye: Tür, Yapı ve Dönemler",
+              "year": ""
+            }
+          ],
+          "id": "roman-hikaye",
+          "learn": [
+            "Anlatıcı kurmaca içindeki sesi; bakış açısı onun bilgi sınırını gösterir. Yazar ile anlatıcıyı aynı kişi sayma. Kahraman anlatıcı kendi yaşantısı ve bilgisiyle; gözlemci dışarıdan gözlemle; hâkim anlatıcı kişilerin iç dünyalarını bilerek anlatır.",
+            "Anlatım tekniğinde kimin konuştuğuna ve düşüncelerin nasıl düzenlendiğine bak. İç konuşma, bilinç akışı ve iç çözümleme aynı şey değildir. Bilinç akışında çağrışımlar ve düşünce geçişleri dağınıktır; iç çözümlemede anlatıcı kişinin iç yaşantısını açıklar. Olay/durum hikâyesi ayrımında olayın varlığını değil, metnin baskın kuruluşunu değerlendir."
+          ],
+          "patterns": [
+            {
+              "id": "bakis-acisi",
+              "logic": "Dil bilgisindeki kişiden sonra anlatıcının bilgi sınırını incele: kimin iç dünyasına erişiliyor?",
+              "mini": {
+                "answer": "Hayır. Kendi kaygısını biliyor, diğer kişinin nedenini bilmiyor. Bilgi sınırı kahraman anlatıcının konumuyla uyumludur.",
+                "question": "“Onun neden sustuğunu bilmiyordum; ben ise kaygılıydım.” diyen anlatıcı sınırsız bilgiye sahip mi?"
+              },
+              "recognize": "Hâkim, kahraman veya gözlemci bakış açısı sorulur.",
+              "tip": "Kendi iç dünyasını bilmek, herkesin iç dünyasını bilmek değildir.",
+              "title": "Anlatıcı neyi bilebilir?",
+              "trap": "Duygu anlatılan her parçayı hâkim bakış açısı saymak."
+            },
+            {
+              "id": "zihinsel-teknik",
+              "logic": "Sesin kimden geldiğine ve düşüncelerin mantıklı sıra mı serbest çağrışım mı izlediğine bak.",
+              "mini": {
+                "answer": "İç çözümleme. Kahramanın doğrudan kendi iç sesi ve çağrışımlarıyla aktarma farklı bir tekniktir.",
+                "question": "Anlatıcı kişinin neden pişman olduğunu dışarıdan açıklıyor; kahramanın zihni aracısız verilmemiş. Hangi teknik adayı incelenir?"
+              },
+              "recognize": "Kişinin düşünceleri üzerinden kullanılan teknik sorulur.",
+              "tip": "Tekniği seçmeden metinde onu gösteren kısa bir kanıt işaretle.",
+              "title": "İç konuşma, bilinç akışı, iç çözümleme",
+              "trap": "Tırnak işaretini veya ben zamirini tek başına teknik saymak."
+            },
+            {
+              "id": "kurulus",
+              "logic": "Çözülmesi beklenen olay örgüsüyle bir yaşantı kesitini ve yazma sürecinin anlatıya katılmasını ayır.",
+              "mini": {
+                "answer": "Üstkurmaca. Yalnız olay anlatmak değil, kurmacanın kurulma sürecini de anlatının konusu yapmak söz konusudur.",
+                "question": "Romandaki kişi kendi romanının nasıl yazılacağını tartışıyor ve bu süreç anlatıya katılıyor. Hangi özellik denetlenir?"
+              },
+              "recognize": "Türün kuruluşu veya romanın kendi yazılışını konu etmesi sorulur.",
+              "tip": "Durum hikâyesinde küçük olayların olması mümkündür; belirleyici olan olayın ağırlığıdır.",
+              "title": "Olay, durum ve üstkurmaca",
+              "trap": "Bir şey yaşanan bütün hikâyeleri olay hikâyesi saymak."
+            }
+          ],
+          "pitfall": "Birinci kişi anlatımı tek başına bilinç akışı değildir. Kahramanın kendi duygularını anlatması da hâkim bakış açısı kanıtı olmaz.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Anlatıcının yaşantıya katıldığını",
+              "Anlatıcının bilgi sınırının olabileceğini",
+              "Bütün kişilerin iç dünyalarını sınırsızca bildiğini",
+              "Kahraman bakış açısının incelenmesi gerektiğini"
+            ],
+            "explanation": "C · Kendi duygusunu aktarmak, başka kişilerin iç dünyalarını bilmek değildir. Sınırsız bilgi ayrıca kanıtlanmalıdır.",
+            "question": "Birinci kişi anlatıcının yalnız kendi korkusunu ve gördüklerini aktarması hangi sonucu desteklemez?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 94
+            },
+            {
+              "catalogId": 39,
+              "page": 95
+            },
+            {
+              "catalogId": 39,
+              "page": 96
+            },
+            {
+              "catalogId": 39,
+              "page": 97
+            },
+            {
+              "catalogId": 39,
+              "page": 114
+            }
+          ],
+          "steps": [
+            "Kökün bakış açısı, teknik, yapı unsuru veya hikâye türü istediğini belirle.",
+            "Anlatıcıyı ve bilgisiyle sınırlı olduğu alanı gösteren ifadeleri bul.",
+            "Düşüncenin kahramandan mı anlatıcıdan mı aktarıldığını ve çağrışım düzenini incele.",
+            "Bir teknik bulunmasından bütün hikâyenin türü veya yazarı hakkında aşırı sonuç çıkarma."
+          ],
+          "title": "Roman ve Hikâye: Anlatıcı, Teknik ve Yapı",
+          "topics": [
+            "Roman ve hikâye"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0194",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0194;field=konu",
+              "explanation": "III numaralı cümle Karagöz'de asıl konunun işlendiği bölümü muhavere diye adlandırır. Asıl olayın bölümü fasıl olduğundan C yanlıştır. Muhavere, söyleşme bölümüdür.",
+              "sourceFingerprint": "76cd88ea4c7fd0afec08964f34b5c1e4770e76ce00d5642c77bcece831895645",
+              "sourceLabel": "Geleneksel Türk Tiyatrosu",
+              "year": "2021"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-61-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-61-01;field=konu_basligi",
+              "explanation": "Palanga, orta oyununun oynandığı alandır; oyun bölümü değildir. Diğer seçenekler bölüm adı olduğundan boşluklara getirilemeyen D'dir.",
+              "sourceFingerprint": "c2734e41968d4736e3deef52493a40448e975c9d4a9fd5d24d487b2b49a78850",
+              "sourceLabel": "Geleneksel Türk Tiyatrosu",
+              "year": ""
+            }
+          ],
+          "id": "tiyatro",
+          "learn": [
+            "Modern tiyatro türlerinde trajedi, komedi ve dramı konu, kişiler, sahneleme ve üç birlik kuralı üzerinden karşılaştır. Klasik trajedi ile dramın ikisinde de acıklı olay bulunabilir; yalnız duygu tonu ayırıcı değildir.",
+            "Geleneksel tiyatroda Karagöz gölge oyunu, orta oyunu canlı oyuncularla oynanan doğaçlama oyundur. Karagöz/Hacivat ile Kavuklu/Pişekâr arasındaki işlev eşleşmesi önemlidir. Oyun bölümü ile sahne alanını karıştırma: fasıl asıl olayın işlendiği bölüm, palanga orta oyununun oynandığı alandır."
+          ],
+          "patterns": [
+            {
+              "id": "modern-tur",
+              "logic": "Birden fazla ölçütü beraber karşılaştır; acıklı/gülünç olmayı tek ölçüt yapma.",
+              "mini": {
+                "answer": "Dram. Yalnız acıklı olay bulunması klasik trajedi kararı için yeterli değildir.",
+                "question": "Bir oyun hem acıklı hem gülünç yönleri gösterip üç birlik kuralına uymuyor. Hangi tür adayı güçlenir?"
+              },
+              "recognize": "Konu, kahraman veya üç birlik üzerinden tiyatro türü sorulur.",
+              "tip": "Klasik türlerin kurallarıyla tüm çağdaş tiyatro eserlerine mutlak hüküm verme.",
+              "title": "Trajedi, komedi ve dram",
+              "trap": "Acı veren her sahneye trajedi demek."
+            },
+            {
+              "id": "geleneksel-karsilastirma",
+              "logic": "Perdede tasvir ile canlı oyuncuyu, karşılıklı kişilerin işlevlerini ayrı karşılaştır.",
+              "mini": {
+                "answer": "Hayır; orta oyunu canlı oyuncularla oynanır. Karagöz ise tasvirlerin perdeye yansıtıldığı gölge oyunudur.",
+                "question": "Kavuklu ve Pişekâr adı geçen doğaçlama oyun bir gölge oyunu mudur?"
+              },
+              "recognize": "Kişiler, sahneleme biçimi veya ortak özellikler sorulur.",
+              "tip": "Hacivat–Pişekâr ve Karagöz–Kavuklu eşlerini birlikte hatırla.",
+              "title": "Karagöz ve orta oyununu eşleştir",
+              "trap": "Kişi adını doğru bilip oyunun sahneleme özelliğini diğerine taşımak."
+            },
+            {
+              "id": "terim-kategori",
+              "logic": "Önce her terimin kategorisini yaz; sonra doğru işlevle bağla.",
+              "mini": {
+                "answer": "Bir yer adı bölüm adı yerine konmuş olabilir. Palanga alanı, fasıl ise asıl olay bölümünü gösterir.",
+                "question": "Oyun bölümleri listesinde “palanga” görülürse neyi sorgularsın?"
+              },
+              "recognize": "Boşluğa getirilemez veya terim-bilgi yanlışlığı sorulur.",
+              "tip": "Fasıl, muhavere ve palanga aynı oyun bağlamında geçse de aynı tür kavram değildir.",
+              "title": "Bölüm mü, yer mi, dekor mu?",
+              "trap": "Bağlamda tanıdık olan her terimi bölüm listesine eklemek."
+            }
+          ],
+          "pitfall": "Muhavereyi asıl olayın işlendiği fasıl yerine koyma. Palanga bir bölüm değildir; benzer bağlamda kullanılan terimler aynı kategoriye ait olmayabilir.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Oyun bölümü",
+              "Oynanan alan",
+              "Baş kişi",
+              "Nazım biçimi"
+            ],
+            "explanation": "B · Palanga oyunun oynandığı alandır. Muhavere ve fasıl bölüm; Kavuklu ve Pişekâr kişi adlarıdır. Terimi önce kategorisiyle öğrenmek bu çeldiriciyi ayırır.",
+            "question": "Orta oyunundaki “palanga” hangi kategoridedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 136
+            },
+            {
+              "catalogId": 39,
+              "page": 137
+            },
+            {
+              "catalogId": 39,
+              "page": 139
+            },
+            {
+              "catalogId": 39,
+              "page": 140
+            }
+          ],
+          "steps": [
+            "Soru modern tür mü, geleneksel oyun mu, bölüm veya sahne terimi mi istiyor?",
+            "Kavramların ait olduğu alanları ayır: kişi, yer, dekor, bölüm veya tür.",
+            "Karagöz ve orta oyununun ortak ve farklı yönlerini tek tek denetle.",
+            "Bilgi yanlışı kökünde doğru başlayan cümlenin ikinci yarısını da kontrol et."
+          ],
+          "title": "Tiyatro: Tür, Oyun Bölümü ve Sahne Terimi",
+          "topics": [
+            "Tiyatro"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0080",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0080;field=konu",
+              "explanation": "Şairlerin yaşamlarını ve edebî kişiliklerini tanıtan Heşt Behişt tezkire türündedir. Şairlerden söz etmesi eseri şiir kitabı yapmaz; tanıtım işlevi esas alınır.",
+              "sourceFingerprint": "be9d35784b0a50b70f2beefb670309beb498e3c9499fe27fdbe9138b64ed1efe",
+              "sourceLabel": "Nesir Bilgisi",
+              "year": "2019"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-70-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-70-02;field=konu_basligi",
+              "explanation": "Yazı iki şiiri dil ve hedef kitle açısından karşılaştırıp bir görüşü gerekçelendirir; verilen kaynak anahtarı makaledir. Şiir konu edildiği için metnin kendi türü şiir olmaz.",
+              "sourceFingerprint": "a242b0edeb483c7dafc2ed91fb80a5ca236e3462a1ee1ba357a9f6684c1fd143",
+              "sourceLabel": "Öğretici Metinler",
+              "year": ""
+            }
+          ],
+          "id": "ogretici-metinler",
+          "learn": [
+            "Makale, deneme ve sohbeti yalnız konuya bakarak ayırma. Makalede tezi kanıtlarla açıklama; denemede kişisel düşünce ve yorum; sohbette karşılıklı konuşma havası ayırıcı yönlerdir. Eleştiri bir eser veya sanatçıyı değerlendirir; yalnız olumsuz yargı demek değildir.",
+            "Kişisel hayatı anlatan türlerde kimin hayatı kimin tarafından ve ne zaman yazılıyor sorularını sor. Biyografide başkasının, otobiyografide yazarın kendi yaşamı; günlükte günü gününe, anıda sonradan hatırlanan yaşantılar öne çıkar. Tezkire şairlerin yaşam ve edebî kişilikleri hakkında bilgi veren tarihsel bir türdür."
+          ],
+          "patterns": [
+            {
+              "id": "dusunce-turleri",
+              "logic": "İddianın kanıta bağlanma biçimi ile yazarın okurla kurduğu üslubu karşılaştır.",
+              "mini": {
+                "answer": "Tezi kanıtlarla açıklama amacını; bu makale adayını destekler. Eğitim konusu tek başına tür belirlemez.",
+                "question": "Bir yazı eğitimle ilgili görüşünü araştırma ve karşılaştırmalarla kanıtlamaya çalışıyor. Konudan çok hangi özelliği kullanırsın?"
+              },
+              "recognize": "Makale/deneme/sohbet ayrımı veya ortak/farklı özellik sorulur.",
+              "tip": "Konu aynı olabilir; amacın ve sunuşun farklılığına bak.",
+              "title": "Kanıtlama, kişisel düşünce ve konuşma havası",
+              "trap": "Güncel konu işleyen her yazıya aynı tür adını vermek."
+            },
+            {
+              "id": "kisisel-zaman",
+              "logic": "Anlatanın kimliğiyle olay-yazma zamanı ilişkisini ayrı ayrı belirle.",
+              "mini": {
+                "answer": "Olayla yazma arasında yıllar vardır; bu anı adayını güçlendirir. Günlüğün günü gününe yazma niteliği burada verilmemiştir.",
+                "question": "Yazar çocukluğundaki bir günü yıllar sonra hatırlayıp anlatıyor. Neden yalnız günlük diyemezsin?"
+              },
+              "recognize": "Anı, günlük, biyografi veya otobiyografi tanımı verilir.",
+              "tip": "Kendi yaşamı hakkında yazmak dört türün tamamını tek başına ayırmaz.",
+              "title": "Kimin hayatı, hangi zamandan?",
+              "trap": "Birinci kişi gördüğünde günlük kararını vermek."
+            },
+            {
+              "id": "degerlendirme-tanitim",
+              "logic": "Değer yargısı kurma amacıyla yaşam/kişilik bilgisi verme amacını ayır.",
+              "mini": {
+                "answer": "Evet. Eleştiri, eseri ölçütlerle değerlendirmedir; mutlaka olumsuz olması gerekmez.",
+                "question": "Bir yazı romanın olay örgüsünü başarılı bularak gerekçeleriyle değerlendiriyor. Eleştiri olabilir mi?"
+              },
+              "recognize": "Bir eser değerlendirilir veya şairin yaşamı tanıtılır.",
+              "tip": "Olumlu bir değerlendirme de eleştiridir.",
+              "title": "Eleştiri ile biyografik tanıtım",
+              "trap": "Eleştiri sözünü yalnız kusur bulma anlamında kullanmak."
+            }
+          ],
+          "pitfall": "Eleştiri olumlu değerlendirme de içerebilir. Yazarın kendi yaşamından söz etmesi tek başına anı/günlük/otobiyografi ayrımını çözmez; kuruluşu ve zaman ilişkisini incele.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Birinci kişiyle yazılması",
+              "Geçmiş bir yaşantıyı anlatması",
+              "O gün yaşananların aynı günün tarihiyle yazılması",
+              "Yazarın duygularına yer vermesi"
+            ],
+            "explanation": "C · Günü gününe kayıt, günlük için ayırıcıdır. Birinci kişi, duygu ve yaşantı anı veya başka kişisel türlerde de bulunabilir.",
+            "question": "Bir metnin günlük olduğunu belirlemede hangi bilgi daha ayırıcıdır?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 159
+            },
+            {
+              "catalogId": 39,
+              "page": 161
+            },
+            {
+              "catalogId": 39,
+              "page": 162
+            },
+            {
+              "catalogId": 39,
+              "page": 167
+            },
+            {
+              "catalogId": 39,
+              "page": 168
+            },
+            {
+              "catalogId": 39,
+              "page": 169
+            }
+          ],
+          "steps": [
+            "Kök tür mü, yazar-eser mi, metinden çıkarım mı istiyor?",
+            "Yazının amacını ve iddianın kanıtlara nasıl bağlandığını göster.",
+            "Kişisel metinse yaşamın sahibi, anlatan kişi ve olay-yazma zamanı ilişkisini kontrol et.",
+            "Ortak konu veya tek bir hitap sözcüğü yerine özellik kümesini karşılaştır."
+          ],
+          "title": "Öğretici Metinler: Amaç, Kanıt ve Zaman Uzaklığı",
+          "topics": [
+            "Öğretici metinler"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0140",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0140;field=konu",
+              "explanation": "E'deki Nabizade Nazım–Zehra bağı, kıskançlık ve roman kişileriyle desteklenir. Yalnız natüralizm ipucu birden fazla yazarı çağrıştırabilir; özel eser kanıtı gerekir.",
+              "sourceFingerprint": "18409bdfd1c2350cfe5ea626178d904d4f7a06d9095de98efcb76b3091f0558b",
+              "sourceLabel": "Tanzimat Dönemi Türk Edebiyatı",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "cd-ayt-01-20",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/cd-ayt.json#id=cd-ayt-01-20;field=metin",
+              "explanation": "Saray ve Ötesi, Halit Ziya Uşaklıgil'in anı eseridir. Halide Edip Adıvar'a bağlanan C seçeneği yanlıştır. İki tanıdık yazar adının benzerliğine göre eşleştirme yapılmaz.",
+              "sourceFingerprint": "0dc353c670eb1a5c029e2db08a55aad7235126f0c3a38b55d3645b5ccc82befc",
+              "sourceLabel": "Yazar-Eser Eşleştirmeleri",
+              "year": ""
+            }
+          ],
+          "id": "yazar-eser-eslestirme",
+          "learn": [
+            "Eser listelerini yazar + eser + tür + ayırıcı ipucu olarak öğren. Aynı yazar farklı türlerde eser verebilir. Eser adının çağrışımı türü veya yazarı kanıtlamaz; Saray ve Ötesi, Halit Ziya'nın anı eseridir.",
+            "Önce yazardan esere, sonra eserden yazara hatırlama çalış. Yanlış eşleştirme sorusunda seçenekler tanıdık isimleri çapraz bağlayabilir; tanıdık olan iki adın birlikte doğru olduğunu varsayma. Bilmediğin bağı, bildiğin bağlarla güvenli biçimde ele."
+          ],
+          "patterns": [
+            {
+              "id": "tanitimdan-esere",
+              "logic": "Genel dönem bilgisinden aday oluştur; eser kişisi veya özel içerikle adayı daralt.",
+              "mini": {
+                "answer": "Hayır. Kahraman adları, tür ve eserle ilgili özgül bilgi gerekir. Tema birçok eserde ortak olabilir.",
+                "question": "Kıskançlık teması bir romanın yazarlığını tek başına kesinleştirir mi?"
+              },
+              "recognize": "Bir eserin konusu, kahramanı veya türü anlatılıp yazar/eser sorulur.",
+              "tip": "İki bağımsız ipucu eşleştirmeyi güçlendirir.",
+              "title": "Tanıtımdaki ayırıcı ipucunu kullan",
+              "trap": "Aynı temayı işleyen bütün romanları aynı yazara bağlamak."
+            },
+            {
+              "id": "yanlis-bag",
+              "logic": "Her çizginin iki ucunu tek tek doğrula; yalnız isimleri tanımakla yetinme.",
+              "mini": {
+                "answer": "Saray ve Ötesi'ni Halit Ziya Uşaklıgil ile bağlarsın. Sadece yanlış demek yerine doğru ilişkiyi ve anı türünü de geri çağırırsın.",
+                "question": "“Halide Edip — Saray ve Ötesi” bağını nasıl düzeltirsin?"
+              },
+              "recognize": "Yazar-eser eşleştirmelerinden hangisi yanlıştır kökü vardır.",
+              "tip": "Yanlış seçeneğin doğru yazarını söylemek ezber hatasını görünür kılar.",
+              "title": "Çapraz bağlanan tanıdık adları ayır",
+              "trap": "Benzer isimli yazarların eserlerini birbirine taşımak."
+            }
+          ],
+          "pitfall": "Bir sanatçının bir eserini bilmek, ona bağlanan bütün eserleri doğru yapmaz. Bir eserin dönemini yayın yılından veya adının çağrışımından tek başına çıkarma.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Halide Edip Adıvar",
+              "Halit Ziya Uşaklıgil",
+              "Şinasi",
+              "Nabizade Nazım"
+            ],
+            "explanation": "B · Halit Ziya Uşaklıgil. Eseri anı türüyle birlikte hatırla. Halide Edip adının benzerliği bir çeldiricidir; tanıdıklık doğru bağın yerine geçmez.",
+            "question": "Saray ve Ötesi hangi yazarla doğru eşleştirilir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 56
+            },
+            {
+              "catalogId": 39,
+              "page": 121
+            },
+            {
+              "catalogId": 39,
+              "page": 162
+            }
+          ],
+          "steps": [
+            "Soru eseri, yazarı, türü veya yanlış bağı mı istiyor?",
+            "Her seçeneği ayrı bir yazar–eser ilişkisi olarak incele.",
+            "Adayı tür veya ayırıcı içerik bilgisiyle ikinci kez doğrula.",
+            "Yanlış ilişkiyi bulunca doğrusunu da söyleyebiliyor musun diye kontrol et."
+          ],
+          "title": "Yazar ve Eser: Türle Kodla, İki Yönde Hatırla",
+          "topics": [
+            "Şair, yazar ve eser eşleştirmeleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0198",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0198;field=konu",
+              "explanation": "Masalın döşeme bölümünü olayların başlamasından önceki kalıplaşmış tekerleme tanıtır; A bu görevi üstlenir. Olayın anlatılması veya dilekle kapanış, aynı bölüm değildir.",
+              "sourceFingerprint": "caf581fe8411b673f7cd8af197349f4a3dd73ce6f9bae24d6acc4df05eb9978c",
+              "sourceLabel": "Masal/Fabl/Destan/Halk Hikâyesi",
+              "year": "2019"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-07-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-07-01;field=konu_basligi",
+              "explanation": "D seçeneği bir yazarın yayımladığı mülakatlara ilişkin bilgi verir. Diğer parçalar kişisel izlenimi ve çağrışımı estetik anlatımda kullanır. Ayrım yalnız mecaz sözcük sayısına göre yapılmaz.",
+              "sourceFingerprint": "59bd7e8d33ab14a3b60e91d4913d2e7e953b039720f8c42147b68ee6739bdd84",
+              "sourceLabel": "Edebiyata Giriş",
+              "year": ""
+            }
+          ],
+          "id": "edebi-metin-ve-tur",
+          "learn": [
+            "Bir metni sınıflandırırken önce ne amaçla kurulduğunu araştır: bir yaşantıyı estetik bir biçimde yeniden mi kuruyor, bilgi veya düşünce mi aktarıyor? Edebî metinde kurmaca ve estetik düzen öne çıkar. Öğretici metinde bilgi verme veya düşünceyi açıklama amacı baskındır; bu metinlerde hiç söz sanatı bulunamayacağı sonucu çıkarılmaz.",
+            "Tür, anlatım biçimi ve dilin işlevi ayrı sorulardır. Romanın içinde betimleme, bir makalenin içinde öyküleme olabilir. Türü tek bir sözcükten çıkarmak yerine amaç, yapı ve anlatıcıyı birlikte değerlendir."
+          ],
+          "patterns": [
+            {
+              "id": "amac-kurmaca",
+              "logic": "Sözcük saymak yerine parçanın okurda ne oluşturmayı amaçladığını ve gerçekliği nasıl sunduğunu incele.",
+              "mini": {
+                "answer": "Bilgi aktarma amacıyla. Yazarın hayatını konu almak, paragrafı kendiliğinden roman veya hikâye yapmaz.",
+                "question": "Bir yazarın doğum tarihini ve kitaplarının basım yıllarını belgeleyen paragrafı önce hangi amaçla okursun?"
+              },
+              "recognize": "Edebî metin örneği olamaz veya metnin amacı sorulur.",
+              "tip": "Öğretici metin de etkileyici olabilir; belirleyici olan baskın amaçtır.",
+              "title": "Bilgi mi, estetik yaşantı mı?",
+              "trap": "Benzetme içeren bütün yazıları kurmaca saymak."
+            },
+            {
+              "id": "tur-yapi",
+              "logic": "Anlatma/gösterme ayrımı ve türe özgü kuruluşu birlikte ara.",
+              "mini": {
+                "answer": "Hayır. Diyalog romanda kullanılan bir teknik olabilir. Tür için eserin bütün kuruluşuna, sahnelenme ve anlatılma biçimine bakılır.",
+                "question": "Bir romandaki iki kişinin karşılıklı konuşması metnin türünü tiyatroya çevirir mi?"
+              },
+              "recognize": "Tür, bölüm veya aynı türün örneği olan parça istenir.",
+              "tip": "Bir masalın döşemesiyle asıl olayın anlatıldığı bölüm aynı işlevi taşımaz.",
+              "title": "Türü yapısından tanı",
+              "trap": "Kahraman konuşunca metnin tamamını tiyatro saymak."
+            }
+          ],
+          "pitfall": "Şiirsel dil gördüğün her metne şiir, olay gördüğün her metne roman deme. Bir parça aynı anda bir türün örneği olup birden fazla anlatım biçimini kullanabilir.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Metinde olay anlatılmıştır.",
+              "Metnin tamamı hikâye türündedir.",
+              "Metinde öyküleyici bir bölüm olabilir.",
+              "Metindeki örnek bir düşünceyi destekleyebilir."
+            ],
+            "explanation": "B · Bir makale de görüşünü kısa bir olayla örneklendirebilir. Yerel anlatım biçimi, metnin bütününe ait türü tek başına belirlemez.",
+            "question": "Bir metinde kısa bir olay örneği bulunması, hangi sonucu tek başına kanıtlamaz?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 11
+            },
+            {
+              "catalogId": 39,
+              "page": 12
+            },
+            {
+              "catalogId": 39,
+              "page": 152
+            }
+          ],
+          "steps": [
+            "Kökün metin türü mü, anlatım biçimi mi, edebî özellik mi istediğini belirle.",
+            "Parçanın bilgi aktarma, duygu uyandırma, olay anlatma veya sahneleme amacını bul.",
+            "Türün ayırıcı yapısını kontrol et: olay örgüsü, sahne konuşması, kişisel değerlendirme veya kalıplaşmış bölüm.",
+            "Bir özelliğin bulunmamasıyla başka bir türün kesinleşmesini karıştırmadan seçenekleri karşılaştır."
+          ],
+          "title": "Edebî Metin ve Tür: Amaç, Kurmaca ve Yapı",
+          "topics": [
+            "Edebiyatın temel kavramları",
+            "Metin türleri"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0067",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0067;field=metin",
+              "explanation": "E'de zaman ile sabun arasında erime üzerinden benzerlik kurulur; insana özgü bir davranış yüklenmez. Dolayısıyla teşhis eşleştirmesi yanlıştır. Kök sanatın bulunmadığı seçeneği ister.",
+              "sourceFingerprint": "7289bbf9f4a39d35eb02ae48c16a9404eb30f4378840870ae2d57d6280b60f73",
+              "sourceLabel": "Söz Sanatları",
+              "year": "2018"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-19-10",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-19-10;field=metin",
+              "explanation": "Görselde büyük/küçük ve çıkan/inen sözcükleri altı çizilidir. İki karşıtlık çifti tezatı destekler. Kâinat veya bulutun insan gibi konuşturulduğunu varsaymaya gerek yoktur.",
+              "sourceFingerprint": "11be6216b492026129723006896148c3b5b207b3f9aea6a7b162b1edf7972f2c",
+              "sourceLabel": "Söz Sanatları",
+              "year": ""
+            }
+          ],
+          "id": "soz-sanatlari",
+          "learn": [
+            "Söz sanatını bulmak için önce metindeki anlam ilişkisini açıkla: benzerlik mi kuruluyor, insan özelliği mi veriliyor, karşıtlık mı yan yana getiriliyor? Sonra bu ilişkiye uygun terimi seç. Bir örnekte birden fazla sanat bulunabilir; kökün hedeflediği ilişkiyi denetle.",
+            "Teşbihten teşhise geçmek için insana ait bir özellik gerekir. Tenasüp anlamca ilişkili sözcüklerin birlikteliğidir; tezat karşıtlık, telmih bilinen kişi veya olaya gönderme, irsalimesel atasözü ya da özdeyişten yararlanmadır."
+          ],
+          "patterns": [
+            {
+              "id": "benzetme-kisilestirme",
+              "logic": "Benzeyenleri göster; insan özelliği aktarılıp aktarılmadığını ayrıca test et.",
+              "mini": {
+                "answer": "Öfkeyle yumruklama insan davranışı olarak rüzgâra verilmiştir; kişileştirme vardır. Rüzgârın söylediği söz verilmediğinden intak kanıtlanmaz.",
+                "question": "“Rüzgâr kapımı öfkeyle yumrukladı.” ifadesinde hangi aktarım belirgindir?"
+              },
+              "recognize": "Teşbih, istiare, teşhis veya intak seçenekleri karşılaştırılır.",
+              "tip": "Konuşan insan dışı varlıkta intak bulunur; yalnız insan davranışı verilmesi konuşma gerektirmez.",
+              "title": "Benzetme mi, kişileştirme mi?",
+              "trap": "Canlı anlatılan her doğa unsurunda intak bulunduğunu düşünmek."
+            },
+            {
+              "id": "anlam-iliskisi",
+              "logic": "Sözcükler karşıt mı, aynı anlam alanında mı, bilinen bir olayı mı hatırlatıyor? Her seçenek için ilişkinin kanıtını bul.",
+              "mini": {
+                "answer": "Karşıtlık kurulur. Sözcükleri yalnız aynı çevrede geçtikleri için tenasüp diye adlandırmak, belirgin karşıtlığı kaçırır.",
+                "question": "“Küçük bir odada büyük hayaller kuruyordu.” ifadesinde küçük/büyük ilişkisi nedir?"
+              },
+              "recognize": "Tezat, tenasüp veya telmih adı ile örnek eşleştirilir.",
+              "tip": "Yalnız iki sözcüğün bir arada olması sanat kanıtı değildir; ilişkileri anlamı kurmalıdır.",
+              "title": "Karşıtlık, uygunluk ve gönderme",
+              "trap": "Gece, yıldız, ay birlikteliğini zorunlu olarak karşıtlık saymak."
+            },
+            {
+              "id": "neden-niyet",
+              "logic": "Sözün tersinin mi kastedildiğini, ölçünün mü aşıldığını, yoksa olaya hayalî bir neden mi verildiğini ara.",
+              "mini": {
+                "answer": "Doğal süreç yerine sevilen kişinin gelişiyle bağlantılı güzel ve hayalî bir neden kuruluyor; bu hüsnütalile örnektir.",
+                "question": "“Güller sen geldin diye açtı.” dizesinde çiçeklerin açılmasına nasıl bir neden veriliyor?"
+              },
+              "recognize": "Tariz, mübalağa veya hüsnütalil açıklaması verilir.",
+              "tip": "Gerçek nedenin yerine duygusal bir neden kurulması, yalnız abartma değildir.",
+              "title": "Söylenenle kastedileni ayır",
+              "trap": "Her gerçek dışı anlatımı aynı sanatın örneği saymak."
+            }
+          ],
+          "pitfall": "Mecaz olan her ifade kişileştirme değildir. “Zaman sabun gibi eriyor” bir benzetmedir; erime insana özgü davranış sayılmaz.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Kişileştirme",
+              "Telmih",
+              "İrsalimesel",
+              "Tenasüp"
+            ],
+            "explanation": "A · Küsme insana ait bir tutum olarak dalgalara aktarılır. Bilinen bir olay hatırlatılmaz, atasözü kullanılmaz; anlamca ilişkili sözcükleri sıralama da hedef değildir.",
+            "question": "“Dalgalar kıyıya küsüp geri çekildi.” ifadesindeki belirgin söz sanatı hangisidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 20
+            },
+            {
+              "catalogId": 39,
+              "page": 21
+            },
+            {
+              "catalogId": 39,
+              "page": 22
+            },
+            {
+              "catalogId": 39,
+              "page": 23
+            }
+          ],
+          "steps": [
+            "Kökün sanatı mı yoksa yanlış sanat eşleştirmesini mi sorduğunu belirle.",
+            "İlgili sözleri göster; aralarındaki anlam ilişkisini terim kullanmadan açıkla.",
+            "Terimin zorunlu özelliği metinde var mı diye kontrol et.",
+            "Olumsuz kökte diğer eşleştirmeleri de ayrı ayrı doğrula."
+          ],
+          "title": "Söz Sanatları: İlişkiyi Bul, Adını Sonra Koy",
+          "topics": [
+            "Söz sanatları"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0207",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0207;field=metin",
+              "explanation": "Metin yalnız gözlemi değil, hipotezin sınanmasını, biyolojik kalıtımı ve çevre koşullarını birlikte vurgular. Bunlar natüralizmi realizmden ayıran kanıtlardır; cevap C'dir.",
+              "sourceFingerprint": "8a2e5a07851231136f166465619979865c7f371170f31c449203925acb1878ef",
+              "sourceLabel": "Edebî Akımlar",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-76-08",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-76-08;field=metin",
+              "explanation": "Kapalı anlatım, özgün imgeler ve çağrışım gücü sembolizmi destekler. Biçim titizliği tek başına verilmediğinden parnasizm sonucuna gidilmez.",
+              "sourceFingerprint": "dc156428f61edf5f830ecb478442d94a0fcf4fb427e92877cc6dd6f897fcac92",
+              "sourceLabel": "Edebî Akımlar",
+              "year": ""
+            }
+          ],
+          "id": "edebi-akimlar",
+          "learn": [
+            "Akım sorularında tek bir anahtar sözcük yeterli değildir. Realizm ile natüralizm gözlemi paylaşır; natüralizmde deneysel yöntem, kalıtım ve çevrenin belirleyiciliği ayırıcı kanıt oluşturur. Sembolizmde müzik, sezdirme ve çağrışım; parnasizmde şiirsel biçim titizliği ve dış dünyanın tasviri öne çıkar.",
+            "Romantizmde duygu ve hayal, klasisizmde akıl ve kural; sürrealizmde bilinçaltı ve serbest çağrışım belirleyici eksenlerdir. Bir sanatçının farklı eserleri farklı etkiler taşıyabilir; sanatçı adıyla metindeki özelliği birbirinin yerine kullanma."
+          ],
+          "patterns": [
+            {
+              "id": "realizm-naturalizm",
+              "logic": "Gözlem ortaklığını geç; insanın deney konusu olarak ele alınıp alınmadığını araştır.",
+              "mini": {
+                "answer": "Deneysel yöntem ve kalıtım vurgusu natüralizmi işaret eder. Yalnız gözleme dayanma realizmi de kapsayacağı için daha zayıf bir kanıttır.",
+                "question": "Bir yazar insan davranışını soya çekim ve çevrenin etkisini sınayan bir deney gibi kurduğunu söylüyor. Hangi ayrım önemlidir?"
+              },
+              "recognize": "Nesnellik, çevre, kalıtım ve deney vurgusundan akım buldurulur.",
+              "tip": "Kalıtım + çevre + deney birlikteliği natüralizm için güçlü bir ayrımdır.",
+              "title": "Gözlem mi, deneysel belirlenim mi?",
+              "trap": "Her nesnel anlatıyı aynı akıma bağlamak."
+            },
+            {
+              "id": "siir-akimlari",
+              "logic": "Şiir dış görünüşü titizlikle mi tasvir ediyor, müzik ve çağrışımla bir duygu mu sezdiriyor?",
+              "mini": {
+                "answer": "Sembolizme. Doğa görüntüleri olsa bile belirleyici kanıt açık tasvir değil, müzik ve sezdirme amacıdır.",
+                "question": "Şair açıkça anlatmak yerine sözcüklerin musikisiyle duygu sezdirmenin peşinde. Hangi anlayışa yaklaşır?"
+              },
+              "recognize": "Parnasizm ile sembolizm arasında şiir anlayışı seçilir.",
+              "tip": "Biçime önem verilmesi ortak olabilir; açık tasvir/kapalı sezdirme ayrımını kontrol et.",
+              "title": "Tasvir mi, sezdirme mi?",
+              "trap": "Şiirde doğa geçince mutlaka parnasizm demek."
+            },
+            {
+              "id": "akil-duygu-bilincalti",
+              "logic": "Sanatçının düşünceyi neye dayandırdığını ayır: kurala, duyguya veya bilinçaltı çağrışımlarına.",
+              "mini": {
+                "answer": "Bilinçaltı ve otomatik yazı üzerinden sürrealizmi. Yalnız duygulu olmak bu yöntemi açıklamaz.",
+                "question": "“Mantığın denetimini bırakıp zihnime gelenleri kesintisiz yazıyorum.” sözü hangi yöntemi çağrıştırır?"
+              },
+              "recognize": "Kuralcılık, bireysel duygu veya otomatik yazıdan akım sorulur.",
+              "tip": "Rüya ve mantık denetimini bırakma birlikte veriliyorsa sürrealizm adayını denetle.",
+              "title": "Akıl, duygu ve bilinçaltı",
+              "trap": "Her duygusal şiiri sürrealist saymak."
+            }
+          ],
+          "pitfall": "“Gözlem” görünce hemen realizmi, “hayal” görünce hemen romantizmi seçme. Deney, bilinçaltı, musiki veya kuralcılık gibi ikinci kanıtı kontrol et.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Günlük yaşamdan söz edilmesi",
+              "Gözlem yapılması",
+              "Kalıtımın deneysel yöntemle incelenmesi",
+              "İnsanların anlatılması"
+            ],
+            "explanation": "C · Kalıtım ve deneysel yöntem natüralizmi belirginleştirir. Diğer özellikler birden fazla akımda bulunabildiği için tek başına yeterli değildir.",
+            "question": "Realizm ile natüralizmi ayırmada hangisi daha seçici bir kanıttır?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 173
+            },
+            {
+              "catalogId": 39,
+              "page": 174
+            },
+            {
+              "catalogId": 39,
+              "page": 175
+            },
+            {
+              "catalogId": 39,
+              "page": 176
+            }
+          ],
+          "steps": [
+            "Parçadan iki ya da üç sanat anlayışı özelliği çıkar.",
+            "Aday akımların ortak özelliklerini ayır; yalnız birini belirginleştiren kanıtı ara.",
+            "Adayı metindeki her özellik üzerinde tekrar sına.",
+            "Bir özellik uyuşmuyor veya eksikse salt çağrışımla karar verme."
+          ],
+          "title": "Edebî Akımlar: Ortak Sözcükten Ayırıcı Kanıta",
+          "topics": [
+            "Edebî akımlar"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0200",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0200;field=metin",
+              "explanation": "Bozkurt Destanı kaynak anlatımında Göktürk dönemiyle ve İslamiyet öncesi destanlar grubuyla eşleştirilir. Kahramanlık ortak teması diğer destanları aynı döneme taşımaz.",
+              "sourceFingerprint": "f8daa455b5815b08f8d29a81a38ce5be2818c05bcf33bce2a650ed2c2ee38767",
+              "sourceLabel": "İslamiyet Öncesi Türk Destanları",
+              "year": "2020"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-25-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-25-01;field=konu_basligi",
+              "explanation": "Toplumun deneyimini özlü biçimde aktaran eski sözün türü sav, günümüzdeki karşılığı atasözüdür. Ölüm veya kahramanlık anlatısı olmadığı için sagu/destan seçenekleri uygun değildir.",
+              "sourceFingerprint": "da287deb9a4236599200f784ac536d3d71cb437ddb4708163bd2178adb02c445",
+              "sourceLabel": "İslamiyet Öncesi - Geçiş Dönemi",
+              "year": ""
+            }
+          ],
+          "id": "islamiyet-oncesi",
+          "learn": [
+            "Sözlü ürünleri işlevleriyle öğren: koşuk aşk, doğa ve yiğitlik; sagu ölüm acısı; sav özlü toplumsal deneyim; destan toplumun büyük olayları çevresinde oluşan anlatıdır. Benzer tema başka dönemlerde de bulunduğu için işlevi dönem ve gelenekle birlikte kontrol et.",
+            "Ürünün oluştuğu dönem ile sonradan yazıya geçirildiği kaynağın dönemi aynı olmak zorunda değildir. Divânu Lugâti't-Türk'ün sözlü dönem örneklerini aktarması, bu örneklerin ilk kez Geçiş Dönemi'nde oluştuğunu göstermez. Göktürk ve Uygur yazılı ürünlerini de sözlü türlerden ayrı tut."
+          ],
+          "patterns": [
+            {
+              "id": "sozlu-urun",
+              "logic": "Öğüt/özlü söz, yas, duygu-doğa veya toplumsal büyük olay işlevini ayır.",
+              "mini": {
+                "answer": "Yas ve ölüm acısı; bu bağlamda sagu. Sonraki geleneklerdeki benzer işlevli türlerin adlarıyla karıştırma.",
+                "question": "Eski Türk sözlü geleneğinde ölüm ardından söylenen şiiri hangi işlev tanımlar?"
+              },
+              "recognize": "Koşuk, sagu, sav veya destan eşleştirmesi verilir.",
+              "tip": "Dönem verilmeden yalnız temadan kesin tür sonucu çıkarma.",
+              "title": "Ürünü işlevinden tanı",
+              "trap": "Her öğüt içeren uzun metne sav demek."
+            },
+            {
+              "id": "donem-kaynak",
+              "logic": "Kaynağın yazıldığı zamanı, aktardığı sözlü ürünün oluşum zamanı yerine koyma.",
+              "mini": {
+                "answer": "Sözlüğün aktarım kaynağı olduğu anlaşılır. Sagunun ilk oluşum tarihi yalnız bu bilgiden kesinleştirilemez.",
+                "question": "Eski bir sagu Geçiş Dönemi sözlüğünde aktarılıyorsa hangi tarih kesinleşir?"
+              },
+              "recognize": "Destanın dönemi, yazılı kaynak veya ilk kayıt sorulur.",
+              "tip": "Sözlü bir ürün daha geç bir sözlükte korunabilir.",
+              "title": "Oluşum ile aktarım tarihini ayır",
+              "trap": "Divânu Lugâti't-Türk'te bulunmayı İslamiyet sonrası oluşmuş olma kanıtı saymak."
+            }
+          ],
+          "pitfall": "Ölüm konusu tek başına sagu demek değildir; sonraki geleneklerde ağıt veya mersiye de olabilir. Kaynakta hangi dönem ve gelenek verildiğini denetle.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Yazılı kaynak ürünü aktarmıştır.",
+              "Ürün bu kaynaktan incelenebilir.",
+              "Ürün ilk kez kaynağın yazıldığı dönemde oluşmuştur.",
+              "Oluşum ve derlenme tarihleri ayrı araştırılmalıdır."
+            ],
+            "explanation": "C · Sözlü ürün, yazılı kaydından önce oluşmuş olabilir. Derleme tarihi ile oluşum tarihini aynı saymak dönem sorularında yanlış eşleştirme doğurur.",
+            "question": "Bir ürünün daha geç bir yazılı kaynakta derlenmesi hangi sonucu tek başına vermez?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 24
+            },
+            {
+              "catalogId": 39,
+              "page": 25
+            },
+            {
+              "catalogId": 39,
+              "page": 27
+            },
+            {
+              "catalogId": 39,
+              "page": 156
+            }
+          ],
+          "steps": [
+            "Sorunun sözlü tür, yazılı eser, alfabe veya destan dönemi istediğini belirle.",
+            "Türün işlevini ve döneme ait kurum/ürün ipuçlarını eşleştir.",
+            "Eserin oluşumuyla derlenme/yazıya geçirilme zamanını ayır.",
+            "İslamiyet öncesi ve İslami dönem destanlarını kaynak listesinden karşılaştır."
+          ],
+          "title": "İslamiyet Öncesi Edebiyat: İşlev, Dönem ve Kaynak",
+          "topics": [
+            "İslamiyet öncesi Türk edebiyatı"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "AYT_EsitAgirlik-0095",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=AYT_EsitAgirlik-0095;field=konu",
+              "explanation": "Kavram sırası adalet, saadet, akıl, akıbettir. Kişiler sırasıyla Kün Togdı, Ay Toldı, Ögdülmiş, Odgurmış olduğundan B eşleşir. İki kavramı doğru bilmek bütün diziyi doğrulamaz.",
+              "sourceFingerprint": "b1640170e5a72ede35f82db23162a22b0547e2e83ee8b3a15dbde56e322009c3",
+              "sourceLabel": "İslamiyet Öncesi Türk Edebiyatı / Geçiş Dönemi Türk Edebiyatı",
+              "year": "2024"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-turk-dili-ve-edebiyati-25-04",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-turk-dili-ve-edebiyati.json#id=3a-ayt-turk-dili-ve-edebiyati-25-04;field=konu_basligi",
+              "explanation": "Verilen öğüt, eserin nasihatname niteliğine doğrudan örnektir. Parçadan yazarın dönemi veya tarihsel öneminin gösterildiği sonucu çıkmaz; doğru olan bilgi ile alıntının kanıtladığı bilgi ayrılır.",
+              "sourceFingerprint": "6e59a6a46692bd4f7d2c86f8dc773854f08f82c509b7519bbb534ec0bcb3e83f",
+              "sourceLabel": "İslamiyet Öncesi - Geçiş Dönemi",
+              "year": ""
+            }
+          ],
+          "id": "gecis-donemi",
+          "learn": [
+            "Geçiş Dönemi'nde eski Türk geleneği ile İslami kültür birlikte bulunur. Tek bir ölçü veya nazım birimi bütün eserleri açıklamaz. Eserleri amaç + yazar + yapı üçlüsüyle öğren: Kutadgu Bilig yönetim ve ahlak; Divânu Lugâti't-Türk sözlük ve dil; Atabetü'l-Hakayık ahlaki öğüt; Divân-ı Hikmet dinî-tasavvufi şiirlerle ilişkilidir.",
+            "Kutadgu Bilig'in alegorisi soyut kavramları kişiler üzerinden konuşturur: Kün Togdı adaleti, Ay Toldı mutluluğu, Ögdülmiş aklı, Odgurmış akıbeti temsil eder. Bu eşleştirmeyi yalnız isim sırası olarak değil kişinin anlatıdaki rolüyle öğren."
+          ],
+          "patterns": [
+            {
+              "id": "eser-amac",
+              "logic": "Eser adının çağrışımını bırak; parçanın anlattığı işlevi eserle eşleştir.",
+              "mini": {
+                "answer": "Kaşgarlı Mahmut'un Divânu Lugâti't-Türk'ünü. Bu dil ve sözlük amacı, ahlaki öğüt veren diğer eserlerden farklıdır.",
+                "question": "Araplara Türkçeyi öğretme ve Türkçenin zenginliğini gösterme amacı hangi eseri ayırır?"
+              },
+              "recognize": "Sözlük, öğüt kitabı, hikmet veya yönetim anlatımından eser sorulur.",
+              "tip": "Divânu Lugâti't-Türk ile Divân-ı Hikmet'i sözlük/şiir ayrımıyla karşılaştır.",
+              "title": "Eserin amacı ve ayırıcı özelliği",
+              "trap": "Aynı dönemdeki dört eseri yalnız ortak dinî içerik üzerinden öğrenmek."
+            },
+            {
+              "id": "alegori",
+              "logic": "Her kişiyi temsil ettiği kavram ve anlatıdaki rolüyle eşleştir; boşlukları tek tek doğrula.",
+              "mini": {
+                "answer": "Ögdülmiş aklı temsil eder. Odgurmış akıbetle ilişkilidir; benzer isimler farklı kavramların yerini tutar.",
+                "question": "Bir karakter aklı temsil ediyor; adı Ögdülmiş mi, Odgurmış mı?"
+              },
+              "recognize": "Kutadgu Bilig'deki sembolik kişi veya boşluk sırası verilir.",
+              "tip": "Kün Togdı'nın hükümdarlık rolünü adaletle ilişkilendir; isimlerin hepsini tek zincir olarak tekrarlama.",
+              "title": "Kişi ile soyut kavramı bağla",
+              "trap": "Sıradaki iki adı yer değiştirip yalnız tanıdık geldiği için seçmek."
+            }
+          ],
+          "pitfall": "Divân kelimesi geçen bütün eserleri şiir kitabı veya sözlük sayma. Aynı dönem ve didaktiklik ortaklığı eserleri birbirinin yerine geçirmez.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Nasihatname niteliği",
+              "Her bölümün hece ölçüsüyle yazılması",
+              "Sözlük olması",
+              "Yazarının Kaşgarlı Mahmut olması"
+            ],
+            "explanation": "A · Öğüt veren içerik nasihatname niteliğini destekler. Eserin yazarı Yusuf Has Hacib'dir; bir alıntı bütün bölümlerin ölçüsünü de tek başına kanıtlamaz.",
+            "question": "Bir soruda “Kutadgu Bilig'deki öğüt veren sözler” alıntılanmıştır. Bu alıntı doğrudan hangi niteliğe kanıt olur?"
+          },
+          "sources": [
+            {
+              "catalogId": 39,
+              "page": 26
+            },
+            {
+              "catalogId": 39,
+              "page": 27
+            }
+          ],
+          "steps": [
+            "Kökün eser, yazar, amaç veya sembolik kişi istediğini ayır.",
+            "Parçadaki ayırıcı işlevi bul: sözlük mü, yönetim öğüdü mü, hikmet şiiri mi?",
+            "Eserin yazarını ve yapısını ikinci kanıt olarak karşılaştır.",
+            "Eşleştirme sorusunda kullanılanları işaretleyip dışta kalanları en son belirle."
+          ],
+          "title": "Geçiş Dönemi: Eseri Amacı ve Yapısıyla Eşleştir",
+          "topics": [
+            "Geçiş dönemi eserleri"
+          ]
         }
       ],
       "readingSources": [
@@ -1424,7 +3148,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-tde/ayt-tde.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 17,
       "subject": "Türk Dili ve Edebiyatı",
       "units": [
         {
@@ -1565,6 +3289,94 @@
           "topics": [
             "Tarih bilimi ve zaman"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-0404",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0404",
+              "explanation": "Söz başka milletlere saygıyı ve bencil olmayan milliyetçiliği vurgular. I ve II desteklenir; Türk milletini üstün tutma iddiası çıkarılamaz. Bu nedenle C seçilir.",
+              "sourceFingerprint": "c76e205b36218015c6105950f17a0e2c4ff3cfc45df5ba400d59c02ebc0eeca7",
+              "sourceLabel": "Atatürk İlkeleri",
+              "year": "2019"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "yk-tarih-test-16-01-05",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/yk-tarih-test-16.json#id=yk-tarih-test-16-01-05",
+              "explanation": "Ayrıcalıklı dinî sınıfın reddi ve eşitlik halkçılıkla, dinin akıl ve bilimle ilişkisinin kurulması ve ruhban sınıfına ayrıcalık verilmemesi laiklikle ilişkilendirilir. Kaynak anahtarı I ve II'yi birlikte seçer; ekonomide devlet yatırımı için kanıt verilmez.",
+              "sourceFingerprint": "bcc438764a5d973e73f7420938c348ccf90f4f9a780360676a3b7b02bb10b9cc",
+              "sourceLabel": "Atatürkçülük ve Türk İnkılabı",
+              "year": ""
+            }
+          ],
+          "id": "ataturk-ilkeleri",
+          "learn": [
+            "İlke sorularında sözcük aramak yerine uygulamanın veya sözün neyi değiştirdiğini araştır. Yönetimde halk iradesi cumhuriyetçilikle, ayrıcalıkların kaldırılması ve eşitlik halkçılıkla, din ve devlet işlerinin ayrılması ile vicdan özgürlüğü laiklikle ilişkilidir.",
+            "Atatürk milliyetçiliğinde ortak kültür ve birlikte yaşama iradesi öne çıkar; üstün millet ve ırkçılık reddedilir. Bir uygulama birden fazla ilkeyle ilişkili olabilir. Her öncül için ayrı kanıt göster; seçenekleri tek bir tanıdık kelimeyle eleme."
+          ],
+          "patterns": [
+            {
+              "id": "amac-ilke",
+              "logic": "Kararın yönetim, eşitlik, vicdan özgürlüğü, ekonomi veya yenileşme bakımından ne yaptığını açıkla.",
+              "mini": {
+                "answer": "Kanun önünde eşitlik ve ayrıcalığın kaldırılması halkçılıkla ilişkilidir. Kelime eşleştirmekten çok uygulamanın sonucu esas alınır.",
+                "question": "Belirli bir zümrenin hukuk karşısındaki ayrıcalığı kaldırılıyor. Hangi ilişki belirgindir?"
+              },
+              "recognize": "Bir uygulama veya sözün hangi ilkeyle ilgili olduğu sorulur.",
+              "tip": "İlkenin tanımını uygulamaya bağlayan kısa bir gerekçe yaz.",
+              "title": "Uygulamanın amacından ilkeye git",
+              "trap": "Parçada geçen tek sözcükle karar vermek."
+            },
+            {
+              "id": "oncul-siniri",
+              "logic": "Her yargının metinde açık desteğini bul; bir doğru öncülün diğerlerini de doğru yaptığını varsayma.",
+              "mini": {
+                "answer": "Hayır. Saygı doğrudan desteklenir; üstünlük iddiası bu bilgiden çıkmaz.",
+                "question": "“Diğer milletlerin onuruna saygı duyarız.” sözü kendi milletinin üstünlüğünü kanıtlar mı?"
+              },
+              "recognize": "I, II, III yargılarından hangileri çıkarılır kökü vardır.",
+              "tip": "Başka milletlere saygı ile üstünlük iddiasını karşılaştır.",
+              "title": "Öncülleri ayrı kanıtla",
+              "trap": "Olumlu çağrışımlı bütün öncülleri seçmek."
+            }
+          ],
+          "pitfall": "Bir toplumun gelişmesini istemek, başka milletlerden üstün olduğunu savunmak demek değildir. Sözde geçen “millet” veya “din” kelimesini tek başına ilke etiketi olarak kullanma.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Halkçılık",
+              "Devletçilik",
+              "İnkılapçılık",
+              "Milliyetçilik"
+            ],
+            "explanation": "A · Eşitlik ve ayrıcalığın reddi halkçılığın doğrudan ölçütleridir. Diğer ilkeleri seçmek için kendi tanımlarına ilişkin ek kanıt gerekir.",
+            "question": "Bir sözde bütün vatandaşların kanun önünde eşit olduğu ve hiçbir zümreye ayrıcalık tanınamayacağı vurgulanıyor. En doğrudan hangi ilke desteklenir?"
+          },
+          "sources": [
+            {
+              "catalogId": 28,
+              "page": 179
+            },
+            {
+              "catalogId": 28,
+              "page": 180
+            }
+          ],
+          "steps": [
+            "Soru ilkeyi mi, ilkenin niteliğini mi, parçadan çıkarılabileni mi istiyor?",
+            "Verilen uygulama veya sözün hedefini kısa biçimde açıkla.",
+            "Her öncülü bu hedefle ayrı ayrı karşılaştır; desteklenmeyeni dış bilgiyle tamamlamaya çalışma.",
+            "Birden fazla ilkeye ilişkin kanıt varsa hepsini koru; yalnız birini seçme zorunluluğu varsayma."
+          ],
+          "title": "Atatürk İlkeleri: Anahtar Sözcükten Kanıt İlişkisine",
+          "topics": [
+            "Atatürk ilke ve inkılapları"
+          ]
         }
       ],
       "readingSources": [
@@ -1574,7 +3386,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-tarih/tyt-tarih.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Tarih",
       "units": [
         {
@@ -1732,6 +3544,106 @@
           "topics": [
             "Harita bilgisi ve izohipsler"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0412",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json#id=TYT-0412",
+              "explanation": "Su buharının tamamına yakınının bulunması ve genel olarak yükseldikçe sıcaklığın düşmesi troposfer özellikleridir: I ve III, B. Ozon tabakası stratosferle; iyonlaşma ve radyo dalgaları üst katmanlarla ilişkilidir.",
+              "sourceFingerprint": "8463097bba68e73eda5e6f5d9d66285ff580a32657a914394f8d8030c5c9f03a",
+              "sourceLabel": "Atmosfer ve İklim Bilgisi",
+              "year": "2020"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-cografya-13-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-cografya.json#id=3a-tyt-cografya-13-01",
+              "explanation": "B'de sıcaklığın kıyı turizmini desteklemesi olumlu etkidir. Soruda olumsuz etki sayılamayacak durum arandığı için B seçilir; iklimle ilgili her örnek olumsuz değildir.",
+              "sourceFingerprint": "8c1d9b52a87f597c64b773c1c3d4b428f69771acf092e59053bb2cd86ef5cb8c",
+              "sourceLabel": "Atmosfer, Hava Durumu ve İklim, Sıcaklık",
+              "year": ""
+            }
+          ],
+          "id": "atmosfer-iklim",
+          "learn": [
+            "Hava durumu kısa süreli ve yerel koşulları, iklim uzun yıllardaki genel düzeni anlatır. Tek bir soğuk gün uzun dönemli iklimi değiştirmiş sayılmaz. Zaman ve alan ölçeğini birlikte değerlendir.",
+            "Atmosfer katmanlarını işleviyle bağla: su buharının büyük bölümü ve hava olayları troposferle, ozonun zararlı ışınları süzmesi stratosferle ilişkilidir. İklimin ulaşım, tarım ve turizm üzerindeki etkisini sorarken olumlu/olumsuz yargının hangi faaliyet açısından kurulduğunu belirle."
+          ],
+          "patterns": [
+            {
+              "id": "zaman-olcegi",
+              "logic": "Tek gözlem yerine sürenin ve genellemenin kapsamını oku.",
+              "mini": {
+                "answer": "Hayır. Günlük olay ile uzun dönemli ortalama farklı bilgiler verir; tek gün iklim genellemesini tek başına geçersiz kılmaz.",
+                "question": "Bir kentte bugün sağanak yağması, yazlarının genelde kurak olmasını çürütür mü?"
+              },
+              "recognize": "Günlük hava olayı ile uzun dönemli özellik karşılaştırılır.",
+              "tip": "“Bugün” ve “uzun yıllar ortalaması” farklı ölçeklerdir.",
+              "title": "Hava durumu mu, iklim mi?",
+              "trap": "Tek aşırı olaydan iklimin tamamını tanımlamak."
+            },
+            {
+              "id": "katman-islev",
+              "logic": "Her özelliğin ait olduğu katmanı ayrı yazıp ortak olanları seç.",
+              "mini": {
+                "answer": "Hayır. İlk ilişki troposfer, ikincisi stratosfer için kullanılır.",
+                "question": "Hava olaylarının görüldüğü katmanla ozonun yoğun olduğu katman aynı mıdır?"
+              },
+              "recognize": "Öncüllerde su buharı, ozon veya iyonlaşma gibi özellikler verilir.",
+              "tip": "Troposferi hava olayları, stratosferi ozonla karşılaştır.",
+              "title": "Katmanı işlev kanıtıyla bul",
+              "trap": "Atmosferin bütün işlevlerini tek katmana yüklemek."
+            },
+            {
+              "id": "etki-koku",
+              "logic": "Önce hangi faaliyetin etkilendiğini, sonra etkinin yönünü belirle.",
+              "mini": {
+                "answer": "Evet. Turizm ve tarım açısından farklı etkiler söz konusudur; tek bir olumlu/olumsuz etiketi bütün faaliyetlere yayma.",
+                "question": "Sıcak yazlar kıyı turizmini destekleyip sulama gereksinimini artırabilir mi?"
+              },
+              "recognize": "İklimin insan faaliyetlerine etkisi için değildir/gösterilemez kökü vardır.",
+              "tip": "Aynı iklim koşulu farklı faaliyetlerde farklı sonuç doğurabilir.",
+              "title": "Etki olumlu mu, olumsuz mu?",
+              "trap": "Olumsuz soru kökünü atlayıp iklimle ilişkili ilk seçeneği almak."
+            }
+          ],
+          "pitfall": "Ozonun koruyucu etkisini troposferdeki su buharıyla karıştırma. Sıcaklık hem bir faaliyeti destekleyip hem başka bir faaliyet için sorun oluşturabilir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Bu sabah sis vardı.",
+              "Yarın yağmur bekleniyor.",
+              "Bölgede uzun yıllar boyunca yazlar sıcak ve kurak geçmiştir.",
+              "Dün sıcaklık beş derece düştü."
+            ],
+            "explanation": "C · Uzun yıllar boyunca tekrar eden mevsim düzeni iklim bilgisidir. Diğerleri kısa süreli hava olayları veya tahminleridir.",
+            "question": "Hangi ifade doğrudan uzun dönemli iklim özelliği bildirir?"
+          },
+          "sources": [
+            {
+              "catalogId": 23,
+              "page": 34
+            },
+            {
+              "catalogId": 23,
+              "page": 35
+            }
+          ],
+          "steps": [
+            "Kökün zaman ölçeği, atmosfer katmanı veya insan faaliyetlerine etki istediğini belirle.",
+            "Hava durumu/iklim ayrımında gözlemin kaç günü/yılı ve ne kadar alanı kapsadığını kontrol et.",
+            "Katman sorusunda verilen her işlevi ayrı eşleştir.",
+            "Etki sorusunda faaliyeti ve olumlu/olumsuz kökü birlikte denetle."
+          ],
+          "title": "Atmosfer ve İklim: Süreyi, Katmanı ve Etkiyi Ayır",
+          "topics": [
+            "Atmosfer ve iklim"
+          ]
         }
       ],
       "readingSources": [
@@ -1741,7 +3653,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-cografya/tyt-cografya.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Coğrafya",
       "units": [
         {
@@ -1880,6 +3792,114 @@
           "topics": [
             "Bilgi felsefesi"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0466",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 189 · Varlık Felsefesi Alanındaki Çağdaş Yaklaşımlar",
+              "explanation": "Parça ruhu beden makinesinin maddi işlevi olarak açıklar; ayrı bir tinsel töz kabul etmez. Bu nedenle ruhun maddeye indirgenmesi yargısı B desteklenir.",
+              "sourceFingerprint": "9ca3167d416e9cb326fa1eb2d08dad8e18b83dc3ae20d94ade28559ee2405b77",
+              "sourceLabel": "Varlık Felsefesi Alanındaki Çağdaş Yaklaşımlar",
+              "year": "2019"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-felsefe-13-02",
+              "evidenceRef": "kaynaklar/ogm-materyal/Felsefe/TYT/3 Adim Soru Bankasi - TYT Felsefe.pdf · PDF s. 37 · Varlık Felsefesinin Konusu ve Problemleri",
+              "explanation": "İnsan eylemlerindeki özgürlük, bu seçenekler içinde ahlak felsefesinin problemidir. Diğer öncüller varlığın temeli, varlığı veya niceliğiyle ilgilidir. Farklı disipline ait II için B seçilir.",
+              "sourceFingerprint": "5749730f6e07923ce47963d980b942acbdaa7b4bbb62df08394553b4fe8ad822",
+              "sourceLabel": "Varlık Felsefesinin Konusu ve Problemleri",
+              "year": ""
+            }
+          ],
+          "id": "varlik-felsefesi",
+          "learn": [
+            "Varlık felsefesinde önce sorunun eksenini ayır: varlığın var olup olmadığı, kaç temel unsurdan oluştuğu ve ne olduğu farklı problemlerdir. Monizm tek, düalizm iki temel unsur savunur; materyalizm ve idealizm ise bu temelin niteliğiyle ilgilidir.",
+            "Bir görüşte ruh, beden veya madde sözcüklerinin geçmesi tek başına düalizm kanıtı değildir. Yazar ruhu maddeye indirgediğinde iki bağımsız temel kabul etmiş olmaz. Metindeki ilişkinin yönünü bul; filozof adıyla otomatik cevap verme."
+          ],
+          "patterns": [
+            {
+              "id": "problem-alani",
+              "logic": "Sorudaki ana sözcük yerine tartışılan problemi belirle.",
+              "mini": {
+                "answer": "İlki eylem ve özgürlük üzerinden ahlak felsefesine, ikincisi insanın varlığına yönelir. İnsan kelimesi ortak olsa da problem değişir.",
+                "question": "“İnsanın eylemleri özgür müdür?” ile “İnsanın özü nedir?” aynı problem midir?"
+              },
+              "recognize": "Bir sorunun hangi felsefe alanına ait olduğu sorulur.",
+              "tip": "İnsan sözcüğü hem ontoloji hem ahlak metinlerinde bulunabilir.",
+              "title": "Hangi soruya cevap aranıyor?",
+              "trap": "Konu edilen varlıktan doğrudan disiplin adı çıkarmak."
+            },
+            {
+              "id": "nicelik-nitelik",
+              "logic": "Temel unsur sayısını ve unsurun niteliğini ayrı belirle.",
+              "mini": {
+                "answer": "Hayır. Nicelikte tekçilik bilinir; niteliğin madde olduğu ayrıca belirtilmelidir.",
+                "question": "Bir görüş tek temel kabul ediyor ama bunun niteliği verilmemiş. Materyalist olduğu kesin mi?"
+              },
+              "recognize": "Monizm/düalizm ile materyalizm/idealizm seçenekleri verilir.",
+              "tip": "Tek temel savunmak, o temelin mutlaka madde olduğunu söylemez.",
+              "title": "Kaç temel, ne tür temel?",
+              "trap": "Monizm ile materyalizmi eş anlamlı saymak."
+            },
+            {
+              "id": "indirgeme",
+              "logic": "İki adın bulunmasına değil, görüşün bunlara bağımsız varlık tanıyıp tanımamasına bak.",
+              "mini": {
+                "answer": "Bu ifadede düşünce maddi işleyişe indirgenir; ayrı, bağımsız bir tinsel töz kabul edilmiş olmaz.",
+                "question": "“Düşünce beynin maddi işleyişidir.” diyen görüş düşünceyi ayrı bir töz sayar mı?"
+              },
+              "recognize": "Ruh/beden veya düşünce/madde ilişkisi açıklanır.",
+              "tip": "“Ruh maddi süreçtir” ifadesi iki bağımsız töz iddiası değildir.",
+              "title": "İki bağımsız unsur mu, biri diğerine mi indirgeniyor?",
+              "trap": "Parçadaki isimleri sayarak yaklaşım seçmek."
+            }
+          ],
+          "pitfall": "Madde ve ruh iki sözcük olarak geçti diye düalizm seçme. Birini ötekine indirgeme ile ikisini bağımsız töz olarak kabul etme farklı görüşlerdir.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "İki bağımsız töz vardır.",
+              "Ruh maddeye indirgenir.",
+              "Varlık yoktur.",
+              "Madde düşünceden türemiştir."
+            ],
+            "explanation": "B · “İbarettir” indirgeme ilişkisidir. İki sözcüğün geçmesi düalizm kanıtı değildir; varlığın reddi veya maddenin düşünceden türetilmesi de söylenmemiştir.",
+            "question": "Bir görüş “Ruh, bedenin maddi işlevinden ibarettir.” diyor. Bu cümle hangi sonucu en doğrudan destekler?"
+          },
+          "sources": [
+            {
+              "catalogId": 24,
+              "page": 21
+            },
+            {
+              "catalogId": 24,
+              "page": 22
+            },
+            {
+              "catalogId": 24,
+              "page": 23
+            },
+            {
+              "catalogId": 24,
+              "page": 24
+            }
+          ],
+          "steps": [
+            "Kökün felsefe disiplinini, yaklaşımı veya parçadan çıkarılacak yargıyı istediğini belirle.",
+            "Soruyu varlık var mı, kaç unsur var, ne olarak var eksenlerinden birine yerleştir.",
+            "Metinde bağımsız kabul edilen unsurları ve indirgeme ilişkisini göster.",
+            "Seçeneği parçanın iddiasıyla karşılaştır; dış bilgiyi metnin yerine koyma."
+          ],
+          "title": "Varlık Felsefesi: Soruyu ve İndirgeme Yönünü Tanı",
+          "topics": [
+            "Varlık felsefesi"
+          ]
         }
       ],
       "readingSources": [
@@ -1889,7 +3909,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Felsefe",
       "units": [
         {
@@ -2024,6 +4044,114 @@
           "topics": [
             "İslam ve ibadet"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT_DinKulturu-0002",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT_DinKulturu.pdf · PDF s. 13 · İslam’da Bilgi Kaynakları",
+              "explanation": "Furkan Kur'an'daki açıklamaya dayanır: sadık haber. Zeynep düşünerek gerekçe kurar: selim akıl. Efe gözlem örneği verir: salim duyu. Görseldeki sütun sırası ayrıca kontrol edildi; bu sıra C seçeneğindedir.",
+              "sourceFingerprint": "7f9087081ac7b19756ba12f2c5186e53d43bb4778823f1c011a503bdb478d78c",
+              "sourceLabel": "İslam’da Bilgi Kaynakları",
+              "year": "2024"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "sb-40141",
+              "evidenceRef": "OGM Soru Bankası · 9.1.1: 9.1.1. İslam’da bilginin kaynaklarını açıklar.",
+              "explanation": "Görselde I kusursuz duyularla algılama, II verileri akılla işleme, III peygamberlerden gelen haber altı çizilidir. Salim duyular–selim akıl–vahiy sırası A'dır. Yalnız anahtarları bilmek değil numaralı işlevleri eşleştirmek gerekir.",
+              "sourceFingerprint": "44d8314e529bffd7879dc696411ce6d1012afb76319a17ef7081d3f03de48de4",
+              "sourceLabel": "Bilgi ve İnanç",
+              "year": ""
+            }
+          ],
+          "id": "bilgi-inanc",
+          "learn": [
+            "Bu dersin İslam düşüncesi çerçevesinde bilgi kaynakları selim akıl, salim duyular ve sadık haberdir. Duyular gözlem verisini sağlar; akıl bu veriyi işleyip sonuç çıkarır; sadık haber güvenilir aktarımı ve vahyi kapsar. Aynı öğrenmede birden fazla kaynak birlikte işleyebilir.",
+            "Soruda kişinin ne yaptığına bak: gözlemliyor mu, gerekçelendiriyor mu, bir habere veya vahye mi dayanıyor? Bir iddianın kaynağı ile herkes için bağlayıcı oluşu da aynı soru değildir. Kaynak anlatımı, sezgi ve rüya gibi kişisel yaşantıları genel geçer bilgiyle aynı düzeyde ele almaz."
+          ],
+          "patterns": [
+            {
+              "id": "islemden-kaynaga",
+              "logic": "Kişinin eylemini gözlem, çıkarım veya güvenilir aktarım olarak tanımla.",
+              "mini": {
+                "answer": "Akıl yürütme. Dinî bir bağlamda bulunması bütün düşünme işlemlerini doğrudan vahye dayanma yapmaz.",
+                "question": "Bir öğrenci bir davranışın sonuçlarını düşünüp gerekçe kuruyor. Hangi işlem öne çıkıyor?"
+              },
+              "recognize": "Konuşmalar veya kısa örnekler bilgi kaynağıyla eşleştirilir.",
+              "tip": "Sonuçtan önce o sonuca ulaşma yolunu bul.",
+              "title": "Kişi ne yaparak biliyor?",
+              "trap": "Ders din olduğu için bütün örnekleri vahiy saymak."
+            },
+            {
+              "id": "sira-tablosu",
+              "logic": "Önce seçeneklerden bağımsız eşleştirmeyi yaz; sonra tam sırayı karşılaştır.",
+              "mini": {
+                "answer": "Salim duyu, selim akıl, sadık haber/vahiy. Sütun sırası değişirse cevabı da yeniden eşleştirmen gerekir.",
+                "question": "I gözlem, II akılla değerlendirme, III vahiy ise sırayı nasıl kurarsın?"
+              },
+              "recognize": "Kişi adları veya I–II–III bölümleri sütunlarda verilir.",
+              "tip": "Her sütunu kişinin adı veya numarasıyla takip et.",
+              "title": "Doğru kavramları doğru sütuna koy",
+              "trap": "Üç doğru kavramı görünce sıra değişimini fark etmemek."
+            },
+            {
+              "id": "gecerlik",
+              "logic": "Kaynağın kişiye özel oluşuyla herkes için bağlayıcı bilgi iddiasını ayır.",
+              "mini": {
+                "answer": "Hayır. Kaynak anlatımı rüyayı kişiye özel, genel geçerliliği olmayan bilgi kaynakları arasında ele alır.",
+                "question": "Birinin gördüğü rüya, bu dersin kaynak anlayışında herkes için ortak ve bağlayıcı bilgi kaynağı sayılır mı?"
+              },
+              "recognize": "Rüya, sezgi, ilham veya nesnel kaynakların geçerliliği sorulur.",
+              "tip": "Bu ayrımı dersin kaynak anlatımındaki çerçeveye göre yap.",
+              "title": "Kişisel yaşantı ile ortak bilgi ölçütü",
+              "trap": "Bir kişinin rüyasını bütün kişiler için bağlayıcı delil saymak."
+            }
+          ],
+          "pitfall": "Bir kişi gözlemden sonra akıl yürütebilir; bu yüzden kişinin bütün etkinliğini tek kaynağa indirgeme. Tablo seçeneklerinde doğru üç kavramı yanlış sırayla seçme.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Duyu verisi ve akıl yürütme birlikte işliyor.",
+              "Akıl hiç kullanılmamıştır.",
+              "Her gözlem doğrudan vahiydir.",
+              "Kişisel rüya bütün sonuçları kanıtlar."
+            ],
+            "explanation": "A · Gözlem duyu verisi sağlar; karşılaştırma ve çıkarımda akıl kullanılır. Bilgi yolları aynı süreçte birlikte çalışabilir.",
+            "question": "Bir öğrenci gözlediği iki olayı karşılaştırarak yeni bir sonuca ulaşıyor. Hangi yorum daha uygundur?"
+          },
+          "sources": [
+            {
+              "catalogId": 92,
+              "page": 7
+            },
+            {
+              "catalogId": 92,
+              "page": 11
+            },
+            {
+              "catalogId": 92,
+              "page": 15
+            },
+            {
+              "catalogId": 92,
+              "page": 17
+            }
+          ],
+          "steps": [
+            "Kökün kaynak, örnek eşleştirmesi veya bilginin geçerliliğini istediğini belirle.",
+            "Her kişinin bilgiye nasıl ulaştığını kendi cümlenle açıkla.",
+            "Gözlem, akıl yürütme ve doğru haber ilişkilerini ayrı eşleştir.",
+            "Tablolu soruda sütun başlıklarını koruyarak bütün sırayı denetle."
+          ],
+          "title": "Bilgi ve İnanç: Kaynağı, İşlemi ve Geçerliliği Ayır",
+          "topics": [
+            "Bilgi ve inanç"
+          ]
         }
       ],
       "readingSources": [
@@ -2068,7 +4196,7 @@
           "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/knrx2znav4a.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Din Kültürü",
       "units": [
         {
@@ -2202,6 +4330,114 @@
           "topics": [
             "Canlıların ortak özellikleri"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-1034",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 390 · Hücre",
+              "explanation": "Koful zarlı organeldir ve ökaryot ayrımını destekler. Ribozom, hücre duvarı veya kamçı iki grupta da örneklenebildiğinden tek başına ayırıcı değildir; B seçilir.",
+              "sourceFingerprint": "9cf0b203fa23424b8720091d573bdfde6e15b62caf53067112e2e5b25ba09907",
+              "sourceLabel": "Hücre",
+              "year": "2019"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-biyoloji-16-01",
+              "evidenceRef": "kaynaklar/ogm-materyal/Biyoloji/TYT/3 Adim Soru Bankasi - TYT Biyoloji.pdf · PDF s. 43 · Hücrenin Yapısı ve Kısımları",
+              "explanation": "Madde geçişinin kontrolü ve çevrenin algılanması II ve III'ü destekler. I'in bütün hücrelerde aynı yapı iddiası, hücreye özgüllükle uyuşmaz. Bu nedenle D seçilir.",
+              "sourceFingerprint": "9809cdd4361861db7866b52fcbd62e915b3354670e8efab6370c03cf6fde4191",
+              "sourceLabel": "Hücre",
+              "year": ""
+            }
+          ],
+          "id": "hucre-yapisi",
+          "learn": [
+            "Hücreleri karşılaştırırken bir özelliğin hem prokaryot hem ökaryotta bulunup bulunmadığını kontrol et. Ribozom bulunması tek başına ökaryotluk kanıtı değildir. Zarla çevrili çekirdek veya zarlı organel, bu ayrımda daha seçici bilgidir. Tek hücreli olmak da prokaryotlukla aynı şey değildir.",
+            "Hücre zarının ortak yapısı, bütün hücrelerdeki molekül dağılımının özdeş olduğu anlamına gelmez. Glikoprotein ve glikolipitler tanıma ve özgüllükte rol alır. Yapı–görev ilişkisini öğren; “her”, “bütün” ve “aynı” gibi kapsam sözcüklerini ayrıca sınayarak karar ver."
+          ],
+          "patterns": [
+            {
+              "id": "ayirici-yapi",
+              "logic": "Özelliğin karşı grupta bulunabilmesini test et; ortak özellik tanı koydurmaz.",
+              "mini": {
+                "answer": "Hayır. Prokaryotlar da ribozom taşır. Zarlı organel veya çekirdek gibi ayırıcı kanıt aranır.",
+                "question": "Bir tek hücreli canlıda ribozom görülmesi ökaryotluğu kesinleştirir mi?"
+              },
+              "recognize": "Bir hücrenin ökaryot olduğunu gösteren gözlem aranır.",
+              "tip": "Ribozom zarsızdır; zarlı organel ayrımıyla karıştırma.",
+              "title": "Ortak mı, ayırıcı mı?",
+              "trap": "Protein sentezi yapmayı yalnız ökaryotlara ait sanmak."
+            },
+            {
+              "id": "yapi-gorev",
+              "logic": "Yapının hangi işi yaptığına bak; işlevden zorunlu olmayan başka özellikler çıkarma.",
+              "mini": {
+                "answer": "Hayır. Ortak temel bileşen, aynı miktar ve dağılımı gerektirmez; hücreye özgüllük korunabilir.",
+                "question": "İki hücre de zarında protein içeriyorsa zar proteinlerinin dağılımı zorunlu olarak aynı mıdır?"
+              },
+              "recognize": "Zar molekülleri veya organel görevi öncüllerde verilir.",
+              "tip": "Ribozomun protein sentezi görevi, zarlı organel olduğu anlamına gelmez.",
+              "title": "Yapıyı işleviyle eşleştir",
+              "trap": "Aynı görevi veya temel bileşimi tüm ayrıntılarıyla özdeş yapı sanmak."
+            },
+            {
+              "id": "kapsam-kontrolu",
+              "logic": "Genellemenin kapsamını belirle; istisna veya karşı örnek varsa mutlak iddiayı reddet.",
+              "mini": {
+                "answer": "Ökaryot tek hücrelilerin varlığı karşı örnektir. Hücre sayısı, çekirdek/zar yapısını tek başına belirlemez.",
+                "question": "“Bütün tek hücreliler prokaryottur.” iddiasını nasıl sınarsın?"
+              },
+              "recognize": "Öncüllerde tüm hücreler, aynıdır veya yalnız gibi ifadeler bulunur.",
+              "tip": "Tek hücrelilik ile prokaryotluk aynı sınıflandırma değildir.",
+              "title": "Her ve bütün iddiasını sına",
+              "trap": "Bir grupta gördüğün özelliği bütün canlılara taşımak."
+            }
+          ],
+          "pitfall": "Hücre duvarı, kamçı veya ribozom görmek tek başına ökaryotluğu kanıtlamaz. Aynı temel moleküllere sahip olmak, bunların bütün hücrelerde aynı miktar ve dağılımda bulunması demek değildir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Ribozom taşıması",
+              "Hücre zarına sahip olması",
+              "Zarla çevrili bir organel taşıması",
+              "Protein sentezi yapması"
+            ],
+            "explanation": "C · Zarlı organel ökaryot yapıyı destekler. Diğer özellikler prokaryotlarda da bulunduğundan iki grubu tek başına ayırmaz.",
+            "question": "Hangisi tek başına bir hücrenin ökaryot olduğu sonucunu en güçlü biçimde destekler?"
+          },
+          "sources": [
+            {
+              "catalogId": 22,
+              "page": 50
+            },
+            {
+              "catalogId": 22,
+              "page": 52
+            },
+            {
+              "catalogId": 22,
+              "page": 53
+            },
+            {
+              "catalogId": 22,
+              "page": 56
+            }
+          ],
+          "steps": [
+            "Kökün ortak özelliği mi, ayırıcı özelliği mi, yanlış genellemeyi mi istediğini belirle.",
+            "İddia edilen yapının iki hücre grubunda da bulunup bulunmadığını kontrol et.",
+            "Yapının görevini verilen sonuçla ilişkilendir.",
+            "Her öncüldeki kesinlik ve kapsam sözcüklerini kontrol ederek karşı örnek ara."
+          ],
+          "title": "Hücre ve Organeller: Ortak Özellikten Ayırıcı Kanıta",
+          "topics": [
+            "Hücre ve organeller"
+          ]
         }
       ],
       "readingSources": [
@@ -2211,7 +4447,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-biyoloji/tyt-biyoloji.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Biyoloji",
       "units": [
         {
@@ -2342,6 +4578,110 @@
           "topics": [
             "Atom ve yapısı"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "TYT-0974",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/TYT.pdf · PDF s. 371 · Periyodik Sistem",
+              "explanation": "Be, C ve F aynı periyottadır. Soldan sağa çekirdek yükü arttığı için atom yarıçapı küçülür; Be en büyük yarıçaplıdır. C seçeneği bu karşılaştırmayı doğru kurar.",
+              "sourceFingerprint": "5d116018c4f6990b9f44405e393afb366a82429b2e6f9b6e3b099c344bbb4eb0",
+              "sourceLabel": "Periyodik Sistem",
+              "year": "2018"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-tyt-kimya-18-03",
+              "evidenceRef": "kaynaklar/ogm-materyal/Kimya/TYT/3 Adim Soru Bankasi - TYT Kimya.pdf · PDF s. 47 · Periyodik Sistem",
+              "explanation": "Modern sistemde 7 periyot ve 18 grup bulunur; eşit sayıda grup ve periyot olduğu iddiası C yanlıştır. Yatay/düşey yön ile sıralama ölçütü ayrı denetlenir.",
+              "sourceFingerprint": "797879d709d37f0eaf50c1a5a4dd40e2cf7ad7b78ebaf9161ceb17f08cf2c00e",
+              "sourceLabel": "Periyodik Sistem",
+              "year": ""
+            }
+          ],
+          "id": "periyodik-sistem",
+          "learn": [
+            "Modern periyodik sistemde sıralama atom numarasına göredir. Periyot yatay sıra, grup düşey sütundur. Tarihsel Mendeleyev sınıflamasıyla modern sıralama ölçütünü aynı kabul etme.",
+            "Periyodik özelliklerde önce karşılaştırılan türlerin yerini ve nötr atom/iyon durumunu belirle. Aynı periyotta katman sayısı aynı kalırken çekirdek yükünün artması atom yarıçapının genel olarak küçülmesini açıklar. Aynı grupta aşağıya indikçe katman sayısı artar ve yarıçap büyür. İyonlaşma enerjisinin genel artış eğiliminde istisnalar bulunur; her özelliğe aynı oku uygulama."
+          ],
+          "patterns": [
+            {
+              "id": "konum-siralama",
+              "logic": "Yatay/düşey yönü, atom numarasını ve tarihsel model ayrımını ayrı kontrol et.",
+              "mini": {
+                "answer": "Atom numarası. İzotopların kütle numarası değişse de aynı elementin proton sayısı ve tablo yeri değişmez.",
+                "question": "İki elementin modern tablodaki sırası atom numarası mı, kütle numarası mı temel alınarak belirlenir?"
+              },
+              "recognize": "Modern sistemin kuruluşu veya yerleşim bilgisi sorulur.",
+              "tip": "Modern tabloda atom kütlesi değil atom numarası esas alınır.",
+              "title": "Grup, periyot ve sıralama ölçütü",
+              "trap": "Mendeleyev'in tarihsel ölçütünü modern sisteme aynen taşımak."
+            },
+            {
+              "id": "yaricap",
+              "logic": "Önce katman sayısını, aynı katmandaysa çekirdek yükünü karşılaştır.",
+              "mini": {
+                "answer": "Katman sayısı aynı kalırken çekirdek yükü artar; elektronlar daha güçlü çekilir. Yeni katman eklenmiş olmaz.",
+                "question": "Aynı periyottaki nötr iki atomdan daha sağda olanın yarıçapı genel olarak neden küçülür?"
+              },
+              "recognize": "Atomların büyüklük sırası istenir.",
+              "tip": "Aynı periyotta soldan sağa küçülme, katman sayısının azalmasıyla açıklanmaz.",
+              "title": "Yarıçapı iki etkiyle karşılaştır",
+              "trap": "Atom numarası artan her atomun yarıçapının artacağını düşünmek."
+            },
+            {
+              "id": "ozellik-istisna",
+              "logic": "Elektron koparma, elektron alma ve bağ elektronlarını çekme işlemlerini ayır.",
+              "mini": {
+                "answer": "Hayır. Elektronegatiflik bağ elektronlarını çekme eğilimi; iyonlaşma enerjisi gaz atomundan elektron koparmak için gereken enerjidir.",
+                "question": "Elektronegatiflik ile iyonlaşma enerjisi aynı işlem midir?"
+              },
+              "recognize": "İyonlaşma enerjisi, elektron ilgisi veya elektronegatiflik karşılaştırılır.",
+              "tip": "İyonlaşma enerjisinin periyottaki genel artışı bütün komşularda kesintisiz değildir.",
+              "title": "Özelliğin tanımını ve istisnasını koru",
+              "trap": "Bir özelliğin eğilimini bütün özelliklere ve tüm elementlere uygulamak."
+            }
+          ],
+          "pitfall": "Birinci iyonlaşma enerjisi, elektronegatiflik ve elektron ilgisi farklı tanımlardır. Aynı periyotta bütün değerlerin kesintisiz arttığını veya bütün iyonların nötr atomlarıyla aynı yarıçapı taşıdığını varsayma.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Be > C > F",
+              "F > C > Be",
+              "C > F > Be",
+              "Üçü eşittir."
+            ],
+            "explanation": "A · Aynı periyotta soldan sağa yarıçap genel olarak küçülür. Katman sayısı aynı kalırken çekirdek yükü artar; bu karşılaştırmada Be > C > F olur.",
+            "question": "Aynı periyottaki nötr Be, C ve F atomlarının atom yarıçapı için hangi sıralama uygundur?"
+          },
+          "sources": [
+            {
+              "catalogId": 26,
+              "page": 30
+            },
+            {
+              "catalogId": 26,
+              "page": 34
+            },
+            {
+              "catalogId": 26,
+              "page": 35
+            }
+          ],
+          "steps": [
+            "Atom numarasını, yükü ve karşılaştırılan özelliği ayır.",
+            "Türlerin aynı periyotta mı, aynı grupta mı olduğunu belirle.",
+            "Katman sayısı ile çekirdek çekiminin etkisini ayrı gerekçelendir.",
+            "Özelliğin genel eğilimini ve varsa istisna bilgisini kontrol et; atom ile iyonu karıştırma."
+          ],
+          "title": "Periyodik Sistem: Konumu Bul, Özelliği Gerekçelendir",
+          "topics": [
+            "Periyodik sistem"
+          ]
         }
       ],
       "readingSources": [
@@ -2351,7 +4691,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-kimya/tyt-kimya.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Kimya",
       "units": [
         {
@@ -2379,8 +4719,8 @@
       ]
     }
   ],
-  "lessonCount": 21,
-  "patternCount": 44,
+  "lessonCount": 44,
+  "patternCount": 104,
   "reviewedAt": "2026-10-13",
   "schemaVersion": 1,
   "sources": {
@@ -2439,6 +4779,13 @@
       "sha256": "dac9324ecd9ae1a2712d2ad51cf993ff75c36ea0aea2a1e84065f9f8ad784c35",
       "title": "İSLAM VE İBADET",
       "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/gletfola0pk.pdf"
+    },
+    "92": {
+      "fileUrl": "/api/topic-pdfs/92/file",
+      "pageCount": 39,
+      "sha256": "0b1b24f45b7c6a23c64512543b8ae3b6623d7ff24235fc7b999028bde243142f",
+      "title": "BİLGİ VE İNANÇ",
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/yunpl5pcl5w.pdf"
     }
   },
   "subjectOverview": [
@@ -2676,7 +5023,7 @@
       "exam": "AYT",
       "guideId": "ayt-edebiyat",
       "needsVisualReview": 960,
-      "readyTopics": 1,
+      "readyTopics": 17,
       "records": 7476,
       "sources": [
         {
@@ -2691,7 +5038,7 @@
       "exam": "TYT",
       "guideId": "tyt-biyoloji",
       "needsVisualReview": 864,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 3983,
       "sources": [
         {
@@ -2706,7 +5053,7 @@
       "exam": "TYT",
       "guideId": "tyt-cografya",
       "needsVisualReview": 75,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 3403,
       "sources": [
         {
@@ -2721,7 +5068,7 @@
       "exam": "TYT",
       "guideId": "tyt-din",
       "needsVisualReview": 136,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 863,
       "sources": [
         {
@@ -2771,7 +5118,7 @@
       "exam": "TYT",
       "guideId": "tyt-felsefe",
       "needsVisualReview": 225,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 3370,
       "sources": [
         {
@@ -2786,7 +5133,7 @@
       "exam": "TYT",
       "guideId": "tyt-kimya",
       "needsVisualReview": 898,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 4822,
       "sources": [
         {
@@ -2801,7 +5148,7 @@
       "exam": "TYT",
       "guideId": "tyt-tarih",
       "needsVisualReview": 370,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 4083,
       "sources": [
         {
@@ -2816,7 +5163,7 @@
       "exam": "TYT",
       "guideId": "tyt-turkce",
       "needsVisualReview": 0,
-      "readyTopics": 15,
+      "readyTopics": 17,
       "records": 4093,
       "sources": [
         {
