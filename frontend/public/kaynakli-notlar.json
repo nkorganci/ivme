@@ -1,11 +1,11 @@
 {
   "analysisSummary": {
-    "needsVisualReview": 5792,
-    "primaryPdfPages": 2403,
-    "primaryPdfs": 22,
-    "records": 53019
+    "needsVisualReview": 9230,
+    "primaryPdfPages": 3027,
+    "primaryPdfs": 25,
+    "records": 68944
   },
-  "exampleCount": 87,
+  "exampleCount": 97,
   "groups": [
     {
       "analysis": {
@@ -1526,6 +1526,7 @@
         "sourceTopicCount": 179
       },
       "curriculumId": "edebiyat",
+      "displaySubject": "Türkçe / Edebiyat",
       "exam": "AYT",
       "id": "ayt-edebiyat",
       "inventory": {
@@ -4717,11 +4718,817 @@
           ]
         }
       ]
+    },
+    {
+      "analysis": {
+        "missingText": 926,
+        "needsReview": 4103,
+        "shortOrVisualText": 181,
+        "sourceRecords": 4103,
+        "sourceTopicCount": 35
+      },
+      "curriculumId": "fizik",
+      "exam": "TYT",
+      "id": "tyt-fizik",
+      "inventory": {
+        "CIKMIS": 63,
+        "OGM": 4040
+      },
+      "labelGroups": [
+        "tyt-fizik"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "TYT-0901",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=TYT-0901;veri/sorular-tum.csv#code=TYT-0901",
+              "explanation": "Zaman, sıcaklık ve uzunluğun SI temel birimleri saniye, kelvin ve metredir; B. Soruda verilen günlük birimleri aynen tekrarlamak SI karşılıklarını vermek değildir.",
+              "sourceFingerprint": "58c68d0d339731406b72701fd0ffbde6027cb1ab4e1acc7f6e485e9debed65d4",
+              "sourceLabel": "Fiziksel Niceliklerin Sınıflandırılması",
+              "year": "2020"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-tyt-fizik-01-09",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-fizik.json#id=3a-tyt-fizik-01-09;veri/sorular-ogm.csv#code=3a-tyt-fizik-01-09",
+              "explanation": "Akım şiddetinin birimi amperdir. Elektrik akımı–volt eşleştirmesi yanlıştır; diğer temel niceliklerin birimleri doğru verilmiştir.",
+              "sourceFingerprint": "d98f65a6b93011403af704e3b4e90ac7e4cf6cd167fb7aa6d75bc040cdf851d1",
+              "sourceLabel": "Fizik Bilimine Giriş",
+              "year": ""
+            }
+          ],
+          "id": "fiziksel-nicelikler",
+          "learn": [
+            "Önce ölçülen niceliği adlandır, sonra birimini seç. Günlük hayatta dakika, kilometre ve Celsius kullanılabilir; bunlar SI temel birimi sorulduğunda sırasıyla saniye, metre ve kelvin yerine geçmez. Soru birim adını mı, sayısal dönüşümü mü istiyor, bu ayrımı koru.",
+            "Temel/türetilmiş ile skaler/vektörel farklı sınıflandırmalardır. Temel nicelik diğer niceliklerle tanımlanmaz; vektörel nicelik için büyüklüğe ek olarak yön gerekir. Bir niceliğin türetilmiş olması onu otomatik olarak vektörel yapmaz: sürat türetilmiş ve skalerdir."
+          ],
+          "patterns": [
+            {
+              "id": "birim-eslestirme",
+              "logic": "Önce neyin ölçüldüğünü bul; sonra birim adını veya dönüşümünü belirle.",
+              "mini": {
+                "answer": "3 × 60 = 180 saniye. Yalnız birim adı sorulsaydı cevap saniye olurdu; sayısal dönüşüm ayrı görevdir.",
+                "question": "3 dakika SI temel zaman birimiyle kaçtır?"
+              },
+              "recognize": "Birim eşleştirmesi veya SI karşılığı sorulur.",
+              "tip": "Dakika bir zaman birimidir ama SI temel zaman birimi saniyedir.",
+              "title": "Nicelik ve SI birimi",
+              "trap": "Günlük kullanılan birimi SI temel birimiyle aynı saymak."
+            },
+            {
+              "id": "iki-siniflandirma",
+              "logic": "İki eksen için ayrı karar ver; biri diğerini belirlemez.",
+              "mini": {
+                "answer": "Hayır. Türetilmişlik tanımlama biçimiyle, vektörellik yön gereksinimiyle ilgilidir. Sürat skalerdir.",
+                "question": "Süratin türetilmiş olması vektörel olduğunu gösterir mi?"
+              },
+              "recognize": "Niceliğin sınıfı veya aynı grupta olmayan nicelik sorulur.",
+              "tip": "Sürat, uzunluk/zaman olarak türetilir; yön istemediği için skalerdir.",
+              "title": "Temel/türetilmiş ve skaler/vektörel",
+              "trap": "Türetilmiş bütün nicelikleri vektörel saymak."
+            }
+          ],
+          "pitfall": "Akım şiddetinin SI birimi amperdir; volt potansiyel farkının birimidir. Sürat ile hızın aynı nicelik olduğunu varsayma.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "Volt",
+              "Amper",
+              "Joule",
+              "Newton"
+            ],
+            "explanation": "B · Amper. Volt potansiyel farkı, joule enerji, newton kuvvet birimidir. Önce niceliği adlandırmak benzer elektrik terimlerini ayırır.",
+            "question": "Elektrik akım şiddetinin SI temel birimi hangisidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 25,
+              "page": 14
+            },
+            {
+              "catalogId": 32,
+              "page": 11
+            }
+          ],
+          "steps": [
+            "Sorulan niceliği ve istenen sınıflandırma eksenini belirle.",
+            "Birim eşleştirmesinde SI temel birimiyle günlük kullanılan birimi ayır.",
+            "Sayısal dönüşüm gerekiyorsa dönüşüm katsayısını uygula; yalnız isim soruluyorsa gereksiz hesap yapma.",
+            "Skaler/vektörel kararını yön gereksinimiyle, temel/türetilmiş kararını tanımıyla kontrol et."
+          ],
+          "title": "Fiziksel Nicelikler: Birimi ve Sınıflandırmayı Ayır",
+          "topics": [
+            "Fizik bilimine giriş ve fiziksel nicelikler"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 25,
+          "title": "TYT Fizik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-fizik/tyt-fizik.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Fizik",
+      "units": [
+        {
+          "name": "Temeller ve mekanik",
+          "topics": [
+            "Fizik bilimine giriş ve fiziksel nicelikler",
+            "Madde ve özellikleri",
+            "Hareket ve kuvvet",
+            "İş, güç ve enerji"
+          ]
+        },
+        {
+          "name": "Isı ve akışkanlar",
+          "topics": [
+            "Isı, sıcaklık ve genleşme",
+            "Basınç ve kaldırma kuvveti"
+          ]
+        },
+        {
+          "name": "Elektrik, dalgalar ve optik",
+          "topics": [
+            "Elektrik ve manyetizma",
+            "Dalgalar ve ses",
+            "Optik"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 1430,
+        "needsReview": 6834,
+        "shortOrVisualText": 14,
+        "sourceRecords": 6834,
+        "sourceTopicCount": 27
+      },
+      "curriculumId": "matematik",
+      "exam": "AYT",
+      "id": "ayt-matematik",
+      "inventory": {
+        "CIKMIS": 360,
+        "OGM": 6474
+      },
+      "labelGroups": [
+        "ayt-matematik"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0062",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=AYT_Sayisal-0062;veri/sorular-tum.csv#code=AYT_Sayisal-0062",
+              "explanation": "Görselde f(ax+b)=x ve f(a)=b/a verilidir. ax+b=a için x=1-b/a olduğundan 1-b/a=b/a, yani b/a=1/2 olur. ax+b=0 seçildiğinde f(0)=-b/a=-1/2 bulunur; A. Kesirler özgün görselden kontrol edildi.",
+              "sourceFingerprint": "2f1ce99c627cbc78aa86b92c62a922d66c68e81020d13e14aed203efe18c0d3a",
+              "sourceLabel": "Fonksiyonlar",
+              "year": "2018"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-matematik-19-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-matematik.json#id=3a-ayt-matematik-19-02;veri/sorular-ogm.csv#code=3a-ayt-matematik-19-02",
+              "explanation": "-x²+2mx-3 için Δ=4m²-12 olur. İki farklı gerçek kök için m²>3 gerekir. -√5 bunu sağlar; -√3 eşitlik verdiği için teğetliktir. A seçilir.",
+              "sourceFingerprint": "985f36b0e3a3ac6691305d9af9f3a40e5717b3843ae8298aa151c453c3eafb1b",
+              "sourceLabel": "Fonksiyonlarda Uygulamalar",
+              "year": ""
+            }
+          ],
+          "id": "fonksiyon-girdi-grafik",
+          "learn": [
+            "f(ax+b) gibi bir ifadede fonksiyonun girdisi x değil, parantezin tamamıdır. f(0) isteniyorsa ax+b=0 olacak x değerini seç. Girdi ile çıktıyı ayrı yazmak sembolleri rastgele yerine koymayı önler.",
+            "Grafikte x eksenini kesme, f(x)=0 denkleminin gerçek köküyle ilişkilidir. İkinci derecede a≠0 koşulunu koru: Δ>0 iki farklı gerçek kök, Δ=0 teğetlik, Δ<0 gerçek kök olmamasıdır. Tepe noktasının yatay koordinatı -b/(2a), düşey koordinatı ise f(-b/(2a)) olur; bunlar farklı sayılardır."
+          ],
+          "patterns": [
+            {
+              "id": "girdi-esleme",
+              "logic": "Fonksiyona giren ifadeyi hedef sayıya eşitle; çıkan x'i sonuç tarafına taşı.",
+              "mini": {
+                "answer": "2x+3=7 için x=2 olur; dolayısıyla f(7)=2. Doğrudan x=7 yazmak farklı bir girdiyi hesaplar.",
+                "question": "f(2x+3)=x ise f(7) nasıl bulunur?"
+              },
+              "recognize": "f(ax+b) verilip f(0), f(a) veya başka bir değer istenir.",
+              "tip": "Girdi ve çıktı için iki sütun düşün; aynı sembolü aynı rol sanma.",
+              "title": "Hedef girdiyi parantezde kur",
+              "trap": "Parantezdeki ifadeyi hesaplamadan x yerine hedef değeri yazmak."
+            },
+            {
+              "id": "grafik-kok",
+              "logic": "f(x)=0 kur; ikinci dereceyse diskriminantın işaretini istenen kesişim sayısına bağla.",
+              "mini": {
+                "answer": "Hayır. (x-2)²=0 çift katlı tek kök verir; Δ=0 ve grafik teğettir.",
+                "question": "x²-4x+4 parabolü x eksenini iki farklı noktada keser mi?"
+              },
+              "recognize": "Parabolün ekseni iki noktada kesmesi, teğetliği veya hiç kesmemesi sorulur.",
+              "tip": "İki farklı nokta kesin eşitsizlik ister: Δ>0.",
+              "title": "Kesişimi kök koşuluna çevir",
+              "trap": "Δ=0 durumunu iki farklı kesişim saymak."
+            },
+            {
+              "id": "tepe-noktasi",
+              "logic": "Önce r=-b/(2a), sonra k=f(r) bul; a'nın işaretiyle ekstremum türünü belirle.",
+              "mini": {
+                "answer": "3. Bu değerin alındığı x=2'dir; tepe noktası (2,3), simetri ekseni x=2 olur.",
+                "question": "f(x)=(x-2)²+3 için en küçük değer 2 mi, 3 mü?"
+              },
+              "recognize": "Tepe noktası, simetri ekseni veya en büyük/en küçük değer sorulur.",
+              "tip": "r yatay konum, k fonksiyon değeridir.",
+              "title": "Koordinat ile en küçük değeri ayır",
+              "trap": "-b/(2a) sonucunu doğrudan en küçük değer diye vermek."
+            }
+          ],
+          "pitfall": "f(ax+b)=x bilgisinden f(x)=x sonucunu çıkarma. İki farklı kesişim için Δ≥0 yeterli değildir; eşitlik teğetliği verir.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "6",
+              "8",
+              "10",
+              "14"
+            ],
+            "explanation": "B · 3x-1=5 için x=2 olur. Çıktı 2·2+4=8'dir. 5'i doğrudan x yerine yazmak f(14)'ü hesaplar.",
+            "question": "f(3x-1)=2x+4 olduğuna göre f(5) kaçtır?"
+          },
+          "sources": [
+            {
+              "catalogId": 35,
+              "page": 11
+            },
+            {
+              "catalogId": 35,
+              "page": 12
+            },
+            {
+              "catalogId": 35,
+              "page": 16
+            }
+          ],
+          "steps": [
+            "Verilen fonksiyon girdisini ve istenen değeri ayrı yaz.",
+            "Hedef girdiye ulaşmak için parantezi eşitle; gerekli x değerini bul.",
+            "Grafik/kök sorusunda önce derece ve katsayı koşullarını kontrol et; sonra uygun denklem veya diskriminantı kur.",
+            "Bulduğun sonucu başlangıç koşullarına geri koy; tepe noktasının koordinatlarını ve eşitsizliğin kesinliğini koru."
+          ],
+          "title": "Fonksiyonlar: Girdi, Grafik ve Kök İlişkisi",
+          "topics": [
+            "Fonksiyonlar",
+            "Parabol"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 35,
+          "title": "AYT Matematik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-matematik/ayt-matematik.pdf"
+        }
+      ],
+      "readyTopicCount": 2,
+      "subject": "Matematik",
+      "units": [
+        {
+          "name": "Cebir ve fonksiyonlar",
+          "topics": [
+            "Temel kavramlar",
+            "Denklemler ve eşitsizlikler",
+            "Fonksiyonlar",
+            "Polinomlar",
+            "Parabol",
+            "Üstel ve logaritmik fonksiyonlar",
+            "Diziler"
+          ]
+        },
+        {
+          "name": "Trigonometri ve analiz",
+          "topics": [
+            "Trigonometri",
+            "Limit ve süreklilik",
+            "Türev",
+            "İntegral"
+          ]
+        },
+        {
+          "name": "Sayma ve geometri",
+          "topics": [
+            "Sayma ve olasılık",
+            "Analitik geometri",
+            "Çember ve daire",
+            "Uzay geometri"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 835,
+        "needsReview": 4988,
+        "shortOrVisualText": 52,
+        "sourceRecords": 4988,
+        "sourceTopicCount": 43
+      },
+      "curriculumId": "fizik",
+      "exam": "AYT",
+      "id": "ayt-fizik",
+      "inventory": {
+        "CIKMIS": 126,
+        "OGM": 4862
+      },
+      "labelGroups": [
+        "ayt-fizik"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0350",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=AYT_Sayisal-0350;veri/sorular-tum.csv#code=AYT_Sayisal-0350",
+              "explanation": "Köpeğin konumu 100 m KD ile 60 m batı vektörlerinin toplamı; Ahmet'in konumu 60 m batıdır. Köpek–Ahmet farkında ortak batı vektörleri sadeleşir; kalan yer değiştirme 100 m KD'dir, D. Yön şeması görselden kontrol edildi.",
+              "sourceFingerprint": "aa8a0e825f48c7ef9ead440ed476c3a14f9ddb91e2b7b815e69cc6bdb6ffce68",
+              "sourceLabel": "Vektörler",
+              "year": "2023"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-fizik-01-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-fizik.json#id=3a-ayt-fizik-01-01;veri/sorular-ogm.csv#code=3a-ayt-fizik-01-01",
+              "explanation": "Görselden K=(3,-1), M=(3,1), L=(2,2), N=(2,-2) kare birimi okunur. K ve M'nin büyüklükleri √10 ile eşit; L ve N yönce farklıdır. M'nin √10 büyüklüğü L'nin √8 büyüklüğünden farklıdır. Yalnız I, A doğrudur.",
+              "sourceFingerprint": "3d3755d4c3f3ccda448535599018d3eb8ac453a530ba78aff4a84be35b7573c5",
+              "sourceLabel": "Kuvvet ve Hareket",
+              "year": ""
+            }
+          ],
+          "id": "vektorler",
+          "learn": [
+            "Vektör eşitliği için hem büyüklük hem yön eşit olmalıdır; yalnız uzunlukların eşitliği yeterli değildir. Serbest vektörlerde başlangıç noktalarının farklı olması eşitliği bozmaz. Doğrultu ve yön de farklı kavramlardır: doğu-batı aynı doğrultunun iki ters yönüdür.",
+            "Toplamada vektörleri yönlerini değiştirmeden uç uca ekleyebilir veya bileşenlerini toplayabilirsin. Bir kişinin diğerine göre yer değiştirmesi, son konum vektörlerinden birinin diğerinden çıkarılmasıyla bulunur. Ortak hareketler bu farkta sadeleşebilir."
+          ],
+          "patterns": [
+            {
+              "id": "esitlik-buyukluk",
+              "logic": "Bileşenleri karşılaştır; büyüklükte kareleri, vektör eşitliğinde işaretleri de koru.",
+              "mini": {
+                "answer": "Hayır. Her ikisinin büyüklüğü √8 olsa da y bileşenlerinin işareti farklıdır; vektörler eşit değildir.",
+                "question": "(2,2) ve (2,-2) vektörleri eşit midir?"
+              },
+              "recognize": "Vektör eşitliği veya mutlak değer eşitliği içeren öncüller verilir.",
+              "tip": "(3,1) ile (3,-1) aynı büyüklükte, farklı yöndedir.",
+              "title": "Vektör mü eşit, yalnız büyüklük mü?",
+              "trap": "Aynı uzunluktaki bütün okları eşit vektör saymak."
+            },
+            {
+              "id": "bileske",
+              "logic": "x ve y toplamlarını ayrı bul; dik bileşenler kalırsa Pisagor uygula.",
+              "mini": {
+                "answer": "Hayır. Bileşke (3,4), büyüklüğü √(9+16)=5'tir. 7 ancak aynı yönlü doğrusal toplamda elde edilirdi.",
+                "question": "(3,0)+(0,4) toplamının büyüklüğü 7 midir?"
+              },
+              "recognize": "Bileşke veya toplamın büyüklüğü sorulur.",
+              "tip": "Ters yönlü eşit bileşenler önce sadeleşir.",
+              "title": "Bileşenleri işaretle topla",
+              "trap": "Okların büyüklüklerini yönlerine bakmadan toplamak."
+            },
+            {
+              "id": "konum-farki",
+              "logic": "Aynı başlangıca göre konumları yaz; hedef eksi başlangıç konumunu al.",
+              "mini": {
+                "answer": "Hayır. (B+T)-(A+T)=B-A olur. Ortak öteleme farkı değiştirmez.",
+                "question": "İki konum A+T ve B+T ise aralarındaki yer değiştirme T'ye bağlı mıdır?"
+              },
+              "recognize": "İki hareketlinin son konumu veya aralarındaki en kısa mesafe sorulur.",
+              "tip": "İki konuma da eklenen aynı vektör farkta yok olur.",
+              "title": "Bir noktadan diğerine en kısa yer değiştirme",
+              "trap": "Hareketlilerin bütün yollarını birbirine eklemek."
+            }
+          ],
+          "pitfall": "Vektörlerin büyüklüklerini toplamak genellikle bileşkeyi vermez. Mutlak değer işaretiyle vektör eşitliği aynı bilgi değildir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Doğuya 8",
+              "Batıya 8",
+              "Doğuya 4",
+              "Batıya 4"
+            ],
+            "explanation": "C · Doğu pozitif alınırsa 6+(-2)=4 olur. İşaret yönü, mutlak değer büyüklüğü verir.",
+            "question": "Bir vektör doğuya 6 birim, diğeri batıya 2 birimdir. Toplamları hangisidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 32,
+              "page": 12
+            },
+            {
+              "catalogId": 32,
+              "page": 13
+            },
+            {
+              "catalogId": 32,
+              "page": 14
+            },
+            {
+              "catalogId": 32,
+              "page": 16
+            }
+          ],
+          "steps": [
+            "Eksenleri ve pozitif yönleri belirle; her oku başlangıç ve bitişiyle oku.",
+            "Bileşenleri işaretleriyle yaz; eşitlik sorusunda yönü, büyüklük sorusunda uzunluğu kontrol et.",
+            "Toplam/fark işlemini bileşenler üzerinde yap; farkta çıkarılan vektörün işaretini değiştir.",
+            "Sonucun hem büyüklüğünü hem yönünü belirt; alınan yol ile yer değiştirmeyi ayır."
+          ],
+          "title": "Vektörler: Büyüklük, Yön ve Bileşke",
+          "topics": [
+            "Vektörler"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 32,
+          "title": "AYT Fizik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-fizik/ayt-fizik.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Fizik",
+      "units": [
+        {
+          "name": "Kuvvet ve hareket",
+          "topics": [
+            "Vektörler",
+            "Bağıl hareket",
+            "Newton’ın hareket yasaları",
+            "Sabit ivmeli hareket ve atışlar",
+            "İş, enerji ve güç",
+            "İtme ve momentum",
+            "Tork ve denge"
+          ]
+        },
+        {
+          "name": "Elektrik ve manyetizma",
+          "topics": [
+            "Elektrik alan ve potansiyel",
+            "Sığa ve kondansatörler",
+            "Manyetik alan ve kuvvet",
+            "Elektromanyetik indüksiyon",
+            "Alternatif akım ve transformatörler"
+          ]
+        },
+        {
+          "name": "Dalgalar ve modern fizik",
+          "topics": [
+            "Çembersel hareket ve kütle çekim",
+            "Basit harmonik hareket",
+            "Dalgalarda girişim ve kırınım",
+            "Atom ve radyoaktivite",
+            "Modern fizik",
+            "Modern fiziğin teknolojideki uygulamaları"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 1040,
+        "needsReview": 6207,
+        "shortOrVisualText": 14,
+        "sourceRecords": 6207,
+        "sourceTopicCount": 53
+      },
+      "curriculumId": "kimya",
+      "exam": "AYT",
+      "id": "ayt-kimya",
+      "inventory": {
+        "CIKMIS": 117,
+        "OGM": 6090
+      },
+      "labelGroups": [
+        "ayt-kimya"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "B",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0476",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/AYT_Sayisal.pdf · PDF s. 165 · Atomun Kuantum Modeli",
+              "explanation": "B atomunun temel hâl dizilimi 1s²2s²2p¹ olur. ℓ=0 s orbitallerini gösterir; 1s ve 2s'te toplam dört elektron vardır. B bu nedenle doğrudur; ikinci katmanın bütün elektronlarını aynı alt kabukta sayma.",
+              "sourceFingerprint": "40f0dec5eaf1486d92bddef9d40b8821410f9e412cc3a76a80aa7361043edd43",
+              "sourceLabel": "Atomun Kuantum Modeli",
+              "year": "2019"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "sb-6620",
+              "evidenceRef": "OGM Soru Bankası · 11.1.2.1: 11.1.2.1.- Nötr atomların elektron dizilimleriyle periyodik sistemdeki yerleri arasında ilişki kurar.",
+              "explanation": "D'de p orbitallerinin doluluğu 2,2,0 biçimindedir. Eş enerjili üçüncü orbital boşken ikinci eşleşme yapılması Hund kuralına uymaz. Önce 1,1,1, sonra 2,1,1 düzeni oluşmalıdır.",
+              "sourceFingerprint": "c93bebb08715fd513609ff096143105c4731ac627e170408d4b9cce16ab79b61",
+              "sourceLabel": "Modern Atom Teorisi",
+              "year": ""
+            }
+          ],
+          "id": "kuantum-elektron",
+          "learn": [
+            "Baş kuantum sayısı n enerji katmanını, açısal momentum sayısı ℓ alt kabuğu, manyetik kuantum sayısı mℓ orbital seçimini gösterir. ℓ=0 s, ℓ=1 p, ℓ=2 d alt kabuğudur. Bir orbital en çok iki, s alt kabuğu iki, p alt kabuğu altı elektron alabilir; orbital sayısıyla elektron sayısını karıştırma.",
+            "Elektron dizilimini kurmadan bir kuantum sayısını taşıyan elektronları sayma. Hund kuralında eş enerjili orbitaller önce birer elektronla dolar, sonra eşleşme başlar. Pauli ilkesi bir orbitaldeki iki elektronun spinlerinin zıt olmasını gerektirir."
+          ],
+          "patterns": [
+            {
+              "id": "kuantum-sayim",
+              "logic": "Dizilimi kur; koşulu sağlayan bütün dolu alt kabukları ve orbitalleri tara.",
+              "mini": {
+                "answer": "Dört. 1s'teki iki ve 2s'teki iki elektron sayılır; 2p elektronlarında ℓ=1'dir.",
+                "question": "1s²2s²2p² diziliminde ℓ=0 olan kaç elektron vardır?"
+              },
+              "recognize": "Belirli n, ℓ veya mℓ değerine sahip elektron sayısı sorulur.",
+              "tip": "ℓ=0, bütün s orbitallerini kapsar; tek katmanla sınırlandırılmaz.",
+              "title": "Kuantum koşulunu sağlayan elektronları say",
+              "trap": "Baş kuantum sayısıyla alt kabuk türünü birbirine karıştırmak."
+            },
+            {
+              "id": "orbital-kurallari",
+              "logic": "Önce aynı orbitaldeki spinleri, sonra eş enerjili orbitallere yerleşim sırasını kontrol et.",
+              "mini": {
+                "answer": "Üçüncü eş enerjili orbital boşken eşleşme yapılmıştır; Hund kuralı bozulur. Her çiftin zıt spinli olması bu sorunu ortadan kaldırmaz.",
+                "question": "p⁴ yerleşimi 2,2,0 ise hangi sorunu görürsün?"
+              },
+              "recognize": "Orbital şemasında hangi kuralın bozulduğu sorulur.",
+              "tip": "p⁴ için temel hâl yerleşimi 2,1,1'dir; hangi orbitalin eşleştiği tek başına ihlal değildir.",
+              "title": "Hund ile Pauli'yi ayrı denetle",
+              "trap": "Orbitalde iki elektron görmekle Hund ihlali olduğunu söylemek."
+            }
+          ],
+          "pitfall": "ℓ=0 olan elektronlar yalnız 1s'te bulunmaz; 2s, 3s gibi bütün dolu s orbitallerindeki elektronlar da sayılır. Spin için kesin bir dağılım uydurma; verilen şemaya ve koşullara bağlı kal.",
+          "practice": {
+            "answer": 3,
+            "choices": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ],
+            "explanation": "D · s orbitallerinde ℓ=0'dır. 1s² ve 2s² birlikte dört elektron içerir; 2p¹ bu sayıya eklenmez.",
+            "question": "1s²2s²2p¹ diziliminde ℓ=0 değerine sahip kaç elektron vardır?"
+          },
+          "sources": [
+            {
+              "catalogId": 33,
+              "page": 13
+            },
+            {
+              "catalogId": 33,
+              "page": 14
+            },
+            {
+              "catalogId": 33,
+              "page": 16
+            }
+          ],
+          "steps": [
+            "Atomun proton sayısını, yükünü ve temel/uyarılmış hâl koşulunu ayır.",
+            "Uygun elektron sayısıyla dizilimi kur; katman, alt kabuk ve orbital düzeylerini ayrı göster.",
+            "İstenen kuantum sayısı koşulunu sağlayan dolu orbitallerdeki elektronları say.",
+            "Orbital şemasında Pauli ve Hund koşullarını birbirinden bağımsız kontrol et."
+          ],
+          "title": "Modern Atom Teorisi: Kuantum Sayısından Elektron Sayısına",
+          "topics": [
+            "Modern atom teorisi",
+            "Periyodik sistem ve elektron dizilimi"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 33,
+          "title": "AYT Kimya Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-kimya/ayt-kimya.pdf"
+        }
+      ],
+      "readyTopicCount": 2,
+      "subject": "Kimya",
+      "units": [
+        {
+          "name": "Atom ve madde",
+          "topics": [
+            "Modern atom teorisi",
+            "Periyodik sistem ve elektron dizilimi",
+            "Gazlar",
+            "Sıvı çözeltiler ve çözünürlük"
+          ]
+        },
+        {
+          "name": "Tepkimeler",
+          "topics": [
+            "Tepkimelerde enerji",
+            "Tepkime hızı",
+            "Kimyasal denge",
+            "Asit-baz dengesi",
+            "Çözünürlük dengesi",
+            "Kimya ve elektrik"
+          ]
+        },
+        {
+          "name": "Organik kimya ve enerji",
+          "topics": [
+            "Karbon kimyasına giriş",
+            "Hidrokarbonlar",
+            "Organik bileşikler",
+            "Enerji kaynakları ve sürdürülebilirlik"
+          ]
+        }
+      ]
+    },
+    {
+      "analysis": {
+        "missingText": 954,
+        "needsReview": 4917,
+        "shortOrVisualText": 1,
+        "sourceRecords": 4917,
+        "sourceTopicCount": 30
+      },
+      "curriculumId": "biyoloji",
+      "exam": "AYT",
+      "id": "ayt-biyoloji",
+      "inventory": {
+        "CIKMIS": 117,
+        "OGM": 4800
+      },
+      "labelGroups": [
+        "ayt-biyoloji"
+      ],
+      "lessons": [
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0589",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/AYT_Sayisal.pdf · PDF s. 196 · Denetleyici ve Düzenleyici Sistem, Duyu Organları",
+              "explanation": "D, akson yapısının iletim hızını etkilemediğini iddia eder. Akson çapı ve miyelin/atlamalı iletim özellikleri hızla ilişkilidir; yanlış ifade D'dir. İmpuls genliğinin eşik üstünde aynı kalması hızın her durumda aynı olduğu anlamına gelmez.",
+              "sourceFingerprint": "e6de74373da7345aa8916706615b4868c58dd79d634439500a0b3277b0288e89",
+              "sourceLabel": "Denetleyici ve Düzenleyici Sistem, Duyu Organları",
+              "year": "2018"
+            },
+            {
+              "answer": "B",
+              "bank": "OGM",
+              "code": "3a-ayt-biyoloji-01-02",
+              "evidenceRef": "kaynaklar/ogm-materyal/Biyoloji/AYT/3 Adim Soru Bankasi - AYT Biyoloji.pdf · PDF s. 13 · Denetleyici ve Düzenleyici Sistem - Sinir Sistemi",
+              "explanation": "Görselde ilk zayıf uyarılarda aksiyon potansiyeli yoktur; sonraki daha güçlü uyarılarda tepe yükseklikleri aynı kalır. II desteklenir, III desteklenmez. Grafik nöron çeşitlerini karşılaştırmadığından I de çıkarılamaz; B.",
+              "sourceFingerprint": "dc6c3fed784b9311e6bad18a575ecc0b6593d0f166849eade16624303faa42de",
+              "sourceLabel": "İnsan Fizyolojisi",
+              "year": ""
+            }
+          ],
+          "id": "impuls-iletimi",
+          "learn": [
+            "Bir nöronda eşik altı uyarı aksiyon potansiyeli oluşturmaz; eşik ve üzerindeki uyarılarda aksiyon potansiyelinin genliği aynı kalır. Daha güçlü uyarının tek impulsu daha büyük yapacağını varsayma. Tepki genliği, impuls sıklığı ve iletim hızı farklı değişkenlerdir.",
+            "İletim hızında akson çapı ve miyelin önemlidir. Kimyasal sinapsta nörotransmitterler reseptörler üzerinden etki eder; gelen her sinyalin sonraki nöronda mutlaka impuls oluşturması gerekmez. Grafik sorusunda yalnız gösterilen değişkenler için çıkarım yap."
+          ],
+          "patterns": [
+            {
+              "id": "esik-genlik",
+              "logic": "İmpuls oluşup oluşmadığını ayrı, oluşan impulsun genliğini ayrı kontrol et.",
+              "mini": {
+                "answer": "Hayır. Tek aksiyon potansiyelinin genliği aynı kalır. Uyarının kodlanmasındaki başka değişkenler genlikle karıştırılmaz.",
+                "question": "Aynı nörona eşik üstünde iki farklı güçlü uyarı verilirse tek impulsun genliği zorunlu olarak büyür mü?"
+              },
+              "recognize": "Artan uyarılara nöronun yanıtı grafik veya öncüllerle sorulur.",
+              "tip": "Eşik üstü uyarı tek aksiyon potansiyelini daha yüksek yapmaz.",
+              "title": "Eşik ile genliği ayır",
+              "trap": "Daha güçlü uyarıya daha büyük impuls çizmek."
+            },
+            {
+              "id": "iletim-hizi",
+              "logic": "Miyelin ve akson çapını denetle; uyarı şiddetini hızın yerine koyma.",
+              "mini": {
+                "answer": "Hayır. Grafikte akson çapı veya iletim süresi ölçülmüyor; bu özellikler ayrıca verilmelidir.",
+                "question": "Bir grafikte yalnız uyarı ve tepki genliği verilmiş. Akson çapını buradan bulabilir misin?"
+              },
+              "recognize": "Nöronların impuls iletim hızları karşılaştırılır.",
+              "tip": "Bir hız karşılaştırması yapısal özellik veya ölçüm bilgisi gerektirir.",
+              "title": "Hız için yapısal kanıt ara",
+              "trap": "Uyarı daha şiddetliyse impuls mutlaka daha hızlı gider demek."
+            },
+            {
+              "id": "sinaps",
+              "logic": "Aksondaki elektriksel yayılımı kimyasal haberci ve reseptör etkileşiminden ayır.",
+              "mini": {
+                "answer": "Hayır. Reseptörler ve hücrenin yanıt koşulları önemlidir; bazı etkiler uyarıcı, bazıları engelleyici olabilir.",
+                "question": "Bir haberci molekülün salınması her nöronda aynı yanıtı garanti eder mi?"
+              },
+              "recognize": "Sinaptik iletim veya her sinyalin sonraki nöronu uyarması sorulur.",
+              "tip": "Kimyasal sinapsta etki, postsinaptik hücrenin reseptör ve eşik koşullarına bağlıdır.",
+              "title": "Akson ile sinapsı ayrı düşün",
+              "trap": "Gelen her impulsun bütün sonraki hücreleri zorunlu uyarması gerektiğini sanmak."
+            }
+          ],
+          "pitfall": "Uyarı şiddetini, impuls genliğini ve iletim hızını aynı büyüklük sanma. “Bir nöron” için verilen ya hep ya hiç ilkesini bütün sinir dokusunun toplam tepkisine doğrudan uygulama.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "İmpuls oluşabilir.",
+              "Her tek impulsun genliği mutlaka artar.",
+              "Uyarı şiddeti ile genlik farklı değişkenlerdir.",
+              "İletim hızı için akson yapısı önemlidir."
+            ],
+            "explanation": "B · Ya hep ya hiç ilkesinde tek aksiyon potansiyelinin genliği eşik üstü uyarıyla zorunlu artmaz. İmpuls sıklığı ve iletim hızı bu genlikle aynı değişken değildir.",
+            "question": "Aynı nöronda eşik üstü uyarı artırıldığında aşağıdaki yargılardan hangisi güvenilmezdir?"
+          },
+          "sources": [
+            {
+              "catalogId": 30,
+              "page": 13
+            },
+            {
+              "catalogId": 30,
+              "page": 14
+            },
+            {
+              "catalogId": 30,
+              "page": 15
+            }
+          ],
+          "steps": [
+            "Kökün uyarı şiddeti, eşik, impuls genliği veya iletim hızı istediğini ayır.",
+            "Grafikte uyarı verilen anlarla aksiyon potansiyeli oluşan anları eşleştir.",
+            "Hız sorusunda akson yapısını; sinaps sorusunda iletim yerini ve uyarıcı/engelleyici etkiyi kontrol et.",
+            "Grafikte ölçülmeyen bir özellik hakkında dış bilgiyle sonuç üretme."
+          ],
+          "title": "Sinir Sistemi: Eşik, Tepki Şiddeti ve İletim Hızı",
+          "topics": [
+            "Sinir sistemi"
+          ]
+        }
+      ],
+      "readingSources": [
+        {
+          "catalogId": 30,
+          "title": "AYT Biyoloji Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-biyoloji/ayt-biyoloji.pdf"
+        }
+      ],
+      "readyTopicCount": 1,
+      "subject": "Biyoloji",
+      "units": [
+        {
+          "name": "İnsan fizyolojisi",
+          "topics": [
+            "Sinir sistemi",
+            "Endokrin sistem",
+            "Duyu organları",
+            "Destek ve hareket sistemi",
+            "Sindirim sistemi",
+            "Dolaşım ve bağışıklık",
+            "Solunum sistemi",
+            "Üriner sistem",
+            "Üreme sistemi ve gelişim"
+          ]
+        },
+        {
+          "name": "Genetik ve enerji",
+          "topics": [
+            "Nükleik asitler",
+            "Genetik şifre ve protein sentezi",
+            "Genetik mühendisliği ve biyoteknoloji",
+            "Fotosentez ve kemosentez",
+            "Hücresel solunum"
+          ]
+        },
+        {
+          "name": "Bitkiler ve ekoloji",
+          "topics": [
+            "Bitki biyolojisi",
+            "Komünite ve popülasyon ekolojisi",
+            "Canlılar ve çevre"
+          ]
+        }
+      ]
     }
   ],
-  "lessonCount": 44,
-  "patternCount": 104,
-  "reviewedAt": "2026-10-13",
+  "lessonCount": 49,
+  "patternCount": 117,
+  "reviewedAt": "2026-10-14",
   "schemaVersion": 1,
   "sources": {
     "22": {
@@ -4745,6 +5552,13 @@
       "title": "TYT-AYT Felsefe Konu Özeti",
       "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
     },
+    "25": {
+      "fileUrl": "/api/topic-pdfs/25/file",
+      "pageCount": 202,
+      "sha256": "599b65802f6477bd07b39068b4919f632fbbd667001d33b1c5a8b9caa888963c",
+      "title": "TYT Fizik Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-fizik/tyt-fizik.pdf"
+    },
     "26": {
       "fileUrl": "/api/topic-pdfs/26/file",
       "pageCount": 96,
@@ -4765,6 +5579,34 @@
       "sha256": "0df06ce03c229c94e9e6e30ce8c7c677c9c4ec3ec28253086cdd44afefe98da8",
       "title": "TYT Türkçe Konu Özeti",
       "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-turkce/tyt-turkce.pdf"
+    },
+    "30": {
+      "fileUrl": "/api/topic-pdfs/30/file",
+      "pageCount": 244,
+      "sha256": "7471557281a7b162e5a92dc8eb62e7575228d882bb5363ad9c38b5945a9dde18",
+      "title": "AYT Biyoloji Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-biyoloji/ayt-biyoloji.pdf"
+    },
+    "32": {
+      "fileUrl": "/api/topic-pdfs/32/file",
+      "pageCount": 282,
+      "sha256": "e098015aebf9ae8ec553d122152d868103ed4f3c7416eab6d841a2617ddb1484",
+      "title": "AYT Fizik Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-fizik/ayt-fizik.pdf"
+    },
+    "33": {
+      "fileUrl": "/api/topic-pdfs/33/file",
+      "pageCount": 158,
+      "sha256": "7d482b12dca966ccec525b32ddf385ff6fa94d876990aa3002a57b870dc492e8",
+      "title": "AYT Kimya Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-kimya/ayt-kimya.pdf"
+    },
+    "35": {
+      "fileUrl": "/api/topic-pdfs/35/file",
+      "pageCount": 140,
+      "sha256": "d71a39a262e58baaf52f58e5360bb8deac06e40f4751ae0781ff042380d29bc0",
+      "title": "AYT Matematik Konu Özeti",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-matematik/ayt-matematik.pdf"
     },
     "39": {
       "fileUrl": "/api/topic-pdfs/39/file",
@@ -4790,10 +5632,11 @@
   },
   "subjectOverview": [
     {
+      "displaySubject": "Biyoloji",
       "exam": "AYT",
-      "guideId": null,
+      "guideId": "ayt-biyoloji",
       "needsVisualReview": 955,
-      "readyTopics": 0,
+      "readyTopics": 1,
       "records": 4917,
       "sources": [
         {
@@ -4805,6 +5648,7 @@
       "subject": "Biyoloji"
     },
     {
+      "displaySubject": "Coğrafya",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 255,
@@ -4820,6 +5664,7 @@
       "subject": "Coğrafya"
     },
     {
+      "displaySubject": "Coğrafya-1",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4835,6 +5680,7 @@
       "subject": "Coğrafya-1"
     },
     {
+      "displaySubject": "Coğrafya-2",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4850,6 +5696,7 @@
       "subject": "Coğrafya-2"
     },
     {
+      "displaySubject": "Din Kültürü",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4900,6 +5747,7 @@
       "subject": "Din Kültürü"
     },
     {
+      "displaySubject": "Felsefe",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4930,6 +5778,7 @@
       "subject": "Felsefe"
     },
     {
+      "displaySubject": "Felsefe Grubu",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4960,10 +5809,27 @@
       "subject": "Felsefe Grubu"
     },
     {
+      "displaySubject": "Fizik",
       "exam": "AYT",
-      "guideId": null,
+      "guideId": "ayt-fizik",
+      "needsVisualReview": 887,
+      "readyTopics": 1,
+      "records": 4988,
+      "sources": [
+        {
+          "catalogId": 32,
+          "title": "AYT Fizik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-fizik/ayt-fizik.pdf"
+        }
+      ],
+      "subject": "Fizik"
+    },
+    {
+      "displaySubject": "Kimya",
+      "exam": "AYT",
+      "guideId": "ayt-kimya",
       "needsVisualReview": 1054,
-      "readyTopics": 0,
+      "readyTopics": 2,
       "records": 6207,
       "sources": [
         {
@@ -4975,6 +5841,23 @@
       "subject": "Kimya"
     },
     {
+      "displaySubject": "Matematik",
+      "exam": "AYT",
+      "guideId": "ayt-matematik",
+      "needsVisualReview": 1444,
+      "readyTopics": 2,
+      "records": 6834,
+      "sources": [
+        {
+          "catalogId": 35,
+          "title": "AYT Matematik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-matematik/ayt-matematik.pdf"
+        }
+      ],
+      "subject": "Matematik"
+    },
+    {
+      "displaySubject": "Tarih",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -4990,6 +5873,7 @@
       "subject": "Tarih"
     },
     {
+      "displaySubject": "Tarih-1",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -5005,6 +5889,7 @@
       "subject": "Tarih-1"
     },
     {
+      "displaySubject": "Tarih-2",
       "exam": "AYT",
       "guideId": null,
       "needsVisualReview": 0,
@@ -5020,6 +5905,7 @@
       "subject": "Tarih-2"
     },
     {
+      "displaySubject": "Türkçe / Edebiyat",
       "exam": "AYT",
       "guideId": "ayt-edebiyat",
       "needsVisualReview": 960,
@@ -5035,6 +5921,7 @@
       "subject": "Türk Dili ve Edebiyatı"
     },
     {
+      "displaySubject": "Biyoloji",
       "exam": "TYT",
       "guideId": "tyt-biyoloji",
       "needsVisualReview": 864,
@@ -5050,6 +5937,7 @@
       "subject": "Biyoloji"
     },
     {
+      "displaySubject": "Coğrafya",
       "exam": "TYT",
       "guideId": "tyt-cografya",
       "needsVisualReview": 75,
@@ -5065,6 +5953,7 @@
       "subject": "Coğrafya"
     },
     {
+      "displaySubject": "Din Kültürü",
       "exam": "TYT",
       "guideId": "tyt-din",
       "needsVisualReview": 136,
@@ -5115,6 +6004,7 @@
       "subject": "Din Kültürü"
     },
     {
+      "displaySubject": "Felsefe",
       "exam": "TYT",
       "guideId": "tyt-felsefe",
       "needsVisualReview": 225,
@@ -5130,6 +6020,23 @@
       "subject": "Felsefe"
     },
     {
+      "displaySubject": "Fizik",
+      "exam": "TYT",
+      "guideId": "tyt-fizik",
+      "needsVisualReview": 1107,
+      "readyTopics": 1,
+      "records": 4103,
+      "sources": [
+        {
+          "catalogId": 25,
+          "title": "TYT Fizik Konu Özeti",
+          "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-fizik/tyt-fizik.pdf"
+        }
+      ],
+      "subject": "Fizik"
+    },
+    {
+      "displaySubject": "Kimya",
       "exam": "TYT",
       "guideId": "tyt-kimya",
       "needsVisualReview": 898,
@@ -5145,6 +6052,7 @@
       "subject": "Kimya"
     },
     {
+      "displaySubject": "Tarih",
       "exam": "TYT",
       "guideId": "tyt-tarih",
       "needsVisualReview": 370,
@@ -5160,6 +6068,7 @@
       "subject": "Tarih"
     },
     {
+      "displaySubject": "Türkçe",
       "exam": "TYT",
       "guideId": "tyt-turkce",
       "needsVisualReview": 0,

@@ -8,7 +8,7 @@ Salt okunur. Tam metinler özel yerel araştırma içindir; öğrenci yayını d
 import argparse
 import json
 
-from kaynakli_arastirma_db import db_connection, json_text, query, status
+from kaynakli_arastirma_db import db_connection, json_text, query, restore_source_text, status
 
 
 def literal(value):
@@ -65,7 +65,10 @@ def inspect(connection, *, question=None, bank=None, topic=None, subject=None,
     observations = query(connection, f"""SELECT coalesce(json_agg(o),'[]') FROM source_research.observations o
       WHERE o.run_key={key} AND o.object_key IN (
         SELECT q.bank || ':' || q.code FROM source_research.question_evidence q WHERE {where})""")
-    return {"runKey": current["runKey"], "totals": totals, "questions": json.loads(rows),
+    questions = json.loads(rows)
+    for row in questions:
+        row["source_text"] = restore_source_text(row)
+    return {"runKey": current["runKey"], "totals": totals, "questions": questions,
             "observations": json.loads(observations), "sampleLimitPerBank": limit,
             "scope": "Kaynak etiketine göre geri çağırma; yeni çözüm veya kalıp doğrulaması değildir."}
 

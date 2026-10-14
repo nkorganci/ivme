@@ -6,6 +6,7 @@ Parola yalnız alt sürecin ortamına aktarılır, komuta veya çıktı dosyası
 """
 
 import argparse
+import base64
 import csv
 import hashlib
 import json
@@ -35,6 +36,28 @@ def sha(value):
 
 def json_text(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def encode_source_text(text):
+    # PostgreSQL text/jsonb NUL kabul etmez. Özgün bytes ve checksum korunur;
+    # okunabilir sütundaki bozuk karakter, tahmin edilen bir sembolle doldurulmaz.
+    if "\0" not in text:
+        return text, {}
+    return text.replace("\0", "\ufffd"), {
+        "originalSourceTextUtf8Base64": base64.b64encode(text.encode("utf-8")).decode("ascii"),
+        "archiveTextEncoding": "NUL_REPLACED_WITH_REPLACEMENT_CHARACTER",
+        "requiresVisualReview": True,
+    }
+
+
+def restore_source_text(row):
+    encoded = row.get("evidence", {}).get("originalSourceTextUtf8Base64")
+    if not encoded:
+        return row["source_text"]
+    original = base64.b64decode(encoded, validate=True).decode("utf-8")
+    if sha(original.encode("utf-8")) != row["text_sha256"]:
+        raise ValueError("Arşivde özgün soru metni checksum'u uyuşmuyor")
+    return original
 
 
 def db_connection(database=None):
@@ -191,6 +214,7 @@ def prepare():
     for key, row in sorted(labels.items()):
         source = questions[key]
         text = source.get("metin") or ""
+        stored_text, text_encoding = encode_source_text(text)
         plain = normalized(text)
         path = APP / "veri/resimler-pilot" / active[key]["image"]
         image_hash = None
@@ -206,19 +230,20 @@ def prepare():
                 cache[cache_key] = {"signature": signature, "sha256": image_hash}
         image_fingerprints.append([*key, image_hash])
         evidence.append({"bank": key[0], "code": key[1], "exam_type": row["exam_type"], "subject": row["subject"],
-                         "proposed_label": row["label"], "source_text": text, "text_sha256": sha(text.encode("utf-8")),
+                         "proposed_label": row["label"], "source_text": stored_text, "text_sha256": sha(text.encode("utf-8")),
                          "image_path": str(path.resolve()) if path.is_file() else None, "image_sha256": image_hash,
                          "extraction_status": "VISUAL_ONLY" if not plain else "SHORT_TEXT" if len(plain) < 40 else "TEXT_AVAILABLE",
                          "inspection_status": "ASSISTANT_TEXT_REVIEWED" if key in examples else "SOURCE_LINKED",
                          "evidence": {**row, "correct_answer": active[key]["correct_answer"],
                                       "source_image": source.get("gorsel"), "source_page": source.get("sayfa"),
-                                      "teacher_approved": False}})
+                                      "teacher_approved": False, **text_encoding}})
     validate_observations(observations, evidence, pages)
     cache_path.write_text(json_text(cache) + "\n", encoding="utf-8")
     inputs = [*paths, notes_path, analysis_path, DDL, OBSERVATIONS,
               *sorted((APP / "ornek-veri/kaynakli-notlar").glob("*.json")),
               *[APP / "scripts" / name for name in ("kaynakli_arastirma_db.py", "analiz_kaynakli_sorular.py",
-                                                    "yayinla_kaynakli_notlar.py", "yayinla_kaynakli_etiketler.py")],
+                                                    "yayinla_kaynakli_notlar.py", "yayinla_kaynakli_etiketler.py",
+                                                    "kaynakli_etiket_sayisal.py")],
               *[APP / "veri" / name for name in ("sorular-tum.csv", "sorular-ogm.csv")],
               APP / "docs/KAYNAKLI_DERS_NOTLARI.md", APP / "docs/KAYNAKLI_SORU_ANALIZI.md"]
     manifest = {str(path.relative_to(APP)): sha(path.read_bytes()) for path in inputs}
@@ -237,6 +262,7 @@ def prepare():
                "missingImages": sum(row["image_sha256"] is None for row in evidence),
                "observations": len(observations),
                "excludedExamples": sum(bool(item["evidence"].get("excludeFromGuides")) for item in observations.values()),
+               "encodedQuestionTexts": sum(bool(row["evidence"].get("archiveTextEncoding")) for row in evidence),
                "teacherApproved": 0}
     return run_key, manifest, summary, notes, analysis, documents, pages, evidence, handoff
 

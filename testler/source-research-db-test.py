@@ -81,6 +81,13 @@ class ResearchArchiveTest(unittest.TestCase):
               AND p.page_number=(s->>'page')::int AND p.has_vector_graphics IS NOT NULL)"""))
         self.assertEqual(missing, 0)
 
+    def test_corrupted_source_glyph_remains_losslessly_recoverable(self):
+        result = inspect(self.connection, question="3a-ayt-fizik-56-04", bank="OGM")
+        self.assertEqual(len(result["questions"]), 1)
+        row = result["questions"][0]
+        self.assertIn("\0", row["source_text"])
+        self.assertTrue(row["evidence"]["requiresVisualReview"])
+
 
 if __name__ == "__main__":
     unittest.main()

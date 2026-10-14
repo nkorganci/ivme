@@ -118,9 +118,11 @@ def build():
 
     catalog = json.loads((ROOT / "veri-hatti/ogm-indirme/katalog.json").read_text(encoding="utf-8"))
     pdfs = []
-    subject_ids = {"turkce", "edebiyat", "tarih", "cografya", "felsefe", "din", "biyoloji", "kimya"}
+    subject_ids = {"turkce", "edebiyat", "tarih", "cografya", "felsefe", "din", "biyoloji", "kimya", "fizik", "matematik"}
     for item in catalog:
         if item["ders"] not in subject_ids or not item.get("dosya"):
+            continue
+        if item["ders"] == "matematik" and item["sinav"] != "AYT":
             continue
         if item["kaynak"] != "MEBİ Konu Özeti" and not (item["ders"] == "din" and item["kaynak"] == "Konu Anlatımı (Video + PDF)"):
             continue

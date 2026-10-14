@@ -100,6 +100,7 @@ def build():
     supplements = APP / "ornek-veri/kaynakli-notlar"
     for path in sorted(supplements.glob("*.json")):
         extra = json.loads(path.read_text(encoding="utf-8"))
+        data["groups"].extend(extra.get("groups", []))
         for group in data["groups"]:
             for unit in group["units"]:
                 additions = extra.get("outlineAdditions", {}).get(group["id"], {}).get(unit["name"], [])
@@ -240,7 +241,8 @@ def build():
         group["readyTopicCount"] = len({topic for lesson in group["lessons"] for topic in lesson["topics"]})
     subject_ids = {"Türkçe": "turkce", "Türk Dili ve Edebiyatı": "edebiyat", "Tarih": "tarih",
                    "Coğrafya": "cografya", "Felsefe": "felsefe", "Felsefe Grubu": "felsefe",
-                   "Din Kültürü": "din", "Biyoloji": "biyoloji", "Kimya": "kimya"}
+                   "Din Kültürü": "din", "Biyoloji": "biyoloji", "Kimya": "kimya",
+                   "Fizik": "fizik", "Matematik": "matematik"}
     overview = []
     for item in analysis["groups"]:
         subject_id = subject_ids[re.sub(r"-[12]$", "", item["subject"])]
@@ -251,6 +253,7 @@ def build():
                    and source["sinav"] in {item["exam"], "TYT-AYT"}
                    and source["id"] in {pdf["catalogId"] for pdf in analysis["primaryLessonPdfs"]}]
         overview.append({"exam": item["exam"], "subject": item["subject"], "records": item["records"],
+                         "displaySubject": ready.get("displaySubject", item["subject"]) if ready else item["subject"],
                          "needsVisualReview": sum(topic["missingText"] + topic["shortOrVisualText"] for topic in item["topics"]),
                          "guideId": ready["id"] if ready else None,
                          "readyTopics": ready["readyTopicCount"] if ready else 0, "sources": reading})

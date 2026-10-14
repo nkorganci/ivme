@@ -27,15 +27,15 @@ OPTIONAL = (
     "source_title", "source_file", "discipline", "label_level", "source_fingerprint",
 )
 SUBJECTS = {
-    "TYT": {"Türkçe", "Tarih", "Coğrafya", "Felsefe", "Din Kültürü", "Biyoloji", "Kimya"},
-    "AYT": {"Türk Dili ve Edebiyatı", "Tarih", "Tarih-1", "Tarih-2", "Coğrafya", "Coğrafya-1", "Coğrafya-2", "Felsefe", "Felsefe Grubu", "Din Kültürü", "Biyoloji", "Kimya"},
+    "TYT": {"Türkçe", "Tarih", "Coğrafya", "Felsefe", "Din Kültürü", "Biyoloji", "Kimya", "Fizik"},
+    "AYT": {"Türk Dili ve Edebiyatı", "Tarih", "Tarih-1", "Tarih-2", "Coğrafya", "Coğrafya-1", "Coğrafya-2", "Felsefe", "Felsefe Grubu", "Din Kültürü", "Biyoloji", "Kimya", "Fizik", "Matematik"},
 }
 SUBJECT_ORDER = {
     "Türkçe": 0, "Türk Dili ve Edebiyatı": 0,
     "Tarih": 1, "Tarih-1": 1, "Tarih-2": 1,
     "Coğrafya": 2, "Coğrafya-1": 2, "Coğrafya-2": 2,
     "Felsefe": 3, "Felsefe Grubu": 3,
-    "Din Kültürü": 4, "Biyoloji": 5, "Kimya": 6,
+    "Din Kültürü": 4, "Biyoloji": 5, "Kimya": 6, "Fizik": 7, "Matematik": 8,
 }
 
 

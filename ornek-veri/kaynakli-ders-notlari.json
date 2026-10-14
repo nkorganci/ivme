@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-13",
+  "reviewedAt": "2026-10-14",
   "groups": [
     {
       "id": "tyt-turkce",
@@ -104,6 +104,7 @@
     },
     {
       "id": "ayt-edebiyat",
+      "displaySubject": "Türkçe / Edebiyat",
       "exam": "AYT",
       "subject": "Türk Dili ve Edebiyatı",
       "curriculumId": "edebiyat",

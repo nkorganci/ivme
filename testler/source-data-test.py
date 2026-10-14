@@ -89,6 +89,24 @@ class LabelPublicationTest(unittest.TestCase):
 
 
 class NoteEvidenceTest(unittest.TestCase):
+    def test_requested_numeric_subjects_have_guides_and_both_source_banks(self):
+        data = json.loads(notes.OUTPUT.read_text(encoding="utf-8"))
+        groups = {group["id"]: group for group in data["groups"]}
+        for group_id in ("tyt-fizik", "ayt-matematik", "ayt-fizik", "ayt-kimya", "ayt-biyoloji"):
+            with self.subTest(group=group_id):
+                group = groups[group_id]
+                self.assertGreater(group["inventory"]["CIKMIS"], 0)
+                self.assertGreater(group["inventory"]["OGM"], 0)
+                self.assertTrue(group["readingSources"])
+                self.assertTrue(group["lessons"])
+                self.assertEqual({example["bank"] for example in group["lessons"][0]["examples"]}, {"CIKMIS", "OGM"})
+
+    def test_ayt_turkish_label_keeps_original_edebiyat_source_identity(self):
+        data = json.loads(notes.OUTPUT.read_text(encoding="utf-8"))
+        group = next(group for group in data["groups"] if group["id"] == "ayt-edebiyat")
+        self.assertIn("Türkçe", group["displaySubject"])
+        self.assertEqual(group["subject"], "Türk Dili ve Edebiyatı")
+
     def test_missing_past_question_requires_explicit_scope(self):
         with self.assertRaises(ValueError):
             notes.check_comparison({"id": "sample"}, {"OGM"})

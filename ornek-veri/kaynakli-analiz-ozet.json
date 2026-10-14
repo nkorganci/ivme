@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "scope": "Etkin yerel envanter; otomatik soru kökü adayları ve temel OGM ders PDF'leri",
-  "records": 53019,
+  "records": 68944,
   "missingSourceRecords": 0,
   "teacherApproved": 0,
   "patternNames": {
@@ -4371,6 +4371,573 @@
     },
     {
       "exam": "AYT",
+      "subject": "Fizik",
+      "records": 4988,
+      "topics": [
+        {
+          "label": "Alternatif Akım",
+          "records": 6,
+          "banks": {
+            "CIKMIS": 6
+          },
+          "distinctReadableText": 6,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 6,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Atom Fiziğine Giriş ve Radyoaktivite",
+          "records": 366,
+          "banks": {
+            "OGM": 366
+          },
+          "distinctReadableText": 366,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 366,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Atom Kavramının Tarihsel Gelişimi",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Açısal Momentum",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Basit Harmonik Hareket",
+          "records": 319,
+          "banks": {
+            "CIKMIS": 9,
+            "OGM": 310
+          },
+          "distinctReadableText": 251,
+          "missingText": 56,
+          "shortOrVisualText": 11,
+          "needsReview": 319,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Basit Makineler",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Bağıl Hareket",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Bir Boyutta Sabit İvmeli Hareket",
+          "records": 5,
+          "banks": {
+            "CIKMIS": 5
+          },
+          "distinctReadableText": 5,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 5,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Büyük Patlama ve Evrenin Oluşumu",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Compton Saçılması ve De Broglie Dalga Boyu",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dalga Mekaniği",
+          "records": 341,
+          "banks": {
+            "OGM": 341
+          },
+          "distinctReadableText": 298,
+          "missingText": 40,
+          "shortOrVisualText": 3,
+          "needsReview": 341,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dalgalarda Kırınım, Girişim ve Doppler Olayı",
+          "records": 7,
+          "banks": {
+            "CIKMIS": 7
+          },
+          "distinctReadableText": 7,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 7,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Denge ve Denge Şartları",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dönerek Öteleme Hareketi",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dönme, Yuvarlanma ve Açısal Momentum",
+          "records": 137,
+          "banks": {
+            "OGM": 137
+          },
+          "distinctReadableText": 103,
+          "missingText": 30,
+          "shortOrVisualText": 4,
+          "needsReview": 137,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Düzgün Elektrik Alan ve Sığa",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Düzgün Çembersel Hareket",
+          "records": 10,
+          "banks": {
+            "CIKMIS": 10
+          },
+          "distinctReadableText": 10,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 10,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektrik ve Manyetizma",
+          "records": 990,
+          "banks": {
+            "OGM": 990
+          },
+          "distinctReadableText": 763,
+          "missingText": 224,
+          "shortOrVisualText": 2,
+          "needsReview": 990,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektriksel Kuvvet ve Elektrik Alan",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektriksel Potansiyel",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektromanyetik Dalgalar",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Enerji ve Hareket",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fizik (Alt Konu Belirsiz)",
+          "records": 4,
+          "banks": {
+            "OGM": 4
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 1,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fotoelektrik Olayı",
+          "records": 5,
+          "banks": {
+            "CIKMIS": 5
+          },
+          "distinctReadableText": 5,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 5,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Görüntüleme Teknolojileri",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kepler Kanunları",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kuvvet ve Hareket",
+          "records": 1750,
+          "banks": {
+            "OGM": 1750
+          },
+          "distinctReadableText": 1339,
+          "missingText": 399,
+          "shortOrVisualText": 12,
+          "needsReview": 1750,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kütle Çekim Kuvveti",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kütle Çekim ve Kepler Yasaları",
+          "records": 97,
+          "banks": {
+            "OGM": 97
+          },
+          "distinctReadableText": 72,
+          "missingText": 20,
+          "shortOrVisualText": 5,
+          "needsReview": 97,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Laser Işınları",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Manyetizma ve Elektromanyetik İndüklenme",
+          "records": 9,
+          "banks": {
+            "CIKMIS": 9
+          },
+          "distinctReadableText": 9,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 9,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Modern Fizik",
+          "records": 340,
+          "banks": {
+            "OGM": 340
+          },
+          "distinctReadableText": 325,
+          "missingText": 0,
+          "shortOrVisualText": 8,
+          "needsReview": 340,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Modern Fiziğin Teknolojideki Uygulamaları",
+          "records": 230,
+          "banks": {
+            "OGM": 230
+          },
+          "distinctReadableText": 222,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 230,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Newton’ın Hareket Yasaları",
+          "records": 7,
+          "banks": {
+            "CIKMIS": 7
+          },
+          "distinctReadableText": 7,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 7,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Radyoaktivite",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Süper İletkenler",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Tork",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Transformatörler",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Vektörler",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Çembersel Hareket",
+          "records": 297,
+          "banks": {
+            "OGM": 297
+          },
+          "distinctReadableText": 225,
+          "missingText": 66,
+          "shortOrVisualText": 6,
+          "needsReview": 297,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Özel Görelilik",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İki Boyutta Hareket",
+          "records": 5,
+          "banks": {
+            "CIKMIS": 5
+          },
+          "distinctReadableText": 5,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 5,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İtme ve Çizgisel Momentum",
+          "records": 6,
+          "banks": {
+            "CIKMIS": 6
+          },
+          "distinctReadableText": 6,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 6,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
       "subject": "Kimya",
       "records": 6207,
       "topics": [
@@ -5089,6 +5656,374 @@
           "missingText": 0,
           "shortOrVisualText": 0,
           "needsReview": 186,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "Matematik",
+      "records": 6834,
+      "topics": [
+        {
+          "label": "Analitik Geometri",
+          "records": 29,
+          "banks": {
+            "CIKMIS": 29
+          },
+          "distinctReadableText": 29,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 29,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Binom",
+          "records": 7,
+          "banks": {
+            "CIKMIS": 7
+          },
+          "distinctReadableText": 7,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 7,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Denklem ve Eşitsizlikler",
+          "records": 402,
+          "banks": {
+            "OGM": 402
+          },
+          "distinctReadableText": 258,
+          "missingText": 0,
+          "shortOrVisualText": 1,
+          "needsReview": 402,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Diziler",
+          "records": 447,
+          "banks": {
+            "CIKMIS": 11,
+            "OGM": 436
+          },
+          "distinctReadableText": 231,
+          "missingText": 181,
+          "shortOrVisualText": 2,
+          "needsReview": 447,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dönüşümler",
+          "records": 9,
+          "banks": {
+            "CIKMIS": 9
+          },
+          "distinctReadableText": 9,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 9,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fonksiyonlar",
+          "records": 311,
+          "banks": {
+            "CIKMIS": 9,
+            "OGM": 302
+          },
+          "distinctReadableText": 95,
+          "missingText": 164,
+          "shortOrVisualText": 0,
+          "needsReview": 311,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fonksiyonlarda Uygulamalar",
+          "records": 438,
+          "banks": {
+            "CIKMIS": 15,
+            "OGM": 423
+          },
+          "distinctReadableText": 406,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 438,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kümeler",
+          "records": 60,
+          "banks": {
+            "CIKMIS": 10,
+            "OGM": 50
+          },
+          "distinctReadableText": 37,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 60,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Mantık",
+          "records": 58,
+          "banks": {
+            "CIKMIS": 9,
+            "OGM": 49
+          },
+          "distinctReadableText": 34,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 58,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Matematik (Alt Konu Belirsiz)",
+          "records": 44,
+          "banks": {
+            "OGM": 44
+          },
+          "distinctReadableText": 26,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 44,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Olasılık",
+          "records": 8,
+          "banks": {
+            "CIKMIS": 8
+          },
+          "distinctReadableText": 8,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 8,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Permütasyon Kombinasyon",
+          "records": 10,
+          "banks": {
+            "CIKMIS": 10
+          },
+          "distinctReadableText": 10,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 10,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Polinomlar",
+          "records": 142,
+          "banks": {
+            "CIKMIS": 11,
+            "OGM": 131
+          },
+          "distinctReadableText": 100,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 142,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Sayma ve Olasılık",
+          "records": 416,
+          "banks": {
+            "OGM": 416
+          },
+          "distinctReadableText": 241,
+          "missingText": 105,
+          "shortOrVisualText": 1,
+          "needsReview": 416,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Temel Kavramlar",
+          "records": 42,
+          "banks": {
+            "CIKMIS": 42
+          },
+          "distinctReadableText": 42,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 42,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Trigonometri",
+          "records": 1398,
+          "banks": {
+            "CIKMIS": 33,
+            "OGM": 1365
+          },
+          "distinctReadableText": 862,
+          "missingText": 416,
+          "shortOrVisualText": 5,
+          "needsReview": 1398,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Trigonometrik Denklemler",
+          "records": 6,
+          "banks": {
+            "CIKMIS": 6
+          },
+          "distinctReadableText": 6,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 6,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Türev",
+          "records": 942,
+          "banks": {
+            "CIKMIS": 39,
+            "OGM": 903
+          },
+          "distinctReadableText": 739,
+          "missingText": 62,
+          "shortOrVisualText": 2,
+          "needsReview": 942,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Uzay Geometri",
+          "records": 11,
+          "banks": {
+            "CIKMIS": 11
+          },
+          "distinctReadableText": 11,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 11,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Vektörler",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Vektörler ve Olasılık",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Çember ve Daire",
+          "records": 16,
+          "banks": {
+            "CIKMIS": 16
+          },
+          "distinctReadableText": 16,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 16,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Üstel ve Logaritmik Fonksiyonlar",
+          "records": 747,
+          "banks": {
+            "CIKMIS": 21,
+            "OGM": 726
+          },
+          "distinctReadableText": 415,
+          "missingText": 279,
+          "shortOrVisualText": 0,
+          "needsReview": 747,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Üçgen, Çokgen, Dörtgen, Özel Dörtgenler",
+          "records": 15,
+          "banks": {
+            "CIKMIS": 15
+          },
+          "distinctReadableText": 15,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 15,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri",
+          "records": 21,
+          "banks": {
+            "CIKMIS": 21
+          },
+          "distinctReadableText": 21,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 21,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İkinci Dereceden Denklemler/ Denklem ve Eşitsizlik Sistemleri",
+          "records": 562,
+          "banks": {
+            "OGM": 562
+          },
+          "distinctReadableText": 342,
+          "missingText": 167,
+          "shortOrVisualText": 2,
+          "needsReview": 562,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İntegral",
+          "records": 691,
+          "banks": {
+            "CIKMIS": 26,
+            "OGM": 665
+          },
+          "distinctReadableText": 533,
+          "missingText": 56,
+          "shortOrVisualText": 1,
+          "needsReview": 691,
           "patternCandidates": {},
           "candidateRefs": {}
         }
@@ -19657,6 +20592,470 @@
     },
     {
       "exam": "TYT",
+      "subject": "Fizik",
+      "records": 4103,
+      "topics": [
+        {
+          "label": "Aydınlanma",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Basınç",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Basınç ve Kaldırma Kuvveti",
+          "records": 501,
+          "banks": {
+            "OGM": 501
+          },
+          "distinctReadableText": 356,
+          "missingText": 114,
+          "shortOrVisualText": 20,
+          "needsReview": 501,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Dalgalar",
+          "records": 522,
+          "banks": {
+            "CIKMIS": 3,
+            "OGM": 519
+          },
+          "distinctReadableText": 358,
+          "missingText": 135,
+          "shortOrVisualText": 21,
+          "needsReview": 522,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Düzlem Ayna",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektrik Devreleri",
+          "records": 6,
+          "banks": {
+            "CIKMIS": 6
+          },
+          "distinctReadableText": 6,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 6,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektrik Yükleri",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektrik ve Manyetizma",
+          "records": 555,
+          "banks": {
+            "OGM": 555
+          },
+          "distinctReadableText": 386,
+          "missingText": 112,
+          "shortOrVisualText": 55,
+          "needsReview": 555,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Elektrostatik",
+          "records": 239,
+          "banks": {
+            "OGM": 239
+          },
+          "distinctReadableText": 180,
+          "missingText": 57,
+          "shortOrVisualText": 2,
+          "needsReview": 239,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Enerji",
+          "records": 354,
+          "banks": {
+            "OGM": 354
+          },
+          "distinctReadableText": 248,
+          "missingText": 87,
+          "shortOrVisualText": 19,
+          "needsReview": 354,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Enerji İletim Yolları ve Enerji İletim Hızı",
+          "records": 3,
+          "banks": {
+            "CIKMIS": 3
+          },
+          "distinctReadableText": 3,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 3,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fizik (Alt Konu Belirsiz)",
+          "records": 4,
+          "banks": {
+            "OGM": 4
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 3,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fizik Bilimine Giriş",
+          "records": 177,
+          "banks": {
+            "OGM": 177
+          },
+          "distinctReadableText": 139,
+          "missingText": 37,
+          "shortOrVisualText": 1,
+          "needsReview": 177,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fizik Biliminin Önemi",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Fiziksel Niceliklerin Sınıflandırılması",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Genleşme",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Hareket",
+          "records": 5,
+          "banks": {
+            "CIKMIS": 5
+          },
+          "distinctReadableText": 5,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 5,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Hareket ve Kuvvet",
+          "records": 470,
+          "banks": {
+            "OGM": 470
+          },
+          "distinctReadableText": 343,
+          "missingText": 108,
+          "shortOrVisualText": 18,
+          "needsReview": 470,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Isı ve Sıcaklık",
+          "records": 308,
+          "banks": {
+            "CIKMIS": 2,
+            "OGM": 306
+          },
+          "distinctReadableText": 238,
+          "missingText": 69,
+          "shortOrVisualText": 1,
+          "needsReview": 308,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Isıl Denge",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kaldırma Kuvveti",
+          "records": 4,
+          "banks": {
+            "CIKMIS": 4
+          },
+          "distinctReadableText": 4,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 4,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kuvvet",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Küresel Aynalar",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Kırılma",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Madde ve Özellikleri",
+          "records": 310,
+          "banks": {
+            "OGM": 310
+          },
+          "distinctReadableText": 226,
+          "missingText": 62,
+          "shortOrVisualText": 22,
+          "needsReview": 310,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Madde ve Özkütle",
+          "records": 6,
+          "banks": {
+            "CIKMIS": 6
+          },
+          "distinctReadableText": 6,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 6,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Mercekler",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Newton’ın Hareket Yasaları",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Optik",
+          "records": 605,
+          "banks": {
+            "OGM": 605
+          },
+          "distinctReadableText": 437,
+          "missingText": 145,
+          "shortOrVisualText": 19,
+          "needsReview": 605,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Renk",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Su Dalgası",
+          "records": 2,
+          "banks": {
+            "CIKMIS": 2
+          },
+          "distinctReadableText": 2,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 2,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Sürtünme Kuvveti",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Yapışma ve Birbirini Tutma",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "Yay Dalgası",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        },
+        {
+          "label": "İş, Güç ve Enerji",
+          "records": 1,
+          "banks": {
+            "CIKMIS": 1
+          },
+          "distinctReadableText": 1,
+          "missingText": 0,
+          "shortOrVisualText": 0,
+          "needsReview": 1,
+          "patternCandidates": {},
+          "candidateRefs": {}
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
       "subject": "Kimya",
       "records": 4822,
       "topics": [
@@ -25439,6 +26838,15 @@
       "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-ayt-felsefe/tyt-ayt-felsefe.pdf"
     },
     {
+      "catalogId": 25,
+      "title": "TYT Fizik Konu Özeti",
+      "exam": "TYT",
+      "pages": 202,
+      "shortOrVisualPages": 4,
+      "sha256": "599b65802f6477bd07b39068b4919f632fbbd667001d33b1c5a8b9caa888963c",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-fizik/tyt-fizik.pdf"
+    },
+    {
       "catalogId": 26,
       "title": "TYT Kimya Konu Özeti",
       "exam": "TYT",
@@ -25484,6 +26892,15 @@
       "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-cografya/ayt-cografya.pdf"
     },
     {
+      "catalogId": 32,
+      "title": "AYT Fizik Konu Özeti",
+      "exam": "AYT",
+      "pages": 282,
+      "shortOrVisualPages": 4,
+      "sha256": "e098015aebf9ae8ec553d122152d868103ed4f3c7416eab6d841a2617ddb1484",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-fizik/ayt-fizik.pdf"
+    },
+    {
       "catalogId": 33,
       "title": "AYT Kimya Konu Özeti",
       "exam": "AYT",
@@ -25500,6 +26917,15 @@
       "shortOrVisualPages": 5,
       "sha256": "37dcd00641dfb37b319911fdec0ce6784b4897e2bae122507b86ebc0bd7a16d4",
       "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-mantik/ayt-mantik.pdf"
+    },
+    {
+      "catalogId": 35,
+      "title": "AYT Matematik Konu Özeti",
+      "exam": "AYT",
+      "pages": 140,
+      "shortOrVisualPages": 4,
+      "sha256": "d71a39a262e58baaf52f58e5360bb8deac06e40f4751ae0781ff042380d29bc0",
+      "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-matematik/ayt-matematik.pdf"
     },
     {
       "catalogId": 36,

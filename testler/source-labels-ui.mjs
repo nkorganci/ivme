@@ -221,6 +221,10 @@ async function main() {
       await waitFor(`document.querySelector('article h2')?.textContent === 'Sözcükte Yapı: Kök, Gövde ve Ekin Görevi'`, 'Eski başlık bağlantısı hazır rehberi açmalı');
       if (width < 500) await evaluate(`document.querySelector('button[aria-label="Menüyü aç"]').click()`);
       assert.equal(await evaluate(`document.querySelectorAll('#notes-subnav a').length`), SOURCE_NOTE_SUBJECTS.length + 2);
+      for (const [id, label] of SOURCE_NOTE_SUBJECTS) {
+        assert.equal(await evaluate(`document.querySelector('#notes-subnav a[href="/kaynakli-ders-notlari/${id}"]')?.textContent.trim()`), label);
+      }
+      assert.ok(await evaluate(`document.querySelector('#notes-subnav a[href="/kaynakli-ders-notlari/ayt-edebiyat"]')?.textContent.includes('Türkçe')`));
       await evaluate(`document.querySelector('#notes-subnav a[href="/kaynakli-ders-notlari/analiz"]').click()`);
       await waitFor(`document.querySelector('h1')?.textContent === 'Analiz ve çalışma planı'`, 'menüden analiz planı');
       assert.equal(await evaluate(`document.querySelectorAll('.source-overview-list > li').length`), manifest.groups.filter((group) => group.exam === 'TYT').length);

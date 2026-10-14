@@ -16,7 +16,7 @@ function StudyOverview({ data }) {
     </div>
     <ul className="source-overview-list">{data.subjectOverview.filter((item) => item.exam === exam).map((item) =>
       <li className="card" key={`${item.exam}:${item.subject}`}>
-        <h2>{item.exam} · {item.subject}</h2>
+        <h2>{item.exam} · {item.displaySubject || item.subject}</h2>
         <p>{item.readyTopics ? `${item.readyTopics} konuda rehber hazır` : 'Konu rehberleri için kaynak incelemesi sürüyor'}</p>
         {item.guideId && <Link className="btn btn-primary" to={`/kaynakli-ders-notlari/${item.guideId}`}>Konu seç ve çalış</Link>}
         <details><summary>Dersin kaynakları ve kapsamı</summary>
@@ -264,14 +264,14 @@ export default function SourceNotes() {
   if (data && subjectId === 'analiz') return <StudyOverview data={data} />;
 
   return <div className="source-notes-page">
-    <div className="page-head"><h1>Kaynaklı Ders Notları{group && <span className="source-notes-subtitle">{group.exam} · {group.subject}</span>}</h1></div>
+    <div className="page-head"><h1>Kaynaklı Ders Notları{group && <span className="source-notes-subtitle">{group.exam} · {group.displaySubject || group.subject}</span>}</h1></div>
     <p className="source-notes-intro">Soruyu ezberleme; konuyu, soru kalıbını ve çözüm yolunu birlikte öğren.</p>
     {error && <div className="alert alert-error" role="alert">{error}{' '}<button type="button" className="btn btn-secondary" onClick={() => setAttempt((value) => value + 1)}>Tekrar dene</button></div>}
     {!data && !error && <p role="status">Kaynaklı ders notları yükleniyor…</p>}
     {data && <label className="source-notes-subject">Ders notu seç
       <select value={group?.id ?? ''} onChange={(event) => navigate(`/kaynakli-ders-notlari/${event.target.value}`)}>
         {!group && <option value="" disabled>Ders seç</option>}
-        {data.groups.map((item) => <option key={item.id} value={item.id}>{item.exam} · {item.subject}</option>)}
+        {data.groups.map((item) => <option key={item.id} value={item.id}>{item.exam} · {item.displaySubject || item.subject}</option>)}
       </select>
     </label>}
     {data && !group && <p role="alert">Bu ders için not bulunamadı. Yukarıdan bir ders seçebilirsin.</p>}

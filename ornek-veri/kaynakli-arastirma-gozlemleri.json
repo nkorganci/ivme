@@ -115,6 +115,83 @@
         "documentSha256": "dd3fe23ad9fefb3993b7464b182d3c19470c2252b9f5ddef8a9ced54317b5090",
         "pageTextSha256": "0ee447d6b65142f6325e2d1937d01d9528565a5e79b910ef73ce38fc4dde20c2"
       }
+    },
+    {
+      "key": "CIKMIS:TYT-0901",
+      "note": "Görselde sütunlar Zaman, Sıcaklık, Uzunluk; B satırı saniye, Kelvin, metre şeklindedir. OCR satır karışması görselden ayrıldı.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "58c68d0d339731406b72701fd0ffbde6027cb1ab4e1acc7f6e485e9debed65d4",
+        "imageSha256": "8bcd79e4a22868ca3f20bf4b1f30aa57163a378c604f541f15a2833ff2b3fa27",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "CIKMIS:AYT_Sayisal-0062",
+      "note": "Görselde ilk eşitlik f(ax+b)=x, ikinci eşitlik f(a)=b/a; A seçeneği -1/2 olarak okunur. Kesrin yerleşimi OCR metninden ayrı doğrulandı.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "2f1ce99c627cbc78aa86b92c62a922d66c68e81020d13e14aed203efe18c0d3a",
+        "imageSha256": "a87a8812360ed676cbcd94b87be9a6a0677275b688a1955479bd6f085a3ee8ee",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "CIKMIS:AYT_Sayisal-0350",
+      "note": "Yön şemasında KD doğu/kuzeyle 45 derece yapar. Köpek ve Ahmet konumlarındaki ortak 60 m batı vektörü sadeleşir; fark 100 m KD ve seçenek D olur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "aa8a0e825f48c7ef9ead440ed476c3a14f9ddb91e2b7b815e69cc6bdb6ffce68",
+        "imageSha256": "cfb73196bd6163cc52101e594649052fe9b6ddbdc588d6af66b2a9c3e867e34e",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:3a-ayt-fizik-01-01",
+      "note": "Eşit kareli görselde K=(3,-1), M=(3,1), L=(2,2), N=(2,-2) okunur. |K|=|M|=sqrt(10); L ve N yönce eşit değil; |L|=sqrt(8). Yalnız I kaynak A ile uyumludur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "3d3755d4c3f3ccda448535599018d3eb8ac453a530ba78aff4a84be35b7573c5",
+        "imageSha256": "cf6cfd05db8d2247c2f5a3094119437573e7cc212f2afbcb9ce042d26f1c5baf",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:3a-ayt-biyoloji-01-02",
+      "note": "Grafikte ilk üç zayıf uyarıda aksiyon potansiyeli yoktur; sonraki artan uyarılarda tepe yükseklikleri aynıdır. Nöron çeşitleri karşılaştırılmamıştır. Yalnız II ve kaynak B uyumludur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "dc6c3fed784b9311e6bad18a575ecc0b6593d0f166849eade16624303faa42de",
+        "imageSha256": "f5ecaa0da56fca88c10b4bf495f9d8dad67a3f9ba7cab8437ef7b16723472b65",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:sb-6620",
+      "note": "Orbital şemasında D seçeneğinin 3p dolulukları 2,2,0; boş eş enerjili orbital varken çiftlenme Hund kuralına aykırıdır. Diğer seçeneklerin p dolulukları 1,0,0; 1,1,0; 2,1,1; 2,1,2 biçimindedir.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "c93bebb08715fd513609ff096143105c4731ac627e170408d4b9cce16ab79b61",
+        "imageSha256": "fc16c4b5e460ac99f1e4b35ba9eb2b3c78733ec9df2529ecd4f224a9ad0f3c1c",
+        "excludeFromGuides": false
+      }
+    },
+    {
+      "key": "OGM:3a-ayt-matematik-19-02",
+      "note": "Görselde f(x)=-x²+2mx-3 ve A=-sqrt(5), B=-sqrt(3), C=0, D=1, E=sqrt(2) okunur. İki farklı kesişim için m²>3; yalnız A uygundur.",
+      "evidence": {
+        "inspection": "assistant_image_review",
+        "teacher_approved": false,
+        "sourceTextSha256": "985f36b0e3a3ac6691305d9af9f3a40e5717b3843ae8298aa151c453c3eafb1b",
+        "imageSha256": "37417ed77d41529cdf83480db58594624fd37c25a164317c3017043986cd509c",
+        "excludeFromGuides": false
+      }
     }
   ]
 }
