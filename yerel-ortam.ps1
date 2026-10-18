@@ -8,7 +8,6 @@ function Get-IvmeLocalEnvironment {
         Branch = $branch
         Name = $(if ($main) { 'production' } else { 'development' })
         Port = $(if ($main) { 9090 } else { 9091 })
-        TunnelPort = $(if ($main) { 5173 } else { 0 })
         ApiPort = $(if ($main) { 8081 } else { 8082 })
         Database = $(if ($main) { 'ivme' } else { 'ivme_dev' })
         SessionCookie = $(if ($main) { 'JSESSIONID' } else { 'IVME_DEV_SESSION' })
@@ -35,7 +34,6 @@ function Set-IvmeLocalEnvironment {
     $env:YKS_DB_KULLANICI = $Settings.DbUser
     $env:YKS_DB_SIFRE = $Settings.DbPassword
     $env:PORT = [string]$Settings.Port
-    $env:YKS_TUNNEL_PORT = [string]$Settings.TunnelPort
     $env:YKS_RESIM_KLASORU = $Settings.Images
     $env:YKS_KONU_PDF_KATALOGU = $Settings.PdfCatalog
     $env:YKS_OGM_PDF_KAYNAGI = $Settings.PdfSource

@@ -33,7 +33,6 @@ spring:
       max-request-size: 20MB
 
 app:
-  tunnel-port: ${YKS_TUNNEL_PORT:0}        # main: mevcut Cloudflare 5173 girişi; 0 kapalı
   csrf-cookie-name: ${YKS_CSRF_COOKIE:XSRF-TOKEN}
   public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:
