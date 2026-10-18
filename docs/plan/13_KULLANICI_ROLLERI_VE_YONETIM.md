@@ -1,5 +1,12 @@
 # 13. Adım — kullanıcı rolleri, erişim ve site yönetimi önerisi
 
+18 Ekim 2026 ek uygulama sınırı: kullanıcının 5174'te kayıtlı öğrencileri
+görememe bildirimi üzerine açık `SITE_MANAGER` yetkisine ait tüm kullanıcı listesi, rol filtreleri,
+engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Eski kategori bilgisi boş USER
+hesapları korunur. Bu dar düzeltme aşağıdaki yönetim, ilişki, bildirim ve hesap
+mutasyonu aşamalarının bütünüyle tamamlandığı anlamına gelmez.
+
+
 Tarih: 18 Ekim 2026. Belge sürümü: `kullanici-yonetimi-tasarim-v1`.
 Durum: `YALNIZ_TASARIM`. Aşağıdaki özellikler öneridir; uygulanmış değildir.
 

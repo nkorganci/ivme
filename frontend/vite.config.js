@@ -2,7 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
+
+const branch = execFileSync('git', ['branch', '--show-current'], {
+  cwd: fileURLToPath(new URL('..', import.meta.url)), encoding: 'utf8',
+}).trim();
+const localPort = branch === 'main' ? 9090 : 9091;
 
 const localApiTargetFile = fileURLToPath(new URL('../.codex/dev-api-target.txt', import.meta.url));
 function localApiTarget() {
@@ -50,7 +56,7 @@ export default defineConfig({
     // The same controlled vocabulary is consumed by the API and the teacher UI.
     fs: { allow: [fileURLToPath(new URL('.', import.meta.url)), fileURLToPath(new URL('../backend/src/main/resources/review-vocabulary.json', import.meta.url))] },
     host: '127.0.0.1',
-    port: 5173,
+    port: localPort,
     strictPort: true,
 
     proxy: api,
@@ -63,7 +69,7 @@ export default defineConfig({
 
   preview: {
     host: '127.0.0.1',
-    port: 5173,
+    port: localPort,
     strictPort: true,
     proxy: api,
     allowedHosts: ['net.ivme.dev'],

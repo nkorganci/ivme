@@ -88,9 +88,9 @@ class ReconcileTest(unittest.TestCase):
             self.assertEqual(len(result['changedOrRemoved']), 2)
 
     def test_api_rejects_external_origins_credentials_and_paths(self):
-        for base in ['https://example.com', 'http://localhost.evil:5173',
-                     'http://user:pass@localhost:5173', 'http://localhost:5173/private',
-                     'http://localhost:5173?token=secret', 'http://localhost:5173#fragment']:
+        for base in ['https://example.com', 'http://localhost.evil:9090',
+                     'http://user:pass@localhost:9090', 'http://localhost:9090/private',
+                     'http://localhost:9090?token=secret', 'http://localhost:9090#fragment']:
             with self.subTest(base=base), self.assertRaises(ValueError):
                 reconcile.local_base(base)
 
@@ -99,7 +99,7 @@ class ReconcileTest(unittest.TestCase):
         opener = unittest.mock.Mock()
         opener.open.return_value = response
         with patch.object(reconcile, 'build_opener', return_value=opener), patch.dict(os.environ, {}, clear=True):
-            result = reconcile.api_snapshot('http://127.0.0.1:5173', {'runKey': 'run1'}, {'c': {'id': 'c'}})
+            result = reconcile.api_snapshot('http://127.0.0.1:9090', {'runKey': 'run1'}, {'c': {'id': 'c'}})
         self.assertEqual(opener.open.call_args.args[0].method, 'GET')
         return result
 
@@ -123,9 +123,9 @@ class ReconcileTest(unittest.TestCase):
 
     def test_unauthenticated_api_is_unverified_and_report_contains_no_cookie(self):
         opener = unittest.mock.Mock()
-        opener.open.side_effect = HTTPError('http://127.0.0.1:5173', 401, 'Unauthorized', {}, None)
+        opener.open.side_effect = HTTPError('http://127.0.0.1:9090', 401, 'Unauthorized', {}, None)
         with patch.object(reconcile, 'build_opener', return_value=opener), patch.dict(os.environ, {'IVME_AUDIT_COOKIE': 'SESSION=secret'}):
-            result = reconcile.api_snapshot('http://127.0.0.1:5173', {}, {})
+            result = reconcile.api_snapshot('http://127.0.0.1:9090', {}, {})
         self.assertEqual(result['status'], 'AUTHENTICATION_REQUIRED')
         self.assertNotIn('secret', json.dumps(result))
         self.assertEqual(opener.open.call_count, 1)

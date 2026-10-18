@@ -16,10 +16,18 @@
 - Her anlamlı görev sonunda çalışma bağlamındaki etkin/sıradaki görevi, sürüm/kanıt referansını ve varsa devam noktasını güncelle. Kapanan alt işi aktif plandan çıkar. Adım tamamen bittiğinde kalıcı kuralları/kanıtı koruyup adımın `.md` dosyasını sil; yol haritası ve bütün bağlantıları güncelle. Kalan adım numaralarını/dosya adlarını değiştirme: 1 bitince 2. adımdan devam et. Tamamlanan adım için özet dosyası bırakma; geçmiş kanıtı rapor/commit referansıyla koru. Genel karar değişirse ilgili plan/sözleşmeyi de aynı işte güncelle.
 - Kullanıcının “yalnız plan” talimatında kod, kaynak içerik, veritabanı ve dağıtım değişikliği yapma. Planın varlığı tek başına uygulama veya yayın yetkisi değildir.
 
+## Git güncelliği ve yerel commit
+
+- Kullanıcının kalıcı talimatı: her tamamlanan değişikliği yerel feature dalına commit et. Kullanıcı istemeden Git push yapma.
+- Her yeni geliştirme işinden önce feature'ın yerel `main` ve doğru uzak depodaki `ivme/main` kodunu içerdiğini kontrol et. Temiz çalışma ağacında `feature-guncelle.ps1` ile fetch/merge yap; main production worktree'sini otomatik değiştirme. Bekleyen değişiklikleri koru; reset/temizleme ile atma. Çakışmayı kodu kaybetmeden çöz.
+- `origin` eski projedir; bu proje için doğru uzak depo `ivme`dir. Main upstream `ivme/main` olmalıdır.
+- Git güncellemesi DB kayıtlarını taşımaz. Kullanıcının istediği eksik production öğrencileri `feature-guncelle.ps1 -SyncStudents` veya `scripts/sync-production-students.py --apply` ile yalnız dev'e eklenir. Mevcut dev hesapları, engelleri ve silme durumları değiştirilmez; production salt okunur, işlem önce dev kullanıcı tablosunu yedekler. Production hesabını dev'de değiştirmek production'ı etkilemez.
+
 ## Yerel ortam ve dal ayrımı
 
-- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-yol-haritasi`, adresi `http://localhost:5174`, DB'si `ivme_dev`.
-- Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:5173`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
+- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-yol-haritasi`, adresi `http://localhost:9091`, DB'si `ivme_dev`.
+- Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:9090`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
+- Mevcut Cloudflare hedefi 5173, main'in aynı sürecindeki yalnız loopback tünel girişidir (`YKS_TUNNEL_PORT`); feature bu girişi açmaz. 9090 için kullanıcının talimatıyla `my-jenkins` Docker konteyneri durduruldu; otomatik başlatma.
 - Her ortamın kaynakları, build dizini, görselleri, katalog kopyası ve izleyicisi ayrıdır. `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunarak paylaşılır. Geliştirme sırasında ana ortamın dosyaları/DB'si değiştirilmez.
 - `yerel-ortam.ps1` dalın port/DB/çerez ayarını seçer; `yeniden-baslat.ps1` yalnız o worktree'nin sürecini değiştirir. İçerik betikleri de varsayılan olarak dalın DB'sini seçer; eski `--database ivme` örnekleri ana veriyi hedefler, geliştirmede `ivme_dev` kullan.
 - Windows başlangıcındaki mevcut `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden iki izleyiciyi birlikte çalıştırır. İki ortamın izleyicisi görev sonunda açık kalır.

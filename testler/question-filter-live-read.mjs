@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { countQuestionRows } from '../frontend/src/questionFilters.js';
 
-const base = process.env.IVME_UI_BASE_URL || 'http://127.0.0.1:5173';
+const base = process.env.IVME_UI_BASE_URL || 'http://127.0.0.1:9090';
 const cookies = new Map(), checks = [];
 const qs = value => '?' + new URLSearchParams(Object.entries(value).filter(([, item]) => item !== '' && item != null));
 async function request(path, method = 'GET') {

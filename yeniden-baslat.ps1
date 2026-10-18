@@ -80,6 +80,31 @@ try {
         }
     }
 
+    # A port change still replaces this worktree's previous JAR, preserving its build slot.
+    if (-not $listener) {
+        $previousPrograms = @(Get-CimInstance Win32_Process -Filter "Name='java.exe'" | Where-Object {
+            $_.CommandLine -match 'hedef-yks\.jar' -and $_.CommandLine.Contains($backend + '\')
+        })
+        if ($previousPrograms.Count -gt 1) {
+            throw 'Bu worktree icin birden fazla uygulama sureci bulundu; otomatik durdurulmadi.'
+        }
+        if ($previousPrograms.Count -eq 1) {
+            $running = $previousPrograms[0]
+            $previousPort = [regex]::Match($running.CommandLine, 'server\.port=(\d+)(?:\s|$)')
+            if ($previousPort.Success) {
+                $listener = Get-NetTCPConnection -OwningProcess $running.ProcessId -State Listen -ErrorAction SilentlyContinue |
+                    Where-Object { $_.LocalPort -eq [int]$previousPort.Groups[1].Value } | Select-Object -First 1
+            }
+            if (-not $listener) { throw 'Onceki uygulama henuz port acmadi; yeniden denenecek.' }
+            $runningKind = 'jar'
+            $jarMatch = [regex]::Match($running.CommandLine, '-jar\s+(?:"([^"]+)"|(\S+))')
+            if ($jarMatch.Success) {
+                $oldJar = if ($jarMatch.Groups[1].Success) { $jarMatch.Groups[1].Value } else { $jarMatch.Groups[2].Value }
+                if (-not [IO.Path]::IsPathRooted($oldJar)) { $oldJar = Join-Path $backend $oldJar }
+            }
+        }
+    }
+
     $slot = if ($oldJar -and $oldJar -match 'target[\\/]deploy-a[\\/]') { 'deploy-b' } else { 'deploy-a' }
     $newJar = Join-Path $backend "target\$slot\hedef-yks.jar"
     & mvn.cmd -q -DskipTests "-Dyks.build.directory=target/$slot" clean package
@@ -88,14 +113,15 @@ try {
     }
 
     if ($listener) {
-        Write-Host "$port portundaki $runningKind sureci durduruluyor (PID $($listener.OwningProcess))."
+        $previousPortNumber = $listener.LocalPort
+        Write-Host "$previousPortNumber portundaki $runningKind sureci durduruluyor (PID $($listener.OwningProcess))."
         Stop-Process -Id $listener.OwningProcess -Force
         for ($wait = 0; $wait -lt 20; $wait++) {
-            if (-not (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue)) { break }
+            if (-not (Get-NetTCPConnection -LocalPort $previousPortNumber -State Listen -ErrorAction SilentlyContinue)) { break }
             Start-Sleep -Milliseconds 500
         }
-        if (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue) {
-            throw "$port portu bosalmadi; yeni surum baslatilmadi."
+        if (Get-NetTCPConnection -LocalPort $previousPortNumber -State Listen -ErrorAction SilentlyContinue) {
+            throw "$previousPortNumber portu bosalmadi; yeni surum baslatilmadi."
         }
     }
 

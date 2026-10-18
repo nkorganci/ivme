@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 
-const site=globalThis.process.argv[2] || globalThis.process.env.IVME_UI_BASE_URL || 'http://127.0.0.1:5173';
+const site=globalThis.process.argv[2] || globalThis.process.env.IVME_UI_BASE_URL || 'http://127.0.0.1:9090';
 const browser=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 assert.ok(browser,'Chrome or Edge is required');
 const profile=mkdtempSync(join(tmpdir(),'learning-library-'));

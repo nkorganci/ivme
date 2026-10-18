@@ -26,11 +26,12 @@ Soru/PDF/video üretimi aynı sözleşme ve doğrulayıcıyı kullanır. Normal 
 ## Kullanıcı yönetimi tasarım önerisi
 
 [13. Adım — kullanıcı rolleri ve site yönetimi](13_KULLANICI_ROLLERI_VE_YONETIM.md)
-yalnız tasarım durumundadır. Öğrenci, veli, takip öğretmeni ve yönetici erişimini;
-mevcut OPERATOR yetkisini koruyarak sekiz uygulama aşamasında tarif eder.
-Kullanıcının bu görevdeki talimatı yalnız `.md` hazırlamaktır; bu bağlantı kod,
-DB veya hesap değişikliğine izin vermez. Ayrıca uygulama istenmeden 13.xx
-başlatılmaz; 7/12 uygulama sırası ve mevcut kullanıcı kayıtları korunur.
+öğrenci, veli, takip öğretmeni ve yönetici erişimini, mevcut OPERATOR yetkisini
+koruyarak sekiz aşamada tarif eden tasarım önerisidir. Kullanıcının 5174'te
+öğrencileri görememe bildirimi üzerine yalnız açık `SITE_MANAGER` yetkisiyle
+tüm rollerin listesi/araması, engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Diğer yönetim, ilişki ve
+hesap mutasyonu aşamaları ayrıca uygulama talimatı bekler; belge bağlantısı
+bunları başlatma yetkisi değildir. 7/12 sırası ve mevcut kayıtlar korunur.
 
 ## Ortak kararlar
 

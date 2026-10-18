@@ -54,7 +54,7 @@ const server = live ? null : createServer(async (req, res) => {
   catch { res.writeHead(404); res.end(); }
 });
 if (server) await new Promise(done => server.listen(0, '127.0.0.1', done));
-const site = live ? 'http://127.0.0.1:5173' : `http://127.0.0.1:${server.address().port}`;
+const site = live ? 'http://127.0.0.1:9090' : `http://127.0.0.1:${server.address().port}`;
 const profile = mkdtempSync(join(tmpdir(), 'question-workspace-'));
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--remote-debugging-port=0',
   `--user-data-dir=${profile}`, '--no-first-run', '--disable-gpu', 'about:blank'], { stdio: 'ignore', windowsHide: true });

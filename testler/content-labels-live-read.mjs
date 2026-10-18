@@ -1,6 +1,6 @@
 // Uses a separate loopback student session. Reads real content; never submits an answer or a teacher decision.
 import assert from 'node:assert/strict';
-const base='http://127.0.0.1:5173';
+const base='http://127.0.0.1:9090';
 const cookies=new Map();
 async function request(path,method='GET'){
   const headers={Cookie:[...cookies].map(([k,v])=>`${k}=${v}`).join('; ')};

@@ -1,5 +1,5 @@
 // Uçtan uca tarayıcı testi (başsız Chrome + CDP). Gereksinim: Chrome, Node >= 22,
-// çalışan arka yüz (8081) ve ön yüz (5173) — uygulama\baslat.bat.
+// çalışan arka yüz (8081) ve ön yüz (9090) — uygulama\baslat.bat.
 // Kullanım: node uygulama/testler/e2e.mjs [çıktı klasörü] [--mobil]
 // Akış: kayıt → koleksiyonlar → soru → sınav → sonuç → geçmiş → geri bildirim; kimlik bilgileri verilirse ayrı rol ekranları.
 import { spawn } from 'node:child_process';
@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-const BASE = process.env.YKS_SITE || 'http://localhost:5173';
+const BASE = process.env.YKS_SITE || 'http://localhost:9090';
 if (!['localhost', '127.0.0.1'].includes(new URL(BASE).hostname)) {
   throw new Error('E2E kayıt/geri bildirim üretir; yalnız yerel test sunucusunda çalıştır.');
 }

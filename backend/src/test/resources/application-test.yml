@@ -1,6 +1,9 @@
 # Testler ayrı veritabanında çalışır: ivme_test (testleri çalıştırmadan önce oluşturulur).
 spring:
   datasource:
+    hikari:
+      maximum-pool-size: 4
+      minimum-idle: 0
     url: ${YKS_TEST_DB_URL:jdbc:postgresql://localhost:5432/ivme_test}
     username: ${YKS_DB_KULLANICI:root}
     password: ${YKS_DB_SIFRE:root}

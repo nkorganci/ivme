@@ -3,7 +3,7 @@
 
 > Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
 
-Güncelleme: 2026-10-18. React 19/Vite ve Spring Boot 3.5/Java 21 iki ayrı Git worktree içinde paketli çalışır: `main` (`uygulama-main`) yerel production olarak `127.0.0.1:5173` / PostgreSQL `ivme`; `feature/ivme-yol-haritasi` (`uygulama`) geliştirme olarak `127.0.0.1:5174` / PostgreSQL `ivme_dev`. Her ortamın kaynakları, build çıktısı, görselleri, PDF katalog kopyası ve kaynak izleyicisi ayrıdır. İsteğe bağlı Vite akışında feature API portu 8082'dir. İki yerel paket mevcut otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev`, mevcut Cloudflare hedefi `http://localhost:5173` olarak main ortamını sunar. Başlatma ve merge akışı [README](../README.md) içindedir.
+Güncelleme: 2026-10-18. React 19/Vite ve Spring Boot 3.5/Java 21 iki ayrı Git worktree içinde paketli çalışır: `main` (`uygulama-main`) yerel production olarak `127.0.0.1:9090` / PostgreSQL `ivme`; `feature/ivme-yol-haritasi` (`uygulama`) geliştirme olarak `127.0.0.1:9091` / PostgreSQL `ivme_dev`. Her ortamın kaynakları, build çıktısı, görselleri, PDF katalog kopyası ve kaynak izleyicisi ayrıdır. İsteğe bağlı Vite akışında feature API portu 8082'dir. İki yerel paket mevcut otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev`, mevcut Cloudflare hedefi `http://localhost:5173` üzerinden main'in aynı sürecine ulaşır. Ek Tomcat girişi yalnız `YKS_TUNNEL_PORT=5173` ile, loopback'te açılır; feature'da kapalıdır. Başlatma ve merge akışı [README](../README.md) içindedir.
 
 ## Kimlik ve erişim
 
@@ -15,6 +15,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Main `JSESSIONID` / `XS
 |---|---|
 | `USER` | Kendi soru, sınav, geri bildirim ve hesap akışı |
 | `ADMIN` | `GET /api/admin/stats`; yalnız kayıtlı öğrenci ve tamamlanan deneme sayısı |
+| Ek `SITE_MANAGER` yetkisi | `GET /api/admin/students`; salt okunur öğrenci listesi ve araması. ADMIN rolüne otomatik verilmez |
 | `OPERATOR` | `/api/operator/**`; soru ve geri bildirim bakımı, CSV/JSON içe alma |
 
 ## Soru ve sınav uçları
@@ -174,6 +175,29 @@ Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve che
 İç not v1 biçimi [kayıtlı şemada](plan/sema/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [kalıcı çalışma kuralları](plan/00_CALISMA_BAGLAMI.md) ve orada kayıtlı güncel şema referansları kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
 
 ## Operatör ve yönetici uçları
+
+`GET /api/admin/accounts?role=&query=&page=0&size=25`, açık `SITE_MANAGER`
+yetkisiyle bütün hesap rollerini listeler. `/summary` her rol için sıfırları da
+içeren kesin sayıları verir. Liste/sayımlar silinen (`archived_at`) hesapları
+hariç tutar; kategori bilgisi boş eski USER hesapları öğrenci olarak korunur.
+`PATCH /api/admin/accounts/{id}/status` `{enabled, reason}` ile engeller/açar;
+`DELETE /api/admin/accounts/{id}` `{confirmation: kullanıcıAdı, reason}` ile
+hesabı listeden kaldırır (`enabled=false`, `archived_at=now`). Fiziksel kullanıcı
+ve geçmiş kayıtlar korunur. Tüm yazmalar CSRF ve açık site yönetimi yetkisi
+ister, self/son yönetici koruması ve işlem kaydı vardır. Gerekçe en çok 500
+karakterdir. `AccountStatusFilter` engelli/silinmiş hesabın açık oturumunu sonraki
+API isteğinde geçersiz kılar. Normal ADMIN'in toplu istatistik sınırı değişmez.
+
+`GET /api/admin/students?query=&page=0&size=25`, ayrıca `SITE_MANAGER`
+yetkisi olan hesaplara kayıtlı öğrencilerin salt okunur listesini verir.
+`USER` rolündeki eski, `category` alanı boş hesaplar da dahildir. Liste yalnız
+`id`, kullanıcı adı, e-posta, etkinlik/arşiv durumu ve kayıt tarihini döndürür;
+parola, parola hash'i, telefon ve öğrenci çalışma geçmişi döndürülmez.
+Kullanıcı adı/e-posta araması büyük-küçük harften bağımsız, sayfa boyutu en çok
+100'dür. Yetkisiz `ADMIN`, `OPERATOR` ve diğer roller bu listeye erişemez.
+`/yonetim?sekme=kullanicilar` site yöneticisi için varsayılan sekmedir; eski `sekme=ogrenciler` yalnız öğrenci filtresini açar;
+`sekme=kullanim` mevcut toplu özeti açar. Kayıtlar bağlı olunan yerel ortama
+aittir; main'de sonradan açılan hesap geliştirme DB'sine otomatik kopyalanmaz.
 
 `GET /api/admin/stats?period=DAY|WEEK|MONTH` yalnız `ADMIN` içindir. `Europe/Istanbul` döneminde etkin öğrenci, başlatılan pratik/sınav ve cevap toplamları ile tüm zamanlar kayıtlı öğrenci ve tamamlanan sınav toplamlarını döndürür. 0–4 değerleri `null`, diğerleri beşlik aralığın alt sınırıdır; etkin öğrenci beşten azsa dönemlik diğer toplamlar da `null` olur. `content` alanı etkin ve koleksiyona atanmış soru kayıtlarının toplamını, CIKMIS/OGM ve TYT/AYT kırılımını kesin kayıt sayısı olarak verir; görsel dosya bütünlüğü bu sayımın parçası değildir. Yönetici yanıtında bireysel veri yoktur. Eski `/api/admin/questions`, `/api/admin/feedback` ve `/api/admin/import` yolları kapalıdır. `OPERATOR` şunları kullanır: `GET /api/operator/questions`, `GET/PUT /api/operator/questions/{id}`, `GET /api/operator/feedback`, `PATCH /api/operator/feedback/{id}`, `GET /api/operator/reported-questions`, `POST /api/operator/import`. İçe alma `file` (CSV/JSON), `mode=INSERT_ONLY|UPSERT`, `dryRun=true|false` alır. `dryRun` varsayılan olarak `true`; tek dosyada doğrulama hatası varsa yazma yapılmaz. `code` kalıcı tekil soru kimliğidir; `bank` ve `solution_image` ithalat alanlarıdır.
 
