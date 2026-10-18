@@ -705,10 +705,9 @@ JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıy
 doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
 korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
 
-Main'de `YKS_TUNNEL_PORT=5173`, mevcut Cloudflare hedefini aynı Tomcat
-sürecine bağlayan yalnız loopback'te ek HTTP girişi açar. Ana yerel port
-9090'dır; feature 9091'de çalışır ve tünel girişi kapalıdır. Ek giriş ayrı
-uygulama, DB veya sürüm çalıştırmaz. Yeniden başlatıcı port değiştiğinde de
+Cloudflare tüneli doğrudan main'in `http://localhost:9090` adresine bağlanır;
+kullanıcı hedefi Cloudflare'da ayarlar. Main tek HTTP portu açar, feature
+9091'de çalışır. Yeniden başlatıcı port değiştiğinde de
 yalnız kendi worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
 
 `canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
