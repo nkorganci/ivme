@@ -176,6 +176,18 @@ Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve che
 
 ## Operatör ve yönetici uçları
 
+`GET /api/admin/accounts?role=&query=&page=0&size=25`, açık `SITE_MANAGER`
+yetkisiyle bütün hesap rollerini listeler. `/summary` her rol için sıfırları da
+içeren kesin sayıları verir. Liste/sayımlar silinen (`archived_at`) hesapları
+hariç tutar; kategori bilgisi boş eski USER hesapları öğrenci olarak korunur.
+`PATCH /api/admin/accounts/{id}/status` `{enabled, reason}` ile engeller/açar;
+`DELETE /api/admin/accounts/{id}` `{confirmation: kullanıcıAdı, reason}` ile
+hesabı listeden kaldırır (`enabled=false`, `archived_at=now`). Fiziksel kullanıcı
+ve geçmiş kayıtlar korunur. Tüm yazmalar CSRF ve açık site yönetimi yetkisi
+ister, self/son yönetici koruması ve işlem kaydı vardır. Gerekçe en çok 500
+karakterdir. `AccountStatusFilter` engelli/silinmiş hesabın açık oturumunu sonraki
+API isteğinde geçersiz kılar. Normal ADMIN'in toplu istatistik sınırı değişmez.
+
 `GET /api/admin/students?query=&page=0&size=25`, ayrıca `SITE_MANAGER`
 yetkisi olan hesaplara kayıtlı öğrencilerin salt okunur listesini verir.
 `USER` rolündeki eski, `category` alanı boş hesaplar da dahildir. Liste yalnız
@@ -183,7 +195,7 @@ yetkisi olan hesaplara kayıtlı öğrencilerin salt okunur listesini verir.
 parola, parola hash'i, telefon ve öğrenci çalışma geçmişi döndürülmez.
 Kullanıcı adı/e-posta araması büyük-küçük harften bağımsız, sayfa boyutu en çok
 100'dür. Yetkisiz `ADMIN`, `OPERATOR` ve diğer roller bu listeye erişemez.
-`/yonetim?sekme=ogrenciler` site yöneticisi için varsayılan sekmedir;
+`/yonetim?sekme=kullanicilar` site yöneticisi için varsayılan sekmedir; eski `sekme=ogrenciler` yalnız öğrenci filtresini açar;
 `sekme=kullanim` mevcut toplu özeti açar. Kayıtlar bağlı olunan yerel ortama
 aittir; main'de sonradan açılan hesap geliştirme DB'sine otomatik kopyalanmaz.
 

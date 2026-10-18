@@ -64,6 +64,21 @@ tünelden bu kolaylık kapalıdır. Geliştirme hesabı `YKS_DEV_OGRENCI` ile de
 Görseller ortamın `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
 klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
 
+Geliştirmeden önce `./feature-guncelle.ps1` yerel `main` ve `ivme/main`
+kodunu feature'a alır; feature değişikliklerini korur ve production worktree'sini
+değiştirmez. Her tamamlanan iş yerel feature dalına commit edilir.
+`./feature-guncelle.ps1 -SyncStudents` ayrıca eksik production öğrenci hesaplarını
+dev'e ekler. Sadece kayıt olmayan hesaplar kopyalanır; mevcut dev hesapları,
+engelleme/silme durumları ve çalışma kayıtları korunur. Production bağlantısı
+salt okunurdur ve önce dev kullanıcı tablosunun Git dışı yedeği alınır.
+Git pull veritabanını eşitlemez; bu işlem öğrenci çalışma geçmişini kopyalamaz.
+
+Site yöneticisi `Yönetim → Kullanıcılar` ekranında öğrenci, öğretmen, veli,
+yönetici ve içerik operatörü kategorilerini, boş kategoriler dahil, görür.
+Engelleme/engel kaldırma ve onayla silme bu ekrandadır. Silme hesabı listeden
+kaldırıp girişini kapatır; geçmiş çalışma ve inceleme kayıtları korunur.
+Site yöneticisi kendi hesabını kapatamaz; işlemler `account_audit` kaydına alınır.
+
 Yeni sürümü ana ortama geçirmek için feature değişiklikleri commit edilir,
 `uygulama-main` klasöründe feature dalı main'e merge edilir ve main ortamının
 `yeniden-baslat.bat` betiği çalıştırılır. Merge yapılana kadar geliştirme

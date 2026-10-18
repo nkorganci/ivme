@@ -29,7 +29,7 @@ Soru/PDF/video üretimi aynı sözleşme ve doğrulayıcıyı kullanır. Normal 
 öğrenci, veli, takip öğretmeni ve yönetici erişimini, mevcut OPERATOR yetkisini
 koruyarak sekiz aşamada tarif eden tasarım önerisidir. Kullanıcının 5174'te
 öğrencileri görememe bildirimi üzerine yalnız açık `SITE_MANAGER` yetkisiyle
-salt okunur öğrenci listesi/araması uygulanmıştır. Diğer yönetim, ilişki ve
+tüm rollerin listesi/araması, engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Diğer yönetim, ilişki ve
 hesap mutasyonu aşamaları ayrıca uygulama talimatı bekler; belge bağlantısı
 bunları başlatma yetkisi değildir. 7/12 sırası ve mevcut kayıtlar korunur.
 

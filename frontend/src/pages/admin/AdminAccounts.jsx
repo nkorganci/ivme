@@ -1,0 +1,122 @@
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { api, qs } from '../../api.js';
+import { useAuth } from '../../auth.jsx';
+import { useAsync } from '../../hooks.js';
+import { formatDate, formatNumber } from '../../format.js';
+import DataGrid from '../../components/DataGrid.jsx';
+import Pager from '../../components/Pager.jsx';
+import Modal from '../../components/Modal.jsx';
+import { Field } from '../../components/Field.jsx';
+import { Alert, Empty, ErrorBox, Loading } from '../../components/States.jsx';
+
+const ROLES = [
+  ['USER', 'Öğrenci', 'öğrenci'], ['TEACHER', 'Öğretmen', 'öğretmen'],
+  ['PARENT', 'Veli', 'veli'], ['ADMIN', 'Yönetici', 'yönetici'],
+  ['OPERATOR', 'İçerik operatörü', 'içerik operatörü'],
+];
+const roleName = role => ROLES.find(([value]) => value === role)?.[1] || role;
+
+export default function AdminAccounts() {
+  const { user } = useAuth();
+  const [params] = useSearchParams();
+  const [role, setRole] = useState(params.get('sekme') === 'ogrenciler' ? 'USER' : '');
+  const [draft, setDraft] = useState('');
+  const [query, setQuery] = useState('');
+  const [page, setPage] = useState(0);
+  const [revision, setRevision] = useState(0);
+  const [action, setAction] = useState(null);
+  const [notice, setNotice] = useState('');
+  const url = '/api/admin/accounts' + qs({ role, query, page, size: 25 });
+  const { data, loading, error, retry } = useAsync(() => api.get(url), [url, revision]);
+  const summary = useAsync(() => api.get('/api/admin/accounts/summary'), [revision]);
+  useEffect(() => { if (data && page > 0 && !data.content.length) setPage(Math.max(0, data.totalPages - 1)); }, [data, page]);
+  const selectRole = value => { setRole(value); setPage(0); setNotice(''); };
+  const search = event => { event.preventDefault(); setQuery(draft.trim()); setPage(0); };
+  const clear = () => { setDraft(''); setQuery(''); setPage(0); };
+  const finished = message => { setAction(null); setNotice(message); setRevision(value => value + 1); };
+  const columns = useMemo(() => [
+    { field: 'username', headerName: 'Kullanıcı adı', minWidth: 145 },
+    { field: 'email', headerName: 'E-posta', minWidth: 205 },
+    { field: 'role', headerName: 'Rol', minWidth: 145, valueFormatter: ({ value }) => roleName(value) },
+    { field: 'enabled', headerName: 'Durum', minWidth: 110, valueFormatter: ({ value }) => value ? 'Etkin' : 'Engelli' },
+    { field: 'createdAt', headerName: 'Kayıt tarihi', minWidth: 165, valueFormatter: ({ value }) => formatDate(value) },
+    { colId: 'actions', headerName: 'İşlemler', minWidth: 225, sortable: false, filter: false,
+      cellRenderer: ({ data: account }) => account.id === user.id ? <span className="muted">Geçerli hesabın</span> :
+        <div className="rate-row">
+          <button className="btn btn-secondary btn-sm" type="button"
+            onClick={() => setAction({ account, kind: account.enabled ? 'block' : 'unblock' })}>
+            {account.enabled ? 'Engelle' : 'Engeli kaldır'}
+          </button>
+          <button className="btn btn-danger btn-sm" type="button" onClick={() => setAction({ account, kind: 'delete' })}>Sil</button>
+        </div> },
+  ], [user.id]);
+  const selectedLabel = ROLES.find(([value]) => value === role)?.[2] || 'kullanıcı';
+  return <section aria-label="Kullanıcı yönetimi">
+    <h2>Kullanıcılar</h2>
+    {summary.error && <ErrorBox error={summary.error} onRetry={summary.retry} />}
+    <div className="rate-row" role="group" aria-label="Kullanıcı rolleri">
+      <button type="button" className="btn btn-secondary" aria-pressed={role === ''} onClick={() => selectRole('')}>
+        Tümü{summary.data ? ` (${formatNumber(summary.data.total)})` : ''}
+      </button>
+      {ROLES.map(([value, label]) => <button key={value} type="button" className="btn btn-secondary"
+        aria-pressed={role === value} onClick={() => selectRole(value)}>
+        {label}{summary.data ? ` (${formatNumber(summary.data.counts[value] || 0)})` : ''}
+      </button>)}
+    </div>
+    <form className="filter-row" onSubmit={search}>
+      <Field label="Kullanıcı ara" type="search" value={draft} maxLength={100}
+        onChange={event => setDraft(event.target.value)} placeholder="Kullanıcı adı veya e-posta" />
+      <button type="submit" className="btn btn-primary">Ara</button>
+      {query && <button type="button" className="btn btn-secondary" onClick={clear}>Aramayı temizle</button>}
+      <button type="button" className="btn btn-secondary" onClick={() => setRevision(value => value + 1)}>Yenile</button>
+    </form>
+    {notice && <Alert type="success">{notice}</Alert>}
+    {loading && <Loading />}
+    {error && <ErrorBox error={error} onRetry={retry} />}
+    {data && <>
+      <p className="muted">{formatNumber(data.totalElements)} kullanıcı{query ? ' bulundu' : ' kayıtlı'}.</p>
+      {data.content.length ? <div className="card table-card">
+        <DataGrid rowData={data.content} columnDefs={columns} showSearch={false} gridOptions={{ pagination: false }} />
+      </div> : <Empty title={query ? 'Aramaya uyan kullanıcı yok.' : `Henüz kayıtlı ${selectedLabel} yok.`} />}
+      <Pager page={data.page} totalPages={data.totalPages} onChange={setPage} />
+    </>}
+    {action && <AccountAction key={`${action.kind}-${action.account.id}`} action={action}
+      onClose={() => setAction(null)} onDone={finished} />}
+  </section>;
+}
+
+function AccountAction({ action: { account, kind }, onClose, onDone }) {
+  const [reason, setReason] = useState('');
+  const [confirmation, setConfirmation] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const deleting = kind === 'delete';
+  const title = deleting ? 'Kullanıcıyı sil' : kind === 'block' ? 'Kullanıcıyı engelle' : 'Engeli kaldır';
+  const submit = async event => {
+    event.preventDefault(); setBusy(true); setError('');
+    try {
+      if (deleting) await api.delete(`/api/admin/accounts/${account.id}`, { confirmation, reason });
+      else await api.patch(`/api/admin/accounts/${account.id}/status`, { enabled: kind === 'unblock', reason });
+      onDone(deleting ? 'Hesap listeden kaldırıldı; geçmiş kayıtlar korundu.' : kind === 'block' ? 'Kullanıcı engellendi.' : 'Kullanıcının engeli kaldırıldı.');
+    } catch (failure) { setError(failure.message); setBusy(false); }
+  };
+  return <Modal title={title} onClose={() => { if (!busy) onClose(); }}>
+    <form onSubmit={submit}>
+      <p><strong>{account.username}</strong> · {roleName(account.role)}</p>
+      <p>{deleting ? 'Hesap listeden kaldırılır ve giriş erişimi kapatılır. Çalışma geçmişi ve içerik inceleme kayıtları korunur.'
+        : kind === 'block' ? 'Kullanıcının girişi engellenir. Açık oturumları sonraki istekte kapatılır.'
+          : 'Kullanıcı hesabına yeniden giriş yapabilir.'}</p>
+      <Field as="textarea" label="Gerekçe (isteğe bağlı)" value={reason} maxLength={500}
+        onChange={event => setReason(event.target.value)} disabled={busy} />
+      {deleting && <Field label="Onay için kullanıcı adını yaz" value={confirmation} autoComplete="off"
+        onChange={event => setConfirmation(event.target.value)} disabled={busy} />}
+      {error && <Alert type="error">{error}</Alert>}
+      <div className="rate-row">
+        <button type="button" className="btn btn-secondary" disabled={busy} onClick={onClose}>Vazgeç</button>
+        <button type="submit" className={deleting ? 'btn btn-danger' : 'btn btn-primary'}
+          disabled={busy || (deleting && confirmation !== account.username)}>{busy ? 'İşleniyor…' : title}</button>
+      </div>
+    </form>
+  </Modal>;
+}

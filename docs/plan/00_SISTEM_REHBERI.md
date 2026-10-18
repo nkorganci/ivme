@@ -656,18 +656,32 @@ hedefi kabul eder; `node testler/learning-resources-ui.mjs <frontend-url>` veya
 güncel olduğunu kanıtlamaz. `ui/acceptance.json` denenen kaynak hash'lerini,
 masaüstü/390 px sonuçlarını ve sentetik 503/403 hata senaryolarını kaydeder.
 
-## Site yöneticisinin öğrenci listesi
+## Site yöneticisinin kullanıcı yönetimi
 
-`users.site_manager` mevcut `ADMIN` rolünden ayrı açık yönetim yetkisidir.
-`AppUserDetails` bu işareti `ROLE_SITE_MANAGER` yetkisine çevirir.
-`GET /api/admin/students` yalnız bu yetkiyle, `USER` rolündeki hesapları sayfalı
-ve salt okunur döndürür; eski hesaplarda `category` boş olabilir ve bu durum
-öğrenciyi listeden çıkarmaz. Entity doğrudan serileştirilmez; yalnız listede
-gösterilen kimlik, kullanıcı adı, e-posta, durum ve kayıt tarihi DTO'ya alınır.
-`/yonetim` site yöneticisine öğrenci sekmesini, diğer ADMIN hesaplarına mevcut
-toplu kullanım özetini gösterir. Liste mevcut ortamın DB'sine aittir; iki
-ortamın kayıtları birleştirilmez. Bu liste yetkisi öğrenci adına çalışma,
-hesap değiştirme/silme veya bütün yönetim önerisinin uygulanması anlamına gelmez.
+`users.site_manager`, mevcut ADMIN rolünden ayrı açık yetkidir; yalnız bunu
+taşıyan hesap `ROLE_SITE_MANAGER` alır. `GET /api/admin/accounts` tüm rollerin
+sayfalı listesini, `/summary` sıfır olan roller dahil sayıları döndürür.
+Kategori bilgisi boş eski USER hesapları öğrencidir. Yalnız liste alanları
+DTO'ya alınır; parola/hash/telefon ve çalışma içeriği gönderilmez.
+
+Engelleme/açma `enabled` alanını değiştirir. Silme, hesabı `archived_at` ve
+`enabled=false` ile kapatıp normal listeden kaldırır; öğrenci geçmişi, ortak
+incelemeler ve hesap ilişkilerinin FK kayıtları fiziksel olarak korunur.
+Silme kullanıcı adıyla açık onay ister. Yönetici kendi hesabını kapatamaz;
+son yönetici korunur. Yönetim yazmaları transaction advisory lock ile sıralanır,
+hedef satır kilitlenir ve işlem `account_audit` tablosuna aynı transaction'da
+yazılır. `AccountStatusFilter` her API isteğinde hesabın etkinliğini denetler;
+engelli veya silinmiş hesabın eski oturumu da geçersiz kılınır.
+
+Feature, geliştirme öncesinde `feature-guncelle.ps1` ile yerel main ve
+`ivme/main` kodunu alır; production çalışma klasörü aynı kalır. Değişiklikler
+her iş sonunda yerel commit edilir. Öğrenci hesabı aktarımı ayrı ve isteğe
+bağlıdır: `scripts/sync-production-students.py` varsayılan olarak ön izler;
+`--apply`, salt okunur production'dan eksik USER hesaplarını yalnız `ivme_dev`
+içine ekler. Önce dev kullanıcı tablosu yedeklenir; kullanıcı adı/e-posta
+çakışması işlemi durdurur. Mevcut dev hesapları/engelleri/silinme durumu ve
+çalışma kayıtları değiştirilmez. Bu aktarım çalışma geçmişini eşitlemez ve
+iki uygulamanın DB'si ortak hale gelmez.
 
 ## Yeni değişiklik yaparken
 

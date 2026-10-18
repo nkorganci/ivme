@@ -1,8 +1,8 @@
 # 13. Adım — kullanıcı rolleri, erişim ve site yönetimi önerisi
 
 18 Ekim 2026 ek uygulama sınırı: kullanıcının 5174'te kayıtlı öğrencileri
-görememe bildirimi üzerine yalnız açık `SITE_MANAGER` yetkisine ait salt okunur
-öğrenci listesi ve araması uygulanmıştır. Eski kategori bilgisi boş USER
+görememe bildirimi üzerine açık `SITE_MANAGER` yetkisine ait tüm kullanıcı listesi, rol filtreleri,
+engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Eski kategori bilgisi boş USER
 hesapları korunur. Bu dar düzeltme aşağıdaki yönetim, ilişki, bildirim ve hesap
 mutasyonu aşamalarının bütünüyle tamamlandığı anlamına gelmez.
 
