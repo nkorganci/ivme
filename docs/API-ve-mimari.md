@@ -39,7 +39,8 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır; değiştirici istekler 
 | `POST /api/study-sessions/{id}/finish` | Kendi açık pratiğini kapatır; tekrarda aynı bitiş/sonuç. Başka kullanıcıya 404, iptal edilmiş oturuma 409 |
 | `POST /api/study-sessions/{id}/cancel` | Kendi açık pratiğini `ABANDONED` yapar ve bitiş zamanını kaydeder; yanıtlar korunur ve hesaplara girmez. Tekrar 204, başkasının kaydı 404, tamamlanmış pratik 409 |
 | `GET /api/exams/plan?bank&examType&track&includeSolved&selectionMode&questionCount` | Genel denemenin branş hedeflerini, uygun soru sayılarını ve `ready` durumunu döndürür. `questionCount` verilmediğinde tam deneme planıdır; `includeSolved=false` yalnız yeni soruları kullanır, varsayılan `true` |
-| `POST /api/exams/full` `{bank?,examType,track?,includeSolved?}` | TYT 120 / AYT alanına göre 80 soru ve sabit süre/branş kotalarıyla deneme oluşturur. `includeSolved=false` kendi pratik ve teslim edilmiş denemelerinde yanıtlanan soruları dışlar; eksik havuzda 400, çözülmüş sorulara sessiz geçiş yoktur. Varsayılan `true`; eski konu/sayı/geçmiş parametreleri devralınmaz |
+| `POST /api/exams/full` `{bank?,examType,track?,includeSolved?,year?}` | TYT 120 / AYT alanına göre 80 soru ve sabit süre/branş kotalarıyla deneme oluşturur. Genel denemede `includeSolved=false` yalnız yeni soruları kullanır. `year` varsa o yılın çıkmış sorularının tamamı özgün sırayla seçilir; `bank=OGM` veya `includeSolved=false` kabul edilmez. Eksik havuzda 400; eski konu/sayı/geçmiş parametreleri devralınmaz |
+| `GET /api/exams/archive?examType&track` | Kayıtlı yılların `year,examType,track,questionCount,timeLimitMinutes,ready,subjects:[{subject,target,available}]` bilgileri. Eksik/birleşik/inceleme bekleyen soru varsa `ready=false`; başka yıldan soru eklenmez |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes,track?}` | `track=SAYISAL|SOZEL|ESIT_AGIRLIK` genel denemede dengeli branş planını uygular; eksik havuzda 400 |
 | `GET /api/exams?page&size` | Yalnız kendi teslim edilmiş denemeleri; toplam sonuçlara ek olarak `examType` ve `bySubject:[{subject,total,correct,wrong,blank}]` döner. Branşlar sayfadaki deneme kimlikleri için tek toplu sorguyla, korunmuş `exam_questions` alan/yanıt/sonuçlarından okunur; soru veya cevap anahtarı taşınmaz |
 | `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, otomatik kayıt ve sonuç |
@@ -57,11 +58,18 @@ Genel denemede `track` verildiğinde TYT tüm alanlar için ortak 120 soruluk; A
 
 Deneme planı bütün branşları aynı salt okunur `REPEATABLE_READ` işleminde tek
 toplu SQL ile sayar. Ortak etiket kuralı, güncel kaynak damgası ve öğretmen
-önceliği korunur. Dengeli oluşturmada genel sayım tekrarlanmaz; rastgele adaylar
-tek sorguda branş başına en çok toplam soru sayısıyla sınırlandırılır ve kotalar
-aynı soru kimliği iki kez kullanılmadan doldurulur. Denemenin kayıt işlemi
-atomiktir; yeni şema/göç, branş başına thread veya kullanıcıya ait kalıcı soru
-havuzu önbelleği yoktur. Salt okunur yerel süre kontrolü:
+önceliği korunur. Genel, branş ve özel denemelerde önce deneme içinde az temsil
+edilen, eşitlikte öğrencinin önceki denemelerinde az kullanılan ve daha eskiden
+sorulan ünite seçilir. Yeterli konu varsa bir konudan ikinci soru alınmadan
+diğer konulara sıra gelir; sonraki deneme atlanan konuları öne alır.
+Güncel ortak kimlikler/öğretmen kararları kullanılır; iptal edilmiş denemeler ve
+başka öğrencinin geçmişi kapsam hesabına katılmaz. Adaylar tek sorguda
+branş–ünite başına en çok toplam soru sayısıyla sınırlandırılır; çok etiketli
+sorular çoğaltılmaz. Öğrenci satırı kilidi eşzamanlı oluşturmaları sıralar.
+Yıla ait tam sınav, `exam_archive_positions` (V57/V58) içindeki özgün kimlik ve
+sırayı kullanır; özgün konu dağılımına dengeleme uygulanmaz. Denemenin kayıt
+işlemi atomiktir; branş başına thread veya kalıcı kullanıcı havuz önbelleği yoktur.
+Salt okunur yerel süre kontrolü:
 `..\.venv\Scripts\python.exe -X utf8 -B testler/exam-plan-performance.py --output RAPOR.json`.
 
 Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı `QuestionAvailabilityService` tanımından gelir. Oluşturulan soru kimlikleri `session_questions.position`, seçilen mod ve kaynak/sınav/ders/konu filtreleri `study_sessions` ile saklanır; yanıt anahtarı oturum API'sine konmaz. `time_limit_seconds` sunucuda saklanır; `deadlineAt = started_at + time_limit_seconds` ve `serverNow` sayaç gösterimi için döner. Sunucu bitişten sonra yeni cevap/olay kabul etmez; süre dolan oturum ilk okumada kapanır. Bitiş sonucu, soru başına ilk ve son çalışma turunun kayıtlı `is_correct` alanlarından hesaplanır: turda doğru yanıt varsa doğru, yalnız yanlış yanıt varsa yanlış, yanıt yoksa boş. Sonuçtaki son tur toplamı ve ilk tur toplamı ayrı gösterilir. Soru anahtarı sonradan değişse de eski tur puanı değişmez. Başlatma ekranı devam eden son pratiği gösterir; soru ekranı oturum sırasındaki önceki/sonraki soruya gider. `sessionId` ile gönderilen yanıtlar ve soru başı durum yalnız o oturumun olaylarından hesaplanır. Kimliksiz eski pratik ayrı kalır; daha sonraki bağımsız yanıt eski oturumun durumunu değiştirmez. Ortak konu/alt konu seçimi categoryId ile sunulur; eski onaylı soru tipi ağacı ve zorluk seçimi 9. adımdaki uzlaştırma kapsamındadır.

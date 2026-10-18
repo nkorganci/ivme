@@ -32,6 +32,9 @@ const AytTrials = lazy(() => import('./pages/AytTrials.jsx'));
 const SourceNotes = lazy(() => import('./pages/SourceNotes.jsx'));
 const SourceLabels = lazy(() => import('./pages/SourceLabels.jsx'));
 const LearningResources = lazy(() => import('./pages/LearningResources.jsx'));
+const Tutor = lazy(() => import('./pages/Tutor.jsx'));
+const TutorSession = lazy(() => import('./pages/TutorSession.jsx'));
+const TutorReview = lazy(() => import('./pages/TutorReview.jsx'));
 
 function ResourceLibraryRedirect() {
   const location=useLocation();
@@ -114,6 +117,8 @@ export default function App() {
               <Route path="tyt-denemeleri" element={<Suspense fallback={<Loading text="TYT denemeleri yükleniyor…" />}><TytTrials /></Suspense>} />
               <Route path="ayt-denemeleri" element={<Suspense fallback={<Loading text="AYT denemeleri yükleniyor…" />}><AytTrials /></Suspense>} />
             </Route>
+            <Route path="/akilli-ogretmen" element={<Suspense fallback={<Loading text="Akıllı Öğretmen yükleniyor…" />}><Tutor /></Suspense>} />
+            <Route path="/akilli-ogretmen/:code" element={<Suspense fallback={<Loading text="Öğretim oturumu yükleniyor…" />}><TutorSession /></Suspense>} />
             <Route path="/oneriler" element={<Recommendations />} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
@@ -126,6 +131,7 @@ export default function App() {
             <Route path="/ogretmen-dogrulamasi" element={<Navigate to="/ogretmen-dogrulamasi/fizik" replace />} />
             <Route path="/ogretmen-dogrulamasi/:subjectId" element={<Suspense fallback={<Loading text="Öğretmen doğrulaması yükleniyor…" />}><TeacherReview /></Suspense>} />
             <Route path="/icerik-bakimi" element={<Operator />} />
+            <Route path="/akilli-ogretmen-inceleme" element={<Suspense fallback={<Loading text="İnceleme yükleniyor…" />}><TutorReview /></Suspense>} />
           </Route>
         </Route>
       </Route>

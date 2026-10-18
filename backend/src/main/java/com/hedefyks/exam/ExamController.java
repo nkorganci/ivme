@@ -33,11 +33,13 @@ public class ExamController {
     private final ExamService service;
     private final HintService hints;
     private final ExamPlanService plans;
+    private final ExamArchiveService archive;
 
-    public ExamController(ExamService service, HintService hints, ExamPlanService plans) {
+    public ExamController(ExamService service, HintService hints, ExamPlanService plans, ExamArchiveService archive) {
         this.service = service;
         this.hints = hints;
         this.plans = plans;
+        this.archive = archive;
     }
 
     @PostMapping
@@ -62,6 +64,12 @@ public class ExamController {
     public ResponseEntity<ExamSession> createFull(@AuthenticationPrincipal AppUserDetails me,
                                                   @Valid @RequestBody ExamDtos.FullExamRequest req) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createFull(me.id(), req));
+    }
+
+    @GetMapping("/archive")
+    public java.util.List<ExamArchiveService.ArchivePlan> archive(@RequestParam ExamType examType,
+            @RequestParam(required = false) ExamTrack track) {
+        return archive.list(examType, track);
     }
 
     @GetMapping("/summary")

@@ -13,3 +13,6 @@ app:
     email: root@localhost
     password: root
   sample-data: ""
+  tutor:
+    models:
+      enabled: false   # testler modele bağlanmaz; yönlendirici testi ağ geçidini sahte bileşenle değiştirir

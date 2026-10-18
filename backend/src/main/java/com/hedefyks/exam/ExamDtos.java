@@ -17,7 +17,10 @@ public final class ExamDtos {
 
     public record FullExamRequest(QuestionBank bank,
             @NotNull(message = "TYT veya AYT seçmelisin.") ExamType examType, ExamTrack track,
-            Boolean includeSolved) {
+            Boolean includeSolved, @Min(2018) @Max(2100) Integer year) {
+        public FullExamRequest(QuestionBank bank, ExamType examType, ExamTrack track, Boolean includeSolved) {
+            this(bank, examType, track, includeSolved, null);
+        }
         public QuestionSelectionMode selectionMode() {
             return Boolean.FALSE.equals(includeSolved) ? QuestionSelectionMode.NEW : QuestionSelectionMode.MIXED;
         }

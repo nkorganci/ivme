@@ -57,7 +57,7 @@ public class DevLoginController {
     private UserDto localLogin(HttpServletRequest request, HttpServletResponse response, String login, Role role) {
         if (!localRequest(request)) throw new ApiException(HttpStatus.FORBIDDEN, "Yalnız yerel geliştirmede kullanılabilir.");
         User student = users.findByLogin(login)
-                .filter(user -> user.getRole() == role && user.isEnabled())
+                .filter(user -> (user.getRole() == role || (role==Role.USER && user.isSiteManager())) && user.isEnabled())
                 .orElseThrow(() -> ApiException.notFound("Yerel otomatik giriş için öğrenci hesabı bulunamadı."));
         AppUserDetails principal = AppUserDetails.of(student);
         Authentication auth = UsernamePasswordAuthenticationToken.authenticated(

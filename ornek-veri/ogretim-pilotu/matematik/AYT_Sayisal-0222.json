@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:AYT_Sayisal-0222",
+  "question": {
+    "code": "AYT_Sayisal-0222",
+    "exam": "AYT",
+    "subjectId": "matematik",
+    "categoryId": "archive:ayt.matematik.1036d4435ed08d3a221e",
+    "subtopic": "0/0 belirsizliği ve L'Hôpital kuralı (limit koşullarından parametre bulma)",
+    "answerKey": "C",
+    "choiceCount": 5,
+    "imageSha256": "5e3dfa333fb4c7c62b509e0f2b0cf4879ec70d6a19d165b17372a91392d10ed9"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "a, b ve c pozitif gerçel sayılar olmak üzere f(x) = ax² + 2 ve g(x) = (x − b)(x − c) fonksiyonları için lim_{x→a} (f·g)(x) = 0 ve lim_{x→a} [f(x) − 10]/g(x) = −2 eşitlikleri veriliyor. Buna göre a + b + c toplamı kaçtır?",
+    "choices": {"A": "8", "B": "9", "C": "10", "D": "11", "E": "12"},
+    "figure": null,
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ILERI",
+    "difficultyReason": "Limitin varlığından zorunlu koşul çıkarmak (pay da sıfır olmalı), bir parametrenin hem katsayı hem limit noktası olması ve L'Hôpital uygulaması birlikte gerekir.",
+    "skills": ["AKIL_YURUTME", "ANALIZ", "HESAPLAMA"],
+    "prerequisites": ["ayt.matematik.limit-ve-sureklilik"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "matematik.limit.sifir-bolu-sifir-zorunlulugu",
+    "name": "Sonlu limit ve sıfıra giden payda: pay da sıfır olmalı",
+    "trigger": "Bir kesrin limiti sonlu bir sayıya eşit veriliyor ve limit noktasında payda sıfır oluyorsa.",
+    "bigIdea": "Payda sıfıra giderken oran sonlu kalıyorsa pay da sıfıra gitmek zorundadır; aksi hâlde oran sonsuza kaçar. Bu zorunluluk bir bilinmeyeni verir; kalan 0/0 belirsizliği sadeleştirme ya da L'Hôpital ile çözülür.",
+    "method": [
+      "Polinomlarda limiti değer yerine koyarak dene; sıfır çıkan çarpanı belirle.",
+      "Payda sıfırsa ve limit sonluysa payı sıfıra eşitle; bilinmeyeni bul.",
+      "0/0 belirsizliğini ortak çarpanı sadeleştirerek ya da L'Hôpital kuralıyla (türevlerin oranı) çöz.",
+      "Elde edilen denklemi pozitiflik gibi verilen koşullarla kontrol et."
+    ],
+    "whenNot": "Limit sonsuz veriliyorsa ya da payda limit noktasında sıfır değilse bu zorunluluk yoktur; değer doğrudan yerine konur.",
+    "examTip": "L'Hôpital uygulamadan önce mutlaka 0/0 (ya da ∞/∞) olduğunu doğrula; çoğu soruda ilk adım bu doğrulamadan bir bilinmeyen çıkarmaktır."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "sifir-zorunlu", "text": "İlk limitten g(a) = 0 olduğunu, ikinci limitin sonlu olmasından da f(a) − 10 = 0 olması gerektiğini çıkarmak", "correct": true,
+       "feedback": "Doğru. Çarpım sıfırsa çarpanlardan biri sıfırdır; f(a) pozitif olduğuna göre g(a) = 0. Payda sıfırken limit sonluysa pay da sıfır olmak zorundadır."},
+      {"id": "lhopital-hemen", "text": "İkinci limite hemen L'Hôpital kuralını uygulamak", "correct": false,
+       "feedback": "L'Hôpital yalnızca 0/0 ya da ∞/∞ belirsizliğinde geçerlidir. Önce payın da sıfır olduğunu göstermek gerekir; bu adım a'yı verir."},
+      {"id": "f-sifir", "text": "İlk limitten f(a) = 0 yazıp a'yı bulmak", "correct": false,
+       "feedback": "a pozitif olduğundan f(a) = a³ + 2 en az 2'den büyüktür; sıfır olamaz. Sıfır olan çarpan g(a)'dır."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Polinomlar süreklidir; limit, değeri yerine koyarak bulunur. Bir kesirde payda sıfıra giderken limit sonlu bir sayıysa pay da sıfıra gitmek zorundadır."},
+    {"level": 2, "kind": "STRATEJI", "text": "İlk limitten hangi çarpanın sıfır olduğuna karar ver (a pozitifken f(a) sıfır olabilir mi?). Sonra ikinci limitte payın da sıfır olması gerektiğini kullanarak a'yı bul."},
+    {"level": 3, "kind": "ADIM", "text": "f(a) = a·a² + 2 olduğundan f(a) − 10 = 0 denklemi a³ = 8 verir. Bulduğun a, g'nin köklerinden biri olmalı; ardından 0/0 belirsizliğini türevlerin oranıyla çöz."}
+  ],
+  "guidingQuestions": [
+    {"text": "a > 0 iken f(a) = a³ + 2 sıfır olabilir mi?", "answer": "Hayır; a³ > 0 olduğundan f(a) > 2'dir. Bu yüzden ilk limitte sıfır olan g(a)'dır."},
+    {"text": "g(a) = 0 iken [f(x) − 10]/g(x) limitinin −2 gibi sonlu bir sayı olması için f(a) − 10 kaç olmalı?", "answer": "Sıfır olmalı; aksi hâlde oran sonsuza kaçar."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "f ve g polinom olduğundan lim_{x→a} (f·g)(x) = f(a)·g(a) = 0.",
+       "why": "Polinomlar her noktada süreklidir; limit fonksiyon değerine eşittir."},
+      {"id": "s2", "text": "f(a) = a·a² + 2 = a³ + 2 > 0 (a pozitif). Dolayısıyla g(a) = 0, yani a = b ya da a = c.",
+       "why": "Çarpım sıfırsa çarpanlardan en az biri sıfırdır; pozitif olan f(a) sıfır olamayacağından sıfır olan g(a)'dır.",
+       "selfExplain": {"prompt": "Neden f(a) = 0 seçeneğini eliyoruz?",
+         "options": [
+           {"id": "pozitif", "text": "a pozitif olduğu için a³ + 2 en az 2'den büyüktür; sıfır olamaz.", "correct": true,
+            "feedback": "Evet. Verilen koşulları (a, b, c pozitif) kullanmak olasılıkları daraltır."},
+           {"id": "rastgele", "text": "Çünkü her zaman ikinci çarpan sıfır kabul edilir.", "correct": false,
+            "feedback": "Böyle bir kural yok; hangi çarpanın sıfır olabileceğini verilen koşullar belirler."},
+           {"id": "limit-yok", "text": "Çünkü f'nin limiti yoktur.", "correct": false,
+            "feedback": "f polinomdur, her noktada limiti vardır. Eleme nedeni f(a)'nın pozitif olmasıdır."}
+         ]}},
+      {"id": "s3", "text": "İkinci limitte payda g(a) = 0. Limit sonlu (−2) olduğundan pay da sıfır olmalı: f(a) − 10 = 0 → a³ + 2 = 10 → a³ = 8 → a = 2.",
+       "why": "Payda sıfıra giderken pay sıfır olmayan bir sayıya giderse oran ±∞'a kaçar; sonlu limit ancak 0/0 durumunda mümkündür.",
+       "check": {"type": "solve", "equation": "a**3 + 2 = 10", "var": "a", "expect": ["2"]}},
+      {"id": "s4", "text": "Genelliği bozmadan b = 2 alalım (b ile c'nin rolleri simetrik). 0/0 belirsizliğinde L'Hôpital: lim f'(x)/g'(x) = f'(2)/g'(2). f'(x) = 2ax = 4x → f'(2) = 8; g'(x) = 2x − b − c → g'(2) = 4 − 2 − c = 2 − c.",
+       "why": "L'Hôpital kuralı 0/0 belirsizliğinde limitin türevlerin oranının limitine eşit olduğunu söyler; burada türevler 2'de süreklidir.",
+       "check": {"type": "sympy", "expr": "diff(2*x**2 + 2, x) - 4*x", "equals": "0"}},
+      {"id": "s5", "text": "8/(2 − c) = −2 → 2 − c = −4 → c = 6. a + b + c = 2 + 2 + 6 = 10.",
+       "why": "Limit değerini türev oranına eşitlemek c için birinci dereceden bir denklem verir; c = 6 pozitiftir ve koşulu sağlar.",
+       "check": {"type": "solve", "equation": "8/(2 - c) = -2", "var": "c", "expect": ["6"]}}
+    ],
+    "finalAnswer": {"choice": "C", "value": "10",
+      "check": {"type": "choice", "expr": "2 + 2 + 6", "choice": "C"}},
+    "levels": {
+      "sezgi": "Payda sıfıra yaklaşırken oran −2 gibi sakin bir sayıya yaklaşıyorsa pay da aynı anda sıfıra yaklaşmak zorundadır; iki sıfırın 'yarışını' oran belirler. Yarışın sonucu, iki fonksiyonun o noktadaki eğimlerinin (türevlerinin) oranıdır: payın eğimi 8, paydanınki 2 − c; oranları −2 olacak.",
+      "kisayol": "f(a) = 10 → a = 2. f(x) − 10 = 2x² − 8 = 2(x − 2)(x + 2) ve g(x) = (x − 2)(x − c) → sadeleşir: 2(x + 2)/(x − c) → 8/(2 − c) = −2 → c = 6. Toplam 10."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "A",
+     "mistake": "f(x) = ax² + 2'nin türevini 2x sanıp a katsayısını unutmak: 4/(2 − c) = −2 → c = 4 → 2 + 2 + 4 = 8.",
+     "cause": "a'nın burada hem limit noktası hem katsayı olduğunu gözden kaçırmak; türevi alırken a'yı sabit katsayı olarak taşımamak.",
+     "fix": "a = 2 bulunduktan sonra f(x) = 2x² + 2 olarak yeniden yaz; f'(x) = 4x, f'(2) = 8.",
+     "guidingQuestion": "a = 2 bulduktan sonra f(x)'i açıkça yazdın mı? f'(2) kaç?",
+     "check": {"type": "choice", "expr": "2 + 2 + (2 + Rational(4, 2))", "choice": "A"}},
+    {"id": "m2", "choice": null,
+     "mistake": "İlk limitten f(a) = 0 sonucunu çıkarmak.",
+     "cause": "Çarpımın sıfır olmasının hangi çarpandan kaynaklandığını verilen koşullarla (a pozitif) sınamamak.",
+     "fix": "f(a) = a³ + 2 > 0 olduğundan sıfır olan g(a)'dır.",
+     "guidingQuestion": "a pozitifken a³ + 2'nin işareti nedir?"},
+    {"id": "m3", "choice": null,
+     "mistake": "Payın sıfır olması gerektiğini göstermeden doğrudan L'Hôpital uygulamak.",
+     "cause": "L'Hôpital kuralının geçerlilik koşulunu (0/0 ya da ∞/∞) kontrol etmemek.",
+     "fix": "Önce belirsizliğin türünü göster; bu soruda o kontrol a'yı bulduran asıl adımdır.",
+     "guidingQuestion": "x → a iken pay neye gidiyor? Bunu bilmeden L'Hôpital kullanılabilir mi?"}
+  ],
+  "alternative": {
+    "title": "Çarpanlara ayırıp sadeleştirme",
+    "text": "a = 2 bulunduktan sonra f(x) − 10 = 2x² − 8 = 2(x − 2)(x + 2). b = 2 ile g(x) = (x − 2)(x − c). Ortak (x − 2) sadeleşir: lim_{x→2} 2(x + 2)/(x − c) = 8/(2 − c) = −2 → c = 6. L'Hôpital'e gerek kalmadan aynı sonuç.",
+    "check": {"type": "sympy", "expr": "limit((2*x**2 - 8)/((x - 2)*(x - 6)), x, 2)", "equals": "-2"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Limitin bir 'yaklaşma' olduğunu, x = 2'de tanımsız olan oranın yine de −2'ye yaklaştığını grafikte görmek 0/0 kavramını somutlaştırır.",
+    "stage": "POST",
+    "template": "plot",
+    "title": "x = 2'de delik, ama oran −2'ye yaklaşıyor",
+    "params": {
+      "x": [-1, 5.5],
+      "y": [-10, 4],
+      "xLabel": "x",
+      "yLabel": "[f(x) − 10] / g(x)",
+      "functions": [
+        {"id": "oran", "expr": "(2*x^2 - 8)/((x - 2)*(x - 6))", "label": "y = (2x² − 8) / [(x − 2)(x − 6)]", "tone": "navy", "holes": [2]}
+      ],
+      "points": [
+        {"id": "limit", "x": 2, "y": -2, "label": "x → 2 iken y → −2", "tone": "ok", "open": true}
+      ],
+      "segments": [
+        {"id": "kilavuz", "from": [-1, -2], "to": [2, -2], "tone": "warn", "dashed": true}
+      ]
+    },
+    "frames": [
+      {"caption": "Oranın grafiği: x = 2'de pay ve payda sıfır olduğu için fonksiyon tanımsız (delik).", "show": ["oran"]},
+      {"caption": "x soldan ve sağdan 2'ye yaklaştıkça değerler −2'ye yaklaşır; limit budur.", "show": ["oran", "limit", "kilavuz"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: x = 2 noktasında bu oranın bir değeri var mı?",
+      "options": [
+        {"id": "yok-ama-yaklasir", "text": "Değeri yok (0/0), ama yaklaştığı bir sayı var", "correct": true, "feedback": "Doğru. Limit, fonksiyonun o noktadaki değeri değil, yaklaştığı değerdir."},
+        {"id": "sifir", "text": "Değeri 0'dır", "correct": false, "feedback": "0/0 bir sayı değildir; belirsizliktir. Grafikte x = 2 civarına bakalım."},
+        {"id": "sonsuz", "text": "Oran sonsuza gider", "correct": false, "feedback": "Pay da sıfıra gittiği için oran sonsuza kaçmaz; sonlu bir değere yaklaşır. Grafikte görelim."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Pozitif m, n ve k sayıları için h(x) = mx² + 1 ile r(x) = (x − n)(x − k) tanımlanıyor. x, m'ye yaklaşırken h(x)·r(x) çarpımı sıfıra; [h(x) − 9]/r(x) oranı ise −4'e yaklaşıyor. m + n + k toplamı kaçtır?",
+    "choices": {"A": "6", "B": "7", "C": "8", "D": "9", "E": "10"},
+    "answer": "C",
+    "solution": "h(m) = m³ + 1 > 0 olduğundan r(m) = 0. Oran sonlu kaldığından h(m) − 9 = 0 → m³ = 8 → m = 2; n = 2 alınabilir. h′(2) = 2·2·2 = 8, r′(2) = 2 − k. 8/(2 − k) = −4 → k = 4. Toplam 2 + 2 + 4 = 8.",
+    "choiceValues": {"A": "6", "B": "7", "C": "8", "D": "9", "E": "10"},
+    "check": {"type": "twinChoice", "expr": "2 + 2 + (2 + Rational(8, 4))", "choice": "C"}
+  },
+  "choiceValues": {"A": "8", "B": "9", "C": "10", "D": "11", "E": "12"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik 12 — Türev: L'Hôpital kuralı ve belirsizlikler", "note": "0/0 belirsizliğinde limit hesabı kazanımı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-pilot-v1",
+    "createdAt": "2026-10-18T07:50:00Z"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0780",
+  "question": {
+    "code": "TYT-0780",
+    "exam": "TYT",
+    "subjectId": "matematik",
+    "categoryId": "tyt.matematik.olasilik",
+    "subtopic": "Basit olayların olasılıkları (kombinasyonla sayma)",
+    "answerKey": "A",
+    "choiceCount": 5,
+    "imageSha256": "689b7276885102975f02df4d74c269e7f7680a99cc567d95e9f4dc1adf5c83c3"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Bir halı fabrikasında üretilen ve bazıları defolu olan 25 tane halıdan rastgele 2 tanesi seçilerek kalite kontrolü yapılıyor. Seçilen halıların ikisinin de defolu olma olasılığı %1 olduğuna göre ikisinin de defosuz olma olasılığı yüzde kaçtır?",
+    "choices": {"A": "77", "B": "80", "C": "85", "D": "92", "E": "98"},
+    "figure": null,
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "İki aşamalı: önce verilen olasılıktan bilinmeyen defolu halı sayısını bulmak, sonra ikinci olasılığı kurmak gerekir; kombinasyon bilgisi ister.",
+    "skills": ["UYGULAMA", "PROBLEM_COZME", "HESAPLAMA"],
+    "prerequisites": ["tyt.matematik.permutasyon-kombinasyon"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "matematik.olasilik.sirasiz-secim",
+    "name": "Sırasız seçimde olasılık: grupları say",
+    "trigger": "Bir topluluktan 'rastgele k tanesi seçiliyor' deniyor ve seçilenlerin hepsinin belirli türden olma olasılığı soruluyorsa.",
+    "bigIdea": "Eş olası durumlar tek tek nesneler değil, seçilen gruplardır: olasılık = istenen türden grup sayısı / tüm grupların sayısı.",
+    "method": [
+      "Tüm eş olası grupları say: n nesneden k'lı seçim sayısı C(n, k).",
+      "İstenen türden grupları say; tür sayısı bilinmiyorsa ona bir harf ver.",
+      "Oranı kur ve verilen olasılıktan bilinmeyeni çöz.",
+      "İstenen yeni olay için aynı oranı tekrar kur."
+    ],
+    "whenNot": "Seçim iadeli ya da sıra önemliyse (art arda zar atma, şifre oluşturma) kombinasyon değil çarpma kuralı ve permütasyon kullanılır.",
+    "examTip": "Tüm grup sayısını verilen olasılıkla çarptığında tam sayı çıkmıyorsa kurulumunu kontrol et: seçim iadesiz ve sırasızdır."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "gruplari-say", "text": "Önce 25 halıdan kaç farklı ikili seçilebildiğini bulup %1 bilgisinden defolu halı sayısına geçmek", "correct": true,
+       "feedback": "Doğru yaklaşım. Olasılık = istenen ikili sayısı / tüm ikililer. %1 bilgisi defolu ikili sayısını, oradan da defolu halı sayısını verir."},
+      {"id": "yuzden-cikar", "text": "%100'den %1'i çıkarıp kalan yüzdeyi cevap kabul etmek", "correct": false,
+       "feedback": "Dikkat: 'ikisi de defolu değil' demek 'ikisi de defosuz' demek değildir. Bir halının defolu, diğerinin sağlam olduğu ikililer de vardır."},
+      {"id": "kare-al", "text": "Tek halının defolu olma olasılığını %1 alıp karesini hesaplamak", "correct": false,
+       "feedback": "%1, iki halının birlikte defolu olma olasılığıdır; tek halı için değil. Ayrıca aynı halı iki kez seçilemez, seçim iadesizdir."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Olasılık = istenen durum sayısı / tüm eş olası durum sayısı. Burada bir 'durum' tek halı değil, seçilen iki halıdan oluşan bir ikilidir."},
+    {"level": 2, "kind": "STRATEJI", "text": "Önce 25 halıdan kaç farklı ikili seçilebildiğini bul. %1 bilgisi, iki defolu halıdan oluşan ikililerin sayısını söyler; buradan defolu halı sayısına geç."},
+    {"level": 3, "kind": "ADIM", "text": "Defolu halı sayısına d de. İki defolu halıdan oluşan ikili sayısı C(d, 2) = d(d − 1)/2 olur; bunu tüm ikililerin %1'ine eşitle."}
+  ],
+  "guidingQuestions": [
+    {"text": "25 halıdan sıra gözetmeden kaç farklı ikili seçilebilir?", "answer": "C(25, 2) = 25·24/2 = 300 ikili."},
+    {"text": "Hangi d sayısı için d(d − 1)/2 = 3 olur?", "answer": "d = 3, çünkü 3·2/2 = 3."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Tüm eş olası durumlar: 25 halıdan 2 halı sırasız seçilir, C(25, 2) = 25·24/2 = 300 ikili vardır.",
+       "why": "İki halı birlikte seçiliyor; hangisinin önce seçildiği önemli değil. Bu yüzden her ikili tek bir durumdur.",
+       "check": {"type": "sympy", "expr": "binomial(25, 2)", "equals": "300"},
+       "selfExplain": {"prompt": "Neden 25·24 değil de 25·24/2 ile sayıyoruz?",
+         "options": [
+           {"id": "sira-onemsiz", "text": "Aynı iki halı iki farklı sırayla seçilse de tek bir ikilidir; sıralı sayım her ikiliyi iki kez sayar.", "correct": true,
+            "feedback": "Evet. Sırasız seçimde her ikili 2! = 2 kez sayılmış olur, bu yüzden 2'ye böleriz."},
+           {"id": "iade", "text": "Çünkü seçilen halı geri konuyor.", "correct": false,
+            "feedback": "Seçim iadesiz; 24 zaten ikinci seçimde bir halının eksildiğini gösteriyor. 2'ye bölme sıranın önemsizliğinden gelir."},
+           {"id": "yari-defolu", "text": "Çünkü halıların yarısı defolu.", "correct": false,
+            "feedback": "Defolu halı sayısı henüz bilinmiyor; 2'ye bölmenin defoyla ilgisi yok, sıranın önemsizliğinden gelir."}
+         ]}},
+      {"id": "s2", "text": "Defolu halı sayısı d olsun. İkisinin de defolu olduğu ikili sayısı C(d, 2) = d(d − 1)/2. Olasılık: [d(d − 1)/2] / 300 = 1/100, yani d(d − 1)/2 = 3.",
+       "why": "%1 = 1/100. Tüm ikililerin yüzde biri 300/100 = 3 ikili eder.",
+       "check": {"type": "solve", "equation": "d*(d - 1)/2 = 3", "var": "d", "expect": ["3", "-2"]}},
+      {"id": "s3", "text": "d(d − 1) = 6 denkleminin çözümleri 3 ve −2'dir. Halı sayısı negatif olamayacağından d = 3; defosuz halı sayısı 25 − 3 = 22.",
+       "why": "Denklem ikinci derecedendir ve iki kök verir; problem bağlamı (sayılabilir nesne) negatif kökü eler.",
+       "check": {"type": "sympy", "expr": "25 - 3", "equals": "22"}},
+      {"id": "s4", "text": "İkisinin de defosuz olduğu ikili sayısı C(22, 2) = 22·21/2 = 231. Olasılık 231/300 = 0,77, yani %77.",
+       "why": "Aynı eş olası 300 ikiliden, iki halısı da defosuz gruptan gelen 231 tanesi istenen durumdur.",
+       "check": {"type": "sympy", "expr": "100*binomial(22, 2)/binomial(25, 2)", "equals": "77"}}
+    ],
+    "finalAnswer": {"choice": "A", "value": "77",
+      "check": {"type": "choice", "expr": "100*binomial(22, 2)/binomial(25, 2)", "choice": "A"}},
+    "levels": {
+      "sezgi": "300 olası ikiliyi bir torbadaki 300 bilet gibi düşün. Biletlerin %1'i, yani 3 tanesi 'iki defolu' bileti. 3 farklı ikili ancak 3 defolu halıdan çıkar (3 halıdan 3 farklı ikili kurulur). Geriye kalan 22 sağlam halı 231 ikili oluşturur; 231 bilet / 300 bilet = %77.",
+      "kisayol": "300·%1 = 3 defolu ikili → C(d, 2) = 3 → d = 3. Sağlam ikili C(22, 2) = 231 → 231/300 = %77."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": null,
+     "mistake": "Seçimi iadeli sanıp (d/25)² = 1/100 denklemini kurmak.",
+     "cause": "'Rastgele 2 tanesi seçiliyor' ifadesini art arda bağımsız iki çekiliş gibi okumak; aynı halının iki kez seçilemeyeceğini gözden kaçırmak.",
+     "fix": "İki halı aynı anda seçilir: sırasız ve iadesiz seçim, kombinasyon demektir. (d/25)² = 1/100 denklemi d = 2,5 verir; halı sayısı kesirli olamayacağı için kurulum yanlıştır.",
+     "guidingQuestion": "Aynı halı hem birinci hem ikinci halı olarak seçilebilir mi?"},
+    {"id": "m2", "choice": null,
+     "mistake": "'İkisi de defosuz' olasılığını %100 − %1 = %99 sanmak.",
+     "cause": "Tümleyen olayı eksik kurmak: 'ikisi de defolu' olayının tümleyeni 'en az biri defosuz'dur, 'ikisi de defosuz' değildir.",
+     "fix": "Üç ayrık durum vardır: ikisi defolu, yalnız biri defolu, ikisi de defosuz. Toplamları %100'dür; tek durumu çıkarmak yetmez.",
+     "guidingQuestion": "Seçilen iki halıdan biri defolu, diğeri sağlam olabilir mi? Bu ikililer hangi gruba girer?"},
+    {"id": "m3", "choice": null,
+     "mistake": "Defolu halı sayısını bulduktan sonra sağlam ikilileri 22·21 diye sıralı saymak.",
+     "cause": "Payı sıralı, paydayı sırasız saymak; aynı sayma kuralını kesrin iki tarafında kullanmamak.",
+     "fix": "Pay ve payda aynı sayma kuralıyla sayılmalı. Payda sırasız (300) ise pay da sırasız: 231.",
+     "guidingQuestion": "Payı saydığın yöntemle paydayı da aynı yöntemle saydın mı?"}
+  ],
+  "alternative": {
+    "title": "Tümleyen yoluyla kontrol",
+    "text": "Yalnız birinin defolu olduğu ikili sayısı 3·22 = 66, yani %22. İkisi defolu %1 olduğundan ikisi de defosuz: %100 − %1 − %22 = %77. Aynı sonuca ikinci bir yoldan ulaşmak hesabı doğrular.",
+    "check": {"type": "sympy", "expr": "100 - 1 - 100*3*22/binomial(25, 2)", "equals": "77"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Olasılığın 'grup sayma' olduğunu görmek için 300 ikilinin üç türe ayrılışını görmek, formülü ezberlemekten daha kalıcıdır.",
+    "stage": "POST",
+    "template": "grid",
+    "title": "300 ikili üç türe ayrılıyor",
+    "params": {
+      "mode": "pairs",
+      "n": 25,
+      "groups": [
+        {"id": "defolu", "label": "Defolu halı", "size": 3, "tone": "bad"},
+        {"id": "saglam", "label": "Defosuz halı", "size": 22, "tone": "ok"}
+      ]
+    },
+    "frames": [
+      {"caption": "Her kare iki halıdan oluşan bir ikili. Toplam 300 kare, hepsi eşit şanslı.", "show": ["all"]},
+      {"caption": "İki halısı da defolu ikililer: yalnızca 3 kare. 3/300 = %1 bilgisi tam olarak budur.", "show": ["all", "pair:defolu-defolu"]},
+      {"caption": "Biri defolu biri sağlam ikililer: 3·22 = 66 kare (%22). Unutulan durum genellikle budur.", "show": ["all", "pair:defolu-defolu", "pair:defolu-saglam"]},
+      {"caption": "İki halısı da sağlam ikililer: 231 kare. 231/300 = %77.", "show": ["all", "pair:defolu-defolu", "pair:defolu-saglam", "pair:saglam-saglam"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: İki halısı da sağlam olan ikililer tüm ikililerin yarısından fazla mı?",
+      "options": [
+        {"id": "fazla", "text": "Evet, yarısından fazla", "correct": true, "feedback": "Doğru tahmin. Sağlam halılar çok fazla olduğu için sağlam ikililer de baskın; şimdi tam oranını görelim."},
+        {"id": "az", "text": "Hayır, yarısından az", "correct": false, "feedback": "25 halının 22'si sağlam; sağlam ikililer baskın olmalı. Kareleri sayarak kontrol edelim."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Bir kutudaki 20 ampulden bazıları bozuktur. Kutudan rastgele 2 ampul seçildiğinde ikisinin de bozuk olma olasılığı 3/190'dır. Buna göre seçilen iki ampulün de sağlam olma olasılığı kaçtır?",
+    "choices": {"A": "68/95", "B": "34/95", "C": "17/20", "D": "72/95", "E": "289/400"},
+    "answer": "A",
+    "solution": "C(20, 2) = 190 ikili var. Bozuk ikili sayısı 3 olduğundan C(b, 2) = 3 → b = 3 bozuk ampul, 17 sağlam ampul. Sağlam ikili C(17, 2) = 136 → 136/190 = 68/95. (289/400 = (17/20)² iadeli seçim tuzağıdır.)",
+    "choiceValues": {"A": "68/95", "B": "34/95", "C": "17/20", "D": "72/95", "E": "289/400"},
+    "check": {"type": "twinChoice", "expr": "binomial(17, 2)/binomial(20, 2)", "choice": "A"}
+  },
+  "choiceValues": {"A": "77", "B": "80", "C": "85", "D": "92", "E": "98"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Olasılık: basit olayların olasılıkları", "note": "Kombinasyonla eş olası durum sayma kazanımı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-pilot-v1",
+    "createdAt": "2026-10-18T07:10:00Z"
+  }
+}

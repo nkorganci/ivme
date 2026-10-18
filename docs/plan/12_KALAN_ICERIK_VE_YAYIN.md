@@ -25,6 +25,13 @@ uygulanmış beş kaydı, karar bekleyen 14 içerik kaydından ayırır.
 - Hazır düzeltme paketindeki branş/konu uyuşmazlıkları ve biyoloji cevabı için bağımsız alan kararı al. Onaylanan düzeltmeyi kaynak damgası, özgün kanıt ve etkilenen geçmiş olay sayılarıyla ayrı işlem olarak uygula; cevap ve yeniden puanlamayı sessizce değiştirme.
 - `missing-bank-positions.jsonl` içindeki 54 birleşik pasaj/belirsiz kimliği resmî soru konumu ve görseliyle tek tek doğrula. Eski birleşik kimliği koruyan tekil soru kabulü hazırla; alternatif din/felsefe konumlarını birleştirme. Yeni kayıtlar mevcut etiket/ad/konum kabul hattından geçsin.
 
+Yıla ait tam sınav seçimi bu kabulü kullanır. [Canlı arşiv ölçümü](../../veri/content-labels/integration/exam-coverage-20261018/api-report.json)
+TYT'de 2018–2026 Türkçe için 34/40 tekil soru, 2019 Matematik için ayrıca
+39/40 gösterir. Hazır AYT alanları başlatılabilir; diğer yıllar/alanlar eksikliğiyle
+gösterilir. Bu arayüzün tamamlanması 54 konumun kaynak incelemesini kapatmaz.
+Tekil soru kabulünden sonra korunmuş özgün konum bağını DB arşiv kaydına ekle ve
+yıl/alanın `ready` durumunu yeniden doğrula; başka yılın sorusuyla tamamlama.
+
 Kabul: kaynak düzeltmesi, arşivde bulunmayan soru ve inceleme bekleyen kayıt ayrılmış; eski soru kodları ve öğrenci kayıtları korunmuş.
 
 **Gereken kişi/girdi:** 14 içerik kaydı için ilgili branş uzmanının gerekçeli

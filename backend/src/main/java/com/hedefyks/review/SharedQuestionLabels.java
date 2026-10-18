@@ -100,8 +100,15 @@ public class SharedQuestionLabels {
     public SubjectSelection subjectSelection(com.hedefyks.question.QuestionBank bank,
             com.hedefyks.question.ExamType exam, List<String> subjects) {
         String request = selection(new QuestionFilter(bank, exam, null, null));
-        return new SubjectSelection(request, write(subjects.stream().distinct()
-            .map(subject -> Map.of("subject", subject, "subject_id", vocabulary.subjectId(subject))).toList()));
+        return new SubjectSelection(request, write(subjects.stream().distinct().flatMap(subject -> {
+            // Official test quotas group these controlled branches under one test.
+            var ids = switch (subject) {
+                case "Matematik" -> List.of("matematik", "geometri");
+                case "Felsefe Grubu" -> List.of("felsefe", "psikoloji", "sosyoloji", "mantik");
+                default -> List.of(vocabulary.subjectId(subject));
+            };
+            return ids.stream().map(id -> Map.of("subject", subject, "subject_id", id));
+        }).toList()));
     }
 
     /** Reuse exactly the active, source-bound question selection for every facet. */

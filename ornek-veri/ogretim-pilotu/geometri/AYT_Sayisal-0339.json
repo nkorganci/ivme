@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:AYT_Sayisal-0339",
+  "question": {
+    "code": "AYT_Sayisal-0339",
+    "exam": "AYT",
+    "subjectId": "geometri",
+    "categoryId": "ayt.geometri.donusum-geometrisi",
+    "subtopic": "Doğruya göre yansıma (simetri) ve dikdörtgenin çevresi",
+    "answerKey": "E",
+    "choiceCount": 5,
+    "imageSha256": "c00960a70611bedb9c164877e8fe63fa13d9fce940dda39f855989759943afe3"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "a, b ve c pozitif gerçel sayılar olmak üzere dik koordinat düzleminde şekildeki ABCD dikdörtgeninin A(a, 5) köşesinin x = b doğrusuna göre simetriği B köşesi, B köşesinin y = 6 doğrusuna göre simetriği ise C(13, c) köşesidir. ABCD dikdörtgeninin çevresi 20 birim olduğuna göre a + b + c toplamı kaçtır?",
+    "choices": {"A": "25", "B": "24", "C": "23", "D": "22", "E": "21"},
+    "figure": "Koordinat düzleminde ABCD dikdörtgeni; A sol alt, B sağ alt, C sağ üst (13, c), D sol üst. x = b dikey kesikli doğrusu dikdörtgeni ikiye böler; y = 6 yatay kesikli doğrusu dikdörtgenin içinden geçer.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "İki ardışık yansımanın koordinatlara etkisini yazmak ve çevre bilgisiyle bilinmeyenleri bulmak gerekir; işlem kısa, kavram net.",
+    "skills": ["UYGULAMA", "ANALIZ", "HESAPLAMA"],
+    "prerequisites": [],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "geometri.donusum.dogruya-gore-yansima",
+    "name": "Doğruya göre yansıma: doğru, orta dikmedir",
+    "trigger": "Bir noktanın x = k ya da y = k doğrusuna göre simetriği isteniyor ya da verilmiş.",
+    "bigIdea": "Yansımada doğru, nokta ile görüntüsünü birleştiren parçanın orta dikmesidir. x = k'ye göre yansımada y değişmez, x değeri k'nin öbür yanına aynı uzaklıkta geçer: x' = 2k − x.",
+    "method": [
+      "Yansıma doğrusunun dikey mi yatay mı olduğuna bak: x = k dikey, y = k yatay.",
+      "Değişmeyen koordinatı aynen yaz.",
+      "Değişen koordinat için orta nokta kuralını kullan: (eski + yeni)/2 = k.",
+      "Bulunan koordinatlardan kenar uzunluklarını yazıp verilen ölçüyü (çevre, alan) kullan."
+    ],
+    "whenNot": "Yansıma doğrusu y = x gibi eğikse koordinatlar yer değiştirir; orta nokta kuralı tek koordinata uygulanmaz.",
+    "examTip": "Yansıma sorularında kâğıdı katlamayı düşün: kat yeri tam ortadadır, uzaklıklar korunur."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "koordinat-yaz", "text": "Her yansımada hangi koordinatın değişmediğini yazıp değişeni orta nokta kuralıyla bulmak", "correct": true,
+       "feedback": "Doğru. x = b'ye göre yansımada y aynı kalır; y = 6'ya göre yansımada x aynı kalır. Değişen koordinat orta nokta kuralıyla bulunur."},
+      {"id": "olcekli-oku", "text": "Şekilden uzunlukları ölçüp tahmin etmek", "correct": false,
+       "feedback": "Şekil ölçekli değildir; koordinatlar ve yansıma kuralı kesin sonucu verir."},
+      {"id": "esit-sayi", "text": "Simetride koordinatların işaret değiştirdiğini varsaymak", "correct": false,
+       "feedback": "İşaret değişimi yalnız eksenlere (x = 0, y = 0) göre yansımada olur. Burada doğrular x = b ve y = 6."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Bir noktanın bir doğruya göre simetriğinde doğru, iki noktayı birleştiren parçanın tam ortasından dik geçer."},
+    {"level": 2, "kind": "STRATEJI", "text": "x = b'ye göre yansımada y aynı kalır, y = 6'ya göre yansımada x aynı kalır. Önce C'nin y koordinatını, sonra dikdörtgenin kenar uzunluklarını bulmaya çalış."},
+    {"level": 3, "kind": "ADIM", "text": "B'nin y koordinatı 5'tir. B ile C'nin y değerlerinin ortalaması 6 olmalı: (5 + c)/2 = 6. Ardından kısa kenar BC ve uzun kenar AB'yi yazıp çevreyi kullan."}
+  ],
+  "guidingQuestions": [
+    {"text": "A'nın x = b doğrusuna göre simetriğinde hangi koordinat değişmez?", "answer": "y koordinatı: B de y = 5 üzerindedir."},
+    {"text": "B'nin y = 6'ya göre simetriği C(13, c) ise B'nin x koordinatı kaçtır?", "answer": "Dikey yöndeki yansımada x değişmez: B'nin x'i de 13'tür."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "B, A'nın x = b'ye göre simetriği: B'nin y'si 5, x'i 2b − a. C, B'nin y = 6'ya göre simetriği: C'nin x'i B'ninkiyle aynı, 2b − a = 13; y'si 2·6 − 5 = 7, yani c = 7.",
+       "why": "Dikey doğruya göre yansımada yalnız x, yatay doğruya göre yansımada yalnız y değişir; değişen koordinat doğruya göre eşit uzaklıkta öbür yana geçer.",
+       "check": {"type": "solve", "equation": "(5 + c)/2 = 6", "var": "c", "expect": ["7"]},
+       "selfExplain": {"prompt": "Neden c = 2·6 − 5 yazıyoruz?",
+         "options": [
+           {"id": "orta-nokta", "text": "y = 6 doğrusu B ile C'nin tam ortasından geçer; (5 + c)/2 = 6.", "correct": true,
+            "feedback": "Evet. Yansıma doğrusu, nokta ile görüntüsünün orta noktasından geçer."},
+           {"id": "toplam", "text": "Çünkü yansımada koordinatlar toplanır: 6 + 5.", "correct": false,
+            "feedback": "6 + 5 = 11 olurdu; oysa C, doğrunun öbür yanında aynı uzaklıktadır: 6 + (6 − 5) = 7."},
+           {"id": "isaret", "text": "Çünkü yansımada y koordinatının işareti değişir.", "correct": false,
+            "feedback": "İşaret değişimi yalnız x eksenine (y = 0) göre yansımada olur."}
+         ]}},
+      {"id": "s2", "text": "Kenarlar: BC = 7 − 5 = 2, AB = 13 − a. Çevre 2(AB + BC) = 20 → 13 − a + 2 = 10 → a = 5.",
+       "why": "Dikdörtgenin çevresi iki farklı kenarın toplamının iki katıdır.",
+       "check": {"type": "solve", "equation": "2*((13 - a) + (7 - 5)) = 20", "var": "a", "expect": ["5"]}},
+      {"id": "s3", "text": "2b − a = 13 → 2b = 18 → b = 9. Toplam a + b + c = 5 + 9 + 7 = 21.",
+       "why": "x = b doğrusu A ile B'nin orta noktasından geçer: b = (5 + 13)/2.",
+       "check": {"type": "solve", "equation": "2*b - 5 = 13", "var": "b", "expect": ["9"]}}
+    ],
+    "finalAnswer": {"choice": "E", "value": "21",
+      "check": {"type": "choice", "expr": "5 + 9 + 7", "choice": "E"}},
+    "levels": {
+      "sezgi": "Kâğıdı x = b çizgisinden katla: A, B'nin üstüne gelir; çizgi AB'nin tam ortasıdır. Sonra y = 6 çizgisinden katla: B, C'nin üstüne gelir; 5'ten 6'ya 1 birim, 6'dan C'ye de 1 birim, yani c = 7. Kısa kenar 2 olunca çevre 20'den uzun kenar 8 çıkar; A, 13'ün 8 solunda, 5'te. Katlama çizgisi 5 ile 13'ün tam ortası: 9.",
+      "kisayol": "c = 2·6 − 5 = 7; kısa kenar 2, uzun kenar 10 − 2 = 8 → a = 13 − 8 = 5; b = (5 + 13)/2 = 9; toplam 21."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": null, "mistake": "C'nin y koordinatını 6 + 5 = 11 ya da 6 − 5 = 1 diye bulmak.",
+     "cause": "Yansımayı 'toplama' ya da 'çıkarma' olarak ezberlemek; uzaklığın korunduğunu düşünmemek.",
+     "fix": "B, y = 6'nın 1 birim altında; C de 1 birim üstünde olmalı: c = 7.",
+     "guidingQuestion": "B, y = 6 doğrusuna kaç birim uzaklıkta? C de öyle mi olmalı?"},
+    {"id": "m2", "choice": null, "mistake": "Çevre bilgisinde kenarları toplayıp 2 ile çarpmayı unutmak: 13 − a + 2 = 20.",
+     "cause": "Çevre formülünü yarım kullanmak.",
+     "fix": "Çevre = 2(uzun + kısa). Unutulursa a = −5 çıkar; a pozitif olduğundan kurulum yanlıştır.",
+     "guidingQuestion": "Bulduğun a pozitif mi? Değilse çevreyi nasıl yazdın?"}
+  ],
+  "alternative": {
+    "title": "Orta noktadan b",
+    "text": "A(5, 5) ve B(13, 5) bulunduktan sonra x = b, AB'nin orta dikmesidir: b = (5 + 13)/2 = 9. Bu, 2b − a = 13 denklemiyle aynı sonucu verir.",
+    "check": {"type": "sympy", "expr": "Rational(5 + 13, 2)", "equals": "9"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "İki katlamayı sırayla görmek, 'doğru = orta dikme' fikrini ve hangi koordinatın değiştiğini somutlaştırır.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "İki katlama: önce x = b, sonra y = 6",
+    "params": {
+      "view": [2, 16, 2.5, 9.5],
+      "points": [
+        {"id": "A", "x": 5, "y": 5, "label": "A(5, 5)"}, {"id": "B", "x": 13, "y": 5, "label": "B(13, 5)"},
+        {"id": "C", "x": 13, "y": 7, "label": "C(13, 7)"}, {"id": "D", "x": 5, "y": 7, "label": "D"},
+        {"id": "X1", "x": 9, "y": 3, "hidden": true}, {"id": "X2", "x": 9, "y": 9, "hidden": true},
+        {"id": "Y1", "x": 3, "y": 6, "hidden": true}, {"id": "Y2", "x": 15, "y": 6, "hidden": true},
+        {"id": "M", "x": 9, "y": 5}
+      ],
+      "segments": [
+        {"id": "xb", "from": "X1", "to": "X2", "tone": "warn", "dashed": true, "label": "x = 9"},
+        {"id": "y6", "from": "Y1", "to": "Y2", "tone": "warn", "dashed": true, "label": "y = 6"},
+        {"id": "AB", "from": "A", "to": "B", "tone": "navy", "label": "13 − a = 8"},
+        {"id": "BC", "from": "B", "to": "C", "tone": "navy", "label": "2"},
+        {"id": "CD", "from": "C", "to": "D", "tone": "navy"}, {"id": "DA", "from": "D", "to": "A", "tone": "navy"}
+      ],
+      "texts": [{"id": "orta", "x": 9, "y": 4.4, "text": "AM = MB = 4"}]
+    },
+    "frames": [
+      {"caption": "A'yı x = b çizgisinden katla: B aynı yükseklikte (y = 5), çizgi AB'nin tam ortasında.",
+       "show": ["A", "B", "xb", "AB", "M", "orta"]},
+      {"caption": "B'yi y = 6 çizgisinden katla: x aynı kalır (13); 5'ten 6'ya 1 birim, 6'dan C'ye 1 birim → c = 7.",
+       "show": ["A", "B", "C", "xb", "y6", "AB", "BC"]},
+      {"caption": "Kısa kenar 2, çevre 20 → uzun kenar 8: A 13'ün 8 solunda, a = 5. Çizgi 5 ile 13'ün ortasında: b = 9.",
+       "show": ["A", "B", "C", "D", "xb", "y6", "AB", "BC", "CD", "DA", "M", "orta"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: B'nin y = 6'ya göre simetriği yukarıda mı aşağıda mı ve kaç birim uzakta?",
+      "options": [
+        {"id": "yukari-bir", "text": "Yukarıda, doğrudan 1 birim uzakta", "correct": true, "feedback": "Doğru: B doğrunun 1 birim altında, C de 1 birim üstünde."},
+        {"id": "yukari-alti", "text": "Yukarıda, doğrudan 6 birim uzakta", "correct": false, "feedback": "Uzaklık korunur: B, y = 6'ya 1 birim uzakta; C de 1 birim uzakta olur."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Kâğıt üzerinde K(p, 2) noktası x = q çizgisinden katlanınca L noktasıyla, L noktası da y = 4 çizgisinden katlanınca M(11, r) noktasıyla çakışıyor. K, L ve M bir dikdörtgenin üç köşesi; dikdörtgenin çevresi 20 birim. p + q + r kaç olur?",
+    "choices": {"A": "17", "B": "18", "C": "19", "D": "20", "E": "21"},
+    "answer": "C",
+    "solution": "L(2q − p, 2), M(2q − p, 2·4 − 2) → r = 6 ve 2q − p = 11. Kısa kenar LM = 6 − 2 = 4; çevre 20 → uzun kenar KL = 10 − 4 = 6 → p = 11 − 6 = 5. q = (5 + 11)/2 = 8. Toplam 5 + 8 + 6 = 19.",
+    "choiceValues": {"A": "17", "B": "18", "C": "19", "D": "20", "E": "21"},
+    "check": {"type": "twinChoice", "expr": "5 + Rational(5 + 11, 2) + (2*4 - 2)", "choice": "C"}
+  },
+  "choiceValues": {"A": "25", "B": "24", "C": "23", "D": "22", "E": "21"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Dönüşüm geometrisi: doğruya göre yansıma", "note": "x = k ve y = k doğrularına göre yansımada koordinatlar."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:50:00Z"}
+}

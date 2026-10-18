@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0898",
+  "question": {
+    "code": "TYT-0898",
+    "exam": "TYT",
+    "subjectId": "geometri",
+    "categoryId": "tyt.geometri.kati-cisimler",
+    "subtopic": "Dikdörtgenler prizması: birleşik cismin yüzey alanı",
+    "answerKey": "B",
+    "choiceCount": 5,
+    "imageSha256": "8c99b6f2288d19a6c27c0284cb6ff2735eae959f6b3cb9d412127b806151a78b"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Karşılıklı yüzleri aynı renkte olan Şekil 1'deki dikdörtgenler prizmasından 7 tanesi Şekil 2'deki gibi birleştirilerek büyük bir dikdörtgenler prizması elde ediliyor. Buna göre Şekil 2'deki prizmanın yüzey alanının, Şekil 1'deki prizmanın yüzey alanına oranı kaçtır?",
+    "choices": {"A": "2", "B": "3", "C": "4", "D": "5", "E": "6"},
+    "figure": "Şekil 1: üst yüzü kırmızı, ön yüzü beyaz, yan yüzü camgöbeği uzun bir prizma. Şekil 2: üstte 2 × 3 kırmızı yüz (6 dik prizma), önde iki beyaz yüz ve altta camgöbeği bir şerit, sağ yanda üç camgöbeği şerit ve altta kırmızı bir uç: 6 dik prizmanın altında yatay duran 1 prizma.",
+    "figureCritical": true,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ZOR",
+    "difficultyReason": "Renklerden prizmaların yönünü okuyup ölçüler arasındaki ilişkiyi (a = 3b, h = 2a) kurmak gerekir; uzamsal düşünme ve yüzey alanı hesabı birleşir.",
+    "skills": ["ANALIZ", "AKIL_YURUTME", "HESAPLAMA"],
+    "prerequisites": ["tyt.matematik.oran-oranti"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "geometri.kati.birlesik-prizma",
+    "name": "Birleşik prizma: renklerden ölçü ilişkisine",
+    "trigger": "Özdeş prizmalar birleştirilip yeni bir prizma oluşturuluyor ve alan/hacim oranı soruluyorsa.",
+    "bigIdea": "Birleşimde kenarlar tam oturur: yan yana duran kenarların toplamı, karşıdaki tek kenara eşittir. Bu eşitlikler bilinmeyen ölçüleri tek bir birime bağlar; sonra alanlar ve hacimler bu birimle yazılır.",
+    "method": [
+      "Küçük prizmanın ölçülerine harf ver (a, b, h); renklerden her parçanın hangi yönde durduğunu oku.",
+      "Büyük prizmanın her kenarını iki farklı yoldan yaz ve eşitle (ör. 2a = h).",
+      "Bütün ölçüleri tek bir harfe bağla; o harfe 1 değerini ver.",
+      "Yüzey alanlarını 2(ab + ah + bh) ile hesapla ve oranla."
+    ],
+    "whenNot": "Hacim oranı sorulsaydı ölçü ilişkisine gerek kalmazdı: hacim, parça sayısı kadar katlanır (burada 7). Yüzey alanı ise ölçülere bağlıdır.",
+    "examTip": "Oran sorularında bir ölçüye 1 değerini vermek hesabı sadeleştirir; oran birimden bağımsızdır."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "olcu-iliskisi", "text": "Renklerden prizmaların yönünü okuyup büyük prizmanın kenarlarını küçük prizmanın a, b, h ölçüleri cinsinden eşitlemek", "correct": true,
+       "feedback": "Doğru. Üstte 2 × 3 kırmızı yüz ve altta yatan tek prizma, ölçüler arasında iki eşitlik verir; oran ancak bu ilişkiyle hesaplanır."},
+      {"id": "yedi-kat", "text": "7 prizma birleştiği için yüzey alanının 7 katına çıktığını düşünmek", "correct": false,
+       "feedback": "7 kat olan hacimdir. Birleşen yüzler içeride kaldığı için yüzey alanı 7 katından çok daha az artar."},
+      {"id": "kup-say", "text": "Prizmaları küp kabul edip saymak", "correct": false,
+       "feedback": "Prizmanın üç ölçüsü farklıdır; küp varsayımı ölçü ilişkilerini bozar ve yanlış oran verir."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Dikdörtgenler prizmasının yüzey alanı 2(ab + ah + bh)'dir. Birleşimde içeride kalan yüzler yüzey alanına girmez; bu yüzden oran parça sayısına eşit olmaz."},
+    {"level": 2, "kind": "STRATEJI", "text": "Üstteki 2 × 3 kırmızı yüz, büyük prizmanın genişliğini ve derinliğini küçük prizmanın ölçüleriyle verir. Alttaki yatay prizma da bu tabanı tam kapladığı için aynı genişlik ve derinliğe sahiptir; buradan ölçü eşitliklerini kur."},
+    {"level": 3, "kind": "ADIM", "text": "Küçük prizmanın ölçüleri a (ön yüz genişliği), b (yan yüz genişliği), h (yükseklik) olsun. Üstten bakınca genişlik 2a, derinlik 3b. Yatan prizmanın uzunluğu h genişliğe, a kenarı derinliğe denk gelir: h = 2a ve a = 3b."}
+  ],
+  "guidingQuestions": [
+    {"text": "Büyük prizmanın yüksekliği hangi parçaların yüksekliklerinden oluşur?", "answer": "Dik duran prizmanın yüksekliği h ile yatan prizmanın kalınlığı b'nin toplamından: h + b."},
+    {"text": "b = 1 alırsan a ve h kaç olur?", "answer": "a = 3b = 3 ve h = 2a = 6."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Küçük prizma: ön yüz genişliği a, yan yüz genişliği b, yükseklik h. Üstte 2 × 3 kırmızı yüz olduğuna göre büyük prizmanın genişliği 2a, derinliği 3b.",
+       "why": "Dik duran 6 prizma, genişlikte 2 ve derinlikte 3 tane yan yana durur; kırmızı yüzlerin dizilişi bunu gösterir."},
+      {"id": "s2", "text": "Altta yatan prizma tabanın tamamını kaplar: uzunluğu h genişliğe, a kenarı derinliğe eşit. h = 2a ve a = 3b. b = 1 alınırsa a = 3, h = 6.",
+       "why": "Birleşimde kenarlar tam oturur; aynı uzunluğu iki farklı yoldan yazmak ölçüler arasında eşitlik verir.",
+       "check": {"type": "solve", "equation": "7*(3*1*6) = (2*3)*(3*1)*(6 + t)", "var": "t", "expect": ["1"]},
+       "selfExplain": {"prompt": "Yatan prizma için neden h = 2a yazıyoruz?",
+         "options": [
+           {"id": "tam-kaplama", "text": "Yatan prizma büyük prizmanın genişliğini tam kaplar; o yöndeki uzunluğu h, genişlik de iki ön yüzün toplamı 2a'dır.", "correct": true,
+            "feedback": "Evet. Ön yüzde altta tek bir camgöbeği şerit var: yatan prizmanın uzun kenarı iki dik prizmanın genişliğine eşit."},
+           {"id": "goruntu", "text": "Şekilde yatan prizma iki kat uzun görünüyor.", "correct": false,
+            "feedback": "Görüntü yaklaşık olabilir; eşitliği kenarların tam oturmasından çıkarırız."},
+           {"id": "hacim", "text": "Hacimler eşit olduğu için.", "correct": false,
+            "feedback": "Bütün prizmalar özdeş, hacimleri zaten eşit; h = 2a ilişkisini kenarların uyumu verir."}
+         ]}},
+      {"id": "s3", "text": "Küçük prizma 3 × 1 × 6: yüzey alanı 2(3·1 + 3·6 + 1·6) = 2·27 = 54.",
+       "why": "Dikdörtgenler prizmasının üç farklı yüz çifti vardır; her çiftin alanı iki kez sayılır.",
+       "check": {"type": "sympy", "expr": "2*(3*1 + 3*6 + 1*6)", "equals": "54"}},
+      {"id": "s4", "text": "Büyük prizma: genişlik 2a = 6, derinlik 3b = 3, yükseklik h + b = 7. Yüzey alanı 2(6·3 + 6·7 + 3·7) = 2·81 = 162. Oran 162/54 = 3.",
+       "why": "Büyük prizmanın yüksekliği dik prizmanın h'si ile yatan prizmanın b kalınlığının toplamıdır.",
+       "check": {"type": "sympy", "expr": "2*(6*3 + 6*7 + 3*7)", "equals": "162"}}
+    ],
+    "finalAnswer": {"choice": "B", "value": "3",
+      "check": {"type": "choice", "expr": "Rational(2*(6*3 + 6*7 + 3*7), 2*(3*1 + 3*6 + 1*6))", "choice": "B"}},
+    "levels": {
+      "sezgi": "Yedi parça birleşince birbirine değen yüzler 'içeride kaybolur'; bu yüzden yüzey alanı 7 kat değil, çok daha az artar. Renkler bir harita gibidir: üstteki kırmızı ızgara genişliği ve derinliği, alttaki yatay parça da uzunluklar arasındaki bağı söyler. Bağ kurulunca her şey tek birimle ölçülür ve oran kendiliğinden çıkar.",
+      "kisayol": "h = 2a, a = 3b → b = 1: küçük 3 × 1 × 6 (alan 54), büyük 6 × 3 × 7 (alan 162) → 3."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": null, "mistake": "Yüzey alanı oranını parça sayısına (7) eşit saymak.",
+     "cause": "Hacim ile yüzey alanını karıştırmak; birleşen yüzlerin dışarıda görünmediğini düşünmemek.",
+     "fix": "Hacim parça sayısıyla katlanır (7 kat). Yüzey alanı yalnız dışta kalan yüzlerden oluşur; ölçülerle yeniden hesaplanmalıdır.",
+     "guidingQuestion": "İki prizmayı yüz yüze yapıştırınca yapışan yüzler dış yüzeyde kalır mı?"},
+    {"id": "m2", "choice": null, "mistake": "Yatan prizmanın b kalınlığını unutup büyük prizmanın yüksekliğini h = 6 almak; 2(6·3 + 6·6 + 3·6)/54 = 144/54 gibi tam sayı olmayan bir orana ulaşmak.",
+     "cause": "Bileşik cismin bir boyutunun iki parçanın toplamı olduğunu gözden kaçırmak.",
+     "fix": "Ön görünümde iki beyaz yüzün altında camgöbeği bir şerit var: yükseklik h + b = 7.",
+     "guidingQuestion": "Ön yüzde beyaz yüzlerin altında başka bir parça var mı?"}
+  ],
+  "alternative": {
+    "title": "Görünen yüzleri sayma",
+    "text": "b = 1, a = 3, h = 6 ile büyük prizmanın altı yüzünü alanlarıyla say: üst ve alt 6·3 = 18 (iki kez), ön ve arka 6·7 = 42 (iki kez), yanlar 3·7 = 21 (iki kez). Toplam 162; küçük prizmanın 54'üne oranı 3.",
+    "check": {"type": "sympy", "expr": "(2*18 + 2*42 + 2*21) - 3*54", "equals": "0"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Ön ve yan görünüm, renk ipuçlarının hangi ölçü eşitliğine dönüştüğünü gösterir; uzamsal düşünmeyi iki boyutlu bir plana indirger.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Önden ve yandan görünüm (b = 1)",
+    "params": {
+      "view": [-1.5, 12.5, -1.5, 8.5],
+      "points": [
+        {"id": "f00", "x": 0, "y": 0, "hidden": true}, {"id": "f60", "x": 6, "y": 0, "hidden": true},
+        {"id": "f01", "x": 0, "y": 1, "hidden": true}, {"id": "f31", "x": 3, "y": 1, "hidden": true},
+        {"id": "f61", "x": 6, "y": 1, "hidden": true}, {"id": "f07", "x": 0, "y": 7, "hidden": true},
+        {"id": "f37", "x": 3, "y": 7, "hidden": true}, {"id": "f67", "x": 6, "y": 7, "hidden": true},
+        {"id": "s80", "x": 8, "y": 0, "hidden": true}, {"id": "s110", "x": 11, "y": 0, "hidden": true},
+        {"id": "s81", "x": 8, "y": 1, "hidden": true}, {"id": "s91", "x": 9, "y": 1, "hidden": true},
+        {"id": "s101", "x": 10, "y": 1, "hidden": true}, {"id": "s111", "x": 11, "y": 1, "hidden": true},
+        {"id": "s87", "x": 8, "y": 7, "hidden": true}, {"id": "s97", "x": 9, "y": 7, "hidden": true},
+        {"id": "s107", "x": 10, "y": 7, "hidden": true}, {"id": "s117", "x": 11, "y": 7, "hidden": true}
+      ],
+      "polygons": [
+        {"id": "on1", "points": ["f01", "f31", "f37", "f07"], "tone": "line"},
+        {"id": "on2", "points": ["f31", "f61", "f67", "f37"], "tone": "line"},
+        {"id": "seritOn", "points": ["f00", "f60", "f61", "f01"], "tone": "focus"},
+        {"id": "yan1", "points": ["s81", "s91", "s97", "s87"], "tone": "focus"},
+        {"id": "yan2", "points": ["s91", "s101", "s107", "s97"], "tone": "focus"},
+        {"id": "yan3", "points": ["s101", "s111", "s117", "s107"], "tone": "focus"},
+        {"id": "ucYan", "points": ["s80", "s110", "s111", "s81"], "tone": "bad"}
+      ],
+      "texts": [
+        {"id": "basOn", "x": 3, "y": 7.8, "text": "Önden"}, {"id": "basYan", "x": 9.5, "y": 7.8, "text": "Yandan"},
+        {"id": "a1", "x": 1.5, "y": 4, "text": "a"}, {"id": "a2", "x": 4.5, "y": 4, "text": "a"},
+        {"id": "hEt", "x": -0.8, "y": 4, "text": "h"}, {"id": "bEt", "x": -0.8, "y": 0.5, "text": "b"},
+        {"id": "yanEt", "x": 9.5, "y": -0.9, "text": "3b = a"}, {"id": "genEt", "x": 3, "y": -0.9, "text": "2a = h"},
+        {"id": "olcu", "x": 3, "y": 5.5, "text": "6 × 7"}, {"id": "olcuYan", "x": 9.5, "y": 4, "text": "3 × 7"}
+      ]
+    },
+    "frames": [
+      {"caption": "Önden: iki dik prizmanın beyaz yüzü (her biri a genişliğinde, h yüksekliğinde) ve altta yatan prizmanın camgöbeği yüzü (b kalınlığında).",
+       "show": ["on1", "on2", "seritOn", "basOn", "a1", "a2", "hEt", "bEt"]},
+      {"caption": "Yandan: üç dik prizmanın camgöbeği yüzü (her biri b genişliğinde) ve altta yatan prizmanın kırmızı ucu (a genişliğinde).",
+       "show": ["on1", "on2", "seritOn", "basOn", "a1", "a2", "hEt", "bEt", "yan1", "yan2", "yan3", "ucYan", "basYan"]},
+      {"caption": "Kenarlar tam oturur: yatan prizmanın uzunluğu h = 2a, derinliği a = 3b.",
+       "show": ["on1", "on2", "seritOn", "basOn", "yan1", "yan2", "yan3", "ucYan", "basYan", "genEt", "yanEt"]},
+      {"caption": "b = 1 → a = 3, h = 6. Büyük prizma 6 × 3 × 7; yüzey alanı 162, küçük prizmanınki 54.",
+       "show": ["on1", "on2", "seritOn", "basOn", "yan1", "yan2", "yan3", "ucYan", "basYan", "olcu", "olcuYan"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: 7 prizma birleşince yüzey alanı 7 katına çıkar mı?",
+      "options": [
+        {"id": "hayir", "text": "Hayır, daha az artar", "correct": true, "feedback": "Doğru: birbirine yapışan yüzler dışarıda görünmez."},
+        {"id": "evet", "text": "Evet, 7 katına çıkar", "correct": false, "feedback": "7 kat olan hacimdir. Yapışan yüzler içeride kalır; görünümlerde hangi yüzlerin dışta kaldığına bakalım."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Ayrıt uzunlukları 4, 1 ve 12 birim olan özdeş dikdörtgenler prizmalarından 12 tanesi dik duracak biçimde 3 × 4'lük bir taban oluşturuyor, 1 tanesi de bunların altına yatay yerleşerek tabanı tam kaplıyor. Elde edilen büyük prizmanın ayrıtları 12, 4 ve 13 birimdir. Büyük prizmanın yüzey alanının küçük prizmanın yüzey alanına oranı kaçtır?",
+    "choices": {"A": "3", "B": "4", "C": "5", "D": "6", "E": "13"},
+    "answer": "B",
+    "solution": "Küçük prizma: 2(4·1 + 4·12 + 1·12) = 2·64 = 128. Büyük prizma: 2(12·4 + 12·13 + 4·13) = 2·256 = 512. Oran 512/128 = 4. (13, parça sayısıdır; hacim oranıdır, yüzey alanı oranı değildir.)",
+    "choiceValues": {"A": "3", "B": "4", "C": "5", "D": "6", "E": "13"},
+    "check": {"type": "twinChoice", "expr": "Rational(2*(12*4 + 12*13 + 4*13), 2*(4*1 + 4*12 + 1*12))", "choice": "B"}
+  },
+  "choiceValues": {"A": "2", "B": "3", "C": "4", "D": "5", "E": "6"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Katı cisimler: dikdörtgenler prizmasının alan ve hacmi", "note": "Birleşik cisimlerde yüzey alanı ve ölçü ilişkileri."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:30:00Z"}
+}

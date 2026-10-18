@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0861",
+  "question": {
+    "code": "TYT-0861",
+    "exam": "TYT",
+    "subjectId": "geometri",
+    "categoryId": "tyt.geometri.cokgenler",
+    "subtopic": "Düzgün çokgenlerde dış açı ve ikizkenar yamuk",
+    "answerKey": "C",
+    "choiceCount": 5,
+    "imageSha256": "811202902844e54e36a985cd6c5d0911931366d4ab9943ed52d9cff2230d9349"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "n kenarlı bir düzgün çokgenin bir dış açısının ölçüsü 360°/n olarak hesaplanır. Ali, bir bilgisayar uygulamasında 15 tane eş ikizkenar yamuğun paralel olan kenarlarından kısa olanları maviye, uzun olanları kırmızıya boyamış ve bu yamukları aralarında boşluk kalmayacak biçimde birleştirerek şekildeki gibi düz bir zemin üzerinde duran bir köprü çizmiştir. Buna göre bu yamuklardan birinin en küçük iç açısı kaç derecedir?",
+    "choices": {"A": "80", "B": "82", "C": "84", "D": "86", "E": "88"},
+    "figure": "Yarım çember biçiminde, 15 eş ikizkenar yamuktan oluşan kemer köprü; iç (mavi) ve dış (kırmızı) kenarlar, uçları zemine dik oturuyor.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "15 yamuğun yarım tur oluşturduğunu görüp düzgün 30-gen modeline geçmek gerekir; hesap kısadır ama model kurmak kilittir.",
+    "skills": ["ANALIZ", "UYGULAMA", "HESAPLAMA"],
+    "prerequisites": ["tyt.geometri.acilar-ve-ucgenler"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "geometri.cokgen.dis-aci-dilim",
+    "name": "Dönerek dizilen eş parçalar: tam tur ve dilim açısı",
+    "trigger": "Eş parçalar bir merkez etrafında ya da bir kemer boyunca boşluksuz diziliyorsa ve bir parçanın açısı soruluyorsa.",
+    "bigIdea": "Eş parçalar tam turu (360°) ya da yarım turu (180°) eşit paylaşır. Her parçanın payı, kenarları bir düzgün çokgenin dış açısıdır; parçanın açıları bu paydan bulunur.",
+    "method": [
+      "Parçaların toplam kaç derecelik dönüş oluşturduğunu belirle (yarım tur 180°, tam tur 360°).",
+      "Bir parçanın payını bul: dönüş açısı / parça sayısı.",
+      "Kenarların oluşturduğu düzgün çokgenin iç açısını yaz: 180° − dış açı.",
+      "Komşu iki parça bu iç açıyı eşit paylaşıyorsa her birinin açısı iç açının yarısıdır."
+    ],
+    "whenNot": "Parçalar eş değilse ya da aralarında boşluk/üst üste binme varsa eşit paylaşım varsayılamaz.",
+    "examTip": "Yarım kemer gördüğünde parça sayısını iki katına çıkarıp tam düzgün çokgeni düşün; dış açı formülü doğrudan uygulanır."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "yarim-tur", "text": "15 yamuğun yarım tur (180°) oluşturduğunu fark edip tam turda kaç yamuk olacağını, yani kaç kenarlı düzgün çokgen oluştuğunu bulmak", "correct": true,
+       "feedback": "Doğru. Yarım turda 15 yamuk varsa tam turda 30 olur; kenarlar düzgün 30-gen oluşturur ve dış açı formülü uygulanır."},
+      {"id": "n-15", "text": "Formüldeki n yerine doğrudan 15 yazmak", "correct": false,
+       "feedback": "15 yamuk yalnız yarım turu doldurur. Düzgün çokgen tam turu kapatır; n, tam turdaki kenar sayısıdır."},
+      {"id": "yamuk-90", "text": "Yamuğun açılarını dik açıya yakın kabul edip şıklardan seçmek", "correct": false,
+       "feedback": "Tahmin yeterli değil; şıklar 2° arayla değişiyor. Açıyı dönüş payından hesaplamalıyız."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Eş parçalar bir dönüşü eşit paylaşır. Burada köprü yarım tur, yani 180° dönüyor."},
+    {"level": 2, "kind": "STRATEJI", "text": "Köprüyü tam tura tamamlarsan kaç yamuk gerekir? Dış kenarlar o sayıda kenarı olan bir düzgün çokgen oluşturur; dış açı formülünü bu çokgen için kullan."},
+    {"level": 3, "kind": "ADIM", "text": "Tam turda 30 yamuk olur. Düzgün 30-genin bir dış açısını bul, iç açıyı 180°'den çıkararak hesapla ve bu iç açının köşede birleşen iki yamuk arasında eşit paylaşıldığını düşün."}
+  ],
+  "guidingQuestions": [
+    {"text": "Köprü tam bir halka olsaydı kaç yamuk gerekirdi?", "answer": "15 yamuk yarım halka olduğuna göre tam halka 30 yamuk."},
+    {"text": "Düzgün 30-genin bir iç açısı kaç derecedir?", "answer": "Dış açı 360°/30 = 12°, iç açı 180° − 12° = 168°."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "15 yamuk yarım tur oluşturur; köprü tam halkaya tamamlansaydı 30 yamuk olurdu. Kırmızı (uzun) kenarlar düzgün 30-genin kenarlarıdır.",
+       "why": "Eş yamuklar boşluksuz birleştiği için her biri dönüşten eşit pay alır; tam tur 2 × 15 = 30 eşit parçaya bölünür.",
+       "check": {"type": "sympy", "expr": "2*15", "equals": "30"}},
+      {"id": "s2", "text": "Düzgün 30-genin dış açısı 360°/30 = 12°, iç açısı 180° − 12° = 168°.",
+       "why": "Verilen formül dış açıyı verir; iç ve dış açı aynı köşede bütünlerdir.",
+       "check": {"type": "sympy", "expr": "180 - Rational(360, 30)", "equals": "168"},
+       "selfExplain": {"prompt": "Neden n = 15 değil de n = 30 alıyoruz?",
+         "options": [
+           {"id": "tam-tur", "text": "Düzgün çokgen tam turu kapatır; 15 yamuk yalnız yarım turu kapattığı için tam turda 30 kenar olur.", "correct": true,
+            "feedback": "Evet. Dış açıların toplamı her zaman 360°'dir; bu toplamı 30 kenar paylaşır."},
+           {"id": "iki-renk", "text": "Çünkü her yamukta iki renk (mavi ve kırmızı) var.", "correct": false,
+            "feedback": "Renkler kısa ve uzun kenarları ayırır; kenar sayısını ikiye katlayan şey yarım turu tam tura tamamlamaktır."},
+            {"id": "yanlis-kural", "text": "Çünkü yamuğun 4 kenarı vardır.", "correct": false,
+            "feedback": "Yamuğun kenar sayısı burada belirleyici değil; belirleyici olan, kaç yamuğun tam turu doldurduğudur."}
+         ]}},
+      {"id": "s3", "text": "Kırmızı kenarların birleştiği her köşede iki yamuğun dar açıları yan yana durur ve birlikte 168°'lik iç açıyı oluşturur. Yamuklar eş olduğundan her biri 168°/2 = 84°.",
+       "why": "İkizkenar yamuğun uzun kenara komşu iki açısı eşit ve dardır; komşu eş yamuklar köşedeki iç açıyı eşit paylaşır.",
+       "check": {"type": "sympy", "expr": "Rational(168, 2)", "equals": "84"}}
+    ],
+    "finalAnswer": {"choice": "C", "value": "84",
+      "check": {"type": "choice", "expr": "(180 - Rational(360, 2*15))/2", "choice": "C"}},
+    "levels": {
+      "sezgi": "Kemeri saatin yarısı gibi düşün: 15 dilim yarım daireyi dolduruyor, yani her dilim merkezde 12°'lik bir pasta dilimi. Dilimin iki kenarı merkezde 12° ile birleşen iki yarıçap; merkezle dış kenarın iki ucu ikizkenar bir üçgen oluşturur ve bu üçgenin taban açıları (180° − 12°)/2 = 84°. Yamuğun dar açıları tam bu taban açılarıdır.",
+      "kisayol": "Tam tur 30 parça → dış açı 12° → yamuğun dar açısı 90° − 12°/2 = 84°."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": null, "mistake": "Formülde n = 15 alıp 360°/15 = 24° dış açı ve (180° − 24°)/2 = 78° bulmak.",
+     "cause": "Yarım kemerin bir düzgün çokgenin yalnız yarısı olduğunu fark etmemek.",
+     "fix": "Dış açıların toplamı 360°'dir. 15 parça 180° dönüyorsa her parçanın payı 12°'dir.",
+     "guidingQuestion": "15 yamuk kaç derecelik bir dönüş oluşturuyor?"},
+    {"id": "m2", "choice": null, "mistake": "En küçük açı yerine yamuğun geniş açısını (96°) hesaplamak ya da iç açının tamamını (168°) cevap sanmak.",
+     "cause": "Köşedeki iç açının iki yamuk arasında paylaşıldığını görmemek; 'en küçük' ifadesini kontrol etmemek.",
+     "fix": "Uzun kenardaki açılar dardır ve her köşede iki yamuk tarafından paylaşılır: 168°/2. Geniş açı 180° − 84° = 96° olur.",
+     "guidingQuestion": "Kırmızı kenarların birleştiği köşede kaç yamuğun açısı yan yana duruyor?"}
+  ],
+  "alternative": {
+    "title": "Merkez açısı ve ikizkenar üçgen",
+    "text": "Her yamuk merkezde 180°/15 = 12°'lik açı görür. Merkez ile yamuğun uzun kenarının uçları ikizkenar üçgen oluşturur (iki kenar da dış yarıçap). Taban açıları (180° − 12°)/2 = 84°; bu, yamuğun uzun kenara komşu dar açısıdır.",
+    "check": {"type": "sympy", "expr": "(180 - Rational(180, 15))/2", "equals": "84"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Yamuğun dar açısının merkezdeki küçük dilimden nasıl doğduğunu görmek, dış açı formülünü ezber değil mantık hâline getirir.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Merkezdeki 12°'lik dilim ve 84°'lik açı",
+    "params": {
+      "view": [-6, 6, -1, 11],
+      "points": [
+        {"id": "O", "x": 0, "y": 0, "label": "O"},
+        {"id": "P1", "x": 1.045, "y": 9.945, "hidden": true}, {"id": "P2", "x": -1.045, "y": 9.945, "hidden": true},
+        {"id": "P3", "x": -3.090, "y": 9.511, "hidden": true}, {"id": "P0", "x": 3.090, "y": 9.511, "hidden": true},
+        {"id": "Q1", "x": 0.732, "y": 6.962, "hidden": true}, {"id": "Q2", "x": -0.732, "y": 6.962, "hidden": true},
+        {"id": "Q3", "x": -2.163, "y": 6.657, "hidden": true}, {"id": "Q0", "x": 2.163, "y": 6.657, "hidden": true}
+      ],
+      "polygons": [
+        {"id": "y1", "points": ["Q1", "P1", "P2", "Q2"], "tone": "warn"},
+        {"id": "y2", "points": ["Q2", "P2", "P3", "Q3"], "tone": "line"},
+        {"id": "y0", "points": ["Q0", "P0", "P1", "Q1"], "tone": "line"},
+        {"id": "ucgen", "points": ["O", "P1", "P2"], "tone": "navy"}
+      ],
+      "segments": [
+        {"id": "r1", "from": "O", "to": "P1", "dashed": true}, {"id": "r2", "from": "O", "to": "P2", "dashed": true}
+      ],
+      "angles": [
+        {"id": "merkez", "vertex": "O", "from": "P1", "to": "P2", "label": "12°", "tone": "bad"},
+        {"id": "taban1", "vertex": "P1", "from": "P2", "to": "O", "label": "84°", "tone": "ok"},
+        {"id": "taban2", "vertex": "P2", "from": "O", "to": "P1", "label": "84°", "tone": "ok"},
+        {"id": "ic", "vertex": "P2", "from": "P1", "to": "P3", "label": "168°", "tone": "navy"}
+      ],
+      "texts": [{"id": "not", "x": 0, "y": 4, "text": "Tam tur: 30 dilim × 12° = 360°"}]
+    },
+    "frames": [
+      {"caption": "Her yamuk, kemerin merkezinden bakınca eşit bir dilimdir. 15 dilim yarım tur (180°) eder.",
+       "show": ["y0", "y1", "y2", "O", "r1", "r2"]},
+      {"caption": "Bir dilimin merkez açısı 180° / 15 = 12°. Tam turda 30 dilim olurdu.",
+       "show": ["y0", "y1", "y2", "O", "r1", "r2", "merkez", "not"]},
+      {"caption": "Merkez ve dış kenarın uçları ikizkenar üçgen: taban açıları (180° − 12°)/2 = 84°.",
+       "show": ["y0", "y1", "y2", "O", "r1", "r2", "merkez", "ucgen", "taban1", "taban2"]},
+      {"caption": "Aynı sonuç dış kenarlardan: düzgün 30-genin iç açısı 168°, iki yamuk eşit paylaşır → 84°.",
+       "show": ["y0", "y1", "y2", "ic", "taban2"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Bir yamuk, kemerin merkezinde kaç derecelik bir dilim görür?",
+      "options": [
+        {"id": "on-iki", "text": "12°", "correct": true, "feedback": "Doğru: 15 eş dilim 180°'yi paylaşır."},
+        {"id": "yirmi-dort", "text": "24°", "correct": false, "feedback": "24° = 360°/15 olurdu; ama 15 yamuk tam turu değil, yarım turu dolduruyor."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Bir süs halkası, 20 tane eş ikizkenar yamuğun paralel kenarlarından uzun olanları dışarıda kalacak biçimde boşluksuz birleştirilmesiyle tam bir halka olarak tasarlanmıştır. Bu yamukların her birinin en küçük iç açısı kaç derecedir?",
+    "choices": {"A": "72", "B": "78", "C": "81", "D": "84", "E": "87"},
+    "answer": "C",
+    "solution": "Tam halkada 20 eş parça vardır: düzgün 20-genin dış açısı 360°/20 = 18°, iç açısı 162°. Her köşede iki yamuk bu açıyı eşit paylaşır: 162°/2 = 81°. (Merkez açısı 18° → (180° − 18°)/2 = 81°.)",
+    "choiceValues": {"A": "72", "B": "78", "C": "81", "D": "84", "E": "87"},
+    "check": {"type": "twinChoice", "expr": "(180 - Rational(360, 20))/2", "choice": "C"}
+  },
+  "choiceValues": {"A": "80", "B": "82", "C": "84", "D": "86", "E": "88"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Çokgenler: düzgün çokgenlerde iç ve dış açılar", "note": "Düzgün çokgenin dış açısı 360°/n; iç açısı 180° − dış açı."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:20:00Z"}
+}

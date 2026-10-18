@@ -69,6 +69,16 @@ public class AccountDataService {
                 + "FROM activity_events WHERE user_id = ? ORDER BY id", userId));
         data.put("curriculumTopicProgress", jdbc.queryForList("SELECT topic_id, completed_at "
                 + "FROM curriculum_topic_progress WHERE user_id = ? ORDER BY topic_id", userId));
+        data.put("tutorSessions", jdbc.queryForList("SELECT s.id, q.code AS question_code, s.status, s.outcome, "
+                + "s.started_at, s.finished_at FROM tutor_sessions s JOIN questions q ON q.id = s.question_id "
+                + "WHERE s.user_id = ? ORDER BY s.id", userId));
+        data.put("tutorEvents", jdbc.queryForList("SELECT e.session_id, e.seq, e.type, e.payload::text AS payload, "
+                + "e.created_at FROM tutor_events e JOIN tutor_sessions s ON s.id = e.session_id "
+                + "WHERE s.user_id = ? ORDER BY e.session_id, e.seq", userId));
+        data.put("tutorSkills", jdbc.queryForList("SELECT skill_key, subject_id, category_id, mastery, "
+                + "independent_correct, assisted_correct, wrong, hints_used, explain_correct, explain_total, "
+                + "transfer_correct, streak, last_outcome, last_practiced_at, next_review_at "
+                + "FROM tutor_skill_states WHERE user_id = ? ORDER BY skill_key", userId));
         return data;
     }
 
@@ -83,6 +93,9 @@ public class AccountDataService {
         jdbc.update("DELETE FROM study_sessions WHERE user_id = ?", userId); // session_questions cascade
         jdbc.update("DELETE FROM exams WHERE user_id = ?", userId); // exam_questions cascade
         jdbc.update("DELETE FROM activity_events WHERE user_id = ?", userId);
+        // Öğretim oturumları olayları, model çağrı bağları ve öğretmene iletilen açıklamalarla birlikte silinir.
+        jdbc.update("DELETE FROM tutor_sessions WHERE user_id = ?", userId);
+        jdbc.update("DELETE FROM tutor_skill_states WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM users WHERE id = ? AND role = 'USER'", userId);
     }
 

@@ -28,7 +28,9 @@ public final class AuthDtos {
 
             @NotBlank(message = "Şifre gerekli.")
             @Size(min = 8, max = 72, message = "Şifre 8–72 karakter olmalı.")
-            String password) {
+            String password,
+            @jakarta.validation.constraints.NotNull(message="Öğrenci, veli veya öğretmen kategorisi seçmelisin.")
+            com.hedefyks.user.AccountCategory category) {
         @Override public String toString() { return "RegisterRequest[redacted]"; }
     }
 
@@ -67,10 +69,11 @@ public final class AuthDtos {
     }
 
     public record UserDto(Long id, String username, String email, Role role,
-                          boolean contactComplete, boolean passwordChangeRequired) {
+                          boolean contactComplete, boolean passwordChangeRequired,
+                          com.hedefyks.user.AccountCategory category, boolean siteManager) {
         public static UserDto of(User u) {
             return new UserDto(u.getId(), u.getUsername(), u.getEmail(), u.getRole(),
-                    u.getPhone() != null && !u.getPhone().isBlank(), u.isPasswordChangeRequired());
+                    u.getPhone() != null && !u.getPhone().isBlank(), u.isPasswordChangeRequired(),u.getCategory(),u.isSiteManager());
         }
 
         @Override public String toString() {

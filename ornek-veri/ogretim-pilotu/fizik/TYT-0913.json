@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0913",
+  "question": {
+    "code": "TYT-0913",
+    "exam": "TYT",
+    "subjectId": "fizik",
+    "categoryId": "tyt.fizik.hareket-ve-kuvvet",
+    "subtopic": "Yer değiştirme ile alınan yol (vektörel büyüklük)",
+    "answerKey": "B",
+    "choiceCount": 5,
+    "imageSha256": "b5145e937689c96b0e17d9663b87e8a7db2c33449a7b99e2acf452c9245bd347"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Futbol sahasının etrafında antrenman yapan üç atletizm öğrencisi antrenman sırasında aşağıda anlatıldığı gibi koşuyor. Hakan: K noktasından 1 yönünde koşarak L noktasında duruyor. Murat: K noktasından 2 yönünde koşarak L noktasında duruyor. Selin: L noktasından 1 yönünde koşarak K noktasında duruyor. Hakan, Murat ve Selin'in yer değiştirmeleri sırasıyla ΔX_H, ΔX_M ve ΔX_S arasındaki ilişki aşağıdakilerden hangisidir?",
+    "choices": {"A": "ΔX_H = ΔX_M = ΔX_S", "B": "ΔX_H = ΔX_M = −ΔX_S", "C": "2ΔX_H = 2ΔX_M = ΔX_S", "D": "ΔX_H = 2ΔX_M = 2ΔX_S", "E": "ΔX_H = 2ΔX_M = −2ΔX_S"},
+    "figure": "Oval koşu pisti: K pistin sol ucunun ortasında, L alt düzlüğün sol başında. 1 yönü K'den yukarı (saat yönü), 2 yönü K'den aşağı.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "KOLAY",
+    "difficultyReason": "Tek kavram: yer değiştirme yalnız ilk ve son konuma bağlıdır; yönü ters olan hareketin yer değiştirmesi zıt işaretlidir.",
+    "skills": ["KAVRAMA", "YORUMLAMA"],
+    "prerequisites": ["tyt.fizik.fizik-bilimine-giris"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "fizik.hareket.yer-degistirme-yol",
+    "name": "Yer değiştirme: yalnız başlangıç ve bitiş",
+    "trigger": "Farklı yollardan giden hareketlilerin yer değiştirmeleri, ortalama hızları ya da konum farkları karşılaştırılıyorsa.",
+    "bigIdea": "Yer değiştirme, başlangıç noktasından bitiş noktasına çizilen oktur; izlenen yol ne kadar uzun ya da kıvrımlı olursa olsun ok değişmez. Başlangıç ve bitiş yer değiştirirse ok ters döner.",
+    "method": [
+      "Her hareketli için yalnız ilk ve son noktayı yaz.",
+      "Aynı ilk ve son noktaya sahip olanların yer değiştirmesi eşittir.",
+      "İlk ve son noktaları ters olanın yer değiştirmesi zıt yönlüdür (eksi işaret).",
+      "Yol uzunluğunu yalnız 'alınan yol' sorulursa kullan."
+    ],
+    "whenNot": "Soru alınan yolu, ortalama sürati ya da harcanan enerjiyi soruyorsa izlenen yolun uzunluğu önemlidir.",
+    "examTip": "Şıklarda katsayı (2 gibi) görürsen yol uzunluğu tuzağı olabilir; yer değiştirme katsayıları yalnız konumlardan gelir."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "ilk-son", "text": "Her öğrencinin yalnız başlangıç ve bitiş noktalarını yazıp okları karşılaştırmak", "correct": true,
+       "feedback": "Doğru. Yer değiştirme bir oktur: başlangıçtan bitişe. İzlenen yolun uzunluğu bu oku değiştirmez."},
+      {"id": "yol-olc", "text": "Her öğrencinin koştuğu yolun uzunluğunu pist üzerinde ölçmek", "correct": false,
+       "feedback": "Yol uzunluğu 'alınan yol' için gerekir. Yer değiştirme yalnız ilk ve son konuma bağlıdır."},
+      {"id": "yon-1", "text": "Aynı yönde koşanların yer değiştirmelerinin eşit olduğunu varsaymak", "correct": false,
+       "feedback": "Koşu yönü değil, başlangıç ve bitiş noktası belirleyicidir. Selin de 1 yönünde koşuyor ama L'den K'ye gidiyor."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Yer değiştirme, ilk konumdan son konuma çizilen oktur. İzlenen yol uzun da olsa kısa da olsa bu ok aynıdır."},
+    {"level": 2, "kind": "STRATEJI", "text": "Üç öğrencinin başlangıç ve bitiş noktalarını yan yana yaz. Hangilerinin oku aynı, hangisininki ters?"},
+    {"level": 3, "kind": "ADIM", "text": "Hakan ve Murat K'den başlayıp L'de bitiriyor; Selin L'den başlayıp K'de bitiriyor. K'den L'ye çizilen oku ΔX ile göster ve üçünü bu okla yaz."}
+  ],
+  "guidingQuestions": [
+    {"text": "Hakan'ın uzun yolu yer değiştirmesini büyütür mü?", "answer": "Hayır; yer değiştirme yalnız K ve L konumlarına bağlıdır."},
+    {"text": "Selin'in başlangıç ve bitiş noktası, Hakan'ınkine göre nasıl?", "answer": "Tam tersi: L'den K'ye. Oku da ters yönlüdür."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Hakan K'den L'ye, Murat da K'den L'ye gidiyor. Yolları farklı ama başlangıç ve bitiş aynı: ΔX_H = ΔX_M = K'den L'ye ok.",
+       "why": "Yer değiştirme, ilk konumdan son konuma çizilen vektördür; izlenen yolun uzunluğu ve şekli bu vektörü değiştirmez.",
+       "selfExplain": {"prompt": "Hakan çok daha uzun koştuğu hâlde yer değiştirmeleri neden eşit?",
+         "options": [
+           {"id": "konum", "text": "Yer değiştirme yalnız ilk ve son konuma bağlıdır; ikisi de K'den L'ye gitti.", "correct": true,
+            "feedback": "Evet. Uzun koşu 'alınan yol'u artırır, yer değiştirmeyi değil."},
+           {"id": "sure", "text": "Çünkü ikisi aynı sürede koştu.", "correct": false,
+            "feedback": "Süre soruda verilmiyor ve yer değiştirmeyi belirlemez."},
+           {"id": "hiz", "text": "Çünkü hızları eşitti.", "correct": false,
+            "feedback": "Hız bilgisi yok; yer değiştirme konumlardan bulunur."}
+         ]}},
+      {"id": "s2", "text": "Selin L'den K'ye gidiyor: oku K'den L'ye olan okun tersidir. ΔX_S = −ΔX_H.",
+       "why": "Başlangıç ve bitiş yer değiştirince vektör aynı büyüklükte kalır ama yönü tersine döner."},
+      {"id": "s3", "text": "Birleştirince: ΔX_H = ΔX_M = −ΔX_S.",
+       "why": "Eşit vektörlerin büyüklüğü ve yönü aynıdır; zıt vektör eksi işaretle gösterilir."}
+    ],
+    "finalAnswer": {"choice": "B", "value": "ΔX_H = ΔX_M = −ΔX_S",
+      "check": {"type": "choice", "expr": "Tuple(1, 1, -1)", "choice": "B", "note": "Her şık, ΔX_H = 1 alındığında (H, M, S) katsayı üçlüsüyle temsil edilir."}},
+    "levels": {
+      "sezgi": "Yer değiştirmeyi bir harita uygulamasındaki 'kuş uçuşu ok' gibi düşün: nereden başladın, nerede bittin? Pistin etrafını dolaşmak oku uzatmaz. Hakan ile Murat'ın okları üst üste biner; Selin aynı oku tersten çizer.",
+      "kisayol": "İlk–son noktaları yaz: H: K→L, M: K→L, S: L→K. Eşit, eşit, ters."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "D", "mistake": "Hakan'ın yolu daha uzun olduğu için yer değiştirmesini daha büyük sanmak (katsayılı şıklar).",
+     "cause": "Alınan yol ile yer değiştirmeyi karıştırmak; skaler ile vektörel büyüklüğü ayırmamak.",
+     "fix": "Alınan yol skalerdir ve izlenen yola bağlıdır; yer değiştirme vektördür ve yalnız ilk–son konuma bağlıdır.",
+     "guidingQuestion": "Soru alınan yolu mu soruyor, yer değiştirmeyi mi?",
+     "check": {"type": "choice", "expr": "Tuple(1, Rational(1, 2), Rational(1, 2))", "choice": "D"}},
+    {"id": "m2", "choice": "A", "mistake": "Selin'in yer değiştirmesini de aynı kabul edip yönü göz ardı etmek.",
+     "cause": "Vektörün yönünü önemsememek; yalnız büyüklükleri karşılaştırmak.",
+     "fix": "Büyüklükleri eşit olsa da Selin'in oku ters yönlüdür; vektör eşitliği yön de ister.",
+     "guidingQuestion": "Selin hangi noktadan başlayıp hangi noktada bitirdi?",
+     "check": {"type": "choice", "expr": "Tuple(1, 1, 1)", "choice": "A"}}
+  ],
+  "alternative": {
+    "title": "Konum farkıyla",
+    "text": "Pistte bir başlangıç noktası seç ve K ile L'nin konum vektörlerini x_K ve x_L ile göster. Yer değiştirme son konum eksi ilk konumdur: Hakan ve Murat için x_L − x_K, Selin için x_K − x_L = −(x_L − x_K).",
+    "check": {"type": "sympy", "expr": "expand((k - l) + (l - k))", "equals": "0"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Uzun ve kısa iki yolun aynı oka indiğini görmek, 'yol' ile 'yer değiştirme' arasındaki farkı tek bakışta gösterir.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Farklı yollar, aynı ok",
+    "params": {
+      "view": [-5.5, 5.5, -5, 5],
+      "points": [
+        {"id": "O", "x": 0, "y": 0, "hidden": true},
+        {"id": "K", "x": -4, "y": 0, "label": "K"}, {"id": "L", "x": -2, "y": -3.464, "label": "L"},
+        {"id": "h150", "x": -3.464, "y": 2, "hidden": true}, {"id": "h120", "x": -2, "y": 3.464, "hidden": true},
+        {"id": "h90", "x": 0, "y": 4, "hidden": true}, {"id": "h60", "x": 2, "y": 3.464, "hidden": true},
+        {"id": "h30", "x": 3.464, "y": 2, "hidden": true}, {"id": "h0", "x": 4, "y": 0, "hidden": true},
+        {"id": "hm30", "x": 3.464, "y": -2, "hidden": true}, {"id": "hm60", "x": 2, "y": -3.464, "hidden": true},
+        {"id": "hm90", "x": 0, "y": -4, "hidden": true},
+        {"id": "m200", "x": -3.759, "y": -1.368, "hidden": true}, {"id": "m220", "x": -3.064, "y": -2.571, "hidden": true}
+      ],
+      "circles": [{"id": "pist", "center": "O", "r": 4, "tone": "line"}],
+      "paths": [
+        {"id": "hakan", "points": ["K", "h150", "h120", "h90", "h60", "h30", "h0", "hm30", "hm60", "hm90", "L"], "tone": "navy"},
+        {"id": "murat", "points": ["K", "m200", "m220", "L"], "tone": "warn"},
+        {"id": "selin", "points": ["L", "m220", "m200", "K"], "tone": "bad", "dashed": true}
+      ],
+      "segments": [
+        {"id": "okKL", "from": "K", "to": "L", "tone": "ok", "arrow": true, "label": "ΔX"},
+        {"id": "okLK", "from": "L", "to": "K", "tone": "bad", "arrow": true, "label": "−ΔX"}
+      ],
+      "texts": [
+        {"id": "tHakan", "x": 0, "y": 4.6, "text": "Hakan: uzun yol (1 yönü)"},
+        {"id": "tMurat", "x": -4.2, "y": -3.2, "text": "Murat: kısa yol"},
+        {"id": "tSelin", "x": -4.2, "y": -3.2, "text": "Selin: L → K"}
+      ]
+    },
+    "frames": [
+      {"caption": "Hakan pistin neredeyse tamamını dolaşıyor; yer değiştirmesi yine de K'den L'ye tek bir ok.", "show": ["pist", "K", "L", "hakan", "okKL", "tHakan"]},
+      {"caption": "Murat kısa yoldan gidiyor; başlangıç ve bitiş aynı olduğu için oku Hakan'ınkiyle aynı.", "show": ["pist", "K", "L", "murat", "okKL", "tMurat"]},
+      {"caption": "Selin L'den K'ye gidiyor: aynı uzunlukta ama ters yönlü ok, yani −ΔX.", "show": ["pist", "K", "L", "selin", "okLK", "tSelin"]},
+      {"caption": "Sonuç: ΔX_H = ΔX_M = −ΔX_S. Yolların uzunluğu yer değiştirmeyi değiştirmez.", "show": ["pist", "K", "L", "hakan", "murat", "okKL"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Hakan çok daha uzun koştu. Yer değiştirmesi Murat'ınkinden büyük mü?",
+      "options": [
+        {"id": "esit", "text": "Hayır, eşit", "correct": true, "feedback": "Doğru: ikisi de K'den başlayıp L'de bitirdi."},
+        {"id": "buyuk", "text": "Evet, daha büyük", "correct": false, "feedback": "Uzun koşu alınan yolu artırır; yer değiştirme yalnız başlangıç ve bitişe bakar. Görelim."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Dairesel bir pistte P ve R iki noktadır. Ayşe P'den saat yönünde koşarak R'de, Can P'den saatin tersi yönünde koşarak R'de, Ece ise R'den saat yönünde koşarak P'de duruyor. Yer değiştirmeleri sırasıyla ΔX_A, ΔX_C, ΔX_E arasındaki ilişki hangisidir?",
+    "choices": {"A": "ΔX_A = ΔX_C = ΔX_E", "B": "ΔX_A = −ΔX_C = ΔX_E", "C": "ΔX_A = ΔX_C = −ΔX_E", "D": "ΔX_A = 2ΔX_C = −ΔX_E", "E": "ΔX_A = −ΔX_C = −ΔX_E"},
+    "answer": "C",
+    "solution": "Ayşe ve Can'ın başlangıç (P) ve bitiş (R) noktaları aynı: yer değiştirmeleri eşit. Ece R'den P'ye gidiyor: yer değiştirmesi ters yönlü. ΔX_A = ΔX_C = −ΔX_E. Koşu yönleri (saat yönü/tersi) sonucu değiştirmez.",
+    "choiceValues": {"A": "Tuple(1, 1, 1)", "B": "Tuple(1, -1, 1)", "C": "Tuple(1, 1, -1)", "D": "Tuple(1, Rational(1, 2), -1)", "E": "Tuple(1, -1, -1)"},
+    "check": {"type": "twinChoice", "expr": "Tuple(1, 1, -1)", "choice": "C"}
+  },
+  "choiceValues": {"A": "Tuple(1, 1, 1)", "B": "Tuple(1, 1, -1)", "C": "Tuple(1, 1, 2)", "D": "Tuple(1, Rational(1, 2), Rational(1, 2))", "E": "Tuple(1, Rational(1, 2), -Rational(1, 2))"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik 9 — Hareket: konum, yer değiştirme ve alınan yol", "note": "Skaler ve vektörel büyüklükleri ayırt etme kazanımı."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T09:00:00Z"}
+}

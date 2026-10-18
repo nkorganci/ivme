@@ -45,3 +45,21 @@ app:
   sample-data: ""                          # dev profilinde örnek CSV yolu
   import-file: ${YKS_IMPORT_DOSYASI:}      # İSTEĞE BAĞLI: açılışta bu CSV/JSON toplu yüklenir (README "Tüm soruları yükleme")
   import-mode: ${YKS_IMPORT_MODU:INSERT_ONLY}
+  tutor:
+    # Öğrenciye açılan öğretim içeriği: pilotta otomatik doğrulanmış + öğretmen onaylı; üretimde APPROVED_ONLY önerilir.
+    student-visibility: ${YKS_OGRETIM_GORUNURLUGU:VERIFIED_OR_APPROVED}
+    models:
+      # Öğrencinin serbest açıklamasını sınıflandıran modeller. Varsayılan yerel Ollama; veri makineden çıkmaz.
+      # Bulut sağlayıcısı (openai-compatible) seçilirse anahtar yalnız sunucu ortam değişkeninden okunur.
+      enabled: ${YKS_AI_ETKIN:true}
+      timeout-seconds: ${YKS_AI_ZAMAN_ASIMI:20}
+      economic:
+        provider: ${YKS_AI_EKONOMIK_SAGLAYICI:ollama}
+        base-url: ${YKS_AI_EKONOMIK_ADRES:http://127.0.0.1:11434}
+        model: ${YKS_AI_EKONOMIK_MODEL:qwen3.5:4b}
+        api-key: ${YKS_AI_EKONOMIK_ANAHTAR:}
+      strong:
+        provider: ${YKS_AI_GUCLU_SAGLAYICI:ollama}
+        base-url: ${YKS_AI_GUCLU_ADRES:http://127.0.0.1:11434}
+        model: ${YKS_AI_GUCLU_MODEL:qwen3.5:9b}
+        api-key: ${YKS_AI_GUCLU_ANAHTAR:}

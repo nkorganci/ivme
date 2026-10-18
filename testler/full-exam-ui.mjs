@@ -36,6 +36,12 @@ const server = live ? null : createServer((req,res)=>{
     // A delayed old result must not enable submission for a different track/source.
     return setTimeout(()=>json(plan),url.searchParams.get('bank')==='CIKMIS'?180:20);
   }
+  if(url.pathname==='/api/exams/archive'){
+    const examType=url.searchParams.get('examType'),track=url.searchParams.get('track');
+    return setTimeout(()=>json([2025,2024].map(year=>({year,examType,track,questionCount:examType==='TYT'?120:80,
+      timeLimitMinutes:examType==='TYT'?165:180,ready:year===2025,
+      subjects:Object.entries(quotas[examType==='TYT'?'TYT':track]).map(([subject,target])=>({subject,target,available:year===2025?target:0}))}))),100);
+  }
   if(url.pathname==='/api/exams/full'&&req.method==='POST'){
     let body='';req.on('data',chunk=>body+=chunk);req.on('end',()=>{lastStart=JSON.parse(body);json({id:77});});return;
   }
@@ -125,6 +131,37 @@ try{
     const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
     writeFileSync(join(output,`${live?'live':'isolated'}-${width}.png`),Buffer.from(shot.result.data,'base64'));
     checks.push({width,controls,status:'PASS'});
+    await evaluate(`document.querySelectorAll('[aria-label="Deneme seçimi"] input')[1].click()`);
+    await waitFor('/^\\d{4}$/.test(document.querySelector("form select")?.value || "") && !document.querySelector(".spinner")');
+    assert.equal(await evaluate('document.querySelectorAll("form .state-error").length'),0);
+    assert.equal(await evaluate('new URLSearchParams(location.search).get("examSource")'),'year');
+    assert.equal(await evaluate('document.querySelectorAll(".full-exam-history input,.full-exam-sources input").length'),0);
+    assert.equal(await evaluate('document.documentElement.scrollWidth>innerWidth'),false);
+    if(!live){
+      assert.equal(await evaluate('document.querySelector("form select").value'),'2025');
+      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),false);
+      await evaluate(`{const select=document.querySelector('form select');
+        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2024');
+        select.dispatchEvent(new Event('change',{bubbles:true}));}`);
+      await waitFor('document.body.innerText.includes("Bu yılın tam sınavı henüz hazır değil")');
+      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),true);
+      await cdp('Page.reload');await waitFor('document.querySelector("form select")?.value==="2024" && !document.querySelector(".spinner")');
+      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),true);
+      await evaluate(`{const select=document.querySelector('form select');
+        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2025');
+        select.dispatchEvent(new Event('change',{bubbles:true}));}`);
+      await waitFor('document.querySelector("form button[type=submit]")?.disabled===false');
+    } else {
+      assert.ok(await evaluate('document.querySelector("form select").options.length>=1'));
+    }
+    const archiveShot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
+    writeFileSync(join(output,`${live?'live':'isolated'}-archive-${width}.png`),Buffer.from(archiveShot.result.data,'base64'));
+    if(!live){
+      await evaluate('document.querySelector("form button[type=submit]").click()');
+      await waitFor('location.pathname==="/sinav/77"');
+      assert.deepEqual(lastStart,{bank:'CIKMIS',examType:'AYT',track:'ESIT_AGIRLIK',includeSolved:true,year:2025});
+    }
+    checks.push({width,archiveSelection:'PASS',yearPersistence:live?'read-only':'PASS',missingArchive:live?'read-only':'PASS'});
   }
   if(!live){
     for(const bank of ['OGM','CIKMIS',''])for(const examType of ['TYT','AYT'])for(const track of ['SAYISAL','ESIT_AGIRLIK','SOZEL'])for(const includeSolved of [true,false]){

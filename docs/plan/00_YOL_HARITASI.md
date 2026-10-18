@@ -23,6 +23,15 @@ bittiğinde silinmez; yeni yapılacaklar veya tamamlanan işler listesi olarak k
 
 Soru/PDF/video üretimi aynı sözleşme ve doğrulayıcıyı kullanır. Normal üretim önbelleği yeniden kullanır; manuel inceleme kaydı insan onayı veya doğrulanmış konu aralığı sayılmaz.
 
+## Kullanıcı yönetimi tasarım önerisi
+
+[13. Adım — kullanıcı rolleri ve site yönetimi](13_KULLANICI_ROLLERI_VE_YONETIM.md)
+yalnız tasarım durumundadır. Öğrenci, veli, takip öğretmeni ve yönetici erişimini;
+mevcut OPERATOR yetkisini koruyarak sekiz uygulama aşamasında tarif eder.
+Kullanıcının bu görevdeki talimatı yalnız `.md` hazırlamaktır; bu bağlantı kod,
+DB veya hesap değişikliğine izin vermez. Ayrıca uygulama istenmeden 13.xx
+başlatılmaz; 7/12 uygulama sırası ve mevcut kullanıcı kayıtları korunur.
+
 ## Ortak kararlar
 
 - Konu, PDF, soru, video ve ders notu aynı kontrollü kategori kimliklerini kullanacak. Başlık değişikliği yeni kimlik üretmeyecek.

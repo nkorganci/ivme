@@ -59,13 +59,13 @@ class ExamPlanServiceTest {
     @Test
     void secim_her_branstan_plandaki_kadar_soru_alir() {
         mockCounts(false);
-        when(availability.randomSubjectCandidates(eq(1L), any(), any(), eq(QuestionSelectionMode.MIXED),
+        when(availability.balancedSubjectCandidates(eq(1L), any(), any(), eq(QuestionSelectionMode.MIXED),
                 any(), org.mockito.ArgumentMatchers.anyInt())).thenAnswer(invocation -> {
             List<String> subjects = invocation.getArgument(4);
             int limit = invocation.getArgument(5);
             // Every branch shares these IDs: a question must still appear only once.
             return subjects.stream().flatMap(subject -> LongStream.rangeClosed(1, limit)
-                    .mapToObj(id -> new QuestionAvailabilityService.SubjectCandidate(id, subject))).toList();
+                    .mapToObj(id -> new com.hedefyks.question.ExamTopicBalancer.Candidate(id, subject, subject, 0, 0))).toList();
         });
         var plan = plans.plan(1L, null, ExamType.AYT, ExamTrack.ESIT_AGIRLIK,
                 QuestionSelectionMode.MIXED, 20);

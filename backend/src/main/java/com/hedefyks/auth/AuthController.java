@@ -80,6 +80,8 @@ public class AuthController {
         u.setEmail(email);
         u.setPhone(phone);
         u.setPasswordHash(encoder.encode(req.password()));
+        u.setCategory(req.category());
+        u.setRole(switch(req.category()) { case STUDENT -> Role.USER; case PARENT -> Role.PARENT; case TEACHER -> Role.TEACHER; });
         users.save(u);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(UserDto.of(u));

@@ -11,6 +11,7 @@ import ResourcesNavigation,{RESOURCE_HOME,isResourcePath,ResourceNavigationConte
 const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
   [RESOURCE_HOME, 'Konular ve Kaynaklar', 'book'],
+  ['/akilli-ogretmen', 'Akıllı Öğretmen', 'layers'],
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/ogrenci-takip', 'Öğrenci Takip Portalı', 'clock'],
   ['/calisma/yeni', STUDY_LABEL, 'play'],
@@ -121,7 +122,7 @@ export default function Layout() {
   };
 
   const items = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim', 'shield']]
-    : user.role === 'OPERATOR' ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book'], ['/icerik-bakimi', 'İçerik bakımı', 'shield']]
+    : user.role === 'OPERATOR' ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book'], ['/akilli-ogretmen-inceleme', 'Akıllı Öğretmen İnceleme', 'layers'], ['/icerik-bakimi', 'İçerik bakımı', 'shield']]
       : [...ITEMS, ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
 
   const signOut = async () => {

@@ -2,6 +2,7 @@ package com.hedefyks.exam;
 
 import com.hedefyks.common.ApiException;
 import com.hedefyks.question.ExamType;
+import com.hedefyks.question.ExamTopicBalancer;
 import com.hedefyks.question.QuestionAvailabilityService;
 import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionSelectionMode;
@@ -62,6 +63,11 @@ public class ExamPlanService {
         return examType == ExamType.TYT ? 165 : 180;
     }
 
+    public List<SubjectQuota> fullQuotas(ExamType examType, ExamTrack track) {
+        return weights(examType, track == null ? ExamTrack.SAYISAL : track).stream()
+                .map(w -> new SubjectQuota(w.subject(), w.count(), 0)).toList();
+    }
+
     public Plan plan(Long userId, QuestionBank bank, ExamType examType, ExamTrack track,
                      QuestionSelectionMode mode, int questionCount) {
         if (examType == null || track == null || questionCount < 1 || questionCount > 120) {
@@ -99,12 +105,11 @@ public class ExamPlanService {
         }
         List<SelectedQuestion> result = new ArrayList<>();
         var ids = new java.util.HashSet<Long>();
-        var candidates = availability.randomSubjectCandidates(userId, plan.bank(), plan.examType(),
+        var candidates = availability.balancedSubjectCandidates(userId, plan.bank(), plan.examType(),
                 plan.selectionMode(), plan.subjects().stream().map(SubjectQuota::subject).toList(), plan.questionCount());
         for (var row : plan.subjects()) {
-            var selected = candidates.stream().filter(candidate -> candidate.subject().equals(row.subject()))
-                    .map(QuestionAvailabilityService.SubjectCandidate::id).filter(id -> !ids.contains(id))
-                    .limit(row.target()).toList();
+            var selected = ExamTopicBalancer.select(candidates.stream()
+                    .filter(candidate -> candidate.subject().equals(row.subject())).toList(), row.target(), ids);
             if (selected.size() != row.target()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
             ids.addAll(selected);
             selected.forEach(id -> result.add(new SelectedQuestion(id, row.subject())));

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0557",
+  "question": {
+    "code": "TYT-0557",
+    "exam": "TYT",
+    "subjectId": "matematik",
+    "categoryId": "tyt.matematik.rasyonel-sayilar",
+    "subtopic": "Ondalık sayılarla dört işlem (alışveriş fişi)",
+    "answerKey": "A",
+    "choiceCount": 5,
+    "imageSha256": "c50cc69b1f5d74fd144d477a813c80598afc3a12aef433d5df21b4db54c367ac"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Bir markette seçtiği ürünleri satın almak için kasaya giden bir müşterinin tüm ürünlerinin adet ve birim fiyat bilgilerinin kasiyerin ekranındaki görünümü aşağıdaki gibidir: Çikolata — birim fiyatı 0,99 TL, 5 adet; Süt — 1,10 TL, 1 adet; Ekmek — 1,25 TL, 3 adet. Bu ürünler için kasiyere 10 TL veren bir müşterinin kasiyerden alacağı para üstü kaç TL'dir?",
+    "choices": {"A": "0,2", "B": "0,4", "C": "0,8", "D": "1", "E": "1,2"},
+    "figure": "Kasa ekranı görünümünde üç satırlık ürün/birim fiyat/adet listesi; tüm değerler okunaklı.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "KOLAY",
+    "difficultyReason": "Tek bağlamda çarpma, toplama ve çıkarma; tuzak yalnızca ondalık basamak hizası ve kaba yuvarlamadır.",
+    "skills": ["HESAPLAMA", "UYGULAMA"],
+    "prerequisites": [],
+    "catalogAgreement": false,
+    "catalogNote": "Katalog tahmini 'Temel Kavramlar' (kaynak başlığı 'Sayı Kümeleri'). Soru ondalık sayılarla dört işlem ölçtüğü için ortak sözlükteki 'Rasyonel Sayılar' ünitesine daha uygundur; etiket öğretmen kararı bekler."
+  },
+  "pattern": {
+    "key": "matematik.rasyonel.ondalik-tutar",
+    "name": "Ondalık tutar hesabı: parça parça topla, tahminle kontrol et",
+    "trigger": "Birim fiyat ve adet verilip toplam tutar, kalan para ya da para üstü soruluyorsa.",
+    "bigIdea": "Tutar = birim fiyat × adet; para üstü = verilen para − toplam tutar. Ondalıklarla çalışırken önce yaklaşık sonucu tahmin etmek, virgül hatasını yakalar.",
+    "method": [
+      "Her satırın tutarını ayrı hesapla (birim fiyat × adet).",
+      "Tutarları virgülleri alt alta hizalayarak topla.",
+      "Verilen paradan toplamı çıkar.",
+      "Sonucu kaba bir tahminle karşılaştır."
+    ],
+    "whenNot": "Soru indirim, KDV ya da 'x tane alana y bedava' gibi koşullar içeriyorsa önce koşulu uygulayıp sonra toplamak gerekir; doğrudan çarpım yetmez.",
+    "examTip": "1'e yakın fiyatları '1 eksi küçük bir sayı' gibi düşün: 0,99 × n = n − 0,01 × n. Böylece hem hızlanır hem virgül hatasından korunursun."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "satir-satir", "text": "Her ürünün tutarını ayrı ayrı (birim fiyat × adet) hesaplayıp sonra toplamak", "correct": true,
+       "feedback": "Doğru. Her satır kendi içinde bir çarpma; toplamı bulunca para üstü tek bir çıkarma işlemidir."},
+      {"id": "fiyatlari-topla", "text": "Önce birim fiyatları toplayıp sonra adetlerin toplamıyla çarpmak", "correct": false,
+       "feedback": "Bu, her üründen aynı sayıda alınmış gibi davranır. Çikolatadan 5, sütten 1 alındığı için her satır kendi adediyle çarpılmalı."},
+      {"id": "hepsini-yuvarla", "text": "Bütün fiyatları en yakın tam sayıya yuvarlayıp hesaplamak", "correct": false,
+       "feedback": "Kaba yuvarlama burada kuruşları kaybettirir; şıklar birbirine çok yakın olduğu için kuruşu kuruşuna hesap gerekir. Yuvarlamayı yalnız kontrol için kullan."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Bir ürünün tutarı birim fiyatı ile adedinin çarpımıdır. Para üstü, verilen paradan toplam tutarın çıkarılmasıyla bulunur."},
+    {"level": 2, "kind": "STRATEJI", "text": "Üç satırın tutarını ayrı ayrı yaz, sonra topla. Çikolata satırında 0,99'u '1 TL'den biraz az' diye düşünmek hesabı kolaylaştırır."},
+    {"level": 3, "kind": "ADIM", "text": "Çikolata tutarı: 5 × 0,99 = 5 − 5 × 0,01. Aynı yolla ekmek için 3 × 1,25'i hesapla ve süt ile topla."}
+  ],
+  "guidingQuestions": [
+    {"text": "5 × 0,99 işlemini 5 × 1'den ne kadar eksik düşünebilirsin?", "answer": "5 × 0,01 = 0,05 eksik; yani 4,95."},
+    {"text": "Toplam tutar 10 TL'den az mı, çok mu olmalı? Neden?", "answer": "Az olmalı; kabaca 5 + 1 + 3,75 ≈ 9,75 TL eder ve müşteri para üstü alıyor."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Çikolata: 5 × 0,99 = 4,95 TL.",
+       "why": "Aynı üründen 5 adet alındığı için birim fiyat 5 ile çarpılır; 0,99 = 1 − 0,01 olduğundan 5 − 0,05 = 4,95.",
+       "check": {"type": "sympy", "expr": "5*Rational(99, 100)", "equals": "Rational(495, 100)"}},
+      {"id": "s2", "text": "Süt: 1 × 1,10 = 1,10 TL. Ekmek: 3 × 1,25 = 3,75 TL.",
+       "why": "Her satır kendi adediyle çarpılır; 1,25 'bir tam bir çeyrek' olduğundan 3 tanesi 3 tam üç çeyrek = 3,75.",
+       "check": {"type": "sympy", "expr": "1*Rational(110, 100) + 3*Rational(125, 100)", "equals": "Rational(485, 100)"}},
+      {"id": "s3", "text": "Toplam tutar: 4,95 + 1,10 + 3,75 = 9,80 TL.",
+       "why": "Virgüller alt alta hizalanarak toplanır: kuruşlar 95 + 10 + 75 = 180 kuruş = 1,80 TL; liralar 4 + 1 + 3 = 8 TL; toplam 9,80 TL.",
+       "check": {"type": "sympy", "expr": "5*Rational(99, 100) + Rational(110, 100) + 3*Rational(125, 100)", "equals": "Rational(98, 10)"},
+       "selfExplain": {"prompt": "Toplamın 10 TL'nin biraz altında çıkması neden mantıklı?",
+         "options": [
+           {"id": "tahmin", "text": "Fiyatları yuvarlarsak 5 + 1 + 3,75 ≈ 9,75 eder; gerçek toplam buna çok yakın olmalı.", "correct": true,
+            "feedback": "Evet. Tahminle karşılaştırmak virgül kaymasını hemen yakalar: 98,0 ya da 0,98 gibi bir toplam saçma olurdu."},
+           {"id": "fis", "text": "Çünkü fişlerde toplam her zaman 10 TL'den azdır.", "correct": false,
+            "feedback": "Böyle bir kural yok; toplam ürünlere bağlıdır. Mantık kontrolü yuvarlak sayılarla tahmin yapmaktan gelir."},
+           {"id": "adet", "text": "Çünkü toplam adet 9 olduğu için tutar 9 civarındadır.", "correct": false,
+            "feedback": "Adet sayısı tutarı belirlemez; ekmek 1,25, çikolata 0,99 TL. Tahmin fiyatları yuvarlayarak yapılmalı."}
+         ]}},
+      {"id": "s4", "text": "Para üstü: 10 − 9,80 = 0,20 TL.",
+       "why": "Müşteri 10 TL verdi; fazlası kendisine geri döner.",
+       "check": {"type": "sympy", "expr": "10 - Rational(98, 10)", "equals": "Rational(2, 10)"}}
+    ],
+    "finalAnswer": {"choice": "A", "value": "0,2",
+      "check": {"type": "choice", "expr": "10 - (5*Rational(99, 100) + Rational(110, 100) + 3*Rational(125, 100))", "choice": "A"}},
+    "levels": {
+      "sezgi": "Fişi kafanda yuvarlak sayılarla kur: 5 çikolata neredeyse 5 TL, süt yaklaşık 1 TL, 3 ekmek 3,75 TL. Toplam 10 TL'ye çok yakın; para üstü küçük bir miktar olmalı. Kesin hesap bu tahmini sadece kuruşlarla düzeltir.",
+      "kisayol": "5 × 0,99 = 5 − 0,05 = 4,95; 3 × 1,25 = 3,75. 4,95 + 3,75 = 8,70; + 1,10 = 9,80. Para üstü 0,20."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "D",
+     "mistake": "Bütün fiyatları en yakın tam sayıya yuvarlayıp 5 + 1 + 3 = 9 TL toplam ve 1 TL para üstü bulmak.",
+     "cause": "Tahmin ile kesin hesabı karıştırmak; yuvarlamanın kuruşları ve 1,25'teki çeyrekleri kaybettirdiğini fark etmemek.",
+     "fix": "Tahmin sadece kontrol içindir. Şıklar birbirine çok yakın olduğunda kuruşu kuruşuna hesap gerekir.",
+     "guidingQuestion": "3 ekmek gerçekten 3 TL mi ediyor? 1,25 ile 1 arasındaki farkı 3 kez düşündün mü?",
+     "check": {"type": "choice", "expr": "10 - (5*1 + 1 + 3*1)", "choice": "D"}},
+    {"id": "m2", "choice": "C",
+     "mistake": "Toplamı 9,80 bulup para üstünü toplamın ondalık kısmı (0,80) sanmak.",
+     "cause": "'10'a ne kadar kaldı?' sorusunu 'virgülden sonra ne var?' diye okumak; basamak değerini karıştırmak.",
+     "fix": "Para üstü 10'dan toplamı çıkarmaktır: 10 − 9,80. 9,80'in kuruşları 80'dir ama 10'a tamamlamak için gereken 20 kuruştur.",
+     "guidingQuestion": "9,80 TL'ye kaç kuruş eklersen 10 TL olur?",
+     "check": {"type": "choice", "expr": "Rational(98, 10) - 9", "choice": "C"}},
+    {"id": "m3", "choice": null,
+     "mistake": "4,95 ile 1,10'u toplarken virgülleri hizalamayıp 5,105 gibi sonuçlar elde etmek.",
+     "cause": "Ondalık sayıları tam sayı gibi sağa yaslayarak toplamak.",
+     "fix": "Ondalıklar toplanırken virgüller alt alta gelir; gerekirse 1,10'u 1,10 olarak (iki basamak) yaz.",
+     "guidingQuestion": "4,95 ve 1,10'u alt alta yazınca virgüller aynı sütunda mı?"}
+  ],
+  "alternative": {
+    "title": "Kuruşla hesap",
+    "text": "Bütün fiyatları kuruşa çevir: 5·99 + 110 + 3·125 = 495 + 110 + 375 = 980 kuruş. 1000 − 980 = 20 kuruş = 0,20 TL. Virgülsüz çalışmak hizalama hatasını ortadan kaldırır.",
+    "check": {"type": "sympy", "expr": "(1000 - (5*99 + 110 + 3*125))/100", "equals": "Rational(2, 10)"}
+  },
+  "visual": {
+    "recommended": false,
+    "reason": "Tek bağlamlı kısa bir işlem zinciri; burada animasyon yerine yuvarlama ile tahmin kontrolü daha öğretici ve sınavda daha hızlı."
+  },
+  "twin": {
+    "text": "Bir kırtasiyeden tanesi 1,95 TL olan kalemlerden 4 tane ve tanesi 3,50 TL olan defterlerden 2 tane alan bir öğrenci kasiyere 20 TL veriyor. Öğrencinin alacağı para üstü kaç TL'dir?",
+    "choices": {"A": "4,20", "B": "5,20", "C": "5,80", "D": "6,20", "E": "6,80"},
+    "answer": "B",
+    "solution": "4 × 1,95 = 4 × 2 − 4 × 0,05 = 7,80; 2 × 3,50 = 7,00. Toplam 14,80 TL. Para üstü 20 − 14,80 = 5,20 TL.",
+    "choiceValues": {"A": "Rational(42, 10)", "B": "Rational(52, 10)", "C": "Rational(58, 10)", "D": "Rational(62, 10)", "E": "Rational(68, 10)"},
+    "check": {"type": "twinChoice", "expr": "20 - (4*Rational(195, 100) + 2*Rational(350, 100))", "choice": "B"}
+  },
+  "choiceValues": {"A": "Rational(2, 10)", "B": "Rational(4, 10)", "C": "Rational(8, 10)", "D": "1", "E": "Rational(12, 10)"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Sayılar: ondalık gösterimle işlemler", "note": "Ondalık sayılarla dört işlem ve tahmin kazanımı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-pilot-v1",
+    "createdAt": "2026-10-18T07:20:00Z"
+  }
+}

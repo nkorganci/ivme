@@ -551,14 +551,45 @@ uygun kimlikler sorgu içindeki `MATERIALIZED` CTE'de yeniden kullanılır
 teslim edilmiş deneme geçmişi tek kez birleştirilir. Boş kategori filtresi
 bütün sözlüğü yüklemez; öğretmen kararı yoksa karar sözlüğü/hash taraması yapılmaz.
 
-Dengeli deneme oluşturma ayrıca genel havuzu saymaz. Bütün branşların rastgele
-adayları tek SQL'de alınır; her branş için en çok denemenin toplam soru sayısı
-kadar aday döner (TYT'de en çok 9 × 120 kimlik). Kotalar kitapçık sırasında
-doldurulur, daha önce seçilen kimlik tekrar alınmaz. Bir önceki kotanın en çok
-toplam soru sayısı eksi mevcut kota kadar kimlik tüketebilmesi bu sınırı yeterli
-kılar; gerçek yetersizlikte işlem hata verir. Deneme yazımı mevcut tek DB işlemi
-içinde kalır. Branş başına uygulama thread'i veya kalıcı kullanıcı havuz önbelleği
-açılmaz; eski sayım güncel oluşturma kontrolünün yerine geçmez. Yeni şema/göç gerekmez.
+Dengeli deneme oluşturma ayrıca genel havuzu saymaz. Genel, branş ve özel
+denemelerin hepsi `ExamTopicBalancer` kullanır. Güncel DB etiketleri ve öğretmen
+kararları `canonicalTopicIds` üzerinden aynı 237 üniteye çözülür; önkoşul
+ilişkileri konu kapsamı sayılmaz. Seçilmiş konu/aday filtreleri korunur.
+Genel denemenin Matematik kotası Geometriyi; AYT Felsefe Grubu kotası felsefe,
+psikoloji, sosyoloji ve mantık branşlarını aynı ortak kimliklerle kapsar.
+Her branşta önce deneme içinde en az temsil edilen ünite seçilir; eşitlikte
+öğrencinin önceki denemelerinde daha az kullanılan, sonra daha eskiden sorulan
+ünite öne gelir. Eşit adaylar rastgele seçilir. Soru sayısı ünite sayısını aşarsa
+aynı sıra yeni turda sürer; havuzu tükenen ünite kalan soruları engellemez.
+Çok etiketli soru ilişkili üniteleri birer kez temsil eder, aynı soru kimliği
+denemede iki kez bulunmaz. Ünite eşleşmesi olmayan soru ancak bilinen ünite
+havuzları yetmediğinde kullanılır; kaynak başlığından yeni kimlik üretilmez.
+
+Kapsam geçmişi yalnız aynı öğrencinin `IN_PROGRESS` ve `SUBMITTED` deneme
+sorularından hesaplanır; boş cevap da sunulmuş sorudur. İptal edilen deneme ve
+başka öğrencinin geçmişi kapsama eklenmez. Bu geçmiş `NEW/REPEAT/WRONG/MIXED`
+uygunluk filtresinden bağımsızdır: yeni soru seçimi daha önce atlanan üniteyi
+unutturmaz. Öğrenci satırı kilidi eşzamanlı iki oluşturmada bu sırayı korur.
+Ünite eşlemesi tek toplu SQL'de yapılır; adaylar branş–ünite başına denemenin
+toplam soru sayısıyla sınırlanır. Her branşın kotası ve gerçek havuz yetersizliği
+kontrolü korunur. Kalıcı kullanıcı havuz önbelleği veya branş başına thread yoktur.
+
+`examSource=year` seçimi formda “Yıla ait tam sınav” seçeneğini açar; `year`,
+TYT/AYT ve AYT alanı yenilemede korunur. `GET /api/exams/archive` her kayıtlı
+yılın branş hedeflerini, uygun sorularını ve `ready` durumunu verir.
+`POST /api/exams/full` isteğindeki `year`, yalnız o yılın bütün uygun çıkmış
+sorularını özgün kitapçık sırasında seçer; çözülmüş soru filtresi kullanılmaz.
+Güncel öğretmen görünürlüğü, kaynak damgası ve etkinlik koşulları uygulanır.
+Eksik/birleşik/inceleme bekleyen sorular tam sınavı engeller; ders bazındaki
+eksik ekranda belirtilir. Yıllı sınavın özgün dağılımına konu dengelemesi uygulanmaz.
+
+Özgün sıra `exam_archive_positions` tablosundadır. V57/V58, korunmuş
+`ham/sorular_son.json` kimliklerinden `scripts/official-exam-positions.py` ile
+üretilir; kaynak hash'i göçte saklanır. Son tablo `question_code` ile bağlıdır;
+sorular ilk kurulumda daha sonra içe alınsa veya silinse bile kaynak kimliği
+korunur. Geometri kitapçıktaki Matematik testine dahildir. Birleşik kartlar ve
+din muafiyeti alternatifleri standart 120/80 soru profiline eklenmez.
+Bu kayıtlar soru metni, görsel, cevap, etiket veya eski öğrenci sonucu değiştirmez.
 
 Çalışma başlığının altındaki tek sayısal satır AYT/TYT çıkmış soru ve
 Soru Bankası-AYT/Soru Bankası-TYT toplamlarını ayrı gösterir. Genel toplam,

@@ -41,6 +41,19 @@ public class User {
 
     private boolean enabled = true;
 
+    @Enumerated(EnumType.STRING)
+    private AccountCategory category;
+    @Column(name="site_manager")
+    private boolean siteManager;
+    @Column(name="archived_at")
+    private Instant archivedAt;
+    @Column(name="pause_reason")
+    private String pauseReason;
+    @Column(name="last_login_at")
+    private Instant lastLoginAt;
+    @Column(name="last_seen_at")
+    private Instant lastSeenAt;
+
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();
 }

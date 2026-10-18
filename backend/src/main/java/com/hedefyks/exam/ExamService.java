@@ -43,12 +43,15 @@ public class ExamService {
     private final QuestionAvailabilityService availability;
     private final HintService hints;
     private final ExamPlanService plans;
+    private final ExamArchiveService archive;
+    private final com.hedefyks.user.UserRepository users;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
     private final com.hedefyks.question.QuestionTaxonomyService taxonomy;
 
     public ExamService(ExamRepository exams, ExamQuestionRepository examQuestions, QuestionRepository questions,
                        QuestionAvailabilityService availability, HintService hints, ExamPlanService plans, com.hedefyks.review.SharedQuestionLabels sharedLabels,
-                       com.hedefyks.question.QuestionTaxonomyService taxonomy) {
+                       com.hedefyks.question.QuestionTaxonomyService taxonomy, ExamArchiveService archive,
+                       com.hedefyks.user.UserRepository users) {
         this.exams = exams;
         this.examQuestions = examQuestions;
         this.questions = questions;
@@ -57,18 +60,33 @@ public class ExamService {
         this.plans = plans;
         this.sharedLabels=sharedLabels;
         this.taxonomy=taxonomy;
+        this.archive=archive;
+        this.users=users;
     }
 
     // ---------------------------------------------------------------- oluşturma / devam
 
     public ExamSession createFull(Long userId, ExamDtos.FullExamRequest req) {
         ExamTrack track = req.track() == null || req.examType() == ExamType.TYT ? ExamTrack.SAYISAL : req.track();
+        if (req.year() != null) {
+            lockLearner(userId);
+            if (req.bank() == QuestionBank.OGM || Boolean.FALSE.equals(req.includeSolved()))
+                throw ApiException.badRequest("Yıla ait tam sınav çıkmış soruların tamamını içerir; kaynak veya çözülmüş soru filtresi kullanılamaz.");
+            var selected = archive.select(req.examType(), track, req.year());
+            var subjects = new HashMap<Long,String>();
+            selected.forEach(q -> subjects.put(q.id(),q.subject()));
+            String title = req.year() + " " + req.examType() + (req.examType() == ExamType.AYT ? " " + trackName(track) : "") + " tam sınavı";
+            return saveExam(userId, new QuestionFilter(QuestionBank.CIKMIS,req.examType(),null,null),
+                    QuestionSelectionMode.MIXED, selected.stream().map(ExamArchiveService.ArchiveQuestion::id).toList(),
+                    subjects, title, plans.timeLimitMinutes(req.examType()));
+        }
         return create(userId, new CreateExamRequest(req.bank(), req.examType(), null, null,
                 plans.fullQuestionCount(req.examType(), track), req.selectionMode(),
                 plans.timeLimitMinutes(req.examType()), null, track));
     }
 
     public ExamSession create(Long userId, CreateExamRequest req) {
+        lockLearner(userId);
         QuestionFilter filter = availability.effectiveFilter(
                 new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty()), req.topicPdfId());
         QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
@@ -97,25 +115,35 @@ public class ExamService {
             selected.forEach(q -> selectedSubjects.put(q.id(), q.subject()));
             ids = selected.stream().map(ExamPlanService.SelectedQuestion::id).toList();
         } else {
-            ids = availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
+            ids = availability.balancedExamIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
         }
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
+        String title = balanced ? filter.examType() + (filter.examType() == ExamType.AYT
+                ? " " + trackName(req.track()) : "") + " denemesi" : title(filter);
+        return saveExam(userId, filter, selection, ids, selectedSubjects, title, req.timeLimitMinutes());
+    }
+
+    private void lockLearner(Long userId) {
+        users.lockById(userId).orElseThrow(() -> ApiException.notFound("Öğrenci bulunamadı."));
+    }
+
+    private static String trackName(ExamTrack track) {
+        return switch (track) { case SAYISAL -> "Sayısal"; case SOZEL -> "Sözel"; case ESIT_AGIRLIK -> "Eşit Ağırlık"; };
+    }
+
+    private ExamSession saveExam(Long userId, QuestionFilter filter, QuestionSelectionMode selection, List<Long> ids,
+            Map<Long,String> selectedSubjects, String title, Integer timeLimitMinutes) {
         Map<Long, Question> byId = new HashMap<>();
         questions.findAllById(ids).forEach(q -> byId.put(q.getId(), q));
 
         Exam exam = new Exam();
         exam.setUserId(userId);
         exam.setSelectionMode(selection);
-        exam.setTitle(balanced ? filter.examType() + (filter.examType() == ExamType.AYT
-                ? " " + switch (req.track()) {
-                    case SAYISAL -> "Sayısal";
-                    case SOZEL -> "Sözel";
-                    case ESIT_AGIRLIK -> "Eşit Ağırlık";
-                } : "") + " denemesi" : title(filter));
+        exam.setTitle(title);
         exam.setExamType(filter.examType());
         exam.setSubject(filter.subject());
         exam.setQuestionCount(ids.size());
-        exam.setTimeLimitMinutes(req.timeLimitMinutes() == null || req.timeLimitMinutes() <= 0 ? null : req.timeLimitMinutes());
+        exam.setTimeLimitMinutes(timeLimitMinutes == null || timeLimitMinutes <= 0 ? null : timeLimitMinutes);
         exams.save(exam);
 
         List<ExamQuestion> rows = new ArrayList<>();
