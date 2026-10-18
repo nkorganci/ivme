@@ -686,9 +686,9 @@ iki uygulamanın DB'si ortak hale gelmez.
 ## Yeni değişiklik yaparken
 
 Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
-`feature/ivme-yol-haritasi` dalında yürür: port 5174, DB `ivme_dev`.
+`feature/ivme-yol-haritasi` dalında yürür: port 9091, DB `ivme_dev`.
 Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
-`main` dalıdır: port 5173, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
+`main` dalıdır: port 9090, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
 build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
 uygulamaya geçer. Geliştirme DB'si ilk ayrımda ana verinin kopyasıdır; sonraki
 kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
@@ -704,6 +704,12 @@ parçasıdır. `yerel-ortam.ps1` dalın port, DB, oturum ve CSRF çerezini seçe
 JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıyla
 doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
 korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
+
+Main'de `YKS_TUNNEL_PORT=5173`, mevcut Cloudflare hedefini aynı Tomcat
+sürecine bağlayan yalnız loopback'te ek HTTP girişi açar. Ana yerel port
+9090'dır; feature 9091'de çalışır ve tünel girişi kapalıdır. Ek giriş ayrı
+uygulama, DB veya sürüm çalıştırmaz. Yeniden başlatıcı port değiştiğinde de
+yalnız kendi worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
 
 `canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
 başına mutex ikinci izleyiciyi önler. Windows başlangıcındaki mevcut

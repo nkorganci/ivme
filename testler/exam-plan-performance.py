@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
-    base = 'http://127.0.0.1:5173'
+    base = 'http://127.0.0.1:9090'
     cookies = CookieJar()
     client = build_opener(HTTPCookieProcessor(cookies))
     try:

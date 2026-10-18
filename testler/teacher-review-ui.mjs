@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import assert from 'node:assert/strict';
 
 const liveRead = process.argv.includes('--live-read');
-const site = liveRead ? 'http://127.0.0.1:5173' : 'http://127.0.0.1:8082';
+const site = liveRead ? 'http://127.0.0.1:9090' : 'http://127.0.0.1:8082';
 const profile = mkdtempSync(join(tmpdir(), 'teacher-review-ui-'));
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', [
   '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run', '--disable-gpu', 'about:blank',

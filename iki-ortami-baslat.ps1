@@ -18,4 +18,4 @@ foreach ($branch in @('main', 'feature/ivme-yol-haritasi')) {
         '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $script + '"')
     ) -WorkingDirectory $repo -WindowStyle Hidden -PassThru
 }
-Write-Host 'Main: http://localhost:5173; feature: http://localhost:5174'
+Write-Host 'Main: http://localhost:9090; feature: http://localhost:9091'

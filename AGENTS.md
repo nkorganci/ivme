@@ -25,8 +25,9 @@
 
 ## Yerel ortam ve dal ayrımı
 
-- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-yol-haritasi`, adresi `http://localhost:5174`, DB'si `ivme_dev`.
-- Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:5173`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
+- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-yol-haritasi`, adresi `http://localhost:9091`, DB'si `ivme_dev`.
+- Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:9090`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
+- Mevcut Cloudflare hedefi 5173, main'in aynı sürecindeki yalnız loopback tünel girişidir (`YKS_TUNNEL_PORT`); feature bu girişi açmaz. 9090 için kullanıcının talimatıyla `my-jenkins` Docker konteyneri durduruldu; otomatik başlatma.
 - Her ortamın kaynakları, build dizini, görselleri, katalog kopyası ve izleyicisi ayrıdır. `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunarak paylaşılır. Geliştirme sırasında ana ortamın dosyaları/DB'si değiştirilmez.
 - `yerel-ortam.ps1` dalın port/DB/çerez ayarını seçer; `yeniden-baslat.ps1` yalnız o worktree'nin sürecini değiştirir. İçerik betikleri de varsayılan olarak dalın DB'sini seçer; eski `--database ivme` örnekleri ana veriyi hedefler, geliştirmede `ivme_dev` kullan.
 - Windows başlangıcındaki mevcut `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden iki izleyiciyi birlikte çalıştırır. İki ortamın izleyicisi görev sonunda açık kalır.

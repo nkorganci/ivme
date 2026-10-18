@@ -1,6 +1,6 @@
 // Local read-only content smoke. Uses its own loopback dev-review session; never saves a review.
 import assert from 'node:assert/strict';
-const base='http://127.0.0.1:5173', api='/api/operator/content-review';
+const base='http://127.0.0.1:9090', api='/api/operator/content-review';
 const cookies=new Map();
 async function request(path,method='GET') {
   const headers={Cookie:[...cookies].map(([k,v])=>`${k}=${v}`).join('; ')};

@@ -5,7 +5,7 @@ Yerel geliştirme girişleriyle (öğrenci + öğretmen) bir öğretim döngüs�
 dosyasına yazar. Çalışma sırasında oluşan öğretim kayıtları sonunda geri alınır; öğrencinin
 önceden var olan beceri kaydı aynen geri yüklenir.
 
-Kullanım: python -X utf8 testler/ogretim-dongusu-ui.py [--base http://localhost:5173] [--code TYT-0780]
+Kullanım: python -X utf8 testler/ogretim-dongusu-ui.py [--base http://localhost:9090] [--code TYT-0780]
 """
 
 import argparse
@@ -126,7 +126,7 @@ def finish_loop(page, shots, checks, wrong, right):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--base", default="http://localhost:5173")
+    parser.add_argument("--base", default="http://localhost:9090")
     parser.add_argument("--code", default="TYT-0780")
     parser.add_argument("--wrong", default="B")
     parser.add_argument("--right", default="A")

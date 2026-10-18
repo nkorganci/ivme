@@ -1,6 +1,6 @@
 // Local read-only acceptance: no review is saved, no question label is changed.
 import assert from 'node:assert/strict';
-const base = 'http://127.0.0.1:5173';
+const base = 'http://127.0.0.1:9090';
 const api = '/api/operator/content-review';
 const cookies = new Map();
 async function request(path, method = 'GET') {

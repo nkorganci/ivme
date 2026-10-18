@@ -14,8 +14,9 @@ set YKS_FLYWAY_ETKIN=false
 
 rem --- Sabit dis adres. Cloudflare Tunnel bunu HTTPS olarak yayinlar; QR kodlar burada acilir.
 set YKS_SITE_ADRESI=https://net.ivme.dev
-rem Mevcut Cloudflare Tunnel net.ivme.dev adresini localhost:5173'e yonlendirir.
-set PORT=5173
+rem Mevcut Cloudflare Tunnel 5173 girisinden ayni main uygulamasina ulasir.
+set PORT=9090
+set YKS_TUNNEL_PORT=5173
 
 rem --- Soru gorsellerinin kok klasoru (bu bilgisayardaki Git disi pilot klasor)
 set YKS_RESIM_KLASORU=%~dp0veri\resimler-pilot

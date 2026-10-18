@@ -4,7 +4,7 @@ import {spawn} from 'node:child_process';
 import {mkdtempSync,readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
-const site=process.argv[2]||'http://127.0.0.1:5173';
+const site=process.argv[2]||'http://127.0.0.1:9090';
 const output=resolve('veri/content-labels/integration/units-20261017');mkdirSync(output,{recursive:true});
 const profile=mkdtempSync(join(tmpdir(),'ivme-units-'));
 const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
