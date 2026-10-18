@@ -656,6 +656,19 @@ hedefi kabul eder; `node testler/learning-resources-ui.mjs <frontend-url>` veya
 güncel olduğunu kanıtlamaz. `ui/acceptance.json` denenen kaynak hash'lerini,
 masaüstü/390 px sonuçlarını ve sentetik 503/403 hata senaryolarını kaydeder.
 
+## Site yöneticisinin öğrenci listesi
+
+`users.site_manager` mevcut `ADMIN` rolünden ayrı açık yönetim yetkisidir.
+`AppUserDetails` bu işareti `ROLE_SITE_MANAGER` yetkisine çevirir.
+`GET /api/admin/students` yalnız bu yetkiyle, `USER` rolündeki hesapları sayfalı
+ve salt okunur döndürür; eski hesaplarda `category` boş olabilir ve bu durum
+öğrenciyi listeden çıkarmaz. Entity doğrudan serileştirilmez; yalnız listede
+gösterilen kimlik, kullanıcı adı, e-posta, durum ve kayıt tarihi DTO'ya alınır.
+`/yonetim` site yöneticisine öğrenci sekmesini, diğer ADMIN hesaplarına mevcut
+toplu kullanım özetini gösterir. Liste mevcut ortamın DB'sine aittir; iki
+ortamın kayıtları birleştirilmez. Bu liste yetkisi öğrenci adına çalışma,
+hesap değiştirme/silme veya bütün yönetim önerisinin uygulanması anlamına gelmez.
+
 ## Yeni değişiklik yaparken
 
 Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde

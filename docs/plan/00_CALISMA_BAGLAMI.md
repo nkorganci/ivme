@@ -6,8 +6,9 @@ Güncelleme: 18 Ekim 2026. Bu dosya kısa ve güncel tutulur; geçmiş işlerin 
 
 | Alan | Güncel değer |
 |---|---|
-| Çerçeve sürümü | `2026-10-18-uygulama-45` |
+| Çerçeve sürümü | `2026-10-18-uygulama-46` |
 | Yerel ortamlar | Geliştirme `uygulama` / `feature/ivme-yol-haritasi` / 5174 / `ivme_dev`; yerel production `uygulama-main` / `main` / 5173 / `ivme`. Kaynaklar, build ve görsel/katalog kopyaları ayrıdır; iki izleyici `iki-ortami-baslat.ps1` ile açılır. [Doğrulama](../../veri/content-labels/integration/environment-split-20261018/report.json): iki HTTP sürümü, aynı tarayıcıda bağımsız oturum, feature yenilenirken main PID/sürümünün korunması, 218 geçen backend testi (1 atlanan) ve 72 JS testi. Yerel commit/merge tamam; push yapılmadı |
+| Kayıtlı öğrenci görünümü | Kullanıcının 5174'te öğrencileri görememe talimatı: açık `SITE_MANAGER` yetkisiyle salt okunur öğrenci listesi, kategori bilgisi boş eski USER hesapları, arama ve sayfalama. Yalnız feature ortamında uygulanır; [kabul kanıtı](../../veri/content-labels/integration/student-directory-20261018/report.json). Main/development kayıtları bağımsızdır |
 | Son dokümantasyon / kanıt | 18 Ekim 2026 — denemelerde öğrenci geçmişine göre ünite dengesi ve yıl seçimi: [19 backend testi](../../veri/content-labels/integration/exam-coverage-20261018/test-report.json), [arşiv/API](../../veri/content-labels/integration/exam-coverage-20261018/api-report.json), [sunulan sürüm ve açık izleyici](../../veri/content-labels/integration/exam-coverage-20261018/runtime-report.json). Matematik Geometriyi, AYT Felsefe Grubu dört ilgili branşı kapsar. 13. adımın kullanıcı yönetimi tasarım önerisi ve ayrıca uygulama talimatı gereği korunur |
 | Eşzamanlı kullanıcı görevi | Bütün branşlar Ark referansındaki 237 üniteye bağlandı (106 TYT / 131 AYT). Biyoloji 25 ünite. Tahmini ünite/sınıf etiketleri ve öğretmen filtreleri etkin; alt başlıklar ayrı seçenek oluşturmaz |
 | Aşama | DB'den ortak kategori/PDF etiket okuması, ekran/takip teknik kabulü ve aynı disk yedek/geri yükleme tamam. Açık işler 7 ve 12'de gerekçeli durum etiketleriyle korunur; bütün içerik/alan incelemesi tamamlanmış değildir |

@@ -15,6 +15,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Main `JSESSIONID` / `XS
 |---|---|
 | `USER` | Kendi soru, sınav, geri bildirim ve hesap akışı |
 | `ADMIN` | `GET /api/admin/stats`; yalnız kayıtlı öğrenci ve tamamlanan deneme sayısı |
+| Ek `SITE_MANAGER` yetkisi | `GET /api/admin/students`; salt okunur öğrenci listesi ve araması. ADMIN rolüne otomatik verilmez |
 | `OPERATOR` | `/api/operator/**`; soru ve geri bildirim bakımı, CSV/JSON içe alma |
 
 ## Soru ve sınav uçları
@@ -174,6 +175,17 @@ Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve che
 İç not v1 biçimi [kayıtlı şemada](plan/sema/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [kalıcı çalışma kuralları](plan/00_CALISMA_BAGLAMI.md) ve orada kayıtlı güncel şema referansları kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
 
 ## Operatör ve yönetici uçları
+
+`GET /api/admin/students?query=&page=0&size=25`, ayrıca `SITE_MANAGER`
+yetkisi olan hesaplara kayıtlı öğrencilerin salt okunur listesini verir.
+`USER` rolündeki eski, `category` alanı boş hesaplar da dahildir. Liste yalnız
+`id`, kullanıcı adı, e-posta, etkinlik/arşiv durumu ve kayıt tarihini döndürür;
+parola, parola hash'i, telefon ve öğrenci çalışma geçmişi döndürülmez.
+Kullanıcı adı/e-posta araması büyük-küçük harften bağımsız, sayfa boyutu en çok
+100'dür. Yetkisiz `ADMIN`, `OPERATOR` ve diğer roller bu listeye erişemez.
+`/yonetim?sekme=ogrenciler` site yöneticisi için varsayılan sekmedir;
+`sekme=kullanim` mevcut toplu özeti açar. Kayıtlar bağlı olunan yerel ortama
+aittir; main'de sonradan açılan hesap geliştirme DB'sine otomatik kopyalanmaz.
 
 `GET /api/admin/stats?period=DAY|WEEK|MONTH` yalnız `ADMIN` içindir. `Europe/Istanbul` döneminde etkin öğrenci, başlatılan pratik/sınav ve cevap toplamları ile tüm zamanlar kayıtlı öğrenci ve tamamlanan sınav toplamlarını döndürür. 0–4 değerleri `null`, diğerleri beşlik aralığın alt sınırıdır; etkin öğrenci beşten azsa dönemlik diğer toplamlar da `null` olur. `content` alanı etkin ve koleksiyona atanmış soru kayıtlarının toplamını, CIKMIS/OGM ve TYT/AYT kırılımını kesin kayıt sayısı olarak verir; görsel dosya bütünlüğü bu sayımın parçası değildir. Yönetici yanıtında bireysel veri yoktur. Eski `/api/admin/questions`, `/api/admin/feedback` ve `/api/admin/import` yolları kapalıdır. `OPERATOR` şunları kullanır: `GET /api/operator/questions`, `GET/PUT /api/operator/questions/{id}`, `GET /api/operator/feedback`, `PATCH /api/operator/feedback/{id}`, `GET /api/operator/reported-questions`, `POST /api/operator/import`. İçe alma `file` (CSV/JSON), `mode=INSERT_ONLY|UPSERT`, `dryRun=true|false` alır. `dryRun` varsayılan olarak `true`; tek dosyada doğrulama hatası varsa yazma yapılmaz. `code` kalıcı tekil soru kimliğidir; `bank` ve `solution_image` ithalat alanlarıdır.
 

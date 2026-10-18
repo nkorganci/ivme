@@ -81,6 +81,7 @@ public class SecurityConfig {
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/dev-login", "/api/auth/dev-physics-review-login", "/api/auth/dev-teacher-review-login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/admin/students").hasRole("SITE_MANAGER")
                         .requestMatchers("/api/admin/stats").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").denyAll()
                         .requestMatchers("/api/operator/**").hasRole("OPERATOR")
