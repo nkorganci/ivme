@@ -1,0 +1,21 @@
+{
+  "groupId": "ayt-fizik",
+  "lessons": [{
+    "id": "newton-serbest-cisim",
+    "title": "Newton Yasaları: Önce Serbest Cisim Diyagramı",
+    "topics": ["Newton’ın hareket yasaları"],
+    "learn": ["Bir cismin ivmesini o cisme etki eden kuvvetlerin vektörel toplamı belirler: ΣF=ma. Net kuvvet sıfırsa ivme sıfırdır; cisim durabilir veya sabit hızla hareket edebilir. Sabit sürat, yön değişiyorsa tek başına sıfır ivme göstermez.", "Serbest cisim diyagramında seçtiğin cisme dışarıdan etki eden kuvvetleri çiz. Ağırlık, normal kuvvet, ip gerilmesi ve sürtünme farklı etkileşimlerdir. Etki-tepki çifti farklı cisimlere etki ettiğinden aynı cismin diyagramında birbirini götüren iki kuvvet olarak kullanılamaz.", "Statik sürtünme, kaymayı önlemek için gereken büyüklüğü alır; en büyük değeri μsN'dir. Cisim duruyorsa doğrudan fs=μsN yazmak yerine önce denge denklemini kur. Eşitlik sınır kayma durumunda geçerlidir."],
+    "steps": ["İncelenen cismi veya sistemi seç.", "Ona etki eden kuvvetleri ve pozitif eksenleri çiz.", "Her eksende ΣF=ma yaz; denge verilen eksende a=0 kullan.", "Sürtünmenin gerekli değerini bulup en büyük statik değeri aşmadığını kontrol et."],
+    "pitfall": "Normal kuvvet her durumda mg değildir. Yatay veya düşey başka kuvvet bileşenleri varsa ilgili eksenin denklemiyle bulunur.",
+    "sources": [{"catalogId": 32, "page": 23, "anchors": ["Newton’ın Hareket Yasaları", "Eylemsizlik", "Serbest Cisim Diyagramı"]}, {"catalogId": 32, "page": 28, "anchors": ["Düşey Sürtünmeli Düzlemdeki", "Cisim durgun kalırsa"]}],
+    "examples": [
+      {"bank": "CIKMIS", "code": "AYT_Sayisal-0355", "answer": "C", "anchors": ["statik sürtünme", "hareket etmeden"], "explanation": "Duvara bastırılan tuğlalar düşeyde dengededir. K ve L için sürtünme mg, N için 2mg olur: fN>fK=fL, C. Yatay bastırma kuvveti normal kuvveti ve sürtünmenin üst sınırını etkiler; denge için gereken sürtünmeyi doğrudan belirlemez."},
+      {"bank": "OGM", "code": "3a-ayt-fizik-08-01", "answer": "C", "anchors": ["hareket grafikleri", "net kuvvet sıfırdır"], "explanation": "Görselde K'nin konumu, L'nin hızı sabittir; ikisinin ivmesi sıfırdır. M'nin ivmesi sabit ama sıfırdan farklıdır. Bu nedenle net kuvveti sıfır olanlar K ve L, C."}
+    ],
+    "patterns": [
+      {"id": "net-kuvvet-ivme", "title": "Hareket grafiğinden net kuvvet", "recognize": "Konum, hız veya ivme grafikleriyle kuvvet sorulur.", "logic": "Önce ivmeyi belirle; sonra ΣF=ma bağlantısını kullan.", "tip": "Hızın negatif olması ivmenin sıfır olmasına engel değildir.", "trap": "Hareket eden cisimde mutlaka net kuvvet bulunduğunu sanmak.", "mini": {"question": "Sabit −4 m/s hızla doğrusal hareket eden 2 kg cisme etki eden net kuvvet nedir?", "answer": "İvme 0 olduğundan net kuvvet 0 N'dur."}},
+      {"id": "statik-surtunme", "title": "Gereken sürtünme ve sınır", "recognize": "Cisim bir kuvvete rağmen hareketsiz kalır.", "logic": "Dengeyi sağlayan sürtünmeyi hesapla; μsN ile yalnız üst sınırı kontrol et.", "tip": "Aynı yüzeyde farklı bastırma kuvvetleri aynı gereken sürtünmeyi sağlayabilir.", "trap": "Her durumda fs=μsN yazmak.", "mini": {"question": "Yatay düzlemdeki cisme 3 N yatay kuvvet uygulanıyor; en büyük statik sürtünme 8 N ve cisim duruyor. Sürtünme kaç N?", "answer": "3 N, uygulanan kuvvete ters yönde. 8 N kaymadan önce ulaşılabilecek üst sınırdır."}}
+    ],
+    "practice": {"question": "Sürtünmesiz yatay düzlemde 3 kg cisme doğuya 10 N, batıya 4 N uygulanıyor. İvmesi nedir?", "choices": ["Doğuya 2 m/s²", "Batıya 2 m/s²", "Doğuya 14/3 m/s²", "0"], "answer": 0, "explanation": "A · Net kuvvet doğuya 6 N'dur. a=6/3=2 m/s² doğuya olur."}
+  }]
+}

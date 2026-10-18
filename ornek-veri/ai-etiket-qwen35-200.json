@@ -1,0 +1,2528 @@
+{
+  "schema_version": 1,
+  "run": {
+    "id": "ollama-d8b0f5e9760c-ollama-vision-allowed-types-v1",
+    "model_family": "qwen3.5:4b",
+    "model_version": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "prompt_version": "ollama-vision-allowed-types-v1",
+    "prompt_sha256": "1c24a4c40aab9f7ad455a674183aba474a6dedb089369047624c8c2726499bce",
+    "taxonomy_version": "tyt-turkce-v1",
+    "source": "local Ollama vision",
+    "status": "draft",
+    "started_at_utc": "2026-10-10T02:35:42.159156+00:00",
+    "request_sha256": "b0fc0546097faad02f9cdaa35dfcd7e4833e75caeb589fc815637f56cc2206ce"
+  },
+  "drafts": [
+    {
+      "question_code": "TYT-0100",
+      "image_sha256": "0c8a30e93bab23dff9d8a90dd8fa3440615037a4440160e0d677126ed93287fe",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçadaki altı çizili ifadelerin (I, II, III) durumların hangilerinin yazarın göndermesine uygun olduğunu sormaktadır. Bu, metnin genel anlamını ve yazarın niyetini analiz etmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2012,
+      "output_tokens": 112,
+      "total_duration_ns": 180173368800
+    },
+    {
+      "question_code": "TYT-0062",
+      "image_sha256": "534618fae50df8b571ce14cbd17abc2c9e4605fac48888f3abd75760c0167ecd",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını ve düşünce akışının bozulmuş olanı bulmayı gerektiriyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1404,
+      "output_tokens": 88,
+      "total_duration_ns": 4253888200
+    },
+    {
+      "question_code": "TYT-0001",
+      "image_sha256": "599628d16787ff6032336c0e756927c21dfe545648bb840140dc0da6094d9ee8",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleye uygun şekilde boşluk doldurma (fill-in-the-blank) yapmayı gerektirir ve bu tür soruların temel amacı cümlenin anlamını tamamlamaktır.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1366,
+      "output_tokens": 101,
+      "total_duration_ns": 4501334400
+    },
+    {
+      "question_code": "TYT-0034",
+      "image_sha256": "26cbcea027e283bbc5e4b820f66c06efb63cb4ff96a02543029566f03357d7be",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru 'kişisel düşünce içermemektedir' ifadesiyle cümlelerin içeriksel ve duygusal boyutunu sorguluyor; bu, cümle yorumlama (cumle anlamı) tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 108,
+      "total_duration_ns": 5234526100
+    },
+    {
+      "question_code": "TYT-0300",
+      "image_sha256": "a557903c4f1f3279f9615916153503bd754a7f117aa4a65514f07d9e97978fe8",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerdeki 'de' bağlaçlarının yazım kuralına (yazılmalı mı yoksa yazılmamış mı) dair bir yanlışlık olup olmadığını soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 99,
+      "total_duration_ns": 4381655800
+    },
+    {
+      "question_code": "TYT-0318",
+      "image_sha256": "a5b276a75e9430e4a0b7ed57acc01bcdf5fcf88da71746cf01a049ac2daeb59f",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içindeki boşluklara noktalama işaretlerinin doğru sırasıyla konulmasını gerektirir. Bu, Türkçe dil bilgisi ve noktalama kurallarını ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1328,
+      "output_tokens": 103,
+      "total_duration_ns": 4384051800
+    },
+    {
+      "question_code": "TYT-0347",
+      "image_sha256": "4faa23bbe3c83ad859e27072062687552a8205eb0546a5dfac74594cda21a541",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki 'öğelerin doğru sıralanışı'ni soruyor ve seçeneklerde 'özne', 'nesne', 'zarf tümleci', 'yüklem' gibi cümle öğeleri listelenmiş.",
+      "review_reasons": [],
+      "prompt_tokens": 1138,
+      "output_tokens": 107,
+      "total_duration_ns": 4238060500
+    },
+    {
+      "question_code": "TYT-0118",
+      "image_sha256": "450ed4611f1c5fbd0577df61a484a73e39b2e5dc2e6e95d59e063abe3c3e182e",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçanın anlatımıyla ilgili bir özellik sorar ve 'söyleneemez' ifadesiyle seçenekleri değerlendirmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1708,
+      "output_tokens": 91,
+      "total_duration_ns": 11664518600
+    },
+    {
+      "question_code": "TYT-0136",
+      "image_sha256": "8e3e5381b0f0b96c00f8b09c83dedc9c01bfbc4d36a5012ec5df1076492b2029",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçanın genel anlamını ve içeriğini sorguluyor (anlatımın ne olduğunu), bu da paragraf anlamı tipine girer.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 90,
+      "total_duration_ns": 4653990500
+    },
+    {
+      "question_code": "TYT-0157",
+      "image_sha256": "bf54f2b511674e88490bc1c059d4bcb36466a86a09d314f2129f9e62bfa34118",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın anlatımında eksik olan bir öğeyi (yoktur) sorar ve seçenekler (Benzetme, Öznellik, Tartışma, Örnekleme, Karşılaştırma) tümüyle paragrafın içerikleriyle ilişkilidir.",
+      "review_reasons": [],
+      "prompt_tokens": 1708,
+      "output_tokens": 118,
+      "total_duration_ns": 5181087000
+    },
+    {
+      "question_code": "TYT-0179",
+      "image_sha256": "8c62a9cbd777082de3acdcb3f5b18d1234aa009c97a5184b6f1e62d2965f3ddb",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın içeriğini ve sonuçlarını analiz ederek doğru çıkarımı istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 76,
+      "total_duration_ns": 5425055000
+    },
+    {
+      "question_code": "TYT-0199",
+      "image_sha256": "f0c0085eab40bbedccc2777084fba1efcead9898d20c2b8b5386bdd1682cab2a",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, Bergson'un bellek üzerine görüşünü anlatan bir parçayı sunarak bu parçanın anlatımında hangi tekniklerin kullanıldığını soruyor. Bu tür 'hangi anlatım tekniği yoktur?' soruları, metnin yapısını ve içerik örgüsünü analiz etmeyi gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1556,
+      "output_tokens": 124,
+      "total_duration_ns": 5287515200
+    },
+    {
+      "question_code": "TYT-0220",
+      "image_sha256": "b999085ce1a12b4d34a43b2f6a0566330429e36c65932f7720f0830820b31261",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçanın genel anlamını ve nedenini soruyor. Şıklardan doğru olanı seçmek için metnin içeriğini analiz etmem gerekiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 88,
+      "total_duration_ns": 5075410600
+    },
+    {
+      "question_code": "TYT-0243",
+      "image_sha256": "643b468d04ea0ba01612606cf3f74dfa4aabedee7398b6e57eb114bf571094e5",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçanın genel anlamını ve Yasar Kemal'in sözlerinin bu bağlamda nasıl işlendiğini sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2126,
+      "output_tokens": 83,
+      "total_duration_ns": 4747998800
+    },
+    {
+      "question_code": "TYT-0264",
+      "image_sha256": "fd46f11eefd7d878350ff9d229edc8f5497d0033b766c37af258fe08f8ed314a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın anlatımında hangi öğenin olmadığını soruyor. Bu tür 'hangi öğe yok?' formatı, metnin genel anlamını ve içindeki anlatım tekniklerini (betimleme, örneklemeye vb.) analiz etmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1860,
+      "output_tokens": 114,
+      "total_duration_ns": 5186886700
+    },
+    {
+      "question_code": "TYT-0101",
+      "image_sha256": "0c97f5187a4f7f2c12f4601068a5cd349e5ada35c53ace2a505fe898adaf3b1e",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın anlatımında olmayan bir öğey sormaktadır. Parça, Tophane semtini betimleyen metinlerdir ve içinde karşılaştırma (Galata Kulesi'ne kadar uzandığı), benzetme (yılan misali kıvrılmış yokuş), nitelendirme (ana sokaklar bayır, ara sokaklar çıkmaz) ve mecazlı söyleyiş (geçmişi teneffüs ettirmek) gibi anlatım öğeleri bulunur. Ancak 'ikileme' (iki şeyin karşılaştırılmasıyla bir şeyi açıklamak veya vurgulamak) bu parçada kullanılmamıştır.",
+      "review_reasons": [],
+      "prompt_tokens": 1480,
+      "output_tokens": 203,
+      "total_duration_ns": 6583095600
+    },
+    {
+      "question_code": "TYT-0119",
+      "image_sha256": "254b6b44db6599ee747ad666491962fd76bf9934b736924222faf09baa39d542",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve ana fikrini sorguluyor; 'asıl anlatılmak istenen' ifadesi doğrudan paragraf anlamı sorusuna işaret eder.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 100,
+      "total_duration_ns": 5389344300
+    },
+    {
+      "question_code": "TYT-0137",
+      "image_sha256": "f843d179eb819a83906dab2ce47b0661d67ffa3dd1b0a6c1f9de4df405fe1b80",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve içeriğini sorguluyor; 'Bu sözlere karşılık olarak söylenmiş olabilir' ifadesiyle bir cümle yorumu/paragraf anlamı sorusu işaret ediyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1860,
+      "output_tokens": 108,
+      "total_duration_ns": 5380826700
+    },
+    {
+      "question_code": "TYT-0158",
+      "image_sha256": "58cd28f298cdd1964ba517bbfda78e45e452487f15dc1419bf47a3f1a8d2f72a",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi okuyup onun anlamını ve içeriğini yorumlamamızı bekliyor. Şıklar, cümlenin hangi konuyu ele aldığını (eleştirel düşünce gelişimi, sanatçıların rolü vb.) sorguluyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2012,
+      "output_tokens": 112,
+      "total_duration_ns": 5452134200
+    },
+    {
+      "question_code": "TYT-0180",
+      "image_sha256": "0a672f7282ac018d2e2f772e7c74c809bb2a69b18f5436417f82148d36d5a3bb",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve çıkarımları test ediyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2582,
+      "output_tokens": 73,
+      "total_duration_ns": 5839130700
+    },
+    {
+      "question_code": "TYT-0200",
+      "image_sha256": "5b557f746472644e7c89e03898746714c9831408b6125494c0da930defbdfb9d",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın içeriğini ve mesajını analiz ederek 'Bu parçadan aşağıdakilerin hangisine ulaşılabilir?' diye soruyor. Bu, metnin genel anlamını ve yazarın neye vurgu yaptığını belirlemeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2696,
+      "output_tokens": 114,
+      "total_duration_ns": 6767410500
+    },
+    {
+      "question_code": "TYT-0221",
+      "image_sha256": "07edb24df7c8ad381f82c5bd7896470d6feefc9985bac08f7555b1a4f7ccf550",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadaki yazarın yalnızlık ve yazma arasındaki ilişkiyi özetleyen düşüncenin ne olduğunu soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 84,
+      "total_duration_ns": 5243796300
+    },
+    {
+      "question_code": "TYT-0244",
+      "image_sha256": "a65b8cf6a8aab7e096b21bfd1b741fcdf8c4ca2b8cd1dc415b4b82d485282e78",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın içeriğini ve mantığını analiz ederek kraliçe yaban arılarının su baskınına uyum sağladığı sonucuna varmamızı bekliyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 97,
+      "total_duration_ns": 5951363100
+    },
+    {
+      "question_code": "TYT-0265",
+      "image_sha256": "dc99e6e32e012a3f927433af696c28610c0a7b2d11cde3067479b1918344a203",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçayı okuyup genel bir çıkarım yapmamızı bekliyor; şıklardan hangisinin parçanın içeriğiyle uyumlu olduğunu seçmemiz isteniyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 96,
+      "total_duration_ns": 5589477900
+    },
+    {
+      "question_code": "TYT-0102",
+      "image_sha256": "adbbbaab560ce0eaa8378c456a5db2ea623b1467dffdc2efcddeb11cec876c1b",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen metin parçasından Heisenberg hakkında çıkarımlar yapılmasını istiyor. Bu, metnin genel anlamını ve içeriğini yorumlama becerisini ölçüyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 96,
+      "total_duration_ns": 5759343100
+    },
+    {
+      "question_code": "TYT-0120",
+      "image_sha256": "783abebae9f100d7d4dc27636e31254ee193a7440e21d6fc45939e7f9631177a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın içeriğini analiz ederek film senaryosunun eleştirilme nedenini (fazlasıyla içeriden yazıldığı gerekçesi) sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 92,
+      "total_duration_ns": 5371349900
+    },
+    {
+      "question_code": "TYT-0138",
+      "image_sha256": "020cddae08511076c8de5870794cab08301afed069b5f0794728e8953527b52a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın içeriğini ve mantığını analiz ederek, yöntemin hangi aşamasında sorulacak bir soru olmadığını belirlemeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2506,
+      "output_tokens": 94,
+      "total_duration_ns": 5689969500
+    },
+    {
+      "question_code": "TYT-0159",
+      "image_sha256": "f631a6e3773ac48c44ec98499b5101810de9def1de693e4689abd74e591e6a44",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadan hareketle çıkarımla ilgili seçenekleri değerlendiriyor ve doğrudan bir cümle veya kelime anlamı değil, paragrafın genel anlamını ve sonuçlarını sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2772,
+      "output_tokens": 100,
+      "total_duration_ns": 6281556800
+    },
+    {
+      "question_code": "TYT-0181",
+      "image_sha256": "1437883222e7674025a9353be53cf1fa800f7cbb30612837d7baa0ce93ada88f",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve 'müzikal ürün' ile 'müzik eseri' arasındaki farkı belirleyen temel unsurun ne olduğunu sorar.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 94,
+      "total_duration_ns": 5346350400
+    },
+    {
+      "question_code": "TYT-0201",
+      "image_sha256": "f49c244f3b7458e473d02ae1754d4956428ca22fa74002d7f477df35bd2ef34b",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçanın genel anlamını ve karakterin duygusal durumu hakkında çıkarım yapmayı gerektiriyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 79,
+      "total_duration_ns": 4738776600
+    },
+    {
+      "question_code": "TYT-0222",
+      "image_sha256": "5e8d258fd547796a3a3ebea7a33dcfdbd32cc3c1cba9e27ab3206f3febad911a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçanın genel anlamını ve çözümün amacını sorguluyor; bu tip sorular genellikle paragrafın ana fikrini veya sonuçunu belirlemek için kullanılır.",
+      "review_reasons": [],
+      "prompt_tokens": 2278,
+      "output_tokens": 96,
+      "total_duration_ns": 5714928900
+    },
+    {
+      "question_code": "TYT-0245",
+      "image_sha256": "a57036095394eb7ea5b9ee00b3dc7f554b709714d40781c1222d4f19b43b67a0",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadan çıkarımla ilgili şıkları sunarak öğrencinin metni okuyup anlamını yorumlama becerisini ölçüyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 87,
+      "total_duration_ns": 5482370500
+    },
+    {
+      "question_code": "TYT-0266",
+      "image_sha256": "c647907f7fb21ccbe83167edcee048874bada67abdfb71b57f65fc71d33b6c63",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın genel anlamını ve çıkarımları sormaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 2506,
+      "output_tokens": 74,
+      "total_duration_ns": 5516952200
+    },
+    {
+      "question_code": "TYT-0103",
+      "image_sha256": "51f3d78fd18f1d37145839a949a583765a9933b7153fe776bcb7f69aac57c2c2",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın içeriğini ve mantığını analiz ederek edebiyatçı ve tarihçinin amaçlarını ve yaklaşımlarını çıkarmayı gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 95,
+      "total_duration_ns": 5542055000
+    },
+    {
+      "question_code": "TYT-0121",
+      "image_sha256": "e468d49d437e12b1b32d393cf7b539d72167af299434fddba2e98174e0fdf07e",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın son cümlesinde 'yazarın çaresizliği' ifadesini kullanır ve bu kavramı tanımlamamızı bekler. Şıklar, yazarın durumunu farklı açılardan (takdir, kalıcılık, anlatım kısıtlığı vb.) ele alarak parçanın genel anlamını test eder.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 135,
+      "total_duration_ns": 6279427600
+    },
+    {
+      "question_code": "TYT-0139",
+      "image_sha256": "65137610c8a7fbb53407bfd0d54b287f97f48695b44c1f66b3851be188c95fc9",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir antropologun kendi kültürünü ve iş dünyasını incelemek için hangi konulara odaklanacağını soruyor. Seçenekler (I, II, III) bu bağlamda ilgili mi değilini test ediyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2164,
+      "output_tokens": 104,
+      "total_duration_ns": 5638685100
+    },
+    {
+      "question_code": "TYT-0160",
+      "image_sha256": "24502ad164ffdfc0de314068efa21e100ca8f2c8367d9220d0d19d44fbcaaf1d",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve yayınevinin uyguladığı yöntemin sonuçlarını özetleyerek sorulan seçeneklerle karşılaştırır.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 89,
+      "total_duration_ns": 5525472000
+    },
+    {
+      "question_code": "TYT-0182",
+      "image_sha256": "86392236ee895b5a7e397b5e9a871dc4274be6f291b9fda0ae93d8bb503bbd82",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadan çıkarım yapmayı gerektirir; şıkların hangisinin metnin genel anlamına uygun olduğu değerlendirilir.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 84,
+      "total_duration_ns": 5101100600
+    },
+    {
+      "question_code": "TYT-0202",
+      "image_sha256": "d1624bf00ba121b9f748fbe86f334a241284a2db37d0040364f188c93e28703f",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadaki düşünceyi destekleyen nitelikleri soruyor; bu, paragrafın genel anlamını ve argüman yapısını kavramayı gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 94,
+      "total_duration_ns": 5631527800
+    },
+    {
+      "question_code": "TYT-0223",
+      "image_sha256": "3db79d60703dbb4e312041c8377c428ce7d6d5c293e40710a6cf23db5943dd68",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki yazarın dilbilgisi oyunlarını ve anlatım tekniğini nasıl kullandığını analiz etmemizi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 88,
+      "total_duration_ns": 5977022200
+    },
+    {
+      "question_code": "TYT-0246",
+      "image_sha256": "a7782d133bc1663010e002ed3afeb625a1512c266ad959e300bd939e36884bf1",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki 'temel atıf hatası' kavramını ve bu kavramın nasıl tanımlandığını (yakınsal atfetme eğilimi) sorguluyor. Şıklar, parçanın içeriğine dayanarak doğru yorumu seçmeyi gerektiriyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2772,
+      "output_tokens": 119,
+      "total_duration_ns": 7008676000
+    },
+    {
+      "question_code": "TYT-0267",
+      "image_sha256": "6f0af1b62108016ca1b11fcdd213cdb7db5e978dcbf305b67fc1241213e8a636",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın (düz piramit tekniği açıklaması) temelini kullanarak hangi metnin bu teknik örneğini gösterdiğini soruyor. Bu, paragrafın genel anlamını ve içeriğini yorumlama becerisini ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 2924,
+      "output_tokens": 112,
+      "total_duration_ns": 7525804200
+    },
+    {
+      "question_code": "TYT-0104",
+      "image_sha256": "02885bbc935b6043eb2c48cc9a8bf0ad8b92ec0da9ee6ac08b629bd7e86fbd17",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçayı okuyup, 'istifleme bağımlılığı' ile ilgili olarak parçada değinilen bir bilgiyi seçmemizi istiyor. Bu, paragrafın genel anlamını ve içeriğini anlama becerisini ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 112,
+      "total_duration_ns": 5577273600
+    },
+    {
+      "question_code": "TYT-0122",
+      "image_sha256": "42909043b816ee9dcfeff9de48b4ad078200e644df99307c1d852bfd3be0005e",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi okuyup ana fikrini (şövalye romanlarının sömürgeci mantığına etkisi) belirlememi istiyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2012,
+      "output_tokens": 94,
+      "total_duration_ns": 5169757300
+    },
+    {
+      "question_code": "TYT-0140",
+      "image_sha256": "1343b5b2c23206420f6a0e19932a83afcbac87ddbc034600b667303459b13514",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleyi (çırak Foma'nın ve ustası Rublev'in diyalogunu) sunarak bu cümlenin anlatmak istediği temel düşünceyi veya mesajı soruyor. Bu, 'cümle yorumu' tipine aittir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1518,
+      "output_tokens": 118,
+      "total_duration_ns": 4868345100
+    },
+    {
+      "question_code": "TYT-0161",
+      "image_sha256": "071125cf012540ff21eeb2dbf25e3ad76de4a65979de8782b57b001f3b48a5e2",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel argümanını ve yazarın savunduğu ana fikri (edebiyat yapılarının bireyselliğinin yazardan kaynaklanmadığı) anlamaya odaklanıyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2772,
+      "output_tokens": 102,
+      "total_duration_ns": 6324590200
+    },
+    {
+      "question_code": "TYT-0183",
+      "image_sha256": "5da288d9248c653a013c4659796ae404c5df93a3e9ebdc0e0153618185d830b1",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın genel anlamını ve çıkarımları sormaktadır. Şıklar (A-E), metindeki olayların neden-sonuç ilişkisini ve hikâyenin temel mesajını yansıtan yorumlar içerir.",
+      "review_reasons": [],
+      "prompt_tokens": 2126,
+      "output_tokens": 107,
+      "total_duration_ns": 5443166100
+    },
+    {
+      "question_code": "TYT-0203",
+      "image_sha256": "6bab265d07d23f22dc7ce4cc58ecb5b86e967b4ce994797e0ad89be318e851a0",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve içeriğini sorguluyor; 'Bu sözler aşağıdaki sorulardan hangisine karşılık söylenmiş olabilir?' ifadesiyle paragrafın mesajını veya temasını belirlememi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 111,
+      "total_duration_ns": 5488877000
+    },
+    {
+      "question_code": "TYT-0224",
+      "image_sha256": "dc15634d7bcc4c7fedbde3c69742ce9a57ca3939fcda02a745a7fab2a660dfda",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen bir cümleyi (Zeuxis'in resim hikayesi) okuyup, bu cümlenin temel anlamını ve yansıttığı düşünceyi seçmemizi istiyor. Bu, TYT Türkçe'de 'cümle yorumu' tipine girer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1860,
+      "output_tokens": 120,
+      "total_duration_ns": 5383671200
+    },
+    {
+      "question_code": "TYT-0247",
+      "image_sha256": "8d31cff05506e0997c14b338e4816d3fdae89599635e9ecd7be3fd35a72f630c",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın genel anlamını ve çıkarımları sormaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 2164,
+      "output_tokens": 74,
+      "total_duration_ns": 4927500700
+    },
+    {
+      "question_code": "TYT-0268",
+      "image_sha256": "e5721338e6e8a06df8c0e677f1c3165cd6c351282e94199272d3d2edcefa1063",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçanın yazarının asıl eleştirdiği durumu sorar ve seçenekler metnin genel temasını (müziğin duygusuzlaştırılması) yansıtır.",
+      "review_reasons": [],
+      "prompt_tokens": 2278,
+      "output_tokens": 93,
+      "total_duration_ns": 5285922100
+    },
+    {
+      "question_code": "TYT-0105",
+      "image_sha256": "97babb21b4bad13dbb01f560ee0548012930a614020236068fbde61269312a16",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve çıkarımlarıyla ilgili bir düşünceyi seçmemizi istiyor. Paragraf, şairin toplumsal beğenilerin değişmesiyle kendini yabancılaşma batağına girmesini anlatıyor. Şıklar, bu durumu yansıtan bir görüşü içeriyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 127,
+      "total_duration_ns": 5469442100
+    },
+    {
+      "question_code": "TYT-0123",
+      "image_sha256": "122a5c7d532c24967b0b574c4bdb454e3f04d39c0bd3d919ab215998b61c7b5c",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve çıkarımlarını test ediyor; 'Bu parçadan hareketle aşağıdakilerden hangisi söylenebilir?' ifadesi açıkça paragraf yorumu sorusunu işaret ediyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 109,
+      "total_duration_ns": 5791854600
+    },
+    {
+      "question_code": "TYT-0141",
+      "image_sha256": "bb734b7b916494baacaba8bed5fa50b164a73b50d55cc900247b83da1ae50b1e",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadan hareketle sonuç çıkarılmasını istiyor; bu tip sorular genellikle paragrafın genel anlamını veya çıkarım yapmayı ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 2772,
+      "output_tokens": 91,
+      "total_duration_ns": 6495218500
+    },
+    {
+      "question_code": "TYT-0162",
+      "image_sha256": "381dbd22946859325f0ac727531ae7e8b6fcce99c073aee673842a06f2a3f17c",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadan hareketle roman hakkında hangi özelliğin söylenemeyeceğini soruyor; bu tür 'parça-anlama' veya 'bilgi çıkarımı' soruları TYT Türkçe'de genellikle paragraf anlamı kategorisine girer.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 111,
+      "total_duration_ns": 4945146700
+    },
+    {
+      "question_code": "TYT-0184",
+      "image_sha256": "98dcc6427967f9e52c6d397f45ce44a2959375512cc917b20cd9a97b320ae5d3",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçaya göre sahafın işini ve önemini anlatıyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 73,
+      "total_duration_ns": 5327486600
+    },
+    {
+      "question_code": "TYT-0204",
+      "image_sha256": "94630873fbccb378509d05e785021bfbcec59ad33655799fd57aa44104223ba4",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve ana fikrini sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 74,
+      "total_duration_ns": 5682234700
+    },
+    {
+      "question_code": "TYT-0225",
+      "image_sha256": "2b626ba9c5f991f3c92dfbbb3256b85b24757188471364190f93d67bcad347e0",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve yapay zekanın eğitimdeki etkisine dair ana fikri sorguluyor. Şıklar, paragrafın içeriğine uygun olarak 'yapay zekanın eğitimde alışılagelmiş anlayışlarda değişikliğe yol açtığına' (E) veya 'daha fazla gelişim gösterdiğine' (B) gibi genel yorumlar içeriyor. Paragraf yapısı ve ana fikir çıkarımı ölçülüyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 158,
+      "total_duration_ns": 6763994700
+    },
+    {
+      "question_code": "TYT-0248",
+      "image_sha256": "a11fce90515ec0e31f118159ac0ef0361d340539e829be87b855c4654909acc9",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın genel anlamını ve okuma eylemi ile ilgili mesajı sorguluyor. Şıklar, parçanın içeriğini yorumlayan seçeneklerdir.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 94,
+      "total_duration_ns": 4899820000
+    },
+    {
+      "question_code": "TYT-0269",
+      "image_sha256": "57c33edd2bb34ca09474c42a90807b6ba3328be614170c74a8ad542cd62dc146",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve yazarın anlatmak istediği ana fikri sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 80,
+      "total_duration_ns": 5076959900
+    },
+    {
+      "question_code": "TYT-0106",
+      "image_sha256": "677befe14100ccb2070e4a4e432408433381926a2a8afc6146c0117c7f7cf818",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın genel anlamını ve araştırmanın amacını sorguluyor. Paragraf, uyku düzeni (sabit vs sallan) ile EEG ölçümleri arasındaki ilişkiyi anlatıyor; amaç da bu iki unsurun ilişkisini incelemek.",
+      "review_reasons": [],
+      "prompt_tokens": 2126,
+      "output_tokens": 115,
+      "total_duration_ns": 5661573200
+    },
+    {
+      "question_code": "TYT-0124",
+      "image_sha256": "cd31560fddf51c144acb5dd8989c3379b7b04a4923177112c289e109b8104262",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, iki ayrı parçadan oluşan metni sunarak bu parçaların birbirini nasıl desteklediğini veya farklı açılardan aynı durumu anlatıp anlatmadığını sorguluyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2506,
+      "output_tokens": 95,
+      "total_duration_ns": 6186423400
+    },
+    {
+      "question_code": "TYT-0142",
+      "image_sha256": "8a4c62390f6e8cb8c117e37534b60c4b220f4322acfc5713d086b4d1f953e707",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki filmle ilgili bilgiyi doğrudan okumayı gerektirir; 'Bu parçada söz edilen filmle ilgili...' ifadesi açıkça paragraf anlamını ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 2506,
+      "output_tokens": 101,
+      "total_duration_ns": 6241040100
+    },
+    {
+      "question_code": "TYT-0163",
+      "image_sha256": "c86f9432465f112dfd3daa89cd109b0587ac8637d478eba9a112e51a2dde8b9b",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın içeriğini ve 'mini beyin' hakkında verilen bilgileri (laboratuvarlarda tasarlanma, boyut farkı, büyüme engeli, araştırma umudu) analiz ederek hangisine değinilmemiş olduğunu soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 109,
+      "total_duration_ns": 5464997200
+    },
+    {
+      "question_code": "TYT-0185",
+      "image_sha256": "117831ba6867c8608332800f847831838480479255f2d123b2169c59eb2a4f06",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçanın içeriğine dayanarak Antik Yunan'da İlyada'nın edebi yapı olarak görülmemesinin nedenini soruyor. Paragrafın son cümlesi, metnin toplumsal hayatla bütünleştiğini ve hukuki anlaşmazlıkların çözümü için kullanıldığını belirtiyor; bu da E şıkkındaki 'sosyal ve siyasi işleyişe yönelik tasarlanması' ile doğrudan örtüşüyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2696,
+      "output_tokens": 154,
+      "total_duration_ns": 7365711500
+    },
+    {
+      "question_code": "TYT-0205",
+      "image_sha256": "42892a8f44d95ddb3a8138f56492806d41110739e558c7036d2b22bee9453d1e",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçanın genel anlamını ve içeriğini özetlememi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 72,
+      "total_duration_ns": 5510558100
+    },
+    {
+      "question_code": "TYT-0226",
+      "image_sha256": "7a2a52d936c18781cf9ad3a6129912208cc6086108ab1a8551e0aee7d5c3389a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçadan yönetmenle ilgili çıkarımları istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2012,
+      "output_tokens": 71,
+      "total_duration_ns": 4649449500
+    },
+    {
+      "question_code": "TYT-0249",
+      "image_sha256": "5066af1c4641872ce39933692be70bab543f018b2b7021a2adb5f81bc7bc7c4a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın genel anlamını ve çıkarımlarıyla ilgili bir seçenek sunmaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 77,
+      "total_duration_ns": 4624273500
+    },
+    {
+      "question_code": "TYT-0066",
+      "image_sha256": "2771bf073280d6b33e49348f52e56c14bb72c5040e1f453c0fcde849d87624cb",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin (I-VI) hangilerinin bir paragrafa dahil edilebileceğini ve bu paragrafların nasıl yapılandırılacağını soruyor. Bu, metnin mantıksal akışını ve paragraf yapısını analiz etmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 121,
+      "total_duration_ns": 5379176400
+    },
+    {
+      "question_code": "TYT-0070",
+      "image_sha256": "54ad800785651d1e5629507e616974ddc520ada999df45170de13cf946c513b6",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal akışını takip ederek paragrafları oluşturmamızı ve ikinci paragrafın hangi cümleyle başlamasını istemektedir.",
+      "review_reasons": [],
+      "prompt_tokens": 1822,
+      "output_tokens": 99,
+      "total_duration_ns": 5105483100
+    },
+    {
+      "question_code": "TYT-0075",
+      "image_sha256": "e712ef9a4cccdd851b2351606cfdbd92a7a44c07fc376e7d40eb9c58f932dd9b",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını (paragraf yapısını) belirlememi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 85,
+      "total_duration_ns": 4461982700
+    },
+    {
+      "question_code": "TYT-0079",
+      "image_sha256": "5443b8c71825e232c66fd7b3d685d58bc062b4f6603b22a96dd53a9a4b6cd1f4",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal akışını takip ederek paragrafları oluşturma becerisini ölçüyor. Cümleler arasında bağlaçlar ve geçiş ifadeleri (örneğin 'Yine de', 'Her şeyin izini silip yok eden') kullanılarak birbiriyle ilişkisi kuruluyor. Soru, bu yapıyı analiz ederek ikinci paragrafın başlangıcını belirlememi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1670,
+      "output_tokens": 153,
+      "total_duration_ns": 5975152700
+    },
+    {
+      "question_code": "TYT-0085",
+      "image_sha256": "72d536ae08b6855473f49e99cddc5eeb11a9be0b9255ca87d8e582ba32c0b1f1",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümlelerin numaralandırılmış sıralamasını bozarak düşünce akışını etkileyen bir cümleyi bulmamızı istiyor. Bu, paragraf yapısını ve mantıksal sırayı ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1480,
+      "output_tokens": 114,
+      "total_duration_ns": 4952213500
+    },
+    {
+      "question_code": "TYT-0090",
+      "image_sha256": "ba6712c55182bc1c2ee9afb24e229ae5f09d8e79225f2b29fecaa93400a430e4",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını ve paragraf yapısını belirlemeyi gerektirir. Bu, 'paragraf yapısı' tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 102,
+      "total_duration_ns": 4921876600
+    },
+    {
+      "question_code": "TYT-0093",
+      "image_sha256": "8830e98f5846b2563d0e1a9e8db95f899406363c53d9f52dc71cfab02de3ea00",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümlelerin numaralandırılmış parçalar halinde verilmesi ve bunların düşünce akışını bozanı bulması yönünde sormaktadır. Bu yapı, paragrafın mantıksal bütünlüğünü ve cümleler arası geçişleri ölçmek üzere tasarlanmıştır.",
+      "review_reasons": [],
+      "prompt_tokens": 1480,
+      "output_tokens": 126,
+      "total_duration_ns": 5032677800
+    },
+    {
+      "question_code": "TYT-0098",
+      "image_sha256": "eddba381b427d5299a32be563145afd142ca01a34b9d9ef32685ee33181b5b57",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralanmış cümlelerin hangisinin düşünce akışını bozduğunu soruyor. Bu, cümlelerin mantıksal sıralamasını ve anlam bütünlüğünü test eden bir 'cümle yorumu' (cumle yorumu) tipidir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1632,
+      "output_tokens": 119,
+      "total_duration_ns": 5052651700
+    },
+    {
+      "question_code": "TYT-0063",
+      "image_sha256": "65ea4c5fc8e652de73257482654776f66612e54237443336ad9caecf6848a47d",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal akışını takip ederek paragrafları oluşturma becerisini ölçüyor. 'Bu parça iki paragrafta ayrılmak istense ikinci paragraf numaralanmış cümlelerin hangisiyle başlar?' sorusu, metnin yapısal bütünlüğünü ve bağlamı anlamayı gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 140,
+      "total_duration_ns": 5729713200
+    },
+    {
+      "question_code": "TYT-0067",
+      "image_sha256": "da4f130e0d68ab8e0d141d7fea2f863d7928418f0e01c29d4fa5e7990a40f66b",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını (düşünce akışını) bozan numarayı bulmamızı istiyor. Bu, paragraf yapısı ve düşünce akışı sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 106,
+      "total_duration_ns": 4578526900
+    },
+    {
+      "question_code": "TYT-0071",
+      "image_sha256": "985ae32f0a62c1c2a7b59a471401f1ebdcd5efe389f4534eda9de1e7b6537d94",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin numaralandırılmış sıralamasını sorarak paragraf yapısını ve düşünce akışını ölçmektedir.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 88,
+      "total_duration_ns": 4562251200
+    },
+    {
+      "question_code": "TYT-0076",
+      "image_sha256": "1a96deb4b48e5bdddd23d4d772aba2bdc0232d192ed2ac260037e3976170d9ed",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıraya göre nasıl gruplandırılacağını ve ikinci paragrafın hangi cümleyle başlayacağını soruyor. Bu, paragraf yapısını (cümlelerin birbirine bağlanma ilişkisi) ölçen bir TYT Türkçe sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 124,
+      "total_duration_ns": 5490402000
+    },
+    {
+      "question_code": "TYT-0080",
+      "image_sha256": "80b3ec7ceb2053d355fd94a31a421df63e3399db131865376941d4fbd7b3789c",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıraya göre nasıl bir paragraf oluşturulacağını soruyor ('anlamalı bir bütün oluşturacak biçimde sıralandığında'). Bu, paragraf yapısını ve cümleler arası bağlamı ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1898,
+      "output_tokens": 120,
+      "total_duration_ns": 5261878900
+    },
+    {
+      "question_code": "TYT-0086",
+      "image_sha256": "65beb8cd72fc7451c461a116fc8b73fa69122594be4d95ab94b05324dfeef7f1",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sırayını belirleyerek paragrafları oluşturmamızı istiyor. Bu, 'paragraf yapısı' sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1822,
+      "output_tokens": 99,
+      "total_duration_ns": 4973943200
+    },
+    {
+      "question_code": "TYT-0091",
+      "image_sha256": "f825d8985e3f0f6ff2b866428f2f4dca40083986fc4c031f86603699bd02e2d3",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını (akışını) bozan numarayı bulmamızı istiyor. Bu, paragraf yapısı ve düşünce akışı sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 103,
+      "total_duration_ns": 4697105600
+    },
+    {
+      "question_code": "TYT-0094",
+      "image_sha256": "c1a837f6b9337f3d4605854d3b1f18314e6732d44b18e77b5f430dc68e2986de",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal akışını takip ederek paragrafları oluşturma becerisini ölçüyor. Cümleler (I)-(VI) arasında bağ kurma ve konu geçişlerini belirleme yeteneği test ediliyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 113,
+      "total_duration_ns": 5187071300
+    },
+    {
+      "question_code": "TYT-0099",
+      "image_sha256": "1a68e257626c79e9753a297b2a7c13a8abdbb104c96e73901ceac291a863e3de",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal akışını takip ederek paragrafları oluşturma becerisini ölçüyor. 'Bu parça iki paragrafa ayrılmak istense ikinci paragraf numaralanmış cümlelerin hangisiyle başlar?' sorusu, metnin yapısal bütünlüğünü ve bağlamı anlamayı gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1670,
+      "output_tokens": 140,
+      "total_duration_ns": 5638108800
+    },
+    {
+      "question_code": "TYT-0064",
+      "image_sha256": "8a72178607c2c4b83998fc3ddd5982500133603feffbe473330d17ee73bd6221",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen paragrafın sonuna uygun bir cümle eklenmesini istiyor ve bu cümlenin mantıksal akışı ile paragrafın genel anlamını yansıtmaması gerekiyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2240,
+      "output_tokens": 102,
+      "total_duration_ns": 5429849400
+    },
+    {
+      "question_code": "TYT-0068",
+      "image_sha256": "0ac29cd0474cae74ca4f3fdb791e7754c51c1aa72f75ed078d8bbc3c24353127",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru parçanın başına eklenmesi gereken bir cümle istiyor ve bu cümlenin akışa uygunluğu değerlendiriliyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1936,
+      "output_tokens": 87,
+      "total_duration_ns": 5025666300
+    },
+    {
+      "question_code": "TYT-0072",
+      "image_sha256": "dc038956de6b768459d7ec665176833d05acf0de2dfc2167647f3c1be8792324",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir paragraftan sonra boşluk bırakılmış ve bu boşluğa uygun cümle seçilmesini istiyor. Paragrafın içeriği (spor filmlerinin örnekleri) ve akışı (Fabri'nin filminden Hitchcock'un filmine geçiş) dikkate alınarak cevap aranıyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2582,
+      "output_tokens": 126,
+      "total_duration_ns": 6677897000
+    },
+    {
+      "question_code": "TYT-0077",
+      "image_sha256": "78845303b18e4439baa06311adf0c1d60be5b728a7289c9e50571eeea412faf7",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir parçanın içindeki boşluk için uygun cümleyi seçmemizi istiyor. Parça, bilimin tarihsel olarak sorgulanması ve modern çağda eleştirilmesi üzerine konuşuyor. Boşluğun yerinde, bu iki düşünce akışının (bilimi sorgulama eğilimi ve modern bilim eleştirisi) ortak noktasını veya bağlantısını kuracak bir cümle olmalıdır.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2506,
+      "output_tokens": 148,
+      "total_duration_ns": 7011186100
+    },
+    {
+      "question_code": "TYT-0081",
+      "image_sha256": "d5447dbcf1c6a2633e1ad9bf627f6e01baebc7d630accd50623458aa4d2b00eb",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin mantıksal sıralamasını (akışını) bozanı bulmamızı istiyor. Bu, paragraf yapısını ve düşünce akışını ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 106,
+      "total_duration_ns": 4975424400
+    },
+    {
+      "question_code": "TYT-0087",
+      "image_sha256": "ac16cd92d1d65d9ec0e6f715ddc86d5236aedd45e168b84ae6eaab54b6055193",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin (I-V) hangisinden sonra belirli bir bilgiye ('Roma döneminde bu sistemle yapılmış hiçbir harita örneği günümüze ulaşmamıştır.') ulaşılabileceğini sorar. Bu, paragrafın mantıksal akışı ve cümleler arası geçiş ilişkisini (paragraf yapısı) ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1898,
+      "output_tokens": 145,
+      "total_duration_ns": 5904751700
+    },
+    {
+      "question_code": "TYT-0092",
+      "image_sha256": "20f5305926e3b60720004c4b050472049d8567b9bb037bf36bf8fa3e8bada403",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, modern fiziğin atom altı parçacıkların 'var olmama eğilimi' gösterdiğini ve bunların 'şeyler' değil 'bağlantılar' olduğunu belirtir. Boşluk, bu bağlamda parçacıkların ne zaman ve nasıl oluştuğunu açıklamak için gereken bir cümle gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2278,
+      "output_tokens": 133,
+      "total_duration_ns": 6742114500
+    },
+    {
+      "question_code": "TYT-0095",
+      "image_sha256": "4ba620be4bf0828c7733c83d88b3ffdb6fdb3fa19a5da3cdc68586bd7b7b8286",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir hikâye örneği sunarak parçanın genel anlamını ve bu hikâyeden çıkarılacak temel mesajı (anlayış) sorguluyor. Boşluk doldurulması gereken yerin cümle içindeki bağlamdan yola çıkarak hangi düşünce akışına uygun olduğu isteniyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2202,
+      "output_tokens": 127,
+      "total_duration_ns": 6094369800
+    },
+    {
+      "question_code": "TYT-0065",
+      "image_sha256": "c21fbfbddd42d99bc075f1e40b104f72b38ba76b0975183d4c296b61de3a473c",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir diyalogun (gazeteci-uzman) içindeki boşlukları doldurmayı gerektirir ve bu boşlukların içeriği, önceki cümlelerin bağlamına uygun olmalıdır. Bu tür sorular, metnin anlamını kavrama ve bağlama göre kelime seçimini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 3684,
+      "output_tokens": 127,
+      "total_duration_ns": 8688021100
+    },
+    {
+      "question_code": "TYT-0069",
+      "image_sha256": "5f7ad6da07d1648bcca0466820ecf09c999820e600f8c059c2ac001f1788a083",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen diyalog paragraflarının (Muhaber ve Yönetmen konuşmaları) anlamını ve içeriğini analiz etmeyi gerektirir. Öğrenciden boşluklara uygun soruların sırasıyla getirilmesi isteniyor; bu da metnin bağlamı ve mantık akışı üzerinden paragraf anlamı ölçülüyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 3608,
+      "output_tokens": 134,
+      "total_duration_ns": 8480012600
+    },
+    {
+      "question_code": "TYT-0073",
+      "image_sha256": "6b635bba598bcaf6821c62a25d79a1ed3ce43f7135aef8f26e197cca893a691a",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen metnin sonuna uygun bir cümle eklenmesini istiyor ve bu cümlenin 'düşüncenin akışına göre' seçilmesi gerektiğini belirtiyor. Bu, paragrafın anlamını ve mantıksal bütünlüğünü ölçen bir sorudur.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2012,
+      "output_tokens": 122,
+      "total_duration_ns": 5764388300
+    },
+    {
+      "question_code": "TYT-0078",
+      "image_sha256": "e382f26070b76f4c9ab3482bb20fb1b678dff192ba7a3dab4c50229dd44dadba",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru paragrafın sonuna düşüncenin akışına göre devam edilecek cümleyi istiyor; bu da paragraf anlamı ve mantıksal devam sorusudur.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2506,
+      "output_tokens": 100,
+      "total_duration_ns": 6179361700
+    },
+    {
+      "question_code": "TYT-0082",
+      "image_sha256": "cebc07d91c12d6e23bb2926fb183ff9f6cc31f265cfce89ca80cc856ce18a376",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçanın başına hangi cümle getirilmeli diye soruyor ve seçenekler parçanın mantıksal akışını tamamlamaya yönelik.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2430,
+      "output_tokens": 93,
+      "total_duration_ns": 5603571000
+    },
+    {
+      "question_code": "TYT-0088",
+      "image_sha256": "867043b94a5a79cd752810db6d8cf130f7514f83d0e6f10ecd085e1962d20860",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir parçanın (2 cümle) anlamını ve mantıksal akışını değerlendirerek boşluk doldurma yapısı kullanır; bu da paragraf anlamı tipine aittir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1860,
+      "output_tokens": 102,
+      "total_duration_ns": 4967701500
+    },
+    {
+      "question_code": "TYT-0004",
+      "image_sha256": "b345651b0ef043a59e7f384eba6f9976930ce8a8fc9f01b344631278c066657a",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde numaralanmış kelimelerin anlamını parantez içinde verilen açıklamayla karşılaştırarak sorar. Bu, cümledeki kelime kullanımının doğru olup olmadığını (anlam uyumu) test eder.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1898,
+      "output_tokens": 105,
+      "total_duration_ns": 5073436700
+    },
+    {
+      "question_code": "TYT-0007",
+      "image_sha256": "2f1216e9be877a8658a122ee238b0262a45fe52fe5368dd6a8cef1c74bd6e655",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi okuyup boşluklara uygun kelimeleri seçmemizi gerektirir. Bu, cümlenin anlamını yorumlama ve mantıksal tutarlılığı kurma becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1366,
+      "output_tokens": 108,
+      "total_duration_ns": 4673311300
+    },
+    {
+      "question_code": "TYT-0011",
+      "image_sha256": "073b395c076bbf118bf46949cd024a13a4a9dac371f5ccfb762584cc8d4863f1",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleye uygun sözcükleri seçerek eksik kısımları doldurmamızı istiyor. Bu, cümlenin anlamını tamamlama ve bağlamı kurma becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1366,
+      "output_tokens": 106,
+      "total_duration_ns": 4695883600
+    },
+    {
+      "question_code": "TYT-0015",
+      "image_sha256": "fe13a99e4f6b2b0a9987ccc715212438dda8a4621e3533f07673e0daf39175cc",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümleyi oluşturan iki ayrı boşluk için uygun fiil ve edat kombinasyonunu seçmeyi gerektirir. Bu tür sorular, cümlenin anlamını tamamlamak amacıyla bağlama uygun kelime seçimlerini test eder.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1290,
+      "output_tokens": 111,
+      "total_duration_ns": 4659582000
+    },
+    {
+      "question_code": "TYT-0019",
+      "image_sha256": "75e3cf4007e41e20677171d0c11cdc6287096b57625bfafdef7fcc08da91973c",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleye uygun sözcükleri seçmeyi gerektirir ve bu seçimlerin cümlenin anlamını tamamlaması beklenir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1366,
+      "output_tokens": 92,
+      "total_duration_ns": 4351338900
+    },
+    {
+      "question_code": "TYT-0022",
+      "image_sha256": "a134cff56dd32058a4a23cd7a68f366f53adb92cf4031ce405c010db5701d1f6",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde numaralanmış kelimelerin anlamını parantez içinde verilen açıklamayla karşılaştırarak soruyor. Bu, cümlenin genel anlamını yorumlama ve kelime anlamlarının bağlamda doğru kullanılıp kullanılmadığını belirleme yeteneğini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2050,
+      "output_tokens": 121,
+      "total_duration_ns": 5808016300
+    },
+    {
+      "question_code": "TYT-0026",
+      "image_sha256": "808774d3aa907f3d4d7e359dcc5bbc56b5ecc8bbcf34d16747daff8f2a483262",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili sözcük olan 'sağaltıcı, kurtarıcı veya dönüştürücü' kelimelerinin anlamını parçadaki bağlamdan çıkararak şıklardan seçmemizi istiyor. Bu, TYT Türkçe'de sıkça görülen 'bağlamda sözcük anlamı' soru tipidir.",
+      "review_reasons": [],
+      "prompt_tokens": 2278,
+      "output_tokens": 136,
+      "total_duration_ns": 7025990600
+    },
+    {
+      "question_code": "TYT-0002",
+      "image_sha256": "19b6a066d5ee2a958df6875919d57bc4c9a2f7958bd366a2369698133eb88abd",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde numaralanmış kelimelerin anlamını parantez içinde verilen açıklamayla karşılaştırarak soruyor. Bu, cümledeki kelime kullanımının bağlamına uygun olup olmadığını değerlendirmeyi gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2050,
+      "output_tokens": 110,
+      "total_duration_ns": 5258259200
+    },
+    {
+      "question_code": "TYT-0005",
+      "image_sha256": "927e44aec043b70bcfbc14b42d1ab6041073e6cd925230ee8366a1c9d0e706d5",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili ifadenin ('acı aşısı') parçadaki asıl anlatım amacını soruyor. Bu, cümlenin anlamını yorumlama ve çıkarım yapma becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1708,
+      "output_tokens": 103,
+      "total_duration_ns": 4687588800
+    },
+    {
+      "question_code": "TYT-0008",
+      "image_sha256": "7c0b611f73dcc8165d36b068b59faa32719440b337ae9565988851964850116f",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralanmış cümle parçalarından hangisinin yanlış kullanıldığını soruyor. Bu, cümlenin anlamını ve mantıksal bütünlüğünü yorumlama becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1974,
+      "output_tokens": 103,
+      "total_duration_ns": 5068742500
+    },
+    {
+      "question_code": "TYT-0012",
+      "image_sha256": "810734df153304f9b39d55a511425ae11ce82503e2267d7216782382c76ee2d4",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'yalın kat' sözcüğünün anlamını bağlam içinde belirlemek istiyor. Cümledeki bağlam (uzmanın bilgi ve görgü derinliğinden uzak olmak) ile eşleşen şık A'da 'ölçülü bir tavır' kullanılmıştır.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 120,
+      "total_duration_ns": 4992422200
+    },
+    {
+      "question_code": "TYT-0016",
+      "image_sha256": "66fe503300a8f6e5ea10ff5b3f0fec201b6fdc3c4d52c8a05718c5c8ca2df5a3",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki altı çizili kelimeyi ('hapishanesinden çıkmayı') bağlam içindeki anlamını soruyor. Paragrafın içeriği (empati, duygular, başkasının hissetmesi) ve cümledeki bağlaçlar ('çünkü', 'geriye') bu kelimenin 'kendini dışarıdan birine taşımak' veya 'kendi sınırlarını aşmak' anlamına geldiğini gösteriyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1784,
+      "output_tokens": 160,
+      "total_duration_ns": 5856008300
+    },
+    {
+      "question_code": "TYT-0020",
+      "image_sha256": "8f09186126cd024220d129b77eb4d9b14d3dcf9bae8f113418c1820751609a28",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen sözcüklerin (açmak, basamak, çekmek) tanımlarını verip, bu anlamları doğru şekilde kullanılmış olan cümleyi bulmamızı istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 100,
+      "total_duration_ns": 5310110100
+    },
+    {
+      "question_code": "TYT-0023",
+      "image_sha256": "bc79d6e5d7ddaab2396935206a12dbaf6f1d6fb4e6de3c922dc444459f654455",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümleyi tamamlayan ifadeleri seçerek cümlenin anlamını ve mantıksal yapısını test eder.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1442,
+      "output_tokens": 84,
+      "total_duration_ns": 4264710600
+    },
+    {
+      "question_code": "TYT-0027",
+      "image_sha256": "6947abf85cdce641152a105dc1fb86b51e7fe007244ceeec8f9b7ded880edc54",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde numaralanmış kelimelerin anlamını parantez içinde verilen açıklamayla karşılaştırarak soruyor. Bu, cümledeki kelime kullanımının bağlamı ve anlamını yorumlama becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1822,
+      "output_tokens": 107,
+      "total_duration_ns": 4897660100
+    },
+    {
+      "question_code": "TYT-0031",
+      "image_sha256": "965846845342f4154496a717e93e427e3f29ab167ab49d06962d353133cfa062",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı kelimelerin parantez içindeki açıklamaların cümleye uygun olup olmadığını sorguluyor. Bu, bir cümlenin anlamını ve bağlamını yorumlama becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2316,
+      "output_tokens": 101,
+      "total_duration_ns": 5374940500
+    },
+    {
+      "question_code": "TYT-0003",
+      "image_sha256": "42edbf8df4bbd26ac463d7bb4060d860f14baeb3c677d89eec9c5c321250a417",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin açıklamalarına uygun olabilecek veya gösterilemeyecek olan atasözü örneklerini istiyor. Bu, paragrafın genel anlamını ve cümleler arasındaki ilişkiyi (hangi atasözünün hangi tanıma uymadığını) anlamayı gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2012,
+      "output_tokens": 122,
+      "total_duration_ns": 5439369100
+    },
+    {
+      "question_code": "TYT-0006",
+      "image_sha256": "cda7698c3fa88aa9bea71938f41ad03fc408b26d72bcad97fd36c5f785e6cbf0",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'inziva' kelimesinin anlamını bağlam içinde belirlemek istiyor; bu, sözcüklerin bağlamsal kullanımını ölçen bir soru türüdür.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 96,
+      "total_duration_ns": 5717833400
+    },
+    {
+      "question_code": "TYT-0009",
+      "image_sha256": "dabd3e2bb528b8a87b8346f141c20d6918a1715ffcf5b029e96d07f83e2a31be",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçadaki altı çizili 'öykünme' sözcüğünün anlamını soruyor ve bu anlamı karşılayabilecek bir kullanım şıkkı istiyor. Bu, bağlamda sözcük anlamını ölçen bir TYT Türkçe tipidir.",
+      "review_reasons": [],
+      "prompt_tokens": 2202,
+      "output_tokens": 116,
+      "total_duration_ns": 5528332900
+    },
+    {
+      "question_code": "TYT-0013",
+      "image_sha256": "f314f2a0b336ddbfbc356bf920022298f29a187fe5dd935f7ce01467b7533390",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'kısmak' sözcüğünün parçadaki kullanımını ve bu kullanıma karşılık gelen anlamları soruyor. Bu, bağlamda sözcük anlamını ölçen bir soru türüdür.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 105,
+      "total_duration_ns": 4821071200
+    },
+    {
+      "question_code": "TYT-0017",
+      "image_sha256": "5b753b82440b97a3c746aa2b0f7c5b4ab59fb6483b5630259388520567430d64",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı sözcüklerin anlamını ayraç içinde verilen eş anlamlı ile karşılaştırarak soruyor. Bu yapı, cümledeki sözcüklerin bağlamda doğru kullanılıp kullanılmadığını test eder ve bu da 'cümle yorumu' tipine girer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1898,
+      "output_tokens": 120,
+      "total_duration_ns": 5216113100
+    },
+    {
+      "question_code": "TYT-0021",
+      "image_sha256": "162771723526d090eef8fa6b8977726da720fc8a81a925c9c41d33dff0f6ecea",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili ifadenin parçadaki genel anlamda ne ifade ettiğini soruyor ve seçenekler bu ifadeyi yansıtan bir kavramdan bahsediyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1936,
+      "output_tokens": 94,
+      "total_duration_ns": 4897993200
+    },
+    {
+      "question_code": "TYT-0024",
+      "image_sha256": "2bc63680421a3e57558250aa3c789da0a1d81c3b7deabdeb8b0df66ef153d555",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili cümleyi parçanın genel anlamıyla ilişkilendirerek yazarın niyetini veya vurgusunu sorguluyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1708,
+      "output_tokens": 90,
+      "total_duration_ns": 4513020500
+    },
+    {
+      "question_code": "TYT-0028",
+      "image_sha256": "295f27e1007a121a9f0a1f65d8e137deb3317c94837ceba478b56626e230ce86",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili bir ifadenin ('kavuşturdugumuz kolları çözmemiz') cümle içindeki anlamını ve işlevini sorguluyor. Bu, 'cümle yorumu' tipine girer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1784,
+      "output_tokens": 109,
+      "total_duration_ns": 4840810800
+    },
+    {
+      "question_code": "TYT-0032",
+      "image_sha256": "3ae808b344ab51292bc3dab6c05a489be680772ecad98b4801a0ec710bce4546",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir parçanın (Newton'un sözünü yorumlayan metnin) altı çizili cümlesinin anlamını soruyor. Bu tür sorular genellikle paragrafın genel mesajını veya vurguladığı ana fikri belirlemeyi hedefler.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1860,
+      "output_tokens": 112,
+      "total_duration_ns": 5010638500
+    },
+    {
+      "question_code": "TYT-0010",
+      "image_sha256": "1fa740f52cd757d4c844b78e190c373c5b6cf5bffcab8935a028642b0b383e93",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili kelime olan 'kıpyrdanışlara' (kısa süreli yönelimlere) hakkında ne anlatılmak istendiğini soruyor. Bu, cümlenin anlamını yorumlama ve bağlamda kelime kullanımını analiz etme becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1708,
+      "output_tokens": 119,
+      "total_duration_ns": 5117604600
+    },
+    {
+      "question_code": "TYT-0014",
+      "image_sha256": "2e78a8845dc4093048efc590108cddb22262b54f6816513c3ceaf4202bf47c43",
+      "question_type_code": "tyt.turkce.tip.sozcuk_baglam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen sözcüklerin (arka, başlamak, dert) tanımlarını verip, bu tanımlara uygun olan cümleyi bulmamızı istiyor. Bu, bağlamda sözcük anlamının nasıl kullanıldığını ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 2278,
+      "output_tokens": 116,
+      "total_duration_ns": 5831490900
+    },
+    {
+      "question_code": "TYT-0018",
+      "image_sha256": "b27bb737c83938bf8ac65d015c61b1e51b984ffa97eadc5e3d5c23a86ac8a5d6",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'yeknesak' kelimesinin anlamını sorarak cümleyi yorumlama becerisini ölçüyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2354,
+      "output_tokens": 81,
+      "total_duration_ns": 5211036500
+    },
+    {
+      "question_code": "TYT-0037",
+      "image_sha256": "43a31065e4573ea5033b93d2dd2c3fc60dd633996f4e7ead00158aaaa7defe2e",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin (I ve II) arasındaki ilişkiyi veya birinin diğerine olan etkisini sorguluyor. Şıklar, I. cümlenin II. cümleyi nasıl açıkladığını veya desteklediğini ifade ediyor. Bu, cümle yorumlama tipikidir.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 120,
+      "total_duration_ns": 5453146100
+    },
+    {
+      "question_code": "TYT-0040",
+      "image_sha256": "8ea53c2ff16c6f1750396a2a83898de6eaa43ac1cd08651665318c2937d003d8",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleye dayanarak 'keşişlerin tutumuna dair yapılan eleştiri'yi soruyor. Bu, cümlenin anlamını yorumlama ve çıkarım yapma becerisini ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 1860,
+      "output_tokens": 103,
+      "total_duration_ns": 4855503400
+    },
+    {
+      "question_code": "TYT-0043",
+      "image_sha256": "529796159cf4b2669ecd723649023a1669149a8679d042aed8c2f93daafb8208",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki cümlelerin anlamını ve içeriğini analiz ederek hangisinin söylenemediğini soruyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2278,
+      "output_tokens": 83,
+      "total_duration_ns": 5302659300
+    },
+    {
+      "question_code": "TYT-0046",
+      "image_sha256": "2ff43824f291ebb156f7468ffd46bdb796ae0d941e445ae6c57b48f9c40b1764",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen araştırma sonuçlarını (paragraf) okuyup, bu sonuçların sorulardaki hangisiyle ilişkili olmadığını belirlememi istiyor. Bu, paragrafın genel anlamını ve içeriğini analiz etmeyi gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2506,
+      "output_tokens": 112,
+      "total_duration_ns": 6524192800
+    },
+    {
+      "question_code": "TYT-0049",
+      "image_sha256": "f4f5c88b29aad1192c4acdb91fdcc3a1dd1717c41e491ae838f6b8691db0cd72",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi okuyup onun temel mesajını veya anlatılmak isteneni belirlememi istiyor ('Bu cümlede anlatılmak istenen...'). Bu, TYT Türkçe'de 'cümle yorumu' sorusuna aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 116,
+      "total_duration_ns": 5264812900
+    },
+    {
+      "question_code": "TYT-0053",
+      "image_sha256": "5096cbb3c460d91036997f5bf929893f437d42a3bbe89f9baf8fcdc7c11953a5",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen I. cümleyi temel alarak II. cümlenin ne işe yaradığını (karşılaştırma yapması) soruyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2088,
+      "output_tokens": 92,
+      "total_duration_ns": 4928171000
+    },
+    {
+      "question_code": "TYT-0056",
+      "image_sha256": "b7e087a22d67967bc7528d018d59b4cc51f7491e6d219a30c1425785dfd069d1",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki cümlelerin içeriğini ve anlamını analiz ederek Rie Kudan ile ilgili hangi bilgi söylenmediğini sorguluyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2202,
+      "output_tokens": 90,
+      "total_duration_ns": 5287139500
+    },
+    {
+      "question_code": "TYT-0059",
+      "image_sha256": "3003c43e56be97cfbffdd2d9b55d09d793a0b64fd9a32166fe73f7359292d260",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin anlamını ve içeriğini analiz etmemizi gerektirir; her şık bir cümlenin ne ifade ettiğini özetler.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2772,
+      "output_tokens": 94,
+      "total_duration_ns": 6100956100
+    },
+    {
+      "question_code": "TYT-0035",
+      "image_sha256": "3c53bb7f10f81d0b8f54312463d1583411ecd3cedece7ac03a0908f795911ce2",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin anlamca birbirine yakınlığını sormaktadır. Bu, cümle yorumlama (cümle anlamı) tipidir.",
+      "review_reasons": [],
+      "prompt_tokens": 1898,
+      "output_tokens": 91,
+      "total_duration_ns": 4871245700
+    },
+    {
+      "question_code": "TYT-0038",
+      "image_sha256": "20234924f347266f9e4126c15bb2d2a3f459ebdf2e2a774f55b4a53e0952fc3a",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi okuyup onun temel anlamını ve çocukların merak etme davranışının sonuçlarını özetleyen ana fikri belirlememi istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 92,
+      "total_duration_ns": 4793983300
+    },
+    {
+      "question_code": "TYT-0041",
+      "image_sha256": "15298e5bbcf9760089108c8cb23bafbb9614b614b3d7b6b5391f4b6324d1af7f",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin hangisinde 'anlamca kesinlik' söz konusu olduğunu soruyor. Bu, bir cümlenin anlamının ne kadar net ve kesin ifade edildiğini değerlendirmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1328,
+      "output_tokens": 105,
+      "total_duration_ns": 4373063700
+    },
+    {
+      "question_code": "TYT-0044",
+      "image_sha256": "7a8e5454188107079460fd82942a1343da6e027a679493951b75780354b3475e",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, iki cümleyi (I ve II) sunup, birincinin ikinciyi nasıl açıkladığını veya ilişkilendirdiğini sormaktadır. Bu yapı, paragrafın içsel bütünlüğünü ve cümleler arası mantıksal bağlamı ölçmeyi hedefleyen 'paragraf yapısı' sorusudur.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1784,
+      "output_tokens": 138,
+      "total_duration_ns": 5550319900
+    },
+    {
+      "question_code": "TYT-0047",
+      "image_sha256": "dafedd3e88230e8780bde8031a343e7b791beaa786ee8a11af3f03ae28e0eff3",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi anlamca eşdeğer olan şıklardan seçmemizi istiyor ('Aşağıdakilerin hangisi bu cümlede anlatılmak istenenle anlamca aynı doğrultudadır?'). Bu, TYT Türkçe'de 'cümle yorumu' veya 'anlamımla eşleştirme' soru tiplerine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 139,
+      "total_duration_ns": 5371715200
+    },
+    {
+      "question_code": "TYT-0050",
+      "image_sha256": "a346346c8ae33383af64bffa168cf4e886a2b620fd627cd4d95dab103ed6d569",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleden çıkarılacak anlamı (yorum) soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1860,
+      "output_tokens": 72,
+      "total_duration_ns": 4528107400
+    },
+    {
+      "question_code": "TYT-0054",
+      "image_sha256": "6a2fd24912826740ef65b1993bc5bc18d5e58f72e0abd79c847bef3933fa1093",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki numaralı cümlelerdeki ifadelerin doğru olup olmadığını sorguluyor ve bu tür sorular genellikle cümle yorumu (cumle anlamı) kategorisine girer.",
+      "review_reasons": [],
+      "prompt_tokens": 2506,
+      "output_tokens": 98,
+      "total_duration_ns": 5859627100
+    },
+    {
+      "question_code": "TYT-0057",
+      "image_sha256": "1a2aa38fff970517cbe7a27d04287a02293a84587b8c3f69c3063b9c1815f8f4",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen iki cümleyi doğru bir biçimde birleştirerek anlamını yansıtan seçeneği bulmamızı istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 2354,
+      "output_tokens": 84,
+      "total_duration_ns": 5417028700
+    },
+    {
+      "question_code": "TYT-0060",
+      "image_sha256": "5ec20945a38b28bd2fe9bd26e3590a537ccdef7301c73bf19cedab22806ce46b",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen bir cümleye (I.) göre diğer bir cümleyi (II.) yorumlamamızı ve karşılaştırmamızı istiyor. Bu, cümlelerin anlam ilişkisini analiz etmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 1822,
+      "output_tokens": 108,
+      "total_duration_ns": 4795134500
+    },
+    {
+      "question_code": "TYT-0036",
+      "image_sha256": "df73b938e2e9bfd7b943577b113c64839ed3f9e0885a5d3ac330f621e23e81bd",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen iki cümleyi anlamca doğru bir biçimde birleştirme isteğiyle sormaktadır. Bu, cümle yorumu (cumle yorumu) tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 3152,
+      "output_tokens": 98,
+      "total_duration_ns": 6865475900
+    },
+    {
+      "question_code": "TYT-0039",
+      "image_sha256": "a8fde5111be63141067a17621357d13609e68bcfa01caf77013b1fbc631113c2",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen iki cümleyi anlamca doğru bir biçimde birleştirme isteğiyle sormaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 2430,
+      "output_tokens": 79,
+      "total_duration_ns": 5284190200
+    },
+    {
+      "question_code": "TYT-0042",
+      "image_sha256": "a557ab310db2d97199bfb406164da45a7d4bafbbaf7d76fd7fe343337df71652",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin hangilerinin aynı düşünceyi aktardığını soruyor. Bu, paragrafın genel anlamını ve cümleler arası ilişkiyi ölçen bir tip.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2012,
+      "output_tokens": 101,
+      "total_duration_ns": 5211793700
+    },
+    {
+      "question_code": "TYT-0045",
+      "image_sha256": "93c2e8bb29f18db5592cfb787a98fdb5253e7e0df1a95877cc6cc9d62012dc63",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleden çıkarılacak anlamı (yorum) soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 72,
+      "total_duration_ns": 4100347000
+    },
+    {
+      "question_code": "TYT-0048",
+      "image_sha256": "4128a63786e21c49161c9d1ae434909f1eedc5f7aa957e46603cd813dbe66b74",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin içerik ve anlamı hakkında yorumlama istiyor (örn: 'betimlenmiş', 'örneklemeden yararlanılmış', 'açıklanmıştır'). Bu, cümle yorumu tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 2278,
+      "output_tokens": 110,
+      "total_duration_ns": 5726146400
+    },
+    {
+      "question_code": "TYT-0051",
+      "image_sha256": "d81be9556506cf1764de79c345356bf409679c587b55cf4b8e345eb99d931b6c",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen parçadaki numaralı cümlelerdeki ifadelerin doğruluğunu veya içeriğini sorguluyor ve hangisinin söylenemediğini bulmamızı istiyor. Bu, paragrafın genel anlamını ve cümleler arası ilişkileri analiz etmeyi gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 2506,
+      "output_tokens": 120,
+      "total_duration_ns": 6127930500
+    },
+    {
+      "question_code": "TYT-0055",
+      "image_sha256": "ba86805f6614a3f812df2ea72dbe0476f807bc6cb1818c447f93f8bc71f37bdd",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleyi anlamca eşdeğer olan şıklardan seçmemizi istiyor; bu, cümle yorumu tipidir.",
+      "review_reasons": [],
+      "prompt_tokens": 1518,
+      "output_tokens": 87,
+      "total_duration_ns": 3994993900
+    },
+    {
+      "question_code": "TYT-0058",
+      "image_sha256": "3fa56f198e46f7e0ba9b2b86185311a459257e7086aef8207e19015ce36bd24a",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlenin anlamını ve mantığını analiz ederek eş anlamlı bir ifadeyi bulmamızı istiyor. Bu, TYT Türkçe'de 'cümle yorumu' veya 'anlam sorusu' kategorisine girer.",
+      "review_reasons": [],
+      "prompt_tokens": 1480,
+      "output_tokens": 109,
+      "total_duration_ns": 4562519900
+    },
+    {
+      "question_code": "TYT-0061",
+      "image_sha256": "c222b56206cdcfe5fa3691342a218963f0e8be718c2dec90179a77c97bac25af",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen iki cümleyi anlamca doğru bir biçimde birleştirme isteğiyle sunulmuştur. Bu, cümlelerin mantıksal ilişkisini koruyup, bağlaçlar ve sıralama ile doğru şekilde birleştirilmesini gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 3228,
+      "output_tokens": 116,
+      "total_duration_ns": 7528186300
+    },
+    {
+      "question_code": "TYT-0052",
+      "image_sha256": "e5e3e48c78763eb8adb3fb4a8e27aab198cd1e9c17e1da623de578546aad1aa3",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen iki cümleyi anlamca doğru bir biçimde birleştirme isteğiyle sunulmuştur. Bu, cümlelerin mantıksal akışını koruyup bağlaçlarla veya yapısal düzenleme ile nasıl birleşebileceğini test eder.",
+      "review_reasons": [],
+      "prompt_tokens": 3836,
+      "output_tokens": 116,
+      "total_duration_ns": 8697253900
+    },
+    {
+      "question_code": "TYT-0302",
+      "image_sha256": "f416e27e11c00d4a715dcf94ce9792ccc4eaebfac35e6c009d259341ebb38e15",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni 'birleşik fiillerden hangisinin yazımı yanlışır?' diye soruyor ve şıklarda 'rağmen', 'görece de', 'gelme se de' gibi ifadeler var. Bu, Türkçe'deki birleşik fiillerin doğru/yanlış yazımını test eden bir yazım sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1366,
+      "output_tokens": 129,
+      "total_duration_ns": 5046325900
+    },
+    {
+      "question_code": "TYT-0304",
+      "image_sha256": "4bee5c530414c47523f57bc88d9754950fad99bab907aad50889b979691f57bb",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru başlığı 'büyük harflerin yazımı ile ilgili yanlışlık yapılmıştır' ifadesiyle açıkça büyük harf kullanımına odaklanmaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 89,
+      "total_duration_ns": 4017218200
+    },
+    {
+      "question_code": "TYT-0306",
+      "image_sha256": "c61b8e1c789c6f6dc5d8e17a898e82bed854299e44f78685fbb9f87a03288e76",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni 'Bu parçada numaralanmış sözlerin hangisinin yazımı yanlıştır?' şeklinde açıkça bir yazım hatası tespit etme isteği içerir.",
+      "review_reasons": [],
+      "prompt_tokens": 1822,
+      "output_tokens": 91,
+      "total_duration_ns": 4759055400
+    },
+    {
+      "question_code": "TYT-0308",
+      "image_sha256": "e64ab1d16b022bfcc58f92edca00c3237ca394bfb5d38b5480c69259b001b925",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni 'Bu parçada numaralanmış cümlelerin hangisinde yazım yanlış vardır?' şeklinde açıkça bir yazım hatası sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 88,
+      "total_duration_ns": 4236896600
+    },
+    {
+      "question_code": "TYT-0310",
+      "image_sha256": "166e0c6d7180a87ee659e9f23473d8873321fb46755055aa0b22d7975fdf9842",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni 'Bu parçada numaralanmış sözlerden hangisinin yazımında yanlışlık yapılmıştır?' şeklinde açıkça bir yazım hatası sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1974,
+      "output_tokens": 90,
+      "total_duration_ns": 4959245700
+    },
+    {
+      "question_code": "TYT-0312",
+      "image_sha256": "fd88133f4e555a7cbade43eb3f7479aebe3a447ea20bd55a87948a9e96601325",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru başlığı 'büyük harflerin yazımıyla ilgili yanlışlık' ifadesi açıkça büyük harf kullanımına (yazım) odaklanıyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 89,
+      "total_duration_ns": 4146236900
+    },
+    {
+      "question_code": "TYT-0314",
+      "image_sha256": "f9fa32db9c89b2949fbe2412a92207afbf3da5f9a13fcab130af25115025f2ee",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru başlığı 'büyük harflerin yazımıyla ilgili yanlış yapılmıştır' ifadesiyle açıkça büyük harf kullanımına odaklanmaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 88,
+      "total_duration_ns": 4193325500
+    },
+    {
+      "question_code": "TYT-0316",
+      "image_sha256": "01b1d64c596446aa7c3348e4e07f346529f1fc9bae8cd23fb6a7f5a0f72c4852",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, Türkçede birleşme sırasındaki yazım kurallarını (ayrı yazım) soruyor ve bu kurala göre şıklardaki yanlış yazımı bulmamızı istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1632,
+      "output_tokens": 98,
+      "total_duration_ns": 4381476600
+    },
+    {
+      "question_code": "TYT-0301",
+      "image_sha256": "4d1cc8984d2ad874952b0b2c634ad2782d27fa51a44ac0e33ff710bb4c93da8f",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'Birleşik sözcük' yazım kuralını tanımlıyor ve bu kurala uymayan cümlede yapılan yanlışın hangisinde olduğunu soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 94,
+      "total_duration_ns": 4536152700
+    },
+    {
+      "question_code": "TYT-0303",
+      "image_sha256": "254f14166560042a000cb0d02d3964a4bd0875d8ab2b96918fd0957eb744da06",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, 'ifadenin okunuşuna uygun bir ek getirilmemesinden kaynaklanan yazım yanlışını' bulmamızı istiyor ve seçeneklerde Tübitak, TRT, Zonguldak, KYK, TFF, TBMM gibi kurumların kısaltmalarının doğru/yanlış yazılıp yazılmadığını test ediyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1366,
+      "output_tokens": 129,
+      "total_duration_ns": 4972515500
+    },
+    {
+      "question_code": "TYT-0305",
+      "image_sha256": "744af58c5ebfad54aefe1c1d54bc1a8fec6793a28ead7df54fc89e3d13c20660",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili sözcüklerin yazımının doğru/yanlış olup olmadığını sorguluyor (305. soru: 'altı çizili sözcüğün yazımı yanlıştır?'). Bu, Türkçe Yazım Kuralı tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 116,
+      "total_duration_ns": 4656505600
+    },
+    {
+      "question_code": "TYT-0307",
+      "image_sha256": "9ee7f013884ac62d7305c9cbe85a5c6017269976d2642b3d6b3dafcd03f11402",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru başlığı 'birleşik sözcüklerden hangisinin yazımı yanlışır?' ifadesiyle açıkça bir yazım sorusunu belirtir.",
+      "review_reasons": [],
+      "prompt_tokens": 1670,
+      "output_tokens": 87,
+      "total_duration_ns": 4648213300
+    },
+    {
+      "question_code": "TYT-0309",
+      "image_sha256": "4e97b5aa2b205a2d4867a190a114063f6cde2b2a2fc3aa88f494329f2452c48b",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralanmış cümle parçalarından hangisinin yazımının yanlış olduğunu soruyor. Bu, Türkçe'deki temel yazım kurallarını (özellikle fiil çekimleri ve bağlaçlar) ölçen bir yazım sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1898,
+      "output_tokens": 112,
+      "total_duration_ns": 5216295900
+    },
+    {
+      "question_code": "TYT-0311",
+      "image_sha256": "85042b59dd434e548802ebd89db69dc63b0d8ef72e1951beb9519b4a030b6352",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, altı çizili sözcüklerin doğru yazılıp yazılmadığını sorguluyor (örn: 'akşamüzeri', 'kargaburnu', 'anadili', 'yazıhane', 'basınçölcer'). Bu, Türkçe yazım kurallarını ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 126,
+      "total_duration_ns": 4741233400
+    },
+    {
+      "question_code": "TYT-0313",
+      "image_sha256": "512fe089881deb6175a02e02c7b8b50a795bd256d72b72c991208bbea9bf07a6",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni 'yazım yanlış' ve 'bitişik yazılır' kuralını soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1784,
+      "output_tokens": 77,
+      "total_duration_ns": 4307949100
+    },
+    {
+      "question_code": "TYT-0315",
+      "image_sha256": "ac7825ca1f42ff744fc4f1601db29f738ab94bbb8d7bddb7b9e5e8507dd63eb1",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı kelimelerin doğru yazılıp yazılmadığını soruyor ('olağanüstü', 'kaydedildiği', 'gökbilimciler', 'katettiği'). Bu, Türkçe Yazım Kuralı tipidir.",
+      "review_reasons": [],
+      "prompt_tokens": 1366,
+      "output_tokens": 111,
+      "total_duration_ns": 4707125600
+    },
+    {
+      "question_code": "TYT-0317",
+      "image_sha256": "2f41be64fec6a43303bc377f5ebf7f4ac6f0e88bdd922c6b535f4f62666da3d7",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru başlığı 'büyük harflerin yazımıyla ilgili yanlışlık' ifadesiyle açıkça büyük harf kullanımına odaklanmaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 1518,
+      "output_tokens": 86,
+      "total_duration_ns": 4450984300
+    },
+    {
+      "question_code": "TYT-0320",
+      "image_sha256": "ae922806aabf8587da8641d1b86d9f4d2346baa7ed89ce3aa6db6c797837854e",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, metin içinde parantezle belirtilen boşluklara hangi noktalama işaretinin gelmesi gerektiğini sorar.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 79,
+      "total_duration_ns": 4728081800
+    },
+    {
+      "question_code": "TYT-0322",
+      "image_sha256": "311085ca183823397234a8d1e9da00bf1d634178f4c6dd92f30f1b3c4b1e52a8",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralanmış yerlere virgül getirilebilecek olup olmadığını sorar; bu doğrudan noktalama işaretleri kullanımına aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 89,
+      "total_duration_ns": 4165482200
+    },
+    {
+      "question_code": "TYT-0324",
+      "image_sha256": "7cca854e62cd0b1e82319d60bdfddbb26d83f69fea117466622f2b8ecfc4b241",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerdeki noktalama işaretlerinin doğru kullanılıp kullanılmadığını soruyor ('Bu parçada numaralı cümlelerin hangisinde bir noktalama yanlış yapılmıştır?'). Bu doğrudan bir noktalama hatası tespit etme sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1480,
+      "output_tokens": 119,
+      "total_duration_ns": 4787909500
+    },
+    {
+      "question_code": "TYT-0326",
+      "image_sha256": "724a7fb6f2d3b5a5430eb392d38aba3395a643e103015af64a0baf1fc79fb0d3",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içindeki noktalama işaretlerinin doğru kullanımı ve yerleştirilmesi üzerine odaklanmaktadır. Özellikle 'numaralanmış yerlerden hangisine diğerlerinden farklı bir noktalama işareti getirilmelidir?' ifadesi, noktalama kurallarını test etmektedir.",
+      "review_reasons": [],
+      "prompt_tokens": 1328,
+      "output_tokens": 119,
+      "total_duration_ns": 4617044500
+    },
+    {
+      "question_code": "TYT-0328",
+      "image_sha256": "0934c5a833baa644f932f6fd94733adfe794b5c81e8ba74b81e443cff3d27396",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, metindeki parantezle belirtilen yerlere hangi noktalama işaretlerinin getirilmesi gerektiğini sorar.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 81,
+      "total_duration_ns": 4286405100
+    },
+    {
+      "question_code": "TYT-0330",
+      "image_sha256": "db18aba0df7e92b9f551a3e2595a2e88c7ead3cb75721c0926b504ffecb323da",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir metin parçasında boş bırakılan yerlere sırasıyla hangi noktalama işaretlerinin getirilmesi gerektiğini sorar.",
+      "review_reasons": [],
+      "prompt_tokens": 1518,
+      "output_tokens": 85,
+      "total_duration_ns": 4430031300
+    },
+    {
+      "question_code": "TYT-0332",
+      "image_sha256": "2d6e23739d2c9690a3a718f63f352855e45b4648c62d65d690ef0c4a29aeb7d0",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, metindeki numaralı virgül yerlerinin doğru kullanılıp kullanılmadığını sorar.",
+      "review_reasons": [],
+      "prompt_tokens": 1594,
+      "output_tokens": 77,
+      "total_duration_ns": 4341576000
+    },
+    {
+      "question_code": "TYT-0334",
+      "image_sha256": "f02d216d55f4d87bce76ecc98bba3ff580bb529433c2cbcda9513d48f8353660",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde numaralandırılmış virgül kullanımını sorguluyor ve 'hangi virgül yanlış kullanılmıştır?' diye soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 87,
+      "total_duration_ns": 4211703300
+    },
+    {
+      "question_code": "TYT-0319",
+      "image_sha256": "c3f1d3ea9253315cb4b7c59634408af583b740a42c40d181db451c072240f26e",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru 'kesme işareti' kullanımını soruyor ve seçeneklerde noktalama işaretlerinin doğru/yanlış kullanımı inceleniyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1366,
+      "output_tokens": 86,
+      "total_duration_ns": 4236206300
+    },
+    {
+      "question_code": "TYT-0321",
+      "image_sha256": "9f1c7fc941b0f0159a651774316daaaba95d077606b67ab9acfb08d3dce6e041",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki noktalı virgül (;) işlevini sorar ve seçeneklerdeki kullanım örneklerini karşılaştırarak doğru olanı bulmayı gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2088,
+      "output_tokens": 95,
+      "total_duration_ns": 5259466300
+    },
+    {
+      "question_code": "TYT-0323",
+      "image_sha256": "c7df070f029c383d5aa32699a3a19eac6dff74385aa5bb30a499645f86d6ad75",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içindeki boşluklara noktalama işaretlerinin doğru sırasıyla yerleştirilmesi isteniyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 82,
+      "total_duration_ns": 4089370100
+    },
+    {
+      "question_code": "TYT-0325",
+      "image_sha256": "edfa60fb0b66d1d78e1164ab1162b7253b6a55e4e34bb428f32be54cb12d4507",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen metin içindeki virgül kullanımını ve hangi durumlarda kullanılmadığını soruyor. Şıklar, virgülün farklı dilbilgisi işlevlerini (sıralama, ara sözler, zarf-fiil eki, yüklemden uzak özneyi, sıralı cümleleri) listeliyor. Bu, noktalama işaretlerinin işlevlerini ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 145,
+      "total_duration_ns": 5883617300
+    },
+    {
+      "question_code": "TYT-0327",
+      "image_sha256": "1fc8d4fb00b095987d3b9bbd2b56b6df70e58a18ffc33b34ac6f49566fc08658",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru metni virgül kullanımını ve örnek gösteremeyen cümleleri içerir; şıklar da noktalama işaretlerine odaklanmaktadır.",
+      "review_reasons": [],
+      "prompt_tokens": 2164,
+      "output_tokens": 88,
+      "total_duration_ns": 5210924000
+    },
+    {
+      "question_code": "TYT-0329",
+      "image_sha256": "0b465c208d8644210cd30a9a6b8d640fc8bb8ab34fc4425928a48cb86e9c2186",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, üç noktanın ( ... ) kullanım kurallarını tanımlıyor ve bu kurallara uygun olmayan bir örnek bulmamızı istiyor. Şıklardaki cümlelerdeki noktalama işaretlerinin doğru veya yanlış kullanımı değerlendiriliyor.",
+      "review_reasons": [],
+      "prompt_tokens": 3190,
+      "output_tokens": 109,
+      "total_duration_ns": 7378492800
+    },
+    {
+      "question_code": "TYT-0331",
+      "image_sha256": "bb784bab4a17dd8174a4cca0fdd7fa2f33a840301569c3b9df326a56208b898f",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerdeki virgül kullanımındaki yanlışları soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1670,
+      "output_tokens": 74,
+      "total_duration_ns": 4418066400
+    },
+    {
+      "question_code": "TYT-0333",
+      "image_sha256": "9fbae34b58a7ec65645fac8503d538bc0201a0def8a294d9c13b971a5b5c7a33",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içinde boş bırakılan noktalama işaretlerinin doğru sırasını belirlememi istiyor. Bu, TYT Türkçe'de 'noktalama' konusunu ölçen standart bir soru türüdür.",
+      "review_reasons": [],
+      "prompt_tokens": 1594,
+      "output_tokens": 105,
+      "total_duration_ns": 4636851300
+    },
+    {
+      "question_code": "TYT-0335",
+      "image_sha256": "e0527d3eb4f9ea3a70927530a7e407333b08be0f7e9270a66e3ecc2982e7199b",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içindeki noktalama işaretlerinin (sorgulama işareti, kesme işareti, parantez içi noktalama vb.) doğru kullanılıp kullanılmadığını sorar. Bu, Türkçe dil bilgisi ve noktalama kurallarını ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 1746,
+      "output_tokens": 121,
+      "total_duration_ns": 5272716400
+    },
+    {
+      "question_code": "TYT-0350",
+      "image_sha256": "5f40564b22dff51abe917dae7f4fc6100d13565b2e9d54ea71525d05481763aa",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümlenin anlamını ve içindeki yer tutucuları (yer tamlayıcı) sorguluyor; bu, cümle yorumu tipine aittir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 948,
+      "output_tokens": 94,
+      "total_duration_ns": 3919499400
+    },
+    {
+      "question_code": "TYT-0352",
+      "image_sha256": "787e41d52f567968cee78fb80bd280eeda5fe4738aece16a75012a7091413422",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki 'öğelerin doğru sıralanışı'ni soruyor ve seçeneklerde 'Belirtisiz nesne', 'zarf tamlayıcı', 'özne', 'yer tamlayıcısı', 'yüklem' gibi cümle öğeleri listeleniyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 119,
+      "total_duration_ns": 5097824300
+    },
+    {
+      "question_code": "TYT-0353",
+      "image_sha256": "4bc58ee93ed9d90cdec0b49ed4c82e15f5b2402b7fe8b0d7aff2129766157ea0",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, her cümlede 'öznesi' veya 'yüklemi' hakkında bir ifade yapar ve bu ifadelerin doğru/yanlış olup olmadığını sormaktadır. Bu, Türkçe dil bilgisi (özellikle cümle öğeleri) sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1860,
+      "output_tokens": 112,
+      "total_duration_ns": 5259028200
+    },
+    {
+      "question_code": "TYT-0354",
+      "image_sha256": "3905c25b1937c23e11773668bf111cb877e8c022dedd4627d72fe9e8e5f26a1e",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümleye eklenen şıkların 'özne - zarf tümleci - belirtisiz nesne - yüklem' dizilimine uygun olup olmadığını soruyor. Bu, cümlenin ögelerini (özne, zarf tümleci, nesne, yüklem) belirleme becerisini ölçer.",
+      "review_reasons": [],
+      "prompt_tokens": 1556,
+      "output_tokens": 128,
+      "total_duration_ns": 5229073300
+    },
+    {
+      "question_code": "TYT-0355",
+      "image_sha256": "aaed947054125885bb640dd09c82bb6c820524c11541093217a7de08c9c2a0fa",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerin yer tamlayıcılarını (yazılımlarını) analiz etmemizi ve bu tamlamaların türünü (isim, edat, sıfat-fiil vb.) belirlememizi istiyor. Bu, cümlenin anlamı ve yapısı üzerinden bir yorumlama işlemidir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1936,
+      "output_tokens": 127,
+      "total_duration_ns": 5524460800
+    },
+    {
+      "question_code": "TYT-0356",
+      "image_sha256": "c647628ff5c783415419fd4699e68935c280535d4a3caf6da5f428a99339734d",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki dilbilgisi öğelerinin (özne, yüklem, belirtili nesne, yer tamlayıcı) sıralanmasını istiyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 93,
+      "total_duration_ns": 4149590400
+    },
+    {
+      "question_code": "TYT-0357",
+      "image_sha256": "85dc2f00a0f949f07cff644a00cd240db07ca25520aa6ac5d3546ebf42719e18",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlenin ögelerin dizilişini (yapısını) analiz etmemizi ve bu yapıyı şıklarda bulmamızı istiyor. Bu, cümlenin anlamını ve yapısını yorumlama becerisini ölçer.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1708,
+      "output_tokens": 111,
+      "total_duration_ns": 5073342700
+    },
+    {
+      "question_code": "TYT-0358",
+      "image_sha256": "4b9a6976e5e6afdc3f04fab58ea05a0ddf1e732ae7126388547db3f026c89624",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlenin 'öğelerin dizilişi' (sırası) ile aynı olan şıkları bulmamızı istiyor. Bu, cümlenin anlamını ve mantık sırasını yorumlamayı gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1860,
+      "output_tokens": 108,
+      "total_duration_ns": 4935680000
+    },
+    {
+      "question_code": "TYT-0348",
+      "image_sha256": "7a39493cb7be2625d980f32da3c8c39f23ae6921cfd435ef38ffe238d9216d7d",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlenin 'öznesi' (fayda) olan sözcük grubunun hangisi olduğunu soruyor. Bu, cümlenin anlamını ve yapısını yorumlama gerektirir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1024,
+      "output_tokens": 103,
+      "total_duration_ns": 4101874100
+    },
+    {
+      "question_code": "TYT-0351",
+      "image_sha256": "5231bde35e118439f046fc56ae851d2f448b482a8e8a63b637c0abca9cb5667c",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki 'öğelerin doğru sıralanışı'ni soruyor ve seçeneklerde 'Özne', 'zarf tümleci', 'belirtisiz nesne', 'yüklem' gibi cümle öğeleri listelenmiş.",
+      "review_reasons": [],
+      "prompt_tokens": 1442,
+      "output_tokens": 111,
+      "total_duration_ns": 4812791900
+    },
+    {
+      "question_code": "TYT-0349",
+      "image_sha256": "92d309662a73868a69b48e1aae34f0a5fa1f1dc9ad776051b664240482213957",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru 'nesne' kelimesini ve 'sadece isim tamlamasından oluşmuş' ifadesini içerir; bu cümle ögeleri sorusudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1290,
+      "output_tokens": 93,
+      "total_duration_ns": 4193468200
+    },
+    {
+      "question_code": "TYT-0030",
+      "image_sha256": "603907aa920ab73d3a857504eb176fdafb5d05216dc17fd41e8b08fe041390af",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleye uygun sözcükleri seçmeyi gerektirir ve bu seçimlerin cümlenin anlamını tamamlaması beklenir.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1442,
+      "output_tokens": 91,
+      "total_duration_ns": 4333627900
+    }
+  ],
+  "errors": []
+}

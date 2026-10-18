@@ -3,6 +3,9 @@ package com.hedefyks.config;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
@@ -15,7 +18,7 @@ import org.springframework.stereotype.Component;
 /**
  * Yönetici hesabını açılışta, şifre YALNIZ yapılandırmadan (ortam değişkeni) gelirse oluşturur.
  * Hesap zaten varsa dokunmaz (arayüzden değiştirilen şifre ezilmez).
- * Kaynak kodda gerçek şifre yoktur; root/root yalnız application-dev.yml içindeki geliştirme değeridir.
+ * Kaynak kodda gerçek şifre yoktur.
  */
 @Component
 class AdminSeeder implements ApplicationRunner {
@@ -36,6 +39,30 @@ class AdminSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        boolean dev = env.acceptsProfiles(Profiles.of("dev", "test"));
+        if (!dev) {
+            if (!Boolean.TRUE.equals(env.getProperty("server.servlet.session.cookie.secure", Boolean.class))) {
+                throw new IllegalStateException("Üretimde güvenli oturum çerezi gerekli (YKS_COOKIE_SECURE=true).");
+            }
+            URI site;
+            try {
+                site = URI.create(props.publicBaseUrl());
+            } catch (RuntimeException e) {
+                throw new IllegalStateException("Üretimde geçerli HTTPS site adresi gerekli (YKS_SITE_ADRESI).", e);
+            }
+            if (!"https".equalsIgnoreCase(site.getScheme()) || site.getHost() == null
+                    || site.getUserInfo() != null || site.getQuery() != null || site.getFragment() != null) {
+                throw new IllegalStateException("Üretimde geçerli HTTPS site adresi gerekli (YKS_SITE_ADRESI).");
+            }
+            for (User privileged : users.findByRoleIn(List.of(Role.ADMIN, Role.OPERATOR))) {
+                if (privileged.isPasswordChangeRequired()) {
+                    throw new IllegalStateException("Geçici parolalı yetkili hesapla üretim başlatılamaz; hesabın parolasını yerelde değiştir.");
+                }
+                if (encoder.matches("root", privileged.getPasswordHash())) {
+                    throw new IllegalStateException("Varsayılan root parolası olan yetkili hesapla üretim başlatılamaz; parolayı değiştir.");
+                }
+            }
+        }
         AppProperties.Admin admin = props.admin();
         if (admin == null || admin.password() == null || admin.password().isBlank()) {
             log.info("YKS_ADMIN_SIFRE tanımlı değil; yönetici hesabı oluşturulmadı.");
@@ -44,9 +71,9 @@ class AdminSeeder implements ApplicationRunner {
         if (users.existsByUsername(admin.username())) {
             return;
         }
-        boolean dev = env.acceptsProfiles(Profiles.of("dev", "test"));
-        if (!dev && admin.password().length() < 10) {
-            throw new IllegalStateException("Üretimde yönetici şifresi en az 10 karakter olmalı (YKS_ADMIN_SIFRE).");
+        if (!dev && (admin.password().codePointCount(0, admin.password().length()) < 8
+                || admin.password().getBytes(StandardCharsets.UTF_8).length > 72)) {
+            throw new IllegalStateException("Üretimde yönetici şifresi en az 8 karakter ve en fazla 72 UTF-8 bayt olmalı (YKS_ADMIN_SIFRE).");
         }
         User u = new User();
         u.setUsername(admin.username());

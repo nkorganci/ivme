@@ -1,0 +1,21 @@
+{
+  "groupId": "ayt-kimya",
+  "lessons": [{
+    "id": "gazlar-degisken-kosul",
+    "title": "Gazlar: Sabit Değişkeni Seç, Kelvin Kullan",
+    "topics": ["Gazlar"],
+    "learn": ["İdeal gaz modeli için PV=nRT kullanılır. İki durum karşılaştırılırken aynı gaz sabitinin kullanılmasıyla P₁V₁/(n₁T₁)=P₂V₂/(n₂T₂) elde edilir. Oranlarda sıcaklık mutlaka kelvin olmalıdır; okul sorularında T(K)=t(°C)+273 yaklaşımı kullanılır.", "Mol ve sıcaklık sabitse basınç ile hacim ters; mol ve basınç sabitse hacim ile mutlak sıcaklık doğru orantılıdır. Mol ve hacim sabitse basınç ile mutlak sıcaklık doğru orantılıdır. Gaz eklenirse mol sayısının sabit kaldığını varsayma.", "Sürtünmesiz hareketli piston tek başına bütün koşulların sabit olduğu anlamına gelmez. Dış basınç ve yük değişmiyorsa denge hâlleri aynı basınçta karşılaştırılabilir. Sert kapta hacim sabit, esnek balonda ise verilen dış koşullar belirleyicidir."],
+    "steps": ["Her durum için P, V, n ve T bilgilerini ayrı yaz.", "Verilmeyen ama sabit olduğu açıkça belirtilen koşulları işaretle.", "Sıcaklıkları kelvine, diğer büyüklükleri tutarlı birimlere çevir.", "Sabitleri sadeleştirerek oran kur ve değişimin yönünü kontrol et."],
+    "pitfall": "Celsius sıcaklıklarını oranlama. Hem mol hem sıcaklık değişiyorsa yalnız Charles veya Boyle yasasını tek başına kullanma.",
+    "sources": [{"catalogId": 33, "page": 32, "anchors": ["BOYLE KANUNU", "Kelvin"]}, {"catalogId": 33, "page": 33, "anchors": ["CHARLES KANUNU", "mutlak sıcaklık"]}, {"catalogId": 33, "page": 34, "anchors": ["AVOGADRO KANUNU", "Mol sayısı"]}],
+    "examples": [
+      {"bank": "CIKMIS", "code": "AYT_Sayisal-0486", "answer": "D", "anchors": ["400 K", "300 K", "mol sayısı iki katına"], "explanation": "Basınç sabit olduğundan V∝nT. V₂=2,0×2×300/400=3,0 L, D. Sıcaklığın azalmasına rağmen mol sayısındaki artış nedeniyle hacim büyür."},
+      {"bank": "OGM", "code": "3a-ayt-kimya-13-04", "answer": "A", "anchors": ["Charles yasası", "hava soğudukça küçülmesi"], "explanation": "Soru modelinde gaz miktarı ve dış basıncı değişmeyen esnek balonun soğuyunca küçülmesi hacim-mutlak sıcaklık ilişkisine örnektir; A. Gaz ekleme veya basınç değişimi içeren seçenekler yalnız Charles yasası değildir."}
+    ],
+    "patterns": [
+      {"id": "iki-degisken", "title": "Mol ve sıcaklığın birlikte değişmesi", "recognize": "Sabit basınçta gaz eklenir ve sıcaklık değiştirilir.", "logic": "Hacim oranı n₂T₂/(n₁T₁)'dir.", "tip": "İki çarpanı ayrı hesaplayıp sonra birleştir.", "trap": "Sıcaklık azalınca hacmin mutlaka azalacağını söylemek.", "mini": {"question": "Basınç sabitken mol sayısı iki katına, sıcaklık 300 K'den 450 K'ye çıkarsa hacim kaç kat olur?", "answer": "2×450/300=3 kat olur."}},
+      {"id": "kelvin-orani", "title": "Sıcaklık oranı", "recognize": "Sıcaklıklar Celsius olarak verilmiştir.", "logic": "Önce her sıcaklığı kelvine çevir.", "tip": "0 °C sıfır mutlak sıcaklık değildir.", "trap": "27 °C'den 54 °C'ye çıkınca sıcaklığı iki kat saymak.", "mini": {"question": "Sabit hacim ve mol sayısında sıcaklık 27 °C'den 327 °C'ye çıkarsa basınç kaç kat olur?", "answer": "300 K'den 600 K'ye çıkıldığı için basınç iki kat olur."}}
+    ],
+    "practice": {"question": "Mol sayısı ve sıcaklığı sabit ideal gazın basıncı iki katına çıkarılıyor. Başlangıç hacmi 6 L ise son hacim nedir?", "choices": ["2 L", "3 L", "6 L", "12 L"], "answer": 1, "explanation": "B · P₁V₁=P₂V₂ ve P₂=2P₁ olduğundan V₂=3 L olur."}
+  }]
+}

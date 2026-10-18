@@ -3,6 +3,7 @@ package com.hedefyks.admin;
 import com.hedefyks.feedback.FeedbackCategory;
 import com.hedefyks.question.Difficulty;
 import com.hedefyks.question.ExamType;
+import com.hedefyks.question.QuestionBank;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -15,11 +16,14 @@ public final class AdminDtos {
 
     private AdminDtos() {}
 
-    public record Stats(long userCount, long questionCount, long activeQuestionCount, long submittedExamCount,
-                        long openFeedbackCount, long reportedQuestionCount) {}
+    public record Usage(String period, String zone, Instant startsAt, Instant endsAt,
+                        Long activeUsers, Long studySessions, Long examsStarted, Long answersSubmitted,
+                        Long serviceErrors) {}
+    public record Stats(Long userCount, Long submittedExamCount, Usage usage,
+                        AdminContentService.Coverage content) {}
 
-    public record AdminQuestion(Long id, String code, ExamType examType, String subject, String topic,
-                                Integer year, String source, String image,
+    public record AdminQuestion(Long id, String code, QuestionBank bank, ExamType examType, String subject,
+                                String topic, Integer year, String source, String image, String solutionImage,
                                 String correctAnswer, int choiceCount, String solutionUrl, boolean active,
                                 long openReportCount, Double avgRating, long ratingCount, Instant updatedAt) {}
 
@@ -30,13 +34,14 @@ public final class AdminDtos {
             @Min(value = 1990, message = "Yıl 1990–2100 olmalı.") @Max(value = 2100, message = "Yıl 1990–2100 olmalı.") Integer year,
             @Size(max = 200, message = "Kaynak en fazla 200 karakter.") String source,
             @NotBlank(message = "Görsel yolu gerekli.") @Size(max = 300, message = "Görsel yolu en fazla 300 karakter.") String image,
+            @Size(max = 300, message = "Çözüm görseli yolu en fazla 300 karakter.") String solutionImage,
             @NotBlank(message = "Doğru cevap gerekli.") @Pattern(regexp = "^[A-Ea-e]$", message = "Doğru cevap A–E olmalı.") String correctAnswer,
             @Min(value = 4, message = "Şık sayısı 4 veya 5 olmalı.") @Max(value = 5, message = "Şık sayısı 4 veya 5 olmalı.") int choiceCount,
             @Pattern(regexp = "^$|^https?://\\S+$", message = "Çözüm bağlantısı http:// veya https:// ile başlamalı.")
             @Size(max = 500, message = "Çözüm bağlantısı en fazla 500 karakter.") String solutionUrl,
             boolean active) {}
 
-    public record AdminFeedback(Long id, FeedbackCategory category, String username, Long questionId,
+    public record AdminFeedback(Long id, FeedbackCategory category, Long questionId,
                                 String questionCode, Difficulty difficultyVote, Integer rating, String message,
                                 boolean resolved, Instant resolvedAt, Instant createdAt) {}
 

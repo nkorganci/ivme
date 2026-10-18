@@ -27,13 +27,32 @@ public class User {
     private String username;
     private String email;
 
+    @Column(length = 16)
+    private String phone;
+
     @Column(name = "password_hash")
     private String passwordHash;
+
+    @Column(name = "password_change_required", nullable = false)
+    private boolean passwordChangeRequired;
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 
     private boolean enabled = true;
+
+    @Enumerated(EnumType.STRING)
+    private AccountCategory category;
+    @Column(name="site_manager")
+    private boolean siteManager;
+    @Column(name="archived_at")
+    private Instant archivedAt;
+    @Column(name="pause_reason")
+    private String pauseReason;
+    @Column(name="last_login_at")
+    private Instant lastLoginAt;
+    @Column(name="last_seen_at")
+    private Instant lastSeenAt;
 
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();

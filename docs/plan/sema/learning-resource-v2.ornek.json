@@ -1,0 +1,209 @@
+[
+  {
+    "key": "pdf:one",
+    "kind": "PDF",
+    "title": "Özgün başlık",
+    "automaticLabels": {
+      "assignments": [
+        {
+          "categoryId": "c1",
+          "relation": "PRIMARY",
+          "relationKey": "relation:44057e7c86af6948c774a41b",
+          "sourceVersion": "source-1",
+          "categoryFingerprint": "0b43a2b8c602b2c077bef9eb95b5d3d9dfd6432ddce3fd1249fc78d352ccee3e",
+          "scopeStatus": "CANDIDATE",
+          "confidence": "LOW",
+          "confidenceReason": "Eski kaynak eşlemesi; konuya özgü içerik doğrulaması gerekli.",
+          "evidence": [
+            {
+              "association": "ITEM_ONLY",
+              "reference": "pdf:one",
+              "sourceVersion": "source-1",
+              "method": "PRESERVED_ITEM_EVIDENCE",
+              "readability": "NOT_MEASURED",
+              "reason": "Eski kaynak kanıtı konu ilişkisi düzeyinde doğrulanmadı."
+            }
+          ],
+          "locatorStatus": "ESTIMATED",
+          "locatorReason": "Konuya özel kaynak aralığı henüz çıkarılmadı.",
+          "locators": [
+            {
+              "type": "PDF",
+              "sourceKey": "pdf:one",
+              "pdfPageStart": 2,
+              "pdfPageEnd": 4,
+              "pageCount": 20
+            },
+            {
+              "type": "PDF",
+              "sourceKey": "pdf:one",
+              "pdfPageStart": 9,
+              "pdfPageEnd": 10,
+              "pageCount": 20
+            }
+          ],
+          "review": {
+            "status": "PENDING",
+            "reviewer": null,
+            "reviewedAt": null,
+            "sourceVersion": "source-1",
+            "categoryFingerprint": "0b43a2b8c602b2c077bef9eb95b5d3d9dfd6432ddce3fd1249fc78d352ccee3e"
+          }
+        },
+        {
+          "categoryId": "c2",
+          "relation": "PRIMARY",
+          "relationKey": "relation:c0421871e9b182f36b779584",
+          "sourceVersion": "source-1",
+          "categoryFingerprint": "10ca5391df2cf19ce5bb186cb900ca693ce2ac90b9c459a485a237ec79ffd66e",
+          "scopeStatus": "CANDIDATE",
+          "confidence": "LOW",
+          "confidenceReason": "Eski kaynak eşlemesi; konuya özgü içerik doğrulaması gerekli.",
+          "evidence": [
+            {
+              "association": "ITEM_ONLY",
+              "reference": "pdf:one",
+              "sourceVersion": "source-1",
+              "method": "PRESERVED_ITEM_EVIDENCE",
+              "readability": "NOT_MEASURED",
+              "reason": "Eski kaynak kanıtı konu ilişkisi düzeyinde doğrulanmadı."
+            }
+          ],
+          "locatorStatus": "ESTIMATED",
+          "locatorReason": "Konuya özel kaynak aralığı henüz çıkarılmadı.",
+          "locators": [
+            {
+              "type": "PDF",
+              "sourceKey": "pdf:one",
+              "pdfPageStart": 14,
+              "pdfPageEnd": 18,
+              "pageCount": 20
+            }
+          ],
+          "review": {
+            "status": "PENDING",
+            "reviewer": null,
+            "reviewedAt": null,
+            "sourceVersion": "source-1",
+            "categoryFingerprint": "10ca5391df2cf19ce5bb186cb900ca693ce2ac90b9c459a485a237ec79ffd66e"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "type": "SOURCE_TITLE",
+          "text": "Özgün başlık"
+        }
+      ],
+      "inputFingerprint": "source-1",
+      "reviewReasons": []
+    },
+    "contractVersion": 2,
+    "originalTitle": "Özgün başlık",
+    "originalFilename": "özgün.pdf",
+    "sourceLabel": "OGM",
+    "sourceVersion": "source-1",
+    "taxonomyVersion": "taxonomy-v1-d97277cffcf5c7653ef9091f",
+    "pageCount": 20,
+    "displayTitle": "TYT | Fizik | Elektrik; Hareket (tahmini) | OGM | PDF"
+  },
+  {
+    "key": "video:one",
+    "kind": "VIDEO",
+    "title": "Özgün başlık",
+    "automaticLabels": {
+      "assignments": [
+        {
+          "categoryId": "c1",
+          "relation": "PRIMARY",
+          "relationKey": "relation:d6d6dbcf13463d5083d5f911",
+          "sourceVersion": "source-1",
+          "categoryFingerprint": "0b43a2b8c602b2c077bef9eb95b5d3d9dfd6432ddce3fd1249fc78d352ccee3e",
+          "scopeStatus": "CANDIDATE",
+          "confidence": "LOW",
+          "confidenceReason": "Eski kaynak eşlemesi; konuya özgü içerik doğrulaması gerekli.",
+          "evidence": [
+            {
+              "association": "ITEM_ONLY",
+              "reference": "video:one",
+              "sourceVersion": "source-1",
+              "method": "PRESERVED_ITEM_EVIDENCE",
+              "readability": "NOT_MEASURED",
+              "reason": "Eski kaynak kanıtı konu ilişkisi düzeyinde doğrulanmadı."
+            }
+          ],
+          "locatorStatus": "ESTIMATED",
+          "locatorReason": "Konuya özel kaynak aralığı henüz çıkarılmadı.",
+          "locators": [
+            {
+              "type": "VIDEO",
+              "startSeconds": 0,
+              "endSeconds": 30,
+              "durationSeconds": 120
+            }
+          ],
+          "review": {
+            "status": "PENDING",
+            "reviewer": null,
+            "reviewedAt": null,
+            "sourceVersion": "source-1",
+            "categoryFingerprint": "0b43a2b8c602b2c077bef9eb95b5d3d9dfd6432ddce3fd1249fc78d352ccee3e"
+          }
+        },
+        {
+          "categoryId": "c2",
+          "relation": "PRIMARY",
+          "relationKey": "relation:190ded8f8bc7c6beac9c7fbc",
+          "sourceVersion": "source-1",
+          "categoryFingerprint": "10ca5391df2cf19ce5bb186cb900ca693ce2ac90b9c459a485a237ec79ffd66e",
+          "scopeStatus": "CANDIDATE",
+          "confidence": "LOW",
+          "confidenceReason": "Eski kaynak eşlemesi; konuya özgü içerik doğrulaması gerekli.",
+          "evidence": [
+            {
+              "association": "ITEM_ONLY",
+              "reference": "video:one",
+              "sourceVersion": "source-1",
+              "method": "PRESERVED_ITEM_EVIDENCE",
+              "readability": "NOT_MEASURED",
+              "reason": "Eski kaynak kanıtı konu ilişkisi düzeyinde doğrulanmadı."
+            }
+          ],
+          "locatorStatus": "ESTIMATED",
+          "locatorReason": "Konuya özel kaynak aralığı henüz çıkarılmadı.",
+          "locators": [
+            {
+              "type": "VIDEO",
+              "startSeconds": 30,
+              "endSeconds": 60,
+              "durationSeconds": 120
+            }
+          ],
+          "review": {
+            "status": "PENDING",
+            "reviewer": null,
+            "reviewedAt": null,
+            "sourceVersion": "source-1",
+            "categoryFingerprint": "10ca5391df2cf19ce5bb186cb900ca693ce2ac90b9c459a485a237ec79ffd66e"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "type": "SOURCE_TITLE",
+          "text": "Özgün başlık"
+        }
+      ],
+      "inputFingerprint": "source-1",
+      "reviewReasons": []
+    },
+    "contractVersion": 2,
+    "originalTitle": "Özgün başlık",
+    "originalFilename": "özgün.pdf",
+    "sourceLabel": "OGM",
+    "sourceVersion": "source-1",
+    "taxonomyVersion": "taxonomy-v1-d97277cffcf5c7653ef9091f",
+    "pageCount": 20,
+    "displayTitle": "TYT | Fizik | Elektrik; Hareket (tahmini) | OGM | Video"
+  }
+]

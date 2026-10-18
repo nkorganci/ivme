@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "links": [
+    {
+      "catalogId": 1099,
+      "pdfSha256": "f316e8d16b41e3f1041d3009e0b8dcf2ad87a078e320ad6cb87177981321dbf4",
+      "topic": "Noktalama İşaretleri",
+      "questionCodes": [
+        "3a-tyt-turkce-85-01",
+        "3a-tyt-turkce-85-02",
+        "3a-tyt-turkce-85-03"
+      ]
+    }
+  ]
+}

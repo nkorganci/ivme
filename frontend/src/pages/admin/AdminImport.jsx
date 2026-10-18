@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { api } from '../../api.js';
 import { Field } from '../../components/Field.jsx';
 import { Alert } from '../../components/States.jsx';
+import DataGrid from '../../components/DataGrid.jsx';
+
+const ISSUE_COLUMNS = [
+  { field: 'row', headerName: 'Satır' },
+  { field: 'code', headerName: 'Kod', valueFormatter: ({ value }) => value || '—' },
+  { field: 'field', headerName: 'Alan', valueFormatter: ({ value }) => value || '—' },
+  { field: 'message', headerName: 'Mesaj', minWidth: 260 },
+];
 
 function IssueTable({ title, items, tone }) {
   if (!items?.length) return null;
@@ -10,28 +18,7 @@ function IssueTable({ title, items, tone }) {
       <h3 className={`issue-title issue-${tone}`}>
         {tone === 'bad' ? '✗' : '⚠'} {title}
       </h3>
-      <div className="table-wrap">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Satır</th>
-              <th>Kod</th>
-              <th>Alan</th>
-              <th>Mesaj</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((i, n) => (
-              <tr key={n}>
-                <td>{i.row}</td>
-                <td>{i.code || '—'}</td>
-                <td>{i.field || '—'}</td>
-                <td>{i.message}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataGrid rowData={items} columnDefs={ISSUE_COLUMNS} />
     </div>
   );
 }
@@ -54,7 +41,7 @@ export default function AdminImport() {
     body.append('mode', mode);
     body.append('dryRun', String(asDryRun));
     try {
-      const r = await api.upload('/api/admin/import', body);
+      const r = await api.upload('/api/operator/import', body);
       const errors = r.errors || [];
       const warnings = r.warnings || [];
       setReport({ ...r, errors, warnings, errorCount: r.errorCount ?? errors.length, warningCount: r.warningCount ?? warnings.length });
@@ -105,8 +92,9 @@ export default function AdminImport() {
             <code>correct_answer</code> (A–E).
           </p>
           <p>
-            <strong>İsteğe bağlı:</strong> <code>topic</code>, <code>year</code>, <code>source</code>, <code>choice_count</code> (4–5, varsayılan 5),{' '}
-            <code>solution_url</code>, <code>active</code> (varsayılan true).
+            <strong>İsteğe bağlı:</strong> <code>bank</code> (CIKMIS = AYT-TYT Çıkmış Sorular, OGM = Soru Bankası; varsayılan CIKMIS), <code>topic</code>, <code>year</code>,{' '}
+            <code>source</code>, <code>choice_count</code> (4–5, varsayılan 5), <code>solution_url</code>, <code>solution_image</code> (çözüm görseli; kök klasöre göre göreli yol),{' '}
+            <code>active</code> (varsayılan true).
           </p>
           <p>CSV: UTF-8; ayraç <code>,</code> <code>;</code> veya sekme (başlıktan otomatik anlaşılır). JSON: nesne dizisi.</p>
         </details>

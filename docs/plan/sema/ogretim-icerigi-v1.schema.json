@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ivme.dev/schemas/ogretim-icerigi-v1.schema.json",
+  "title": "İvme öğretim döngüsü içeriği v1",
+  "description": "Tek soru için doğrulanabilir öğretim içeriği. Öğrenciye parça parça, sunucu tarafından açılır; cevap, çözüm ve yanılgı eşlemesi istemciye hak edilmeden gönderilmez. Kategori ve beceri kimlikleri ortak sözlükten alınır; kalıp anahtarı öğretim içeriğidir, seçilebilir kategori değildir.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "contentKey", "question", "reading", "classification", "pattern",
+               "strategyChoice", "hints", "guidingQuestions", "solution", "misconceptions",
+               "alternative", "visual", "twin", "choiceValues", "sources", "generation"],
+  "$defs": {
+    "choice": {"enum": ["A", "B", "C", "D", "E"]},
+    "text": {"type": "string", "minLength": 1, "maxLength": 1200},
+    "shortText": {"type": "string", "minLength": 1, "maxLength": 400},
+    "choiceMap": {
+      "type": "object", "additionalProperties": false, "minProperties": 2,
+      "propertyNames": {"$ref": "#/$defs/choice"},
+      "patternProperties": {"^[A-E]$": {"type": "string", "minLength": 1, "maxLength": 600}}
+    },
+    "option": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "text", "correct", "feedback"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]{1,24}$"},
+        "text": {"$ref": "#/$defs/shortText"},
+        "correct": {"type": "boolean"},
+        "feedback": {"$ref": "#/$defs/shortText"}
+      }
+    },
+    "check": {
+      "description": "Bağımsız doğrulama. sympy: expr ile equals eşit; choice: expr değeri choiceValues içindeki şıkla eşleşir ve başka şıkla eşleşmez; solve/inequality: denklem/eşitsizlik çözüm kümesi; syllables: satır başına hece sayısı; logic: önerme denkliği/doğruluk değeri.",
+      "type": "object", "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["sympy", "choice", "twinChoice", "solve", "inequality", "syllables", "logic"]},
+        "expr": {"type": "string", "minLength": 1, "maxLength": 600},
+        "equals": {"type": "string", "minLength": 1, "maxLength": 300},
+        "choice": {"$ref": "#/$defs/choice"},
+        "equation": {"type": "string", "minLength": 1, "maxLength": 400},
+        "var": {"type": "string", "pattern": "^[a-z]$"},
+        "expect": {},
+        "text": {"type": "string", "minLength": 1, "maxLength": 800},
+        "equivalentTo": {"type": "string", "minLength": 1, "maxLength": 300},
+        "note": {"type": "string", "maxLength": 300},
+        "tolerance": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  },
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "contentKey": {"type": "string", "pattern": "^tutor:[A-Za-z0-9._-]+$"},
+    "question": {
+      "type": "object", "additionalProperties": false,
+      "required": ["code", "exam", "subjectId", "categoryId", "subtopic", "answerKey", "choiceCount", "imageSha256"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1, "maxLength": 60},
+        "exam": {"enum": ["TYT", "AYT"]},
+        "subjectId": {"enum": ["turkce", "matematik", "geometri", "fizik", "kimya", "biyoloji", "tarih", "cografya",
+                               "felsefe", "din", "edebiyat", "psikoloji", "sosyoloji", "mantik"]},
+        "categoryId": {"type": "string", "minLength": 3, "maxLength": 200},
+        "subtopic": {"type": "string", "minLength": 1, "maxLength": 160},
+        "answerKey": {"$ref": "#/$defs/choice"},
+        "choiceCount": {"type": "integer", "minimum": 2, "maximum": 5},
+        "imageSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "reading": {
+      "description": "Okuma çözümden ayrıdır. Görselde okunamayan bilgi uydurulmaz; uncertain listesine yazılır.",
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "text", "choices", "figure", "figureCritical", "uncertain", "confidence"],
+      "properties": {
+        "status": {"enum": ["CLEAR", "PARTIAL", "UNREADABLE"]},
+        "text": {"type": "string", "maxLength": 4000},
+        "choices": {"$ref": "#/$defs/choiceMap"},
+        "figure": {"type": ["string", "null"], "maxLength": 1200},
+        "figureCritical": {"type": "boolean"},
+        "uncertain": {"type": "array", "items": {"$ref": "#/$defs/shortText"}, "maxItems": 10},
+        "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]}
+      }
+    },
+    "classification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["difficulty", "difficultyReason", "skills", "prerequisites", "catalogAgreement", "catalogNote"],
+      "properties": {
+        "difficulty": {"enum": ["KOLAY", "ORTA", "ZOR", "ILERI"]},
+        "difficultyReason": {"$ref": "#/$defs/shortText"},
+        "skills": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true,
+                   "items": {"enum": ["BILGI", "KAVRAMA", "UYGULAMA", "ANALIZ", "YORUMLAMA", "AKIL_YURUTME", "HESAPLAMA", "DENEY", "PROBLEM_COZME"]}},
+        "prerequisites": {"type": "array", "maxItems": 4, "uniqueItems": true, "items": {"type": "string", "minLength": 3, "maxLength": 200}},
+        "catalogAgreement": {"type": "boolean"},
+        "catalogNote": {"type": ["string", "null"], "maxLength": 400}
+      }
+    },
+    "pattern": {
+      "description": "Kalıp kartı: ne zaman, neden ve ne zaman değil. Aynı anahtar başka soruda aynı kartla kullanılır.",
+      "type": "object", "additionalProperties": false,
+      "required": ["key", "name", "trigger", "bigIdea", "method", "whenNot", "examTip"],
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$", "maxLength": 120},
+        "name": {"type": "string", "minLength": 3, "maxLength": 120},
+        "trigger": {"$ref": "#/$defs/shortText"},
+        "bigIdea": {"$ref": "#/$defs/shortText"},
+        "method": {"type": "array", "minItems": 2, "maxItems": 6, "items": {"$ref": "#/$defs/shortText"}},
+        "whenNot": {"$ref": "#/$defs/shortText"},
+        "examTip": {"$ref": "#/$defs/shortText"}
+      }
+    },
+    "strategyChoice": {
+      "type": "object", "additionalProperties": false,
+      "required": ["prompt", "options"],
+      "properties": {
+        "prompt": {"$ref": "#/$defs/shortText"},
+        "options": {"type": "array", "minItems": 3, "maxItems": 4, "items": {"$ref": "#/$defs/option"}}
+      }
+    },
+    "hints": {
+      "description": "Tam üç kademe: kavram, strateji, ilk somut adım. Hiçbiri sonucu veya doğru şıkkı söylemez.",
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["level", "kind", "text"],
+        "properties": {
+          "level": {"enum": [1, 2, 3]},
+          "kind": {"enum": ["KAVRAM", "STRATEJI", "ADIM"]},
+          "text": {"$ref": "#/$defs/shortText"}
+        }
+      }
+    },
+    "guidingQuestions": {
+      "type": "array", "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["text", "answer"],
+        "properties": {"text": {"$ref": "#/$defs/shortText"}, "answer": {"$ref": "#/$defs/shortText"}}
+      }
+    },
+    "solution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["steps", "finalAnswer", "levels"],
+      "properties": {
+        "steps": {
+          "type": "array", "minItems": 2, "maxItems": 10,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "text", "why"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^s[0-9]{1,2}$"},
+              "text": {"$ref": "#/$defs/text"},
+              "why": {"$ref": "#/$defs/text"},
+              "check": {"$ref": "#/$defs/check"},
+              "selfExplain": {
+                "type": "object", "additionalProperties": false,
+                "required": ["prompt", "options"],
+                "properties": {
+                  "prompt": {"$ref": "#/$defs/shortText"},
+                  "options": {"type": "array", "minItems": 3, "maxItems": 4, "items": {"$ref": "#/$defs/option"}}
+                }
+              }
+            }
+          }
+        },
+        "finalAnswer": {
+          "type": "object", "additionalProperties": false,
+          "required": ["choice", "value"],
+          "properties": {
+            "choice": {"$ref": "#/$defs/choice"},
+            "value": {"$ref": "#/$defs/shortText"},
+            "check": {"$ref": "#/$defs/check"}
+          }
+        },
+        "levels": {
+          "type": "object", "additionalProperties": false,
+          "required": ["sezgi", "kisayol"],
+          "properties": {
+            "sezgi": {"$ref": "#/$defs/text"},
+            "kisayol": {"type": ["string", "null"], "maxLength": 1200}
+          }
+        }
+      }
+    },
+    "misconceptions": {
+      "type": "array", "minItems": 1, "maxItems": 5,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "choice", "mistake", "cause", "fix", "guidingQuestion"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^m[0-9]{1,2}$"},
+          "choice": {"oneOf": [{"$ref": "#/$defs/choice"}, {"type": "null"}]},
+          "mistake": {"$ref": "#/$defs/shortText"},
+          "cause": {"$ref": "#/$defs/shortText"},
+          "fix": {"$ref": "#/$defs/shortText"},
+          "guidingQuestion": {"$ref": "#/$defs/shortText"},
+          "check": {"$ref": "#/$defs/check"}
+        }
+      }
+    },
+    "alternative": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["title", "text"],
+         "properties": {"title": {"type": "string", "minLength": 3, "maxLength": 120}, "text": {"$ref": "#/$defs/text"},
+                        "check": {"$ref": "#/$defs/check"}}}
+      ]
+    },
+    "visual": {
+      "description": "Yalnız anlamaya katkı sağlıyorsa önerilir. PRE görsel sonucu göstermez; POST görsel çözüm sonrası açılır. Parametreler ön yüzdeki şablon doğrulayıcısından geçer.",
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["recommended", "reason"],
+         "properties": {"recommended": {"const": false}, "reason": {"$ref": "#/$defs/shortText"}}},
+        {"type": "object", "additionalProperties": false,
+         "required": ["recommended", "reason", "stage", "template", "title", "params", "frames"],
+         "properties": {
+           "recommended": {"const": true},
+           "reason": {"$ref": "#/$defs/shortText"},
+           "stage": {"enum": ["PRE", "POST"]},
+           "template": {"enum": ["number-line", "timeline", "plot", "geometry", "diagram", "venn", "tokens", "bar-model",
+                                 "particles", "motion", "grid", "circuit", "sun-angle", "truth-table"]},
+           "title": {"type": "string", "minLength": 3, "maxLength": 120},
+           "params": {"type": "object"},
+           "frames": {"type": "array", "minItems": 1, "maxItems": 12,
+                      "items": {"type": "object", "required": ["caption"],
+                                "properties": {"caption": {"$ref": "#/$defs/shortText"}}}},
+           "predict": {
+             "type": "object", "additionalProperties": false, "required": ["prompt", "options"],
+             "properties": {"prompt": {"$ref": "#/$defs/shortText"},
+                            "options": {"type": "array", "minItems": 2, "maxItems": 4, "items": {"$ref": "#/$defs/option"}}}
+           }
+         }}
+      ]
+    },
+    "twin": {
+      "description": "Aynı derin yapı, farklı yüzey. Kaynak sorunun kopyası değildir; cevabı doğrulanır.",
+      "type": "object", "additionalProperties": false,
+      "required": ["text", "choices", "answer", "solution"],
+      "properties": {
+        "text": {"type": "string", "minLength": 10, "maxLength": 2000},
+        "choices": {"$ref": "#/$defs/choiceMap"},
+        "answer": {"$ref": "#/$defs/choice"},
+        "solution": {"$ref": "#/$defs/text"},
+        "choiceValues": {"$ref": "#/$defs/choiceMap"},
+        "check": {"$ref": "#/$defs/check"}
+      }
+    },
+    "choiceValues": {
+      "description": "Sayısal sorularda şıkların SymPy ifadesi; sözel sorularda null.",
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/choiceMap"}]
+    },
+    "sources": {
+      "type": "array", "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["type", "reference", "note"],
+        "properties": {
+          "type": {"enum": ["OGM_PDF", "QUESTION_SOURCE", "CURRICULUM"]},
+          "reference": {"type": "string", "minLength": 1, "maxLength": 300},
+          "page": {"type": "integer", "minimum": 1},
+          "note": {"$ref": "#/$defs/shortText"}
+        }
+      }
+    },
+    "generation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["generator", "tier", "promptVersion", "createdAt"],
+      "properties": {
+        "generator": {"type": "string", "minLength": 1, "maxLength": 120},
+        "tier": {"enum": ["ECONOMIC", "STRONG", "HUMAN"]},
+        "promptVersion": {"type": "string", "minLength": 1, "maxLength": 60},
+        "createdAt": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

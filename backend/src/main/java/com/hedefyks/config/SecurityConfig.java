@@ -7,8 +7,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,18 +51,43 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http, ObjectMapper mapper, SecurityContextRepository contextRepository)
+    SecurityFilterChain filterChain(HttpSecurity http, ObjectMapper mapper,
+                                    SecurityContextRepository contextRepository,
+                                    @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies,
+                                    @Value("${app.csrf-cookie-name:XSRF-TOKEN}") String csrfCookieName)
             throws Exception {
+        CookieCsrfTokenRepository csrfTokens = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        csrfTokens.setCookieName(csrfCookieName);
+        if (secureCookies) {
+            csrfTokens.setCookieCustomizer(cookie -> cookie.secure(true));
+        }
         http
                 .securityContext(c -> c.securityContextRepository(contextRepository))
                 .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrfTokenRepository(csrfTokens)
                         .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler()))
+                .headers(headers -> {
+                    headers.frameOptions(frame -> frame.disable());
+                    headers.addHeaderWriter((request, response) -> response.setHeader("X-Frame-Options",
+                            request.getRequestURI().matches("^/api/topic-pdfs/[0-9]+/file$|^/api/learning-resources/pdf/[0-9]+$")
+                                    ? "SAMEORIGIN" : "DENY"));
+                    if (secureCookies) {
+                        headers.httpStrictTransportSecurity(hsts -> hsts
+                                .requestMatcher(request -> true)
+                                .includeSubDomains(false)
+                                .maxAgeInSeconds(15552000));
+                    }
+                })
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/dev-login", "/api/auth/dev-physics-review-login", "/api/auth/dev-teacher-review-login").permitAll()
+                        .requestMatchers("/api/admin/stats").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/**").denyAll()
+                        .requestMatchers("/api/operator/**").hasRole("OPERATOR")
+                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/auth/dev-review-available", "/api/account/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/questions/*/image", "/api/questions/*/solution-image")
+                            .hasAnyRole("USER", "OPERATOR")
+                        .requestMatchers("/api/**").hasRole("USER")
                         .anyRequest().permitAll())                      // ön yüz dosyaları
                 .exceptionHandling(e -> e
                         .authenticationEntryPoint((req, res, ex) ->

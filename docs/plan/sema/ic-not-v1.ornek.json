@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "note_id": "ogm-note:6342a710662d876b4b633d8d0026807b",
+  "source": {
+    "catalog_id": 1099,
+    "source_code": "ogm:4515ef40f4138b75",
+    "pdf_sha256": "f316e8d16b41e3f1041d3009e0b8dcf2ad87a078e320ad6cb87177981321dbf4"
+  },
+  "pages": {"start": 1, "end": 1},
+  "heading_path": ["NOKTALAMA İŞARETLERİ"],
+  "topic": {"code": "tyt.turkce.noktalama", "status": "candidate"},
+  "content": {"text": null, "method": "pending", "elements": []},
+  "review": {"status": "draft", "version": 1}
+}

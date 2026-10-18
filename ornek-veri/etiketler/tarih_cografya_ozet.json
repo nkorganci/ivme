@@ -1,0 +1,93 @@
+{
+  "blank_labels": 0,
+  "by_evidence_type": {
+    "existing_parent_topic": 2493,
+    "legacy_subtopic_annotation": 90,
+    "official_pdf_question_text": 1,
+    "ogm_learning_outcome": 4022,
+    "outgoing_catalog_topic": 341,
+    "pdf_section_heading": 8628,
+    "question_text_anchor": 45
+  },
+  "by_group": [
+    {
+      "bank": "CIKMIS",
+      "count": 54,
+      "exam_type": "AYT",
+      "subject": "Coğrafya-1"
+    },
+    {
+      "bank": "CIKMIS",
+      "count": 99,
+      "exam_type": "AYT",
+      "subject": "Coğrafya-2"
+    },
+    {
+      "bank": "CIKMIS",
+      "count": 90,
+      "exam_type": "AYT",
+      "subject": "Tarih-1"
+    },
+    {
+      "bank": "CIKMIS",
+      "count": 99,
+      "exam_type": "AYT",
+      "subject": "Tarih-2"
+    },
+    {
+      "bank": "CIKMIS",
+      "count": 45,
+      "exam_type": "TYT",
+      "subject": "Coğrafya"
+    },
+    {
+      "bank": "CIKMIS",
+      "count": 45,
+      "exam_type": "TYT",
+      "subject": "Tarih"
+    },
+    {
+      "bank": "OGM",
+      "count": 4003,
+      "exam_type": "AYT",
+      "subject": "Coğrafya"
+    },
+    {
+      "bank": "OGM",
+      "count": 3789,
+      "exam_type": "AYT",
+      "subject": "Tarih"
+    },
+    {
+      "bank": "OGM",
+      "count": 3358,
+      "exam_type": "TYT",
+      "subject": "Coğrafya"
+    },
+    {
+      "bank": "OGM",
+      "count": 4038,
+      "exam_type": "TYT",
+      "subject": "Tarih"
+    }
+  ],
+  "officially_cancelled_active_question": [
+    "2019-AYT-TDE-33"
+  ],
+  "possible_subject_error": [
+    "cd-2021-mini-deneme-2-01-23"
+  ],
+  "review_required": 6992,
+  "schema": "tarih-cografya-kaynakli-etiket-v1",
+  "source_files": [
+    "veri/sorular-tum.csv",
+    "veri/sorular-ogm.csv",
+    "veri-hatti/ogm-yks-cikmis/ham/sorular_son.json",
+    "veri-hatti/ogm-yks-cikmis/ham/eski/questions.json",
+    "veri-hatti/ogm-sorular/kayit/*.json",
+    "https://dokuman.osym.gov.tr/pdfdokuman/2019/YKS/TSK/ayt_yks_2019_web.pdf",
+    "https://www.osym.gov.tr/2019yks-yuksekogretim-kurumlari-sinavi-2019yks-sonuclari-aciklandi"
+  ],
+  "still_unclassified": 0,
+  "total": 15620
+}

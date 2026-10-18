@@ -1,0 +1,3469 @@
+{
+  "checkedOn": "2026-10-13",
+  "teachers": [
+    {
+      "id": "ozcan",
+      "name": "Özcan Aykın",
+      "channel": "https://www.youtube.com/channel/UC_IRxSYYyDa4Li9lxAM4xbQ"
+    },
+    {
+      "id": "altug",
+      "name": "Altuğ Güneş",
+      "channel": "https://www.youtube.com/channel/UCx4651yGDx7DR6KiyxG_CUA"
+    }
+  ],
+  "topics": [
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Fizik bilimine giriş",
+      "lessons": [
+        {
+          "title": "Fiziğin alt dalları",
+          "videos": [
+            {
+              "id": "1Hg2eF907YA",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 1. Gün | Fizik Bilimine Giriş - 1 | Fiziğin Alt Dalları | 2027",
+              "url": "https://www.youtube.com/watch?v=1Hg2eF907YA",
+              "qr": "/ders-videolari/qr/1Hg2eF907YA.svg"
+            },
+            {
+              "id": "9prZgT-kOB8",
+              "teacher": "altug",
+              "title": "Fizik Bilimine Giriş - Fiziğin Alt Dalları",
+              "url": "https://www.youtube.com/watch?v=9prZgT-kOB8",
+              "qr": "/ders-videolari/qr/9prZgT-kOB8.svg"
+            }
+          ]
+        },
+        {
+          "title": "Fiziksel büyüklükler ve SI birimleri",
+          "videos": [
+            {
+              "id": "7aVrdQ7uSQ4",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 1. Gün | Fizik Bilimine Giriş - 2 | Fiziksel Büyüklükler | 2027",
+              "url": "https://www.youtube.com/watch?v=7aVrdQ7uSQ4",
+              "qr": "/ders-videolari/qr/7aVrdQ7uSQ4.svg"
+            },
+            {
+              "id": "I5akIA1XAKM",
+              "teacher": "altug",
+              "title": "Fizik Bilimine Giriş - Temel ve Türetilmiş Büyüklükler",
+              "url": "https://www.youtube.com/watch?v=I5akIA1XAKM",
+              "qr": "/ders-videolari/qr/I5akIA1XAKM.svg"
+            },
+            {
+              "id": "Wn_YiUI2OhQ",
+              "teacher": "altug",
+              "title": "Fizik Bilimine Giriş - Skaler ve Vektörel Büyüklükler",
+              "url": "https://www.youtube.com/watch?v=Wn_YiUI2OhQ",
+              "qr": "/ders-videolari/qr/Wn_YiUI2OhQ.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Madde ve özellikleri",
+      "lessons": [
+        {
+          "title": "Kütle, hacim ve birim dönüşümleri",
+          "videos": [
+            {
+              "id": "Mhgsu-3ZLNA",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 2. Gün | Madde ve Özellikleri - 1 | Kütle ve Hacim Kavramları | 2027",
+              "url": "https://www.youtube.com/watch?v=Mhgsu-3ZLNA",
+              "qr": "/ders-videolari/qr/Mhgsu-3ZLNA.svg"
+            },
+            {
+              "id": "Nutjo1P03Ig",
+              "teacher": "altug",
+              "title": "Madde ve Özellikleri / Kütle - Hacim Kavramları Dönüşümler",
+              "url": "https://www.youtube.com/watch?v=Nutjo1P03Ig",
+              "qr": "/ders-videolari/qr/Nutjo1P03Ig.svg"
+            }
+          ]
+        },
+        {
+          "title": "Özkütle ve karışımlar",
+          "videos": [
+            {
+              "id": "tv64WNuMGn8",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 2. Gün | Madde ve Özellikleri - 2 | Özkütle | 2027",
+              "url": "https://www.youtube.com/watch?v=tv64WNuMGn8",
+              "qr": "/ders-videolari/qr/tv64WNuMGn8.svg"
+            },
+            {
+              "id": "OSpkdUAQ41o",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 3. Gün | Madde ve Özellikleri - 3 | Karışımların Özkütlesi | 2027",
+              "url": "https://www.youtube.com/watch?v=OSpkdUAQ41o",
+              "qr": "/ders-videolari/qr/OSpkdUAQ41o.svg"
+            },
+            {
+              "id": "s4UGL9A36ok",
+              "teacher": "altug",
+              "title": "6) 45 Günde TYT Fizik Tarz Kampı | Madde ve Özellikleri | Özkütle Kavramı ve Özellikleri",
+              "url": "https://www.youtube.com/watch?v=s4UGL9A36ok",
+              "qr": "/ders-videolari/qr/s4UGL9A36ok.svg"
+            },
+            {
+              "id": "jcGAgCYkC6w",
+              "teacher": "altug",
+              "title": "7) 45 Günde TYT Fizik Tarz Kampı | Madde ve Özellikleri | Özkütle Grafikleri ve Gazların Özkütlesi",
+              "url": "https://www.youtube.com/watch?v=jcGAgCYkC6w",
+              "qr": "/ders-videolari/qr/jcGAgCYkC6w.svg"
+            }
+          ]
+        },
+        {
+          "title": "Dayanıklılık",
+          "videos": [
+            {
+              "id": "UrMwq39KF2c",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 4. Gün | Madde ve Özellikleri - 4 | Dayanıklılık | 2027",
+              "url": "https://www.youtube.com/watch?v=UrMwq39KF2c",
+              "qr": "/ders-videolari/qr/UrMwq39KF2c.svg"
+            },
+            {
+              "id": "imhi4ANQ40M",
+              "teacher": "altug",
+              "title": "9) 45 Günde TYT Fizik Tarz Kampı | Madde ve Özellikleri | Dayanıklılık Kavramı",
+              "url": "https://www.youtube.com/watch?v=imhi4ANQ40M",
+              "qr": "/ders-videolari/qr/imhi4ANQ40M.svg"
+            }
+          ]
+        },
+        {
+          "title": "Adezyon, kohezyon, yüzey gerilimi ve kılcallık",
+          "videos": [
+            {
+              "id": "koNn8x3g9lI",
+              "teacher": "ozcan",
+              "title": "Adezyon, Kohezyon, Yüzey Gerilimi ve Kılcallık | Gösteri Deneyleri | Madde ve Özellikleri | PDF",
+              "url": "https://www.youtube.com/watch?v=koNn8x3g9lI",
+              "qr": "/ders-videolari/qr/koNn8x3g9lI.svg"
+            },
+            {
+              "id": "i1Tf7Vm87kk",
+              "teacher": "altug",
+              "title": "Madde ve Özellikleri / Dayanıklılık, Adezyon ve Kohezyon Kavramı",
+              "url": "https://www.youtube.com/watch?v=i1Tf7Vm87kk",
+              "qr": "/ders-videolari/qr/i1Tf7Vm87kk.svg"
+            },
+            {
+              "id": "Jnl0l6K56GI",
+              "teacher": "altug",
+              "title": "Madde ve Özellikleri / Yüzey Gerilimi ve Etki Eden Faktörler",
+              "url": "https://www.youtube.com/watch?v=Jnl0l6K56GI",
+              "qr": "/ders-videolari/qr/Jnl0l6K56GI.svg"
+            },
+            {
+              "id": "B7gMdD_9f1Q",
+              "teacher": "altug",
+              "title": "Madde ve Özellikleri / Kılcallık Kavramı, Adezyon, Kohezyon Çözümlü Örnek Sorular ( Konu Anlatım )",
+              "url": "https://www.youtube.com/watch?v=B7gMdD_9f1Q",
+              "qr": "/ders-videolari/qr/B7gMdD_9f1Q.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Hareket ve kuvvet",
+      "lessons": [
+        {
+          "title": "Konum, alınan yol, yer değiştirme, hız ve sürat",
+          "videos": [
+            {
+              "id": "Qp211SqOGJ4",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 6. Gün | Hareket - 1 | Temel Kavramlar | 2026",
+              "url": "https://www.youtube.com/watch?v=Qp211SqOGJ4",
+              "qr": "/ders-videolari/qr/Qp211SqOGJ4.svg"
+            },
+            {
+              "id": "NDR-TopYBD8",
+              "teacher": "ozcan",
+              "title": "Hareket-3 | Ortalama Sürat-Hız, İvme | Simülasyon + PDF",
+              "url": "https://www.youtube.com/watch?v=NDR-TopYBD8",
+              "qr": "/ders-videolari/qr/NDR-TopYBD8.svg"
+            },
+            {
+              "id": "6YQH8OKbeak",
+              "teacher": "altug",
+              "title": "Düzgün Doğrusal Hareket - Hareket Çeşitleri, Konum Alınan Yol Kavramları",
+              "url": "https://www.youtube.com/watch?v=6YQH8OKbeak",
+              "qr": "/ders-videolari/qr/6YQH8OKbeak.svg"
+            },
+            {
+              "id": "mENy4refuo0",
+              "teacher": "altug",
+              "title": "Düzgün Doğrusal Hareket - Ortalama Hız Kavramı Örnek Sorular",
+              "url": "https://www.youtube.com/watch?v=mENy4refuo0",
+              "qr": "/ders-videolari/qr/mENy4refuo0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Düzgün doğrusal hareket ve ivme",
+          "videos": [
+            {
+              "id": "C2lKjxiLnkE",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 6. Gün | Hareket - 2 | Düzgün Doğrusal Hareket | 2026",
+              "url": "https://www.youtube.com/watch?v=C2lKjxiLnkE",
+              "qr": "/ders-videolari/qr/C2lKjxiLnkE.svg"
+            },
+            {
+              "id": "Cl43P5zbPeo",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 7. Gün | Hareket - 3 | İvme | 2026",
+              "url": "https://www.youtube.com/watch?v=Cl43P5zbPeo",
+              "qr": "/ders-videolari/qr/Cl43P5zbPeo.svg"
+            },
+            {
+              "id": "iJ6W3oOsk9s",
+              "teacher": "altug",
+              "title": "Sabit süratli hareket",
+              "url": "https://www.youtube.com/watch?v=iJ6W3oOsk9s",
+              "qr": "/ders-videolari/qr/iJ6W3oOsk9s.svg",
+              "sourceTitle": "16) TYT Physics Style Camp in 45 Days | Uniform Linear Motion | Motion with Constant Speed"
+            },
+            {
+              "id": "ulDUcFXKnV4",
+              "teacher": "altug",
+              "title": "İvme kavramı",
+              "url": "https://www.youtube.com/watch?v=ulDUcFXKnV4",
+              "qr": "/ders-videolari/qr/ulDUcFXKnV4.svg",
+              "sourceTitle": "17) 45-Day TYT Physics Style Bootcamp | Uniform Linear Motion | The Concept of Acceleration"
+            }
+          ]
+        },
+        {
+          "title": "Temel kuvvetler ve bileşke kuvvet",
+          "videos": [
+            {
+              "id": "VwxSW7Rmr2U",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 8. Gün | Kuvvet - 1 | Temel Kuvvetler ve Bileşke Kuvvet | 2026",
+              "url": "https://www.youtube.com/watch?v=VwxSW7Rmr2U",
+              "qr": "/ders-videolari/qr/VwxSW7Rmr2U.svg"
+            },
+            {
+              "id": "PQDLzkx2KgI",
+              "teacher": "altug",
+              "title": "Kuvvet kavramı",
+              "url": "https://www.youtube.com/watch?v=PQDLzkx2KgI",
+              "qr": "/ders-videolari/qr/PQDLzkx2KgI.svg",
+              "sourceTitle": "22) TYT Physics Style Camp in 45 Days | Newton's Laws of Motion | The Concept of Force"
+            },
+            {
+              "id": "whZdlfBKtJ0",
+              "teacher": "altug",
+              "title": "Bileşke kuvvet",
+              "url": "https://www.youtube.com/watch?v=whZdlfBKtJ0",
+              "qr": "/ders-videolari/qr/whZdlfBKtJ0.svg",
+              "sourceTitle": "23) TYT Physics Style Camp in 45 Days | Newton's Laws of Motion | The Concept of Resultant Force"
+            }
+          ]
+        },
+        {
+          "title": "Newton’ın hareket yasaları",
+          "videos": [
+            {
+              "id": "8pWbsm5Fz9U",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 8. Gün | Kuvvet - 2 | Newton'ın Hareket Yasaları | 2026",
+              "url": "https://www.youtube.com/watch?v=8pWbsm5Fz9U",
+              "qr": "/ders-videolari/qr/8pWbsm5Fz9U.svg"
+            },
+            {
+              "id": "DjqPL2eMzVM",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 9. Gün | Kuvvet - 3 | Newton'ın Hareket Yasaları | 2026",
+              "url": "https://www.youtube.com/watch?v=DjqPL2eMzVM",
+              "qr": "/ders-videolari/qr/DjqPL2eMzVM.svg"
+            },
+            {
+              "id": "xFKt74f81oE",
+              "teacher": "altug",
+              "title": "Eylemsizlik ve dinamiğin temel prensibi",
+              "url": "https://www.youtube.com/watch?v=xFKt74f81oE",
+              "qr": "/ders-videolari/qr/xFKt74f81oE.svg",
+              "sourceTitle": "24) 45-Day TYT Physics Style Bootcamp | Newton's Laws of Motion | Principle of Inertia and Dynamics"
+            },
+            {
+              "id": "8mnH1N7KI_o",
+              "teacher": "altug",
+              "title": "25) 45 Günde TYT Fizik Tarz Kampı | Newton'un Hareket Yasaları |  Etki Tepki Yasası",
+              "url": "https://www.youtube.com/watch?v=8mnH1N7KI_o",
+              "qr": "/ders-videolari/qr/8mnH1N7KI_o.svg"
+            }
+          ]
+        },
+        {
+          "title": "Sürtünme kuvveti",
+          "videos": [
+            {
+              "id": "Q7E-K88RTfw",
+              "teacher": "ozcan",
+              "title": "Sürtünme Kuvveti | Simülasyon + Pdf Destekli",
+              "url": "https://www.youtube.com/watch?v=Q7E-K88RTfw",
+              "qr": "/ders-videolari/qr/Q7E-K88RTfw.svg"
+            },
+            {
+              "id": "4af6f1fzcH0",
+              "teacher": "altug",
+              "title": "Newton'un Hareket Yasaları - Sürtünme Kuvveti, Statik ve Kinetik Sürtünme",
+              "url": "https://www.youtube.com/watch?v=4af6f1fzcH0",
+              "qr": "/ders-videolari/qr/4af6f1fzcH0.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "İş, güç ve enerji",
+      "lessons": [
+        {
+          "title": "İş kavramı, iş–enerji ilişkisi ve güç",
+          "videos": [
+            {
+              "id": "D07mKe56Eis",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 11. Gün | İş, Güç, Enerji - 1| İş Kavramı | 2026",
+              "url": "https://www.youtube.com/watch?v=D07mKe56Eis",
+              "qr": "/ders-videolari/qr/D07mKe56Eis.svg"
+            },
+            {
+              "id": "Bidoa76lgEk",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 12. Gün | İş, Güç, Enerji - 3 | Enerjinin Korunumu ve Güç | 2026",
+              "url": "https://www.youtube.com/watch?v=Bidoa76lgEk",
+              "qr": "/ders-videolari/qr/Bidoa76lgEk.svg"
+            },
+            {
+              "id": "cMt0M79C7ko",
+              "teacher": "altug",
+              "title": "İş, Güç ve Enerji - İş Kavramı ve Fizikte İş Yapılan Durumlar",
+              "url": "https://www.youtube.com/watch?v=cMt0M79C7ko",
+              "qr": "/ders-videolari/qr/cMt0M79C7ko.svg"
+            },
+            {
+              "id": "pUxWOXwUHBA",
+              "teacher": "altug",
+              "title": "İş, Güç ve Enerji - Fizikte Güç Kavramı & Örnek Sorular",
+              "url": "https://www.youtube.com/watch?v=pUxWOXwUHBA",
+              "qr": "/ders-videolari/qr/pUxWOXwUHBA.svg"
+            }
+          ]
+        },
+        {
+          "title": "Kinetik, potansiyel ve mekanik enerji",
+          "videos": [
+            {
+              "id": "WXs6nUyVJ28",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 11. Gün | İş, Güç, Enerji - 2 | Mekanik Enerji | 2026",
+              "url": "https://www.youtube.com/watch?v=WXs6nUyVJ28",
+              "qr": "/ders-videolari/qr/WXs6nUyVJ28.svg"
+            },
+            {
+              "id": "gtxVcOSJUaE",
+              "teacher": "altug",
+              "title": "32) 45 Günde TYT Fizik Tarz Kampı | İş Güç ve Enerji | Kinetik ve Potansiyel Enerji Kavramı",
+              "url": "https://www.youtube.com/watch?v=gtxVcOSJUaE",
+              "qr": "/ders-videolari/qr/gtxVcOSJUaE.svg"
+            },
+            {
+              "id": "HbG5KzJX7oc",
+              "teacher": "altug",
+              "title": "Mekanik enerji kavramı",
+              "url": "https://www.youtube.com/watch?v=HbG5KzJX7oc",
+              "qr": "/ders-videolari/qr/HbG5KzJX7oc.svg",
+              "sourceTitle": "33) TYT Physics Style Camp in 45 Days | Work, Power and Energy | Concept of Mechanical Energy"
+            }
+          ]
+        },
+        {
+          "title": "Enerji korunumu, verim ve enerji kaynakları",
+          "videos": [
+            {
+              "id": "gK_GV4z-OjU",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 12. Gün | İş, Güç, Enerji - 4 | Verim ve Enerji Kaynakları | 2026",
+              "url": "https://www.youtube.com/watch?v=gK_GV4z-OjU",
+              "qr": "/ders-videolari/qr/gK_GV4z-OjU.svg"
+            },
+            {
+              "id": "yCaKk5QDtS0",
+              "teacher": "altug",
+              "title": "İş, Güç ve Enerji - Enerjinin Korunumu Kavramı",
+              "url": "https://www.youtube.com/watch?v=yCaKk5QDtS0",
+              "qr": "/ders-videolari/qr/yCaKk5QDtS0.svg"
+            },
+            {
+              "id": "KRbpkThH36Y",
+              "teacher": "altug",
+              "title": "Verim ve enerji kaynakları",
+              "url": "https://www.youtube.com/watch?v=KRbpkThH36Y",
+              "qr": "/ders-videolari/qr/KRbpkThH36Y.svg",
+              "sourceTitle": "35) TYT Physics Style Camp in 45 Days | Work, Power and Energy | Efficiency and Energy Sources"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Isı, sıcaklık ve genleşme",
+      "lessons": [
+        {
+          "title": "Isı, sıcaklık, iç enerji ve termometreler",
+          "videos": [
+            {
+              "id": "kGrdvkxHxjA",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 14. Gün | Isı ve Sıcaklık - 1 | İç Enerji, Sıcaklık, Isı | 2026",
+              "url": "https://www.youtube.com/watch?v=kGrdvkxHxjA",
+              "qr": "/ders-videolari/qr/kGrdvkxHxjA.svg"
+            },
+            {
+              "id": "7HIjhLRs-Dc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 14. Gün | Isı ve Sıcaklık - 2 | Sıcaklık Ölçekleri | 2026",
+              "url": "https://www.youtube.com/watch?v=7HIjhLRs-Dc",
+              "qr": "/ders-videolari/qr/7HIjhLRs-Dc.svg"
+            },
+            {
+              "id": "E7NeiUUxogE",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Isı ve Sıcaklık Kavramları",
+              "url": "https://www.youtube.com/watch?v=E7NeiUUxogE",
+              "qr": "/ders-videolari/qr/E7NeiUUxogE.svg"
+            },
+            {
+              "id": "zzOzN5FAwvo",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Termometre Çeşitleri ve Hesaplamaları",
+              "url": "https://www.youtube.com/watch?v=zzOzN5FAwvo",
+              "qr": "/ders-videolari/qr/zzOzN5FAwvo.svg"
+            }
+          ]
+        },
+        {
+          "title": "Öz ısı ve ısı sığası",
+          "videos": [
+            {
+              "id": "VhqHkBN6xMQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 15. Gün | Isı ve Sıcaklık - 3 | Öz Isı ve Isı Sığası | 2026",
+              "url": "https://www.youtube.com/watch?v=VhqHkBN6xMQ",
+              "qr": "/ders-videolari/qr/VhqHkBN6xMQ.svg"
+            },
+            {
+              "id": "Y9DmyidkqCQ",
+              "teacher": "altug",
+              "title": "38) 45 Günde TYT Fizik Tarz Kampı | Isı, Sıcaklık ve Genleşme  | Özısı ve Isı Sığası Kavramı",
+              "url": "https://www.youtube.com/watch?v=Y9DmyidkqCQ",
+              "qr": "/ders-videolari/qr/Y9DmyidkqCQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Hâl değişimi ve grafikler",
+          "videos": [
+            {
+              "id": "3pRu3T0Q03U",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 15. Gün | Isı ve Sıcaklık - 4 | Hal Değişimi | 2026",
+              "url": "https://www.youtube.com/watch?v=3pRu3T0Q03U",
+              "qr": "/ders-videolari/qr/3pRu3T0Q03U.svg"
+            },
+            {
+              "id": "E_6oeK1uAq4",
+              "teacher": "ozcan",
+              "title": "Hal Değişimi - 2 Grafiklerin Yorumlanması | Isı ve Sıcaklık | PDF",
+              "url": "https://www.youtube.com/watch?v=E_6oeK1uAq4",
+              "qr": "/ders-videolari/qr/E_6oeK1uAq4.svg"
+            },
+            {
+              "id": "piBFNcq8N9Q",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Hal Değişimi Kavramı",
+              "url": "https://www.youtube.com/watch?v=piBFNcq8N9Q",
+              "qr": "/ders-videolari/qr/piBFNcq8N9Q.svg"
+            },
+            {
+              "id": "nV2xIAKEKZQ",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Hal Değişim Grafiğinin İncelenmesi",
+              "url": "https://www.youtube.com/watch?v=nV2xIAKEKZQ",
+              "qr": "/ders-videolari/qr/nV2xIAKEKZQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Isıl denge ve ısı iletimi",
+          "videos": [
+            {
+              "id": "Et9F7hhxCCc",
+              "teacher": "ozcan",
+              "title": "Isıl Denge \"Sıcaklıklar Nasıl Eşitleniyor?\" | Isı ve Sıcaklık | Simülasyon + PDF",
+              "url": "https://www.youtube.com/watch?v=Et9F7hhxCCc",
+              "qr": "/ders-videolari/qr/Et9F7hhxCCc.svg"
+            },
+            {
+              "id": "BZNzFmGx0FA",
+              "teacher": "ozcan",
+              "title": "Enerji İletim Yolları ve  İletim Hızı | Isı ve Sıcaklık | PDF",
+              "url": "https://www.youtube.com/watch?v=BZNzFmGx0FA",
+              "qr": "/ders-videolari/qr/BZNzFmGx0FA.svg"
+            },
+            {
+              "id": "souR1o2hGQk",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Isıl Denge Kavramı",
+              "url": "https://www.youtube.com/watch?v=souR1o2hGQk",
+              "qr": "/ders-videolari/qr/souR1o2hGQk.svg"
+            },
+            {
+              "id": "cMi-cuzNTWc",
+              "teacher": "altug",
+              "title": "Isı iletim yolları",
+              "url": "https://www.youtube.com/watch?v=cMi-cuzNTWc",
+              "qr": "/ders-videolari/qr/cMi-cuzNTWc.svg",
+              "sourceTitle": "42) TYT Physics Style Camp in 45 Days | Heat, Temperature and Expansion | Heat Conduction Methods"
+            }
+          ]
+        },
+        {
+          "title": "Genleşme",
+          "videos": [
+            {
+              "id": "brzhvf6-L_I",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 18. Gün | Genleşme - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=brzhvf6-L_I",
+              "qr": "/ders-videolari/qr/brzhvf6-L_I.svg"
+            },
+            {
+              "id": "iOkBQ3GBVk8",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 18. Gün | Genleşme - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=iOkBQ3GBVk8",
+              "qr": "/ders-videolari/qr/iOkBQ3GBVk8.svg"
+            },
+            {
+              "id": "SvlG5EvJpgc",
+              "teacher": "altug",
+              "title": "Isı, Sıcaklık ve Genleşme - Örnek Sorular & Genleşme Kavramı",
+              "url": "https://www.youtube.com/watch?v=SvlG5EvJpgc",
+              "qr": "/ders-videolari/qr/SvlG5EvJpgc.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Basınç",
+      "lessons": [
+        {
+          "title": "Katılarda basınç ve basınç kuvveti",
+          "videos": [
+            {
+              "id": "DnQNBoR_Dsw",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 30. Gün | Basınç - 1 | Katı Basıncı | 2026",
+              "url": "https://www.youtube.com/watch?v=DnQNBoR_Dsw",
+              "qr": "/ders-videolari/qr/DnQNBoR_Dsw.svg"
+            },
+            {
+              "id": "JwS39LEdfwU",
+              "teacher": "altug",
+              "title": "64) 45 Günde TYT Fizik Tarz Kampı | Basınç | Katılarda Basınç ve Basınç Kuvveti",
+              "url": "https://www.youtube.com/watch?v=JwS39LEdfwU",
+              "qr": "/ders-videolari/qr/JwS39LEdfwU.svg"
+            }
+          ]
+        },
+        {
+          "title": "Sıvı basıncı ve Pascal ilkesi",
+          "videos": [
+            {
+              "id": "dkwbOGhBedc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 31. Gün | Basınç - 2 | Sıvı Basıncı - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=dkwbOGhBedc",
+              "qr": "/ders-videolari/qr/dkwbOGhBedc.svg"
+            },
+            {
+              "id": "8XFD833ngJc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 31. Gün | Basınç - 3 | Sıvı Basıncı - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=8XFD833ngJc",
+              "qr": "/ders-videolari/qr/8XFD833ngJc.svg"
+            },
+            {
+              "id": "jOKADXphfC8",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 31. Gün | Basınç - 4 | Sıvı Basıncı - 3 | 2026",
+              "url": "https://www.youtube.com/watch?v=jOKADXphfC8",
+              "qr": "/ders-videolari/qr/jOKADXphfC8.svg"
+            },
+            {
+              "id": "24T8KPMOw4o",
+              "teacher": "altug",
+              "title": "65) 45 Günde TYT Fizik Tarz Kampı | Basınç | Durgun Sıvılarda Basınç",
+              "url": "https://www.youtube.com/watch?v=24T8KPMOw4o",
+              "qr": "/ders-videolari/qr/24T8KPMOw4o.svg"
+            },
+            {
+              "id": "O1xjW7jQ2Rw",
+              "teacher": "altug",
+              "title": "66) 45 Günde TYT Fizik Tarz Kampı | Basınç | Sıvılarda Basınç Kuvveti ve Faktörler",
+              "url": "https://www.youtube.com/watch?v=O1xjW7jQ2Rw",
+              "qr": "/ders-videolari/qr/O1xjW7jQ2Rw.svg"
+            }
+          ]
+        },
+        {
+          "title": "Açık hava ve kapalı kaplarda gaz basıncı",
+          "videos": [
+            {
+              "id": "bYnkDV0LJ5o",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 32. Gün | Basınç - 5 | Açık Hava Basıncı | 2026",
+              "url": "https://www.youtube.com/watch?v=bYnkDV0LJ5o",
+              "qr": "/ders-videolari/qr/bYnkDV0LJ5o.svg"
+            },
+            {
+              "id": "8EvdMuWG6kU",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 32. Gün | Basınç - 6 | Kapalı Kaplarda Gaz Basıncı | 2026",
+              "url": "https://www.youtube.com/watch?v=8EvdMuWG6kU",
+              "qr": "/ders-videolari/qr/8EvdMuWG6kU.svg"
+            },
+            {
+              "id": "3H2mFv0T72o",
+              "teacher": "altug",
+              "title": "42) 60 Günde TYT Fizik Kampı -  Gazlarda Basınç, Açık Hava Basıncı ve Basınç Sistemleri / 42. Gün",
+              "url": "https://www.youtube.com/watch?v=3H2mFv0T72o",
+              "qr": "/ders-videolari/qr/3H2mFv0T72o.svg"
+            }
+          ]
+        },
+        {
+          "title": "Akışkan basıncı ve Bernoulli ilkesi",
+          "videos": [
+            {
+              "id": "1Q3CtzfV1lQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 33. Gün | Basınç - 8 | Akışkanların Basıncı | 2026",
+              "url": "https://www.youtube.com/watch?v=1Q3CtzfV1lQ",
+              "qr": "/ders-videolari/qr/1Q3CtzfV1lQ.svg"
+            },
+            {
+              "id": "qDYxiM2IQDI",
+              "teacher": "altug",
+              "title": "43) 60 Günde TYT Fizik Kampı -  Bernoulli İlkesi ve Akışkanların Basınç Hız İlişkisi / 43. Gün",
+              "url": "https://www.youtube.com/watch?v=qDYxiM2IQDI",
+              "qr": "/ders-videolari/qr/qDYxiM2IQDI.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Kaldırma kuvveti",
+      "lessons": [
+        {
+          "title": "Arşimet ilkesi; yüzme, batma ve askıda kalma",
+          "videos": [
+            {
+              "id": "XQHH2VV1Bbk",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 35. Gün | Kaldırma Kuvveti - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=XQHH2VV1Bbk",
+              "qr": "/ders-videolari/qr/XQHH2VV1Bbk.svg"
+            },
+            {
+              "id": "IX2LZ_CYJQI",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 35. Gün | Kaldırma Kuvveti - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=IX2LZ_CYJQI",
+              "qr": "/ders-videolari/qr/IX2LZ_CYJQI.svg"
+            },
+            {
+              "id": "uZhEa5Bu2DY",
+              "teacher": "altug",
+              "title": "45) 60 Günde TYT Fizik Kampı -  Kaldırma Kuvveti Nedir? Kaldırma Kuvveti Kavramı / 45. Gün",
+              "url": "https://www.youtube.com/watch?v=uZhEa5Bu2DY",
+              "qr": "/ders-videolari/qr/uZhEa5Bu2DY.svg"
+            },
+            {
+              "id": "MYtX_9G7pck",
+              "teacher": "altug",
+              "title": "72) 45 Günde TYT Fizik Tarz Kampı | Kaldırma Kuvveti | Sıvı İçerisinde Cisimlerin Dengesi",
+              "url": "https://www.youtube.com/watch?v=MYtX_9G7pck",
+              "qr": "/ders-videolari/qr/MYtX_9G7pck.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Elektrostatik",
+      "lessons": [
+        {
+          "title": "Elektrik yükleri ve elektriklenme çeşitleri",
+          "videos": [
+            {
+              "id": "jLdxW888qsg",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 19. Gün | Elektrostatik - 1 | Elektrik Yükleri | 2026",
+              "url": "https://www.youtube.com/watch?v=jLdxW888qsg",
+              "qr": "/ders-videolari/qr/jLdxW888qsg.svg"
+            },
+            {
+              "id": "xieg5ohrPGs",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 19. Gün | Elektrostatik - 2 | Elektriklenme Çeşitleri | 2026",
+              "url": "https://www.youtube.com/watch?v=xieg5ohrPGs",
+              "qr": "/ders-videolari/qr/xieg5ohrPGs.svg"
+            },
+            {
+              "id": "o5wCGhvZhmk",
+              "teacher": "altug",
+              "title": "Elektrostatik ve sürtünme ile elektriklenme",
+              "url": "https://www.youtube.com/watch?v=o5wCGhvZhmk",
+              "qr": "/ders-videolari/qr/o5wCGhvZhmk.svg",
+              "sourceTitle": "44) TYT Physics Style Camp in 45 Days | Electrostatics | Electrostatics and Frictional Electricity"
+            },
+            {
+              "id": "-FdrdLb2k4w",
+              "teacher": "altug",
+              "title": "45) 45 Günde TYT Fizik Tarz Kampı | Elektrostatik | Dokunma ile Elektriklenme",
+              "url": "https://www.youtube.com/watch?v=-FdrdLb2k4w",
+              "qr": "/ders-videolari/qr/-FdrdLb2k4w.svg"
+            },
+            {
+              "id": "1eciDmLVGWQ",
+              "teacher": "altug",
+              "title": "46) 45 Günde TYT Fizik Tarz Kampı | Elektrostatik | Etki ile Elektriklenme",
+              "url": "https://www.youtube.com/watch?v=1eciDmLVGWQ",
+              "qr": "/ders-videolari/qr/1eciDmLVGWQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Elektroskop, iletkenler, yalıtkanlar ve topraklama",
+          "videos": [
+            {
+              "id": "NqzDtAGqbQY",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 20. Gün | Elektrostatik - 3 | Elektroskop | 2026",
+              "url": "https://www.youtube.com/watch?v=NqzDtAGqbQY",
+              "qr": "/ders-videolari/qr/NqzDtAGqbQY.svg"
+            },
+            {
+              "id": "AL7H47SY968",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 20. Gün | Elektrostatik - 4 | İletken ve Yalıtkanlar, Topraklama | 2026",
+              "url": "https://www.youtube.com/watch?v=AL7H47SY968",
+              "qr": "/ders-videolari/qr/AL7H47SY968.svg"
+            },
+            {
+              "id": "R5qjR88QVZE",
+              "teacher": "altug",
+              "title": "28) Elektrostatik / Elektroskop, Topraklanma, | TYT Fizik Kampı 2023  ( 28. Gün )",
+              "url": "https://www.youtube.com/watch?v=R5qjR88QVZE",
+              "qr": "/ders-videolari/qr/R5qjR88QVZE.svg"
+            },
+            {
+              "id": "kUmKEjW7knQ",
+              "teacher": "altug",
+              "title": "Elektrostatik - İletken ve Yalıtkan Maddelerde Yük Dağılımı",
+              "url": "https://www.youtube.com/watch?v=kUmKEjW7knQ",
+              "qr": "/ders-videolari/qr/kUmKEjW7knQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Coulomb kuvveti ve elektrik alan",
+          "videos": [
+            {
+              "id": "qb2_VWVm_oQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 21. Gün | Elektrostatik - 5 | Coulomb Kuvveti | 2026",
+              "url": "https://www.youtube.com/watch?v=qb2_VWVm_oQ",
+              "qr": "/ders-videolari/qr/qb2_VWVm_oQ.svg"
+            },
+            {
+              "id": "u2Y616NLBBs",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 21. Gün | Elektrostatik - 6 | Elektrik Alan | 2026",
+              "url": "https://www.youtube.com/watch?v=u2Y616NLBBs",
+              "qr": "/ders-videolari/qr/u2Y616NLBBs.svg"
+            },
+            {
+              "id": "MvQuoxFj33g",
+              "teacher": "altug",
+              "title": "50) 45 Günde TYT Fizik Tarz Kampı | Elektrostatik | Coulomb Kuvveti ve Özellikleri",
+              "url": "https://www.youtube.com/watch?v=MvQuoxFj33g",
+              "qr": "/ders-videolari/qr/MvQuoxFj33g.svg"
+            },
+            {
+              "id": "GG1s-chUgi4",
+              "teacher": "altug",
+              "title": "Elektrik alan nedir?",
+              "url": "https://www.youtube.com/watch?v=GG1s-chUgi4",
+              "qr": "/ders-videolari/qr/GG1s-chUgi4.svg",
+              "sourceTitle": "51) TYT Physics Style Camp in 45 Days | Electrostatics | What is an Electric Field?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Elektrik akımı ve devreler",
+      "lessons": [
+        {
+          "title": "Elektrik akımı, potansiyel fark, direnç ve Ohm yasası",
+          "videos": [
+            {
+              "id": "eFizWwjLopQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 23. Gün | Elektrik Akımı - 1 | Elektrik Akımı ve Potansiyel Fark | 2026",
+              "url": "https://www.youtube.com/watch?v=eFizWwjLopQ",
+              "qr": "/ders-videolari/qr/eFizWwjLopQ.svg"
+            },
+            {
+              "id": "Tap34nISlqg",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 23. Gün | Elektrik Akımı - 2 | Direnç | 2026",
+              "url": "https://www.youtube.com/watch?v=Tap34nISlqg",
+              "qr": "/ders-videolari/qr/Tap34nISlqg.svg"
+            },
+            {
+              "id": "uq9Q7seOe28",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 24. Gün | Elektrik Devreleri - 1 | Ohm Yasası | 2026",
+              "url": "https://www.youtube.com/watch?v=uq9Q7seOe28",
+              "qr": "/ders-videolari/qr/uq9Q7seOe28.svg"
+            },
+            {
+              "id": "g_LP9RjJTNo",
+              "teacher": "altug",
+              "title": "Elektrik akımı nasıl oluşur?",
+              "url": "https://www.youtube.com/watch?v=g_LP9RjJTNo",
+              "qr": "/ders-videolari/qr/g_LP9RjJTNo.svg",
+              "sourceTitle": "56) TYT Physics Style Camp in 45 Days | Electric Circuits | How is Electric Current Formed?"
+            },
+            {
+              "id": "HSNDjxDFkCE",
+              "teacher": "altug",
+              "title": "Elektrik Devreleri - Direnç Kavramı. Direnci Etkileyen Faktörler.",
+              "url": "https://www.youtube.com/watch?v=HSNDjxDFkCE",
+              "qr": "/ders-videolari/qr/HSNDjxDFkCE.svg"
+            },
+            {
+              "id": "Qyv1xGBl68A",
+              "teacher": "altug",
+              "title": "58) 45 Günde TYT Fizik Tarz Kampı | Elektrik Devreleri | Ohm Yasası ve Özellikleri",
+              "url": "https://www.youtube.com/watch?v=Qyv1xGBl68A",
+              "qr": "/ders-videolari/qr/Qyv1xGBl68A.svg"
+            }
+          ]
+        },
+        {
+          "title": "Seri ve paralel dirençler, üreteçler",
+          "videos": [
+            {
+              "id": "urZkI2qOtYo",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 24. Gün | Elektrik Devreleri - 2 | Dirençlerin Bağlanması | 2026",
+              "url": "https://www.youtube.com/watch?v=urZkI2qOtYo",
+              "qr": "/ders-videolari/qr/urZkI2qOtYo.svg"
+            },
+            {
+              "id": "MjctdUFHILE",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 25. Gün | Elektrik Devreleri - 3 | Üreteçlerin Bağlanması | 2026",
+              "url": "https://www.youtube.com/watch?v=MjctdUFHILE",
+              "qr": "/ders-videolari/qr/MjctdUFHILE.svg"
+            },
+            {
+              "id": "Y6RH8YLe_6s",
+              "teacher": "altug",
+              "title": "Elektrik Devreleri - Dirençlerin Bağlanması. Seri ve Paralel Devreler.",
+              "url": "https://www.youtube.com/watch?v=Y6RH8YLe_6s",
+              "qr": "/ders-videolari/qr/Y6RH8YLe_6s.svg"
+            },
+            {
+              "id": "ghyRgyLDjn0",
+              "teacher": "altug",
+              "title": "Elektrik Devreleri - Üreteçlerin Bağlanması ve Tükenme Süreleri",
+              "url": "https://www.youtube.com/watch?v=ghyRgyLDjn0",
+              "qr": "/ders-videolari/qr/ghyRgyLDjn0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Elektriksel güç, enerji ve lamba parlaklığı",
+          "videos": [
+            {
+              "id": "zN7DKUvyqzA",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 26. Gün | Elektrik Devreleri - 4 | Elektriksel Güç ve Lambalar | 2026",
+              "url": "https://www.youtube.com/watch?v=zN7DKUvyqzA",
+              "qr": "/ders-videolari/qr/zN7DKUvyqzA.svg"
+            },
+            {
+              "id": "IfsNI9Z7Q9I",
+              "teacher": "altug",
+              "title": "Elektriksel güç ve enerji",
+              "url": "https://www.youtube.com/watch?v=IfsNI9Z7Q9I",
+              "qr": "/ders-videolari/qr/IfsNI9Z7Q9I.svg",
+              "sourceTitle": "63) TYT Physics Style Camp in 45 Days | Electrical Circuits | Electrical Power and Energy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Manyetizma",
+      "lessons": [
+        {
+          "title": "Mıknatıslar ve Dünya’nın manyetik alanı",
+          "videos": [
+            {
+              "id": "p6zLfL59v8Y",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 27. Gün | Manyetizma - 1 | Mıknatıs ve Manyetik Alan | 2026",
+              "url": "https://www.youtube.com/watch?v=p6zLfL59v8Y",
+              "qr": "/ders-videolari/qr/p6zLfL59v8Y.svg"
+            },
+            {
+              "id": "aMpvY7w8rK4",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 28. Gün | Manyetizma - 4 | Dünya'nın Manyetik Alanı | 2026",
+              "url": "https://www.youtube.com/watch?v=aMpvY7w8rK4",
+              "qr": "/ders-videolari/qr/aMpvY7w8rK4.svg"
+            },
+            {
+              "id": "d1DTfSqhTgo",
+              "teacher": "altug",
+              "title": "Manyetizma - 1 / Mıknatısların Oluşturduğu Manyetik Alan",
+              "url": "https://www.youtube.com/watch?v=d1DTfSqhTgo",
+              "qr": "/ders-videolari/qr/d1DTfSqhTgo.svg"
+            },
+            {
+              "id": "usnBNcj4SB8",
+              "teacher": "altug",
+              "title": "53) 45 Günde TYT Fizik Tarz Kampı | Mıknatıslar | Dünyanın Manyetik Alanı",
+              "url": "https://www.youtube.com/watch?v=usnBNcj4SB8",
+              "qr": "/ders-videolari/qr/usnBNcj4SB8.svg"
+            }
+          ]
+        },
+        {
+          "title": "Akımın manyetik etkisi ve elektromıknatıs",
+          "videos": [
+            {
+              "id": "57NKxjQkOoU",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 27. Gün | Manyetizma - 2 | Akım ve Manyetik Alan | 2026",
+              "url": "https://www.youtube.com/watch?v=57NKxjQkOoU",
+              "qr": "/ders-videolari/qr/57NKxjQkOoU.svg"
+            },
+            {
+              "id": "WT5V4wGrSBM",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 28. Gün | Manyetizma - 3 | Elektromıknatıs | 2026",
+              "url": "https://www.youtube.com/watch?v=WT5V4wGrSBM",
+              "qr": "/ders-videolari/qr/WT5V4wGrSBM.svg"
+            },
+            {
+              "id": "L7Or6De7oak",
+              "teacher": "altug",
+              "title": "Düz telin manyetik alanı ve elektromıknatıs",
+              "url": "https://www.youtube.com/watch?v=L7Or6De7oak",
+              "qr": "/ders-videolari/qr/L7Or6De7oak.svg",
+              "sourceTitle": "55) TYT Physics Style Camp in 45 Days | Magnets | Magnetic Field of a Straight Wire and Electroma..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Dalgalar",
+      "lessons": [
+        {
+          "title": "Dalgalarda temel kavramlar ve sınıflandırma",
+          "videos": [
+            {
+              "id": "p13oQVkAzR0",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 50. Gün | Temel Kavramlar | Dalgalar - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=p13oQVkAzR0",
+              "qr": "/ders-videolari/qr/p13oQVkAzR0.svg"
+            },
+            {
+              "id": "1QpDnuEAm2s",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 50. Gün | Dalgaların Sınıflandırılması | Dalgalar - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=1QpDnuEAm2s",
+              "qr": "/ders-videolari/qr/1QpDnuEAm2s.svg"
+            },
+            {
+              "id": "XbSz-g4qR_M",
+              "teacher": "altug",
+              "title": "46) Dalgalar / Titreşim Hareketi. Periyot Frekans Hız Genlik Kavramları. Simülasyon. TYT Fizik Kampı",
+              "url": "https://www.youtube.com/watch?v=XbSz-g4qR_M",
+              "qr": "/ders-videolari/qr/XbSz-g4qR_M.svg"
+            },
+            {
+              "id": "gDkfIl70tm0",
+              "teacher": "altug",
+              "title": "Dalgalar - Dalgaların Sınıflandırılması ve Özellikleri ( Mekanik - Elektromanyetik )",
+              "url": "https://www.youtube.com/watch?v=gDkfIl70tm0",
+              "qr": "/ders-videolari/qr/gDkfIl70tm0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Yay dalgaları: ilerleme, yansıma ve ortam değiştirme",
+          "videos": [
+            {
+              "id": "bRbvtVB4ZDc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 51. Gün | Atmaların İlerlemesi ve Hızı | Yay Dalgaları - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=bRbvtVB4ZDc",
+              "qr": "/ders-videolari/qr/bRbvtVB4ZDc.svg"
+            },
+            {
+              "id": "IvCvvEQeGrg",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 51. Gün | Atmaların Yansıması ve Girişimi | Yay Dalgaları - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=IvCvvEQeGrg",
+              "qr": "/ders-videolari/qr/IvCvvEQeGrg.svg"
+            },
+            {
+              "id": "sPS084MAn88",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 52. Gün | Atmaların Farklı Ortama Geçişi | Yay Dalgaları - 3 | 2026",
+              "url": "https://www.youtube.com/watch?v=sPS084MAn88",
+              "qr": "/ders-videolari/qr/sPS084MAn88.svg"
+            },
+            {
+              "id": "cvBwBRILJOQ",
+              "teacher": "altug",
+              "title": "47) Dalgalar / Yay Dalgalarının İncelenmesi. Farklı Ortamlardan Geçişlerinin İncelenmesi GENLİK !",
+              "url": "https://www.youtube.com/watch?v=cvBwBRILJOQ",
+              "qr": "/ders-videolari/qr/cvBwBRILJOQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Su dalgaları: yansıma ve kırılma",
+          "videos": [
+            {
+              "id": "W2kxJOz57Bc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 53. Gün | Doğrusal ve Dairesel Su Dalgaları | Su Dalgası - 1 | 2026",
+              "url": "https://www.youtube.com/watch?v=W2kxJOz57Bc",
+              "qr": "/ders-videolari/qr/W2kxJOz57Bc.svg"
+            },
+            {
+              "id": "HXTKAnIUe1c",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 53. Gün | Doğrusal Su Dalgalarında Yansıma | Su Dalgası - 2 | 2026",
+              "url": "https://www.youtube.com/watch?v=HXTKAnIUe1c",
+              "qr": "/ders-videolari/qr/HXTKAnIUe1c.svg"
+            },
+            {
+              "id": "85SvEQsvJgM",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 54. Gün | Su Dalgalarının Hızı ve Kırılması | Su Dalgası - 4 | 2026",
+              "url": "https://www.youtube.com/watch?v=85SvEQsvJgM",
+              "qr": "/ders-videolari/qr/85SvEQsvJgM.svg"
+            },
+            {
+              "id": "x2e7gSye69I",
+              "teacher": "altug",
+              "title": "51) 60 Günde TYT Fizik Kampı - Su Dalgaları ve Su Dalgalarında Hız ve Dalga Boyu / 51. Gün",
+              "url": "https://www.youtube.com/watch?v=x2e7gSye69I",
+              "qr": "/ders-videolari/qr/x2e7gSye69I.svg"
+            },
+            {
+              "id": "wF2d9DDfJxs",
+              "teacher": "altug",
+              "title": "51) 60 Günde TYT Fizik Kampı - Su Dalgalarında Kırılma, Yansıma Ortam Geçişleri / 51. Gün",
+              "url": "https://www.youtube.com/watch?v=wF2d9DDfJxs",
+              "qr": "/ders-videolari/qr/wF2d9DDfJxs.svg"
+            }
+          ]
+        },
+        {
+          "title": "Ses ve deprem dalgaları, rezonans",
+          "videos": [
+            {
+              "id": "CJh-XzyR6Dg",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 55. Gün | Ses ve Deprem Dalgaları | 2026",
+              "url": "https://www.youtube.com/watch?v=CJh-XzyR6Dg",
+              "qr": "/ders-videolari/qr/CJh-XzyR6Dg.svg"
+            },
+            {
+              "id": "775r47NC_rQ",
+              "teacher": "altug",
+              "title": "48) Dalgalar / Ses ve Deprem Dalgaları. Rezonans, Tını, Sesin Yüksekliği. TYT Fizik Kampı 2023",
+              "url": "https://www.youtube.com/watch?v=775r47NC_rQ",
+              "qr": "/ders-videolari/qr/775r47NC_rQ.svg"
+            },
+            {
+              "id": "qwie9FhiJg4",
+              "teacher": "altug",
+              "title": "83) 45 Günde TYT Fizik Tarz Kampı | Dalgalar | Ses Dalgalarında Rezonans Kavramı",
+              "url": "https://www.youtube.com/watch?v=qwie9FhiJg4",
+              "qr": "/ders-videolari/qr/qwie9FhiJg4.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Optik: gölge ve yansıma",
+      "lessons": [
+        {
+          "title": "Işık şiddeti, ışık akısı ve aydınlanma",
+          "videos": [
+            {
+              "id": "1O3Q5X8mleQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 37. Gün | Işık Şiddeti ve Işık Akısı | Aydınlanma - 1 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=1O3Q5X8mleQ",
+              "qr": "/ders-videolari/qr/1O3Q5X8mleQ.svg"
+            },
+            {
+              "id": "T9g5QdOr8Mo",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 37. Gün | Aydınlanma Şiddeti | Aydınlanma - 2 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=T9g5QdOr8Mo",
+              "qr": "/ders-videolari/qr/T9g5QdOr8Mo.svg"
+            },
+            {
+              "id": "__6stB58Gf8",
+              "teacher": "altug",
+              "title": "Optik - Aydınlanma Kavramı",
+              "url": "https://www.youtube.com/watch?v=__6stB58Gf8",
+              "qr": "/ders-videolari/qr/__6stB58Gf8.svg"
+            }
+          ]
+        },
+        {
+          "title": "Tam gölge ve yarı gölge",
+          "videos": [
+            {
+              "id": "dd-BhlkKSuU",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 38. Gün | Gölge - 1 | Optik |  2026",
+              "url": "https://www.youtube.com/watch?v=dd-BhlkKSuU",
+              "qr": "/ders-videolari/qr/dd-BhlkKSuU.svg"
+            },
+            {
+              "id": "9hgQWVXqn6s",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 38. Gün | Gölge - 2 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=9hgQWVXqn6s",
+              "qr": "/ders-videolari/qr/9hgQWVXqn6s.svg"
+            },
+            {
+              "id": "NLENxXj1uBk",
+              "teacher": "altug",
+              "title": "90) 45 Günde TYT Fizik Tarz Kampı | Optik | Tam Gölge ve Yarı Gölge Kavramları",
+              "url": "https://www.youtube.com/watch?v=NLENxXj1uBk",
+              "qr": "/ders-videolari/qr/NLENxXj1uBk.svg"
+            }
+          ]
+        },
+        {
+          "title": "Yansıma kanunları, düzlem ayna ve görüş alanı",
+          "videos": [
+            {
+              "id": "ixgV1NTdISQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 39. Gün | Yansıma ve Yansıma Kanunları | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=ixgV1NTdISQ",
+              "qr": "/ders-videolari/qr/ixgV1NTdISQ.svg"
+            },
+            {
+              "id": "6Ol1f4UKsnM",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 39. Gün | Düzlem Ayna - 1 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=6Ol1f4UKsnM",
+              "qr": "/ders-videolari/qr/6Ol1f4UKsnM.svg"
+            },
+            {
+              "id": "Niuye4Sxiio",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 40. Gün | Görüş Alanı | Düzlem Ayna - 2 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=Niuye4Sxiio",
+              "qr": "/ders-videolari/qr/Niuye4Sxiio.svg"
+            },
+            {
+              "id": "ze-rVMLqbD8",
+              "teacher": "altug",
+              "title": "91) 45 Günde TYT Fizik Tarz Kampı | Optik | Yansıma Kanunları",
+              "url": "https://www.youtube.com/watch?v=ze-rVMLqbD8",
+              "qr": "/ders-videolari/qr/ze-rVMLqbD8.svg"
+            },
+            {
+              "id": "t8acni51Ga4",
+              "teacher": "altug",
+              "title": "55) 60 Günde TYT Fizik Kampı - Düzlem Ayna ve Görüş Alanı Kavramı. / 55. Gün",
+              "url": "https://www.youtube.com/watch?v=t8acni51Ga4",
+              "qr": "/ders-videolari/qr/t8acni51Ga4.svg"
+            }
+          ]
+        },
+        {
+          "title": "Çukur ve tümsek aynalar",
+          "videos": [
+            {
+              "id": "9Qv8MXWL4yc",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 41. Gün | Çukur Aynada Özel Işınlar | Küresel Aynalar - 1 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=9Qv8MXWL4yc",
+              "qr": "/ders-videolari/qr/9Qv8MXWL4yc.svg"
+            },
+            {
+              "id": "JK8l1zMiw0g",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 42. Gün | Çukur Aynada Görüntü | Küresel Aynalar - 3 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=JK8l1zMiw0g",
+              "qr": "/ders-videolari/qr/JK8l1zMiw0g.svg"
+            },
+            {
+              "id": "jczDv1QHAic",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 41. Gün | Tümsek Aynada Özel Işınlar | Küresel Aynalar - 2 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=jczDv1QHAic",
+              "qr": "/ders-videolari/qr/jczDv1QHAic.svg"
+            },
+            {
+              "id": "W8H3bTK4JxE",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 42. Gün | Tümsek Aynada Görüntü | Küresel Aynalar - 4 | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=W8H3bTK4JxE",
+              "qr": "/ders-videolari/qr/W8H3bTK4JxE.svg"
+            },
+            {
+              "id": "Bhpd9QzHqNc",
+              "teacher": "altug",
+              "title": "Çukur aynada özel ışınlar",
+              "url": "https://www.youtube.com/watch?v=Bhpd9QzHqNc",
+              "qr": "/ders-videolari/qr/Bhpd9QzHqNc.svg",
+              "sourceTitle": "94) TYT Physics Style Camp in 45 Days | Optics | Special Rays in Concave Mirror"
+            },
+            {
+              "id": "CtgSWwUvbfc",
+              "teacher": "altug",
+              "title": "Çukur aynada görüntü oluşumu",
+              "url": "https://www.youtube.com/watch?v=CtgSWwUvbfc",
+              "qr": "/ders-videolari/qr/CtgSWwUvbfc.svg",
+              "sourceTitle": "95) TYT Physics Style Camp in 45 Days | Optics | Image Formations in a Concave Mirror"
+            },
+            {
+              "id": "viL6D0RKwZ0",
+              "teacher": "altug",
+              "title": "Tümsek aynada özel ışınlar ve görüntü",
+              "url": "https://www.youtube.com/watch?v=viL6D0RKwZ0",
+              "qr": "/ders-videolari/qr/viL6D0RKwZ0.svg",
+              "sourceTitle": "96) TYT Physics Style Camp in 45 Days | Optics | Special Rays and Images in Convex Mirror"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "TYT",
+      "subject": "fizik",
+      "topic": "Optik: kırılma ve mercekler",
+      "lessons": [
+        {
+          "title": "Kırılma indisi, Snell yasası, sınır açısı ve tam yansıma",
+          "videos": [
+            {
+              "id": "HBGioahDgyA",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 44. Gün | Kırılma İndisi, Snell Yasası | Işığın Kırılması | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=HBGioahDgyA",
+              "qr": "/ders-videolari/qr/HBGioahDgyA.svg"
+            },
+            {
+              "id": "ffttO_LOmR8",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 44. Gün | Sınır Açısı ve Tam Yansıma | Işığın Kırılması | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=ffttO_LOmR8",
+              "qr": "/ders-videolari/qr/ffttO_LOmR8.svg"
+            },
+            {
+              "id": "udcBgbUETIQ",
+              "teacher": "altug",
+              "title": "Işığın kırılması ve davranışı",
+              "url": "https://www.youtube.com/watch?v=udcBgbUETIQ",
+              "qr": "/ders-videolari/qr/udcBgbUETIQ.svg",
+              "sourceTitle": "97) TYT Physics Style Camp in 45 Days | Optics | Refraction and Behavior of Light"
+            },
+            {
+              "id": "18UHsd728bY",
+              "teacher": "altug",
+              "title": "98) 45 Günde TYT Fizik Tarz Kampı | Optik | Tam Yansıma ve Sınır Açısı Kavramı",
+              "url": "https://www.youtube.com/watch?v=18UHsd728bY",
+              "qr": "/ders-videolari/qr/18UHsd728bY.svg"
+            }
+          ]
+        },
+        {
+          "title": "Görünür derinlik ve küresel yüzeyler",
+          "videos": [
+            {
+              "id": "DfDdkMfeUIo",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 45. Gün | Küresel Yüzeylerden Geçiş ve Görünür Uzaklık | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=DfDdkMfeUIo",
+              "qr": "/ders-videolari/qr/DfDdkMfeUIo.svg"
+            },
+            {
+              "id": "vp_GFv8sfxE",
+              "teacher": "altug",
+              "title": "Optik - Görünür Derinlik Kavramı",
+              "url": "https://www.youtube.com/watch?v=vp_GFv8sfxE",
+              "qr": "/ders-videolari/qr/vp_GFv8sfxE.svg"
+            }
+          ]
+        },
+        {
+          "title": "İnce ve kalın kenarlı mercekler",
+          "videos": [
+            {
+              "id": "7UGITYRh8ds",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 46. Gün | Mercekler ve Odak Uzaklığının Bağlı Olduğu Faktörler | 2026",
+              "url": "https://www.youtube.com/watch?v=7UGITYRh8ds",
+              "qr": "/ders-videolari/qr/7UGITYRh8ds.svg"
+            },
+            {
+              "id": "APT59L7PrxQ",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 46. Gün | İnce ve Kalın Kenarlı Merceklerde Özel Işınlar | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=APT59L7PrxQ",
+              "qr": "/ders-videolari/qr/APT59L7PrxQ.svg"
+            },
+            {
+              "id": "Kb1V3qLPO8U",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 47. Gün | İnce ve Kalın Kenarlı Merceklerde Görüntü | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=Kb1V3qLPO8U",
+              "qr": "/ders-videolari/qr/Kb1V3qLPO8U.svg"
+            },
+            {
+              "id": "qq4-GsjLKKM",
+              "teacher": "altug",
+              "title": "100) 45 Günde TYT Fizik Tarz Kampı | Optik | İnce Kenarlı Merceklerin Özellikleri",
+              "url": "https://www.youtube.com/watch?v=qq4-GsjLKKM",
+              "qr": "/ders-videolari/qr/qq4-GsjLKKM.svg"
+            },
+            {
+              "id": "YJW0dlmA6-8",
+              "teacher": "altug",
+              "title": "Kalın kenarlı merceklerin özellikleri",
+              "url": "https://www.youtube.com/watch?v=YJW0dlmA6-8",
+              "qr": "/ders-videolari/qr/YJW0dlmA6-8.svg",
+              "sourceTitle": "101) TYT Physics Style Camp in 45 Days | Optics | Properties of Concave Lenses"
+            },
+            {
+              "id": "sDS_sOsZVfQ",
+              "teacher": "altug",
+              "title": "102) 45 Günde TYT Fizik Tarz Kampı | Optik | İnce ve Kalın Mercekte Görüntü ve Işınlar",
+              "url": "https://www.youtube.com/watch?v=sDS_sOsZVfQ",
+              "qr": "/ders-videolari/qr/sDS_sOsZVfQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Prizmalar, ışık ve boya renkleri",
+          "videos": [
+            {
+              "id": "gSmX1oqE7sg",
+              "teacher": "ozcan",
+              "title": "55 Günde TYT Fizik Kampı | 48. Gün | Prizmalar | Optik | 2026",
+              "url": "https://www.youtube.com/watch?v=gSmX1oqE7sg",
+              "qr": "/ders-videolari/qr/gSmX1oqE7sg.svg"
+            },
+            {
+              "id": "H915fG4sSDM",
+              "teacher": "ozcan",
+              "title": "Renkler | Işık ve Boya Renkleri Neden Ters? | Deney + Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=H915fG4sSDM",
+              "qr": "/ders-videolari/qr/H915fG4sSDM.svg"
+            },
+            {
+              "id": "1T4Ev3j6Mpo",
+              "teacher": "altug",
+              "title": "Tam yansımalı prizmalar",
+              "url": "https://www.youtube.com/watch?v=1T4Ev3j6Mpo",
+              "qr": "/ders-videolari/qr/1T4Ev3j6Mpo.svg",
+              "sourceTitle": "103) TYT Physics Style Camp in 45 Days | Optics | Total Reflection Prisms"
+            },
+            {
+              "id": "y5nV6Dglk3M",
+              "teacher": "altug",
+              "title": "Işık renkleri ve boya renkleri",
+              "url": "https://www.youtube.com/watch?v=y5nV6Dglk3M",
+              "qr": "/ders-videolari/qr/y5nV6Dglk3M.svg",
+              "sourceTitle": "104) TYT Physics Style Camp in 45 Days | Optics | Light Colors and Paint Colors"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Vektörler",
+      "lessons": [
+        {
+          "title": "Vektörlerin özellikleri, bileşke ve bileşenler",
+          "videos": [
+            {
+              "id": "dJcUXGHhr2Q",
+              "teacher": "ozcan",
+              "title": "Vektörler - 1 | Vektörlerin Genel Özellikleri | Pdf Destekli",
+              "url": "https://www.youtube.com/watch?v=dJcUXGHhr2Q",
+              "qr": "/ders-videolari/qr/dJcUXGHhr2Q.svg"
+            },
+            {
+              "id": "mnEVG_9CwPs",
+              "teacher": "ozcan",
+              "title": "Vektörler - 2 | Vektörlerin Bileşkesi | Pdf Destekli",
+              "url": "https://www.youtube.com/watch?v=mnEVG_9CwPs",
+              "qr": "/ders-videolari/qr/mnEVG_9CwPs.svg"
+            },
+            {
+              "id": "WUlRyCqoSrc",
+              "teacher": "ozcan",
+              "title": "Vektörler - 3: vektörleri bileşenlerine ayırma",
+              "url": "https://www.youtube.com/watch?v=WUlRyCqoSrc",
+              "qr": "/ders-videolari/qr/WUlRyCqoSrc.svg",
+              "sourceTitle": "Vectors - 3 | Separating Vectors into Components | PDF Supported"
+            },
+            {
+              "id": "v17MubW4g2Q",
+              "teacher": "altug",
+              "title": "1) Vektörler - 1 | Vektörlerin Eşitliği ve Özellikleri / 70 Günde AYT Fizik Kampı ( 1. Gün )",
+              "url": "https://www.youtube.com/watch?v=v17MubW4g2Q",
+              "qr": "/ders-videolari/qr/v17MubW4g2Q.svg"
+            },
+            {
+              "id": "K0rQXuM97Qo",
+              "teacher": "altug",
+              "title": "2) Vektörler - 2 | Vektör Bileşkesi Uç Uca ve Paralel Kenar / 70 Günde AYT Fizik Kampı ( 1. Gün )",
+              "url": "https://www.youtube.com/watch?v=K0rQXuM97Qo",
+              "qr": "/ders-videolari/qr/K0rQXuM97Qo.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Bağıl hareket",
+      "lessons": [
+        {
+          "title": "Bağıl hız ve nehir problemleri",
+          "videos": [
+            {
+              "id": "j2bLRcAby4k",
+              "teacher": "ozcan",
+              "title": "Bağıl Hareket | Deney + Pdf Destekli",
+              "url": "https://www.youtube.com/watch?v=j2bLRcAby4k",
+              "qr": "/ders-videolari/qr/j2bLRcAby4k.svg"
+            },
+            {
+              "id": "u2e9kVURBMM",
+              "teacher": "ozcan",
+              "title": "Bağıl Hareket - 2 | Nehirde Hareket | PDF",
+              "url": "https://www.youtube.com/watch?v=u2e9kVURBMM",
+              "qr": "/ders-videolari/qr/u2e9kVURBMM.svg"
+            },
+            {
+              "id": "V7anr_m1zFw",
+              "teacher": "ozcan",
+              "title": "Bağıl Hareket - 3 | İki Boyutta Nehirde Hareket | Simülasyon + PDF",
+              "url": "https://www.youtube.com/watch?v=V7anr_m1zFw",
+              "qr": "/ders-videolari/qr/V7anr_m1zFw.svg"
+            },
+            {
+              "id": "B7J0oCT1O2U",
+              "teacher": "altug",
+              "title": "8) Sabit İvmeli Hareket  | Bağıl Hareket / 70 Günde AYT Fizik Kampı (6. Gün )",
+              "url": "https://www.youtube.com/watch?v=B7J0oCT1O2U",
+              "qr": "/ders-videolari/qr/B7J0oCT1O2U.svg"
+            },
+            {
+              "id": "4jjcCTmMJBM",
+              "teacher": "altug",
+              "title": "9) Sabit İvmeli Hareket  | Nehir Problemleri / 70 Günde AYT Fizik Kampı ( 6. Gün / 2.Kısım )",
+              "url": "https://www.youtube.com/watch?v=4jjcCTmMJBM",
+              "qr": "/ders-videolari/qr/4jjcCTmMJBM.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Newton’ın hareket yasaları",
+      "lessons": [
+        {
+          "title": "Serbest cisim diyagramı ve dinamik sistemler",
+          "videos": [
+            {
+              "id": "CNJ_Of5Ecsk",
+              "teacher": "ozcan",
+              "title": "Newton’ın hareket yasaları: serbest cisim diyagramı",
+              "url": "https://www.youtube.com/watch?v=CNJ_Of5Ecsk",
+              "qr": "/ders-videolari/qr/CNJ_Of5Ecsk.svg",
+              "sourceTitle": "Free Body Diagram | Newton's Laws of Motion | PDF"
+            },
+            {
+              "id": "poREuISndUQ",
+              "teacher": "ozcan",
+              "title": "Net Kuvvetin Etkisinde Cisimler | Newton Hareket Yasaları | PDF",
+              "url": "https://www.youtube.com/watch?v=poREuISndUQ",
+              "qr": "/ders-videolari/qr/poREuISndUQ.svg"
+            },
+            {
+              "id": "pYzho3n4EdM",
+              "teacher": "altug",
+              "title": "11) Newton'un Hareket Yasaları  | Kuvvet Gösterimleri / 70 Günde AYT Fizik Kampı (8. Gün )",
+              "url": "https://www.youtube.com/watch?v=pYzho3n4EdM",
+              "qr": "/ders-videolari/qr/pYzho3n4EdM.svg"
+            },
+            {
+              "id": "b0sRhAMnW-0",
+              "teacher": "altug",
+              "title": "15) Newton'un Hareket Yasaları  | Üst Üste Cisimlerin Hareketi / 70 Günde AYT Fizik Kampı (11. Gün )",
+              "url": "https://www.youtube.com/watch?v=b0sRhAMnW-0",
+              "qr": "/ders-videolari/qr/b0sRhAMnW-0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Sürtünme kuvveti ve eğik düzlem",
+          "videos": [
+            {
+              "id": "Zij_X42Hjn4",
+              "teacher": "ozcan",
+              "title": "Newton’ın hareket yasaları: sürtünme kuvvetinin hesaplanması",
+              "url": "https://www.youtube.com/watch?v=Zij_X42Hjn4",
+              "qr": "/ders-videolari/qr/Zij_X42Hjn4.svg",
+              "sourceTitle": "Calculating Friction Force | Newton's Laws of Motion | PDF"
+            },
+            {
+              "id": "6hqc-pmt6Ao",
+              "teacher": "ozcan",
+              "title": "Eğik Düzlemde İvmeli Hareket | Newton Hareket Yasaları | PDF",
+              "url": "https://www.youtube.com/watch?v=6hqc-pmt6Ao",
+              "qr": "/ders-videolari/qr/6hqc-pmt6Ao.svg"
+            },
+            {
+              "id": "yFDrGTRsgSc",
+              "teacher": "altug",
+              "title": "Sürtünme kuvveti ve yönü",
+              "url": "https://www.youtube.com/watch?v=yFDrGTRsgSc",
+              "qr": "/ders-videolari/qr/yFDrGTRsgSc.svg",
+              "sourceTitle": "12) Newton's Laws of Motion | Friction Force and Direction / AYT Physics Camp in 70 Days (Day 9)"
+            },
+            {
+              "id": "Ep6GxNVfe0M",
+              "teacher": "altug",
+              "title": "Newton'un Hareket Yasaları - Eğik Düzlem ve Dinamik Sistemleri",
+              "url": "https://www.youtube.com/watch?v=Ep6GxNVfe0M",
+              "qr": "/ders-videolari/qr/Ep6GxNVfe0M.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Bir boyutta sabit ivmeli hareket",
+      "lessons": [
+        {
+          "title": "Hareket denklemleri ve grafikler",
+          "videos": [
+            {
+              "id": "A9ILXjZpFR8",
+              "teacher": "ozcan",
+              "title": "Hareket Denklemleri ve Grafiklerin Çizimi | Bir Boyutta Sabit İvmeli Hareket | PDF",
+              "url": "https://www.youtube.com/watch?v=A9ILXjZpFR8",
+              "qr": "/ders-videolari/qr/A9ILXjZpFR8.svg"
+            },
+            {
+              "id": "1JK69L2T8N4",
+              "teacher": "ozcan",
+              "title": "Grafik Yorumlama | Bir Boyutta Sabit İvmeli Hareket | PDF",
+              "url": "https://www.youtube.com/watch?v=1JK69L2T8N4",
+              "qr": "/ders-videolari/qr/1JK69L2T8N4.svg"
+            },
+            {
+              "id": "4Z7G_ZBd48M",
+              "teacher": "altug",
+              "title": "4) Sabit İvmeli Hareket  | İvme, Hız, Yer Değiştirme Hesaplama / 70 Günde AYT Fizik Kampı ( 3. Gün )",
+              "url": "https://www.youtube.com/watch?v=4Z7G_ZBd48M",
+              "qr": "/ders-videolari/qr/4Z7G_ZBd48M.svg"
+            },
+            {
+              "id": "50JNfkzo0kM",
+              "teacher": "altug",
+              "title": "5) Sabit İvmeli Hareket  | Hız-Zaman, İvme-Zaman Grafikleri / 70 Günde AYT Fizik Kampı ( 4. Gün )",
+              "url": "https://www.youtube.com/watch?v=50JNfkzo0kM",
+              "qr": "/ders-videolari/qr/50JNfkzo0kM.svg"
+            }
+          ]
+        },
+        {
+          "title": "Serbest düşme, düşey atış ve limit hız",
+          "videos": [
+            {
+              "id": "LMme2brJ-nQ",
+              "teacher": "ozcan",
+              "title": "Serbest Düşme | Atışlar | 88 Günde AYT Fizik Kampı | 12. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=LMme2brJ-nQ",
+              "qr": "/ders-videolari/qr/LMme2brJ-nQ.svg"
+            },
+            {
+              "id": "Mzg3GhG5WF4",
+              "teacher": "ozcan",
+              "title": "Aşağıdan Yukarıya Düşey Atış Hareketi - 1 | Atışlar | 88 Günde AYT Fizik Kampı | 13. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=Mzg3GhG5WF4",
+              "qr": "/ders-videolari/qr/Mzg3GhG5WF4.svg"
+            },
+            {
+              "id": "FXrK4hLhj08",
+              "teacher": "ozcan",
+              "title": "Limit Hız | Atışlar | 88 Günde AYT Fizik Kampı | 12. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=FXrK4hLhj08",
+              "qr": "/ders-videolari/qr/FXrK4hLhj08.svg"
+            },
+            {
+              "id": "y5WhkN_EBJo",
+              "teacher": "altug",
+              "title": "24) Atışlar-İki Boyutta Hareket  | Düşey Atış / 70 Günde AYT Fizik Kampı ( 16. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=y5WhkN_EBJo",
+              "qr": "/ders-videolari/qr/y5WhkN_EBJo.svg"
+            },
+            {
+              "id": "QteC5KcNykI",
+              "teacher": "altug",
+              "title": "27) Atışlar-İki Boyutta Hareket  | Limit Hız / 70 Günde AYT Fizik Kampı ( 18. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=QteC5KcNykI",
+              "qr": "/ders-videolari/qr/QteC5KcNykI.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "İki boyutta hareket",
+      "lessons": [
+        {
+          "title": "Yatay atış",
+          "videos": [
+            {
+              "id": "PKJFvVv3zcQ",
+              "teacher": "ozcan",
+              "title": "Yatay Atış | Atışlar | 88 Günde AYT Fizik Kampı | 15. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=PKJFvVv3zcQ",
+              "qr": "/ders-videolari/qr/PKJFvVv3zcQ.svg"
+            },
+            {
+              "id": "jOo6lNq13pg",
+              "teacher": "altug",
+              "title": "25) Atışlar-İki Boyutta Hareket  | Yatay Atış / 70 Günde AYT Fizik Kampı ( 17. Gün )",
+              "url": "https://www.youtube.com/watch?v=jOo6lNq13pg",
+              "qr": "/ders-videolari/qr/jOo6lNq13pg.svg"
+            }
+          ]
+        },
+        {
+          "title": "Eğik atış",
+          "videos": [
+            {
+              "id": "smTDQduKIKw",
+              "teacher": "ozcan",
+              "title": "Eğik Atış - 1 | Atışlar | 88 Günde AYT Fizik Kampı | 15. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=smTDQduKIKw",
+              "qr": "/ders-videolari/qr/smTDQduKIKw.svg"
+            },
+            {
+              "id": "yFMMS4A59V4",
+              "teacher": "altug",
+              "title": "26) Atışlar-İki Boyutta Hareket  | Eğik Atış / 70 Günde AYT Fizik Kampı ( 17. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=yFMMS4A59V4",
+              "qr": "/ders-videolari/qr/yFMMS4A59V4.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Enerji ve hareket",
+      "lessons": [
+        {
+          "title": "İş, kinetik enerji, yer çekimi ve esneklik potansiyel enerjisi",
+          "videos": [
+            {
+              "id": "96GM19HIyxo",
+              "teacher": "ozcan",
+              "title": "İş ve Enerji | Enerji ve Hareket - 1 | 88 Günde AYT Fizik Kampı | 18. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=96GM19HIyxo",
+              "qr": "/ders-videolari/qr/96GM19HIyxo.svg"
+            },
+            {
+              "id": "bHqH1l0tero",
+              "teacher": "ozcan",
+              "title": "İş ve Enerji - 3 | Kinetik Enerji ve Yer Çekimi Potansiyel Enerjisi | AYT |  PDF",
+              "url": "https://www.youtube.com/watch?v=bHqH1l0tero",
+              "qr": "/ders-videolari/qr/bHqH1l0tero.svg"
+            },
+            {
+              "id": "1O1AwdDxFzI",
+              "teacher": "ozcan",
+              "title": "Esneklik Potansiyel Enerjisi | Enerji ve Hareket - 3 | 88 Günde AYT Fizik Kampı | 19. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=1O1AwdDxFzI",
+              "qr": "/ders-videolari/qr/1O1AwdDxFzI.svg"
+            },
+            {
+              "id": "tkrAwGQuz3A",
+              "teacher": "altug",
+              "title": "13) İş Güç ve Enerji / İş Kavramı ve Hooke Yasası Yaylarda Depolanan Enerji ve Uzama AYT Fizik Kampı",
+              "url": "https://www.youtube.com/watch?v=tkrAwGQuz3A",
+              "qr": "/ders-videolari/qr/tkrAwGQuz3A.svg"
+            },
+            {
+              "id": "c_TdUnA9Cns",
+              "teacher": "altug",
+              "title": "İş, Güç ve Enerji - Kinetik Enerji Kavramı",
+              "url": "https://www.youtube.com/watch?v=c_TdUnA9Cns",
+              "qr": "/ders-videolari/qr/c_TdUnA9Cns.svg"
+            },
+            {
+              "id": "CFVhFQzbMoQ",
+              "teacher": "altug",
+              "title": "İş, Güç ve Enerji - Yerçekimi Potansiyel Enerjisi Kavramı",
+              "url": "https://www.youtube.com/watch?v=CFVhFQzbMoQ",
+              "qr": "/ders-videolari/qr/CFVhFQzbMoQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Mekanik enerji korunumu ve sürtünmenin yaptığı iş",
+          "videos": [
+            {
+              "id": "HuyLpN6j0Ys",
+              "teacher": "ozcan",
+              "title": "Mekanik Enerjinin Korunumu - 1 | Enerji ve Hareket - 4 | 88 Günde AYT Fizik Kampı | 19. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=HuyLpN6j0Ys",
+              "qr": "/ders-videolari/qr/HuyLpN6j0Ys.svg"
+            },
+            {
+              "id": "SFSLS2XO18w",
+              "teacher": "ozcan",
+              "title": "Sürtünme Kuvvetinin Yaptığı İş | Korunumsuz Kuvvetin Yaptığı İş | AYT | PDF",
+              "url": "https://www.youtube.com/watch?v=SFSLS2XO18w",
+              "qr": "/ders-videolari/qr/SFSLS2XO18w.svg"
+            },
+            {
+              "id": "_Zs99NG8Vj0",
+              "teacher": "altug",
+              "title": "20) İş, Güç ve Enerji | Mekanik Enerji Korunumu / 70 Günde AYT Fizik Kampı ( 14. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=_Zs99NG8Vj0",
+              "qr": "/ders-videolari/qr/_Zs99NG8Vj0.svg"
+            },
+            {
+              "id": "qlHumHX0IY0",
+              "teacher": "altug",
+              "title": "14) Enerji Korunumu. Sürtünme Kuvvetinin Yaptığı İş. Rampa ve Yay Sistemleri. AYT Fizik Kampı 2023",
+              "url": "https://www.youtube.com/watch?v=qlHumHX0IY0",
+              "qr": "/ders-videolari/qr/qlHumHX0IY0.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "İtme ve momentum",
+      "lessons": [
+        {
+          "title": "İtme, momentum korunumu ve grafikler",
+          "videos": [
+            {
+              "id": "BRquBxkajpk",
+              "teacher": "ozcan",
+              "title": "İtme ve Çizgisel Momentum İlişkisi | 88 Günde AYT Fizik Kampı | 22. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=BRquBxkajpk",
+              "qr": "/ders-videolari/qr/BRquBxkajpk.svg"
+            },
+            {
+              "id": "NDnRFczeYDY",
+              "teacher": "ozcan",
+              "title": "Kuvvet - Zaman ve Çizgisel Momentum - Zaman Grafikleri | 88 Günde AYT Fizik Kampı | 22. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=NDnRFczeYDY",
+              "qr": "/ders-videolari/qr/NDnRFczeYDY.svg"
+            },
+            {
+              "id": "jzhM9T_sAO4",
+              "teacher": "altug",
+              "title": "29) İtme ve Momentum  | İtme ve Momentum Kavramı  / 70 Günde AYT Fizik Kampı ( 19. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=jzhM9T_sAO4",
+              "qr": "/ders-videolari/qr/jzhM9T_sAO4.svg"
+            },
+            {
+              "id": "QpXetxD0d2Q",
+              "teacher": "altug",
+              "title": "Çizgisel momentumun korunumu ve grafikler",
+              "url": "https://www.youtube.com/watch?v=QpXetxD0d2Q",
+              "qr": "/ders-videolari/qr/QpXetxD0d2Q.svg",
+              "sourceTitle": "30) Conservation of Linear Momentum and Graphs / AYT Physics Camp in 70 Days (Day 19 / Part 2)"
+            }
+          ]
+        },
+        {
+          "title": "Bir ve iki boyutta çarpışmalar",
+          "videos": [
+            {
+              "id": "l_QTYzDzniY",
+              "teacher": "ozcan",
+              "title": "Bir Boyutta Esnek Çarpışmalar | 88 Günde AYT Fizik Kampı | 23. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=l_QTYzDzniY",
+              "qr": "/ders-videolari/qr/l_QTYzDzniY.svg"
+            },
+            {
+              "id": "PUE051jerNA",
+              "teacher": "ozcan",
+              "title": "İki Boyutta Esnek Çarpışmalar | 88 Günde AYT Fizik Kampı | 23. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=PUE051jerNA",
+              "qr": "/ders-videolari/qr/PUE051jerNA.svg"
+            },
+            {
+              "id": "gtfje2Hqkws",
+              "teacher": "ozcan",
+              "title": "Bir Boyutta Esnek Olmayan Çarpışmalar | 88 Günde AYT Fizik Kampı | 24. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=gtfje2Hqkws",
+              "qr": "/ders-videolari/qr/gtfje2Hqkws.svg"
+            },
+            {
+              "id": "tbqSyisJ9gM",
+              "teacher": "altug",
+              "title": "31) Bir Boyutta Merkezi Esnek Çarpışma / 70 Günde AYT Fizik Kampı ( 20. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=tbqSyisJ9gM",
+              "qr": "/ders-videolari/qr/tbqSyisJ9gM.svg"
+            },
+            {
+              "id": "A46LwY4HFa8",
+              "teacher": "altug",
+              "title": "32) İtme ve Momentum | İki Boyutta Esnek Çarpışma / 70 Günde AYT Fizik Kampı ( 20. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=A46LwY4HFa8",
+              "qr": "/ders-videolari/qr/A46LwY4HFa8.svg"
+            },
+            {
+              "id": "_dB0XoOXhHU",
+              "teacher": "altug",
+              "title": "33) İtme ve Momentum | Esnek Olmayan Çarpışmalar / 70 Günde AYT Fizik Kampı ( 21. Gün )",
+              "url": "https://www.youtube.com/watch?v=_dB0XoOXhHU",
+              "qr": "/ders-videolari/qr/_dB0XoOXhHU.svg"
+            }
+          ]
+        },
+        {
+          "title": "Patlama ve fırlatma",
+          "videos": [
+            {
+              "id": "rqMXDvIw-Vs",
+              "teacher": "ozcan",
+              "title": "Patlama ve Fırlatma Soruları | 88 Günde AYT Fizik Kampı | 25. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=rqMXDvIw-Vs",
+              "qr": "/ders-videolari/qr/rqMXDvIw-Vs.svg"
+            },
+            {
+              "id": "xQUFOXACpLc",
+              "teacher": "altug",
+              "title": "Patlamalarda momentum korunumu",
+              "url": "https://www.youtube.com/watch?v=xQUFOXACpLc",
+              "qr": "/ders-videolari/qr/xQUFOXACpLc.svg",
+              "sourceTitle": "34) Impulse and Momentum | Conservation of Momentum in Explosions / AYT Physics Camp in 70 Days (..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Tork ve denge",
+      "lessons": [
+        {
+          "title": "Tork kavramı ve yönü",
+          "videos": [
+            {
+              "id": "UwzbJ0XTkOQ",
+              "teacher": "ozcan",
+              "title": "Tork - 1 | 88 Günde AYT Fizik Kampı | 27. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=UwzbJ0XTkOQ",
+              "qr": "/ders-videolari/qr/UwzbJ0XTkOQ.svg"
+            },
+            {
+              "id": "5YdVqCVJgUA",
+              "teacher": "altug",
+              "title": "36) Tork - Denge | Tork Nedir? Bir Noktaya Göre Tork Almak / 70 Günde AYT Fizik Kampı ( 24. Gün )",
+              "url": "https://www.youtube.com/watch?v=5YdVqCVJgUA",
+              "qr": "/ders-videolari/qr/5YdVqCVJgUA.svg"
+            }
+          ]
+        },
+        {
+          "title": "Paralel ve kesişen kuvvetlerin dengesi",
+          "videos": [
+            {
+              "id": "hYeX6AOvmHA",
+              "teacher": "ozcan",
+              "title": "Denge - 2 | Paralel Kuvvetlerin Dengesi | 88 Günde AYT Fizik Kampı | 28. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=hYeX6AOvmHA",
+              "qr": "/ders-videolari/qr/hYeX6AOvmHA.svg"
+            },
+            {
+              "id": "xmE-GzdFN38",
+              "teacher": "ozcan",
+              "title": "Denge - 3 | Kesişen Kuvvetlerin Dengesi | 88 Günde AYT Fizik Kampı | 28. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=xmE-GzdFN38",
+              "qr": "/ders-videolari/qr/xmE-GzdFN38.svg"
+            },
+            {
+              "id": "-qfqSPlcYfM",
+              "teacher": "altug",
+              "title": "39) Denge | Kesişen Kuvvetler Dengesi. Barfiks Mantığı Nedir? / ( 26. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=-qfqSPlcYfM",
+              "qr": "/ders-videolari/qr/-qfqSPlcYfM.svg"
+            },
+            {
+              "id": "54uTmYwcVKM",
+              "teacher": "altug",
+              "title": "Kesişen kuvvetlerin dengesi ve ip gerilmeleri",
+              "url": "https://www.youtube.com/watch?v=54uTmYwcVKM",
+              "qr": "/ders-videolari/qr/54uTmYwcVKM.svg",
+              "sourceTitle": "40) Balance | Balance of Intersecting Forces. Balance Systems and Rope Tensions / (Day 26 / Part 2)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Kütle merkezi",
+      "lessons": [
+        {
+          "title": "Kütle ve ağırlık merkezi; parça ekleme ve çıkarma",
+          "videos": [
+            {
+              "id": "W_jXOUTm11Y",
+              "teacher": "ozcan",
+              "title": "Kütle ve Ağırlık Merkezi - 1 | 88 Günde AYT Fizik Kampı | 30. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=W_jXOUTm11Y",
+              "qr": "/ders-videolari/qr/W_jXOUTm11Y.svg"
+            },
+            {
+              "id": "VxauzF97svU",
+              "teacher": "ozcan",
+              "title": "Kütle ve Ağırlık Merkezi - 3 | 88 Günde AYT Fizik Kampı | 31. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=VxauzF97svU",
+              "qr": "/ders-videolari/qr/VxauzF97svU.svg"
+            },
+            {
+              "id": "-AIDICoFRwA",
+              "teacher": "altug",
+              "title": "32) Kütle ve Ağırlık Merkezi Kavramı. Kütle ve Ağırlık Merkezi Aynı Şey Midir? #aytfizikkamp",
+              "url": "https://www.youtube.com/watch?v=-AIDICoFRwA",
+              "qr": "/ders-videolari/qr/-AIDICoFRwA.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Basit makineler",
+      "lessons": [
+        {
+          "title": "Kuvvet kazancı, verim ve kaldıraçlar",
+          "videos": [
+            {
+              "id": "dsTIUsQM2d8",
+              "teacher": "ozcan",
+              "title": "Kuvvet Kazancı ve Verim | Basit Makineler | 88 Günde AYT Fizik Kampı | 32. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=dsTIUsQM2d8",
+              "qr": "/ders-videolari/qr/dsTIUsQM2d8.svg"
+            },
+            {
+              "id": "frE8sXmW8T8",
+              "teacher": "ozcan",
+              "title": "Kaldıraçlar | Basit Makineler | 88 Günde AYT Fizik Kampı | 32. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=frE8sXmW8T8",
+              "qr": "/ders-videolari/qr/frE8sXmW8T8.svg"
+            },
+            {
+              "id": "JhMRyYlJceU",
+              "teacher": "altug",
+              "title": "Basit makinelerde kuvvet kazancı",
+              "url": "https://www.youtube.com/watch?v=JhMRyYlJceU",
+              "qr": "/ders-videolari/qr/JhMRyYlJceU.svg",
+              "sourceTitle": "42) Simple Machines | Force Gain and Its Purpose in Simple Machines / (Day 28 / Part 1)"
+            },
+            {
+              "id": "YeG7zd_mMZQ",
+              "teacher": "altug",
+              "title": "43) Basit Makineler | Kaldıraçlar Nasıl Çalışır? Günlük Hayat Örnekleri / ( 28. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=YeG7zd_mMZQ",
+              "qr": "/ders-videolari/qr/YeG7zd_mMZQ.svg"
+            }
+          ]
+        },
+        {
+          "title": "Makaralar ve palangalar",
+          "videos": [
+            {
+              "id": "4y5GgVXLbnc",
+              "teacher": "ozcan",
+              "title": "Sabit ve Hareketli Makaralar | Basit Makineler | 88 Günde AYT Fizik Kampı | 33. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=4y5GgVXLbnc",
+              "qr": "/ders-videolari/qr/4y5GgVXLbnc.svg"
+            },
+            {
+              "id": "q6GqGZSbKdg",
+              "teacher": "ozcan",
+              "title": "Palangalar | Basit Makineler | 88 Günde AYT Fizik Kampı | 33. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=q6GqGZSbKdg",
+              "qr": "/ders-videolari/qr/q6GqGZSbKdg.svg"
+            },
+            {
+              "id": "RIVJ8kl1PY4",
+              "teacher": "altug",
+              "title": "Sabit makaralar ve günlük hayat örnekleri",
+              "url": "https://www.youtube.com/watch?v=RIVJ8kl1PY4",
+              "qr": "/ders-videolari/qr/RIVJ8kl1PY4.svg",
+              "sourceTitle": "44) Simple Machines | Fixed Pulley and Daily Life Examples (Day 29 / Part 1)"
+            },
+            {
+              "id": "p01QZfi5Vuk",
+              "teacher": "altug",
+              "title": "Hareketli makaralar ve yükselme miktarı",
+              "url": "https://www.youtube.com/watch?v=p01QZfi5Vuk",
+              "qr": "/ders-videolari/qr/p01QZfi5Vuk.svg",
+              "sourceTitle": "45) Simple Machines | Moving Pulleys and Rise Amount / (Day 29 / Part 2)"
+            }
+          ]
+        },
+        {
+          "title": "Eğik düzlem, çıkrık, dişli çarklar, kasnaklar ve vida",
+          "videos": [
+            {
+              "id": "zFkROkFniss",
+              "teacher": "ozcan",
+              "title": "Eğik Düzlem ve Çıkrık | Basit Makineler | 88 Günde AYT Fizik Kampı | 34. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=zFkROkFniss",
+              "qr": "/ders-videolari/qr/zFkROkFniss.svg"
+            },
+            {
+              "id": "_sXdH68mBY8",
+              "teacher": "ozcan",
+              "title": "Dişli Çarklar ve Kasnaklar | Basit Makineler | 88 Günde AYT Fizik Kampı | 34. Gün | 2025",
+              "url": "https://www.youtube.com/watch?v=_sXdH68mBY8",
+              "qr": "/ders-videolari/qr/_sXdH68mBY8.svg"
+            },
+            {
+              "id": "8wYmJD-cdB0",
+              "teacher": "ozcan",
+              "title": "Dönerek ilerleyen kasnaklar ve vida",
+              "url": "https://www.youtube.com/watch?v=8wYmJD-cdB0",
+              "qr": "/ders-videolari/qr/8wYmJD-cdB0.svg",
+              "sourceTitle": "Rotating Pulleys and Screws | Simple Machines | AYT Physics Camp in 88 Days | Day 35 | 2025"
+            },
+            {
+              "id": "M_cQbf-l7lI",
+              "teacher": "altug",
+              "title": "Eğik düzlem, çıkrık ve dişli çarklarda kuvvet kazancı",
+              "url": "https://www.youtube.com/watch?v=M_cQbf-l7lI",
+              "qr": "/ders-videolari/qr/M_cQbf-l7lI.svg",
+              "sourceTitle": "46) Simple Machines | Inclined Plane, Spindle, and Gears. Force Gain / (Day 30 / Part 1)"
+            },
+            {
+              "id": "6N3XT6uU1CU",
+              "teacher": "altug",
+              "title": "47) Basit Makineler | Dişli Çarklar ve Çalışma Prensipleri. Tur Sayısı / ( 30. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=6N3XT6uU1CU",
+              "qr": "/ders-videolari/qr/6N3XT6uU1CU.svg"
+            },
+            {
+              "id": "F3vbuBiJ6cU",
+              "teacher": "altug",
+              "title": "48) Basit Makineler | Kasnaklar, İlerleme Miktarı ve Kullanım Alanları  / ( 31. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=F3vbuBiJ6cU",
+              "qr": "/ders-videolari/qr/F3vbuBiJ6cU.svg"
+            },
+            {
+              "id": "JODUoXkJsEA",
+              "teacher": "altug",
+              "title": "36) Basit Makineler - Kasnaklar ve Vida. Vida Adımı Nedir? Vidanın Tur Sayısını Bulma #aytfizikkamp",
+              "url": "https://www.youtube.com/watch?v=JODUoXkJsEA",
+              "qr": "/ders-videolari/qr/JODUoXkJsEA.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Çembersel hareket",
+      "lessons": [
+        {
+          "title": "Periyot, frekans, açısal hız ve merkezcil kuvvet",
+          "videos": [
+            {
+              "id": "LtPiqUuUy90",
+              "teacher": "ozcan",
+              "title": "Temel Kavramlar | Düzgün Çembersel Hareket | 88 Günde AYT Fizik Kampı | 36. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=LtPiqUuUy90",
+              "qr": "/ders-videolari/qr/LtPiqUuUy90.svg"
+            },
+            {
+              "id": "GItBoVbmbWo",
+              "teacher": "ozcan",
+              "title": "Merkezcil kuvvet ve ivme - 1",
+              "url": "https://www.youtube.com/watch?v=GItBoVbmbWo",
+              "qr": "/ders-videolari/qr/GItBoVbmbWo.svg",
+              "sourceTitle": "Centripetal Force and Acceleration - 1 | Uniform Circular Motion | AYT Physics Camp in 88 Days | ..."
+            },
+            {
+              "id": "PYDqVzncPxU",
+              "teacher": "altug",
+              "title": "1) Düzgün Çembersel Hareket - Periyot, Çizgisel Hız, Frekans ve Açısal Hız Kavramı ( 51. Gün )",
+              "url": "https://www.youtube.com/watch?v=PYDqVzncPxU",
+              "qr": "/ders-videolari/qr/PYDqVzncPxU.svg"
+            },
+            {
+              "id": "k8ZC1M2eR7E",
+              "teacher": "altug",
+              "title": "2) Düzgün Çembersel Hareket - Merkezcil İvme ve Merkezcil Kuvvet Kavramı ( 52. Gün )",
+              "url": "https://www.youtube.com/watch?v=k8ZC1M2eR7E",
+              "qr": "/ders-videolari/qr/k8ZC1M2eR7E.svg"
+            }
+          ]
+        },
+        {
+          "title": "Yatay ve düşey düzlemde hareket; virajlar",
+          "videos": [
+            {
+              "id": "v4LlETtrLTU",
+              "teacher": "ozcan",
+              "title": "Yatay Düzlemde Düzgün Çembersel Hareket | 88 Günde AYT Fizik Kampı | 37. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=v4LlETtrLTU",
+              "qr": "/ders-videolari/qr/v4LlETtrLTU.svg"
+            },
+            {
+              "id": "rB4olHMqO9Y",
+              "teacher": "ozcan",
+              "title": "Düşey Düzlemde Düzgün Çembersel Hareket | 88 Günde AYT Fizik Kampı | 38. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=rB4olHMqO9Y",
+              "qr": "/ders-videolari/qr/rB4olHMqO9Y.svg"
+            },
+            {
+              "id": "JM4kg-AmyDc",
+              "teacher": "ozcan",
+              "title": "Yatay Viraj ve Eğimli Viraj | Düzgün Çembersel Hareket | 88 Günde AYT Fizik Kampı | 39. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=JM4kg-AmyDc",
+              "qr": "/ders-videolari/qr/JM4kg-AmyDc.svg"
+            },
+            {
+              "id": "edcQlF78ITQ",
+              "teacher": "altug",
+              "title": "3) Düzgün Çembersel Hareket - Yatay Düzlemde Düzgün Çembersel (53. Gün)",
+              "url": "https://www.youtube.com/watch?v=edcQlF78ITQ",
+              "qr": "/ders-videolari/qr/edcQlF78ITQ.svg"
+            },
+            {
+              "id": "4NahhC522OA",
+              "teacher": "altug",
+              "title": "4) Düzgün Çembersel Hareket - Düşey Düzlemde Düzgün Çembersel Hareket (53. Gün)",
+              "url": "https://www.youtube.com/watch?v=4NahhC522OA",
+              "qr": "/ders-videolari/qr/4NahhC522OA.svg"
+            },
+            {
+              "id": "u7RuMGoK9vs",
+              "teacher": "altug",
+              "title": "5) Düzgün Çembersel Hareket - Araçların Virajları Dönme Olayı ve Eğimli Viraj ( 54. Gün )",
+              "url": "https://www.youtube.com/watch?v=u7RuMGoK9vs",
+              "qr": "/ders-videolari/qr/u7RuMGoK9vs.svg"
+            }
+          ]
+        },
+        {
+          "title": "Dönerek öteleme, eylemsizlik momenti ve dönme enerjisi",
+          "videos": [
+            {
+              "id": "QH2Ig4Ix4Rc",
+              "teacher": "ozcan",
+              "title": "Dönerek öteleme hareketi",
+              "url": "https://www.youtube.com/watch?v=QH2Ig4Ix4Rc",
+              "qr": "/ders-videolari/qr/QH2Ig4Ix4Rc.svg",
+              "sourceTitle": "Rotational Translational Motion | AYT Physics Camp in 88 Days | Day 40 | 2026"
+            },
+            {
+              "id": "QMMiyR9046M",
+              "teacher": "ozcan",
+              "title": "Eylemsizlik Momenti | 88 Günde AYT Fizik Kampı | 40. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=QMMiyR9046M",
+              "qr": "/ders-videolari/qr/QMMiyR9046M.svg"
+            },
+            {
+              "id": "SfBdJw6jRL0",
+              "teacher": "ozcan",
+              "title": "Dönme Kinetik Enerjisi | 88 Günde AYT Fizik Kampı | 41. Gün | 2026",
+              "url": "https://www.youtube.com/watch?v=SfBdJw6jRL0",
+              "qr": "/ders-videolari/qr/SfBdJw6jRL0.svg"
+            },
+            {
+              "id": "RBukwPxFukQ",
+              "teacher": "altug",
+              "title": "8) Düzgün Çembersel Hareket - Tekerlekte Kaymadan Dönerek Öteleme ve Eylemsizlik Momenti ( 56. Gün )",
+              "url": "https://www.youtube.com/watch?v=RBukwPxFukQ",
+              "qr": "/ders-videolari/qr/RBukwPxFukQ.svg"
+            },
+            {
+              "id": "ocW_0nfj7JA",
+              "teacher": "altug",
+              "title": "9) Düzgün Çembersel Hareket - Dönme, Öteleme Kinetik Enerjisi ve Hesaplamaları ( 56. Gün )",
+              "url": "https://www.youtube.com/watch?v=ocW_0nfj7JA",
+              "qr": "/ders-videolari/qr/ocW_0nfj7JA.svg"
+            }
+          ]
+        },
+        {
+          "title": "Açısal momentum ve korunumu",
+          "videos": [
+            {
+              "id": "qJYf-sB0cJ8",
+              "teacher": "ozcan",
+              "title": "Açısal Momentum | PDF",
+              "url": "https://www.youtube.com/watch?v=qJYf-sB0cJ8",
+              "qr": "/ders-videolari/qr/qJYf-sB0cJ8.svg"
+            },
+            {
+              "id": "RH70XydJkjQ",
+              "teacher": "ozcan",
+              "title": "Açısal Momentumun Korunumu | Jiroskop Nedir? | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=RH70XydJkjQ",
+              "qr": "/ders-videolari/qr/RH70XydJkjQ.svg"
+            },
+            {
+              "id": "MaM1kR8DKW4",
+              "teacher": "altug",
+              "title": "10) Düzgün Çembersel Hareket - Açısal Momentum ve Açısal İvme Kavramı ( 57. Gün )",
+              "url": "https://www.youtube.com/watch?v=MaM1kR8DKW4",
+              "qr": "/ders-videolari/qr/MaM1kR8DKW4.svg"
+            },
+            {
+              "id": "h4P4R3gh2VI",
+              "teacher": "altug",
+              "title": "11) Düzgün Çembersel Hareket - Açısal Momentum Korunumu ve Günlük Hayat Örnekleri ( 58. Gün )",
+              "url": "https://www.youtube.com/watch?v=h4P4R3gh2VI",
+              "qr": "/ders-videolari/qr/h4P4R3gh2VI.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Basit harmonik hareket",
+      "lessons": [
+        {
+          "title": "Temel kavramlar, kuvvet, hız, ivme ve grafikler",
+          "videos": [
+            {
+              "id": "h-GnJxTRrpU",
+              "teacher": "ozcan",
+              "title": "Basit Harmonik Hareket Nedir? Nasıl Yapılır? | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=h-GnJxTRrpU",
+              "qr": "/ders-videolari/qr/h-GnJxTRrpU.svg"
+            },
+            {
+              "id": "MSvE8BkVuaQ",
+              "teacher": "ozcan",
+              "title": "İvme - Konum ve Hız - Konum İlişkisi | Basit Harmonik Hareket | 88 Günde AYT Fizik Kampı | 46. Gün",
+              "url": "https://www.youtube.com/watch?v=MSvE8BkVuaQ",
+              "qr": "/ders-videolari/qr/MSvE8BkVuaQ.svg"
+            },
+            {
+              "id": "WDGRKhssKFg",
+              "teacher": "altug",
+              "title": "Basit harmonik hareket: hız, kuvvet ve ivme",
+              "url": "https://www.youtube.com/watch?v=WDGRKhssKFg",
+              "qr": "/ders-videolari/qr/WDGRKhssKFg.svg",
+              "sourceTitle": "17) Simple Harmonic Motion - What is Simple Harmonic Motion? Velocity, Force and Acceleration Vec..."
+            },
+            {
+              "id": "8PPhOqXoGpM",
+              "teacher": "altug",
+              "title": "19) Basit Harmonik Hareket - Hız, Kuvvet ve İvme Grafiklerinin İncelenmesi (63. Gün)",
+              "url": "https://www.youtube.com/watch?v=8PPhOqXoGpM",
+              "qr": "/ders-videolari/qr/8PPhOqXoGpM.svg"
+            }
+          ]
+        },
+        {
+          "title": "Yay sarkacı ve basit sarkaç",
+          "videos": [
+            {
+              "id": "nltRFAjgtz0",
+              "teacher": "ozcan",
+              "title": "Yay Sarkacı | Basit Harmonik Hareket | 88 Günde AYT Fizik Kampı | 47. Gün",
+              "url": "https://www.youtube.com/watch?v=nltRFAjgtz0",
+              "qr": "/ders-videolari/qr/nltRFAjgtz0.svg"
+            },
+            {
+              "id": "qli6tsaG0Lc",
+              "teacher": "ozcan",
+              "title": "Basit Sarkaç | Basit Harmonik Hareket | 88 Günde AYT Fizik Kampı | 47. Gün",
+              "url": "https://www.youtube.com/watch?v=qli6tsaG0Lc",
+              "qr": "/ders-videolari/qr/qli6tsaG0Lc.svg"
+            },
+            {
+              "id": "L3vMl3XYmWU",
+              "teacher": "altug",
+              "title": "67) Basit Harmonik Hareket - Simülasyon Üzerinden Yay Sarkacının Periyoduna Etki Eden Faktörler",
+              "url": "https://www.youtube.com/watch?v=L3vMl3XYmWU",
+              "qr": "/ders-videolari/qr/L3vMl3XYmWU.svg"
+            },
+            {
+              "id": "HSAXt4p111I",
+              "teacher": "altug",
+              "title": "18) Basit Harmonik Hareket - Kavram Yanılgıları ve Basit Sarkaç Özellikleri ( 62. Gün )",
+              "url": "https://www.youtube.com/watch?v=HSAXt4p111I",
+              "qr": "/ders-videolari/qr/HSAXt4p111I.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Kütle çekim ve Kepler yasaları",
+      "lessons": [
+        {
+          "title": "Kütle çekim kuvveti, uydu hareketi ve enerji",
+          "videos": [
+            {
+              "id": "fr7j4hYOjq8",
+              "teacher": "ozcan",
+              "title": "Kütle Çekim Kuvveti | Deney + Simülasyon | AYT | PDF",
+              "url": "https://www.youtube.com/watch?v=fr7j4hYOjq8",
+              "qr": "/ders-videolari/qr/fr7j4hYOjq8.svg"
+            },
+            {
+              "id": "2-RntqWB6yY",
+              "teacher": "ozcan",
+              "title": "Kütle Çekim Potansiyel Enerjisi - Bağlanma - Kurtulma Enerjileri | AYT | PDF",
+              "url": "https://www.youtube.com/watch?v=2-RntqWB6yY",
+              "qr": "/ders-videolari/qr/2-RntqWB6yY.svg"
+            },
+            {
+              "id": "Zwgph2sT7y8",
+              "teacher": "altug",
+              "title": "13) Kütle Çekim Kuvveti ve Gezegenlerin Çekim İvmesi. Tünel Problemi ( 60. Gün )",
+              "url": "https://www.youtube.com/watch?v=Zwgph2sT7y8",
+              "qr": "/ders-videolari/qr/Zwgph2sT7y8.svg"
+            },
+            {
+              "id": "nLZ2yckf3X0",
+              "teacher": "altug",
+              "title": "14) Gezegen Yörüngesindeki Uydu Sistemleri. Potansiyel Kinetik Bağlanma Enerjisi ( 60. Gün )",
+              "url": "https://www.youtube.com/watch?v=nLZ2yckf3X0",
+              "qr": "/ders-videolari/qr/nLZ2yckf3X0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Kepler yasaları",
+          "videos": [
+            {
+              "id": "jaqHCRF8AvM",
+              "teacher": "ozcan",
+              "title": "Kepler Kanunları | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=jaqHCRF8AvM",
+              "qr": "/ders-videolari/qr/jaqHCRF8AvM.svg"
+            },
+            {
+              "id": "YRz-4RPP9AQ",
+              "teacher": "altug",
+              "title": "15) Kepler Kanunları. Keplerin Üç Temel Yasası ( 61. Gün )",
+              "url": "https://www.youtube.com/watch?v=YRz-4RPP9AQ",
+              "qr": "/ders-videolari/qr/YRz-4RPP9AQ.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Elektriksel kuvvet ve alan",
+      "lessons": [
+        {
+          "title": "Coulomb kuvveti ve elektrik alan",
+          "videos": [
+            {
+              "id": "2lVkp3giOhY",
+              "teacher": "ozcan",
+              "title": "Elektriksel Kuvvet (Coulomb Kuvveti) | 88 Günde AYT Fizik Kampı | 52. Gün",
+              "url": "https://www.youtube.com/watch?v=2lVkp3giOhY",
+              "qr": "/ders-videolari/qr/2lVkp3giOhY.svg"
+            },
+            {
+              "id": "-U-Lb5SoJ2I",
+              "teacher": "ozcan",
+              "title": "Elektrik Alan - 1 | 88 Günde AYT Fizik Kampı | 52. Gün",
+              "url": "https://www.youtube.com/watch?v=-U-Lb5SoJ2I",
+              "qr": "/ders-videolari/qr/-U-Lb5SoJ2I.svg"
+            },
+            {
+              "id": "J4JmHHSlCQQ",
+              "teacher": "altug",
+              "title": "51) Elektrik | Coulomb Kuvveti ve Değişkenler ( 33. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=J4JmHHSlCQQ",
+              "qr": "/ders-videolari/qr/J4JmHHSlCQQ.svg"
+            },
+            {
+              "id": "X2RCyw53d0M",
+              "teacher": "altug",
+              "title": "52) Elektrik | Elektrik Alan Nedir ve Nelere Bağlıdır?  ( 33. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=X2RCyw53d0M",
+              "qr": "/ders-videolari/qr/X2RCyw53d0M.svg"
+            }
+          ]
+        },
+        {
+          "title": "Düzgün elektrik alan ve yüklü parçacıkların hareketi",
+          "videos": [
+            {
+              "id": "FlQgeHPl5F4",
+              "teacher": "ozcan",
+              "title": "Düzgün Elektrik Alan | 88 Günde AYT Fizik Kampı | 56. Gün",
+              "url": "https://www.youtube.com/watch?v=FlQgeHPl5F4",
+              "qr": "/ders-videolari/qr/FlQgeHPl5F4.svg"
+            },
+            {
+              "id": "v5qdxL2xRTo",
+              "teacher": "ozcan",
+              "title": "Yüklü Taneciklerin Düzgün Elektrik Alandaki Hareketi | 88 Günde AYT Fizik Kampı | 56. Gün",
+              "url": "https://www.youtube.com/watch?v=v5qdxL2xRTo",
+              "qr": "/ders-videolari/qr/v5qdxL2xRTo.svg"
+            },
+            {
+              "id": "rlAP20utW9c",
+              "teacher": "altug",
+              "title": "56) Elektrik | Düzgün Elektrik Alan ve Parçacıkların Hareketi ( 35. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=rlAP20utW9c",
+              "qr": "/ders-videolari/qr/rlAP20utW9c.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Elektriksel potansiyel",
+      "lessons": [
+        {
+          "title": "Elektriksel potansiyel enerji, potansiyel fark ve iş",
+          "videos": [
+            {
+              "id": "VjtfwAUkKSM",
+              "teacher": "ozcan",
+              "title": "Elektriksel Potansiyel Enerji | Elektriksel Kuvvetlere Karşı Yapılan İş | PDF",
+              "url": "https://www.youtube.com/watch?v=VjtfwAUkKSM",
+              "qr": "/ders-videolari/qr/VjtfwAUkKSM.svg"
+            },
+            {
+              "id": "lpawTn-INXM",
+              "teacher": "ozcan",
+              "title": "Elektriksel Potansiyel | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=lpawTn-INXM",
+              "qr": "/ders-videolari/qr/lpawTn-INXM.svg"
+            },
+            {
+              "id": "5dUJpA6e5hw",
+              "teacher": "ozcan",
+              "title": "Elektriksel Potansiyel Fark ve İş | Yükler Neden Hareket Eder? | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=5dUJpA6e5hw",
+              "qr": "/ders-videolari/qr/5dUJpA6e5hw.svg"
+            },
+            {
+              "id": "5VermNhwW28",
+              "teacher": "altug",
+              "title": "53) Elektrik | Yükler Arası Sistemlerin Elektriksel Potansiyel Enerjisi ( 34. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=5VermNhwW28",
+              "qr": "/ders-videolari/qr/5VermNhwW28.svg"
+            },
+            {
+              "id": "ZzrsX3Nwdtw",
+              "teacher": "altug",
+              "title": "54) Elektrik | Bir Yükün Çevresinde Oluşturduğu Potansiyel ( 34. Gün / 2. Kısım )",
+              "url": "https://www.youtube.com/watch?v=ZzrsX3Nwdtw",
+              "qr": "/ders-videolari/qr/ZzrsX3Nwdtw.svg"
+            },
+            {
+              "id": "QCFsJ96EtQA",
+              "teacher": "altug",
+              "title": "55) Elektrik | Elektriksel İş Kavramı ( 35. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=QCFsJ96EtQA",
+              "qr": "/ders-videolari/qr/QCFsJ96EtQA.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Sığaçlar",
+      "lessons": [
+        {
+          "title": "Sığa, sığaçlar ve paralel levhalar",
+          "videos": [
+            {
+              "id": "lgxdhprvqy0",
+              "teacher": "ozcan",
+              "title": "Sığa Kavramı ve Sığaçlar | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=lgxdhprvqy0",
+              "qr": "/ders-videolari/qr/lgxdhprvqy0.svg"
+            },
+            {
+              "id": "MKiSGh7qFkU",
+              "teacher": "altug",
+              "title": "57) Elektrik | Sığa Kavramı. Sığaya Etki Eden Faktörler. Sığaçlar ( 36. Gün / 1. Kısım )",
+              "url": "https://www.youtube.com/watch?v=MKiSGh7qFkU",
+              "qr": "/ders-videolari/qr/MKiSGh7qFkU.svg"
+            },
+            {
+              "id": "Wga5sMwAm7s",
+              "teacher": "altug",
+              "title": "46) AYT Elektrik - Sığaçlar ve Sığaçlardaki Sığa, Yük, Potansiyel ve Elektrik Alan Değişimleri",
+              "url": "https://www.youtube.com/watch?v=Wga5sMwAm7s",
+              "qr": "/ders-videolari/qr/Wga5sMwAm7s.svg"
+            },
+            {
+              "id": "6yTSiEh1I34",
+              "teacher": "altug",
+              "title": "45) AYT Elektrik -  Paralel Levhalarda Elektrik Alan, Potansiyel ve Yük Dağılımları + Simülasyon",
+              "url": "https://www.youtube.com/watch?v=6yTSiEh1I34",
+              "qr": "/ders-videolari/qr/6yTSiEh1I34.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Manyetik alan ve kuvvet",
+      "lessons": [
+        {
+          "title": "Düz tel, halka ve bobinin manyetik alanı",
+          "videos": [
+            {
+              "id": "cVNRnMDSLZw",
+              "teacher": "ozcan",
+              "title": "Üzerinden Akım Geçen Düz Telin Manyetik Alanı | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=cVNRnMDSLZw",
+              "qr": "/ders-videolari/qr/cVNRnMDSLZw.svg"
+            },
+            {
+              "id": "t0w38DRDl5M",
+              "teacher": "ozcan",
+              "title": "Akım Geçen Halkanın Manyetik Alanı | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=t0w38DRDl5M",
+              "qr": "/ders-videolari/qr/t0w38DRDl5M.svg"
+            },
+            {
+              "id": "N_1HcV9f4kI",
+              "teacher": "ozcan",
+              "title": "Akım Makarasının (Bobin) Manyetik Alanı | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=N_1HcV9f4kI",
+              "qr": "/ders-videolari/qr/N_1HcV9f4kI.svg"
+            },
+            {
+              "id": "DABIPEneu8I",
+              "teacher": "altug",
+              "title": "59) Manyetizma | Düz Telden Geçen Akımın Oluşturduğu Manyetik Alan. Sağ El Kuralı ( 37. Gün )",
+              "url": "https://www.youtube.com/watch?v=DABIPEneu8I",
+              "qr": "/ders-videolari/qr/DABIPEneu8I.svg"
+            },
+            {
+              "id": "7d8UxLe4i0g",
+              "teacher": "altug",
+              "title": "50) Manyetizma - Üzerinden Akım Geçen Halkanın ve Bobinin Oluşturduğu Manyetik Alan",
+              "url": "https://www.youtube.com/watch?v=7d8UxLe4i0g",
+              "qr": "/ders-videolari/qr/7d8UxLe4i0g.svg"
+            }
+          ]
+        },
+        {
+          "title": "Tele ve yüklü parçacıklara etki eden manyetik kuvvet",
+          "videos": [
+            {
+              "id": "jjciQ8di_qs",
+              "teacher": "ozcan",
+              "title": "Akım Geçen Tele Etki Eden Manyetik Kuvvet | Deney | AYT | PDF",
+              "url": "https://www.youtube.com/watch?v=jjciQ8di_qs",
+              "qr": "/ders-videolari/qr/jjciQ8di_qs.svg"
+            },
+            {
+              "id": "2WdQ1JPNblU",
+              "teacher": "ozcan",
+              "title": "Yüklü Parçacıkların Manyetik Alandaki Hareketi | 88 Günde AYT Fizik Kampı | 60. Gün",
+              "url": "https://www.youtube.com/watch?v=2WdQ1JPNblU",
+              "qr": "/ders-videolari/qr/2WdQ1JPNblU.svg"
+            },
+            {
+              "id": "IJPi09y4iL0",
+              "teacher": "altug",
+              "title": "62) Manyetizma | Üzerinden Akım Geçen Tele Etki Eden Manyetik Kuvvet ( 39. Gün )",
+              "url": "https://www.youtube.com/watch?v=IJPi09y4iL0",
+              "qr": "/ders-videolari/qr/IJPi09y4iL0.svg"
+            },
+            {
+              "id": "lkHz6K6IsSg",
+              "teacher": "altug",
+              "title": "53) Manyetizma - Yüklü Taneciklere Etki Eden Manyetik Kuvvet #aytfizik #aytfizikkampı",
+              "url": "https://www.youtube.com/watch?v=lkHz6K6IsSg",
+              "qr": "/ders-videolari/qr/lkHz6K6IsSg.svg"
+            }
+          ]
+        },
+        {
+          "title": "Manyetik tork ve elektrik motoru",
+          "videos": [
+            {
+              "id": "xCuhaSpfQJw",
+              "teacher": "ozcan",
+              "title": "Basit Elektrik Motoru | Akım Geçen Dikdörtgen Çerçevede Tork | Deney + Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=xCuhaSpfQJw",
+              "qr": "/ders-videolari/qr/xCuhaSpfQJw.svg"
+            },
+            {
+              "id": "kThlJsr7ZTc",
+              "teacher": "altug",
+              "title": "52) Manyetizma - Tel Çerçeveye Etki Eden Manyetik Tork #aytfizik #aytfizikkampı",
+              "url": "https://www.youtube.com/watch?v=kThlJsr7ZTc",
+              "qr": "/ders-videolari/qr/kThlJsr7ZTc.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Elektromanyetik indüksiyon",
+      "lessons": [
+        {
+          "title": "Manyetik akı, indüksiyon EMK’si, Faraday ve Lenz yasaları",
+          "videos": [
+            {
+              "id": "4vBZRVlhUk4",
+              "teacher": "ozcan",
+              "title": "Manyetik Akı | İndüksiyon Akımı | PDF",
+              "url": "https://www.youtube.com/watch?v=4vBZRVlhUk4",
+              "qr": "/ders-videolari/qr/4vBZRVlhUk4.svg"
+            },
+            {
+              "id": "HBqr5LTb3zI",
+              "teacher": "ozcan",
+              "title": "Hareketli telde indüksiyon EMK’si",
+              "url": "https://www.youtube.com/watch?v=HBqr5LTb3zI",
+              "qr": "/ders-videolari/qr/HBqr5LTb3zI.svg",
+              "sourceTitle": "Induction EMF in a Moving Wire | Experiment | PDF"
+            },
+            {
+              "id": "-zTSo73gnw4",
+              "teacher": "ozcan",
+              "title": "Faraday ve Lenz Yasaları | İndüksiyon Akımı | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=-zTSo73gnw4",
+              "qr": "/ders-videolari/qr/-zTSo73gnw4.svg"
+            },
+            {
+              "id": "RMib4Ad5ra8",
+              "teacher": "altug",
+              "title": "Manyetik akı ve manyetik akının değişimi",
+              "url": "https://www.youtube.com/watch?v=RMib4Ad5ra8",
+              "qr": "/ders-videolari/qr/RMib4Ad5ra8.svg",
+              "sourceTitle": "56) Magnetism - What is Magnetic Flux? Magnetic Flux Change and Sample Questions"
+            },
+            {
+              "id": "Pn3iNKXl9Zg",
+              "teacher": "altug",
+              "title": "67) Manyetizma | İndüksiyon Elektromotor Kuvveti. EMK Nedir? Nasıl Oluşur? ( 42. Gün )",
+              "url": "https://www.youtube.com/watch?v=Pn3iNKXl9Zg",
+              "qr": "/ders-videolari/qr/Pn3iNKXl9Zg.svg"
+            },
+            {
+              "id": "lhH2Z0v-RIo",
+              "teacher": "altug",
+              "title": "57) Manyetizma - İndüksiyon Akımı Nedir? İndüksiyon Akımının İncelenmesi",
+              "url": "https://www.youtube.com/watch?v=lhH2Z0v-RIo",
+              "qr": "/ders-videolari/qr/lhH2Z0v-RIo.svg"
+            }
+          ]
+        },
+        {
+          "title": "Öz indüksiyon ve girdap akımları",
+          "videos": [
+            {
+              "id": "OHvHlt0l6MA",
+              "teacher": "ozcan",
+              "title": "Öz indüksiyon akımı",
+              "url": "https://www.youtube.com/watch?v=OHvHlt0l6MA",
+              "qr": "/ders-videolari/qr/OHvHlt0l6MA.svg",
+              "sourceTitle": "Self-Induction Current | AYT Physics Camp in 88 Days | Day 63"
+            },
+            {
+              "id": "bpO17Ena9u0",
+              "teacher": "ozcan",
+              "title": "Lorentz kuvveti ve girdap akımları",
+              "url": "https://www.youtube.com/watch?v=bpO17Ena9u0",
+              "qr": "/ders-videolari/qr/bpO17Ena9u0.svg",
+              "sourceTitle": "Lorentz Force and Eddy Currents | AYT Physics Camp in 88 Days | Day 63"
+            },
+            {
+              "id": "_r2JS6SfXxE",
+              "teacher": "altug",
+              "title": "Öz indüksiyon akımı, oluşumu ve yönü",
+              "url": "https://www.youtube.com/watch?v=_r2JS6SfXxE",
+              "qr": "/ders-videolari/qr/_r2JS6SfXxE.svg",
+              "sourceTitle": "70) Magnetism | Self-Induction Current and Direction. How is Self-Induction Current Generated? (D..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Alternatif akım ve transformatörler",
+      "lessons": [
+        {
+          "title": "Alternatif akım, etkin değer ve devre elemanları",
+          "videos": [
+            {
+              "id": "3h-q5WIWVJY",
+              "teacher": "ozcan",
+              "title": "Alternatif Akım - Doğru Akım Kıyaslaması,  Etkin Değer | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=3h-q5WIWVJY",
+              "qr": "/ders-videolari/qr/3h-q5WIWVJY.svg"
+            },
+            {
+              "id": "T8vColrO0Hs",
+              "teacher": "ozcan",
+              "title": "Alternatif Akım Devrelerinde Direncin ve Bobinin Davranışı | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=T8vColrO0Hs",
+              "qr": "/ders-videolari/qr/T8vColrO0Hs.svg"
+            },
+            {
+              "id": "5mwI7MF8k4k",
+              "teacher": "ozcan",
+              "title": "Alternatif Akım Devrelerinde Sığacın Davranışı | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=5mwI7MF8k4k",
+              "qr": "/ders-videolari/qr/5mwI7MF8k4k.svg"
+            },
+            {
+              "id": "jx4Xlw8tnYU",
+              "teacher": "altug",
+              "title": "Alternatif akım ve doğru akım karşılaştırması",
+              "url": "https://www.youtube.com/watch?v=jx4Xlw8tnYU",
+              "qr": "/ders-videolari/qr/jx4Xlw8tnYU.svg",
+              "sourceTitle": "73) Comparison of Alternating Current and Direct Current. Advantages of Alternating Current (Day 46)"
+            },
+            {
+              "id": "ZSOanZvbA4E",
+              "teacher": "altug",
+              "title": "74) Etkin Değer / Alternatif Akım Devre Elemanları ve Davranışları. ( 46. Gün )",
+              "url": "https://www.youtube.com/watch?v=ZSOanZvbA4E",
+              "qr": "/ders-videolari/qr/ZSOanZvbA4E.svg"
+            }
+          ]
+        },
+        {
+          "title": "Empedans ve rezonans",
+          "videos": [
+            {
+              "id": "gAUFN4jEHNQ",
+              "teacher": "ozcan",
+              "title": "Empedans ve Rezonans Kavramları | Alternatif Akım | PDF",
+              "url": "https://www.youtube.com/watch?v=gAUFN4jEHNQ",
+              "qr": "/ders-videolari/qr/gAUFN4jEHNQ.svg"
+            },
+            {
+              "id": "BApS10p0knk",
+              "teacher": "altug",
+              "title": "Alternatif akımda empedans ve etki eden faktörler",
+              "url": "https://www.youtube.com/watch?v=BApS10p0knk",
+              "qr": "/ders-videolari/qr/BApS10p0knk.svg",
+              "sourceTitle": "75) The Concept of Impedance in Alternating Current | Factors Affecting Impedance / (Day 48)"
+            },
+            {
+              "id": "malI1wkKXQM",
+              "teacher": "altug",
+              "title": "76) Alternatif Akımda Rezonans Kavramı. Rezonans Frekansı ( 48. Gün )",
+              "url": "https://www.youtube.com/watch?v=malI1wkKXQM",
+              "qr": "/ders-videolari/qr/malI1wkKXQM.svg"
+            }
+          ]
+        },
+        {
+          "title": "Transformatörler",
+          "videos": [
+            {
+              "id": "LUrrzGkFwUo",
+              "teacher": "ozcan",
+              "title": "Transformatörler",
+              "url": "https://www.youtube.com/watch?v=LUrrzGkFwUo",
+              "qr": "/ders-videolari/qr/LUrrzGkFwUo.svg",
+              "sourceTitle": "Transformers | AYT Physics Camp in 88 Days | Day 67"
+            },
+            {
+              "id": "95hhqdrdyw0",
+              "teacher": "altug",
+              "title": "77) Transformatörler Nasıl Çalışır ve Özellikleri Nelerdir?  ( 49. Gün )",
+              "url": "https://www.youtube.com/watch?v=95hhqdrdyw0",
+              "qr": "/ders-videolari/qr/95hhqdrdyw0.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Dalga mekaniği",
+      "lessons": [
+        {
+          "title": "Su dalgalarında kırınım ve girişim",
+          "videos": [
+            {
+              "id": "izkL4K4_Xoo",
+              "teacher": "ozcan",
+              "title": "Su Dalgalarında Kırınım | Kırınım Neden Gerçekleşir? | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=izkL4K4_Xoo",
+              "qr": "/ders-videolari/qr/izkL4K4_Xoo.svg"
+            },
+            {
+              "id": "k2GyyyUhpl0",
+              "teacher": "ozcan",
+              "title": "Su Dalgalarında Girişim | Deney | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=k2GyyyUhpl0",
+              "qr": "/ders-videolari/qr/k2GyyyUhpl0.svg"
+            },
+            {
+              "id": "gPUgcxCa6jE",
+              "teacher": "altug",
+              "title": "22) Dalga Mekaniği - Su Dalgalarında Kırınım ve Kırınım Şartı ( 65. Gün )",
+              "url": "https://www.youtube.com/watch?v=gPUgcxCa6jE",
+              "qr": "/ders-videolari/qr/gPUgcxCa6jE.svg"
+            },
+            {
+              "id": "q2VQsxPujHg",
+              "teacher": "altug",
+              "title": "23) Dalga Mekaniği - Su Dalgalarında Girişim. Katar, Düğüm Noktaları. Girişim Çizgileri ( 66. Gün )",
+              "url": "https://www.youtube.com/watch?v=q2VQsxPujHg",
+              "qr": "/ders-videolari/qr/q2VQsxPujHg.svg"
+            }
+          ]
+        },
+        {
+          "title": "Işıkta çift yarıkta girişim ve tek yarıkta kırınım",
+          "videos": [
+            {
+              "id": "7-sVgKPcb4U",
+              "teacher": "ozcan",
+              "title": "Çift Yarıkta Girişim | Dalga Mekaniği | 88 Günde AYT Fizik Kampı | 49. Gün",
+              "url": "https://www.youtube.com/watch?v=7-sVgKPcb4U",
+              "qr": "/ders-videolari/qr/7-sVgKPcb4U.svg"
+            },
+            {
+              "id": "M4fiYT8Ktho",
+              "teacher": "ozcan",
+              "title": "Tek Yarıkta Kırınım | Dalga Mekaniği | 88 Günde AYT Fizik Kampı | 50. Gün",
+              "url": "https://www.youtube.com/watch?v=M4fiYT8Ktho",
+              "qr": "/ders-videolari/qr/M4fiYT8Ktho.svg"
+            },
+            {
+              "id": "VdepPyx-lC8",
+              "teacher": "altug",
+              "title": "24) Dalga Mekaniği - Işığın Çift Yarıkta Girişimi Young Deneyi / (67. Gün)",
+              "url": "https://www.youtube.com/watch?v=VdepPyx-lC8",
+              "qr": "/ders-videolari/qr/VdepPyx-lC8.svg"
+            },
+            {
+              "id": "FSqNZpPU4F8",
+              "teacher": "altug",
+              "title": "26) Dalga Mekaniği - Işığın Tek Yarıkta Kırınımı ve Etki Eden Faktörler ( 68. Gün )",
+              "url": "https://www.youtube.com/watch?v=FSqNZpPU4F8",
+              "qr": "/ders-videolari/qr/FSqNZpPU4F8.svg"
+            }
+          ]
+        },
+        {
+          "title": "Doppler olayı",
+          "videos": [
+            {
+              "id": "UTaLNn1_SuE",
+              "teacher": "ozcan",
+              "title": "Doppler Olayı | Deney | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=UTaLNn1_SuE",
+              "qr": "/ders-videolari/qr/UTaLNn1_SuE.svg"
+            },
+            {
+              "id": "ZHEkzrQ3rL0",
+              "teacher": "altug",
+              "title": "27) Dalga Mekaniği - Doppler Olayı Nedir? Ses Nasıl Farklı Frekansta Hissedilir? ( 68. Gün )",
+              "url": "https://www.youtube.com/watch?v=ZHEkzrQ3rL0",
+              "qr": "/ders-videolari/qr/ZHEkzrQ3rL0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Elektromanyetik dalgalar ve spektrum",
+          "videos": [
+            {
+              "id": "qLVj7Q0S3JE",
+              "teacher": "ozcan",
+              "title": "Elektromanyetik Dalgalar Nasıl Oluşur? | Simülasyon | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=qLVj7Q0S3JE",
+              "qr": "/ders-videolari/qr/qLVj7Q0S3JE.svg"
+            },
+            {
+              "id": "hJ0unZeO8lQ",
+              "teacher": "ozcan",
+              "title": "Elektromanyetik spektrum",
+              "url": "https://www.youtube.com/watch?v=hJ0unZeO8lQ",
+              "qr": "/ders-videolari/qr/hJ0unZeO8lQ.svg",
+              "sourceTitle": "Electromagnetic Spectrum | AYT Physics Camp in 88 Days | Day 69"
+            },
+            {
+              "id": "ooDXKnl1qxE",
+              "teacher": "altug",
+              "title": "28) Dalga Mekaniği - Elektromanyetik Dalgalar Nasıl Oluşur ve Özellikleri (68. Gün)",
+              "url": "https://www.youtube.com/watch?v=ooDXKnl1qxE",
+              "qr": "/ders-videolari/qr/ooDXKnl1qxE.svg"
+            },
+            {
+              "id": "bWmg2WjkAU0",
+              "teacher": "altug",
+              "title": "82) Dalga Mekaniği - Elektromanyetik Dalga Çeşitleri ve Günlük Hayat Örnekleri",
+              "url": "https://www.youtube.com/watch?v=bWmg2WjkAU0",
+              "qr": "/ders-videolari/qr/bWmg2WjkAU0.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Atom modelleri",
+      "lessons": [
+        {
+          "title": "Dalton, Thomson, Rutherford ve Bohr modelleri",
+          "videos": [
+            {
+              "id": "KW3GQk_oZjo",
+              "teacher": "ozcan",
+              "title": "Dalton ve Thomson atom modelleri, Millikan deneyi",
+              "url": "https://www.youtube.com/watch?v=KW3GQk_oZjo",
+              "qr": "/ders-videolari/qr/KW3GQk_oZjo.svg",
+              "sourceTitle": "Dalton-Thomson Atomic Models | Millikan Oil Drop Experiment | PDF"
+            },
+            {
+              "id": "_9UQsCjWdKg",
+              "teacher": "ozcan",
+              "title": "Rutherford atom modeli",
+              "url": "https://www.youtube.com/watch?v=_9UQsCjWdKg",
+              "qr": "/ders-videolari/qr/_9UQsCjWdKg.svg",
+              "sourceTitle": "Rutherford Atomic Model | Simulation | PDF"
+            },
+            {
+              "id": "U8CtktQtCFY",
+              "teacher": "ozcan",
+              "title": "Bohr Atom Modeli | Açısal Momentum, Yarıçap ve Enerji Formülleri | PDF",
+              "url": "https://www.youtube.com/watch?v=U8CtktQtCFY",
+              "qr": "/ders-videolari/qr/U8CtktQtCFY.svg"
+            },
+            {
+              "id": "4ebhtGYhC5s",
+              "teacher": "altug",
+              "title": "39) Atom Fiziği - Dalton, Thomson, Rutherford Atom Modelleri, Milikan Yağ Damlası Deneyi ( 74. Gün )",
+              "url": "https://www.youtube.com/watch?v=4ebhtGYhC5s",
+              "qr": "/ders-videolari/qr/4ebhtGYhC5s.svg"
+            },
+            {
+              "id": "d_8oOBx79y4",
+              "teacher": "altug",
+              "title": "40) Atom Fiziği - Niels Bohr Atom Modeli ve Kararlı Yörüngeler ( 74. Gün )",
+              "url": "https://www.youtube.com/watch?v=d_8oOBx79y4",
+              "qr": "/ders-videolari/qr/d_8oOBx79y4.svg"
+            }
+          ]
+        },
+        {
+          "title": "Atomun uyarılması, ışıma ve spektrum",
+          "videos": [
+            {
+              "id": "eXAU9Jr3Wfk",
+              "teacher": "ozcan",
+              "title": "Atom Nasıl Işıma Yapar ? | Uyarılma - Işıma - İyonlaşma | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=eXAU9Jr3Wfk",
+              "qr": "/ders-videolari/qr/eXAU9Jr3Wfk.svg"
+            },
+            {
+              "id": "avQ7QMCQWlc",
+              "teacher": "ozcan",
+              "title": "Atom Nasıl Uyarılır? | Franck Hertz Deneyi | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=avQ7QMCQWlc",
+              "qr": "/ders-videolari/qr/avQ7QMCQWlc.svg"
+            },
+            {
+              "id": "heEyqH097os",
+              "teacher": "altug",
+              "title": "41) Atom Fiziği - Atomların Uyarılması. Elektronların Geçişleri ve Işıma Enerjileri ( 74. Gün )",
+              "url": "https://www.youtube.com/watch?v=heEyqH097os",
+              "qr": "/ders-videolari/qr/heEyqH097os.svg"
+            },
+            {
+              "id": "A1NtJKsd6jg",
+              "teacher": "altug",
+              "title": "42) Atom Fiziği - Atomların Uyarılması. Fotonla Uyarma ve Spektrum Çizgileri ( 75. Gün )",
+              "url": "https://www.youtube.com/watch?v=A1NtJKsd6jg",
+              "qr": "/ders-videolari/qr/A1NtJKsd6jg.svg"
+            }
+          ]
+        },
+        {
+          "title": "Büyük Patlama ve atom altı parçacıklar",
+          "videos": [
+            {
+              "id": "hNXPgjPwnRQ",
+              "teacher": "ozcan",
+              "title": "Büyük Patlama ve Evrenin Oluşumu | Kırmızıya Kayma Nasıl Olur? | PDF",
+              "url": "https://www.youtube.com/watch?v=hNXPgjPwnRQ",
+              "qr": "/ders-videolari/qr/hNXPgjPwnRQ.svg"
+            },
+            {
+              "id": "1MaQVAkv2sk",
+              "teacher": "ozcan",
+              "title": "Temel Parçacıklar | Atom Altı Parçacıklar ve Standart Model | PDF",
+              "url": "https://www.youtube.com/watch?v=1MaQVAkv2sk",
+              "qr": "/ders-videolari/qr/1MaQVAkv2sk.svg"
+            },
+            {
+              "id": "xgRalIH3IJI",
+              "teacher": "altug",
+              "title": "46) Büyük Patlama ( Big Bang ) Nedir? Evrenin Oluşum Aşamaları ve Kırmızıya Kayma ( 76. Gün )",
+              "url": "https://www.youtube.com/watch?v=xgRalIH3IJI",
+              "qr": "/ders-videolari/qr/xgRalIH3IJI.svg"
+            },
+            {
+              "id": "PCIQhBoOnIo",
+              "teacher": "altug",
+              "title": "45) Atom Altı Parçacıklar - Kuarklar, Leptonlar, Bozonlar, Higgs, Madde ve Anti Madde ( 76. Gün )",
+              "url": "https://www.youtube.com/watch?v=PCIQhBoOnIo",
+              "qr": "/ders-videolari/qr/PCIQhBoOnIo.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Radyoaktivite",
+      "lessons": [
+        {
+          "title": "Kararlılık ve alfa, beta, gama ışımaları",
+          "videos": [
+            {
+              "id": "lebcQdK7rM0",
+              "teacher": "ozcan",
+              "title": "Neden Bazı Çekirdekler Kararsızdır? | Radyoaktivite | PDF",
+              "url": "https://www.youtube.com/watch?v=lebcQdK7rM0",
+              "qr": "/ders-videolari/qr/lebcQdK7rM0.svg"
+            },
+            {
+              "id": "meTg5OMlO58",
+              "teacher": "ozcan",
+              "title": "Alfa, Beta, Gama Işımaları | Radyoaktivite | Deney | PDF",
+              "url": "https://www.youtube.com/watch?v=meTg5OMlO58",
+              "qr": "/ders-videolari/qr/meTg5OMlO58.svg"
+            },
+            {
+              "id": "sKk6qgwdKUg",
+              "teacher": "altug",
+              "title": "43) Atom Fiziği - Radyoaktif Işıma Alfa Beta ve Gama Işımaları ( 75. Gün )",
+              "url": "https://www.youtube.com/watch?v=sKk6qgwdKUg",
+              "qr": "/ders-videolari/qr/sKk6qgwdKUg.svg"
+            }
+          ]
+        },
+        {
+          "title": "Fisyon ve füzyon",
+          "videos": [
+            {
+              "id": "qV1sBFu9Nbw",
+              "teacher": "ozcan",
+              "title": "Nükleer fisyon ve füzyon tepkimeleri",
+              "url": "https://www.youtube.com/watch?v=qV1sBFu9Nbw",
+              "qr": "/ders-videolari/qr/qV1sBFu9Nbw.svg",
+              "sourceTitle": "Nuclear Fission and Fusion Reactions | Radioactivity | 88 Days of AYT Physics Camp | Day 78"
+            },
+            {
+              "id": "U6Qhc-Gbw8I",
+              "teacher": "altug",
+              "title": "44) Atom Fiziği - Nükleer Fisyon ve Füzyon Reaksiyonları ( 75. Gün )",
+              "url": "https://www.youtube.com/watch?v=U6Qhc-Gbw8I",
+              "qr": "/ders-videolari/qr/U6Qhc-Gbw8I.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Modern fiziğe giriş",
+      "lessons": [
+        {
+          "title": "Michelson–Morley deneyi, özel görelilik ve kütle–enerji ilişkisi",
+          "videos": [
+            {
+              "id": "-laLxwXfSx0",
+              "teacher": "ozcan",
+              "title": "Michelson–Morley deneyi",
+              "url": "https://www.youtube.com/watch?v=-laLxwXfSx0",
+              "qr": "/ders-videolari/qr/-laLxwXfSx0.svg",
+              "sourceTitle": "Michelson–Morley Experiment | Animation | PDF"
+            },
+            {
+              "id": "BNE2Fl_fmO4",
+              "teacher": "ozcan",
+              "title": "Zaman Nasıl Yavaşlar? | Temel Postulatlar - Göreli Zaman |  Özel Görelilik | PDF",
+              "url": "https://www.youtube.com/watch?v=BNE2Fl_fmO4",
+              "qr": "/ders-videolari/qr/BNE2Fl_fmO4.svg"
+            },
+            {
+              "id": "r1eWDJF3duo",
+              "teacher": "ozcan",
+              "title": "Uzunluk Nasıl Kısalır? | İkizler Paradoksu - Göreli Uzunluk | Özel Görelilik | PDF",
+              "url": "https://www.youtube.com/watch?v=r1eWDJF3duo",
+              "qr": "/ders-videolari/qr/r1eWDJF3duo.svg"
+            },
+            {
+              "id": "gcHWtzshm2E",
+              "teacher": "altug",
+              "title": "33) Modern Fizik - En Başarısız Başarılı Deneyi. Michelson Morley Deneyi / 71. Gün",
+              "url": "https://www.youtube.com/watch?v=gcHWtzshm2E",
+              "qr": "/ders-videolari/qr/gcHWtzshm2E.svg"
+            },
+            {
+              "id": "hin9B4ioQD8",
+              "teacher": "altug",
+              "title": "99) Modern Fizik - Göreli Zaman ve Göreli Uzunluk, İkizler Paradoksu",
+              "url": "https://www.youtube.com/watch?v=hin9B4ioQD8",
+              "qr": "/ders-videolari/qr/hin9B4ioQD8.svg"
+            },
+            {
+              "id": "qIDlMS4nyR4",
+              "teacher": "altug",
+              "title": "Kütle–enerji eşdeğerliği: E = mc²",
+              "url": "https://www.youtube.com/watch?v=qIDlMS4nyR4",
+              "qr": "/ders-videolari/qr/qIDlMS4nyR4.svg",
+              "sourceTitle": "35) Modern Physics - Mass-Energy Equivalence ( E = mc2 ) ( Day 72 )"
+            }
+          ]
+        },
+        {
+          "title": "Siyah cisim ışıması ve Planck hipotezi",
+          "videos": [
+            {
+              "id": "meLyLr8N-Ro",
+              "teacher": "ozcan",
+              "title": "Işıma Nasıl Gerçekleşir? | Siyah Cisim Işıması | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=meLyLr8N-Ro",
+              "qr": "/ders-videolari/qr/meLyLr8N-Ro.svg"
+            },
+            {
+              "id": "1eL5sn07Or0",
+              "teacher": "ozcan",
+              "title": "Kesikli Enerji Ne Demektir? | Siyah Cisim Işıması | PDF",
+              "url": "https://www.youtube.com/watch?v=1eL5sn07Or0",
+              "qr": "/ders-videolari/qr/1eL5sn07Or0.svg"
+            },
+            {
+              "id": "AlI8-XNEoz0",
+              "teacher": "altug",
+              "title": "36) Modern Fizik - Siyah Cisim Işıması ve Planck Hipotezi / ( 72. Gün )",
+              "url": "https://www.youtube.com/watch?v=AlI8-XNEoz0",
+              "qr": "/ders-videolari/qr/AlI8-XNEoz0.svg"
+            }
+          ]
+        },
+        {
+          "title": "Foton, fotoelektrik olay, fotosel ve enerji grafikleri",
+          "videos": [
+            {
+              "id": "91GSWLSdkdI",
+              "teacher": "ozcan",
+              "title": "Hertz Deneyi - Foton Kavramı | Fotoelektrik Olay | Deney - Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=91GSWLSdkdI",
+              "qr": "/ders-videolari/qr/91GSWLSdkdI.svg"
+            },
+            {
+              "id": "EmNLNbSBQKc",
+              "teacher": "ozcan",
+              "title": "Fotoelektrik Denklemi - Enerji Frekans Grafiği | Fotoelektrik Olay | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=EmNLNbSBQKc",
+              "qr": "/ders-videolari/qr/EmNLNbSBQKc.svg"
+            },
+            {
+              "id": "uAUG8lU0yOw",
+              "teacher": "ozcan",
+              "title": "Fotoelektrik Akımı - Doyma Gerilimi | Fotoelektrik Olay | PDF",
+              "url": "https://www.youtube.com/watch?v=uAUG8lU0yOw",
+              "qr": "/ders-videolari/qr/uAUG8lU0yOw.svg"
+            },
+            {
+              "id": "oLuVt_Auy9M",
+              "teacher": "altug",
+              "title": "Foton ve fotoelektrik olayın özellikleri",
+              "url": "https://www.youtube.com/watch?v=oLuVt_Auy9M",
+              "qr": "/ders-videolari/qr/oLuVt_Auy9M.svg",
+              "sourceTitle": "30) Modern Physics - What is a Photon? The Photoelectric Concept and Its Properties ( Day 70 )"
+            },
+            {
+              "id": "QcCl_FzCQlE",
+              "teacher": "altug",
+              "title": "31) Modern Fizik - Fotosel Sistemler. Io ve Imax Akımı Nedir? Doyma ve Kesme Gerilimi ( 70. Gün )",
+              "url": "https://www.youtube.com/watch?v=QcCl_FzCQlE",
+              "qr": "/ders-videolari/qr/QcCl_FzCQlE.svg"
+            },
+            {
+              "id": "6uBF-WMB5l4",
+              "teacher": "altug",
+              "title": "93) Fotoelektrik Olay - Maksimum Kinetik Enerjileri ile Gelen Fotonların Frekansı Arasındaki İlişki",
+              "url": "https://www.youtube.com/watch?v=6uBF-WMB5l4",
+              "qr": "/ders-videolari/qr/6uBF-WMB5l4.svg"
+            }
+          ]
+        },
+        {
+          "title": "Compton saçılması",
+          "videos": [
+            {
+              "id": "bzyjol21byQ",
+              "teacher": "ozcan",
+              "title": "Compton saçılması",
+              "url": "https://www.youtube.com/watch?v=bzyjol21byQ",
+              "qr": "/ders-videolari/qr/bzyjol21byQ.svg",
+              "sourceTitle": "Compton Scattering | AYT Physics Camp in 88 Days | Day 83"
+            },
+            {
+              "id": "DZGGLD8O0wE",
+              "teacher": "altug",
+              "title": "33) Modern Fizik - Compton Saçılması ve Sonuçları / 33. Gün",
+              "url": "https://www.youtube.com/watch?v=DZGGLD8O0wE",
+              "qr": "/ders-videolari/qr/DZGGLD8O0wE.svg"
+            }
+          ]
+        },
+        {
+          "title": "de Broglie dalga boyu ve madde dalgaları",
+          "videos": [
+            {
+              "id": "DNnLHTHFaFw",
+              "teacher": "ozcan",
+              "title": "de Broglie dalga boyu ve madde dalgaları",
+              "url": "https://www.youtube.com/watch?v=DNnLHTHFaFw",
+              "qr": "/ders-videolari/qr/DNnLHTHFaFw.svg",
+              "sourceTitle": "De Broglie Wavelength | Matter Waves | AYT Physics Camp in 88 Days | Day 84"
+            },
+            {
+              "id": "QFQNaJ37FkE",
+              "teacher": "altug",
+              "title": "Işığın ikili doğası ve madde dalgaları",
+              "url": "https://www.youtube.com/watch?v=QFQNaJ37FkE",
+              "qr": "/ders-videolari/qr/QFQNaJ37FkE.svg",
+              "sourceTitle": "37) Modern Physics - The Dual Nature of Light and Matter Waves (Day 73)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "exam": "AYT",
+      "subject": "fizik",
+      "topic": "Modern fiziğin teknolojideki uygulamaları",
+      "lessons": [
+        {
+          "title": "Görüntüleme teknolojileri",
+          "videos": [
+            {
+              "id": "bp55J4GS_ro",
+              "teacher": "ozcan",
+              "title": "Görüntüleme teknolojileri",
+              "url": "https://www.youtube.com/watch?v=bp55J4GS_ro",
+              "qr": "/ders-videolari/qr/bp55J4GS_ro.svg",
+              "sourceTitle": "Imaging Technologies | AYT Physics Camp in 88 Days | Day 85"
+            },
+            {
+              "id": "Dc_NoWhRNCY",
+              "teacher": "altug",
+              "title": "123) Modern Fiziğin Teknolojik Uygulamaları / Görüntüleme Teknolojileri-1 / Röntgen, MR, Tomografi",
+              "url": "https://www.youtube.com/watch?v=Dc_NoWhRNCY",
+              "qr": "/ders-videolari/qr/Dc_NoWhRNCY.svg"
+            },
+            {
+              "id": "8uwK7TOq6Os",
+              "teacher": "altug",
+              "title": "124) Modern Fiziğin Teknolojik Uygulamaları / Görüntüleme Teknolojileri-2 / PET, Ultrason, Sonar",
+              "url": "https://www.youtube.com/watch?v=8uwK7TOq6Os",
+              "qr": "/ders-videolari/qr/8uwK7TOq6Os.svg"
+            },
+            {
+              "id": "xqDFRf0VK4c",
+              "teacher": "altug",
+              "title": "125) Modern Fiziğin Teknolojik Uygulamaları / Görüntüleme Teknolojileri-3 / Led ve Plazma",
+              "url": "https://www.youtube.com/watch?v=xqDFRf0VK4c",
+              "qr": "/ders-videolari/qr/xqDFRf0VK4c.svg"
+            }
+          ]
+        },
+        {
+          "title": "Yarı iletkenler ve güneş pilleri",
+          "videos": [
+            {
+              "id": "eeHL7Bx_B8I",
+              "teacher": "ozcan",
+              "title": "Güneş Pilleri Nasıl Çalışır? | Yarı İletken Teknolojileri | PDF",
+              "url": "https://www.youtube.com/watch?v=eeHL7Bx_B8I",
+              "qr": "/ders-videolari/qr/eeHL7Bx_B8I.svg"
+            },
+            {
+              "id": "VtznrTe3imM",
+              "teacher": "altug",
+              "title": "48) Yarı İletkenler Nedir ve Özellikleri Nelerdir? Yarı İletken Teknolojisi ve Diyotlar ( 77. Gün )",
+              "url": "https://www.youtube.com/watch?v=VtznrTe3imM",
+              "qr": "/ders-videolari/qr/VtznrTe3imM.svg"
+            }
+          ]
+        },
+        {
+          "title": "Süper iletkenler, nanoteknoloji ve lazer",
+          "videos": [
+            {
+              "id": "iBBLcA0_1lQ",
+              "teacher": "ozcan",
+              "title": "Süper İletkenler | Deney | Modern Fiziğin Teknolojideki Uygulamaları | PDF",
+              "url": "https://www.youtube.com/watch?v=iBBLcA0_1lQ",
+              "qr": "/ders-videolari/qr/iBBLcA0_1lQ.svg"
+            },
+            {
+              "id": "n-N8DthY01Q",
+              "teacher": "ozcan",
+              "title": "Nanoteknoloji ve Lazer Işınları | Simülasyon | PDF",
+              "url": "https://www.youtube.com/watch?v=n-N8DthY01Q",
+              "qr": "/ders-videolari/qr/n-N8DthY01Q.svg"
+            },
+            {
+              "id": "mJEL4MKjz_Y",
+              "teacher": "altug",
+              "title": "129) Modern Fiziğin Teknolojik Uygulamaları / Süper İletkenler ve Nanoteknoloji",
+              "url": "https://www.youtube.com/watch?v=mJEL4MKjz_Y",
+              "qr": "/ders-videolari/qr/mJEL4MKjz_Y.svg"
+            },
+            {
+              "id": "jHzonS8UlgY",
+              "teacher": "altug",
+              "title": "49) Modern Fiziğin Teknolojik Uygulamaları / Süper İletkenler ve Laser Elde Edilişi ( 77. Gün )",
+              "url": "https://www.youtube.com/watch?v=jHzonS8UlgY",
+              "qr": "/ders-videolari/qr/jHzonS8UlgY.svg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

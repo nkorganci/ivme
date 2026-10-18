@@ -2,13 +2,16 @@
 # Geliştirme için: --spring.profiles.active=dev (application-dev.yml). Üretim: README'deki ortam değişkenleri.
 server:
   port: ${PORT:8081}
+  address: ${YKS_BIND_ADDRESS:127.0.0.1}
+  forward-headers-strategy: none   # tünel istemcisinden gelen X-Forwarded-* başlıklarına güvenme
   servlet:
     session:
       timeout: 12h
       cookie:
+        name: ${YKS_SESSION_COOKIE:JSESSIONID}
         http-only: true
         same-site: lax
-        secure: ${YKS_COOKIE_SECURE:false}   # HTTPS arkasında true yap
+        secure: ${YKS_COOKIE_SECURE:true}    # üretim tüneli HTTPS; yerel dev profili false olarak ezer
 
 spring:
   application:
@@ -22,7 +25,7 @@ spring:
     hibernate:
       ddl-auto: validate          # tabloları yalnızca Flyway oluşturur; Hibernate yalnız doğrular
   flyway:
-    enabled: true
+    enabled: ${YKS_FLYWAY_ETKIN:true}  # sınırlı çalışma rolünde false; göçler ayrı yetkili işlemde uygulanır
     clean-disabled: true          # yanlışlıkla veritabanı silinmesin
   servlet:
     multipart:
@@ -30,11 +33,35 @@ spring:
       max-request-size: 20MB
 
 app:
-  public-base-url: ${YKS_SITE_ADRESI}      # QR kodların işaret ettiği adres, örn. https://yks.ornek.com
+  csrf-cookie-name: ${YKS_CSRF_COOKIE:XSRF-TOKEN}
+  public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:
     dir: ${YKS_RESIM_KLASORU}              # soru görsellerinin kök klasörü (Windows yolu olabilir)
+  topic-pdfs:
+    catalog-dir: ${YKS_KONU_PDF_KATALOGU:}  # 13.04 çıktısındaki entries klasörü
+    source-dir: ${YKS_OGM_PDF_KAYNAGI:}     # özgün OGM PDF kökü
   admin:
     username: ${YKS_ADMIN_KULLANICI:admin}
     email: ${YKS_ADMIN_EPOSTA:admin@localhost}
     password: ${YKS_ADMIN_SIFRE:}          # yalnız İLK kurulumda yönetici oluşturmak için; sonra kaldırılabilir
   sample-data: ""                          # dev profilinde örnek CSV yolu
+  import-file: ${YKS_IMPORT_DOSYASI:}      # İSTEĞE BAĞLI: açılışta bu CSV/JSON toplu yüklenir (README "Tüm soruları yükleme")
+  import-mode: ${YKS_IMPORT_MODU:INSERT_ONLY}
+  tutor:
+    # Öğrenciye açılan öğretim içeriği: pilotta otomatik doğrulanmış + öğretmen onaylı; üretimde APPROVED_ONLY önerilir.
+    student-visibility: ${YKS_OGRETIM_GORUNURLUGU:VERIFIED_OR_APPROVED}
+    models:
+      # Öğrencinin serbest açıklamasını sınıflandıran modeller. Varsayılan yerel Ollama; veri makineden çıkmaz.
+      # Bulut sağlayıcısı (openai-compatible) seçilirse anahtar yalnız sunucu ortam değişkeninden okunur.
+      enabled: ${YKS_AI_ETKIN:true}
+      timeout-seconds: ${YKS_AI_ZAMAN_ASIMI:20}
+      economic:
+        provider: ${YKS_AI_EKONOMIK_SAGLAYICI:ollama}
+        base-url: ${YKS_AI_EKONOMIK_ADRES:http://127.0.0.1:11434}
+        model: ${YKS_AI_EKONOMIK_MODEL:qwen3.5:4b}
+        api-key: ${YKS_AI_EKONOMIK_ANAHTAR:}
+      strong:
+        provider: ${YKS_AI_GUCLU_SAGLAYICI:ollama}
+        base-url: ${YKS_AI_GUCLU_ADRES:http://127.0.0.1:11434}
+        model: ${YKS_AI_GUCLU_MODEL:qwen3.5:9b}
+        api-key: ${YKS_AI_GUCLU_ANAHTAR:}

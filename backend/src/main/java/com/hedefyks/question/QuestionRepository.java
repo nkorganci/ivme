@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface QuestionRepository extends JpaRepository<Question, Long>, JpaSpecificationExecutor<Question> {
 
@@ -21,4 +22,10 @@ public interface QuestionRepository extends JpaRepository<Question, Long>, JpaSp
             from Question q where q.active = true
             group by q.examType, q.subject, q.topic""")
     List<QuestionDtos.FilterRow> filterRows();
+
+    @Query("""
+            select new com.hedefyks.question.QuestionDtos$FilterRow(q.examType, q.subject, q.topic, count(q))
+            from Question q where q.active = true and q.bank = :bank
+            group by q.examType, q.subject, q.topic""")
+    List<QuestionDtos.FilterRow> filterRowsByBank(@Param("bank") QuestionBank bank);
 }

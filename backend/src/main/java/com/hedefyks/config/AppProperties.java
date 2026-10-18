@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @ConfigurationProperties(prefix = "app")
 public record AppProperties(
-        @NotBlank String publicBaseUrl,
+        String publicBaseUrl,
         Images images,
         Admin admin,
         String sampleData) {

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "run": {
+    "id": "codex-visual-2026-10-09-v1",
+    "model_family": "GPT-6",
+    "model_version": null,
+    "prompt_version": "visual-allowed-types-v1",
+    "taxonomy_version": "tyt-turkce-v1",
+    "source": "manual visual inspection by assistant in this Codex session",
+    "status": "draft"
+  },
+  "drafts": [
+    {
+      "question_code": "TYT-0100",
+      "image_sha256": "0c8a30e93bab23dff9d8a90dd8fa3440615037a4440160e0d677126ed93287fe",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.86,
+      "abstain": false,
+      "evidence": "Parçadaki altı çizili ifadeden çıkarılamayan anlamı soruyor."
+    },
+    {
+      "question_code": "TYT-0062",
+      "image_sha256": "534618fae50df8b571ce14cbd17abc2c9e4605fac48888f3abd75760c0167ecd",
+      "question_type_code": "tyt.turkce.tip.paragraf_yapi",
+      "confidence": 0.93,
+      "abstain": false,
+      "evidence": "Numaralı cümlelerden düşüncenin akışını bozanı seçtiriyor."
+    },
+    {
+      "question_code": "TYT-0001",
+      "image_sha256": "599628d16787ff6032336c0e756927c21dfe545648bb840140dc0da6094d9ee8",
+      "question_type_code": null,
+      "confidence": 0.48,
+      "abstain": true,
+      "evidence": "Paragrafta iki boşluğu sözcüklerle doldurtuyor; mevcut geniş sözcük/paragraf türleri arasında sınır belirsiz."
+    },
+    {
+      "question_code": "TYT-0034",
+      "image_sha256": "26cbcea027e283bbc5e4b820f66c06efb63cb4ff96a02543029566f03357d7be",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.83,
+      "abstain": false,
+      "evidence": "Tek tek yargılarda kişisel düşünce bulunup bulunmadığını karşılaştırıyor."
+    },
+    {
+      "question_code": "TYT-0300",
+      "image_sha256": "a557903c4f1f3279f9615916153503bd754a7f117aa4a65514f07d9e97978fe8",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.96,
+      "abstain": false,
+      "evidence": "De bağlacının yazım yanlışını bulduruyor."
+    },
+    {
+      "question_code": "TYT-0318",
+      "image_sha256": "a5b276a75e9430e4a0b7ed57acc01bcdf5fcf88da71746cf01a049ac2daeb59f",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.97,
+      "abstain": false,
+      "evidence": "Boş yerlere uygun noktalama işaretlerini sıralatıyor."
+    },
+    {
+      "question_code": "TYT-0347",
+      "image_sha256": "4faa23bbe3c83ad859e27072062687552a8205eb0546a5dfac74594cda21a541",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.97,
+      "abstain": false,
+      "evidence": "Verilen cümlenin ögelerinin sırasını soruyor."
+    }
+  ]
+}

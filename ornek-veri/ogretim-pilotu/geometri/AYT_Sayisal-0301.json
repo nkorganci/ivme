@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:AYT_Sayisal-0301",
+  "question": {
+    "code": "AYT_Sayisal-0301",
+    "exam": "AYT",
+    "subjectId": "geometri",
+    "categoryId": "ayt.geometri.cember-ve-daire",
+    "subtopic": "Çemberde yay uzunluğu ve merkez açı (yuvarlanan tekerlek)",
+    "answerKey": "D",
+    "choiceCount": 5,
+    "imageSha256": "ce666a99b439cc392c24491ca59acdb135cf30d027d15cc24bcfff39c21e70bd"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Daire biçimindeki bir bisiklet tekerleğinin merkezine bağlı olan kırmızı ve mavi parçalar ile siyah bir jant telinin başlangıçtaki görünümleri şekilde verilmiştir. Bisiklet hareket ettiğinde hem kırmızı hem mavi parçanın bisiklete göre konumu aynı kalmakta, siyah jant teli ise tekerleğin merkezi etrafında dönmektedir. Bu bisiklet, aynı yönde başlangıçtan itibaren 90 cm yol alıp durduğu anda siyah telin ilk kez mavi parça ile, başlangıçtan itibaren 130 cm yol alıp durduğu anda siyah telin ilk kez kırmızı parça ile, başlangıçtan itibaren 290 cm yol alıp durduğu anda siyah telin ikinci kez mavi parça ile üst üste geldiği görülüyor. Buna göre kırmızı ve mavi parçalar arasındaki dar açının ölçüsü kaç derecedir?",
+    "choices": {"A": "60", "B": "63", "C": "70", "D": "72", "E": "75"},
+    "figure": "Tekerlek merkezinden sola yatay kırmızı parça, yukarı-sola mavi parça ve aşağı-sağa siyah jant teli. Şekil yalnız başlangıç konumlarını gösterir; ölçü metindedir.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "Kaymadan dönen tekerlekte alınan yolun dönen yaya eşit olduğunu ve iki ardışık mavi çakışmanın bir tam tur olduğunu görmek gerekir; sonrası orantıdır.",
+    "skills": ["ANALIZ", "PROBLEM_COZME", "HESAPLAMA"],
+    "prerequisites": ["tyt.matematik.oran-oranti"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "geometri.cember.yay-aci-orantisi",
+    "name": "Yuvarlanan çember: yol = yay, tur = çevre",
+    "trigger": "Bir tekerlek ya da çember kaymadan yuvarlanıyor ve alınan yol ile dönme açısı ilişkilendiriliyorsa.",
+    "bigIdea": "Kaymadan yuvarlanan tekerlekte alınan yol, çevrede dönen yaya eşittir. Bir tam tur = çevre = 360°; yol ile açı doğru orantılıdır.",
+    "method": [
+      "Aynı konumun iki kez tekrarlandığı anları bul: aradaki yol bir tam tur, yani çevredir.",
+      "İstenen iki konum arasındaki yolu bul.",
+      "Açı = (yol / çevre) × 360° orantısını kur.",
+      "Dar/geniş açı istendiğini kontrol et; gerekiyorsa 360°'den çıkar."
+    ],
+    "whenNot": "Tekerlek kayıyorsa ya da dişliler farklı yarıçaplıysa yol ile dönme açısı bu basit orantıyla bağlanmaz.",
+    "examTip": "Verilen yollardan aynı olayın iki tekrarını eşle: farkları çevreyi verir, başka hiçbir ölçüye gerek kalmaz."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "tam-tur", "text": "Siyah telin maviyle ilk ve ikinci çakışması arasındaki yolu tekerleğin çevresi olarak kullanmak", "correct": true,
+       "feedback": "Doğru. Aynı konuma ikinci kez gelmek bir tam tur demektir; aradaki yol çevreyi verir."},
+      {"id": "toplam-yol", "text": "290 cm'yi tekerleğin çevresi kabul etmek", "correct": false,
+       "feedback": "290 cm başlangıçtan ölçülen yoldur; başlangıçta tel mavi üzerinde değildi. Tam tur, iki mavi çakışma arasındaki yoldur."},
+      {"id": "yaricap", "text": "Önce tekerleğin yarıçapını şekilden ölçmek", "correct": false,
+       "feedback": "Yarıçapa gerek yok; çevre doğrudan yollardan çıkar ve açı oranla bulunur."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Kaymadan yuvarlanan tekerlekte alınan yol, çevrede dönen yay kadardır. Bir tam tur, çevre uzunluğu kadar yol demektir."},
+    {"level": 2, "kind": "STRATEJI", "text": "Siyah tel maviyle iki kez çakışıyor: bu iki an arasında tekerlek tam bir tur atmıştır. Bu farkı çevre olarak kullan; sonra maviden kırmızıya geçerken alınan yolu bu çevreyle oranla."},
+    {"level": 3, "kind": "ADIM", "text": "Çevre = 290 − 90 cm. Maviden kırmızıya geçişte alınan yol 130 − 90 cm. Açıyı (yol / çevre) × 360° ile hesapla."}
+  ],
+  "guidingQuestions": [
+    {"text": "Siyah tel aynı parçayla ikinci kez çakıştığında tekerlek kaç tur dönmüştür?", "answer": "İlk çakışmadan sonra tam bir tur."},
+    {"text": "Maviden kırmızıya geçen tel, tam turun kaçta kaçını dönmüştür?", "answer": "40 cm / 200 cm = 1/5 tur."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Siyah tel maviyle ilk kez 90 cm'de, ikinci kez 290 cm'de çakışıyor. Aradaki 290 − 90 = 200 cm bir tam turdur: tekerleğin çevresi 200 cm.",
+       "why": "Tel aynı konuma ancak tam tur dönünce tekrar gelir; kaymadan yuvarlanmada bir tur, çevre kadar yol demektir.",
+       "check": {"type": "sympy", "expr": "290 - 90", "equals": "200"},
+       "selfExplain": {"prompt": "Çevre neden 290 cm değil de 200 cm?",
+         "options": [
+           {"id": "tekrar", "text": "Başlangıçta tel maviyle çakışık değildi; tam tur, maviyle iki çakışma arasındaki yoldur.", "correct": true,
+            "feedback": "Evet. Turun başlangıç noktası telin başlangıç konumu değil, aynı olayın ilk tekrarlandığı andır."},
+           {"id": "fark", "text": "Çünkü 90 cm tekerleğin yarıçapıdır.", "correct": false,
+            "feedback": "90 cm başlangıçtan ilk mavi çakışmaya kadar alınan yoldur; yarıçapla ilgisi yok."},
+           {"id": "iki-tur", "text": "Çünkü 290 cm iki tam tura karşılık gelir.", "correct": false,
+            "feedback": "Başlangıçtaki konum bir çakışma anı olmadığı için 290 cm'nin tur sayısı doğrudan söylenemez."}
+         ]}},
+      {"id": "s2", "text": "Maviden kırmızıya geçişte alınan yol 130 − 90 = 40 cm. Bu, tam turun 40/200 = 1/5'i.",
+       "why": "Telin maviden kırmızıya döndüğü yay, bu aralıkta alınan yola eşittir.",
+       "check": {"type": "sympy", "expr": "Rational(130 - 90, 290 - 90)", "equals": "Rational(1, 5)"}},
+      {"id": "s3", "text": "Açı = (1/5) · 360° = 72°. 72° < 90° olduğundan kırmızı ve mavi arasındaki dar açı 72°'dir.",
+       "why": "Merkez açı yay uzunluğuyla orantılıdır; iki parça arasındaki diğer açı 360° − 72° = 288° olurdu.",
+       "check": {"type": "sympy", "expr": "Rational(130 - 90, 290 - 90)*360", "equals": "72"}}
+    ],
+    "finalAnswer": {"choice": "D", "value": "72",
+      "check": {"type": "choice", "expr": "Rational(130 - 90, 290 - 90)*360", "choice": "D"}},
+    "levels": {
+      "sezgi": "Tekerleği yerde iz bırakan bir boya rulosu gibi düşün: rulonun döndüğü her santimetre yere bir santimetre iz bırakır. Siyah tel aynı parçayı ikinci kez gördüğünde rulo tam bir tur dönmüş ve yere 200 cm iz bırakmıştır. Maviden kırmızıya geçerken bırakılan 40 cm iz, bu turun beşte biri; beşte bir tur da 72°.",
+      "kisayol": "Çevre = 290 − 90 = 200; açı = 360° · (130 − 90)/200 = 72°."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": null, "mistake": "Çevreyi 290 cm alıp açıyı 360° · 40/290 ≈ 49,7° bulmak.",
+     "cause": "Başlangıç konumunu turun başı sanmak; telin başlangıçta mavi üzerinde olmadığını gözden kaçırmak.",
+     "fix": "Tam tur, aynı olayın iki tekrarı arasındadır: iki mavi çakışma (90 cm ve 290 cm).",
+     "guidingQuestion": "Başlangıçta siyah tel mavi parçanın üzerinde miydi?"},
+    {"id": "m2", "choice": null, "mistake": "Açıyı 130/290 ya da 90/290 gibi başlangıçtan ölçülen yolların oranıyla hesaplamak.",
+     "cause": "Maviden kırmızıya geçişte alınan yolun fark (130 − 90) olduğunu düşünmemek.",
+     "fix": "İki parça arasındaki dönüş, tel maviden kırmızıya giderken alınan yoldur: 130 − 90 = 40 cm.",
+     "guidingQuestion": "Tel maviden ayrılıp kırmızıya ulaşana kadar bisiklet kaç cm yol aldı?"}
+  ],
+  "alternative": {
+    "title": "Tur kesirleriyle",
+    "text": "Kırmızıdan bir sonraki maviye kadar telin aldığı yol 290 − 130 = 160 cm, yani 160/200 = 4/5 tur = 288°. İki parça arasındaki iki açı 288° ve 360° − 288° = 72°; dar olan 72°.",
+    "check": {"type": "sympy", "expr": "360 - Rational(290 - 130, 290 - 90)*360", "equals": "72"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Teli çember üzerinde döndürmek, yol–yay–açı orantısını görünür kılar; iki parça arasındaki açı telin konumundan bağımsız kalır.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Siyah tel döner, parçalar sabit kalır",
+    "params": {
+      "view": [-6.5, 6.5, -6, 6],
+      "points": [
+        {"id": "O", "x": 0, "y": 0, "label": "O"},
+        {"id": "Kr", "x": -5, "y": 0, "label": "kırmızı"},
+        {"id": "Mv", "x": -1.545, "y": 4.755, "label": "mavi"},
+        {"id": "Tel", "x": 2.939, "y": -4.045, "label": "siyah tel"},
+        {"id": "Tel1", "x": -1.545, "y": 4.755, "hidden": true},
+        {"id": "Tel2", "x": -5, "y": 0, "hidden": true}
+      ],
+      "circles": [{"id": "teker", "center": "O", "r": 5, "tone": "navy"}],
+      "segments": [
+        {"id": "kirmizi", "from": "O", "to": "Kr", "tone": "bad"},
+        {"id": "mavi", "from": "O", "to": "Mv", "tone": "navy"},
+        {"id": "tel", "from": "O", "to": "Tel", "tone": "ink"}
+      ],
+      "angles": [{"id": "aci", "vertex": "O", "from": "Mv", "to": "Kr", "label": "72°", "tone": "warn"}],
+      "drag": [{"point": "Tel", "on": {"circle": "teker"}}],
+      "measures": [
+        {"id": "olcu1", "kind": "angle", "refs": ["Mv", "O", "Kr"], "label": "Kırmızı–mavi açısı"},
+        {"id": "olcu2", "kind": "angle", "refs": ["Tel", "O", "Mv"], "label": "Tel–mavi açısı"}
+      ],
+      "texts": [{"id": "cevre", "x": 0, "y": -5.6, "text": "Çevre = 290 − 90 = 200 cm"}]
+    },
+    "frames": [
+      {"caption": "Kırmızı ve mavi parçalar bisiklete sabit; siyah tel tekerlekle birlikte döner. Teli sürükleyip dene.",
+       "show": ["teker", "kirmizi", "mavi", "tel", "O", "Kr", "Mv", "Tel", "olcu1", "olcu2"]},
+      {"caption": "Tel maviyle iki kez çakışır (90 cm ve 290 cm): aradaki 200 cm bir tam turdur, yani çevre.",
+       "show": ["teker", "kirmizi", "mavi", "tel", "O", "Kr", "Mv", "Tel", "cevre", "olcu1", "olcu2"]},
+      {"caption": "Maviden kırmızıya 130 − 90 = 40 cm: turun 1/5'i, yani 360°/5 = 72°.",
+       "show": ["teker", "kirmizi", "mavi", "tel", "O", "Kr", "Mv", "Tel", "cevre", "aci", "olcu1", "olcu2"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Tekerleğin çevresi hangi iki yolun farkıdır?",
+      "options": [
+        {"id": "iki-mavi", "text": "İki mavi çakışması arasındaki yol (290 − 90)", "correct": true, "feedback": "Doğru: aynı olay iki kez tekrarlanınca tekerlek tam bir tur dönmüştür."},
+        {"id": "mavi-kirmizi", "text": "Mavi ile kırmızı çakışması arasındaki yol (130 − 90)", "correct": false, "feedback": "Bu, turun yalnız bir parçasıdır; tam tur için aynı parçayla iki çakışma gerekir."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Bir tekerleğin merkezine sabitlenmiş sarı ve yeşil iki çubuk ile tekerlekle dönen bir tel vardır. Tekerlek kaymadan aynı yönde ilerlerken tel, başlangıçtan 60 cm sonra ilk kez sarı çubukla, 100 cm sonra ilk kez yeşil çubukla, 240 cm sonra ikinci kez sarı çubukla çakışıyor. Sarı ve yeşil çubuklar arasındaki dar açı kaç derecedir?",
+    "choices": {"A": "60", "B": "72", "C": "75", "D": "80", "E": "84"},
+    "answer": "D",
+    "solution": "Çevre = 240 − 60 = 180 cm. Sarıdan yeşile 100 − 60 = 40 cm → 40/180 tur = 2/9 tur. Açı 360° · 2/9 = 80°.",
+    "choiceValues": {"A": "60", "B": "72", "C": "75", "D": "80", "E": "84"},
+    "check": {"type": "twinChoice", "expr": "Rational(100 - 60, 240 - 60)*360", "choice": "D"}
+  },
+  "choiceValues": {"A": "60", "B": "63", "C": "70", "D": "72", "E": "75"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Çember ve daire: yay uzunluğu ve merkez açı", "note": "Yay uzunluğu ile merkez açı arasındaki orantı."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:40:00Z"}
+}

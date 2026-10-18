@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run": {
+    "id": "ollama-d8b0f5e9760c-ollama-vision-allowed-types-v1",
+    "model_family": "qwen3.5:4b",
+    "model_version": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "prompt_version": "ollama-vision-allowed-types-v1",
+    "prompt_sha256": "1c24a4c40aab9f7ad455a674183aba474a6dedb089369047624c8c2726499bce",
+    "taxonomy_version": "tyt-turkce-v1",
+    "source": "local Ollama vision",
+    "status": "draft",
+    "started_at_utc": "2026-10-10T02:35:42.159156+00:00",
+    "request_sha256": "b0fc0546097faad02f9cdaa35dfcd7e4833e75caeb589fc815637f56cc2206ce"
+  },
+  "drafts": [
+    {
+      "question_code": "TYT-0100",
+      "image_sha256": "0c8a30e93bab23dff9d8a90dd8fa3440615037a4440160e0d677126ed93287fe",
+      "question_type_code": "tyt.turkce.tip.paragraf_anlam",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, parçadaki altı çizili ifadelerin (I, II, III) durumların hangilerinin yazarın göndermesine uygun olduğunu sormaktadır. Bu, metnin genel anlamını ve yazarın niyetini analiz etmeyi gerektirir.",
+      "review_reasons": [],
+      "prompt_tokens": 2012,
+      "output_tokens": 112,
+      "total_duration_ns": 180173368800
+    },
+    {
+      "question_code": "TYT-0062",
+      "image_sha256": "534618fae50df8b571ce14cbd17abc2c9e4605fac48888f3abd75760c0167ecd",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümlelerin mantıksal sıralamasını ve düşünce akışının bozulmuş olanı bulmayı gerektiriyor.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1404,
+      "output_tokens": 88,
+      "total_duration_ns": 4253888200
+    },
+    {
+      "question_code": "TYT-0001",
+      "image_sha256": "599628d16787ff6032336c0e756927c21dfe545648bb840140dc0da6094d9ee8",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, bir cümleye uygun şekilde boşluk doldurma (fill-in-the-blank) yapmayı gerektirir ve bu tür soruların temel amacı cümlenin anlamını tamamlamaktır.",
+      "review_reasons": [
+        "source_topic_conflict"
+      ],
+      "prompt_tokens": 1366,
+      "output_tokens": 101,
+      "total_duration_ns": 4501334400
+    },
+    {
+      "question_code": "TYT-0034",
+      "image_sha256": "26cbcea027e283bbc5e4b820f66c06efb63cb4ff96a02543029566f03357d7be",
+      "question_type_code": "tyt.turkce.tip.cumle_yorum",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru 'kişisel düşünce içermemektedir' ifadesiyle cümlelerin içeriksel ve duygusal boyutunu sorguluyor; bu, cümle yorumlama (cumle anlamı) tipine aittir.",
+      "review_reasons": [],
+      "prompt_tokens": 1936,
+      "output_tokens": 108,
+      "total_duration_ns": 5234526100
+    },
+    {
+      "question_code": "TYT-0300",
+      "image_sha256": "a557903c4f1f3279f9615916153503bd754a7f117aa4a65514f07d9e97978fe8",
+      "question_type_code": "tyt.turkce.tip.yazim",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, numaralı cümlelerdeki 'de' bağlaçlarının yazım kuralına (yazılmalı mı yoksa yazılmamış mı) dair bir yanlışlık olup olmadığını soruyor.",
+      "review_reasons": [],
+      "prompt_tokens": 1404,
+      "output_tokens": 99,
+      "total_duration_ns": 4381655800
+    },
+    {
+      "question_code": "TYT-0318",
+      "image_sha256": "a5b276a75e9430e4a0b7ed57acc01bcdf5fcf88da71746cf01a049ac2daeb59f",
+      "question_type_code": "tyt.turkce.tip.noktalama",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, cümle içindeki boşluklara noktalama işaretlerinin doğru sırasıyla konulmasını gerektirir. Bu, Türkçe dil bilgisi ve noktalama kurallarını ölçen bir sorudur.",
+      "review_reasons": [],
+      "prompt_tokens": 1328,
+      "output_tokens": 103,
+      "total_duration_ns": 4384051800
+    },
+    {
+      "question_code": "TYT-0347",
+      "image_sha256": "4faa23bbe3c83ad859e27072062687552a8205eb0546a5dfac74594cda21a541",
+      "question_type_code": "tyt.turkce.tip.ogeler",
+      "confidence": 0.95,
+      "abstain": false,
+      "evidence": "Soru, verilen cümledeki 'öğelerin doğru sıralanışı'ni soruyor ve seçeneklerde 'özne', 'nesne', 'zarf tümleci', 'yüklem' gibi cümle öğeleri listelenmiş.",
+      "review_reasons": [],
+      "prompt_tokens": 1138,
+      "output_tokens": 107,
+      "total_duration_ns": 4238060500
+    }
+  ],
+  "errors": []
+}

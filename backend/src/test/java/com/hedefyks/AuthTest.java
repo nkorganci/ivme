@@ -4,24 +4,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.hedefyks.user.Role;
+import com.hedefyks.auth.AuthDtos;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 
 class AuthTest extends TestBase {
 
-    private static final String REGISTER = "{\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"password\":\"Sifre1234\"}";
+    private static final String REGISTER = "{\"category\":\"STUDENT\",\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"GucluBirSifre2026\"}";
 
     @Test
     void sifreDuzMetinSaklanmaz() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON).content(REGISTER))
-                .andExpect(status().isCreated());
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.contactComplete").value(true))
+                .andExpect(jsonPath("$.phone").doesNotExist());
         String hash = jdbc.queryForObject("select password_hash from users where username = 'Ayse'", String.class);
-        assertThat(hash).startsWith("{bcrypt}").doesNotContain("Sifre1234");
+        assertThat(hash).startsWith("{bcrypt}").doesNotContain("GucluBirSifre2026");
+        assertThat(jdbc.queryForObject("select phone from users where username = 'Ayse'", String.class))
+                .isEqualTo("+905551112233");
     }
 
     @Test
@@ -29,7 +35,7 @@ class AuthTest extends TestBase {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON).content(REGISTER))
                 .andExpect(status().isCreated());
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"AYSE\",\"email\":\"baska@example.com\",\"password\":\"Sifre1234\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"AYSE\",\"email\":\"baska@example.com\",\"phone\":\"+905552223344\",\"password\":\"GucluBirSifre2026\"}"))
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.alanlar.username").exists());
     }
@@ -37,10 +43,48 @@ class AuthTest extends TestBase {
     @Test
     void zayifSifreVeGecersizEpostaReddedilir() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"ab\",\"email\":\"yanlis\",\"password\":\"kisa\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"ab\",\"email\":\"yanlis\",\"password\":\"kisa\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.alanlar.username").exists())
                 .andExpect(jsonPath("$.alanlar.email").exists())
+                .andExpect(jsonPath("$.alanlar.phone").exists())
+                .andExpect(jsonPath("$.alanlar.password").exists());
+    }
+
+    @Test
+    void sekizKarakterliYeniSifreKabulEdilirYediKarakterReddedilir() throws Exception {
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Yedi\",\"email\":\"yedi@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc1234\"}"))
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.alanlar.password").exists());
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Sekiz\",\"email\":\"sekiz@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc12345\"}"))
+                .andExpect(status().isCreated());
+        MockHttpSession session = login("Sekiz", "abc12345");
+        send(session, put("/api/account/password"),
+                "{\"currentPassword\":\"abc12345\",\"newPassword\":\"abcdef7\"}")
+                .andExpect(status().isBadRequest()).andExpect(jsonPath("$.alanlar.newPassword").exists());
+        send(session, put("/api/account/password"),
+                "{\"currentPassword\":\"abc12345\",\"newPassword\":\"abcdef78\"}")
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    void gecersizTelefonReddedilir() throws Exception {
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"12345\",\"password\":\"GucluBirSifre2026\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.alanlar.phone").exists());
+        assertThat(users.existsByUsername("Ayse")).isFalse();
+    }
+
+    @Test
+    void uzunUtf8SifreVeLogSizintisiEngellenir() throws Exception {
+        String password = "ş".repeat(40);
+        var request = new AuthDtos.RegisterRequest("Ayse", "ayse@example.com", "+905551112233", password, com.hedefyks.user.AccountCategory.STUDENT);
+        assertThat(request.toString()).doesNotContain(password).doesNotContain("+905551112233");
+        mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content(json.writeValueAsString(request)))
+                .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.alanlar.password").exists());
     }
 
@@ -63,28 +107,96 @@ class AuthTest extends TestBase {
     void yetkiKurallari() throws Exception {
         user("ayse", Role.USER);
         user("yonetici", Role.ADMIN);
+        user("operator", Role.OPERATOR);
         mvc.perform(get("/api/questions/filters")).andExpect(status().isUnauthorized());
         mvc.perform(post("/api/auth/login").contentType(MediaType.APPLICATION_JSON)
                 .content("{\"login\":\"ayse\",\"password\":\"Sifre1234\"}")).andExpect(status().isForbidden());   // CSRF yok
 
         MockHttpSession userSession = login("ayse", "Sifre1234");
         mvc.perform(get("/api/admin/stats").session(userSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/operator/questions").session(userSession)).andExpect(status().isForbidden());
         MockHttpSession adminSession = login("yonetici", "Sifre1234");
         mvc.perform(get("/api/admin/stats").session(adminSession)).andExpect(status().isOk())
-                .andExpect(jsonPath("$.userCount").value(2));
+                .andExpect(jsonPath("$.userCount").isEmpty())
+                .andExpect(jsonPath("$.questionCount").doesNotExist());
+        mvc.perform(get("/api/operator/questions").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/admin/feedback").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/questions/filters").session(adminSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/exams/summary").session(adminSession)).andExpect(status().isForbidden());
+        MockHttpSession operatorSession = login("operator", "Sifre1234");
+        mvc.perform(get("/api/admin/stats").session(operatorSession)).andExpect(status().isForbidden());
+        mvc.perform(get("/api/operator/questions").session(operatorSession)).andExpect(status().isOk());
+        mvc.perform(get("/api/exams/summary").session(operatorSession)).andExpect(status().isForbidden());
     }
 
     @Test
     void sifreDegistirme() throws Exception {
-        user("ayse", Role.USER);
+        var ayse = user("ayse", Role.USER);
+        ayse.setPasswordChangeRequired(true);
+        users.save(ayse);
         MockHttpSession session = login("ayse", "Sifre1234");
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(true));
         send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/password"),
                 "{\"currentPassword\":\"yanlis\",\"newPassword\":\"YeniSifre99\"}").andExpect(status().isBadRequest());
         send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/password"),
-                "{\"currentPassword\":\"Sifre1234\",\"newPassword\":\"YeniSifre99\"}").andExpect(status().isNoContent());
+                "{\"currentPassword\":\"Sifre1234\",\"newPassword\":\"YeniGucluSifre2026\"}").andExpect(status().isNoContent());
+        assertThat(users.findById(ayse.getId()).orElseThrow().isPasswordChangeRequired()).isFalse();
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(false));
         mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"login\":\"ayse\",\"password\":\"Sifre1234\"}")).andExpect(status().isUnauthorized());
         mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"login\":\"ayse\",\"password\":\"YeniSifre99\"}")).andExpect(status().isOk());
+                        .content("{\"login\":\"ayse\",\"password\":\"YeniGucluSifre2026\"}")).andExpect(status().isOk());
+    }
+
+    @Test
+    void oturumluHesapDegisikligiCsrfOlmadanReddedilir() throws Exception {
+        var ayse = user("ayse", Role.USER);
+        MockHttpSession session = login("ayse", "Sifre1234");
+        String originalHash = ayse.getPasswordHash();
+
+        mvc.perform(put("/api/account/password").session(session).contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"currentPassword\":\"Sifre1234\",\"newPassword\":\"YeniGucluSifre2026\"}"))
+                .andExpect(status().isForbidden());
+        assertThat(users.findById(ayse.getId()).orElseThrow().getPasswordHash()).isEqualTo(originalHash);
+    }
+
+    @Test
+    void geciciYetkiliHesapTuneldenGirisYapamaz() throws Exception {
+        var admin = user("yonetici", Role.ADMIN);
+        admin.setPasswordChangeRequired(true);
+        users.save(admin);
+        String credentials = "{\"login\":\"yonetici\",\"password\":\"Sifre1234\"}";
+
+        mvc.perform(post("/api/auth/login").with(csrf()).header("CF-Connecting-IP", "203.0.113.5")
+                        .contentType(MediaType.APPLICATION_JSON).content(credentials))
+                .andExpect(status().isForbidden());
+        mvc.perform(post("/api/auth/login").with(csrf()).header("X-Forwarded-Host", "net.ivme.dev")
+                        .contentType(MediaType.APPLICATION_JSON).content(credentials))
+                .andExpect(status().isForbidden());
+        mvc.perform(post("/api/auth/login").with(csrf()).contentType(MediaType.APPLICATION_JSON)
+                        .content(credentials))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.passwordChangeRequired").value(true));
+    }
+
+    @Test
+    void eskiKullaniciTelefonunuSifreyleTamamlar() throws Exception {
+        user("ayse", Role.USER);
+        MockHttpSession session = login("ayse", "Sifre1234");
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.contactComplete").value(false));
+
+        send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/contact"),
+                "{\"email\":\"ayse@example.com\",\"phone\":\"0555 111 22 33\",\"currentPassword\":\"yanlis\"}")
+                .andExpect(status().isBadRequest());
+        send(session, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/account/contact"),
+                "{\"email\":\"ayse@example.com\",\"phone\":\"0555 111 22 33\",\"currentPassword\":\"Sifre1234\"}")
+                .andExpect(status().isOk()).andExpect(jsonPath("$.phone").value("+905551112233"));
+        mvc.perform(get("/api/auth/me").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.contactComplete").value(true))
+                .andExpect(jsonPath("$.phone").doesNotExist());
+        mvc.perform(get("/api/account/contact").session(session))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.phone").value("+905551112233"));
     }
 }

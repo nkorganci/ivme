@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 class SpaForwardController {
 
-    @GetMapping({"/giris", "/kayit", "/sorular", "/soru/{code}", "/sinav/yeni", "/sinav/{id}", "/sinav/{id}/sonuc",
-            "/gecmis", "/geri-bildirim", "/hesap", "/yonetim"})
+    @GetMapping({"/giris", "/kayit", "/sorular", "/cikmis-sorular", "/soru-bankasi", "/soru/{code}", "/calisma/yeni", "/pratik/yeni", "/pratik/{id}", "/sinav/yeni", "/sinav/{id}", "/sinav/{id}/sonuc",
+            "/konular-ve-kaynaklar", "/kaynak-kutuphanesi", "/kaynakli-ders-notlari", "/kaynakli-ders-notlari/{subject}", "/fizik-denetimi", "/ogretmen-dogrulamasi", "/ogretmen-dogrulamasi/{subject}",
+            "/calisma/yarim-kalan", "/gecmis", "/ilerleme", "/dersler-ve-konular", "/ogrenci-takip", "/ogrenci-takip/matematik-ozel-ders", "/ogrenci-takip/tyt-denemeleri", "/ogrenci-takip/ayt-denemeleri", "/oneriler", "/geri-bildirim", "/konu-anlatimlari", "/konu-anlatimlari/{id}", "/hesap", "/yonetim", "/icerik-bakimi",
+            "/akilli-ogretmen", "/akilli-ogretmen/{code}", "/akilli-ogretmen-inceleme"})
     String spa() {
         return "forward:/index.html";
     }

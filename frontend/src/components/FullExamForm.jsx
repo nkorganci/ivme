@@ -1,0 +1,150 @@
+import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { api, qs } from '../api.js';
+import { useAsync } from '../hooks.js';
+import Segmented from './Segmented.jsx';
+import { Alert, ErrorBox, Loading } from './States.jsx';
+import { BANKS } from '../format.js';
+import { Field } from './Field.jsx';
+
+const TRACKS = [
+  { value: 'SAYISAL', label: 'Sayısal' },
+  { value: 'ESIT_AGIRLIK', label: 'Eşit ağırlık' },
+  { value: 'SOZEL', label: 'Sözel' },
+];
+
+export default function FullExamForm() {
+  const navigate = useNavigate();
+  const [params, setParams] = useSearchParams();
+  const examType = params.get('examType') === 'AYT' ? 'AYT' : 'TYT';
+  const track = examType === 'AYT' && TRACKS.some(item => item.value === params.get('track'))
+    ? params.get('track') : 'SAYISAL';
+  const bank = Object.hasOwn(BANKS, params.get('bank')) ? params.get('bank') : '';
+  const noBank = params.get('bank') === 'NONE';
+  const includeSolved = params.get('includeSolved') !== 'false';
+  const selectionMode = includeSolved ? 'MIXED' : 'NEW';
+  const byYear = params.get('examSource') === 'year';
+  const query = qs({ bank, examType, track, includeSolved });
+  const normal = useAsync(
+    () => noBank || byYear ? Promise.resolve(null) : api.get('/api/exams/plan' + query), [query, noBank, byYear]);
+  const archiveQuery = qs({ examType, track });
+  const archive = useAsync(() => byYear
+    ? api.get('/api/exams/archive' + archiveQuery).then(plans => ({ key: archiveQuery, plans }))
+    : Promise.resolve(null), [byYear, archiveQuery]);
+  const archivePlans = archive.data?.key === archiveQuery ? archive.data.plans : [];
+  const year = params.get('year') || String(archivePlans.find(plan => plan.ready)?.year || archivePlans[0]?.year || '');
+  const loading = byYear ? archive.loading : normal.loading;
+  const planError = byYear ? archive.error : normal.error;
+  const retry = byYear ? archive.retry : normal.retry;
+  const plan = normal.data;
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const currentPlan = byYear ? archivePlans.find(plan => String(plan.year) === year)
+    : !noBank && plan?.examType === examType && plan?.track === track
+      && (plan.bank || '') === bank && plan.selectionMode === selectionMode ? plan : null;
+  const ready = !busy && !loading && !planError && currentPlan?.ready;
+
+  const change = (key, value) => {
+    setError('');
+    setParams(current => {
+      const next = new URLSearchParams(current);
+      if (key === 'bank' || key === 'examType') next.delete('source');
+      if (key === 'examType' || key === 'track') next.delete('year');
+      if (value) next.set(key, value); else next.delete(key);
+      return next;
+    }, { replace: true });
+  };
+  const changeBank = (key, checked) => {
+    const selected = noBank ? [] : bank ? [bank] : Object.keys(BANKS);
+    const next = checked ? [...selected, key] : selected.filter(item => item !== key);
+    change('bank', next.length === 2 ? '' : next[0] || 'NONE');
+  };
+  const submit = async event => {
+    event.preventDefault();
+    if (!ready) return;
+    setBusy(true);
+    setError('');
+    try {
+      // Only these choices cross into the full exam. Old practice/topic URLs
+      // cannot silently restrict the bank, branch quotas or question count.
+      const exam = await api.post('/api/exams/full', byYear
+        ? { bank: 'CIKMIS', examType, track, includeSolved: true, year: Number(year) }
+        : { bank: bank || undefined, examType, track, includeSolved });
+      navigate(`/sinav/${exam.id}`);
+    } catch (e) {
+      setError(e.message);
+      setBusy(false);
+      retry();
+    }
+  };
+
+  return <form className="card form-card" onSubmit={submit} aria-labelledby="full-exam-title">
+    <h2 id="full-exam-title">Deneme oluştur</h2>
+    <div className="field-label">Deneme seçimi</div>
+    <Segmented label="Deneme seçimi" value={byYear ? 'year' : 'mixed'} disabled={busy}
+      options={[{ value: 'mixed', label: 'Genel deneme' }, { value: 'year', label: 'Yıla ait tam sınav' }]}
+      onChange={value => change('examSource', value === 'year' ? 'year' : '')} />
+    <div className="study-choices" role="group" aria-label="Sınav türü">
+      {['TYT', 'AYT'].map(value => <button key={value} type="button" disabled={busy}
+        className={`study-choice${examType === value ? ' selected' : ''}`}
+        aria-pressed={examType === value} onClick={() => change('examType', value)}>
+        <strong>{value}</strong><span>{value === 'TYT' ? '120 soru · 165 dakika' : 'Alanına göre 80 soru · 180 dakika'}</span>
+      </button>)}
+    </div>
+    {examType === 'AYT' && <>
+      <div className="field-label">Alan</div>
+      <Segmented label="Puan türü" options={TRACKS} value={track} disabled={busy}
+        onChange={value => change('track', value)} />
+    </>}
+    {byYear ? <>
+      <Field label="Sınav yılı" as="select" value={year} disabled={busy || loading || !archivePlans.length}
+          onChange={event => change('year', event.target.value)}>
+          {!archivePlans.length && <option value="">Kayıtlı yıl yok</option>}
+          {archivePlans.map(plan => <option key={plan.year} value={plan.year}>
+            {plan.year} {examType}{plan.ready ? '' : ' — arşivde eksik soru var'}
+          </option>)}
+      </Field>
+      <p className="muted small">Seçtiğin yılın çıkmış soruları kitapçık sırasıyla gelir.
+        Daha önce çözdüğün sorular da sınavın içinde yer alır.</p>
+    </> : <>
+    <fieldset className="full-exam-sources" disabled={busy}>
+      <legend>Kaynak</legend>
+      {Object.entries(BANKS).map(([key, item]) => <label key={key}>
+        <input type="checkbox" checked={!noBank && (!bank || bank === key)}
+          onChange={event => changeBank(key, event.target.checked)} />
+        {examType} {key === 'CIKMIS' ? 'Çıkmış Sorular' : item.label}
+      </label>)}
+      <p className="muted small">Bir kaynağı veya ikisini birlikte seçebilirsin.</p>
+    </fieldset>
+    <label className="full-exam-history">
+      <input type="checkbox" checked={includeSolved} disabled={busy}
+        onChange={event => change('includeSolved', event.target.checked ? '' : 'false')} />
+      Daha önce deneme veya pratikte çözdüğüm sorular da çıksın
+    </label>
+    {!includeSolved && <p className="muted small">Yalnızca henüz yanıtlamadığın sorular seçilir.</p>}
+    </>}
+    {!byYear && noBank ? <Alert type="warn">En az bir soru kaynağı seç.</Alert>
+      : loading ? <Loading text="Deneme hazırlanıyor…" />
+      : planError ? <ErrorBox error={planError} onRetry={retry} />
+      : byYear && !currentPlan ? <Alert type="warn">Bu seçim için kayıtlı sınav yılı bulunamadı.</Alert>
+      : currentPlan && <>
+        <p className="muted">{currentPlan.questionCount} soru · {currentPlan.timeLimitMinutes} dakika.
+          {byYear ? ` ${year} ${examType} sınavı, özgün ders dağılımı ve soru sırasıyla hazırlanır.`
+            : ` Sorular yalnızca ${examType} havuzundan, seçtiğin kaynaklardan branş dağılımına göre seçilir.`}</p>
+        {!byYear && <p className="muted small">Her derste ünite ve konulara dengeli yer verilir.
+          Sonraki denemelerde daha önce sorulmayan veya az sorulan konulara öncelik verilir.</p>}
+        {!currentPlan.ready && <Alert type="warn">
+          {byYear ? 'Bu yılın tam sınavı henüz hazır değil. Arşivdeki eksik veya inceleme bekleyen soruların tamamlanması gerekiyor.'
+            : 'Bu kaynaklarla deneme oluşturmak için yeterli soru yok.'}
+          {currentPlan.subjects.filter(row => byYear ? row.available !== row.target : row.available < row.target).map(row =>
+            <div key={row.subject}>{row.subject}: {row.target} soru gerekli, {row.available} uygun soru var.</div>)}
+          {byYear ? 'Başka bir yıl veya genel deneme seçebilirsin.'
+            : !includeSolved ? 'Diğer kaynağı da seçebilir veya çözülmüş soruları dahil edebilirsin.' : 'Diğer kaynağı da seçebilirsin.'}
+        </Alert>}
+      </>}
+    {error && <Alert type="error">{error}</Alert>}
+    <button type="submit" className="btn btn-primary btn-lg" disabled={!ready}>
+      {busy ? 'Hazırlanıyor…' : 'Denemeyi başlat'}
+    </button>
+  </form>;
+}

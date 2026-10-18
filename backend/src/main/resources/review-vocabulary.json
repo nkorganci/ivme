@@ -1,0 +1,8 @@
+{
+  "difficulty": {"BELIRLENMEDI":"Belirlenmedi","KOLAY":"Kolay","ORTA":"Orta","ZOR":"Zor","UYGULANMAZ":"Bu içerikte uygulanmaz"},
+  "contentFormat": {"KONU_ANLATIMI":"Konu anlatımı","KONU_OZETI":"Konu özeti","SORU":"Tek soru","COZUMLU_ORNEK":"Çözümlü örnek","TEST":"Konu testi","DENEME":"Deneme sınavı","CEVAP_ANAHTARI":"Cevap anahtarı","CALISMA_REHBERI":"Çalışma rehberi","KARMA":"Anlatım ve sorular birlikte","UYGULANMAZ":"Konu ağacı / uygulanmaz"},
+  "skills": {"BILGI":"Bilgiyi hatırlama","KAVRAMA":"Kavramı anlama","UYGULAMA":"Bilgiyi uygulama","ANALIZ":"Analiz ve karşılaştırma","YORUMLAMA":"Metin / grafik / şekil yorumlama","AKIL_YURUTME":"Akıl yürütme ve çıkarım","HESAPLAMA":"Sayısal hesaplama","DENEY":"Deney ve gözlem","PROBLEM_COZME":"Problem çözme"},
+  "relation": {"PRIMARY":"Doğrudan konusu / ölçtüğü konu","SECONDARY":"İkincil konu / birlikte içeriyor","PREREQUISITE":"Ön bilgi olarak gerekiyor"},
+  "states": {"PENDING":"İncelenmedi","APPROVE":"Uygun","FIX":"Düzeltilecek","WRONG_BRANCH":"Yanlış branş","REMOVE":"Kaldırılacak","UNSURE":"Emin değilim","STALE":"Yeniden kontrol"},
+  "kinds": {"TOPIC":"Konu ve alt konular","NOTE":"Ders notları","VIDEO":"Ders videoları","PDF":"PDF kaynakları","QUESTION":"Sorular"}
+}

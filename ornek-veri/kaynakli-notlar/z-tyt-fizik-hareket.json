@@ -1,0 +1,25 @@
+{
+  "groupId": "tyt-fizik",
+  "lessons": [{
+    "id": "hareket-yol-yer-degistirme",
+    "title": "Hareket: Yol, Yer Değiştirme ve Ortalama",
+    "topics": ["Hareket ve kuvvet"],
+    "learn": [
+      "Alınan yol, izlenen güzergâhın uzunluğudur ve skalerdir. Yer değiştirme başlangıçtan bitişe çizilen vektördür. Başlangıca dönülen bir yolculukta yol sıfır olmayabilir; yer değiştirme sıfırdır.",
+      "Ortalama sürat toplam yolun toplam süreye, ortalama hız ise yer değiştirmenin toplam süreye oranıdır. Beklemeler de bu süreye dahildir. Anlık sürat ile anlık hızın büyüklüğü eşit olsa da ortalama sürat her zaman ortalama hızın büyüklüğüne eşit değildir.",
+      "Hareketi bir doğrultuda incelerken bir pozitif yön seç. Konum-zaman grafiğinin eğimi hız, hız-zaman grafiğinin işaretli alanı yer değiştirmedir. Toplam yolu bulmak için hız-zaman grafiğinin eksen altında kalan alanlarının büyüklüklerini de ekle."
+    ],
+    "steps": ["Başlangıç ve bitiş konumlarını belirle.", "Toplam yolu ve işaretli yer değiştirmeyi ayrı hesapla.", "Soru ortalama hız mı ortalama sürat mi istiyor, kontrol et.", "İstenen niceliği toplam süreye böl; yön ve birimi belirt."],
+    "pitfall": "Başlangıca dönen bir hareketlinin ortalama hızı sıfırdır; bu, yol boyunca durduğu anlamına gelmez.",
+    "sources": [{"catalogId": 25, "page": 31, "anchors": ["Ortalama Sürat", "Ortalama hız ve ortalama sürat", "Anlık Hız ve Anlık Sürat"]}],
+    "examples": [
+      {"bank": "CIKMIS", "code": "TYT-0912", "answer": "A", "anchors": ["10.000 adım", "ortalama hızının"], "explanation": "Ali aynı noktaya döndüğü için yer değiştirme sıfırdır. Geçen süre sıfırdan büyük olduğundan ortalama hızının büyüklüğü 0 km/h olur; A. Adımlar toplam yolu verir, ortalama hızın payını vermez."},
+      {"bank": "OGM", "code": "3a-tyt-fizik-09-01", "answer": "D", "anchors": ["Hız ve sürat kavramları", "Türetilmiş büyüklüklerdir"], "explanation": "Hız vektörel, sürat skalerdir; I ikisine birden uymaz. İkisinin de birimi uzunluk/zaman olduğundan birimleri aynıdır ve ikisi de türetilmiştir. II ve III, D."}
+    ],
+    "patterns": [
+      {"id": "gidis-donus", "title": "Başlangıca dönme", "recognize": "Gidiş-dönüş, bir tam tur veya aynı kapıya geri dönüş verilir.", "logic": "Önce uç konumları karşılaştır; ortalama hız için güzergâh uzunluğu gerekmez.", "tip": "Toplam süreyi hesaplarken beklemeyi de dahil et.", "trap": "Toplam yolu yer değiştirme yerine yazmak.", "mini": {"question": "Bir öğrenci 120 m doğuya, sonra 120 m batıya yürüyüp 80 s sonunda başlangıca dönüyor. Ortalama hız ve sürati nedir?", "answer": "Yer değiştirme 0, toplam yol 240 m: ortalama hız 0 m/s, ortalama sürat 3 m/s."}},
+      {"id": "isaretli-alan", "title": "Grafikte işaretli alan", "recognize": "Hız-zaman grafiğinde pozitif ve negatif bölgeler vardır.", "logic": "Yer değiştirmede alanları işaretleriyle, yolda büyüklükleriyle topla.", "tip": "Eksenin altında olmak negatif konumu değil, seçilen yöne ters hızı anlatır.", "trap": "Negatif alanı toplam yoldan çıkarmak.", "mini": {"question": "Hareketli 3 s boyunca +2 m/s, ardından 2 s boyunca −1 m/s hızla gidiyor. Yol ve yer değiştirme?", "answer": "Yer değiştirme 6−2=4 m, toplam yol 6+2=8 m; ortalama hız +0,8 m/s ve ortalama sürat 1,6 m/s."}}
+    ],
+    "practice": {"question": "Bir araç 60 m doğuya ve 20 m batıya toplam 10 saniyede gidiyor. Ortalama hızının büyüklüğü kaç m/s olur?", "choices": ["0", "4", "6", "8"], "answer": 1, "explanation": "B · Yer değiştirme doğuya 40 m, toplam süre 10 s olduğundan ortalama hızın büyüklüğü 4 m/s olur. 8 m/s, ortalama sürattir."}
+  }]
+}

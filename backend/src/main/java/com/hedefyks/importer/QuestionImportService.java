@@ -5,6 +5,7 @@ import com.hedefyks.importer.QuestionFileParser.Parsed;
 import com.hedefyks.importer.QuestionFileParser.RawRow;
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.Question;
+import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.storage.ImageStorage;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class QuestionImportService {
 
     static final int MAX_ISSUES = 1000;
     private static final Set<String> KNOWN = Set.of("code", "exam_type", "subject", "topic", "year",
-            "source", "image", "correct_answer", "choice_count", "solution_url", "active");
+            "source", "image", "correct_answer", "choice_count", "solution_url", "active", "bank", "solution_image");
     private static final List<String> REQUIRED = List.of("code", "exam_type", "subject", "image", "correct_answer");
     private static final Pattern CODE = Pattern.compile("^[\\p{L}\\p{N}_.-]+$");
 
@@ -39,19 +40,25 @@ public class QuestionImportService {
     private final QuestionRepository questions;
     private final ImageStorage images;
     private final TransactionTemplate tx;
+    private final ResourceIntake intake;
+    private final org.springframework.jdbc.core.JdbcTemplate jdbc;
 
     public QuestionImportService(QuestionFileParser parser, QuestionRepository questions, ImageStorage images,
-                                 TransactionTemplate tx) {
+                                 TransactionTemplate tx, ResourceIntake intake,org.springframework.jdbc.core.JdbcTemplate jdbc) {
         this.parser = parser;
         this.questions = questions;
         this.images = images;
         this.tx = tx;
+        this.intake = intake;
+        this.jdbc = jdbc;
     }
 
     /** Doğrulanmış satır. */
-    private record Candidate(int row, String code, ExamType examType, String subject, String topic,
-                             Integer year, String source, String image, String correctAnswer,
-                             int choiceCount, String solutionUrl, boolean active) {}
+    private record Candidate(int row, String code, QuestionBank bank, ExamType examType, String subject, String topic,
+                             Integer year, String source, String image, String solutionImage, String correctAnswer,
+                             int choiceCount, String solutionUrl, boolean active) {
+        Candidate inactive() {return new Candidate(row,code,bank,examType,subject,topic,year,source,image,solutionImage,correctAnswer,choiceCount,solutionUrl,false);}
+    }
 
     /** Toplanan sorunlar; listeler sınırlı, sayaçlar tam. */
     private static final class Issues {
@@ -99,15 +106,35 @@ public class QuestionImportService {
             }
         }
 
+        var cancelled=new java.util.HashSet<>(jdbc.queryForList("SELECT question_code FROM learning_catalog.official_question_corrections WHERE official_status='cancelled'",String.class));
+        candidates.replaceAll(c->{if(c.active() && cancelled.contains(c.code())) {
+            issues.warn(c.row(),c.code(),"active","Resmî iptal kaydı korundu; soru yeniden etkinleştirilmedi.");return c.inactive();
+        }return c;});
         Plan plan = plan(candidates, loadExisting(candidates), mode, issues);
+        Map<String,Map<String,Object>> drafts=new LinkedHashMap<>();
+        if(issues.errorCount==0) {
+            var metadata=new ArrayList<Map<String,Object>>();
+            for(var c:candidates) {
+                var row=new LinkedHashMap<String,Object>();row.put("kind","QUESTION");row.put("code",c.code());row.put("exam",c.examType().name());
+                row.put("subject",c.subject());row.put("topic",c.topic());row.put("bank",c.bank().name());row.put("image",c.image());
+                row.put("source",c.source());row.put("active",c.active());row.put("available",images.exists(c.image()));metadata.add(row);
+            }
+            try{drafts.putAll(intake.validate(metadata));}
+            catch(IllegalStateException failure){issues.error(0,null,"labels",failure.getMessage());}
+        }
         boolean apply = !dryRun && issues.errorCount == 0;
         if (apply) {
             tx.executeWithoutResult(status -> {
                 // Aynı planı yönetilen (tx içindeki) varlıklarla yeniden uygula: güncellemeler commit'te yazılır
-                Plan live = plan(candidates, loadExisting(candidates), mode, new Issues());
+                var existing=loadExisting(candidates);
+                var changed=candidates.stream().filter(c->!existing.containsKey(c.code()) || mode!=ImportMode.INSERT_ONLY && !diff(existing.get(c.code()),c).isEmpty()).map(Candidate::code).toList();
+                Plan live = plan(candidates, existing, mode, new Issues());
                 questions.saveAll(live.inserts());
+                questions.flush();
+                changed.forEach(code->intake.stage(code,drafts.get(code)));
             });
         }
+        if(issues.errorCount==0 && !drafts.isEmpty())issues.warn(0,null,"labels","Ortak etiketler doğrulandı; yeni/değişen kayıtlar katalog yayını için etiket kuyruğuna alınır.");
         return report(dryRun, mode, apply, parsed.rows().size(), plan, issues);
     }
 
@@ -173,6 +200,26 @@ public class QuestionImportService {
             issues.warn(row, code, "image", "Görsel dosyası resim klasöründe bulunamadı: " + image);
         }
 
+        // Çözüm görseli (isteğe bağlı): aynı yol kuralları; dosya yoksa yalnız uyarı
+        String solutionImage = v.getOrDefault("solution_image", "").replace('\\', '/');
+        while (solutionImage.startsWith("/")) solutionImage = solutionImage.substring(1);
+        if (solutionImage.isEmpty()) {
+            solutionImage = null;
+        } else if (solutionImage.length() > 300) {
+            issues.error(row, code, "solution_image", "Çözüm görseli yolu en fazla 300 karakter olabilir.");
+        } else if (solutionImage.contains("..") || solutionImage.matches("^[A-Za-z]:.*")) {
+            issues.error(row, code, "solution_image", "Çözüm görseli yolu klasör dışına çıkamaz; kök klasöre göre göreli olmalı.");
+        } else if (!images.exists(solutionImage)) {
+            issues.warn(row, code, "solution_image", "Çözüm görseli resim klasöründe bulunamadı: " + solutionImage);
+        }
+
+        QuestionBank bank = QuestionBank.CIKMIS;
+        String bk = v.getOrDefault("bank", "").toUpperCase(Locale.ROOT);
+        if (!bk.isEmpty()) {
+            try { bank = QuestionBank.valueOf(bk); }
+            catch (IllegalArgumentException e) { issues.error(row, code, "bank", "bank CIKMIS veya OGM olmalı: " + bk); }
+        }
+
         int choiceCount = 5;
         String cc = v.getOrDefault("choice_count", "");
         if (!cc.isEmpty()) {
@@ -206,7 +253,7 @@ public class QuestionImportService {
         }
 
         if (issues.errorCount > before) return null;
-        return new Candidate(row, code, examType, subject, topic, year, source, image, answer,
+        return new Candidate(row, code, bank, examType, subject, topic, year, source, image, solutionImage, answer,
                 choiceCount, solutionUrl, active);
     }
 
@@ -274,6 +321,8 @@ public class QuestionImportService {
         if (!Objects.equals(q.getImage(), c.image())) m.put("image", "");
         if (q.getChoiceCount() != c.choiceCount()) m.put("choice_count", "");
         if (!Objects.equals(q.getSolutionUrl(), c.solutionUrl())) m.put("solution_url", "");
+        if (q.getBank() != c.bank()) m.put("bank", "");
+        if (!Objects.equals(q.getSolutionImage(), c.solutionImage())) m.put("solution_image", "");
         if (q.isActive() != c.active()) m.put("active", "");
         return m;
     }
@@ -285,6 +334,8 @@ public class QuestionImportService {
         q.setYear(c.year());
         q.setSource(c.source());
         q.setImage(c.image());
+        q.setSolutionImage(c.solutionImage());
+        q.setBank(c.bank());
         q.setCorrectAnswer(c.correctAnswer());
         q.setChoiceCount(c.choiceCount());
         q.setSolutionUrl(c.solutionUrl());

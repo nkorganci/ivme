@@ -12,6 +12,7 @@ import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-/** Ortak test altyapısı: yks_hazirlik_test veritabanını her testte temizler (yalnız "_test" ile biten veritabanında!). */
+/** Ortak test altyapısı: ivme_test veritabanını her testte temizler (yalnız "_test" ile biten veritabanında!). */
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
@@ -42,7 +43,47 @@ public abstract class TestBase {
         if (db == null || !db.endsWith("_test")) {
             throw new IllegalStateException("Testler yalnız *_test veritabanında çalışır, bağlı olunan: " + db);
         }
-        jdbc.execute("TRUNCATE feedback, exam_questions, exams, questions, users RESTART IDENTITY CASCADE");
+        jdbc.execute("TRUNCATE service_error_events, feedback, exam_questions, exams, questions, users RESTART IDENTITY CASCADE");
+        if (catalogFixtureRequired()) publishCatalogFixture();
+    }
+
+    private static final String CATALOG_FIXTURE = catalogFixtureKey();
+    private static String catalogFixtureKey() {
+        try {
+            var digest=java.security.MessageDigest.getInstance("SHA-256");
+            for(String name:java.util.List.of("content-taxonomy.json","pdf-review-labels.json"))
+                try(var input=new org.springframework.core.io.ClassPathResource(name).getInputStream()) {digest.update(input.readAllBytes());}
+            return "test-packaged-catalog-fixture-"+java.util.HexFormat.of().formatHex(digest.digest()).substring(0,16);
+        } catch(Exception error) {throw new IllegalStateException(error);}
+    }
+    protected boolean catalogFixtureRequired() { return false; }
+
+    /** Explicit test data; production services never substitute packaged labels for DB rows. */
+    private void publishCatalogFixture() {
+        try {
+            jdbc.update("INSERT INTO learning_catalog.runs(run_key,method,summary) VALUES (?,'TEST','{}') ON CONFLICT DO NOTHING", CATALOG_FIXTURE);
+            if (jdbc.queryForObject("SELECT count(*) FROM learning_catalog.categories WHERE run_key=?", Integer.class, CATALOG_FIXTURE) == 0) {
+                try (var input = new org.springframework.core.io.ClassPathResource("content-taxonomy.json").getInputStream()) {
+                    var rows = new java.util.ArrayList<Object[]>();
+                    for (var category : json.readTree(input).path("categories"))
+                        rows.add(new Object[]{CATALOG_FIXTURE, category.path("id").asText(), category.toString()});
+                    jdbc.batchUpdate("INSERT INTO learning_catalog.categories VALUES (?,?,?::jsonb)", rows);
+                }
+            }
+            if (jdbc.queryForObject("SELECT count(*) FROM learning_catalog.items WHERE run_key=?", Integer.class, CATALOG_FIXTURE) == 0) {
+                try (var input = new org.springframework.core.io.ClassPathResource("pdf-review-labels.json").getInputStream()) {
+                    var rows = new java.util.ArrayList<Object[]>();
+                    for (var item : json.readTree(input).path("items"))
+                        rows.add(new Object[]{CATALOG_FIXTURE, item.path("key").asText(), item.path("exam").asText(), item.path("subjectId").asText(), item.toString()});
+                    jdbc.batchUpdate("INSERT INTO learning_catalog.items(run_key,item_key,kind,exam,subject_id,student_visible,data) VALUES (?,?,'PDF',?,?,true,?::jsonb)", rows);
+                }
+            }
+            jdbc.update("INSERT INTO learning_catalog.current_run VALUES (true,?) ON CONFLICT(singleton) DO UPDATE SET run_key=excluded.run_key", CATALOG_FIXTURE);
+        } catch (java.io.IOException error) { throw new IllegalStateException(error); }
+    }
+
+    @AfterEach void clearCatalogFixturePointer() {
+        jdbc.update("DELETE FROM learning_catalog.current_run WHERE run_key=?", CATALOG_FIXTURE);
     }
 
     protected Question question(String code, String subject, String correct) {

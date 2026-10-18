@@ -4,7 +4,6 @@ import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
 import com.hedefyks.feedback.FeedbackCategory;
 import com.hedefyks.feedback.FeedbackRepository;
-import com.hedefyks.question.QuestionDtos.CheckResponse;
 import com.hedefyks.question.QuestionDtos.Evaluation;
 import com.hedefyks.question.QuestionDtos.FilterRow;
 import com.hedefyks.question.QuestionDtos.QuestionDetail;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Objects;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,14 +29,34 @@ public class QuestionService {
 
     private final QuestionRepository questions;
     private final FeedbackRepository feedback;
+    private final QuestionTaxonomyService taxonomy;
+    private final QuestionHelpfulnessService helpfulness;
+    private final HintService hints;
+    private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
+    private final com.hedefyks.review.LearningResourceService resources;
 
-    public QuestionService(QuestionRepository questions, FeedbackRepository feedback) {
+    public QuestionService(QuestionRepository questions, FeedbackRepository feedback,
+                           QuestionTaxonomyService taxonomy, QuestionHelpfulnessService helpfulness,
+                           HintService hints, com.hedefyks.review.SharedQuestionLabels sharedLabels,com.hedefyks.review.LearningResourceService resources) {
         this.questions = questions;
         this.feedback = feedback;
+        this.taxonomy = taxonomy;
+        this.helpfulness = helpfulness;
+        this.hints = hints;
+        this.sharedLabels=sharedLabels;
+        this.resources=resources;
     }
 
-    public List<FilterRow> filters() {
-        return questions.filterRows().stream()
+    public List<FilterRow> filters(QuestionBank bank) {
+        return filters(bank,List.of());
+    }
+
+    public List<FilterRow> filters(QuestionBank bank,List<QuestionSource> source) {
+        var current=sharedLabels.filterRows(bank,source);
+        var fallback=current!=null?current:source.isEmpty()?(bank == null ? questions.filterRows() : questions.filterRowsByBank(bank))
+                :source.stream().distinct().filter(s->bank==null || s.bank()==bank)
+                    .flatMap(s->questions.filterRowsByBank(s.bank()).stream().filter(r->r.examType()==s.examType())).toList();
+        return fallback.stream()
                 .sorted(Comparator.comparing(FilterRow::examType)
                         .thenComparing(FilterRow::subject, TR)
                         .thenComparing(FilterRow::topic, Comparator.nullsLast(TR)))
@@ -45,7 +65,13 @@ public class QuestionService {
 
     public PageResponse<QuestionListItem> list(QuestionFilter filter, int page, int size) {
         var pageable = PageRequest.of(Math.max(page, 0), Math.min(Math.max(size, 1), 100), Sort.by("id"));
-        return PageResponse.of(questions.findAll(QuestionSpecs.filter(filter, true), pageable), QuestionListItem::of);
+        var result=questions.findAll(QuestionSpecs.filter(filter, true,sharedLabels.questionIds(filter)), pageable);
+        var presentations=resources.items(result.getContent().stream().map(q->"question:"+q.getCode()).toList());
+        return PageResponse.of(result,q->QuestionListItem.of(q,presentations.getOrDefault("question:"+q.getCode(),Map.of())));
+    }
+
+    public Map<String,Long> categoryCounts(QuestionFilter filter) {
+        return sharedLabels.categoryCounts(filter);
     }
 
     public QuestionDetail detail(Long id, Long userId) {
@@ -59,16 +85,9 @@ public class QuestionService {
 
     /** Aynı filtreye göre sıradaki/önceki soru; yoksa boş döner (204). */
     public Optional<QuestionDetail> neighbor(Long id, boolean next, QuestionFilter filter, Long userId) {
-        var spec = QuestionSpecs.filter(filter, true).and(QuestionSpecs.idAfter(id, next));
+        var spec = QuestionSpecs.filter(filter, true,sharedLabels.questionIds(filter)).and(QuestionSpecs.idAfter(id, next));
         Sort sort = next ? Sort.by("id").ascending() : Sort.by("id").descending();
         return questions.findBy(spec, q -> q.sortBy(sort).first()).map(q -> toDetail(q, userId));
-    }
-
-    public CheckResponse check(Long id, String answer) {
-        Question q = findActive(id);
-        String a = Answers.normalize(answer, q.getChoiceCount());
-        if (a == null) throw ApiException.badRequest("Bir şık seç.");
-        return new CheckResponse(a.equals(q.getCorrectAnswer()), q.getCorrectAnswer(), q.getSolutionUrl());
     }
 
     public Question findActive(Long id) {
@@ -86,7 +105,10 @@ public class QuestionService {
         }
         Evaluation mine = feedback.findMine(userId, q.getId(), FeedbackCategory.RATING)
                 .map(f -> new Evaluation(f.getDifficultyVote(), f.getRating())).orElse(null);
-        return new QuestionDetail(q.getId(), q.getCode(), q.getExamType(), q.getSubject(), q.getTopic(),
-                q.getYear(), q.getSource(), q.getChoiceCount(), avg, agg.count(), votes, mine);
+        var presentation=resources.items(List.of("question:"+q.getCode())).getOrDefault("question:"+q.getCode(),Map.of());
+        return new QuestionDetail(q.getId(), q.getCode(), q.getBank(), q.getExamType(), Objects.toString(presentation.get("subject"),q.getSubject()),
+                Objects.toString(presentation.get("topic"),q.getTopic()),
+                q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine,
+                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId), hints.available(q.getId()));
     }
 }

@@ -9,6 +9,8 @@ export class ApiError extends Error {
   }
 }
 
+const csrfCookieName = import.meta.env?.VITE_CSRF_COOKIE_NAME || 'XSRF-TOKEN';
+
 let onUnauthorized = null;
 /** Oturum düştüğünde (401) çağrılacak işlevi kaydeder. */
 export function setUnauthorizedHandler(fn) {
@@ -34,10 +36,10 @@ async function request(method, path, body) {
 
   if (method !== 'GET') {
     // Çerez henüz yoksa (ilk istek) sunucudan almak için hafif bir GET at.
-    if (!readCookie('XSRF-TOKEN')) {
+    if (!readCookie(csrfCookieName)) {
       await fetch('/api/auth/me', { credentials: 'same-origin' }).catch(() => {});
     }
-    const token = readCookie('XSRF-TOKEN');
+    const token = readCookie(csrfCookieName);
     if (token) headers['X-XSRF-TOKEN'] = token;
   }
   if (body instanceof FormData) {
@@ -81,7 +83,8 @@ async function request(method, path, body) {
 export function qs(params) {
   const sp = new URLSearchParams();
   Object.entries(params || {}).forEach(([k, v]) => {
-    if (v !== undefined && v !== null && v !== '') sp.set(k, v);
+    if(Array.isArray(v))v.filter(item=>item!==undefined && item!==null && item!=='').forEach(item=>sp.append(k,item));
+    else if (v !== undefined && v !== null && v !== '') sp.set(k, v);
   });
   const s = sp.toString();
   return s ? '?' + s : '';
@@ -92,8 +95,10 @@ export const api = {
   post: (path, body) => request('POST', path, body ?? {}),
   put: (path, body) => request('PUT', path, body),
   patch: (path, body) => request('PATCH', path, body),
+  delete: (path) => request('DELETE', path),
   upload: (path, formData) => request('POST', path, formData),
 };
 
-export const imageUrl = (id, version) => `/api/questions/${id}/image${version ? '?v=' + encodeURIComponent(version) : ''}`;
+export const imageUrl = (id, version) => `/api/questions/${id}/image?v=${encodeURIComponent(`kirp-2-${version ?? ''}`)}`;
+export const solutionImageUrl = (id) => `/api/questions/${id}/solution-image`;
 export const qrUrl = (id, size = 200) => `/api/questions/${id}/qr?size=${size}`;

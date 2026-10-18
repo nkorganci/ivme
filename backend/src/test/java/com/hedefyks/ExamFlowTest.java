@@ -21,15 +21,18 @@ class ExamFlowTest extends TestBase {
         Question q2 = question("T-2", "Matematik", "B");
         Question q3 = question("T-3", "Matematik", "C");
         user("ayse", Role.USER);
-        user("yonetici", Role.ADMIN);
+        user("operator", Role.OPERATOR);
         MockHttpSession session = login("ayse", "Sifre1234");
 
-        JsonNode exam = read(send(session, post("/api/exams"),
+        send(session, post("/api/exams"),
                 "{\"examType\":\"TYT\",\"subject\":\"Matematik\",\"questionCount\":10,\"timeLimitMinutes\":35}")
+                .andExpect(status().isBadRequest());
+        JsonNode exam = read(send(session, post("/api/exams"),
+                "{\"examType\":\"TYT\",\"subject\":\"Matematik\",\"questionCount\":3,\"timeLimitMinutes\":35}")
                 .andExpect(status().isCreated()));
         long examId = exam.get("id").asLong();
         assertThat(exam.get("title").asText()).isEqualTo("TYT Matematik");
-        assertThat(exam.get("questionCount").asInt()).isEqualTo(3);               // 10 istendi, 3 soru var
+        assertThat(exam.get("questionCount").asInt()).isEqualTo(3);
         assertThat(exam.get("remainingSeconds").asLong()).isBetween(2000L, 2100L);
         assertThat(exam.toString()).doesNotContain("correct");                    // sınav sırasında cevap sızmaz
 
@@ -45,9 +48,9 @@ class ExamFlowTest extends TestBase {
         assertThat(result.get("percent").decimalValue()).isEqualByComparingTo("33.33");
         assertThat(result.get("net").decimalValue()).isEqualByComparingTo("0.75");   // 1 - 1/4
 
-        // Yönetici q2'nin doğru cevabını D yapar: geçmiş sonuç DEĞİŞMEMELİ
-        MockHttpSession admin = login("yonetici", "Sifre1234");
-        send(admin, put("/api/admin/questions/" + q2.getId()),
+        // Operatör q2'nin doğru cevabını D yapar: geçmiş sonuç DEĞİŞMEMELİ
+        MockHttpSession operator = login("operator", "Sifre1234");
+        send(operator, put("/api/operator/questions/" + q2.getId()),
                 "{\"examType\":\"TYT\",\"subject\":\"Matematik\",\"topic\":\"Konu\",\"image\":\"TYT/turkce/TYT-0001.webp\","
                         + "\"correctAnswer\":\"D\",\"choiceCount\":5,\"active\":true}").andExpect(status().isOk());
 
@@ -77,16 +80,23 @@ class ExamFlowTest extends TestBase {
 
     @Test
     void baskaKullaniciSinavaErisemez() throws Exception {
-        question("T-1", "Matematik", "A");
+        Question q = question("T-1", "Matematik", "A");
         user("ayse", Role.USER);
         user("ali", Role.USER);
         MockHttpSession ayse = login("ayse", "Sifre1234");
-        long examId = read(send(ayse, post("/api/exams"), "{\"questionCount\":5}")).get("id").asLong();
+        long examId = read(send(ayse, post("/api/exams"), "{\"questionCount\":1}")).get("id").asLong();
 
         MockHttpSession ali = login("ali", "Sifre1234");
         send(ali, get("/api/exams/" + examId), null).andExpect(status().isNotFound());
+        send(ali, put("/api/exams/" + examId + "/answers"),
+                "{\"questionId\":" + q.getId() + ",\"answer\":\"A\"}").andExpect(status().isNotFound());
         send(ali, post("/api/exams/" + examId + "/submit"), null).andExpect(status().isNotFound());
+        send(ali, get("/api/exams/" + examId + "/result"), null).andExpect(status().isNotFound());
+        send(ali, get("/api/exams"), null).andExpect(jsonPath("$.totalElements").value(0));
+        send(ali, get("/api/exams/summary"), null).andExpect(jsonPath("$.examCount").value(0));
         send(ayse, get("/api/exams/summary"), null).andExpect(jsonPath("$.activeExam.id").value(examId));
+        send(ayse, post("/api/exams/" + examId + "/submit"), null).andExpect(status().isOk());
+        send(ali, get("/api/exams/" + examId + "/result"), null).andExpect(status().isNotFound());
     }
 
     @Test
@@ -102,6 +112,7 @@ class ExamFlowTest extends TestBase {
         Question q = question("T-1", "Matematik", "A");
         user("ayse", Role.USER);
         user("yonetici", Role.ADMIN);
+        user("operator", Role.OPERATOR);
         MockHttpSession session = login("ayse", "Sifre1234");
 
         send(session, post("/api/feedback"), "{\"category\":\"RATING\",\"questionId\":" + q.getId() + ",\"difficultyVote\":\"ZOR\",\"rating\":4}")
@@ -119,12 +130,16 @@ class ExamFlowTest extends TestBase {
                 .andExpect(status().isCreated());
 
         MockHttpSession admin = login("yonetici", "Sifre1234");
-        send(admin, get("/api/admin/stats"), null).andExpect(jsonPath("$.reportedQuestionCount").value(1))
-                .andExpect(jsonPath("$.openFeedbackCount").value(1));
-        JsonNode list = read(send(admin, get("/api/admin/feedback?category=QUESTION_ISSUE&resolved=false"), null).andExpect(status().isOk()));
+        send(admin, get("/api/admin/stats"), null).andExpect(jsonPath("$.userCount").isEmpty())
+                .andExpect(jsonPath("$.reportedQuestionCount").doesNotExist());
+        send(admin, get("/api/operator/feedback"), null).andExpect(status().isForbidden());
+        MockHttpSession operator = login("operator", "Sifre1234");
+        JsonNode list = read(send(operator, get("/api/operator/feedback?category=QUESTION_ISSUE&resolved=false"), null).andExpect(status().isOk()));
+        assertThat(list.get("content").get(0).has("username")).isFalse();
         long feedbackId = list.get("content").get(0).get("id").asLong();
-        send(admin, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch("/api/admin/feedback/" + feedbackId), "{\"resolved\":true}")
+        send(operator, org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch("/api/operator/feedback/" + feedbackId), "{\"resolved\":true}")
                 .andExpect(status().isOk()).andExpect(jsonPath("$.resolved").value(true));
-        send(admin, get("/api/admin/stats"), null).andExpect(jsonPath("$.reportedQuestionCount").value(0));
+        send(operator, get("/api/operator/feedback?category=QUESTION_ISSUE&resolved=false"), null)
+                .andExpect(jsonPath("$.totalElements").value(0));
     }
 }

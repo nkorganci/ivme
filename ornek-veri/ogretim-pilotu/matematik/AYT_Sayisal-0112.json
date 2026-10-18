@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:AYT_Sayisal-0112",
+  "question": {
+    "code": "AYT_Sayisal-0112",
+    "exam": "AYT",
+    "subjectId": "matematik",
+    "categoryId": "ayt.matematik.ikinci-dereceden-denklemler-ve-esitsizlikler",
+    "subtopic": "İkinci dereceden eşitsizlik sistemleri ve işaret tablosu",
+    "answerKey": "A",
+    "choiceCount": 5,
+    "imageSha256": "9c8f0a3c99adc94f00df5d01da816f834cc7e332967a114ad368bf533eee7bf7"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "P(x) = x² − x − 12 ve Q(x) = −x² + 8x − 12 polinomları için P(x) < 0 ve Q(x) > 0 koşullarını sağlayan yalnızca bir a tam sayısı vardır. Buna göre P(a) + Q(a) toplamı kaçtır?",
+    "choices": {"A": "−3", "B": "−4", "C": "−6", "D": "−8", "E": "−9"},
+    "figure": null,
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "İki ikinci dereceden ifadenin işaretini ayrı ayrı inceleyip çözüm kümelerini kesiştirmek gerekir; baş katsayısı negatif olan ifadede yön hatası yaygındır.",
+    "skills": ["UYGULAMA", "ANALIZ", "HESAPLAMA"],
+    "prerequisites": ["tyt.matematik.carpanlara-ayirma", "tyt.matematik.basit-esitsizlikler"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "matematik.esitsizlik.isaret-tablosu-kesisim",
+    "name": "İşaret tablosu ve çözüm kümelerinin kesişimi",
+    "trigger": "Birden fazla polinom eşitsizliği 'birlikte' sağlanıyorsa ya da bir eşitsizlik sistemi verilmişse.",
+    "bigIdea": "Bir polinomun işareti yalnızca köklerinde değişebilir. İkinci derecede kollar yukarıysa (baş katsayı pozitif) kökler arası negatif, aşağıysa kökler arası pozitiftir. Sistem çözümü, tek tek çözüm kümelerinin kesişimidir.",
+    "method": [
+      "Her ifadeyi çarpanlara ayır, kökleri bul.",
+      "Baş katsayının işaretine göre işaret tablosunu kur.",
+      "İstenen işaretin geçerli olduğu aralıkları yaz (eşitsizlik katıysa uçlar dahil değil).",
+      "Aralıkları sayı doğrusunda üst üste koyup ortak kısmı al."
+    ],
+    "whenNot": "Kesirli (rasyonel) eşitsizliklerde paydanın kökü tanımsızlık noktasıdır; çift katlı köklerde işaret değişmez. Bu durumlarda işaret tablosu ek dikkat ister.",
+    "examTip": "Önce sorulan ifadeyi sadeleştirip sadeleştirmediğine bak: iki polinomun toplamı ya da farkı çoğu zaman daha basit bir ifadeye iner ve hesabı kısaltır."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "isaret-tablosu", "text": "Her polinomu çarpanlarına ayırıp işaret tablosuyla iki eşitsizliğin çözüm aralıklarını bulmak, sonra kesiştirmek", "correct": true,
+       "feedback": "Doğru. 'Yalnızca bir a tam sayısı' bilgisi, iki aralığın ortak kısmında tek bir tam sayı olduğunu söyler; önce bu ortak kısmı bulmalıyız."},
+      {"id": "esitle", "text": "P(x) ile Q(x)'i birbirine eşitleyip kesişim noktasını bulmak", "correct": false,
+       "feedback": "Soru grafiklerin kesişimini değil, iki eşitsizliğin birlikte sağlandığı x'leri istiyor. Eşitlemek işaret bilgisini vermez."},
+      {"id": "sik-dene", "text": "Şıklardaki değerleri P(a) + Q(a) yerine koyup denemek", "correct": false,
+       "feedback": "Şıklar a'yı değil, toplamı veriyor; a bilinmeden yerine koyulacak bir şey yok. Önce a'yı belirlemeliyiz."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "İkinci dereceden bir ifadenin işareti yalnızca köklerinde değişir. Baş katsayısı pozitifse kökler arasında negatif, negatifse kökler arasında pozitiftir."},
+    {"level": 2, "kind": "STRATEJI", "text": "Her iki polinomu çarpanlarına ayır ve işaret tablolarını kur. P(x) < 0 ve Q(x) > 0 aralıklarını sayı doğrusunda üst üste koy; ortak kısımdaki tam sayıyı ara."},
+    {"level": 3, "kind": "ADIM", "text": "x² − x − 12 = (x − 4)(x + 3) ve −x² + 8x − 12 = −(x − 2)(x − 6). Q'nun baş katsayısı negatif olduğuna dikkat ederek iki aralığı yaz."}
+  ],
+  "guidingQuestions": [
+    {"text": "Q(x) = −x² + 8x − 12 parabolünün kolları hangi yöne açılır? Bu, kökler arasındaki işaret için ne söyler?", "answer": "Baş katsayı −1 olduğu için kollar aşağı açılır; kökler arasında parabol eksenin üstündedir, yani Q(x) > 0."},
+    {"text": "−3 < x < 4 ile 2 < x < 6 aralıklarının ortak kısmında hangi tam sayılar var?", "answer": "Ortak kısım 2 < x < 4; içindeki tek tam sayı 3."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "P(x) = x² − x − 12 = (x − 4)(x + 3). Kökler −3 ve 4. Baş katsayı pozitif olduğundan P(x) < 0 kökler arasında: −3 < x < 4.",
+       "why": "Kolları yukarı açılan parabol kökler arasında x ekseninin altındadır.",
+       "check": {"type": "inequality", "expr": "x**2 - x - 12 < 0", "var": "x", "expect": "Interval.open(-3, 4)"}},
+      {"id": "s2", "text": "Q(x) = −x² + 8x − 12 = −(x − 2)(x − 6). Kökler 2 ve 6. Baş katsayı negatif olduğundan Q(x) > 0 kökler arasında: 2 < x < 6.",
+       "why": "Kolları aşağı açılan parabol kökler arasında x ekseninin üstündedir.",
+       "check": {"type": "inequality", "expr": "-x**2 + 8*x - 12 > 0", "var": "x", "expect": "Interval.open(2, 6)"},
+       "selfExplain": {"prompt": "Q(x) > 0 neden kökler arasında sağlanır?",
+         "options": [
+           {"id": "kollar-asagi", "text": "Baş katsayı negatif; parabol aşağı açılır ve kökler arasında x ekseninin üstünde kalır.", "correct": true,
+            "feedback": "Evet. İşaret tablosunda en sağdaki işaret baş katsayının işaretidir (−), kök geçtikçe işaret değişir: −, +, −."},
+           {"id": "hep-arasi", "text": "Çünkü eşitsizlikler her zaman kökler arasında sağlanır.", "correct": false,
+            "feedback": "Değil: P(x) < 0 kökler arasında, ama P(x) > 0 kökler dışında sağlanırdı. Belirleyici olan baş katsayının işareti ve istenen işaret."},
+           {"id": "buyuk-sifir", "text": "Çünkü 8x terimi pozitif.", "correct": false,
+            "feedback": "Tek bir terimin işareti ifadenin işaretini belirlemez. Kökler ve baş katsayı belirler."}
+         ]}},
+      {"id": "s3", "text": "İki koşul birlikte: (−3, 4) ∩ (2, 6) = (2, 4). Bu açık aralıktaki tek tam sayı 3; a = 3.",
+       "why": "Eşitsizlikler katı (< ve >) olduğundan 2 ve 4 dahil değildir; aradaki tek tam sayı 3'tür. Bu, 'yalnızca bir a tam sayısı' bilgisiyle tutarlıdır.",
+       "check": {"type": "sympy", "expr": "Intersection(Interval.open(-3, 4), Interval.open(2, 6))", "equals": "Interval.open(2, 4)"}},
+      {"id": "s4", "text": "P(3) = 9 − 3 − 12 = −6 ve Q(3) = −9 + 24 − 12 = 3. P(3) + Q(3) = −3.",
+       "why": "a bulunduktan sonra iki polinomun değeri ayrı ayrı hesaplanıp toplanır.",
+       "check": {"type": "sympy", "expr": "(3**2 - 3 - 12) + (-(3**2) + 8*3 - 12)", "equals": "-3"}}
+    ],
+    "finalAnswer": {"choice": "A", "value": "−3",
+      "check": {"type": "choice", "expr": "(3**2 - 3 - 12) + (-(3**2) + 8*3 - 12)", "choice": "A"}},
+    "levels": {
+      "sezgi": "İki parabol düşün: P'nin kolları yukarı, Q'nunki aşağı. P, −3 ile 4 arasında eksenin altına iner; Q, 2 ile 6 arasında eksenin üstüne çıkar. İkisinin aynı anda istenen tarafta olduğu bölge 2 ile 4 arasındaki dar bir pencere; o pencerede duran tek tam sayı 3.",
+      "kisayol": "P(x) + Q(x) = 7x − 24 (kareli terimler sadeleşir). Aralıklar (−3, 4) ve (2, 6) → a = 3 → 7·3 − 24 = −3."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "C",
+     "mistake": "a = 3'ü bulduktan sonra yalnız P(3) = −6'yı hesaplayıp Q(3)'ü eklemeyi unutmak.",
+     "cause": "Uzun işlem zincirinin sonunda sorunun kökünü (P(a) + Q(a)) yeniden okumamak.",
+     "fix": "Son adımda soru kökünü tekrar oku: istenen iki değerin toplamı. Q(3) = 3 de eklenmeli.",
+     "guidingQuestion": "Soru kökü tam olarak hangi ifadeyi istiyor? Sen hangisini hesapladın?",
+     "check": {"type": "choice", "expr": "3**2 - 3 - 12", "choice": "C"}},
+    {"id": "m2", "choice": null,
+     "mistake": "Q(x) > 0 için 'kökler dışında' yazmak (x < 2 veya x > 6).",
+     "cause": "Baş katsayının negatif olduğunu gözden kaçırıp her parabolü kolları yukarı sanmak.",
+     "fix": "İşaret tablosunda en sağdaki bölgenin işareti baş katsayının işaretidir. −x² için en sağ negatif, kökler arası pozitiftir. Hatalı aralık −3 < x < 2 verir ve dört tam sayı içerir; bu 'yalnızca bir tam sayı' bilgisiyle çelişir.",
+     "guidingQuestion": "x çok büyükken (ör. x = 100) Q(x) pozitif mi negatif mi?"},
+    {"id": "m3", "choice": null,
+     "mistake": "Uç noktaları (2 ve 4) çözüme dahil edip birden fazla a değeri bulmak.",
+     "cause": "Katı eşitsizlik ile eşitlikli eşitsizliği ayırt etmemek.",
+     "fix": "P(x) < 0 ve Q(x) > 0 katıdır; köklerde ifade sıfır olur ve koşul sağlanmaz.",
+     "guidingQuestion": "x = 4 için P(4) kaçtır? P(4) < 0 sağlanıyor mu?"}
+  ],
+  "alternative": {
+    "title": "Önce toplamı sadeleştirmek",
+    "text": "P(x) + Q(x) = (x² − x − 12) + (−x² + 8x − 12) = 7x − 24. a = 3 bulunduğunda 7·3 − 24 = −3. İki polinomu ayrı ayrı hesaplamaktan daha kısa ve hata payı daha düşüktür.",
+    "check": {"type": "sympy", "expr": "expand((x**2 - x - 12) + (-x**2 + 8*x - 12))", "equals": "7*x - 24"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "İki aralığın sayı doğrusunda üst üste konması 'kesişim' kavramını ve tek tam sayının neden çıktığını görünür kılar.",
+    "stage": "POST",
+    "template": "number-line",
+    "title": "İki eşitsizlik, tek ortak pencere",
+    "params": {
+      "min": -5,
+      "max": 8,
+      "rows": [
+        {"id": "p", "label": "P(x) < 0", "intervals": [{"from": -3, "to": 4, "openFrom": true, "openTo": true, "tone": "navy"}],
+         "points": [{"x": -3, "open": true, "label": "−3"}, {"x": 4, "open": true, "label": "4"}]},
+        {"id": "q", "label": "Q(x) > 0", "intervals": [{"from": 2, "to": 6, "openFrom": true, "openTo": true, "tone": "warn"}],
+         "points": [{"x": 2, "open": true, "label": "2"}, {"x": 6, "open": true, "label": "6"}]}
+      ],
+      "signs": [
+        {"id": "isaret-p", "label": "P(x)", "breaks": [-3, 4], "signs": ["+", "-", "+"]},
+        {"id": "isaret-q", "label": "Q(x)", "breaks": [2, 6], "signs": ["-", "+", "-"]}
+      ],
+      "intersection": {"id": "ortak", "rows": ["p", "q"], "label": "Ortak kısım: 2 < x < 4"},
+      "marks": [{"id": "a", "x": 3, "label": "a = 3", "tone": "ok"}]
+    },
+    "frames": [
+      {"caption": "P'nin işaret tablosu: kökler −3 ve 4, kollar yukarı; aradaki bölge negatif.", "show": ["isaret-p", "p"]},
+      {"caption": "Q'nun işaret tablosu: kökler 2 ve 6, kollar aşağı; aradaki bölge pozitif.", "show": ["isaret-p", "p", "isaret-q", "q"]},
+      {"caption": "İki koşulun birlikte sağlandığı yer: 2 < x < 4.", "show": ["p", "q", "ortak"]},
+      {"caption": "Bu açık aralıktaki tek tam sayı 3.", "show": ["p", "q", "ortak", "a"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: İki aralığın ortak kısmında kaç tam sayı vardır?",
+      "options": [
+        {"id": "bir", "text": "Bir tane", "correct": true, "feedback": "Doğru; soru da 'yalnızca bir a' diyor. Şimdi aralıkları üst üste koyup görelim."},
+        {"id": "dort", "text": "Dört tane", "correct": false, "feedback": "Dört tam sayı bulduysan Q'nun aralığını ters almış olabilirsin. Sayı doğrusunda kontrol edelim."},
+        {"id": "hic", "text": "Hiç yok", "correct": false, "feedback": "Ortak kısım boş değil; 2 ile 4 arasında bir pencere var. Sayı doğrusunda görelim."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Bir öğrenci, x² − 3x − 10 ifadesini negatif ve aynı anda −x² + 8x − 15 ifadesini pozitif yapan tam sayıları arıyor ve böyle tek bir tam sayı buluyor. Öğrenci bulduğu bu sayıyı iki ifadede de yerine yazıp çıkan sonuçları topluyor. Öğrencinin bulduğu toplam kaçtır?",
+    "choices": {"A": "−3", "B": "−4", "C": "−5", "D": "−6", "E": "−7"},
+    "answer": "C",
+    "solution": "P(x) = (x − 5)(x + 2) < 0 → −2 < x < 5. Q(x) = −(x − 3)(x − 5) > 0 → 3 < x < 5. Ortak kısım 3 < x < 5 → a = 4. P(4) = −6, Q(4) = 1 → toplam −5 (ya da P + Q = 5x − 25 → −5). −6 yalnız P(4)'tür.",
+    "choiceValues": {"A": "-3", "B": "-4", "C": "-5", "D": "-6", "E": "-7"},
+    "check": {"type": "twinChoice", "expr": "(4**2 - 3*4 - 10) + (-(4**2) + 8*4 - 15)", "choice": "C"}
+  },
+  "choiceValues": {"A": "-3", "B": "-4", "C": "-6", "D": "-8", "E": "-9"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — İkinci dereceden eşitsizlikler ve eşitsizlik sistemleri", "note": "İşaret tablosu ile eşitsizlik sistemi çözme kazanımı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-pilot-v1",
+    "createdAt": "2026-10-18T07:40:00Z"
+  }
+}

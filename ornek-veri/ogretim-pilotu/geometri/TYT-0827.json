@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0827",
+  "question": {
+    "code": "TYT-0827",
+    "exam": "TYT",
+    "subjectId": "geometri",
+    "categoryId": "tyt.geometri.acilar-ve-ucgenler",
+    "subtopic": "Üçgen türleri ve açı hesabı (açılarına ve kenarlarına göre sınıflandırma)",
+    "answerKey": "E",
+    "choiceCount": 5,
+    "imageSha256": "109806a0f7eea3622dc133bd9247d47195b00f9554e265c27b7000c41a5ce17f"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Beş üçgenden oluşan bir kare aşağıda gösterilmiştir. Şekilde sol üst köşede üst kenarla 60°, sol alt köşede sol kenarla 30°, sağ alt köşede alt kenarla 60° açı yapan doğru parçaları vardır; üçgenler A, B, C, D, E ile adlandırılmıştır. Buna göre bu beş üçgenden hangisi dar açılı çeşitkenar üçgendir?",
+    "choices": {"A": "A", "B": "B", "C": "C", "D": "D", "E": "E"},
+    "figure": "Kare içinde: sol üst köşeden aşağı inen doğru (üst kenarla 60°), sol alt köşeden yukarı çıkan doğru (sol kenarla 30°), sağ alt köşeden yukarı çıkan doğru (alt kenarla 60°) ve sağ üst köşeden B üçgeninin tepesinden geçerek sol üst köşeden inen doğruya ulaşan doğru. A sol kenarda, B tabanda, C sağda, D üstte, E ortada.",
+    "figureCritical": true,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ZOR",
+    "difficultyReason": "Beş üçgenin açılarını zincirleme bulmak gerekir; kilit adım, karenin kenarı ile eşkenar üçgenin kenarının eşit olduğunu görüp C'yi ikizkenar tanımaktır.",
+    "skills": ["ANALIZ", "AKIL_YURUTME", "HESAPLAMA"],
+    "prerequisites": [],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "geometri.ucgen.aci-kovalamaca",
+    "name": "Açı kovalama: bilinen açıdan komşu açılara",
+    "trigger": "Şekilde birkaç açı verilmiş ve parçalara ayrılmış bir şeklin içindeki üçgenlerin türü ya da bir açısı soruluyorsa.",
+    "bigIdea": "Bir noktadaki açılar doğru üzerinde 180°, köşede 90°, üçgende 180° tamamlar. Eşit kenarlar eşit açılar doğurur; ikizkenarlığı yakalamak eksik açıları açar.",
+    "method": [
+      "Verilen açıları şekle yaz; kare köşelerinde 90°'yi tamamla.",
+      "İki açısı bilinen üçgenlerden başla; üçüncü açıyı 180°'den bul.",
+      "Eşit kenar ara (karenin kenarları, eşkenar üçgenin kenarları); ikizkenarda taban açıları eşittir.",
+      "Bir doğru üzerindeki komşu açıların toplamının 180° olduğunu kullanarak bir sonraki üçgene geç."
+    ],
+    "whenNot": "Şekil ölçekli değilse açı gözle tahmin edilmez; yalnız verilen ölçüler ve kesin ilişkiler (paralellik, eşit kenar, doğrusallık) kullanılır.",
+    "examTip": "Çeşitkenar sorulduğunda önce iki açısı eşit çıkan üçgenleri ele, sonra geniş açılıları; kalan aday için açıları kontrol etmek yeter."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "esit-acili-baslangic", "text": "İki açısı verilen ya da kolayca bulunan alttaki üçgenden başlayıp açıları komşu üçgenlere taşımak", "correct": true,
+       "feedback": "Doğru. Alttaki üçgenin iki taban açısı verilenlerden bulunur; oradan kenar eşitlikleri ve doğru üzerindeki açılarla diğer üçgenlere ilerlenir."},
+      {"id": "gozle-sec", "text": "Şekle bakıp en 'düzgün görünen' üçgeni seçmek", "correct": false,
+       "feedback": "Şekiller ölçekli olmayabilir; çeşitkenarlık ve dar açılılık ancak açılar hesaplanınca kesinleşir."},
+      {"id": "kenar-olc", "text": "Önce bütün kenar uzunluklarını trigonometriyle hesaplamak", "correct": false,
+       "feedback": "Uzunluk gerekmez; açı ilişkileri ve bir kenar eşitliği yeterlidir. Uzun hesap zaman kaybettirir."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Dar açılı çeşitkenar üçgenin bütün açıları 90°'den küçük ve birbirinden farklıdır. Önce her üçgenin açılarını bulmalısın."},
+    {"level": 2, "kind": "STRATEJI", "text": "Alt kenarı karenin kenarı olan üçgenin iki taban açısını verilenlerden bul. Sonra bu üçgenin bir kenarının karenin sağ kenarına eşit olduğunu fark et."},
+    {"level": 3, "kind": "ADIM", "text": "Sol alttaki açı 90° − 30° olduğundan alttaki üçgenin taban açıları eşittir; bu üçgen eşkenardır. Sağdaki üçgende iki kenar karenin kenar uzunluğuna eşittir; tepe açısından taban açılarını hesapla."}
+  ],
+  "guidingQuestions": [
+    {"text": "Alttaki üçgende sol alt köşedeki açı kaç derecedir?", "answer": "Karenin köşesi 90° olduğundan 90° − 30° = 60°."},
+    {"text": "Sağdaki üçgende hangi iki kenar eşittir?", "answer": "Biri karenin sağ kenarı, diğeri eşkenar üçgenin sağ kenarı; ikisi de kare kenarına eşittir."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "B: Sol alttaki açı 90° − 30° = 60°, sağ alttaki açı 60°. Üçüncü açı 180° − 60° − 60° = 60°; B eşkenar üçgendir (60°-60°-60°).",
+       "why": "Kare köşesi 90° olduğundan sol kenarla yapılan 30°, alt kenarla 60° demektir; iki açısı 60° olan üçgenin üçüncü açısı da 60°'dir.",
+       "check": {"type": "sympy", "expr": "180 - (90 - 30) - 60", "equals": "60"}},
+      {"id": "s2", "text": "A: Üst köşede sol kenarla açı 90° − 60° = 30°, alt köşede 30°. Üçüncü açı 120°; A geniş açılı ikizkenardır (30°-30°-120°).",
+       "why": "Üst kenarla 60° yapan doğru, sol kenarla 30° yapar; iki açısı eşit olduğu için A ikizkenardır.",
+       "check": {"type": "sympy", "expr": "180 - (90 - 60) - 30", "equals": "120"}},
+      {"id": "s3", "text": "C: Sağ alt köşede açı 90° − 60° = 30°. Eşkenar B'nin sağ kenarı karenin kenarına, o da karenin sağ kenarına eşittir; C ikizkenardır ve taban açıları (180° − 30°)/2 = 75° olur (30°-75°-75°).",
+       "why": "Eşit kenarların karşısındaki açılar eşittir. Tepe açısı bilinen ikizkenarda taban açıları (180° − tepe)/2'dir.",
+       "check": {"type": "sympy", "expr": "(180 - (90 - 60))/2", "equals": "75"},
+       "selfExplain": {"prompt": "C üçgeninde iki kenarın eşit olduğunu neden söyleyebiliyoruz?",
+         "options": [
+           {"id": "kare-eskenar", "text": "Bir kenar karenin kenarı, diğeri eşkenar üçgenin kenarı; eşkenar üçgenin tabanı da karenin kenarı olduğu için hepsi eşittir.", "correct": true,
+            "feedback": "Evet. Kenar eşitliği zinciri: kare kenarı = B'nin tabanı = B'nin sağ kenarı."},
+           {"id": "gorunus", "text": "Şekilde iki kenar aynı uzunlukta görünüyor.", "correct": false,
+            "feedback": "Görüntü kanıt değildir; eşitlik, karenin ve eşkenar üçgenin özelliklerinden gelir."},
+           {"id": "acilar", "text": "Çünkü C'nin açıları 75° ve 75°'tir.", "correct": false,
+            "feedback": "Bu sonuçtur, nedeni değil. 75°'leri bulmak için önce kenar eşitliğini göstermek gerekir."}
+         ]}},
+      {"id": "s4", "text": "D: Sağ üst köşede açı 90° − 75° = 15°, sol üst köşede 60°. Üçüncü açı 180° − 60° − 15° = 105°; D geniş açılıdır.",
+       "why": "Sağ üst köşedeki 90°, C'nin 75°'lik açısı ile D'nin açısı arasında paylaşılır.",
+       "check": {"type": "sympy", "expr": "180 - 60 - (90 - 75)", "equals": "105"}},
+      {"id": "s5", "text": "E: Q noktasında 180° − 105° = 75°, R noktasında 180° − 120° = 60°, B'nin tepesinde 180° − 75° − 60° = 45°. E'nin açıları 75°, 60°, 45°: hepsi dar ve hepsi farklı.",
+       "why": "Bir doğru üzerindeki komşu açılar 180° tamamlar: E'nin açıları, D, A ve C/B'nin açılarının bütünlerinden gelir.",
+       "check": {"type": "sympy", "expr": "(180 - 105) + (180 - 120) + (180 - 75 - 60)", "equals": "180"}}
+    ],
+    "finalAnswer": {"choice": "E", "value": "E (75°, 60°, 45°)",
+      "check": {"type": "choice", "expr": "FiniteSet(180 - 105, 180 - 120, 180 - 75 - 60)", "choice": "E"}},
+    "levels": {
+      "sezgi": "Açılar bir zincir gibi birbirine bağlı: karenin 90°'lik köşeleri verilen açıları tamamlar, eşkenar üçgen bir kenar eşitliği verir, o eşitlik sağdaki üçgeni ikizkenar yapar ve kalan her açı bir doğrunun 180°'sinden düşülerek bulunur. Ortadaki küçük üçgen, çevresindeki üçgenlerin 'artık' açılarından oluşur.",
+      "kisayol": "B eşkenar, A 30-30-120 (ikizkenar), C 30-75-75 (ikizkenar), D'de 105° (geniş) → geriye yalnız E kalır; kontrol: 75-60-45."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "C", "mistake": "C'nin bütün açıları dar olduğu için onu seçmek; iki açısının eşit (75°, 75°) olduğunu gözden kaçırmak.",
+     "cause": "'Dar açılı' koşuluna odaklanıp 'çeşitkenar' koşulunu kontrol etmemek; iki koşullu soruyu tek koşulla çözmek.",
+     "fix": "Çeşitkenar için üç kenarın, dolayısıyla üç açının da farklı olması gerekir. C'de iki kenar kare kenarına eşittir.",
+     "guidingQuestion": "C'nin açıları birbirinden farklı mı?",
+     "check": {"type": "choice", "expr": "FiniteSet(30, 75, 75)", "choice": "C"}},
+    {"id": "m2", "choice": "B", "mistake": "Alttaki büyük üçgenin dar açılı olduğunu görüp seçmek.",
+     "cause": "Eşkenar üçgenin de dar açılı olduğunu, ama çeşitkenar olmadığını unutmak.",
+     "fix": "B'nin üç açısı 60°'dir; eşkenar üçgen en 'çeşitkenar olmayan' üçgendir.",
+     "guidingQuestion": "B'nin kaç kenarı birbirine eşit?",
+     "check": {"type": "choice", "expr": "FiniteSet(60, 60, 60)", "choice": "B"}},
+    {"id": "m3", "choice": "D", "mistake": "D'de 60° ve 15°'yi görüp üçüncü açıyı hesaplamadan çeşitkenar ve dar açılı saymak.",
+     "cause": "Üçüncü açıyı 180°'den hesaplamayı atlamak; 105°'nin geniş açı olduğunu görmemek.",
+     "fix": "Her üçgende üç açıyı da yaz: 60° + 15° + 105° = 180°; 105° > 90° olduğu için D geniş açılıdır.",
+     "guidingQuestion": "D'nin üçüncü açısı kaç derece?",
+     "check": {"type": "choice", "expr": "FiniteSet(60, 15, 180 - 60 - 15)", "choice": "D"}}
+  ],
+  "alternative": {
+    "title": "Eleme ile hızlı karar",
+    "text": "B eşkenar (eleme), A'da iki 30° (ikizkenar, eleme), C'de karenin iki kenarı (ikizkenar, eleme), D'de 105° (geniş, eleme). Geriye kalan E'nin açılarını doğrulamak: 75° + 60° + 45° = 180° ve hepsi farklı, hepsi 90°'den küçük.",
+    "check": {"type": "sympy", "expr": "Max(75, 60, 45) < 90", "equals": "True"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Açı kovalamada açılar bir zincir oluşturur; zinciri üçgen üçgen görmek, hangi açının hangi bilgiden geldiğini kalıcı kılar.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Açı zinciri: B'den E'ye",
+    "params": {
+      "view": [-1, 11, -1, 11],
+      "points": [
+        {"id": "TL", "x": 0, "y": 10, "hidden": true}, {"id": "TR", "x": 10, "y": 10, "hidden": true},
+        {"id": "BL", "x": 0, "y": 0, "hidden": true}, {"id": "BR", "x": 10, "y": 0, "hidden": true},
+        {"id": "P", "x": 5, "y": 8.660, "hidden": true}, {"id": "R", "x": 2.887, "y": 5, "hidden": true},
+        {"id": "Q", "x": 1.340, "y": 7.679, "hidden": true}
+      ],
+      "polygons": [
+        {"id": "pA", "points": ["TL", "BL", "R"], "tone": "line"},
+        {"id": "pB", "points": ["BL", "BR", "P"], "tone": "navy"},
+        {"id": "pC", "points": ["BR", "TR", "P"], "tone": "line"},
+        {"id": "pD", "points": ["TL", "TR", "Q"], "tone": "line"},
+        {"id": "pE", "points": ["R", "Q", "P"], "tone": "ok"}
+      ],
+      "segments": [
+        {"id": "k1", "from": "TL", "to": "TR"}, {"id": "k2", "from": "TR", "to": "BR"},
+        {"id": "k3", "from": "BR", "to": "BL"}, {"id": "k4", "from": "BL", "to": "TL"},
+        {"id": "d1", "from": "TL", "to": "R", "tone": "navy"}, {"id": "d2", "from": "BL", "to": "P", "tone": "navy"},
+        {"id": "d3", "from": "BR", "to": "P", "tone": "navy"}, {"id": "d4", "from": "TR", "to": "Q", "tone": "navy"}
+      ],
+      "angles": [
+        {"id": "v1", "vertex": "TL", "from": "TR", "to": "Q", "label": "60°"},
+        {"id": "v2", "vertex": "BL", "from": "TL", "to": "P", "label": "30°"},
+        {"id": "v3", "vertex": "BR", "from": "P", "to": "BL", "label": "60°"},
+        {"id": "b1", "vertex": "BL", "from": "P", "to": "BR", "label": "60°", "tone": "navy"},
+        {"id": "b2", "vertex": "P", "from": "BL", "to": "BR", "label": "60°", "tone": "navy"},
+        {"id": "a1", "vertex": "TL", "from": "BL", "to": "R", "label": "30°", "tone": "bad"},
+        {"id": "a2", "vertex": "R", "from": "TL", "to": "BL", "label": "120°", "tone": "bad"},
+        {"id": "c1", "vertex": "TR", "from": "BR", "to": "P", "label": "75°", "tone": "warn"},
+        {"id": "c2", "vertex": "P", "from": "TR", "to": "BR", "label": "75°", "tone": "warn"},
+        {"id": "e1", "vertex": "Q", "from": "R", "to": "P", "label": "75°", "tone": "ok"},
+        {"id": "e2", "vertex": "R", "from": "P", "to": "Q", "label": "60°", "tone": "ok"},
+        {"id": "e3", "vertex": "P", "from": "Q", "to": "R", "label": "45°", "tone": "ok"}
+      ],
+      "texts": [
+        {"id": "tA", "x": 0.9, "y": 4.4, "text": "A"}, {"id": "tB", "x": 5, "y": 2.6, "text": "B"},
+        {"id": "tC", "x": 8.3, "y": 5.6, "text": "C"}, {"id": "tD", "x": 3.8, "y": 9.0, "text": "D"},
+        {"id": "tE", "x": 3.1, "y": 6.8, "text": "E"}
+      ]
+    },
+    "frames": [
+      {"caption": "Verilenler: karenin köşelerinde 60°, 30° ve 60°. Karenin her köşesi 90°'dir.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "v1", "v2", "v3", "tA", "tB", "tC", "tD", "tE"]},
+      {"caption": "B: tabanda 90° − 30° = 60° ve 60° → üçüncü açı da 60°. B eşkenar.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "b1", "b2", "v3", "tA", "tB", "tC", "tD", "tE"], "focus": ["pB"]},
+      {"caption": "A: üstte 90° − 60° = 30°, altta 30° → 30°-30°-120°: geniş açılı ikizkenar.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "a1", "a2", "v2", "tA", "tB", "tC", "tD", "tE"], "focus": ["pA"]},
+      {"caption": "C: sağ kenar = kare kenarı = B'nin kenarı → ikizkenar; tepe 30° → taban açıları 75°.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "c1", "c2", "tA", "tB", "tC", "tD", "tE"], "focus": ["pC"]},
+      {"caption": "D: sağ üstte 90° − 75° = 15°, solda 60° → üçüncü açı 105°: geniş açılı.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "v1", "tA", "tB", "tC", "tD", "tE"], "focus": ["pD"]},
+      {"caption": "E: 180° − 105° = 75°, 180° − 120° = 60°, kalan 45°. Açılar 75°-60°-45°: dar açılı ve çeşitkenar.",
+       "show": ["pA", "pB", "pC", "pD", "pE", "k1", "k2", "k3", "k4", "d1", "d2", "d3", "d4", "e1", "e2", "e3", "tA", "tB", "tC", "tD", "tE"], "focus": ["pE"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Alttaki büyük B üçgeni hangi türdür?",
+      "options": [
+        {"id": "eskenar", "text": "Eşkenar", "correct": true, "feedback": "Doğru: taban açılarının ikisi de 60°. Zincir buradan başlıyor."},
+        {"id": "cesitkenar", "text": "Çeşitkenar", "correct": false, "feedback": "Taban açılarını hesaplayalım: 90° − 30° = 60° ve 60°. İki açısı eşit olan üçgen çeşitkenar olamaz."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "KLM üçgeninde K açısı 70°, L açısı 45°'tir. Buna göre M köşesindeki dış açının ölçüsü ve KLM üçgeninin türü aşağıdakilerin hangisinde birlikte doğru verilmiştir?",
+    "choices": {"A": "115°, dar açılı çeşitkenar", "B": "115°, dar açılı ikizkenar", "C": "65°, dar açılı çeşitkenar", "D": "115°, geniş açılı çeşitkenar", "E": "135°, dar açılı çeşitkenar"},
+    "answer": "A",
+    "solution": "M açısı 180° − 70° − 45° = 65°. M'deki dış açı 180° − 65° = 115° (ya da 70° + 45°). Açılar 70°, 45°, 65°: hepsi 90°'den küçük ve hepsi farklı → dar açılı çeşitkenar.",
+    "check": {"type": "sympy", "expr": "(180 - (180 - 70 - 45)) - (70 + 45)", "equals": "0"}
+  },
+  "choiceValues": {"A": "FiniteSet(30, 120)", "B": "FiniteSet(60)", "C": "FiniteSet(30, 75)", "D": "FiniteSet(15, 60, 105)", "E": "FiniteSet(45, 60, 75)"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik 9 — Üçgenler: açılar ve üçgen çeşitleri", "note": "Üçgenleri açılarına ve kenarlarına göre sınıflandırma; ikizkenar üçgen özellikleri."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:10:00Z"}
+}

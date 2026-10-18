@@ -4,6 +4,7 @@ import { api, imageUrl } from '../api.js';
 import { ignoreHotkey, useAsync, useCountdown, usePageTitle } from '../hooks.js';
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import ExamNavigator from '../components/ExamNavigator.jsx';
+import ExamTools from '../components/ExamTools.jsx';
 import Modal from '../components/Modal.jsx';
 import QuestionImage from '../components/QuestionImage.jsx';
 import Strip from '../components/Strip.jsx';
@@ -46,7 +47,10 @@ function ExamRunner({ exam }) {
   const [answers, setAnswers] = useState(() => Object.fromEntries(questions.map((q) => [q.questionId, q.selectedAnswer || null])));
   const [flags, setFlags] = useState(() => new Set());
   const [unsaved, setUnsaved] = useState(() => new Set()); // sunucuya yazılamayan sorular
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => {
+    const next = questions.findIndex(question => !question.selectedAnswer);
+    return next < 0 ? 0 : next;
+  });
   const [navOpen, setNavOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -171,52 +175,41 @@ function ExamRunner({ exam }) {
       </header>
 
       <div className="container wide qpage">
-        <div className="qstrip">
-          <strong>
-            Soru {index + 1} / {questions.length}
-          </strong>
-          <span className="badge badge-muted">{q.subject}</span>
-          {flagged && <span className="badge badge-warn">⚑ İşaretli</span>}
-        </div>
-
         <div className="exam-layout">
-          <section className="card image-card">
-            <QuestionImage id={qid} alt={`Soru ${index + 1}`} />
-          </section>
-          <ExamNavigator questions={questions} answers={answers} flags={flags} current={index} onGo={go} open={navOpen} />
-        </div>
+          <div className="exam-main">
+            <div className="qstrip">
+              <strong>Soru {index + 1} / {questions.length}</strong>
+              <span className="badge badge-muted">{q.subject}</span>
+              {flagged && <span className="badge badge-warn">⚑ İşaretli</span>}
+            </div>
 
-        <div className="qdock">
-          {submitError ? (
-            <Strip tone="bad">✗ {submitError}</Strip>
-          ) : (
-            unsaved.size > 0 && <Strip tone="warn">⚠ Bazı cevaplar sunucuya kaydedilemedi; sınavı bitirirken birlikte gönderilecek.</Strip>
-          )}
-          <div className="qbar">
-            <button type="button" className="btn btn-secondary" disabled={index === 0} onClick={() => go(index - 1)} title="Önceki soru (←)">
-              ‹ Önceki
-            </button>
-            <ChoiceButtons count={q.choiceCount} value={answers[qid]} onSelect={choose} />
-            <button type="button" className="btn btn-secondary" disabled={!answers[qid]} onClick={() => choose(null)}>
-              Temizle
-            </button>
-            <button type="button" className="btn btn-secondary" aria-pressed={flagged} aria-label={flagged ? 'İşareti kaldır' : 'İşaretle'} onClick={toggleFlag}>
-              {flagged ? '⚑' : '⚐'} <span className="hide-sm">{flagged ? 'İşareti kaldır' : 'İşaretle'}</span>
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary only-sm"
-              aria-expanded={navOpen}
-              aria-controls="soru-gezgini"
-              onClick={() => setNavOpen((o) => !o)}
-            >
-              ▦ {answeredCount}/{questions.length}
-            </button>
-            <button type="button" className="btn btn-secondary" disabled={index === questions.length - 1} onClick={() => go(index + 1)} title="Sonraki soru (→)">
-              Sonraki ›
-            </button>
+            <section className="card image-card">
+              <QuestionImage id={qid} alt={`${index + 1}. soru`} />
+            </section>
+            <section className="qdock exam-answer-card" aria-label={`${index + 1}. sorunun cevap şıkları ve gezinme`}>
+              {submitError ? <Strip tone="bad">✗ {submitError}</Strip>
+                : unsaved.size > 0 && <Strip tone="warn">⚠ Bazı cevaplar sunucuya kaydedilemedi; sınavı bitirirken birlikte gönderilecek.</Strip>}
+              <div className="qbar">
+                <button type="button" className="btn btn-secondary" disabled={index === 0} onClick={() => go(index - 1)} title="Önceki soru (←)">‹ Önceki</button>
+                <ChoiceButtons count={q.choiceCount} value={answers[qid]} onSelect={choose} />
+                <button type="button" className="btn btn-secondary" disabled={index === questions.length - 1} onClick={() => go(index + 1)} title="Sonraki soru (→)">Sonraki ›</button>
+              </div>
+              <div className="exam-answer-tools">
+                {answers[qid] && <button type="button" className="btn btn-secondary btn-sm" onClick={() => choose(null)}>Seçimi temizle</button>}
+                <button type="button" className="btn btn-secondary" aria-pressed={flagged} aria-label={flagged ? 'İşareti kaldır' : 'İşaretle'} onClick={toggleFlag}>
+                  {flagged ? '⚑' : '⚐'} <span className="hide-sm">{flagged ? 'İşareti kaldır' : 'İşaretle'}</span>
+                </button>
+                <button type="button" className="btn btn-secondary only-sm" aria-expanded={navOpen} aria-controls="soru-gezgini"
+                  onClick={() => setNavOpen((o) => !o)}>▦ {answeredCount}/{questions.length}</button>
+              </div>
+            </section>
+          </div>
+          <div className="exam-side">
+            <ExamTools key={qid} question={q} />
+            <ExamNavigator questions={questions} answers={answers} flags={flags} current={index} onGo={go} open={navOpen} />
           </div>
         </div>
+
       </div>
 
       {confirming && (

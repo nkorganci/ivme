@@ -4,12 +4,16 @@ import com.hedefyks.auth.AuthDtos.LoginRequest;
 import com.hedefyks.auth.AuthDtos.RegisterRequest;
 import com.hedefyks.auth.AuthDtos.UserDto;
 import com.hedefyks.common.ApiException;
+import com.hedefyks.progress.LoginActivity;
 import com.hedefyks.user.AppUserDetails;
+import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import java.time.Duration;
+import java.util.Locale;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,19 +40,33 @@ public class AuthController {
     private final PasswordEncoder encoder;
     private final AuthenticationManager authManager;
     private final SecurityContextRepository contextRepository;
+    private final LoginActivity loginActivity;
+
+    // Kaba kuvvet koruması: aynı IP + kullanıcı için 10 dk'da 8, aynı IP için toplam 40 hatalı giriş; IP başına saatte 10 kayıt
+    private final SlidingWindowLimiter loginPerUser = new SlidingWindowLimiter(8, Duration.ofMinutes(10));
+    private final SlidingWindowLimiter loginPerIp = new SlidingWindowLimiter(40, Duration.ofMinutes(10));
+    private final SlidingWindowLimiter registerPerIp = new SlidingWindowLimiter(10, Duration.ofHours(1));
 
     public AuthController(UserRepository users, PasswordEncoder encoder, AuthenticationManager authManager,
-                          SecurityContextRepository contextRepository) {
+                          SecurityContextRepository contextRepository, LoginActivity loginActivity) {
         this.users = users;
         this.encoder = encoder;
         this.authManager = authManager;
         this.contextRepository = contextRepository;
+        this.loginActivity = loginActivity;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(@Valid @RequestBody RegisterRequest req) {
+    public ResponseEntity<UserDto> register(@Valid @RequestBody RegisterRequest req, HttpServletRequest request) {
+        String ip = clientIp(request);
+        if (registerPerIp.isBlocked(ip)) {
+            throw tooManyRequests("Çok fazla kayıt denemesi yapıldı. Lütfen daha sonra tekrar dene.");
+        }
+        registerPerIp.record(ip);
         String username = req.username().trim();
         String email = req.email().trim();
+        String phone = PhoneNumbers.normalize(req.phone());
+        PasswordRules.checkBytes(req.password(), "password");
         if (users.existsByUsername(username)) {
             throw new ApiException(HttpStatus.CONFLICT, "Bu kullanıcı adı alınmış.",
                     Map.of("username", "Bu kullanıcı adı alınmış."));
@@ -60,22 +78,40 @@ public class AuthController {
         User u = new User();
         u.setUsername(username);
         u.setEmail(email);
+        u.setPhone(phone);
         u.setPasswordHash(encoder.encode(req.password()));
+        u.setCategory(req.category());
+        u.setRole(switch(req.category()) { case STUDENT -> Role.USER; case PARENT -> Role.PARENT; case TEACHER -> Role.TEACHER; });
         users.save(u);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new UserDto(u.getId(), u.getUsername(), u.getEmail(), u.getRole()));
+                .body(UserDto.of(u));
     }
 
     @PostMapping("/login")
     public UserDto login(@Valid @RequestBody LoginRequest req, HttpServletRequest request, HttpServletResponse response) {
+        String ip = clientIp(request);
+        String userKey = ip + "|" + req.login().trim().toLowerCase(Locale.ROOT);
+        if (loginPerUser.isBlocked(userKey) || loginPerIp.isBlocked(ip)) {
+            throw tooManyRequests("Çok fazla hatalı giriş denemesi. Lütfen birkaç dakika sonra tekrar dene.");
+        }
         Authentication auth;
         try {
             auth = authManager.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(
                     req.login().trim(), req.password()));
         } catch (AuthenticationException e) {
+            loginPerUser.record(userKey);
+            loginPerIp.record(ip);
             // Hangi alanın yanlış olduğunu söylemeyiz (kullanıcı adı sızdırmamak için)
             throw new ApiException(HttpStatus.UNAUTHORIZED, "Kullanıcı adı veya şifre hatalı");
         }
+        AppUserDetails principal = (AppUserDetails) auth.getPrincipal();
+        User signedIn = users.findById(principal.id())
+                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı."));
+        if (signedIn.isPasswordChangeRequired() && signedIn.getRole() != Role.USER
+                && !isLocalRequest(request)) {
+            throw new ApiException(HttpStatus.FORBIDDEN, "Geçici yetkili hesabı yalnız yerel bilgisayarda kullanılabilir.");
+        }
+        loginPerUser.clear(userKey);
         if (request.getSession(false) != null) {
             request.changeSessionId();                       // oturum sabitlemeye karşı
         }
@@ -83,13 +119,47 @@ public class AuthController {
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
         contextRepository.saveContext(context, request, response);
-        return UserDto.of((AppUserDetails) auth.getPrincipal());
+        loginActivity.login(principal.id(), request.getSession());
+        return UserDto.of(signedIn);
+    }
+
+    private static boolean isLocalRequest(HttpServletRequest request) {
+        if (request.getHeader("CF-Connecting-IP") != null) return false;
+        String remote = request.getRemoteAddr();
+        if (!"127.0.0.1".equals(remote) && !"::1".equals(remote)
+                && !"0:0:0:0:0:0:0:1".equals(remote)) return false;
+        String host = request.getServerName();
+        String forwardedHost = request.getHeader("X-Forwarded-Host");
+        return localHost(host) && (forwardedHost == null || localHost(forwardedHost));
+    }
+
+    private static boolean localHost(String host) {
+        return host != null && host.matches("(?i)^(localhost|127\\.0\\.0\\.1|\\[::1\\]|::1)(:\\d{1,5})?$");
+    }
+
+    private static ApiException tooManyRequests(String message) {
+        return new ApiException(HttpStatus.TOO_MANY_REQUESTS, message);
+    }
+
+    /** Yalnız yerel cloudflared vekilinden gelen istemci başlığına güvenir. */
+    private static String clientIp(HttpServletRequest request) {
+        String remote = request.getRemoteAddr();
+        if (!"127.0.0.1".equals(remote) && !"::1".equals(remote)
+                && !"0:0:0:0:0:0:0:1".equals(remote)) {
+            return remote;
+        }
+        String ip = request.getHeader("CF-Connecting-IP");
+        if (ip != null && ip.length() <= 45 && ip.matches("[0-9A-Fa-f:.]+")) {
+            return ip;
+        }
+        return remote;
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(HttpServletRequest request) {
+    public ResponseEntity<Void> logout(@AuthenticationPrincipal AppUserDetails me, HttpServletRequest request) {
         var session = request.getSession(false);
         if (session != null) {
+            loginActivity.logout(me.id(), session);
             session.invalidate();
         }
         SecurityContextHolder.clearContext();
@@ -98,6 +168,7 @@ public class AuthController {
 
     @GetMapping("/me")
     public UserDto me(@AuthenticationPrincipal AppUserDetails me) {
-        return UserDto.of(me);
+        return UserDto.of(users.findById(me.id())
+                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı.")));
     }
 }

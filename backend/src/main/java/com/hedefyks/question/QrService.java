@@ -8,31 +8,39 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.hedefyks.config.AppProperties;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /** Soru başına kalıcı adresi ({public-base-url}/soru/{code}) gösteren QR'ı anında üretir; saklanmaz. */
 @Service
 public class QrService {
 
-    private final String baseUrl;
+    private final String configuredBaseUrl;
 
     public QrService(AppProperties props) {
         String b = props.publicBaseUrl();
-        this.baseUrl = b.endsWith("/") ? b.substring(0, b.length() - 1) : b;
+        this.configuredBaseUrl = b == null || b.isBlank() ? null : b.trim().replaceAll("/+$", "");
     }
 
-    public String questionUrl(String code) {
-        return baseUrl + "/soru/" + code;
+    /**
+     * Kalıcı soru adresi. Üretimde doğrulanan sabit YKS_SITE_ADRESI kullanılır. Geliştirme ortamında
+     * ayar yoksa istek adresinden yerel URL türetilir; güvenilmeyen proxy başlıkları işlenmez.
+     */
+    public String questionUrl(HttpServletRequest request, String code) {
+        String base = configuredBaseUrl != null ? configuredBaseUrl
+                : ServletUriComponentsBuilder.fromContextPath(request).build().toUriString();
+        return base + "/soru/" + code;
     }
 
-    public byte[] png(String code, int size) {
+    public byte[] png(String url, int size) {
         int s = Math.min(Math.max(size, 100), 800);
         try {
-            BitMatrix matrix = new QRCodeWriter().encode(questionUrl(code), BarcodeFormat.QR_CODE, s, s,
+            BitMatrix matrix = new QRCodeWriter().encode(url, BarcodeFormat.QR_CODE, s, s,
                     Map.of(EncodeHintType.MARGIN, 1, EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M,
                             EncodeHintType.CHARACTER_SET, "UTF-8"));
             ByteArrayOutputStream out = new ByteArrayOutputStream();

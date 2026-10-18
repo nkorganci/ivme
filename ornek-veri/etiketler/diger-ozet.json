@@ -1,0 +1,56 @@
+{
+  "blank_labels": 0,
+  "evidence_counts": {
+    "catalog_topic": 1729,
+    "legacy_catalog_topic": 11,
+    "ogm_outcome_and_mapping": 1272,
+    "ogm_outcome_explicit_topic": 1466,
+    "ogm_outcome_parent_topic": 6495,
+    "pdf_section_and_mapping": 6550,
+    "pdf_section_parent_topic": 6503,
+    "prior_source_annotation": 425,
+    "source_question_image_review": 1,
+    "source_question_keyword_review": 28,
+    "source_question_text_model": 1188,
+    "source_record_subtopic": 162
+  },
+  "records": 25830,
+  "review_required": 25830,
+  "schema": "diger-branslar-v1",
+  "source_record_missing": {
+    "CIKMIS": 0,
+    "OGM": 0
+  },
+  "source_subject_conflicts": [
+    "md-ayt-sayisal-24-17",
+    "md-ayt-sayisal-24-18",
+    "md-ayt-sayisal-24-08",
+    "md-ayt-sayisal-24-10",
+    "md-ayt-sayisal-24-11",
+    "md-ayt-sayisal-24-12",
+    "md-ayt-sayisal-24-14",
+    "mn-test-03-01-32",
+    "cd-2021-mini-deneme-3-01-09",
+    "mn-test-03-01-01",
+    "cd-2021-mini-deneme-1-01-46"
+  ],
+  "subject_counts": {
+    "CIKMIS|AYT|Biyoloji": 117,
+    "CIKMIS|AYT|Din Kültürü": 54,
+    "CIKMIS|AYT|Felsefe Grubu": 162,
+    "CIKMIS|AYT|Kimya": 117,
+    "CIKMIS|TYT|Biyoloji": 54,
+    "CIKMIS|TYT|Din Kültürü": 45,
+    "CIKMIS|TYT|Felsefe": 90,
+    "CIKMIS|TYT|Kimya": 63,
+    "OGM|AYT|Biyoloji": 4800,
+    "OGM|AYT|Din Kültürü": 6,
+    "OGM|AYT|Felsefe": 1446,
+    "OGM|AYT|Kimya": 6090,
+    "OGM|TYT|Biyoloji": 3929,
+    "OGM|TYT|Din Kültürü": 818,
+    "OGM|TYT|Felsefe": 3280,
+    "OGM|TYT|Kimya": 4759
+  },
+  "upper_subject_fallback": []
+}

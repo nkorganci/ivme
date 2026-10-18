@@ -1,0 +1,21 @@
+{
+  "groupId": "ayt-biyoloji",
+  "lessons": [{
+    "id": "endokrin-hedef-geri-bildirim",
+    "title": "Endokrin Sistem: Hedef Hücre ve Geri Bildirim",
+    "topics": ["Endokrin sistem"],
+    "learn": ["Endokrin bezler hormonlarını kana verir. Hormonun kanda taşınması bütün hücrelerin aynı yanıtı verdiği anlamına gelmez; hedef hücrenin uygun reseptör ve yanıt mekanizması önemlidir. Salgı miktarı ile hedef hücrenin duyarlılığını ayrı değerlendir.", "Pankreasın endokrin bölümünde beta hücreleri insülin, alfa hücreleri glukagon salgılar. İnsülin kan glikozunu azaltma, glukagon artırma yönünde etkilidir. Glukagonun karaciğerde glikojen yıkımını artırması, kan glikozunun düzenlenmesinde kullanılır.", "Negatif geri bildirimde başlangıçtaki değişimi azaltan yanıt oluşur. Kan glikozu arttığında insülin yanıtı, azaldığında glukagon yanıtı bu düzenlemenin örnekleridir. Adrenalin de kan glikozunu artırabilir; aynı etkiyi yapan hormonların mutlaka aynı bezden salgılandığını düşünme."],
+    "steps": ["Değişen iç ortam koşulunu belirle.", "Hormonun salgılandığı yeri ve hedefteki etki yönünü ayır.", "Yanıtın başlangıçtaki değişimi azaltıp azaltmadığını kontrol et.", "Eksik salgı ile hedefin yanıtsızlığını ayrı olasılıklar olarak değerlendir."],
+    "pitfall": "Hormonun varlığını tek başına hedef hücrenin normal yanıt vereceğinin kanıtı sayma; salgı miktarı ve hedef yanıtı ayrı değişkenlerdir.",
+    "sources": [{"catalogId": 30, "page": 25, "anchors": ["Endokrin bezler", "hedef hücre"]}, {"catalogId": 30, "page": 32, "anchors": ["PANKREAS", "İnsülin", "Glukagon", "Adrenalin"]}],
+    "examples": [
+      {"bank": "CIKMIS", "code": "AYT_Sayisal-0598", "answer": "E", "anchors": ["insülin", "adrenalin", "glukagon", "kan glikoz"], "explanation": "İnsülin kan glikozunu azaltırken adrenalin ve glukagon artırıcı yönde etki gösterir. II ve III, E. Etki yönünü hormon adının yanında ayrı kaydetmek karışıklığı önler."},
+      {"bank": "OGM", "code": "3a-ayt-biyoloji-06-02", "answer": "D", "anchors": ["insülin hormonunun", "Glikoz metabolizmasını yavaşlatır"], "explanation": "İnsülin, glikozun kullanımını ve depolanmasını destekleyip kan glikozunu azaltır. Bu nedenle glikoz metabolizmasını yavaşlattığı ifadesi sorudaki yanlış yargıdır; D."}
+    ],
+    "patterns": [
+      {"id": "etki-yonu", "title": "Birbirine zıt hormon etkileri", "recognize": "Bir kan bileşenini artıran veya azaltan hormonlar sorulur.", "logic": "Önce her hormon için etki yönünü yaz; sonra istenen grubu seç.", "tip": "İnsülin ve glukagon aynı organın farklı hücrelerinden salgılanır.", "trap": "Aynı organdan çıkan hormonların aynı etkiyi yapacağını sanmak.", "mini": {"question": "Kan glikozu azaldığında glukagon yanıtı bu değişimi artırır mı azaltır mı?", "answer": "Glikozu artırarak başlangıçtaki düşüşü azaltır; negatif geri bildirime katkı verir."}},
+      {"id": "hedef-duyarliligi", "title": "Salgı ve hedef yanıtını ayır", "recognize": "Hormon bulunduğu hâlde hedef etkisi yetersizdir.", "logic": "Salgı miktarının yanında reseptör ve hücresel yanıtı da değerlendir.", "tip": "Yetersiz etki her zaman hormonun hiç salgılanmadığını göstermez.", "trap": "Hormon düzeyi ile hücre yanıtını aynı değişken saymak.", "mini": {"question": "Bir hormon kana veriliyor ancak uygun reseptör taşımayan hücreye ulaşıyor. O hücrede zorunlu olarak aynı yanıt oluşur mu?", "answer": "Hayır. Uygun reseptör ve hücrenin yanıt mekanizması gerekir."}}
+    ],
+    "practice": {"question": "Kan glikozunu azaltıcı yönde etkili pankreas hormonu hangisidir?", "choices": ["Glukagon", "Adrenalin", "İnsülin", "Tiroksin"], "answer": 2, "explanation": "C · Pankreasın beta hücrelerinden salgılanan insülin kan glikozunun azaltılmasında etkilidir."}
+  }]
+}

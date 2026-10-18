@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "TYT Türkçe örneği; yalnız inceleme verisi",
+  "nodes": [
+    {"code": "tyt", "kind": "EXAM", "name": "TYT", "parent": null},
+    {"code": "tyt.turkce", "kind": "SUBJECT", "name": "Türkçe", "parent": "tyt"},
+    {"code": "tyt.turkce.anlam", "kind": "TOPIC", "name": "Anlam Bilgisi", "parent": "tyt.turkce"},
+    {"code": "tyt.turkce.paragraf", "kind": "TOPIC", "name": "Paragraf", "parent": "tyt.turkce"},
+    {"code": "tyt.turkce.dil", "kind": "TOPIC", "name": "Dil Bilgisi", "parent": "tyt.turkce"},
+    {"code": "tyt.turkce.sozcuk", "kind": "SUBTOPIC", "name": "Sözcükte Anlam", "parent": "tyt.turkce.anlam"},
+    {"code": "tyt.turkce.cumle", "kind": "SUBTOPIC", "name": "Cümlede Anlam", "parent": "tyt.turkce.anlam"},
+    {"code": "tyt.turkce.paragraf_anlam", "kind": "SUBTOPIC", "name": "Paragrafta Anlam", "parent": "tyt.turkce.paragraf"},
+    {"code": "tyt.turkce.paragraf_yapi", "kind": "SUBTOPIC", "name": "Paragrafın Yapısı", "parent": "tyt.turkce.paragraf"},
+    {"code": "tyt.turkce.yazim", "kind": "SUBTOPIC", "name": "Yazım Kuralları", "parent": "tyt.turkce.dil"},
+    {"code": "tyt.turkce.noktalama", "kind": "SUBTOPIC", "name": "Noktalama İşaretleri", "parent": "tyt.turkce.dil"},
+    {"code": "tyt.turkce.ogeler", "kind": "SUBTOPIC", "name": "Cümlenin Ögeleri", "parent": "tyt.turkce.dil"},
+    {"code": "tyt.turkce.sozcuk_baglam", "kind": "SKILL", "name": "Sözcüğü bağlamda yorumlama", "parent": "tyt.turkce.sozcuk"},
+    {"code": "tyt.turkce.cumle_yorum", "kind": "SKILL", "name": "Cümle anlamını yorumlama", "parent": "tyt.turkce.cumle"},
+    {"code": "tyt.turkce.paragraf_yorum", "kind": "SKILL", "name": "Paragraf anlamını yorumlama", "parent": "tyt.turkce.paragraf_anlam"},
+    {"code": "tyt.turkce.paragraf_kurgu", "kind": "SKILL", "name": "Paragraf yapısını çözümleme", "parent": "tyt.turkce.paragraf_yapi"},
+    {"code": "tyt.turkce.yazim_uygula", "kind": "SKILL", "name": "Yazım kuralını uygulama", "parent": "tyt.turkce.yazim"},
+    {"code": "tyt.turkce.noktalama_uygula", "kind": "SKILL", "name": "Noktalama kuralını uygulama", "parent": "tyt.turkce.noktalama"},
+    {"code": "tyt.turkce.oge_cozumle", "kind": "SKILL", "name": "Cümle ögelerini çözümleme", "parent": "tyt.turkce.ogeler"},
+    {"code": "tyt.turkce.tip.sozcuk_baglam", "kind": "QUESTION_TYPE", "name": "Bağlamda sözcük anlamı sorusu", "parent": "tyt.turkce.sozcuk_baglam"},
+    {"code": "tyt.turkce.tip.cumle_yorum", "kind": "QUESTION_TYPE", "name": "Cümle anlamı sorusu", "parent": "tyt.turkce.cumle_yorum"},
+    {"code": "tyt.turkce.tip.paragraf_anlam", "kind": "QUESTION_TYPE", "name": "Paragraf anlamı sorusu", "parent": "tyt.turkce.paragraf_yorum"},
+    {"code": "tyt.turkce.tip.paragraf_yapi", "kind": "QUESTION_TYPE", "name": "Paragraf yapısı sorusu", "parent": "tyt.turkce.paragraf_kurgu"},
+    {"code": "tyt.turkce.tip.yazim", "kind": "QUESTION_TYPE", "name": "Yazım kuralı sorusu", "parent": "tyt.turkce.yazim_uygula"},
+    {"code": "tyt.turkce.tip.noktalama", "kind": "QUESTION_TYPE", "name": "Noktalama sorusu", "parent": "tyt.turkce.noktalama_uygula"},
+    {"code": "tyt.turkce.tip.ogeler", "kind": "QUESTION_TYPE", "name": "Cümle ögeleri sorusu", "parent": "tyt.turkce.oge_cozumle"}
+  ],
+  "prerequisites": [
+    {"skill": "tyt.turkce.cumle_yorum", "requires": "tyt.turkce.sozcuk_baglam"},
+    {"skill": "tyt.turkce.paragraf_yorum", "requires": "tyt.turkce.cumle_yorum"},
+    {"skill": "tyt.turkce.paragraf_kurgu", "requires": "tyt.turkce.paragraf_yorum"}
+  ],
+  "source_topic_mappings": [
+    {"source_topic": "Paragrafta Anlam", "question_type": "tyt.turkce.tip.paragraf_anlam", "sample_count": 10},
+    {"source_topic": "Paragrafın Yapısı", "question_type": "tyt.turkce.tip.paragraf_yapi", "sample_count": 8},
+    {"source_topic": "Sözcükte Anlam", "question_type": "tyt.turkce.tip.sozcuk_baglam", "sample_count": 8},
+    {"source_topic": "Cümlede Anlam", "question_type": "tyt.turkce.tip.cumle_yorum", "sample_count": 8},
+    {"source_topic": "Yazım Kuralları", "question_type": "tyt.turkce.tip.yazim", "sample_count": 6},
+    {"source_topic": "Noktalama İşaretleri", "question_type": "tyt.turkce.tip.noktalama", "sample_count": 5},
+    {"source_topic": "Cümlenin Ögeleri", "question_type": "tyt.turkce.tip.ogeler", "sample_count": 5}
+  ]
+}

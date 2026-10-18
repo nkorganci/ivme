@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "records": [{
+    "code": "2019-AYT-TDE-33",
+    "bank": "CIKMIS",
+    "officialStatus": "cancelled",
+    "officialNoticeUrl": "https://www.osym.gov.tr/2019yks-yuksekogretim-kurumlari-sinavi-2019yks-sonuclari-aciklandi",
+    "noticeCache": "veri/content-labels/official-archive/2019-result-notice.html",
+    "identity": {"year": 2019, "exam": "AYT", "test": "TDE", "number": 33},
+    "noticeAnchors": ["33 numaralı sorusunun iptal", "Türk Dili ve Edebiyatı"],
+    "reason": "ÖSYM sonuç duyurusu TDE-Sosyal Bilimler 1 Testi 33. sorusunun değerlendirme dışı bırakıldığını bildiriyor.",
+    "historyPolicy": "Yeni seçimden çıkarılır; geçmiş cevap ve puanlar değiştirilmez."
+  }, {
+    "code": "2026-AYT-TDE-20",
+    "bank": "CIKMIS",
+    "officialStatus": "cancelled",
+    "officialNoticeUrl": "https://www.osym.gov.tr/2026-yks-sonuclari-aciklandi",
+    "noticeCache": "veri/content-labels/official-archive/2026-result-notice.html",
+    "identity": {"year": 2026, "exam": "AYT", "test": "TDE", "number": 20},
+    "noticeAnchors": ["20 numaralı sorunun iptal", "Türk Dili ve Edebiyatı-Sosyal Bilimler-1"],
+    "reason": "ÖSYM sonuç duyurusu TDE-Sosyal Bilimler 1 Testi 20. sorusunun iptal edildiğini bildiriyor.",
+    "historyPolicy": "Yeni seçimden çıkarılır; geçmiş cevap ve puanlar değiştirilmez."
+  }, {
+    "code": "2026-AYT-MAT-23",
+    "bank": "CIKMIS",
+    "officialStatus": "cancelled",
+    "officialNoticeUrl": "https://www.osym.gov.tr/2026-yks-sonuclari-aciklandi",
+    "noticeCache": "veri/content-labels/official-archive/2026-result-notice.html",
+    "identity": {"year": 2026, "exam": "AYT", "test": "MAT", "number": 23},
+    "noticeAnchors": ["23 numaralı soru", "yargı kararı gereği iptal", "Matematik Testi"],
+    "reason": "ÖSYM sonuç duyurusu Matematik Testi 23. sorunun yargı kararı gereği iptal edildiğini bildiriyor. Kaynak/yerel anahtarı bu bildirimden önceki C değerini taşıyor.",
+    "historyPolicy": "Yeni seçimden çıkarma ayrı içerik işlemiyle uygulanır; geçmiş cevap ve puanlar sessizce değiştirilmez."
+  }]
+}

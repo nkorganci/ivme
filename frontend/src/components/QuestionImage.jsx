@@ -1,24 +1,22 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { imageUrl } from '../api.js';
+import { imageUrl, solutionImageUrl } from '../api.js';
 
-const FIT_KEY = 'yks.imgfit';
-const FIT_OFFSET = 200;   // üst çubuk + şerit + alt kontrol çubuğu + boşluklar (px)
-const MIN_SHARE = 0.62;   // sığdırma, görseli tam genişlik boyutunun %62'sinden daha fazla küçültmez (uzun görseller okunaklı kalsın)
+const FIT_KEY = 'yks.imgfit.v2';
 
 /**
- * Soru görseli: ortalı, tıklayınca büyür; yüklenemezse bilgi kutusu gösterir.
- * "Sığdır" açıkken görsel, mümkünse kaydırmadan tamamı ekrana sığacak boyutta gösterilir; kapalıyken kapsayıcı genişliğini doldurur.
+ * Soru görseli: alanında ortalanır, tıklayınca büyür; yüklenemezse bilgi kutusu gösterir.
+ * "Sığdır" açıkken görsel, yanıt denetimlerine de yer bırakarak ekrana sığar.
  */
-export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
+export default function QuestionImage({ id, version, alt = 'Soru görseli', solution = false, onReady }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [zoom, setZoom] = useState(false);
   const [natural, setNatural] = useState(null);
   const [fit, setFit] = useState(() => localStorage.getItem(FIT_KEY) !== '0');
-  const [box, setBox] = useState({ w: 0, h: window.innerHeight });
+  const [box, setBox] = useState({ w: 0, h: 0 });
   const wrap = useRef(null);
   const imgRef = useRef(null);
-  const src = imageUrl(id, version);
+  const src = solution ? solutionImageUrl(id) : imageUrl(id, version);
 
   useEffect(() => {
     setFailed(false);
@@ -33,22 +31,33 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
     if (i && i.complete && i.naturalWidth) {
       setNatural({ w: i.naturalWidth, h: i.naturalHeight });
       setLoaded(true);
+      onReady?.();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src]);
 
   useEffect(() => {
     const el = wrap.current;
     if (!el) return undefined;
-    const measure = () => setBox({ w: el.clientWidth, h: window.innerHeight });
+    const page = el.closest('.qpage');
+    const dock = page?.querySelector('.qdock');
+    const measure = () => {
+      const constrained = el.closest('.qmain > .image-card, .exam-main > .image-card');
+      const top = solution ? 100 : Math.max(0, el.getBoundingClientRect().top);
+      const reserved = (dock?.getBoundingClientRect().height || 0) + 24;
+      const next = { w: el.clientWidth, h: constrained ? el.clientHeight : Math.max(80, window.innerHeight - top - reserved) };
+      setBox((current) => current.w === next.w && current.h === next.h ? current : next);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
+    if (dock) ro.observe(dock);
     window.addEventListener('resize', measure);
     return () => {
       ro.disconnect();
       window.removeEventListener('resize', measure);
     };
-  }, []);
+  }, [solution]);
 
   const toggleFit = () => {
     setFit((f) => {
@@ -57,25 +66,30 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
     });
   };
 
-  // Sığdır: genişlik ve yükseklik sınırına göre ölçek; ama tam genişliğin %62'sinden küçük olmasın, doğal boyutu aşmasın
+  // Genişlik ve yükseklik sınırlarının ikisine de uy; uzun sorular için alt ölçek sınırı koyma.
   const fitWidth = useMemo(() => {
-    if (!fit || !natural || box.w < 600) return undefined;   // dar ekranda (telefon) genişlikle sınırlıdır; yüksekliğe göre küçültme okunabilirliği bozar
-    const byWidth = Math.min(box.w / natural.w, 1);
-    const byHeight = Math.max(box.h - FIT_OFFSET, 360) / natural.h;
-    return Math.round(natural.w * Math.min(byWidth, Math.max(byHeight, MIN_SHARE * byWidth)));
+    if (!fit || !natural || !box.w) return undefined;
+    return Math.max(1, Math.floor(Math.min(natural.w, box.w - 4, natural.w * (box.h - 4) / natural.h)));
   }, [fit, natural, box]);
 
   useEffect(() => {
     if (!zoom) return undefined;
-    const onKey = (e) => e.key === 'Escape' && setZoom(false);
+    const previous = document.activeElement;
+    const dialog = wrap.current?.querySelector('.lightbox');
+    const close = dialog?.querySelector('button');
+    close?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); setZoom(false); return; }
+      if (e.key === 'Tab') { e.preventDefault(); close?.focus(); }
+    };
     document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); previous?.focus?.(); };
   }, [zoom]);
 
   if (failed) {
     return (
-      <div className="image-fail" role="img" aria-label="Görsel yüklenemedi">
-        <span aria-hidden="true">🖼</span> Görsel yüklenemedi
+      <div className="image-fail" role="img" aria-label={solution ? 'Çözüm görseli yüklenemedi' : 'Görsel yüklenemedi'}>
+        <span aria-hidden="true">🖼</span> {solution ? 'Çözüm görseli yüklenemedi' : 'Görsel yüklenemedi'}
       </div>
     );
   }
@@ -91,6 +105,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
           onLoad={(e) => {
             setNatural({ w: e.currentTarget.naturalWidth, h: e.currentTarget.naturalHeight });
             setLoaded(true);
+            onReady?.();
           }}
           onError={() => setFailed(true)}
         />
@@ -105,8 +120,8 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli' }) {
         {fit ? '↔ Genişlet' : '⤢ Sığdır'}
       </button>
       {zoom && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={() => setZoom(false)}>
-          <button type="button" className="icon-btn lightbox-close" aria-label="Kapat" autoFocus>
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={(e) => e.target === e.currentTarget && setZoom(false)}>
+          <button type="button" className="icon-btn lightbox-close" aria-label="Kapat" autoFocus onClick={() => setZoom(false)}>
             ×
           </button>
           <img src={src} alt={alt} />

@@ -1,0 +1,16 @@
+:root {
+  --navy: #0D4671;
+  --blue: var(--navy);
+  --table-accent: var(--blue);
+  --tint: #eff6ff;
+  --line: #bfdbfe;
+  --ink: #0b2545;
+  --surface: #fff;
+  --ok: #059669;
+  --ok-soft: #d1fae5;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+  --warn: #d97706;
+  --warn-soft: #fef3c7;
+  --focus: #93c5fd;
+}

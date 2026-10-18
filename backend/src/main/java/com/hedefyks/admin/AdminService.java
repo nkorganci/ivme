@@ -16,14 +16,16 @@ import com.hedefyks.question.Question;
 import com.hedefyks.question.QuestionFilter;
 import com.hedefyks.question.QuestionRepository;
 import com.hedefyks.question.QuestionSpecs;
+import com.hedefyks.user.Role;
 import com.hedefyks.user.UserRepository;
+import com.hedefyks.progress.ProgressService;
+import com.hedefyks.common.ServiceErrorMetrics;
 import jakarta.persistence.criteria.Predicate;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
@@ -38,21 +40,41 @@ public class AdminService {
     private final QuestionRepository questions;
     private final ExamRepository exams;
     private final FeedbackRepository feedback;
+    private final AdminUsageService usage;
+    private final AdminContentService content;
+    private final ServiceErrorMetrics errors;
 
     public AdminService(UserRepository users, QuestionRepository questions, ExamRepository exams,
-                        FeedbackRepository feedback) {
+                        FeedbackRepository feedback, AdminUsageService usage, AdminContentService content,
+                        ServiceErrorMetrics errors) {
         this.users = users;
         this.questions = questions;
         this.exams = exams;
         this.feedback = feedback;
+        this.usage = usage;
+        this.content = content;
+        this.errors = errors;
     }
 
     @Transactional(readOnly = true)
-    public Stats stats() {
-        return new Stats(users.count(), questions.count(), questions.countByActiveTrue(),
-                exams.countByStatus(ExamStatus.SUBMITTED),
-                feedback.countByResolvedFalseAndCategoryIn(Set.of(FeedbackCategory.QUESTION_ISSUE, FeedbackCategory.GENERAL)),
-                feedback.reportedQuestionCount(FeedbackCategory.QUESTION_ISSUE));
+    public Stats stats(ProgressService.Period period) {
+        var periodUsage = usage.usage(period, "Europe/Istanbul");
+        long active = periodUsage.activeUsers();
+        long registered = users.countByRole(Role.USER);
+        return new Stats(bucket(registered),
+                registered < 5 ? null : bucket(exams.countByStatus(ExamStatus.SUBMITTED)),
+                new AdminDtos.Usage(period.name(), periodUsage.zone(), periodUsage.startsAt(),
+                        periodUsage.endsAt(), bucket(active),
+                        active < 5 ? null : bucket(periodUsage.studySessions()),
+                        active < 5 ? null : bucket(periodUsage.examsStarted()),
+                        active < 5 ? null : bucket(periodUsage.answersSubmitted()),
+                        active < 5 ? null : bucket(errors.count(periodUsage.startsAt(), periodUsage.endsAt()))),
+                content.coverage());
+    }
+
+    /** 0–4 arası tüm sayılar gizlenir; diğerleri beşlik aralığın alt sınırıdır. */
+    private static Long bucket(long value) {
+        return value < 5 ? null : value / 5 * 5;
     }
 
     // ------------------------------------------------------------------ sorular
@@ -88,6 +110,7 @@ public class AdminService {
         q.setYear(u.year());
         q.setSource(blankToNull(u.source()));
         q.setImage(normalizeImage(u.image()));
+        q.setSolutionImage(u.solutionImage() == null || u.solutionImage().isBlank() ? null : normalizeImage(u.solutionImage()));
         String answer = u.correctAnswer().trim().toUpperCase();
         if (answer.charAt(0) - 'A' >= u.choiceCount()) {
             throw ApiException.badRequest("Doğru cevap şık sayısının dışında.");
@@ -144,13 +167,13 @@ public class AdminService {
     private AdminQuestion toAdmin(Question q, long openReports, Object[] rating) {
         Double avg = rating == null || rating[1] == null ? null : Math.round(((Double) rating[1]) * 10) / 10.0;
         long count = rating == null ? 0 : (Long) rating[2];
-        return new AdminQuestion(q.getId(), q.getCode(), q.getExamType(), q.getSubject(), q.getTopic(),
-                q.getYear(), q.getSource(), q.getImage(), q.getCorrectAnswer(), q.getChoiceCount(), q.getSolutionUrl(),
+        return new AdminQuestion(q.getId(), q.getCode(), q.getBank(), q.getExamType(), q.getSubject(), q.getTopic(),
+                q.getYear(), q.getSource(), q.getImage(), q.getSolutionImage(), q.getCorrectAnswer(), q.getChoiceCount(), q.getSolutionUrl(),
                 q.isActive(), openReports, avg, count, q.getUpdatedAt());
     }
 
     private AdminFeedback toAdmin(Feedback f) {
-        return new AdminFeedback(f.getId(), f.getCategory(), f.getUser().getUsername(),
+        return new AdminFeedback(f.getId(), f.getCategory(),
                 f.getQuestion() == null ? null : f.getQuestion().getId(),
                 f.getQuestion() == null ? null : f.getQuestion().getCode(),
                 f.getDifficultyVote(), f.getRating(), f.getMessage(), f.isResolved(), f.getResolvedAt(), f.getCreatedAt());

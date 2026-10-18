@@ -6,7 +6,7 @@ import { LETTERS } from '../format.js';
  * A–E şık düğmeleri. correct verilirse (kontrolden sonra) doğru şık yeşil, yanlış seçim kırmızı olur.
  * Klavye: A–E veya 1–5 tuşları şık seçer (form alanı odaktayken ya da pencere açıkken çalışmaz).
  */
-export default function ChoiceButtons({ count = 5, value, onSelect, disabled = false, correct = null }) {
+export default function ChoiceButtons({ count = 5, value, onSelect, disabled = false, correct = null, wrong = null }) {
   useEffect(() => {
     if (disabled) return undefined;
     const onKey = (e) => {
@@ -27,6 +27,8 @@ export default function ChoiceButtons({ count = 5, value, onSelect, disabled = f
         if (correct) {
           if (l === correct) [state, note] = ['correct', ', doğru cevap'];
           else if (l === value) [state, note] = ['wrong', ', yanlış seçimin'];
+        } else if (l === wrong) {
+          [state, note] = ['wrong', ', yanlış seçimin'];
         }
         return (
           <button

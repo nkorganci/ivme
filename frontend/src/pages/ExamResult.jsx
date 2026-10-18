@@ -4,11 +4,13 @@ import { api } from '../api.js';
 import { useAuth } from '../auth.jsx';
 import { useAsync, usePageTitle } from '../hooks.js';
 import ProgressRing from '../components/ProgressRing.jsx';
+import DataGrid from '../components/DataGrid.jsx';
 import QuestionImage from '../components/QuestionImage.jsx';
 import Segmented from '../components/Segmented.jsx';
 import { StatusBadge } from '../components/Badge.jsx';
 import { Alert, Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { displayName, formatDate, formatDuration, formatNet, formatPercent } from '../format.js';
+import AnswerFeedback from '../components/AnswerFeedback.jsx';
 
 export default function ExamResult() {
   const { id } = useParams();
@@ -83,42 +85,21 @@ function ResultView({ r }) {
       {r.bySubject?.length > 0 && (
         <section className="card table-card">
           <h2>Ders bazında</h2>
-          <div className="table-wrap">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Ders</th>
-                  <th>Doğru</th>
-                  <th>Yanlış</th>
-                  <th>Boş</th>
-                  <th>Başarı</th>
-                </tr>
-              </thead>
-              <tbody>
-                {r.bySubject.map((s) => {
-                  const pct = s.total ? (s.correct / s.total) * 100 : 0;
-                  return (
-                    <tr key={s.subject}>
-                      <td>
-                        {s.subject} <span className="muted">({s.total})</span>
-                      </td>
-                      <td>{s.correct}</td>
-                      <td>{s.wrong}</td>
-                      <td>{s.blank}</td>
-                      <td>
-                        <div className="bar-cell">
-                          <div className="progress" role="img" aria-label={`${s.subject} başarısı ${formatPercent(pct)}`}>
-                            <span style={{ width: `${pct}%` }} />
-                          </div>
-                          <span className="bar-text">{formatPercent(pct)}</span>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <DataGrid rowData={r.bySubject.map((s) => ({ ...s,
+            percent: s.total ? (s.correct / s.total) * 100 : 0,
+          }))} columnDefs={[
+            { field: 'subject', headerName: 'Ders', minWidth: 170,
+              cellRenderer: ({ data }) => <>{data.subject} <span className="muted">({data.total})</span></> },
+            { field: 'correct', headerName: 'Doğru' },
+            { field: 'wrong', headerName: 'Yanlış' },
+            { field: 'blank', headerName: 'Boş' },
+            { field: 'percent', headerName: 'Başarı', minWidth: 180,
+              cellRenderer: ({ data }) => <div className="bar-cell">
+                <div className="progress" role="img" aria-label={`${data.subject} başarısı ${formatPercent(data.percent)}`}>
+                  <span style={{ width: `${data.percent}%` }} />
+                </div><span className="bar-text">{formatPercent(data.percent)}</span>
+              </div> },
+          ]} />
         </section>
       )}
 
@@ -153,9 +134,11 @@ function ResultView({ r }) {
                     <p>
                       Senin cevabın: <span className="chip">{q.selectedAnswer || 'Boş'}</span> Doğru cevap: <span className="chip chip-ok">{q.correctAnswer}</span>
                     </p>
+                    {q.status !== 'BLANK' && <p><AnswerFeedback correct={q.status === 'CORRECT'} questionId={q.questionId} /></p>}
                     <Link to={`/soru/${encodeURIComponent(q.code)}`} className="btn btn-secondary">
                       Soru sayfasını aç
                     </Link>
+                    {q.hasExplanation && <ExamExplanation examId={r.id} questionId={q.questionId} />}
                   </div>
                 )}
               </li>
@@ -165,7 +148,7 @@ function ResultView({ r }) {
       )}
 
       <div className="quick">
-        <Link to="/sinav/yeni" className="btn btn-primary">
+        <Link to="/calisma/yeni?mode=sinav" className="btn btn-primary">
           Yeni sınav
         </Link>
         <Link to="/gecmis" className="btn btn-secondary">
@@ -174,4 +157,29 @@ function ResultView({ r }) {
       </div>
     </>
   );
+}
+
+function ExamExplanation({ examId, questionId }) {
+  const [content, setContent] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const load = async () => {
+    if (busy) return;
+    setBusy(true);
+    setError('');
+    try {
+      const result = await api.get(`/api/exams/${examId}/questions/${questionId}/explanation`);
+      if (result) setContent(result);
+      else setError('Bu soru için onaylı açıklama artık mevcut değil.');
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  };
+  return <div className="hint-card">
+    {!content && <button type="button" className="btn btn-secondary" disabled={busy} onClick={load}>
+      {busy ? 'Açıklama yükleniyor…' : 'Kısa açıklamayı göster'}
+    </button>}
+    {content && <><p><strong>Kısa açıklama:</strong> {content.text}</p>
+      <a href={content.sourcePdfUrl} target="_blank" rel="noopener noreferrer">Kaynak notun sayfasını aç</a></>}
+    {error && <p role="alert" className="text-danger">{error}</p>}
+  </div>;
 }

@@ -56,4 +56,13 @@ export const categoryLabel = (c) => CATEGORY[c] || c;
 const STATUS = { CORRECT: 'Doğru', WRONG: 'Yanlış', BLANK: 'Boş' };
 export const statusLabel = (s) => STATUS[s] || s;
 
+/** Soru koleksiyonları: CIKMIS = AYT-TYT Çıkmış Sorular, OGM = Soru Bankası. */
+export const BANKS = {
+  CIKMIS: { label: 'AYT-TYT Çıkmış Sorular', short: 'Çıkmış', path: '/cikmis-sorular' },
+  OGM: { label: 'Soru Bankası', short: 'Soru Bankası', path: '/soru-bankasi' },
+};
+export const bankLabel = (b) => BANKS[b]?.label || '—';
+export const bankShort = (b) => BANKS[b]?.short || '—';
+export const bankPath = (b) => BANKS[b]?.path || BANKS.CIKMIS.path;
+
 export const LETTERS = ['A', 'B', 'C', 'D', 'E'];

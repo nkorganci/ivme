@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0938",
+  "question": {
+    "code": "TYT-0938",
+    "exam": "TYT",
+    "subjectId": "fizik",
+    "categoryId": "tyt.fizik.elektrik-akimi-ve-devreler",
+    "subtopic": "V–I grafiğinden direnç; paralel bağlı lambalarda gerilim ve güç",
+    "answerKey": "E",
+    "choiceCount": 5,
+    "imageSha256": "0d6f467958109837ba1b6aa0ac9cb34ba549e78a814e607dd8ab6427bd8a732d"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "A, B ve C iletken tellerinin uçları arasındaki potansiyel farklar ve üzerlerinden geçen akımı gösteren grafik aşağıdaki gibidir. Bu teller kesilmeden ve şekilleri değiştirilmeden kendileri ile aynı harfi taşıyan A, B ve C ampullerinin yapımında flaman olarak kullanılmıştır. Bu ampuller, iç direnci önemsiz bir üreteç ve bağlantı kabloları ile şekildeki elektrik devresi kurulmuştur. A, B ve C ampullerinin sırasıyla, uçları arasındaki V_A, V_B, V_C potansiyel farkları ve P_A, P_B, P_C birim zamanda harcadıkları elektrik enerjileri arasındaki ilişki aşağıdakilerden hangisidir?",
+    "choices": {"A": "V_A > V_B > V_C; P_A > P_B > P_C", "B": "V_A > V_B > V_C; P_A < P_B < P_C", "C": "V_A < V_B < V_C; P_A > P_B > P_C", "D": "V_A = V_B = V_C; P_A = P_B = P_C", "E": "V_A = V_B = V_C; P_A < P_B < P_C"},
+    "figure": "Solda V–I grafiği: orijinden çıkan üç doğru; en dik A, sonra B, en yatık C. Sağda devre: A, B, C ampulleri birbirine paralel ve tek bir üretece bağlı.",
+    "figureCritical": true,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "Grafikten direnç sıralamasını okumak, paralel bağlamada gerilimin eşit olduğunu bilmek ve doğru güç formülünü seçmek gerekir.",
+    "skills": ["YORUMLAMA", "KAVRAMA", "UYGULAMA"],
+    "prerequisites": [],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "fizik.elektrik.paralel-guc",
+    "name": "Paralel kollarda gerilim ortak, güç V²/R",
+    "trigger": "Dirençler (ampuller) paralel bağlı ve parlaklık, güç ya da akım karşılaştırılıyorsa.",
+    "bigIdea": "Paralel kolların uçları aynı iki noktaya bağlıdır; bu yüzden hepsinin gerilimi aynıdır. Gerilim ortak olunca küçük direnç daha çok akım çeker ve daha çok güç harcar (P = V²/R).",
+    "method": [
+      "V–I grafiğinde eğim = V/I = direnç; dirençleri sırala.",
+      "Bağlantı türünü belirle: paralelde ortak olan gerilim, seride ortak olan akımdır.",
+      "Ortak büyüklüğü içeren güç formülünü seç: paralelde P = V²/R, seride P = I²R.",
+      "Direnç sıralamasını güç sıralamasına çevir."
+    ],
+    "whenNot": "Seri bağlamada ortak olan akımdır; o zaman P = I²R ile büyük direnç daha çok güç harcar. Formül seçimi bağlantı türüne bağlıdır.",
+    "examTip": "'Hangi büyüklük ortak?' sorusunu önce cevapla; ortak büyüklüğü içeren formül sıralamayı tek adımda verir."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "egim-paralel", "text": "Grafikten dirençleri sıralayıp ampullerin paralel bağlı olduğunu, yani gerilimlerinin eşit olduğunu kullanmak", "correct": true,
+       "feedback": "Doğru. Eğim direnci verir; paralel bağlamada gerilim ortak olduğundan güç P = V²/R ile karşılaştırılır."},
+      {"id": "egim-gerilim", "text": "En dik doğrunun en büyük gerilimi gösterdiğini düşünüp gerilimleri sıralamak", "correct": false,
+       "feedback": "Grafikteki eğim direnci gösterir; devredeki gerilimi bağlantı türü belirler. Paralelde gerilimler eşittir."},
+      {"id": "i2r", "text": "Gücü P = I²R ile hesaplayıp büyük dirençli ampulün daha parlak olduğunu söylemek", "correct": false,
+       "feedback": "P = I²R doğrudur ama akımlar farklı olduğu için tek başına sıralama vermez. Paralelde ortak olan gerilimi içeren P = V²/R kullanılmalı."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "V–I grafiğinde doğrunun eğimi V/I, yani direnci verir. Paralel bağlı elemanların uçları aynı iki noktaya bağlıdır."},
+    {"level": 2, "kind": "STRATEJI", "text": "Önce dirençleri eğimden sırala. Sonra paralel bağlamada hangi büyüklüğün bütün ampullerde ortak olduğunu düşün ve gücü o büyüklükle yaz."},
+    {"level": 3, "kind": "ADIM", "text": "A en dik doğru olduğuna göre R_A en büyük, R_C en küçük. Gerilim ortak olduğundan P = V²/R yaz ve direnç sıralamasını tersine çevir."}
+  ],
+  "guidingQuestions": [
+    {"text": "Grafikte aynı akım için hangi telin gerilimi en büyük?", "answer": "A'nın; doğrusu en dik olduğu için direnci en büyük."},
+    {"text": "Paralel bağlı üç ampulün uçları hangi noktalara bağlı?", "answer": "Hepsi üretecin aynı iki ucuna; bu yüzden gerilimleri eşit."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "V–I grafiğinde eğim direnci verir: A en dik, C en yatık. R_A > R_B > R_C.",
+       "why": "Ohm yasasına göre R = V/I; aynı akımda daha büyük gerilim gösteren telin direnci daha büyüktür.",
+       "check": {"type": "sympy", "expr": "Tuple(sign(6 - 3), sign(3 - 2))", "equals": "Tuple(1, 1)", "note": "Örnek eğimler 6, 3, 2 Ω (grafik sırasıyla uyumlu)."}},
+      {"id": "s2", "text": "Ampuller paralel bağlı: hepsinin uçları üretecin aynı iki ucuna bağlıdır. V_A = V_B = V_C.",
+       "why": "Paralel kollar aynı iki nokta arasındadır; iki nokta arasındaki potansiyel farkı tektir.",
+       "selfExplain": {"prompt": "Gerilimler neden eşit, dirençler farklı olduğu hâlde?",
+         "options": [
+           {"id": "ayni-noktalar", "text": "Her kol aynı iki nokta arasında; iki nokta arasındaki potansiyel farkı tek bir değerdir.", "correct": true,
+            "feedback": "Evet. Paralelde dirençler farklıysa akımlar farklılaşır, gerilim değil."},
+           {"id": "ayni-direnc", "text": "Çünkü ampuller özdeş.", "correct": false,
+            "feedback": "Ampuller özdeş değil; dirençleri farklı. Eşitliği bağlantı biçimi sağlar."},
+           {"id": "akim-ayni", "text": "Çünkü akımları eşittir.", "correct": false,
+            "feedback": "Paralelde akımlar dirençle ters orantılıdır, eşit değildir. Ortak olan gerilimdir."}
+         ]}},
+      {"id": "s3", "text": "Gerilim ortak olduğundan P = V²/R: direnç küçüldükçe güç büyür. P_A < P_B < P_C.",
+       "why": "V sabitken P ile R ters orantılıdır. Örneğin V = 6 V ve R = 6, 3, 2 Ω için güçler 6, 12, 18 W.",
+       "check": {"type": "sympy", "expr": "Tuple(Rational(6**2, 6), Rational(6**2, 3), Rational(6**2, 2))", "equals": "Tuple(6, 12, 18)"}}
+    ],
+    "finalAnswer": {"choice": "E", "value": "V_A = V_B = V_C ve P_A < P_B < P_C",
+      "check": {"type": "choice", "expr": "Tuple(sign(6 - 6), sign(Rational(6**2, 6) - Rational(6**2, 3)))", "choice": "E",
+                "note": "Her şık (V sıralaması, P sıralaması) işaret çiftiyle temsil edilir: 1 azalan, −1 artan, 0 eşit."}},
+    "levels": {
+      "sezgi": "Paralel kolları aynı depodan su alan üç farklı genişlikte boru gibi düşün: depodaki basınç (gerilim) hepsi için aynı. Dar boru (büyük direnç) az su (akım) geçirir, geniş boru çok. Aynı basınçta en çok suyu geçiren boru en çok iş yapar: en küçük dirençli C en parlak yanar.",
+      "kisayol": "Paralel → V eşit. Eğim = R: A > B > C. P = V²/R → ters sıra: P_A < P_B < P_C."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "B", "mistake": "Grafikteki eğim sıralamasını devredeki gerilim sıralaması sanmak (V_A > V_B > V_C).",
+     "cause": "Grafiğin telin kendi özelliğini (direnç) gösterdiğini, devredeki gerilimin ise bağlantıya bağlı olduğunu ayırmamak.",
+     "fix": "Grafik direnç bilgisi verir. Devrede paralel bağlı kolların gerilimi eşittir.",
+     "guidingQuestion": "Ampullerin uçları devrede hangi noktalara bağlı?",
+     "check": {"type": "choice", "expr": "Tuple(sign(6 - 3), sign(Rational(6**2, 6) - Rational(6**2, 3)))", "choice": "B"}},
+    {"id": "m2", "choice": null, "mistake": "Gücü P = I²R ile düşünüp büyük dirençli ampulün daha çok güç harcadığını sanmak.",
+     "cause": "Seri bağlama sezgisini paralele taşımak; akımların farklı olduğunu unutmak.",
+     "fix": "Paralelde akım I = V/R ile değişir; P = I²R = V²/R olur ve küçük direnç daha çok güç harcar.",
+     "guidingQuestion": "Paralel kolda direnç büyüyünce akım ne olur?"}
+  ],
+  "alternative": {
+    "title": "Akım üzerinden",
+    "text": "Gerilim ortak V iken kol akımları I = V/R: R_A en büyük olduğundan I_A en küçük, I_C en büyük. P = V·I ve V ortak olduğu için güçler akımlarla aynı sırada: P_A < P_B < P_C.",
+    "check": {"type": "sympy", "expr": "Tuple(6*Rational(6, 6), 6*Rational(6, 3), 6*Rational(6, 2))", "equals": "Tuple(6, 12, 18)"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Eğimin direnç olduğunu ve ortak gerilimde her telin ne kadar akım çektiğini aynı grafikte görmek, iki kavramı birbirine bağlar.",
+    "stage": "POST",
+    "template": "plot",
+    "title": "Eğim = direnç; ortak gerilimde akımlar",
+    "params": {
+      "x": [0, 3.5],
+      "y": [0, 12],
+      "xLabel": "I (A)",
+      "yLabel": "V (V)",
+      "functions": [
+        {"id": "telA", "expr": "6*x", "label": "A: R = 6 Ω", "tone": "bad"},
+        {"id": "telB", "expr": "3*x", "label": "B: R = 3 Ω", "tone": "navy"},
+        {"id": "telC", "expr": "2*x", "label": "C: R = 2 Ω", "tone": "ok"}
+      ],
+      "segments": [{"id": "ortakV", "from": [0, 6], "to": [3.5, 6], "tone": "warn", "dashed": true}],
+      "points": [
+        {"id": "pA", "x": 1, "y": 6, "label": "I_A = 1 A → P = 6 W", "tone": "bad"},
+        {"id": "pB", "x": 2, "y": 6, "label": "I_B = 2 A → 12 W", "tone": "navy"},
+        {"id": "pC", "x": 3, "y": 6, "label": "I_C = 3 A → 18 W", "tone": "ok"}
+      ]
+    },
+    "frames": [
+      {"caption": "Eğim = V/I = direnç: en dik doğru A, en yatık C. (Örnek değerler: 6, 3, 2 Ω.)", "show": ["telA", "telB", "telC"]},
+      {"caption": "Paralel bağlamada üç ampulün gerilimi aynıdır: hepsi aynı yatay çizgide (ör. 6 V).", "show": ["telA", "telB", "telC", "ortakV"]},
+      {"caption": "Aynı gerilimde küçük direnç daha çok akım çeker: I_A < I_B < I_C. P = V·I olduğundan P_A < P_B < P_C.", "show": ["telA", "telB", "telC", "ortakV", "pA", "pB", "pC"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Gerilim herkese eşitse en parlak yanan ampul hangisi olur?",
+      "options": [
+        {"id": "kucuk-r", "text": "Direnci en küçük olan", "correct": true, "feedback": "Doğru: aynı gerilimde küçük direnç daha çok akım ve güç demektir."},
+        {"id": "buyuk-r", "text": "Direnci en büyük olan", "correct": false, "feedback": "Bu, seri bağlamada (akım ortakken) geçerli olurdu. Paralelde ortak olan gerilim; grafikte görelim."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Dirençleri R_K = 2 Ω, R_L = 4 Ω ve R_M = 8 Ω olan K, L, M ampulleri iç direnci önemsiz 8 V'luk bir üretece paralel bağlanıyor. Ampullerin harcadığı güçler P_K, P_L, P_M arasındaki ilişki hangisidir?",
+    "choices": {"A": "P_K = P_L = P_M", "B": "P_K < P_L < P_M", "C": "P_K > P_L > P_M", "D": "P_L > P_K > P_M", "E": "P_M > P_K > P_L"},
+    "answer": "C",
+    "solution": "Paralelde gerilim ortak: 8 V. P = V²/R: P_K = 64/2 = 32 W, P_L = 64/4 = 16 W, P_M = 64/8 = 8 W. Sıralama P_K > P_L > P_M.",
+    "choiceValues": {"A": "Tuple(0, 0)", "B": "Tuple(-1, -1)", "C": "Tuple(1, 1)", "D": "Tuple(-1, 1)", "E": "Tuple(-1, 1, 0)"},
+    "check": {"type": "twinChoice", "expr": "Tuple(sign(Rational(64, 2) - Rational(64, 4)), sign(Rational(64, 4) - Rational(64, 8)))", "choice": "C"}
+  },
+  "choiceValues": {"A": "Tuple(1, 1)", "B": "Tuple(1, -1)", "C": "Tuple(-1, 1)", "D": "Tuple(0, 0)", "E": "Tuple(0, -1)"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik 10 — Elektrik devreleri: Ohm yasası, paralel bağlama, elektriksel güç", "note": "Paralel bağlamada potansiyel farkı ve güç karşılaştırması."}
+  ],
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T09:10:00Z"}
+}

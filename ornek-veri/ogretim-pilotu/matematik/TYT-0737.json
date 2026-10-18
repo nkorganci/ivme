@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0737",
+  "question": {
+    "code": "TYT-0737",
+    "exam": "TYT",
+    "subjectId": "matematik",
+    "categoryId": "tyt.matematik.denklem-cozme",
+    "subtopic": "Denklem kurma: dikdörtgen dizilim (sıra–sütun) problemi",
+    "answerKey": "A",
+    "choiceCount": 5,
+    "imageSha256": "47b6639bec01d3bbabd016fc27aecee16c67cf5dd85ac627678bf34be71b58c1"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Bir sınav salonunda bulunan 120 sandalye, hem her sırada eşit sayıda sandalye hem de her sütunda eşit sayıda sandalye olacak şekilde yerleştirilmiştir. Sınav görevlisi bu salondan 2 sıradaki ve 1 sütundaki tüm sandalyeleri veya 1 sıradaki ve 3 sütundaki tüm sandalyeleri çıkarırsa salonda tam olarak sınava girecek öğrenci sayısı kadar sandalye kalacağını hesaplamıştır. Buna göre bu sınava girecek olan öğrenci sayısı kaçtır?",
+    "choices": {"A": "84", "B": "81", "C": "78", "D": "75", "E": "72"},
+    "figure": "Sıra ve sütunlara dizilmiş sandalyeleri gösteren şematik dizilim (1., 2., 3. sütun ve 1., 2., 3. sıra etiketli, devamı noktalı). Şekil yalnız dizilimi anlatır; sayısal bilgi metindedir.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ZOR",
+    "difficultyReason": "Durumu iki bilinmeyenli modele çevirmek, iki senaryoyu eşitlemek ve ortaya çıkan ikinci dereceden denklemi çözmek gerekir.",
+    "skills": ["PROBLEM_COZME", "ANALIZ", "HESAPLAMA"],
+    "prerequisites": ["tyt.matematik.carpanlara-ayirma"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "matematik.denklem.dikdortgen-dizilim",
+    "name": "Dikdörtgen dizilim: sıra × sütun modeli",
+    "trigger": "Nesneler 'her sırada eşit, her sütunda eşit' dizilmiş ve bazı sıra/sütunların çıkarılması ya da eklenmesi anlatılıyorsa.",
+    "bigIdea": "Dizilim bir dikdörtgendir: toplam = sıra sayısı × sütun sayısı. Sıra ya da sütun çıkarmak dikdörtgenin kenarlarını kısaltır; kalan yine bir dikdörtgendir.",
+    "method": [
+      "Sıra ve sütun sayısına harf ver; toplamı çarpım olarak yaz.",
+      "Her senaryodan sonra kalanı (sıra − çıkan)(sütun − çıkan) diye yaz.",
+      "Verilen eşitlikleri kur ve bir bilinmeyeni ötekiyle ifade et.",
+      "Toplam denkleminde yerine koyup çöz; pozitif tam sayı çözümü seç."
+    ],
+    "whenNot": "Nesneler dikdörtgen biçiminde değilse (üçgen dizilim, boşluklu salon) ya da çıkarılan sıralar farklı uzunluktaysa çarpım modeli doğrudan kullanılamaz.",
+    "examTip": "Toplamın çarpan çiftlerini (sıra, sütun) yazıp iki senaryonun kalanlarını hızla karşılaştırmak, denklemi çözmekten daha hızlı olabilir."
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "carpim-modeli", "text": "Sıra sayısına s, sütun sayısına t deyip s·t = 120 yazmak ve her senaryodaki kalanı (s − ...)(t − ...) biçiminde kurmak", "correct": true,
+       "feedback": "Doğru. Dikdörtgen dizilimde çıkarma sonrası kalan da dikdörtgendir; kalanı çarpım olarak yazmak kesişimdeki sandalyeleri kendiliğinden doğru sayar."},
+      {"id": "dogrudan-cikar", "text": "120'den çıkan sıra ve sütunlardaki sandalyeleri ayrı ayrı çıkarmak", "correct": false,
+       "feedback": "Çıkan bir sıra ile çıkan bir sütunun kesiştiği sandalye iki kez çıkarılmış olur. Bu çift sayımı düzeltmek gerekir; çarpım modeli bunu kendiliğinden yapar."},
+      {"id": "orani-kur", "text": "Sıra sayısının sütun sayısına oranını 2/1 kabul edip hesaplamak", "correct": false,
+       "feedback": "Oran soruda verilmiyor; senaryolardan çıkarılması gerekiyor. Varsayım yapmak yerine iki kalanı eşitle."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Her sırada eşit, her sütunda eşit sandalye varsa dizilim bir dikdörtgendir: toplam = sıra sayısı × sütun sayısı."},
+    {"level": 2, "kind": "STRATEJI", "text": "Sıra sayısı s, sütun sayısı t olsun. Sıra ve sütun çıkarıldıktan sonra kalan sandalyeleri de çarpım olarak yaz; iki senaryoda kalan aynı olduğuna göre bu iki çarpımı eşitle."},
+    {"level": 3, "kind": "ADIM", "text": "2 sıra ve 1 sütun çıkınca (s − 2)(t − 1) sandalye kalır; diğer senaryoda (s − 1)(t − 3). Bu eşitliği açıp t'yi s cinsinden yaz, sonra s·t = 120'de yerine koy."}
+  ],
+  "guidingQuestions": [
+    {"text": "2 sıra ve 1 sütun çıkarılınca geriye kaç sıra ve kaç sütun kalır?", "answer": "s − 2 sıra ve t − 1 sütun; kalan sandalye (s − 2)(t − 1)."},
+    {"text": "(s − 2)(t − 1) = (s − 1)(t − 3) eşitliğini açınca s·t terimlerine ne olur?", "answer": "İki tarafta da s·t vardır, sadeleşir; geriye 2s − t = 1 kalır."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Sıra sayısı s, sütun sayısı t olsun. Her sırada t, her sütunda s sandalye vardır: s·t = 120.",
+       "why": "Eşit sıralar ve eşit sütunlar bir dikdörtgen oluşturur; dikdörtgendeki eleman sayısı kenar uzunluklarının çarpımıdır."},
+      {"id": "s2", "text": "2 sıra ve 1 sütun çıkarılınca kalan: (s − 2)(t − 1). 1 sıra ve 3 sütun çıkarılınca kalan: (s − 1)(t − 3).",
+       "why": "Çıkarma işlemi dikdörtgenin bir kenarını 2, diğerini 1 kısaltır; kalan parça yine dikdörtgendir. Böylece kesişimdeki sandalyeler iki kez çıkarılmaz.",
+       "selfExplain": {"prompt": "Kalanı neden 120 − 2t − s diye yazmıyoruz?",
+         "options": [
+           {"id": "kesisim", "text": "Çıkan 2 sıra ile çıkan sütunun kesiştiği 2 sandalye iki kez çıkarılmış olur; çarpım modeli bu çift sayımı düzeltir.", "correct": true,
+            "feedback": "Evet. 120 − 2t − s ifadesine kesişimdeki 2 sandalyeyi geri eklersen (s − 2)(t − 1)'in açılımını elde edersin."},
+           {"id": "fark-yok", "text": "Aslında iki yazım aynı sonucu verir.", "correct": false,
+            "feedback": "Aynı değil: (s − 2)(t − 1) = st − s − 2t + 2. Sondaki +2, iki kez çıkarılan kesişim sandalyeleridir."},
+           {"id": "sutun-kisa", "text": "Çünkü sütunlar sıralardan kısadır.", "correct": false,
+            "feedback": "Uzunluklar henüz bilinmiyor; mesele kesişimdeki sandalyelerin iki kez sayılmasıdır."}
+         ]}},
+      {"id": "s3", "text": "İki kalan eşit: (s − 2)(t − 1) = (s − 1)(t − 3). Açınca st − s − 2t + 2 = st − 3s − t + 3, sadeleşince 2s − t = 1, yani t = 2s − 1.",
+       "why": "Her iki tarafta st terimi bulunduğu için sadeleşir; geriye s ile t arasında doğrusal bir ilişki kalır.",
+       "check": {"type": "sympy", "expr": "expand((s - 2)*(t - 1) - (s - 1)*(t - 3))", "equals": "2*s - t - 1"}},
+      {"id": "s4", "text": "s·t = 120 ve t = 2s − 1: s(2s − 1) = 120, yani 2s² − s − 120 = 0 → (s − 8)(2s + 15) = 0. Sıra sayısı pozitif olduğundan s = 8, t = 15.",
+       "why": "Doğrusal ilişkiyi çarpım denkleminde yerine koymak tek bilinmeyenli ikinci dereceden denklem verir; negatif ve kesirli kök sayma bağlamına uymaz.",
+       "check": {"type": "solve", "equation": "s*(2*s - 1) = 120", "var": "s", "expect": ["8", "-15/2"]}},
+      {"id": "s5", "text": "Öğrenci sayısı (8 − 2)(15 − 1) = 6·14 = 84. Kontrol: (8 − 1)(15 − 3) = 7·12 = 84.",
+       "why": "Bulunan s ve t değerleri iki senaryoda da aynı kalanı vermelidir; ikinci hesap çözümü doğrular.",
+       "check": {"type": "sympy", "expr": "(8 - 2)*(15 - 1) - (8 - 1)*(15 - 3)", "equals": "0"}}
+    ],
+    "finalAnswer": {"choice": "A", "value": "84",
+      "check": {"type": "choice", "expr": "(8 - 2)*(15 - 1)", "choice": "A"}},
+    "levels": {
+      "sezgi": "Salonu bir dikdörtgen kâğıt gibi düşün. Bir şeridi kesip atınca kalan kâğıt yine dikdörtgendir; sadece kenarları kısalır. İki farklı kesme biçimi aynı alanı bırakıyorsa kenar uzunlukları arasında bir ilişki vardır (burada sütun sayısı sıra sayısının 2 katından 1 eksik). Bu ilişkiyi 120 = sıra × sütun ile birleştirince dikdörtgenin boyutları ortaya çıkar.",
+      "kisayol": "120'nin çarpan çiftlerini dene: (8, 15) için (8 − 2)(15 − 1) = 84 ve (8 − 1)(15 − 3) = 84 eşit çıkar; başka çift eşitlik vermez."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "E",
+     "mistake": "'veya' bağlacını 've' gibi okuyup iki çıkarmayı birlikte uygulamak: (8 − 2)(15 − 3) = 72.",
+     "cause": "Problemde iki ayrı senaryo anlatıldığını, her birinin tek başına aynı kalanı verdiğini fark etmemek.",
+     "fix": "'2 sıra ve 1 sütun' bir senaryo, '1 sıra ve 3 sütun' başka bir senaryodur. Her biri ayrı ayrı kalanı verir; bu iki kalan birbirine eşittir.",
+     "guidingQuestion": "Görevli sandalyeleri iki kez mi çıkarıyor, yoksa iki seçenekten birini mi düşünüyor?",
+     "check": {"type": "choice", "expr": "(8 - 2)*(15 - 3)", "choice": "E"}},
+    {"id": "m2", "choice": null,
+     "mistake": "Kalanı 120 − 2t − s diye yazıp kesişimdeki sandalyeleri iki kez çıkarmak.",
+     "cause": "Sıra ve sütunu birbirinden bağımsız şeritler sanmak; kesişim kavramını göz ardı etmek.",
+     "fix": "Kalan dikdörtgeni doğrudan (s − 2)(t − 1) diye yaz; çift sayım kendiliğinden düzelir.",
+     "guidingQuestion": "Çıkardığın bir sıra ile bir sütunun ortak sandalyesi var mı?"},
+    {"id": "m3", "choice": null,
+     "mistake": "2s² − s − 120 = 0 denkleminin kesirli kökünü (−15/2) de çözüm saymak ya da kökü bulamayınca tahminle şık seçmek.",
+     "cause": "Bağlam kontrolü yapmamak: sıra sayısı pozitif tam sayıdır.",
+     "fix": "Kökleri bulduktan sonra 'sayılabilir nesne' koşulunu uygula; gerekirse 120'nin çarpan çiftlerini dene.",
+     "guidingQuestion": "Sıra sayısı kesirli ya da negatif olabilir mi?"}
+  ],
+  "alternative": {
+    "title": "Çarpan çiftlerini deneme",
+    "text": "120'nin çarpan çiftleri (s, t): (6, 20), (8, 15), (10, 12), ... Her biri için iki kalanı hesapla. (6, 20): 4·19 = 76 ve 5·17 = 85 eşit değil. (8, 15): 6·14 = 84 ve 7·12 = 84 eşit. Eşitliği sağlayan tek çift (8, 15)'tir.",
+    "check": {"type": "sympy", "expr": "(6 - 2)*(20 - 1) - (6 - 1)*(20 - 3)", "equals": "-9"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Sıra ve sütun çıkarmanın dikdörtgeni nasıl küçülttüğünü ve kesişimin neden iki kez sayılmadığını görmek, (s − 2)(t − 1) ifadesini anlamlı kılar.",
+    "stage": "POST",
+    "template": "grid",
+    "title": "8 × 15 salonda iki senaryo",
+    "params": {
+      "mode": "cells",
+      "rows": 8,
+      "cols": 15,
+      "rowLabel": "sıra",
+      "colLabel": "sütun",
+      "groups": [
+        {"id": "iki-sira", "rows": [6, 7], "tone": "bad", "label": "Çıkan 2 sıra"},
+        {"id": "bir-sutun", "cols": [14], "tone": "bad", "label": "Çıkan 1 sütun"},
+        {"id": "bir-sira", "rows": [7], "tone": "warn", "label": "Çıkan 1 sıra"},
+        {"id": "uc-sutun", "cols": [12, 13, 14], "tone": "warn", "label": "Çıkan 3 sütun"}
+      ]
+    },
+    "frames": [
+      {"caption": "8 sıra × 15 sütun = 120 sandalye.", "show": ["all"]},
+      {"caption": "Birinci senaryo: 2 sıra ve 1 sütun çıkar. Kalan 6 × 14 = 84; köşedeki 2 sandalye bir kez çıkar.", "show": ["all", "iki-sira", "bir-sutun"]},
+      {"caption": "İkinci senaryo: 1 sıra ve 3 sütun çıkar. Kalan 7 × 12 = 84. İki senaryo aynı sayıyı bırakır.", "show": ["all", "bir-sira", "uc-sutun"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Bu salonda sıra sayısı mı, sütun sayısı mı daha büyüktür?",
+      "options": [
+        {"id": "sutun", "text": "Sütun sayısı", "correct": true, "feedback": "Doğru: t = 2s − 1 ilişkisi sütunların sıralardan neredeyse iki kat fazla olduğunu söylüyor."},
+        {"id": "sira", "text": "Sıra sayısı", "correct": false, "feedback": "2s − t = 1 ilişkisinden t = 2s − 1 çıkar; sütun sayısı daha büyüktür. Şekle bakalım."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "91 sandalye, her sırada eşit ve her sütunda eşit sayıda olacak biçimde dizilmiştir. 1 sıradaki ve 3 sütundaki sandalyeler ya da 2 sıradaki ve 1 sütundaki sandalyeler kaldırılırsa her iki durumda da geriye aynı sayıda sandalye kalıyor. Buna göre geriye kalan sandalye sayısı kaçtır?",
+    "choices": {"A": "48", "B": "50", "C": "60", "D": "66", "E": "72"},
+    "answer": "C",
+    "solution": "s·t = 91 ve (s − 1)(t − 3) = (s − 2)(t − 1). Açınca t = 2s − 1; s(2s − 1) = 91 → s = 7, t = 13. Kalan 6·10 = 60 (kontrol: 5·12 = 60). 50 = 5·10, iki kaldırmayı birden yapma tuzağıdır.",
+    "choiceValues": {"A": "48", "B": "50", "C": "60", "D": "66", "E": "72"},
+    "check": {"type": "twinChoice", "expr": "(7 - 1)*(13 - 3)", "choice": "C"}
+  },
+  "choiceValues": {"A": "84", "B": "81", "C": "78", "D": "75", "E": "72"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Denklemler ve eşitsizlikler ile ilgili uygulamalar", "note": "Gerçek hayat durumunu denklemle modelleme kazanımı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-pilot-v1",
+    "createdAt": "2026-10-18T07:30:00Z"
+  }
+}

@@ -1,6 +1,7 @@
 package com.hedefyks.exam;
 
 import com.hedefyks.question.ExamType;
+import com.hedefyks.question.QuestionSelectionMode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,6 +41,10 @@ public class Exam {
 
     @Enumerated(EnumType.STRING)
     private ExamStatus status = ExamStatus.IN_PROGRESS;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "selection_mode", nullable = false)
+    private QuestionSelectionMode selectionMode = QuestionSelectionMode.MIXED;
 
     @Column(name = "question_count")
     private int questionCount;

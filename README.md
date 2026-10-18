@@ -1,111 +1,105 @@
-# Hedef YKS — YKS hazırlık web uygulaması (MVP)
+# İvme uygulaması
 
-Soru bankası, süreli deneme sınavı, sonuç/geçmiş, geri bildirim ve basit yönetim ekranı olan, tarayıcıdan kullanılan bir YKS hazırlık sitesi.
-Hedef: 10–50 kişilik ilk deneme; mimari 5.000+ kullanıcıya yeniden yazmadan büyüyebilecek kadar temiz tutuldu (aşırı mühendislik yok).
+React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalışan eğitim uygulaması. Etiketleme öncelikli yapılacak işler ve açık kararlar [yaşayan yol haritasında](docs/plan/00_YOL_HARITASI.md); API ayrıntıları [mimari belgesinde](docs/API-ve-mimari.md) tutulur. Güncel iş sırası ve oturum devam noktası plan belgelerinden izlenir.
 
-```
-Tarayıcı ──► React (Vite)  ──/api──►  Spring Boot (REST, Spring Security)  ──►  PostgreSQL (Flyway göçleri)
- 5173 (dev)                              8081                                      yks_hazirlik
-                                           └──► Soru görselleri: yerel klasör (ileride R2/S3)
-```
+Sistemin veri akışı, tek sözlük/kimlik kuralları, önbellek, üretim/yayın doğrulamaları
+ve gelecekte değişiklik yaparken izlenecek yol [kalıcı sistem rehberinde](docs/plan/00_SISTEM_REHBERI.md) açıklanır.
 
-| Katman | Teknoloji |
-|---|---|
-| Ön yüz | React 19, Vite, JavaScript, react-router, düz duyarlı CSS |
-| Arka yüz | Java 21, Spring Boot 3.5, Spring MVC + Security, JPA/Hibernate, Flyway, Maven |
-| Veritabanı | PostgreSQL 18 (5 tablo: `users`, `questions`, `exams`, `exam_questions`, `feedback`) |
+Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, uygulamanın içe aktarma için kullandığı üretilmiş soru/görsel verisi `../icerik/data/` altındadır. Eski statik site kaldırılmıştır. Üst dizindeki `Siteyi Ac.bat` bu uygulamanın iki ortamın başlatıcısını çalıştırır.
 
-## Hızlı başlangıç (geliştirme)
+## Mevcut özellikler
 
-Gerekenler: **JDK 21** (`C:\Tools\jdk-21`; başka yerdeyse `JAVA_HOME_YKS` ortam değişkeniyle göster), Maven, Node ≥ 22, çalışan PostgreSQL.
+- [Öğretmen Doğrulaması](docs/OGRETMEN_DOGRULAMASI.md): 14 branş için ortak etiket sözlüğü, birden fazla branş/konu eşleşmesi, zorluk, içerik türü, beceri ve sınıf etiketleri; kaynak bazlı karar, geçmiş ve JSON dışa aktarma. OPERATOR menüsünden açılır; yerel dev görünümünde branş seçimi öğretmen moduna geçer.
 
-1. **Veritabanı (bir kez):** `veritabani-sifirla.bat` — `root/root` rolünü ve boş `yks_hazirlik` (+ test) veritabanını oluşturur. Tabloları bu betik değil, arka yüz açılırken **Flyway** kurar; pgAdmin'de elle tablo oluşturmak gerekmez.
-2. **Çalıştır:** `baslat.bat` (arka yüz + ön yüz + tarayıcı) ya da ayrı ayrı `backend-baslat.bat` ve `frontend-baslat.bat`.
-3. Tarayıcı: <http://localhost:5173>. İlk açılışta 50 örnek soru otomatik yüklenir (`ornek-veri\sorular.csv`).
+- Sol menüdeki **Soru Çöz**, **Pratik / deneme**, **Soru Bankası** ve **AYT-TYT Çıkmış Sorular** sekmelerini bir araya getirir. Sekmeler arasında sınav/ders/konu seçimi korunur. Ders tablolarının ve soru detaylarının kullandığı `/soru-bankasi`, `/cikmis-sorular` ve eski başlatma adresleri çalışmaya devam eder.
+- Öğrenci kayıt/giriş: kullanıcı adı, e-posta, cep telefonu ve en az 8 karakterli parola. E-posta ve telefon şu anda ayrıca doğrulanmaz. Oturum çerezi ve CSRF koruması vardır.
+- Pratik: kaynak/sınav türü/ders/konu, yeni/önceki/yanlış/karışık soru geçmişi, sayı ve süreli/süresiz çalışma seçilerek kalıcı soru sıralı oturum açılır. Uygun soru sayısı gösterilir; yanıtlar ve durumlar oturuma bağlanır. Süre sonunda veya açık bitirme ile sonuç oluşur; Geçmişim ve Hesap ekranından oturumlara dönülür. Alt konu/soru tipi etiketleri sonraki adımdadır.
+- `CIKMIS` ve `OGM` soru koleksiyonları; sınav türü, ders ve konu filtresi; soru/çözüm görseli, QR, zorluk oyu ve geri bildirim. Serbest pratikte ilk yanıt, ikinci deneme, cevabı gösterme ve atlama olayları öğrenciye özel olarak kaydedilir; doğru şık yanlış yanıtın hemen ardından açılmaz.
+- Konu anlatımları: öğrenci özgün OGM PDF'lerini sınav, ders ve kaynak türüne göre arayıp site içinde açar. Eksik dosya ve yalnız video kaydı listede açıkça belirtilir. İlk doğrulanmış Noktalama İşaretleri PDF'sinden yalnız üç kaynaklı soru ile pratik/test kurucusuna geçilir; diğer aday başlıklar onaylı soru bağı sayılmaz.
+- Süreli veya süresiz deneme; sınav sırasında cevap anahtarı gizli, bitiminde sonuç ve geçmiş kalıcıdır. Serbest pratikteki soru başı kayıtlar ile sınav geçmişi ayrı akışlardır; çalışma oturumu seçimi ve kişisel analiz henüz bağlı değildir.
+- Çalışma önerileri ekranı onaylı soru tipi etiketli ilk denemelerden açıklanabilir ipuçları gösterir; örnek soruya geçilir veya yanlış etiket bildirilir. Gerçek etiket onayı açık iştir; taslak 50 soruluk örnek öğrenci önerisine girmez.
+- `ADMIN` rolü `/yonetim` ve `/api/admin/stats` üzerinden yalnız beşlik aralıklarla gösterilen toplu gün/hafta/ay kullanım ve yakalanan beklenmeyen API hata sayılarını görür; küçük gruplar gizlenir. Etkin soru kayıtlarının koleksiyon ve TYT/AYT kapsamı ayrıca gösterilir. `OPERATOR` rolü `/icerik-bakimi` ve `/api/operator` üzerinden içerik bakımını yapar. Öğrenci yalnız kendi sınav verisini görür.
+- Öğrenci Hesap ekranından mevcut şifresiyle kendi verilerini JSON olarak indirebilir veya şifre ve yazılı onayla hesabını silebilir. Ortak soru bankası ve diğer öğrenciler etkilenmez.
+- Ham `activity_events` kayıtları için 90 gün saklama görevi vardır; giriş/aktiflik/çıkış olaylarının üretimi ve gösterimi henüz bağlı değildir.
 
-**Geliştirme yöneticisi:** kullanıcı `root`, şifre `root` — yalnız `dev` profilinde (`application-dev.yml`) vardır. Üretimde kullanılmaz (aşağıya bak). Diğer kullanıcılar `/kayit` sayfasından kendi adı ve şifresiyle kayıt olur (e-posta doğrulaması, Google/Apple girişi, MFA yok).
+## Ayrı main ve feature ortamları
 
-## Özellikler
+| Ortam | Dal ve klasör | Adres | Veritabanı |
+|---|---|---|---|
+| Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:5173 | `ivme` |
+| Geliştirme | `feature/ivme-yol-haritasi` — `D:\workspace\ivme\uygulama` | http://localhost:5174 | `ivme_dev` |
 
-- Kayıt / giriş / çıkış; roller `USER` ve `ADMIN`; şifreler BCrypt ile saklanır; başlıklar kullanıcı adına göre kişiselleşir.
-- **Soru bankası:** sınav türü (TYT/AYT) → ders → konu filtresi; soru görseli, A–E seçimi, cevabı kontrol et, önceki/sonraki soru, video çözüm bağlantısı.
-- **Soru değerlendirme:** Kolay/Orta/Zor oyu + 5 yıldız (kullanıcı başına soru başına tek kayıt), "sorun bildir" ve genel görüş formu. Sorularda sabit bir zorluk alanı yoktur; zorluk yalnızca kullanıcı oylarından görünür.
-- **Sınav:** filtreye göre rastgele soru, süre sınırı (ya da süresiz), otomatik kayıt (sayfa kapansa da sürer), soru gezgini, süre dolunca otomatik bitirme. Sınav sırasında doğru cevap istemciye **hiç gönderilmez**.
-- **Sonuç ve geçmiş:** doğru / yanlış / boş, yüzde, net (D − Y/4), süre, ders bazında kırılım; her kullanıcının sınav geçmişi.
-- **Geçmişin doğruluğu:** sınav gönderilirken o anki doğru cevap `exam_questions.correct_answer`'a, sayılar `exams` satırına yazılır. Yönetici bir sorunun doğru cevabını sonradan değiştirse de eski sonuçlar değişmez (testle doğrulanır).
-- **QR:** her sorunun kalıcı adresi `{YKS_SITE_ADRESI}/soru/{kod}`; soru sayfasında QR gösterilir (`GET /api/questions/{id}/qr`, anında üretilir, saklanmaz). Adres açılınca giriş sonrası o soruya dönülür.
-- **Yönetim** (`/yonetim`, yalnız ADMIN): kullanıcı/soru sayıları, bildirilen sorular, geri bildirimler (çözüldü işaretle), soru görüntüleme + doğru cevap ve künye düzenleme, toplu soru içe aktarma.
+Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
+kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
+`ivme_dev`, kurulum anındaki `ivme` verisinin bağımsız kopyasıdır; bundan sonraki
+öğrenci kayıtları ve DB göçleri ortamlar arasında otomatik eşitlenmez.
+Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
-## Yönetici şifresini değiştirme
+`iki-ortami-baslat.bat` iki ortamın izleyicisini gizli başlatır. İzleyiciler
+uygulama kapalıysa açar ve yalnız kendi worktree'sindeki kaynak değişince o
+ortamı yeniler. Herhangi bir ortamı hemen derleyip açmak için o klasörde
+`yeniden-baslat.bat` veya `baslat.bat` kullanılır. Windows başlangıcındaki
+`IVME - Otomatik Guncelleme.lnk` iki izleyiciyi birlikte açar.
 
-- **Arayüzden (en kolay):** yöneticiyle giriş yap → sağ üstte kullanıcı menüsü → **Hesap** → mevcut + yeni şifre.
-- **Üretimde ilk kurulum:** yönetici yalnız `YKS_ADMIN_SIFRE` ortam değişkeni verilirse oluşturulur (en az 10 karakter; kaynak kodda gerçek şifre yoktur). Hesap bir kez oluştuktan sonra bu değişken şifreyi **ezmez**; kaldırabilirsin.
-- **Şifre unutulursa:** yeni bir yönetici adıyla aç: `YKS_ADMIN_KULLANICI=yeniyonetici` ve `YKS_ADMIN_SIFRE=...` vererek arka yüzü yeniden başlat (hesap yoksa oluşturulur); sonra eski yöneticiyi `UPDATE users SET role = 'USER' WHERE username = '...'` ile düşürebilirsin.
+`yerel-ortam.ps1` port, DB ve çerez adlarını daldan belirler; üst süreçten kalan
+başka bir ortamın DB/port ayarlarını kullanmaz. Gereken özel yerel kimlik ve
+kaynak yolları Git dışındaki `.codex/local-environment.json` ile verilebilir.
+Oturum ve CSRF çerezleri ayrıdır; iki localhost sekmesi birbirinin girişini bozmaz.
+İki yerel ortam mevcut otomatik giriş davranışını koruyan Spring `dev` profilini
+kullanır; production burada main dalındaki sabit yerel uygulamayı belirtir.
+Gerçek HTTPS dağıtım ayarları aşağıdaki üretim paketi bölümündedir.
 
-## Soruları ekleme ve güncelleme (içe aktarma)
+Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Testler yalnız
+`ivme_test` veritabanını kullanır. İçerik bakım betiklerinin varsayılan DB'si de
+dala göre seçilir; `--database ivme` açıkça ana veriyi seçer. Gerçek veriyi silen
+`veritabani-sifirla.bat` çalıştırılmaz.
 
-Yönetim → **İçe aktar** (ya da `POST /api/admin/import`). Dosya **CSV** (UTF-8; ayraç `,` `;` veya sekme otomatik) ya da **JSON** (nesne dizisi). Örnek: `ornek-veri\sorular.csv`.
+İsteğe bağlı Vite geliştirme akışı: feature klasöründeki `backend-baslat.bat`
+API'yi 8082'de, `frontend-baslat.bat` ön yüzü 5174'te açar. Önce o ortamın paketli
+uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
+uygulama ve kaynak izleyicisiyle çalışır.
 
-| Sütun | Zorunlu | Açıklama |
-|---|---|---|
-| `code` | ✓ | Tekil, kalıcı kimlik (örn. `TYT-0001`); QR adresi buna bağlıdır, sonradan değiştirilmez |
-| `exam_type` | ✓ | `TYT` veya `AYT` |
-| `subject` | ✓ | Ders |
-| `image` | ✓ | Resim klasörüne göre göreli yol (örn. `TYT/turkce/TYT-0001.webp`) |
-| `correct_answer` | ✓ | `A`–`E` |
-| `topic`, `year`, `source`, `solution_url`, `choice_count` (4–5, varsayılan 5), `active` (varsayılan true) | | isteğe bağlı (bilinmeyen sütunlar uyarıyla yok sayılır) |
+Yerel `localhost` adresinde oturum yoksa `nazile` hesabıyla otomatik giriş vardır;
+tünelden bu kolaylık kapalıdır. Geliştirme hesabı `YKS_DEV_OGRENCI` ile değiştirilebilir.
+Görseller ortamın `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
+klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
 
-Davranış: önce **tüm satırlar doğrulanır**; eksik zorunlu alan, geçersiz değer, dosya içi tekrar eden kod gibi her hata satır numarasıyla raporlanır ve **tek hata bile varsa hiçbir şey yazılmaz**. Varsayılan ekran "deneme çalıştırması"dır (dryRun) — rapora bakıp "Gerçekten içe aktar" denir. Modlar: `INSERT_ONLY` (yalnız yeni kodlar eklenir, var olan sorulara dokunulmaz — varsayılan) ve `UPSERT` (var olanlar güncellenir; doğru cevap değişirse uyarı verilir). Resim dosyası bulunamazsa **uyarı** verilir (görseller sonradan kopyalanabilir). ~30.000 soruluk dosya tek seferde yüklenebilir (en çok 20 MB; gerekirse parçala).
+Yeni sürümü ana ortama geçirmek için feature değişiklikleri commit edilir,
+`uygulama-main` klasöründe feature dalı main'e merge edilir ve main ortamının
+`yeniden-baslat.bat` betiği çalıştırılır. Merge yapılana kadar geliştirme
+kaynakları ana uygulamaya yansımaz. Yerel merge Git push anlamına gelmez.
 
-Tek bir soruyu düzeltmek için Yönetim → Sorular → Düzenle yeterlidir.
+## Soru verisi
 
-## Görseller
+İçe aktarma CSV/JSON içindir; `code`, `exam_type`, `subject`, `image`, `correct_answer` zorunludur. İsteğe bağlı `topic`, `year`, `source`, `choice_count`, `solution_url`, `active`, `bank` (`CIKMIS`/`OGM`) ve `solution_image` alanları vardır. Dosya önce bütünüyle doğrulanır; bir hata varsa uygulanmaz. Operatör ekranı varsayılan olarak yalnız ön izleme yapar; `INSERT_ONLY` mevcut soruları değiştirmez, `UPSERT` günceller.
 
-Görseller veritabanına **konmaz**; `questions.image` yalnızca göreli yolu tutar, kök klasör `YKS_RESIM_KLASORU` (dev: `ornek-veri\resimler`). Örn. Windows'ta `D:\yks-resimler` ayarla, 30.000 görseli alt klasörlerle kopyala, CSV'deki `image` sütununa göreli yolu yaz. Klasör dışına çıkan yollar (`..`) reddedilir.
-İleride Cloudflare R2 / S3'e geçiş: `storage/ImageStorage` arayüzünün yeni bir gerçeklemesini yaz (dosyayı okumak yerine imzalı adrese yönlendir ya da akıt); veritabanı, API ve ön yüz değişmez.
+Kaynak veri mevcutsa `node ornek-veri/ornek_uret.mjs --tum` çıkmış sorular için, `node ornek-veri/ogm_uret.mjs` OGM için Git dışı CSV ve görsel düzeni hazırlar. Betikler `../icerik/data/` altındaki korunmuş çıktıları okur. OGM betiği görselleri `veri/resimler-pilot/ogm` altına bağlar; `--kopyala` bağlantı yerine kopyalar. Büyük CSV için uygulamayı bir kez `YKS_IMPORT_DOSYASI=<CSV yolu>` ortam değişkeniyle başlatın; varsayılan mod `INSERT_ONLY`'dir. İçe alma bitince değişkeni kaldırın. Görsel dosyaları ayrı yedeklenir; veritabanı yedeğine dahil değildir.
 
-## Yapılandırma (ortam değişkenleri)
+Soru görsellerinin beyaz dış kenarları `python scripts/soru-gorsellerini-kirp.py` ile topluca kırpılır. Ön izleme için `--dry-run --limit 100`, yeniden üretmek için `--force` kullanılabilir. Betik `veri/sorular-tum.csv` ve `veri/sorular-ogm.csv` içindeki soru görsellerini işler; kırpılmış kopyalar `veri/resimler-pilot/kirpilmis/` altında aynı göreli yola yazılır. Uygulama varsa bu kopyayı, yoksa özgün dosyayı sunar. Kaynak görseller, CSV/etiketler ve bunlara bağlı hash değerleri değiştirilmez. Kaynak görseller yeniden üretilirse `--force` ile kırpılmış kopyalar da yenilenmelidir.
 
-| Değişken | Anlamı | Dev varsayılanı |
-|---|---|---|
-| `YKS_DB_URL`, `YKS_DB_KULLANICI`, `YKS_DB_SIFRE` | PostgreSQL bağlantısı | `localhost:5432/yks_hazirlik`, `root`, `root` |
-| `YKS_SITE_ADRESI` | QR kodların işaret ettiği genel adres | `http://localhost:5173` |
-| `YKS_RESIM_KLASORU` | Soru görselleri kök klasörü | `../ornek-veri/resimler` |
-| `YKS_ADMIN_KULLANICI`, `YKS_ADMIN_EPOSTA`, `YKS_ADMIN_SIFRE` | İlk yönetici (şifre ≥ 10 karakter, üretimde zorunlu değil ama ilk kurulumda gerekir) | `root`, `root@localhost`, `root` |
-| `YKS_COOKIE_SECURE` | HTTPS arkasında `true` | `false` |
-| `PORT` | Sunucu portu | `8081` |
+## Üretim paketi ve tünel
 
-`dev` profili (`backend-baslat.bat` bunu seçer) yukarıdaki varsayılanları sağlar. Profil seçilmeden çalıştırılırsa hiçbir varsayılan yoktur; eksik değişken uygulamayı başlatmaz — kazara `root/root` ile yayın yapılamaz.
+Kullanıcının mevcut Cloudflare rotası `net.ivme.dev` → `http://localhost:5173`'tür. Paylaşım için Vite geliştirme sunucusu yerine React çıktısını içinde taşıyan Spring Boot paketini **aynı 5173 portunda** çalıştırın:
 
-## Veritabanı
+1. `uretim.ayarlar.ornek.bat` dosyasını Git dışında kalacak `uretim.ayarlar.bat` olarak kopyalayın; veritabanı, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true` ve `PORT=5173` ayarlarını doldurun. Üretimde `root/root` kullanmayın. Sınırlı rolün kurulumu [12.03 yayın işinde](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) açıklanır; `YKS_FLYWAY_ETKIN=false` ancak yetkili göç tamamlandıktan sonra kullanılmalıdır.
+2. Önce iki ayrıcalıklı hesabın geçici parolasını yerelde değiştirin. `uretim-derle.bat` paketi derler; `uretim-calistir.bat` gereken durumda yeniden derleyip tek Java süreci olarak başlatır. Sunucu yalnız `127.0.0.1` üzerinde dinler.
+3. Yerel ve tünel adresinde giriş, çıkış, soru görseli, QR, CSRF çerezi, mobil görünüm ve yeniden başlatma kontrolünü yapın. Servis kapalıyken Cloudflare 502 yanıtı beklenir. Vite kaynak dosyaları tünel üzerinden uzun süre önbelleğe alınabildiğinden paylaşılan sitede derlenmiş paketi kullanın. Normal tarayıcıda eski sürüm kalırsa `net.ivme.dev` için sert yenileme veya site önbelleğini temizleme yapın; sorun sürerse eklentileri bu site için kapatıp deneyin.
 
-- Göçler: `backend\src\main\resources\db\migration\` (`V1__sema.sql` ilk şema, `V2__soru_zorluk_kaldir.sql` soru zorluk alanını kaldırır). Değişiklik gerekirse **yeni** dosya ekle (`V3__aciklama.sql`); eski göç dosyalarını düzenleme.
-- Sıfırdan kurulum: `veritabani-sifirla.bat` → `backend-baslat.bat` (Flyway tabloları kurar, dev'de örnek veri yüklenir). `spring.flyway.clean-disabled=true` olduğundan uygulama kendi kendine veritabanını silemez.
-- Hibernate `ddl-auto=validate`: tablolar yalnız göçlerle oluşur, şema ile kod uyuşmazsa uygulama açılmaz.
-- Yedek: `pg_dump -U root -h localhost yks_hazirlik > yedek.sql`.
+Yerel main/feature çalıştırma ve izleyici düzeni yukarıdaki ortam tablosundadır.
+`yeniden-baslat.ps1` kendi ortamının portunda dönüşümlü JAR klasörlerine derler,
+HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata halinde
+önceki pakete döner. İzleyici durumu `backend/target/live-watch.status`, hatalar
+`live-watch.log` ve `application.stderr.log` dosyalarındadır. Açık tarayıcı yeni
+`app-version.txt` değerini görünce sayfayı yeniler.
 
-## Test
+Üretimde `YKS_SITE_ADRESI` geçerli HTTPS adresi ve güvenli oturum çerezi zorunludur; geçici parolalı ayrıcalıklı hesap varsa uygulama açılmaz. [Yayın öncesi kalan işler](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) açık maddeleri listeler.
 
-- Arka yüz (15 test: kimlik, yetki, sınav akışı ve geçmişin korunması, geri bildirim, içe aktarıcı): `cd backend && mvn test` (`yks_hazirlik_test` veritabanı gerekir; test her çalışmada onu temizler, yalnız `*_test` adlı veritabanına izin verir).
-- Tarayıcıda uçtan uca (kayıt → soru çöz → sınav → sonuç → geçmiş → geri bildirim → yönetim, masaüstü ve mobil): arka ve ön yüz açıkken `node testler\e2e.mjs [çıktı klasörü] [--mobil]` (Chrome gerekir; ekran görüntülerini klasöre yazar).
+## Doğrulama
 
-## Üretim / arkadaşlarla paylaşma
+- Arka yüz: `cd backend; mvn test` (`ivme_test` veritabanını kullanır; testler onu temizleyebilir).
+- Ön yüz: `cd frontend; npm run build`.
+- Yerel Chrome uçtan uca: `node testler/e2e.mjs [çıktı klasörü] [--mobil]`. Test yeni kullanıcı ve geri bildirim oluşturur; yalnız yerel adreste çalışır. Ayrıcalıklı ekranlar ancak ilgili `YKS_E2E_YONETICI*` veya `YKS_E2E_OPERATOR*` ortam değişkenleri verilirse denenir.
 
-1. `uretim.ayarlar.ornek.bat` dosyasını `uretim.ayarlar.bat` olarak kopyala ve doldur (veritabanı şifresi, site adresi, resim klasörü, yönetici şifresi ≥ 10 karakter). Bu dosya `.gitignore`'dadır; gerçek şifreler depoya girmez. Üretimde veritabanı için `root/root` kullanma.
-2. `uretim-calistir.bat` — gerekirse paketi derler (`uretim-derle.bat`: ön yüz jar'ın içine konur, tek dosya `backend\target\hedef-yks.jar`) ve **tek süreç** olarak çalıştırır: API + arayüz, `http://localhost:8081`. Profil verilmez; eksik ortam değişkeni varsa uygulama başlamaz.
-3. Bilgisayarını dışarı açmadan arkadaşlara göstermek için HTTPS tünel (örn. Cloudflare Tunnel veya ngrok) ile `localhost:8081`'i yayınla; `YKS_SITE_ADRESI` tünel adresi olmalı (QR için). Kalıcı yayın için bir VPS/PaaS + yönetilen PostgreSQL yeterlidir.
+**Git:** Geliştirme kolu `feature/ivme-yol-haritasi`, yerel production kolu `main`; doğru uzak depo `ivme` adıdır. Kullanıcının son isteği gereği değişiklikler yerel commit edilir, tüm işler bitip yorum alınana kadar push yapılmaz.
 
-## Güvenlik notları ve bilinen sınırlar (MVP)
-
-- Oturum çerezi `HttpOnly` + `SameSite=Lax`; CSRF koruması açık (`XSRF-TOKEN` çerezi → `X-XSRF-TOKEN` başlığı); `/api/admin/**` yalnız ADMIN; kullanıcılar yalnız kendi sınavını görür.
-- Oturumlar sunucu belleğinde: arka yüz yeniden başlayınca herkes yeniden giriş yapar (devam eden sınavlar veritabanında olduğu için kaybolmaz).
-- Giriş denemesi sınırlaması (rate limit) ve e-posta doğrulaması yoktur.
-- Soru bankasında tek tek çözümlerin kaydı tutulmaz (yalnız sınav sonuçları); istatistik sonraki adımdır.
-
-## 5.000+ kullanıcıya büyürken (şimdi gerekmez)
-
-Spring Session (JDBC/Redis) ile ortak oturum + birden çok sunucu · giriş/API hız sınırı · görseller için R2/S3 + CDN (`ImageStorage`) · bağlantı havuzu ve indeks ayarı (`questions` filtre indeksi hazır) · soru çözüm kayıtları tablosu ve istatistik · bildirimler için e-posta/kanal entegrasyonu.
-
-## GitHub'a yükleme
-
-`.gitignore` hazırdır (`node_modules`, `dist`, `target`, derlenmiş `static`, `.env`, `uretim.ayarlar.bat`). Gerçek şifreler ve 30.000 soruluk resim klasörü depoya girmemelidir (depoda yalnız 50 örnek görsel vardır).
+Kaynaklı ders notları ve 53.019 etkin sorunun etiket dizini `/kaynakli-ders-notlari` altında bulunur. Konu/alt konu için 21 rehber, 44 soru kalıbı ve akıllı çalışma yönlendirmesi vardır. Kapsam ve testler [notlar kaydında](docs/KAYNAKLI_DERS_NOTLARI.md), PostgreSQL'deki yeniden kullanılabilir araştırma arşivi [analiz kaydında](docs/KAYNAKLI_SORU_ANALIZI.md) açıklanır; tüm müfredat analizi tamamlanmış sayılmaz.

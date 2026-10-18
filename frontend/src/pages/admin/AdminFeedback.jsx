@@ -15,14 +15,14 @@ export default function AdminFeedback() {
   const [busyId, setBusyId] = useState(null);
   const [actionError, setActionError] = useState('');
 
-  const url = '/api/admin/feedback' + qs({ category, resolved: onlyOpen ? 'false' : '', page, size: PAGE_SIZE });
+  const url = '/api/operator/feedback' + qs({ category, resolved: onlyOpen ? 'false' : '', page, size: PAGE_SIZE });
   const { data, loading, error, retry, reload } = useAsync(() => api.get(url), [url]);
 
   const setResolved = async (item, resolved) => {
     setBusyId(item.id);
     setActionError('');
     try {
-      await api.patch(`/api/admin/feedback/${item.id}`, { resolved });
+      await api.patch(`/api/operator/feedback/${item.id}`, { resolved });
       reload();
     } catch (e) {
       setActionError(e.message);
@@ -73,7 +73,6 @@ export default function AdminFeedback() {
             <li key={f.id} className={`card feedback-item${f.resolved ? ' resolved' : ''}`}>
               <div className="feedback-head">
                 <span className="badge badge-primary">{categoryLabel(f.category)}</span>
-                <strong>{f.username}</strong>
                 <span className="muted small">{formatDate(f.createdAt)}</span>
                 {f.resolved && <span className="badge badge-ok">✓ Çözüldü</span>}
               </div>
@@ -81,7 +80,7 @@ export default function AdminFeedback() {
               <p className="muted small">
                 {f.questionId && (
                   <>
-                    Soru: <Link to={`/yonetim?sekme=sorular&duzenle=${f.questionId}`}>{f.questionCode || f.questionId}</Link> ·{' '}
+                    Soru: <Link to={`/icerik-bakimi?sekme=sorular&duzenle=${f.questionId}`}>{f.questionCode || f.questionId}</Link> ·{' '}
                   </>
                 )}
                 {f.difficultyVote && <>Zorluk oyu: {difficultyLabel(f.difficultyVote)} · </>}
