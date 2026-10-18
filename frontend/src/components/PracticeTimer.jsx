@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function PracticeTimer({ session, onExpire }) {
+export default function PracticeTimer({ session, onExpire, compact = false }) {
   const [now, setNow] = useState(Date.now());
   const [offset] = useState(() => new Date(session.serverNow).getTime() - Date.now());
   const remaining = session.deadlineAt
@@ -18,6 +18,6 @@ export default function PracticeTimer({ session, onExpire }) {
   const minutes = String(Math.floor(remaining / 60)).padStart(2, '0');
   const seconds = String(remaining % 60).padStart(2, '0');
   return <p className={`practice-timer${remaining <= 60 ? ' practice-timer-warning' : ''}`} role="timer" aria-label={`Kalan süre ${minutes} dakika ${seconds} saniye`}>
-    Kalan süre: <strong>{minutes}:{seconds}</strong>{remaining <= 60 && ' · Süre bitiyor'}
+    {!compact && 'Kalan süre: '}<strong>{minutes}:{seconds}</strong>{!compact && remaining <= 60 && ' · Süre bitiyor'}
   </p>;
 }

@@ -40,19 +40,25 @@ public class QuestionImportService {
     private final QuestionRepository questions;
     private final ImageStorage images;
     private final TransactionTemplate tx;
+    private final ResourceIntake intake;
+    private final org.springframework.jdbc.core.JdbcTemplate jdbc;
 
     public QuestionImportService(QuestionFileParser parser, QuestionRepository questions, ImageStorage images,
-                                 TransactionTemplate tx) {
+                                 TransactionTemplate tx, ResourceIntake intake,org.springframework.jdbc.core.JdbcTemplate jdbc) {
         this.parser = parser;
         this.questions = questions;
         this.images = images;
         this.tx = tx;
+        this.intake = intake;
+        this.jdbc = jdbc;
     }
 
     /** Doğrulanmış satır. */
     private record Candidate(int row, String code, QuestionBank bank, ExamType examType, String subject, String topic,
                              Integer year, String source, String image, String solutionImage, String correctAnswer,
-                             int choiceCount, String solutionUrl, boolean active) {}
+                             int choiceCount, String solutionUrl, boolean active) {
+        Candidate inactive() {return new Candidate(row,code,bank,examType,subject,topic,year,source,image,solutionImage,correctAnswer,choiceCount,solutionUrl,false);}
+    }
 
     /** Toplanan sorunlar; listeler sınırlı, sayaçlar tam. */
     private static final class Issues {
@@ -100,15 +106,35 @@ public class QuestionImportService {
             }
         }
 
+        var cancelled=new java.util.HashSet<>(jdbc.queryForList("SELECT question_code FROM learning_catalog.official_question_corrections WHERE official_status='cancelled'",String.class));
+        candidates.replaceAll(c->{if(c.active() && cancelled.contains(c.code())) {
+            issues.warn(c.row(),c.code(),"active","Resmî iptal kaydı korundu; soru yeniden etkinleştirilmedi.");return c.inactive();
+        }return c;});
         Plan plan = plan(candidates, loadExisting(candidates), mode, issues);
+        Map<String,Map<String,Object>> drafts=new LinkedHashMap<>();
+        if(issues.errorCount==0) {
+            var metadata=new ArrayList<Map<String,Object>>();
+            for(var c:candidates) {
+                var row=new LinkedHashMap<String,Object>();row.put("kind","QUESTION");row.put("code",c.code());row.put("exam",c.examType().name());
+                row.put("subject",c.subject());row.put("topic",c.topic());row.put("bank",c.bank().name());row.put("image",c.image());
+                row.put("source",c.source());row.put("active",c.active());row.put("available",images.exists(c.image()));metadata.add(row);
+            }
+            try{drafts.putAll(intake.validate(metadata));}
+            catch(IllegalStateException failure){issues.error(0,null,"labels",failure.getMessage());}
+        }
         boolean apply = !dryRun && issues.errorCount == 0;
         if (apply) {
             tx.executeWithoutResult(status -> {
                 // Aynı planı yönetilen (tx içindeki) varlıklarla yeniden uygula: güncellemeler commit'te yazılır
-                Plan live = plan(candidates, loadExisting(candidates), mode, new Issues());
+                var existing=loadExisting(candidates);
+                var changed=candidates.stream().filter(c->!existing.containsKey(c.code()) || mode!=ImportMode.INSERT_ONLY && !diff(existing.get(c.code()),c).isEmpty()).map(Candidate::code).toList();
+                Plan live = plan(candidates, existing, mode, new Issues());
                 questions.saveAll(live.inserts());
+                questions.flush();
+                changed.forEach(code->intake.stage(code,drafts.get(code)));
             });
         }
+        if(issues.errorCount==0 && !drafts.isEmpty())issues.warn(0,null,"labels","Ortak etiketler doğrulandı; yeni/değişen kayıtlar katalog yayını için etiket kuyruğuna alınır.");
         return report(dryRun, mode, apply, parsed.rows().size(), plan, issues);
     }
 

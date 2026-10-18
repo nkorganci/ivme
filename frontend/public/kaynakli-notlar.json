@@ -5,7 +5,7 @@
     "primaryPdfs": 25,
     "records": 68944
   },
-  "exampleCount": 97,
+  "exampleCount": 109,
   "groups": [
     {
       "analysis": {
@@ -4825,6 +4825,91 @@
           "topics": [
             "Fizik bilimine giriş ve fiziksel nicelikler"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "A",
+              "bank": "CIKMIS",
+              "code": "TYT-0912",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=TYT-0912;veri/sorular-tum.csv#code=TYT-0912",
+              "explanation": "Ali aynı noktaya döndüğü için yer değiştirme sıfırdır. Geçen süre sıfırdan büyük olduğundan ortalama hızının büyüklüğü 0 km/h olur; A. Adımlar toplam yolu verir, ortalama hızın payını vermez.",
+              "sourceFingerprint": "c0ad7aa8097c0b6dacd2d54a689ca504ef60f95f73aaca81fc11c1c78d7c8b12",
+              "sourceLabel": "Hareket",
+              "year": "2025"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-tyt-fizik-09-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-tyt-fizik.json#id=3a-tyt-fizik-09-01;veri/sorular-ogm.csv#code=3a-tyt-fizik-09-01",
+              "explanation": "Hız vektörel, sürat skalerdir; I ikisine birden uymaz. İkisinin de birimi uzunluk/zaman olduğundan birimleri aynıdır ve ikisi de türetilmiştir. II ve III, D.",
+              "sourceFingerprint": "e2e6aee0749bd9e23222f1acdd87a16cc32b689300144fe27a28a7a679e6cce8",
+              "sourceLabel": "Hareket ve Kuvvet",
+              "year": ""
+            }
+          ],
+          "id": "hareket-yol-yer-degistirme",
+          "learn": [
+            "Alınan yol, izlenen güzergâhın uzunluğudur ve skalerdir. Yer değiştirme başlangıçtan bitişe çizilen vektördür. Başlangıca dönülen bir yolculukta yol sıfır olmayabilir; yer değiştirme sıfırdır.",
+            "Ortalama sürat toplam yolun toplam süreye, ortalama hız ise yer değiştirmenin toplam süreye oranıdır. Beklemeler de bu süreye dahildir. Anlık sürat ile anlık hızın büyüklüğü eşit olsa da ortalama sürat her zaman ortalama hızın büyüklüğüne eşit değildir.",
+            "Hareketi bir doğrultuda incelerken bir pozitif yön seç. Konum-zaman grafiğinin eğimi hız, hız-zaman grafiğinin işaretli alanı yer değiştirmedir. Toplam yolu bulmak için hız-zaman grafiğinin eksen altında kalan alanlarının büyüklüklerini de ekle."
+          ],
+          "patterns": [
+            {
+              "id": "gidis-donus",
+              "logic": "Önce uç konumları karşılaştır; ortalama hız için güzergâh uzunluğu gerekmez.",
+              "mini": {
+                "answer": "Yer değiştirme 0, toplam yol 240 m: ortalama hız 0 m/s, ortalama sürat 3 m/s.",
+                "question": "Bir öğrenci 120 m doğuya, sonra 120 m batıya yürüyüp 80 s sonunda başlangıca dönüyor. Ortalama hız ve sürati nedir?"
+              },
+              "recognize": "Gidiş-dönüş, bir tam tur veya aynı kapıya geri dönüş verilir.",
+              "tip": "Toplam süreyi hesaplarken beklemeyi de dahil et.",
+              "title": "Başlangıca dönme",
+              "trap": "Toplam yolu yer değiştirme yerine yazmak."
+            },
+            {
+              "id": "isaretli-alan",
+              "logic": "Yer değiştirmede alanları işaretleriyle, yolda büyüklükleriyle topla.",
+              "mini": {
+                "answer": "Yer değiştirme 6−2=4 m, toplam yol 6+2=8 m; ortalama hız +0,8 m/s ve ortalama sürat 1,6 m/s.",
+                "question": "Hareketli 3 s boyunca +2 m/s, ardından 2 s boyunca −1 m/s hızla gidiyor. Yol ve yer değiştirme?"
+              },
+              "recognize": "Hız-zaman grafiğinde pozitif ve negatif bölgeler vardır.",
+              "tip": "Eksenin altında olmak negatif konumu değil, seçilen yöne ters hızı anlatır.",
+              "title": "Grafikte işaretli alan",
+              "trap": "Negatif alanı toplam yoldan çıkarmak."
+            }
+          ],
+          "pitfall": "Başlangıca dönen bir hareketlinin ortalama hızı sıfırdır; bu, yol boyunca durduğu anlamına gelmez.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "0",
+              "4",
+              "6",
+              "8"
+            ],
+            "explanation": "B · Yer değiştirme doğuya 40 m, toplam süre 10 s olduğundan ortalama hızın büyüklüğü 4 m/s olur. 8 m/s, ortalama sürattir.",
+            "question": "Bir araç 60 m doğuya ve 20 m batıya toplam 10 saniyede gidiyor. Ortalama hızının büyüklüğü kaç m/s olur?"
+          },
+          "sources": [
+            {
+              "catalogId": 25,
+              "page": 31
+            }
+          ],
+          "steps": [
+            "Başlangıç ve bitiş konumlarını belirle.",
+            "Toplam yolu ve işaretli yer değiştirmeyi ayrı hesapla.",
+            "Soru ortalama hız mı ortalama sürat mi istiyor, kontrol et.",
+            "İstenen niceliği toplam süreye böl; yön ve birimi belirt."
+          ],
+          "title": "Hareket: Yol, Yer Değiştirme ve Ortalama",
+          "topics": [
+            "Hareket ve kuvvet"
+          ]
         }
       ],
       "readingSources": [
@@ -4834,7 +4919,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/tyt-fizik/tyt-fizik.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Fizik",
       "units": [
         {
@@ -4986,6 +5071,188 @@
             "Fonksiyonlar",
             "Parabol"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0086",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=AYT_Sayisal-0086;veri/sorular-tum.csv#code=AYT_Sayisal-0086",
+              "explanation": "Çift polinomda 2 ve 3 köklerine −2 ve −3 de eşlik eder. Derece dört ve baş katsayı 1 olduğundan P(x)=(x²−4)(x²−9). P(1)=(−3)(−8)=24, C.",
+              "sourceFingerprint": "09865b2f820a0d3fc4b21c0f4eeaa354a316d777e436b12e2c6a88182970f24d",
+              "sourceLabel": "Polinomlar",
+              "year": "2018"
+            },
+            {
+              "answer": "E",
+              "bank": "OGM",
+              "code": "3a-ayt-matematik-10-02",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-matematik.json#id=3a-ayt-matematik-10-02;veri/sorular-ogm.csv#code=3a-ayt-matematik-10-02",
+              "explanation": "P'nin derecesi 2, Q'nun 3'tür. Toplamda üçüncü dereceli terim iptal olmaz, a=3. Çarpımın derecesi 2+3=5 olduğundan b=5 ve a·b=15, E.",
+              "sourceFingerprint": "725643cd02cc670aa4931292ccfbe3357dff3a5be3ad13b81848da50f6476afa",
+              "sourceLabel": "Polinomlar",
+              "year": ""
+            }
+          ],
+          "id": "polinom-derece-carpan",
+          "learn": [
+            "Bir değişkenli polinomda değişkenin üsleri negatif olmayan tam sayılardır. Derece, katsayısı sıfır olmayan en yüksek üslü terimden bulunur. Baş katsayı ve sabit terim farklı bilgilerdir; sabit terim P(0), katsayılar toplamı P(1) olur.",
+            "Sıfır olmayan polinomların çarpımında dereceler toplanır. Toplamda en yüksek dereceli terimler birbirini götürebilir; aynı dereceye sahip iki polinomun toplamının derecesi mutlaka o derece değildir.",
+            "P(a)=0 ise x−a, P(x)'in çarpanıdır. P(x)=P(−x) eşitliği her gerçek x için veriliyorsa tek kuvvetli terimlerin katsayıları sıfırdır. Bu simetri, sıfır olmayan bir a kökünün yanında −a kökünü de getirir."
+          ],
+          "patterns": [
+            {
+              "id": "derece-iptal",
+              "logic": "Baş terimleri açıkça topla; çarpımda ise sıfır olmayan polinomların derecelerini topla.",
+              "mini": {
+                "answer": "P+Q=2x+5 olduğundan derece 1'dir.",
+                "question": "P(x)=x³+2x ve Q(x)=−x³+5 için P+Q'nun derecesi kaçtır?"
+              },
+              "recognize": "Toplam veya farkın derecesi sorulur.",
+              "tip": "Dereceyi yalnız en yüksek görünen üs değil, son durumda sıfır olmayan katsayı belirler.",
+              "title": "Toplamda baş terim iptali",
+              "trap": "Aynı derecedeki iki polinomun toplamına doğrudan aynı dereceyi vermek."
+            },
+            {
+              "id": "cift-polinom",
+              "logic": "Çift polinomun sıfır olmayan gerçek kökleri ± çiftleri oluşturur.",
+              "mini": {
+                "answer": "P(x)=(x²−1)(x²−4), dolayısıyla P(0)=4.",
+                "question": "Baş katsayısı 1 olan dördüncü dereceden çift polinomun 1 ve 2 kökleri varsa P(0) nedir?"
+              },
+              "recognize": "P(x)=P(−x) ile kökler birlikte verilir.",
+              "tip": "Çarpanların toplam derecesini verilen dereceyle karşılaştır.",
+              "title": "Simetriden eş kökler",
+              "trap": "Yalnız verilen pozitif kökleri kullanıp eksik dereceli ifade yazmak."
+            }
+          ],
+          "pitfall": "Çarpımın derece kuralını sıfır polinomuna uygulama; toplamda baş terimlerin birbirini götürebileceğini unutma.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "2",
+              "5",
+              "6",
+              "8"
+            ],
+            "explanation": "C · Katsayılar toplamı P(1)=2−1+5=6'dır.",
+            "question": "P(x)=2x³−x+5 polinomunun katsayıları toplamı kaçtır?"
+          },
+          "sources": [
+            {
+              "catalogId": 130,
+              "page": 2
+            },
+            {
+              "catalogId": 130,
+              "page": 15
+            },
+            {
+              "catalogId": 130,
+              "page": 24
+            }
+          ],
+          "steps": [
+            "Sorulanın değer, derece veya katsayı bilgisi olduğunu belirle.",
+            "Sıfır olmayan baş terimleri ve varsa iptal olabilecek terimleri kontrol et.",
+            "Kök koşullarını çarpana dönüştür; simetriyi ayrıca kullan.",
+            "Baş katsayıyı yerleştir ve son ifadeyi yerine koyarak kontrol et."
+          ],
+          "title": "Polinom: Dereceyi ve Çarpanları Birlikte Kullan",
+          "topics": [
+            "Polinomlar"
+          ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0141",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=AYT_Sayisal-0141;veri/sorular-tum.csv#code=AYT_Sayisal-0141",
+              "explanation": "Görselde 0<x<π/2 ve secx·tanx·(1−sinx)=1/4 verilir. Sol taraf sinx(1−sinx)/cos²x=sinx/(1+sinx) olur. Aralık sadeleştirmeyi geçerli kılar. 4sinx=1+sinx, sinx=1/3 ve cscx=3, E.",
+              "sourceFingerprint": "5412c42f9666c6e670f95e675bbc7b646ee3e6ef69c222a5dea7181ed2d124f3",
+              "sourceLabel": "Trigonometri",
+              "year": "2019"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-matematik-40-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-matematik.json#id=3a-ayt-matematik-40-01;veri/sorular-ogm.csv#code=3a-ayt-matematik-40-01",
+              "explanation": "Görseldeki yönlü açı −α'dır. Nokta (cos(−α),sin(−α))=(cosα,−sinα) olur; A. x koordinatında cos, y koordinatında sin kullanılır.",
+              "sourceFingerprint": "fcab5d807be16fb8613eee8b38e966a4f4c0380b297928f1d5e720986d59133c",
+              "sourceLabel": "Trigonometri",
+              "year": ""
+            }
+          ],
+          "id": "trigonometri-bolge-ozdeslik",
+          "learn": [
+            "Birim çemberde yönlü θ açısına karşılık gelen noktanın koordinatları (cosθ, sinθ)'dır. Saat yönü negatif, ters yönü pozitiftir. Bir açının işaretini değiştirince cos(−θ)=cosθ ve sin(−θ)=−sinθ olur.",
+            "sin²θ+cos²θ=1 bağıntısı birim çemberden gelir. tanθ=sinθ/cosθ, secθ=1/cosθ ve cscθ=1/sinθ yazarken paydaların sıfır olmaması gerekir. İşlem boyunca başlangıçtaki tanım koşullarını koru.",
+            "Özdeşlik sadeleştirmelerinde 1−sin²θ=(1−sinθ)(1+sinθ) çarpanlaştırması yararlıdır. Bir çarpanı sadeleştirmeden önce sıfır olamayacağını verilen aralıkla doğrula; cebirsel işlem tanım kümesini genişletmesin."
+          ],
+          "patterns": [
+            {
+              "id": "yonlu-aci",
+              "logic": "Noktayı (cosθ,sinθ) yaz ve θ yerine verilen yönlü açıyı koy.",
+              "mini": {
+                "answer": "(√3/2,−1/2). cos çift, sin tek fonksiyondur.",
+                "question": "−30° açısının birim çemberdeki noktası nedir?"
+              },
+              "recognize": "Birim çember üzerinde saat yönünde ölçülen açı verilir.",
+              "tip": "Negatif açı tek başına her iki koordinatın negatif olduğu anlamına gelmez.",
+              "title": "Negatif açının koordinatları",
+              "trap": "sin ile cos'un yerini değiştirmek."
+            },
+            {
+              "id": "eslenik-carpan",
+              "logic": "cos²θ=(1−sinθ)(1+sinθ) yaz; yalnız sıfır olmayan ortak çarpanı sadeleştir.",
+              "mini": {
+                "answer": "1/(1+sinθ). Bu aralıkta 1−sinθ ve cosθ sıfır değildir.",
+                "question": "0<θ<π/2 için (1−sinθ)/cos²θ nasıl sadeleşir?"
+              },
+              "recognize": "1±sinθ ile cos²θ aynı kesirde görünür.",
+              "tip": "Aralığı işlemden önce kullan.",
+              "title": "Özdeşlikle sadeleştirme",
+              "trap": "Sıfır paydada sadeleştirme yapmak."
+            }
+          ],
+          "pitfall": "cos(−θ)'nın işaretini otomatik değiştirme. Sadeleşen paydanın sıfır olabileceği değerler çözüm olarak geri alınmaz.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "3/4",
+              "4/3",
+              "3/5",
+              "4/5"
+            ],
+            "explanation": "A · İlk bölgede cosθ pozitiftir: cosθ=√(1−9/25)=4/5. tanθ=(3/5)/(4/5)=3/4.",
+            "question": "0<θ<π/2 ve sinθ=3/5 ise tanθ kaçtır?"
+          },
+          "sources": [
+            {
+              "catalogId": 133,
+              "page": 1
+            },
+            {
+              "catalogId": 35,
+              "page": 38
+            }
+          ],
+          "steps": [
+            "Açının birimini, yönünü ve verilen aralığı belirle.",
+            "İşaretleri birim çember bölgesinden kontrol et.",
+            "Gerekirse tan, sec ve csc'yi sin/cos cinsinden yaz.",
+            "Özdeşlik ve çarpanlaştırmayı uygula; paydayı ve elde edilen değeri aralıkla kontrol et."
+          ],
+          "title": "Trigonometri: Bölge, İşaret ve Özdeşlik",
+          "topics": [
+            "Trigonometri"
+          ]
         }
       ],
       "readingSources": [
@@ -4995,7 +5262,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-matematik/ayt-matematik.pdf"
         }
       ],
-      "readyTopicCount": 2,
+      "readyTopicCount": 4,
       "subject": "Matematik",
       "units": [
         {
@@ -5156,6 +5423,95 @@
           "topics": [
             "Vektörler"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "C",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0355",
+              "evidenceRef": "veri-hatti/ogm-yks-cikmis/ham/sorular.json#id=AYT_Sayisal-0355;veri/sorular-tum.csv#code=AYT_Sayisal-0355",
+              "explanation": "Duvara bastırılan tuğlalar düşeyde dengededir. K ve L için sürtünme mg, N için 2mg olur: fN>fK=fL, C. Yatay bastırma kuvveti normal kuvveti ve sürtünmenin üst sınırını etkiler; denge için gereken sürtünmeyi doğrudan belirlemez.",
+              "sourceFingerprint": "5eaac36dbd92914ce925ca8e543114b2fdb86efd62b777d8331fbfc6dfa683f0",
+              "sourceLabel": "Newton’ın Hareket Yasaları",
+              "year": "2020"
+            },
+            {
+              "answer": "C",
+              "bank": "OGM",
+              "code": "3a-ayt-fizik-08-01",
+              "evidenceRef": "veri-hatti/ogm-sorular/kayit/3a-ayt-fizik.json#id=3a-ayt-fizik-08-01;veri/sorular-ogm.csv#code=3a-ayt-fizik-08-01",
+              "explanation": "Görselde K'nin konumu, L'nin hızı sabittir; ikisinin ivmesi sıfırdır. M'nin ivmesi sabit ama sıfırdan farklıdır. Bu nedenle net kuvveti sıfır olanlar K ve L, C.",
+              "sourceFingerprint": "a50ba1fde0b4ec38ba00494a5f3b342d99da9747a8c9e76d70b9f536535ecef3",
+              "sourceLabel": "Kuvvet ve Hareket",
+              "year": ""
+            }
+          ],
+          "id": "newton-serbest-cisim",
+          "learn": [
+            "Bir cismin ivmesini o cisme etki eden kuvvetlerin vektörel toplamı belirler: ΣF=ma. Net kuvvet sıfırsa ivme sıfırdır; cisim durabilir veya sabit hızla hareket edebilir. Sabit sürat, yön değişiyorsa tek başına sıfır ivme göstermez.",
+            "Serbest cisim diyagramında seçtiğin cisme dışarıdan etki eden kuvvetleri çiz. Ağırlık, normal kuvvet, ip gerilmesi ve sürtünme farklı etkileşimlerdir. Etki-tepki çifti farklı cisimlere etki ettiğinden aynı cismin diyagramında birbirini götüren iki kuvvet olarak kullanılamaz.",
+            "Statik sürtünme, kaymayı önlemek için gereken büyüklüğü alır; en büyük değeri μsN'dir. Cisim duruyorsa doğrudan fs=μsN yazmak yerine önce denge denklemini kur. Eşitlik sınır kayma durumunda geçerlidir."
+          ],
+          "patterns": [
+            {
+              "id": "net-kuvvet-ivme",
+              "logic": "Önce ivmeyi belirle; sonra ΣF=ma bağlantısını kullan.",
+              "mini": {
+                "answer": "İvme 0 olduğundan net kuvvet 0 N'dur.",
+                "question": "Sabit −4 m/s hızla doğrusal hareket eden 2 kg cisme etki eden net kuvvet nedir?"
+              },
+              "recognize": "Konum, hız veya ivme grafikleriyle kuvvet sorulur.",
+              "tip": "Hızın negatif olması ivmenin sıfır olmasına engel değildir.",
+              "title": "Hareket grafiğinden net kuvvet",
+              "trap": "Hareket eden cisimde mutlaka net kuvvet bulunduğunu sanmak."
+            },
+            {
+              "id": "statik-surtunme",
+              "logic": "Dengeyi sağlayan sürtünmeyi hesapla; μsN ile yalnız üst sınırı kontrol et.",
+              "mini": {
+                "answer": "3 N, uygulanan kuvvete ters yönde. 8 N kaymadan önce ulaşılabilecek üst sınırdır.",
+                "question": "Yatay düzlemdeki cisme 3 N yatay kuvvet uygulanıyor; en büyük statik sürtünme 8 N ve cisim duruyor. Sürtünme kaç N?"
+              },
+              "recognize": "Cisim bir kuvvete rağmen hareketsiz kalır.",
+              "tip": "Aynı yüzeyde farklı bastırma kuvvetleri aynı gereken sürtünmeyi sağlayabilir.",
+              "title": "Gereken sürtünme ve sınır",
+              "trap": "Her durumda fs=μsN yazmak."
+            }
+          ],
+          "pitfall": "Normal kuvvet her durumda mg değildir. Yatay veya düşey başka kuvvet bileşenleri varsa ilgili eksenin denklemiyle bulunur.",
+          "practice": {
+            "answer": 0,
+            "choices": [
+              "Doğuya 2 m/s²",
+              "Batıya 2 m/s²",
+              "Doğuya 14/3 m/s²",
+              "0"
+            ],
+            "explanation": "A · Net kuvvet doğuya 6 N'dur. a=6/3=2 m/s² doğuya olur.",
+            "question": "Sürtünmesiz yatay düzlemde 3 kg cisme doğuya 10 N, batıya 4 N uygulanıyor. İvmesi nedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 32,
+              "page": 23
+            },
+            {
+              "catalogId": 32,
+              "page": 28
+            }
+          ],
+          "steps": [
+            "İncelenen cismi veya sistemi seç.",
+            "Ona etki eden kuvvetleri ve pozitif eksenleri çiz.",
+            "Her eksende ΣF=ma yaz; denge verilen eksende a=0 kullan.",
+            "Sürtünmenin gerekli değerini bulup en büyük statik değeri aşmadığını kontrol et."
+          ],
+          "title": "Newton Yasaları: Önce Serbest Cisim Diyagramı",
+          "topics": [
+            "Newton’ın hareket yasaları"
+          ]
         }
       ],
       "readingSources": [
@@ -5165,7 +5521,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-fizik/ayt-fizik.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Fizik",
       "units": [
         {
@@ -5314,6 +5670,99 @@
             "Modern atom teorisi",
             "Periyodik sistem ve elektron dizilimi"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "D",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0486",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/AYT_Sayisal.pdf · PDF s. 167 · Gazların Özellikleri ve Gaz Yasaları",
+              "explanation": "Basınç sabit olduğundan V∝nT. V₂=2,0×2×300/400=3,0 L, D. Sıcaklığın azalmasına rağmen mol sayısındaki artış nedeniyle hacim büyür.",
+              "sourceFingerprint": "d535391620b31301ae667d652a6b53ee8ab5e841c78a7ccb244b599a899b7391",
+              "sourceLabel": "Gazların Özellikleri ve Gaz Yasaları",
+              "year": "2021"
+            },
+            {
+              "answer": "A",
+              "bank": "OGM",
+              "code": "3a-ayt-kimya-13-04",
+              "evidenceRef": "kaynaklar/ogm-materyal/Kimya/AYT/3 Adim Soru Bankasi - AYT Kimya.pdf · PDF s. 37 · Gazların Özellikleri ve Gaz Yasaları - İdeal Gaz Yasası",
+              "explanation": "Soru modelinde gaz miktarı ve dış basıncı değişmeyen esnek balonun soğuyunca küçülmesi hacim-mutlak sıcaklık ilişkisine örnektir; A. Gaz ekleme veya basınç değişimi içeren seçenekler yalnız Charles yasası değildir.",
+              "sourceFingerprint": "62d66dc02ec4eb351dab6b25ae6c3a18a60642dfd7d501a228ee9dc66fd05f56",
+              "sourceLabel": "Gazlar",
+              "year": ""
+            }
+          ],
+          "id": "gazlar-degisken-kosul",
+          "learn": [
+            "İdeal gaz modeli için PV=nRT kullanılır. İki durum karşılaştırılırken aynı gaz sabitinin kullanılmasıyla P₁V₁/(n₁T₁)=P₂V₂/(n₂T₂) elde edilir. Oranlarda sıcaklık mutlaka kelvin olmalıdır; okul sorularında T(K)=t(°C)+273 yaklaşımı kullanılır.",
+            "Mol ve sıcaklık sabitse basınç ile hacim ters; mol ve basınç sabitse hacim ile mutlak sıcaklık doğru orantılıdır. Mol ve hacim sabitse basınç ile mutlak sıcaklık doğru orantılıdır. Gaz eklenirse mol sayısının sabit kaldığını varsayma.",
+            "Sürtünmesiz hareketli piston tek başına bütün koşulların sabit olduğu anlamına gelmez. Dış basınç ve yük değişmiyorsa denge hâlleri aynı basınçta karşılaştırılabilir. Sert kapta hacim sabit, esnek balonda ise verilen dış koşullar belirleyicidir."
+          ],
+          "patterns": [
+            {
+              "id": "iki-degisken",
+              "logic": "Hacim oranı n₂T₂/(n₁T₁)'dir.",
+              "mini": {
+                "answer": "2×450/300=3 kat olur.",
+                "question": "Basınç sabitken mol sayısı iki katına, sıcaklık 300 K'den 450 K'ye çıkarsa hacim kaç kat olur?"
+              },
+              "recognize": "Sabit basınçta gaz eklenir ve sıcaklık değiştirilir.",
+              "tip": "İki çarpanı ayrı hesaplayıp sonra birleştir.",
+              "title": "Mol ve sıcaklığın birlikte değişmesi",
+              "trap": "Sıcaklık azalınca hacmin mutlaka azalacağını söylemek."
+            },
+            {
+              "id": "kelvin-orani",
+              "logic": "Önce her sıcaklığı kelvine çevir.",
+              "mini": {
+                "answer": "300 K'den 600 K'ye çıkıldığı için basınç iki kat olur.",
+                "question": "Sabit hacim ve mol sayısında sıcaklık 27 °C'den 327 °C'ye çıkarsa basınç kaç kat olur?"
+              },
+              "recognize": "Sıcaklıklar Celsius olarak verilmiştir.",
+              "tip": "0 °C sıfır mutlak sıcaklık değildir.",
+              "title": "Sıcaklık oranı",
+              "trap": "27 °C'den 54 °C'ye çıkınca sıcaklığı iki kat saymak."
+            }
+          ],
+          "pitfall": "Celsius sıcaklıklarını oranlama. Hem mol hem sıcaklık değişiyorsa yalnız Charles veya Boyle yasasını tek başına kullanma.",
+          "practice": {
+            "answer": 1,
+            "choices": [
+              "2 L",
+              "3 L",
+              "6 L",
+              "12 L"
+            ],
+            "explanation": "B · P₁V₁=P₂V₂ ve P₂=2P₁ olduğundan V₂=3 L olur.",
+            "question": "Mol sayısı ve sıcaklığı sabit ideal gazın basıncı iki katına çıkarılıyor. Başlangıç hacmi 6 L ise son hacim nedir?"
+          },
+          "sources": [
+            {
+              "catalogId": 33,
+              "page": 32
+            },
+            {
+              "catalogId": 33,
+              "page": 33
+            },
+            {
+              "catalogId": 33,
+              "page": 34
+            }
+          ],
+          "steps": [
+            "Her durum için P, V, n ve T bilgilerini ayrı yaz.",
+            "Verilmeyen ama sabit olduğu açıkça belirtilen koşulları işaretle.",
+            "Sıcaklıkları kelvine, diğer büyüklükleri tutarlı birimlere çevir.",
+            "Sabitleri sadeleştirerek oran kur ve değişimin yönünü kontrol et."
+          ],
+          "title": "Gazlar: Sabit Değişkeni Seç, Kelvin Kullan",
+          "topics": [
+            "Gazlar"
+          ]
         }
       ],
       "readingSources": [
@@ -5323,7 +5772,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-kimya/ayt-kimya.pdf"
         }
       ],
-      "readyTopicCount": 2,
+      "readyTopicCount": 3,
       "subject": "Kimya",
       "units": [
         {
@@ -5479,6 +5928,95 @@
           "topics": [
             "Sinir sistemi"
           ]
+        },
+        {
+          "approvalStatus": "teacher_pending",
+          "examples": [
+            {
+              "answer": "E",
+              "bank": "CIKMIS",
+              "code": "AYT_Sayisal-0598",
+              "evidenceRef": "kaynaklar/yks-cikmis-sorular/OGM Kitapciklari/AYT_Sayisal.pdf · PDF s. 198 · Denetleyici ve Düzenleyici Sistem, Duyu Organları",
+              "explanation": "İnsülin kan glikozunu azaltırken adrenalin ve glukagon artırıcı yönde etki gösterir. II ve III, E. Etki yönünü hormon adının yanında ayrı kaydetmek karışıklığı önler.",
+              "sourceFingerprint": "8969d375eb2f672f3d9f0cf2c06b7e3a94dd58696d4bfb22deb29d5887f2d9af",
+              "sourceLabel": "Denetleyici ve Düzenleyici Sistem, Duyu Organları",
+              "year": "2023"
+            },
+            {
+              "answer": "D",
+              "bank": "OGM",
+              "code": "3a-ayt-biyoloji-06-02",
+              "evidenceRef": "kaynaklar/ogm-materyal/Biyoloji/AYT/3 Adim Soru Bankasi - AYT Biyoloji.pdf · PDF s. 23 · Denetleyici ve Düzenleyici Sistem - Endokrin Bezler",
+              "explanation": "İnsülin, glikozun kullanımını ve depolanmasını destekleyip kan glikozunu azaltır. Bu nedenle glikoz metabolizmasını yavaşlattığı ifadesi sorudaki yanlış yargıdır; D.",
+              "sourceFingerprint": "2b1855157708a9c3a650714176aa21d79493ba5e465dec2d2af306008b3c3bf0",
+              "sourceLabel": "İnsan Fizyolojisi",
+              "year": ""
+            }
+          ],
+          "id": "endokrin-hedef-geri-bildirim",
+          "learn": [
+            "Endokrin bezler hormonlarını kana verir. Hormonun kanda taşınması bütün hücrelerin aynı yanıtı verdiği anlamına gelmez; hedef hücrenin uygun reseptör ve yanıt mekanizması önemlidir. Salgı miktarı ile hedef hücrenin duyarlılığını ayrı değerlendir.",
+            "Pankreasın endokrin bölümünde beta hücreleri insülin, alfa hücreleri glukagon salgılar. İnsülin kan glikozunu azaltma, glukagon artırma yönünde etkilidir. Glukagonun karaciğerde glikojen yıkımını artırması, kan glikozunun düzenlenmesinde kullanılır.",
+            "Negatif geri bildirimde başlangıçtaki değişimi azaltan yanıt oluşur. Kan glikozu arttığında insülin yanıtı, azaldığında glukagon yanıtı bu düzenlemenin örnekleridir. Adrenalin de kan glikozunu artırabilir; aynı etkiyi yapan hormonların mutlaka aynı bezden salgılandığını düşünme."
+          ],
+          "patterns": [
+            {
+              "id": "etki-yonu",
+              "logic": "Önce her hormon için etki yönünü yaz; sonra istenen grubu seç.",
+              "mini": {
+                "answer": "Glikozu artırarak başlangıçtaki düşüşü azaltır; negatif geri bildirime katkı verir.",
+                "question": "Kan glikozu azaldığında glukagon yanıtı bu değişimi artırır mı azaltır mı?"
+              },
+              "recognize": "Bir kan bileşenini artıran veya azaltan hormonlar sorulur.",
+              "tip": "İnsülin ve glukagon aynı organın farklı hücrelerinden salgılanır.",
+              "title": "Birbirine zıt hormon etkileri",
+              "trap": "Aynı organdan çıkan hormonların aynı etkiyi yapacağını sanmak."
+            },
+            {
+              "id": "hedef-duyarliligi",
+              "logic": "Salgı miktarının yanında reseptör ve hücresel yanıtı da değerlendir.",
+              "mini": {
+                "answer": "Hayır. Uygun reseptör ve hücrenin yanıt mekanizması gerekir.",
+                "question": "Bir hormon kana veriliyor ancak uygun reseptör taşımayan hücreye ulaşıyor. O hücrede zorunlu olarak aynı yanıt oluşur mu?"
+              },
+              "recognize": "Hormon bulunduğu hâlde hedef etkisi yetersizdir.",
+              "tip": "Yetersiz etki her zaman hormonun hiç salgılanmadığını göstermez.",
+              "title": "Salgı ve hedef yanıtını ayır",
+              "trap": "Hormon düzeyi ile hücre yanıtını aynı değişken saymak."
+            }
+          ],
+          "pitfall": "Hormonun varlığını tek başına hedef hücrenin normal yanıt vereceğinin kanıtı sayma; salgı miktarı ve hedef yanıtı ayrı değişkenlerdir.",
+          "practice": {
+            "answer": 2,
+            "choices": [
+              "Glukagon",
+              "Adrenalin",
+              "İnsülin",
+              "Tiroksin"
+            ],
+            "explanation": "C · Pankreasın beta hücrelerinden salgılanan insülin kan glikozunun azaltılmasında etkilidir.",
+            "question": "Kan glikozunu azaltıcı yönde etkili pankreas hormonu hangisidir?"
+          },
+          "sources": [
+            {
+              "catalogId": 30,
+              "page": 25
+            },
+            {
+              "catalogId": 30,
+              "page": 32
+            }
+          ],
+          "steps": [
+            "Değişen iç ortam koşulunu belirle.",
+            "Hormonun salgılandığı yeri ve hedefteki etki yönünü ayır.",
+            "Yanıtın başlangıçtaki değişimi azaltıp azaltmadığını kontrol et.",
+            "Eksik salgı ile hedefin yanıtsızlığını ayrı olasılıklar olarak değerlendir."
+          ],
+          "title": "Endokrin Sistem: Hedef Hücre ve Geri Bildirim",
+          "topics": [
+            "Endokrin sistem"
+          ]
         }
       ],
       "readingSources": [
@@ -5488,7 +6026,7 @@
           "url": "https://ogm-large-cdn.eba.gov.tr/ogm-materyal/mebi-konu-ozetleri/ayt-biyoloji/ayt-biyoloji.pdf"
         }
       ],
-      "readyTopicCount": 1,
+      "readyTopicCount": 2,
       "subject": "Biyoloji",
       "units": [
         {
@@ -5526,11 +6064,25 @@
       ]
     }
   ],
-  "lessonCount": 49,
-  "patternCount": 117,
+  "lessonCount": 55,
+  "patternCount": 129,
   "reviewedAt": "2026-10-14",
   "schemaVersion": 1,
   "sources": {
+    "130": {
+      "fileUrl": "/api/topic-pdfs/130/file",
+      "pageCount": 34,
+      "sha256": "8257704b2993e889510b6ee777eda4570c7bae6d9afc1db0a1af37d1d239fa6d",
+      "title": "ÇARPANLARA AYIRMA POLİNOMLAR",
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/br1qomm44br.pdf"
+    },
+    "133": {
+      "fileUrl": "/api/topic-pdfs/133/file",
+      "pageCount": 33,
+      "sha256": "fab69c6c71878eb54d60a03d0a1e042a98fe9dd303b2d88333b074be62d1228e",
+      "title": "TRİGONOMETRİ",
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/kitap/pksw1atrgpn.pdf"
+    },
     "22": {
       "fileUrl": "/api/topic-pdfs/22/file",
       "pageCount": 174,
@@ -5636,7 +6188,7 @@
       "exam": "AYT",
       "guideId": "ayt-biyoloji",
       "needsVisualReview": 955,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 4917,
       "sources": [
         {
@@ -5813,7 +6365,7 @@
       "exam": "AYT",
       "guideId": "ayt-fizik",
       "needsVisualReview": 887,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 4988,
       "sources": [
         {
@@ -5829,7 +6381,7 @@
       "exam": "AYT",
       "guideId": "ayt-kimya",
       "needsVisualReview": 1054,
-      "readyTopics": 2,
+      "readyTopics": 3,
       "records": 6207,
       "sources": [
         {
@@ -5845,7 +6397,7 @@
       "exam": "AYT",
       "guideId": "ayt-matematik",
       "needsVisualReview": 1444,
-      "readyTopics": 2,
+      "readyTopics": 4,
       "records": 6834,
       "sources": [
         {
@@ -6024,7 +6576,7 @@
       "exam": "TYT",
       "guideId": "tyt-fizik",
       "needsVisualReview": 1107,
-      "readyTopics": 1,
+      "readyTopics": 2,
       "records": 4103,
       "sources": [
         {

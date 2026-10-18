@@ -10,6 +10,9 @@ import com.hedefyks.exam.ExamDtos.SubmitRequest;
 import com.hedefyks.exam.ExamDtos.Summary;
 import com.hedefyks.user.AppUserDetails;
 import com.hedefyks.question.HintService;
+import com.hedefyks.question.ExamType;
+import com.hedefyks.question.QuestionBank;
+import com.hedefyks.question.QuestionSelectionMode;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,16 +32,36 @@ public class ExamController {
 
     private final ExamService service;
     private final HintService hints;
+    private final ExamPlanService plans;
 
-    public ExamController(ExamService service, HintService hints) {
+    public ExamController(ExamService service, HintService hints, ExamPlanService plans) {
         this.service = service;
         this.hints = hints;
+        this.plans = plans;
     }
 
     @PostMapping
     public ResponseEntity<ExamSession> create(@AuthenticationPrincipal AppUserDetails me,
                                               @Valid @RequestBody CreateExamRequest req) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(me.id(), req));
+    }
+
+    @GetMapping("/plan")
+    public ExamPlanService.Plan plan(@AuthenticationPrincipal AppUserDetails me,
+                                     @RequestParam(required = false) QuestionBank bank,
+                                     @RequestParam ExamType examType,
+                                     @RequestParam(required = false) ExamTrack track,
+                                     @RequestParam(defaultValue = "MIXED") QuestionSelectionMode selectionMode,
+                                     @RequestParam(defaultValue = "true") boolean includeSolved,
+                                     @RequestParam(required = false) Integer questionCount) {
+        return questionCount == null ? plans.fullPlan(me.id(), bank, examType, track, includeSolved)
+                : plans.plan(me.id(), bank, examType, track, selectionMode, questionCount);
+    }
+
+    @PostMapping("/full")
+    public ResponseEntity<ExamSession> createFull(@AuthenticationPrincipal AppUserDetails me,
+                                                  @Valid @RequestBody ExamDtos.FullExamRequest req) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.createFull(me.id(), req));
     }
 
     @GetMapping("/summary")
@@ -69,6 +92,12 @@ public class ExamController {
     public ExamResult submit(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id,
                              @RequestBody(required = false) SubmitRequest req) {
         return service.submit(me.id(), id, req == null ? null : req.answers());
+    }
+
+    @PostMapping("/{id}/cancel")
+    public ResponseEntity<Void> cancel(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
+        service.cancel(me.id(), id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}/result")

@@ -2,3 +2,11 @@
 # sıradaki yeni oturum başlamadan önce bu iki değer görev listesine göre ayarlanır.
 model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
+
+# Full access: onay sorma + sandbox kapalı
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+# Opsiyonel: projeyi güvenilir işaretle (yolu kendi klasörünle değiştir)
+[projects.'C:\Users\KULLANICI\ivme']
+trust_level = "trusted"

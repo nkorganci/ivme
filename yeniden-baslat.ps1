@@ -1,9 +1,24 @@
+[CmdletBinding()]
+param([switch]$FromWatcher)
+
 $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
 $backend = Join-Path $repo 'backend'
 $frontend = Join-Path $repo 'frontend'
 $images = (Join-Path $repo 'veri\resimler-pilot').Replace('\', '/')
 $javaHome = 'C:\Tools\jdk-21'
+. (Join-Path $repo 'canli-kaynaklar.ps1')
+$sourceFingerprint = Get-YksSourceFingerprint
+$stateDir = Join-Path $backend 'target'
+New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
+try {
+    $deploymentLock = [IO.File]::Open((Join-Path $stateDir 'live-restart.lock'),
+        [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+} catch {
+    throw 'Başka bir yeniden başlatma işlemi sürüyor. Kaynak izleyici yeniden deneyecek.'
+}
+
+try {
 
 if (-not (Test-Path -LiteralPath (Join-Path $javaHome 'bin\java.exe'))) {
     throw "JDK 21 bulunamadı: $javaHome"
@@ -23,6 +38,9 @@ try {
     & npm.cmd run build
     if ($LASTEXITCODE -ne 0) { throw 'Ön yüz derlenemedi.' }
 } finally { Pop-Location }
+
+$buildVersion = [Guid]::NewGuid().ToString('N')
+Set-Content -LiteralPath (Join-Path $frontend 'dist\app-version.txt') -Value $buildVersion -NoNewline -Encoding ASCII
 
 & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $repo 'uretim-static-kopyala.ps1')
 if ($LASTEXITCODE -ne 0) { throw 'Ön yüz dosyaları pakete kopyalanamadı.' }
@@ -77,7 +95,8 @@ $assetMatch = [regex]::Match($expectedIndex, '/assets/index-[^" ]+\.js')
 if (-not $assetMatch.Success) { throw 'Derlenen on yuz dosyasi bulunamadi.' }
 $expectedAsset = $assetMatch.Value
 
-for ($attempt = 0; $attempt -lt 30; $attempt++) {
+$ready = $false
+for ($attempt = 0; $attempt -lt 90; $attempt++) {
     Start-Sleep -Seconds 1
     if ($started.HasExited) { break }
     try {
@@ -85,14 +104,48 @@ for ($attempt = 0; $attempt -lt 30; $attempt++) {
         if ($response.StatusCode -eq 200 -and $response.Content.Contains($expectedAsset)) {
             $route = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/ogrenci-takip' -UseBasicParsing -TimeoutSec 2
             if ($route.StatusCode -ne 200) { continue }
+            $trialRoute = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/ogrenci-takip/tyt-denemeleri' -UseBasicParsing -TimeoutSec 2
+            if ($trialRoute.StatusCode -ne 200 -or -not $trialRoute.Content.Contains($expectedAsset)) { continue }
+            $versionResponse = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/app-version.txt' -UseBasicParsing -TimeoutSec 2
+            if ($versionResponse.Content.Trim() -ne $buildVersion) { continue }
             Write-Host "Uygulama hazir: http://localhost:5173 ($expectedAsset)"
-            exit 0
+            $ready = $true
+            break
         }
     } catch { }
 }
-if (-not $started.HasExited) { Stop-Process -Id $started.Id -Force }
-if ($oldJar -and (Test-Path -LiteralPath $oldJar)) {
-    $null = Start-Program $oldJar
-    Write-Warning 'Yeni sürüm açılamadı; önceki paket yeniden başlatıldı.'
+if (-not $ready) {
+    if (-not $started.HasExited) { Stop-Process -Id $started.Id -Force }
+    if ($oldJar -and (Test-Path -LiteralPath $oldJar)) {
+        $null = Start-Program $oldJar
+        Write-Warning 'Yeni sürüm açılamadı; önceki paket yeniden başlatıldı.'
+    }
+    throw "Uygulama baslatildi ancak beklenen on yuz surumu 90 saniyede gorulmedi: $expectedAsset"
 }
-throw "Uygulama baslatildi ancak beklenen on yuz surumu 30 saniyede gorulmedi: $expectedAsset"
+
+Set-Content -LiteralPath (Join-Path $stateDir 'live-deployed.fingerprint') -Value $sourceFingerprint -NoNewline -Encoding ASCII
+if (-not $FromWatcher) {
+    $watchScript = Join-Path $repo 'canli-izle.ps1'
+    $null = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $watchScript + '"')
+    ) -WorkingDirectory $repo -WindowStyle Hidden -PassThru
+    $statusFile = Join-Path $stateDir 'live-watch.status'
+    $watchReady = $false
+    for ($attempt = 0; $attempt -lt 20; $attempt++) {
+        Start-Sleep -Milliseconds 500
+        if (Test-Path -LiteralPath $statusFile) {
+            $status = Get-Item -LiteralPath $statusFile
+            $watchPid = ((Get-Content -LiteralPath $statusFile -Raw) -split '\|')[0]
+            if (((Get-Date).ToUniversalTime() - $status.LastWriteTimeUtc).TotalSeconds -lt 10 -and
+                    $watchPid -match '^\d+$' -and (Get-Process -Id ([int]$watchPid) -ErrorAction SilentlyContinue)) {
+                $watchReady = $true
+                break
+            }
+        }
+    }
+    if (-not $watchReady) { throw 'Uygulama hazır ancak canlı kaynak izleyicisi başlatılamadı.' }
+    Write-Host "Canli guncelleme etkin (izleyici PID $watchPid)."
+}
+} finally {
+    $deploymentLock.Dispose()
+}

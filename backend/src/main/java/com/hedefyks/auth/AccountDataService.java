@@ -56,16 +56,19 @@ public class AccountDataService {
                 + "s.node_name, s.taxonomy_version FROM attempt_taxonomy_snapshot s "
                 + "JOIN question_attempts a ON a.id = s.attempt_id WHERE a.user_id = ? "
                 + "ORDER BY s.attempt_id, s.node_kind, s.node_code", userId));
+        data.put("examTaxonomySnapshots",jdbc.queryForList("SELECT s.exam_question_id,s.node_kind,s.node_code,s.node_name,s.taxonomy_version "
+                + "FROM exam_taxonomy_snapshot s JOIN exam_questions eq ON eq.id=s.exam_question_id JOIN exams e ON e.id=eq.exam_id "
+                + "WHERE e.user_id=? ORDER BY s.exam_question_id,s.node_code",userId));
         data.put("questionHelpfulness", jdbc.queryForList("SELECT question_id, helpful, updated_at "
                 + "FROM question_helpfulness WHERE user_id = ? ORDER BY question_id", userId));
         data.put("questionBoards", jdbc.queryForList("SELECT question_id, strokes_json, version, updated_at "
                 + "FROM question_boards WHERE user_id = ? ORDER BY question_id", userId));
         data.put("feedback", jdbc.queryForList("SELECT question_id, category, difficulty_vote, rating, message, "
                 + "resolved, created_at, updated_at FROM feedback WHERE user_id = ? ORDER BY id", userId));
-        data.put("goals", jdbc.queryForList("SELECT period, metric, subject, target_count, starts_on, ends_on, "
-                + "status, created_at FROM goals WHERE user_id = ? ORDER BY id", userId));
         data.put("activityEvents", jdbc.queryForList("SELECT session_key, event_type, active_seconds, created_at "
                 + "FROM activity_events WHERE user_id = ? ORDER BY id", userId));
+        data.put("curriculumTopicProgress", jdbc.queryForList("SELECT topic_id, completed_at "
+                + "FROM curriculum_topic_progress WHERE user_id = ? ORDER BY topic_id", userId));
         return data;
     }
 
@@ -79,7 +82,6 @@ public class AccountDataService {
         jdbc.update("DELETE FROM question_attempts WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM study_sessions WHERE user_id = ?", userId); // session_questions cascade
         jdbc.update("DELETE FROM exams WHERE user_id = ?", userId); // exam_questions cascade
-        jdbc.update("DELETE FROM goals WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM activity_events WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM users WHERE id = ? AND role = 'USER'", userId);
     }

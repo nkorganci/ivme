@@ -3,6 +3,9 @@ package com.hedefyks.study;
 import com.hedefyks.study.StudySessionDtos.CreateRequest;
 import com.hedefyks.study.StudySessionDtos.Session;
 import com.hedefyks.study.StudySessionDtos.HistoryItem;
+import com.hedefyks.study.StudySessionDtos.UnfinishedSummary;
+import com.hedefyks.study.StudySessionDtos.UnfinishedItem;
+import java.util.List;
 import com.hedefyks.common.PageResponse;
 import com.hedefyks.user.AppUserDetails;
 import jakarta.validation.Valid;
@@ -45,6 +48,16 @@ public class StudySessionController {
         return service.history(me.id(), page, size);
     }
 
+    @GetMapping("/unfinished-summary")
+    public UnfinishedSummary unfinishedSummary(@AuthenticationPrincipal AppUserDetails me) {
+        return service.unfinishedSummary(me.id());
+    }
+
+    @GetMapping("/unfinished")
+    public List<UnfinishedItem> unfinished(@AuthenticationPrincipal AppUserDetails me) {
+        return service.unfinished(me.id());
+    }
+
     @GetMapping("/{id}")
     public Session get(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
         return service.get(me.id(), id);
@@ -53,5 +66,11 @@ public class StudySessionController {
     @PostMapping("/{id}/finish")
     public Session finish(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
         return service.finish(me.id(), id);
+    }
+
+    @PostMapping("/{id}/cancel")
+    public ResponseEntity<Void> cancel(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id) {
+        service.cancel(me.id(), id);
+        return ResponseEntity.noContent().build();
     }
 }

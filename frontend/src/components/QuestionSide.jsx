@@ -9,9 +9,10 @@ import { DIFFICULTIES, bankLabel, difficultyLabel } from '../format.js';
 
 const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
-/** Soru sayfasının dar yan paneli: kompakt künye + katlanır bölümler (varsayılan kapalı). */
+/** Soru görselinin yanındaki karalama, QR ve istatistik alanı. */
 export default function QuestionSide({ q, onRated, canVote }) {
   const [tab, setTab] = useState('board');
+  const [expanded, setExpanded] = useState(true);
   const tabRefs = useRef({});
   const [boardAvailable, setBoardAvailable] = useState(true);
   const [help, setHelp] = useState(q.helpfulness);
@@ -20,7 +21,7 @@ export default function QuestionSide({ q, onRated, canVote }) {
   const votes = q.difficultyVotes || {};
   const total = DIFFICULTIES.reduce((t, d) => t + (votes[d] || 0), 0);
   const availableTabs = [...(boardAvailable ? ['board'] : []), 'qr'];
-  const selectTab = (next) => { setTab(next); tabRefs.current[next]?.focus(); };
+  const selectTab = (next) => { setExpanded(next === 'board'); setTab(next); tabRefs.current[next]?.focus(); };
   const onTabKeyDown = (event, current) => {
     const index = availableTabs.indexOf(current);
     const nextIndex = event.key === 'ArrowRight' ? (index + 1) % availableTabs.length
@@ -37,10 +38,16 @@ export default function QuestionSide({ q, onRated, canVote }) {
   };
 
   return (
-    <aside className="card qside" aria-label="Soru bilgileri">
-      <div className="qside-tabs" role="tablist" aria-label="Soru araçları">
-        {boardAvailable && <button ref={(el) => { tabRefs.current.board = el; }} type="button" role="tab" tabIndex={tab === 'board' ? 0 : -1} id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onKeyDown={(e) => onTabKeyDown(e, 'board')} onClick={() => setTab('board')}>Karalama</button>}
-        <button ref={(el) => { tabRefs.current.qr = el; }} type="button" role="tab" tabIndex={tab === 'qr' ? 0 : -1} id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onKeyDown={(e) => onTabKeyDown(e, 'qr')} onClick={() => setTab('qr')}>QR ve bağlantı</button>
+    <aside className={`card qside${expanded && tab === 'board' ? ' expanded' : ''}`} aria-label="Soru bilgileri">
+      <div className="qside-head">
+        <div className="qside-tabs" role="tablist" aria-label="Soru araçları">
+          {boardAvailable && <button ref={(el) => { tabRefs.current.board = el; }} type="button" role="tab" tabIndex={tab === 'board' ? 0 : -1} id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onKeyDown={(e) => onTabKeyDown(e, 'board')} onClick={() => selectTab('board')}>Karalama</button>}
+          <button ref={(el) => { tabRefs.current.qr = el; }} type="button" role="tab" tabIndex={tab === 'qr' ? 0 : -1} id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onKeyDown={(e) => onTabKeyDown(e, 'qr')} onClick={() => selectTab('qr')}>QR ve bağlantı</button>
+        </div>
+        {boardAvailable && tab === 'board' && <button type="button" className="btn btn-secondary btn-sm"
+          aria-pressed={expanded} onClick={() => setExpanded((value) => !value)}>
+          {expanded ? 'Küçült' : 'Genişlet'}
+        </button>}
       </div>
       {boardAvailable && <div id="panel-board" role="tabpanel" aria-labelledby="tab-board" hidden={tab !== 'board'}>
         <QuestionBoard questionId={q.id} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />

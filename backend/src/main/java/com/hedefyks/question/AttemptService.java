@@ -24,16 +24,18 @@ public class AttemptService {
     private final ExamQuestionRepository examQuestions;
     private final StudySessionService studySessions;
     private final QuestionTaxonomyService taxonomy;
+    private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
 
     public AttemptService(QuestionRepository questions, QuestionAttemptRepository attempts,
                           UserRepository users, ExamQuestionRepository examQuestions,
-                          StudySessionService studySessions, QuestionTaxonomyService taxonomy) {
+                          StudySessionService studySessions, QuestionTaxonomyService taxonomy, com.hedefyks.review.SharedQuestionLabels sharedLabels) {
         this.questions = questions;
         this.attempts = attempts;
         this.users = users;
         this.examQuestions = examQuestions;
         this.studySessions = studySessions;
         this.taxonomy = taxonomy;
+        this.sharedLabels=sharedLabels;
     }
 
     @Transactional(readOnly = true)
@@ -94,6 +96,7 @@ public class AttemptService {
         attempt.setActiveSeconds(req.activeSeconds() == null ? 0 : req.activeSeconds());
         attempts.saveAndFlush(attempt);
         taxonomy.snapshot(attempt.getId(), questionId);
+        sharedLabels.snapshotAttempt(attempt.getId(),questionId);
         // Ağ isteği son saniyede başladıysa, kayıt tamamlandığı anda da süreyi doğrula.
         if (req.sessionId() != null) studySessions.requireQuestion(userId, req.sessionId(), questionId, true);
         return state(questionId, userId, req.sessionId());

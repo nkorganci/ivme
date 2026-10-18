@@ -58,15 +58,22 @@ public class QuestionController {
     }
 
     @GetMapping("/filters")
-    public List<FilterRow> filters(@RequestParam(required = false) QuestionBank bank) {
-        return service.filters(bank);
+    public List<FilterRow> filters(@RequestParam(required = false) QuestionBank bank,
+                                   @RequestParam(required = false) List<QuestionSource> source) {
+        return service.filters(bank,source==null?List.of():source);
     }
 
     @GetMapping("/availability")
     public QuestionAvailabilityService.Availability availability(QuestionFilter filter,
                                                                  @RequestParam(required = false) Integer topicPdfId,
+                                                                 @RequestParam(required = false) List<QuestionHistorySelection> history,
                                                                  @AuthenticationPrincipal AppUserDetails me) {
-        return availability.count(me.id(), filter, topicPdfId);
+        return availability.count(me.id(), filter, topicPdfId, history);
+    }
+
+    @GetMapping("/category-counts")
+    public java.util.Map<String,Long> categoryCounts(QuestionFilter filter) {
+        return service.categoryCounts(filter);
     }
 
     @GetMapping

@@ -53,6 +53,15 @@ class TopicPdfEndpointTest extends TestBase {
                 .andExpect(header().string("X-Frame-Options", "DENY"))
                 .andReturn().getResponse().getContentAsString();
         assertThat(list).contains("Sözcükte Anlam").doesNotContain("lesson.pdf", "source_sha256");
+        assertThat(send(student, get("/api/topic-pdfs?exam=TYT&grade=9"), null)
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString())
+                .contains("Sözcükte Anlam");
+        assertThat(send(student, get("/api/topic-pdfs?exam=TYT&grade=10"), null)
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString())
+                .contains("\"totalElements\":0");
+        assertThat(send(student, get("/api/topic-pdfs/filters"), null)
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString())
+                .contains("\"grades\":[9]", "\"count\":1");
 
         byte[] body = send(student, get("/api/topic-pdfs/17/file"), null)
                 .andExpect(status().isOk())
@@ -61,5 +70,12 @@ class TopicPdfEndpointTest extends TestBase {
                 .andExpect(header().string("Content-Disposition", "inline; filename=ogm-17.pdf"))
                 .andReturn().getResponse().getContentAsByteArray();
         assertThat(body).isEqualTo(PDF);
+
+        // A matching title without a reviewed ID+checksum must not appear in the curriculum sheet.
+        String curriculum = send(student, get("/api/topic-pdfs/curriculum?exam=TYT&subject=turkce"), null)
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        assertThat(curriculum).isEqualTo("[]");
+        send(student, get("/api/topic-pdfs/curriculum?exam=ALL&subject=turkce"), null)
+                .andExpect(status().isBadRequest());
     }
 }

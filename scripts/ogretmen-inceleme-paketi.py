@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import json
 import zipfile
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -17,11 +18,53 @@ TEMPLATE = Path(__file__).with_name("ogretmen-inceleme-offline.html")
 DEFAULT_OUTPUT = APP / "veri/ogretmen-inceleme-tyt-turkce-200.zip"
 
 
-def package_id(rows):
+@lru_cache(maxsize=1)
+def shared_context():
+    with QUEUE.OUTPUT.open(encoding='utf-8',newline='') as stream:
+        codes={row['question_code'] for row in csv.DictReader(stream)}
+    catalog=json.loads((APP/'veri/content-labels/labels.json').read_text(encoding='utf-8'))
+    report=json.loads((APP/'veri/content-labels/report.json').read_text(encoding='utf-8'))
+    resources={i['questionCode']:{'itemKey':i['key'],'sourceVersion':i['sourceVersion'],
+        'sourceUpdatedAt':i.get('sourceUpdatedAt'),'taxonomyVersion':i['taxonomyVersion'],
+        'assignments':[{'categoryId':a['categoryId'],'relation':a['relation'],'scopeStatus':a['scopeStatus']}
+                       for a in i['automaticLabels']['assignments']]}
+        for i in catalog['items'] if i.get('questionCode') in codes}
+    if set(resources)!=codes:
+        raise ValueError('İnceleme paketinin ortak kaynak kimlikleri eksik; önce katalog üretin.')
+    return {'catalogRunKey':report['runKey'],'resources':dict(sorted(resources.items()))}
+
+
+def question_identity(rows):
     stable = [(row["question_code"], row["image_sha256"], row["taxonomy_version"])
               for row in sorted(rows, key=lambda row: row["question_code"])]
-    return hashlib.sha256(json.dumps(stable, ensure_ascii=False,
+    return stable
+
+
+def legacy_package_id(rows, context):
+    return hashlib.sha256(json.dumps({'questions':question_identity(rows),'sharedContext':context}, ensure_ascii=False,
                                      separators=(",", ":")).encode("utf-8")).hexdigest()[:16]
+
+
+def package_id(rows):
+    # An unrelated PDF/note publication must not invalidate unchanged decisions.
+    return legacy_package_id(rows, {'resources': shared_context()['resources']})
+
+
+def valid_package_id(identifier, rows, exported_context=None):
+    current=shared_context()
+    if identifier==package_id(rows):return True
+    contexts=[]
+    if isinstance(exported_context,dict):contexts.append(exported_context)
+    candidates=list((APP/'veri/content-labels/human-review').glob('*.zip'))
+    if DEFAULT_OUTPUT.is_file():candidates.append(DEFAULT_OUTPUT)
+    for path in candidates:
+        try:
+            with zipfile.ZipFile(path) as archive:
+                contexts.append(json.loads(archive.read('shared-context.json')))
+        except (OSError,KeyError,ValueError,zipfile.BadZipFile):
+            continue
+    return any(context.get('resources')==current['resources'] and legacy_package_id(rows,context)==identifier
+               for context in contexts if isinstance(context,dict))
 
 
 def build(output):
@@ -43,7 +86,7 @@ def build(output):
         "suggested_question_type_code", "ai_question_type_code", "ai_review_evidence",
         "ai_review_note")} for row in ordered]
     identifier = package_id(rows)
-    data = {"package_id": identifier, "types": types, "rows": visible_rows}
+    data = {"package_id": identifier, "types": types, "rows": visible_rows,"shared_context":shared_context()}
     literal = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     html = TEMPLATE.read_text(encoding="utf-8").replace("__PACKAGE_DATA__", literal)
     readme = f"""# TYT Türkçe öğretmen incelemesi — 200 soru
@@ -63,6 +106,7 @@ Bu kararlar öğretmen incelemesidir. AI notları yalnız yardımcı taslaktır.
     with zipfile.ZipFile(temporary, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as archive:
         archive.writestr("index.html", html)
         archive.writestr("README.md", readme)
+        archive.writestr('shared-context.json',json.dumps(shared_context(),ensure_ascii=False,indent=2)+'\n')
         for row in rows:
             image = (QUEUE.SOURCE_ROOT / row["source_image"]).resolve()
             if not image.is_relative_to(QUEUE.SOURCE_ROOT.resolve()) or not image.is_file():

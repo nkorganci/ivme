@@ -4,6 +4,7 @@ import { useAuth } from '../auth.jsx';
 import { useAsync, usePageTitle } from '../hooks.js';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { displayName, formatDate, formatDuration, formatNumber, formatPercent } from '../format.js';
+import { STUDY_LABEL, STATISTICS_LABEL } from '../config.js';
 
 function Stat({ label, value, tone }) {
   return (
@@ -51,7 +52,7 @@ export default function Home() {
               <section className="card">
                 <Empty title="İlk sınavına hazır mısın?">
                   <p>Henüz sınav çözmedin. Küçük başla: 10 soruluk bir deneme bile iyi bir başlangıç!</p>
-                  <Link to="/sinav/yeni" className="btn btn-primary">
+                  <Link to="/calisma/yeni?mode=sinav" className="btn btn-primary">
                     İlk sınavımı başlat
                   </Link>
                 </Empty>
@@ -88,23 +89,13 @@ export default function Home() {
 
       <h2 className="section-title">Hızlı eylemler</h2>
       <div className="quick">
-        <Link to="/pratik/yeni" className="btn btn-primary">Pratik başlat</Link>
-        <Link to="/sinav/yeni" className="btn btn-primary">
-          Sınav başlat
-        </Link>
-        <Link to="/cikmis-sorular" className="btn btn-secondary">
-          AYT-TYT Çıkmış Sorular
-        </Link>
-        <Link to="/soru-bankasi" className="btn btn-secondary">
-          Soru Bankası
-        </Link>
+        <Link to="/calisma/yeni" className="btn btn-primary">{STUDY_LABEL}</Link>
         <Link to="/konu-anlatimlari" className="btn btn-secondary">
           Konu anlatımları
         </Link>
         <Link to="/gecmis" className="btn btn-secondary">
-          Geçmiş
+          {STATISTICS_LABEL}
         </Link>
-        <Link to="/ilerleme" className="btn btn-secondary">İlerlemem</Link>
       </div>
     </>
   );

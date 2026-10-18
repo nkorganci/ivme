@@ -16,8 +16,33 @@ class ImportTest extends TestBase {
 
     @Autowired QuestionImportService importer;
 
+    @Test void eskiCsvResmiIptaliGeriAlmadanDigerSorulariIceAlabilir() {
+        var cancelled=question("OFFICIAL-1","Matematik","C");
+        jdbc.update("INSERT INTO learning_catalog.official_question_corrections(correction_key,question_id,question_code,official_status,source_url,source_sha256,identity,before_active,before_source_stamp,answer_events,exam_references) VALUES ('test-cancellation',?,'OFFICIAL-1','cancelled','https://www.osym.gov.tr/test',?, '{}'::jsonb,true,'test',0,0)",cancelled.getId(),"a".repeat(64));
+        jdbc.update("UPDATE questions SET active=false WHERE id=?",cancelled.getId());
+        var report=run(HEADER+"OFFICIAL-1,TYT,Matematik,Konu,,,"+IMG+",C,,,true\nNEW-ACTIVE,TYT,Matematik,Konu,,,"+IMG+",B,,,true\n",ImportMode.UPSERT,false);
+        assertThat(report.errorCount()).isZero();assertThat(report.applied()).isTrue();
+        assertThat(report.warnings()).anyMatch(i->"active".equals(i.field()) && i.message().contains("iptal"));
+        assertThat(questions.findByCode("OFFICIAL-1").orElseThrow().isActive()).isFalse();
+        assertThat(questions.findByCode("NEW-ACTIVE").orElseThrow().isActive()).isTrue();
+        assertThat(questions.findByCode("OFFICIAL-1").orElseThrow().getCorrectAnswer()).isEqualTo("C");
+    }
+
     private ImportReport run(String csv, ImportMode mode, boolean dryRun) {
         return importer.run(csv.getBytes(StandardCharsets.UTF_8), "sorular.csv", mode, dryRun);
+    }
+
+    @Test
+    void ortakEtiketTaslagiSoruIleBirlikteKaydedilirVeAtlananKayitEzilmez() {
+        String csv=HEADER+"INTAKE-1,TYT,Matematik,Yeni dar konu,,,"+IMG+",C,,,\n";
+        assertThat(run(csv,ImportMode.INSERT_ONLY,true).errorCount()).isZero();
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM learning_catalog.question_intake",Integer.class)).isZero();
+        assertThat(run(csv,ImportMode.INSERT_ONLY,false).applied()).isTrue();
+        var draft=jdbc.queryForMap("SELECT resource::text AS resource,updated_at::text AS stamp FROM learning_catalog.question_intake WHERE question_code='INTAKE-1'");
+        assertThat(draft.get("resource").toString()).contains("contractVersion","NEEDS_MANUAL_REVIEW","Dersin genel kapsamı").doesNotContain("correctAnswer");
+        assertThat(run(csv,ImportMode.INSERT_ONLY,false).skipped()).isEqualTo(1);
+        assertThat(jdbc.queryForObject("SELECT updated_at::text FROM learning_catalog.question_intake WHERE question_code='INTAKE-1'",String.class)).isEqualTo(draft.get("stamp"));
+        assertThat(questions.findByCode("INTAKE-1").orElseThrow().getCorrectAnswer()).isEqualTo("C");
     }
 
     @Test

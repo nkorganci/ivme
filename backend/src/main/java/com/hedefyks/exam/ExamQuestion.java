@@ -44,6 +44,9 @@ public class ExamQuestion {
 
     private String subject;
     private String topic;
+    @Column(name="learning_label_snapshot",columnDefinition="jsonb")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.JSON)
+    private String learningLabelSnapshot;
 
     @Column(name = "selected_answer")
     private String selectedAnswer;

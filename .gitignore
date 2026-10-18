@@ -1,4 +1,5 @@
 node_modules/
+.codex/dev-api-target.txt
 dist/
 target/
 backend/src/main/resources/static/
@@ -10,3 +11,7 @@ uretim.ayarlar.bat
 veri/
 __pycache__/
 *.pyc
+
+# Yerel Maven deposu ve ayrı test derleme çıktısı (Git dışı)
+.m2/
+backend/target-units-check/

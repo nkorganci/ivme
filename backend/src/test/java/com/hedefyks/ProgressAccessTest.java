@@ -38,6 +38,11 @@ class ProgressAccessTest extends TestBase {
         send(ayse, post(practice), event).andExpect(status().isOk());
         send(mehmet, get(practice), null).andExpect(jsonPath("$.attempts.length()").value(0));
         send(ayse, get("/api/questions/availability"), null)
+                .andExpect(jsonPath("$.solved").value(0));
+        send(mehmet, get("/api/questions/availability"), null)
+                .andExpect(jsonPath("$.solved").value(0));
+        send(ayse, post("/api/study-sessions/" + id + "/finish"), null).andExpect(status().isOk());
+        send(ayse, get("/api/questions/availability"), null)
                 .andExpect(jsonPath("$.solved").value(1));
         send(mehmet, get("/api/questions/availability"), null)
                 .andExpect(jsonPath("$.solved").value(0));

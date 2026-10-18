@@ -67,7 +67,21 @@ export function changeInterval(rows, index, range) {
 }
 
 export function cloneRows(rows, withContent = true) {
-  return rows.map((row) => ({ ...row, cells: withContent ? [...row.cells] : Array(7).fill('') }));
+  return rows.map((row) => ({ ...row, cells: withContent ? [...row.cells] : Array(7).fill(''),
+    ...(row.bindings ? {bindings:withContent?row.bindings.map(b=>b?{...b,categoryId:[...(b.categoryId || [])],resourceKeys:[...(b.resourceKeys || [])]}:null):Array(7).fill(null)}:{}) }));
+}
+
+export function nextWeekRows(rows, withContent = true) {
+  const next = cloneRows(rows, withContent);
+  for (const row of next) for (const binding of row.bindings || []) {
+    if (binding) { binding.state = 'Planlandı'; binding.reviewDate = ''; }
+  }
+  return next;
+}
+
+export function rowHasContent(row) {
+  return row.cells.some(cell => cell.trim()) || (row.bindings || []).some(binding => binding && (
+    binding.categoryId?.length || binding.resourceKeys?.length || binding.state || binding.reviewDate));
 }
 
 export function addRow(rows, index) {

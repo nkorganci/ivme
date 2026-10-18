@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { api } from '../../api.js';
 import { Field } from '../../components/Field.jsx';
 import { Alert } from '../../components/States.jsx';
+import DataGrid from '../../components/DataGrid.jsx';
+
+const ISSUE_COLUMNS = [
+  { field: 'row', headerName: 'Satır' },
+  { field: 'code', headerName: 'Kod', valueFormatter: ({ value }) => value || '—' },
+  { field: 'field', headerName: 'Alan', valueFormatter: ({ value }) => value || '—' },
+  { field: 'message', headerName: 'Mesaj', minWidth: 260 },
+];
 
 function IssueTable({ title, items, tone }) {
   if (!items?.length) return null;
@@ -10,28 +18,7 @@ function IssueTable({ title, items, tone }) {
       <h3 className={`issue-title issue-${tone}`}>
         {tone === 'bad' ? '✗' : '⚠'} {title}
       </h3>
-      <div className="table-wrap">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Satır</th>
-              <th>Kod</th>
-              <th>Alan</th>
-              <th>Mesaj</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((i, n) => (
-              <tr key={n}>
-                <td>{i.row}</td>
-                <td>{i.code || '—'}</td>
-                <td>{i.field || '—'}</td>
-                <td>{i.message}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataGrid rowData={items} columnDefs={ISSUE_COLUMNS} />
     </div>
   );
 }

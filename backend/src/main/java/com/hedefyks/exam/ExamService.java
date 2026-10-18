@@ -12,6 +12,7 @@ import com.hedefyks.exam.ExamDtos.SessionQuestion;
 import com.hedefyks.exam.ExamDtos.SubjectStat;
 import com.hedefyks.exam.ExamDtos.Summary;
 import com.hedefyks.question.Answers;
+import com.hedefyks.question.ExamType;
 import com.hedefyks.question.Question;
 import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionFilter;
@@ -41,33 +42,63 @@ public class ExamService {
     private final QuestionRepository questions;
     private final QuestionAvailabilityService availability;
     private final HintService hints;
+    private final ExamPlanService plans;
+    private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
+    private final com.hedefyks.question.QuestionTaxonomyService taxonomy;
 
     public ExamService(ExamRepository exams, ExamQuestionRepository examQuestions, QuestionRepository questions,
-                       QuestionAvailabilityService availability, HintService hints) {
+                       QuestionAvailabilityService availability, HintService hints, ExamPlanService plans, com.hedefyks.review.SharedQuestionLabels sharedLabels,
+                       com.hedefyks.question.QuestionTaxonomyService taxonomy) {
         this.exams = exams;
         this.examQuestions = examQuestions;
         this.questions = questions;
         this.availability = availability;
         this.hints = hints;
+        this.plans = plans;
+        this.sharedLabels=sharedLabels;
+        this.taxonomy=taxonomy;
     }
 
     // ---------------------------------------------------------------- oluşturma / devam
 
+    public ExamSession createFull(Long userId, ExamDtos.FullExamRequest req) {
+        ExamTrack track = req.track() == null || req.examType() == ExamType.TYT ? ExamTrack.SAYISAL : req.track();
+        return create(userId, new CreateExamRequest(req.bank(), req.examType(), null, null,
+                plans.fullQuestionCount(req.examType(), track), req.selectionMode(),
+                plans.timeLimitMinutes(req.examType()), null, track));
+    }
+
     public ExamSession create(Long userId, CreateExamRequest req) {
         QuestionFilter filter = availability.effectiveFilter(
-                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic()), req.topicPdfId());
+                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty()), req.topicPdfId());
         QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
-        var counts = availability.count(userId, filter, req.topicPdfId());
-        long candidates = switch (selection) {
-            case NEW -> counts.remaining();
-            case REPEAT -> counts.solved();
-            case WRONG -> counts.everWrong();
-            case MIXED -> counts.total();
-        };
-        if (candidates < req.questionCount()) {
-            throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
+        boolean balanced = req.track() != null && req.topicPdfId() == null
+                && filter.subject() == null && filter.topic() == null && !filter.hasSharedSelection();
+        if (req.track() != null && !balanced) {
+            throw ApiException.badRequest("Alan seçimi yalnız genel denemede kullanılabilir.");
         }
-        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
+        if (!balanced) {
+            var counts = availability.count(userId, filter, req.topicPdfId());
+            long candidates = switch (selection) {
+                case NEW -> counts.remaining();
+                case REPEAT -> counts.solved();
+                case WRONG -> counts.everWrong();
+                case MIXED -> counts.total();
+            };
+            if (candidates < req.questionCount()) {
+                throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
+            }
+        }
+        List<Long> ids;
+        Map<Long, String> selectedSubjects = new HashMap<>();
+        if (balanced) {
+            var plan = plans.plan(userId, filter.bank(), filter.examType(), req.track(), selection, req.questionCount());
+            var selected = plans.selectQuestions(userId, plan);
+            selected.forEach(q -> selectedSubjects.put(q.id(), q.subject()));
+            ids = selected.stream().map(ExamPlanService.SelectedQuestion::id).toList();
+        } else {
+            ids = availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
+        }
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
         Map<Long, Question> byId = new HashMap<>();
         questions.findAllById(ids).forEach(q -> byId.put(q.getId(), q));
@@ -75,7 +106,12 @@ public class ExamService {
         Exam exam = new Exam();
         exam.setUserId(userId);
         exam.setSelectionMode(selection);
-        exam.setTitle(title(filter));
+        exam.setTitle(balanced ? filter.examType() + (filter.examType() == ExamType.AYT
+                ? " " + switch (req.track()) {
+                    case SAYISAL -> "Sayısal";
+                    case SOZEL -> "Sözel";
+                    case ESIT_AGIRLIK -> "Eşit Ağırlık";
+                } : "") + " denemesi" : title(filter));
         exam.setExamType(filter.examType());
         exam.setSubject(filter.subject());
         exam.setQuestionCount(ids.size());
@@ -83,6 +119,8 @@ public class ExamService {
         exams.save(exam);
 
         List<ExamQuestion> rows = new ArrayList<>();
+        var snapshots=sharedLabels.snapshots(ids);
+        var topics=sharedLabels.topicNames(snapshots);
         int pos = 1;
         for (Long id : ids) {
             Question q = byId.get(id);
@@ -91,17 +129,20 @@ public class ExamService {
             eq.setQuestion(q);
             eq.setPosition(pos++);
             eq.setQuestionCode(q.getCode());
-            eq.setSubject(q.getSubject());
-            eq.setTopic(q.getTopic());
+            eq.setSubject(selectedSubjects.getOrDefault(id, q.getSubject()));
+            eq.setTopic(topics.getOrDefault(id,q.getTopic()));
+            eq.setLearningLabelSnapshot(snapshots.get(id));
             rows.add(eq);
         }
-        examQuestions.saveAll(rows);
+        examQuestions.saveAllAndFlush(rows);
+        taxonomy.snapshotExam(exam.getId());
         return toSession(exam, rows);
     }
 
     @Transactional(readOnly = true)
     public ExamSession session(Long userId, Long examId) {
         Exam exam = own(userId, examId);
+        if (exam.getStatus() == ExamStatus.CANCELLED) throw ApiException.conflict("Bu deneme iptal edildi.");
         if (exam.getStatus() == ExamStatus.SUBMITTED) {
             return toSession(exam, List.of());
         }
@@ -109,9 +150,10 @@ public class ExamService {
     }
 
     public void saveAnswer(Long userId, Long examId, Long questionId, String answer) {
-        Exam exam = own(userId, examId);
+        Exam exam = exams.lockByIdAndUserId(examId, userId)
+                .orElseThrow(() -> ApiException.notFound("Sınav bulunamadı."));
         if (exam.getStatus() != ExamStatus.IN_PROGRESS) {
-            throw ApiException.conflict("Bu sınav zaten gönderildi.");
+            throw ApiException.conflict("Bu sınav sona erdi.");
         }
         ExamQuestion eq = examQuestions.findByExamIdAndQuestionId(examId, questionId)
                 .orElseThrow(() -> ApiException.notFound("Bu soru sınavında yok."));
@@ -119,6 +161,14 @@ public class ExamService {
     }
 
     // ---------------------------------------------------------------- gönderme
+
+    public void cancel(Long userId, Long examId) {
+        Exam exam = exams.lockByIdAndUserId(examId, userId)
+                .orElseThrow(() -> ApiException.notFound("Sınav bulunamadı."));
+        if (exam.getStatus() == ExamStatus.CANCELLED) return;
+        if (exam.getStatus() != ExamStatus.IN_PROGRESS) throw ApiException.conflict("Tamamlanmış deneme iptal edilemez.");
+        exam.setStatus(ExamStatus.CANCELLED);
+    }
 
     /**
      * Sınavı bitirir ve notlandırır. O anki doğru cevap exam_questions.correct_answer'a kopyalanır;
@@ -132,6 +182,7 @@ public class ExamService {
         if (exam.getStatus() == ExamStatus.SUBMITTED) {
             return toResult(exam, rows);
         }
+        if (exam.getStatus() == ExamStatus.CANCELLED) throw ApiException.conflict("Bu deneme iptal edildi.");
 
         if (answers != null) {
             Map<Long, ExamQuestion> byQuestionId = new HashMap<>();
@@ -197,8 +248,9 @@ public class ExamService {
     @Transactional(readOnly = true)
     public PageResponse<HistoryItem> history(Long userId, int page, int size) {
         var pageable = PageResponse.pageable(page, size);
-        return PageResponse.of(exams.findByUserIdAndStatusOrderBySubmittedAtDesc(userId, ExamStatus.SUBMITTED, pageable),
-                this::toHistory);
+        var results = exams.findByUserIdAndStatusOrderBySubmittedAtDesc(userId, ExamStatus.SUBMITTED, pageable);
+        var subjects = historySubjects(results.stream().map(Exam::getId).toList());
+        return PageResponse.of(results, exam -> toHistory(exam, subjects.getOrDefault(exam.getId(), List.of())));
     }
 
     @Transactional(readOnly = true)
@@ -241,9 +293,10 @@ public class ExamService {
 
     private ExamSession toSession(Exam e, List<ExamQuestion> rows) {
         boolean open = e.getStatus() == ExamStatus.IN_PROGRESS;
+        var topics=sharedLabels.topicNames(sharedLabels.snapshots(rows.stream().map(r->r.getQuestion().getId()).toList()));
         List<SessionQuestion> qs = rows.stream()
                 .map(r -> new SessionQuestion(r.getQuestion().getId(), r.getPosition(), r.getQuestionCode(),
-                        r.getSubject(), r.getTopic(), r.getQuestion().getChoiceCount(), r.getSelectedAnswer()))
+                        r.getSubject(), topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getQuestion().getChoiceCount(), r.getSelectedAnswer()))
                 .toList();
         return new ExamSession(e.getId(), e.getTitle(), e.getStatus(), e.getSelectionMode(),
                 e.getQuestionCount(), e.getTimeLimitMinutes(),
@@ -251,17 +304,34 @@ public class ExamService {
     }
 
     private HistoryItem toHistory(Exam e) {
+        return toHistory(e, historySubjects(List.of(e.getId())).getOrDefault(e.getId(), List.of()));
+    }
+
+    private Map<Long, List<SubjectStat>> historySubjects(List<Long> examIds) {
+        Map<Long, List<SubjectStat>> subjects = new HashMap<>();
+        if (examIds.isEmpty()) return subjects;
+        for (var row : examQuestions.summarizeSubjects(examIds)) {
+            subjects.computeIfAbsent(row.examId(), key -> new ArrayList<>()).add(new SubjectStat(
+                    row.subject(), Math.toIntExact(row.total()), Math.toIntExact(row.correct()),
+                    Math.toIntExact(row.wrong()), Math.toIntExact(row.blank())));
+        }
+        return subjects;
+    }
+
+    private HistoryItem toHistory(Exam e, List<SubjectStat> subjects) {
         return new HistoryItem(e.getId(), e.getTitle(), e.getQuestionCount(), e.getCorrectCount(), e.getWrongCount(),
-                e.getBlankCount(), e.getPercent(), e.getNet(), e.getDurationSeconds(), e.getSubmittedAt());
+                e.getBlankCount(), e.getPercent(), e.getNet(), e.getDurationSeconds(), e.getSubmittedAt(),
+                e.getExamType(), subjects);
     }
 
     private ExamResult toResult(Exam e, List<ExamQuestion> rows) {
+        var topics=sharedLabels.topicNames(sharedLabels.snapshots(rows.stream().map(r->r.getQuestion().getId()).toList()));
         Map<String, int[]> subjects = new LinkedHashMap<>();          // [toplam, doğru, yanlış, boş]
         List<ResultQuestion> qs = new ArrayList<>();
         for (ExamQuestion r : rows) {
             String status = r.getSelectedAnswer() == null ? "BLANK" : Boolean.TRUE.equals(r.getCorrect()) ? "CORRECT" : "WRONG";
             qs.add(new ResultQuestion(r.getPosition(), r.getQuestion().getId(), r.getQuestionCode(), r.getSubject(),
-                    r.getTopic(), r.getSelectedAnswer(), r.getCorrectAnswer(), status,
+                    topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getSelectedAnswer(), r.getCorrectAnswer(), status,
                     hints.available(r.getQuestion().getId())));
             int[] s = subjects.computeIfAbsent(r.getSubject(), k -> new int[4]);
             s[0]++;

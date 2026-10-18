@@ -1,0 +1,124 @@
+.teacher-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.teacher-heading h1 { margin: 0; font-size: 22px; }
+.review-page-hint { margin: 0 0 12px; font-size: 13px; color: var(--ink); }
+.teacher-review .tabs { margin-bottom: 10px; gap: 4px; }
+.teacher-review .tabs button { padding: 8px 11px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); cursor: pointer; font: inherit; font-size: 13px; }
+.teacher-review .tabs button.active { background: var(--tint); border-color: var(--blue); font-weight: 700; }
+.review-filter-card { padding: 10px 12px; margin-bottom: 12px; }
+.teacher-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
+.teacher-filters .field { flex: 1 1 130px; min-width: 0; margin: 0; }
+.teacher-filters .field label { font-size: 12px; margin-bottom: 3px; }
+.teacher-filters .field input, .teacher-filters .field select { min-height: 32px; padding: 4px 7px; font-size: 13px; border-color: var(--line); color: var(--ink); background: var(--surface); }
+.review-extra-filters { margin-top: 8px; font-size: 12px; }
+.review-extra-filters summary, .review-history summary, .review-source-details summary, .review-proposals summary { cursor: pointer; }
+.review-extra-filters > .teacher-filters { margin-top: 8px; }
+.teacher-counts { display: flex; flex-wrap: wrap; gap: 5px 14px; margin-top: 8px; font-size: 12px; }
+.teacher-review-grid .ag-cell { display: flex; align-items: center; }
+.teacher-review-grid .ag-header-cell { color: var(--ink); }
+.teacher-review-grid .ag-cell-value { min-width: 0; width: 100%; }
+.review-row-title { display: grid; min-width: 0; line-height: 1.35; }
+.review-row-title strong, .review-row-title small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review-row-title strong { font-size: 13px; font-weight: 600; }
+.review-row-title small { font-size: 11px; }
+.review-row-labels { display: flex; flex-wrap: nowrap; align-items: center; gap: 5px; overflow: hidden; font-size: 12px; }
+.review-mini-label { padding: 2px 6px; border: 1px solid var(--ok); border-radius: 4px; background: var(--ok-soft); color: var(--ink); white-space: nowrap; }
+.review-approved-cell { color: var(--ok); font-weight: 700; }
+.review-expand { width: 32px; height: 32px; min-height: 32px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.review-expand.open { background: var(--tint); border-color: var(--blue); }
+.review-expand.open svg { transform: rotate(180deg); }
+.review-expand:focus-visible, .review-choice:focus-visible, .review-check-option:focus-visible, .review-text-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.app-grid-inline-detail { width: 100%; min-width: 0; box-sizing: border-box; }
+.teacher-inline-detail { width: 100%; min-width: 0; box-sizing: border-box; padding: 10px 12px; line-height: 1.4; font-size: 13px; white-space: normal; background: var(--tint); color: var(--ink); border-top: 2px solid var(--blue); border-bottom: 2px solid var(--blue); }
+.review-source { margin-bottom: 8px; }
+.review-source-line { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 12px; }
+.review-source-line > strong { font-size: 13px; overflow-wrap: anywhere; }
+.review-source-line > span { font-size: 12px; }
+.review-source-line > a { margin-left: auto; }
+.review-source-caption { margin: 3px 0 0; font-size: 11px; }
+.review-question-preview { display: flex; align-items: flex-start; gap: 12px; padding: 8px; margin-top: 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); }
+.review-question-preview > a { display: grid; justify-items: start; flex: 1; min-width: 0; font-size: 11px; }
+.review-question-preview img { max-height: 180px; max-width: 100%; object-fit: contain; }
+.review-answer { display: grid; align-content: start; gap: 4px; flex: 0 1 170px; min-width: 90px; font-size: 12px; }
+.review-answer > strong { max-height: 120px; overflow: auto; }
+.review-answer p { margin: 4px 0; }
+.review-written-question { flex: 1; min-width: 0; }
+.review-written-question p { margin: 0 0 5px; }
+.review-written-question > div { display: flex; flex-wrap: wrap; gap: 5px 15px; font-size: 12px; }
+.review-source-details { margin-top: 5px; font-size: 12px; }
+.review-source-details > div { max-height: 240px; overflow: auto; padding: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; margin-top: 5px; }
+.review-quickbar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0 8px; }
+.review-quickbar > span { font-size: 11px; flex: 1 1 180px; }
+.teacher-inline-detail .btn { min-height: 30px; padding: 4px 8px; font-size: 12px; line-height: 1.4; border-radius: 5px; }
+.review-text-button { min-height: 24px; padding: 3px 0; border: 0; font: inherit; font-size: 12px; background: none; color: var(--blue); cursor: pointer; white-space: nowrap; }
+.review-panels { display: grid; grid-template-columns: 1.3fr 1fr 1fr; align-items: stretch; gap: 8px; }
+.review-panel { min-width: 0; padding: 9px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.review-panel h3 { display: flex; align-items: center; gap: 6px; margin: 0 0 8px; font-size: 13px; }
+.review-panel h3 small { margin-left: auto; font-size: 11px; font-weight: 400; }
+.review-step { width: 20px; height: 20px; display: inline-grid; place-items: center; border-radius: 4px; background: var(--tint); color: var(--blue); font-size: 12px; }
+.review-choices { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.review-choice { min-height: 27px; max-width: 100%; padding: 3px 7px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font: inherit; font-size: 12px; line-height: 1.35; text-align: left; cursor: pointer; overflow-wrap: anywhere; }
+.review-choice:hover { background: var(--tint); }
+.review-choice.selected { border-color: var(--ok); background: var(--ok-soft); color: var(--ink); }
+.review-choice.selected > span { color: var(--ok); }
+.review-choice-group { border: 0; padding: 0; margin: 0 0 8px; min-width: 0; }
+.review-choice-group:last-child { margin-bottom: 0; }
+.review-choice-group legend { padding: 0; margin-bottom: 4px; font-size: 11px; font-weight: 600; }
+.review-topic-toolbar { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.review-topic-toolbar > select { flex: 1; min-width: 0; }
+.review-topic-toolbar select, .review-relation select, .review-selected-category select { font: inherit; font-size: 12px; min-height: 27px; border: 1px solid var(--line); border-radius: 4px; padding: 3px 5px; background: var(--surface); color: var(--ink); }
+.review-topic-search { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+.teacher-inline-detail .review-topic-search input { min-width: 0; width: 100%; min-height: 28px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; font: inherit; font-size: 12px; color: var(--ink); background: var(--surface); }
+.review-topic-options { max-height: 180px; overflow: auto; overscroll-behavior: contain; padding: 1px; }
+.review-group-actions { display: flex; align-items: center; gap: 10px; margin: 0 0 5px; }
+.review-group-actions .review-text-button { font-size: 11px; }
+.review-choice:disabled { opacity: .5; cursor: default; }
+.review-topic-group { margin-bottom: 6px; }
+.review-topic-heading { display: block; font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+.review-category small { font-size: 10px; }
+.review-relation { display: flex; gap: 6px; align-items: center; margin: 6px 0; font-size: 11px; }
+.review-selected-categories { display: grid; gap: 4px; max-height: 115px; overflow: auto; }
+.review-selected-category { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; padding: 4px; border: 1px solid var(--ok); border-radius: 4px; background: var(--ok-soft); font-size: 10px; }
+.review-selected-category > span { flex: 1 1 140px; overflow-wrap: anywhere; }
+.review-selected-category > select { width: 88px; padding: 1px 2px; min-height: 22px; font-size: 10px; }
+.review-selected-category > button { min-height: 22px; border: 0; background: none; color: var(--ink); cursor: pointer; padding: 0 4px; font-size: 17px; }
+.review-check-list { display: grid; gap: 5px; margin-bottom: 9px; }
+.review-check-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 12px; }
+.review-check-option { width: 29px; height: 27px; min-height: 27px; padding: 0; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 14px; cursor: pointer; }
+.review-check-option.selected { background: var(--ok-soft); border-color: var(--ok); }
+.review-check-option.wrong.selected { background: var(--bad-soft); border-color: var(--bad); }
+.review-check-option.unsure.selected { background: var(--warn-soft); border-color: var(--warn); }
+.review-verification .field { margin: 6px 0; }
+.review-verification .field label { font-size: 11px; margin-bottom: 3px; }
+.review-verification .field input, .review-verification .field select, .review-verification .field textarea { min-height: 28px; padding: 4px 6px; font-size: 12px; border-color: var(--line); color: var(--ink); background: var(--surface); border-radius: 4px; }
+.review-verification .field textarea { min-height: 48px; max-height: 150px; resize: vertical; }
+.review-proposals { font-size: 11px; margin-top: 7px; }
+.review-proposal-fields { max-height: 210px; overflow: auto; }
+.teacher-savebar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding-top: 8px; margin-top: 8px; border-top: 1px solid var(--line); }
+.teacher-savebar > span { margin-right: auto; font-size: 11px; }
+.review-history { margin-top: 6px; font-size: 11px; }
+.review-history ol { padding-left: 20px; margin-bottom: 0; }
+.review-history p { margin: 2px 0 7px; white-space: pre-wrap; }
+.teacher-inline-detail .state { padding: 10px; font-size: 12px; }
+@media (max-width: 1100px) {
+  .review-panels { grid-template-columns: 1fr 1fr; }
+  .review-verification { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; }
+  .review-verification > h3 { grid-column: 1 / -1; }
+  .review-verification > .review-check-list { grid-row: span 2; }
+  .review-verification > .review-proposals { grid-column: 1 / -1; }
+}
+@media (max-width: 720px) {
+  .teacher-heading { align-items: flex-start; }
+  .teacher-heading h1 { font-size: 18px; }
+  .teacher-heading .btn { flex-shrink: 0; max-width: 115px; }
+  .teacher-review .tabs { overflow-x: auto; flex-wrap: nowrap; }
+  .teacher-review .tabs button { flex-shrink: 0; }
+  .teacher-filters .field { flex-basis: 110px; }
+  .teacher-inline-detail { padding: 8px; }
+  .review-panels { grid-template-columns: 1fr; }
+  .review-verification { display: block; grid-column: auto; }
+  .review-choice, .review-check-option { min-height: 32px; }
+  .review-topic-toolbar select, .review-topic-search input { min-height: 32px; }
+  .teacher-savebar > span { flex-basis: 100%; }
+  .review-question-preview { flex-direction: column; }
+  .review-answer { flex-basis: auto; }
+}

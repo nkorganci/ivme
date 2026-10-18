@@ -33,7 +33,7 @@ public class ProgressService {
     private static final String BREAKDOWN_SQL = """
             WITH events AS (
               SELECT question_id, created_at AS occurred_at, is_correct, 0 AS source_order, id AS source_id
-              FROM question_attempts WHERE user_id = ? AND event_type = 'ANSWER'
+              FROM completed_practice_attempts WHERE user_id = ? AND event_type = 'ANSWER'
               UNION ALL
               SELECT eq.question_id, e.submitted_at AS occurred_at, eq.is_correct, 1 AS source_order, eq.id AS source_id
               FROM exam_questions eq JOIN exams e ON e.id = eq.exam_id
@@ -51,10 +51,9 @@ public class ProgressService {
                        FROM attempt_taxonomy_snapshot s
                        WHERE s.attempt_id = f.source_id AND s.node_kind = 'QUESTION_TYPE'
                      ) ELSE (
-                       SELECT string_agg(DISTINCT n.name, ' + ' ORDER BY n.name)
-                       FROM question_taxonomy qt JOIN taxonomy_nodes n ON n.id = qt.node_id
-                       WHERE qt.question_id = f.question_id AND qt.approval_status = 'APPROVED'
-                         AND qt.source IN ('HUMAN', 'AI_REVIEWED') AND n.kind = 'QUESTION_TYPE' AND n.active
+                       SELECT string_agg(DISTINCT s.node_name, ' + ' ORDER BY s.node_name)
+                       FROM exam_taxonomy_snapshot s
+                       WHERE s.exam_question_id=f.source_id AND s.node_kind='QUESTION_TYPE'
                      ) END, 'Onaylı soru tipi yok') AS question_type
               FROM firsts f JOIN questions q ON q.id = f.question_id
             )
@@ -120,7 +119,7 @@ public class ProgressService {
         var from = OffsetDateTime.ofInstant(summary.startsAt(), ZoneOffset.UTC);
         var until = OffsetDateTime.ofInstant(summary.endsAt(), ZoneOffset.UTC);
         jdbc.query("""
-                SELECT created_at, active_seconds FROM question_attempts
+                SELECT created_at, active_seconds FROM completed_practice_attempts
                 WHERE user_id = ? AND created_at >= ? AND created_at < ?
                 """, rs -> {
             LocalDate day = rs.getObject("created_at", OffsetDateTime.class).atZoneSameInstant(zone).toLocalDate();

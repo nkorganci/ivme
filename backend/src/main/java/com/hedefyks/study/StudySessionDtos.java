@@ -3,6 +3,7 @@ package com.hedefyks.study;
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.QuestionBank;
 import com.hedefyks.question.QuestionSelectionMode;
+import com.hedefyks.question.QuestionHistorySelection;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -26,7 +27,26 @@ public final class StudySessionDtos {
             @Min(value = 1, message = "Süre en az 1 dakika olmalı.")
             @Max(value = 240, message = "Süre en fazla 240 dakika olabilir.")
             Integer durationMinutes, Integer topicPdfId,
-            @NotNull(message = "İstek kimliği gerekli.") UUID clientRequestId) {}
+            @NotNull(message = "İstek kimliği gerekli.") UUID clientRequestId,
+            List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,
+            List<com.hedefyks.question.QuestionSource> source,
+            List<@NotNull QuestionHistorySelection> history) {
+        public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
+                Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId,
+                List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,
+                List<com.hedefyks.question.QuestionSource> source) {
+            this(bank,examType,subject,topic,selectionMode,questionCount,durationMinutes,topicPdfId,clientRequestId,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,null);
+        }
+        public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
+                Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId,
+                List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty) {
+            this(bank,examType,subject,topic,selectionMode,questionCount,durationMinutes,topicPdfId,clientRequestId,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,null);
+        }
+        public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
+                Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId) {
+            this(bank,examType,subject,topic,selectionMode,questionCount,durationMinutes,topicPdfId,clientRequestId,null,null,null,null,null);
+        }
+    }
 
     public record SessionQuestion(Long questionId, int position, String code, QuestionBank bank,
                                   String subject, String topic, QuestionStatus status,
@@ -37,7 +57,13 @@ public final class StudySessionDtos {
 
     public record HistoryItem(Long id, Instant startedAt, Instant endedAt, String status,
                               QuestionSelectionMode selectionMode, Integer timeLimitSeconds,
-                              int questionCount) {}
+                              int questionCount, String subject, String topic, Result result) {}
+
+    public record UnfinishedSummary(long count, Long latestSessionId) {}
+
+    public record UnfinishedItem(Long id, String kind, String title, Instant startedAt,
+                                 int questionCount, int solvedCount,
+                                 String resumeQuestionCode, String resumeQuestionBank) {}
 
     public record Session(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
                           QuestionBank bank, ExamType examType, String subject, String topic,

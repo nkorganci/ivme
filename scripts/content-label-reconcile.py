@@ -347,7 +347,7 @@ def main():
               'safety': {'databaseReadOnly': True, 'migrationsExecuted': False, 'labelsGenerated': False,
                          'contentReanalysed': 0, 'published': False},
               'limits': ['Version/identity/hash equality does not establish label accuracy.',
-                         'Remote video reachability and unregistered sources are reconciled in 01.02.']}
+                         'Remote playback/content verification is separate; see video-inventory.json and the open video step.']}
     output = args.output or STATE / 'reconciliation' / f'{run}-{created:%Y%m%dT%H%M%S%fZ}.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x', encoding='utf-8') as destination:

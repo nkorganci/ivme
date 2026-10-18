@@ -19,7 +19,7 @@ QUEUE = PACKAGE.QUEUE
 def read_decisions(path, rows):
     data = json.loads(path.read_text(encoding="utf-8"))
     if (data.get("schema") != "ivme-teacher-review-v1"
-            or data.get("package_id") != PACKAGE.package_id(rows)
+            or not PACKAGE.valid_package_id(data.get("package_id"), rows, data.get('shared_context'))
             or not isinstance(data.get("decisions"), list)):
         raise ValueError("Karar dosyasının biçimi veya paket kimliği uyuşmuyor")
     by_code = {row["question_code"]: row for row in rows}

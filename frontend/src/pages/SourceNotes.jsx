@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { usePageTitle } from '../hooks.js';
+import ResourceContext from '../components/ResourceContext.jsx';
 
 const lower = (text) => text.toLocaleLowerCase('tr-TR');
 
@@ -74,8 +75,14 @@ function TopicIndex({ group, selected, onSelect }) {
 }
 
 function PatternGuide({ lesson }) {
-  const [index, setIndex] = useState(0);
+  const [params] = useSearchParams();
+  const requestedPattern=params.get('kalip');
+  const [index, setIndex] = useState(() => Math.max(0,lesson.patterns.findIndex(p=>p.id===requestedPattern)));
   const [showThinking, setShowThinking] = useState(false);
+  useEffect(() => {
+    setIndex(Math.max(0,lesson.patterns.findIndex(p=>p.id===requestedPattern)));
+    setShowThinking(false);
+  }, [requestedPattern,lesson]);
   const pattern = lesson.patterns[index];
   const selectPattern = (value) => { setIndex(value); setShowThinking(false); };
   const onKey = (event) => {
@@ -186,10 +193,11 @@ function SourceEvidence({ lesson, sources }) {
   </details>;
 }
 
-function Lesson({ lesson, sources, headingRef }) {
+function Lesson({ lesson, sources, headingRef,groupId }) {
   return <article id={lesson.id} className="card source-notes-lesson">
     <p className="source-notes-kicker">Konu rehberi · {lesson.patterns.length} soru kalıbı</p>
     <h2 ref={headingRef} tabIndex={-1}>{lesson.title}</h2>
+    <ResourceContext itemKey={`note:${groupId}:${lesson.id}`}/>
     <nav className="source-lesson-jumps" aria-label="Konu çalışma adımları">
       <a href="#konunun-mantigi">1. Mantığı öğren</a><a href="#soru-kaliplari">2. Kalıbı tanı</a>
       <a href="#cozum-yolu">3. Yöntemi uygula</a><a href="#kendini-dene">4. Kendini dene</a>
@@ -198,13 +206,13 @@ function Lesson({ lesson, sources, headingRef }) {
       <div className="source-section-heading"><span className="source-step-number">1</span><h3>Konunun mantığı</h3></div>
       {lesson.learn.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
     </section>
-    <PatternGuide key={lesson.id} lesson={lesson} />
+    <PatternGuide lesson={lesson} />
     <section id="cozum-yolu">
       <div className="source-section-heading"><span className="source-step-number">3</span><h3>Çözümü adım adım kur</h3></div>
       <ol>{lesson.steps.map((step) => <li key={step}>{step}</li>)}</ol>
       <p className="source-lesson-pitfall"><strong>Son kontrol:</strong> {lesson.pitfall}</p>
     </section>
-    <Practice key={lesson.id} lesson={lesson} />
+    <Practice lesson={lesson} />
     <SourceEvidence lesson={lesson} sources={sources} />
   </article>;
 }
@@ -224,6 +232,7 @@ function PendingTopic({ topic, group, headingRef }) {
 
 export default function SourceNotes() {
   const { subjectId = 'tyt-turkce' } = useParams();
+  const { hash } = useLocation();
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [data, setData] = useState(null);
@@ -261,6 +270,14 @@ export default function SourceNotes() {
     }
   }, [requested, pending]);
 
+  useEffect(() => {
+    if (!lesson || !hash) return;
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target?.closest('.source-notes-lesson')) target.scrollIntoView({ block: 'start' });
+  }, [lesson, hash]);
+
   if (data && subjectId === 'analiz') return <StudyOverview data={data} />;
 
   return <div className="source-notes-page">
@@ -280,7 +297,7 @@ export default function SourceNotes() {
       <div className="source-notes-layout">
         <TopicIndex key={group.id} group={group} selected={lesson?.id || pending} onSelect={(value) => { moveFocus.current = true; setParams(value); }} />
         {knownPending ? <PendingTopic topic={pending} group={group} headingRef={headingRef} />
-          : lesson ? <Lesson key={`${group.id}:${lesson.id}`} lesson={lesson} sources={data.sources} headingRef={headingRef} />
+          : lesson ? <Lesson key={`${group.id}:${lesson.id}`} groupId={group.id} lesson={lesson} sources={data.sources} headingRef={headingRef} />
             : <div className="card" role="alert">Bu konu için rehber bulunamadı. Konu dizininden bir başlık seçebilirsin.</div>}
       </div>
       <details className="card source-notes-status">

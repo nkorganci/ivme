@@ -45,7 +45,7 @@ public class AdminUsageService {
                 SELECT count(*) FROM exams WHERE started_at >= ? AND started_at < ?
                 """, Long.class, start, end);
         long answers = jdbc.queryForObject("""
-                SELECT (SELECT count(*) FROM question_attempts
+                SELECT (SELECT count(*) FROM completed_practice_attempts
                         WHERE event_type = 'ANSWER' AND created_at >= ? AND created_at < ?)
                      + (SELECT count(*) FROM exam_questions eq JOIN exams e ON e.id = eq.exam_id
                         WHERE e.status = 'SUBMITTED' AND eq.selected_answer IS NOT NULL

@@ -2,6 +2,7 @@ param(
     [Parameter(Mandatory = $true)][string]$Destination,
     [string]$Database = 'ivme',
     [string]$DatabaseUser = 'root',
+    [string]$DatabaseSnapshot = '',
     [string]$PgBin = 'C:\Program Files\PostgreSQL\18\bin',
     [switch]$AllowSameDiskForDrill
 )
@@ -12,6 +13,11 @@ $imageRoots = [ordered]@{
     ogm = (Join-Path $sourceRoot '..\icerik\data\ogm\img')
     tyt = (Join-Path $sourceRoot 'veri\resimler\TYT')
     ayt = (Join-Path $sourceRoot 'veri\resimler\AYT')
+    pdfs = (Join-Path $sourceRoot '..\Kaynaklar')
+    labels = (Join-Path $sourceRoot 'veri\content-labels')
+    sourceMetadata = (Join-Path $sourceRoot 'ornek-veri')
+    pilotImages = (Join-Path $sourceRoot 'veri\resimler-pilot')
+    repairedImages = (Join-Path $sourceRoot 'veri\resimler-pilot\onarilmis')
 }
 $targetRoot = (Resolve-Path -LiteralPath $Destination).Path
 if (-not (Get-Item -LiteralPath $targetRoot).PSIsContainer) { throw 'Yedek hedefi klasör olmalı.' }
@@ -28,11 +34,29 @@ foreach ($imageRoot in $imageRoots.Values) {
         throw 'Yedek hedefi görsel kaynağının içinde olamaz.'
     }
 }
-$sourceDrive = (Get-Item -LiteralPath $sourceRoot).PSDrive.Name
-$targetDrive = (Get-Item -LiteralPath $targetRoot).PSDrive.Name
-$sourceDisk = (Get-Partition -DriveLetter $sourceDrive).DiskNumber
-$targetDisk = (Get-Partition -DriveLetter $targetDrive).DiskNumber
-if ($sourceDisk -eq $targetDisk -and -not $AllowSameDiskForDrill) {
+function Get-BackupStorageInfo([string]$ResolvedPath) {
+    $networkPath = if ($ResolvedPath.StartsWith('\\')) { $ResolvedPath } else {
+        $drive = [IO.Path]::GetPathRoot($ResolvedPath).TrimEnd('\')
+        $logical = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='$drive'"
+        if ($logical.DriveType -eq 4) { $logical.ProviderName } else { $null }
+    }
+    if ($networkPath) {
+        $server = $networkPath.TrimStart([char]'\').Split('\')[0]
+        if ($server -in @('localhost','127.0.0.1','::1',$env:COMPUTERNAME)) {
+            throw 'Yerel makine paylaşımı bağımsız ağ yedeği sayılmaz.'
+        }
+        return @{ kind='NETWORK'; server=$server; disk=$null }
+    }
+    $drive = [IO.Path]::GetPathRoot($ResolvedPath).TrimEnd(':','\')
+    if ($drive -notmatch '^[A-Za-z]$') { throw 'Yedek hedefinin fiziksel diski belirlenemedi.' }
+    $partition = Get-Partition -DriveLetter $drive -ErrorAction Stop
+    return @{ kind='LOCAL'; server=$null; disk=$partition.DiskNumber }
+}
+$sourceStorage = Get-BackupStorageInfo $sourceRoot
+$targetStorage = Get-BackupStorageInfo $targetRoot
+$sourceDisk = $sourceStorage.disk
+$targetDisk = $targetStorage.disk
+if ($targetStorage.kind -eq 'LOCAL' -and $sourceDisk -eq $targetDisk -and -not $AllowSameDiskForDrill) {
     throw "Kaynak ve hedef aynı fiziksel diskte ($sourceDisk). Ayrı disk seçin."
 }
 if (-not (Test-Path -LiteralPath (Join-Path $PgBin 'pg_dump.exe'))) { throw 'pg_dump bulunamadı.' }
@@ -42,7 +66,12 @@ $stamp = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmss')
 $backupDir = Join-Path $targetRoot "ivme-$stamp"
 New-Item -ItemType Directory -Path $backupDir | Out-Null
 $databaseFile = Join-Path $backupDir 'database.dump'
-& (Join-Path $PgBin 'pg_dump.exe') -Fc -h localhost -U $DatabaseUser -d $Database -f $databaseFile
+$dumpArguments = @('-w','-Fc','-h','localhost','-U',$DatabaseUser,'-d',$Database,'-f',$databaseFile)
+if ($DatabaseSnapshot) {
+    if ($DatabaseSnapshot -cnotmatch '^[0-9A-Fa-f]+-[0-9A-Fa-f]+-[0-9]+$') { throw 'Geçersiz PostgreSQL anlık kayıt kimliği.' }
+    $dumpArguments += @('--snapshot',$DatabaseSnapshot)
+}
+& (Join-Path $PgBin 'pg_dump.exe') @dumpArguments
 if ($LASTEXITCODE -ne 0) { throw 'Veritabanı yedeği alınamadı.' }
 $files = [ordered]@{}
 $files['database'] = @{ name = 'database.dump'; bytes = (Get-Item -LiteralPath $databaseFile).Length;
@@ -53,8 +82,8 @@ foreach ($entry in $imageRoots.GetEnumerator()) {
     $archive = Join-Path $backupDir $archiveName
     & tar.exe -cf $archive -C $root .
     if ($LASTEXITCODE -ne 0) { throw "Görsel arşivi alınamadı: $($entry.Key)" }
-    $stats = Get-ChildItem -LiteralPath $root -Recurse -File | Measure-Object -Property Length -Sum
-    $files[$entry.Key] = @{ name = $archiveName; count = $stats.Count; sourceBytes = $stats.Sum;
+    $stats = Get-ChildItem -LiteralPath $root -Recurse -File -Force | Measure-Object -Property Length -Sum
+    $files[$entry.Key] = @{ name = $archiveName; sourceRoot = $root; count = $stats.Count; sourceBytes = $stats.Sum;
         bytes = (Get-Item -LiteralPath $archive).Length;
         sha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLowerInvariant() }
 }
@@ -63,7 +92,9 @@ $manifest = [ordered]@{
     database = $Database
     sourceDisk = $sourceDisk
     targetDisk = $targetDisk
-    separatePhysicalDisk = $sourceDisk -ne $targetDisk
+    separatePhysicalDisk = if ($targetStorage.kind -eq 'LOCAL') { $sourceDisk -ne $targetDisk } else { $null }
+    independentNetworkTarget = $targetStorage.kind -eq 'NETWORK'
+    targetStorage = $targetStorage
     files = $files
 }
 $manifest | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $backupDir 'manifest.json') -Encoding utf8

@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class SourceNotesRoutesTest {
     @ParameterizedTest
     @ValueSource(strings = {
+        "/calisma/yeni", "/calisma/yeni?mode=sinav",
         "/kaynakli-ders-notlari", "/kaynakli-ders-notlari/etiketler",
         "/kaynakli-ders-notlari/analiz",
         "/kaynakli-ders-notlari/tyt-turkce", "/kaynakli-ders-notlari/ayt-edebiyat",

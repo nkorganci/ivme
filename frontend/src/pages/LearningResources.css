@@ -1,0 +1,10 @@
+.learning-resources { min-width: 0; }
+.learning-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; padding: 18px; margin-bottom: 18px; }
+.learning-filters label { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.learning-filters select, .learning-filters input { max-width: 100%; min-width: 0; }
+.learning-filters .learning-check { flex-direction: row; align-items: center; }
+.learning-check input { width: auto; }
+.learning-selected { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; }
+.learning-selected button { white-space: normal; text-align: left; }
+.learning-pages { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 18px; }
+@media (max-width: 480px) { .learning-filters { grid-template-columns: 1fr; padding: 12px; } }

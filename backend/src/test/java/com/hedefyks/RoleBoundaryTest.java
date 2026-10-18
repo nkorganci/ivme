@@ -48,7 +48,7 @@ class RoleBoundaryTest extends TestBase {
         }
 
         Set<String> studentPaths = Set.of(
-                "/api/goals", "/api/recommendations?subject=Türkçe",
+                "/api/recommendations?subject=Türkçe",
                 "/api/progress/first-attempts?period=DAY&zone=Europe/Istanbul",
                 "/api/questions/filters");
         for (String path : studentPaths) {
@@ -59,6 +59,5 @@ class RoleBoundaryTest extends TestBase {
         send(admin, get("/api/admin/feedback"), null).andExpect(status().isForbidden());
         mvc.perform(get("/api/admin/stats")).andExpect(status().isUnauthorized());
         mvc.perform(get("/api/operator/questions")).andExpect(status().isUnauthorized());
-        mvc.perform(get("/api/goals")).andExpect(status().isUnauthorized());
     }
 }

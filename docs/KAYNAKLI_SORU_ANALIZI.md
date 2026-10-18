@@ -1,5 +1,8 @@
 # Kaynak taraması, örnek konu analizi ve araştırma hafızası
 
+
+> Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
+
 13 Ekim 2026. Kullanıcı sırası: menüdeki eksikleri gör; çıkmış soruları, OGM sorularını ve ders anlatımlarını birlikte incele; örnek konu analizinden genel konu/alt konu rehberine geç; ardından diğer branşları genişlet. Analiz, her sorunun altında tekrar eden notlar yerine **konuya ait soru kalıpları ve düşünme yolları** üretir.
 
 ## Taramada gerçekten yapılanlar
@@ -60,7 +63,7 @@ python -X utf8 scripts/kaynakli_arastirma_db.py --export
 
 1. Bu belgeyi ve [konu rehberlerinin durum kaydını](KAYNAKLI_DERS_NOTLARI.md) oku; `--status` ve `--find` ile eldeki kanıtı getir. Aynı kaynakları baştan sınıflandırma.
 2. Kaynak checksum'u değişmediyse mevcut sayfa metni, soru referansı ve gözlem notunu kullan. Kaynak değiştiyse eski sonucu silmeden yeni sürüm oluştur.
-3. Sözcükte Yapı ve Fiilde Çatı rehberleri eklendi; bunları yeniden sıfırdan inceleme. Türkçe Sözel Mantık açık kalır; yerel arşivde ve seçilen temel anlatımda doğrulanmış karşılaştırma bulunmadı. Sonraki sıra: Tarihte İlk Uygarlıklar/İlk Türk Devletleri, Coğrafyada konum ve Dünya hareketleri, Felsefede akıl yürütme/ahlak, Din'de din-ahlak, Biyolojide bileşikler/madde geçişleri, Kimyada etkileşimler/maddenin hâlleri. AYT branşlarının ayrı rehberleri ve Edebiyatın ayrıntılı alt konuları da açık iştir.
+3. Yeni konu/not kapsamı yalnız [12. adımda](plan/12_KALAN_ICERIK_VE_YAYIN.md) takip edilir; bu belgeden bağımsız sıra oluşturma.
 4. Metinsiz veya şekle bağlı sorularda önce görseli incele. İncelenmemiş kayıtları `SOURCE_LINKED` bırak; “analiz edildi” durumuna otomatik yükseltme. Uydurma çözüm veya öğretmen onayı oluşturma.
 
 Tam kaynak envanteri taranmıştır; **bütün soruların insan düzeyinde çözüldüğü veya tüm konu rehberlerinin tamamlandığı iddia edilmez**. Araştırmanın yeniden kullanılabilir izi ile gerçekten hazırlanmış öğretim içeriği ayrı tutulur.
@@ -90,6 +93,6 @@ TYT Fizik ve AYT Matematik/Fizik için 15.925 yeni kaynak referansı (549 çıkm
 
 25, 32 ve 35 katalog numaralı OGM PDF'leri (624 sayfa) temel arşive eklendi. 30 ve 33 numaralı AYT Biyoloji/Kimya PDF'leri mevcut kayıtlardan kullanılır. Genel toplam 25 PDF ve 3.027 sayfadır. Matematik PDF metin çıkarımında MuPDF stitching-function uyarıları verdi; süreç tamamlandı. Rehberde kullanılan sayfaların metin dayanakları ayrıca yayın denetiminden, soru kesirleri ve grafikleri görsel incelemeden geçti. Diğer şekiller okunmuş sayılmaz.
 
-Yeni derslerin her birinde ilk kaynaklı rehber ve kalan konuların dizini vardır; bütün alt konular hazır değildir. Sonraki genişletme: TYT Fizikte hareket/kuvvet; AYT Matematikte polinom/trigonometri; AYT Fizikte Newton yasaları; AYT Kimyada gazlar; AYT Biyolojide endokrin sistem. Önce `--status`, `--find` ve `incele_kaynakli_arastirma.py` ile kayıtları geri çağırın.
+Yeni derslerin her birinde ilk kaynaklı rehber ve kalan konuların dizini vardır; bütün alt konular hazır değildir. Kalan kapsam [12. adımda](plan/12_KALAN_ICERIK_VE_YAYIN.md) tutulur. Kanıtları `--status`, `--find` ve `incele_kaynakli_arastirma.py` ile geri çağırın.
 
 Sayısal arşivde yalnız `3a-ayt-fizik-56-04` metni NUL karakter taşır. PostgreSQL bunu metin/jsonb içinde kabul etmediği için ilk aktarım tek işlem olarak geri alınmıştır. Yeni aktarımda bu kaydın özgün UTF-8 bytes'ı `originalSourceTextUtf8Base64`, özgün SHA-256 özeti ve `requiresVisualReview` bayrağıyla korunur; okunabilir sütunda bozuk karakter U+FFFD ile görünür. `incele_kaynakli_arastirma.py` özgün metni checksum doğrulayarak geri çağırır. Bozuk karakterin anlamı veya şekil çözümü uydurulmaz. Diğer 68.943 metinde bu kodlamaya gerek yoktur.

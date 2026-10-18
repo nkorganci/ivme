@@ -110,8 +110,8 @@ ok('Sekme başlığı kullanıcı adını ve uygulama adını içeriyor', (await
 await shot('03-ana-sayfa');
 // sol menü: masaüstünde sabit menü, mobilde hamburger ile açılan çekmece (öğeler DOM'da her durumda vardır)
 if (mobil) { await clickText('', 'header.mobilebar button'); await sleep(300); }
-const menuLabels = await ev("[...document.querySelectorAll('.sidebar .sidenav a')].map((a) => a.getAttribute('aria-label'))");
-ok('Sol menü öğeleri sırasıyla geldi', ['Ana Sayfa', 'AYT-TYT Çıkmış Sorular', 'Soru Bankası', 'Konu anlatımları', 'Pratik Başlat', 'Sınav Başlat', 'Geçmişim', 'İlerlemem', 'Hedeflerim', 'Öğrenci Takip Portalı', 'Çalışma önerileri', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l), JSON.stringify(menuLabels));
+const menuLabels = await ev("[...document.querySelectorAll('.sidebar .sidenav > a, .sidebar .sidenav > .side-nav-group > button')].map((a) => a.getAttribute('aria-label'))");
+ok('Sol menü öğrenme akışına göre sıralı', ['Ana Sayfa', 'Kaynaklı Ders Notları alt menüsünü aç', 'Çalışma önerileri', 'Öğrenci Takip Portalı alt menüsünü aç', 'Dersler ve Konuları', 'Konu anlatımları', 'Soru Çöz', 'Geçmişim ve İlerlemem', 'Geri Bildirim'].every((l, i) => menuLabels[i] === l) && menuLabels.length === 9, JSON.stringify(menuLabels));
 await shot('03b-sol-menu');
 if (mobil) await ev("document.querySelector('.scrim')?.click()");
 
@@ -129,6 +129,7 @@ ok('Eski /sorular adresi /cikmis-sorular rotasına yönlendi', (await ev('locati
 await go('/soru/TYT-0001');
 await waitFor("document.querySelector('.choices')", 'şık düğmeleri');
 await sleep(800);
+ok('Soru kontrolleri görselin hemen altında', await ev("document.querySelector('.qmain > .image-card + .qdock .qbar .choices') !== null"));
 ok('Soru görseli yüklendi', await ev("(() => { const i = document.querySelector('img[src*=\"/api/questions/\"][src$=\"/image\"]'); return !!i && i.complete && i.naturalWidth > 50; })()"));
 await waitFor("document.querySelector('.board-status')?.textContent.includes('Kaydedildi')", 'karalama yüklenmesi');
 await ev("document.querySelector('.board-canvas').scrollIntoView({block: 'center'})");
@@ -163,7 +164,6 @@ ok('QR sekmesi açıldı', await ev("!!document.querySelector('#panel-qr img[src
 await clickText('Karalama', '[role=tab]');
 await clickText('', '.choice');                                            // ilk şık (A)
 await ev("document.querySelector('.choice').click()");
-await clickText('Cevabı Kontrol Et');
 await waitText('Yanlış', 6000);
 ok('İlk yanlışta doğru cevap gizli', !(await ev("!!document.querySelector('.choice.correct')")));
 await go('/soru/TYT-0001');
@@ -174,7 +174,8 @@ await waitFor("document.querySelector('.choice.correct')", 'doğru şık işaret
 ok('Açıkça cevap gösterilince doğru şık vurgulandı', await ev("!!document.querySelector('.choice.correct')"));
 ok('Video çözüm bağlantısı göründü', (await text()).includes('Video'));
 await shot('05-soru-detay');
-// değerlendirme: Zor + 4 yıldız → Kaydet → topluluk özeti güncellenir (yan paneldeki katlanır bölümler önce açılır)
+// değerlendirme: Karalamayı küçült, Zor + 4 yıldız → Kaydet
+await clickText('Küçült', '.qside button');
 await ev("document.querySelectorAll('.qside details').forEach((d) => { d.open = true; })");
 await sleep(200);
 await ev("document.querySelectorAll('.segmented input[type=radio]')[2].click()");
@@ -207,6 +208,7 @@ await shot('05d-soru-bankasi-soru');
 // ---------------------------------------------------------------- kalıcı süresiz pratik
 await go('/pratik/yeni');
 await waitText('Pratiği başlat', 8000);
+ok('Eski pratik adresi ortak ekranda pratiği açtı', (await ev('location.pathname')) === '/calisma/yeni' && await ev("document.querySelector('.study-choice[aria-pressed=true]')?.innerText.includes('Pratik')"));
 await waitFor("!document.querySelector('button[type=submit]').disabled", 'pratik havuzu');
 await fill('Soru sayısı', '2');
 await waitFor("[...document.querySelectorAll('label')].some(l => l.textContent === 'Soru geçmişi')", 'pratik soru geçmişi');
@@ -218,8 +220,10 @@ await selectPracticeHistory('NEW');
 await waitFor("!document.querySelector('button[type=submit]').disabled", 'yeni pratik havuzu');
 await shot('05d-pratik-secim');
 await clickText('Pratiği başlat', 'button');
-await waitFor("/^\\/pratik\\/\\d+$/.test(location.pathname)", 'pratik oturumu', 10000);
-const practicePath = await ev('location.pathname');
+await waitFor("location.pathname.startsWith('/soru/') && document.querySelector('.choices')", 'ilk pratik sorusu', 10000);
+ok('Pratik ilk soruyu ve şıkları doğrudan açtı', (await text()).includes('Pratik soruları'));
+const practicePath = await ev("new URL([...document.querySelectorAll('a')].find(a => a.innerText.includes('Pratik soruları')).href).pathname");
+await go(practicePath);
 await waitFor("document.querySelectorAll('.practice-list li a').length === 2", 'iki sıralı pratik sorusu');
 await shot('05e-pratik-oturum');
 ok('Pratik yeni soru modunu sakladı', (await text()).includes('Yalnız yeni'));
@@ -231,8 +235,6 @@ await waitFor("location.pathname.startsWith('/soru/') && document.body.innerText
 ok('Pratik sorusundan oturuma dönüş bağlantısı var', (await text()).includes('Pratik soruları'));
 await waitFor("document.querySelector('.choice:not(:disabled)')", 'pratik şıkları');
 await ev("document.querySelector('.choice:not(:disabled)').click()");
-await waitFor("[...document.querySelectorAll('button')].some(b => b.innerText.includes('Cevabı Kontrol Et') && !b.disabled)", 'pratik yanıt düğmesi');
-await clickText('Cevabı Kontrol Et', 'button');
 await waitFor("document.body.innerText.includes('Yanlış') || document.body.innerText.includes('Doğru!')", 'oturum yanıtı');
 if (await ev("[...document.querySelectorAll('button')].some(b => b.innerText.includes('Soruyu atla'))")) {
   await clickText('Soruyu atla', 'button');
@@ -252,24 +254,36 @@ await shot('05f-pratik-devam');
 
 // ---------------------------------------------------------------- sınav
 await go('/sinav/yeni');
-await waitText('Sınavı Başlat', 8000);
+await waitText('Deneme / testi başlat', 8000);
+ok('Eski sınav adresi ortak ekranda denemeyi açtı', (await ev('location.pathname + location.search')) === '/calisma/yeni?mode=sinav' && await ev("document.querySelector('.study-choice[aria-pressed=true]')?.innerText.includes('Deneme / test')"));
+await clickText('Ders', '.study-scopes button');
+ok('Branş testi ders seçimini istiyor', await ev("[...document.querySelectorAll('label')].some(l => l.textContent === 'Ders') && document.querySelector('button[type=submit]').disabled"));
+await clickText('Genel', '.study-scopes button');
+await ev("(() => { const l = [...document.querySelectorAll('label')].find(l => l.textContent === 'Sınav türü'); const s = document.getElementById(l.htmlFor); s.value = 'TYT'; s.dispatchEvent(new Event('change', { bubbles: true })); })()");
+await fill('Soru sayısı', '10');
 await waitFor("[...document.querySelectorAll('label')].some(l => l.textContent === 'Soru geçmişi')", 'soru geçmişi seçimi');
 const selectHistory = async (value) => ev(`(() => { const l = [...document.querySelectorAll('label')].find(l => l.textContent === 'Soru geçmişi'); const s = document.getElementById(l.htmlFor); s.value = ${JSON.stringify(value)}; s.dispatchEvent(new Event('change', { bubbles: true })); return s.value; })()`);
 await selectHistory('REPEAT');
 await waitFor("document.querySelector('button[type=submit]').disabled", 'yetersiz eski soru uyarısı');
 ok('Yetersiz eski soru sayısı sınavı engelledi', await ev("document.querySelector('button[type=submit]').disabled"));
-await selectHistory('NEW');
-await waitFor("!document.querySelector('button[type=submit]').disabled", 'yeni soru havuzu');
-ok('Yeni soru havuzu sınava hazır', await ev("!document.querySelector('button[type=submit]').disabled"));
+await selectHistory('MIXED');
+await waitFor("!document.querySelector('button[type=submit]').disabled", 'dengeli soru havuzu');
+ok('Ders dağılımı hazır ve 10 soruya dengeli', await ev("document.querySelectorAll('.exam-plan-list li').length === 9 && !document.querySelector('button[type=submit]').disabled"));
 await shot('06-sinav-baslat');
-await fill('Soru sayısı', '5');
-await clickText('Sınavı Başlat', 'button');
+await clickText('Deneme / testi başlat', 'button');
 await waitFor("/^\\/sinav\\/\\d+$/.test(location.pathname)", 'sınav sayfası', 10000);
 await waitFor("document.querySelector('.choices')", 'sınav şıkları');
 await sleep(600);
 const examPath = await ev('location.pathname');
 ok('Sınav oluşturuldu: ' + examPath, /^\/sinav\/\d+$/.test(examPath));
-ok('Sınav yeni sorular modunu sakladı', await ev(`fetch('/api/exams/${examPath.split('/')[2]}').then(r => r.json()).then(e => e.selectionMode === 'NEW')`));
+ok('Sınavın her TYT branşında sorusu var', await ev(`fetch('/api/exams/${examPath.split('/')[2]}').then(r => r.json()).then(e => e.questionCount === 10 && new Set(e.questions.map(q => q.subject)).size === 9 && e.questions[0].position === 1)`));
+ok('İlk soru, şıkları ve karalama alanı birlikte açıldı', await ev("!!document.querySelector('.exam-answer-card .choices .choice') && !!document.querySelector('.exam-tool-card .board-canvas')"));
+ok('Sınavda karalama sağ yarıda büyük açıldı', await ev("!!document.querySelector('.exam-tool-card.expanded') && !!document.querySelector('.exam-main > .image-card + .qdock .qbar .choices')"));
+await clickText('Küçült', '.exam-tool-card button');
+ok('Karalama küçültüldü', await ev("!document.querySelector('.exam-tool-card.expanded')"));
+await clickText('QR ve bağlantı', '.exam-tool-card button');
+ok('Sınav sorusunun QR kodu göründü', await ev("!!document.querySelector('.exam-tool-card #exam-qr-panel img')"));
+await clickText('Karalama', '.exam-tool-card button');
 await shot('07-sinav');
 await ev("document.querySelector('.choice').click()");                      // 1. soru: A
 await sleep(400);
@@ -287,6 +301,8 @@ await sleep(500);
 t = await text();
 ok('Sonuç sayfası doğru/yanlış/boş sayılarını gösteriyor', /Doğru/.test(t) && /Yanlış/.test(t) && /Boş/.test(t), t.slice(0, 200));
 ok('Sonuç başlığı kullanıcı adını içeriyor', t.toLowerCase().includes(user));
+await ev("document.querySelector('.qrow-head')?.click()");
+ok('Yanıt sonucunda kısa geri bildirim var', await ev("!!document.querySelector('.qrow-body .answer-feedback')"));
 await shot('10-sonuc');
 
 // ---------------------------------------------------------------- geçmiş, geri bildirim, hesap

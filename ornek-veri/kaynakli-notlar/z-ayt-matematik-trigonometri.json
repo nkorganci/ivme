@@ -1,0 +1,21 @@
+{
+  "groupId": "ayt-matematik",
+  "lessons": [{
+    "id": "trigonometri-bolge-ozdeslik",
+    "title": "Trigonometri: Bölge, İşaret ve Özdeşlik",
+    "topics": ["Trigonometri"],
+    "learn": ["Birim çemberde yönlü θ açısına karşılık gelen noktanın koordinatları (cosθ, sinθ)'dır. Saat yönü negatif, ters yönü pozitiftir. Bir açının işaretini değiştirince cos(−θ)=cosθ ve sin(−θ)=−sinθ olur.", "sin²θ+cos²θ=1 bağıntısı birim çemberden gelir. tanθ=sinθ/cosθ, secθ=1/cosθ ve cscθ=1/sinθ yazarken paydaların sıfır olmaması gerekir. İşlem boyunca başlangıçtaki tanım koşullarını koru.", "Özdeşlik sadeleştirmelerinde 1−sin²θ=(1−sinθ)(1+sinθ) çarpanlaştırması yararlıdır. Bir çarpanı sadeleştirmeden önce sıfır olamayacağını verilen aralıkla doğrula; cebirsel işlem tanım kümesini genişletmesin."],
+    "steps": ["Açının birimini, yönünü ve verilen aralığı belirle.", "İşaretleri birim çember bölgesinden kontrol et.", "Gerekirse tan, sec ve csc'yi sin/cos cinsinden yaz.", "Özdeşlik ve çarpanlaştırmayı uygula; paydayı ve elde edilen değeri aralıkla kontrol et."],
+    "pitfall": "cos(−θ)'nın işaretini otomatik değiştirme. Sadeleşen paydanın sıfır olabileceği değerler çözüm olarak geri alınmaz.",
+    "sources": [{"catalogId": 133, "page": 1, "anchors": ["YÖNLÜ AÇILAR", "negatif yönlü", "pozitif yönlü"]}, {"catalogId": 35, "page": 38, "anchors": ["Birim çember", "DAR AÇI CİNSİNDEN"]}],
+    "examples": [
+      {"bank": "CIKMIS", "code": "AYT_Sayisal-0141", "answer": "E", "anchors": ["secx", "cscx"], "explanation": "Görselde 0<x<π/2 ve secx·tanx·(1−sinx)=1/4 verilir. Sol taraf sinx(1−sinx)/cos²x=sinx/(1+sinx) olur. Aralık sadeleştirmeyi geçerli kılar. 4sinx=1+sinx, sinx=1/3 ve cscx=3, E."},
+      {"bank": "OGM", "code": "3a-ayt-matematik-40-01", "answer": "A", "anchors": ["birim çember", "koordinatları"], "explanation": "Görseldeki yönlü açı −α'dır. Nokta (cos(−α),sin(−α))=(cosα,−sinα) olur; A. x koordinatında cos, y koordinatında sin kullanılır."}
+    ],
+    "patterns": [
+      {"id": "yonlu-aci", "title": "Negatif açının koordinatları", "recognize": "Birim çember üzerinde saat yönünde ölçülen açı verilir.", "logic": "Noktayı (cosθ,sinθ) yaz ve θ yerine verilen yönlü açıyı koy.", "tip": "Negatif açı tek başına her iki koordinatın negatif olduğu anlamına gelmez.", "trap": "sin ile cos'un yerini değiştirmek.", "mini": {"question": "−30° açısının birim çemberdeki noktası nedir?", "answer": "(√3/2,−1/2). cos çift, sin tek fonksiyondur."}},
+      {"id": "eslenik-carpan", "title": "Özdeşlikle sadeleştirme", "recognize": "1±sinθ ile cos²θ aynı kesirde görünür.", "logic": "cos²θ=(1−sinθ)(1+sinθ) yaz; yalnız sıfır olmayan ortak çarpanı sadeleştir.", "tip": "Aralığı işlemden önce kullan.", "trap": "Sıfır paydada sadeleştirme yapmak.", "mini": {"question": "0<θ<π/2 için (1−sinθ)/cos²θ nasıl sadeleşir?", "answer": "1/(1+sinθ). Bu aralıkta 1−sinθ ve cosθ sıfır değildir."}}
+    ],
+    "practice": {"question": "0<θ<π/2 ve sinθ=3/5 ise tanθ kaçtır?", "choices": ["3/4", "4/3", "3/5", "4/5"], "answer": 0, "explanation": "A · İlk bölgede cosθ pozitiftir: cosθ=√(1−9/25)=4/5. tanθ=(3/5)/(4/5)=3/4."}
+  }]
+}

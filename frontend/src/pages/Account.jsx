@@ -5,6 +5,7 @@ import { useAuth } from '../auth.jsx';
 import { usePageTitle } from '../hooks.js';
 import { Field } from '../components/Field.jsx';
 import { Alert, Loading } from '../components/States.jsx';
+import { STATISTICS_LABEL } from '../config.js';
 
 const EMPTY = { currentPassword: '', newPassword: '', confirm: '' };
 
@@ -129,7 +130,7 @@ export default function Account() {
       {user.role === 'USER' && user.contactComplete && <section className="card account-history">
         <h2>Çalışma geçmişin</h2>
         <p className="muted">Pratik oturumlarına dön veya tamamlananların sonucuna bak.</p>
-        <Link to="/gecmis?tab=practice" className="btn btn-secondary">Pratik geçmişime git</Link>
+        <Link to="/gecmis?tab=practice" className="btn btn-secondary">{STATISTICS_LABEL}</Link>
       </section>}
       {user.passwordChangeRequired && <Alert type="error">Bu hesap geçici bir şifre kullanıyor. Canlı yayından önce burada en az 8 karakterlik yeni bir şifre belirle.</Alert>}
       {!user.contactComplete && user.role === 'USER' &&
@@ -183,7 +184,7 @@ export default function Account() {
       {user.role === 'USER' && <>
         <form className="card form-card" onSubmit={exportData}>
           <h2>Verilerimi indir</h2>
-          <p className="muted">Hesap bilgilerin, sınav ve pratik kayıtların, cevapların, karalamaların, geri bildirimlerin ve varsa hedeflerin JSON dosyasına eklenir. Şifre özeti ve diğer kullanıcıların verileri eklenmez.</p>
+          <p className="muted">Hesap bilgilerin, sınav ve pratik kayıtların, cevapların, karalamaların ve geri bildirimlerin JSON dosyasına eklenir. Şifre özeti ve diğer kullanıcıların verileri eklenmez.</p>
           <Field label="Mevcut şifre" type="password" autoComplete="current-password" required
             value={exportPassword} onChange={(e) => setExportPassword(e.target.value)} />
           {exportState.error && <Alert type="error">{exportState.error}</Alert>}

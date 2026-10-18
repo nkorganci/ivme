@@ -20,6 +20,8 @@ public class LocalImageStorage implements ImageStorage {
 
     private final Path root;
     private final List<Path> allowedRealRoots;
+    private record Repair(String originalHash,String renderedHash) {}
+    private final java.util.Map<String,Repair> repairs;
 
     public LocalImageStorage(AppProperties props) {
         this.root = Path.of(props.images().dir()).toAbsolutePath().normalize();
@@ -42,17 +44,40 @@ public class LocalImageStorage implements ImageStorage {
             allowed.add(root); // Kök henüz yoksa daha sonra oluşan normal dosyalar çalışır.
         }
         this.allowedRealRoots = List.copyOf(allowed);
+        var verified=new java.util.HashMap<String,Repair>();
+        Path manifest=root.resolve("onarilmis/manifest.json");
+        if(Files.isRegularFile(manifest))try{
+            var data=new com.fasterxml.jackson.databind.ObjectMapper().readTree(manifest.toFile());
+            for(var r:data.path("records"))if("APPLIED_DERIVED_RENDER".equals(r.path("state").asText()))
+                verified.put(r.path("originalImage").asText(),new Repair(r.path("originalSha256").asText(),r.path("renderedImageSha256").asText()));
+        }catch(IOException e){throw new IllegalStateException("Onarılmış görsel kanıtı okunamadı.",e);}
+        repairs=java.util.Map.copyOf(verified);
     }
 
     @Override
     public Resource load(String relativePath) {
-        return resolve(relativePath).filter(LocalImageStorage::hasImageSignature).map(FileSystemResource::new)
+        Path original = resolve(relativePath).filter(LocalImageStorage::hasImageSignature)
                 .orElseThrow(() -> ApiException.notFound("Soru görseli bulunamadı."));
+        Repair repair=repairs.get(relativePath);
+        if(repair!=null && repair.originalHash().equals(sha256(original))) {
+            var rendered=resolve("onarilmis/"+relativePath).filter(LocalImageStorage::hasImageSignature)
+                .filter(p->repair.renderedHash().equals(sha256(p)));
+            if(rendered.isPresent())return new FileSystemResource(rendered.get());
+        }
+        // Kırpılmış kopya yalnızca doğrulanmış özgün görsel için kullanılır.
+        // Kaynak dosya, CSV yolu ve etikete bağlı görsel hash'i değişmez.
+        Path cropped = resolve("kirpilmis/" + relativePath)
+                .filter(LocalImageStorage::hasImageSignature).orElse(original);
+        return new FileSystemResource(cropped);
     }
 
     @Override
     public boolean exists(String relativePath) {
         return resolve(relativePath).isPresent();
+    }
+    private static String sha256(Path path) {
+        try(var stream=Files.newInputStream(path)){return java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(stream.readAllBytes()));}
+        catch(IOException|java.security.NoSuchAlgorithmException e){throw new IllegalStateException(e);}
     }
 
     private Optional<Path> resolve(String relativePath) {

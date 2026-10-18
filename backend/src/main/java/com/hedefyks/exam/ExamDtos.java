@@ -15,6 +15,14 @@ public final class ExamDtos {
 
     private ExamDtos() {}
 
+    public record FullExamRequest(QuestionBank bank,
+            @NotNull(message = "TYT veya AYT seçmelisin.") ExamType examType, ExamTrack track,
+            Boolean includeSolved) {
+        public QuestionSelectionMode selectionMode() {
+            return Boolean.FALSE.equals(includeSolved) ? QuestionSelectionMode.NEW : QuestionSelectionMode.MIXED;
+        }
+    }
+
     public record CreateExamRequest(
             QuestionBank bank, ExamType examType, String subject, String topic,
             @NotNull(message = "Soru sayısı gerekli.")
@@ -24,7 +32,13 @@ public final class ExamDtos {
             QuestionSelectionMode selectionMode,
             @Min(value = 0, message = "Süre negatif olamaz.")
             @Max(value = 600, message = "Süre en fazla 600 dakika olabilir.")
-            Integer timeLimitMinutes, Integer topicPdfId) {}
+            Integer timeLimitMinutes, Integer topicPdfId, ExamTrack track,
+            List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty) {
+        public CreateExamRequest(QuestionBank bank,ExamType examType,String subject,String topic,Integer questionCount,
+                QuestionSelectionMode selectionMode,Integer timeLimitMinutes,Integer topicPdfId,ExamTrack track) {
+            this(bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes,topicPdfId,track,null,null,null,null,null);
+        }
+    }
 
     public record AnswerRequest(@NotNull(message = "questionId gerekli.") Long questionId, String answer) {}
 
@@ -40,7 +54,7 @@ public final class ExamDtos {
 
     public record HistoryItem(Long id, String title, int questionCount, int correctCount, int wrongCount,
                               int blankCount, BigDecimal percent, BigDecimal net, int durationSeconds,
-                              Instant submittedAt) {}
+                              Instant submittedAt, ExamType examType, List<SubjectStat> bySubject) {}
 
     public record SubjectStat(String subject, int total, int correct, int wrong, int blank) {}
 

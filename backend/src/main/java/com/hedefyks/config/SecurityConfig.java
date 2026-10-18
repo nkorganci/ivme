@@ -67,7 +67,7 @@ public class SecurityConfig {
                 .headers(headers -> {
                     headers.frameOptions(frame -> frame.disable());
                     headers.addHeaderWriter((request, response) -> response.setHeader("X-Frame-Options",
-                            request.getRequestURI().matches("^/api/topic-pdfs/[0-9]+/file$")
+                            request.getRequestURI().matches("^/api/topic-pdfs/[0-9]+/file$|^/api/learning-resources/pdf/[0-9]+$")
                                     ? "SAMEORIGIN" : "DENY"));
                     if (secureCookies) {
                         headers.httpStrictTransportSecurity(hsts -> hsts
@@ -78,11 +78,11 @@ public class SecurityConfig {
                 })
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/dev-login", "/api/auth/dev-physics-review-login", "/api/auth/dev-teacher-review-login").permitAll()
                         .requestMatchers("/api/admin/stats").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").denyAll()
                         .requestMatchers("/api/operator/**").hasRole("OPERATOR")
-                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/account/**").authenticated()
+                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/auth/dev-review-available", "/api/account/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/questions/*/image", "/api/questions/*/solution-image")
                             .hasAnyRole("USER", "OPERATOR")
                         .requestMatchers("/api/**").hasRole("USER")

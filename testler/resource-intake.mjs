@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {resourceDraft} from '../scripts/resource-intake.mjs';
+const q=resourceDraft({kind:'QUESTION',exam:'TYT',code:'INTAKE-PILOT',subject:'Matematik',topic:'Yeni dar konu',bank:'OGM',available:true,correctAnswer:'D'});
+assert.equal(q.questionCode,'INTAKE-PILOT');assert.equal(q.key,'question:INTAKE-PILOT');
+assert.equal(q.automaticLabels.assignments[0].confidence,'LOW');
+assert.equal(q.manualReview.status,'NEEDS_MANUAL_REVIEW');assert.equal(q.correctAnswer,undefined);
+assert.ok(q.automaticLabels.assignments[0].categoryId);
+assert.throws(()=>resourceDraft({kind:'QUESTION',exam:'TYT',code:'q',subject:'Fizik',categoryIds:['invented-category']}));
+const base={kind:'PDF',exam:'TYT',key:'pdf:intake-pilot',subject:'Fizik',topic:'Hareket ve kuvvet',pageCount:3,url:'/api/learning-resources/pdf/1'};
+const pdf=resourceDraft(base);assert.equal(pdf.availability,'unverified');
+assert.throws(()=>resourceDraft({...base,locations:{[pdf.automaticLabels.assignments[0].categoryId]:[{type:'PDF',sourceKey:base.key,pdfPageStart:2,pdfPageEnd:4,pageCount:3}]}}));
+const video=resourceDraft({kind:'VIDEO',exam:'TYT',key:'video:intake-pilot',subject:'Fizik',topic:'Hareket ve kuvvet',url:'https://www.youtube.com/watch?v=abcdefghijk'});
+assert.equal(video.canonicalAssetId,'youtube:abcdefghijk');assert.equal(video.automaticLabels.assignments[0].locatorStatus,'MISSING');
+assert.throws(()=>resourceDraft({...base,url:'javascript:alert(1)'}));
+console.log('PASS: shared v2 intake for question/PDF/video; controlled fallback, honest access, no answers, invalid category/range/URL rejected.');

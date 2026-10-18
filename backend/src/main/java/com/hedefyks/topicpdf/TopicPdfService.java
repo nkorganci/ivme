@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -28,15 +29,21 @@ public class TopicPdfService {
 
     public record Item(int id, String title, String exam, String subject, String kind,
                        Integer grade, Integer pageCount, String status, String verifiedTopic) {}
-    public record Filters(List<String> exams, List<String> subjects, List<String> kinds) {}
+    public record Facet(String exam, String subject, Integer grade, String kind, long count) {}
+    public record Filters(List<String> exams, List<String> subjects, List<String> kinds,
+                          List<Integer> grades, List<Facet> facets) {}
+    private record FacetKey(String exam, String subject, Integer grade, String kind) {}
+    public record CurriculumPdf(String topicId, int id, String title, String kind) {}
     private record Entry(Item item, String relativePath, String sha256) {}
     private record ApprovedLink(String pdfSha256, String topic, List<String> questionCodes) {}
+    private record ReviewedLink(int catalogId, String topicId, String pdfSha256) {}
 
     private final Path catalogDir;
     private final Path sourceRoot;
     private final Map<Integer, Entry> byId;
     private final List<Entry> ordered;
     private final Map<Integer, ApprovedLink> approvedLinks;
+    private final List<ReviewedLink> curriculumLinks;
 
     public TopicPdfService(ObjectMapper mapper,
                            @Value("${app.topic-pdfs.catalog-dir:}") String catalogPath,
@@ -45,10 +52,33 @@ public class TopicPdfService {
         this.sourceRoot = sourcePath.isBlank() ? null : Path.of(sourcePath).toAbsolutePath().normalize();
         this.approvedLinks = readApprovedLinks(mapper);
         this.byId = readCatalog(mapper);
+        this.curriculumLinks = readCurriculumLinks(mapper);
         this.ordered = byId.values().stream()
                 .sorted(Comparator.comparing((Entry e) -> e.item().title(), String.CASE_INSENSITIVE_ORDER)
                         .thenComparingInt(e -> e.item().id()))
                 .toList();
+    }
+
+    private List<ReviewedLink> readCurriculumLinks(ObjectMapper mapper) {
+        try (InputStream in = new ClassPathResource("curriculum-pdf-links.json").getInputStream()) {
+            JsonNode root = mapper.readTree(in);
+            if (root.path("version").asInt() != 1) throw new IllegalStateException("Müfredat PDF bağı sürümü bilinmiyor.");
+            var links = new java.util.ArrayList<ReviewedLink>();
+            var seen = new HashSet<String>();
+            for (JsonNode node : root.path("links")) {
+                int id = node.path("catalogId").asInt(-1);
+                String topicId = node.path("topicId").asText("");
+                String sha = node.path("pdfSha256").asText("");
+                if (id < 0 || !topicId.matches("(?:tyt|ayt)\\.[a-z]+\\.[a-z0-9-]+")
+                        || !sha.matches("[0-9a-f]{64}") || !seen.add(topicId + ":" + id)) {
+                    throw new IllegalStateException("Müfredat PDF bağı geçersiz.");
+                }
+                links.add(new ReviewedLink(id, topicId, sha));
+            }
+            return List.copyOf(links);
+        } catch (IOException ex) {
+            throw new IllegalStateException("Müfredat PDF bağları okunamadı.", ex);
+        }
     }
 
     private Map<Integer, ApprovedLink> readApprovedLinks(ObjectMapper mapper) {
@@ -100,15 +130,18 @@ public class TopicPdfService {
         return entries;
     }
 
-    public PageResponse<Item> list(String exam, String subject, String kind, String search, int page, int size) {
+    public PageResponse<Item> list(String exam, String subject, String kind, Integer grade,
+                                   String search, int page, int size) {
         int pageNumber = Math.max(0, page);
         int pageSize = Math.max(1, Math.min(size, 50));
         String term = search == null ? "" : search.trim().toLowerCase(Locale.forLanguageTag("tr-TR"));
         if (term.length() > 100) throw ApiException.badRequest("Arama en fazla 100 karakter olabilir.");
         List<Item> matched = ordered.stream().map(Entry::item)
-                .filter(item -> exam == null || exam.isBlank() || exam.equals(item.exam()))
+                .filter(item -> exam == null || exam.isBlank() || exam.equals(item.exam())
+                        || ("TYT-AYT".equals(item.exam()) && List.of("TYT", "AYT").contains(exam)))
                 .filter(item -> subject == null || subject.isBlank() || subject.equals(item.subject()))
                 .filter(item -> kind == null || kind.isBlank() || kind.equals(item.kind()))
+                .filter(item -> grade == null || grade.equals(item.grade()))
                 .filter(item -> term.isEmpty() || item.title().toLowerCase(Locale.forLanguageTag("tr-TR")).contains(term))
                 .toList();
         int start = (int) Math.min((long) pageNumber * pageSize, matched.size());
@@ -118,9 +151,71 @@ public class TopicPdfService {
     }
 
     public Filters filters() {
+        Map<FacetKey, Long> counts = ordered.stream().map(Entry::item)
+                .collect(java.util.stream.Collectors.groupingBy(
+                        item -> new FacetKey(item.exam(), item.subject(), item.grade(), item.kind()),
+                        java.util.stream.Collectors.counting()));
         return new Filters(distinct(ordered.stream().map(e -> e.item().exam()).toList()),
                 distinct(ordered.stream().map(e -> e.item().subject()).toList()),
-                distinct(ordered.stream().map(e -> e.item().kind()).toList()));
+                distinct(ordered.stream().map(e -> e.item().kind()).toList()),
+                ordered.stream().map(e -> e.item().grade()).filter(java.util.Objects::nonNull)
+                        .distinct().sorted().toList(),
+                counts.entrySet().stream()
+                        .map(entry -> new Facet(entry.getKey().exam(), entry.getKey().subject(),
+                                entry.getKey().grade(), entry.getKey().kind(), entry.getValue()))
+                        .sorted(Comparator.comparing(Facet::exam).thenComparing(Facet::subject)
+                                .thenComparing(f -> f.grade() == null ? 0 : f.grade())
+                                .thenComparing(Facet::kind))
+                        .toList());
+    }
+    public List<Integer> catalogIdsByKind(String kind) {
+        if(!filters().kinds().contains(kind))throw ApiException.badRequest("PDF kaynak türü geçersiz.");
+        return ordered.stream().map(Entry::item).filter(i->kind.equals(i.kind())).map(Item::id).toList();
+    }
+
+    /** Review candidates retain mappings even when a file needs repair; this does not approve them. */
+    public List<CurriculumPdf> reviewCurriculumLinks(String exam, String subject) {
+        String prefix = exam.toLowerCase(Locale.ROOT) + "." + subject + ".";
+        return curriculumLinks.stream().filter(link -> link.topicId().startsWith(prefix))
+                .filter(link -> byId.containsKey(link.catalogId()))
+                .map(link -> new CurriculumPdf(link.topicId(), link.catalogId(),
+                        byId.get(link.catalogId()).item().title(), byId.get(link.catalogId()).item().kind())).toList();
+    }
+
+    public String reviewSourceSha256(int id) {
+        Entry entry = byId.get(id);
+        if (entry == null) throw ApiException.notFound("PDF bulunamadı.");
+        return entry.sha256();
+    }
+
+    /** Only audited topic links with the same catalog and real-file checksum are exposed. */
+    public List<CurriculumPdf> curriculumResources(String exam, String subject) {
+        if (exam == null || !exam.matches("TYT|AYT") || subject == null || !subject.matches("[a-z]+")) {
+            throw ApiException.badRequest("Sınav veya ders geçersiz.");
+        }
+        String prefix = exam.toLowerCase(Locale.ROOT) + "." + subject + ".";
+        String catalogSubject = switch (subject) {
+            case "geometri" -> "matematik";
+            case "psikoloji", "sosyoloji", "mantik" -> "felsefe";
+            default -> subject;
+        };
+        var available = new java.util.ArrayList<CurriculumPdf>();
+        for (ReviewedLink link : curriculumLinks) {
+            if (!link.topicId().startsWith(prefix)) continue;
+            Entry entry = byId.get(link.catalogId());
+            if (entry == null || !link.pdfSha256().equals(entry.sha256())
+                    || !List.of(exam, "TYT-AYT").contains(entry.item().exam())
+                    || !catalogSubject.equals(entry.item().subject())
+                    || !"available".equals(entry.item().status())) continue;
+            try {
+                file(link.catalogId());
+                available.add(new CurriculumPdf(link.topicId(), link.catalogId(), entry.item().title(), entry.item().kind()));
+            } catch (ApiException ignored) {
+                // A removed or changed source must not be shown as a topic link.
+            }
+        }
+        return available.stream().sorted(Comparator.comparing(CurriculumPdf::topicId)
+                .thenComparing(CurriculumPdf::kind).thenComparingInt(CurriculumPdf::id)).toList();
     }
 
     private List<String> distinct(List<String> values) {

@@ -12,6 +12,7 @@ spring:
     password: ${YKS_DB_SIFRE:root}
 
 app:
+  dev-auto-user: ${YKS_DEV_OGRENCI:nazile}
   images:
     dir: ${YKS_RESIM_KLASORU:../ornek-veri/resimler}   # mvn spring-boot:run, backend\ klasöründen çalışır
   topic-pdfs:

@@ -1,5 +1,8 @@
 # Kaynaklı ders notları: durum ve devam kaydı
 
+
+> Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
+
 14 Ekim 2026. Güncel öğretim kapsamı ve devir noktaları. Ayrıntılı kaynak izi ve yeniden kullanma komutları [araştırma hafızasında](KAYNAKLI_SORU_ANALIZI.md) kayıtlıdır.
 
 ## Güncel kapsam
@@ -65,10 +68,4 @@ Tarayıcı testi derlenmiş ön yüz ve yalıtılmış API yanıtları üzerinde
 
 ## Sonraki çalışma
 
-1. Sözel Mantık için uygun soru/anlatım dayanağını doğrulayın. Fiilde Çatı için çıkmış örnek eşleştirmesi açıktır.
-2. Tarihte İlk Uygarlıklar/İlk Türk Devletleri; Coğrafyada konum/Dünya hareketleri; Felsefede akıl yürütme/ahlak; Din'de din-ahlak; Biyolojide bileşikler/madde geçişleri; Kimyada etkileşimler/maddenin hâlleriyle devam edin. AYT kapsamını ayrı sınav gruplarıyla açın.
-3. Edebiyatta dar alt konuları genişletin. Şiir Bilgisi rehberinin mevcut ahenk odağı, bütün nazım biçimlerinin ve türlerinin bağımsız rehberlerinin tamamı değildir.
-4. Biyoloji cevap çelişkisini özgün kitapçık/anahtarla ve öğretmenle doğrulayın. Etiket uyuşmazlıklarını ve iptal sorularını bankaya aktarmak ayrı veri düzeltme işidir.
-5. ÖSYM arşiv tamlığı, 9.230 kaydın görsel incelemesi ve gerçek branş öğretmeni onayı açıktır. Yerel Türkçe 2018–2026 arşivi yılda 34 kayıttır; 40 soruluk testin bütünü değildir.
-
-Yalnız bu işe ait dosyalar yerel commit'e alınır; diğer bekleyen değişiklikler dahil edilmez. Push yapılmaz.
+Kalan not kapsamı ve kaynak düzeltmeleri yalnız [12. adımda](plan/12_KALAN_ICERIK_VE_YAYIN.md) takip edilir. Önce [etiketleme planı](plan/00_YOL_HARITASI.md) ve [güncel çalışma bağlamı](plan/00_CALISMA_BAGLAMI.md) okunur; bu belgeden ayrı iş listesi başlatılmaz.

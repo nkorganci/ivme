@@ -17,6 +17,26 @@ class LocalImageStorageTest {
     @TempDir Path outside;
 
     @Test
+    void sourceRepairRequiresBothOriginalAndRenderedHashesAndPreservesOriginal() throws Exception {
+        byte[] header={'R','I','F','F',0,0,0,0,'W','E','B','P'};
+        Path original=root.resolve("1.webp");Files.write(original,header);
+        Path repaired=Files.createDirectory(root.resolve("onarilmis")).resolve("1.webp");
+        byte[] corrected=java.util.Arrays.copyOf(header,14);Files.write(repaired,corrected);
+        var digest=java.security.MessageDigest.getInstance("SHA-256");
+        var manifest=new com.fasterxml.jackson.databind.ObjectMapper().createObjectNode();
+        var record=manifest.putArray("records").addObject();record.put("state","APPLIED_DERIVED_RENDER");record.put("originalImage","1.webp");
+        record.put("originalSha256",java.util.HexFormat.of().formatHex(digest.digest(header)));
+        record.put("renderedImageSha256",java.util.HexFormat.of().formatHex(digest.digest(corrected)));
+        Files.writeString(root.resolve("onarilmis/manifest.json"),manifest.toString());
+        var storage=new LocalImageStorage(new AppProperties(null,new AppProperties.Images(root.toString()),null,null));
+        assertThat(storage.load("1.webp").getFile().toPath()).isEqualTo(repaired);
+        assertThat(Files.readAllBytes(original)).isEqualTo(header);
+        Files.write(repaired,header);assertThat(storage.load("1.webp").getFile().toPath()).isEqualTo(original);
+        Files.write(repaired,corrected);Files.write(original,corrected);
+        assertThat(storage.load("1.webp").getFile().toPath()).isEqualTo(original);
+    }
+
+    @Test
     void yalnizGecerliRasterGorselSunulur() throws Exception {
         var storage = new LocalImageStorage(new AppProperties(null,
                 new AppProperties.Images(root.toString()), null, null));
@@ -56,5 +76,21 @@ class LocalImageStorageTest {
                 new AppProperties.Images(pilot.toString()), null, null));
         assertThat(storage.exists(sample)).isTrue();
         assertThat(storage.load(sample).exists()).isTrue();
+    }
+
+    @Test
+    void kirpilmisKopyaVarsaSunulurKaynakYoluKorunur() throws Exception {
+        Path original = Files.createDirectories(root.resolve("ogm/sb")).resolve("1.webp");
+        Path cropped = Files.createDirectories(root.resolve("kirpilmis/ogm/sb")).resolve("1.webp");
+        byte[] header = {'R', 'I', 'F', 'F', 0, 0, 0, 0, 'W', 'E', 'B', 'P'};
+        Files.write(original, header);
+        Files.write(cropped, header);
+        var storage = new LocalImageStorage(new AppProperties(null,
+                new AppProperties.Images(root.toString()), null, null));
+
+        assertThat(storage.load("ogm/sb/1.webp").getFile().toPath()).isEqualTo(cropped);
+        assertThat(storage.exists("ogm/sb/1.webp")).isTrue();
+        Files.delete(cropped);
+        assertThat(storage.load("ogm/sb/1.webp").getFile().toPath()).isEqualTo(original);
     }
 }

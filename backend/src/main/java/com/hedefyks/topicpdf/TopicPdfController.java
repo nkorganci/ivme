@@ -25,14 +25,21 @@ public class TopicPdfController {
     @GetMapping
     public PageResponse<TopicPdfService.Item> list(@RequestParam(required = false) String exam,
             @RequestParam(required = false) String subject, @RequestParam(required = false) String kind,
+            @RequestParam(required = false) Integer grade,
             @RequestParam(required = false, name = "q") String search,
             @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "20") int size) {
-        return service.list(exam, subject, kind, search, page, size);
+        return service.list(exam, subject, kind, grade, search, page, size);
     }
 
     @GetMapping("/filters")
     public TopicPdfService.Filters filters() {
         return service.filters();
+    }
+
+    @GetMapping("/curriculum")
+    public java.util.List<TopicPdfService.CurriculumPdf> curriculum(@RequestParam String exam,
+            @RequestParam String subject) {
+        return service.curriculumResources(exam, subject);
     }
 
     @GetMapping("/{id}")

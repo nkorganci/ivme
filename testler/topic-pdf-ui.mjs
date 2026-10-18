@@ -1,5 +1,6 @@
 // Isolated browser check for the reviewed PDF -> practice/exam builder flow.
 // Run after `npm run build` in frontend. No live API or database is contacted.
+// --pdf-only limits this older combined suite to the PDF and scoped study flows.
 import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
@@ -165,15 +166,16 @@ try {
     });
     for (const [page, expected] of [
       ['/konu-anlatimlari/1099', 'Bu konudan soru çöz'],
-      ['/pratik/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
-      ['/sinav/yeni?topicPdfId=1099', 'Konu PDF\'sinden doğrulanmış sorular'],
+      ['/pratik/yeni?topicPdfId=1099', 'Bu konu anlatımına bağlı doğrulanmış sorular'],
+      ['/sinav/yeni?topicPdfId=1099', 'Bu konu anlatımına bağlı doğrulanmış sorular'],
       ['/hesap', 'Verilerimi indir'],
       ['/ilerleme', 'Çalışma zaman çizelgesi'],
       ['/hedefler', 'Hedeflerim ve geçmiş'],
       ['/oneriler', 'Çalışma önerileri'],
       ['/yonetim', 'Yönetim · Kullanım özeti'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
-    ]) {
+    ].filter(([page]) => !process.argv.includes('--pdf-only')
+      || page.startsWith('/konu-anlatimlari/') || page.includes('/yeni?topicPdfId='))) {
       if (page === '/hedefler') goals = [];
       if (page === '/oneriler') { recommendationFixture = true; recommendationStatus = 'SUGGESTIONS'; }
       currentRole = page === '/yonetim' ? 'ADMIN' : 'USER';
@@ -181,7 +183,7 @@ try {
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
       if (page.includes('yeni')) {
         await waitFor('document.body.innerText.includes("3")');
-        await waitFor('document.body.innerText.includes("Henüz doğrulanmış zorluk etiketi yok")');
+        await waitFor('document.body.innerText.includes("Konu ve kaynak sabit")');
         if (await evaluate('!![...document.querySelectorAll("label")].find(x => x.innerText === "Kaynak")')) {
           throw new Error(`${width}px ${page}: kapsam filtresi görünür kaldı`);
         }

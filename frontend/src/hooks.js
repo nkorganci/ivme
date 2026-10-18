@@ -44,8 +44,10 @@ export function ignoreHotkey(e) {
 }
 
 /** Açılır listeler için filtre verisi (aktif sorular); bank boşsa tüm koleksiyonlar. */
-export function useFilterRows(bank = '') {
-  const { data } = useAsync(() => api.get('/api/questions/filters' + qs({ bank })), [bank]);
+export function useFilterRows(bank = '', source = null) {
+  const query = qs({ bank, source });
+  const empty = source?.length === 0;
+  const { data } = useAsync(() => empty ? Promise.resolve([]) : api.get('/api/questions/filters' + query), [query, empty]);
   return data || [];
 }
 

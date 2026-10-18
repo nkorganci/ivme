@@ -18,6 +18,8 @@ export default function Operator() {
   const Panel = current[2];
   return <>
     <h1>İçerik bakımı</h1>
+    <p><Link className="btn btn-primary" to="/ogretmen-dogrulamasi/fizik">Öğretmen Doğrulamasını aç</Link></p>
+    <p><Link className="btn btn-secondary" to="/ogretmen-dogrulamasi/all">Bütün derslerin PDF etiketlerini aç</Link></p>
     <nav className="tabs" aria-label="İçerik bakımı sekmeleri">
       {TABS.map(([key, label]) => <Link key={key} to={`/icerik-bakimi?sekme=${key}`}
         className={key === current[0] ? 'active' : ''}

@@ -16,6 +16,106 @@ import org.junit.jupiter.api.Test;
 class StudySessionTest extends TestBase {
 
     @Test
+    void yarimKalanListeOturumdakiTekilYanitlariSayarVeDevamSorusuIleDenemeleriGetirir() throws Exception {
+        for (int i = 1; i <= 4; i++) question("Y-" + i, "Türkçe", "A");
+        var owner = user("ayse", Role.USER);
+        var other = user("mehmet", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        var mehmet = login("mehmet", "Sifre1234");
+        String path = "/api/study-sessions/unfinished";
+        mvc.perform(get(path)).andExpect(status().isUnauthorized());
+        send(ayse, get(path), null).andExpect(jsonPath("$.length()").value(0));
+        JsonNode practice = selected(ayse, "MIXED", 4, "Türkçe");
+        long id = practice.path("id").asLong();
+        JsonNode qs = practice.path("questions");
+        // Repeated answers count once; a wrong answer is still an answered question.
+        for (String answer : new String[]{"B", "A"})
+            send(ayse, post("/api/questions/" + qs.get(0).path("questionId").asLong() + "/practice"),
+                    event(UUID.randomUUID(), "ANSWER", answer, id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + qs.get(1).path("questionId").asLong() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "B", id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + qs.get(2).path("questionId").asLong() + "/practice"),
+                event(UUID.randomUUID(), "REVEAL", null, id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + qs.get(3).path("questionId").asLong() + "/practice"),
+                event(UUID.randomUUID(), "SKIP", null, id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + qs.get(3).path("questionId").asLong() + "/practice"),
+                event(UUID.randomUUID(), "ANSWER", "A", null)).andExpect(status().isOk());
+
+        long exam = jdbc.queryForObject("INSERT INTO exams(user_id,title,question_count) VALUES (?,'TYT denemesi',4) RETURNING id", Long.class, owner.getId());
+        for (int i = 0; i < 4; i++) jdbc.update("""
+                INSERT INTO exam_questions(exam_id,question_id,question_order,question_code,subject,selected_answer)
+                VALUES (?,?,?,?,?,?)
+                """, exam, qs.get(i).path("questionId").asLong(), i + 1, qs.get(i).path("code").asText(), "Türkçe", i < 2 ? "B" : null);
+        jdbc.update("INSERT INTO exams(user_id,title,question_count,status) VALUES (?,'Biten',4,'SUBMITTED')", owner.getId());
+        long otherPractice = selected(mehmet, "MIXED", 1, "Türkçe").path("id").asLong();
+        jdbc.update("INSERT INTO exams(user_id,title,question_count) VALUES (?,'Başkasının denemesi',4)", other.getId());
+
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(2))
+                .andExpect(jsonPath("$[0].kind").value("EXAM"))
+                .andExpect(jsonPath("$[0].id").value(exam))
+                .andExpect(jsonPath("$[0].title").value("TYT denemesi"))
+                .andExpect(jsonPath("$[0].questionCount").value(4))
+                .andExpect(jsonPath("$[0].solvedCount").value(2))
+                .andExpect(jsonPath("$[1].id").value(id))
+                .andExpect(jsonPath("$[1].title").value("TYT · Türkçe · Konu pratiği"))
+                .andExpect(jsonPath("$[1].questionCount").value(4))
+                .andExpect(jsonPath("$[1].solvedCount").value(2))
+                .andExpect(jsonPath("$[1].resumeQuestionCode").value(qs.get(1).path("code").asText()))
+                .andExpect(jsonPath("$[1].resumeQuestionBank").value("CIKMIS"));
+        send(mehmet, get(path), null).andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].id").value(otherPractice));
+        send(ayse, post("/api/study-sessions/" + id + "/finish"), null).andExpect(status().isOk());
+        jdbc.update("UPDATE exams SET status='SUBMITTED' WHERE id=?", exam);
+        send(ayse, get(path), null).andExpect(jsonPath("$.length()").value(0));
+
+        long expired = selected(ayse, "MIXED", 1, "Türkçe").path("id").asLong();
+        jdbc.update("UPDATE study_sessions SET time_limit_seconds=60,started_at=now()-interval '2 minutes' WHERE id=?", expired);
+        send(ayse, get(path), null).andExpect(jsonPath("$.length()").value(0));
+    }
+
+    @Test
+    void bitmemisPratikOzetiYalnizOgrencininAcikVeSuresiDolmamisOturumlariniSayar() throws Exception {
+        question("U-1", "Türkçe", "B");
+        user("ayse", Role.USER);
+        user("mehmet", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        var mehmet = login("mehmet", "Sifre1234");
+        String path = "/api/study-sessions/unfinished-summary";
+
+        mvc.perform(get(path)).andExpect(status().isUnauthorized());
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(0))
+                .andExpect(jsonPath("$.latestSessionId").doesNotExist());
+        long first = selected(ayse, "MIXED", 1, "Türkçe").get("id").asLong();
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(1)).andExpect(jsonPath("$.latestSessionId").value(first));
+        long second = selected(ayse, "MIXED", 1, "Türkçe").get("id").asLong();
+        long completed = selected(ayse, "MIXED", 1, "Türkçe").get("id").asLong();
+        send(ayse, post("/api/study-sessions/" + completed + "/finish"), null).andExpect(status().isOk());
+        String timed = request(UUID.randomUUID(), "Türkçe", 1)
+                .replace("\"clientRequestId\"", "\"durationMinutes\":1,\"clientRequestId\"");
+        long expired = read(send(ayse, post("/api/study-sessions"), timed)
+                .andExpect(status().isCreated())).get("id").asLong();
+        jdbc.update("update study_sessions set started_at = now() - interval '2 minutes' where id = ?", expired);
+        long other = selected(mehmet, "MIXED", 1, "Türkçe").get("id").asLong();
+
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(2)).andExpect(jsonPath("$.latestSessionId").value(second))
+                .andExpect(jsonPath("$.questions").doesNotExist());
+        send(mehmet, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(1)).andExpect(jsonPath("$.latestSessionId").value(other));
+        assertThat(jdbc.queryForObject("select status from study_sessions where id = ?", String.class, expired))
+                .isEqualTo("COMPLETED");
+        send(ayse, post("/api/study-sessions/" + second + "/finish"), null).andExpect(status().isOk());
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(1)).andExpect(jsonPath("$.latestSessionId").value(first));
+        send(ayse, post("/api/study-sessions/" + first + "/finish"), null).andExpect(status().isOk());
+        send(ayse, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(0)).andExpect(jsonPath("$.latestSessionId").doesNotExist());
+    }
+
+    @Test
     void oturumTekilSiraylaKaydedilirTekrarlanirVeYalnizSahibiAcabilir() throws Exception {
         question("P-1", "Türkçe", "B");
         question("P-2", "Türkçe", "A");
@@ -187,6 +287,8 @@ class StudySessionTest extends TestBase {
         jdbc.update("update questions set correct_answer = 'A' where id = ?", one.getId());
         JsonNode afterCorrection = read(send(ayse, get("/api/study-sessions/" + id), null).andExpect(status().isOk()));
         assertThat(afterCorrection.get("result")).isEqualTo(finished.get("result"));
+        JsonNode history = read(send(ayse, get("/api/study-sessions"), null).andExpect(status().isOk()));
+        assertThat(history.at("/content/0/result")).isEqualTo(finished.get("result"));
         mvc.perform(get("/api/study-sessions/active").session(ayse)).andExpect(status().isNoContent());
     }
 
@@ -209,6 +311,14 @@ class StudySessionTest extends TestBase {
         assertThat(finished.at("/result/blank").asInt()).isEqualTo(1);
         assertThat(read(send(ayse, post("/api/study-sessions/" + id + "/finish"), null)
                 .andExpect(status().isOk())).get("endedAt")).isEqualTo(finished.get("endedAt"));
+
+        long untimedId = read(send(ayse, post("/api/study-sessions"),
+                request(UUID.randomUUID(), "Türkçe", 1)).andExpect(status().isCreated()))
+                .get("id").asLong();
+        JsonNode untimed = read(send(ayse, post("/api/study-sessions/" + untimedId + "/finish"), null)
+                .andExpect(status().isOk()));
+        assertThat(untimed.get("status").asText()).isEqualTo("COMPLETED");
+        assertThat(untimed.at("/result/blank").asInt()).isEqualTo(1);
     }
 
     @Test
@@ -235,13 +345,46 @@ class StudySessionTest extends TestBase {
         assertThat(history.at("/content/0/id").asLong()).isEqualTo(expired);
         assertThat(history.at("/content/0/status").asText()).isEqualTo("COMPLETED");
         assertThat(history.at("/content/0/questionCount").asInt()).isEqualTo(1);
+        assertThat(history.at("/content/0/subject").asText()).isEqualTo("Türkçe");
+        assertThat(history.at("/content/0/result/blank").asInt()).isEqualTo(1);
         JsonNode next = read(send(ayse, get("/api/study-sessions?page=1&size=1"), null)
                 .andExpect(status().isOk()));
         assertThat(next.at("/content/0/id").asLong()).isEqualTo(old);
         assertThat(next.at("/content/0/status").asText()).isEqualTo("IN_PROGRESS");
+        assertThat(next.at("/content/0/result").isNull()).isTrue();
         assertThat(read(send(mehmet, get("/api/study-sessions"), null)
                 .andExpect(status().isOk())).at("/totalElements").asInt()).isEqualTo(1);
         send(mehmet, get("/api/study-sessions/" + old), null).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void gecmisIlkVeSonTuruAyirirAtlananVeYanitlanmayanSoruyuBosSayar() throws Exception {
+        var one = question("H-1", "Türkçe", "B");
+        var two = question("H-2", "Türkçe", "A");
+        question("H-3", "Türkçe", "C");
+        user("ayse", Role.USER);
+        var ayse = login("ayse", "Sifre1234");
+        long id = selected(ayse, "MIXED", 3, "Türkçe").get("id").asLong();
+        String path = "/api/questions/" + one.getId() + "/practice";
+        send(ayse, post(path), event(UUID.randomUUID(), "ANSWER", "A", id)).andExpect(status().isOk());
+        send(ayse, post(path), event(UUID.randomUUID(), "REVEAL", null, id)).andExpect(status().isOk());
+        send(ayse, post(path), event(UUID.randomUUID(), "ANSWER", "B", id)).andExpect(status().isOk());
+        send(ayse, post("/api/questions/" + two.getId() + "/practice"), event(UUID.randomUUID(), "SKIP", null, id))
+                .andExpect(status().isOk());
+        assertThat(read(send(ayse, get("/api/study-sessions"), null).andExpect(status().isOk()))
+                .at("/content/0/result").isNull()).isTrue();
+        JsonNode finished = read(send(ayse, post("/api/study-sessions/" + id + "/finish"), null)
+                .andExpect(status().isOk()));
+        JsonNode item = read(send(ayse, get("/api/study-sessions"), null).andExpect(status().isOk()))
+                .at("/content/0");
+        assertThat(item.get("result")).isEqualTo(finished.get("result"));
+        assertThat(item.at("/result/correct").asInt()).isEqualTo(1);
+        assertThat(item.at("/result/wrong").asInt()).isZero();
+        assertThat(item.at("/result/blank").asInt()).isEqualTo(2);
+        assertThat(item.at("/result/firstCorrect").asInt()).isZero();
+        assertThat(item.at("/result/firstWrong").asInt()).isEqualTo(1);
+        assertThat(item.at("/result/firstBlank").asInt()).isEqualTo(2);
+        assertThat(item.path("topic").asText()).isEqualTo("Konu");
     }
 
     private JsonNode selected(org.springframework.mock.web.MockHttpSession session, String mode, int count,

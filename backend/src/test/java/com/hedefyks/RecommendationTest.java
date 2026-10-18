@@ -112,6 +112,13 @@ class RecommendationTest extends TestBase {
                                                        selected_answer,correct_answer,is_correct)
                             VALUES (?,?,1,?,'Türkçe','A','A',true)
                             """, examId, q.getId(), q.getCode());
+                    jdbc.update("""
+                            INSERT INTO exam_taxonomy_snapshot(exam_question_id,node_id,node_kind,node_code,node_name,taxonomy_version)
+                            SELECT eq.id,n.id,n.kind,n.code,n.name,'v1' FROM exam_questions eq CROSS JOIN taxonomy_nodes n
+                            WHERE eq.exam_id=? AND n.id=?
+                            """,examId,types[group]);
+                    // Current classification changes must not rewrite historical evidence.
+                    jdbc.update("DELETE FROM question_taxonomy WHERE question_id=?",q.getId());
                 } else {
                     attempt(ayse, q, types[group], true, "2026-10-08T12:00:00Z");
                 }

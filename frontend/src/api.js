@@ -81,7 +81,8 @@ async function request(method, path, body) {
 export function qs(params) {
   const sp = new URLSearchParams();
   Object.entries(params || {}).forEach(([k, v]) => {
-    if (v !== undefined && v !== null && v !== '') sp.set(k, v);
+    if(Array.isArray(v))v.filter(item=>item!==undefined && item!==null && item!=='').forEach(item=>sp.append(k,item));
+    else if (v !== undefined && v !== null && v !== '') sp.set(k, v);
   });
   const s = sp.toString();
   return s ? '?' + s : '';
@@ -96,6 +97,6 @@ export const api = {
   upload: (path, formData) => request('POST', path, formData),
 };
 
-export const imageUrl = (id, version) => `/api/questions/${id}/image${version ? '?v=' + encodeURIComponent(version) : ''}`;
+export const imageUrl = (id, version) => `/api/questions/${id}/image?v=${encodeURIComponent(`kirp-2-${version ?? ''}`)}`;
 export const solutionImageUrl = (id) => `/api/questions/${id}/solution-image`;
 export const qrUrl = (id, size = 200) => `/api/questions/${id}/qr?size=${size}`;

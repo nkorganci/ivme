@@ -69,7 +69,7 @@ function save(status){const r=rows[index],reviewer=$('reviewer').value.trim(),la
     reviewed_at_utc:new Date().toISOString(),reviewed_question_type_code:status==='approved'?label:'',
     review_evidence:status==='approved'?evidence:'',review_status:status,review_note:note};
   persist();$('current').textContent=`Kaydedilen karar: ${status} · ${reviewer}`;counts();statusMessage('Karar bu tarayıcıda kaydedildi. Karar dosyasını da indirin.');}
-function exportDecisions(){const data={schema:'ivme-teacher-review-v1',package_id:DATA.package_id,exported_at_utc:new Date().toISOString(),decisions:Object.values(decisions)};
+function exportDecisions(){const data={schema:'ivme-teacher-review-v1',package_id:DATA.package_id,shared_context:DATA.shared_context,exported_at_utc:new Date().toISOString(),decisions:Object.values(decisions)};
   const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`tyt-turkce-ogretmen-kararlari-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);statusMessage(`${data.decisions.length} karar dosyaya indirildi.`)}
 async function importDecisions(file){try{const data=JSON.parse(await file.text());if(data.schema!=='ivme-teacher-review-v1'||data.package_id!==DATA.package_id||!Array.isArray(data.decisions))throw Error('Paket kimliği veya biçim uyuşmuyor');
   const next={};for(const d of data.decisions){const r=byCode[d.question_code];if(!r||next[d.question_code]||d.image_sha256!==r.image_sha256||!['approved','uncertain','rejected'].includes(d.review_status)||!d.reviewer_id?.trim())throw Error('Geçersiz karar kaydı');

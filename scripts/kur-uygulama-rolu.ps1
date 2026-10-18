@@ -41,6 +41,21 @@ try {
     } else {
         "CREATE ROLE $Role LOGIN PASSWORD '$password' NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION;"
     }
+    $readSchemas = & $Psql -X -q -t -A -v ON_ERROR_STOP=1 -h $HostName -U $AdminUser -d $Database `
+        -c "SELECT nspname FROM pg_namespace WHERE nspname IN ('learning_catalog','source_research')"
+    if ($LASTEXITCODE -ne 0) { throw 'Katalog şemaları denetlenemedi.' }
+    $catalogGrants = foreach ($schema in $readSchemas) {
+        $schema = $schema.Trim()
+        if ($schema -notin @('learning_catalog','source_research')) { throw 'Beklenmeyen şema.' }
+        "GRANT USAGE ON SCHEMA $schema TO $Role;"
+        "GRANT SELECT ON ALL TABLES IN SCHEMA $schema TO $Role;"
+        if ($schema -eq 'learning_catalog') { "GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA learning_catalog TO $Role;" }
+        "ALTER DEFAULT PRIVILEGES FOR ROLE root IN SCHEMA $schema GRANT SELECT ON TABLES TO $Role;"
+    }
+    $intakeExists = & $Psql -X -q -t -A -v ON_ERROR_STOP=1 -h $HostName -U $AdminUser -d $Database `
+        -c "SELECT to_regclass('learning_catalog.question_intake') IS NOT NULL"
+    if ($LASTEXITCODE -ne 0) { throw 'Kaynak kabul tablosu denetlenemedi.' }
+    $intakeGrant = if ($intakeExists.Trim() -eq 't') { "GRANT INSERT, UPDATE, DELETE ON learning_catalog.question_intake TO $Role;" } else { '' }
     $sql = @"
 BEGIN;
 $roleStatement
@@ -49,6 +64,8 @@ GRANT USAGE ON SCHEMA public TO $Role;
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO $Role;
 GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO $Role;
 REVOKE ALL ON TABLE public.flyway_schema_history FROM $Role;
+$($catalogGrants -join [Environment]::NewLine)
+$intakeGrant
 ALTER DEFAULT PRIVILEGES FOR ROLE root IN SCHEMA public
   GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO $Role;
 ALTER DEFAULT PRIVILEGES FOR ROLE root IN SCHEMA public

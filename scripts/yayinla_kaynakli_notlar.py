@@ -96,6 +96,8 @@ def check_comparison(lesson, banks):
 
 def build():
     observations = load_observations()
+    official_statuses = json.loads((APP / 'ornek-veri/resmi-soru-durumlari.json').read_text(encoding='utf-8'))
+    officially_cancelled = {(r['bank'], r['code']) for r in official_statuses['records'] if r['officialStatus'] == 'cancelled'}
     data = json.loads(INPUT.read_text(encoding="utf-8"))
     supplements = APP / "ornek-veri/kaynakli-notlar"
     for path in sorted(supplements.glob("*.json")):
@@ -197,6 +199,8 @@ def build():
             for example in lesson["examples"]:
                 key = (example["bank"], example["code"])
                 check_example_review(key, observations)
+                if key in officially_cancelled:
+                    raise ValueError(f"Resmî iptal bildirimi bulunan örnek: {key}")
                 row = active[key]
                 label = labels[key]
                 if row["exam_type"] != group["exam"] or row["subject"] != group["subject"]:

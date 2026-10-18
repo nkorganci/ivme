@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { api, setUnauthorizedHandler } from './api.js';
 
 const AuthContext = createContext(null);
@@ -6,15 +6,30 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [devAutoLogin, setDevAutoLogin] = useState(false);
+  const initialized = useRef(false);
 
   const refreshUser = useCallback(async () => {
-    const current = await api.get('/api/auth/me');
+    let current;
+    try {
+      current = await api.get('/api/auth/me');
+    } catch (error) {
+      if (error.status !== 401) throw error;
+      try {
+        current = await api.post('/api/auth/dev-login');
+        setDevAutoLogin(true);
+      } catch {
+        throw error;
+      }
+    }
     setUser(current);
     return current;
   }, []);
 
   // İlk açılışta oturum kontrolü; başka bir istek 401 dönerse oturum düşürülür.
   useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
     setUnauthorizedHandler(() => setUser(null));
     refreshUser()
       .catch(() => setUser(null))
@@ -44,8 +59,8 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const value = useMemo(() => ({ user, loading, login, register, logout, refreshUser }),
-    [user, loading, login, register, logout, refreshUser]);
+  const value = useMemo(() => ({ user, loading, devAutoLogin, login, register, logout, refreshUser }),
+    [user, loading, devAutoLogin, login, register, logout, refreshUser]);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 

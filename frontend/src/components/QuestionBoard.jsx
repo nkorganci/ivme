@@ -14,8 +14,9 @@ function draw(canvas, strokes) {
   ctx.scale(scale, scale);
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
-  ctx.strokeStyle = '#4f46e5';
-  ctx.fillStyle = '#4f46e5';
+  const ink = getComputedStyle(canvas).getPropertyValue('--blue').trim();
+  ctx.strokeStyle = ink;
+  ctx.fillStyle = ink;
   ctx.lineWidth = 2.5;
   for (const stroke of strokes) {
     ctx.beginPath();
@@ -31,7 +32,7 @@ function draw(canvas, strokes) {
 }
 
 /** Noktalar tahta ölçüsüne göre 0–1 aralığında saklanır; yeniden boyutlanınca çizim korunur. */
-export default function QuestionBoard({ questionId, onUnavailable }) {
+export default function QuestionBoard({ questionId, onUnavailable, height }) {
   const canvas = useRef(null);
   const strokesRef = useRef([]);
   const active = useRef(null);
@@ -133,7 +134,7 @@ export default function QuestionBoard({ questionId, onUnavailable }) {
   };
 
   return (
-    <div className="board">
+    <div className="board" style={height ? { '--board-height': `${height}px` } : undefined}>
       <canvas ref={canvas} className="board-canvas" aria-label="Soru için karalama alanı"
         onPointerDown={start} onPointerMove={move} onPointerUp={finish} onPointerCancel={finish} />
       <div className="board-tools">

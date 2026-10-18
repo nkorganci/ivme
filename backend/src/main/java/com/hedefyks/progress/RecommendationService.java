@@ -38,7 +38,7 @@ public class RecommendationService {
             WITH events AS (
               SELECT a.question_id, a.id AS source_id, 0 AS source_order, a.created_at AS occurred_at,
                      a.is_correct, a.active_seconds, q.subject
-              FROM question_attempts a JOIN questions q ON q.id = a.question_id
+              FROM completed_practice_attempts a JOIN questions q ON q.id = a.question_id
               WHERE a.user_id = ? AND a.event_type = 'ANSWER'
               UNION ALL
               SELECT eq.question_id, eq.id, 1, e.submitted_at, eq.is_correct, 0, eq.subject
@@ -55,11 +55,9 @@ public class RecommendationService {
                 AND s.node_kind = 'QUESTION_TYPE'
               WHERE f.rn = 1 AND f.source_order = 0
               UNION ALL
-              SELECT f.*, qt.node_id
-              FROM firsts f JOIN question_taxonomy qt ON qt.question_id = f.question_id
-                AND qt.approval_status = 'APPROVED' AND qt.source IN ('HUMAN', 'AI_REVIEWED')
-              JOIN taxonomy_nodes type_node ON type_node.id = qt.node_id
-                AND type_node.kind = 'QUESTION_TYPE' AND type_node.active
+              SELECT f.*, s.node_id
+              FROM firsts f JOIN exam_taxonomy_snapshot s ON s.exam_question_id=f.source_id
+                AND s.node_kind='QUESTION_TYPE'
               WHERE f.rn = 1 AND f.source_order = 1
             )
             SELECT l.question_id, q.code AS question_code, t.id AS type_id, t.code, t.name AS type_name,
