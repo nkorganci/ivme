@@ -658,20 +658,35 @@ masaüstü/390 px sonuçlarını ve sentetik 503/403 hata senaryolarını kayded
 
 ## Yeni değişiklik yaparken
 
-Kullanıcının kalıcı talimatıyla gereken derleme/yeniden başlatma uygulama işinin
-parçasıdır. Paketli 5173 uygulaması `yeniden-baslat.ps1` ile dönüşümlü JAR
-klasörlerinde güncellenir; çalışan HTML/asset sürümü ve değişen ekran doğrulanır.
-`frontend/dist` tek başına çalışan sürümün kanıtı değildir.
+Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
+`feature/ivme-yol-haritasi` dalında yürür: port 5174, DB `ivme_dev`.
+Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
+`main` dalıdır: port 5173, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
+build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
+uygulamaya geçer. Geliştirme DB'si ilk ayrımda ana verinin kopyasıdır; sonraki
+kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
 
-Otomatik güncelleme sürekli açık tutulur. `canli-izle.ps1` kaynak hash farkını ve
-5173 dinleyicisini izler; gereken güncellemeyi veya yeniden başlatmayı tetikler.
-Kullanıcının Windows başlangıç klasöründeki `IVME - Otomatik Guncelleme.lnk`,
-oturum açılışında bu betiği gizli başlatır. Depo başına mutex ikinci izleyiciyi
-önler. Sağlık kanıtı `backend/target/live-watch.status` içindeki yaşayan süreç
-ve güncel dosya zamanıdır; yalnız eski durum dosyasının varlığı yeterli değildir.
-Açık tarayıcı `app-version.txt` değişimini yaklaşık beş saniyede algılayıp yeniler.
-Görev bittiğinde izleyici kapatılmaz; bu yerel güncelleme düzeni yeni bir dış
-dağıtım veya Git push yetkisi vermez.
+Görsel ve PDF katalog dizinleri worktree başına bağımsızdır. Özgün
+`Kaynaklar/ogm-materyal` PDF arşivi iki uygulama tarafından yalnız okunur.
+Bakım betikleri `scripts/yerel_ortam.py` ile varsayılan DB'yi daldan seçer;
+açık `--database` / `PGDATABASE` / `YKS_DB_URL` seçimi bu varsayılanı değiştirir.
+
+Kullanıcının kalıcı talimatıyla derleme/yeniden başlatma uygulama işinin
+parçasıdır. `yerel-ortam.ps1` dalın port, DB, oturum ve CSRF çerezini seçer;
+`yeniden-baslat.ps1` yalnız kendi worktree'sine ait süreci değiştirerek dönüşümlü
+JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıyla
+doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
+korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
+
+`canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
+başına mutex ikinci izleyiciyi önler. Windows başlangıcındaki mevcut
+`IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` ile iki izleyiciyi
+gizli başlatır. Sağlık kanıtı her worktree'nin `backend/target/live-watch.status`
+dosyasındaki yaşayan süreç ve güncel dosya zamanıdır. Hatalar `live-watch.log`,
+`live-build.stderr.log` ve `application.stderr.log` dosyalarındadır.
+Tarayıcı `app-version.txt` değişimini yaklaşık beş saniyede algılayıp yeniler.
+Görev sonunda izleyiciler açık kalır. Bu yerel çalışma düzeni Git push veya
+yeni bir dış dağıtım yetkisi vermez.
 
 1. `AGENTS.md`, [çalışma bağlamı](00_CALISMA_BAGLAMI.md), yol haritası ve ilgili açık
    adımı oku. `git status` ile mevcut kullanıcı değişikliklerini gör ve koru.

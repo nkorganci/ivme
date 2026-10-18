@@ -1,5 +1,6 @@
 node_modules/
 .codex/dev-api-target.txt
+.codex/local-environment.json
 dist/
 target/
 backend/src/main/resources/static/

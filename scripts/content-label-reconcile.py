@@ -6,6 +6,7 @@ session (the app may record a LOGIN event); all content API requests are GETs.
 Cookies and connection credentials are never included in the report.
 """
 import argparse
+from yerel_ortam import default_database
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
@@ -289,7 +290,7 @@ def has_delta(value):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--database', choices=['ivme', 'ivme_test'], default='ivme')
+    parser.add_argument('--database', choices=['ivme', 'ivme_dev', 'ivme_test'], default=default_database())
     parser.add_argument('--api-base', type=local_base, default='http://127.0.0.1:5173')
     parser.add_argument('--dev-login', action='store_true', help='Local session only; may append an app LOGIN event')
     parser.add_argument('--output', type=Path, help='Default: immutable run/timestamp report under veri/content-labels/reconciliation')

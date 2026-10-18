@@ -5,7 +5,12 @@ $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
 $backend = Join-Path $repo 'backend'
 $frontend = Join-Path $repo 'frontend'
-$images = (Join-Path $repo 'veri\resimler-pilot').Replace('\', '/')
+. (Join-Path $repo 'yerel-ortam.ps1')
+$settings = Get-IvmeLocalEnvironment
+Set-IvmeLocalEnvironment $settings
+$port = $settings.Port
+$baseUrl = "http://127.0.0.1:$port"
+$images = $settings.Images.Replace('\', '/')
 $javaHome = 'C:\Tools\jdk-21'
 . (Join-Path $repo 'canli-kaynaklar.ps1')
 $sourceFingerprint = Get-YksSourceFingerprint
@@ -28,13 +33,19 @@ $env:Path = "$(Join-Path $javaHome 'bin');$env:Path"
 
 function Start-Program([string]$jarPath) {
     Start-Process -FilePath (Join-Path $javaHome 'bin\java.exe') -ArgumentList @(
-        '-jar', ('"' + $jarPath + '"'), '--spring.profiles.active=dev', '--server.port=5173',
-        "--app.images.dir=$images"
-    ) -WorkingDirectory $backend -WindowStyle Hidden -PassThru
+        '-jar', ('"' + $jarPath + '"'), '--spring.profiles.active=dev', "--server.port=$port",
+        ('"--app.images.dir=' + $images + '"')
+    ) -WorkingDirectory $backend -WindowStyle Hidden -PassThru `
+      -RedirectStandardOutput (Join-Path $stateDir 'application.stdout.log') `
+      -RedirectStandardError (Join-Path $stateDir 'application.stderr.log')
 }
 
 Push-Location $frontend
 try {
+    if (-not (Test-Path -LiteralPath 'node_modules')) {
+        & npm.cmd ci --no-audit --no-fund
+        if ($LASTEXITCODE -ne 0) { throw 'Frontend dependency installation failed.' }
+    }
     & npm.cmd run build
     if ($LASTEXITCODE -ne 0) { throw 'Ön yüz derlenemedi.' }
 } finally { Pop-Location }
@@ -47,13 +58,14 @@ if ($LASTEXITCODE -ne 0) { throw 'Ön yüz dosyaları pakete kopyalanamadı.' }
 
 Push-Location $backend
 try {
-    $listener = Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+    $listener = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
     $runningKind = $null
     $oldJar = $null
     if ($listener) {
         $running = Get-CimInstance Win32_Process -Filter "ProcessId=$($listener.OwningProcess)"
         if ($running -and $running.CommandLine -match 'hedef-yks\.jar' -and
-                $running.CommandLine -match 'server\.port=5173') {
+                $running.CommandLine -match "server\.port=$port(?:\s|$)" -and
+                $running.CommandLine.Contains($backend)) {
             $runningKind = 'jar'
             $jarMatch = [regex]::Match($running.CommandLine, '-jar\s+(?:"([^"]+)"|(\S+))')
             if ($jarMatch.Success) {
@@ -64,7 +76,7 @@ try {
                 $running.CommandLine -match 'vite[\\/]bin[\\/]vite\.js') {
             $runningKind = 'vite'
         } else {
-            throw '5173 portunda farklı bir uygulama çalışıyor; durdurulmadı.'
+            throw "$port portunda farkli bir uygulama calisiyor; durdurulmadi."
         }
     }
 
@@ -76,14 +88,14 @@ try {
     }
 
     if ($listener) {
-        Write-Host "5173 portundaki $runningKind sureci durduruluyor (PID $($listener.OwningProcess))."
+        Write-Host "$port portundaki $runningKind sureci durduruluyor (PID $($listener.OwningProcess))."
         Stop-Process -Id $listener.OwningProcess -Force
         for ($wait = 0; $wait -lt 20; $wait++) {
-            if (-not (Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue)) { break }
+            if (-not (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue)) { break }
             Start-Sleep -Milliseconds 500
         }
-        if (Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue) {
-            throw '5173 portu bosalmadi; yeni surum baslatilmadi.'
+        if (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue) {
+            throw "$port portu bosalmadi; yeni surum baslatilmadi."
         }
     }
 
@@ -100,15 +112,15 @@ for ($attempt = 0; $attempt -lt 90; $attempt++) {
     Start-Sleep -Seconds 1
     if ($started.HasExited) { break }
     try {
-        $response = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/?surum-kontrolu=1' -UseBasicParsing -TimeoutSec 2 -Headers @{ 'Cache-Control' = 'no-cache' }
+        $response = Invoke-WebRequest -Uri "$baseUrl/?surum-kontrolu=1" -UseBasicParsing -TimeoutSec 2 -Headers @{ 'Cache-Control' = 'no-cache' }
         if ($response.StatusCode -eq 200 -and $response.Content.Contains($expectedAsset)) {
-            $route = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/ogrenci-takip' -UseBasicParsing -TimeoutSec 2
+            $route = Invoke-WebRequest -Uri "$baseUrl/ogrenci-takip" -UseBasicParsing -TimeoutSec 2
             if ($route.StatusCode -ne 200) { continue }
-            $trialRoute = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/ogrenci-takip/tyt-denemeleri' -UseBasicParsing -TimeoutSec 2
+            $trialRoute = Invoke-WebRequest -Uri "$baseUrl/ogrenci-takip/tyt-denemeleri" -UseBasicParsing -TimeoutSec 2
             if ($trialRoute.StatusCode -ne 200 -or -not $trialRoute.Content.Contains($expectedAsset)) { continue }
-            $versionResponse = Invoke-WebRequest -Uri 'http://127.0.0.1:5173/app-version.txt' -UseBasicParsing -TimeoutSec 2
+            $versionResponse = Invoke-WebRequest -Uri "$baseUrl/app-version.txt" -UseBasicParsing -TimeoutSec 2
             if ($versionResponse.Content.Trim() -ne $buildVersion) { continue }
-            Write-Host "Uygulama hazir: http://localhost:5173 ($expectedAsset)"
+            Write-Host "Uygulama hazir: http://localhost:$port ($($settings.Name), $expectedAsset)"
             $ready = $true
             break
         }

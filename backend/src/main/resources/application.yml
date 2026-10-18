@@ -8,6 +8,7 @@ server:
     session:
       timeout: 12h
       cookie:
+        name: ${YKS_SESSION_COOKIE:JSESSIONID}
         http-only: true
         same-site: lax
         secure: ${YKS_COOKIE_SECURE:true}    # üretim tüneli HTTPS; yerel dev profili false olarak ezer
@@ -32,6 +33,7 @@ spring:
       max-request-size: 20MB
 
 app:
+  csrf-cookie-name: ${YKS_CSRF_COOKIE:XSRF-TOKEN}
   public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:
     dir: ${YKS_RESIM_KLASORU}              # soru görsellerinin kök klasörü (Windows yolu olabilir)

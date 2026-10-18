@@ -53,9 +53,11 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http, ObjectMapper mapper,
                                     SecurityContextRepository contextRepository,
-                                    @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies)
+                                    @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies,
+                                    @Value("${app.csrf-cookie-name:XSRF-TOKEN}") String csrfCookieName)
             throws Exception {
         CookieCsrfTokenRepository csrfTokens = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        csrfTokens.setCookieName(csrfCookieName);
         if (secureCookies) {
             csrfTokens.setCookieCustomizer(cookie -> cookie.secure(true));
         }

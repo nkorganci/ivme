@@ -44,8 +44,8 @@ export function AuthProvider({ children }) {
 
   // Kayıt sonrası oturum açılmış mı belirsiz olduğundan ayrıca giriş yapılır.
   const register = useCallback(
-    async (username, email, phone, password) => {
-      await api.post('/api/auth/register', { username, email, phone, password });
+    async (username, email, phone, password, category) => {
+      await api.post('/api/auth/register', { username, email, phone, password, category });
       return login(username, password);
     },
     [login],

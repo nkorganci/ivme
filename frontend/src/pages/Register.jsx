@@ -11,7 +11,7 @@ export default function Register() {
   usePageTitle('Kayıt');
   const location = useLocation();
   const from = location.state?.from || '/';
-  const [form, setForm] = useState({ username: '', email: '', phone: '', password: '', confirm: '' });
+  const [form, setForm] = useState({ username: '', email: '', phone: '', password: '', confirm: '', category: '' });
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -26,6 +26,7 @@ export default function Register() {
     const username = form.username.trim();
     if (!/^[\p{L}\p{N}_.-]{3,30}$/u.test(username)) next.username = 'Kullanıcı adı 3–30 karakter olmalı (harf, rakam, _ . -).';
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) next.email = 'Geçerli bir e-posta adresi gir.';
+    if (!['STUDENT', 'PARENT', 'TEACHER'].includes(form.category)) next.category = 'Hesap kategorisi seçmelisin.';
     if (!form.phone.trim()) next.phone = 'Cep telefonu gerekli.';
     if (form.password.length < 8) next.password = 'Şifre en az 8 karakter olmalı.';
     else if (new TextEncoder().encode(form.password).length > 72) next.password = 'Şifre en fazla 72 bayt olmalı.';
@@ -35,7 +36,7 @@ export default function Register() {
     if (Object.keys(next).length) return;
     setBusy(true);
     try {
-      await register(username, form.email.trim(), form.phone.trim(), form.password);
+      await register(username, form.email.trim(), form.phone.trim(), form.password, form.category);
     } catch (err) {
       setErrors(err.fields);
       setError(err.message);
@@ -53,6 +54,12 @@ export default function Register() {
       }
     >
       <form onSubmit={submit} noValidate>
+        <Field as="select" label="Hesap kategorisi" value={form.category} onChange={set('category')} required error={errors.category}>
+          <option value="">Seçiniz</option>
+          <option value="STUDENT">Öğrenci</option>
+          <option value="PARENT">Veli</option>
+          <option value="TEACHER">Öğretmen</option>
+        </Field>
         <Field label="Kullanıcı adı" autoComplete="username" autoFocus value={form.username} onChange={set('username')} error={errors.username} />
         <Field label="E-posta" type="email" autoComplete="email" hint="E-posta adresi şu anda gönderimle doğrulanmıyor." value={form.email} onChange={set('email')} error={errors.email} />
         <Field label="Cep telefonu" type="tel" inputMode="tel" autoComplete="tel" placeholder="05xx xxx xx xx veya +90…" hint="Numara şu anda SMS ile doğrulanmıyor ve giriş için kullanılmıyor." value={form.phone} onChange={set('phone')} error={errors.phone} />

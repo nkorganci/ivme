@@ -3,6 +3,7 @@
 Original questions, answers, student history, and teacher decisions are never updated.
 """
 import argparse
+from yerel_ortam import default_database
 import csv
 import hashlib
 import json
@@ -20,7 +21,7 @@ def literal(value):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--database", choices=["ivme", "ivme_test"], default="ivme")
+    p.add_argument("--database", choices=["ivme", "ivme_dev", "ivme_test"], default=default_database())
     p.add_argument("--check", action="store_true")
     args = p.parse_args()
     subprocess.run(['node', 'scripts/learning-resource-check.mjs'], cwd=APP, check=True)

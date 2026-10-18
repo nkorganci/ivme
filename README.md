@@ -5,7 +5,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalış
 Sistemin veri akışı, tek sözlük/kimlik kuralları, önbellek, üretim/yayın doğrulamaları
 ve gelecekte değişiklik yaparken izlenecek yol [kalıcı sistem rehberinde](docs/plan/00_SISTEM_REHBERI.md) açıklanır.
 
-Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, uygulamanın içe aktarma için kullandığı üretilmiş soru/görsel verisi `../icerik/data/` altındadır. Eski statik site kaldırılmıştır. Üst dizindeki `Siteyi Ac.bat` bu uygulamanın `baslat.bat` dosyasını çalıştırır.
+Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, uygulamanın içe aktarma için kullandığı üretilmiş soru/görsel verisi `../icerik/data/` altındadır. Eski statik site kaldırılmıştır. Üst dizindeki `Siteyi Ac.bat` bu uygulamanın iki ortamın başlatıcısını çalıştırır.
 
 ## Mevcut özellikler
 
@@ -22,21 +22,52 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 - Öğrenci Hesap ekranından mevcut şifresiyle kendi verilerini JSON olarak indirebilir veya şifre ve yazılı onayla hesabını silebilir. Ortak soru bankası ve diğer öğrenciler etkilenmez.
 - Ham `activity_events` kayıtları için 90 gün saklama görevi vardır; giriş/aktiflik/çıkış olaylarının üretimi ve gösterimi henüz bağlı değildir.
 
-## Yerel geliştirme
+## Ayrı main ve feature ortamları
 
-Soru, PDF, ders notu ve video için ortak etiket kapsamı, merkezi kayıtlar ve yeniden üretim
-komutları [ortak etiketler kaydında](docs/ORTAK_ETIKET_KAPSAMI.md) açıklanır.
+| Ortam | Dal ve klasör | Adres | Veritabanı |
+|---|---|---|---|
+| Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:5173 | `ivme` |
+| Geliştirme | `feature/ivme-yol-haritasi` — `D:\workspace\ivme\uygulama` | http://localhost:5174 | `ivme_dev` |
 
-Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Yerel veritabanı `ivme`, test veritabanı `ivme_test` adını kullanır. Var olan veriyi silen eski `veritabani-sifirla.bat` betiğini çalıştırmayın; geçiş ve yedek adımları için [güncel işletim ve yedek planını](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) okuyun.
+Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
+kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
+`ivme_dev`, kurulum anındaki `ivme` verisinin bağımsız kopyasıdır; bundan sonraki
+öğrenci kayıtları ve DB göçleri ortamlar arasında otomatik eşitlenmez.
+Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
-1. `backend-baslat.bat` Spring Boot geliştirme profilini `127.0.0.1:8081` üzerinde başlatır. Ardından `frontend-baslat.bat` Vite'ı `127.0.0.1:5173` üzerinde başlatır. `baslat.bat` ikisini birlikte açar.
-2. `http://localhost:5173` adresine gidin. Vite `/api` isteklerini yerel arka yüze yönlendirir. `net.ivme.dev` Cloudflare Tunnel üzerinden aynı 5173 portuna gider; uygulama kapalıysa alan adı çalışmaz.
-   Geliştirme profilinde `localhost` üzerinden açıldığında, oturum yoksa `nazile` öğrenci hesabına geçici olarak otomatik giriş yapılır; kullanıcı adı ve şifre sorulmaz. Hesap adı gerekirse `YKS_DEV_OGRENCI` ile değiştirilebilir. Tünel adresinde ve üretimde bu kolaylık kapalıdır.
-3. Yerel ayrıcalıklı hesaplar `ivmeadmin` ve `ivmeoperator` olarak oluşturulmuştur. Geçici parolaları yalnız yerel giriş için geçerlidir; ikisini de ayrı ayrı **Hesap → Şifre değiştir** ekranından en az 8 karakterli, farklı parolalara çevirin. Üretim açılışı bu tamamlanmadan reddedilir. Geçici hesaplarla tünelden giriş engellenir.
+`iki-ortami-baslat.bat` iki ortamın izleyicisini gizli başlatır. İzleyiciler
+uygulama kapalıysa açar ve yalnız kendi worktree'sindeki kaynak değişince o
+ortamı yeniler. Herhangi bir ortamı hemen derleyip açmak için o klasörde
+`yeniden-baslat.bat` veya `baslat.bat` kullanılır. Windows başlangıcındaki
+`IVME - Otomatik Guncelleme.lnk` iki izleyiciyi birlikte açar.
 
-Gerçek sırlar, PostgreSQL yedekleri, soru CSV'leri ve görseller `veri/` gibi Git dışı konumlarda tutulur. Görsel kökü `YKS_RESIM_KLASORU` ile ayarlanır; `backend-baslat.bat` yerel `veri/resimler-pilot` varsa onu seçer.
+`yerel-ortam.ps1` port, DB ve çerez adlarını daldan belirler; üst süreçten kalan
+başka bir ortamın DB/port ayarlarını kullanmaz. Gereken özel yerel kimlik ve
+kaynak yolları Git dışındaki `.codex/local-environment.json` ile verilebilir.
+Oturum ve CSRF çerezleri ayrıdır; iki localhost sekmesi birbirinin girişini bozmaz.
+İki yerel ortam mevcut otomatik giriş davranışını koruyan Spring `dev` profilini
+kullanır; production burada main dalındaki sabit yerel uygulamayı belirtir.
+Gerçek HTTPS dağıtım ayarları aşağıdaki üretim paketi bölümündedir.
 
-Konu PDF listesi için önce `D:\workspace\ivme\.venv\Scripts\python.exe scripts\ogm-konu-pdf-katalog.py --limit 2236 --resume` çalıştırılır. Geliştirme profili katalog ve kaynak kökünü `backend/` çalışma dizinine göre bulur. Üretimde `YKS_KONU_PDF_KATALOGU` ve `YKS_OGM_PDF_KAYNAGI` yolları `uretim.ayarlar.bat` içinde tanımlanır; kaynak PDF'ler ve üretilen katalog Git dışıdır. Katalog yeniden üretildikten sonra API'nin yeni kayıtları okuması için arka yüz yeniden başlatılır.
+Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Testler yalnız
+`ivme_test` veritabanını kullanır. İçerik bakım betiklerinin varsayılan DB'si de
+dala göre seçilir; `--database ivme` açıkça ana veriyi seçer. Gerçek veriyi silen
+`veritabani-sifirla.bat` çalıştırılmaz.
+
+İsteğe bağlı Vite geliştirme akışı: feature klasöründeki `backend-baslat.bat`
+API'yi 8082'de, `frontend-baslat.bat` ön yüzü 5174'te açar. Önce o ortamın paketli
+uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
+uygulama ve kaynak izleyicisiyle çalışır.
+
+Yerel `localhost` adresinde oturum yoksa `nazile` hesabıyla otomatik giriş vardır;
+tünelden bu kolaylık kapalıdır. Geliştirme hesabı `YKS_DEV_OGRENCI` ile değiştirilebilir.
+Görseller ortamın `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
+klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
+
+Yeni sürümü ana ortama geçirmek için feature değişiklikleri commit edilir,
+`uygulama-main` klasöründe feature dalı main'e merge edilir ve main ortamının
+`yeniden-baslat.bat` betiği çalıştırılır. Merge yapılana kadar geliştirme
+kaynakları ana uygulamaya yansımaz. Yerel merge Git push anlamına gelmez.
 
 ## Soru verisi
 
@@ -54,9 +85,12 @@ Kullanıcının mevcut Cloudflare rotası `net.ivme.dev` → `http://localhost:5
 2. Önce iki ayrıcalıklı hesabın geçici parolasını yerelde değiştirin. `uretim-derle.bat` paketi derler; `uretim-calistir.bat` gereken durumda yeniden derleyip tek Java süreci olarak başlatır. Sunucu yalnız `127.0.0.1` üzerinde dinler.
 3. Yerel ve tünel adresinde giriş, çıkış, soru görseli, QR, CSRF çerezi, mobil görünüm ve yeniden başlatma kontrolünü yapın. Servis kapalıyken Cloudflare 502 yanıtı beklenir. Vite kaynak dosyaları tünel üzerinden uzun süre önbelleğe alınabildiğinden paylaşılan sitede derlenmiş paketi kullanın. Normal tarayıcıda eski sürüm kalırsa `net.ivme.dev` için sert yenileme veya site önbelleğini temizleme yapın; sorun sürerse eklentileri bu site için kapatıp deneyin.
 
-Yerelde çalışan uygulamayı başlatmak için `yeniden-baslat.bat` dosyasını çalıştırın. Aynı işlem PowerShell'de `./yeniden-baslat.ps1` ile yapılabilir. Betik yeni paketi dönüşümlü iki klasörden birinde üretir, 5173'teki kendi Vite/JAR sürecini değiştirir ve sunulan sürümü doğrular. Ardından arka planda kaynak izleyicisini başlatır: ön yüz veya arka yüz kaynakları değişince yeniden derleyip yayımlar; sunucu kapanırsa tekrar başlatmayı dener. Açık sayfalar yeni sürümü yaklaşık 5 saniyede algılayıp yeniler. Kaydedilmemiş form varsa tarayıcı çıkış uyarısı gösterir. 8081'de çalışan ayrı arka yüz sürecine dokunulmaz. İzleyici durumu ve hataları `backend/target/live-watch.status` ile `backend/target/live-watch.log` dosyalarındadır.
-
-Otomatik güncelleme sürekli etkin tutulur. Kullanıcının Windows başlangıç klasörüne `IVME - Otomatik Guncelleme.lnk` kuruludur; oturum açıldığında `canli-izle.ps1` gizli başlar. İzleyici aynı depo için tek süreç çalıştırır. Uygulama değişikliklerinden sonra gereken derleme/yeniden başlatma yapılır ve gerçek sunulan sürüm doğrulanır.
+Yerel main/feature çalıştırma ve izleyici düzeni yukarıdaki ortam tablosundadır.
+`yeniden-baslat.ps1` kendi ortamının portunda dönüşümlü JAR klasörlerine derler,
+HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata halinde
+önceki pakete döner. İzleyici durumu `backend/target/live-watch.status`, hatalar
+`live-watch.log` ve `application.stderr.log` dosyalarındadır. Açık tarayıcı yeni
+`app-version.txt` değerini görünce sayfayı yeniler.
 
 Üretimde `YKS_SITE_ADRESI` geçerli HTTPS adresi ve güvenli oturum çerezi zorunludur; geçici parolalı ayrıcalıklı hesap varsa uygulama açılmaz. [Yayın öncesi kalan işler](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) açık maddeleri listeler.
 
@@ -66,6 +100,6 @@ Otomatik güncelleme sürekli etkin tutulur. Kullanıcının Windows başlangı�
 - Ön yüz: `cd frontend; npm run build`.
 - Yerel Chrome uçtan uca: `node testler/e2e.mjs [çıktı klasörü] [--mobil]`. Test yeni kullanıcı ve geri bildirim oluşturur; yalnız yerel adreste çalışır. Ayrıcalıklı ekranlar ancak ilgili `YKS_E2E_YONETICI*` veya `YKS_E2E_OPERATOR*` ortam değişkenleri verilirse denenir.
 
-**Git:** Çalışma kolu `feature/ivme-yol-haritasi`; doğru uzak depo `ivme` adıdır. Kullanıcının son isteği gereği değişiklikler yerel commit edilir, tüm işler bitip yorum alınana kadar push yapılmaz.
+**Git:** Geliştirme kolu `feature/ivme-yol-haritasi`, yerel production kolu `main`; doğru uzak depo `ivme` adıdır. Kullanıcının son isteği gereği değişiklikler yerel commit edilir, tüm işler bitip yorum alınana kadar push yapılmaz.
 
 Kaynaklı ders notları ve 53.019 etkin sorunun etiket dizini `/kaynakli-ders-notlari` altında bulunur. Konu/alt konu için 21 rehber, 44 soru kalıbı ve akıllı çalışma yönlendirmesi vardır. Kapsam ve testler [notlar kaydında](docs/KAYNAKLI_DERS_NOTLARI.md), PostgreSQL'deki yeniden kullanılabilir araştırma arşivi [analiz kaydında](docs/KAYNAKLI_SORU_ANALIZI.md) açıklanır; tüm müfredat analizi tamamlanmış sayılmaz.

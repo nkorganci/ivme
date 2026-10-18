@@ -26,6 +26,7 @@ import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
+from yerel_ortam import default_database
 
 APP = Path(__file__).resolve().parents[1]
 CONTENT_ROOT = APP / "ornek-veri/ogretim-pilotu"
@@ -454,8 +455,8 @@ def db_connection(database=None):
     host = os.environ.get("PGHOST", uri.hostname or "localhost")
     if host not in {"localhost", "127.0.0.1", "::1"}:
         raise ValueError("Bu aktarım yalnız yerel PostgreSQL için tasarlandı.")
-    name = database or os.environ.get("PGDATABASE", uri.path.lstrip("/"))
-    if name not in {"ivme", "ivme_test"}:
+    name = database or default_database()
+    if name not in {"ivme", "ivme_dev", "ivme_test"}:
         raise ValueError("Beklenmeyen hedef veritabanı")
     psql = shutil.which("psql") or next((str(path) for version in ("18", "17", "16", "15", "14", "13")
         for path in [Path(f"C:/Program Files/PostgreSQL/{version}/bin/psql.exe")] if path.exists()), None)
@@ -715,7 +716,7 @@ def print_summary(items, report_path, report):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("command", choices=["dogrula", "aktar", "yeniden-uretim", "kalibrasyon"])
-    parser.add_argument("--db", default=None, help="ivme (varsayılan) veya ivme_test")
+    parser.add_argument("--db", default=None, help="main: ivme; feature: ivme_dev; test: ivme_test")
     parser.add_argument("--images", default=os.environ.get("YKS_RESIM_KLASORU", str(DEFAULT_IMAGES)))
     parser.add_argument("--offline", action="store_true", help="DB bağlarını atla (yalnız dosya denetimi)")
     parser.add_argument("--subject", default=None, help="Yalnız bu branş klasörü")

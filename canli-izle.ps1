@@ -1,5 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
+. (Join-Path $repo 'yerel-ortam.ps1')
+$settings = Get-IvmeLocalEnvironment
 $stateDir = Join-Path $repo 'backend\target'
 New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
 . (Join-Path $repo 'canli-kaynaklar.ps1')
@@ -38,7 +40,7 @@ try {
             $deployed = if (Test-Path -LiteralPath $deployedFile) {
                 (Get-Content -LiteralPath $deployedFile -Raw).Trim()
             } else { '' }
-            $listener = Get-NetTCPConnection -LocalPort 5173 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+            $listener = Get-NetTCPConnection -LocalPort $settings.Port -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
             if (($current -ne $deployed -or -not $listener) -and
                     (Get-Date) -ge $retryAt -and ((Get-Date) - $changedAt).TotalSeconds -ge 3) {
                 Write-WatchLog 'Kaynak/sunum değişikliği algılandı; paket yenileniyor.'

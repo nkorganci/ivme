@@ -17,6 +17,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from urllib.parse import urlparse
+from yerel_ortam import default_database
 
 import pymupdf
 
@@ -72,8 +73,8 @@ def db_connection(database=None):
     host = os.environ.get("PGHOST", uri.hostname or "localhost")
     if host not in {"localhost", "127.0.0.1", "::1"}:
         raise ValueError("Bu aktarım yalnız yerel PostgreSQL için tasarlandı.")
-    name = database or os.environ.get("PGDATABASE", uri.path.lstrip("/"))
-    if name not in {"ivme", "ivme_test"}:
+    name = database or default_database()
+    if name not in {"ivme", "ivme_dev", "ivme_test"}:
         raise ValueError("Beklenmeyen hedef veritabanı")
     psql = shutil.which("psql") or next((str(path) for version in ("18", "17", "16", "15", "14", "13")
         for path in [Path(f"C:/Program Files/PostgreSQL/{version}/bin/psql.exe")] if path.exists()), None)
@@ -356,7 +357,7 @@ def main():
     mode.add_argument("--status", action="store_true")
     mode.add_argument("--export", action="store_true")
     mode.add_argument("--find", metavar="KONU", help="Son araştırmada konu, rehber ve PDF sayfası ara")
-    parser.add_argument("--database", choices=("ivme", "ivme_test"))
+    parser.add_argument("--database", choices=("ivme", "ivme_dev", "ivme_test"))
     args = parser.parse_args()
     connection = db_connection(args.database)
     if args.write:

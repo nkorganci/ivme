@@ -4,6 +4,8 @@ function Get-YksSourceFingerprint {
         'frontend\src', 'frontend\public', 'backend\src\main\java', 'backend\src\main\resources\db'
     )
     $individual = @(
+        'yerel-ortam.ps1', 'yeniden-baslat.ps1', 'canli-izle.ps1',
+        '.codex\local-environment.json',
         'frontend\index.html', 'frontend\vite.config.js', 'frontend\package.json',
         'frontend\package-lock.json', 'backend\pom.xml',
         'backend\src\main\resources\application.yml',

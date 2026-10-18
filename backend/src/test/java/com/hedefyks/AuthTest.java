@@ -16,7 +16,7 @@ import org.springframework.mock.web.MockHttpSession;
 
 class AuthTest extends TestBase {
 
-    private static final String REGISTER = "{\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"GucluBirSifre2026\"}";
+    private static final String REGISTER = "{\"category\":\"STUDENT\",\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"GucluBirSifre2026\"}";
 
     @Test
     void sifreDuzMetinSaklanmaz() throws Exception {
@@ -35,7 +35,7 @@ class AuthTest extends TestBase {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON).content(REGISTER))
                 .andExpect(status().isCreated());
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"AYSE\",\"email\":\"baska@example.com\",\"phone\":\"+905552223344\",\"password\":\"GucluBirSifre2026\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"AYSE\",\"email\":\"baska@example.com\",\"phone\":\"+905552223344\",\"password\":\"GucluBirSifre2026\"}"))
                 .andExpect(status().isConflict())
                 .andExpect(jsonPath("$.alanlar.username").exists());
     }
@@ -43,7 +43,7 @@ class AuthTest extends TestBase {
     @Test
     void zayifSifreVeGecersizEpostaReddedilir() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"ab\",\"email\":\"yanlis\",\"password\":\"kisa\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"ab\",\"email\":\"yanlis\",\"password\":\"kisa\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.alanlar.username").exists())
                 .andExpect(jsonPath("$.alanlar.email").exists())
@@ -54,10 +54,10 @@ class AuthTest extends TestBase {
     @Test
     void sekizKarakterliYeniSifreKabulEdilirYediKarakterReddedilir() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"Yedi\",\"email\":\"yedi@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc1234\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Yedi\",\"email\":\"yedi@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc1234\"}"))
                 .andExpect(status().isBadRequest()).andExpect(jsonPath("$.alanlar.password").exists());
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"Sekiz\",\"email\":\"sekiz@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc12345\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Sekiz\",\"email\":\"sekiz@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc12345\"}"))
                 .andExpect(status().isCreated());
         MockHttpSession session = login("Sekiz", "abc12345");
         send(session, put("/api/account/password"),
@@ -71,7 +71,7 @@ class AuthTest extends TestBase {
     @Test
     void gecersizTelefonReddedilir() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"12345\",\"password\":\"GucluBirSifre2026\"}"))
+                        .content("{\"category\":\"STUDENT\",\"username\":\"Ayse\",\"email\":\"ayse@example.com\",\"phone\":\"12345\",\"password\":\"GucluBirSifre2026\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.alanlar.phone").exists());
         assertThat(users.existsByUsername("Ayse")).isFalse();
@@ -80,7 +80,7 @@ class AuthTest extends TestBase {
     @Test
     void uzunUtf8SifreVeLogSizintisiEngellenir() throws Exception {
         String password = "ş".repeat(40);
-        var request = new AuthDtos.RegisterRequest("Ayse", "ayse@example.com", "+905551112233", password);
+        var request = new AuthDtos.RegisterRequest("Ayse", "ayse@example.com", "+905551112233", password, com.hedefyks.user.AccountCategory.STUDENT);
         assertThat(request.toString()).doesNotContain(password).doesNotContain("+905551112233");
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content(json.writeValueAsString(request)))

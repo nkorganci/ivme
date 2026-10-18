@@ -9,6 +9,8 @@ export class ApiError extends Error {
   }
 }
 
+const csrfCookieName = import.meta.env?.VITE_CSRF_COOKIE_NAME || 'XSRF-TOKEN';
+
 let onUnauthorized = null;
 /** Oturum düştüğünde (401) çağrılacak işlevi kaydeder. */
 export function setUnauthorizedHandler(fn) {
@@ -34,10 +36,10 @@ async function request(method, path, body) {
 
   if (method !== 'GET') {
     // Çerez henüz yoksa (ilk istek) sunucudan almak için hafif bir GET at.
-    if (!readCookie('XSRF-TOKEN')) {
+    if (!readCookie(csrfCookieName)) {
       await fetch('/api/auth/me', { credentials: 'same-origin' }).catch(() => {});
     }
-    const token = readCookie('XSRF-TOKEN');
+    const token = readCookie(csrfCookieName);
     if (token) headers['X-XSRF-TOKEN'] = token;
   }
   if (body instanceof FormData) {
