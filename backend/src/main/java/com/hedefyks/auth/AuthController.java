@@ -80,6 +80,7 @@ public class AuthController {
         u.setEmail(email);
         u.setPhone(phone);
         u.setPasswordHash(encoder.encode(req.password()));
+        u.setApproved(false);
         u.setCategory(req.category());
         u.setRole(switch(req.category()) { case STUDENT -> Role.USER; case PARENT -> Role.PARENT; case TEACHER -> Role.TEACHER; });
         users.save(u);
@@ -99,6 +100,13 @@ public class AuthController {
             auth = authManager.authenticate(UsernamePasswordAuthenticationToken.unauthenticated(
                     req.login().trim(), req.password()));
         } catch (AuthenticationException e) {
+            // Explain the pending state only after checking the supplied password.
+            User pending = users.findByLogin(req.login().trim()).orElse(null);
+            if (pending != null && !pending.isApproved() && pending.isEnabled() && pending.getArchivedAt() == null
+                    && encoder.matches(req.password(), pending.getPasswordHash())) {
+                throw new ApiException(HttpStatus.FORBIDDEN,
+                        "Kaydınız alındı. Yönetici onayı verildikten sonra sisteme giriş yapabilirsiniz.");
+            }
             loginPerUser.record(userKey);
             loginPerIp.record(ip);
             // Hangi alanın yanlış olduğunu söylemeyiz (kullanıcı adı sızdırmamak için)

@@ -17,13 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AccountManagementService {
     public record Account(Long id, String username, String email, Role role, boolean enabled,
-                          boolean siteManager, Instant createdAt) {
+                          boolean siteManager, boolean approved, Instant createdAt) {
         static Account of(User user) {
             return new Account(user.getId(), user.getUsername(), user.getEmail(), user.getRole(),
-                    user.isEnabled(), user.isSiteManager(), user.getCreatedAt());
+                    user.isEnabled(), user.isSiteManager(), user.isApproved(), user.getCreatedAt());
         }
     }
-    public record Summary(long total, Map<Role, Long> counts) {}
+    public record Summary(long total, Map<Role, Long> counts, long pending) {}
     private final UserRepository users;
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
@@ -33,10 +33,10 @@ public class AccountManagementService {
     }
 
     @Transactional(readOnly=true)
-    public PageResponse<Account> list(Role role, String query, int page, int size) {
+    public PageResponse<Account> list(Role role, Boolean approved, String query, int page, int size) {
         String search = query == null ? "" : query.trim();
         if (search.length()>100) throw ApiException.badRequest("Arama en fazla 100 karakter olabilir.");
-        return PageResponse.of(users.findAccounts(role, search, PageResponse.pageable(page,size)), Account::of);
+        return PageResponse.of(users.findAccounts(role, approved, search, PageResponse.pageable(page,size)), Account::of);
     }
 
     @Transactional(readOnly=true)
@@ -46,7 +46,19 @@ public class AccountManagementService {
         jdbc.query("SELECT role,count(*) AS total FROM users WHERE archived_at IS NULL GROUP BY role", row -> {
             counts.put(Role.valueOf(row.getString("role")),row.getLong("total"));
         });
-        return new Summary(counts.values().stream().mapToLong(Long::longValue).sum(),counts);
+        long pending = jdbc.queryForObject("SELECT count(*) FROM users WHERE NOT approved AND archived_at IS NULL", Long.class);
+        return new Summary(counts.values().stream().mapToLong(Long::longValue).sum(),counts,pending);
+    }
+
+    @Transactional
+    public Account approve(Long actorId, Long targetId) {
+        User target = editable(actorId, targetId);
+        if (target.getArchivedAt() != null) throw ApiException.notFound("Hesap silinmiş.");
+        if (target.isApproved()) return Account.of(target);
+        target.setApproved(true);
+        users.saveAndFlush(target);
+        audit(actorId, targetId, "APPROVE", Map.of());
+        return Account.of(target);
     }
 
     @Transactional
@@ -80,7 +92,7 @@ public class AccountManagementService {
         // Serialize management writes so two managers cannot disable each other concurrently.
         jdbc.execute("SELECT pg_advisory_xact_lock(733114025)");
         User actor=users.lockById(actorId).orElseThrow(() -> ApiException.notFound("Yönetici hesabı bulunamadı."));
-        if (!actor.isSiteManager() || !actor.isEnabled() || actor.getArchivedAt()!=null)
+        if (!actor.isSiteManager() || !actor.isEnabled() || !actor.isApproved() || actor.getArchivedAt()!=null)
             throw new ApiException(HttpStatus.FORBIDDEN,"Kullanıcı yönetimi yetkin yok.");
         if (actorId.equals(targetId)) throw new ApiException(HttpStatus.CONFLICT,"Kendi yönetici hesabını kapatamaz veya silemezsin.");
         return users.lockById(targetId).orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı."));

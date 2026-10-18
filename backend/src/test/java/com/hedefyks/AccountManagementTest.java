@@ -39,7 +39,7 @@ class AccountManagementTest extends TestBase {
                 .andExpect(jsonPath("$.totalElements").value(6));
         for(var account:read(response).path("content")) {
             var fields=new java.util.ArrayList<String>(); account.fieldNames().forEachRemaining(fields::add);
-            assertThat(fields).containsExactlyInAnyOrder("id","username","email","role","enabled","siteManager","createdAt");
+            assertThat(fields).containsExactlyInAnyOrder("id","username","email","role","enabled","siteManager","approved","createdAt");
         }
         mvc.perform(as(manager,get("/api/admin/accounts/summary"))).andExpect(status().isOk())
                 .andExpect(jsonPath("$.counts.ADMIN").value(2)).andExpect(jsonPath("$.counts.USER").value(1));

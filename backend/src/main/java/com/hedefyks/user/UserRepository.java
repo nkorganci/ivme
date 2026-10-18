@@ -14,16 +14,17 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByRoleIn(Collection<Role> roles);
     long countByRole(Role role);
 
-    @Query("select count(u) > 0 from User u where u.id = :id and u.enabled = true and u.archivedAt is null")
+    @Query("select count(u) > 0 from User u where u.id = :id and u.enabled = true and u.approved = true and u.archivedAt is null")
     boolean accountActive(@Param("id") Long id);
 
     @Query("""
             select u from User u where u.archivedAt is null and (:role is null or u.role = :role)
+              and (:approved is null or u.approved = :approved)
               and (:query = '' or locate(lower(:query),lower(u.username))>0
                    or locate(lower(:query),lower(u.email))>0)
             order by u.createdAt desc, u.id desc
             """)
-    org.springframework.data.domain.Page<User> findAccounts(@Param("role") Role role, @Param("query") String query,
+    org.springframework.data.domain.Page<User> findAccounts(@Param("role") Role role, @Param("approved") Boolean approved, @Param("query") String query,
             org.springframework.data.domain.Pageable pageable);
 
     /** Legacy students may have no category; their USER role remains authoritative. */

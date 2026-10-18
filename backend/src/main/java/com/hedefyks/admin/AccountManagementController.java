@@ -21,11 +21,17 @@ public class AccountManagementController {
 
     @GetMapping
     public PageResponse<AccountManagementService.Account> list(@RequestParam(required=false) Role role,
+            @RequestParam(required=false) Boolean approved,
             @RequestParam(defaultValue="") String query,@RequestParam(defaultValue="0") int page,
             @RequestParam(defaultValue="25") int size) {
-        return service.list(role,query,page,size);
+        return service.list(role,approved,query,page,size);
     }
     @GetMapping("/summary") public AccountManagementService.Summary summary() { return service.summary(); }
+
+    @PatchMapping("/{id}/approval")
+    public AccountManagementService.Account approve(@PathVariable Long id, @AuthenticationPrincipal AppUserDetails me) {
+        return service.approve(me.id(), id);
+    }
 
     @PatchMapping("/{id}/status")
     public AccountManagementService.Account status(@PathVariable Long id,@AuthenticationPrincipal AppUserDetails me,

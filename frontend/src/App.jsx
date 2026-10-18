@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
+import DevAccountSwitcher from './components/DevAccountSwitcher.jsx';
+import AdultHome from './pages/AdultHome.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
@@ -57,6 +59,7 @@ function RoleHome() {
   const { user } = useAuth();
   if (user?.role === 'ADMIN') return <Navigate to="/yonetim" replace />;
   if (user?.role === 'OPERATOR') return <Navigate to="/icerik-bakimi" replace />;
+  if (['TEACHER', 'PARENT'].includes(user?.role)) return <AdultHome />;
   return <Home />;
 }
 
@@ -78,7 +81,7 @@ function OldStudyNew({ exam }) {
 
 export default function App() {
   return (
-    <Routes>
+    <><DevAccountSwitcher /><Routes>
       <Route path="/giris" element={<Login />} />
       <Route path="/kayit" element={<Register />} />
 
@@ -137,6 +140,6 @@ export default function App() {
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    </Routes></>
   );
 }

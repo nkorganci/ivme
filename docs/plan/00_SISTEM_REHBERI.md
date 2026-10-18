@@ -673,6 +673,32 @@ hedef satır kilitlenir ve işlem `account_audit` tablosuna aynı transaction'da
 yazılır. `AccountStatusFilter` her API isteğinde hesabın etkinliğini denetler;
 engelli veya silinmiş hesabın eski oturumu da geçersiz kılınır.
 
+Kayıt herkese açıktır ama `approved=false` oluşturulur; hesap kategorisi ve rolü
+yalnızca kayıt formundan belirlenir. Onay bekleme durumu ancak hesaba ait doğru
+parolayla giriş denemesinden sonra açıklanır. `/api/admin/accounts?approved=false`
+ve kullanıcı özetindeki `pending` sayacı başvuruları listeler.
+`PATCH /api/admin/accounts/{id}/approval`, yalnız `ROLE_SITE_MANAGER` ve CSRF
+belirteciyle onay verir; onay, engellenmiş hesabın engelini kaldırmaz.
+`account_audit` onayı kaydeder. Hesabın güncel `approved` alanı yeni girişi ve
+eski oturumların devamını denetler.
+
+`dev` profiline bağlı `/api/auth/dev-accounts` ve `/api/auth/dev-switch/{role}`
+yalnız doğrudan loopback isteklerinde `student`, `teacher`, `parent` ve `admin`
+test hesaplarını açar. Uç noktalar proxy başlıklarından ve CF tünelinden gelen
+istekleri reddeder; POST ayrıca CSRF belirteci gerektirir. Rol, adla eşleşen
+hesaptan sunucuda belirlenir ve geçiş önceki hesabın oturumunu kapatır.
+Öğretmen ve velinin öğrenci bağlantısı/takip hizmetleri henüz sunulmaz. Main'deki
+normal hesaplar local test hesaplarına kendiliğinden dönüştürülmez.
+
+`scripts/local-test-accounts.py` varsayılan olarak yalnız `ivme_dev` veritabanını
+seçer ve önizlemede değişiklik yapmaz. `--reset-other-accounts` yalnız `ivme_dev`
+üzerinde diğer hesapları `account_audit` kaydıyla arşivler; öğrenme ve inceleme
+geçmişlerini silmez. `users` ve `account_audit` Git dışı yedeklenmeden işlem
+yapmaz. `ivme` seçeneği silme veya mevcut kayıt değiştirmez; mevcut dört hesabın
+rol ve parolasını doğrular, eksik test hesaplarını ekler ve yedek alır. Şifre
+standart girişten okunup BCrypt ile saklanır. Güncel hesap ve çalıştırma kanıtı
+`veri/content-labels/integration/registration-approval-20261018/` içindedir.
+
 Feature, geliştirme öncesinde `feature-guncelle.ps1` ile yerel main ve
 `ivme/main` kodunu alır; production çalışma klasörü aynı kalır. Değişiklikler
 her iş sonunda yerel commit edilir. Öğrenci hesabı aktarımı ayrı ve isteğe

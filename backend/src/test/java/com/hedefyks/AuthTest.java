@@ -22,6 +22,7 @@ class AuthTest extends TestBase {
     void sifreDuzMetinSaklanmaz() throws Exception {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON).content(REGISTER))
                 .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.approved").value(false))
                 .andExpect(jsonPath("$.contactComplete").value(true))
                 .andExpect(jsonPath("$.phone").doesNotExist());
         String hash = jdbc.queryForObject("select password_hash from users where username = 'Ayse'", String.class);
@@ -59,6 +60,7 @@ class AuthTest extends TestBase {
         mvc.perform(post("/api/auth/register").with(csrf()).contentType(MediaType.APPLICATION_JSON)
                         .content("{\"category\":\"STUDENT\",\"username\":\"Sekiz\",\"email\":\"sekiz@example.com\",\"phone\":\"0555 111 22 33\",\"password\":\"abc12345\"}"))
                 .andExpect(status().isCreated());
+        jdbc.update("UPDATE users SET approved=true WHERE username='Sekiz'");
         MockHttpSession session = login("Sekiz", "abc12345");
         send(session, put("/api/account/password"),
                 "{\"currentPassword\":\"abc12345\",\"newPassword\":\"abcdef7\"}")

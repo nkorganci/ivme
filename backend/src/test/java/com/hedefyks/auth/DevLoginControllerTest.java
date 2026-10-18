@@ -14,6 +14,9 @@ import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -98,5 +101,39 @@ class DevLoginControllerTest {
         teacher.setRole(Role.USER);
         assertThatThrownBy(() -> controller.physicsReviewer(localRequest(), new MockHttpServletResponse()))
                 .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getStatus()).isEqualTo(HttpStatus.NOT_FOUND));
+    }
+
+    @ParameterizedTest
+    @EnumSource(value = Role.class, names = {"ADMIN", "USER", "TEACHER", "PARENT"})
+    void switchesOnlyToTheNamedApprovedAccountWithItsActualRole(Role role) {
+        String name = switch (role) { case ADMIN -> "admin"; case USER -> "nazile";
+            case TEACHER -> "teacher"; case PARENT -> "parent"; default -> throw new AssertionError(); };
+        User account = new User(); account.setId(30L); account.setUsername(name);
+        account.setRole(role); account.setPasswordHash("unused");
+        when(users.findByLogin(name)).thenReturn(Optional.of(account));
+        var request = localRequest();
+        var oldSession = (org.springframework.mock.web.MockHttpSession) request.getSession();
+        oldSession.setAttribute("private-data", "previous-account");
+        try {
+            assertThat(controller.switchAccount(role, request, new MockHttpServletResponse()).role()).isEqualTo(role);
+            assertThat(oldSession.isInvalid()).isTrue();
+            assertThat(request.getSession().getAttribute("private-data")).isNull();
+            account.setApproved(false);
+            assertThatThrownBy(() -> controller.switchAccount(role, localRequest(), new MockHttpServletResponse()))
+                    .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getStatus()).isEqualTo(HttpStatus.NOT_FOUND));
+            account.setApproved(true); account.setArchivedAt(java.time.Instant.now());
+            assertThatThrownBy(() -> controller.switchAccount(role, localRequest(), new MockHttpServletResponse()))
+                    .isInstanceOf(ApiException.class);
+        } finally { SecurityContextHolder.clearContext(); }
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"CF-Connecting-IP", "Forwarded", "X-Forwarded-For", "X-Forwarded-Host"})
+    void everySwitchAndAccountDiscoveryRejectsProxyRequests(String header) {
+        var request = localRequest(); request.addHeader(header, "203.0.113.10");
+        assertThat(controller.accounts(request)).isEmpty();
+        for (Role role : new Role[]{Role.ADMIN, Role.USER, Role.TEACHER, Role.PARENT})
+            assertThatThrownBy(() -> controller.switchAccount(role, request, new MockHttpServletResponse()))
+                    .isInstanceOfSatisfying(ApiException.class, e -> assertThat(e.getStatus()).isEqualTo(HttpStatus.FORBIDDEN));
     }
 }

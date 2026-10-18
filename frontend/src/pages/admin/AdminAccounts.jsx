@@ -21,13 +21,14 @@ export default function AdminAccounts() {
   const { user } = useAuth();
   const [params] = useSearchParams();
   const [role, setRole] = useState(params.get('sekme') === 'ogrenciler' ? 'USER' : '');
+  const [pendingOnly, setPendingOnly] = useState(false);
   const [draft, setDraft] = useState('');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
   const [revision, setRevision] = useState(0);
   const [action, setAction] = useState(null);
   const [notice, setNotice] = useState('');
-  const url = '/api/admin/accounts' + qs({ role, query, page, size: 25 });
+  const url = '/api/admin/accounts' + qs({ role, approved: pendingOnly ? false : '', query, page, size: 25 });
   const { data, loading, error, retry } = useAsync(() => api.get(url), [url, revision]);
   const summary = useAsync(() => api.get('/api/admin/accounts/summary'), [revision]);
   useEffect(() => { if (data && page > 0 && !data.content.length) setPage(Math.max(0, data.totalPages - 1)); }, [data, page]);
@@ -39,11 +40,14 @@ export default function AdminAccounts() {
     { field: 'username', headerName: 'Kullanıcı adı', minWidth: 145 },
     { field: 'email', headerName: 'E-posta', minWidth: 205 },
     { field: 'role', headerName: 'Rol', minWidth: 145, valueFormatter: ({ value }) => roleName(value) },
-    { field: 'enabled', headerName: 'Durum', minWidth: 110, valueFormatter: ({ value }) => value ? 'Etkin' : 'Engelli' },
+    { colId: 'status', headerName: 'Durum', minWidth: 145,
+      valueGetter: ({ data: account }) => !account.approved ? 'Onay bekliyor' : account.enabled ? 'Etkin' : 'Engelli' },
     { field: 'createdAt', headerName: 'Kayıt tarihi', minWidth: 165, valueFormatter: ({ value }) => formatDate(value) },
-    { colId: 'actions', headerName: 'İşlemler', minWidth: 225, sortable: false, filter: false,
+    { colId: 'actions', headerName: 'İşlemler', minWidth: 300, sortable: false, filter: false,
       cellRenderer: ({ data: account }) => account.id === user.id ? <span className="muted">Geçerli hesabın</span> :
         <div className="rate-row">
+          {!account.approved && <button className="btn btn-primary btn-sm" type="button"
+            onClick={() => setAction({ account, kind: 'approve' })}>Onayla</button>}
           <button className="btn btn-secondary btn-sm" type="button"
             onClick={() => setAction({ account, kind: account.enabled ? 'block' : 'unblock' })}>
             {account.enabled ? 'Engelle' : 'Engeli kaldır'}
@@ -64,6 +68,10 @@ export default function AdminAccounts() {
         {label}{summary.data ? ` (${formatNumber(summary.data.counts[value] || 0)})` : ''}
       </button>)}
     </div>
+    <label className="rate-row">
+      <input type="checkbox" checked={pendingOnly} onChange={event => { setPendingOnly(event.target.checked); setPage(0); }} />
+      Yalnız onay bekleyenler{summary.data ? ` (${formatNumber(summary.data.pending)})` : ''}
+    </label>
     <form className="filter-row" onSubmit={search}>
       <Field label="Kullanıcı ara" type="search" value={draft} maxLength={100}
         onChange={event => setDraft(event.target.value)} placeholder="Kullanıcı adı veya e-posta" />
@@ -92,23 +100,26 @@ function AccountAction({ action: { account, kind }, onClose, onDone }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const deleting = kind === 'delete';
-  const title = deleting ? 'Kullanıcıyı sil' : kind === 'block' ? 'Kullanıcıyı engelle' : 'Engeli kaldır';
+  const approving = kind === 'approve';
+  const title = deleting ? 'Kullanıcıyı sil' : approving ? 'Kaydı onayla' : kind === 'block' ? 'Kullanıcıyı engelle' : 'Engeli kaldır';
   const submit = async event => {
     event.preventDefault(); setBusy(true); setError('');
     try {
       if (deleting) await api.delete(`/api/admin/accounts/${account.id}`, { confirmation, reason });
+      else if (approving) await api.patch(`/api/admin/accounts/${account.id}/approval`, {});
       else await api.patch(`/api/admin/accounts/${account.id}/status`, { enabled: kind === 'unblock', reason });
-      onDone(deleting ? 'Hesap listeden kaldırıldı; geçmiş kayıtlar korundu.' : kind === 'block' ? 'Kullanıcı engellendi.' : 'Kullanıcının engeli kaldırıldı.');
+      onDone(deleting ? 'Hesap listeden kaldırıldı; geçmiş kayıtlar korundu.' : approving ? 'Kayıt onaylandı. Kullanıcı artık giriş yapabilir.' : kind === 'block' ? 'Kullanıcı engellendi.' : 'Kullanıcının engeli kaldırıldı.');
     } catch (failure) { setError(failure.message); setBusy(false); }
   };
   return <Modal title={title} onClose={() => { if (!busy) onClose(); }}>
     <form onSubmit={submit}>
       <p><strong>{account.username}</strong> · {roleName(account.role)}</p>
-      <p>{deleting ? 'Hesap listeden kaldırılır ve giriş erişimi kapatılır. Çalışma geçmişi ve içerik inceleme kayıtları korunur.'
+      <p>{approving ? account.enabled ? 'Kayıt onaylandığında kullanıcı kendi şifresiyle sisteme giriş yapabilir.' : 'Kayıt onaylanır; giriş yapabilmesi için hesabın engeli ayrıca kaldırılmalıdır.'
+        : deleting ? 'Hesap listeden kaldırılır ve giriş erişimi kapatılır. Çalışma geçmişi ve içerik inceleme kayıtları korunur.'
         : kind === 'block' ? 'Kullanıcının girişi engellenir. Açık oturumları sonraki istekte kapatılır.'
           : 'Kullanıcı hesabına yeniden giriş yapabilir.'}</p>
-      <Field as="textarea" label="Gerekçe (isteğe bağlı)" value={reason} maxLength={500}
-        onChange={event => setReason(event.target.value)} disabled={busy} />
+      {!approving && <Field as="textarea" label="Gerekçe (isteğe bağlı)" value={reason} maxLength={500}
+        onChange={event => setReason(event.target.value)} disabled={busy} />}
       {deleting && <Field label="Onay için kullanıcı adını yaz" value={confirmation} autoComplete="off"
         onChange={event => setConfirmation(event.target.value)} disabled={busy} />}
       {error && <Alert type="error">{error}</Alert>}

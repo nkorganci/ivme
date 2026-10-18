@@ -15,6 +15,7 @@ export default function Register() {
   const [errors, setErrors] = useState({});
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   if (user) return <Navigate to={from} replace />;
 
@@ -37,6 +38,8 @@ export default function Register() {
     setBusy(true);
     try {
       await register(username, form.email.trim(), form.phone.trim(), form.password, form.category);
+      setSubmitted(true);
+      setForm({ username: '', email: '', phone: '', password: '', confirm: '', category: '' });
     } catch (err) {
       setErrors(err.fields);
       setError(err.message);
@@ -46,14 +49,14 @@ export default function Register() {
 
   return (
     <AuthCard
-      title="Kayıt ol"
+      title={submitted ? 'Kaydınız alındı' : 'Kayıt ol'}
       footer={
         <>
           Zaten hesabın var mı? <Link to="/giris" state={location.state}>Giriş yap</Link>
         </>
       }
     >
-      <form onSubmit={submit} noValidate>
+      {submitted ? <Alert type="success">Kaydınız alındı. Yönetici onayı verildikten sonra sisteme giriş yapabilirsiniz.</Alert> : <form onSubmit={submit} noValidate>
         <Field as="select" label="Hesap kategorisi" value={form.category} onChange={set('category')} required error={errors.category}>
           <option value="">Seçiniz</option>
           <option value="STUDENT">Öğrenci</option>
@@ -77,7 +80,7 @@ export default function Register() {
         <button type="submit" className="btn btn-primary btn-block" disabled={busy}>
           {busy ? 'Kayıt yapılıyor…' : 'Kayıt ol'}
         </button>
-      </form>
+      </form>}
     </AuthCard>
   );
 }

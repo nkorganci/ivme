@@ -12,7 +12,8 @@ public record AppUserDetails(Long id, String username, String email, String pass
         implements UserDetails, Serializable {
 
     public static AppUserDetails of(User u) {
-        return new AppUserDetails(u.getId(), u.getUsername(), u.getEmail(), u.getPasswordHash(), u.getRole(), u.isEnabled(), u.isSiteManager());
+        return new AppUserDetails(u.getId(), u.getUsername(), u.getEmail(), u.getPasswordHash(), u.getRole(),
+                u.isEnabled() && u.isApproved() && u.getArchivedAt() == null, u.isSiteManager());
     }
 
     public AppUserDetails(Long id,String username,String email,String passwordHash,Role role,boolean enabled) {

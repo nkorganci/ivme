@@ -83,7 +83,7 @@ public class SecurityConfig {
                 .addFilterBefore(new AccountStatusFilter(users),
                         org.springframework.security.web.access.intercept.AuthorizationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/dev-login", "/api/auth/dev-physics-review-login", "/api/auth/dev-teacher-review-login").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/dev-login", "/api/auth/dev-accounts", "/api/auth/dev-switch/*", "/api/auth/dev-physics-review-login", "/api/auth/dev-teacher-review-login").permitAll()
                         .requestMatchers("/api/admin/accounts", "/api/admin/accounts/**").hasRole("SITE_MANAGER")
                         .requestMatchers(HttpMethod.GET, "/api/admin/students").hasRole("SITE_MANAGER")
                         .requestMatchers("/api/admin/stats").hasRole("ADMIN")

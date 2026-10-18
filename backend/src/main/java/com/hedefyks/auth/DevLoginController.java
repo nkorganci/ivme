@@ -7,6 +7,7 @@ import com.hedefyks.user.AppUserDetails;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
+import java.util.List;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,10 +20,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** Geliştirme sırasında yalnız bu bilgisayardan, var olan öğrenci hesabıyla oturum açar. */
+/** Password-free account switches require both the dev profile and a direct loopback request. */
 @RestController
 @Profile("dev")
 @RequestMapping("/api/auth")
@@ -33,10 +35,44 @@ public class DevLoginController {
     private final String studentLogin;
 
     @GetMapping("/dev-review-available")
-    public boolean reviewAvailable(HttpServletRequest request) { return localRequest(request); }
+    public boolean reviewAvailable(HttpServletRequest request) {
+        return localRequest(request) && users.findByLogin("ivmeoperator").filter(user ->
+                user.getRole() == Role.OPERATOR && active(user)).isPresent();
+    }
+
+    public record LocalAccount(Role role, String username) {}
+
+    @GetMapping("/dev-accounts")
+    public List<LocalAccount> accounts(HttpServletRequest request) {
+        if (!localRequest(request)) return List.of();
+        return List.of(Role.ADMIN, Role.USER, Role.TEACHER, Role.PARENT).stream()
+                .flatMap(role -> users.findByLogin(accountName(role)).stream()
+                        .filter(user -> user.getRole() == role && active(user))
+                        .map(user -> new LocalAccount(role, user.getUsername())))
+                .toList();
+    }
+
+    @PostMapping("/dev-switch/{role}")
+    public UserDto switchAccount(@PathVariable Role role, HttpServletRequest request, HttpServletResponse response) {
+        return localLogin(request, response, accountName(role), role);
+    }
+
+    private String accountName(Role role) {
+        return switch (role) {
+            case ADMIN -> "admin";
+            case USER -> studentLogin;
+            case TEACHER -> "teacher";
+            case PARENT -> "parent";
+            default -> throw ApiException.badRequest("Bu rol için yerel test hesabı yok.");
+        };
+    }
+
+    private static boolean active(User user) {
+        return user.isEnabled() && user.isApproved() && user.getArchivedAt() == null;
+    }
 
     public DevLoginController(UserRepository users, SecurityContextRepository contexts, LoginActivity activity,
-                              @Value("${app.dev-auto-user:nazile}") String studentLogin) {
+                              @Value("${app.dev-auto-user:student}") String studentLogin) {
         this.users = users;
         this.contexts = contexts;
         this.activity = activity;
@@ -57,12 +93,18 @@ public class DevLoginController {
     private UserDto localLogin(HttpServletRequest request, HttpServletResponse response, String login, Role role) {
         if (!localRequest(request)) throw new ApiException(HttpStatus.FORBIDDEN, "Yalnız yerel geliştirmede kullanılabilir.");
         User student = users.findByLogin(login)
-                .filter(user -> (user.getRole() == role || (role==Role.USER && user.isSiteManager())) && user.isEnabled())
-                .orElseThrow(() -> ApiException.notFound("Yerel otomatik giriş için öğrenci hesabı bulunamadı."));
+                .filter(user -> user.getRole() == role && active(user))
+                .orElseThrow(() -> ApiException.notFound("Bu rol için etkin ve onaylı yerel test hesabı bulunamadı."));
         AppUserDetails principal = AppUserDetails.of(student);
         Authentication auth = UsernamePasswordAuthenticationToken.authenticated(
                 principal, null, principal.getAuthorities());
-        if (request.getSession(false) != null) request.changeSessionId();
+        var previousSession = request.getSession(false);
+        if (previousSession != null) {
+            var previous = SecurityContextHolder.getContext().getAuthentication();
+            if (previous != null && previous.getPrincipal() instanceof AppUserDetails current)
+                activity.logout(current.id(), previousSession);
+            previousSession.invalidate();
+        }
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);

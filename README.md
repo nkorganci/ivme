@@ -61,8 +61,12 @@ API'yi 8082'de, `frontend-baslat.bat` ön yüzü 9091'de açar. Önce o ortamın
 uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
 uygulama ve kaynak izleyicisiyle çalışır.
 
-Yerel `localhost` adresinde oturum yoksa `nazile` hesabıyla otomatik giriş vardır;
-tünelden bu kolaylık kapalıdır. Geliştirme hesabı `YKS_DEV_OGRENCI` ile değiştirilebilir.
+Yerel `localhost` adresinde oturum yoksa etkin `student` hesabıyla otomatik giriş
+vardır; giriş ve kayıt ekranlarında bu kolaylık kapalıdır. Tünelden otomatik giriş
+yapılmaz. Yerel iki uygulamada üst çubuktaki admin/öğrenci/öğretmen/veli düğmeleri
+test hesapları arasında tek tıkla geçer; parola kimlikleri PostgreSQL'de BCrypt
+olarak saklanır. Yeni kayıtlar yönetici onayına kadar sisteme giremez. Yerel
+hesapların hazırlanması ve güvenlik sınırları [sistem rehberindedir](docs/plan/00_SISTEM_REHBERI.md#site-yöneticisinin-kullanıcı-yönetimi).
 Görseller ortamın `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
 klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
 

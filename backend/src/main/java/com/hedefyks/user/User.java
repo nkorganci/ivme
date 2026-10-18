@@ -41,6 +41,9 @@ public class User {
 
     private boolean enabled = true;
 
+    @Column(nullable = false)
+    private boolean approved = true;
+
     @Enumerated(EnumType.STRING)
     private AccountCategory category;
     @Column(name="site_manager")

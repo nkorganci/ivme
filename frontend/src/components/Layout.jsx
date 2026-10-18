@@ -45,7 +45,7 @@ function isActive(path, to) {
  */
 export default function Layout() {
   const [resourceSelection,setResourceSelection]=useState(null);
-  const { user, logout, devAutoLogin, refreshUser } = useAuth();
+  const { user, logout, refreshUser } = useAuth();
   const [reviewSwitchError, setReviewSwitchError] = useState('');
   const [switchingReview, setSwitchingReview] = useState(false);
   const [localReviewerAvailable, setLocalReviewerAvailable] = useState(false);
@@ -55,7 +55,7 @@ export default function Layout() {
     api.get('/api/auth/dev-review-available').then(available => { if (active) setLocalReviewerAvailable(available === true); }).catch(() => {});
     return () => { active = false; };
   }, []);
-  const localReviewSwitch = (import.meta.env.DEV || devAutoLogin || localReviewerAvailable) && ['localhost', '127.0.0.1'].includes(location.hostname);
+  const localReviewSwitch = localReviewerAvailable && ['localhost', '127.0.0.1'].includes(location.hostname);
   const switchReview = async (branch = 'fizik') => {
     setSwitchingReview(true); setReviewSwitchError('');
     try {
@@ -123,7 +123,8 @@ export default function Layout() {
 
   const items = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim', 'shield']]
     : user.role === 'OPERATOR' ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book'], ['/akilli-ogretmen-inceleme', 'Akıllı Öğretmen İnceleme', 'layers'], ['/icerik-bakimi', 'İçerik bakımı', 'shield']]
-      : [...ITEMS, ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
+      : ['TEACHER', 'PARENT'].includes(user.role) ? [['/', 'Ana Sayfa', 'home']]
+        : [...ITEMS, ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
 
   const signOut = async () => {
     await logout().catch(() => {});
@@ -212,10 +213,10 @@ export default function Layout() {
             <Icon name="user" />
             <span className="label">Hesap</span>
           </Link>
-          {!devAutoLogin && <button type="button" className="side-link" onClick={signOut} aria-label="Çıkış" title="Çıkış">
+          <button type="button" className="side-link" onClick={signOut} aria-label="Çıkış" title="Çıkış">
             <Icon name="logout" />
             <span className="label">Çıkış</span>
-          </button>}
+          </button>
         </div>
       </aside>
 
