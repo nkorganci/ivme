@@ -725,9 +725,9 @@ iki uygulamanın DB'si ortak hale gelmez.
 ## Yeni değişiklik yaparken
 
 Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
-`feature/ivme-yol-haritasi` dalında yürür: port 9091, DB `ivme_dev`.
+`feature/ivme-yol-haritasi` dalında yürür: port 1011, DB `ivme_dev`.
 Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
-`main` dalıdır: port 9090, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
+`main` dalıdır: port 1010, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
 build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
 uygulamaya geçer. Geliştirme DB'si ilk ayrımda ana verinin kopyasıdır; sonraki
 kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
@@ -744,9 +744,9 @@ JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıy
 doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
 korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
 
-Cloudflare tüneli doğrudan main'in `http://localhost:9090` adresine bağlanır;
+Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresine bağlanır;
 kullanıcı hedefi Cloudflare'da ayarlar. Main tek HTTP portu açar, feature
-9091'de çalışır. Yeniden başlatıcı port değiştiğinde de
+1011'de çalışır. Yeniden başlatıcı port değiştiğinde de
 yalnız kendi worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
 
 `canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
