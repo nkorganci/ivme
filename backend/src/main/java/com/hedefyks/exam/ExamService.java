@@ -75,10 +75,13 @@ public class ExamService {
             var selected = archive.select(req.examType(), track, req.year());
             var subjects = new HashMap<Long,String>();
             selected.forEach(q -> subjects.put(q.id(),q.subject()));
+            var provisionalIds = selected.stream().filter(ExamArchiveService.ArchiveQuestion::provisional)
+                    .map(ExamArchiveService.ArchiveQuestion::id).collect(java.util.stream.Collectors.toSet());
             String title = req.year() + " " + req.examType() + (req.examType() == ExamType.AYT ? " " + trackName(track) : "") + " tam sınavı";
+            if (!provisionalIds.isEmpty()) title += " (tahmini sorularla tamamlandı)";
             return saveExam(userId, new QuestionFilter(QuestionBank.CIKMIS,req.examType(),null,null),
                     QuestionSelectionMode.MIXED, selected.stream().map(ExamArchiveService.ArchiveQuestion::id).toList(),
-                    subjects, title, plans.timeLimitMinutes(req.examType()));
+                    subjects, title, plans.timeLimitMinutes(req.examType()), provisionalIds);
         }
         return create(userId, new CreateExamRequest(req.bank(), req.examType(), null, null,
                 plans.fullQuestionCount(req.examType(), track), req.selectionMode(),
@@ -133,6 +136,11 @@ public class ExamService {
 
     private ExamSession saveExam(Long userId, QuestionFilter filter, QuestionSelectionMode selection, List<Long> ids,
             Map<Long,String> selectedSubjects, String title, Integer timeLimitMinutes) {
+        return saveExam(userId, filter, selection, ids, selectedSubjects, title, timeLimitMinutes, java.util.Set.of());
+    }
+
+    private ExamSession saveExam(Long userId, QuestionFilter filter, QuestionSelectionMode selection, List<Long> ids,
+            Map<Long,String> selectedSubjects, String title, Integer timeLimitMinutes, java.util.Set<Long> provisionalIds) {
         Map<Long, Question> byId = new HashMap<>();
         questions.findAllById(ids).forEach(q -> byId.put(q.getId(), q));
 
@@ -159,6 +167,7 @@ public class ExamService {
             eq.setQuestionCode(q.getCode());
             eq.setSubject(selectedSubjects.getOrDefault(id, q.getSubject()));
             eq.setTopic(topics.getOrDefault(id,q.getTopic()));
+            eq.setArchiveProvisional(provisionalIds.contains(id));
             eq.setLearningLabelSnapshot(snapshots.get(id));
             rows.add(eq);
         }
@@ -324,7 +333,7 @@ public class ExamService {
         var topics=sharedLabels.topicNames(sharedLabels.snapshots(rows.stream().map(r->r.getQuestion().getId()).toList()));
         List<SessionQuestion> qs = rows.stream()
                 .map(r -> new SessionQuestion(r.getQuestion().getId(), r.getPosition(), r.getQuestionCode(),
-                        r.getSubject(), topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getQuestion().getChoiceCount(), r.getSelectedAnswer()))
+                        r.getSubject(), topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getQuestion().getChoiceCount(), r.getSelectedAnswer(), r.isArchiveProvisional()))
                 .toList();
         return new ExamSession(e.getId(), e.getTitle(), e.getStatus(), e.getSelectionMode(),
                 e.getQuestionCount(), e.getTimeLimitMinutes(),
@@ -360,7 +369,7 @@ public class ExamService {
             String status = r.getSelectedAnswer() == null ? "BLANK" : Boolean.TRUE.equals(r.getCorrect()) ? "CORRECT" : "WRONG";
             qs.add(new ResultQuestion(r.getPosition(), r.getQuestion().getId(), r.getQuestionCode(), r.getSubject(),
                     topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getSelectedAnswer(), r.getCorrectAnswer(), status,
-                    hints.available(r.getQuestion().getId())));
+                    hints.available(r.getQuestion().getId()), r.isArchiveProvisional()));
             int[] s = subjects.computeIfAbsent(r.getSubject(), k -> new int[4]);
             s[0]++;
             s[switch (status) { case "CORRECT" -> 1; case "WRONG" -> 2; default -> 3; }]++;

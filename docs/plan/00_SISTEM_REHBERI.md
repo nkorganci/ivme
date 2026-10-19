@@ -576,12 +576,25 @@ kontrolü korunur. Kalıcı kullanıcı havuz önbelleği veya branş başına t
 
 `examSource=year` seçimi formda “Yıla ait tam sınav” seçeneğini açar; `year`,
 TYT/AYT ve AYT alanı yenilemede korunur. `GET /api/exams/archive` her kayıtlı
-yılın branş hedeflerini, uygun sorularını ve `ready` durumunu verir.
-`POST /api/exams/full` isteğindeki `year`, yalnız o yılın bütün uygun çıkmış
-sorularını özgün kitapçık sırasında seçer; çözülmüş soru filtresi kullanılmaz.
+yılın branş hedeflerini, o yıldaki uygun özgün sorularını (`available`), eksik
+sayısını (`estimatedQuestionCount`) ve tamamlama dahil başlatılabilirliğini (`ready`) verir.
+`POST /api/exams/full` isteğindeki `year`, o yılın bütün uygun çıkmış sorularını
+özgün kitapçık sırasında korur; çözülmüş soru filtresi kullanılmaz.
 Güncel öğretmen görünürlüğü, kaynak damgası ve etkinlik koşulları uygulanır.
-Eksik/birleşik/inceleme bekleyen sorular tam sınavı engeller; ders bazındaki
-eksik ekranda belirtilir. Yıllı sınavın özgün dağılımına konu dengelemesi uygulanmaz.
+Kullanıcının 18 Ekim 2026 talimatıyla eksik/birleşik/inceleme bekleyen soruların
+yerine aynı sınav türü ve dersten yayımlanmış uygun havuzdaki sorular seçilir;
+çıkmış sorulara, ardından soru bankasına öncelik verilir. Özgün sorular tekrar
+seçilmez; her soru kimliği bir denemede yalnız bir kez yer alır. Tamamlayıcılar
+her dersin sonuna, tümü eksik dersler mevcut derslerden sonra eklenir. 120/80 soru,
+branş kotaları ve 165/180 dakika korunur. Uygun havuz da yetersizse `ready=false`
+kalır; eksik sorulu deneme kaydedilmez. Yıllı sınava konu dengelemesi uygulanmaz.
+
+Tamamlayıcı soru için V60'taki `exam_questions.archive_provisional` oluşturma
+anında kaydedilir. Oturum/sonuç DTO'sundaki `archiveProvisional`, masaüstü ve
+mobilde “Tahmini soru” etiketini gösterir; başlık tamamlandığını belirtir.
+Devam etme, bitirme ve sonuç okuma bu bilgiyi korur. Seçilen sorunun gerçek
+kimliği, cevabı ve kaynak bilgisi kullanılır; başka yılın sorusu özgün soru diye
+sunulmaz. Bu seçim öğretmen onayı veya arşivdeki kaynak eksiğinin çözümü sayılmaz.
 
 Özgün sıra `exam_archive_positions` tablosundadır. V57/V58, korunmuş
 `ham/sorular_son.json` kimliklerinden `scripts/official-exam-positions.py` ile

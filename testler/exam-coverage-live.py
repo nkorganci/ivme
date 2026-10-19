@@ -18,8 +18,10 @@ from kaynakli_arastirma_db import db_connection, query
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', required=True)
+    parser.add_argument('--base', default='http://127.0.0.1:9090')
+    parser.add_argument('--csrf-cookie', default='XSRF-TOKEN')
     args = parser.parse_args()
-    base = 'http://127.0.0.1:9090'
+    base = args.base.rstrip('/')
     cookies = CookieJar()
     client = build_opener(HTTPCookieProcessor(cookies))
     try:
@@ -27,7 +29,7 @@ def main():
     except Exception as error:
         if getattr(error, 'code', None) != 401:
             raise
-    token = next(unquote(cookie.value) for cookie in cookies if cookie.name == 'XSRF-TOKEN')
+    token = next(unquote(cookie.value) for cookie in cookies if cookie.name == args.csrf_cookie)
     client.open(Request(base+'/api/auth/dev-login', data=b'', headers={'X-XSRF-TOKEN': token}, method='POST'), timeout=20).close()
 
     def get(path):
@@ -39,9 +41,12 @@ def main():
         start = perf_counter()
         archive = json.loads(get('/api/exams/archive?'+urlencode({'examType':exam,'track':track})))
         assert archive and all(p['examType']==exam and p['track']==track for p in archive)
-        assert all(p['ready']==all(q['available']==q['target'] for q in p['subjects']) for p in archive)
+        assert all(p['estimatedQuestionCount']==sum(max(0,q['target']-q['available']) for q in p['subjects']) for p in archive)
+        assert all(p['ready'] for p in archive if all(q['available']==q['target'] for q in p['subjects']))
         records.append({'exam':exam,'track':track,'milliseconds':round((perf_counter()-start)*1000,2),
                         'readyYears':[p['year'] for p in archive if p['ready']],
+                        'supplementedYears':[{'year':p['year'],'estimatedQuestionCount':p['estimatedQuestionCount']}
+                                              for p in archive if p['ready'] and p['estimatedQuestionCount']>0],
                         'incompleteYears':[{'year':p['year'],'shortages':[q for q in p['subjects'] if q['available']!=q['target']]}
                                            for p in archive if not p['ready']]})
     html = get('/calisma/yeni?mode=sinav&examSource=year')

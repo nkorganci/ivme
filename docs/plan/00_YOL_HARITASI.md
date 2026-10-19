@@ -23,6 +23,10 @@ bittiğinde silinmez; yeni yapılacaklar veya tamamlanan işler listesi olarak k
 
 Soru/PDF/video üretimi aynı sözleşme ve doğrulayıcıyı kullanır. Normal üretim önbelleği yeniden kullanır; manuel inceleme kaydı insan onayı veya doğrulanmış konu aralığı sayılmaz.
 
+Kullanıcının 18 Ekim talimatıyla yıllık sınavlarda eksik sorular, aynı sınav ve
+dersin uygun havuzundan açıkça tahmini olarak işaretlenen sorularla tamamlanabilir.
+Bu başlatma akışı `12.01` kaynak incelemesini veya öğretmen onayını tamamlanmış saymaz.
+
 ## Kullanıcı yönetimi tasarım önerisi
 
 [13. Adım — kullanıcı rolleri ve site yönetimi](13_KULLANICI_ROLLERI_VE_YONETIM.md)

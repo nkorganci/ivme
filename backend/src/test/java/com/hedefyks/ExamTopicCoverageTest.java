@@ -178,6 +178,10 @@ class ExamTopicCoverageTest extends TestBase {
                 .containsEntry("Matematik",1L).containsEntry("Felsefe Grubu",4L);
         var candidates=availability.balancedSubjectCandidates(owner.getId(),QuestionBank.OGM,ExamType.AYT,QuestionSelectionMode.MIXED,subjects,80);
         assertThat(candidates).hasSize(5).allSatisfy(c -> assertThat(c.topic()).startsWith("coverage.group."));
+        var replacements=availability.archiveReplacementCandidates(ExamType.AYT,subjects,160);
+        assertThat(replacements).hasSize(5);
+        assertThat(replacements).filteredOn(c -> c.subject().equals("Matematik")).hasSize(1);
+        assertThat(replacements).filteredOn(c -> c.subject().equals("Felsefe Grubu")).hasSize(4);
         assertThat(candidates).filteredOn(c -> c.subject().equals("Matematik")).extracting(ExamTopicBalancer.Candidate::topic)
                 .containsExactly("coverage.group.geometri");
     }

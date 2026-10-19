@@ -101,10 +101,12 @@ export default function FullExamForm() {
           onChange={event => change('year', event.target.value)}>
           {!archivePlans.length && <option value="">Kayıtlı yıl yok</option>}
           {archivePlans.map(plan => <option key={plan.year} value={plan.year}>
-            {plan.year} {examType}{plan.ready ? '' : ' — arşivde eksik soru var'}
+            {plan.year} {examType}{!plan.ready ? ' — yeterli soru yok'
+              : plan.estimatedQuestionCount ? ' — tahmini sorularla tamamlanır' : ''}
           </option>)}
       </Field>
       <p className="muted small">Seçtiğin yılın çıkmış soruları kitapçık sırasıyla gelir.
+        Eksikler aynı sınav türü ve dersten uygun sorularla tamamlanır; eklenen sorular tahmini olarak gösterilir.
         Daha önce çözdüğün sorular da sınavın içinde yer alır.</p>
     </> : <>
     <fieldset className="full-exam-sources" disabled={busy}>
@@ -129,12 +131,18 @@ export default function FullExamForm() {
       : byYear && !currentPlan ? <Alert type="warn">Bu seçim için kayıtlı sınav yılı bulunamadı.</Alert>
       : currentPlan && <>
         <p className="muted">{currentPlan.questionCount} soru · {currentPlan.timeLimitMinutes} dakika.
-          {byYear ? ` ${year} ${examType} sınavı, özgün ders dağılımı ve soru sırasıyla hazırlanır.`
+          {byYear ? ` ${year} ${examType} sınavı, özgün ders dağılımıyla hazırlanır.`
             : ` Sorular yalnızca ${examType} havuzundan, seçtiğin kaynaklardan branş dağılımına göre seçilir.`}</p>
         {!byYear && <p className="muted small">Her derste ünite ve konulara dengeli yer verilir.
           Sonraki denemelerde daha önce sorulmayan veya az sorulan konulara öncelik verilir.</p>}
+        {byYear && currentPlan.ready && currentPlan.estimatedQuestionCount > 0 && <Alert type="warn">
+          Arşivde eksik veya inceleme bekleyen sorular var. Sınav {currentPlan.estimatedQuestionCount} tahmini soruyla tamamlanarak başlatılabilir.
+          {currentPlan.subjects.filter(row => row.available < row.target).map(row =>
+            <div key={row.subject}>{row.subject}: {row.available} çıkmış + {row.target - row.available} tahmini = {row.target} soru.</div>)}
+          Tahmini sorular her dersin sonunda yer alır.
+        </Alert>}
         {!currentPlan.ready && <Alert type="warn">
-          {byYear ? 'Bu yılın tam sınavı henüz hazır değil. Arşivdeki eksik veya inceleme bekleyen soruların tamamlanması gerekiyor.'
+          {byYear ? 'Eksik soruları tahmini sorularla tamamlamak için uygun havuzda yeterli soru yok.'
             : 'Bu kaynaklarla deneme oluşturmak için yeterli soru yok.'}
           {currentPlan.subjects.filter(row => byYear ? row.available !== row.target : row.available < row.target).map(row =>
             <div key={row.subject}>{row.subject}: {row.target} soru gerekli, {row.available} uygun soru var.</div>)}

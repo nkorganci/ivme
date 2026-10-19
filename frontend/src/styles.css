@@ -846,6 +846,7 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
   .qmain .qresult { max-height: 80px; overflow: auto; }
   .qmain > .hint-card { max-height: 20%; }
   .qstrip .badge, .qstrip > .qtopic { display: none; }
+  .qstrip .archive-provisional { display: inline-flex; }
   .qstrip > a { flex: 0 1 auto; min-width: 0; max-width: 30%; overflow: hidden; text-overflow: ellipsis; }
   .qstrip .code { max-width: 24%; overflow: hidden; text-overflow: ellipsis; }
   .qstrip:has(.practice-timer) .code { display: none; }

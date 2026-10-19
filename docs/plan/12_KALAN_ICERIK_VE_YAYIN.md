@@ -27,10 +27,12 @@ uygulanmış beş kaydı, karar bekleyen 14 içerik kaydından ayırır.
 
 Yıla ait tam sınav seçimi bu kabulü kullanır. [Canlı arşiv ölçümü](../../veri/content-labels/integration/exam-coverage-20261018/api-report.json)
 TYT'de 2018–2026 Türkçe için 34/40 tekil soru, 2019 Matematik için ayrıca
-39/40 gösterir. Hazır AYT alanları başlatılabilir; diğer yıllar/alanlar eksikliğiyle
-gösterilir. Bu arayüzün tamamlanması 54 konumun kaynak incelemesini kapatmaz.
+39/40 gösterir. Kullanıcının 18 Ekim talimatıyla eksik yıllar/alanlar aynı sınav
+ve ders havuzundan açıkça “Tahmini soru” işaretli tamamlayıcılarla başlatılabilir.
+Bu tamamlama 54 konumun kaynak incelemesini kapatmaz.
 Tekil soru kabulünden sonra korunmuş özgün konum bağını DB arşiv kaydına ekle ve
-yıl/alanın `ready` durumunu yeniden doğrula; başka yılın sorusuyla tamamlama.
+yıl/alanın özgün soru sayısını yeniden doğrula; başka yılın tamamlayıcı sorusunu
+özgün arşiv konumu gibi kaydetme.
 
 Kabul: kaynak düzeltmesi, arşivde bulunmayan soru ve inceleme bekleyen kayıt ayrılmış; eski soru kodları ve öğrenci kayıtları korunmuş.
 

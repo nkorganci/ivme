@@ -8,6 +8,7 @@ import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const live = process.argv.includes('--live');
+const csrfCookie = process.env.IVME_UI_CSRF_COOKIE || 'XSRF-TOKEN';
 const output = process.env.IVME_UI_OUTPUT_DIR || fileURLToPath(new URL('../veri/content-labels/integration/full-exam-20261016/',import.meta.url));
 mkdirSync(output,{recursive:true});
 const dist = fileURLToPath(new URL('../frontend/dist',import.meta.url));
@@ -38,14 +39,21 @@ const server = live ? null : createServer((req,res)=>{
   }
   if(url.pathname==='/api/exams/archive'){
     const examType=url.searchParams.get('examType'),track=url.searchParams.get('track');
-    return setTimeout(()=>json([2025,2024].map(year=>({year,examType,track,questionCount:examType==='TYT'?120:80,
-      timeLimitMinutes:examType==='TYT'?165:180,ready:year===2025,
-      subjects:Object.entries(quotas[examType==='TYT'?'TYT':track]).map(([subject,target])=>({subject,target,available:year===2025?target:0}))}))),100);
+    return setTimeout(()=>json([2025,2024,2023].map(year=>({year,examType,track,questionCount:examType==='TYT'?120:80,
+      timeLimitMinutes:examType==='TYT'?165:180,ready:year!==2023,estimatedQuestionCount:year===2025?0:6,
+      subjects:Object.entries(quotas[examType==='TYT'?'TYT':track]).map(([subject,target],index)=>
+        ({subject,target,available:year!==2025&&index===0?target-6:target}))}))),100);
   }
   if(url.pathname==='/api/exams/full'&&req.method==='POST'){
     let body='';req.on('data',chunk=>body+=chunk);req.on('end',()=>{lastStart=JSON.parse(body);json({id:77});});return;
   }
-  if(url.pathname==='/api/exams/77')return json({id:77,title:'Deneme',questions:[],questionCount:80,remainingSeconds:null});
+  const supplementedQuestions=lastStart?.year===2024
+    ? [{questionId:701,position:1,code:'SUPPLEMENT',subject:'Matematik',topic:'Ünite',choiceCount:5,archiveProvisional:true}]:[];
+  if(url.pathname==='/api/exams/77')return json({id:77,title:'Deneme',questions:supplementedQuestions,questionCount:80,remainingSeconds:null});
+  if(url.pathname==='/api/exams/77/submit')return json({id:77});
+  if(url.pathname==='/api/exams/77/result')return json({id:77,title:'Deneme',questionCount:80,correctCount:0,wrongCount:0,blankCount:80,
+    percent:0,net:0,durationSeconds:1,submittedAt:new Date().toISOString(),bySubject:[],questions:supplementedQuestions.map(q=>
+      ({...q,status:'BLANK',selectedAnswer:null,correctAnswer:'A',hasExplanation:false}))});
   if(url.pathname.startsWith('/api/'))return json(null);
   const file=resolve(dist,'.'+decodeURIComponent(url.pathname));
   const target=file.startsWith(dist+sep)&&extname(file)?file:join(dist,'index.html');
@@ -77,15 +85,20 @@ try{
   const waitFor=async expression=>{for(let i=0;i<180;i++){if(await evaluate(`Boolean(${expression})`))return;await pause(100);}
     throw Error(`UI timeout: ${expression}; ${await evaluate('document.body.innerText')}`);};
   const click=async text=>evaluate(`[...document.querySelectorAll('button')].find(item=>item.innerText.trim()===${JSON.stringify(text)})?.click()`);
+  const reload=async()=>{
+    await evaluate('window.__uiReloadMarker=true');
+    await cdp('Page.reload');
+    await waitFor('!window.__uiReloadMarker && document.readyState==="complete"');
+  };
   const assertSources=async examType=>{
-    await waitFor(`document.querySelector('#full-exam-title').parentElement.innerText.includes(${JSON.stringify(`Sorular yalnızca ${examType} havuzundan`)})`);
+    await waitFor(`document.querySelector('#full-exam-title')?.parentElement.innerText.includes(${JSON.stringify(`Sorular yalnızca ${examType} havuzundan`)})`);
     assert.deepEqual(await evaluate('[...document.querySelectorAll(".full-exam-sources label")].map(label=>label.innerText.trim())'),
       [`${examType} Çıkmış Sorular`,`${examType} Soru Bankası`]);
     assert.ok(await evaluate(`document.querySelector('#full-exam-title').parentElement.innerText.includes(${JSON.stringify(`Sorular yalnızca ${examType} havuzundan`)})`));
   };
   await cdp('Page.enable');await cdp('Runtime.enable');
   if(live){await cdp('Page.navigate',{url:site+'/calisma/yeni'});await waitFor('document.querySelector("main")');
-    await evaluate('fetch("/api/auth/dev-login",{method:"POST",headers:{"X-XSRF-TOKEN":decodeURIComponent(document.cookie.split("; ").find(x=>x.startsWith("XSRF-TOKEN="))?.split("=")[1]||"")}}).then(r=>r.ok)');}
+    await evaluate(`fetch("/api/auth/dev-login",{method:"POST",headers:{"X-XSRF-TOKEN":decodeURIComponent(document.cookie.split("; ").find(x=>x.startsWith(${JSON.stringify(csrfCookie+'=')}))?.split("=")[1]||"")}}).then(r=>r.ok)`);}
   for(const width of [1280,390]){
     await cdp('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===390});
     await cdp('Page.navigate',{url:site+'/calisma/yeni?mode=sinav&examType=AYT&bank=OGM&scope=topic&subject=Fizik&topic=Eski&categoryId=old&teacherDifficulty=ZOR&topicPdfId=999&track=ESIT_AGIRLIK'});
@@ -125,7 +138,7 @@ try{
       await waitFor(`document.querySelectorAll('.full-exam-sources input')[${index}]?.checked`);
     }
     await waitFor('!document.querySelector(".spinner") && [...document.querySelectorAll(".full-exam-sources input")].every(x=>x.checked)');
-    await cdp('Page.reload');await waitFor('document.querySelector("#full-exam-title") && !document.querySelector(".spinner")');
+    await reload();await waitFor('document.querySelector("#full-exam-title") && !document.querySelector(".spinner")');
     assert.equal(await evaluate('[...document.querySelectorAll(".full-exam-sources input")].filter(x=>x.checked).length'),2);
     await assertSources('AYT');
     const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
@@ -143,23 +156,43 @@ try{
       await evaluate(`{const select=document.querySelector('form select');
         Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2024');
         select.dispatchEvent(new Event('change',{bubbles:true}));}`);
-      await waitFor('document.body.innerText.includes("Bu yılın tam sınavı henüz hazır değil")');
-      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),true);
-      await cdp('Page.reload');await waitFor('document.querySelector("form select")?.value==="2024" && !document.querySelector(".spinner")');
+      await waitFor('document.body.innerText.includes("6 tahmini soruyla tamamlanarak başlatılabilir")');
+      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),false);
+      await reload();await waitFor('document.querySelector("form select")?.value==="2024" && !document.querySelector(".spinner")');
+      assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),false);
+      await evaluate(`{const select=document.querySelector('form select');
+        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2023');
+        select.dispatchEvent(new Event('change',{bubbles:true}));}`);
+      await waitFor('document.body.innerText.includes("uygun havuzda yeterli soru yok")');
       assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),true);
       await evaluate(`{const select=document.querySelector('form select');
-        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2025');
+        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,'2024');
         select.dispatchEvent(new Event('change',{bubbles:true}));}`);
       await waitFor('document.querySelector("form button[type=submit]")?.disabled===false');
     } else {
       assert.ok(await evaluate('document.querySelector("form select").options.length>=1'));
+      const supplementedYear=await evaluate(`fetch('/api/exams/archive?examType=AYT&track=ESIT_AGIRLIK').then(r=>r.json()).then(plans=>plans.find(p=>p.ready&&p.estimatedQuestionCount>0)?.year)`);
+      if(supplementedYear){
+        await evaluate(`{const select=document.querySelector('form select');
+          Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,${JSON.stringify(String(supplementedYear))});
+          select.dispatchEvent(new Event('change',{bubbles:true}));}`);
+        await waitFor('document.body.innerText.includes("tahmini soruyla tamamlanarak başlatılabilir")');
+        assert.equal(await evaluate('document.querySelector("form button[type=submit]").disabled'),false);
+      }
     }
     const archiveShot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});
     writeFileSync(join(output,`${live?'live':'isolated'}-archive-${width}.png`),Buffer.from(archiveShot.result.data,'base64'));
     if(!live){
       await evaluate('document.querySelector("form button[type=submit]").click()');
       await waitFor('location.pathname==="/sinav/77"');
-      assert.deepEqual(lastStart,{bank:'CIKMIS',examType:'AYT',track:'ESIT_AGIRLIK',includeSolved:true,year:2025});
+      assert.deepEqual(lastStart,{bank:'CIKMIS',examType:'AYT',track:'ESIT_AGIRLIK',includeSolved:true,year:2024});
+      await waitFor('document.querySelector(".qstrip")?.innerText.includes("Tahmini soru")');
+      await reload();
+      await waitFor('document.querySelector(".qstrip")?.innerText.includes("Tahmini soru")');
+      await click('Sınavı Bitir');
+      await waitFor('[...document.querySelectorAll("button")].some(x=>x.innerText.trim()==="Evet, bitir")');
+      await click('Evet, bitir');
+      await waitFor('location.pathname==="/sinav/77/sonuc" && document.querySelector(".qtopic")?.innerText.includes("Tahmini soru")');
     }
     checks.push({width,archiveSelection:'PASS',yearPersistence:live?'read-only':'PASS',missingArchive:live?'read-only':'PASS'});
   }

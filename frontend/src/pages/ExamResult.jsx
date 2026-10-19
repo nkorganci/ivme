@@ -119,6 +119,7 @@ function ResultView({ r }) {
                   <span className="qtopic">
                     {q.subject}
                     {q.topic ? ` · ${q.topic}` : ''}
+                    {q.archiveProvisional && <span className="badge badge-warn">Tahmini soru</span>}
                   </span>
                   <span>
                     Cevabın: <b>{q.selectedAnswer || '—'}</b>

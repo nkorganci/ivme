@@ -142,6 +142,22 @@ public class QuestionAvailabilityService {
             """).params(query.params()).query((rs,n) -> new SubjectCandidate(rs.getLong("id"),rs.getString("subject"))).list();
     }
 
+    /** Archive gaps use the same published subject pool, preferring official questions. */
+    public List<SubjectCandidate> archiveReplacementCandidates(ExamType exam, List<String> subjects, int limit) {
+        var query = subjectQuery(null, null, exam, QuestionSelectionMode.MIXED, subjects);
+        query.params().put("replacementExam", exam.name());
+        query.params().put("limit", limit);
+        return jdbc.sql(query.sql() + """
+            , ranked AS (
+              SELECT p.id,p.subject,row_number() OVER (PARTITION BY p.subject
+                ORDER BY (q.bank='CIKMIS') DESC,q.exam_year DESC NULLS LAST,p.id) AS rank
+              FROM (SELECT DISTINCT id,subject FROM eligible) p JOIN questions q ON q.id=p.id
+              WHERE q.active AND q.exam_type=:replacementExam
+            )
+            SELECT id,subject FROM ranked WHERE rank<=:limit ORDER BY subject,rank
+            """).params(query.params()).query((rs,n) -> new SubjectCandidate(rs.getLong("id"),rs.getString("subject"))).list();
+    }
+
     public List<ExamTopicBalancer.Candidate> balancedSubjectCandidates(Long userId, QuestionBank bank, ExamType exam,
             QuestionSelectionMode mode, List<String> subjects, int limit) {
         return topicCandidates(userId, subjectQuery(userId, bank, exam, mode, subjects), exam, limit);

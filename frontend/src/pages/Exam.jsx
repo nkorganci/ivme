@@ -180,6 +180,8 @@ function ExamRunner({ exam }) {
             <div className="qstrip">
               <strong>Soru {index + 1} / {questions.length}</strong>
               <span className="badge badge-muted">{q.subject}</span>
+              {q.archiveProvisional && <span className="badge badge-warn archive-provisional"
+                title="Arşivdeki eksik sorunun yerine aynı sınav türü ve dersten seçildi.">Tahmini soru</span>}
               {flagged && <span className="badge badge-warn">⚑ İşaretli</span>}
             </div>
 

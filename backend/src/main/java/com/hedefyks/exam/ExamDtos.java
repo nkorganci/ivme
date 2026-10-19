@@ -49,7 +49,7 @@ public final class ExamDtos {
     public record SubmitRequest(Map<String, String> answers) {}
 
     public record SessionQuestion(Long questionId, int position, String code, String subject, String topic,
-                                  int choiceCount, String selectedAnswer) {}
+                                  int choiceCount, String selectedAnswer, boolean archiveProvisional) {}
 
     public record ExamSession(Long id, String title, ExamStatus status, QuestionSelectionMode selectionMode,
                               int questionCount, Integer timeLimitMinutes,
@@ -63,7 +63,7 @@ public final class ExamDtos {
 
     public record ResultQuestion(int position, Long questionId, String code, String subject, String topic,
                                  String selectedAnswer, String correctAnswer, String status,
-                                 boolean hasExplanation) {}
+                                 boolean hasExplanation, boolean archiveProvisional) {}
 
     public record ExamResult(Long id, String title, int questionCount, int correctCount, int wrongCount,
                              int blankCount, BigDecimal percent, BigDecimal net, int durationSeconds,
