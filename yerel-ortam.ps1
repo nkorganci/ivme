@@ -7,7 +7,7 @@ function Get-IvmeLocalEnvironment {
     $settings = [ordered]@{
         Branch = $branch
         Name = $(if ($main) { 'production' } else { 'development' })
-        Port = $(if ($main) { 9090 } else { 9091 })
+        Port = $(if ($main) { 1010 } else { 1011 })
         ApiPort = $(if ($main) { 8081 } else { 8082 })
         Database = $(if ($main) { 'ivme' } else { 'ivme_dev' })
         SessionCookie = $(if ($main) { 'JSESSIONID' } else { 'IVME_DEV_SESSION' })
