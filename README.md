@@ -26,8 +26,8 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 
 | Ortam | Dal ve klasör | Adres | Veritabanı |
 |---|---|---|---|
-| Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:9090 | `ivme` |
-| Geliştirme | `feature/ivme-yol-haritasi` — `D:\workspace\ivme\uygulama` | http://localhost:9091 | `ivme_dev` |
+| Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:1010 | `ivme` |
+| Geliştirme | `feature/ivme-yol-haritasi` — `D:\workspace\ivme\uygulama` | http://localhost:1011 | `ivme_dev` |
 
 Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
 kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
@@ -45,8 +45,8 @@ ortamı yeniler. Herhangi bir ortamı hemen derleyip açmak için o klasörde
 başka bir ortamın DB/port ayarlarını kullanmaz. Gereken özel yerel kimlik ve
 kaynak yolları Git dışındaki `.codex/local-environment.json` ile verilebilir.
 Oturum ve CSRF çerezleri ayrıdır; iki localhost sekmesi birbirinin girişini bozmaz.
-Cloudflare tüneli doğrudan main'in `http://localhost:9090` adresini kullanır;
-5173 için ek giriş açılmaz. Feature yalnız yerel 9091 adresinden açılır.
+Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresini kullanır;
+5173 için ek giriş açılmaz. Feature yalnız yerel 1011 adresinden açılır.
 İki yerel ortam mevcut otomatik giriş davranışını koruyan Spring `dev` profilini
 kullanır; production burada main dalındaki sabit yerel uygulamayı belirtir.
 Gerçek HTTPS dağıtım ayarları aşağıdaki üretim paketi bölümündedir.
@@ -57,7 +57,7 @@ dala göre seçilir; `--database ivme` açıkça ana veriyi seçer. Gerçek veri
 `veritabani-sifirla.bat` çalıştırılmaz.
 
 İsteğe bağlı Vite geliştirme akışı: feature klasöründeki `backend-baslat.bat`
-API'yi 8082'de, `frontend-baslat.bat` ön yüzü 9091'de açar. Önce o ortamın paketli
+API'yi 8082'de, `frontend-baslat.bat` ön yüzü 1011'de açar. Önce o ortamın paketli
 uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
 uygulama ve kaynak izleyicisiyle çalışır.
 
@@ -100,9 +100,9 @@ Soru görsellerinin beyaz dış kenarları `python scripts/soru-gorsellerini-kir
 
 ## Üretim paketi ve tünel
 
-Yerel main adresi `http://localhost:9090`'dır. Cloudflare'da `net.ivme.dev` tünel hedefini `http://localhost:9090` olarak ayarlayın; yerel ve uzak erişim aynı main uygulamasına ulaşır. Paylaşım için React çıktısını içinde taşıyan Spring Boot paketini çalıştırın:
+Yerel main adresi `http://localhost:1010`'dır. Cloudflare'da `net.ivme.dev` tünel hedefini `http://localhost:1010` olarak ayarlayın; yerel ve uzak erişim aynı main uygulamasına ulaşır. Paylaşım için React çıktısını içinde taşıyan Spring Boot paketini çalıştırın:
 
-1. `uretim.ayarlar.ornek.bat` dosyasını Git dışında kalacak `uretim.ayarlar.bat` olarak kopyalayın; veritabanı, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true` ve `PORT=9090` ayarlarını doldurun. Üretimde `root/root` kullanmayın. Sınırlı rolün kurulumu [12.03 yayın işinde](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) açıklanır; `YKS_FLYWAY_ETKIN=false` ancak yetkili göç tamamlandıktan sonra kullanılmalıdır.
+1. `uretim.ayarlar.ornek.bat` dosyasını Git dışında kalacak `uretim.ayarlar.bat` olarak kopyalayın; veritabanı, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true` ve `PORT=1010` ayarlarını doldurun. Üretimde `root/root` kullanmayın. Sınırlı rolün kurulumu [12.03 yayın işinde](docs/plan/12_KALAN_ICERIK_VE_YAYIN.md) açıklanır; `YKS_FLYWAY_ETKIN=false` ancak yetkili göç tamamlandıktan sonra kullanılmalıdır.
 2. Önce iki ayrıcalıklı hesabın geçici parolasını yerelde değiştirin. `uretim-derle.bat` paketi derler; `uretim-calistir.bat` gereken durumda yeniden derleyip tek Java süreci olarak başlatır. Sunucu yalnız `127.0.0.1` üzerinde dinler.
 3. Yerel ve tünel adresinde giriş, çıkış, soru görseli, QR, CSRF çerezi, mobil görünüm ve yeniden başlatma kontrolünü yapın. Servis kapalıyken Cloudflare 502 yanıtı beklenir. Vite kaynak dosyaları tünel üzerinden uzun süre önbelleğe alınabildiğinden paylaşılan sitede derlenmiş paketi kullanın. Normal tarayıcıda eski sürüm kalırsa `net.ivme.dev` için sert yenileme veya site önbelleğini temizleme yapın; sorun sürerse eklentileri bu site için kapatıp deneyin.
 
