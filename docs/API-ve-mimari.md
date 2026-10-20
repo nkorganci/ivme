@@ -44,7 +44,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Main `JSESSIONID` / `XS
 | `GET /api/exams/archive?examType&track` | Kayıtlı yılların `year,examType,track,questionCount,timeLimitMinutes,ready,subjects:[{subject,target,available}]` bilgileri. Eksik/birleşik/inceleme bekleyen soru varsa `ready=false`; başka yıldan soru eklenmez |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes,track?}` | `track=SAYISAL|SOZEL|ESIT_AGIRLIK` genel denemede dengeli branş planını uygular; eksik havuzda 400 |
 | `GET /api/exams?page&size` | Yalnız kendi teslim edilmiş denemeleri; toplam sonuçlara ek olarak `examType` ve `bySubject:[{subject,total,correct,wrong,blank}]` döner. Branşlar sayfadaki deneme kimlikleri için tek toplu sorguyla, korunmuş `exam_questions` alan/yanıt/sonuçlarından okunur; soru veya cevap anahtarı taşınmaz |
-| `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, otomatik kayıt ve sonuç |
+| `GET /api/exams/{id}`, `PUT /api/exams/{id}/answers`, `PUT /api/exams/{id}/flags`, `POST /api/exams/{id}/submit`, `GET /api/exams/{id}/result` | Sahibine ait sınav, kalıcı cevap/işaret kaydı ve sonuç. İşaret isteği `{questionId,flagged}`; açık sınavla sınırlıdır |
 | `POST /api/exams/{id}/cancel` | Kendi açık denemesini `CANCELLED` yapar; sonuç/puan üretmez, kaydı ve yanıtları korur. Tekrar 204, başkasının kaydı 404, teslim edilmiş deneme 409; iptal sonrası cevap/teslim/devam 409 |
 | `GET /api/exams?page&size`, `GET /api/exams/summary` | Sahibine ait geçmiş ve özet |
 | `POST /api/feedback` | `RATING`, `QUESTION_ISSUE` veya `GENERAL` geri bildirimi |
@@ -101,9 +101,17 @@ kaydıyla sınırlıdır. Haftalık programın benzer bağları kullanıcı/haft
 PostgreSQL'deki `student_program_weeks` tablosunda saklanır. `GET/PUT
 /api/student-program/weeks/{pazartesi}` aynı hesabın bütün oturumlarında tek
 kaydı kullanır; `revision` ile eski sayfanın yeni kaydı ezmesi 409 ile önlenir.
+`math_tutoring_lessons.revision` da ders satırının sürümüdür: güncelleme gövdesi
+okunan sürümü taşır, eski sürüm 409 döner ve toplu kaydın tamamı geri alınır.
+Tek ders oluşturma/güncelleme ve dosya yükleme de veritabanı işlemiyle yanıt
+için geri okumayı aynı transaction içinde yapar. Hesap dışa aktarımı sürüm 4,
+özel ders satırlarını ve dosya içeriklerini de taşır.
 `GET/PUT /api/preferences/{sidebar-rail|question-image-fit}` görünüm tercihlerini
 hesapta saklar. Başarılı kayıt değişikliklerinin kısa izi `user_record_audit`
-tablosundadır; hata yanıtı başarılı kayıt gibi gösterilmez.
+tablosundadır; soru karalaması, konu ilerlemesi, fayda oyu, deneme işareti ve
+özel ders dosyaları da denetlenir. Pratik yanıtları `question_attempts`, öğretim
+olayları `tutor_events` tablosunda kendi olay kaydıdır. Hata yanıtı başarılı
+kayıt gibi gösterilmez.
 
 Soru listesi, uygun soru sayımı, pratik ve deneme oluşturma `categoryId`,
 `categoryMatch=ANY|ALL`, `includeCandidates` alanlarını kabul eder. URL'de birden

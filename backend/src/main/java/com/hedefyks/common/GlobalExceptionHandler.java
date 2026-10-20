@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DataAccessException;
+import org.springframework.transaction.CannotCreateTransactionException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,8 +65,8 @@ public class GlobalExceptionHandler {
         return body(HttpStatus.CONFLICT, "Kayıt veritabanındaki bütünlük kuralıyla çakıştı.", null);
     }
 
-    @ExceptionHandler(DataAccessException.class)
-    ResponseEntity<ErrorBody> database(DataAccessException e, HttpServletRequest request) {
+    @ExceptionHandler({DataAccessException.class, CannotCreateTransactionException.class})
+    ResponseEntity<ErrorBody> database(Exception e, HttpServletRequest request) {
         log.error("Veritabanı işlemi başarısız: {} {}", request.getMethod(), request.getRequestURI(), e);
         metrics.recordUnexpected();
         boolean read = "GET".equals(request.getMethod());

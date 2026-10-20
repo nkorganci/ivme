@@ -16,6 +16,39 @@ import org.springframework.mock.web.MockHttpSession;
 class ExamFlowTest extends TestBase {
 
     @Test
+    void ayniHesabinIkiOturumuCevapVeIsaretleriVeritabanindanOkur() throws Exception {
+        Question q = question("FLAG-1", "Matematik", "A");
+        user("flag_ayse", Role.USER);
+        user("flag_mehmet", Role.USER);
+        var first = login("flag_ayse", "Sifre1234");
+        var second = login("flag_ayse", "Sifre1234");
+        var other = login("flag_mehmet", "Sifre1234");
+        long examId = read(send(first, post("/api/exams"), "{\"questionCount\":1}"))
+                .get("id").asLong();
+        String path = "/api/exams/" + examId;
+
+        send(first, put(path + "/answers"),
+                "{\"questionId\":" + q.getId() + ",\"answer\":\"A\"}").andExpect(status().isNoContent());
+        send(first, put(path + "/flags"),
+                "{\"questionId\":" + q.getId() + ",\"flagged\":true}").andExpect(status().isNoContent());
+        send(second, get(path), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.questions[0].selectedAnswer").value("A"))
+                .andExpect(jsonPath("$.questions[0].flagged").value(true));
+        assertThat(jdbc.queryForObject("SELECT flagged FROM exam_questions WHERE exam_id = ? AND question_id = ?",
+                Boolean.class, examId, q.getId())).isTrue();
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM user_record_audit WHERE record_type = 'exam_flags'",
+                Integer.class)).isEqualTo(1);
+        send(other, put(path + "/flags"),
+                "{\"questionId\":" + q.getId() + ",\"flagged\":false}").andExpect(status().isNotFound());
+        send(second, put(path + "/flags"),
+                "{\"questionId\":" + q.getId() + ",\"flagged\":false}").andExpect(status().isNoContent());
+        send(first, get(path), null).andExpect(jsonPath("$.questions[0].flagged").value(false));
+        send(first, post(path + "/submit"), null).andExpect(status().isOk());
+        send(second, put(path + "/flags"),
+                "{\"questionId\":" + q.getId() + ",\"flagged\":true}").andExpect(status().isConflict());
+    }
+
+    @Test
     void sinavSonucuDogruSaklanirVeSonradanDegisenCevapGecmisiEtkilemez() throws Exception {
         Question q1 = question("T-1", "Matematik", "A");
         Question q2 = question("T-2", "Matematik", "B");

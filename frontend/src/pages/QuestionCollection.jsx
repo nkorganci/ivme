@@ -71,7 +71,7 @@ export default function QuestionCollection({ bank }) {
           setQuestionCount(String(Math.min(20, Math.max(1, counts.total))));
         }
       })
-      .catch((error) => { if (current && error.status !== 404) setProgressError('İlerleme sayıları alınamadı.'); });
+      .catch((error) => { if (current) setProgressError(error.message); });
     return () => { current = false; };
   }, [bank, filter.examType, filter.subject, filter.topic,commonKey]);
 

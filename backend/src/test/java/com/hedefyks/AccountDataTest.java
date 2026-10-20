@@ -38,6 +38,12 @@ class AccountDataTest extends TestBase {
                 owner.getId(), UUID.randomUUID());
         jdbc.update("INSERT INTO curriculum_topic_progress(user_id,topic_id) VALUES (?,?)",
                 owner.getId(), "tyt.matematik.sayi-basamaklari");
+        long lessonId = jdbc.queryForObject("""
+                INSERT INTO math_tutoring_lessons(user_id,lesson_date,start_time,end_time,topic,homework,status,note)
+                VALUES (?,'2026-10-15','09:00','10:00','Fonksiyonlar','Test 1','PLANNED','Kendi ders notum') RETURNING id
+                """, Long.class, owner.getId());
+        jdbc.update("INSERT INTO math_tutoring_files(lesson_id,original_name,content_type,content) VALUES (?,?,?,?)",
+                lessonId, "odev.txt", "text/plain", "Kendi dosyam".getBytes(java.nio.charset.StandardCharsets.UTF_8));
         jdbc.update("INSERT INTO feedback(user_id,question_id,category,message) VALUES (?,?,'QUESTION_ISSUE',?)",
                 other.getId(), question.getId(), "Başka kullanıcı notu");
 
@@ -57,6 +63,8 @@ class AccountDataTest extends TestBase {
         // login() records LOGIN automatically; the explicit ACTIVE event is exported too.
         assertThat(data.get("activityEvents").size()).isEqualTo(2);
         assertThat(data.get("curriculumTopicProgress").size()).isEqualTo(1);
+        assertThat(data.path("mathTutoringLessons").get(0).path("note").asText()).isEqualTo("Kendi ders notum");
+        assertThat(data.path("mathTutoringFiles").get(0).path("original_name").asText()).isEqualTo("odev.txt");
 
         send(ownerSession, post("/api/account/delete"),
                 "{\"currentPassword\":\"Sifre1234\",\"confirmation\":\"yanlış\"}")
@@ -71,8 +79,10 @@ class AccountDataTest extends TestBase {
         assertThat(users.findById(owner.getId())).isEmpty();
         assertThat(users.findById(other.getId())).isPresent();
         assertThat(questions.findById(question.getId())).isPresent();
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM math_tutoring_files WHERE lesson_id = ?",
+                Long.class, lessonId)).isZero();
         for (String table : new String[]{"exams", "study_sessions", "question_attempts", "question_boards",
-                "feedback", "activity_events", "curriculum_topic_progress"}) {
+                "feedback", "activity_events", "curriculum_topic_progress", "math_tutoring_lessons"}) {
             assertThat(jdbc.queryForObject("SELECT count(*) FROM " + table + " WHERE user_id = ?",
                     Long.class, owner.getId())).isZero();
         }

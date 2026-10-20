@@ -42,7 +42,7 @@ class DevLoginControllerTest {
         try {
             assertThat(controller.login(request, new MockHttpServletResponse()).id()).isEqualTo(12L);
             verify(contexts).saveContext(any(), any(), any());
-            verify(activity).login(12L, request.getSession());
+            verify(activity).login(12L, request.getSession(), null);
         } finally {
             SecurityContextHolder.clearContext();
         }

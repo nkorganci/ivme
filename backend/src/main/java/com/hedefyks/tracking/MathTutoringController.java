@@ -36,11 +36,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/math-tutoring")
 public class MathTutoringController {
     public record LessonInput(LocalDate date, LocalTime start, LocalTime end, String topic, String homework,
-                              String status, String note, MathLearning learning) {}
+                              String status, String note, MathLearning learning, Long revision) {}
     public record FileInfo(Long id, String name) {}
     public record LessonChange(Long id, LessonInput lesson) {}
     public record Lesson(Long id, LocalDate date, LocalTime start, LocalTime end, String topic, String homework,
-                         String status, String note, List<FileInfo> files, MathLearning learning) {}
+                         String status, String note, List<FileInfo> files, MathLearning learning, Long revision) {}
     private record StoredFile(String name, String type, byte[] content) {}
 
     private final JdbcTemplate jdbc;
@@ -52,12 +52,13 @@ public class MathTutoringController {
     @GetMapping
     public List<Lesson> list(@AuthenticationPrincipal AppUserDetails me) {
         return jdbc.query("""
-                SELECT id, lesson_date, start_time, end_time, topic, homework, status, note, learning
+                SELECT id, lesson_date, start_time, end_time, topic, homework, status, note, learning, revision
                 FROM math_tutoring_lessons WHERE user_id = ? ORDER BY lesson_date, start_time, id
                 """, (rs, n) -> lesson(rs), me.id());
     }
 
     @PostMapping
+    @Transactional
     public Lesson create(@AuthenticationPrincipal AppUserDetails me, @RequestBody LessonInput input) {
         LessonInput checked = validate(input);
         Long id = jdbc.queryForObject("""
@@ -69,15 +70,23 @@ public class MathTutoringController {
     }
 
     @PatchMapping("/{id}")
+    @Transactional
     public Lesson update(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id,
                          @RequestBody LessonInput input) {
         LessonInput checked = validate(input);
+        get(me.id(), id);
+        if (checked.revision() == null || checked.revision() < 1)
+            throw ApiException.badRequest("Ders sürümü gerekli.");
         int count = jdbc.update("""
                 UPDATE math_tutoring_lessons SET lesson_date = ?, start_time = ?, end_time = ?,
-                    topic = ?, homework = ?, status = ?, note = ?, learning = COALESCE(?::jsonb, learning) WHERE id = ? AND user_id = ?
+                    topic = ?, homework = ?, status = ?, note = ?, learning = COALESCE(?::jsonb, learning),
+                    revision = revision + 1 WHERE id = ? AND user_id = ? AND revision = ?
                 """, checked.date(), checked.start(), checked.end(), checked.topic(), checked.homework(),
-                checked.status(), checked.note(), encodeLearning(checked.learning()), id, me.id());
-        if (count == 0) throw ApiException.notFound("Ders bulunamadı.");
+                checked.status(), checked.note(), encodeLearning(checked.learning()), id, me.id(), checked.revision());
+        if (count == 0) {
+            get(me.id(), id);
+            throw ApiException.conflict("Ders başka bir oturumda değişti. Taslağınızı koruyarak sayfayı yenileyin.");
+        }
         return get(me.id(), id);
     }
 
@@ -110,6 +119,7 @@ public class MathTutoringController {
     }
 
     @PostMapping(path = "/{id}/files", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Transactional
     public Lesson upload(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id,
                          @RequestParam("file") MultipartFile file) throws IOException {
         get(me.id(), id);
@@ -154,7 +164,7 @@ public class MathTutoringController {
 
     private Lesson get(Long userId, Long id) {
         return jdbc.query("""
-                SELECT id, lesson_date, start_time, end_time, topic, homework, status, note, learning
+                SELECT id, lesson_date, start_time, end_time, topic, homework, status, note, learning, revision
                 FROM math_tutoring_lessons WHERE id = ? AND user_id = ?
                 """, (rs, n) -> lesson(rs), id, userId).stream().findFirst()
                 .orElseThrow(() -> ApiException.notFound("Ders bulunamadı."));
@@ -166,7 +176,7 @@ public class MathTutoringController {
                 (file, n) -> new FileInfo(file.getLong(1), file.getString(2)), id);
         return new Lesson(id, rs.getObject("lesson_date", LocalDate.class), rs.getObject("start_time", LocalTime.class),
                 rs.getObject("end_time", LocalTime.class), rs.getString("topic"), rs.getString("homework"),
-                rs.getString("status"), rs.getString("note"), files, decodeLearning(rs.getString("learning")));
+                rs.getString("status"), rs.getString("note"), files, decodeLearning(rs.getString("learning")), rs.getLong("revision"));
     }
 
     private String encodeLearning(MathLearning learning) {
@@ -200,6 +210,6 @@ public class MathTutoringController {
         if(learning!=null)for(String key:learning.resourceKeys())
             if(learning.categoryId().isBlank() || jdbc.queryForObject("SELECT count(*) FROM learning_catalog.current_assignments WHERE item_key=? AND category_id=?",Long.class,key,learning.categoryId())==0)
                 throw ApiException.badRequest("Bağlanan kaynak seçilen ortak konuya ait değil.");
-        return new LessonInput(input.date(), input.start(), input.end(), topic, homework, input.status(), note,learning);
+        return new LessonInput(input.date(), input.start(), input.end(), topic, homework, input.status(), note,learning,input.revision());
     }
 }

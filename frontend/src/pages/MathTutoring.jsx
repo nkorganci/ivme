@@ -259,19 +259,21 @@ export default function MathTutoring() {
     const changes = lessonChanges(lessons, drafts, newRow, includeNew || newRowDirty);
     if (!changes.length) { setNotice('Kaydedilecek değişiklik yok.'); return; }
     const saved = await api.post('/api/math-tutoring/bulk', changes.map((change) => ({
-      id: change.id === 'new' ? null : change.id, lesson: change.fields,
+      id: change.id === 'new' ? null : change.id,
+      lesson: change.id === 'new' ? change.fields
+        : { ...change.fields, revision: lessons.find((row) => row.id === change.id)?.revision },
     })));
     if (!Array.isArray(saved) || saved.length !== changes.length)
       throw new Error('Kayıt sonucu doğrulanamadı. Değişiklikler sayfada korunuyor.');
     const verified = saved.every((row, index) => Number.isInteger(row.id) && row.id > 0
       && (changes[index].id === 'new' || changes[index].id === row.id)
       && JSON.stringify(lessonFields(row)) === JSON.stringify(changes[index].fields));
+    if (!verified) throw new Error('Öğretmen değerlendirmesi dahil tüm alanların kaydı doğrulanamadı. Değişiklikler sayfada korunuyor.');
     setLessons((rows) => sortLessons([...rows.filter((row) => !saved.some((result) => result.id === row.id)), ...saved]));
     setDrafts((current) => {
       const next = { ...current };
-      changes.forEach((change, index) => {
-        if (verified) delete next[change.id];
-        else if (change.id === 'new') next[saved[index].id] = change.fields;
+      changes.forEach((change) => {
+        delete next[change.id];
       });
       return next;
     });
@@ -280,7 +282,6 @@ export default function MathTutoring() {
       setNewRow(blank()); setNewRowDirty(false);
       setExpandedLesson((current) => current === 'new' ? saved[createdIndex].id : current);
     }
-    if (!verified) throw new Error('Öğretmen değerlendirmesi dahil tüm alanların kaydı doğrulanamadı. Değişiklikler sayfada korunuyor.');
     setNotice(`Tüm değişiklikler kaydedildi. ${saved.length} ders güncellendi.`);
   });
 

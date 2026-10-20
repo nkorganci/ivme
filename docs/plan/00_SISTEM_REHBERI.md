@@ -534,6 +534,14 @@ Pratik iptali cevap/bitirme ile aynı kullanıcı kilidini; deneme iptali,
 cevap kaydı ve teslim aynı deneme satırı kilidini kullanır. Liste ortak
 `DataGrid.fitContent` ile içeriğe göre ölçülür ve ayrılan genişliği doldurur; başlık/hücreler ortalanır ve
 işlem düğmeleri dar ekranda sağda görünür kalır.
+Deneme sorusunun geçici inceleme işareti de `exam_questions.flagged` alanında
+saklanır; sayfa yenileme ve aynı hesapla ikinci oturumda geri gelir. Cevap ve
+işaret isteği başarılı olmadan seçili/kayıtlı durum gösterilmez. Ders çizelgesinde
+`math_tutoring_lessons.revision` eski oturumun yeni ders kaydını sessizce ezmesini
+önler; toplu güncelleme tek işlemde geri alınır. Öğrenciye ait kalıcı değişiklikler
+PostgreSQL tablolarında tutulur; `user_record_audit` değişiklik kimliğini kaydeder,
+yanıt/pratik ve öğretim olayları kendi olay tablolarında kalır. Kaydedilmemiş form
+taslağı veya gezinme filtresi tamamlanmış öğrenci kaydı sayılmaz.
 Diğer ekranların ortak konu açılır listesi ve arama önerileri korunur.
 Mevcut bağlantılardaki eşleşme/soru tipi bağlamı API sözleşmesine uygun korunur.
 Çalışma kapsamı, kaynak, sınav ve ders URL'de tutulur; yenileme veya geri gezinme

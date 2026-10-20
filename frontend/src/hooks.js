@@ -20,7 +20,7 @@ export function useAsync(fn, deps) {
     if (!silent) setState({ data: null, loading: true, error: null });
     fnRef.current().then(
       (data) => id === seq.current && setState({ data, loading: false, error: null }),
-      (error) => id === seq.current && setState((s) => (silent ? s : { data: null, loading: false, error })),
+      (error) => id === seq.current && setState({ data: null, loading: false, error }),
     );
   }, []);
 

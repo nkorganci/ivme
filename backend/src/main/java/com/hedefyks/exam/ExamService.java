@@ -197,6 +197,17 @@ public class ExamService {
         eq.setSelectedAnswer(Answers.normalize(answer, eq.getQuestion().getChoiceCount()));
     }
 
+    public void saveFlag(Long userId, Long examId, Long questionId, boolean flagged) {
+        Exam exam = exams.lockByIdAndUserId(examId, userId)
+                .orElseThrow(() -> ApiException.notFound("Sınav bulunamadı."));
+        if (exam.getStatus() != ExamStatus.IN_PROGRESS) {
+            throw ApiException.conflict("Bu sınav sona erdi.");
+        }
+        ExamQuestion eq = examQuestions.findByExamIdAndQuestionId(examId, questionId)
+                .orElseThrow(() -> ApiException.notFound("Bu soru sınavında yok."));
+        eq.setFlagged(flagged);
+    }
+
     // ---------------------------------------------------------------- gönderme
 
     public void cancel(Long userId, Long examId) {
@@ -333,7 +344,7 @@ public class ExamService {
         var topics=sharedLabels.topicNames(sharedLabels.snapshots(rows.stream().map(r->r.getQuestion().getId()).toList()));
         List<SessionQuestion> qs = rows.stream()
                 .map(r -> new SessionQuestion(r.getQuestion().getId(), r.getPosition(), r.getQuestionCode(),
-                        r.getSubject(), topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getQuestion().getChoiceCount(), r.getSelectedAnswer(), r.isArchiveProvisional()))
+                        r.getSubject(), topics.getOrDefault(r.getQuestion().getId(),r.getTopic()), r.getQuestion().getChoiceCount(), r.getSelectedAnswer(), r.isArchiveProvisional(), r.isFlagged()))
                 .toList();
         return new ExamSession(e.getId(), e.getTitle(), e.getStatus(), e.getSelectionMode(),
                 e.getQuestionCount(), e.getTimeLimitMinutes(),

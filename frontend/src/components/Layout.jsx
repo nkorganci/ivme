@@ -45,8 +45,9 @@ function isActive(path, to) {
  */
 export default function Layout() {
   const [resourceSelection,setResourceSelection]=useState(null);
-  const { user, logout, refreshUser } = useAuth();
+  const { user, logout, refreshUser, activityError } = useAuth();
   const [reviewSwitchError, setReviewSwitchError] = useState('');
+  const [signOutError, setSignOutError] = useState('');
   const [switchingReview, setSwitchingReview] = useState(false);
   const [localReviewerAvailable, setLocalReviewerAvailable] = useState(false);
   useEffect(() => {
@@ -126,8 +127,9 @@ export default function Layout() {
         : [...ITEMS, ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
 
   const signOut = async () => {
-    await logout().catch(() => {});
-    navigate('/giris', { replace: true });
+    setSignOutError('');
+    try { await logout(); navigate('/giris', { replace: true }); }
+    catch (error) { setSignOutError(`Çıkış yapılamadı: ${error.message}`); }
   };
 
   return (
@@ -202,6 +204,7 @@ export default function Layout() {
             <Icon name="book" /><span className="label">{switchingReview ? 'Açılıyor…' : user.role === 'OPERATOR' ? 'Öğrenci görünümüne dön' : 'Öğretmen doğrulamasına geç'}</span>
           </button>}
           {reviewSwitchError && <p className="small" role="alert">{reviewSwitchError}</p>}
+          {signOutError && <p className="small" role="alert">{signOutError}</p>}
           <div className="who" title={name}>
             <span className="avatar" aria-hidden="true">
               {name.charAt(0)}
@@ -230,6 +233,7 @@ export default function Layout() {
         </header>
         <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
           {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
+          {activityError && <p className="field-error" role="alert">{activityError}</p>}
           {isResourcePath(pathname) && <ResourcesNavigation/>}
           <Outlet context={{ setQuestionBank }} />
         </main>

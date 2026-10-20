@@ -3,7 +3,7 @@ import { api, setUnauthorizedHandler } from './api.js';
 
 const AuthContext = createContext(null);
 
-function ActiveTimeRecorder({ userId }) {
+function ActiveTimeRecorder({ userId, onError }) {
   useEffect(() => {
     let lastTick = Date.now();
     let lastInteraction = lastTick;
@@ -18,11 +18,14 @@ function ActiveTimeRecorder({ userId }) {
       if (navigator.locks?.request) {
         navigator.locks.request(lockKey, { ifAvailable: true }, async lock => {
           if (!lock) return;
-          await api.post('/api/auth/activity', { activeSeconds }).catch(() => {});
+          try { await api.post('/api/auth/activity', { activeSeconds }); onError(''); }
+          catch (error) { onError(`Etkinlik süresi kaydedilemedi: ${error.message}`); }
           await new Promise(resolve => window.setTimeout(resolve, 28_000));
-        }).catch(() => {});
+        }).catch(error => onError(`Etkinlik süresi kaydedilemedi: ${error.message}`));
       } else {
-        api.post('/api/auth/activity', { activeSeconds }).catch(() => {});
+        api.post('/api/auth/activity', { activeSeconds })
+          .then(() => onError(''))
+          .catch(error => onError(`Etkinlik süresi kaydedilemedi: ${error.message}`));
       }
     };
     const events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
@@ -34,7 +37,7 @@ function ActiveTimeRecorder({ userId }) {
       events.forEach(event => window.removeEventListener(event, interacted));
       document.removeEventListener('visibilitychange', resetTick);
     };
-  }, [userId]);
+  }, [userId, onError]);
   return null;
 }
 
@@ -42,6 +45,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [devAutoLogin, setDevAutoLogin] = useState(false);
+  const [activityError, setActivityError] = useState('');
   const initialized = useRef(false);
 
   const refreshUser = useCallback(async () => {
@@ -76,6 +80,7 @@ export function AuthProvider({ children }) {
     const u = await api.post('/api/auth/login', { login: loginName, password });
     sessionStorage.removeItem('ivme.signed-out');
     setDevAutoLogin(false);
+    setActivityError('');
     setUser(u);
     return u;
   }, []);
@@ -92,23 +97,23 @@ export function AuthProvider({ children }) {
     const current = await api.post(`/api/auth/dev-switch/${role}`);
     sessionStorage.removeItem('ivme.signed-out');
     setDevAutoLogin(true);
+    setActivityError('');
     setUser(current);
     return current;
   }, []);
 
   const logout = useCallback(async () => {
-    try {
-      await api.post('/api/auth/logout');
-    } finally {
-      sessionStorage.setItem('ivme.signed-out', '1');
-      setDevAutoLogin(false);
-      setUser(null);
-    }
+    await api.post('/api/auth/logout');
+    try { sessionStorage.setItem('ivme.signed-out', '1'); }
+    catch { /* Sunucudaki çıkış tamamlandı; tarayıcı depolaması zorunlu değil. */ }
+    setDevAutoLogin(false);
+    setActivityError('');
+    setUser(null);
   }, []);
 
-  const value = useMemo(() => ({ user, loading, devAutoLogin, login, register, logout, refreshUser, switchAccount }),
-    [user, loading, devAutoLogin, login, register, logout, refreshUser, switchAccount]);
-  return <AuthContext.Provider value={value}>{children}{user && <ActiveTimeRecorder key={user.id} userId={user.id} />}</AuthContext.Provider>;
+  const value = useMemo(() => ({ user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount }),
+    [user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount]);
+  return <AuthContext.Provider value={value}>{children}{user && <ActiveTimeRecorder key={user.id} userId={user.id} onError={setActivityError} />}</AuthContext.Provider>;
 }
 
 export function useAuth() {

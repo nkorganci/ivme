@@ -31,6 +31,9 @@ class BoardTest extends TestBase {
         send(ayse, put(path), "{\"version\":1,\"strokes\":[]}")
                 .andExpect(status().isOk()).andExpect(jsonPath("$.version").value(2));
         send(mehmet, get(path), null).andExpect(jsonPath("$.strokes.length()").value(1));
+        org.assertj.core.api.Assertions.assertThat(jdbc.queryForObject(
+                "SELECT count(*) FROM user_record_audit WHERE record_type = 'question_boards'",
+                Integer.class)).isEqualTo(3);
     }
 
     @Test

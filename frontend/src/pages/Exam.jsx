@@ -45,9 +45,11 @@ function ExamRunner({ exam }) {
   const navigate = useNavigate();
   const questions = useMemo(() => [...exam.questions].sort((a, b) => a.position - b.position), [exam]);
   const [answers, setAnswers] = useState(() => Object.fromEntries(questions.map((q) => [q.questionId, q.selectedAnswer || null])));
-  const [flags, setFlags] = useState(() => new Set());
-  const [unsaved, setUnsaved] = useState(() => new Set()); // sunucuya yazılamayan sorular
+  const [flags, setFlags] = useState(() => new Set(questions.filter((q) => q.flagged).map((q) => q.questionId)));
+  const [savingAnswer, setSavingAnswer] = useState(false);
+  const [savingFlag, setSavingFlag] = useState(false);
   const [answerError, setAnswerError] = useState('');
+  const [flagError, setFlagError] = useState('');
   const [index, setIndex] = useState(() => {
     const next = questions.findIndex(question => !question.selectedAnswer);
     return next < 0 ? 0 : next;
@@ -59,6 +61,8 @@ function ExamRunner({ exam }) {
   const remaining = useCountdown(exam.remainingSeconds);
   const answersRef = useRef(answers);
   answersRef.current = answers;
+  const pendingAnswer = useRef(null);
+  const pendingFlag = useRef(null);
   const leaving = useRef(false); // true ise sayfa kapatma uyarısı verilmez
   const sending = useRef(false);
 
@@ -78,6 +82,8 @@ function ExamRunner({ exam }) {
     setSubmitting(true);
     setSubmitError('');
     setConfirming(false);
+    await pendingAnswer.current?.catch(() => {});
+    await pendingFlag.current?.catch(() => {});
     const payload = {};
     Object.entries(answersRef.current).forEach(([k, v]) => v && (payload[k] = v));
     try {
@@ -114,29 +120,44 @@ function ExamRunner({ exam }) {
 
   const choose = useCallback(
     async (letter) => {
-      setAnswers((a) => ({ ...a, [qid]: letter }));
+      if (pendingAnswer.current) return;
+      setSavingAnswer(true);
+      setAnswerError('');
+      const request = api.put(`/api/exams/${exam.id}/answers`, { questionId: qid, answer: letter });
+      pendingAnswer.current = request;
       try {
-        await api.put(`/api/exams/${exam.id}/answers`, { questionId: qid, answer: letter });
-        setUnsaved((s) => {
-          const next = new Set(s);
-          next.delete(qid);
-          return next;
-        });
-        setAnswerError('');
+        await request;
+        answersRef.current = { ...answersRef.current, [qid]: letter };
+        setAnswers(answersRef.current);
       } catch (e) {
         if (e.status === 409) toResult();
-        else { setUnsaved((s) => new Set(s).add(qid)); setAnswerError(e.message); }
+        else setAnswerError(e.message);
+      } finally {
+        pendingAnswer.current = null;
+        setSavingAnswer(false);
       }
     },
     [exam.id, qid, toResult],
   );
 
-  const toggleFlag = () =>
-    setFlags((s) => {
-      const next = new Set(s);
-      if (!next.delete(qid)) next.add(qid);
-      return next;
-    });
+  const toggleFlag = async () => {
+    if (pendingFlag.current) return;
+    const nextFlagged = !flags.has(qid);
+    setSavingFlag(true);
+    setFlagError('');
+    const request = api.put(`/api/exams/${exam.id}/flags`, { questionId: qid, flagged: nextFlagged });
+    pendingFlag.current = request;
+    try {
+      await request;
+      setFlags((current) => {
+        const next = new Set(current);
+        if (nextFlagged) next.add(qid);
+        else next.delete(qid);
+        return next;
+      });
+    } catch (e) { setFlagError(e.message); }
+    finally { pendingFlag.current = null; setSavingFlag(false); }
+  };
 
   const go = (i) => {
     setIndex(Math.min(questions.length - 1, Math.max(0, i)));
@@ -170,7 +191,7 @@ function ExamRunner({ exam }) {
           <div className={`timer${danger ? ' danger' : ''}`} role="timer" aria-label="Kalan süre">
             <span aria-hidden="true">{danger ? '⚠' : '⏱'}</span> {remaining == null ? 'Süresiz' : formatClock(remaining)}
           </div>
-          <button type="button" className="btn btn-primary btn-sm" onClick={() => setConfirming(true)} disabled={submitting}>
+          <button type="button" className="btn btn-primary btn-sm" onClick={() => setConfirming(true)} disabled={submitting || savingAnswer || savingFlag}>
             Sınavı Bitir
           </button>
         </div>
@@ -191,16 +212,18 @@ function ExamRunner({ exam }) {
               <QuestionImage id={qid} alt={`${index + 1}. soru`} />
             </section>
             <section className="qdock exam-answer-card" aria-label={`${index + 1}. sorunun cevap şıkları ve gezinme`}>
-              {submitError ? <Strip tone="bad">✗ {submitError}</Strip>
-                : unsaved.size > 0 && <Strip tone="warn">⚠ Cevap kaydedilemedi: {answerError} Sınavı bitirirken yeniden gönderilecek.</Strip>}
+              {submitError && <Strip tone="bad">✗ {submitError}</Strip>}
+              {answerError && <Strip tone="bad">Cevap kaydedilemedi: {answerError} Yeniden seçip deneyin.</Strip>}
+              {flagError && <Strip tone="bad">İşaret kaydedilemedi: {flagError}</Strip>}
+              {(savingAnswer || savingFlag) && <Strip tone="warn">Veritabanına kaydediliyor…</Strip>}
               <div className="qbar">
                 <button type="button" className="btn btn-secondary" disabled={index === 0} onClick={() => go(index - 1)} title="Önceki soru (←)">‹ Önceki</button>
-                <ChoiceButtons count={q.choiceCount} value={answers[qid]} onSelect={choose} />
+                <ChoiceButtons count={q.choiceCount} value={answers[qid]} onSelect={choose} disabled={savingAnswer || submitting} />
                 <button type="button" className="btn btn-secondary" disabled={index === questions.length - 1} onClick={() => go(index + 1)} title="Sonraki soru (→)">Sonraki ›</button>
               </div>
               <div className="exam-answer-tools">
-                {answers[qid] && <button type="button" className="btn btn-secondary btn-sm" onClick={() => choose(null)}>Seçimi temizle</button>}
-                <button type="button" className="btn btn-secondary" aria-pressed={flagged} aria-label={flagged ? 'İşareti kaldır' : 'İşaretle'} onClick={toggleFlag}>
+                {answers[qid] && <button type="button" className="btn btn-secondary btn-sm" disabled={savingAnswer || submitting} onClick={() => choose(null)}>Seçimi temizle</button>}
+                <button type="button" className="btn btn-secondary" disabled={savingFlag || submitting} aria-pressed={flagged} aria-label={flagged ? 'İşareti kaldır' : 'İşaretle'} onClick={toggleFlag}>
                   {flagged ? '⚑' : '⚐'} <span className="hide-sm">{flagged ? 'İşareti kaldır' : 'İşaretle'}</span>
                 </button>
                 <button type="button" className="btn btn-secondary only-sm" aria-expanded={navOpen} aria-controls="soru-gezgini"

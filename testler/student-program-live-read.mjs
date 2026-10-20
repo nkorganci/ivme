@@ -66,11 +66,25 @@ try {
     fetch('/api/student-program/weeks/2026-10-19').then(r=>r.status),
     fetch('/api/preferences/sidebar-rail').then(r=>r.status),
     fetch('/api/tyt-trials').then(r=>r.status),
-    fetch('/api/ayt-trials').then(r=>r.status)
+    fetch('/api/ayt-trials').then(r=>r.status),
+    fetch('/api/math-tutoring').then(r=>r.status),
+    fetch('/api/curriculum/progress').then(r=>r.status),
+    fetch('/api/study-sessions?page=0&size=1').then(r=>r.status),
+    fetch('/api/exams?page=0&size=1').then(r=>r.status)
   ])`);
-  assert.deepEqual(state, [200, 200, 200, 200]);
+  assert.deepEqual(state, Array(8).fill(200));
+  const routes = [
+    '/', '/konular-ve-kaynaklar', '/akilli-ogretmen', '/oneriler',
+    '/ogrenci-takip', '/ogrenci-takip/matematik-ozel-ders',
+    '/ogrenci-takip/tyt-denemeleri', '/ogrenci-takip/ayt-denemeleri',
+    '/calisma/yeni', '/gecmis', '/geri-bildirim', '/hesap',
+  ];
+  for (const route of routes) {
+    await cdp('Page.navigate', { url: base + route });
+    await wait(`location.pathname === ${JSON.stringify(route)} && !!document.querySelector('main#icerik h1, main#icerik h2')`);
+  }
   assert.deepEqual(errors, []);
-  console.log(JSON.stringify({ screen: 'Haftalık Program', apiStatuses: state, runtimeErrors: errors }));
+  console.log(JSON.stringify({ screen: 'Haftalık Program', apiStatuses: state, sidebarRoutes: routes.length, runtimeErrors: errors }));
 } finally {
   socket?.close();
   child.kill();

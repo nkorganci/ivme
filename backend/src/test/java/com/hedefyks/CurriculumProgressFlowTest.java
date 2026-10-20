@@ -15,6 +15,7 @@ class CurriculumProgressFlowTest extends TestBase {
         user("konu_ayse", Role.USER);
         user("konu_mehmet", Role.USER);
         var ayse = login("konu_ayse", "Sifre1234");
+        var ayseSecond = login("konu_ayse", "Sifre1234");
         var mehmet = login("konu_mehmet", "Sifre1234");
         String path = "/api/curriculum/progress/tyt.matematik.sayi-basamaklari";
 
@@ -25,10 +26,14 @@ class CurriculumProgressFlowTest extends TestBase {
         var repeated = read(send(ayse, put(path), "{\"completed\":true}").andExpect(status().isOk()));
         assertThat(repeated.get("completedAt").asText()).isEqualTo(saved.get("completedAt").asText());
         assertThat(read(send(ayse, get("/api/curriculum/progress"), null)).size()).isEqualTo(1);
+        assertThat(read(send(ayseSecond, get("/api/curriculum/progress"), null)).size()).isEqualTo(1);
         assertThat(read(send(mehmet, get("/api/curriculum/progress"), null)).size()).isZero();
 
         send(ayse, put(path), "{\"completed\":false}").andExpect(status().isOk());
         assertThat(read(send(ayse, get("/api/curriculum/progress"), null)).size()).isZero();
+        assertThat(read(send(ayseSecond, get("/api/curriculum/progress"), null)).size()).isZero();
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM user_record_audit WHERE record_type = 'curriculum_topic_progress'",
+                Integer.class)).isEqualTo(3);
         send(ayse, put("/api/curriculum/progress/invalid"), "{\"completed\":true}")
                 .andExpect(status().isBadRequest());
         send(ayse, put(path), "{}").andExpect(status().isBadRequest());

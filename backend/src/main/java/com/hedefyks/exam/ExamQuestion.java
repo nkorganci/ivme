@@ -53,6 +53,9 @@ public class ExamQuestion {
     @Column(name = "selected_answer")
     private String selectedAnswer;
 
+    @Column(name = "flagged", nullable = false)
+    private boolean flagged;
+
     @Column(name = "correct_answer")
     private String correctAnswer;
 

@@ -45,11 +45,14 @@ public final class ExamDtos {
 
     public record AnswerRequest(@NotNull(message = "questionId gerekli.") Long questionId, String answer) {}
 
+    public record FlagRequest(@NotNull(message = "questionId gerekli.") Long questionId,
+                              @NotNull(message = "İşaret durumu gerekli.") Boolean flagged) {}
+
     /** answers: { "<questionId>": "B" }; gövde isteğe bağlıdır. */
     public record SubmitRequest(Map<String, String> answers) {}
 
     public record SessionQuestion(Long questionId, int position, String code, String subject, String topic,
-                                  int choiceCount, String selectedAnswer, boolean archiveProvisional) {}
+                                  int choiceCount, String selectedAnswer, boolean archiveProvisional, boolean flagged) {}
 
     public record ExamSession(Long id, String title, ExamStatus status, QuestionSelectionMode selectionMode,
                               int questionCount, Integer timeLimitMinutes,

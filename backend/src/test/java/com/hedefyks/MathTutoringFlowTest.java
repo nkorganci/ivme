@@ -10,6 +10,25 @@ import com.hedefyks.user.Role;
 import org.junit.jupiter.api.Test;
 
 class MathTutoringFlowTest extends TestBase {
+
+    @Test
+    void secondSessionReadsLessonAndStaleSaveCannotOverwriteIt() throws Exception {
+        user("ders_ayse", Role.USER);
+        var first = login("ders_ayse", "Sifre1234");
+        var second = login("ders_ayse", "Sifre1234");
+        var created = read(send(first, post("/api/math-tutoring"), TRACKED_LESSON).andExpect(status().isOk()));
+        long id = created.path("id").asLong();
+        assertThat(read(send(second, get("/api/math-tutoring"), null)).get(0)).isEqualTo(created);
+        var changed = (com.fasterxml.jackson.databind.node.ObjectNode) json.readTree(TRACKED_LESSON);
+        changed.put("note", "İkinci oturum").put("revision", created.path("revision").asLong());
+        var saved = read(send(second, patch("/api/math-tutoring/" + id), changed.toString())
+                .andExpect(status().isOk()));
+        assertThat(saved.path("revision").asLong()).isGreaterThan(created.path("revision").asLong());
+        changed.put("note", "Eski sayfanın kaydı");
+        send(first, patch("/api/math-tutoring/" + id), changed.toString()).andExpect(status().isConflict());
+        assertThat(read(send(first, get("/api/math-tutoring"), null)).get(0).path("note").asText())
+                .isEqualTo("İkinci oturum");
+    }
     @Override protected boolean catalogFixtureRequired() { return true; }
     private static final String TRACKED_LESSON = """
             {"date":"2026-10-15","start":"09:00","end":"10:00","topic":"Fonksiyonlar",
@@ -51,6 +70,7 @@ class MathTutoringFlowTest extends TestBase {
         input.put("date", "2026-10-16").put("start", "11:00").put("end", "12:30")
                 .put("topic", "Polinomlar").put("homework", "Test 5").put("note", "Yeni not").put("status", "PLANNED");
         var batch = json.createArrayNode();
+        input.put("revision", created.path("revision").asLong());
         batch.addObject().put("id", id).set("lesson", input);
         batch.addObject().putNull("id").set("lesson", json.readTree(TRACKED_LESSON));
         var result = read(send(session, post("/api/math-tutoring/bulk"), batch.toString()).andExpect(status().isOk()));
@@ -77,6 +97,7 @@ class MathTutoringFlowTest extends TestBase {
         var foreign = read(send(other, post("/api/math-tutoring"), TRACKED_LESSON).andExpect(status().isOk()));
         var changed = (com.fasterxml.jackson.databind.node.ObjectNode) json.readTree(TRACKED_LESSON);
         changed.put("note", "Kaydedilmemeli");
+        changed.put("revision", created.path("revision").asLong());
         var batch = json.createArrayNode();
         batch.addObject().put("id", created.path("id").asLong()).set("lesson", changed);
         batch.addObject().put("id", foreign.path("id").asLong()).set("lesson", changed);
@@ -108,6 +129,7 @@ class MathTutoringFlowTest extends TestBase {
             jdbc.execute("CREATE TRIGGER math_bulk_test_reject BEFORE INSERT ON math_tutoring_lessons FOR EACH ROW EXECUTE FUNCTION math_bulk_test_reject()");
             var changed = (com.fasterxml.jackson.databind.node.ObjectNode) json.readTree(TRACKED_LESSON);
             changed.put("note", "Geri alınmalı");
+            changed.put("revision", created.path("revision").asLong());
             var rejected = (com.fasterxml.jackson.databind.node.ObjectNode) json.readTree(TRACKED_LESSON);
             rejected.put("topic", "REJECT_TEST");
             var batch = json.createArrayNode();
@@ -135,12 +157,14 @@ class MathTutoringFlowTest extends TestBase {
         var updated = (com.fasterxml.jackson.databind.node.ObjectNode) json.readTree(TRACKED_LESSON);
         updated.remove("learning");
         updated.put("note", "Eski istemci");
+        updated.put("revision", created.path("revision").asLong());
         var saved = read(send(session, patch("/api/math-tutoring/" + id), updated.toString()).andExpect(status().isOk()));
         assertThat(saved.path("note").asText()).isEqualTo("Eski istemci");
         assertThat(saved.path("learning")).isEqualTo(created.path("learning"));
 
         updated.set("learning", created.path("learning").deepCopy());
         ((com.fasterxml.jackson.databind.node.ObjectNode) updated.path("learning")).put("reviewDone", true);
+        updated.put("revision", saved.path("revision").asLong());
         var reviewed = read(send(session, patch("/api/math-tutoring/" + id), updated.toString()).andExpect(status().isOk()));
         assertThat(reviewed.path("learning").path("reviewDone").asBoolean()).isTrue();
     }
@@ -186,7 +210,7 @@ class MathTutoringFlowTest extends TestBase {
 
         var saved = read(send(session, patch("/api/math-tutoring/" + id), """
                 {"date":"2026-10-13","start":"10:30","end":"12:00",
-                 "topic":"Yeni konu","homework":"Ödev","status":"COMPLETED","note":"Tekrar"}
+                 "topic":"Yeni konu","homework":"Ödev","status":"COMPLETED","note":"Tekrar","revision":1}
                 """).andExpect(status().isOk()));
         assertThat(saved.get("topic").asText()).isEqualTo("Yeni konu");
         assertThat(saved.get("status").asText()).isEqualTo("COMPLETED");

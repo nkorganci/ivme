@@ -10,11 +10,24 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.transaction.CannotCreateTransactionException;
 
 class ServiceErrorMetricsTest extends TestBase {
     @Autowired GlobalExceptionHandler handler;
     @Autowired ServiceErrorMetrics metrics;
     @Autowired ActivityRetention retention;
+
+    @Test
+    void veritabaniBaglantiHatasiOkumaVeYazmadaDogruMesajDondurur() {
+        var failure = new CannotCreateTransactionException("connection refused");
+        var read = new MockHttpServletRequest("GET", "/api/exams");
+        var write = new MockHttpServletRequest("POST", "/api/feedback");
+        assertThat(handler.database(failure, read).getBody().hata())
+                .isEqualTo("Veritabanından kayıt okunamadı.");
+        assertThat(handler.database(failure, write).getBody().hata())
+                .isEqualTo("Veritabanına kayıt yapılamadı.");
+    }
 
     @Test
     void yalniz_beklenmeyen_hata_anonim_kaydedilir_ve_eski_kayit_silinir() throws Exception {

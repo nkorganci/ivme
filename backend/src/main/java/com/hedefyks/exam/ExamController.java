@@ -96,6 +96,13 @@ public class ExamController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}/flags")
+    public ResponseEntity<Void> flag(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id,
+                                     @Valid @RequestBody ExamDtos.FlagRequest req) {
+        service.saveFlag(me.id(), id, req.questionId(), req.flagged());
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("/{id}/submit")
     public ExamResult submit(@AuthenticationPrincipal AppUserDetails me, @PathVariable Long id,
                              @RequestBody(required = false) SubmitRequest req) {

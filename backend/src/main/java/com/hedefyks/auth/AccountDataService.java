@@ -31,7 +31,7 @@ public class AccountDataService {
     public Map<String, Object> export(Long userId, String password) {
         User user = verifiedStudent(userId, password);
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("formatVersion", 3);
+        data.put("formatVersion", 4);
         data.put("exportedAt", Instant.now().toString());
         data.put("profile", Map.of("id", user.getId(), "username", user.getUsername(),
                 "email", user.getEmail(), "phone", user.getPhone() == null ? "" : user.getPhone(),
@@ -40,7 +40,7 @@ public class AccountDataService {
                 + "time_limit_minutes, started_at, submitted_at, duration_seconds, correct_count, wrong_count, "
                 + "blank_count, percent, net FROM exams WHERE user_id = ? ORDER BY id", userId));
         data.put("examQuestions", jdbc.queryForList("SELECT eq.exam_id, eq.question_id, eq.question_order, "
-                + "eq.question_code, eq.subject, eq.topic, eq.selected_answer, eq.is_correct "
+                + "eq.question_code, eq.subject, eq.topic, eq.selected_answer, eq.flagged, eq.is_correct "
                 + "FROM exam_questions eq JOIN exams e ON e.id = eq.exam_id "
                 + "WHERE e.user_id = ? ORDER BY eq.exam_id, eq.question_order", userId));
         data.put("studySessions", jdbc.queryForList("SELECT id, mode, selection_mode, status, filter_bank, "
@@ -77,6 +77,12 @@ public class AccountDataService {
                 + "FROM ayt_trial_sheets WHERE user_id = ?", userId));
         data.put("displayPreferences", jdbc.queryForList("SELECT preference_key, value "
                 + "FROM user_display_preferences WHERE user_id = ? ORDER BY preference_key", userId));
+        data.put("mathTutoringLessons", jdbc.queryForList("SELECT id, lesson_date, start_time, end_time, "
+                + "topic, homework, status, note, learning::text AS learning, revision "
+                + "FROM math_tutoring_lessons WHERE user_id = ? ORDER BY id", userId));
+        data.put("mathTutoringFiles", jdbc.queryForList("SELECT f.id, f.lesson_id, f.original_name, "
+                + "f.content_type, f.content FROM math_tutoring_files f "
+                + "JOIN math_tutoring_lessons l ON l.id = f.lesson_id WHERE l.user_id = ? ORDER BY f.id", userId));
         data.put("recordAudit", jdbc.queryForList("SELECT record_type, record_key, operation, revision, occurred_at "
                 + "FROM user_record_audit WHERE user_id = ? ORDER BY id", userId));
         data.put("tutorSessions", jdbc.queryForList("SELECT s.id, q.code AS question_code, s.status, s.outcome, "
