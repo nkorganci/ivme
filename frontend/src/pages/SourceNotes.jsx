@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { usePageTitle } from '../hooks.js';
 import ResourceContext from '../components/ResourceContext.jsx';
+import { api } from '../api.js';
 
 const lower = (text) => text.toLocaleLowerCase('tr-TR');
 
@@ -129,17 +130,43 @@ function PatternGuide({ lesson }) {
   </section>;
 }
 
-function Practice({ lesson }) {
+function Practice({ lesson, groupId }) {
   const [selected, setSelected] = useState(null);
   const [checked, setChecked] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saveError, setSaveError] = useState('');
   const practice = lesson.practice;
+  const itemKey = `note:${groupId}:${lesson.id}`;
+  useEffect(() => {
+    let active = true;
+    api.get(`/api/self-checks/latest?kind=SOURCE_PRACTICE&itemKey=${encodeURIComponent(itemKey)}`)
+      .then((attempt) => {
+        if (!active || !attempt) return;
+        setSelected(attempt.answers[0]); setChecked(true); setShowAnswer(true);
+      })
+      .catch((error) => { if (active) setSaveError(`Önceki alıştırma okunamadı: ${error.message}`); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [itemKey]);
+  const check = async () => {
+    if (selected === null || busy || loading) return;
+    setBusy(true); setSaveError('');
+    try {
+      await api.post('/api/self-checks', {
+        kind: 'SOURCE_PRACTICE', itemKey, answers: [selected],
+      });
+      setChecked(true); setShowAnswer(true);
+    } catch (error) { setSaveError(`Alıştırma kaydedilemedi: ${error.message}`); }
+    finally { setBusy(false); }
+  };
   const jumpTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   return <section id="kendini-dene" className="source-notes-practice">
     <div className="source-section-heading"><span className="source-step-number">4</span><div>
       <h3>Yeni soruda mantığı uygula</h3><p className="muted small">Özgün alıştırma · Önce kendi gerekçeni kur, sonra kontrol et.</p>
     </div></div>
-    <fieldset disabled={checked}>
+    <fieldset disabled={checked || busy || loading}>
       <legend>{practice.question}</legend>
       {practice.choices.map((choice, index) => <label className="source-practice-choice" key={choice}>
         <input type="radio" name={`practice-${lesson.id}`} value={index} checked={selected === index}
@@ -148,13 +175,14 @@ function Practice({ lesson }) {
       </label>)}
     </fieldset>
     <div className="source-practice-actions">
-      <button type="button" className="btn btn-primary" disabled={selected === null || checked}
-        onClick={() => { setChecked(true); setShowAnswer(true); }}>Cevabımı kontrol et</button>
+      <button type="button" className="btn btn-primary" disabled={selected === null || checked || busy || loading}
+        onClick={check}>{loading ? 'Önceki yanıt yükleniyor…' : busy ? 'Kaydediliyor…' : 'Cevabımı kaydet ve kontrol et'}</button>
       <button type="button" className="btn btn-secondary" aria-expanded={showAnswer}
         aria-controls={`answer-${lesson.id}`} onClick={() => setShowAnswer((value) => !value)}>
         {showAnswer ? 'Çözümü gizle' : 'Çözümü göster'}
       </button>
     </div>
+    {saveError && <p role="alert" className="field-error">{saveError}</p>}
     {checked && <p role="status" className={selected === practice.answer ? 'source-practice-correct' : 'source-practice-retry'}>
       {selected === practice.answer ? 'Doğru. Şimdi doğru seçeneğin gerekçesini kendi cümlenle açıklamayı dene.'
         : 'Bu seçim doğru değil. Aşağıdaki gerekçeyi incele; sonra hangi adımı kaçırdığını belirle.'}
@@ -212,7 +240,7 @@ function Lesson({ lesson, sources, headingRef,groupId }) {
       <ol>{lesson.steps.map((step) => <li key={step}>{step}</li>)}</ol>
       <p className="source-lesson-pitfall"><strong>Son kontrol:</strong> {lesson.pitfall}</p>
     </section>
-    <Practice lesson={lesson} />
+    <Practice lesson={lesson} groupId={groupId} />
     <SourceEvidence lesson={lesson} sources={sources} />
   </article>;
 }

@@ -260,6 +260,9 @@ function GuideQuiz() {
   const [answers, setAnswers] = useState({});
   const [page, setPage] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [saveError, setSaveError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [loading, setLoading] = useState(true);
   const scoreRef = useRef(null);
   const pageSize = 5;
   const start = page * pageSize;
@@ -268,16 +271,44 @@ function GuideQuiz() {
   const complete = GUIDE_QUIZ.every((_, index) => Number.isInteger(answers[index]));
   const score = submitted ? gradeGuideQuiz(answers) : null;
   const byTopic = submitted ? gradeGuideQuizByTopic(answers) : [];
-  const retry = () => { setAnswers({}); setPage(0); setSubmitted(false); };
+  const retry = () => { setAnswers({}); setPage(0); setSubmitted(false); setSaveError(''); };
+  useEffect(() => {
+    let active = true;
+    api.get('/api/self-checks/latest?kind=GUIDE_QUIZ&itemKey=coaching-guide-v1')
+      .then((attempt) => {
+        if (!active || !attempt) return;
+        setAnswers(Object.fromEntries(attempt.answers.map((answer, index) => [index, answer])));
+        setSubmitted(true);
+      })
+      .catch((error) => { if (active) setSaveError(`Önceki test sonucu okunamadı: ${error.message}`); })
+      .finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, []);
+  const advance = async (event) => {
+    event.preventDefault();
+    if (!pageComplete || busy || loading) return;
+    if (page < GUIDE_TOPICS.length - 1) { setPage(page + 1); return; }
+    if (!complete) return;
+    setBusy(true); setSaveError('');
+    try {
+      await api.post('/api/self-checks', {
+        kind: 'GUIDE_QUIZ', itemKey: 'coaching-guide-v1',
+        answers: GUIDE_QUIZ.map((_, index) => answers[index]),
+      });
+      setSubmitted(true);
+    } catch (error) { setSaveError(`Test sonucu kaydedilemedi: ${error.message}`); }
+    finally { setBusy(false); }
+  };
   useEffect(() => { if (submitted) scoreRef.current?.scrollIntoView({ block: 'start' }); }, [submitted]);
 
   return <section id="test" className="coach-section coach-quiz" aria-labelledby="test-baslik">
     <div className="coach-heading"><span>son durak / bilgi testi</span><h2 id="test-baslik">Koç ve öğrenci: öğrendik mi?</h2></div>
     <p>40 zorlayıcı durum sorusu, 8 bölüm. Benzer görünen seçenekler arasında <strong>en iyi kararı</strong> seç. Sonuçta konu puanlarını, doğru cevapları ve gerekçeleri göreceksin.</p>
-    {!submitted && <form onSubmit={(event) => { event.preventDefault(); if (!pageComplete) return; if (page < GUIDE_TOPICS.length - 1) setPage(page + 1); else if (complete) setSubmitted(true); }}>
+    {saveError && <Alert type="error">{saveError}</Alert>}
+    {!submitted && <form onSubmit={advance}>
       <div className="coach-quiz-progress"><div><strong>{page + 1} / {GUIDE_TOPICS.length} · {GUIDE_TOPICS[page]}</strong><span>{Object.keys(answers).length} / {GUIDE_QUIZ.length} yanıtlandı</span></div>
         <div className="coach-progress-track" role="progressbar" aria-label="Yanıtlanan soru oranı" aria-valuenow={Object.keys(answers).length} aria-valuemin="0" aria-valuemax={GUIDE_QUIZ.length}><span style={{ width: `${Object.keys(answers).length / GUIDE_QUIZ.length * 100}%` }} /></div></div>
-      {visible.map((question, offset) => { const index = start + offset; return <fieldset className="card coach-question" key={question.prompt}>
+      {visible.map((question, offset) => { const index = start + offset; return <fieldset className="card coach-question" key={question.prompt} disabled={loading || busy}>
         <legend><span>{String(index + 1).padStart(2, '0')}</span>{question.prompt}</legend>
         {question.options.map((option, optionIndex) => <label key={option} className="coach-option">
           <input type="radio" name={`guide-question-${index}`} value={optionIndex} checked={answers[index] === optionIndex}
@@ -286,7 +317,7 @@ function GuideQuiz() {
       </fieldset>; })}
       <div className="coach-quiz-actions">
         {page > 0 && <button type="button" className="btn btn-secondary" onClick={() => setPage(page - 1)}>Önceki 5 soru</button>}
-        <button type="submit" className="btn btn-primary btn-lg" disabled={!pageComplete}>{page === GUIDE_TOPICS.length - 1 ? 'Sonucumu göster' : 'Sonraki 5 soru'}</button>
+        <button type="submit" className="btn btn-primary btn-lg" disabled={!pageComplete || busy || loading}>{loading ? 'Önceki sonuç yükleniyor…' : busy ? 'Kaydediliyor…' : page === GUIDE_TOPICS.length - 1 ? 'Sonucumu kaydet ve göster' : 'Sonraki 5 soru'}</button>
         {!pageComplete && <span className="muted">Devam etmek için bu bölümdeki 5 soruyu yanıtla.</span>}
       </div>
     </form>}
