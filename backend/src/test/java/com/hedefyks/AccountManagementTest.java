@@ -87,7 +87,7 @@ class AccountManagementTest extends TestBase {
         assertThat(jdbc.queryForObject("SELECT count(*) FROM account_audit WHERE target_id=? AND action IN ('BLOCK','UNBLOCK')",Integer.class,student.getId())).isEqualTo(2);
     }
 
-    @Test void tum_hesap_turleri_gecmis_korunarak_silinir_yanlis_onay_reddedilir() throws Exception {
+    @Test void tum_hesap_turleri_veritabanindan_silinir_yanlis_onay_reddedilir() throws Exception {
         User manager=manager("siteManager");
         for(Role role:Role.values()) {
             User target=user("delete_"+role,role);
@@ -95,13 +95,21 @@ class AccountManagementTest extends TestBase {
             mvc.perform(erase(manager,target,"wrong confirmation")).andExpect(status().isBadRequest());
             assertThat(users.findById(target.getId()).orElseThrow().getArchivedAt()).isNull();
             mvc.perform(erase(manager,target,target.getUsername())).andExpect(status().isNoContent());
-            User deleted=users.findById(target.getId()).orElseThrow();
-            assertThat(deleted.isEnabled()).isFalse(); assertThat(deleted.getArchivedAt()).isNotNull();
-            assertThat(jdbc.queryForObject("SELECT requests FROM account_activity_days WHERE user_id=?",Integer.class,target.getId())).isEqualTo(4);
+            assertThat(users.findById(target.getId())).isEmpty();
+            assertThat(jdbc.queryForObject("SELECT count(*) FROM account_activity_days WHERE user_id=?",Integer.class,target.getId())).isZero();
         }
         mvc.perform(as(manager,get("/api/admin/accounts"))).andExpect(status().isOk()).andExpect(jsonPath("$.totalElements").value(1));
         mvc.perform(as(manager,get("/api/admin/students"))).andExpect(status().isOk()).andExpect(jsonPath("$.totalElements").value(0));
         assertThat(jdbc.queryForObject("SELECT count(*) FROM account_audit WHERE action='DELETE'",Integer.class)).isEqualTo(Role.values().length);
+    }
+
+    @Test void onceden_arsivlenen_ogrenci_ve_bagli_program_kaydi_kalici_silinir() throws Exception {
+        User manager=manager("siteManager"); User student=user("archivedStudent",Role.USER);
+        student.setArchivedAt(java.time.Instant.now()); student.setEnabled(false); users.saveAndFlush(student);
+        jdbc.update("INSERT INTO student_program_weeks(user_id,week_start,rows) VALUES (?,DATE '2026-10-19','[]'::jsonb)",student.getId());
+        mvc.perform(erase(manager,student,student.getUsername())).andExpect(status().isNoContent());
+        assertThat(users.findById(student.getId())).isEmpty();
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM student_program_weeks WHERE user_id=?",Integer.class,student.getId())).isZero();
     }
 
     @Test void kendi_hesabini_kapatamaz_ve_engellenen_yonetici_baska_hesaba_dokunamaz() throws Exception {

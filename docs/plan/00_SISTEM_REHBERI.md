@@ -723,9 +723,11 @@ sunucu toplamı artırır. Bu ölçüm değişiklikten sonra başlar; eski etkin
 Ülke yalnız Cloudflare vekilinden hem `CF-Connecting-IP` hem `CF-IPCountry` gelirse
 kaydedilir; ham IP saklanmaz. Başlık yoksa ülke bilinmiyor olarak kalır.
 
-Engelleme/açma `enabled` alanını değiştirir. Silme, hesabı `archived_at` ve
-`enabled=false` ile kapatıp normal listeden kaldırır; öğrenci geçmişi, ortak
-incelemeler ve hesap ilişkilerinin FK kayıtları fiziksel olarak korunur.
+Engelleme/açma `enabled` alanını değiştirir. Silme, hesabı `users` tablosundan
+ve bağlı özel kayıtları veritabanından kalıcı olarak kaldırır; başka kullanıcıların
+kayıtları ve ortak soru/kaynak içeriği korunur. Kullanıcıya bağlı inceleme kararları
+da kaldırılır. `account_audit` işlem kaydı kalır, silinen kullanıcıya ait FK alanı
+`NULL` olur.
 Silme kullanıcı adıyla açık onay ister. Yönetici kendi hesabını kapatamaz;
 son yönetici korunur. Yönetim yazmaları transaction advisory lock ile sıralanır,
 hedef satır kilitlenir ve işlem `account_audit` tablosuna aynı transaction'da

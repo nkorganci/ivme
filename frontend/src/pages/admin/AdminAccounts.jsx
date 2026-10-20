@@ -119,14 +119,14 @@ function AccountAction({ action: { account, kind }, onClose, onDone }) {
       if (deleting) await api.delete(`/api/admin/accounts/${account.id}`, { confirmation, reason });
       else if (approving) await api.patch(`/api/admin/accounts/${account.id}/approval`, {});
       else await api.patch(`/api/admin/accounts/${account.id}/status`, { enabled: kind === 'unblock', reason });
-      onDone(deleting ? 'Hesap listeden kaldırıldı; geçmiş kayıtlar korundu.' : approving ? 'Kayıt onaylandı. Kullanıcı artık giriş yapabilir.' : kind === 'block' ? 'Kullanıcı engellendi.' : 'Kullanıcının engeli kaldırıldı.');
+      onDone(deleting ? 'Hesap ve bağlı verileri veritabanından kalıcı olarak silindi.' : approving ? 'Kayıt onaylandı. Kullanıcı artık giriş yapabilir.' : kind === 'block' ? 'Kullanıcı engellendi.' : 'Kullanıcının engeli kaldırıldı.');
     } catch (failure) { setError(failure.message); setBusy(false); }
   };
   return <Modal title={title} onClose={() => { if (!busy) onClose(); }}>
     <form onSubmit={submit}>
       <p><strong>{account.username}</strong> · {roleName(account.role)}</p>
       <p>{approving ? account.enabled ? 'Kayıt onaylandığında kullanıcı kendi şifresiyle sisteme giriş yapabilir.' : 'Kayıt onaylanır; giriş yapabilmesi için hesabın engeli ayrıca kaldırılmalıdır.'
-        : deleting ? 'Hesap listeden kaldırılır ve giriş erişimi kapatılır. Çalışma geçmişi ve içerik inceleme kayıtları korunur.'
+        : deleting ? 'Hesap ve bağlı çalışma geçmişi veritabanından kalıcı olarak silinir. Bu işlem geri alınamaz.'
         : kind === 'block' ? 'Kullanıcının girişi engellenir. Açık oturumları sonraki istekte kapatılır.'
           : 'Kullanıcı hesabına yeniden giriş yapabilir.'}</p>
       {!approving && <Field as="textarea" label="Gerekçe (isteğe bağlı)" value={reason} maxLength={500}

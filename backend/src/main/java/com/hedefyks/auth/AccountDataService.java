@@ -20,11 +20,14 @@ public class AccountDataService {
     private final UserRepository users;
     private final PasswordEncoder encoder;
     private final JdbcTemplate jdbc;
+    private final AccountErasureService erasure;
 
-    public AccountDataService(UserRepository users, PasswordEncoder encoder, JdbcTemplate jdbc) {
+    public AccountDataService(UserRepository users, PasswordEncoder encoder, JdbcTemplate jdbc,
+                              AccountErasureService erasure) {
         this.users = users;
         this.encoder = encoder;
         this.jdbc = jdbc;
+        this.erasure = erasure;
     }
 
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
@@ -105,19 +108,7 @@ public class AccountDataService {
     @Transactional
     public void erase(Long userId, String password) {
         verifiedStudent(userId, password);
-        // Feedback reviewed by this user must no longer refer to the deleted account.
-        jdbc.update("UPDATE feedback SET resolved_by = NULL WHERE resolved_by = ?", userId);
-        jdbc.update("DELETE FROM feedback WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM question_boards WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM page_annotations WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM question_attempts WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM study_sessions WHERE user_id = ?", userId); // session_questions cascade
-        jdbc.update("DELETE FROM exams WHERE user_id = ?", userId); // exam_questions cascade
-        jdbc.update("DELETE FROM activity_events WHERE user_id = ?", userId);
-        // Öğretim oturumları olayları, model çağrı bağları ve öğretmene iletilen açıklamalarla birlikte silinir.
-        jdbc.update("DELETE FROM tutor_sessions WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM tutor_skill_states WHERE user_id = ?", userId);
-        jdbc.update("DELETE FROM users WHERE id = ? AND role = 'USER'", userId);
+        erasure.erase(userId);
     }
 
     private User verifiedStudent(Long userId, String password) {

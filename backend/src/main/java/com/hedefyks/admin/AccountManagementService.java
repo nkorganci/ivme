@@ -3,6 +3,7 @@ package com.hedefyks.admin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
+import com.hedefyks.auth.AccountErasureService;
 import com.hedefyks.user.Role;
 import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
@@ -29,9 +30,11 @@ public class AccountManagementService {
     private final UserRepository users;
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
+    private final AccountErasureService erasure;
 
-    public AccountManagementService(UserRepository users, JdbcTemplate jdbc, ObjectMapper mapper) {
-        this.users=users; this.jdbc=jdbc; this.mapper=mapper;
+    public AccountManagementService(UserRepository users, JdbcTemplate jdbc, ObjectMapper mapper,
+                                    AccountErasureService erasure) {
+        this.users=users; this.jdbc=jdbc; this.mapper=mapper; this.erasure=erasure;
     }
 
     @Transactional(readOnly=true)
@@ -81,13 +84,9 @@ public class AccountManagementService {
         User target=editable(actorId,targetId);
         if (!target.getUsername().equals(confirmation))
             throw ApiException.badRequest("Silmek için kullanıcı adını tam olarak yaz.");
-        if (target.getArchivedAt()!=null) return;
         protectLastManager(target);
-        target.setEnabled(false);
-        target.setArchivedAt(Instant.now());
-        target.setPauseReason(reason.trim());
-        users.saveAndFlush(target);
-        audit(actorId,targetId,"DELETE",Map.of("reason",reason.trim(),"historyPreserved",true));
+        audit(actorId,targetId,"DELETE",Map.of("reason",reason.trim(),"permanent",true));
+        erasure.erase(targetId);
     }
 
     private User editable(Long actorId, Long targetId) {
