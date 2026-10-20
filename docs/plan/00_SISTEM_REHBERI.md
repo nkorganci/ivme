@@ -434,6 +434,8 @@ korumasına girer.
 
 TYT/AYT deneme çizelgeleri, gerçek sınav/cevap/sonuç, pratik oturumu ve olayları,
 öğrenci ilerlemesi, matematik dersleri ve geri bildirim PostgreSQL kayıtlarıdır.
+Rehber bilgi testi ve konu notu mini alıştırmalarının tamamlanan yanıtları
+`student_self_check_attempts` içinde kullanıcıya bağlı, deneme geçmişiyle saklanır.
 Kenar menü ve soru görseli görünüm tercihleri `user_display_preferences` içindedir.
 `user_record_audit` önemli kayıt değişikliklerinin türünü, anahtarını, işlemini ve
 zamanını aynı veritabanı işleminde tutar; cevap ve serbest metinleri çoğaltmaz.

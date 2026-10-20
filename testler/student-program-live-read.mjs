@@ -51,7 +51,8 @@ try {
       try { if (await evaluate(`!!(${expression})`)) return; } catch { /* gezinme sürüyor */ }
       await pause(100);
     }
-    throw Error(`Ekran yüklenmedi: ${expression}`);
+    const state = await evaluate('({path: location.pathname, text: document.body.innerText.slice(0, 350)})').catch(() => null);
+    throw Error(`Ekran yüklenmedi: ${expression}; durum: ${JSON.stringify(state)}; hatalar: ${JSON.stringify(errors)}`);
   };
   await cdp('Page.enable');
   await cdp('Runtime.enable');
@@ -70,18 +71,27 @@ try {
     fetch('/api/math-tutoring').then(r=>r.status),
     fetch('/api/curriculum/progress').then(r=>r.status),
     fetch('/api/study-sessions?page=0&size=1').then(r=>r.status),
-    fetch('/api/exams?page=0&size=1').then(r=>r.status)
+    fetch('/api/exams?page=0&size=1').then(r=>r.status),
+    fetch('/api/self-checks/latest?kind=GUIDE_QUIZ&itemKey=coaching-guide-v1').then(r=>r.status),
+    fetch('/api/self-checks/latest?kind=SOURCE_PRACTICE&itemKey=note%3Atyt-turkce%3Asozcukte-anlam').then(r=>r.status)
   ])`);
-  assert.deepEqual(state, Array(8).fill(200));
+  assert.deepEqual(state, Array(10).fill(200));
   const routes = [
     '/', '/konular-ve-kaynaklar', '/akilli-ogretmen', '/oneriler',
     '/ogrenci-takip', '/ogrenci-takip/matematik-ozel-ders',
     '/ogrenci-takip/tyt-denemeleri', '/ogrenci-takip/ayt-denemeleri',
     '/calisma/yeni', '/gecmis', '/geri-bildirim', '/hesap',
+    '/kaynakli-ders-notlari/tyt-turkce',
   ];
   for (const route of routes) {
     await cdp('Page.navigate', { url: base + route });
     await wait(`location.pathname === ${JSON.stringify(route)} && !!document.querySelector('main#icerik h1, main#icerik h2')`);
+    if (route === '/oneriler') {
+      await wait("(!!document.querySelector('#test .coach-quiz-actions button[type=submit]') || !!document.querySelector('#test .coach-score')) && !document.body.innerText.includes('Önceki sonuç yükleniyor')");
+    }
+    if (route === '/kaynakli-ders-notlari/tyt-turkce') {
+      await wait("!!document.querySelector('#kendini-dene .source-practice-actions button') && !document.body.innerText.includes('Önceki yanıt yükleniyor')");
+    }
   }
   assert.deepEqual(errors, []);
   console.log(JSON.stringify({ screen: 'Haftalık Program', apiStatuses: state, sidebarRoutes: routes.length, runtimeErrors: errors }));

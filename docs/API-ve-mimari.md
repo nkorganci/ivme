@@ -104,14 +104,19 @@ kaydı kullanır; `revision` ile eski sayfanın yeni kaydı ezmesi 409 ile önle
 `math_tutoring_lessons.revision` da ders satırının sürümüdür: güncelleme gövdesi
 okunan sürümü taşır, eski sürüm 409 döner ve toplu kaydın tamamı geri alınır.
 Tek ders oluşturma/güncelleme ve dosya yükleme de veritabanı işlemiyle yanıt
-için geri okumayı aynı transaction içinde yapar. Hesap dışa aktarımı sürüm 4,
-özel ders satırlarını ve dosya içeriklerini de taşır.
+için geri okumayı aynı transaction içinde yapar. Hesap dışa aktarımı sürüm 5,
+özel ders satırlarını, dosya içeriklerini ve öz değerlendirme denemelerini de taşır.
 `GET/PUT /api/preferences/{sidebar-rail|question-image-fit}` görünüm tercihlerini
 hesapta saklar. Başarılı kayıt değişikliklerinin kısa izi `user_record_audit`
 tablosundadır; soru karalaması, konu ilerlemesi, fayda oyu, deneme işareti ve
 özel ders dosyaları da denetlenir. Pratik yanıtları `question_attempts`, öğretim
 olayları `tutor_events` tablosunda kendi olay kaydıdır. Hata yanıtı başarılı
 kayıt gibi gösterilmez.
+`GET /api/self-checks/latest?kind=…&itemKey=…` aynı hesabın son rehber testi
+veya konu notu alıştırmasını döndürür. `POST /api/self-checks` yanıt listesini
+`student_self_check_attempts` tablosuna yeni deneme olarak ekler; başarılı kayıt
+olmadan sonuç tamamlanmış gösterilmez. Bu öz değerlendirmelerin cevapları
+istemcideki sürümlü rehber içeriğine göre puanlanır; resmi sınav puanı değildir.
 
 Soru listesi, uygun soru sayımı, pratik ve deneme oluşturma `categoryId`,
 `categoryMatch=ANY|ALL`, `includeCandidates` alanlarını kabul eder. URL'de birden
