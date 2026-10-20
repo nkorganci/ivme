@@ -1,4 +1,4 @@
-// Canlı geliştirme uygulamasında haftalık ekranın ve yeni API'nin salt okunur kabulü.
+// Canlı yerel uygulamada haftalık ekranın ve yeni API'nin salt okunur kabulü.
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
@@ -56,8 +56,8 @@ try {
   await cdp('Page.enable');
   await cdp('Runtime.enable');
   await cdp('Page.navigate', { url: `${base}/giris` });
-  await wait("document.cookie.includes('XSRF-TOKEN-DEV')");
-  const loginStatus = await evaluate(`fetch('/api/auth/dev-login', {method:'POST',headers:{'X-XSRF-TOKEN':decodeURIComponent(document.cookie.split('; ').find(c=>c.startsWith('XSRF-TOKEN-DEV=')).split('=').slice(1).join('='))}}).then(r=>r.status)`);
+  await wait("document.cookie.split('; ').some(c=>c.startsWith('XSRF-TOKEN=')) || document.cookie.split('; ').some(c=>c.startsWith('XSRF-TOKEN-DEV='))");
+  const loginStatus = await evaluate(`fetch('/api/auth/dev-login', {method:'POST',headers:{'X-XSRF-TOKEN':decodeURIComponent(document.cookie.split('; ').find(c=>c.startsWith('XSRF-TOKEN')).split('=').slice(1).join('='))}}).then(r=>r.status)`);
   assert.equal(loginStatus, 200);
   await cdp('Page.navigate', { url: `${base}/ogrenci-takip` });
   await wait("document.body.innerText.includes('Çizelge hesabınızda saklanır')");
