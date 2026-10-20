@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { api } from '../api.js';
+import { shapePoints } from './inkGeometry.js';
 
 const LIMIT = 100;
+const SHAPES = { LINE: 'Doğru', RECTANGLE: 'Dikdörtgen', TRIANGLE: 'Üçgen', ELLIPSE: 'Çember / elips', ANGLE: 'Açı' };
 
-function draw(canvas, strokes) {
+function draw(canvas, strokes, preview) {
   if (!canvas) return;
   const rect = canvas.getBoundingClientRect();
   if (!rect.width || !rect.height) return;
@@ -18,7 +20,7 @@ function draw(canvas, strokes) {
   ctx.strokeStyle = ink;
   ctx.fillStyle = ink;
   ctx.lineWidth = 2.5;
-  for (const stroke of strokes) {
+  for (const stroke of [...strokes, ...(preview ? [preview] : [])]) {
     ctx.beginPath();
     stroke.forEach(([x, y], i) => {
       if (i === 0) ctx.moveTo(x * rect.width, y * rect.height);
@@ -32,7 +34,7 @@ function draw(canvas, strokes) {
 }
 
 /** Noktalar tahta ölçüsüne göre 0–1 aralığında saklanır; yeniden boyutlanınca çizim korunur. */
-export default function QuestionBoard({ questionId, onUnavailable, height }) {
+export default function QuestionBoard({ questionId, onUnavailable, height, tool = 'board' }) {
   const canvas = useRef(null);
   const strokesRef = useRef([]);
   const active = useRef(null);
@@ -43,6 +45,8 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
   const [error, setError] = useState('');
   const [conflict, setConflict] = useState(false);
   const [changed, setChanged] = useState(false);
+  const [shape, setShape] = useState('LINE');
+  const [preview, setPreview] = useState(null);
 
   const replace = (next) => { strokesRef.current = next; setStrokes(next); };
   const load = useCallback(async () => {
@@ -65,11 +69,11 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
   useEffect(() => {
     const target = canvas.current;
     if (!target) return undefined;
-    const observer = new ResizeObserver(() => draw(target, strokesRef.current));
+    const observer = new ResizeObserver(() => draw(target, strokesRef.current, preview));
     observer.observe(target);
-    draw(target, strokes);
+    draw(target, strokes, preview);
     return () => observer.disconnect();
-  }, [strokes]);
+  }, [strokes, preview]);
 
   const save = async (next) => {
     if (JSON.stringify(next).length > 65536) {
@@ -108,12 +112,14 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
   const start = (e) => {
     if (loading || saving || conflict || strokesRef.current.length >= LIMIT || (e.pointerType === 'mouse' && e.button !== 0)) return;
     e.currentTarget.setPointerCapture(e.pointerId);
-    active.current = { id: e.pointerId, stroke: [point(e)] };
-    replace([...strokesRef.current, active.current.stroke]);
-    setChanged(true);
+    const origin = point(e);
+    active.current = { id: e.pointerId, origin, stroke: [origin] };
+    if (tool === 'shapes') setPreview(shapePoints(shape, origin, origin));
+    else { replace([...strokesRef.current, active.current.stroke]); setChanged(true); }
   };
   const move = (e) => {
     if (active.current?.id !== e.pointerId) return;
+    if (tool === 'shapes') { setPreview(shapePoints(shape, active.current.origin, point(e))); return; }
     const stroke = active.current.stroke;
     if (stroke.length >= 250) return;
     const next = point(e);
@@ -124,8 +130,24 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
   };
   const finish = (e) => {
     if (active.current?.id !== e.pointerId) return;
+    if (tool === 'shapes') {
+      const origin = active.current.origin;
+      const end = point(e);
+      active.current = null;
+      setPreview(null);
+      if (Math.abs(end[0] - origin[0]) + Math.abs(end[1] - origin[1]) < .01) return;
+      const next = [...strokesRef.current, shapePoints(shape, origin, end)];
+      replace(next); setChanged(true); save(next);
+      return;
+    }
     active.current = null;
     save(strokesRef.current);
+  };
+  const cancel = (e) => {
+    if (active.current?.id !== e.pointerId) return;
+    active.current = null;
+    setPreview(null);
+    if (tool !== 'shapes') save(strokesRef.current);
   };
   const undo = () => { const next = strokesRef.current.slice(0, -1); replace(next); setChanged(true); save(next); };
   const clear = () => {
@@ -135,8 +157,13 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
 
   return (
     <div className="board" style={height ? { '--board-height': `${height}px` } : undefined}>
-      <canvas ref={canvas} className="board-canvas" aria-label="Soru için karalama alanı"
-        onPointerDown={start} onPointerMove={move} onPointerUp={finish} onPointerCancel={finish} />
+      {tool === 'shapes' && <div className="board-shapes" role="group" aria-label="Çizilecek şekil">
+        {Object.entries(SHAPES).map(([key, label]) => <button key={key} type="button" className="btn btn-secondary btn-sm"
+          aria-pressed={shape === key} onClick={() => setShape(key)}>{label}</button>)}
+      </div>}
+      <canvas ref={canvas} className={`board-canvas${tool === 'graph' ? ' board-graph' : ''}`}
+        aria-label={tool === 'graph' ? 'Kareli grafik kağıdı' : tool === 'shapes' ? 'Şekil çizim alanı' : 'Soru için karalama alanı'}
+        onPointerDown={start} onPointerMove={move} onPointerUp={finish} onPointerCancel={cancel} />
       <div className="board-tools">
         <button type="button" className="btn btn-secondary btn-sm" disabled={loading || saving || conflict || !strokes.length} onClick={undo}>Geri al</button>
         <button type="button" className="btn btn-secondary btn-sm" disabled={loading || saving || conflict || !strokes.length} onClick={clear}>Temizle</button>
@@ -149,7 +176,7 @@ export default function QuestionBoard({ questionId, onUnavailable, height }) {
           ? <button type="button" className="btn btn-secondary btn-sm" onClick={load}>Sunucudaki çizimi yükle</button>
           : <button type="button" className="btn btn-secondary btn-sm" disabled={saving} onClick={() => changed ? save(strokesRef.current) : load()}>Yeniden dene</button>}
       </div>}
-      <p className="muted small board-help">Kalem veya parmağınla çiz. Her çizgi bitince kaydedilir.</p>
+      {tool === 'board' && <p className="muted small board-help">Kalem veya parmağınla çiz. Her çizgi bitince kaydedilir.</p>}
     </div>
   );
 }

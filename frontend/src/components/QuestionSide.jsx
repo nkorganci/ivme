@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { StarValue } from './Stars.jsx';
 import QuestionBoard from './QuestionBoard.jsx';
+import ScientificCalculator from './ScientificCalculator.jsx';
 import RatingForm from './RatingForm.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
@@ -20,8 +21,8 @@ export default function QuestionSide({ q, onRated, canVote }) {
   const [helpBusy, setHelpBusy] = useState(false);
   const votes = q.difficultyVotes || {};
   const total = DIFFICULTIES.reduce((t, d) => t + (votes[d] || 0), 0);
-  const availableTabs = [...(boardAvailable ? ['board'] : []), 'qr'];
-  const selectTab = (next) => { setExpanded(next === 'board'); setTab(next); tabRefs.current[next]?.focus(); };
+  const availableTabs = [...(boardAvailable ? ['board', 'shapes', 'graph'] : []), 'calculator', 'qr'];
+  const selectTab = (next) => { setExpanded(next !== 'qr'); setTab(next); tabRefs.current[next]?.focus(); };
   const onTabKeyDown = (event, current) => {
     const index = availableTabs.indexOf(current);
     const nextIndex = event.key === 'ArrowRight' ? (index + 1) % availableTabs.length
@@ -38,19 +39,28 @@ export default function QuestionSide({ q, onRated, canVote }) {
   };
 
   return (
-    <aside className={`card qside${expanded && tab === 'board' ? ' expanded' : ''}`} aria-label="Soru bilgileri">
+    <aside className={`card qside${expanded && tab !== 'qr' ? ' expanded' : ''}`} aria-label="Soru bilgileri">
       <div className="qside-head">
         <div className="qside-tabs" role="tablist" aria-label="Soru araçları">
-          {boardAvailable && <button ref={(el) => { tabRefs.current.board = el; }} type="button" role="tab" tabIndex={tab === 'board' ? 0 : -1} id="tab-board" aria-controls="panel-board" aria-selected={tab === 'board'} onKeyDown={(e) => onTabKeyDown(e, 'board')} onClick={() => selectTab('board')}>Karalama</button>}
+          {boardAvailable && [['board', 'Karalama'], ['shapes', 'Şekiller'], ['graph', 'Grafik']].map(([key, label]) =>
+            <button key={key} ref={(el) => { tabRefs.current[key] = el; }} type="button" role="tab" tabIndex={tab === key ? 0 : -1}
+              id={`tab-${key}`} aria-controls="panel-workspace" aria-selected={tab === key}
+              onKeyDown={(e) => onTabKeyDown(e, key)} onClick={() => selectTab(key)}>{label}</button>)}
+          <button ref={(el) => { tabRefs.current.calculator = el; }} type="button" role="tab" tabIndex={tab === 'calculator' ? 0 : -1}
+            id="tab-calculator" aria-controls="panel-calculator" aria-selected={tab === 'calculator'}
+            onKeyDown={(e) => onTabKeyDown(e, 'calculator')} onClick={() => selectTab('calculator')}>Hesap makinesi</button>
           <button ref={(el) => { tabRefs.current.qr = el; }} type="button" role="tab" tabIndex={tab === 'qr' ? 0 : -1} id="tab-qr" aria-controls="panel-qr" aria-selected={tab === 'qr'} onKeyDown={(e) => onTabKeyDown(e, 'qr')} onClick={() => selectTab('qr')}>QR ve bağlantı</button>
         </div>
-        {boardAvailable && tab === 'board' && <button type="button" className="btn btn-secondary btn-sm"
+        {tab !== 'qr' && <button type="button" className="btn btn-secondary btn-sm"
           aria-pressed={expanded} onClick={() => setExpanded((value) => !value)}>
           {expanded ? 'Küçült' : 'Genişlet'}
         </button>}
       </div>
-      {boardAvailable && <div id="panel-board" role="tabpanel" aria-labelledby="tab-board" hidden={tab !== 'board'}>
-        <QuestionBoard questionId={q.id} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />
+      {boardAvailable && <div id="panel-workspace" role="tabpanel" aria-labelledby={`tab-${tab}`} hidden={!['board', 'shapes', 'graph'].includes(tab)}>
+        <QuestionBoard questionId={q.id} tool={tab} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />
+      </div>}
+      {tab === 'calculator' && <div id="panel-calculator" role="tabpanel" aria-labelledby="tab-calculator" className="tool-workspace">
+        <ScientificCalculator />
       </div>}
       <div id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden={tab !== 'qr'}><QrCard question={q} /></div>
       <dl className="meta">

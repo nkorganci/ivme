@@ -16,6 +16,7 @@ const question = { id: 1, code: 'TYT-0001', bank: 'CIKMIS', examType: 'TYT', sub
   topic: 'Uzun konu adı ile soru çözüm ekranında tek satır başlık kontrolü', choiceCount: 5, helpfulness: {}, hasSolutionImage: true, hasApprovedHint: true };
 let state, submissions, failNext = false;
 const annotations = new Map();
+const boards = new Map();
 const reset = () => { state = { round: 1, attempts: [], canAnswer: true, roundComplete: false }; submissions = []; };
 reset();
 const server = live ? null : createServer(async (req, res) => {
@@ -54,7 +55,18 @@ const server = live ? null : createServer(async (req, res) => {
     }
     return json(old);
   }
-  if (/\/board$/.test(url.pathname)) return json({ version: 0, strokes: [] });
+  if (/\/board$/.test(url.pathname)) {
+    const old = boards.get(url.pathname) || { version: 0, strokes: [] };
+    if (req.method === 'PUT') {
+      let body = ''; for await (const chunk of req) body += chunk;
+      const update = JSON.parse(body);
+      if (update.version !== old.version) return json({ hata: 'Sürüm çakışması' }, 409);
+      const next = { version: old.version + 1, strokes: update.strokes };
+      boards.set(url.pathname, next);
+      return json(next);
+    }
+    return json(old);
+  }
   if (url.pathname === '/api/learning-resources/item') return json({ displayTitle: 'TYT | Matematik | Sayılar | Çok uzun alt konu adı ve kaynak bilgisi tek satırda gösterilir', labels: { assignments: [] } });
   if (/\/(image|solution-image)$/.test(url.pathname)) {
     res.writeHead(200, { 'Content-Type': 'image/svg+xml' });
@@ -110,7 +122,7 @@ try {
     })()`);
     checks.push({ label, ...data });
     assert.ok(data.page[0] <= data.viewport[0] && data.page[1] <= data.viewport[1] + 1, `${label}: page overflow ${JSON.stringify(data)}`);
-    assert.ok(data.tools.bottom <= data.viewport[1] && data.board.height > 20 && data.dock.bottom <= data.viewport[1], `${label}: all controls visible`);
+    assert.ok(data.tools.bottom <= data.viewport[1] && data.board.height > 20 && data.dock.bottom <= data.viewport[1], `${label}: all controls visible ${JSON.stringify(data)}`);
     assert.ok(Math.max(...data.row) - Math.min(...data.row) <= 5, `${label}: previous/choices/next single row`);
     assert.equal(data.checkButton, false);
     assert.equal(data.frame.width, '2px', `${label}: image frame is slightly thicker`);
@@ -147,41 +159,41 @@ try {
     assert.deepEqual(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes, [], 'undo persisted');
     await click('Tıkla');
     assert.equal(await ev(`document.querySelector('.page-ink-canvas').classList.contains('writing')`), false, 'click mode restores controls');
-    await click('Şekiller'); await click('Dikdörtgen');
-    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1 });
-    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 45, y: target.y + 35, button: 'left' });
-    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 45, y: target.y + 35, button: 'left', clickCount: 1 });
-    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
-    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes[0]?.points.length, 5, 'rectangle persisted');
-    await click('Silme'); await click('Silgi');
+    assert.equal(await ev(`document.querySelectorAll('.page-ink-erase option').length`), 4, 'erase dropdown has placeholder and three actions');
+    await ev(`(() => { const s=document.querySelector('.page-ink-erase'); s.value='erase'; s.dispatchEvent(new Event('change',{bubbles:true})); })()`);
+    assert.equal(await ev(`document.querySelector('.page-ink-erase').value`), 'erase', 'eraser stays selected');
     await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x + 20, y: target.y, button: 'left', clickCount: 1 });
     await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 20, y: target.y, button: 'left', clickCount: 1 });
     await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
     assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes.at(-1)?.color, 'ERASE', 'eraser operation persisted');
-    await click('Şekiller'); await click('Dikdörtgen');
-    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1 });
-    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 45, y: target.y + 35, button: 'left' });
-    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 45, y: target.y + 35, button: 'left', clickCount: 1 });
-    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
-    await click('Silme'); await click('Alan sil');
+    await ev(`(() => { const s=document.querySelector('.page-ink-erase'); s.value='area'; s.dispatchEvent(new Event('change',{bubbles:true})); })()`);
+    assert.equal(await ev(`document.querySelector('.page-ink-erase').value`), 'area', 'area eraser stays selected');
     await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x - 10, y: target.y - 10, button: 'left', clickCount: 1 });
     await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 60, y: target.y + 50, button: 'left' });
     await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 60, y: target.y + 50, button: 'left', clickCount: 1 });
     await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
     assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes.at(-1)?.color, 'AREA_ERASE', 'selection operation persisted');
     assert.equal(await ev(`(() => { const c=document.querySelector('.page-ink-canvas'); const r=c.getBoundingClientRect(); const x=Math.round((${target.x}+20-r.x)*c.width/r.width), y=Math.round((${target.y}-r.y)*c.height/r.height); return c.getContext('2d').getImageData(x,y,1,1).data[3]; })()`), 0, 'selection clears ink inside rectangle');
+    await click('Tıkla');
+    await click('Şekiller'); await click('Dikdörtgen');
+    const boardTarget = await ev(`(() => { const r=document.querySelector('.board-canvas').getBoundingClientRect(); return {x:r.x+40,y:r.y+40}; })()`);
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: boardTarget.x, y: boardTarget.y, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: boardTarget.x + 60, y: boardTarget.y + 45, button: 'left' });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: boardTarget.x + 60, y: boardTarget.y + 45, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".board-status")?.textContent === "Kaydedildi"');
+    assert.equal(boards.get('/api/questions/1/board')?.strokes[0]?.length, 5, 'shape saved on question board');
+    await click('Grafik');
+    assert.equal(await ev(`document.querySelector('.board-canvas').classList.contains('board-graph')`), true, 'graph paper fills board');
+    assert.equal(await ev(`Boolean(document.querySelector('.graph-fields'))`), false, 'graph coordinate inputs absent');
+    const boardHeight = await ev(`document.querySelector('.board-canvas').getBoundingClientRect().height`);
     await click('Hesap makinesi');
+    assert.equal(await ev(`(() => { const p=document.querySelector('.calculator-inline').getBoundingClientRect(), s=document.querySelector('.qside').getBoundingClientRect(); return p.width > s.width*.8 && p.height >= ${boardHeight} && p.left >= s.left && p.right <= s.right; })()`), true, 'calculator fills the fixed side workspace');
     await ev(`(() => { const input=document.querySelector('#ink-calculation'); const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; setter.call(input,'sin(30)+sqrt(9)'); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
     await ev(`document.querySelector('.calculator-equals').click()`);
     await wait('document.querySelector(".calculator-result")?.textContent.includes("3.5")');
-    await click('Hesap makinesi');
-    await click('Grafik');
-    await wait('document.querySelector(".page-ink-graph") && document.querySelector(".graph-fields")');
-    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
-    await ev(`(() => { const input=document.querySelectorAll('.graph-fields input')[1]; const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; setter.call(input,'15'); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
-    await ev(`document.querySelector('.graph-settings button[type="submit"]').click()`);
-    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
-    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.graph?.xMax, 15, 'graph coordinates persisted');
+    await click('Karalama');
+    assert.equal(await ev(`document.querySelector('.board-canvas').classList.contains('board-graph')`), false, 'scratchpad restores plain paper');
+    assert.equal(boards.get('/api/questions/1/board')?.strokes.length, 1, 'drawing survives tab changes');
     checks.push({ label: 'full-page-ink', color: 'RED', save: 'passed', undo: 'passed', clickMode: 'passed',
       shape: 'passed', eraser: 'passed', selectionErase: 'passed', calculator: 'passed', graph: 'passed' });
     for (const [width, height] of [[390,844],[320,568]]) {

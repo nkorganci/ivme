@@ -181,7 +181,7 @@ export default function PageInk({ type, id, page = 1 }) {
     save(next);
   };
   const clear = () => {
-    if (!window.confirm('Bu sayfadaki bütün karalamaları silmek istiyor musun? Grafik kağıdı kalır.')) return;
+    if (!window.confirm('Bu sayfadaki bütün işaretlemeleri silmek istiyor musun?')) return;
     replace([]);
     setDirty(true);
     save([]);
@@ -192,9 +192,13 @@ export default function PageInk({ type, id, page = 1 }) {
     if (graph.open) { updateGraph({ ...graph, open: false }); setPanel(null); }
     else { updateGraph({ ...graph, open: true }); setPanel('graph'); }
   };
+  const chooseErase = (value) => {
+    if (value === 'clear') { clear(); chooseMode('click'); }
+    else chooseMode(value || 'click');
+  };
 
   return <div className="page-ink" aria-label="Sayfa karalaması">
-    {graph.open && <GraphPaper graph={graph} onApply={updateGraph} onClose={() => { updateGraph({ ...graph, open: false }); setPanel(null); }}
+    {type !== 'QUESTION' && graph.open && <GraphPaper graph={graph} onApply={updateGraph} onClose={() => { updateGraph({ ...graph, open: false }); setPanel(null); }}
       saving={saving} showSettings={panel === 'graph'} />}
     <canvas ref={canvas} className={`page-ink-canvas${mode !== 'click' ? ` writing mode-${mode}` : ''}`}
       aria-label={`Sayfanın tamamı: ${MODE_LABEL[mode]} modu`}
@@ -212,22 +216,18 @@ export default function PageInk({ type, id, page = 1 }) {
           onClick={() => setColor(value)}><span aria-hidden="true" /></button>)}
       </span>
       <button type="button" className="btn btn-secondary btn-sm" disabled={loading || saving || conflict || !strokes.length} onClick={undo}>Geri al</button>
-      <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'erase'} onClick={() => togglePanel('erase')}>Silme</button>
-      <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'shapes'} onClick={() => togglePanel('shapes')}>Şekiller</button>
-      <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'calculator'} onClick={() => togglePanel('calculator')}>Hesap makinesi</button>
-      <button type="button" className="btn btn-secondary btn-sm" aria-pressed={graph.open} disabled={loading || saving || conflict} onClick={toggleGraph}>Grafik</button>
+      <select className="page-ink-erase btn btn-secondary btn-sm" aria-label="Silme" value={mode === 'erase' || mode === 'area' ? mode : ''}
+        disabled={loading || saving || conflict} onChange={(event) => chooseErase(event.target.value)}>
+        <option value="">Silme</option><option value="erase">Silgi</option><option value="area">Alan sil</option><option value="clear" disabled={!strokes.length}>Tümünü sil</option>
+      </select>
+      {type !== 'QUESTION' && <>
+        <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'shapes'} onClick={() => togglePanel('shapes')}>Şekiller</button>
+        <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'calculator'} onClick={() => togglePanel('calculator')}>Hesap makinesi</button>
+        <button type="button" className="btn btn-secondary btn-sm" aria-pressed={graph.open} disabled={loading || saving || conflict} onClick={toggleGraph}>Grafik</button>
+      </>}
       <span role="status" className="page-ink-status">{loading ? 'Yükleniyor…' : saving ? 'Kaydediliyor…' : error || (dirty ? 'Kaydedilmedi' : 'Kaydedildi')}</span>
       {error && <button type="button" className="btn btn-secondary btn-sm" disabled={saving} onClick={() => conflict ? load() : dirty ? save(current.current) : load()}>{conflict ? 'Sunucudaki çizimi yükle' : 'Yeniden dene'}</button>}
     </div>
-    {panel === 'erase' && <section className="page-ink-panel" aria-label="Silme araçları">
-      <div className="page-ink-panel-head"><strong>Silme</strong><button type="button" className="btn btn-secondary btn-sm" onClick={() => setPanel(null)} aria-label="Silme araçlarını kapat">✕</button></div>
-      <p className="small muted">Silgi dokunduğu kısmı, Alan sil çerçeve içini kaldırır. Geri al silinen kısmı getirir. Tümünü silmek için onay gerekir.</p>
-      <div className="page-ink-panel-actions">
-        <button type="button" className="btn btn-secondary btn-sm" aria-pressed={mode === 'erase'} onClick={() => chooseMode('erase')}>Silgi</button>
-        <button type="button" className="btn btn-secondary btn-sm" aria-pressed={mode === 'area'} onClick={() => chooseMode('area')}>Alan sil</button>
-        <button type="button" className="btn btn-secondary btn-sm" disabled={loading || saving || conflict || !strokes.length} onClick={clear}>Tümünü sil</button>
-      </div>
-    </section>}
     {panel === 'shapes' && <section className="page-ink-panel" aria-label="Geometri şekilleri">
       <div className="page-ink-panel-head"><strong>Geometri şekilleri</strong><button type="button" className="btn btn-secondary btn-sm" onClick={() => setPanel(null)} aria-label="Şekilleri kapat">✕</button></div>
       <p className="small muted">Şekli seçip sayfada başlangıçtan bitişe sürükle.</p>

@@ -21,8 +21,8 @@ export default function ScientificCalculator({ onClose }) {
     try { setResult(String(calculate(expression, degrees))); setError(''); }
     catch (e) { setError(e.message); setResult(''); }
   };
-  return <section className="page-ink-panel calculator" aria-label="Bilimsel hesap makinesi">
-    <div className="page-ink-panel-head"><strong>Bilimsel hesap makinesi</strong><button type="button" className="btn btn-secondary btn-sm" onClick={onClose} aria-label="Hesap makinesini kapat">✕</button></div>
+  return <section className={onClose ? 'page-ink-panel calculator' : 'calculator calculator-inline'} aria-label="Bilimsel hesap makinesi">
+    <div className="page-ink-panel-head"><strong>Bilimsel hesap makinesi</strong>{onClose && <button type="button" className="btn btn-secondary btn-sm" onClick={onClose} aria-label="Hesap makinesini kapat">✕</button>}</div>
     <label className="sr-only" htmlFor="ink-calculation">Hesaplama ifadesi</label>
     <input id="ink-calculation" value={expression} maxLength={160} onChange={(e) => setExpression(e.target.value)}
       onKeyDown={(e) => { if (e.key === 'Enter') evaluate(); }} placeholder="Örnek: sin(30)+sqrt(9)" />
