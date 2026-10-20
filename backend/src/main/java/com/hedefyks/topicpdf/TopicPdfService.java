@@ -242,6 +242,15 @@ public class TopicPdfService {
                 item.grade(), item.pageCount(), item.status(), topic);
     }
 
+    /** Lightweight catalog validation for annotations; PDF bytes are verified when opened. */
+    public Item annotationItem(int id) {
+        Entry entry = byId.get(id);
+        if (entry == null || !"available".equals(entry.item().status())) {
+            throw ApiException.notFound("PDF bulunamadı.");
+        }
+        return entry.item();
+    }
+
     public List<String> approvedQuestionCodes(int id) {
         ApprovedLink link = approvedLinks.get(id);
         Entry entry = byId.get(id);

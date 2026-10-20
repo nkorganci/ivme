@@ -13,6 +13,7 @@ import PracticeTimer from '../components/PracticeTimer.jsx';
 import AnswerFeedback from '../components/AnswerFeedback.jsx';
 import ResourceContext from '../components/ResourceContext.jsx';
 import Modal from '../components/Modal.jsx';
+import PageInk from '../components/PageInk.jsx';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic', 'page'];
 
@@ -193,6 +194,7 @@ function QuestionView({ q, filters, session, reload }) {
 
   return (
     <div className="qpage">
+      <PageInk key={q.id} type="QUESTION" id={q.id} />
       <h1 className="sr-only">Soru {q.code}</h1>
       <div className="qlayout">
         <div className="qmain">

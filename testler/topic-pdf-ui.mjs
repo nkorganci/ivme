@@ -1,6 +1,6 @@
 // Isolated browser check for the reviewed PDF -> practice/exam builder flow.
 // Run after `npm run build` in frontend. No live API or database is contacted.
-// --pdf-only limits this older combined suite to the PDF and scoped study flows.
+// --pdf-only limits this older combined suite to the PDF viewer.
 import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
@@ -11,8 +11,25 @@ import { fileURLToPath } from 'node:url';
 const dist = fileURLToPath(new URL('../frontend/dist', import.meta.url));
 const fixture = {
   id: 1099, title: 'NOKTALAMA İŞARETLERİ', exam: 'TYT', subject: 'turkce',
-  kind: 'topic_summary', pageCount: 1, status: 'available', verifiedTopic: 'Noktalama İşaretleri',
+  kind: 'topic_summary', pageCount: 2, status: 'available', verifiedTopic: 'Noktalama İşaretleri',
 };
+const pdfFixture = (() => {
+  const objects = [
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 400 600] /Contents 5 0 R >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 400 600] /Contents 5 0 R >>',
+    '<< /Length 0 >>\nstream\n\nendstream',
+  ];
+  let body = '%PDF-1.4\n';
+  const offsets = [0];
+  objects.forEach((object, i) => { offsets.push(body.length); body += `${i + 1} 0 obj\n${object}\nendobj\n`; });
+  const xref = body.length;
+  body += `xref\n0 ${offsets.length}\n0000000000 65535 f \n`;
+  offsets.slice(1).forEach((offset) => { body += `${String(offset).padStart(10, '0')} 00000 n \n`; });
+  body += `trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+  return Buffer.from(body, 'ascii');
+})();
 const chicagoDate = (date) => {
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -23,6 +40,7 @@ let goals = [];
 let recommendationFixture = false;
 let recommendationStatus = 'SUGGESTIONS';
 let currentRole = 'USER';
+const pdfAnnotations = new Map();
 const server = createServer((req, res) => {
   const pathname = new URL(req.url, 'http://localhost').pathname;
   const json = (value, status = 200) => {
@@ -102,16 +120,31 @@ const server = createServer((req, res) => {
       : json({ total: 0, solved: 0, remaining: 0, everWrong: 0 });
   }
   if (pathname === '/api/topic-pdfs/1099') return json(fixture);
-  if (pathname === '/api/topic-pdfs/1099/file') {
-    res.writeHead(200, { 'Content-Type': 'application/pdf' });
-    return res.end('%PDF-1.4\n%%EOF');
+  if (pathname === '/api/learning-resources/pdf/1099' || pathname === '/api/topic-pdfs/1099/file') {
+    res.writeHead(200, { 'Content-Type': 'application/pdf', 'Content-Length': pdfFixture.length });
+    return res.end(pdfFixture);
+  }
+  if (pathname.startsWith('/api/page-annotations/PDF/1099/')) {
+    const old = pdfAnnotations.get(pathname) || { version: 0, strokes: [], graph: { open: false, xMin: -10, xMax: 10, yMin: -10, yMax: 10 } };
+    if (req.method === 'PUT') {
+      let body = '';
+      req.on('data', (part) => { body += part; });
+      return req.on('end', () => {
+        const update = JSON.parse(body);
+        if (update.version !== old.version) return json({ hata: 'Sürüm çakışması' }, 409);
+        const next = { version: old.version + 1, strokes: update.strokes, graph: update.graph };
+        pdfAnnotations.set(pathname, next);
+        json(next);
+      });
+    }
+    return json(old);
   }
   const safe = pathname.startsWith('/assets/') ? pathname.slice(1) : 'index.html';
   const file = resolve(dist, safe);
   if (!file.startsWith(dist)) { res.writeHead(404); return res.end(); }
   try {
     const body = readFileSync(file);
-    res.writeHead(200, { 'Content-Type': extname(file) === '.js' ? 'text/javascript'
+    res.writeHead(200, { 'Content-Type': ['.js', '.mjs'].includes(extname(file)) ? 'text/javascript'
       : extname(file) === '.css' ? 'text/css' : 'text/html' });
     res.end(body);
   } catch { res.writeHead(404); res.end(); }
@@ -174,13 +207,28 @@ try {
       ['/oneriler', 'Çalışma önerileri'],
       ['/yonetim', 'Yönetim · Kullanım özeti'],
       ['/soru/TEST-1', 'Onaylı etiket yok'],
-    ].filter(([page]) => !process.argv.includes('--pdf-only')
-      || page.startsWith('/konu-anlatimlari/') || page.includes('/yeni?topicPdfId='))) {
+    ].filter(([page]) => !process.argv.includes('--pdf-only') || page.startsWith('/konu-anlatimlari/'))) {
       if (page === '/hedefler') goals = [];
       if (page === '/oneriler') { recommendationFixture = true; recommendationStatus = 'SUGGESTIONS'; }
       currentRole = page === '/yonetim' ? 'ADMIN' : 'USER';
       await cdp('Page.navigate', { url: site + page });
       await waitFor(`document.body.innerText.includes(${JSON.stringify(expected)})`);
+      if (page === '/konu-anlatimlari/1099') {
+        await waitFor('document.querySelector(".pdf-page-surface canvas")?.width > 0 && document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+        await evaluate(`[...document.querySelectorAll('.page-ink-tools button')].find(x => x.textContent.trim() === 'Yaz').click()`);
+        if (!await evaluate('document.querySelector(".page-ink-canvas")?.classList.contains("writing")')) throw Error('PDF yazma modu açılmadı');
+        await evaluate(`document.querySelector('.page-ink-color.color-green').click()`);
+        const point = await evaluate(`(() => { const r=document.querySelector('.pdf-page-surface > canvas').getBoundingClientRect(); return {x:r.x+Math.min(60,r.width/3),y:r.y+Math.min(60,r.height/3)}; })()`);
+        await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1 });
+        await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: point.x + 20, y: point.y + 20, button: 'left' });
+        await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: point.x + 20, y: point.y + 20, button: 'left', clickCount: 1 });
+        await waitFor('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+        if (pdfAnnotations.get('/api/page-annotations/PDF/1099/1')?.strokes[0]?.color !== 'GREEN') throw Error('PDF sayfa 1 karalaması kaydedilmedi');
+        await evaluate(`[...document.querySelectorAll('.page-ink-tools button')].find(x => x.textContent.trim() === 'Tıkla').click()`);
+        await evaluate(`[...document.querySelectorAll('.pdf-page-nav button')].find(x => x.textContent.includes('Sonraki')).click()`);
+        await waitFor('location.hash === "#page=2" && document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+        if (pdfAnnotations.has('/api/page-annotations/PDF/1099/2')) throw Error('PDF sayfa 1 çizimi sayfa 2 içine taşındı');
+      }
       if (page.includes('yeni')) {
         await waitFor('document.body.innerText.includes("3")');
         await waitFor('document.body.innerText.includes("Konu ve kaynak sabit")');

@@ -21,7 +21,6 @@ import Feedback from './pages/Feedback.jsx';
 import Account from './pages/Account.jsx';
 import Admin from './pages/Admin.jsx';
 import Operator from './pages/Operator.jsx';
-import TopicPdfViewer from './pages/TopicPdfViewer.jsx';
 import StudentTracking from './pages/StudentTracking.jsx';
 import StudentTrackingPortal from './pages/StudentTrackingPortal.jsx';
 import MathTutoring from './pages/MathTutoring.jsx';
@@ -34,6 +33,7 @@ const AytTrials = lazy(() => import('./pages/AytTrials.jsx'));
 const SourceNotes = lazy(() => import('./pages/SourceNotes.jsx'));
 const SourceLabels = lazy(() => import('./pages/SourceLabels.jsx'));
 const LearningResources = lazy(() => import('./pages/LearningResources.jsx'));
+const TopicPdfViewer = lazy(() => import('./pages/TopicPdfViewer.jsx'));
 const Tutor = lazy(() => import('./pages/Tutor.jsx'));
 const TutorSession = lazy(() => import('./pages/TutorSession.jsx'));
 const TutorReview = lazy(() => import('./pages/TutorReview.jsx'));
@@ -104,7 +104,7 @@ export default function App() {
             <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
             <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
             <Route path="/konu-anlatimlari" element={<LegacyPdfLibraryRedirect />} />
-            <Route path="/konu-anlatimlari/:id" element={<TopicPdfViewer />} />
+            <Route path="/konu-anlatimlari/:id" element={<Suspense fallback={<Loading text="PDF görüntüleniyor…" />}><TopicPdfViewer /></Suspense>} />
             <Route path="/soru/:code" element={<QuestionDetail />} />
             <Route path="/calisma/yeni" element={<StudyNew />} />
             <Route path="/calisma/yarim-kalan" element={<UnfinishedStudies />} />

@@ -15,6 +15,7 @@ mkdirSync(output, { recursive: true });
 const question = { id: 1, code: 'TYT-0001', bank: 'CIKMIS', examType: 'TYT', subject: 'Matematik',
   topic: 'Uzun konu adı ile soru çözüm ekranında tek satır başlık kontrolü', choiceCount: 5, helpfulness: {}, hasSolutionImage: true, hasApprovedHint: true };
 let state, submissions, failNext = false;
+const annotations = new Map();
 const reset = () => { state = { round: 1, attempts: [], canAnswer: true, roundComplete: false }; submissions = []; };
 reset();
 const server = live ? null : createServer(async (req, res) => {
@@ -41,6 +42,18 @@ const server = live ? null : createServer(async (req, res) => {
     serverNow: new Date().toISOString(), deadlineAt: new Date(Date.now() + 300000).toISOString(), questions: [{ questionId: 1, code: 'TYT-0001', bank: 'CIKMIS' }] });
   if (url.pathname === '/api/exams/77') return json({ id: 77, title: 'Tek satırda uzun deneme başlığı ve sınav çözüm çalışma alanı',
     remainingSeconds: 600, questions: Array.from({ length: 120 }, (_, i) => ({ questionId: i + 1, position: i + 1, code: `TYT-${i + 1}`, subject: 'Matematik', choiceCount: 5 })) });
+  if (url.pathname.startsWith('/api/page-annotations/')) {
+    const old = annotations.get(url.pathname) || { version: 0, strokes: [] };
+    if (req.method === 'PUT') {
+      let body = ''; for await (const chunk of req) body += chunk;
+      const update = JSON.parse(body);
+      if (update.version !== old.version) return json({ hata: 'Sürüm çakışması' }, 409);
+      const next = { version: old.version + 1, strokes: update.strokes, graph: update.graph };
+      annotations.set(url.pathname, next);
+      return json(next);
+    }
+    return json(old);
+  }
   if (/\/board$/.test(url.pathname)) return json({ version: 0, strokes: [] });
   if (url.pathname === '/api/learning-resources/item') return json({ displayTitle: 'TYT | Matematik | Sayılar | Çok uzun alt konu adı ve kaynak bilgisi tek satırda gösterilir', labels: { assignments: [] } });
   if (/\/(image|solution-image)$/.test(url.pathname)) {
@@ -119,6 +132,58 @@ try {
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
   await open('/soru/TYT-0001');
   if (!live) {
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    const target = await ev(`(() => { const r=document.querySelector('.image-card').getBoundingClientRect(); return {x:r.x+Math.min(80,r.width/3),y:r.y+Math.min(80,r.height/3)}; })()`);
+    await click('Yaz');
+    assert.equal(await ev(`document.elementFromPoint(${target.x},${target.y})?.classList.contains('page-ink-canvas')`), true, 'writing covers question image');
+    await ev(`document.querySelector('.page-ink-color.color-red').click()`);
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 25, y: target.y + 15, button: 'left' });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 25, y: target.y + 15, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes[0]?.color, 'RED', 'stroke color persisted');
+    await click('Geri al');
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.deepEqual(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes, [], 'undo persisted');
+    await click('Tıkla');
+    assert.equal(await ev(`document.querySelector('.page-ink-canvas').classList.contains('writing')`), false, 'click mode restores controls');
+    await click('Şekiller'); await click('Dikdörtgen');
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 45, y: target.y + 35, button: 'left' });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 45, y: target.y + 35, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes[0]?.points.length, 5, 'rectangle persisted');
+    await click('Silme'); await click('Silgi');
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x + 20, y: target.y, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 20, y: target.y, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes.at(-1)?.color, 'ERASE', 'eraser operation persisted');
+    await click('Şekiller'); await click('Dikdörtgen');
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 45, y: target.y + 35, button: 'left' });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 45, y: target.y + 35, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    await click('Silme'); await click('Alan sil');
+    await cdp('Input.dispatchMouseEvent', { type: 'mousePressed', x: target.x - 10, y: target.y - 10, button: 'left', clickCount: 1 });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseMoved', x: target.x + 60, y: target.y + 50, button: 'left' });
+    await cdp('Input.dispatchMouseEvent', { type: 'mouseReleased', x: target.x + 60, y: target.y + 50, button: 'left', clickCount: 1 });
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.strokes.at(-1)?.color, 'AREA_ERASE', 'selection operation persisted');
+    assert.equal(await ev(`(() => { const c=document.querySelector('.page-ink-canvas'); const r=c.getBoundingClientRect(); const x=Math.round((${target.x}+20-r.x)*c.width/r.width), y=Math.round((${target.y}-r.y)*c.height/r.height); return c.getContext('2d').getImageData(x,y,1,1).data[3]; })()`), 0, 'selection clears ink inside rectangle');
+    await click('Hesap makinesi');
+    await ev(`(() => { const input=document.querySelector('#ink-calculation'); const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; setter.call(input,'sin(30)+sqrt(9)'); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
+    await ev(`document.querySelector('.calculator-equals').click()`);
+    await wait('document.querySelector(".calculator-result")?.textContent.includes("3.5")');
+    await click('Hesap makinesi');
+    await click('Grafik');
+    await wait('document.querySelector(".page-ink-graph") && document.querySelector(".graph-fields")');
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    await ev(`(() => { const input=document.querySelectorAll('.graph-fields input')[1]; const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; setter.call(input,'15'); input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
+    await ev(`document.querySelector('.graph-settings button[type="submit"]').click()`);
+    await wait('document.querySelector(".page-ink-status")?.textContent === "Kaydedildi"');
+    assert.equal(annotations.get('/api/page-annotations/QUESTION/1/1')?.graph?.xMax, 15, 'graph coordinates persisted');
+    checks.push({ label: 'full-page-ink', color: 'RED', save: 'passed', undo: 'passed', clickMode: 'passed',
+      shape: 'passed', eraser: 'passed', selectionErase: 'passed', calculator: 'passed', graph: 'passed' });
     for (const [width, height] of [[390,844],[320,568]]) {
       await cdp('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
       reset(); await open('/soru/TYT-0001'); await wait('document.querySelector(".choice:not(:disabled)")');

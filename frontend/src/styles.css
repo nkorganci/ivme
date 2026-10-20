@@ -66,6 +66,10 @@ main:focus { outline: none; }
 .topic-pdf-title { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topic-pdf-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .topic-pdf-viewer iframe { display: block; width: 100%; height: min(78vh, 900px); border: 1px solid var(--line); border-radius: 8px; }
+.pdf-page-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.pdf-page-nav input { width: 76px; padding: 4px; }
+.pdf-page-surface { position: relative; width: min(100%, 900px); margin: 0 auto; padding: 42px 0 28px; background: var(--surface); border: 1px solid var(--line); }
+.pdf-page-surface > canvas { display: block; width: 100%; }
 @media (max-width: 760px) {
   .topic-pdf-layout { grid-template-columns: 1fr; }
   .topic-pdf-sidebar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; }
@@ -787,7 +791,51 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
 /* Çözüm çalışma alanı: görsel ve karalama kalan ekran yüksekliğini paylaşır. */
-.qpage { height: calc(100dvh - var(--topbar-h) - 16px); min-height: 0; }
+.qpage { height: calc(100dvh - var(--topbar-h) - 32px); min-height: 0; }
+.qpage { position: relative; padding-top: 44px; }
+.page-ink { position: absolute; inset: 0; z-index: 20; pointer-events: none; }
+.page-ink-canvas { display: block; width: 100%; height: 100%; pointer-events: none; }
+.page-ink-canvas.writing { pointer-events: auto; cursor: crosshair; touch-action: none; }
+.page-ink-canvas.mode-erase { cursor: cell; }
+.page-ink-tools { position: absolute; top: 2px; left: 4px; right: 4px; z-index: 4; display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 4px; max-width: none; padding: 4px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); box-shadow: var(--shadow); pointer-events: auto; overflow-x: auto; }
+.page-ink-tools .btn { min-height: 32px; padding: 2px 6px; }
+.page-ink-tools .btn[aria-pressed="true"] { background: var(--tint); border-color: var(--navy); font-weight: 700; }
+.page-ink-colors { display: inline-flex; gap: 3px; flex: none; }
+.page-ink-color { display: grid; place-items: center; width: 30px; height: 30px; min-height: 30px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+.page-ink-color[aria-pressed="true"] { outline: 2px solid var(--focus); outline-offset: 1px; }
+.page-ink-color span { width: 18px; height: 18px; border-radius: 50%; background: var(--pen-black); }
+.page-ink-color.color-red span { background: var(--pen-red); }
+.page-ink-color.color-blue span { background: var(--pen-blue); }
+.page-ink-color.color-green span { background: var(--pen-green); }
+.page-ink-label, .page-ink-status { font-size: var(--fs-xs); }
+.page-ink-status { color: var(--text-muted); }
+.page-ink-tools .btn, .page-ink-status, .page-ink-label { flex: none; }
+.page-ink-panel { position: absolute; top: 46px; right: 4px; z-index: 5; display: grid; gap: 8px; width: min(360px, calc(100% - 8px)); max-height: min(72vh, 620px); padding: 10px; overflow: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); pointer-events: auto; }
+.page-ink-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.page-ink-panel-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.page-ink-panel-actions .btn[aria-pressed="true"] { background: var(--tint); border-color: var(--navy); }
+.page-ink-selection { position: absolute; z-index: 2; border: 2px dashed var(--bad); background: var(--bad-soft); pointer-events: none; }
+.page-ink-graph { position: absolute; top: 50%; left: 50%; width: min(65%, 430px); aspect-ratio: 1; transform: translate(-50%, -50%); background: var(--surface); border: 2px solid var(--navy); box-shadow: var(--shadow); pointer-events: none; }
+.page-ink-graph svg { display: block; width: 100%; height: 100%; }
+.graph-grid-line { stroke: var(--line); stroke-width: .35; vector-effect: non-scaling-stroke; }
+.graph-axis { stroke: var(--navy); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.graph-x-label, .graph-y-label { position: absolute; font-size: var(--fs-xs); background: var(--surface); }
+.graph-x-label { bottom: 0; right: 3px; }
+.graph-y-label { top: 3px; left: 3px; }
+.graph-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.graph-fields label { display: grid; gap: 2px; font-size: var(--fs-xs); }
+.graph-fields input, .calculator > input { width: 100%; min-width: 0; padding: 5px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.calculator-result { min-height: 25px; text-align: right; font-weight: 700; overflow-wrap: anywhere; }
+.calculator-actions { display: flex; gap: 4px; }
+.calculator-actions .btn { flex: 1; }
+.calculator-actions .btn[aria-pressed="true"] { background: var(--tint); border-color: var(--navy); }
+.calculator-keys { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.calculator-keys .btn { min-width: 0; padding: 2px; }
+.calculator-equals { width: 100%; }
+.pdf-page-surface .page-ink-tools { position: sticky; top: 4px; left: auto; right: auto; width: max-content; margin-left: auto; max-width: 100%; }
+.pdf-page-surface .page-ink-panel { position: fixed; top: 72px; right: 12px; }
+@media (max-width: 699px) { .pdf-page-surface .page-ink-tools { width: 100%; } .page-ink-graph { width: min(88%, 430px); } .pdf-page-surface .page-ink-panel { top: 52px; right: 6px; } }
+@media (max-width: 699px) { .qpage { height: calc(100dvh - var(--topbar-h) - 56px); padding-top: 44px; } }
 .qlayout, .exam-layout { flex: 1; min-height: 0; height: 100%; padding-bottom: 0; align-items: stretch; }
 .qmain, .exam-main { display: flex; flex-direction: column; min-height: 0; height: 100%; gap: 6px; }
 .qstrip { flex: none; min-width: 0; flex-wrap: nowrap; white-space: nowrap; gap: 6px; padding: 0 2px; min-height: 28px; }
@@ -841,8 +889,8 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
   .exam-side .navigator { position: fixed; max-height: 45vh; }
 }
 @media (max-width: 699px) {
-  .qlayout, .exam-layout { grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); gap: 6px; }
-  .qlayout:has(.qresult) { grid-template-rows: minmax(0, 2fr) minmax(0, 1fr); }
+  .qlayout, .exam-layout { grid-template-rows: minmax(0, 3.5fr) minmax(0, 1.5fr); gap: 6px; }
+  .qlayout:has(.qresult) { grid-template-rows: minmax(0, 2.5fr) minmax(0, 1fr); }
   .qmain .qresult { max-height: 80px; overflow: auto; }
   .qmain > .hint-card { max-height: 20%; }
   .qstrip .badge, .qstrip > .qtopic { display: none; }

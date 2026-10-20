@@ -19,6 +19,10 @@ const resourceUrl=(resource,selected,params)=>{
   const locatorType={PDF:'PDF',VIDEO:'VIDEO',NOTE:'NOTE'}[resource.kind];
   const media=related.flatMap(a=>a.locators || []).find(l=>l.type===locatorType);
   let url=locatedResourceUrl(resource.url,media);
+  if (resource.kind === 'PDF') {
+    const id = /^pdf:(\d+)$/.exec(resource.key)?.[1];
+    if (id) url = `/konu-anlatimlari/${id}${new URL(url, location.origin).hash}`;
+  }
   if(url.startsWith('/') && !url.startsWith('/api/')) {
     const target=new URL(url,location.origin);selected.forEach(id=>target.searchParams.append('categoryId',id));
     target.searchParams.set('categoryMatch',params.get('match') || params.get('categoryMatch') || 'ANY');
@@ -65,7 +69,7 @@ export default function LearningResources(){
       const name=r.displayTitle || r.title;const url=resourceUrl(r,selected,params);
       const canOpen=r.availability==='available' || r.kind==='VIDEO' && r.availability==='unverified';
       return <span>{r.url && canOpen
-        ? (r.url.startsWith('https://') || r.kind==='PDF' ? <a href={url} target="_blank" rel="noreferrer">{name} ↗</a>:<Link to={url}>{name}</Link>)
+        ? (url.startsWith('https://') ? <a href={url} target="_blank" rel="noreferrer">{name} ↗</a>:<Link to={url}>{name}</Link>)
         : <span>{name}<small className="muted"> · {availability[r.availability] || 'Bağlantı yok'}</small></span>}
         {r.originalTitle && r.originalTitle!==name && <small className="muted"> · {r.originalTitle}</small>}</span>;
     }},
@@ -78,7 +82,9 @@ export default function LearningResources(){
         return [title(c),a.scopeStatus==='CANDIDATE'?'Tahmini etiket':'',locators || (a.locatorStatus==='MISSING'?'Konum bekleniyor':'')].filter(Boolean).join(' · ');
       }).filter(Boolean)),r.manualReview?.label].filter(Boolean).join(' · ')},
     {headerName:'Manuel inceleme',minWidth:240,flex:1,wrapText:true,autoHeight:true,cellRenderer:({data:r})=>r.manualReview?
-      <span>{r.manualReview.label}{(r.manualReview.pages || []).map(p=><a key={p.page} href={`${r.url.split('#')[0]}#page=${p.page}`} target="_blank" rel="noreferrer" title={p.reason}> · s. {p.page}</a>)}</span>:''},
+      <span>{r.manualReview.label}{(r.manualReview.pages || []).map(p=>r.kind==='PDF'
+        ? <Link key={p.page} to={`${resourceUrl(r,selected,params).split('#')[0]}#page=${p.page}`} title={p.reason}> · s. {p.page}</Link>
+        : <a key={p.page} href={`${r.url.split('#')[0]}#page=${p.page}`} target="_blank" rel="noreferrer" title={p.reason}> · s. {p.page}</a>)}</span>:''},
     {headerName:'Eşleme durumu',field:'reviewStatus',minWidth:150,valueFormatter:({value})=>stateLabel[value] || 'Kontrol gerekli'},
     {headerName:'Sınıf',minWidth:160,wrapText:true,autoHeight:true,valueGetter:({data:r})=>(r.labels.grades||[]).join(' / ')+(r.labels.gradeStatus==='ESTIMATED'?' (tahmini)':'')},
     {headerName:'Erişim kontrolü',minWidth:155,valueGetter:({data:r})=>r.kind!=='VIDEO'?'':r.remoteAvailability==='OK'?'Sağlayıcı erişilebilir':r.mediaType==='PLAYLIST'?'Video listesi':'Erişim doğrulanamadı'},

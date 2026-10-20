@@ -93,7 +93,7 @@ public class HintService {
     private Optional<Explanation> explanation(Long questionId) {
         return jdbc.query("SELECT h.post_submission_explanation, h.catalog_id, h.source_page " + ELIGIBLE,
                 (rs, row) -> new Explanation(rs.getString(1),
-                        "/api/topic-pdfs/" + rs.getInt(2) + "/file#page=" + rs.getInt(3)),
+                        "/konu-anlatimlari/" + rs.getInt(2) + "#page=" + rs.getInt(3)),
                 questionId).stream().findFirst();
     }
 

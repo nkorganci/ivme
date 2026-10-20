@@ -63,6 +63,8 @@ public class AccountDataService {
                 + "FROM question_helpfulness WHERE user_id = ? ORDER BY question_id", userId));
         data.put("questionBoards", jdbc.queryForList("SELECT question_id, strokes_json, version, updated_at "
                 + "FROM question_boards WHERE user_id = ? ORDER BY question_id", userId));
+        data.put("pageAnnotations", jdbc.queryForList("SELECT resource_type, resource_id, page_number, strokes_json, graph_json, version, updated_at "
+                + "FROM page_annotations WHERE user_id = ? ORDER BY resource_type, resource_id, page_number", userId));
         data.put("feedback", jdbc.queryForList("SELECT question_id, category, difficulty_vote, rating, message, "
                 + "resolved, created_at, updated_at FROM feedback WHERE user_id = ? ORDER BY id", userId));
         data.put("activityEvents", jdbc.queryForList("SELECT session_key, event_type, active_seconds, created_at "
@@ -107,6 +109,7 @@ public class AccountDataService {
         jdbc.update("UPDATE feedback SET resolved_by = NULL WHERE resolved_by = ?", userId);
         jdbc.update("DELETE FROM feedback WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM question_boards WHERE user_id = ?", userId);
+        jdbc.update("DELETE FROM page_annotations WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM question_attempts WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM study_sessions WHERE user_id = ?", userId); // session_questions cascade
         jdbc.update("DELETE FROM exams WHERE user_id = ?", userId); // exam_questions cascade

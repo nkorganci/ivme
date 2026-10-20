@@ -68,7 +68,7 @@ class HintFlowTest extends TestBase {
         send(ayse, get("/api/exams/" + examId + "/questions/" + q.getId() + "/explanation"), null)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.text").value("Bu kural kaynak sayfada açıklanır."))
-                .andExpect(jsonPath("$.sourcePdfUrl").value("/api/topic-pdfs/1099/file#page=1"));
+                .andExpect(jsonPath("$.sourcePdfUrl").value("/konu-anlatimlari/1099#page=1"));
         jdbc.update("UPDATE question_taxonomy SET approval_status = 'PROPOSED' WHERE question_id = ?", q.getId());
         send(ayse, get("/api/exams/" + examId + "/questions/" + q.getId() + "/explanation"), null)
                 .andExpect(status().isNoContent());

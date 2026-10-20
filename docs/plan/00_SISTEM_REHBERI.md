@@ -436,6 +436,21 @@ TYT/AYT deneme çizelgeleri, gerçek sınav/cevap/sonuç, pratik oturumu ve olay
 öğrenci ilerlemesi, matematik dersleri ve geri bildirim PostgreSQL kayıtlarıdır.
 Rehber bilgi testi ve konu notu mini alıştırmalarının tamamlanan yanıtları
 `student_self_check_attempts` içinde kullanıcıya bağlı, deneme geçmişiyle saklanır.
+Soru bankası, pratik ve denemede soru kimliğine bağlı tam sayfa karalama;
+PDF görüntüleyicide katalog kimliği ve fiziksel sayfa numarasına bağlı karalama
+`page_annotations` içinde kullanıcıya özel saklanır. Yaz/Tıkla modu gezinmeyi
+korur; siyah, kırmızı, mavi, yeşil kalem rengi her çizgiyle kaydedilir. Çizgi
+bitince sürüm koşullu kayıt yapılır; geri alma, çizginin yalnız dokunulan kısmını
+silme, çerçeve içini silme ve
+tümünü silme yine sürümlü kayıt yapar. Eski oturumun yeni çizimi ezmesi 409 ile
+engellenir. Çizgi/şekil renkleri korunur. Bilimsel hesap makinesi ifadeleri kod
+çalıştırmadan ayrıştırır. Doğru, dikdörtgen, üçgen, çember/elips ve açı çizimi
+sayfa çizgisi olarak saklanır. Açılabilir kareli x‑y grafik kağıdının dört sınırı
+`graph_json` alanında her kaynak sayfası için ayrı saklanır (V73). PDF uygulama
+içinde sayfa sayfa çizilir; kaynak PDF'nin kendisi değiştirilmez. Eski soru yanı
+`question_boards` kayıtları ayrı ve erişilebilir kalır. Hesap veri dışa aktarımı
+ve hesap silme akışı bu kayıtları da içerir; denetim izi kaynak türü/kimlik/sayfayı
+taşır.
 Kenar menü ve soru görseli görünüm tercihleri `user_display_preferences` içindedir.
 `user_record_audit` önemli kayıt değişikliklerinin türünü, anahtarını, işlemini ve
 zamanını aynı veritabanı işleminde tutar; cevap ve serbest metinleri çoğaltmaz.

@@ -24,7 +24,7 @@ function StudyOverview({ data }) {
         <details><summary>Dersin kaynakları ve kapsamı</summary>
           <p className="muted small">{item.records.toLocaleString('tr-TR')} etkin yerel soru kaydı.{item.needsVisualReview > 0 && ` ${item.needsVisualReview.toLocaleString('tr-TR')} kayıtta görsel inceleme gerekiyor.`} Sayılar konu önem sırası veya sınavda çıkma olasılığı değildir.</p>
           <ul>{item.sources.map((source) => <li key={source.catalogId}>
-            <a href={`/api/topic-pdfs/${source.catalogId}/file`} target="_blank" rel="noreferrer">{source.title}</a>
+            <Link to={`/konu-anlatimlari/${source.catalogId}`}>{source.title}</Link>
           </li>)}</ul>
         </details>
       </li>)}</ul>
@@ -251,7 +251,7 @@ function PendingTopic({ topic, group, headingRef }) {
     <h2 ref={headingRef} tabIndex={-1}>{topic}</h2>
     <p>Bu başlık için soru kalıpları ve çözüm rehberi henüz doğrulanmadı. Hazır bir konu seçebilir veya dersin temel OGM kaynaklarını inceleyebilirsin.</p>
     <ul>{group.readingSources.map((source) => <li key={source.catalogId}>
-      <a href={`/api/topic-pdfs/${source.catalogId}/file`} target="_blank" rel="noreferrer">{source.title}</a>
+      <Link to={`/konu-anlatimlari/${source.catalogId}`}>{source.title}</Link>
       {' · '}<a href={source.url} target="_blank" rel="noreferrer">OGM aslı</a>
     </li>)}</ul>
     <Link to={`/kaynakli-ders-notlari/etiketler?ders=${group.labelGroups[0]}`}>Bu dersin soru kaynaklarını incele</Link>

@@ -5,6 +5,7 @@ import { ignoreHotkey, useAsync, useCountdown, usePageTitle } from '../hooks.js'
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import ExamNavigator from '../components/ExamNavigator.jsx';
 import ExamTools from '../components/ExamTools.jsx';
+import PageInk from '../components/PageInk.jsx';
 import Modal from '../components/Modal.jsx';
 import QuestionImage from '../components/QuestionImage.jsx';
 import Strip from '../components/Strip.jsx';
@@ -198,6 +199,7 @@ function ExamRunner({ exam }) {
       </header>
 
       <div className="container wide qpage">
+        <PageInk key={qid} type="QUESTION" id={qid} />
         <div className="exam-layout">
           <div className="exam-main">
             <div className="qstrip">
