@@ -11,7 +11,10 @@ import com.hedefyks.user.User;
 import com.hedefyks.user.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Locale;
 import java.util.Map;
@@ -35,6 +38,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    public record ActivityRequest(@NotNull @Min(1) @Max(90) Integer activeSeconds) {}
 
     private final UserRepository users;
     private final PasswordEncoder encoder;
@@ -127,8 +132,23 @@ public class AuthController {
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
         contextRepository.saveContext(context, request, response);
-        loginActivity.login(principal.id(), request.getSession());
+        loginActivity.login(principal.id(), request.getSession(), cloudflareCountry(request));
         return UserDto.of(signedIn);
+    }
+
+    @PostMapping("/activity")
+    public ResponseEntity<Void> recordActivity(@AuthenticationPrincipal AppUserDetails me,
+            @Valid @RequestBody ActivityRequest activity, HttpServletRequest request) {
+        loginActivity.active(me.id(), request.getSession(false), activity.activeSeconds());
+        return ResponseEntity.noContent().build();
+    }
+
+    private static String cloudflareCountry(HttpServletRequest request) {
+        if (request.getHeader("CF-Connecting-IP") == null) return null;
+        String country = request.getHeader("CF-IPCountry");
+        if (country == null) return null;
+        String normalized = country.trim().toUpperCase(Locale.ROOT);
+        return normalized.matches("[A-Z]{2}|T1") ? normalized : null;
     }
 
     private static boolean isLocalRequest(HttpServletRequest request) {

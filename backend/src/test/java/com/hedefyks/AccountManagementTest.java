@@ -39,12 +39,23 @@ class AccountManagementTest extends TestBase {
                 .andExpect(jsonPath("$.totalElements").value(6));
         for(var account:read(response).path("content")) {
             var fields=new java.util.ArrayList<String>(); account.fieldNames().forEachRemaining(fields::add);
-            assertThat(fields).containsExactlyInAnyOrder("id","username","email","role","enabled","siteManager","approved","createdAt");
+            assertThat(fields).containsExactlyInAnyOrder("id","username","email","role","enabled","siteManager","approved","createdAt","lastLoginAt","activeSeconds","countryCode");
         }
         mvc.perform(as(manager,get("/api/admin/accounts/summary"))).andExpect(status().isOk())
                 .andExpect(jsonPath("$.counts.ADMIN").value(2)).andExpect(jsonPath("$.counts.USER").value(1));
         mvc.perform(as(manager,get("/api/admin/accounts").param("role","USER"))).andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalElements").value(1));
+    }
+
+    @Test void kullaniciListesiGirisAktifSureVeUlkeBilgisiniDoner() throws Exception {
+        User manager=manager("siteManager");
+        User student=user("student",Role.USER);
+        jdbc.update("UPDATE users SET last_login_at=now(),active_seconds=125,last_login_country_code='TR' WHERE id=?",student.getId());
+        mvc.perform(as(manager,get("/api/admin/accounts").param("role","USER")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].lastLoginAt").isNotEmpty())
+                .andExpect(jsonPath("$.content[0].activeSeconds").value(125))
+                .andExpect(jsonPath("$.content[0].countryCode").value("TR"));
     }
 
     @Test void yonetim_yetkisi_ve_csrf_tum_islemlerde_zorunludur() throws Exception {

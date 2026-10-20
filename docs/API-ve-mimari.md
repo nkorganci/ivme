@@ -98,7 +98,12 @@ Matematik özel dersin `learning` verisi `categoryId`, `resourceKeys` (en çok 2
 çalışma durumu ve tekrar tarihini mevcut notlarla birlikte saklar. Bağlanan
 kaynak seçili kategoriyle katalog ilişkisi taşımalıdır. Sahiplik mevcut ders
 kaydıyla sınırlıdır. Haftalık programın benzer bağları kullanıcı/hafta başına
-tarayıcıda saklanır; bu çizelge için sunucu eşitleme API'si yoktur.
+PostgreSQL'deki `student_program_weeks` tablosunda saklanır. `GET/PUT
+/api/student-program/weeks/{pazartesi}` aynı hesabın bütün oturumlarında tek
+kaydı kullanır; `revision` ile eski sayfanın yeni kaydı ezmesi 409 ile önlenir.
+`GET/PUT /api/preferences/{sidebar-rail|question-image-fit}` görünüm tercihlerini
+hesapta saklar. Başarılı kayıt değişikliklerinin kısa izi `user_record_audit`
+tablosundadır; hata yanıtı başarılı kayıt gibi gösterilmez.
 
 Soru listesi, uygun soru sayımı, pratik ve deneme oluşturma `categoryId`,
 `categoryMatch=ANY|ALL`, `includeCandidates` alanlarını kabul eder. URL'de birden

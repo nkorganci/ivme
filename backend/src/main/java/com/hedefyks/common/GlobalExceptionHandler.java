@@ -6,6 +6,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DataAccessException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -59,7 +61,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     ResponseEntity<ErrorBody> integrity(DataIntegrityViolationException e) {
         log.warn("Veri bütünlüğü hatası (kısıt ihlali).");
-        return body(HttpStatus.CONFLICT, "Bu kayıt zaten var veya başka bir kayıtla çakışıyor.", null);
+        return body(HttpStatus.CONFLICT, "Kayıt veritabanındaki bütünlük kuralıyla çakıştı.", null);
+    }
+
+    @ExceptionHandler(DataAccessException.class)
+    ResponseEntity<ErrorBody> database(DataAccessException e, HttpServletRequest request) {
+        log.error("Veritabanı işlemi başarısız: {} {}", request.getMethod(), request.getRequestURI(), e);
+        metrics.recordUnexpected();
+        boolean read = "GET".equals(request.getMethod());
+        return body(HttpStatus.INTERNAL_SERVER_ERROR,
+                read ? "Veritabanından kayıt okunamadı." : "Veritabanına kayıt yapılamadı.", null);
     }
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)

@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { api, qs } from '../../api.js';
 import { useAuth } from '../../auth.jsx';
 import { useAsync } from '../../hooks.js';
-import { formatDate, formatNumber } from '../../format.js';
+import { formatDate, formatDateOnly, formatDuration, formatNumber } from '../../format.js';
 import DataGrid from '../../components/DataGrid.jsx';
 import Pager from '../../components/Pager.jsx';
 import Modal from '../../components/Modal.jsx';
@@ -16,11 +15,18 @@ const ROLES = [
   ['OPERATOR', 'İçerik operatörü', 'içerik operatörü'],
 ];
 const roleName = role => ROLES.find(([value]) => value === role)?.[1] || role;
+const countryNames = new Intl.DisplayNames(['tr-TR'], { type: 'region' });
+const countryName = code => !code ? 'Bilinmiyor' : code === 'XX' ? 'Bilinmiyor' : code === 'T1' ? 'Tor ağı' : `${countryNames.of(code)} (${code})`;
+const activeTime = seconds => {
+  if (!seconds) return 'Ölçüm bekleniyor';
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  return hours ? `${hours} sa ${minutes} dk` : formatDuration(seconds);
+};
 
 export default function AdminAccounts() {
   const { user } = useAuth();
-  const [params] = useSearchParams();
-  const [role, setRole] = useState(params.get('sekme') === 'ogrenciler' ? 'USER' : '');
+  const [role, setRole] = useState('');
   const [pendingOnly, setPendingOnly] = useState(false);
   const [draft, setDraft] = useState('');
   const [query, setQuery] = useState('');
@@ -28,7 +34,7 @@ export default function AdminAccounts() {
   const [revision, setRevision] = useState(0);
   const [action, setAction] = useState(null);
   const [notice, setNotice] = useState('');
-  const url = '/api/admin/accounts' + qs({ role, approved: pendingOnly ? false : '', query, page, size: 25 });
+  const url = '/api/admin/accounts' + qs({ role, approved: pendingOnly ? false : '', query, page, size: 100 });
   const { data, loading, error, retry } = useAsync(() => api.get(url), [url, revision]);
   const summary = useAsync(() => api.get('/api/admin/accounts/summary'), [revision]);
   useEffect(() => { if (data && page > 0 && !data.content.length) setPage(Math.max(0, data.totalPages - 1)); }, [data, page]);
@@ -37,13 +43,18 @@ export default function AdminAccounts() {
   const clear = () => { setDraft(''); setQuery(''); setPage(0); };
   const finished = message => { setAction(null); setNotice(message); setRevision(value => value + 1); };
   const columns = useMemo(() => [
-    { field: 'username', headerName: 'Kullanıcı adı', minWidth: 145 },
-    { field: 'email', headerName: 'E-posta', minWidth: 205 },
-    { field: 'role', headerName: 'Rol', minWidth: 145, valueFormatter: ({ value }) => roleName(value) },
-    { colId: 'status', headerName: 'Durum', minWidth: 145,
+    { colId: 'number', headerName: 'No', width: 42, minWidth: 42, maxWidth: 48, sortable: false, filter: false,
+      valueGetter: ({ node }) => page * 100 + node.rowIndex + 1 },
+    { field: 'username', headerName: 'Kullanıcı adı', minWidth: 105, maxWidth: 175, tooltipField: 'email' },
+    { field: 'email', headerName: 'E-posta', minWidth: 120, maxWidth: 190 },
+    { field: 'role', headerName: 'Rol', minWidth: 82, maxWidth: 125, valueFormatter: ({ value }) => roleName(value) },
+    { colId: 'status', headerName: 'Durum', minWidth: 86, maxWidth: 135,
       valueGetter: ({ data: account }) => !account.approved ? 'Onay bekliyor' : account.enabled ? 'Etkin' : 'Engelli' },
-    { field: 'createdAt', headerName: 'Kayıt tarihi', minWidth: 165, valueFormatter: ({ value }) => formatDate(value) },
-    { colId: 'actions', headerName: 'İşlemler', minWidth: 300, sortable: false, filter: false,
+    { field: 'createdAt', headerName: 'Kayıt tarihi', minWidth: 92, maxWidth: 112, valueFormatter: ({ value }) => formatDateOnly(value) },
+    { field: 'lastLoginAt', headerName: 'Son giriş', minWidth: 128, maxWidth: 160, valueFormatter: ({ value }) => formatDate(value) },
+    { field: 'activeSeconds', headerName: 'Aktif süre', headerTooltip: 'Ön planda ve etkileşim varken bu sürümden itibaren ölçülür.', minWidth: 100, maxWidth: 145, valueFormatter: ({ value }) => activeTime(value) },
+    { field: 'countryCode', headerName: 'Ülke', headerTooltip: 'Cloudflare ülke başlığı yoksa ülke belirlenemez.', minWidth: 88, maxWidth: 135, valueFormatter: ({ value }) => countryName(value) },
+    { colId: 'actions', headerName: 'İşlemler', minWidth: 220, maxWidth: 275, sortable: false, filter: false,
       cellRenderer: ({ data: account }) => account.id === user.id ? <span className="muted">Geçerli hesabın</span> :
         <div className="rate-row">
           {!account.approved && <button className="btn btn-primary btn-sm" type="button"
@@ -54,28 +65,28 @@ export default function AdminAccounts() {
           </button>
           <button className="btn btn-danger btn-sm" type="button" onClick={() => setAction({ account, kind: 'delete' })}>Sil</button>
         </div> },
-  ], [user.id]);
+  ], [page, user.id]);
   const selectedLabel = ROLES.find(([value]) => value === role)?.[2] || 'kullanıcı';
   return <section aria-label="Kullanıcı yönetimi">
     <h2>Kullanıcılar</h2>
     {summary.error && <ErrorBox error={summary.error} onRetry={summary.retry} />}
     <div className="rate-row" role="group" aria-label="Kullanıcı rolleri">
-      <button type="button" className="btn btn-secondary" aria-pressed={role === ''} onClick={() => selectRole('')}>
+      <button type="button" className={`btn ${role === '' ? 'btn-primary' : 'btn-secondary'}`} aria-pressed={role === ''} onClick={() => selectRole('')}>
         Tümü{summary.data ? ` (${formatNumber(summary.data.total)})` : ''}
       </button>
-      {ROLES.map(([value, label]) => <button key={value} type="button" className="btn btn-secondary"
+      {ROLES.map(([value, label]) => <button key={value} type="button" className={`btn ${role === value ? 'btn-primary' : 'btn-secondary'}`}
         aria-pressed={role === value} onClick={() => selectRole(value)}>
         {label}{summary.data ? ` (${formatNumber(summary.data.counts[value] || 0)})` : ''}
       </button>)}
     </div>
-    <label className="rate-row">
-      <input type="checkbox" checked={pendingOnly} onChange={event => { setPendingOnly(event.target.checked); setPage(0); }} />
+    <button type="button" className={`btn ${pendingOnly ? 'btn-primary' : 'btn-secondary'}`} aria-pressed={pendingOnly}
+      onClick={() => { setPendingOnly(value => !value); setPage(0); }}>
       Yalnız onay bekleyenler{summary.data ? ` (${formatNumber(summary.data.pending)})` : ''}
-    </label>
+    </button>
     <form className="filter-row" onSubmit={search}>
       <Field label="Kullanıcı ara" type="search" value={draft} maxLength={100}
         onChange={event => setDraft(event.target.value)} placeholder="Kullanıcı adı veya e-posta" />
-      <button type="submit" className="btn btn-primary">Ara</button>
+      <button type="submit" className={`btn ${query ? 'btn-primary' : 'btn-secondary'}`} aria-pressed={Boolean(query)}>Ara</button>
       {query && <button type="button" className="btn btn-secondary" onClick={clear}>Aramayı temizle</button>}
       <button type="button" className="btn btn-secondary" onClick={() => setRevision(value => value + 1)}>Yenile</button>
     </form>
@@ -85,7 +96,7 @@ export default function AdminAccounts() {
     {data && <>
       <p className="muted">{formatNumber(data.totalElements)} kullanıcı{query ? ' bulundu' : ' kayıtlı'}.</p>
       {data.content.length ? <div className="card table-card">
-        <DataGrid rowData={data.content} columnDefs={columns} showSearch={false} gridOptions={{ pagination: false }} />
+        <DataGrid rowData={data.content} columnDefs={columns} showSearch={false} fitContent gridOptions={{ pagination: false }} />
       </div> : <Empty title={query ? 'Aramaya uyan kullanıcı yok.' : `Henüz kayıtlı ${selectedLabel} yok.`} />}
       <Pager page={data.page} totalPages={data.totalPages} onChange={setPage} />
     </>}

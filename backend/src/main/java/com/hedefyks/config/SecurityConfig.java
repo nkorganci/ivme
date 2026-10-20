@@ -89,7 +89,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/stats").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").denyAll()
                         .requestMatchers("/api/operator/**").hasRole("OPERATOR")
-                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/auth/dev-review-available", "/api/account/**").authenticated()
+                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/auth/activity", "/api/auth/dev-review-available", "/api/account/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/questions/*/image", "/api/questions/*/solution-image")
                             .hasAnyRole("USER", "OPERATOR")
                         .requestMatchers("/api/**").hasRole("USER")

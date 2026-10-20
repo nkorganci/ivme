@@ -31,7 +31,7 @@ public class AccountDataService {
     public Map<String, Object> export(Long userId, String password) {
         User user = verifiedStudent(userId, password);
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("formatVersion", 2);
+        data.put("formatVersion", 3);
         data.put("exportedAt", Instant.now().toString());
         data.put("profile", Map.of("id", user.getId(), "username", user.getUsername(),
                 "email", user.getEmail(), "phone", user.getPhone() == null ? "" : user.getPhone(),
@@ -69,6 +69,16 @@ public class AccountDataService {
                 + "FROM activity_events WHERE user_id = ? ORDER BY id", userId));
         data.put("curriculumTopicProgress", jdbc.queryForList("SELECT topic_id, completed_at "
                 + "FROM curriculum_topic_progress WHERE user_id = ? ORDER BY topic_id", userId));
+        data.put("studentProgramWeeks", jdbc.queryForList("SELECT week_start, revision, rows::text AS rows, updated_at "
+                + "FROM student_program_weeks WHERE user_id = ? ORDER BY week_start", userId));
+        data.put("tytTrialSheets", jdbc.queryForList("SELECT revision, payload::text AS payload, updated_at "
+                + "FROM tyt_trial_sheets WHERE user_id = ?", userId));
+        data.put("aytTrialSheets", jdbc.queryForList("SELECT revision, payload::text AS payload, updated_at "
+                + "FROM ayt_trial_sheets WHERE user_id = ?", userId));
+        data.put("displayPreferences", jdbc.queryForList("SELECT preference_key, value "
+                + "FROM user_display_preferences WHERE user_id = ? ORDER BY preference_key", userId));
+        data.put("recordAudit", jdbc.queryForList("SELECT record_type, record_key, operation, revision, occurred_at "
+                + "FROM user_record_audit WHERE user_id = ? ORDER BY id", userId));
         data.put("tutorSessions", jdbc.queryForList("SELECT s.id, q.code AS question_code, s.status, s.outcome, "
                 + "s.started_at, s.finished_at FROM tutor_sessions s JOIN questions q ON q.id = s.question_id "
                 + "WHERE s.user_id = ? ORDER BY s.id", userId));

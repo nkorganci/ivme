@@ -420,13 +420,26 @@ ağırlıklı başarı her tür için filtrelenen denemelerden ayrı hesaplanır
 olmayan tür sıfır kayıt ve hesaplanmamış başarıyla korunur. Enterprise Set Filter
 kullanılmaz. Kullanıcının tercihiyle resmî veya tahmini puan hesaplanmaz.
 
-Haftalık çizelgede kategori ve `resourceKeys` bağları kullanıcı/hafta anahtarıyla
-mevcut tarayıcı deposunda saklanır; sunucu eşitlemesi yoktur. Matematik özel ders
+Haftalık çizelgede notlar, kategori ve `resourceKeys` bağları
+`student_program_weeks` tablosunda kullanıcı/hafta anahtarı ve artan sürümle
+saklanır. `GET/PUT /api/student-program/weeks/{pazartesi}` yalnız oturumdaki
+hesaba erişir; başka oturumun yeni kaydını yenilemeyle okur ve eski sürümle
+kaydetme 409 döner. Eski tarayıcı kopyası yalnız sunucu kaydı yoksa aktarılır;
+farklı bir sunucu kaydı varsa kullanıcı seçmeden üzerine yazılmaz. Matematik özel ders
 bağları mevcut kullanıcıya ait sunucu kaydındadır; bağlanan kaynağın seçili
 kategoriyle katalog ilişkisi doğrulanır. Serbest notlar korunur. Yeni haftaya
 kopyalamada kimlik ve notlar taşınır; çalışma durumu `Planlandı` olur, tekrar
 tarihi temizlenir. Yalnız kaynak bağı bulunan boş not satırı da silme/kısaltma
 korumasına girer.
+
+TYT/AYT deneme çizelgeleri, gerçek sınav/cevap/sonuç, pratik oturumu ve olayları,
+öğrenci ilerlemesi, matematik dersleri ve geri bildirim PostgreSQL kayıtlarıdır.
+Kenar menü ve soru görseli görünüm tercihleri `user_display_preferences` içindedir.
+`user_record_audit` önemli kayıt değişikliklerinin türünü, anahtarını, işlemini ve
+zamanını aynı veritabanı işleminde tutar; cevap ve serbest metinleri çoğaltmaz.
+Oturum/çözüm olayları `activity_events`, `question_attempts` ve öğretim olaylarında,
+hesap yönetimi kararları `account_audit` içinde tutulur. Kaydedilmemiş form
+taslakları oturum süresiyle sınırlıdır; başarılı kayıt için sunucu yanıtı gerekir.
 
 Ana içerik menüsü “Konular ve Kaynaklar”dır; “Soru Çöz & Pratik” ve Takip ayrı
 amaç taşır. `frontend/src/config.js` içindeki `STUDY_LABEL` menü/bağlantı adını,
@@ -676,6 +689,14 @@ taşıyan hesap `ROLE_SITE_MANAGER` alır. `GET /api/admin/accounts` tüm roller
 sayfalı listesini, `/summary` sıfır olan roller dahil sayıları döndürür.
 Kategori bilgisi boş eski USER hesapları öğrencidir. Yalnız liste alanları
 DTO'ya alınır; parola/hash/telefon ve çalışma içeriği gönderilmez.
+
+Yönetim sayfasında kullanıcılar tek tabloda listelenir; kayıt tarihi yerel gün/ay/yıl,
+son giriş zamanı `users.last_login_at`, toplam ölçülmüş etkin süre `users.active_seconds`
+ve son bilinen ülke `users.last_login_country_code` alanlarından gelir. Ön planda ve
+son 90 saniyede etkileşim olan sekme en çok 90 saniyelik etkinlik aralıkları gönderir;
+sunucu toplamı artırır. Bu ölçüm değişiklikten sonra başlar; eski etkin süre uydurulmaz.
+Ülke yalnız Cloudflare vekilinden hem `CF-Connecting-IP` hem `CF-IPCountry` gelirse
+kaydedilir; ham IP saklanmaz. Başlık yoksa ülke bilinmiyor olarak kalır.
 
 Engelleme/açma `enabled` alanını değiştirir. Silme, hesabı `archived_at` ve
 `enabled=false` ile kapatıp normal listeden kaldırır; öğrenci geçmişi, ortak

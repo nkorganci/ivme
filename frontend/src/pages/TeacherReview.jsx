@@ -59,12 +59,18 @@ function Editor({ data, topics, catalog, onSaved, onNext, onReload, onClose }) {
   const draftKey = `ivme.teacher-review.${user.id}.${item.key}`;
   const lastKey = `ivme.teacher-review.last-labels.${user.id}`;
   const [decision, setDecision] = useState(() => {
-    try { const draft = JSON.parse(localStorage.getItem(draftKey));
+    try { const draft = JSON.parse(sessionStorage.getItem(draftKey) || localStorage.getItem(draftKey));
       if (draft?.fingerprint === data.fingerprint && draft.revision === (data.review?.revision || 0)) return { ...baseline, ...draft.decision };
     } catch { /* Server saves remain available. */ }
     return baseline;
   });
-  const [lastLabels, setLastLabels] = useState(() => { try { return JSON.parse(localStorage.getItem(lastKey)); } catch { return null; } });
+  const [lastLabels, setLastLabels] = useState(() => { try { return JSON.parse(sessionStorage.getItem(lastKey) || localStorage.getItem(lastKey)); } catch { return null; } });
+  useEffect(() => {
+    try {
+      if (lastLabels) sessionStorage.setItem(lastKey, JSON.stringify(lastLabels));
+      localStorage.removeItem(lastKey);
+    } catch { /* Önceki etiketler isteğe bağlı kolaylıktır. */ }
+  }, [lastKey, lastLabels]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [notice, setNotice] = useState('');
@@ -73,8 +79,9 @@ function Editor({ data, topics, catalog, onSaved, onNext, onReload, onClose }) {
   const patch = values => { setDecision(d => ({ ...d, ...values })); setNotice(''); };
 
   useEffect(() => {
-    try { if (dirty) localStorage.setItem(draftKey, JSON.stringify({ fingerprint: data.fingerprint, revision: data.review?.revision || 0, decision }));
-      else localStorage.removeItem(draftKey);
+    try { if (dirty) sessionStorage.setItem(draftKey, JSON.stringify({ fingerprint: data.fingerprint, revision: data.review?.revision || 0, decision }));
+      else sessionStorage.removeItem(draftKey);
+      localStorage.removeItem(draftKey);
     } catch { setStorageFailed(true); }
   }, [decision, dirty, draftKey, data]);
   useEffect(() => {
@@ -101,9 +108,10 @@ function Editor({ data, topics, catalog, onSaved, onNext, onReload, onClose }) {
     try {
       const saved = await api.put(API, { ...decision, key: item.key, fingerprint: data.fingerprint, revision: data.review?.revision || 0 });
       try {
+        sessionStorage.removeItem(draftKey);
         localStorage.removeItem(draftKey);
         const labels = { assignments: decision.assignments, difficulty: decision.difficulty, contentFormat: decision.contentFormat, skills: decision.skills, grades: decision.grades };
-        localStorage.setItem(lastKey, JSON.stringify(labels)); setLastLabels(labels);
+        sessionStorage.setItem(lastKey, JSON.stringify(labels)); localStorage.removeItem(lastKey); setLastLabels(labels);
       } catch { /* Optional browser convenience. */ }
       onSaved(saved); if (next) onNext();
     } catch (err) { setError(err); } finally { setBusy(false); }
@@ -115,7 +123,7 @@ function Editor({ data, topics, catalog, onSaved, onNext, onReload, onClose }) {
       const ids=new Set(catalog.categories.filter(c=>c.canonicalTopic).map(c=>c.id));
       const saved=await api.put(API+'/topics',{key:item.key,fingerprint:data.fingerprint,
         revision:data.review?.revision || 0,assignments:decision.assignments.filter(a=>ids.has(a.categoryId)),note:decision.note});
-      localStorage.removeItem(draftKey);onSaved(saved);onNext();
+      sessionStorage.removeItem(draftKey);localStorage.removeItem(draftKey);onSaved(saved);onNext();
     } catch(err) {setError(err);} finally {setBusy(false);}
   };
 

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { imageUrl, solutionImageUrl } from '../api.js';
-
-const FIT_KEY = 'yks.imgfit.v2';
+import { useDisplayPreference } from '../useDisplayPreference.js';
 
 /**
  * Soru görseli: alanında ortalanır, tıklayınca büyür; yüklenemezse bilgi kutusu gösterir.
@@ -12,7 +11,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
   const [loaded, setLoaded] = useState(false);
   const [zoom, setZoom] = useState(false);
   const [natural, setNatural] = useState(null);
-  const [fit, setFit] = useState(() => localStorage.getItem(FIT_KEY) !== '0');
+  const [fit, setFit, preferenceError] = useDisplayPreference('question-image-fit', true);
   const [box, setBox] = useState({ w: 0, h: 0 });
   const wrap = useRef(null);
   const imgRef = useRef(null);
@@ -59,12 +58,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
     };
   }, [solution]);
 
-  const toggleFit = () => {
-    setFit((f) => {
-      localStorage.setItem(FIT_KEY, f ? '0' : '1');
-      return !f;
-    });
-  };
+  const toggleFit = () => setFit(!fit);
 
   // Genişlik ve yükseklik sınırlarının ikisine de uy; uzun sorular için alt ölçek sınırı koyma.
   const fitWidth = useMemo(() => {
@@ -119,6 +113,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
       >
         {fit ? '↔ Genişlet' : '⤢ Sığdır'}
       </button>
+      {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
       {zoom && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={(e) => e.target === e.currentTarget && setZoom(false)}>
           <button type="button" className="icon-btn lightbox-close" aria-label="Kapat" autoFocus onClick={() => setZoom(false)}>

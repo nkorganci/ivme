@@ -106,6 +106,25 @@ class AuthTest extends TestBase {
     }
 
     @Test
+    void oturumEtkinSuresiniVeYalnizGuvenilirUlkesiniKaydeder() throws Exception {
+        user("etkin", Role.USER);
+        MockHttpSession session = new MockHttpSession();
+        mvc.perform(post("/api/auth/login").session(session).with(csrf())
+                        .header("CF-Connecting-IP", "203.0.113.9").header("CF-IPCountry", "tr")
+                        .contentType(MediaType.APPLICATION_JSON).content("{\"login\":\"etkin\",\"password\":\"Sifre1234\"}"))
+                .andExpect(status().isOk());
+        send(session, post("/api/auth/activity"), "{\"activeSeconds\":30}").andExpect(status().isNoContent());
+        send(session, post("/api/auth/activity"), "{\"activeSeconds\":91}").andExpect(status().isBadRequest());
+        assertThat(jdbc.queryForObject("SELECT last_login_country_code FROM users WHERE username='etkin'", String.class))
+                .isEqualTo("TR");
+        assertThat(jdbc.queryForObject("SELECT last_login_at IS NOT NULL FROM users WHERE username='etkin'", Boolean.class))
+                .isTrue();
+        assertThat(jdbc.queryForObject("SELECT active_seconds FROM users WHERE username='etkin'", Long.class)).isEqualTo(30L);
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM activity_events WHERE user_id=(SELECT id FROM users WHERE username='etkin') AND event_type='ACTIVE'", Integer.class))
+                .isEqualTo(1);
+    }
+
+    @Test
     void yetkiKurallari() throws Exception {
         user("ayse", Role.USER);
         user("yonetici", Role.ADMIN);

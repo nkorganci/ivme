@@ -7,6 +7,7 @@ import Icon from './Icons.jsx';
 import { api } from '../api.js';
 import { CURRICULUM } from '../curriculum.js';
 import ResourcesNavigation,{RESOURCE_HOME,isResourcePath,ResourceNavigationContext} from './ResourcesNavigation.jsx';
+import { useDisplayPreference } from '../useDisplayPreference.js';
 
 const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
@@ -18,7 +19,6 @@ const ITEMS = [
   ['/gecmis', STATISTICS_LABEL, 'clock'],
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
-const RAIL_KEY = 'yks.sidebar';
 const TRACKING_PATH = '/ogrenci-takip';
 const REVIEW_PATH = '/ogretmen-dogrulamasi';
 const REVIEW_BRANCHES = [...new Map(Object.values(CURRICULUM).flat().map(s => [s.id, s.name])).entries()];
@@ -40,7 +40,7 @@ function isActive(path, to) {
 }
 
 /**
- * Sol menü + içerik. Masaüstünde sabit menü (ray moduna daralır; tercih localStorage'da),
+ * Sol menü + içerik. Masaüstünde sabit menü (ray moduna daralır; tercih hesapta saklanır),
  * soru sayfasında varsayılan ray; dar ekranda üst ince çubuk + sol çekmece.
  */
 export default function Layout() {
@@ -66,7 +66,7 @@ export default function Layout() {
   };
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [pref, setPref] = useState(() => localStorage.getItem(RAIL_KEY) === 'rail'); // true = ray
+  const [pref, setPref, preferenceError] = useDisplayPreference('sidebar-rail', false); // true = ray
   const [questionOpen, setQuestionOpen] = useState(false); // soru sayfasında kullanıcı menüyü genişletti mi
   const [drawer, setDrawer] = useState(false);
   const sidebarRef=useRef(null);
@@ -117,7 +117,6 @@ export default function Layout() {
       return;
     }
     const next = !pref;
-    localStorage.setItem(RAIL_KEY, next ? 'rail' : 'full');
     setPref(next);
   };
 
@@ -230,6 +229,7 @@ export default function Layout() {
           </Link>
         </header>
         <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
+          {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
           {isResourcePath(pathname) && <ResourcesNavigation/>}
           <Outlet context={{ setQuestionBank }} />
         </main>

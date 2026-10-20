@@ -47,6 +47,7 @@ function ExamRunner({ exam }) {
   const [answers, setAnswers] = useState(() => Object.fromEntries(questions.map((q) => [q.questionId, q.selectedAnswer || null])));
   const [flags, setFlags] = useState(() => new Set());
   const [unsaved, setUnsaved] = useState(() => new Set()); // sunucuya yazılamayan sorular
+  const [answerError, setAnswerError] = useState('');
   const [index, setIndex] = useState(() => {
     const next = questions.findIndex(question => !question.selectedAnswer);
     return next < 0 ? 0 : next;
@@ -121,9 +122,10 @@ function ExamRunner({ exam }) {
           next.delete(qid);
           return next;
         });
+        setAnswerError('');
       } catch (e) {
         if (e.status === 409) toResult();
-        else setUnsaved((s) => new Set(s).add(qid));
+        else { setUnsaved((s) => new Set(s).add(qid)); setAnswerError(e.message); }
       }
     },
     [exam.id, qid, toResult],
@@ -190,7 +192,7 @@ function ExamRunner({ exam }) {
             </section>
             <section className="qdock exam-answer-card" aria-label={`${index + 1}. sorunun cevap şıkları ve gezinme`}>
               {submitError ? <Strip tone="bad">✗ {submitError}</Strip>
-                : unsaved.size > 0 && <Strip tone="warn">⚠ Bazı cevaplar sunucuya kaydedilemedi; sınavı bitirirken birlikte gönderilecek.</Strip>}
+                : unsaved.size > 0 && <Strip tone="warn">⚠ Cevap kaydedilemedi: {answerError} Sınavı bitirirken yeniden gönderilecek.</Strip>}
               <div className="qbar">
                 <button type="button" className="btn btn-secondary" disabled={index === 0} onClick={() => go(index - 1)} title="Önceki soru (←)">‹ Önceki</button>
                 <ChoiceButtons count={q.choiceCount} value={answers[qid]} onSelect={choose} />

@@ -69,6 +69,7 @@ function TytTrialsForUser({ userId }) {
   const [saveStatus, setSaveStatus] = useState('loading');
   const [saveError, setSaveError] = useState('');
   const [loadAttempt, setLoadAttempt] = useState(0);
+  const [legacyMissing, setLegacyMissing] = useState([]);
   const actions = useRef({});
   const revision = useRef(0);
   const savedSnapshot = useRef(null);
@@ -89,6 +90,8 @@ function TytTrialsForUser({ userId }) {
       const legacy = load(key);
       const importLegacy = remote.revision === 0
         && (legacy.rows.length > 0 || legacy.obp !== '' || legacy.area !== 'TYT');
+      const serverIds = new Set(serverState.rows.map(row => row.id));
+      setLegacyMissing(remote.revision > 0 ? legacy.rows.filter(row => !serverIds.has(row.id)) : []);
       revision.current = remote.revision;
       savedSnapshot.current = JSON.stringify(serverState);
       migrating.current = importLegacy;
@@ -177,6 +180,11 @@ function TytTrialsForUser({ userId }) {
       || Number(value.replace(',', '.')) > 500)) return;
     setState((current) => ({ ...current, obp: value.replace(',', '.') }));
   };
+  const importMissingTrials = () => {
+    migrating.current = true;
+    setState(current => ({ ...current, rows: [...current.rows, ...legacyMissing] }));
+    setLegacyMissing([]);
+  };
   if (!state) return <>
     <h2>TYT Deneme Takibi</h2>
     {saveStatus === 'load-error'
@@ -185,6 +193,7 @@ function TytTrialsForUser({ userId }) {
   </>;
   return <>
     <h2>TYT Deneme Takibi</h2>
+    {legacyMissing.length > 0 && <p className="field-error" role="alert">Bu tarayıcıda veritabanında bulunmayan {legacyMissing.length} eski deneme var. <button type="button" className="btn btn-secondary" onClick={importMissingTrials}>Eksik denemeleri veritabanına ekle</button></p>}
     <p className="muted">120 soru · 165 dakika. Matematik, Türkçe, Fen ve Sosyal netlerini girin; TYT toplam neti, puanı ve tahmini sıra anında hesaplanır.</p>
     <div className="tyt-controls card">
       <label className="field"><span className="field-label">Hedef alan</span>

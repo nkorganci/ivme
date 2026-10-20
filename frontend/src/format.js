@@ -46,6 +46,11 @@ export function formatDate(value) {
   return new Date(value).toLocaleString('tr-TR');
 }
 
+export function formatDateOnly(value) {
+  if (!value) return '—';
+  return new Date(value).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
 const DIFFICULTY = { KOLAY: 'Kolay', ORTA: 'Orta', ZOR: 'Zor' };
 export const difficultyLabel = (d) => DIFFICULTY[d] || '—';
 export const DIFFICULTIES = ['KOLAY', 'ORTA', 'ZOR'];

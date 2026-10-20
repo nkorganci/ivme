@@ -3,6 +3,41 @@ import { api, setUnauthorizedHandler } from './api.js';
 
 const AuthContext = createContext(null);
 
+function ActiveTimeRecorder({ userId }) {
+  useEffect(() => {
+    let lastTick = Date.now();
+    let lastInteraction = lastTick;
+    const lockKey = `ivme.active-heartbeat.${userId}`;
+    const interacted = () => { lastInteraction = Date.now(); };
+    const resetTick = () => { lastTick = Date.now(); };
+    const heartbeat = () => {
+      const now = Date.now();
+      const activeSeconds = Math.min(90, Math.round((now - lastTick) / 1000));
+      lastTick = now;
+      if (document.visibilityState !== 'visible' || !navigator.onLine || now - lastInteraction > 90_000 || activeSeconds < 1) return;
+      if (navigator.locks?.request) {
+        navigator.locks.request(lockKey, { ifAvailable: true }, async lock => {
+          if (!lock) return;
+          await api.post('/api/auth/activity', { activeSeconds }).catch(() => {});
+          await new Promise(resolve => window.setTimeout(resolve, 28_000));
+        }).catch(() => {});
+      } else {
+        api.post('/api/auth/activity', { activeSeconds }).catch(() => {});
+      }
+    };
+    const events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+    events.forEach(event => window.addEventListener(event, interacted, { passive: true }));
+    document.addEventListener('visibilitychange', resetTick);
+    const timer = window.setInterval(heartbeat, 30_000);
+    return () => {
+      window.clearInterval(timer);
+      events.forEach(event => window.removeEventListener(event, interacted));
+      document.removeEventListener('visibilitychange', resetTick);
+    };
+  }, [userId]);
+  return null;
+}
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -73,7 +108,7 @@ export function AuthProvider({ children }) {
 
   const value = useMemo(() => ({ user, loading, devAutoLogin, login, register, logout, refreshUser, switchAccount }),
     [user, loading, devAutoLogin, login, register, logout, refreshUser, switchAccount]);
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={value}>{children}{user && <ActiveTimeRecorder key={user.id} userId={user.id} />}</AuthContext.Provider>;
 }
 
 export function useAuth() {

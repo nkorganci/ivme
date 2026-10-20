@@ -5,7 +5,7 @@ import Modal from '../components/Modal.jsx';
 import SharedCategorySelect from '../components/SharedCategorySelect.jsx';
 import SharedResourceSelect from '../components/SharedResourceSelect.jsx';
 import {Link} from 'react-router-dom';
-import {qs} from '../api.js';
+import {api, qs} from '../api.js';
 import { usePageTitle } from '../hooks.js';
 import { addRow, changeInterval, cloneRows, formatTime, makeRows, nextWeekRows, parseTimeRange, removeRow, rowHasContent, rowStart, validRows } from '../studentSchedule.js';
 
@@ -31,9 +31,9 @@ function weekKey(date) {
 function loadWeek(key) {
   try {
     const stored = JSON.parse(localStorage.getItem(key));
-    if (validRows(stored)) return { rows: stored, saved: JSON.stringify(stored) };
+    if (validRows(stored)) return stored;
   } catch { /* Bozuk veya erişilemeyen kayıt yerine boş çizelge açılır. */ }
-  return { rows: makeRows(), saved: null };
+  return null;
 }
 
 function AutoTextarea({ value, ...props }) {
@@ -67,10 +67,14 @@ export default function StudentTracking() {
   usePageTitle('Haftalık Program');
   const { user } = useAuth();
   const [monday, setMonday] = useState(() => mondayOf(new Date()));
-  const key = `student-tracking:${user.id}:${weekKey(monday)}`;
-  const [initial] = useState(() => loadWeek(key));
-  const [rows, setRows] = useState(initial.rows);
-  const [saved, setSaved] = useState(initial.saved);
+  const [rows, setRows] = useState(makeRows);
+  const [saved, setSaved] = useState(JSON.stringify(makeRows()));
+  const [revision, setRevision] = useState(0);
+  const [ready, setReady] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  const [legacyRows, setLegacyRows] = useState(null);
+  const pendingReplacement = useRef(null);
   const [drafts, setDrafts] = useState({});
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
@@ -79,6 +83,46 @@ export default function StudentTracking() {
   const actions = useRef({});
   const past = monday < mondayOf(new Date());
   const dirty = JSON.stringify(rows) !== (saved ?? JSON.stringify(makeRows()));
+
+  useEffect(() => {
+    let active = true;
+    const mondayKey = weekKey(monday);
+    const legacyKey = `student-tracking:${user.id}:${mondayKey}`;
+    const path = `/api/student-program/weeks/${mondayKey}`;
+    const chosen = pendingReplacement.current;
+    pendingReplacement.current = null;
+    setReady(false);
+    setError('');
+    (async () => {
+      let remote = await api.get(path);
+      const legacy = loadWeek(legacyKey);
+      if (!remote) {
+        if (legacy) {
+          try {
+            remote = await api.put(path, { rows: legacy, revision: 0 });
+            try { localStorage.removeItem(legacyKey); } catch { /* Sunucu kaydı geçerli. */ }
+          } catch (error) {
+            if (error.status !== 409) throw error;
+            remote = await api.get(path);
+          }
+        }
+      }
+      if (!active) return;
+      const serverRows = remote && validRows(remote.rows) ? remote.rows : makeRows();
+      const oldCopy = legacy && JSON.stringify(legacy) !== JSON.stringify(serverRows) ? legacy : null;
+      setLegacyRows(oldCopy);
+      if (legacy && !oldCopy) {
+        try { localStorage.removeItem(legacyKey); } catch { /* Sunucu kaydı geçerli. */ }
+      }
+      setRows(chosen ?? serverRows);
+      setSaved(JSON.stringify(serverRows));
+      setRevision(remote?.revision ?? 0);
+      setReady(true);
+    })().catch((error) => {
+      if (active) setError(`Program veritabanından yüklenemedi: ${error.message}`);
+    });
+    return () => { active = false; };
+  }, [monday, user.id, loadAttempt]);
 
   useEffect(() => {
     if (!dirty) return undefined;
@@ -93,16 +137,25 @@ export default function StudentTracking() {
     setNotice('');
   };
 
-  const save = () => {
-    if (past) return;
+  const save = async () => {
+    if (past || !ready || saving) return false;
     const serialized = JSON.stringify(rows);
+    setSaving(true);
     try {
-      localStorage.setItem(key, serialized);
+      const result = await api.put(`/api/student-program/weeks/${weekKey(monday)}`,
+        { rows, revision });
+      try { localStorage.removeItem(`student-tracking:${user.id}:${weekKey(monday)}`); } catch { /* Eski kopya kalabilir; sunucu esas alınır. */ }
+      setLegacyRows(null);
+      setRevision(result.revision);
       setSaved(serialized);
       setError('');
-      setNotice('Hafta kaydedildi.');
-    } catch {
-      setError('Değişiklik tarayıcıya kaydedilemedi. Depolama alanını kontrol edin.');
+      setNotice('Hafta veritabanına kaydedildi.');
+      return true;
+    } catch (error) {
+      setError(error.message);
+      return false;
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -129,10 +182,9 @@ export default function StudentTracking() {
   };
 
   const openWeek = (target, replacement = null) => {
-    const stored = loadWeek(`student-tracking:${user.id}:${weekKey(target)}`);
+    pendingReplacement.current = replacement;
     setMonday(target);
-    setRows(replacement ?? stored.rows);
-    setSaved(stored.saved);
+    setReady(false);
     setDrafts({});
     setError('');
     setNotice('');
@@ -141,10 +193,10 @@ export default function StudentTracking() {
 
   const canLeave = () => !dirty || window.confirm('Kaydedilmemiş değişiklikler var. Kaydetmeden devam edilsin mi?');
 
-  const goPrevious = () => { if (canLeave()) openWeek(dateAt(monday, -7)); };
-  const goToday = () => { if (canLeave()) openWeek(mondayOf(new Date())); };
+  const goPrevious = () => { if (ready && !saving && canLeave()) openWeek(dateAt(monday, -7)); };
+  const goToday = () => { if (ready && !saving && canLeave()) openWeek(mondayOf(new Date())); };
   const goNext = () => {
-    if (!canLeave()) return;
+    if (!ready || saving || !canLeave()) return;
     const target = dateAt(monday, 7);
     if (target < mondayOf(new Date())) openWeek(target);
     else setNextWeek(target);
@@ -198,19 +250,22 @@ export default function StudentTracking() {
   return <>
     <h2>Haftalık Program</h2>
     <p className="muted">Haftalık çalışma çizelgesi. Saat aralığını düzenlediğinizde sonraki satırlar otomatik güncellenir.</p>
-    <p className="muted small">Konu durumu sizin çalışma kaydınızdır. Bağlı kaynakları açmak PDF sayfalarını veya video süresini tamamlamaz. Çizelge bu tarayıcıda, hesabınıza göre saklanır.</p>
+    <p className="muted small">Konu durumu sizin çalışma kaydınızdır. Bağlı kaynakları açmak PDF sayfalarını veya video süresini tamamlamaz. Çizelge hesabınızda saklanır ve diğer oturumlarda sayfa yenilenince görünür.</p>
     <div className="tracking-toolbar">
-      <button type="button" className="btn btn-secondary" onClick={goPrevious}>Önceki hafta</button>
+      <button type="button" className="btn btn-secondary" onClick={goPrevious} disabled={!ready || saving}>Önceki hafta</button>
       <strong>{DATE_FORMAT.format(monday)} – {DATE_FORMAT.format(dateAt(monday, 6))} {dateAt(monday, 6).getFullYear()}</strong>
-      <button type="button" className="btn btn-secondary" onClick={goNext}>Sonraki hafta</button>
-      <button type="button" className="btn btn-secondary" onClick={goToday}>Bu hafta</button>
-      <button type="button" className="btn btn-primary" onClick={save} disabled={past}
+      <button type="button" className="btn btn-secondary" onClick={goNext} disabled={!ready || saving}>Sonraki hafta</button>
+      <button type="button" className="btn btn-secondary" onClick={goToday} disabled={!ready || saving}>Bu hafta</button>
+      <button type="button" className="btn btn-primary" onClick={save} disabled={past || !ready || saving}
         title={past ? 'Geçmiş haftalar düzenlenemez' : 'Bu haftayı kaydet'}>Kaydet</button>
     </div>
     {past && <p className="muted small">Geçmiş haftalar görüntülenebilir, düzenlenemez.</p>}
     {!past && dirty && <p className="muted small">Kaydedilmemiş değişiklikler var.</p>}
     {error && <p className="field-error" role="alert">{error}</p>}
+    {ready && legacyRows && <p className="field-error" role="alert">Bu tarayıcıda, veritabanındaki haftadan farklı eski bir kayıt var. <button type="button" className="btn btn-secondary" onClick={() => { setRows(legacyRows); setLegacyRows(null); setNotice('Eski kayıt açıldı. Veritabanına geçirmek için Kaydet düğmesine basın.'); }}>Eski kaydı aç</button></p>}
+    {!ready && <p role="status">Program veritabanından yükleniyor… <button type="button" className="btn btn-secondary" onClick={() => setLoadAttempt(n => n + 1)}>Tekrar dene</button></p>}
     {notice && <p className="alert alert-success" role="status">{notice}</p>}
+    {ready && <>
     <div className="card tracking-scroll worksheet-frame">
       <DataGrid mode="worksheet" scrollable className="tracking-grid" rowData={gridRows} columnDefs={columns}
         gridOptions={{ getRowId: ({ data }) => String(data.index), context: { actions }, rowHeight: 64 }} />
@@ -235,16 +290,17 @@ export default function StudentTracking() {
         next[bindingCell.index].bindings[bindingCell.day]={...next[bindingCell.index].bindings[bindingCell.day],reviewDate:e.target.value};updateRows(next);
       }}/></label></fieldset>
       <div className="tracking-binding-actions"><Link to={'/konular-ve-kaynaklar'+qs({categoryId:rows[bindingCell.index].bindings?.[bindingCell.day]?.categoryId || []})}>Bu konunun kaynakları</Link>
-      {!past && <button type="button" className="btn btn-primary" onClick={()=>{save();setBindingCell(null);}}>Haftayı kaydet</button>}
+      {!past && <button type="button" className="btn btn-primary" onClick={async ()=>{if(await save())setBindingCell(null);}} disabled={saving}>Haftayı kaydet</button>}
       </div>
     </Modal>}
     {nextWeek && <Modal title="Sonraki hafta" onClose={() => setNextWeek(null)} footer={<>
       <button type="button" className="btn btn-primary" onClick={() => chooseNext('copy')}>Aynısını kopyala</button>
       <button type="button" className="btn btn-secondary" onClick={() => chooseNext('blank')}>Boş hafta aç</button>
-      {loadWeek(`student-tracking:${user.id}:${weekKey(nextWeek)}`).saved && <button type="button" className="btn btn-secondary" onClick={() => chooseNext('existing')}>Kaydedilmiş haftayı aç</button>}
+      <button type="button" className="btn btn-secondary" onClick={() => chooseNext('existing')}>Haftayı aç</button>
     </>}>
       <p>{DATE_FORMAT.format(nextWeek)} haftası nasıl açılsın?</p>
       <p className="muted small">Her iki seçenekte saat satırları korunur; tarihler yeni haftaya göre güncellenir. “Boş hafta aç” çalışma notlarını temizler.</p>
     </Modal>}
+    </>}
   </>;
 }

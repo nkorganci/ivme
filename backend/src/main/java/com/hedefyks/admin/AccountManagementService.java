@@ -17,10 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AccountManagementService {
     public record Account(Long id, String username, String email, Role role, boolean enabled,
-                          boolean siteManager, boolean approved, Instant createdAt) {
+                          boolean siteManager, boolean approved, Instant createdAt,
+                          Instant lastLoginAt, long activeSeconds, String countryCode) {
         static Account of(User user) {
             return new Account(user.getId(), user.getUsername(), user.getEmail(), user.getRole(),
-                    user.isEnabled(), user.isSiteManager(), user.isApproved(), user.getCreatedAt());
+                    user.isEnabled(), user.isSiteManager(), user.isApproved(), user.getCreatedAt(),
+                    user.getLastLoginAt(), user.getActiveSeconds(), user.getLastLoginCountryCode());
         }
     }
     public record Summary(long total, Map<Role, Long> counts, long pending) {}

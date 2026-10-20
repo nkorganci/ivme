@@ -109,7 +109,7 @@ public class DevLoginController {
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
         contexts.saveContext(context, request, response);
-        activity.login(principal.id(), request.getSession());
+        activity.login(principal.id(), request.getSession(), null);
         return UserDto.of(student);
     }
 

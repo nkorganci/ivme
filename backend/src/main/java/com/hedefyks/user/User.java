@@ -57,6 +57,12 @@ public class User {
     @Column(name="last_seen_at")
     private Instant lastSeenAt;
 
+    @Column(name="active_seconds", nullable=false)
+    private long activeSeconds;
+
+    @Column(name="last_login_country_code", length=2)
+    private String lastLoginCountryCode;
+
     @Column(name = "created_at")
     private Instant createdAt = Instant.now();
 }
