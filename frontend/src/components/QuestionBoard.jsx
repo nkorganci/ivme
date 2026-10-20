@@ -21,24 +21,35 @@ function draw(canvas, strokes, preview) {
   ctx.fillStyle = ink;
   ctx.lineWidth = 2.5;
   for (const stroke of [...strokes, ...(preview ? [preview] : [])]) {
+    const points = stroke.points || stroke;
+    if (stroke.color === 'AREA_ERASE') {
+      const x1 = points[0][0] * rect.width, y1 = points[0][1] * rect.height;
+      const x2 = points[1][0] * rect.width, y2 = points[1][1] * rect.height;
+      ctx.clearRect(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1));
+      continue;
+    }
+    ctx.globalCompositeOperation = stroke.color === 'ERASE' ? 'destination-out' : 'source-over';
+    ctx.lineWidth = stroke.color === 'ERASE' ? 24 : 2.5;
     ctx.beginPath();
-    stroke.forEach(([x, y], i) => {
+    points.forEach(([x, y], i) => {
       if (i === 0) ctx.moveTo(x * rect.width, y * rect.height);
       else ctx.lineTo(x * rect.width, y * rect.height);
     });
-    if (stroke.length === 1) {
-      ctx.arc(stroke[0][0] * rect.width, stroke[0][1] * rect.height, 1.25, 0, Math.PI * 2);
+    if (points.length === 1) {
+      ctx.arc(points[0][0] * rect.width, points[0][1] * rect.height, stroke.color === 'ERASE' ? 12 : 1.25, 0, Math.PI * 2);
       ctx.fill();
     } else ctx.stroke();
   }
+  ctx.globalCompositeOperation = 'source-over';
 }
 
 /** Noktalar tahta ölçüsüne göre 0–1 aralığında saklanır; yeniden boyutlanınca çizim korunur. */
-export default function QuestionBoard({ questionId, onUnavailable, height, tool = 'board' }) {
+export default function QuestionBoard({ questionId, onUnavailable, height, tool = 'board', action }) {
   const canvas = useRef(null);
   const strokesRef = useRef([]);
   const active = useRef(null);
   const version = useRef(0);
+  const handledAction = useRef(null);
   const [strokes, setStrokes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -103,6 +114,22 @@ export default function QuestionBoard({ questionId, onUnavailable, height, tool 
       setError(e.message);
     } finally { setSaving(false); }
   };
+  useEffect(() => {
+    if (!action || handledAction.current === action || loading || saving || conflict) return;
+    handledAction.current = action;
+    if (action.questionId !== questionId) return;
+    if (action.kind === 'clear') {
+      if (!strokesRef.current.length) return;
+      replace([]); setChanged(true); save([]);
+      return;
+    }
+    if (strokesRef.current.length >= LIMIT) {
+      setError('En fazla 100 işlem olabilir. Önce geri al veya tümünü sil.');
+      return;
+    }
+    const next = [...strokesRef.current, { color: action.kind === 'area' ? 'AREA_ERASE' : 'ERASE', points: action.points }];
+    replace(next); setChanged(true); save(next);
+  }, [action, questionId, loading, saving, conflict]);
 
   const point = (e) => {
     const rect = canvas.current.getBoundingClientRect();

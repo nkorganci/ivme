@@ -11,7 +11,7 @@ import { DIFFICULTIES, bankLabel, difficultyLabel } from '../format.js';
 const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
 /** Soru görselinin yanındaki karalama, QR ve istatistik alanı. */
-export default function QuestionSide({ q, onRated, canVote }) {
+export default function QuestionSide({ q, onRated, canVote, boardAction }) {
   const [tab, setTab] = useState('board');
   const [expanded, setExpanded] = useState(true);
   const tabRefs = useRef({});
@@ -57,7 +57,7 @@ export default function QuestionSide({ q, onRated, canVote }) {
         </button>}
       </div>
       {boardAvailable && <div id="panel-workspace" role="tabpanel" aria-labelledby={`tab-${tab}`} hidden={!['board', 'shapes', 'graph'].includes(tab)}>
-        <QuestionBoard questionId={q.id} tool={tab} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />
+        <QuestionBoard questionId={q.id} tool={tab} action={boardAction} onUnavailable={() => { setBoardAvailable(false); setTab('qr'); }} />
       </div>}
       {tab === 'calculator' && <div id="panel-calculator" role="tabpanel" aria-labelledby="tab-calculator" className="tool-workspace">
         <ScientificCalculator />

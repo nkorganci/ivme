@@ -46,6 +46,7 @@ function ExamRunner({ exam }) {
   const navigate = useNavigate();
   const questions = useMemo(() => [...exam.questions].sort((a, b) => a.position - b.position), [exam]);
   const [answers, setAnswers] = useState(() => Object.fromEntries(questions.map((q) => [q.questionId, q.selectedAnswer || null])));
+  const [boardAction, setBoardAction] = useState(null);
   const [flags, setFlags] = useState(() => new Set(questions.filter((q) => q.flagged).map((q) => q.questionId)));
   const [savingAnswer, setSavingAnswer] = useState(false);
   const [savingFlag, setSavingFlag] = useState(false);
@@ -162,6 +163,7 @@ function ExamRunner({ exam }) {
 
   const go = (i) => {
     setIndex(Math.min(questions.length - 1, Math.max(0, i)));
+    setBoardAction(null);
     setNavOpen(false);
     window.scrollTo({ top: 0 });
   };
@@ -199,7 +201,7 @@ function ExamRunner({ exam }) {
       </header>
 
       <div className="container wide qpage">
-        <PageInk key={qid} type="QUESTION" id={qid} />
+        <PageInk key={qid} type="QUESTION" id={qid} onBoardAction={setBoardAction} />
         <div className="exam-layout">
           <div className="exam-main">
             <div className="qstrip">
@@ -234,7 +236,7 @@ function ExamRunner({ exam }) {
             </section>
           </div>
           <div className="exam-side">
-            <ExamTools key={qid} question={q} />
+            <ExamTools key={qid} question={q} boardAction={boardAction} />
             <ExamNavigator questions={questions} answers={answers} flags={flags} current={index} onGo={go} open={navOpen} />
           </div>
         </div>

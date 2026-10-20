@@ -4,7 +4,7 @@ import ScientificCalculator from './ScientificCalculator.jsx';
 import QrCard from './QrCard.jsx';
 
 /** Sınavda sorunun yanında kalan karalama ve QR araçları. */
-export default function ExamTools({ question }) {
+export default function ExamTools({ question, boardAction }) {
   const [tab, setTab] = useState('board');
   const [boardAvailable, setBoardAvailable] = useState(true);
   const [expanded, setExpanded] = useState(true);
@@ -43,7 +43,7 @@ export default function ExamTools({ question }) {
       </button>}
     </div>
     {boardAvailable && <div id="exam-workspace-panel" role="tabpanel" aria-labelledby={`exam-${tab}-tab`} hidden={!['board', 'shapes', 'graph'].includes(tab)}>
-      <QuestionBoard questionId={question.questionId} tool={tab}
+      <QuestionBoard questionId={question.questionId} tool={tab} action={boardAction}
         onUnavailable={() => { setBoardAvailable(false); setExpanded(false); setTab('qr'); }} />
     </div>}
     {tab === 'calculator' && <div id="exam-calculator-panel" role="tabpanel" aria-labelledby="exam-calculator-tab" className="tool-workspace">

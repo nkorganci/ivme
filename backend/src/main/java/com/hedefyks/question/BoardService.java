@@ -73,10 +73,14 @@ public class BoardService {
             throw ApiException.badRequest("Karalama en fazla 100 çizgiden oluşabilir.");
         }
         for (JsonNode stroke : strokes) {
-            if (!stroke.isArray() || stroke.isEmpty() || stroke.size() > 250) {
+            JsonNode points = stroke.isObject() ? stroke.path("points") : stroke;
+            if (stroke.isObject() && (stroke.size() != 2 || !java.util.Set.of("ERASE", "AREA_ERASE")
+                    .contains(stroke.path("color").asText()))
+                    || !points.isArray() || points.isEmpty() || points.size() > 250
+                    || stroke.isObject() && "AREA_ERASE".equals(stroke.path("color").asText()) && points.size() != 2) {
                 throw ApiException.badRequest("Bir çizgi 1–250 noktadan oluşmalıdır.");
             }
-            for (JsonNode point : stroke) {
+            for (JsonNode point : points) {
                 if (!point.isArray() || point.size() != 2 || !validCoordinate(point.get(0))
                         || !validCoordinate(point.get(1))) {
                     throw ApiException.badRequest("Karalama noktası geçersiz.");

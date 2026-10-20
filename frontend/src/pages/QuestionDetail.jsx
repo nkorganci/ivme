@@ -70,6 +70,7 @@ function QuestionView({ q, filters, session, reload }) {
   const scope = { ...filters, bank: filters.bank || q.bank };
   const backQuery = qs({ ...scope, bank: '' });
   const [selected, setSelected] = useState(null);
+  const [boardAction, setBoardAction] = useState(null);
   const [ready, setReady] = useState(true);
   const [error, setError] = useState('');
   const [info, setInfo] = useState('');
@@ -194,7 +195,7 @@ function QuestionView({ q, filters, session, reload }) {
 
   return (
     <div className="qpage">
-      <PageInk key={q.id} type="QUESTION" id={q.id} />
+      <PageInk key={q.id} type="QUESTION" id={q.id} onBoardAction={setBoardAction} />
       <h1 className="sr-only">Soru {q.code}</h1>
       <div className="qlayout">
         <div className="qmain">
@@ -274,7 +275,7 @@ function QuestionView({ q, filters, session, reload }) {
             </Modal>
           )}
         </div>
-        <QuestionSide q={q} onRated={reload} canVote={!!state?.attempts?.some((a) => a.eventType !== 'SKIP')} />
+        <QuestionSide q={q} onRated={reload} boardAction={boardAction} canVote={!!state?.attempts?.some((a) => a.eventType !== 'SKIP')} />
       </div>
 
     </div>

@@ -62,10 +62,15 @@ class BoardTest extends TestBase {
         send(ayse, put(path), "{\"version\":0,\"strokes\":[]}").andExpect(status().isConflict());
         send(ayse, put(path), "{\"version\":1,\"strokes\":[]}")
                 .andExpect(status().isOk()).andExpect(jsonPath("$.version").value(2));
+        send(ayse, put(path), "{\"version\":2,\"strokes\":[[[0.1,0.2],[1,1]],"
+                + "{\"color\":\"ERASE\",\"points\":[[0.2,0.3],[0.4,0.5]]},"
+                + "{\"color\":\"AREA_ERASE\",\"points\":[[0.1,0.1],[0.5,0.5]]}]}")
+                .andExpect(status().isOk()).andExpect(jsonPath("$.strokes[2].color").value("AREA_ERASE"));
+        send(ayse, get(path), null).andExpect(jsonPath("$.strokes[1].color").value("ERASE"));
         send(mehmet, get(path), null).andExpect(jsonPath("$.strokes.length()").value(1));
         org.assertj.core.api.Assertions.assertThat(jdbc.queryForObject(
                 "SELECT count(*) FROM user_record_audit WHERE record_type = 'question_boards'",
-                Integer.class)).isEqualTo(3);
+                Integer.class)).isEqualTo(4);
     }
 
     @Test
@@ -82,6 +87,10 @@ class BoardTest extends TestBase {
         send(ayse, put(path), "{\"version\":0,\"strokes\":[[[0,0],[]]]}" )
                 .andExpect(status().isBadRequest());
         send(ayse, put(path), "{\"version\":0,\"strokes\":\"data:image/png;base64,...\"}" )
+                .andExpect(status().isBadRequest());
+        send(ayse, put(path), "{\"version\":0,\"strokes\":[{\"color\":\"ERASE\",\"points\":[[2,0]]}]}" )
+                .andExpect(status().isBadRequest());
+        send(ayse, put(path), "{\"version\":0,\"strokes\":[{\"color\":\"AREA_ERASE\",\"points\":[[0,0]]}]}" )
                 .andExpect(status().isBadRequest());
         send(operator, get(path), null).andExpect(status().isForbidden());
         q.setActive(false);

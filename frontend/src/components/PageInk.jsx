@@ -46,7 +46,7 @@ function paint(canvas, strokes, preview) {
 }
 
 /** Parent is the whole annotatable surface; coordinates are relative to it. */
-export default function PageInk({ type, id, page = 1 }) {
+export default function PageInk({ type, id, page = 1, onBoardAction }) {
   const path = `/api/page-annotations/${type}/${encodeURIComponent(id)}/${page}`;
   const canvas = useRef(null);
   const current = useRef([]);
@@ -114,6 +114,17 @@ export default function PageInk({ type, id, page = 1 }) {
     return [Math.round(Math.min(1, Math.max(0, (e.clientX - box.left) / box.width)) * 1000) / 1000,
       Math.round(Math.min(1, Math.max(0, (e.clientY - box.top) / box.height)) * 1000) / 1000];
   };
+  const boardPoint = (e, rect) => [
+    Math.round(Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width)) * 1000) / 1000,
+    Math.round(Math.min(1, Math.max(0, (e.clientY - rect.top) / rect.height)) * 1000) / 1000,
+  ];
+  const boardAt = (e) => {
+    if (type !== 'QUESTION' || !onBoardAction) return null;
+    const board = document.querySelector('.qside .board-canvas, .exam-tool-card .board-canvas');
+    const rect = board?.getBoundingClientRect();
+    return rect?.width && rect?.height && e.clientX >= rect.left && e.clientX <= rect.right
+      && e.clientY >= rect.top && e.clientY <= rect.bottom ? rect : null;
+  };
   const updateGraph = (next) => {
     if (loading || saving || conflict) return;
     graphRef.current = next;
@@ -123,9 +134,21 @@ export default function PageInk({ type, id, page = 1 }) {
   };
   const start = (e) => {
     if (loading || saving || conflict || (e.pointerType === 'mouse' && e.button !== 0)) return;
-    if (current.current.length >= MAX_STROKES) { setError('En fazla 100 işlem olabilir. Önce geri al veya tümünü sil.'); return; }
+    const boardRect = (mode === 'erase' || mode === 'area') ? boardAt(e) : null;
+    if (!boardRect && current.current.length >= MAX_STROKES) { setError('En fazla 100 işlem olabilir. Önce geri al veya tümünü sil.'); return; }
     e.currentTarget.setPointerCapture(e.pointerId);
     const origin = point(e);
+    if (boardRect) {
+      active.current = { id: e.pointerId, kind: `board-${mode}`, origin, boardRect,
+        boardPoints: [boardPoint(e, boardRect)] };
+      if (mode === 'area') setSelection({ start: origin, end: origin });
+      else if (current.current.length < MAX_STROKES) {
+        active.current.stroke = { color: 'ERASE', points: [origin] };
+        replace([...current.current, active.current.stroke]);
+        setDirty(true);
+      }
+      return;
+    }
     active.current = { id: e.pointerId, kind: mode, origin, last: origin, dirty: false };
     if (mode === 'write' || mode === 'erase') {
       active.current.stroke = { color: mode === 'erase' ? 'ERASE' : color, points: [origin] };
@@ -136,6 +159,20 @@ export default function PageInk({ type, id, page = 1 }) {
   };
   const move = (e) => {
     if (active.current?.id !== e.pointerId) return;
+    if (active.current.kind === 'board-area') { setSelection({ start: active.current.origin, end: point(e) }); return; }
+    if (active.current.kind === 'board-erase') {
+      const points = active.current.boardPoints;
+      const next = boardPoint(e, active.current.boardRect);
+      const last = points[points.length - 1];
+      if (points.length < MAX_POINTS && Math.abs(next[0] - last[0]) + Math.abs(next[1] - last[1]) >= .003) {
+        points.push(next);
+        if (active.current.stroke) {
+          active.current.stroke.points.push(point(e));
+          replace([...current.current]);
+        }
+      }
+      return;
+    }
     if (active.current.kind === 'area') { setSelection({ start: active.current.origin, end: point(e) }); return; }
     if (active.current.kind === 'shape') { setPreview({ color, points: shapePoints(shape, active.current.origin, point(e)) }); return; }
     const stroke = active.current.stroke.points;
@@ -150,7 +187,20 @@ export default function PageInk({ type, id, page = 1 }) {
     if (active.current?.id !== e.pointerId) return;
     const operation = active.current;
     active.current = null;
-    if (operation.kind === 'area') {
+    if (operation.kind === 'board-area') {
+      setSelection(null);
+      const end = boardPoint(e, operation.boardRect);
+      if (Math.abs(end[0] - operation.boardPoints[0][0]) + Math.abs(end[1] - operation.boardPoints[0][1]) >= .01) {
+        onBoardAction({ questionId: id, kind: 'area', points: [operation.boardPoints[0], end] });
+        if (current.current.length < MAX_STROKES) {
+          const next = [...current.current, { color: 'AREA_ERASE', points: [operation.origin, point(e)] }];
+          replace(next); setDirty(true); save(next);
+        }
+      }
+    } else if (operation.kind === 'board-erase') {
+      onBoardAction({ questionId: id, kind: 'erase', points: operation.boardPoints });
+      if (operation.stroke) save(current.current);
+    } else if (operation.kind === 'area') {
       const end = point(e);
       setSelection(null);
       if (Math.abs(end[0] - operation.origin[0]) + Math.abs(end[1] - operation.origin[1]) < .01) return;
@@ -172,7 +222,7 @@ export default function PageInk({ type, id, page = 1 }) {
     active.current = null;
     setSelection(null);
     setPreview(null);
-    if (operation.kind === 'write' || operation.kind === 'erase') save(current.current);
+    if (operation.kind === 'write' || operation.kind === 'erase' || operation.kind === 'board-erase' && operation.stroke) save(current.current);
   };
   const undo = () => {
     const next = current.current.slice(0, -1);
@@ -181,10 +231,14 @@ export default function PageInk({ type, id, page = 1 }) {
     save(next);
   };
   const clear = () => {
-    if (!window.confirm('Bu sayfadaki bütün işaretlemeleri silmek istiyor musun?')) return;
-    replace([]);
-    setDirty(true);
-    save([]);
+    if (!window.confirm('Bu sayfadaki bütün işaretlemeleri silmek istiyor musun?')) return false;
+    if (current.current.length) {
+      replace([]);
+      setDirty(true);
+      save([]);
+    }
+    if (type === 'QUESTION') onBoardAction?.({ questionId: id, kind: 'clear' });
+    return true;
   };
   const chooseMode = (next) => { setMode(next); setPanel(null); };
   const togglePanel = (next) => setPanel((old) => old === next ? null : next);
@@ -192,8 +246,11 @@ export default function PageInk({ type, id, page = 1 }) {
     if (graph.open) { updateGraph({ ...graph, open: false }); setPanel(null); }
     else { updateGraph({ ...graph, open: true }); setPanel('graph'); }
   };
-  const chooseErase = (value) => {
-    if (value === 'clear') { clear(); chooseMode('click'); }
+  const chooseErase = (value, select) => {
+    if (value === 'clear') {
+      if (clear()) chooseMode('click');
+      else select.value = mode === 'erase' || mode === 'area' ? mode : '';
+    }
     else chooseMode(value || 'click');
   };
 
@@ -217,8 +274,8 @@ export default function PageInk({ type, id, page = 1 }) {
       </span>
       <button type="button" className="btn btn-secondary btn-sm" disabled={loading || saving || conflict || !strokes.length} onClick={undo}>Geri al</button>
       <select className="page-ink-erase btn btn-secondary btn-sm" aria-label="Silme" value={mode === 'erase' || mode === 'area' ? mode : ''}
-        disabled={loading || saving || conflict} onChange={(event) => chooseErase(event.target.value)}>
-        <option value="">Silme</option><option value="erase">Silgi</option><option value="area">Alan sil</option><option value="clear" disabled={!strokes.length}>Tümünü sil</option>
+        disabled={loading || saving || conflict} onChange={(event) => chooseErase(event.target.value, event.currentTarget)}>
+        <option value="">Silme</option><option value="erase">Silgi</option><option value="area">Alan sil</option><option value="clear">Tümünü sil</option>
       </select>
       {type !== 'QUESTION' && <>
         <button type="button" className="btn btn-secondary btn-sm" aria-expanded={panel === 'shapes'} onClick={() => togglePanel('shapes')}>Şekiller</button>
