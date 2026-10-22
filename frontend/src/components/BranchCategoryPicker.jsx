@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroups, categoryTopic,
+import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroups, categoryTopic, topicNumberMap,
   selectedCategoryBranches } from '../categorySelection.js';
 import { Field } from './Field.jsx';
 
@@ -13,6 +13,9 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
   const selectedBranch = selectedCategoryBranches(knownCategories, ids, branchIds, subject)[0] || '';
   const branches = useMemo(() => categoryBranches([...categories,
     ...knownCategories.filter(category => categoryBranchId(category) === selectedBranch)]), [categories, knownCategories, selectedBranch]);
+  const topicNumbers = useMemo(() => topicNumberMap(knownCategories), [knownCategories]);
+  const branchTotals = useMemo(() => new Map(categoryBranches(knownCategories.filter(category => category.canonicalUnit && category.selectable !== false))
+    .map(branch => [branch.id, branch.categories])), [knownCategories]);
   const selectedBranches = selectedBranch ? [selectedBranch] : [];
   const options = useMemo(() => categoriesInBranches(categories, selectedBranches, search),
     [categories, selectedBranches.join('|'), search]);
@@ -73,7 +76,7 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
     <fieldset className="branch-picker" aria-label="Ders seçimi" disabled={disabled || loading}>
       <Field as="select" label="Ders" value={selectedBranch} onChange={event => chooseBranch(event.target.value)}>
         <option value="">Bütün dersler</option>
-        {branches.map(branch => <option key={branch.id} value={branch.id}>{branch.label}</option>)}
+        {branches.map(branch => <option key={branch.id} value={branch.id}>{branch.label} · {branchTotals.get(branch.id) || 0} konu</option>)}
       </Field>
       {loading ? <p role="status" className="field-hint">Dersler yükleniyor…</p>
         : !branches.length && !disabled && <p role="status" className="field-hint">Bu kaynak ve filtrelerde soru içeren ders yok.</p>}
@@ -102,7 +105,7 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
             <input type="checkbox" value={category.id} checked={ids.includes(category.id)}
               disabled={!ids.includes(category.id) && ids.length >= 20}
               onChange={event => toggleCategory(category.id, event.target.checked)} />
-            <span>{categoryTopic(category)}{counts && <small>{(counts[category.id] || 0).toLocaleString('tr-TR')} soru</small>}</span>
+            <span>{topicNumbers.has(category.id) && `${topicNumbers.get(category.id)}. `}{categoryTopic(category)}{counts && <small>{(counts[category.id] || 0).toLocaleString('tr-TR')} soru</small>}</span>
           </label>)}
         </section>)}
         {!groups.length && !loading && <p role="status" className="field-hint">Seçili derste aramana uyan konu bulunamadı.</p>}

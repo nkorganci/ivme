@@ -111,7 +111,8 @@ export default function Curriculum() {
       return <div className="curriculum-cell-links"><Link to={'/konular-ve-kaynaklar'+qs({exam,subject:selected.id,categoryId})}>PDF / video / not</Link>
         {<Link to={'/calisma/yeni'+qs({examType:exam,categoryId})}>Bu konudan pratik</Link>}</div>;
     }},
-    { field: 'number', headerName: 'No', cellDataType: false, width: 48, minWidth: 48, maxWidth: 48, flex: 0, resizable: false },
+    { field: 'number', headerName: 'No', cellDataType: false, width: 48, minWidth: 48, maxWidth: 48, flex: 0, resizable: false,
+      valueFormatter: ({ value }) => typeof value === 'number' ? `${value}.` : value },
     { field: 'displayTitle', headerName: 'Konu', minWidth: 130, flex: 1.6, autoHeight: true, wrapText: true,
       cellRenderer: ({ data: row }) => row && <div className="curriculum-topic-title">
         {row.videoChild && <small className="curriculum-source-mark">{row.parentTitle}</small>}
@@ -183,7 +184,7 @@ export default function Curriculum() {
               aria-current={selected?.id === entry.id ? 'true' : undefined}
               onClick={() => setSubject(entry.id)}>
               <span><strong>{entry.name}</strong><small>{entry.area}</small></span>
-              <span className="curriculum-subject-count">{done}/{countTopics(entry)}</span>
+              <span className="curriculum-subject-count">{countTopics(entry)} konu · {done} bitti</span>
               <ProgressBar done={done} total={countTopics(entry)} />
             </button>;
           })}

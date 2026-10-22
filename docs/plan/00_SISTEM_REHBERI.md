@@ -107,6 +107,10 @@ Kullanıcının bütün branşlar için seçtiği referans
 237 ünite aynı `content-taxonomy.json` sözlüğünde `canonicalUnit`, `canonicalTopic`,
 `order`, `estimatedGrades` ve `selectable` alanlarını taşır. Biyoloji 8 TYT / 17 AYT,
 fizik 14 TYT / 20 AYT ünitesidir. Önceki 46 fizik başlığı yeni referansa yönlendirilir.
+Öğrenciye görünen konu numarası, yayımlanmış `learning_catalog.current_categories`
+tanımındaki `order` değerine göre her sınav ve ders içinde 1'den başlar. Dersin
+konu toplamı aynı seçilebilir kanonik kayıtların sayısıdır; numara veya toplam
+için ikinci bir ders/konu referans tablosu tutulmaz.
 AYT Felsefe Grubu referansındaki dört başlık mevcut felsefe/psikoloji/sosyoloji/mantık
 branşlarının her birinde tek ünite olarak korunur. Sınıfı bilinmeyen üniteden kesin
 sınıf türetilmez. Eski kimlikler `selectable=false` ve `canonicalTopicIds` ile kalır.

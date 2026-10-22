@@ -13,7 +13,7 @@ function SubjectHeader({ subjects, selectedSubject, onSubjectChange }) {
     onKeyDown={event => event.stopPropagation()}>
     <span>Ders</span>
     <select aria-label="Ders seç" value={selectedSubject} onChange={event => onSubjectChange(event.target.value)}>
-      {subjects.map(subject => <option key={subject.id} value={subject.id}>{subject.label}</option>)}
+      {subjects.map(subject => <option key={subject.id} value={subject.id}>{subject.label} · {subject.categories} konu</option>)}
     </select>
   </label>;
 }
@@ -43,7 +43,8 @@ export default function Progress() {
   const columns = useMemo(() => [
     { colId: 'number', headerName: 'No', width: 56, minWidth: 52, maxWidth: 64, resizable: false,
       sortable: false, filter: false, cellDataType: 'number',
-      valueGetter: ({ node }) => node.rowIndex == null ? null : node.rowIndex + 1 },
+      valueGetter: ({ data: row }) => row?.topicNumber ?? null,
+      valueFormatter: ({ value }) => value == null ? '' : `${value}.` },
     { field: 'subject', headerName: 'Ders', minWidth: 190, sortable: false, filter: false,
       headerComponent: SubjectHeader,
       headerComponentParams: { subjects, selectedSubject, onSubjectChange: setSubjectId } },

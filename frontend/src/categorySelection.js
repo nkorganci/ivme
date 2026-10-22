@@ -11,6 +11,23 @@ export const categoryLabel = category => [category.exam, category.grade && `${ca
 
 export const categoryBranchId = category => category.subjectId || category.subject;
 
+/** Number published units within each exam and subject from the database catalogue order. */
+export function topicNumberMap(categories) {
+  const groups = new Map();
+  for (const category of categories) {
+    if (!category.canonicalUnit || category.selectable === false || !category.id) continue;
+    const key = `${category.exam}\u0000${categoryBranchId(category)}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(category);
+  }
+  const numbers = new Map();
+  for (const group of groups.values()) {
+    group.sort((a, b) => Number(a.order) - Number(b.order) || compare(a.id, b.id));
+    group.forEach((category, index) => numbers.set(category.id, index + 1));
+  }
+  return numbers;
+}
+
 /** Branches are projections of published categories, not a second vocabulary. */
 export function categoryBranches(categories) {
   const branches = new Map();
