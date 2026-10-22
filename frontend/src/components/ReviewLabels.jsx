@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import labels from '../../../backend/src/main/resources/review-vocabulary.json' with { type: 'json' };
 import { categoryLabel } from '../reviewSelection.js';
 import { normaliseTopic } from '../curriculumLinks.js';
+import { categoryTopic } from '../categorySelection.js';
 
 const SHORT_FORMAT = { KONU_ANLATIMI: 'Anlatım', KONU_OZETI: 'Özet', SORU: 'Soru', COZUMLU_ORNEK: 'Çözümlü örnek', TEST: 'Test', DENEME: 'Deneme', KARMA: 'Karma', UYGULANMAZ: 'Uygulanmaz' };
 const SHORT_SKILL = { BILGI: 'Bilgi', KAVRAMA: 'Kavrama', UYGULAMA: 'Uygulama', ANALIZ: 'Analiz', YORUMLAMA: 'Yorum', AKIL_YURUTME: 'Akıl yürütme', HESAPLAMA: 'Hesap', DENEY: 'Deney', PROBLEM_COZME: 'Problem çözme' };
@@ -61,13 +62,13 @@ export default function ReviewLabels({ decision, patch, catalog, item }) {
         {options.some(c => selectedIds.has(c.id)) && <button type="button" className="review-text-button" onClick={() => patch({ assignments: decision.assignments.filter(a => !optionIds.has(a.categoryId)) })}>Grubu temizle</button>}
       </div>}
       <div className="review-topic-options" aria-label="Konu seçenekleri">{[...groups].map(([topic, categories]) => <div key={topic} className="review-topic-group">
-        {categories.length > 1 && <span className="review-topic-heading">{topic}</span>}
+        {categories.length > 1 && <span className="review-topic-heading">{categoryTopic(categories[0])}</span>}
         <div className="review-choices">{categories.map(c => {
           const selected = decision.assignments.some(a => a.categoryId === c.id);
           return <button key={c.id} type="button" className={`review-choice review-category${selected ? ' selected' : ''}`} aria-pressed={selected}
             aria-label={categoryLabel(c)} disabled={!selected && decision.assignments.length >= 50}
             title={`${categoryLabel(c)}${c.origin === 'SOURCE' ? ' · Kaynak etiketi' : ''}`} onClick={() => toggle(c.id)}>
-            {selected && <span aria-hidden="true">✓ </span>}{c.grade && <small>{c.grade}. sınıf · </small>}{c.subtopic || c.detail || c.topic}{c.origin === 'SOURCE' && <small> · Kaynak</small>}
+            {selected && <span aria-hidden="true">✓ </span>}{c.grade && <small>{c.grade}. sınıf · </small>}{categoryTopic(c)}{c.origin === 'SOURCE' && <small> · Kaynak</small>}
           </button>;
         })}</div>
       </div>)}{options.length === 0 && <p className="small muted">Eşleşme yok. Tüm konuları açın veya başka bir branş seçin.</p>}</div>

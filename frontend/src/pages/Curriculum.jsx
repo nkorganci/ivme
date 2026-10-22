@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { useAsync, usePageTitle } from '../hooks.js';
 import { curriculumFromCategories, topicId as legacyTopicId } from '../curriculum.js';
+import { topicNumberMap } from '../categorySelection.js';
 import { videoLessons, withVideoRows } from '../curriculumVideos.js';
 import LessonVideos from '../components/LessonVideos.jsx';
 import DataGrid from '../components/DataGrid.jsx';
@@ -29,6 +30,7 @@ export default function Curriculum() {
   const exam = params.get('sinav') === 'AYT' ? 'AYT' : 'TYT';
   const metadata=useAsync(()=>api.get('/api/learning-resources/metadata'),[]);
   const subjects = curriculumFromCategories(metadata.data?.categories||[])[exam];
+  const topicNumbers = topicNumberMap(metadata.data?.categories || []);
   const selected = subjects.find((entry) => entry.id === params.get('ders')) ?? subjects[0] ?? {id:'',units:[]};
   const [progress, setProgress] = useState({});
   const [loading, setLoading] = useState(true);
@@ -80,7 +82,7 @@ export default function Curriculum() {
   const subjectProgress = selected ? progressOf([selected], exam, progress) : null;
   const subjectTopics = selected?.units.flatMap((unit) => unit.topics)||[];
   const categoryFor=row=>row.categoryId || (row.videoChild?'subtopic:'+row.parentId+':'+topicId(exam,selected.id,row.title):row.id);
-  const curriculumRows=subjectTopics.map((title,index)=>({id:topicId(exam,selected.id,title),number:index+1,title,done:Boolean(progress[topicId(exam,selected.id,title)])}));
+  const curriculumRows=subjectTopics.map(title=>({id:topicId(exam,selected.id,title),number:topicNumbers.get(topicId(exam,selected.id,title)),title,done:Boolean(progress[topicId(exam,selected.id,title)])}));
   const curriculumIds=new Set(curriculumRows.map(row=>row.id));
   const videoIds=new Set(curriculumRows.flatMap(row=>videoLessons(row.id).map(lesson=>'subtopic:'+row.id+':'+topicId(exam,selected.id,lesson.title))));
   const sourceRows=(metadata.data?.categories || []).filter(c=>c.selectable !== false && c.exam===exam && c.subjectId===selected.id && !curriculumIds.has(c.id)

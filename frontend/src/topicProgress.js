@@ -1,4 +1,4 @@
-import { categoryBranchId, categoryOptions, categoryTopic, topicNumberMap } from './categorySelection.js';
+import { categoryBranchId, categoryOptions, categoryTopic } from './categorySelection.js';
 
 // Keep published identities, including topics without any student history.
 export const progressCategories = categories => categories.filter(category => category.id && category.selectable !== false
@@ -7,7 +7,6 @@ export const progressCategories = categories => categories.filter(category => ca
 
 export function topicProgressRows(categories, statistics, subjectId) {
   const byId = new Map(statistics.map(row => [row.categoryId, row]));
-  const topicNumbers = topicNumberMap(categories);
   const options=categoryOptions(categories.filter(category => categoryBranchId(category) === subjectId));
   options.sort((a,b)=>(a.order || 999)-(b.order || 999));
   return options.map(category => {
@@ -15,7 +14,7 @@ export function topicProgressRows(categories, statistics, subjectId) {
     const correct = count?.correct ?? 0;
     const wrong = count?.wrong ?? 0;
     return {
-      categoryId: category.id, topicNumber: topicNumbers.get(category.id), subject: category.subject, exam: category.exam, grade: category.grade,
+      categoryId: category.id, subject: category.subject, exam: category.exam, grade: category.grade,
       gradeLabel:category.grade?`${category.grade}. sınıf`:(category.estimatedGrades||[]).length?`${category.estimatedGrades.join('–')}. sınıf (tahmini)`:'—',
       topicLabel: categoryTopic(category), correct, wrong,
       solved: correct + wrong, net: correct - wrong / 4,

@@ -4,6 +4,7 @@ import SharedResourceSelect from './SharedResourceSelect.jsx';
 import {Link} from 'react-router-dom';
 import { CURRICULUM } from '../curriculum.js';
 import { assignmentSummary, blankLearning, ERROR_TYPES, MASTERY, scoreSummary } from '../mathLearning.js';
+import { categoryTopic } from '../categorySelection.js';
 
 function Field({ label, value, onChange, type = 'text', ...props }) {
   return <label className="math-learning-field"><span>{label}</span>
@@ -42,7 +43,7 @@ export default function MathLearningPanel({ item, actions }) {
           <label className="math-learning-field"><span>Kaynaklara bağlı konu</span><select value={learning.categoryId || ''} onChange={e=>set('categoryId',e.target.value || null)}>
             <option value="">{catalog?'Konu seç…':'Konular yükleniyor…'}</option>{(catalog?.categories || []).filter(c=>c.exam===learning.examType
               && c.subjectId===(learning.branch==='GEOMETRY'?'geometri':'matematik') && (c.origin==='CURRICULUM' || c.parentId))
-              .map(c=><option key={c.id} value={c.id}>{c.topic}{c.subtopic?` → ${c.subtopic}`:''}</option>)}</select></label>
+              .map(c=><option key={c.id} value={c.id}>{categoryTopic(c)}</option>)}</select></label>
           {!learning.categoryId && item.topic && <p className="muted small">Ders başlığınız korundu; kaynak ve konu takibi için ortak konu seçimi bekliyor.</p>}
           <SharedResourceSelect value={learning.resourceKeys || []} categoryId={learning.categoryId?[learning.categoryId]:[]} onChange={value=>set('resourceKeys',value)}/>
           {learning.categoryId && <Link to={'/konular-ve-kaynaklar?categoryId='+encodeURIComponent(learning.categoryId)}>Konuya bağlı kaynakları aç</Link>}

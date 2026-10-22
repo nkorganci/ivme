@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
-import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroups, categoryTopic, topicNumberMap,
+import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroups, categoryTopic,
   selectedCategoryBranches } from '../categorySelection.js';
 import { Field } from './Field.jsx';
 
@@ -13,7 +13,6 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
   const selectedBranch = selectedCategoryBranches(knownCategories, ids, branchIds, subject)[0] || '';
   const branches = useMemo(() => categoryBranches([...categories,
     ...knownCategories.filter(category => categoryBranchId(category) === selectedBranch)]), [categories, knownCategories, selectedBranch]);
-  const topicNumbers = useMemo(() => topicNumberMap(knownCategories), [knownCategories]);
   const branchTotals = useMemo(() => new Map(categoryBranches(knownCategories.filter(category => category.canonicalUnit && category.selectable !== false))
     .map(branch => [branch.id, branch.categories])), [knownCategories]);
   const selectedBranches = selectedBranch ? [selectedBranch] : [];
@@ -105,7 +104,7 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
             <input type="checkbox" value={category.id} checked={ids.includes(category.id)}
               disabled={!ids.includes(category.id) && ids.length >= 20}
               onChange={event => toggleCategory(category.id, event.target.checked)} />
-            <span>{topicNumbers.has(category.id) && `${topicNumbers.get(category.id)}. `}{categoryTopic(category)}{counts && <small>{(counts[category.id] || 0).toLocaleString('tr-TR')} soru</small>}</span>
+            <span>{categoryTopic(category)}{counts && <small>{(counts[category.id] || 0).toLocaleString('tr-TR')} soru</small>}</span>
           </label>)}
         </section>)}
         {!groups.length && !loading && <p role="status" className="field-hint">Seçili derste aramana uyan konu bulunamadı.</p>}

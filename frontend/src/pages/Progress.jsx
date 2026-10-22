@@ -41,17 +41,13 @@ export default function Progress() {
   const rows = useMemo(() => topicProgressRows(categories, data?.progress.categories ?? [], selectedSubject),
     [categories, data, selectedSubject]);
   const columns = useMemo(() => [
-    { colId: 'number', headerName: 'No', width: 56, minWidth: 52, maxWidth: 64, resizable: false,
-      sortable: false, filter: false, cellDataType: 'number',
-      valueGetter: ({ data: row }) => row?.topicNumber ?? null,
-      valueFormatter: ({ value }) => value == null ? '' : `${value}.` },
     { field: 'subject', headerName: 'Ders', minWidth: 190, sortable: false, filter: false,
       headerComponent: SubjectHeader,
       headerComponentParams: { subjects, selectedSubject, onSubjectChange: setSubjectId } },
     { field: 'exam', headerName: 'Sınav', minWidth: 85, sortable: true, filter: false },
     { field: 'gradeLabel', headerName: 'Sınıf', minWidth: 125, sortable: true, filter: false,
       wrapText: true, autoHeight: true, cellStyle: {lineHeight:'1.35'} },
-    { field: 'topicLabel', headerName: 'Ünite', minWidth: 280, flex: 2,
+    { field: 'topicLabel', headerName: 'Konu', minWidth: 280, flex: 2,
       wrapText: true, autoHeight: true, sortable: true, filter: false,
       comparator: (a, b) => String(a ?? '').localeCompare(String(b ?? ''), 'tr', { numeric: true }) },
     ...RESULT_COLUMNS,

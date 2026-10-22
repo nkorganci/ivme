@@ -2,7 +2,7 @@ import { normaliseTopic } from './curriculumLinks.js';
 
 const compare = new Intl.Collator('tr', { sensitivity: 'base', numeric: true }).compare;
 
-export const categoryTopic = category => [category.topic, category.subtopic,
+export const categoryTopic = category => [category.topicNumber ? `${category.topicNumber}. ${category.topic}` : category.topic, category.subtopic,
   category.detail !== category.topic && category.detail !== category.subtopic ? category.detail : '']
   .filter(Boolean).join(' → ');
 
@@ -11,21 +11,11 @@ export const categoryLabel = category => [category.exam, category.grade && `${ca
 
 export const categoryBranchId = category => category.subjectId || category.subject;
 
-/** Number published units within each exam and subject from the database catalogue order. */
+/** Read the stored number from the published database category definition. */
 export function topicNumberMap(categories) {
-  const groups = new Map();
-  for (const category of categories) {
-    if (!category.canonicalUnit || category.selectable === false || !category.id) continue;
-    const key = `${category.exam}\u0000${categoryBranchId(category)}`;
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push(category);
-  }
-  const numbers = new Map();
-  for (const group of groups.values()) {
-    group.sort((a, b) => Number(a.order) - Number(b.order) || compare(a.id, b.id));
-    group.forEach((category, index) => numbers.set(category.id, index + 1));
-  }
-  return numbers;
+  return new Map(categories.filter(category => category.canonicalUnit && category.selectable !== false
+    && Number.isInteger(category.topicNumber) && category.topicNumber > 0)
+    .map(category => [category.id, category.topicNumber]));
 }
 
 /** Branches are projections of published categories, not a second vocabulary. */

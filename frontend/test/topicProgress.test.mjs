@@ -4,7 +4,7 @@ import { progressCategories, topicProgressRows } from '../src/topicProgress.js';
 import { categoryBranches } from '../src/categorySelection.js';
 
 const categories = [
-  { id: 'tyt-a', subjectId: 'matematik', subject: 'Matematik', exam: 'TYT', topic: 'Sayılar' },
+  { id: 'tyt-a', subjectId: 'matematik', subject: 'Matematik', exam: 'TYT', topic: 'Sayılar', topicNumber: 1 },
   { id: 'tyt-sub', subjectId: 'matematik', subject: 'Matematik', exam: 'TYT', topic: 'Sayılar', subtopic: 'Tam sayılar', parentId: 'tyt-a' },
   { id: 'ayt-a', subjectId: 'matematik', subject: 'Matematik', exam: 'AYT', topic: 'Sayılar' },
   { id: 'physics', subjectId: 'fizik', subject: 'Fizik', exam: 'TYT', topic: 'Sayılar' },
@@ -19,6 +19,7 @@ test('shows every published topic for exactly one subject, including unsolved ch
   const rows = topicProgressRows(available, [], 'matematik');
   assert.equal(rows.length, 3);
   assert.ok(rows.every(row => row.subject === 'Matematik' && row.solved === 0 && row.net === 0));
+  assert.equal(rows.find(row => row.categoryId === 'tyt-a').topicLabel, '1. Sayılar');
   assert.equal(rows.find(row => row.categoryId === 'tyt-sub').topicLabel, 'Sayılar → Tam sayılar');
   assert.equal(topicProgressRows(available, [], 'fizik').length, 1);
   assert.equal(topicProgressRows(available, [], '').length, 0);

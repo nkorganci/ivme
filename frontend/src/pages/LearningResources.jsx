@@ -6,12 +6,13 @@ import DataGrid from '../components/DataGrid.jsx';
 import { Loading, ErrorBox, Empty } from '../components/States.jsx';
 import './LearningResources.css';
 import { locatorLabel, locatedResourceUrl } from '../resourceMetadata.js';
+import { categoryTopic } from '../categorySelection.js';
 
 const API='/api/learning-resources';
 const kinds={QUESTION:'Soru',PDF:'PDF',NOTE:'Ders notu',VIDEO:'Video'};
 const availability={missing_file:'Dosya bulunamadı',video_only:'Yalnız video kaydı',source_only:'Kaynak arşivinde',needs_repair:'Soru görseli eksik; kontrol gerekli',unverified:'Erişim doğrulanamadı',remote_unavailable:'Kaynak sağlayıcıda açılamıyor'};
 const stateLabel={APPROVE:'Öğretmen doğruladı',PENDING:'Otomatik eşleme',FIX:'Kontrol gerekli',UNSURE:'Kontrol gerekli',WRONG_BRANCH:'Branş kontrolü gerekli'};
-const title=c=>[c.topic,c.subtopic,c.detail && c.detail!==c.subtopic?c.detail:''].filter(Boolean).join(' → ');
+const title=categoryTopic;
 const resourceUrl=(resource,selected,params)=>{
   if(!resource.url)return resource.url;
   const assignments=resource.labels?.assignments || [];

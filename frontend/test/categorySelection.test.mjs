@@ -58,14 +58,15 @@ test('saved category links restore their branches alongside pending branch selec
   assert.deepEqual(selectedCategoryBranches(catalogue, [], [], 'Fizik'), ['fizik']);
 });
 
-test('published order gives consecutive topic numbers per exam and subject', () => {
+test('published database topic numbers are the shared display numbers', () => {
   const numbers = topicNumberMap([
-    { id: 'tyt-2', exam: 'TYT', subjectId: 'fizik', canonicalUnit: true, order: 76 },
-    { id: 'ayt-1', exam: 'AYT', subjectId: 'fizik', canonicalUnit: true, order: 191 },
-    { id: 'tyt-1', exam: 'TYT', subjectId: 'fizik', canonicalUnit: true, order: 75 },
-    { id: 'other', exam: 'TYT', subjectId: 'kimya', canonicalUnit: true, order: 89 },
+    { id: 'tyt-2', exam: 'TYT', subjectId: 'fizik', canonicalUnit: true, topicNumber: 2 },
+    { id: 'ayt-1', exam: 'AYT', subjectId: 'fizik', canonicalUnit: true, topicNumber: 1 },
+    { id: 'tyt-1', exam: 'TYT', subjectId: 'fizik', canonicalUnit: true, topicNumber: 1 },
+    { id: 'other', exam: 'TYT', subjectId: 'kimya', canonicalUnit: true, topicNumber: 1 },
     { id: 'legacy', exam: 'TYT', subjectId: 'fizik', canonicalUnit: false, order: 77 },
   ]);
-  assert.deepEqual([...numbers], [['tyt-1', 1], ['tyt-2', 2], ['ayt-1', 1], ['other', 1]]);
+  assert.deepEqual([...numbers], [['tyt-2', 2], ['ayt-1', 1], ['tyt-1', 1], ['other', 1]]);
   assert.equal(numbers.has('legacy'), false);
+  assert.equal(categoryLabel({ exam: 'TYT', subject: 'Fizik', topic: 'Vektörler', topicNumber: 3 }), 'TYT · Fizik · 3. Vektörler');
 });

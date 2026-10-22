@@ -1,4 +1,5 @@
 import { normaliseTopic } from './curriculumLinks.js';
+import { categoryTopic } from './categorySelection.js';
 
 export const checksFor = kind => kind === 'QUESTION' ? ['branch', 'topic', 'answer', 'image']
   : kind === 'TOPIC' ? ['branch', 'topic', 'structure'] : ['branch', 'topic', 'content', 'coverage'];
@@ -43,4 +44,4 @@ export function autoSelectLabels(decision, item, catalog) {
   };
 }
 
-export const categoryLabel = c => [c.exam, c.subject, c.topic, c.subtopic, c.detail && c.detail !== c.subtopic ? c.detail : ''].filter(Boolean).join(' → ');
+export const categoryLabel = c => [c.exam, c.subject, categoryTopic(c)].filter(Boolean).join(' → ');

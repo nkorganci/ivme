@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { api, qs } from '../api.js';
-import { categoryGroups, categoryLabel, categoryOptions, categoryTopic, topicNumberMap } from '../categorySelection.js';
+import { categoryGroups, categoryLabel, categoryOptions, categoryTopic } from '../categorySelection.js';
 import { Field } from './Field.jsx';
 import BranchCategoryPicker from './BranchCategoryPicker.jsx';
 
@@ -81,7 +81,6 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
   const match = value.categoryMatch || 'ANY';
   const include = value.includeCandidates !== false;
   const categories = data?.categories || [];
-  const topicNumbers = useMemo(() => topicNumberMap(categories), [categories]);
   const currentCounts = countsState?.key === countsQuery ? countsState.counts : null;
   const countsError = countsState?.key === countsQuery ? countsState.error : null;
   const options = useMemo(() => categoryOptions(categories, { examType, subject, selectedIds: ids, search })
@@ -138,7 +137,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
               <button type="button" role="option" tabIndex={-1} id={`${listId}-${category.id}`}
                 aria-selected={activeIndex === index} onMouseDown={event => event.preventDefault()}
                 onMouseEnter={() => setActiveIndex(index)} onClick={() => select(category)}>
-                {topicNumbers.has(category.id) && `${topicNumbers.get(category.id)}. `}{categoryLabel(category)}{currentCounts && ` · ${currentCounts[category.id].toLocaleString('tr-TR')} soru`}
+                {categoryLabel(category)}{currentCounts && ` · ${currentCounts[category.id].toLocaleString('tr-TR')} soru`}
               </button>
             </li>)}
           </ul>
@@ -151,7 +150,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
         onFocus={refresh} onChange={event => select(categories.find(category => category.id === event.target.value))}>
         <option value="">{data ? 'Konu ekle…' : 'Konular yükleniyor…'}</option>
         {groups.map(group => <optgroup key={group.key} label={group.label}>
-          {group.options.map(category => <option key={category.id} value={category.id}>{topicNumbers.has(category.id) && `${topicNumbers.get(category.id)}. `}{categoryTopic(category)}</option>)}
+          {group.options.map(category => <option key={category.id} value={category.id}>{categoryTopic(category)}</option>)}
         </optgroup>)}
         {data && !options.length && <option disabled>Eşleşen konu yok</option>}
       </Field>}
@@ -169,7 +168,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
     {(showDropdown || ids.length > 0) && <label className="checkbox"><input type="checkbox" checked={include} onChange={event => change({ includeCandidates: event.target.checked })} />Geçici konu eşlemelerini dahil et</label>}
     <div className="selected-categories" role={ids.length ? 'group' : undefined} aria-label={ids.length ? 'Seçili konular' : undefined}>{ids.map(id => {
       const category = categories.find(item => item.id === id);
-      const label = category ? `${topicNumbers.has(id) ? `${topicNumbers.get(id)}. ` : ''}${categoryLabel(category)}` : id;
+      const label = category ? categoryLabel(category) : id;
       return <button className="btn btn-secondary btn-sm" key={id} type="button" aria-label={`${label} konusunu kaldır`}
         onClick={() => change({ categoryId: ids.filter(item => item !== id) })}>{label} ×</button>;
     })}</div>

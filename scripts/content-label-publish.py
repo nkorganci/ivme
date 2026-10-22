@@ -98,7 +98,19 @@ def main():
                   f"{literal(json.dumps(references,ensure_ascii=False))}::jsonb) ON CONFLICT(run_key) DO UPDATE "
                   "SET inventory_audit=excluded.inventory_audit,curriculum_references=excluded.curriculum_references;\n")
         out.write(f"""
-INSERT INTO learning_catalog.categories SELECT {literal(run)},data->>'id',data FROM incoming_categories ON CONFLICT DO NOTHING;
+WITH numbered AS (
+    SELECT data->>'id' AS category_id,
+      row_number() OVER (PARTITION BY data->>'exam',data->>'subjectId'
+        ORDER BY (data->>'order')::integer,data->>'id')::integer AS topic_number
+    FROM incoming_categories
+    WHERE data->>'canonicalUnit'='true' AND data->>'selectable'='true' AND data ? 'order'
+)
+INSERT INTO learning_catalog.categories
+SELECT {literal(run)},i.data->>'id',
+  CASE WHEN n.topic_number IS NULL THEN i.data
+    ELSE jsonb_set(i.data,'{{topicNumber}}',to_jsonb(n.topic_number),true) END
+FROM incoming_categories i LEFT JOIN numbered n ON n.category_id=i.data->>'id'
+ON CONFLICT DO NOTHING;
 INSERT INTO learning_catalog.items(run_key,item_key,kind,exam,subject_id,student_visible,data,category_ids,subject_ids,exam_ids)
     SELECT {literal(run)},data->>'key',data->>'kind',data->>'exam',data->>'subjectId',(data->>'studentVisible')::boolean,data,
     ARRAY(SELECT jsonb_array_elements_text(data->'categoryIds')),

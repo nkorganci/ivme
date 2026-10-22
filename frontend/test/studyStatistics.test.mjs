@@ -4,13 +4,13 @@ import { EXAM_BRANCHES, filterStudyRows, groupExamBranches, loadStudyHistory, lo
 
 test('practice history names the selected catalog topic instead of the question history mode', () => {
   const categories = [
-    { id: 'tyt.fizik.vektorler', subjectId: 'fizik', subject: 'Fizik', topic: 'Vektörler' },
-    { id: 'tyt.fizik.hareket', subjectId: 'fizik', subject: 'Fizik', topic: 'Hareket' },
+    { id: 'tyt.fizik.vektorler', subjectId: 'fizik', subject: 'Fizik', topic: 'Vektörler', topicNumber: 3 },
+    { id: 'tyt.fizik.hareket', subjectId: 'fizik', subject: 'Fizik', topic: 'Hareket', topicNumber: 6 },
   ];
   assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: ['tyt.fizik.vektorler'], selectionMode: 'MIXED' }, categories),
-    { subject: 'Fizik', topic: 'Vektörler' });
-  assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: ['tyt.fizik.vektorler', 'tyt.fizik.hareket'] }, categories),
-    { subject: 'Fizik', topic: 'Vektörler; Hareket' });
+    { subject: 'Fizik', topic: '3. Vektörler' });
+  assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: ['tyt.fizik.hareket', 'tyt.fizik.vektorler'] }, categories),
+    { subject: 'Fizik', topic: '3. Vektörler; 6. Hareket' });
   assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: [] }, categories),
     { subject: 'Fizik', topic: 'Tüm konular' });
 });

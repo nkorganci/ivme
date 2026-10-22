@@ -39,7 +39,10 @@ export async function loadStudyHistory(path, get = api.get) {
 
 export function practiceScope(item, categories = []) {
   const byId = new Map(categories.map(category => [category.id, category]));
-  const selected = (item.categoryIds || []).map(id => byId.get(id)).filter(Boolean);
+  const selected = (item.categoryIds || []).map(id => byId.get(id)).filter(Boolean)
+    .sort((a, b) => (a.exam || '').localeCompare(b.exam || '', 'tr')
+      || (a.subject || '').localeCompare(b.subject || '', 'tr')
+      || (a.topicNumber ?? Number.MAX_SAFE_INTEGER) - (b.topicNumber ?? Number.MAX_SAFE_INTEGER));
   const branch = selected[0] || categories.find(category => category.subjectId === item.subject || category.subject === item.subject);
   const subjects = [...new Set(selected.map(category => category.subject))];
   const topics = [...new Set(selected.map(categoryTopic))];
