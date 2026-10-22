@@ -57,7 +57,7 @@ public final class StudySessionDtos {
 
     public record HistoryItem(Long id, Instant startedAt, Instant endedAt, String status,
                               QuestionSelectionMode selectionMode, Integer timeLimitSeconds,
-                              int questionCount, String subject, String topic, Result result) {}
+                              int questionCount, String subject, String topic, List<String> categoryIds, Result result) {}
 
     public record UnfinishedSummary(long count, Long latestSessionId) {}
 

@@ -5,9 +5,10 @@ import DataGrid from '../components/DataGrid.jsx';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { formatDate, formatDuration, formatNet, formatPercent } from '../format.js';
 import { STATISTICS_LABEL } from '../config.js';
-import { EXAM_BRANCHES, loadStudyHistory, practiceDurationSeconds, prepareExamHistory, summarizeExamRows } from '../studyStatistics.js';
+import { EXAM_BRANCHES, loadStudyHistory, practiceDurationSeconds, practiceScope, prepareExamHistory, summarizeExamRows } from '../studyStatistics.js';
+import { loadSharedCatalog } from '../components/SharedCategorySelect.jsx';
 
-const PRACTICE_MODE = { MIXED: 'Karışık', NEW: 'Yeni sorular', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
+const PRACTICE_MODE = { MIXED: 'Öncekiler dahil', NEW: 'Yalnız yeni', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
 const Progress = lazy(() => import('./Progress.jsx'));
 const DATE_COLUMN = {
   field: 'date', headerName: 'Tarih', minWidth: 185, cellDataType: false, sort: 'desc',
@@ -56,7 +57,8 @@ const PRACTICE_COLUMNS = [
     <Link to={`/pratik/${data.id}`}>{data.status === 'COMPLETED' ? 'Sonucu gör' : data.status === 'ABANDONED' ? 'Kaydı gör' : 'Devam et'}</Link> },
   { ...DATE_COLUMN, minWidth: 110, valueFormatter: ({ value }) => shortDate(value), filterParams: { selectionType: 'date' } },
   { field: 'subject', headerName: 'Ders', minWidth: 120 },
-  { field: 'modeLabel', headerName: 'Soru seçimi', minWidth: 125 },
+  { field: 'topic', headerName: 'Konu', minWidth: 160, tooltipField: 'topic' },
+  { field: 'modeLabel', headerName: 'Soru geçmişi', minWidth: 125 },
   ...RESULT_COLUMNS.filter(column => column.field !== 'blank').map(column => ({ ...column, minWidth: 80 })),
   { field: 'timeLimitSeconds', headerName: 'Süre sınırı', minWidth: 108, cellDataType: 'number',
     valueFormatter: ({ value }) => value ? formatDuration(value) : 'Süresiz' },
@@ -92,17 +94,20 @@ export default function History() {
 
 function HistoryTable({ practice }) {
   const path = practice ? '/api/study-sessions' : '/api/exams';
-  const { data, loading, error, retry } = useAsync(() => loadStudyHistory(path), [path]);
+  const { data, loading, error, retry } = useAsync(async () => {
+    const [items, metadata] = await Promise.all([loadStudyHistory(path), practice ? loadSharedCatalog() : Promise.resolve(null)]);
+    return { items, categories: metadata?.categories || [] };
+  }, [path]);
   const [visibleRows, setVisibleRows] = useState([]);
-  const rows = useMemo(() => practice ? (data ?? []).map(item => ({
+  const rows = useMemo(() => practice ? (data?.items ?? []).map(item => ({
     ...item, title: `${item.questionCount} soruluk pratik`, date: Date.parse(item.startedAt),
-    subject: item.subject || 'Karma dersler', topic: item.topic || 'Karma konular',
+    ...practiceScope(item, data.categories),
     statusLabel: item.status === 'COMPLETED' ? 'Tamamlandı' : item.status === 'ABANDONED' ? 'İptal edildi' : 'Devam ediyor',
-    modeLabel: PRACTICE_MODE[item.selectionMode] || 'Karışık',
+    modeLabel: PRACTICE_MODE[item.selectionMode] || '—',
     correct: item.result?.correct ?? null, wrong: item.result?.wrong ?? null, blank: item.result?.blank ?? null,
     percent: item.result && item.questionCount ? item.result.correct * 100 / item.questionCount : null,
     durationSeconds: practiceDurationSeconds(item),
-  })) : prepareExamHistory(data ?? []), [data, practice]);
+  })) : prepareExamHistory(data?.items ?? []), [data, practice]);
   const columns = useMemo(() => practice ? PRACTICE_COLUMNS : EXAM_COLUMNS, [rows, practice]);
   const summary = useMemo(() => summarizeExamRows(visibleRows), [visibleRows]);
 
@@ -110,11 +115,11 @@ function HistoryTable({ practice }) {
     <h2 className="section-title">{practice ? 'Pratiklerim' : 'Deneme sonuçlarım'}</h2>
     {loading && <Loading text="Çalışma kayıtların yükleniyor…" />}
     {error && <ErrorBox error={error} onRetry={retry} />}
-    {data?.length === 0 && <section className="card"><Empty title={practice ? 'Henüz pratik oturumun yok.' : 'Henüz tamamlanmış bir denemen yok.'}>
+    {data?.items.length === 0 && <section className="card"><Empty title={practice ? 'Henüz pratik oturumun yok.' : 'Henüz tamamlanmış bir denemen yok.'}>
       <p>Çalışmaya başladığında kayıtlarını ve sonuçlarını burada görebilirsin.</p>
       <Link to={practice ? '/calisma/yeni' : '/calisma/yeni?mode=sinav'} className="btn btn-primary">{practice ? 'Pratik başlat' : 'Deneme başlat'}</Link>
     </Empty></section>}
-    {data?.length > 0 && <>
+    {data?.items.length > 0 && <>
       {!practice && <section className="card table-card statistics-summary" aria-label="Filtrelenen çalışmaların özeti">
         <DataGrid mode="summary" rowData={summary} columnDefs={EXAM_SUMMARY_COLUMNS} />
       </section>}

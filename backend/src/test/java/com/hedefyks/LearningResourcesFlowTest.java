@@ -198,6 +198,8 @@ class LearningResourcesFlowTest extends TestBase {
         var practice=read(send(session,post("/api/study-sessions"),request.toString()).andExpect(status().isCreated()));
         assertThat(practice.path("questions").size()).isEqualTo(2);
         assertThat(jdbc.queryForObject("SELECT catalog_filter->'categoryIds'->>0 FROM study_sessions WHERE id=?",String.class,practice.path("id").asLong())).isEqualTo("learning-main");
+        var history=read(send(session,get("/api/study-sessions"),null).andExpect(status().isOk()));
+        assertThat(history.at("/content/0/categoryIds/0").asText()).isEqualTo("learning-main");
         var exam=read(send(session,post("/api/exams"),request.toString()).andExpect(status().isCreated()));
         long examId=exam.path("id").asLong();
         assertThat(jdbc.queryForObject("SELECT count(*) FROM exam_questions WHERE exam_id=? AND learning_label_snapshot->>'catalogRunKey'=?",Integer.class,examId,RUN)).isEqualTo(2);

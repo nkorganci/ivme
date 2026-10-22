@@ -231,7 +231,8 @@ public class StudySessionService {
                 """).param("userId", userId).query(Long.class).single();
         List<HistoryItem> items = jdbc.sql("""
                 SELECT s.id, s.started_at, s.ended_at, s.status, s.selection_mode,
-                       s.time_limit_seconds, s.filter_subject, s.filter_topic, totals.*
+                       s.time_limit_seconds, s.filter_subject, s.filter_topic,
+                       ARRAY(SELECT jsonb_array_elements_text(s.catalog_filter->'categoryIds')) AS category_ids, totals.*
                 FROM (SELECT * FROM study_sessions WHERE user_id = :userId AND mode = 'PRACTICE'
                       ORDER BY started_at DESC, id DESC LIMIT :size OFFSET :offset) s
                 LEFT JOIN LATERAL (
@@ -265,6 +266,7 @@ public class StudySessionService {
                         rs.getString("status"), QuestionSelectionMode.valueOf(rs.getString("selection_mode")),
                         (Integer) rs.getObject("time_limit_seconds"), rs.getInt("question_count"),
                         rs.getString("filter_subject"), rs.getString("filter_topic"),
+                        List.of((String[]) rs.getArray("category_ids").getArray()),
                         "COMPLETED".equals(rs.getString("status")) ? new Result(
                                 rs.getInt("correct_count"), rs.getInt("wrong_count"), rs.getInt("blank_count"),
                                 rs.getInt("first_correct_count"), rs.getInt("first_wrong_count"), rs.getInt("first_blank_count")) : null)).list();

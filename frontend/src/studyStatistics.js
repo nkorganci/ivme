@@ -1,4 +1,5 @@
 import { api, qs } from './api.js';
+import { categoryTopic } from './categorySelection.js';
 
 // Display groups for the saved TYT/AYT subject names, not new taxonomy identities.
 export const EXAM_BRANCHES = [
@@ -34,6 +35,19 @@ export async function loadStudyHistory(path, get = api.get) {
     pages.forEach(result => rows.push(...result.content));
   }
   return rows;
+}
+
+export function practiceScope(item, categories = []) {
+  const byId = new Map(categories.map(category => [category.id, category]));
+  const selected = (item.categoryIds || []).map(id => byId.get(id)).filter(Boolean);
+  const branch = selected[0] || categories.find(category => category.subjectId === item.subject || category.subject === item.subject);
+  const subjects = [...new Set(selected.map(category => category.subject))];
+  const topics = [...new Set(selected.map(categoryTopic))];
+  return {
+    subject: subjects.length > 1 ? 'Karma dersler' : subjects[0] || branch?.subject || item.subject || 'Karma dersler',
+    topic: topics.length ? topics.join('; ') : item.categoryIds?.length ? 'Seçilen konu katalogda bulunamadı'
+      : item.topic || (item.subject ? 'Tüm konular' : 'Karma konular'),
+  };
 }
 
 export function localDate(value) {

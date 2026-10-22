@@ -387,7 +387,11 @@ ilerleme tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
 sayfasına değil tüm geçmişe uygulanır; deneme özeti, filtre sonrası kayıtlar üzerinden
 hesaplanır. Başarı toplam doğru / toplam soru oranıdır; oturum yüzdelerinin
 ortalaması alınmaz. Pratik sekmesinde üst filtre kartı ve özet gösterilmez;
-Durum/Konu/Boş sütunları gösterilmez. Yalnız Pratik/Tarih/Ders sütunları başlık menüsünden filtrelenir ve
+Durum/Boş sütunları gösterilmez. Konu sütunu, pratik oluşturulurken
+`study_sessions.catalog_filter.categoryIds` alanına kaydedilen kimlikleri
+yayımlanmış ortak katalogdaki görünen adlara çevirir; eski `filter_topic`
+kayıtları da gösterilir. Soru geçmişi sütunu çözülmüş soruları dahil etme
+kipini ayrı gösterir. Yalnız Pratik/Tarih/Ders sütunları başlık menüsünden filtrelenir ve
 sıralanır. Tarih gün/ay gösterilir; filtre/sıralama tam tarih üzerinden çalışır.
 Diğer kayıt sütunlarında filtre ve sıralama kapalıdır. Tamamlanan pratikte son
 tur sonucu kullanılır; ilk tur sonucu API'de ayrıca korunur.

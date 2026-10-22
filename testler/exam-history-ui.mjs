@@ -19,12 +19,18 @@ const fixtures = [
   { id: 3, title: 'TYT yeni deneme', examType: 'TYT', submittedAt: '2026-10-17T12:00:00Z', questionCount: 3, correctCount: 0, wrongCount: 0, blankCount: 3, net: 0, percent: 0, durationSeconds: 30,
     bySubject: [{ subject: 'Matematik', total: 3, correct: 0, wrong: 0, blank: 3 }] },
 ];
+const practiceFixtures = [{ id: 91, startedAt: '2026-10-21T12:00:00Z', endedAt: '2026-10-21T12:10:00Z',
+  status: 'COMPLETED', selectionMode: 'MIXED', questionCount: 10, subject: 'fizik', topic: null,
+  categoryIds: ['tyt.fizik.vektorler'], result: { correct: 8, wrong: 2, blank: 0 } }];
+const practiceCategories = [{ id: 'tyt.fizik.vektorler', exam: 'TYT', subjectId: 'fizik', subject: 'Fizik', topic: 'Vektörler' }];
 let noTyt = false;
 const server = live ? null : createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const json = data => { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(data)); };
   if (url.pathname === '/api/auth/me') return json({ id: 1, role: 'USER', contactComplete: true });
   if (url.pathname === '/api/exams') { const content = noTyt ? fixtures.filter(row => row.examType === 'AYT') : fixtures; return json({ content, totalElements: content.length, totalPages: 1 }); }
+  if (url.pathname === '/api/study-sessions') return json({ content: practiceFixtures, totalElements: 1, totalPages: 1 });
+  if (url.pathname === '/api/learning-resources/metadata') return json({ categories: practiceCategories });
   if (url.pathname.startsWith('/api/')) return json(null);
   const path = resolve(dist, '.' + decodeURIComponent(url.pathname));
   const file = path.startsWith(dist + sep) && extname(path) ? path : join(dist, 'index.html');
@@ -138,6 +144,16 @@ try {
     await pause(100);
     await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true }).then(result => writeFileSync(join(output, `${live?'live':'fixture'}-${width}.png`), Buffer.from(result.result.data, 'base64')));
     checks.push({ width, rows: rows.length, removedCopyAndSearch: 'PASS', narrowedColumnsAndOnlyTitleDateFilters: 'PASS', separateTytAytSummary: 'PASS', fixedBranches: EXAM_BRANCHES.length, branchCellsVerified: seen.size, centeredHeadersAndCells: 'PASS', checklistAndSummary: 'PASS', sort: 'PASS', fitsDesktop: width > 1000 ? 'PASS' : 'table scrolls within page' });
+  }
+  if (!live) {
+    await cdp('Emulation.setDeviceMetricsOverride', { width: 1468, height: 1000, deviceScaleFactor: 1, mobile: false });
+    await cdp('Page.navigate', { url: base + '/gecmis?tab=practice' });
+    await wait('document.querySelector(".study-statistics .ag-cell[col-id=topic]")');
+    assert.equal(await ev('document.querySelector(".study-statistics .ag-cell[col-id=subject]").textContent'), 'Fizik');
+    assert.equal(await ev('document.querySelector(".study-statistics .ag-cell[col-id=topic]").textContent'), 'Vektörler');
+    assert.equal(await ev('document.querySelector(".study-statistics .ag-header-cell[col-id=modeLabel] .ag-header-cell-text").textContent'), 'Soru geçmişi');
+    assert.equal(await ev('document.querySelector(".study-statistics .ag-cell[col-id=modeLabel]").textContent'), 'Öncekiler dahil');
+    checks.push({ practiceTopic: 'Fizik · Vektörler', selectionMode: 'Öncekiler dahil' });
   }
   assert.equal(errors.length, 0, JSON.stringify(errors));
   const report = { status: 'PASS', mode: live ? 'live' : 'fixture', checks, runtimeErrors: 0 };

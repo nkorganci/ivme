@@ -1,6 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { EXAM_BRANCHES, filterStudyRows, groupExamBranches, loadStudyHistory, localDate, practiceDurationSeconds, prepareExamHistory, summarizeExamRows, summarizeStudyRows } from '../src/studyStatistics.js';
+import { EXAM_BRANCHES, filterStudyRows, groupExamBranches, loadStudyHistory, localDate, practiceDurationSeconds, practiceScope, prepareExamHistory, summarizeExamRows, summarizeStudyRows } from '../src/studyStatistics.js';
+
+test('practice history names the selected catalog topic instead of the question history mode', () => {
+  const categories = [
+    { id: 'tyt.fizik.vektorler', subjectId: 'fizik', subject: 'Fizik', topic: 'Vektörler' },
+    { id: 'tyt.fizik.hareket', subjectId: 'fizik', subject: 'Fizik', topic: 'Hareket' },
+  ];
+  assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: ['tyt.fizik.vektorler'], selectionMode: 'MIXED' }, categories),
+    { subject: 'Fizik', topic: 'Vektörler' });
+  assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: ['tyt.fizik.vektorler', 'tyt.fizik.hareket'] }, categories),
+    { subject: 'Fizik', topic: 'Vektörler; Hareket' });
+  assert.deepEqual(practiceScope({ subject: 'fizik', categoryIds: [] }, categories),
+    { subject: 'Fizik', topic: 'Tüm konular' });
+});
 
 test('all API pages participate in filtering, including records beyond the first 100', async () => {
   const requested = [];
