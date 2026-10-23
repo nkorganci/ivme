@@ -44,14 +44,18 @@ for(const code of ['cd-2021-mini-deneme-3-01-09','mn-test-03-01-01']) {
   assert.ok(item.automaticLabels.assignments.some(a=>a.evidence.some(e=>e.type==='QUESTION_TASK_READING' && e.association==='RELATION')),code);
 }
 const restoredTask=items.get('question:3d-ayt-esit-agirlik-30-27');
-assert.equal(restoredTask.automaticLabels.assignments.find(a=>a.relation==='PRIMARY').categoryId,'ayt.matematik.integral-ve-uygulamalari');
+assert.equal(restoredTask.automaticLabels.assignments.find(a=>a.relation==='PRIMARY').categoryId,
+  categories.get('ayt.matematik.integral-ve-uygulamalari').canonicalTopicIds[0]);
 assert.ok(restoredTask.automaticLabels.assignments.some(a=>a.relation==='PREREQUISITE' && categories.get(a.categoryId).topic==='Fonksiyonlar'));
 assert.equal(restoredTask.availability,originals.get('3d-ayt-esit-agirlik-30-27').renderedSourceRepair?'available':'needs_repair');
 for(const item of data.items.filter(i=>i.kind==='NOTE' || i.key.startsWith('note-question:'))) {
   assert.ok(new URL(item.url,'https://ivme.local').searchParams.get('konu'),item.key);
   assert.ok(item.exampleSources.length,item.key);
   assert.ok(item.exampleSources.every(e=>items.has(e.sourceKey)),item.key);
-  for(const a of item.automaticLabels.assignments) assert.ok(a.locators.some(l=>l.type==='NOTE'),item.key);
+  for(const a of item.automaticLabels.assignments) {
+    if(a.categoryId.startsWith('system.')) assert.equal(a.locatorStatus,'MISSING',item.key);
+    else assert.ok(a.locators.some(l=>l.type==='NOTE'),item.key);
+  }
 }
 // These source subjects are demonstrably wrong: the inspected stems concern magnetism/transformers, not chemistry.
 for(const p of proposals.proposals.filter(p=>p.targets[0].subjectId==='fizik' && originals.get(p.code).subject==='Kimya')) {
@@ -81,7 +85,8 @@ for(const fragment of audit.duplicateHeaderFragments) {
   assert.ok(fragment.categoryIds.length,fragment.key);
 }
 const supplementary=pdf.items.filter(i=>i.sourceScope==='RESOURCES');
-assert.ok(supplementary.length>=10,'Includes booklets and guidance references');
+assert.equal(supplementary.filter(i=>i.relativePath.startsWith('yks-cikmis-sorular/OGM Kitapciklari/')).length,6);
+assert.ok(supplementary.every(i=>!i.relativePath.startsWith('mufredat/pdf-ozetler/')));
 for(const p of proposals.proposals.filter(p=>p.sourceProblem)) {
   const repair=originals.get(p.code).renderedSourceRepair,item=items.get(`question:${p.code}`);
   assert.equal(item.availability,repair?'available':'needs_repair',p.code);

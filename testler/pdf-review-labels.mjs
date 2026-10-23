@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { normalise, cleanHeading } from '../scripts/pdf-review-taxonomy.mjs';
 const base = JSON.parse(fs.readFileSync(new URL('../backend/src/main/resources/content-review-catalog.json', import.meta.url)));
 const pdf = JSON.parse(fs.readFileSync(new URL('../backend/src/main/resources/pdf-review-labels.json', import.meta.url)));
-const categories = new Map([...base.categories, ...pdf.categories].map(c => [c.id, c]));
+const taxonomy = JSON.parse(fs.readFileSync(new URL('../backend/src/main/resources/content-taxonomy.json', import.meta.url)));
+const categories = new Map([...taxonomy.categories, ...base.categories, ...pdf.categories].map(c => [c.id, c]));
 assert.equal(new Set(pdf.items.map(i => i.key)).size, pdf.items.length);
 assert.equal(pdf.items.filter(i => i.kind !== 'PDF').length, 0);
 for (const item of pdf.items) {

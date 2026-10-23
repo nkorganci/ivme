@@ -21,10 +21,6 @@ SCOPE = {
     'AYT_Sayisal.pdf': ('AYT', SAY),
     'AYT_EsitAgirlik.pdf': ('AYT', ['edebiyat', 'tarih', 'cografya', 'matematik', 'geometri']),
     'AYT_Sozel.pdf': ('AYT', ['edebiyat', 'tarih', 'cografya', 'felsefe', 'psikoloji', 'sosyoloji', 'mantik']),
-    '2024-AYT-SAYISAL-SORU-DAGILIMI.pdf': ('AYT', SAY),
-    'SAYISAL-AYT-KONULARI.pdf': ('AYT', SAY),
-    '2024-TYT-SORU-DAGILIMI.pdf': ('TYT', TYT),
-    '2026-TYT-KONULARI.pdf': ('TYT', TYT),
 }
 
 
