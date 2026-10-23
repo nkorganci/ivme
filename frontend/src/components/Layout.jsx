@@ -6,12 +6,12 @@ import { displayName } from '../format.js';
 import Icon from './Icons.jsx';
 import { api } from '../api.js';
 import { CURRICULUM } from '../curriculum.js';
-import ResourcesNavigation,{RESOURCE_HOME,isResourcePath,ResourceNavigationContext} from './ResourcesNavigation.jsx';
+import {CURRICULUM_HOME,isResourcePath} from './ResourcesNavigation.jsx';
 import { useDisplayPreference } from '../useDisplayPreference.js';
 
 const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
-  [RESOURCE_HOME, 'Konular ve Kaynaklar', 'book'],
+  [CURRICULUM_HOME, 'Dersler', 'book'],
   ['/akilli-ogretmen', 'Akıllı Öğretmen', 'layers'],
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/ogrenci-takip', 'Öğrenci Takip Portalı', 'clock'],
@@ -30,7 +30,7 @@ const TRACKING_ITEMS = [
 ];
 
 function isActive(path, to) {
-  if(to===RESOURCE_HOME)return isResourcePath(path);
+  if(to===CURRICULUM_HOME)return isResourcePath(path);
   if (to === '/') return path === '/';
   if (to === '/calisma/yeni') {
     return ['/calisma/yeni', '/cikmis-sorular', '/soru-bankasi', '/sorular', '/soru/', '/pratik/', '/sinav/']
@@ -44,7 +44,6 @@ function isActive(path, to) {
  * soru sayfasında varsayılan ray; dar ekranda üst ince çubuk + sol çekmece.
  */
 export default function Layout() {
-  const [resourceSelection,setResourceSelection]=useState(null);
   const { user, logout, refreshUser, activityError } = useAuth();
   const [reviewSwitchError, setReviewSwitchError] = useState('');
   const [signOutError, setSignOutError] = useState('');
@@ -133,7 +132,7 @@ export default function Layout() {
   };
 
   return (
-    <ResourceNavigationContext.Provider value={{value:resourceSelection,set:setResourceSelection}}><div className={`shell${rail ? ' rail' : ''}`}>
+    <div className={`shell${rail ? ' rail' : ''}`}>
       <a className="skip-link" href="#icerik">
         İçeriğe geç
       </a>
@@ -234,10 +233,9 @@ export default function Layout() {
         <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
           {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
           {activityError && <p className="field-error" role="alert">{activityError}</p>}
-          {isResourcePath(pathname) && <ResourcesNavigation/>}
           <Outlet context={{ setQuestionBank }} />
         </main>
       </div>
-    </div></ResourceNavigationContext.Provider>
+    </div>
   );
 }

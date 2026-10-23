@@ -1,20 +1,14 @@
-import {useContext,useEffect,useState} from 'react';
+import {useEffect,useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import {api,qs} from '../api.js';
-import {RESOURCE_HOME,ResourceNavigationContext} from './ResourcesNavigation.jsx';
+import {RESOURCE_HOME} from './ResourcesNavigation.jsx';
 
 /** Reads the public presentation projection; never copies analysis or answer data. */
 export default function ResourceContext({itemKey,onLoaded,compact=false}) {
   const [item,setItem]=useState(null);
-  const {pathname,search}=useLocation();
-  const navigation=useContext(ResourceNavigationContext);
+  const {search}=useLocation();
   useEffect(()=>{let active=true;setItem(null);onLoaded?.(null);api.get('/api/learning-resources/item'+qs({key:itemKey}))
     .then(v=>{if(active){setItem(v);onLoaded?.(v);}}).catch(()=>{});return()=>{active=false;};},[itemKey,onLoaded]);
-  useEffect(()=>{
-    if(!item || !navigation || !/^\/(?:kaynakli-ders-notlari\/[^/]+|konu-anlatimlari\/\d+)$/.test(pathname))return;
-    const ids=[...new Set(item.labels.assignments.filter(a=>a.relation!=='PREREQUISITE').map(a=>a.categoryId))];
-    navigation.set({route:pathname+search,categoryId:ids.length<=20?ids:[]});
-  },[item,pathname,search,navigation?.set]);
   if(!item)return null;
   const selected=new URLSearchParams(search).getAll('categoryId');
   const all=[...new Set(item.labels.assignments.filter(a=>a.relation!=='PREREQUISITE').map(a=>a.categoryId))];

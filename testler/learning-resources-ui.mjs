@@ -134,13 +134,16 @@ try {
   assert.ok(!Object.hasOwn(firstQuestion,'correctAnswer'));
   await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=VIDEO&'+query});
   await wait("document.querySelector('.learning-resources [role=status]')?.textContent.includes('kaynak')");
-  assert.ok(await evaluate("[...document.querySelectorAll('nav[aria-label=\"Konular ve kaynaklar\"] a')].every(a=>new URL(a.href).searchParams.has('categoryId'))"));
+  assert.equal(await evaluate("document.querySelectorAll('nav[aria-label=\"Konular ve kaynaklar\"] a').length"),0);
   await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=QUESTION&bankOnly=true&categoryMatch=ALL&'+query});
   await wait("document.querySelector('.learning-resources [role=status]')?.textContent.includes('kaynak')");
   assert.equal(await evaluate("[...document.querySelectorAll('.learning-filters label')].find(l=>l.firstChild.textContent==='Etiket eşleşmesi').querySelector('select').value"),'ALL');
-  assert.ok(await evaluate("[...document.querySelectorAll('nav[aria-label=\"Konular ve kaynaklar\"] a')].every(a=>new URL(a.href).searchParams.get('match')==='ALL')"));
+  assert.equal(await evaluate("new URL(location.href).searchParams.get('categoryMatch')"),'ALL');
   await cdp('Page.navigate',{url:site+'/dersler-ve-konular?sinav=TYT&ders=fizik'});
   await wait("document.body.innerText.includes('fiziksel kaynak')");
+  assert.equal(await evaluate("document.querySelector('.curriculum-page h1')?.textContent"),'Dersler');
+  assert.equal(await evaluate("document.querySelector('.sidenav a.active')?.textContent.trim()"),'Dersler');
+  assert.equal(await evaluate("document.querySelectorAll('nav[aria-label=\"Konular ve kaynaklar\"] a').length"),0);
   assert.ok(await evaluate("document.body.innerText.includes('Sayfa okuma/izleme ilerlemesi kaydı yoktur')"));
   assert.ok(await evaluate("[...document.querySelectorAll('.ag-row [col-id=sharedResources] a')].every(a=>new URL(a.href).searchParams.getAll('categoryId').length>0)"));
   const historic=await evaluate("fetch('/api/learning-resources/progress?classification=HISTORICAL').then(r=>r.json())");
@@ -160,7 +163,6 @@ try {
   assert.equal(await evaluate("document.querySelector('.source-notes-lesson').id"),lesson.id);
   await wait("document.querySelector('#soru-kaliplari').getBoundingClientRect().top>=(document.querySelector('.topbar')?.getBoundingClientRect().bottom || 0) && document.querySelector('#soru-kaliplari').getBoundingClientRect().top<innerHeight");
   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'Note example overflow on mobile');
-  await wait("[...document.querySelectorAll('nav[aria-label=\"Konular ve kaynaklar\"] a')].every(a=>new URL(a.href).searchParams.getAll('categoryId').length>0)");
   // The schedule is browser-local: seed only this disposable profile and use
   // synthetic auth projections to check account partitioning without DB writes.
   const profileUser=await evaluate("fetch('/api/auth/me').then(r=>r.json())");

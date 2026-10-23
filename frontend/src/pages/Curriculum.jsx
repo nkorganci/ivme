@@ -25,7 +25,7 @@ function ProgressBar({ done, total }) {
 }
 
 export default function Curriculum() {
-  usePageTitle('Dersler ve Konuları');
+  usePageTitle('Dersler');
   const [params, setParams] = useSearchParams();
   const exam = params.get('sinav') === 'AYT' ? 'AYT' : 'TYT';
   const metadata=useAsync(()=>api.get('/api/learning-resources/metadata'),[]);
@@ -153,7 +153,7 @@ export default function Curriculum() {
   if(metadata.loading)return <Loading text="Ortak üniteler yükleniyor…"/>;
   if(metadata.error)return <ErrorBox error={metadata.error} onRetry={metadata.retry}/>;
   return <div className="curriculum-page">
-    <div className="page-head"><h1>Dersler ve Konuları</h1></div>
+    <div className="page-head"><h1>Dersler</h1></div>
     <p className="muted lead">Sınavını ve dersini seç. Konuyu çalışıp soru pratiği yaptıktan sonra “Bitti” ile işaretle; gerekirse geri al. İlerlemen hesabına kaydedilir.</p>
     <label>İlerleme sınıflaması <select value={classification} onChange={e=>setClassification(e.target.value)}><option value="CURRENT">Güncel konu kapsamı</option><option value="HISTORICAL">İlk deneme anındaki etiketler</option></select></label>
     {questionProgress.data && <p className="muted small">Tüm derslerde {questionProgress.data.summary.total} tekil ilk deneme · {questionProgress.data.unclassified} sınıflaması bilinmeyen kayıt. Konu alt toplamları örtüşebilir; genel toplam soruyu bir kez sayar. Eski boş etiketler bugünün etiketleriyle doldurulmaz.</p>}

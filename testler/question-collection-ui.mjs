@@ -163,7 +163,7 @@ try {
     if (JSON.stringify(topicGroups) !== JSON.stringify(['AYT · Fizik', 'AYT · Matematik', 'TYT · Biyoloji', 'TYT · Fizik'])) throw Error('Konu grupları yanlış sırada: ' + JSON.stringify(topicGroups));
     if (width === 1280) {
       const labels = await evaluate('[...document.querySelectorAll(".sidebar .sidenav > a, .sidebar .sidenav > .side-nav-group > button")].map(item => item.getAttribute("aria-label"))');
-      const expected = ['Ana Sayfa', 'Konular ve Kaynaklar', 'Çalışma önerileri', 'Öğrenci Takip Portalı alt menüsünü aç',
+      const expected = ['Ana Sayfa', 'Dersler', 'Çalışma önerileri', 'Öğrenci Takip Portalı alt menüsünü aç',
         'Soru Çöz & Pratik', 'Geçmişim ve İlerlemem', 'Geri Bildirim'];
       if (JSON.stringify(labels) !== JSON.stringify(expected)) throw new Error(`Sol menü sırası yanlış: ${JSON.stringify(labels)}`);
     }
