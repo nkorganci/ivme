@@ -1,8 +1,8 @@
 """Read PDFs outside the OGM folder, preserving hashes and page evidence.
 
-The scope below is supported by the actual covers (booklets), page text (guides),
-and the rendered/scanned function worksheet. Guidance summaries are secondary
-references, never official curriculum approval. No answer keys become labels.
+The scope below is supported by the actual covers (booklets) and page text
+(guides). Guidance summaries are secondary references, never official
+curriculum approval. No answer keys become labels.
 """
 import hashlib
 import json
@@ -25,7 +25,6 @@ SCOPE = {
     'SAYISAL-AYT-KONULARI.pdf': ('AYT', SAY),
     '2024-TYT-SORU-DAGILIMI.pdf': ('TYT', TYT),
     '2026-TYT-KONULARI.pdf': ('TYT', TYT),
-    'fonksiyonlar karma.pdf': ('AYT', ['matematik']),
 }
 
 
@@ -42,7 +41,6 @@ def main():
     old_path = OUT / 'supplemental-pdf-inventory.json'
     old = {r['relativePath']: r for r in json.loads(old_path.read_text(encoding='utf8'))['sources']} if old_path.exists() else {}
     sources = []
-    ocr_pages = []
     for p in sorted(ROOT.rglob('*.pdf')):
         if 'ogm-materyal' in p.relative_to(ROOT).parts:
             continue
@@ -64,44 +62,34 @@ def main():
             continue
         exam, branches = SCOPE[p.name]
         guide = relative.startswith('mufredat/')
-        worksheet = relative.startswith('islenmemis/')
         evidence = []
         with pymupdf.open(p) as doc:
             for n, page in enumerate(doc):
                 text = page.get_text()
                 method = 'PDF_TEXT'
-                if worksheet and not text.strip():
-                    pix = page.get_pixmap(matrix=pymupdf.Matrix(2, 2))
-                    with pymupdf.open('pdf', pix.pdfocr_tobytes(language='tur', tessdata=str(APP / 'veri/tessdata'))) as ocr:
-                        text = ocr[0].get_text()
-                    method = 'PAGE_OCR'
-                    ocr_pages.append({'source': relative, 'page': n+1, 'text': text})
-                if n < 4 or worksheet or guide:
-                    # Evidence includes a short heading only, never the worksheet answer list.
-                    heading = 'Cevap Anahtarı' if worksheet and n == len(doc)-1 else ' '.join(text.split())[:220]
+                if n < 4 or guide:
+                    heading = ' '.join(text.split())[:220]
                     if heading:
                         evidence.append({'text': heading, 'page': n+1, 'method': method,
                                          'reference': f'Kaynaklar/{relative}'})
             row = {'id': 500000000 + int(hashlib.sha256(relative.encode()).hexdigest()[:7], 16),
-                'sourceTitle': 'Fonksiyonlar · karma test (76 soru)' if worksheet else p.stem.replace('_', ' '),
+                'sourceTitle': p.stem.replace('_', ' '),
                 'exam': exam, 'subjectId': branches[0] if len(branches) == 1 else 'genel',
-                'source': 'İkincil rehberlik özeti' if guide else 'Taranmış fonksiyonlar testi' if worksheet else 'OGM çıkmış soru kitapçığı',
+                'source': 'İkincil rehberlik özeti' if guide else 'OGM çıkmış soru kitapçığı',
                 'relativePath': relative, 'sourceScope': 'RESOURCES', 'grade': None,
                 'availability': 'available', 'sourceSha256': checksum, 'pageCount': len(doc), 'headings': evidence,
                 'explicitTargets': [{'exam': exam, 'subjectId': b,
-                    'topic': 'Fonksiyonlar' if worksheet else 'Dersin genel kapsamı',
-                    'subtopic': 'Fonksiyonlarda işlemler ve grafikler' if worksheet else 'Müfredat ve soru dağılımı rehberi' if guide else 'Çıkmış soru kitapçıkları'} for b in branches],
+                    'topic': 'Dersin genel kapsamı',
+                    'subtopic': 'Müfredat ve soru dağılımı rehberi' if guide else 'Çıkmış soru kitapçıkları'} for b in branches],
                 'explicitFormat': 'CALISMA_REHBERI' if guide else 'TEST',
-                'reviewReasons': ['SECONDARY_GUIDANCE_SOURCE'] if guide else ['SCANNED_WORKSHEET_REQUIRES_REVIEW'] if worksheet else ['BOOKLET_SCOPE_REQUIRES_REVIEW'],
-                'pageSegments': [{'from': 1, 'to': len(doc)-1, 'contentFormat': 'TEST'},
-                    {'from': len(doc), 'to': len(doc), 'contentFormat': 'CEVAP_ANAHTARI'}] if worksheet else []}
+                'reviewReasons': ['SECONDARY_GUIDANCE_SOURCE'] if guide else ['BOOKLET_SCOPE_REQUIRES_REVIEW'],
+                'pageSegments': []}
         sources.append(row)
         print(f'Read {relative}: {row["pageCount"]} pages', flush=True)
     OUT.mkdir(exist_ok=True, parents=True)
     old_path.write_text(json.dumps({'version': 1, 'sources': sources}, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
-    if ocr_pages:
-        (OUT / 'supplemental-page-ocr.json').write_text(json.dumps(ocr_pages, ensure_ascii=False, indent=2)+'\n', encoding='utf8')
-    print(json.dumps({'supplementalPdfs': len(sources), 'ocrPages': len(ocr_pages)}))
+    (OUT / 'supplemental-page-ocr.json').unlink(missing_ok=True)
+    print(json.dumps({'supplementalPdfs': len(sources)}))
 
 if __name__ == '__main__':
     main()

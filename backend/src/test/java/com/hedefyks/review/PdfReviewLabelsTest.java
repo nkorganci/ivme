@@ -23,10 +23,10 @@ class PdfReviewLabelsTest {
 
     @Test void readsSupplementaryPdfAndRechecksItsBytesWithoutExposingFilesystemPaths() throws Exception {
         Path ogm = Files.createDirectories(workspace.resolve("Kaynaklar/ogm-materyal"));
-        Path directory = Files.createDirectories(ogm.getParent().resolve("islenmemis"));
+        Path directory = Files.createDirectories(ogm.getParent().resolve("ek-kaynaklar"));
         byte[] bytes = "%PDF-source".getBytes();
         Path pdf = Files.write(directory.resolve("fonksiyonlar.pdf"), bytes);
-        var store = labels("RESOURCES", "islenmemis/fonksiyonlar.pdf", bytes);
+        var store = labels("RESOURCES", "ek-kaynaklar/fonksiyonlar.pdf", bytes);
         assertThat(store.file(1).getContentAsByteArray()).isEqualTo(bytes);
         assertThat(store.items().getFirst()).doesNotContainKeys("relativePath", "sourceScope");
         Files.writeString(pdf, "%PDF-changed");
@@ -44,7 +44,7 @@ class PdfReviewLabelsTest {
         Files.createDirectories(workspace.resolve("Kaynaklar/ogm-materyal"));
         byte[] bytes = "private".getBytes();
         Path outside = Files.write(workspace.resolve("outside.pdf"), bytes);
-        for (String path : List.of("../outside.pdf", outside.toString(), "islenmemis/private.txt"))
+        for (String path : List.of("../outside.pdf", outside.toString(), "ek-kaynaklar/private.txt"))
             assertThatThrownBy(() -> labels("RESOURCES", path, bytes).file(1)).isInstanceOf(ApiException.class);
     }
 }

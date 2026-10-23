@@ -81,13 +81,7 @@ for(const fragment of audit.duplicateHeaderFragments) {
   assert.ok(fragment.categoryIds.length,fragment.key);
 }
 const supplementary=pdf.items.filter(i=>i.sourceScope==='RESOURCES');
-assert.ok(supplementary.length>=11,'Includes booklets, guidance references and scanned worksheets');
-const worksheet=supplementary.find(i=>i.relativePath==='islenmemis/fonksiyonlar karma.pdf');
-assert.equal(worksheet.automaticLabels.contentFormat,'TEST');
-assert.deepEqual(worksheet.automaticLabels.pageSegments,[
-  {from:1,to:15,contentFormat:'TEST'},{from:16,to:16,contentFormat:'CEVAP_ANAHTARI'},
-]);
-assert.equal(worksheet.automaticLabels.evidence.filter(e=>e.method==='PAGE_OCR').length,16);
+assert.ok(supplementary.length>=10,'Includes booklets and guidance references');
 for(const p of proposals.proposals.filter(p=>p.sourceProblem)) {
   const repair=originals.get(p.code).renderedSourceRepair,item=items.get(`question:${p.code}`);
   assert.equal(item.availability,repair?'available':'needs_repair',p.code);

@@ -117,14 +117,14 @@ etiket, güven, konum, kaynak erişimi ve insan doğrulaması ayrı sayaçlardı
 
 - 81.598 soru kartı: 80.097 veritabanı kaydı ve öğrenci bankasına alınmamış 1.501 arşiv kartı.
 - Ders notları içindeki 166 örnek soru ayrıca etiketlidir; toplam QUESTION kaydı 81.764'tür.
-- 2.713 PDF katalog kaydı; bunlar 2.698 ayrı fiziksel PDF dosyasını kapsar. Aynı dosyayı
+- 2.712 PDF katalog kaydı; bunlar 2.697 ayrı fiziksel PDF dosyasını kapsar. Aynı dosyayı
   gösteren katalog kayıtları kaynak kimlikleri kaybolmasın diye korunur. Dosyası olmayan
   1 kayıt ve yalnız video olarak bulunan 10 katalog kaydı da durumlarıyla korunur.
 - 49 ders notu, 377 video ve 399 konu/alt konu kaydı.
 - 18 müfredat/dağılım referans dosyası ayrıca konu kimliklerine bağlanır; bunlar konu anlatımı
   olarak sunulmaz. Kaynak klasöründeki iki kişisel fotoğraf eğitim içeriği sayılmaz.
 
-Kaynaklar klasörünün 2.773 dosyasının tamamı denetlenir. Ek olarak 51 HTML çözüm dizini
+Kaynaklar klasörünün 2.772 dosyasının tamamı denetlenir. Ek olarak 51 HTML çözüm dizini
 ders kapsamı ve sınıfıyla etiketlenir; cevapları öğrenci listesine taşınmaz. İki ZIP içindeki
 dört PDF'nin byte özetleri, zaten etiketli PDF'lerle birebir eşleştirilir. Bir README dosyası
 depo dokümantasyonu, ICINDEKILER.md kaynak dizini olarak kaydedilir. Kapsam dışında sessizce
@@ -132,8 +132,7 @@ bırakılan kaynak dosyası yoktur.
 
 Ham soru envanterindeki iki fazladan görsel yalnız ortak soru başlığıdır. Soruların tamamı
 sonraki birleşik kartta vardır; `audit.json` içindeki `coveredBy` alanı bu ilişkiyi saklar.
-Fonksiyonlar karma PDF'sinin 16 sayfası OCR ile okundu; 1–15. sayfalar test, 16. sayfa cevap
-anahtarıdır. Rehberlik PDF'leri ikincil çalışma rehberi olarak işaretlenir; resmî müfredat
+Rehberlik PDF'leri ikincil çalışma rehberi olarak işaretlenir; resmî müfredat
 onayı veya güncel sınav kapsamı doğrulaması sayılmaz.
 
 Etiket bulunması, içerik doğruluğunun öğretmen tarafından doğrulandığı anlamına gelmez.

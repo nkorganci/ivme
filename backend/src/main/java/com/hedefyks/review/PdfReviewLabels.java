@@ -59,7 +59,7 @@ public class PdfReviewLabels {
         if (part.isAbsolute() || relative.contains("..") || !relative.toLowerCase(Locale.ROOT).endsWith(".pdf"))
             throw ApiException.notFound("PDF bulunamadı.");
         try {
-            // Supplementary booklets/worksheets live beside ogm-materyal under Kaynaklar.
+            // Supplementary PDFs live beside ogm-materyal under Kaynaklar.
             // A packaged scope selects this fixed parent; request input never chooses a root.
             var root = ("RESOURCES".equals(item.get("sourceScope")) ? sourceRoot.getParent() : sourceRoot).toRealPath();
             var path = root.resolve(part).normalize();

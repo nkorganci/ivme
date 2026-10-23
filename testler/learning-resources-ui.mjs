@@ -61,17 +61,17 @@ try {
   assert.ok(await evaluate("document.querySelector('.ag-row a').getAttribute('href').startsWith('/soru/')"));
   await select('Sınav','AYT');
   await wait("new URL(location.href).searchParams.get('exam')==='AYT'");
-  await search('fonksiyonlar karma');
+  await search('esitagirlik');
   await select('Kaynak türü','PDF');
   await wait("new URL(location.href).searchParams.get('kind')==='PDF'");
-  await wait("new URL(location.href).searchParams.get('q')==='fonksiyonlar karma' && document.querySelector('.learning-resources [role=status]')?.textContent==='1 kaynak'");
+  await wait("new URL(location.href).searchParams.get('q')==='esitagirlik' && document.querySelector('.learning-resources [role=status]')?.textContent==='1 kaynak'");
   assert.ok(await evaluate("document.querySelector('.ag-row a').getAttribute('href').startsWith('/api/learning-resources/pdf/')"));
-  assert.ok(await evaluate("document.querySelector('.ag-row').innerText.includes('Fonksiyonlar')"));
+  assert.ok(await evaluate("document.querySelector('.ag-row').innerText.includes('Karma konular')"));
   // Restoring a URL search must restore the input instead of immediately overwriting browser Back.
-  await search('fonksiyonlar');
-  await wait("new URL(location.href).searchParams.get('q')==='fonksiyonlar'");
+  await search('ayt esitagirlik');
+  await wait("new URL(location.href).searchParams.get('q')==='ayt esitagirlik'");
   await evaluate('history.back()');
-  await wait("new URL(location.href).searchParams.get('q')==='fonksiyonlar karma' && document.querySelector('input[placeholder=\"Konu, alt konu veya soru kodu\"]').value==='fonksiyonlar karma'");
+  await wait("new URL(location.href).searchParams.get('q')==='esitagirlik' && document.querySelector('input[placeholder=\"Konu, alt konu veya soru kodu\"]').value==='esitagirlik'");
   await checkbox('Yalnız öğretmenin doğruladıkları');
   await wait("document.querySelector('.learning-resources [role=status]')?.textContent==='0 kaynak'");
   await checkbox('Yalnız öğretmenin doğruladıkları');
@@ -92,7 +92,7 @@ try {
   // A failed dictionary request must remain visible even when the list succeeds.
   await cdp('Fetch.enable',{patterns:[{urlPattern:site+'/api/learning-resources*'}]});
   responses.set('/api/learning-resources/metadata',{status:503,body:{hata:'Konu sözlüğü geçici olarak kullanılamıyor.'}});
-  await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=PDF&q=fonksiyonlar+karma'});
+  await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=PDF&q=esitagirlik'});
   await wait("document.querySelector('[role=alert]')?.textContent.includes('Konu sözlüğü geçici')");
   assert.ok(await evaluate("document.querySelector('[role=alert] button')?.textContent.includes('Tekrar dene')"));
   responses.delete('/api/learning-resources/metadata');
@@ -101,7 +101,7 @@ try {
   for(const status of [503,403]) {
     const message=status===403?'Bu kaynağa erişim izniniz yok.':'Kaynak listesi geçici olarak kullanılamıyor.';
     responses.set('/api/learning-resources',{status,body:{hata:message}});
-    await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=PDF&q=fonksiyonlar+karma'});
+    await cdp('Page.navigate',{url:site+'/konular-ve-kaynaklar?kind=PDF&q=esitagirlik'});
     await wait(`document.querySelector('[role=alert]')?.textContent.includes(${JSON.stringify(message)})`);
     assert.equal(await evaluate("document.querySelectorAll('.ag-row a').length"),0);
     responses.delete('/api/learning-resources');
