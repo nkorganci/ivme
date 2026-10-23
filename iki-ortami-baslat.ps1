@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param()
+param([switch]$OpenBrowser)
 $ErrorActionPreference = 'Stop'
 $worktrees = @{}
 $path = $null
@@ -19,3 +19,24 @@ foreach ($branch in @('main', 'feature/ivme-yol-haritasi')) {
     ) -WorkingDirectory $repo -WindowStyle Hidden -PassThru
 }
 Write-Host 'Main: http://localhost:1010; feature: http://localhost:1011'
+
+if ($OpenBrowser) {
+    foreach ($site in @(
+        @{ Name = 'Main'; Url = 'http://localhost:1010' },
+        @{ Name = 'Feature'; Url = 'http://localhost:1011' }
+    )) {
+        $deadline = (Get-Date).AddMinutes(5)
+        Write-Host "$($site.Name) bekleniyor: $($site.Url)"
+        $ready = $false
+        do {
+            try {
+                $response = Invoke-WebRequest -Uri $site.Url -UseBasicParsing -TimeoutSec 3
+                if ($response.StatusCode -eq 200) { $ready = $true; break }
+            } catch { }
+            Start-Sleep -Seconds 2
+        } while ((Get-Date) -lt $deadline)
+        if (-not $ready) { throw "$($site.Name) acilamadi: $($site.Url). backend\\target\\live-watch.log dosyasini kontrol edin." }
+        Write-Host "$($site.Name) hazir: $($site.Url)"
+        Start-Process $site.Url
+    }
+}

@@ -5,7 +5,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL veritabanı ile çalış
 Sistemin veri akışı, tek sözlük/kimlik kuralları, önbellek, üretim/yayın doğrulamaları
 ve gelecekte değişiklik yaparken izlenecek yol [kalıcı sistem rehberinde](docs/plan/00_SISTEM_REHBERI.md) açıklanır.
 
-Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, uygulamanın içe aktarma için kullandığı üretilmiş soru/görsel verisi `../icerik/data/` altındadır. Eski statik site kaldırılmıştır. Üst dizindeki `Siteyi Ac.bat` bu uygulamanın iki ortamın başlatıcısını çalıştırır.
+Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, uygulamanın içe aktarma için kullandığı üretilmiş soru/görsel verisi `../icerik/data/` altındadır. Eski statik site kaldırılmıştır. Üst dizindeki `Ikisini de Baslat.bat` iki ortamın izleyicisini başlatır ve hazır olunca siteleri açar.
 
 ## Mevcut özellikler
 
@@ -35,7 +35,7 @@ kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdı
 öğrenci kayıtları ve DB göçleri ortamlar arasında otomatik eşitlenmez.
 Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
-`iki-ortami-baslat.bat` iki ortamın izleyicisini gizli başlatır. İzleyiciler
+Üst dizindeki `Ikisini de Baslat.bat`, `iki-ortami-baslat.ps1` üzerinden iki ortamın izleyicisini gizli başlatır. İzleyiciler
 uygulama kapalıysa açar ve yalnız kendi worktree'sindeki kaynak değişince o
 ortamı yeniler. Herhangi bir ortamı hemen derleyip açmak için o klasörde
 `yeniden-baslat.bat` veya `baslat.bat` kullanılır. Windows başlangıcındaki

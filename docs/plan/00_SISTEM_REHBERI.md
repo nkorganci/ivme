@@ -811,7 +811,10 @@ yalnız kendi worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasın�
 `canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
 başına mutex ikinci izleyiciyi önler. Windows başlangıcındaki mevcut
 `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` ile iki izleyiciyi
-gizli başlatır. Sağlık kanıtı her worktree'nin `backend/target/live-watch.status`
+gizli başlatır. Kullanıcının tek giriş dosyası üst dizindeki
+`Ikisini de Baslat.bat` aynı betiğe `-OpenBrowser` geçirir; izleyiciler gerekince
+her dalı ayrı derleyip başlatır ve iki adres hazır olunca tarayıcıda açar.
+Sağlık kanıtı her worktree'nin `backend/target/live-watch.status`
 dosyasındaki yaşayan süreç ve güncel dosya zamanıdır. Hatalar `live-watch.log`,
 `live-build.stderr.log` ve `application.stderr.log` dosyalarındadır.
 Tarayıcı `app-version.txt` değişimini yaklaşık beş saniyede algılayıp yeniler.
