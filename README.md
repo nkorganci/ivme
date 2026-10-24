@@ -34,7 +34,7 @@ kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdı
 24 Ekim 2026'da eski feature'a ait `ivme_dev` silinip boş olarak yeniden oluşturuldu;
 artık ana verinin kopyası değildir. Feature, Git dışındaki `.codex/local-environment.json`
 dosyasındaki `ivme_dev_app` kimliğini kullanır. Bu rol ana `ivme` veritabanına,
-main rolü de `ivme_dev`e bağlanamaz. Feature ilk açılışında şema göçleri çalışır;
+main rolü de `ivme_dev`e bağlanamaz. Feature'ın ilk açılışında Flyway 78 göçü uygulandı;
 içerik ve test hesapları ayrıca hazırlanır.
 Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
