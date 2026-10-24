@@ -9,7 +9,7 @@ export function distributionRows(categories) {
   for (const category of referenceTopics(categories)) {
     if (!category.excelRowId || rows.has(category.excelRowId)) continue;
     rows.set(category.excelRowId, { ...category.distribution, id: category.excelRowId,
-      subjectId: category.subjectId, unitId: category.unitId });
+      subject: category.subject, subjectId: category.subjectId, unitId: category.unitId });
   }
   return [...rows.values()].sort((a,b) => a.row-b.row);
 }

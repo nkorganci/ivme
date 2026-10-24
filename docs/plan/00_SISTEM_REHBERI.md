@@ -36,7 +36,7 @@ flowchart LR
 | Bilgi | Bakım/üretim kaynağı | Tüketim ve sınır |
 |---|---|---|
 | Ders, ünite, konu ve soru dağılımı | `Kaynaklar/mufredat/YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx` dosyasının yalnız ilk `KONULAR` sayfası → üretilmiş `content-taxonomy.json` | Çalışma anında tek kayıt `learning_catalog.current_categories.definition`; diğer sayfalar ve eski müfredat listeleri seçilebilir başlık üretmez |
-| Seçilebilir konular ve ünite grupları | Aynı DB kategori kaydında `canonicalUnit=true`, `unitId`, `unit`, `excelRowId` | 453 kaynak satırı, 12 ders, 146 ünite; kapsam işaretlerine göre 178 TYT / 352 AYT kimliği. `canonicalUnit` eski API alanıdır ve seçilebilir konu satırını belirtir |
+| Seçilebilir konular ve ünite grupları | Aynı DB kategori kaydında `canonicalUnit=true`, `unitId`, `unit`, `excelRowId` | 453 kaynak satırı, 12 özgün ders grubu → 14 ayrı ders, 146 ünite; kapsam işaretlerine göre 178 TYT / 352 AYT kimliği. `canonicalUnit` eski API alanıdır ve seçilebilir konu satırını belirtir |
 | Zorluk, beceri, içerik türü, ilişki ve inceleme değerleri | `backend/src/main/resources/review-vocabulary.json` | Konu kimliğinden ayrı boyutlardır |
 | Etkin yayımlanmış etiket sürümü | PostgreSQL `learning_catalog.current_run` | Aynı sürümün `current_items`, `current_categories`, `current_assignments` görünümleri |
 | Yerel üretim adayı | `veri/content-labels/labels.json` ve `report.json` | Üretilmiş çıktı; elle düzeltilmez, yayımlanmış sürümle aynı olduğu varsayılmaz |
@@ -108,6 +108,15 @@ dosyasının ilk `KONULAR` sayfasıdır. Diğer Excel sayfaları okunmaz. İçe 
 4. satırdaki başlıkları doğrular ve 5–457 arasındaki 453 satırın ders, sınıf,
 ünite, konu, kapsam işaretleri, toplamlar, notlar ve 2018–2026 sayılarını aynen alır.
 `✓*`, boş hücre ve 0 birbirinden ayrıdır; toplu başlıklar için sayı dağıtılmaz.
+Kullanıcının talimatıyla Matematik + Geometri ve Türkçe / Edebiyat grupları,
+yalnız bu sayfadaki ünite ve konulara göre Matematik, Geometri, Türkçe ve
+Edebiyat olarak ayrılır. Üçgenler/dörtgenler/çokgenler/analitik/uzay geometrisi
+Geometri; fonksiyonlar/trigonometri/türev/integral Matematik kapsamındadır.
+Anlam ve dil bilgisi Türkçe; edebiyat bilgisi, dönemleri ve akımları Edebiyat
+kapsamındadır. Aynı kaynak satırı iki sınavda yer alsa da tek derse aittir.
+Özgün birleşik ad `sourceSubject` ve `distribution.subject` içinde korunur;
+ekranlar ayrılmış `subjectId`/`subject` alanlarını kullanır. Yeni konu veya
+ikinci çalışma zamanı sözlüğü üretilmez.
 
 Çalışma anında bütün ekranların tek ders/ünite/konu tablosu PostgreSQL
 `learning_catalog.current_categories` görünümüdür. `definition` içindeki `unitId`,
@@ -138,6 +147,10 @@ kataloğunu aynı okuma işlemi içinde alır. Denetim kaynak kimliklerini ve ka
 sürümlerini mevcut DB ile birebir karşılaştırır; eski çıkarım denetimi ayrıca
 saklanır ve yeniden yapılmış gibi gösterilmez. Yayın önceki katalog hâlâ
 etkinse tek işlemde geçer. Önceki sürüm ve öğrenci geçmişi korunur.
+Yalnız ders adı/kapsamı ayrılırken `excel-curriculum-relabel.mjs --refresh-definitions`
+kullanılır: konu ve ünite kimlikleri, içerik, kaynak ve soru–konu bağları korunur;
+yeni ders adları ve ilişki tanım sürümleri güncellenir. Denetim bu kipte
+eski/yeni kaynak başına kategori kimliği listesini de birebir karşılaştırır.
 
 Soru/PDF/video ilişkileri yalnız Excel'in aynı sınav ve ders kapsamındaki
 konularına eşlenir. Kaynak başlığından türetilen ilişkiler `CANDIDATE/LOW`

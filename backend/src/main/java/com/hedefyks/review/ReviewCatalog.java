@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class ReviewCatalog {
     public static final Map<String, List<String>> ALIASES = Map.ofEntries(
-            Map.entry("turkce", List.of("Türkçe")), Map.entry("edebiyat", List.of("Türk Dili ve Edebiyatı")),
+            Map.entry("turkce", List.of("Türkçe")), Map.entry("edebiyat", List.of("Türk Dili ve Edebiyatı", "Edebiyat")),
             Map.entry("matematik", List.of("Matematik")), Map.entry("geometri", List.of("Geometri", "Matematik")),
             Map.entry("tarih", List.of("Tarih", "Tarih-1", "Tarih-2")),
             Map.entry("cografya", List.of("Coğrafya", "Coğrafya-1", "Coğrafya-2")),
@@ -49,9 +49,9 @@ public class ReviewCatalog {
             case "Matematik + Geometri" -> "matematik";
             case "Din Kültürü (DKAB)" -> "din";
             case "Türkçe", "turkce" -> "turkce";
-            case "Türk Dili ve Edebiyatı", "edebiyat" -> excelCurriculum() ? "turkce" : "edebiyat";
+            case "Türk Dili ve Edebiyatı", "Edebiyat", "edebiyat" -> "edebiyat";
             case "Matematik", "matematik" -> "matematik";
-            case "Geometri", "geometri" -> excelCurriculum() ? "matematik" : "geometri";
+            case "Geometri", "geometri" -> "geometri";
             case "Tarih", "Tarih-1", "Tarih-2", "tarih" -> "tarih";
             case "Coğrafya", "Coğrafya-1", "Coğrafya-2", "cografya" -> "cografya";
             case "Felsefe", "Felsefe Grubu", "felsefe" -> "felsefe";
@@ -60,10 +60,6 @@ public class ReviewCatalog {
             case "Psikoloji", "psikoloji" -> "psikoloji"; case "Sosyoloji", "sosyoloji" -> "sosyoloji"; case "Mantık", "mantik" -> "mantik";
             default -> "unmapped";
         };
-    }
-
-    private boolean excelCurriculum() {
-        return Boolean.TRUE.equals(jdbc.queryForObject("SELECT EXISTS (SELECT 1 FROM learning_catalog.current_categories WHERE definition->>'curriculumSource'='EXCEL_FIRST_SHEET')",Boolean.class));
     }
 
     public List<Map<String, Object>> items() { return items; }

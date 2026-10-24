@@ -4786,9 +4786,7 @@
       "canonicalTopic": false,
       "canonicalUnit": false,
       "selectable": false,
-      "canonicalTopicIds": [
-        "excel.tyt.matematik.2e908dddb3ba366ba19b"
-      ]
+      "canonicalTopicIds": []
     },
     {
       "id": "pdf-subtopic:tyt.matematik.trigonometri:68f73de34fb50aa259cc",
@@ -4802,9 +4800,7 @@
       "canonicalTopic": false,
       "canonicalUnit": false,
       "selectable": false,
-      "canonicalTopicIds": [
-        "excel.tyt.matematik.2e908dddb3ba366ba19b"
-      ]
+      "canonicalTopicIds": []
     },
     {
       "id": "pdf-subtopic:ayt.matematik.trigonometri:68f73de34fb50aa259cc",
@@ -4819,7 +4815,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -4907,7 +4902,7 @@
       "id": "system.matematik.tyt.konu-incelemesi",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Ünite eşleşmesi bekliyor",
       "subtopic": "",
       "origin": "SYSTEM",
@@ -5858,9 +5853,7 @@
       "canonicalTopic": false,
       "canonicalUnit": false,
       "selectable": false,
-      "canonicalTopicIds": [
-        "excel.tyt.matematik.2e908dddb3ba366ba19b"
-      ]
+      "canonicalTopicIds": []
     },
     {
       "id": "pdf-subtopic:ayt.matematik.trigonometri:59d0bd61758c9234d32e",
@@ -5875,7 +5868,7 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b"
+        "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
     {
@@ -7079,7 +7072,7 @@
       "id": "system.edebiyat.ayt.konu-incelemesi",
       "exam": "AYT",
       "subjectId": "edebiyat",
-      "subject": "Türk Dili ve Edebiyatı",
+      "subject": "Edebiyat",
       "topic": "Ünite eşleşmesi bekliyor",
       "subtopic": "",
       "origin": "SYSTEM",
@@ -9021,7 +9014,8 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.8139749dd0017d49e725"
+        "excel.ayt.matematik.586b9136482c398a523a",
+        "excel.ayt.matematik.7e316abd523a576e94ae"
       ]
     },
     {
@@ -13555,7 +13549,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13572,7 +13565,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13589,7 +13581,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13622,7 +13613,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13639,7 +13629,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13674,7 +13663,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -13709,7 +13697,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -17992,7 +17979,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -18009,7 +17995,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -18026,7 +18011,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -18043,7 +18027,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -21392,7 +21375,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -23953,7 +23935,8 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.8139749dd0017d49e725"
+        "excel.ayt.matematik.586b9136482c398a523a",
+        "excel.ayt.matematik.7e316abd523a576e94ae"
       ]
     },
     {
@@ -24609,8 +24592,9 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
-        "excel.tyt.matematik.3d78be385716237007f8"
+        "excel.tyt.matematik.db5e281cea870801613e",
+        "excel.tyt.matematik.e458c48c1de81b6bafc4",
+        "excel.tyt.matematik.69056bdfd530eb6f5054"
       ]
     },
     {
@@ -27475,9 +27459,7 @@
       "canonicalTopic": false,
       "canonicalUnit": false,
       "selectable": false,
-      "canonicalTopicIds": [
-        "excel.ayt.matematik.b614d2b98d9d3f086357"
-      ]
+      "canonicalTopicIds": []
     },
     {
       "id": "pdf-subtopic:ayt.matematik.trigonometri:ea1e0495cc1da8bddbfb",
@@ -27492,7 +27474,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27509,7 +27490,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357",
         "excel.ayt.matematik.920bf26742b613289697"
       ]
@@ -27527,7 +27507,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27560,7 +27539,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27595,7 +27573,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27612,7 +27589,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27629,7 +27605,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -27748,9 +27723,7 @@
       "canonicalTopic": false,
       "canonicalUnit": false,
       "selectable": false,
-      "canonicalTopicIds": [
-        "excel.ayt.matematik.807e46eb5f33cd72c139"
-      ]
+      "canonicalTopicIds": []
     },
     {
       "id": "pdf-subtopic:ayt.matematik.fonksiyonlar:b0d711662b9cb3bfe551",
@@ -30127,7 +30100,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -30144,7 +30116,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -30209,7 +30180,6 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.2e908dddb3ba366ba19b",
         "excel.ayt.matematik.b614d2b98d9d3f086357"
       ]
     },
@@ -33694,8 +33664,7 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
-        "excel.ayt.matematik.3d78be385716237007f8"
+        "excel.ayt.matematik.e458c48c1de81b6bafc4"
       ]
     },
     {
@@ -33829,8 +33798,8 @@
       "canonicalUnit": false,
       "selectable": false,
       "canonicalTopicIds": [
-        "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
-        "excel.ayt.matematik.3d78be385716237007f8"
+        "excel.ayt.matematik.586b9136482c398a523a",
+        "excel.ayt.matematik.7e316abd523a576e94ae"
       ]
     },
     {
@@ -64629,7 +64598,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/11 - SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64638,7 +64607,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -64673,7 +64642,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/12 - NAZIM BICIMLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:3996a6b79e6de1162b74",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64682,7 +64651,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -64773,7 +64742,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/14 - AHENK UNSURLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:99f59bc0afe9558f1668",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64782,7 +64751,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -64828,7 +64797,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/15 - SIIRDE IMGE VE SOZ SANATLARI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.soz-sanatlari:287345f8eb116a9aacc5",
-        "ayt.edebiyat.soz-sanatlari"
+        "excel.ayt.turkce.b59ed421910c7df8166e"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64837,7 +64806,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.soz-sanatlari",
+            "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
             "relation": "PRIMARY"
           }
         ],
@@ -64878,7 +64847,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/16 - SOZ SANATLARI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.soz-sanatlari:439fe9d7efd3481984da",
-        "ayt.edebiyat.soz-sanatlari"
+        "excel.ayt.turkce.b59ed421910c7df8166e"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64887,7 +64856,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.soz-sanatlari",
+            "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
             "relation": "PRIMARY"
           }
         ],
@@ -64933,7 +64902,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/17 - SIIRDE TEMA VE KONU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:ec32bc58b87a5d0eabce",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64942,7 +64911,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -64983,7 +64952,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/18 - SIIR II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -64992,7 +64961,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -65033,7 +65002,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/19 - SIIR SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -65042,7 +65011,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -65697,7 +65666,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/33 - CUMHURIYET DONEMI TURK ROMANI YAPRAK DOKUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:101682ef10407b708a6f",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -65706,7 +65675,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -65957,7 +65926,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/38 - CUMHURIYET DONEMINDE TIYATRO I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c95623f20dae993441ad",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -65966,7 +65935,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -66007,7 +65976,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/39 - CUMHURIYET DONEMINDE TIYATRO II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c95623f20dae993441ad",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -66016,7 +65985,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -66162,7 +66131,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 9. Sinif/42 - DIVAN EDEBIYATINDA TEZKIRE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:d23bb7940b6fc001938a",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -66171,7 +66140,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -75175,7 +75144,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Konu Ozetleri 10. Sinif/42 - ESKENAR DORTGEN, DIKDORTGEN VE OZELLIKLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:5d389edc2f212cc138ed",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:5d389edc2f212cc138ed",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -75186,7 +75155,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -75235,7 +75204,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Konu Ozetleri 10. Sinif/43 - DELTOID VE OZELLIKLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:3c9262713697aa57a8bf",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:3c9262713697aa57a8bf",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -75246,7 +75215,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -77810,7 +77779,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/12 - MESNEVI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:4c17f71fd348c8281c38",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -77819,7 +77788,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -78164,7 +78133,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/19 - ISLAMIYETIN KABULUNDEN ONCEKI TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:7c406014faa179e269b9",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78173,7 +78142,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -78258,7 +78227,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/21 - HALK EDEBIYATI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:439fe9d7efd3481984da",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78267,7 +78236,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -78308,7 +78277,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/22 - HALK EDEBIYATI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:439fe9d7efd3481984da",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78317,7 +78286,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -78358,7 +78327,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/23 - ANONIM HALK EDEBIYATI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:180efa5cb229f14df438",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78367,7 +78336,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -78408,7 +78377,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/24 - ANONIM HALK EDEBIYATI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:180efa5cb229f14df438",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78417,7 +78386,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -78458,7 +78427,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/25 - ASIK EDEBIYATI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:0452908e598265f297fd",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78467,7 +78436,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -78513,7 +78482,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/26 - DIVAN EDEBIYATI GAZEL I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:9e5291893e01ca57fac1",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78522,7 +78491,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -78563,7 +78532,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/27 - DIVAN EDEBIYATI GAZEL II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:9e5291893e01ca57fac1",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78572,7 +78541,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -78618,7 +78587,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/28 - DIVAN EDEBIYATI KASIDE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:5a5a75fbec811b2df282",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78627,7 +78596,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -78668,7 +78637,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/29 - DIVAN EDEBIYATI SARKI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:4b3ecc66adabc013a5fc",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -78677,7 +78646,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -79580,7 +79549,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 10. Sinif/47 - CUMHURIYET DONEMI TURK EDEBIYATINDA ANI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:06000df81e09aaaea8b0",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -79589,7 +79558,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -89152,7 +89121,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/39 - CEMBERIN TEMEL ELEMANLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:6f3fceea96e2458e5012",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89161,7 +89130,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -89202,7 +89171,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/40 - CEMBERDE ACI - I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:4532eb50237a92592449",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89211,7 +89180,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -89257,7 +89226,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/41 - CEMBERDE ACI - II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:4532eb50237a92592449",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89266,7 +89235,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -89312,7 +89281,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/42 - CEMBERDE TEGETIN OZELLIKLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:69335077ef0bf0148939",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89321,7 +89290,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -89356,7 +89325,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/43 - DAIRENIN CEVRESI VE ALANI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:c4a8622f5e2adb61acc5",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89365,7 +89334,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -89400,7 +89369,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 11. Sinif/44 - DIK DAIRESEL KONI ALAN VE HACIM BAGINTILARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:a1f4eee90c8a8983c308",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -89409,7 +89378,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -91596,7 +91565,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/05 - CUMHURIYET DONEMI HIKAYECILIGI (1923-1940).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5a1e30500be69c1ef60a",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -91605,7 +91574,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -91784,7 +91753,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/09 - CUMHURIYET DONEMINDE HIKAYE (1940-1960) I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:59249186e594b29b4e95",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -91793,7 +91762,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -91884,7 +91853,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/11 - CUMHURIYET DONEMINDE HIKAYE (1940-1960) II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:59249186e594b29b4e95",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -91893,7 +91862,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -91939,7 +91908,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/12 - CUMHURIYET DONEMINDE HIKAYE (1940-1960) III.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:59249186e594b29b4e95",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -91948,7 +91917,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -92483,7 +92452,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/23 - CUMHURIYET DONEMI SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:966c7b73b93473e20d4c",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -92492,7 +92461,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -92527,7 +92496,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/24 - TURKIYE DISINDAKI CAGDAS TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b1c9a6487217d3743b00",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -92536,7 +92505,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -92577,7 +92546,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/25 - SIIR SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -92586,7 +92555,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -93095,7 +93064,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/35 - CUMHURIYET DONEMINDE ROMAN (1923-1950).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5d211650a2845d4480d7",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93104,7 +93073,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -93145,7 +93114,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/36 - CUMHURIYET DONEMINDEN ROMAN INCELEMESI YABAN.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c56e4fd12c05cce2ef9a",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93154,7 +93123,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -93195,7 +93164,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/37 - CUMHURIYET DONEMI ROMANI (1950-1980) I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c66d937e758692bd07a1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93204,7 +93173,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -93245,7 +93214,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/38 - CUMHURIYET DONEMI ROMANI (1950-1980) II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c66d937e758692bd07a1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93254,7 +93223,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -93495,7 +93464,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/43 - CUMHURIYET DONEMI TURK TIYATROSU (1923-1950).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c500b24eaa987c48271d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93504,7 +93473,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -93545,7 +93514,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 11. Sinif/44 - CUMHURIYET DONEMI TURK TIYATROSU (1950-1980).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:13a5b2f9486018d5a7c1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -93554,7 +93523,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -103212,7 +103181,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 12. Sinif/32 - SIMETRI DONUSUMU - I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.donusumler:1c72d2078b39e30ebbbb",
-        "ayt.geometri.donusumler"
+        "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
       ],
       "automaticLabels": {
         "assignments": [
@@ -103221,7 +103190,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.donusumler",
+            "categoryId": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
             "relation": "PRIMARY"
           }
         ],
@@ -103256,7 +103225,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 12. Sinif/33 - SIMETRI DONUSUMU - II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.donusumler:1c72d2078b39e30ebbbb",
-        "ayt.geometri.donusumler"
+        "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
       ],
       "automaticLabels": {
         "assignments": [
@@ -103265,7 +103234,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.donusumler",
+            "categoryId": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
             "relation": "PRIMARY"
           }
         ],
@@ -103934,7 +103903,7 @@
       "relativePath": "Matematik/AYT/Konu Ozetleri 12. Sinif/46 - DENKLEMLERI VERILEN DOGRU ILE CEMBERIN BIRBIRINE GORE DURUMLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:0d6c78c73df1d1f5f296",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -103943,7 +103912,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -104368,7 +104337,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/05 - CUMHURIYET DONEMI HIKAYESI (1923-1940).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3b62dda34f3bac55ed7d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104377,7 +104346,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104418,7 +104387,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/06 - MODERNIST HIKAYE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:10f7fac47f885c2172bc",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104427,7 +104396,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104662,7 +104631,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/11 - CUMHURIYET DONEMINDE SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:99a7f6671aa50c1e04d6",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104671,7 +104640,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104712,7 +104681,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/12 - SAF (OZ) SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5a6c13b567ccc05aeea7",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104721,7 +104690,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104762,7 +104731,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/13 - CUMHURIYET DONEMI TOPLUMCU GERCEKCI SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:82a6a54f774433ba0482",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104771,7 +104740,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104906,7 +104875,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/16 - GARIP AKIMI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:384dc96d0946686cd291",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104915,7 +104884,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -104956,7 +104925,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/17 - IKINCI YENI SIIRI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:688f5ec7466ad58bbafb",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -104965,7 +104934,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105006,7 +104975,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/18 - MISTIK, METAFIZIK, GELENEGE YASLANAN SIIR I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:2358121955bc463705cf",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105015,7 +104984,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -105106,7 +105075,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/20 - CUMHURIYET DONEMI SAIRLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3847a69373bdc8a0eda3",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105115,7 +105084,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105156,7 +105125,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/21 - GARIP AKIMI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:384dc96d0946686cd291",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105165,7 +105134,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105206,7 +105175,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/22 - IKINCI YENI SIIRI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:688f5ec7466ad58bbafb",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105215,7 +105184,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105256,7 +105225,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/23 - MODERN SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:83ff48fe24016318eb74",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105265,7 +105234,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -105306,7 +105275,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/24 - 1960 SONRASI TOPLUMCU EGILIMLERI YANSITAN SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:f442d8fd7d3fd3759763",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105315,7 +105284,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105356,7 +105325,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/25 - 1980 SONRASI TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:c62d6383605172b70a69",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105365,7 +105334,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -105406,7 +105375,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/26 - CUMHURIYET DONEMINDE HALK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:2fb26bcb782929d11c74",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105415,7 +105384,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105456,7 +105425,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/27 - CUMHURIYET DONEMI SIIRI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:966c7b73b93473e20d4c",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105465,7 +105434,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105500,7 +105469,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/28 - CUMHURIYET DONEMI SIIRI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:966c7b73b93473e20d4c",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105509,7 +105478,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105688,7 +105657,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/32 - CUMHURIYET DONEMI TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:f3ad6e0ea06ed8895fcb",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105697,7 +105666,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -105932,7 +105901,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Konu Ozetleri 12. Sinif/37 - MODERNIST ROMAN AYLAK ADAM.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:cdf85153814e04c4b935",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -105941,7 +105910,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -122515,7 +122484,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/06 - CUMHURIYET DONEMINDE HIKAYE, REFIK HALIT KARAY - ZINCIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:da194d4cd3fdd28bd385",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -122524,7 +122493,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -122680,7 +122649,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/09 - CUMHURIYET DONEMINDE DURUM HIKAYESI, METIN INCELEME, SAIT FAIK ABASIYANIK-SON KUSLAR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:901ea7309071b7a1e787",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -122689,7 +122658,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -123120,7 +123089,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/17 - SIIR,MANZUME, SIIR GELENEGI, SIIRDE YAPI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:bd80d8f34f2f4ac467bb",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123129,7 +123098,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -123195,7 +123164,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/18 - NAZIM BICIMLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:3996a6b79e6de1162b74",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123204,7 +123173,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -123270,7 +123239,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/19 - NAZIM TURLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b3aa1e352f94e30d04c0",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123279,7 +123248,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -123335,7 +123304,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/20 - SIIRDE AHENK UNSURLARI VE KONULARINA GORE SIIR TURLERI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:6423d36a9bd264960f87",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123344,7 +123313,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -123400,7 +123369,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/21 - SIIRDE IMGE VE SOZ SANATLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.soz-sanatlari:287345f8eb116a9aacc5",
-        "ayt.edebiyat.soz-sanatlari"
+        "excel.ayt.turkce.b59ed421910c7df8166e"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123409,7 +123378,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.soz-sanatlari",
+            "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
             "relation": "PRIMARY"
           }
         ],
@@ -123450,7 +123419,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/22 - SOZ SANATLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.soz-sanatlari:439fe9d7efd3481984da",
-        "ayt.edebiyat.soz-sanatlari"
+        "excel.ayt.turkce.b59ed421910c7df8166e"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123459,7 +123428,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.soz-sanatlari",
+            "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
             "relation": "PRIMARY"
           }
         ],
@@ -123505,7 +123474,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/23 - SIIRDE TEMA VE KONU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:ec32bc58b87a5d0eabce",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123514,7 +123483,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -123565,7 +123534,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/24 - SIIR - SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -123574,7 +123543,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -124320,7 +124289,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/36 - CUMHURIYET DONEMINDEN ROMAN INCELEMESI, RESAT NURI GUNTEKIN-YAPRAK DOKUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3bb3fb13d965a20baec0",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -124329,7 +124298,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -124370,7 +124339,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/37 - CUMHURIYET DONEMI VE DUNYA EDEBIYATINDA ROMAN.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:ef38594ce1d2aad4cf9f",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+        "excel.ayt.turkce.367101082c6fb5a0353f",
         "pdf-subtopic:ayt.edebiyat.roman-ve-hik-ye:ef38594ce1d2aad4cf9f",
         "ayt.edebiyat.roman-ve-hik-ye"
       ],
@@ -124381,7 +124350,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           },
           {
@@ -124445,7 +124414,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/38 - CUMHURIYET DONEMI ROMANI ETKINLIKLER.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:bd291e363c47fc11085b",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -124454,7 +124423,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -124630,7 +124599,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/41 - CUMHURIYET DONEMI TURK EDEBIYATINDA TIYATRO.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:a1e581283de8d8ca1283",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -124639,7 +124608,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -124685,7 +124654,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/42 - CUMHURIYET DONEMI TURK EDEBIYATI VE DUNYA EDEBIYATINDA TIYATRO.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:8e14b92e01c62fea8ae0",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+        "excel.ayt.turkce.367101082c6fb5a0353f",
         "pdf-subtopic:ayt.edebiyat.tiyatro:8e14b92e01c62fea8ae0",
         "ayt.edebiyat.tiyatro"
       ],
@@ -124696,7 +124665,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           },
           {
@@ -124825,7 +124794,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/44 - CUMHURIYET DONEMINDE BIYOGRAFI VE OTOBIYOGRAFI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:edd5fe547ca6064f0dfe",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+        "excel.ayt.turkce.367101082c6fb5a0353f",
         "pdf-subtopic:ayt.edebiyat.ogretici-metinler:edd5fe547ca6064f0dfe",
         "ayt.edebiyat.ogretici-metinler"
       ],
@@ -124836,7 +124805,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           },
           {
@@ -124895,7 +124864,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/45 - DIVAN EDEBIYATINDA TEZKIRE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:d23bb7940b6fc001938a",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -124904,7 +124873,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -125010,7 +124979,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/47 - CUMHURIYET DONEMINDE MEKTUP.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:74fed2cc2b8badcc84fd",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -125019,7 +124988,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -125190,7 +125159,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/50 - CUMHURIYET DONEMINDE GUNLUK.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:aa37dbb562dd69effacb",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -125199,7 +125168,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -125240,7 +125209,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/51 - CUMHURIYET DONEMINDE BLOG.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:de39f9328d2ad00027c5",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -125249,7 +125218,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -125290,7 +125259,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 9. Sinif/52 - CUMHURIYET DONEMINDE GUNLUK VE BLOG - SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:2387bcea19c4f956ad9b",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -125299,7 +125268,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -138408,7 +138377,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/35 - DIKDORTGEN.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:7e13aca7113586de6a39",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:7e13aca7113586de6a39",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -138419,7 +138388,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138478,7 +138447,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/36 - YAMUK.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:3d08373cadef9fa60a73",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:3d08373cadef9fa60a73",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -138489,7 +138458,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138545,7 +138514,7 @@
         "pdf-subtopic:tyt.geometri.ucgende-kenar-ve-aci-bagintilari:33f06b620d22c590b26a",
         "tyt.geometri.ucgende-kenar-ve-aci-bagintilari",
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:33f06b620d22c590b26a",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.ucgenler:33f06b620d22c590b26a",
         "ayt.geometri.ucgenler",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:33f06b620d22c590b26a",
@@ -138566,7 +138535,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138633,7 +138602,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/38 - PARALELKENAR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:98aa3ff763efaf7e9859",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:98aa3ff763efaf7e9859",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -138644,7 +138613,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138703,7 +138672,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/39 - DELTOID.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:74c183769b6f5c3b638a",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:74c183769b6f5c3b638a",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -138714,7 +138683,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138773,7 +138742,7 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/40 - ESKENAR DORTGEN.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.ozel-dortgenler:6bdb32855876284414ac",
-        "tyt.geometri.ozel-dortgenler",
+        "excel.tyt.matematik.69056bdfd530eb6f5054",
         "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:6bdb32855876284414ac",
         "ayt.geometri.dortgenler-ve-cokgenler"
       ],
@@ -138784,7 +138753,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.ozel-dortgenler",
+            "categoryId": "excel.tyt.matematik.69056bdfd530eb6f5054",
             "relation": "PRIMARY"
           },
           {
@@ -138903,9 +138872,9 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/42 - DIK PRIZMA.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.kati-cisimler:b209b55dc60c97faa915",
-        "tyt.geometri.kati-cisimler",
+        "excel.tyt.matematik.3ac405b203bda435db3b",
         "pdf-subtopic:ayt.geometri.kati-cisimler:b209b55dc60c97faa915",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -138914,7 +138883,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.kati-cisimler",
+            "categoryId": "excel.tyt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           },
           {
@@ -138922,7 +138891,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -138968,9 +138937,9 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/43 - DIK PIRAMIT 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.kati-cisimler:e03eedf709c87979e9f3",
-        "tyt.geometri.kati-cisimler",
+        "excel.tyt.matematik.3ac405b203bda435db3b",
         "pdf-subtopic:ayt.geometri.kati-cisimler:e03eedf709c87979e9f3",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -138979,7 +138948,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.kati-cisimler",
+            "categoryId": "excel.tyt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           },
           {
@@ -138987,7 +138956,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -139033,9 +139002,9 @@
       "relativePath": "Matematik/TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/44 - DIK PIRAMIT 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.kati-cisimler:e03eedf709c87979e9f3",
-        "tyt.geometri.kati-cisimler",
+        "excel.tyt.matematik.3ac405b203bda435db3b",
         "pdf-subtopic:ayt.geometri.kati-cisimler:e03eedf709c87979e9f3",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -139044,7 +139013,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.kati-cisimler",
+            "categoryId": "excel.tyt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           },
           {
@@ -139052,7 +139021,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -142253,7 +142222,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/12 - BIR MESNEVI ORNEGI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:0921cbfda01eb4aa96b2",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -142262,7 +142231,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -142943,7 +142912,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/24 - ANONIM HALK EDEBIYATI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:180efa5cb229f14df438",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -142952,7 +142921,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -142987,7 +142956,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/25 - ASIK TARZI TURK HALK EDEBIYATI KOSMA.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.halk-edebiyati:8a1fc943b282d2fc9453",
-        "ayt.edebiyat.halk-edebiyati"
+        "excel.ayt.turkce.80a3da3dec38afdbdc61"
       ],
       "automaticLabels": {
         "assignments": [
@@ -142996,7 +142965,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.halk-edebiyati",
+            "categoryId": "excel.ayt.turkce.80a3da3dec38afdbdc61",
             "relation": "PRIMARY"
           }
         ],
@@ -143037,7 +143006,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/26 - DIVAN SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:4a5c5b37c5091c2d3b5e",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -143046,7 +143015,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -143112,7 +143081,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/27 - DIVAN SIIRI - GAZEL ORNEGI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:00f166e4a005d287f203",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -143121,7 +143090,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -143167,7 +143136,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/28 - DIVAN SIIRI - KASIDE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:96f8b64e1551184452f7",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -143176,7 +143145,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -143222,7 +143191,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/29 - DIVAN SIIRI - SARKI NAZIM BICIMI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.divan-edebiyati:f3476b29ee1c9bfa4ccc",
-        "ayt.edebiyat.divan-edebiyati"
+        "excel.ayt.turkce.5952cb01d2a3b7aa54a3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -143231,7 +143200,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.divan-edebiyati",
+            "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
             "relation": "PRIMARY"
           }
         ],
@@ -144375,7 +144344,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/48 - CUMHURIYET DONEMI TURK EDEBIYATINDA ANI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:4bc72e16d12c4d0fd164",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -144384,7 +144353,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -144655,7 +144624,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 10. Sinif/52 - CUMHURIYET DONEMI TURK EDEBIYATINDA GEZI YAZISI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:e72072796d9c77b1f97b",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -144664,7 +144633,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -156775,7 +156744,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/34 - CEMBERDE ACI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:4532eb50237a92592449",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -156784,7 +156753,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -156835,7 +156804,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/35 - CEMBERDE ACI (2).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:74087d8ba6abf120dd76",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -156844,7 +156813,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -156890,7 +156859,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/36 - CEMBERIN TEMEL ELEMANLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:6f3fceea96e2458e5012",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -156899,7 +156868,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -156945,7 +156914,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/37 - CEMBERDE TEGET.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:555813645126c139744c",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -156954,7 +156923,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -157005,7 +156974,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/38 - DAIRENIN CEVRESI VE ALANI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:c4a8622f5e2adb61acc5",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -157014,7 +156983,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -157070,7 +157039,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/39 - DIK DAIRESEL SILINDIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.kati-cisimler:1ac4715f004e22b52612",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -157079,7 +157048,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -157130,7 +157099,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/40 - DIK DAIRESEL KONI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:dd299b2e44bad230cde6",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -157139,7 +157108,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -157174,7 +157143,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 11. Sinif/41 - KURE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.kati-cisimler:1e15840e8d030792e598",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -157183,7 +157152,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -159930,7 +159899,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/05 - CUMHURIYET DONEMI HIKAYESI (1923-1940) 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3b62dda34f3bac55ed7d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -159939,7 +159908,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -159980,7 +159949,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/06 - CUMHURIYET DONEMI HIKAYESI (1923-1940) 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3b62dda34f3bac55ed7d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -159989,7 +159958,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160030,7 +159999,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/07 - CUMHURIYET DONEMI HIKAYESI (1923-1940) 3.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3b62dda34f3bac55ed7d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160039,7 +160008,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160080,7 +160049,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/08 - CUMHURIYET DONEMI HIKAYESI (1923-1940) 4.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:3b62dda34f3bac55ed7d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160089,7 +160058,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160130,7 +160099,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/09 - CUMHURIYET DONEMI HIKAYESI (1940-1960) 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0cb5a5ed790b3d061fd4",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160139,7 +160108,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160180,7 +160149,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/10 - CUMHURIYET DONEMI HIKAYESI (1940-1960) 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0cb5a5ed790b3d061fd4",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160189,7 +160158,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160235,7 +160204,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/11 - CUMHURIYET DONEMI HIKAYESI (1940-1960) 3.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0cb5a5ed790b3d061fd4",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160244,7 +160213,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160290,7 +160259,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/12 - CUMHURIYET DONEMI HIKAYESI (1940-1960) 4.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0cb5a5ed790b3d061fd4",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160299,7 +160268,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160650,7 +160619,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/19 - FECRIATI EDEBIYATI, SAF(OZ) SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:cd34a7ab679bf8185402",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160659,7 +160628,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160700,7 +160669,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/20 - SAF (OZ) SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5a6c13b567ccc05aeea7",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160709,7 +160678,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160850,7 +160819,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/23 - CUMHURIYET DONEMI SIIRI (1923-1940).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5aafc7611b1e51b9d94e",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160859,7 +160828,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -160900,7 +160869,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/24 - TURKIYE DISINDAKI CAGDAS TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b1c9a6487217d3743b00",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160909,7 +160878,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -160955,7 +160924,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/25 - SIIRLE ILGILI SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:10f1ec666a21c25c41fa",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -160964,7 +160933,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -161499,7 +161468,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/35 - CUMHURIYET DONEMI ROMANI (1923-1950) 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:17e37cb96553569e8337",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161508,7 +161477,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -161549,7 +161518,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/36 - CUMHURIYET DONEMI ROMANI (1923-1950) 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:17e37cb96553569e8337",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161558,7 +161527,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -161599,7 +161568,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/37 - CUMHURIYET DONEMI ROMANI (1950-1980) 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c66d937e758692bd07a1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161608,7 +161577,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -161649,7 +161618,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/38 - CUMHURIYET DONEMI ROMANI (1950-1980) 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c66d937e758692bd07a1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161658,7 +161627,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -161909,7 +161878,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/43 - CUMHURIYET DONEMI TURK TIYATROSU (1923-1950).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:c500b24eaa987c48271d",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161918,7 +161887,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -161959,7 +161928,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 11. Sinif/44 - CUMHURIYET DONEMI TURK TIYATROSU (1950-1980).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:13a5b2f9486018d5a7c1",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -161968,7 +161937,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -171891,7 +171860,7 @@
       "relativePath": "Matematik/AYT/Ders Anlatim Sunulari 12. Sinif/32 - DENKLEMLERI VERILEN DOGRU ILE CEMBERIN BIRBIRINE GORE DURUMLARI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:0d6c78c73df1d1f5f296",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -171900,7 +171869,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -174882,7 +174851,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/06 - 1960 SONRASI TURK EDEBIYATINDAKI HIKAYE-MODERNIST HIKAYE.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:5c961dc09c5295984566",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -174891,7 +174860,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175247,7 +175216,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/13 - CUMHURIYET DONEMI OZ (SAF) SIIR ANLAYISI I.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0b957e304a8ae4535849",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175256,7 +175225,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175297,7 +175266,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/14 - CUMHURIYET DONEMI OZ (SAF) SIIR ANLAYISI II.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:0b957e304a8ae4535849",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175306,7 +175275,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175352,7 +175321,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/15 - CUMHURIYET DONEMI (1923-1960) TOPLUMCU EGILIM.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:658a49f5776ffe9ae923",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175361,7 +175330,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175537,7 +175506,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/18 - GARIP AKIMI ( BIRINCI YENI).pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:da98cd5aaed515dd4393",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175546,7 +175515,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175612,7 +175581,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/19 - IKINCI YENI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:f0424bd36666416f0925",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175621,7 +175590,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175677,7 +175646,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/20 - DINI, MISTIK, METAFIZIK GELENEGE YASLANAN SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:bf072b486e841d7c07b1",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175686,7 +175655,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -175752,7 +175721,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/21 - 1960 SONRASI TOPLUMCU EGILIMLERI YANSITAN SIIR.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:f442d8fd7d3fd3759763",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175761,7 +175730,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175827,7 +175796,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/22 - 1980 SONRASI TURK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:c62d6383605172b70a69",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175836,7 +175805,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -175902,7 +175871,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/23 - CUMHURIYET SONRASI HALK SIIRI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:2cf1a63cd4335b50f91a",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175911,7 +175880,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -175967,7 +175936,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/24 - CUMHURIYET DONEMI SIIRINE GENEL BAKIS.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:9ecc4f7e44bd6e10decb",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -175976,7 +175945,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -176042,7 +176011,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/25 - SIIR SORU COZUMU.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -176051,7 +176020,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -176277,7 +176246,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/29 - SIIR DINLETISI.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:09eb6c27b5a0ae9244f7",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -176286,7 +176255,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -176517,7 +176486,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/33 - 1950-1980 ARASI TURK EDEBIYATINDA ROMAN MODERNIST ROMAN-POSTMODERN ROMAN.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:92621a190e810a802e9e",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -176526,7 +176495,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -177337,7 +177306,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/47 - CUMHURIYET DONEMI TURK EDEBIYATINDA SOYLEV 1.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:b3c78626a9419f966d41",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -177346,7 +177315,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -177387,7 +177356,7 @@
       "relativePath": "Turk Dili ve Edebiyati/AYT/Ders Anlatim Sunulari 12. Sinif/48 - CUMHURIYET DONEMI TURK EDEBIYATINDA SOYLEV 2.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati:b3c78626a9419f966d41",
-        "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati"
+        "excel.ayt.turkce.367101082c6fb5a0353f"
       ],
       "automaticLabels": {
         "assignments": [
@@ -177396,7 +177365,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.cumhuriyet-donemi-turk-edebiyati",
+            "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
             "relation": "PRIMARY"
           }
         ],
@@ -183571,7 +183540,7 @@
       "relativePath": "Matematik/AYT/OGM Soru Bankasi 11. Sinif/05 - Cember ve Daire.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.cember-ve-daire:439fe9d7efd3481984da",
-        "ayt.geometri.cember-ve-daire"
+        "excel.ayt.matematik.f7ab390ecdfd97b552e3"
       ],
       "automaticLabels": {
         "assignments": [
@@ -183580,7 +183549,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.cember-ve-daire",
+            "categoryId": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
             "relation": "PRIMARY"
           }
         ],
@@ -183615,7 +183584,7 @@
       "relativePath": "Matematik/AYT/OGM Soru Bankasi 11. Sinif/06 - Uzay Geometri.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.kati-cisimler:1a3b7f4e823c2f5cfec4",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -183624,7 +183593,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -183851,7 +183820,7 @@
       "relativePath": "Matematik/AYT/OGM Soru Bankasi 12. Sinif/04 - Donusumler.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.geometri.donusumler:439fe9d7efd3481984da",
-        "ayt.geometri.donusumler"
+        "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
       ],
       "automaticLabels": {
         "assignments": [
@@ -183860,7 +183829,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.donusumler",
+            "categoryId": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
             "relation": "PRIMARY"
           }
         ],
@@ -184497,9 +184466,9 @@
       "relativePath": "Matematik/TYT-AYT Ortak/OGM Soru Bankasi 10. Sinif/06 - Uzay Geometri.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:tyt.geometri.kati-cisimler:1a3b7f4e823c2f5cfec4",
-        "tyt.geometri.kati-cisimler",
+        "excel.tyt.matematik.3ac405b203bda435db3b",
         "pdf-subtopic:ayt.geometri.kati-cisimler:1a3b7f4e823c2f5cfec4",
-        "ayt.geometri.kati-cisimler"
+        "excel.ayt.matematik.3ac405b203bda435db3b"
       ],
       "automaticLabels": {
         "assignments": [
@@ -184508,7 +184477,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "tyt.geometri.kati-cisimler",
+            "categoryId": "excel.tyt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           },
           {
@@ -184516,7 +184485,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.geometri.kati-cisimler",
+            "categoryId": "excel.ayt.matematik.3ac405b203bda435db3b",
             "relation": "PRIMARY"
           }
         ],
@@ -187699,7 +187668,7 @@
       "relativePath": "Turk Dili ve Edebiyati/TYT-AYT Ortak/OGM Soru Bankasi 10. Sinif/03 - Siir.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -187708,7 +187677,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -188129,7 +188098,7 @@
       "relativePath": "Turk Dili ve Edebiyati/TYT-AYT Ortak/OGM Soru Bankasi 11. Sinif/03 - Siir.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -188138,7 +188107,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -188549,7 +188518,7 @@
       "relativePath": "Turk Dili ve Edebiyati/TYT-AYT Ortak/OGM Soru Bankasi 12. Sinif/03 - Siir.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -188558,7 +188527,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],
@@ -188868,7 +188837,7 @@
       "relativePath": "Turk Dili ve Edebiyati/TYT-AYT Ortak/OGM Soru Bankasi 9. Sinif/03 - Siir.pdf",
       "suggestedCategoryIds": [
         "pdf-subtopic:ayt.edebiyat.siir-bilgisi:b5acc5032794a20bacb2",
-        "ayt.edebiyat.siir-bilgisi"
+        "excel.ayt.turkce.11138d1669f64b209379"
       ],
       "automaticLabels": {
         "assignments": [
@@ -188877,7 +188846,7 @@
             "relation": "PRIMARY"
           },
           {
-            "categoryId": "ayt.edebiyat.siir-bilgisi",
+            "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
             "relation": "PRIMARY"
           }
         ],

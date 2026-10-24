@@ -5,14 +5,14 @@ import fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 const site='http://127.0.0.1:1010';
-const output=resolve('veri/content-labels/integration/excel-curriculum-20261023');
+const output=resolve('veri/content-labels/integration/curriculum-table-20261023');
 fs.mkdirSync(output,{recursive:true});
 const profile=fs.mkdtempSync(join(tmpdir(),'ivme-excel-'));
 const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
   '--headless=new','--remote-debugging-port=0',`--user-data-dir=${profile}`,'--no-first-run','--disable-gpu','about:blank'],{stdio:'ignore',windowsHide:true});
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const report={status:'RUNNING',site,checks:[],javascriptErrors:[],apiErrors:[]};
-let socket;
+let socket, diagnose;
 try {
   let ws;
   for(let n=0;n<150&&!ws;n++) {
@@ -34,36 +34,68 @@ try {
   const api=async path=>{const result=await evaluate(`fetch(${JSON.stringify(path)}).then(async r=>({status:r.status,body:await r.json()}))`);assert.equal(result.status,200,path);return result.body;};
   const select=async(label,value)=>evaluate(`(()=>{const e=[...document.querySelectorAll('select')].find(s=>s.getAttribute('aria-label')===${JSON.stringify(label)}||s.labels?.[0]?.textContent.trim().startsWith(${JSON.stringify(label)}));if(!e)throw Error('Missing select '+${JSON.stringify(label)});Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(e,${JSON.stringify(value)});e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   const screenshot=async name=>{const r=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync(join(output,name),Buffer.from(r.data,'base64'));};
+  diagnose=async()=>{await screenshot('failure.png');report.diagnostic=await evaluate(`({url:location.href,headers:Array.from(document.querySelectorAll('.ag-header-cell')).map(e=>[e.getAttribute('col-id'),e.getAttribute('aria-sort')]),rows:Array.from(document.querySelectorAll('.ag-row[row-index]')).sort((a,b)=>Number(a.getAttribute('row-index'))-Number(b.getAttribute('row-index'))).map(e=>[e.getAttribute('row-index'),e.querySelector('[col-id="rowNumber"]')?.innerText,e.querySelector('[col-id="recent"]')?.innerText]).slice(0,25)})`);};
   await cdp('Runtime.enable');await cdp('Network.enable');await cdp('Page.enable');
-  await cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await cdp('Emulation.setDeviceMetricsOverride',{width:1680,height:1100,deviceScaleFactor:1,mobile:false});
   await navigate('/dersler-ve-konular?tab=dagilim&sinav=all&ders=all');
-  await wait('document.querySelector(".curriculum-reference-summary") && document.querySelector(".ag-row")');
+  await wait(`document.querySelector('select[aria-label="Ders seç"]') && document.querySelector('.ag-row')`);
   const metadata=await api('/api/learning-resources/metadata');
   const categories=metadata.categories.filter(c=>c.selectable!==false);
   assert.equal(categories.length,530);assert.ok(categories.every(c=>c.curriculumSource==='EXCEL_FIRST_SHEET'));
   assert.equal(metadata.summary.curriculumReference.sourceRows,453);
-  assert.ok((await evaluate('document.querySelector(".curriculum-reference-summary").innerText')).includes('453'));
-  assert.equal(await evaluate('document.querySelector("select[aria-label=Ders]").options.length'),13);
-  report.runKey=metadata.summary.runKey;report.checks.push('453 source rows, 12 subjects, 146 units; only the first worksheet is selectable');
+  assert.equal(await evaluate(`document.querySelector('select[aria-label="Ders seç"]').options.length`),15);
+  assert.equal(new Set(categories.map(c=>c.subjectId)).size,14);
+  assert.ok(categories.every(c=>!/[+/]/.test(c.subject)));
+  for(const subjectId of ['matematik','geometri','turkce','edebiyat']) assert.ok(categories.some(c=>c.subjectId===subjectId));
+  const removedControls=await evaluate(`Array.from(document.querySelectorAll('.curriculum-reference-filters, .curriculum-reference-summary, .curriculum-source-pill, .app-data-grid-search, .ag-floating-filter, .ag-paging-panel, [col-id="notes"]')).filter(e=>e.getBoundingClientRect().height>0 && getComputedStyle(e).visibility!=='hidden').map(e=>e.className)`);
+  assert.deepEqual(removedControls,[],'Removed controls must not be visible');
+  await wait(`Array.from(document.querySelectorAll('.ag-header-cell-text')).every(e=>e.scrollWidth<=e.clientWidth+1 && e.scrollHeight<=e.clientHeight+1)`);
+  report.runKey=metadata.summary.runKey;report.checks.push('Header lesson dropdown has all 14 shared lessons with exclusive Math/Geometry and Turkish/Literature subjects; removed controls, white filter boxes and explanation column are absent');
+  await screenshot('distribution-initial.png');
+  assert.equal(await evaluate(`document.querySelector('.ag-row .ag-cell[col-id="rowNumber"]').innerText`),'1');
+  for(const [id,label] of [['matematik','Matematik'],['geometri','Geometri'],['turkce','Türkçe'],['edebiyat','Edebiyat']]) {
+    await select('Ders seç',id);
+    await wait(`new URLSearchParams(location.search).get('ders') === ${JSON.stringify(id)} && Array.from(document.querySelectorAll('.ag-row[row-index] .ag-cell[col-id="subject"]')).every(e=>e.innerText===${JSON.stringify(label)})`);
+  }
+  report.checks.push('Each split lesson filters to its own source rows; no topic is duplicated between Math/Geometry or Turkish/Literature');
+  report.subjectFilterCounts={};
+  for(const [label,exam] of [['Matematik','TYT'],['Geometri','TYT'],['Türkçe','TYT'],['Edebiyat','AYT']]) {
+    const result=await api('/api/questions?bank=OGM&examType='+exam+'&subject='+encodeURIComponent(label)+'&size=5');
+    assert.ok(result.totalElements>0,label+' question filter');
+    assert.ok(result.content.every(q=>q.resource.subject.split(' · ').includes(label)),label+' current question classification');
+    report.subjectFilterCounts[label]=result.totalElements;
+  }
+  assert.notEqual(report.subjectFilterCounts.Matematik,report.subjectFilterCounts.Geometri);
+  report.checks.push('Question bank subject filters keep all four split lessons separate and use their published topic classifications');
+  await select('Ders seç','fizik');
+  await wait(`new URLSearchParams(location.search).get('ders') === 'fizik' && document.querySelector('.ag-row .ag-cell[col-id="subject"]')?.innerText === 'Fizik'`);
+  assert.equal(await evaluate(`document.querySelector('.ag-header-cell[col-id="total"]')`),null);
+  for(const field of ['unit','topic','gradeLabel','tyt','ayt','tytTotal','aytTotal','recent']) {
+    await evaluate(`document.querySelector('.ag-header-cell[col-id="${field}"] .ag-header-cell-label').click()`);
+    await wait(`document.querySelector('.ag-header-cell[col-id="${field}"]').getAttribute('aria-sort') === 'ascending'`);
+    await evaluate(`document.querySelector('.ag-header-cell[col-id="${field}"] .ag-header-cell-label').click()`);
+    await wait(`document.querySelector('.ag-header-cell[col-id="${field}"]').getAttribute('aria-sort') === 'descending'`);
+  }
+  await wait(`(()=>{const totals=Array.from(document.querySelectorAll('.ag-row[row-index]')).sort((a,b)=>Number(a.getAttribute('row-index'))-Number(b.getAttribute('row-index'))).map(r=>r.querySelector('.ag-cell[col-id="recent"]')?.innerText).filter(value=>value && value!=='—').map(value=>Number(value.replaceAll('.','')));return totals.length>1 && totals.every((value,index)=>index===0 || totals[index-1]>=value);})()`);
+  assert.equal(await evaluate(`document.querySelector('.ag-row[row-index="0"] .ag-cell[col-id="rowNumber"]').innerText`),'1');
   await screenshot('distribution-desktop.png');
-  await evaluate('document.querySelector(".curriculum-years-toggle input").click()');
-  await wait('document.querySelectorAll(".ag-header-cell").length > 12');
-  await evaluate('document.querySelector(".curriculum-years-toggle input").click()');
-  await select('Ders','fizik');await select('Sınav','TYT');
-  await wait('document.querySelector(".curriculum-reference-summary").innerText.includes("18")');
-  const physics=categories.filter(c=>c.subjectId==='fizik'&&c.exam==='TYT');
-  await select('Ünite',physics[0].unitId);
-  await wait(`document.querySelector(".curriculum-reference-summary").innerText.includes(${JSON.stringify(physics.filter(c=>c.unitId===physics[0].unitId).length+' satır')})`);
-  await evaluate('[...document.querySelectorAll("button")].find(b=>b.textContent==="Notları aç").click()');
-  await wait('document.querySelector(".curriculum-reference-detail")');
-  assert.ok((await evaluate('document.querySelector(".curriculum-reference-detail").innerText')).includes('Excel satırı'));
-  await evaluate('document.querySelector(".modal [aria-label=Kapat]").click()');
-  await wait('!document.querySelector(".modal")');
-  report.checks.push('Lesson/unit filtering, yearly columns and source notes work');
+  const viewport=await evaluate(`(()=>{const e=document.querySelector('.ag-grid-viewport');return {height:e.clientHeight,content:e.scrollHeight};})()`);
+  assert.ok(viewport.height>0 && viewport.content>viewport.height);
+  await evaluate(`(()=>{const e=document.querySelector('.ag-grid-viewport');e.scrollTop=e.scrollHeight;})()`);
+  await wait(`Number(document.querySelector('.ag-row .ag-cell[col-id="rowNumber"]').innerText)>1`);
+  report.checks.push('Row numbers refresh after sorting; unit, topic, grade, TYT/AYT and count columns sort in both directions; long topic lists scroll inside the grid');
   await cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await screenshot('distribution-mobile.png');
   assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth+2'));
-  await cdp('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+  await cdp('Emulation.setDeviceMetricsOverride',{width:1680,height:1100,deviceScaleFactor:1,mobile:false});
+  await navigate('/dersler-ve-konular?tab=konular&sinav=AYT&ders=fizik');
+  await wait(`document.querySelector('select[aria-label="Sınav seç"]')?.value === 'AYT' && document.querySelector('.ag-row .ag-cell[col-id="subject"]')?.innerText === 'Fizik'`);
+  await select('Sınav seç','TYT');
+  await wait(`document.querySelector('select[aria-label="Sınav seç"]')?.value === 'TYT' && document.querySelector('.ag-row .ag-cell[col-id="exam"]')?.innerText === 'TYT'`);
+  await wait(`!Array.from(document.querySelectorAll('[role="status"]')).some(e=>e.innerText.includes('Soru bankası sayıları yükleniyor'))`);
+  assert.equal(await evaluate(`document.querySelector('.ag-row[row-index="0"] .ag-cell[col-id="rowNumber"]').innerText`),'1');
+  await screenshot('tracking-desktop.png');
+  report.checks.push('Topic tracking keeps shared lesson/exam selection in the grid header and resets row numbers after selection');
   await navigate('/calisma/yeni?source=OGM_TYT&branchId=fizik');
   await wait('[...document.querySelectorAll("select")].some(s=>s.labels?.[0]?.textContent.trim().startsWith("Ünite")&&s.options.length>1)');
   const unit=await evaluate('[...document.querySelectorAll("select")].find(s=>s.labels?.[0]?.textContent.trim().startsWith("Ünite")).options[1].value');
@@ -90,7 +122,7 @@ try {
   report.appVersion=(await(await fetch(site+'/app-version.txt')).text()).trim();
   assert.equal(report.javascriptErrors.length,0);assert.equal(report.apiErrors.length,0);
   report.status='PASS';
-} catch(error) { report.status='FAIL';report.error=error.stack;process.exitCode=1; }
+} catch(error) { report.status='FAIL';report.error=error.stack;await diagnose?.().catch(()=>{});process.exitCode=1; }
 finally {
   fs.writeFileSync(join(output,'ui-report.json'),JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify(report));socket?.close();chrome.kill();

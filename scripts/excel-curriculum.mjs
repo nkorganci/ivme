@@ -1,7 +1,30 @@
 // Matching proposes categories from the Excel registry; it never creates a topic.
 export const norm = value => String(value || '').toLocaleLowerCase('tr-TR').replaceAll('ı', 'i')
   .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
-export const excelBranch = id => ({ edebiyat: 'turkce', geometri: 'matematik' }[id] || id);
+export const excelBranch = id => id;
+
+// These are the units in worksheet zero. Each source row has exactly one lesson,
+// including rows covered by both exams. The workbook's original lesson stays in distribution.
+const splitUnits = {
+  'Matematik + Geometri': [
+    ['matematik', 'Matematik', ['Denklem ve Eşitsizlikler', 'Mantık', 'Kümeler', 'Veri', 'Fonksiyonlar', 'Polinomlar',
+      'Sayma ve Olasılık', 'İkinci Dereceden Denklemler', 'Fonksiyonlarda Uygulamalar', 'Trigonometri',
+      'Üstel ve Logaritmik Fonksiyonlar', 'Diziler', 'Türev', 'İntegral']],
+    ['geometri', 'Geometri', ['Üçgenler', 'Geometri', 'Uzay Geometri', 'Dörtgenler ve Çokgenler', 'Analitik Geometri']],
+  ],
+  'Türkçe / Edebiyat': [
+    ['turkce', 'Türkçe', ['Anlam Bilgisi', 'Ses ve Yapı Bilgisi', 'Sözcük Türleri', 'Cümle Bilgisi', 'Yazım ve Noktalama', 'Anlatım Bozukluğu']],
+    ['edebiyat', 'Edebiyat', ['Edebiyat Bilgileri', 'Türk Edebiyatı Dönemleri', 'Edebî Akımlar']],
+  ],
+};
+export function splitExcelSubject(row) {
+  const scopes = splitUnits[row.subject];
+  if (!scopes) return null;
+  const matches = scopes.filter(([, , units]) => units.includes(row.unit));
+  if (matches.length !== 1) throw Error(`Excel lesson needs a unique unit classification: ${row.subject} / ${row.unit} / ${row.topic}`);
+  const [subjectId, subject] = matches[0];
+  return { subjectId, subject };
+}
 const stop = new Set('ve ile bir ilgili genel temel bilgi bilgisi kavram kavrami kavramlar konu konulari uygulama uygulamalari incelenmesi sinif tyt ayt'.split(' '));
 const tokens = text => norm(text).split(' ').filter(t => t.length > 2 && !stop.has(t));
 export const topicTerms = category => [...new Set([category.topic, category.topic.replace(/\([^)]*\)/g, ''),

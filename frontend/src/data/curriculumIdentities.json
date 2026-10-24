@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "taxonomyVersion": "taxonomy-v1-438de04c32fda038af30eaa7",
+  "taxonomyVersion": "taxonomy-v1-28273703f3dfd4b69551d319",
   "identities": {
     "ayt.biyoloji.canlilar-ve-cevre": "archive:ayt.biyoloji.04b020b4f9a6fd86fb0b",
     "archive:ayt.biyoloji.04b020b4f9a6fd86fb0b": "archive:ayt.biyoloji.04b020b4f9a6fd86fb0b",
@@ -532,31 +532,25 @@
     "excel.tyt.turkce.b3f170a7507320f06274": "excel.tyt.turkce.b3f170a7507320f06274",
     "excel.tyt.turkce.c38d76df17afe2ee8452": "excel.tyt.turkce.c38d76df17afe2ee8452",
     "excel.tyt.turkce.90627318e326bfbd5d28": "excel.tyt.turkce.90627318e326bfbd5d28",
-    "ayt.turkce.siir-bilgisi": "excel.ayt.turkce.11138d1669f64b209379",
     "excel.ayt.turkce.11138d1669f64b209379": "excel.ayt.turkce.11138d1669f64b209379",
-    "ayt.turkce.soz-sanatlari": "excel.ayt.turkce.b59ed421910c7df8166e",
     "excel.ayt.turkce.b59ed421910c7df8166e": "excel.ayt.turkce.b59ed421910c7df8166e",
-    "ayt.turkce.nesir-bilgisi": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+    "ayt.edebiyat.nesir-bilgisi": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
     "excel.ayt.turkce.09b21bb3e8ece4ea9e99": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
-    "ayt.turkce.masal-fabl-destan-halk-hikayesi": "excel.ayt.turkce.96546d312f4bd15490ea",
+    "ayt.edebiyat.masal-fabl-destan-halk-hikayesi": "excel.ayt.turkce.96546d312f4bd15490ea",
     "excel.ayt.turkce.96546d312f4bd15490ea": "excel.ayt.turkce.96546d312f4bd15490ea",
-    "ayt.turkce.geleneksel-turk-tiyatrosu": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
+    "ayt.edebiyat.geleneksel-turk-tiyatrosu": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
     "excel.ayt.turkce.8ef82f23506d2dd54ea2": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
-    "ayt.turkce.islamiyet-oncesi-turk-edebiyati-gecis-donemi-turk-edebiyati": "excel.ayt.turkce.a1391eb013052d9eab49",
+    "ayt.edebiyat.islamiyet-oncesi-turk-edebiyati-gecis-donemi-turk-edebiyati": "excel.ayt.turkce.a1391eb013052d9eab49",
     "excel.ayt.turkce.a1391eb013052d9eab49": "excel.ayt.turkce.a1391eb013052d9eab49",
-    "ayt.turkce.halk-edebiyati": "excel.ayt.turkce.80a3da3dec38afdbdc61",
     "excel.ayt.turkce.80a3da3dec38afdbdc61": "excel.ayt.turkce.80a3da3dec38afdbdc61",
-    "ayt.turkce.divan-edebiyati": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
     "excel.ayt.turkce.5952cb01d2a3b7aa54a3": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
-    "ayt.turkce.tanzimat-donemi-turk-edebiyati": "excel.ayt.turkce.5ede81d2df04bcc63ae5",
+    "ayt.edebiyat.tanzimat-donemi-turk-edebiyati": "excel.ayt.turkce.5ede81d2df04bcc63ae5",
     "excel.ayt.turkce.5ede81d2df04bcc63ae5": "excel.ayt.turkce.5ede81d2df04bcc63ae5",
-    "ayt.turkce.servetifunun-donemi-turk-edebiyati-fecriati-donemi-turk-edebiyati": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
+    "ayt.edebiyat.servetifunun-donemi-turk-edebiyati-fecriati-donemi-turk-edebiyati": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
     "excel.ayt.turkce.cd2d6007cfe76e0003c1": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
-    "ayt.turkce.milli-edebiyat-donemi-turk-edebiyati": "excel.ayt.turkce.1162e7145b8ddc7558ba",
+    "ayt.edebiyat.milli-edebiyat-donemi-turk-edebiyati": "excel.ayt.turkce.1162e7145b8ddc7558ba",
     "excel.ayt.turkce.1162e7145b8ddc7558ba": "excel.ayt.turkce.1162e7145b8ddc7558ba",
-    "ayt.turkce.cumhuriyet-donemi-turk-edebiyati": "excel.ayt.turkce.367101082c6fb5a0353f",
     "excel.ayt.turkce.367101082c6fb5a0353f": "excel.ayt.turkce.367101082c6fb5a0353f",
-    "ayt.turkce.edebi-akimlar": "excel.ayt.turkce.477ca5b1950913bd8e26",
     "excel.ayt.turkce.477ca5b1950913bd8e26": "excel.ayt.turkce.477ca5b1950913bd8e26",
     "tyt.matematik.temel-kavramlar-ayt-de-sayilar-esitsizlik-mutlak-deger-uslu-koklu-oran-oranti-tek-baslikta": "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
     "excel.tyt.matematik.3f49cb99b638ac0c1ce2": "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
@@ -592,25 +586,25 @@
     "excel.ayt.matematik.f5eb57d988154c825935": "excel.ayt.matematik.f5eb57d988154c825935",
     "tyt.matematik.merkezi-egilim-ve-yayilim-olculeri-verilerin-grafikle-gosterilmesi-istatistik": "excel.tyt.matematik.d8fb8edba6e86247de33",
     "excel.tyt.matematik.d8fb8edba6e86247de33": "excel.tyt.matematik.d8fb8edba6e86247de33",
-    "tyt.matematik.ucgenlerde-temel-kavramlar": "excel.tyt.matematik.586b9136482c398a523a",
+    "tyt.geometri.ucgenlerde-temel-kavramlar": "excel.tyt.matematik.586b9136482c398a523a",
     "excel.tyt.matematik.586b9136482c398a523a": "excel.tyt.matematik.586b9136482c398a523a",
-    "ayt.matematik.ucgenlerde-temel-kavramlar": "excel.ayt.matematik.586b9136482c398a523a",
+    "ayt.geometri.ucgenlerde-temel-kavramlar": "excel.ayt.matematik.586b9136482c398a523a",
     "excel.ayt.matematik.586b9136482c398a523a": "excel.ayt.matematik.586b9136482c398a523a",
-    "tyt.matematik.ucgenlerde-eslik-ve-benzerlik": "excel.tyt.matematik.7e316abd523a576e94ae",
+    "tyt.geometri.ucgenlerde-eslik-ve-benzerlik": "excel.tyt.matematik.7e316abd523a576e94ae",
     "excel.tyt.matematik.7e316abd523a576e94ae": "excel.tyt.matematik.7e316abd523a576e94ae",
-    "ayt.matematik.ucgenlerde-eslik-ve-benzerlik": "excel.ayt.matematik.7e316abd523a576e94ae",
+    "ayt.geometri.ucgenlerde-eslik-ve-benzerlik": "excel.ayt.matematik.7e316abd523a576e94ae",
     "excel.ayt.matematik.7e316abd523a576e94ae": "excel.ayt.matematik.7e316abd523a576e94ae",
-    "tyt.matematik.ucgenin-yardimci-elemanlari": "excel.tyt.matematik.4264c2f39ff0928b359d",
+    "tyt.geometri.ucgenin-yardimci-elemanlari": "excel.tyt.matematik.4264c2f39ff0928b359d",
     "excel.tyt.matematik.4264c2f39ff0928b359d": "excel.tyt.matematik.4264c2f39ff0928b359d",
-    "ayt.matematik.ucgenin-yardimci-elemanlari": "excel.ayt.matematik.4264c2f39ff0928b359d",
+    "ayt.geometri.ucgenin-yardimci-elemanlari": "excel.ayt.matematik.4264c2f39ff0928b359d",
     "excel.ayt.matematik.4264c2f39ff0928b359d": "excel.ayt.matematik.4264c2f39ff0928b359d",
-    "tyt.matematik.dik-ucgen-ve-trigonometri-dik-ucgende-trigonometrik-oranlar": "excel.tyt.matematik.2e908dddb3ba366ba19b",
+    "tyt.geometri.dik-ucgen-ve-trigonometri-dik-ucgende-trigonometrik-oranlar": "excel.tyt.matematik.2e908dddb3ba366ba19b",
     "excel.tyt.matematik.2e908dddb3ba366ba19b": "excel.tyt.matematik.2e908dddb3ba366ba19b",
-    "ayt.matematik.dik-ucgen-ve-trigonometri-dik-ucgende-trigonometrik-oranlar": "excel.ayt.matematik.2e908dddb3ba366ba19b",
+    "ayt.geometri.dik-ucgen-ve-trigonometri-dik-ucgende-trigonometrik-oranlar": "excel.ayt.matematik.2e908dddb3ba366ba19b",
     "excel.ayt.matematik.2e908dddb3ba366ba19b": "excel.ayt.matematik.2e908dddb3ba366ba19b",
-    "tyt.matematik.ucgenin-alani-ucgenin-alani-ile-ilgili-uygulamalar": "excel.tyt.matematik.98ff88e1e909ccd34f3f",
+    "tyt.geometri.ucgenin-alani-ucgenin-alani-ile-ilgili-uygulamalar": "excel.tyt.matematik.98ff88e1e909ccd34f3f",
     "excel.tyt.matematik.98ff88e1e909ccd34f3f": "excel.tyt.matematik.98ff88e1e909ccd34f3f",
-    "ayt.matematik.ucgenin-alani-ucgenin-alani-ile-ilgili-uygulamalar": "excel.ayt.matematik.98ff88e1e909ccd34f3f",
+    "ayt.geometri.ucgenin-alani-ucgenin-alani-ile-ilgili-uygulamalar": "excel.ayt.matematik.98ff88e1e909ccd34f3f",
     "excel.ayt.matematik.98ff88e1e909ccd34f3f": "excel.ayt.matematik.98ff88e1e909ccd34f3f",
     "tyt.matematik.fonksiyon-kavrami-ve-gosterimi-iki-fonksiyonun-bileskesi-ve-bir-fonksiyonun-tersi": "excel.tyt.matematik.cfb36ba99fce84b745aa",
     "excel.tyt.matematik.cfb36ba99fce84b745aa": "excel.tyt.matematik.cfb36ba99fce84b745aa",
@@ -630,25 +624,22 @@
     "excel.tyt.matematik.9442d82c159081577c80": "excel.tyt.matematik.9442d82c159081577c80",
     "ayt.matematik.olasilik-basit-olaylar-kosullu-olasilik": "excel.ayt.matematik.9442d82c159081577c80",
     "excel.ayt.matematik.9442d82c159081577c80": "excel.ayt.matematik.9442d82c159081577c80",
-    "tyt.matematik.ucgen-cokgen-dortgen-ozel-dortgenler": "excel.tyt.matematik.db5e281cea870801613e",
+    "tyt.geometri.ucgen-cokgen-dortgen-ozel-dortgenler": "excel.tyt.matematik.db5e281cea870801613e",
     "excel.tyt.matematik.db5e281cea870801613e": "excel.tyt.matematik.db5e281cea870801613e",
-    "ayt.matematik.ucgen-cokgen-dortgen-ozel-dortgenler": "excel.ayt.matematik.db5e281cea870801613e",
+    "ayt.geometri.ucgen-cokgen-dortgen-ozel-dortgenler": "excel.ayt.matematik.db5e281cea870801613e",
     "excel.ayt.matematik.db5e281cea870801613e": "excel.ayt.matematik.db5e281cea870801613e",
-    "tyt.matematik.kati-cisimler": "excel.tyt.matematik.3ac405b203bda435db3b",
     "excel.tyt.matematik.3ac405b203bda435db3b": "excel.tyt.matematik.3ac405b203bda435db3b",
-    "ayt.matematik.kati-cisimler": "excel.ayt.matematik.3ac405b203bda435db3b",
     "excel.ayt.matematik.3ac405b203bda435db3b": "excel.ayt.matematik.3ac405b203bda435db3b",
     "tyt.matematik.ikinci-dereceden-denklemler-karmasik-sayilar-denklem-ve-esitsizlik-sistemleri": "excel.tyt.matematik.14d232b544077857888b",
     "excel.tyt.matematik.14d232b544077857888b": "excel.tyt.matematik.14d232b544077857888b",
     "ayt.matematik.ikinci-dereceden-denklemler-karmasik-sayilar-denklem-ve-esitsizlik-sistemleri": "excel.ayt.matematik.14d232b544077857888b",
     "excel.ayt.matematik.14d232b544077857888b": "excel.ayt.matematik.14d232b544077857888b",
-    "tyt.matematik.cokgenler-dortgenler-ve-ozellikleri": "excel.tyt.matematik.e458c48c1de81b6bafc4",
+    "tyt.geometri.cokgenler-dortgenler-ve-ozellikleri": "excel.tyt.matematik.e458c48c1de81b6bafc4",
     "excel.tyt.matematik.e458c48c1de81b6bafc4": "excel.tyt.matematik.e458c48c1de81b6bafc4",
-    "ayt.matematik.cokgenler-dortgenler-ve-ozellikleri": "excel.ayt.matematik.e458c48c1de81b6bafc4",
+    "ayt.geometri.cokgenler-dortgenler-ve-ozellikleri": "excel.ayt.matematik.e458c48c1de81b6bafc4",
     "excel.ayt.matematik.e458c48c1de81b6bafc4": "excel.ayt.matematik.e458c48c1de81b6bafc4",
-    "tyt.matematik.ozel-dortgenler": "excel.tyt.matematik.69056bdfd530eb6f5054",
     "excel.tyt.matematik.69056bdfd530eb6f5054": "excel.tyt.matematik.69056bdfd530eb6f5054",
-    "ayt.matematik.ozel-dortgenler": "excel.ayt.matematik.69056bdfd530eb6f5054",
+    "ayt.geometri.ozel-dortgenler": "excel.ayt.matematik.69056bdfd530eb6f5054",
     "excel.ayt.matematik.69056bdfd530eb6f5054": "excel.ayt.matematik.69056bdfd530eb6f5054",
     "ayt.matematik.fonksiyonlar-ile-ilgili-uygulamalar-fonksiyon-donusumleri": "excel.ayt.matematik.fa9ef387c7fda735be6b",
     "excel.ayt.matematik.fa9ef387c7fda735be6b": "excel.ayt.matematik.fa9ef387c7fda735be6b",
@@ -658,9 +649,8 @@
     "excel.ayt.matematik.b614d2b98d9d3f086357": "excel.ayt.matematik.b614d2b98d9d3f086357",
     "ayt.matematik.kosinus-teoremi-sinus-teoremi-ters-trigonometrik-fonksiyonlar": "excel.ayt.matematik.920bf26742b613289697",
     "excel.ayt.matematik.920bf26742b613289697": "excel.ayt.matematik.920bf26742b613289697",
-    "ayt.matematik.cember-ve-daire": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
     "excel.ayt.matematik.f7ab390ecdfd97b552e3": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
-    "ayt.matematik.dogrunun-analitik-incelenmesi": "excel.ayt.matematik.83f0d7c4e8bd78777a36",
+    "ayt.geometri.dogrunun-analitik-incelenmesi": "excel.ayt.matematik.83f0d7c4e8bd78777a36",
     "excel.ayt.matematik.83f0d7c4e8bd78777a36": "excel.ayt.matematik.83f0d7c4e8bd78777a36",
     "ayt.matematik.toplam-fark-ve-iki-kat-aci-formulleri": "excel.ayt.matematik.059040b98443e511642d",
     "excel.ayt.matematik.059040b98443e511642d": "excel.ayt.matematik.059040b98443e511642d",
@@ -674,15 +664,14 @@
     "excel.ayt.matematik.6bbfb73f4942648d58d5": "excel.ayt.matematik.6bbfb73f4942648d58d5",
     "ayt.matematik.belirsiz-integral-belirli-integral-ve-uygulamalari": "excel.ayt.matematik.ad62942626b94927626a",
     "excel.ayt.matematik.ad62942626b94927626a": "excel.ayt.matematik.ad62942626b94927626a",
-    "ayt.matematik.donusumler": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
     "excel.ayt.matematik.b6ac70d5497a61e5e1b1": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
-    "ayt.matematik.cemberin-analitik-incelenmesi": "excel.ayt.matematik.93b368f661a02879fe2a",
+    "ayt.geometri.cemberin-analitik-incelenmesi": "excel.ayt.matematik.93b368f661a02879fe2a",
     "excel.ayt.matematik.93b368f661a02879fe2a": "excel.ayt.matematik.93b368f661a02879fe2a",
-    "ayt.matematik.konikler": "excel.ayt.matematik.e014620b35d0017d3085",
+    "ayt.geometri.konikler": "excel.ayt.matematik.e014620b35d0017d3085",
     "excel.ayt.matematik.e014620b35d0017d3085": "excel.ayt.matematik.e014620b35d0017d3085",
-    "ayt.matematik.vektorler": "excel.ayt.matematik.30c0e6efc8c97b9c92a6",
+    "ayt.geometri.vektorler": "excel.ayt.matematik.30c0e6efc8c97b9c92a6",
     "excel.ayt.matematik.30c0e6efc8c97b9c92a6": "excel.ayt.matematik.30c0e6efc8c97b9c92a6",
-    "ayt.matematik.uzayda-analitik-geometri": "excel.ayt.matematik.f4feb4553ff0d41f2326",
+    "ayt.geometri.uzayda-analitik-geometri": "excel.ayt.matematik.f4feb4553ff0d41f2326",
     "excel.ayt.matematik.f4feb4553ff0d41f2326": "excel.ayt.matematik.f4feb4553ff0d41f2326",
     "excel.tyt.fizik.8eb0a742280ebb0a7287": "excel.tyt.fizik.8eb0a742280ebb0a7287",
     "excel.tyt.fizik.cf72fb119ec7f7d36953": "excel.tyt.fizik.cf72fb119ec7f7d36953",
@@ -2789,7 +2778,7 @@
       "id": "excel.tyt.turkce.34ccd7c520dc4cb712f4",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Sözcükte Anlam",
       "grade": null,
       "order": 5,
@@ -2803,7 +2792,7 @@
       "id": "excel.ayt.turkce.34ccd7c520dc4cb712f4",
       "exam": "AYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Sözcükte Anlam",
       "grade": null,
       "order": 5,
@@ -2817,7 +2806,7 @@
       "id": "excel.tyt.turkce.3957aa7e34d9f98697a0",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Cümlede Anlam",
       "grade": null,
       "order": 6,
@@ -2831,7 +2820,7 @@
       "id": "excel.ayt.turkce.3957aa7e34d9f98697a0",
       "exam": "AYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Cümlede Anlam",
       "grade": null,
       "order": 6,
@@ -2845,7 +2834,7 @@
       "id": "excel.tyt.turkce.536547a90186f759f335",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Paragrafta Anlam",
       "grade": null,
       "order": 7,
@@ -2859,7 +2848,7 @@
       "id": "excel.ayt.turkce.536547a90186f759f335",
       "exam": "AYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Paragrafta Anlam",
       "grade": null,
       "order": 7,
@@ -2873,7 +2862,7 @@
       "id": "excel.tyt.turkce.e262d2451c58137281b2",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Paragrafın Yapısı",
       "grade": null,
       "order": 8,
@@ -2887,7 +2876,7 @@
       "id": "excel.tyt.turkce.dc41cbe0d54ae7a74d27",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Biçim Bilgisi",
       "grade": null,
       "order": 9,
@@ -2901,7 +2890,7 @@
       "id": "excel.tyt.turkce.7f81957a5fb109818398",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Ses Bilgisi",
       "grade": null,
       "order": 10,
@@ -2915,7 +2904,7 @@
       "id": "excel.tyt.turkce.7acec61eb23de793ce7a",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "İsim Soylu Sözcükler",
       "grade": null,
       "order": 11,
@@ -2929,7 +2918,7 @@
       "id": "excel.tyt.turkce.35eca549c092e278c479",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Fiiller",
       "grade": null,
       "order": 12,
@@ -2943,7 +2932,7 @@
       "id": "excel.tyt.turkce.7e8700bfdeabc804ec76",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Cümlenin Öğeleri",
       "grade": null,
       "order": 13,
@@ -2957,7 +2946,7 @@
       "id": "excel.tyt.turkce.28e49969892a54ef4755",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Cümle Türleri",
       "grade": null,
       "order": 14,
@@ -2971,7 +2960,7 @@
       "id": "excel.tyt.turkce.b3f170a7507320f06274",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Yazım Kuralları",
       "grade": null,
       "order": 15,
@@ -2985,7 +2974,7 @@
       "id": "excel.tyt.turkce.c38d76df17afe2ee8452",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Noktalama İşaretleri",
       "grade": null,
       "order": 16,
@@ -2999,7 +2988,7 @@
       "id": "excel.tyt.turkce.90627318e326bfbd5d28",
       "exam": "TYT",
       "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subject": "Türkçe",
       "topic": "Anlatım Bozukluğu",
       "grade": null,
       "order": 17,
@@ -3012,8 +3001,8 @@
     {
       "id": "excel.ayt.turkce.11138d1669f64b209379",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Şiir Bilgisi",
       "grade": 9,
       "order": 18,
@@ -3026,8 +3015,8 @@
     {
       "id": "excel.ayt.turkce.b59ed421910c7df8166e",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Söz Sanatları",
       "grade": 9,
       "order": 19,
@@ -3040,8 +3029,8 @@
     {
       "id": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Nesir Bilgisi",
       "grade": null,
       "order": 20,
@@ -3054,8 +3043,8 @@
     {
       "id": "excel.ayt.turkce.96546d312f4bd15490ea",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Masal/Fabl/Destan/Halk Hikâyesi",
       "grade": null,
       "order": 21,
@@ -3068,8 +3057,8 @@
     {
       "id": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Geleneksel Türk Tiyatrosu",
       "grade": 10,
       "order": 22,
@@ -3082,8 +3071,8 @@
     {
       "id": "excel.ayt.turkce.a1391eb013052d9eab49",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "İslamiyet Öncesi Türk Edebiyatı / Geçiş Dönemi Türk Edebiyatı",
       "grade": 10,
       "order": 23,
@@ -3096,8 +3085,8 @@
     {
       "id": "excel.ayt.turkce.80a3da3dec38afdbdc61",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Halk Edebiyatı",
       "grade": 10,
       "order": 24,
@@ -3110,8 +3099,8 @@
     {
       "id": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Divan Edebiyatı",
       "grade": 10,
       "order": 25,
@@ -3124,8 +3113,8 @@
     {
       "id": "excel.ayt.turkce.5ede81d2df04bcc63ae5",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Tanzimat Dönemi Türk Edebiyatı",
       "grade": 11,
       "order": 26,
@@ -3138,8 +3127,8 @@
     {
       "id": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Servetifünun Dönemi Türk Edebiyatı/ Fecriâti Dönemi Türk Edebiyatı",
       "grade": 11,
       "order": 27,
@@ -3152,8 +3141,8 @@
     {
       "id": "excel.ayt.turkce.1162e7145b8ddc7558ba",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Millî Edebiyat Dönemi Türk Edebiyatı",
       "grade": 11,
       "order": 28,
@@ -3166,8 +3155,8 @@
     {
       "id": "excel.ayt.turkce.367101082c6fb5a0353f",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Cumhuriyet Dönemi Türk Edebiyatı",
       "grade": 12,
       "order": 29,
@@ -3180,8 +3169,8 @@
     {
       "id": "excel.ayt.turkce.477ca5b1950913bd8e26",
       "exam": "AYT",
-      "subjectId": "turkce",
-      "subject": "Türkçe / Edebiyat",
+      "subjectId": "edebiyat",
+      "subject": "Edebiyat",
       "topic": "Edebî Akımlar",
       "grade": 11,
       "order": 30,
@@ -3195,7 +3184,7 @@
       "id": "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Temel Kavramlar (AYT'de sayılar, eşitsizlik, mutlak değer, üslü-köklü, oran-orantı tek başlıkta)",
       "grade": 9,
       "order": 31,
@@ -3209,7 +3198,7 @@
       "id": "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Temel Kavramlar (AYT'de sayılar, eşitsizlik, mutlak değer, üslü-köklü, oran-orantı tek başlıkta)",
       "grade": 9,
       "order": 31,
@@ -3223,7 +3212,7 @@
       "id": "excel.tyt.matematik.3d78be385716237007f8",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Sayı Kümeleri (temel kavramlar, sayı basamakları, rasyonel sayılar)",
       "grade": 9,
       "order": 32,
@@ -3237,7 +3226,7 @@
       "id": "excel.ayt.matematik.3d78be385716237007f8",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Sayı Kümeleri (temel kavramlar, sayı basamakları, rasyonel sayılar)",
       "grade": 9,
       "order": 32,
@@ -3251,7 +3240,7 @@
       "id": "excel.tyt.matematik.c15cc6aeffd9ec9ece58",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Bölünebilme Kuralları (bölme-bölünebilme, EBOB-EKOK)",
       "grade": 9,
       "order": 33,
@@ -3265,7 +3254,7 @@
       "id": "excel.ayt.matematik.c15cc6aeffd9ec9ece58",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Bölünebilme Kuralları (bölme-bölünebilme, EBOB-EKOK)",
       "grade": 9,
       "order": 33,
@@ -3279,7 +3268,7 @@
       "id": "excel.tyt.matematik.ceb9fbdfaa16dc1f89eb",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Birinci Dereceden Denklemler ve Eşitsizlikler (denklem çözme, basit eşitsizlik, mutlak değer)",
       "grade": 9,
       "order": 34,
@@ -3293,7 +3282,7 @@
       "id": "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Birinci Dereceden Denklemler ve Eşitsizlikler (denklem çözme, basit eşitsizlik, mutlak değer)",
       "grade": 9,
       "order": 34,
@@ -3307,7 +3296,7 @@
       "id": "excel.tyt.matematik.85a51a7cfcbaab213488",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Üslü İfadeler ve Denklemler (üslü ve köklü sayılar)",
       "grade": 9,
       "order": 35,
@@ -3321,7 +3310,7 @@
       "id": "excel.ayt.matematik.85a51a7cfcbaab213488",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Üslü İfadeler ve Denklemler (üslü ve köklü sayılar)",
       "grade": 9,
       "order": 35,
@@ -3335,7 +3324,7 @@
       "id": "excel.tyt.matematik.c0b32de8d9a8ffca3f75",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Denklemler ve Eşitsizlikler ile İlgili Uygulamalar = PROBLEMLER (oran-orantı dahil)",
       "grade": 9,
       "order": 36,
@@ -3349,7 +3338,7 @@
       "id": "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Denklemler ve Eşitsizlikler ile İlgili Uygulamalar = PROBLEMLER (oran-orantı dahil)",
       "grade": 9,
       "order": 36,
@@ -3363,7 +3352,7 @@
       "id": "excel.tyt.matematik.4c4876ddd9383c03d782",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Önermeler ve Bileşik Önermeler / Niceleyiciler / Tanım, Aksiyom, Teorem ve İspat Yöntemleri",
       "grade": 9,
       "order": 37,
@@ -3377,7 +3366,7 @@
       "id": "excel.ayt.matematik.4c4876ddd9383c03d782",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Önermeler ve Bileşik Önermeler / Niceleyiciler / Tanım, Aksiyom, Teorem ve İspat Yöntemleri",
       "grade": 9,
       "order": 37,
@@ -3391,7 +3380,7 @@
       "id": "excel.tyt.matematik.f5eb57d988154c825935",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Kümelerde Temel Kavramlar/ Kümelerde İşlemler",
       "grade": 9,
       "order": 38,
@@ -3405,7 +3394,7 @@
       "id": "excel.ayt.matematik.f5eb57d988154c825935",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Kümelerde Temel Kavramlar/ Kümelerde İşlemler",
       "grade": 9,
       "order": 38,
@@ -3419,7 +3408,7 @@
       "id": "excel.tyt.matematik.d8fb8edba6e86247de33",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Merkezi Eğilim ve Yayılım Ölçüleri/ Verilerin Grafikle Gösterilmesi (istatistik)",
       "grade": 9,
       "order": 39,
@@ -3432,8 +3421,8 @@
     {
       "id": "excel.tyt.matematik.586b9136482c398a523a",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenlerde Temel Kavramlar",
       "grade": 9,
       "order": 40,
@@ -3446,8 +3435,8 @@
     {
       "id": "excel.ayt.matematik.586b9136482c398a523a",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenlerde Temel Kavramlar",
       "grade": 9,
       "order": 40,
@@ -3460,8 +3449,8 @@
     {
       "id": "excel.tyt.matematik.7e316abd523a576e94ae",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenlerde Eşlik ve Benzerlik",
       "grade": 9,
       "order": 41,
@@ -3474,8 +3463,8 @@
     {
       "id": "excel.ayt.matematik.7e316abd523a576e94ae",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenlerde Eşlik ve Benzerlik",
       "grade": 9,
       "order": 41,
@@ -3488,8 +3477,8 @@
     {
       "id": "excel.tyt.matematik.4264c2f39ff0928b359d",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenin Yardımcı Elemanları",
       "grade": 9,
       "order": 42,
@@ -3502,8 +3491,8 @@
     {
       "id": "excel.ayt.matematik.4264c2f39ff0928b359d",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenin Yardımcı Elemanları",
       "grade": 9,
       "order": 42,
@@ -3516,8 +3505,8 @@
     {
       "id": "excel.tyt.matematik.2e908dddb3ba366ba19b",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Dik Üçgen ve Trigonometri (dik üçgende trigonometrik oranlar)",
       "grade": 9,
       "order": 43,
@@ -3530,8 +3519,8 @@
     {
       "id": "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Dik Üçgen ve Trigonometri (dik üçgende trigonometrik oranlar)",
       "grade": 9,
       "order": 43,
@@ -3544,8 +3533,8 @@
     {
       "id": "excel.tyt.matematik.98ff88e1e909ccd34f3f",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenin Alanı/ Üçgenin Alanı ile ilgili Uygulamalar",
       "grade": 9,
       "order": 44,
@@ -3558,8 +3547,8 @@
     {
       "id": "excel.ayt.matematik.98ff88e1e909ccd34f3f",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgenin Alanı/ Üçgenin Alanı ile ilgili Uygulamalar",
       "grade": 9,
       "order": 44,
@@ -3573,7 +3562,7 @@
       "id": "excel.tyt.matematik.cfb36ba99fce84b745aa",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Fonksiyon Kavramı ve Gösterimi/İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi",
       "grade": 10,
       "order": 45,
@@ -3587,7 +3576,7 @@
       "id": "excel.ayt.matematik.cfb36ba99fce84b745aa",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Fonksiyon Kavramı ve Gösterimi/İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi",
       "grade": 10,
       "order": 45,
@@ -3601,7 +3590,7 @@
       "id": "excel.tyt.matematik.58dc018a000831b1b740",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Polinom Kavramı ve Polinomlarda İşlemler/ Polinomların Çarpanlara Ayrılması",
       "grade": 10,
       "order": 46,
@@ -3615,7 +3604,7 @@
       "id": "excel.ayt.matematik.58dc018a000831b1b740",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Polinom Kavramı ve Polinomlarda İşlemler/ Polinomların Çarpanlara Ayrılması",
       "grade": 10,
       "order": 46,
@@ -3629,7 +3618,7 @@
       "id": "excel.tyt.matematik.f035f2fb95a3f15c26ab",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Sıralama ve Seçme – Permütasyon, Kombinasyon",
       "grade": 10,
       "order": 47,
@@ -3643,7 +3632,7 @@
       "id": "excel.ayt.matematik.f035f2fb95a3f15c26ab",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Sıralama ve Seçme – Permütasyon, Kombinasyon",
       "grade": 10,
       "order": 47,
@@ -3657,7 +3646,7 @@
       "id": "excel.ayt.matematik.8139749dd0017d49e725",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Binom",
       "grade": 10,
       "order": 48,
@@ -3671,7 +3660,7 @@
       "id": "excel.tyt.matematik.9442d82c159081577c80",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Olasılık (basit olaylar, koşullu olasılık)",
       "grade": null,
       "order": 49,
@@ -3685,7 +3674,7 @@
       "id": "excel.ayt.matematik.9442d82c159081577c80",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Olasılık (basit olaylar, koşullu olasılık)",
       "grade": null,
       "order": 49,
@@ -3698,8 +3687,8 @@
     {
       "id": "excel.tyt.matematik.db5e281cea870801613e",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgen, Çokgen, Dörtgen, Özel Dörtgenler",
       "grade": null,
       "order": 50,
@@ -3712,8 +3701,8 @@
     {
       "id": "excel.ayt.matematik.db5e281cea870801613e",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Üçgen, Çokgen, Dörtgen, Özel Dörtgenler",
       "grade": null,
       "order": 50,
@@ -3726,8 +3715,8 @@
     {
       "id": "excel.tyt.matematik.3ac405b203bda435db3b",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Katı Cisimler",
       "grade": null,
       "order": 51,
@@ -3740,8 +3729,8 @@
     {
       "id": "excel.ayt.matematik.3ac405b203bda435db3b",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Katı Cisimler",
       "grade": null,
       "order": 51,
@@ -3755,7 +3744,7 @@
       "id": "excel.tyt.matematik.14d232b544077857888b",
       "exam": "TYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri",
       "grade": null,
       "order": 52,
@@ -3769,7 +3758,7 @@
       "id": "excel.ayt.matematik.14d232b544077857888b",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri",
       "grade": null,
       "order": 52,
@@ -3782,8 +3771,8 @@
     {
       "id": "excel.tyt.matematik.e458c48c1de81b6bafc4",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Çokgenler /Dörtgenler ve Özellikleri",
       "grade": 10,
       "order": 53,
@@ -3796,8 +3785,8 @@
     {
       "id": "excel.ayt.matematik.e458c48c1de81b6bafc4",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Çokgenler /Dörtgenler ve Özellikleri",
       "grade": 10,
       "order": 53,
@@ -3810,8 +3799,8 @@
     {
       "id": "excel.tyt.matematik.69056bdfd530eb6f5054",
       "exam": "TYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Özel Dörtgenler",
       "grade": 10,
       "order": 54,
@@ -3824,8 +3813,8 @@
     {
       "id": "excel.ayt.matematik.69056bdfd530eb6f5054",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Özel Dörtgenler",
       "grade": 10,
       "order": 54,
@@ -3839,7 +3828,7 @@
       "id": "excel.ayt.matematik.fa9ef387c7fda735be6b",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Fonksiyonlar ile İlgili Uygulamalar, Fonksiyon Dönüşümleri",
       "grade": 11,
       "order": 55,
@@ -3853,7 +3842,7 @@
       "id": "excel.ayt.matematik.807e46eb5f33cd72c139",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "İkinci Dereceden Fonksiyon ve Grafikleri (parabol)",
       "grade": 11,
       "order": 56,
@@ -3867,7 +3856,7 @@
       "id": "excel.ayt.matematik.b614d2b98d9d3f086357",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Yönlü Açılar, Trigonometrik Fonksiyonlar (trigonometri-1)",
       "grade": 11,
       "order": 57,
@@ -3881,7 +3870,7 @@
       "id": "excel.ayt.matematik.920bf26742b613289697",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Kosinüs Teoremi, Sinüs Teoremi, Ters Trigonometrik Fonksiyonlar",
       "grade": 11,
       "order": 58,
@@ -3894,8 +3883,8 @@
     {
       "id": "excel.ayt.matematik.f7ab390ecdfd97b552e3",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Çember ve Daire",
       "grade": 11,
       "order": 59,
@@ -3908,8 +3897,8 @@
     {
       "id": "excel.ayt.matematik.83f0d7c4e8bd78777a36",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Doğrunun Analitik İncelenmesi",
       "grade": 11,
       "order": 60,
@@ -3923,7 +3912,7 @@
       "id": "excel.ayt.matematik.059040b98443e511642d",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Toplam-Fark ve İki Kat Açı Formülleri",
       "grade": 12,
       "order": 61,
@@ -3937,7 +3926,7 @@
       "id": "excel.ayt.matematik.c02a5275f57b82d8a4f8",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Trigonometrik Denklemler",
       "grade": 12,
       "order": 62,
@@ -3951,7 +3940,7 @@
       "id": "excel.ayt.matematik.be8c4eb1e94d710cd842",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Üstel Fonksiyon, Logaritma Fonksiyonu (logaritma)",
       "grade": 12,
       "order": 63,
@@ -3965,7 +3954,7 @@
       "id": "excel.ayt.matematik.ff3d052707b59aa2cce2",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Gerçek Sayı Dizileri (diziler)",
       "grade": 12,
       "order": 64,
@@ -3979,7 +3968,7 @@
       "id": "excel.ayt.matematik.c0f24ccba08f6c271848",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Limit ve Süreklilik",
       "grade": 12,
       "order": 65,
@@ -3993,7 +3982,7 @@
       "id": "excel.ayt.matematik.6bbfb73f4942648d58d5",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Anlık Değişim Oranı ve Türev, Türevin Uygulamaları",
       "grade": 12,
       "order": 66,
@@ -4007,7 +3996,7 @@
       "id": "excel.ayt.matematik.ad62942626b94927626a",
       "exam": "AYT",
       "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subject": "Matematik",
       "topic": "Belirsiz İntegral, Belirli İntegral ve Uygulamaları",
       "grade": 12,
       "order": 67,
@@ -4020,8 +4009,8 @@
     {
       "id": "excel.ayt.matematik.b6ac70d5497a61e5e1b1",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Dönüşümler",
       "grade": 12,
       "order": 68,
@@ -4034,8 +4023,8 @@
     {
       "id": "excel.ayt.matematik.93b368f661a02879fe2a",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Çemberin Analitik İncelenmesi",
       "grade": 12,
       "order": 69,
@@ -4048,8 +4037,8 @@
     {
       "id": "excel.ayt.matematik.e014620b35d0017d3085",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Konikler",
       "grade": 12,
       "order": 70,
@@ -4062,8 +4051,8 @@
     {
       "id": "excel.ayt.matematik.30c0e6efc8c97b9c92a6",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Vektörler",
       "grade": 12,
       "order": 71,
@@ -4076,8 +4065,8 @@
     {
       "id": "excel.ayt.matematik.f4feb4553ff0d41f2326",
       "exam": "AYT",
-      "subjectId": "matematik",
-      "subject": "Matematik + Geometri",
+      "subjectId": "geometri",
+      "subject": "Geometri",
       "topic": "Uzayda Analitik Geometri",
       "grade": 12,
       "order": 72,
@@ -10693,14 +10682,10 @@
       "excel.ayt.turkce.477ca5b1950913bd8e26"
     ],
     "archive:ayt.edebiyat.221fce66239ffe57f87e": [],
-    "archive:ayt.edebiyat.223f41c2e310e8bf20c3": [
-      "excel.ayt.turkce.3957aa7e34d9f98697a0"
-    ],
+    "archive:ayt.edebiyat.223f41c2e310e8bf20c3": [],
     "archive:ayt.edebiyat.270b15611f4e469507ad": [],
     "archive:ayt.edebiyat.274ac43bfb1a50e01c87": [],
-    "archive:ayt.edebiyat.2b1a44a4bd5119f9bd22": [
-      "excel.ayt.turkce.536547a90186f759f335"
-    ],
+    "archive:ayt.edebiyat.2b1a44a4bd5119f9bd22": [],
     "archive:ayt.edebiyat.2b97cc910a00f34a1c2a": [],
     "archive:ayt.edebiyat.2c192ae0f4635f166d70": [
       "excel.ayt.turkce.96546d312f4bd15490ea"
@@ -10731,16 +10716,10 @@
     ],
     "archive:ayt.edebiyat.40f7fced3397caf86b59": [],
     "archive:ayt.edebiyat.422d7612f786c1e92d5d": [],
-    "archive:ayt.edebiyat.4243e07f8bdaecffe0ad": [
-      "excel.ayt.turkce.34ccd7c520dc4cb712f4",
-      "excel.ayt.turkce.3957aa7e34d9f98697a0",
-      "excel.ayt.turkce.536547a90186f759f335"
-    ],
+    "archive:ayt.edebiyat.4243e07f8bdaecffe0ad": [],
     "archive:ayt.edebiyat.4592d8ff07facea5dab6": [],
     "archive:ayt.edebiyat.4768591a307d9dc2ac45": [],
-    "archive:ayt.edebiyat.47bc957376b60942f9be": [
-      "excel.ayt.turkce.34ccd7c520dc4cb712f4"
-    ],
+    "archive:ayt.edebiyat.47bc957376b60942f9be": [],
     "archive:ayt.edebiyat.484f36c1d5a6426754ba": [],
     "archive:ayt.edebiyat.495113c9db197d2f84c4": [],
     "archive:ayt.edebiyat.4a51582790e50f69a0be": [],
@@ -10787,9 +10766,7 @@
     ],
     "archive:ayt.edebiyat.6a7884f10e1f04737751": [],
     "archive:ayt.edebiyat.6b79c15af587d20ffd92": [],
-    "archive:ayt.edebiyat.6de435171fcb97980267": [
-      "excel.ayt.turkce.3957aa7e34d9f98697a0"
-    ],
+    "archive:ayt.edebiyat.6de435171fcb97980267": [],
     "archive:ayt.edebiyat.6e8e946da425b2f9b0d8": [],
     "archive:ayt.edebiyat.702ed76226ab83efc075": [],
     "archive:ayt.edebiyat.750dfaacca06fe9c5706": [],
@@ -11403,29 +11380,21 @@
     "archive:ayt.matematik.1036d4435ed08d3a221e": [
       "excel.ayt.matematik.6bbfb73f4942648d58d5"
     ],
-    "archive:ayt.matematik.1326a793dfdb181a4f68": [
-      "excel.ayt.matematik.db5e281cea870801613e"
-    ],
-    "archive:ayt.matematik.13a18b7faa67a8b3fef8": [
-      "excel.ayt.matematik.f7ab390ecdfd97b552e3"
-    ],
-    "archive:ayt.matematik.1e97385918441835f7f7": [
-      "excel.ayt.matematik.3ac405b203bda435db3b"
-    ],
+    "archive:ayt.matematik.1326a793dfdb181a4f68": [],
+    "archive:ayt.matematik.13a18b7faa67a8b3fef8": [],
+    "archive:ayt.matematik.1e97385918441835f7f7": [],
     "archive:ayt.matematik.2e5e40d08f0a3a0fa54c": [
       "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb"
     ],
     "archive:ayt.matematik.59cd570be98551d61dcf": [
       "excel.ayt.matematik.14d232b544077857888b"
     ],
-    "archive:ayt.matematik.5a8407cf1202ec5fc0af": [
-      "excel.ayt.matematik.30c0e6efc8c97b9c92a6"
-    ],
+    "archive:ayt.matematik.5a8407cf1202ec5fc0af": [],
     "archive:ayt.matematik.7cbfa1186a6443422432": [
       "excel.ayt.matematik.4c4876ddd9383c03d782"
     ],
     "archive:ayt.matematik.87b4112ffbb28247aec2": [
-      "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
+      "excel.ayt.matematik.fa9ef387c7fda735be6b"
     ],
     "archive:ayt.matematik.bb9533d830d6200bf8d2": [],
     "archive:ayt.matematik.bc67d5921f0ea7c7efd4": [
@@ -11438,12 +11407,9 @@
       "excel.ayt.matematik.8139749dd0017d49e725"
     ],
     "archive:ayt.matematik.e6f44e095e8dfbcc7217": [
-      "excel.ayt.matematik.30c0e6efc8c97b9c92a6",
       "excel.ayt.matematik.9442d82c159081577c80"
     ],
-    "archive:ayt.matematik.ebae35c149ce4b869997": [
-      "excel.ayt.matematik.f4feb4553ff0d41f2326"
-    ],
+    "archive:ayt.matematik.ebae35c149ce4b869997": [],
     "archive:ayt.matematik.f4fec886fd9eee810782": [
       "excel.ayt.matematik.3d78be385716237007f8",
       "excel.ayt.matematik.f5eb57d988154c825935"
@@ -12953,7 +12919,6 @@
       "excel.ayt.matematik.3d78be385716237007f8"
     ],
     "ayt.matematik.trigonometri": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "ayt.matematik.trigonometrik-denklemler": [
@@ -16302,9 +16267,7 @@
     "pdf-subtopic:ayt.geometri.analitik-duzlemde-dogru:94b61147fd4f03b05d08": [
       "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
     ],
-    "pdf-subtopic:ayt.geometri.analitik-duzlemde-dogru:95fa8d5f29341c8d77cf": [
-      "excel.ayt.matematik.807e46eb5f33cd72c139"
-    ],
+    "pdf-subtopic:ayt.geometri.analitik-duzlemde-dogru:95fa8d5f29341c8d77cf": [],
     "pdf-subtopic:ayt.geometri.analitik-duzlemde-dogru:9735afc6702278873fa3": [
       "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
     ],
@@ -16365,9 +16328,7 @@
     "pdf-subtopic:ayt.geometri.dersin-genel-kapsami:5fe441411720b82121e7": [],
     "pdf-subtopic:ayt.geometri.dersin-genel-kapsami:9acb5777d3fd5a45f2d0": [],
     "pdf-subtopic:ayt.geometri.dersin-genel-kapsami:a28139ee05c9b6eca386": [],
-    "pdf-subtopic:ayt.geometri.dogruda-ve-ucgende-acilar:a2cbad6d43826b09dd3d": [
-      "excel.ayt.matematik.b614d2b98d9d3f086357"
-    ],
+    "pdf-subtopic:ayt.geometri.dogruda-ve-ucgende-acilar:a2cbad6d43826b09dd3d": [],
     "pdf-subtopic:ayt.geometri.donusumler:1c72d2078b39e30ebbbb": [
       "excel.ayt.matematik.b6ac70d5497a61e5e1b1"
     ],
@@ -16388,8 +16349,7 @@
       "excel.ayt.matematik.e458c48c1de81b6bafc4"
     ],
     "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:439fe9d7efd3481984da": [
-      "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
-      "excel.ayt.matematik.3d78be385716237007f8"
+      "excel.ayt.matematik.e458c48c1de81b6bafc4"
     ],
     "pdf-subtopic:ayt.geometri.dortgenler-ve-cokgenler:5d389edc2f212cc138ed": [
       "excel.ayt.matematik.db5e281cea870801613e"
@@ -16435,7 +16395,8 @@
       "excel.ayt.matematik.3ac405b203bda435db3b"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:188911631ab830103069": [
-      "excel.ayt.matematik.8139749dd0017d49e725"
+      "excel.ayt.matematik.586b9136482c398a523a",
+      "excel.ayt.matematik.7e316abd523a576e94ae"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:2e7f852b22a09e1570ee": [
       "excel.ayt.matematik.586b9136482c398a523a",
@@ -16446,15 +16407,16 @@
       "excel.ayt.matematik.7e316abd523a576e94ae"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:439fe9d7efd3481984da": [
-      "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
-      "excel.ayt.matematik.3d78be385716237007f8"
+      "excel.ayt.matematik.586b9136482c398a523a",
+      "excel.ayt.matematik.7e316abd523a576e94ae"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:727bccd9df06bfba5faf": [
       "excel.ayt.matematik.586b9136482c398a523a",
       "excel.ayt.matematik.7e316abd523a576e94ae"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:7cf90a7c0f8a5807ce2c": [
-      "excel.ayt.matematik.8139749dd0017d49e725"
+      "excel.ayt.matematik.586b9136482c398a523a",
+      "excel.ayt.matematik.7e316abd523a576e94ae"
     ],
     "pdf-subtopic:ayt.geometri.ucgenler:7e7acf5d360c1f7bcf54": [
       "excel.ayt.matematik.586b9136482c398a523a",
@@ -17473,15 +17435,12 @@
       "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:1228304c0b66f2dc377d": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:221168c687a9ad84f491": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:2ebff594786e77631195": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:439fe9d7efd3481984da": [
@@ -17489,83 +17448,66 @@
       "excel.ayt.matematik.3d78be385716237007f8"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:461b7d7f6ef193797603": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:4b3ddd2b16f8f57c055e": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:59d0bd61758c9234d32e": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b"
+      "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:5d025f12c85b4cb8bd22": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:655bc40e7ab8364be790": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:68f73de34fb50aa259cc": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:6ee7b9ad6de45589ee8e": [
       "excel.ayt.matematik.059040b98443e511642d"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:7b1a96c39c32bd0a246f": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:7e4c8c9f29808e17dcbb": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:864026187fa70e28c176": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:8dc670a17fb6a414e4ed": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:8f895ed9d1011a1e177e": [
       "excel.ayt.matematik.920bf26742b613289697"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:905781307d5b869b5b86": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:9188296196977365a35a": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:9572426c111696bb4f6f": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:96211f44bf01c7d71894": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:9d6e702f8b5d503049ad": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:a9521f39a49a9604d824": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:b21901d2042075c50a12": [
       "excel.ayt.matematik.059040b98443e511642d"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:babd013cfd1f5f20d32b": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:d128709bae7dfb958e5b": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:d5f58d5773e6d1d19144": [
@@ -17575,11 +17517,9 @@
       "excel.ayt.matematik.920bf26742b613289697"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:ea1e0495cc1da8bddbfb": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:ea856384e652c8d1afd2": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357",
       "excel.ayt.matematik.920bf26742b613289697"
     ],
@@ -17591,7 +17531,6 @@
       "excel.ayt.matematik.920bf26742b613289697"
     ],
     "pdf-subtopic:ayt.matematik.trigonometri:fd9e3628f34873ae930c": [
-      "excel.ayt.matematik.2e908dddb3ba366ba19b",
       "excel.ayt.matematik.b614d2b98d9d3f086357"
     ],
     "pdf-subtopic:ayt.matematik.trigonometrik-denklemler:439fe9d7efd3481984da": [
@@ -19286,8 +19225,9 @@
       "excel.tyt.matematik.e458c48c1de81b6bafc4"
     ],
     "pdf-subtopic:tyt.geometri.dortgenler:439fe9d7efd3481984da": [
-      "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
-      "excel.tyt.matematik.3d78be385716237007f8"
+      "excel.tyt.matematik.db5e281cea870801613e",
+      "excel.tyt.matematik.e458c48c1de81b6bafc4",
+      "excel.tyt.matematik.69056bdfd530eb6f5054"
     ],
     "pdf-subtopic:tyt.geometri.dortgenler:da01649b7ef6dfbe6f5b": [
       "excel.tyt.matematik.e458c48c1de81b6bafc4",
@@ -19840,12 +19780,8 @@
       "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
     ],
     "pdf-subtopic:tyt.matematik.sayi-ve-kesir-problemleri:ff5fd0f318623133f7fb": [],
-    "pdf-subtopic:tyt.matematik.trigonometri:59d0bd61758c9234d32e": [
-      "excel.tyt.matematik.2e908dddb3ba366ba19b"
-    ],
-    "pdf-subtopic:tyt.matematik.trigonometri:68f73de34fb50aa259cc": [
-      "excel.tyt.matematik.2e908dddb3ba366ba19b"
-    ],
+    "pdf-subtopic:tyt.matematik.trigonometri:59d0bd61758c9234d32e": [],
+    "pdf-subtopic:tyt.matematik.trigonometri:68f73de34fb50aa259cc": [],
     "pdf-subtopic:tyt.matematik.uslu-sayilar:110e1c6080e0f24f007a": [
       "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
       "excel.tyt.matematik.85a51a7cfcbaab213488"
@@ -20521,9 +20457,7 @@
       "excel.tyt.matematik.ceb9fbdfaa16dc1f89eb"
     ],
     "source:tyt.matematik.6bc40adc1eb773b8700a": [],
-    "source:tyt.matematik.7183e6ca838e736a8a18": [
-      "excel.tyt.matematik.7e316abd523a576e94ae"
-    ],
+    "source:tyt.matematik.7183e6ca838e736a8a18": [],
     "source:tyt.matematik.7dbdcb14db1108503bff": [
       "excel.tyt.matematik.14d232b544077857888b"
     ],
@@ -20533,36 +20467,26 @@
     "source:tyt.matematik.895e6627495e84e82b08": [
       "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
     ],
-    "source:tyt.matematik.8c59927a65c714fd9d03": [
-      "excel.tyt.matematik.2e908dddb3ba366ba19b"
-    ],
-    "source:tyt.matematik.94d2ed8317627d97e01d": [
-      "excel.tyt.matematik.db5e281cea870801613e",
-      "excel.tyt.matematik.69056bdfd530eb6f5054"
-    ],
+    "source:tyt.matematik.8c59927a65c714fd9d03": [],
+    "source:tyt.matematik.94d2ed8317627d97e01d": [],
     "source:tyt.matematik.b07699898042f8e45f6d": [
       "excel.tyt.matematik.4c4876ddd9383c03d782"
     ],
     "source:tyt.matematik.bc67d5921f0ea7c7efd4": [
       "excel.tyt.matematik.9442d82c159081577c80"
     ],
-    "source:tyt.matematik.cb9a0cab5054ccf3eda1": [
-      "excel.tyt.matematik.98ff88e1e909ccd34f3f"
-    ],
-    "source:tyt.matematik.d46e1b1b9d31e6a3eb98": [
-      "excel.tyt.matematik.e458c48c1de81b6bafc4"
-    ],
+    "source:tyt.matematik.cb9a0cab5054ccf3eda1": [],
+    "source:tyt.matematik.d46e1b1b9d31e6a3eb98": [],
     "source:tyt.matematik.d77d538166822b9dc308": [
       "excel.tyt.matematik.f035f2fb95a3f15c26ab"
     ],
     "source:tyt.matematik.dc3fec04c3f69e908085": [
       "excel.tyt.matematik.85a51a7cfcbaab213488"
     ],
-    "source:tyt.matematik.e10fa82d92a2bcc59b35": [
-      "excel.tyt.matematik.3ac405b203bda435db3b"
-    ],
+    "source:tyt.matematik.e10fa82d92a2bcc59b35": [],
     "source:tyt.matematik.ebcbfcc8ce00538b62cd": [
-      "excel.tyt.matematik.586b9136482c398a523a"
+      "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+      "excel.tyt.matematik.3d78be385716237007f8"
     ],
     "subtopic:ayt.fizik.alternatif-akim-ve-transformatorler:ayt.fizik.alternatif-akim-etkin-deger-ve-devre-elemanlari": [
       "excel.ayt.fizik.919d8b9023f59b52a7ab"
@@ -21138,9 +21062,7 @@
       "excel.tyt.matematik.3d78be385716237007f8"
     ],
     "tyt.matematik.sayi-ve-kesir-problemleri": [],
-    "tyt.matematik.trigonometri": [
-      "excel.tyt.matematik.2e908dddb3ba366ba19b"
-    ],
+    "tyt.matematik.trigonometri": [],
     "tyt.matematik.uslu-sayilar": [
       "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
       "excel.tyt.matematik.85a51a7cfcbaab213488"

@@ -36,11 +36,13 @@ def main():
     if sheet['sha256']!=summary['curriculumReference']['sha256']:
         raise ValueError('Excel first worksheet changed')
     fields=','.join("'"+name+"',data->'"+name+"'" for name in SOURCE_FIELDS)
-    original=json.loads(query(connection,"SELECT json_agg(json_build_object('key',item_key,'source',json_build_object("+fields+"))) FROM learning_catalog.current_items"))
+    original=json.loads(query(connection,"SELECT json_agg(json_build_object('key',item_key,'categoryIds',data->'categoryIds','source',json_build_object("+fields+"))) FROM learning_catalog.current_items"))
     items={item['key']:item for item in payload['items']}
     if len(items)!=len(payload['items']) or set(items)!={row['key'] for row in original}:
         raise ValueError('Source identity set changed during curriculum migration')
     for row in original:
+        if summary.get('definitionRefresh') and items[row['key']]['categoryIds']!=row['categoryIds']:
+            raise ValueError(f'Topic assignments changed during subject definition refresh: {row["key"]}')
         for name in SOURCE_FIELDS:
             if items[row['key']].get(name)!=row['source'][name]:
                 raise ValueError(f'Source field changed: {row["key"]} / {name}')
@@ -56,6 +58,7 @@ def main():
         'originalExtractionAuditRunKey':previous['runKey'],'sourceInventoryRechecked':False,
         'unlabelled':unlabelled,'failures':[],'curriculumReferences':1,'curriculumReference':summary['curriculumReference'],
         'classification':summary['excelClassification'],'independentAccuracyMeasured':False,
+        'definitionRefreshAssignmentsPreserved':bool(summary.get('definitionRefresh')),
         'learnerFingerprint':student_fingerprint(connection)}
     reference={'source':sheet['file'],'sha256':sheet['sha256'],'sheet':sheet['sheet'],'sheetIndex':0,
         'hashScope':'FIRST_SHEET_ROWS','kind':'CURRICULUM_REFERENCE','categoryIds':[c['id'] for c in selectable],

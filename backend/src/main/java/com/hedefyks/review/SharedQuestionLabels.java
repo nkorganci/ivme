@@ -105,6 +105,7 @@ public class SharedQuestionLabels {
             // Official test quotas group these controlled branches under one test.
             var ids = switch (subject) {
                 case "Matematik" -> List.of("matematik", "geometri");
+                case "Türk Dili ve Edebiyatı", "Edebiyat" -> List.of("edebiyat", "turkce");
                 case "Felsefe Grubu" -> List.of("felsefe", "psikoloji", "sosyoloji", "mantik");
                 default -> List.of(vocabulary.subjectId(subject));
             };

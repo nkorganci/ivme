@@ -36,7 +36,9 @@ def main():
                 continue
             if count:
                 output.write(',')
-            output.write(line.strip())
+            # PostgreSQL jsonb text includes spaces. Compact each resource before
+            # joining the snapshot so the catalog stays below V8's string limit.
+            json.dump(json.loads(line), output, ensure_ascii=False, separators=(',', ':'))
             count += 1
         output.write(']}\n')
     temporary.replace(state / 'labels.json')

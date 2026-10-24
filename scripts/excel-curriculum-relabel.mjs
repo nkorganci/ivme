@@ -4,17 +4,27 @@ import { createHash } from 'node:crypto';
 import { taxonomy, taxonomyVersion } from './content-taxonomy.mjs';
 import { canonicalizeUnits } from './canonical-units.mjs';
 import { normaliseTerm } from './content-taxonomy.mjs';
+import { displayResourceTitle } from '../frontend/src/resourceMetadata.js';
 const state = new URL('../veri/content-labels/', import.meta.url);
 const read = name => JSON.parse(fs.readFileSync(new URL(name, state), 'utf8'));
 const payload = read('labels.json'), prior = read('report.json');
 if (taxonomy.unitReference?.type !== 'EXCEL_FIRST_SHEET') throw Error('Import the first Excel worksheet first');
+const refreshDefinitions = process.argv.includes('--refresh-definitions');
+const previousCategories = new Map(payload.categories.map(c => [c.id,c]));
 const categories = new Map(payload.categories.map(c => [c.id,c]));
 for (const c of taxonomy.categories) categories.set(c.id,c);
+const categoryHash = category => createHash('sha256').update(JSON.stringify(category)).digest('hex');
+if (refreshDefinitions) for (const previous of previousCategories.values()) {
+  if (previous.curriculumSource !== 'EXCEL_FIRST_SHEET') continue;
+  const current = categories.get(previous.id);
+  if (!current?.selectable || ['exam','excelRowId','unitId','unit','topic'].some(key=>current[key]!==previous[key]))
+    throw Error(`Definition refresh cannot change topic identity or content: ${previous.id}`);
+}
 const counts = { matched: 0, unresolved: 0, multipleCandidates: 0 };
 for (const item of payload.items) {
   const labels = item.automaticLabels;
   // Recover the detailed source labels from before the former broad-unit mapping.
-  const needsMapping = process.argv.includes('--force') || item.unitMigration?.reference!==taxonomy.unitReference.sha256 || item.taxonomyVersion!==taxonomyVersion;
+  const needsMapping = !refreshDefinitions && (process.argv.includes('--force') || item.unitMigration?.reference!==taxonomy.unitReference.sha256 || item.taxonomyVersion!==taxonomyVersion);
   if (needsMapping && labels.legacyUnitAssignments?.length) {
     labels.assignments = labels.legacyUnitAssignments.filter(a=>categories.has(a.categoryId))
       .map(a=>({ ...structuredClone(labels.assignments.find(old=>old.categoryId===a.categoryId)||labels.assignments[0]), ...a }));
@@ -23,6 +33,18 @@ for (const item of payload.items) {
   item.taxonomyVersion = taxonomyVersion;
   item.categoryIds = labels.assignments.map(a=>a.categoryId);
   const selected = item.categoryIds.map(id=>categories.get(id));
+  if (refreshDefinitions) {
+    for (const assignment of labels.assignments) {
+      const fingerprint = categoryHash(categories.get(assignment.categoryId));
+      if (assignment.categoryFingerprint !== fingerprint) {
+        assignment.categoryFingerprint = fingerprint;
+        assignment.review = { status:'PENDING', reviewer:null, reviewedAt:null, sourceVersion:item.sourceVersion, categoryFingerprint:fingerprint };
+      }
+    }
+    const primary = categories.get(labels.assignments.find(a=>a.relation==='PRIMARY')?.categoryId) || selected[0];
+    if (primary) { item.subjectId=primary.subjectId; item.subject=primary.subject; }
+    item.displayTitle=displayResourceTitle(item,categories);
+  }
   item.subjectIds = [...new Set(selected.map(c=>c.subjectId))];
   item.examIds = [...new Set(selected.map(c=>c.exam))];
   item.searchText = normaliseTerm([item.title,item.originalTitle,item.sourceTopic,...selected.flatMap(c=>[c.subject,c.unit,c.topic])].filter(Boolean).join(' '));
@@ -36,6 +58,7 @@ const output = JSON.stringify(payload)+'\n';
 const runKey = 'labels-v1-'+createHash('sha256').update(output).digest('hex').slice(0,24);
 const summary = { ...prior, runKey, categories: categories.size, canonicalUnits: taxonomy.unitReference.examTopics,
   curriculumReference: taxonomy.unitReference, excelClassification: counts,
+  definitionRefresh: refreshDefinitions,
   unitSelectionRequired: payload.items.filter(i=>i.automaticLabels.unitReview).length };
 const backup = new URL(`../yedek/labels-before-excel-${prior.runKey}-${payload.items.length}.json`, state);
 fs.mkdirSync(new URL('.',backup), { recursive:true });

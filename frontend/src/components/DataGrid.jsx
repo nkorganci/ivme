@@ -8,6 +8,10 @@ const modules = [AllCommunityModule];
 ModuleRegistry.registerModules(modules);
 
 const numberFormatter = new Intl.NumberFormat('tr-TR');
+const compareText = new Intl.Collator('tr', { sensitivity: 'base', numeric: true }).compare;
+const rowNumberColumn = { colId: 'rowNumber', headerName: 'No', width: 48, minWidth: 48, maxWidth: 48,
+  flex: 0, pinned: 'left', resizable: false, sortable: false, filter: false, cellDataType: 'number',
+  valueGetter: ({ node }) => node.rowIndex == null ? null : node.rowIndex + 1 };
 const theme = themeQuartz.withParams({
   backgroundColor: 'var(--surface)',
   foregroundColor: 'var(--ink)',
@@ -82,12 +86,14 @@ function ExpandedDetail({ data, node, api, context }) {
 
 export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode = 'standard', className = '', columnSorting = false, scrollable = false, fitContent = false, dense = false,
   showColumnFilters = false, selectionFilters = false, compactColumns = false, showSearch = true, onFilteredRowsChange,
-  expandedRowKey, detailComponent, detailContext, rowKey = defaultRowKey }) {
+  expandedRowKey, detailComponent, detailContext, rowKey = defaultRowKey, rowNumbers = false }) {
   const [search, setSearch] = useState('');
   const compact = mode !== 'standard';
   const columns = useMemo(() => {
     const configure = defs => defs.map(def => def.children ? { ...def, children: configure(def.children) } : {
       ...def,
+      ...(columnSorting && !def.comparator && def.cellDataType !== 'number'
+        ? { comparator: (a, b) => compareText(String(a ?? ''), String(b ?? '')) } : {}),
       ...(fitContent ? { flex: 0, minWidth: Math.min(def.minWidth ?? 40, 40) } : {}),
       ...(selectionFilters ? { editable: false, floatingFilter: false,
       comparator: def.comparator || (def.cellDataType === 'number' || def.filterParams?.selectionType === 'date'
@@ -96,8 +102,8 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       filterParams: { ...def.filterParams, selectionType: def.filterParams?.selectionType || (def.cellDataType === 'number' ? 'number' : 'text') },
       } : {}),
     });
-    return configure(columnDefs);
-  }, [columnDefs, selectionFilters, fitContent]);
+    return configure(rowNumbers ? [rowNumberColumn, ...columnDefs] : columnDefs);
+  }, [columnDefs, selectionFilters, fitContent, columnSorting, rowNumbers]);
   const columnDefaults = useMemo(() => ({
     ...(columnSorting ? sortOnlyColDef : compact ? compactColDef : defaultColDef),
     ...(showColumnFilters && !compact ? { floatingFilter: true, wrapHeaderText: true, autoHeaderHeight: true } : {}),
@@ -153,6 +159,10 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       suppressColumnVirtualisation={fitContent}
       {...gridOptions}
       {...expansionOptions}
+      onModelUpdated={event => {
+        if (rowNumbers) event.api.refreshCells({ columns: ['rowNumber'], force: true });
+        gridOptions.onModelUpdated?.(event);
+      }}
       onFilterChanged={event => { notifyFilteredRows(event); gridOptions.onFilterChanged?.(event); }}
       onRowDataUpdated={event => { notifyFilteredRows(event); gridOptions.onRowDataUpdated?.(event); }}
       onPaginationChanged={event => {
