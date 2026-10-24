@@ -870,7 +870,7 @@ parçasıdır. `yerel-ortam.ps1` main/1010/ivme ve çerez ayarlarını seçer;
 `yeniden-baslat.ps1` uygulama sürecini değiştirerek dönüşümlü
 JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıyla
 doğrulanır. Yerel otomatik giriş davranışı için Spring `dev` profili
-korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
+korunur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
 
 Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresine bağlanır;
 kullanıcı hedefi Cloudflare'da ayarlar. Yeniden başlatıcı eski JAR'ı bulur ve
