@@ -95,7 +95,7 @@ def main():
     parser.add_argument('--limit', type=int)
     parser.add_argument('--ocr-pages', type=int, help='Maximum new local OCR pages; cached pages are reused')
     parser.add_argument('--publish', action='store_true')
-    parser.add_argument('--database', choices=['ivme','ivme_dev','ivme_test'], default=default_database())
+    parser.add_argument('--database', choices=['ivme','ivme_test'], default=default_database())
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
         parser.error('--limit must be positive')

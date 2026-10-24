@@ -17,4 +17,6 @@ def default_database():
                             text=True, capture_output=True, check=True).stdout.strip()
     if not branch:
         raise ValueError("A checked-out branch or explicit database is required")
-    return "ivme" if branch == "main" else "ivme_dev"
+    if branch != "main":
+        raise ValueError("This installation runs only the main branch")
+    return "ivme"

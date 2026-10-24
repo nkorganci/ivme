@@ -849,67 +849,41 @@ hesaptan sunucuda belirlenir ve geçiş önceki hesabın oturumunu kapatır.
 Öğretmen ve velinin öğrenci bağlantısı/takip hizmetleri henüz sunulmaz. Main'deki
 normal hesaplar local test hesaplarına kendiliğinden dönüştürülmez.
 
-`scripts/local-test-accounts.py` varsayılan olarak yalnız `ivme_dev` veritabanını
-seçer ve önizlemede değişiklik yapmaz. `--reset-other-accounts` yalnız `ivme_dev`
-üzerinde diğer hesapları `account_audit` kaydıyla arşivler; öğrenme ve inceleme
-geçmişlerini silmez. `users` ve `account_audit` Git dışı yedeklenmeden işlem
-yapmaz. `ivme` seçeneği silme veya mevcut kayıt değiştirmez; mevcut dört hesabın
-rol ve parolasını doğrular, eksik test hesaplarını ekler ve yedek alır. Şifre
-standart girişten okunup BCrypt ile saklanır. Güncel hesap ve çalıştırma kanıtı
+Mevcut yerel rol hesapları `ivme` içinde saklanır; değişiklikler yönetim
+ekranındaki yetki ve kayıt akışına tabidir. Önceki kurulum kanıtı
 `veri/content-labels/integration/registration-approval-20261018/` içindedir.
-
-Feature, geliştirme öncesinde `feature-guncelle.ps1` ile yerel main ve
-`ivme/main` kodunu alır; production çalışma klasörü aynı kalır. Değişiklikler
-her iş sonunda yerel commit edilir. Öğrenci hesabı aktarımı ayrı ve isteğe
-bağlıdır: `scripts/sync-production-students.py` varsayılan olarak ön izler;
-`--apply`, salt okunur production'dan eksik USER hesaplarını yalnız `ivme_dev`
-içine ekler. Önce dev kullanıcı tablosu yedeklenir; kullanıcı adı/e-posta
-çakışması işlemi durdurur. Mevcut dev hesapları/engelleri/silinme durumu ve
-çalışma kayıtları değiştirilmez. Bu aktarım çalışma geçmişini eşitlemez ve
-iki uygulamanın DB'si ortak hale gelmez.
 
 ## Yeni değişiklik yaparken
 
-Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
-`feature/ivme-guncellemer` dalında yürür: port 1010, DB `ivme_dev`.
-Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
-`main` dalıdır: port 1010, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
-build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
-uygulamaya geçer. Geliştirme DB'si 24 Ekim 2026'da eski feature verileriyle
-birlikte silinip boş olarak yeniden oluşturuldu. `ivme_dev_app` yalnız
-`ivme_dev`e, main'in `root` rolü yalnız `ivme`ye bağlanabilir. Feature kimliği
-Git dışındaki `.codex/local-environment.json` dosyasındadır. Yeni dev DB
-Flyway 78 göçüne kadar hazırlanmıştır; katalog ve test hesapları ayrıca hazırlanmalıdır.
-Sonraki kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
+Tek çalışma ağacı `D:\workspace\ivme\uygulama`, dal `main`, port 1010,
+kalıcı uygulama veritabanı `ivme`dir. Geliştirme ve çalışan yerel uygulama bu
+tek kaynak ağacını kullanır. Değişiklikler yerel main dalına commit edilir;
+GitHub push açık kullanıcı talimatıyla yapılır.
 
-Görsel ve PDF katalog dizinleri worktree başına bağımsızdır. Özgün
-`Kaynaklar/ogm-materyal` PDF arşivi iki uygulama tarafından yalnız okunur.
-Bakım betikleri `scripts/yerel_ortam.py` ile varsayılan DB'yi daldan seçer;
-açık `--database` / `PGDATABASE` / `YKS_DB_URL` seçimi bu varsayılanı değiştirir.
+Görsel ve PDF katalog dizinleri bu uygulamaya aittir. Özgün
+`Kaynaklar/ogm-materyal` PDF arşivi yalnız okunur. Bakım betikleri
+`scripts/yerel_ortam.py` ile varsayılan olarak `ivme`yi seçer; açık DB seçimleri
+her işlemde doğrulanır. Gerçek öğrenci kayıtları testlerde kullanılmaz.
 
 Kullanıcının kalıcı talimatıyla derleme/yeniden başlatma uygulama işinin
-parçasıdır. `yerel-ortam.ps1` dalın port, DB, oturum ve CSRF çerezini seçer;
-`yeniden-baslat.ps1` kendi worktree'sine ait süreci değiştirerek dönüşümlü
+parçasıdır. `yerel-ortam.ps1` main/1010/ivme ve çerez ayarlarını seçer;
+`yeniden-baslat.ps1` uygulama sürecini değiştirerek dönüşümlü
 JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıyla
-doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
+doğrulanır. Yerel otomatik giriş davranışı için Spring `dev` profili
 korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
 
 Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresine bağlanır;
-kullanıcı hedefi Cloudflare'da ayarlar. Main ve feature 1010'u sırayla kullanır;
-hangi dal seçilmişse tünel o dalı sunar. `iki-ortami-baslat.ps1 -Branch` diğer
-ortamın izleyicisini ve uygulamasını kapatır. Yeniden başlatıcı kendi
-worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
+kullanıcı hedefi Cloudflare'da ayarlar. Yeniden başlatıcı eski JAR'ı bulur ve
+çalışan derleme yuvasını korur.
 
-`canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
-başına mutex ikinci izleyiciyi önler. Etkin dal bilgisi üst dizindeki
-`.ivme-active-branch` dosyasındadır; seçilmeyen izleyici kapanır. Windows
-başlangıç kısayolu ve üst dizindeki `Ikisini de Baslat.bat` main'i başlatır.
-Feature'a geçiş `iki-ortami-baslat.ps1 -Branch feature/ivme-guncellemer` ile yapılır.
-Sağlık kanıtı her worktree'nin `backend/target/live-watch.status`
+`canli-izle.ps1` kaynak hash'ini ve 1010 portunu izler. Depo
+mutex'i ikinci izleyiciyi önler. Windows başlangıç kısayolu `yerel-baslat.ps1`,
+üst dizindeki `Ivme Baslat.bat` aynı main uygulamasını başlatır.
+Sağlık kanıtı `backend/target/live-watch.status`
 dosyasındaki yaşayan süreç ve güncel dosya zamanıdır. Hatalar `live-watch.log`,
 `live-build.stderr.log` ve `application.stderr.log` dosyalarındadır.
 Tarayıcı `app-version.txt` değişimini yaklaşık beş saniyede algılayıp yeniler.
-Görev sonunda izleyiciler açık kalır. Bu yerel çalışma düzeni Git push veya
+Görev sonunda izleyici açık kalır. Bu yerel çalışma düzeni Git push veya
 yeni bir dış dağıtım yetkisi vermez.
 
 1. `AGENTS.md`, [çalışma bağlamı](00_CALISMA_BAGLAMI.md), yol haritası ve ilgili açık
@@ -918,8 +892,8 @@ yeni bir dış dağıtım yetkisi vermez.
    kaynak/hash için pahalı çıkarımı veya model çağrısını tekrarlama.
 3. Kaynak/kimlik/sözlük değişikliğini doğru bakım kaynağında yap. Başlık için
    yeni kimlik üretme; değişikliğin öğretmen onayına ve öğrenci geçmişine etkisini belirle.
-4. İlgili üreticiyi ve değişiklikle ilgili denetimleri çalıştır. Testleri yalnız
-   ayrı `ivme_test` DB'sinde çalıştır; gerçek öğrenci kayıtlarını sıfırlama.
+4. İlgili üreticiyi ve değişiklikle ilgili denetimleri çalıştır. Testler için
+   geçici ayrı DB kur; gerçek `ivme` öğrenci kayıtlarını sıfırlama.
 5. Yerel aday ile yayımlanmış sürümü ayır. Yayın öncesi şema, kaynak hash'i,
    kategori, sayfa/zaman sınırı ve cevap sızıntısı denetimlerini tamamla.
 6. Çalışma bağlamını, ilgili teknik sözleşmeyi ve gerekiyorsa bu rehberi güncelle.

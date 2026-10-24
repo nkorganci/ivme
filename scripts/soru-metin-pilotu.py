@@ -21,11 +21,12 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[2]
+APP = Path(__file__).resolve().parents[1]
 OUTGOING = ("TYT-0001", "TYT-0756", "AYT_EsitAgirlik-0189")
 OGM_FILE = ROOT / "veri-hatti/ogm-sorular/kayit/yk-matematik-tyt-test-01.json"
 OGM_IDS = ("yk-matematik-tyt-test-01-01-01", "yk-matematik-tyt-test-01-01-02")
 CHOICES = re.compile(r"(?m)^\s*([A-E])\s*[).]\s*(.+?)(?=^\s*[A-E]\s*[).]|\Z)", re.S)
-TESSDATA = Path(os.environ.get("IVME_TESSDATA", ROOT / "uygulama/veri/tessdata"))
+TESSDATA = Path(os.environ.get("IVME_TESSDATA", APP / "veri/tessdata"))
 
 
 @lru_cache(maxsize=256)
@@ -224,8 +225,8 @@ def fingerprint(args):
 def batch(source_kind, limit, output_dir, resume):
     if limit < 1:
         raise ValueError("--limit must be positive")
-    if not output_dir.resolve().is_relative_to((ROOT / "uygulama/veri").resolve()):
-        raise ValueError("batch output must be inside ignored uygulama/veri")
+    if not output_dir.resolve().is_relative_to((APP / "veri").resolve()):
+        raise ValueError("batch output must be inside ignored application veri")
     selected = processed = skipped = errors = 0
     reasons = Counter()
     seen = set()
@@ -279,7 +280,7 @@ def main():
     parser.add_argument("--resume", action="store_true")
     options = parser.parse_args()
     if options.batch:
-        destination = options.output_dir or ROOT / "uygulama/veri/pilot-12-04" / options.batch
+        destination = options.output_dir or APP / "veri/pilot-12-04" / options.batch
         raise SystemExit(batch(options.batch, options.limit, destination, options.resume))
     if options.output_dir or options.resume:
         parser.error("--output-dir and --resume require --batch")

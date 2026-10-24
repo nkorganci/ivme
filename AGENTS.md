@@ -18,24 +18,21 @@
 
 ## Git güncelliği ve yerel commit
 
-- Kullanıcının kalıcı talimatı: her tamamlanan değişikliği yerel feature dalına commit et. Kullanıcı istemeden Git push yapma.
-- Her yeni geliştirme işinden önce feature'ın yerel `main` ve doğru uzak depodaki `ivme/main` kodunu içerdiğini kontrol et. Temiz çalışma ağacında `feature-guncelle.ps1` ile fetch/merge yap; main production worktree'sini otomatik değiştirme. Bekleyen değişiklikleri koru; reset/temizleme ile atma. Çakışmayı kodu kaybetmeden çöz.
-- `origin` eski projedir; bu proje için doğru uzak depo `ivme`dir. Main upstream `ivme/main` olmalıdır.
-- Git güncellemesi DB kayıtlarını taşımaz. Kullanıcının istediği eksik production öğrencileri `feature-guncelle.ps1 -SyncStudents` veya `scripts/sync-production-students.py --apply` ile yalnız dev'e eklenir. Mevcut dev hesapları, engelleri ve silme durumları değiştirilmez; production salt okunur, işlem önce dev kullanıcı tablosunu yedekler. Production hesabını dev'de değiştirmek production'ı etkilemez.
+- 24 Ekim 2026 güncel kullanıcı talimatı: yalnız `main` dalında çalış ve tamamlanan değişiklikleri yerel `main` dalına commit et. Kullanıcı istemeden Git push yapma. Yeni feature dalı veya ikinci worktree oluşturma.
+- Her yeni işten önce yerel `main` ve doğru uzak depodaki `ivme/main` güncelliğini kontrol et. Bekleyen değişiklikleri koru; reset/temizleme ile atma. Çakışmayı kodu kaybetmeden çöz.
+- Tek uzak depo `ivme`dir. Main upstream `ivme/main` olmalıdır.
+- Git güncellemesi DB kayıtlarını taşımaz. Tek uygulama veritabanı `ivme`dir; öğrenci kayıtlarını ve içerik geçmişini koru. Testleri gerçek `ivme` veritabanında çalıştırma.
 
-## Yerel ortam ve dal ayrımı
+## Tek yerel ortam
 
-- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-guncellemer`, adresi `http://localhost:1010`, DB'si `ivme_dev`.
-- 24 Ekim 2026'da eski feature'ın `ivme_dev` veritabanı silinip boş olarak yeniden oluşturuldu. `ivme_dev_app` yalnız `ivme_dev`e, main'in `root` rolü yalnız `ivme`ye bağlanır. Feature kimliği Git dışındaki `.codex/local-environment.json` içindedir; main kimliğini feature'a verme. Boş dev DB'nin şema göçleri ilk çalışmada uygulanır.
-- Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:1010`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
+- Tek uygulama deposu `D:\workspace\ivme\uygulama`, dalı `main`, adresi `http://localhost:1010`, veritabanı `ivme`dir. İkinci worktree ve `ivme_dev` kaldırılmıştır.
 - Cloudflare tünelinin hedefi main'in doğrudan `http://localhost:1010` adresidir; 5173 için ek giriş açılmaz. Kullanıcı Cloudflare hedefini kendisi değiştirir. 9090 için kullanıcının talimatıyla `my-jenkins` Docker konteyneri durduruldu; otomatik başlatma.
-- Her ortamın kaynakları, build dizini, görselleri, katalog kopyası ve izleyicisi ayrıdır. `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunarak paylaşılır. Geliştirme sırasında ana ortamın dosyaları/DB'si değiştirilmez.
-- `yerel-ortam.ps1` dalın port/DB/çerez ayarını seçer; `yeniden-baslat.ps1` yalnız o worktree'nin sürecini değiştirir. İçerik betikleri de varsayılan olarak dalın DB'sini seçer; eski `--database ivme` örnekleri ana veriyi hedefler, geliştirmede `ivme_dev` kullan.
-- Windows başlangıcındaki mevcut `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden main izleyicisini çalıştırır. Main ve feature aynı 1010 portunu sırayla kullanır; seçilen ortamın izleyicisi açık kalır.
+- `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunur. `yerel-ortam.ps1` yalnız main/1010/ivme ayarını seçer; `yeniden-baslat.ps1` bu uygulamanın sürecini değiştirir.
+- Windows başlangıcındaki `IVME - Otomatik Guncelleme.lnk`, `yerel-baslat.ps1` üzerinden tek izleyiciyi çalıştırır. Üst dizindeki `Ivme Baslat.bat` aynı uygulamayı tarayıcıyla açar.
 
 ## Değişiklikleri çalışan uygulamaya yansıtma
 
 - Kullanıcının kalıcı talimatı: uygulama değişikliğinden sonra gerekiyorsa derleme ve yeniden başlatmayı da yap; bu işi kullanıcıya bırakma. Yalnız plan taleplerinde bu kural uygulanmaz.
 - Önce kullanıcının açtığı adresi sunan süreci belirle. Vite geliştirmede HMR'ı, paketli uygulamada `yeniden-baslat.ps1` akışını kullan. Mevcut yerel/paylaşılan uygulamayı güncelleme yetkisi yeni bir dış dağıtım veya push yetkisi değildir.
 - Görevi bitirmeden sunulan HTML/asset sürümünü ve değişen ekranı doğrula; yalnız `frontend/dist` derlemesinin geçmesi yeterli değildir. Paketli çalışmada `backend/target/live-watch.status` kaydındaki sürecin ve izleyici güncelliğinin de sağlam olduğunu kontrol et.
-- Otomatik güncelleme seçilen ortam için sürekli açık kalır. Windows başlangıç kısayolu `iki-ortami-baslat.ps1` ile main'i başlatır; feature için aynı betikte `-Branch feature/ivme-guncellemer` kullanılır. İki ortam aynı anda 1010'u dinleyemez.
+- Otomatik güncelleme açık kalır. Windows başlangıç kısayolu `yerel-baslat.ps1` ile main'i gizli başlatır.

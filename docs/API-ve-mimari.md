@@ -3,7 +3,7 @@
 
 > Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
 
-Güncelleme: 2026-10-18. React 19/Vite ve Spring Boot 3.5/Java 21 iki ayrı Git worktree içinde paketli çalışır: `main` (`uygulama-main`) yerel production olarak `127.0.0.1:9090` / PostgreSQL `ivme`; `feature/ivme-yol-haritasi` (`uygulama`) geliştirme olarak `127.0.0.1:9091` / PostgreSQL `ivme_dev`. Her ortamın kaynakları, build çıktısı, görselleri, PDF katalog kopyası ve kaynak izleyicisi ayrıdır. İsteğe bağlı Vite akışında feature API portu 8082'dir. İki yerel paket mevcut otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:9090` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Main tek HTTP portu açar. Başlatma ve merge akışı [README](../README.md) içindedir.
+Güncelleme: 2026-10-24. React 19/Vite ve Spring Boot 3.5/Java 21 tek `main` çalışma ağacında (`uygulama`) paketli çalışır. Yerel adres `http://localhost:1010`, tek kalıcı uygulama veritabanı PostgreSQL `ivme`dir. İsteğe bağlı Vite akışında API portu 8081'dir. Yerel paket otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:1010` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Başlatma akışı [README](../README.md) içindedir.
 
 ## Kimlik ve erişim
 

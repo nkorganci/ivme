@@ -1,19 +1,19 @@
-# Local branch environments: never inherit a database/port from another launch.
+# The only local runtime is main on port 1010 and database ivme.
 function Get-IvmeLocalEnvironment {
     $repoRoot = $PSScriptRoot
     $branch = (& git -C $repoRoot branch --show-current).Trim()
     if ($LASTEXITCODE -ne 0 -or -not $branch) { throw 'A checked-out Git branch is required.' }
-    $main = $branch -eq 'main'
+    if ($branch -ne 'main') { throw 'This installation runs only the main branch.' }
     $settings = [ordered]@{
         Branch = $branch
-        Name = $(if ($main) { 'production' } else { 'development' })
+        Name = 'production'
         Port = 1010
-        ApiPort = $(if ($main) { 8081 } else { 8082 })
-        Database = $(if ($main) { 'ivme' } else { 'ivme_dev' })
-        SessionCookie = $(if ($main) { 'JSESSIONID' } else { 'IVME_DEV_SESSION' })
-        CsrfCookie = $(if ($main) { 'XSRF-TOKEN' } else { 'XSRF-TOKEN-DEV' })
-        DbUser = $(if ($main) { 'root' } else { 'ivme_dev_app' })
-        DbPassword = $(if ($main) { 'root' } else { $null })
+        ApiPort = 8081
+        Database = 'ivme'
+        SessionCookie = 'JSESSIONID'
+        CsrfCookie = 'XSRF-TOKEN'
+        DbUser = 'root'
+        DbPassword = 'root'
         Images = (Join-Path $repoRoot 'veri\resimler-pilot')
         PdfCatalog = (Join-Path $repoRoot 'veri\ogm-konu-pdf-katalog\entries')
         PdfSource = [IO.Path]::GetFullPath((Join-Path $repoRoot '..\Kaynaklar\ogm-materyal'))
@@ -24,9 +24,6 @@ function Get-IvmeLocalEnvironment {
         foreach ($key in @('DbUser', 'DbPassword', 'Images', 'PdfCatalog', 'PdfSource')) {
             if ($localSettings.PSObject.Properties.Name -contains $key) { $settings[$key] = $localSettings.$key }
         }
-    }
-    if (-not $main -and (-not $settings.DbPassword -or $settings.DbUser -eq 'root')) {
-        throw 'Feature requires dedicated ivme_dev credentials in .codex/local-environment.json.'
     }
     return [PSCustomObject]$settings
 }

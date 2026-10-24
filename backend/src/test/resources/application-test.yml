@@ -1,4 +1,4 @@
-# Testler ayrı veritabanında çalışır: ivme_test (testleri çalıştırmadan önce oluşturulur).
+# testler/backend-test.ps1 creates and removes the temporary ivme_test database.
 spring:
   datasource:
     hikari:

@@ -54,7 +54,7 @@ UPDATE questions SET active=false,updated_at=now() WHERE code={code} AND bank='C
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--database',choices=['ivme','ivme_dev','ivme_test'],default=default_database())
+    parser.add_argument('--database',choices=['ivme','ivme_test'],default=default_database())
     parser.add_argument('--apply',action='store_true');args=parser.parse_args()
     rows=evidence_records();connection=db_connection(args.database)
     if not args.apply:connection[1]['PGOPTIONS']+=' -c default_transaction_read_only=on'

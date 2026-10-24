@@ -22,65 +22,40 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 - Öğrenci Hesap ekranından mevcut şifresiyle kendi verilerini JSON olarak indirebilir veya şifre ve yazılı onayla hesabını silebilir. Ortak soru bankası ve diğer öğrenciler etkilenmez.
 - Ham `activity_events` kayıtları için 90 gün saklama görevi vardır; giriş/aktiflik/çıkış olaylarının üretimi ve gösterimi henüz bağlı değildir.
 
-## Ayrı main ve feature ortamları
+## Tek main ortamı
 
-| Ortam | Dal ve klasör | Adres | Veritabanı |
-|---|---|---|---|
-| Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:1010 | `ivme` |
-| Geliştirme | `feature/ivme-guncellemer` — `D:\workspace\ivme\uygulama` | http://localhost:1010 | `ivme_dev` |
+Tek uygulama `D:\workspace\ivme\uygulama` klasöründe `main` dalındadır.
+Yerel adresi `http://localhost:1010`, tek kalıcı uygulama veritabanı `ivme`dir.
+Üst dizindeki `Ivme Baslat.bat` uygulamayı açar; Windows başlangıç kısayolu
+`yerel-baslat.ps1` ile kaynak izleyicisini gizli başlatır. Kod değişiklikleri
+bu klasörde yapılır ve doğrudan main uygulamasına yansır.
 
-Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
-kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
-24 Ekim 2026'da eski feature'a ait `ivme_dev` silinip boş olarak yeniden oluşturuldu;
-artık ana verinin kopyası değildir. Feature, Git dışındaki `.codex/local-environment.json`
-dosyasındaki `ivme_dev_app` kimliğini kullanır. Bu rol ana `ivme` veritabanına,
-main rolü de `ivme_dev`e bağlanamaz. Feature'ın ilk açılışında Flyway 78 göçü uygulandı;
-içerik ve test hesapları ayrıca hazırlanır.
-Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
-
-Üst dizindeki `Ikisini de Baslat.bat`, `main` ortamını 1010'da başlatır. Feature'a
-geçmek için `iki-ortami-baslat.ps1 -Branch feature/ivme-guncellemer` çalıştırılır;
-main'e dönmek için `-Branch main` kullanılır. Betik diğer ortamın izleyicisini ve
-uygulamasını kapatıp seçileni açar. Windows başlangıç kısayolu main'i başlatır.
-
-`yerel-ortam.ps1` port, DB ve çerez adlarını daldan belirler; üst süreçten kalan
-başka bir ortamın DB/port ayarlarını kullanmaz. Gereken özel yerel kimlik ve
+`yerel-ortam.ps1` yalnız main/1010/ivme ayarlarını seçer. Özel yerel kimlik ve
 kaynak yolları Git dışındaki `.codex/local-environment.json` ile verilebilir.
-Oturum ve CSRF çerezleri ayrıdır; iki localhost sekmesi birbirinin girişini bozmaz.
-Cloudflare tüneli `http://localhost:1010` adresini kullanır. Bu adreste hangi
-dalın çalıştığı seçilen yerel ortama bağlıdır; feature seçilirse tünel de onu sunar.
-5173 için ek giriş açılmaz.
-İki yerel ortam mevcut otomatik giriş davranışını koruyan Spring `dev` profilini
-kullanır; production burada main dalındaki sabit yerel uygulamayı belirtir.
+Özgün `Kaynaklar/ogm-materyal` PDF arşivi yalnız okunur. Cloudflare tüneli
+doğrudan `http://localhost:1010` adresini kullanır; 5173 için ek giriş açılmaz.
+Yerel uygulama otomatik giriş davranışı için Spring `dev` profilini korur.
 Gerçek HTTPS dağıtım ayarları aşağıdaki üretim paketi bölümündedir.
 
-Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Testler yalnız
-`ivme_test` veritabanını kullanır. İçerik bakım betiklerinin varsayılan DB'si de
-dala göre seçilir; `--database ivme` açıkça ana veriyi seçer. Gerçek veriyi silen
-`veritabani-sifirla.bat` çalıştırılmaz.
+Gerekenler: Java 21, Maven, Node.js 22 veya üzeri ve PostgreSQL. Otomatik testler
+gerçek `ivme` veritabanında çalıştırılmaz; test için ayrı geçici veritabanı gerekir.
+Gerçek veriyi silen `veritabani-sifirla.bat` çalıştırılmaz.
 
-İsteğe bağlı Vite geliştirme akışı: feature klasöründeki `backend-baslat.bat`
-API'yi 8082'de, `frontend-baslat.bat` ön yüzü 1010'da açar. Önce o ortamın paketli
-uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
-uygulama ve kaynak izleyicisiyle çalışır.
+İsteğe bağlı Vite akışında `backend-baslat.bat` API'yi 8081'de,
+`frontend-baslat.bat` ön yüzü 1010'da açar. Önce paketli uygulama/izleyici
+durdurulmalıdır; normal kullanımda paketli uygulama ve kaynak izleyicisi çalışır.
 
 Yerel `localhost` adresinde oturum yoksa etkin `student` hesabıyla otomatik giriş
 vardır; giriş ve kayıt ekranlarında bu kolaylık kapalıdır. Tünelden otomatik giriş
-yapılmaz. Yerel iki uygulamada üst çubuktaki admin/öğrenci/öğretmen/veli düğmeleri
+yapılmaz. Yerel uygulamada üst çubuktaki admin/öğrenci/öğretmen/veli düğmeleri
 test hesapları arasında tek tıkla geçer; parola kimlikleri PostgreSQL'de BCrypt
 olarak saklanır. Yeni kayıtlar yönetici onayına kadar sisteme giremez. Yerel
 hesapların hazırlanması ve güvenlik sınırları [sistem rehberindedir](docs/plan/00_SISTEM_REHBERI.md#site-yöneticisinin-kullanıcı-yönetimi).
-Görseller ortamın `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
+Görseller `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
 klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
 
-Geliştirmeden önce `./feature-guncelle.ps1` yerel `main` ve `ivme/main`
-kodunu feature'a alır; feature değişikliklerini korur ve production worktree'sini
-değiştirmez. Her tamamlanan iş yerel feature dalına commit edilir.
-`./feature-guncelle.ps1 -SyncStudents` ayrıca eksik production öğrenci hesaplarını
-dev'e ekler. Sadece kayıt olmayan hesaplar kopyalanır; mevcut dev hesapları,
-engelleme/silme durumları ve çalışma kayıtları korunur. Production bağlantısı
-salt okunurdur ve önce dev kullanıcı tablosunun Git dışı yedeği alınır.
-Git pull veritabanını eşitlemez; bu işlem öğrenci çalışma geçmişini kopyalamaz.
+Tamamlanan değişiklikler yerel `main` dalına commit edilir. Git push açık
+kullanıcı talimatıyla yapılır. Git kodu günceller; öğrenci veritabanını değiştirmez.
 
 Site yöneticisi `Yönetim → Kullanıcılar` ekranında öğrenci, öğretmen, veli,
 yönetici ve içerik operatörü kategorilerini, boş kategoriler dahil, görür.
@@ -88,10 +63,8 @@ Engelleme/engel kaldırma ve onayla silme bu ekrandadır. Silme hesabı listeden
 kaldırıp girişini kapatır; geçmiş çalışma ve inceleme kayıtları korunur.
 Site yöneticisi kendi hesabını kapatamaz; işlemler `account_audit` kaydına alınır.
 
-Yeni sürümü ana ortama geçirmek için feature değişiklikleri commit edilir,
-`uygulama-main` klasöründe feature dalı main'e merge edilir ve main ortamının
-`yeniden-baslat.bat` betiği çalıştırılır. Merge yapılana kadar geliştirme
-kaynakları ana uygulamaya yansımaz. Yerel merge Git push anlamına gelmez.
+Kod değişikliklerinden sonra kaynak izleyicisi uygulamayı yeniden derler.
+Gerektiğinde `yeniden-baslat.bat` doğrudan çalıştırılır; Git push ayrı bir adımdır.
 
 ## Soru verisi
 
@@ -109,8 +82,8 @@ Yerel main adresi `http://localhost:1010`'dır. Cloudflare'da `net.ivme.dev` tü
 2. Önce iki ayrıcalıklı hesabın geçici parolasını yerelde değiştirin. `uretim-derle.bat` paketi derler; `uretim-calistir.bat` gereken durumda yeniden derleyip tek Java süreci olarak başlatır. Sunucu yalnız `127.0.0.1` üzerinde dinler.
 3. Yerel ve tünel adresinde giriş, çıkış, soru görseli, QR, CSRF çerezi, mobil görünüm ve yeniden başlatma kontrolünü yapın. Servis kapalıyken Cloudflare 502 yanıtı beklenir. Vite kaynak dosyaları tünel üzerinden uzun süre önbelleğe alınabildiğinden paylaşılan sitede derlenmiş paketi kullanın. Normal tarayıcıda eski sürüm kalırsa `net.ivme.dev` için sert yenileme veya site önbelleğini temizleme yapın; sorun sürerse eklentileri bu site için kapatıp deneyin.
 
-Yerel main/feature çalıştırma ve izleyici düzeni yukarıdaki ortam tablosundadır.
-`yeniden-baslat.ps1` kendi ortamının portunda dönüşümlü JAR klasörlerine derler,
+Yerel çalıştırma ve izleyici düzeni yukarıdadır.
+`yeniden-baslat.ps1` 1010 portunda dönüşümlü JAR klasörlerine derler,
 HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata halinde
 önceki pakete döner. İzleyici durumu `backend/target/live-watch.status`, hatalar
 `live-watch.log` ve `application.stderr.log` dosyalarındadır. Açık tarayıcı yeni
@@ -120,10 +93,10 @@ HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata
 
 ## Doğrulama
 
-- Arka yüz: `cd backend; mvn test` (`ivme_test` veritabanını kullanır; testler onu temizleyebilir).
+- Arka yüz: `./testler/backend-test.ps1` geçici `ivme_test` veritabanını kurar, `mvn test` çalıştırır ve test bitince veritabanını kaldırır. Gerçek `ivme` üzerinde test çalıştırma.
 - Ön yüz: `cd frontend; npm run build`.
 - Yerel Chrome uçtan uca: `node testler/e2e.mjs [çıktı klasörü] [--mobil]`. Test yeni kullanıcı ve geri bildirim oluşturur; yalnız yerel adreste çalışır. Ayrıcalıklı ekranlar ancak ilgili `YKS_E2E_YONETICI*` veya `YKS_E2E_OPERATOR*` ortam değişkenleri verilirse denenir.
 
-**Git:** Yerel geliştirme kolu `feature/ivme-guncellemer`, yerel production kolu `main`; doğru uzak depo `ivme` adıdır. Yeni geliştirme değişiklikleri yerel feature dalına commit edilir. Push yalnız açık kullanıcı talimatıyla yapılır.
+**Git:** Tek yerel ve uzak geliştirme dalı `main`; doğru uzak depo `ivme` adıdır. Push yalnız açık kullanıcı talimatıyla yapılır.
 
 Kaynaklı ders notları ve 53.019 etkin sorunun etiket dizini `/kaynakli-ders-notlari` altında bulunur. Konu/alt konu için 21 rehber, 44 soru kalıbı ve akıllı çalışma yönlendirmesi vardır. Kapsam ve testler [notlar kaydında](docs/KAYNAKLI_DERS_NOTLARI.md), PostgreSQL'deki yeniden kullanılabilir araştırma arşivi [analiz kaydında](docs/KAYNAKLI_SORU_ANALIZI.md) açıklanır; tüm müfredat analizi tamamlanmış sayılmaz.
