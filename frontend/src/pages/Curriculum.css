@@ -1,9 +1,10 @@
 .curriculum-reference-grid { width: 100%; min-width: 0; }
-.curriculum-reference-grid .ag-cell { padding-block: 4px; line-height: 1.15; }
+.curriculum-reference-grid .ag-cell { padding-block: 6px; line-height: 1.25; white-space: normal; overflow-wrap: anywhere; align-items: center; justify-content: center; text-align: center; }
 /* AG Grid's auto height ignores the 3px row borders; measured wrapper padding keeps wrapped text off both borders. */
 .curriculum-reference-grid .curriculum-text-cell .ag-cell-wrapper { padding-block: 2px; }
 .curriculum-reference-grid .ag-cell-wrapper { width: 100%; min-width: 0; }
 .curriculum-reference-grid .ag-cell-wrapper, .curriculum-reference-grid .ag-cell-value { line-height: inherit; }
+.curriculum-reference-grid .ag-cell-value { white-space: normal; overflow-wrap: anywhere; }
 .curriculum-reference-grid .ag-header-cell { padding-inline: 6px; }
 .curriculum-reference-grid .ag-header-cell-label { gap: 4px; }
 .curriculum-reference-grid .ag-header-cell-text { white-space: normal; word-break: normal; overflow-wrap: normal; }

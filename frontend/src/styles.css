@@ -468,7 +468,10 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .math-range-reset { min-height: 28px; padding: 0; border: 0; background: none; color: var(--navy); font-size: var(--fs-xs); font-weight: 700; text-decoration: underline; }
 .table-card > h2, .table-card > h3 { padding: 12px 14px 0; margin: 0 0 4px; }
 .app-data-grid { width: 100%; min-width: 0; }
-.app-data-grid-scrollable { height: clamp(320px, calc(100dvh - 290px), 680px); }
+.app-data-grid-scrollable { height: clamp(320px, calc(100dvh - 290px), 680px); display: flex; flex-direction: column; }
+.app-data-grid-scrollable > .ag-root-wrapper { flex: 1 1 auto; min-height: 0; }
+.app-data-grid-toolbar { display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 8px 12px; }
+.app-data-grid-toolbar [role="alert"] { color: var(--bad); }
 .app-data-grid-scrollable .ag-grid-viewport { overscroll-behavior-y: contain; }
 .app-data-grid-search { display: block; padding: 10px 14px; }
 .app-data-grid-search input { width: min(280px, 100%); min-height: 44px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--tint); color: var(--ink); }

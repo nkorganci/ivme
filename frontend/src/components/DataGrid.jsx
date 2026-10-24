@@ -3,6 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { AllCommunityModule, ModuleRegistry, themeQuartz } from 'ag-grid-community';
 import { AG_GRID_LOCALE_TR } from '@ag-grid-community/locale';
 import { selectionFilter } from './GridSelectionFilter.jsx';
+import { buildGridWorkbook } from './gridExcel.js';
 
 const modules = [AllCommunityModule];
 ModuleRegistry.registerModules(modules);
@@ -86,8 +87,12 @@ function ExpandedDetail({ data, node, api, context }) {
 
 export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode = 'standard', className = '', columnSorting = false, scrollable = false, fitContent = false, dense = false,
   showColumnFilters = false, selectionFilters = false, compactColumns = false, showSearch = true, onFilteredRowsChange,
-  expandedRowKey, detailComponent, detailContext, rowKey = defaultRowKey, rowNumbers = false }) {
+  expandedRowKey, detailComponent, detailContext, rowKey = defaultRowKey, rowNumbers = false, exportFileName }) {
   const [search, setSearch] = useState('');
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState('');
+  const gridApi = useRef(null);
+  const root = useRef(null);
   const compact = mode !== 'standard';
   const columns = useMemo(() => {
     const configure = defs => defs.map(def => def.children ? { ...def, children: configure(def.children) } : {
@@ -134,7 +139,32 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       parents.forEach(node => { nodes.push(node); if (details.has(rowKey(node.data))) nodes.push(details.get(rowKey(node.data))); });
     },
   } : {};
-  return <div className={`app-data-grid app-data-grid-${mode}${scrollable ? ' app-data-grid-scrollable' : ''}${fitContent ? ' app-data-grid-fit-content' : ''}${dense ? ' app-data-grid-dense' : ''}${selectionFilters ? ' app-data-grid-selection' : ''}${compactColumns ? ' app-data-grid-compact-columns' : ''} ${className}`}>
+  const downloadExcel = async () => {
+    const api = gridApi.current;
+    if (!api || exporting) return;
+    setExporting(true);
+    setExportError('');
+    try {
+      const { default: ExcelJS } = await import('exceljs');
+      const workbook = buildGridWorkbook(api, ExcelJS);
+      const title = exportFileName || root.current?.closest('[aria-label]')?.getAttribute('aria-label') || document.title || 'ivme-tablo';
+      const filename = `${title.toLocaleLowerCase('tr-TR').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '') || 'ivme-tablo'}.xlsx`;
+      const buffer = await workbook.xlsx.writeBuffer();
+      const url = URL.createObjectURL(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+      const link = document.createElement('a');
+      link.href = url; link.download = filename; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (error) {
+      setExportError(error?.message || 'Excel dosyası hazırlanamadı.');
+    } finally { setExporting(false); }
+  };
+  return <div ref={root} className={`app-data-grid app-data-grid-${mode}${scrollable ? ' app-data-grid-scrollable' : ''}${fitContent ? ' app-data-grid-fit-content' : ''}${dense ? ' app-data-grid-dense' : ''}${selectionFilters ? ' app-data-grid-selection' : ''}${compactColumns ? ' app-data-grid-compact-columns' : ''} ${className}`}>
+    <div className="app-data-grid-toolbar">
+      <button type="button" className="btn btn-secondary btn-sm" onClick={downloadExcel} disabled={exporting || !rowData?.length}>
+        {exporting ? 'Excel hazırlanıyor…' : 'Excel indir'}
+      </button>
+      {exportError && <span role="alert">{exportError}</span>}
+    </div>
     {!compact && showSearch && <label className="app-data-grid-search">
       <span className="sr-only">Tabloda ara</span>
       <input type="search" value={search} onChange={(event) => setSearch(event.target.value)}
@@ -159,6 +189,7 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       suppressColumnVirtualisation={fitContent}
       {...gridOptions}
       {...expansionOptions}
+      onGridReady={event => { gridApi.current = event.api; gridOptions.onGridReady?.(event); }}
       onModelUpdated={event => {
         if (rowNumbers) event.api.refreshCells({ columns: ['rowNumber'], force: true });
         gridOptions.onModelUpdated?.(event);

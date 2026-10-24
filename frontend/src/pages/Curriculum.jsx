@@ -141,7 +141,8 @@ export default function Curriculum() {
       <DataGrid key={`${tab}:${exam}`} rowData={rows}
         columnDefs={tab === 'dagilim' ? distributionColumns : topicColumns}
         mode="worksheet" scrollable columnSorting rowNumbers showSearch={false}
-        gridOptions={{ headerHeight: 85, rowHeight: 26, getRowId: ({ data }) => data.id }} />
+        exportFileName={tab === 'dagilim' ? 'Konu ve soru dağılımı' : 'Konu takibi'}
+        gridOptions={{ headerHeight: 85, rowHeight: 38, getRowId: ({ data }) => data.id }} />
     </section> : <Empty title="Bu seçimde konu bulunamadı." />}
     <p className="muted small">{tab === 'dagilim'
       ? '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'

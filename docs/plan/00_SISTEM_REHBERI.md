@@ -136,6 +136,9 @@ ikinci çalışma zamanı sözlüğü üretilmez.
 `unit`, `topic`, `subjectId`, `subject`, `gradeLabel` ve `distribution` alanları
 aynı kayıttan sunulur. Ayrı dağılım tablosu veya ön yüzde elle yazılmış ders listesi
 yoktur. `curriculumReference.js` yalnız bu DB metadata'sının sunum projeksiyonudur.
+Tabloların `.xlsx` indirmesi ortak `DataGrid.jsx` içindedir: o anda yüklenmiş,
+filtrelenmiş ve sıralanmış satırların tamamını sayfalama sınırı olmadan alır;
+sunucudan henüz getirilmemiş başka sayfaları kendiliğinden sorgulamaz.
 Dersler'deki Konu takibi ve Konu ve soru dağılımı sekmeleri, Soru Çöz/pratik
 ve soru bankası aynı kimlikleri kullanır. Dağılım tablosu iki sınavda
 olan satırları `excelRowId` ile bir kez gösterir. İlerleme sınav başına kimlikle
