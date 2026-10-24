@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { useAsync, usePageTitle } from '../hooks.js';
@@ -11,14 +11,26 @@ import './Curriculum.css';
 const number = value => value == null ? '—' : value.toLocaleString('tr-TR');
 const numeric = (field, headerName, extra = {}) => ({ field, headerName, cellDataType: 'number', minWidth: 85,
   valueFormatter: ({ value }) => number(value), ...extra });
+const ALL_SUBJECTS = 'Bütün dersler';
+// Header padding plus the select's padding, border and native arrow.
+const SUBJECT_SELECT_EXTRA = 46;
 
-function SubjectHeader({ subjects, selectedSubject, onChange, allowAll }) {
+// The lesson column is as wide as its longest visible text, measured in the grid's own font.
+function SubjectHeader({ api, column, subjects, selectedSubject, onChange, allowAll, rowLabels }) {
+  const sizer = useRef(null);
+  const labels = [...new Set([selectedSubject ? subjects.find(s => s.id === selectedSubject)?.label : ALL_SUBJECTS, ...rowLabels])];
+  const labelKey = labels.join('\n');
+  useLayoutEffect(() => {
+    const widest = Math.max(0, ...Array.from(sizer.current.children, e => e.getBoundingClientRect().width));
+    api.setColumnWidths([{ key: column, newWidth: Math.ceil(widest) + SUBJECT_SELECT_EXTRA }]);
+  }, [api, column, labelKey]);
   return <label className="curriculum-subject-header" onClick={event => event.stopPropagation()}
     onKeyDown={event => event.stopPropagation()}>
     <span>Ders</span><select aria-label="Ders seç" value={selectedSubject} onChange={event => onChange(event.target.value)}>
-      {allowAll && <option value="">Bütün dersler</option>}
+      {allowAll && <option value="">{ALL_SUBJECTS}</option>}
       {subjects.map(subject => <option key={subject.id} value={subject.id}>{subject.label}</option>)}
     </select>
+    <span ref={sizer} className="curriculum-subject-sizer" aria-hidden="true">{labels.map(label => <span key={label}>{label}</span>)}</span>
   </label>;
 }
 
@@ -70,29 +82,33 @@ export default function Curriculum() {
   });
   const distribution = useMemo(() => distributionRows(categories).filter(row => (!selectedSubject || row.subjectId === selectedSubject)
     && (!exam || row[exam.toLowerCase()])), [categories, selectedSubject, exam]);
-  const subjectColumn = { field: 'subject', headerName: 'Ders', minWidth: 170, flex: 1, wrapText: true, autoHeight: true,
+  const rows = tab === 'dagilim' ? distribution : topicRows;
+  const subjectColumn = { field: 'subject', headerName: 'Ders', suppressSizeToFit: true, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell',
     sortable: false, filter: false, headerComponent: SubjectHeader,
-    headerComponentParams: { subjects, selectedSubject, onChange: id => change({ ders: id || 'all' }), allowAll: tab === 'dagilim' } };
+    headerComponentParams: { subjects, selectedSubject, onChange: id => change({ ders: id || 'all' }), allowAll: tab === 'dagilim',
+      rowLabels: [...new Set(rows.map(row => row.subject))] } };
   const baseColumns = [
-    { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, wrapText: true, autoHeight: true },
-    { field: 'topic', headerName: 'Konu', minWidth: 260, flex: 2, wrapText: true, autoHeight: true },
+    { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell' },
+    { field: 'topic', headerName: 'Konu', minWidth: 260, flex: 2, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell' },
     { field: 'gradeLabel', headerName: 'Sınıf', minWidth: 85, maxWidth: 100 },
   ];
-  const bankLink = (row, bank, count) => <Link to={(bank === 'OGM' ? '/soru-bankasi' : '/cikmis-sorular') + qs({ examType: exam, categoryId: [row.id] })}>{number(count)} soru</Link>;
+  const bankLink = (row, bank, count) => <Link to={(bank === 'OGM' ? '/soru-bankasi' : '/cikmis-sorular') + qs({ examType: exam, categoryId: [row.id] })}
+    aria-label={`${number(count)} soru`}>{number(count)}</Link>;
   const topicColumns = [
     subjectColumn,
     { field: 'exam', headerName: 'Sınav', minWidth: 85, maxWidth: 100, sortable: false, filter: false,
       headerComponent: ExamHeader, headerComponentParams: { exam, onChange: sinav => change({ sinav }) } },
-    ...baseColumns,
+    // Topic tracking gives the topic 20% less room than the distribution table; long names wrap.
+    ...baseColumns.map(column => column.field === 'topic' ? { ...column, minWidth: 208, flex: 1.6 } : column),
     numeric('ogm', 'Soru bankası', { cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) }),
     numeric('cikmis', 'Çıkmış soru', { cellRenderer: ({ data }) => data && bankLink(data, 'CIKMIS', data.cikmis) }),
     numeric('solved', 'Çözdüğüm'), numeric('correct', 'Doğru'), numeric('wrong', 'Yanlış'),
-    { colId: 'actions', headerName: 'Çalış', minWidth: 165, filter: false, sortable: false, autoHeight: true,
+    { colId: 'actions', headerName: 'Çalış', minWidth: 215, filter: false, sortable: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <div className="curriculum-cell-links">
         <Link to={'/calisma/yeni' + qs({ examType: exam, categoryId: [data.id] })}>Pratik yap</Link>
         <Link to={'/konular-ve-kaynaklar' + qs({ exam, subject: selectedSubject, categoryId: [data.id] })}>PDF · video · not</Link>
       </div> },
-    { field: 'done', headerName: 'Durum', minWidth: 110, maxWidth: 140, filter: false, autoHeight: true,
+    { field: 'done', headerName: 'Durum', minWidth: 140, maxWidth: 160, filter: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <button type="button" className={`curriculum-done${data.done ? ' done' : ''}`}
         aria-label={`${data.topic}: ${data.done ? 'tamamlamayı geri al' : 'tamamlandı işaretle'}`} aria-pressed={data.done}
         disabled={completion.loading || Boolean(completion.error) || pending[data.id]} onClick={() => toggle(data)}>
@@ -121,16 +137,16 @@ export default function Curriculum() {
       {coverage.error && <ErrorBox error={coverage.error} onRetry={coverage.retry} />}
       {progress.error && <ErrorBox error={progress.error} onRetry={progress.retry} />}
     </>}
-    {(tab === 'dagilim' ? distribution : topicRows).length ? <section className="card table-card curriculum-reference-grid" aria-label={tab === 'dagilim' ? 'Konu ve soru dağılımı tablosu' : 'Ders ünite konu takibi'}>
-      <DataGrid key={`${tab}:${exam}`} rowData={tab === 'dagilim' ? distribution : topicRows}
+    {rows.length ? <section className="card table-card curriculum-reference-grid" aria-label={tab === 'dagilim' ? 'Konu ve soru dağılımı tablosu' : 'Ders ünite konu takibi'}>
+      <DataGrid key={`${tab}:${exam}`} rowData={rows}
         columnDefs={tab === 'dagilim' ? distributionColumns : topicColumns}
         mode="worksheet" scrollable columnSorting rowNumbers showSearch={false}
-        gridOptions={{ headerHeight: 85, rowHeight: 32, getRowId: ({ data }) => data.id }} />
+        gridOptions={{ headerHeight: 85, rowHeight: 26, getRowId: ({ data }) => data.id }} />
     </section> : <Empty title="Bu seçimde konu bulunamadı." />}
     <p className="muted small">{tab === 'dagilim'
       ? '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
-      : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'}</p>
+      : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'}</p>
     <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop() || 'YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx'} · yalnız ilk sayfa ({source?.sheet || 'KONULAR'}).
-      Dersler, Soru Çöz ve İlerlemem aynı ders, ünite ve konu kayıtlarını kullanır.</p>
+      Dersler ve Soru Çöz aynı ders, ünite ve konu kayıtlarını kullanır.</p>
   </div>;
 }

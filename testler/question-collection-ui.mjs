@@ -291,9 +291,9 @@ try {
   await waitFor('document.querySelector(".alert-warn")?.textContent.includes("soru geçmişine uyan soru yok")');
   console.log('OK sıfır havuz nedeni, açık aday seçimi, URL/yenileme ve kapsam değişimi');
   await cdp('Page.navigate', { url: site + '/ilerleme' });
-  await waitFor('location.pathname === "/gecmis" && location.search === "?tab=progress"');
-  await waitFor('document.querySelectorAll(".history-tabs a").length === 3 && document.querySelector(".history-tabs a[aria-current=page]")?.innerText === "İlerlemem"');
-  console.log('OK geçmiş ve ilerleme ortak sayfası');
+  await waitFor('location.pathname === "/dersler-ve-konular"');
+  await waitFor('document.querySelector("[aria-label=\"Dersler bölümleri\"]")');
+  console.log('OK eski ilerleme adresi konu takibine yönleniyor');
   await cdp('Page.navigate', { url: site + '/oneriler' });
   await waitFor('document.querySelectorAll(".coach-question").length === 5');
   if (!await evaluate('document.querySelector("#program")?.innerText.includes("okula devam etmeyen") && document.querySelector("#program")?.innerText.includes("Evde tam zamanlı bir gün")')) {

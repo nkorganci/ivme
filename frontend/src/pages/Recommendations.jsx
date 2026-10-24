@@ -151,7 +151,7 @@ export default function Recommendations() {
         <article className="card"><b>2 · Müdahale</b><p>“İki çözülmüş örnek, ardından aynı beceriden 6 bağımsız soru.”</p></article>
         <article className="card"><b>3 · Yeniden ölçüm</b><p>“Bir hafta sonra yeni sorularla doğruluk ve süreyi karşılaştır.”</p></article>
       </div>
-      <p className="coach-links"><Link className="btn btn-secondary" to="/gecmis?tab=progress">İlerlememi gör</Link><Link className="btn btn-secondary" to="/calisma/yeni">{STUDY_LABEL}</Link></p>
+      <p className="coach-links"><Link className="btn btn-secondary" to="/dersler-ve-konular?tab=konular">Konu takibine git</Link><Link className="btn btn-secondary" to="/calisma/yeni">{STUDY_LABEL}</Link></p>
       <Tip>Koç görüşmesini “Hangi hata azaldı, hangisi kaldı, gelecek haftanın tek önceliği ne?” ile bitir.</Tip>
     </section>
 

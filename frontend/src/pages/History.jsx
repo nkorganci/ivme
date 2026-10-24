@@ -1,5 +1,5 @@
-import { lazy, Suspense, useMemo, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import { useAsync, usePageTitle } from '../hooks.js';
 import DataGrid from '../components/DataGrid.jsx';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
@@ -9,7 +9,6 @@ import { EXAM_BRANCHES, loadStudyHistory, practiceDurationSeconds, practiceScope
 import { loadSharedCatalog } from '../components/SharedCategorySelect.jsx';
 
 const PRACTICE_MODE = { MIXED: 'Öncekiler dahil', NEW: 'Yalnız yeni', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
-const Progress = lazy(() => import('./Progress.jsx'));
 const DATE_COLUMN = {
   field: 'date', headerName: 'Tarih', minWidth: 185, cellDataType: false, sort: 'desc',
   valueFormatter: ({ value }) => formatDate(value),
@@ -77,18 +76,18 @@ const EXAM_SUMMARY_COLUMNS = [
 ];
 export default function History() {
   const [params] = useSearchParams();
-  const tab = ['practice', 'progress'].includes(params.get('tab')) ? params.get('tab') : 'exams';
+  const tab = params.get('tab') === 'practice' ? 'practice' : 'exams';
   usePageTitle(STATISTICS_LABEL);
+  if (params.get('tab') === 'progress') return <Navigate to="/dersler-ve-konular?tab=konular" replace />;
   return <div className="study-statistics">
     <h1>{STATISTICS_LABEL}</h1>
-    <p className="muted">Deneme sonuçlarını, pratiklerini ve gelişimini tek yerden takip et.</p>
+    <p className="muted">Deneme sonuçlarını ve pratiklerini tek yerden takip et.</p>
     <nav className="history-tabs" aria-label="Çalışma istatistikleri bölümleri">
-      {[['exams', 'Denemeler'], ['practice', 'Pratikler'], ['progress', 'İlerlemem']].map(([value, label]) =>
+      {[['exams', 'Denemeler'], ['practice', 'Pratikler']].map(([value, label]) =>
         <Link key={value} to={value === 'exams' ? '/gecmis' : `/gecmis?tab=${value}`}
           className={`btn ${tab === value ? 'btn-primary' : 'btn-secondary'}`} aria-current={tab === value ? 'page' : undefined}>{label}</Link>)}
     </nav>
-    {tab === 'progress' ? <Suspense fallback={<Loading text="İlerleme yükleniyor…" />}><Progress /></Suspense>
-      : <HistoryTable key={tab} practice={tab === 'practice'} />}
+    <HistoryTable key={tab} practice={tab === 'practice'} />
   </div>;
 }
 

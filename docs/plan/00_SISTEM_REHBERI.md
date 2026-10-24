@@ -123,8 +123,8 @@ ikinci çalışma zamanı sözlüğü üretilmez.
 `unit`, `topic`, `subjectId`, `subject`, `gradeLabel` ve `distribution` alanları
 aynı kayıttan sunulur. Ayrı dağılım tablosu veya ön yüzde elle yazılmış ders listesi
 yoktur. `curriculumReference.js` yalnız bu DB metadata'sının sunum projeksiyonudur.
-Dersler'deki Konu takibi ve Konu ve soru dağılımı sekmeleri, Soru Çöz/pratik,
-soru bankası ve İlerlemem aynı kimlikleri kullanır. Dağılım tablosu iki sınavda
+Dersler'deki Konu takibi ve Konu ve soru dağılımı sekmeleri, Soru Çöz/pratik
+ve soru bankası aynı kimlikleri kullanır. Dağılım tablosu iki sınavda
 olan satırları `excelRowId` ile bir kez gösterir. İlerleme sınav başına kimlikle
 hesaplanır; tekil soru genel toplamda çoğalmaz. Bir ünite iki sınavda 26 konu
 kimliğine sahip olabildiğinden ortak seçim sınırı 100'dür; ünite seçimi kesilmez.
@@ -157,7 +157,15 @@ konularına eşlenir. Kaynak başlığından türetilen ilişkiler `CANDIDATE/LO
 olarak görünür; geniş kaynak birden fazla aday konuya bağlanabilir. Dar konu
 kanıtı olmayan kayıt, ilgili dersin seçilemeyen `system.*.konu-incelemesi`
 etiketiyle korunur. Öğretmen onayı, konuya özel PDF/video konumu veya dar konu
-başarısı uydurulmaz. `questions.topic`, cevaplar ve olay anındaki etiket
+başarısı uydurulmaz. Sorunun kendi kaynak alt konusu (OGM kartında kazanım,
+elle veya kitap başlığı kaynaklı; model tahmini değil), elle düzeltilmiş alt
+konusu ya da test başlığı tek bir Excel konusunun adıyla aynıysa (sözcük sırası
+serbest) `excel-curriculum-relabel.mjs` soruyu yalnız o konuya bağlar
+(`confidence=HIGH`, yine `CANDIDATE`). Çok konulu ünitenin kendi adı veya başka
+bir Excel konusunu gösteren kaynak/arşiv kanıtı bu daraltmayı engeller; adım
+idempotenttir ve her turun listesi `veri/content-labels/source-subtopic-matches-from-<önceki run>.json`
+dosyasına yazılır. Dar ad bulunmayan ünite geneli sorular ünitenin bütün
+konularında sayılır. `questions.topic`, cevaplar ve olay anındaki etiket
 anlık kayıtları değiştirilmez. Güncel istatistikler yeni ortak kimlikleri,
 tarihsel sınıflama kayıt anındaki etiketleri kullanır.
 
@@ -386,23 +394,18 @@ bugünün etiketiyle doldurulmaz. Çok etiketli sorular farklı konu satırları
 görünebilir; bir konu içinde ve genel toplamda tekildir. Deneme sorularında
 kaydedilmemiş aktif süre veya PDF/video izleme süresi uydurulmaz.
 
-İlerlemem sekmesi tek `DataGrid` içinde ilk sütunun başlığından bir ders seçer.
-Sınav ve Konu / alt başlık sütunları artan/azalan sıralanır; konu sıralaması
-Türkçe ve sayısal karşılaştırma kullanır. `mode="worksheet"` ve `scrollable`
-ile sayfalama kapalıdır; seçilen dersin tüm satırları sabit yükseklikteki tablo
-içinde dikey kaydırılır, başlıklar görünür kalır.
-Satırlar `/api/learning-resources/metadata` içindeki yayımlanmış konu/alt konu
-kimliklerinden gelir; çözülmemiş başlıklar sıfırla gösterilir, beceri/soru tipi ve
-sistem inceleme kategorileri listelenmez. TYT/AYT aynı derste sınav sütunuyla
-ayrılır. Sayılar `/api/learning-resources/progress?classification=CURRENT`
-üzerinden tüm geçmişteki ilk karşılaşmalardan alınır: tamamlanmış pratik ve
-teslim edilmiş denemeler; tekrarlar veya başka öğrencinin cevapları eklenmez.
-Çözülen = doğru + yanlış, net = doğru − yanlış / 4; boş karşılaşma çözülmüş
-sayılmaz. Konu başlığının görünen adıyla istatistik eşleştirilmez; kalıcı kategori
-kimliği kullanılır. Ayrı Konular, Soru tipleri ve Günlük çalışma tabloları yoktur.
+`Dersler > Konu takibi` satırları `/api/learning-resources/metadata` içindeki
+yayımlanmış ders/ünite/konu kimliklerinden gelir. Çözdüğüm/Doğru/Yanlış aynı
+kimliklerle `/api/learning-resources/progress?classification=CURRENT` yanıtından
+hesaplanır: tamamlanmış pratik ve teslim edilmiş denemelerde her sorunun ilk
+karşılaşması, sorunun ön koşul ve `system.*` dışındaki bütün konu bağlarına
+sayılır; pratik seçimi de aynı bağları kullanır. "Bitti" işaretleri ayrı
+`curriculum_topic_progress` tablosunda kalır. `Çalışma İstatistiklerim`
+içindeki eski İlerlemem sekmesi kaldırılmıştır; ayrı bir İlerlemem veri tablosu
+yoktur. Eski `/ilerleme` ve `/gecmis?tab=progress` adresleri Konu takibine gider.
 
-Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme, pratik ve
-ilerleme tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
+Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme ve pratik
+tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
 sayfasına değil tüm geçmişe uygulanır; deneme özeti, filtre sonrası kayıtlar üzerinden
 hesaplanır. Başarı toplam doğru / toplam soru oranıdır; oturum yüzdelerinin
 ortalaması alınmaz. Pratik sekmesinde üst filtre kartı ve özet gösterilmez;

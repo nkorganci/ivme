@@ -1,5 +1,7 @@
 .curriculum-reference-grid { width: 100%; min-width: 0; }
-.curriculum-reference-grid .ag-cell { padding-block: 5px; line-height: 1.15; }
+.curriculum-reference-grid .ag-cell { padding-block: 4px; line-height: 1.15; }
+/* AG Grid's auto height ignores the 3px row borders; measured wrapper padding keeps wrapped text off both borders. */
+.curriculum-reference-grid .curriculum-text-cell .ag-cell-wrapper { padding-block: 2px; }
 .curriculum-reference-grid .ag-cell-wrapper { width: 100%; min-width: 0; }
 .curriculum-reference-grid .ag-cell-wrapper, .curriculum-reference-grid .ag-cell-value { line-height: inherit; }
 .curriculum-reference-grid .ag-header-cell { padding-inline: 6px; }
@@ -9,3 +11,4 @@
 .curriculum-reference-page > .history-tabs button.selected { color: var(--surface); background: var(--blue); }
 .curriculum-subject-header { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
 .curriculum-subject-header select { width: 100%; min-width: 0; padding: 5px; color: var(--ink); background: var(--surface); text-align: center; border: 1px solid var(--line); border-radius: 4px; }
+.curriculum-subject-sizer { position: absolute; visibility: hidden; pointer-events: none; display: flex; flex-direction: column; align-items: flex-start; height: 0; overflow: hidden; white-space: nowrap; }

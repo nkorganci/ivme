@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 const site='http://127.0.0.1:1010';
-const output=resolve('veri/content-labels/integration/curriculum-compact-20261023');
+const output=resolve('veri/content-labels/integration/curriculum-tracking-compact-20261023');
 fs.mkdirSync(output,{recursive:true});
 const profile=fs.mkdtempSync(join(tmpdir(),'ivme-excel-'));
 const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
@@ -104,6 +104,20 @@ try {
   assert.equal(await evaluate(`document.querySelector('.ag-row[row-index="0"] .ag-cell[col-id="rowNumber"]').innerText`),'1');
   await screenshot('tracking-desktop.png');
   report.checks.push('Topic tracking keeps shared lesson/exam selection in the grid header and resets row numbers after selection');
+  const tracking=await evaluate(`(()=>{const width=id=>document.querySelector('.ag-header-cell[col-id="'+id+'"]').getBoundingClientRect().width;
+    const rows=new Map();for(const r of document.querySelectorAll('.ag-row[row-index]')){const k=r.getAttribute('row-index');rows.set(k,[...(rows.get(k)||[]),r]);}
+    return {subject:width('subject'),topic:width('topic'),
+      banks:Array.from(document.querySelectorAll('.ag-cell[col-id="ogm"] a, .ag-cell[col-id="cikmis"] a')).map(a=>a.innerText.trim()),
+      rows:[...rows.values()].map(parts=>({height:Math.max(...parts.map(p=>p.getBoundingClientRect().height)),
+        cells:parts.flatMap(p=>Array.from(p.querySelectorAll('.ag-cell')).map(cell=>{const c=p.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(cell);const t=range.getBoundingClientRect();
+          return {top:t.top-c.top,bottom:c.bottom-t.bottom,clipped:cell.scrollWidth>cell.clientWidth+1};}))}))};})()`);
+  assert.ok(tracking.subject<=110,'Lesson column is as wide as its text: '+tracking.subject);
+  assert.ok(tracking.topic<=209,'Topic column is 20% narrower: '+tracking.topic);
+  assert.ok(tracking.banks.length>1 && tracking.banks.every(text=>/^[0-9.]+$/.test(text)),'Question counts show only numbers');
+  assert.ok(tracking.rows.some(row=>row.height<=32),'Single-line tracking rows are compact');
+  assert.ok(tracking.rows.every(row=>row.cells.every(cell=>!cell.clipped && cell.top>=2 && cell.bottom>=2)),'Cell text keeps a small gap from row borders');
+  report.trackingLayout={subjectWidth:tracking.subject,topicWidth:tracking.topic,minimumRow:Math.min(...tracking.rows.map(row=>row.height)),maximumRow:Math.max(...tracking.rows.map(row=>row.height))};
+  report.checks.push('Topic tracking lesson column fits its text, question counts are plain numbers, topic column is 20% narrower and rows stay compact without touching text');
   await navigate('/calisma/yeni?source=OGM_TYT&branchId=fizik');
   await wait('[...document.querySelectorAll("select")].some(s=>s.labels?.[0]?.textContent.trim().startsWith("Ünite")&&s.options.length>1)');
   const unit=await evaluate('[...document.querySelectorAll("select")].find(s=>s.labels?.[0]?.textContent.trim().startsWith("Ünite")).options[1].value');
@@ -118,14 +132,13 @@ try {
   await navigate('/soru-bankasi?examType=TYT&branchId=fizik&categoryId='+encodeURIComponent(id));
   await wait('document.querySelector(".branch-topic-select") && document.querySelector(".ag-header-cell[col-id=unit]")');
   report.checks.push('Question bank uses the same picker and returns the same unit/topic classification');
+  await navigate('/gecmis');
+  await wait(`document.querySelectorAll('.history-tabs a').length===2 && !document.body.innerText.includes('İlerlemem')`);
   await navigate('/gecmis?tab=progress');
-  await wait(`document.querySelector('select[aria-label="Ders seç"]') && document.querySelector('.ag-row')`);
-  await select('Ders seç','fizik');
-  await wait('document.querySelector(".ag-header-cell[col-id=unit]")');
-  await select('İlerleme ünitesi',unit);
-  await wait(`document.querySelector('.ag-row')?.innerText.includes(${JSON.stringify(category.unit)})`);
-  await screenshot('progress-desktop.png');
-  report.checks.push('Progress displays and filters the same published units and topics');
+  await wait(`location.pathname==='/dersler-ve-konular' && document.querySelector('[aria-label="Dersler bölümleri"]')`);
+  await navigate('/ilerleme');
+  await wait(`location.pathname==='/dersler-ve-konular' && document.querySelector('[aria-label="Dersler bölümleri"]')`);
+  report.checks.push('The retired progress tab is absent and its old route opens topic tracking');
   const html=await(await fetch(site)).text();report.asset=html.match(/assets\/index-[^" ]+\.js/)?.[0];
   report.appVersion=(await(await fetch(site+'/app-version.txt')).text()).trim();
   assert.equal(report.javascriptErrors.length,0);assert.equal(report.apiErrors.length,0);

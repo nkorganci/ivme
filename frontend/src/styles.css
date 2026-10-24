@@ -975,11 +975,11 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .curriculum-sheet .ag-cell { align-items: center; padding: 5px; white-space: normal; overflow-wrap: anywhere; }
 .curriculum-sheet .ag-row.curriculum-row-done .ag-cell { background: var(--ok-soft); }
 .curriculum-source-mark { display: block; color: var(--navy); font-size: var(--fs-xs); }
-.curriculum-cell-links { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; padding: 3px 0; line-height: 1.3; font-size: var(--fs-xs); }
-.curriculum-cell-links a { white-space: normal; overflow-wrap: anywhere; }
+.curriculum-cell-links { display: flex; align-items: center; gap: 10px; line-height: 1.15; font-size: var(--fs-xs); }
+.curriculum-cell-links a { white-space: nowrap; }
 .curriculum-cikmis-links { display: block; }
 .curriculum-cikmis-links a { display: block; white-space: normal; overflow-wrap: anywhere; }
-.curriculum-done { max-width: 100%; min-height: 36px; padding: 0 6px; border: 1px solid var(--blue); border-radius: 8px; background: var(--surface); color: var(--navy); white-space: normal; overflow-wrap: anywhere; font-size: var(--fs-sm); font-weight: 700; }
+.curriculum-done { max-width: 100%; min-height: 0; padding: 1px 8px; border: 1px solid var(--blue); border-radius: 6px; background: var(--surface); color: var(--navy); white-space: nowrap; line-height: 1.15; font-size: var(--fs-xs); font-weight: 700; }
 .curriculum-done.done { border-color: var(--ok); background: var(--ok); color: var(--surface); }
 .curriculum-done:disabled { opacity: .55; cursor: wait; }
 .curriculum-prompt { padding: 28px 20px; }

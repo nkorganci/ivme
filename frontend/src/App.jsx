@@ -113,7 +113,7 @@ export default function App() {
             <Route path="/pratik/:id" element={<PracticeSession />} />
             <Route path="/sinav/:id/sonuc" element={<ExamResult />} />
             <Route path="/gecmis" element={<History />} />
-            <Route path="/ilerleme" element={<Navigate to="/gecmis?tab=progress" replace />} />
+            <Route path="/ilerleme" element={<Navigate to="/dersler-ve-konular?tab=konular" replace />} />
             <Route path="/ogrenci-takip" element={<StudentTrackingPortal />}>
               <Route index element={<StudentTracking />} />
               <Route path="matematik-ozel-ders" element={<MathTutoring />} />
