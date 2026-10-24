@@ -189,6 +189,20 @@ eski bağları da aynı işlemde kaldırır. Ayrı bir öğrencinin kaydı etkil
 
 ## Kanıt, konum, güven ve onay
 
+`Dersler > PDF envanteri` denetimi `scripts/pdf-bank-audit.py` ile üretilir.
+PDF kimliği mevcut katalogdan, soru kökeni `veri/content-labels/source-inventory.json`
+kaydından, bankada bulunma ve kaynak damgası ana `questions` tablosundan gelir.
+Soru bağı gösterilen PDF'lerin fiziksel SHA-256'sı doğrulanır.
+`pdf-bank-audit.json.gz` sürümlü bir anlık kayıttır; yeni soru veya PDF
+yayınından sonra yeniden üretilir. Bu bağ aynı PDF'deki bütün soruların
+çıkarıldığını kanıtlamaz. Çevrim içi OGM Soru Bankası kartlarının belirli okul
+PDF'siyle bağı yoksa PDF otomatik olarak eksik veya tamamlanmış sayılmaz.
+V75 `learning_catalog.pdf_work_queue` kullanıcının soru çıkarma veya silme
+incelemesi seçimini PDF katalog kimliği ve kaynak hash'iyle tutar. Seçim bankaya
+soru eklemez, kaynak PDF'yi silmez, yayımlanmış kaynak sürümünü değiştirmez.
+Silme/çıkarım ancak ilgili kaynak ve cevap doğrulamasından sonra ayrı kabul
+işlemidir.
+
 [Ortak kaynak v2 şeması](sema/learning-resource-v2.schema.json) ve
 [temsili örnekler](sema/learning-resource-v2.ornek.json) veri sözleşmesidir.
 Üretim ve yayın kabulü `scripts/learning-resource-contract.mjs` ve

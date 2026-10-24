@@ -27,6 +27,7 @@ import MathTutoring from './pages/MathTutoring.jsx';
 import { useAuth } from './auth.jsx';
 
 const Curriculum = lazy(() => import('./pages/Curriculum.jsx'));
+const PdfBankAudit = lazy(() => import('./pages/PdfBankAudit.jsx'));
 const TeacherReview = lazy(() => import('./pages/TeacherReview.jsx'));
 const TytTrials = lazy(() => import('./pages/TytTrials.jsx'));
 const AytTrials = lazy(() => import('./pages/AytTrials.jsx'));
@@ -100,6 +101,7 @@ export default function App() {
             <Route path="/kaynakli-ders-notlari/:subjectId" element={<Suspense fallback={<Loading text="Kaynaklı ders notları yükleniyor…" />}><SourceNotes /></Suspense>} />
             <Route path="/kaynakli-ders-notlari/etiketler" element={<Suspense fallback={<Loading text="Soru etiketleri yükleniyor…" />}><SourceLabels /></Suspense>} />
             <Route path="/dersler-ve-konular" element={<Suspense fallback={<Loading text="Dersler ve konular yükleniyor…" />}><Curriculum /></Suspense>} />
+            <Route path="/dersler-ve-konular/pdf-envanteri" element={<Suspense fallback={<Loading text="PDF envanteri yükleniyor…" />}><PdfBankAudit /></Suspense>} />
             <Route path="/sorular" element={<OldQuestions />} />
             <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
             <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />

@@ -1,0 +1,6 @@
+.pdf-bank-audit .pdf-audit-status { display: flex; align-items: center; gap: .6rem; margin-block: 1rem; }
+.pdf-bank-audit .pdf-audit-status select { max-width: 22rem; }
+.pdf-audit-proof { margin-top: 1rem; }
+.pdf-audit-proof-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.pdf-audit-proof code { overflow-wrap: anywhere; }
+.pdf-audit-work { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: .8rem; }

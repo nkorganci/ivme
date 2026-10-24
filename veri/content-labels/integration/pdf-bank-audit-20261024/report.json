@@ -1,0 +1,33 @@
+{
+  "branch": "main",
+  "database": "ivme",
+  "physicalPdfs": 2693,
+  "catalogRows": 2708,
+  "catalogRowsWithVerifiedBankQuestions": 245,
+  "uniqueVerifiedQuestionCodes": 53847,
+  "catalogRowsWithoutExactPdfQuestionLink": 209,
+  "nonQuestionCategoryRowsWithoutQuestionLink": 2254,
+  "missingSourceRows": 11,
+  "verifiedPdfHashMismatches": 0,
+  "unlistedPhysicalPdfs": 0,
+  "candidateReview": [
+    {
+      "catalogIds": [155],
+      "pdfSha256": "24a993db7b611b47f3510a8cb00c1a05cbb9c73afe54b3032288f241e45bcc18",
+      "dryRunCommand": "veri-hatti/ogm-sorular/isle.py 'YKS Kampı Kitabı' --sadece 'TYT Kitabi' --es 1 --ayrinti",
+      "candidateQuestions": 910,
+      "extractorIssues": 175,
+      "bankTransfer": "pending_answer_and_crop_review"
+    },
+    {
+      "catalogIds": [335, 349],
+      "pdfSha256": "ed96214e0e6c0fe004c4ce5344361a022cab77a49c9ff63b966a8cc1cb72c7aa",
+      "dryRunCommand": "veri-hatti/ogm-sorular/isle.py 'Mini Deneme' --sadece 'Test 04' --es 1 --ayrinti",
+      "answerKeyPositions": 60,
+      "candidateQuestions": 0,
+      "rejectedAnchors": 42,
+      "orphanRegions": 40,
+      "bankTransfer": "pending_extractor_repair"
+    }
+  ]
+}

@@ -5,6 +5,23 @@ içerik ve gerçek ortam işlerini tutar; tamamlanan hazırlık yeniden yapılma
 
 ## 12.01 — Kaynak/cevap düzeltmelerini ve resmî arşiv farklarını kapat
 
+PDF envanterindeki soru/deneme kaynaklarının belge bazlı banka kapsamı ayrıca
+incelenir: `Dersler > PDF envanteri` kesin dosya–hash–soru kodu–sayfa bağlarını
+gösterir. Bağı doğrulanmayan PDF'deki soruların gerçekten eksik olup olmadığı,
+özellikle çevrim içi OGM Soru Bankası ile aynı içerikteki kitaplarda, sayfa ve
+görsel karşılaştırmasıyla belirlenir. Yeni soru çıkarımı mevcut cevap/kırpım
+doğrulama ve kaynak kabul hattından geçer; yalnız başlık veya benzer soruya
+dayanarak banka kaydı ya da tamamlandı kararı yazılmaz.
+24 Ekim denetiminde belirli PDF bağı olmayan 209 soru/deneme katalog kaydının
+206'sı çevrim içi OGM Soru Bankası okul PDF'sidir. Kalan üç katalog kaydı iki
+fiziksel kaynağa aittir: `YKS Kampi - TYT Kitabi.pdf` için mevcut kuru çıkarım
+910 soru adayı ve 175 hata/uyumsuzluk üretti; `YKS Mini Deneme - Test 04.pdf`
+iki katalog kimliğine bağlıdır, mevcut profil 60 cevaplı anahtar bulsa da sıfır
+güvenilir soru/test çıkardı (42 reddedilen çapa, 40 yetim parça). Bu iki PDF'nin
+kırpım ve cevap eşleşmesi onarılıp bağımsız doğrulanmadan banka aktarımı yapılmaz.
+[Dosya/hash ve kuru çıkarım kanıtı](../../veri/content-labels/integration/pdf-bank-audit-20261024/report.json)
+bu iki kaynak için korunur.
+
 Durum: `BEKLIYOR_KAYNAK_KARARI`. 14 içerik kararı ve 54 birleşik/belirsiz resmî
 soru konumu açık. Kaynak/alan kanıtı olmadan cevap, soru kimliği veya geçmiş
 puan değiştirilemez; kimlik bazlı kanıt paketi ve sonraki işlem aşağıdadır.

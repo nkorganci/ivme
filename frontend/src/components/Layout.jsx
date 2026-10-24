@@ -70,7 +70,7 @@ export default function Layout() {
     } catch (error) { setReviewSwitchError(error.message); }
     finally { setSwitchingReview(false); }
   };
-  const { pathname } = useLocation();
+  const { pathname, search: locationSearch } = useLocation();
   const navigate = useNavigate();
   const [pref, setPref, preferenceError] = useDisplayPreference('sidebar-rail', false); // true = ray
   const [questionOpen, setQuestionOpen] = useState(false); // soru sayfasında kullanıcı menüyü genişletti mi
@@ -78,6 +78,8 @@ export default function Layout() {
   const sidebarRef=useRef(null);
   const [, setQuestionBank] = useState(''); // Soru ekranının mevcut Outlet sözleşmesini korur.
   const trackingActive = pathname === TRACKING_PATH || pathname.startsWith(`${TRACKING_PATH}/`);
+  const lessonsActive = isResourcePath(pathname);
+  const [lessonsOpen, setLessonsOpen] = useState(lessonsActive);
   const [trackingOpen, setTrackingOpen] = useState(trackingActive);
   const reviewActive = pathname.startsWith(REVIEW_PATH);
   const [reviewOpen, setReviewOpen] = useState(reviewActive);
@@ -96,6 +98,7 @@ export default function Layout() {
   useEffect(() => {
     if (trackingActive) setTrackingOpen(true);
   }, [trackingActive]);
+  useEffect(() => { if (lessonsActive) setLessonsOpen(true); }, [lessonsActive]);
 
   useEffect(() => { if (reviewActive) setReviewOpen(true); }, [reviewActive]);
 
@@ -164,6 +167,17 @@ export default function Layout() {
         <nav className="sidenav">
           {items.map(([to, text, icon]) => {
             const active = isActive(pathname, to);
+            if (to === CURRICULUM_HOME) return <div className="side-nav-group" key={to}>
+              <button type="button" className={`side-nav-toggle${active ? ' active' : ''}`} aria-expanded={lessonsOpen && !rail} aria-controls="lessons-subnav"
+                onClick={() => { if (rail) { toggleRail(); setLessonsOpen(true); } else setLessonsOpen(open => !open); }}>
+                <Icon name={icon} /><span className="label">{text}</span><span className="side-nav-chevron label" aria-hidden="true">{lessonsOpen ? '▴' : '▾'}</span>
+              </button>
+              {lessonsOpen && !rail && <div id="lessons-subnav" className="side-subnav">
+                <NavLink to={CURRICULUM_HOME} end className={() => pathname === CURRICULUM_HOME && !locationSearch.includes('tab=dagilim') ? 'active' : ''}>Konu takibi</NavLink>
+                <NavLink to={`${CURRICULUM_HOME}?tab=dagilim`} className={() => pathname === CURRICULUM_HOME && locationSearch.includes('tab=dagilim') ? 'active' : ''}>Konu ve soru dağılımı</NavLink>
+                <NavLink to={`${CURRICULUM_HOME}/pdf-envanteri`}>PDF envanteri</NavLink>
+              </div>}
+            </div>;
             if (to === REVIEW_PATH) return <div className="side-nav-group" key={to}>
               <button type="button" className={`side-nav-toggle${active ? ' active' : ''}`} aria-expanded={reviewOpen && !rail} aria-controls="review-subnav"
                 aria-label={`${text} alt menüsünü ${reviewOpen && !rail ? 'kapat' : 'aç'}`} onClick={() => { if (rail) { toggleRail(); setReviewOpen(true); } else setReviewOpen(v => !v); }}>
