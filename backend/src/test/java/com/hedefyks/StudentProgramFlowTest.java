@@ -2,6 +2,7 @@ package com.hedefyks;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -54,5 +55,22 @@ class StudentProgramFlowTest extends TestBase {
                 "{\"rows\":" + ROWS + ",\"revision\":0}").andExpect(status().isBadRequest());
         send(session, put(PATH), "{\"rows\":[{\"minutes\":1441,\"cells\":[]}],\"revision\":0}")
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void clearingProgramRemovesOnlyTheCurrentAccountsWeeks() throws Exception {
+        user("program_clear_ayse", Role.USER);
+        user("program_clear_mehmet", Role.USER);
+        var first = login("program_clear_ayse", "Sifre1234");
+        var other = login("program_clear_mehmet", "Sifre1234");
+        send(first, put(PATH), "{\"rows\":" + ROWS + ",\"revision\":0}").andExpect(status().isOk());
+        send(other, put(PATH), "{\"rows\":" + ROWS + ",\"revision\":0}").andExpect(status().isOk());
+
+        send(first, delete("/api/student-program/weeks"), null).andExpect(status().isOk());
+
+        assertThat(send(first, get(PATH), null).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString()).isBlank();
+        assertThat(read(send(other, get(PATH), null)).path("rows").get(0).path("cells").get(0).asText())
+                .isEqualTo("Matematik");
     }
 }

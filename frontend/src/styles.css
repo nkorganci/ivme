@@ -335,6 +335,8 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .tracking-grid { min-width: 0; }
 .tracking-grid .ag-cell { align-items: flex-start; }
 .tracking-time { width: 100%; min-height: 44px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 7px; font-size: var(--fs-sm); text-align: center; background: var(--surface); font-variant-numeric: tabular-nums; }
+.tracking-row-actions { display: flex; align-items: center; gap: 4px; height: 44px; }
+.tracking-row-actions .btn { min-width: 36px; padding: 4px 7px; }
 .tracking-bottom-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: -4px 0 16px; }
 .tracking-grid textarea { display: block; width: 100%; min-height: 44px; padding: 5px 6px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); resize: none; overflow: hidden; font-size: var(--fs-sm); line-height: 1.4; }
 .tracking-grid textarea:hover, .tracking-grid textarea:focus { border-color: var(--table-accent); background: var(--surface); }

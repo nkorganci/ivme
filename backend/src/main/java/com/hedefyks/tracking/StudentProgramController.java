@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +41,11 @@ public class StudentProgramController {
                         throw new IllegalStateException("Program kaydı okunamadı.", error);
                     }
                 }, me.id(), monday).stream().findFirst().orElse(null);
+    }
+
+    @DeleteMapping
+    public void deleteAll(@AuthenticationPrincipal AppUserDetails me) {
+        jdbc.update("DELETE FROM student_program_weeks WHERE user_id = ?", me.id());
     }
 
     @PutMapping("/{monday}")
