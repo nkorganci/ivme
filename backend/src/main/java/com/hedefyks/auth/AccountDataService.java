@@ -82,6 +82,8 @@ public class AccountDataService {
                 + "FROM ayt_trial_sheets WHERE user_id = ?", userId));
         data.put("displayPreferences", jdbc.queryForList("SELECT preference_key, value "
                 + "FROM user_display_preferences WHERE user_id = ? ORDER BY preference_key", userId));
+        data.put("examTrack", jdbc.queryForList("SELECT track_id, updated_at "
+                + "FROM user_exam_tracks WHERE user_id = ?", userId));
         data.put("mathTutoringLessons", jdbc.queryForList("SELECT id, lesson_date, start_time, end_time, "
                 + "topic, homework, status, note, learning::text AS learning, revision "
                 + "FROM math_tutoring_lessons WHERE user_id = ? ORDER BY id", userId));

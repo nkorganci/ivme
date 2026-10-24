@@ -8,6 +8,8 @@ import { api } from '../api.js';
 import { loadSharedCatalog } from './SharedCategorySelect.jsx';
 import {CURRICULUM_HOME,isResourcePath} from './ResourcesNavigation.jsx';
 import { useDisplayPreference } from '../useDisplayPreference.js';
+import { useExamTrack } from '../examTrack.jsx';
+import ExamTrackSwitcher from './ExamTrackSwitcher.jsx';
 
 const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
@@ -21,11 +23,12 @@ const ITEMS = [
 ];
 const TRACKING_PATH = '/ogrenci-takip';
 const REVIEW_PATH = '/ogretmen-dogrulamasi';
+// Üçüncü alan: yalnız bu sınav ailesinde görünen alt menü (boşsa her sınavda görünür).
 const TRACKING_ITEMS = [
   [TRACKING_PATH, 'Haftalık Program'],
   [`${TRACKING_PATH}/matematik-ozel-ders`, 'Matematik Özel Ders'],
-  [`${TRACKING_PATH}/tyt-denemeleri`, 'TYT Denemeleri'],
-  [`${TRACKING_PATH}/ayt-denemeleri`, 'AYT Denemeleri'],
+  [`${TRACKING_PATH}/tyt-denemeleri`, 'TYT Denemeleri', 'YKS'],
+  [`${TRACKING_PATH}/ayt-denemeleri`, 'AYT Denemeleri', 'YKS'],
 ];
 
 function isActive(path, to) {
@@ -44,6 +47,9 @@ function isActive(path, to) {
  */
 export default function Layout() {
   const { user, logout, refreshUser, activityError } = useAuth();
+  const { track, loading: trackLoading, error: trackError } = useExamTrack();
+  // Seçim yüklenirken sınava özel bağlantılar gizlenir; okunamazsa varsayılan (YKS) menü kalır.
+  const trackingItems = TRACKING_ITEMS.filter(([, , family]) => !family || (track ? track.family === family : !trackLoading));
   const [reviewSwitchError, setReviewSwitchError] = useState('');
   const [signOutError, setSignOutError] = useState('');
   const [switchingReview, setSwitchingReview] = useState(false);
@@ -164,6 +170,7 @@ export default function Layout() {
             <Icon name={rail ? 'expand' : 'collapse'} />
           </button>
         </div>
+        {user.role === 'USER' && <ExamTrackSwitcher />}
         <nav className="sidenav">
           {items.map(([to, text, icon]) => {
             const active = isActive(pathname, to);
@@ -204,7 +211,7 @@ export default function Layout() {
                 <span className="side-nav-chevron label" aria-hidden="true">{trackingOpen ? '▴' : '▾'}</span>
               </button>
               {trackingOpen && !rail && <div id="tracking-subnav" className="side-subnav">
-                {TRACKING_ITEMS.map(([path, label]) => <NavLink key={path} to={path} end={path === TRACKING_PATH}
+                {trackingItems.map(([path, label]) => <NavLink key={path} to={path} end={path === TRACKING_PATH}
                   className={({ isActive: selected }) => selected ? 'active' : ''}
                   aria-label={label} title={label}>{label}</NavLink>)}
               </div>}
@@ -253,6 +260,7 @@ export default function Layout() {
         <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
           {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
           {activityError && <p className="field-error" role="alert">{activityError}</p>}
+          {trackError && <p className="field-error" role="alert">{trackError}</p>}
           <Outlet context={{ setQuestionBank }} />
         </main>
       </div>

@@ -112,6 +112,17 @@ tablosundadır; soru karalaması, konu ilerlemesi, fayda oyu, deneme işareti ve
 özel ders dosyaları da denetlenir. Pratik yanıtları `question_attempts`, öğretim
 olayları `tutor_events` tablosunda kendi olay kaydıdır. Hata yanıtı başarılı
 kayıt gibi gösterilmez.
+
+`GET /api/exam-tracks` sınav hedeflerini (`exam_tracks`: YKS, KPSS Ortaöğretim,
+Ön Lisans, Lisans, A Grubu, Öğretmenlik/ÖABT, DHBT) sırasıyla ve öğrencinin
+`currentId` seçimini döner; kayıt yoksa ilk `ACTIVE` sınav (YKS) kullanılır.
+Her sınav `status` (`ACTIVE` hazır, `PREPARING` seçilebilir/içerik hazırlanıyor,
+`PLANNED` henüz hazır değil), hedef kitle, özet, not ve `sections[].examId`
+oturum/test bölümlerini taşır. `PUT /api/exam-tracks/current {trackId}` seçimi
+`user_exam_tracks` tablosuna yazar; `PLANNED` veya bilinmeyen sınav 400 döner.
+Değişiklik `user_record_audit` izine düşer; hesap dışa aktarımında `examTrack`
+alanıdır. Ön yüzde `examTrack.jsx` bağlamı sol menüdeki “Sınavım” seçicisini ve
+`ExamTrackGate` ile içerik sayfalarını yönetir.
 `GET /api/self-checks/latest?kind=…&itemKey=…` aynı hesabın son rehber testi
 veya konu notu alıştırmasını döndürür. `POST /api/self-checks` yanıt listesini
 `student_self_check_attempts` tablosuna yeni deneme olarak ekler; başarılı kayıt

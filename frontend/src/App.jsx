@@ -25,6 +25,7 @@ import StudentTracking from './pages/StudentTracking.jsx';
 import StudentTrackingPortal from './pages/StudentTrackingPortal.jsx';
 import MathTutoring from './pages/MathTutoring.jsx';
 import { useAuth } from './auth.jsx';
+import ExamTrackGate from './components/ExamTrackGate.jsx';
 
 const Curriculum = lazy(() => import('./pages/Curriculum.jsx'));
 const PdfBankAudit = lazy(() => import('./pages/PdfBankAudit.jsx'));
@@ -61,7 +62,7 @@ function RoleHome() {
   if (user?.role === 'ADMIN') return <Navigate to="/yonetim" replace />;
   if (user?.role === 'OPERATOR') return <Navigate to="/icerik-bakimi" replace />;
   if (['TEACHER', 'PARENT'].includes(user?.role)) return <AdultHome />;
-  return <Home />;
+  return <ExamTrackGate><Home /></ExamTrackGate>;
 }
 
 /** Eski /sorular adresi: sorgu dizesi korunarak çıkmış sorulara yönlenir. */
@@ -95,36 +96,41 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<RoleHome />} />
           <Route element={<RequireAuth student />}>
-            <Route path="/konular-ve-kaynaklar" element={<Suspense fallback={<Loading text="Kaynaklar yükleniyor…" />}><LearningResources /></Suspense>} />
+            {/* Ortak menünün içerik sayfaları seçilen sınava (YKS, KPSS...) göre açılır. */}
+            <Route element={<ExamTrackGate />}>
+              <Route path="/konular-ve-kaynaklar" element={<Suspense fallback={<Loading text="Kaynaklar yükleniyor…" />}><LearningResources /></Suspense>} />
+              <Route path="/kaynakli-ders-notlari/:subjectId" element={<Suspense fallback={<Loading text="Kaynaklı ders notları yükleniyor…" />}><SourceNotes /></Suspense>} />
+              <Route path="/kaynakli-ders-notlari/etiketler" element={<Suspense fallback={<Loading text="Soru etiketleri yükleniyor…" />}><SourceLabels /></Suspense>} />
+              <Route path="/dersler-ve-konular" element={<Suspense fallback={<Loading text="Dersler ve konular yükleniyor…" />}><Curriculum /></Suspense>} />
+              <Route path="/dersler-ve-konular/pdf-envanteri" element={<Suspense fallback={<Loading text="PDF envanteri yükleniyor…" />}><PdfBankAudit /></Suspense>} />
+              <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
+              <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
+              <Route path="/calisma/yeni" element={<StudyNew />} />
+              <Route path="/calisma/yarim-kalan" element={<UnfinishedStudies />} />
+              <Route path="/gecmis" element={<History />} />
+              <Route path="/akilli-ogretmen" element={<Suspense fallback={<Loading text="Akıllı Öğretmen yükleniyor…" />}><Tutor /></Suspense>} />
+              <Route path="/oneriler" element={<Recommendations />} />
+            </Route>
             <Route path="/kaynak-kutuphanesi" element={<ResourceLibraryRedirect />} />
             <Route path="/kaynakli-ders-notlari" element={<LegacyNoteLibraryRedirect />} />
-            <Route path="/kaynakli-ders-notlari/:subjectId" element={<Suspense fallback={<Loading text="Kaynaklı ders notları yükleniyor…" />}><SourceNotes /></Suspense>} />
-            <Route path="/kaynakli-ders-notlari/etiketler" element={<Suspense fallback={<Loading text="Soru etiketleri yükleniyor…" />}><SourceLabels /></Suspense>} />
-            <Route path="/dersler-ve-konular" element={<Suspense fallback={<Loading text="Dersler ve konular yükleniyor…" />}><Curriculum /></Suspense>} />
-            <Route path="/dersler-ve-konular/pdf-envanteri" element={<Suspense fallback={<Loading text="PDF envanteri yükleniyor…" />}><PdfBankAudit /></Suspense>} />
             <Route path="/sorular" element={<OldQuestions />} />
-            <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
-            <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
             <Route path="/konu-anlatimlari" element={<LegacyPdfLibraryRedirect />} />
             <Route path="/konu-anlatimlari/:id" element={<Suspense fallback={<Loading text="PDF görüntüleniyor…" />}><TopicPdfViewer /></Suspense>} />
             <Route path="/soru/:code" element={<QuestionDetail />} />
-            <Route path="/calisma/yeni" element={<StudyNew />} />
-            <Route path="/calisma/yarim-kalan" element={<UnfinishedStudies />} />
             <Route path="/sinav/yeni" element={<OldStudyNew exam />} />
             <Route path="/pratik/yeni" element={<OldStudyNew />} />
             <Route path="/pratik/:id" element={<PracticeSession />} />
             <Route path="/sinav/:id/sonuc" element={<ExamResult />} />
-            <Route path="/gecmis" element={<History />} />
             <Route path="/ilerleme" element={<Navigate to="/dersler-ve-konular?tab=konular" replace />} />
             <Route path="/ogrenci-takip" element={<StudentTrackingPortal />}>
               <Route index element={<StudentTracking />} />
               <Route path="matematik-ozel-ders" element={<MathTutoring />} />
-              <Route path="tyt-denemeleri" element={<Suspense fallback={<Loading text="TYT denemeleri yükleniyor…" />}><TytTrials /></Suspense>} />
-              <Route path="ayt-denemeleri" element={<Suspense fallback={<Loading text="AYT denemeleri yükleniyor…" />}><AytTrials /></Suspense>} />
+              <Route element={<ExamTrackGate />}>
+                <Route path="tyt-denemeleri" element={<Suspense fallback={<Loading text="TYT denemeleri yükleniyor…" />}><TytTrials /></Suspense>} />
+                <Route path="ayt-denemeleri" element={<Suspense fallback={<Loading text="AYT denemeleri yükleniyor…" />}><AytTrials /></Suspense>} />
+              </Route>
             </Route>
-            <Route path="/akilli-ogretmen" element={<Suspense fallback={<Loading text="Akıllı Öğretmen yükleniyor…" />}><Tutor /></Suspense>} />
             <Route path="/akilli-ogretmen/:code" element={<Suspense fallback={<Loading text="Öğretim oturumu yükleniyor…" />}><TutorSession /></Suspense>} />
-            <Route path="/oneriler" element={<Recommendations />} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
           <Route path="/hesap" element={<Account />} />

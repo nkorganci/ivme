@@ -43,11 +43,24 @@ flowchart LR
 | Öğretmen kararı | `content_reviews` ve `content_review_history` | Kaynak/görsel/kategori değişimi onayı eskitebilir; otomatik etiket yayını kararı değiştirmez |
 | Soru, cevap ve öğrenci geçmişi | İlgili soru/çalışma/sınav tabloları | Etiket üretimi bu verileri değiştirmez; ilk deneme ve anlık kayıt korunur |
 | Görev ve devam noktası | Bu dizindeki açık numaralı adımlar ve `00_CALISMA_BAGLAMI.md` | Başka bir eksikler veya yapılanlar listesi açılmaz |
+| Sınav hedefleri (YKS, KPSS türleri) ve öğrencinin sınavı | Flyway `V79__exam_tracks.sql` tohum kaydı `exam_tracks`; durum/not/bölüm değişikliği yeni göçle yapılır | `GET /api/exam-tracks`; seçim `user_exam_tracks`. Menü tek; yalnız `ACTIVE` sınavın içerik sayfaları açılır |
 
 `content-review-catalog.json`, `pdf-review-labels.json`, `content-label-categories.json`
 ve ön yüz kimlik dosyası projeksiyondur. İlgili üreticileri çalıştırmadan bu dosyaları
 elle düzeltmek sonraki build'de değişikliği kaybettirir veya sürüm farkı yaratır.
 Branş CSV'leri ve eski kaynak başlıkları kanıt girdisidir; ikinci bir kontrollü sözlük değildir.
+
+Sınavlar (YKS, KPSS) için menü veya sayfa kopyalanmaz. Öğrenci sol menüdeki
+“Sınavım” seçicisiyle sınavını seçer; seçim `user_exam_tracks` tablosundadır.
+`ExamTrackGate`, `ACTIVE` olmayan sınavda listeleme/içerik sayfalarının yerine
+aynı yerde “hazırlanıyor” bilgisini gösterir; kayıt detayları (pratik, sınav
+sonucu, soru, PDF) ve haftalık program her sınavda açık kalır. `PLANNED` sınav
+listede “henüz hazır değil” notuyla görünür, seçilemez. Yeni sınavın ders/konu
+kayıtları aynı ortak katalogda, kategori `exam` alanı o sınavın
+`sections[].examId` değeriyle (ör. `KPSS_OO_GY`, `KPSS_OO_GK`) yayımlanır;
+ikinci sözlük açılmaz. Sınav `ACTIVE` yapılmadan önce sayfalardaki sabit
+TYT/AYT listeleri etkin sınavın `sections` değerinden okunacak hale getirilir
+([14. adım](14_KPSS_ORTAOGRETIM.md)).
 
 Çalışma anında kategori kimliği, tercih edilen ad ve ortak kaynak etiketi için
 tek doğruluk kaynağı PostgreSQL'dir. `ReviewCatalog.categories()` yalnız
