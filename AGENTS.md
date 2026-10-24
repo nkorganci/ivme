@@ -26,6 +26,7 @@
 ## Yerel ortam ve dal ayrımı
 
 - Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-guncellemer`, adresi `http://localhost:1010`, DB'si `ivme_dev`.
+- 24 Ekim 2026'da eski feature'ın `ivme_dev` veritabanı silinip boş olarak yeniden oluşturuldu. `ivme_dev_app` yalnız `ivme_dev`e, main'in `root` rolü yalnız `ivme`ye bağlanır. Feature kimliği Git dışındaki `.codex/local-environment.json` içindedir; main kimliğini feature'a verme. Boş dev DB'nin şema göçleri ilk çalışmada uygulanır.
 - Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:1010`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
 - Cloudflare tünelinin hedefi main'in doğrudan `http://localhost:1010` adresidir; 5173 için ek giriş açılmaz. Kullanıcı Cloudflare hedefini kendisi değiştirir. 9090 için kullanıcının talimatıyla `my-jenkins` Docker konteyneri durduruldu; otomatik başlatma.
 - Her ortamın kaynakları, build dizini, görselleri, katalog kopyası ve izleyicisi ayrıdır. `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunarak paylaşılır. Geliştirme sırasında ana ortamın dosyaları/DB'si değiştirilmez.

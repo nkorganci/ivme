@@ -875,8 +875,12 @@ Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
 Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
 `main` dalıdır: port 1010, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
 build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
-uygulamaya geçer. Geliştirme DB'si ilk ayrımda ana verinin kopyasıdır; sonraki
-kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
+uygulamaya geçer. Geliştirme DB'si 24 Ekim 2026'da eski feature verileriyle
+birlikte silinip boş olarak yeniden oluşturuldu. `ivme_dev_app` yalnız
+`ivme_dev`e, main'in `root` rolü yalnız `ivme`ye bağlanabilir. Feature kimliği
+Git dışındaki `.codex/local-environment.json` dosyasındadır. Yeni dev DB ilk
+çalışmada şema göçlerini alır; katalog ve test hesapları ayrıca hazırlanmalıdır.
+Sonraki kayıtlar, şema göçleri ve içerik yayınları birbirine aktarılmaz.
 
 Görsel ve PDF katalog dizinleri worktree başına bağımsızdır. Özgün
 `Kaynaklar/ogm-materyal` PDF arşivi iki uygulama tarafından yalnız okunur.

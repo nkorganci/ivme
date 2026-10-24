@@ -31,8 +31,11 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 
 Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
 kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
-`ivme_dev`, kurulum anındaki `ivme` verisinin bağımsız kopyasıdır; bundan sonraki
-öğrenci kayıtları ve DB göçleri ortamlar arasında otomatik eşitlenmez.
+24 Ekim 2026'da eski feature'a ait `ivme_dev` silinip boş olarak yeniden oluşturuldu;
+artık ana verinin kopyası değildir. Feature, Git dışındaki `.codex/local-environment.json`
+dosyasındaki `ivme_dev_app` kimliğini kullanır. Bu rol ana `ivme` veritabanına,
+main rolü de `ivme_dev`e bağlanamaz. Feature ilk açılışında şema göçleri çalışır;
+içerik ve test hesapları ayrıca hazırlanır.
 Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
 Üst dizindeki `Ikisini de Baslat.bat`, `main` ortamını 1010'da başlatır. Feature'a

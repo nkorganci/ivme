@@ -4,7 +4,7 @@ $ErrorActionPreference = 'Stop'
 $worktrees = @{}
 $path = $null
 & git -C $PSScriptRoot worktree list --porcelain | ForEach-Object {
-    if ($_ -like 'worktree *') { $path = $_.Substring(9) }
+    if ($_ -like 'worktree *') { $path = [IO.Path]::GetFullPath($_.Substring(9)).Replace('/', '\') }
     if ($_ -like 'branch refs/heads/*') { $worktrees[$_.Substring(18)] = $path }
 }
 if (-not $worktrees.ContainsKey($Branch)) { throw "Yerel worktree bulunamadı: $Branch" }
@@ -27,6 +27,16 @@ foreach ($otherBranch in $worktrees.Keys) {
         }
     }
 }
+$otherProcesses = @(Get-CimInstance Win32_Process -Filter "Name='java.exe'" -ErrorAction SilentlyContinue | Where-Object {
+    $command = $_.CommandLine
+    if (-not $command -or $command -notmatch 'hedef-yks\.jar') { return $false }
+    foreach ($otherBranch in $worktrees.Keys) {
+        if ($otherBranch -eq $Branch) { continue }
+        if ($command.Contains((Join-Path $worktrees[$otherBranch] 'backend'))) { return $true }
+    }
+    return $false
+})
+foreach ($oldProcess in $otherProcesses) { Stop-Process -Id $oldProcess.ProcessId -Force }
 $listener = Get-NetTCPConnection -LocalPort 1010 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
 if ($listener) {
     $process = Get-CimInstance Win32_Process -Filter "ProcessId=$($listener.OwningProcess)"
@@ -44,6 +54,9 @@ if ($listener) {
             if (-not (Get-NetTCPConnection -LocalPort 1010 -State Listen -ErrorAction SilentlyContinue)) { break }
             Start-Sleep -Milliseconds 500
         }
+    }
+    elseif (-not $process.CommandLine.Contains((Join-Path $worktrees[$Branch] 'backend'))) {
+        throw '1010 portunda İvme dışı bir uygulama çalışıyor.'
     }
 }
 

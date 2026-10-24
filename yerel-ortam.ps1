@@ -12,8 +12,8 @@ function Get-IvmeLocalEnvironment {
         Database = $(if ($main) { 'ivme' } else { 'ivme_dev' })
         SessionCookie = $(if ($main) { 'JSESSIONID' } else { 'IVME_DEV_SESSION' })
         CsrfCookie = $(if ($main) { 'XSRF-TOKEN' } else { 'XSRF-TOKEN-DEV' })
-        DbUser = 'root'
-        DbPassword = 'root'
+        DbUser = $(if ($main) { 'root' } else { 'ivme_dev_app' })
+        DbPassword = $(if ($main) { 'root' } else { $null })
         Images = (Join-Path $repoRoot 'veri\resimler-pilot')
         PdfCatalog = (Join-Path $repoRoot 'veri\ogm-konu-pdf-katalog\entries')
         PdfSource = [IO.Path]::GetFullPath((Join-Path $repoRoot '..\Kaynaklar\ogm-materyal'))
@@ -24,6 +24,9 @@ function Get-IvmeLocalEnvironment {
         foreach ($key in @('DbUser', 'DbPassword', 'Images', 'PdfCatalog', 'PdfSource')) {
             if ($localSettings.PSObject.Properties.Name -contains $key) { $settings[$key] = $localSettings.$key }
         }
+    }
+    if (-not $main -and (-not $settings.DbPassword -or $settings.DbUser -eq 'root')) {
+        throw 'Feature requires dedicated ivme_dev credentials in .codex/local-environment.json.'
     }
     return [PSCustomObject]$settings
 }
