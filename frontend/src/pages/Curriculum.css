@@ -1,4 +1,7 @@
 .curriculum-reference-grid { width: 100%; min-width: 0; }
+.curriculum-reference-grid .ag-cell { padding-block: 5px; line-height: 1.15; }
+.curriculum-reference-grid .ag-cell-wrapper { width: 100%; min-width: 0; }
+.curriculum-reference-grid .ag-cell-wrapper, .curriculum-reference-grid .ag-cell-value { line-height: inherit; }
 .curriculum-reference-grid .ag-header-cell { padding-inline: 6px; }
 .curriculum-reference-grid .ag-header-cell-label { gap: 4px; }
 .curriculum-reference-grid .ag-header-cell-text { white-space: normal; word-break: normal; overflow-wrap: normal; }

@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 const site='http://127.0.0.1:1010';
-const output=resolve('veri/content-labels/integration/curriculum-table-20261023');
+const output=resolve('veri/content-labels/integration/curriculum-compact-20261023');
 fs.mkdirSync(output,{recursive:true});
 const profile=fs.mkdtempSync(join(tmpdir(),'ivme-excel-'));
 const chrome=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',[
@@ -69,8 +69,16 @@ try {
   report.checks.push('Question bank subject filters keep all four split lessons separate and use their published topic classifications');
   await select('Ders seç','fizik');
   await wait(`new URLSearchParams(location.search).get('ders') === 'fizik' && document.querySelector('.ag-row .ag-cell[col-id="subject"]')?.innerText === 'Fizik'`);
-  assert.equal(await evaluate(`document.querySelector('.ag-header-cell[col-id="total"]')`),null);
-  for(const field of ['unit','topic','gradeLabel','tyt','ayt','tytTotal','aytTotal','recent']) {
+  assert.equal(await evaluate(`document.querySelector('.ag-header-cell[col-id="total"], .ag-header-cell[col-id="tyt"], .ag-header-cell[col-id="ayt"]')`),null);
+  const rowMetrics=await evaluate(`Array.from(document.querySelectorAll('.ag-row[row-index]')).map(row=>({height:row.getBoundingClientRect().height,cells:Array.from(row.querySelectorAll('.ag-cell[col-id="unit"], .ag-cell[col-id="topic"]')).map(cell=>{const value=cell.querySelector('.ag-cell-value')||cell, style=getComputedStyle(value);return {fontSize:parseFloat(style.fontSize),lineHeight:parseFloat(style.lineHeight),height:value.getBoundingClientRect().height,clientHeight:value.clientHeight,scrollHeight:value.scrollHeight,clientWidth:value.clientWidth,scrollWidth:value.scrollWidth};})}))`);
+  assert.ok(rowMetrics.length>1);
+  assert.ok(rowMetrics.every(row=>row.cells.every(cell=>cell.lineHeight/cell.fontSize<=1.2 && cell.scrollHeight<=cell.clientHeight+1 && cell.scrollWidth<=cell.clientWidth+1)),'Single line spacing and unclipped wrapped text');
+  assert.ok(rowMetrics.some(row=>row.height<=34),'Short rows are compact');
+  assert.ok(rowMetrics.some(row=>row.cells.some(cell=>cell.height>cell.lineHeight*1.5)),'Long unit/topic values wrap');
+  assert.ok(new Set(rowMetrics.map(row=>row.height)).size>1,'Row heights follow their content');
+  report.rowLayout={minimum:Math.min(...rowMetrics.map(row=>row.height)),maximum:Math.max(...rowMetrics.map(row=>row.height)),lineHeightRatio:rowMetrics[0].cells[0].lineHeight/rowMetrics[0].cells[0].fontSize};
+  report.checks.push('TYT/AYT flag columns are absent; short rows shrink, long unit/topic values wrap with single line spacing and grow without clipping');
+  for(const field of ['unit','topic','gradeLabel','tytTotal','aytTotal','recent']) {
     await evaluate(`document.querySelector('.ag-header-cell[col-id="${field}"] .ag-header-cell-label').click()`);
     await wait(`document.querySelector('.ag-header-cell[col-id="${field}"]').getAttribute('aria-sort') === 'ascending'`);
     await evaluate(`document.querySelector('.ag-header-cell[col-id="${field}"] .ag-header-cell-label').click()`);
@@ -83,7 +91,7 @@ try {
   assert.ok(viewport.height>0 && viewport.content>viewport.height);
   await evaluate(`(()=>{const e=document.querySelector('.ag-grid-viewport');e.scrollTop=e.scrollHeight;})()`);
   await wait(`Number(document.querySelector('.ag-row .ag-cell[col-id="rowNumber"]').innerText)>1`);
-  report.checks.push('Row numbers refresh after sorting; unit, topic, grade, TYT/AYT and count columns sort in both directions; long topic lists scroll inside the grid');
+  report.checks.push('Row numbers refresh after sorting; unit, topic, grade and count columns sort in both directions; long topic lists scroll inside the grid');
   await cdp('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await screenshot('distribution-mobile.png');
   assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth+2'));

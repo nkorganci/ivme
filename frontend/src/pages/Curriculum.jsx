@@ -92,7 +92,7 @@ export default function Curriculum() {
         <Link to={'/calisma/yeni' + qs({ examType: exam, categoryId: [data.id] })}>Pratik yap</Link>
         <Link to={'/konular-ve-kaynaklar' + qs({ exam, subject: selectedSubject, categoryId: [data.id] })}>PDF · video · not</Link>
       </div> },
-    { field: 'done', headerName: 'Durum', minWidth: 110, maxWidth: 140, filter: false,
+    { field: 'done', headerName: 'Durum', minWidth: 110, maxWidth: 140, filter: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <button type="button" className={`curriculum-done${data.done ? ' done' : ''}`}
         aria-label={`${data.topic}: ${data.done ? 'tamamlamayı geri al' : 'tamamlandı işaretle'}`} aria-pressed={data.done}
         disabled={completion.loading || Boolean(completion.error) || pending[data.id]} onClick={() => toggle(data)}>
@@ -101,8 +101,6 @@ export default function Curriculum() {
   const distributionColumns = [
     subjectColumn,
     ...baseColumns.map(column => ({ ...column, minWidth: column.field === 'topic' ? 220 : column.field === 'unit' ? 135 : 85 })),
-    { field: 'tyt', headerName: 'TYT', minWidth: 80, maxWidth: 85, valueFormatter: ({ value }) => value || '—' },
-    { field: 'ayt', headerName: 'AYT', minWidth: 80, maxWidth: 85, valueFormatter: ({ value }) => value || '—' },
     numeric('tytTotal', 'TYT 2018–2026', { minWidth: 110 }), numeric('aytTotal', 'AYT 2018–2026', { minWidth: 110 }),
     numeric('recent', 'Son 3 yıl 2024–2026', { minWidth: 125 }),
   ];
@@ -127,10 +125,10 @@ export default function Curriculum() {
       <DataGrid key={`${tab}:${exam}`} rowData={tab === 'dagilim' ? distribution : topicRows}
         columnDefs={tab === 'dagilim' ? distributionColumns : topicColumns}
         mode="worksheet" scrollable columnSorting rowNumbers showSearch={false}
-        gridOptions={{ headerHeight: 85, getRowId: ({ data }) => data.id }} />
+        gridOptions={{ headerHeight: 85, rowHeight: 32, getRowId: ({ data }) => data.id }} />
     </section> : <Empty title="Bu seçimde konu bulunamadı." />}
     <p className="muted small">{tab === 'dagilim'
-      ? '✓ Kapsamda · ✓* Sorular toplu bir başlıkta sayılmış. — Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
+      ? '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
       : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'}</p>
     <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop() || 'YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx'} · yalnız ilk sayfa ({source?.sheet || 'KONULAR'}).
       Dersler, Soru Çöz ve İlerlemem aynı ders, ünite ve konu kayıtlarını kullanır.</p>
