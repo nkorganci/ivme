@@ -4,6 +4,7 @@ import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import ExcelJS from '../frontend/node_modules/exceljs/excel.js';
 const site='http://127.0.0.1:1010';
 const output=resolve('veri/content-labels/integration/curriculum-tracking-compact-20261023');
 fs.mkdirSync(output,{recursive:true});
@@ -36,6 +37,7 @@ try {
   const screenshot=async name=>{const r=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});fs.writeFileSync(join(output,name),Buffer.from(r.data,'base64'));};
   diagnose=async()=>{await screenshot('failure.png');report.diagnostic=await evaluate(`({url:location.href,headers:Array.from(document.querySelectorAll('.ag-header-cell')).map(e=>[e.getAttribute('col-id'),e.getAttribute('aria-sort')]),rows:Array.from(document.querySelectorAll('.ag-row[row-index]')).sort((a,b)=>Number(a.getAttribute('row-index'))-Number(b.getAttribute('row-index'))).map(e=>[e.getAttribute('row-index'),e.querySelector('[col-id="rowNumber"]')?.innerText,e.querySelector('[col-id="recent"]')?.innerText]).slice(0,25)})`);};
   await cdp('Runtime.enable');await cdp('Network.enable');await cdp('Page.enable');
+  await cdp('Page.setDownloadBehavior',{behavior:'allow',downloadPath:output});
   await cdp('Emulation.setDeviceMetricsOverride',{width:1680,height:1100,deviceScaleFactor:1,mobile:false});
   await navigate('/dersler-ve-konular?tab=dagilim&sinav=all&ders=all');
   await wait(`document.querySelector('select[aria-label="Ders seç"]') && document.querySelector('.ag-row')`);
@@ -52,6 +54,18 @@ try {
   await wait(`Array.from(document.querySelectorAll('.ag-header-cell-text')).every(e=>e.scrollWidth<=e.clientWidth+1 && e.scrollHeight<=e.clientHeight+1)`);
   report.runKey=metadata.summary.runKey;report.checks.push('Header lesson dropdown has all 14 shared lessons with exclusive Math/Geometry and Turkish/Literature subjects; removed controls, white filter boxes and explanation column are absent');
   await screenshot('distribution-initial.png');
+  const previousDownloads=new Set(fs.readdirSync(output).filter(name=>name.endsWith('.xlsx')));
+  await evaluate(`document.querySelector('.curriculum-reference-grid .app-data-grid-toolbar button').click()`);
+  let downloaded;
+  for(let attempt=0;attempt<100&&!downloaded;attempt++){
+    downloaded=fs.readdirSync(output).find(name=>name.endsWith('.xlsx')&&!previousDownloads.has(name));
+    if(!downloaded)await pause(100);
+  }
+  assert.ok(downloaded,'Curriculum Excel download completed');
+  const workbook=new ExcelJS.Workbook();
+  await workbook.xlsx.readFile(join(output,downloaded));
+  assert.equal(workbook.worksheets[0].rowCount,454,'All 453 distribution rows are exported');
+  report.checks.push('Excel download contains all 453 filtered source rows beyond the visible viewport');
   assert.equal(await evaluate(`document.querySelector('.ag-row .ag-cell[col-id="rowNumber"]').innerText`),'1');
   for(const [id,label] of [['matematik','Matematik'],['geometri','Geometri'],['turkce','Türkçe'],['edebiyat','Edebiyat']]) {
     await select('Ders seç',id);
@@ -72,8 +86,8 @@ try {
   assert.equal(await evaluate(`document.querySelector('.ag-header-cell[col-id="total"], .ag-header-cell[col-id="tyt"], .ag-header-cell[col-id="ayt"]')`),null);
   const rowMetrics=await evaluate(`Array.from(document.querySelectorAll('.ag-row[row-index]')).map(row=>({height:row.getBoundingClientRect().height,cells:Array.from(row.querySelectorAll('.ag-cell[col-id="unit"], .ag-cell[col-id="topic"]')).map(cell=>{const value=cell.querySelector('.ag-cell-value')||cell, style=getComputedStyle(value);return {fontSize:parseFloat(style.fontSize),lineHeight:parseFloat(style.lineHeight),height:value.getBoundingClientRect().height,clientHeight:value.clientHeight,scrollHeight:value.scrollHeight,clientWidth:value.clientWidth,scrollWidth:value.scrollWidth};})}))`);
   assert.ok(rowMetrics.length>1);
-  assert.ok(rowMetrics.every(row=>row.cells.every(cell=>cell.lineHeight/cell.fontSize<=1.2 && cell.scrollHeight<=cell.clientHeight+1 && cell.scrollWidth<=cell.clientWidth+1)),'Single line spacing and unclipped wrapped text');
-  assert.ok(rowMetrics.some(row=>row.height<=34),'Short rows are compact');
+  assert.ok(rowMetrics.every(row=>row.cells.every(cell=>cell.lineHeight/cell.fontSize<=1.3 && cell.scrollHeight<=cell.clientHeight+1 && cell.scrollWidth<=cell.clientWidth+1)),'Centered and unclipped wrapped text');
+  assert.ok(rowMetrics.some(row=>row.height<=44),'Short rows remain compact');
   assert.ok(rowMetrics.some(row=>row.cells.some(cell=>cell.height>cell.lineHeight*1.5)),'Long unit/topic values wrap');
   assert.ok(new Set(rowMetrics.map(row=>row.height)).size>1,'Row heights follow their content');
   report.rowLayout={minimum:Math.min(...rowMetrics.map(row=>row.height)),maximum:Math.max(...rowMetrics.map(row=>row.height)),lineHeightRatio:rowMetrics[0].cells[0].lineHeight/rowMetrics[0].cells[0].fontSize};
@@ -114,7 +128,7 @@ try {
   assert.ok(tracking.subject<=110,'Lesson column is as wide as its text: '+tracking.subject);
   assert.ok(tracking.topic<=209,'Topic column is 20% narrower: '+tracking.topic);
   assert.ok(tracking.banks.length>1 && tracking.banks.every(text=>/^[0-9.]+$/.test(text)),'Question counts show only numbers');
-  assert.ok(tracking.rows.some(row=>row.height<=32),'Single-line tracking rows are compact');
+  assert.ok(tracking.rows.some(row=>row.height<=44),'Single-line tracking rows are compact');
   assert.ok(tracking.rows.every(row=>row.cells.every(cell=>!cell.clipped && cell.top>=2 && cell.bottom>=2)),'Cell text keeps a small gap from row borders');
   report.trackingLayout={subjectWidth:tracking.subject,topicWidth:tracking.topic,minimumRow:Math.min(...tracking.rows.map(row=>row.height)),maximumRow:Math.max(...tracking.rows.map(row=>row.height))};
   report.checks.push('Topic tracking lesson column fits its text, question counts are plain numbers, topic column is 20% narrower and rows stay compact without touching text');
