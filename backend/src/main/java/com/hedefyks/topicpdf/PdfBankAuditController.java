@@ -13,10 +13,8 @@ import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.zip.GZIPInputStream;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.CacheControl;
@@ -34,8 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/pdf-bank-audit")
 public class PdfBankAuditController {
-    private final JsonNode audit;
-    private final Map<Integer, JsonNode> byId = new LinkedHashMap<>();
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
     private final Path candidateDir;
@@ -46,29 +42,38 @@ public class PdfBankAuditController {
         Path cwd = Path.of("").toAbsolutePath();
         Path root = Files.isDirectory(cwd.resolve("backend")) ? cwd : cwd.getParent();
         this.candidateDir = root.resolve("veri/content-labels/pdf-extraction/mini-test-04").normalize();
-        try (InputStream in = new GZIPInputStream(new ClassPathResource("pdf-bank-audit.json.gz").getInputStream())) {
-            audit = mapper.readTree(in);
-            if (audit.path("version").asInt() != 1) throw new IllegalStateException("PDF denetim sürümü geçersiz.");
-            for (JsonNode row : audit.path("pdfs")) {
-                int id = row.path("id").asInt(-1);
-                if (id < 0 || byId.putIfAbsent(id, row) != null) throw new IllegalStateException("PDF denetim kimliği yineleniyor.");
-            }
-        } catch (Exception exception) {
-            throw new IllegalStateException("PDF banka denetimi okunamadı.", exception);
-        }
+    }
+
+    private JsonNode parse(String json) {
+        try { return mapper.readTree(json); }
+        catch (Exception exception) { throw new IllegalStateException("PDF denetim kaydı okunamadı.", exception); }
+    }
+
+    private JsonNode audit() {
+        List<String> records = jdbc.queryForList("SELECT metadata::text FROM learning_catalog.pdf_audit_state WHERE id=true", String.class);
+        if (records.isEmpty()) throw ApiException.notFound("PDF denetim kayıtları henüz yayımlanmadı.");
+        return parse(records.get(0));
+    }
+
+    private JsonNode row(int id) {
+        List<String> records = jdbc.queryForList("SELECT data::text FROM learning_catalog.pdf_audit_rows WHERE catalog_id=?", String.class, id);
+        if (records.isEmpty()) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
+        return parse(records.get(0));
     }
 
     @GetMapping
     public Map<String, Object> list() {
-        boolean current = currentBank();
+        JsonNode audit = audit();
+        boolean current = currentBank(audit);
         Map<Integer, String> work = new LinkedHashMap<>();
         for (Map<String, Object> item : jdbc.queryForList("SELECT catalog_id, action FROM learning_catalog.pdf_work_queue"))
             work.put(((Number) item.get("catalog_id")).intValue(), (String) item.get("action"));
         Map<String, String> archived = new LinkedHashMap<>();
         for (Map<String, Object> item : jdbc.queryForList("SELECT source_sha256, archive_relative_path FROM learning_catalog.pdf_archive"))
             archived.put((String) item.get("source_sha256"), (String) item.get("archive_relative_path"));
-        List<Map<String, Object>> rows = new ArrayList<>(byId.size());
-        for (JsonNode node : byId.values()) {
+        List<Map<String, Object>> rows = new ArrayList<>();
+        for (String json : jdbc.queryForList("SELECT data::text FROM learning_catalog.pdf_audit_rows ORDER BY catalog_id", String.class)) {
+            JsonNode node = parse(json);
             var row = new LinkedHashMap<String, Object>();
             for (String name : List.of("id", "title", "exam", "subject", "category", "source", "pages",
                     "available", "hashVerified", "questionCount", "candidateCount", "status")) {
@@ -90,7 +95,7 @@ public class PdfBankAuditController {
                 "physicalPdfCount", audit.path("physicalPdfCount").asInt(), "current", current, "pdfs", rows);
     }
 
-    private boolean currentBank() {
+    private boolean currentBank(JsonNode audit) {
         Map<String, Object> bank = jdbc.queryForMap("""
                 SELECT count(*) FILTER (WHERE active) AS active_count,
                   extract(epoch from max(updated_at))::text AS max_updated_at FROM questions
@@ -101,16 +106,14 @@ public class PdfBankAuditController {
 
     @GetMapping("/{id}/proof")
     public JsonNode proof(@PathVariable int id) {
-        JsonNode row = byId.get(id);
-        if (row == null) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
-        return row;
+        return row(id);
     }
 
     private JsonNode candidatePackage(int id) {
         if (id != 335 && id != 349) throw ApiException.notFound("PDF soru adayı bulunamadı.");
         try {
             JsonNode packageData = mapper.readTree(candidateDir.resolve("candidates.json").toFile());
-            if (!packageData.path("sourceSha256").asText().equals(byId.get(id).path("sha256").asText())
+            if (!packageData.path("sourceSha256").asText().equals(row(id).path("sha256").asText())
                     || packageData.path("questionCount").asInt() != packageData.path("cards").size())
                 throw ApiException.conflict("Aday soru paketi kaynakla uyuşmuyor.");
             return packageData;
@@ -162,9 +165,8 @@ public class PdfBankAuditController {
     @PutMapping("/{id}/work")
     public Map<String, String> requestWork(@PathVariable int id, @RequestBody WorkRequest request,
             @AuthenticationPrincipal AppUserDetails user) {
-        JsonNode row = byId.get(id);
-        if (row == null) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
-        if (!currentBank()) throw ApiException.conflict("Soru bankası değişmiş; PDF denetimini yenileyin.");
+        JsonNode row = row(id);
+        if (!currentBank(audit())) throw ApiException.conflict("Soru bankası değişmiş; PDF denetimini yenileyin.");
         if (request == null || !List.of("EXTRACT", "ARCHIVE_REVIEW").contains(request.action()))
             throw ApiException.badRequest("İşlem türü geçersiz.");
         if (!row.path("sha256").asText().equals(request.sourceSha256()))
@@ -187,7 +189,7 @@ public class PdfBankAuditController {
     @DeleteMapping("/{id}/work")
     public Map<String, String> cancelWork(@PathVariable int id,
             @AuthenticationPrincipal AppUserDetails user) {
-        if (!byId.containsKey(id)) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
+        row(id);
         jdbc.update("DELETE FROM learning_catalog.pdf_work_queue WHERE catalog_id=? AND status='REQUESTED'", id);
         return Map.of("action", "");
     }

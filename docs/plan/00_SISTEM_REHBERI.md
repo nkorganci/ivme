@@ -235,8 +235,13 @@ eski bağları da aynı işlemde kaldırır. Ayrı bir öğrencinin kaydı etkil
 PDF kimliği mevcut katalogdan, soru kökeni `veri/content-labels/source-inventory.json`
 kaydından, bankada bulunma ve kaynak damgası ana `questions` tablosundan gelir.
 Soru bağı gösterilen PDF'lerin fiziksel SHA-256'sı doğrulanır.
-`pdf-bank-audit.json.gz` sürümlü bir anlık kayıttır; yeni soru veya PDF
-yayınından sonra yeniden üretilir. Bu bağ aynı PDF'deki bütün soruların
+`pdf-bank-audit.json.gz` ilk aktarım ve geri izleme için sürümlü bir anlık kayıttır.
+Çalışan uygulama 2.708 denetim satırını `learning_catalog.pdf_audit_rows`, denetim
+zamanı ve banka damgasını `learning_catalog.pdf_audit_state` içinden okur. İlk aktarım
+`scripts/pdf-bank-audit-publish.py` ile mevcut anlık kayıttan yapılır; PDF'ler yeniden
+okunmaz. Satır güncellemesi aynı katalog kimliğinde DB kaydını değiştirir.
+Yeni soru veya PDF yayını sonrasında kapsam denetimi gerektiğinde üretici yeniden
+çalıştırılıp kayıtlar ayrıca yayımlanır. Bu bağ aynı PDF'deki bütün soruların
 çıkarıldığını kanıtlamaz. Çevrim içi OGM Soru Bankası kartlarının belirli okul
 PDF'siyle bağı yoksa PDF otomatik olarak eksik veya tamamlanmış sayılmaz.
 V75 `learning_catalog.pdf_work_queue` kullanıcının soru çıkarma veya silme
