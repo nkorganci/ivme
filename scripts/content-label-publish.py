@@ -36,9 +36,19 @@ def main():
     references = json.loads((STATE / "curriculum-reference-labels.json").read_text(encoding="utf-8"))
     if audit.get("runKey") != run or audit.get("failures") or audit.get("unlabelled") != 0:
         raise ValueError("Run the complete source audit before publishing")
+    if audit.get('type')=='CURRICULUM_RECLASSIFICATION' and not audit.get('sourcePreserved'):
+        raise ValueError('Curriculum-only publication requires an unchanged source snapshot')
     for reference in references:
         path = APP.parent / reference["source"]
-        if hashlib.sha256(path.read_bytes()).hexdigest() != reference["sha256"]:
+        if reference.get('hashScope') == 'FIRST_SHEET_ROWS':
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('excel_curriculum_import', APP / 'scripts/excel-curriculum-import.py')
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            actual_hash = module.first_sheet(path)['sha256']
+        else:
+            actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual_hash != reference["sha256"]:
             raise ValueError("Curriculum reference changed; repeat the source audit")
     categories = {c["id"] for c in payload["categories"]}
     keys = set()
@@ -76,6 +86,9 @@ def main():
           'content_format','skills','grades','category_ids','subject_ids','exam_ids'))=10""").strip() == "t"
     with sql_path.open("w", encoding="utf-8", newline="") as out:
         out.write("BEGIN;\nSELECT pg_advisory_xact_lock(738452019);\n")
+        if audit.get('type')=='CURRICULUM_RECLASSIFICATION':
+            out.write("DO $snapshot$ BEGIN IF (SELECT run_key FROM learning_catalog.current_run) IS DISTINCT FROM "
+                +literal(audit['previousRunKey'])+" THEN RAISE EXCEPTION 'Current catalog changed; repeat the curriculum snapshot audit'; END IF; END $snapshot$;\n")
         if not schema_ready:
             out.write((APP / "backend/src/main/resources/db/migration/V38__shared_learning_resource_labels.sql").read_text(encoding="utf-8"))
             out.write((APP / "backend/src/main/resources/db/migration/V39__learning_label_filter_indexes.sql").read_text(encoding="utf-8"))

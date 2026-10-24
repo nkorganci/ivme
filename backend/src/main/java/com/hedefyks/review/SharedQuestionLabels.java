@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 /** The same effective teacher decisions and controlled IDs as the library. */
 @Service
 public class SharedQuestionLabels {
+    public static final int MAX_CATEGORY_SELECTION = 100;
     private final ContentReviewService reviews;
     private final ReviewCatalog vocabulary;
     private final JdbcTemplate jdbc;
@@ -21,7 +22,7 @@ public class SharedQuestionLabels {
         if(!filter.hasSharedSelection() && jdbc.queryForObject("SELECT count(*) FROM learning_catalog.current_run",Integer.class)==0)return null;
         var known=new HashSet<String>();
         if(!filter.categoryId().isEmpty()) vocabulary.categories().forEach(c->known.add(c.get("id").toString()));
-        if(filter.categoryId().size()>20 || !known.containsAll(filter.categoryId()) || !Set.of("ANY","ALL").contains(filter.categoryMatch()))
+        if(filter.categoryId().size()>MAX_CATEGORY_SELECTION || !known.containsAll(filter.categoryId()) || !Set.of("ANY","ALL").contains(filter.categoryMatch()))
             throw ApiException.badRequest("Ortak konu filtresi geçersiz.");
         if(filter.questionTypeId()!=null && (!filter.questionTypeId().matches("taxonomy:[1-9][0-9]{0,17}") ||
             jdbc.queryForObject("SELECT count(*) FROM taxonomy_nodes WHERE id=? AND kind='QUESTION_TYPE' AND active",Integer.class,Long.parseLong(filter.questionTypeId().substring(9)))!=1))

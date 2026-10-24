@@ -1,228 +1,151 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { api, qs } from '../api.js';
 import { useAsync, usePageTitle } from '../hooks.js';
-import { curriculumFromCategories, topicId as legacyTopicId } from '../curriculum.js';
-import { topicNumberMap } from '../categorySelection.js';
-import { videoLessons, withVideoRows } from '../curriculumVideos.js';
-import LessonVideos from '../components/LessonVideos.jsx';
+import { categoryBranches } from '../categorySelection.js';
+import { referenceTopics, referenceUnits, distributionRows } from '../curriculumReference.js';
 import DataGrid from '../components/DataGrid.jsx';
-import { ErrorBox, Loading } from '../components/States.jsx';
+import Modal from '../components/Modal.jsx';
+import { Empty, ErrorBox, Loading } from '../components/States.jsx';
+import './Curriculum.css';
 
-const countTopics = (subject) => subject.units.reduce((total, unit) => total + unit.topics.length, 0);
-const percent = (done, total) => total ? Math.round(100 * done / total) : 0;
-const progressOf = (subjects, exam, progress) => {
-  const topics = subjects.flatMap(s=>s.units.flatMap(u=>u.topics.map(title=>({id:s.topicIds[title]}))));
-  return { total: topics.length, done: topics.filter((topic) => progress[topic.id]).length };
-};
+const number = value => value == null ? '—' : value.toLocaleString('tr-TR');
+const numeric = (field, headerName, extra = {}) => ({ field, headerName, cellDataType: 'number', minWidth: 85,
+  valueFormatter: ({ value }) => number(value), ...extra });
 
-function ProgressBar({ done, total }) {
-  const value = percent(done, total);
-  return <div className="curriculum-meter" role="progressbar" aria-label="Tamamlanan konular"
-    aria-valuenow={done} aria-valuemin="0" aria-valuemax={total}>
-    <span style={{ width: `${value}%` }} />
+function DistributionDetail({ item }) {
+  return <div className="curriculum-reference-detail">
+    <strong>{item.unit} · {item.topic}</strong>
+    <p>{item.verification || 'Kaynakta doğrulama notu yok.'}</p>
+    <p>{item.note || 'Bu konu için ek not bulunmuyor.'}</p>
+    <p className="muted small">KONULAR · Excel satırı {item.row}. ✓ kapsamda · ✓* sorular başka bir başlıkta toplandı.
+      “—” boş kaynak hücresidir; 0, kapsamda olup soru çıkmadığını belirtir.</p>
   </div>;
 }
 
 export default function Curriculum() {
   usePageTitle('Dersler');
   const [params, setParams] = useSearchParams();
-  const exam = params.get('sinav') === 'AYT' ? 'AYT' : 'TYT';
-  const metadata=useAsync(()=>api.get('/api/learning-resources/metadata'),[]);
-  const subjects = curriculumFromCategories(metadata.data?.categories||[])[exam];
-  const topicNumbers = topicNumberMap(metadata.data?.categories || []);
-  const selected = subjects.find((entry) => entry.id === params.get('ders')) ?? subjects[0] ?? {id:'',units:[]};
-  const [progress, setProgress] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(null);
-  const [saveError, setSaveError] = useState('');
+  const tab = params.get('tab') === 'dagilim' ? 'dagilim' : 'konular';
+  const exam = tab === 'dagilim' && (!params.get('sinav') || params.get('sinav') === 'all') ? '' : params.get('sinav') === 'AYT' ? 'AYT' : 'TYT';
+  const [unitId, setUnitId] = useState('');
+  const [years, setYears] = useState(false);
+  const [notes, setNotes] = useState(null);
+  const [saved, setSaved] = useState({});
   const [pending, setPending] = useState({});
-  const [expandedVideos, setExpandedVideos] = useState({});
-  const [videoTeacher, setVideoTeacher] = useState('all');
-  const [classification,setClassification]=useState('CURRENT');
-  const questionProgress=useAsync(()=>api.get('/api/learning-resources/progress'+qs({classification})),[classification]);
-  const progressById=new Map((questionProgress.data?.categories || []).map(c=>[c.categoryId,c]));
-  const coverage=useAsync(()=>api.get('/api/learning-resources/coverage'+qs({exam,subject:selected.id})),[exam,selected.id]);
-  const coverageById=new Map((coverage.data?.categories || []).map(c=>[c.categoryId,c]));
-  const topicId=(exam,subjectId,title)=>metadata.data?.categories.find(c=>c.canonicalUnit&&c.exam===exam&&c.subjectId===subjectId&&c.topic===title)?.id||legacyTopicId(exam,subjectId,title);
-
-  const load = async () => {
-    setLoading(true);
-    setLoadError(null);
+  const [saveError, setSaveError] = useState(null);
+  const metadata = useAsync(() => api.get('/api/learning-resources/metadata'), []);
+  const completion = useAsync(() => api.get('/api/curriculum/progress'), []);
+  const progress = useAsync(() => api.get('/api/learning-resources/progress?classification=CURRENT'), []);
+  const categories = useMemo(() => referenceTopics(metadata.data?.categories || []), [metadata.data]);
+  const subjects = useMemo(() => categoryBranches(categories.filter(c => !exam || c.exam === exam)), [categories, exam]);
+  const selectedSubject = tab === 'dagilim' && (!params.get('ders') || params.get('ders') === 'all') ? '' : subjects.find(s => s.id === params.get('ders'))?.id || subjects[0]?.id || '';
+  const scope = useMemo(() => categories.filter(c => (!exam || c.exam === exam) && (!selectedSubject || c.subjectId === selectedSubject)), [categories, exam, selectedSubject]);
+  const units = useMemo(() => referenceUnits(scope), [scope]);
+  const selectedUnit = units.some(u => u.id === unitId) ? unitId : '';
+  const coverage = useAsync(() => tab === 'konular' && selectedSubject ? api.get('/api/learning-resources/coverage' + qs({ exam, subject: selectedSubject })) : Promise.resolve(null), [tab, exam, selectedSubject]);
+  const byCoverage = new Map((coverage.data?.categories || []).map(c => [c.categoryId, c]));
+  const byProgress = new Map((progress.data?.categories || []).map(c => [c.categoryId, c]));
+  const completed = { ...Object.fromEntries((completion.data || []).map(row => [row.topicId, Boolean(row.completedAt)])), ...saved };
+  const change = patch => {
+    const next = new URLSearchParams(params);
+    for (const [key,value] of Object.entries(patch)) next.set(key, value);
+    setParams(next); setUnitId(''); setNotes(null);
+  };
+  const toggle = async row => {
+    setPending(p => ({ ...p, [row.id]: true })); setSaveError(null);
     try {
-      const rows = await api.get('/api/curriculum/progress');
-      setProgress(Object.fromEntries(rows.map((row) => [row.topicId, row.completedAt])));
-    } catch (error) { setLoadError(error); }
-    finally { setLoading(false); }
+      const response = await api.put('/api/curriculum/progress/' + encodeURIComponent(row.id), { completed: !completed[row.id] });
+      setSaved(current => ({ ...current, [row.id]: Boolean(response.completedAt) }));
+    } catch (error) { setSaveError(error); }
+    finally { setPending(p => ({ ...p, [row.id]: false })); }
   };
-  useEffect(() => { load(); }, []);
-
-  const setExam = (next) => {
-    setParams({ sinav: next });
-  };
-  const setSubject = (id) => {
-    setParams({ sinav: exam, ders: id });
-  };
-  const toggle = async (id) => {
-    const completed = !progress[id];
-    setPending((current) => ({ ...current, [id]: true }));
-    setSaveError('');
-    try {
-      const saved = await api.put(`/api/curriculum/progress/${encodeURIComponent(id)}`, { completed });
-      setProgress((current) => {
-        const next = { ...current };
-        if (saved.completedAt) next[id] = saved.completedAt;
-        else delete next[id];
-        return next;
-      });
-    } catch (error) { setSaveError(`${error.message} Konu durumu değiştirilmedi.`); }
-    finally { setPending((current) => { const next = { ...current }; delete next[id]; return next; }); }
-  };
-
-  const subjectProgress = selected ? progressOf([selected], exam, progress) : null;
-  const subjectTopics = selected?.units.flatMap((unit) => unit.topics)||[];
-  const categoryFor=row=>row.categoryId || (row.videoChild?'subtopic:'+row.parentId+':'+topicId(exam,selected.id,row.title):row.id);
-  const curriculumRows=subjectTopics.map(title=>({id:topicId(exam,selected.id,title),number:topicNumbers.get(topicId(exam,selected.id,title)),title,done:Boolean(progress[topicId(exam,selected.id,title)])}));
-  const curriculumIds=new Set(curriculumRows.map(row=>row.id));
-  const videoIds=new Set(curriculumRows.flatMap(row=>videoLessons(row.id).map(lesson=>'subtopic:'+row.id+':'+topicId(exam,selected.id,lesson.title))));
-  const sourceRows=(metadata.data?.categories || []).filter(c=>c.selectable !== false && c.exam===exam && c.subjectId===selected.id && !curriculumIds.has(c.id)
-    && !videoIds.has(c.id) && coverageById.has(c.id)).map(c=>({id:c.id,title:[c.topic,c.subtopic,c.detail].filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(' → '),source:true,number:'—',done:false}))
-    .sort((a,b)=>a.title.localeCompare(b.title,'tr'));
-  const rows=withVideoRows([...curriculumRows,...sourceRows],expandedVideos,{categories:metadata.data?.categories,exam,subjectId:selected.id});
-  const toggleVideos=id=>setExpandedVideos(current=>({...current,[id]:!current[id]}));
-  const allVideosExpanded=curriculumRows.every(row=>!videoLessons(row.id).length || expandedVideos[row.id]);
-  const subjectQuestionCount=coverage.data?.summary.bankCounts?.CIKMIS || 0;
-  const questionLink=(row,bank)=>{
-    const id=categoryFor(row),count=coverageById.get(id)?.bankCounts?.[bank] || 0;
-    return count?<Link to={(bank==='OGM'?'/soru-bankasi':'/cikmis-sorular')+qs({examType:exam,categoryId:[id]})}>{count.toLocaleString('tr-TR')} soru</Link>
-      :<span className="muted small">{coverage.loading?'Sayılıyor…':'—'}</span>;
-  };
-  const nextTopic = rows.find(row => !row.videoChild && !row.source && !row.done)?.displayTitle;
-
-  const columns = [
-    {colId:'questionProgress',headerName:'İlk deneme / tekrar',minWidth:190,flex:1,wrapText:true,autoHeight:true,cellRenderer:({data:row})=>{
-      const p=progressById.get(row && categoryFor(row));return p?<span>{p.total} tekil soru · {p.correct} doğru · {p.wrong} yanlış · {p.blank} boş<br/>{p.repeatAttempts} tekrar · {p.firstActiveSeconds} ilk deneme aktif saniyesi</span>:<span className="muted small">{questionProgress.loading?'Sayılıyor…':'Kayıt yok'}</span>;
-    }},
-    {colId:'sharedCoverage',headerName:'Tekil kaynak / doğrulanmış kapsam',minWidth:220,flex:1,wrapText:true,autoHeight:true,cellRenderer:({data:row})=>{
-      const c=coverageById.get(row && categoryFor(row));if(!c)return <span className="muted small">{coverage.loading?'Sayılıyor…':coverage.error?'Alınamadı':'Ortak kaynak kaydı yok'}</span>;
-      return <span>{c.QUESTION} soru · {c.PDF} PDF · {c.VIDEO} video · {c.NOTE} not<br/>{c.verifiedPdfPages} doğrulanmış sayfa · {c.verifiedVideoSeconds} saniye</span>;
-    }},
-    { colId:'sharedResources',headerName:'Ortak kaynaklar',minWidth:180,flex:1,autoHeight:true,cellRenderer:({data:row})=>{
-      if(!row)return null;
-      const categoryId=[categoryFor(row)];
-      return <div className="curriculum-cell-links"><Link to={'/konular-ve-kaynaklar'+qs({exam,subject:selected.id,categoryId})}>PDF / video / not</Link>
-        {<Link to={'/calisma/yeni'+qs({examType:exam,categoryId})}>Bu konudan pratik</Link>}</div>;
-    }},
-    { field: 'number', headerName: 'No', cellDataType: false, width: 48, minWidth: 48, maxWidth: 48, flex: 0, resizable: false,
-      valueFormatter: ({ value }) => typeof value === 'number' ? `${value}.` : value },
-    { field: 'displayTitle', headerName: 'Konu', minWidth: 130, flex: 1.6, autoHeight: true, wrapText: true,
-      cellRenderer: ({ data: row }) => row && <div className="curriculum-topic-title">
-        {row.videoChild && <small className="curriculum-source-mark">{row.parentTitle}</small>}
-        <span>{row.displayTitle}</span>{row.source &&
-          <small className="curriculum-source-mark">{row.unclassified ? 'Konu inceleme bekliyor' : 'Kaynak konu etiketi'}</small>}
-        {row.lessons.length > 0 && <button type="button" className="curriculum-video-toggle"
-          aria-expanded={Boolean(expandedVideos[row.id])} aria-label={`${row.displayTitle}: video alt konularını ${expandedVideos[row.id] ? 'gizle' : 'göster'}`}
-          onClick={() => toggleVideos(row.id)}>{expandedVideos[row.id] ? '▾ Alt konuları gizle' : `▸ ${row.lessons.length} video alt konusu`}</button>}
-      </div> },
-    {colId:'pdfs',headerName:'Ders anlatımı PDF',minWidth:100,flex:.8,autoHeight:true,cellRenderer:({data:row})=>row &&
-      (coverageById.get(categoryFor(row))?.PDF>0?<Link to={'/konular-ve-kaynaklar'+qs({exam,subject:selected.id,kind:'PDF',categoryId:[categoryFor(row)]})}>{coverageById.get(categoryFor(row)).PDF} PDF · sayfa aralıkları</Link>:<span className="muted small">{coverage.loading?'Sayılıyor…':'—'}</span>)},
-    {colId:'questions',headerName:'Soru bankası',minWidth:100,flex:.9,cellRenderer:({data:row})=>row && questionLink(row,'OGM')},
-    {colId:'cikmis',headerName:exam+' Çıkmış Sorular',minWidth:110,flex:1.2,cellRenderer:({data:row})=>row && questionLink(row,'CIKMIS')},
-    { colId: 'videos', headerName: 'Ders videosu · QR ve link', minWidth: 160, maxWidth: 250, flex: 1.8, autoHeight: true,
-      cellRenderer: ({ data: row }) => row?.videoChild ? <LessonVideos videos={row.videos} teacher={videoTeacher} lessonKey={`${row.parentId}:${topicId(exam,selected.id,row.title)}`}/>
-        : row && <div className="curriculum-cell-links">
-          {row.lessons.length > 0 ? <button type="button" className="curriculum-video-toggle"
-            aria-expanded={Boolean(expandedVideos[row.id])}
-            aria-label={`${row.displayTitle}: ders videolarını ${expandedVideos[row.id] ? 'gizle' : 'göster'}`}
-            onClick={() => toggleVideos(row.id)}>
-            {row.lessons.length} alt konu · {row.lessons.reduce((total, lesson) => total + lesson.videos.length, 0)} video
-            <span>{expandedVideos[row.id] ? 'Videoları gizle ▴' : 'Videoları aç ▾'}</span>
-          </button> : <span className="muted small">{row.source ? 'Konu eşleşmesi doğrulanınca eklenecek' : 'Henüz video eklenmedi'}</span>}
-        </div> },
-    { colId: 'done', headerName: 'Durum', width: 100, minWidth: 100, maxWidth: 100, flex: 0, resizable: false,
-      autoHeight: true, wrapText: true,
-      cellRenderer: ({ data: row }) => row?.videoChild ? <span className="muted small">Üst konuyla birlikte{row.done ? ' ✓' : ''}</span>
-        : row?.source ? <span className="muted small">—</span> : row && <button type="button"
-        className={`curriculum-done${row.done ? ' done' : ''}`} aria-pressed={row.done}
-        aria-label={`${row.title}: ${row.done ? 'bitti, geri al' : 'bitti olarak işaretle'}`}
-        disabled={Boolean(pending[row.id])} onClick={() => toggle(row.id)}>
-        {pending[row.id] ? 'Kaydediliyor…' : row.done ? 'Bitti ✓' : 'Bitti'}
-      </button> },
+  const topicRows = scope.filter(c => !selectedUnit || c.unitId === selectedUnit).map(c => {
+    const count = byProgress.get(c.id), bank = byCoverage.get(c.id)?.bankCounts;
+    return { ...c, done: Boolean(completed[c.id]), correct: count?.correct || 0, wrong: count?.wrong || 0,
+      solved: (count?.correct || 0) + (count?.wrong || 0), ogm: bank?.OGM || 0, cikmis: bank?.CIKMIS || 0 };
+  });
+  const distribution = useMemo(() => distributionRows(categories).filter(row => (!selectedSubject || row.subjectId === selectedSubject)
+    && (!exam || row[exam.toLowerCase()]) && (!selectedUnit || row.unitId === selectedUnit)), [categories, selectedSubject, exam, selectedUnit]);
+  const baseColumns = [
+    { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, wrapText: true, autoHeight: true },
+    { field: 'topic', headerName: 'Konu', minWidth: 260, flex: 2, wrapText: true, autoHeight: true },
+    { field: 'gradeLabel', headerName: 'Sınıf', minWidth: 75, maxWidth: 100 },
   ];
-
-  if(metadata.loading)return <Loading text="Ortak üniteler yükleniyor…"/>;
-  if(metadata.error)return <ErrorBox error={metadata.error} onRetry={metadata.retry}/>;
-  return <div className="curriculum-page">
-    <div className="page-head"><h1>Dersler</h1></div>
-    <p className="muted lead">Sınavını ve dersini seç. Konuyu çalışıp soru pratiği yaptıktan sonra “Bitti” ile işaretle; gerekirse geri al. İlerlemen hesabına kaydedilir.</p>
-    <label>İlerleme sınıflaması <select value={classification} onChange={e=>setClassification(e.target.value)}><option value="CURRENT">Güncel konu kapsamı</option><option value="HISTORICAL">İlk deneme anındaki etiketler</option></select></label>
-    {questionProgress.data && <p className="muted small">Tüm derslerde {questionProgress.data.summary.total} tekil ilk deneme · {questionProgress.data.unclassified} sınıflaması bilinmeyen kayıt. Konu alt toplamları örtüşebilir; genel toplam soruyu bir kez sayar. Eski boş etiketler bugünün etiketleriyle doldurulmaz.</p>}
-    {questionProgress.error && <ErrorBox error={questionProgress.error} onRetry={questionProgress.retry}/>}
-    {coverage.data && <p className="muted small">{coverage.data.summary.resources} tekil kaynak · {coverage.data.summary.physicalAssets} fiziksel kaynak · {coverage.data.summary.references} konu referansı.
-      Çok konulu kaynaklar konu alt toplamlarında tekrar görünebilir; genel toplamda bir kez sayılır. “Bitti” seçimi bağlı PDF/video parçalarını tamamlamaz. Sayfa okuma/izleme ilerlemesi kaydı yoktur.</p>}
-    <div className="curriculum-exams" role="group" aria-label="Sınav seçimi">
-      {['TYT', 'AYT'].map((value) => <button key={value} type="button"
-        className={`curriculum-exam${exam === value ? ' selected' : ''}`}
-        aria-pressed={exam === value} onClick={() => setExam(value)}>
-        <strong>{value}</strong>
-      </button>)}
+  const bankLink = (row, bank, count) => <Link to={(bank === 'OGM' ? '/soru-bankasi' : '/cikmis-sorular') + qs({ examType: exam, categoryId: [row.id] })}>{number(count)} soru</Link>;
+  const topicColumns = [
+    ...baseColumns,
+    numeric('ogm', 'Soru bankası', { cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) }),
+    numeric('cikmis', 'Çıkmış soru', { cellRenderer: ({ data }) => data && bankLink(data, 'CIKMIS', data.cikmis) }),
+    numeric('solved', 'Çözdüğüm'), numeric('correct', 'Doğru'), numeric('wrong', 'Yanlış'),
+    { colId: 'actions', headerName: 'Çalış', minWidth: 165, filter: false, sortable: false, autoHeight: true,
+      cellRenderer: ({ data }) => data && <div className="curriculum-cell-links">
+        <Link to={'/calisma/yeni' + qs({ examType: exam, categoryId: [data.id] })}>Pratik yap</Link>
+        <Link to={'/konular-ve-kaynaklar' + qs({ exam, subject: selectedSubject, categoryId: [data.id] })}>PDF · video · not</Link>
+      </div> },
+    { field: 'done', headerName: 'Durum', minWidth: 110, maxWidth: 140, filter: false,
+      cellRenderer: ({ data }) => data && <button type="button" className={`curriculum-done${data.done ? ' done' : ''}`}
+        aria-label={`${data.topic}: ${data.done ? 'tamamlamayı geri al' : 'tamamlandı işaretle'}`} aria-pressed={data.done}
+        disabled={completion.loading || Boolean(completion.error) || pending[data.id]} onClick={() => toggle(data)}>
+        {pending[data.id] ? 'Kaydediliyor…' : data.done ? 'Bitti ✓' : 'Bitti işaretle'}</button> },
+  ];
+  const distributionColumns = [
+    { field: 'subject', headerName: 'Ders', minWidth: 130, flex: 1, wrapText: true, autoHeight: true },
+    ...baseColumns,
+    { field: 'tyt', headerName: 'TYT', minWidth: 65, maxWidth: 85, valueFormatter: ({ value }) => value || '—' },
+    { field: 'ayt', headerName: 'AYT', minWidth: 65, maxWidth: 85, valueFormatter: ({ value }) => value || '—' },
+    numeric('tytTotal', 'TYT 2018–2026'), numeric('aytTotal', 'AYT 2018–2026'),
+    numeric('total', 'Toplam soru'), numeric('recent', 'Son 3 yıl 2024–2026'),
+    ...(years ? (exam ? [exam] : ['TYT','AYT']).flatMap(session => (distribution[0]?.years || []).map((year,index) => numeric(`${session}-${year}`, `${session} ${year}`,
+      { valueGetter: ({ data }) => data?.[`${session.toLowerCase()}Years`]?.[index] }))) : []),
+    { colId: 'notes', headerName: 'Açıklama', pinned: 'right', width: 110, minWidth: 110, maxWidth: 120, filter: false, sortable: false,
+      cellRenderer: ({ data }) => data && <button className="btn btn-secondary" type="button" aria-haspopup="dialog"
+        onClick={() => setNotes(data)}>Notları aç</button> },
+  ];
+  const done = scope.filter(c => completed[c.id]).length;
+  const source = metadata.data?.summary.curriculumReference || categories[0]?.curriculumReference;
+  if (metadata.loading) return <Loading text="Ders, ünite ve konular yükleniyor…" />;
+  if (metadata.error) return <ErrorBox error={metadata.error} onRetry={metadata.retry} />;
+  return <div className="curriculum-page curriculum-reference-page">
+    <div className="page-head"><h1>Dersler</h1><span className="curriculum-source-pill">2018–2026 · KONULAR</span></div>
+    <p className="muted lead">Dersini ve üniteni seç; konularını takip et, soru çöz veya yıllara göre soru dağılımını incele.</p>
+    <nav className="history-tabs" aria-label="Dersler bölümleri">
+      <button className={tab === 'konular' ? 'selected' : ''} type="button" aria-pressed={tab === 'konular'} onClick={() => change({ tab: 'konular' })}>Konu takibi</button>
+      <button className={tab === 'dagilim' ? 'selected' : ''} type="button" aria-pressed={tab === 'dagilim'} onClick={() => change({ tab: 'dagilim' })}>Konu ve soru dağılımı</button>
+    </nav>
+    <section className="card curriculum-reference-filters" aria-label="Müfredat filtreleri">
+      <label>Sınav<select aria-label="Sınav" value={exam} onChange={e => change({ sinav: e.target.value || 'all' })}>{tab === 'dagilim' && <option value="">TYT + AYT</option>}<option>TYT</option><option>AYT</option></select></label>
+      <label>Ders<select aria-label="Ders" value={selectedSubject} onChange={e => change({ ders: e.target.value || 'all' })}>
+        {tab === 'dagilim' && <option value="">Bütün dersler</option>}
+        {subjects.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+      </select></label>
+      <label>Ünite<select aria-label="Ünite" value={selectedUnit} onChange={e => { setUnitId(e.target.value); setNotes(null); }}>
+        <option value="">Bütün üniteler</option>{units.map(u => <option key={u.id} value={u.id}>{u.label}</option>)}
+      </select></label>
+      {tab === 'dagilim' && <label className="curriculum-years-toggle"><input type="checkbox" checked={years} onChange={e => setYears(e.target.checked)} />Yılları göster ({exam || 'TYT + AYT'})</label>}
+    </section>
+    <div className="curriculum-reference-summary" aria-live="polite">
+      <span><strong>{units.length}</strong> ünite</span><span><strong>{new Set(scope.map(c => c.excelRowId || c.id)).size}</strong> konu</span>
+      {tab === 'konular' && <span><strong>{done}/{scope.length}</strong> tamamlandı</span>}
+      <span><strong>{tab === 'dagilim' ? distribution.length : topicRows.length}</strong> satır gösteriliyor</span>
     </div>
-
-    {loading && <Loading text="Konu ilerlemen yükleniyor…" />}
-    {loadError && <ErrorBox error={loadError} onRetry={load} />}
-    {!loading && !loadError && <>
-      {coverage.error && <ErrorBox error={coverage.error} onRetry={coverage.retry}/>}
-      {metadata.error && <ErrorBox error={metadata.error} onRetry={metadata.retry}/>}
-
-      <div className="curriculum-layout">
-        <aside className="card curriculum-subjects" aria-label={`${exam} dersleri`}>
-          <h2>{exam} dersleri</h2>
-          <p className="muted small">Bir ders seçerek konularını aç.</p>
-          {subjects.map((entry) => {
-            const topics = Object.values(entry.topicIds).map(id=>({id}));
-            const done = topics.filter((topic) => progress[topic.id]).length;
-            return <button key={entry.id} type="button"
-              className={`curriculum-subject${selected?.id === entry.id ? ' selected' : ''}`}
-              aria-current={selected?.id === entry.id ? 'true' : undefined}
-              onClick={() => setSubject(entry.id)}>
-              <span><strong>{entry.name}</strong><small>{entry.area}</small></span>
-              <span className="curriculum-subject-count">{countTopics(entry)} konu · {done} bitti</span>
-              <ProgressBar done={done} total={countTopics(entry)} />
-            </button>;
-          })}
-        </aside>
-
-        <div className="curriculum-detail">
-          <>
-            {saveError && <p className="alert alert-error" role="alert">{saveError}</p>}
-            {selected.id === 'fizik' && <div className="curriculum-video-tools">
-              <label>Video hocası <select value={videoTeacher} onChange={(event) => setVideoTeacher(event.target.value)}>
-                <option value="all">İki hoca</option><option value="ozcan">Özcan Aykın</option><option value="altug">Altuğ Güneş</option>
-              </select></label>
-              <button type="button" className="curriculum-video-toggle" onClick={() => setExpandedVideos((current) => ({
-                ...current, ...Object.fromEntries(curriculumRows.map((row) => [row.id, !allVideosExpanded])),
-              }))}>{allVideosExpanded ? 'Video alt konularını kapat' : 'Tüm video alt konularını aç'}</button>
-              <p className="muted small">Konuyu aç; hocanı seçip bağlantıya tıkla veya QR kodunu okut. Alt konuların ilerlemesi üst konuyla birlikte kaydedilir.</p>
-            </div>}
-            <div className="card table-card tracking-scroll worksheet-frame curriculum-sheet">
-              <DataGrid mode="worksheet" scrollable rowData={rows} columnDefs={columns}
-                gridOptions={{ getRowId: ({ data }) => data.id,
-                  rowClassRules: { 'curriculum-row-done': ({ data }) => Boolean(data?.done),
-                    'curriculum-video-child': ({ data }) => Boolean(data?.videoChild) } }} />
-            </div>
-            <section className="card curriculum-detail-head">
-              <div className="page-head"><h2>{exam} · {selected.name}</h2><strong>%{percent(subjectProgress.done, subjectProgress.total)}</strong></div>
-              <ProgressBar {...subjectProgress} />
-              <p className="muted small">{subjectProgress.done} / {subjectProgress.total} konu bitti</p>
-              <p className="muted small">{coverage.loading?'Çıkmış sorular sayılıyor…':coverage.error?'Çıkmış soru sayısı alınamadı.':subjectQuestionCount.toLocaleString('tr-TR')+' tekil çıkmış soru · '+sourceRows.length+' ortak kaynak konusu ayrıca listelendi'}</p>
-              {nextTopic && <p className="curriculum-next">Sıradaki konu: <strong>{nextTopic}</strong></p>}
-              {!nextTopic && <p className="curriculum-next">Bu dersteki bütün konuları tamamladın.</p>}
-            </section>
-            <p className="muted small curriculum-link-note">{exam} Çıkmış Sorular sütunu yalnız seçili sınavın çıkmış sorularını açar. Müfredatla güvenilir biçimde eşleşmeyen kaynak konu etiketleri ayrı satırlardadır; “Konu sınıflandırılmamış” soruların konusu henüz doğrulanmamıştır. Konuları tablonun içinde aşağı kaydır; dar ekranda diğer sütunlar için sağa kaydır.</p>
-          </>
-        </div>
-      </div>
-      <p className="curriculum-sources muted small">Konu listesi çalışma amaçlı düzenlendi. Kaynaklar: <a href="https://ogmmateryal.eba.gov.tr/mebi-konu-ozetleri" target="_blank" rel="noreferrer">MEB OGM Materyal konu özetleri</a> · <a href="https://ogmmateryal.eba.gov.tr/yks-konu-anlatim" target="_blank" rel="noreferrer">YKS konu anlatımları</a> · <a href="https://www.osym.gov.tr/SinavGrubu/Menu/317" target="_blank" rel="noreferrer">ÖSYM YKS kılavuzları</a>.</p>
+    {saveError && <ErrorBox error={saveError} />}
+    {completion.error && <ErrorBox error={completion.error} onRetry={completion.retry} />}
+    {tab === 'konular' && <>
+      {coverage.loading && <p role="status" className="muted small">Soru bankası sayıları yükleniyor…</p>}
+      {coverage.error && <ErrorBox error={coverage.error} onRetry={coverage.retry} />}
+      {progress.error && <ErrorBox error={progress.error} onRetry={progress.retry} />}
     </>}
+    {(tab === 'dagilim' ? distribution : topicRows).length ? <section className="card table-card curriculum-reference-grid" aria-label={tab === 'dagilim' ? 'Konu ve soru dağılımı tablosu' : 'Ders ünite konu takibi'}>
+      <DataGrid key={`${tab}:${exam}`} rowData={tab === 'dagilim' ? distribution : topicRows}
+        columnDefs={tab === 'dagilim' ? distributionColumns : topicColumns} showColumnFilters
+        gridOptions={{ getRowId: ({ data }) => data.id }} />
+    </section> : <Empty title="Bu seçimde konu bulunamadı." />}
+    <p className="muted small">{tab === 'dagilim'
+      ? '✓ Kapsamda · ✓* Sorular toplu bir başlıkta sayılmış. — Kaynakta boş; 0 kapsamda olup soru çıkmamış. Yılları açabilir, sütunlardan sıralayıp filtreleyebilir ve tabloda arayabilirsin.'
+      : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'}</p>
+    <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop() || 'YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx'} · yalnız ilk sayfa ({source?.sheet || 'KONULAR'}).
+      Dersler, Soru Çöz ve İlerlemem aynı ders, ünite ve konu kayıtlarını kullanır.</p>
+    {notes && <Modal title="Konu açıklaması" onClose={() => setNotes(null)}><DistributionDetail item={notes} /></Modal>}
   </div>;
 }

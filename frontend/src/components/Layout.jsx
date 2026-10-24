@@ -5,7 +5,7 @@ import { APP_NAME, STUDY_LABEL, STATISTICS_LABEL } from '../config.js';
 import { displayName } from '../format.js';
 import Icon from './Icons.jsx';
 import { api } from '../api.js';
-import { CURRICULUM } from '../curriculum.js';
+import { loadSharedCatalog } from './SharedCategorySelect.jsx';
 import {CURRICULUM_HOME,isResourcePath} from './ResourcesNavigation.jsx';
 import { useDisplayPreference } from '../useDisplayPreference.js';
 
@@ -21,7 +21,6 @@ const ITEMS = [
 ];
 const TRACKING_PATH = '/ogrenci-takip';
 const REVIEW_PATH = '/ogretmen-dogrulamasi';
-const REVIEW_BRANCHES = [...new Map(Object.values(CURRICULUM).flat().map(s => [s.id, s.name])).entries()];
 const TRACKING_ITEMS = [
   [TRACKING_PATH, 'Haftalık Program'],
   [`${TRACKING_PATH}/matematik-ozel-ders`, 'Matematik Özel Ders'],
@@ -56,6 +55,13 @@ export default function Layout() {
     return () => { active = false; };
   }, []);
   const localReviewSwitch = localReviewerAvailable && ['localhost', '127.0.0.1'].includes(location.hostname);
+  const [reviewBranches,setReviewBranches]=useState([]);
+  useEffect(()=>{
+    if(!localReviewSwitch && user.role!=='OPERATOR')return;
+    let active=true;
+    loadSharedCatalog().then(metadata=>{if(active)setReviewBranches(metadata.branches.map(b=>[b.id,b.name]));}).catch(()=>{});
+    return()=>{active=false;};
+  },[localReviewSwitch,user.role]);
   const switchReview = async (branch = 'fizik') => {
     setSwitchingReview(true); setReviewSwitchError('');
     try {
@@ -164,7 +170,7 @@ export default function Layout() {
                 <Icon name={icon} /><span className="label">{text}</span><span className="side-nav-chevron label" aria-hidden="true">{reviewOpen ? '▴' : '▾'}</span>
               </button>
               {reviewOpen && !rail && <div id="review-subnav" className="side-subnav">
-                {[['all','Bütün branşlar'], ...REVIEW_BRANCHES].map(([id,name]) => <NavLink key={id} to={`${REVIEW_PATH}/${id}`}
+                {[['all','Bütün branşlar'], ...reviewBranches].map(([id,name]) => <NavLink key={id} to={`${REVIEW_PATH}/${id}`}
                   className={({ isActive: selected }) => selected ? 'active' : ''}
                   onClick={e => { if (user.role !== 'OPERATOR') { e.preventDefault(); switchReview(id); } }}>{name}</NavLink>)}
               </div>}

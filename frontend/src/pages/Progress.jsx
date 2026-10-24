@@ -6,6 +6,7 @@ import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { formatNet } from '../format.js';
 import { categoryBranches } from '../categorySelection.js';
 import { progressCategories, topicProgressRows } from '../topicProgress.js';
+import { referenceUnits } from '../curriculumReference.js';
 import './Progress.css';
 
 function SubjectHeader({ subjects, selectedSubject, onSubjectChange }) {
@@ -28,6 +29,7 @@ const RESULT_COLUMNS = [
 
 export default function Progress() {
   const [subjectId, setSubjectId] = useState('');
+  const [unitId, setUnitId] = useState('');
   const { data, loading, error, retry } = useAsync(async () => {
     const [metadata, progress] = await Promise.all([
       api.get('/api/learning-resources/metadata'),
@@ -38,8 +40,10 @@ export default function Progress() {
   const categories = useMemo(() => progressCategories(data?.metadata.categories ?? []), [data]);
   const subjects = useMemo(() => categoryBranches(categories), [categories]);
   const selectedSubject = subjects.find(subject => subject.id === subjectId)?.id ?? subjects[0]?.id ?? '';
-  const rows = useMemo(() => topicProgressRows(categories, data?.progress.categories ?? [], selectedSubject),
-    [categories, data, selectedSubject]);
+  const units = useMemo(() => referenceUnits(categories.filter(c => c.subjectId === selectedSubject)), [categories, selectedSubject]);
+  const selectedUnit = units.some(u => u.id === unitId) ? unitId : '';
+  const rows = useMemo(() => topicProgressRows(categories, data?.progress.categories ?? [], selectedSubject).filter(c => !selectedUnit || c.unitId === selectedUnit),
+    [categories, data, selectedSubject, selectedUnit]);
   const columns = useMemo(() => [
     { field: 'subject', headerName: 'Ders', minWidth: 190, sortable: false, filter: false,
       headerComponent: SubjectHeader,
@@ -47,18 +51,22 @@ export default function Progress() {
     { field: 'exam', headerName: 'Sınav', minWidth: 85, sortable: true, filter: false },
     { field: 'gradeLabel', headerName: 'Sınıf', minWidth: 125, sortable: true, filter: false,
       wrapText: true, autoHeight: true, cellStyle: {lineHeight:'1.35'} },
+    { field: 'unit', headerName: 'Ünite', minWidth: 180, sortable: true, filter: true, wrapText: true, autoHeight: true },
     { field: 'topicLabel', headerName: 'Konu', minWidth: 280, flex: 2,
       wrapText: true, autoHeight: true, sortable: true, filter: false,
       comparator: (a, b) => String(a ?? '').localeCompare(String(b ?? ''), 'tr', { numeric: true }) },
     ...RESULT_COLUMNS,
   ], [subjects, selectedSubject]);
   return <section aria-label="İlerleme istatistikleri">
+    {units.length > 0 && <label>Ünite <select aria-label="İlerleme ünitesi" value={selectedUnit} onChange={event => setUnitId(event.target.value)}>
+      <option value="">Bütün üniteler</option>{units.map(unit => <option key={unit.id} value={unit.id}>{unit.label}</option>)}
+    </select></label>}
     {loading && <Loading text="İlerleme yükleniyor…" />}
     {error && <ErrorBox error={error} onRetry={retry} />}
     {data && (subjects.length ? <section className="card table-card" aria-label="Derse göre ilerleme tablosu">
       <DataGrid key={selectedSubject} columnDefs={columns} rowData={rows} mode="worksheet" scrollable columnSorting showSearch={false}
         gridOptions={{ headerHeight: 80, getRowId: ({ data: row }) => row.categoryId }} />
-      <p className="statistics-table-note muted small">Tüm geçmişteki tamamlanmış test ve denemeler. Her sorunun ilk çözümü sayılır; tekrarlar toplamı artırmaz.</p>
+      <p className="statistics-table-note muted small">Ders, ünite ve konu adları Dersler ve Soru Çöz ile aynı Excel kaynağından gelir. Tüm geçmişteki tamamlanmış test ve denemelerde her sorunun ilk çözümü sayılır; tekrarlar toplamı artırmaz. Otomatik konu eşleşmeleri tahminidir ve konu alt toplamları örtüşebilir.</p>
     </section> : <Empty title="Henüz yayımlanmış ders ve konu bulunmuyor." />)}
   </section>;
 }

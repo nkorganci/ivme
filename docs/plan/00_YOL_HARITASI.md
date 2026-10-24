@@ -1,6 +1,6 @@
 # İvme — etiketleme öncelikli yol haritası
 
-Güncelleme: 18 Ekim 2026. Bütün branşlar Ark referansındaki 237 TYT/AYT ünitesini kullanır; çalışma anındaki tek doğruluk kaynağı PostgreSQL'dir. Belirsiz ünite/sınıf etiketleri tahmini olarak filtrelenir ve öğretmen kontrolüyle güncellenir. Kalan insan incelemesi ve dış girdiler 7/12 maddelerindedir.
+Güncelleme: 23 Ekim 2026. Main ortamında ders/ünite/konu ve soru dağılımı yalnız verilen Excel’in ilk KONULAR sayfasındaki 453 satırdan gelir (12 ders, 146 ünite; 178 TYT / 352 AYT konu kimliği); çalışma anındaki tek doğruluk kaynağı PostgreSQL’dir. Belirsiz ünite/sınıf etiketleri tahmini olarak filtrelenir ve öğretmen kontrolüyle güncellenir. Kalan insan incelemesi ve dış girdiler 7/12 maddelerindedir.
 
 Tek yapılacaklar kaynağı bu dizindir. “Eksikler” ayrı bir liste değildir; her eksik ilgili numaralı adımda bir yapılacak iştir. Tamamlanan alt işler listeden çıkarılır; bütün alt işleri doğrulanarak kapanan adımın `.md` dosyası silinir. Kalan adımların numaraları ve dosya adları değiştirilmez: 1 bitince liste 2. adımdan devam eder. Kullanıcı yalnız plan düzenlemesi istiyorsa uygulama kodu, DB ve kaynak içerik değiştirilmez; uygulama talimatında ilgili iş yürütülür ve geçmiş kayıtlar korunur.
 

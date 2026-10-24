@@ -2,9 +2,8 @@ import { useEffect,useId,useState } from 'react';
 import {loadSharedCatalog} from './SharedCategorySelect.jsx';
 import SharedResourceSelect from './SharedResourceSelect.jsx';
 import {Link} from 'react-router-dom';
-import { CURRICULUM } from '../curriculum.js';
 import { assignmentSummary, blankLearning, ERROR_TYPES, MASTERY, scoreSummary } from '../mathLearning.js';
-import { categoryTopic } from '../categorySelection.js';
+import { categoryTopic, categoryOptions } from '../categorySelection.js';
 
 function Field({ label, value, onChange, type = 'text', ...props }) {
   return <label className="math-learning-field"><span>{label}</span>
@@ -31,7 +30,7 @@ export default function MathLearningPanel({ item, actions }) {
   const setAssignment = (field, value) => set('assignment', { ...assignment, [field]: value });
   const homework = assignmentSummary(assignment);
   const homeworkScore = scoreSummary(assignment);
-  const topics = CURRICULUM[learning.examType].find((subject) => subject.id === (learning.branch === 'GEOMETRY' ? 'geometri' : 'matematik'));
+  const topics = categoryOptions(catalog?.categories || [], { examType: learning.examType, subject: 'matematik' });
   const before = scoreSummary(learning.beforeTest);
   const after = scoreSummary(learning.afterTest);
   return <section className="math-learning-panel" aria-label={`${item.isNew ? 'Yeni ders' : `Ders ${item.number}`} öğrenme takibi`}>
@@ -41,9 +40,8 @@ export default function MathLearningPanel({ item, actions }) {
       <div className="math-learning-sections">
         <fieldset><legend>Konu ve hedef</legend>
           <label className="math-learning-field"><span>Kaynaklara bağlı konu</span><select value={learning.categoryId || ''} onChange={e=>set('categoryId',e.target.value || null)}>
-            <option value="">{catalog?'Konu seç…':'Konular yükleniyor…'}</option>{(catalog?.categories || []).filter(c=>c.exam===learning.examType
-              && c.subjectId===(learning.branch==='GEOMETRY'?'geometri':'matematik') && (c.origin==='CURRICULUM' || c.parentId))
-              .map(c=><option key={c.id} value={c.id}>{categoryTopic(c)}</option>)}</select></label>
+            <option value="">{catalog?'Konu seç…':'Konular yükleniyor…'}</option>{topics
+              .map(c=><option key={c.id} value={c.id}>{c.unit ? `${c.unit} → ` : ''}{categoryTopic(c)}</option>)}</select></label>
           {!learning.categoryId && item.topic && <p className="muted small">Ders başlığınız korundu; kaynak ve konu takibi için ortak konu seçimi bekliyor.</p>}
           <SharedResourceSelect value={learning.resourceKeys || []} categoryId={learning.categoryId?[learning.categoryId]:[]} onChange={value=>set('resourceKeys',value)}/>
           {learning.categoryId && <Link to={'/konular-ve-kaynaklar?categoryId='+encodeURIComponent(learning.categoryId)}>Konuya bağlı kaynakları aç</Link>}
@@ -54,7 +52,7 @@ export default function MathLearningPanel({ item, actions }) {
               <option value="MATHEMATICS">Matematik</option><option value="GEOMETRY">Geometri</option></select></label>
           </div>
           <Field label="Konu" value={item.topic} maxLength={1000} list={topicList} onChange={(value) => actions.current.setField(item, 'topic', value)} />
-          <datalist id={topicList}>{topics.units.flatMap((unit) => unit.topics).map((topic) => <option key={topic} value={topic} />)}</datalist>
+          <datalist id={topicList}>{topics.map((topic) => <option key={topic.id} value={topic.topic} />)}</datalist>
           <Field label="Alt konu" value={learning.subtopic} maxLength={1000} placeholder="Örn. bileşke fonksiyon" onChange={(value) => set('subtopic', value)} />
           <Field label="Ders hedefi" value={learning.goal} maxLength={2000} onChange={(value) => set('goal', value)} />
           <label className="math-learning-field"><span>Konu seviyesi</span><select value={learning.mastery} onChange={(event) => set('mastery', event.target.value)}>

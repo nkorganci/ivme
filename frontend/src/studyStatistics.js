@@ -39,13 +39,16 @@ export async function loadStudyHistory(path, get = api.get) {
 
 export function practiceScope(item, categories = []) {
   const byId = new Map(categories.map(category => [category.id, category]));
-  const selected = (item.categoryIds || []).map(id => byId.get(id)).filter(Boolean)
+  const selected = [...new Map((item.categoryIds || []).flatMap(id => {
+    const category = byId.get(id);
+    return (category?.canonicalTopicIds || [id]).map(target => byId.get(target)).filter(Boolean);
+  }).map(c => [c.id,c])).values()]
     .sort((a, b) => (a.exam || '').localeCompare(b.exam || '', 'tr')
       || (a.subject || '').localeCompare(b.subject || '', 'tr')
       || (a.topicNumber ?? Number.MAX_SAFE_INTEGER) - (b.topicNumber ?? Number.MAX_SAFE_INTEGER));
-  const branch = selected[0] || categories.find(category => category.subjectId === item.subject || category.subject === item.subject);
+  const branch = selected[0] || categories.find(category => category.selectable !== false && (category.subjectId === item.subject || category.subject === item.subject));
   const subjects = [...new Set(selected.map(category => category.subject))];
-  const topics = [...new Set(selected.map(categoryTopic))];
+  const topics = [...new Set(selected.map(category => [category.unit,categoryTopic(category)].filter(Boolean).join(' → ')))];
   return {
     subject: subjects.length > 1 ? 'Karma dersler' : subjects[0] || branch?.subject || item.subject || 'Karma dersler',
     topic: topics.length ? topics.join('; ') : item.categoryIds?.length ? 'Seçilen konu katalogda bulunamadı'

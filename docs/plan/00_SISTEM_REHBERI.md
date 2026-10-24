@@ -18,7 +18,8 @@ Uygulamanın `veri/` dizini büyük üretim çıktıları, önbellekler ve denet
 ```mermaid
 flowchart LR
     S[Özgün PDF, soru, video ve not girdileri] --> I[Kaynak envanteri ve hash kontrolü]
-    T[content-taxonomy.json] --> G[Ortak kimlikle üretim]
+    X[Excel ilk KONULAR sayfası] --> T[content-taxonomy.json]
+    T --> G[Ortak kimlikle üretim]
     I --> G
     C[Sayfa çıkarım önbelleği] --> G
     G --> V[Şema, kaynak, konum ve kapsam denetimi]
@@ -34,8 +35,8 @@ flowchart LR
 
 | Bilgi | Bakım/üretim kaynağı | Tüketim ve sınır |
 |---|---|---|
-| Kontrollü kategori taslağı, alias ve üst konu | `backend/src/main/resources/content-taxonomy.json` | Sürümlü üretim/kabul girdisi; çalışma anında kategori tanımının yerine geçmez |
-| Seçilebilir üniteler | Aynı sözlükte `canonicalUnit=true`; çalışma anında DB metadata | 106 TYT / 131 AYT; alt başlıklar seçilebilir ünite oluşturmaz. `SOURCE_CURRICULUM` yalnız eski çıkarım girdisidir |
+| Ders, ünite, konu ve soru dağılımı | `Kaynaklar/mufredat/YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx` dosyasının yalnız ilk `KONULAR` sayfası → üretilmiş `content-taxonomy.json` | Çalışma anında tek kayıt `learning_catalog.current_categories.definition`; diğer sayfalar ve eski müfredat listeleri seçilebilir başlık üretmez |
+| Seçilebilir konular ve ünite grupları | Aynı DB kategori kaydında `canonicalUnit=true`, `unitId`, `unit`, `excelRowId` | 453 kaynak satırı, 12 ders, 146 ünite; kapsam işaretlerine göre 178 TYT / 352 AYT kimliği. `canonicalUnit` eski API alanıdır ve seçilebilir konu satırını belirtir |
 | Zorluk, beceri, içerik türü, ilişki ve inceleme değerleri | `backend/src/main/resources/review-vocabulary.json` | Konu kimliğinden ayrı boyutlardır |
 | Etkin yayımlanmış etiket sürümü | PostgreSQL `learning_catalog.current_run` | Aynı sürümün `current_items`, `current_categories`, `current_assignments` görünümleri |
 | Yerel üretim adayı | `veri/content-labels/labels.json` ve `report.json` | Üretilmiş çıktı; elle düzeltilmez, yayımlanmış sürümle aynı olduğu varsayılmaz |
@@ -102,56 +103,54 @@ düzeltmesi eski dosyayı/sürümü koruyan ayrı işlemdir.
 
 ## Kimlikler ve sayım
 
-Kullanıcının bütün branşlar için seçtiği referans
-[Ark TYT/AYT çizelgesidir](https://arkyks.com/rehber/yks-konu-takip-cizelgesi).
-237 ünite aynı `content-taxonomy.json` sözlüğünde `canonicalUnit`, `canonicalTopic`,
-`order`, `estimatedGrades` ve `selectable` alanlarını taşır. Biyoloji 8 TYT / 17 AYT,
-fizik 14 TYT / 20 AYT ünitesidir. Önceki 46 fizik başlığı yeni referansa yönlendirilir.
-Yayımlanmış `learning_catalog.current_categories.definition.topicNumber` öğrenciye
-görünen numaranın tek çalışma zamanı kaynağıdır. V74 mevcut `order` değerinden
-her sınav ve ders içinde 1'den başlayan numarayı aynı kategori kaydına yazar;
-sonraki yayınlar da bunu yayın sırasında yapar. Dersin konu toplamı aynı
-seçilebilir kanonik kayıtların sayısıdır; ikinci bir ders/konu referans tablosu
-tutulmaz. Pratik geçmişi, konu seçimleri ve İlerlemem adları kayıtlı kategori
-kimliklerinden çözülür; görüntü adındaki numara öğrenci geçmişine kopyalanmaz.
-AYT Felsefe Grubu referansındaki dört başlık mevcut felsefe/psikoloji/sosyoloji/mantık
-branşlarının her birinde tek ünite olarak korunur. Sınıfı bilinmeyen üniteden kesin
-sınıf türetilmez. Eski kimlikler `selectable=false` ve `canonicalTopicIds` ile kalır.
+Müfredatın tek içerik referansı `Kaynaklar/mufredat/YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx`
+dosyasının ilk `KONULAR` sayfasıdır. Diğer Excel sayfaları okunmaz. İçe aktarıcı,
+4. satırdaki başlıkları doğrular ve 5–457 arasındaki 453 satırın ders, sınıf,
+ünite, konu, kapsam işaretleri, toplamlar, notlar ve 2018–2026 sayılarını aynen alır.
+`✓*`, boş hücre ve 0 birbirinden ayrıdır; toplu başlıklar için sayı dağıtılmaz.
 
-`scripts/canonical-units-import.mjs` kaydedilmiş kaynak listesini ortak sözlüğe
-işler; bağımsız çalışma sözlüğü üretmez. `scripts/canonical-units.mjs` çıkarım ve
-konum bağlarından sonra bütün kaynak türlerinin ilişkilerini birleştirir. Aynı
-üniteye gelen alt başlıklar tek ilişki olur; tekil soru ve kaynak sayımı korunur.
-Özgün adlar, kaynak kimlikleri, dosyalar ve önceki yayımlanmış etiket sürümü saklanır.
-Tam eski kanıt önceki sürüm/yedektedir; `legacyUnitAssignments` eski kimlikleri taşır.
-Tahmini ünitelere eski alt başlığın doğrulanmış konumu kopyalanmaz.
+Çalışma anında bütün ekranların tek ders/ünite/konu tablosu PostgreSQL
+`learning_catalog.current_categories` görünümüdür. `definition` içindeki `unitId`,
+`unit`, `topic`, `subjectId`, `subject`, `gradeLabel` ve `distribution` alanları
+aynı kayıttan sunulur. Ayrı dağılım tablosu veya ön yüzde elle yazılmış ders listesi
+yoktur. `curriculumReference.js` yalnız bu DB metadata'sının sunum projeksiyonudur.
+Dersler'deki Konu takibi ve Konu ve soru dağılımı sekmeleri, Soru Çöz/pratik,
+soru bankası ve İlerlemem aynı kimlikleri kullanır. Dağılım tablosu iki sınavda
+olan satırları `excelRowId` ile bir kez gösterir. İlerleme sınav başına kimlikle
+hesaplanır; tekil soru genel toplamda çoğalmaz. Bir ünite iki sınavda 26 konu
+kimliğine sahip olabildiğinden ortak seçim sınırı 100'dür; ünite seçimi kesilmez.
 
-Kullanıcının ek talimatıyla hiçbir soru/PDF etiketsiz bırakılmaz. Belirsiz ünitede
-kanıtın desteklediği adaylar `scopeStatus=CANDIDATE`, `confidence=LOW` ile atanır.
-Dar üniteye yetecek kanıt yoksa `system.<branş>.<sınav>.konu-incelemesi` geniş kapsam
-tahmini korunur; rastgele ünite uydurulmaz. `gradeStatus=ESTIMATED` ve `gradeReason`
-sınıf tahminini açıklar; kaynağın sınıfı yoksa TYT için olası 9/10, AYT için 11/12
-sınıfları filtrelenebilir. Bu alanlar öğretmen onayı değildir.
+`scripts/excel-curriculum-import.py` yalnız ilk sayfayı okur; aynı adlı `.mjs`
+içe aktarıcı mevcut kontrollü sözlüğü günceller. İlk kimlikler ders/ünite/konu
+bileşiminden deterministik üretilir; sonraki içe aktarımlarda mevcut satır ve ad
+eşleşmeleri korunur. Satır kayması veya izlenebilen başlık düzeltmesi kimliği
+değiştirmez; kaldırılan sınav/konu kimlikleri seçilemeyen tarihsel kayıt olarak kalır.
+`unitReference.sha256` yalnız ilk sayfadaki veri satırlarının hash'idir. Eski
+kimlikler `selectable=false` ve `canonicalTopicIds` yönlendirmeleriyle korunur.
+`SOURCE_CURRICULUM`, eski PDF/video çıkarımı için tutulur; seçilebilir sözlük
+veya kullanıcıya gösterilen ders/konu referansı olamaz.
 
-Kaynak kütüphanesinde `labelStatus=ESTIMATED/APPROVED/UNRESOLVED` ile tahmini,
-öğretmen onaylı veya geniş kapsam etiketleri; `grade` ile olası sınıflar süzülür.
-Öğretmen kuyruğunda `labelState=ESTIMATED` bütün branşlar için çalışır.
-`PUT /api/operator/content-review/topics` yayımlanmış üniteleri kabul eder;
-`topicSelectionOnly=true` ve ilişki düzeyinde `CONFIRMED` ünite seçimini doğrular.
-Genel karar `FIX`, cevap/görsel/içerik kontrolleri `UNSURE` kalır; sınıf tahmini
-ayrıca kontrol edilir. Kaynak parmak izi ve karar sürümü eşzamanlı güncellemeyi korur.
-Tam öğretmen kararı aynı geçmiş mekanizmasında önceliklidir.
+Mevcut bir yayını kayıpsız taşımak için sırasıyla `excel-curriculum-snapshot.py`,
+`excel-curriculum-import.py`, `node --max-old-space-size=6144 scripts/excel-curriculum-relabel.mjs`,
+`learning-resource-check.mjs`, `excel-curriculum-audit.py` ve
+`content-label-publish.py --database ivme` kullanılır. Snapshot, mevcut DB
+kataloğunu aynı okuma işlemi içinde alır. Denetim kaynak kimliklerini ve kaynak
+sürümlerini mevcut DB ile birebir karşılaştırır; eski çıkarım denetimi ayrıca
+saklanır ve yeniden yapılmış gibi gösterilmez. Yayın önceki katalog hâlâ
+etkinse tek işlemde geçer. Önceki sürüm ve öğrenci geçmişi korunur.
 
-Soru listesi/ayrıntısı, PDF adı, pratik/deneme soru satırları ve güncel ilerleme
-aynı DB etiketini kullanır. `questions.topic` kaynak başlığı, eski cevaplar, puanlar
-ve etiket anlık kayıtları korunur. Yeni deneme satırının ünite adı ve anlık etiketi
-ortak referanstan alınır. Müfredat ekranı üniteleri doğrudan DB metadata'dan kurar;
-video ayrıntıları yeni seçilebilir alt başlık oluşturmaz.
+Soru/PDF/video ilişkileri yalnız Excel'in aynı sınav ve ders kapsamındaki
+konularına eşlenir. Kaynak başlığından türetilen ilişkiler `CANDIDATE/LOW`
+olarak görünür; geniş kaynak birden fazla aday konuya bağlanabilir. Dar konu
+kanıtı olmayan kayıt, ilgili dersin seçilemeyen `system.*.konu-incelemesi`
+etiketiyle korunur. Öğretmen onayı, konuya özel PDF/video konumu veya dar konu
+başarısı uydurulmaz. `questions.topic`, cevaplar ve olay anındaki etiket
+anlık kayıtları değiştirilmez. Güncel istatistikler yeni ortak kimlikleri,
+tarihsel sınıflama kayıt anındaki etiketleri kullanır.
 
-Eski kategori bağlantıları, seçim başına `canonicalTopicIds` grubu olarak çözülür.
-Bir eski konu birkaç yeni konuya ayrıldığında grup içi eşleşme ANY, birden fazla
-seçimde istenen gruplar arası ANY/ALL korunur. V55 aynı kuralı ortak soru SQL'ine
-uygular. Kaynak başlığı yeni temel konu veya otomatik öğretmen onayı oluşturmaz.
+Eski tek hedefli tamamlanma, yeni kimlikle gösterilebilir; birden çok konuya
+ayrılan eski tamamlanma bütün alt konuları bitmiş saymaz. Geri alma tek hedefli
+eski bağları da aynı işlemde kaldırır. Ayrı bir öğrencinin kaydı etkilenmez.
 
 - `categoryId` kavramı, `itemKey` katalog kaydını, `canonicalAssetId`/envanterdeki
   `entityKey` aynı fiziksel/sağlayıcı varlığını, `relationKey` kaynak–kategori ilişkisini tanımlar.

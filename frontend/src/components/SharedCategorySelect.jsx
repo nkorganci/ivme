@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { api, qs } from '../api.js';
-import { categoryGroups, categoryLabel, categoryOptions, categoryTopic } from '../categorySelection.js';
+import { categoryGroups, categoryLabel, categoryOptions, categoryTopic, MAX_CATEGORY_SELECTION } from '../categorySelection.js';
 import { Field } from './Field.jsx';
 import BranchCategoryPicker from './BranchCategoryPicker.jsx';
 
@@ -91,12 +91,18 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
     [branchFirst, categories, examType, countsQuery, currentCounts, ids.join('|')]);
   const groups = useMemo(() => categoryGroups(options), [options]);
   const suggestions = showDropdown ? options.slice(0, 20) : options;
-  const suggesting = !disabled && open && search.trim().length > 0 && !!data && ids.length < 20;
+  const suggesting = !disabled && open && search.trim().length > 0 && !!data && ids.length < MAX_CATEGORY_SELECTION;
   const activeOption = suggestions[activeIndex];
   const compact = !showMatch && !(questionFilters && showQuestionTypes);
   const change = patch => onChange({ ...value, categoryId: ids, categoryMatch: match, includeCandidates: include, ...patch });
+  useEffect(() => {
+    if(!data || !ids.length)return;
+    const byId=new Map(categories.map(c=>[c.id,c]));
+    const mapped=[...new Set(ids.flatMap(id=>byId.get(id)?.canonicalTopicIds?.length ? byId.get(id).canonicalTopicIds : [id]))];
+    if(mapped.length<=MAX_CATEGORY_SELECTION && mapped.join('|')!==ids.join('|'))change({categoryId:mapped});
+  }, [data, ids.join('|')]);
   const select = category => {
-    if (!category || ids.includes(category.id) || ids.length >= 20) return;
+    if (!category || ids.includes(category.id) || ids.length >= MAX_CATEGORY_SELECTION) return;
     change({ categoryId: [...ids, category.id], examType: category.exam });
     setSearch(''); setOpen(false); setActiveIndex(0);
   };
@@ -126,7 +132,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
         counts={currentCounts} loading={!disabled && !error && (!data || countsQuery !== null && !currentCounts && !countsError)}
         disabled={disabled || !data} onChange={change} /> : <div className="category-search" ref={searchRoot}>
         <Field label="Konu adı ara" type="search" value={search} placeholder="Konu veya alt konu"
-          disabled={disabled || !data || ids.length >= 20} autoComplete="off" role="combobox" aria-autocomplete="list"
+          disabled={disabled || !data || ids.length >= MAX_CATEGORY_SELECTION} autoComplete="off" role="combobox" aria-autocomplete="list"
           aria-expanded={suggesting} aria-controls={suggesting ? listId : undefined}
           aria-activedescendant={suggesting && activeOption ? `${listId}-${activeOption.id}` : undefined}
           onFocus={() => { refresh(); setOpen(true); }}
@@ -146,7 +152,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
           {options.length > suggestions.length && <p className="muted small">Diğer eşleşmeler yanındaki konu listesinde.</p>}
         </div>}
       </div>}
-      {showDropdown && <Field as="select" label="Ortak konu / alt konu" value="" disabled={!data || ids.length >= 20}
+      {showDropdown && <Field as="select" label="Ortak konu / alt konu" value="" disabled={!data || ids.length >= MAX_CATEGORY_SELECTION}
         onFocus={refresh} onChange={event => select(categories.find(category => category.id === event.target.value))}>
         <option value="">{data ? 'Konu ekle…' : 'Konular yükleniyor…'}</option>
         {groups.map(group => <optgroup key={group.key} label={group.label}>

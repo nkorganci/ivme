@@ -6,7 +6,7 @@ import { useAsync, usePageParam, usePageTitle } from '../hooks.js';
 import Pager from '../components/Pager.jsx';
 import DataGrid from '../components/DataGrid.jsx';
 import StudyNavigation from '../components/StudyNavigation.jsx';
-import SharedCategorySelect from '../components/SharedCategorySelect.jsx';
+import SharedCategorySelect, { loadSharedCatalog } from '../components/SharedCategorySelect.jsx';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { bankLabel, formatNumber } from '../format.js';
 import { countQuestionRows } from '../questionFilters.js';
@@ -15,15 +15,6 @@ const contextFor = rows => Object.fromEntries(['examType','subject','topic']
   .filter(key => rows.length && rows.every(row => row[key] === rows[0][key]))
   .map(key => [key,rows[0][key]]));
 const sum = rows => countQuestionRows(rows, contextFor(rows));
-const groups = (rows, key) => {
-  const counts = new Map();
-  rows.forEach((row) => {
-    if (row[key]) counts.set(row[key], (counts.get(row[key]) || 0) + row.count);
-  });
-  return [...counts].map(([value]) => ({ value, count: countQuestionRows(rows, { ...contextFor(rows), [key]: value }) }))
-    .sort((a, b) => a.value.localeCompare(b.value, 'tr'));
-};
-
 /** TYT/AYT çıkmış sorular ile OGM soru bankasının ortak kategori ve sonuç ekranı. */
 export default function QuestionCollection({ bank }) {
   const label = bankLabel(bank);
@@ -31,10 +22,10 @@ export default function QuestionCollection({ bank }) {
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [page, setPage] = usePageParam();
-  const [topicSearch, setTopicSearch] = useState('');
+  const branchIds = params.getAll('branchId');
   const filter = {
     examType: params.get('examType') || '',
-    subject: params.get('subject') || '',
+    subject: branchIds[0] || params.get('subject') || '',
     topic: params.get('topic') || '',
   };
   const commonSelection={categoryId:params.getAll('categoryId'),categoryMatch:params.get('categoryMatch') || 'ANY',includeCandidates:params.get('includeCandidates')!=='false',questionTypeId:params.get('questionTypeId') || '',teacherDifficulty:params.get('teacherDifficulty') || ''};
@@ -43,13 +34,9 @@ export default function QuestionCollection({ bank }) {
   const detailQuery = qs({ bank, ...filter,...commonSelection, page: page || undefined });
   const filterRows = useAsync(() => api.get('/api/questions/filters' + qs({ bank })), [bank]);
   const rows = filterRows.data ?? [];
-  const examRows = rows.filter((row) => !filter.examType || row.examType === filter.examType);
-  const subjectRows = examRows.filter((row) => !filter.subject || row.subject === filter.subject);
-  const subjects = groups(examRows, 'subject');
-  const topics = filter.subject ? groups(subjectRows, 'topic') : [];
-  const visibleTopics = topics.filter(({ value }) =>
-    value.toLocaleLowerCase('tr').includes(topicSearch.trim().toLocaleLowerCase('tr')));
-  const context = [filter.examType || 'Tüm sınavlar', filter.subject || 'Tüm dersler',
+  const catalog = useAsync(loadSharedCatalog, []);
+  const subjectLabel = catalog.data?.categories.find(c => c.selectable !== false && c.subjectId === filter.subject)?.subject || filter.subject;
+  const context = [filter.examType || 'Tüm sınavlar', subjectLabel || 'Tüm dersler',
     filter.topic || 'Tüm konular'].join(' · ');
   const [progress, setProgress] = useState(null);
   const [progressError, setProgressError] = useState('');
@@ -59,7 +46,6 @@ export default function QuestionCollection({ bank }) {
   const [startError, setStartError] = useState('');
   const startRequest = useRef(null);
 
-  useEffect(() => setTopicSearch(''), [filter.examType, filter.subject]);
   useEffect(() => {
     let current = true;
     setProgress(null);
@@ -119,9 +105,10 @@ export default function QuestionCollection({ bank }) {
         onClick={(event) => event.stopPropagation()}>{question.code}</Link> },
     { field: 'examType', headerName: 'Sınav', width: 70, minWidth: 70, flex: 0 },
     { field: 'subject', headerName: 'Ders', minWidth: 120, flex: 1,valueGetter:({data:q})=>q.resource?.subject || q.subject },
+    { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, valueGetter: ({ data:q }) => q.resource?.unit || 'İnceleme bekliyor' },
     { field: 'topic', headerName: 'Konu', minWidth: 180, flex: 1.7,
       cellRenderer: ({ data: question }) => question && <span
-        title={question.resource?.originalTitle || question.topic || 'Konu belirtilmemiş'}>{question.resource?.displayTitle || question.topic || 'Konu belirtilmemiş'}</span> },
+        title={question.resource?.displayTitle || question.topic || 'Konu belirtilmemiş'}>{question.resource?.topics?.join('; ') || question.resource?.topic || question.topic || 'Konu belirtilmemiş'}</span> },
     {colId:'review',headerName:'Etiket durumu',minWidth:160,valueGetter:({data:q})=>q.resource?.reviewStatus==='APPROVE'?'Öğretmen doğruladı':q.resource?.manualReview?.label || 'Otomatik eşleme'},
     { field: bank === 'OGM' ? 'source' : 'year', headerName: last,
       width: bank === 'OGM' ? undefined : 75, minWidth: bank === 'OGM' ? 140 : 75,
@@ -138,8 +125,11 @@ export default function QuestionCollection({ bank }) {
     <div className="page-head">
       <div><h2>{label}</h2><p className="muted">{bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
     </div>
-      <section className="card"><SharedCategorySelect questionFilters value={commonSelection} examType={filter.examType} onChange={next=>{
+      <section className="card"><SharedCategorySelect questionFilters branchFirst showDropdown={false} branchIds={branchIds} subject={filter.subject}
+        questionScope={{ bank, examType:filter.examType, includeCandidates:commonSelection.includeCandidates, questionTypeId:commonSelection.questionTypeId, teacherDifficulty:commonSelection.teacherDifficulty }}
+        value={commonSelection} examType={filter.examType} onChange={next=>{
         const p=new URLSearchParams(params);p.delete('categoryId');next.categoryId.forEach(id=>p.append('categoryId',id));
+        if(next.branchId){p.delete('branchId');next.branchId.forEach(id=>p.append('branchId',id));}
         p.delete('subject');p.delete('topic');p.delete('page');p.set('categoryMatch',next.categoryMatch);for(const key of ['questionTypeId','teacherDifficulty']){if(next[key])p.set(key,next[key]);else p.delete(key);}
         if(next.examType)p.set('examType',next.examType);if(next.includeCandidates)p.delete('includeCandidates');else p.set('includeCandidates','false');setParams(p);
       }}/></section>
@@ -147,8 +137,8 @@ export default function QuestionCollection({ bank }) {
       <aside className="card question-collection-sidebar" aria-label={`${label} kategorileri`}>
         <div className="question-collection-sidebar-head">
           <h2>Kategoriler</h2>
-          <button type="button" className="question-collection-clear" disabled={!hasFilter && !topicSearch}
-            onClick={() => { setTopicSearch(''); setFilter({}); }}>Temizle</button>
+          <button type="button" className="question-collection-clear" disabled={!hasFilter}
+            onClick={() => setFilter({})}>Temizle</button>
         </div>
         <section className="question-collection-filter-group" aria-label="Sınav filtresi">
           <h3>Sınav</h3>
@@ -162,44 +152,7 @@ export default function QuestionCollection({ bank }) {
             </button>)}
           </div>
         </section>
-        <section className="question-collection-filter-group" aria-label="Ders filtresi">
-          <h3>Dersler</h3>
-          {filterRows.loading && <p className="muted small">Dersler yükleniyor…</p>}
-          <div className="question-collection-options">
-            <button type="button" className={`question-collection-option${!filter.subject ? ' selected' : ''}`}
-              aria-pressed={!filter.subject} onClick={() => setFilter({ ...filter, subject: '', topic: '' })}>
-              <span>Tüm dersler</span><small>{formatNumber(sum(examRows))}</small>
-            </button>
-            {subjects.map(({ value, count }) => <button key={value} type="button"
-              className={`question-collection-option${filter.subject === value ? ' selected' : ''}`}
-              aria-pressed={filter.subject === value}
-              onClick={() => setFilter({ ...filter, subject: value, topic: '' })}>
-              <span>{value}</span><small>{formatNumber(count)}</small>
-            </button>)}
-          </div>
-        </section>
-        <section className="question-collection-filter-group" aria-label="Konu filtresi">
-          <h3>Konular</h3>
-          {!filter.subject ? <p className="muted small">Konuları görmek için önce ders seç.</p> : <>
-            <label className="sr-only" htmlFor={`question-topic-search-${bank}`}>Konu bul</label>
-            <input id={`question-topic-search-${bank}`} className="question-collection-topic-search"
-              type="search" placeholder="Konu bul" value={topicSearch}
-              onChange={(event) => setTopicSearch(event.target.value)} />
-            <div className="question-collection-topics">
-              <button type="button" className={`question-collection-option${!filter.topic ? ' selected' : ''}`}
-                aria-pressed={!filter.topic} onClick={() => setFilter({ ...filter, topic: '' })}>
-                <span>Tüm konular</span><small>{formatNumber(sum(subjectRows))}</small>
-              </button>
-              {visibleTopics.map(({ value, count }) => <button key={value} type="button"
-                className={`question-collection-option${filter.topic === value ? ' selected' : ''}`}
-                aria-pressed={filter.topic === value}
-                onClick={() => setFilter({ ...filter, topic: value })}>
-                <span>{value}</span><small>{formatNumber(count)}</small>
-              </button>)}
-              {visibleTopics.length === 0 && <p className="muted small">Bu adla konu bulunamadı.</p>}
-            </div>
-          </>}
-        </section>
+        <p className="muted small">Ders, ünite ve konu seçimini üstteki ortak müfredat listesinden yapabilirsin.</p>
         {filterRows.error && <div className="question-collection-filter-error" role="status">
           <p>Kategoriler yüklenemedi.</p>
           <button type="button" className="btn btn-secondary btn-sm" onClick={filterRows.retry}>Yeniden dene</button>

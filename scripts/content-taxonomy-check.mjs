@@ -10,6 +10,9 @@ for (const c of taxonomy.categories.filter(c => c.origin === 'CURRICULUM' && !c.
   titles[c.id] = c.topic;
   for (const term of [c.topic, ...(c.aliases || [])]) {
     const key = scopeKey(c.exam, c.subjectId, term);
+    // Legacy extraction lookups keep their original identity. Runtime selections
+    // use the published Excel category ID, never a title-derived lookup.
+    if(c.curriculumSource==='EXCEL_FIRST_SHEET' && identities[key])continue;
     if (identities[key] && identities[key] !== c.id) throw new Error(`Ambiguous curriculum alias ${key}`);
     identities[key] = c.id;
   }
@@ -19,7 +22,7 @@ for (const c of taxonomy.categories.filter(c => c.origin === 'CURRICULUM' && !c.
 const physicsTopics = taxonomy.categories.filter(c=>c.canonicalTopic && c.subjectId==='fizik').sort((a,b)=>a.order-b.order)
   .map(({id,exam,topic,grade,order})=>({id,exam,topic,grade,order}));
 const canonicalUnits=taxonomy.categories.filter(c=>c.canonicalUnit).sort((a,b)=>a.order-b.order)
-  .map(({id,exam,subjectId,subject,topic,grade,order})=>({id,exam,subjectId,subject,topic,grade,order,canonicalUnit:true}));
+  .map(({id,exam,subjectId,subject,topic,grade,order,unit,unitId,gradeLabel,selectable})=>({id,exam,subjectId,subject,topic,grade,order,unit,unitId,gradeLabel,selectable,canonicalUnit:true}));
 const unitTargets=Object.fromEntries(taxonomy.categories.filter(c=>c.canonicalTopicIds).map(c=>[c.id,c.canonicalTopicIds]));
 const projection = {version:1,taxonomyVersion,identities,titles,physicsTopics,canonicalUnits,unitTargets};
 const output = JSON.stringify(projection, null, 2) + '\n';

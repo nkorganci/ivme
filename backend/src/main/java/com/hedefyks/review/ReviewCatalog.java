@@ -33,7 +33,6 @@ public class ReviewCatalog {
     private final JdbcTemplate jdbc;
     private final LearningLabelStore learningLabels;
     private final List<Map<String, Object>> items;
-    private final List<Map<String, Object>> branches;
 
     public ReviewCatalog(ObjectMapper json, JdbcTemplate jdbc, LearningLabelStore learningLabels) {
         this.jdbc = jdbc;
@@ -41,16 +40,18 @@ public class ReviewCatalog {
         try (var in = new ClassPathResource("content-review-catalog.json").getInputStream()) {
             var root = json.readTree(in);
             items = json.convertValue(root.get("items"), new TypeReference<>() {});
-            branches = json.convertValue(root.get("branches"), new TypeReference<>() {});
         } catch (Exception e) { throw new IllegalStateException("Öğretmen denetim kataloğu okunamadı.", e); }
     }
 
     public String subjectId(String label) {
         return switch (label == null ? "" : label) {
+            case "Türkçe / Edebiyat" -> "turkce";
+            case "Matematik + Geometri" -> "matematik";
+            case "Din Kültürü (DKAB)" -> "din";
             case "Türkçe", "turkce" -> "turkce";
-            case "Türk Dili ve Edebiyatı", "edebiyat" -> "edebiyat";
+            case "Türk Dili ve Edebiyatı", "edebiyat" -> excelCurriculum() ? "turkce" : "edebiyat";
             case "Matematik", "matematik" -> "matematik";
-            case "Geometri", "geometri" -> "geometri";
+            case "Geometri", "geometri" -> excelCurriculum() ? "matematik" : "geometri";
             case "Tarih", "Tarih-1", "Tarih-2", "tarih" -> "tarih";
             case "Coğrafya", "Coğrafya-1", "Coğrafya-2", "cografya" -> "cografya";
             case "Felsefe", "Felsefe Grubu", "felsefe" -> "felsefe";
@@ -61,8 +62,20 @@ public class ReviewCatalog {
         };
     }
 
+    private boolean excelCurriculum() {
+        return Boolean.TRUE.equals(jdbc.queryForObject("SELECT EXISTS (SELECT 1 FROM learning_catalog.current_categories WHERE definition->>'curriculumSource'='EXCEL_FIRST_SHEET')",Boolean.class));
+    }
+
     public List<Map<String, Object>> items() { return items; }
-    public List<Map<String, Object>> branches() { return branches; }
+    public List<Map<String, Object>> branches() {
+        var branches=new LinkedHashMap<String,Map<String,Object>>();
+        for(var category:learningLabels.categories()) {
+            if(Boolean.FALSE.equals(category.get("selectable")) || category.get("subjectId")==null)continue;
+            String id=category.get("subjectId").toString();
+            branches.putIfAbsent(id,Map.of("id",id,"name",category.get("subject")));
+        }
+        return List.copyOf(branches.values());
+    }
 
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public List<Map<String, Object>> categories() {
@@ -93,8 +106,9 @@ public class ReviewCatalog {
         }
         return categories;
     }
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public Map<String, Object> metadata() {
-        return Map.of("version", 2, "branches", branches, "categories", categories(),
+        return Map.of("version", 2, "branches", branches(), "categories", categories(),
                 "labels", LABELS);
     }
 

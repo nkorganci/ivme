@@ -75,19 +75,18 @@ def main():
                 fragments.append({'key':code,'coveredBy':f'question:{replacement}',
                     'reason':'DUPLICATE_GROUP_HEADER_FRAGMENT','source':p.relative_to(ROOT).as_posix(),
                     'categoryIds':items[f'question:{replacement}']['categoryIds']})
-    # These documents define topic scope and historical distributions; they are not lesson prose.
+    # Only worksheet zero defines the current lesson/unit/topic vocabulary.
     references = []
-    for p in sorted((ROOT / 'Kaynaklar/mufredat').rglob('*.md')):
-        exam = 'TYT' if 'TYT' in p.stem else 'AYT' if 'AYT' in p.stem else None
-        branch = next((b for name,b in SUBJECTS.items() if p.stem == f'{exam}_{name}'), None)
-        selected = [c['id'] for c in cats.values() if c.get('origin') == 'CURRICULUM' and not c.get('subtopic')
-            and (not exam or c['exam']==exam) and (not branch or c['subjectId']==branch)
-            and ('Sayisal' not in p.stem or c['subjectId'] in ['matematik','geometri','fizik','kimya','biyoloji'])]
-        if not selected:
-            failures.append({'source':str(p),'reason':'REFERENCE_SCOPE_MISSING'})
-        references.append({'source':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
-            'kind':'CURRICULUM_REFERENCE','categoryIds':selected,'basis':'EXPLICIT_DOCUMENT_SCOPE',
-            'contentFormat':'CALISMA_REHBERI','teacherApproved':False})
+    from importlib.machinery import SourceFileLoader
+    excel = SourceFileLoader('excel_curriculum_import', str(APP / 'scripts/excel-curriculum-import.py')).load_module()
+    sheet = excel.first_sheet()
+    reference = read(APP / 'backend/src/main/resources/content-taxonomy.json')['unitReference']
+    if reference.get('sha256') != sheet['sha256']:
+        failures.append({'source':sheet['file'],'reason':'EXCEL_FIRST_SHEET_CHANGED'})
+    references.append({'source':sheet['file'],'sha256':sheet['sha256'],'sheet':sheet['sheet'],'sheetIndex':0,
+        'hashScope':'FIRST_SHEET_ROWS','kind':'CURRICULUM_REFERENCE',
+        'categoryIds':[c['id'] for c in cats.values() if c.get('curriculumSource')=='EXCEL_FIRST_SHEET'],
+        'basis':'EXCEL_FIRST_SHEET_ONLY','contentFormat':'CALISMA_REHBERI','teacherApproved':False})
     curriculum_count = len(references)
     # The preserved HTML files are solution indexes for the question bank, not new lectures.
     html_branches = {'biyoloji':['biyoloji'],'cografya':['cografya'],'din kulturu':['din'],

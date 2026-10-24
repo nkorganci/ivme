@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import {api,qs} from '../api.js';
 import {RESOURCE_HOME} from './ResourcesNavigation.jsx';
+import {MAX_CATEGORY_SELECTION} from '../categorySelection.js';
 
 /** Reads the public presentation projection; never copies analysis or answer data. */
 export default function ResourceContext({itemKey,onLoaded,compact=false}) {
@@ -12,7 +13,7 @@ export default function ResourceContext({itemKey,onLoaded,compact=false}) {
   if(!item)return null;
   const selected=new URLSearchParams(search).getAll('categoryId');
   const all=[...new Set(item.labels.assignments.filter(a=>a.relation!=='PREREQUISITE').map(a=>a.categoryId))];
-  const categoryId=selected.length?selected:all.length<=20?all:[];
+  const categoryId=selected.length?selected:all.length<=MAX_CATEGORY_SELECTION?all:[];
   const params=new URLSearchParams(search);
   const context={categoryId,includeCandidates:params.get('includeCandidates')!=='false',match:params.get('match')||params.get('categoryMatch')||'ANY'};
   const links=<div>{[['PDF','PDF'],['VIDEO','Video'],['NOTE','Ders notu']].map(([kind,label])=>

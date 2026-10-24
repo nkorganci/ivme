@@ -1,12 +1,13 @@
 import { normaliseTopic } from './curriculumLinks.js';
 
 const compare = new Intl.Collator('tr', { sensitivity: 'base', numeric: true }).compare;
+export const MAX_CATEGORY_SELECTION = 100;
 
 export const categoryTopic = category => [category.topicNumber ? `${category.topicNumber}. ${category.topic}` : category.topic, category.subtopic,
   category.detail !== category.topic && category.detail !== category.subtopic ? category.detail : '']
   .filter(Boolean).join(' → ');
 
-export const categoryLabel = category => [category.exam, category.grade && `${category.grade}. sınıf`,category.subject, categoryTopic(category)]
+export const categoryLabel = category => [category.exam, category.gradeLabel ? `${category.gradeLabel}. sınıf` : category.grade && `${category.grade}. sınıf`,category.subject, category.unit, categoryTopic(category)]
   .filter(Boolean).join(' · ');
 
 export const categoryBranchId = category => category.subjectId || category.subject;
@@ -31,8 +32,14 @@ export function categoryBranches(categories) {
 
 export function selectedCategoryBranches(categories, categoryIds, branchIds = [], subject = '') {
   const selected = new Set(categoryIds);
-  return [...new Set([...branchIds, ...categories.filter(category => selected.has(category.id)
-    || subject && (category.subject === subject || category.subjectId === subject)).map(categoryBranchId)])];
+  const byId = new Map(categories.map(c=>[c.id,c]));
+  const current = category => (category.canonicalTopicIds?.length ? category.canonicalTopicIds.map(id=>byId.get(id)).filter(Boolean) : [category]).map(categoryBranchId);
+  const branches = branchIds.flatMap(id => {
+    const legacy = categories.find(c=>c.subjectId===id && c.canonicalTopicIds?.length);
+    return legacy ? current(legacy) : [id];
+  });
+  return [...new Set([...branches, ...categories.filter(category => selected.has(category.id)
+    || subject && (category.subject === subject || category.subjectId === subject)).flatMap(current)])];
 }
 
 export function categoriesInBranches(categories, branchIds, search = '') {
@@ -61,8 +68,8 @@ export function categoryOptions(categories, { examType, subject, selectedIds = [
 export function categoryGroups(options) {
   const groups = new Map();
   for (const category of options) {
-    const key = JSON.stringify([category.exam, category.subject]);
-    if (!groups.has(key)) groups.set(key, { key, label: [category.exam, category.subject].filter(Boolean).join(' · '), options: [] });
+    const key = JSON.stringify([category.exam, category.subject, category.unit]);
+    if (!groups.has(key)) groups.set(key, { key, label: [category.exam, category.subject, category.unit].filter(Boolean).join(' · '), options: [] });
     groups.get(key).options.push(category);
   }
   return [...groups.values()];

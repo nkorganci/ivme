@@ -1,10 +1,12 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroups, categoryTopic,
-  selectedCategoryBranches } from '../categorySelection.js';
+  selectedCategoryBranches, MAX_CATEGORY_SELECTION } from '../categorySelection.js';
 import { Field } from './Field.jsx';
+import { referenceUnits } from '../curriculumReference.js';
 
 export default function BranchCategoryPicker({ categories, knownCategories = categories, value, branchIds, subject, counts, loading, disabled, onChange, leading, difficultyControl }) {
   const [search, setSearch] = useState('');
+  const [unitId, setUnitId] = useState('');
   const topicPicker = useRef(null);
   const topicDropdown = useRef(null);
   const topicLabelId = useId();
@@ -12,12 +14,14 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
   const ids = value.categoryId || [];
   const selectedBranch = selectedCategoryBranches(knownCategories, ids, branchIds, subject)[0] || '';
   const branches = useMemo(() => categoryBranches([...categories,
-    ...knownCategories.filter(category => categoryBranchId(category) === selectedBranch)]), [categories, knownCategories, selectedBranch]);
+    ...knownCategories.filter(category => category.selectable !== false && categoryBranchId(category) === selectedBranch)]), [categories, knownCategories, selectedBranch]);
   const branchTotals = useMemo(() => new Map(categoryBranches(knownCategories.filter(category => category.canonicalUnit && category.selectable !== false))
     .map(branch => [branch.id, branch.categories])), [knownCategories]);
   const selectedBranches = selectedBranch ? [selectedBranch] : [];
-  const options = useMemo(() => categoriesInBranches(categories, selectedBranches, search),
-    [categories, selectedBranches.join('|'), search]);
+  const units = useMemo(() => referenceUnits(categories.filter(c => categoryBranchId(c) === selectedBranch)), [categories, selectedBranch]);
+  const selectedUnit = units.some(u => u.id === unitId) ? unitId : '';
+  const options = useMemo(() => categoriesInBranches(categories.filter(c => !selectedUnit || c.unitId === selectedUnit), selectedBranches, search),
+    [categories, selectedBranches.join('|'), selectedUnit, search]);
   const groups = useMemo(() => categoryGroups(options), [options]);
   const topicDisabled = disabled || loading || !selectedBranch;
   useEffect(() => {
@@ -48,6 +52,7 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
     if (topicDropdown.current) topicDropdown.current.open = false;
     setSearch('');
   }, [selectedBranch, topicDisabled]);
+  useEffect(() => { setUnitId(''); }, [selectedBranch]);
   const chooseBranch = id => {
     setSearch('');
     const next = id ? [id] : [];
@@ -62,8 +67,12 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
     }
   }, [categories, loading, selectedBranch, branchIds.join('|'), ids.join('|')]);
   const toggleCategory = (id, checked) => {
-    if (checked && ids.length >= 20) return;
+    if (checked && ids.length >= MAX_CATEGORY_SELECTION) return;
     onChange({ categoryId: checked ? [...ids, id] : ids.filter(item => item !== id) });
+  };
+  const chooseUnit = id => {
+    setUnitId(id); setSearch('');
+    onChange({ categoryId: id ? categories.filter(c => categoryBranchId(c) === selectedBranch && c.unitId === id).map(c => c.id) : [] });
   };
 
   return <div className="branch-category-picker">
@@ -77,6 +86,9 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
         <option value="">Bütün dersler</option>
         {branches.map(branch => <option key={branch.id} value={branch.id}>{branch.label} · {branchTotals.get(branch.id) || 0} konu</option>)}
       </Field>
+      {units.length > 0 && <Field as="select" label="Ünite" value={selectedUnit} disabled={!selectedBranch} onChange={event => chooseUnit(event.target.value)}>
+        <option value="">Bütün üniteler</option>{units.map(unit => <option key={unit.id} value={unit.id}>{unit.label}</option>)}
+      </Field>}
       {loading ? <p role="status" className="field-hint">Dersler yükleniyor…</p>
         : !branches.length && !disabled && <p role="status" className="field-hint">Bu kaynak ve filtrelerde soru içeren ders yok.</p>}
     </fieldset>
@@ -102,14 +114,14 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
           <h3>{group.label}</h3>
           {group.options.map(category => <label className={`branch-topic-option${ids.includes(category.id) ? ' selected' : ''}`} key={category.id}>
             <input type="checkbox" value={category.id} checked={ids.includes(category.id)}
-              disabled={!ids.includes(category.id) && ids.length >= 20}
+              disabled={!ids.includes(category.id) && ids.length >= MAX_CATEGORY_SELECTION}
               onChange={event => toggleCategory(category.id, event.target.checked)} />
             <span>{categoryTopic(category)}{counts && <small>{(counts[category.id] || 0).toLocaleString('tr-TR')} soru</small>}</span>
           </label>)}
         </section>)}
         {!groups.length && !loading && <p role="status" className="field-hint">Seçili derste aramana uyan konu bulunamadı.</p>}
       </div>
-      <p className="field-hint" role="status">{ids.length ? `${ids.length} konu seçili · En fazla 20 konu seçebilirsin.` : 'Dersin tamamından çalışabilir veya birden fazla konu/alt konu seçebilirsin.'}</p>
+      <p className="field-hint" role="status">{ids.length ? `${ids.length} konu seçili · En fazla ${MAX_CATEGORY_SELECTION} konu seçebilirsin.` : 'Dersin veya ünitenin tamamından çalışabilir ya da konularını seçebilirsin.'}</p>
       </div>
       </details>
       </div>

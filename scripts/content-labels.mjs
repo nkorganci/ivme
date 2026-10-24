@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { normalise, matchTopics, canonicalPhysicsSubtopics } from './pdf-review-taxonomy.mjs';
-import { aliasTerm, controlledCategory, categoryForTerms, categoriesById as controlledCategories } from './content-taxonomy.mjs';
+import { aliasTerm, controlledCategory, categoryForTerms, categoriesById as controlledCategories, taxonomy } from './content-taxonomy.mjs';
 import { enrichResource, validateResource, attachSourceLocations, attachPdfLocations, attachVideoMetadata } from './learning-resource-contract.mjs';
 import { physicsTopics, physicsTargets } from './physics-topics.mjs';
 import {canonicalizeUnits,canonicalUnits,suggestUnits} from './canonical-units.mjs';
@@ -288,6 +288,7 @@ const summary={version:1,method:'SOURCE_EVIDENCE_V1',resources:items.length,ques
   sourceAnalysisProposals:usedProposals.size,
   physicsTopics:physicsTopics.length,
   canonicalUnits:canonicalUnits.length,
+  curriculumReference:taxonomy.unitReference,
   unitSelectionRequired:items.filter(i=>i.automaticLabels.unitReview).length,
   physicsTopicSelectionRequired:items.filter(i=>i.automaticLabels.physicsTopicReview).length,
   sourceProblems:items.filter(i=>i.automaticLabels.reviewReasons?.some(r=>['INCOMPLETE_QUESTION_CROP','NEIGHBOR_QUESTION_IN_CROP'].includes(r))).length,

@@ -95,6 +95,14 @@ class LearningResourcesFlowTest extends TestBase {
         send(student,get(API).param("categoryId","tyt.matematik.sayi-basamaklari"),null).andExpect(status().isBadRequest());
     }
 
+    @Test void aWholeExcelUnitCanSelectMoreThanTwentyTopicsWithoutDroppingAny() throws Exception {
+        fixture();user("whole_unit_reader",Role.USER);var student=login("whole_unit_reader","Sifre1234");
+        var ids=new ArrayList<String>();ids.add("learning-main");
+        for(int n=1;n<26;n++){String id="unit-topic-"+n;category(id,"fizik","Konu "+n,"");ids.add(id);}
+        send(student,get("/api/questions").param("categoryId",ids.toArray(String[]::new)),null).andExpect(status().isOk());
+        send(student,get(API).param("categoryId",ids.toArray(String[]::new)),null).andExpect(status().isOk());
+    }
+
     @Test void metadataKeepsOneDatabaseSnapshotWhenAnotherConnectionPublishes() throws Exception {
         fixture();user("snapshot_reader",Role.USER);var student=login("snapshot_reader","Sifre1234");
         String next=RUN+"-next";

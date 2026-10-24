@@ -188,11 +188,14 @@ class ContentReviewFlowTest extends TestBase {
     void writtenLessonExamplesAndAllBranchesUseTheSameCatalog() throws Exception {
         user("notes_hoca",Role.OPERATOR); var session=login("notes_hoca","Sifre1234");
         var metadata=read(send(session,get(API+"/catalog"),null).andExpect(status().isOk()));
-        assertThat(metadata.path("branches").size()).isEqualTo(14);
+        assertThat(metadata.path("branches").size()).isEqualTo(12);
         assertThat(metadata.path("labels").path("difficulty").path("KOLAY").asText()).isEqualTo("Kolay");
         var detail=read(send(session,get(API+"/item").param("key","note-question:tyt-turkce:sozcukte-anlam:practice"),null).andExpect(status().isOk()));
         assertThat(detail.path("item").path("choices").size()).isEqualTo(4);
-        var saved=read(send(session,put(API),decision(detail,"APPROVE").toString()).andExpect(status().isOk()));
+        var approval=decision(detail,"APPROVE");
+        String selected=jdbc.queryForObject("SELECT definition->'canonicalTopicIds'->>0 FROM learning_catalog.current_categories WHERE category_id='tyt.fizik.basinc'",String.class);
+        approval.withArray("assignments").removeAll().addObject().put("categoryId",selected).put("relation","PRIMARY");
+        var saved=read(send(session,put(API),approval.toString()).andExpect(status().isOk()));
         assertThat(saved.path("status").asText()).isEqualTo("APPROVE");
         var list=read(send(session,get(API).param("kind","NOTE").param("subject","turkce"),null).andExpect(status().isOk()));
         assertThat(list.path("totalElements").asInt()).isGreaterThan(0);

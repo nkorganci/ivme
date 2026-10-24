@@ -6,7 +6,7 @@ import DataGrid from '../components/DataGrid.jsx';
 import { Loading, ErrorBox, Empty } from '../components/States.jsx';
 import './LearningResources.css';
 import { locatorLabel, locatedResourceUrl } from '../resourceMetadata.js';
-import { categoryTopic } from '../categorySelection.js';
+import { categoryTopic, MAX_CATEGORY_SELECTION } from '../categorySelection.js';
 
 const API='/api/learning-resources';
 const kinds={QUESTION:'Soru',PDF:'PDF',NOTE:'Ders notu',VIDEO:'Video'};
@@ -63,7 +63,7 @@ export default function LearningResources(){
       && c.selectable !== false && (!term || title(c).toLocaleLowerCase('tr-TR').includes(term)))
       .sort((a,b)=>(a.order||999)-(b.order||999) || title(a).localeCompare(title(b),'tr'));
   },[meta,params,categorySearch]);
-  const selectCategory=id=>{if(!id || selected.length>=20)return;setParams(old=>{const next=new URLSearchParams(old);next.append('categoryId',id);next.delete('page');return next;});};
+  const selectCategory=id=>{if(!id || selected.length>=MAX_CATEGORY_SELECTION)return;setParams(old=>{const next=new URLSearchParams(old);next.append('categoryId',id);next.delete('page');return next;});};
   const removeCategory=id=>setParams(old=>{const next=new URLSearchParams(old);next.delete('categoryId');selected.filter(v=>v!==id).forEach(v=>next.append('categoryId',v));next.delete('page');return next;});
   const columns=useMemo(()=>[
     {headerName:'Kaynak',field:'title',minWidth:240,flex:2,wrapText:true,autoHeight:true,cellRenderer:({data:r})=>{

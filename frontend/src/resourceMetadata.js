@@ -20,13 +20,14 @@ export function displayResourceTitle(item, categories) {
   const distinct = values => [...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));
   const topics = distinct(selected.map(c=>c.topic));
   const branches = distinct(selected.map(c=>c.subject));
+  const units = distinct(selected.map(c=>c.unit));
   const scope = topics.length > 3 || branches.length > 1 ? 'Karma konular' : topics.join('; ');
   const subtopics = topics.length > 3 || branches.length > 1 ? '' : distinct(selected.map(c=>c.subtopic)).join('; ');
   const provisional = assignments.some(a=>a.confidence === 'LOW' || a.scopeStatus === 'CANDIDATE');
   const kind = {VIDEO:'Video',QUESTION:'Soru',NOTE:'Ders notu',PDF:'PDF',TOPIC:'Konu'}[item.kind] || item.kind;
   return [distinct(selected.map(c=>c.exam).filter(e=>e !== 'UNKNOWN')).join('/'),branches.join('; '),
     distinct(selected.filter(c=>c.canonicalTopic).map(c=>c.grade && `${c.grade}. sınıf`)).join('/'),
-    scope && `${scope}${provisional ? ' (tahmini)' : ''}`,subtopics,item.sourceLabel,kind].filter(Boolean).join(' | ');
+    units.join('; '),scope && `${scope}${provisional ? ' (tahmini)' : ''}`,subtopics,item.sourceLabel,kind].filter(Boolean).join(' | ');
 }
 
 export function locatedResourceUrl(url, locator) {

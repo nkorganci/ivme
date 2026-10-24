@@ -185,7 +185,7 @@ public class LearningResourceService {
         categoryIds=categoryIds.stream().filter(s->!s.isBlank()).distinct().toList();
         if(!Set.of("","TYT","AYT","TYT-AYT").contains(exam) || !Set.of("","QUESTION","PDF","NOTE","VIDEO").contains(kind)
             || (!subject.isBlank() && !ReviewCatalog.ALIASES.containsKey(subject)) || q.length()>100
-            || categoryIds.size()>20 || !Set.of("ANY","ALL").contains(match) || !Set.of("","ESTIMATED","APPROVED","UNRESOLVED").contains(labelStatus)
+            || categoryIds.size()>SharedQuestionLabels.MAX_CATEGORY_SELECTION || !Set.of("ANY","ALL").contains(match) || !Set.of("","ESTIMATED","APPROVED","UNRESOLVED").contains(labelStatus)
             || !Set.of("","EMPTY_OR_UNREADABLE","LOCATION_REVIEW","LABEL_REVIEW","TIME_REVIEW","SOURCE_REPAIR").contains(manualReviewType)
             || (!contentFormat.isBlank() && !ReviewCatalog.FORMATS.contains(contentFormat))
             || (!skill.isBlank() && !ReviewCatalog.SKILLS.contains(skill)) || (grade!=null && (grade<9 || grade>12))) throw ApiException.badRequest("Kaynak filtresi geçersiz.");
@@ -303,6 +303,8 @@ public class LearningResourceService {
                 row.put("subjectId",selected.getFirst().get("subjectId"));
                 row.put("subject",String.join(" · ",selected.stream().map(c->c.get("subject").toString()).distinct().toList()));
                 row.put("topic",selected.getFirst().get("topic"));
+                row.put("unit",String.join("; ",selected.stream().map(c->c.get("unit")).filter(java.util.Objects::nonNull).map(Object::toString).distinct().toList()));
+                row.put("topics",selected.stream().map(c->c.get("topic").toString()).distinct().toList());
             }
             row.put("labels",publicLabels);row.put("reviewStatus",rs.getString(3));return row;
         },pageArgs.toArray());

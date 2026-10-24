@@ -1,0 +1,12 @@
+.curriculum-source-pill { background: var(--tint); color: var(--blue); border: 1px solid var(--line); border-radius: 999px; padding: .4rem .8rem; font-size: .85rem; white-space: nowrap; }
+.curriculum-reference-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem; margin: 1rem 0; }
+.curriculum-reference-filters > label { display: grid; gap: .4rem; flex: 1 1 160px; min-width: 0; }
+.curriculum-reference-filters select { width: 100%; min-height: 42px; }
+.curriculum-reference-filters .curriculum-years-toggle { display: flex; align-items: center; min-height: 42px; gap: .5rem; flex: 0 1 auto; }
+.curriculum-reference-summary { display: flex; gap: 1rem 2rem; flex-wrap: wrap; padding: .5rem 0 1rem; color: var(--ink); }
+.curriculum-reference-summary strong { color: var(--blue); font-size: 1.1rem; }
+.curriculum-reference-detail { padding: 1.25rem; background: var(--tint); color: var(--ink); text-align: start; }
+.curriculum-reference-grid { width: 100%; min-width: 0; }
+.curriculum-reference-page > .history-tabs button { padding: .7rem 1rem; border: 1px solid var(--line); background: var(--surface); color: var(--blue); border-radius: .6rem; cursor: pointer; }
+.curriculum-reference-page > .history-tabs button.selected { color: var(--surface); background: var(--blue); }
+@media (max-width: 640px) { .curriculum-source-pill { font-size: .75rem; } .curriculum-reference-filters > label { flex-basis: 100%; } }

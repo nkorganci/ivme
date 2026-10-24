@@ -15,8 +15,9 @@ export function topicProgressRows(categories, statistics, subjectId) {
     const wrong = count?.wrong ?? 0;
     return {
       categoryId: category.id, subject: category.subject, exam: category.exam, grade: category.grade,
-      gradeLabel:category.grade?`${category.grade}. sınıf`:(category.estimatedGrades||[]).length?`${category.estimatedGrades.join('–')}. sınıf (tahmini)`:'—',
       topicLabel: categoryTopic(category), correct, wrong,
+      unit: category.unit || '—', unitId: category.unitId || '',
+      gradeLabel: category.gradeLabel ? `${category.gradeLabel}. sınıf` : category.grade?`${category.grade}. sınıf`:(category.estimatedGrades||[]).length?`${category.estimatedGrades.join('–')}. sınıf (tahmini)`:'—',
       solved: correct + wrong, net: correct - wrong / 4,
     };
   });
