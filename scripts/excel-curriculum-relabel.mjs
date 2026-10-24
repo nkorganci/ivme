@@ -92,6 +92,66 @@ function refineFromSourceSubtopic(item) {
   sourceSubtopicChanges.push({ key: item.key, bank: item.bank, exam: item.exam, change,
     before: current.map(c => c.topic), after: target.topic, unit: target.unit, subject: target.subject });
 }
+// Questions the earlier passes could not place under any Excel topic only carried a `system.*` placeholder, so they
+// were missing from topic and subject filters. `scripts/question-topic-completion.py` decides a topic for each of them
+// (reading the question text or image, or from the source heading); the decision is added as a CANDIDATE label that
+// needs teacher approval. Questions that already have an Excel topic are never touched.
+const completionFile = new URL('question-topic-decisions.json', state);
+const completion = fs.existsSync(completionFile) ? JSON.parse(fs.readFileSync(completionFile, 'utf8')).decisions : {};
+const completionStats = { applied: 0, skipped: 0, byMethod: {}, byConfidence: {} };
+// Keys whose topic came from the planner; it plans them again and never trains on them as independent labels.
+const appliedFile = new URL('question-topic-applied.json', state);
+const completionApplied = new Set(fs.existsSync(appliedFile) ? JSON.parse(fs.readFileSync(appliedFile, 'utf8')) : []);
+const completionNotes = {
+  CONTENT_READ: 'Soru metni/görseli okunarak Excel ilk sayfasındaki konuya yerleştirildi',
+  CONTENT_READ_COPY: 'Aynı metinli, okunarak konusu belirlenen bir sorunun konusuna alındı',
+  DUPLICATE: 'Aynı metinli, konusu belli bir sorunun konusuna alındı',
+  EXACT_NAME: 'Kaynak başlığı Excel ilk sayfasındaki konu adıyla eşleşti',
+  NAMED_UNIT: 'Kaynak başlığı Excel ilk sayfasındaki ünite adıyla eşleşti',
+  PRIOR: 'Kaynağın kazanım/alt başlığına göre en yakın Excel konusuna yerleştirildi',
+  TEXT_MODEL: 'Soru metni Excel konularıyla sınıflandırıldı'
+};
+const completionConfidence = (method, score) => ['EXACT_NAME', 'NAMED_UNIT', 'DUPLICATE'].includes(method) ? 'HIGH'
+  : method.startsWith('CONTENT_READ') ? 'MEDIUM' : method === 'PRIOR' ? 'LOW' : score >= 0.8 ? 'MEDIUM' : 'LOW';
+function applyTopicCompletion(item) {
+  const decision = item.kind === 'QUESTION' && completion[item.key];
+  if (!decision) return;
+  const labels = item.automaticLabels, target = categories.get(decision.category);
+  const related = labels.assignments.filter(a => a.relation !== 'PREREQUISITE');
+  // A topic added by an earlier run is replaced; any other Excel topic is kept.
+  if (!target?.selectable || !target.excelRowId || !labels.topicCompletion && related.some(a => categories.get(a.categoryId)?.excelRowId)) {
+    completionStats.skipped++;
+    return;
+  }
+  const previous = related.find(a => a.relation === 'PRIMARY') || related[0] || labels.assignments[0];
+  const locators = previous?.locators?.filter(l => ['QUESTION', 'NOTE'].includes(l.type)) || [];
+  const fingerprint = categoryHash(target), method = decision.method.split('+')[0];
+  const confidence = completionConfidence(decision.method, decision.score);
+  const note = `${completionNotes[method] || completionNotes.TEXT_MODEL}; öğretmen onayı gerekiyor.`;
+  const evidence = { type: 'QUESTION_TOPIC_COMPLETION', method: decision.method, text: `${target.subject} › ${target.unit} › ${target.topic}: ${note}`,
+    reference: `question-topic-decisions.json#${item.key}`, association: 'RELATION', readability: 'NOT_MEASURED', sourceVersion: item.sourceVersion };
+  labels.assignments = [{ ...structuredClone(previous), categoryId: target.id, relation: 'PRIMARY',
+    relationKey: 'relation:' + createHash('sha256').update(`${item.key}|${target.id}`).digest('hex').slice(0, 24),
+    categoryFingerprint: fingerprint, confidence, scopeStatus: 'CANDIDATE', confidenceReason: note,
+    evidence: [...(previous?.evidence || []).filter(e => e.type !== 'QUESTION_TOPIC_COMPLETION'), evidence],
+    locators, locatorStatus: locators.length ? previous.locatorStatus : 'MISSING',
+    review: { status: 'PENDING', reviewer: null, reviewedAt: null, sourceVersion: item.sourceVersion, categoryFingerprint: fingerprint } },
+    ...labels.assignments.filter(a => a.relation === 'PREREQUISITE')];
+  delete labels.unitReview;
+  labels.reviewReasons = [...new Set([...(labels.reviewReasons || []).filter(r => r !== 'UNIT_SELECTION_REQUIRED'), 'TOPIC_APPROVAL_REQUIRED'])];
+  labels.topicCompletion = { method: decision.method, score: decision.score, row: decision.row, teacherApproval: 'REQUIRED' };
+  labels.evidence = [...(labels.evidence || []).filter(e => e.type !== 'QUESTION_TOPIC_COMPLETION'), { type: 'QUESTION_TOPIC_COMPLETION', text: evidence.text,
+    reference: `${taxonomy.unitReference.file}#${taxonomy.unitReference.sheet}` }];
+  const grades = (String(target.gradeLabel || '').match(/\d+/g) || []).map(Number);
+  if (grades.length) labels.grades = grades;
+  item.topic = target.topic; item.subjectId = target.subjectId; item.subject = target.subject;
+  if (item.unitMigration) item.unitMigration.status = 'MAPPED';
+  item.displayTitle = displayResourceTitle(item, categories);
+  completionStats.applied++;
+  completionApplied.add(item.key);
+  completionStats.byMethod[decision.method] = (completionStats.byMethod[decision.method] || 0) + 1;
+  completionStats.byConfidence[confidence] = (completionStats.byConfidence[confidence] || 0) + 1;
+}
 if (refreshDefinitions) for (const previous of previousCategories.values()) {
   if (previous.curriculumSource !== 'EXCEL_FIRST_SHEET') continue;
   const current = categories.get(previous.id);
@@ -109,6 +169,7 @@ for (const item of payload.items) {
   }
   if(needsMapping) canonicalizeUnits(item, categories);
   if (!refreshDefinitions) refineFromSourceSubtopic(item);
+  if (!refreshDefinitions) applyTopicCompletion(item);
   item.taxonomyVersion = taxonomyVersion;
   item.categoryIds = labels.assignments.map(a=>a.categoryId);
   const selected = item.categoryIds.map(id=>categories.get(id));
@@ -125,7 +186,8 @@ for (const item of payload.items) {
     item.displayTitle=displayResourceTitle(item,categories);
   }
   item.subjectIds = [...new Set(selected.map(c=>c.subjectId))];
-  item.examIds = [...new Set(selected.map(c=>c.exam))];
+  // A question stays in the bank of the exam it comes from, even when its topic is only taught in the other exam.
+  item.examIds = [...new Set([...(item.kind === 'QUESTION' && item.exam ? [item.exam] : []), ...selected.map(c=>c.exam)])];
   item.searchText = normaliseTerm([item.title,item.originalTitle,item.sourceTopic,...selected.flatMap(c=>[c.subject,c.unit,c.topic])].filter(Boolean).join(' '));
   if (item.kind === 'QUESTION' && item.bank !== 'NOTE') {
     counts[selected.some(c=>c.excelRowId)?'matched':'unresolved']++;
@@ -133,16 +195,17 @@ for (const item of payload.items) {
   }
 }
 fs.writeFileSync(new URL(`source-subtopic-matches-from-${prior.runKey}${dryRun ? '.preview' : ''}.json`, state),
-  JSON.stringify({ previousRunKey: prior.runKey, counts: sourceSubtopicMatches, changes: sourceSubtopicChanges }, null, 1) + '\n');
+  JSON.stringify({ previousRunKey: prior.runKey, counts: sourceSubtopicMatches, changes: sourceSubtopicChanges, topicCompletion: completionStats }, null, 1) + '\n');
 if (dryRun) {
-  console.log(JSON.stringify({ dryRun: true, ...counts, sourceSubtopicMatches }));
+  console.log(JSON.stringify({ dryRun: true, ...counts, sourceSubtopicMatches, topicCompletion: completionStats }));
   process.exit(0);
 }
+fs.writeFileSync(appliedFile, JSON.stringify([...completionApplied].sort()) + '\n');
 payload.categories = [...categories.values()].sort((a,b)=>a.id.localeCompare(b.id,'en'));
 const output = JSON.stringify(payload)+'\n';
 const runKey = 'labels-v1-'+createHash('sha256').update(output).digest('hex').slice(0,24);
 const summary = { ...prior, runKey, categories: categories.size, canonicalUnits: taxonomy.unitReference.examTopics,
-  curriculumReference: taxonomy.unitReference, excelClassification: counts, sourceSubtopicMatches,
+  curriculumReference: taxonomy.unitReference, excelClassification: counts, sourceSubtopicMatches, topicCompletion: completionStats,
   definitionRefresh: refreshDefinitions,
   unitSelectionRequired: payload.items.filter(i=>i.automaticLabels.unitReview).length };
 const backup = new URL(`../yedek/labels-before-excel-${prior.runKey}-${payload.items.length}.json`, state);

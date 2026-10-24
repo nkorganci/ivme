@@ -169,7 +169,8 @@ Soru/PDF/video ilişkileri yalnız Excel'in aynı sınav ve ders kapsamındaki
 konularına eşlenir. Kaynak başlığından türetilen ilişkiler `CANDIDATE/LOW`
 olarak görünür; geniş kaynak birden fazla aday konuya bağlanabilir. Dar konu
 kanıtı olmayan kayıt, ilgili dersin seçilemeyen `system.*.konu-incelemesi`
-etiketiyle korunur. Öğretmen onayı, konuya özel PDF/video konumu veya dar konu
+etiketiyle korunur; öğrenciye görünen sorular bu durumda kalmaz (aşağıdaki tamamlama).
+Öğretmen onayı, konuya özel PDF/video konumu veya dar konu
 başarısı uydurulmaz. Sorunun kendi kaynak alt konusu (OGM kartında kazanım,
 elle veya kitap başlığı kaynaklı; model tahmini değil), elle düzeltilmiş alt
 konusu ya da test başlığı tek bir Excel konusunun adıyla aynıysa (sözcük sırası
@@ -179,7 +180,32 @@ bir Excel konusunu gösteren kaynak/arşiv kanıtı bu daraltmayı engeller; ad�
 idempotenttir ve her turun listesi `veri/content-labels/source-subtopic-matches-from-<önceki run>.json`
 dosyasına yazılır. Dar ad bulunmayan ünite geneli sorular ünitenin bütün
 konularında sayılır. `questions.topic`, cevaplar ve olay anındaki etiket
-anlık kayıtları değiştirilmez. Güncel istatistikler yeni ortak kimlikleri,
+anlık kayıtları değiştirilmez.
+
+Soru–konu tamamlama: öğrenciye görünen her soru (OGM + çıkmış) en az bir Excel
+konusuna bağlı olmalıdır; yoksa konu/ders süzgeçlerinde çıkmaz. Konusuz kalan
+sorular için `scripts/question-topic-completion.py` (DB'yi ve
+`veri/content-labels/source-inventory.json`'ı okur) her soruya tek bir Excel konusu
+önerir ve `veri/content-labels/question-topic-decisions.json` dosyasına yazar.
+Yöntemler: `EXACT_NAME`/`NAMED_UNIT` (kaynak başlığı konu/ünite adı), `TEXT_MODEL`
+(ders grubu başına TF-IDF + kazanım özellikli doğrusal sınıflayıcı), `DUPLICATE`,
+`PRIOR` (kaynak kazanım/alt başlığına göre en yakın konu) ve `CONTENT_READ`
+(`veri/content-labels/question-topic-reviewed.json`: soru metni veya görseli
+okunarak elle verilen karar; aynı metinli kopyalara `CONTENT_READ_COPY` yayılır).
+`veri/content-labels/question-topic-applied.json` içindeki sorular önceki turda tamamlanmış
+sayılır: planlayıcı bunları yeniden planlar ve eğitimde etiket olarak kullanmaz, böylece
+okuma düzeltmeleri aynı hat üzerinden yeniden uygulanır.
+Bütün model (`TEXT_MODEL`) kararları da okunarak doğrulandı; kaynakta karşılığı olmayan konular
+(ör. “Orta Çağ'da Dünya”, “Su, Hayat ve Çevre Kimyası”) en yakın Excel konusuna
+konup öğretmen onayı bekler. `excel-curriculum-relabel.mjs` kararı, yalnız hâlâ Excel
+konusu olmayan sorulara `PRIMARY/CANDIDATE` ilişki (`review.status=PENDING`,
+`confidenceReason` “öğretmen onayı gerekiyor”, `reviewReasons=TOPIC_APPROVAL_REQUIRED`,
+kanıt türü `QUESTION_TOPIC_COMPLETION`) olarak ekler, `system.*` yer tutucusunu ve
+`unitReview`'i kaldırır; mevcut Excel konusu olan sorulara dokunmaz. Sorunun `examIds`
+alanı her zaman kaynak sınavını da içerir: TYT kaynaklı bir soru yalnız AYT'de bulunan bir
+konuya bağlıysa hem TYT hem AYT süzgecinde çıkar. Bu bağlar öğretmen onayı değildir.
+
+Güncel istatistikler yeni ortak kimlikleri,
 tarihsel sınıflama kayıt anındaki etiketleri kullanır.
 
 Eski tek hedefli tamamlanma, yeni kimlikle gösterilebilir; birden çok konuya
