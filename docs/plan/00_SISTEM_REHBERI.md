@@ -871,7 +871,7 @@ iki uygulamanın DB'si ortak hale gelmez.
 ## Yeni değişiklik yaparken
 
 Geliştirme `D:\workspace\ivme\uygulama` worktree'sinde
-`feature/ivme-yol-haritasi` dalında yürür: port 1011, DB `ivme_dev`.
+`feature/ivme-guncellemer` dalında yürür: port 1010, DB `ivme_dev`.
 Yerel production `D:\workspace\ivme\uygulama-main` worktree'sindeki
 `main` dalıdır: port 1010, DB `ivme`. Aynı Git geçmişi paylaşılır; kaynak ve
 build dosyaları ayrıdır. Feature değişikliği ancak main'e merge edilince ana
@@ -885,22 +885,22 @@ açık `--database` / `PGDATABASE` / `YKS_DB_URL` seçimi bu varsayılanı deği
 
 Kullanıcının kalıcı talimatıyla derleme/yeniden başlatma uygulama işinin
 parçasıdır. `yerel-ortam.ps1` dalın port, DB, oturum ve CSRF çerezini seçer;
-`yeniden-baslat.ps1` yalnız kendi worktree'sine ait süreci değiştirerek dönüşümlü
+`yeniden-baslat.ps1` kendi worktree'sine ait süreci değiştirerek dönüşümlü
 JAR klasörlerine derler. HTML/asset ve `app-version.txt` gerçek HTTP yanıtıyla
 doğrulanır. Ortamlar yerel otomatik giriş davranışı için Spring `dev` profilini
 korur; HTTPS üretim dağıtımı `uretim-calistir.bat` akışındadır.
 
 Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresine bağlanır;
-kullanıcı hedefi Cloudflare'da ayarlar. Main tek HTTP portu açar, feature
-1011'de çalışır. Yeniden başlatıcı port değiştiğinde de
-yalnız kendi worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
+kullanıcı hedefi Cloudflare'da ayarlar. Main ve feature 1010'u sırayla kullanır;
+hangi dal seçilmişse tünel o dalı sunar. `iki-ortami-baslat.ps1 -Branch` diğer
+ortamın izleyicisini ve uygulamasını kapatır. Yeniden başlatıcı kendi
+worktree'sindeki eski JAR'ı bulur ve çalışan derleme yuvasını korur.
 
 `canli-izle.ps1` yalnız kendi kaynak hash'ini ve ortam portunu izler. Depo
-başına mutex ikinci izleyiciyi önler. Windows başlangıcındaki mevcut
-`IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` ile iki izleyiciyi
-gizli başlatır. Kullanıcının tek giriş dosyası üst dizindeki
-`Ikisini de Baslat.bat` aynı betiğe `-OpenBrowser` geçirir; izleyiciler gerekince
-her dalı ayrı derleyip başlatır ve iki adres hazır olunca tarayıcıda açar.
+başına mutex ikinci izleyiciyi önler. Etkin dal bilgisi üst dizindeki
+`.ivme-active-branch` dosyasındadır; seçilmeyen izleyici kapanır. Windows
+başlangıç kısayolu ve üst dizindeki `Ikisini de Baslat.bat` main'i başlatır.
+Feature'a geçiş `iki-ortami-baslat.ps1 -Branch feature/ivme-guncellemer` ile yapılır.
 Sağlık kanıtı her worktree'nin `backend/target/live-watch.status`
 dosyasındaki yaşayan süreç ve güncel dosya zamanıdır. Hatalar `live-watch.log`,
 `live-build.stderr.log` ve `application.stderr.log` dosyalarındadır.

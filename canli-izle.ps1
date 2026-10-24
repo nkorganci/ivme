@@ -2,6 +2,7 @@ $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
 . (Join-Path $repo 'yerel-ortam.ps1')
 $settings = Get-IvmeLocalEnvironment
+$activeFile = Join-Path (Split-Path $repo -Parent) '.ivme-active-branch'
 $stateDir = Join-Path $repo 'backend\target'
 New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
 . (Join-Path $repo 'canli-kaynaklar.ps1')
@@ -29,6 +30,11 @@ try {
     $changedAt = Get-Date
     $retryAt = Get-Date
     while ($true) {
+        if ((Test-Path -LiteralPath $activeFile) -and
+            (Get-Content -LiteralPath $activeFile -Raw).Trim() -ne $settings.Branch) {
+            Write-WatchLog 'Başka dal etkin; izleyici kapatılıyor.'
+            break
+        }
         Set-Content -LiteralPath $statusFile -Value "$PID|$(Get-Date -Format o)" -Encoding ASCII
         Start-Sleep -Seconds 2
         try {

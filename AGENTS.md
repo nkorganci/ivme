@@ -25,16 +25,16 @@
 
 ## Yerel ortam ve dal ayrımı
 
-- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-yol-haritasi`, adresi `http://localhost:1011`, DB'si `ivme_dev`.
+- Geliştirme deposu `D:\workspace\ivme\uygulama`, dalı `feature/ivme-guncellemer`, adresi `http://localhost:1010`, DB'si `ivme_dev`.
 - Ana yerel production ayrı worktree `D:\workspace\ivme\uygulama-main`, dalı `main`, adresi `http://localhost:1010`, DB'si `ivme`. Geliştirme işi feature'da yapılır; main'e geçiş ayrıca merge talimatıyla yapılır.
 - Cloudflare tünelinin hedefi main'in doğrudan `http://localhost:1010` adresidir; 5173 için ek giriş açılmaz. Kullanıcı Cloudflare hedefini kendisi değiştirir. 9090 için kullanıcının talimatıyla `my-jenkins` Docker konteyneri durduruldu; otomatik başlatma.
 - Her ortamın kaynakları, build dizini, görselleri, katalog kopyası ve izleyicisi ayrıdır. `Kaynaklar/ogm-materyal` özgün PDF arşivi yalnız okunarak paylaşılır. Geliştirme sırasında ana ortamın dosyaları/DB'si değiştirilmez.
 - `yerel-ortam.ps1` dalın port/DB/çerez ayarını seçer; `yeniden-baslat.ps1` yalnız o worktree'nin sürecini değiştirir. İçerik betikleri de varsayılan olarak dalın DB'sini seçer; eski `--database ivme` örnekleri ana veriyi hedefler, geliştirmede `ivme_dev` kullan.
-- Windows başlangıcındaki mevcut `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden iki izleyiciyi birlikte çalıştırır. İki ortamın izleyicisi görev sonunda açık kalır.
+- Windows başlangıcındaki mevcut `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden main izleyicisini çalıştırır. Main ve feature aynı 1010 portunu sırayla kullanır; seçilen ortamın izleyicisi açık kalır.
 
 ## Değişiklikleri çalışan uygulamaya yansıtma
 
 - Kullanıcının kalıcı talimatı: uygulama değişikliğinden sonra gerekiyorsa derleme ve yeniden başlatmayı da yap; bu işi kullanıcıya bırakma. Yalnız plan taleplerinde bu kural uygulanmaz.
 - Önce kullanıcının açtığı adresi sunan süreci belirle. Vite geliştirmede HMR'ı, paketli uygulamada `yeniden-baslat.ps1` akışını kullan. Mevcut yerel/paylaşılan uygulamayı güncelleme yetkisi yeni bir dış dağıtım veya push yetkisi değildir.
 - Görevi bitirmeden sunulan HTML/asset sürümünü ve değişen ekranı doğrula; yalnız `frontend/dist` derlemesinin geçmesi yeterli değildir. Paketli çalışmada `backend/target/live-watch.status` kaydındaki sürecin ve izleyici güncelliğinin de sağlam olduğunu kontrol et.
-- Otomatik güncelleme sürekli açık kalır; görev veya doğrulama bittiğinde kaynak izleyicisini kapatma. Kullanıcının Windows başlangıç klasöründeki `IVME - Otomatik Guncelleme.lnk`, `iki-ortami-baslat.ps1` üzerinden iki ortamın izleyicisini gizli başlatır; oturum açılışındaki bu ayarı koru.
+- Otomatik güncelleme seçilen ortam için sürekli açık kalır. Windows başlangıç kısayolu `iki-ortami-baslat.ps1` ile main'i başlatır; feature için aynı betikte `-Branch feature/ivme-guncellemer` kullanılır. İki ortam aynı anda 1010'u dinleyemez.

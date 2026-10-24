@@ -27,7 +27,7 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 | Ortam | Dal ve klasör | Adres | Veritabanı |
 |---|---|---|---|
 | Yerel production | `main` — `D:\workspace\ivme\uygulama-main` | http://localhost:1010 | `ivme` |
-| Geliştirme | `feature/ivme-yol-haritasi` — `D:\workspace\ivme\uygulama` | http://localhost:1011 | `ivme_dev` |
+| Geliştirme | `feature/ivme-guncellemer` — `D:\workspace\ivme\uygulama` | http://localhost:1010 | `ivme_dev` |
 
 Geliştirmeyi `uygulama` klasöründe yapın. `main` ayrı bir Git worktree'sidir;
 kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdır.
@@ -35,18 +35,18 @@ kaynakları, derleme çıktıları, görselleri ve PDF katalog kopyası ayrıdı
 öğrenci kayıtları ve DB göçleri ortamlar arasında otomatik eşitlenmez.
 Özgün `Kaynaklar/ogm-materyal` PDF arşivi iki ortam tarafından yalnız okunur.
 
-Üst dizindeki `Ikisini de Baslat.bat`, `iki-ortami-baslat.ps1` üzerinden iki ortamın izleyicisini gizli başlatır. İzleyiciler
-uygulama kapalıysa açar ve yalnız kendi worktree'sindeki kaynak değişince o
-ortamı yeniler. Herhangi bir ortamı hemen derleyip açmak için o klasörde
-`yeniden-baslat.bat` veya `baslat.bat` kullanılır. Windows başlangıcındaki
-`IVME - Otomatik Guncelleme.lnk` iki izleyiciyi birlikte açar.
+Üst dizindeki `Ikisini de Baslat.bat`, `main` ortamını 1010'da başlatır. Feature'a
+geçmek için `iki-ortami-baslat.ps1 -Branch feature/ivme-guncellemer` çalıştırılır;
+main'e dönmek için `-Branch main` kullanılır. Betik diğer ortamın izleyicisini ve
+uygulamasını kapatıp seçileni açar. Windows başlangıç kısayolu main'i başlatır.
 
 `yerel-ortam.ps1` port, DB ve çerez adlarını daldan belirler; üst süreçten kalan
 başka bir ortamın DB/port ayarlarını kullanmaz. Gereken özel yerel kimlik ve
 kaynak yolları Git dışındaki `.codex/local-environment.json` ile verilebilir.
 Oturum ve CSRF çerezleri ayrıdır; iki localhost sekmesi birbirinin girişini bozmaz.
-Cloudflare tüneli doğrudan main'in `http://localhost:1010` adresini kullanır;
-5173 için ek giriş açılmaz. Feature yalnız yerel 1011 adresinden açılır.
+Cloudflare tüneli `http://localhost:1010` adresini kullanır. Bu adreste hangi
+dalın çalıştığı seçilen yerel ortama bağlıdır; feature seçilirse tünel de onu sunar.
+5173 için ek giriş açılmaz.
 İki yerel ortam mevcut otomatik giriş davranışını koruyan Spring `dev` profilini
 kullanır; production burada main dalındaki sabit yerel uygulamayı belirtir.
 Gerçek HTTPS dağıtım ayarları aşağıdaki üretim paketi bölümündedir.
@@ -57,7 +57,7 @@ dala göre seçilir; `--database ivme` açıkça ana veriyi seçer. Gerçek veri
 `veritabani-sifirla.bat` çalıştırılmaz.
 
 İsteğe bağlı Vite geliştirme akışı: feature klasöründeki `backend-baslat.bat`
-API'yi 8082'de, `frontend-baslat.bat` ön yüzü 1011'de açar. Önce o ortamın paketli
+API'yi 8082'de, `frontend-baslat.bat` ön yüzü 1010'da açar. Önce o ortamın paketli
 uygulaması/izleyicisi durdurulmalıdır; normal kullanımda iki ortam da paketli
 uygulama ve kaynak izleyicisiyle çalışır.
 
@@ -121,6 +121,6 @@ HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata
 - Ön yüz: `cd frontend; npm run build`.
 - Yerel Chrome uçtan uca: `node testler/e2e.mjs [çıktı klasörü] [--mobil]`. Test yeni kullanıcı ve geri bildirim oluşturur; yalnız yerel adreste çalışır. Ayrıcalıklı ekranlar ancak ilgili `YKS_E2E_YONETICI*` veya `YKS_E2E_OPERATOR*` ortam değişkenleri verilirse denenir.
 
-**Git:** Geliştirme kolu `feature/ivme-yol-haritasi`, yerel production kolu `main`; doğru uzak depo `ivme` adıdır. Kullanıcının son isteği gereği değişiklikler yerel commit edilir, tüm işler bitip yorum alınana kadar push yapılmaz.
+**Git:** Yerel geliştirme kolu `feature/ivme-guncellemer`, yerel production kolu `main`; doğru uzak depo `ivme` adıdır. Yeni geliştirme değişiklikleri yerel feature dalına commit edilir. Push yalnız açık kullanıcı talimatıyla yapılır.
 
 Kaynaklı ders notları ve 53.019 etkin sorunun etiket dizini `/kaynakli-ders-notlari` altında bulunur. Konu/alt konu için 21 rehber, 44 soru kalıbı ve akıllı çalışma yönlendirmesi vardır. Kapsam ve testler [notlar kaydında](docs/KAYNAKLI_DERS_NOTLARI.md), PostgreSQL'deki yeniden kullanılabilir araştırma arşivi [analiz kaydında](docs/KAYNAKLI_SORU_ANALIZI.md) açıklanır; tüm müfredat analizi tamamlanmış sayılmaz.
