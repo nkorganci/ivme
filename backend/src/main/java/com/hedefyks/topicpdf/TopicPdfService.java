@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ClassPathResource;
@@ -44,6 +45,12 @@ public class TopicPdfService {
     private final List<Entry> ordered;
     private final Map<Integer, ApprovedLink> approvedLinks;
     private final List<ReviewedLink> curriculumLinks;
+    private PdfArchiveRegistry archive;
+
+    @Autowired(required = false)
+    public void setArchive(PdfArchiveRegistry archive) { this.archive = archive; }
+
+    private boolean archived(Entry entry) { return archive != null && archive.contains(entry.sha256()); }
 
     public TopicPdfService(ObjectMapper mapper,
                            @Value("${app.topic-pdfs.catalog-dir:}") String catalogPath,
@@ -136,7 +143,7 @@ public class TopicPdfService {
         int pageSize = Math.max(1, Math.min(size, 50));
         String term = search == null ? "" : search.trim().toLowerCase(Locale.forLanguageTag("tr-TR"));
         if (term.length() > 100) throw ApiException.badRequest("Arama en fazla 100 karakter olabilir.");
-        List<Item> matched = ordered.stream().map(Entry::item)
+        List<Item> matched = ordered.stream().filter(entry -> !archived(entry)).map(Entry::item)
                 .filter(item -> exam == null || exam.isBlank() || exam.equals(item.exam())
                         || ("TYT-AYT".equals(item.exam()) && List.of("TYT", "AYT").contains(exam)))
                 .filter(item -> subject == null || subject.isBlank() || subject.equals(item.subject()))
@@ -151,14 +158,14 @@ public class TopicPdfService {
     }
 
     public Filters filters() {
-        Map<FacetKey, Long> counts = ordered.stream().map(Entry::item)
+        Map<FacetKey, Long> counts = ordered.stream().filter(entry -> !archived(entry)).map(Entry::item)
                 .collect(java.util.stream.Collectors.groupingBy(
                         item -> new FacetKey(item.exam(), item.subject(), item.grade(), item.kind()),
                         java.util.stream.Collectors.counting()));
-        return new Filters(distinct(ordered.stream().map(e -> e.item().exam()).toList()),
-                distinct(ordered.stream().map(e -> e.item().subject()).toList()),
-                distinct(ordered.stream().map(e -> e.item().kind()).toList()),
-                ordered.stream().map(e -> e.item().grade()).filter(java.util.Objects::nonNull)
+        return new Filters(distinct(ordered.stream().filter(e -> !archived(e)).map(e -> e.item().exam()).toList()),
+                distinct(ordered.stream().filter(e -> !archived(e)).map(e -> e.item().subject()).toList()),
+                distinct(ordered.stream().filter(e -> !archived(e)).map(e -> e.item().kind()).toList()),
+                ordered.stream().filter(e -> !archived(e)).map(e -> e.item().grade()).filter(java.util.Objects::nonNull)
                         .distinct().sorted().toList(),
                 counts.entrySet().stream()
                         .map(entry -> new Facet(entry.getKey().exam(), entry.getKey().subject(),
@@ -170,21 +177,21 @@ public class TopicPdfService {
     }
     public List<Integer> catalogIdsByKind(String kind) {
         if(!filters().kinds().contains(kind))throw ApiException.badRequest("PDF kaynak türü geçersiz.");
-        return ordered.stream().map(Entry::item).filter(i->kind.equals(i.kind())).map(Item::id).toList();
+        return ordered.stream().filter(e -> !archived(e)).map(Entry::item).filter(i->kind.equals(i.kind())).map(Item::id).toList();
     }
 
     /** Review candidates retain mappings even when a file needs repair; this does not approve them. */
     public List<CurriculumPdf> reviewCurriculumLinks(String exam, String subject) {
         String prefix = exam.toLowerCase(Locale.ROOT) + "." + subject + ".";
         return curriculumLinks.stream().filter(link -> link.topicId().startsWith(prefix))
-                .filter(link -> byId.containsKey(link.catalogId()))
+                .filter(link -> byId.containsKey(link.catalogId()) && !archived(byId.get(link.catalogId())))
                 .map(link -> new CurriculumPdf(link.topicId(), link.catalogId(),
                         byId.get(link.catalogId()).item().title(), byId.get(link.catalogId()).item().kind())).toList();
     }
 
     public String reviewSourceSha256(int id) {
         Entry entry = byId.get(id);
-        if (entry == null) throw ApiException.notFound("PDF bulunamadı.");
+        if (entry == null || archived(entry)) throw ApiException.notFound("PDF bulunamadı.");
         return entry.sha256();
     }
 
@@ -224,7 +231,7 @@ public class TopicPdfService {
 
     public Item detail(int id) {
         Entry entry = byId.get(id);
-        if (entry == null) throw ApiException.notFound("Konu anlatımı bulunamadı.");
+        if (entry == null || archived(entry)) throw ApiException.notFound("Konu anlatımı bulunamadı.");
         if ("available".equals(entry.item().status())) {
             try {
                 file(id);
@@ -245,7 +252,7 @@ public class TopicPdfService {
     /** Lightweight catalog validation for annotations; PDF bytes are verified when opened. */
     public Item annotationItem(int id) {
         Entry entry = byId.get(id);
-        if (entry == null || !"available".equals(entry.item().status())) {
+        if (entry == null || archived(entry) || !"available".equals(entry.item().status())) {
             throw ApiException.notFound("PDF bulunamadı.");
         }
         return entry.item();
@@ -254,7 +261,7 @@ public class TopicPdfService {
     public List<String> approvedQuestionCodes(int id) {
         ApprovedLink link = approvedLinks.get(id);
         Entry entry = byId.get(id);
-        if (link == null || entry == null || !entry.sha256().equals(link.pdfSha256())
+        if (link == null || entry == null || archived(entry) || !entry.sha256().equals(link.pdfSha256())
                 || !"available".equals(entry.item().status())
                 || !"TYT".equals(entry.item().exam()) || !"turkce".equals(entry.item().subject())) {
             throw ApiException.notFound("Doğrulanmış konu soru bağı bulunamadı.");
@@ -265,7 +272,7 @@ public class TopicPdfService {
 
     public Resource file(int id) {
         Entry entry = byId.get(id);
-        if (entry == null || !"available".equals(entry.item().status()) || sourceRoot == null) {
+        if (entry == null || archived(entry) || !"available".equals(entry.item().status()) || sourceRoot == null) {
             throw ApiException.notFound("PDF bulunamadı.");
         }
         String relative = entry.relativePath().replace('\\', '/');

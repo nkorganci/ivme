@@ -67,6 +67,9 @@ try {
   assert.match(initial, /2\.693 fiziksel PDF/);
   assert.match(initial, /2\.708 katalog kaydı/);
   assert.match(initial, /Kanıtlı banka sorusu var/);
+  assert.match(initial, /İşlendi \(kapsam açık\)/);
+  assert.match(initial, /İşlenmedi \/ doğrulanmadı/);
+  assert.match(initial, /Arşivde/);
   await evalJs(`(() => { const bar = document.querySelector('.ag-body-horizontal-scroll-viewport');
     bar.scrollLeft = bar.scrollWidth; bar.dispatchEvent(new Event('scroll')); return true; })()`);
   await wait(`[...document.querySelectorAll('button')].some(button => button.textContent.trim() === 'Göster')`);
@@ -75,6 +78,7 @@ try {
   const proof = await evalJs('document.body.innerText');
   assert.match(proof, /hash kontrolü: doğrulandı/);
   assert.match(proof, /PDF sayfası/);
+  assert.match(proof, /Arşiv incelemesine al/);
   const candidate = await evalJs(`fetch('/api/pdf-bank-audit/335/candidates').then(async response =>
     ({ status: response.status, body: await response.json() }))`);
   assert.equal(candidate.status, 200);

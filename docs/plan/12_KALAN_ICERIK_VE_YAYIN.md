@@ -28,6 +28,15 @@ numarasının 16 pt yatay kaymasını giderdi: 60 soru/60 görsel, sıfır redde
 `veri/content-labels/pdf-extraction/mini-test-04/candidates.json` içindedir;
 bankaya alınmadan önce tüm 60 görsel, ders/sınav etiketi ve mevcut sorularla
 benzerlik bağı incelenir. Adaylar banka sayısı değildir.
+Main PDF envanterinde banka sorusu bulunan kaynaklar “İşlendi (kapsam açık)”,
+henüz kanıtlanmayanlar “İşlenmedi / doğrulanmadı” diye ayrılır. Arşiv incelemesi
+seçimi dosya taşımaz. Gerçek arşiv için her PDF'nin beklenen soru sayısı/kodları,
+canlı banka eşleşmesi ve konu/not/inceleme referansları birlikte doğrulanır.
+Paylaşılan özgün `Kaynaklar` feature ortamı için korunur; main'e ait
+`veri/pdf-arsiv` ve hash kimliği tekrar indirmeyi önlemek için saklanır.
+`scripts/pdf-archive.py` inceleme JSON'undaki tam kod dökümünü canlı banka
+kanıtıyla karşılaştırır; güncel `pdf:<id>` içerik kaydı veya yayımlanmış konu
+PDF bağı varsa arşivi reddeder. Bu denetimde arşive uygun kayıt henüz yoktur.
 
 Durum: `BEKLIYOR_KAYNAK_KARARI`. 14 içerik kararı ve 54 birleşik/belirsiz resmî
 soru konumu açık. Kaynak/alan kanıtı olmadan cevap, soru kimliği veya geçmiş

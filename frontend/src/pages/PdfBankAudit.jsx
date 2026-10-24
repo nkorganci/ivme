@@ -20,7 +20,11 @@ export default function PdfBankAudit() {
   const [workBusy, setWorkBusy] = useState(false);
   const [workError, setWorkError] = useState(null);
   const [status, setStatus] = useState('');
-  const rows = useMemo(() => (audit.data?.pdfs || []).filter(row => !status || row.status === status), [audit.data, status]);
+  const [archiveFilter, setArchiveFilter] = useState('');
+  const [processingFilter, setProcessingFilter] = useState('');
+  const rows = useMemo(() => (audit.data?.pdfs || []).filter(row =>
+    (!status || row.status === status) && (!archiveFilter || row.archiveState === archiveFilter)
+    && (!processingFilter || row.processingLabel === processingFilter)), [audit.data, status, archiveFilter, processingFilter]);
   const counts = useMemo(() => (audit.data?.pdfs || []).reduce((groups, row) => {
     (groups[row.status] ||= []).push(row); return groups;
   }, {}), [audit.data]);
@@ -56,11 +60,13 @@ export default function PdfBankAudit() {
     { field: 'pages', headerName: 'Sayfa', minWidth: 85, cellDataType: 'number' },
     { field: 'questionCount', headerName: 'Bankadaki soru', minWidth: 115, cellDataType: 'number' },
     { field: 'candidateCount', headerName: 'Çıkarım adayı', minWidth: 120, cellDataType: 'number' },
+    { field: 'processingLabel', headerName: 'İşlem etiketi', minWidth: 190 },
+    { field: 'archiveState', headerName: 'Arşiv', minWidth: 100 },
     { field: 'status', headerName: 'Soru durumu', minWidth: 165 },
     { field: 'workAction', headerName: 'İşlem seçimi', minWidth: 135,
-      valueFormatter: ({ value }) => value === 'EXTRACT' ? 'Soru çıkarma' : value === 'DELETE_REVIEW' ? 'Silme incelemesi' : 'Seçilmedi' },
-    { field: 'available', headerName: 'Dosya', minWidth: 100, valueGetter: ({ data }) => data.available ? 'Var' : 'Eksik' },
-    { colId: 'proof', headerName: 'Kanıt', minWidth: 100, filter: false, sortable: false,
+      valueFormatter: ({ value }) => value === 'EXTRACT' ? 'Soru çıkarma' : value === 'ARCHIVE_REVIEW' ? 'Arşiv incelemesi' : 'Seçilmedi' },
+    { field: 'available', headerName: 'Dosya', minWidth: 100, valueGetter: ({ data }) => data.archiveState === 'Arşivde' ? 'Arşivde' : data.available ? 'Var' : 'Eksik' },
+    { colId: 'proof', headerName: 'Kanıt', minWidth: 100, valueGetter: ({ data }) => data.questionCount > 0 ? 'Soru kanıtı var' : 'Soru kanıtı yok',
       cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" onClick={() => openProof(data)}>Göster</button> },
   ], []);
   const questionColumns = useMemo(() => [
@@ -78,7 +84,7 @@ export default function PdfBankAudit() {
       cellRenderer: ({ data }) => <Link to={`/konu-anlatimlari/${selected}#page=${data.pdfPage}`}>{data.pdfPage}</Link> },
     { field: 'answer', headerName: 'Anahtar', minWidth: 100 },
     { field: 'text', headerName: 'Çıkarılan metin', minWidth: 280, flex: 2, wrapText: true, autoHeight: true },
-    { colId: 'candidateImage', headerName: 'Kırpım', minWidth: 100, filter: false, sortable: false,
+    { colId: 'candidateImage', headerName: 'Kırpım', minWidth: 100, valueGetter: () => 'Görsel var',
       cellRenderer: ({ data }) => <a href={`/api/pdf-bank-audit/${selected}/candidates/${encodeURIComponent(data.code)}/image`}
         target="_blank" rel="noreferrer">Görsel</a> },
   ], [selected]);
@@ -88,10 +94,16 @@ export default function PdfBankAudit() {
     <div className="page-head"><h1>PDF envanteri</h1></div>
     <p className="muted">{number(audit.data.physicalPdfCount)} fiziksel PDF · {number(audit.data.pdfs.length)} katalog kaydı · {number(audit.data.liveQuestionCount)} canlı banka sorusu · denetim: {new Date(audit.data.auditedAt).toLocaleString('tr-TR')}.</p>
     {!audit.data.current && <p role="alert">Soru bankası denetimden sonra değişti. Kanıtları güncellemek için PDF denetimini yeniden çalıştır.</p>}
-    <p className="muted">Kanıtlı banka sorusu, özgün PDF dosya yolu, kaynak SHA-256 değeri ve canlı soru kodunun eşleşmesine dayanır. Sayfa ve soru kodlarını Kanıt düğmesinden inceleyebilirsin. Sıfır eşleşme, PDF’de soru olmadığı veya henüz çıkarılmadığı anlamına gelmez.</p>
+    <p className="muted">Kanıtlı banka sorusu, özgün PDF dosya yolu, kaynak SHA-256 değeri ve canlı soru kodunun eşleşmesine dayanır. Sayfa ve soru kodlarını Kanıt düğmesinden inceleyebilirsin. “İşlendi (kapsam açık)” bazı soruların alındığını, tamamının alındığının henüz kanıtlanmadığını gösterir. Sıfır eşleşme, PDF’de soru olmadığı anlamına gelmez.</p>
     <label className="pdf-audit-status">Soru durumu <select value={status} onChange={event => setStatus(event.target.value)}>
       <option value="">Bütün durumlar ({number(audit.data.pdfs.length)})</option>
       {Object.entries(counts).map(([key, list]) => <option key={key} value={key}>{key} ({number(list.length)})</option>)}
+    </select></label>
+    <label className="pdf-audit-status">Arşiv <select value={archiveFilter} onChange={event => setArchiveFilter(event.target.value)}>
+      <option value="">Tümü</option><option value="Aktif">Aktif</option><option value="Arşivde">Arşivde</option>
+    </select></label>
+    <label className="pdf-audit-status">İşlem etiketi <select value={processingFilter} onChange={event => setProcessingFilter(event.target.value)}>
+      <option value="">Tümü</option>{[...new Set(audit.data.pdfs.map(row => row.processingLabel))].map(value => <option key={value}>{value}</option>)}
     </select></label>
     <section className="card table-card" aria-label="PDF envanteri tablosu">
       <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
@@ -101,14 +113,14 @@ export default function PdfBankAudit() {
       <div className="pdf-audit-proof-head"><h2>{proof?.title || 'Kanıt yükleniyor…'}</h2><button type="button" className="btn btn-secondary btn-sm" onClick={() => { setSelected(null); setProof(null); }}>Kapat</button></div>
       {busy && <Loading text="Kanıt yükleniyor…" />}{proofError && <ErrorBox error={proofError} />}
       {candidateError && <ErrorBox error={candidateError} />}
-      {proof && <><p className="muted">Kaynak: {proof.relativePath} · SHA-256: <code>{proof.sha256}</code> · hash kontrolü: {proof.hashVerified === true ? 'doğrulandı' : proof.hashVerified === false ? 'uyuşmuyor' : 'soru bağı yok'} · bankadaki {number(proof.questionCount)} soru · çıkarılan {number(proof.candidateCount)} aday.</p>
-        <p>İşlem seçimi: {audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'EXTRACT' ? 'Soru çıkarma' : audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'DELETE_REVIEW' ? 'Silme incelemesi' : 'Seçilmedi'}</p>
+      {proof && <><p className="muted">Kaynak: {proof.relativePath} · SHA-256: <code>{proof.sha256}</code> · arşiv: {audit.data.pdfs.find(row => row.id === proof.id)?.archiveState} · hash kontrolü: {proof.hashVerified === true ? 'doğrulandı' : proof.hashVerified === false ? 'uyuşmuyor' : 'soru bağı yok'} · bankadaki {number(proof.questionCount)} soru · çıkarılan {number(proof.candidateCount)} aday.</p>
+        <p>İşlem seçimi: {audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'EXTRACT' ? 'Soru çıkarma' : audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'ARCHIVE_REVIEW' ? 'Arşiv incelemesi' : 'Seçilmedi'}</p>
         <div className="pdf-audit-work">
-          <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy || !proof.available || !audit.data.current} onClick={() => changeWork('EXTRACT')}>Soru çıkarma listesine al</button>
-          <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy} onClick={() => changeWork('DELETE_REVIEW')}>Silme incelemesine al</button>
+          <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy || !proof.available || !audit.data.current || audit.data.pdfs.find(row => row.id === proof.id)?.archiveState === 'Arşivde'} onClick={() => changeWork('EXTRACT')}>Soru çıkarma listesine al</button>
+          <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy || !proof.available || !audit.data.current || audit.data.pdfs.find(row => row.id === proof.id)?.archiveState === 'Arşivde'} onClick={() => changeWork('ARCHIVE_REVIEW')}>Arşiv incelemesine al</button>
           <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy} onClick={() => changeWork('')}>İşlem seçimini kaldır</button>
         </div>
-        <p className="muted small">İşlem seçimi PDF’yi değiştirmez. Soru ekleme için kırpım, cevap ve kaynak doğrulaması; silme için ortak arşiv kararı gerekir.</p>
+        <p className="muted small">İşlem seçimi PDF’yi değiştirmez. Arşivleme için tüm soruların bankadaki kanıtı ve kalan PDF bağlantılarının kontrolü gerekir.</p>
         {workError && <ErrorBox error={workError} />}
         {proof.questionCount ? <DataGrid rowData={proof.proof} columnDefs={questionColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
           gridOptions={{ getRowId: ({ data }) => data.code }} />

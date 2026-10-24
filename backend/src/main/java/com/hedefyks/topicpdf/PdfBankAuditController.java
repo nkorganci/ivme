@@ -64,6 +64,9 @@ public class PdfBankAuditController {
         Map<Integer, String> work = new LinkedHashMap<>();
         for (Map<String, Object> item : jdbc.queryForList("SELECT catalog_id, action FROM learning_catalog.pdf_work_queue"))
             work.put(((Number) item.get("catalog_id")).intValue(), (String) item.get("action"));
+        Map<String, String> archived = new LinkedHashMap<>();
+        for (Map<String, Object> item : jdbc.queryForList("SELECT source_sha256, archive_relative_path FROM learning_catalog.pdf_archive"))
+            archived.put((String) item.get("source_sha256"), (String) item.get("archive_relative_path"));
         List<Map<String, Object>> rows = new ArrayList<>(byId.size());
         for (JsonNode node : byId.values()) {
             var row = new LinkedHashMap<String, Object>();
@@ -74,6 +77,12 @@ public class PdfBankAuditController {
                         : value.isBoolean() ? value.booleanValue() : value.asText());
             }
             row.put("workAction", work.getOrDefault(node.path("id").asInt(), ""));
+            String archivePath = archived.get(node.path("sha256").asText());
+            if (archivePath != null) row.put("available", false);
+            row.put("archiveState", archivePath == null ? "Aktif" : "Arşivde");
+            row.put("processingLabel", archivePath != null ? "İşlendi (tam)" : node.path("candidateCount").asInt() > 0
+                    ? "İşlenmedi (aday hazır)" : node.path("questionCount").asInt() > 0
+                    ? "İşlendi (kapsam açık)" : "İşlenmedi / doğrulanmadı");
             rows.add(row);
         }
         return Map.of("auditedAt", audit.path("auditedAt").asText(),
@@ -156,10 +165,13 @@ public class PdfBankAuditController {
         JsonNode row = byId.get(id);
         if (row == null) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
         if (!currentBank()) throw ApiException.conflict("Soru bankası değişmiş; PDF denetimini yenileyin.");
-        if (request == null || !List.of("EXTRACT", "DELETE_REVIEW").contains(request.action()))
+        if (request == null || !List.of("EXTRACT", "ARCHIVE_REVIEW").contains(request.action()))
             throw ApiException.badRequest("İşlem türü geçersiz.");
         if (!row.path("sha256").asText().equals(request.sourceSha256()))
             throw ApiException.conflict("PDF kaynağı değişmiş; tabloyu yenileyin.");
+        if (!jdbc.queryForList("SELECT source_sha256 FROM learning_catalog.pdf_archive WHERE source_sha256=?",
+                String.class, request.sourceSha256()).isEmpty())
+            throw ApiException.conflict("PDF zaten arşivde.");
         if ("EXTRACT".equals(request.action()) && !row.path("available").asBoolean())
             throw ApiException.conflict("Kaynak PDF bulunamadı.");
         jdbc.update("""

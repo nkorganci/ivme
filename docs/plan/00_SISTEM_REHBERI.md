@@ -81,6 +81,19 @@ verdirmez. `content-source-analysis.py` önerileri metin/görsel hash'ine bağl�
 karma karttaki her kanıt yalnız desteklediği kategoriye bağlanır. Önceki model
 etiketi, bağımsız içerik doğrulaması yapılana kadar düşük güvenlidir.
 
+PDF banka eşleşmesi ile tam işlenme ayrı durumlardır. `pdf-bank-audit.json.gz`
+özgün yol, SHA-256 ve canlı soru kodunu kanıtlar; eşleşen sorular PDF'deki bütün
+soruların alındığını tek başına kanıtlamaz. Main'deki `veri/pdf-arsiv` ayrı bir
+mantıksal arşivdir; paylaşılan `Kaynaklar` dosyaları feature ortamı için korunur.
+Arşiv kaydı ancak tüm soru kodları ve kalan uygulama referansları doğrulanınca
+`scripts/pdf-archive.py` üzerinden `learning_catalog.pdf_archive` içine yazılır.
+Bu işlem paylaşılan özgün PDF'yi silmez; main'in normal PDF listesi ve dosya API'si
+arşiv hash'ini gizler. Yeni PDF'ler `scripts/pdf-source-copy.py`
+ile main'e ait `veri/pdf-gelen` klasörüne alınır; kopyalama öncesi kaynak,
+arşiv ve gelen klasörlerindeki SHA-256 kimlikleri kontrol edilir. Aynı içerik
+tekrar kopyalanmaz. Arşiv inceleme kuyruğu tek başına arşiv kaydı veya dosya
+taşıma işlemi değildir.
+
 `question-label-check.py` CSV–statik JSON projeksiyonunu, güncel ortak soru
 kimliklerini, eski araştırmanın metin/görsel sürümünü ve not örneklerini salt
 okunur karşılaştırır. Rapor `question-checks/<runKey>/` altında tutulur. Kimlik
