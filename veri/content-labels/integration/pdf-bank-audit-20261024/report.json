@@ -27,7 +27,18 @@
       "candidateQuestions": 0,
       "rejectedAnchors": 42,
       "orphanRegions": 40,
-      "bankTransfer": "pending_extractor_repair"
+      "localRepair": {
+        "command": "uygulama-main/scripts/pdf-question-candidates.py",
+        "anchorTolerance": 16,
+        "stagedQuestionCandidates": 60,
+        "rejectedAnchors": 0,
+        "extractorIssues": 0,
+        "answerMethodMismatches": 0,
+        "candidatePackage": "uygulama-main/veri/content-labels/pdf-extraction/mini-test-04/candidates.json",
+        "candidatePackageSha256": "a07fb5a75050eeba89dd2c175e7d85df1684fbc0e2e60e43c6366d8218afb6e3",
+        "visualSamples": ["mn-test-04-01-01", "mn-test-04-01-30", "mn-test-04-01-60"]
+      },
+      "bankTransfer": "pending_visual_review_and_subject_labels"
     }
   ]
 }

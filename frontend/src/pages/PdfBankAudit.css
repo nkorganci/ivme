@@ -4,3 +4,4 @@
 .pdf-audit-proof-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .pdf-audit-proof code { overflow-wrap: anywhere; }
 .pdf-audit-work { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: .8rem; }
+.pdf-audit-candidates { margin-top: 1.5rem; }

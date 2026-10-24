@@ -5,7 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.user.AppUserDetails;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +17,11 @@ import java.util.zip.GZIPInputStream;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.PathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.CacheControl;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,9 +37,15 @@ public class PdfBankAuditController {
     private final JsonNode audit;
     private final Map<Integer, JsonNode> byId = new LinkedHashMap<>();
     private final JdbcTemplate jdbc;
+    private final ObjectMapper mapper;
+    private final Path candidateDir;
 
     public PdfBankAuditController(ObjectMapper mapper, JdbcTemplate jdbc) {
+        this.mapper = mapper;
         this.jdbc = jdbc;
+        Path cwd = Path.of("").toAbsolutePath();
+        Path root = Files.isDirectory(cwd.resolve("backend")) ? cwd : cwd.getParent();
+        this.candidateDir = root.resolve("veri/content-labels/pdf-extraction/mini-test-04").normalize();
         try (InputStream in = new GZIPInputStream(new ClassPathResource("pdf-bank-audit.json.gz").getInputStream())) {
             audit = mapper.readTree(in);
             if (audit.path("version").asInt() != 1) throw new IllegalStateException("PDF denetim sürümü geçersiz.");
@@ -53,7 +68,7 @@ public class PdfBankAuditController {
         for (JsonNode node : byId.values()) {
             var row = new LinkedHashMap<String, Object>();
             for (String name : List.of("id", "title", "exam", "subject", "category", "source", "pages",
-                    "available", "hashVerified", "questionCount", "status")) {
+                    "available", "hashVerified", "questionCount", "candidateCount", "status")) {
                 JsonNode value = node.path(name);
                 row.put(name, value.isNull() ? null : value.isNumber() ? value.numberValue()
                         : value.isBoolean() ? value.booleanValue() : value.asText());
@@ -80,6 +95,57 @@ public class PdfBankAuditController {
         JsonNode row = byId.get(id);
         if (row == null) throw ApiException.notFound("PDF denetim kaydı bulunamadı.");
         return row;
+    }
+
+    private JsonNode candidatePackage(int id) {
+        if (id != 335 && id != 349) throw ApiException.notFound("PDF soru adayı bulunamadı.");
+        try {
+            JsonNode packageData = mapper.readTree(candidateDir.resolve("candidates.json").toFile());
+            if (!packageData.path("sourceSha256").asText().equals(byId.get(id).path("sha256").asText())
+                    || packageData.path("questionCount").asInt() != packageData.path("cards").size())
+                throw ApiException.conflict("Aday soru paketi kaynakla uyuşmuyor.");
+            return packageData;
+        } catch (ApiException exception) {
+            throw exception;
+        } catch (Exception exception) {
+            throw ApiException.notFound("PDF soru adayı bulunamadı.");
+        }
+    }
+
+    @GetMapping("/{id}/candidates")
+    public JsonNode candidates(@PathVariable int id) {
+        return candidatePackage(id);
+    }
+
+    @GetMapping("/{id}/candidates/{code}/image")
+    public ResponseEntity<Resource> candidateImage(@PathVariable int id, @PathVariable String code) {
+        try {
+            JsonNode card = null;
+            for (JsonNode item : candidatePackage(id).path("cards"))
+                if (code.equals(item.path("code").asText())) { card = item; break; }
+            if (card == null) throw ApiException.notFound("Aday soru görseli bulunamadı.");
+            String file = card.path("image").asText();
+            if (!file.matches("[a-z0-9-]+\\.webp")) throw ApiException.notFound("Aday soru görseli bulunamadı.");
+            Path image = candidateDir.resolve(file).normalize();
+            if (!image.startsWith(candidateDir) || !Files.isRegularFile(image))
+                throw ApiException.notFound("Aday soru görseli bulunamadı.");
+            MessageDigest sha = MessageDigest.getInstance("SHA-256");
+            try (InputStream in = Files.newInputStream(image)) {
+                for (byte[] buffer = new byte[65536];;) {
+                    int count = in.read(buffer);
+                    if (count < 0) break;
+                    sha.update(buffer, 0, count);
+                }
+            }
+            if (!HexFormat.of().formatHex(sha.digest()).equals(card.path("imageSha256").asText()))
+                throw ApiException.conflict("Aday soru görseli değişmiş.");
+            return ResponseEntity.ok().contentType(MediaType.parseMediaType("image/webp"))
+                    .cacheControl(CacheControl.noStore()).body(new PathResource(image));
+        } catch (ApiException exception) {
+            throw exception;
+        } catch (Exception exception) {
+            throw ApiException.notFound("Aday soru görseli bulunamadı.");
+        }
     }
 
     public record WorkRequest(String action, String sourceSha256) {}

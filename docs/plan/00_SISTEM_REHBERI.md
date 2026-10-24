@@ -202,6 +202,13 @@ incelemesi seçimini PDF katalog kimliği ve kaynak hash'iyle tutar. Seçim bank
 soru eklemez, kaynak PDF'yi silmez, yayımlanmış kaynak sürümünü değiştirmez.
 Silme/çıkarım ancak ilgili kaynak ve cevap doğrulamasından sonra ayrı kabul
 işlemidir.
+Mini Deneme Test 04'ün numara konumu diğer testlerden kaydığı için
+`scripts/pdf-question-candidates.py` yalnız bu kaynak hash'ini kabul eder,
+ortak veri hattı koduna dokunmadan 60 aday WebP/metin/iki cevap okumasını
+`veri/content-labels/pdf-extraction/mini-test-04` içinde hazırlar. Bu paket
+`CANDIDATE_NOT_IN_BANK` durumundadır; öğrenci kaydı, soru kodu ve mevcut
+katalog yayınını değiştirmez. Aday API'si paket/görsel hash'ini okurken
+yeniden denetler.
 
 [Ortak kaynak v2 şeması](sema/learning-resource-v2.schema.json) ve
 [temsili örnekler](sema/learning-resource-v2.ornek.json) veri sözleşmesidir.

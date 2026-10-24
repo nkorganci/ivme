@@ -75,8 +75,16 @@ try {
   const proof = await evalJs('document.body.innerText');
   assert.match(proof, /hash kontrolü: doğrulandı/);
   assert.match(proof, /PDF sayfası/);
+  const candidate = await evalJs(`fetch('/api/pdf-bank-audit/335/candidates').then(async response =>
+    ({ status: response.status, body: await response.json() }))`);
+  assert.equal(candidate.status, 200);
+  assert.equal(candidate.body.questionCount, 60);
+  const candidateImage = await evalJs(`fetch('/api/pdf-bank-audit/335/candidates/mn-test-04-01-60/image').then(response =>
+    ({ status: response.status, contentType: response.headers.get('content-type') }))`);
+  assert.equal(candidateImage.status, 200);
+  assert.match(candidateImage.contentType, /image\/webp/);
   assert.deepEqual(errors, []);
-  console.log('PDF audit UI: 2,693 physical files, 2,708 catalog rows, proof and work controls OK');
+  console.log('PDF audit UI: 2,693 physical files, 2,708 catalog rows, 60 candidates, proof and work controls OK');
 } finally {
   socket?.close();
   chrome.kill();

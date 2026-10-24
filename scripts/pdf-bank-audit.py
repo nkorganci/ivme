@@ -66,6 +66,8 @@ def main():
     inventory = json.loads(QUESTION_INVENTORY.read_text(encoding='utf-8'))
     current = live_questions()
     by_path = collections.defaultdict(dict)
+    staged = ROOT / 'veri/content-labels/pdf-extraction/mini-test-04/candidates.json'
+    staged_data = json.loads(staged.read_text(encoding='utf-8')) if staged.is_file() else None
     for question in inventory['questions']:
         code = question['code']
         live = current.get(code)
@@ -95,6 +97,8 @@ def main():
         physical = ARCHIVE / (path if scope == 'RESOURCES' else 'ogm-materyal/' + path)
         catalog_paths.add(physical.relative_to(ARCHIVE).as_posix().casefold())
         kind = category(item)
+        candidate_count = (staged_data['questionCount'] if staged_data and item['catalogId'] in staged_data['sourceCatalogIds']
+                           and staged_data['sourceSha256'] == item.get('sourceSha256') else 0)
         hash_verified = None
         if proofs and physical.is_file():
             digest = hashlib.sha256()
@@ -106,6 +110,7 @@ def main():
                      'subject': item.get('subject', ''), 'category': kind, 'source': item.get('source', ''),
                      'pages': item.get('pageCount'), 'available': physical.is_file(),
                      'hashVerified': hash_verified,
+                     'candidateCount': candidate_count,
                      'questionCount': len(proofs), 'proof': proofs,
                      'status': ('Kanıtlı banka sorusu var' if hash_verified else 'PDF hash kontrolü gerekli') if proofs else
                                ('PDF–soru bağı doğrulanmadı' if kind in ('Soru', 'Deneme / çıkmış soru')

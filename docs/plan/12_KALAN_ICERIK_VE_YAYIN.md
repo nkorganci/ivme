@@ -21,6 +21,13 @@ güvenilir soru/test çıkardı (42 reddedilen çapa, 40 yetim parça). Bu iki P
 kırpım ve cevap eşleşmesi onarılıp bağımsız doğrulanmadan banka aktarımı yapılmaz.
 [Dosya/hash ve kuru çıkarım kanıtı](../../veri/content-labels/integration/pdf-bank-audit-20261024/report.json)
 bu iki kaynak için korunur.
+Mini Deneme Test 04 için main'e özel `scripts/pdf-question-candidates.py` kaynak
+numarasının 16 pt yatay kaymasını giderdi: 60 soru/60 görsel, sıfır reddedilen
+çapa, sıfır cevap yöntemi uyuşmazlığı. 1, 30, 60 ve görsel seçenekli 33, 39,
+43, 52, 53. adayların kırpımları gözle incelendi. Paket
+`veri/content-labels/pdf-extraction/mini-test-04/candidates.json` içindedir;
+bankaya alınmadan önce tüm 60 görsel, ders/sınav etiketi ve mevcut sorularla
+benzerlik bağı incelenir. Adaylar banka sayısı değildir.
 
 Durum: `BEKLIYOR_KAYNAK_KARARI`. 14 içerik kararı ve 54 birleşik/belirsiz resmî
 soru konumu açık. Kaynak/alan kanıtı olmadan cevap, soru kimliği veya geçmiş

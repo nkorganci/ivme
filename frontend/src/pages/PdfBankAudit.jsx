@@ -13,6 +13,8 @@ export default function PdfBankAudit() {
   const audit = useAsync(() => api.get('/api/pdf-bank-audit'), []);
   const [selected, setSelected] = useState(null);
   const [proof, setProof] = useState(null);
+  const [candidates, setCandidates] = useState(null);
+  const [candidateError, setCandidateError] = useState(null);
   const [proofError, setProofError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [workBusy, setWorkBusy] = useState(false);
@@ -23,8 +25,14 @@ export default function PdfBankAudit() {
     (groups[row.status] ||= []).push(row); return groups;
   }, {}), [audit.data]);
   const openProof = async row => {
-    setSelected(row.id); setProof(null); setProofError(null); setWorkError(null); setBusy(true);
-    try { setProof(await api.get(`/api/pdf-bank-audit/${row.id}/proof`)); }
+    setSelected(row.id); setProof(null); setCandidates(null); setProofError(null); setCandidateError(null); setWorkError(null); setBusy(true);
+    try {
+      setProof(await api.get(`/api/pdf-bank-audit/${row.id}/proof`));
+      if (row.candidateCount) {
+        try { setCandidates(await api.get(`/api/pdf-bank-audit/${row.id}/candidates`)); }
+        catch (error) { setCandidateError(error); }
+      }
+    }
     catch (error) { setProofError(error); }
     finally { setBusy(false); }
   };
@@ -47,6 +55,7 @@ export default function PdfBankAudit() {
     { field: 'source', headerName: 'Kaynak serisi', minWidth: 150 },
     { field: 'pages', headerName: 'Sayfa', minWidth: 85, cellDataType: 'number' },
     { field: 'questionCount', headerName: 'Bankadaki soru', minWidth: 115, cellDataType: 'number' },
+    { field: 'candidateCount', headerName: 'Çıkarım adayı', minWidth: 120, cellDataType: 'number' },
     { field: 'status', headerName: 'Soru durumu', minWidth: 165 },
     { field: 'workAction', headerName: 'İşlem seçimi', minWidth: 135,
       valueFormatter: ({ value }) => value === 'EXTRACT' ? 'Soru çıkarma' : value === 'DELETE_REVIEW' ? 'Silme incelemesi' : 'Seçilmedi' },
@@ -61,6 +70,17 @@ export default function PdfBankAudit() {
     { field: 'page', headerName: 'PDF sayfası', minWidth: 120, cellDataType: 'number',
       cellRenderer: ({ data }) => data.page ? <Link to={`/konu-anlatimlari/${selected}#page=${data.page}`}>{data.page}</Link> : 'Belirsiz' },
     { field: 'sourceRef', headerName: 'Özgün kayıt kanıtı', minWidth: 300, flex: 2 },
+  ], [selected]);
+  const candidateColumns = useMemo(() => [
+    { field: 'code', headerName: 'Aday kodu', minWidth: 200 },
+    { field: 'printedNumber', headerName: 'Basılı no', minWidth: 100, cellDataType: 'number' },
+    { field: 'pdfPage', headerName: 'PDF sayfası', minWidth: 110, cellDataType: 'number',
+      cellRenderer: ({ data }) => <Link to={`/konu-anlatimlari/${selected}#page=${data.pdfPage}`}>{data.pdfPage}</Link> },
+    { field: 'answer', headerName: 'Anahtar', minWidth: 100 },
+    { field: 'text', headerName: 'Çıkarılan metin', minWidth: 280, flex: 2, wrapText: true, autoHeight: true },
+    { colId: 'candidateImage', headerName: 'Kırpım', minWidth: 100, filter: false, sortable: false,
+      cellRenderer: ({ data }) => <a href={`/api/pdf-bank-audit/${selected}/candidates/${encodeURIComponent(data.code)}/image`}
+        target="_blank" rel="noreferrer">Görsel</a> },
   ], [selected]);
   if (audit.loading) return <Loading text="PDF envanteri yükleniyor…" />;
   if (audit.error) return <ErrorBox error={audit.error} onRetry={audit.retry} />;
@@ -80,7 +100,8 @@ export default function PdfBankAudit() {
     {selected && <section className="card pdf-audit-proof" aria-label="Soru çıkarım kanıtı">
       <div className="pdf-audit-proof-head"><h2>{proof?.title || 'Kanıt yükleniyor…'}</h2><button type="button" className="btn btn-secondary btn-sm" onClick={() => { setSelected(null); setProof(null); }}>Kapat</button></div>
       {busy && <Loading text="Kanıt yükleniyor…" />}{proofError && <ErrorBox error={proofError} />}
-      {proof && <><p className="muted">Kaynak: {proof.relativePath} · SHA-256: <code>{proof.sha256}</code> · hash kontrolü: {proof.hashVerified === true ? 'doğrulandı' : proof.hashVerified === false ? 'uyuşmuyor' : 'soru bağı yok'} · bankadaki {number(proof.questionCount)} soru.</p>
+      {candidateError && <ErrorBox error={candidateError} />}
+      {proof && <><p className="muted">Kaynak: {proof.relativePath} · SHA-256: <code>{proof.sha256}</code> · hash kontrolü: {proof.hashVerified === true ? 'doğrulandı' : proof.hashVerified === false ? 'uyuşmuyor' : 'soru bağı yok'} · bankadaki {number(proof.questionCount)} soru · çıkarılan {number(proof.candidateCount)} aday.</p>
         <p>İşlem seçimi: {audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'EXTRACT' ? 'Soru çıkarma' : audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'DELETE_REVIEW' ? 'Silme incelemesi' : 'Seçilmedi'}</p>
         <div className="pdf-audit-work">
           <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy || !proof.available || !audit.data.current} onClick={() => changeWork('EXTRACT')}>Soru çıkarma listesine al</button>
@@ -92,6 +113,11 @@ export default function PdfBankAudit() {
         {proof.questionCount ? <DataGrid rowData={proof.proof} columnDefs={questionColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
           gridOptions={{ getRowId: ({ data }) => data.code }} />
           : <p>Bu PDF’ye kesin bağlanan canlı banka sorusu bulunamadı. PDF’yi açıp soru içerip içermediğini incele.</p>}</>}
+      {candidates && <div className="pdf-audit-candidates"><h3>Çıkarılan soru adayları</h3>
+        <p className="muted">{number(candidates.questionCount)} adayın iki yöntemle okunan cevapları eşleşiyor. Adaylar soru bankasına eklenmedi; görsel ve ders etiketleri incelenecek.</p>
+        <DataGrid rowData={candidates.cards} columnDefs={candidateColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
+          gridOptions={{ getRowId: ({ data }) => data.code }} />
+      </div>}
     </section>}
   </div>;
 }
