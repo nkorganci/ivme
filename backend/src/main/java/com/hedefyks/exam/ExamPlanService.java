@@ -1,6 +1,7 @@
 package com.hedefyks.exam;
 
 import com.hedefyks.common.ApiException;
+import com.hedefyks.examtrack.ExamTrackService;
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.ExamTopicBalancer;
 import com.hedefyks.question.QuestionAvailabilityService;
@@ -42,13 +43,15 @@ public class ExamPlanService {
             new Weight("Din Kültürü", 6));
 
     private final QuestionAvailabilityService availability;
+    private final ExamTrackService tracks;
 
-    public ExamPlanService(QuestionAvailabilityService availability) {
+    public ExamPlanService(QuestionAvailabilityService availability, ExamTrackService tracks) {
         this.availability = availability;
+        this.tracks = tracks;
     }
 
     public Plan fullPlan(Long userId, QuestionBank bank, ExamType examType, ExamTrack track, boolean includeSolved) {
-        ExamTrack selectedTrack = track == null || examType == ExamType.TYT ? ExamTrack.SAYISAL : track;
+        ExamTrack selectedTrack = track == null || examType != ExamType.AYT ? ExamTrack.SAYISAL : track;
         return plan(userId, bank, examType, selectedTrack,
                 includeSolved ? QuestionSelectionMode.MIXED : QuestionSelectionMode.NEW,
                 fullQuestionCount(examType, selectedTrack));
@@ -60,6 +63,8 @@ public class ExamPlanService {
     }
 
     public int timeLimitMinutes(ExamType examType) {
+        // KPSS testlerinin süresi sınav tanımındadır (ör. Ortaöğretim GY ve GK: 65'er dakika).
+        if (examType != null && examType.kpss()) return tracks.section(examType).minutes();
         return examType == ExamType.TYT ? 165 : 180;
     }
 
@@ -117,8 +122,11 @@ public class ExamPlanService {
         return result;
     }
 
-    private static List<Weight> weights(ExamType examType, ExamTrack track) {
+    private List<Weight> weights(ExamType examType, ExamTrack track) {
         if (examType == ExamType.TYT) return TYT; // TYT tüm puan türlerinde ortak testtir.
+        // KPSS ders dağılımı ÖSYM kılavuzundan exam_tracks.sections içine kaydedilmiştir.
+        if (examType.kpss()) return tracks.section(examType).subjects().stream()
+                .map(s -> new Weight(s.name(), s.questions())).toList();
         return switch (track) {
             case SAYISAL -> AYT_SAYISAL;
             case ESIT_AGIRLIK -> AYT_ESIT_AGIRLIK;

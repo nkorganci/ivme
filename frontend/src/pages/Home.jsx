@@ -5,6 +5,7 @@ import { useAsync, usePageTitle } from '../hooks.js';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { displayName, formatDate, formatDuration, formatNumber, formatPercent } from '../format.js';
 import { STUDY_LABEL, STATISTICS_LABEL } from '../config.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 function Stat({ label, value, tone }) {
   return (
@@ -18,6 +19,7 @@ function Stat({ label, value, tone }) {
 export default function Home() {
   const { user } = useAuth();
   usePageTitle('Ana Sayfa');
+  const { track, kpss } = useExamTrack();
   const { data, loading, error, retry } = useAsync(() => api.get('/api/exams/summary'), []);
   const active = data?.activeExam;
   const last = data?.lastExam;
@@ -25,7 +27,7 @@ export default function Home() {
   return (
     <>
       <h1>Merhaba, {displayName(user)} 👋</h1>
-      <p className="muted lead">Bugün de bir adım ilerleyelim.</p>
+      <p className="muted lead">{track ? `${track.name} · ${track.summary || ''}`.replace(/ · $/, '') + '. ' : ''}Bugün de bir adım ilerleyelim.</p>
 
       {loading && <Loading />}
       {error && <ErrorBox error={error} onRetry={retry} />}
@@ -90,9 +92,12 @@ export default function Home() {
       <h2 className="section-title">Hızlı eylemler</h2>
       <div className="quick">
         <Link to="/calisma/yeni" className="btn btn-primary">{STUDY_LABEL}</Link>
-        <Link to="/konu-anlatimlari" className="btn btn-secondary">
+        {kpss ? <>
+          <Link to="/dersler-ve-konular" className="btn btn-secondary">Dersler</Link>
+          <Link to="/cikmis-sorular" className="btn btn-secondary">Çıkmış sorular</Link>
+        </> : <Link to="/konu-anlatimlari" className="btn btn-secondary">
           Konu anlatımları
-        </Link>
+        </Link>}
         <Link to="/gecmis" className="btn btn-secondary">
           {STATISTICS_LABEL}
         </Link>

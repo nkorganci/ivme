@@ -47,11 +47,12 @@ public class ExamService {
     private final com.hedefyks.user.UserRepository users;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
     private final com.hedefyks.question.QuestionTaxonomyService taxonomy;
+    private final com.hedefyks.examtrack.ExamTrackService tracks;
 
     public ExamService(ExamRepository exams, ExamQuestionRepository examQuestions, QuestionRepository questions,
                        QuestionAvailabilityService availability, HintService hints, ExamPlanService plans, com.hedefyks.review.SharedQuestionLabels sharedLabels,
                        com.hedefyks.question.QuestionTaxonomyService taxonomy, ExamArchiveService archive,
-                       com.hedefyks.user.UserRepository users) {
+                       com.hedefyks.user.UserRepository users, com.hedefyks.examtrack.ExamTrackService tracks) {
         this.exams = exams;
         this.examQuestions = examQuestions;
         this.questions = questions;
@@ -62,11 +63,13 @@ public class ExamService {
         this.taxonomy=taxonomy;
         this.archive=archive;
         this.users=users;
+        this.tracks=tracks;
     }
 
     // ---------------------------------------------------------------- oluşturma / devam
 
     public ExamSession createFull(Long userId, ExamDtos.FullExamRequest req) {
+        tracks.requireExam(req.examType(), userId);
         ExamTrack track = req.track() == null || req.examType() == ExamType.TYT ? ExamTrack.SAYISAL : req.track();
         if (req.year() != null) {
             lockLearner(userId);
@@ -77,7 +80,7 @@ public class ExamService {
             selected.forEach(q -> subjects.put(q.id(),q.subject()));
             var provisionalIds = selected.stream().filter(ExamArchiveService.ArchiveQuestion::provisional)
                     .map(ExamArchiveService.ArchiveQuestion::id).collect(java.util.stream.Collectors.toSet());
-            String title = req.year() + " " + req.examType() + (req.examType() == ExamType.AYT ? " " + trackName(track) : "") + " tam sınavı";
+            String title = req.year() + " " + req.examType().label() + (req.examType() == ExamType.AYT ? " " + trackName(track) : "") + " tam sınavı";
             if (!provisionalIds.isEmpty()) title += " (tahmini sorularla tamamlandı)";
             return saveExam(userId, new QuestionFilter(QuestionBank.CIKMIS,req.examType(),null,null),
                     QuestionSelectionMode.MIXED, selected.stream().map(ExamArchiveService.ArchiveQuestion::id).toList(),
@@ -90,8 +93,8 @@ public class ExamService {
 
     public ExamSession create(Long userId, CreateExamRequest req) {
         lockLearner(userId);
-        QuestionFilter filter = availability.effectiveFilter(
-                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty()), req.topicPdfId());
+        QuestionFilter filter = tracks.scope(availability.effectiveFilter(
+                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty()), req.topicPdfId()), userId);
         QuestionSelectionMode selection = req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
         boolean balanced = req.track() != null && req.topicPdfId() == null
                 && filter.subject() == null && filter.topic() == null && !filter.hasSharedSelection();
@@ -121,7 +124,7 @@ public class ExamService {
             ids = availability.balancedExamIds(userId, filter, selection, req.questionCount(), req.topicPdfId());
         }
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
-        String title = balanced ? filter.examType() + (filter.examType() == ExamType.AYT
+        String title = balanced ? filter.examType().label() + (filter.examType() == ExamType.AYT
                 ? " " + trackName(req.track()) : "") + " denemesi" : title(filter);
         return saveExam(userId, filter, selection, ids, selectedSubjects, title, req.timeLimitMinutes());
     }
@@ -149,6 +152,7 @@ public class ExamService {
         exam.setSelectionMode(selection);
         exam.setTitle(title);
         exam.setExamType(filter.examType());
+        exam.setTrackId(tracks.trackId(userId));
         exam.setSubject(filter.subject());
         exam.setQuestionCount(ids.size());
         exam.setTimeLimitMinutes(timeLimitMinutes == null || timeLimitMinutes <= 0 ? null : timeLimitMinutes);
@@ -296,18 +300,19 @@ public class ExamService {
     @Transactional(readOnly = true)
     public PageResponse<HistoryItem> history(Long userId, int page, int size) {
         var pageable = PageResponse.pageable(page, size);
-        var results = exams.findByUserIdAndStatusOrderBySubmittedAtDesc(userId, ExamStatus.SUBMITTED, pageable);
+        var results = exams.findByUserIdAndTrackIdAndStatusOrderBySubmittedAtDesc(userId, tracks.trackId(userId), ExamStatus.SUBMITTED, pageable);
         var subjects = historySubjects(results.stream().map(Exam::getId).toList());
         return PageResponse.of(results, exam -> toHistory(exam, subjects.getOrDefault(exam.getId(), List.of())));
     }
 
     @Transactional(readOnly = true)
     public Summary summary(Long userId) {
-        var agg = exams.aggregate(userId, ExamStatus.SUBMITTED);
+        String trackId = tracks.trackId(userId);
+        var agg = exams.aggregate(userId, trackId, ExamStatus.SUBMITTED);
         Double avg = agg.avgPercent() == null ? null : Math.round(agg.avgPercent() * 10) / 10.0;
-        HistoryItem last = exams.findByUserIdAndStatusOrderBySubmittedAtDesc(userId, ExamStatus.SUBMITTED, PageRequest.of(0, 1))
+        HistoryItem last = exams.findByUserIdAndTrackIdAndStatusOrderBySubmittedAtDesc(userId, trackId, ExamStatus.SUBMITTED, PageRequest.of(0, 1))
                 .stream().findFirst().map(this::toHistory).orElse(null);
-        ActiveExam active = exams.findFirstByUserIdAndStatusOrderByStartedAtDesc(userId, ExamStatus.IN_PROGRESS)
+        ActiveExam active = exams.findFirstByUserIdAndTrackIdAndStatusOrderByStartedAtDesc(userId, trackId, ExamStatus.IN_PROGRESS)
                 .map(e -> new ActiveExam(e.getId(), e.getTitle(), e.getQuestionCount(), remaining(e))).orElse(null);
         return new Summary(agg.examCount(), avg, agg.correct(), agg.wrong(), agg.blank(), last, active);
     }
@@ -327,7 +332,7 @@ public class ExamService {
     }
 
     private static String title(QuestionFilter f) {
-        String base = (f.examType() != null ? f.examType().name() + " " : "") + (f.subject() != null ? f.subject() : "Karma");
+        String base = (f.examType() != null ? f.examType().label() + " " : "") + (f.subject() != null ? f.subject() : "Karma");
         if (f.topic() != null) base = base + " – " + f.topic();
         if (f.bank() != null) base = base + " · " + (f.bank() == QuestionBank.OGM ? "Soru Bankası" : "Çıkmış Sorular");
         return base;

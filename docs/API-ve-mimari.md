@@ -117,8 +117,14 @@ kayıt gibi gösterilmez.
 Ön Lisans, Lisans, A Grubu, Öğretmenlik/ÖABT, DHBT) sırasıyla ve öğrencinin
 `currentId` seçimini döner; kayıt yoksa ilk `ACTIVE` sınav (YKS) kullanılır.
 Her sınav `status` (`ACTIVE` hazır, `PREPARING` seçilebilir/içerik hazırlanıyor,
-`PLANNED` henüz hazır değil), hedef kitle, özet, not ve `sections[].examId`
-oturum/test bölümlerini taşır. `PUT /api/exam-tracks/current {trackId}` seçimi
+`PLANNED` henüz hazır değil), hedef kitle, özet, not, `sections[]` (`examId`, ad,
+`subjects[{name,questions}]`, `minutes`) ve `readyFeatures` (hazır bölümler; boş liste
+hepsi) taşır. Soru, sayım, filtre, pratik, deneme planı ve arşiv uçları seçili sınavın
+testleriyle sınırlıdır (`ExamTrackService.scope`); başka sınavın testi istenirse 400
+döner veya süzgeçten düşer. KPSS Ortaöğretim testleri `KPSS_OO_GY` (Genel Yetenek) ve
+`KPSS_OO_GK` (Genel Kültür), kaynakları `CIKMIS_KPSS_OO_GY/GK`; deneme 60 soru/65 dakika
+(ders dağılımı `sections` kaydından). `exams.track_id` ve `study_sessions.track_id`
+geçmişi sınava göre ayırır. `PUT /api/exam-tracks/current {trackId}` seçimi
 `user_exam_tracks` tablosuna yazar; `PLANNED` veya bilinmeyen sınav 400 döner.
 Değişiklik `user_record_audit` izine düşer; hesap dışa aktarımında `examTrack`
 alanıdır. Ön yüzde `examTrack.jsx` bağlamı sol menüdeki “Sınavım” seçicisini ve

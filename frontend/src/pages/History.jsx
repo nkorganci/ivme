@@ -5,7 +5,8 @@ import DataGrid from '../components/DataGrid.jsx';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { formatDate, formatDuration, formatNet, formatPercent } from '../format.js';
 import { STATISTICS_LABEL } from '../config.js';
-import { EXAM_BRANCHES, loadStudyHistory, practiceDurationSeconds, practiceScope, prepareExamHistory, summarizeExamRows } from '../studyStatistics.js';
+import { examBranchesFor, loadStudyHistory, practiceDurationSeconds, practiceScope, prepareExamHistory, summarizeExamRows } from '../studyStatistics.js';
+import { useExamTrack } from '../examTrack.jsx';
 import { loadSharedCatalog } from '../components/SharedCategorySelect.jsx';
 
 const PRACTICE_MODE = { MIXED: 'Öncekiler dahil', NEW: 'Yalnız yeni', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
@@ -28,12 +29,12 @@ const RESULT_COLUMNS = [
 ].map(column => ({ cellDataType: 'number', valueFormatter: ({ value }) => value == null ? '—' : value.toLocaleString('tr-TR'), ...column }));
 const shortDate = value => value == null ? '—' : new Date(value).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit' });
 const compactColumn = (column, width) => ({ filter: false, ...column, width, minWidth: width, flex: width });
-const EXAM_COLUMNS = [
+const examColumns = branches => [
   compactColumn({ field: 'number', headerName: 'N', cellDataType: 'number' }, 30),
   compactColumn({ field: 'title', headerName: 'Deneme', filter: true, maxWidth: 64, tooltipField: 'title', cellRenderer: ({ data }) => data &&
     <Link to={`/sinav/${data.id}/sonuc`} title={data.title}>{data.title.replace(/ denemesi$/i, '').replace('Sayısal', 'Say.').replace('Eşit Ağırlık', 'EA').replace('Sözel', 'Söz.')}</Link> }, 64),
   compactColumn({ ...DATE_COLUMN, valueFormatter: ({ value }) => shortDate(value), filterParams: { selectionType: 'date' } }, 52),
-  ...EXAM_BRANCHES.map(branch => compactColumn({
+  ...branches.map(branch => compactColumn({
     colId: `branch-${branch.key}`, headerName: branch.label, headerTooltip: `${branch.subjects[0]} · Doğru / Yanlış`,
     valueGetter: ({ data }) => { const value = data?.branches[branch.key]; return value ? `${value.correct} / ${value.wrong}` : null; },
     valueFormatter: ({ value }) => value ?? '—',
@@ -71,8 +72,8 @@ const SUMMARY_COLUMNS = [
   { field: 'sessions', headerName: 'Kayıt', minWidth: 90 },
   ...RESULT_COLUMNS.map(column => column.field === 'questionCount' ? { ...column, field: 'questions' } : column),
 ];
-const EXAM_SUMMARY_COLUMNS = [
-  { field: 'examType', headerName: 'Tür', minWidth: 65 }, ...SUMMARY_COLUMNS,
+const examSummaryColumns = examLabel => [
+  { field: 'examType', headerName: 'Tür', minWidth: 65, valueFormatter: ({ value }) => examLabel(value) }, ...SUMMARY_COLUMNS,
 ];
 export default function History() {
   const [params] = useSearchParams();
@@ -93,6 +94,8 @@ export default function History() {
 
 function HistoryTable({ practice }) {
   const path = practice ? '/api/study-sessions' : '/api/exams';
+  const { exams, examLabel, kpss } = useExamTrack();
+  const branches = useMemo(() => examBranchesFor(exams, kpss), [exams, kpss]);
   const { data, loading, error, retry } = useAsync(async () => {
     const [items, metadata] = await Promise.all([loadStudyHistory(path), practice ? loadSharedCatalog() : Promise.resolve(null)]);
     return { items, categories: metadata?.categories || [] };
@@ -106,9 +109,9 @@ function HistoryTable({ practice }) {
     correct: item.result?.correct ?? null, wrong: item.result?.wrong ?? null, blank: item.result?.blank ?? null,
     percent: item.result && item.questionCount ? item.result.correct * 100 / item.questionCount : null,
     durationSeconds: practiceDurationSeconds(item),
-  })) : prepareExamHistory(data?.items ?? []), [data, practice]);
-  const columns = useMemo(() => practice ? PRACTICE_COLUMNS : EXAM_COLUMNS, [rows, practice]);
-  const summary = useMemo(() => summarizeExamRows(visibleRows), [visibleRows]);
+  })) : prepareExamHistory(data?.items ?? [], branches), [data, practice, branches]);
+  const columns = useMemo(() => practice ? PRACTICE_COLUMNS : examColumns(branches), [rows, practice, branches]);
+  const summary = useMemo(() => summarizeExamRows(visibleRows, exams.map(e => e.id)), [visibleRows, exams]);
 
   return <section aria-label={practice ? 'Pratik istatistikleri' : 'Deneme istatistikleri'}>
     <h2 className="section-title">{practice ? 'Pratiklerim' : 'Deneme sonuçlarım'}</h2>
@@ -120,7 +123,7 @@ function HistoryTable({ practice }) {
     </Empty></section>}
     {data?.items.length > 0 && <>
       {!practice && <section className="card table-card statistics-summary" aria-label="Filtrelenen çalışmaların özeti">
-        <DataGrid mode="summary" rowData={summary} columnDefs={EXAM_SUMMARY_COLUMNS} />
+        <DataGrid mode="summary" rowData={summary} columnDefs={examSummaryColumns(examLabel)} />
       </section>}
       <section className="card table-card" aria-label={practice ? 'Pratik kayıtları' : 'Deneme sonuçları detaylı'}>
         <h3>{practice ? 'Pratik kayıtları' : 'Deneme sonuçları detaylı'}</h3>

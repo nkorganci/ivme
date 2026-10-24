@@ -1,6 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { api } from './api.js';
 import { useAuth } from './auth.jsx';
+import { questionSourcesFor } from './questionSources.js';
+import { featureReady, trackExams } from './examTrackModel.js';
+import { bankLabel } from './format.js';
 
 // Seçilen sınav (YKS, KPSS türleri) hesapta PostgreSQL'de saklanır; menüler ortaktır,
 // içerik sayfaları etkin sınava göre gösterilir.
@@ -43,9 +46,16 @@ export function ExamTrackProvider({ children }) {
 
   const value = useMemo(() => {
     const track = state.tracks.find(t => t.id === state.currentId) || null;
+    const exams = trackExams(track);
+    const names = new Map(exams.map(e => [e.id, e.name]));
     return { tracks: state.tracks, track, loading, saving, error, select, retry: () => setAttempt(n => n + 1),
       // İçerik yalnız ACTIVE sınavda hazırdır; diğerlerinde sayfalar "hazırlanıyor" ekranı gösterir.
-      contentReady: !track || track.status === 'ACTIVE' };
+      contentReady: !track || track.status === 'ACTIVE',
+      kpss: track?.family === 'KPSS', exams, questionSources: questionSourcesFor(track, exams),
+      examLabel: id => names.get(id) || id || '',
+      // "AYT-TYT Çıkmış Sorular" yalnız YKS'te; KPSS'te sınavın adı kullanılır.
+      bankName: bank => track?.family === 'KPSS' && bank === 'CIKMIS' ? `${track.name} Çıkmış Sorular` : bankLabel(bank),
+      featureReady: feature => featureReady(track, feature) };
   }, [state, loading, saving, error, select]);
 
   return <ExamTrackContext.Provider value={value}>{children}</ExamTrackContext.Provider>;

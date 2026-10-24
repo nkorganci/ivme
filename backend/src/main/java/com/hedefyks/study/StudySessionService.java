@@ -29,11 +29,14 @@ public class StudySessionService {
     private final JdbcClient jdbc;
     private final QuestionAvailabilityService availability;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
+    private final com.hedefyks.examtrack.ExamTrackService tracks;
 
-    public StudySessionService(JdbcClient jdbc, QuestionAvailabilityService availability,com.hedefyks.review.SharedQuestionLabels sharedLabels) {
+    public StudySessionService(JdbcClient jdbc, QuestionAvailabilityService availability,com.hedefyks.review.SharedQuestionLabels sharedLabels,
+                               com.hedefyks.examtrack.ExamTrackService tracks) {
         this.jdbc = jdbc;
         this.availability = availability;
         this.sharedLabels=sharedLabels;
+        this.tracks = tracks;
     }
 
     @Transactional
@@ -41,8 +44,8 @@ public class StudySessionService {
         Optional<Long> previous = byRequest(userId, req.clientRequestId());
         if (previous.isPresent()) return get(userId, previous.get());
 
-        QuestionFilter filter = availability.effectiveFilter(
-                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty(),req.source()), req.topicPdfId());
+        QuestionFilter filter = tracks.scope(availability.effectiveFilter(
+                new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty(),req.source()), req.topicPdfId()), userId);
         var history = req.history() == null ? List.<QuestionHistorySelection>of() : req.history().stream().distinct().toList();
         QuestionSelectionMode selection = !history.isEmpty() ? QuestionSelectionMode.REPEAT
                 : req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();
@@ -62,9 +65,9 @@ public class StudySessionService {
         Integer seconds = req.durationMinutes() == null ? null : req.durationMinutes() * 60;
         Optional<Long> inserted = jdbc.sql("""
                 INSERT INTO study_sessions (user_id, mode, selection_mode, client_request_id,
-                                            filter_bank, filter_exam_type, filter_subject, filter_topic, time_limit_seconds,catalog_filter)
+                                            filter_bank, filter_exam_type, filter_subject, filter_topic, time_limit_seconds,catalog_filter,track_id)
                 VALUES (:userId, 'PRACTICE', :selection, :requestId,
-                        :bank, :examType, :subject, :topic, :seconds,CAST(:catalogFilter AS jsonb))
+                        :bank, :examType, :subject, :topic, :seconds,CAST(:catalogFilter AS jsonb),:trackId)
                 ON CONFLICT (user_id, client_request_id) DO NOTHING RETURNING id
                 """).param("userId", userId).param("requestId", req.clientRequestId())
                 .param("selection", selection.name())
@@ -72,6 +75,7 @@ public class StudySessionService {
                 .param("examType", filter.examType() == null ? null : filter.examType().name())
                 .param("subject", filter.subject()).param("topic", filter.topic()).param("seconds", seconds)
                 .param("catalogFilter",availability.catalogFilter(filter, history))
+                .param("trackId", tracks.trackId(userId))
                 .query(Long.class).optional();
         if (inserted.isEmpty()) return get(userId, byRequest(userId, req.clientRequestId()).orElseThrow());
 
@@ -155,10 +159,10 @@ public class StudySessionService {
     public Optional<Session> latestActive(Long userId) {
         closeExpired(userId);
         return jdbc.sql("""
-                SELECT id FROM study_sessions WHERE user_id = :userId
+                SELECT id FROM study_sessions WHERE user_id = :userId AND track_id = :trackId
                   AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
                 ORDER BY started_at DESC, id DESC LIMIT 1
-                """).param("userId", userId).query(Long.class).optional().map(id -> get(userId, id));
+                """).param("userId", userId).param("trackId", tracks.trackId(userId)).query(Long.class).optional().map(id -> get(userId, id));
     }
 
     @Transactional
@@ -166,9 +170,9 @@ public class StudySessionService {
         closeExpired(userId);
         return jdbc.sql("""
                 SELECT id, count(*) OVER () AS unfinished_count FROM study_sessions
-                WHERE user_id = :userId AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
+                WHERE user_id = :userId AND track_id = :trackId AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
                 ORDER BY started_at DESC, id DESC LIMIT 1
-                """).param("userId", userId)
+                """).param("userId", userId).param("trackId", tracks.trackId(userId))
                 .query((rs, row) -> new UnfinishedSummary(rs.getLong("unfinished_count"), rs.getLong("id")))
                 .optional().orElse(new UnfinishedSummary(0, null));
     }
@@ -179,7 +183,7 @@ public class StudySessionService {
         return jdbc.sql("""
                 WITH open_practices AS (
                   SELECT * FROM study_sessions
-                  WHERE user_id = :userId AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
+                  WHERE user_id = :userId AND track_id = :trackId AND mode = 'PRACTICE' AND status = 'IN_PROGRESS'
                 ), rounds AS (
                   SELECT a.session_id, a.question_id, a.practice_round,
                          bool_or(a.event_type <> 'ANSWER' OR a.is_correct = true) AS completed,
@@ -193,7 +197,10 @@ public class StudySessionService {
                   FROM rounds GROUP BY session_id, question_id
                 ), unfinished AS (
                   SELECT s.id, 'PRACTICE' AS kind,
-                         concat_ws(' · ', s.filter_exam_type, coalesce(s.filter_subject,
+                         concat_ws(' · ', coalesce((SELECT sec.value->>'name' FROM exam_tracks t
+                             CROSS JOIN LATERAL jsonb_array_elements(t.sections) sec
+                             WHERE sec.value->>'examId' = s.filter_exam_type ORDER BY t.sort_order LIMIT 1),
+                           s.filter_exam_type), coalesce(s.filter_subject,
                            CASE WHEN count(DISTINCT q.subject) = 1 THEN min(q.subject) ELSE 'Karma' END),
                            s.filter_topic) || ' pratiği' AS title,
                          s.started_at, count(sq.question_id)::int AS question_count,
@@ -209,11 +216,11 @@ public class StudySessionService {
                   SELECT e.id, 'EXAM', e.title, e.started_at, count(eq.id)::int,
                          count(eq.selected_answer)::int, NULL, NULL
                   FROM exams e JOIN exam_questions eq ON eq.exam_id = e.id
-                  WHERE e.user_id = :userId AND e.status = 'IN_PROGRESS'
+                  WHERE e.user_id = :userId AND e.track_id = :trackId AND e.status = 'IN_PROGRESS'
                   GROUP BY e.id, e.title, e.started_at
                 )
                 SELECT * FROM unfinished ORDER BY started_at DESC, id DESC, kind
-                """).param("userId", userId)
+                """).param("userId", userId).param("trackId", tracks.trackId(userId))
                 .query((rs, row) -> new UnfinishedItem(rs.getLong("id"), rs.getString("kind"),
                         rs.getString("title"), rs.getTimestamp("started_at").toInstant(),
                         rs.getInt("question_count"), rs.getInt("solved_count"),
@@ -227,13 +234,13 @@ public class StudySessionService {
         int safeSize = Math.max(1, Math.min(size, 100));
         long total = jdbc.sql("""
                 SELECT count(*) FROM study_sessions
-                WHERE user_id = :userId AND mode = 'PRACTICE'
-                """).param("userId", userId).query(Long.class).single();
+                WHERE user_id = :userId AND track_id = :trackId AND mode = 'PRACTICE'
+                """).param("userId", userId).param("trackId", tracks.trackId(userId)).query(Long.class).single();
         List<HistoryItem> items = jdbc.sql("""
                 SELECT s.id, s.started_at, s.ended_at, s.status, s.selection_mode,
                        s.time_limit_seconds, s.filter_subject, s.filter_topic,
                        ARRAY(SELECT jsonb_array_elements_text(s.catalog_filter->'categoryIds')) AS category_ids, totals.*
-                FROM (SELECT * FROM study_sessions WHERE user_id = :userId AND mode = 'PRACTICE'
+                FROM (SELECT * FROM study_sessions WHERE user_id = :userId AND track_id = :trackId AND mode = 'PRACTICE'
                       ORDER BY started_at DESC, id DESC LIMIT :size OFFSET :offset) s
                 LEFT JOIN LATERAL (
                   WITH rounds AS (
@@ -259,7 +266,7 @@ public class StudySessionService {
                   WHERE sq.session_id = s.id
                 ) totals ON true
                 ORDER BY s.started_at DESC, s.id DESC
-                """).param("userId", userId).param("size", safeSize)
+                """).param("userId", userId).param("trackId", tracks.trackId(userId)).param("size", safeSize)
                 .param("offset", (long) safePage * safeSize)
                 .query((rs, row) -> new HistoryItem(rs.getLong("id"), rs.getTimestamp("started_at").toInstant(),
                         rs.getTimestamp("ended_at") == null ? null : rs.getTimestamp("ended_at").toInstant(),

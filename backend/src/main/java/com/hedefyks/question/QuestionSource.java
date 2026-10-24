@@ -5,7 +5,9 @@ public enum QuestionSource {
     CIKMIS_AYT(QuestionBank.CIKMIS, ExamType.AYT),
     CIKMIS_TYT(QuestionBank.CIKMIS, ExamType.TYT),
     OGM_AYT(QuestionBank.OGM, ExamType.AYT),
-    OGM_TYT(QuestionBank.OGM, ExamType.TYT);
+    OGM_TYT(QuestionBank.OGM, ExamType.TYT),
+    CIKMIS_KPSS_OO_GY(QuestionBank.CIKMIS, ExamType.KPSS_OO_GY),
+    CIKMIS_KPSS_OO_GK(QuestionBank.CIKMIS, ExamType.KPSS_OO_GK);
 
     private final QuestionBank bank;
     private final ExamType examType;

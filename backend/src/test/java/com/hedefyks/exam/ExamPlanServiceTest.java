@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 class ExamPlanServiceTest {
     private final QuestionAvailabilityService availability = mock(QuestionAvailabilityService.class);
-    private final ExamPlanService plans = new ExamPlanService(availability);
+    private final ExamPlanService plans = new ExamPlanService(availability, mock(com.hedefyks.examtrack.ExamTrackService.class));
 
     @Test
     void tyt_profili_ve_ayt_alanlari_ders_agirliklarini_korur() {

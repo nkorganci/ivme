@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "site": "http://127.0.0.1:1010",
+  "checks": [
+    "Student sidebar shows the Sınavım switcher with the account track from /api/exam-tracks",
+    "Modal lists YKS and 6 KPSS tracks; KPSS Ortaöğretim is selectable, 5 planned KPSS tracks are disabled with the \"hazır değil\" note",
+    "Selecting KPSS Ortaöğretim (saved in PostgreSQL) resets YKS filters; Dersler lists only KPSS tests, subjects and topics with their reference source",
+    "Konu ve soru dağılımı shows every KPSS exam year (2006–2024), the last 10 years and the last 3 exams",
+    "Çıkmış Sorular lists 1223 active KPSS Ortaöğretim questions with GY/GK choices; the cropped ÖSYM question image loads",
+    "Pratik and deneme offer only GY/GK past-question sources; a 60-question 65-minute KPSS deneme and year archives (GY 2010–2024, GK 2014–2024) are ready",
+    "Soru bankası and kaynak pages say \"henüz hazır değil\" in place; statistics open; YKS-only TYT/AYT trial links are hidden",
+    "Mobile drawer shows the switcher and the modal fits a 390 px viewport",
+    "Switching back to YKS restores TYT/AYT lessons and past questions without any KPSS record"
+  ],
+  "javascriptErrors": [],
+  "apiErrors": [],
+  "restoredTo": "KPSS_ORTAOGRETIM",
+  "finishedAt": "2026-10-24T23:32:08.152Z"
+}

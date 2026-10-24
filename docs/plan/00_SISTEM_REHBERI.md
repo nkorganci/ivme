@@ -43,7 +43,8 @@ flowchart LR
 | Öğretmen kararı | `content_reviews` ve `content_review_history` | Kaynak/görsel/kategori değişimi onayı eskitebilir; otomatik etiket yayını kararı değiştirmez |
 | Soru, cevap ve öğrenci geçmişi | İlgili soru/çalışma/sınav tabloları | Etiket üretimi bu verileri değiştirmez; ilk deneme ve anlık kayıt korunur |
 | Görev ve devam noktası | Bu dizindeki açık numaralı adımlar ve `00_CALISMA_BAGLAMI.md` | Başka bir eksikler veya yapılanlar listesi açılmaz |
-| Sınav hedefleri (YKS, KPSS türleri) ve öğrencinin sınavı | Flyway `V79__exam_tracks.sql` tohum kaydı `exam_tracks`; durum/not/bölüm değişikliği yeni göçle yapılır | `GET /api/exam-tracks`; seçim `user_exam_tracks`. Menü tek; yalnız `ACTIVE` sınavın içerik sayfaları açılır |
+| Sınav hedefleri (YKS, KPSS türleri) ve öğrencinin sınavı | Flyway `V79__exam_tracks.sql` tohum kaydı `exam_tracks`; durum, not, `sections` (test, ders soru sayısı, dakika) ve `ready_features` yeni göçle değişir | `GET /api/exam-tracks`; seçim `user_exam_tracks`. Menü tek; `ACTIVE` sınavın yalnız `ready_features` bölümleri açılır (boş liste: hepsi) |
+| KPSS sınavının ders/ünite/konu referansı ve çıkmış soru konu kararları | `Kaynaklar/KPPS/<Sınav>/Mufredat/*-konular.json` ve `Cikmis Sorular/siniflandirma/<yıl>.tsv` → `veri-hatti/<sınav>/derle.py` | `scripts/kpss-yayinla.py` ile `questions`, `exam_archive_positions` ve ortak katalog (`kpss-*` kategorileri). İşleme etiketi `ISLEME_DURUMU.json` |
 
 `content-review-catalog.json`, `pdf-review-labels.json`, `content-label-categories.json`
 ve ön yüz kimlik dosyası projeksiyondur. İlgili üreticileri çalıştırmadan bu dosyaları
@@ -52,15 +53,23 @@ Branş CSV'leri ve eski kaynak başlıkları kanıt girdisidir; ikinci bir kontr
 
 Sınavlar (YKS, KPSS) için menü veya sayfa kopyalanmaz. Öğrenci sol menüdeki
 “Sınavım” seçicisiyle sınavını seçer; seçim `user_exam_tracks` tablosundadır.
-`ExamTrackGate`, `ACTIVE` olmayan sınavda listeleme/içerik sayfalarının yerine
-aynı yerde “hazırlanıyor” bilgisini gösterir; kayıt detayları (pratik, sınav
-sonucu, soru, PDF) ve haftalık program her sınavda açık kalır. `PLANNED` sınav
-listede “henüz hazır değil” notuyla görünür, seçilemez. Yeni sınavın ders/konu
-kayıtları aynı ortak katalogda, kategori `exam` alanı o sınavın
-`sections[].examId` değeriyle (ör. `KPSS_OO_GY`, `KPSS_OO_GK`) yayımlanır;
-ikinci sözlük açılmaz. Sınav `ACTIVE` yapılmadan önce sayfalardaki sabit
-TYT/AYT listeleri etkin sınavın `sections` değerinden okunacak hale getirilir
-([14. adım](14_KPSS_ORTAOGRETIM.md)).
+`ExamTrackGate` her rotayı bir bölüme eşler (`curriculum`, `past-questions`, `study`,
+`statistics`, `question-bank`...). Sınav `ACTIVE` değilse veya bölüm o sınavın
+`ready_features` listesinde yoksa, sayfanın yerinde aynı yerde “hazırlanıyor / henüz hazır
+değil” bilgisi görünür. Kayıt detayları (pratik, sınav sonucu, soru, PDF) ve haftalık
+program her sınavda açık kalır. `PLANNED` sınav listede “henüz hazır değil” notuyla
+görünür, seçilemez. Sınav değişince sayfa sorgu parametreleri temizlenir ve sayfa
+yeniden kurulur. Ekranlar test listesini, kaynakları ve etiketleri `useExamTrack()`
+(`exams`, `questionSources`, `examLabel`, `bankName`) üzerinden okur; sabit TYT/AYT
+listesi yalnız YKS'e özel sayfalarda kalır.
+Sunucuda `ExamTrackService.scope` her soru süzgecini seçili sınavın testleriyle sınırlar.
+Liste, sayım, pratik ve deneme bu kapsamı kullanır. Deneme ve oturumlar `track_id` ile
+kaydedilir; geçmiş ve özetler sınava göre ayrılır. KPSS ders ağırlıkları ve süreleri
+`exam_tracks.sections` kaydından okunur. Yeni sınavın ders/konu kayıtları aynı ortak
+katalogda, kategori `exam` alanı o sınavın `sections[].examId` değeriyle (ör.
+`KPSS_OO_GY`, `KPSS_OO_GK`) yayımlanır; ikinci sözlük açılmaz. KPSS ders adları YKS
+ile çakışır (Türkçe, Tarih); KPSS ders kimliği (`kpss-turkce`...) yayımlanmış KPSS
+kategorilerinden çözülür ([14. adım](14_KPSS.md)).
 
 Çalışma anında kategori kimliği, tercih edilen ad ve ortak kaynak etiketi için
 tek doğruluk kaynağı PostgreSQL'dir. `ReviewCatalog.categories()` yalnız

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/exam-tracks")
 public class ExamTrackController {
     public record Track(String id, String family, String name, String audience, String status,
-                        String summary, String note, JsonNode sections) {}
+                        String summary, String note, JsonNode sections, List<String> readyFeatures) {}
     public record Tracks(List<Track> tracks, String currentId) {}
     public record Selection(String trackId) {}
 
@@ -35,10 +35,11 @@ public class ExamTrackController {
     @GetMapping
     public Tracks list(@AuthenticationPrincipal AppUserDetails me) {
         List<Track> tracks = jdbc.query("""
-                SELECT id, family, name, audience, status, summary, note, sections::text
+                SELECT id, family, name, audience, status, summary, note, sections::text, ready_features
                 FROM exam_tracks ORDER BY sort_order
                 """, (rs, row) -> new Track(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                rs.getString(5), rs.getString(6), rs.getString(7), sections(rs.getString(8))));
+                rs.getString(5), rs.getString(6), rs.getString(7), sections(rs.getString(8)),
+                List.of((String[]) rs.getArray(9).getArray())));
         String saved = jdbc.query("SELECT track_id FROM user_exam_tracks WHERE user_id = ?",
                 (rs, row) -> rs.getString(1), me.id()).stream().findFirst().orElse(null);
         String current = tracks.stream().filter(t -> t.id().equals(saved) && !"PLANNED".equals(t.status()))

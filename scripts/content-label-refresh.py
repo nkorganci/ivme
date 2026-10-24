@@ -73,6 +73,9 @@ def stages(node, args):
         step('video-structure-refresh', [node,'scripts/content-review-catalog.mjs'], always=True),
         step('video-inventory-refresh', [py,'scripts/video-source-inventory.py'], outputs=['veri/content-labels/video-inventory.json'], always=True),
         step('labels', [node,'scripts/content-labels.mjs'], [*shared,'scripts/content-labels.mjs','scripts/learning-resource-contract.mjs','frontend/src/resourceMetadata.js','scripts/pdf-review-taxonomy.mjs','backend/src/main/resources/content-review-catalog.json','backend/src/main/resources/pdf-review-labels.json','veri/content-labels/source-inventory.json','veri/content-labels/pdf-locations.json','veri/content-labels/video-inventory.json','veri/content-labels/video-content-index.json','ornek-veri/content-ai-question-labels.json'], ['veri/content-labels/labels.json','veri/content-labels/report.json','backend/src/main/resources/content-label-categories.json']),
+        # Each published KPSS exam (icerik/data/kpss-*) is appended again on top of the regenerated YKS labels.
+        *[step('kpss-'+d.name, [py,'scripts/kpss-yayinla.py',d.relative_to(APP.parent).as_posix(),'--katalog','--database',args.database], always=True)
+          for d in sorted((APP.parent/'icerik/data').glob('kpss-*')) if (d/'sorular.json').is_file()],
         step('question-consistency', [py,'scripts/question-label-check.py'], always=True),
         step('audit', [py,'scripts/content-label-audit.py'], always=True),
         step('contract', [node,'scripts/learning-resource-check.mjs'], always=True),

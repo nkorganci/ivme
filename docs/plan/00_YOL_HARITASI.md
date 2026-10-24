@@ -18,7 +18,7 @@ bittiğinde silinmez; yeni yapılacaklar veya tamamlanan işler listesi olarak k
 |---|---|---|
 | 7 | [Çoklu etiketleri ve belirsiz kayıtları denetle](07_KALITE_VE_INCELEME.md) | Otomatik işleme ve manuel devir hazır |
 | 12 | [Kalan içerik ve yayın işlerini tamamla](12_KALAN_ICERIK_VE_YAYIN.md) | Ortak ekran/takip kabulü hazır; gerçek içerik kararları 7 ile bağlı |
-| 14 | [KPSS Ortaöğretim içeriğini aynı ekranlara bağla](14_KPSS_ORTAOGRETIM.md) | Sınav seçimi altyapısı hazır; KPSS konu listesi kullanıcıdan gelir. 7/12'den bağımsızdır |
+| 14 | [KPSS sınavlarını aynı ekranlara bağla](14_KPSS.md) | 14.01 KPSS Ortaöğretim tamamlandı; sırada Ön Lisans, Lisans, A Grubu, ÖABT, DHBT. 7/12'den bağımsızdır |
 
 **Devam noktası:** 07.02 (`BEKLIYOR_ALAN_UZMANI`). DB kategori/PDF etiket önceliği, aynı işlemde tutarlı katalog okuması, güncel kaynak bağı ve görünen adlar doğrulandı. Aynı disk yedeği/geri yükleme işi kapandı. Gerçek alan kararı, 335 dar konu notu, 54 birleşik arşiv konumu ve ortam/pilot girdileri ilgili 7/12 maddelerinde etiketli kalır. Güncel teknik kabul kanıtı [çalışma bağlamındadır](00_CALISMA_BAGLAMI.md).
 
@@ -41,7 +41,7 @@ bunları başlatma yetkisi değildir. 7/12 sırası ve mevcut kayıtlar korunur.
 ## Ortak kararlar
 
 - Konu, PDF, soru, video ve ders notu aynı kontrollü kategori kimliklerini kullanacak. Başlık değişikliği yeni kimlik üretmeyecek.
-- YKS ve KPSS aynı menü ve ekranları kullanır; öğrenci sol menüdeki “Sınavım” seçicisiyle sınavını seçer (PostgreSQL `exam_tracks` / `user_exam_tracks`). Şimdilik yalnız KPSS Ortaöğretim hazırlanır; diğer KPSS türleri “henüz hazır değil” notuyla listelenir.
+- YKS ve KPSS aynı menü ve ekranları kullanır; öğrenci sol menüdeki “Sınavım” seçicisiyle sınavını seçer (PostgreSQL `exam_tracks` / `user_exam_tracks`). KPSS Ortaöğretim yayında (çıkmış sorular, dersler, pratik, deneme, istatistik); diğer KPSS türleri sırayla hazırlanır ve hazır olana kadar “henüz hazır değil” notuyla listelenir.
 - Çalışma anında kategori tanımı ve otomatik etiket yalnız yayımlanmış DB sürümünden alınır. Dosyalar sürümlü üretim girdisidir; DB kaydı yoksa sessiz yedek sözlük veya başlıktan yeni kimlik oluşturulmaz. Geçmiş sürüm ilişkisi yeni kaynak bağını doğrulamaz.
 - Her kaydın en az bir etiketi olacak. İçerik okunamıyorsa bilinen en geniş kapsam ve düşük güven kullanılacak; konu dahi bilinmiyorsa kontrollü inceleme etiketi verilecek. Sayfa veya zaman uydurulmayacak.
 - Aynı içerik farklı konularda kopyalanmayacak; tek kaynak kaydına birden fazla konu ilişkisi ve her ilişkiye ayrı kanıt/aralık bağlanacak. Belirsiz adaylar kesin kapsamdan ayrılacak.

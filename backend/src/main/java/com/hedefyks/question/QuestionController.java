@@ -42,10 +42,12 @@ public class QuestionController {
     private final QuestionAvailabilityService availability;
     private final QuestionHelpfulnessService helpfulness;
     private final HintService hints;
+    private final com.hedefyks.examtrack.ExamTrackService tracks;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
                               AttemptService attempts, BoardService boards, QuestionAvailabilityService availability,
-                              QuestionHelpfulnessService helpfulness, HintService hints) {
+                              QuestionHelpfulnessService helpfulness, HintService hints,
+                              com.hedefyks.examtrack.ExamTrackService tracks) {
         this.service = service;
         this.questions = questions;
         this.images = images;
@@ -55,12 +57,16 @@ public class QuestionController {
         this.availability = availability;
         this.helpfulness = helpfulness;
         this.hints = hints;
+        this.tracks = tracks;
     }
 
     @GetMapping("/filters")
     public List<FilterRow> filters(@RequestParam(required = false) QuestionBank bank,
-                                   @RequestParam(required = false) List<QuestionSource> source) {
-        return service.filters(bank,source==null?List.of():source);
+                                   @RequestParam(required = false) List<QuestionSource> source,
+                                   @AuthenticationPrincipal AppUserDetails me) {
+        var scoped = tracks.scope(new QuestionFilter(bank, null, null, null, List.of(), "ANY", true, null, null,
+                source == null ? List.of() : source), me.id());
+        return service.filters(bank, scoped.source());
     }
 
     @GetMapping("/availability")
@@ -68,19 +74,20 @@ public class QuestionController {
                                                                  @RequestParam(required = false) Integer topicPdfId,
                                                                  @RequestParam(required = false) List<QuestionHistorySelection> history,
                                                                  @AuthenticationPrincipal AppUserDetails me) {
-        return availability.count(me.id(), filter, topicPdfId, history);
+        return availability.count(me.id(), tracks.scope(filter, me.id()), topicPdfId, history);
     }
 
     @GetMapping("/category-counts")
-    public java.util.Map<String,Long> categoryCounts(QuestionFilter filter) {
-        return service.categoryCounts(filter);
+    public java.util.Map<String,Long> categoryCounts(QuestionFilter filter, @AuthenticationPrincipal AppUserDetails me) {
+        return service.categoryCounts(tracks.scope(filter, me.id()));
     }
 
     @GetMapping
     public PageResponse<QuestionListItem> list(QuestionFilter filter,
                                                @RequestParam(defaultValue = "0") int page,
-                                               @RequestParam(defaultValue = "20") int size) {
-        return service.list(filter, page, size);
+                                               @RequestParam(defaultValue = "20") int size,
+                                               @AuthenticationPrincipal AppUserDetails me) {
+        return service.list(tracks.scope(filter, me.id()), page, size);
     }
 
     @GetMapping("/{id}")
@@ -103,7 +110,7 @@ public class QuestionController {
             case "prev" -> false;
             default -> throw ApiException.badRequest("direction yalnız next veya prev olabilir.");
         };
-        return service.neighbor(id, next, filter, me.id())
+        return service.neighbor(id, next, tracks.scope(filter, me.id()), me.id())
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }

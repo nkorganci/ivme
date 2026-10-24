@@ -1,0 +1,49 @@
+{
+  "track": "KPSS_ORTAOGRETIM",
+  "database": "ivme",
+  "source": "icerik/data/kpss-ortaogretim",
+  "questions": 1260,
+  "archivePositions": 840,
+  "copiedImages": 0,
+  "write": {
+    "inserted": 0,
+    "updated": 0,
+    "retired": 0
+  },
+  "catalog": {
+    "track": "KPSS_ORTAOGRETIM",
+    "previousRun": "labels-v1-cbca1ff6f1bdc5c68c32e54a",
+    "runKey": "labels-v1-cbca1ff6f1bdc5c68c32e54a",
+    "reference": "Kaynaklar/KPPS/KPSS Ortaöğretim/Mufredat/kpss-ortaogretim-konular.json",
+    "referenceSha256": "4eb96d58f04c8cd9bff45192e946ee27b1e850a7449ca0248dc281f788bc31f2",
+    "decisionsSha256": "12576955ae1b251789fbd281c268b9a4e99faf07fe511b05674467d17cc6c8e5",
+    "categories": 85,
+    "items": 1260,
+    "studentVisible": 1223,
+    "byStatus": {
+      "AKTIF": 1223,
+      "ESKI": 14,
+      "EKSIK_SIK": 21,
+      "EKSIK_KOK": 2
+    },
+    "byConfidence": {
+      "HIGH": 1114,
+      "MEDIUM": 144,
+      "LOW": 2
+    }
+  },
+  "verified": {
+    "questions": 1260,
+    "activeQuestions": 1223,
+    "catalogItems": 1260,
+    "catalogCategories": 85,
+    "stampMismatch": 0,
+    "archivePositions": 840,
+    "selectable": 1223
+  },
+  "label": {
+    "etiket": "TUM_PDFLER_ISLENDI",
+    "pdf": 18,
+    "islenmeyen": []
+  }
+}

@@ -6,6 +6,7 @@ import Segmented from './Segmented.jsx';
 import { Alert, ErrorBox, Loading } from './States.jsx';
 import { BANKS } from '../format.js';
 import { Field } from './Field.jsx';
+import { useExamTrack } from '../examTrack.jsx';
 
 const TRACKS = [
   { value: 'SAYISAL', label: 'Sayısal' },
@@ -16,11 +17,16 @@ const TRACKS = [
 export default function FullExamForm() {
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
-  const examType = params.get('examType') === 'AYT' ? 'AYT' : 'TYT';
+  const { exams, examLabel, kpss } = useExamTrack();
+  // Testler seçili sınavdan gelir (TYT/AYT veya KPSS Genel Yetenek/Genel Kültür).
+  const examType = exams.some(e => e.id === params.get('examType')) ? params.get('examType') : exams[0].id;
+  const examName = examLabel(examType);
   const track = examType === 'AYT' && TRACKS.some(item => item.value === params.get('track'))
     ? params.get('track') : 'SAYISAL';
-  const bank = Object.hasOwn(BANKS, params.get('bank')) ? params.get('bank') : '';
-  const noBank = params.get('bank') === 'NONE';
+  // KPSS'de yalnız ÖSYM çıkmış soruları vardır; soru bankası seçeneği gösterilmez.
+  const banks = kpss ? { CIKMIS: BANKS.CIKMIS } : BANKS;
+  const bank = kpss ? 'CIKMIS' : Object.hasOwn(BANKS, params.get('bank')) ? params.get('bank') : '';
+  const noBank = !kpss && params.get('bank') === 'NONE';
   const includeSolved = params.get('includeSolved') !== 'false';
   const selectionMode = includeSolved ? 'MIXED' : 'NEW';
   const byYear = params.get('examSource') === 'year';
@@ -55,7 +61,7 @@ export default function FullExamForm() {
     }, { replace: true });
   };
   const changeBank = (key, checked) => {
-    const selected = noBank ? [] : bank ? [bank] : Object.keys(BANKS);
+    const selected = noBank ? [] : bank ? [bank] : Object.keys(banks);
     const next = checked ? [...selected, key] : selected.filter(item => item !== key);
     change('bank', next.length === 2 ? '' : next[0] || 'NONE');
   };
@@ -85,10 +91,10 @@ export default function FullExamForm() {
       options={[{ value: 'mixed', label: 'Genel deneme' }, { value: 'year', label: 'Yıla ait tam sınav' }]}
       onChange={value => change('examSource', value === 'year' ? 'year' : '')} />
     <div className="study-choices" role="group" aria-label="Sınav türü">
-      {['TYT', 'AYT'].map(value => <button key={value} type="button" disabled={busy}
-        className={`study-choice${examType === value ? ' selected' : ''}`}
-        aria-pressed={examType === value} onClick={() => change('examType', value)}>
-        <strong>{value}</strong><span>{value === 'TYT' ? '120 soru · 165 dakika' : 'Alanına göre 80 soru · 180 dakika'}</span>
+      {exams.map(exam => <button key={exam.id} type="button" disabled={busy}
+        className={`study-choice${examType === exam.id ? ' selected' : ''}`}
+        aria-pressed={examType === exam.id} onClick={() => change('examType', exam.id)}>
+        <strong>{exam.name}</strong><span>{exam.detail}</span>
       </button>)}
     </div>
     {examType === 'AYT' && <>
@@ -101,7 +107,7 @@ export default function FullExamForm() {
           onChange={event => change('year', event.target.value)}>
           {!archivePlans.length && <option value="">Kayıtlı yıl yok</option>}
           {archivePlans.map(plan => <option key={plan.year} value={plan.year}>
-            {plan.year} {examType}{!plan.ready ? ' — yeterli soru yok'
+            {plan.year} {examName}{!plan.ready ? ' — yeterli soru yok'
               : plan.estimatedQuestionCount ? ' — tahmini sorularla tamamlanır' : ''}
           </option>)}
       </Field>
@@ -111,12 +117,12 @@ export default function FullExamForm() {
     </> : <>
     <fieldset className="full-exam-sources" disabled={busy}>
       <legend>Kaynak</legend>
-      {Object.entries(BANKS).map(([key, item]) => <label key={key}>
-        <input type="checkbox" checked={!noBank && (!bank || bank === key)}
+      {Object.entries(banks).map(([key, item]) => <label key={key}>
+        <input type="checkbox" checked={!noBank && (!bank || bank === key)} disabled={kpss}
           onChange={event => changeBank(key, event.target.checked)} />
-        {examType} {key === 'CIKMIS' ? 'Çıkmış Sorular' : item.label}
+        {examName} {key === 'CIKMIS' ? 'Çıkmış Sorular' : item.label}
       </label>)}
-      <p className="muted small">Bir kaynağı veya ikisini birlikte seçebilirsin.</p>
+      <p className="muted small">{kpss ? 'Sorular ÖSYM çıkmış sorularından seçilir.' : 'Bir kaynağı veya ikisini birlikte seçebilirsin.'}</p>
     </fieldset>
     <label className="full-exam-history">
       <input type="checkbox" checked={includeSolved} disabled={busy}
@@ -131,8 +137,8 @@ export default function FullExamForm() {
       : byYear && !currentPlan ? <Alert type="warn">Bu seçim için kayıtlı sınav yılı bulunamadı.</Alert>
       : currentPlan && <>
         <p className="muted">{currentPlan.questionCount} soru · {currentPlan.timeLimitMinutes} dakika.
-          {byYear ? ` ${year} ${examType} sınavı, özgün ders dağılımıyla hazırlanır.`
-            : ` Sorular yalnızca ${examType} havuzundan, seçtiğin kaynaklardan branş dağılımına göre seçilir.`}</p>
+          {byYear ? ` ${year} ${examName} sınavı, özgün ders dağılımıyla hazırlanır.`
+            : ` Sorular yalnızca ${examName} havuzundan, seçtiğin kaynaklardan branş dağılımına göre seçilir.`}</p>
         {!byYear && <p className="muted small">Her derste ünite ve konulara dengeli yer verilir.
           Sonraki denemelerde daha önce sorulmayan veya az sorulan konulara öncelik verilir.</p>}
         {byYear && currentPlan.ready && currentPlan.estimatedQuestionCount > 0 && <Alert type="warn">

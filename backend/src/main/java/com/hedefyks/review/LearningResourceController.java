@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class LearningResourceController {
     private final LearningResourceService resources;
     private final ContentReviewService reviews;
-    public LearningResourceController(LearningResourceService resources,ContentReviewService reviews) {this.resources=resources;this.reviews=reviews;}
-    @GetMapping("/metadata") public Map<String,Object> metadata(){return resources.metadata();}
+    private final com.hedefyks.examtrack.ExamTrackService tracks;
+    public LearningResourceController(LearningResourceService resources,ContentReviewService reviews,com.hedefyks.examtrack.ExamTrackService tracks) {
+        this.resources=resources;this.reviews=reviews;this.tracks=tracks;}
+    @GetMapping("/metadata") public Map<String,Object> metadata(
+        @org.springframework.security.core.annotation.AuthenticationPrincipal com.hedefyks.user.AppUserDetails me){
+        var types=tracks.examTypes(me.id());
+        return resources.metadata(exam->tracks.includesCategoryExam(exam,types));}
     @GetMapping("/coverage") public Map<String,Object> coverage(@RequestParam String exam,@RequestParam String subject){return resources.coverage(exam,subject);}
     @GetMapping public Map<String,Object> list(@RequestParam(defaultValue="") String exam,
         @RequestParam(defaultValue="") String subject,@RequestParam(defaultValue="") String kind,

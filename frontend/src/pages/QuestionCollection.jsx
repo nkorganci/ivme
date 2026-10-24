@@ -8,8 +8,9 @@ import DataGrid from '../components/DataGrid.jsx';
 import StudyNavigation from '../components/StudyNavigation.jsx';
 import SharedCategorySelect, { loadSharedCatalog } from '../components/SharedCategorySelect.jsx';
 import { Empty, ErrorBox, Loading } from '../components/States.jsx';
-import { bankLabel, formatNumber } from '../format.js';
+import { formatNumber } from '../format.js';
 import { countQuestionRows } from '../questionFilters.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 const contextFor = rows => Object.fromEntries(['examType','subject','topic']
   .filter(key => rows.length && rows.every(row => row[key] === rows[0][key]))
@@ -17,8 +18,10 @@ const contextFor = rows => Object.fromEntries(['examType','subject','topic']
 const sum = rows => countQuestionRows(rows, contextFor(rows));
 /** TYT/AYT çıkmış sorular ile OGM soru bankasının ortak kategori ve sonuç ekranı. */
 export default function QuestionCollection({ bank }) {
-  const label = bankLabel(bank);
+  const { exams, examLabel, kpss, track, bankName } = useExamTrack();
+  const label = bankName(bank);
   usePageTitle(label);
+  const examNames = exams.map(e => e.name);
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [page, setPage] = usePageParam();
@@ -36,7 +39,7 @@ export default function QuestionCollection({ bank }) {
   const rows = filterRows.data ?? [];
   const catalog = useAsync(loadSharedCatalog, []);
   const subjectLabel = catalog.data?.categories.find(c => c.selectable !== false && c.subjectId === filter.subject)?.subject || filter.subject;
-  const context = [filter.examType || 'Tüm sınavlar', subjectLabel || 'Tüm dersler',
+  const context = [filter.examType ? examLabel(filter.examType) : 'Tüm sınavlar', subjectLabel || 'Tüm dersler',
     filter.topic || 'Tüm konular'].join(' · ');
   const [progress, setProgress] = useState(null);
   const [progressError, setProgressError] = useState('');
@@ -103,7 +106,7 @@ export default function QuestionCollection({ bank }) {
       cellRenderer: ({ data: question }) => question && <Link
         to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`}
         onClick={(event) => event.stopPropagation()}>{question.code}</Link> },
-    { field: 'examType', headerName: 'Sınav', width: 70, minWidth: 70, flex: 0 },
+    { field: 'examType', headerName: 'Sınav', width: kpss ? 120 : 70, minWidth: 70, flex: 0, valueFormatter: ({ value }) => examLabel(value) },
     { field: 'subject', headerName: 'Ders', minWidth: 120, flex: 1,valueGetter:({data:q})=>q.resource?.subject || q.subject },
     { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, valueGetter: ({ data:q }) => q.resource?.unit || 'İnceleme bekliyor' },
     { field: 'topic', headerName: 'Konu', minWidth: 180, flex: 1.7,
@@ -118,12 +121,12 @@ export default function QuestionCollection({ bank }) {
       cellRenderer: ({ data: question }) => question && <Link className="btn btn-secondary btn-sm"
         to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`}
         onClick={(event) => event.stopPropagation()}>Soruyu aç</Link> },
-  ], [bank, detailQuery, last]);
+  ], [bank, detailQuery, last, kpss, track?.id]);
 
   return <div className="question-collection-page">
     <StudyNavigation bank={bank} filter={filter} />
     <div className="page-head">
-      <div><h2>{label}</h2><p className="muted">{bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
+      <div><h2>{label}</h2><p className="muted">{bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : kpss ? `ÖSYM ${track.name} sınavlarında sorulmuş sorular.` : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
     </div>
       <section className="card"><SharedCategorySelect questionFilters branchFirst showDropdown={false} branchIds={branchIds} subject={filter.subject}
         questionScope={{ bank, examType:filter.examType, includeCandidates:commonSelection.includeCandidates, questionTypeId:commonSelection.questionTypeId, teacherDifficulty:commonSelection.teacherDifficulty }}
@@ -143,11 +146,11 @@ export default function QuestionCollection({ bank }) {
         <section className="question-collection-filter-group" aria-label="Sınav filtresi">
           <h3>Sınav</h3>
           <div className="question-collection-exams">
-            {['', 'TYT', 'AYT'].map((examType) => <button key={examType} type="button"
+            {['', ...exams.map(e => e.id)].map((examType) => <button key={examType} type="button"
               className={`question-collection-choice${filter.examType === examType ? ' selected' : ''}`}
               aria-pressed={filter.examType === examType}
               onClick={() => setFilter({ examType, subject: '', topic: '' })}>
-              <span>{examType || 'Tümü'}</span>
+              <span>{examType ? examLabel(examType) : 'Tümü'}</span>
               <small>{formatNumber(examType ? sum(rows.filter((row) => row.examType === examType)) : sum(rows))}</small>
             </button>)}
           </div>
@@ -175,7 +178,7 @@ export default function QuestionCollection({ bank }) {
           <div><h2>Seçili soruları başlat</h2><p className="muted small">Bu filtredeki {formatNumber(availableCount)} sorudan istediğin sayıda seçilir. Sonucun geçmişine kaydedilir.</p></div>
           <label>Çözüm türü<select value={sessionMode} onChange={(event) => setSessionMode(event.target.value)}>
             <option value="practice">Pratik · cevabı hemen gör</option>
-            <option value="exam">Deneme · TYT veya AYT</option>
+            <option value="exam">Deneme · {examNames.join(' veya ')}</option>
           </select></label>
           {sessionMode !== 'exam' && <label>Soru sayısı<input type="number" min="1" max={Math.min(availableCount, 120)} value={questionCount}
             onChange={(event) => setQuestionCount(event.target.value)} /></label>}
@@ -195,7 +198,7 @@ export default function QuestionCollection({ bank }) {
             {data.content.map((question) => <li key={question.id}>
               <Link to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`} className="qcard">
                 <span className="qcard-top"><strong className="qcard-code">{question.code}</strong>
-                  <span className="muted small">{bank === 'OGM' ? question.examType : question.year || question.examType}</span></span>
+                  <span className="muted small">{bank === 'OGM' ? examLabel(question.examType) : [question.year, kpss && examLabel(question.examType)].filter(Boolean).join(' · ') || examLabel(question.examType)}</span></span>
                 <span className="qcard-mid"><span className="badge badge-muted">{question.resource?.subject || question.subject}</span>{' '}
                   {question.resource?.displayTitle || question.topic || 'Konu belirtilmemiş'}</span>
                 {question.resource && <span className="muted small">{question.resource.reviewStatus==='APPROVE'?'Öğretmen doğruladı':question.resource.manualReview?.label || 'Otomatik eşleme'}</span>}

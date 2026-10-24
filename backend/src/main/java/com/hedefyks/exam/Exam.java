@@ -37,6 +37,10 @@ public class Exam {
     @Column(name = "exam_type")
     private ExamType examType;
 
+    /** Denemenin oluşturulduğu sınav hedefi (YKS, KPSS_ORTAOGRETIM...); geçmiş bu kimlikle ayrılır. */
+    @Column(name = "track_id", nullable = false)
+    private String trackId = "YKS";
+
     private String subject;
 
     @Enumerated(EnumType.STRING)

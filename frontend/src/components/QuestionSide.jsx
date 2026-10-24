@@ -6,12 +6,14 @@ import RatingForm from './RatingForm.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
 import { api } from '../api.js';
-import { DIFFICULTIES, bankLabel, difficultyLabel } from '../format.js';
+import { DIFFICULTIES, difficultyLabel } from '../format.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 const TONE = { KOLAY: 'ok', ORTA: 'warn', ZOR: 'bad' };
 
 /** Soru görselinin yanındaki karalama, QR ve istatistik alanı. */
 export default function QuestionSide({ q, onRated, canVote, boardAction }) {
+  const { bankName, examLabel } = useExamTrack();
   const [tab, setTab] = useState('board');
   const [expanded, setExpanded] = useState(true);
   const tabRefs = useRef({});
@@ -65,9 +67,9 @@ export default function QuestionSide({ q, onRated, canVote, boardAction }) {
       <div id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden={tab !== 'qr'}><QrCard question={q} /></div>
       <dl className="meta">
         <dt>Koleksiyon</dt>
-        <dd>{bankLabel(q.bank)}</dd>
+        <dd>{bankName(q.bank)}</dd>
         <dt>Sınav</dt>
-        <dd>{q.examType}</dd>
+        <dd>{examLabel(q.examType)}</dd>
         <dt>Ders</dt>
         <dd>{q.subject}</dd>
         <dt>Konu</dt>

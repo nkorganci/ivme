@@ -68,6 +68,8 @@ class ExamTopicCoverageTest extends TestBase {
     @Test void allFullProfilesBalanceEveryBranchAndRotateWithinItsQuota() {
         for (var type : ExamType.values()) for (var track : ExamTrack.values()) {
             if (type==ExamType.TYT && track!=ExamTrack.SAYISAL) continue;
+            // KPSS testleri yalnız KPSS seçili öğrenciye açıktır (KpssTrackScopeTest).
+            if (type.kpss()) continue;
             var owner = user("profile_"+type+"_"+track,Role.USER);
             for (var quota : plans.fullQuotas(type,track)) {
                 if (jdbc.queryForObject("SELECT count(*) FROM questions WHERE exam_type=? AND subject=?",Integer.class,type.name(),quota.subject())==0)

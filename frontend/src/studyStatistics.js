@@ -15,8 +15,16 @@ export const EXAM_BRANCHES = [
   { key: 'religion', label: 'Din', subjects: ['Din Kültürü', 'Din Kültürü ve Ahlak Bilgisi'] },
 ];
 
-export function groupExamBranches(subjects) {
-  return Object.fromEntries(EXAM_BRANCHES.map(branch => {
+/** KPSS'de ders kolonları sınav tanımındaki derslerdir (ör. Türkçe, Matematik, Tarih...). */
+export function examBranchesFor(exams = [], kpss = false) {
+  if (!kpss) return EXAM_BRANCHES;
+  const names = [...new Set(exams.flatMap(exam => (exam.subjects || []).map(subject => subject.name)))];
+  return names.map(name => ({ key: name.toLocaleLowerCase('tr-TR').replace(/[^a-z0-9çğıöşü]+/g, '-'),
+    label: name.slice(0, 3), subjects: [name] }));
+}
+
+export function groupExamBranches(subjects, branches = EXAM_BRANCHES) {
+  return Object.fromEntries(branches.map(branch => {
     const rows = subjects.filter(subject => branch.subjects.includes(subject.subject));
     return [branch.key, !rows.length ? null : rows.reduce((total, row) => ({
       total: total.total + row.total, correct: total.correct + row.correct,
@@ -85,15 +93,15 @@ export function summarizeStudyRows(rows) {
   };
 }
 
-export function summarizeExamRows(rows) {
-  return ['TYT', 'AYT'].map(examType => ({
+export function summarizeExamRows(rows, examTypes = ['TYT', 'AYT']) {
+  return examTypes.map(examType => ({
     examType, ...summarizeStudyRows(rows.filter(row => row.examType === examType)),
   }));
 }
 
 // Number trials chronologically; filtering/sorting must not change their numbers
 // or which completed TYT is associated with AYT.
-export function prepareExamHistory(items) {
+export function prepareExamHistory(items, branches = EXAM_BRANCHES) {
   const chronological = [...items].sort((a, b) => Date.parse(a.submittedAt) - Date.parse(b.submittedAt) || a.id - b.id);
   const numbers = new Map(chronological.map((item, index) => [item.id, index + 1]));
   const latestTyt = chronological.filter(item => item.examType === 'TYT').at(-1);
@@ -101,7 +109,7 @@ export function prepareExamHistory(items) {
     ...item, number: numbers.get(item.id), date: Date.parse(item.submittedAt), status: 'COMPLETED',
     correct: item.correctCount, wrong: item.wrongCount, blank: item.blankCount,
     bySubject: (item.bySubject ?? []).map(subject => ({ ...subject, net: subject.correct - subject.wrong / 4 })),
-    branches: groupExamBranches(item.bySubject ?? []),
+    branches: groupExamBranches(item.bySubject ?? [], branches),
     latestTytId: item.examType === 'AYT' ? latestTyt?.id ?? null : null,
     latestTytNumber: item.examType === 'AYT' && latestTyt ? numbers.get(latestTyt.id) : null,
     latestTytNet: item.examType === 'AYT' ? latestTyt?.net ?? null : null,

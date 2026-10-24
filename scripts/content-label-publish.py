@@ -36,7 +36,9 @@ def main():
     references = json.loads((STATE / "curriculum-reference-labels.json").read_text(encoding="utf-8"))
     if audit.get("runKey") != run or audit.get("failures") or audit.get("unlabelled") != 0:
         raise ValueError("Run the complete source audit before publishing")
-    if audit.get('type')=='CURRICULUM_RECLASSIFICATION' and not audit.get('sourcePreserved'):
+    # Curriculum-only runs and KPSS track additions start from the published snapshot and keep every source.
+    snapshot_run = audit.get('type') in ('CURRICULUM_RECLASSIFICATION', 'TRACK_CURRICULUM_ADDITION')
+    if snapshot_run and not audit.get('sourcePreserved'):
         raise ValueError('Curriculum-only publication requires an unchanged source snapshot')
     for reference in references:
         path = APP.parent / reference["source"]
@@ -86,7 +88,7 @@ def main():
           'content_format','skills','grades','category_ids','subject_ids','exam_ids'))=10""").strip() == "t"
     with sql_path.open("w", encoding="utf-8", newline="") as out:
         out.write("BEGIN;\nSELECT pg_advisory_xact_lock(738452019);\n")
-        if audit.get('type')=='CURRICULUM_RECLASSIFICATION':
+        if snapshot_run:
             out.write("DO $snapshot$ BEGIN IF (SELECT run_key FROM learning_catalog.current_run) IS DISTINCT FROM "
                 +literal(audit['previousRunKey'])+" THEN RAISE EXCEPTION 'Current catalog changed; repeat the curriculum snapshot audit'; END IF; END $snapshot$;\n")
         if not schema_ready:

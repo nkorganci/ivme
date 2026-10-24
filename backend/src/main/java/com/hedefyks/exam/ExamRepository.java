@@ -22,7 +22,11 @@ public interface ExamRepository extends JpaRepository<Exam, Long> {
 
     Page<Exam> findByUserIdAndStatusOrderBySubmittedAtDesc(Long userId, ExamStatus status, Pageable pageable);
 
+    Page<Exam> findByUserIdAndTrackIdAndStatusOrderBySubmittedAtDesc(Long userId, String trackId, ExamStatus status, Pageable pageable);
+
     Optional<Exam> findFirstByUserIdAndStatusOrderByStartedAtDesc(Long userId, ExamStatus status);
+
+    Optional<Exam> findFirstByUserIdAndTrackIdAndStatusOrderByStartedAtDesc(Long userId, String trackId, ExamStatus status);
 
     long countByStatus(ExamStatus status);
 
@@ -32,4 +36,11 @@ public interface ExamRepository extends JpaRepository<Exam, Long> {
                 coalesce(sum(e.correctCount), 0L), coalesce(sum(e.wrongCount), 0L), coalesce(sum(e.blankCount), 0L))
             from Exam e where e.userId = :userId and e.status = :status""")
     Agg aggregate(@Param("userId") Long userId, @Param("status") ExamStatus status);
+
+    @Query("""
+            select new com.hedefyks.exam.ExamRepository$Agg(
+                count(e), avg(e.percent),
+                coalesce(sum(e.correctCount), 0L), coalesce(sum(e.wrongCount), 0L), coalesce(sum(e.blankCount), 0L))
+            from Exam e where e.userId = :userId and e.trackId = :trackId and e.status = :status""")
+    Agg aggregate(@Param("userId") Long userId, @Param("trackId") String trackId, @Param("status") ExamStatus status);
 }

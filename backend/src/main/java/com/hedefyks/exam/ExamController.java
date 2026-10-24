@@ -34,8 +34,11 @@ public class ExamController {
     private final HintService hints;
     private final ExamPlanService plans;
     private final ExamArchiveService archive;
+    private final com.hedefyks.examtrack.ExamTrackService tracks;
 
-    public ExamController(ExamService service, HintService hints, ExamPlanService plans, ExamArchiveService archive) {
+    public ExamController(ExamService service, HintService hints, ExamPlanService plans, ExamArchiveService archive,
+                          com.hedefyks.examtrack.ExamTrackService tracks) {
+        this.tracks = tracks;
         this.service = service;
         this.hints = hints;
         this.plans = plans;
@@ -56,6 +59,7 @@ public class ExamController {
                                      @RequestParam(defaultValue = "MIXED") QuestionSelectionMode selectionMode,
                                      @RequestParam(defaultValue = "true") boolean includeSolved,
                                      @RequestParam(required = false) Integer questionCount) {
+        tracks.requireExam(examType, me.id());
         return questionCount == null ? plans.fullPlan(me.id(), bank, examType, track, includeSolved)
                 : plans.plan(me.id(), bank, examType, track, selectionMode, questionCount);
     }
@@ -68,7 +72,8 @@ public class ExamController {
 
     @GetMapping("/archive")
     public java.util.List<ExamArchiveService.ArchivePlan> archive(@RequestParam ExamType examType,
-            @RequestParam(required = false) ExamTrack track) {
+            @RequestParam(required = false) ExamTrack track, @AuthenticationPrincipal AppUserDetails me) {
+        tracks.requireExam(examType, me.id());
         return archive.list(examType, track);
     }
 

@@ -63,6 +63,19 @@ public class ReviewCatalog {
     }
 
     public List<Map<String, Object>> items() { return items; }
+
+    /**
+     * KPSS ders kimliği yayımlanmış KPSS kategorilerinden çözülür (ad veya kimlik); sınav verilirse yalnız o testin dersleri.
+     * KPSS ders adları YKS ile çakışır (Türkçe, Tarih...), bu yüzden YKS sözlüğü kullanılmaz.
+     */
+    public String kpssSubjectId(com.hedefyks.question.ExamType exam, String label) {
+        if (label == null || label.isBlank()) return "unmapped";
+        return learningLabels.categories().stream()
+                .filter(c -> c.get("subjectId") != null && String.valueOf(c.get("exam")).startsWith("KPSS_")
+                        && (exam == null || exam.name().equals(c.get("exam")))
+                        && (label.equals(c.get("subject")) || label.equals(c.get("subjectId"))))
+                .map(c -> c.get("subjectId").toString()).findFirst().orElse("unmapped");
+    }
     public List<Map<String, Object>> branches() {
         var branches=new LinkedHashMap<String,Map<String,Object>>();
         for(var category:learningLabels.categories()) {

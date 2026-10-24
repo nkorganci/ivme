@@ -26,8 +26,15 @@ class ExamTrackFlowTest extends TestBase {
         initial.path("tracks").forEach(t -> ids.add(t.path("id").asText()));
         assertThat(ids).containsExactly("YKS", "KPSS_ORTAOGRETIM", "KPSS_ONLISANS", "KPSS_LISANS",
                 "KPSS_A_GRUBU", "KPSS_OABT", "KPSS_DHBT");
-        assertThat(initial.path("tracks").get(1).path("status").asText()).isEqualTo("PREPARING");
-        assertThat(initial.path("tracks").get(1).path("sections").size()).isEqualTo(2);
+        var kpss = initial.path("tracks").get(1);
+        assertThat(kpss.path("status").asText()).isEqualTo("ACTIVE");
+        assertThat(kpss.path("sections").size()).isEqualTo(2);
+        assertThat(kpss.path("sections").get(0).path("examId").asText()).isEqualTo("KPSS_OO_GY");
+        assertThat(kpss.path("sections").get(0).path("minutes").asInt()).isEqualTo(65);
+        var ready = new ArrayList<String>();
+        kpss.path("readyFeatures").forEach(f -> ready.add(f.asText()));
+        assertThat(ready).contains("curriculum", "past-questions", "study", "statistics").doesNotContain("question-bank");
+        assertThat(initial.path("tracks").get(0).path("readyFeatures").size()).isZero();
         assertThat(initial.path("tracks").get(2).path("note").asText()).contains("hazır değil");
 
         var selected = read(send(first, put(PATH + "/current"), "{\"trackId\":\"KPSS_ORTAOGRETIM\"}"));

@@ -5,10 +5,12 @@ import { useAsync } from '../hooks.js';
 import { formatNumber } from '../format.js';
 import DataGrid from './DataGrid.jsx';
 import { ErrorBox, Loading } from './States.jsx';
-import { QUESTION_SOURCES as SOURCES, writeQuestionSources } from '../questionSources.js';
+import { writeQuestionSources } from '../questionSources.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 export default function QuestionPoolSummary() {
   const [, setParams] = useSearchParams();
+  const { questionSources: SOURCES, kpss, exams } = useExamTrack();
   const { data, loading, error, retry, reload } = useAsync(async () => {
     const [overall, ...sources] = await Promise.all([
       api.get('/api/questions/availability'),
@@ -27,7 +29,7 @@ export default function QuestionPoolSummary() {
   }, []);
 
   const selectSource = ({ id }) => setParams(current => {
-    const next = writeQuestionSources(new URLSearchParams(current), [id]);
+    const next = writeQuestionSources(new URLSearchParams(current), [id], SOURCES);
     for (const key of ['subject', 'topic', 'branchId', 'categoryId', 'categoryMatch', 'includeCandidates', 'questionTypeId', 'teacherDifficulty', 'topicPdfId']) next.delete(key);
     next.delete('scope');
     return next;
@@ -47,7 +49,7 @@ export default function QuestionPoolSummary() {
   return <section className="card table-card form-card study-pool-summary" aria-label="Soru havuzu ve çözüm özeti">
     {loading ? <Loading text="Soru özeti yükleniyor…" /> : error ? <ErrorBox error={error} onRetry={retry} />
       : <DataGrid mode="summary" dense columnDefs={columns} rowData={data} />}
-    <p className="muted small statistics-table-note">AYT ve TYT: çıkmış sorular. Kaynak sayısına tıklayarak filtrele.
+    <p className="muted small statistics-table-note">{kpss ? exams.map(e => e.name).join(' ve ') : 'AYT ve TYT'}: çıkmış sorular. Kaynak sayısına tıklayarak filtrele.
       {' '}Çözülen ve doğru sayıları ilk yanıtına göre hesaplanır; tekrarlar sayıyı artırmaz.</p>
   </section>;
 }

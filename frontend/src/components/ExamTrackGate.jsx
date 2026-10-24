@@ -1,39 +1,67 @@
+import { Fragment } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useExamTrack } from '../examTrack.jsx';
 import { usePageTitle } from '../hooks.js';
 import { STATISTICS_LABEL, STUDY_LABEL } from '../config.js';
 import { Loading } from './States.jsx';
 
-// Ortak menüdeki içerik sayfaları; seçilen sınavın içeriği hazır değilse aynı yerde bilgi gösterilir.
+// Ortak menüdeki içerik sayfaları ve bölüm kimlikleri (exam_tracks.ready_features); en uzun önek önce gelir.
+// Seçilen sınavda bölüm hazır değilse aynı yerde bilgi gösterilir.
 const PAGES = [
-  ['/dersler-ve-konular', 'Dersler'],
-  ['/konular-ve-kaynaklar', 'Konular ve kaynaklar'],
-  ['/kaynakli-ders-notlari', 'Ders notları'],
-  ['/cikmis-sorular', 'Çıkmış Sorular'],
-  ['/soru-bankasi', 'Soru Bankası'],
-  ['/calisma', STUDY_LABEL],
-  ['/gecmis', STATISTICS_LABEL],
-  ['/akilli-ogretmen', 'Akıllı Öğretmen'],
-  ['/oneriler', 'Çalışma önerileri'],
-  ['/ogrenci-takip', 'Denemeler'],
+  ['/dersler-ve-konular/pdf-envanteri', 'PDF envanteri', 'pdf-inventory'],
+  ['/dersler-ve-konular', 'Dersler', 'curriculum'],
+  ['/konular-ve-kaynaklar', 'Konular ve kaynaklar', 'resources'],
+  ['/kaynakli-ders-notlari', 'Ders notları', 'notes'],
+  ['/cikmis-sorular', 'Çıkmış Sorular', 'past-questions'],
+  ['/soru-bankasi', 'Soru Bankası', 'question-bank'],
+  ['/calisma', STUDY_LABEL, 'study'],
+  ['/gecmis', STATISTICS_LABEL, 'statistics'],
+  ['/akilli-ogretmen', 'Akıllı Öğretmen', 'tutor'],
+  ['/oneriler', 'Çalışma önerileri', 'recommendations'],
+  ['/ogrenci-takip', 'Denemeler', 'yks-trials'],
 ];
-const pageLabel = path => path === '/' ? 'Ana Sayfa' : PAGES.find(([prefix]) => path.startsWith(prefix))?.[1] || 'Bu sayfa';
+const pageFor = path => path === '/' ? ['/', 'Ana Sayfa', 'home']
+  : PAGES.find(([prefix]) => path.startsWith(prefix)) || [path, 'Bu sayfa', ''];
+const FEATURE_LABELS = Object.fromEntries([['home', 'Ana Sayfa'], ...PAGES.map(([, label, feature]) => [feature, label])]);
 
-/** Seçilen sınavın içeriği hazırsa sayfayı, değilse "hazırlanıyor" bilgisini gösterir. */
+/** Seçilen sınavın bu bölümü hazırsa sayfayı, değilse "hazırlanıyor" bilgisini gösterir. */
 export default function ExamTrackGate({ children }) {
-  const { loading, contentReady } = useExamTrack();
+  const { pathname } = useLocation();
+  const { loading, track, featureReady } = useExamTrack();
   if (loading) return <Loading text="Sınav seçimi yükleniyor…" />;
-  if (contentReady) return children ?? <Outlet />;
+  // Sınav değişince sayfa yeniden kurulur; önceki sınavın süzgeçleri ve verisi taşınmaz.
+  if (featureReady(pageFor(pathname)[2])) return <Fragment key={track?.id || 'none'}>{children ?? <Outlet />}</Fragment>;
   return <TrackPreparing />;
 }
 
 function TrackPreparing() {
   const { pathname } = useLocation();
   const { tracks, track, saving, select } = useExamTrack();
-  const page = pageLabel(pathname);
+  const [, page] = pageFor(pathname);
   usePageTitle(page);
-  const ready = tracks.find(t => t.status === 'ACTIVE');
+  const ready = tracks.find(t => t.status === 'ACTIVE' && t.id !== track.id);
   const sections = Array.isArray(track.sections) ? track.sections : [];
+  // Sınav yayında ama bu bölümü henüz yok (ör. KPSS'de soru bankası): hazır bölümlere yönlendir.
+  if (track.status === 'ACTIVE') {
+    const available = (track.readyFeatures || []).map(f => FEATURE_LABELS[f]).filter(Boolean);
+    return <>
+      <div className="page-head">
+        <h1>{page}</h1>
+        <span className="badge badge-muted">{track.name} · Bu bölüm hazır değil</span>
+      </div>
+      <section className="card track-preparing" aria-labelledby="track-preparing-title">
+        <h2 id="track-preparing-title">“{page}” {track.name} için henüz hazır değil</h2>
+        <p>Bu bölümün {track.name} içeriği hazırlanıyor; hazır olduğunda aynı yerde açılacak.</p>
+        {available.length > 0 && <p><strong>{track.name} için hazır bölümler:</strong> {available.join(', ')}.</p>}
+        <div className="track-actions">
+          <Link to="/dersler-ve-konular" className="btn btn-primary">Derslere git</Link>
+          <Link to="/cikmis-sorular" className="btn btn-secondary">Çıkmış sorular</Link>
+          {ready && <button type="button" className="btn btn-secondary" disabled={saving} onClick={() => select(ready.id)}>
+            {saving ? 'Geçiliyor…' : `${ready.name} sınavına geç`}</button>}
+        </div>
+      </section>
+    </>;
+  }
 
   return (
     <>

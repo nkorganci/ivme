@@ -6,12 +6,14 @@ import { Alert, ErrorBox, Loading } from '../components/States.jsx';
 import PracticeTimer from '../components/PracticeTimer.jsx';
 import { formatDate } from '../format.js';
 import { STATISTICS_LABEL } from '../config.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 const STATUS = { NOT_STARTED: 'Henüz başlanmadı', IN_PROGRESS: 'Çalışılıyor', COMPLETED: 'Tamamlandı' };
 const MODE = { MIXED: 'Karışık', NEW: 'Yalnız yeni', REPEAT: 'Önceki sorular', WRONG: 'Yanlış yaptıklarım' };
 const ANSWER = { CORRECT: 'Doğru', WRONG: 'Yanlış', BLANK: 'Boş' };
 
 export default function PracticeSession() {
+  const { examLabel } = useExamTrack();
   const { id } = useParams();
   const [busy, setBusy] = useState(false);
   const [finishError, setFinishError] = useState('');
@@ -48,7 +50,7 @@ export default function PracticeSession() {
         <p className="muted">İlk tur sonucu: {data.result.firstCorrect} doğru · {data.result.firstWrong} yanlış · {data.result.firstBlank} boş</p>
         <Link to="/gecmis?tab=practice" className="btn btn-secondary">{STATISTICS_LABEL}</Link>
       </section>}
-      {(data.subject || data.topic || data.examType) && <p className="muted">Seçim: {[data.examType, data.subject, data.topic].filter(Boolean).join(' · ')}</p>}
+      {(data.subject || data.topic || data.examType) && <p className="muted">Seçim: {[examLabel(data.examType), data.subject, data.topic].filter(Boolean).join(' · ')}</p>}
       <ol className="card practice-list">
         {data.questions.map((q) => <li key={q.questionId}>
           {data.status !== 'IN_PROGRESS' ? <div className="practice-row">

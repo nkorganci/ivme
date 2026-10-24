@@ -26,14 +26,27 @@ public class LearningResourceService {
         this.sharedLabels=sharedLabels;
     }
     public Map<String,Object> metadata() {
+        return metadata(exam->true);
+    }
+
+    /** Seçili sınavın ders ve konuları; YKS ve KPSS aynı katalogda kendi sınav kimlikleriyle ayrılır. */
+    public Map<String,Object> metadata(java.util.function.Predicate<Object> examFilter) {
         var runs=jdbc.queryForList("SELECT r.run_key,r.summary::text AS summary FROM learning_catalog.runs r JOIN learning_catalog.current_run c USING(run_key)");
         var summary=runs.isEmpty()?Map.<String,Object>of():store.parse(runs.get(0).get("summary").toString());
         var types=jdbc.queryForList("SELECT 'taxonomy:'||n.id AS id,n.code,n.name,count(DISTINCT t.question_id) AS questions FROM taxonomy_nodes n LEFT JOIN learning_catalog.current_question_taxonomy t ON t.node_id=n.id WHERE n.kind='QUESTION_TYPE' AND n.active GROUP BY n.id,n.code,n.name ORDER BY n.name,n.id");
-        return Map.of("summary",summary,"branches",vocabulary.branches(),"categories",vocabulary.categories(),"labels",ReviewCatalog.LABELS,"pdfKinds",pdfs.filters().kinds(),"questionTypes",types);
+        var categories=vocabulary.categories().stream().filter(c->examFilter.test(c.get("exam"))).toList();
+        var branches=new LinkedHashMap<String,Map<String,Object>>();
+        for(var c:categories) if(!Boolean.FALSE.equals(c.get("selectable")) && c.get("subjectId")!=null && !"TAXONOMY".equals(c.get("origin")))
+            branches.putIfAbsent(c.get("subjectId").toString(),Map.of("id",c.get("subjectId"),"name",c.get("subject")));
+        var known=vocabulary.branches().stream().map(b->b.get("id")).collect(java.util.stream.Collectors.toSet());
+        var ordered=new ArrayList<Map<String,Object>>(vocabulary.branches().stream().filter(b->branches.containsKey(b.get("id").toString())).toList());
+        branches.values().stream().filter(b->!known.contains(b.get("id"))).forEach(ordered::add);
+        return Map.of("summary",summary,"branches",ordered,"categories",categories,"labels",ReviewCatalog.LABELS,"pdfKinds",pdfs.filters().kinds(),"questionTypes",types);
     }
     /** Counts identities and the union of verified ranges; opening a source is never a completion. */
     public Map<String,Object> coverage(String exam,String subject) {
-        if(!Set.of("TYT","AYT").contains(exam) || !ReviewCatalog.ALIASES.containsKey(subject))
+        boolean kpss=java.util.Arrays.stream(com.hedefyks.question.ExamType.values()).anyMatch(t->t.kpss()&&t.name().equals(exam)) && subject.startsWith("kpss-");
+        if(!kpss && (!Set.of("TYT","AYT").contains(exam) || !ReviewCatalog.ALIASES.containsKey(subject)))
             throw ApiException.badRequest("Kaynak kapsamı için sınav ve ders seçin.");
         String overrides;
         try{overrides=json.writeValueAsString(reviews.studentOverrides());}catch(Exception e){throw new IllegalStateException(e);}

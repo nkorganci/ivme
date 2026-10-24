@@ -29,10 +29,12 @@ public class SharedQuestionLabels {
             throw ApiException.badRequest("Soru tipi geçersiz.");
         if(filter.teacherDifficulty()!=null && !Set.of("KOLAY","ORTA","ZOR").contains(filter.teacherDifficulty()))throw ApiException.badRequest("Öğretmen zorluk etiketi geçersiz.");
         var categoryIds=filter.categoryId();
+        boolean kpss=com.hedefyks.examtrack.ExamTrackService.kpss(filter);
+        java.util.function.Function<String,String> subjectIdOf=name->kpss?vocabulary.kpssSubjectId(filter.examType(),name):vocabulary.subjectId(name);
         boolean namedPhysicsTopic=false;
         if(categoryIds.isEmpty() && filter.topic()!=null) {
             categoryIds=vocabulary.categories().stream().filter(c->Boolean.TRUE.equals(c.get("canonicalTopic"))
-                && (filter.subject()==null || vocabulary.subjectId(filter.subject()).equals(c.get("subjectId")))
+                && (filter.subject()==null || subjectIdOf.apply(filter.subject()).equals(c.get("subjectId")))
                 && filter.topic().equalsIgnoreCase(c.get("topic").toString())
                 && (filter.examType()==null || filter.examType().name().equals(c.get("exam"))))
                 .map(c->c.get("id").toString()).toList();
@@ -45,7 +47,7 @@ public class SharedQuestionLabels {
         request.put("bank",filter.bank()==null?"":filter.bank().name());
         request.put("exam",filter.examType()==null?"":filter.examType().name());
         request.put("sources",filter.source());
-        request.put("subjectId",filter.subject()==null?"":vocabulary.subjectId(filter.subject()));
+        request.put("subjectId",filter.subject()==null?"":subjectIdOf.apply(filter.subject()));
         request.put("questionTypeId",filter.questionTypeId()==null?"":filter.questionTypeId());
         request.put("teacherDifficulty",filter.teacherDifficulty()==null?"":filter.teacherDifficulty());
         request.put("legacyTopic",!namedPhysicsTopic && filter.categoryId().isEmpty() && filter.topic()!=null?filter.topic():"");
@@ -103,7 +105,7 @@ public class SharedQuestionLabels {
         String request = selection(new QuestionFilter(bank, exam, null, null));
         return new SubjectSelection(request, write(subjects.stream().distinct().flatMap(subject -> {
             // Official test quotas group these controlled branches under one test.
-            var ids = switch (subject) {
+            var ids = exam != null && exam.kpss() ? List.of(vocabulary.kpssSubjectId(exam, subject)) : switch (subject) {
                 case "Matematik" -> List.of("matematik", "geometri");
                 case "Türk Dili ve Edebiyatı", "Edebiyat" -> List.of("edebiyat", "turkce");
                 case "Felsefe Grubu" -> List.of("felsefe", "psikoloji", "sosyoloji", "mantik");
@@ -112,6 +114,10 @@ public class SharedQuestionLabels {
             return ids.stream().map(id -> Map.of("subject", subject, "subject_id", id));
         }).toList()));
     }
+
+    /** Uygulamanın bildiği bütün sınav testleri (YKS ve KPSS); katalogdaki başka kimlikler sayılmaz. */
+    private static final String EXAM_IDS = java.util.Arrays.stream(com.hedefyks.question.ExamType.values())
+        .map(t -> "'" + t.name() + "'").collect(java.util.stream.Collectors.joining(","));
 
     /** Reuse exactly the active, source-bound question selection for every facet. */
     private static final String SELECTED_LABELS = """
@@ -164,7 +170,7 @@ public class SharedQuestionLabels {
               CROSS JOIN LATERAL unnest(s.subjects) b(subject_id) LEFT JOIN names n ON n.id=b.subject_id
               LEFT JOIN physics_topic_names t ON b.subject_id=t.subject_id AND t.id=s.id AND t.exam=e.exam
               CROSS JOIN request r
-              WHERE e.exam IN ('TYT','AYT')
+              WHERE e.exam IN (%EXAMS%)
                 AND (jsonb_array_length(r.value->'sources')=0 OR jsonb_exists(r.value->'sources',s.source_bank||'_'||e.exam))
             ), exam_counts AS (
               SELECT exam,count(DISTINCT id) AS total FROM expanded GROUP BY exam
@@ -183,7 +189,7 @@ public class SharedQuestionLabels {
               JOIN subject_totals st ON st.subject=e.subject
               JOIN topic_totals tt ON tt.subject=e.subject AND tt.topic=e.topic
             GROUP BY e.exam,e.subject,e.topic,ec.total,sc.total,st.total,tt.total
-            """,(rs,n)->new com.hedefyks.question.QuestionDtos.FilterRow(
+            """.replace("%EXAMS%",EXAM_IDS),(rs,n)->new com.hedefyks.question.QuestionDtos.FilterRow(
                 com.hedefyks.question.ExamType.valueOf(rs.getString("exam")),rs.getString("subject"),rs.getString("topic"),rs.getLong("count"),
                 rs.getLong("total_count"),rs.getLong("exam_count"),rs.getLong("subject_count"),
                 rs.getLong("subject_total_count"),rs.getLong("topic_total_count")),request);

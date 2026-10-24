@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Modal from './Modal.jsx';
 import { FAMILY_LABELS, TRACK_STATUS, useExamTrack } from '../examTrack.jsx';
 
@@ -6,11 +7,14 @@ import { FAMILY_LABELS, TRACK_STATUS, useExamTrack } from '../examTrack.jsx';
 export default function ExamTrackSwitcher() {
   const { tracks, track, loading, saving, error, select } = useExamTrack();
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   if (!track && !loading) return null;
 
   const choose = async id => {
     if (id === track?.id) { setOpen(false); return; }
-    if (await select(id)) setOpen(false);
+    // Önceki sınavın süzgeçleri (ör. examType=TYT, konu kimlikleri) yeni sınavda geçersizdir.
+    if (await select(id)) { setOpen(false); navigate(pathname, { replace: true }); }
   };
   const families = [...new Set(tracks.map(t => t.family))];
   const name = track?.name || 'Yükleniyor…';

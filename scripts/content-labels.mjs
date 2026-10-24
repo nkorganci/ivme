@@ -101,6 +101,8 @@ function withParents(assignments) {
 const items = [];
 const unresolved = [];
 for (const q of inventory.questions) {
+  // KPSS questions carry their own reference topics; content-label-refresh.py re-adds them via scripts/kpss-yayinla.py --katalog.
+  if (String(q.exam_type).startsWith('KPSS_')) continue;
   const card=q.card, raw=q.original, archived=q.archive, manual=q.manual;
   const exam=q.exam_type;
   const intake=q.intake;

@@ -1,7 +1,9 @@
 import { useEffect, useId, useRef } from 'react';
-import { QUESTION_SOURCES, QUESTION_HISTORY_SOURCES } from '../questionSources.js';
+import { QUESTION_HISTORY_SOURCES } from '../questionSources.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 export default function QuestionSourceSelect({ value, onChange, history = [], onHistoryChange }) {
+  const { questionSources: QUESTION_SOURCES } = useExamTrack();
   const labelId = useId();
   const selectedId = useId();
   const dropdown = useRef(null);

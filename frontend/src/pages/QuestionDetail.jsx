@@ -7,17 +7,19 @@ import QuestionImage from '../components/QuestionImage.jsx';
 import QuestionSide from '../components/QuestionSide.jsx';
 import Strip from '../components/Strip.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
-import { bankLabel, bankPath } from '../format.js';
+import { bankPath } from '../format.js';
 import { usePractice } from '../usePractice.js';
 import PracticeTimer from '../components/PracticeTimer.jsx';
 import AnswerFeedback from '../components/AnswerFeedback.jsx';
 import ResourceContext from '../components/ResourceContext.jsx';
 import Modal from '../components/Modal.jsx';
 import PageInk from '../components/PageInk.jsx';
+import { useExamTrack } from '../examTrack.jsx';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic', 'page'];
 
 export default function QuestionDetail() {
+  const { bankName } = useExamTrack();
   const { code } = useParams();
   const [search] = useSearchParams();
   const { data: q, loading, error, retry, reload } = useAsync(() => api.get(`/api/questions/code/${encodeURIComponent(code)}`), [code]);
@@ -43,7 +45,7 @@ export default function QuestionDetail() {
     return (
       <>
         <ErrorBox error={error} onRetry={error.status === 404 ? undefined : retry} />
-        <Link to={bankPath(filters.bank) + qs({ ...filters, bank: '' })}>← {bankLabel(filters.bank || 'CIKMIS')}</Link>
+        <Link to={bankPath(filters.bank) + qs({ ...filters, bank: '' })}>← {bankName(filters.bank || 'CIKMIS')}</Link>
       </>
     );
   }
@@ -63,6 +65,7 @@ export default function QuestionDetail() {
 }
 
 function QuestionView({ q, filters, session, reload }) {
+  const { bankName, examLabel } = useExamTrack();
   const navigate = useNavigate();
   const sessionId = session?.id;
   const sessionPosition = session?.questions.findIndex((item) => item.questionId === q.id) ?? -1;
@@ -201,11 +204,11 @@ function QuestionView({ q, filters, session, reload }) {
         <div className="qmain">
           <div className="qstrip">
             <Link to={sessionId ? `/pratik/${sessionId}` : bankPath(q.bank) + backQuery}>
-              ← {sessionId ? 'Pratik soruları' : bankLabel(q.bank)}
+              ← {sessionId ? 'Pratik soruları' : bankName(q.bank)}
             </Link>
             <strong className="code">{q.code}</strong>
             {sessionId && <strong>{sessionPosition + 1} / {session.questions.length}</strong>}
-            <span className="badge badge-primary">{q.examType}</span>
+            <span className="badge badge-primary">{examLabel(q.examType)}</span>
             <span className="badge badge-muted">{q.subject}</span>
             {q.topic && <span className="muted qtopic" title={q.topic}>{q.topic}</span>}
             <ResourceContext compact itemKey={`question:${q.code}`} />

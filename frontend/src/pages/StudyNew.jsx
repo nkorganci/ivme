@@ -12,12 +12,14 @@ import { Alert, ErrorBox, Loading } from '../components/States.jsx';
 import { formatNumber } from '../format.js';
 import { readQuestionSources, questionSourceScope, writeQuestionSources, readQuestionHistory, writeQuestionHistory } from '../questionSources.js';
 import { STUDY_TITLE } from '../config.js';
+import { useExamTrack } from '../examTrack.jsx';
 
 const COUNT_OPTIONS = [10, 20, 30, 40].map((n) => ({ value: String(n), label: String(n) }));
 const TIME_OPTIONS = [{ value: true, label: 'Süreli' }, { value: false, label: 'Süresiz' }];
 
 export default function StudyNew() {
   usePageTitle(STUDY_TITLE);
+  const { exams } = useExamTrack();
   const [params, setParams] = useSearchParams();
   const examMode = params.get('mode') === 'sinav';
   const changeMode = nextExamMode => setParams(current => {
@@ -38,7 +40,7 @@ export default function StudyNew() {
         <button type="button" className={`study-choice${examMode ? ' selected' : ''}`}
           aria-pressed={examMode} onClick={() => changeMode(true)}>
           <strong>Deneme</strong>
-          <span>TYT veya AYT denemesi çöz, sonucunu sınav sonunda gör.</span>
+          <span>{exams.map(e => e.name).join(' veya ')} denemesi çöz, sonucunu sınav sonunda gör.</span>
         </button>
       </div>
     </section>
@@ -55,14 +57,15 @@ function PracticeForm() {
   const hasCategories=commonSelection.categoryId.length>0;
   const branchIds = searchParams.getAll('branchId');
   const requestId = useRef(crypto.randomUUID());
+  const { questionSources } = useExamTrack();
 
-  const source = readQuestionSources(searchParams);
+  const source = readQuestionSources(searchParams, questionSources);
   const history = scoped ? [] : readQuestionHistory(searchParams);
   const hasHistory = history.length > 0;
   const hasSource = scoped || source.length > 0 || hasHistory;
   const includeSolved = searchParams.get('includeSolved') !== 'false';
   const selectionMode = hasHistory ? 'REPEAT' : includeSolved ? 'MIXED' : 'NEW';
-  const { bank, examType } = questionSourceScope(source);
+  const { bank, examType } = questionSourceScope(source, questionSources);
   const filter = { examType, subject: branchIds[0] || searchParams.get('subject') || '', topic: searchParams.get('topic') || '' };
   const [count, setCount] = useState('10');
   const [timed, setTimed] = useState(false);
@@ -124,7 +127,7 @@ function PracticeForm() {
   }, { replace: true });
 
   const changeSources = next => setSearchParams(current => {
-    const p = writeQuestionSources(new URLSearchParams(current), next);
+    const p = writeQuestionSources(new URLSearchParams(current), next, questionSources);
     for (const key of ['scope', 'subject', 'topic', 'branchId', 'categoryId', 'categoryMatch', 'includeCandidates', 'questionTypeId']) p.delete(key);
     return p;
   }, { replace: true });
