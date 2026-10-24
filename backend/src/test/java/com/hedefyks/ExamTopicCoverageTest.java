@@ -110,7 +110,8 @@ class ExamTopicCoverageTest extends TestBase {
         for (int unit=0;unit<7;unit++) {
             String category = "coverage.unit."+unit;
             var definition = new LinkedHashMap<String,Object>(Map.of("id",category,"exam","TYT","subjectId","fizik",
-                    "subject","Fizik","topic","Ortak ünite "+unit,"canonicalUnit",true,"canonicalTopic",true));
+                    "subject","Fizik","topic",unit == 6 ? "Uzun ünite " + "adı ".repeat(40) : "Ortak ünite "+unit,
+                    "canonicalUnit",true,"canonicalTopic",true));
             jdbc.update("INSERT INTO learning_catalog.categories VALUES (?,?,?::jsonb)",RUN,category,json.writeValueAsString(definition));
             for (int n=0;n<(unit==0?30:3);n++) {
                 var q = question("UNIT-"+unit+"-"+n,"Eski ders adı","A");
@@ -134,6 +135,9 @@ class ExamTopicCoverageTest extends TestBase {
         var one = topics(branch(session,3,"MIXED"));
         var two = topics(branch(session,3,"MIXED"));
         assertThat(one).hasSize(3); assertThat(two).hasSize(3).doesNotContainAnyElementsOf(one);
+        var allUnits = topics(branch(session,7,"MIXED"));
+        assertThat(allUnits).hasSize(7).anySatisfy(topic -> assertThat(topic.length()).isGreaterThan(160));
+        assertThat(jdbc.queryForObject("SELECT max(length(topic)) FROM exam_questions",Integer.class)).isGreaterThan(160);
         var selectedOnly = new QuestionFilter(QuestionBank.OGM,ExamType.TYT,"Fizik",null,
                 List.of("coverage.unit.1","coverage.unit.2"),"ANY",false);
         var ids = availability.balancedExamIds(owner.getId(),selectedOnly,QuestionSelectionMode.MIXED,4,null);

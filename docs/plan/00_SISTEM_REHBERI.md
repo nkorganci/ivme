@@ -697,6 +697,10 @@ aynı sıra yeni turda sürer; havuzu tükenen ünite kalan soruları engellemez
 denemede iki kez bulunmaz. Ünite eşleşmesi olmayan soru ancak bilinen ünite
 havuzları yetmediğinde kullanılır; kaynak başlığından yeni kimlik üretilmez.
 
+Deneme oluşturulurken bir sorunun birden fazla yayımlanmış ünite adı
+`exam_questions.topic` alanında anlık metin olarak saklanır. V78 bu alanı
+`text` tipine genişletir; çoklu ünite adları 160 karakteri aşsa da kesilmez.
+
 Kapsam geçmişi yalnız aynı öğrencinin `IN_PROGRESS` ve `SUBMITTED` deneme
 sorularından hesaplanır; boş cevap da sunulmuş sorudur. İptal edilen deneme ve
 başka öğrencinin geçmişi kapsama eklenmez. Bu geçmiş `NEW/REPEAT/WRONG/MIXED`

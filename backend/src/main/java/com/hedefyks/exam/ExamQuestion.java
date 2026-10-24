@@ -43,6 +43,7 @@ public class ExamQuestion {
     private String questionCode;
 
     private String subject;
+    @Column(name = "topic", columnDefinition = "text")
     private String topic;
     @Column(name = "archive_provisional")
     private boolean archiveProvisional;
