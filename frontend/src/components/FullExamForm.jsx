@@ -129,7 +129,7 @@ export default function FullExamForm() {
         onChange={event => change('includeSolved', event.target.checked ? '' : 'false')} />
       Daha önce deneme veya pratikte çözdüğüm sorular da çıksın
     </label>
-    {!includeSolved && <p className="muted small">Yalnızca henüz yanıtlamadığın sorular seçilir.</p>}
+    {!includeSolved && <p className="muted small">Pratik veya denemede henüz yanıtlamadığın sorular seçilir.</p>}
     </>}
     {!byYear && noBank ? <Alert type="warn">En az bir soru kaynağı seç.</Alert>
       : loading ? <Loading text="Deneme hazırlanıyor…" />

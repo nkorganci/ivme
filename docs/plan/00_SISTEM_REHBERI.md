@@ -481,9 +481,14 @@ Soru listesi `resource` içinde kütüphaneyle aynı öğrenci projeksiyonunu ta
 döndürür. Müfredat soru sayıları `/coverage` içindeki tekil `bankCounts` değerini
 kullanır; kaynak başlıklarını bağımsız alias listeleriyle yeniden eşlemez.
 
-`/progress?classification=CURRENT|HISTORICAL` oturumdaki öğrencinin ilk soru
-karşılaşmasını mevcut ilerleme sırasıyla sayar. Gönderilmiş denemenin boş cevabı
-ilk karşılaşmadır; tekrar çözüm genel tekil toplamı artırmaz. Tarihsel görünüm
+`/progress?classification=CURRENT|HISTORICAL` oturumdaki öğrencinin her sorusunu
+bir kez, ilk yanıtlandığı karşılaşmada sayar (tamamlanmış pratik veya gönderilmiş
+deneme). Gönderilmiş denemenin boş cevabı yalnız soru hiçbir yerde yanıtlanmadıkça
+sorunun karşılaşmasıdır; sonradan pratikte yanıtlanırsa doğru/yanlış olarak Konu
+takibine geçer. Tekrar çözüm genel tekil toplamı artırmaz. Pratik seçiminin
+"daha önce çözdüğüm sorular" geçmişi de aynı yanıtlanmış pratik + deneme
+kayıtlarından gelir (`QuestionAvailabilityService.MINE`); boş deneme sorusu yeni
+sayılır. Tarihsel görünüm
 olay anındaki `learning_label_snapshot` alanını kullanır; boş eski anlık kayıt
 bugünün etiketiyle doldurulmaz. Çok etiketli sorular farklı konu satırlarında
 görünebilir; bir konu içinde ve genel toplamda tekildir. Deneme sorularında

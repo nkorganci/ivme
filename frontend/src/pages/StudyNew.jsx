@@ -196,11 +196,11 @@ function PracticeForm() {
 
       {!hasHistory && <label className="checkbox practice-include-solved">
         <input type="checkbox" checked={includeSolved} disabled={busy} onChange={event => changeIncludeSolved(event.target.checked)} />
-        Daha önce çözdüğüm sorular da eklensin
+        Daha önce pratik veya denemede çözdüğüm sorular da eklensin
       </label>}
       {hasHistory ? <p className="muted small">{source.length ? 'Seçili kaynaklardaki' : 'Tüm kaynaklardaki'} {history.length === 2
         ? 'daha önce doğru veya yanlış yanıtladığın' : history[0] === 'CORRECT' ? 'en az bir kez doğru yanıtladığın' : 'en az bir kez yanlış yanıtladığın'} sorular seçilir.</p>
-        : !includeSolved && <p className="muted small">Yalnızca henüz yanıtlamadığın sorular seçilir.</p>}
+        : !includeSolved && <p className="muted small">Pratik veya denemede henüz yanıtlamadığın sorular seçilir.</p>}
       {loading ? <Loading text="Soru sayısı yükleniyor…" /> : availabilityError ? <ErrorBox error={{ message: availabilityError }} /> :
         <p className="muted">Bu seçimde <strong>{formatNumber(available)}</strong> uygun soru var.</p>}
       {!loading && availability && available === 0 && hasSource && <Alert type="warn">

@@ -80,7 +80,11 @@ public class LearningResourceService {
         var rows=new ArrayList<Map<String,Object>>();groups.forEach((id,count)->{var row=count.result();row.put("categoryId",id);rows.add(row);});
         return Map.of("summary",total.result(),"categories",rows);
     }
-    /** First encounters follow the existing progress ordering, including blank exams. */
+    /**
+     * A question counts once, at its first answered encounter in a finished practice or submitted exam.
+     * An unanswered exam slot only stands for the question while it was never answered anywhere, so a later
+     * practice answer reaches the topic rows instead of staying hidden behind the earlier blank.
+     */
     public Map<String,Object> progress(Long userId,String classification) {
         if(!Set.of("CURRENT","HISTORICAL").contains(classification))throw ApiException.badRequest("İlerleme sınıflaması geçersiz.");
         String overrides;
@@ -95,7 +99,7 @@ public class LearningResourceService {
                 FROM exam_questions eq JOIN exams e ON e.id=eq.exam_id
                 WHERE e.user_id=? AND e.status='SUBMITTED' AND e.submitted_at IS NOT NULL
             ), ranked AS (
-              SELECT *,row_number() OVER(PARTITION BY question_id ORDER BY occurred_at,source_order,source_id) AS rn,
+              SELECT *,row_number() OVER(PARTITION BY question_id ORDER BY (is_correct IS NULL),occurred_at,source_order,source_id) AS rn,
                 count(*) OVER(PARTITION BY question_id) AS attempts FROM events
             )
             SELECT f.question_id,f.is_correct,f.active_seconds,f.attempts,
@@ -115,7 +119,7 @@ public class LearningResourceService {
         },overrides,userId,userId,classification);
         var rows=new ArrayList<Map<String,Object>>();categories.forEach((id,count)->{var row=count.result();row.put("categoryId",id);rows.add(row);});
         return Map.of("classification",classification,"summary",total.result(),"categories",rows,"unclassified",unclassified[0],
-            "counting","QUESTION_FIRST_ENCOUNTER; topic subtotals may overlap; no historical label backfill", "mediaProgressRecorded",false);
+            "counting","QUESTION_FIRST_ANSWERED_ENCOUNTER; blank only while never answered; topic subtotals may overlap; no historical label backfill", "mediaProgressRecorded",false);
     }
     private static final class ProgressCount {
         long total,correct,wrong,blank,repeats,seconds;

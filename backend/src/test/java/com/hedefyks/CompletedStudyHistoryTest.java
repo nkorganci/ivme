@@ -50,6 +50,36 @@ class CompletedStudyHistoryTest extends TestBase {
     }
 
     @Test
+    void practiceAnswerAfterABlankExamSlotReachesTopicProgressAndLeavesSolvedHistoryOnce() throws Exception {
+        question("BLANK-1", "Türkçe", "A");
+        user("owner", Role.USER);
+        var owner = login("owner", "Sifre1234");
+        long examId = read(send(owner, post("/api/exams"), "{\"questionCount\":1}")
+                .andExpect(status().isCreated())).path("id").asLong();
+        send(owner, post("/api/exams/" + examId + "/submit"), null).andExpect(status().isOk());
+        // A blank exam slot is not a solved question: it stays selectable as new and counts as blank.
+        send(owner, get("/api/questions/availability"), null)
+                .andExpect(jsonPath("$.solved").value(0)).andExpect(jsonPath("$.remaining").value(1));
+        assertProgress(owner, 1, 0, 0, 1);
+        var practice = create(owner, 1);
+        long id = practice.path("id").asLong();
+        answer(owner, practice.at("/questions/0/questionId").asLong(), id, "A");
+        assertProgress(owner, 1, 0, 0, 1);
+        send(owner, post("/api/study-sessions/" + id + "/finish"), null).andExpect(status().isOk());
+        assertProgress(owner, 1, 1, 0, 0);
+        send(owner, get("/api/questions/availability"), null)
+                .andExpect(jsonPath("$.solved").value(1)).andExpect(jsonPath("$.remaining").value(0));
+        // An exam taken after the practice answers the same question again without adding a second count.
+        long later = read(send(owner, post("/api/exams"), "{\"questionCount\":1}")
+                .andExpect(status().isCreated())).path("id").asLong();
+        send(owner, put("/api/exams/" + later + "/answers"),
+                "{\"questionId\":" + practice.at("/questions/0/questionId").asLong() + ",\"answer\":\"B\"}")
+                .andExpect(status().isNoContent());
+        send(owner, post("/api/exams/" + later + "/submit"), null).andExpect(status().isOk());
+        assertProgress(owner, 1, 1, 0, 0);
+    }
+
+    @Test
     void practiceCancellationIsOwnedIdempotentAndCannotBeAnsweredOrFinished() throws Exception {
         question("CANCEL-P", "Türkçe", "A");
         user("owner", Role.USER);
@@ -118,6 +148,14 @@ class CompletedStudyHistoryTest extends TestBase {
 
     private void answer(MockHttpSession session, long questionId, long id, String answer) throws Exception {
         send(session, post("/api/questions/" + questionId + "/practice"), event(id, answer)).andExpect(status().isOk());
+    }
+
+    private void assertProgress(MockHttpSession session, int total, int correct, int wrong, int blank) throws Exception {
+        for (String classification : new String[]{"CURRENT", "HISTORICAL"})
+            send(session, get("/api/learning-resources/progress").param("classification", classification), null)
+                    .andExpect(status().isOk()).andExpect(jsonPath("$.summary.total").value(total))
+                    .andExpect(jsonPath("$.summary.correct").value(correct)).andExpect(jsonPath("$.summary.wrong").value(wrong))
+                    .andExpect(jsonPath("$.summary.blank").value(blank));
     }
 
     private void assertTotals(MockHttpSession session, int total, int correct, int wrong) throws Exception {
