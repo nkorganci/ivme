@@ -1,5 +1,5 @@
 import { useId, useMemo, useRef, useState } from 'react';
-import { fill, formatNumber, scale, stroke, visible, focused } from './svg.js';
+import { draw, fill, formatNumber, scale, stroke, visible, focused } from './svg.js';
 
 const W = 560;
 
@@ -71,14 +71,14 @@ export default function Geometry({ params, state }) {
         <polygon key={polygon.id} className={cls(polygon.id)} points={polygon.points.map((id) => `${sx(points[id].x)},${sy(points[id].y)}`).join(' ')}
           fill={fill(polygon.tone ?? 'navy')} stroke={stroke(polygon.tone ?? 'navy')} strokeWidth="1.5" />)}
       {Object.values(circles).filter((c) => visible(state, c.id)).map((c) =>
-        <circle key={c.id} className={cls(c.id)} cx={sx(c.cx)} cy={sy(c.cy)} r={Math.abs(sx(c.cx + c.r) - sx(c.cx))} fill="none"
+        <circle key={c.id} className={`${cls(c.id)}${c.dashed ? '' : ' viz-draw'}`} pathLength={c.dashed ? undefined : 1} cx={sx(c.cx)} cy={sy(c.cy)} r={Math.abs(sx(c.cx + c.r) - sx(c.cx))} fill="none"
           stroke={stroke(c.tone ?? 'navy')} strokeWidth="2" strokeDasharray={c.dashed ? '6 4' : undefined} />)}
       {(params.segments ?? []).filter((s) => visible(state, s.id)).map((segment) => {
         const a = points[segment.from];
         const b = points[segment.to];
         return <g key={segment.id} className={cls(segment.id)}>
           <line x1={sx(a.x)} y1={sy(a.y)} x2={sx(b.x)} y2={sy(b.y)} stroke={stroke(segment.tone ?? 'ink')} strokeWidth={segment.arrow ? 3 : 2.2}
-            strokeDasharray={segment.dashed ? '6 4' : undefined}
+            strokeDasharray={segment.dashed ? '6 4' : undefined} {...draw(segment.dashed)}
             markerEnd={segment.arrow ? `url(#${marker}-${['ink', 'navy', 'ok', 'bad', 'warn'].includes(segment.tone) ? segment.tone : 'ink'})` : undefined} />
           {segment.label && <text x={(sx(a.x) + sx(b.x)) / 2 + 6} y={(sy(a.y) + sy(b.y)) / 2 - 6} className="viz-label">{segment.label}</text>}
         </g>;
@@ -88,7 +88,7 @@ export default function Geometry({ params, state }) {
         const last = pts[pts.length - 1];
         return <g key={path.id} className={cls(path.id)}>
           <polyline points={pts.map((p) => `${sx(p.x)},${sy(p.y)}`).join(' ')} fill="none" stroke={stroke(path.tone ?? 'navy')} strokeWidth="4"
-            strokeLinejoin="round" strokeDasharray={path.dashed ? '8 5' : undefined}
+            strokeLinejoin="round" strokeDasharray={path.dashed ? '8 5' : undefined} {...draw(path.dashed)}
             markerEnd={`url(#${marker}-${['ink', 'navy', 'ok', 'bad', 'warn'].includes(path.tone) ? path.tone : 'navy'})`} />
           {path.label && <text x={sx(last.x) + 10} y={sy(last.y) + 18} className="viz-label">{path.label}</text>}
         </g>;

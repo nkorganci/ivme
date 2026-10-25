@@ -42,6 +42,22 @@
     "whenNot": "Seçim iadeli ya da sıra önemliyse (art arda zar atma, şifre oluşturma) kombinasyon değil çarpma kuralı ve permütasyon kullanılır.",
     "examTip": "Tüm grup sayısını verilen olasılıkla çarptığında tam sayı çıkmıyorsa kurulumunu kontrol et: seçim iadesiz ve sırasızdır."
   },
+  "insight": {
+    "analogy": {
+      "title": "Torbadaki ikili biletler",
+      "text": "Her olası ikiliyi bir bilete yaz ve hepsini bir torbaya at. Olasılık, istediğin türden bilet sayısının torbadaki bütün biletlere oranıdır. Saydığın şey tek tek halılar değil biletlerdir: bilet = seçilen grup.",
+      "breaks": "Torbadan bilet çekmek tek hamledir; gerçekte halılar tek tek de alınabilir. Sonuç değişmez ama tek tek düşünürsen sırayı ve iadesizliği ayrıca hesaba katman gerekir."
+    },
+    "mindset": "Eş olası 'tek şey' ne? Burada tek halı değil, iki halılık grup. Önce toplam grup sayısını yaz; verilen yüzde, bu sayının bir parçasını söylüyor.",
+    "radar": [
+      {"see": "'Rastgele k tanesi seçiliyor'", "think": "Sırasız ve iadesiz: grupları kombinasyonla say, C(n, k)."},
+      {"see": "Olasılık verilmiş, bir nesne sayısı bilinmiyor", "think": "Bilinmeyene harf ver; verilen olasılık = istenen grup / tüm gruplar denklemini kur."},
+      {"see": "'İkisi de …' ve 'hiçbiri …' gibi zıt görünen olaylar", "think": "Arada 'yalnız biri' durumu var; tümleyeni eksiksiz kur."}
+    ],
+    "aha": "Aaa: %1 aslında 'torbadaki biletlerin yüzde biri' demekmiş: 300 biletin 3'ü. 3 farklı ikili de ancak 3 defolu halıdan çıkar; gerisi düz sayma.",
+    "sanityCheck": "Üç durumun toplamı %100 olmalı: ikisi defolu %1 + yalnız biri defolu %22 + ikisi sağlam %77 = %100.",
+    "targetSeconds": 60
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -158,7 +174,7 @@
   "generation": {
     "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
     "tier": "STRONG",
-    "promptVersion": "ogretim-pilot-v1",
+    "promptVersion": "ogretim-kavrayis-v2",
     "createdAt": "2026-10-18T07:10:00Z"
   }
 }

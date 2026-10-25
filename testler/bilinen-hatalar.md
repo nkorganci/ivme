@@ -28,3 +28,4 @@ kimliklerine taşımaktır; ayrı bir iş olarak yapılmadıkça dokunulmaz.
 ## UI betikleri
 
 - `testler/question-collection-ui.mjs` — seçici yeniden yazımından (`50977eb`) beri eski beklentiyle başarısız.
+- `testler/ogretim-dongusu-ui.py` — `/api/auth/dev-login` 403 dönüyor ve betiğin beklediği `nazile` hesabı yerel DB'de yok; betik `testler/lib/tarayici.mjs` girişine taşınmadıkça çalışmaz. Akıllı Öğretmen ekranı `python scripts/ivme.py sayfa /akilli-ogretmen` ile denetlenir.

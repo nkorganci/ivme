@@ -42,6 +42,22 @@
     "whenNot": "Hacim oranı sorulsaydı ölçü ilişkisine gerek kalmazdı: hacim, parça sayısı kadar katlanır (burada 7). Yüzey alanı ise ölçülere bağlıdır.",
     "examTip": "Oran sorularında bir ölçüye 1 değerini vermek hesabı sadeleştirir; oran birimden bağımsızdır."
   },
+  "insight": {
+    "analogy": {
+      "title": "Lego: birleşen yüzler içeride kaybolur",
+      "text": "Lego parçalarını birleştirince birbirine yapışan yüzler içeride kalır; dışarıdan görünen boya azalır. Bu yüzden 7 parçanın yüzey alanı 7 katına çıkmaz. Renkler bir harita gibidir: hangi kenarın hangi kenara oturduğunu söyler.",
+      "breaks": "Lego parçalarının ölçüleri baştan bellidir; burada kenarların oranını bilmiyoruz, onu parçaların tam oturmasından çıkarıyoruz."
+    },
+    "mindset": "Bilinmeyen üç kenar var ama şekil 'tam oturuyor'. Önce hangi kenar toplamlarının eşit olduğunu yaz; kenarları tek birime indir, sonra alanları karşılaştır.",
+    "radar": [
+      {"see": "Eş prizmalar birleşip büyük bir prizma oluşturuyor", "think": "Yan yana kenarların toplamı karşıdaki kenara eşittir: ölçü ilişkisi yaz."},
+      {"see": "Yüzey alanı ya da hacim oranı soruluyor", "think": "Kenarları tek birimle yaz; en küçük kenarı 1 birim almak hesabı sadeleştirir."},
+      {"see": "Renkli yüzler", "think": "Aynı renk aynı boyutlu yüzdür; büyük yüzdeki renk sayısı kaç parçanın yan yana durduğunu söyler."}
+    ],
+    "aha": "Aaa: 7 parça birleşince yüzey alanı 7 değil yalnız 3 katına çıkıyormuş; içeride saklanan yüzler payı küçültüyor. Kenar oranlarını da renkler veriyordu.",
+    "sanityCheck": "Hacimle sağla: büyük prizma 6 × 3 × 7 = 126 = 7 × (3 × 1 × 6). Hacim tam 7 kat tutuyorsa ölçüler doğrudur; alan oranı 162/54.",
+    "targetSeconds": 90
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -173,5 +189,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Katı cisimler: dikdörtgenler prizmasının alan ve hacmi", "note": "Birleşik cisimlerde yüzey alanı ve ölçü ilişkileri."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:30:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T08:30:00Z"}
 }

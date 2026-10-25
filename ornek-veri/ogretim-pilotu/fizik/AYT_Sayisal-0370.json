@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:AYT_Sayisal-0370",
+  "question": {
+    "code": "AYT_Sayisal-0370",
+    "exam": "AYT",
+    "subjectId": "fizik",
+    "categoryId": "ayt.fizik.iki-boyutta-hareket",
+    "subtopic": "Hareketli cisimden bırakılan cisim: bağımsız eksenler ve yaklaşma hızı",
+    "answerKey": "E",
+    "choiceCount": 5,
+    "imageSha256": "08c0efe055767d489273bf40fd4af3f02c79bed32761552c3b659868e2be61bb"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Batıya doğru 1 m/s hızla uçmakta olan şekildeki karga, ağzındaki cevizi yatay yolda doğuya doğru 20 m/s sabit hızla hareket eden bir arabanın ön tamponuna çarptırarak kırıyor. Karganın cevizi bıraktığı anda cevizin arabanın tamponuna olan düşey uzaklığının 20 m ve yatay uzaklığının L olduğu biliniyor. Hava direnci ihmal edildiğine göre L kaç m'dir? (Yer çekimi ivmesi 10 m/s² alınacaktır.)",
+    "choices": {"A": "20", "B": "21", "C": "38", "D": "40", "E": "42"},
+    "figure": "Solda doğuya (sağa) 20 m/s ile giden araba; sağda, tamponun 20 m yukarısında batıya (sola) 1 m/s ile uçan karga. Tampon ile karganın altındaki nokta arasındaki yatay uzaklık L.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "İki fikri birleştirmek gerekir: bırakılan cisim aracın hızını korur ve düşme süresini yalnız yükseklik belirler; ardından zıt yönlü yaklaşma hızı kurulur.",
+    "skills": ["UYGULAMA", "PROBLEM_COZME", "HESAPLAMA"],
+    "prerequisites": ["ayt.fizik.bir-boyutta-sabit-ivmeli-hareket", "ayt.fizik.bagil-hareket"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "fizik.atis.bagimsiz-eksenler-yaklasma",
+    "name": "Atışta eksenler bağımsız: süreyi düşey verir",
+    "trigger": "Bir cisim hareketli bir araçtan bırakılıyor ya da yatay atılıyor ve yere ya da başka bir cisme ne zaman, nerede çarptığı soruluyorsa.",
+    "bigIdea": "Bırakılan cisim, bıraktığı aracın hızını korur. Yatay ve düşey hareketler birbirinden bağımsızdır: düşme süresini yalnız yükseklik belirler; yatayda o süre boyunca sabit hızla gidilir.",
+    "method": [
+      "Düşey: h = ½ · g · t² ile düşme süresini bul.",
+      "Yatay: cismin bırakıldığı andaki hızını (aracın hızını) yaz; yatayda ivme yoktur.",
+      "Karşılaşma varsa iki cismin yatay yollarını aynı süre için yaz ya da yaklaşma hızını kullan.",
+      "Başlangıç uzaklığı = yaklaşma hızı × süre."
+    ],
+    "whenNot": "Cisim düşeyde bir ilk hızla atılmışsa (yukarı ya da aşağı) süre yalnız h = ½gt² ile bulunmaz; hava direnci önemliyse yatay hız da sabit kalmaz.",
+    "examTip": "Zıt yönde hareket edenlerin yaklaşma hızı hız büyüklüklerinin toplamı, aynı yöndekilerin farkıdır. Şıklarda toplam ve fark yan yana durur."
+  },
+  "insight": {
+    "analogy": {
+      "title": "Trende bırakılan elma",
+      "text": "Hızla giden bir trende elindeki elmayı bırakırsan elma ayağının dibine düşer, arkaya kaçmaz: elma trenin hızını da beraberinde götürür. Karganın cevizi de karganın hızıyla yola çıkar ve düşerken bu hızı korur.",
+      "breaks": "Trende hava da seninle birlikte gider. Açık havada hava direnci olsaydı ceviz yatay hızını yavaş yavaş kaybederdi; soru bu yüzden hava direncini ihmal ediyor."
+    },
+    "mindset": "Süre kimden gelir? Düşeyden: yükseklik verilmişse süre hazırdır. Sonra yatayda kimin, hangi hızla, kime doğru gittiğine bak; iki hareket birbirini duymaz.",
+    "radar": [
+      {"see": "Hareketli bir araçtan 'bırakılan' cisim", "think": "Başlangıç hızı aracın hızıdır, sıfır değil."},
+      {"see": "Yükseklik ve g verilmiş", "think": "Önce düşme süresi: h = ½ · g · t²."},
+      {"see": "İki cisim zıt yönlerde birbirine yaklaşıyor", "think": "Yaklaşma hızı = hızların toplamı; uzaklık = yaklaşma hızı × süre."}
+    ],
+    "aha": "Aaa: ceviz düşerken bile karga gibi 1 m/s ile batıya gitmeye devam ediyormuş! 2 saniyede araba 40 m, ceviz 2 m yaklaşıyor; L bu ikisinin toplamı: 42 m.",
+    "sanityCheck": "Şıklara bak: 40 yalnız arabayı, 20 yalnız yüksekliği, 38 hızların farkını kullanır. Zıt yönde yaklaşma toplam ister: (20 + 1) × 2 = 42.",
+    "targetSeconds": 30
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "sure-dusey", "text": "Önce 20 m yükseklikten düşme süresini bulmak, sonra bu sürede ceviz ile arabanın yatayda ne kadar yaklaştığını hesaplamak", "correct": true,
+       "feedback": "Doğru. Süreyi düşey hareket verir; yatayda iki cisim bu süre boyunca birbirine yaklaşır."},
+      {"id": "dik-dus", "text": "Cevizin dümdüz aşağı düştüğünü kabul edip yalnız arabanın yolunu hesaplamak", "correct": false,
+       "feedback": "Bırakılan ceviz karganın yatay hızını korur; dümdüz düşmez, batıya kaymaya devam eder."},
+      {"id": "pisagor", "text": "20 m ile L'yi dik kenar alıp cevizin eğik yolunu Pisagor ile bulmak", "correct": false,
+       "feedback": "Cevizin yolu düz bir çizgi değil, bir paraboldür. Yatay ve düşeyi ayrı ayrı ele almak gerekir."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Bırakılan cisim, bırakıldığı andaki aracın hızını korur. Yatay ve düşey hareketler birbirini etkilemez."},
+    {"level": 2, "kind": "STRATEJI", "text": "Düşme süresini yalnız yükseklik belirler. Bu süre boyunca araba doğuya, ceviz batıya gider; birbirlerine doğru yaklaşırlar."},
+    {"level": 3, "kind": "ADIM", "text": "20 = ½ · 10 · t² denkleminden süreyi bul. Sonra yaklaşma hızını (zıt yönler) bu süreyle çarp."}
+  ],
+  "guidingQuestions": [
+    {"text": "Ceviz bırakıldığı anda yatay hızı nedir?", "answer": "Karganın hızı: batıya 1 m/s."},
+    {"text": "Doğuya giden araba ile batıya giden ceviz saniyede kaç metre yaklaşır?", "answer": "20 + 1 = 21 m."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Düşey hareket: ceviz düşeyde ilk hızsız düşer. 20 = ½ · 10 · t² → t² = 4 → t = 2 s.",
+       "why": "Düşeyde ilk hız sıfır ve ivme g'dir. Yatay hız düşeydeki hareketi değiştirmez.",
+       "check": {"type": "sympy", "expr": "sqrt(2*20/10)", "equals": "2"},
+       "selfExplain": {"prompt": "Cevizin yere inme süresini neden yalnız yükseklik belirler?",
+         "options": [
+           {"id": "bagimsiz", "text": "Yatay ve düşey hareketler bağımsızdır; düşeyde ilk hız sıfır, ivme g. Yatay hız süreyi değiştirmez.", "correct": true,
+            "feedback": "Evet. Masadan itilen kalem ile masadan düşen kalem aynı anda yere iner."},
+           {"id": "yavas", "text": "Karga yavaş uçtuğu için yatay hız ihmal edilebilir.", "correct": false,
+            "feedback": "Hız ne kadar büyük olursa olsun yatay hız düşme süresini değiştirmez; bu bir ihmal değil, bağımsızlıktır."},
+           {"id": "araba-ceker", "text": "Araba yaklaşırken cevizin düşmesini hızlandırır.", "correct": false,
+            "feedback": "Araba cevize kuvvet uygulamaz. Cevize etki eden tek kuvvet yer çekimidir."}
+         ]}},
+      {"id": "s2", "text": "Yatay hareket: ceviz bırakıldığı anda karganın hızını alır, batıya 1 m/s. Yatayda ivme yok; 2 s'de batıya 1 · 2 = 2 m gider.",
+       "why": "Hava direnci ihmal edildiğinden cevize yatayda kuvvet etkimez; yatay hız sabit kalır.",
+       "check": {"type": "sympy", "expr": "1*sqrt(2*20/10)", "equals": "2"}},
+      {"id": "s3", "text": "Araba doğuya 20 m/s ile 2 s'de 20 · 2 = 40 m gider.",
+       "why": "Arabanın hızı sabittir; aldığı yol hız × süredir.",
+       "check": {"type": "sympy", "expr": "20*sqrt(2*20/10)", "equals": "40"}},
+      {"id": "s4", "text": "Çarpışma anında ikisi aynı yatay konumdadır: başlangıçtaki yatay uzaklık L = 40 + 2 = 42 m. (Yaklaşma hızı 20 + 1 = 21 m/s; 21 · 2 = 42.)",
+       "why": "Birbirine doğru giden iki cismin aldığı yolların toplamı, aralarındaki ilk uzaklığa eşittir.",
+       "check": {"type": "sympy", "expr": "(20 + 1)*sqrt(2*20/10)", "equals": "42"}}
+    ],
+    "finalAnswer": {"choice": "E", "value": "42",
+      "check": {"type": "choice", "expr": "(20 + 1)*sqrt(2*20/10)", "choice": "E"}},
+    "levels": {
+      "sezgi": "Ceviz bırakıldığı an iki ayrı işi aynı anda yapar: düşeyde serbest düşer, yatayda karganın hızıyla batıya kayar. Bu iki iş birbirini duymaz. Düşme 2 saniye sürer; bu 2 saniyede araba ile ceviz birbirine doğru koşan iki koşucu gibidir: biri 40 m, öteki 2 m koşar ve tamponda buluşurlar.",
+      "kisayol": "t = √(2h/g) = 2 s; yaklaşma hızı 20 + 1 = 21 m/s; L = 21 · 2 = 42 m."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "D",
+     "mistake": "Cevizin yatay hızını sıfır sanıp yalnız arabanın 2 s'de aldığı yolu almak.",
+     "cause": "'Bırakmak' sözcüğünü 'hızsız bırakmak' sanmak; cevizin karganın hızını taşıdığını unutmak.",
+     "fix": "Bırakılan cisim bıraktığı aracın hızını korur: ceviz de 1 m/s ile batıya, arabaya doğru gider. Onun 2 m'sini de ekle.",
+     "guidingQuestion": "Trende elindeki elmayı bırakırsan elma arkaya mı kaçar, ayağının dibine mi düşer?",
+     "check": {"type": "choice", "expr": "20*2", "choice": "D"}},
+    {"id": "m2", "choice": "C",
+     "mistake": "Hızların farkını almak: (20 − 1) · 2.",
+     "cause": "Zıt yönde hareketi aynı yönde sanmak.",
+     "fix": "Araba doğuya, ceviz batıya gidiyor: birbirlerine doğru. Yaklaşma hızı farkı değil toplamdır.",
+     "guidingQuestion": "Karşılıklı yürüyen iki kişi birbirine hızlarının toplamıyla mı, farkıyla mı yaklaşır?",
+     "check": {"type": "choice", "expr": "(20 - 1)*2", "choice": "C"}},
+    {"id": "m3", "choice": "B",
+     "mistake": "Yaklaşma hızını bulup süreyle çarpmayı unutmak ya da süreyi 1 s sanmak.",
+     "cause": "Düşme süresini hesaplamadan geçmek.",
+     "fix": "Önce süre: 20 = ½ · 10 · t² → t = 2 s. Yaklaşma hızı ancak süreyle çarpılınca uzaklık verir.",
+     "guidingQuestion": "Ceviz 20 m'yi kaç saniyede düşer?",
+     "check": {"type": "choice", "expr": "20 + 1", "choice": "B"}},
+    {"id": "m4", "choice": "A",
+     "mistake": "Düşey uzaklığı (20 m) yatay uzaklık sanmak.",
+     "cause": "Şekildeki iki uzaklığı karıştırmak; hareketin iki eksenini ayırmamak.",
+     "fix": "20 m düşey uzaklıktır ve yalnız süreyi verir. L yatay uzaklıktır ve yatay hareketlerden bulunur.",
+     "guidingQuestion": "20 m hangi eksendeki uzaklık: yatay mı, düşey mi?"}
+  ],
+  "alternative": {
+    "title": "Arabanın gözünden (bağıl hareket)",
+    "text": "Arabaya binmiş gibi düşün: arabaya göre ceviz 20 + 1 = 21 m/s ile yaklaşıyor ve 2 s'de tampona ulaşıyor. L = 21 · 2 = 42 m. Hareketli gözlemciye geçmek iki hareketi tek harekete indirir.",
+    "check": {"type": "sympy", "expr": "21*2", "equals": "42"}
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Cevizin düşerken de batıya kaydığını ve arabayla tam 2 saniyede buluştuğunu gerçek zamanlı izlemek, 'bırakılan cisim aracın hızını korur' fikrini görünür kılar.",
+    "stage": "POST",
+    "template": "motion",
+    "title": "Ceviz düşer, araba gelir: 2 saniyede buluşma",
+    "params": {
+      "mode": "projectile",
+      "duration": 2,
+      "v0": 1,
+      "angle": 180,
+      "g": 10,
+      "x0": 42,
+      "y0": 20,
+      "xRange": [0, 46],
+      "yRange": [0, 20],
+      "objects": [
+        {"id": "araba", "label": "Araba", "x0": 0, "v0": 20, "a": 0, "tone": "bad"}
+      ],
+      "markers": [
+        {"id": "t1", "t": 1, "label": "t = 1 s"},
+        {"id": "t2", "t": 2, "label": "buluşma"}
+      ]
+    },
+    "frames": [
+      {"caption": "t = 0: Ceviz bırakılıyor. Yatay hızı karganınki gibi batıya 1 m/s, düşey hızı sıfır. Araba 42 m geride, doğuya 20 m/s.", "set": {"t": 0}},
+      {"caption": "t = 1 s: Ceviz 5 m düştü ve 1 m batıya kaydı; araba 20 m ilerledi. Yatay hız hiç değişmedi, düşey hız 10 m/s oldu.", "set": {"t": 1}},
+      {"caption": "t = 2 s: Ceviz yere indi, araba da tam oraya vardı. Araba 40 m + ceviz 2 m = 42 m. ▶ Oynat ile hareketi kesintisiz izle.", "set": {"t": 2}}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Karga cevizi bıraktıktan sonra ceviz düşerken yatayda ne yapar?",
+      "options": [
+        {"id": "kayar", "text": "Karga gibi batıya kaymayı sürdürür", "correct": true,
+         "feedback": "Doğru. Ceviz karganın hızını taşır; yer çekimi yalnız düşey hızı değiştirir. Şimdi izle."},
+        {"id": "dik", "text": "Dümdüz aşağı düşer", "correct": false,
+         "feedback": "Trende bırakılan elmayı düşün: arkaya kaçmaz. Animasyonda cevizin yatay konumunu izle."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Yerden 45 m yükseklikte kuzeye doğru 2 m/s hızla uçan bir dron, bir paketi serbest bırakıyor. Paket bırakıldığı anda, yatay yolda güneye doğru 10 m/s sabit hızla giden bir bisikletli, paketin kuzeyindedir ve paket tam bisikletlinin üzerine düşüyor. Hava direnci önemsiz ve g = 10 m/s² olduğuna göre, bırakma anında paket ile bisikletli arasındaki yatay uzaklık kaç m'dir?",
+    "choices": {"A": "24", "B": "30", "C": "36", "D": "6", "E": "45"},
+    "answer": "C",
+    "solution": "Düşme süresi: 45 = ½ · 10 · t² → t = 3 s. Paket dronun hızını korur, kuzeye 2 m/s; bisikletli güneye 10 m/s. Birbirlerine doğru giderler: yaklaşma hızı 12 m/s. Uzaklık 12 · 3 = 36 m. (24 hızların farkı, 30 yalnız bisikletlinin yolu.)",
+    "choiceValues": {"A": "24", "B": "30", "C": "36", "D": "6", "E": "45"},
+    "check": {"type": "twinChoice", "expr": "(10 + 2)*sqrt(2*45/10)", "choice": "C"}
+  },
+  "choiceValues": {"A": "20", "B": "21", "C": "38", "D": "40", "E": "42"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik — İki Boyutta Hareket: yatay atış ve bağıl hareket", "note": "Yatay ve düşey hareketlerin bağımsızlığı; hareketli sistemden bırakılan cismin ilk hızı."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-kavrayis-v2",
+    "createdAt": "2026-10-25T17:20:00Z"
+  }
+}

@@ -42,6 +42,22 @@
     "whenNot": "Yansıma doğrusu y = x gibi eğikse koordinatlar yer değiştirir; orta nokta kuralı tek koordinata uygulanmaz.",
     "examTip": "Yansıma sorularında kâğıdı katlamayı düşün: kat yeri tam ortadadır, uzaklıklar korunur."
   },
+  "insight": {
+    "analogy": {
+      "title": "Kâğıdı katla, mürekkep karşıya geçsin",
+      "text": "Islak bir mürekkep lekesini kâğıdı katlayarak karşıya bas: leke, katlama çizgisine olan uzaklığını koruyarak öbür yana geçer; çizgi boyunca konumu değişmez. Doğruya göre simetri budur: çizgi, leke ile izinin tam ortasıdır.",
+      "breaks": "Kâğıtta katlama çizgisi gözle seçilir; koordinatlı soruda çizginin denklemi (x = b, y = 6) verilir ve 'orta' bir hesapla bulunur."
+    },
+    "mindset": "Her yansımada iki soru sor: hangi koordinat aynı kalır, hangisi çizginin öbür yanına aynı uzaklıkta geçer? Sonra dikdörtgenin kenarlarını koordinat farklarıyla yaz.",
+    "radar": [
+      {"see": "x = k doğrusuna göre simetri", "think": "y aynı kalır; x' = 2k − x (k, x ile x'in ortası)."},
+      {"see": "y = k doğrusuna göre simetri", "think": "x aynı kalır; y' = 2k − y."},
+      {"see": "Köşeleri simetriyle bulunan dikdörtgenin çevresi", "think": "Kenarlar koordinat farklarıdır; çevre = 2(uzun kenar + kısa kenar)."}
+    ],
+    "aha": "Aaa: simetri doğrusu, nokta ile görüntüsünün tam ortasıymış; yani her yansıma bir 'ortalama' denklemi. Ortalamaları yazınca a, b ve c kendiliğinden çıkıyor.",
+    "sanityCheck": "A(5, 5) ile B(13, 5)'in ortası 9 = b; B(13, 5) ile C(13, 7)'nin ortası 6. Kenarlar 8 ve 2, çevre 2 · 10 = 20.",
+    "targetSeconds": 50
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -157,5 +173,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Dönüşüm geometrisi: doğruya göre yansıma", "note": "x = k ve y = k doğrularına göre yansımada koordinatlar."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:50:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T08:50:00Z"}
 }

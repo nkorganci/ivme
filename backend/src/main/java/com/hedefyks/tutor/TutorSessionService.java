@@ -458,6 +458,7 @@ public class TutorSessionService {
                     card.put("masteryBefore", p.path("masteryBefore").asDouble());
                     card.put("masteryAfter", p.path("masteryAfter").asDouble());
                     card.put("nextReviewAt", p.path("nextReviewAt").asText());
+                    putAha(card, content);
                     List<Map<String, Object>> mistakes = new ArrayList<>();
                     for (JsonNode item : content.path("misconceptions")) {
                         mistakes.add(Map.of("mistake", item.path("mistake").asText(), "fix", item.path("fix").asText()));
@@ -560,7 +561,24 @@ public class TutorSessionService {
         card.put("method", pattern.path("method"));
         card.put("whenNot", pattern.path("whenNot").asText());
         card.put("examTip", pattern.path("examTip").asText());
+        // Kavrayış katmanının cevabı ele vermeyen kısmı; aha ve sağlama yalnız çözümden sonra (finalCard).
+        JsonNode insight = content.path("insight");
+        if (insight.isObject()) {
+            Map<String, Object> pre = new LinkedHashMap<>();
+            pre.put("analogy", insight.path("analogy"));
+            pre.put("mindset", insight.path("mindset").asText());
+            pre.put("radar", insight.path("radar"));
+            pre.put("targetSeconds", insight.path("targetSeconds").asInt());
+            card.put("insight", pre);
+        }
         return card;
+    }
+
+    private static void putAha(Map<String, Object> card, JsonNode content) {
+        JsonNode insight = content.path("insight");
+        if (!insight.isObject()) return;
+        card.put("aha", insight.path("aha").asText());
+        card.put("sanityCheck", insight.path("sanityCheck").asText());
     }
 
     private Map<String, Object> visualCard(JsonNode visual, JsonNode predict) {
@@ -590,6 +608,7 @@ public class TutorSessionService {
         card.put("choice", content.path("solution").path("finalAnswer").path("choice").asText());
         card.put("value", content.path("solution").path("finalAnswer").path("value").asText());
         card.put("levels", levels(content));
+        putAha(card, content);
         return card;
     }
 

@@ -11,6 +11,7 @@ Kullanım: python -X utf8 testler/ogretim-dongusu-ui.py [--base http://localhost
 import argparse
 import importlib.util
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,6 +19,7 @@ from playwright.sync_api import expect, sync_playwright
 
 APP = Path(__file__).resolve().parents[1]
 EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
+sys.path.insert(0, str(APP / "scripts"))  # ogretim-icerigi.py yanındaki yerel_ortam modülünü içe alır.
 spec = importlib.util.spec_from_file_location("ogretim", APP / "scripts/ogretim-icerigi.py")
 ogretim = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ogretim)

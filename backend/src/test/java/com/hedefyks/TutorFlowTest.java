@@ -73,6 +73,11 @@ class TutorFlowTest extends TestBase {
 
         view = act(ayse, id, "{\"type\":\"PREVIEW\"}");
         assertThat(kinds(view)).containsExactly("PATTERN");
+        // Kavrayış katmanı: benzetme, zihniyet ve radar çözümden önce; aha ve sağlama çözülmeden gönderilmez.
+        assertThat(view.at("/cards/0/insight/analogy/title").asText()).isEqualTo("Torbadaki ikili biletler");
+        assertThat(view.at("/cards/0/insight/radar").size()).isEqualTo(3);
+        assertThat(view.at("/cards/0/insight/targetSeconds").asInt()).isEqualTo(60);
+        assertThat(json.writeValueAsString(view)).doesNotContain("\"aha\"", "sanityCheck", "300 biletin 3'ü");
         assertThat(view.at("/nextStep/type").asText()).isEqualTo("STRATEGY");
 
         view = act(ayse, id, "{\"type\":\"STRATEGY\",\"optionId\":\"gruplari-say\"}");
@@ -101,6 +106,9 @@ class TutorFlowTest extends TestBase {
 
         view = act(ayse, id, "{\"type\":\"ANSWER\",\"choice\":\"A\"}");
         assertThat(kinds(view)).contains("FINAL").doesNotContain("VISUAL", "TWIN");
+        JsonNode finalCard = view.path("cards").get(kinds(view).indexOf("FINAL"));
+        assertThat(finalCard.path("aha").asText()).startsWith("Aaa").contains("300 biletin 3'ü");
+        assertThat(finalCard.path("sanityCheck").asText()).isNotBlank();
         assertThat(view.at("/nextStep/type").asText()).isEqualTo("EXPLAIN");
         JsonNode prompt = view.path("prompts").get(0);
         assertThat(prompt.path("kind").asText()).isEqualTo("EXPLAIN");

@@ -42,6 +42,22 @@
     "whenNot": "Tekerlek kayıyorsa ya da dişliler farklı yarıçaplıysa yol ile dönme açısı bu basit orantıyla bağlanmaz.",
     "examTip": "Verilen yollardan aynı olayın iki tekrarını eşle: farkları çevreyi verir, başka hiçbir ölçüye gerek kalmaz."
   },
+  "insight": {
+    "analogy": {
+      "title": "Tekerlek bir kilometre sayacıdır",
+      "text": "Kaymadan dönen tekerlek bir sayaç gibidir: yerde aldığı her santimetre, çevresinde dönen bir santimetredir. Bir tam tur çevrenin tamamı kadar yol yazdırır; okunan yolun turun ne kadarı olduğu, açının 360°'nin ne kadarı olduğunu söyler.",
+      "breaks": "Sayaç benzetmesi kaymayan tekerlek içindir; tekerlek patinaj yapsaydı alınan yol ile dönen yay eşit olmazdı."
+    },
+    "mindset": "Yollar arasındaki farklara bak: aynı olay (tel aynı parçayla çakışıyor) iki kez olduysa aradaki yol bir tam turdur. Önce turu bul, sonra kesri.",
+    "radar": [
+      {"see": "Kaymadan yuvarlanan tekerlek ve alınan yollar", "think": "Alınan yol = dönen yay; bir tur = çevre."},
+      {"see": "Aynı olay 'ilk kez' ve 'ikinci kez' gerçekleşiyor", "think": "Aradaki fark tam bir turdur; başlangıç konumunu bilmen gerekmez."},
+      {"see": "İki sabit parça arasındaki açı soruluyor", "think": "Açı / 360° = aradaki yol / çevre."}
+    ],
+    "aha": "Aaa: telin başlangıçta nerede olduğunu bilmemize hiç gerek yokmuş! 'İlk kez' ile 'ikinci kez' arası tam tur, 'mavi' ile 'kırmızı' arası da aradaki açı.",
+    "sanityCheck": "Kesri kontrol et: 40 cm, 200 cm'lik turun beşte biri; 360°'nin beşte biri 72°. Açının dar (90°'den küçük) çıkması da soruyla tutarlı.",
+    "targetSeconds": 45
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -163,5 +179,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Çember ve daire: yay uzunluğu ve merkez açı", "note": "Yay uzunluğu ile merkez açı arasındaki orantı."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:40:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T08:40:00Z"}
 }

@@ -141,13 +141,13 @@ const validators = {
     view.forEach((value) => c.number(value, 'view'));
     if (view[0] >= view[1] || view[2] >= view[3]) c.fail('view aralığı geçersiz');
     const points = new Set();
-    c.array(p.points, 'points', 1, 24).forEach((point, i) => {
+    c.array(p.points, 'points', 1, 40).forEach((point, i) => {
       c.id(point?.id, `points[${i}]`); points.add(point?.id);
       c.number(point?.x, `points[${i}].x`); c.number(point?.y, `points[${i}].y`);
       c.optionalText(point?.label, `points[${i}].label`, 20);
     });
     const needPoint = (id, label) => { if (!points.has(id)) c.fail(`${label} noktası yok: ${id}`); };
-    c.array(p.segments ?? [], 'segments', 0, 24).forEach((segment, i) => {
+    c.array(p.segments ?? [], 'segments', 0, 32).forEach((segment, i) => {
       c.id(segment?.id, `segments[${i}]`); needPoint(segment?.from, `segments[${i}]`); needPoint(segment?.to, `segments[${i}]`);
       c.tone(segment?.tone, `segments[${i}]`); c.optionalText(segment?.label, `segments[${i}].label`, 30);
     });

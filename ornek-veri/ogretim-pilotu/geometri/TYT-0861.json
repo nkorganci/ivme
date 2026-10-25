@@ -42,6 +42,22 @@
     "whenNot": "Parçalar eş değilse ya da aralarında boşluk/üst üste binme varsa eşit paylaşım varsayılamaz.",
     "examTip": "Yarım kemer gördüğünde parça sayısını iki katına çıkarıp tam düzgün çokgeni düşün; dış açı formülü doğrudan uygulanır."
   },
+  "insight": {
+    "analogy": {
+      "title": "Yarım pizza, eşit dilimler",
+      "text": "Kemer bir pizzanın yarısı gibidir: eş dilimler yarım pizzayı dolduruyorsa her dilimin merkezdeki ucu eşit pay alır. Dilimin uç açısını bilince kenardaki açılar merkezle oluşan ikizkenar üçgenden gelir.",
+      "breaks": "Pizza dilimi üçgendir, bizim parçalarımız yamuk. Yamuk, ucu kesilmiş dilimdir; kesik kenar dış kenara paralel olduğu için kesmek açıları değiştirmez."
+    },
+    "mindset": "Eş parçalar dönerek diziliyorsa ilk soru: kaç parça tam turu (360°) ya da yarım turu (180°) dolduruyor? Payı bul, açıyı paydan üret.",
+    "radar": [
+      {"see": "Eş parçalar kemer, halka ya da çiçek gibi dönerek diziliyor", "think": "Tam tur 360°, yarım tur 180°: parça başına düşen merkez açıyı bul."},
+      {"see": "İkizkenar yamuk ya da dilim", "think": "Merkezle ikizkenar üçgen oluşur: taban açısı = (180° − merkez açı)/2."},
+      {"see": "'Dış açı = 360°/n' bilgisi verilmiş", "think": "Parçaların kenarları bir düzgün çokgenin kenarlarıdır; n'yi parça sayısından bul."}
+    ],
+    "aha": "Aaa: 15 yamuk aslında 30-genin yarısıymış; her yamuk merkezde 12°'lik bir pasta dilimi, dar açısı da o dilimin taban açısı.",
+    "sanityCheck": "Komşu iki yamuğun dar açıları yan yana 168° etmeli: 84° + 84° = 168° = 30-genin iç açısı. Dilimler çok ince olduğu için açının 90°'ye yakın çıkması da beklenir.",
+    "targetSeconds": 45
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -167,5 +183,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik — Çokgenler: düzgün çokgenlerde iç ve dış açılar", "note": "Düzgün çokgenin dış açısı 360°/n; iç açısı 180° − dış açı."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:20:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T08:20:00Z"}
 }

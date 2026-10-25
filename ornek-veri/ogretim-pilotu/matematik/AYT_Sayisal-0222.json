@@ -42,6 +42,22 @@
     "whenNot": "Limit sonsuz veriliyorsa ya da payda limit noktasında sıfır değilse bu zorunluluk yoktur; değer doğrudan yerine konur.",
     "examTip": "L'Hôpital uygulamadan önce mutlaka 0/0 (ya da ∞/∞) olduğunu doğrula; çoğu soruda ilk adım bu doğrulamadan bir bilinmeyen çıkarmaktır."
   },
+  "insight": {
+    "analogy": {
+      "title": "Sıfıra koşan iki koşucu",
+      "text": "Pay ve payda aynı noktaya doğru sıfıra koşan iki koşucu gibidir. Oranın limiti, ikisinin o noktadaki hızlarının (türevlerinin) oranıdır. Payda sıfıra varırken pay varmıyorsa oran patlar; sonlu limit, payın da yarışta olduğunu kanıtlar.",
+      "breaks": "Koşucuların hızı yol boyunca değişebilir; L'Hôpital yalnız o noktadaki anlık hızları karşılaştırır ve yalnız 0/0 ya da ∞/∞ durumunda kullanılabilir."
+    },
+    "mindset": "Limit sonlu ve payda sıfıra gidiyorsa ilk yazacağın denklem: pay da sıfır. Bu tek cümle bir bilinmeyeni hemen verir.",
+    "radar": [
+      {"see": "lim f/g sonlu ve g(a) = 0", "think": "f(a) de sıfır olmak zorunda: bir denklem kazandın."},
+      {"see": "Polinomlarda 0/0 belirsizliği", "think": "Ortak çarpanı sadeleştir ya da L'Hôpital: f'(a)/g'(a)."},
+      {"see": "Çarpımın limiti 0", "think": "Çarpanlardan biri o noktada sıfırdır; hangisinin sıfır olamayacağını eleyerek bul."}
+    ],
+    "aha": "Aaa: −2 gibi sakin bir sonuç, payın da sıfıra koştuğunun itirafıymış. f(a) = 10'dan a, eğimlerin oranından da c çıkıyor.",
+    "sanityCheck": "Değerleri yerine koy: f(x) − 10 = 2x² − 8 ve g(x) = (x − 2)(x − 6). Sadeleşince 2(x + 2)/(x − 6); x = 2'de 8/(−4) = −2.",
+    "targetSeconds": 75
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -166,7 +182,7 @@
   "generation": {
     "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
     "tier": "STRONG",
-    "promptVersion": "ogretim-pilot-v1",
+    "promptVersion": "ogretim-kavrayis-v2",
     "createdAt": "2026-10-18T07:50:00Z"
   }
 }

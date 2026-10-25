@@ -6,12 +6,16 @@ Yalnız yarım işin devam noktası ve sıradaki görev tutulur. Açık iş tan�
 
 | Alan | Değer |
 |---|---|
-| Güncelleme | 25 Ekim 2026 — Codex |
+| Güncelleme | 25 Ekim 2026 — Claude |
 | Etkin görev | — |
 | Sıradaki görev | `07.02` — tahmini etiketlerin gerçek kaynak/ünite/sınıf kontrolü |
 | Yarım iş | Yok |
 | Sıradaki komut | `python scripts/ivme.py durum --hizli` |
 
-## Kullanıcı tarafından duraklatılan iş
+## Kullanıcı değerlendirmesi bekleyen iş
 
-Akıllı Öğretmen pilotu, kullanıcı yeniden isteyince sürdürülür. Hazır 12 içerik `ornek-veri/ogretim-pilotu/` altında ve DB'dedir; sıradaki fizik soruları TYT-0959, AYT_Sayisal-0370, AYT_Sayisal-0379. Doğrulama/aktarım: `python scripts/ivme.py ogretim dogrula`, sonra `ogretim aktar`. [Tarif](islemler/ogretim-icerigi.md).
+Akıllı Öğretmen kavrayış demosu: fizik, matematik ve geometriden beşer farklı ünite (15 içerik)
+`ornek-veri/ogretim-pilotu/` altında ve DB'dedir; hepsinde benzetme, usta gözü, soru radarı, aha
+cümlesi, sağlama ve animasyonlu görsel var. Kullanıcı demoyu beğenirse aynı yaklaşım diğer sorulara
+[öğretim tasarımı rehberiyle](icerik/akilli-ogretmen-ogretim-tasarimi.md) yayılır. Doğrulama/aktarım:
+`python scripts/ivme.py ogretim dogrula`, sonra `ogretim aktar`. [Tarif](islemler/ogretim-icerigi.md).

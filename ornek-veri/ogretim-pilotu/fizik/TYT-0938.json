@@ -42,6 +42,22 @@
     "whenNot": "Seri bağlamada ortak olan akımdır; o zaman P = I²R ile büyük direnç daha çok güç harcar. Formül seçimi bağlantı türüne bağlıdır.",
     "examTip": "'Hangi büyüklük ortak?' sorusunu önce cevapla; ortak büyüklüğü içeren formül sıralamayı tek adımda verir."
   },
+  "insight": {
+    "analogy": {
+      "title": "Aynı depoya bağlı hortumlar",
+      "text": "Aynı su deposuna bağlı üç hortum düşün: depodaki basınç (gerilim) üçü için de aynı. Dar hortum (büyük direnç) az su (akım) geçirir, geniş hortum çok. Aynı basınçta en çok suyu geçiren hortum en çok iş yapar.",
+      "breaks": "Hortumda su akıp gider; elektrikte yükler tükenmez, devreyi dolaşır. Harcanan şey yükler değil, yüklerin taşıdığı enerjidir."
+    },
+    "mindset": "Önce bağlantıya bak: paralel mi, seri mi? Paralelse ortak olan gerilimdir; gücü ortak olan nicelikle yazan formülü seç.",
+    "radar": [
+      {"see": "V–I grafiğinde orijinden çıkan doğrular", "think": "Eğim = V/I = direnç; dik doğru büyük direnç."},
+      {"see": "Paralel bağlı elemanlar", "think": "Gerilimler eşit; P = V²/R ile büyük direnç az güç harcar."},
+      {"see": "Seri bağlı elemanlar", "think": "Akım ortak; P = I²R ile büyük direnç çok güç harcar."}
+    ],
+    "aha": "Aaa: paralelde gerilim ortak olunca 'büyük direnç daha çok yanar' sezgisi tersine dönüyormuş. Ortak olanı bul, formülü ona göre seç.",
+    "sanityCheck": "Uç örnekle sağla: direnci sıfıra yakın bir tel paralel bağlansa çok büyük akım çeker ve en çok gücü o harcar. Demek ki küçük direnç → büyük güç.",
+    "targetSeconds": 40
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -154,5 +170,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik 10 — Elektrik devreleri: Ohm yasası, paralel bağlama, elektriksel güç", "note": "Paralel bağlamada potansiyel farkı ve güç karşılaştırması."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T09:10:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T09:10:00Z"}
 }

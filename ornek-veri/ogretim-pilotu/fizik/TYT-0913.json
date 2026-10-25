@@ -42,6 +42,22 @@
     "whenNot": "Soru alınan yolu, ortalama sürati ya da harcanan enerjiyi soruyorsa izlenen yolun uzunluğu önemlidir.",
     "examTip": "Şıklarda katsayı (2 gibi) görürsen yol uzunluğu tuzağı olabilir; yer değiştirme katsayıları yalnız konumlardan gelir."
   },
+  "insight": {
+    "analogy": {
+      "title": "Navigasyonun kuş uçuşu oku",
+      "text": "Navigasyonda hangi sokaklardan geçtiğin yolu (alınan yol) değiştirir ama başlangıç ile varış arasındaki kuş uçuşu ok aynı kalır. Yer değiştirme o oktur; başlangıç ile varışı yer değiştirirsen ok ters döner.",
+      "breaks": "Navigasyon oku yalnız uzaklık gibi görünür; fizikte yer değiştirmenin yönü de vardır ve bu yönü işaret (+ ya da −) taşır."
+    },
+    "mindset": "Kim nereden başladı, nerede bitti? Koşu yönünü ve pistin uzunluğunu bir kenara bırak; yalnız ilk ve son noktayı yaz.",
+    "radar": [
+      {"see": "Farklı yollardan aynı iki nokta arasında gidenler", "think": "Yer değiştirmeleri eşittir; yol uzunluğu önemsiz."},
+      {"see": "Başlangıcı ile bitişi yer değiştirmiş bir hareketli", "think": "Ok ters döner: yer değiştirme zıt işaretlidir."},
+      {"see": "Şıklarda 2 gibi katsayılar", "think": "Yol uzunluğu tuzağı olabilir; yer değiştirme katsayısı yalnız konumlardan gelir."}
+    ],
+    "aha": "Aaa: Hakan'ın uzun turu hiçbir şeyi değiştirmiyormuş! Üçünün de oku aynı iki nokta arasında; yalnız Selin'inki ters yönde.",
+    "sanityCheck": "Selin'in hareketini geri sar: L'den K'ye gitmek, K'den L'ye gitmenin tersidir; işaret eksi. Uç noktalar aynı olduğu için katsayı da yok.",
+    "targetSeconds": 25
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -164,5 +180,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik 9 — Hareket: konum, yer değiştirme ve alınan yol", "note": "Skaler ve vektörel büyüklükleri ayırt etme kazanımı."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T09:00:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T09:00:00Z"}
 }

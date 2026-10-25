@@ -11,7 +11,7 @@ const LOOP = [
   ['Tek tek ipucu', 'Kavram → strateji → ilk adım. Hiçbiri cevabı söylemez.'],
   ['Hatanı anla', 'Yanlış şık, hangi düşünceden geldiğini söyler; onu düzeltip yeniden denersin.'],
   ['Neden?', 'Doğru cevaptan sonra kilit adımın gerekçesini seçer ya da kendi cümlenle yazarsın.'],
-  ['Mantığını gör', 'Görselde önce tahmin eder, sonra adım adım izlersin.'],
+  ['Mantığını gör', 'Benzetme ve animasyonla nedenini görürsün; görselde önce tahmin eder, sonra adım adım izlersin.'],
   ['İkiz soru', 'Aynı derin yapı, farklı yüzey: yardımsız çözmek kalıbın yerleştiğini gösterir.'],
 ];
 

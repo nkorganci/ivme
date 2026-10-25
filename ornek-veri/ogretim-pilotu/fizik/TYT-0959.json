@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0959",
+  "question": {
+    "code": "TYT-0959",
+    "exam": "TYT",
+    "subjectId": "fizik",
+    "categoryId": "tyt.fizik.isigin-kirilmasi",
+    "subtopic": "Kırılma ve görünür konum: havadan suya ve sudan havaya bakış",
+    "answerKey": "E",
+    "choiceCount": 5,
+    "imageSha256": "f2e41c8939fd85418d07e88da932e0e82f53d6a469dd3cc7569c408cf9f6f781"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Dalış eğitmeni Burak, eğitim teknesinde şekildeki gibi ayakta durmaktadır. Öğrencisi Mert ise dibi rahatlıkla görülen bir denizin içinde şekildeki gibi durgundur. Burak, B noktasından; Mert, M noktasından birbirlerine bakmaktadır. Deniz suyunun kırılma indisinin havanınkinden büyük olduğu bilindiğine göre Burak'ın ve Mert'in birbirlerini gördükleri konumlar ile ilgili aşağıdakilerden hangisi doğru olabilir? (Şıklar: Burak'ın Mert'i gördüğü konum; Mert'in Burak'ı gördüğü konum)",
+    "choices": {"A": "M'nin aşağısı; B'nin aşağısı", "B": "M'nin bulunduğu konum; B'nin aşağısı", "C": "M'nin yukarısı; B'nin bulunduğu konum", "D": "M'nin aşağısı; B'nin yukarısı", "E": "M'nin yukarısı; B'nin yukarısı"},
+    "figure": "Solda teknede ayakta duran Burak (göz noktası B, deniz yüzeyinin üstünde, havada). Sağda deniz içinde yatay duran dalgıç Mert (göz noktası M, yüzeyin altında). Ortada yukarı ve aşağı yönleri gösteren düşey ok; üstte 'Hava', altta 'Deniz'.",
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "İki ayrı bakış için kırılma yönünü (normale yaklaşma/uzaklaşma) ve gözün ışını geriye düz uzattığını birlikte kullanmayı ister; ezber kural yerine ışın çizimi gerekir.",
+    "skills": ["KAVRAMA", "ANALIZ", "AKIL_YURUTME"],
+    "prerequisites": ["tyt.fizik.aydinlanma-ve-golge"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "fizik.optik.kirilma-gorunur-konum",
+    "name": "Kırılmada görünen konum: göz ışığı düz uzatır",
+    "trigger": "Bir ortamdaki cisme başka bir ortamdan bakılıyor ve cismin görüldüğü yer (daha yakın, uzak, yukarıda, aşağıda) soruluyorsa.",
+    "bigIdea": "Göz, ışığın hep düz bir çizgide geldiğini varsayar ve cismi göze gelen son ışının geriye doğru uzantısında görür. Işık iki ortamın sınırında kırıldığı için bu uzantı cismin gerçek konumundan sapar.",
+    "method": [
+      "Cisimden göze giden tek bir ışın çiz.",
+      "Sınırda normali çiz: kırılma indisi büyük ortama giren ışın normale yaklaşır, oradan çıkan ışın normalden uzaklaşır.",
+      "Göze gelen son ışını geriye doğru düz uzat; görüntü bu uzantının üzerindedir.",
+      "Uzantının cismin gerçek konumuna göre nereden geçtiğini oku."
+    ],
+    "whenNot": "Bakış sınıra tam dik ise ışın yön değiştirmez; görüntü aynı doğru üzerinde kalır, yalnız uzaklık farklı algılanır. Düz aynada ise kırılma değil yansıma vardır.",
+    "examTip": "Ezbere karar verme: tek ışın, normal ve geriye uzantı çizmek 15 saniye sürer ve iki bakışı da gösterir."
+  },
+  "insight": {
+    "analogy": {
+      "title": "Göz, izi dümdüz süren bir dedektiftir",
+      "text": "Göz, ışığın izini süren ama her izin dümdüz geldiğine inanan bir dedektif gibidir. Işık yüzeyde yön değiştirse de dedektif son gördüğü iz doğrultusunda geriye bakar ve cismi o doğrultunun üzerinde sanır.",
+      "breaks": "Dedektif bilerek yanılmaz; beyin ışığın kırıldığını hesaba katamaz. Benzetme yalnız doğrultuyu anlatır, ışığın ortamdaki hızını anlatmaz."
+    },
+    "mindset": "Önce 'ışık nereden nereye gidiyor?' diye sor: cisimden göze. Sonra üç çizgi: bir ışın, yüzeyde normal ve göze gelen ışının geriye uzantısı. Kararı ezber değil, uzantı verir.",
+    "radar": [
+      {"see": "Bir ortamdaki cisme diğer ortamdan bakılıyor", "think": "Cisimden göze tek ışın çiz; yüzeyde normali çizmeden karar verme."},
+      {"see": "'Kırılma indisi büyük' ortam", "think": "Bu ortama giren ışın normale yaklaşır, bu ortamdan çıkan ışın normalden uzaklaşır."},
+      {"see": "'Nerede görür', 'nasıl görünür' soruları", "think": "Görüntü, göze gelen son ışının geriye doğru düz uzantısındadır."}
+    ],
+    "aha": "Aaa: ikisi de birbirini 'yukarıda' görüyormuş! Göz kırılan ışını geriye düz uzattığı için havadan bakan suyu sığ, sudan bakan havadakini daha yüksekte görür.",
+    "sanityCheck": "Günlük hayatla sağla: havuzun dibi olduğundan sığ görünür (sudaki cisim yukarıda). Dalgıç da kıyıdaki arkadaşını daha yüksekte görür; iki bakışta da görüntü yukarı kayar.",
+    "targetSeconds": 30
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "isin-ciz", "text": "Her bakış için cisimden göze bir ışın, yüzeyde normal ve göze gelen ışının geriye uzantısını çizmek", "correct": true,
+       "feedback": "Doğru. Görüntü uzantının üzerindedir; iki bakışı aynı çizimle okuyabilirsin."},
+      {"id": "simetri", "text": "Biri yukarıda görüyorsa öteki aşağıda görür diye simetrik düşünmek", "correct": false,
+       "feedback": "Bu simetri sezgisi yanıltıcıdır. Işık her iki yönde de kırılır; sonucu ancak ışın çizimi gösterir."},
+      {"id": "yalniz-su", "text": "Yalnız sudaki cismin yanlış göründüğünü, havadakinin doğru göründüğünü varsaymak", "correct": false,
+       "feedback": "Mert'in gözüne gelen ışın da yüzeyden geçerek kırılır; o bakışta da görüntü sapar."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Göz, cismi kendisine gelen ışının geriye doğru düz uzantısında görür. Işık iki ortamın sınırında kırıldığı için uzantı gerçek konumdan sapar."},
+    {"level": 2, "kind": "STRATEJI", "text": "İki bakışı ayrı ayrı çiz: Burak bakarken ışın Mert'ten Burak'a, Mert bakarken Burak'tan Mert'e gider. Her birinde yüzeydeki kırılma yönünü belirle."},
+    {"level": 3, "kind": "ADIM", "text": "Sudan havaya çıkan ışın normalden uzaklaşır. Burak'ın gözüne gelen bu ışını geriye düz uzat ve uzantının M'nin üstünden mi altından mı geçtiğine bak."}
+  ],
+  "guidingQuestions": [
+    {"text": "Sudan havaya çıkan ışın normale yaklaşır mı, uzaklaşır mı?", "answer": "Uzaklaşır; kırılma indisi küçük ortama geçiyor."},
+    {"text": "Göz cismi nerede görür: gerçek ışının üzerinde mi, göze gelen ışının geriye uzantısında mı?", "answer": "Göze gelen son ışının geriye doğru düz uzantısında."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Burak Mert'e bakarken ışın Mert'ten Burak'a gider: sudan (kırılma indisi büyük) havaya (küçük) geçerken yüzeyde normalden uzaklaşarak kırılır.",
+       "why": "Işık kırılma indisi büyük ortamdan küçük ortama geçerken hızlanır ve normalden uzaklaşır."},
+      {"id": "s2", "text": "Burak'ın gözü gelen ışını geriye doğru düz uzatır. Bu uzantı gerçek ışından daha yatık iner ve M'nin üstünden geçer: Burak Mert'i M'nin yukarısında görür. (Dike yakın bakışta n = 4/3 için 4 m derindeki cisim 4 · (3/4) = 3 m derinde görünür.)",
+       "why": "Beyin ışığın kırıldığını bilemez; cismi göze gelen son doğrultunun uzantısında sanır. Uzantı yatık olduğu için daha az derine iner.",
+       "check": {"type": "sympy", "expr": "4*1/Rational(4, 3)", "equals": "3"},
+       "selfExplain": {"prompt": "Burak neden Mert'i gerçek yerinde değil de daha yukarıda görür?",
+         "options": [
+           {"id": "uzanti", "text": "Gözüne gelen ışını geriye düz uzatır; ışın yüzeyde normalden uzaklaştığı için uzantı M'nin üstünden geçer.", "correct": true,
+            "feedback": "Evet. Görüntü kırılan ışının kendisinde değil, göze gelen son parçanın geriye uzantısındadır."},
+           {"id": "su-iter", "text": "Su, Mert'i kaldırma kuvvetiyle yukarı doğru iter.", "correct": false,
+            "feedback": "Kaldırma kuvveti Mert'in gerçek konumunu etkiler, görünen konumunu değil. Görünen konum ışığın yolundan gelir."},
+           {"id": "gecikme", "text": "Işık suda yavaşladığı için görüntü gecikerek gelir.", "correct": false,
+            "feedback": "Gecikme gözle fark edilmez ve konumu değiştirmez. Konumu değiştiren, ışının yön değiştirmesidir."}
+         ]}},
+      {"id": "s3", "text": "Mert Burak'a bakarken ışın Burak'tan Mert'e gider: havadan suya girerken yüzeyde normale yaklaşarak kırılır.",
+       "why": "Işık kırılma indisi küçük ortamdan büyük ortama geçerken yavaşlar ve normale yaklaşır."},
+      {"id": "s4", "text": "Mert gelen ışını geriye doğru düz uzatır. Normale yaklaşmış ışının uzantısı gerçek ışından daha dik yükselir ve B'nin üstünden geçer: Mert Burak'ı B'nin yukarısında görür. (Dike yakın bakışta 3 m yükseklikteki göz 3 · (4/3) = 4 m yüksekte görünür.)",
+       "why": "Dik uzantı aynı yatay uzaklıkta daha çok yükselir; görüntü gerçek konumdan yukarıda kalır.",
+       "check": {"type": "sympy", "expr": "3*Rational(4, 3)/1", "equals": "4"}},
+      {"id": "s5", "text": "Sonuç: Burak Mert'i M'nin yukarısında, Mert de Burak'ı B'nin yukarısında görür.",
+       "why": "Her iki bakışta da görüntü yukarı kayar: sudaki cisim yüzeye yakın (sığ), havadaki cisim yüzeyden uzak (yüksek) görünür."}
+    ],
+    "finalAnswer": {"choice": "E", "value": "M'nin yukarısı; B'nin yukarısı",
+      "check": {"type": "choice", "expr": "Tuple(1, 1)", "choice": "E", "note": "Her şık (Burak'ın gördüğü, Mert'in gördüğü) ikilisiyle temsil edilir: 1 yukarısı, 0 bulunduğu konum, −1 aşağısı."}},
+    "levels": {
+      "sezgi": "Göz bir 'düz çizgi inançlısı'dır: ışık nereden kırılarak gelirse gelsin, cismi son doğrultunun düz uzantısında arar. Sudan çıkan ışın yüzeyde yatıklaşır; Burak bu yatık çizgiyi geriye uzatınca Mert'i daha sığda bulur. Suya giren ışın dikleşir; Mert bu dik çizgiyi yukarı uzatınca Burak'ı daha yüksekte bulur. İki dedektif de 'yukarı' der.",
+      "kisayol": "Yoğun ortam altta olan su–hava sınırında görüntü hep yukarı kayar: sudaki cisim sığ, havadaki cisim yüksek görünür → iki 'yukarısı'."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "C",
+     "mistake": "Kırılmanın yalnız havadan suya bakarken olduğunu, sudan bakan Mert'in Burak'ı gerçek yerinde gördüğünü sanmak.",
+     "cause": "Mert'in gözüne gelen ışının da yüzeyden geçerek kırıldığını gözden kaçırmak.",
+     "fix": "Işık hangi yönde giderse gitsin sınırda kırılır. Mert'in gözüne gelen ışın da normale yaklaşmıştır; uzantısı B'nin üstünden geçer.",
+     "guidingQuestion": "Burak'tan çıkıp Mert'in gözüne giden ışın su yüzeyinden geçiyor mu?",
+     "check": {"type": "choice", "expr": "Tuple(1, 0)", "choice": "C"}},
+    {"id": "m2", "choice": "D",
+     "mistake": "Havadan bakınca sudaki cismi daha derinde görmek.",
+     "cause": "Sudan çıkan ışının normale yaklaştığını sanmak ya da görüntüyü gerçek ışının üzerinde aramak.",
+     "fix": "Sudan havaya çıkan ışın normalden uzaklaşır; geriye uzantısı daha yatıktır ve gerçek cisimden daha sığ bir noktadan geçer. Havuzun dibi bu yüzden sığ görünür.",
+     "guidingQuestion": "Havuz kenarından bakınca havuz olduğundan derin mi, sığ mı görünür?",
+     "check": {"type": "choice", "expr": "Tuple(-1, 1)", "choice": "D"}},
+    {"id": "m3", "choice": "A",
+     "mistake": "İki gözlemcinin de birbirini aşağıda gördüğünü sanmak.",
+     "cause": "Normale yaklaşma ve uzaklaşma kurallarını iki bakışta da ters uygulamak.",
+     "fix": "Kırılma indisi büyük ortama giren ışın normale yaklaşır, çıkan ışın normalden uzaklaşır. Doğru yönle çizilen iki uzantı da gerçek konumun üstünden geçer.",
+     "guidingQuestion": "Suya giren ışın normale yaklaşır mı, uzaklaşır mı?",
+     "check": {"type": "choice", "expr": "Tuple(-1, -1)", "choice": "A"}},
+    {"id": "m4", "choice": "B",
+     "mistake": "Havadaki gözün kırılmadan etkilenmediğini, sudaki gözün ise karşısındakini aşağıda gördüğünü sanmak.",
+     "cause": "Kırılmayı yalnız gözün bulunduğu ortama bağlamak; ışının iki bakışta da sınırdan geçtiğini unutmak.",
+     "fix": "Her iki bakışta da ışın yüzeyden geçer. Çizimde iki uzantı da gerçek konumların üstünden geçer.",
+     "guidingQuestion": "Burak'ın gözüne gelen ışın hangi ortamdan çıkıp hangi ortama giriyor?",
+     "check": {"type": "choice", "expr": "Tuple(0, -1)", "choice": "B"}}
+  ],
+  "alternative": {
+    "title": "Işığın tersinirliği: tek çizgi, iki görüntü",
+    "text": "Burak'tan Mert'e ve Mert'ten Burak'a giden ışınlar aynı yolu izler (ışık yolu tersinirdir). Tek bir kırık çizgi çiz: havadaki parçayı suya doğru uzatınca Mert'in görüntüsünü, sudaki parçayı havaya doğru uzatınca Burak'ın görüntüsünü bulursun. İkisi de gerçek konumun yukarısındadır."
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Görüntünün 'geriye uzantıda' olduğunu iki bakışta ayrı ayrı görmek, ezber kuralı yerine kalıcı bir resim bırakır.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Göz ışını geriye düz uzatır: iki görüntü de yukarıda",
+    "params": {
+      "view": [-10, 10, -6, 12],
+      "points": [
+        {"id": "S1", "x": -10, "y": 0, "hidden": true}, {"id": "S2", "x": 10, "y": 0, "hidden": true},
+        {"id": "W3", "x": 10, "y": -6, "hidden": true}, {"id": "W4", "x": -10, "y": -6, "hidden": true},
+        {"id": "B", "x": -6, "y": 6, "label": "B (Burak)"},
+        {"id": "M", "x": 5, "y": -4, "label": "M (Mert)"},
+        {"id": "P", "x": 2, "y": 0, "hidden": true},
+        {"id": "N1", "x": 2, "y": 4.5, "hidden": true}, {"id": "N2", "x": 2, "y": -4.5, "hidden": true},
+        {"id": "M2", "x": 5, "y": -2.25, "label": "M′"},
+        {"id": "B2", "x": -6, "y": 10.667, "label": "B′"}
+      ],
+      "polygons": [
+        {"id": "deniz", "points": ["S1", "S2", "W3", "W4"], "tone": "navy"}
+      ],
+      "segments": [
+        {"id": "yuzey", "from": "S1", "to": "S2", "tone": "navy"},
+        {"id": "normal", "from": "N1", "to": "N2", "tone": "line", "dashed": true, "label": "normal"},
+        {"id": "r1", "from": "M", "to": "P", "tone": "ok", "arrow": true},
+        {"id": "r2", "from": "P", "to": "B", "tone": "ok", "arrow": true},
+        {"id": "u1", "from": "P", "to": "M2", "tone": "warn", "dashed": true},
+        {"id": "r3", "from": "B", "to": "P", "tone": "navy", "arrow": true},
+        {"id": "r4", "from": "P", "to": "M", "tone": "navy", "arrow": true},
+        {"id": "u2", "from": "P", "to": "B2", "tone": "warn", "dashed": true}
+      ],
+      "angles": [
+        {"id": "aHava", "vertex": "P", "from": "N1", "to": "B", "label": "53°", "tone": "warn"},
+        {"id": "aSu", "vertex": "P", "from": "N2", "to": "M", "label": "37°", "tone": "warn"}
+      ],
+      "texts": [
+        {"id": "tHava", "x": 7.5, "y": 10.5, "text": "Hava"},
+        {"id": "tSu", "x": -7, "y": -5, "text": "Deniz (n büyük)"}
+      ]
+    },
+    "frames": [
+      {"caption": "Burak havada (B), Mert denizde (M). Işık bir ortamdan ötekine geçerken su yüzeyinde kırılır.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu"]},
+      {"caption": "Burak bakıyor: ışın M'den B'ye gider. Sudan havaya çıkarken normalden uzaklaşır: suda 37°, havada 53°.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu", "normal", "r1", "r2", "aHava", "aSu"],
+       "focus": ["r1", "r2"]},
+      {"caption": "Burak'ın gözü ışını geriye düz uzatır (kesikli çizgi). Uzantı M'nin üstünden geçer: Burak Mert'i M′'de, yani daha yukarıda görür.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu", "normal", "r1", "r2", "u1", "M2"],
+       "focus": ["u1", "M2"]},
+      {"caption": "Mert bakıyor: ışın aynı yolu tersinden izler. Havadan suya girerken normale yaklaşır.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu", "normal", "r3", "r4", "aHava", "aSu"],
+       "focus": ["r3", "r4"]},
+      {"caption": "Mert de ışını geriye düz uzatır. Dik uzantı B'nin üstünden geçer: Mert Burak'ı B′'de, daha yukarıda görür.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu", "normal", "r3", "r4", "u2", "B2"],
+       "focus": ["u2", "B2"]},
+      {"caption": "İki bakışta da görüntü yukarı kayar: sudaki cisim yüzeye yakın (sığ), havadaki cisim yüzeyden uzak (yüksek) görünür.",
+       "show": ["deniz", "yuzey", "B", "M", "tHava", "tSu", "normal", "r1", "r2", "u1", "u2", "M2", "B2"],
+       "focus": ["M2", "B2"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Havuz kenarından bakınca havuzun dibi olduğundan daha derin mi, daha sığ mı görünür?",
+      "options": [
+        {"id": "sig", "text": "Daha sığ görünür", "correct": true,
+         "feedback": "Doğru. Sudan çıkan ışın yatıklaşır; göz onu geriye uzatınca dibi yukarıda bulur. Şimdi aynı olayı Burak ile Mert'te izle."},
+        {"id": "derin", "text": "Daha derin görünür", "correct": false,
+         "feedback": "Havuza girmeden önce hep sığ sanılır; bu yüzden uyarı levhaları vardır. Animasyonda uzantının nereye gittiğine bak."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Bir akvaryumun düşey yan camının önünde duran Ece, camın arkasında suda yüzen bir balığa; balık da Ece'ye camdan bakıyor. Camın kalınlığı önemsiz ve suyun kırılma indisi havanınkinden büyüktür. Ece'nin balığı ve balığın Ece'yi gördüğü konumlar, cama olan uzaklıkları bakımından nasıldır?",
+    "choices": {
+      "A": "Ece balığı cama daha yakın, balık Ece'yi cama daha uzak görür.",
+      "B": "Ece balığı cama daha uzak, balık Ece'yi cama daha yakın görür.",
+      "C": "İkisi de birbirini cama daha yakın görür.",
+      "D": "İkisi de birbirini cama daha uzak görür.",
+      "E": "İkisi de birbirini gerçek konumunda görür."
+    },
+    "answer": "A",
+    "solution": "Kalıp aynı, yalnız sınır düşey: yoğun ortamdaki cisim sınıra yakın, az yoğun ortamdaki cisim sınırdan uzak görünür. Balıktan Ece'ye giden ışın camda normalden uzaklaşır; Ece'nin uzantısı balığı cama yakın gösterir. Ece'den balığa giden ışın normale yaklaşır; balığın uzantısı Ece'yi camdan uzak gösterir. 'Yukarı' kuralını ezberleyen burada şaşırır; geriye uzantıyı çizen şaşırmaz.",
+    "choiceValues": {"A": "Tuple(1, -1)", "B": "Tuple(-1, 1)", "C": "Tuple(1, 1)", "D": "Tuple(-1, -1)", "E": "Tuple(0, 0)"},
+    "check": {"type": "twinChoice", "expr": "Tuple(1, -1)", "choice": "A", "note": "İkili (Ece'nin gördüğü, balığın gördüğü): 1 cama yakın, −1 cama uzak, 0 gerçek konum."}
+  },
+  "choiceValues": {"A": "Tuple(-1, -1)", "B": "Tuple(0, -1)", "C": "Tuple(1, 0)", "D": "Tuple(-1, 1)", "E": "Tuple(1, 1)"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik — Optik: ışığın kırılması, görünür derinlik", "note": "Kırılma yasası, normale yaklaşma/uzaklaşma ve gözlemcinin görüntüyü ışının uzantısında görmesi."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-kavrayis-v2",
+    "createdAt": "2026-10-25T17:10:00Z"
+  }
+}

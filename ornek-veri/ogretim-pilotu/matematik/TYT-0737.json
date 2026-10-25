@@ -42,6 +42,23 @@
     "whenNot": "Nesneler dikdörtgen biçiminde değilse (üçgen dizilim, boşluklu salon) ya da çıkarılan sıralar farklı uzunluktaysa çarpım modeli doğrudan kullanılamaz.",
     "examTip": "Toplamın çarpan çiftlerini (sıra, sütun) yazıp iki senaryonun kalanlarını hızla karşılaştırmak, denklemi çözmekten daha hızlı olabilir."
   },
+  "insight": {
+    "analogy": {
+      "title": "Çikolata tableti",
+      "text": "Sandalyeler bir çikolata tableti gibi dikdörtgendir: toplam kare = sıra × sütun. Bir sırayı ya da sütunu kırıp yersen kalan yine dikdörtgen bir tablettir, yalnız kenarları kısalır. İki farklı kırma biçimi aynı miktar bırakıyorsa kenarlar arasında bir bağ vardır.",
+      "breaks": "Çikolatayı istediğin yerden kırabilirsin; burada tam sıra ve tam sütun çıkarıldığı için kalan her zaman (s − x)(t − y) biçimindedir."
+    },
+    "mindset": "Toplam sabit ve iki senaryo eşit: iki bilinmeyen, iki denklem. Önce eşitliği açıp sadeleştir; çoğu zaman çarpım terimleri gider ve basit bir bağ kalır.",
+    "radar": [
+      {"see": "Her sırada ve sütunda eşit sayıda nesne", "think": "Toplam = sıra × sütun; bilinmeyenlere s ve t de."},
+      {"see": "Sıra ve sütun çıkarılıyor", "think": "Kalan = (s − çıkan sıra)(t − çıkan sütun)."},
+      {"see": "İki senaryo aynı sonucu veriyor", "think": "İki ifadeyi eşitle; st terimleri sadeleşir, doğrusal bir bağ kalır."},
+      {"see": "Toplam küçük bir sayı", "think": "Çarpan çiftlerini denemek denklem çözmekten hızlı olabilir."}
+    ],
+    "aha": "Aaa: iki senaryoyu eşitleyince st'ler birbirini götürüyor ve geriye t = 2s − 1 gibi basit bir bağ kalıyormuş. 120'nin çarpan çiftlerinde bunu sağlayan tek çift (8, 15).",
+    "sanityCheck": "İki senaryoyu da hesapla: 6 × 14 = 84 ve 7 × 12 = 84. İkisi eşit çıkmalı; çıkmıyorsa sıra ile sütun yer değiştirmiştir.",
+    "targetSeconds": 70
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -164,7 +181,7 @@
   "generation": {
     "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
     "tier": "STRONG",
-    "promptVersion": "ogretim-pilot-v1",
+    "promptVersion": "ogretim-kavrayis-v2",
     "createdAt": "2026-10-18T07:30:00Z"
   }
 }

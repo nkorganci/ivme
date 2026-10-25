@@ -42,6 +42,22 @@
     "whenNot": "Şekil ölçekli değilse açı gözle tahmin edilmez; yalnız verilen ölçüler ve kesin ilişkiler (paralellik, eşit kenar, doğrusallık) kullanılır.",
     "examTip": "Çeşitkenar sorulduğunda önce iki açısı eşit çıkan üçgenleri ele, sonra geniş açılıları; kalan aday için açıları kontrol etmek yeter."
   },
+  "insight": {
+    "analogy": {
+      "title": "Açı dominoları",
+      "text": "Açılar domino taşları gibi dizilidir: ilk taşı (karenin 90°'si ile verilen açı) devirirsen komşu açı düşer, o da bir sonrakini devirir. Doğru üzerinde 180°, üçgende 180°, köşede 90° kuralları her taşın bir sonrakini nasıl devirdiğidir.",
+      "breaks": "Dominoda sıra tek yönlüdür; açılarda ise bazen bir kenar eşitliği (ikizkenarlık) gibi yan yoldan gelen bir bilgi gerekir."
+    },
+    "mindset": "Hangi açıyı hemen bulabilirim? Verilen açının karenin köşesindeki tümleyeniyle başla. Soru bir eleme sorusu: her üçgende yalnız 'geniş mi, ikizkenar mı?' diye sor.",
+    "radar": [
+      {"see": "Karenin köşesinde bir açı verilmiş", "think": "Köşedeki diğer parça 90° − verilen açı."},
+      {"see": "'Dar açılı çeşitkenar' gibi iki koşullu sınıflandırma", "think": "Eleme yap: geniş açılıyı ve ikizkenarı at, kalanı doğrula."},
+      {"see": "Karenin kenarına eşit bir kenar çıkıyor", "think": "İkizkenar üçgen: taban açıları eşit."}
+    ],
+    "aha": "Aaa: beş üçgenin hepsini çözmek gerekmiyormuş! Eşkenar, iki ikizkenar ve bir geniş açılı elenince tek aday kalıyor; ortadaki üçgen komşularının 'artık' açılarından oluşuyor.",
+    "sanityCheck": "E'nin açıları 75° + 60° + 45° = 180°; üçü de 90°'den küçük ve birbirinden farklı.",
+    "targetSeconds": 70
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -198,5 +214,5 @@
   "sources": [
     {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Matematik 9 — Üçgenler: açılar ve üçgen çeşitleri", "note": "Üçgenleri açılarına ve kenarlarına göre sınıflandırma; ikizkenar üçgen özellikleri."}
   ],
-  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-pilot-v1", "createdAt": "2026-10-18T08:10:00Z"}
+  "generation": {"generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)", "tier": "STRONG", "promptVersion": "ogretim-kavrayis-v2", "createdAt": "2026-10-18T08:10:00Z"}
 }

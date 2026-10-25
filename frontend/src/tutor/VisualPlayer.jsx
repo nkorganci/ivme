@@ -23,6 +23,9 @@ const COMPONENTS = {
 };
 const SLIDER_TEMPLATES = new Set(['plot', 'particles']);
 
+/** Otomatik oynatmada kare süresi alt yazının okunma süresine göre uzar (en az 2,6 sn). */
+const readingTime = (caption = '') => Math.min(9000, Math.max(2600, 1200 + caption.length * 45));
+
 /**
  * Tahmin et → izle → açıkla: tahmin sorusu varsa görsel tahminden sonra açılır; kareler öğrencinin
  * hızında ilerler (segmentasyon). Hareket azaltma tercihinde otomatik oynatma kapalıdır.
@@ -47,9 +50,9 @@ export default function VisualPlayer({ visual, onPredict, busy = false, preview 
   useEffect(() => {
     if (!playing) return undefined;
     if (index >= frames.length - 1) { setPlaying(false); return undefined; }
-    const timer = setTimeout(() => setIndex((i) => Math.min(frames.length - 1, i + 1)), 2800);
+    const timer = setTimeout(() => setIndex((i) => Math.min(frames.length - 1, i + 1)), readingTime(frames[index]?.caption));
     return () => clearTimeout(timer);
-  }, [playing, index, frames.length]);
+  }, [playing, index, frames]);
 
   if (errors.length) {
     return <div className="alert alert-warn" role="status">Bu görsel çizilemedi; içerik öğretmen incelemesine bildirildi.</div>;
@@ -83,12 +86,16 @@ export default function VisualPlayer({ visual, onPredict, busy = false, preview 
           onChange={(e) => setValues((v) => ({ ...v, [slider.name]: Number(e.target.value) }))} /></label>)}
     </div>}
     {!locked && frames.length > 0 && <footer className="tutor-frames">
-      <p className="tutor-caption" aria-live="polite"><span className="badge badge-primary">{index + 1}/{frames.length}</span> {state.caption}</p>
+      <p key={index} className="tutor-caption" aria-live="polite"><span className="badge badge-primary">{index + 1}/{frames.length}</span> {state.caption}</p>
       <div className="tutor-frame-buttons">
+        {frames.length > 1 && <span className="tutor-frame-dots" role="group" aria-label="Kareler">
+          {frames.map((frame, i) => <button key={i} type="button" className={`tutor-frame-dot${i === index ? ' active' : i < index ? ' seen' : ''}`}
+            aria-label={`Kare ${i + 1}`} aria-current={i === index ? 'step' : undefined} onClick={() => { setPlaying(false); setIndex(i); }} />)}
+        </span>}
         <button type="button" className="btn btn-secondary btn-sm" disabled={index === 0} onClick={() => { setPlaying(false); setIndex((i) => i - 1); }}>◀ Önceki</button>
-        {!reduced && frames.length > 1 && <button type="button" className="btn btn-secondary btn-sm"
-          onClick={() => { if (index >= frames.length - 1) setIndex(0); setPlaying((p) => !p); }}>{playing ? '⏸ Durdur' : '▶ Oynat'}</button>}
-        <button type="button" className="btn btn-primary btn-sm" disabled={index >= frames.length - 1} onClick={() => { setPlaying(false); setIndex((i) => i + 1); }}>Sonraki ▶</button>
+        {!reduced && frames.length > 1 && <button type="button" className={`btn btn-sm ${playing ? 'btn-secondary' : 'btn-primary'}`}
+          onClick={() => { if (index >= frames.length - 1) setIndex(0); setPlaying((p) => !p); }}>{playing ? '⏸ Durdur' : index >= frames.length - 1 ? '↻ Baştan oynat' : '▶ Animasyonu oynat'}</button>}
+        <button type="button" className="btn btn-secondary btn-sm" disabled={index >= frames.length - 1} onClick={() => { setPlaying(false); setIndex((i) => i + 1); }}>Sonraki ▶</button>
       </div>
     </footer>}
   </section>;

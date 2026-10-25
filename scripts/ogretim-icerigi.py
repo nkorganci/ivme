@@ -225,6 +225,14 @@ def pre_answer_texts(content):
         texts.append((f"pattern.{key}", pattern[key]))
     for index, step in enumerate(pattern["method"]):
         texts.append((f"pattern.method[{index}]", step))
+    insight = content.get("insight")
+    if insight:
+        for key in ("title", "text", "breaks"):
+            texts.append((f"insight.analogy.{key}", insight["analogy"][key]))
+        texts.append(("insight.mindset", insight["mindset"]))
+        for index, item in enumerate(insight["radar"]):
+            texts.append((f"insight.radar[{index}].see", item["see"]))
+            texts.append((f"insight.radar[{index}].think", item["think"]))
     visual = content["visual"]
     if visual.get("recommended") and visual.get("stage") == "PRE":
         texts.append(("visual.title", visual["title"]))
@@ -343,6 +351,9 @@ def semantic_issues(content):
     elif question["subjectId"] in COMPUTABLE_SUBJECTS and not any(step.get("check") for step in content["solution"]["steps"]):
         issues.append(issue("NO_COMPUTATION_CHECK", "SOFT", "solution.steps",
                             "Sayısal derste hiçbir adım bağımsız denetlenmedi."))
+    if not content.get("insight"):
+        issues.append(issue("NO_INSIGHT", "SOFT", "insight",
+                            "Kavrayış katmanı (benzetme, aha, radar, sağlama) eksik."))
     if not content["classification"]["catalogAgreement"]:
         issues.append(issue("CATALOG_DISAGREEMENT", "SOFT", "classification.catalogAgreement",
                             content["classification"]["catalogNote"] or "Katalog etiketiyle uyuşmazlık."))
@@ -570,6 +581,21 @@ def pattern_consistency(contents):
     return issues
 
 
+def visual_issues(paths):
+    """Görsel parametrelerini ön yüzün şablon doğrulayıcısıyla (Node) denetler."""
+    node = shutil.which("node")
+    if not node:
+        return {path: [issue("VISUAL_UNCHECKED", "SOFT", "visual", "Node bulunamadı; görsel parametreleri denetlenmedi.")]
+                for path in paths}
+    result = subprocess.run([node, str(APP / "scripts/ogretim-gorsel-denetle.mjs"), *map(str, paths)],
+                            capture_output=True, text=True, encoding="utf-8")
+    if result.returncode:
+        raise RuntimeError(f"Görsel denetimi çalışmadı: {result.stderr.strip()}")
+    errors = json.loads(result.stdout or "{}")
+    return {path: [issue("VISUAL_INVALID", "HARD", "visual", message) for message in errors.get(str(path), [])]
+            for path in paths}
+
+
 def evaluate(paths, connection=None, images_root=DEFAULT_IMAGES, offline_facts=None):
     validator = load_schema_validator()
     loaded, items = [], []
@@ -600,8 +626,9 @@ def evaluate(paths, connection=None, images_root=DEFAULT_IMAGES, offline_facts=N
     elif offline_facts is not None:
         facts, categories = offline_facts
     drift = pattern_consistency(loaded)
+    visuals = visual_issues([path for path, _ in loaded]) if loaded else {}
     for path, content in loaded:
-        issues = semantic_issues(content) + leak_findings(content) + drift.get(path, [])
+        issues = semantic_issues(content) + leak_findings(content) + drift.get(path, []) + visuals.get(path, [])
         if connection is not None or offline_facts is not None:
             issues += db_issues(content, facts, categories, images_root)
         checks = verify(content)

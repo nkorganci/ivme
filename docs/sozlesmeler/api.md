@@ -211,6 +211,10 @@ ile denetlenir ve `ogretim aktar` ile `tutor_contents` tablosuna sürümlü yaz�
 | `POST /api/operator/tutor/versions/{contentId}/review` | Rubrikli öğretmen kararı (`tutor_content_reviews`) |
 | `GET /api/operator/tutor/calibration`, `/queue`, `POST /queue/{id}`, `GET /usage` | Güven bandı kalibrasyonu, öğretmen kuyruğu, model kullanım özeti |
 
+Kart içeriği hak edildikçe açılır: `PATTERN` ve `SUMMARY` kartları kavrayış katmanının cevapsız
+kısmını (`insight.analogy`, `mindset`, `radar`, `targetSeconds`) taşır; `insight.aha` ve
+`sanityCheck` yalnız soru çözüldükten sonra `FINAL` ve `SUMMARY` kartlarında gönderilir.
+
 Öğrenciye görünürlük `YKS_OGRETIM_GORUNURLUGU` (varsayılan `VERIFIED_OR_APPROVED`;
 üretimde `APPROVED_ONLY` önerilir). Serbest açıklama sınıflandırması iki katmanlı yerel
 Ollama yönlendirmesi kullanır: ekonomik `YKS_AI_EKONOMIK_MODEL` ve güçlü `YKS_AI_GUCLU_MODEL`;

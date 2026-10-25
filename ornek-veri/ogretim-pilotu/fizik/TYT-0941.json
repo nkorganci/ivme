@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "contentKey": "tutor:TYT-0941",
+  "question": {
+    "code": "TYT-0941",
+    "exam": "TYT",
+    "subjectId": "fizik",
+    "categoryId": "tyt.fizik.kaldirma-kuvveti",
+    "subtopic": "Taşırma kabı: taşan sıvı, kaldırma kuvveti ve 'kesinlikle' yargıları",
+    "answerKey": "A",
+    "choiceCount": 5,
+    "imageSha256": "886360fc89de4f62cff8c5fc5b331d4343ec61924af854267b582552245f7e3e"
+  },
+  "reading": {
+    "status": "CLEAR",
+    "text": "Ahsen, tamamen su dolu bir taşırma kabına suda çözünmeyen K ve L katı cisimlerini ayrı ayrı yavaşça bıraktığında; her ikisinin eşit hacimde su taşırdığını gözlemliyor. Ahsen'in bu gözlemine göre; I. K ve L cisimlerine suyun uyguladığı kaldırma kuvvetleri eşittir. II. K ve L cisimlerinin hacimleri eşittir. III. K ve L cisimlerinin özkütleleri eşittir. yargılarından hangileri kesinlikle doğrudur?",
+    "choices": {"A": "Yalnız I", "B": "Yalnız III", "C": "I ve II", "D": "II ve III", "E": "I, II ve III"},
+    "figure": null,
+    "figureCritical": false,
+    "uncertain": [],
+    "confidence": "HIGH"
+  },
+  "classification": {
+    "difficulty": "ORTA",
+    "difficultyReason": "Formül tek ama 'kesinlikle' ifadesi, cisimlerin yüzme ve batma durumlarını ayrı ayrı düşünmeyi ve karşı örnek kurmayı ister.",
+    "skills": ["KAVRAMA", "AKIL_YURUTME"],
+    "prerequisites": ["tyt.fizik.madde-ve-ozellikleri"],
+    "catalogAgreement": true,
+    "catalogNote": null
+  },
+  "pattern": {
+    "key": "fizik.kaldirma.tasan-sivi-kesinlik",
+    "name": "Taşan sıvı: kaldırma kuvvetini kesin söyler, cismi değil",
+    "trigger": "Taşırma kabı ya da taşan sıvı miktarı verilip cisimlerin kaldırma kuvveti, hacmi, kütlesi veya özkütlesi karşılaştırılıyorsa.",
+    "bigIdea": "Kaldırma kuvveti, cismin yerinden ettiği sıvının ağırlığıdır. Taşan sıvı yalnız suyun içinde kalan (batan) hacmi ölçer; cismin su dışında kalan kısmını, kütlesini ve özkütlesini tek başına söylemez.",
+    "method": [
+      "Taşan sıvıyı batan hacme bağla: V_taşan = V_batan.",
+      "Kaldırma kuvvetini yaz: F = V_batan · d_sıvı · g.",
+      "Hacim, kütle ve özkütle yargılarını yüzme, askıda kalma ve batma durumlarında ayrı ayrı sına.",
+      "Tek bir karşı örnek bulunan yargı 'kesinlikle' doğru değildir."
+    ],
+    "whenNot": "Cisimlerin tamamen battığı söylenmişse taşan hacim cismin toplam hacmine eşittir; o zaman hacim karşılaştırması da kesinleşir.",
+    "examTip": "'Kesinlikle' kelimesi karşı örnek ister: bir tahta (yüzen) ile bir taş (batan) hayal etmek çoğu yargıyı saniyeler içinde eler."
+  },
+  "insight": {
+    "analogy": {
+      "title": "Taşan su, kaldırma kuvvetinin faturasıdır",
+      "text": "Suya giren cisim kendine yer açar; açtığı yerdeki su kaptan taşar. Su, yerini kaptırdığı kadar yukarı iter: taşan suyun ağırlığı kaldırma kuvvetinin faturasıdır. İki fatura eşitse iki kuvvet de eşittir.",
+      "breaks": "Fatura yalnız suyun içindeki kısım için kesilir. Yüzen cismin su dışında kalan bölümü yer açmaz; bu yüzden eşit fatura, eşit büyüklükte cisim demek değildir."
+    },
+    "mindset": "'Kesinlikle' görünce en kötü senaryoyu ara: cisim yüzüyor da olabilir, batıyor da. Her yargıyı iki durumda da dene; ikisinde de ayakta kalan yargı kesindir.",
+    "radar": [
+      {"see": "Ağzına kadar dolu taşırma kabı", "think": "Taşan sıvı hacmi = batan hacim; ağırlığı = kaldırma kuvveti."},
+      {"see": "'Kesinlikle doğrudur' sorusu", "think": "Yüzme, askıda kalma ve batma durumlarını ayrı ayrı dene; tek karşı örnek yargıyı düşürür."},
+      {"see": "Hacim, kütle ya da özkütle karşılaştırması", "think": "Cismin ağırlığı ile kaldırma kuvveti yalnız yüzen ya da askıda kalan cisimde eşittir."}
+    ],
+    "aha": "Aaa: taşan su yalnız suyun altındaki kısmı ölçüyormuş! Kaldırma kuvvetini kesin söyler ama cismin kendisini (hacmini, özkütlesini) söylemez.",
+    "sanityCheck": "Karşı örnekle sağla: K yüzen bir tahta, L batan bir taş olsun. İkisi de 100 cm³ su taşırabilir ama hacimleri ve özkütleleri farklıdır. Ayakta kalan tek yargı I.",
+    "targetSeconds": 35
+  },
+  "strategyChoice": {
+    "prompt": "Bu soruda ilk hamlen ne olmalı?",
+    "options": [
+      {"id": "olcu-kesinlik", "text": "Taşan suyun neyi kesin ölçtüğünü belirleyip her yargıyı yüzme ve batma durumlarında sınamak", "correct": true,
+       "feedback": "Doğru. Taşan su batan hacmi ölçer; kaldırma kuvveti buradan kesin çıkar. Hacim ve özkütle için iki durumu da denemek gerekir."},
+      {"id": "es-cisim", "text": "Eşit su taşırdıklarına göre iki cismi her bakımdan eş kabul etmek", "correct": false,
+       "feedback": "Aynı etki aynı cisim demek değildir. Yüzen bir tahta ile batan bir taş aynı miktar su taşırabilir."},
+      {"id": "ozkutle-hesap", "text": "Önce iki cismin özkütlelerini hesaplamaya çalışmak", "correct": false,
+       "feedback": "Kütleler verilmediği için özkütle hesaplanamaz. Önce taşan suyun neyi kesin söylediğini belirle."}
+    ]
+  },
+  "hints": [
+    {"level": 1, "kind": "KAVRAM", "text": "Kaldırma kuvveti, cismin yerinden ettiği sıvının ağırlığına eşittir. Taşırma kabında yerinden edilen sıvı, kaptan taşan sıvıdır."},
+    {"level": 2, "kind": "STRATEJI", "text": "Soru 'kesinlikle' diyor: cisimlerden biri yüzüyor, diğeri batıyor olabilir. Her yargıyı bu iki durumda ayrı ayrı sına."},
+    {"level": 3, "kind": "ADIM", "text": "Taşan su hacmi yalnız suyun içindeki kısmı ölçer: V_taşan = V_batan. Önce kaldırma kuvvetlerini bu eşitlikle karşılaştır, sonra yüzen bir cisim için hacim yargısını dene."}
+  ],
+  "guidingQuestions": [
+    {"text": "Taşan suyun hacmi cismin hangi kısmının hacmine eşittir?", "answer": "Suyun altında kalan (batan) kısmının hacmine."},
+    {"text": "Yüzen bir cisim ile batan bir cisim aynı miktar su taşırırsa hacimleri eşit olmak zorunda mı?", "answer": "Hayır; yüzen cismin su dışında kalan bir kısmı da vardır."}
+  ],
+  "solution": {
+    "steps": [
+      {"id": "s1", "text": "Kap ağzına kadar dolu olduğundan cisim suya girince, suyun içinde kalan (batan) hacmi kadar su taşar: V_taşan = V_batan.",
+       "why": "İki madde aynı yeri aynı anda dolduramaz; suyun içindeki kısım kadar su yerinden çıkmak zorundadır. Suyun dışında kalan kısım suya değmez, su taşırmaz.",
+       "selfExplain": {"prompt": "Taşan suyun hacmi neden cismin toplam hacmine değil, batan hacmine eşittir?",
+         "options": [
+           {"id": "yer-acar", "text": "Suyun dışında kalan kısım suyu yerinden etmez; yalnız suyun içindeki kısım yer açar.", "correct": true,
+            "feedback": "Evet. Yüzen bir cismin üst kısmı havadadır; o kısım için su taşmaz."},
+           {"id": "sikistirir", "text": "Çünkü cisim suyu sıkıştırır, bir kısmı taşmaz.", "correct": false,
+            "feedback": "Su pratikte sıkıştırılamaz. Taşan miktarı belirleyen, suyun içine giren hacimdir."},
+           {"id": "agirlik", "text": "Çünkü taşan su her zaman cismin ağırlığına eşittir.", "correct": false,
+            "feedback": "Bu yalnız yüzen ve askıda kalan cisim için doğrudur; batan cisimde ağırlık kaldırma kuvvetinden büyüktür."}
+         ]}},
+      {"id": "s2", "text": "Kaldırma kuvveti yerinden edilen sıvının ağırlığıdır: F = V_batan · d_su · g. Taşan hacimler eşit ve sıvı aynı (su) olduğundan F_K = F_L. I kesinlikle doğrudur.",
+       "why": "Arşimet ilkesi: sıvı, cisme yerinden ettiği sıvının ağırlığı kadar yukarı yönlü kuvvet uygular. Eşit hacim, aynı sıvı → eşit ağırlık."},
+      {"id": "s3", "text": "II için karşı örnek: K'nin hacmi 300 cm³ olsun ve yüzerken üçte biri batsın; batan hacim 300 · (1/3) = 100 cm³. L'nin hacmi 100 cm³ olsun ve tamamen batsın. İkisi de 100 cm³ su taşırır ama hacimleri farklıdır. II kesin değil.",
+       "why": "Yüzen cismin bir kısmı su dışında kalır; taşan su toplam hacmi değil yalnız batan kısmı gösterir.",
+       "check": {"type": "sympy", "expr": "300*Rational(1, 3)", "equals": "100"}},
+      {"id": "s4", "text": "III için aynı örnek: yüzen K'nin özkütlesi d_su · (batan/toplam) = 1 · (100/300) = 1/3 g/cm³. Batan L'nin özkütlesi ise sudan büyüktür (ör. 3 g/cm³). Özkütleler farklı olabilir. III kesin değil.",
+       "why": "Yüzen cisimde ağırlık = kaldırma kuvveti olduğundan d_cisim · V_toplam = d_su · V_batan. Batan cismin özkütlesi sudan büyüktür.",
+       "check": {"type": "sympy", "expr": "1*100/300", "equals": "Rational(1, 3)"}},
+      {"id": "s5", "text": "Yalnız I kesinlikle doğrudur.",
+       "why": "I her durumda geçerlidir; II ve III için birer karşı örnek bulundu."}
+    ],
+    "finalAnswer": {"choice": "A", "value": "Yalnız I",
+      "check": {"type": "choice", "expr": "Tuple(1, 0, 0)", "choice": "A", "note": "Her şık (I, II, III) doğruluk üçlüsüyle temsil edilir: 1 kesin doğru, 0 kesin değil."}},
+    "levels": {
+      "sezgi": "Suya giren her cisim suyun içinde bir 'yer kiralar'; su da kiraladığı yer kadar yukarı iter. Taşan su bu kiranın makbuzudur: makbuzlar eşitse itmeler eşittir. Ama kiracının su dışında kalan bir balkonu (yüzen kısmı) olabilir; bu yüzden makbuz evin tamamının büyüklüğünü, yani cismin hacmini ya da özkütlesini söylemez.",
+      "kisayol": "Taşan sıvı = kaldırma kuvveti (kesin). Hacim ve özkütle için yüzen tahta–batan taş karşı örneği yeter → Yalnız I."
+    }
+  },
+  "misconceptions": [
+    {"id": "m1", "choice": "C",
+     "mistake": "Taşan su hacimleri eşit olduğu için cisimlerin hacimlerinin de eşit olduğunu sanmak.",
+     "cause": "Taşan suyun cismin toplam hacmine eşit olduğunu düşünmek; cisimlerden birinin yüzüyor olabileceğini hesaba katmamak.",
+     "fix": "Taşan hacim = batan hacim. Cisim yüzüyorsa bir kısmı su dışında kalır; toplam hacmi taşan sudan büyük olabilir.",
+     "guidingQuestion": "Suda yüzen bir tahta parçasının tamamı suyun altında mı?",
+     "check": {"type": "choice", "expr": "Tuple(1, 1, 0)", "choice": "C"}},
+    {"id": "m2", "choice": "E",
+     "mistake": "Eşit su taşırdıkları için iki cismi her bakımdan eş sanmak.",
+     "cause": "'Aynı etki → aynı cisim' genellemesi; 'kesinlikle' kelimesinin karşı örnek istediğini gözden kaçırmak.",
+     "fix": "Biri yüzen tahta, diğeri batan taş olabilir: aynı miktar su taşırırlar ama hacimleri ve özkütleleri farklıdır.",
+     "guidingQuestion": "Bir tahta ile bir taş aynı miktar su taşırabilir mi?",
+     "check": {"type": "choice", "expr": "Tuple(1, 1, 1)", "choice": "E"}},
+    {"id": "m3", "choice": "B",
+     "mistake": "Taşan suyun cismin özkütlesini belirlediğini, kaldırma kuvvetini ise belirlemediğini sanmak.",
+     "cause": "Kaldırma kuvvetinin cismin özkütlesine bağlı olduğunu düşünmek; oysa kuvvet sıvının özkütlesine ve batan hacme bağlıdır.",
+     "fix": "F = V_batan · d_sıvı · g: formülde cismin özkütlesi yoktur. Taşan su kuvveti kesin verir, özkütleyi vermez.",
+     "guidingQuestion": "Kaldırma kuvveti formülünde hangi maddenin özkütlesi yer alır: cismin mi, sıvının mı?",
+     "check": {"type": "choice", "expr": "Tuple(0, 0, 1)", "choice": "B"}},
+    {"id": "m4", "choice": "D",
+     "mistake": "Kaldırma kuvvetinin cismin kendi ağırlığına eşit olduğunu düşünüp I'i elemek.",
+     "cause": "'Kaldırma kuvveti = ağırlık' eşitliğini batan cisimler için de geçerli sanmak.",
+     "fix": "Kaldırma kuvveti her durumda yerinden edilen sıvının ağırlığıdır; taşan sular eşitse kuvvetler de eşittir.",
+     "guidingQuestion": "Kaldırma kuvveti, cismin ağırlığına mı yoksa yerinden ettiği sıvının ağırlığına mı eşittir?",
+     "check": {"type": "choice", "expr": "Tuple(0, 1, 1)", "choice": "D"}}
+  ],
+  "alternative": {
+    "title": "Üç senaryoyu dene",
+    "text": "İkisi de yüzüyorsa: kuvvetler eşit, ağırlıklar da eşit; ama hacimler farklı olabilir. Biri yüzüp biri batıyorsa: kuvvetler eşit; hacim ve özkütle farklı. İkisi de batıyorsa: hacimler eşit ama özkütleler yine farklı olabilir. Üç senaryonun hepsinde değişmeden doğru kalan tek yargı I'dir."
+  },
+  "visual": {
+    "recommended": true,
+    "reason": "Taşan suyun yalnız batan kısmı ölçtüğünü görmek, 'eşit su = eşit cisim' yanılgısını tek bakışta çözer.",
+    "stage": "POST",
+    "template": "geometry",
+    "title": "Taşan su yalnız suyun altındaki kısmı ölçer",
+    "params": {
+      "view": [0, 21, 0, 10],
+      "points": [
+        {"id": "a1", "x": 1, "y": 1, "hidden": true}, {"id": "b1", "x": 8, "y": 1, "hidden": true},
+        {"id": "c1", "x": 8, "y": 6, "hidden": true}, {"id": "d1", "x": 1, "y": 6, "hidden": true},
+        {"id": "e1", "x": 8.5, "y": 3.8, "hidden": true}, {"id": "f1", "x": 8.5, "y": 0.5, "hidden": true},
+        {"id": "g1", "x": 10.3, "y": 0.5, "hidden": true}, {"id": "h1", "x": 10.3, "y": 3.8, "hidden": true},
+        {"id": "i1", "x": 10.3, "y": 3, "hidden": true}, {"id": "j1", "x": 8.5, "y": 3, "hidden": true},
+        {"id": "s1", "x": 9.4, "y": 4.2, "hidden": true},
+        {"id": "a2", "x": 11, "y": 1, "hidden": true}, {"id": "b2", "x": 18, "y": 1, "hidden": true},
+        {"id": "c2", "x": 18, "y": 6, "hidden": true}, {"id": "d2", "x": 11, "y": 6, "hidden": true},
+        {"id": "e2", "x": 18.5, "y": 3.8, "hidden": true}, {"id": "f2", "x": 18.5, "y": 0.5, "hidden": true},
+        {"id": "g2", "x": 20.3, "y": 0.5, "hidden": true}, {"id": "h2", "x": 20.3, "y": 3.8, "hidden": true},
+        {"id": "i2", "x": 20.3, "y": 3, "hidden": true}, {"id": "j2", "x": 18.5, "y": 3, "hidden": true},
+        {"id": "s2", "x": 19.4, "y": 4.2, "hidden": true},
+        {"id": "k1", "x": 3, "y": 4.5, "hidden": true}, {"id": "k2", "x": 6, "y": 4.5, "hidden": true},
+        {"id": "k3", "x": 6, "y": 8, "hidden": true}, {"id": "k4", "x": 3, "y": 8, "hidden": true},
+        {"id": "k5", "x": 6, "y": 6, "hidden": true}, {"id": "k6", "x": 3, "y": 6, "hidden": true},
+        {"id": "l1", "x": 13.75, "y": 2, "hidden": true}, {"id": "l2", "x": 15.25, "y": 2, "hidden": true},
+        {"id": "l3", "x": 15.25, "y": 5, "hidden": true}, {"id": "l4", "x": 13.75, "y": 5, "hidden": true},
+        {"id": "fk1", "x": 4.5, "y": 4.5, "hidden": true}, {"id": "fk2", "x": 4.5, "y": 7.3, "hidden": true},
+        {"id": "fl1", "x": 14.5, "y": 2, "hidden": true}, {"id": "fl2", "x": 14.5, "y": 4.8, "hidden": true}
+      ],
+      "polygons": [
+        {"id": "su1", "points": ["a1", "b1", "c1", "d1"], "tone": "navy"},
+        {"id": "su2", "points": ["a2", "b2", "c2", "d2"], "tone": "navy"},
+        {"id": "tasan1", "points": ["f1", "g1", "i1", "j1"], "tone": "navy"},
+        {"id": "tasan2", "points": ["f2", "g2", "i2", "j2"], "tone": "navy"},
+        {"id": "K", "points": ["k1", "k2", "k3", "k4"], "tone": "warn"},
+        {"id": "Kbatan", "points": ["k1", "k2", "k5", "k6"], "tone": "bad"},
+        {"id": "L", "points": ["l1", "l2", "l3", "l4"], "tone": "bad"}
+      ],
+      "paths": [
+        {"id": "akis1", "points": ["c1", "s1"], "tone": "navy"},
+        {"id": "akis2", "points": ["c2", "s2"], "tone": "navy"}
+      ],
+      "segments": [
+        {"id": "kap1a", "from": "e1", "to": "f1", "tone": "ink"},
+        {"id": "kap1b", "from": "f1", "to": "g1", "tone": "ink"},
+        {"id": "kap1c", "from": "g1", "to": "h1", "tone": "ink"},
+        {"id": "kap2a", "from": "e2", "to": "f2", "tone": "ink"},
+        {"id": "kap2b", "from": "f2", "to": "g2", "tone": "ink"},
+        {"id": "kap2c", "from": "g2", "to": "h2", "tone": "ink"},
+        {"id": "FK", "from": "fk1", "to": "fk2", "tone": "ok", "arrow": true, "label": "F(K)"},
+        {"id": "FL", "from": "fl1", "to": "fl2", "tone": "ok", "arrow": true, "label": "F(L)"}
+      ],
+      "texts": [
+        {"id": "tK", "x": 4.5, "y": 8.6, "text": "K (yüzüyor)"},
+        {"id": "tL", "x": 14.5, "y": 5.6, "text": "L (batıyor)"},
+        {"id": "tt1", "x": 9.4, "y": 1.6, "text": "taşan"},
+        {"id": "tt2", "x": 19.4, "y": 1.6, "text": "taşan"},
+        {"id": "tsu1", "x": 2.4, "y": 1.6, "text": "su"},
+        {"id": "tsu2", "x": 12.4, "y": 1.6, "text": "su"}
+      ]
+    },
+    "frames": [
+      {"caption": "İki kap da ağzına kadar dolu. Kaba ne girerse, suyun içinde kalan kısmı kadar su yandaki kaba taşar.",
+       "show": ["su1", "su2", "kap1a", "kap1b", "kap1c", "kap2a", "kap2b", "kap2c", "tsu1", "tsu2"]},
+      {"caption": "K yüzüyor: yalnız suyun altındaki kırmızı kısım yer açar. Taşan su tam bu kısım kadardır; K'nin su üstündeki parçası hiç su taşırmaz.",
+       "show": ["su1", "su2", "kap1a", "kap1b", "kap1c", "kap2a", "kap2b", "kap2c", "tsu1", "tsu2", "K", "Kbatan", "akis1", "tasan1", "tK", "tt1"],
+       "focus": ["Kbatan", "tasan1"]},
+      {"caption": "L tamamen batıyor: bütün hacmi kadar su taşar. Taşan sular eşit.",
+       "show": ["su1", "su2", "kap1a", "kap1b", "kap1c", "kap2a", "kap2b", "kap2c", "tsu1", "tsu2", "K", "Kbatan", "akis1", "tasan1", "tK", "tt1", "L", "akis2", "tasan2", "tL", "tt2"],
+       "focus": ["L", "tasan2"]},
+      {"caption": "Eşit taşan su → yerinden edilen suyun ağırlığı eşit → kaldırma kuvvetleri eşit (yeşil oklar). I kesinlikle doğru.",
+       "show": ["su1", "su2", "kap1a", "kap1b", "kap1c", "kap2a", "kap2b", "kap2c", "tsu1", "tsu2", "K", "Kbatan", "akis1", "tasan1", "tK", "tt1", "L", "akis2", "tasan2", "tL", "tt2", "FK", "FL"],
+       "focus": ["FK", "FL"]},
+      {"caption": "Ama K'nin su dışında kalan büyük bir parçası var: K'nin hacmi L'ninkinden büyük. Hacim (II) ve özkütle (III) eşit olmak zorunda değil.",
+       "show": ["su1", "su2", "kap1a", "kap1b", "kap1c", "kap2a", "kap2b", "kap2c", "tsu1", "tsu2", "K", "Kbatan", "akis1", "tasan1", "tK", "tt1", "L", "akis2", "tasan2", "tL", "tt2", "FK", "FL"],
+       "focus": ["K", "L"]}
+    ],
+    "predict": {
+      "prompt": "Önce tahmin et: Yüzen K, kendi hacminin tamamı kadar mı, yoksa yalnız suyun altındaki kısmı kadar mı su taşırır?",
+      "options": [
+        {"id": "batan", "text": "Yalnız suyun altındaki kısmı kadar", "correct": true,
+         "feedback": "Doğru. Su dışında kalan kısım suya değmez, yer açmaz. Şimdi iki kabı yan yana izle."},
+        {"id": "tamami", "text": "Hacminin tamamı kadar", "correct": false,
+         "feedback": "Suyun dışındaki kısım suyu yerinden edemez. Animasyonda taşan suyun hangi kısma karşılık geldiğine bak."}
+      ]
+    }
+  },
+  "twin": {
+    "text": "Ağzına kadar zeytinyağı dolu bir taşırma kabına, yağda çözünmeyen X ve Y katı cisimleri ayrı ayrı yavaşça bırakılıyor. X'in taşırdığı yağın kütlesi, Y'nin taşırdığı yağın kütlesinden büyüktür. Buna göre; I. X'e etki eden kaldırma kuvveti, Y'ye etki edenden büyüktür. II. X'in hacmi, Y'nin hacminden büyüktür. III. X'in kütlesi, Y'nin kütlesinden büyüktür. yargılarından hangileri kesinlikle doğrudur?",
+    "choices": {"A": "Yalnız I", "B": "Yalnız II", "C": "I ve II", "D": "I ve III", "E": "I, II ve III"},
+    "answer": "A",
+    "solution": "Kaldırma kuvveti taşan yağın ağırlığıdır; X daha çok yağ taşırdığından F_X > F_Y kesin (I). Hacim: Y yüzüyor ve büyük kısmı yağın dışında kalıyorsa Y'nin hacmi X'inkinden büyük olabilir (II kesin değil). Kütle: X yüzüyor (ağırlığı F_X) ve Y küçük ama çok yoğun bir taş gibi batıyorsa Y'nin ağırlığı F_Y'den çok büyük olabilir; Y daha ağır olabilir (III kesin değil). Yalnız I.",
+    "choiceValues": {"A": "Tuple(1, 0, 0)", "B": "Tuple(0, 1, 0)", "C": "Tuple(1, 1, 0)", "D": "Tuple(1, 0, 1)", "E": "Tuple(1, 1, 1)"},
+    "check": {"type": "twinChoice", "expr": "Tuple(1, 0, 0)", "choice": "A"}
+  },
+  "choiceValues": {"A": "Tuple(1, 0, 0)", "B": "Tuple(0, 0, 1)", "C": "Tuple(1, 1, 0)", "D": "Tuple(0, 1, 1)", "E": "Tuple(1, 1, 1)"},
+  "sources": [
+    {"type": "CURRICULUM", "reference": "MEB Ortaöğretim Fizik — Madde ve Özellikleri / Kaldırma Kuvveti: Arşimet ilkesi", "note": "Kaldırma kuvvetinin yerinden edilen sıvının ağırlığına eşitliği; yüzme, askıda kalma ve batma koşulları."}
+  ],
+  "generation": {
+    "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
+    "tier": "STRONG",
+    "promptVersion": "ogretim-kavrayis-v2",
+    "createdAt": "2026-10-25T17:00:00Z"
+  }
+}

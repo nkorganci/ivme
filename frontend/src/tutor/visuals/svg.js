@@ -54,6 +54,9 @@ export function wrapText(text, max = 22) {
   return lines.length ? lines : [''];
 }
 
+/** Kesiksiz çizgi ilk görününce kalemle çiziliyormuş gibi gelir (CSS .viz-draw); kesikli çizgide desen bozulmasın diye kapalı. */
+export const draw = (dashed = false) => (dashed ? {} : { pathLength: 1, className: 'viz-draw' });
+
 export function visible(state, id) {
   return !state?.show || state.show.has(id);
 }

@@ -1,6 +1,6 @@
 import { useId, useMemo } from 'react';
 import { compileExpr } from '../expr.js';
-import { fill, formatNumber, niceStep, scale, stroke, ticks, visible } from './svg.js';
+import { draw, fill, formatNumber, niceStep, scale, stroke, ticks, visible } from './svg.js';
 
 const W = 640;
 const H = 400;
@@ -71,12 +71,12 @@ export default function Plot({ params, state, values = {} }) {
           return <rect key={i} x={sx(px) - width / 2} y={Math.min(sy(py), sy(0))} width={width} height={Math.abs(sy(py) - sy(0))}
             fill={fill(series.tone ?? 'navy')} stroke={stroke(series.tone ?? 'navy')} />;
         })}</g>
-        : <path key={series.id} d={path(series.points)} fill="none" stroke={stroke(series.tone ?? 'navy')} strokeWidth="2.5" />)}
+        : <path key={series.id} d={path(series.points)} fill="none" stroke={stroke(series.tone ?? 'navy')} strokeWidth="2.5" {...draw()} />)}
       {(params.functions ?? []).filter((fn) => visible(state, fn.id)).map((fn) => {
         const [d0, d1] = fn.domain ?? [x0, x1];
         return sample(compiled[fn.id], env, Math.max(d0, x0), Math.min(d1, x1), fn.holes ?? []).map((segment, i) =>
           <path key={`${fn.id}-${i}`} d={path(segment)} fill="none" stroke={stroke(fn.tone ?? 'navy')} strokeWidth="2.6"
-            strokeDasharray={fn.dashed ? '6 5' : undefined} />);
+            strokeDasharray={fn.dashed ? '6 5' : undefined} {...draw(fn.dashed)} />);
       })}
       {(params.tangents ?? []).filter((t) => visible(state, t.id)).map((t) => {
         const at = typeof t.at === 'number' ? t.at : env[t.at];

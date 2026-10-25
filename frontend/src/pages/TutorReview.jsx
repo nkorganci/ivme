@@ -5,6 +5,7 @@ import DataGrid from '../components/DataGrid.jsx';
 import QuestionImage from '../components/QuestionImage.jsx';
 import { Alert, ErrorBox, Loading } from '../components/States.jsx';
 import RichText from '../tutor/RichText.jsx';
+import { AhaBlock, InsightBlock } from '../tutor/Insight.jsx';
 import VisualPlayer from '../tutor/VisualPlayer.jsx';
 import { BAND, BRANCH_ORDER, CONTENT_STATUS, DIFFICULTY, HINT_KIND, TEMPLATE, subjectName } from '../tutor/tutorLabels.js';
 import './Tutor.css';
@@ -48,6 +49,10 @@ function ContentView({ content }) {
       <ol>{c.pattern.method.map((m, i) => <li key={i}><RichText text={m} /></li>)}</ol>
       <p><strong>Ne zaman değil:</strong> <RichText text={c.pattern.whenNot} /></p>
       <p><strong>Sınav ipucu:</strong> <RichText text={c.pattern.examTip} /></p></section>
+    <section><h3>Kavrayış katmanı</h3>
+      {c.insight ? <><InsightBlock insight={c.insight} />
+        <p className="muted">Çözümden sonra açılır:</p><AhaBlock aha={c.insight.aha} sanityCheck={c.insight.sanityCheck} /></>
+        : <Alert type="warn">Benzetme, aha cümlesi, radar ve sağlama yazılmamış.</Alert>}</section>
     <section><h3>İlk hamle seçimi</h3><p><RichText text={c.strategyChoice.prompt} /></p>
       <ul>{c.strategyChoice.options.map((o) => <li key={o.id} className={o.correct ? 'tutor-ok' : ''}>{o.correct ? '✓' : '·'} <RichText text={o.text} /> — <span className="muted"><RichText text={o.feedback} /></span></li>)}</ul></section>
     <section><h3>İpuçları</h3><ol>{c.hints.map((h) => <li key={h.level}><strong>{HINT_KIND[h.kind]}:</strong> <RichText text={h.text} /></li>)}</ol>

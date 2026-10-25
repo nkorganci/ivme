@@ -194,6 +194,34 @@
         }
       }
     },
+    "insight": {
+      "description": "Kavrayış katmanı ('aaa, sebebi buymuş' anı). analogy, mindset, radar ve targetSeconds cevabı ele vermez ve Büyük fikir kartında çözümden önce gösterilir; aha ve sanityCheck yalnız soru çözüldükten sonra açılır. Benzetme yapısal eşleme kurar ve nerede bittiğini söyler.",
+      "type": "object", "additionalProperties": false,
+      "required": ["analogy", "mindset", "radar", "aha", "sanityCheck", "targetSeconds"],
+      "properties": {
+        "analogy": {
+          "type": "object", "additionalProperties": false,
+          "required": ["title", "text", "breaks"],
+          "properties": {
+            "title": {"type": "string", "minLength": 3, "maxLength": 80},
+            "text": {"$ref": "#/$defs/shortText"},
+            "breaks": {"$ref": "#/$defs/shortText"}
+          }
+        },
+        "mindset": {"$ref": "#/$defs/shortText"},
+        "radar": {
+          "type": "array", "minItems": 2, "maxItems": 4,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["see", "think"],
+            "properties": {"see": {"type": "string", "minLength": 1, "maxLength": 160},
+                           "think": {"type": "string", "minLength": 1, "maxLength": 220}}
+          }
+        },
+        "aha": {"$ref": "#/$defs/shortText"},
+        "sanityCheck": {"$ref": "#/$defs/shortText"},
+        "targetSeconds": {"type": "integer", "minimum": 10, "maximum": 300}
+      }
+    },
     "alternative": {
       "oneOf": [
         {"type": "null"},

@@ -5,6 +5,7 @@ import { ignoreHotkey, usePageTitle } from '../hooks.js';
 import QuestionImage from '../components/QuestionImage.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import RichText from '../tutor/RichText.jsx';
+import { AhaBlock, InsightBlock } from '../tutor/Insight.jsx';
 import VisualPlayer from '../tutor/VisualPlayer.jsx';
 import { DIFFICULTY, HINT_KIND, LEVEL, LEVEL_HELP, MASTERY, OUTCOME, ROUTE, STEP, formatDate, freeTextLabel,
   masteryPercent, subjectName } from '../tutor/tutorLabels.js';
@@ -46,6 +47,7 @@ function PatternCard({ card, title }) {
   return <>
     <h3>{title}: {card.name}</h3>
     <p className="tutor-big-idea"><RichText text={card.bigIdea} /></p>
+    <InsightBlock insight={card.insight} />
     <dl className="tutor-pattern">
       <dt>Ne zaman?</dt><dd><RichText text={card.trigger} /></dd>
       <dt>Nasıl?</dt><dd><ol>{(card.method ?? []).map((step, i) => <li key={i}><RichText text={step} /></li>)}</ol></dd>
@@ -120,6 +122,7 @@ function Card({ card, act, busy, view }) {
     case 'FINAL':
       return <article className="tutor-card ok">
         <h3>Doğru cevap: {card.choice} <span className="muted">({card.value})</span></h3>
+        <AhaBlock aha={card.aha} sanityCheck={card.sanityCheck} />
         <p className="muted">Aynı çözümü farklı derinlikte görmek için bir anlatım seç:</p>
         <div className="tutor-row">{card.levels.map((level) => <button key={level} type="button" className="btn btn-secondary btn-sm" disabled={busy || view.status !== 'OPEN'}
           title={LEVEL_HELP[level]} onClick={() => act({ type: 'LEVEL', level })}>{LEVEL[level]}</button>)}</div>
@@ -148,6 +151,7 @@ function Card({ card, act, busy, view }) {
         <h3>Özet: {OUTCOME[card.outcome] ?? card.outcome}</h3>
         <p className="tutor-progress">Ustalık tahmini: %{masteryPercent(card.masteryBefore)} → <strong>%{masteryPercent(card.masteryAfter)}</strong>
           {card.nextReviewAt && <> · Sonraki tekrar: {formatDate(card.nextReviewAt)}</>}</p>
+        <AhaBlock aha={card.aha} />
         <PatternCard card={card} title="Kalıp kartın" />
         <h4>Bu kalıpta sık yapılan hatalar</h4>
         <ul>{card.misconceptions.map((item, i) => <li key={i}><RichText text={item.mistake} /> <span className="muted">→ <RichText text={item.fix} /></span></li>)}</ul>

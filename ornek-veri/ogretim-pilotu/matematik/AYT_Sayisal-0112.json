@@ -42,6 +42,23 @@
     "whenNot": "Kesirli (rasyonel) eşitsizliklerde paydanın kökü tanımsızlık noktasıdır; çift katlı köklerde işaret değişmez. Bu durumlarda işaret tablosu ek dikkat ister.",
     "examTip": "Önce sorulan ifadeyi sadeleştirip sadeleştirmediğine bak: iki polinomun toplamı ya da farkı çoğu zaman daha basit bir ifadeye iner ve hesabı kısaltır."
   },
+  "insight": {
+    "analogy": {
+      "title": "İki trafik ışığının birlikte yeşil yandığı yer",
+      "text": "Her eşitsizlik sayı doğrusu boyunca yanan bir trafik ışığı gibidir: bazı bölgelerde yeşil, bazılarında kırmızı. Sistem, iki ışığın aynı anda yeşil yandığı yeri sorar. Işıklar yalnız köklerde renk değiştirir.",
+      "breaks": "Trafik ışığı zamanla değişir; burada renk x'e göre değişir. Kökün kendisinde ifade sıfırdır; kesin eşitsizlikte (< ya da >) kök kümeye girmez."
+    },
+    "mindset": "Her ifadeyi önce çarpanlarına ayır ve kolların yönüne bak: kökler arası bölgenin işaretini bil, sonra iki aralığı üst üste koy.",
+    "radar": [
+      {"see": "İkinci derece ifade < 0 ya da > 0", "think": "Kökleri bul; baş katsayı pozitifse kökler arası negatif, negatifse pozitif."},
+      {"see": "İki eşitsizlik birlikte ('ve')", "think": "Çözüm kümelerinin kesişimini al."},
+      {"see": "'Yalnızca bir tam sayı' ifadesi", "think": "Kesişim dar bir aralıktır; uç noktaların dahil olup olmadığına dikkat et."},
+      {"see": "P(a) + Q(a) gibi bir toplam soruluyor", "think": "Önce ifadeleri topla; kareli terimler sadeleşebilir."}
+    ],
+    "aha": "Aaa: P + Q'da x²'ler birbirini götürüyormuş; geriye 7x − 24 kalıyor. Pencere (2, 4) olunca tek tam sayı 3 ve hesap tek satır.",
+    "sanityCheck": "a = 3 iki koşulu da sağlamalı: P(3) = −6 < 0 ve Q(3) = 3 > 0. 2 ve 4 kök oldukları için kesin eşitsizliği sağlamaz.",
+    "targetSeconds": 60
+  },
   "strategyChoice": {
     "prompt": "Bu soruda ilk hamlen ne olmalı?",
     "options": [
@@ -168,7 +185,7 @@
   "generation": {
     "generator": "claude-opus-5-5 (Claude Code çevrim dışı yazım)",
     "tier": "STRONG",
-    "promptVersion": "ogretim-pilot-v1",
+    "promptVersion": "ogretim-kavrayis-v2",
     "createdAt": "2026-10-18T07:40:00Z"
   }
 }

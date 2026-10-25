@@ -32,9 +32,13 @@ export default function BarModel({ params, state }) {
         {(params.brackets ?? []).filter((b) => b.bar === bar.id && visible(state, b.id)).map((bracket) => {
           const x1 = starts[bracket.from];
           const x2 = starts[bracket.to + 1];
+          // Kenardaki dar parçanın etiketi şeridin dışına taşmasın: uca yaslanır.
+          const half = bracket.label.length * 4.5;
+          const mid = (x1 + x2) / 2;
+          const [tx, anchor] = mid + half > W - 4 ? [x2, 'end'] : mid - half < LEFT ? [x1, 'start'] : [mid, 'middle'];
           return <g key={bracket.id}>
             <path d={`M${x1},${y - 4} v-8 H${x2} v8`} fill="none" stroke="var(--warn)" strokeWidth="2" />
-            <text x={(x1 + x2) / 2} y={y - 16} textAnchor="middle" className="viz-label">{bracket.label}</text>
+            <text x={tx} y={y - 16} textAnchor={anchor} className="viz-label">{bracket.label}</text>
           </g>;
         })}
       </g>;
