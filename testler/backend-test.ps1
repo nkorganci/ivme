@@ -1,5 +1,6 @@
 [CmdletBinding()]
-param()
+# -Test A,B yalnız seçilen test sınıflarını çalıştırır; boşsa tam paket.
+param([string]$Test = '')
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
 . (Join-Path $repo 'yerel-ortam.ps1')
@@ -19,7 +20,8 @@ $testExit = 1
 try {
     Push-Location (Join-Path $repo 'backend')
     try {
-        & mvn.cmd test
+        if ($Test) { & mvn.cmd -q test "-Dtest=$Test" '-Dsurefire.failIfNoSpecifiedTests=false' }
+        else { & mvn.cmd test }
         $testExit = $LASTEXITCODE
     } finally { Pop-Location }
 } finally {

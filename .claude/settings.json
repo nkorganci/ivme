@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/scripts/ivme.py\" durum --hizli",
+            "timeout": 30,
+            "statusMessage": "İvme durumu okunuyor…"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/scripts/ivme.py\" devir-kontrol",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

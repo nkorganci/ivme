@@ -1,0 +1,3 @@
+#!/bin/sh
+# Commit öncesi kural denetimi (AGENTS.md). Atlamak gerekirse: git commit --no-verify
+exec python scripts/ivme.py kontrol

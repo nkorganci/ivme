@@ -1,14 +1,14 @@
 # Öğretmen Doğrulaması
 
 
-> Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
+> Bu belge çalışan ekranın güncel kullanım ve kayıt sözleşmesidir; ekran değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [devir dosyasında](plan/00_DEVAM.md) tutulur.
 
 Sol menüdeki **Öğretmen Doğrulaması** bölümü 14 branşı aynı etiket sözlüğüyle açar. Başlangıç: `/ogretmen-dogrulamasi/fizik`. Her branşta konu/alt konu, ders notu, video, PDF ve soru kuyrukları vardır. Mevcut videolar yalnız fizik için hazırlanmışsa diğer branşların video kuyruğu boş görünür; içerik uydurulmaz.
 
 ## Hızlı kullanım
 
-**Ortak ünite seçimi:** Ark referansındaki 237 TYT/AYT ünitesi bütün branşlarda
-aynı DB sözlüğünden alınır; alt başlıklar ayrı seçenek değildir. **Tahmini etiketleri
+**Ortak ünite seçimi:** Excel'in ilk KONULAR sayfasından gelen TYT/AYT üniteleri
+([güncel sayı](plan/00_CALISMA_BAGLAMI.md)) bütün branşlarda aynı DB sözlüğünden alınır; alt başlıklar ayrı seçenek değildir. **Tahmini etiketleri
 göster** düğmesi aday ilişkileri ayırır. Soru veya PDF satırını açın,
 doğru üniteyi işaretleyin ve **Konuları kaydet ve sonraki** düğmesine basın.
 Soru sekmesinde **Kaynak → Bütün kaynaklar** seçimi çıkmış ve banka sorularını
@@ -40,7 +40,7 @@ Satır açıldığında otomatik etiketler seçilidir; **PDF içindeki başlık 
 4. Zorluk, içerik türü, beceri ve sınıflar tek tıklanan düğmelerle seçilir. **Önceki etiketler**, benzer kayıtları hızlandırır; otomatik seçim mevcut öğretmen etiketlerini korur.
 5. Kontrolleri ✓ / ✕ / ? ile işaretleyin. **Uygun** kararına basmak bütün kontrolleri uygun yapar ve kısa bir gerekçe başlatır; bu düğme öğretmenin açık onayıdır. Düzeltme/emin değilim kararları kontrol edilmemiş alanları belirsiz olarak korur. Ayrıntılı başlık/cevap/bağlantı önerileri gerektiğinde açılır.
 6. **Kaydet** veya **Kaydet ve sonraki** ile PostgreSQL'e yazın. **Ctrl + Enter** kaydedip görünür sıralamadaki sonraki kaydı açar. Taslaklar bu tarayıcıda kullanıcı/kaynak kimliğiyle saklanır; okla kapatıp yeniden açınca korunur, sunucu kaydı değildir. Kaydetmeden çıkarken uyarılır. Taslak saklanamıyorsa ekranda gösterilir.
-7. **Kayıtlı kararları indir** bütün branşların kaydedilmiş kararlarını, kaynak ve kategori anlık kayıtlarını, inceleyeni, UTC zamanını ve bütün eski kararları JSON olarak verir. Ekran filtresiyle sınırlanmaz; tarayıcı taslaklarını içermez.
+7. **Kararları indir** bütün branşların kaydedilmiş kararlarını, kaynak ve kategori anlık kayıtlarını, inceleyeni, UTC zamanını ve bütün eski kararları JSON olarak verir. Ekran filtresiyle sınırlanmaz; tarayıcı taslaklarını içermez.
 
 ## Tek ortak etiket sözlüğü
 
@@ -53,7 +53,7 @@ Satır açıldığında otomatik etiketler seçilidir; **PDF içindeki başlık 
 - Konu eşleşmeleri: TYT/AYT → branş → ana konu → mevcut alt konu/taksonomi. Aynı kayda en fazla 50 farklı kategori bağlanabilir. Onay için en az bir doğrudan konu gerekir.
 - Kararlar: uygun, düzeltilecek, yanlış branş, kaldırılacak, emin değilim. Ayrıca incelenmedi ve yeniden kontrol sistem durumlarıdır.
 
-Seçilebilir kategori havuzu yayımlanmış 237 referans ünitesidir. Eski müfredat,
+Seçilebilir kategori havuzu yayımlanmış katalogdaki `selectable=true` konulardır (Excel ilk KONULAR sayfası + KPSS). Eski müfredat,
 video alt konusu, arşiv ve `taxonomy_nodes` kimlikleri geçmiş ve yönlendirme için
 korunur; ayrı ünite seçenekleri oluşturmaz. Kaynak eşlemesinin tahmini olması
 öğretmen doğrulaması değildir. Yeni başlık önerisi gerekçe alanına yazılır;

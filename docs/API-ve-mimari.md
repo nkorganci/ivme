@@ -1,15 +1,15 @@
 # İvme API ve mimari sözleşmesi
 
 
-> Güncel yapılacaklar yalnız [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Bu belgedeki tarihli sonuçlar teknik kanıttır; uygulama sırası değildir.
+> Bu belge çalışan sistemin güncel API ve mimari sözleşmesidir. API veya veri modeli değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [devir dosyasında](plan/00_DEVAM.md) tutulur.
 
-Güncelleme: 2026-10-24. React 19/Vite ve Spring Boot 3.5/Java 21 tek `main` çalışma ağacında (`uygulama`) paketli çalışır. Yerel adres `http://localhost:1010`, tek kalıcı uygulama veritabanı PostgreSQL `ivme`dir. İsteğe bağlı Vite akışında API portu 8081'dir. Yerel paket otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:1010` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Başlatma akışı [README](../README.md) içindedir.
+React 19/Vite ve Spring Boot 3.5/Java 21 tek `main` çalışma ağacında (`uygulama`) paketli çalışır. Yerel adres `http://localhost:1010`, tek kalıcı uygulama veritabanı PostgreSQL `ivme`dir. İsteğe bağlı Vite akışında API portu 8081'dir. Yerel paket otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:1010` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Başlatma akışı [README](../README.md) içindedir.
 
 ## Kimlik ve erişim
 
 `POST /api/auth/register` `{username,email,phone,password}` → 201; `POST /api/auth/login` `{login,password}`; `POST /api/auth/logout`; `GET /api/auth/me`. `login` kullanıcı adı veya e-posta olabilir. Kayıtta e-posta ve telefon zorunlu, ancak şimdilik doğrulanmaz. Parola en az 8 karakter ve BCrypt sınırı gereği en çok 72 UTF-8 bayttır. `GET/PUT /api/account/contact` ve `PUT /api/account/password` kendi hesap bilgileri içindir; değişiklikte mevcut parola gerekir. `UserDto` içindeki `passwordChangeRequired` ayrıcalıklı hesabın geçici parola durumunu gösterir. Yalnız öğrenci için `POST /api/account/export` `{currentPassword}` kendi verilerini `no-store` JSON olarak döndürür; `POST /api/account/delete` `{currentPassword,confirmation:"HESABIMI SIL"}` hesabı ve kişisel verilerini tek işlemde silip oturumu kapatır. Ortak sorular ve başka hesaplar korunur; eski yedekler bu canlı işlemden ayrı kalır.
 
-Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Main `JSESSIONID` / `XSRF-TOKEN`, feature `IVME_DEV_SESSION` / `XSRF-TOKEN-DEV` çerezlerini kullanır; değiştirici istekler kendi ortamının CSRF çerezinden `X-XSRF-TOKEN` başlığı gerektirir. Ayrı çerez adları aynı tarayıcıdaki localhost portlarının oturumları bozmasını önler. Üretimde iki çerez de `Secure`, HTTPS dış adresi zorunludur. `X-Forwarded-*` işlenmez. Yalnız loopback'ten gelen `CF-Connecting-IP` giriş/kayıt hız sınırı için değerlendirilir. Geçici parolalı `ADMIN`/`OPERATOR` dış alan adından giriş yapamaz ve üretim başlatılamaz.
+Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Çerezler `JSESSIONID` / `XSRF-TOKEN`'dır (CSRF çerez adı `YKS_CSRF_COOKIE` ile değiştirilebilir); değiştirici istekler CSRF çerezinden `X-XSRF-TOKEN` başlığı gerektirir. Üretimde iki çerez de `Secure`, HTTPS dış adresi zorunludur. `X-Forwarded-*` işlenmez. Yalnız loopback'ten gelen `CF-Connecting-IP` giriş/kayıt hız sınırı için değerlendirilir. Geçici parolalı `ADMIN`/`OPERATOR` dış alan adından giriş yapamaz ve üretim başlatılamaz.
 
 | Rol | İzinli alan |
 |---|---|
@@ -144,7 +144,7 @@ Kategori ve kaynak kimlikleri başlıktan yeniden türetilmez. Ortak seçimi
 kaynak sürümü değişmiş, etkin olmayan veya yalnız arşiv/not örneği olan soru
 havuzda yer almaz. Öğretmen düzeltmesi filtrede ve sunulan adda aynı anda geçerlidir.
 
-Seçilebilir konu havuzu Ark referansındaki 237 ortak ünitedir (`canonicalUnit=true`);
+Seçilebilir konu havuzu Excel'in ilk KONULAR sayfasındaki YKS konuları ile KPSS sınav konularıdır (`canonicalUnit=true`, `selectable=true`);
 alt başlık kimlikleri `canonicalTopicIds` yönlendirmesiyle korunur. Metadata ve
 güncel kaynak/ilerleme adlarının tek kaynağı yayımlanmış DB sürümüdür.
 `GET /api/learning-resources` ayrıca `labelStatus=ESTIMATED|APPROVED|UNRESOLVED`
@@ -191,6 +191,32 @@ dosya yolu döndürmez. Kapsam sayımında yalnız `VERIFIED` aralıklar birleş
 uçları tamsayı ve `pageCount` içinde, video aralığı `durationSeconds` içinde
 olmalıdır. Geçersiz veya sınırı bilinmeyen aralık sayfa/süre toplamına girmez;
 kaynak kaydı korunur.
+
+## Akıllı Öğretmen
+
+`/akilli-ogretmen` öğrenci ekranı, `/akilli-ogretmen-inceleme` operatör ekranıdır
+(`com.hedefyks.tutor`). İçerik dosyaları `ornek-veri/ogretim-pilotu/<branş>/*.json`
+(şema `docs/plan/sema/ogretim-icerigi-v1.schema.json`), `python scripts/ivme.py ogretim dogrula`
+ile denetlenir ve `ogretim aktar` ile `tutor_contents` tablosuna sürümlü yazılır.
+
+| Uç | Açıklama |
+|---|---|
+| `GET /api/tutor/catalog` | Öğrenciye açık içerik listesi ve kendi oturum durumu |
+| `GET /api/tutor/skills` | Öğrencinin beceri kaydı (`tutor_skill_states`) |
+| `POST /api/tutor/sessions` `{code}` | Soru koduyla öğretim oturumu başlatır (`tutor_sessions`) |
+| `GET /api/tutor/sessions/{id}` | Yalnız kendi oturumunun kartları |
+| `POST /api/tutor/sessions/{id}/actions` | `type`: `PREVIEW`, `STRATEGY`, `HINT`, `ANSWER`, `STEP`, `EXPLAIN`, `LEVEL`, `PREDICT`, `SOLUTION`, `TWIN_ANSWER`, `FREE_TEXT`, `FINISH`; olaylar `tutor_events` |
+| `GET /api/operator/tutor/contents[/{code}]` | Operatör içerik listesi/ayrıntısı |
+| `POST /api/operator/tutor/versions/{contentId}/review` | Rubrikli öğretmen kararı (`tutor_content_reviews`) |
+| `GET /api/operator/tutor/calibration`, `/queue`, `POST /queue/{id}`, `GET /usage` | Güven bandı kalibrasyonu, öğretmen kuyruğu, model kullanım özeti |
+
+Öğrenciye görünürlük `YKS_OGRETIM_GORUNURLUGU` (varsayılan `VERIFIED_OR_APPROVED`;
+üretimde `APPROVED_ONLY` önerilir). Serbest açıklama sınıflandırması iki katmanlı yerel
+Ollama yönlendirmesi kullanır: ekonomik `YKS_AI_EKONOMIK_MODEL` (varsayılan `qwen3.5:4b`),
+güçlü `YKS_AI_GUCLU_MODEL` (varsayılan `qwen3.5:9b`); çağrılar `tutor_model_calls`,
+önbellek `tutor_model_cache` tablosundadır. Kurulu olmayan model seçilirse sınıflandırma
+yapılamaz; `python scripts/ivme.py ollama durum` kurulu modelleri listeler. Yeniden üretim
+istekleri `tutor_regeneration_requests` içindedir ve `ogretim yeniden-uretim` ile dışa alınır.
 
 ## Zayıf alan önerisi
 

@@ -21,7 +21,9 @@ Bu çalışma alanındaki tek sitedir. Özgün PDF'ler `../Kaynaklar/`, veri ür
 - Çalışma önerileri ekranı onaylı soru tipi etiketli ilk denemelerden açıklanabilir ipuçları gösterir; örnek soruya geçilir veya yanlış etiket bildirilir. Gerçek etiket onayı açık iştir; taslak 50 soruluk örnek öğrenci önerisine girmez.
 - `ADMIN` rolü `/yonetim` ve `/api/admin/stats` üzerinden yalnız beşlik aralıklarla gösterilen toplu gün/hafta/ay kullanım ve yakalanan beklenmeyen API hata sayılarını görür; küçük gruplar gizlenir. Etkin soru kayıtlarının koleksiyon ve TYT/AYT kapsamı ayrıca gösterilir. `OPERATOR` rolü `/icerik-bakimi` ve `/api/operator` üzerinden içerik bakımını yapar. Öğrenci yalnız kendi sınav verisini görür.
 - Öğrenci Hesap ekranından mevcut şifresiyle kendi verilerini JSON olarak indirebilir veya şifre ve yazılı onayla hesabını silebilir. Ortak soru bankası ve diğer öğrenciler etkilenmez.
-- Ham `activity_events` kayıtları için 90 gün saklama görevi vardır; giriş/aktiflik/çıkış olaylarının üretimi ve gösterimi henüz bağlı değildir.
+- Giriş/çıkış olayları `activity_events` içinde 90 gün saklanır. Yönetim ekranı her kullanıcının son girişini, ölçülmüş etkin süresini ve (Cloudflare üzerinden gelirse) ülke kodunu gösterir.
+- **Dersler:** Excel müfredatından gelen ders/ünite/konu tablosu; Konu takibi (pratik ve denemede çözülen sorular konulara sayılır), Konu ve soru dağılımı, PDF envanteri ve Excel indirme.
+- **Akıllı Öğretmen:** seçili sorularda ipucu basamakları, adım adım çözüm, kavram yanılgısı teşhisi, ikiz soru ve beceri kaydı; içerikler operatör inceleme ekranından onaylanır ([API](docs/API-ve-mimari.md#akıllı-öğretmen)).
 
 ## Tek main ortamı
 
@@ -51,7 +53,7 @@ vardır; giriş ve kayıt ekranlarında bu kolaylık kapalıdır. Tünelden otom
 yapılmaz. Yerel uygulamada üst çubuktaki admin/öğrenci/öğretmen/veli düğmeleri
 test hesapları arasında tek tıkla geçer; parola kimlikleri PostgreSQL'de BCrypt
 olarak saklanır. Yeni kayıtlar yönetici onayına kadar sisteme giremez. Yerel
-hesapların hazırlanması ve güvenlik sınırları [sistem rehberindedir](docs/plan/00_SISTEM_REHBERI.md#site-yöneticisinin-kullanıcı-yönetimi).
+hesapların hazırlanması ve güvenlik sınırları [sistem rehberindedir](docs/plan/rehber/09_kullanici-yonetimi.md).
 Görseller `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries`
 klasöründen okunur. Büyük kaynaklar, DB yedekleri ve sırlar Git'e alınmaz.
 
@@ -60,12 +62,22 @@ kullanıcı talimatıyla yapılır. Git kodu günceller; öğrenci veritabanın�
 
 Site yöneticisi `Yönetim → Kullanıcılar` ekranında öğrenci, öğretmen, veli,
 yönetici ve içerik operatörü kategorilerini, boş kategoriler dahil, görür.
-Engelleme/engel kaldırma ve onayla silme bu ekrandadır. Silme hesabı listeden
-kaldırıp girişini kapatır; geçmiş çalışma ve inceleme kayıtları korunur.
-Site yöneticisi kendi hesabını kapatamaz; işlemler `account_audit` kaydına alınır.
+Kayıt onayı, engelleme/engel kaldırma ve kullanıcı adıyla onaylı silme bu ekrandadır.
+Silme hesabı ve ona bağlı özel kayıtları veritabanından kalıcı kaldırır; başka
+kullanıcıların kayıtları ve ortak içerik korunur, işlem `account_audit` kaydında kalır.
+Site yöneticisi kendi hesabını kapatamaz; son yönetici korunur.
 
 Kod değişikliklerinden sonra kaynak izleyicisi uygulamayı yeniden derler.
 Gerektiğinde `yeniden-baslat.bat` doğrudan çalıştırılır; Git push ayrı bir adımdır.
+
+## AI ile çalışma (Claude / Codex)
+
+Kurallar `AGENTS.md` dosyasındadır; `CLAUDE.md` onu içe alır. Her oturum
+[devir dosyasını](docs/plan/00_DEVAM.md) okur ve iş adımı bitince günceller; böylece
+bir AI'dan diğerine geçince iş kaldığı yerden sürer. Tekrar eden işler için tek giriş
+komutu `python scripts/ivme.py` (durum, test, sayfa denetimi, PDF metin çıkarımı, yerel
+Ollama) ve [işlem tarifleri](docs/islemler/README.md) kullanılır. `git config core.hooksPath .githooks`
+commit öncesi kural denetimini açar.
 
 ## Soru verisi
 
@@ -94,7 +106,7 @@ HTML/asset ve `app-version.txt` sürümünü doğrular. Çalışan uygulama hata
 
 ## Doğrulama
 
-- Arka yüz: `./testler/backend-test.ps1` geçici `ivme_test` veritabanını kurar, `mvn test` çalıştırır ve test bitince veritabanını kaldırır. Gerçek `ivme` üzerinde test çalıştırma.
+- Arka yüz: `./testler/backend-test.ps1 [-Test A,B]` geçici `ivme_test` veritabanını kurar, `mvn test` çalıştırır ve test bitince veritabanını kaldırır. Gerçek `ivme` üzerinde test çalıştırma. `python scripts/ivme.py test [A,B]` aynı işi yapar ve sonucu [bilinen hatalarla](testler/bilinen-hatalar.md) karşılaştırır.
 - Ön yüz: `cd frontend; npm run build`.
 - Yerel Chrome uçtan uca: `node testler/e2e.mjs [çıktı klasörü] [--mobil]`. Test yeni kullanıcı ve geri bildirim oluşturur; yalnız yerel adreste çalışır. Ayrıcalıklı ekranlar ancak ilgili `YKS_E2E_YONETICI*` veya `YKS_E2E_OPERATOR*` ortam değişkenleri verilirse denenir.
 

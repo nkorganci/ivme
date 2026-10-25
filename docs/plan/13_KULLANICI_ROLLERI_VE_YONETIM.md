@@ -1,20 +1,12 @@
 # 13. Adım — kullanıcı rolleri, erişim ve site yönetimi önerisi
 
-18 Ekim 2026 ek uygulama sınırı: kullanıcının 5174'te kayıtlı öğrencileri
-görememe bildirimi üzerine açık `SITE_MANAGER` yetkisine ait tüm kullanıcı listesi, rol filtreleri,
-engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Eski kategori bilgisi boş USER
-hesapları korunur. Bu dar düzeltme aşağıdaki yönetim, ilişki, bildirim ve hesap
-mutasyonu aşamalarının bütünüyle tamamlandığı anlamına gelmez.
-
-
-Tarih: 18 Ekim 2026. Belge sürümü: `kullanici-yonetimi-tasarim-v1`.
-Durum: `YALNIZ_TASARIM`. Aşağıdaki özellikler öneridir; uygulanmış değildir.
-
-Bu çalışma yalnız Markdown dokümantasyonudur. Mevcut hesaplar, kullanıcı adları,
-parolalar, roller, öğrenci gelişimleri, öğretmen kararları ve ilişkili geçmiş
-olduğu gibi korunur. Kod, veritabanı, çalışan servis ve dağıtım değiştirilmez.
-Belgenin bulunması veya yol haritasına bağlanması uygulama yetkisi vermez.
-Mevcut içerik işlerinin devam noktası olan 07.02 bu öneriyle değiştirilmez.
+Belge sürümü: `kullanici-yonetimi-tasarim-v1`. Durum: `YALNIZ_TASARIM`. Bu belge
+önerilen hedefi tarif eder; belgenin bulunması veya yol haritasına bağlanması uygulama
+yetkisi vermez. Bugün çalışan kullanıcı yönetimi
+[sistem rehberinde](rehber/09_kullanici-yonetimi.md) anlatılır ve aşağıdaki 1. bölümde
+özetlenir; buradaki diğer yönetim, ilişki, bildirim ve hesap mutasyonu aşamaları ayrıca
+uygulama talimatı bekler. Mevcut hesaplar, roller, öğrenci gelişimleri, öğretmen kararları
+ve ilişkili geçmiş korunur.
 
 ## Önerilen temel yaklaşım
 
@@ -38,20 +30,17 @@ yaşamaya devam eder. Öğretmen hesabı açılması otomatik OPERATOR yetkisi v
 
 ## 1. Mevcut uygulamanın durumu
 
-Bu tespitler kaynak kodun salt okunur incelemesine dayanır; canlı kullanıcı
-listesi çıkarılmadı ve veritabanına bağlanılmadı.
-
-| Alan | Bugün var olan davranış | Önerilen gelişme |
+| Alan | Bugün çalışan davranış | Önerilen gelişme |
 |---|---|---|
-| Kullanıcı rolleri | `USER`, `ADMIN`, `OPERATOR`; hesapta tek rol | Dört ürün rolü, gerektiğinde çoklu rol ve ayrı içerik bakım izni |
+| Kullanıcı rolleri | `USER`, `ADMIN`, `OPERATOR`, `TEACHER`, `PARENT`; hesapta tek rol. Site yöneticisi ayrı `users.site_manager` yetkisidir | Gerektiğinde çoklu rol ve ayrı içerik bakım izni |
 | Öğrenci | `USER` kendi çalışmalarına erişir | Bu sahiplik korunur; ek roller yeni erişim kurallarıyla çalışır |
-| Yönetici | `/api/admin/stats` sınırlı ve küçük gruplarda gizlenmiş/yuvarlanmış istatistik verir | Yetkili kullanıcı listesi, ilişkiler, bireysel inceleme ve hesap yönetimi |
-| Veli ve takip öğretmeni | Ayrı roller ve onaylı öğrenci bağlantıları yok | Veli–çocuk ve öğretmen–öğrenci ilişkileri |
-| Giriş | Kullanıcı adı veya e-posta ve parola; sunucu oturumu | Tek giriş sayfası korunur; rol sunucudan belirlenir |
+| Yönetici | Site yöneticisi tüm rollerin listesini, sayılarını, son girişi, ölçülmüş etkin süreyi ve ülke kodunu görür; `/api/admin/stats` toplu ve yuvarlanmış istatistik verir | İlişkiler, gerekçeli bireysel inceleme ve ayrıntılı hesap yönetimi |
+| Veli ve takip öğretmeni | Roller ve yerel test hesapları var; onaylı öğrenci bağlantısı ve takip ekranları yok | Veli–çocuk ve öğretmen–öğrenci ilişkileri |
+| Giriş ve kayıt | Kullanıcı adı veya e-posta ve parola; sunucu oturumu. Yeni kayıt `approved=false` oluşur ve site yöneticisi onaylar | Tek giriş sayfası korunur; rol sunucudan belirlenir |
 | İletişim | Kayıtta e-posta ve telefon zorunlu; sahipliği doğrulanmıyor | Yeni davet/veli bağlantılarında doğrulanmış iletişim ve ilişki onayı |
-| Hesap durumu | `users.enabled` var | Açıklamalı duraklatma, arşivleme ve oturumları iptal etme |
-| Kullanım kaydı | `LOGIN`/`LOGOUT` olayları `activity_events` içinde; ham olaylar 90 gün sonra temizleniyor | Son giriş ve son gerçek kullanım ayrı tutulur; ölçüm kapsamı görünür olur |
-| Hesap silme | Öğrencinin kendi verisini dışa aktarma ve kalıcı silme akışı var | Yeni ilişkiler eklenirken bu akışın sahiplik ve silme etkileri yeniden ele alınır |
+| Hesap durumu | Engelle/aç (`enabled`), kayıt onayı, açık oturumların iptali; kendi hesabını ve son yöneticiyi koruma | Açıklamalı duraklatma ve arşivleme |
+| Kullanım kaydı | `LOGIN`/`LOGOUT` olayları `activity_events` içinde 90 gün; `last_login_at`, `active_seconds`, `last_login_country_code` hesapta | Son giriş ve son gerçek öğrenme etkinliği ayrı gösterilir |
+| Hesap silme | Site yöneticisi kullanıcı adıyla onaylı kalıcı silme yapar; öğrenci kendi verisini dışa aktarıp silebilir. İşlemler `account_audit` kaydında | Yeni ilişkiler eklenirken sahiplik ve silme etkileri yeniden ele alınır |
 
 Dayanaklar: [rol tanımı](../../backend/src/main/java/com/hedefyks/user/Role.java),
 [hesap modeli](../../backend/src/main/java/com/hedefyks/user/User.java),
@@ -474,7 +463,7 @@ Bu doğrulamalar gelecekte yalnız izole test ortamında yapılır. Bu dokümant
 5. İşlem geçmişinden sonucu ve bildirim teslimini doğrular. Kullanıcıyı listeden
    kaldırmak için arşivler; kalıcı silmeyi rutin temizlik olarak kullanmaz.
 
-## Daha sonra kullanılabilecek sınırlı uygulama promptu
+## Kopyalanacak prompt
 
 Aşağıdaki metin yalnız gelecekte kullanıcı ayrıca uygulama istediğinde
 kullanılacak örnektir; bu belgeyi okumak promptu yürütme talimatı değildir.
@@ -482,12 +471,14 @@ kullanılacak örnektir; bu belgeyi okumak promptu yürütme talimatı değildir
 ```text
 D:\workspace\ivme\uygulama projesinde yalnız 13.01 görevini uygula.
 Önce AGENTS.md, docs/plan/00_YOL_HARITASI.md ve
-docs/plan/00_CALISMA_BAGLAMI.md dosyalarını oku.
+docs/plan/00_CALISMA_BAGLAMI.md ve docs/plan/00_DEVAM.md dosyalarını oku.
 Tasarım: docs/plan/13_KULLANICI_ROLLERI_VE_YONETIM.md.
 13.01 kapsamındaki salt okunur envanter ve doğrulanmış koruma planını hazırla.
 Kullanıcı/parola/rol/durum/öğrenci geçmişini değiştirme veya silme.
 Diğer 13.xx görevlerine otomatik geçme; gerçek bildirim gönderme.
 Kişisel verileri rapora veya Git'e dökme; yalnız gerekli toplu kanıtı tut.
 Bu aşamada kod, canlı DB, servis veya dağıtım değişikliği yapma.
-Sonucu bu görev dosyası ve çalışma bağlamındaki kısa kanıt bağlantısıyla kaydet.
+Ortak rol/kimlik ve sözlük kayıtlarını kullan; ikinci liste açma.
+Sonucu bu görev dosyası ve 00_DEVAM.md devir dosyasındaki kısa kanıt bağlantısıyla kaydet.
+Adım tamamen bitince kalıcı kuralları koru ve görev dosyasını sil.
 ```

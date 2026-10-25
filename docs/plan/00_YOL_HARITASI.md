@@ -1,79 +1,66 @@
-# İvme — etiketleme öncelikli yol haritası
+# İvme — yol haritası
 
-Güncelleme: 23 Ekim 2026. Main ortamında ders/ünite/konu ve soru dağılımı yalnız verilen Excel’in ilk KONULAR sayfasındaki 453 satırdan gelir (kaynakta 12 birleşik ders grubu, uygulamada ayrılmış 14 ders; 146 ünite, 178 TYT / 352 AYT konu kimliği); çalışma anındaki tek doğruluk kaynağı PostgreSQL’dir. Belirsiz ünite/sınıf etiketleri tahmini olarak filtrelenir ve öğretmen kontrolüyle güncellenir. Kalan insan incelemesi ve dış girdiler 7/12 maddelerindedir.
+Tek yapılacaklar kaynağı bu dizindir. Her açık iş ilgili numaralı adım dosyasında bir
+alt görevdir; ayrı “eksikler” veya “yapılanlar” listesi açılmaz. Etkin/yarım iş
+[devir dosyasında](00_DEVAM.md), kalıcı kurallar ve güncel sürüm dayanakları
+[çalışma bağlamında](00_CALISMA_BAGLAMI.md), sistemin nasıl çalıştığı
+[sistem rehberinde](00_SISTEM_REHBERI.md) tutulur.
 
-Tek yapılacaklar kaynağı bu dizindir. “Eksikler” ayrı bir liste değildir; her eksik ilgili numaralı adımda bir yapılacak iştir. Tamamlanan alt işler listeden çıkarılır; bütün alt işleri doğrulanarak kapanan adımın `.md` dosyası silinir. Kalan adımların numaraları ve dosya adları değiştirilmez: 1 bitince liste 2. adımdan devam eder. Kullanıcı yalnız plan düzenlemesi istiyorsa uygulama kodu, DB ve kaynak içerik değiştirilmez; uygulama talimatında ilgili iş yürütülür ve geçmiş kayıtlar korunur.
+## Açık adımlar
 
-Önce etiketleme tamamlanır; ardından ekranlar ortak etiketlere bağlanır, menüler sadeleştirilir ve takip tabloları düzenlenir. Mevcut katalog ve sabit kimlikler temel alınır. Planı baştan kurmak, içerik ve geçmişi sıfırlamak anlamına gelmez.
-
-Her yeni prompt önce [güncel çalışma bağlamını ve hazır devam promptunu](00_CALISMA_BAGLAMI.md) okur. Her adım dosyasının sonunda doğrudan kopyalanabilir uygulama promptu vardır.
-
-Sistemin kalıcı kurgusu, tek veri kaynakları, kimlik/sürüm kuralları ve değişiklik
-prosedürü [sistem rehberinde](00_SISTEM_REHBERI.md) tutulur. Bu belge adımlar
-bittiğinde silinmez; yeni yapılacaklar veya tamamlanan işler listesi olarak kullanılmaz.
-
-## Okuma ve uygulama sırası
-
-| Adım | Yapılacak işin tek ayrıntı dosyası | Bağımlılık |
+| Adım | Ayrıntı dosyası | Durum / bağımlılık |
 |---|---|---|
-| 7 | [Çoklu etiketleri ve belirsiz kayıtları denetle](07_KALITE_VE_INCELEME.md) | Otomatik işleme ve manuel devir hazır |
-| 12 | [Kalan içerik ve yayın işlerini tamamla](12_KALAN_ICERIK_VE_YAYIN.md) | Ortak ekran/takip kabulü hazır; gerçek içerik kararları 7 ile bağlı |
-| 14 | [KPSS sınavlarını aynı ekranlara bağla](14_KPSS.md) | 14.01 KPSS Ortaöğretim tamamlandı; sırada Ön Lisans, Lisans, A Grubu, ÖABT, DHBT. 7/12'den bağımsızdır |
+| 7 | [Çoklu etiketleri ve belirsiz kayıtları denetle](07_KALITE_VE_INCELEME.md) | Teknik hat hazır; alan uzmanı/öğretmen kararı bekler |
+| 12 | [Kalan içerik ve yayın işlerini tamamla](12_KALAN_ICERIK_VE_YAYIN.md) | İçerik kararları 7 ile bağlı; ortam işleri yönetici/cihaz bekler |
+| 13 | [Kullanıcı rolleri ve site yönetimi](13_KULLANICI_ROLLERI_VE_YONETIM.md) | Tasarım önerisi; ayrı uygulama talimatı bekler |
+| 14 | [KPSS sınavlarını aynı ekranlara bağla](14_KPSS.md) | 14.02 Ön Lisans sırada; 7/12'den bağımsız |
 
-**Devam noktası:** 07.02 (`BEKLIYOR_ALAN_UZMANI`). DB kategori/PDF etiket önceliği, aynı işlemde tutarlı katalog okuması, güncel kaynak bağı ve görünen adlar doğrulandı. Aynı disk yedeği/geri yükleme işi kapandı. Gerçek alan kararı, 335 dar konu notu, 54 birleşik arşiv konumu ve ortam/pilot girdileri ilgili 7/12 maddelerinde etiketli kalır. Güncel teknik kabul kanıtı [çalışma bağlamındadır](00_CALISMA_BAGLAMI.md).
-
-Soru/PDF/video üretimi aynı sözleşme ve doğrulayıcıyı kullanır. Normal üretim önbelleği yeniden kullanır; manuel inceleme kaydı insan onayı veya doğrulanmış konu aralığı sayılmaz.
-
-Kullanıcının 18 Ekim talimatıyla yıllık sınavlarda eksik sorular, aynı sınav ve
-dersin uygun havuzundan açıkça tahmini olarak işaretlenen sorularla tamamlanabilir.
-Bu başlatma akışı `12.01` kaynak incelemesini veya öğretmen onayını tamamlanmış saymaz.
-
-## Kullanıcı yönetimi tasarım önerisi
-
-[13. Adım — kullanıcı rolleri ve site yönetimi](13_KULLANICI_ROLLERI_VE_YONETIM.md)
-öğrenci, veli, takip öğretmeni ve yönetici erişimini, mevcut OPERATOR yetkisini
-koruyarak sekiz aşamada tarif eden tasarım önerisidir. Kullanıcının 5174'te
-öğrencileri görememe bildirimi üzerine yalnız açık `SITE_MANAGER` yetkisiyle
-tüm rollerin listesi/araması, engelleme/açma ve geçmişi koruyan onaylı silme uygulanmıştır. Diğer yönetim, ilişki ve
-hesap mutasyonu aşamaları ayrıca uygulama talimatı bekler; belge bağlantısı
-bunları başlatma yetkisi değildir. 7/12 sırası ve mevcut kayıtlar korunur.
+Etkin görev ve sıradaki görev devir dosyasındadır.
 
 ## Ortak kararlar
 
-- Konu, PDF, soru, video ve ders notu aynı kontrollü kategori kimliklerini kullanacak. Başlık değişikliği yeni kimlik üretmeyecek.
-- YKS ve KPSS aynı menü ve ekranları kullanır; öğrenci sol menüdeki “Sınavım” seçicisiyle sınavını seçer (PostgreSQL `exam_tracks` / `user_exam_tracks`). KPSS Ortaöğretim yayında (çıkmış sorular, dersler, pratik, deneme, istatistik); diğer KPSS türleri sırayla hazırlanır ve hazır olana kadar “henüz hazır değil” notuyla listelenir.
-- Çalışma anında kategori tanımı ve otomatik etiket yalnız yayımlanmış DB sürümünden alınır. Dosyalar sürümlü üretim girdisidir; DB kaydı yoksa sessiz yedek sözlük veya başlıktan yeni kimlik oluşturulmaz. Geçmiş sürüm ilişkisi yeni kaynak bağını doğrulamaz.
-- Her kaydın en az bir etiketi olacak. İçerik okunamıyorsa bilinen en geniş kapsam ve düşük güven kullanılacak; konu dahi bilinmiyorsa kontrollü inceleme etiketi verilecek. Sayfa veya zaman uydurulmayacak.
-- Aynı içerik farklı konularda kopyalanmayacak; tek kaynak kaydına birden fazla konu ilişkisi ve her ilişkiye ayrı kanıt/aralık bağlanacak. Belirsiz adaylar kesin kapsamdan ayrılacak.
-- Etiket varlığı, etiketin güveni, kaynak aralığının doğrulanması ve öğretmen onayı ayrı bilgiler olacak. Düşük güvenli etiket kullanımı bütün sistemi öğretmen beklemeye kilitlemeyecek; onay gerektiren ölçme/öneri işlevleri kendi koşulunu koruyacak.
-- Tekil kaynak sayısı ile konuya yapılan referans sayısı ayrılacak. Birden fazla etiket bir öğrencinin çözümünü veya izlediği videoyu çoğaltmayacak.
-- PDF/video adları ortak sözlükten `Sınav | Branş | Konu | Alt konu(lar) | Kaynak/Hoca` biçiminde üretilecek. Özgün başlık, fiziksel dosya yolu ve kalıcı kimlik ayrıca korunacak; kalıcı kurallar çalışma bağlamında tutulur.
-- Tekrarlı işlerde önce mevcut sonuç ve hash önbelleği, sonra kurallar/metin çıkarımı, gerektiğinde OCR ve yalnız çözülemeyen parçalarda AI kullanılacak.
-
-## Etiketlemeden sonraki aşamaya geçiş
-
-Bütün kayıtlar etiketli, sözlük/kimlik bağları geçerli ve işlenebilir kaynakların konuya özel aralıkları denetlenmiş olmalı. Erişilemeyen veya okunamayan kaynaklar düşük güvenli etiketi, eksik konum nedeni ve açık takip işiyle korunur; eksikliği kapatılmış sayılmaz. Bu dış bağımlılıklar, denetimden geçmiş kaynakların ekran entegrasyonunu tek başına durdurmaz. 9. adım yalnız doğrulanmış kapsamı veya açıkça geçici olarak işaretlenmiş kayıtları kullanır. Öğretmen onayı gerektiren öneri/ölçme ayrıca kendi kabul koşulunu korur.
+- Konu, PDF, soru, video ve ders notu aynı kontrollü kategori kimliklerini kullanır. Başlık değişikliği yeni kimlik üretmez.
+- Ders/ünite/konu yapısı Excel'in yalnız ilk KONULAR sayfasından gelir; çalışma anındaki tek doğruluk kaynağı PostgreSQL'dir.
+- YKS ve KPSS aynı menü ve ekranları kullanır; öğrenci “Sınavım” seçicisiyle sınavını seçer (`exam_tracks` / `user_exam_tracks`). Hazır olmayan sınav “henüz hazır değil” notuyla listelenir.
+- Çalışma anında kategori tanımı ve otomatik etiket yalnız yayımlanmış DB sürümünden alınır. DB kaydı yoksa sessiz yedek sözlük veya başlıktan yeni kimlik oluşturulmaz.
+- Her kaydın en az bir etiketi vardır. İçerik okunamıyorsa bilinen en geniş kapsam ve düşük güven; konu dahi bilinmiyorsa kontrollü inceleme etiketi kullanılır. Sayfa veya zaman uydurulmaz.
+- Aynı içerik farklı konularda kopyalanmaz; tek kaynak kaydına birden fazla konu ilişkisi ve her ilişkiye ayrı kanıt/aralık bağlanır.
+- Etiket varlığı, güveni, kaynak aralığının doğrulanması ve öğretmen onayı ayrı bilgilerdir. Düşük güvenli etiket bütün sistemi öğretmen beklemeye kilitlemez.
+- Tekil kaynak sayısı ile konuya yapılan referans sayısı ayrıdır; birden fazla etiket bir öğrencinin çözümünü çoğaltmaz.
+- Yıla ait tam sınavda eksik sorular aynı sınav ve dersin havuzundan açıkça “Tahmini soru” işaretli tamamlayıcılarla doldurulabilir; bu, 12.01 kaynak incelemesini kapatmaz.
+- Tekrarlı işlerde önce mevcut sonuç ve hash önbelleği, sonra kurallar/metin çıkarımı, gerektiğinde OCR ve yerel model, yalnız çözülemeyen parçada büyük AI kullanılır.
 
 ## Görev ve oturum düzeni
 
-Görev kimliği `NN.NN` biçimindedir; tanımı yalnız ilgili adım dosyasında tutulur. Yeni oturum bu dosyayı, seçili adımı ve görevdeki ilgili kodu okur; bütün arşivi yeniden okumaz. Görev kapanınca aktif maddesi çıkarılır, diğer kimlikler yeniden numaralanmaz. Adımın tüm işleri kapanınca dosyası silinir; yol haritasındaki satırı kaldırılır, bağımlılık ve bağlantıları güncellenir. Kalıcı kurallar, sözlük/şema yolları ve doğrulama kanıtı önce çalışma bağlamına veya ilgili teknik belgeye aktarılır; tamamlanan adım için özet dosyası bırakılmaz. Kanıt sürümlü raporda veya commit kaydında tutulur; ayrı “yapılanlar/eksikler” belgesi açılmaz.
+Görev kimliği `NN.NN` biçimindedir; tanımı yalnız ilgili adım dosyasında tutulur. Görev
+kapanınca adım dosyasından çıkarılır, diğer kimlikler yeniden numaralanmaz. Adımın tüm
+işleri kapanınca kalıcı kuralları ilgili rehber bölümüne/teknik belgeye aktarılır, adım
+dosyası silinir, bu tablodaki satırı kaldırılır; tamamlanan adım için özet dosyası
+bırakılmaz. Kanıt commit mesajında veya sürümlü raporda tutulur.
 
-Kısa görev girdisi: `görev kimliği + girdi yolları + kaynak/sözlük sürümü + beklenen çıktı + kabul ölçütü`. Kısa sonuç: `işlenen/atlanan/hatalı sayısı + çıktı yolu + doğrulama sonucu + kalan neden`. İçerik işçisi kod veya öğrenci verisi değiştirmez. Ajan kullanımı şart değildir; betikle çözülen işte model çağrılmaz.
+Kısa görev girdisi: `görev kimliği + girdi yolları + kaynak/sözlük sürümü + beklenen çıktı + kabul ölçütü`.
+Kısa sonuç: `işlenen/atlanan/hatalı sayısı + çıktı yolu + doğrulama sonucu + kalan neden`.
+Betikle çözülen işte model çağrılmaz.
 
-Her uygulama işinde mevcut kullanıcı değişiklikleri korunur. Gerçek DB'yi sıfırlayan betik/test çalıştırılmaz. İlgili testler ayrı test ortamında yürütülür. Sırlar ve büyük kaynak arşivleri Git'e alınmaz. Kullanıcının yayın talimatı olmadan push veya dağıtım yapılmaz. Tablolar projedeki `DataGrid.jsx` üzerinden AG Grid Community kullanır; renkler `theme.css` değişkenlerinden alınır.
+Kullanıcı yalnız plan düzenlemesi istiyorsa uygulama kodu, DB ve kaynak içerik
+değiştirilmez. Gerçek DB'yi sıfırlayan betik/test çalıştırılmaz; testler geçici
+`ivme_test` veritabanında yürür. Sırlar ve büyük kaynak arşivleri Git'e alınmaz.
+Kullanıcının yayın talimatı olmadan push veya dağıtım yapılmaz.
 
-## Docs altında korunacak dosyalar
+## Belgeler
 
-`docs/plan` yalnız açık adımları, yol haritasını, çalışma bağlamını ve kullanılan `sema/` sözleşmelerini tutar. Tamamlanan görev dosyaları silinir; `00_` belgeleri ve kullanılan şemalar kalıcıdır. Başka bir “eksikler/yapılanlar” dizini açılmaz.
+`docs/plan` yalnız `00_` belgelerini, açık adımları, `rehber/` bölümlerini ve kullanılan
+`sema/` sözleşmelerini tutar. Plan dışındaki teknik belgeler çalışan sistemin güncel
+sözleşmesidir; görev listesi değildir:
 
-Plan dışındaki beş belge görev listesi değildir; şu teknik ihtiyaçlar için korunur:
-
-| Belge | Neden gerekli? |
+| Belge | İçerik |
 |---|---|
-| [API ve mimari](../API-ve-mimari.md) | Güncel API, veri modeli, erişim ve kurulum sözleşmesi |
+| [API ve mimari](../API-ve-mimari.md) | API, veri modeli, erişim ve kurulum sözleşmesi |
 | [Öğretmen doğrulaması](../OGRETMEN_DOGRULAMASI.md) | İnceleme ekranı, karar sürümleri, yetki ve kayıt akışı |
-| [Ortak etiket kapsamı](../ORTAK_ETIKET_KAPSAMI.md) | Merkezi katalog, üretim komutları ve kaynak denetimi |
-| [Kaynaklı ders notları](../KAYNAKLI_DERS_NOTLARI.md) | Araştırma betiğinin okuduğu kaynak/rehber ve devir kaydı |
-| [Kaynaklı soru analizi](../KAYNAKLI_SORU_ANALIZI.md) | Araştırma betiğinin okuduğu kanıt ve araştırma hafızası |
+| [Ortak etiket kapsamı](../ORTAK_ETIKET_KAPSAMI.md) | Merkezi katalog, üretim/yayın komutları ve kaynak denetimi |
+| [Kaynaklı ders notları](../KAYNAKLI_DERS_NOTLARI.md) | Konu rehberlerinin üretim ve yayın kuralları |
+| [Kaynaklı soru analizi](../KAYNAKLI_SORU_ANALIZI.md) | Kaynak taraması ve `source_research` araştırma arşivi |
+| [İşlem tarifleri](../islemler/README.md) | Tekrar eden işlerin adım adım komutları |
 
-Son iki dosya `scripts/kaynakli_arastirma_db.py` tarafından doğrudan okunur; yalnız görünümü sadeleştirmek için silinmez. Bu belgelerdeki tarihli sayılar canlı veri yerine geçmez. Kalıcı teknik bilgi bu belgelerde, yapılacak işler yalnız açık adımlarda tutulur.
+Son iki KAYNAKLI belgesi `scripts/kaynakli_arastirma_db.py` tarafından girdi olarak
+hash'lenir; silinmez veya yeniden adlandırılmaz.

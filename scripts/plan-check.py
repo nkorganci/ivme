@@ -11,6 +11,8 @@ def check(root=APP):
     plan = docs / 'plan'
     errors = []
     context = (plan / '00_CALISMA_BAGLAMI.md').read_text(encoding='utf-8-sig')
+    handoff_file = plan / '00_DEVAM.md'
+    handoff = handoff_file.read_text(encoding='utf-8-sig') if handoff_file.exists() else ''
     roadmap = (plan / '00_YOL_HARITASI.md').read_text(encoding='utf-8-sig')
     steps = sorted(p for p in plan.glob('[0-9][0-9]_*.md') if not p.name.startswith('00_'))
     tasks = {}
@@ -31,7 +33,7 @@ def check(root=APP):
         if f']({file.name})' not in roadmap:
             errors.append(f'{file.name}: missing roadmap link')
     for field in ['Sıradaki görev', 'Etkin görev']:
-        match = re.search(rf'\| {field} \| `([0-9]{{2}}\.[0-9]{{2}})`', context)
+        match = re.search(rf'\| {field} \| `([0-9]{{2}}\.[0-9]{{2}})`', handoff + context)
         if match and match[1] not in tasks:
             errors.append(f'Closed/nonexistent {field}: {match[1]}')
     for file in docs.rglob('*.md'):
@@ -63,5 +65,5 @@ if __name__ == '__main__':
     output = APP / 'veri/content-labels/plan-check.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps(result, ensure_ascii=False))
+    print(json.dumps(result, ensure_ascii=True))
     raise SystemExit(bool(result['errors']))
