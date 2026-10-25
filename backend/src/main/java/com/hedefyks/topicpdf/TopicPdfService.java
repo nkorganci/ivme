@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
+import com.hedefyks.review.PdfReviewLabels;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -46,9 +47,13 @@ public class TopicPdfService {
     private final Map<Integer, ApprovedLink> approvedLinks;
     private final List<ReviewedLink> curriculumLinks;
     private PdfArchiveRegistry archive;
+    private PdfReviewLabels labels;
 
     @Autowired(required = false)
     public void setArchive(PdfArchiveRegistry archive) { this.archive = archive; }
+
+    @Autowired(required = false)
+    public void setLabels(PdfReviewLabels labels) { this.labels = labels; }
 
     private boolean archived(Entry entry) { return archive != null && archive.contains(entry.sha256()); }
 
@@ -229,16 +234,18 @@ public class TopicPdfService {
         return values.stream().filter(value -> !value.isBlank()).distinct().sorted().toList();
     }
 
+    /** Every inventory PDF is explained: opened, or refused with the reason that applies to it. */
     public Item detail(int id) {
         Entry entry = byId.get(id);
-        if (entry == null || archived(entry)) throw ApiException.notFound("Konu anlatımı bulunamadı.");
+        if (entry == null) return inventoryDetail(id);
+        if (archived(entry)) throw archivedPdf();
         if ("available".equals(entry.item().status())) {
             try {
                 file(id);
             } catch (ApiException ex) {
                 Item item = entry.item();
                 return new Item(item.id(), item.title(), item.exam(), item.subject(), item.kind(),
-                        item.grade(), item.pageCount(), "missing_file", null);
+                        item.grade(), item.pageCount(), fileProblem(ex), null);
             }
         }
         Item item = entry.item();
@@ -249,13 +256,49 @@ public class TopicPdfService {
                 item.grade(), item.pageCount(), item.status(), topic);
     }
 
+    private static ApiException archivedPdf() {
+        return ApiException.notFound("Bu PDF arşive alındı; artık açılmıyor.");
+    }
+
+    private static String fileProblem(ApiException ex) {
+        return ex instanceof PdfChangedException ? "changed_file" : "missing_file";
+    }
+
+    /** PDFs outside the topic catalog (exams, past questions, extra sources) are described by the label manifest. */
+    private Item inventoryItem(int id) {
+        Map<String, Object> row = labels == null ? null : labels.inventoryRow(id);
+        if (row == null) return null;
+        return new Item(id, String.valueOf(row.get("title")), String.valueOf(row.get("exam")),
+                String.valueOf(row.get("subject")), String.valueOf(row.get("kind")),
+                row.get("grade") instanceof Number grade ? grade.intValue() : null,
+                row.get("pageCount") instanceof Number pages ? pages.intValue() : null,
+                String.valueOf(row.get("availability")), null);
+    }
+
+    private Item inventoryDetail(int id) {
+        Item item = inventoryItem(id);
+        if (item == null) throw ApiException.notFound("Bu numarada PDF kaydı yok.");
+        if (labels.isArchived(id)) throw archivedPdf();
+        String status = item.status();
+        if ("available".equals(status)) {
+            try {
+                labels.file(id);
+            } catch (ApiException ex) {
+                status = fileProblem(ex);
+            }
+        }
+        return new Item(item.id(), item.title(), item.exam(), item.subject(), item.kind(),
+                item.grade(), item.pageCount(), status, null);
+    }
+
     /** Lightweight catalog validation for annotations; PDF bytes are verified when opened. */
     public Item annotationItem(int id) {
         Entry entry = byId.get(id);
-        if (entry == null || archived(entry) || !"available".equals(entry.item().status())) {
+        Item item = entry != null ? entry.item() : labels != null && !labels.isArchived(id) ? inventoryItem(id) : null;
+        if (item == null || (entry != null && archived(entry)) || !"available".equals(item.status())) {
             throw ApiException.notFound("PDF bulunamadı.");
         }
-        return entry.item();
+        return item;
     }
 
     public List<String> approvedQuestionCodes(int id) {
@@ -272,6 +315,7 @@ public class TopicPdfService {
 
     public Resource file(int id) {
         Entry entry = byId.get(id);
+        if (entry == null && labels != null && labels.contains(id)) return labels.file(id);
         if (entry == null || archived(entry) || !"available".equals(entry.item().status()) || sourceRoot == null) {
             throw ApiException.notFound("PDF bulunamadı.");
         }
@@ -285,9 +329,10 @@ public class TopicPdfService {
             Path file = root.resolve(pathValue).normalize();
             if (!file.startsWith(root) || !Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS)
                     || !file.toRealPath().startsWith(root)
-                    || !entry.sha256().matches("[0-9a-f]{64}") || !sha256(file).equals(entry.sha256())) {
+                    || !entry.sha256().matches("[0-9a-f]{64}")) {
                 throw ApiException.notFound("PDF bulunamadı.");
             }
+            if (!sha256(file).equals(entry.sha256())) throw new PdfChangedException();
             return new PathResource(file);
         } catch (IOException ex) {
             throw ApiException.notFound("PDF bulunamadı.");

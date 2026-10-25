@@ -7,6 +7,9 @@ import { ErrorBox, Loading } from '../components/States.jsx';
 import './PdfBankAudit.css';
 
 const number = value => Number(value || 0).toLocaleString('tr-TR');
+// One line per row: columns are as wide as their text, rows only as tall as that line (or the wrapped extracted text).
+const auditGridOptions = { rowHeight: 34, getRowId: ({ data }) => String(data.id) };
+const codeGridOptions = { rowHeight: 34, getRowId: ({ data }) => data.code };
 
 export default function PdfBankAudit() {
   usePageTitle('PDF envanteri');
@@ -51,8 +54,9 @@ export default function PdfBankAudit() {
     finally { setWorkBusy(false); }
   };
   const columns = useMemo(() => [
-    { field: 'title', headerName: 'PDF', minWidth: 260, flex: 2, wrapText: true, autoHeight: true,
-      cellRenderer: ({ data }) => data.available ? <Link to={`/konu-anlatimlari/${data.id}`}>{data.title}</Link> : data.title },
+    // Every row opens the viewer; it explains why a PDF that cannot be opened (archived, missing, changed, video-only) is unavailable.
+    { field: 'title', headerName: 'PDF', minWidth: 260,
+      cellRenderer: ({ data }) => <Link to={`/konu-anlatimlari/${data.id}`}>{data.title}</Link> },
     { field: 'exam', headerName: 'Sınav', minWidth: 90 },
     { field: 'subject', headerName: 'Ders', minWidth: 120 },
     { field: 'category', headerName: 'İçerik', minWidth: 155 },
@@ -70,12 +74,12 @@ export default function PdfBankAudit() {
       cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" onClick={() => openProof(data)}>Göster</button> },
   ], []);
   const questionColumns = useMemo(() => [
-    { field: 'code', headerName: 'Soru kodu', minWidth: 220, flex: 1,
+    { field: 'code', headerName: 'Soru kodu', minWidth: 220,
       cellRenderer: ({ data }) => <Link to={`/soru/${encodeURIComponent(data.code)}`}>{data.code}</Link> },
     { field: 'bank', headerName: 'Banka', minWidth: 110 },
     { field: 'page', headerName: 'PDF sayfası', minWidth: 120, cellDataType: 'number',
       cellRenderer: ({ data }) => data.page ? <Link to={`/konu-anlatimlari/${selected}#page=${data.page}`}>{data.page}</Link> : 'Belirsiz' },
-    { field: 'sourceRef', headerName: 'Özgün kayıt kanıtı', minWidth: 300, flex: 2 },
+    { field: 'sourceRef', headerName: 'Özgün kayıt kanıtı', minWidth: 300 },
   ], [selected]);
   const candidateColumns = useMemo(() => [
     { field: 'code', headerName: 'Aday kodu', minWidth: 200 },
@@ -83,7 +87,8 @@ export default function PdfBankAudit() {
     { field: 'pdfPage', headerName: 'PDF sayfası', minWidth: 110, cellDataType: 'number',
       cellRenderer: ({ data }) => <Link to={`/konu-anlatimlari/${selected}#page=${data.pdfPage}`}>{data.pdfPage}</Link> },
     { field: 'answer', headerName: 'Anahtar', minWidth: 100 },
-    { field: 'text', headerName: 'Çıkarılan metin', minWidth: 280, flex: 2, wrapText: true, autoHeight: true },
+    { field: 'text', headerName: 'Çıkarılan metin', minWidth: 280, wrapText: true, autoHeight: true,
+      cellStyle: { lineHeight: '1.4', paddingBlock: '6px' } },
     { colId: 'candidateImage', headerName: 'Kırpım', minWidth: 100, valueGetter: () => 'Görsel var',
       cellRenderer: ({ data }) => <a href={`/api/pdf-bank-audit/${selected}/candidates/${encodeURIComponent(data.code)}/image`}
         target="_blank" rel="noreferrer">Görsel</a> },
@@ -106,8 +111,8 @@ export default function PdfBankAudit() {
       <option value="">Tümü</option>{[...new Set(audit.data.pdfs.map(row => row.processingLabel))].map(value => <option key={value}>{value}</option>)}
     </select></label>
     <section className="card table-card" aria-label="PDF envanteri tablosu">
-      <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
-        gridOptions={{ getRowId: ({ data }) => String(data.id) }} />
+      <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false} fitAllRows
+        gridOptions={auditGridOptions} />
     </section>
     {selected && <section className="card pdf-audit-proof" aria-label="Soru çıkarım kanıtı">
       <div className="pdf-audit-proof-head"><h2>{proof?.title || 'Kanıt yükleniyor…'}</h2><button type="button" className="btn btn-secondary btn-sm" onClick={() => { setSelected(null); setProof(null); }}>Kapat</button></div>
@@ -122,13 +127,13 @@ export default function PdfBankAudit() {
         </div>
         <p className="muted small">İşlem seçimi PDF’yi değiştirmez. Arşivleme için tüm soruların bankadaki kanıtı ve kalan PDF bağlantılarının kontrolü gerekir.</p>
         {workError && <ErrorBox error={workError} />}
-        {proof.questionCount ? <DataGrid rowData={proof.proof} columnDefs={questionColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
-          gridOptions={{ getRowId: ({ data }) => data.code }} />
+        {proof.questionCount ? <DataGrid rowData={proof.proof} columnDefs={questionColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false} fitAllRows
+          gridOptions={codeGridOptions} />
           : <p>Bu PDF’ye kesin bağlanan canlı banka sorusu bulunamadı. PDF’yi açıp soru içerip içermediğini incele.</p>}</>}
       {candidates && <div className="pdf-audit-candidates"><h3>Çıkarılan soru adayları</h3>
         <p className="muted">{number(candidates.questionCount)} adayın iki yöntemle okunan cevapları eşleşiyor. Adaylar soru bankasına eklenmedi; görsel ve ders etiketleri incelenecek.</p>
-        <DataGrid rowData={candidates.cards} columnDefs={candidateColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
-          gridOptions={{ getRowId: ({ data }) => data.code }} />
+        <DataGrid rowData={candidates.cards} columnDefs={candidateColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false} fitAllRows
+          gridOptions={codeGridOptions} />
       </div>}
     </section>}
   </div>;

@@ -262,6 +262,11 @@ Soru bağı gösterilen PDF'lerin fiziksel SHA-256'sı doğrulanır.
 zamanı ve banka damgasını `learning_catalog.pdf_audit_state` içinden okur. İlk aktarım
 `scripts/pdf-bank-audit-publish.py` ile mevcut anlık kayıttan yapılır; PDF'ler yeniden
 okunmaz. Satır güncellemesi aynı katalog kimliğinde DB kaydını değiştirir.
+Envanterdeki her PDF satırı görüntüleyicide açılır: konu kataloğunda yoksa `TopicPdfService`
+`PdfReviewLabels` kaydından tanımlar (2.708 satırın 472'si katalog dışıdır). Açılamayan PDF
+genel bir hata yerine kendi nedeniyle gösterilir: arşivde, dosya yok (`missing_file`), dosya
+değişmiş (`changed_file`), yalnız video (`video_only`) veya envanterde olmayan numara.
+Tablo sütunları `DataGrid fitAllRows` ile bütün satırların en uzun metni kadar geniş olur.
 Yeni soru veya PDF yayını sonrasında kapsam denetimi gerektiğinde üretici yeniden
 çalıştırılıp kayıtlar ayrıca yayımlanır. Bu bağ aynı PDF'deki bütün soruların
 çıkarıldığını kanıtlamaz. Çevrim içi OGM Soru Bankası kartlarının belirli okul

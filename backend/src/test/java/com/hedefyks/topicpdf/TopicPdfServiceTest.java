@@ -40,6 +40,8 @@ class TopicPdfServiceTest {
         assertThat(service.detail(17).title()).isEqualTo("Sözcükte Anlam");
         Files.writeString(pdf, "changed");
         assertThatThrownBy(() -> service.file(17)).isInstanceOf(ApiException.class);
+        assertThat(service.detail(17).status()).isEqualTo("changed_file");
+        Files.delete(pdf);
         assertThat(service.detail(17).status()).isEqualTo("missing_file");
         assertThatThrownBy(() -> service.file(18)).isInstanceOf(ApiException.class);
     }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.*;
 import org.springframework.stereotype.Component;
 import com.hedefyks.topicpdf.PdfArchiveRegistry;
+import com.hedefyks.topicpdf.PdfChangedException;
 
 /** Persistent machine labels from PDF headings, independent of teacher verdicts. */
 @Component
@@ -52,6 +53,14 @@ public class PdfReviewLabels {
 
     public boolean contains(int id) { return byId.containsKey(id) && !archived(byId.get(id)); }
 
+    /** Inventory row of any labeled PDF, archived or not, so a caller can say why a file is not offered. */
+    public Map<String, Object> inventoryRow(int id) {
+        var item = byId.get(id);
+        return item == null ? null : publicItem(item);
+    }
+
+    public boolean isArchived(int id) { return byId.containsKey(id) && archived(byId.get(id)); }
+
     private Map<String, Object> publicItem(Map<String, Object> source) {
         var item = new LinkedHashMap<>(source);
         item.remove("relativePath");
@@ -80,7 +89,7 @@ public class PdfReviewLabels {
                 for (int n; (n = in.read(buffer)) != -1;) digest.update(buffer, 0, n);
             }
             if (!HexFormat.of().formatHex(digest.digest()).equals(item.get("sourceSha256")))
-                throw ApiException.notFound("PDF değişmiş; başlık etiketlerini yeniden üretin.");
+                throw new PdfChangedException();
             return new PathResource(path);
         } catch (ApiException e) { throw e; }
         catch (Exception e) { throw ApiException.notFound("PDF bulunamadı."); }

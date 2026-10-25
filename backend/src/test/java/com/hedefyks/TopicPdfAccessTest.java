@@ -25,7 +25,8 @@ class TopicPdfAccessTest extends TestBase {
         }
         send(student, get(paths[0]), null).andExpect(status().isOk());
         send(student, get(paths[1]), null).andExpect(status().isOk());
-        send(student, get(paths[2]), null).andExpect(status().isNotFound());
+        // 17 is in the PDF inventory, so it is described (no source folder is configured here); its file is not served.
+        send(student, get(paths[2]), null).andExpect(status().isOk());
         send(student, get(paths[3]), null).andExpect(status().isNotFound());
     }
 }

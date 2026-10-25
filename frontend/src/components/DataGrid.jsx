@@ -4,6 +4,7 @@ import { AllCommunityModule, ModuleRegistry, themeQuartz } from 'ag-grid-communi
 import { AG_GRID_LOCALE_TR } from '@ag-grid-community/locale';
 import { selectionFilter } from './GridSelectionFilter.jsx';
 import { buildGridWorkbook } from './gridExcel.js';
+import { columnKey, measureColumnWidths } from './gridFit.js';
 
 const modules = [AllCommunityModule];
 ModuleRegistry.registerModules(modules);
@@ -85,18 +86,37 @@ function ExpandedDetail({ data, node, api, context }) {
   return <div ref={root} className="app-grid-inline-detail"><Detail item={data} {...context.inlineDetail.props} /></div>;
 }
 
-export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode = 'standard', className = '', columnSorting = false, scrollable = false, fitContent = false, dense = false,
+// fitAllRows: every column is at least as wide as its longest text over all rows (no wrapping or clipping),
+// and the grid still stretches those widths to the available width.
+export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode = 'standard', className = '', columnSorting = false, scrollable = false, fitContent = false, fitAllRows = false, dense = false,
   showColumnFilters = false, selectionFilters = false, compactColumns = false, showSearch = true, onFilteredRowsChange,
   expandedRowKey, detailComponent, detailContext, rowKey = defaultRowKey, rowNumbers = false, exportFileName }) {
   const [search, setSearch] = useState('');
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState('');
+  const [fitWidths, setFitWidths] = useState({});
   const gridApi = useRef(null);
   const root = useRef(null);
   const compact = mode !== 'standard';
+  useEffect(() => {
+    if (!fitAllRows) return undefined;
+    let cancelled = false;
+    const measure = () => {
+      const wrapper = root.current?.querySelector('.ag-root-wrapper');
+      if (cancelled || !wrapper) return;
+      const next = measureColumnWidths(columnDefs, rowData || [], wrapper, rowNumbers);
+      setFitWidths(previous => Object.keys(next).length === Object.keys(previous).length
+        && Object.keys(next).every(key => next[key] === previous[key]) ? previous : next);
+    };
+    const frame = requestAnimationFrame(measure);
+    document.fonts?.ready.then(measure); // text is measured again once the page fonts are loaded
+    return () => { cancelled = true; cancelAnimationFrame(frame); };
+  }, [fitAllRows, columnDefs, rowData, rowNumbers]);
   const columns = useMemo(() => {
     const configure = defs => defs.map(def => def.children ? { ...def, children: configure(def.children) } : {
       ...def,
+      ...(fitAllRows && fitWidths[columnKey(def)] ? { width: fitWidths[columnKey(def)], minWidth: fitWidths[columnKey(def)], flex: 0,
+        ...(def.autoHeight ? {} : { wrapText: false }) } : {}),
       ...(columnSorting && !def.comparator && def.cellDataType !== 'number'
         ? { comparator: (a, b) => compareText(String(a ?? ''), String(b ?? '')) } : {}),
       ...(fitContent ? { flex: 0, minWidth: Math.min(def.minWidth ?? 40, 40) } : {}),
@@ -107,8 +127,10 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       filterParams: { ...def.filterParams, selectionType: def.filterParams?.selectionType || (def.cellDataType === 'number' ? 'number' : 'text') },
       } : {}),
     });
-    return configure(rowNumbers ? [rowNumberColumn, ...columnDefs] : columnDefs);
-  }, [columnDefs, selectionFilters, fitContent, columnSorting, rowNumbers]);
+    const numberColumn = fitAllRows && fitWidths.rowNumber
+      ? { ...rowNumberColumn, width: fitWidths.rowNumber, minWidth: fitWidths.rowNumber, maxWidth: fitWidths.rowNumber } : rowNumberColumn;
+    return configure(rowNumbers ? [numberColumn, ...columnDefs] : columnDefs);
+  }, [columnDefs, selectionFilters, fitContent, fitAllRows, fitWidths, columnSorting, rowNumbers]);
   const columnDefaults = useMemo(() => ({
     ...(columnSorting ? sortOnlyColDef : compact ? compactColDef : defaultColDef),
     ...(showColumnFilters && !compact ? { floatingFilter: true, wrapHeaderText: true, autoHeaderHeight: true } : {}),
@@ -117,7 +139,8 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
     ...(selectionFilters ? { flex: 0, width: 110, wrapHeaderText: false, autoHeaderHeight: false, unSortIcon: false, suppressHeaderFilterButton: false } : {}),
     ...(compactColumns ? { minWidth: 28, flex: 1, cellStyle: { textAlign: 'center' } } : {}),
     ...(fitContent ? { flex: 0, minWidth: 40 } : {}),
-  }), [columnSorting, compact, scrollable, showColumnFilters, fitContent, dense, selectionFilters, compactColumns]);
+    ...(fitAllRows ? { wrapHeaderText: false, autoHeaderHeight: false } : {}),
+  }), [columnSorting, compact, scrollable, showColumnFilters, fitContent, fitAllRows, dense, selectionFilters, compactColumns]);
   const notifyFilteredRows = event => {
     if (!onFilteredRowsChange) return;
     const rows = [];
@@ -186,7 +209,7 @@ export default function DataGrid({ rowData, columnDefs, gridOptions = {}, mode =
       domLayout={scrollable ? 'normal' : 'autoHeight'}
       suppressMovableColumns={compact}
       autoSizeStrategy={fitContent ? contentSizeStrategy : gridSizeStrategy}
-      suppressColumnVirtualisation={fitContent}
+      suppressColumnVirtualisation={fitContent || fitAllRows}
       {...gridOptions}
       {...expansionOptions}
       onGridReady={event => { gridApi.current = event.api; gridOptions.onGridReady?.(event); }}

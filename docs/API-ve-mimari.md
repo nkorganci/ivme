@@ -202,8 +202,8 @@ kaynak kaydı korunur.
 |---|---|
 | `GET /api/topic-pdfs/filters` | Katalogdaki sınav, ders, sınıf, içerik türü seçenekleri ve kategori sayıları (`facets`) |
 | `GET /api/topic-pdfs?exam&subject&grade&kind&q&page&size` | Başlık araması ve filtrelerle sayfalı konu anlatımı listesi; TYT ve AYT filtreleri ortak `TYT-AYT` kaynaklarını da kapsar; durum `available`, `missing_file` veya `video_only` |
-| `GET /api/topic-pdfs/{id}` | Tek kayıt, dosyanın güncel açılabilirlik durumu ve varsa onaylı `verifiedTopic` |
-| `GET /api/topic-pdfs/{id}/file` | Uygun PDF'yi `application/pdf`, `inline`, `Cache-Control: no-store` ile açar |
+| `GET /api/topic-pdfs/{id}` | Tek kayıt, dosyanın güncel açılabilirlik durumu ve varsa onaylı `verifiedTopic`. Konu kataloğunda olmayan envanter PDF'leri (deneme, çıkmış soru, ek kaynak) `pdf-review-labels.json` kaydından tanımlanır. Durum `available`, `missing_file` (dosya yok), `changed_file` (SHA-256 uyuşmuyor) veya `video_only`; arşivdeki PDF ile envanterde olmayan numara kendi mesajıyla 404 döner |
+| `GET /api/topic-pdfs/{id}/file` | Uygun PDF'yi `application/pdf`, `inline`, `Cache-Control: no-store` ile açar; katalog dışı envanter PDF'leri aynı etiket kaydından sunulur |
 
 Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir. `topic-pdf-links.json` içindeki onaylı bağlantıda PDF checksum'ı tekrar doğrulanır. `GET /api/questions/availability?topicPdfId=` ve pratik/sınav oluşturma isteklerindeki `topicPdfId` yalnız onaylı soru kodlarıyla sınırlandırılır; istemci kaynak/ders/konu göndererek havuzu genişletemez.
 

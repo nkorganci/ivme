@@ -6,6 +6,13 @@ import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import ResourceContext from '../components/ResourceContext.jsx';
 import AnnotatedPdf from '../components/AnnotatedPdf.jsx';
 
+// Why a catalogued PDF cannot be opened, by the status the server verified just now.
+const UNAVAILABLE = {
+  missing_file: ['PDF dosyası bulunamadı.', 'Bu kayıt katalogda var, ancak kaynak klasörde dosyası yok.'],
+  changed_file: ['PDF dosyası değişmiş.', 'Dosyanın içeriği katalogdaki SHA-256 kaydıyla uyuşmuyor; kaynak yeniden denetlenmeden açılamaz.'],
+  video_only: ['Bu kayıt PDF değil, yalnız video içeriği.', 'Açılacak bir PDF dosyası yoktur.'],
+};
+
 export default function TopicPdfViewer() {
   const { id } = useParams();
   const { search,hash } = useLocation();
@@ -15,6 +22,8 @@ export default function TopicPdfViewer() {
   const { data, loading, error, retry } = useAsync(() => api.get(`/api/topic-pdfs/${encodeURIComponent(id)}`), [id]);
   const shared=useAsync(()=>api.get('/api/learning-resources/item?key='+encodeURIComponent(`pdf:${id}`)),[id]);
   const fileUrl = `/api/learning-resources/pdf/${encodeURIComponent(id)}`;
+  const reason = data && data.status !== 'available'
+    ? UNAVAILABLE[data.status] || ['Bu PDF şu anda açılamıyor.', 'Başka bir konu anlatımı seçebilirsin.'] : null;
   const changePage = (next) => { setPage(next); window.history.replaceState(null, '', `${window.location.pathname}${search}#page=${next}`); };
   return <>
     <div className="page-head">
@@ -27,7 +36,7 @@ export default function TopicPdfViewer() {
     </div>
     {loading && <Loading text="PDF bilgisi yükleniyor…" />}
     {error && <ErrorBox error={error} onRetry={retry} />}
-    {data?.status !== 'available' && data && <Empty title="Bu PDF şu anda açılamıyor."><p>Başka bir konu anlatımı seçebilirsin.</p></Empty>}
+    {reason && <Empty title={reason[0]}><p>{reason[1]}</p></Empty>}
     {data?.status === 'available' && <section className="card topic-pdf-viewer">
       {data.verifiedTopic && <div className="topic-pdf-actions">
         <p>Doğrulanmış konu: <strong>{data.verifiedTopic}</strong>. Bu bağlantıda yalnız kaynakları incelenmiş sorular kullanılır.</p>
