@@ -33,6 +33,5 @@ Kullanıcı açıkça istemeden başlatılmaz; istendiğinde buradaki noktadan d
 
 ## Son kapanan iş
 
-25 Ekim 2026 — AI çalışma düzeni: `scripts/ivme.py` tek giriş komutu, `docs/islemler/`
-tarifleri, devir dosyası, belgelerin güncel duruma göre temizlenmesi, commit öncesi
-belge/kural denetimi ve Claude kancaları. Ayrıntı: `git log -1`.
+25 Ekim 2026 — Akıllı Öğretmen kurulu `qwen3.5:9b` ile çalışıyor (`think:false`, canlı sınıflandırma
+OK); araştırma arşivi yayınla eşitlendi (55 rehber, atıf yapılan PDF'ler dahil). Ayrıntı: `git log -1`.

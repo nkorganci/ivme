@@ -36,6 +36,10 @@ public class TutorModelGateway {
         if (ollama) {
             body.put("stream", false);
             body.put("format", "json");
+            // Düşünme kipi kısa sınıflandırmayı ~27 sn'ye uzatıp zaman aşımına düşürür; kapalıyken <1 sn.
+            body.put("think", false);
+            // Soğuk yükleme (~30 sn) zaman aşımını aşmasın diye model bellekte tutulur.
+            body.put("keep_alive", "30m");
             body.putObject("options").put("temperature", 0);
             path = "/api/chat";
         } else {

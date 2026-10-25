@@ -55,7 +55,8 @@ bu DDL'yi uygular; başka göçleri, soru düzeltmelerini veya öğrenci akışl
 - `runs`: girdi fingerprint'leri, sürüm, kapsam, öğrenciye sunulan JSON ve iki belgenin
   tam metni. Aynı girdiye aynı araştırma anahtarı üretilir; girdiler değişirse önceki kayıt
   korunarak yeni sürüm eklenir.
-- `documents`, `document_pages`, `run_documents`: PDF'lerin kurum adresi, yerel yolu,
+- `documents`, `document_pages`, `run_documents`: analizdeki temel anlatım PDF'leri ile rehberlerin
+  atıf yaptığı diğer bütün PDF'lerin kurum adresi, yerel yolu,
   SHA-256 özeti ve 1 tabanlı sayfa metinleri; çıkarıcı sürümü ve raster görsel varlığı.
   Vektör çizim kontrolü yalnız rehberde kullanılan sayfalarda yapılır, diğerlerinde `NULL`
   kalır. **Metin çıkarımı veya çizim tespiti şeklin yorumlandığı anlamına gelmez.**

@@ -135,9 +135,16 @@ def cmd_durum(args):
         catalog = db_query("select run_key from learning_catalog.current_run")
         migration = db_query("select max(version::int) from flyway_schema_history where success")
         print(f"DB ivme: katalog {catalog or '?'} · göç V{migration or '?'}")
+        # Akıllı Öğretmen'in istediği modeller (ortam değişkeni > application.yml varsayılanı) kurulu mu?
+        config = (APP / "backend/src/main/resources/application.yml").read_text(encoding="utf-8")
+        wanted = {name: os.environ.get(name) or default
+                  for name, default in re.findall(r"\$\{(YKS_AI_[A-Z]+_MODEL):([^}]+)\}", config)}
         try:
             tags = json.load(urlopen("http://127.0.0.1:11434/api/tags", timeout=2))
-            print("Ollama: açık · " + ", ".join(m["name"] for m in tags["models"]))
+            installed = {m["name"] for m in tags["models"]}
+            missing = sorted({model for model in wanted.values() if model not in installed})
+            print("Ollama: açık · " + ", ".join(sorted(installed))
+                  + (f" · EKSİK (uygulama istiyor): {', '.join(missing)}" if missing else " · uygulama modelleri kurulu"))
         except (URLError, OSError):
             print("Ollama: kapalı (python scripts/ivme.py ollama durum başlatır)")
     print("Devir (docs/plan/00_DEVAM.md):")
@@ -164,7 +171,16 @@ def cmd_test(args):
     if tests:
         command += ["-Test", tests]
     print("Çalışıyor: " + " ".join(command[-3:] if tests else command[-1:]), flush=True)
+    started = time.time()
     result = run(command, capture_output=True)
+    # Odaklı çalıştırma -q ile özet yazmaz; sayıları bu çalıştırmanın surefire raporlarından al.
+    reports = [p for p in (APP / "backend/target/surefire-reports").glob("TEST-*.xml") if p.stat().st_mtime >= started - 1]
+    suite_totals = [0, 0, 0, 0]
+    for report in reports:
+        head = report.read_text(encoding="utf-8", errors="replace")[:2000]
+        for i, key in enumerate(("tests", "failures", "errors", "skipped")):
+            match = re.search(rf'<testsuite[^>]*\s{key}="(\d+)"', head)
+            suite_totals[i] += int(match.group(1)) if match else 0
     text = result.stdout + result.stderr
     log = APP / "backend/target/ivme-test-son.log"
     log.parent.mkdir(parents=True, exist_ok=True)
@@ -179,6 +195,11 @@ def cmd_test(args):
     if totals:
         run_, fail, err, skip = totals[-1]
         print(f"Toplam {run_} test · {fail} başarısız · {err} hata · {skip} atlandı")
+    elif reports:
+        print(f"Toplam {suite_totals[0]} test ({len(reports)} sınıf) · {suite_totals[1]} başarısız · "
+              f"{suite_totals[2]} hata · {suite_totals[3]} atlandı")
+    else:
+        print("UYARI: hiç test raporu üretilmedi; test adlarını kontrol et (ör. tutor.TutorPolicyTest).")
     print(f"Bilinen hata: {len(failed & known)}  ·  YENİ hata: {len(new)}")
     for name in new:
         print("  YENİ  " + name)

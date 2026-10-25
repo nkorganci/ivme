@@ -167,12 +167,21 @@ def prepare():
     cited_pages = {(ref["catalogId"], ref["page"]) for group in notes["groups"]
                    for lesson in group["lessons"] for ref in lesson["sources"]}
     print("Araştırma arşivi: PDF sayfaları ve kaynak özetleri hazırlanıyor.", flush=True)
-    for item in analysis["primaryLessonPdfs"]:
+    # Temel anlatım PDF'lerine ek olarak rehberlerin atıf yaptığı her PDF arşivlenir; aksi halde
+    # atıf sayfası (metin, çizim kontrolü) arşivde bulunmaz.
+    primary_ids = {item["catalogId"] for item in analysis["primaryLessonPdfs"]}
+    cited_extra = [{"catalogId": cid, "title": f"{catalog[cid]['sinav']} {catalog[cid]['ders_ad']} — {catalog[cid]['baslik']}",
+                    "url": catalog[cid]["url"], "pages": None, "sha256": None}
+                   for cid in sorted({cid for cid, _ in cited_pages} - primary_ids)]
+    for item in [*analysis["primaryLessonPdfs"], *cited_extra]:
         source = catalog[item["catalogId"]]
         path = ROOT / "Kaynaklar/ogm-materyal" / source["dosya"]
         fingerprint = sha(path.read_bytes())
-        if fingerprint != item["sha256"]:
+        if item["sha256"] and fingerprint != item["sha256"]:
             raise ValueError(f"PDF değişti; analiz raporu yenilenmeli: {item['catalogId']}")
+        if item["pages"] is None:
+            with pymupdf.open(path) as pdf:
+                item["pages"] = pdf.page_count
         documents.append({"catalog_id": item["catalogId"], "sha256": fingerprint,
                           "title": item["title"], "local_path": str(path.resolve()),
                           "official_url": item["url"], "page_count": item["pages"]})

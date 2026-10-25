@@ -53,7 +53,9 @@ python -X utf8 scripts/kaynakli_arastirma_db.py --write
 python -X utf8 testler/source-research-db-test.py
 ```
 
-Proje Python ortamında (`..\.venv`) `pymupdf` bulunmalıdır. Not değişince önce
+Proje Python ortamında (`..\.venv`) `pymupdf` bulunmalıdır. Betikler Git dışı `veri/sorular-tum.csv` ve
+`veri/sorular-ogm.csv` dosyalarını okur; yoksa görsellere dokunmadan yeniden üretilir:
+`node ornek-veri/ornek_uret.mjs --tum --csv-only` ve `node ornek-veri/ogm_uret.mjs` (`ornek-veri/` içinden). Not değişince önce
 `scripts/yayinla_kaynakli_notlar.py --write`, ardından araştırma arşivini güncel tutmak için
 `kaynakli_arastirma_db.py --write` çalıştırılır. Ön yüz değişikliğini izleyici yayımlar;
 ekran `node testler/source-labels-ui.mjs` veya

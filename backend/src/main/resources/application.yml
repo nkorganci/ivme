@@ -58,7 +58,7 @@ app:
       economic:
         provider: ${YKS_AI_EKONOMIK_SAGLAYICI:ollama}
         base-url: ${YKS_AI_EKONOMIK_ADRES:http://127.0.0.1:11434}
-        model: ${YKS_AI_EKONOMIK_MODEL:qwen3.5:4b}
+        model: ${YKS_AI_EKONOMIK_MODEL:qwen3.5:9b}
         api-key: ${YKS_AI_EKONOMIK_ANAHTAR:}
       strong:
         provider: ${YKS_AI_GUCLU_SAGLAYICI:ollama}

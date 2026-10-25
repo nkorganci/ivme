@@ -54,9 +54,9 @@ listesi `python scripts/note-coverage.py` çıktısındaki (`veri/content-labels
 `NO_NOTE` kayıtlarıdır; ikinci eksik listesi açılmaz. Kurallar
 [kaynaklı ders notlarında](../KAYNAKLI_DERS_NOTLARI.md).
 
-- Araştırma arşivi yayından geride: son `source_research` sürümü yayımlanmış rehberlerin bir kısmını içermiyor. `kaynakli_arastirma_db.py --write` ile arşivi güncelle ve `--status` ile rehber sayısının yayınla eşleştiğini doğrula.
 - `NO_NOTE` kimliklerinden çalış; geniş giriş notunu bütün dar alt konuların tamamlanması sayma. Edebiyatın dar alt konuları ve AYT sözel kapsamının eksik kaynak/örnek bağlarını tamamla.
 - Türkçe Sözel Mantık/Fiilde Çatı, tarih, coğrafya, felsefe, din ve TYT biyoloji/kimya taslaklarındaki örnek bağlarını alan uzmanıyla değerlendir; hazır konuları baştan yazma.
+- Yeni not yayımlandıktan sonra araştırma arşivini güncelle (`kaynakli_arastirma_db.py --write`) ve `--status` rehber sayısının yayınla eşleştiğini doğrula.
 - Gerçek ipucu/not içeriğinin alan kararını al; onaylı ipucunu `scripts/ipucu-guvenli-aktar.py` ve cevap sızıntısı denetimiyle bağla. Faydalı/hatalı geri bildirimini gerçek içerik pilotunda doğrula.
 
 Kabul: eksik kapsam kimlik bazında azalıyor; her yeni not/ipucu ortak etiket ve kaynak aralığını taşıyor; alan uzmanı incelemesi gerektiren içerik açıkça ayrılıyor.

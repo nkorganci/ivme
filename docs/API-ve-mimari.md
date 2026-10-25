@@ -212,10 +212,11 @@ ile denetlenir ve `ogretim aktar` ile `tutor_contents` tablosuna sürümlü yaz�
 
 Öğrenciye görünürlük `YKS_OGRETIM_GORUNURLUGU` (varsayılan `VERIFIED_OR_APPROVED`;
 üretimde `APPROVED_ONLY` önerilir). Serbest açıklama sınıflandırması iki katmanlı yerel
-Ollama yönlendirmesi kullanır: ekonomik `YKS_AI_EKONOMIK_MODEL` (varsayılan `qwen3.5:4b`),
-güçlü `YKS_AI_GUCLU_MODEL` (varsayılan `qwen3.5:9b`); çağrılar `tutor_model_calls`,
+Ollama yönlendirmesi kullanır: ekonomik `YKS_AI_EKONOMIK_MODEL` ve güçlü `YKS_AI_GUCLU_MODEL`;
+ikisinin varsayılanı da bilgisayarda kurulu `qwen3.5:9b` modelidir. İstekler `think:false` (düşünme kipi kısa
+sınıflandırmayı zaman aşımına düşürür) ve `keep_alive=30m` ile gönderilir. Çağrılar `tutor_model_calls`,
 önbellek `tutor_model_cache` tablosundadır. Kurulu olmayan model seçilirse sınıflandırma
-yapılamaz; `python scripts/ivme.py ollama durum` kurulu modelleri listeler. Yeniden üretim
+yapılamaz; `python scripts/ivme.py durum` uygulamanın istediği modellerin kurulu olup olmadığını gösterir. Yeniden üretim
 istekleri `tutor_regeneration_requests` içindedir ve `ogretim yeniden-uretim` ile dışa alınır.
 
 ## Zayıf alan önerisi
