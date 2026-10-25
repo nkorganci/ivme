@@ -4,7 +4,7 @@
   "source": "icerik/data/kpss-ortaogretim",
   "questions": 1260,
   "archivePositions": 840,
-  "copiedImages": 0,
+  "copiedImages": 81,
   "write": {
     "inserted": 0,
     "updated": 0,
@@ -41,9 +41,19 @@
     "archivePositions": 840,
     "selectable": 1223
   },
+  "inventory": {
+    "documents": 17,
+    "gaps": 2
+  },
   "label": {
     "etiket": "TUM_PDFLER_ISLENDI",
-    "pdf": 18,
+    "pdf": 17,
+    "roller": {
+      "CEVAP_ANAHTARI": 4,
+      "SORU_KITAPCIGI": 12,
+      "YARDIMCI": 1
+    },
+    "eksik": 2,
     "islenmeyen": []
   }
 }

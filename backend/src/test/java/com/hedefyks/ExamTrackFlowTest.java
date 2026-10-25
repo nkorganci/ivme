@@ -44,7 +44,7 @@ class ExamTrackFlowTest extends TestBase {
         assertThat(jdbc.queryForObject("SELECT count(*) FROM user_record_audit WHERE record_type = 'user_exam_tracks'",
                 Integer.class)).isEqualTo(1);
 
-        send(first, put(PATH + "/current"), "{\"trackId\":\"KPSS_LISANS\"}").andExpect(status().isBadRequest());
+        send(first, put(PATH + "/current"), "{\"trackId\":\"KPSS_ONLISANS\"}").andExpect(status().isBadRequest());
         send(first, put(PATH + "/current"), "{\"trackId\":\"YOK\"}").andExpect(status().isBadRequest());
         send(first, put(PATH + "/current"), "{}").andExpect(status().isBadRequest());
         assertThat(read(send(first, get(PATH), null)).path("currentId").asText()).isEqualTo("KPSS_ORTAOGRETIM");

@@ -123,4 +123,63 @@ class KpssTrackScopeTest extends TestBase {
         read(send(session, get("/api/learning-resources/metadata"), null)).path("categories").forEach(c -> yksExams.add(c.path("exam").asText()));
         assertThat(yksExams).doesNotContain("KPSS_OO_GY", "KPSS_OO_GK");
     }
+
+    /** KPSS düzeyleri ders kimliklerini paylaşır (kpss-turkce) ama sorular, konular, deneme planı ve geçmiş düzeye göre ayrılır. */
+    @Test
+    void kpssLevelsShareSubjectIdsButNotContent() throws Exception {
+        jdbc.update("INSERT INTO learning_catalog.runs(run_key,method,summary) VALUES (?,'TEST','{}')", RUN);
+        jdbc.update("INSERT INTO learning_catalog.current_run VALUES (true,?) ON CONFLICT(singleton) DO UPDATE SET run_key=excluded.run_key", RUN);
+        category("kpss-oo.turkce.tsa", "KPSS_OO_GY", "kpss-turkce", "Türkçe", "Sözcükte Anlam");
+        category("kpss-ls.turkce.tsa", "KPSS_LS_GY", "kpss-turkce", "Türkçe", "Sözcükte Anlam");
+        category("kpss-ls.tarih.tr1", "KPSS_LS_GK", "kpss-tarih", "Tarih", "İslamiyet Öncesi Türk Devletleri");
+        question("KPSS-OO-2024-GY-01", ExamType.KPSS_OO_GY, "Türkçe", "kpss-turkce", "kpss-oo.turkce.tsa");
+        question("KPSS-LS-2022-GY-01", ExamType.KPSS_LS_GY, "Türkçe", "kpss-turkce", "kpss-ls.turkce.tsa");
+        question("KPSS-LS-2022-GK-01", ExamType.KPSS_LS_GK, "Tarih", "kpss-tarih", "kpss-ls.tarih.tr1");
+        user("lisans_ogrenci", Role.USER);
+        MockHttpSession session = login("lisans_ogrenci", "Sifre1234");
+        send(session, put("/api/exam-tracks/current"), "{\"trackId\":\"KPSS_LISANS\"}").andExpect(status().isOk());
+
+        assertThat(codes(read(send(session, get("/api/questions"), null))))
+                .containsExactlyInAnyOrder("KPSS-LS-2022-GY-01", "KPSS-LS-2022-GK-01");
+        assertThat(codes(read(send(session, get("/api/questions").param("subject", "Türkçe"), null))))
+                .containsExactly("KPSS-LS-2022-GY-01");
+        assertThat(codes(read(send(session, get("/api/questions").param("categoryId", "kpss-oo.turkce.tsa"), null)))).isEmpty();
+        var exams = new HashSet<String>();
+        read(send(session, get("/api/learning-resources/metadata"), null)).path("categories").forEach(c -> exams.add(c.path("exam").asText()));
+        assertThat(exams).containsExactlyInAnyOrder("KPSS_LS_GY", "KPSS_LS_GK");
+
+        var plan = read(send(session, get("/api/exams/plan").param("examType", "KPSS_LS_GK"), null).andExpect(status().isOk()));
+        assertThat(plan.path("timeLimitMinutes").asInt()).isEqualTo(65);
+        var quotas = new ArrayList<String>();
+        plan.path("subjects").forEach(s -> quotas.add(s.path("subject").asText() + "=" + s.path("target").asInt()));
+        assertThat(quotas).containsExactly("Tarih=27", "Coğrafya=18", "Vatandaşlık=9", "Güncel Bilgiler=6");
+        send(session, get("/api/exams/plan").param("examType", "KPSS_OO_GY"), null).andExpect(status().isBadRequest());
+
+        var body = Map.of("questionCount", 2, "clientRequestId", UUID.randomUUID().toString());
+        var practice = read(send(session, post("/api/study-sessions"), json.writeValueAsString(body)).andExpect(status().isCreated()));
+        assertThat(jdbc.queryForObject("SELECT track_id FROM study_sessions WHERE id=?", String.class, practice.path("id").asLong()))
+                .isEqualTo("KPSS_LISANS");
+
+        // Ortaöğretim'e geçince Lisans soruları ve Lisans geçmişi görünmez.
+        send(session, put("/api/exam-tracks/current"), "{\"trackId\":\"KPSS_ORTAOGRETIM\"}").andExpect(status().isOk());
+        assertThat(codes(read(send(session, get("/api/questions"), null)))).containsExactly("KPSS-OO-2024-GY-01");
+        assertThat(read(send(session, get("/api/study-sessions"), null)).path("totalElements").asInt()).isZero();
+    }
+
+    /** Kaynak envanteri ve eksik kayıtları yalnız tanımlı rol/durum/tür değerlerini ve tutarlı sayıları kabul eder. */
+    @Test
+    void sourceInventoryRejectsInconsistentRows() {
+        jdbc.update("INSERT INTO exam_source_documents(track_id,path,sha256,role,status,question_count,active_count,note) "
+                + "VALUES ('KPSS_LISANS','a.pdf',repeat('0',64),'SORU_KITAPCIGI','ISLENDI',2,1,'test')");
+        jdbc.update("INSERT INTO exam_coverage_gaps(track_id,exam_year,exam_type,gap_type,expected_count,available_count,question_numbers,note) "
+                + "VALUES ('KPSS_LISANS',2016,'KPSS_LS_GY','CEVAP_BEKLIYOR',60,60,'{1,2}','test')");
+        org.junit.jupiter.api.Assertions.assertThrows(org.springframework.dao.DataIntegrityViolationException.class, () -> jdbc.update(
+                "INSERT INTO exam_source_documents(track_id,path,sha256,role,status,question_count,active_count,note) "
+                + "VALUES ('KPSS_LISANS','b.pdf',repeat('0',64),'SORU_KITAPCIGI','ISLENDI',1,2,'aktif soru sayısı toplamı aşamaz')"));
+        org.junit.jupiter.api.Assertions.assertThrows(org.springframework.dao.DataIntegrityViolationException.class, () -> jdbc.update(
+                "INSERT INTO exam_coverage_gaps(track_id,exam_year,exam_type,gap_type,expected_count,available_count,note) "
+                + "VALUES ('KPSS_LISANS',2016,'KPSS_LS_GK','BILINMIYOR',60,0,'tanımsız tür')"));
+        jdbc.update("DELETE FROM exam_source_documents WHERE path='a.pdf'");
+        jdbc.update("DELETE FROM exam_coverage_gaps WHERE note='test'");
+    }
 }
