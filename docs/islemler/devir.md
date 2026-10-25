@@ -1,35 +1,11 @@
 # Claude ↔ Codex devri
 
-Süreklilik sohbet geçmişine değil üç şeye dayanır: `docs/plan/00_DEVAM.md`, yerel
-commit'ler ve `veri/` altındaki sürümlü çıktılar. İki AI de aynı `AGENTS.md` kurallarını
-okur (`CLAUDE.md` yalnız `@AGENTS.md` içerir).
+Her iki araç [AGENTS.md](../../AGENTS.md) kurallarını kullanır; [CLAUDE.md](../../CLAUDE.md) yalnız onu içe alır. Devir dosyası geçmiş rapor değildir.
 
-## Oturum açarken
+Devam isteği için kısa girdi:
 
 ```text
-İvme'de devam et: docs/plan/00_DEVAM.md'deki yarım işe, yoksa sıradaki göreve.
+İvme'de docs/plan/00_DEVAM.md dosyasındaki yarım işe, yoksa sıradaki açık göreve devam et.
 ```
 
-AI şunları yapar: `python scripts/ivme.py durum` → `00_DEVAM.md` → gerekiyorsa ilgili adım
-dosyası ve rehber bölümü. Claude Code'da oturum başında `durum` çıktısı kanca ile
-otomatik bağlama girer (`.claude/settings.json`).
-
-## Çalışırken ve bırakırken
-
-Her anlamlı adımın sonunda (ve token/limit bitmeden önce) `00_DEVAM.md` “Şimdi” tablosu
-güncellenir ve yerel commit atılır:
-
-| Alan | Ne yazılır |
-|---|---|
-| Güncelleme | Tarih ve AI (Claude / Codex) |
-| Etkin görev | `NN.NN` |
-| Yarım iş | Ne yapılıyordu; nerede kalındı (`itemKey`, sayfa, parti, dosya); kalan miktar |
-| Commit'lenmemiş değişiklik | Bilinçli bırakılan dosyalar ve nedeni; yoksa “Yok” |
-| Sıradaki komut | Diğer AI'nın ilk çalıştıracağı komut |
-
-İş bitince “Yarım iş: Yok” yazılır ve “Son kapanan iş” tek satıra (commit kısa kimliğiyle)
-güncellenir. Geçmiş işler listesi tutulmaz; `git log` yeterlidir.
-
-Uzun toplu işler (`ollama-sor.py toplu`, PDF çıkarımı, etiket üretimi) önbellek ve çıktı
-dosyasıyla devam eder; yarıda kalırsa aynı komut yeniden çalıştırılır, biten satırlar
-önbellekten gelir.
+Başlarken [devir notundaki](../plan/00_DEVAM.md) konumu ve yalnız ilgili görev dosyasını aç. Yeni kullanıcı talimatı varsa onu uygula. İş yarıda kalırsa dosya/öğe kimliğini, mevcut çıktı yolunu ve bir sonraki komutu devir notuna yaz. Tamamlanan işin ayrıntısını `git log` veya sürümlü raporda tut; devir notuna geçmiş liste ekleme.

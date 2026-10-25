@@ -8,7 +8,7 @@ Sol menüdeki **Öğretmen Doğrulaması** bölümü 14 branşı aynı etiket s�
 ## Hızlı kullanım
 
 **Ortak ünite seçimi:** Excel'in ilk KONULAR sayfasından gelen TYT/AYT üniteleri
-([güncel sayı](plan/00_CALISMA_BAGLAMI.md)) bütün branşlarda aynı DB sözlüğünden alınır; alt başlıklar ayrı seçenek değildir. **Tahmini etiketleri
+bütün branşlarda aynı DB sözlüğünden alınır; alt başlıklar ayrı seçenek değildir. Güncel kapsam `GET /api/learning-resources/metadata` üzerinden okunur. **Tahmini etiketleri
 göster** düğmesi aday ilişkileri ayırır. Soru veya PDF satırını açın,
 doğru üniteyi işaretleyin ve **Konuları kaydet ve sonraki** düğmesine basın.
 Soru sekmesinde **Kaynak → Bütün kaynaklar** seçimi çıkmış ve banka sorularını

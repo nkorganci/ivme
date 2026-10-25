@@ -2,31 +2,31 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
 import DevAccountSwitcher from './components/DevAccountSwitcher.jsx';
-import AdultHome from './pages/AdultHome.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
-import Home from './pages/Home.jsx';
 import { Loading } from './components/States.jsx';
-import Recommendations from './pages/Recommendations.jsx';
-import QuestionCollection from './pages/QuestionCollection.jsx';
-import QuestionDetail from './pages/QuestionDetail.jsx';
-import StudyNew from './pages/StudyNew.jsx';
-import PracticeSession from './pages/PracticeSession.jsx';
-import UnfinishedStudies from './pages/UnfinishedStudies.jsx';
-import Exam from './pages/Exam.jsx';
-import ExamResult from './pages/ExamResult.jsx';
-import History from './pages/History.jsx';
-import Feedback from './pages/Feedback.jsx';
-import Account from './pages/Account.jsx';
-import Admin from './pages/Admin.jsx';
-import Operator from './pages/Operator.jsx';
-import StudentTracking from './pages/StudentTracking.jsx';
 import StudentTrackingPortal from './pages/StudentTrackingPortal.jsx';
-import MathTutoring from './pages/MathTutoring.jsx';
 import { useAuth } from './auth.jsx';
 import ExamTrackGate from './components/ExamTrackGate.jsx';
 
+const AdultHome = lazy(() => import('./pages/AdultHome.jsx'));
+const Home = lazy(() => import('./pages/Home.jsx'));
+const Recommendations = lazy(() => import('./pages/Recommendations.jsx'));
+const QuestionCollection = lazy(() => import('./pages/QuestionCollection.jsx'));
+const QuestionDetail = lazy(() => import('./pages/QuestionDetail.jsx'));
+const StudyNew = lazy(() => import('./pages/StudyNew.jsx'));
+const PracticeSession = lazy(() => import('./pages/PracticeSession.jsx'));
+const UnfinishedStudies = lazy(() => import('./pages/UnfinishedStudies.jsx'));
+const Exam = lazy(() => import('./pages/Exam.jsx'));
+const ExamResult = lazy(() => import('./pages/ExamResult.jsx'));
+const History = lazy(() => import('./pages/History.jsx'));
+const Feedback = lazy(() => import('./pages/Feedback.jsx'));
+const Account = lazy(() => import('./pages/Account.jsx'));
+const Admin = lazy(() => import('./pages/Admin.jsx'));
+const Operator = lazy(() => import('./pages/Operator.jsx'));
+const StudentTracking = lazy(() => import('./pages/StudentTracking.jsx'));
+const MathTutoring = lazy(() => import('./pages/MathTutoring.jsx'));
 const Curriculum = lazy(() => import('./pages/Curriculum.jsx'));
 const PdfBankAudit = lazy(() => import('./pages/PdfBankAudit.jsx'));
 const TeacherReview = lazy(() => import('./pages/TeacherReview.jsx'));
@@ -83,7 +83,7 @@ function OldStudyNew({ exam }) {
 
 export default function App() {
   return (
-    <><DevAccountSwitcher /><Routes>
+    <><DevAccountSwitcher /><Suspense fallback={<Loading text="Sayfa yükleniyor…" />}><Routes>
       <Route path="/giris" element={<Login />} />
       <Route path="/kayit" element={<Register />} />
 
@@ -148,6 +148,6 @@ export default function App() {
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes></>
+    </Routes></Suspense></>
   );
 }

@@ -28,8 +28,13 @@ try {
   await browser.goto('/');
   if (role !== 'yok') await browser.login(role);
   await browser.goto(path);
+  // React can paint the shell before route chunks and data requests enter loading state.
+  await new Promise(resolve => setTimeout(resolve, 300));
   await browser.wait(waitFor ? `document.body.innerText.includes(${JSON.stringify(waitFor)})`
-    : 'document.querySelector("main, #root > *") && !document.querySelector(".loading, [aria-busy=true]")');
+    : `document.querySelector("main, #root > *")
+      && !document.querySelector(".loading, [aria-busy=true]")
+      && ![...document.querySelectorAll('[role="status"]')]
+        .some(el => /yükleniyor/i.test(el.textContent))`);
   await browser.wait('!document.querySelector(".ag-root-wrapper") || document.querySelector('
     + '".ag-row, .ag-overlay-no-rows-wrapper")', 15000).catch(() => {});
   await new Promise(resolve => setTimeout(resolve, 600));

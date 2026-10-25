@@ -34,3 +34,6 @@ Ders/Ünite/Konu metin sarmalayıcısı ek 2 px, satır aralığı 1,15'tir: tek
 iki satır 46 px. Konu takibinde Soru bankası / Çıkmış soru hücreleri yalnız sayıdır;
 Çalış bağlantıları ve Bitti düğmesi tek satırdır. PDF envanterinde `DataGrid fitAllRows`
 her sütunu bütün satırların en uzun metni kadar açar ve satırlar tek satırdır.
+Soru Bankası/Çıkmış Sorular listesi de mevcut sayfanın konu ve kaynak metnini
+`fitAllRows` ile ölçer; “Soruyu aç” sütununun genişliği sabittir. Uzun hücreler
+tablonun kendi yatay kaydırmasıyla okunur.

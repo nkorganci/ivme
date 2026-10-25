@@ -64,23 +64,3 @@ Lisans GY/GK, Eğitim Bilimleri ve 2013–2024 ÖABT branş testleri.
 ## 14.06 — KPSS DHBT
 
 DHBT ortak ve düzeye özel testler (2014–2024).
-
-## Kopyalanacak prompt
-
-```text
-D:\workspace\ivme\uygulama projesinde 14. adımı uygula.
-Önce AGENTS.md, docs/plan/00_YOL_HARITASI.md ve
- docs/plan/00_CALISMA_BAGLAMI.md ve docs/plan/00_DEVAM.md dosyalarını oku.
-Görev dosyası: docs/plan/14_KPSS.md
-Bu prompt uygulama talimatıdır. Bağımlılıkları ve mevcut kanıtları kontrol et;
-biten işi yeniden yapma. Bu adımın ilk açık alt işinden başlayıp sırayla ilerle.
-Menü/sayfa kopyalama; KPSS ders/konularını ortak katalogda yeni sınav
-kimlikleriyle yayımla, ikinci sözlük oluşturma. Konu adlarını uydurma; ÖSYM
-kılavuzu ve güvenilir kaynaklarla doğrula, çıkmış sorularla tutarlılığını raporla.
-YKS kayıtlarını ve öğrenci geçmişini koru. Gerçek veriyi sıfırlama; mevcut
-yetkiyi aşan yayın/push yapma. Kabul ölçütlerini ilgili denetimlerle doğrula.
-Her biten alt işten sonra 00_DEVAM.md devir dosyasını ve bu adımın
-kalan işlerini güncelle. Adım tamamen bitince kalıcı kuralları ve kanıtı koru,
-görev dosyasını sil. Sonuçta değişikliği, doğrulama kanıtını ve sıradaki görev
-kimliğini kısa yaz.
-```

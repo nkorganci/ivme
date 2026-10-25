@@ -119,17 +119,3 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 **Tamamlanma kanıtı:** ölçüm dönemi, gerçek katılımcı sayısı, anonimleştirilmiş bulgular ve her yeni sorunun görev kimliği.
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/KAYNAKLI_DERS_NOTLARI.md`, `docs/KAYNAKLI_SORU_ANALIZI.md`, `README.md`.
-
-## Kopyalanacak prompt
-
-```text
-İvme'de 12. adımı uygula (docs/plan/12_KALAN_ICERIK_VE_YAYIN.md).
-Önce AGENTS.md, docs/plan/00_CALISMA_BAGLAMI.md ve docs/plan/00_DEVAM.md dosyalarını oku.
-Bağımlılıkları ve mevcut kanıtları kontrol et; biten işi yeniden yapma; ilk açık alt işten başla.
-00_CALISMA_BAGLAMI.md içindeki kalıcı etiket/adlandırma/kaynak aralığı kurallarını ve
-güncel sözlük/şema referanslarını kullan; ikinci sözlük oluşturma.
-Önce betik/önbellek, gerekirse yerel model, en son AI. Kaynakları ve geçmiş kayıtları koru;
-gerçek veriyi sıfırlama, yetkisiz push yapma. Her biten alt işten sonra 00_DEVAM.md devir
-dosyasını ve bu adımın kalan işlerini güncelle. Adım tamamen bitince kalıcı kuralları koru,
-görev dosyasını sil; kalan adımların numarasını değiştirme.
-```

@@ -10,7 +10,6 @@ def check(root=APP):
     docs = root / 'docs'
     plan = docs / 'plan'
     errors = []
-    context = (plan / '00_CALISMA_BAGLAMI.md').read_text(encoding='utf-8-sig')
     handoff_file = plan / '00_DEVAM.md'
     handoff = handoff_file.read_text(encoding='utf-8-sig') if handoff_file.exists() else ''
     roadmap = (plan / '00_YOL_HARITASI.md').read_text(encoding='utf-8-sig')
@@ -27,16 +26,15 @@ def check(root=APP):
             if not task.startswith(step + '.'):
                 errors.append(f'{file.name}: task prefix differs: {task}')
             tasks[task] = file.name
-        for required in ['## Kopyalanacak prompt', '00_CALISMA_BAGLAMI.md', 'sözlük', 'dosyasını sil']:
-            if required not in text:
-                errors.append(f'{file.name}: missing prompt rule {required}')
         if f']({file.name})' not in roadmap:
             errors.append(f'{file.name}: missing roadmap link')
     for field in ['Sıradaki görev', 'Etkin görev']:
-        match = re.search(rf'\| {field} \| `([0-9]{{2}}\.[0-9]{{2}})`', handoff + context)
+        match = re.search(rf'\| {field} \| `([0-9]{{2}}\.[0-9]{{2}})`', handoff)
         if match and match[1] not in tasks:
             errors.append(f'Closed/nonexistent {field}: {match[1]}')
-    for file in docs.rglob('*.md'):
+    for file in [root / 'README.md', root / 'AGENTS.md', *docs.rglob('*.md')]:
+        if not file.exists():
+            continue
         text = file.read_text(encoding='utf-8-sig')
         for target in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)', text):
             target = target.strip('<>').split('#')[0].split('?')[0]
@@ -50,12 +48,6 @@ def check(root=APP):
         registry = json.loads((root / 'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf-8-sig'))
         if not registry.get('categories'):
             errors.append('Empty controlled taxonomy')
-    for path in re.findall(r'`([^`]*\.(?:json|jsonl|schema\.json))`', context):
-        if '<' in path or path.startswith(('http', 'GET ')):
-            continue
-        # Match concrete referenced artifact paths; prose column values are ignored.
-        if '/' in path and not (root / path).exists():
-            errors.append(f'Context artifact missing: {path}')
     return {'status': 'FAIL' if errors else 'PASS', 'openSteps': [int(p.name[:2]) for p in steps],
             'openTasks': len(tasks), 'errors': errors}
 

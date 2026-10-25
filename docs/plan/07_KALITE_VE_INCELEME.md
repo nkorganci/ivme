@@ -70,17 +70,3 @@ kararlar üzerinden üretilir.
 branş/etiket türü bazında karşılaştırma. Belirsiz/ret kararı da gerçek karardır.
 
 İlgili kaynaklar: `scripts/content-label-audit.py`, `ogretmen-inceleme-paketi.py`, `ogretmen-inceleme-aktar.py`, `backend/.../review/ContentReviewService.java`, `frontend/src/pages/TeacherReview.jsx`, `testler/content-labels.mjs`.
-
-## Kopyalanacak prompt
-
-```text
-İvme'de 7. adımı uygula (docs/plan/07_KALITE_VE_INCELEME.md).
-Önce AGENTS.md, docs/plan/00_CALISMA_BAGLAMI.md ve docs/plan/00_DEVAM.md dosyalarını oku.
-Bağımlılıkları ve mevcut kanıtları kontrol et; biten işi yeniden yapma; ilk açık alt işten başla.
-00_CALISMA_BAGLAMI.md içindeki kalıcı etiket/adlandırma/kaynak aralığı kurallarını ve
-güncel sözlük/şema referanslarını kullan; ikinci sözlük oluşturma.
-Önce betik/önbellek, gerekirse yerel model, en son AI. Kaynakları ve geçmiş kayıtları koru;
-gerçek veriyi sıfırlama, yetkisiz push yapma. Her biten alt işten sonra 00_DEVAM.md devir
-dosyasını ve bu adımın kalan işlerini güncelle. Adım tamamen bitince kalıcı kuralları koru,
-görev dosyasını sil; kalan adımların numarasını değiştirme.
-```

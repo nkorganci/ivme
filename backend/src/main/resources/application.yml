@@ -1,5 +1,5 @@
 # Ortak ayarlar. Gizli değerler (şifre vb.) burada YOK; ortam değişkeniyle verilir.
-# Geliştirme için: --spring.profiles.active=dev (application-dev.yml). Üretim: README'deki ortam değişkenleri.
+# Geliştirme: --spring.profiles.active=dev (application-dev.yml). Yayın: docs/islemler/uygulama-calistirma-ve-yayin.md.
 server:
   port: ${PORT:8081}
   address: ${YKS_BIND_ADDRESS:127.0.0.1}
@@ -45,7 +45,7 @@ app:
     email: ${YKS_ADMIN_EPOSTA:admin@localhost}
     password: ${YKS_ADMIN_SIFRE:}          # yalnız İLK kurulumda yönetici oluşturmak için; sonra kaldırılabilir
   sample-data: ""                          # dev profilinde örnek CSV yolu
-  import-file: ${YKS_IMPORT_DOSYASI:}      # İSTEĞE BAĞLI: açılışta bu CSV/JSON toplu yüklenir (README "Tüm soruları yükleme")
+  import-file: ${YKS_IMPORT_DOSYASI:}      # İSTEĞE BAĞLI: açılışta CSV/JSON yükler; docs/islemler/soru-ice-aktarma.md
   import-mode: ${YKS_IMPORT_MODU:INSERT_ONLY}
   tutor:
     # Öğrenciye açılan öğretim içeriği: pilotta otomatik doğrulanmış + öğretmen onaylı; üretimde APPROVED_ONLY önerilir.

@@ -110,14 +110,15 @@ export default function QuestionCollection({ bank }) {
     { field: 'subject', headerName: 'Ders', minWidth: 120, flex: 1,valueGetter:({data:q})=>q.resource?.subject || q.subject },
     { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, valueGetter: ({ data:q }) => q.resource?.unit || 'İnceleme bekliyor' },
     { field: 'topic', headerName: 'Konu', minWidth: 180, flex: 1.7,
-      cellRenderer: ({ data: question }) => question && <span
-        title={question.resource?.displayTitle || question.topic || 'Konu belirtilmemiş'}>{question.resource?.topics?.join('; ') || question.resource?.topic || question.topic || 'Konu belirtilmemiş'}</span> },
+      valueGetter: ({ data: question }) => question?.resource?.topics?.join('; ') || question?.resource?.topic || question?.topic || 'Konu belirtilmemiş',
+      cellRenderer: ({ value, data: question }) => question && <span
+        title={question.resource?.displayTitle || value}>{value}</span> },
     {colId:'review',headerName:'Etiket durumu',minWidth:160,valueGetter:({data:q})=>q.resource?.reviewStatus==='APPROVE'?'Öğretmen doğruladı':q.resource?.manualReview?.label || 'Otomatik eşleme'},
     { field: bank === 'OGM' ? 'source' : 'year', headerName: last,
       width: bank === 'OGM' ? undefined : 75, minWidth: bank === 'OGM' ? 140 : 75,
       flex: bank === 'OGM' ? 1 : 0,
       valueFormatter: ({ value }) => value ?? '—' },
-    { colId: 'open', headerName: 'Soru', width: 110, minWidth: 110, flex: 0,
+    { colId: 'open', headerName: 'Soru', width: 145, minWidth: 145, maxWidth: 145, flex: 0,
       cellRenderer: ({ data: question }) => question && <Link className="btn btn-secondary btn-sm"
         to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`}
         onClick={(event) => event.stopPropagation()}>Soruyu aç</Link> },
@@ -208,7 +209,7 @@ export default function QuestionCollection({ bank }) {
             </li>)}
           </ul>
           <div className="qtable-view">
-            <DataGrid mode="worksheet" rowData={data.content} columnDefs={columns}
+            <DataGrid mode="worksheet" rowData={data.content} columnDefs={columns} fitAllRows
               gridOptions={{ getRowId: ({ data: question }) => String(question.id),
                 onRowClicked: ({ data: question }) => question &&
                   navigate(`/soru/${encodeURIComponent(question.code)}${detailQuery}`) }} />

@@ -1,8 +1,7 @@
 # Ortak kaynak etiketleri
 
 Bu belge ortak etiket kataloğunun nasıl üretildiğini, yayımlandığını ve denetlendiğini
-anlatır. Sistemin genel kuralları [sistem rehberinde](plan/00_SISTEM_REHBERI.md), güncel
-sürüm kimlikleri [çalışma bağlamında](plan/00_CALISMA_BAGLAMI.md) tutulur. Sayılar bu
+anlatır. Sistemin genel kuralları [sistem rehberinde](plan/00_SISTEM_REHBERI.md) tutulur. Sayılar bu
 belgeye yazılmaz; güncel değer her zaman DB'den, `python scripts/ivme.py durum` çıktısından
 veya üretim raporundan okunur.
 

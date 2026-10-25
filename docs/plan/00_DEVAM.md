@@ -1,37 +1,17 @@
-# İvme — devir dosyası (Claude ↔ Codex)
+# İvme devir notu
 
-Her oturumun başında okunur, her anlamlı adımın sonunda güncellenir ve yerel commit'e
-girer. Bir AI yarıda bırakırsa diğeri yalnız bu dosyayla devam edebilmelidir.
-Kısa tutulur: geçmiş iş dökümü değildir; ayrıntı commit ve rapor dosyasındadır.
-Kalıcı kurallar [çalışma bağlamında](00_CALISMA_BAGLAMI.md), sistem bilgisi
-[rehberde](00_SISTEM_REHBERI.md) kalır; buraya kopyalanmaz.
-
-Güncel durumu tek komutla görmek için: `python scripts/ivme.py durum`.
+Yalnız yarım işin devam noktası ve sıradaki görev tutulur. Açık iş tanımı [yol haritasında](00_YOL_HARITASI.md), teknik kaynaklar [belge dizininde](../README.md); geçmiş `git log` ve `veri/` raporlarındadır. Yeni kullanıcı talimatı sıradaki görevin önüne geçer.
 
 ## Şimdi
 
 | Alan | Değer |
 |---|---|
-| Güncelleme | 25 Ekim 2026 — Claude |
+| Güncelleme | 25 Ekim 2026 — Codex |
 | Etkin görev | `07.02` |
-| Sıradaki görev | `07.02` — Tahmini etiketleri göster filtresiyle bütün branşlarda gerçek kaynak/ünite/sınıf kontrolü |
+| Sıradaki görev | `07.02` — tahmini etiketlerin gerçek kaynak/ünite/sınıf kontrolü |
 | Yarım iş | Yok |
-| Commit'lenmemiş değişiklik | Yok |
-| Sıradaki komut | — |
+| Sıradaki komut | `python scripts/ivme.py durum --hizli` |
 
-Yarım iş varken satırı şu biçimde doldur: ne yapılıyordu, nerede kalındı (`itemKey`,
-sayfa, parti, dosya), kalan miktar, bir sonraki komut ve çıktı/checkpoint yolu.
+## Kullanıcı tarafından duraklatılan iş
 
-## Duraklatılmış işler
-
-Kullanıcı açıkça istemeden başlatılmaz; istendiğinde buradaki noktadan devam edilir.
-
-| İş | Durum ve devam noktası |
-|---|---|
-| Akıllı Öğretmen pilotu | 18 Ekim'de kullanıcı “dur, yeni konu başlatma” dedi. 14 branş × 5 konu × 1 soru = 70 içerikten 12'si hazır ve `ivme` DB'de (matematik 5, geometri 5, fizik 2: TYT-0913, TYT-0938). Sırada fizik TYT-0959, AYT_Sayisal-0370, AYT_Sayisal-0379 (seçildi/çözüldü), sonra 11 branş. İçerik `ornek-veri/ogretim-pilotu/<branş>/*.json`; `python scripts/ivme.py ogretim dogrula` → `ogretim aktar`; ekran `testler/ogretim-dongusu-ui.py`. API ve tarif: [API](../API-ve-mimari.md#akıllı-öğretmen), [tarif](../islemler/ogretim-icerigi.md). |
-| KPSS diğer sınavlar | [14. adım](14_KPSS.md): 14.02 Ön Lisans sırada; 14.03–14.06 sonra. |
-
-## Son kapanan iş
-
-25 Ekim 2026 — Akıllı Öğretmen kurulu `qwen3.5:9b` ile çalışıyor (`think:false`, canlı sınıflandırma
-OK); araştırma arşivi yayınla eşitlendi (55 rehber, atıf yapılan PDF'ler dahil). Ayrıntı: `git log -1`.
+Akıllı Öğretmen pilotu, kullanıcı yeniden isteyince sürdürülür. Hazır 12 içerik `ornek-veri/ogretim-pilotu/` altında ve DB'dedir; sıradaki fizik soruları TYT-0959, AYT_Sayisal-0370, AYT_Sayisal-0379. Doğrulama/aktarım: `python scripts/ivme.py ogretim dogrula`, sonra `ogretim aktar`. [Tarif](../islemler/ogretim-icerigi.md).

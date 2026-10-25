@@ -2,7 +2,7 @@
 
 Bu belge sistemin nasıl kurulduğunu ve ileride nasıl değiştirileceğini anlatır.
 Yapılacaklar listesi, tamamlanan adımların özeti veya oturum günlüğü değildir.
-Güncel görev [çalışma bağlamında](00_CALISMA_BAGLAMI.md), iş sırası
+Güncel görev [devir notunda](00_DEVAM.md), iş sırası
 [yol haritasında](00_YOL_HARITASI.md) bulunur. Uygulama değiştiğinde ilgili
 sözleşme ve bu rehber aynı işte güncellenir. Kaynak kodla çelişirse önce gerçek
 kod, veri sürümü ve doğrulama kanıtı kontrol edilir; belge tek başına tamamlanma kanıtı değildir.

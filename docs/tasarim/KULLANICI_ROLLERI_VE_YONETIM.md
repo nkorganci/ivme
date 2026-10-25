@@ -1,9 +1,9 @@
-# 13. Adım — kullanıcı rolleri, erişim ve site yönetimi önerisi
+# Kullanıcı rolleri, erişim ve site yönetimi tasarımı
 
 Belge sürümü: `kullanici-yonetimi-tasarim-v1`. Durum: `YALNIZ_TASARIM`. Bu belge
 önerilen hedefi tarif eder; belgenin bulunması veya yol haritasına bağlanması uygulama
 yetkisi vermez. Bugün çalışan kullanıcı yönetimi
-[sistem rehberinde](rehber/09_kullanici-yonetimi.md) anlatılır ve aşağıdaki 1. bölümde
+[sistem rehberinde](../plan/rehber/09_kullanici-yonetimi.md) anlatılır ve aşağıdaki 1. bölümde
 özetlenir; buradaki diğer yönetim, ilişki, bildirim ve hesap mutasyonu aşamaları ayrıca
 uygulama talimatı bekler. Mevcut hesaplar, roller, öğrenci gelişimleri, öğretmen kararları
 ve ilişkili geçmiş korunur.
@@ -462,23 +462,3 @@ Bu doğrulamalar gelecekte yalnız izole test ortamında yapılır. Bu dokümant
    erişim kapatma gerekiyorsa gerekçeli duraklatmayı kullanır.
 5. İşlem geçmişinden sonucu ve bildirim teslimini doğrular. Kullanıcıyı listeden
    kaldırmak için arşivler; kalıcı silmeyi rutin temizlik olarak kullanmaz.
-
-## Kopyalanacak prompt
-
-Aşağıdaki metin yalnız gelecekte kullanıcı ayrıca uygulama istediğinde
-kullanılacak örnektir; bu belgeyi okumak promptu yürütme talimatı değildir.
-
-```text
-D:\workspace\ivme\uygulama projesinde yalnız 13.01 görevini uygula.
-Önce AGENTS.md, docs/plan/00_YOL_HARITASI.md ve
-docs/plan/00_CALISMA_BAGLAMI.md ve docs/plan/00_DEVAM.md dosyalarını oku.
-Tasarım: docs/plan/13_KULLANICI_ROLLERI_VE_YONETIM.md.
-13.01 kapsamındaki salt okunur envanter ve doğrulanmış koruma planını hazırla.
-Kullanıcı/parola/rol/durum/öğrenci geçmişini değiştirme veya silme.
-Diğer 13.xx görevlerine otomatik geçme; gerçek bildirim gönderme.
-Kişisel verileri rapora veya Git'e dökme; yalnız gerekli toplu kanıtı tut.
-Bu aşamada kod, canlı DB, servis veya dağıtım değişikliği yapma.
-Ortak rol/kimlik ve sözlük kayıtlarını kullan; ikinci liste açma.
-Sonucu bu görev dosyası ve 00_DEVAM.md devir dosyasındaki kısa kanıt bağlantısıyla kaydet.
-Adım tamamen bitince kalıcı kuralları koru ve görev dosyasını sil.
-```

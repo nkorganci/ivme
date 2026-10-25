@@ -9,6 +9,8 @@ kalır. Bir komut değişince tarif aynı commit'te güncellenir.
 |---|---|
 | Claude ↔ Codex devri, oturum açma/kapama | [devir.md](devir.md) |
 | Değişikliği doğrulama: izleyici, backend testi, ekran denetimi | [dogrulama.md](dogrulama.md) |
+| Yerel uygulama, paket, HTTPS tüneli ve yedek | [uygulama-calistirma-ve-yayin.md](uygulama-calistirma-ve-yayin.md) |
+| Soru CSV/JSON içe aktarma ve görsel kırpma | [soru-ice-aktarma.md](soru-ice-aktarma.md) |
 | PDF'den soru çıkarma (metin önce, görsel yalnız gerekince) ve yerel Ollama | [pdf-ve-yerel-model.md](pdf-ve-yerel-model.md) |
 | Akıllı Öğretmen içeriği ekleme/aktarma | [ogretim-icerigi.md](ogretim-icerigi.md) |
 | Yeni KPSS sınavı ekleme | [14. adım — ekleme hattı](../plan/14_KPSS.md#bir-kpss-sınavını-ekleme-hattı-her-sınav-için-aynı) |

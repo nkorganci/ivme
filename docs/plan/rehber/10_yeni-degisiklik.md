@@ -35,8 +35,8 @@ Tarayıcı `app-version.txt` değişimini yaklaşık beş saniyede algılayıp y
 Görev sonunda izleyici açık kalır. Bu yerel çalışma düzeni Git push veya
 yeni bir dış dağıtım yetkisi vermez.
 
-1. `AGENTS.md`, [çalışma bağlamı](../00_CALISMA_BAGLAMI.md), yol haritası ve ilgili açık
-   adımı oku. `git status` ile mevcut kullanıcı değişikliklerini gör ve koru.
+1. `git status` ile mevcut kullanıcı değişikliklerini gör ve koru. Yalnız görevin
+   gerektirdiği [belgeyi](../../README.md) ve varsa ilgili açık adımı oku.
 2. Önce güncel sürümü ve mevcut kanıtı kontrol et. Daha önce doğrulanmış aynı
    kaynak/hash için pahalı çıkarımı veya model çağrısını tekrarlama.
 3. Kaynak/kimlik/sözlük değişikliğini doğru bakım kaynağında yap. Başlık için
@@ -45,6 +45,6 @@ yeni bir dış dağıtım yetkisi vermez.
    geçici ayrı DB kur; gerçek `ivme` öğrenci kayıtlarını sıfırlama.
 5. Yerel aday ile yayımlanmış sürümü ayır. Yayın öncesi şema, kaynak hash'i,
    kategori, sayfa/zaman sınırı ve cevap sızıntısı denetimlerini tamamla.
-6. Çalışma bağlamını, ilgili teknik sözleşmeyi ve gerekiyorsa bu rehberi güncelle.
+6. İlgili teknik sözleşmeyi ve gerekiyorsa bu rehberi güncelle.
    Kapanan alt işi aktif listeden çıkar. Bütün kabulü tamamlanan adım dosyasını sil,
    bağlantıları düzelt; kalan numaraları değiştirme. Bu rehber ve `00_` belgeleri kalır.

@@ -4,6 +4,8 @@
 
 ## Menü ve pratik
 
+`frontend/src/App.jsx` sayfaları rota açıldığında yükler; ilk pakette yalnız ortak kabuk ve giriş bulunur. Yükleme sırasında ortak `Loading` durumu gösterilir. Yeni sayfalar da rota düzeyinde yüklenir; büyük tablo, PDF ve sınav kodu başlangıç paketine eklenmez.
+
 Ana içerik menüsü “Konular ve Kaynaklar”dır; “Soru Çöz & Pratik” ve Takip ayrı
 amaç taşır. `frontend/src/config.js` içindeki `STUDY_LABEL` menü/bağlantı adını,
 `STUDY_TITLE` ise “Pratik Yap ve Deneme Oluştur” sayfa başlığını belirler;

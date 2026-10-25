@@ -14,7 +14,7 @@ $env:YKS_TEST_DB_URL = 'jdbc:postgresql://localhost:5432/ivme_test'
 $existing = & $psql -h localhost -U $settings.DbUser -d postgres -Atqc "SELECT 1 FROM pg_database WHERE datname='ivme_test'"
 if ($LASTEXITCODE -ne 0) { throw 'Veritabanı listesi okunamadı.' }
 if ($existing) { throw 'ivme_test zaten var; mevcut veritabanı korunuyor.' }
-& $psql -v ON_ERROR_STOP=1 -h localhost -U $settings.DbUser -d postgres -c 'CREATE DATABASE ivme_test OWNER root'
+& $psql -v ON_ERROR_STOP=1 -h localhost -U $settings.DbUser -d postgres -c 'CREATE DATABASE ivme_test'
 if ($LASTEXITCODE -ne 0) { throw 'Geçici test veritabanı oluşturulamadı.' }
 $testExit = 1
 try {

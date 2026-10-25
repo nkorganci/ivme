@@ -1,12 +1,7 @@
-# İvme projesi için maliyet etkin varsayılan. Açık işin model ataması farklıysa,
-# sıradaki yeni oturum başlamadan önce bu iki değer görev listesine göre ayarlanır.
+# İvme için varsayılan model.
 model = "gpt-6.1-sol"
 model_reasoning_effort = "medium"
 
-# Full access: onay sorma + sandbox kapalı
+# Yerel çalışma izni; araç/oturum ilkeleri ayrıca uygulanır.
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
-
-# Opsiyonel: projeyi güvenilir işaretle (yolu kendi klasörünle değiştir)
-[projects.'C:\Users\KULLANICI\ivme']
-trust_level = "trusted"
