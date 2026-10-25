@@ -255,7 +255,7 @@ def prepare():
                                                     "yayinla_kaynakli_notlar.py", "yayinla_kaynakli_etiketler.py",
                                                     "kaynakli_etiket_sayisal.py")],
               *[APP / "veri" / name for name in ("sorular-tum.csv", "sorular-ogm.csv")],
-              APP / "docs/KAYNAKLI_DERS_NOTLARI.md", APP / "docs/KAYNAKLI_SORU_ANALIZI.md"]
+              APP / "docs/icerik/kaynakli-ders-notlari.md", APP / "docs/icerik/soru-analizi.md"]
     manifest = {str(path.relative_to(APP)): sha(path.read_bytes()) for path in inputs}
     manifest["pdfs"] = [[row["catalog_id"], row["sha256"]] for row in documents]
     manifest["images"] = sha(json_text(image_fingerprints).encode("utf-8"))
@@ -263,7 +263,7 @@ def prepare():
     manifest["extractor"] = extractor
     run_key = sha(json_text(manifest).encode("utf-8"))
     handoff = "\n\n".join(path.read_text(encoding="utf-8") for path in
-                           [APP / "docs/KAYNAKLI_DERS_NOTLARI.md", APP / "docs/KAYNAKLI_SORU_ANALIZI.md"])
+                           [APP / "docs/icerik/kaynakli-ders-notlari.md", APP / "docs/icerik/soru-analizi.md"])
     summary = {"questions": len(evidence), "documents": len(documents), "pdfPages": len(pages),
                "topicLabels": sum(len(group["topics"]) for group in analysis["groups"]),
                "guides": notes["lessonCount"], "patterns": notes["patternCount"],

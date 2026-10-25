@@ -20,8 +20,10 @@ $testExit = 1
 try {
     Push-Location (Join-Path $repo 'backend')
     try {
-        if ($Test) { & mvn.cmd -q test "-Dtest=$Test" '-Dsurefire.failIfNoSpecifiedTests=false' }
-        else { & mvn.cmd test }
+        # Separate output lets live packaging and tests compile without deleting each other's classes/reports.
+        $testBuild = Join-Path $repo 'backend/target-tests'
+        if ($Test) { & mvn.cmd -q test "-Dyks.build.directory=$testBuild" "-Dtest=$Test" '-Dsurefire.failIfNoSpecifiedTests=false' }
+        else { & mvn.cmd test "-Dyks.build.directory=$testBuild" }
         $testExit = $LASTEXITCODE
     } finally { Pop-Location }
 } finally {

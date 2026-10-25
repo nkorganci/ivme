@@ -1,6 +1,6 @@
-# Sistem rehberi — Üretim ve yeniden başlama
+# İçerik üretimi
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Derleme, izleyici, yeniden başlatma, yedek.
+[Mimari dizini](README.md) · Ne zaman okunur: Derleme, izleyici, yeniden başlatma, yedek.
 
 ## Üretim ve yeniden başlama
 

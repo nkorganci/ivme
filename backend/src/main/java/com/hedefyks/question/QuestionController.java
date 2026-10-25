@@ -82,6 +82,11 @@ public class QuestionController {
         return service.categoryCounts(tracks.scope(filter, me.id()));
     }
 
+    @GetMapping("/pool-summary")
+    public QuestionAvailabilityService.PoolSummary poolSummary(@AuthenticationPrincipal AppUserDetails me) {
+        return availability.summary(me.id(), tracks.scope(new QuestionFilter(null,null,null,null),me.id()));
+    }
+
     @GetMapping
     public PageResponse<QuestionListItem> list(QuestionFilter filter,
                                                @RequestParam(defaultValue = "0") int page,

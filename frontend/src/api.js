@@ -1,4 +1,5 @@
 // fetch sarmalayıcı: JSON, CSRF başlığı, ApiError ve 204 desteği.
+import { createReadCache } from './readCache.js';
 
 export class ApiError extends Error {
   constructor(status, message, fields) {
@@ -55,6 +56,9 @@ async function request(method, path, body) {
   } catch {
     throw new ApiError(0, 'Sunucuya ulaşılamadı. Bağlantını kontrol edip tekrar dene.');
   }
+  if (res.ok && method !== 'GET' && path !== '/api/auth/activity') {
+    referenceReads.clear(); pendingReads.clear();
+  }
   if (res.status === 204) return null;
 
   let data = null;
@@ -90,8 +94,13 @@ export function qs(params) {
   return s ? '?' + s : '';
 }
 
+const pendingReads = createReadCache(path => request('GET', path), {ttl: 0, limit: 100});
+const referenceReads = createReadCache(path => pendingReads.get(path));
+
 export const api = {
-  get: (path) => request('GET', path),
+  get: path => pendingReads.get(path),
+  getReference: path => referenceReads.get(path),
+  invalidateReferences: () => referenceReads.clear(),
   post: (path, body) => request('POST', path, body ?? {}),
   put: (path, body) => request('PUT', path, body),
   patch: (path, body) => request('PATCH', path, body),

@@ -1,7 +1,7 @@
 # Öğretmen Doğrulaması
 
 
-> Bu belge çalışan ekranın güncel kullanım ve kayıt sözleşmesidir; ekran değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [devir dosyasında](plan/00_DEVAM.md) tutulur.
+> Bu belge çalışan ekranın güncel kullanım ve kayıt sözleşmesidir; ekran değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](../plan/README.md), devam noktası [devir dosyasında](../devam.md) tutulur.
 
 Sol menüdeki **Öğretmen Doğrulaması** bölümü 14 branşı aynı etiket sözlüğüyle açar. Başlangıç: `/ogretmen-dogrulamasi/fizik`. Her branşta konu/alt konu, ders notu, video, PDF ve soru kuyrukları vardır. Mevcut videolar yalnız fizik için hazırlanmışsa diğer branşların video kuyruğu boş görünür; içerik uydurulmaz.
 
@@ -74,7 +74,7 @@ Kuyruklar fizik etiketli içerikle sınırlı değildir: diğer branş altında 
 
 ## Sonraki içerik düzeltmesi
 
-Kalan inceleme ve düzeltme işleri [7. adımda](plan/07_KALITE_VE_INCELEME.md), asıl kaynak/cevap düzeltmelerinin uygulanması [12. adımda](plan/12_KALAN_ICERIK_VE_YAYIN.md) takip edilir. Bu belge ekranın mevcut teknik davranışını anlatır; ikinci bir görev listesi değildir.
+Kalan inceleme ve düzeltme işleri [7. adımda](../plan/07-etiket-kalitesi.md), asıl kaynak/cevap düzeltmelerinin uygulanması [12. adımda](../plan/12-icerik-ve-yayin.md) takip edilir. Bu belge ekranın mevcut teknik davranışını anlatır; ikinci bir görev listesi değildir.
 
 ## Geliştirme
 

@@ -84,7 +84,7 @@ attachVideoMetadata(limited,{url:limited.url},{sources:{'youtube:abcdefghijk':{h
 assert.equal(limited.remoteAvailability,'RATE_LIMITED');
 assert.ok(limited.automaticLabels.assignments.every(a=>a.locatorStatus==='MISSING'));
 for(const name of ['ic-not','kaynakli-ipucu']) {
- const old=JSON.parse(fs.readFileSync(new URL(`../docs/plan/sema/${name}-v1.ornek.json`,import.meta.url),'utf8'));
+ const old=JSON.parse(fs.readFileSync(new URL(`../docs/semalar/${name}-v1.ornek.json`,import.meta.url),'utf8'));
  const converted=name==='ic-not'?legacyNoteReference(old):legacyHintReference(old);
  assert.ok(converted.sourceKey.startsWith('pdf:'));
  assert.ok(converted.locator.pdfPageStart>0);

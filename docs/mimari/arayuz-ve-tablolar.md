@@ -1,6 +1,6 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — adlandırma, metadata ve tablolar
+# Arayüz ve tablolar
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Görünen ad, resourceMetadata, DataGrid kuralları.
+[Mimari dizini](README.md) · Ne zaman okunur: Görünen ad, resourceMetadata, DataGrid kuralları.
 
 ## Uygulamada adlandırma ve erişim
 

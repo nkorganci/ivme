@@ -5,7 +5,7 @@ Her iki araç [AGENTS.md](../../AGENTS.md) kurallarını kullanır; [CLAUDE.md](
 Devam isteği için kısa girdi:
 
 ```text
-İvme'de docs/plan/00_DEVAM.md dosyasındaki yarım işe, yoksa sıradaki açık göreve devam et.
+İvme'de docs/devam.md dosyasındaki yarım işe, yoksa sıradaki açık göreve devam et.
 ```
 
-Başlarken [devir notundaki](../plan/00_DEVAM.md) konumu ve yalnız ilgili görev dosyasını aç. Yeni kullanıcı talimatı varsa onu uygula. İş yarıda kalırsa dosya/öğe kimliğini, mevcut çıktı yolunu ve bir sonraki komutu devir notuna yaz. Tamamlanan işin ayrıntısını `git log` veya sürümlü raporda tut; devir notuna geçmiş liste ekleme.
+Başlarken [devir notundaki](../devam.md) konumu ve yalnız ilgili görev dosyasını aç. Yeni kullanıcı talimatı varsa onu uygula. İş yarıda kalırsa dosya/öğe kimliğini, mevcut çıktı yolunu ve bir sonraki komutu devir notuna yaz. Tamamlanan işin ayrıntısını `git log` veya sürümlü raporda tut; devir notuna geçmiş liste ekleme.

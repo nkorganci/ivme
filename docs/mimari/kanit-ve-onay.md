@@ -1,6 +1,6 @@
-# Sistem rehberi — Kanıt, konum, güven ve onay
+# Kanıt ve onay
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Sayfa/zaman aralığı, güven, öğretmen onayı.
+[Mimari dizini](README.md) · Ne zaman okunur: Sayfa/zaman aralığı, güven, öğretmen onayı.
 
 ## Kanıt, konum, güven ve onay
 
@@ -35,8 +35,8 @@ ortak veri hattı koduna dokunmadan 60 aday WebP/metin/iki cevap okumasını
 katalog yayınını değiştirmez. Aday API'si paket/görsel hash'ini okurken
 yeniden denetler.
 
-[Ortak kaynak v2 şeması](../sema/learning-resource-v2.schema.json) ve
-[temsili örnekler](../sema/learning-resource-v2.ornek.json) veri sözleşmesidir.
+[Ortak kaynak v2 şeması](../semalar/learning-resource-v2.schema.json) ve
+[temsili örnekler](../semalar/learning-resource-v2.ornek.json) veri sözleşmesidir.
 Üretim ve yayın kabulü `scripts/learning-resource-contract.mjs` ve
 `scripts/learning-resource-check.mjs` ile denetlenir. V38'in ilişki indeksi
 korunur; ayrıntılar mevcut `items.data` JSON'undaki ilişkilerdedir.

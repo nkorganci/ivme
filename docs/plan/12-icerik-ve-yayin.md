@@ -52,7 +52,7 @@ Durum: `KISMI_KAYNAKLI_ICERIK`. Yayımlanmış rehberler `frontend/public/kaynak
 içindedir; hepsi öğretmen onayı bekler. Notu olmayan kontrollü konuların kimlik bazlı tek
 listesi `python scripts/note-coverage.py` çıktısındaki (`veri/content-labels/note-coverage.json`)
 `NO_NOTE` kayıtlarıdır; ikinci eksik listesi açılmaz. Kurallar
-[kaynaklı ders notlarında](../KAYNAKLI_DERS_NOTLARI.md).
+[kaynaklı ders notlarında](../icerik/kaynakli-ders-notlari.md).
 
 - `NO_NOTE` kimliklerinden çalış; geniş giriş notunu bütün dar alt konuların tamamlanması sayma. Edebiyatın dar alt konuları ve AYT sözel kapsamının eksik kaynak/örnek bağlarını tamamla.
 - Türkçe Sözel Mantık/Fiilde Çatı, tarih, coğrafya, felsefe, din ve TYT biyoloji/kimya taslaklarındaki örnek bağlarını alan uzmanıyla değerlendir; hazır konuları baştan yazma.
@@ -118,4 +118,4 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 **Gereken kişi/girdi:** davetli gerçek kullanıcılar, pilot sorumlusu, deneme tarihleri ve kullanılacak sürüm.
 **Tamamlanma kanıtı:** ölçüm dönemi, gerçek katılımcı sayısı, anonimleştirilmiş bulgular ve her yeni sorunun görev kimliği.
 
-İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/KAYNAKLI_DERS_NOTLARI.md`, `docs/KAYNAKLI_SORU_ANALIZI.md`, `README.md`.
+İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.

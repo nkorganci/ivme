@@ -1,6 +1,6 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — kategori seçimi, notlar ve kapsam
+# Kaynak seçimi
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: categorySelection, kaynaklı notlar, /coverage, yükleme hataları.
+[Mimari dizini](README.md) · Ne zaman okunur: categorySelection, kaynaklı notlar, /coverage, yükleme hataları.
 
 ## Kategori seçimi, notlar ve kapsam
 
@@ -9,9 +9,11 @@ Konu adları güncel metadata yanıtından alınır. Liste AYT/TYT, ders, konu v
 konu sırasıyla Türkçe alfabetik gruplara ayrılır; 150 kayıt sınırı uygulanmaz.
 Yazarken açılan öneriler Türkçe/ASCII harfleri ve birden çok arama sözcüğünü
 destekler; klavye veya tıklamayla aynı sabit kategori kimliği seçilir.
-Katalog istekleri yalnız eşzamanlı çağrılar için paylaşılır; kalıcı sayfa içi
-önbellek tutulmaz. Ekrana/alanlara yeniden odaklanınca güncel DB adları tekrar
-okunur; kimlikler başlık değişikliğinden türetilmez.
+Metadata ve kategori sayımı istekleri `api.getReference` ile eşzamanlı paylaşılır;
+en fazla 40 kayıt bellekte 30 saniye saklanır. Hata önbelleğe alınmaz. Başarılı yazma,
+giriş/çıkış ve sınav değişikliği önbelleği temizler; alan/sekme odağı ve açık yeniden
+deneme güncel DB verisini ister. Cevaplar ve öğrenciye özel uygunluk sayımları bu
+önbelleğe girmez; kimlikler başlık değişikliğinden türetilmez.
 `/soru-bankasi` ve `/cikmis-sorular` liste adresleri, müfredat bağlantıları ve
 tekil sorulardan geri dönüş için korunur.
 Eski kütüphane/PDF/not dizini adresleri ortak filtreli hedefe gider; konuya veya

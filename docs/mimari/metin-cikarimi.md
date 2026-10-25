@@ -1,6 +1,6 @@
-# Sistem rehberi — Alternatif çıkarım ve manuel inceleme
+# Metin çıkarımı
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: OCR/okunamayan kaynak, önbellek, manuel inceleme.
+[Mimari dizini](README.md) · Ne zaman okunur: OCR/okunamayan kaynak, önbellek, manuel inceleme.
 
 ## Alternatif çıkarım ve manuel inceleme
 

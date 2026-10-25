@@ -1,6 +1,6 @@
 # İvme uygulaması
 
-React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL ile çalışan YKS/KPSS eğitim uygulaması. Öğrenci soru çözer, pratik ve deneme yapar; operatör içerik ve etiketleri inceler; yönetici kullanıcıları ve toplu kullanım verisini yönetir. Özellik ve uç noktaların ayrıntısı [API ve mimari sözleşmesinde](docs/API-ve-mimari.md).
+React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL ile çalışan YKS/KPSS eğitim uygulaması. Öğrenci soru çözer, pratik ve deneme yapar; operatör içerik ve etiketleri inceler; yönetici kullanıcıları ve toplu kullanım verisini yönetir. Özellik ve uç noktaların ayrıntısı [API ve mimari sözleşmesinde](docs/sozlesmeler/api.md).
 
 ## Yerel çalışma
 
@@ -22,4 +22,4 @@ Backend testi geçici DB kullanır; [bilinen test hataları](testler/bilinen-hat
 
 ## Belgeler ve AI ile çalışma
 
-[Belge dizini](docs/README.md) teknik sözleşmeleri, planı, tasarımı ve tekrarlanan işlemleri ayırır. [Yol haritası](docs/plan/00_YOL_HARITASI.md) açık işleri, [devir notu](docs/plan/00_DEVAM.md) yarım işi tutar. Codex `AGENTS.md` dosyasını, Claude ise `CLAUDE.md` içindeki `@AGENTS.md` aktarımını kullanır. Tekrar eden işlemler `python scripts/ivme.py` alt komutlarıyla yürütülür.
+[Belge dizini](docs/README.md) teknik sözleşmeleri, planı, tasarımı ve tekrarlanan işlemleri ayırır. [Yol haritası](docs/plan/README.md) açık işleri, [devir notu](docs/devam.md) yarım işi tutar. Codex `AGENTS.md` dosyasını, Claude ise `CLAUDE.md` içindeki `@AGENTS.md` aktarımını kullanır. Tekrar eden işlemler `python scripts/ivme.py` alt komutlarıyla yürütülür.

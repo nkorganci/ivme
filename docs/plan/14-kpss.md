@@ -12,7 +12,7 @@ Yayındaki sınavlar: **KPSS Ortaöğretim** — 6 ders, 23 ünite, 85 konu; 200
 KPSS için konu anlatımı/video/soru bankası kaynağı yoktur; ilgili bölümler “henüz hazır
 değil” gösterir. ÖSYM içeriği için web yayın izni belgelenmedi (yalnız yerel kullanım).
 
-Kalıcı kurallar [sistem rehberindedir](rehber/02_tek-kaynak.md):
+Kalıcı kurallar [sistem rehberindedir](../mimari/veri-kaynaklari.md):
 menü/sayfa kopyalanmaz; ders/ünite/konu kayıtları ortak katalogda sınav testi
 kimliğiyle (`exam` = ör. `KPSS_OO_GY`) yayımlanır; ikinci sözlük açılmaz.
 

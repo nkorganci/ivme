@@ -1,8 +1,10 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — menü ve pratik
+# Pratik
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Menü yapısı, pratik oluşturma, bitmemiş pratik.
+[Mimari dizini](README.md) · Ne zaman okunur: Menü yapısı, pratik oluşturma, bitmemiş pratik.
 
 ## Menü ve pratik
+
+Pratik havuz özeti `/api/questions/pool-summary` ile tek istekte okunur; kaynak başına ayrı geçmiş taraması yapılmaz. Filtresiz ilk açılışta formun uygunluk bilgisi aynı devam eden isteği paylaşır; yanıt sonrasında öğrenci sayımları bellekte saklanmaz. Ders ve konu seçimi metadata hazır olunca kullanılabilir; arka plandaki soru sayımını beklemez. Başlatma düğmesi güncel uygunluk sayımı tamamlanana kadar kapalı kalır.
 
 `frontend/src/App.jsx` sayfaları rota açıldığında yükler; ilk pakette yalnız ortak kabuk ve giriş bulunur. Yükleme sırasında ortak `Loading` durumu gösterilir. Yeni sayfalar da rota düzeyinde yüklenir; büyük tablo, PDF ve sınav kodu başlangıç paketine eklenmez.
 

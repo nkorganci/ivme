@@ -101,6 +101,12 @@ class QuestionAvailabilityTest extends TestBase {
         send(mehmet, get("/api/questions/availability"), null)
                 .andExpect(jsonPath("$.total").value(2)).andExpect(jsonPath("$.solved").value(0))
                 .andExpect(jsonPath("$.everWrong").value(0)).andExpect(jsonPath("$.correct").value(0));
+        send(ayse, get("/api/questions/pool-summary"), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.total").value(2)).andExpect(jsonPath("$.solved").value(2))
+                .andExpect(jsonPath("$.correct").value(1)).andExpect(jsonPath("$.sources.OGM_TYT").value(1))
+                .andExpect(jsonPath("$.sources.CIKMIS_TYT").value(1));
+        send(mehmet, get("/api/questions/pool-summary"), null).andExpect(status().isOk())
+                .andExpect(jsonPath("$.total").value(2)).andExpect(jsonPath("$.solved").value(0));
         send(mehmet, get("/api/questions/availability").param("history", "CORRECT", "WRONG"), null)
                 .andExpect(status().isOk()).andExpect(jsonPath("$.total").value(0));
     }

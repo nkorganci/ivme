@@ -73,6 +73,24 @@ public class SharedQuestionLabels {
         String request=selection(filter);
         return request==null?null:jdbc.queryForList("SELECT id FROM learning_catalog.question_ids_for_labels(?)",Long.class,request);
     }
+    public record QuestionPage(List<Long> ids,long total) {}
+
+    /** Keep large allowed pools in PostgreSQL; return only the requested page to JPA. */
+    public QuestionPage questionPage(QuestionFilter filter,int size,long offset) {
+        String request=selection(filter);
+        if(request==null)return null;
+        return jdbc.queryForObject("""
+            WITH allowed AS MATERIALIZED (SELECT id FROM learning_catalog.question_ids_for_labels(?))
+            SELECT count(*) AS total,ARRAY(SELECT id FROM allowed ORDER BY id LIMIT ? OFFSET ?) AS ids
+            FROM allowed
+            """,(rs,n)->{
+                var array=rs.getArray("ids");
+                try {
+                    var ids=Arrays.stream((Object[])array.getArray()).map(id->((Number)id).longValue()).toList();
+                    return new QuestionPage(ids,rs.getLong("total"));
+                } finally { array.free(); }
+            },request,size,offset);
+    }
     @SuppressWarnings("unchecked")
     public Map<Long,String> topicNames(Map<Long,String> snapshots) {
         if(snapshots.isEmpty())return Map.of();
@@ -123,7 +141,10 @@ public class SharedQuestionLabels {
     private static final String SELECTED_LABELS = """
         WITH request AS (SELECT ?::jsonb AS value), overrides AS (
           SELECT o.* FROM request r CROSS JOIN LATERAL jsonb_to_recordset(coalesce(r.value->'overrides','[]'))
-            AS o(item_key text,labels jsonb,status text,subject_ids text[],exam_ids text[])
+            AS o(item_key text,labels jsonb,status text,category_ids text[],subject_ids text[],exam_ids text[])
+        ), catalog AS MATERIALIZED (
+          SELECT item_key,question_code,category_ids,subject_ids,exam_ids %s
+          FROM learning_catalog.current_items WHERE kind='QUESTION'
         ), allowed AS MATERIALIZED (
           SELECT id FROM learning_catalog.question_ids_for_labels((SELECT value::text FROM request))
         ), selected AS (
@@ -131,13 +152,13 @@ public class SharedQuestionLabels {
             %s
             coalesce(o.subject_ids,i.subject_ids) AS subjects,coalesce(o.exam_ids,i.exam_ids) AS exams
           FROM allowed JOIN questions q ON q.id=allowed.id
-          JOIN learning_catalog.current_items i ON i.question_code=q.code AND i.kind='QUESTION'
+          JOIN catalog i ON i.question_code=q.code
           LEFT JOIN overrides o USING(item_key)
         )
         """;
 
     private static String selectedLabels(boolean includeLabels) {
-        return SELECTED_LABELS.formatted(includeLabels
+        return SELECTED_LABELS.formatted(includeLabels ? ",data" : "", includeLabels
             ? "coalesce(o.labels,i.data->'automaticLabels') AS labels,o.status AS review_status," : "");
     }
 
@@ -150,7 +171,7 @@ public class SharedQuestionLabels {
         String request=selection(new QuestionFilter(bank,null,null,null,List.of(),"ANY",true,null,null,source));
         if(request==null)return null;
         // Resolve all shared unit definitions once, keeping counts distinct by question.
-        String selected=SELECTED_LABELS.formatted("coalesce(o.labels,i.data->'automaticLabels') AS labels,");
+        String selected=SELECTED_LABELS.formatted("", "coalesce(o.category_ids,i.category_ids) AS categories,");
         return jdbc.query(selected+"""
             , names AS (
               SELECT definition->>'subjectId' AS id,min(definition->>'subject') AS name
@@ -160,9 +181,8 @@ public class SharedQuestionLabels {
               FROM learning_catalog.current_categories WHERE definition->>'canonicalTopic'='true'
             ), physics_topic_names AS MATERIALIZED (
               SELECT DISTINCT s.id,c.exam,c.subject_id,c.topic
-              FROM selected s CROSS JOIN LATERAL jsonb_array_elements(s.labels->'assignments') a
-              JOIN physics_topic_definitions c ON c.category_id=a->>'categoryId'
-              WHERE s.labels IS NOT NULL
+              FROM selected s CROSS JOIN LATERAL unnest(s.categories) a(category_id)
+              JOIN physics_topic_definitions c ON c.category_id=a.category_id
             ), expanded AS (
               SELECT DISTINCT s.id,e.exam,coalesce(n.name,s.source_subject) AS subject,
                 coalesce(t.topic,'') AS topic
@@ -202,6 +222,17 @@ public class SharedQuestionLabels {
         String request=selection(unscoped);
         if(request==null)return Map.of();
         var result=new LinkedHashMap<String,Long>();
+        // The indexed IDs already contain every assignment. Candidate-inclusive facets
+        // need no evidence JSON; teacher overrides still replace the complete ID array.
+        if (filter.includeCandidates()) {
+            jdbc.query(SELECTED_LABELS.formatted("", "coalesce(o.category_ids,i.category_ids) AS categories,")+"""
+                SELECT a.category_id,count(DISTINCT s.id) AS total
+                FROM selected s CROSS JOIN LATERAL unnest(s.categories) a(category_id)
+                  JOIN learning_catalog.current_categories c ON c.category_id=a.category_id
+                GROUP BY a.category_id
+                """,rs->{result.put(rs.getString("category_id"),rs.getLong("total"));},request);
+            return result;
+        }
         jdbc.query(selectedLabels(true)+"""
             SELECT a->>'categoryId' AS category_id,count(DISTINCT s.id) AS total
             FROM selected s CROSS JOIN LATERAL jsonb_array_elements(s.labels->'assignments') a

@@ -3,7 +3,7 @@
 Belge sürümü: `kullanici-yonetimi-tasarim-v1`. Durum: `YALNIZ_TASARIM`. Bu belge
 önerilen hedefi tarif eder; belgenin bulunması veya yol haritasına bağlanması uygulama
 yetkisi vermez. Bugün çalışan kullanıcı yönetimi
-[sistem rehberinde](../plan/rehber/09_kullanici-yonetimi.md) anlatılır ve aşağıdaki 1. bölümde
+[sistem rehberinde](../mimari/kullanici-yonetimi.md) anlatılır ve aşağıdaki 1. bölümde
 özetlenir; buradaki diğer yönetim, ilişki, bildirim ve hesap mutasyonu aşamaları ayrıca
 uygulama talimatı bekler. Mevcut hesaplar, roller, öğrenci gelişimleri, öğretmen kararları
 ve ilişkili geçmiş korunur.
@@ -48,8 +48,8 @@ Dayanaklar: [rol tanımı](../../backend/src/main/java/com/hedefyks/user/Role.ja
 [erişim kuralları](../../backend/src/main/java/com/hedefyks/config/SecurityConfig.java),
 [giriş kaydı](../../backend/src/main/java/com/hedefyks/progress/LoginActivity.java),
 [olay saklama](../../backend/src/main/java/com/hedefyks/config/ActivityRetention.java),
-[API sözleşmesi](../API-ve-mimari.md) ve
-[içerik öğretmeninin mevcut yetkileri](../OGRETMEN_DOGRULAMASI.md).
+[API sözleşmesi](../sozlesmeler/api.md) ve
+[içerik öğretmeninin mevcut yetkileri](../sozlesmeler/ogretmen-dogrulamasi.md).
 
 Bugünkü ADMIN bütün öğrenci ekranlarına erişen bir üst rol değildir. Yeni
 bireysel erişim, mevcut toplu istatistik sözleşmesinden ayrı, açıkça verilen ve

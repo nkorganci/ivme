@@ -1,6 +1,6 @@
-# Sistem rehberi — Site yöneticisinin kullanıcı yönetimi
+# Kullanıcı yönetimi
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Hesap, rol, onay, silme.
+[Mimari dizini](README.md) · Ne zaman okunur: Hesap, rol, onay, silme.
 
 ## Site yöneticisinin kullanıcı yönetimi
 

@@ -10,7 +10,7 @@ Java 21, Maven, Node.js 22+ ve PostgreSQL gerekir. Üst dizindeki `Ivme Baslat.b
 
 ## Paylaşılan HTTPS erişimi
 
-1. `uretim.ayarlar.ornek.bat` dosyasını Git dışında kalacak `uretim.ayarlar.bat` olarak kopyala. DB, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true` ve `PORT=1010` değerlerini ayarla. Üretimde geçici parolaları değiştir; sınırlı DB rolü ve göç sırası için [12.03 yayın işi](../plan/12_KALAN_ICERIK_VE_YAYIN.md) kullan. `YKS_FLYWAY_ETKIN=false` yalnız yetkili göçten sonra seçilir.
+1. `uretim.ayarlar.ornek.bat` dosyasını Git dışında kalacak `uretim.ayarlar.bat` olarak kopyala. DB, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true` ve `PORT=1010` değerlerini ayarla. Üretimde geçici parolaları değiştir; sınırlı DB rolü ve göç sırası için [12.03 yayın işi](../plan/12-icerik-ve-yayin.md) kullan. `YKS_FLYWAY_ETKIN=false` yalnız yetkili göçten sonra seçilir.
 2. `uretim-derle.bat` ile React içeren Spring Boot paketini oluştur; `uretim-calistir.bat` ile tek Java sürecini başlat. Sunucu `127.0.0.1:1010` adresinde dinler. Cloudflare tünel hedefi aynı adrestir; ek Vite tüneli açılmaz.
 3. Yerel ve tünel adresinde giriş/çıkış, görsel, QR, CSRF çerezi, mobil görünüm ve yeniden başlatmayı denetle. Eski asset görünürse tarayıcı önbelleğini yenile. Geçici parolalı ayrıcalıklı hesap, geçersiz HTTPS adresi veya güvenli olmayan çerez ayarıyla üretim açılışı reddedilir.
 

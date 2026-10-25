@@ -1,6 +1,6 @@
-# Sistem rehberi — Tekrarı ve hatayı yakalayan denetimler
+# Denetimler
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Hangi betik neyi denetler.
+[Mimari dizini](README.md) · Ne zaman okunur: Hangi betik neyi denetler.
 
 ## Tekrarı ve hatayı yakalayan denetimler
 
@@ -44,6 +44,6 @@ Yerel makinenin UNC paylaşımı bağımsız hedef sayılmaz. Sınırlı rol kur
 ortak katalog/araştırma şemaları okunabilir; katalog şemasında uygulama yalnız `question_intake`
 kabul tablosuna yazabilir, katalog yayını ve Flyway ayrı yetkili çalışma gerektirir.
 
-API ayrıntıları [mimari belgesinde](../../API-ve-mimari.md), etiket üretim sözleşmesi
-[ortak etiket kaydında](../../ORTAK_ETIKET_KAPSAMI.md), öğretmen akışı
-[öğretmen doğrulamasında](../../OGRETMEN_DOGRULAMASI.md) tutulur.
+API ayrıntıları [mimari belgesinde](../sozlesmeler/api.md), etiket üretim sözleşmesi
+[ortak etiket kaydında](../sozlesmeler/ortak-etiketler.md), öğretmen akışı
+[öğretmen doğrulamasında](../sozlesmeler/ogretmen-dogrulamasi.md) tutulur.

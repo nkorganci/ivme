@@ -1,7 +1,7 @@
 """Öğretim döngüsü içeriğini doğrular, güven puanını hesaplar ve PostgreSQL'e sürümlü aktarır.
 
 Kaynak dosyalar: ornek-veri/ogretim-pilotu/<branş>/<soru-kodu>.json (sözleşme:
-docs/plan/sema/ogretim-icerigi-v1.schema.json). Çalışma anında uygulama yalnız
+docs/semalar/ogretim-icerigi-v1.schema.json). Çalışma anında uygulama yalnız
 tutor_contents tablosunu okur; bu betik dosyaları değiştirmez.
 
 Komutlar:
@@ -30,7 +30,7 @@ from yerel_ortam import default_database
 
 APP = Path(__file__).resolve().parents[1]
 CONTENT_ROOT = APP / "ornek-veri/ogretim-pilotu"
-SCHEMA_PATH = APP / "docs/plan/sema/ogretim-icerigi-v1.schema.json"
+SCHEMA_PATH = APP / "docs/semalar/ogretim-icerigi-v1.schema.json"
 REPORT_ROOT = APP / "veri/ogretim-pilotu"
 DEFAULT_IMAGES = APP / "veri/resimler-pilot"
 VERIFIER_VERSION = "ogretim-dogrulayici-v1"

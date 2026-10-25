@@ -1,7 +1,7 @@
 # Ortak kaynak etiketleri
 
 Bu belge ortak etiket kataloğunun nasıl üretildiğini, yayımlandığını ve denetlendiğini
-anlatır. Sistemin genel kuralları [sistem rehberinde](plan/00_SISTEM_REHBERI.md) tutulur. Sayılar bu
+anlatır. Sistemin genel kuralları [sistem rehberinde](../mimari/README.md) tutulur. Sayılar bu
 belgeye yazılmaz; güncel değer her zaman DB'den, `python scripts/ivme.py durum` çıktısından
 veya üretim raporundan okunur.
 
@@ -22,8 +22,8 @@ aynı API metadatasından gelir; yerel yerleşim dosyası kayıtlı kimliği de�
 kategori tanımına uyan karar, öğrenci filtresinde otomatik önerinin önüne geçer.
 
 Ders/ünite/konu yapısı Excel'in ilk KONULAR sayfasından gelir
-([tek kaynak kuralları](plan/rehber/02_tek-kaynak.md)); KPSS sınavları aynı kataloğa kendi
-sınav kimlikleriyle eklenir ([14. adım](plan/14_KPSS.md)).
+([tek kaynak kuralları](../mimari/veri-kaynaklari.md)); KPSS sınavları aynı kataloğa kendi
+sınav kimlikleriyle eklenir ([14. adım](../plan/14-kpss.md)).
 
 ## Kontrollü sözlük
 
@@ -49,8 +49,8 @@ kanıtını üretir. `frontend/src/curriculum.js` kaydedilmiş kimlikleri bu pro
 
 ## Kaynak sözleşmesi ve ilişkiler
 
-Ortak kaynak sözleşmesi [learning-resource-v2 şemasında](plan/sema/learning-resource-v2.schema.json)
-ve [temsili örneklerde](plan/sema/learning-resource-v2.ornek.json) tanımlıdır.
+Ortak kaynak sözleşmesi [learning-resource-v2 şemasında](../semalar/learning-resource-v2.schema.json)
+ve [temsili örneklerde](../semalar/learning-resource-v2.ornek.json) tanımlıdır.
 `scripts/learning-resource-contract.mjs` üretim sırasında her kaydı doğrular;
 `scripts/learning-resource-check.mjs` bütün aday sürümü yayın öncesi kontrol eder.
 V38'in dört kolonlu ilişki kimlik indeksi korunur. Konuya özel kanıt/konum/güven
@@ -133,7 +133,7 @@ Tam denetimin sonucu `veri/content-labels/audit.json`, özet `report.json`, sür
 PDF/görseller ayrı yedeklenir.
 
 Üretim hattında `--dry-run`, `--check`, `--resume`, `--limit`, `--ocr-pages` ve yayın
-seçeneklerinin anlamı [üretim ve yeniden başlama](plan/rehber/05_uretim-ve-yeniden-baslama.md)
+seçeneklerinin anlamı [üretim ve yeniden başlama](../mimari/icerik-uretimi.md)
 bölümündedir. Önbellek bozulması ve girdi değişiminde devam davranışı
 `content-pipeline-test.py`, video kimliği/oynatma listesi/süre/HTTP 429 ayrımı
 `video-inventory-test.py` ile denetlenir.

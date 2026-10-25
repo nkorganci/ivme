@@ -94,6 +94,11 @@ class PracticeSourceSelectionTest extends TestBase {
         assertThat(count.path("total").asInt()).isEqualTo(2);
         count=read(send(session,get("/api/questions/availability").param("source","OGM_AYT","OGM_TYT"),null).andExpect(status().isOk()));
         assertThat(count.path("total").asInt()).isEqualTo(2);
+        var summary=read(send(session,get("/api/questions/pool-summary"),null).andExpect(status().isOk()));
+        assertThat(summary.path("total").asInt()).isEqualTo(4);
+        assertThat(summary.at("/sources/OGM_AYT").asInt()).isEqualTo(2);
+        assertThat(summary.at("/sources/OGM_TYT").asInt()).isEqualTo(1);
+        assertThat(summary.path("sources").has("CIKMIS_KPSS_OO_GY")).isFalse();
         var created=read(send(session,post("/api/study-sessions"),json.writeValueAsString(Map.of(
                 "source",List.of("OGM_AYT","OGM_TYT"),"questionCount",2,"clientRequestId",UUID.randomUUID()))).andExpect(status().isCreated()));
         var ids=new HashSet<Long>(); created.path("questions").forEach(q->ids.add(q.path("questionId").asLong()));

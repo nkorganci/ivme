@@ -1,19 +1,19 @@
-# Sistem rehberi — Hangi bilginin tek kaynağı var?
+# Veri kaynakları
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Yeni veri/sözlük/kayıt eklemeden önce; tekrar ve ikinci liste önleme.
+[Mimari dizini](README.md) · Ne zaman okunur: Yeni veri/sözlük/kayıt eklemeden önce; tekrar ve ikinci liste önleme.
 
 ## Hangi bilginin tek kaynağı var?
 
 | Bilgi | Bakım/üretim kaynağı | Tüketim ve sınır |
 |---|---|---|
 | Ders, ünite, konu ve soru dağılımı | `Kaynaklar/mufredat/YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx` dosyasının yalnız ilk `KONULAR` sayfası → üretilmiş `content-taxonomy.json` | Çalışma anında tek kayıt `learning_catalog.current_categories.definition`; diğer sayfalar ve eski müfredat listeleri seçilebilir başlık üretmez |
-| Seçilebilir konular ve ünite grupları | Aynı DB kategori kaydında `canonicalUnit=true`, `unitId`, `unit`, `excelRowId` | 453 kaynak satırı, 12 özgün ders grubu → 14 ayrı ders, 146 ünite; kapsam işaretlerine göre 178 TYT / 352 AYT kimliği. `canonicalUnit` eski API alanıdır ve seçilebilir konu satırını belirtir |
+| Seçilebilir konular ve ünite grupları | Aynı DB kategori kaydında `canonicalUnit=true`, `unitId`, `unit`, `excelRowId` | Kapsam işaretleri sınava özgü kimliği belirler. `canonicalUnit` eski API alanıdır ve seçilebilir konu satırını belirtir |
 | Zorluk, beceri, içerik türü, ilişki ve inceleme değerleri | `backend/src/main/resources/review-vocabulary.json` | Konu kimliğinden ayrı boyutlardır |
 | Etkin yayımlanmış etiket sürümü | PostgreSQL `learning_catalog.current_run` | Aynı sürümün `current_items`, `current_categories`, `current_assignments` görünümleri |
 | Yerel üretim adayı | `veri/content-labels/labels.json` ve `report.json` | Üretilmiş çıktı; elle düzeltilmez, yayımlanmış sürümle aynı olduğu varsayılmaz |
 | Öğretmen kararı | `content_reviews` ve `content_review_history` | Kaynak/görsel/kategori değişimi onayı eskitebilir; otomatik etiket yayını kararı değiştirmez |
 | Soru, cevap ve öğrenci geçmişi | İlgili soru/çalışma/sınav tabloları | Etiket üretimi bu verileri değiştirmez; ilk deneme ve anlık kayıt korunur |
-| Görev ve devam noktası | Açık numaralı adımlar ve `00_DEVAM.md` | Başka bir eksikler veya yapılanlar listesi açılmaz |
+| Görev ve devam noktası | Açık numaralı adımlar ve `devam.md` | Başka bir eksikler veya yapılanlar listesi açılmaz |
 | Sınav hedefleri (YKS, KPSS türleri) ve öğrencinin sınavı | Flyway `V79__exam_tracks.sql` tohum kaydı `exam_tracks`; durum, not, `sections` (test, ders soru sayısı, dakika) ve `ready_features` yeni göçle değişir | `GET /api/exam-tracks`; seçim `user_exam_tracks`. Menü tek; `ACTIVE` sınavın yalnız `ready_features` bölümleri açılır (boş liste: hepsi) |
 | KPSS sınavının ders/ünite/konu referansı ve çıkmış soru konu kararları | `Kaynaklar/KPPS/<Sınav>/Mufredat/*-konular.json` ve `Cikmis Sorular/siniflandirma/<yıl>.tsv` → `veri-hatti/<sınav>/derle.py` | `scripts/kpss-yayinla.py` ile `questions`, `exam_archive_positions` ve ortak katalog (`kpss-*` kategorileri). İşleme etiketi `ISLEME_DURUMU.json` |
 
@@ -40,7 +40,7 @@ kaydedilir; geçmiş ve özetler sınava göre ayrılır. KPSS ders ağırlıkla
 katalogda, kategori `exam` alanı o sınavın `sections[].examId` değeriyle (ör.
 `KPSS_OO_GY`, `KPSS_OO_GK`) yayımlanır; ikinci sözlük açılmaz. KPSS ders adları YKS
 ile çakışır (Türkçe, Tarih); KPSS ders kimliği (`kpss-turkce`...) yayımlanmış KPSS
-kategorilerinden çözülür ([14. adım](../14_KPSS.md)).
+kategorilerinden çözülür ([14. adım](../plan/14-kpss.md)).
 
 Çalışma anında kategori kimliği, tercih edilen ad ve ortak kaynak etiketi için
 tek doğruluk kaynağı PostgreSQL'dir. `ReviewCatalog.categories()` yalnız
@@ -106,3 +106,6 @@ parçaları okuma sırasıyla yerleştirilir; metin/formül yeniden üretilmez. 
 eski görsel ve kaynak PDF hash'ini, parçaları ve aday hash'ini saklar. Aday
 hazırlamak soru bankasındaki görseli, cevabı veya geçmişi değiştirmez; asıl veri
 düzeltmesi eski dosyayı/sürümü koruyan ayrı işlemdir.
+
+
+Güncel katalog/göç sürümü `python scripts/ivme.py durum`, seçilebilir kategori `GET /api/learning-resources/metadata` ile okunur. Sayısal durum belgeye kopyalanmaz. Kaynak ve etiket ilişkileri [ortak etiket sözleşmesinde](../sozlesmeler/ortak-etiketler.md), kaynak aralıkları [v2 şemasında](../semalar/learning-resource-v2.schema.json) tanımlıdır.

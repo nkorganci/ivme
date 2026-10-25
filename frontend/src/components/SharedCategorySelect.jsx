@@ -4,9 +4,7 @@ import { categoryGroups, categoryLabel, categoryOptions, categoryTopic, MAX_CATE
 import { Field } from './Field.jsx';
 import BranchCategoryPicker from './BranchCategoryPicker.jsx';
 
-let metadataRequest;
-export const loadSharedCatalog = () => metadataRequest ||= api.get('/api/learning-resources/metadata')
-  .finally(() => { metadataRequest = undefined; });
+export const loadSharedCatalog = () => api.getReference('/api/learning-resources/metadata');
 
 export default function SharedCategorySelect({ value, onChange, examType, subject,
   questionFilters = false, showMatch = true, showQuestionTypes = true, showDropdown = true, questionScope, disabled = false,
@@ -21,13 +19,13 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
   const listId = useId();
   const searchRoot = useRef(null);
   const pointerInsideSearch = useRef(false);
-  const refresh = () => setAttempt(n => n + 1);
+  const refresh = () => { api.invalidateReferences(); setAttempt(n => n + 1); };
   const countsQuery = questionScope ? qs(questionScope) : null;
 
   useEffect(() => {
     if (countsQuery === null || disabled) return;
     let active = true;
-    api.get('/api/questions/category-counts' + countsQuery)
+    api.getReference('/api/questions/category-counts' + countsQuery)
       .then(counts => { if (active) setCountsState({ key: countsQuery, counts }); })
       .catch(e => { if (active) setCountsState({ key: countsQuery, error: e.message }); });
     return () => { active = false; };
@@ -67,7 +65,7 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
   }, [attempt]);
 
   useEffect(() => {
-    const reload = () => setAttempt(n => n + 1);
+    const reload = refresh;
     const visible = () => { if (document.visibilityState === 'visible') reload(); };
     window.addEventListener('focus', reload);
     document.addEventListener('visibilitychange', visible);
@@ -84,10 +82,10 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
   const currentCounts = countsState?.key === countsQuery ? countsState.counts : null;
   const countsError = countsState?.key === countsQuery ? countsState.error : null;
   const options = useMemo(() => categoryOptions(categories, { examType, subject, selectedIds: ids, search })
-    .filter(category => countsQuery === null || (currentCounts?.[category.id] || 0) > 0),
+    .filter(category => countsQuery === null || !currentCounts || (currentCounts[category.id] || 0) > 0),
     [categories, examType, subject, ids.join('|'), search, countsQuery, currentCounts]);
   const branchCategories = useMemo(() => branchFirst ? categoryOptions(categories, { examType })
-    .filter(category => countsQuery === null || (currentCounts?.[category.id] || 0) > 0 || ids.includes(category.id)) : [],
+    .filter(category => countsQuery === null || !currentCounts || (currentCounts[category.id] || 0) > 0 || ids.includes(category.id)) : [],
     [branchFirst, categories, examType, countsQuery, currentCounts, ids.join('|')]);
   const groups = useMemo(() => categoryGroups(options), [options]);
   const suggestions = showDropdown ? options.slice(0, 20) : options;
@@ -129,7 +127,8 @@ export default function SharedCategorySelect({ value, onChange, examType, subjec
     <div className="filters shared-category-filters">
       {branchFirst ? <BranchCategoryPicker categories={branchCategories} value={value} branchIds={branchIds} subject={subject}
         knownCategories={categories} leading={leading} difficultyControl={difficultyControl}
-        counts={currentCounts} loading={!disabled && !error && (!data || countsQuery !== null && !currentCounts && !countsError)}
+        counts={currentCounts} loading={!disabled && !error && !data}
+        countsLoading={!disabled && countsQuery !== null && !currentCounts && !countsError}
         disabled={disabled || !data} onChange={change} /> : <div className="category-search" ref={searchRoot}>
         <Field label="Konu adı ara" type="search" value={search} placeholder="Konu veya alt konu"
           disabled={disabled || !data || ids.length >= MAX_CATEGORY_SELECTION} autoComplete="off" role="combobox" aria-autocomplete="list"

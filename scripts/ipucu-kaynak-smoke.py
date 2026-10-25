@@ -25,7 +25,7 @@ def main():
     with tempfile.TemporaryDirectory() as folder:
         root = Path(folder)
         hint_path, queue_path, notes_path = [root / name for name in ("hint.json", "queue.csv", "notes.json")]
-        hint = json.loads((APP / "docs/plan/sema/kaynakli-ipucu-v1.ornek.json").read_text(encoding="utf-8"))
+        hint = json.loads((APP / "docs/semalar/kaynakli-ipucu-v1.ornek.json").read_text(encoding="utf-8"))
         with (APP / "ornek-veri/altin-ornek-inceleme-200.csv").open(encoding="utf-8", newline="") as stream:
             reader = csv.DictReader(stream)
             fields, rows = reader.fieldnames, list(reader)

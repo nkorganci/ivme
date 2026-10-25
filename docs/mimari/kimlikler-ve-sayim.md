@@ -1,6 +1,6 @@
-# Sistem rehberi — Kimlikler ve sayım
+# Kimlikler ve sayım
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Kategori/soru/kaynak kimlikleri, tekil sayım, sürüm kimlikleri.
+[Mimari dizini](README.md) · Ne zaman okunur: Kategori/soru/kaynak kimlikleri, tekil sayım, sürüm kimlikleri.
 
 ## Kimlikler ve sayım
 

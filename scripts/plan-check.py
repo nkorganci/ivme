@@ -10,10 +10,10 @@ def check(root=APP):
     docs = root / 'docs'
     plan = docs / 'plan'
     errors = []
-    handoff_file = plan / '00_DEVAM.md'
+    handoff_file = docs / 'devam.md'
     handoff = handoff_file.read_text(encoding='utf-8-sig') if handoff_file.exists() else ''
-    roadmap = (plan / '00_YOL_HARITASI.md').read_text(encoding='utf-8-sig')
-    steps = sorted(p for p in plan.glob('[0-9][0-9]_*.md') if not p.name.startswith('00_'))
+    roadmap = (plan / 'README.md').read_text(encoding='utf-8-sig')
+    steps = sorted(plan.glob('[0-9][0-9]-*.md'))
     tasks = {}
     for file in steps:
         text = file.read_text(encoding='utf-8-sig')

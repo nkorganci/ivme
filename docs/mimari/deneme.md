@@ -1,6 +1,6 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — deneme ve sınav arşivi
+# Deneme
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Deneme planı, kapsam, yıla ait sınav, arşiv konumları.
+[Mimari dizini](README.md) · Ne zaman okunur: Deneme planı, kapsam, yıla ait sınav, arşiv konumları.
 
 ## Deneme ve sınav arşivi
 

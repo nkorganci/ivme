@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { api, qs } from '../api.js';
+import { api } from '../api.js';
 import { useAsync } from '../hooks.js';
 import { formatNumber } from '../format.js';
 import DataGrid from './DataGrid.jsx';
@@ -12,12 +12,9 @@ export default function QuestionPoolSummary() {
   const [, setParams] = useSearchParams();
   const { questionSources: SOURCES, kpss, exams } = useExamTrack();
   const { data, loading, error, retry, reload } = useAsync(async () => {
-    const [overall, ...sources] = await Promise.all([
-      api.get('/api/questions/availability'),
-      ...SOURCES.map(({ bank, examType }) => api.get('/api/questions/availability' + qs({ bank, examType }))),
-    ]);
-    return [{ ...overall, ...Object.fromEntries(SOURCES.map((source, index) => [source.field, sources[index].total])) }];
-  }, []);
+    const summary = await api.get('/api/questions/pool-summary');
+    return [{ ...summary, ...Object.fromEntries(SOURCES.map(source => [source.field, summary.sources[source.id] || 0])) }];
+  }, [SOURCES.map(source => source.id).join('|')]);
   useEffect(() => {
     const refresh = () => { if (document.visibilityState === 'visible') reload(); };
     window.addEventListener('focus', refresh);

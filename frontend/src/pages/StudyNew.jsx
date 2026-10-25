@@ -77,6 +77,9 @@ function PracticeForm() {
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
   const availabilityQuery = !hasSource ? null : qs(scoped ? { topicPdfId } : { bank, source, history, ...filter, ...commonSelection });
+  const wholePool = !scoped && !hasHistory && source.length === questionSources.length
+    && !bank && !filter.examType && !filter.subject && !filter.topic && !hasCategories
+    && !commonSelection.questionTypeId && !commonSelection.teacherDifficulty;
   const availability = availabilityState?.key === availabilityQuery ? availabilityState.data : null;
   const availabilityError = availabilityState?.key === availabilityQuery ? availabilityState.error : '';
   const loading = availabilityState?.key !== availabilityQuery || availabilityState.loading;
@@ -103,11 +106,12 @@ function PracticeForm() {
     }
     let current = true;
     setAvailabilityState({ key: availabilityQuery, loading: true });
-    api.get('/api/questions/availability' + availabilityQuery)
+    // The summary above already asks for this exact initial pool; share its in-flight read.
+    api.get(wholePool ? '/api/questions/pool-summary' : '/api/questions/availability' + availabilityQuery)
       .then(data => { if (current) setAvailabilityState({ key: availabilityQuery, data, loading: false }); })
       .catch(e => { if (current) setAvailabilityState({ key: availabilityQuery, error: e.message, loading: false }); });
     return () => { current = false; };
-  }, [availabilityQuery]);
+  }, [availabilityQuery, wholePool]);
 
   const n = Number(count);
   const validCount = count.trim() !== '' && Number.isInteger(n) && n >= 1 && n <= 120;

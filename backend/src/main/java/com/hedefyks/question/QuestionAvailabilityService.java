@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class QuestionAvailabilityService {
     public record Availability(long total, long solved, long remaining, long everWrong, long correct) {}
+    public record PoolSummary(long total, long solved, long remaining, long everWrong, long correct,
+                              Map<String,Long> sources) {}
 
     private static final String MINE = """
             WITH answers AS (
@@ -33,15 +35,62 @@ public class QuestionAvailabilityService {
     private final JdbcClient jdbc;
     private final TopicPdfService topicPdfs;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
+    private final com.fasterxml.jackson.databind.ObjectMapper json;
 
-    public QuestionAvailabilityService(JdbcClient jdbc, TopicPdfService topicPdfs, com.hedefyks.review.SharedQuestionLabels sharedLabels) {
+    public QuestionAvailabilityService(JdbcClient jdbc, TopicPdfService topicPdfs, com.hedefyks.review.SharedQuestionLabels sharedLabels,
+                                       com.fasterxml.jackson.databind.ObjectMapper json) {
         this.jdbc = jdbc;
         this.topicPdfs = topicPdfs;
         this.sharedLabels=sharedLabels;
+        this.json=json;
     }
 
     public Availability count(Long userId, QuestionFilter filter) {
         return count(userId, filter, null);
+    }
+
+    /** Read the learner history and effective pool once for all source columns. */
+    public PoolSummary summary(Long userId, QuestionFilter filter) {
+        String selection = sharedLabels.selection(filter);
+        var params = new HashMap<String,Object>();
+        params.put("userId", userId);
+        params.put("summarySelection", selection == null ? "{}" : selection);
+        params.put("requestedSources", sharedLabels.write(filter.source()));
+        var sql = new StringBuilder(MINE).append("""
+            , catalog AS MATERIALIZED (
+              SELECT item_key,question_code,source_stamp,exam_ids FROM learning_catalog.current_items WHERE kind='QUESTION'
+            ), pool AS MATERIALIZED (
+              SELECT q.id,q.bank,m.question_id AS answered,m.ever_wrong,m.first_correct,
+                coalesce(o.exam_ids,i.exam_ids,ARRAY[q.exam_type]) AS exams
+              FROM questions q LEFT JOIN mine m ON m.question_id=q.id
+              LEFT JOIN catalog i ON i.question_code=q.code
+                AND i.source_stamp=extract(epoch from q.updated_at)::text
+              LEFT JOIN jsonb_to_recordset(coalesce(CAST(:summarySelection AS jsonb)->'overrides','[]'))
+                AS o(item_key text,exam_ids text[]) ON o.item_key=i.item_key
+              WHERE q.active
+            """);
+        addFilters(sql, params, filter, null, selection, false);
+        sql.append("""
+            ) SELECT count(*) AS total,count(answered) AS solved,count(*)-count(answered) AS remaining,
+              count(*) FILTER (WHERE ever_wrong) AS ever_wrong,
+              count(*) FILTER (WHERE first_correct IS TRUE) AS correct,
+              (SELECT coalesce(jsonb_object_agg(source,total),'{}')::text FROM (
+                SELECT p.bank||'_'||e.exam AS source,count(DISTINCT p.id) AS total
+                FROM pool p CROSS JOIN LATERAL unnest(p.exams) e(exam)
+                WHERE CAST(:requestedSources AS jsonb)='[]'::jsonb
+                  OR jsonb_exists(CAST(:requestedSources AS jsonb),p.bank||'_'||e.exam)
+                GROUP BY p.bank,e.exam
+              ) counts) AS sources FROM pool
+            """);
+        return jdbc.sql(sql.toString()).params(params).query((rs,n) -> {
+            Map<String,Long> sources = new java.util.LinkedHashMap<>();
+            // Controlled source IDs only; no student answers are returned in this map.
+            try {
+                json.readTree(rs.getString("sources")).properties().forEach(e -> sources.put(e.getKey(),e.getValue().asLong()));
+            } catch (com.fasterxml.jackson.core.JsonProcessingException error) { throw new IllegalStateException(error); }
+            return new PoolSummary(rs.getLong("total"),rs.getLong("solved"),rs.getLong("remaining"),
+                rs.getLong("ever_wrong"),rs.getLong("correct"),sources);
+        }).single();
     }
     public String catalogFilter(QuestionFilter filter) {
         return catalogFilter(filter, List.of());

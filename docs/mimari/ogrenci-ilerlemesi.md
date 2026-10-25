@@ -1,6 +1,6 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — ilerleme, Konu takibi ve istatistik
+# Öğrenci ilerlemesi
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: /progress, Konu takibi, /gecmis, haftalık çizelge, öğrenci kayıtları.
+[Mimari dizini](README.md) · Ne zaman okunur: /progress, Konu takibi, /gecmis, haftalık çizelge, öğrenci kayıtları.
 
 ## İlerleme, Konu takibi ve istatistik
 

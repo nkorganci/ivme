@@ -2,8 +2,8 @@
 
 Öğrenciye `/kaynakli-ders-notlari/:subjectId` ekranında sunulan konu rehberlerinin
 nasıl üretildiğini, hangi kurallarla yayımlandığını ve nasıl doğrulandığını anlatır.
-Kaynak taraması ve araştırma arşivi [kaynaklı soru analizinde](KAYNAKLI_SORU_ANALIZI.md),
-kalan not kapsamı [12.02'de](plan/12_KALAN_ICERIK_VE_YAYIN.md) tutulur.
+Kaynak taraması ve araştırma arşivi [kaynaklı soru analizinde](soru-analizi.md),
+kalan not kapsamı [12.02'de](../plan/12-icerik-ve-yayin.md) tutulur.
 
 ## Ne sunulur?
 

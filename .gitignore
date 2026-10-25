@@ -16,3 +16,4 @@ __pycache__/
 # Yerel Maven deposu ve ayrı test derleme çıktısı (Git dışı)
 .m2/
 backend/target-units-check/
+backend/target-tests/

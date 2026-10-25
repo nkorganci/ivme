@@ -5,7 +5,7 @@ inceleme + sabit örneklem. Manuel işaretli kayıt teknik devamı durdurmaz.
 
 Bütün sorular ve PDF'ler en az bir Excel konusuna bağlıdır; kaynak başlığından veya
 yakın konudan türetilen bağlar `CANDIDATE` ve “öğretmen onayı gerekiyor” işaretlidir
-([kimlik ve sayım kuralları](rehber/03_kimlikler-ve-sayim.md)). Eksik sayfa sınırları
+([kimlik ve sayım kuralları](../mimari/kimlikler-ve-sayim.md)). Eksik sayfa sınırları
 `LOCATION_REVIEW`, eksik video zamanları `TIME_REVIEW` ile görünür. Bu adımdaki açık iş
 insan/alan incelemesidir; tamamlanan çıkarım yeniden yapılmaz. Gerçek öğretmen kararı
 henüz yoktur (`content_reviews` boş).
@@ -48,7 +48,7 @@ yoktur ve gerektiğinde güncel katalogla yeniden üretilir. Gerçek öğretmen 
 
 Kaynak/cevap/kırpım hazırlığı `scripts/content-correction-package.py` ile ayrı, kimlik
 ve hash bağlı kanıt paketine aktarılır; uygulanacak içerik kararları
-[12.01'de](12_KALAN_ICERIK_VE_YAYIN.md) kalır.
+[12.01'de](12-icerik-ve-yayin.md) kalır.
 
 Kabul: öğretmen kararı öneriden ayrılıyor; kaynak değişince karar eskimiş oluyor; düzeltilecek kayıt kimlikleri ve etkisi açık.
 

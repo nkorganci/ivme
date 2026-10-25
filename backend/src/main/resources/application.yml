@@ -2,6 +2,9 @@
 # Geliştirme: --spring.profiles.active=dev (application-dev.yml). Yayın: docs/islemler/uygulama-calistirma-ve-yayin.md.
 server:
   port: ${PORT:8081}
+  compression:
+    enabled: true
+    min-response-size: 2KB
   address: ${YKS_BIND_ADDRESS:127.0.0.1}
   forward-headers-strategy: none   # tünel istemcisinden gelen X-Forwarded-* başlıklarına güvenme
   servlet:

@@ -31,11 +31,11 @@ VENV_PY = APP.parent / ".venv/Scripts/python.exe"
 STATUS = APP / "backend/target/live-watch.status"
 WATCH_LOG = APP / "backend/target/live-watch.log"
 KNOWN = APP / "testler/bilinen-hatalar.md"
-HANDOFF = APP / "docs/plan/00_DEVAM.md"
+HANDOFF = APP / "docs/devam.md"
 URL = os.environ.get("IVME_URL", "http://127.0.0.1:1010")
 MONTHS = "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
 DATED_LINE = re.compile(rf"\b\d{{1,2}}(?:[–-]\d{{1,2}})? (?:{MONTHS})\b")
-DATED_DOCS_ALLOWED = {"docs/plan/00_DEVAM.md", "testler/bilinen-hatalar.md"}
+DATED_DOCS_ALLOWED = {"docs/devam.md", "testler/bilinen-hatalar.md"}
 
 
 def run(command, **kwargs):
@@ -147,7 +147,7 @@ def cmd_durum(args):
                   + (f" · EKSİK (uygulama istiyor): {', '.join(missing)}" if missing else " · uygulama modelleri kurulu"))
         except (URLError, OSError):
             print("Ollama: kapalı (python scripts/ivme.py ollama durum başlatır)")
-    print("Devir (docs/plan/00_DEVAM.md):")
+    print("Devir (docs/devam.md):")
     for line in handoff_now():
         cells = [c.strip() for c in line.strip("|").split("|")]
         print(f"  {cells[0]}: {cells[1] if len(cells) > 1 else ''}")
@@ -164,9 +164,6 @@ def known_failures():
 
 def cmd_test(args):
     tests = next((a for a in args if not a.startswith("-")), "")
-    if watcher_state()["derleniyor"]:
-        print("İzleyici derliyor; backend/target çakışmaması için bekleniyor…")
-        cmd_bekle(["900"])
     command = ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "testler/backend-test.ps1"]
     if tests:
         command += ["-Test", tests]
@@ -174,7 +171,7 @@ def cmd_test(args):
     started = time.time()
     result = run(command, capture_output=True)
     # Odaklı çalıştırma -q ile özet yazmaz; sayıları bu çalıştırmanın surefire raporlarından al.
-    reports = [p for p in (APP / "backend/target/surefire-reports").glob("TEST-*.xml") if p.stat().st_mtime >= started - 1]
+    reports = [p for p in (APP / "backend/target-tests/surefire-reports").glob("TEST-*.xml") if p.stat().st_mtime >= started - 1]
     suite_totals = [0, 0, 0, 0]
     for report in reports:
         head = report.read_text(encoding="utf-8", errors="replace")[:2000]
@@ -269,7 +266,7 @@ def cmd_kontrol(args):
         dated = [l.strip() for l in lines if DATED_LINE.search(l) and not l.lstrip("|> ").startswith("Güncelleme:")]
         if dated:
             problems.append(f"{name}: tarihli iş dökümü eklenmiş ({len(dated)} satır), örn. “{dated[0][:90]}”. "
-                            "Belge güncel durumu anlatır; tarihi/kanıtı commit mesajına veya 00_DEVAM.md'ye yaz")
+                            "Belge güncel durumu anlatır; tarihi/kanıtı commit mesajına veya devam.md'ye yaz")
     if any(name.startswith("docs/") or name in ("AGENTS.md", "README.md") for name in files) or "--hepsi" in args:
         result = run([sys.executable, "scripts/plan-check.py"], capture_output=True, env={**os.environ, "PYTHONIOENCODING": "utf-8"})
         if result.returncode:
@@ -279,8 +276,8 @@ def cmd_kontrol(args):
                 errors = [result.stdout[-400:] + result.stderr[-400:]]
             problems += ["plan-check: " + e for e in errors]
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
-    if code_changed and "docs/plan/00_DEVAM.md" not in files and "--hepsi" not in args:
-        print("Not: kod değişti ama docs/plan/00_DEVAM.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")
+    if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
+        print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")
     for problem in problems:
         print("✗ " + problem)
     print(f"Kontrol: {len(files)} dosya · {'GEÇTİ' if not problems else f'{len(problems)} sorun'}")
@@ -333,10 +330,10 @@ def cmd_devir_kontrol(args):
         return 0
     changed = [l[3:].strip().strip('"') for l in run(["git", "status", "--porcelain"], capture_output=True).stdout.splitlines() if l.strip()]
     work = [n for n in changed if n.startswith(("frontend/src/", "backend/src/", "scripts/", "testler/", "docs/"))
-            and n != "docs/plan/00_DEVAM.md"]
-    if not work or "docs/plan/00_DEVAM.md" in changed:
+            and n != "docs/devam.md"]
+    if not work or "docs/devam.md" in changed:
         return 0
-    print(f"Commit'lenmemiş {len(work)} dosya var ({', '.join(work[:5])}) ama docs/plan/00_DEVAM.md güncellenmedi. "
+    print(f"Commit'lenmemiş {len(work)} dosya var ({', '.join(work[:5])}) ama docs/devam.md güncellenmedi. "
           "İş yarımsa devir dosyasındaki 'Şimdi' tablosunu (yarım iş, sıradaki komut) güncelle; iş bittiyse "
           "yerel commit at ve 'Son kapanan iş' satırını yaz. Bilinçli olarak bırakıyorsan bunu kullanıcıya söyle.",
           file=sys.stderr)

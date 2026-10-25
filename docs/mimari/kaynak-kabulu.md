@@ -1,6 +1,6 @@
-# Sistem rehberi — Yeni kaynak kabulü
+# Kaynak kabulü
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: Yeni PDF/video/sınav eklerken.
+[Mimari dizini](README.md) · Ne zaman okunur: Yeni PDF/video/sınav eklerken.
 
 ## Yeni kaynak kabulü
 

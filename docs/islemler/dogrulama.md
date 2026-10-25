@@ -17,7 +17,7 @@ python scripts/ivme.py test                          # tam paket
 python scripts/ivme.py test ExamTrackFlowTest,KpssTrackScopeTest
 ```
 
-Komut izleyici derliyorsa önce bekler (ikisi de `backend/target` yazar), geçici `ivme_test`
+Komut izleyiciden ayrı `backend/target-tests` çıktısını kullanır, geçici `ivme_test`
 veritabanını kurup kaldırır ve sonucu `testler/bilinen-hatalar.md` ile karşılaştırır:
 yalnız **YENİ** hatalar dikkat ister. Tam çıktı `backend/target/ivme-test-son.log`.
 Gerçek `ivme` veritabanında test çalıştırılmaz.
@@ -40,6 +40,10 @@ Yeni UI betiği yazarken Chrome/CDP kurulumunu tekrarlama: `testler/lib/tarayici
 içindeki `tarayiciAc()` → `goto`, `login(rol)`, `evalJs`, `wait`, `clippedGridCells`,
 `screenshot`. Giriş yerel `/api/auth/dev-switch/{ROL}` ile yapılır (CSRF çerezi
 `XSRF-TOKEN` → `X-XSRF-TOKEN`); tünelden çalışmaz.
+
+## Yükleme performansı
+
+Yükleme darboğazını ölçmek için `node testler/loading-performance.mjs veri/performance/son.json` kullan. Yerel öğrenciyle Pratik, Soru Bankası ve Dersler'in hazır olma süresini ve API sürelerini ölçer; soru/cevap yazmaz. Tarayıcı yeni profille açılır; makine yükü ve soğuk önbellek süreleri etkiler.
 
 ## Windows ipuçları
 

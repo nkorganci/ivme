@@ -1,8 +1,10 @@
-# Sistem rehberi — Uygulamada adlandırma ve erişim — soru filtreleri ve etiket eşleşmesi
+# Soru filtreleri
 
-[Rehber dizini](../00_SISTEM_REHBERI.md) · Ne zaman okunur: match/categoryMatch, filtre sayımları, V44–V52 etiket anlık kayıtları.
+[Mimari dizini](README.md) · Ne zaman okunur: match/categoryMatch, filtre sayımları, V44–V52 etiket anlık kayıtları.
 
 ## Soru filtreleri ve etiket eşleşmesi
+
+Genel konu sayımı ve eski filtre listeleri, adaylar dahilken `category_ids` dizisini açar; her sorunun büyük kanıt JSON'unu okumaz. Öğretmen kararı aynı kimlik dizisinin önüne geçer; yalnız doğrulanmış ilişki istendiğinde ilişki JSON'undaki `scopeStatus` denetlenir. Soru listesi, seçilen havuzun sayımını ve sayfalamasını PostgreSQL'de yapar; JPA yalnız gösterilecek soru kimliklerini alır.
 
 Kütüphanenin `match`, soru/pratik/deneme seçiminin `categoryMatch` alanları aynı
 `ANY/ALL` anlamındadır; gezinmede kategori dizisi ve `includeCandidates` korunur.

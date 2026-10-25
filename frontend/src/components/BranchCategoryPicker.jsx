@@ -4,7 +4,7 @@ import { categoriesInBranches, categoryBranchId, categoryBranches, categoryGroup
 import { Field } from './Field.jsx';
 import { referenceUnits } from '../curriculumReference.js';
 
-export default function BranchCategoryPicker({ categories, knownCategories = categories, value, branchIds, subject, counts, loading, disabled, onChange, leading, difficultyControl }) {
+export default function BranchCategoryPicker({ categories, knownCategories = categories, value, branchIds, subject, counts, loading, countsLoading, disabled, onChange, leading, difficultyControl }) {
   const [search, setSearch] = useState('');
   const [unitId, setUnitId] = useState('');
   const topicPicker = useRef(null);
@@ -60,12 +60,12 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
     onChange({ branchId: next, categoryId: ids.filter(categoryId => keep.has(categoryId)) });
   };
   useEffect(() => {
-    if (loading || !categories.length) return;
+    if (loading || countsLoading || !categories.length) return;
     const keep = new Set(categories.filter(category => categoryBranchId(category) === selectedBranch).map(category => category.id));
     if (branchIds.length > 1 || ids.some(id => !keep.has(id))) {
       onChange({ branchId: selectedBranches, categoryId: ids.filter(id => keep.has(id)) });
     }
-  }, [categories, loading, selectedBranch, branchIds.join('|'), ids.join('|')]);
+  }, [categories, loading, countsLoading, selectedBranch, branchIds.join('|'), ids.join('|')]);
   const toggleCategory = (id, checked) => {
     if (checked && ids.length >= MAX_CATEGORY_SELECTION) return;
     onChange({ categoryId: checked ? [...ids, id] : ids.filter(item => item !== id) });
@@ -91,6 +91,7 @@ export default function BranchCategoryPicker({ categories, knownCategories = cat
       </Field>}
       {loading ? <p role="status" className="field-hint">Dersler yükleniyor…</p>
         : !branches.length && !disabled && <p role="status" className="field-hint">Bu kaynak ve filtrelerde soru içeren ders yok.</p>}
+      {countsLoading && !loading && <p role="status" className="field-hint">Soru sayıları yükleniyor…</p>}
     </fieldset>
     <fieldset className="branch-topics" aria-label="Konu seçimi" disabled={topicDisabled}>
       <div className="field" ref={topicPicker} onMouseLeave={() => {

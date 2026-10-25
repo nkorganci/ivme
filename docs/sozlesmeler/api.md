@@ -1,9 +1,9 @@
 # İvme API ve mimari sözleşmesi
 
 
-> Bu belge çalışan sistemin güncel API ve mimari sözleşmesidir. API veya veri modeli değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](plan/00_YOL_HARITASI.md), devam noktası [devir dosyasında](plan/00_DEVAM.md) tutulur.
+> Bu belge çalışan sistemin güncel API ve mimari sözleşmesidir. API veya veri modeli değişince aynı işte güncellenir. Yapılacak işler [numaralı planda](../plan/README.md), devam noktası [devir dosyasında](../devam.md) tutulur.
 
-React 19/Vite ve Spring Boot 3.5/Java 21 tek `main` çalışma ağacında (`uygulama`) paketli çalışır. Yerel adres `http://localhost:1010`, tek kalıcı uygulama veritabanı PostgreSQL `ivme`dir. İsteğe bağlı Vite akışında API portu 8081'dir. Yerel paket otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:1010` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Başlatma akışı [README](../README.md) içindedir.
+React 19/Vite ve Spring Boot 3.5/Java 21 tek `main` çalışma ağacında (`uygulama`) paketli çalışır. Yerel adres `http://localhost:1010`, tek kalıcı uygulama veritabanı PostgreSQL `ivme`dir. İsteğe bağlı Vite akışında API portu 8081'dir. Yerel paket otomatik giriş davranışı için Spring `dev` profilini korur. Dış adres `https://net.ivme.dev` için Cloudflare hedefi doğrudan `http://localhost:1010` olmalıdır; kullanıcı bu hedefi Cloudflare'da ayarlar. Başlatma akışı [README](../../README.md) içindedir.
 
 ## Kimlik ve erişim
 
@@ -23,6 +23,7 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Çerezler `JSESSIONID` 
 | İstek | İşlev |
 |---|---|
 | `GET /api/questions/filters?bank=CIKMIS|OGM&source=` | Koleksiyona veya seçili banka–sınav çiftlerine göre sınav türü/ders/konu ve sayı |
+| `GET /api/questions/pool-summary` | Seçili sınavda öğrencinin toplam/çözülen/kalan/ilk doğru sayıları ve `sources` içinde banka–sınav sayıları; havuz ve geçmiş tek SQL anlık kaydında okunur. Çok sınav etiketli soru genel toplamda bir kez, ilgili kaynak sütunlarında ayrı sayılır |
 | `GET /api/questions?bank&examType&subject&topic&page&size` | Sayfalı etkin soru listesi |
 | `GET /api/questions/availability?bank&examType&subject&topic&history` | Kendi toplam/çözülen/kalan/en az bir kez yanlış yapılan tekil soru sayıları; isteğe bağlı tekrarlı `history=CORRECT/WRONG` değerleri havuzu en az bir kez doğru/yanlış yanıtlanan soruların birleşimine daraltır. `correct` öğrencinin soru başına ilk yanıtında doğru çözdüğü tekil soru sayısıdır. Oturumlu pratik yalnız tamamlanınca, bağımsız soru pratiği kaydedilince, deneme teslimde sayılır; açık/iptal edilmiş çalışmalar hesaba girmez, tekrarlar toplamı artırmaz |
 | `GET /api/questions/code/{code}`, `GET /api/questions/{id}` | Soru künyesi; doğru cevap içermez |
@@ -196,7 +197,7 @@ kaynak kaydı korunur.
 
 `/akilli-ogretmen` öğrenci ekranı, `/akilli-ogretmen-inceleme` operatör ekranıdır
 (`com.hedefyks.tutor`). İçerik dosyaları `ornek-veri/ogretim-pilotu/<branş>/*.json`
-(şema `docs/plan/sema/ogretim-icerigi-v1.schema.json`), `python scripts/ivme.py ogretim dogrula`
+(şema `docs/semalar/ogretim-icerigi-v1.schema.json`), `python scripts/ivme.py ogretim dogrula`
 ile denetlenir ve `ogretim aktar` ile `tutor_contents` tablosuna sürümlü yazılır.
 
 | Uç | Açıklama |
@@ -234,7 +235,7 @@ istekleri `tutor_regeneration_requests` içindedir ve `ogretim yeniden-uretim` i
 
 Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir. `topic-pdf-links.json` içindeki onaylı bağlantıda PDF checksum'ı tekrar doğrulanır. `GET /api/questions/availability?topicPdfId=` ve pratik/sınav oluşturma isteklerindeki `topicPdfId` yalnız onaylı soru kodlarıyla sınırlandırılır; istemci kaynak/ders/konu göndererek havuzu genişletemez.
 
-İç not v1 biçimi [kayıtlı şemada](plan/sema/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [ortak kaynak şeması](plan/sema/learning-resource-v2.schema.json) ve [kanıt kuralları](plan/rehber/04_kanit-ve-onay.md) kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
+İç not v1 biçimi [kayıtlı şemada](../semalar/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [ortak kaynak şeması](../semalar/learning-resource-v2.schema.json) ve [kanıt kuralları](../mimari/kanit-ve-onay.md) kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
 
 ## Operatör ve yönetici uçları
 
@@ -267,4 +268,4 @@ aittir; main'de sonradan açılan hesap geliştirme DB'sine otomatik kopyalanmaz
 
 ## Veritabanı ve henüz bağlanmamış alanlar
 
-Flyway göçleri PostgreSQL veritabanını yönetir; test DB `ivme_test`'tir. `study_sessions` ve `session_questions` pratikte kullanılır; taksonomi/önkoşul ve `activity_events` tablolarının diğer ürün işlevleri hâlâ açıktır. `V32`, kaldırılan Hedeflerim özelliğinin `goals` tablosunu siler. Ham `activity_events` ve kimliksiz `service_error_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Kalan rol/yedek/yayın kontrolleri [12. adımda](plan/12_KALAN_ICERIK_VE_YAYIN.md); ortak filtre ve geçmiş anlık kayıt sözleşmesi [sistem rehberinde](plan/00_SISTEM_REHBERI.md) tutulur.
+Flyway göçleri PostgreSQL veritabanını yönetir; test DB `ivme_test`'tir. `study_sessions` ve `session_questions` pratikte kullanılır; taksonomi/önkoşul ve `activity_events` tablolarının diğer ürün işlevleri hâlâ açıktır. `V32`, kaldırılan Hedeflerim özelliğinin `goals` tablosunu siler. Ham `activity_events` ve kimliksiz `service_error_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Kalan rol/yedek/yayın kontrolleri [12. adımda](../plan/12-icerik-ve-yayin.md); ortak filtre ve geçmiş anlık kayıt sözleşmesi [sistem rehberinde](../mimari/README.md) tutulur.

@@ -3,8 +3,8 @@
 Bu belge çıkmış/OGM sorularını ve ders anlatımı PDF'lerini birlikte inceleyen kaynak
 taramasının nasıl çalıştığını ve araştırma arşivinin (`source_research`) nasıl yeniden
 kullanılacağını anlatır. Öğrenciye sunulan konu rehberleri
-[kaynaklı ders notlarında](KAYNAKLI_DERS_NOTLARI.md), kalan içerik işi
-[12.02'de](plan/12_KALAN_ICERIK_VE_YAYIN.md) tutulur. Güncel sayılar belgeye yazılmaz;
+[kaynaklı ders notlarında](kaynakli-ders-notlari.md), kalan içerik işi
+[12.02'de](../plan/12-icerik-ve-yayin.md) tutulur. Güncel sayılar belgeye yazılmaz;
 `--status` çıktısından okunur.
 
 Bu belge ve ders notları belgesi `scripts/kaynakli_arastirma_db.py` tarafından girdi

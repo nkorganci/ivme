@@ -65,7 +65,14 @@ public class QuestionService {
 
     public PageResponse<QuestionListItem> list(QuestionFilter filter, int page, int size) {
         var pageable = PageRequest.of(Math.max(page, 0), Math.min(Math.max(size, 1), 100), Sort.by("id"));
-        var result=questions.findAll(QuestionSpecs.filter(filter, true,sharedLabels.questionIds(filter)), pageable);
+        var selected=sharedLabels.questionPage(filter,pageable.getPageSize(),pageable.getOffset());
+        org.springframework.data.domain.Page<Question> result;
+        if(selected==null)result=questions.findAll(QuestionSpecs.filter(filter,true),pageable);
+        else {
+            var rows=selected.ids().isEmpty()?List.<Question>of():questions.findAllById(selected.ids()).stream()
+                .sorted(Comparator.comparing(Question::getId)).toList();
+            result=new org.springframework.data.domain.PageImpl<>(rows,pageable,selected.total());
+        }
         var presentations=resources.items(result.getContent().stream().map(q->"question:"+q.getCode()).toList());
         return PageResponse.of(result,q->QuestionListItem.of(q,presentations.getOrDefault("question:"+q.getCode(),Map.of())));
     }
