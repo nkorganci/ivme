@@ -15,6 +15,7 @@ const ITEMS = [
   ['/', 'Ana Sayfa', 'home'],
   [CURRICULUM_HOME, 'Dersler', 'book'],
   ['/akilli-ogretmen', 'Akıllı Öğretmen', 'layers'],
+  ['/interaktif-ogrenme', 'İnteraktif Öğrenme', 'atom'],
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/ogrenci-takip', 'Öğrenci Takip Portalı', 'clock'],
   ['/calisma/yeni', STUDY_LABEL, 'play'],

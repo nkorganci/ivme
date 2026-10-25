@@ -17,7 +17,8 @@ class SourceNotesRoutesTest {
         "/kaynakli-ders-notlari/tyt-turkce", "/kaynakli-ders-notlari/ayt-edebiyat",
         "/kaynakli-ders-notlari/tyt-tarih", "/kaynakli-ders-notlari/tyt-cografya",
         "/kaynakli-ders-notlari/tyt-felsefe", "/kaynakli-ders-notlari/tyt-din",
-        "/kaynakli-ders-notlari/tyt-biyoloji", "/kaynakli-ders-notlari/tyt-kimya"
+        "/kaynakli-ders-notlari/tyt-biyoloji", "/kaynakli-ders-notlari/tyt-kimya",
+        "/interaktif-ogrenme", "/interaktif-ogrenme/fizik/hareket"
     })
     void directNavigationAndRefreshOpenTheReactApplication(String path) throws Exception {
         MockMvcBuilders.standaloneSetup(new SpaForwardController()).build()

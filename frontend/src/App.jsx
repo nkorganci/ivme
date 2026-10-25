@@ -39,6 +39,8 @@ const TopicPdfViewer = lazy(() => import('./pages/TopicPdfViewer.jsx'));
 const Tutor = lazy(() => import('./pages/Tutor.jsx'));
 const TutorSession = lazy(() => import('./pages/TutorSession.jsx'));
 const TutorReview = lazy(() => import('./pages/TutorReview.jsx'));
+const InteractiveLearning = lazy(() => import('./pages/InteractiveLearning.jsx'));
+const InteractiveUnit = lazy(() => import('./pages/InteractiveUnit.jsx'));
 
 function ResourceLibraryRedirect() {
   const location=useLocation();
@@ -131,6 +133,9 @@ export default function App() {
               </Route>
             </Route>
             <Route path="/akilli-ogretmen/:code" element={<Suspense fallback={<Loading text="Öğretim oturumu yükleniyor…" />}><TutorSession /></Suspense>} />
+            {/* İnteraktif Öğrenme sınav seçiminden bağımsızdır; ünite içeriği ön yüzde tanımlıdır. */}
+            <Route path="/interaktif-ogrenme" element={<Suspense fallback={<Loading text="İnteraktif Öğrenme yükleniyor…" />}><InteractiveLearning /></Suspense>} />
+            <Route path="/interaktif-ogrenme/:subjectId/:unitId" element={<Suspense fallback={<Loading text="Laboratuvar yükleniyor…" />}><InteractiveUnit /></Suspense>} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
           <Route path="/hesap" element={<Account />} />
