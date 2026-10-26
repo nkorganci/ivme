@@ -41,6 +41,17 @@ içindeki `tarayiciAc()` → `goto`, `login(rol)`, `evalJs`, `wait`, `clippedGri
 `screenshot`. Giriş yerel `/api/auth/dev-switch/{ROL}` ile yapılır (CSRF çerezi
 `XSRF-TOKEN` → `X-XSRF-TOKEN`); tünelden çalışmaz.
 
+## İnteraktif Öğrenme
+
+```powershell
+node --test testler/interaktif-motorlar.test.mjs testler/interaktif-hareket.test.mjs   # motorlar ve soru cevapları
+node testler/interaktif-uniteler-ui.mjs                    # bütün modül üniteleri (ya da: ... kimya/gazlar)
+node testler/interaktif-ogrenme-ui.mjs                     # Fizik · Hareket uçtan uca
+```
+
+UI betikleri görüntüleri `veri/ui-denetim/interaktif*` altına yazar. Paket yenilenirken
+sunucu kısa süre kapanır; `ERR_CONNECTION_REFUSED` görürsen `python scripts/ivme.py bekle` sonrası yeniden çalıştır.
+
 ## Yükleme performansı
 
 Yükleme darboğazını ölçmek için `node testler/loading-performance.mjs veri/performance/son.json` kullan. Yerel öğrenciyle Pratik, Soru Bankası ve Dersler'in hazır olma süresini ve API sürelerini ölçer; soru/cevap yazmaz. Tarayıcı yeni profille açılır; makine yükü ve soğuk önbellek süreleri etkiler.

@@ -19,3 +19,8 @@ Akıllı Öğretmen kavrayış demosu: fizik, matematik ve geometriden beşer fa
 cümlesi, sağlama ve animasyonlu görsel var. Kullanıcı demoyu beğenirse aynı yaklaşım diğer sorulara
 [öğretim tasarımı rehberiyle](icerik/akilli-ogretmen-ogretim-tasarimi.md) yayılır. Doğrulama/aktarım:
 `python scripts/ivme.py ogretim dogrula`, sonra `ogretim aktar`. [Tarif](islemler/ogretim-icerigi.md).
+
+İnteraktif Öğrenme (`/interaktif-ogrenme`): 9 derste 25 ünite (fizik 3, matematik 3, geometri 3,
+kimya 2, biyoloji 2, Türkçe 3, tarih 3, coğrafya 3, edebiyat 3); her ünitede genel laboratuvar,
+sınav soruları ve kalıplar. Kullanıcı deneyip geri bildirim verecek; düzeltmeler ve yeni üniteler
+[İnteraktif öğrenme rehberiyle](icerik/interaktif-ogrenme.md) yapılır. İlerleme şimdilik tarayıcıda.

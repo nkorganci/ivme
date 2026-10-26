@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useAuth } from '../auth.jsx';
 
-const EMPTY = { studio: {}, tasks: {} };
+const EMPTY = { studio: {}, tasks: {}, questions: {} };
 
 function read(key) {
   try { return { ...EMPTY, ...JSON.parse(localStorage.getItem(key) ?? 'null') }; } catch { return EMPTY; }

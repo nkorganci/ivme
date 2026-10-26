@@ -641,12 +641,3 @@ export const PATTERNS = [
     look: 'Dikey sahnede iki cismi birlikte bırak; net kuvvetleri karşılaştır.', rule: 'Hava direnci yoksa ivme g; süre ve hız kütleye bağlı değil. Ağırlık ise kütleyle orantılı.',
     trap: '"Ağır cisim daha hızlı düşer" sezgisi.', studio: ['top-ve-tuy'], tasks: [], codes: ['AYT_Sayisal-0363'], preset: 'dusme' },
 ];
-
-/* ------------------------------------------------------------------ Ünite listesi (giriş sayfası) */
-
-export const PLANNED_UNITS = [
-  { subject: 'Fizik', title: 'İki boyutta hareket (atışlar)', idea: 'Hızı yatay ve düşey bileşenlere ayıran atış laboratuvarı: süreyi düşey verir, menzili yatay.' },
-  { subject: 'Fizik', title: 'Elektrik devreleri', idea: 'Pil, direnç ve ampulü bağlayıp akım ile gerilimi canlı ölçen devre tahtası.' },
-  { subject: 'Fizik', title: 'Kuvvet ve Newton yasaları', idea: 'Serbest cisim diyagramı ile hareket aynı ekranda: net kuvvet değişince ivme ve grafikler değişir.' },
-  { subject: 'Fizik', title: 'Basit harmonik hareket', idea: 'Yay–kütle ve sarkaç: periyodu neyin belirlediğini, neyin belirlemediğini dene.' },
-];
