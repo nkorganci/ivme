@@ -8,23 +8,20 @@ function Get-YksSourceFingerprint {
         '.codex\local-environment.json',
         'frontend\index.html', 'frontend\vite.config.js', 'frontend\package.json',
         'frontend\package-lock.json', 'backend\pom.xml',
-        'backend\src\main\resources\application.yml',
-        'backend\src\main\resources\application-dev.yml',
-        'backend\src\main\resources\topic-pdf-links.json',
-        'backend\src\main\resources\pdf-review-labels.json',
-        'backend\src\main\resources\content-review-catalog.json',
-        'backend\src\main\resources\content-label-categories.json',
-        'backend\src\main\resources\content-taxonomy.json',
-        'backend\src\main\resources\review-vocabulary.json',
         'scripts\content-review-catalog.mjs', 'scripts\pdf-review-labels.mjs',
         'scripts\pdf-review-taxonomy.mjs'
     )
+    # Every top-level backend resource ships in the JAR; static\ is generated from frontend\dist.
+    $resources = Join-Path $repo 'backend\src\main\resources'
     $files = @(
         foreach ($directory in $directories) {
             $path = Join-Path $repo $directory
             if (Test-Path -LiteralPath $path -PathType Container) {
                 Get-ChildItem -LiteralPath $path -File -Recurse
             }
+        }
+        if (Test-Path -LiteralPath $resources -PathType Container) {
+            Get-ChildItem -LiteralPath $resources -File
         }
         foreach ($file in $individual) {
             $path = Join-Path $repo $file

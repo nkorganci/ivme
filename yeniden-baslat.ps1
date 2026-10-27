@@ -1,5 +1,5 @@
-[CmdletBinding()]
-param([switch]$FromWatcher)
+﻿[CmdletBinding()]
+param([switch]$FromWatcher, [switch]$ReuseDeployed)
 
 $ErrorActionPreference = 'Stop'
 $repo = $PSScriptRoot
@@ -38,6 +38,40 @@ function Start-Program([string]$jarPath) {
     ) -WorkingDirectory $backend -WindowStyle Hidden -PassThru `
       -RedirectStandardOutput (Join-Path $stateDir 'application.stdout.log') `
       -RedirectStandardError (Join-Path $stateDir 'application.stderr.log')
+}
+
+$deployedJarFile = Join-Path $stateDir 'live-deployed.jar'
+$lastJar = if (Test-Path -LiteralPath $deployedJarFile) { (Get-Content -LiteralPath $deployedJarFile -Raw).Trim() } else { '' }
+if ($lastJar -and -not (Test-Path -LiteralPath $lastJar)) { $lastJar = '' }
+
+# Watcher-only: nothing is serving, so open the last published package without rebuilding.
+if ($ReuseDeployed) {
+    $existing = Get-CimInstance Win32_Process -Filter "Name='java.exe'" | Where-Object {
+        $_.CommandLine -match 'hedef-yks\.jar' -and $_.CommandLine.Contains($backend + '\')
+    } | Select-Object -First 1
+    $ownsProcess = -not $existing
+    if ($existing) {
+        $started = Get-Process -Id $existing.ProcessId
+    } else {
+        if (-not $lastJar) { throw 'Kayıtlı son paket yok; tam derleme gerekiyor.' }
+        if (Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue) {
+            throw "$port portunda başka bir uygulama çalışıyor; durdurulmadı."
+        }
+        $started = Start-Program $lastJar
+    }
+    for ($attempt = 0; $attempt -lt 90; $attempt++) {
+        Start-Sleep -Seconds 1
+        if ($started.HasExited) { break }
+        try {
+            $response = Invoke-WebRequest -Uri "$baseUrl/" -UseBasicParsing -TimeoutSec 2
+            if ($response.StatusCode -eq 200 -and $response.Content.Contains('/assets/index-')) {
+                Write-Host "Son paket açıldı: http://localhost:$port ($lastJar)"
+                return
+            }
+        } catch { }
+    }
+    if ($ownsProcess -and -not $started.HasExited) { Stop-Process -Id $started.Id -Force }
+    throw "Son paket 90 saniyede açılmadı: $lastJar"
 }
 
 Push-Location $frontend
@@ -105,7 +139,9 @@ try {
         }
     }
 
-    $slot = if ($oldJar -and $oldJar -match 'target[\\/]deploy-a[\\/]') { 'deploy-b' } else { 'deploy-a' }
+    # Build into the other slot so the running or last published package survives a failed build.
+    $keptJar = if ($oldJar) { $oldJar } else { $lastJar }
+    $slot = if ($keptJar -and $keptJar -match 'target[\\/]deploy-a[\\/]') { 'deploy-b' } else { 'deploy-a' }
     $newJar = Join-Path $backend "target\$slot\hedef-yks.jar"
     & mvn.cmd -q -DskipTests "-Dyks.build.directory=target/$slot" clean package
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $newJar)) {
@@ -162,6 +198,7 @@ if (-not $ready) {
 }
 
 Set-Content -LiteralPath (Join-Path $stateDir 'live-deployed.fingerprint') -Value $sourceFingerprint -NoNewline -Encoding ASCII
+Set-Content -LiteralPath $deployedJarFile -Value $newJar -NoNewline -Encoding UTF8
 if (-not $FromWatcher) {
     $watchScript = Join-Path $repo 'canli-izle.ps1'
     $null = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
