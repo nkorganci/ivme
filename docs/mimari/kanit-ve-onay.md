@@ -17,7 +17,8 @@ Envanterdeki her PDF satırı görüntüleyicide açılır: konu kataloğunda yo
 `PdfReviewLabels` kaydından tanımlar. Açılamayan PDF
 genel bir hata yerine kendi nedeniyle gösterilir: arşivde, dosya yok (`missing_file`), dosya
 değişmiş (`changed_file`), yalnız video (`video_only`) veya envanterde olmayan numara.
-Tablo sütunları `DataGrid fitAllRows` ile bütün satırların en uzun metni kadar geniş olur.
+Envanter sütunları dar genişliklerle gösterilir; uzun hücreler satır içinde
+sarmalanır. Kanıt düğmesi ayrıntıyı tablonun altında açar ve görünür konuma getirir.
 Yeni soru veya PDF yayını sonrasında kapsam denetimi gerektiğinde üretici yeniden
 çalıştırılıp kayıtlar ayrıca yayımlanır. Bu bağ aynı PDF'deki bütün soruların
 çıkarıldığını kanıtlamaz. Çevrim içi OGM Soru Bankası kartlarının belirli okul

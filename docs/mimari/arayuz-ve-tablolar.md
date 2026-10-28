@@ -32,8 +32,8 @@ sıralama/seçimden sonra yenilenen sıra numarası bulunur, Ders sütunu en uzu
 ders adı (başlık seçicisi payı dahil) kadar geniştir. Hücre dikey dolgusu 4 px,
 Ders/Ünite/Konu metin sarmalayıcısı ek 2 px, satır aralığı 1,15'tir: tek satır 30 px,
 iki satır 46 px. Konu takibinde Soru bankası / Çıkmış soru hücreleri yalnız sayıdır;
-Çalış bağlantıları ve Bitti düğmesi tek satırdır. PDF envanterinde `DataGrid fitAllRows`
-her sütunu bütün satırların en uzun metni kadar açar ve satırlar tek satırdır.
+Çalış bağlantıları ve Bitti düğmesi tek satırdır. PDF envanterinde sütunlar dar
+tutulur, uzun metinler satır içinde sarmalanır; Kanıt düğmesi açılan ayrıntıya götürür.
 Soru Bankası/Çıkmış Sorular listesi de mevcut sayfanın konu ve kaynak metnini
 `fitAllRows` ile ölçer; “Soruyu aç” sütununun genişliği sabittir. Uzun hücreler
 tablonun kendi yatay kaydırmasıyla okunur.

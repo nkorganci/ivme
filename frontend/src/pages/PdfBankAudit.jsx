@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../api.js';
 import { useAsync, usePageTitle } from '../hooks.js';
@@ -7,8 +7,7 @@ import { ErrorBox, Loading } from '../components/States.jsx';
 import './PdfBankAudit.css';
 
 const number = value => Number(value || 0).toLocaleString('tr-TR');
-// One line per row: columns are as wide as their text, rows only as tall as that line (or the wrapped extracted text).
-const auditGridOptions = { rowHeight: 34, getRowId: ({ data }) => String(data.id) };
+const auditGridOptions = { getRowId: ({ data }) => String(data.id) };
 const codeGridOptions = { rowHeight: 34, getRowId: ({ data }) => data.code };
 
 export default function PdfBankAudit() {
@@ -25,6 +24,10 @@ export default function PdfBankAudit() {
   const [status, setStatus] = useState('');
   const [archiveFilter, setArchiveFilter] = useState('');
   const [processingFilter, setProcessingFilter] = useState('');
+  const proofRef = useRef(null);
+  useEffect(() => {
+    if (selected != null) proofRef.current?.scrollIntoView({ block: 'start' });
+  }, [selected]);
   const rows = useMemo(() => (audit.data?.pdfs || []).filter(row =>
     (!status || row.status === status) && (!archiveFilter || row.archiveState === archiveFilter)
     && (!processingFilter || row.processingLabel === processingFilter)), [audit.data, status, archiveFilter, processingFilter]);
@@ -55,24 +58,24 @@ export default function PdfBankAudit() {
   };
   const columns = useMemo(() => [
     // Every row opens the viewer; it explains why a PDF that cannot be opened (archived, missing, changed, video-only) is unavailable.
-    { field: 'title', headerName: 'PDF', minWidth: 260,
+    { field: 'title', headerName: 'PDF', width: 87, minWidth: 87, maxWidth: 87, autoHeight: true,
       cellRenderer: ({ data }) => <Link to={`/konu-anlatimlari/${data.id}`}>{data.title}</Link> },
-    { field: 'exam', headerName: 'Sınav', minWidth: 90 },
-    { field: 'subject', headerName: 'Ders', minWidth: 120 },
-    { field: 'category', headerName: 'İçerik', minWidth: 155 },
-    { field: 'source', headerName: 'Kaynak serisi', minWidth: 150 },
-    { field: 'pages', headerName: 'Sayfa', minWidth: 85, cellDataType: 'number' },
-    { field: 'questionCount', headerName: 'Bankadaki soru', minWidth: 115, cellDataType: 'number' },
-    { field: 'candidateCount', headerName: 'Çıkarım adayı', minWidth: 120, cellDataType: 'number' },
-    { field: 'processingLabel', headerName: 'İşlem etiketi', minWidth: 190 },
-    { field: 'archiveState', headerName: 'Arşiv', minWidth: 100 },
-    { field: 'status', headerName: 'Soru durumu', minWidth: 165 },
-    { field: 'workAction', headerName: 'İşlem seçimi', minWidth: 135,
+    { field: 'exam', headerName: 'Sınav', width: 55, minWidth: 55 },
+    { field: 'subject', headerName: 'Ders', width: 70, minWidth: 70 },
+    { field: 'category', headerName: 'İçerik', width: 70, minWidth: 70 },
+    { field: 'source', headerName: 'Kaynak serisi', width: 78, minWidth: 78 },
+    { field: 'pages', headerName: 'Sayfa', width: 50, minWidth: 50, cellDataType: 'number' },
+    { field: 'questionCount', headerName: 'Bankadaki soru', width: 60, minWidth: 60, cellDataType: 'number' },
+    { field: 'candidateCount', headerName: 'Çıkarım adayı', width: 60, minWidth: 60, cellDataType: 'number' },
+    { field: 'processingLabel', headerName: 'İşlem etiketi', width: 90, minWidth: 90 },
+    { field: 'archiveState', headerName: 'Arşiv', width: 62, minWidth: 62 },
+    { field: 'status', headerName: 'Soru durumu', width: 90, minWidth: 90 },
+    { field: 'workAction', headerName: 'İşlem seçimi', width: 82, minWidth: 82,
       valueFormatter: ({ value }) => value === 'EXTRACT' ? 'Soru çıkarma' : value === 'ARCHIVE_REVIEW' ? 'Arşiv incelemesi' : 'Seçilmedi' },
-    { field: 'available', headerName: 'Dosya', minWidth: 100, valueGetter: ({ data }) => data.archiveState === 'Arşivde' ? 'Arşivde' : data.available ? 'Var' : 'Eksik' },
-    { colId: 'proof', headerName: 'Kanıt', minWidth: 100, valueGetter: ({ data }) => data.questionCount > 0 ? 'Soru kanıtı var' : 'Soru kanıtı yok',
-      cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" onClick={() => openProof(data)}>Göster</button> },
-  ], []);
+    { field: 'available', headerName: 'Dosya', width: 56, minWidth: 56, valueGetter: ({ data }) => data.archiveState === 'Arşivde' ? 'Arşivde' : data.available ? 'Var' : 'Eksik' },
+    { colId: 'proof', headerName: 'Kanıt', width: 74, minWidth: 74, valueGetter: ({ data }) => data.questionCount > 0 ? 'Soru kanıtı var' : 'Soru kanıtı yok',
+      cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" aria-label={`${data.title} kanıtını göster`} onClick={() => openProof(data)}>Göster</button> },
+  ].map(def => ({ wrapText: true, autoHeight: true, wrapHeaderText: true, autoHeaderHeight: true, ...def })), []);
   const questionColumns = useMemo(() => [
     { field: 'code', headerName: 'Soru kodu', minWidth: 220,
       cellRenderer: ({ data }) => <Link to={`/soru/${encodeURIComponent(data.code)}`}>{data.code}</Link> },
@@ -111,10 +114,10 @@ export default function PdfBankAudit() {
       <option value="">Tümü</option>{[...new Set(audit.data.pdfs.map(row => row.processingLabel))].map(value => <option key={value}>{value}</option>)}
     </select></label>
     <section className="card table-card" aria-label="PDF envanteri tablosu">
-      <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false} fitAllRows
+      <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" className="pdf-audit-inventory-grid" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
         gridOptions={auditGridOptions} />
     </section>
-    {selected && <section className="card pdf-audit-proof" aria-label="Soru çıkarım kanıtı">
+    {selected && <section ref={proofRef} className="card pdf-audit-proof" aria-label="Soru çıkarım kanıtı">
       <div className="pdf-audit-proof-head"><h2>{proof?.title || 'Kanıt yükleniyor…'}</h2><button type="button" className="btn btn-secondary btn-sm" onClick={() => { setSelected(null); setProof(null); }}>Kapat</button></div>
       {busy && <Loading text="Kanıt yükleniyor…" />}{proofError && <ErrorBox error={proofError} />}
       {candidateError && <ErrorBox error={candidateError} />}

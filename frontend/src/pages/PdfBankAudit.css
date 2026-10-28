@@ -1,5 +1,12 @@
 .pdf-bank-audit .pdf-audit-status { display: flex; align-items: center; gap: .6rem; margin-block: 1rem; }
 .pdf-bank-audit .pdf-audit-status select { max-width: 22rem; }
+.pdf-audit-inventory-grid { font-size: 12px; --ag-cell-horizontal-padding: 3px; }
+.pdf-audit-inventory-grid .ag-header-cell { padding-inline: 3px; }
+.pdf-audit-inventory-grid .ag-header-cell-label { gap: 2px; }
+.pdf-audit-inventory-grid .ag-header-cell-text { white-space: normal; line-height: 1.15; overflow-wrap: anywhere; }
+.pdf-audit-inventory-grid .ag-cell { padding: 4px 3px; line-height: 1.2; }
+.pdf-audit-inventory-grid .ag-cell-value, .pdf-audit-inventory-grid .ag-cell-value a { white-space: normal; overflow-wrap: anywhere; }
+.pdf-audit-inventory-grid .ag-cell .btn { min-height: 28px; padding: 2px 4px; font-size: 12px; }
 .pdf-audit-proof { margin-top: 1rem; }
 .pdf-audit-proof-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .pdf-audit-proof code { overflow-wrap: anywhere; }

@@ -6,9 +6,10 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const profile = fs.mkdtempSync(join(tmpdir(), 'ivme-pdf-audit-'));
+const siteUrl = process.env.IVME_UI_URL || 'http://127.0.0.1:1010';
 const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', [
   '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
-  '--no-first-run', '--disable-gpu', 'about:blank'], { stdio: 'ignore', windowsHide: true });
+  '--no-first-run', '--disable-gpu', '--window-size=1440,900', 'about:blank'], { stdio: 'ignore', windowsHide: true });
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 let socket;
 try {
@@ -53,7 +54,7 @@ try {
   };
   await cdp('Runtime.enable');
   await cdp('Page.enable');
-  await cdp('Page.navigate', { url: 'http://127.0.0.1:1010/' });
+  await cdp('Page.navigate', { url: `${siteUrl}/` });
   await wait('document.readyState === "complete"');
   const login = await evalJs(`(async () => {
     await fetch('/api/auth/me');
@@ -61,7 +62,7 @@ try {
     return (await fetch('/api/auth/dev-login', {method:'POST',headers:{'X-XSRF-TOKEN':token}})).status;
   })()`);
   assert.equal(login, 200);
-  await cdp('Page.navigate', { url: 'http://127.0.0.1:1010/dersler-ve-konular/pdf-envanteri' });
+  await cdp('Page.navigate', { url: `${siteUrl}/dersler-ve-konular/pdf-envanteri` });
   await wait('document.body.innerText.includes("PDF envanteri") && document.querySelectorAll(".ag-row").length > 0');
   const initial = await evalJs('document.body.innerText');
   assert.match(initial, /2\.693 fiziksel PDF/);
@@ -70,11 +71,21 @@ try {
   assert.match(initial, /İşlendi \(kapsam açık\)/);
   assert.match(initial, /İşlenmedi \/ doğrulanmadı/);
   assert.match(initial, /Arşivde/);
+  const layout = await evalJs(`(() => {
+    const grid = document.querySelector('.pdf-audit-inventory-grid');
+    const viewport = grid.querySelector('.ag-body-horizontal-scroll-viewport');
+    return { pdfWidth: grid.querySelector('.ag-header-cell[col-id="title"]').getBoundingClientRect().width,
+      viewportWidth: viewport.clientWidth, contentWidth: viewport.scrollWidth };
+  })()`);
+  assert.equal(layout.pdfWidth, 87);
+  assert.ok(layout.contentWidth <= layout.viewportWidth + 1, `Inventory needs horizontal scrolling: ${JSON.stringify(layout)}`);
   await evalJs(`(() => { const bar = document.querySelector('.ag-body-horizontal-scroll-viewport');
     bar.scrollLeft = bar.scrollWidth; bar.dispatchEvent(new Event('scroll')); return true; })()`);
   await wait(`[...document.querySelectorAll('button')].some(button => button.textContent.trim() === 'Göster')`);
   await evalJs(`[...document.querySelectorAll('button')].find(button => button.textContent.trim() === 'Göster').click()`);
   await wait('document.body.innerText.includes("Soru çıkarma listesine al")');
+  assert.equal(await evalJs(`(() => { const top = document.querySelector('.pdf-audit-proof').getBoundingClientRect().top;
+    return top >= 0 && top < innerHeight; })()`), true, 'Proof should be visible after opening');
   const proof = await evalJs('document.body.innerText');
   assert.match(proof, /hash kontrolü: doğrulandı/);
   assert.match(proof, /PDF sayfası/);
