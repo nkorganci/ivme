@@ -108,6 +108,7 @@ NEW={
 # Source readings of rejected model MATCH / UNCERTAIN proposals. Topic overlap
 # alone cannot consume a source occurrence; these stems/options are different.
 NEW.update({
+ 'pdf-c76d197b9be672bc-p0005-q01':('TYT','felsefe','Ahlak Felsefesinde İyilik ve Mutluluk İlişkisi','Özgün soru kırpımı görsel olarak okundu: istem “Bu parça, ahlak felsefesinin temel sorularından hangisine bir cevap içermektedir?” biçiminde tamdır. Metin çıkarımında cevap sözcüğü eksik olsa da değişmemiş kaynak görselinde vardır. Aristoteles en yüksek iyiyi mutluluk ve eylemin amacı olarak açıklar; modelin eşlediği diğer soru farklı kök ve seçenekler içeriyor; E.'),
  'pdf-151f191151598d03-p0042-q01':('AYT','tarih','Dünyanın Muhteşem Gücü Osmanlı','Kanuni döneminde Hristiyan birliğini parçalamak için Fransa ile ittifak kurulmuştur; bankadaki amaçları soran farklı öncüllü soruyla birleştirilmedi; B.'),
  'pdf-2ec8d5e0c0c4d44c-p0054-q01':('AYT','tarih','Ekonomi Alanındaki Gelişmeler','1933 ve tekstil/ayakkabı fabrikaları Sümerbankı tanımlar. Banka adayı 1935 madencilik bankasını sorar; farklı kök ve seçenekler; C.'),
  'pdf-4a2f5f617534b7d5-p0045-q01':('TYT','tarih','Boylardan Devlete','Bilge Kağanın yoksulu zengin ve az milleti çok kılma sözü sosyal devlettir. Bankadaki alıntıdan sonuç çıkarma sorusundan farklı kök ve beş seçenek var; B.'),

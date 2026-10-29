@@ -90,7 +90,7 @@ def validate_link(row,card,package_path,question,bank_text,bank_image_sha):
         from pdf_slide_link_review import FIELDS,READINGS
         frozen=READINGS.get(card['code'])
         signature=hashlib.sha256(json.dumps({key:row[key] for key in FIELDS},ensure_ascii=False,sort_keys=True).encode()).hexdigest()
-        if not frozen or frozen['reviewedPairSha256']!=signature or frozen['canonicalCode']!=row['canonicalCode'] or row['sourceReading']!=frozen['sourceReading']:
+        if not frozen or frozen['reviewedPairSha256']!=signature or frozen['canonicalCode']!=row['canonicalCode'] or row['sourceReading']!=frozen['sourceReading'] or row.get('matchType')!=frozen.get('matchType','REVIEWED_PARAPHRASE'):
             raise ValueError('No explicit reading for these exact source and bank bytes')
         if card['answer']!=question['correct_answer']:raise ValueError('A reading cannot silently correct an answer')
     else:raise ValueError('Unverified source link')

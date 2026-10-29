@@ -250,6 +250,30 @@ READINGS={
     "canonicalCode": "AYT_EsitAgirlik-0259",
     "reviewedPairSha256": "30f55a1113cf66d05fa84529f36205f4491827556136c33f2f3447fd4003fefc",
     "sourceReading": "Mehmed/Mehmet yazımı ve kaynak sınav başlığı dışında kök, beş seçenek ve C aynı."
+  },
+  "pdf-58b5cf6a90bea871-p0013-q01": {
+    "canonicalCode": "sb-29750",
+    "reviewedPairSha256": "294bde667b1a0f5370808b947abe4b159d99100b2d4eb2697b75c4e8111bdfc2",
+    "sourceReading": "Sanayi Devrimi ve toplumsal değişimin felsefeyi etkilemesi kökü aynı. B çeldiricisi bilim etkisizdir/bilim ilerlemeyi engeller olarak revize edilmiş; ikisi de parçadan çıkmaz. Diğer dört seçenek, sorulan çıkarım ve E aynı; özgün varyant kaynakta korunarak tek banka sorusuna bağlanır.",
+    "matchType": "DISTRACTOR_VARIANT"
+  },
+  "pdf-5cda8723d5df6177-p0023-q01": {
+    "canonicalCode": "sb-29826",
+    "reviewedPairSha256": "c6b39ba34ef5620f24b53cccb6341ec2467e6fa07eca2b4694a0ea68d377a7f5",
+    "sourceReading": "Ütopya kökü ve doğru D aynı. A çeldiricisi var olan devletleri belirlemek/betimlemek olarak revize edilmiş; kök ise var olmayan ideal devlet tasarımıdır. B,C,E de aynı; bu çeldirici varyantı ikinci soru olarak eklenmez.",
+    "matchType": "DISTRACTOR_VARIANT"
+  },
+  "pdf-d77db725f41ce027-p0017-q01": {
+    "canonicalCode": "sb-2470",
+    "reviewedPairSha256": "341453f32ad54b99ece6c7ffa6e2bc182f6743d7ddb7c4467a821a500f8394a7",
+    "sourceReading": "Nurettin Topçunun iç ve toplumsal esarete isyan kökü aynı; doğru A aynı. D ve E çeldiricileri yeniden yazılmıştır. Kök hiçbirinde bireysel iradenin kendini/toplumsal iradeyi yok etmesini ya da toplumdan kopma/bağlılık arzusunu savunmaz; doğru yargı değişmez. Kaynak varyantı korunur, tekrar banka kaydı oluşmaz.",
+    "matchType": "DISTRACTOR_VARIANT"
+  },
+  "pdf-d77db725f41ce027-p0044-q01": {
+    "canonicalCode": "3a-tyt-felsefe-74-12",
+    "reviewedPairSha256": "82c4e6ab079ea267ba2b4c4f3ebb48d0945eff01bd718687c492a222c0a27e00",
+    "sourceReading": "Popperın yanlışlanabilirlik kökü aynı ve doğru D aynı; D ifadesindeki yüklem düzeni anlamı değiştirmez. E çeldiricisinin banka nüshasında duyu verilerinin tek kaynak oluşu ek iddiası vardır, iki E de Popper için yanlıştır. Kaynak altlığı seçenek dışındaki sunu başlığıdır; varyant korunur, yeni soru eklenmez.",
+    "matchType": "DISTRACTOR_VARIANT"
   }
 }
 
@@ -265,7 +289,7 @@ def main():
         if row['sourceAnswer']!=row['bankAnswer'] or row['teacherApproved'] is not False:
             raise ValueError('Manual link does not authorize answer changes or teacher approval')
         accepted={**row,'status':'VERIFIED_SOURCE_CONTENT_READING','reviewMethod':'SOURCE_AND_BANK_CONTENT_READING',
-            'matchType':'REVIEWED_PARAPHRASE','sourceReading':review['sourceReading'],'reviewedPairSha256':signature}
+            'matchType':review.get('matchType','REVIEWED_PARAPHRASE'),'sourceReading':review['sourceReading'],'reviewedPairSha256':signature}
         accepted['reviewSha256']=hashlib.sha256(json.dumps(accepted,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
         verified.append(accepted)
     write_json(OUT/'slide-verified-links.json',{'verifiedLinks':verified,'needsReview':pending,
