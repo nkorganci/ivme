@@ -52,6 +52,10 @@ export function resourceDraft(input) {
     reason:'Yeni kaynağın konu ve konumu bağımsız inceleme bekliyor.',pages:[]};
   const errors=validateResource(item,categoriesById);
   if(errors.length)throw Error(errors.join('; '));
+  item.categoryIds=item.automaticLabels.assignments.map(a=>a.categoryId);
+  item.subjectIds=[...new Set(item.categoryIds.map(id=>categoriesById.get(id).subjectId))];
+  item.examIds=[...new Set(item.categoryIds.map(id=>categoriesById.get(id).exam))];
+  if(input.kind==='QUESTION')item.resourceRole=item.studentVisible?'ACTIVE_QUESTION':'ARCHIVE_QUESTION';
   return item;
 }
 if(process.argv[1] && fileURLToPath(import.meta.url)===process.argv[1]) {

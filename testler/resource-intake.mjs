@@ -5,6 +5,9 @@ assert.equal(q.questionCode,'INTAKE-PILOT');assert.equal(q.key,'question:INTAKE-
 assert.equal(q.automaticLabels.assignments[0].confidence,'LOW');
 assert.equal(q.manualReview.status,'NEEDS_MANUAL_REVIEW');assert.equal(q.correctAnswer,undefined);
 assert.ok(q.automaticLabels.assignments[0].categoryId);
+assert.deepEqual(q.categoryIds,q.automaticLabels.assignments.map(a=>a.categoryId));
+assert.deepEqual(q.subjectIds,['matematik']);assert.deepEqual(q.examIds,['TYT']);
+assert.equal(q.resourceRole,'ACTIVE_QUESTION');
 assert.throws(()=>resourceDraft({kind:'QUESTION',exam:'TYT',code:'q',subject:'Fizik',categoryIds:['invented-category']}));
 const base={kind:'PDF',exam:'TYT',key:'pdf:intake-pilot',subject:'Fizik',topic:'Hareket ve kuvvet',pageCount:3,url:'/api/learning-resources/pdf/1'};
 const pdf=resourceDraft(base);assert.equal(pdf.availability,'unverified');

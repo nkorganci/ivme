@@ -6,19 +6,40 @@ dosyaları `veri/` altında Git dışındadır; yerelde yoksa belirtilen betikle
 
 ## 12.01 — Kaynak/cevap düzeltmelerini ve resmî arşiv farklarını kapat
 
-Durum: `BEKLIYOR_KAYNAK_KARARI`. Kaynak/alan kanıtı olmadan cevap, soru kimliği veya
+Durum: `YKS_PDF_UZLASTIRMA_SURUYOR`. Kaynak/alan kanıtı olmadan cevap, soru kimliği veya
 geçmiş puan değiştirilemez.
 
 **PDF–banka kapsamı.** `Dersler > PDF envanteri` kesin dosya–hash–soru kodu–sayfa
-bağlarını gösterir ([denetim raporu](../../veri/content-labels/integration/pdf-bank-audit-20261024/report.json),
-üretici `scripts/pdf-bank-audit.py`). Bağı doğrulanmayan soru/deneme kayıtlarının çoğu
-çevrim içi OGM Soru Bankası okul PDF'sidir; bunların gerçekten eksik olup olmadığı sayfa
-ve görsel karşılaştırmasıyla belirlenir. Ayrıca iki fiziksel kaynak açıktır:
+bağlarını ve kanıtlı tamlık durumunu hash tabanlı DB kaydından gösterir.
+`scripts/pdf_source_reconcile.py` ve `veri/pdf-source-registry/report.json` güncel
+uzlaştırmadır; ilk `pdf-bank-audit.py` anlık kaydı tarihsel girdi olarak korunur.
+[İşlem sırası](../islemler/pdf-kapsam-uzlastirma.md) yalnız TYT/AYT kapsamındadır.
+
+- Ders notları dahil bütün kaynaklardaki soru bölgelerini, eksik metinli banka
+  görsellerinin OCR'ı ile karşılaştır; mevcut soruya aynı dosya konumundan tekrar
+  banka kaydı oluşturma. Seçenek sırası/varyant farkını eşleşme kanıtında koru.
+- Kaynağı kesin bağlanmayan banka sorularını kaynak kanıtıyla çöz; başlık benzerliğini
+  kesin dosya bağı sayma. Soru içeren ders notlarını ortak `KARMA` biçiminde göster.
+- Yeni soru kabulünde basılı cevap, doğru sınav/ders/kontrollü konu, bütün kırpım ve
+  mevcut banka ile tekrar denetimi birlikte geçsin. Kaynak eksikse durumu açık kalsın.
+- `Bütün sorular alındı` yalnız tam döküm ve değişmemiş banka bağıyla verilsin;
+  kaynak/model hash'i değişmedikçe tamamlanmış inceleme yeniden model çalıştırmasın.
+
+İlk açık çıkarım örnekleri:
 
 - `YKS Kampi - TYT Kitabi.pdf`: mevcut kuru çıkarım güvenilir değil (çok sayıda hata/uyumsuzluk).
 - `YKS Mini Deneme - Test 04.pdf`: `scripts/pdf-question-candidates.py` 60 soru/60 görsel
-  adayı üretti (`veri/content-labels/pdf-extraction/mini-test-04/candidates.json`); bankaya
-  alınmadan önce bütün görseller, ders/sınav etiketi ve mevcut sorularla benzerlik incelenir.
+  paketinin kaynak okuması, kontrollü konu ve tekrar incelemesi kabul edildi.
+  Mevcut sorulara bağlar ve yeni sorular `pdf_question_accept.py` üzerinden kalıcıdır;
+  kabul kanıtı `veri/pdf-source-registry/acceptance/<sourceSha256>/` altındadır.
+- Ders sunularındaki eşleşmiş soru/cevap paketleri `slide-candidates/` altında;
+  `slide-review-proposals.json` model taraması tamamlandı. İncelenmiş kabul kararları
+  `slide-content-review.json`, mevcut bankaya doğrulanmış bağlar
+  `slide-verified-links.json` / `raw-verified-links.json` içindedir. Kalan kaynak
+  hatası, konu boşluğu ve çeldirici varyantı gerekçelerini çöz; ham model önerisini
+  kabul kararı sayma. Yeni banka değişiminden sonra karşılaştırmayı tazele.
+- Kaynakta da gövdesi olmayan sorular seçimlerden ayrılmıştır. Kaynak onarımı
+  gelmeden bu kayıtları yeniden etkinleştirme; `question_source_issues` kanıtını koru.
 
 Yeni soru çıkarımı önce `python scripts/ivme.py pdf sorular <pdf>` ile metin katmanından
 yapılır; mevcut cevap/kırpım doğrulama ve kaynak kabul hattından geçer. Yalnız başlık veya

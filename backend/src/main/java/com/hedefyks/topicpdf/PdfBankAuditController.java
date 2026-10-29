@@ -34,14 +34,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class PdfBankAuditController {
     private final JdbcTemplate jdbc;
     private final ObjectMapper mapper;
-    private final Path candidateDir;
+    private final Path appRoot;
+    private final PdfSourceRegistry sourceRegistry;
 
-    public PdfBankAuditController(ObjectMapper mapper, JdbcTemplate jdbc) {
+    public PdfBankAuditController(ObjectMapper mapper, JdbcTemplate jdbc, PdfSourceRegistry sourceRegistry) {
         this.mapper = mapper;
         this.jdbc = jdbc;
+        this.sourceRegistry = sourceRegistry;
         Path cwd = Path.of("").toAbsolutePath();
         Path root = Files.isDirectory(cwd.resolve("backend")) ? cwd : cwd.getParent();
-        this.candidateDir = root.resolve("veri/content-labels/pdf-extraction/mini-test-04").normalize();
+        this.appRoot = root.normalize();
     }
 
     private JsonNode parse(String json) {
@@ -63,6 +65,7 @@ public class PdfBankAuditController {
 
     @GetMapping
     public Map<String, Object> list() {
+        if (sourceRegistry.available()) return sourceRegistry.list();
         JsonNode audit = audit();
         boolean current = currentBank(audit);
         Map<Integer, String> work = new LinkedHashMap<>();
@@ -96,9 +99,14 @@ public class PdfBankAuditController {
     }
 
     private boolean currentBank(JsonNode audit) {
+        if (sourceRegistry.available()) return jdbc.queryForObject("""
+                SELECT count(*) FROM questions q LEFT JOIN learning_catalog.question_source_registry r ON r.question_code=q.code
+                WHERE q.active AND q.exam_type IN ('TYT','AYT')
+                  AND r.source_stamp IS DISTINCT FROM extract(epoch FROM q.updated_at)::text
+                """, Long.class) == 0;
         Map<String, Object> bank = jdbc.queryForMap("""
                 SELECT count(*) FILTER (WHERE active) AS active_count,
-                  extract(epoch from max(updated_at))::text AS max_updated_at FROM questions
+                  extract(epoch from max(updated_at))::text AS max_updated_at FROM questions WHERE exam_type IN ('TYT','AYT')
                 """);
         return ((Number) bank.get("active_count")).longValue() == audit.path("liveQuestionCount").asLong()
                 && audit.path("bankMaxUpdatedAt").asText().equals(bank.get("max_updated_at"));
@@ -106,17 +114,62 @@ public class PdfBankAuditController {
 
     @GetMapping("/{id}/proof")
     public JsonNode proof(@PathVariable int id) {
-        return row(id);
+        JsonNode original = row(id);
+        return sourceRegistry.available() ? sourceRegistry.proof(id, original) : original;
+    }
+
+    private Path candidateDirectory(int id) {
+        String sha = row(id).path("sha256").asText();
+        List<String> references = jdbc.queryForList("""
+                SELECT s.coverage_evidence->>'candidatePackage' FROM learning_catalog.pdf_sources s
+                JOIN learning_catalog.pdf_source_catalog c USING(source_sha256) WHERE c.catalog_id=?
+                """, String.class, id);
+        String reference = references.isEmpty() ? null : references.get(0);
+        if (reference == null && (id == 335 || id == 349))
+            reference = "veri/content-labels/pdf-extraction/mini-test-04/candidates.json";
+        if (reference == null || !(reference.equals("veri/content-labels/pdf-extraction/mini-test-04/candidates.json")
+                || sha.matches("[a-f0-9]{64}") && reference.equals("veri/pdf-source-registry/slide-candidates/" + sha + "/candidates.json")))
+            throw ApiException.notFound("PDF soru adayı bulunamadı.");
+        return appRoot.resolve(reference).getParent();
     }
 
     private JsonNode candidatePackage(int id) {
-        if (id != 335 && id != 349) throw ApiException.notFound("PDF soru adayı bulunamadı.");
         try {
-            JsonNode packageData = mapper.readTree(candidateDir.resolve("candidates.json").toFile());
+            JsonNode packageData = mapper.readTree(candidateDirectory(id).resolve("candidates.json").toFile());
             if (!packageData.path("sourceSha256").asText().equals(row(id).path("sha256").asText())
                     || packageData.path("questionCount").asInt() != packageData.path("cards").size())
                 throw ApiException.conflict("Aday soru paketi kaynakla uyuşmuyor.");
-            return packageData;
+            var result = (com.fasterxml.jackson.databind.node.ObjectNode) packageData.deepCopy();
+            Map<String,Map<String,Object>> matches = new LinkedHashMap<>();
+            for (Map<String,Object> occurrence : jdbc.queryForList("""
+                    SELECT o.locator_key,CASE WHEN o.status='LINKED' AND o.evidence->>'sourceStamp'
+                      IS DISTINCT FROM extract(epoch FROM q.updated_at)::text THEN 'NEEDS_REVIEW' ELSE o.status END status,
+                      o.question_code,q.correct_answer,
+                      CASE WHEN o.status='LINKED' AND o.evidence->>'sourceStamp' IS DISTINCT FROM extract(epoch FROM q.updated_at)::text
+                        THEN 'Banka kaydı karşılaştırmadan sonra değişti; kaynak bağı yeniden denetlenmeli.'
+                        ELSE coalesce(o.evidence#>>'{sourceQualityReview,sourceReading}',o.evidence->>'sourceReading') END source_review_note,
+                      jsonb_exists(o.evidence,'answerCorrection') answer_corrected FROM learning_catalog.pdf_question_occurrences o
+                    LEFT JOIN questions q ON q.code=o.question_code WHERE o.source_sha256=?
+                    """,packageData.path("sourceSha256").asText()))
+                matches.put((String)occurrence.get("locator_key"),occurrence);
+            int linked = 0, excluded = 0;
+            for (JsonNode value : result.path("cards")) {
+                var card = (com.fasterxml.jackson.databind.node.ObjectNode)value;
+                Map<String,Object> match = matches.get("raw:"+card.path("code").asText());
+                String status = match == null ? "CANDIDATE" : (String)match.get("status");
+                card.put("bankStatus",status);
+                if(match != null && match.get("question_code") != null)card.put("canonicalCode",match.get("question_code").toString());
+                if(match != null && match.get("correct_answer") != null)card.put("bankAnswer",match.get("correct_answer").toString());
+                card.put("sourceAnswerCorrected",match != null && Boolean.TRUE.equals(match.get("answer_corrected")));
+                if(match != null && match.get("source_review_note") != null)card.put("sourceReviewNote",match.get("source_review_note").toString());
+                else if("EXCLUDED".equals(status))card.put("sourceReviewNote","Bu sınav örneği YKS aktarım kapsamı dışında.");
+                if("LINKED".equals(status))linked++;
+                if("EXCLUDED".equals(status))excluded++;
+            }
+            result.put("linkedCount",linked);
+            result.put("excludedCount",excluded);
+            result.put("pendingCount",result.path("cards").size()-linked-excluded);
+            return result;
         } catch (ApiException exception) {
             throw exception;
         } catch (Exception exception) {
@@ -138,6 +191,7 @@ public class PdfBankAuditController {
             if (card == null) throw ApiException.notFound("Aday soru görseli bulunamadı.");
             String file = card.path("image").asText();
             if (!file.matches("[a-z0-9-]+\\.webp")) throw ApiException.notFound("Aday soru görseli bulunamadı.");
+            Path candidateDir = candidateDirectory(id);
             Path image = candidateDir.resolve(file).normalize();
             if (!image.startsWith(candidateDir) || !Files.isRegularFile(image))
                 throw ApiException.notFound("Aday soru görseli bulunamadı.");
@@ -171,26 +225,33 @@ public class PdfBankAuditController {
             throw ApiException.badRequest("İşlem türü geçersiz.");
         if (!row.path("sha256").asText().equals(request.sourceSha256()))
             throw ApiException.conflict("PDF kaynağı değişmiş; tabloyu yenileyin.");
+        if (request.sourceSha256().isBlank()) throw ApiException.badRequest("Fiziksel PDF kimliği bulunamadı.");
+        if ("EXTRACT".equals(request.action()) && sourceRegistry.available() && sourceRegistry.complete(request.sourceSha256()))
+            throw ApiException.conflict("Bu PDF’nin soru çıkarım denetimi tamamlanmış; yeniden çıkarım gerekmiyor.");
         if (!jdbc.queryForList("SELECT source_sha256 FROM learning_catalog.pdf_archive WHERE source_sha256=?",
                 String.class, request.sourceSha256()).isEmpty())
             throw ApiException.conflict("PDF zaten arşivde.");
         if ("EXTRACT".equals(request.action()) && !row.path("available").asBoolean())
             throw ApiException.conflict("Kaynak PDF bulunamadı.");
+        Integer canonicalId = jdbc.queryForObject("SELECT coalesce(min(catalog_id),?) FROM learning_catalog.pdf_source_catalog WHERE source_sha256=?",
+                Integer.class, id, request.sourceSha256());
         jdbc.update("""
                 INSERT INTO learning_catalog.pdf_work_queue(catalog_id,source_sha256,action,requested_by)
-                VALUES (?,?,?,?) ON CONFLICT(catalog_id) DO UPDATE SET
-                  source_sha256=excluded.source_sha256,action=excluded.action,
+                VALUES (?,?,?,?) ON CONFLICT(source_sha256) WHERE source_sha256<>'' DO UPDATE SET
+                  catalog_id=excluded.catalog_id,action=excluded.action,
                   status='REQUESTED',requested_by=excluded.requested_by,
                   requested_at=now(),updated_at=now()
-                """, id, request.sourceSha256(), request.action(), user.id());
+                """, canonicalId, request.sourceSha256(), request.action(), user.id());
         return Map.of("action", request.action());
     }
 
     @DeleteMapping("/{id}/work")
     public Map<String, String> cancelWork(@PathVariable int id,
             @AuthenticationPrincipal AppUserDetails user) {
-        row(id);
-        jdbc.update("DELETE FROM learning_catalog.pdf_work_queue WHERE catalog_id=? AND status='REQUESTED'", id);
+        JsonNode source=row(id);
+        if (source.path("sha256").asText().isBlank())
+            jdbc.update("DELETE FROM learning_catalog.pdf_work_queue WHERE catalog_id=? AND status='REQUESTED'", id);
+        else jdbc.update("DELETE FROM learning_catalog.pdf_work_queue WHERE source_sha256=? AND status='REQUESTED'", source.path("sha256").asText());
         return Map.of("action", "");
     }
 }

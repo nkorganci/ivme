@@ -13,6 +13,7 @@
 | Yerel üretim adayı | `veri/content-labels/labels.json` ve `report.json` | Üretilmiş çıktı; elle düzeltilmez, yayımlanmış sürümle aynı olduğu varsayılmaz |
 | Öğretmen kararı | `content_reviews` ve `content_review_history` | Kaynak/görsel/kategori değişimi onayı eskitebilir; otomatik etiket yayını kararı değiştirmez |
 | Soru, cevap ve öğrenci geçmişi | İlgili soru/çalışma/sınav tabloları | Etiket üretimi bu verileri değiştirmez; ilk deneme ve anlık kayıt korunur |
+| YKS PDF dosya kimliği, sayfalar ve soru kapsamı | `learning_catalog.pdf_sources` ve kaynak konumu ilişkileri | Aynı SHA-256 tek dosya kimliğidir; katalog kopyaları ve farklı PDF'lerdeki aynı banka sorusu tekil banka toplamına eklenmez |
 | Görev ve devam noktası | Açık numaralı adımlar ve `devam.md` | Başka bir eksikler veya yapılanlar listesi açılmaz |
 | Sınav hedefleri (YKS, KPSS türleri) ve öğrencinin sınavı | Flyway `V79__exam_tracks.sql` tohum kaydı `exam_tracks`; durum, not, `sections` (test, ders soru sayısı, dakika) ve `ready_features` yeni göçle değişir | `GET /api/exam-tracks`; seçim `user_exam_tracks`. Menü tek; `ACTIVE` sınavın yalnız `ready_features` bölümleri açılır (boş liste: hepsi) |
 | KPSS sınavının ders/ünite/konu referansı ve çıkmış soru konu kararları | `Kaynaklar/KPPS/<Sınav>/Mufredat/*-konular.json` ve `Cikmis Sorular/siniflandirma/<yıl>.tsv` → `veri-hatti/<sınav>/derle.py` | `scripts/kpss-yayinla.py` ile `questions`, `exam_archive_positions` ve ortak katalog (`kpss-*` kategorileri). İşleme etiketi `ISLEME_DURUMU.json` |

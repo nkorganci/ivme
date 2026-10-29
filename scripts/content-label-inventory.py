@@ -35,6 +35,16 @@ def collect(connection=None):
     registered = {r["code"]: r for r in db}
     drafts = {}
     active_connection = connection or db_connection()
+    accepted_sources = {}
+    source_issues = {}
+    if query(active_connection,"SELECT to_regclass('learning_catalog.question_source_issues') IS NOT NULL")=="t":
+        source_issues={r['question_code']:r['issues'] for r in json.loads(query(active_connection,"""SELECT coalesce(json_agg(x),'[]') FROM
+          (SELECT question_code,json_agg(json_build_object('issueCode',issue_code,'status',status,'imageSha256',source_image_sha256,'evidence',evidence)) issues
+           FROM learning_catalog.question_source_issues WHERE status='QUARANTINED' GROUP BY question_code) x"""))}
+    if query(active_connection,"SELECT to_regclass('learning_catalog.question_source_registry') IS NOT NULL")=="t":
+        accepted_sources = {r['question_code']:r for r in json.loads(query(active_connection,"""SELECT coalesce(json_agg(x),'[]') FROM
+            (SELECT question_code,source_reference,evidence FROM learning_catalog.question_source_registry
+             WHERE evidence ? 'acceptanceReviewSha256') x"""))}
     if query(active_connection,"SELECT to_regclass('learning_catalog.question_intake') IS NOT NULL")=="t":
         drafts = {r['question_code']:r for r in json.loads(query(active_connection,"""SELECT coalesce(json_agg(x),'[]') FROM
             (SELECT question_code,source_stamp,resource FROM learning_catalog.question_intake) x"""))}
@@ -83,6 +93,14 @@ def collect(connection=None):
             "active": False, "id": None, "updated_at": None})
         row.update({"card": card, "original": source, "archive": archives.get(code, {}),
                     "manual": manual.get(code, {})})
+        if code in source_issues:row['sourceQualityIssues']=source_issues[code]
+        if code in accepted_sources and not source:
+            accepted = accepted_sources[code]
+            proof = accepted['evidence']
+            row['original'] = {'text':proof.get('sourceText',''),'heading':proof.get('topic',''),
+                'page':proof.get('page'),'file':proof.get('sourceFile'),
+                'rawRef':accepted['source_reference'],'questionNumbers':proof.get('printedNumbers',[]),
+                'image':row['image'],'bookReferences':[]}
         if official and not current:
             row['archiveSourceCard']={'year':official['yil'],'originalId':official.get('eski_id'),
                 'originalSlots':official.get('eski_yuvalar',[]),'composite':bool(official.get('ortak_parca_mi')),

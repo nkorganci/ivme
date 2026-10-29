@@ -109,6 +109,7 @@ for (const q of inventory.questions) {
   let branch=subjectIds[q.subject] || intake?.subjectId;
   if (!branch || !['TYT','AYT'].includes(exam)) throw new Error(`Unsupported source ${q.code}`);
   const reasons=[];
+  if(q.sourceQualityIssues?.length)reasons.push(...q.sourceQualityIssues.map(issue=>issue.issueCode));
   if(q.archiveSourceCard) reasons.push(q.archiveSourceCard.reason,'NEW_SOURCE_REQUIRES_REVIEW');
   const evidence=[];
   // Manual source corrections and published source metadata are retained separately from teacher approval.
@@ -214,7 +215,7 @@ for (const q of inventory.questions) {
     sourceMethod:card.yon || archived.evidence_type || 'SOURCE_RECORD',...(proposal?{analysisNote:proposal.note}: {})};
   items.push({key:`question:${q.code}`,kind:'QUESTION',exam,subjectId:branch,subject:branchNames.get(branch),
     title:q.code,topic:targets[0]?.topic || 'Dersin genel kapsamı',sourceTopic:q.topic || '',bank:q.bank,
-    studentVisible:!!q.active,availability:!q.active?'source_only':proposal?.sourceProblem && !q.renderedSourceRepair?'needs_repair':'available',
+    studentVisible:!!q.active,availability:q.sourceQualityIssues?.length?'needs_repair':!q.active?'source_only':proposal?.sourceProblem && !q.renderedSourceRepair?'needs_repair':'available',
     url:q.active?`/soru/${encodeURIComponent(q.code)}`:'',
     questionCode:q.code,sourceUpdatedAt:q.updated_at,
     ...(q.archiveSourceCard?{archiveSourceCard:q.archiveSourceCard}:{}),

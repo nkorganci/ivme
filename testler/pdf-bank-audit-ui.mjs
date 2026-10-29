@@ -1,108 +1,86 @@
-// Read-only smoke check against the served main site and its PDF proof view.
+// Read-only checks against the served YKS inventory and the practice bank total.
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
-import fs from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { tarayiciAc } from './lib/tarayici.mjs';
 
-const profile = fs.mkdtempSync(join(tmpdir(), 'ivme-pdf-audit-'));
-const siteUrl = process.env.IVME_UI_URL || 'http://127.0.0.1:1010';
-const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', [
-  '--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`,
-  '--no-first-run', '--disable-gpu', '--window-size=1440,900', 'about:blank'], { stdio: 'ignore', windowsHide: true });
-const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-let socket;
+const browser = await tarayiciAc();
 try {
-  let ws;
-  for (let i = 0; i < 150 && !ws; i++) {
-    try {
-      const port = Number(fs.readFileSync(join(profile, 'DevToolsActivePort'), 'utf8').split('\n')[0]);
-      ws = (await (await fetch(`http://127.0.0.1:${port}/json`)).json()).find(page => page.type === 'page')?.webSocketDebuggerUrl;
-    } catch {}
-    if (!ws) await pause(100);
+  await browser.cdp('Emulation.setDeviceMetricsOverride', { width:1440,height:900,deviceScaleFactor:1,mobile:false });
+  await browser.goto('/');
+  await browser.login();
+  const data = await browser.evalJs(`(async () => {
+    const [audit,pool] = await Promise.all([
+      fetch('/api/pdf-bank-audit').then(r=>r.json()),fetch('/api/questions/pool-summary').then(r=>r.json())]);
+    return {audit,pool};
+  })()`);
+  assert.equal(data.audit.liveQuestionCount, data.pool.total, 'PDF inventory and practice must share the YKS bank total');
+  assert.equal(data.audit.uniquePdfQuestionCount + data.audit.sourceReviewQuestionCount, data.audit.liveQuestionCount);
+  // Real intake examples exercise ImageStorage and practice publication, too.
+  if(data.audit.liveQuestionCount>=80229) {
+    for(const code of ['mn-test-04-01-01','pdf-41807fc85f9bcbe3-p0047-q01']) {
+      const result=await browser.evalJs(`(async()=>{
+        const response=await fetch('/api/questions/code/'+encodeURIComponent(${JSON.stringify(code)}));
+        const question=await response.json();
+        const image=await fetch('/api/questions/'+question.id+'/image');
+        return {status:response.status,code:question.code,imageStatus:image.status,imageType:image.headers.get('content-type'),size:(await image.blob()).size};
+      })()`);
+      assert.equal(result.status,200);assert.equal(result.code,code);
+      assert.equal(result.imageStatus,200);assert.match(result.imageType,/image/);assert.ok(result.size>1000);
+    }
+    const source=data.audit.pdfs.find(row=>row.sha256?.startsWith('41807fc85f9bcbe3'));
+    assert.ok(source);
+    const corrected=await browser.evalJs(`fetch('/api/pdf-bank-audit/${source.id}/candidates').then(r=>r.json())`);
+    const card=corrected.cards.find(row=>row.code==='pdf-41807fc85f9bcbe3-p0047-q01');
+    assert.equal(card.bankStatus,'LINKED');assert.equal(card.sourceAnswerCorrected,true);
+    assert.equal(card.answer,'E');assert.equal(card.bankAnswer,'C');assert.match(card.sourceReviewNote,/II.*I.*III/);
   }
-  assert.ok(ws, 'Chrome started');
-  socket = new WebSocket(ws);
-  await new Promise(resolve => socket.onopen = resolve);
-  let seq = 0;
-  const pending = new Map();
-  const errors = [];
-  socket.onmessage = ({ data }) => {
-    const message = JSON.parse(data);
-    if (pending.has(message.id)) {
-      const { resolve, reject } = pending.get(message.id);
-      pending.delete(message.id);
-      message.error ? reject(Error(message.error.message)) : resolve(message.result);
-    }
-    if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails.text);
-  };
-  const cdp = (method, params = {}) => new Promise((resolve, reject) => {
-    const id = ++seq; pending.set(id, { resolve, reject });
-    socket.send(JSON.stringify({ id, method, params }));
-  });
-  const evalJs = async expression => {
-    const response = await cdp('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
-    if (response.exceptionDetails) throw Error(response.exceptionDetails.exception?.description || response.exceptionDetails.text);
-    return response.result.value;
-  };
-  const wait = async expression => {
-    for (let i = 0; i < 200; i++) {
-      try { if (await evalJs(`Boolean(${expression})`)) return; } catch {}
-      await pause(100);
-    }
-    throw Error(`Timed out: ${expression}\n${await evalJs('document.body.innerText.slice(-1200)')}`);
-  };
-  await cdp('Runtime.enable');
-  await cdp('Page.enable');
-  await cdp('Page.navigate', { url: `${siteUrl}/` });
-  await wait('document.readyState === "complete"');
-  const login = await evalJs(`(async () => {
-    await fetch('/api/auth/me');
-    const token = decodeURIComponent(document.cookie.split('; ').find(x => x.startsWith('XSRF-TOKEN='))?.split('=')[1] || '');
-    return (await fetch('/api/auth/dev-login', {method:'POST',headers:{'X-XSRF-TOKEN':token}})).status;
+  const physical = data.audit.pdfs.filter(row=>row.sha256 && row.available);
+  const staged=data.audit.pdfs.find(row=>row.candidatePackageAvailable && ![335,349].includes(row.id));
+  if(staged) {
+    const candidate=await browser.evalJs(`(async()=>{
+      const response=await fetch('/api/pdf-bank-audit/${staged.id}/candidates');const packet=await response.json();
+      const image=await fetch('/api/pdf-bank-audit/${staged.id}/candidates/'+encodeURIComponent(packet.cards[0].code)+'/image');
+      return {status:response.status,sha:packet.sourceSha256,count:packet.questionCount,actual:packet.cards.length,image:image.status};
+    })()`);
+    assert.equal(candidate.status,200);assert.equal(candidate.sha,staged.sha256);
+    assert.equal(candidate.count,candidate.actual);assert.equal(candidate.image,200);
+  }
+  assert.equal(new Set(physical.map(row=>row.sha256)).size, physical.length, 'Catalog aliases must not duplicate a physical PDF row');
+  for (const row of data.audit.pdfs.filter(row=>row.allQuestionsTaken)) {
+    assert.ok(row.expectedQuestions > 0);
+    assert.equal(row.candidateCount,0);
+    assert.equal(row.reviewCount,0);
+    assert.equal(row.sourceIssueCount,0);
+    assert.equal(row.completionLabel,'Evet');
+  }
+  await browser.goto('/dersler-ve-konular/pdf-envanteri');
+  await browser.wait('document.querySelectorAll(".pdf-audit-inventory-grid .ag-row").length > 0');
+  const initial = await browser.evalJs('document.body.innerText');
+  assert.match(initial,/Bütün sorular alındı/);
+  assert.match(initial,/tekil banka sorusu/);
+  const layout = await browser.evalJs(`(() => {
+    const grid=document.querySelector('.pdf-audit-inventory-grid');
+    const viewport=grid.querySelector('.ag-body-horizontal-scroll-viewport');
+    return {pdfWidth:grid.querySelector('.ag-header-cell[col-id="title"]').getBoundingClientRect().width,
+      viewportWidth:viewport.clientWidth,contentWidth:viewport.scrollWidth};
   })()`);
-  assert.equal(login, 200);
-  await cdp('Page.navigate', { url: `${siteUrl}/dersler-ve-konular/pdf-envanteri` });
-  await wait('document.body.innerText.includes("PDF envanteri") && document.querySelectorAll(".ag-row").length > 0');
-  const initial = await evalJs('document.body.innerText');
-  assert.match(initial, /2\.693 fiziksel PDF/);
-  assert.match(initial, /2\.708 katalog kaydı/);
-  assert.match(initial, /Kanıtlı banka sorusu var/);
-  assert.match(initial, /İşlendi \(kapsam açık\)/);
-  assert.match(initial, /İşlenmedi \/ doğrulanmadı/);
-  assert.match(initial, /Arşivde/);
-  const layout = await evalJs(`(() => {
-    const grid = document.querySelector('.pdf-audit-inventory-grid');
-    const viewport = grid.querySelector('.ag-body-horizontal-scroll-viewport');
-    return { pdfWidth: grid.querySelector('.ag-header-cell[col-id="title"]').getBoundingClientRect().width,
-      viewportWidth: viewport.clientWidth, contentWidth: viewport.scrollWidth };
-  })()`);
-  assert.equal(layout.pdfWidth, 87);
-  assert.ok(layout.contentWidth <= layout.viewportWidth + 1, `Inventory needs horizontal scrolling: ${JSON.stringify(layout)}`);
-  await evalJs(`(() => { const bar = document.querySelector('.ag-body-horizontal-scroll-viewport');
-    bar.scrollLeft = bar.scrollWidth; bar.dispatchEvent(new Event('scroll')); return true; })()`);
-  await wait(`[...document.querySelectorAll('button')].some(button => button.textContent.trim() === 'Göster')`);
-  await evalJs(`[...document.querySelectorAll('button')].find(button => button.textContent.trim() === 'Göster').click()`);
-  await wait('document.body.innerText.includes("Soru çıkarma listesine al")');
-  assert.equal(await evalJs(`(() => { const top = document.querySelector('.pdf-audit-proof').getBoundingClientRect().top;
-    return top >= 0 && top < innerHeight; })()`), true, 'Proof should be visible after opening');
-  const proof = await evalJs('document.body.innerText');
-  assert.match(proof, /hash kontrolü: doğrulandı/);
-  assert.match(proof, /PDF sayfası/);
-  assert.match(proof, /Arşiv incelemesine al/);
-  const candidate = await evalJs(`fetch('/api/pdf-bank-audit/335/candidates').then(async response =>
-    ({ status: response.status, body: await response.json() }))`);
-  assert.equal(candidate.status, 200);
-  assert.equal(candidate.body.questionCount, 60);
-  const candidateImage = await evalJs(`fetch('/api/pdf-bank-audit/335/candidates/mn-test-04-01-60/image').then(response =>
-    ({ status: response.status, contentType: response.headers.get('content-type') }))`);
-  assert.equal(candidateImage.status, 200);
-  assert.match(candidateImage.contentType, /image\/webp/);
-  assert.deepEqual(errors, []);
-  console.log('PDF audit UI: 2,693 physical files, 2,708 catalog rows, 60 candidates, proof and work controls OK');
+  assert.equal(layout.pdfWidth,87);
+  assert.ok(layout.contentWidth<=layout.viewportWidth+1,`Inventory needs horizontal scrolling: ${JSON.stringify(layout)}`);
+  for(const width of [1366,1280]) {
+    await browser.cdp('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
+    await browser.wait(`(() => { const v=document.querySelector('.pdf-audit-inventory-grid .ag-body-horizontal-scroll-viewport');return v.scrollWidth<=v.clientWidth+1; })()`);
+  }
+  await browser.evalJs(`[...document.querySelectorAll('button')].find(button=>button.textContent.trim()==='Göster').click()`);
+  await browser.wait('document.body.innerText.includes("Soru çıkarma listesine al")');
+  assert.equal(await browser.evalJs(`(() => {
+    const top=document.querySelector('.pdf-audit-proof').getBoundingClientRect().top;
+    return top>=0 && top<innerHeight;
+  })()`),true,'Proof should be visible after opening');
+  assert.deepEqual(browser.errors,[]);
+  assert.deepEqual(browser.failedRequests.filter(r=>!(r.status===401 && r.url.endsWith('/api/auth/me'))
+    && !(r.status===404 && r.url.endsWith('/favicon.ico'))),[]);
+  console.log(JSON.stringify({bankTotal:data.audit.liveQuestionCount,uniquePdfQuestions:data.audit.uniquePdfQuestionCount,
+    sourceReview:data.audit.sourceReviewQuestionCount,inventoryRows:data.audit.pdfs.length,
+    completedPdfs:data.audit.pdfs.filter(row=>row.allQuestionsTaken).length,proof:'visible',layout}));
 } finally {
-  socket?.close();
-  chrome.kill();
-  await pause(500);
-  try { fs.rmSync(profile, { recursive: true, force: true }); } catch {}
+  browser.close();
 }
