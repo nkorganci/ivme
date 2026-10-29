@@ -65,20 +65,41 @@ def ocr_model():
 
 
 def read_evidence_scan(sha, for_review=False):
-    from pdf_ocr_cache import read_page
+    from pdf_ocr_cache import read_versions,preferred
     result=read_scan(sha)
     model=ocr_model()
     identities=[]
     for page in result['pages']:
-        if model and (ocr:=read_page(sha,page['page'],model)):
+        versions=read_versions(sha,page['page'],model) if model else []
+        if ocr:=preferred(versions):
             page['ocr']=ocr
-            identities.append([page['page'],ocr['extractorVersion'],ocr['modelSha256'],ocr['textSha256'],ocr['status']])
+            if len(versions)>1:
+                page['ocrAlternatives']=[r for r in versions if r['extractorVersion']!=ocr['extractorVersion']]
+            identities.extend([page['page'],r['extractorVersion'],r['modelSha256'],r['textSha256'],r['status']] for r in versions)
+            if for_review:
+                for prior in versions:
+                    if prior['status']=='EXTRACTED':
+                        page['options']=sorted(set(page['options'])|set(OPTION.findall(prior['text'])))
+                        page['questionSignal']=page['questionSignal'] or len(page['options'])>=3 or bool(EXAMPLE.search(prior['text']))
             if for_review and ocr['status'] in ('EXTRACTED','BLANK_VERIFIED'):
                 page['rawTextSha256']=page['textSha256']
                 page['text'],page['textSha256']=ocr['text'],ocr['textSha256']
-                page['options']=sorted(set(OPTION.findall(page['text'])))
-                page['questionSignal']=len(page['options'])>=3 or bool(EXAMPLE.search(page['text']))
+                page['options']=sorted(set(page['options'])|set(OPTION.findall(page['text'])))
+                if ocr.get('lines'):
+                    page['evidenceLines']=ocr['lines']
+                    page['anchors']=[{'number':int(m[1]),'bbox':line['bbox'],'text':line['text']}
+                        for line in ocr['lines'] if (m:=NUMBER.match(line['text'])) and 0<int(m[1])<=200]
+                    page['examples']=[{'number':int(m[1]),'bbox':line['bbox'],'text':line['text']}
+                        for line in ocr['lines'] if (m:=EXAMPLE.search(line['text']))]
+                heading=any(re.sub(r'\s+','',line).casefold() in ('sorular','soru','örnekler') for line in page['text'].splitlines())
+                page['possibleQuestionHeading']=heading
+                page['questionSignal']=page['questionSignal'] or len(page['options'])>=3 or bool(EXAMPLE.search(page['text']))
                 page['needsOcr']=False
+            elif ocr.get('reason')=='RASTER_CONTENT_WITH_NONEMPTY_TEXT_LAYER':
+                page['needsOcr']=True
+        if for_review and any(re.sub(r'\s+','',line).casefold().strip(':') in ('sorular','soru','örnekler','örnek')
+                              for line in page['text'].splitlines()):
+            page['possibleQuestionHeading']=True
     result['ocrEvidenceSha256']=hashlib.sha256(json.dumps(identities,separators=(',',':')).encode()).hexdigest()
     return result
 

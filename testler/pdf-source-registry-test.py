@@ -4,17 +4,76 @@ import base64
 from pathlib import Path
 import unittest
 import tempfile
+from unittest.mock import patch
 import pymupdf
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from pdf_source_reconcile import text_fingerprint, prose_fingerprint,excluded_exam,canonical, database_page, header_orphans
+from pdf_source_reconcile import text_fingerprint, prose_fingerprint,excluded_exam,canonical, database_page, header_orphans, source_format
 from pdf_sb_evidence import printed_positions,printed_answers
 from pdf_slide_questions import two_answer_readings
 from pdf_question_accept import validate_card,reviewed_answer
 from pdf_slide_compare import compare,split_question,validate_link
+from pdf_raw_compare import discretionary_wraps
 
 
 class SourceIdentityTest(unittest.TestCase):
+    def test_later_ocr_cannot_erase_earlier_question_option_evidence(self):
+        import copy
+        import hashlib
+        import pdf_source_scan as scan
+        records=[]
+        for version,text in [('new','A) Bir B) İki'),('old','A) Bir B) İki C) Üç D) Dört E) Beş')]:
+            records.append({'extractorVersion':version,'modelSha256':'m','textSha256':hashlib.sha256(text.encode()).hexdigest(),'status':'EXTRACTED','text':text})
+        native={'pages':[{'page':1,'text':'Başlık','textSha256':'native','options':[],'questionSignal':False,'needsOcr':False}]}
+        with patch.object(scan,'read_scan',return_value=copy.deepcopy(native)),patch.object(scan,'ocr_model',return_value='m'),patch('pdf_ocr_cache.read_versions',return_value=records):
+            result=scan.read_evidence_scan('source',True)
+        self.assertEqual(result['pages'][0]['options'],list('ABCDE'))
+        self.assertTrue(result['pages'][0]['questionSignal'])
+
+    def test_open_discussion_or_bibliography_heading_is_not_a_multiple_choice_question(self):
+        import copy
+        import pdf_source_scan as scan
+        for text in ['Soru\nRussell bilim ve bilgeliği neden karşılaştırır?\nCevap\nBilgeliğin amacı ele alınır.',
+                     'KAYNAKÇA\nSORULAR:\nhttps://example.org/soru-test']:
+            native={'pages':[{'page':1,'text':text,'textSha256':'native','options':[],'questionSignal':False,'needsOcr':False}]}
+            with patch.object(scan,'read_scan',return_value=copy.deepcopy(native)),patch.object(scan,'ocr_model',return_value=None):
+                page=scan.read_evidence_scan('source',True)['pages'][0]
+            self.assertFalse(page['questionSignal'])
+            self.assertTrue(page['possibleQuestionHeading'])
+
+    def test_guide_needs_source_header_and_example_heading_keeps_mixed_content(self):
+        observation={'pages':[{'text':'Öğrencilere Yönelik Rehber Kitap','options':[],'questionSignal':False}]}
+        self.assertEqual(source_format('Diğer / incele',observation,[],'ogm-materyal/Rehberlik/kitap.pdf'),'CALISMA_REHBERI')
+        observation['pages'][0]['text']='Biyoloji konu notları'
+        self.assertEqual(source_format('Diğer / incele',observation,[],'ogm-materyal/Rehberlik/kitap.pdf'),'UNREVIEWED')
+        observation['pages'][0]['questionSignal']=True
+        self.assertEqual(source_format('Sunu',observation,[],'ogm-materyal/Biyoloji/kitap.pdf'),'KARMA')
+
+    def test_failed_second_ocr_does_not_erase_a_rendered_blank_certificate(self):
+        import pdf_ocr_cache as cache
+        records={cache.SUMMARY_VERSION:{'status':'VISUAL_OR_UNREADABLE'},cache.VERSION:{'status':'BLANK_VERIFIED'}}
+        with patch.object(cache,'read_version',side_effect=lambda sha,page,model,version:records.get(version)):
+            self.assertEqual(cache.read_page('source',1,'model')['status'],'BLANK_VERIFIED')
+
+    def test_language_wrap_repair_requires_original_discretionary_hyphen(self):
+        native='Bu metinde di\u00ad\nğer sözcüğü vardır.\nA) bir çok\nB) birçok'
+        source='Bu metinde di\nğer sözcüğü vardır.\nA) bir çok\nB) birçok'
+        repaired,proof=discretionary_wraps(source,native)
+        self.assertIn('diğer sözcüğü',repaired)
+        self.assertIn('A) bir çok',repaired)
+        self.assertEqual(len(proof),1)
+        self.assertEqual(discretionary_wraps(source,native.replace('\u00ad','')),(source,[]))
+        self.assertEqual(discretionary_wraps('bir\nçok',native),('bir\nçok',[]))
+
+    def test_exam_caption_does_not_hide_a_question_or_a_body_region(self):
+        observations={'pages':[{'height':842,'text':'AYT 2019'}]}
+        profile={'records':[],'summary':{'yetim':[[0,0,'AYT 2019',[[42,78,82,91]]]]}}
+        self.assertEqual(header_orphans(profile,observations)[0]['disposition'],'PRINTED_EXAM_CAPTION')
+        profile['summary']['yetim'][0][2]='AYT 2019 sorusunda hangi seçenek doğrudur?'
+        self.assertIs(header_orphans(profile,observations),False)
+        profile['summary']['yetim'][0]=[0,0,'AYT 2019',[[42,300,82,313]]]
+        self.assertIs(header_orphans(profile,observations),False)
+
     def test_complete_option_comparison_rejects_similar_topic_and_keeps_answer_permutation(self):
         source='Bir kuram neden sınanabilir?\nA) Deney\nB) Akıl\nC) Sezgi\nD) İnanç\nE) Dogma'
         permuted=source.replace('A) Deney\nB) Akıl','A) Akıl\nB) Deney')

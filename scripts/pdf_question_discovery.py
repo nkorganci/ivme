@@ -52,8 +52,10 @@ def main():
         evidence = source['coverageEvidence']
         if evidence['rawProfile'] or evidence.get('providerPrintCheck') or source['coverageState'] in ('VERIFIED','NO_QUESTIONS'):
             continue
-        identity=hashlib.sha256(json.dumps([source.get('ocrEvidenceSha256'),
-            sorted((page,tuple(o['numbers'])) for (s,page),items in known.items() if s==sha for o in items)],sort_keys=True).encode()).hexdigest()
+        identity_parts=[source.get('ocrEvidenceSha256'),
+            sorted((page,tuple(o['numbers'])) for (s,page),items in known.items() if s==sha for o in items)]
+        if source.get('summaryOcrPages'):identity_parts.append('OCR_SPATIAL_LINES_V2')
+        identity=hashlib.sha256(json.dumps(identity_parts,sort_keys=True).encode()).hexdigest()
         cache_evidence[sha]=identity
         if sha in cached and previous.get('cacheEvidence',{}).get(sha)==identity:
             by_source[sha] = cached[sha]
@@ -62,7 +64,8 @@ def main():
             ambiguous.extend(ambiguous_by_source[sha])
             continue
         observations = read_evidence_scan(sha,for_review=True)
-        question_pages = [p for p in observations['pages'] if len(p['options']) >= 4]
+        question_pages = [p for p in observations['pages'] if len(p['options']) >= 4
+                          or p.get('evidenceLines') and (p['questionSignal'] or p.get('possibleQuestionHeading'))]
         if not question_pages:
             by_source[sha] = []
             continue
@@ -71,6 +74,7 @@ def main():
         with pymupdf.open(ROOT / files[sha]['path']) as document:
             for observed in question_pages:
                 page = document[observed['page'] - 1]
+                extractor.lines_of=(lambda p,lines=observed['evidenceLines']:lines) if observed.get('evidenceLines') else text_lines
                 regions = [q for q in extractor.questions(page) if q['tur'] == 'soru'
                            and len(set(OPTION.findall(q['text']))) >= 4]
                 if not regions:
@@ -84,6 +88,12 @@ def main():
                                              max(l['bbox'][2] for l in lines),max(l['bbox'][3] for l in lines)]}]
                     else:
                         local_ambiguous.append({'sha256':sha,'page':observed['page'],'reason':'MULTIPLE_OR_AMBIGUOUS_QUESTION_REGIONS'})
+                # OCR may recover only some option labels. A detected question
+                # panel without complete regions must stay explicitly counted.
+                if observed.get('evidenceLines'):
+                    option_a=len(re.findall(r'(?:^|\s)A\s*\)',observed['text']))
+                    if len(regions)<option_a or not regions:
+                        local_ambiguous.append({'sha256':sha,'page':observed['page'],'reason':'OCR_QUESTION_PANEL_ENUMERATION_REQUIRED'})
                 for region in regions:
                     if any(region['number'] in occurrence['numbers'] for occurrence in known[sha,observed['page']] if region['number'] is not None):
                         continue

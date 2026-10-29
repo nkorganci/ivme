@@ -83,11 +83,15 @@ def validate_link(row,card,package_path,question,bank_text,bank_image_sha):
     if row.get('teacherApproved') is not False or card['answerMethodA']!=card['answer'] or card['answerMethodB']!=card['answer']:
         raise ValueError('Link has no independent source answer readings')
     if row['status']=='VERIFIED_TEXT_OPTIONS_AND_MAPPED_ANSWER':
-        result=compare(card['text'],bank_text,card['answer'],question['correct_answer'],strict_language=row.get('comparisonMode')=='LITERAL_LANGUAGE')
+        from pdf_raw_compare import source_comparison_text
+        source_text=source_comparison_text(row,card['text'])
+        result=compare(source_text,bank_text,card['answer'],question['correct_answer'],strict_language=row.get('comparisonMode')=='LITERAL_LANGUAGE')
         if result['status']!=row['status'] or result['answerPermutation']!=row.get('answerPermutation'):
             raise ValueError('Full source/bank comparison does not prove the link')
     elif row['status']=='VERIFIED_SOURCE_CONTENT_READING':
         from pdf_slide_link_review import FIELDS,READINGS
+        if row.get('reviewMethod')=='RAW_SOURCE_CONTENT_REVIEW':
+            from pdf_raw_content_review import READINGS
         frozen=READINGS.get(card['code'])
         signature=hashlib.sha256(json.dumps({key:row[key] for key in FIELDS},ensure_ascii=False,sort_keys=True).encode()).hexdigest()
         if not frozen or frozen['reviewedPairSha256']!=signature or frozen['canonicalCode']!=row['canonicalCode'] or row['sourceReading']!=frozen['sourceReading'] or row.get('matchType')!=frozen.get('matchType','REVIEWED_PARAPHRASE'):

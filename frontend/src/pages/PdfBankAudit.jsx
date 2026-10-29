@@ -9,13 +9,30 @@ import './PdfBankAudit.css';
 const number = value => Number(value || 0).toLocaleString('tr-TR');
 const describeRow = row => {
   const pending = Number(row.candidateCount || 0) + Number(row.reviewCount || 0);
+  const reasons = row.coverageEvidence?.reasons || [];
+  const unreadablePages = row.coverageEvidence?.unreadablePageNumbers || [];
+  const textReviews = row.coverageEvidence?.providerPrintCheck?.textReviewNumbers || [];
+  const imageReview = reasons.includes('PAGES_REQUIRE_OCR_OR_VISUAL_REVIEW') || reasons.includes('ENCODED_TEXT_REQUIRES_OCR_OR_VISUAL_REVIEW');
   const transferStatus = !row.sha256 ? 'Dosya eksik'
     : row.sourceIssueCount > 0 ? 'Kaynakta hata var'
     : row.status === 'Soru kaynağı değişmiş' ? 'Yeniden kontrol gerekli'
     : row.allQuestionsTaken ? 'Tamamı bankada'
-    : row.extractionComplete ? 'YKS sorusu yok' : 'Kontrol tamamlanmadı';
+    : row.extractionComplete ? 'YKS sorusu yok'
+    : Number(row.reviewCount || 0) > 0 ? 'Soru içeriği incelemesi'
+    : pending > 0 ? 'Soru eşleştirmesi gerekli'
+    : imageReview ? 'Görsel içerik incelemesi'
+    : reasons.includes('PDF_TEXT_CHECK_REQUIRES_VISUAL_REVIEW') ? 'Kaynak metni karşılaştırılacak'
+    : 'Soru dökümü gerekli';
+  const pendingLabel = !row.sha256 ? 'Dosya gerekli'
+    : pending > 0 ? number(pending)
+    : row.extractionComplete ? '0'
+    : row.sourceIssueCount > 0 ? `${number(row.sourceIssueCount)} kaynak kaydı`
+    : row.status === 'Soru kaynağı değişmiş' ? 'Banka bağı incelenecek'
+    : unreadablePages.length ? `${number(unreadablePages.length)} sayfa`
+    : textReviews.length ? `${number(textReviews.length)} soru metni`
+    : `Belge: ${number(row.pages)} sayfa`;
   return { ...row, transferStatus, pendingRecords: pending,
-    pendingLabel: pending > 0 ? number(pending) : row.extractionComplete ? '0' : 'Henüz belirlenmedi',
+    pendingLabel,
     fileStatus: row.archiveState === 'Arşivde' ? 'Arşivde' : row.available ? 'Açılabilir' : 'Dosya eksik' };
 };
 const auditGridOptions = { getRowId: ({ data }) => String(data.id),
@@ -95,6 +112,7 @@ export default function PdfBankAudit() {
       cellRenderer: ({ data }) => data.page ? <Link to={`/konu-anlatimlari/${selected}#page=${data.page}`}>{data.page}</Link> : 'Belirsiz' },
     { field: 'matchType', headerName: 'Eşleşme', minWidth: 140, valueFormatter: ({ value }) => ({
       TYPOGRAPHIC_VARIANT: 'Yazım varyantı', PARAPHRASE: 'Anlatım varyantı',
+      PUNCTUATION_PRESENTATION_VARIANT: 'Noktalama sunumu farklı',
       REVIEWED_PARAPHRASE: 'Anlatım karşılaştırıldı',
       DISTRACTOR_VARIANT: 'Çeldirici varyantı', OPTION_PRESENTATION: 'Seçenek sunumu farklı',
       OPTION_PERMUTATION: 'Seçenek sırası farklı', SAME_DIAGRAM_AND_OPTIONS: 'Şekil ve seçenekler aynı',
@@ -135,8 +153,8 @@ export default function PdfBankAudit() {
     {!audit.data.current && <p role="alert">Soru bankası denetimden sonra değişti. Kanıtları güncellemek için PDF denetimini yeniden çalıştır.</p>}
     <div className="pdf-audit-guide">
       <p><strong>Bankada kayıtlı soru:</strong> Bu PDF ile eşleşmesi doğrulanan, pratikte kullanılabilen sorular. Aynı soru birkaç PDF’de varsa her ilgili satırda görünür; yukarıdaki toplamda bir kez sayılır.</p>
-      <p><strong>Kontrol bekleyen kayıt:</strong> İncelenmesi gereken soru veya sayfa bölgesi. Kesin eksik soru sayısı değildir. “Henüz belirlenmedi”, PDF’nin bütün sorularının sayımının tamamlanmadığını belirtir.</p>
-      <p><strong>Aktarım durumu:</strong> “Tamamı bankada” bütün YKS sorularının alındığının doğrulandığı anlamına gelir. “Kontrol tamamlanmadı” olan PDF’de eksik soru bulunabilir. Sıfır banka kaydı, PDF’de soru olmadığı anlamına gelmez.</p>
+      <p><strong>Kontrol bekleyen kayıt:</strong> Tespit edilmiş soru veya sayfa bölgesi sayısı. Kesin eksik soru sayısı değildir. “Belge” ile başlayan değer, kapsam incelemesi gereken PDF’nin toplam sayfa sayısıdır; eksik soru sayısı olarak kullanılamaz.</p>
+      <p><strong>Aktarım durumu:</strong> “Tamamı bankada” bütün YKS sorularının alındığının doğrulandığı anlamına gelir. Diğer durumlar gerekli kaynak, görsel, eşleştirme veya etiket incelemesini belirtir. Sıfır banka kaydı, PDF’de soru olmadığı anlamına gelmez.</p>
     </div>
     <p className="muted small">{number(audit.data.uniquePdfCount)} farklı PDF · {number(allRows.filter(row => row.allQuestionsTaken).length)} PDF’nin bütün soruları bankada · son kaynak denetimi: {new Date(audit.data.auditedAt).toLocaleString('tr-TR')}.</p>
     <div className="pdf-audit-filters">
@@ -159,7 +177,7 @@ export default function PdfBankAudit() {
       {proof && <><p><strong>Aktarım durumu: {selectedRow?.transferStatus}</strong> · Bankada kayıtlı {number(proof.questionCount)} soru · kontrol bekleyen kayıt: {selectedRow?.pendingLabel}.</p>
         <p>{selectedRow?.allQuestionsTaken ? 'Bütün YKS soruları kontrol edildi ve bankaya bağlandı. Yeniden soru çıkarımı gerekmiyor.'
           : selectedRow?.extractionComplete ? 'Bu PDF’de bankaya alınacak YKS sorusu olmadığı doğrulandı.'
-          : 'Bu PDF’nin kontrolü tamamlanmadı; bütün soruların bankada olduğu henüz söylenemez.'}
+          : `Gerekli işlem: ${selectedRow?.transferStatus}. Bütün soruların banka kaydıyla eşleştiğine dair tamlık kanıtı yok.`}
           {proof.expectedQuestions != null && ` · PDF için tespit edilen toplam soru konumu: ${number(proof.expectedQuestions)}.`}</p>
         <details><summary>Kaynak bilgileri</summary><p>Kaynak serisi: {selectedRow?.source} · Dosya durumu: {selectedRow?.fileStatus}</p>
           <p className="muted">{proof.relativePath}</p><p className="muted small">Dosya kimliği (SHA-256): <code>{proof.sha256 || 'Dosya bulunamadı'}</code></p></details>

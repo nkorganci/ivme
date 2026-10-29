@@ -58,6 +58,7 @@ try {
   assert.match(initial,/Pratikteki toplam soru/);
   assert.match(initial,/Kesin eksik soru sayısı değildir/);
   assert.match(initial,/Aktarım durumu/);
+  assert.doesNotMatch(initial,/Kontrol tamamlanmadı|Henüz belirlenmedi/);
   const headers=await browser.evalJs(`[...document.querySelectorAll('.pdf-audit-inventory-grid .ag-header-cell-text')].map(node=>node.textContent.trim())`);
   assert.equal(headers.length,11,'Ten inventory columns plus the shared row number');
   for(const label of ['Bankada kayıtlı soru','Kontrol bekleyen kayıt','Aktarım durumu','Dosya durumu','Ayrıntılar'])assert.ok(headers.includes(label));

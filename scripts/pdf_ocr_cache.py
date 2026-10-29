@@ -7,6 +7,8 @@ APP = Path(__file__).resolve().parents[1]
 STATE = APP / 'veri/content-labels'
 VERSION = 'tur-ocr-144dpi-v1'
 FALLBACK_VERSION = 'tur-ocr-300dpi-gray-focus-v1'
+SUMMARY_VERSION = 'tur-ocr-300dpi-summary-content-v1'
+RASTER_BODY_VERSION = 'tur-ocr-144dpi-raster-body-v1'
 
 
 def model_hash():
@@ -29,5 +31,16 @@ def read_version(source_sha, page, model_sha, version=VERSION):
     return record
 
 
+def read_versions(source_sha, page, model_sha):
+    return [record for version in (SUMMARY_VERSION,RASTER_BODY_VERSION,FALLBACK_VERSION,VERSION)
+            if (record:=read_version(source_sha,page,model_sha,version))]
+
+
+def preferred(records):
+    # A later unsuccessful pass must not erase an earlier rendered blank-page
+    # certificate or readable full-page OCR of the same unchanged source.
+    return next((r for r in records if r['status'] in ('EXTRACTED','BLANK_VERIFIED')),records[0] if records else None)
+
+
 def read_page(source_sha, page, model_sha):
-    return read_version(source_sha,page,model_sha,FALLBACK_VERSION) or read_version(source_sha,page,model_sha)
+    return preferred(read_versions(source_sha,page,model_sha))

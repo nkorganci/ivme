@@ -22,6 +22,16 @@ from pdf_sb_evidence import source_parts, printed_positions, printed_answers, te
 APP = Path(__file__).resolve().parents[1]
 PIPELINE = APP.parent / 'veri-hatti/ogm-sorular/kayit'
 
+# Explicit source reading: the poster explains right triangles, Pythagoras and
+# Euclid, followed by six geometry questions. The current controlled catalog
+# already identifies Geometri; the old inventory projection said Matematik.
+SOURCE_METADATA_READINGS={
+    'cadf0334b87754db2d3a95c328864ae2d477fc33c97ee4c6545b02a62fbb6acc':{
+        'subjectId':'geometri','subject':'Geometri','page':1,
+        'nativeTextSha256':'479b1d8b0f9d4b1b70459c2acfbf356358ae2f2938799df3351f4e13474b545f',
+        'sourceReading':'Üçgenler başlığı, özel dik üçgenler, Pisagor ve Öklid teoremleri ile altı üçgen sorusu okundu. Dersin kontrollü karşılığı Geometridir; eski envanterin Matematik projeksiyonu düzeltilir.',
+        'teacherApproved':False}}
+
 
 def load(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
@@ -90,6 +100,16 @@ def database_page(page):
             'requiresVisualReview': True}
 
 
+def source_format(category, observations, linked, path):
+    header='\n'.join(p['text'] for p in observations['pages'][:5])
+    if '/Rehberlik/' in path and re.search(r'rehber',header,re.I):
+        return 'CALISMA_REHBERI'
+    lesson=category in ('Sunu','Konu özeti','Konu anlatımı')
+    questions=bool(linked) or any(len(p['options'])>=4 for p in observations['pages'])
+    if lesson:questions=questions or any(p['questionSignal'] for p in observations['pages'])
+    return 'KARMA' if lesson and questions else 'KONU_ANLATIMI' if lesson else 'TEST' if questions else 'UNREVIEWED'
+
+
 def header_orphans(profile, observations):
     headings = [normalized(str(value)).casefold() for record in profile['records']
                 for value in (record.get('konu_basligi'),record.get('test')) if value]
@@ -102,8 +122,20 @@ def header_orphans(profile, observations):
         rectangles=orphan[3]
         top=bool(rectangles) and all(r[3]<=page['height']*.13 and r[3]-r[1]<30 for r in rectangles)
         heading=not term or len(term)>=4 and any(term in h for h in headings) or term=='cevap anahtarı'
+        disposition='REPEATED_SOURCE_HEADING'
+        caption=re.fullmatch(r'(?:ÖSYM\s+)?(?:(?:TYT|AYT|YGS|LYS\d?|ÖSS|ÖYS)(?:\s+(?:19|20)\d{2})?|(?:19|20)\d{2}\s+(?:TYT|AYT|YGS|LYS\d?|ÖSS|ÖYS))(?:\s+(?:PSİKOLOJİ|MANTIK|SOSYOLOJİ|TARİH))?',text,re.I)
+        if caption and bool(rectangles) and all(r[3]<=page['height']*.17 and r[3]-r[1]<30 for r in rectangles):
+            top=heading=True;disposition='PRINTED_EXAM_CAPTION'
+        # The numbered test instructions are not questions. Restrict this to
+        # the printed header, with the independent answer-sheet instruction.
+        if re.match(r'^1\.\s*Bu testte\s+(?:sırasıyla\b|Matematik alanına ait toplam \d+ soru vardır\.)',text,re.I) and bool(rectangles) and all(r[3]<=page['height']*.2 for r in rectangles):
+            header=' '.join(line['text'] for line in page.get('evidenceLines',[])
+                            if line['bbox'][3]<=page['height']*.2)
+            if not header:header=page['text'][:1500]
+            if re.search(r'2\.\s*Cevaplarınızı',header,re.I) and 'cevap kâğıdının' in normalized(header).casefold():
+                top=heading=True;disposition='PRINTED_TEST_INSTRUCTIONS'
         if not top or not heading:return False
-        results.append({'page':orphan[0]+1,'text':text,'disposition':'REPEATED_SOURCE_HEADING'})
+        results.append({'page':orphan[0]+1,'text':text,'disposition':disposition})
     return results
 
 
@@ -191,17 +223,33 @@ def reconcile(connection):
             # questions. Retain their audit evidence, but withdraw completion
             # until complete literal language comparison passes.
             if accepted['evidence'].get('origin')=='REVIEWED_RAW_SOURCE_BANK_LINK' and target and target['subject'] in ('Türkçe','Türk Dili ve Edebiyatı'):
-                from pdf_slide_compare import compare
+                from pdf_slide_compare import compare,validate_link
+                from pdf_raw_compare import source_comparison_text
                 raw=raw_by_code.get(code,{})
-                result=compare(raw.get('metin',''),bank_texts.get(target['code'],''),raw.get('cevaplar',[''])[0],target['correct_answer'],strict_language=True)
-                if result['status']!='VERIFIED_TEXT_OPTIONS_AND_MAPPED_ANSWER':
+                review=raw_reviews.get(code)
+                if review and review.get('canonicalCode')==target['code'] and ('sourceDiscretionaryWraps' in review or review.get('reviewMethod')=='RAW_SOURCE_CONTENT_REVIEW'):
+                    if review['sourceSha256']!=sha or review['pdfPage']!=page or review['sourcePackage']!=raw_package_by_code[code].relative_to(APP.parent).as_posix():
+                        raise ValueError('Reviewed raw source location changed')
+                    card={'code':code,'text':raw['metin'],'imageSha256':digest(APP.parent/'icerik'/raw['gorsel']),
+                          'answer':raw['cevaplar'][0],'answerMethodA':raw['cevaplar_A'][0],'answerMethodB':raw['cevaplar_B'][0]}
+                    validate_link(review,card,raw_package_by_code[code],target,bank_texts[target['code']],digest(APP/'veri/resimler-pilot'/target['image']))
+                    accepted['evidence']['comparisonEvidence']=review
+                comparison=accepted['evidence']['comparisonEvidence']
+                source_text=source_comparison_text(comparison,raw.get('metin',''))
+                result=compare(source_text,bank_texts.get(target['code'],''),raw.get('cevaplar',[''])[0],target['correct_answer'],strict_language=True)
+                explicit=comparison.get('reviewMethod')=='RAW_SOURCE_CONTENT_REVIEW' and comparison['status']=='VERIFIED_SOURCE_CONTENT_READING'
+                if result['status']!='VERIFIED_TEXT_OPTIONS_AND_MAPPED_ANSWER' and not explicit:
                     accepted['status']='NEEDS_REVIEW'
                     accepted['evidence']['sourceQualityReview']={'reason':'LITERAL_LANGUAGE_COMPARISON_REQUIRED',
                         'sourceReading':'Türkçe/edebiyatta noktalama, sözcük aralığı veya vurgu anlamı değiştirebilir. Tam metin ve seçeneklerin bu ayrıntıları ayrıca karşılaştırılmalı.',
                         'teacherApproved':False}
                 elif accepted['evidence'].get('sourceQualityReview',{}).get('reason')=='LITERAL_LANGUAGE_COMPARISON_REQUIRED':
                     accepted['status']='LINKED';accepted['evidence'].pop('sourceQualityReview')
-                if result['status']=='VERIFIED_TEXT_OPTIONS_AND_MAPPED_ANSWER':
+                if explicit:
+                    accepted['evidence']['acceptanceReviewSha256']=comparison['reviewSha256']
+                    accepted['evidence']['sourceReading']=comparison['sourceReading']
+                    accepted['evidence']['matchType']=comparison['matchType']
+                elif result['status']=='VERIFIED_TEXT_OPTIONS_AND_MAPPED_ANSWER':
                     comparison=accepted['evidence']['comparisonEvidence']
                     comparison['comparisonMode']='LITERAL_LANGUAGE'
                     comparison.pop('reviewSha256',None)
@@ -440,24 +488,32 @@ def reconcile(connection):
     for occurrence in occurrences.values():
         by_source[occurrence['sha256']].append(occurrence)
     linked_by_code={o['code']:o for o in occurrences.values() if o['status']=='LINKED'}
+    from pdf_page_dispositions import validate as validate_page_disposition
+    disposition_path=OUT/'page-dispositions.json'
+    page_dispositions={(p['sourceSha256'],p['page']):p for p in load(disposition_path)['pages']} if disposition_path.exists() else {}
     for record in provenance:
         if record['kind']!='PDF' and record['code'] in linked_by_code:
             occurrence=linked_by_code[record['code']]
             record.update({'kind':'PDF','sha256':occurrence['sha256'],
                            'reference':occurrence['evidence'].get('reference') or 'pdf:'+occurrence['sha256']+':'+occurrence['locator']})
             record['evidence']['recoveredFromOccurrence']=occurrence['locator']
-    for sha, document in documents.items():
+    for source_index,(sha,document) in enumerate(documents.items(),1):
         observations = read_evidence_scan(sha,for_review=True)
-        document['ocrPages']=[p['page'] for p in observations['pages'] if p['needsOcr']]
+        metadata_review=SOURCE_METADATA_READINGS.get(sha)
+        if metadata_review and read_scan(sha)['pages'][metadata_review['page']-1]['textSha256']!=metadata_review['nativeTextSha256']:
+            raise ValueError('Source metadata reading changed')
+        reviewed_pages=[validate_page_disposition(page_dispositions[sha,p['page']],sha,p)
+                        for p in observations['pages'] if (sha,p['page']) in page_dispositions]
+        reviewed_numbers={p['page'] for p in reviewed_pages}
+        document['ocrPages']=[p['page'] for p in observations['pages'] if p['needsOcr'] and p['page'] not in reviewed_numbers]
         document['ocrEvidenceSha256']=observations['ocrEvidenceSha256']
+        document['questionSignalPages']=[p['page'] for p in observations['pages'] if p['questionSignal']]
+        document['summaryOcrPages']=[p['page'] for p in observations['pages'] if p.get('evidenceLines')]
         linked = by_source[sha]
         profile = raw_profiles.get(sha)
         source_rows = source_aliases[sha]
         source_category = source_rows[0]['category'] if source_rows else 'Diğer / incele'
-        lesson = source_category in ('Sunu', 'Konu özeti', 'Konu anlatımı')
-        has_questions = bool(linked) or any(len(p['options']) >= 4 for p in observations['pages'])
-        if lesson and any(p.get('examples') for p in observations['pages']):has_questions=True
-        document['format'] = 'KARMA' if lesson and has_questions else 'KONU_ANLATIMI' if lesson else 'TEST' if has_questions else 'UNREVIEWED'
+        document['format'] = source_format(source_category,observations,linked,source_paths[sha])
         document['coverageState'] = 'INCOMPLETE' if linked else 'NEEDS_REVIEW'
         document['expectedQuestions'] = None
         reasons = []
@@ -530,6 +586,9 @@ def reconcile(connection):
             document['expectedQuestions'] = 0
             reasons = []
         document['coverageEvidence'] = {'version': VERSION, 'reasons': sorted(set(reasons)),
+            'metadataReview':metadata_review,
+            'reviewedNonquestionPages':reviewed_pages,
+            'unreadablePageNumbers':document['ocrPages'],
             'quarantinedQuestionCodes':quality_questions,
             'excludedOtherExamCards':sum(o['status']=='EXCLUDED' and o['evidence'].get('scopeExclusion')=='OTHER_EXAM' for o in linked),
             'candidatePackage':staged_path.relative_to(APP).as_posix() if staged and sha==staged['sourceSha256']
@@ -541,6 +600,8 @@ def reconcile(connection):
             'independentPageScan': True, 'teacherApproved': False,
             'linkedCards': sum(o['status'] == 'LINKED' for o in linked),
             'candidateCards': sum(o['status'] == 'CANDIDATE' for o in linked)}
+        if source_index%200==0:
+            print(f'Source evidence reconciled: {source_index}/{len(documents)} PDFs',flush=True)
     active = [r for r in provenance if questions[r['code']]['active']]
     old_counts = Counter(o['data'].get('status') for o in aliases)
     report = {'version': 1, 'scope': ['TYT', 'AYT'], 'bankTotal': len(active),
@@ -625,8 +686,17 @@ def publish(connection, data):
 CREATE TEMP TABLE pdf_format_changes ON COMMIT DROP AS
  SELECT i.item_key,s.content_format FROM learning_catalog.current_items i
  JOIN learning_catalog.pdf_sources s ON i.data->>'canonicalAssetId'='sha256:'||s.source_sha256
- WHERE i.kind='PDF' AND i.exam IN ('TYT','AYT','TYT-AYT') AND s.content_format='KARMA'
+ WHERE i.kind='PDF' AND i.exam IN ('TYT','AYT','TYT-AYT') AND s.content_format IN ('KARMA','CALISMA_REHBERI')
  AND i.content_format IS DISTINCT FROM s.content_format;
+-- Only frozen source readings that agree with the current controlled catalog
+-- can repair an old inventory projection. Retain its original label as evidence.
+UPDATE learning_catalog.pdf_audit_rows r SET data=
+ jsonb_set(r.data,'{subject}',s.coverage_evidence->'metadataReview'->'subject',true)
+ ||jsonb_build_object('originalSubject',coalesce(r.data->'originalSubject',r.data->'subject')),recorded_at=now()
+ FROM learning_catalog.pdf_source_catalog a JOIN learning_catalog.pdf_sources s USING(source_sha256)
+ JOIN learning_catalog.current_items i ON i.item_key='pdf:'||a.catalog_id
+ WHERE r.catalog_id=a.catalog_id AND s.coverage_evidence->'metadataReview'->>'subjectId'=i.subject_id
+ AND r.data->>'subject' IS DISTINCT FROM s.coverage_evidence->'metadataReview'->>'subject';
 CREATE TEMP TABLE pdf_projection_changes ON COMMIT DROP AS
  SELECT i.item_key,array_agg(DISTINCT a.category_id ORDER BY a.category_id) category_ids,
  array_agg(DISTINCT c.definition->>'subjectId' ORDER BY c.definition->>'subjectId') subject_ids,

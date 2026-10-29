@@ -137,6 +137,17 @@ class PdfSourceRegistryTest extends TestBase {
 
     @SuppressWarnings("unchecked")
     @Test
+    void guideClassificationDoesNotImplyCompleteQuestionTransfer() {
+        String hash="8".repeat(64);source(hash,1,900001);
+        jdbc.update("UPDATE learning_catalog.pdf_sources SET content_format='CALISMA_REHBERI' WHERE source_sha256=?",hash);
+        Map<String,Object> row=((List<Map<String,Object>>)registry.list().get("pdfs")).getFirst();
+        assertThat(row.get("category")).isEqualTo("Çalışma rehberi");
+        assertThat(row.get("allQuestionsTaken")).isEqualTo(false);
+        assertThat(row.get("extractionComplete")).isEqualTo(false);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
     void verifiedEmptySourceNeedsNoSecondExtraction() {
         String hash="9".repeat(64);source(hash,1,900001);
         jdbc.update("UPDATE learning_catalog.pdf_sources SET coverage_state='NO_QUESTIONS',expected_questions=0 WHERE source_sha256=?",hash);

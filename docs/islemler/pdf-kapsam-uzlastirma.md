@@ -24,6 +24,32 @@ aynı soruyu tekrar sayabilir. `discovery.json` ders notları dahil hesaplanmam�
 soru bölgelerini, OCR önbelleği metinsiz/bozuk sayfaları saklar. Keşif, OCR,
 TF-IDF veya görsel benzerlik sonucu tek başına banka aktarımı değildir.
 
+**Görselde kalan içerik.** Dolu metin katmanı, PDF'nin bütün yazısının okunduğunu
+göstermez. Konu özetlerinin soru panelleri ve bazı sunuların tüm gövdesi bitmap
+veya vektör biçimindedir; yalnız başlık metni 25 karakter eşiğini aşabilir.
+Bu içerikler için mevcut hash/model önbelleğini kullanarak devam et:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_summary_ocr.py --workers 4
+$env:OMP_THREAD_LIMIT='1'
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_summary_ocr.py --include-slides --workers 8
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_source_reconcile.py
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_question_discovery.py
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_source_reconcile.py --publish
+```
+
+Yoğun konu özetleri 300 dpi, daha büyük yazılı sunu gövdeleri 144 dpi okunur.
+Gövdesi tam metin olan sayfanın yalnız tekrarlanan başlık şeridi için OCR
+tekrarlanmaz. Çıktı kaynak/model/çıkarıcı sürümüne bağlıdır; soru bölgelerinde
+OCR satır konumları kullanılır. Birkaç seçenek harfi okunan veya tam bölgelere
+ayrılamayan panel keşfin belirsiz sayfa listesinde kalır. OCR sonucu ne soru
+aktarımı ne konu/öğretmen onayıdır. Tam doğrulanmış PDF'ler yeniden işlenmez.
+
+`pdf_page_dispositions.py`, görsel olarak okunmuş cevap anahtarı ayraçları ve
+kullanılmamış kareli not sayfalarını kaynak, fiziksel sayfa, özgün metin, OCR ve
+render hash'ine bağlar. Yalnız bu sayfanın okunabilirlik engelini kaldırır;
+gerçek soru adayı veya aktarım eksiğini kapatamaz.
+
 V85–V88 yerel Flyway üzerinden uygulanmış olmalıdır. Kayıtları tek işlemde yayımla:
 
 ```powershell
@@ -68,6 +94,13 @@ uygular. Benzer konu veya modelin yüksek güveni tek başına bağ oluşturmaz.
 Bu üç komut banka sorusu oluşturmaz. Değişmemiş kaynak ve canlı banka damgası
 yeniden denetlendikten sonra bağlar `pdf_source_reconcile.py --publish` ile DB'ye
 alınır. Daha önce kabul edilmiş konumlar yeniden model işlemine sokulmaz.
+
+Dil sorularında sözcük sınırları ve noktalama korunur. `pdf_raw_compare.py`
+yalnız özgün PDF'deki U+00AD satır bölme işaretiyle kanıtlanan parçaları
+birleştirir; sözlüğe veya benzer banka metnine bakarak boşluk silemez.
+Gerçek noktalama/sunum farkları iki tam soru görseli okunarak ayrı kanıta
+bağlanır. Bu açık okumaları `pdf_raw_content_review.py` üretir; aynı sözcükler
+veya konu tek başına kaynak bağı olamaz.
 
 **İncelenmiş soru kabulü.** Mini Deneme 04 kaynak okuması
 `pdf_mini_review.py` ile ayrı kanıtta tutulur. Cevap seçenekleri farklı sıradaysa
@@ -138,8 +171,11 @@ sınar.
 Envanterin ana tablosunda aktarım bilgisi üç sütundur: **Bankada kayıtlı soru**
 PDF'ye doğrulanmış bağlı pratik sorularını, **Kontrol bekleyen kayıt** henüz
 incelenmesi gereken soru/sayfa bölgelerini, **Aktarım durumu** tamlık sonucunu
-gösterir. Bekleyen kayıt sayısı kesin eksik soru sayısı değildir; döküm
-tamamlanmadıysa sıfır yerine **Henüz belirlenmedi** yazılır. Önceki işlem etiketi,
+gösterir. Bekleyen kayıt sayısı kesin eksik soru sayısı değildir. Soru/sayfa
+kayıtları varsa kendi birimiyle sayılır; tam dökümü olmayan belgelerde **Belge:
+N sayfa** fiziksel PDF'nin boyutunu belirtir, eksik soru sayısını değil.
+Aktarım sütunu gerekli eşleştirme, cevap/etiket, görsel veya kaynak metni
+incelemesini açıkça adlandırır; yalnız tamlık kanıtı olan satır tamamlanır. Önceki işlem etiketi,
 soru durumu ve bütün sorular alındı sütunları bu tek durum sütununda birleştirilir.
 Dosyanın açık/arşivde/eksik olması ayrı **Dosya durumu** sütunundadır. Planlanan
 çıkarım veya arşiv incelemesi tamamlanma sonucu değildir; **İncele** panelinde

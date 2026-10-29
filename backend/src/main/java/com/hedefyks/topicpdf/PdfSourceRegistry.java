@@ -123,6 +123,7 @@ public class PdfSourceRegistry {
                 node.put("category", "Ders notu + soru");
                 node.put("title", node.path("title").asText() + " · Ders notu ve sorular");
             } else if ("KONU_ANLATIMI".equals(format)) node.put("category", "Ders notu");
+            else if ("CALISMA_REHBERI".equals(format)) node.put("category", "Çalışma rehberi");
             node.set("coverageEvidence", coverage);
             rows.add(mapper.convertValue(node, Map.class));
         }
