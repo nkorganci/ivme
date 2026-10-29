@@ -7,6 +7,17 @@ import { ErrorBox, Loading } from '../components/States.jsx';
 import './PdfBankAudit.css';
 
 const number = value => Number(value || 0).toLocaleString('tr-TR');
+const describeRow = row => {
+  const pending = Number(row.candidateCount || 0) + Number(row.reviewCount || 0);
+  const transferStatus = !row.sha256 ? 'Dosya eksik'
+    : row.sourceIssueCount > 0 ? 'Kaynakta hata var'
+    : row.status === 'Soru kaynağı değişmiş' ? 'Yeniden kontrol gerekli'
+    : row.allQuestionsTaken ? 'Tamamı bankada'
+    : row.extractionComplete ? 'YKS sorusu yok' : 'Kontrol tamamlanmadı';
+  return { ...row, transferStatus, pendingRecords: pending,
+    pendingLabel: pending > 0 ? number(pending) : row.extractionComplete ? '0' : 'Henüz belirlenmedi',
+    fileStatus: row.archiveState === 'Arşivde' ? 'Arşivde' : row.available ? 'Açılabilir' : 'Dosya eksik' };
+};
 const auditGridOptions = { getRowId: ({ data }) => String(data.id),
   onGridSizeChanged: ({ api, clientWidth }) => { if (clientWidth > 0) api.sizeColumnsToFit(); } };
 const codeGridOptions = { rowHeight: 34, getRowId: ({ data }) => `${data.code}:${data.page ?? data.pdfPage ?? ''}`,
@@ -24,18 +35,18 @@ export default function PdfBankAudit() {
   const [workBusy, setWorkBusy] = useState(false);
   const [workError, setWorkError] = useState(null);
   const [status, setStatus] = useState('');
-  const [archiveFilter, setArchiveFilter] = useState('');
-  const [processingFilter, setProcessingFilter] = useState('');
+  const [fileFilter, setFileFilter] = useState('');
   const proofRef = useRef(null);
   useEffect(() => {
     if (selected != null) proofRef.current?.scrollIntoView({ block: 'start' });
   }, [selected]);
-  const rows = useMemo(() => (audit.data?.pdfs || []).filter(row =>
-    (!status || row.status === status) && (!archiveFilter || row.archiveState === archiveFilter)
-    && (!processingFilter || row.processingLabel === processingFilter)), [audit.data, status, archiveFilter, processingFilter]);
-  const counts = useMemo(() => (audit.data?.pdfs || []).reduce((groups, row) => {
-    (groups[row.status] ||= []).push(row); return groups;
-  }, {}), [audit.data]);
+  const allRows = useMemo(() => (audit.data?.pdfs || []).map(describeRow), [audit.data]);
+  const rows = useMemo(() => allRows.filter(row =>
+    (!status || row.transferStatus === status) && (!fileFilter || row.fileStatus === fileFilter)), [allRows, status, fileFilter]);
+  const counts = useMemo(() => allRows.reduce((groups, row) => {
+    (groups[row.transferStatus] ||= []).push(row); return groups;
+  }, {}), [allRows]);
+  const selectedRow = allRows.find(row => row.id === selected);
   const openProof = async row => {
     setSelected(row.id); setProof(null); setCandidates(null); setProofError(null); setCandidateError(null); setWorkError(null); setBusy(true);
     try {
@@ -65,20 +76,16 @@ export default function PdfBankAudit() {
     { field: 'exam', headerName: 'Sınav', width: 55, minWidth: 42 },
     { field: 'subject', headerName: 'Ders', width: 70, minWidth: 55 },
     { field: 'category', headerName: 'İçerik', width: 70, minWidth: 55 },
-    { field: 'source', headerName: 'Kaynak serisi', width: 78, minWidth: 60 },
-    { field: 'pages', headerName: 'Sayfa', width: 50, minWidth: 40, cellDataType: 'number' },
-    { field: 'questionCount', headerName: 'Bankadaki soru', width: 60, minWidth: 44, cellDataType: 'number' },
-    { field: 'candidateCount', headerName: 'Çıkarım adayı', width: 60, minWidth: 44, cellDataType: 'number' },
-    { field: 'completionLabel', headerName: 'Bütün sorular alındı', width: 70, minWidth: 58,
-      valueFormatter: ({ value }) => value || 'Doğrulanmadı' },
-    { field: 'processingLabel', headerName: 'İşlem etiketi', width: 90, minWidth: 66 },
-    { field: 'archiveState', headerName: 'Arşiv', width: 62, minWidth: 46 },
-    { field: 'status', headerName: 'Soru durumu', width: 90, minWidth: 66 },
-    { field: 'workAction', headerName: 'İşlem seçimi', width: 82, minWidth: 60,
-      valueFormatter: ({ value }) => value === 'EXTRACT' ? 'Soru çıkarma' : value === 'ARCHIVE_REVIEW' ? 'Arşiv incelemesi' : 'Seçilmedi' },
-    { field: 'available', headerName: 'Dosya', width: 56, minWidth: 44, valueGetter: ({ data }) => data.archiveState === 'Arşivde' ? 'Arşivde' : data.available ? 'Var' : 'Eksik' },
-    { colId: 'proof', headerName: 'Kanıt', width: 74, minWidth: 64, valueGetter: ({ data }) => data.questionCount > 0 ? 'Soru kanıtı var' : 'Soru kanıtı yok',
-      cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" aria-label={`${data.title} kanıtını göster`} onClick={() => openProof(data)}>Göster</button> },
+    { field: 'pages', headerName: 'Sayfa', width: 65, minWidth: 60, cellDataType: 'number' },
+    { field: 'questionCount', headerName: 'Bankada kayıtlı soru', width: 90, minWidth: 70, cellDataType: 'number',
+      headerTooltip: 'Bu PDF ile eşleşmesi doğrulanan ve pratikte kullanılabilen soru sayısı.' },
+    { field: 'pendingLabel', headerName: 'Kontrol bekleyen kayıt', width: 110, minWidth: 85,
+      headerTooltip: 'Aktarım veya eşleşme kontrolü bekleyen soru ve sayfa bölgeleri. Kesin eksik soru sayısı değildir.' },
+    { field: 'transferStatus', headerName: 'Aktarım durumu', width: 145, minWidth: 110,
+      headerTooltip: 'Tamamı bankada: PDF’nin bütün YKS soruları kontrol edildi ve banka kayıtlarına bağlandı.' },
+    { field: 'fileStatus', headerName: 'Dosya durumu', width: 80, minWidth: 65 },
+    { colId: 'proof', headerName: 'Ayrıntılar', width: 80, minWidth: 70, valueGetter: () => 'Soruları ve kontrol notlarını incele',
+      cellRenderer: ({ data }) => <button type="button" className="btn btn-secondary btn-sm" aria-label={`${data.title} ayrıntılarını incele`} onClick={() => openProof(data)}>İncele</button> },
   ].map(def => ({ wrapText: true, autoHeight: true, wrapHeaderText: true, autoHeaderHeight: true, ...def })), []);
   const questionColumns = useMemo(() => [
     { field: 'code', headerName: 'Soru kodu', minWidth: 150,
@@ -117,22 +124,30 @@ export default function PdfBankAudit() {
   if (audit.loading) return <Loading text="PDF envanteri yükleniyor…" />;
   if (audit.error) return <ErrorBox error={audit.error} onRetry={audit.retry} />;
   return <div className="pdf-bank-audit">
-    <div className="page-head"><h1>PDF envanteri</h1></div>
-    <p className="muted">{number(audit.data.physicalPdfCount)} fiziksel PDF · {number(audit.data.pdfs.length)} envanter satırı · {number(audit.data.liveQuestionCount)} canlı banka sorusu · denetim: {new Date(audit.data.auditedAt).toLocaleString('tr-TR')}.</p>
-    {audit.data.uniquePdfCount != null && <p className="muted">{number(audit.data.uniquePdfCount)} farklı PDF içeriği · PDF ile eşleşen {number(audit.data.uniquePdfQuestionCount)} tekil banka sorusu · kaynak eşleştirmesi bekleyen {number(audit.data.sourceReviewQuestionCount)} soru. Aynı dosyanın katalog kopyaları bir satırda birleştirilir. Aynı soru farklı PDF’lerde bulunabildiği için sütun toplamı tekil banka toplamından farklı olabilir.</p>}
+    <div className="page-head"><h1>PDF envanteri</h1><button type="button" className="btn btn-secondary" onClick={audit.retry}>Bilgileri yenile</button></div>
+    <p>Bu tablo yalnız TYT/AYT kaynaklarını gösterir. Sayılar ve kontrol sonuçları veritabanındaki güncel kayıtlardan alınır.</p>
+    <div className="pdf-audit-summary" aria-label="Güncel soru toplamları">
+      <div><strong>{number(audit.data.liveQuestionCount)}</strong><span>Pratikteki toplam soru</span></div>
+      <div><strong>{number(audit.data.uniquePdfQuestionCount)}</strong><span>PDF kaynağı doğrulanan soru</span></div>
+      <div><strong>{number(audit.data.sourceReviewQuestionCount)}</strong><span>PDF kaynağı henüz bulunamayan soru</span></div>
+    </div>
     {audit.data.quarantinedQuestionCount > 0 && <p role="status">İçeriği kaynakta da eksik olan {number(audit.data.quarantinedQuestionCount)} kayıt pratik havuzundan çıkarıldı; eski çözüm geçmişleri korundu. İlgili PDF’ler tam işlenmiş sayılmaz.</p>}
     {!audit.data.current && <p role="alert">Soru bankası denetimden sonra değişti. Kanıtları güncellemek için PDF denetimini yeniden çalıştır.</p>}
-    <p className="muted">Kanıtlı banka sorusu, PDF dosyasının içerik kimliği, kaynak konumu ve canlı soru kodunun eşleşmesine dayanır. “Bütün sorular alındı: Evet” yalnız tam soru dökümü, bağımsız sayfa kontrolü ve banka eşleşmesi birlikte doğrulandığında gösterilir. “Doğrulanmadı” eksik soru bulunabileceğini belirtir. Sıfır eşleşme, PDF’de soru olmadığı anlamına gelmez.</p>
-    <label className="pdf-audit-status">Soru durumu <select value={status} onChange={event => setStatus(event.target.value)}>
+    <div className="pdf-audit-guide">
+      <p><strong>Bankada kayıtlı soru:</strong> Bu PDF ile eşleşmesi doğrulanan, pratikte kullanılabilen sorular. Aynı soru birkaç PDF’de varsa her ilgili satırda görünür; yukarıdaki toplamda bir kez sayılır.</p>
+      <p><strong>Kontrol bekleyen kayıt:</strong> İncelenmesi gereken soru veya sayfa bölgesi. Kesin eksik soru sayısı değildir. “Henüz belirlenmedi”, PDF’nin bütün sorularının sayımının tamamlanmadığını belirtir.</p>
+      <p><strong>Aktarım durumu:</strong> “Tamamı bankada” bütün YKS sorularının alındığının doğrulandığı anlamına gelir. “Kontrol tamamlanmadı” olan PDF’de eksik soru bulunabilir. Sıfır banka kaydı, PDF’de soru olmadığı anlamına gelmez.</p>
+    </div>
+    <p className="muted small">{number(audit.data.uniquePdfCount)} farklı PDF · {number(allRows.filter(row => row.allQuestionsTaken).length)} PDF’nin bütün soruları bankada · son kaynak denetimi: {new Date(audit.data.auditedAt).toLocaleString('tr-TR')}.</p>
+    <div className="pdf-audit-filters">
+    <label className="pdf-audit-status">Aktarım durumu <select value={status} onChange={event => setStatus(event.target.value)}>
       <option value="">Bütün durumlar ({number(audit.data.pdfs.length)})</option>
       {Object.entries(counts).map(([key, list]) => <option key={key} value={key}>{key} ({number(list.length)})</option>)}
     </select></label>
-    <label className="pdf-audit-status">Arşiv <select value={archiveFilter} onChange={event => setArchiveFilter(event.target.value)}>
-      <option value="">Tümü</option><option value="Aktif">Aktif</option><option value="Arşivde">Arşivde</option>
+    <label className="pdf-audit-status">Dosya durumu <select value={fileFilter} onChange={event => setFileFilter(event.target.value)}>
+      <option value="">Tümü</option><option value="Açılabilir">Açılabilir</option><option value="Arşivde">Arşivde</option><option value="Dosya eksik">Dosya eksik</option>
     </select></label>
-    <label className="pdf-audit-status">İşlem etiketi <select value={processingFilter} onChange={event => setProcessingFilter(event.target.value)}>
-      <option value="">Tümü</option>{[...new Set(audit.data.pdfs.map(row => row.processingLabel))].map(value => <option key={value}>{value}</option>)}
-    </select></label>
+    </div>
     <section className="card table-card" aria-label="PDF envanteri tablosu">
       <DataGrid rowData={rows} columnDefs={columns} mode="worksheet" className="pdf-audit-inventory-grid" scrollable columnSorting selectionFilters rowNumbers showSearch={false}
         gridOptions={auditGridOptions} />
@@ -141,11 +156,14 @@ export default function PdfBankAudit() {
       <div className="pdf-audit-proof-head"><h2>{proof?.title || 'Kanıt yükleniyor…'}</h2><button type="button" className="btn btn-secondary btn-sm" onClick={() => { setSelected(null); setProof(null); }}>Kapat</button></div>
       {busy && <Loading text="Kanıt yükleniyor…" />}{proofError && <ErrorBox error={proofError} />}
       {candidateError && <ErrorBox error={candidateError} />}
-      {proof && <><p className="muted">Kaynak: {proof.relativePath} · SHA-256: <code>{proof.sha256}</code> · arşiv: {audit.data.pdfs.find(row => row.id === proof.id)?.archiveState} · hash kontrolü: {proof.hashVerified === true ? 'doğrulandı' : proof.hashVerified === false ? 'uyuşmuyor' : 'soru bağı yok'} · bankadaki {number(proof.questionCount)} soru · çıkarılan {number(proof.candidateCount)} aday.</p>
-        <p>İşlem seçimi: {audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'EXTRACT' ? 'Soru çıkarma' : audit.data.pdfs.find(row => row.id === proof.id)?.workAction === 'ARCHIVE_REVIEW' ? 'Arşiv incelemesi' : 'Seçilmedi'}</p>
-        <p>Bütün sorular alındı: {audit.data.pdfs.find(row => row.id === proof.id)?.completionLabel || 'Doğrulanmadı'}
-          {proof.expectedQuestions != null && ` · Tespit edilen soru sayısı: ${number(proof.expectedQuestions)}`}
-          {audit.data.pdfs.find(row => row.id === proof.id)?.reviewCount > 0 && ` · Karşılaştırma bekleyen: ${number(audit.data.pdfs.find(row => row.id === proof.id)?.reviewCount)}`}</p>
+      {proof && <><p><strong>Aktarım durumu: {selectedRow?.transferStatus}</strong> · Bankada kayıtlı {number(proof.questionCount)} soru · kontrol bekleyen kayıt: {selectedRow?.pendingLabel}.</p>
+        <p>{selectedRow?.allQuestionsTaken ? 'Bütün YKS soruları kontrol edildi ve bankaya bağlandı. Yeniden soru çıkarımı gerekmiyor.'
+          : selectedRow?.extractionComplete ? 'Bu PDF’de bankaya alınacak YKS sorusu olmadığı doğrulandı.'
+          : 'Bu PDF’nin kontrolü tamamlanmadı; bütün soruların bankada olduğu henüz söylenemez.'}
+          {proof.expectedQuestions != null && ` · PDF için tespit edilen toplam soru konumu: ${number(proof.expectedQuestions)}.`}</p>
+        <details><summary>Kaynak bilgileri</summary><p>Kaynak serisi: {selectedRow?.source} · Dosya durumu: {selectedRow?.fileStatus}</p>
+          <p className="muted">{proof.relativePath}</p><p className="muted small">Dosya kimliği (SHA-256): <code>{proof.sha256 || 'Dosya bulunamadı'}</code></p></details>
+        <p>Planlanan işlem: {selectedRow?.workAction === 'EXTRACT' ? 'Soru çıkarma ve aktarım kontrolü' : selectedRow?.workAction === 'ARCHIVE_REVIEW' ? 'Arşivleme için inceleme' : 'İşlem listesine eklenmedi'}. Bu seçim, işlemin tamamlandığı anlamına gelmez.</p>
         {audit.data.pdfs.find(row => row.id === proof.id)?.sourceIssueCount > 0 && <p role="status">Bu PDF’de soru içeriği eksik olan {number(audit.data.pdfs.find(row => row.id === proof.id)?.sourceIssueCount)} kayıt var. Kaynak onarılana kadar tamlık doğrulanamaz.</p>}
         {audit.data.pdfs.find(row => row.id === proof.id)?.excludedOtherExamCount > 0 && <p>Kapsam dışındaki sınavlara ait {number(audit.data.pdfs.find(row => row.id === proof.id)?.excludedOtherExamCount)} örnek bankaya alınmadı. Tamlık TYT/AYT kapsamı için gösterilir.</p>}
         <div className="pdf-audit-work">

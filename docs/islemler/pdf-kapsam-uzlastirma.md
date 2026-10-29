@@ -134,3 +134,13 @@ kanıt panelinin görünürlüğünü ve farklı masaüstü genişliklerinde kay
 gerekmemesini denetler. Geçici DB testi atomik kabulü, tekrar çalıştırma
 engelini, karantinayı, dolu sınav/konu dizilerini ve KPSS kaydının korunmasını
 sınar.
+
+Envanterin ana tablosunda aktarım bilgisi üç sütundur: **Bankada kayıtlı soru**
+PDF'ye doğrulanmış bağlı pratik sorularını, **Kontrol bekleyen kayıt** henüz
+incelenmesi gereken soru/sayfa bölgelerini, **Aktarım durumu** tamlık sonucunu
+gösterir. Bekleyen kayıt sayısı kesin eksik soru sayısı değildir; döküm
+tamamlanmadıysa sıfır yerine **Henüz belirlenmedi** yazılır. Önceki işlem etiketi,
+soru durumu ve bütün sorular alındı sütunları bu tek durum sütununda birleştirilir.
+Dosyanın açık/arşivde/eksik olması ayrı **Dosya durumu** sütunundadır. Planlanan
+çıkarım veya arşiv incelemesi tamamlanma sonucu değildir; **İncele** panelinde
+açıklanır. **Bilgileri yenile** güncel DB sayılarını tekrar okur.

@@ -1,4 +1,10 @@
-.pdf-bank-audit .pdf-audit-status { display: flex; align-items: center; gap: .6rem; margin-block: 1rem; }
+.pdf-bank-audit .pdf-audit-status { display: flex; align-items: center; gap: .6rem; margin-block: .5rem; }
+.pdf-audit-filters { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-block: .75rem; }
+.pdf-audit-summary { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin-block: 1rem; }
+.pdf-audit-summary > div { display: grid; gap: .25rem; }
+.pdf-audit-summary strong { font-size: 1.5rem; }
+.pdf-audit-guide { margin-block: 1rem; }
+.pdf-audit-guide p { margin-block: .4rem; }
 .pdf-bank-audit .pdf-audit-status select { max-width: 22rem; }
 .pdf-audit-inventory-grid { font-size: 12px; --ag-cell-horizontal-padding: 3px; }
 .pdf-audit-inventory-grid .ag-header-cell { padding-inline: 3px; }

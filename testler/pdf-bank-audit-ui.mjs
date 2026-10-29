@@ -55,8 +55,18 @@ try {
   await browser.goto('/dersler-ve-konular/pdf-envanteri');
   await browser.wait('document.querySelectorAll(".pdf-audit-inventory-grid .ag-row").length > 0');
   const initial = await browser.evalJs('document.body.innerText');
-  assert.match(initial,/Bütün sorular alındı/);
-  assert.match(initial,/tekil banka sorusu/);
+  assert.match(initial,/Pratikteki toplam soru/);
+  assert.match(initial,/Kesin eksik soru sayısı değildir/);
+  assert.match(initial,/Aktarım durumu/);
+  const headers=await browser.evalJs(`[...document.querySelectorAll('.pdf-audit-inventory-grid .ag-header-cell-text')].map(node=>node.textContent.trim())`);
+  assert.equal(headers.length,11,'Ten inventory columns plus the shared row number');
+  for(const label of ['Bankada kayıtlı soru','Kontrol bekleyen kayıt','Aktarım durumu','Dosya durumu','Ayrıntılar'])assert.ok(headers.includes(label));
+  for(const label of ['Çıkarım adayı','Bütün sorular alındı','İşlem etiketi','Soru durumu','İşlem seçimi','Arşiv'])assert.ok(!headers.includes(label));
+  const completeCount=data.audit.pdfs.filter(row=>row.allQuestionsTaken).length;
+  assert.equal(await browser.evalJs(`document.querySelector('.pdf-audit-filters select option[value="Tamamı bankada"]').textContent`),`Tamamı bankada (${completeCount.toLocaleString('tr-TR')})`);
+  await browser.evalJs(`(() => {const select=document.querySelector('.pdf-audit-filters select');select.value='Tamamı bankada';select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await browser.wait(`document.querySelector('.pdf-audit-inventory-grid .ag-cell[col-id="transferStatus"]')?.textContent==='Tamamı bankada'`);
+  await browser.evalJs(`(() => {const select=document.querySelector('.pdf-audit-filters select');select.value='';select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   const layout = await browser.evalJs(`(() => {
     const grid=document.querySelector('.pdf-audit-inventory-grid');
     const viewport=grid.querySelector('.ag-body-horizontal-scroll-viewport');
@@ -69,7 +79,7 @@ try {
     await browser.cdp('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
     await browser.wait(`(() => { const v=document.querySelector('.pdf-audit-inventory-grid .ag-body-horizontal-scroll-viewport');return v.scrollWidth<=v.clientWidth+1; })()`);
   }
-  await browser.evalJs(`[...document.querySelectorAll('button')].find(button=>button.textContent.trim()==='Göster').click()`);
+  await browser.evalJs(`[...document.querySelectorAll('button')].find(button=>button.textContent.trim()==='İncele').click()`);
   await browser.wait('document.body.innerText.includes("Soru çıkarma listesine al")');
   assert.equal(await browser.evalJs(`(() => {
     const top=document.querySelector('.pdf-audit-proof').getBoundingClientRect().top;
