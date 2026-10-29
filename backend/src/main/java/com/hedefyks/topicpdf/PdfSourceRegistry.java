@@ -31,6 +31,7 @@ public class PdfSourceRegistry {
         return Boolean.TRUE.equals(jdbc.queryForObject("""
                 SELECT EXISTS(SELECT 1 FROM learning_catalog.pdf_sources s WHERE s.source_sha256=?
                   AND ((s.coverage_state='VERIFIED' AND s.expected_questions>0) OR (s.coverage_state='NO_QUESTIONS' AND s.expected_questions=0))
+                  AND jsonb_array_length(coalesce(s.coverage_evidence->'sourceContentIssues','[]'::jsonb))=0
                   AND s.expected_questions=(SELECT coalesce(sum(greatest(cardinality(o.printed_numbers),1)),0)
                     FROM learning_catalog.pdf_question_occurrences o WHERE o.source_sha256=s.source_sha256 AND o.status='LINKED')
                   AND NOT EXISTS(SELECT 1 FROM learning_catalog.pdf_question_occurrences o
@@ -97,11 +98,14 @@ public class PdfSourceRegistry {
             boolean complete = "VERIFIED".equals(record.get("coverage_state")) && expected > 0
                     && ((Number) record.get("covered_slots")).longValue() == expected && candidates == 0 && reviews == 0 && stale == 0 && issues == 0;
             ObjectNode coverage = parse((String) record.get("coverage_evidence"));
+            long pdfDefects = coverage.path("sourceContentIssues").size();
+            complete = complete && pdfDefects == 0;
             node.put("candidatePackageAvailable", coverage.path("candidatePackage").isTextual());
             node.put("questionCount", ((Number) record.get("question_count")).longValue());
             node.put("candidateCount", candidates);
             node.put("reviewCount", reviews);
-            node.put("sourceIssueCount", issues);
+            node.put("sourceIssueCount", issues + pdfDefects);
+            node.put("pdfContentIssueCount", pdfDefects);
             node.put("pages", ((Number) record.get("page_count")).intValue());
             node.put("sha256", (String) record.get("source_sha256"));
             node.put("archiveState", archived ? "Arşivde" : "Aktif");
@@ -110,13 +114,13 @@ public class PdfSourceRegistry {
             long excluded=((Number)record.get("excluded_count")).longValue();
             node.put("excludedOtherExamCount",excluded);
             boolean noQuestionsVerified="NO_QUESTIONS".equals(record.get("coverage_state")) && expected==0
-                    && ((Number)record.get("covered_slots")).longValue()==0 && reviews==0 && candidates==0 && stale==0 && issues==0;
+                    && ((Number)record.get("covered_slots")).longValue()==0 && reviews==0 && candidates==0 && stale==0 && issues==0 && pdfDefects==0;
             node.put("extractionComplete",complete || noQuestionsVerified);
             node.put("completionLabel", complete ? "Evet" : noQuestionsVerified ? excluded>0 ? "YKS sorusu yok" : "Soru yok" : "Doğrulanmadı");
             if (expected >= 0) node.put("expectedQuestions", expected); else node.putNull("expectedQuestions");
             node.put("processingLabel", complete ? "İşlendi (tam)" : noQuestionsVerified ? "İşlendi (soru yok)" : candidates > 0 ? "Eksik / aday hazır"
                     : node.path("questionCount").asLong() > 0 ? "Eşleşti / tamlık açık" : "İnceleme bekliyor");
-            node.put("status", issues > 0 ? "Eksik soru içeriği var" : stale > 0 ? "Soru kaynağı değişmiş" : complete ? "Tam kapsam doğrulandı" : noQuestionsVerified ? "YKS sorusu içermiyor"
+            node.put("status", issues + pdfDefects > 0 ? "Eksik soru içeriği var" : stale > 0 ? "Soru kaynağı değişmiş" : complete ? "Tam kapsam doğrulandı" : noQuestionsVerified ? "YKS sorusu içermiyor"
                     : node.path("questionCount").asLong() > 0 ? "Kanıtlı banka sorusu var" : "PDF–soru bağı doğrulanmadı");
             String format = (String) record.get("content_format");
             if ("KARMA".equals(format)) {

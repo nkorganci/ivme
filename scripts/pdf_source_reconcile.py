@@ -419,6 +419,9 @@ def reconcile(connection):
                             'teacherApproved':False,'comparisonEvidence':reviewed})
 
     sb_checks = {}
+    provider_review_path=OUT/'provider-content-review.json'
+    provider_reviews={(r['sourceSha256'],r['sourceCode']):r for r in load(provider_review_path)['items']} if provider_review_path.exists() else {}
+    from pdf_provider_content_review import validate as validate_provider_reading
     provenance_by_code = {r['code']: r for r in provenance}
     for relative, part in source_parts(raw_by_code):
         source = files.get(canonical(relative))
@@ -430,6 +433,8 @@ def reconcile(connection):
         answers, key_conflicts = printed_answers(ROOT / source['path'], observations)
         pages = {p['page']: p for p in observations['pages']}
         issues, text_failures, answer_failures = [], [], []
+        complete_image_readings=[];source_content_issues=[]
+        native_pages=read_scan(sha)['pages'] if any(s==sha for s,code in provider_reviews) else []
         if duplicate_numbers or sorted(positions) != list(range(1, len(part) + 1)):
             issues.append('PRINTED_QUESTION_SEQUENCE_MISMATCH')
         if key_conflicts or sorted(answers) != list(range(1, len(part) + 1)):
@@ -441,8 +446,14 @@ def reconcile(connection):
             if page is None:
                 continue
             coverage = text_coverage(raw.get('metin', ''), pages[page]['text'])
-            if coverage < .90:
-                text_failures.append(number)
+            reviewed=provider_reviews.get((sha,code))
+            if reviewed:
+                target=questions.get(code)
+                if not target or not target['active'] or digest(APP/'veri/resimler-pilot'/target['image'])!=reviewed['bankImageSha256']:
+                    raise ValueError('Reviewed provider bank image changed')
+                validate_provider_reading(reviewed,sha,number,code,target,native_pages[page-1],answers.get(number),question.get('api_cevap'))
+                (complete_image_readings if reviewed['status']=='VERIFIED' else source_content_issues).append(reviewed)
+            if coverage < .90 and not (reviewed and reviewed['status']=='VERIFIED'):text_failures.append(number)
             if answers.get(number) != raw.get('cevap') or raw.get('cevap') != question.get('api_cevap'):
                 answer_failures.append(number)
             add_occurrence(sha, code, page, [number], f'veri-hatti/ogm-indirme/sb_yapi.json#id={question["id"]}',
@@ -451,6 +462,7 @@ def reconcile(connection):
             if occurrence:
                 occurrence['evidence'].update({'printedAnswer': answers.get(number), 'apiAnswer': question.get('api_cevap'),
                                                'textTokenCoverage': round(coverage, 4)})
+                if reviewed:occurrence['evidence']['providerContentReview']=reviewed
             registered = provenance_by_code.get(code)
             if registered and registered['kind'] == 'WEB':
                 registered['kind'], registered['sha256'] = 'PDF', sha
@@ -459,7 +471,9 @@ def reconcile(connection):
             issues.append('PDF_TEXT_CHECK_REQUIRES_VISUAL_REVIEW')
         if answer_failures:
             issues.append('PROVIDER_PRINTED_ANSWER_CONFLICT')
+        if source_content_issues:issues.append('PDF_QUESTION_CONTENT_DEFECT')
         sb_checks[sha] = {'expected': len(part), 'issues': issues, 'textReviewNumbers': text_failures,
+                          'completeImageReadings':complete_image_readings,'sourceContentIssues':source_content_issues,
                           'answerReviewNumbers': answer_failures, 'printedQuestions': len(positions),
                           'printedAnswers': len(answers)}
 
@@ -589,6 +603,7 @@ def reconcile(connection):
             'metadataReview':metadata_review,
             'reviewedNonquestionPages':reviewed_pages,
             'unreadablePageNumbers':document['ocrPages'],
+            'sourceContentIssues':sb_checks.get(sha,{}).get('sourceContentIssues',[]),
             'quarantinedQuestionCodes':quality_questions,
             'excludedOtherExamCards':sum(o['status']=='EXCLUDED' and o['evidence'].get('scopeExclusion')=='OTHER_EXAM' for o in linked),
             'candidatePackage':staged_path.relative_to(APP).as_posix() if staged and sha==staged['sourceSha256']
@@ -602,6 +617,9 @@ def reconcile(connection):
             'candidateCards': sum(o['status'] == 'CANDIDATE' for o in linked)}
         if source_index%200==0:
             print(f'Source evidence reconciled: {source_index}/{len(documents)} PDFs',flush=True)
+    from pdf_document_content_review import apply_readings as apply_document_readings
+    document_data={'files':manifest['files'],'documents':list(documents.values()),'occurrences':list(occurrences.values())}
+    apply_document_readings(document_data)
     active = [r for r in provenance if questions[r['code']]['active']]
     old_counts = Counter(o['data'].get('status') for o in aliases)
     report = {'version': 1, 'scope': ['TYT', 'AYT'], 'bankTotal': len(active),
@@ -692,7 +710,7 @@ CREATE TEMP TABLE pdf_format_changes ON COMMIT DROP AS
 -- can repair an old inventory projection. Retain its original label as evidence.
 UPDATE learning_catalog.pdf_audit_rows r SET data=
  jsonb_set(r.data,'{subject}',s.coverage_evidence->'metadataReview'->'subject',true)
- ||jsonb_build_object('originalSubject',coalesce(r.data->'originalSubject',r.data->'subject')),recorded_at=now()
+ ||jsonb_build_object('originalSubject',coalesce(r.data->'originalSubject',r.data->'subject')),updated_at=now()
  FROM learning_catalog.pdf_source_catalog a JOIN learning_catalog.pdf_sources s USING(source_sha256)
  JOIN learning_catalog.current_items i ON i.item_key='pdf:'||a.catalog_id
  WHERE r.catalog_id=a.catalog_id AND s.coverage_evidence->'metadataReview'->>'subjectId'=i.subject_id

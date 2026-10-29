@@ -34,6 +34,21 @@ try {
     assert.equal(card.answer,'E');assert.equal(card.bankAnswer,'C');assert.match(card.sourceReviewNote,/II.*I.*III/);
   }
   const physical = data.audit.pdfs.filter(row=>row.sha256 && row.available);
+  const reviewedProvider=data.audit.pdfs.find(row=>row.sha256==='19a78a768be1d75491436d4c459182766c763cd5b8c919ad8106f232f8f1aac7');
+  if(reviewedProvider?.coverageEvidence?.providerPrintCheck?.completeImageReadings?.length) {
+    assert.equal(reviewedProvider.allQuestionsTaken,true);
+    assert.deepEqual(reviewedProvider.coverageEvidence.providerPrintCheck.textReviewNumbers,[]);
+    const defective=data.audit.pdfs.find(row=>row.sha256==='902a0fa57d8913f479fa61744e3a46e283be478f5375100ba4f373699a441b23');
+    assert.equal(defective.pdfContentIssueCount,2);
+    assert.equal(defective.sourceIssueCount,2);
+    assert.equal(defective.allQuestionsTaken,false);
+    assert.equal(defective.coverageEvidence.sourceContentIssues.length,2);
+    const questions=await browser.evalJs(`Promise.all(['sb-15976','sb-15980'].map(async code=>{
+      const question=await fetch('/api/questions/code/'+encodeURIComponent(code)).then(r=>r.json());
+      const image=await fetch('/api/questions/'+question.id+'/image');return {code:question.code,imageStatus:image.status};
+    }))`);
+    assert.deepEqual(questions,[{code:'sb-15976',imageStatus:200},{code:'sb-15980',imageStatus:200}]);
+  }
   const staged=data.audit.pdfs.find(row=>row.candidatePackageAvailable && ![335,349].includes(row.id));
   if(staged) {
     const candidate=await browser.evalJs(`(async()=>{
@@ -54,6 +69,23 @@ try {
   }
   await browser.goto('/dersler-ve-konular/pdf-envanteri');
   await browser.wait('document.querySelectorAll(".pdf-audit-inventory-grid .ag-row").length > 0');
+  const wholeDocument=data.audit.pdfs.find(row=>row.coverageEvidence?.wholeDocumentReading);
+  if(wholeDocument) {
+    assert.equal(wholeDocument.extractionComplete,true);
+    assert.equal(wholeDocument.allQuestionsTaken,false);
+    assert.equal(wholeDocument.expectedQuestions,0);
+    await browser.evalJs(`(() => {const select=document.querySelector('.pdf-audit-filters select');select.value='YKS sorusu yok';select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+    const selector='.pdf-audit-inventory-grid .ag-row[row-id="'+wholeDocument.id+'"] button';
+    await browser.wait(`!!document.querySelector(${JSON.stringify(selector)})`);
+    await browser.evalJs(`document.querySelector(${JSON.stringify(selector)}).click()`);
+    await browser.wait(`document.body.innerText.includes('Belgenin içerik okuması:')`);
+    const readingText=await browser.evalJs('document.querySelector(".pdf-audit-proof").innerText');
+    assert.match(readingText,/Sekiz fiziksel sayfanın gövdesi okundu/);
+    assert.doesNotMatch(readingText,/PDF’yi açıp soru içerip içermediğini incele/);
+    await browser.evalJs(`document.querySelector('.pdf-audit-proof-head button').click()`);
+    await browser.evalJs(`(() => {const select=document.querySelector('.pdf-audit-filters select');select.value='';select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+    await browser.wait(`document.querySelector('.pdf-audit-inventory-grid .ag-cell[col-id="title"]')?.textContent.includes('TYT 1.')`);
+  }
   const initial = await browser.evalJs('document.body.innerText');
   assert.match(initial,/Pratikteki toplam soru/);
   assert.match(initial,/Kesin eksik soru sayısı değildir/);

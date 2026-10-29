@@ -137,6 +137,23 @@ class PdfSourceRegistryTest extends TestBase {
 
     @SuppressWarnings("unchecked")
     @Test
+    void pdfDefectDoesNotQuarantineACompleteBankQuestionOrProvePdfCompletion() {
+        question("registry-q1", "Biyoloji", "C");
+        String hash="6".repeat(64);source(hash,1,900001);occurrence(hash,"registry-q1");
+        jdbc.update("UPDATE learning_catalog.pdf_sources SET coverage_evidence=?::jsonb WHERE source_sha256=?",
+                "{\"sourceContentIssues\":[{\"sourceCode\":\"registry-q1\",\"status\":\"PDF_STEM_TRUNCATED\"}]}",hash);
+        assertThat(registry.complete(hash)).isFalse();
+        Map<String,Object> row=((List<Map<String,Object>>)registry.list().get("pdfs")).getFirst();
+        assertThat(row.get("allQuestionsTaken")).isEqualTo(false);
+        assertThat(row.get("pdfContentIssueCount")).isEqualTo(1L);
+        assertThat(row.get("questionCount")).isEqualTo(1L);
+        assertThat(jdbc.queryForObject("SELECT active FROM questions WHERE code='registry-q1'",Boolean.class)).isTrue();
+        assertThat(jdbc.queryForObject("SELECT correct_answer FROM questions WHERE code='registry-q1'",String.class)).isEqualTo("C");
+        assertThat(jdbc.queryForObject("SELECT count(*) FROM learning_catalog.question_source_issues",Long.class)).isZero();
+    }
+
+    @SuppressWarnings("unchecked")
+    @Test
     void guideClassificationDoesNotImplyCompleteQuestionTransfer() {
         String hash="8".repeat(64);source(hash,1,900001);
         jdbc.update("UPDATE learning_catalog.pdf_sources SET content_format='CALISMA_REHBERI' WHERE source_sha256=?",hash);

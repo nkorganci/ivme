@@ -50,6 +50,39 @@ kullanılmamış kareli not sayfalarını kaynak, fiziksel sayfa, özgün metin,
 render hash'ine bağlar. Yalnız bu sayfanın okunabilirlik engelini kaldırır;
 gerçek soru adayı veya aktarım eksiğini kapatamaz.
 
+**Sağlayıcı PDF'sindeki görsel soru.** `providerPrintCheck.textReviewNumbers`
+metin katmanı eksik soruları da içerir. Sıfır metin, boş soru değildir.
+`pdf_provider_content_review.py`, tek tek okunmuş tam PDF kırpımını banka
+görseliyle, basılı soru numarasıyla ve PDF/API/banka cevaplarıyla birlikte
+doğrular. Karar iki görselin, kaynak sayfasının ve banka damgasının hash'ine
+bağlıdır; genel benzerlik otomatik kabul edilmez.
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_provider_content_review.py --preview
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_source_reconcile.py --publish
+```
+
+`VERIFIED` okuma yalnız ilgili sorunun metin karşılaştırma engelini kapatır.
+`PDF_STEM_TRUNCATED`, özgün PDF'deki eksik harfleri `sourceContentIssues`
+olarak tutar. Banka görseli tam olduğunda soru karantinaya alınmaz; cevap,
+öğrenci geçmişi ve özgün PDF korunur. Bu PDF'nin tam aktarım sonucu verilmez;
+envanterde kaynak hatası ve kesin sayfa/soru konumu görünür. Kaynak görünümü
+onarılırsa eski hash'e yazılmış okuma yeni PDF'ye taşınamaz.
+
+**Bütün belgenin soru içermediğinin okunması.** `pdf_document_content_review.py`
+yalnız bütün fiziksel sayfaları için açık içerik notu yazılmış, hash'i değişmemiş
+belgeleri kapatır. Dosya adı, sıfır banka kaydı veya OCR'da seçenek bulunmaması
+bu kararı üretemez. Mevcut soru/aday bağı, okunmamış sayfa veya kaynak sorunu
+varsa okuma bunları silemez. Kaydedilmiş karar, sonraki tam uzlaştırmada da korunur.
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/pdf_document_content_review.py --publish
+```
+
+Bu artımlı yayın yalnız incelenmiş kaynak satırını değiştirir; ortak katalogda
+biçim değişmesi gerekiyorsa tam uzlaştırma ister. Aynı kararın tekrarı sıfır kaynak
+günceller. İçerik okuması kanıt panelinde görünür; öğretmen onayı ayrı kalır.
+
 V85–V88 yerel Flyway üzerinden uygulanmış olmalıdır. Kayıtları tek işlemde yayımla:
 
 ```powershell

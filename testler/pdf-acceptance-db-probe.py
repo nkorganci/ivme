@@ -6,12 +6,45 @@ import subprocess
 import sys
 import tempfile
 import uuid
+from unittest.mock import patch
 
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from kaynakli_arastirma_db import db_connection,query
 from pdf_question_accept import publish,compact,literal
 from pdf_source_scan import APP
+
+
+def registry_publication_probe(connection):
+    import pdf_source_reconcile as registry
+    sha='7'*64;catalog_id=900002
+    run=query(connection,'SELECT run_key FROM learning_catalog.current_run')
+    resource={'key':f'pdf:{catalog_id}','kind':'PDF','exam':'TYT','subjectId':'geometri',
+              'canonicalAssetId':'sha256:'+sha,'automaticLabels':{'contentFormat':'TEST'},'sentinel':'preserved-pdf'}
+    query(connection,f"""INSERT INTO learning_catalog.items(run_key,item_key,kind,exam,subject_id,student_visible,data)
+      VALUES ({literal(run)},'pdf:{catalog_id}','PDF','TYT','geometri',true,{literal(compact(resource))}::jsonb);
+      INSERT INTO learning_catalog.pdf_audit_rows(catalog_id,data) VALUES ({catalog_id},'{{"id":{catalog_id},"subject":"Matematik","proof":[{{"code":"keep"}}]}}');""")
+    questions=registry.json_query(connection,"SELECT code,active,extract(epoch FROM updated_at)::text stamp FROM questions WHERE exam_type IN ('TYT','AYT')")
+    snapshot=hashlib.sha256(json.dumps(sorted((q['code'],q['active'],q['stamp']) for q in questions),separators=(',',':')).encode()).hexdigest()
+    data={'questionSnapshotSha256':snapshot,'files':[],'aliases':[{'id':catalog_id,'sha256':sha}],
+          'documents':[{'sha256':sha,'pageCount':1,'format':'CALISMA_REHBERI','coverageState':'NO_QUESTIONS',
+                        'expectedQuestions':0,'ocrEvidenceSha256':'test-ocr',
+                        'coverageEvidence':{'metadataReview':{'subjectId':'geometri','subject':'Geometri'},'sourceContentIssues':[]}}],
+          'occurrences':[],'provenance':[],'fingerprints':[]}
+    page={'page':1,'text':'Rehber','textSha256':hashlib.sha256(b'Rehber').hexdigest()}
+    before=query(connection,"SELECT md5(string_agg(row_to_json(q)::text,',' ORDER BY code)) FROM questions q")
+    with tempfile.TemporaryDirectory(prefix='ivme-registry-publish-') as temporary,patch.object(registry,'OUT',Path(temporary)),patch.object(registry,'read_evidence_scan',return_value={'pages':[page]}):
+        registry.publish(connection,data)
+        assert query(connection,f"SELECT data->>'subject' FROM learning_catalog.pdf_audit_rows WHERE catalog_id={catalog_id}")=='Geometri'
+        assert query(connection,f"SELECT data->>'originalSubject' FROM learning_catalog.pdf_audit_rows WHERE catalog_id={catalog_id}")=='Matematik'
+        assert query(connection,f"SELECT data->'proof'->0->>'code' FROM learning_catalog.pdf_audit_rows WHERE catalog_id={catalog_id}")=='keep'
+        assert query(connection,f"SELECT content_format FROM learning_catalog.current_items WHERE item_key='pdf:{catalog_id}'")=='CALISMA_REHBERI'
+        assert query(connection,"SELECT data->>'sentinel' FROM learning_catalog.current_items WHERE item_key='question:test-kpss'")=='unchanged'
+        after_run=query(connection,'SELECT run_key FROM learning_catalog.current_run')
+        registry.publish(connection,data)
+        assert query(connection,'SELECT run_key FROM learning_catalog.current_run')==after_run
+        assert query(connection,"SELECT md5(string_agg(row_to_json(q)::text,',' ORDER BY code)) FROM questions q")==before
+    print('Registry publication preserves bank, original labels, proofs and unrelated catalog; repeat is idempotent.')
 
 
 def main():
@@ -62,6 +95,7 @@ def main():
         assert query(connection,'SELECT count(*) FROM questions')=='4'
         assert query(connection,"SELECT count(*) FROM learning_catalog.pdf_question_occurrences WHERE status='LINKED'")=='2'
     print('Atomic acceptance, catalog preservation, option permutation and replay guard passed.')
+    registry_publication_probe(connection)
 
 
 if __name__=='__main__':main()

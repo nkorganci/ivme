@@ -17,6 +17,49 @@ from pdf_raw_compare import discretionary_wraps
 
 
 class SourceIdentityTest(unittest.TestCase):
+    def test_whole_document_reading_cannot_clear_an_unread_page_or_any_question(self):
+        import copy
+        import pdf_document_content_review as review
+        reading={'pageCount':2,'format':'KONU_ANLATIMI','expectedQuestions':0,'teacherApproved':False,
+                 'sourceReading':'Both pages read; diagrams only.','pages':[{'page':1},{'page':2}]}
+        doc={'sha256':'s','pageCount':2,'ocrPages':[],'coverageState':'NEEDS_REVIEW',
+             'coverageEvidence':{'reasons':['FULL_QUESTION_ENUMERATION_REQUIRED']}}
+        data={'files':[{'sha256':'s','path':'fixture.pdf'}],'documents':[doc],'occurrences':[]}
+        with patch.dict(review.READINGS,{'s':reading},clear=True),patch.object(review,'digest',return_value='s'),patch.object(review,'read_scan',return_value={'error':None,'pageCount':2,'pages':[{'textSha256':'a'},{'textSha256':'b'}]}):
+            valid=copy.deepcopy(data);review.apply_readings(valid)
+            self.assertEqual(valid['documents'][0]['coverageState'],'NO_QUESTIONS')
+            self.assertEqual(valid['documents'][0]['expectedQuestions'],0)
+            for status in ('CANDIDATE','LINKED','NEEDS_REVIEW'):
+                candidate=copy.deepcopy(data);candidate['occurrences']=[{'sha256':'s','status':status}]
+                with self.assertRaises(ValueError):review.apply_readings(candidate)
+            unread=copy.deepcopy(data);unread['documents'][0]['ocrPages']=[2]
+            with self.assertRaises(ValueError):review.apply_readings(unread)
+            signalled=copy.deepcopy(data);signalled['documents'][0]['questionSignalPages']=[2]
+            with self.assertRaises(ValueError):review.apply_readings(signalled)
+            broken=copy.deepcopy(data);broken['documents'][0]['coverageEvidence']['reasons'].append('PDF_READ_ERROR')
+            with self.assertRaises(ValueError):review.apply_readings(broken)
+            with patch.dict(review.READINGS,{'s':{**reading,'pages':[{'page':1}]}},clear=True):
+                with self.assertRaises(ValueError):review.apply_readings(copy.deepcopy(data))
+
+    def test_provider_visual_reading_freezes_full_pair_and_rejects_wrong_answers_or_location(self):
+        import copy
+        import pdf_provider_content_review as review
+        row={field:'value' for field in review.PAIR_FIELDS}
+        row.update({'sourceSha256':'s','sourceCode':'code','canonicalCode':'code','printedNumber':7,'pdfPage':2,
+                    'bankStamp':'stamp','bankImage':'bank.webp','bankAnswer':'B','printedAnswer':'B','apiAnswer':'B',
+                    'nativePageTextSha256':'page-text','bbox':[1,2,3,4]})
+        row.update({'status':'VERIFIED','sourceReading':'Whole source and bank image read.','teacherApproved':False})
+        reading=('s',review.pair_signature(row),'VERIFIED',row['sourceReading'])
+        question={'source_stamp':'stamp','image':'bank.webp','correct_answer':'B'}
+        page={'page':2,'textSha256':'page-text'}
+        with patch.dict(review.READINGS,{'code':reading},clear=True):
+            self.assertEqual(review.validate(row,'s',7,'code',question,page,'B','B')['status'],'VERIFIED')
+            for field in ('sourceRenderSha256','bankImageSha256','nativePageTextSha256','sourceSha256'):
+                changed=copy.deepcopy(row);changed[field]='changed'
+                with self.assertRaises(ValueError):review.validate(changed,'s',7,'code',question,page,'B','B')
+            with self.assertRaises(ValueError):review.validate(row,'s',8,'code',question,page,'B','B')
+            with self.assertRaises(ValueError):review.validate(row,'s',7,'code',question,page,'A','B')
+
     def test_later_ocr_cannot_erase_earlier_question_option_evidence(self):
         import copy
         import hashlib

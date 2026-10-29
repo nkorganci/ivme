@@ -182,7 +182,9 @@ export default function PdfBankAudit() {
         <details><summary>Kaynak bilgileri</summary><p>Kaynak serisi: {selectedRow?.source} · Dosya durumu: {selectedRow?.fileStatus}</p>
           <p className="muted">{proof.relativePath}</p><p className="muted small">Dosya kimliği (SHA-256): <code>{proof.sha256 || 'Dosya bulunamadı'}</code></p></details>
         <p>Planlanan işlem: {selectedRow?.workAction === 'EXTRACT' ? 'Soru çıkarma ve aktarım kontrolü' : selectedRow?.workAction === 'ARCHIVE_REVIEW' ? 'Arşivleme için inceleme' : 'İşlem listesine eklenmedi'}. Bu seçim, işlemin tamamlandığı anlamına gelmez.</p>
-        {audit.data.pdfs.find(row => row.id === proof.id)?.sourceIssueCount > 0 && <p role="status">Bu PDF’de soru içeriği eksik olan {number(audit.data.pdfs.find(row => row.id === proof.id)?.sourceIssueCount)} kayıt var. Kaynak onarılana kadar tamlık doğrulanamaz.</p>}
+        {selectedRow?.sourceIssueCount > 0 && <p role="status">Bu PDF’de soru içeriği eksik olan {number(selectedRow.sourceIssueCount)} kayıt var. Kaynak onarılana kadar tamlık doğrulanamaz.</p>}
+        {proof.coverageEvidence?.sourceContentIssues?.map(issue => <p key={issue.sourceCode} role="status"><strong>PDF sayfa {issue.pdfPage}, soru {issue.printedNumber}:</strong> {issue.sourceReading}</p>)}
+        {proof.coverageEvidence?.wholeDocumentReading && <p><strong>Belgenin içerik okuması:</strong> {proof.coverageEvidence.wholeDocumentReading.sourceReading}</p>}
         {audit.data.pdfs.find(row => row.id === proof.id)?.excludedOtherExamCount > 0 && <p>Kapsam dışındaki sınavlara ait {number(audit.data.pdfs.find(row => row.id === proof.id)?.excludedOtherExamCount)} örnek bankaya alınmadı. Tamlık TYT/AYT kapsamı için gösterilir.</p>}
         <div className="pdf-audit-work">
           <button type="button" className="btn btn-secondary btn-sm" disabled={workBusy || !proof.available || !audit.data.current || audit.data.pdfs.find(row => row.id === proof.id)?.extractionComplete || audit.data.pdfs.find(row => row.id === proof.id)?.allQuestionsTaken || audit.data.pdfs.find(row => row.id === proof.id)?.archiveState === 'Arşivde'} onClick={() => changeWork('EXTRACT')}>Soru çıkarma listesine al</button>
@@ -193,6 +195,7 @@ export default function PdfBankAudit() {
         {workError && <ErrorBox error={workError} />}
         {proof.questionCount ? <DataGrid rowData={proof.proof} columnDefs={questionColumns} mode="worksheet" scrollable columnSorting selectionFilters rowNumbers showSearch={false} fitAllRows
           gridOptions={codeGridOptions} />
+          : selectedRow?.extractionComplete ? <p>Bu kaynakta bankaya aktarılacak soru bulunmadığı doğrulandı.</p>
           : <p>Bu PDF’ye kesin bağlanan canlı banka sorusu bulunamadı. PDF’yi açıp soru içerip içermediğini incele.</p>}</>}
       {candidates && <div className="pdf-audit-candidates"><h3>PDF’deki sorular ve aktarım durumu</h3>
         <p className="muted">{number(candidates.questionCount)} sorunun kaynak cevabı iki yöntemle okundu. {number(candidates.linkedCount || 0)} soru bankadaki kayda bağlı; {number(candidates.pendingCount ?? candidates.questionCount)} soru kontrol bekliyor; {number(candidates.excludedCount || 0)} örnek kapsam dışında. Kaynak anahtarındaki doğrulanmış hata ayrı gösterilir.</p>
