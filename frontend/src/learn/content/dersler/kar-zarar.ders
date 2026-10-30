@@ -106,6 +106,25 @@ soru: Bir satıcı bir ürünü 540 TL'ye satarak %20 kâr ediyor. Ürünün al�
 3. Kontrol: $450$'nin %20'si 90; $450 + 90 = 540$ ✓ || $540 \cdot 0{,}8 = 432$ yanlış olurdu.
 cevap: 450 TL
 
+::ornek baslik="Önce alışı bul, sonra yeni yüzdeyi uygula"
+soru: Bir satıcı bir ürünü %25 kârla 600 liraya satıyor. Aynı ürünü %10 zararla satsaydı kaç liraya satardı?
+1. Alış $x$: $1{,}25x=600$, $x=480$ lira. || Kâr ve zarar yüzdesinin tabanı alıştır; önce onu bulduk.
+2. %10 zarar çarpanı $0{,}9$. || Zararlı satış, alışın %90'ıdır.
+3. $480\cdot0{,}9=432$ lira. || Yeni yüzdeyi yine alışa uyguladık.
+cevap: 432 lira. Satıştan doğrudan %35 düşmek ($600\cdot0{,}65=390$) yanlış olurdu; iki yüzdenin tabanı aynı değil.
+
+::sorgula s1-telefon baslik="İkinci el telefon"
+durum: 2000 liraya aldığın telefonu bir yıl sonra 1700 liraya sattın.
+soru: Bu satışta zarar yüzde kaçtır?
+A) Yaklaşık %17,6 || $300:1700$ yaptın; zarar yüzdesinin tabanı satış değil alış fiyatıdır.
++B) %15 || Zarar 300 lira; $\frac{300}{2000}=\frac{15}{100}$.
+C) %30 || 300 lirayı yüzde sandın; yüzde, zararın alışa oranıdır.
+kontrol: 300/2000*100
+neden: Zarar $2000-1700=300$ lira. Kâr ve zarar her zaman alışa göre ölçülür: $\frac{300}{2000}=0{,}15$, yani %15.
+sinav: Alışa 100 de: %15 zarar demek satışın 85 olması demektir. Satış verilip alış soruluyorsa çarpana böl.
+dusun: Telefonu %10 kârla satmak isteseydin kaç lira istemeliydin?
+yanit: $2000\cdot1{,}1=2200$ lira.
+
 ::yanilgi m1 tip=kar-yuzde
 yanlis: 540 TL'ye %20 kârla satılan ürünün alışı $540 - 540 \cdot 0{,}2 = 432$ TL'dir.
 neden: Kâr, satışın değil alışın %20'sidir; satıştan yüzde çıkarmak tabanı değiştirir.
@@ -139,9 +158,27 @@ cevap: 324 TL
 
 ::tamamla baslik="İndirimden etikete"
 soru: %30 indirimle 245 TL'ye satılan bir ürünün etiket fiyatı kaç TL'dir?
-1. İndirim çarpanı $0{,}7$: $0{,}7 \cdot E = 245$.
-?2. $E = 245 : 0{,}7 = 350$ TL.
+1. İndirim çarpanı $0{,}7$: $0{,}7 \cdot E = 245$. || İndirimli fiyat etiketin yüzde 70'idir; taban etiket fiyatıdır.
+?2. $E = 245 : 0{,}7 = 350$ TL. || Çarpanla çarpılmış değerden geri dönmek için çarpana böleriz.
 cevap: 350 TL
+
+::ornek baslik="Zamdan sonra indirim"
+soru: Bir ürüne %20 zam yapıldıktan sonra fiyatı 360 lira oluyor. Ardından yeni fiyat üzerinden %10 indirim yapılıyor. Son fiyat, zamdan önceki fiyata göre yüzde kaç değişmiştir?
+1. Zamdan önceki fiyat: $360:1{,}2=300$ lira. || Zamlı fiyat, eski fiyatın 1,2 katıdır.
+2. Son fiyat: $360\cdot0{,}9=324$ lira. || İndirim o anki (zamlı) fiyata uygulanır.
+3. $\frac{324}{300}=1{,}08$: %8 artış. || Çarpanlarla: $1{,}2\cdot0{,}9=1{,}08$.
+cevap: %8 artmıştır.
+
+::sorgula s2-kampanya baslik="Hangi kampanya daha ucuz?"
+durum: A mağazası bir ürüne tek seferde %40 indirim yapıyor. B mağazası aynı etiket fiyatına önce %20, sonra indirimli fiyata bir %20 daha indirim yapıyor.
+soru: Hangi mağazada ürün daha ucuzdur?
++A) A mağazasında || A: $0{,}6$; B: $0{,}8\cdot0{,}8=0{,}64$. A daha ucuz.
+B) B mağazasında || İkinci indirim daha küçük bir fiyata uygulandığı için %40'a ulaşmaz.
+C) İkisi aynı fiyata || Ardışık indirimlerde yüzdeler toplanmaz; çarpanlar çarpılır.
+neden: Etiket 100 olsun. A'da $100\cdot0{,}6=60$. B'de $100\cdot0{,}8=80$, sonra $80\cdot0{,}8=64$. B'deki toplam indirim yalnız %36'dır.
+sinav: Ardışık indirimlerde toplam indirim $1-(\text{çarpanların çarpımı})$'dır; yüzdeleri toplamak fazla indirim hesaplatır.
+dusun: B mağazası ikinci indirimi yüzde kaç yapsaydı iki mağaza eşit olurdu?
+yanit: $0{,}8\cdot x=0{,}6$, $x=0{,}75$: ikinci indirim %25 olmalıydı.
 
 ::yanilgi m2 tip=indirim-zam
 yanlis: Önce %20, sonra %10 indirim toplam %30 indirimdir.
@@ -199,6 +236,24 @@ ipucu: Soruda hem etiket/indirim hem kâr/zarar geçiyor
 3. Satış − 100 kâr (ya da zarar) yüzdesidir.
 4. Bilinmeyen varsa zinciri denklem olarak yaz.
 
+::ornek baslik="İndirime rağmen kâr: etikete ne yazılmalı?"
+soru: Alış fiyatı 400 lira olan bir ürün, etiket fiyatı üzerinden %25 indirimle satıldığında bile %20 kâr getirsin isteniyor. Etikete kaç lira yazılmalıdır?
+1. Hedef satış: $400\cdot1{,}2=480$ lira. || Kâr alışa göre hesaplanır.
+2. Satış, etiketin %75'idir: $0{,}75E=480$. || İndirim etikete uygulanır.
+3. $E=480:0{,}75=640$ lira. || Kontrol: $640\cdot0{,}75=480$ ve $\frac{80}{400}=$ %20.
+cevap: 640 lira.
+
+::sorgula s3-yilsonu baslik="Yılsonu indirimi"
+durum: Bir mağaza ürünlerini alış fiyatının %60 fazlasına etiketliyor. Yılsonunda etiket fiyatları üzerinden %40 indirim yapıyor.
+soru: Yılsonunda satılan bir üründe mağaza kâr mı eder, zarar mı?
+A) %20 kâr eder || $60-40$ yaptın; yüzdeler farklı tabanlara uygulandığı için çıkarılamaz.
++B) %4 zarar eder || Alış 100: etiket 160, satış $160\cdot0{,}6=96$.
+C) Ne kâr ne zarar eder || Satış 96 çıkar; 100'ün altında.
+neden: Zincir: $100\cdot1{,}6\cdot0{,}6=96$. Satış alıştan 4 eksik: %4 zarar. %40 indirim, alışın değil 160'lık etiketin %40'ıdır (64 lira).
+sinav: Alış → etiket → satış zincirinde alışa 100 de, çarpanları sırayla uygula ve sonucu 100 ile karşılaştır.
+dusun: Mağazanın ne kâr ne zarar etmesi için yılsonu indirimi yüzde kaç olmalı?
+yanit: $160\cdot x=100$, $x=0{,}625$: %37,5 indirim.
+
 ::yanilgi m3 tip=kar-indirim
 yanlis: Etiket alışın %50 fazlası, indirim %20 ise kâr %30'dur.
 neden: İndirim etikete uygulanır; çarpanlar $1{,}5 \cdot 0{,}8 = 1{,}2$ verir.
@@ -232,10 +287,28 @@ cevap: %26
 
 ::tamamla baslik="Satış adedi ile alış adedi"
 soru: Bir manav 12 portakalın satış fiyatına 15 portakal alabiliyor. Manavın kârı yüzde kaçtır?
-1. $12 \cdot S = 15 \cdot A$.
-?2. $\frac{S}{A} = \frac{15}{12} = 1{,}25$.
-?3. Kâr %25.
+1. $12 \cdot S = 15 \cdot A$. || Aynı para iki şekilde harcanıyor: 12 portakalın satışı ile 15 portakalın alışı eşit.
+?2. $\frac{S}{A} = \frac{15}{12} = 1{,}25$. || Birim satışın birim alışa oranı kâr çarpanını verir.
+?3. Kâr %25. || Çarpan 1,25 ise satış alıştan %25 fazladır.
 cevap: %25
+
+::ornek baslik="Çürüyen ürünle hedef kâr"
+soru: Kilogramı 20 liraya alınan 50 kg domatesin 10 kg'ı çürüyor. Satıcı kalan domatesin kilogramını kaç liradan satarsa %20 kâr eder?
+1. Maliyet $50\cdot20=1000$ lira. || Çürüyenler de parayla alındı; maliyete girer.
+2. Hedef gelir $1000\cdot1{,}2=1200$ lira. || Kâr, toplam maliyete göre hesaplanır.
+3. Satılabilecek 40 kg: $1200:40=30$ lira. || Gelir yalnız sağlam ürünlerden gelir.
+cevap: Kilogramı 30 lira. Kontrol: $40\cdot30-1000=200$ ve $\frac{200}{1000}=$ %20.
+
+::sorgula s4-kampanya baslik="3 al 2 öde"
+durum: Bir dükkân tanesi 60 lira olan ürünlerde “3 al 2 öde” kampanyası yapıyor.
+soru: Bu kampanya ürün başına yaklaşık yüzde kaç indirime denktir?
+A) %50 || 3 ürünün 1'i bedava; indirim 3'te 1'dir, 2'de 1 değil.
++B) Yaklaşık %33,3 || 3 ürüne 120 lira ödenir; birim fiyat 40 lira: $\frac{20}{60}=\frac{1}{3}$.
+C) Yaklaşık %66,7 || Bu, ödenen kısmın oranıdır; indirim değil.
+neden: Normalde 3 ürün 180 lira; kampanyada 120 lira. İndirim $\frac{60}{180}=\frac{1}{3}$, yaklaşık %33,3. Birim fiyat 60'tan 40'a iner.
+sinav: Adet kampanyalarında toplam ödenen ile normal tutarı karşılaştır; indirim yüzdesi her zaman normal tutara göre hesaplanır.
+dusun: “4 al 3 öde” kampanyası mı daha avantajlı, “3 al 2 öde” mi?
+yanit: “4 al 3 öde” %25 indirimdir; “3 al 2 öde” (%33,3) daha avantajlı.
 
 ::soru c4 tip=adet-maliyet zorluk=2
 Tanesi 4 TL'ye alınan 120 kalemin 80'i tanesi 6 TL'den, kalanı tanesi 3 TL'den satılıyor. Bu satıştan kaç TL kâr edilir?

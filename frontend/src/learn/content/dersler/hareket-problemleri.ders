@@ -107,6 +107,24 @@ soru: Saatte 90 km hızla giden bir otobüs 3 saat 20 dakikada kaç km yol alır
 3. "3,20 saat" alınsaydı $288$ km bulunurdu ✗ || Saat ondalığı dakika değildir.
 cevap: 300 km
 
+::ornek baslik="Metre/saniyeden km/saate"
+soru: Bir koşucu 100 metreyi 12,5 saniyede koşuyor. Ortalama hızı saatte kaç km'dir?
+1. $V=\frac{100}{12{,}5}=8$ m/sn. || Önce verilen birimlerde hızı bulduk.
+2. 1 m/sn, saatte $3600$ m yani $3{,}6$ km eder. || Bir saatte 3600 saniye vardır; 1000 metre 1 km'dir.
+3. $8\cdot3{,}6=28{,}8$ km/sa. || m/sn'den km/sa'e geçerken 3,6 ile çarparız.
+cevap: Saatte 28,8 km.
+
+::sorgula s1-okul baslik="Evden en geç kaçta çıkmalı?"
+durum: Okulun evine 1,2 km uzaklıkta. Dakikada 80 metre hızla yürüyorsun. İlk ders 08.30'da başlıyor.
+soru: Derse yetişmek için evden en geç saat kaçta çıkmalısın?
++A) 08.15 || $1200:80=15$ dakika yürürsün.
+B) 08.00 || Yürüyüş 15 dakika sürüyor; en geç çıkış saati soruluyor, yarım saat önce çıkmak gerekmez.
+C) 08.28 || 1,2'yi 80 ile aynı birimde almadın; km'yi metreye çevirmelisin.
+neden: Birimleri eşle: $1{,}2$ km $=1200$ m. Süre $=\frac{\text{yol}}{\text{hız}}=\frac{1200}{80}=15$ dakika. 08.30'dan 15 dakika önce: 08.15.
+sinav: $x=V\cdot t$ formülünü kullanmadan önce yol, hız ve zamanın birimlerini aynı sisteme getir.
+dusun: Saatte 12 km hızla bisikletle gidersen evden en geç kaçta çıkabilirsin?
+yanit: $1{,}2:12=0{,}1$ saat, yani 6 dakika: 08.24'te çıkabilirsin.
+
 ::yanilgi m1 tip=yol-hiz-zaman
 yanlis: 2 saat 24 dakika $2{,}24$ saattir.
 neden: Bir saat 60 dakikadır; 24 dakika saatin $\frac{24}{60} = 0{,}4$'üdür.
@@ -147,10 +165,29 @@ cevap: 3 saat; 180 km
 
 ::tamamla baslik="Arkadan yetişme"
 soru: Bir araç saatte 50 km hızla yola çıkıyor. 2 saat sonra aynı noktadan aynı yöne ikinci bir araç saatte 75 km hızla çıkıyor. İkinci araç birinciye kaç saatte yetişir?
-1. 2 saatte birinci araç $50 \cdot 2 = 100$ km öne geçer.
-?2. Aynı yönde yaklaşma hızı $75 - 50 = 25$ km/sa.
-?3. $100 : 25 = 4$ saat.
+1. 2 saatte birinci araç $50 \cdot 2 = 100$ km öne geçer. || İkinci araç yola çıkana kadar aradaki mesafe birinci aracın aldığı yoldur.
+?2. Aynı yönde yaklaşma hızı $75 - 50 = 25$ km/sa. || Aynı yönde giderken aradaki mesafe hız farkı kadar kapanır.
+?3. $100 : 25 = 4$ saat. || Süre = kapanacak mesafe ÷ kapanma hızı.
 cevap: 4 saat
+
+::ornek baslik="Karşılaşmadan önce ve sonra 100 km"
+soru: Aralarında 300 km bulunan iki araç saatte 60 km ve 40 km hızlarla aynı anda birbirine doğru yola çıkıyor. Kaç saat sonra aralarında 100 km kalır? Karşılaştıktan sonra aralarındaki mesafe ne zaman yeniden 100 km olur?
+1. Aradaki mesafe saatte $60+40=100$ km değişir. || Zıt yönde hareket eden iki araçta hızlar toplanır.
+2. 100 km kalması için $300-100=200$ km kapanmalı: $200:100=2$ saat. || Kapanan mesafe ÷ yaklaşma hızı.
+3. 3. saatte karşılaşırlar; sonra yine saatte 100 km uzaklaşırlar: 1 saat sonra, yani 4. saatte aralarında 100 km olur. || Karşılaştıktan sonra aynı hızla ayrılırlar.
+cevap: 2. saatte ve 4. saatte.
+
+::sorgula s2-bulusma baslik="İki arkadaş buluşuyor"
+durum: İki arkadaşın evleri arasında 2,4 km var. Aynı anda evlerinden çıkıp birbirlerine doğru yürüyorlar; biri dakikada 70 m, diğeri dakikada 50 m yürüyor.
+soru: Kaç dakika sonra buluşurlar?
+A) Yaklaşık 34 dakika || $2400:70$ yaptın; diğer arkadaş da yürüdüğü için mesafe daha hızlı kapanır.
++B) 20 dakika || Mesafe dakikada $70+50=120$ m kapanır: $2400:120=20$.
+C) 120 dakika || Hızları çıkardın; birbirlerine doğru yürüyorlar, hızlar toplanır.
+kontrol: 2400/(70+50)
+neden: Birbirine doğru hareket edenler arasındaki mesafe, hızların toplamı kadar azalır. $2400:120=20$ dakika. O ana kadar biri 1400 m, diğeri 1000 m yürümüştür.
+sinav: Zıt yönde (birbirine doğru) $V_1+V_2$, aynı yönde $V_1-V_2$ ile mesafe kapanır.
+dusun: Aynı yönde yürüselerdi ve hızlı olan 2,4 km geride olsaydı, kaç dakikada yetişirdi?
+yanit: Mesafe dakikada $70-50=20$ m kapanır: $2400:20=120$ dakika.
 
 ::yanilgi m2 tip=karsilasma
 yanlis: Aynı yönde giden iki aracın birbirine yaklaşma hızı $V_1 + V_2$'dir.
@@ -182,6 +219,25 @@ soru: Bir araç A'dan B'ye saatte 90 km, B'den A'ya saatte 60 km hızla gidiyor.
 2. Toplam 360 km, 5 sa. || Toplam yol ve toplam zaman.
 3. Ortalama $360 : 5 = 72$ km/sa. || Formül: $\frac{2 \cdot 90 \cdot 60}{150} = 72$.
 cevap: 72 km/sa
+
+::ornek baslik="Eşit sürelerde ortalama hız"
+soru: Bir araç 2 saat saatte 80 km, sonraki 2 saat saatte 50 km hızla gidiyor. Ortalama hızı saatte kaç km'dir?
+1. Toplam yol $2\cdot80+2\cdot50=260$ km. || Her bölümün yolunu ayrı bulduk.
+2. Toplam zaman $4$ saat. || Süreler eşit.
+3. Ortalama $260:4=65$ km/sa. || Eşit sürelerde ortalama hız, hızların aritmetik ortalamasıdır: $\frac{80+50}{2}$.
+cevap: Saatte 65 km. Eşit yollarda ise sonuç farklı olurdu.
+
+::sorgula s3-yokus baslik="Yokuş yukarı, yokuş aşağı"
+durum: Bir bisikletli bir tepeye saatte 10 km hızla çıkıyor, aynı yoldan saatte 30 km hızla iniyor.
+soru: Çıkış ve inişin tamamında ortalama hızı saatte kaç km'dir?
+A) 20 km/sa || Hızların ortalamasını aldın; yavaş giderken daha uzun süre geçtiği için ortalama düşüktür.
++B) 15 km/sa || Eşit yollarda $\frac{2\cdot10\cdot30}{10+30}=15$.
+C) 40 km/sa || Hızları topladın.
+kontrol: 2*10*30/40
+neden: Yol 30 km olsun: çıkış 3 saat, iniş 1 saat. Toplam 60 km, 4 saat: $60:4=15$. Yavaş bölümde 3 kat daha uzun kalındığı için ortalama 10'a yakındır.
+sinav: Ortalama hız $=\frac{\text{toplam yol}}{\text{toplam zaman}}$. Eşit yollarda $\frac{2V_1V_2}{V_1+V_2}$, eşit sürelerde $\frac{V_1+V_2}{2}$.
+dusun: Ortalamanın saatte 20 km olması için iniş hızı ne olmalıydı?
+yanit: Mümkün değil. Yol 30 km ise çıkış zaten 3 saat sürer; 20 km/sa ortalama için toplam 60 km'yi 3 saatte bitirmek gerekir, inişe hiç süre kalmaz.
 
 ::yanilgi m3 tip=ortalama-hiz
 yanlis: Gidişte 90, dönüşte 60 km/sa giden aracın ortalama hızı $\frac{90 + 60}{2} = 75$ km/sa'tir.
@@ -217,10 +273,29 @@ cevap: 4 dk; 20 dk
 
 ::tamamla baslik="Tren ve köprü"
 soru: Uzunluğu 150 m olan bir tren saatte 54 km hızla, uzunluğu 450 m olan bir köprüyü kaç saniyede tamamen geçer?
-1. 54 km/sa $= 54 : 3{,}6 = 15$ m/sn.
-?2. Alınacak yol: köprü + tren $= 450 + 150 = 600$ m.
-?3. $600 : 15 = 40$ sn.
+1. 54 km/sa $= 54 : 3{,}6 = 15$ m/sn. || Uzunluklar metre, sonuç saniye istendiği için hızı m/sn yaptık.
+?2. Alınacak yol: köprü + tren $= 450 + 150 = 600$ m. || Tren tamamen geçene kadar ön ucu köprü boyu artı kendi boyu kadar ilerler.
+?3. $600 : 15 = 40$ sn. || Süre = yol ÷ hız.
 cevap: 40 sn
+
+::ornek baslik="Akıntıyla ve akıntıya karşı"
+soru: Bir tekne akıntı yönünde 36 km'yi 2 saatte, aynı yolu akıntıya karşı 3 saatte gidiyor. Teknenin durgun sudaki hızı ve akıntının hızı nedir?
+1. Akıntı yönünde hız $36:2=18$, karşı yönde $36:3=12$ km/sa. || Her yönün hızını ayrı bulduk.
+2. $V+a=18$ ve $V-a=12$. || Akıntı yönünde hızlar toplanır, karşı yönde çıkarılır.
+3. Topla: $2V=30$, $V=15$; $a=3$ km/sa. || İki denklemi toplayınca akıntı yok oldu.
+cevap: Tekne saatte 15 km, akıntı saatte 3 km.
+
+::sorgula s4-bant baslik="Havalimanında yürüyen bant"
+durum: Havalimanında 75 metrelik bir yürüyen bant saniyede 1 metre hızla ilerliyor. Sen bandın üzerinde, bantla aynı yönde saniyede 1,5 metre hızla yürüyorsun.
+soru: Bandın sonuna kaç saniyede ulaşırsın?
+A) 50 saniye || $75:1{,}5$ yaptın; bant da seni taşıyor.
++B) 30 saniye || Yere göre hızın $1{,}5+1=2{,}5$ m/sn: $75:2{,}5=30$.
+C) 75 saniye || Bu, yalnız bandın üzerinde durursan geçen süredir.
+kontrol: 75/(1.5+1)
+neden: Bant, akıntı gibi davranır: aynı yönde hızlar toplanır. $75:2{,}5=30$ saniye.
+sinav: Akıntı, rüzgâr, yürüyen bant sorularında aynı yönde $V+a$, ters yönde $V-a$ kullanılır.
+dusun: Bandın tersi yönünde aynı hızla yürüseydin ne olurdu?
+yanit: Yere göre hızın $1{,}5-1=0{,}5$ m/sn olurdu: $75:0{,}5=150$ saniye.
 
 ::soru c4 tip=akinti-pist zorluk=2
 Çevresi 600 m olan dairesel bir pistte aynı noktadan zıt yönlerde dakikada 70 m ve 50 m hızla koşmaya başlayan iki koşucu kaç dakika sonra ilk kez karşılaşır?

@@ -113,6 +113,25 @@ soru: Bir sınıftaki öğrencilerin %40'ı kızdır. Sınıfta 18 erkek öğren
 3. $x = 18 \cdot \frac{100}{60} = 30$. || Kontrol: 12 kız, 18 erkek ✓
 cevap: 30
 
+::ornek baslik="Parça bütünün yüzde kaçı?"
+soru: 250 liralık bir ürünün fiyatının 45 lirası vergidir. Vergi, fiyatın yüzde kaçıdır?
+1. Oran $=\frac{\text{parça}}{\text{bütün}}=\frac{45}{250}$. || Yüzde, bir oranın paydasını 100 yapmaktır.
+2. $\frac{45}{250}=\frac{18}{100}$. || Pay ve paydayı 2,5'e böldük (ya da 100'e genişletmek için $\frac{100}{250}$ ile çarptık).
+3. %18. || Paydası 100 olan oran doğrudan yüzdedir.
+cevap: %18. Kontrol: 250'nin %10'u 25, %8'i 20; toplam 45.
+
+::sorgula s1-indirim baslik="İndirimli ayakkabı"
+durum: 200 liralık bir ayakkabıda %35 indirim var.
+soru: İndirimden sonra kaç lira ödersin?
+A) 165 lira || 35 lira düştün; %35, 35 lira değil, fiyatın 100'de 35'idir.
++B) 130 lira || İndirim $200\cdot0{,}35=70$ lira; ödenen $200-70=130$.
+C) 70 lira || Bu, indirim tutarıdır; ödenen değil.
+kontrol: 200*0.65
+neden: %35 indirim, fiyatın %65'ini ödemek demektir: $200\cdot0{,}65=130$. Önce indirim tutarını bulup çıkarmak da aynı sonucu verir.
+sinav: “%$x$ indirim” → çarpan $1-\frac{x}{100}$; “%$x$ zam” → çarpan $1+\frac{x}{100}$.
+dusun: Kasada bu fiyata ek %10 indirim yapılırsa toplam indirim %45 olur mu?
+yanit: Hayır. $130\cdot0{,}9=117$ lira; ilk fiyata göre indirim $83$ lira, yani %41,5. İkinci indirim zaten indirilmiş fiyata uygulanır.
+
 ::yanilgi m1 tip=yuzde-hesap
 yanlis: %40'ı kız olan sınıfta 18 erkek varsa mevcut $18 : 0{,}4 = 45$'tir.
 neden: 18, kızlara değil erkeklere aittir; erkeklerin oranı %60'tır.
@@ -153,6 +172,24 @@ soru: Bir okulun öğrenci sayısı %20 azalarak 240'a düşmüştür. Azalmadan
 2. $x = 240 : 0{,}8 = 300$. || Çarpana böl.
 3. Kontrol: 300'ün %20'si 60; $300 - 60 = 240$ ✓ || 240'ın %20 fazlası (288) yanlış olurdu.
 cevap: 300
+
+::ornek baslik="Önce zam, sonra aynı oranda indirim"
+soru: Bir ürünün fiyatına önce %20 zam, sonra %20 indirim yapılıyor. Son fiyat ilk fiyata göre nasıl değişmiştir?
+1. Zam çarpanı $1{,}2$, indirim çarpanı $0{,}8$. || Her değişim bir çarpandır.
+2. Son fiyat $=1{,}2\cdot0{,}8\cdot F=0{,}96F$. || Ardışık değişimlerde çarpanlar çarpılır.
+3. $0{,}96F$, ilk fiyatın %96'sı: %4 azalma. || İndirim, zamlı (daha büyük) fiyata uygulandığı için daha çok lira düşürdü.
+cevap: %4 ucuzlamıştır. Kontrol: 100 lira → 120 lira → 96 lira.
+
+::sorgula s2-kira baslik="Kira önce arttı, sonra azaldı"
+durum: Bir dükkânın kirası önce %50 artırıldı. Bir süre sonra kiracının isteğiyle yeni kira %50 azaltıldı.
+soru: Son kira, ilk kiraya göre nasıl?
+A) İlk kirayla aynı || Yüzdeler toplanamaz; azaltma, artmış kiraya uygulanır.
++B) İlk kiradan %25 düşük || $1{,}5\cdot0{,}5=0{,}75$.
+C) İlk kiradan %25 yüksek || Son çarpan 1'den küçük; kira azalmıştır.
+neden: İlk kira 100 olsun: %50 artışla 150, sonra 150'nin yarısı 75. Çarpanlar: $1{,}5\cdot0{,}5=0{,}75$; ilk kiranın %75'i, yani %25 daha düşük.
+sinav: Ardışık yüzde değişimlerinde çarpanları çarp. Aynı oranda artış ve azalış hiçbir zaman başlangıca geri getirmez.
+dusun: %50 artıştan sonra kirayı tam eski hâline getirmek için yüzde kaç azaltmak gerekir?
+yanit: $1{,}5\cdot x=1$, $x=\frac{2}{3}$: yaklaşık %33,3 azaltmak gerekir.
 
 ::yanilgi m2 tip=yuzde-degisim
 yanlis: Önce %20 artıp sonra %20 azalan bir değer başlangıçtaki değerine döner.
@@ -198,6 +235,25 @@ soru: Şeker oranı %30 olan 20 kg karışıma şeker oranı %60 olan kaç kg ka
 3. $x = 10$ kg. || Kontrol: şeker $6 + 6 = 12$, toplam 30; $\frac{12}{30} = $ %40 ✓
 cevap: 10 kg
 
+::ornek baslik="İki karışım birleşince oran"
+soru: Tuz oranı %15 olan 40 kg tuzlu su ile tuz oranı %45 olan 20 kg tuzlu su karıştırılıyor. Yeni karışımın tuz oranı yüzde kaçtır?
+1. Tuz miktarları: $40\cdot0{,}15=6$ kg ve $20\cdot0{,}45=9$ kg. || Oranlar değil, madde miktarları toplanır.
+2. Toplam tuz $15$ kg, toplam karışım $60$ kg. || Karışım miktarları da ayrı toplanır.
+3. Oran $\frac{15}{60}=\frac{1}{4}$: %25. || Madde ÷ toplam.
+cevap: %25. Kontrol: sonuç 15 ile 45 arasında ve çok olan %15'liğe daha yakın.
+
+::sorgula s3-meyve baslik="Meyve suyunu karıştırmak"
+durum: Meyve oranı %50 olan 1 litre nektar ile meyve oranı %20 olan 2 litre meyveli içecek bir sürahide karıştırılıyor.
+soru: Sürahideki içeceğin meyve oranı yüzde kaçtır?
+A) %35 || Oranların ortalamasını aldın; miktarlar farklı olduğu için çok olan içecek sonucu daha çok etkiler.
++B) %30 || Meyve $0{,}5+0{,}4=0{,}9$ litre, toplam 3 litre: $\frac{0{,}9}{3}=$ %30.
+C) %70 || Oranları topladın; karışımın oranı iki oranın arasında kalmalı.
+kontrol: (0.5+0.4)/3*100
+neden: 1 litrenin %50'si 0,5 litre, 2 litrenin %20'si 0,4 litre meyvedir. Toplam 0,9 litre meyve 3 litre içecekte: %30.
+sinav: Karışım sorularında satır satır “miktar × oran = madde” yaz; maddeleri ve miktarları ayrı topla.
+dusun: Sonuç neden 20 ile 50 arasında ama 20'ye daha yakın?
+yanit: Karışım, iki oranın ağırlıklı ortalamasıdır. %20'lik içecekten 2 kat fazla olduğu için sonuç ona daha yakındır.
+
 ::strateji tip=karisim-derisim baslik="Karışım tablosu"
 ipucu: İki ya da daha çok karışım birleşiyor
 1. Her karışım için bir satır aç: miktar, oran, madde (= miktar × oran).
@@ -233,10 +289,29 @@ cevap: 20 litre
 
 ::tamamla baslik="Buharlaştırma"
 soru: Şeker oranı %25 olan 40 kg şekerli sudan kaç kg su buharlaştırılırsa şeker oranı %50 olur?
-1. Şeker: $40 \cdot 0{,}25 = 10$ kg (değişmez).
-?2. $\frac{10}{40 - x} = 0{,}5 \Rightarrow 40 - x = 20$.
-?3. $x = 20$ kg su buharlaştırılmalı.
+1. Şeker: $40 \cdot 0{,}25 = 10$ kg (değişmez). || Buharlaşan sudur; şeker miktarı değişmez.
+?2. $\frac{10}{40 - x} = 0{,}5 \Rightarrow 40 - x = 20$. || Yeni oran = değişmeyen şeker ÷ azalan toplam.
+?3. $x = 20$ kg su buharlaştırılmalı. || 40 kg karışımın 20 kg kalması için 20 kg su gitmeli.
 cevap: 20 kg
+
+::ornek baslik="Saf madde eklemek"
+soru: Şeker oranı %10 olan 45 kg şekerli suya kaç kg şeker eklenirse şeker oranı %25 olur?
+1. Başta şeker $45\cdot0{,}1=4{,}5$ kg. Eklenen $x$ kg şekerin tamamı şekerdir (%100). || Saf madde, oranı %100 olan karışım gibidir.
+2. $\frac{4{,}5+x}{45+x}=0{,}25$, yani $4{,}5+x=11{,}25+0{,}25x$. || Hem madde hem toplam $x$ kadar artar.
+3. $0{,}75x=6{,}75$, $x=9$ kg. || Kontrol: $\frac{13{,}5}{54}=0{,}25$.
+cevap: 9 kg.
+
+::sorgula s4-uzum baslik="Üzüm kuruyunca"
+durum: Taze üzümün ağırlığının %80'i su olsun. 10 kg taze üzüm kurutuluyor ve kuru üzümde su oranı %20'ye iniyor.
+soru: Kaç kg kuru üzüm elde edilir?
+A) 8 kg || Bu, taze üzümdeki su miktarıdır.
++B) 2,5 kg || Su dışındaki kısım 2 kg ve değişmez; kuru üzümün %80'i bu 2 kg'dır: $2:0{,}8=2{,}5$.
+C) 2 kg || Kuru üzümde de %20 su kalıyor; 2 kg yalnız su dışındaki kısımdır.
+kontrol: 2/0.8
+neden: Buharlaşan yalnız sudur; su dışındaki kısım $10\cdot0{,}2=2$ kg sabittir. Kuru üzümde su %20 olduğuna göre su dışındaki kısım %80'dir: $0{,}8\cdot K=2$, $K=2{,}5$ kg.
+sinav: Buharlaşma ve su ekleme sorularında önce değişmeyen miktarı bul; sonra yeni oranı o miktar üzerinden kur.
+dusun: Kurutma sırasında kaç kg su buharlaştı?
+yanit: $10-2{,}5=7{,}5$ kg su buharlaştı.
 
 ::yanilgi m3 tip=karisim-degisim
 yanlis: Tuzlu suya su eklenince tuz oranıyla birlikte tuz miktarı da azalır.
