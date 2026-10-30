@@ -110,6 +110,24 @@ soru: Yukarıdaki grafiğe göre $f(-2) + f(4)$ kaçtır? Tanım kümesi, görü
 3. $y = 1$ grafiği $x = -2{,}5$ ve $x = 1{,}5$'te keser: 2 kök. || Yatay doğruyu say.
 cevap: 1; $[-4, 5]$; $[-2, 2]$; 2 kök
 
+::ornek baslik="Yatay parça: sonsuz çözüm"
+soru: Yukarıdaki grafiğe göre $f(x)=2$ denkleminin çözüm kümesi nedir?
+1. $y=2$ doğrusunu çiz: grafik $(-2,2)$ ile $(1,2)$ arasında bu doğrunun üzerinde ilerliyor. || Grafiğin yatay bir parçası var.
+2. Bu parçadaki her $x$ için $f(x)=2$: $[-2,1]$ aralığının tamamı. || Yatay doğru grafiği bir parça boyunca keser.
+3. Grafiğin başka hiçbir yerinde $y=2$ değerine ulaşılmıyor. || Görüntü kümesinin üst sınırı 2'dir.
+cevap: ÇK $=[-2,1]$; sonsuz sayıda çözüm.
+
+::sorgula s1-sicaklik baslik="Gün içinde sıcaklık grafiği"
+durum: Bir günün sıcaklık–saat grafiği şöyle: 08.00'de 10 °C, 14.00'te en yüksek değer 22 °C, 20.00'de 12 °C; aradaki parçalar doğrusal.
+soru: Bu günde sıcaklık kaç kez tam 16 °C olmuştur?
+A) Bir kez || Sıcaklık hem yükselirken hem düşerken 16 °C'den geçer.
++B) İki kez || $y=16$ doğrusu grafiği hem yükselen hem düşen parçada keser: 11.00 ve yaklaşık 17.36.
+C) Hiç || 16, 10 ile 22 arasında; grafik bu değerden geçmek zorunda.
+neden: $f(t)=16$ denkleminin çözüm sayısı, $y=16$ yatay doğrusunun grafiği kestiği nokta sayısıdır. Yükselişte saatte 2 °C artışla 11.00'de, düşüşte saatte yaklaşık 1,67 °C azalışla 14.00'ten 3,6 saat sonra (yaklaşık 17.36) 16 °C olur.
+sinav: $f(x)=k$ sorularında $y=k$ doğrusunu çizip kesişimleri say; yatay parçalar sonsuz çözüm verebilir.
+dusun: Bu günde sıcaklık kaç kez 22 °C olmuştur?
+yanit: Bir kez; 22 °C grafiğin en yüksek noktasıdır ve $y=22$ doğrusu grafiğe yalnız orada değer.
+
 ::yanilgi m1 tip=grafik-okuma
 yanlis: Görüntü kümesi, grafiğin x ekseni üzerinde kapladığı aralıktır.
 neden: x eksenindeki izdüşüm tanım kümesidir; görüntüler y ekseninde okunur.
@@ -141,6 +159,25 @@ soru: Yukarıdaki $f$ için $f(x) > 0$ ve $f(x) < 0$ eşitsizliklerinin çözüm
 3. Altta kalan: $[-4, -3) \cup (2, 5)$ → $f(x) < 0$. || $-4$ tanım kümesinde ve $f(-4) = -2 < 0$.
 cevap: $f > 0$: $(-3, 2)$; $f < 0$: $[-4, -3) \cup (2, 5)$
 
+::ornek baslik="Parabolün işareti"
+soru: $f(x)=(x+1)(x-4)$ fonksiyonunun grafiği x eksenini nerede keser? $f(x)<0$ olan aralık hangisidir?
+1. Kökler: $x+1=0$ veya $x-4=0$; $x=-1$ ve $x=4$. || Çarpım sıfırsa çarpanlardan biri sıfırdır.
+2. Kökler arasından bir sayı dene: $x=0$ için $f(0)=1\cdot(-4)=-4<0$. || Bir test noktası, o aralıktaki işareti gösterir.
+3. Dışarıdan dene: $x=5$ için $6\cdot1>0$; $x=-2$ için $(-1)(-6)>0$. || Kökler dışında grafik x ekseninin üstünde.
+cevap: x eksenini $-1$ ve 4'te keser; $f(x)<0$ aralığı $(-1,4)$.
+
+::sorgula s2-kafe baslik="Kafe ne zaman kâra geçer?"
+durum: Bir kafenin aylık kârı, satılan kahve sayısına göre $f(x)=15x-6000$ lira (sabit giderler 6000 lira, kahve başına kâr 15 lira).
+soru: Kafe hangi satışlarda kâr eder?
++A) 400'den fazla kahve satınca || $15x-6000>0$ ise $x>400$.
+B) 400 ya da daha fazla kahve satınca || Tam 400'de kâr 0'dır; kâr da zarar da yoktur.
+C) 6000'den fazla kahve satınca || 6000, gider tutarıdır; kahve sayısı değil.
+kontrol: 6000/15
+neden: Kâr, grafiğin x ekseninin üstünde kaldığı yerdir: $f(x)>0$. $15x>6000$, $x>400$. Grafik x eksenini $x=400$'de keser: başa baş noktası.
+sinav: Grafik x ekseninin üstündeyse $f>0$, altındaysa $f<0$; kesim noktaları köklerdir.
+dusun: Tam 400 kahve satılan ayda durum nedir?
+yanit: $f(400)=0$: kafe başa baş noktasındadır; ne kâr ne zarar eder.
+
 ::soru c2 tip=isaret-aralik zorluk=2
 Grafiği $(-4, -2)$, $(-2, 2)$, $(1, 2)$, $(3, -2)$ ve $(5, 0)$ noktalarını sırayla birleştiren $f$ fonksiyonu için $f(x) > 0$ eşitsizliğini sağlayan kaç tam sayı vardır?
 A) 2 || Yalnız 0 ve 1'i saydın; $f(-2) = 2 > 0$ ve $f(-1) > 0$.
@@ -166,6 +203,24 @@ soru: $y = x^2$, $y = x^3$ ve $x = y^2$ bağıntılarını dikey ve yatay doğru
 2. $y = x^3$: iki testi de geçer (bire bir fonksiyon). || Her doğru bir kez keser.
 3. $x = y^2$: $x = 4$ dikey doğrusu $y = \pm 2$'de keser (fonksiyon değil). || Yana yatmış parabol.
 cevap: $x^2$ fonksiyon ama bire bir değil; $x^3$ bire bir fonksiyon; $x = y^2$ fonksiyon değil.
+
+::ornek baslik="Çember ve yarım çember"
+soru: $x^2+y^2=25$ bağıntısı $y$'yi $x$'in fonksiyonu olarak tanımlar mı? Üst yarım çember $y=\sqrt{25-x^2}$ için ne söylenir?
+1. $x=3$ dikey doğrusu çemberi $y=4$ ve $y=-4$'te keser. || Dikey doğru testi: iki kesişim varsa fonksiyon değildir.
+2. Çember bir fonksiyon değildir. || Bir $x$'e iki $y$ düşüyor.
+3. Üst yarım çemberde her dikey doğru en çok bir kez keser: fonksiyondur. $y=3$ yatay doğrusu ise iki kez keser ($x=\pm4$): bire bir değildir. || İki testi ayrı ayrı uyguladık.
+cevap: Çember fonksiyon değil; üst yarım çember fonksiyon ama bire bir değil.
+
+::sorgula s3-asansor baslik="Asansörün yükseklik grafiği"
+durum: Bir asansörün gün boyu yüksekliği bir zaman–yükseklik grafiğiyle gösteriliyor. Asansör katlar arasında inip çıkıyor.
+soru: Bu grafik için hangisi doğrudur?
++A) Bir fonksiyondur ama bire bir değildir. || Bir anda tek yükseklik vardır; ama aynı yüksekliğe farklı zamanlarda gelinir.
+B) Bire bir fonksiyondur. || Asansör aynı kata defalarca gelir; yatay doğru grafiği birden çok kez keser.
+C) Fonksiyon değildir. || Asansör aynı anda iki farklı yükseklikte olamaz; dikey doğru en çok bir kez keser.
+neden: Dikey doğru testi: her an için tek bir yükseklik var, grafik fonksiyondur. Yatay doğru testi: örneğin 3. kat yüksekliğindeki yatay doğru grafiği birçok kez keser, bire bir değildir.
+sinav: Dikey doğru testi fonksiyonu, yatay doğru testi bire birliği sınar.
+dusun: Hep yukarı çıkan bir roketin yükseklik–zaman grafiği bire bir midir?
+yanit: Evet. Yükseklik sürekli arttığı için her yükseklik değerine yalnız bir kez ulaşılır.
 
 ::yanilgi m2 tip=dogru-testi
 yanlis: Bir grafiği iki noktada kesen yatay doğru varsa grafik fonksiyon değildir.
@@ -207,14 +262,32 @@ cevap: $f(x) = 3x + 1$; $f(10) = 31$
 
 ::tamamla baslik="Yanan mum"
 soru: Boyu 24 cm olan bir mum yakıldıktan sonra her saat 1,5 cm kısalıyor. Mumun boyunu zamana bağlı bir fonksiyonla yaz ve mumun kaç saatte biteceğini bul.
-1. Başlangıç 24 cm, saatlik değişim $-1{,}5$: $h(t) = 24 - 1{,}5t$.
-?2. $h(t) = 0 \Rightarrow 1{,}5t = 24 \Rightarrow t = 16$ saat.
+1. Başlangıç 24 cm, saatlik değişim $-1{,}5$: $h(t) = 24 - 1{,}5t$. || $t=0$ anındaki boy başlangıç değeri (n), saatlik azalma eğimdir (m).
+?2. $h(t) = 0 \Rightarrow 1{,}5t = 24 \Rightarrow t = 16$ saat. || Mum bittiğinde boyu 0 olur; kökü bulduk.
 cevap: $h(t) = 24 - 1{,}5t$; 16 saat
 
 ::yanilgi m3 tip=dogrusal-model
 yanlis: $f(x) = 12x + 30$ modelinde 30 her kilometrede eklenen ücrettir.
 neden: Her birim artışta eklenen miktar eğimdir (12); 30, $x = 0$'daki başlangıç değeridir.
 dogru: Eğim = birim başına değişim, sabit terim = başlangıç değeri.
+
+::ornek baslik="İki veriden tarife"
+soru: Doğrusal bir telefon tarifesinde 100 dakika konuşma 70 lira, 250 dakika konuşma 115 lira tutuyor. Dakika ücreti ve sabit ücret nedir?
+1. Eğim $m=\frac{115-70}{250-100}=\frac{45}{150}=0{,}3$ lira/dakika. || 150 dakikalık fark 45 lira fark yarattı.
+2. $70=0{,}3\cdot100+n$, $n=40$ lira. || Bir veriyi kurala koyduk.
+3. $f(x)=0{,}3x+40$; kontrol: $f(250)=75+40=115$. || İkinci veriyle doğruladık.
+cevap: Dakika 0,3 lira, sabit ücret 40 lira.
+
+::sorgula s4-fatura baslik="Su faturasındaki sayıların anlamı"
+durum: Bir evin aylık su faturası $f(x)=3{,}5x+40$ lira olarak hesaplanıyor ($x$: kullanılan metreküp).
+soru: Kuraldaki 3,5 sayısı neyi anlatır?
+A) Sabit ücreti || Sabit ücret, su kullanılmasa da ödenen 40 liradır.
++B) Her ek metreküp için ödenen 3,5 lirayı || Eğim: $x$ 1 artınca fatura 3,5 lira artar.
+C) Toplam faturayı || Toplam fatura $x$'e bağlıdır; 3,5 yalnız bir katsayıdır.
+neden: $f(x)=mx+n$ modelinde $m$ eğimdir: bağımsız değişken 1 artınca bağımlı değişkendeki değişim. Burada her metreküp 3,5 lira ekler. $n=f(0)=40$ ise hiç su kullanılmadığında ödenen tutardır.
+sinav: Doğrusal modelde eğimi “birim başına değişim”, sabit terimi “başlangıç değeri” olarak yorumla.
+dusun: Bu ay 20 m³ su kullanıldıysa fatura ne kadardır?
+yanit: $3{,}5\cdot20+40=110$ lira.
 
 ::soru c4 tip=dogrusal-model zorluk=2
 Bir taksinin açılış ücreti 30 TL ve kilometre başına ücreti 12 TL'dir. Başka bir taksinin açılış ücreti 18 TL ve kilometre başına ücreti 15 TL'dir. Kaç kilometrelik yolculukta iki taksi aynı ücreti alır?

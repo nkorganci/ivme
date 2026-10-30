@@ -124,6 +124,24 @@ soru: $A = \{1, 2, 3, 4\}$ ve $f: A \to \mathbb{Z}$, $f(x) = 2x - 1$ için gör�
 2. $f(A) = \{1, 3, 5, 7\}$. || Görüntü kümesi $\mathbb{Z}$'nin alt kümesi.
 cevap: $\{1, 3, 5, 7\}$
 
+::ornek baslik="Bağıntı fonksiyon mu?"
+soru: $A=\{1,2,3\}$ ve $B=\{a,b,c\}$ olmak üzere $\beta_1=\{(1,a),(2,b),(2,c),(3,a)\}$ ve $\beta_2=\{(1,a),(2,a)\}$ bağıntılarından hangileri $A$'dan $B$'ye bir fonksiyondur?
+1. $\beta_1$'de 2'nin iki görüntüsü var ($b$ ve $c$): fonksiyon değil. || Her eleman bir ve yalnız bir elemanla eşlenmeli.
+2. $\beta_2$'de 3 hiçbir elemanla eşlenmemiş: fonksiyon değil. || Tanım kümesinin her elemanı kullanılmalı.
+3. İkisi de fonksiyon değildir. || Bir fonksiyonda iki elemanın aynı görüntüye ($1\to a$, $3\to a$) gitmesi ise sorun değildir.
+cevap: İkisi de fonksiyon değildir.
+
+::sorgula s1-numara baslik="Okul numarası bir fonksiyon mu?"
+durum: Bir okulda her öğrenciye tek bir okul numarası veriliyor. Ayrıca her öğrencinin bir doğum ayı var.
+soru: “Öğrenci → okul numarası” ve “doğum ayı → öğrenci” eşlemelerinden hangileri fonksiyondur?
++A) Yalnız ilki fonksiyondur. || Her öğrencinin tek numarası var; ama bir ayda doğmuş birden çok öğrenci olabilir (ya da hiç olmayabilir).
+B) İkisi de fonksiyondur. || Bir ay birden çok öğrenciyle eşlenirse ikincisi fonksiyon olmaz.
+C) Hiçbiri fonksiyon değildir. || Öğrenci → numara eşlemesinde her öğrencinin bir ve yalnız bir görüntüsü vardır.
+neden: Fonksiyonda tanım kümesindeki her eleman tam bir elemanla eşlenir. Öğrenci → numara bu koşulu sağlar. Doğum ayı → öğrenci sağlamaz: ekim ayına üç öğrenci düşebilir, şubata hiç öğrenci düşmeyebilir.
+sinav: Bağıntının fonksiyon olup olmadığını tanım kümesinden bakarak kontrol et: her elemandan tam bir ok çıkıyor mu?
+dusun: “Öğrenci → doğum ayı” eşlemesi fonksiyon mudur? Bire bir midir?
+yanit: Fonksiyondur, çünkü her öğrencinin tek doğum ayı vardır. Bire bir değildir; farklı öğrenciler aynı ayda doğmuş olabilir.
+
 ::yanilgi m1 tip=tanim-goruntu
 yanlis: Değer kümesindeki her eleman eşlenmezse bağıntı fonksiyon olmaz.
 neden: Fonksiyon koşulu tanım kümesi içindir; değer kümesinde açıkta eleman kalabilir.
@@ -157,9 +175,27 @@ cevap: $f(x) = 2x + 9$
 
 ::tamamla baslik="Tam kareye benzet"
 soru: $f(x + 1) = x^2 + 2x + 3$ olduğuna göre $f(x)$ fonksiyonunun kuralını bul.
-1. Sağ tarafı $(x + 1)$ cinsinden yaz: $x^2 + 2x + 3 = (x + 1)^2 + 2$.
-?2. $f(x + 1) = (x + 1)^2 + 2$ olduğundan $f(x) = x^2 + 2$.
+1. Sağ tarafı $(x + 1)$ cinsinden yaz: $x^2 + 2x + 3 = (x + 1)^2 + 2$. || Parantezin içi $x+1$ olduğu için sağ tarafı da $x+1$ cinsinden yazmak kuralı görünür kılar.
+?2. $f(x + 1) = (x + 1)^2 + 2$ olduğundan $f(x) = x^2 + 2$. || Parantezin içindeki ifade nasıl yazılmışsa kuralda x de öyle yazılır.
 cevap: $f(x) = x^2 + 2$
+
+::ornek baslik="Kuralı bulmadan değer"
+soru: $f(2x+1)=4x-3$ olduğuna göre $f(5)$ kaçtır?
+1. Parantezin içini 5'e eşitle: $2x+1=5$, $x=2$. || $f(5)$, parantezin içinin 5 olduğu andaki değerdir.
+2. Sağ tarafta $x=2$: $4\cdot2-3=5$. || Bulduğumuz $x$'i kuralın diğer tarafına yazdık.
+3. $f(5)=5$. || Kuralı tümüyle bulmaya gerek kalmadı.
+cevap: 5. Kontrol: kural $f(x)=2x-5$; $f(5)=5$.
+
+::sorgula s2-taksi baslik="İki kilometre daha gidersen"
+durum: Bir taksinin ücreti $f(x)=15+10x$ lira (x kilometre). Arkadaşın “2 km daha uzağa gidersek ödeyeceğimiz para $f(x+2)$ olur.” diyor.
+soru: $f(x+2)$, $f(x)$'e göre nasıl bir değerdir?
+A) $f(x)+2$ || Parantezin içine 2 eklemek, sonucu 2 artırmaz; her km 10 lira.
++B) $f(x)+20$ || $f(x+2)=15+10(x+2)=15+10x+20$.
+C) $2f(x)$ || Bu, ücretin iki katıdır; 2 km eklemek ücreti iki katına çıkarmaz.
+neden: $x$ yerine $x+2$ yazılır: $f(x+2)=15+10x+20=f(x)+20$. 2 km daha gitmek $2\cdot10=20$ lira ekler.
+sinav: $f(ax+b)$ biçiminde, parantezin içi yeni değişken gibi davranır; içe yapılan değişiklik kurala aynen taşınır.
+dusun: $f(2x)$ ne anlama gelir? $f(x)$'in iki katı mıdır?
+yanit: İki katı mesafenin ücretidir: $15+20x$. $2f(x)=30+20x$ ile aynı değildir; açılış ücreti bir kez ödenir.
 
 ::yanilgi m2 tip=deger-bulma
 yanlis: $f(2x - 1) = 3x + 4$ ise $f(5) = 3 \cdot 5 + 4 = 19$'dur.
@@ -205,6 +241,24 @@ soru: $f(x) = (m - 3)x^3 + (n + 2)x^2 + 4x$ tek fonksiyon olduğuna göre $n$ ka
 2. $n + 2 = 0 \Rightarrow n = -2$. || $x^3$ ve $x$ tek dereceli; $m$ serbest.
 cevap: $n = -2$
 
+::ornek baslik="Bire bir ve örten mi?"
+soru: $f:\mathbb{R}\to\mathbb{R}$, $f(x)=2x+3$ fonksiyonu bire bir ve örten midir? $g:\mathbb{R}\to\mathbb{R}$, $g(x)=x^2$ için ne söylenir?
+1. $f(a)=f(b)$ ise $2a+3=2b+3$, $a=b$: $f$ bire birdir. || Aynı görüntü yalnız aynı elemandan gelir.
+2. Her $y$ için $x=\frac{y-3}{2}$ alınırsa $f(x)=y$: $f$ örtendir. || Değer kümesindeki her sayıya ulaşılır.
+3. $g(-2)=g(2)=4$: $g$ bire bir değil; $g(x)=-1$ olamaz: örten değil. || Bir karşı örnek yeter.
+cevap: $f$ bire bir ve örten; $g$ ne bire bir ne örten.
+
+::sorgula s3-dolap baslik="Öğrenciler ve dolaplar"
+durum: Bir okulda 300 öğrencinin her birine ayrı bir dolap veriliyor. Okulda 320 dolap var.
+soru: “Öğrenci → dolap” fonksiyonu için hangisi doğrudur?
++A) Bire birdir, örten değildir. || Farklı öğrenciler farklı dolaplara; 20 dolap boş kalıyor.
+B) Örtendir, bire bir değildir. || Boş dolaplar var; görüntü kümesi bütün dolaplar değil.
+C) Hem bire bir hem örtendir. || Örten olması için her dolabın bir öğrencisi olmalıydı.
+neden: Farklı öğrencilere farklı dolap verildiği için bire birdir. Görüntü kümesi 300 dolaptır; değer kümesi 320 dolap. 20 dolap kimseye eşlenmediği için örten değildir.
+sinav: Bire bir: farklı elemanların görüntüleri farklı. Örten: değer kümesinde boşta eleman yok. Sonlu kümelerde bire bir ve örten olmak için iki kümenin eleman sayıları eşit olmalıdır.
+dusun: 300 öğrenciye 280 dolap düşseydi ve bazı öğrenciler dolap paylaşsaydı fonksiyon nasıl olurdu?
+yanit: Bire bir olamaz (paylaşan öğrenciler aynı dolaba gider); her dolap kullanılıyorsa örten olur.
+
 ::yanilgi m3 tip=fonksiyon-cesit
 yanlis: $f(x) = x^3 + 2$ tek fonksiyondur, çünkü en büyük kuvvet tektir.
 neden: Sabit terim 2 çift derecelidir ($2x^0$); $f(-1) = 1$ ama $-f(1) = -3$.
@@ -243,6 +297,25 @@ soru: $f(x) = \begin{cases} 2x + 1, & x < 2 \\ x^2 - 1, & x \geq 2 \end{cases}$ 
 2. $f(0) = 1$, $f(f(0)) = f(1) = 3$. || İçten dışa.
 3. $3 + 8 + 3 = 14$. || Topla.
 cevap: 14
+
+::ornek baslik="Mutlak değeri parçalı yazmak"
+soru: $f(x)=|x-2|$ fonksiyonunu parçalı olarak yaz ve $f(0)+f(5)$'i bul.
+1. $x\geq2$ iken içi negatif değil: $f(x)=x-2$. || Mutlak değer, içi negatif değilse aynen çıkar.
+2. $x<2$ iken içi negatif: $f(x)=2-x$. || İçi negatifse ters işaretlisi alınır.
+3. $f(0)=2-0=2$, $f(5)=5-2=3$; toplam 5. || Her değerin hangi aralıkta olduğuna baktık.
+cevap: $f(x)=x-2$ ($x\geq2$), $f(x)=2-x$ ($x<2$); $f(0)+f(5)=5$.
+
+::sorgula s4-otopark baslik="Otopark tarifesi"
+durum: Bir otopark tarifesi: 1 saate kadar (1 saat dahil) 30 lira; 1 saatten fazla ve 3 saate kadar (3 dahil) 50 lira; 3 saatten fazla 80 lira.
+soru: Otoparkta tam 3 saat kalan biri kaç lira öder?
+A) 80 lira || 80 lira “3 saatten fazla” kalanlar içindir; tam 3 saat bu aralıkta değil.
++B) 50 lira || 3 saat, “1'den fazla, 3'e kadar (3 dahil)” aralığındadır.
+C) 30 lira || 30 lira yalnız 1 saate kadar kalanlar içindir.
+kontrol: 50
+neden: Tarife parçalı bir fonksiyondur. Önce değerin hangi aralığa düştüğüne bakılır: $1<3\leq3$ olduğu için ikinci parça geçerlidir; ücret 50 lira.
+sinav: Parçalı fonksiyonlarda sınır değerlerin hangi parçaya ait olduğunu ($<$ mi, $\leq$ mi) dikkatle oku.
+dusun: Tam 1 saat kalan biri kaç lira öder?
+yanit: 30 lira; 1 saat ilk parçaya dahildir.
 
 ::soru c4 tip=parcali-islem zorluk=2
 $f(x) = \begin{cases} x + 3, & x \leq 1 \\ 2x - 1, & x > 1 \end{cases}$ olduğuna göre $f(f(3))$ kaçtır?
