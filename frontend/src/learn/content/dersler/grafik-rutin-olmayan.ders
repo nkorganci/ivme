@@ -110,6 +110,25 @@ soru: Yukarıdaki grafiğe göre depo kaç saat boyunca ne dolmuş ne boşalmı�
 3. Hız $360 : 3 = 120$ L/sa. || Eğim.
 cevap: 2 saat; 120 L/sa
 
+::ornek baslik="Eğimden geleceği tahmin etmek"
+soru: Bir telefonun şarj–zaman grafiği, %100'den başlayıp 6 saatte doğrusal olarak %40'a iniyor. Aynı hızla devam ederse şarj kaç saat daha sonra %10'a düşer?
+1. 6 saatte $100-40=60$ puan azalmış. || İnen parçanın yüksekliği değişimi verir.
+2. Eğim saatte $60:6=10$ puan azalma. || Değişim hızı = değişim ÷ süre.
+3. %40'tan %10'a 30 puan: $30:10=3$ saat. || Aynı eğimle devam ettirdik.
+cevap: 3 saat daha.
+
+::sorgula s1-tarife baslik="İki tarifenin grafikleri kesişince"
+durum: A tarifesi 40 lira sabit ücret artı dakikası 2 lira; B tarifesi sabit ücretsiz, dakikası 4 lira. İkisinin ücret–dakika grafiği aynı eksenlere çiziliyor.
+soru: Grafiklerin kesiştiği nokta neyi gösterir ve kaçıncı dakikadadır?
++A) İki tarifenin aynı ücreti tuttuğu an; 20. dakika || $40+2t=4t$ ise $t=20$; ikisi de 80 lira.
+B) Tarifelerin bittiği an; 10. dakika || Kesişim bir bitişi değil, iki niceliğin eşit olduğu anı gösterir.
+C) Grafikler kesişmez || B daha dik (eğimi 4), A yukarıdan başlar (40); B, A'yı yakalar.
+kontrol: 40/2
+neden: Kesişim, iki grafiğin aynı $t$ değerinde aynı ücreti göstermesidir: $40+2t=4t$, $t=20$. 20 dakikadan önce B, sonra A daha ucuzdur; çünkü A'nın eğimi (dakika ücreti) daha küçüktür.
+sinav: Grafikte eğim değişim hızını, yatay parça değişmemeyi, kesişim iki niceliğin eşitliğini gösterir.
+dusun: Ayda 30 dakika konuşacak biri hangi tarifeyi seçmeli?
+yanit: A: $40+60=100$ lira; B: $120$ lira. A tarifesi daha ucuz.
+
 ::yanilgi m1 tip=grafik-okuma
 yanlis: Yol–zaman grafiğindeki yatay parça aracın sabit hızla gittiğini gösterir.
 neden: Yatay parçada zaman ilerler ama yol değişmez; araç duruyordur.
@@ -154,6 +173,25 @@ soru: Yukarıdaki tarifeye göre bir ayda gündüz 13,4 GB ve gece 2 GB kullanan
 3. Fatura $120 + 4 \cdot 15 = 180$ TL. || Sabit + aşım.
 cevap: 180 TL
 
+::ornek baslik="İlk bilet tam, sonrakiler indirimli"
+soru: Bir sinemada ilk bilet 80 lira; aynı işlemde alınan her ek bilette %25 indirim var. 5 bilet alan biri kaç lira öder?
+1. İlk bilet 80 lira. || “İlk …, sonraki her …” yapısında önce sabit kısmı ayırdık.
+2. Ek biletler $80\cdot0{,}75=60$ lira; 4 tane: $240$ lira. || İndirim yalnız ek biletlere uygulanır.
+3. Toplam $80+240=320$ lira. || Kontrol: 5 tam bilet 400 lira olurdu; 80 lira tasarruf.
+cevap: 320 lira.
+
+::sorgula s2-kargo baslik="Kargo ücreti"
+durum: Bir kargo şirketinin tarifesi: ilk 2 kg için 50 lira, sonraki her başlamış kg için 12 lira. Paketin 4,3 kg geliyor.
+soru: Kaç lira ödersin?
+A) 77,6 lira || $2{,}3\cdot12$ hesapladın; “başlamış kg” yukarı yuvarlanır ve ilk 2 kg'nin ücreti de eklenir.
++B) 86 lira || Aşım $2{,}3$ kg → başlamış 3 kg: $50+3\cdot12=86$.
+C) 101,6 lira || Bütün paketi ek ücretle hesapladın; ilk 2 kg sabit ücrete dahildir.
+kontrol: 50+3*12
+neden: Önce sabit kısım: ilk 2 kg 50 lira. Aşan kısım $4{,}3-2=2{,}3$ kg; “başlamış kg” olduğu için 3 kg sayılır: $3\cdot12=36$. Toplam 86 lira.
+sinav: Uzun metinli tarifelerde her bilgiyi ayrı satıra yaz: sabit kısım, aşan kısım, yuvarlama kuralı.
+dusun: Paketi 2 kg ve 2,3 kg olarak iki ayrı pakete bölsen daha ucuz olur muydu?
+yanit: Hayır. $50+(50+12)=112$ lira; tek paket (86 lira) daha ucuz.
+
 ::soru c2 tip=tablo-sema zorluk=2
 Bir kırtasiyede defterin tanesi 12 TL, kalemin tanesi 5 TL'dir. Kırtasiye "her 3 defter alana 1 kalem hediye" kampanyası yapıyor. Ali 6 defter ve 4 kalem alıyor. Kampanyadan yararlanan Ali kaç TL öder?
 A) 72 || Kalemler de var; yalnız 2'si hediye.
@@ -185,6 +223,25 @@ soru: Bir çekmecede 6 siyah ve 4 beyaz çorap vardır. Karanlıkta en az kaç �
 1. En kötü durumda önce hep aynı renk gelir: 6 siyahın tamamı. || En kötü durumu kur.
 ?2. Bir sonraki çorap mutlaka beyazdır: $6 + 1 = 7$. || 1 ekle.
 cevap: 7
+
+::ornek baslik="Aynı ayda doğanlar"
+soru: Bir sınıfta 32 öğrenci var. Aynı ayda doğmuş en az kaç öğrencinin bulunduğundan kesin olarak emin olabiliriz?
+1. En kötü durumu kur: öğrencileri 12 aya olabildiğince eşit dağıt. || “Kesin” bilgi, en dengeli dağılımda bile geçerli olmalıdır.
+2. $32=12\cdot2+8$: her aya 2 öğrenci koyunca 8 öğrenci artar. || Önce her aya eşit sayıda yerleştirdik.
+3. Artan 8 öğrenci 8 farklı aya üçüncü kişi olur; bu yüzden bir ayda en az 3 öğrenci vardır. || Hiçbir dağılım bunu engelleyemez.
+cevap: 3 öğrenci.
+
+::sorgula s3-anahtar baslik="Doğru anahtarı bulmak"
+durum: Bir anahtarlıkta 5 anahtar var ve yalnız biri kapıyı açıyor. Anahtarları birer birer deniyorsun; açmayanı bir kenara ayırıyorsun.
+soru: Doğru anahtarı kesin olarak belirlemek için en kötü durumda kaç deneme yapman gerekir?
+A) 5 deneme || İlk 4 anahtar açmazsa son kalanın doğru olduğu artık bellidir; onu denemeden de bilirsin.
++B) 4 deneme || En kötü durumda ilk 4 anahtar açmaz; geriye kalan tek anahtar doğrudur.
+C) 1 deneme || Bu en iyi durumdur; en kötü durum sorulan.
+kontrol: 4
+neden: En kötü durumda yanlış anahtarlar önce gelir. 4 yanlış anahtar denendikten sonra elde tek bir anahtar kalır ve doğru anahtar odur. “Kesin bilmek” için 4 deneme yeter.
+sinav: “Emin olmak için en az kaç” sorularında en kötü durumu kur; sonra bir adım daha gerekip gerekmediğini (yoksa sonucun zaten belli olup olmadığını) dikkatle kontrol et.
+dusun: İki kapı ve 5 anahtar var; her kapıyı farklı bir anahtar açıyor. İki kapının anahtarını da kesin bulmak için en kötü durumda toplam kaç deneme gerekir?
+yanit: Birinci kapı için 4 deneme. Kalan 4 anahtardan ikinci kapı için 3 deneme. Toplam 7.
 
 ::yanilgi m2 tip=en-az-en-cok
 yanlis: 3 kırmızı ve 10 mavi bilyeden aynı renkten 5 bilyeden emin olmak için $4 + 4 + 1 = 9$ bilye çekmek gerekir.
@@ -221,6 +278,24 @@ soru: Aslı ilk egzersize 14.45'te başlıyor ve ara vermeden son egzersizi 15.0
 2. Başlangıçlar: 14.45.00, 14.45.45, 14.46.30, 14.47.15, 14.48.00, … || İlk adımları listele.
 3. Her 4 egzersizde bir dakika başı: 1., 5., 9., 13., 17., 21. → 6 egzersiz. || Periyot 4.
 cevap: 6
+
+::ornek baslik="Düzenli artan koltuk sıraları"
+soru: Bir salonun 1. sırasında 12 koltuk var; her sıra bir öncekinden 3 koltuk fazla. 20. sırada kaç koltuk vardır ve 20 sırada toplam kaç koltuk vardır?
+1. İlk birkaç sıra: 12, 15, 18, 21, … || Tabloya yazınca her adımda 3 arttığını gördük.
+2. $n$. sıra $12+3(n-1)$; 20. sıra $12+3\cdot19=69$. || 1. sıradan 20. sıraya 19 adım vardır.
+3. Toplam $\frac{12+69}{2}\cdot20=810$. || Düzenli artan dizide toplam = ortalama × terim sayısı.
+cevap: 69 koltuk; toplam 810 koltuk.
+
+::sorgula s4-isik baslik="Trafik ışığı 500. saniyede"
+durum: Bir trafik ışığı sırasıyla 40 saniye yeşil, 5 saniye sarı, 30 saniye kırmızı yanıyor ve bu döngüyü tekrarlıyor. Yeşil ışık 0. saniyede yandı.
+soru: 500. saniyede ışık hangi renktir?
+A) Yeşil || Döngü 75 saniye; $500=6\cdot75+50$ ve 50. saniye yeşilin (0–39) dışında.
+B) Sarı || Sarı 40–44. saniyelerdedir; 50 bu aralıkta değil.
++C) Kırmızı || 50. saniye, kırmızının yandığı 45–74 aralığında.
+neden: Bir tam döngü $40+5+30=75$ saniye. $500=75\cdot6+50$: 6 tam döngüden sonra döngünün 50. saniyesindeyiz. 0–39 yeşil, 40–44 sarı, 45–74 kırmızı: kırmızı.
+sinav: Tekrarlayan durumlarda periyodu bul, süreyi periyoda böl ve kalanın döngüde nereye düştüğüne bak.
+dusun: 1000. saniyede ışık hangi renktir?
+yanit: $1000=75\cdot13+25$; 25. saniye yeşildir.
 
 ::yanilgi m3 tip=oruntu-strateji
 yanlis: Bir örüntünün kuralını bulmak için ilk iki terime bakmak yeterlidir.

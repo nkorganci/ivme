@@ -102,6 +102,24 @@ soru: $(p \Rightarrow q') \vee q$ önermesinin en sade biçimi nedir?
 3. $q' \vee q \equiv 1$, $p' \vee 1 \equiv 1$. || Her zaman doğru (totoloji).
 cevap: $1$
 
+::ornek baslik="İse yanlışsa iki değer kesinleşir"
+soru: $p\Rightarrow q\equiv0$ ve $q\vee r\equiv1$ olduğuna göre $p$, $q$ ve $r$'nin doğruluk değerleri nedir?
+1. $p\Rightarrow q\equiv0$ ise $p\equiv1$, $q\equiv0$. || İse bağlacının tek yanlış durumu: doğrudan yanlış çıkmak.
+2. $q\vee r\equiv1$ ve $q\equiv0$ ise $r\equiv1$. || Veya doğruysa en az bir taraf doğrudur; $q$ yanlış olduğuna göre $r$ doğru.
+3. Kontrol: $1\Rightarrow0\equiv0$ ve $0\vee1\equiv1$. || İki koşul da sağlanıyor.
+cevap: $p\equiv1$, $q\equiv0$, $r\equiv1$.
+
+::sorgula s1-soz baslik="Annen sözünü tuttu mu?"
+durum: Annen sabah “Ödevini bitirirsen akşam sinemaya gideriz.” dedi. Ödevini bitiremedin ama akşam yine de sinemaya gittiniz.
+soru: Annenin sözü yanlış çıktı mı?
+A) Evet, sözünü bozdu; ödev bitmeden sinemaya gidildi. || Söz, ödev bitmezse ne olacağı hakkında bir şey söylemiyordu.
++B) Hayır, söz yanlış çıkmadı. || $p\equiv0$ (ödev bitmedi), $q\equiv1$ (sinemaya gidildi): $0\Rightarrow1\equiv1$.
+C) Bu durumda bir şey söylenemez. || İse bağlacının doğruluk tablosu her durumda bir değer verir.
+neden: “Ödevini bitirirsen sinemaya gideriz” $p\Rightarrow q$ biçimindedir. Bu söz yalnız $p\equiv1$, $q\equiv0$ durumunda, yani ödev bittiği hâlde sinemaya gidilmediğinde yanlış olur. Koşul sağlanmadığında ne yapılacağı serbesttir.
+sinav: $p\Rightarrow q$ yalnız “doğrudan yanlış” çıkınca yanlıştır; $p'\vee q$ denkliği bunu tek satırda gösterir.
+dusun: Annenin sözü hangi durumda gerçekten yanlış çıkmış olur?
+yanit: Ödevini bitirdiğin hâlde sinemaya gidilmediğinde: $1\Rightarrow0\equiv0$.
+
 ::yanilgi m1 tip=ise-deger
 yanlis: $p$ yanlışsa $p \Rightarrow q$ önermesi de yanlıştır.
 neden: Hipotez yanlışken koşullu önerme her zaman doğrudur: $0 \Rightarrow q \equiv 1$.
@@ -138,6 +156,24 @@ soru: "Bir sayı 6'ya bölünüyorsa 3'e bölünür." önermesinin karşıtını
 2. Ters: "6'ya bölünmüyorsa 3'e bölünmez." → Yanlış (9). || Değillerini al.
 3. Karşıt ters: "3'e bölünmüyorsa 6'ya bölünmez." → Doğru. || Asıl önermeye denk.
 cevap: Karşıt 0, ters 0, karşıt ters 1
+
+::ornek baslik="Eşitsizlikli koşullu önerme"
+soru: “$x>3$ ise $x^2>9$” önermesi gerçek sayılarda doğrudur. Karşıtı, tersi ve karşıt tersi doğru mudur?
+1. Karşıt: “$x^2>9$ ise $x>3$.” $x=-4$ için $16>9$ ama $-4>3$ değil: yanlış. || Bir karşı örnek, “her zaman” iddiasını çürütür.
+2. Ters: “$x\leq3$ ise $x^2\leq9$.” Yine $x=-4$: $-4\leq3$ ama $16\leq9$ değil: yanlış. || Ters, karşıta denktir; birlikte yanlış olmaları beklenir.
+3. Karşıt ters: “$x^2\leq9$ ise $x\leq3$.” $x^2\leq9$ ise $-3\leq x\leq3$, dolayısıyla $x\leq3$: doğru. || Karşıt ters asıl önermeye denktir.
+cevap: Karşıt yanlış, ters yanlış, karşıt ters doğru.
+
+::sorgula s2-yagmur baslik="Yol ıslaksa yağmur mu yağdı?"
+durum: “Yağmur yağıyorsa yol ıslaktır.” önermesinin doğru olduğunu kabul edelim. Sabah dışarı çıktığında yolu ıslak gördün.
+soru: Hangisini kesin olarak söyleyebilirsin?
+A) Yağmur kesin yağmıştır. || Bu, önermenin karşıtıdır ($q\Rightarrow p$) ve asıl önermeye denk değildir.
++B) Yağmur yağmış olabilir ama kesin değildir. || Yol başka bir nedenle de ıslanmış olabilir (örneğin sulama).
+C) Yağmur yağmamıştır. || Islak yol, yağmurun yağmadığını göstermez.
+neden: Asıl önerme $p\Rightarrow q$: yağmur → ıslak yol. Islak yoldan yağmura gitmek karşıttır ve her zaman doğru değildir. Asıl önermeye denk olan yalnız karşıt terstir: “Yol ıslak değilse yağmur yağmamıştır.”
+sinav: Karşıt ve ters, asıl önermeye denk değildir; ancak karşıt ters denktir: $p\Rightarrow q\equiv q'\Rightarrow p'$.
+dusun: Yolu kuru görseydin ne söyleyebilirdin?
+yanit: Yağmur yağmadığını kesin söyleyebilirdin. Bu, karşıt terstir ($q'\Rightarrow p'$) ve asıl önermeyle aynı doğruluktadır.
 
 ::yanilgi m2 tip=karsit-ters
 yanlis: Bir koşullu önerme doğruysa karşıtı da doğrudur.
@@ -178,9 +214,27 @@ cevap: $p \equiv 0$, $r \equiv 0$
 
 ::tamamla baslik="Değilli iki yönlü"
 soru: $p \Leftrightarrow q' \equiv 1$ ve $p \equiv 1$ olduğuna göre $q$'nun doğruluk değeri nedir?
-1. $p \Leftrightarrow q' \equiv 1$: $p$ ile $q'$ aynı.
-?2. $q' \equiv 1$, yani $q \equiv 0$.
+1. $p \Leftrightarrow q' \equiv 1$: $p$ ile $q'$ aynı. || İki yönlü doğruysa iki taraf aynı doğruluk değerindedir.
+?2. $q' \equiv 1$, yani $q \equiv 0$. || p doğru olduğuna göre q' de doğru; değili doğruysa kendisi yanlıştır.
 cevap: $q \equiv 0$
+
+::ornek baslik="İki yönün de doğruluğunu göster"
+soru: Tam sayılarda “$x$ çifttir $\Leftrightarrow$ $x^2$ çifttir” önermesi doğru mudur?
+1. “$x$ çiftse $x^2$ çifttir”: $x=2k$ ise $x^2=4k^2=2(2k^2)$. || İki yönlüyü iki ayrı ise önermesi olarak kontrol ederiz.
+2. “$x^2$ çiftse $x$ çifttir”: karşıt tersine bakalım: “$x$ tekse $x^2$ tektir.” $x=2k+1$ ise $x^2=2(2k^2+2k)+1$, tektir. || Bir yönü doğrudan göstermek zorsa denk olan karşıt tersini gösteririz.
+3. İki yön de doğru; önerme doğrudur. || $p\Leftrightarrow q\equiv(p\Rightarrow q)\wedge(q\Rightarrow p)$.
+cevap: Doğru.
+
+::sorgula s3-kulup baslik="Kulübe ancak ve ancak aidatla"
+durum: Bir kulübün kuralı: “Bir öğrenci kulübe ancak ve ancak aidatını ödediyse girebilir.” Aidatını ödeyen Elif kapıda geri çevrildi.
+soru: Kural çiğnenmiş midir?
++A) Evet, çiğnenmiştir. || Ödedi ($p\equiv1$), giremedi ($q\equiv0$): $1\Leftrightarrow0\equiv0$.
+B) Hayır, çiğnenmemiştir. || “Ancak ve ancak” iki yönlüdür; aidat ödeyen girebilmelidir.
+C) Bilgi yetersizdir. || İki tarafın değeri de belli; iki yönlünün değeri hesaplanabilir.
+neden: “Ancak ve ancak” iki yönlü koşuldur: $p\Leftrightarrow q$. İki taraf aynı değerdeyken doğru, farklıyken yanlıştır. Elif ödedi ama giremedi; değerler farklı, kural çiğnenmiş.
+sinav: $p\Leftrightarrow q\equiv(p\veebar q)'$: iki yönlü, ya da'nın tam tersidir.
+dusun: Aidatını ödemeyen Can kulübe girerse kural çiğnenmiş olur mu? Kural tek yönlü “Aidatını ödeyen girebilir.” olsaydı ne değişirdi?
+yanit: İki yönlü kuralda çiğnenir: $0\Leftrightarrow1\equiv0$. Tek yönlü kuralda ($p\Rightarrow q$) çiğnenmez: $0\Rightarrow1\equiv1$.
 
 ::yanilgi m3 tip=iki-yonlu
 yanlis: $p \Leftrightarrow q$ yalnız iki önerme de doğruyken doğrudur.
@@ -221,6 +275,24 @@ soru: "$\exists x \in \mathbb{N}, x + 3 < 5$" önermesinin değilini yaz; önerm
 2. Asıl önerme: $x = 0$ için $3 < 5$ doğru; önerme 1. || Bir örnek yeter.
 3. Değili: $x = 0$ için $3 \geq 5$ yanlış; değil 0. || Bir karşı örnek yeter.
 cevap: Önerme 1, değili 0
+
+::ornek baslik="Her ve bazı ile doğruluk"
+soru: “Her $x$ gerçek sayısı için $x^2\geq0$” ve “Bazı $x$ gerçek sayıları için $x^2=2x$” önermelerinin doğruluk değerlerini bul; birincisinin değilini yaz.
+1. Her gerçek sayının karesi negatif değildir: birinci önerme doğru. || “Her” iddiası, hiçbir istisna olmamasını ister.
+2. $x=0$ için $0=0$: ikinci önerme doğru. || “Bazı” için tek bir örnek yeter.
+3. Birincinin değili: “Bazı $x$ gerçek sayıları için $x^2<0$.” Bu yanlıştır. || Değilde $\forall$, $\exists$ olur ve $\geq$, $<$ olur.
+cevap: İkisi de doğru; birincinin değili yanlıştır.
+
+::sorgula s4-reklam baslik="Reklam iddiasını çürütmek"
+durum: Bir firma reklamında “Bütün müşterilerimiz memnun.” diyor.
+soru: Bu iddianın yanlış olduğunu göstermek için ne yeterlidir?
+A) Hiçbir müşterinin memnun olmadığını göstermek || Bu da iddiayı çürütür ama gerekenden çok daha fazlasıdır.
++B) Memnun olmayan en az bir müşteri göstermek || “Her” iddiasının değili “bazısı değil”dir.
+C) Memnun olan bir müşteri göstermek || Bu, iddiayı desteklemez de çürütmez de.
+neden: “Her müşteri memnun” önermesinin değili “Bazı müşteriler memnun değil”dir: $(\forall x,\ p(x))'\equiv\exists x,\ p'(x)$. Tek bir memnun olmayan müşteri iddiayı yanlış çıkarır.
+sinav: “Her” önermesini çürütmek için bir karşı örnek yeter; “bazı” önermesini çürütmek için ise hepsini kontrol etmek gerekir.
+dusun: “Bazı ürünlerimiz indirimde.” iddiasını çürütmek için ne göstermek gerekir?
+yanit: Hiçbir ürünün indirimde olmadığını. $(\exists x,\ p(x))'\equiv\forall x,\ p'(x)$.
 
 ::soru c4 tip=niceleyici zorluk=2
 Aşağıdaki önermelerden hangisinin doğruluk değeri 0'dır?

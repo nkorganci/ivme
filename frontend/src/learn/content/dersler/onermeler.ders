@@ -103,6 +103,24 @@ soru: $p$: "3 bir asal sayıdır." ve $q$: "$2 + 2 = 5$" önermeleri veriliyor. 
 3. Değiller tersine döner: $p' \equiv 0$, $q' \equiv 1$. || $(p')' \equiv p$.
 cevap: $p \equiv 1$, $q \equiv 0$, $p' \equiv 0$, $q' \equiv 1$
 
+::ornek baslik="Eşitsizliğin değili"
+soru: $p$: “$5<3$” önermesinin değilini yaz ve iki önermenin doğruluk değerlerini bul.
+1. $5<3$ yanlıştır: $p\equiv0$. || 5, 3'ten büyüktür.
+2. “5, 3'ten küçüktür” hükmünün değili “5, 3'ten küçük değildir”: $p'$: $5\geq3$. || Küçük olmamak, büyük ya da eşit olmak demektir; yalnız “büyük” demek eşitlik durumunu dışarıda bırakır.
+3. $5\geq3$ doğrudur: $p'\equiv1$. || Değil, doğruluk değerini tersine çevirdi.
+cevap: $p'$: $5\geq3$; $p\equiv0$, $p'\equiv1$.
+
+::sorgula s1-fis baslik="“Bu fiş yanlış hesaplanmış” bir önerme mi?"
+durum: Market fişinde toplam 125 lira yazıyor. Arkadaşın fişe bakıp “Bu fiş yanlış hesaplanmış.” diyor; henüz kimse ürünleri toplamadı.
+soru: Arkadaşının cümlesi bir önerme midir?
++A) Evet; ürünler toplanınca doğru ya da yanlış olduğu kesin olarak anlaşılır. || Hükmün doğruluk değerini henüz bilmemek, onun önerme olmasını engellemez.
+B) Hayır; doğru olup olmadığını henüz bilmiyoruz. || Önerme olmak için değerini şimdi bilmek gerekmez; kesin bir değerinin olması yeter.
+C) Hayır; bu bir kişinin görüşüdür. || Hesap doğru ya da yanlıştır; kişiden kişiye değişmez.
+neden: Önerme, doğru ya da yanlış olan kesin bir hükümdür. Fişteki ürünler toplanınca hüküm ya doğru (1) ya da yanlış (0) çıkar. “Bu market çok pahalı.” gibi bir cümle ise kişiden kişiye değişen bir beğeni bildirir; önerme değildir.
+sinav: Önerme sorularında “Kesin bir doğruluk değeri var mı?” diye sor. Soru, emir, dilek ve kişisel beğeni önerme değildir; yanlış bir hüküm yine önermedir.
+dusun: “Bu marketteki sütün litresi 40 liradır.” cümlesi önerme midir?
+yanit: Evet. Fiyat kontrol edilince cümle ya doğru ya yanlıştır; kişisel bir değerlendirme içermez.
+
 ::yanilgi m1 tip=onerme-deger
 yanlis: Yanlış bir ifade önerme değildir.
 neden: Önerme olmak için doğru olmak gerekmez; kesin bir hüküm bildirmek yeter.
@@ -143,10 +161,28 @@ cevap: 1
 
 ::tamamla baslik="Kısa yolla"
 soru: $p \equiv 1$, $q \equiv 1$, $r \equiv 0$ olduğuna göre $(p \veebar q) \vee (q \wedge r')$ önermesinin doğruluk değeri nedir?
-1. $p \veebar q \equiv 1 \veebar 1 \equiv 0$.
-?2. $q \wedge r' \equiv 1 \wedge 1 \equiv 1$.
-?3. $0 \vee 1 \equiv 1$.
+1. $p \veebar q \equiv 1 \veebar 1 \equiv 0$. || Ya da, yalnız taraflardan biri doğruyken doğrudur; ikisi de doğruysa yanlıştır.
+?2. $q \wedge r' \equiv 1 \wedge 1 \equiv 1$. || r yanlış olduğundan değili doğru; iki taraf da doğru olunca ve doğrudur.
+?3. $0 \vee 1 \equiv 1$. || Veya için bir tarafın doğru olması yeter.
 cevap: 1
+
+::ornek baslik="Veya ve ve bilgisinden ya da"
+soru: $p\vee q\equiv1$ ve $p\wedge q\equiv0$ olduğuna göre $p\veebar q$ önermesinin doğruluk değeri nedir?
+1. $p\vee q\equiv1$: $p$ ile $q$'dan en az biri doğrudur. || Veya, en az bir doğru taraf ister.
+2. $p\wedge q\equiv0$: ikisi birden doğru değildir. || Ve, iki taraf da doğruysa doğru olurdu.
+3. Demek ki tam olarak biri doğru: $p\veebar q\equiv1$. || Ya da, yalnız biri doğruyken doğrudur.
+cevap: 1. Kontrol: $(1,0)$ ve $(0,1)$ durumlarının ikisinde de $p\veebar q\equiv1$.
+
+::sorgula s2-menu baslik="Çorba ya da salata"
+durum: Bir restoranın öğle menüsünde “Ana yemeğin yanında çorba ya da salata verilir.” yazıyor. Garson, ikisinden yalnız birini seçmen gerektiğini söylüyor.
+soru: Menüdeki “ya da”, mantıktaki hangi bağlaca karşılık gelir?
+A) $\wedge$ (ve) || Ve, ikisinin birlikte verildiğini söylerdi.
+B) $\vee$ (veya) || Veya, ikisinin birden de seçilebildiği durumu kapsar; burada ikisi birden yok.
++C) $\veebar$ (ya da) || Tam olarak biri: çorba alırsan salata yok, salata alırsan çorba yok.
+neden: Mantıkta “ya da” ($\veebar$), taraflardan yalnız biri doğruyken doğrudur. Günlük dilde “veya” bazen de bu anlamda kullanılır; bu yüzden cümlenin ikisinin birden olmasına izin verip vermediğine bakarız. “Öğrenci veya 65 yaş üstü olanlar indirim alır.” cümlesinde ikisi birden olan da indirim alır: bu $\vee$'dir.
+sinav: Bağlaç tablolarında $\vee$ ile $\veebar$ yalnız iki taraf da doğruyken ayrılır: $1\vee1\equiv1$, ama $1\veebar1\equiv0$.
+dusun: “Kimlik veya pasaport göstererek giriş yapılır.” cümlesinde iki belgeyi birden gösteren biri içeri alınır mı? Bağlaç hangisidir?
+yanit: Alınır; ikisini birden göstermek koşulu bozmaz. Bağlaç $\vee$ (veya).
 
 ::yanilgi m2 tip=baglac-tablo
 yanlis: "Veya" ile "ya da" aynıdır; iki taraf da doğruysa ikisi de yanlış verir.
@@ -194,6 +230,24 @@ soru: $[(p \vee q) \wedge p']'$ önermesinin en sade biçimi nedir?
 3. $1 \wedge (p \vee q') \equiv p \vee q'$. || $1 \wedge x \equiv x$.
 cevap: $p \vee q'$
 
+::ornek baslik="Değil ve yutma"
+soru: $(p\wedge q')'\vee q$ önermesinin en sade biçimi nedir?
+1. De Morgan: $(p\wedge q')'\equiv p'\vee(q')'\equiv p'\vee q$. || Değil içeri girince $\wedge$, $\vee$'ye döner ve her önermenin değili alınır.
+2. İfade $p'\vee q\vee q$ olur. || Parantez kalktı; hepsi veya ile bağlı.
+3. $q\vee q\equiv q$: sonuç $p'\vee q$. || Aynı önermeyi veya ile tekrar bağlamak değeri değiştirmez.
+cevap: $p'\vee q$.
+
+::sorgula s3-giris baslik="Kapıdaki uyarı"
+durum: Bir konser salonunun kapısında şu yazıyor: “Kimlik ve bilet birlikte gösterilmeden içeri girilmez.”
+soru: Hangi durumda içeri girilmez?
+A) Yalnız ikisi de yoksa || İkisinden biri eksik olsa bile koşul sağlanmamış olur.
++B) Kimlik ya da biletten en az biri yoksa || Giriş koşulu $k\wedge b$; değili $(k\wedge b)'\equiv k'\vee b'$.
+C) Yalnız bilet yoksa || Kimliği olmayan biri de giremez.
+neden: İçeri girmek için $k\wedge b\equiv1$ gerekir. Giremeyenler, bu koşulun değilini sağlayanlardır: $(k\wedge b)'\equiv k'\vee b'$, yani kimliği yok veya bileti yok (ya da ikisi de yok).
+sinav: De Morgan kuralında değil içeri girerken bağlaç da değişir: $(p\wedge q)'\equiv p'\vee q'$ ve $(p\vee q)'\equiv p'\wedge q'$.
+dusun: “Yağmur yağmıyor veya rüzgâr esmiyor.” cümlesinin değili nedir?
+yanit: $(y'\vee r')'\equiv y\wedge r$: “Yağmur yağıyor ve rüzgâr esiyor.”
+
 ::yanilgi m3 tip=de-morgan
 yanlis: $(p \wedge q)' \equiv p' \wedge q'$
 neden: Değil içeri girerken bağlaç da değişir; $p \equiv 1$, $q \equiv 0$ için $(p \wedge q)' \equiv 1$ ama $p' \wedge q' \equiv 0$.
@@ -235,9 +289,27 @@ cevap: $p \equiv 0$, $q \equiv 1$, $r \equiv 1$
 
 ::tamamla baslik="Ya da ile çıkarım"
 soru: $(p \veebar q) \vee r \equiv 0$ ve $q \equiv 1$ olduğuna göre $p$ ve $r$'nin doğruluk değerleri nedir?
-1. $\vee \equiv 0$: $p \veebar q \equiv 0$ ve $r \equiv 0$.
-?2. $p \veebar q \equiv 0$ ise $p$ ile $q$ aynı: $p \equiv 1$.
+1. $\vee \equiv 0$: $p \veebar q \equiv 0$ ve $r \equiv 0$. || Veya yanlışsa iki taraf da yanlıştır.
+?2. $p \veebar q \equiv 0$ ise $p$ ile $q$ aynı: $p \equiv 1$. || Ya da yanlışsa iki tarafın değeri aynıdır.
 cevap: $p \equiv 1$, $r \equiv 0$
+
+::ornek baslik="Önce sadeleştir, sonra çıkarım yap"
+soru: $(p\vee q)\wedge(p\vee q')\equiv1$ olduğuna göre $p$'nin doğruluk değeri nedir?
+1. Dağılma: $(p\vee q)\wedge(p\vee q')\equiv p\vee(q\wedge q')$. || Ortak $p$'yi dışarı aldık.
+2. $q\wedge q'\equiv0$; ifade $p\vee0\equiv p$ olur. || Bir önerme ile değili birlikte doğru olamaz.
+3. İfade 1 olduğuna göre $p\equiv1$. || $q$ hakkında bilgi yok; iki değer de olabilir.
+cevap: $p\equiv1$. Kontrol: $p\equiv1$ iken iki parantez de doğrudur.
+
+::sorgula s4-dedektif baslik="Dedektifin çıkarımı"
+durum: Bir olayda dedektif şunu kesin olarak biliyor: “Suçlu ya A'dır ya da B'dir; ikisi birden değildir.” Ardından A'nın olay anında başka bir şehirde olduğu kanıtlanıyor.
+soru: Dedektif ne sonuca varır?
++A) Suçlu B'dir. || $a\veebar b\equiv1$ ve $a\equiv0$ ise $b\equiv1$.
+B) Suçlu hiçbiri değildir. || Ya da önermesi doğru; birinin suçlu olması gerekir.
+C) Bilgi yetersizdir. || Ya da ile bir tarafın değeri bilinince diğeri kesinleşir.
+neden: $a\veebar b\equiv1$ iki tarafın farklı olduğunu söyler. $a\equiv0$ ise $b\equiv1$ olmalıdır. Kesin bilgi veren bağlaçtan başlayıp bilinmeyenleri sırayla çıkardık.
+sinav: $\wedge\equiv1$ ve $\vee\equiv0$ kesin sonuç verir; $\veebar$'da bir tarafın değeri bilinince diğeri de kesinleşir.
+dusun: Dedektif “Suçlu A veya B'dir.” deseydi ($\vee$) ve A'nın suçlu olduğu kanıtlansaydı, B hakkında ne söylenebilirdi?
+yanit: Hiçbir şey. $1\vee b\equiv1$, $b$ ne olursa olsun doğrudur; B suçlu da olabilir, olmayabilir de.
 
 ::soru c4 tip=deger-cikarim zorluk=2
 $(p' \vee q)' \wedge (r \vee s) \equiv 1$ ve $s \equiv 0$ olduğuna göre $p$, $q$ ve $r$ önermelerinin doğruluk değerleri sırasıyla aşağıdakilerden hangisidir?
