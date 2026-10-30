@@ -5,8 +5,9 @@ import * as temelKavramlar from './temel-kavramlar.js';
 import * as sayiBasamaklari from './sayi-basamaklari.js';
 import * as ebobEkok from './ebob-ekok.js';
 import * as rasyonelSayilar from './rasyonel-sayilar.js';
+import * as denklemler from './birinci-derece-denklemler.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

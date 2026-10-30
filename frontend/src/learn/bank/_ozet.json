@@ -29,15 +29,15 @@
    "untyped": 14
   },
   "birinci-derece-denklemler": {
-   "total": 178,
+   "total": 181,
    "cikmis": {
-    "TYT": 0,
+    "TYT": 3,
     "AYT": 1
    },
    "archetypes": {
-    "denklem-cozme": 9,
-    "ozel-durum": 13,
-    "sistem": 107,
+    "denklem-cozme": 10,
+    "ozel-durum": 14,
+    "sistem": 108,
     "ifade-degeri": 20
    },
    "untyped": 29
@@ -86,9 +86,9 @@
    "untyped": 91
   },
   "esitsizlikler": {
-   "total": 465,
+   "total": 462,
    "cikmis": {
-    "TYT": 26,
+    "TYT": 23,
     "AYT": 0
    },
    "archetypes": {
@@ -97,7 +97,7 @@
     "aralik-ifade": 125,
     "iki-bilinmeyen": 19
    },
-   "untyped": 268
+   "untyped": 265
   },
   "fonksiyon-grafikleri": {
    "total": 64,

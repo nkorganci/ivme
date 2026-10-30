@@ -12,8 +12,11 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 - Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
   Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
   olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
-- Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`, `rasyonel-sayilar`.
-  Sıradaki: `birinci-derece-denklemler`, sonra `esitsizlikler` …
+- Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`, `rasyonel-sayilar`,
+  `birinci-derece-denklemler`. Sıradaki: `esitsizlikler`, sonra `mutlak-deger` …
+- Banka eşlemesi “Birinci Dereceden Denklemler ve Eşitsizlikler” ÖSYM bloğunun çoğunu
+  `esitsizlikler`e atıyor; bir kısmı denklem, ondalık ya da geometri sorusu. Ders
+  derinleştirilirken görsel okunarak uygun soru doğru derse rehberle taşınır.
 
 ## Tamamlanan kapsam
 

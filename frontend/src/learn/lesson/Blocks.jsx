@@ -93,7 +93,7 @@ function SliderSim({ block }) {
 
 function TableBlock({ block }) {
   const columnDefs = useMemo(() => block.columns.map((name, i) => ({
-    headerName: name.replace(/\$/g, ''), field: `c${i}`, flex: 1, minWidth: 110, wrapText: true, autoHeight: true, sortable: false, filter: false,
+    headerName: name.replace(/\$/g, ''), field: `c${i}`, flex: 1, minWidth: 110, wrapText: true, autoHeight: true, wrapHeaderText: true, autoHeaderHeight: true, sortable: false, filter: false,
     cellRenderer: ({ value }) => <MathText text={value} />,
   })), [block.columns]);
   const rows = useMemo(() => block.rows.map((row, r) => ({ key: r, ...Object.fromEntries(row.map((cell, i) => [`c${i}`, cell])) })), [block.rows]);

@@ -47,8 +47,10 @@ ozel-durum 1 1-3
 sistem 2 1-3
 ifade-degeri 1 1-3
 
-@oturum Denklem çözme ve özel durumlar | s1 s2
-@oturum Denklem sistemleri ve ifade değeri | s3 s4
+@oturum Denklem kurma ve çözme | s1 s1b
+@oturum Çözüm kümesi ve durum ayırma | s2 s2b
+@oturum Denklem sistemleri | s3 s3b
+@oturum İstenen ifadeyi doğrudan bulma | s4 s4b
 
 @ontest
 ::soru o1 tip=denklem-cozme zorluk=1
@@ -133,7 +135,81 @@ E) 14 || $-2(x + 1) = -2x - 2$; sabitleri yeniden topla.
 kontrol: 4+8
 cozum: $3x - 6 - 2x - 2 = 4$, yani $x - 8 = 4$ ve $x = 12$.
 
-@bolum s2 8 | Çözüm kümesi ne zaman $\mathbb{R}$, ne zaman boş?
+@bolum s1b 16 | Problemden denkleme: bilinmeyeni seç, kur, sağla
+::kesfet denklem-terazi
+
+::duzey baslik="Cümleyi denkleme çevirmek"
+L1: Sözel bir durumu denkleme çevirirken önce bilinmeyeni yaz: “$x$ = sayı”. Sonra cümleyi parça parça sembole çevir: “bir sayının 3 katının 5 fazlası” $3x+5$, “… 41'dir” $=41$. Her parçayı ayrı yazmak, uzun cümlelerdeki karışıklığı önler.
+L2: Aynı miktar iki farklı yoldan hesaplanabiliyorsa denklem oradadır: iki ifadeyi eşitle. Terazide iki kefenin toplamı eşittir. Bir kefeden öbürüne $w$ aktarılırsa bir taraf $w$ azalır, öbürü $w$ artar; aradaki fark $2w$ değişir. Para veren–alan sorularında da aynı şey olur.
+L3: Bilinmeyeni akıllı seçmek denklemi sadeleştirir: ardışık üç tek sayıda ortadakini $x$ al ($x-2$, $x$, $x+2$); kesirli bir problemde sayıyı paydaların EKOK'unun katı ($12k$) seç. Kökü bulduktan sonra sözel cümlede sağla: denklemin kökü ile istenen nicelik farklı olabilir (önce Can'ın parası bulunur, Ali'ninki istenir).
+
+::ornek baslik="Bir sayının katları"
+soru: Bir sayının 3 katının 5 fazlası, aynı sayının 2 katının 9 eksiğinden 26 fazladır. Bu sayı kaçtır?
+1. Sayı $x$: “3 katının 5 fazlası” $3x+5$; “2 katının 9 eksiği” $2x-9$. || Cümleyi parçalara ayırdık.
+2. “… 26 fazladır”: $3x+5=(2x-9)+26$. || Büyük olan taraf, küçüğe 26 eklenince elde edilir.
+3. $3x+5=2x+17$, $x=12$. || İki taraftan $2x$ ve 5 attık.
+cevap: 12. Sağlama: $3\cdot12+5=41$ ve $2\cdot12-9=15$; $41-15=26$ ✓
+
+::ornek baslik="Kesirli problemde akıllı bilinmeyen"
+soru: Bir sayının $\frac{1}{3}$'ü ile $\frac{1}{4}$'ünün toplamı 14'tür. Bu sayı kaçtır?
+1. Sayıyı 3'e ve 4'e bölünebilecek biçimde seç: $12k$. || EKOK(3, 4) = 12; kesir kalmaz.
+2. $\frac{12k}{3}+\frac{12k}{4}=4k+3k=7k=14$, $k=2$. || Denklem kesirsiz oldu.
+3. Sayı $12\cdot2=24$. || İstenen sayı $k$ değil, $12k$.
+cevap: 24. Sağlama: $8+6=14$ ✓
+
+::ornek baslik="Terazide aktarma"
+soru: Bir terazinin sol kefesinde 3 özdeş elma ve 100 g, sağ kefesinde 1 elma ve 400 g var; terazi dengede. Sağ kefedeki 100 g sol kefeye aktarılırsa dengenin yeniden kurulması için sağ kefeye kaç gram eklenmelidir?
+1. Denge: $3e+100=e+400$, yani $2e=300$, $e=150$ g. || İki kefeden bir elma ve 100 g attık.
+2. Aktarmadan sonra sol $3\cdot150+100+100=650$ g, sağ $150+300=450$ g. || Aktarılan ağırlık bir kefeden düşer, öbürüne eklenir.
+3. Fark $650-450=200$ g; sağa 200 g eklenmeli. || Aktarılan 100 g'ın iki katı: $2w$ kuralı.
+cevap: 200 g. Elma bilinmese de cevap değişmezdi: aktarma farkı her zaman $2\cdot100$'dür.
+
+::ornek baslik="Ardışık tek sayılar"
+soru: Ardışık üç tek sayının toplamı 57'dir. En büyüğü kaçtır?
+1. Ortadakini $x$ seç: $x-2$, $x$, $x+2$. || Ardışık tek sayılar 2'şer artar; ortadakini seçmek $\pm2$'leri birbirine götürür.
+2. Toplam $3x=57$, $x=19$. || Sabitler sadeleşti.
+3. Sayılar 17, 19, 21; en büyüğü 21. || İstenen ortadaki değil, en büyük.
+cevap: 21
+
+::tamamla baslik="Sen dene · para alışverişi"
+soru: Ali'nin parası Can'ınkinin 3 katıdır. Ali, Can'a 20 TL verirse paraları eşit oluyor. Ali'nin başlangıçta kaç TL'si vardır?
+1. Can'ın parası $x$, Ali'nin $3x$. || Küçük olanı bilinmeyen seçmek kesirden kaçınır.
+?2. Para verildikten sonra: $3x-20=x+20$. || Veren azalır, alan artar.
+?3. $2x=40$, $x=20$; Ali'nin parası $3x=60$ TL. || İstenen Ali'nin parası.
+cevap: 60 TL. Sağlama: $60-20=40=20+20$ ✓
+
+::cikmis TYT-0604 tip=denklem-cozme
+
+::sorgula s1b-kirtasiye baslik="Defter mi, kalem mi?"
+durum: Kırtasiyede 3 defter ve 1 kalem için 95 TL ödedin. Bir defter, bir kalemden 25 TL pahalı.
+soru: Bir defter kaç TL'dir?
++A) 30 TL || Kalem $k$: $3(k+25)+k=95$, $4k=20$, $k=5$; defter $30$.
+B) 25 TL || 25 TL, iki fiyat arasındaki farktır.
+C) 23,75 TL || $95:4$ yaptın; ürünlerin fiyatları eşit değil.
+kontrol: (95-75)/4+25
+neden: Kalem $k$ TL ise defter $k+25$ TL. Ödeme $3(k+25)+k=4k+75=95$; $k=5$, defter 30 TL. Sağlama: $3\cdot30+5=95$.
+sinav: İki bilinmeyen birbirine bağlıysa (“25 TL pahalı”, “3 katı”) birini öbürü cinsinden yaz; tek bilinmeyenli denklem kalır.
+dusun: Aynı 95 TL ile yalnız kalem alsaydın kaç kalem alabilirdin?
+yanit: $95:5=19$ kalem.
+
+::yanilgi m4 tip=denklem-cozme
+yanlis: Ali Can'a 20 TL verirse aralarındaki fark 20 TL azalır.
+neden: Veren 20 TL azalır, alan 20 TL artar; fark iki yönden kapanır.
+dogru: Fark $2\cdot20=40$ TL azalır. Bu yüzden “verince eşit oluyorlar” cümlesi, başlangıçtaki farkın 40 TL olduğunu söyler.
+
+::soru c5 tip=denklem-cozme zorluk=2
+Bir sayının 2 katının 7 eksiği, aynı sayının yarısının 8 fazlasına eşittir. Bu sayı kaçtır?
+A) 6 || $2\cdot6-7=5$, $3+8=11$; eşit değil.
+B) 8 || $9\neq12$.
++C) 10 || Doğru: $2x-7=\frac{x}{2}+8$, $\frac{3x}{2}=15$.
+D) 12 || $17\neq14$.
+E) 15 || $\frac{3x}{2}=15$'teki 15'i kök sandın.
+kontrol: 30/3
+cozum: $2x-7=\frac{x}{2}+8$; 2 ile çarp: $4x-14=x+16$, $3x=30$, $x=10$. Sağlama: $13=13$.
+
+@bolum s2 10 | Çözüm kümesi ne zaman $\mathbb{R}$, ne zaman boş?
+::kesfet denklem-ozel
+
 ::fikir
 Denklemi $a \cdot x = b$ biçimine getir: $a \neq 0$ ise **tek çözüm**, $a = 0$ ve $b = 0$ ise **her sayı çözüm** (ÇK $= \mathbb{R}$), $a = 0$ ve $b \neq 0$ ise **çözüm yok** (ÇK $= \varnothing$).
 
@@ -188,7 +264,70 @@ E) 4 || Katsayı $4 \neq 0$.
 kontrol: 4/2
 cozum: ÇK $= \mathbb{R}$ için $2m - 4 = 0$ ve $m - 2 = 0$: ikisi de $m = 2$ ile sağlanır.
 
-@bolum s3 11 | İki bilinmeyenli denklem sistemleri
+@bolum s2b 15 | Parametreler, yasak değerler ve iki durumlu denklemler
+::duzey baslik="Kökü koşullara uydurmak"
+L1: “İki sayının farkı 8” cümlesi hangisinin büyük olduğunu söylemez: $b-a=8$ ya da $a-b=8$. İki durumu ayrı ayrı çözmek gerekir; durumlardan biri koşullara uymayabilir ve elenir.
+L2: Kökü verilen parametreli denklemde $x$ yerine kökü yaz, parametreyi çöz: “$(2m-1)x+m=3x+7$ denkleminin kökü 2” → $2(2m-1)+m=13$. Kök parametre cinsinden isteniyorsa $ax=b$ biçiminden $x=\frac{b}{a}$ yazılır ($a\neq0$ şartıyla).
+L3: Paydasında bilinmeyen olan denklemlerde paydayı sıfır yapan değer kök olamaz: $\frac{x+1}{x-2}=\frac{3}{x-2}$ eşitliğinden $x+1=3$, $x=2$ bulunur; ama $x=2$ paydayı sıfır yapar. ÇK $=\varnothing$. Bu yüzden önce yasak değerleri yaz, sonunda bulunan kökü onlarla karşılaştır.
+
+::ornek baslik="Kökü verilen parametreli denklem"
+soru: $(2m-1)x+m=3x+7$ denkleminin kökü 2 olduğuna göre $m$ kaçtır?
+1. $x=2$ yaz: $2(2m-1)+m=3\cdot2+7$. || Kök, denklemi sağlayan değerdir.
+2. $4m-2+m=13$, $5m=15$. || Dağıtıp topladık.
+3. $m=3$. || Sağlama: $5\cdot2+3=13=6+7$ ✓
+cevap: $m=3$
+
+::ornek baslik="Yasak değer: paydayı sıfır yapan kök"
+soru: $\dfrac{x+1}{x-2}=\dfrac{3}{x-2}$ denkleminin çözüm kümesini bul. $\dfrac{2x+1}{x+3}=1$ ile karşılaştır.
+1. Birinci denklemde yasak değer $x=2$. Paylar eşitlenince $x+1=3$, $x=2$. || Paydalar eşitse paylar eşit olmalı; ama önce payda sıfır olamaz.
+2. Bulunan tek değer yasak: ÇK $=\varnothing$. || $x=2$ için iki taraf da tanımsız.
+3. İkinci denklemde yasak değer $x=-3$; $2x+1=x+3$, $x=2$. $2\neq-3$: ÇK $=\{2\}$. || Kök yasak değerden farklı; kabul edilir.
+cevap: Birincide ÇK $=\varnothing$; ikincide ÇK $=\{2\}$. Sağlama: $\frac{5}{5}=1$ ✓
+
+::ornek baslik="Fark verilince iki durum"
+soru: Bir $x$ sayısının 5 ile farkı 3, 10 ile farkı 8'dir. $x$ kaçtır?
+1. 5 ile farkı 3: $x=8$ ya da $x=2$. || Fark iki yönde olabilir: $x-5=3$ veya $5-x=3$.
+2. 10 ile farkı 8: $x=18$ ya da $x=2$. || Aynı biçimde iki aday.
+3. İki koşulu birden sağlayan tek değer $x=2$. || Ortak aday.
+cevap: $x=2$. Sağlama: $5-2=3$, $10-2=8$ ✓
+
+::tamamla baslik="Sen dene · kökten parametreye"
+soru: $(m+2)x=m-4$ denkleminin kökü 2 olduğuna göre $m$ kaçtır?
+1. $x=2$ yaz: $2(m+2)=m-4$. || Kökü denklemde yerine koyduk.
+?2. $2m+4=m-4$, $m=-8$. || $m$'li terimleri bir tarafta topladık.
+?3. Sağlama: $(-6)\cdot2=-12=-8-4$ ✓ || Katsayı $-6\neq0$; tek kök gerçekten 2.
+cevap: $m=-8$
+
+::cikmis TYT-0611 tip=ozel-durum
+
+::sorgula s2b-termostat baslik="Termostat ölçümü"
+durum: Bir odanın sıcaklığı, hedeflenen 22 °C'den 3 derece farklı ölçüldü.
+soru: Ölçülen sıcaklık kaç derece olabilir?
++A) 19 °C ya da 25 °C || “Farklı” hangi yönde olduğunu söylemez: $22-3$ veya $22+3$.
+B) Yalnız 25 °C || Farkı yalnız “fazla” yönünde düşündün.
+C) Yalnız 19 °C || Farkı yalnız “eksik” yönünde düşündün.
+neden: Ölçüm $t$ ise $t-22=3$ ya da $22-t=3$: $t=25$ veya $t=19$. Yönü belirten bir bilgi (“ısındı”, “soğudu”) olmadıkça iki durum da mümkündür.
+sinav: “Fark”, “uzaklık”, “arasında … var” sözlerinde iki yön düşün. Seçenekte “I ve III” gibi birden çok değer varsa genellikle iki durum da çözümdür.
+dusun: Bir sonraki ölçüm, ilk ölçümden 4 derece farklıysa kaç farklı değer olabilir?
+yanit: 19'dan 4 fark: 15 veya 23; 25'ten 4 fark: 21 veya 29. Dört farklı değer.
+
+::yanilgi m5 tip=ozel-durum
+yanlis: Paydaları eşit iki kesrin paylarını eşitleyince bulunan her değer çözümdür.
+neden: Paylar eşitlenirken paydanın sıfır olmadığı varsayılır. Bulunan değer paydayı sıfır yapıyorsa iki taraf da tanımsızdır.
+dogru: Önce yasak değerleri yaz; bulunan kök yasak değerse çözüm kümesinden çıkar.
+
+::soru c6 tip=ozel-durum zorluk=2
+$\dfrac{3}{x-1}=\dfrac{x+2}{x-1}$ denkleminin çözüm kümesi aşağıdakilerden hangisidir?
+A) $\{1\}$ || $x=1$ paydayı sıfır yapar; kök olamaz.
+B) $\{-1\}$ || $x+2=3$'ten $x=1$ çıkar, $-1$ değil.
+C) $\{3\}$ || 3, paydaki sabit; denklemin kökü değil.
+D) $\mathbb{R}-\{1\}$ || İki taraf yalnız $x+2=3$ olduğunda eşittir; her sayı için değil.
++E) $\varnothing$ || Doğru: tek aday $x=1$ yasak değerdir.
+cozum: Yasak değer $x=1$. Paylar eşitlenince $x+2=3$, $x=1$; bu değer paydayı sıfır yaptığı için çözüm kümesi boştur.
+
+@bolum s3 12 | İki bilinmeyenli denklem sistemleri
+::kesfet denklem-sistem
+
 ::fikir
 İki bilinmeyen için iki denklem gerekir. **Yok etme**: katsayıları ters yapıp taraf tarafa topla. **Yerine koyma**: bir bilinmeyeni yalnız bırakıp öbür denklemde yerine yaz. Her denklem bir doğrudur; çözüm, doğruların **kesim noktasıdır**.
 
@@ -259,6 +398,78 @@ E) $5$ || $x + y = 5$; istenen fark.
 kontrol: 13-12
 cozum: $(3x + 2y) - (2x + 3y) = 13 - 12$, yani $x - y = 1$. (İstersen: $x = 3$, $y = 2$.)
 
+@bolum s3b 16 | Sistemlerde derinleşme: değiştirme, üç bilinmeyen ve oran
+::kesfet denklem-jeton
+
+::duzey baslik="Sistemi akıllıca kısaltmak"
+L1: Kümeste 20 hayvan ve 56 ayak var. Hepsi tavuk olsaydı 40 ayak olurdu; 16 ayak eksik. Her tavuğu tavşanla değiştirmek 2 ayak ekler: 8 tavşan. Bu “hepsi aynı olsaydı” düşüncesi, iki denklemi taraf tarafa çıkarmanın sözlü hâlidir.
+L2: Değişken değiştirme: $\frac{1}{x}$ ve $\frac{1}{y}$ içeren sistemde $a=\frac{1}{x}$, $b=\frac{1}{y}$ yazınca doğrusal bir sistem elde edilir. Üç bilinmeyenli sistemde bir bilinmeyeni yalnız bırakıp öbür iki denklemde yerine yaz; iki bilinmeyenli sisteme inersin.
+L3: Denklem sayısı bilinmeyen sayısından azsa tek tek değerler çıkmaz; ama oran çıkabilir. “3 kalın ve 4 ince kitap ya da 1 kalın ve 10 ince kitap rafı doldurur” cümlesinden $K=3İ$ bulunur; rafın uzunluğu bilinmese de “kaç ince kitap” sorusu cevaplanır.
+
+::ornek baslik="Tavuk ve tavşan"
+soru: Bir kümeste tavuk ve tavşanlar var: toplam 20 baş ve 56 ayak. Kaç tavşan vardır?
+1. Tavuk $x$, tavşan $y$: $x+y=20$ ve $2x+4y=56$. || Baş sayısı adet, ayak sayısı değer denklemidir.
+2. Birinciyi 2 ile çarpıp ikinciden çıkar: $2y=56-40=16$, $y=8$. || Hepsi tavuk olsaydı 40 ayak: eksik 16 ayak, her tavşan 2 ayak fazla.
+3. Tavuk $20-8=12$. || Adet denklemine geri koyduk.
+cevap: 8 tavşan, 12 tavuk. Sağlama: $24+32=56$ ✓
+
+::ornek baslik="Üç bilinmeyen, üç denklem"
+soru: $x+2y=8$, $y+2z=9$, $x+z=5$ olduğuna göre $x$, $y$, $z$ kaçtır?
+1. Üçüncüden $x=5-z$; birinciye koy: $5-z+2y=8$, yani $2y-z=3$. || Bir bilinmeyeni yok ettik; iki denklem iki bilinmeyen kaldı.
+2. İkinciden $y=9-2z$; $2(9-2z)-z=3$, $18-5z=3$, $z=3$. || Yerine koyma.
+3. $y=9-6=3$, $x=5-3=2$. || Geriye doğru yerine koyduk.
+cevap: $(x,y,z)=(2,3,3)$. Sağlama: $2+6=8$, $3+6=9$, $2+3=5$ ✓
+
+::ornek baslik="Değişken değiştirme"
+soru: $\frac{2}{x}+\frac{3}{y}=2$ ve $\frac{4}{x}-\frac{3}{y}=1$ olduğuna göre $x$ ve $y$ kaçtır?
+1. $a=\frac{1}{x}$, $b=\frac{1}{y}$: $2a+3b=2$ ve $4a-3b=1$. || Kesirli sistem doğrusal sisteme dönüştü.
+2. Topla: $6a=3$, $a=\frac{1}{2}$; $1+3b=2$, $b=\frac{1}{3}$. || $3b$ terimleri ters işaretli.
+3. $x=\frac{1}{a}=2$, $y=\frac{1}{b}=3$. || Yeni değişkenlerden eskilerine döndük.
+cevap: $x=2$, $y=3$. Sağlama: $1+1=2$ ve $2-1=1$ ✓
+
+::ornek baslik="Oran yeter: raf kaç ince kitap alır?"
+soru: Bir raf 3 kalın ve 4 ince kitapla ya da 1 kalın ve 10 ince kitapla tam doluyor. Raf yalnız ince kitaplarla doldurulursa kaç ince kitap gerekir?
+1. Kalın kitabın kalınlığı $K$, incenin $İ$: $3K+4İ=K+10İ$. || Aynı raf iki biçimde doluyor.
+2. $2K=6İ$, yani $K=3İ$. || Tek denklem tek değer vermez ama oran verir.
+3. Raf $3K+4İ=9İ+4İ=13İ$: 13 ince kitap. || Her şeyi ince kitap cinsinden yazdık.
+cevap: 13 ince kitap. Kontrol: $K+10İ=3İ+10İ=13İ$ ✓
+
+::tamamla baslik="Sen dene · tiyatro biletleri"
+soru: 3 yetişkin ve 2 çocuk bileti 270 TL, 2 yetişkin ve 3 çocuk bileti 230 TL. Bir yetişkin bileti kaç TL'dir?
+1. Yetişkin $a$, çocuk $c$: $3a+2c=270$, $2a+3c=230$. || İki farklı sipariş, iki denklem.
+?2. Topla: $5a+5c=500$, $a+c=100$. Çıkar: $a-c=40$. || Simetrik katsayılarda toplam ve fark hemen bulunur.
+?3. $2a=140$, $a=70$ TL. || Toplam ve farktan büyük sayı: $\frac{100+40}{2}$.
+cevap: 70 TL (çocuk bileti 30 TL).
+
+::cikmis TYT-0607 tip=sistem
+
+::sorgula s3b-kumbara baslik="Kumbaradaki bozuk paralar"
+durum: Kumbarada yalnız 50 kuruşluk ve 1 liralık toplam 30 madeni para var. Paraların toplamı 22 lira.
+soru: Kumbarada kaç tane 1 liralık vardır?
++A) 14 || $x+y=30$, $0{,}5x+y=22$; çıkarınca $0{,}5x=8$, $x=16$ tane 50 kuruş, $y=14$.
+B) 16 || 16, 50 kuruşlukların sayısıdır.
+C) 22 || 22 lira toplam tutardır; adet değil.
+kontrol: 30-16
+neden: Hepsi 1 lira olsaydı 30 lira olurdu; 8 lira eksik. Her 1 liralığı 50 kuruşlukla değiştirmek 0,5 lira azaltır: $8:0{,}5=16$ tane 50 kuruşluk. 1 liralıklar $30-16=14$.
+sinav: Madeni para, bilet, hayvan–ayak soruları aynı iki denklemle kurulur: adet ve değer. “Hepsi aynı olsaydı” düşüncesi çoğu zaman en hızlı yoldur.
+dusun: Aynı kumbarada 50 kuruşlukların sayısı 1 liralıkların 2 katı olsaydı, 30 parayla toplam kaç lira olurdu?
+yanit: 20 tane 50 kuruş, 10 tane 1 lira: $10+10=20$ lira.
+
+::yanilgi m6 tip=sistem
+yanlis: İki bilinmeyen ve tek denklem varsa hiçbir şey bulunamaz.
+neden: Tek tek değerler bulunamaz; ama bilinmeyenler arasındaki oran ya da ilişki bulunabilir. Soru o ilişkiyle cevaplanabiliyorsa bilgi yeterlidir.
+dogru: $3b+f=2b+3f$ eşitliğinden $b=2f$ bulunur; şişeyi fincan cinsinden hesaplamak için bu yeter.
+
+::soru c7 tip=sistem zorluk=2
+$\dfrac{1}{x}+\dfrac{1}{y}=\dfrac{5}{6}$ ve $\dfrac{1}{x}-\dfrac{1}{y}=\dfrac{1}{6}$ olduğuna göre $x\cdot y$ kaçtır?
+A) $\frac{1}{6}$ || Bu, $\frac{1}{x}\cdot\frac{1}{y}$ çarpımıdır; istenen $x\cdot y$.
+B) 5 || $x+y=5$; istenen çarpım.
++C) 6 || Doğru: $\frac{1}{x}=\frac{1}{2}$, $\frac{1}{y}=\frac{1}{3}$; $x=2$, $y=3$.
+D) 12 || Bir değeri yanlış ters çevirdin.
+E) 36 || $6\cdot6$ değil.
+kontrol: 2*3
+cozum: Topla: $\frac{2}{x}=1$, $x=2$. Çıkar: $\frac{2}{y}=\frac{2}{3}$, $y=3$. $x\cdot y=6$.
+
 @bolum s4 8 | İstenen ifadeyi doğrudan bul
 ::fikir
 Soru $x$ ve $y$'yi değil bir **ifadeyi** istiyorsa, verilen eşitlikleri **taraf tarafa toplayıp çıkararak** o ifadeye doğrudan ulaş.
@@ -303,11 +514,85 @@ E) 18 || $3(x + y) = 18$; 3'e bölmeyi unuttun.
 kontrol: (11+7)/3
 cozum: İki denklemi topla: $3x + 3y = 18$, yani $x + y = 6$.
 
+@bolum s4b 15 | İfade değerinde derinleşme: gizli kat ve uygun birleşim
+::fikir
+İstenen ifade verilen eşitliklerin bir **birleşimi** ise ($p\cdot\text{I}+q\cdot\text{II}$) bilinmeyenleri bulmadan değer hesaplanır. Önce istenen ifadenin katsayılarına bak, sonra hangi katlarla toplaman gerektiğini bul.
+
+::duzey baslik="Hangi katlarla toplamalı?"
+L1: $x+2y=5$ biliniyor ve $2x+4y$ isteniyorsa cevap $2\cdot5=10$'dur: istenen ifade verilenin 2 katı. $x$ ile $y$'yi ayrı ayrı bilmek gerekmez; bilemezsin de, çünkü tek denklem var.
+L2: İki denklem verildiğinde istenen ifadeyi $p\cdot\text{I}+q\cdot\text{II}$ biçiminde ara. $a+2b=7$ ve $3a+b=11$ verilip $4a+3b$ istenirse $p+3q=4$, $2p+q=3$ sağlanmalı: $p=q=1$, yani iki denklemi toplamak yeter: 18.
+L3: Üç bilinmeyen ve iki denklem varsa bazı ifadeler belirlidir, bazıları değildir. $x+y+2z=10$ ve $2x+y+3z=14$ verildiyse farkları $x+z=4$ ve toplamları $3x+2y+5z=24$ belirlidir; ama $x$ tek başına belirsizdir. Bir ifadenin bulunup bulunamayacağını katsayılarını denklemlerin birleşimi olarak yazmayı deneyerek anlarsın.
+
+::ornek baslik="Gizli kat"
+soru: $3x-6y=12$ olduğuna göre $\frac{x}{2}-y$ kaçtır?
+1. $3x-6y=3(x-2y)=12$, yani $x-2y=4$. || Ortak çarpanı dışarı aldık.
+2. $\frac{x}{2}-y=\frac{x-2y}{2}$. || İstenen ifade de aynı parçayı içeriyor.
+3. $\frac{4}{2}=2$. || Bilinmeyenleri ayrı ayrı bulmadık.
+cevap: 2
+
+::ornek baslik="Uygun katlarla toplamak"
+soru: $a+2b=7$ ve $3a+b=11$ olduğuna göre $4a+3b$ kaçtır?
+1. $p(a+2b)+q(3a+b)=4a+3b$ olsun: $p+3q=4$, $2p+q=3$. || İstenen ifadenin katsayılarını eşleştirdik.
+2. $p=1$, $q=1$: iki denklemi topla. || Küçük bir deneme: $1+3=4$, $2+1=3$ ✓
+3. $4a+3b=7+11=18$. || Taraf tarafa topladık.
+cevap: 18. Kontrol: $a=3$, $b=2$; $12+6=18$ ✓
+
+::ornek baslik="Üç bilinmeyen, iki denklem"
+soru: $x+y+2z=10$ ve $2x+y+3z=14$ olduğuna göre $x+z$ ve $3x+2y+5z$ kaçtır?
+1. İkinciden birinciyi çıkar: $x+z=4$. || $y$ gitti; fark doğrudan istenen ifade.
+2. İkisini topla: $3x+2y+5z=24$. || Toplam da istenen ifade.
+3. $x$, $y$, $z$ ayrı ayrı belirsizdir: örneğin $(0,2,4)$ ve $(1,3,3)$ ikisi de denklemleri sağlar. || İki denklem üç bilinmeyeni tek tek belirleyemez.
+cevap: $x+z=4$, $3x+2y+5z=24$.
+
+::ornek baslik="Zincir eşitlikler"
+soru: $a+b=10$, $b+c=14$, $c+d=18$ olduğuna göre $a+d$ kaçtır?
+1. Birinciden ikinciyi çıkar: $a-c=-4$. || $b$ gitti.
+2. Buna üçüncüyü ekle: $a-c+c+d=-4+18$. || $c$ gitti.
+3. $a+d=14$. || Dört bilinmeyenden hiçbiri bulunmadan istenen ifade çıktı.
+cevap: 14
+
+::tamamla baslik="Sen dene · katsayılara bak"
+soru: $x+3y=10$ ve $2x-y=6$ olduğuna göre $3x+2y$ kaçtır?
+1. İstenen katsayılar 3 ve 2. İki denklemin $x$ katsayıları toplamı $1+2=3$, $y$ katsayıları toplamı $3-1=2$. || Katsayıları eşleştirince toplama yeter.
+?2. Taraf tarafa topla: $3x+2y=16$. || $p=q=1$.
+?3. Kontrol: $x=4$, $y=2$; $12+4=16$ ✓ || İstersen tek tek de bulursun.
+cevap: 16
+
+::sorgula s4b-sarkuteri baslik="Peynir ve zeytin"
+durum: Şarküteride 1 kg peynir ve 2 kg zeytin 520 TL tutuyor. Peynirin ve zeytinin kilo fiyatlarını bilmiyorsun.
+soru: 2 kg peynir ve 4 kg zeytin kaç TL tutar?
++A) 1040 TL || İstenen alışveriş verilenin tam 2 katı.
+B) Bulunamaz; iki bilinmeyen var || Tek tek fiyatlar bulunamaz ama istenen ifade verilenin katı.
+C) 780 TL || Verilenin 1,5 katını aldın.
+kontrol: 2*520
+neden: Peynir $p$, zeytin $z$: $p+2z=520$. İstenen $2p+4z=2(p+2z)=1040$. Fiyatlar ayrı ayrı belirsizdir ama bu ifade belirlidir.
+sinav: “İki bilinmeyen tek denklem” görünce hemen “bulunamaz” deme; istenen ifadenin verilenin katı ya da birleşimi olup olmadığına bak.
+dusun: 3 kg peynir ve 5 kg zeytinin tutarı bulunabilir mi?
+yanit: Hayır. $3p+5z$, $p+2z$'nin katı değil ($3:5\neq1:2$). Bir denklem daha gerekir.
+
+::yanilgi m7 tip=ifade-degeri
+yanlis: Bir ifadenin değerini bulmak için önce bütün bilinmeyenleri tek tek bulmak gerekir.
+neden: İstenen ifade verilen eşitliklerin bir katı ya da birleşimiyse bilinmeyenler bilinmeden de değeri belirlidir; bazen bilinmeyenler zaten belirlenemez.
+dogru: Önce istenen ifadenin katsayılarına bak ve verilen eşitliklerden onu kurmayı dene.
+
+::soru c8 tip=ifade-degeri zorluk=2
+$2a+b=9$ ve $a+2b=12$ olduğuna göre $\dfrac{a+b}{a-b}$ kaçtır?
++A) $-\frac{7}{3}$ || Doğru: topla $a+b=7$, çıkar $a-b=-3$.
+B) $-\frac{3}{7}$ || Kesri ters yazdın.
+C) $\frac{3}{7}$ || Hem ters hem işaret hatası.
+D) $\frac{7}{3}$ || $a-b$'nin işaretine dikkat: $a=2<b=5$.
+E) $7$ || Yalnız payı hesapladın.
+kontrol: 7/(-3)
+cozum: Topla: $3a+3b=21$, $a+b=7$. Birinciden ikinciyi çıkar: $a-b=-3$. Oran $\frac{7}{-3}=-\frac{7}{3}$.
+
 ::ozet
 - Denklem terazidir: iki tarafa aynı işlem; kesirli denklemde önce EKOK ile çarp, eksinin önündeki parantezi dikkatle dağıt.
 - $ax = b$: $a \neq 0$ tek çözüm; $a = b = 0$ ise $\mathbb{R}$; $a = 0 \neq b$ ise $\varnothing$.
 - Sistem: yok etme ya da yerine koyma; çözüm doğruların kesim noktası.
 - İstenen ifadeyi taraf tarafa işlemle doğrudan bul.
+- Problemde bilinmeyeni akıllı seç (ortadaki sayı, EKOK katı); aktarmada fark $2w$ değişir.
+- “Fark” iki durumdur; paydayı sıfır yapan kök çözüm değildir.
+- Adet–değer sistemleri: hepsi ucuz olsaydı ne olurdu? Tek denklem bile oran verebilir.
 
 @pratik
 - Çalışma sırası: önce tek bilinmeyenli kesirli denklemlerde işaret hatalarını sıfırla (her gün 5 soru), sonra sistemlere ve parametreli sorulara geç.
@@ -324,6 +609,10 @@ cozum: İki denklemi topla: $3x + 3y = 18$, yani $x + y = 6$.
 - Yok etme yöntemi :: Bir bilinmeyenin katsayılarını ters yapıp denklemleri taraf tarafa topla.
 - Paralel doğrular (çözümsüz sistem) koşulu :: $\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}$
 - $a + b$, $b + c$, $c + a$ verilince $a + b + c$ nasıl bulunur? :: Üçünü topla, 2'ye böl.
+- Bir kefeden öbürüne $w$ aktarılırsa fark ne kadar değişir? :: $2w$
+- $\frac{3}{x-1}=\frac{x+2}{x-1}$ neden çözümsüz? :: Tek aday $x=1$ paydayı sıfır yapar.
+- 20 baş 56 ayak: kaç tavşan? :: Hepsi tavuk 40 ayak; eksik 16; $16:2=8$.
+- $3b+f=2b+3f$ ne verir? :: $b=2f$: tek denklem oran verir.
 
 @ozet
 - Denklem çözerken iki tarafa aynı işlemi yap; kesirleri EKOK ile yok et, parantez ve işaretlere dikkat et, sonucu sağla.

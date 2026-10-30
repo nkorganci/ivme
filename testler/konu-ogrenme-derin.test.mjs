@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -196,4 +196,39 @@ test('rasyonel-sayilar: keşif modelleri ve gerçek soruların bağımsız taram
   // TYT-0562: leke 1,2 m ile 4/3 m arasında; seçeneklerden yalnız 1,3.
   assert.deepEqual([11, 13, 14, 16, 17].filter((t) => t > 12 && 3 * t < 40), [13]);
   for (const [code, answer] of [['TYT-0574', 'A'], ['TYT-0557', 'A'], ['TYT-0566', 'B'], ['TYT-0562', 'B']]) assert.equal(WORKED_EXAMS[code].answer, answer);
+});
+
+test('birinci-derece-denklemler: keşif modelleri ve gerçek soruların bağımsız taraması', () => {
+  for (const a of range(1, 5)) for (const b of range(0, 12)) for (const c of range(0, 4)) for (const d of range(0, 24)) {
+    const m = model('denklem-terazi', { a, b, c, d });
+    if (a === c) { assert.equal(m.root, null); assert.equal(m.all, b === d); continue; }
+    assert.ok(Math.abs(a * m.root + b - (c * m.root + d)) < 1e-9);
+  }
+  for (const a of range(-3, 3)) for (const b of range(-4, 4)) {
+    const m = model('denklem-ozel', { a, b });
+    if (a) { assert.equal(m.sol, 'tek'); assert.ok(Math.abs(a * m.root - b) < 1e-12); } else assert.equal(m.sol, b === 0 ? 'sonsuz' : 'yok');
+  }
+  for (const s of range(2, 10)) for (const k of range(-3, 3)) for (const c of range(-6, 8)) {
+    const m = model('denklem-sistem', { s, k, c });
+    if (k === -1) { assert.equal(m.x, null); assert.equal(m.same, c === -s); continue; }
+    assert.ok(Math.abs(m.x + m.y - s) < 1e-9 && Math.abs(k * m.x - m.y - c) < 1e-9);
+  }
+  for (const sc of [0, 1, 2]) for (const g of range(0, 20)) {
+    const m = model('denklem-jeton', { sc, g });
+    const sol = range(0, m.s.N).filter((x) => x * m.s.q + (m.s.N - x) * m.s.p === m.s.T);
+    assert.deepEqual(sol, [m.answer]);
+    assert.equal(m.g + m.diff / m.step, m.answer);
+  }
+  // TYT-0604: B'den bir ağırlık (20 ya da 25) A'ya geçer, B'ye seçeneklerden biri eklenir; denge korunur.
+  const added = [10, 15, 30, 35, 40].filter((x) => [20, 25].some((w) => 45 + w === 45 - w + x));
+  assert.deepEqual(added, [40]);
+  // TYT-0607: 3 bardak + 1 fincan = 2 bardak + 3 fincan; şişe kaç fincan?
+  const cups = [];
+  for (const b of range(1, 30)) for (const f of range(1, 30)) if (3 * b + f === 2 * b + 3 * f) cups.push((3 * b + f) / f);
+  assert.deepEqual([...new Set(cups)], [7]);
+  // TYT-0611: |bina − ağaç| = 8, ağaç iki katına çıkınca fark 3; bina yüksekliği adayları.
+  const heights = new Set();
+  for (let a = 0.5; a <= 40; a += 0.5) for (const b of [a + 8, a - 8]) if (b > 0 && Math.abs(b - 2 * a) === 3) heights.add(b);
+  assert.deepEqual([...heights].sort((x, y) => x - y), [13, 19]);
+  for (const [code, answer] of [['TYT-0604', 'E'], ['TYT-0607', 'B'], ['TYT-0611', 'C']]) assert.equal(WORKED_EXAMS[code].answer, answer);
 });

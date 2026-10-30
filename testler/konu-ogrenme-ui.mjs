@@ -399,6 +399,14 @@ async function runLevels(mobile) {
         }
         if (index === 0) await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-sorgula-${inquiry.id}.png`));
       }
+      for (const [ti, table] of section.blocks.filter((b) => b.type === 'table').entries()) {
+        const sel = `document.querySelectorAll('.lr-section .lr-table')[${ti}]`;
+        await evalJs(`${sel}.scrollIntoView({ block: 'center' })`);
+        await wait(`${sel}?.querySelectorAll('.ag-header-cell-text').length === ${table.columns.length}`);
+        const heads = await evalJs(`JSON.stringify([...${sel}.querySelectorAll('.ag-header-cell-text')].map((h) => h.textContent.trim()))`);
+        assert.deepEqual(JSON.parse(heads), table.columns.map((c) => c.replace(/\$/g, '').trim()), `${section.id}: tablo başlıkları görünmüyor`);
+        await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-tablo-${section.id}-${ti}.png`));
+      }
       const added = db.events.slice(before);
       assert.ok(added.every((e) => e.kind === 'lesson' && e.action === 'level'), `${section.id}: düzey dışında olay kaydedildi`);
       steps.push({ step: section.id, leveled: !!leveled, inquiries: inquiries.length, overflow: await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2') });

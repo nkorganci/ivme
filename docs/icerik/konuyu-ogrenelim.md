@@ -101,6 +101,9 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0557 | Rasyonel sayılar; kuruşlu fiyatlarla para üstü | A, 0,2 | `89d8b41ccfb2537d2d14692eea5caeab7d801853500db09fd14aa7bc569eed42` |
 | TYT-0566 | Rasyonel sayılar; eşit aralıklı kemer delikleri | B, 83,8 | `d9e513bd76da24eb04de634b0b915c4717e5ee905df0323ce24b119cb54f6f89` |
 | TYT-0562 | Rasyonel sayılar; çekmece sınırları arasındaki yükseklik | B, 1,3 | `9b98f701a7efcf714022667d7634a06f2f3eeca4106fca7d5abb1cb85fd9e0b8` |
+| TYT-0604 | Birinci derece denklemler; terazide aktarma, $x=2w$ | E, 40 | `b6a468eb2f9a7e2c495ccfcfcd63e5e305e7b3c97bc0ded916ffe03e52925ca7` |
+| TYT-0611 | Birinci derece denklemler; fark verilince iki durum | C, I ve III | `325469fdc8c3addc4b864dd84349fa03bf7af8c59f256a3af13745117b5c60f6` |
+| TYT-0607 | Birinci derece denklemler; tek denklemden oran (bardak = 2 fincan) | B, 7 | `54645c9a572c96c8d8fed9e0198adfa50db16a26deb37850f47b9bf88a059427` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap
@@ -228,7 +231,8 @@ node testler/konu-ogrenme-ui.mjs --duzey bolme-bolunebilme
 
 `--duzey`: her bölümde üstteki seçiciyle üç düzeyin metninin gerçekten değiştiğini, kutunun
 görünür alana geldiğini, sorgulamada yanlış → yeniden dene → doğru → gerekçe → karşılaştırma
-akışını ve düzey dışında olay kaydı oluşmadığını masaüstü/mobilde sınar.
+akışını, bölümdeki `::tablo` başlıklarının görünür metinle çizildiğini ve düzey dışında olay
+kaydı oluşmadığını masaüstü/mobilde sınar.
 
 `--kesif` artık seçilen dersin bütün bölüm keşiflerini sınar. İsteğe bağlı ders
 parametresi, gerçek örnek denetimini de aynı derse sınırlar. Pilot testleri sayısal

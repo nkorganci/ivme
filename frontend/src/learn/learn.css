@@ -153,6 +153,8 @@
 .lr-svg .soft { fill-opacity: .15; }
 .lr-svg text { stroke: none; font-family: var(--font); }
 .lr-table { justify-items: stretch; }
+/* Ders tablosu başlıkları: başka bir ızgara temasının başlık rengi (beyaz) buraya sızmasın. */
+.lr-table .ag-header-cell { color: var(--ink); font-weight: 700; }
 .lr-table-caption { text-align: left; font-weight: 700; color: var(--ink); }
 .lr-legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
 .lr-legend i { display: inline-block; width: 14px; height: 4px; border-radius: 2px; vertical-align: middle; }
