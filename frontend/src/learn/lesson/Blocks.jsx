@@ -11,6 +11,7 @@ import NumberLine from './NumberLine.jsx';
 import Exploration from './Exploration.jsx';
 import FigureZoom from './FigureZoom.jsx';
 import GuidedExam from './GuidedExam.jsx';
+import DailyInquiry from './DailyInquiry.jsx';
 import { WORKED_EXAMS } from '../content/worked-exams.js';
 
 const colorOf = (name) => COLORS[name] ?? (name === 'ink' ? COLORS.ink : COLORS.navy);
@@ -105,12 +106,17 @@ function TableBlock({ block }) {
 function Leveled({ block, level, setLevel }) {
   const available = LEVELS.filter((l) => block.levels[l.id]);
   const current = block.levels[level] ? level : 'L2';
-  return <section className="lr-leveled">
-    <div className="lr-level-switch" role="group" aria-label="Anlatım düzeyi">
-      {available.map((l) => <button key={l.id} type="button" className={l.id === current ? 'active' : ''} aria-pressed={l.id === current} title={l.hint} onClick={() => setLevel(l.id)}>{l.label}</button>)}
+  const meta = LEVELS.find((l) => l.id === current);
+  return <section className="lr-leveled" data-level={current}>
+    <div className="lr-leveled-head">
+      <span className="lr-leveled-label">Seçtiğin anlatım: {meta?.label}</span>
+      <div className="lr-level-switch" role="group" aria-label="Anlatım düzeyi">
+        {available.map((l) => <button key={l.id} type="button" className={l.id === current ? 'active' : ''} aria-pressed={l.id === current} title={l.hint} onClick={() => setLevel(l.id)}>{l.label}</button>)}
+      </div>
     </div>
     {block.title && <h4><MathText text={block.title} /></h4>}
-    <Markdown text={block.levels[current]} />
+    <div key={current} className="lr-leveled-body"><Markdown text={block.levels[current]} /></div>
+    {current !== level && <p className="small muted">Bu kutuda “{LEVELS.find((l) => l.id === level)?.label}” anlatımı yok; en yakın anlatım gösteriliyor.</p>}
   </section>;
 }
 
@@ -297,7 +303,7 @@ function Categorize({ block, onResult, answered, seed }) {
  */
 export function Block({ block, ctx }) {
   switch (block.type) {
-    case 'exploration': return <Exploration conceptId={block.conceptId} />;
+    case 'exploration': return <Exploration conceptId={block.conceptId} level={ctx.level} />;
     case 'markdown': return <Markdown text={block.text} />;
     case 'key_idea': return <aside className="lr-key"><span className="lr-key-label">{block.title || 'Ana fikir'}</span><Markdown text={block.text} /></aside>;
     case 'note': return <aside className={`lr-note lr-note-${block.tone}`}>{block.title && <strong>{block.title}</strong>}<Markdown text={block.text} /></aside>;
@@ -331,6 +337,7 @@ export function Block({ block, ctx }) {
     case 'categorize': return <Categorize block={block} seed={ctx.seed} answered={ctx.answers?.[block.id]} onResult={(value) => ctx.onCheck(block, value)} />;
     case 'slider_sim': return <SliderSim block={block} />;
     case 'past_question': return <PastQuestion block={block} ctx={ctx} />;
+    case 'inquiry': return <DailyInquiry block={block} />;
     default: return null;
   }
 }

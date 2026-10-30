@@ -17,6 +17,7 @@ Kalıcı beklentiler [AGENTS.md](../../AGENTS.md) içinde, etkin devam noktası
 | `lesson/Exploration.jsx` | Görerek anla → birlikte çöz → kendin dene akışı; deneme puanlanmaz |
 | `lesson/learning-experience.css` | Okunur ders yüzeyi, bölüm yolu, mobil düzen, model ve büyük görsel görünümü |
 | `lesson/Blocks.jsx` | Ortak ders blokları; çözümlü örnekler sırayla açılır, gerekçeleri görünür |
+| `lesson/DailyInquiry.jsx` | `::sorgula` bloğu: günlük durum → seçim → seçeneğe özel geri bildirim → gerekçe ve sınavdaki karşılığı → “Sen de sorgula”; puan/olay üretmez |
 | `lesson/FigureZoom.jsx` | Klavye/Escape ile kapanan büyük görsel penceresi |
 | `content/worked-exams.js` | Özgün görselleri okunmuş sekiz gerçek sınav sorusunun açıklamalı çözümü ve koşullu kısa yolu |
 | `lesson/GuidedExam.jsx` | Özgün soru görseli → adımlı çözüm → kısa yol → sağlama; puan üretmez |
@@ -48,8 +49,9 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
 4. Modelde bütün kontrol değerleri için metin, sayı ve şekil tutarlı olsun. Klavye,
    dar ekran, alternatif açıklama ve hareket azaltma tercihini destekle. Büyütme
    penceresi dar ekranda yatay kaydırılabilir; sayfanın kendisi taşmamalı.
-5. `::duzey` L1/L2/L3, `::ornek`, `::tamamla`, `::strateji`, `::yanilgi` ve kontrol
-   sorularını ilgili bölümde kullan. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
+5. `::duzey` L1/L2/L3, `::sorgula`, `::ornek`, `::tamamla`, `::strateji`, `::yanilgi` ve kontrol
+   sorularını ilgili bölümde kullan. Yeni standartta **her bölümde** bir `::duzey` (üç düzey de dolu)
+   ve en az bir `::sorgula` bulunur; aksi hâlde üstteki “Anlatımı seç” o bölümde hiçbir şeyi değiştirmez. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
    `?1.` biçimindeki adım öğrencinin önce düşünüp yazacağı gizli adımdır.
 6. Gerçek soruyu kaynak görüntüsünden incele. Çözümü yazılmış örneği `::cikmis KOD tip=...`
    ile doğru bölümde bağla; `WORKED_EXAMS` kayıtları banka üretiminde elle incelenmiş
@@ -58,7 +60,10 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
    veya öğretmen onayı değildir; kimlik/biçim/hesap testleri bu sınırla raporlanır.
 
 Varsayılan anlatım **L1 / Temelden**. L2 **Bağlantıları kur**, L3 **Derinleş**. Öğrencinin
-önceden seçtiği düzey korunur. İki yanlış kontrol L1 önerisini açar. Ön testi atlayan
+önceden seçtiği düzey korunur. Bölüm üstündeki seçici düzeyi değiştirir, bölümdeki düzeyli kutuya
+kaydırıp vurgular ve neyin değiştiğini yazar; keşifte L1 kelime açıklamasını, L3 “Bir adım ileri”
+notunu açık getirir. Çözümlü örneklerin gerekçeleri düzeyden bağımsız hep görünür. İki yanlış
+kontrol L1 önerisini, bölümdeki bütün kontrollerin doğru ve “Eminim” olması bir üst düzey önerisini açar. Ön testi atlayan
 öğrenciye yapılmamış bir ön testle karşılaştırma gösterilmez. Bölüm tamamlama, doğru
 cevap zorunluluğu yerine kontrol sorularına cevap verilmesini ister. Görsel keşif ve
 rehberli gerçek örnekler ustalık/puan olayı üretmez.
@@ -141,6 +146,11 @@ kullanıcının örneği değerlendirmesinden sonra alınır. Sekiz bölümün k
 aittir; öğrenci geçmişi silinmez. Dört oturum yaklaşık 35'er dakikalık planlama
 tahminidir; öğrencinin örnekleri kendi hızında incelemesi beklenir.
 
+Her bölümde konuya özgü üç düzeyli bir anlatım kutusu ve bir “Günlük hayattan sorgula” vardır
+(minibüs, yumurta kolisi, artık yıl, fiş tutarı, kilometre sayacı, masa düzeni, fırın saati,
+nöbet listesi). Sorgulamada öğrenci önce seçer; yanlış seçimde gerekçe hemen verilmez, başka
+seçeneği düşünmesi veya gerekçeyi istemesi beklenir. Senaryo sayıları pilot testinde bağımsız hesaplanır.
+
 Akış: somut ihtiyaç → terimler → neden → gerekçeli örnek → koşullu kısa yol →
 eksik adımı tamamlama / bağımsız deneme → gerçek soru. Tasarım,
 [IES öğretim rehberinin](https://ies.ed.gov/ncee/wwc/PracticeGuide/1) çözümlü örneklerle
@@ -149,7 +159,7 @@ birleştirme ve açıklayıcı sorular sorma önerilerinden yararlanır. Bunun b
 ölçülmüş öğrenme başarısı veya bağımsız öğretmen onayı olduğu iddia edilmez.
 
 Kapsam: 24 çözümlü örnek, 3 adım tamamlama, 4 etkileşimli keşif, 4 yeni kısa kontrol,
-2 gerçek sınav çözümü. İlk bölümdeki kutu modeli korunur; üç yeni model yalnız bu
+8 düzeyli anlatım, 8 günlük hayat sorgulaması, 2 gerçek sınav çözümü. İlk bölümdeki kutu modeli korunur; üç yeni model yalnız bu
 derse bağlanır. 11'de tam bölünme/işaretli kalan ayrımı, aralarında asal olma koşulu,
 bölmede kalanları doğrudan bölememe ve kuvvetlerde döngünün başlangıcı açıkça öğretilir.
 Temel gerekçeler düzey seçiminin arkasına gizlenmez.
@@ -172,7 +182,12 @@ $env:IVME_TEST_DIST='D:/workspace/ivme/uygulama/veri/ui-denetim/bolme-pilot-dist
 node testler/konu-ogrenme-ui.mjs --kesif bolme-bolunebilme
 node testler/konu-ogrenme-ui.mjs --gercek-ornek bolme-bolunebilme
 node testler/konu-ogrenme-ui.mjs bolme-bolunebilme
+node testler/konu-ogrenme-ui.mjs --duzey bolme-bolunebilme
 ```
+
+`--duzey`: her bölümde üstteki seçiciyle üç düzeyin metninin gerçekten değiştiğini, kutunun
+görünür alana geldiğini, sorgulamada yanlış → yeniden dene → doğru → gerekçe → karşılaştırma
+akışını ve düzey dışında olay kaydı oluşmadığını masaüstü/mobilde sınar.
 
 `--kesif` artık seçilen dersin bütün bölüm keşiflerini sınar. İsteğe bağlı ders
 parametresi, gerçek örnek denetimini de aynı derse sınırlar. Pilot testleri sayısal

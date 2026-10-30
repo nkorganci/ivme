@@ -175,6 +175,36 @@ function leveled(lines) {
   return levels;
 }
 
+const INQUIRY_FIELDS = { durum: 'situation', soru: 'prompt', neden: 'why', sinav: 'exam', dusun: 'reflect', yanit: 'reflectAnswer' };
+
+/** Günlük hayattan sorgula: durum → soru → seçenekler (A–E, `+` doğru, `||` geri bildirim) → neden → sınavdaki karşılığı. */
+function inquiry(lines, line) {
+  const out = { situation: '', prompt: '', choices: [], why: '', exam: '', reflect: '', reflectAnswer: '' };
+  let target = null;
+  for (const raw of lines) {
+    if (!raw.trim() || raw.startsWith('%%')) continue;
+    const choice = raw.match(/^(\+)?([A-E])\)\s?(.*)$/);
+    if (choice) {
+      const [text, feedback] = splitOnce(choice[3], ' || ');
+      out.choices.push({ key: choice[2], text: text.trim(), feedback: feedback.trim(), correct: !!choice[1] });
+      target = 'choice';
+      continue;
+    }
+    const key = raw.match(/^([\p{L}\w-]+):\s?(.*)$/u);
+    if (key && INQUIRY_FIELDS[key[1]]) {
+      target = INQUIRY_FIELDS[key[1]];
+      out[target] = key[2].trim();
+      continue;
+    }
+    if (target === 'choice') {
+      const last = out.choices[out.choices.length - 1];
+      last.feedback = `${last.feedback} ${raw.trim()}`.trim();
+    } else if (target) out[target] += ` ${raw.trim()}`;
+    else throw new LessonError(`::sorgula "durum:" ile başlamalı: ${raw.trim()}`, line);
+  }
+  return out;
+}
+
 function plotSpec(lines) {
   const spec = { fns: [], points: [], areas: [], vlines: [], hlines: [], segments: [], texts: [], x: [-6, 6], y: [-6, 6], pi: false, equal: false };
   for (const line of lines) {
@@ -293,6 +323,7 @@ function parseBlock(lessonId, head, lines, line) {
       return { type: 'categorize', id: `${lessonId}:${positional[0]}`, localId: positional[0], title, groups, line };
     }
     case 'kaydirici': return { type: 'slider_sim', title, spec: sliderSpec(lines) };
+    case 'sorgula': return { type: 'inquiry', id: positional[0] ?? null, title, ...inquiry(lines, line) };
     case 'cikmis': return { type: 'past_question', code: positional[0], note: attrs.not ?? '', archetype: attrs.tip ?? null };
     default: throw new LessonError(`Bilinmeyen blok türü: ::${type}`, line);
   }

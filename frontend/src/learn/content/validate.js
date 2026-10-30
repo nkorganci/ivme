@@ -41,6 +41,7 @@ function textsOf(lesson) {
         case 'table': texts.push(...block.columns, ...block.rows.flat()); break;
         case 'visual': case 'plot': case 'numberline': texts.push(block.caption, block.alt); break;
         case 'slider_sim': texts.push(block.title, block.spec.prompt); break;
+        case 'inquiry': texts.push(block.title, block.situation, block.prompt, block.why, block.exam, block.reflect, block.reflectAnswer, ...block.choices.flatMap((c) => [c.text, c.feedback])); break;
         default: break;
       }
     }
@@ -178,6 +179,14 @@ export function validateLessons(lessons, options = {}) {
       if (block.type === 'match_pairs' && block.pairs.length < 3) err(`eşleştirme ${block.localId}: en az 3 çift`);
       if (block.type === 'drag_order' && block.items.length < 3) err(`sıralama ${block.localId}: en az 3 öğe`);
       if (block.type === 'categorize' && block.groups.length < 2) err(`sınıflama ${block.localId}: en az 2 grup`);
+      if (block.type === 'inquiry') {
+        const name = `sorgula ${block.id ?? block.title}`;
+        if (!block.situation || !block.prompt || !block.why) err(`${name}: durum/soru/neden eksik`);
+        if (block.choices.length < 2 || block.choices.filter((c) => c.correct).length !== 1) err(`${name}: en az 2 seçenek ve tam bir doğru (+) olmalı`);
+        if (block.choices.some((c) => !c.feedback)) err(`${name}: her seçeneğin gerekçeli geri bildirimi (||) olmalı`);
+        if (block.choices.map((c) => c.key).join('') !== 'ABCDE'.slice(0, block.choices.length)) err(`${name}: seçenekler A'dan sırayla`);
+        if (block.reflectAnswer && !block.reflect) err(`${name}: yanit var ama dusun yok`);
+      }
       if (block.type === 'strategy' && block.archetype && !archetypeIds.has(block.archetype)) err(`strateji: bilinmeyen tip ${block.archetype}`);
       if (block.type === 'visual') {
         if (!block.alt) err('görselde alt metin yok');

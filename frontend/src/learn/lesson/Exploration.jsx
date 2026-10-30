@@ -223,7 +223,7 @@ export function ConceptModel({ conceptId, title }) {
   </div>;
 }
 
-export default function Exploration({ conceptId }) {
+export default function Exploration({ conceptId, level = 'L1' }) {
   const data = EXPLORATIONS[conceptId];
   const [phase, setPhase] = useState(0);
   const [step, setStep] = useState(1);
@@ -241,7 +241,7 @@ export default function Exploration({ conceptId }) {
     </nav>
     {phase === 0 && <div className="lm-phase">
       <div className="lm-story"><span className="lm-eyebrow">Bu ne işime yarar?</span><Markdown text={data.story} /></div>
-      <details className="lm-terms"><summary>İlk kez görüyorsan: kelimeler ne demek?</summary><dl>{data.terms.map(([term, meaning]) => <div key={term}><dt>{term}</dt><dd>{meaning}</dd></div>)}</dl></details>
+      <details className="lm-terms" open={level === 'L1'}><summary>İlk kez görüyorsan: kelimeler ne demek?</summary><dl>{data.terms.map(([term, meaning]) => <div key={term}><dt>{term}</dt><dd>{meaning}</dd></div>)}</dl></details>
       <div className="lm-predict"><strong>Önce tahmin et, sonra dene</strong><p>{data.experiment}</p></div>
       <ConceptModel conceptId={conceptId} title={data.title} />
       <button type="button" className="btn btn-primary" onClick={() => setPhase(1)}>Şimdi bir örneği birlikte çözelim →</button>
@@ -265,7 +265,7 @@ export default function Exploration({ conceptId }) {
       </div>
       <aside className="lm-tip"><span className="lm-eyebrow">Örnekten çıkaracağın kısa yol</span><Markdown text={data.tip} /></aside>
       <aside className="lm-trap"><strong>Bu koşulu atlama</strong><Markdown text={data.trap} /></aside>
-      <details className="lm-terms"><summary>Bir adım ileri · neden böyle, nerede sınırı var?</summary><Markdown text={data.expert} /></details>
+      <details className="lm-terms" open={level === 'L3'}><summary>Bir adım ileri · neden böyle, nerede sınırı var?</summary><Markdown text={data.expert} /></details>
       <p className="lm-next-note">Şimdi aşağıdaki bölümde bu fikri farklı örneklere uygulayacağız. Önce yöntemi kur; akıcılık kazandıkça hızlan.</p>
     </div>}
   </section>;

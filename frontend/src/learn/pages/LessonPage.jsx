@@ -94,7 +94,7 @@ export default function LessonPage() {
     const results = checks.map((cid) => next[cid]).filter(Boolean);
     const wrong = results.filter((r) => !r.correct).length;
     if (wrong >= ENGINE.lesson.wrongChecksForL1 && level !== 'L1') setOffer('L1');
-    else if (results.length === checks.length && checks.length > 0 && results.every((r) => r.correct && r.confidence === 3) && level === 'L2') setOffer('L3');
+    else if (results.length === checks.length && checks.length > 0 && results.every((r) => r.correct && r.confidence === 3) && level !== 'L3') setOffer(level === 'L1' ? 'L2' : 'L3');
   };
 
   const checksInSection = section ? section.blocks.filter((b) => CHECK_BLOCKS.has(b.type)) : [];
@@ -252,6 +252,22 @@ export default function LessonPage() {
   }
 
   const levelLabel = LEVELS.find((l) => l.id === level)?.label;
+  const levelHint = LEVELS.find((l) => l.id === level)?.hint;
+  const leveledCount = section.blocks.filter((b) => b.type === 'leveled').length;
+  const hasDiscovery = section.blocks.some((b) => b.type === 'exploration');
+  // Üstteki seçim, bölümdeki düzeyli kutuya götürür ve değişeni kısa süre vurgular; yoksa seçim yalnız kaydedilir.
+  const showLeveled = () => requestAnimationFrame(() => {
+    const box = document.querySelector('.lr-section .lr-leveled');
+    if (!box) return;
+    box.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    box.classList.remove('lr-flash');
+    void box.offsetWidth;
+    box.classList.add('lr-flash');
+  });
+  const chooseLevel = (next) => {
+    setLevel(next);
+    showLeveled();
+  };
   const frontier = Math.max(startIndex, ...lesson.sections.map((s, i) => done.has(s.id) ? i + 1 : 0));
   const remainingChecks = checksInSection.filter((b) => !answers[checkId(b)]).length;
   return <div className="lr-page lr-lesson">{header}
@@ -270,13 +286,19 @@ export default function LessonPage() {
         <h2><span className="muted">{sectionIndex + 1}.</span> <MathText text={section.title} /></h2>
         <span className="small muted">≈{section.minutes} dk · Anlatım: {levelLabel}</span>
       </div>
-      <div className="lr-reader-tools"><span>Anlatımı seç:</span><div className="lr-level-switch" role="group" aria-label="Ders anlatım düzeyi">{LEVELS.map((l) => <button key={l.id} type="button" className={level === l.id ? 'active' : ''} aria-pressed={level === l.id} title={l.hint} onClick={() => setLevel(l.id)}>{l.label}</button>)}</div></div>
+      <div className="lr-reader-tools"><span>Anlatımı seç:</span><div className="lr-level-switch" role="group" aria-label="Ders anlatım düzeyi">{LEVELS.map((l) => <button key={l.id} type="button" className={level === l.id ? 'active' : ''} aria-pressed={level === l.id} title={l.hint} onClick={() => chooseLevel(l.id)}>{l.label}</button>)}</div>
+        <p className="lr-level-note" role="status"><strong>{levelLabel}:</strong> {levelHint}. {leveledCount > 0
+          ? <>Bu bölümde <button type="button" className="lr-link" onClick={() => showLeveled()}>“Seçtiğin anlatım” kutusu</button> buna göre değişir{hasDiscovery ? '; keşifte kelimeler (Temelden) veya “Bir adım ileri” notu (Derinleş) açık gelir' : ''}. Çözümlü örneklerin gerekçeleri her düzeyde görünür.</>
+          : 'Bu bölümün anlatımı her düzeyde aynıdır.'}</p></div>
       <div className="lr-blocks">{section.blocks.map((block, i) => <div key={`${section.id}-${i}`} className={`lr-block lr-block-${block.type}`}><Block block={block} ctx={ctx} /></div>)}</div>
       {offer === 'L1' && <aside className="lr-offer" role="status">İki kontrol sorusu zorladı. <strong>Daha basit anlatayım mı?</strong>
-        <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setLevel('L1'); setOffer(null); document.querySelector('.lr-leveled')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }}>Evet, basit anlat</button>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setOffer(null); chooseLevel('L1'); }}>Evet, basit anlat</button>
+        <button type="button" className="lr-link" onClick={() => setOffer(null)}>Böyle kalsın</button></aside>}
+      {offer === 'L2' && <aside className="lr-offer" role="status">Hepsi doğru ve eminsin. <strong>Matematik diline geçelim mi?</strong>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setOffer(null); chooseLevel('L2'); }}>Evet, bağlantıları kur</button>
         <button type="button" className="lr-link" onClick={() => setOffer(null)}>Böyle kalsın</button></aside>}
       {offer === 'L3' && <aside className="lr-offer" role="status">Hepsi doğru ve eminsin. <strong>Biraz daha derine inelim mi?</strong>
-        <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setLevel('L3'); setOffer(null); document.querySelector('.lr-leveled')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }}>Evet, derin anlat</button>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setOffer(null); chooseLevel('L3'); }}>Evet, derin anlat</button>
         <button type="button" className="lr-link" onClick={() => setOffer(null)}>Gerek yok</button></aside>}
       <div className="lr-section-nav">
         {sectionIndex > 0 && <button type="button" className="btn btn-secondary" onClick={() => setSectionIndex(sectionIndex - 1)}>← Önceki bölüm</button>}

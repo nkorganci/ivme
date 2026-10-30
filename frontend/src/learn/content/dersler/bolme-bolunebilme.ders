@@ -105,6 +105,22 @@ Buradaki harfler birer etikettir; ezberlenecek yeni sayılar değil. Bölümün 
 ::gorsel alt="Bölme şemasında sol üstte bölünen 23, sağ üstte bölen 5, sağ altta bölüm 4, sol altta kalan 3 bulunur." aciklama="Şemayı önce cümleye, sonra 23 = 5 × 4 + 3 eşitliğine çevir."
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 190"><g fill="currentColor" font-family="sans-serif" font-size="20"><text x="35" y="40">23 · bölünen</text><text x="300" y="40">5 · bölen</text><text x="300" y="100">4 · bölüm</text><text x="35" y="150">3 · kalan</text></g><path d="M270 14 V120 M270 66 H490 M30 112 H220" fill="none" stroke="currentColor" stroke-width="3"/></svg>
 
+::duzey baslik="Bölmeyi üç düzeyde oku"
+L1: Bölme, “kaç tam grup çıkar, kaç tane artar?” sorusudur. 17 elmayı 5'li poşetlere koy: 3 poşet dolar (15 elma), 2 elma artar: $17=5\cdot3+2$. Artan 5 ya da daha fazla olsaydı bir poşet daha doldururduk. Bu yüzden kalan her zaman bölenden küçüktür. Hiç artmazsa “tam bölünür” deriz.
+L2: Her bölme $A=B\cdot C+K$ ve $0\leq K<B$ eşitliğidir. Bölen ve bölüm sabitken kalan 0'dan $B-1$'e kadar değişebilir; bu yüzden bölümü aynı olan tam $B$ tane ardışık bölünen vardır: $B\cdot C$, $B\cdot C+1$, …, $B\cdot C+B-1$. Kalan 0 ise $A=B\cdot C$ olur ve $B$, $A$'nın bir bölenidir.
+L3: Bölme eşitliği tektir. Aynı $A$ ve $B$ için iki farklı yazım olsaydı $B\cdot C_1+K_1=B\cdot C_2+K_2$, yani $B(C_1-C_2)=K_2-K_1$ olurdu. Sağ taraf $-B$ ile $B$ arasındadır; bu aralıktaki tek $B$ katı 0'dır. Bu yüzden bölüm ve kalan tek türlü belirlenir. Sınavda $23=5\cdot3+8$ gibi bir yazım görürsen önce onu geçerli bölmeye çevir: $23=5\cdot4+3$.
+
+::sorgula s1-gezi baslik="Kaç minibüs gerekir?"
+durum: Bir okul gezisinde 50 öğrenci, her biri 12 kişilik minibüslerle taşınacak.
+soru: “Bütün öğrencileri taşımak için kaç minibüs gerekir?” sorusunun cevabı hangisi?
+A) 4 minibüs (bölüm) || 4 minibüs dolar, ama $50-48=2$ öğrenci yerde kalır. Bölüm “dolu araç” sayısıdır.
++B) 5 minibüs (bölüm + 1) || Kalan 0 olmadığı için artan 2 öğrenciye bir araç daha gerekir.
+C) 2 minibüs (kalan kadar) || 2, açıkta kalan öğrenci sayısıdır; araç sayısı değildir.
+neden: $50=12\cdot4+2$. Bölüm (4) dolu minibüs sayısını, kalan (2) yerde kalan öğrenci sayısını söyler. Soru herkesin gitmesini istediği için kalan 0 değilse bir araç eklenir: 5. Aynı bölme farklı soruya farklı cevap verir: “Kaç minibüs tamamen dolar?” → 4; “Kaç öğrenci açıkta kalır?” → 2.
+sinav: “En az kaç kutu/araç gerekir?” → kalan varsa bölüm + 1. “En çok kaç tam paket yapılır?” → bölüm. “Kaç tane artar?” → kalan. Önce sorunun son cümlesini oku.
+dusun: Çevrende “kaç tam grup?” ile “kaç tane artar?” sorularının farklı cevap istediği bir durum bul. Bölünen ve bölen hangi miktarlar?
+yanit: Örnek: 26 sayfalık ödevi her gün 4 sayfa yaparak bitirmek. $26=4\cdot6+2$: 6 gün tam 4 sayfa yapılır, 2 sayfa artar; ödevin bitmesi için 7 gün gerekir. Bölünen 26 sayfa, bölen günlük 4 sayfa.
+
 ::ornek baslik="1 · Kalan ile gereken kutu sayısı farklıdır"
 soru: 38 kalem, her kutuya 6 kalem konularak paketleniyor. Kaç dolu kutu olur, kaç kalem artar? Bütün kalemleri taşımak için en az kaç kutu gerekir?
 1. $6\cdot6=36$, $6\cdot7=42$. 38'i aşmayan en büyük kat 36: bölüm 6. || Yedi kutuyu tamamen dolduracak kadar kalem yok.
@@ -137,6 +153,17 @@ cevap: 53. Kontrol: 53'te 9'luk beş grup ve 8 artan vardır.
 L1: $38=6\cdot6+2$ eşitliğindeki her sayının neyi anlattığını söyle. “Kalan 6 olamaz; bir grup daha oluşur” diyebiliyorsan harfli örneklere geçebilirsin. Harfler de aynı miktarların adlarıdır.
 L2: Bölüm sabitse en büyük bölüneni bulmak için kalan sınırını kullanırız. Bölüm de kalana bağlıysa önce verilen ilişkiyi denkleme koymak gerekir; yalnız kalanı seçmek yeterli açıklama değildir.
 L3: Bölen ve bölüm yer değiştirince çarpımları değişmez. Ancak aynı kalanın geçerli olması için kalan yeni bölenden de küçük olmalıdır. $23=5\cdot4+3=4\cdot5+3$ geçerli; $29=5\cdot5+4$ de geçerli. $17=6\cdot2+5$ eşitliğinde ise 2'ye bölmenin kalanı 5 olamaz.
+
+::sorgula s1b-koli baslik="Koliler değişince kalan da değişir mi?"
+durum: Bir çiftlikte yumurtalar 30'luk kolilere konuyor. Bugün 7 koli doldu ve 18 yumurta açıkta kaldı. Aynı yumurtalar şimdi 12'lik kutulara konacak.
+soru: 12'lik kutulara dizerken kaç yumurta artar?
+A) 18 || Kalan bölene bağlıdır. Bölen 30'dan 12'ye değişti; ayrıca 18 zaten 12'den büyük, kalan olamaz.
+B) 6 || $18$'in 12 ile kalanı 6'dır; ama 7 koli (210 yumurta) da 12'ye tam bölünmez: $210=12\cdot17+6$. O 6 da hesaba girer.
++C) 0 || Toplam $30\cdot7+18=228$ ve $228=12\cdot19$. Hiç artmaz.
+neden: Önce cümleyi eşitliğe çevir: toplam $=30\cdot7+18=228$. Eski kalanı yeni bölene taşıyamayız, çünkü 30'luk koliler 12'ye tam bölünmez ($30=12\cdot2+6$). Toplamı yeniden böl: $228=12\cdot19+0$.
+sinav: Bölen değişiyorsa önce bölüneni $A=B\cdot C+K$ ile yaz, sonra yeni bölenle böl. Eski kalanı doğrudan küçültmek ancak eski bölen yeni bölenin katıysa yeter.
+dusun: Aynı 228 yumurta 6'lık kutulara konsaydı eski kalan 18'i küçültmek yeter miydi? Neden?
+yanit: Evet. 30, 6'nın katıdır; 30'luk her koli 6'lık kutulara tam bölünür. Bu yüzden yalnız 18'e bakarız: $18=6\cdot3$, kalan 0. Kontrol: $228=6\cdot38$.
 
 ::ornek baslik="4 · Bölüm de kalana bağlıysa"
 soru: Bir sayı 7 ile bölündüğünde bölüm, kalanın 2 katı oluyor. Sayı en çok kaçtır?
@@ -203,6 +230,11 @@ $347=34\cdot10+7$. Onlukların tamamı 2'ye, 5'e ve 10'a kalansız bölünür. B
 
 Bir sayı **2'ye** bölünecekse son rakamı 0, 2, 4, 6 veya 8; **5'e** bölünecekse 0 veya 5; **10'a** bölünecekse 0 olmalı. 0 da çift rakamdır. “5 ile kalan 3” denirse son rakam yalnız 3 değildir: **8 de olur**, çünkü $8=5+3$.
 
+::duzey baslik="Son basamaklara neden bakıyoruz?"
+L1: 2316 lirayı 23 tane 100'lük banknot ve 16 lira bozuk para gibi düşün. Her 100 lira dört kişiye artmadan paylaşılır (25'er lira). Paylaşımda sorun çıkarabilecek tek kısım 16 liradır. 16 da dörde bölündüğü için 2316 lira dört kişiye artmadan paylaşılır.
+L2: Sayıyı $N=10a+b$ (son rakam $b$), $N=100a+t$ (son iki basamak $t$) veya $N=1000a+u$ (son üç basamak $u$) diye yaz. Bölen 10'u bölüyorsa (2, 5, 10) $b$'ye; 100'ü bölüyorsa (4, 20, 25, 50) $t$'ye; 1000'i bölüyorsa (8, 125) $u$'ya bakmak yeter. Kalan da aynı parçanın kalanıdır.
+L3: Genel ölçüt: bölen $10^k$'yı bölüyorsa son $k$ basamak yeter. 16, $10000=16\cdot625$ sayısını böler; bu yüzden 16 için son dört basamak yeterlidir. 3, 7, 9 ve 11 hiçbir $10^k$'yı bölmez. Onlar için son basamaklar yetmez; bütün basamakların katkısını hesaplarız (rakam toplamı, işaretli toplam).
+
 ::ornek baslik="7 · Kalanlı kuralı doğru oku"
 soru: Dört basamaklı $62a7$ sayısının 2, 5 ve 10 ile bölümünden kalanları bul.
 1. $62a7=10\cdot(62a)+7$ olarak düşün. || Parantez içindeki üç basamaklı sayıyı bilmesek de 10 ile çarpımın tam onluk olduğunu biliyoruz.
@@ -223,6 +255,17 @@ soru: 5316 sayısı 4'e, 7104 sayısı 8'e, 4725 sayısı 25'e tam bölünür m�
 3. 4725 için son iki basamak 25; $25=25\cdot1$. || Önceki 4700, 25'in katıdır.
 cevap: Üçü de tam bölünür. Kontrol: $5316=4\cdot1329$, $7104=8\cdot888$, $4725=25\cdot189$.
 
+::sorgula s2-takvim baslik="Takvimde 4 kuralı"
+durum: Artık yıl kuralının ilk adımı, yılın 4'e tam bölünmesidir. 2034 yılını kontrol ediyorsun.
+soru: 2034'ün 4'e bölünüp bölünmediğine en doğru gerekçeyle nasıl karar verirsin?
+A) Son rakam 4; 4'e bölündüğü için 2034 de bölünür. || Son rakam yetmez: 14, 34 gibi sayıların son rakamı 4 ama 4'e bölünmezler.
++B) Son iki basamak 34, 4'e bölünmez; 2034 de bölünmez. || 2000 kısmı zaten 4'ün katıdır; karar 34'e kalır.
+C) Rakam toplamı 9, 4'e bölünmediği için bölünmez. || Sonuç tesadüfen doğru ama gerekçe yanlış: rakam toplamı 3 ve 9 içindir. 2016'nın da rakam toplamı 9'dur, yine de $2016=4\cdot504$.
+neden: $2034=2000+34$. $2000=4\cdot500$ olduğundan geriye yalnız 34 kalır: $34=4\cdot8+2$. Demek ki 2034'ün 4 ile kalanı 2'dir. 2036 için son iki basamak 36 olur ve $36=4\cdot9$; 2036, 4'e bölünür.
+sinav: “$73a2$ sayısının 4 ile kalanı” gibi sorularda 7300 kısmını ayırıp yalnız son iki basamağa ($a2$) bakarsın.
+dusun: 1900 sayısı 4'e bölünür ama takvimde artık yıl sayılmaz; yüzyıl yılları için ayrıca 400'e bölünme aranır. Bu, bir kısa yolu kullanmadan önce hangi soruyu sormamız gerektiğini gösteriyor?
+yanit: Kısa yolun hangi koşulda geçerli olduğunu. “Son iki basamak” kuralı 4'e bölünmeyi doğru söyler; artık yıl kuralı ise 4'e bölünmenin yanında başka bir koşul da ister. Bir kuralı uygulamadan önce neyi garanti ettiğini ve neyi etmediğini kontrol ederiz.
+
 ::bosluk temel-sekiz cevap=4 tip=kural zorluk=1
 3124 sayısının 8 ile bölümünden kalan kaçtır?
 cozum: Son üç basamak 124. $124=8\cdot15+4$; kalan 4. Yalnız 24'e bakılsaydı yanlışlıkla 0 bulunurdu.
@@ -236,12 +279,28 @@ $347=3\cdot100+4\cdot10+7=3\cdot99+4\cdot9+(3+4+7)$.
 
 Rakam toplamının kendisi son kalan olmak zorunda değildir: toplam 27 ise 9 ile kalan **0** olur. Toplamı yeniden küçültürüz. 9'a bölünen her sayı 3'e de bölünür; tersi zorunlu değildir: 12, 3'e bölünür ama 9'a bölünmez.
 
+::duzey baslik="Rakam toplamı neden yeter?"
+L1: Her 10'u “bir tane 9 ve 1 artan”, her 100'ü “11 tane 9 ve 1 artan” gibi düşün. 9'lu gruplar dokuza tam bölünür; geriye her basamaktan rakamı kadar artan kalır. 52'de 5 onluk $45+5$, 2 birlik 2'dir; artanlar $5+2=7$. Gerçekten $52=9\cdot5+7$.
+L2: $10=9+1$, $100=99+1$, $1000=999+1$. Her basamak değeri 9'un bir katından 1 fazladır. Bu yüzden bir sayı ile rakamları toplamı 9'a (ve 3'e) bölündüğünde aynı kalanı verir. Bilinmeyen rakam sorusunda önce rakam toplamının alabileceği aralığı yaz; sonra bu aralıktaki uygun 9 veya 3 katlarını listele.
+L3: Rakam toplamı yalnız 3 ve 9 için çalışır, çünkü $10-1=9$'un 1'den büyük bölenleri yalnız bunlardır. Aynı fikir 11'de $10+1=11$ ile işaretli toplamı verir. Rakamların yerini değiştirmek rakam toplamını değiştirmez; bu yüzden $abc$ ile $cab$ 9'a göre aynı kalanı verir ve farkları 9'un katıdır. “Rakamlarının yerleri değiştirilerek elde edilen sayı” ifadesi bu ipucudur.
+
 ::ornek baslik="9 · Bir bilinmeyen rakam"
 soru: Üç basamaklı $5a2$ sayısı 9'a tam bölünüyor. $a$ kaçtır?
 1. Rakamlar toplamı $5+a+2=7+a$. || 9'a göre sayının yerine rakamlar toplamını inceleyebiliriz.
 2. $a$ bir rakam: $0\leq a\leq9$. Bu nedenle $7\leq7+a\leq16$. || Olası toplamın aralığı, denenecek 9 katlarını sınırlar.
 3. Bu aralıkta tek 9 katı 9'dur. $7+a=9$, yani $a=2$. || Her rakamı ayrı ayrı denemeye gerek kalmadı.
 cevap: 2. Kontrol: $522=9\cdot58$. Soruda rakamlar farklı denmediği için iki tane 2 olması sorun değil.
+
+::sorgula s2b-fis baslik="Fiş doğru olabilir mi?"
+durum: Tanesi 9 lira olan defterlerden birkaç tane alındı. Fişte toplam tutar 1247 lira yazıyor.
+soru: Bu tutar doğru olabilir mi?
+A) Evet; tutar büyük olduğu için birçok defter alınmış olabilir. || Büyüklük önemli değil; tanesi 9 lira olan ürünlerin toplamı 9'un katı olmalı.
++B) Hayır; rakam toplamı 14, 9'un katı değil. || $1+2+4+7=14$; 1247'nin 9 ile kalanı 5'tir.
+C) Son rakam 9 olsaydı doğru olurdu. || 9'a bölünme son rakama bakmaz: 19'un son rakamı 9 ama 9'a bölünmez.
+neden: Tanesi 9 lira olan defterlerin toplamı $9\cdot n$ biçimindedir. $1+2+4+7=14$ ve 14'ün 9 ile kalanı 5; demek ki $1247=9\cdot138+5$. Fişte bir yanlışlık var ya da başka bir ürün de alınmış.
+sinav: “$4a7b$ sayısı 9'un katı” gibi sorular aynı kontrolü tersinden ister: rakam toplamını 9'un katı yapacak eksik rakamları bulursun.
+dusun: Tutar 1251 lira olsaydı fiş doğru olabilir miydi? Kaç defter alınmış olurdu?
+yanit: $1+2+5+1=9$; tutar 9'un katı olduğu için mümkün. $1251=9\cdot139$; 139 defter.
 
 ::ornek baslik="10 · Tam bölünme yerine kalan veriliyorsa"
 soru: Dört basamaklı $6a35$ sayısının 3 ile bölümünden kalan 1. $a$ hangi rakamlar olabilir?
@@ -304,6 +363,11 @@ $10=11-1$, $100=11\cdot9+1$. Bu yüzden 11'e göre birler basamağı $+1$, onlar
 
 Örneğin $352=3\cdot100+5\cdot10+2=11\cdot(27+5)+(3-5+2)$. Son parça 0; 352, 11'e tam bölünür. İşaretli toplamın **0 veya 11'in pozitif ya da negatif katı** olması yeterlidir; yalnız 0 olmak zorunda değildir.
 
+::duzey baslik="11 kuralını üç düzeyde oku"
+L1: 11'in katlarına bak: 11, 22, …, 99; sonra 110, 121, 132. 121'de dıştaki rakamların toplamı $1+1=2$, ortadaki rakam 2. 132'de $1+2=3$, ortadaki rakam 3. İkisinde de fark 0. 11 kuralı bu dengeyi her uzunluktaki sayıya taşır: sağdan sırayla bir eklenen, bir çıkarılan rakamlar.
+L2: Sağdan rakamlara $+,-,+,-,\ldots$ işaretleri ver ve topla. Sonuç 0 veya 11'in bir katıysa sayı 11'e bölünür. Kalan için sonucu 0–10 aralığına getir. Örneğin 918 için $8-1+9=16$, $16-11=5$; kalan 5. Kontrol: $918=11\cdot83+5$.
+L3: Gerekçe $10=11-1$: 11'e göre 10 “−1” gibi, $100=11\cdot9+1$ ise “+1” gibi davranır. Sağdan $k$. basamağın işareti bu yüzden sırayla değişir. Rakamlar tersten yazılınca işaretli toplam ya aynı kalır ya da işaret değiştirir; tam bölünme korunur ama kalan değişebilir. Bu yüzden kalan sorularında sağdan başlamak zorunludur.
+
 ::ornek baslik="12 · 11 kuralıyla eksik rakam"
 soru: Dört basamaklı $7a35$ sayısı 11'e tam bölünüyor. $a$ kaçtır?
 1. Sağdan işaretle: $5-3+a-7=a-5$. || Birler artı, onlar eksi, yüzler artı, binler eksi.
@@ -317,6 +381,17 @@ soru: 2030 sayısının 11 ile bölümünden kalan kaçtır?
 2. Kalan negatif olamaz; $-5+11=6$. || 11'in bir katını eklemek aynı kalan sınıfında tutar; 0–10 aralığına geldik.
 3. $2030=11\cdot184+6$. || İşaretli toplamın mutlak değeri olan 5'i alsaydık yanlış sonuç bulurduk.
 cevap: 6. Tam bölünmeyi kontrol ederken soldan başlamak da işe yarar; fakat kalan için işaretin yönü önemlidir.
+
+::sorgula s3-sayac baslik="Tersten de aynı okunan sayılar"
+durum: Bir aracın kilometre sayacında 3443 yazıyor. Bu sayı tersten okununca da aynı. Böyle dört basamaklı sayılar $abba$ biçimindedir.
+soru: $abba$ biçimindeki dört basamaklı sayılar hakkında hangisi doğru?
++A) Hepsi 11'e tam bölünür. || Sağdan işaretli toplam $a-b+b-a=0$; harfler birbirini götürür.
+B) Yalnız $a+b$ çift olanlar 11'e bölünür. || 3443'te $3+4=7$ tek, ama $3443=11\cdot313$.
+C) Bazıları bölünmez; örneğin 1221. || $1221=11\cdot111$; o da bölünür.
+neden: Sağdan işaretle: birler $+a$, onlar $-b$, yüzler $+b$, binler $-a$. Toplam $a-b+b-a=0$ olduğu için $abba$ biçimindeki her sayı 11'e bölünür. Örnek: $3443=11\cdot313$.
+sinav: “Her zaman doğru mudur?” sorularında harfli kalıbın işaretli toplamını harflerle yaz. Harfler birbirini götürüyorsa sonuç bütün rakamlar için geçerlidir; götürmüyorsa bir karşı örnek ara.
+dusun: Beş basamaklı ve tersten de aynı okunan $abcba$ sayıları her zaman 11'e bölünür mü? İşaretli toplamı yazarak karar ver.
+yanit: Hayır. İşaretli toplam $a-b+c-b+a=2a-2b+c$; harfler birbirini götürmez. Karşı örnek: 12321 için toplam $1-2+3-2+1=1$, kalan 1.
 
 ::eslestir e1 baslik="Bölen ile bakacağın yeri eşleştir"
 - 4 ile bölünme :: son iki basamak
@@ -337,6 +412,11 @@ cozum: Sağdan $7-2+5-3=7$. Zaten 0–10 aralığında. Kontrol: $3527=11\cdot32
 
 Neden bu koşul gerekli? $12=2\cdot2\cdot3$. “2'ye ve 6'ya bölünüyor” bilgisi yalnız bir tane 2'yi garanti edebilir. 6 buna örnektir. “4'e ve 3'e bölünüyor” ise gerekli iki tane 2'yi ve bir tane 3'ü ayrı ayrı sağlar. **$12=2\cdot6$ eşitliği yanlış değil; bu eşitlikten yanlış bir bölünebilme testi çıkarmak yanlış.**
 
+::duzey baslik="Bileşik böleni üç düzeyde düşün"
+L1: 12'lik yumurta kolisi 3 sıra ve 4 sütundur. Yumurtalar 12'lik kolilere artmadan dolacaksa hem 3'lü hem 4'lü gruplara artmadan ayrılabilmelidir. Tersine, 3'e ve 4'e bölünen her sayı 12'ye de bölünür; çünkü 3 ile 4'ün 1'den başka ortak böleni yoktur. Bu yüzden 12 için iki küçük soru sorarız: 3'e bölünüyor mu, 4'e bölünüyor mu?
+L2: $m$ ile $n$ aralarında asalsa “hem $m$'ye hem $n$'ye bölünür” ile “$m\cdot n$'ye bölünür” aynı anlama gelir. Böleni bu şekilde ayır: $24=3\cdot8$, $36=4\cdot9$, $45=5\cdot9$, $72=8\cdot9$. Ortak çarpanı olan ayrıştırmalar ($12=2\cdot6$, $24=4\cdot6$) bölünebilme testi olarak kullanılmaz.
+L3: Hem $m$'ye hem $n$'ye bölünen sayılar tam olarak EKOK$(m,n)$'nin katlarıdır. Aralarında asal sayılarda EKOK çarpıma eşittir. 2 ve 6 için EKOK 6 olduğundan bu iki koşul yalnız 6'ya bölünmeyi garanti eder. Kalan sorularında da aynı ayrıştırma kullanılır: 12 ile kalanı bulmak için 3 ve 4 ile kalanları birlikte sağlayan sayıyı 0–11 arasında ararız.
+
 ::ornek baslik="14 · Tek sayı, birkaç kontrol"
 soru: 234 sayısı 6'ya, 12'ye ve 18'e tam bölünür mü?
 1. 6 için 2 ve 3: son rakam 4 çift; rakam toplamı 9, 3'ün katı. İkisi de geçti. || $6=2\cdot3$ ve çarpanlar aralarında asal.
@@ -355,6 +435,17 @@ cevap: 6 ve 18'e bölünür, 12'ye bölünmez. Kontrol: $234=6\cdot39=18\cdot13$
 | 36 | 4 ve 9 | Son iki basamak + rakam toplamı |
 | 45 | 5 ve 9 | 0/5 ile bitme + rakam toplamı |
 | 72 | 8 ve 9 | Son üç basamak + rakam toplamı |
+
+::sorgula s3b-masa baslik="İki masa düzeni"
+durum: Bir düğünde konuklar ya 6 kişilik ya da 8 kişilik masalara boş yer kalmadan oturtulabiliyor. Biri “O hâlde konuk sayısı 48'in katıdır, çünkü $6\cdot8=48$” diyor.
+soru: Bu çıkarım doğru mu?
+A) Doğru; iki koşulu birlikte sağlayan sayı çarpımın katıdır. || Bu yalnız aralarında asal bölenlerde geçerli. 6 ve 8'in ortak 2 çarpanı var.
++B) Yanlış; 24 konuk da iki düzene uyar. || $24=6\cdot4=8\cdot3$, ama 24, 48'in katı değildir.
+C) Yanlış; konuk sayısı 14'ün katı olmalı. || $6+8$ toplamı bölünebilmeyi belirlemez; 24 konuk iki düzene de uyar ve 14'ün katı değildir.
+neden: Hem 6'ya hem 8'e bölünen sayılar EKOK$(6,8)=24$'ün katlarıdır: 24, 48, 72, … $6\cdot8=48$ çarpımı ortak 2 çarpanını iki kez sayar. 24 konuk 4 tane 6'lık ya da 3 tane 8'lik masaya oturur.
+sinav: “Hem 6 hem 8 ile tam bölünen” ifadesinde çarpımı değil EKOK'u kullan. Kontrol için 24'ü aralarında asal çarpanlara ayır: “3'e ve 8'e bölünüyor mu?”
+dusun: Konuklar 4 kişilik ya da 9 kişilik masalara boşluksuz oturabiliyorsa konuk sayısı hakkında ne söyleyebilirsin?
+yanit: 4 ile 9 aralarında asal olduğu için konuk sayısı 36'nın katıdır: 36, 72, 108, … Burada çarpım ile EKOK aynıdır.
 
 ::ornek baslik="15 · En büyük sayı ile en büyük rakam toplamı"
 soru: Dört basamaklı $2a5b$ sayısı 45'e tam bölünüyor. En büyük sayı kaçtır?
@@ -414,12 +505,28 @@ Bir sayının 7 ile kalanı 5 ise o sayı 5, 12, 19, 26, … olabilir. Hangisi o
 
 İki ayrı kolide 7'li paketler ve artan kalemler olduğunu düşün. Kolileri birleştirince zaten tam olan paketler yeni kalan oluşturmaz. Yalnız artanlar birleşir; onlar da yeni bir paket doldurabilir. Kalanlarla toplamanın mantığı budur.
 
+::duzey baslik="Kalanlarla işlemi üç düzeyde gör"
+L1: Haftanın günleri 7'lik bir döngüdür. Bugün salıysa 3 gün sonra cuma, ondan 3 gün sonra pazartesidir. 6 günü bir seferde saymak da salıdan pazartesiye götürür. Kalanlarla toplama budur: sayıların kendisini değil, “döngüde nerede durduklarını” toplarız.
+L2: Aynı bölen $d$ için $A=dq+a$ ve $B=dt+b$ ise $A+B$, $A-B$, $A\cdot B$ ve $A^n$ ($n$ pozitif tam sayı) sırasıyla $a+b$, $a-b$, $a\cdot b$ ve $a^n$ ile aynı kalanı verir. Sonucu her zaman 0 ile $d-1$ arasına indir; negatifse $d$ ekle.
+L3: Çarpmanın gerekçesi: $(dq+a)(dt+b)=d(dqt+qb+at)+ab$. İlk parça $d$'nin katıdır; kalanı yalnız $ab$ belirler. Bölmede böyle bir düzen yoktur: $A$'nın kalanını 2'ye bölmek $A/2$'nin kalanını vermez (son bölümdeki 24. örnek). Bölen değişirse eski kalan da yeniden hesaplanır.
+
 ::ornek baslik="17 · İki kalanı toplayınca yeniden paketle"
 soru: $A$'nın 7 ile bölümünden kalan 5, $B$'nin kalanını aynı bölenle bulduğumuzda 6. $A+B$'nin kalanı kaçtır?
 1. $A=7q+5$, $B=7t+6$. || İki sayının da aynı bölenle verilmiş olması gerekir.
 2. $A+B=7(q+t)+11$. || Tam yedilikler bir araya gelir; artanlar $5+6=11$ olur.
 3. $11=7+4$; yeni bir tam paket daha oluşur. Son kalan 4. || İlk topladığımız 11, son kalan değildir.
 cevap: 4. Örneğin $A=12,B=13$ alırsak toplam $25=7\cdot3+4$ olur.
+
+::sorgula s4-firin baslik="Fırının saati"
+durum: Bir fırın her 8 saatte bir yeni ekmek partisi çıkarıyor. İlk parti saat 22.00'de çıktı.
+soru: 5. parti saat kaçta çıkar?
+A) 14.00 || 5 aralık saydın: $22+5\cdot8=62$. Birinci partiden beşinciye 4 aralık vardır.
++B) 06.00 || $22+4\cdot8=54=24\cdot2+6$. İki tam gün sonra saat 06.00.
+C) 54.00 || Saat 24'te başa döner; 54'ten iki tam günü (48 saat) çıkarmak gerekir.
+neden: Birinci partiden beşinciye kadar 4 aralık vardır: $22+4\cdot8=54$. Saat her 24 saatte başa döner ve $54=24\cdot2+6$. Kısa yol: $32$'nin 24 ile kalanı 8; $22+8=30$; 30'un 24 ile kalanı 6.
+sinav: “$A$'nın 24 ile kalanı 22 ise $A+32$'nin kalanı kaçtır?” sorusu aynı hesaptır: kalanları topla, sonucu yeniden küçült.
+dusun: Aynı fırın 10. partiyi saat kaçta çıkarır? Hesaplamadan önce tahmin et.
+yanit: 9 aralık: $22+9\cdot8=94=24\cdot3+22$; yine 22.00. Çünkü $9\cdot8=72$, 24'ün katıdır; tam günler saati değiştirmez.
 
 ::metin
 ### Üs işareti seni durdurmasın
@@ -450,6 +557,11 @@ cozum: $3\cdot7-2=19=8\cdot2+3$. Kalan 3. $N=15$ ile kontrol: $43=8\cdot5+3$.
 
 @bolum s4b 20 | Birden fazla kalan, döngüler ve sınav yolu
 ::kesfet bolme-dongu
+::duzey baslik="Döngüleri üç düzeyde düşün"
+L1: Dört şarkılık bir liste sürekli aynı sırayla çalıyor: A, B, C, D, A, B, … 10. şarkı hangisi? 8 şarkı iki tam tur yapar; 9. şarkı A, 10. şarkı B. Döngü sorusunda hep aynı şeyi sorarız: kaç tam tur, sonra kaç adım? $10=4\cdot2+2$; ikinci şarkı B.
+L2: $a^n$'nin $d$ ile kalanını bulmak için $a^1, a^2, \ldots$ kalanlarını üret ve tekrarın başladığı yeri bul. Döngü uzunluğu $L$ ise üssü $L$'ye böl. Döngü ilk kuvvetten başlıyorsa: kalan $r>0$ için döngünün $r$. elemanı, $r=0$ için son elemanı alınır.
+L3: Döngü her zaman ilk terimden başlamaz: $2^n$'nin 12 ile kalanları $2,4,8,4,8,\ldots$; 2 bir daha görünmez. O zaman önce döngü dışındaki başlangıç terimlerini ayır, kalan üsleri döngü uzunluğuna böl. İki farklı bölenle verilen kalanları birleştirirken (ör. 3 ile 2, 4 ile 1) bölenler aralarında asalsa 0–11 arasında tek bir cevap bulunur.
+
 ::ornek baslik="20 · Kalanlı bileşik bölen: iki küçük koşul"
 soru: $N$ sayısının 3 ile kalanı 2, 4 ile kalanı 1. 12 ile kalanı kaçtır?
 1. Aradığımız kalan $r$, 0–11 arasında. Bu aralıkta 4 ile kalanı 1 olanlar 1, 5, 9. || Önce büyük olasılık kümesini üç adaya indirdik.
@@ -486,6 +598,17 @@ cevap: En az 4 eklenir veya 5 çıkarılır. Kalan zaten 0 olsaydı “tam böl�
 ::metin
 ### Büyük kuvvette sayıyı değil, kalanı büyüt
 $3^1,3^2,3^3,3^4$ için 5 ile kalanlar 3, 4, 2, 1. Her seferinde önceki kalanı 3 ile çarpıp yeniden 5'e böldük. Sonra $1\cdot3=3$: başlangıca döndük. **Döngü uzunluğu 4, bölen 5**; bu iki sayının görevlerini karıştırma.
+
+::sorgula s4b-nobet baslik="Nöbet listesi"
+durum: Ada, Bora, Cem ve Deniz bu sırayla her gün biri olmak üzere bulaşık nöbeti tutuyor. 1. gün nöbet Ada'da.
+soru: 50. gün nöbet kimde?
+A) Deniz || 48. gün Deniz'dedir; 50 ise 4'e tam bölünmez, iki adım daha var.
++B) Bora || $50=4\cdot12+2$: 12 tam tur, sonra iki adım.
+C) Cem || Bir adım fazla saydın: 49. gün Ada, 50. gün Bora.
+neden: Her 4 günde liste başa döner. $50=4\cdot12+2$: 12 tam tur (48 gün) bitince iki adım kalır. 49. gün Ada, 50. gün Bora.
+sinav: $7^{50}$ sayısının 10 ile kalanı (son rakamı) aynı mantıkla bulunur: $7$'nin kuvvetlerinin son rakamları 7, 9, 3, 1 döngüsündedir. 50'nin 4 ile kalanı 2 olduğundan cevap ikinci eleman, 9.
+dusun: 100. günde nöbet kimde olur? Kalan 0 çıkınca neden “sıfırıncı kişi” değil de son kişi seçilir?
+yanit: $100=4\cdot25$. 25 tam tur bitmiştir; 100. gün turun son günü olduğu için nöbet Deniz'dedir. Kalan 0, döngünün son kutusunda durduğumuzu söyler.
 
 ::ornek baslik="23 · Üs döngüye tam denk gelirse"
 soru: $3^{24}$ sayısının 5 ile bölümünden kalan kaçtır?

@@ -3,6 +3,7 @@
 // son test → açıklama → ders tamam → ustalık testi → Hatalarım, İlerleme, Ayarlar, harita.
 //   node testler/konu-ogrenme-ui.mjs [kavram]        (varsayılan: ilk ders)
 //   node testler/konu-ogrenme-ui.mjs --live           (yalnız okuma: çalışan 1010 uygulamasında sayfalar açılır)
+//   node testler/konu-ogrenme-ui.mjs --duzey [kavram]  (her bölümde anlatım düzeyi ve günlük hayattan sorgula)
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
@@ -18,6 +19,7 @@ mkdirSync(out, { recursive: true });
 const live = process.argv.includes('--live');
 const discoveryOnly = process.argv.includes('--kesif');
 const guidedOnly = process.argv.includes('--gercek-ornek');
+const levelsOnly = process.argv.includes('--duzey');
 const lessonsDir = join(ROOT, 'frontend/src/learn/content/dersler');
 const requestedConcept = process.argv.slice(2).find((a) => !a.startsWith('--'));
 const conceptId = requestedConcept ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
@@ -344,10 +346,73 @@ async function runGuided(mobile) {
   } finally { browser.close(); }
 }
 
+async function runLevels(mobile) {
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
+  const steps = [];
+  const LABELS = { L1: 'Temelden', L2: 'Bağlantıları kur', L3: 'Derinleş' };
+  try {
+    const lesson = parseLesson(readFileSync(join(lessonsDir, `${conceptId}.ders`), 'utf8'), conceptId);
+    for (const [index, section] of lesson.sections.entries()) {
+      const leveled = section.blocks.find((b) => b.type === 'leveled');
+      const inquiries = section.blocks.filter((b) => b.type === 'inquiry');
+      if (!leveled && !inquiries.length) continue;
+      db.events = [{ id: `open-l-${index}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId }];
+      for (let i = 0; i < index; i++) db.events.push({ id: `l-${index}-${i}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'section', conceptId, sectionId: lesson.sections[i].id, nextSectionId: lesson.sections[i + 1].id, ms: 1 });
+      await goto(`/konuyu-ogrenelim/ders/${conceptId}`);
+      await wait('document.querySelector(".lr-section .lr-reader-tools")');
+      assert.ok(await evalJs(`document.querySelector('.lr-section-head h2').textContent.includes(${JSON.stringify(section.title.replace(/\$[^$]*\$/g, '').slice(0, 12))})`), `${section.id}: yanlış bölüm açıldı`);
+      const before = db.events.length;
+      if (leveled) {
+        for (const level of ['L3', 'L2', 'L1']) {
+          assert.ok(await evalJs(click('.lr-reader-tools .lr-level-switch button', LABELS[level])), `${section.id}: ${level} düğmesi yok`);
+          await wait(`document.querySelector('.lr-section .lr-leveled')?.dataset.level === '${level}'`);
+          const plain = leveled.levels[level].replace(/\$[^$]*\$/g, ' ').replace(/[*_`#>]/g, '').split(/\s+/).filter((w) => w.length > 3).slice(0, 4).join(' ');
+          const shown = await evalJs(`document.querySelector('.lr-section .lr-leveled-body').innerText.replace(/\\s+/g, ' ')`);
+          for (const word of plain.split(' ')) assert.ok(shown.includes(word), `${section.id} ${level}: “${word}” görünmüyor — ${shown.slice(0, 160)}`);
+          assert.ok(await evalJs(`document.querySelector('.lr-reader-tools .lr-level-note').textContent.includes(${JSON.stringify(LABELS[level])})`));
+          await pause(60);
+        }
+        const visible = '(() => { const t = document.querySelector(".lr-section .lr-leveled").getBoundingClientRect().top; return t > -5 && t < 400; })()';
+        await wait(visible, 5000).catch(async () => { throw Error(`${section.id}: seçimden sonra düzeyli kutu görünür alana gelmedi (${await evalJs('document.querySelector(".lr-section .lr-leveled").getBoundingClientRect().top')})`); });
+        if (index === 0) await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-duzey-${section.id}.png`));
+      }
+      for (const inquiry of inquiries) {
+        const wrong = inquiry.choices.find((c) => !c.correct);
+        const right = inquiry.choices.find((c) => c.correct);
+        const box = `[...document.querySelectorAll('.lr-inquiry')].find((b) => b.querySelector('h4')?.textContent.includes(${JSON.stringify(inquiry.title)}))`;
+        await evalJs(`${box}.scrollIntoView({ block: 'start' })`);
+        assert.equal(await evalJs(`Boolean(${box}.querySelector('.lr-inquiry-why'))`), false, `${inquiry.id}: gerekçe başlangıçta açık`);
+        assert.ok(await evalJs(`(() => { const b = [...${box}.querySelectorAll('.lr-inquiry-options button')][${inquiry.choices.indexOf(wrong)}]; b.click(); return true; })()`));
+        await wait(`${box}.querySelector('.lr-feedback.bad')`);
+        assert.equal(await evalJs(`Boolean(${box}.querySelector('.lr-inquiry-why'))`), false, `${inquiry.id}: yanlış seçimde gerekçe hemen açılmamalı`);
+        assert.ok(await evalJs(`(() => { const b = [...${box}.querySelectorAll('button')].find((x) => x.textContent.includes('Başka bir seçeneği')); b.click(); return true; })()`));
+        await pause(40);
+        assert.ok(await evalJs(`(() => { const b = [...${box}.querySelectorAll('.lr-inquiry-options button')][${inquiry.choices.indexOf(right)}]; b.click(); return true; })()`));
+        await wait(`${box}.querySelector('.lr-feedback.good') && ${box}.querySelector('.lr-inquiry-why')`);
+        assert.ok(!(await evalJs(`Boolean(${box}.querySelector('.katex-error'))`)), `${inquiry.id}: formül hatası`);
+        if (inquiry.reflectAnswer) {
+          assert.ok(await evalJs(`(() => { const b = [...${box}.querySelectorAll('button')].find((x) => x.textContent.includes('karşılaştır')); b.click(); return true; })()`));
+          await wait(`${box}.querySelector('.lr-inquiry-answer')`);
+        }
+        if (index === 0) await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-sorgula-${inquiry.id}.png`));
+      }
+      const added = db.events.slice(before);
+      assert.ok(added.every((e) => e.kind === 'lesson' && e.action === 'level'), `${section.id}: düzey dışında olay kaydedildi`);
+      steps.push({ step: section.id, leveled: !!leveled, inquiries: inquiries.length, overflow: await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2') });
+    }
+    assert.ok(steps.length, 'denetlenecek düzey/sorgula bloğu bulunamadı');
+    return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests].filter((f) => !f.url?.includes('favicon')) };
+  } catch (error) {
+    await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-duzey-hata.png`));
+    return { mobile, steps, failure: error.message, page: await evalJs('location.pathname'), errors: [...errors], failedRequests: [...failedRequests] };
+  } finally { browser.close(); }
+}
+
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await (guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
+    report.runs.push(await (levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();

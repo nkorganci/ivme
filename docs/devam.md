@@ -6,14 +6,21 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 
 ## Etkin görev
 
-- Güncelleme: 29 Ekim 2026 — Codex.
-- Kullanıcının son kapsamı: **yalnız Bölme ve Bölünebilme Kuralları** için sıfırdan,
-  mantığını öğreten, günlük örnekli ve gerçek soru seviyesine hazırlayan pilot.
-- Diğer dersleri bu standarda yaymak, kullanıcının pilotu değerlendirmesinden sonra.
-  Önceki temel-kavramlar s2–s5 genişletmesi otomatik sıradaki görev değildir.
+- Güncelleme: 29 Ekim 2026 — Claude.
+- Bölme ve Bölünebilme pilotu tamamlandı, push edildi. Kullanıcının sonraki talimatı:
+  **ilk konudan (sıra 100 `temel-kavramlar`) başlayarak** diğer dersleri aynı biçime getirmek.
+- Diğer 32 dersin her bölümünde `::duzey` zaten var; eksik olan her bölümde `::sorgula`,
+  bölüm başına daha fazla gerekçeli örnek, koşullu kısa yol ve gerekiyorsa bölüm keşfi.
+  Sıra: `temel-kavramlar` → `sayi-basamaklari` → `ebob-ekok` → `rasyonel-sayilar` → … (`sira:` alanı).
 
 ## Tamamlanan kapsam
 
+- Pilot eksikleri giderildi: üstteki “Anlatımı seç” 8 bölümün yalnız birinde `::duzey`
+  bulduğu için çoğu bölümde hiçbir şey değiştirmiyordu. Artık her bölümde konuya özgü
+  L1/L2/L3 kutusu var; seçim kutuya kaydırır, vurgular, keşifte kelimeleri (L1) veya
+  “Bir adım ileri”yi (L3) açar. L1'deki başarılı öğrenciye de üst düzey önerilir.
+- Yeni `::sorgula` bloğu (Günlük hayattan sorgula, `DailyInquiry.jsx`): her bölümde bir
+  günlük senaryo; puan/olay üretmez. Ayrıştırıcı ve doğrulayıcı biçimi denetler.
 - `bolme-bolunebilme.ders`: 8 bölüm / 4 oturum; 24 gerekçeli çözümlü örnek,
   3 adım tamamlama, 4 yeni küçük kontrol, bölüm sonu yöntem ve hata açıklamaları.
 - Eski s1–s4, ön test/kontrol/havuz ve e1/b1 kimlikleri korunur. S1b–s4b eklenir.
@@ -34,17 +41,12 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 
 ## Doğrulama ve kalan iş
 
-- 29 Node testi geçti: mevcut içerik/KaTeX, 298 sayısal soru, motor, keşif modelleri;
-  pilot için tüm rakam çiftleri, yeni modellerin girişleri, iki gerçek soru ve dışlama.
-- Ayrı Vite paketi başarılı: `veri/ui-denetim/bolme-pilot-dist`.
-- Dört keşif ve iki gerçek örnek masaüstü/mobilde geçti; taşma, konsol/istek hatası yok.
-- Sekiz bölümlük öğrenme/ustalık akışı masaüstü/mobilde geçti. Son eklemede eski e1
-  eşleştirme kontrolü de korundu; içerik testleri tekrar geçti.
-- Son pakette e1 dahil 8 bölüm / 28 ders olayı / 6 ustalık sorusu masaüstü ve mobilde
-  geçti. Canlı salt okuma sayfa denetimleri de geçti; taşma/konsol/istek hatası yok.
-  Sonuçlar araç çıktılarında; ekranlar `veri/ui-denetim/konu-ogrenme/` altında.
-- Plan denetimi ve 17 staged dosya için commit öncesi kontrol geçti.
-- Kullanıcıdan içerik değerlendirmesi beklenir; başka konuya kendiliğinden geçme.
+- 31 Node testi geçti (içerik/KaTeX, motor, keşif, pilot; yeni: her bölümde düzey+sorgula
+  ve senaryo sayılarının bağımsız hesabı).
+- Ayrı paket `veri/ui-denetim/bolme-pilot-dist` ile `--duzey`, `--kesif`, `--gercek-ornek`
+  ve tam ders akışı masaüstü/mobilde geçti; taşma, konsol/istek hatası yok.
+- Kalan: diğer derslere aynı biçim (yukarıdaki sıra). Her ders için `::sorgula` ekle,
+  sonra `node --test testler/konu-ogrenme-icerik.test.mjs` ve `--duzey <ders>` çalıştır.
 
 ## Sıradaki komut
 

@@ -125,3 +125,40 @@
 @media (max-width: 1250px) { .lm-lab { grid-template-columns: minmax(0, 1fr); } .lm-controls { border-left: 0; border-top: 1px solid var(--line); grid-template-columns: repeat(2, minmax(0, 1fr)); } .lm-controls > .lm-eyebrow, .lm-observation { grid-column: 1 / -1; } .lm-canvas { padding-inline: 20px; } .lm-diagram { max-width: 540px; align-self: center; } }
 @media (max-width: 950px) { .lr-reader { grid-template-columns: minmax(0, 1fr); gap: 12px; } .lr-lesson-outline { position: static; padding: 0; } .lr-lesson-outline > .lm-eyebrow, .lr-outline-help { display: none; } .lr-lesson-outline ol { display: flex; gap: 8px; overflow-x: auto; margin: 0; padding: 4px 0 10px; } .lr-lesson-outline li { flex: 0 0 210px; } .lr-lesson-outline button { height: 100%; font-size: .8rem; padding: 10px; } .lr-learning-path { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) { .lr-reader > .lr-section { padding: 16px 12px; } .lr-lesson .lr-blocks { gap: 22px; } .lm-heading { padding: 18px 16px; } .lm-badge { display: none; } .lm-phase { padding: 16px 12px; gap: 20px; } .lm-phases button { flex-direction: column; font-size: .73rem; line-height: 1.4; padding: 10px 4px; gap: 6px; } .lm-controls { padding: 16px; grid-template-columns: minmax(0, 1fr); } .lm-canvas { padding: 10px 6px; } .lm-equation { font-size: .95rem; } .lm-story { padding-left: 12px; } .lm-reasoning { gap: 20px; } .lm-reasoning li { gap: 10px; grid-template-columns: 28px minmax(0, 1fr); } .lm-step-number { width: 28px; height: 28px; } .lr-lesson .lr-md { font-size: 1rem; } .lm-example-problem, .lm-tip, .lm-trap { padding: 16px; } }
+
+/* Anlatım düzeyi: seçili düzey adı, değişince kısa vurgu (hareket azaltma tercihinde yalnız renk). */
+.lr-level-note { flex-basis: 100%; margin: 0; max-width: var(--reading-width); line-height: 1.65; color: var(--text-muted); }
+.lr-level-note .lr-link { padding: 0; font: inherit; }
+.lr-lesson .lr-leveled { padding: 16px 18px; border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 12px; background: var(--surface); scroll-margin-top: 16px; }
+.lr-leveled-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.lr-leveled-label { color: var(--navy); font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.lr-leveled-head .lr-level-switch { margin: 0; }
+.lr-leveled-body { animation: lr-level-in .35s ease; }
+.lr-leveled.lr-flash { animation: lr-flash 1.4s ease; }
+@keyframes lr-level-in { from { opacity: .35; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes lr-flash { 0%, 40% { background: var(--tint); box-shadow: 0 0 0 3px color-mix(in srgb, var(--navy) 30%, transparent); } 100% { background: var(--surface); box-shadow: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .lr-leveled-body { animation: none; }
+  .lr-leveled.lr-flash { animation: none; background: var(--tint); }
+}
+
+/* Günlük hayattan sorgula: tanıdık durum → seçim → gerekçe. Puanlanmaz. */
+.lr-inquiry { display: grid; gap: 14px; padding: clamp(16px, 2vw, 24px); border: 1px solid color-mix(in srgb, var(--ok) 30%, var(--line)); border-radius: 14px; background: var(--surface); }
+.lr-inquiry-label { justify-self: start; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ok); background: var(--ok-soft); border-radius: 20px; padding: 5px 10px; }
+.lr-inquiry h4 { margin: 0; font-size: 1.1rem; }
+.lr-inquiry-situation { padding-left: 14px; border-left: 3px solid var(--ok); }
+.lr-inquiry-prompt { margin: 0; font-size: 1.02rem; line-height: 1.7; }
+.lr-inquiry-options { display: grid; gap: 10px; }
+.lr-inquiry-options button { text-align: left; min-height: 50px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; line-height: 1.55; cursor: pointer; }
+.lr-inquiry-options button:hover:not(:disabled) { border-color: var(--navy); }
+.lr-inquiry-options button[aria-pressed=true] { border-color: var(--navy); background: var(--tint); }
+.lr-inquiry-options button.good { border-color: var(--ok); background: var(--ok-soft); }
+.lr-inquiry-options button.bad { border-color: var(--bad); background: var(--bad-soft); }
+.lr-inquiry-options button:disabled { cursor: default; }
+.lr-inquiry-why { display: grid; gap: 8px; padding: 14px 16px; border-radius: 10px; background: var(--tint); line-height: 1.75; }
+.lr-inquiry-exam { margin: 4px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
+.lr-inquiry-reflect { display: grid; gap: 8px; }
+.lr-inquiry-reflect p { margin: 0; line-height: 1.7; }
+.lr-inquiry-reflect textarea { width: 100%; min-height: 64px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; resize: vertical; }
+.lr-inquiry-reflect .btn { justify-self: start; }
+.lr-inquiry-answer { padding: 10px 12px; border-radius: 8px; background: var(--ok-soft); }

@@ -47,6 +47,8 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
 - Mevcut dersler ve bundan sonra eklenecekler aynı standarda uyar. Yeni ders yalnız
   `.ders` özetiyle tamamlanmış sayılmaz: keşif anlatımı, uygun görsel model, gerekçeli
   örnek, aktarım sorusu, koşullu kısa yol ve yanlış düşünce geri bildirimi gerekir.
+  Her bölümde üç düzeyi dolu bir `::duzey` (Temelden / Bağlantıları kur / Derinleş) ve en az
+  bir `::sorgula` (Günlük hayattan sorgula) bulunur; örnek: bölme ve bölünebilme pilotu.
 - Oturum sonunda yerel commit yap; devam notunda **tamamlanan kapsam, kalan somut iş,
   doğrulama sonucu ve sıradaki komut** bulunmalı. Geçmişi yeniden tarama, geçerli testleri
   sebepsiz tekrarlama, mevcut modeli veya soru bankasını baştan üretme. Yeni bir hata ya
