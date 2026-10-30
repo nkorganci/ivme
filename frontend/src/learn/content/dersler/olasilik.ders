@@ -106,6 +106,24 @@ soru: İki zar birlikte atıldığında üst yüzlerdeki sayıların toplamını
 2. Olayın eleman sayısı 5. || $(4, 4)$ bir kez yazılır.
 cevap: 5 eleman
 
+::ornek baslik="Para ve zar birlikte"
+soru: Bir madeni para ve bir zar birlikte atılıyor. Örnek uzayın eleman sayısını ve “yazı ve çift sayı” olayını bul.
+1. Para 2, zar 6 sonuç verir: $s(E)=2\cdot6=12$. || İki deney birlikte yapılıyor; sonuçlar çarpılır.
+2. Yazı gelip zarın çift olduğu çıktılar: $(Y,2)$, $(Y,4)$, $(Y,6)$. || Olay, örnek uzayın koşulu sağlayan alt kümesidir.
+3. Olayın eleman sayısı 3. || Kontrol: 12 çıktının 3'ü.
+cevap: $s(E)=12$; olay $\{(Y,2),(Y,4),(Y,6)\}$, 3 eleman.
+
+::sorgula s1-tavla baslik="Toplam 7 mi daha sık, 12 mi?"
+durum: Tavla oynarken arkadaşın “İki zarın toplamı 7 de olabilir, 12 de; ikisi de tek bir sayı, aynı sıklıkta gelir.” diyor.
+soru: Arkadaşın haklı mı?
+A) Haklı; her toplam bir sayıdır, şansları eşittir. || Toplamlar eş olası değildir; eş olası olan sıralı zar ikilileridir.
++B) Haksız; toplam 7, toplam 12'den 6 kat daha sık gelir. || 7 için 6 ikili, 12 için yalnız $(6,6)$ var.
+C) Haksız; toplam 12 daha sık gelir. || 12 ancak iki zar da 6 gelirse oluşur.
+neden: Örnek uzayda 36 eş olası sıralı ikili vardır. Toplam 7: $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ → 6 ikili. Toplam 12: yalnız $(6,6)$. Olasılıklar $\frac{6}{36}$ ve $\frac{1}{36}$.
+sinav: Olasılık sorularında önce eş olası çıktıları belirle. Zarlarda bunlar toplamlar değil, sıralı ikililerdir.
+dusun: İki zarda en sık gelen toplam hangisidir?
+yanit: 7. Ondan uzaklaştıkça toplamı veren ikili sayısı azalır.
+
 ::yanilgi m1 tip=ornek-uzay
 yanlis: İki zar atıldığında $(2, 3)$ ile $(3, 2)$ aynı çıktıdır; örnek uzay 21 elemanlıdır.
 neden: Zarlar farklıdır (birinci ve ikinci zar); 36 sıralı ikilinin her biri eş olasıdır.
@@ -139,10 +157,28 @@ cevap: $\frac{1}{3}$
 
 ::tamamla baslik="MEBİ örneği: olasılıktan bilye sayısı"
 soru: Bir torbada kırmızı, mavi ve sarı bilyeler vardır. Kırmızı bilye sayısı mavi ve sarı bilyelerin toplamına eşittir, mavi çekme olasılığı $\frac{2}{5}$'tir ve sarı bilye sayısı 1 ile 5 arasındadır. Torbada en az kaç mavi bilye vardır?
-1. Kırmızı $k$, mavi $m$, sarı $s$: $k = m + s$, toplam $2k$; $\frac{m}{2k} = \frac{2}{5} \Rightarrow 5m = 4k$.
-?2. $m = 4$ ise $k = 5$, $s = 1$: $1 < s < 5$ sağlanmaz.
-?3. $m = 8$ ise $k = 10$, $s = 2$: sağlanır. En az 8 mavi bilye.
+1. Kırmızı $k$, mavi $m$, sarı $s$: $k = m + s$, toplam $2k$; $\frac{m}{2k} = \frac{2}{5} \Rightarrow 5m = 4k$. || Sözel bilgileri denkleme çevirdik; toplam $k+m+s=2k$.
+?2. $m = 4$ ise $k = 5$, $s = 1$: $1 < s < 5$ sağlanmaz. || $5m=4k$ olduğundan $m$ 4'ün katı olmalı; en küçük adayı denedik.
+?3. $m = 8$ ise $k = 10$, $s = 2$: sağlanır. En az 8 mavi bilye. || Bir sonraki adayda bütün koşullar sağlandı.
 cevap: 8
+
+::ornek baslik="Olasılıktan eksik sayıyı bulmak"
+soru: Bir torbada 5 kırmızı ve bir miktar beyaz bilye vardır. Torbadan çekilen bir bilyenin beyaz olma olasılığı $\frac{2}{3}$ ise torbada kaç beyaz bilye vardır?
+1. Beyaz $w$ olsun: $\frac{w}{5+w}=\frac{2}{3}$. || İstenen ÷ tümü.
+2. $3w=10+2w$, $w=10$. || İçler dışlar çarpımı.
+3. Kontrol: $\frac{10}{15}=\frac{2}{3}$. || Toplam 15 bilye.
+cevap: 10 beyaz bilye.
+
+::sorgula s2-cekilis baslik="Çekilişte kazanma şansın"
+durum: Bir okul çekilişinde toplam 200 bilet satıldı ve bunlardan 5'ini sen aldın. Tek bir bilet kazanacak.
+soru: Kazanma olasılığın kaçtır?
+A) %5 || 5 bileti 100 bilete böldün; toplam bilet 200.
++B) $\frac{1}{40}$ (%2,5) || $\frac{5}{200}=\frac{1}{40}$.
+C) $\frac{1}{200}$ || Bu, tek bir biletin kazanma olasılığıdır; senin 5 biletin var.
+neden: Her bilet eşit şansa sahip. İstenen çıktı sayısı 5, tüm çıktı sayısı 200: $\frac{5}{200}=\frac{1}{40}=0{,}025$.
+sinav: Eş olası çıktılarda $P(A)=\frac{s(A)}{s(E)}$; sonuç her zaman 0 ile 1 arasındadır.
+dusun: Toplam bilet sayısı 200'de kalırsa kazanma olasılığını %10'a çıkarmak için kaç biletin olmalı?
+yanit: $\frac{b}{200}=0{,}1$, $b=20$ bilet.
 
 ::yanilgi m2 tip=basit-olasilik
 yanlis: Torbada 1 kırmızı, 1 mavi, 1 yeşil ve 2 sarı bilye varsa 4 renk olduğu için sarı çekme olasılığı $\frac{1}{4}$'tür.
@@ -177,9 +213,28 @@ cevap: $\frac{7}{15}$
 
 ::tamamla baslik="En az bir tura"
 soru: Üç madenî para atıldığında en az birinin tura gelme olasılığı kaçtır?
-1. Hiç tura gelmemesi: YYY → $\frac{1}{8}$.
-?2. En az bir tura: $1 - \frac{1}{8} = \frac{7}{8}$.
+1. Hiç tura gelmemesi: YYY → $\frac{1}{8}$. || Üç paranın üçü de yazı gelmeli; 8 çıktıdan yalnız biri.
+?2. En az bir tura: $1 - \frac{1}{8} = \frac{7}{8}$. || “En az bir”in tümleyeni “hiç”tir; 1'den çıkarırız.
 cevap: $\frac{7}{8}$
+
+::ornek baslik="Üç atışta en az bir altı"
+soru: Bir zar 3 kez atılıyor. En az bir kez 6 gelme olasılığı kaçtır?
+1. Tümleyen: hiç 6 gelmemesi. Her atışta 6 olmayan 5 sonuç var: $5^3=125$ çıktı. || “En az bir” yerine “hiç” saymak çok daha kısa.
+2. Tüm çıktılar $6^3=216$; hiç 6 gelmeme olasılığı $\frac{125}{216}$. || Her atış 6 sonuç verir.
+3. En az bir 6: $1-\frac{125}{216}=\frac{91}{216}$. || Tümleyeni 1'den çıkardık.
+cevap: $\frac{91}{216}$; yarıdan az.
+
+::sorgula s3-gozluk baslik="Gözlüklü ya da solak"
+durum: Bir okulda öğrencilerin %40'ı gözlüklü, %25'i solak; %10'u hem gözlüklü hem solak.
+soru: Rastgele seçilen bir öğrencinin gözlüklü ya da solak olma olasılığı yüzde kaçtır?
+A) %65 || Yüzdeleri topladın; hem gözlüklü hem solak olanları iki kez saydın.
++B) %55 || $40+25-10=55$.
+C) %10 || Bu, ikisinin birden olma olasılığıdır.
+kontrol: (0.4+0.25-0.1)*100
+neden: $P(G\cup S)=P(G)+P(S)-P(G\cap S)=0{,}40+0{,}25-0{,}10=0{,}55$. Kesişim iki kez sayıldığı için bir kez çıkarılır.
+sinav: Birleşim kuralı kümelerdeki $s(A\cup B)=s(A)+s(B)-s(A\cap B)$ ile aynıdır; olaylar ayrıksa kesişim 0'dır.
+dusun: Rastgele seçilen öğrencinin ne gözlüklü ne solak olma olasılığı kaçtır?
+yanit: $1-0{,}55=0{,}45$, yani %45.
 
 ::yanilgi m3 tip=tumleyen-birlesim
 yanlis: $P(A \cup B) = P(A) + P(B)$ her zaman doğrudur.
@@ -211,6 +266,25 @@ soru: Bir torbada 5 kırmızı ve 3 beyaz bilye vardır. Rastgele aynı anda 2 b
 2. İstenen: $C(5, 2) = 10$. || Kırmızılardan 2.
 3. $P = \frac{10}{28} = \frac{5}{14}$. || Kontrol: $\frac{5}{8} \cdot \frac{4}{7} = \frac{5}{14}$ ✓
 cevap: $\frac{5}{14}$
+
+::ornek baslik="Sıralamada belirli yerler"
+soru: Beş farklı kitap rastgele bir rafa diziliyor. Belirli iki kitabın rafın iki ucunda olma olasılığı kaçtır?
+1. Tüm dizilişler $5!=120$. || Sıralama sorusunda permütasyon.
+2. İstenen: iki kitap uçlara 2 şekilde, kalan 3 kitap ortaya $3!=6$ şekilde: $12$. || Koşullu nesneleri önce yerleştirdik.
+3. $P=\frac{12}{120}=\frac{1}{10}$. || Pay ve paydada aynı sayma yöntemi.
+cevap: $\frac{1}{10}$.
+
+::sorgula s4-kura baslik="Kurayla iki temsilci"
+durum: 10 kız ve 8 erkekten oluşan bir sınıfta kurayla 2 temsilci seçilecek. Aynı kişi iki kez seçilemez.
+soru: İki temsilcinin de kız olma olasılığı kaçtır?
+A) $\frac{1}{4}$ || Kızlarla erkekleri eşit sayıda saydın; sınıfta 10 kız ve 8 erkek var.
+B) $\frac{25}{81}$ || $\left(\frac{10}{18}\right)^2$; ilk seçilen kişi geri konmuyor.
++C) $\frac{5}{17}$ || $\frac{C(10,2)}{C(18,2)}=\frac{45}{153}=\frac{5}{17}$.
+kontrol: 45/153
+neden: Tüm seçimler $C(18,2)=153$, iki kızın seçildiği durumlar $C(10,2)=45$. Sırayla düşünmek de aynı sonucu verir: $\frac{10}{18}\cdot\frac{9}{17}=\frac{5}{17}$.
+sinav: Aynı anda çekilişte kombinasyon kullan; geri koymadan sırayla çekmede ikinci olasılığın paydası bir azalır.
+dusun: Bir kız ve bir erkek seçilme olasılığı kaçtır?
+yanit: $\frac{10\cdot8}{153}=\frac{80}{153}$.
 
 ::soru c4 tip=sayma-olasilik zorluk=2
 Bir torbada 4 kırmızı ve 6 mavi bilye vardır. Rastgele aynı anda 3 bilye çekiliyor. Çekilen bilyelerden 2'sinin kırmızı, 1'inin mavi olma olasılığı kaçtır?

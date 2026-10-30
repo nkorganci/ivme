@@ -104,6 +104,25 @@ soru: Yukarıdaki tabloya göre kulüpten rastgele bir başkan seçiliyor. Seçi
 3. $P = \frac{8}{22} = \frac{4}{11}$. || $\frac{s(A \cap B)}{s(B)}$.
 cevap: $\frac{4}{11}$
 
+::ornek baslik="En az biri kız ise ikisi de kız mı?"
+soru: İki çocuklu ailelerde her çocuğun kız (K) ya da erkek (E) olması eş olası kabul edilsin. Bir ailenin en az bir kız çocuğu olduğu biliniyor. İki çocuğun da kız olma olasılığı kaçtır?
+1. Örnek uzay (büyük, küçük): KK, KE, EK, EE. || Sıralı yazınca dört eş olası çıktı olur.
+2. Koşul “en az bir kız”: örnek uzay KK, KE, EK'ye daralır; 3 çıktı. || EE koşulu sağlamaz, atılır.
+3. Bunlardan yalnız KK istenen: $\frac{1}{3}$. || $\frac{s(A\cap B)}{s(B)}$.
+cevap: $\frac{1}{3}$. Sık yapılan hata $\frac{1}{2}$ demektir; KE ile EK farklı iki çıktıdır.
+
+::sorgula s1-otobus baslik="Otobüs geciktiyse yağmur mu yağdı?"
+durum: Bir ayın 30 gününden 12'si yağmurlu geçti. Yağmurlu günlerin 9'unda, yağmursuz 18 günün 6'sında okul otobüsü gecikti.
+soru: Rastgele seçilen bir günde otobüsün geciktiği biliniyor. O günün yağmurlu olma olasılığı kaçtır?
+A) $\frac{3}{10}$ || $\frac{9}{30}$; bu “hem yağmurlu hem gecikmeli” olma olasılığıdır, koşul kullanılmamış.
+B) $\frac{3}{4}$ || $\frac{9}{12}$; bu ters koşuldur: yağmurlu olduğu bilinen bir günde gecikme olasılığı.
++C) $\frac{3}{5}$ || Gecikmeli günler $9+6=15$; bunların 9'u yağmurlu: $\frac{9}{15}$.
+kontrol: 9/15
+neden: “Gecikti” bilgisi örnek uzayı 15 gecikmeli güne daraltır. Bunların 9'u yağmurlu: $P(\text{yağmur}\mid\text{gecikme})=\frac{9}{15}=\frac{3}{5}$.
+sinav: Koşullu olasılıkta önce “bilinen” olayı bul ve örnek uzayı ona daralt. $P(A\mid B)$ ile $P(B\mid A)$ genellikle farklıdır.
+dusun: Yağmurlu olduğu bilinen bir günde otobüsün gecikme olasılığı kaçtır? Az önceki sonuçla aynı mı?
+yanit: $\frac{9}{12}=\frac{3}{4}$. Farklı: koşul değişince daralan örnek uzay da değişir.
+
 ::yanilgi m1 tip=kosullu-tablo
 yanlis: $P(A \mid B)$ ile $P(B \mid A)$ aynıdır.
 neden: Paydalar farklıdır: birinde $s(B)$, diğerinde $s(A)$ kullanılır.
@@ -137,10 +156,29 @@ cevap: $\frac{4}{15}$
 
 ::tamamla baslik="İkisi aynı renk"
 soru: Aynı torbadan geri konmadan çekilen iki topun aynı renk olma olasılığı kaçtır?
-1. İkisi beyaz: $\frac{4}{10} \cdot \frac{3}{9} = \frac{12}{90}$.
-?2. İkisi siyah: $\frac{6}{10} \cdot \frac{5}{9} = \frac{30}{90}$.
-?3. Toplam $\frac{42}{90} = \frac{7}{15}$.
+1. İkisi beyaz: $\frac{4}{10} \cdot \frac{3}{9} = \frac{12}{90}$. || İlk beyazdan sonra 9 top ve 3 beyaz kalır.
+?2. İkisi siyah: $\frac{6}{10} \cdot \frac{5}{9} = \frac{30}{90}$. || İlk siyahtan sonra 9 top ve 5 siyah kalır.
+?3. Toplam $\frac{42}{90} = \frac{7}{15}$. || İki durum ayrık; olasılıkları toplanır.
 cevap: $\frac{7}{15}$
+
+::ornek baslik="Üç kez art arda, geri koymadan"
+soru: Bir kutuda 5 kırmızı ve 3 mavi kalem var. Geri konmadan art arda 3 kalem alınıyor. Üçünün de kırmızı olma olasılığı kaçtır?
+1. Birinci kırmızı: $\frac{5}{8}$. || Başta 8 kalemin 5'i kırmızı.
+2. İkinci kırmızı $\frac{4}{7}$, üçüncü kırmızı $\frac{3}{6}$. || Her çekilişten sonra hem toplam hem kırmızı sayısı birer azalır.
+3. $\frac{5}{8}\cdot\frac{4}{7}\cdot\frac{3}{6}=\frac{60}{336}=\frac{5}{28}$. || Çarpma kuralı.
+cevap: $\frac{5}{28}$. Kontrol: $\frac{C(5,3)}{C(8,3)}=\frac{10}{56}=\frac{5}{28}$.
+
+::sorgula s2-anahtar baslik="Doğru anahtar tam 3. denemede"
+durum: 5 anahtardan yalnız biri kapıyı açıyor. Anahtarları rastgele sırayla deniyor ve açmayanı bir kenara ayırıyorsun.
+soru: Kapının tam 3. denemede açılma olasılığı kaçtır?
+A) $\frac{16}{125}$ || $\left(\frac{4}{5}\right)^2\cdot\frac{1}{5}$; denenen anahtarı geri koyuyormuş gibi hesapladın.
++B) $\frac{1}{5}$ || $\frac{4}{5}\cdot\frac{3}{4}\cdot\frac{1}{3}=\frac{1}{5}$.
+C) $\frac{3}{5}$ || Bu, ilk 3 denemeden birinde açılma olasılığıdır.
+kontrol: 1/5
+neden: İlk deneme yanlış: $\frac{4}{5}$; ikinci yanlış (4 anahtar kaldı, 3'ü yanlış): $\frac{3}{4}$; üçüncü doğru (3 kaldı, 1'i doğru): $\frac{1}{3}$. Çarpım $\frac{1}{5}$. Doğru anahtar sıralamanın her yerinde eşit olasılıkla bulunur.
+sinav: Geri konmadan çekilişlerde her adımın olasılığı bir öncekinin sonucuna göre hesaplanır ve çarpılır.
+dusun: Kapının ancak 5. denemede açılma olasılığı kaçtır?
+yanit: $\frac{4}{5}\cdot\frac{3}{4}\cdot\frac{2}{3}\cdot\frac{1}{2}\cdot1=\frac{1}{5}$; yine aynı.
 
 ::soru c2 tip=carpma-kurali zorluk=2
 Bir sınıfta 12 kız ve 8 erkek öğrenci vardır. Rastgele art arda iki öğrenci (aynı kişi iki kez seçilmeden) seçiliyor. İkisinin de erkek olma olasılığı kaçtır?
@@ -166,6 +204,25 @@ soru: A'nın bir hedefi vurma olasılığı $0{,}7$, B'nin $0{,}6$'dır ve atı�
 1. İkisinin de ıskalaması: $0{,}3 \cdot 0{,}4 = 0{,}12$. || Bağımsız: çarp.
 2. En az biri vurur: $1 - 0{,}12 = 0{,}88$. || Tümleyen.
 cevap: $0{,}88$
+
+::ornek baslik="Bağımsız mı, değil mi?"
+soru: Bir zar atılıyor. $A$: “çift sayı gelmesi”, $B$: “3'ten büyük sayı gelmesi”. $A$ ve $B$ bağımsız mıdır?
+1. $P(A)=\frac{3}{6}=\frac{1}{2}$, $P(B)=\frac{3}{6}=\frac{1}{2}$. || $A=\{2,4,6\}$, $B=\{4,5,6\}$.
+2. $A\cap B=\{4,6\}$: $P(A\cap B)=\frac{2}{6}=\frac{1}{3}$. || Kesişimi doğrudan saydık.
+3. $P(A)\cdot P(B)=\frac{1}{4}\neq\frac{1}{3}$: bağımsız değiller. || Bağımsızlık tanımı $P(A\cap B)=P(A)P(B)$.
+cevap: Bağımlıdır; “3'ten büyük” bilgisi çift gelme olasılığını $\frac{2}{3}$'e çıkarır.
+
+::sorgula s3-para baslik="Beş yazıdan sonra"
+durum: Hileli olmayan bir para art arda 5 kez atıldı ve hepsi yazı geldi. Arkadaşın “Artık tura gelmesi gerek, şansı çok yüksek.” diyor.
+soru: 6. atışta tura gelme olasılığı kaçtır?
+A) $\frac{1}{2}$'den büyük || Para önceki sonuçları hatırlamaz; atışlar bağımsızdır.
++B) $\frac{1}{2}$ || Her atış bağımsız; olasılık değişmez.
+C) $\frac{1}{32}$ || Bu, 5 atışın hepsinin yazı gelme olasılığıdır; 6. atışın olasılığı değil.
+kontrol: 1/2
+neden: Bağımsız olaylarda bir olayın sonucu diğerinin olasılığını değiştirmez: $P(\text{tura}\mid\text{önceki 5 yazı})=P(\text{tura})=\frac{1}{2}$. “Sıra ona geldi” düşüncesi sık yapılan bir yanılgıdır.
+sinav: Geri konarak yapılan çekilişler, farklı zarlar ve art arda para atışları bağımsızdır: $P(A\cap B)=P(A)\cdot P(B)$.
+dusun: Atışlara başlamadan önce 6 atışın hepsinin yazı gelme olasılığı kaçtı?
+yanit: $\left(\frac{1}{2}\right)^6=\frac{1}{64}$. Bu, baştan bakınca bütün dizinin olasılığıdır; 6. atışın olasılığından farklı bir sorudur.
 
 ::yanilgi m2 tip=bagimsiz
 yanlis: Ayrık olaylar bağımsızdır.
@@ -223,10 +280,28 @@ cevap: $\frac{13}{27}$
 
 ::tamamla baslik="Sonuçtan geriye"
 soru: Aynı deneyde ikinci top yeşil geldiğine göre birinci topun yeşil olma olasılığı kaçtır?
-1. Yeşile giden yollar toplamı $\frac{13}{27}$.
-?2. Bunlardan birinci topu yeşil olan yol $\frac{8}{27}$.
-?3. $\frac{8/27}{13/27} = \frac{8}{13}$.
+1. Yeşile giden yollar toplamı $\frac{13}{27}$. || Koşul “ikinci top yeşil”; örnek uzay yeşile giden bütün yollara daralır.
+?2. Bunlardan birinci topu yeşil olan yol $\frac{8}{27}$. || İstenen olay, bu yollardan birinci topun da yeşil olduğu yoldur.
+?3. $\frac{8/27}{13/27} = \frac{8}{13}$. || Koşullu olasılık = istenen yol ÷ koşulu sağlayan bütün yollar.
 cevap: $\frac{8}{13}$
+
+::ornek baslik="Okula ulaşım ve geç kalma"
+soru: Bir öğrenci okula günlerin %70'inde otobüsle, %30'unda yürüyerek gidiyor. Otobüsle gittiğinde geç kalma olasılığı $0{,}1$, yürüdüğünde $0{,}2$. Rastgele bir günde geç kalma olasılığı kaçtır?
+1. Otobüs ve geç: $0{,}7\cdot0{,}1=0{,}07$. || Dal boyunca olasılıkları çarptık.
+2. Yürüyüş ve geç: $0{,}3\cdot0{,}2=0{,}06$. || İkinci dal.
+3. $0{,}07+0{,}06=0{,}13$. || İstenen sonuca giden dalları topladık.
+cevap: $0{,}13$, yani %13.
+
+::sorgula s4-test baslik="Test pozitif çıktı: gerçekten hasta mı?"
+durum: Bir hastalık nüfusun %2'sinde görülüyor. Bir test hastaların %90'ında pozitif sonuç veriyor; sağlıklı kişilerin de %5'inde yanlışlıkla pozitif sonuç veriyor. Rastgele seçilen birinin testi pozitif çıktı.
+soru: Bu kişinin gerçekten hasta olma olasılığı yaklaşık yüzde kaçtır?
+A) %90 || Bu, hasta birinin pozitif çıkma olasılığıdır; soru tersini soruyor.
++B) Yaklaşık %27 || 1000 kişide: 20 hastanın 18'i ve 980 sağlıklı kişinin 49'u pozitif; $\frac{18}{67}\approx0{,}27$.
+C) %2 || Pozitif sonuç bilgisi olasılığı artırır; %2 başlangıçtaki orandır.
+neden: 1000 kişi düşün: 20 hasta, 980 sağlıklı. Hastalardan $20\cdot0{,}9=18$, sağlıklılardan $980\cdot0{,}05=49$ kişi pozitif çıkar. Pozitiflerin yalnız $\frac{18}{67}$'si hastadır. Hastalık nadir olduğu için yanlış pozitifler sayıca fazladır.
+sinav: Ağaçta “sonuçtan geriye” sorulduğunda: istenen dalın olasılığı ÷ o sonuca giden bütün dalların toplamı.
+dusun: İkinci ve bağımsız bir test de pozitif çıkarsa kişinin hasta olma olasılığı yaklaşık yüzde kaç olur?
+yanit: Pozitif 67 kişiden 18 hastanın $18\cdot0{,}9=16{,}2$'si, 49 sağlıklının $49\cdot0{,}05=2{,}45$'i yine pozitif çıkar: $\frac{16{,}2}{18{,}65}\approx$ %87.
 
 ::yanilgi m3 tip=agac-bilesik
 yanlis: Ağaç diyagramında bir yol boyunca dalların olasılıkları toplanır.
