@@ -12,8 +12,8 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 - Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
   Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
   olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
-- Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`. Sıradaki: `ebob-ekok`, sonra `rasyonel-sayilar`,
-  `birinci-derece-denklemler` …
+- Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`. Sıradaki: `rasyonel-sayilar`,
+  sonra `birinci-derece-denklemler` …
 
 ## Tamamlanan kapsam
 

@@ -78,12 +78,12 @@
    },
    "archetypes": {
     "asal-bolen": 21,
-    "ebob-ekok-hesap": 41,
+    "ebob-ekok-hesap": 42,
     "ebob-problem": 10,
     "ekok-problem": 19,
     "periyodik": 28
    },
-   "untyped": 92
+   "untyped": 91
   },
   "esitsizlikler": {
    "total": 465,

@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -110,4 +110,43 @@ test('sayi-basamaklari: keşif modelleri ve gerçek soruların bağımsız taram
   for (let step = 1; step <= 75; step++) { s = step % 2 ? s[1] + s[0] + s[2] : s[0] + s[2] + s[1]; seen.push(s); }
   assert.equal(seen[5], '123'); assert.equal(s, '321');
   for (const [code, answer] of [['TYT-0578', 'E'], ['TYT-0573', 'C'], ['AYT_Sayisal-0006', 'A']]) assert.equal(WORKED_EXAMS[code].answer, answer);
+});
+
+test('ebob-ekok: keşif modelleri ve gerçek soruların bağımsız taraması', () => {
+  const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+  const lcm = (a, b) => (a * b) / gcd(a, b);
+  for (const n of [12, 16, 18, 24, 30, 36, 48, 60, 64, 100]) {
+    const m = model('ebob-bolen', { n });
+    assert.equal(m.count, range(1, n).filter((d) => n % d === 0).length);
+    assert.equal(m.square, Number.isInteger(Math.sqrt(n))); assert.equal(m.count % 2 === 1, m.square);
+  }
+  for (const a of [12, 18, 24, 36, 40, 45, 60, 72, 90]) for (const b of [12, 18, 24, 35, 36, 40, 45, 60, 90]) {
+    const m = model('ebob-venn', { a, b });
+    assert.equal(m.ebob, gcd(a, b)); assert.equal(m.ekok, lcm(a, b)); assert.equal(m.ebob * m.ekok, a * b);
+  }
+  for (const shape of [0, 1, 2]) for (const s of range(1, 10)) {
+    const m = model('ebob-kare', { shape, s });
+    assert.equal(m.fits, m.w % s === 0 && m.h % s === 0);
+    if (m.fits) assert.equal(m.tiles * s * s, m.w * m.h);
+    assert.equal(m.g, gcd(m.w, m.h));
+  }
+  for (const a of range(2, 9)) for (const b of range(2, 9)) {
+    const m = model('ekok-zil', { a, b });
+    assert.equal(m.l, lcm(a, b));
+    assert.deepEqual(m.together, range(0, m.T).filter((t) => t % a === 0 && t % b === 0));
+  }
+  for (const start of range(0, 6)) for (const n of range(0, 100)) assert.equal(model('ebob-takvim', { start, n }).end, (start + n) % 7);
+  // AYT_Sayisal-0018: EBOB + EKOK = 289 ve m + n ≠ 289 → m + n = 41.
+  const sums = new Set();
+  for (const m of range(1, 289)) for (const n of range(1, 289)) if (gcd(m, n) + lcm(m, n) === 289 && m + n !== 289) sums.add(m + n);
+  assert.deepEqual([...sums], [41]);
+  // AYT_Sayisal-0035: M = 6^a·5^b, N = 10^c·9^d; EBOB = 2³·3²·5, EKOK = 2⁵·3³·5⁵ → a+b+c+d = 10.
+  const g = (x, y) => (y ? g(y, x % y) : x);
+  const totals = new Set();
+  for (const a of range(1, 8)) for (const b of range(1, 8)) for (const c of range(1, 8)) for (const d of range(1, 8)) {
+    const M = 6n ** BigInt(a) * 5n ** BigInt(b), N = 10n ** BigInt(c) * 9n ** BigInt(d), e = g(M, N);
+    if (e === 360n && (M * N) / e === 2700000n) totals.add(a + b + c + d);
+  }
+  assert.deepEqual([...totals], [10]);
+  for (const [code, answer] of [['AYT_Sayisal-0018', 'A'], ['AYT_Sayisal-0035', 'C']]) assert.equal(WORKED_EXAMS[code].answer, answer);
 });

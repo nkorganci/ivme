@@ -95,6 +95,8 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0578 | Sayı basamakları; tombala satırlarından 9A=17+11B | E, 143 | `cf4ea0a29197bffa3af78a7aed8efd73585c05059db8d78a7dca62b6067ba76f` |
 | TYT-0573 | Sayı basamakları; 9(C−A)=11B+1 ve farklı rakamlar | C, 3 | `f90a7431c7e7dc16091bacc3cff6ed20a4a9e4b6a30baac1abc7848c7ae1ddfa` |
 | AYT_Sayisal-0006 | Sayı basamakları; yer değiştirme döngüsü 6 | A, 321 | `3a5b2646bece4d5e05081f9134050a194a4e0cfde1cd487f5e1d1fa92868f2a3` |
+| AYT_Sayisal-0018 | EBOB–EKOK; EBOB + EKOK = 289, $m=da$, $n=db$ ile ayrım | A, 41 | `bb417d4ed470ad8edd95711daf6081bf05ca7ce210684c531acff7a525133deb` |
+| AYT_Sayisal-0035 | EBOB–EKOK; asal çarpan üslerinden $a+b+c+d$ | C, 10 | `65c7fd3d951b76ee31f72bb13f1882044d28abbc48b6d8e890f25122c95dc1f3` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap
@@ -168,12 +170,14 @@ anahtarıyla karşılaştırılır (salt okuma). Otomatik eşleme yanlış olabi
 konuyu soruyorsa kullanılmaz. Kabul edilen soru `worked-exams.js`'e yazılır, banka
 `node scripts/konu-ogrenme-banka.mjs` ile yeniden üretilir ve yalnız ilgili dersin bankasının
 değiştiği `git diff --stat` ile kontrol edilir; kanıt satırı yukarıdaki tabloya eklenir.
+Bir bölümde en çok bir `::cikmis` rehberli çözüm bulunur; arayüz denetimi bölümdeki ilk
+rehberli çözümü açar.
 
 ## Bölme ve bölünebilme pilotu
 
 Bu ders en derin örnektir. Düzeyli anlatım, günlük hayat sorgulaması ve gerekçeli örnek
-katmanı bütün derslere yayıldı; bölüm keşif modelleri ve görseli okunmuş gerçek sorular ise
-şimdilik yalnız bu derstedir. Sekiz bölümün kimlikleri
+katmanı bütün derslere yayıldı; bölüm keşif modelleri ve görseli okunmuş gerçek sorular bu
+derste ve `DERIN` listesindeki derslerdedir. Sekiz bölümün kimlikleri
 `s1, s1b, s2, s2b, s3, s3b, s4, s4b` şeklindedir. Eski dört bölüm kimliği ve mevcut
 ön test/kontrol/havuz soru kimlikleri korunur. Yeni kontrol kimlikleri yalnız bu derse
 aittir; öğrenci geçmişi silinmez. Dört oturum yaklaşık 35'er dakikalık planlama

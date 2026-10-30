@@ -54,9 +54,10 @@ ebob-problem 1 1-3
 ekok-problem 2 1-3
 periyodik 1 1-3
 
-@oturum Asal çarpanlar ve EBOB–EKOK hesabı | s1 s2
-@oturum EBOB ve EKOK problemleri | s3 s4
-@oturum Periyodik problemler | s5
+@oturum Asal çarpanlar ve bölenler | s1 s1b
+@oturum EBOB–EKOK hesabı ve ilişkileri | s2 s2b
+@oturum Bölmek ve birleştirmek | s3 s3b s4
+@oturum Kalanlı sayılar ve periyodik olaylar | s4b s5 s5b
 
 @ontest
 ::soru o1 tip=asal-bolen zorluk=1
@@ -154,7 +155,75 @@ E) 25 || $30 - 5$ işlemi formül değil.
 kontrol: 30/5-1
 cozum: Bölen sayısı $(a+1)(4+1) = 30$, yani $a + 1 = 6$ ve $a = 5$.
 
-@bolum s2 8 | EBOB ve EKOK hesabı
+@bolum s1b 15 | Bölen sayma ustalığı: koşullu bölenler
+::kesfet ebob-bolen
+
+::fikir
+Bölen sayısı formülü bir **seçim tablosudur**: her asal için “kaç tane alayım?” sorusunun seçenekleri çarpılır. Koşul gelince yalnız ilgili asalın seçenekleri değişir.
+
+::duzey baslik="Koşullu bölenleri saymak"
+L1: $720=2^4\cdot3^2\cdot5$ için bir bölen kurarken 2'den 0–4 tane (5 seçenek), 3'ten 0–2 tane (3 seçenek), 5'ten 0–1 tane (2 seçenek) alırız: $5\cdot3\cdot2=30$ bölen. Tek bölen istenirse 2'den hiç almayız; 2'nin seçeneği 1'e iner: $1\cdot3\cdot2=6$. Çift bölenler kalanlardır: $30-6=24$.
+L2: “$k$'ye bölünen bölen” sayısı, $\frac{n}{k}$'nın bölen sayısına eşittir: 720'nin 6'ya bölünen bölenleri $6\cdot t$ biçimindedir ve $t$, $120$'yi böler; $120=2^3\cdot3\cdot5$, $4\cdot2\cdot2=16$. Asal olmayan bölenler = bütün bölenler − asal bölenler; tam sayı bölenler, pozitif bölenlerin 2 katıdır.
+L3: Aynı seçim tablosu bölenlerin toplamını da verir: $(1+2+4+8)(1+3+9)$ çarpımını açınca $2^i3^j$ biçimindeki her bölen tam bir kez çıkar; 72'nin bölenleri toplamı $15\cdot13=195$'tir. Bir sayının asal olup olmadığını anlamak için $\sqrt{n}$'e kadar olan asallarla bölmeyi denemek yeter; çünkü büyük bir bölenin eşi küçüktür.
+
+::ornek baslik="Çift bölenler ve 6'ya bölünen bölenler"
+soru: 720 sayısının kaç pozitif böleni çifttir? Kaç pozitif böleni 6'ya bölünür?
+1. $720=2^4\cdot3^2\cdot5$; bütün bölenler $(4+1)(2+1)(1+1)=30$. || Önce koşulsuz sayıyı buluruz; koşullu sayılar ondan türer.
+2. Tek bölenler 2'yi hiç içermez: $1\cdot3\cdot2=6$. Çift bölenler $30-6=24$. || “Çift” sayımı doğrudan da yapılabilir: 2'den en az bir tane al, seçenek $4$ olur: $4\cdot3\cdot2=24$.
+3. 6'ya bölünen bölen $6t$ biçimindedir; $6t\mid720$ ise $t\mid120=2^3\cdot3\cdot5$: $4\cdot2\cdot2=16$. || Koşulu sayının içine yerleştirip kalan kısmın bölenlerini saydık.
+cevap: 24 çift bölen; 16 bölen 6'ya bölünür. Kontrol: 6'ya bölünen bölenlerin hepsi çifttir; $16\le24$ ✓
+
+::ornek baslik="Bölen sayısından üssü bulmak"
+soru: $12^n$ sayısının 45 pozitif böleni olduğuna göre $n$ kaçtır?
+1. $12^n=(2^2\cdot3)^n=2^{2n}\cdot3^n$. || Bileşik tabanlı kuvvetler önce asal tabanlara açılır; $12^n$'nin üssü doğrudan kullanılamaz.
+2. Bölen sayısı $(2n+1)(n+1)=45$. || Her asalın üssüne 1 ekleyip çarptık.
+3. $n=4$ için $9\cdot5=45$. $n$ büyüdükçe çarpım büyür ($n=3$: 28, $n=5$: 66); başka çözüm yok. || Artan bir ifadede tek değer denemek yeterlidir.
+cevap: $n=4$. Kontrol: $12^4=20736=2^8\cdot3^4$, $(8+1)(4+1)=45$ ✓
+
+::ornek baslik="Bölenlerin toplamı"
+soru: 72 sayısının pozitif bölenlerinin toplamı kaçtır?
+1. $72=2^3\cdot3^2$. || Asal çarpanlar seçim tablosunu kurar.
+2. $(1+2+4+8)(1+3+9)$ çarpımını açarsak her terim $2^i\cdot3^j$ biçiminde bir bölendir ve her bölen tam bir kez çıkar. || Bölen sayısı formülündeki seçimlerin kendisini topluyoruz.
+3. $15\cdot13=195$. || Her parantez bir asalın kuvvetlerinin toplamıdır.
+cevap: 195. Kontrol: $1+2+3+4+6+8+9+12+18+24+36+72=195$ ✓
+
+::ornek baslik="391 asal mı?"
+soru: 391 sayısının asal olup olmadığını en az denemeyle belirle.
+1. $19^2=361<391<400=20^2$; yalnız 19'a kadar olan asallar denenir. || 391'in $\sqrt{391}$'den büyük bir böleni varsa eşi $\sqrt{391}$'den küçüktür ve onu zaten deneriz.
+2. 2, 3, 5 bölmez (son rakam 1; rakam toplamı 13). 7, 11, 13 de bölmez: $7\cdot55=385$, $11\cdot35=385$, $13\cdot30=390$. || Bölünebilme kuralları ilk asalları saniyede eler.
+3. $17\cdot23=391$. || Bir bölen bulunca durulur.
+cevap: 391 asal değil: $391=17\cdot23$. Pozitif bölenleri 1, 17, 23, 391.
+
+::sorgula s1b-bahce baslik="Alanı 60 m² olan bahçeler"
+durum: Bir belediye, alanı 60 m² olan dikdörtgen bir hobi bahçesi ayıracak. Kenar uzunlukları tam metre olacak; 3×20 ile 20×3 aynı bahçe sayılıyor.
+soru: Kaç farklı bahçe tasarlanabilir?
+A) 5 || 1×60 de bir dikdörtgendir; ince uzun olması onu dışarıda bırakmaz.
++B) 6 || 60'ın 12 pozitif böleni 6 çift oluşturur: $1\cdot60$, $2\cdot30$, $3\cdot20$, $4\cdot15$, $5\cdot12$, $6\cdot10$.
+C) 12 || Bu, döndürülmüş bahçeleri ayrı sayınca çıkar; soru aynı sayıyor.
+kontrol: 12/2
+neden: Kenarlar $a\cdot b=60$ olacak; her bahçe bir bölen çiftidir. $60=2^2\cdot3\cdot5$, bölen sayısı $3\cdot2\cdot2=12$; çiftler 6.
+sinav: “Kaç farklı dikdörtgen” ya da “kaç farklı şekilde iki çarpana ayrılır” bölen çifti sorusudur: bölen sayısının yarısı. Sayı tam kare ise kare de bir dikdörtgendir; $(d+1)/2$ olur.
+dusun: Alan 36 m² olsaydı kaç farklı bahçe olurdu?
+yanit: 36'nın 9 böleni var; çiftler $1\cdot36$, $2\cdot18$, $3\cdot12$, $4\cdot9$, $6\cdot6$: 5 bahçe (kare dahil).
+
+::yanilgi m6 tip=asal-bolen
+yanlis: $12^n$'nin bölen sayısı $(n+1)$'dir, çünkü 12 tek bir taban.
+neden: Formül yalnız asal tabanlarda çalışır. $12^n=2^{2n}\cdot3^n$; iki asalın üsleri ayrı seçenekler verir.
+dogru: $12^n$'nin bölen sayısı $(2n+1)(n+1)$'dir.
+
+::soru c6 tip=asal-bolen zorluk=2
+600 sayısının pozitif bölenlerinden kaç tanesi 10'un katıdır?
+A) 8 || 60'ın bölen sayısını eksik saydın.
+B) 10 || Bir asalın seçeneğini atladın.
++C) 12 || Doğru: $600=10\cdot60$; $60=2^2\cdot3\cdot5$'in $3\cdot2\cdot2=12$ böleni var.
+D) 16 || Bu, 600'ün 2'ye bölünen bölen sayısına yakın; koşul 10.
+E) 24 || Bu, bütün bölenlerin sayısı.
+kontrol: (2+1)*(1+1)*(1+1)
+cozum: 10'un katı olan bölen $10t$ biçimindedir ve $t$, $\frac{600}{10}=60$'ı böler. $60=2^2\cdot3\cdot5$, bölen sayısı $3\cdot2\cdot2=12$.
+
+@bolum s2 12 | EBOB ve EKOK hesabı
+::kesfet ebob-venn
+
 ::fikir
 **EBOB:** ortak asal çarpanların **küçük** üslüleri. **EKOK:** bütün asal çarpanların **büyük** üslüleri. İki sayı için $a \cdot b = \text{EBOB}(a,b) \cdot \text{EKOK}(a,b)$.
 
@@ -196,6 +265,8 @@ sinav: EKOK$(a,b)=\frac{a\cdot b}{\text{EBOB}(a,b)}$; çarpımı doğrudan EKOK 
 dusun: Dişler 8 ve 15 olsaydı küçük ve büyük çark kaçar tur dönerdi?
 yanit: 8 ile 15 aralarında asal, EKOK 120. Küçük çark 15 tur, büyük çark 8 tur döner.
 
+::cikmis AYT_Sayisal-0035 tip=ebob-ekok-hesap
+
 ::bosluk b1 cevap=12 tip=ebob-ekok-hesap zorluk=1
 EBOB$(48, 60)$ kaçtır?
 cozum: $48 = 2^4 \cdot 3$, $60 = 2^2 \cdot 3 \cdot 5$. Ortaklar küçük üsle: $2^2 \cdot 3 = 12$.
@@ -215,7 +286,72 @@ D) 16 || EKOK(12, 16) = 48.
 kontrol: 4*60/12
 cozum: $12 \cdot b = 4 \cdot 60 = 240$, yani $b = 20$. Kontrol: EBOB(12, 20) = 4, EKOK = 60.
 
-@bolum s3 9 | EBOB problemleri: bölmek
+@bolum s2b 18 | EBOB ile EKOK'un bağı: ortak kısmı dışarı almak
+::fikir
+İki sayının ortak kısmını dışarı al: $a=d\cdot m$, $b=d\cdot n$ ($d=$ EBOB, $m$ ile $n$ aralarında asal). Bu yazımla **EKOK $=dmn$**, $a\cdot b=d^2mn$, $a+b=d(m+n)$ olur; EBOB–EKOK sorularının neredeyse hepsi bu satırdan çözülür.
+
+::duzey baslik="Ortak kısmı dışarı almak"
+L1: $24=12\cdot2$ ve $36=12\cdot3$. Ortak kısım 12, geriye kalan 2 ile 3'ün ortak çarpanı yok. EKOK, ortak kısmı bir kez ve kalanların hepsini içerir: $12\cdot2\cdot3=72$. Bu yazım asal çarpan tablosunun kısaltılmış hâlidir.
+L2: $a=dm$, $b=dn$ ise EKOK $=dmn$ ve $\frac{\text{EKOK}}{\text{EBOB}}=mn$. Toplam verildiyse $a+b=d(m+n)$, fark verildiyse $a-b=d(m-n)$; yani EBOB toplamı ve farkı da böler. EBOB her zaman EKOK'u böler; bölmüyorsa böyle iki sayı yoktur.
+L3: Her asal için iki sayının üsleri, EBOB'daki üs ile EKOK'taki üstür (sırası belirsiz). Bu yüzden EBOB ve EKOK verilince sayı çiftlerini saymak kolaydır: $\frac{\text{EKOK}}{\text{EBOB}}$'un $k$ farklı asal çarpanı varsa her asalın kuvveti tümüyle ya $m$'ye ya $n$'ye gider; $2^k$ sıralı, $2^{k-1}$ sırasız çift olur.
+
+::ornek baslik="EBOB'u ve EKOK'u verilen bütün çiftler"
+soru: EBOB'u 6, EKOK'u 180 olan iki pozitif tam sayıyı bul ($a\le b$).
+1. $a=6m$, $b=6n$; EKOK $=6mn=180$, yani $mn=30$ ve $m$, $n$ aralarında asal. || Bilinmeyenleri ortak kısım ve aralarında asal kalanlar olarak yazdık.
+2. $30=2\cdot3\cdot5$; her asal ya $m$'ye ya $n$'ye gider: $(1,30)$, $(2,15)$, $(3,10)$, $(5,6)$. || Bir asal ikiye bölünürse $m$ ile $n$ ortak çarpan taşır ve EBOB 6'dan büyük olur.
+3. Çiftler: $\{6,180\}$, $\{12,90\}$, $\{18,60\}$, $\{30,36\}$. || Her $(m,n)$'yi 6 ile çarptık.
+cevap: 4 çift. Kontrol: EBOB$(30,36)=6$, EKOK$(30,36)=180$ ✓
+
+::ornek baslik="Toplamı ve EKOK'u bilinen iki sayı"
+soru: İki pozitif tam sayının toplamı 84, EKOK'u 120'dir. Bu sayılar nelerdir?
+1. $a=dm$, $b=dn$: $d(m+n)=84$ ve $dmn=120$. $d$ hem 84'ü hem 120'yi böler; EBOB$(84,120)=12$ olduğundan $d$, 12'nin bölenidir. || İki denklemin ortak çarpanı $d$; aday listesi küçüldü.
+2. $d=12$: $m+n=7$, $mn=10$ → $m=2$, $n=5$ (aralarında asal ✓). || Toplamı 7, çarpımı 10 olan sayılar 2 ve 5.
+3. Sayılar $24$ ve $60$. Küçük $d$'ler ($6, 4, 3, 2, 1$) için $m+n$ ve $mn$ uyan tam sayı vermez. || $d=6$: toplam 14, çarpım 20; böyle iki tam sayı yok. Diğerleri de aynı biçimde elenir.
+cevap: 24 ve 60. Kontrol: $24+60=84$, EKOK$(24,60)=120$ ✓
+
+::ornek baslik="Üç sayıda çarpım eşitliği bozulur"
+soru: EBOB$(12,18,30)$ ve EKOK$(12,18,30)$'u bul. $12\cdot18\cdot30=\text{EBOB}\cdot\text{EKOK}$ mi?
+1. $12=2^2\cdot3$, $18=2\cdot3^2$, $30=2\cdot3\cdot5$. || Üç sayıda da yöntem aynı: ortaklarda küçük, hepsinde büyük üs.
+2. EBOB $=2\cdot3=6$; EKOK $=2^2\cdot3^2\cdot5=180$. || 5 yalnız 30'da var; EBOB'a girmez, EKOK'a girer.
+3. $12\cdot18\cdot30=6480$, $6\cdot180=1080$; eşit değil. || İki sayıda her asal bir kez EBOB'a, bir kez EKOK'a gider; üç sayıda üçüncü üs ikisine de girmez.
+cevap: EBOB 6, EKOK 180; çarpım eşitliği üç sayıda geçerli değildir.
+
+::tamamla baslik="Sen dene · toplamı en küçük çift"
+soru: EBOB'u 6, EKOK'u 72 olan iki sayının toplamı en az kaçtır?
+1. $a=6m$, $b=6n$; $6mn=72$, $mn=12$ ve $m$, $n$ aralarında asal. || EKOK $=dmn$.
+?2. $12=2^2\cdot3$: aralarında asal ayrımlar $(1,12)$ ve $(4,3)$. || $2^2$ bölünemez; ya tamamen $m$'de ya tamamen $n$'de olmalı.
+?3. Toplamlar $6\cdot13=78$ ve $6\cdot7=42$; en küçüğü 42. || $a+b=6(m+n)$; $m+n$ en küçük seçilir.
+cevap: 42 (sayılar 18 ve 24).
+
+::cikmis AYT_Sayisal-0018 tip=ebob-ekok-hesap
+
+::sorgula s2b-tepsi baslik="Pastanenin tepsileri"
+durum: Bir pastanede iki boy kurabiye tepsisi var. Usta, tepsilerdeki kurabiye sayılarının EBOB'unun 8, EKOK'unun 60 olduğunu söylüyor.
+soru: Bu bilgi için hangisi doğrudur?
+A) Tepsiler 8 ve 60 kurabiyeliktir. || EBOB$(8,60)=4$; 8 değil.
++B) Usta yanılıyor; böyle iki sayı yoktur. || İki sayı da 8'in katıysa EKOK da 8'in katı olur; 60 değildir.
+C) Tepsiler 24 ve 20 kurabiyeliktir. || EBOB$(24,20)=4$, EKOK$(24,20)=120$.
+neden: $a=8m$, $b=8n$ olsaydı EKOK $=8mn$ olurdu; yani EKOK 8'e bölünürdü. 60, 8'e bölünmez. EBOB her zaman EKOK'u böler.
+sinav: EBOB ve EKOK verilen sorularda önce EBOB'un EKOK'u bölüp bölmediğine bak; sonra $\frac{\text{EKOK}}{\text{EBOB}}$'u aralarında asal iki çarpana ayır.
+dusun: EKOK 60 kalsın. EBOB hangi değerleri alabilir?
+yanit: 60'ın her böleni: $d$ ve 60 sayılarının EBOB'u $d$, EKOK'u 60'tır. 12 değer.
+
+::yanilgi m7 tip=ebob-ekok-hesap
+yanlis: Üç sayı için de $a\cdot b\cdot c=\text{EBOB}\cdot\text{EKOK}$'tur.
+neden: İki sayıda her asalın iki üssü vardır; biri EBOB'a, diğeri EKOK'a gider. Üç sayıda ortanca üs hiçbirine girmez.
+dogru: Eşitlik yalnız iki sayı için kullanılır: $12\cdot18\cdot30=6480$, ama EBOB · EKOK $=6\cdot180=1080$.
+
+::soru c7 tip=ebob-ekok-hesap zorluk=3
+$a<b$ olmak üzere EBOB$(a,b)=12$ ve EKOK$(a,b)=360$ koşulunu sağlayan kaç farklı $(a,b)$ ikilisi vardır?
+A) 2 || $\frac{360}{12}=30$'un üç farklı asalı var; ikiden fazla ayrım çıkar.
+B) 3 || $(1,30)$ ayrımını unutma: $(12,360)$ da bir çözümdür.
++C) 4 || Doğru: $mn=30$; $(1,30)$, $(2,15)$, $(3,10)$, $(5,6)$.
+D) 6 || Aralarında asal olmayan ayrım yok; 30'un bölen çifti 4 tanedir.
+E) 8 || Bu, sıralı ikililerin sayısı; $a<b$ istendi.
+kontrol: 4
+cozum: $a=12m$, $b=12n$, $mn=30=2\cdot3\cdot5$ ve $m<n$ aralarında asal: $(1,30)$, $(2,15)$, $(3,10)$, $(5,6)$. İkililer $(12,360)$, $(24,180)$, $(36,120)$, $(60,72)$: 4 tane.
+
+@bolum s3 12 | EBOB problemleri: bölmek
 ::fikir
 Bir bütünü **eşit ve olabildiğince büyük parçalara bölüyorsan** EBOB kullanırsın. Parça büyüdükçe parça sayısı azalır; "en az kaç parça" da aynı sorudur.
 
@@ -277,7 +413,60 @@ E) 120 || Küp kenarını 3 aldın; en büyük küp istendi.
 kontrol: (18/6)*(24/6)*(30/6)
 cozum: Küp kenarı EBOB(18, 24, 30) = 6 cm. Küp sayısı $\frac{18}{6} \cdot \frac{24}{6} \cdot \frac{30}{6} = 3 \cdot 4 \cdot 5 = 60$.
 
-@bolum s4 10 | EKOK problemleri: birleştirmek ve aynı anda
+@bolum s3b 15 | EBOB problemlerinde derinleşme: kalan, yol ve sınır
+::kesfet ebob-kare
+
+::duzey baslik="EBOB'u koşullara uydurmak"
+L1: Bir duvarı kesilmemiş kare fayanslarla döşerken fayans kenarı hem eni hem boyu bölmelidir; tek yönde uymak yetmez. 24 × 18 duvarda kenar 4 olursa 18'de 2 birim artar. Ortak bölenlerden en büyüğü (6) en az fayansı verir.
+L2: Kalanlı EBOB: “100'ü bölünce 4, 150'yi bölünce 6 kalan veren en büyük sayı” sorusunda kalanları çıkar: aradığın sayı $96$'yı ve $144$'ü tam böler. EBOB$(96,144)=48$. Son kontrol: bölen kalandan büyük olmalı ($48>6$).
+L3: Ek bir sınır varsa (“parça 10 m'den kısa olmalı”, “her rafta en çok 10 kitap”) EBOB'un bölenleri arasından sınıra uyan en büyüğünü seç; bütün ortak bölenler EBOB'un bölenleridir. Ağaç sayısında yolun şekline bak: açık yolda iki uç da ağaç alır, kapalı çevrede başlangıç ile bitiş aynıdır.
+
+::ornek baslik="Kalanlı EBOB"
+soru: 100 bölündüğünde 4, 150 bölündüğünde 6 kalanını veren en büyük doğal sayı kaçtır?
+1. Aranan sayı $x$ ise $x\mid100-4=96$ ve $x\mid150-6=144$. || Kalanı çıkarınca bölme tam olur.
+2. $96=2^5\cdot3$, $144=2^4\cdot3^2$; EBOB $=2^4\cdot3=48$. || En büyük ortak bölen istendi.
+3. $48>6$; kalanlar bölenden küçük olduğu için 48 geçerli. || Kalan bölenden küçük olmak zorundadır; bu kontrol unutulursa yanlış sayı seçilebilir.
+cevap: 48. Kontrol: $100=48\cdot2+4$, $150=48\cdot3+6$ ✓
+
+::ornek baslik="Açık yollarda ağaç"
+soru: Uzunlukları 156 m ve 204 m olan iki düz yolun her birine, iki uca da gelecek şekilde, eşit ve olabildiğince geniş aralıklarla ağaç dikilecek. Toplam kaç ağaç gerekir?
+1. Aralık iki yolu da bölmeli ve en büyük olmalı: EBOB$(156,204)=12$ m. || $156=12\cdot13$, $204=12\cdot17$.
+2. Birinci yolda $13$ aralık → $14$ ağaç; ikinci yolda $17$ aralık → $18$ ağaç. || Açık yolda ağaç sayısı aralık sayısından 1 fazladır.
+3. Toplam $14+18=32$. || İki yol ayrı olduğu için uç ağaçları paylaşılmaz.
+cevap: 32 ağaç.
+
+::ornek baslik="Sınırlı en büyük parça"
+soru: 84 m, 126 m ve 210 m uzunluğundaki üç kumaş, hiç artmadan eşit parçalara kesilecek. Parça boyu 10 m'den kısa olmalı. En az kaç parça elde edilir?
+1. EBOB$(84,126,210)=42$. Ortak bölenler 42'nin bölenleridir: $1,2,3,6,7,14,21,42$. || Bütün ortak bölenleri EBOB'un bölenleri olarak bir kerede bulduk.
+2. 10'dan küçük en büyüğü 7. || En az parça için en uzun izinli parça seçilir.
+3. $\frac{84}{7}+\frac{126}{7}+\frac{210}{7}=12+18+30=60$. || Uzunluklar toplanır.
+cevap: 60 parça.
+
+::sorgula s3b-raf baslik="Kütüphane rafları"
+durum: Okul kütüphanesine 72 roman, 48 ders kitabı ve 60 dergi geldi. Her rafa tek tür ve her rafa eşit sayıda yayın konacak; hiçbiri dışarıda kalmayacak.
+soru: En az kaç raf gerekir?
++A) 15 raf || Raftaki yayın sayısı EBOB$(72,48,60)=12$; raf sayısı $6+4+5=15$.
+B) 12 raf || 12, bir raftaki yayın sayısı; raf sayısı değil.
+C) 30 raf || Bu, her rafa 6 yayın konunca çıkar; daha büyük raf yükü mümkün.
+kontrol: 72/12+48/12+60/12
+neden: Raf sayısı en az olsun diye her rafa olabildiğince çok yayın koyarız; bu sayı üç miktarı da bölmeli. EBOB $=12$; romanlar 6, ders kitapları 4, dergiler 5 raf tutar.
+sinav: Soruda istenen “parça büyüklüğü” mü yoksa “parça sayısı” mı, ayırt et: EBOB büyüklüğü verir, sayıyı bölümlerin toplamı verir.
+dusun: Her rafa en çok 10 yayın sığıyorsa en az kaç raf gerekir?
+yanit: 12'nin 10'dan büyük olmayan en büyük böleni 6: $12+8+10=30$ raf.
+
+::soru c8 tip=ebob-problem zorluk=2
+62 ve 87 sayıları bir $x$ doğal sayısına bölündüğünde kalanlar sırasıyla 2 ve 3 oluyor. $x$ en çok kaçtır?
+A) 3 || 3 kalanı veren bölen 3'ten büyük olmalı.
+B) 6 || 6 da bir çözüm; ama daha büyüğü var.
++C) 12 || Doğru: $x$, 60'ı ve 84'ü böler; EBOB$(60,84)=12$.
+D) 21 || 21, 60'ı bölmez.
+E) 24 || 24, 60'ı bölmez.
+kontrol: 12
+cozum: $62-2=60$ ve $87-3=84$, $x$'e tam bölünür. EBOB$(60,84)=12$ ve $12>3$. Kontrol: $62=12\cdot5+2$, $87=12\cdot7+3$.
+
+@bolum s4 12 | EKOK problemleri: birleştirmek ve aynı anda
+::kesfet ekok-zil
+
 ::fikir
 Küçük parçaları **birleştirip en küçük büyük şekli** (kare, küp) kuruyorsan ya da olaylar **aynı anda** tekrarlanıyorsa EKOK kullanırsın. Kalanlı sorularda: **bölen − kalan** hep aynıysa sayı $\text{EKOK} \cdot n - (\text{fark})$'tır.
 
@@ -332,7 +521,68 @@ E) 93 || $93 = 5 \cdot 18 + 3$; 5 ile kalan 2 değil.
 kontrol: 30*3-3
 cozum: $5 - 2 = 6 - 3 = 3$ olduğundan sayı $30n - 3$: $27, 57, 87$. 100'den küçük en büyüğü 87.
 
-@bolum s5 8 | Periyodik problemler
+@bolum s4b 15 | Kalanlı sayılar ve ortak katlarda derinleşme
+::fikir
+Kalanlı sorularda üç durum var: **kalanlar aynı** ($+r$), **bölen − kalan aynı** ($-k$), **hiçbiri aynı değil** (aynı olanları birleştir, kalanını tara). Hepsinde çözümler EKOK aralıklarla tekrar eder.
+
+::duzey baslik="Kalanlı sayıları genel biçimle yazmak"
+L1: Bir sınıfı 3'erli ya da 4'erli sıralayınca hep 1 kişi açıkta kalıyorsa, o 1 kişiyi çıkarınca sınıf hem 3'e hem 4'e bölünür. Sınıf mevcudu $12n+1$ biçimindedir: 13, 25, 37, …
+L2: Kalanlar ve farklar ortak değilse koşulları ikişer ikişer birleştir. “3'e bölününce 2, 7'ye bölününce 2” → $21n+2$. Sonra kalan koşulu ($5$'e bölününce 3) bu listede tara: 2, 23, … İlk uyan 23; sonrakiler EKOK$(3,5,7)=105$ eklenerek gelir.
+L3: Bir aralıkta kaç çözüm olduğunu genel biçimden say: $36n+1$ biçimindeki sayılardan 200 ile 400 arasında olanlar $n=6,\ldots,11$ için gelir: 6 sayı. Birleştirme problemlerinde (küp, kare) aynı EKOK fikri her boyutta çalışır; parça sayısı boyutlardaki bölümlerin çarpımıdır.
+
+::ornek baslik="Ne kalan ne fark ortak"
+soru: 3'e bölündüğünde 2, 5'e bölündüğünde 3, 7'ye bölündüğünde 2 kalanını veren en küçük doğal sayı kaçtır?
+1. 3'e ve 7'ye bölümde kalan aynı (2): sayı $21n+2$ biçiminde. || Ortak kalanı olan koşulları önce birleştirdik.
+2. Listeyi tara: $2$ (5'e bölümde kalan 2 ✗), $23$ (5'e bölümde kalan 3 ✓). || Kalan koşulu tek tek denenir; 5 deneme yeter.
+3. En küçük sayı 23; sonrakiler $23+105n$. || Bütün koşullar EKOK$(3,5,7)=105$'te bir tekrar eder.
+cevap: 23. Kontrol: $23=3\cdot7+2=5\cdot4+3=7\cdot3+2$ ✓
+
+::ornek baslik="Tuğlalardan en küçük küp"
+soru: Boyutları 6 cm, 8 cm ve 12 cm olan tuğlalar aynı yönde dizilerek içi dolu en küçük küp yapılacak. Kaç tuğla gerekir?
+1. Küp kenarı üç boyutun ortak katı ve en küçüğü: EKOK$(6,8,12)=24$ cm. || Birleştirme → EKOK.
+2. Her yönde sığan tuğla: $\frac{24}{6}=4$, $\frac{24}{8}=3$, $\frac{24}{12}=2$. || Kenarı her boyuta böldük.
+3. Tuğla sayısı $4\cdot3\cdot2=24$. || Hacimde sayılar çarpılır.
+cevap: 24 tuğla. Kontrol: $24\cdot(6\cdot8\cdot12)=13824=24^3$ ✓
+
+::ornek baslik="Bir aralıkta kaç sayı?"
+soru: 200 ile 400 arasında, 4'e, 6'ya ve 9'a bölündüğünde her seferinde 1 kalanını veren kaç doğal sayı vardır?
+1. Kalanlar aynı (1): sayı $\text{EKOK}(4,6,9)\cdot n+1=36n+1$. || $4=2^2$, $6=2\cdot3$, $9=3^2$; büyük üsler $2^2\cdot3^2=36$.
+2. $200<36n+1<400$ ⇒ $n=6,7,\ldots,11$. || $36\cdot6+1=217$ ilk, $36\cdot11+1=397$ son.
+3. Sayı adedi $11-6+1=6$. || Ardışık $n$ değerlerini saydık.
+cevap: 6 sayı: 217, 253, 289, 325, 361, 397.
+
+::tamamla baslik="Sen dene · sıralanan öğrenciler"
+soru: Bir öğretmen öğrencilerini 6'şarlı sıralayınca 4, 8'erli sıralayınca 6 öğrenci son sırada kalıyor. Öğrenci sayısı 50'den az olduğuna göre en çok kaçtır?
+1. Bölen − kalan: $6-4=2$, $8-6=2$; fark ortak. || Sayıya 2 öğrenci eklesek iki sıralama da tam olurdu.
+?2. Sayı $\text{EKOK}(6,8)\cdot n-2=24n-2$: 22, 46, 70, … || Fark ortaksa EKOK'un katından çıkarılır.
+?3. 50'den küçük en büyüğü 46. || Kontrol: $46=6\cdot7+4=8\cdot5+6$ ✓
+cevap: 46 öğrenci.
+
+::sorgula s4b-lokma baslik="Kantinde lokma paketleri"
+durum: Kantinde bir tepsi lokma 4'erli, 6'şarlı ya da 10'arlı paketlenebiliyor. Hangisi seçilirse seçilsin 2 lokma artıyor. Tepside 100'den az lokma var ve 2'den fazla.
+soru: Tepside kaç lokma vardır?
++A) 62 || Kalanlar aynı (2): EKOK$(4,6,10)+2=62$.
+B) 58 || Bu, “2 lokma eksik kalıyor” olsaydı doğru olurdu; burada lokma artıyor.
+C) 122 || $120+2$ de koşulu sağlar ama 100'ü aşar.
+kontrol: 60+2
+neden: 2 lokmayı ayırınca kalan lokmalar 4'e, 6'ya ve 10'a tam bölünür: $60n$. Tepside $60n+2$ lokma var; 2 ile 100 arasında yalnız 62.
+sinav: “Artıyor” → kalan ortak, EKOK'a ekle. “Eksik kalıyor/tamamlamak için gerekiyor” → fark ortak, EKOK'tan çıkar. Bu iki sözcüğü karıştırmak en sık hatadır.
+dusun: Her paketlemede paketi tamamlamak için 2 lokma eksik kalsaydı tepside kaç lokma olurdu?
+yanit: $60n-2$: 100'den az olan 58.
+
+::soru c9 tip=ekok-problem zorluk=2
+4'e bölündüğünde 1, 5'e bölündüğünde 2, 6'ya bölündüğünde 3 kalanını veren üç basamaklı en küçük doğal sayı kaçtır?
+A) 57 || 57 koşulları sağlar ama iki basamaklı.
+B) 103 || $103=4\cdot25+3$; 4'e bölümde kalan 1 değil.
++C) 117 || Doğru: fark ortak (3), sayı $60n-3$; üç basamaklı ilki 117.
+D) 123 || $60\cdot2+3$: fark ortaksa çıkarılır, eklenmez.
+E) 177 || Koşulu sağlar; daha küçüğü var.
+kontrol: 60*2-3
+cozum: $4-1=5-2=6-3=3$. Sayı $\text{EKOK}(4,5,6)\cdot n-3=60n-3$: 57, 117, 177, … Üç basamaklı en küçüğü 117.
+
+@bolum s5 10 | Periyodik problemler
+::kesfet ebob-takvim
+
 ::fikir
 Tekrar eden olaylarda **geçen süreyi periyoda böl, kalana bak**. $n$. kez olacak bir şey için $(n - 1)$ periyot geçer.
 
@@ -383,12 +633,79 @@ C) Çarşamba || Cuma + 6 gün.
 E) Cuma || 48 gün 7'nin katı değil.
 cozum: Birlikte nöbet periyodu EKOK(6, 8) = 24 gün. Üçüncü kez için $2 \cdot 24 = 48$ gün geçer. $48 = 7 \cdot 6 + 6$; cumadan 6 gün sonra perşembe.
 
+@bolum s5b 15 | Döngülerde derinleşme: saat, son rakam, desen
+::fikir
+Her döngünün bir **periyodu** ve bir **başlangıcı** vardır. Periyodu bul (gün 7, saat 24, $2^n$'nin son rakamı 4), geçen adım sayısını periyoda böl, kalana bak. Kalan 0 ise döngünün son elemanındasın.
+
+::duzey baslik="Farklı döngüler, aynı yöntem"
+L1: Saat 24 saatte bir aynı saati gösterir. Saat 09.00 iken 100 saat sonrası için $100=24\cdot4+4$: dört tam gün ve 4 saat; saat 13.00. Boncuk, renk ya da harf desenleri de böyledir: 4 boncukluk desende 150. boncuk, $150=4\cdot37+2$ olduğu için desenin 2. boncuğudur.
+L2: Kuvvetlerin son rakamları döngü kurar: 2 için $2,4,8,6$; 3 için $3,9,7,1$; 7 için $7,9,3,1$; 8 için $8,4,2,6$ (periyot 4). 4 ve 9 için periyot 2; 0, 1, 5, 6 ile biten sayıların bütün kuvvetleri aynı rakamla biter. Üssü periyoda böl; kalan 0 ise döngünün son terimini al.
+L3: Bir desende “ilk $N$ eleman içinde kaç tane” sorulursa tam desenleri say ve kalan parçayı ayrıca incele: $150=4\cdot37+2$ ise 37 tam desen ve 2 elemanlık bir başlangıç. İki döngü birlikte (gün ve saat, ilaç saatleri) izleniyorsa toplam süreyi önce büyük birime (gün), kalanını küçük birime (saat) çevir.
+
+::ornek baslik="100 saat sonra saat kaç?"
+soru: Saat şu an 09.00. 100 saat sonra saat kaçı gösterir?
+1. Günün periyodu 24 saat: $100=24\cdot4+4$. || 4 tam gün saati değiştirmez.
+2. Kalan 4 saat: $09.00+4=13.00$. || Yalnız kalan ilerletilir.
+3. Kontrol: 96 saat sonra yine 09.00; 4 saat daha 13.00. || 96, 24'ün katı.
+cevap: 13.00 (dört gün sonra).
+
+::ornek baslik="İki kuvvetin toplamının son rakamı"
+soru: $3^{2025}+2^{2025}$ sayısının birler basamağındaki rakam kaçtır?
+1. $2025=4\cdot506+1$; kalan 1. || İki döngünün de periyodu 4.
+2. 3'ün döngüsü $3,9,7,1$: kalan 1 → 3. 2'nin döngüsü $2,4,8,6$: kalan 1 → 2. || Kalan, döngüdeki sırayı verir.
+3. Son rakamlar toplanır: $3+2=5$. || Toplamın son rakamı yalnız son rakamlara bağlıdır.
+cevap: 5
+
+::ornek baslik="Boncuk deseni"
+soru: Bir kolyede boncuklar kırmızı, mavi, mavi, sarı desenini tekrar ediyor. 150. boncuk hangi renktir? İlk 150 boncukta kaç mavi vardır?
+1. Desen 4 boncuk: $150=4\cdot37+2$. || Periyot desenin uzunluğudur.
+2. Kalan 2: 150. boncuk desenin 2. boncuğu, mavi. || Kalan $r$ ise desenin $r$. elemanı.
+3. 37 tam desende $37\cdot2=74$ mavi; kalan iki boncuk (kırmızı, mavi) 1 mavi ekler: 75. || Tam desenler ile artan parçayı ayrı saydık.
+cevap: Mavi; 75 mavi boncuk.
+
+::tamamla baslik="Sen dene · sulama günü"
+soru: Bir bahçıvan çiçekleri 5 günde bir suluyor. İlk sulamayı pazartesi yaptı. 30. sulamayı hangi gün yapar?
+1. 30. sulamaya kadar $29$ aralık geçer: $29\cdot5=145$ gün. || $n$. kez için $(n-1)$ periyot.
+?2. $145=7\cdot20+5$; kalan 5. || Haftanın periyodu 7.
+?3. Pazartesiden 5 gün sonra: cumartesi. || Salı, çarşamba, perşembe, cuma, cumartesi.
+cevap: Cumartesi.
+
+::sorgula s5b-ilac baslik="8 saatte bir ilaç"
+durum: Doktor 8 saatte bir ilaç içilmesini söyledi. İlk doz pazartesi saat 07.00'de alındı.
+soru: 10. doz ne zaman alınır?
++A) Perşembe 07.00 || İlk dozdan sonra 9 aralık: $9\cdot8=72$ saat, tam 3 gün.
+B) Perşembe 15.00 || $10\cdot8=80$ saat saydın; ilk doz başlangıç anıdır.
+C) Cuma 07.00 || 72 saat 4 gün değil, 3 gündür.
+neden: $n$. doz için $(n-1)$ aralık geçer: $9\cdot8=72$ saat $=3\cdot24$. Saat değişmez, gün 3 ilerler: pazartesi → perşembe.
+sinav: Saat ve gün birlikte sorulursa toplam saati önce 24'e böl: bölüm gün sayısını, kalan saat ilerlemesini verir.
+dusun: İlaç 6 saatte bir içilseydi 10. doz ne zaman alınırdı?
+yanit: $9\cdot6=54$ saat $=2$ gün 6 saat: çarşamba 13.00.
+
+::yanilgi m8 tip=periyodik
+yanlis: Üs 4'e tam bölünüyorsa kalan 0'dır; son rakam döngünün ilk terimidir.
+neden: Kalan 0, döngünün tam bittiği yeri gösterir; yani son terim. $2^4=16$ 6 ile biter, 2 ile değil.
+dogru: Kalan 0 ise döngünün son terimi alınır: $2^{2024}$'ün son rakamı 6'dır.
+
+::soru c10 tip=periyodik zorluk=2
+$8^{43}$ sayısının birler basamağındaki rakam kaçtır?
+A) 0 || 8'in hiçbir kuvveti 0 ile bitmez.
++B) 2 || Doğru: döngü $8,4,2,6$; $43=4\cdot10+3$, üçüncü terim 2.
+C) 4 || Kalan 2 olsaydı 4 olurdu; $43$'ün 4 ile kalanı 3.
+D) 6 || Kalan 0 olsaydı 6 olurdu.
+E) 8 || Kalan 1 olsaydı 8 olurdu.
+kontrol: 2
+cozum: 8'in kuvvetlerinin son rakamları $8,4,2,6$ döngüsündedir. $43=4\cdot10+3$; üçüncü terim 2.
+
 ::ozet
 - Bölen sayısı: $(a+1)(b+1)(c+1)$; tam sayı bölen sayısı bunun 2 katı.
 - EBOB küçük üsler, EKOK büyük üsler; $a \cdot b = \text{EBOB} \cdot \text{EKOK}$.
 - Bölüyorsan EBOB, birleştiriyor ya da aynı anı arıyorsan EKOK.
 - Kalanlı EKOK: kalanlar aynıysa $+r$, "bölen − kalan" aynıysa $-k$.
 - Periyodik: süreyi periyoda böl, kalana bak; $n$. kez için $(n-1)$ periyot.
+- Koşullu bölen: “$k$'ye bölünen bölen” sayısı $\frac{n}{k}$'nın bölen sayısıdır.
+- $a=dm$, $b=dn$ ($m$, $n$ aralarında asal): EKOK $=dmn$; EBOB her zaman EKOK'u böler.
+- Kalanlı EBOB: kalanları çıkar, EBOB al; bölen kalandan büyük olmalı.
+- Son rakam döngüleri 4'lüdür; kalan 0 ise döngünün son terimi.
 
 @pratik
 - Problemi okur okumaz karar ver ve yaz: bölüyorsan EBOB, birleştiriyor ya da aynı anı arıyorsan EKOK. Karar vermeden hesaba geçme.
@@ -407,6 +724,10 @@ cozum: Birlikte nöbet periyodu EKOK(6, 8) = 24 gün. Üçüncü kez için $2 \c
 - Kapalı çevreye ağaç sayısı :: Aralık sayısına eşittir (düz yolda +1).
 - 4'e bölününce 3, 6'ya bölününce 5 kalan veren sayılar :: $\text{EKOK}(4,6) \cdot n - 1 = 12n - 1$
 - $n$. kez olacak periyodik olay için geçen süre :: $(n - 1) \times$ periyot
+- EBOB $d$ ise iki sayı nasıl yazılır? :: $a=dm$, $b=dn$; $m$ ile $n$ aralarında asal, EKOK $=dmn$.
+- 720'nin 6'ya bölünen bölen sayısı nasıl bulunur? :: $\frac{720}{6}=120$'nin bölen sayısı: 16.
+- 100'ü bölünce 4, 150'yi bölünce 6 kalan veren en büyük sayı :: EBOB$(96,144)=48$
+- 2'nin kuvvetlerinin son rakam döngüsü :: $2, 4, 8, 6$ (periyot 4)
 
 @ozet
 - Sayıyı asal çarpanlarına ayır; bölen sayısı için üslere 1 ekleyip çarp, tek bölenlerde 2'nin üssünü 0 al.
