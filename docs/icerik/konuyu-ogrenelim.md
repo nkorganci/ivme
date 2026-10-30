@@ -88,6 +88,10 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0621 | Mutlak değer; orta noktalarla yakınlık | B, 5 | `302135a347dacda32a544be739f7286278347bbe523647e00f7099b4ce8d66b4` |
 | AYT_Sayisal-0014 | Bölme; basamak açılımı ve bölme eşitliği | D, 11 | `4223c87a90dd86fc2f9e4a855d5684f6c90bb38f955cf0e821cb56d39e951209` |
 | TYT-0593 | Bölünebilme; iki durum, 5/9/12 koşullarını birleştirme | A, 7 | `9e127ed9096c20e7c64d884dd2173d607bbce3d090cc7459ad346b1417482593` |
+| TYT-0588 | Temel kavramlar; A÷B=A−B=3, çarpım ile toplam farkı | E, 3/4 | `145c445797a97cabbbd0ce032d8af727785e6f07ce2ece45ad8d589524b544a6` |
+| TYT-0554 | Temel kavramlar; çift katsayıları atarak teklik | E, II ve III | `79f3aa331010dc384a48aef06cade06cf2d2eb17f9c39f502e2a65d88479df6b` |
+| TYT-0582 | Temel kavramlar; bölümün tekliğinden durumlara ayırma | D, I ve III | `c765ca06941b081d04464cb11b7bfd38c9e364b7e4f015bfe333ed2e163b7d9f` |
+| AYT_Sayisal-0012 | Temel kavramlar; eşitsizlik zincirinden işaret | D, I ve III | `b556f1d46287b150442dc6a62b604078252faf2a13db64240da77ada0da3c22b` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap
@@ -140,6 +144,27 @@ Motorun mevcut yedek ders soruları ve eksik kapsam davranışı korunur.
 Son aşama: `python scripts/ivme.py plan`, `python scripts/ivme.py kontrol`, yerel
 izleyici/sunum kontrolü (`durum --hizli`, gerekirse `bekle`). Yerel commit yapılır; push ve
 yeni dış dağıtım kullanıcı talimatı olmadan yapılmaz.
+
+## Pilot derinliğindeki dersler
+
+Bölme pilotunun derinliği diğer derslere ders ders yayılır. Bir ders ancak şu ölçütlerle
+`testler/konu-ogrenme-derin.test.mjs` içindeki `DERIN` listesine girer: en az 8 bölüm (eski
+bölümler korunur, yeni bölümler `s1b`, `s2b` … kimlikleriyle eklenir), en az 20 gerekçeli
+çözümlü örnek, 3 adım tamamlama, 4 etkileşimli keşif (giriş + bölüm keşifleri) ve görseli
+okunmuş en az 2 gerçek ÖSYM sorusu. Test ayrıca modellerin matematiksel değişmezlerini ve
+gerçek soruların bütün olasılıkları tarayan bağımsız çözümünü denetler.
+
+Bölüm keşifleri `frontend/src/learn/derin/` altındadır: `<ders>.js` öğretim verisini
+(`explorations`, `lessonId` ile), kontrolleri ve deterministik modeli; `<ders>-cizim.jsx`
+SVG çizimini tutar. `derin/index.js` (JSX yok, Node testleri de kullanır) ve
+`derin/cizimler.jsx` kayıt dosyalarıdır; keşif kimlikleri ders önekiyle başlar
+(`temel-tekcift`). Keşif kelime açıklamaları ve deney metni formül içerebilir.
+
+Gerçek soru seçimi: bankadaki ÖSYM sorusunun görseli açılır, soru çözülür ve cevap DB
+anahtarıyla karşılaştırılır (salt okuma). Otomatik eşleme yanlış olabilir; görsel başka
+konuyu soruyorsa kullanılmaz. Kabul edilen soru `worked-exams.js`'e yazılır, banka
+`node scripts/konu-ogrenme-banka.mjs` ile yeniden üretilir ve yalnız ilgili dersin bankasının
+değiştiği `git diff --stat` ile kontrol edilir; kanıt satırı yukarıdaki tabloya eklenir.
 
 ## Bölme ve bölünebilme pilotu
 

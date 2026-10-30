@@ -286,6 +286,8 @@ async function runDiscoveries(mobile) {
       if (requestedConcept || ['rasyonel-sayilar', 'birinci-derece-denklemler', 'carpanlara-ayirma', 'temel-kavramlar'].includes(id)) {
         await evalJs('document.querySelector(".lm-exploration").scrollIntoView({ block: "start" })');
         await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-kesif-${id}.png`));
+        await evalJs('document.querySelector(".lm-lab").scrollIntoView({ block: "start" })');
+        await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-kesif-lab-${id}.png`));
       }
       await evalJs(click('.lm-phases button', 'Birlikte'));
       await wait('document.querySelector(".lm-reasoning li")');

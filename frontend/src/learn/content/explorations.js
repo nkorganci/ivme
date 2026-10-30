@@ -1,11 +1,13 @@
 // Elle yazılan öğretim içeriği. Özgün örneklerdir; çıkmış soru veya öğretmen onayı değildir.
 // Her kayıt: gündelik bağlam → görsel deney → gerekçeli örnek → koşullu kısa yol.
 import { DIVISION_EXPLORATIONS } from './division-explorations.js';
+import { DEEP_EXPLORATIONS } from '../derin/index.js';
 const lesson = (title, story, terms, experiment, example, steps, tip, trap, transfer, expert) =>
   ({ title, story, terms, experiment, example, steps, tip, trap, transfer, expert });
 
 export const EXPLORATIONS = {
   ...DIVISION_EXPLORATIONS,
+  ...DEEP_EXPLORATIONS,
   'temel-kavramlar': lesson(
     'Sayıların bir adresi var',
     'Bir markette 3 ekmek sayarsın; hava sıcaklığı −3 derece olabilir; yarım ekmek ise 1/2 ile anlatılır. Bu üç ihtiyaç aynı sayı ailesine sığmaz. Sayı kümeleri, hangi sayılarla çalışabildiğimizi söyleyen adreslerdir.',

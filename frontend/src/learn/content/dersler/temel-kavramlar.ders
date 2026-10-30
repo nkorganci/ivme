@@ -53,8 +53,10 @@ ardisik 1 1-3
 en-buyuk-kucuk 2 1-3
 kumeler-islem 1 1-2
 
-@oturum Kümeler, tek–çift, işaret | s1 s2 s3
-@oturum Ardışık sayılar ve en büyük–en küçük | s4 s5
+@oturum Sayı kümeleri ve işlem kuralları | s1 s1b
+@oturum Tek–çift ve işaret | s2 s2b s3
+@oturum İşaret çıkarımı ve ardışık sayılar | s3b s4 s4b
+@oturum En büyük ve en küçük değer | s5 s5b
 
 @ontest
 ::soru o1 tip=tek-cift zorluk=1
@@ -151,6 +153,13 @@ yanlis: $\sqrt{9}$ kök içinde olduğu için irrasyoneldir.
 neden: Kök işareti tek başına bir şey söylemez; önce sadeleştir. $\sqrt{9} = 3$ bir doğal sayıdır.
 dogru: Yalnız tam kare olmayan sayıların kökleri ($\sqrt{2}, \sqrt{12}$) irrasyoneldir.
 
+::ornek baslik="İrrasyonellerle işlem: “her zaman” iddiasını sına"
+soru: $a$ ve $b$ irrasyonel sayılar olsun. $a+b$, $a\cdot b$ ve $a-b$ her zaman irrasyonel midir? Bir rasyonel ile bir irrasyonelin toplamı için ne söylenir?
+1. $a=\sqrt{2}$, $b=-\sqrt{2}$ seç: $a+b=0$, rasyonel. || “Her zaman” iddiasını çürütmek için tek bir karşı örnek yeter.
+2. $a=b=\sqrt{2}$ seç: $a\cdot b=2$ ve $a-b=0$; ikisi de rasyonel. || Çarpım ve fark için de birer karşı örnek bulduk.
+3. $q$ rasyonel, $x$ irrasyonel olsun. $q+x=r$ rasyonel olsaydı $x=r-q$ de rasyonel olurdu; bu imkânsız. Demek ki $q+x$ her zaman irrasyoneldir. || İki rasyonelin farkı rasyoneldir; varsayım bir çelişki doğurdu.
+cevap: İrrasyoneller toplama, çarpma ve çıkarmaya göre kapalı değildir. Rasyonel + irrasyonel ise her zaman irrasyoneldir: örneğin $3+\sqrt{2}$.
+
 ::soru c1 tip=kumeler-islem zorluk=1
 Aşağıdakilerden hangisi **irrasyonel** bir sayıdır?
 A) $\sqrt{25}$ || $\sqrt{25} = 5$, doğal sayı.
@@ -159,6 +168,23 @@ C) $-\frac{7}{3}$ || Kesir olarak yazılmış; rasyonel.
 D) $\sqrt{0{,}25}$ || $\sqrt{0{,}25} = 0{,}5 = \frac{1}{2}$, rasyonel.
 +E) $\sqrt{12}$ || Doğru: $\sqrt{12} = 2\sqrt{3}$; 12 tam kare değil.
 cozum: Kökü tam çıkmayan tek seçenek $\sqrt{12} = 2\sqrt{3}$'tür; irrasyoneldir.
+
+@bolum s1b 15 | İşlem önceliği ve işlem özellikleri
+::duzey baslik="İşlemlerin sırası ve özellikleri"
+L1: Bir yemek tarifinde adımların sırası değişirse sonuç değişir; işlemlerde de öyle. Önce parantez, sonra üs, sonra çarpma–bölme, en son toplama–çıkarma yapılır. Aynı öncelikteki işlemler soldan sağa yapılır: $12:4\cdot3=3\cdot3=9$; $12:12=1$ değil.
+L2: Toplama ve çarpma **değişmelidir** ($a+b=b+a$, $ab=ba$) ve **birleşmelidir**; çıkarma ve bölme değildir: $8-3\neq3-8$. Çarpma toplama üzerine **dağılır**: $a(b+c)=ab+ac$. Toplamanın etkisiz elemanı 0, çarpmanın 1'dir; 0 çarpmanın yutan elemanıdır. Sıfırdan farklı her $a$ sayısının çarpmaya göre tersi $\frac{1}{a}$'dır.
+L3: Dağılma özelliği hesapları kısaltır: $37\cdot99=37\cdot100-37$. Bölme toplama üzerine yalnız paydan dağılır: $\frac{a+b}{c}=\frac{a}{c}+\frac{b}{c}$, ama $\frac{c}{a+b}\neq\frac{c}{a}+\frac{c}{b}$. $\frac{a}{0}$ tanımsızdır; $\frac{0}{a}=0$'dır ($a\neq0$). İşlem önceliği tuzaklarının çoğu, aynı öncelikteki işlemleri sağdan yapmaktan gelir.
+
+::sorgula s1b-makine baslik="Basit hesap makinesi neden farklı buldu?"
+durum: Markette 3 ekmek tanesi 8 liradan, 2 süt tanesi 30 liradan alındı. Kasiyer basit bir hesap makinesine sırayla 3 × 8 + 2 × 30 tuşladı. Bu tür makineler her işlemi tuşa basıldığı anda, soldan sağa yapar.
+soru: Makinenin ekranındaki sayı ve doğru tutar hangisidir?
+A) Ekranda 84, doğru tutar 84 || Bu makine çarpmayı öne almaz; 24'e 2'yi ekleyip sonra 30 ile çarpar.
++B) Ekranda 780, doğru tutar 84 || Makine $((3\cdot8)+2)\cdot30=780$ hesaplar; doğrusu $3\cdot8+2\cdot30=24+60=84$.
+C) Ekranda 780, doğru tutar 780 || İşlem önceliğinde çarpmalar toplamadan önce yapılır; doğru tutar 84 liradır.
+neden: İşlem önceliğine göre önce çarpmalar yapılır: $3\cdot8=24$ ve $2\cdot30=60$; sonra toplama: $84$. Tuşa basıldığı anda işlem yapan bir makine ise $3\cdot8=24$, $24+2=26$, $26\cdot30=780$ hesaplar. Yazılı bir ifadenin anlamını işlem önceliği belirler.
+sinav: Önce parantez ve üsleri, sonra çarpma–bölmeyi soldan sağa, en son toplama–çıkarmayı soldan sağa yap. Her adımda yalnız bir işlem yazmak hatayı önler.
+dusun: Kasiyer bu basit makinede doğru tutarı nasıl bulabilirdi?
+yanit: Çarpımları ayrı ayrı bulup sonra toplayarak: 3 × 8 = 24'ü not alır, 2 × 30 = 60'ı hesaplar, 24 + 60 = 84 yapar. Ya da sırayı değiştirir: 2 × 30 + 24 soldan sağa da doğru sonucu verir.
 
 ::bilmelisin
 - İşlem önceliği: parantez içini kendi işlem sırasıyla bitir; sonra üs, çarpma ve bölme (soldan sağa), toplama ve çıkarma (soldan sağa).
@@ -173,7 +199,40 @@ soru: $18-12:(2+4)\cdot3+2^3$ işleminin sonucu kaçtır?
 4. Toplama ve çıkarma soldan sağa: $18-6+8=20$. || $6+8$ önce toplanırsa $18-14=4$ gibi yanlış bir sonuç bulunur.
 cevap: 20. Kontrol: işlemleri aynı sırayla yeniden yaz; her adımda yalnız bir işlem yap.
 
-@bolum s2 10 | Tek–çift: iki ihtimalle düşün
+::ornek baslik="Dağılma özelliğiyle kafadan hesap"
+soru: $37\cdot99+37$ ve $48\cdot25$ işlemlerini dağılma özelliğiyle hesapla.
+1. $37\cdot99+37=37\cdot99+37\cdot1=37\cdot(99+1)$. || Ortak çarpan 37; dağılma özelliğini tersten kullandık.
+2. $37\cdot100=3700$. || Parantez 100 olunca çarpma kolaylaştı.
+3. $48\cdot25=(50-2)\cdot25=1250-50=1200$. || 48'i kolay bir sayının farkı olarak yazdık; çarpma çıkarma üzerine de dağılır.
+cevap: 3700 ve 1200. Kontrol: $48\cdot25=12\cdot4\cdot25=12\cdot100=1200$.
+
+::ornek baslik="Kesirli ifadede işlem önceliği"
+soru: $\frac{2}{3}+\frac{1}{3}\cdot6-2^2:8$ işleminin sonucu kaçtır?
+1. Üs: $2^2=4$. || Üs, çarpma ve bölmeden önce gelir.
+2. Çarpma ve bölme: $\frac{1}{3}\cdot6=2$ ve $4:8=\frac{1}{2}$. || İki işlem ayrı terimlerde; her biri kendi teriminde yapılır.
+3. Toplama ve çıkarma soldan sağa: $\frac{2}{3}+2-\frac{1}{2}=\frac{4}{6}+\frac{12}{6}-\frac{3}{6}=\frac{13}{6}$. || Paydaları 6'da eşitledik.
+cevap: $\frac{13}{6}$. Önce $\frac{2}{3}+\frac{1}{3}$ toplansaydı $1\cdot6-\frac{1}{2}=\frac{11}{2}$ gibi yanlış bir sonuç çıkardı.
+
+::yanilgi m5 tip=kumeler-islem
+yanlis: $-3^2=9$, çünkü negatif sayının karesi pozitiftir.
+neden: Parantez yoksa üs yalnız 3'e uygulanır; eksi işareti en son gelir: $-3^2=-(3\cdot3)=-9$.
+dogru: $(-3)^2=9$ ama $-3^2=-9$. Negatif bir sayının karesi isteniyorsa parantez yazılır.
+
+::cikmis TYT-0588 tip=kumeler-islem
+
+::soru c6 tip=kumeler-islem zorluk=2
+$5-3\cdot(4-6)^2:6$ işleminin sonucu kaçtır?
+A) $7$ || $(4-6)^2$'yi $-4$ aldın. Karesi pozitiftir: $(-2)^2=4$.
++B) $3$ || Doğru: $(-2)^2=4$, $3\cdot4:6=2$, $5-2=3$.
+C) $\frac{4}{3}$ || Çıkarmayı çarpmadan önce yaptın: $(5-3)\cdot4:6$.
+D) $-\frac{7}{6}$ || Bölmeyi en sona bıraktın: $(5-12):6$. Çarpma ve bölme, çıkarmadan önce yapılır.
+E) $-7$ || $3\cdot4=12$'yi 6'ya bölmeden çıkardın.
+kontrol: 5-3*4/6
+cozum: Parantez: $4-6=-2$; üs: $(-2)^2=4$; çarpma–bölme soldan sağa: $3\cdot4=12$, $12:6=2$; çıkarma: $5-2=3$.
+
+@bolum s2 15 | Tek–çift: iki ihtimalle düşün
+::kesfet temel-tekcift
+
 ::fikir
 Bir tam sayı ya tektir ya çifttir. Toplamada **"aynılar çift"** verir (T+T = Ç, Ç+Ç = Ç); çarpımda **tek bir çift sayı** sonucu çift yapar. Bu iki cümle neredeyse bütün tek–çift sorularını çözer.
 
@@ -225,6 +284,8 @@ ipucu: "hangileri her zaman tektir/çifttir" ve öncüllü (I, II, III) sorular
 2. Her öncülü bu sayılarla hesapla.
 3. "Her zaman" için bir öncül tek bir örnekte bile yanlışsa elenir; şüphede ikinci bir örnek dene.
 
+::cikmis TYT-0554 tip=tek-cift
+
 ::soru c2 tip=tek-cift zorluk=2
 $x$ ve $y$ pozitif tam sayılardır. $x^3 \cdot y$ çift ve $x + y$ tek sayıdır. Buna göre aşağıdakilerden hangisi kesinlikle doğrudur?
 A) $x$ tektir. || $x$ tek de olabilir çift de; aşağıdaki çözümü incele.
@@ -234,7 +295,65 @@ D) $x - y$ çifttir. || Biri tek biri çift; fark tektir.
 E) $y^2 + x$ çifttir. || Biri tek biri çift olduğundan $y^2 + x$ tektir.
 cozum: $x + y$ tek ise biri tek, diğeri çifttir. O zaman $x^3 y$ zaten çifttir (çarpanlardan biri çift). Hangisinin çift olduğu belli değildir; ama çarpım $x y$ her durumda çifttir.
 
-@bolum s3 10 | Pozitif–negatif: işaretleri ayıkla
+@bolum s2b 20 | Tek–çift ile çıkarım: kuvvetler, kesirler ve öncüller
+::duzey baslik="Tek–çift bilgisinden sonuca"
+L1: Teklik sorusunda sayının kendisini değil, “açıkta kalan var mı?” sorusunu takip ederiz. $3^5$ tektir, çünkü yalnız tek sayılar çarpılıyor. $2^5$ çifttir. Bir kesir tam sayı olarak verilmişse pay, payda ile bölümün çarpımıdır: $\frac{a}{b}=4$ ise $a=4b$, yani $a$ çifttir.
+L2: Çift katsayılı terimleri silerek sadeleştir: teklik bakımından $a+5b$ ile $a+b$, $3a-4b$ ile $a$ aynıdır. Koşul bir toplam ya da çarpım olarak verilmişse olası durumları say: “$a+b$ tek” ise biri tek, biri çift; “$ab$ tek” ise ikisi de tek.
+L3: Bilinmeyen tekliği durumlara ayırmak en güvenli yoldur: her durumda öncülleri dene; bir durumda bile bozulan öncül “her zaman” sorusunda elenir. Kareler ilginçtir: $n^2$ ile $n$ aynı tekliktedir ve tek bir sayının karesi 8'e bölündüğünde her zaman 1 kalanını verir: $1, 9, 25, 49$.
+
+::sorgula s2b-basket baslik="Basketbol skorundan üçlükleri sorgula"
+durum: Bir basketbol takımı bir maçta yalnız 2 sayılık ve 3 sayılık basketler attı; serbest atış yok. Toplam skor 47.
+soru: Takımın attığı 3 sayılık basket sayısı için ne kesin olarak söylenebilir?
+A) Çifttir. || $2x+3y=47$'de $2x$ çift olduğu için $3y$ tek olmalı; bu da $y$'yi tek yapar.
++B) Tektir. || $2x$ çift, 47 tek: $3y$ tek, yani $y$ tek.
+C) Bilinemez. || Skorun tekliği, üçlük sayısının tekliğini kesin belirler.
+neden: 2 sayılık $x$, 3 sayılık $y$ basket olsun: $2x+3y=47$. $2x$ her zaman çifttir. Çift + $3y$ tek ise $3y$ tektir; $3y$ ancak $y$ tekse tektir. Örnek: $y=1$, $x=22$ ya da $y=15$, $x=1$.
+sinav: Bilinen bir toplamdan bir terimin tekliğini bulmak için çift katsayılı terimleri at: $2x+3y$ teklik bakımından $y$ gibidir.
+dusun: Skor 46 olsaydı ve takım en az bir üçlük atmış olsaydı, en az kaç üçlük atılmış olurdu?
+yanit: $3y$ çift olmalı, yani $y$ çift; en az bir üçlük atıldığı için $y$ en az 2. Örnek: $y=2$, $x=20$.
+
+::ornek baslik="Kareler toplamı tekse"
+soru: $x$ ve $y$ tam sayılar ve $x^2+y^2$ tek sayıdır. $x+y$, $x\cdot y$ ve $x-y$ ifadelerinin tekliği nedir?
+1. Kare tabanın tekliğini korur: $x^2$ ile $x$, $y^2$ ile $y$ aynı tekliktedir. || Tek sayının karesi tek, çift sayının karesi çifttir.
+2. $x^2+y^2$ tek ise $x$ ile $y$'den biri tek, diğeri çifttir. || İki terimin toplamının tek olması için tam bir terim tek olmalı.
+3. $x+y$ tek, $x-y$ tek, $x\cdot y$ çift. || Toplam ve farkta tek sayıda tek terim var; çarpımda bir çift çarpan yeter.
+cevap: $x+y$ ve $x-y$ tek, $x\cdot y$ çift. Kontrol: $x=2$, $y=3$: $4+9=13$ tek; $5$ ve $-1$ tek; $6$ çift.
+
+::ornek baslik="Kuvvetlerin tekliği"
+soru: $a$ ve $b$ pozitif tam sayılar olmak üzere $3^a+5^b$ ve $2^a+3^b$ ifadelerinin tekliğini bul.
+1. $3^a$ ve $5^b$ yalnız tek sayıların çarpımıdır; ikisi de tek. || Kuvvet, tabanın tekliğini korur.
+2. $3^a+5^b$: tek + tek = çift. || Açıktaki iki nesne eşleşir.
+3. $2^a$ ($a\geq1$) çift, $3^b$ tek; $2^a+3^b$ tek. || $a$ pozitif olduğu için en az bir 2 çarpanı var.
+cevap: $3^a+5^b$ her zaman çift, $2^a+3^b$ her zaman tek. Dikkat: $a=0$ olsaydı $2^0=1$ tek olurdu ve sonuç değişirdi.
+
+::ornek baslik="Kesir tam sayıysa pay ne olur?"
+soru: $a$ ve $b$ tam sayılar; $\frac{a+b}{2}$ tek bir tam sayı, $\frac{a}{2}$ ise çift bir tam sayıdır. $b$ çift midir? $\frac{b}{2}$ tek midir?
+1. $\frac{a+b}{2}=t$ (tek) ise $a+b=2t$; $\frac{a}{2}=k$ (çift) ise $a=2k$. || Bölümü çarpıma çevirdik: pay = payda × bölüm.
+2. $b=2t-2k=2(t-k)$: $b$ çifttir ve $\frac{b}{2}=t-k$. || İki eşitliği taraf tarafa çıkardık.
+3. $t$ tek, $k$ çift olduğundan $t-k$ tektir: $\frac{b}{2}$ tek. || Tek − çift = tek.
+cevap: $b$ çift ve $\frac{b}{2}$ tek, yani $b$ 4'ün katı değil. Kontrol: $a=8$, $b=2$: $\frac{10}{2}=5$ tek, $\frac{8}{2}=4$ çift, $\frac{b}{2}=1$ tek.
+
+::tamamla baslik="Sen dene · iki bilgiyi birleştir"
+soru: $a$ ve $b$ tam sayılar; $a+3b$ çift, $a\cdot b$ ise tek değildir. $a$ ile $b$'nin tekliğini bul.
+1. $a+3b=(a+b)+2b$: teklik bakımından $a+b$ gibidir. $a+b$ çift, yani $a$ ile $b$ aynı tekliktedir. || Çift katsayılı kısmı attık.
+?2. $a\cdot b$ tek değilse çifttir; en az biri çift. || Çarpım ancak iki çarpan da tekse tektir.
+?3. Aynı teklikteler ve en az biri çift: ikisi de çift. || İki bilgiyi birleştirdik.
+cevap: $a$ ve $b$ ikisi de çifttir. Örnek: $a=2$, $b=4$: $a+3b=14$ çift, $ab=8$ çift.
+
+::cikmis TYT-0582 tip=tek-cift
+
+::soru c7 tip=tek-cift zorluk=2
+$m$ ve $n$ tam sayılar; $m^2+3n$ tek ve $m$ çifttir. Buna göre aşağıdakilerden hangisi **kesinlikle** tektir?
+A) $m\cdot n$ || $m$ çift; bir çift çarpan çarpımı çift yapar.
+B) $m+2n$ || $m$ çift, $2n$ çift: toplam çift.
++C) $n^2+m$ || Doğru: $n$ tek olduğundan $n^2$ tek; tek + çift = tek.
+D) $3m$ || Çift bir sayının katı çifttir.
+E) $n-1$ || $n$ tek; tek − tek = çift.
+cozum: $m$ çift ise $m^2$ çift; $m^2+3n$ tek olduğuna göre $3n$ tek, yani $n$ tek. $n^2$ tek ve $n^2+m$ = tek + çift = tek.
+
+@bolum s3 15 | Pozitif–negatif: işaretleri ayıkla
+::kesfet temel-isaret
+
 ::fikir
 **Çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır.** $a^2 \geq 0$ her zaman doğrudur; $a^3$ ise $a$ ile aynı işaretlidir. İşaret sorusunda önce çift kuvvetleri at.
 
@@ -289,7 +408,56 @@ D) $a + c < 0$ || $c$'nin işareti ve büyüklüğü bilinmiyor.
 E) $b > 0$ || $b c^2 < 0$ ve $c^2 > 0$ olduğundan $b < 0$.
 cozum: $c^2 > 0$ olduğundan $b < 0$. $b^3 < 0$ ve $a b^3 > 0$ ise $a < 0$. İkisi de negatif olduğundan $a b > 0$. $c$ hakkında yalnız $c \neq 0$ bilinir.
 
-@bolum s4 10 | Ardışık sayılar: Gauss'un hilesi
+@bolum s3b 15 | Sıralamadan işarete: “her zaman” soruları
+::duzey baslik="Sıralama bilgisini işarete çevirmek"
+L1: Sayı doğrusunda 0'ın solundakiler negatif, sağındakiler pozitiftir. $a<b<0$ yazılmışsa $a$ ve $b$'nin ikisi de 0'ın solundadır; $a$ daha soldadır. İki negatif sayının çarpımı pozitif, toplamı negatiftir.
+L2: Eşitsizlikte iki tarafa aynı sayı eklenip çıkarılabilir: $c<c-b$ ise $0<-b$, yani $b<0$. Fark bilgisi sırayı verir: $a-b<0$ ise $a<b$. Çarpım ve bölümün işareti yalnız işaretlerden çıkar; toplam ve farkın işareti için sıralama ya da büyüklük gerekir: $a<b$ ise $b-a>0$ kesindir.
+L3: “Her zaman” sorularında kesin olmayanı göstermek için koşulu sağlayan iki örnek seç ve sonucun işaretinin değiştiğini göster. Ters alma ve kare alma sırayı değiştirebilir: $a<b<0$ ise $\frac{1}{a}>\frac{1}{b}$ ve $a^2>b^2$. Örneğin $-3<-1$, ama $-\frac{1}{3}>-1$ ve $9>1$.
+
+::sorgula s3b-sirket baslik="İki şubenin yıl sonu sonuçları"
+durum: Bir şirketin iki şubesinin yıllık sonuçları $a$ ve $b$ ile gösteriliyor (kâr pozitif, zarar negatif). Raporda yalnız $a\cdot b<0$ ve $a+b>0$ yazıyor.
+soru: Bu bilgilerden hangisi kesin olarak çıkar?
+A) İki şube de kâr etti. || İkisi de pozitif olsaydı çarpım pozitif olurdu.
++B) Şubelerden biri kâr, diğeri zarar etti; kârın büyüklüğü zarardan fazla. || Çarpım negatif: işaretler farklı. Toplam pozitif: pozitif olanın büyüklüğü daha fazla.
+C) Şirket toplamda zarar etti. || $a+b>0$: şirket toplamda kâr etti.
+neden: $a\cdot b<0$ iki sayının ters işaretli olduğunu söyler. $a+b>0$ ise pozitif olanın büyüklüğünün negatif olanınkinden fazla olduğunu gösterir. Örnek: $a=50$, $b=-20$. Hangi şubenin kâr ettiği bu bilgilerle belirlenemez.
+sinav: Çarpım bilgisi işaretleri, toplam bilgisi büyüklük karşılaştırmasını verir. İkisi birleşince “ters işaretli ve pozitif olan baskın” sonucu çıkar.
+dusun: Raporda ayrıca $a<b$ yazsaydı hangi şube kâr etmiş olurdu?
+yanit: $b$. Ters işaretli iki sayıdan büyük olanı pozitiftir: $a<0<b$.
+
+::ornek baslik="Sıralamadan dört ifadenin işareti"
+soru: $a<b<0<c$ olduğuna göre $a\cdot b$, $a\cdot c$, $b-a$ ve $\frac{a+b}{c}$ ifadelerinin işaretlerini bul.
+1. $a\cdot b$: iki negatifin çarpımı pozitif. $a\cdot c$: negatif × pozitif = negatif. || Çarpımda yalnız işaretlere bakılır.
+2. $b-a$: $a<b$ olduğundan $b-a>0$. || Büyükten küçük çıkarılınca sonuç pozitiftir; işaretlerin kendisi gerekmez.
+3. $a+b$: iki negatifin toplamı negatif; $c$ pozitif: $\frac{a+b}{c}<0$. || Aynı işaretli sayıların toplamı o işareti taşır.
+cevap: $a\cdot b>0$, $a\cdot c<0$, $b-a>0$, $\frac{a+b}{c}<0$. Kontrol: $a=-3$, $b=-1$, $c=2$ ile $3$, $-6$, $2$, $-2$.
+
+::ornek baslik="Negatiflerde ters ve kare sırayı çevirir"
+soru: $x<y<0$ olduğuna göre $\frac{1}{x}$ ile $\frac{1}{y}$'yi ve $x^2$ ile $y^2$'yi karşılaştır.
+1. Örnek seç: $x=-4$, $y=-2$. $\frac{1}{x}=-\frac{1}{4}$, $\frac{1}{y}=-\frac{1}{2}$ ve $-\frac{1}{4}>-\frac{1}{2}$. || Bir örnek, genel kuralı tahmin etmeye yardım eder.
+2. Genel gerekçe: $\frac{1}{x}-\frac{1}{y}=\frac{y-x}{xy}$. Pay $y-x>0$, payda $xy>0$; fark pozitif: $\frac{1}{x}>\frac{1}{y}$. || Farkın işaretini bulmak sırayı kanıtlar.
+3. $x^2-y^2=(x-y)(x+y)$: $x-y<0$ ve $x+y<0$; çarpım pozitif, yani $x^2>y^2$. || İki negatif çarpanın çarpımı pozitiftir.
+cevap: $\frac{1}{x}>\frac{1}{y}$ ve $x^2>y^2$: negatif sayılarda iki işlem de sırayı ters çevirir.
+
+::cikmis AYT_Sayisal-0012 tip=isaret
+
+::yanilgi m6 tip=isaret
+yanlis: $a<b$ ise $\frac{1}{a}<\frac{1}{b}$ olur.
+neden: Aynı işaretli sayılarda ters alma sırayı çevirir: $2<4$ ama $\frac{1}{2}>\frac{1}{4}$. Farklı işaretlilerde ise sıra korunur: $-1<2$ ve $-1<\frac{1}{2}$.
+dogru: Ters alırken önce işaretlere bak: aynı işaretliyse sıra döner, farklı işaretliyse korunur.
+
+::soru c8 tip=isaret zorluk=2
+$x$, $y$ ve $z$ gerçek sayılar; $x<y<0$ ve $y\cdot z>0$'dır. Buna göre aşağıdakilerden hangisi **kesinlikle** doğrudur?
+A) $x+z>0$ || İki negatifin toplamı negatiftir.
+B) $x\cdot y\cdot z>0$ || Üç negatifin çarpımı negatiftir.
++C) $x\cdot z>0$ || Doğru: $x<0$ ve $z<0$; aynı işaretliler çarpılınca pozitif.
+D) $y-x<0$ || $x<y$ olduğundan $y-x>0$.
+E) $z>y$ || $z$ ile $y$'nin sırası bilinmiyor.
+cozum: $y<0$ ve $yz>0$ ise $z<0$. $x$ ve $z$ negatif olduğundan $xz>0$. Üç negatifin çarpımı negatiftir; $y-x>0$'dır; $z$ ile $y$ arasındaki sıra belirsizdir.
+
+@bolum s4 15 | Ardışık sayılar: Gauss'un hilesi
+::kesfet temel-ardisik
+
 ::fikir
 Ardışık sayılarda **ortadaki terim ortalamadır**. Bu yüzden toplam $= \text{ortalama} \times \text{terim sayısı} = \frac{\text{ilk} + \text{son}}{2} \cdot n$ olur.
 
@@ -354,7 +522,65 @@ E) 29 || Ortancadan üç adım (6) ileri gittin.
 kontrol: 115/5+4
 cozum: Beş terimin ortancası ortalamadır: $\frac{115}{5} = 23$. Terimler $19, 21, 23, 25, 27$; en büyüğü $27$.
 
-@bolum s5 10 | En büyük – en küçük değer
+@bolum s4b 15 | Ardışık sayılarla problem kurma
+::duzey baslik="Ardışık sayılarla denklem kurmak"
+L1: Ardışık sayılar birer birer artar: $n$, $n+1$, $n+2$. Ardışık çift ya da tek sayılar ikişer ikişer artar: $n$, $n+2$, $n+4$. Toplam verildiğinde ortadaki sayıyı bulmak kolaydır: üç ardışık sayının toplamı, ortadaki sayının 3 katıdır.
+L2: Terim sayısı tekse ortanca $=\frac{\text{toplam}}{\text{terim sayısı}}$. Çift sayıda terimde bu bölüm, ortadaki iki terimin ortalamasıdır: ardışık dört tek sayının toplamı 96 ise $96:4=24$ ve ortadaki iki terim 23 ile 25'tir. Toplam formülleri: $1+2+\ldots+n=\frac{n(n+1)}{2}$, $2+4+\ldots+2n=n(n+1)$, $1+3+\ldots+(2n-1)=n^2$.
+L3: Toplamı bilinen bir diziden $n$'yi bulmak denklem çözmektir: $\frac{n(n+1)}{2}=210$ ise $n(n+1)=420=20\cdot21$. Sayıyı ardışık iki sayının çarpımı olarak yazmak, ikinci dereceden denklemi tahminle çözmeyi sağlar; ardışık iki sayı, çarpımın kareköküne yakındır.
+
+::sorgula s4b-daire baslik="Apartmandaki daire numaraları"
+durum: Bir apartmanın bir katındaki daireler 31'den 38'e kadar numaralanmış. Yönetici bu kattaki daire numaralarının toplamını bir bilmece olarak soruyor.
+soru: Bu kattaki daire numaralarının toplamı kaçtır?
++A) 276 || 8 daire var; ilk ile son toplamı 69, dört tane böyle ikili: $4\cdot69=276$.
+B) 345 || 10 daire saydın; $38-31+1=8$ daire var.
+C) 69 || Bu, ilk ve son numaranın toplamıdır; dört tane böyle ikili var.
+kontrol: 8*(31+38)/2
+neden: Daireler 31, 32, …, 38: $38-31+1=8$ daire. İlk ile sonun toplamı 69; tersiyle eşleşince 4 ikili oluşur: $4\cdot69=276$. Ortalama daire numarası 34,5'tir; çift sayıda terimde ortalama bir terim olmak zorunda değildir.
+sinav: Toplam $=\frac{\text{ilk}+\text{son}}{2}\cdot\text{terim sayısı}$. Çift sayıda terimde ortalama, ortadaki iki terimin tam ortasıdır.
+dusun: Bu kattaki tek numaralı dairelerin numaraları toplamı kaçtır?
+yanit: $31+33+35+37$: 4 terim, ortalama 34; toplam $136$.
+
+::ornek baslik="Çift sayıda ardışık tek sayı"
+soru: Ardışık dört tek sayının toplamı 96'dır. En büyüğü kaçtır?
+1. Ortalama $96:4=24$. || Ardışık sayılarda ortalama, ortadaki iki terimin ortalamasıdır.
+2. 24 çift; ortadaki iki tek sayı 23 ve 25. || Terim sayısı çift olduğu için ortalama bir terim değil, iki terimin tam ortasıdır.
+3. Terimler 21, 23, 25, 27; en büyüğü 27. || Ortadakilerden ikişer adım dışarı çıktık.
+cevap: 27. Kontrol: $21+23+25+27=96$.
+
+::ornek baslik="Toplamdan terim sayısına"
+soru: $1+2+3+\ldots+n=210$ olduğuna göre $n$ kaçtır?
+1. $\frac{n(n+1)}{2}=210$, yani $n(n+1)=420$. || Toplam formülünü denklem olarak yazdık.
+2. 420'yi ardışık iki sayının çarpımı olarak ara: $20\cdot20=400$'e yakın; $20\cdot21=420$. || Ardışık iki sayı, çarpımın kareköküne yakındır.
+3. $n=20$. || $n$ pozitif olmalı.
+cevap: 20. Kontrol: $\frac{20\cdot21}{2}=210$.
+
+::ornek baslik="Sinema salonundaki koltuklar"
+soru: Bir sinema salonunun ilk sırasında 12 koltuk var ve her sıra bir öncekinden 2 koltuk fazla. Salonda 15 sıra olduğuna göre toplam kaç koltuk vardır?
+1. Son sıra: $12+14\cdot2=40$ koltuk. || 1. sıradan 15. sıraya 14 adım vardır.
+2. Toplam $\frac{12+40}{2}\cdot15=26\cdot15$. || İlk ile sonun ortalaması, bütün sıraların ortalamasıdır.
+3. $26\cdot15=390$. || Çarpmayı yaptık.
+cevap: 390 koltuk.
+
+::tamamla baslik="Sen dene · ardışık çift sayıların toplamı"
+soru: $2+4+6+\ldots+2n=110$ olduğuna göre $n$ kaçtır?
+1. $2+4+\ldots+2n=2(1+2+\ldots+n)=n(n+1)$. || Her terimden 2'yi ortak paranteze aldık.
+?2. $n(n+1)=110=10\cdot11$. || 110'u ardışık iki sayının çarpımı olarak yazdık.
+?3. $n=10$. || $n$ pozitif olmalı.
+cevap: 10. Kontrol: $2+4+\ldots+20=\frac{2+20}{2}\cdot10=110$.
+
+::soru c9 tip=ardisik zorluk=2
+Ardışık altı çift sayının toplamı 150'dir. Bu sayıların en küçüğü kaçtır?
+A) 18 || Ortadakilerden bir adım fazla geri gittin.
++B) 20 || Doğru: ortalama 25, ortadaki iki terim 24 ve 26.
+C) 22 || Bu, ikinci terimdir.
+D) 24 || Bu, ortadaki iki terimden küçüğüdür.
+E) 25 || 25 ortalamadır; çift değil ve dizide yok.
+kontrol: 150/6-5
+cozum: Ortalama $150:6=25$; ortadaki iki çift sayı 24 ve 26. Terimler $20, 22, 24, 26, 28, 30$; en küçüğü 20.
+
+@bolum s5 15 | En büyük – en küçük değer
+::kesfet temel-ucdeger
+
 ::fikir
 Önce değişkenlerin işaretlerini ve birbirine bağlı olup olmadıklarını belirle. Diğer miktarlar sabitken, pozitif bir toplamda eklenen miktarı büyütmek sonucu artırır; pozitif paylı kesirde pozitif paydayı büyütmek sonucu azaltır. **Toplam sabitse** iki pozitif sayının çarpımı birbirlerine yaklaştıkça büyür. Her adımda "farklı", "pozitif", "rakam" koşullarını koru.
 
@@ -406,6 +632,54 @@ E) 25 || $x = y = 5$ olurdu; ama sayılar farklı olmalı.
 kontrol: 6*4
 cozum: Toplam sabitken çarpım, sayılar birbirine yaklaştıkça büyür. Eşit olamadıkları için $6 \cdot 4 = 24$ en büyük değerdir.
 
+
+@bolum s5b 15 | Bağlı koşullarda uç değer: aralıklar, kesirler ve rakamlar
+::duzey baslik="Uç değeri koşullarla birlikte aramak"
+L1: Bir çarpımı en büyük yapmak için sayıları büyütmek her zaman doğru değildir; negatif sayılar varsa iki büyük negatifin çarpımı da büyük bir pozitif olabilir. Önce her değişkenin alabileceği değerleri (aralığı) yaz, sonra uçları dene.
+L2: Değişkenler aralıklarda serbestse çarpımın en büyük ve en küçük değeri uç değerlerin çarpımlarından birindedir: $x\in[-3,2]$, $y\in[-1,4]$ için $(-3)(-1)$, $(-3)\cdot4$, $2\cdot(-1)$, $2\cdot4$ sayılarını karşılaştır. Kesirlerde payı büyük, paydayı küçük seç; rakamlar farklı olmalıysa en etkili yere en iyi rakamı ver.
+L3: Kareler toplamında sabit toplam bilgisi işe yarar: $x+y=10$ ise $x^2+y^2=(x+y)^2-2xy=100-2xy$. Bu yüzden $x^2+y^2$'yi küçültmek $xy$'yi büyütmek demektir; sayılar birbirine yaklaştıkça kareler toplamı küçülür.
+
+::sorgula s5b-kart baslik="Kartlardan en büyük kesir"
+durum: Elinde üzerinde 2, 3, 5 ve 8 yazan dört kart var. İki kartla bir kesir yapacaksın: biri pay, biri payda.
+soru: Oluşturabileceğin en büyük kesir hangisidir?
+A) $\frac{8}{5}$ || Paydayı büyük seçtin; payda küçüldükçe kesir büyür.
++B) $\frac{8}{2}=4$ || En büyük pay ve en küçük payda.
+C) $\frac{5}{2}$ || Payı en büyük kartla yapmadın.
+neden: Pay ve payda pozitifken kesri büyütmek için payı büyütür, paydayı küçültürüz: $\frac{8}{2}=4$. En küçük kesir ise $\frac{2}{8}=\frac{1}{4}$ olur.
+sinav: Kesirli ifadelerde her değişkenin etkisini yaz: paydaki pozitif sayı büyüdükçe kesir büyür, paydadaki pozitif sayı büyüdükçe kesir küçülür.
+dusun: Dört kartın hepsini kullanarak iki kesrin toplamını en büyük yapmak istersen hangi kesirleri kurarsın?
+yanit: Büyük payları küçük paydalarla eşleştir: $\frac{8}{2}+\frac{5}{3}=\frac{17}{3}$. Örneğin $\frac{8}{3}+\frac{5}{2}=\frac{31}{6}$ daha küçüktür.
+
+::ornek baslik="Aralıklarda çarpımın uç değerleri"
+soru: $x$ ve $y$ tam sayılar; $-3\leq x\leq2$ ve $-1\leq y\leq4$'tür. $x\cdot y$'nin en küçük ve en büyük değeri kaçtır?
+1. Uç değer adayları köşelerin çarpımlarıdır: $(-3)(-1)=3$, $(-3)\cdot4=-12$, $2\cdot(-1)=-2$, $2\cdot4=8$. || Bir değişken sabitken çarpım diğerine göre düzgün değişir; en uç sonuçlar uçlarda oluşur.
+2. En küçük $-12$: büyüklüğü en fazla olan negatif $x$ ile en büyük pozitif $y$. || Negatif sonucun büyüklüğünü artırmak onu küçültür.
+3. En büyük 8: aday 3 ile 8 karşılaştırıldı. || İki negatifin çarpımı da bir aday olduğu için onu da denedik.
+cevap: En küçük $-12$, en büyük $8$.
+
+::ornek baslik="Farklı rakamlarla iki kesrin toplamı"
+soru: $a$, $b$, $c$, $d$ birbirinden farklı ve sıfırdan farklı rakamlardır. $\frac{a}{b}+\frac{c}{d}$ toplamının alabileceği en büyük değer kaçtır?
+1. Payları büyük, paydaları küçük seç: paylar 9 ve 8, paydalar 1 ve 2. || Rakamlar farklı ve sıfır olamaz; en küçük iki payda 1 ve 2'dir.
+2. Eşleştirmeyi karşılaştır: $\frac{9}{1}+\frac{8}{2}=13$; $\frac{8}{1}+\frac{9}{2}=12{,}5$. || En büyük payı en küçük paydaya vermek daha çok kazandırır.
+3. En büyük değer 13. || İki yerleşimi de denedik.
+cevap: 13.
+
+::ornek baslik="Sabit toplamda kareler toplamı"
+soru: $x$ ve $y$ pozitif tam sayılar ve $x+y=10$'dur. $x^2+y^2$ en az kaçtır? $x$ ile $y$ farklı olmak zorundaysa en az kaçtır?
+1. $x^2+y^2=(x+y)^2-2xy=100-2xy$. || Kareler toplamını, bilinen toplam ve çarpım cinsinden yazdık.
+2. $x^2+y^2$'yi küçültmek için $xy$'yi büyütmeliyiz; $xy$ en çok $5\cdot5=25$: $100-50=50$. || Toplam sabitken çarpım, sayılar eşitken en büyüktür.
+3. Farklı olmaları gerekirse $6\cdot4=24$: $100-48=52$. || Ortaya en yakın farklı ikiliyi seçtik.
+cevap: En az 50; farklı olmak zorundaysa 52. Kontrol: $25+25=50$, $36+16=52$.
+
+::soru c10 tip=en-buyuk-kucuk zorluk=2
+$x$ ve $y$ tam sayılar; $-4\leq x\leq1$ ve $-2\leq y\leq3$'tür. $x\cdot y$ çarpımının alabileceği **en büyük** değer kaçtır?
+A) 3 || Yalnız pozitif uçları çarptın; iki negatifin çarpımı daha büyük.
+B) 4 || $(-4)\cdot(-1)$; $y$ en küçük $-2$ olabilir.
++C) 8 || Doğru: $(-4)\cdot(-2)=8$.
+D) 12 || Büyüklüğü 12 olan çarpım $(-4)\cdot3=-12$'dir; negatiftir.
+E) $-12$ || Bu, en küçük değerdir.
+kontrol: (-4)*(-2)
+cozum: Uç adaylar: $(-4)(-2)=8$, $(-4)\cdot3=-12$, $1\cdot(-2)=-2$, $1\cdot3=3$. En büyüğü 8.
 
 ::ozet
 - $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$; irrasyoneller $\mathbb{R}$ içinde, $\mathbb{Q}$ dışında. Önce sadeleştir: $\sqrt{9} = 3$.

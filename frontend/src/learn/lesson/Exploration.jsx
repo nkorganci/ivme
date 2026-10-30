@@ -5,6 +5,7 @@ import { MODEL_CONTROLS, calculateModel, fmt, initialValues } from './models.js'
 import './learning-experience.css';
 import FigureZoom from './FigureZoom.jsx';
 import DivisionDiagram from './DivisionDiagram.jsx';
+import { DEEP_DIAGRAMS } from '../derin/cizimler.jsx';
 
 const letters = 'ABCDE';
 const times = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
@@ -196,7 +197,10 @@ function Diagram({ model: m, title }) {
       {text(240, 135, `%${m.p}`, { className: 'lm-large' })}{text(240, 160, `${fmt(m.angle)}°`)}
       {text(240, 271, `${m.count} / 120 kişi`)}
     </>; break;
-    default: drawing = null;
+    default: {
+      const Deep = DEEP_DIAGRAMS[m.kind];
+      drawing = Deep ? <Deep model={m} /> : null;
+    }
   }
   return <svg className="lm-diagram" viewBox="0 0 480 290" role="img" aria-labelledby={`${id}-title ${id}-desc`}>
     <title id={`${id}-title`}>{title}</title><desc id={`${id}-desc`}>{m.equation}. {m.observation}</desc>{drawing}
@@ -241,8 +245,8 @@ export default function Exploration({ conceptId, level = 'L1' }) {
     </nav>
     {phase === 0 && <div className="lm-phase">
       <div className="lm-story"><span className="lm-eyebrow">Bu ne işime yarar?</span><Markdown text={data.story} /></div>
-      <details className="lm-terms" open={level === 'L1'}><summary>İlk kez görüyorsan: kelimeler ne demek?</summary><dl>{data.terms.map(([term, meaning]) => <div key={term}><dt>{term}</dt><dd>{meaning}</dd></div>)}</dl></details>
-      <div className="lm-predict"><strong>Önce tahmin et, sonra dene</strong><p>{data.experiment}</p></div>
+      <details className="lm-terms" open={level === 'L1'}><summary>İlk kez görüyorsan: kelimeler ne demek?</summary><dl>{data.terms.map(([term, meaning]) => <div key={term}><dt><MathText text={term} /></dt><dd><MathText text={meaning} /></dd></div>)}</dl></details>
+      <div className="lm-predict"><strong>Önce tahmin et, sonra dene</strong><p><MathText text={data.experiment} /></p></div>
       <ConceptModel conceptId={conceptId} title={data.title} />
       <button type="button" className="btn btn-primary" onClick={() => setPhase(1)}>Şimdi bir örneği birlikte çözelim →</button>
     </div>}

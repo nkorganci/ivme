@@ -7,10 +7,12 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 ## Etkin görev
 
 - Güncelleme: 30 Ekim 2026 — Claude.
-- Etkin yarım iş yok. Bölme pilotu ve ardından 32 dersin tamamı aynı biçime getirildi ve push edildi.
-- Açık karar (kullanıcıda): pilottaki daha derin katmanın (bölüm başına etkileşimli keşif modeli,
-  görseli okunmuş gerçek sınav sorusu, ~24 çözümlü örnek) diğer derslere de yayılıp yayılmayacağı.
-  Bu turda diğer derslere yeni keşif modeli ve yeni gerçek soru eklenmedi.
+- Kullanıcı talimatı: bütün matematik derslerini bölme pilotu kadar derin yap; sonra
+  token kalırsa matematikte henüz olmayan konuları da aynı kalitede ekle. Acele yok.
+- Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
+  Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
+  olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
+- Sıradaki: `sayi-basamaklari`, sonra `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler` …
 
 ## Tamamlanan kapsam
 
