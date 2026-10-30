@@ -105,6 +105,25 @@ soru: $C(n, 2) = 28$ olduğuna göre $n$ kaçtır?
 2. $56 = 8 \cdot 7$ olduğundan $n = 8$. || Ardışık iki sayının çarpımı.
 cevap: 8
 
+::ornek baslik="Aynı kişiler: grup mu, görev mi?"
+soru: 10 kişilik bir sınıftan a) 3 kişilik bir çalışma grubu, b) başkan, yardımcı ve sekreter kaç farklı şekilde seçilir?
+1. a) Grupta görevler aynı; sıra önemsiz: $C(10,3)=\frac{10\cdot9\cdot8}{3!}=120$. || Aynı üç kişinin farklı sıralanışları aynı gruptur.
+2. b) Görevler farklı; sıra önemli: $P(10,3)=10\cdot9\cdot8=720$. || Ali başkan–Can yardımcı ile Can başkan–Ali yardımcı farklıdır.
+3. $720=120\cdot3!$: her grup $3!=6$ farklı görev dağılımıyla sayılır. || $P(n,r)=C(n,r)\cdot r!$.
+cevap: a) 120, b) 720.
+
+::sorgula s1-tokalasma baslik="Toplantıda tokalaşma"
+durum: Bir toplantıda 8 kişi var ve her kişi diğer herkesle birer kez tokalaşıyor.
+soru: Toplam kaç tokalaşma olur?
+A) 64 || $8\cdot8$; kişi kendisiyle tokalaşmaz.
+B) 56 || $8\cdot7$; her tokalaşmayı iki kez saydın (Ali–Can ve Can–Ali aynı tokalaşmadır).
++C) 28 || Her tokalaşma 2 kişilik bir seçimdir: $C(8,2)=28$.
+kontrol: 8*7/2
+neden: Tokalaşmada sıra yoktur; yalnız hangi iki kişinin tokalaştığı önemlidir. $C(8,2)=\frac{8\cdot7}{2}=28$.
+sinav: “Sıra önemli mi?” sorusu permütasyon ile kombinasyonu ayırır. Seçimde $C(n,r)$, sıralı seçimde $P(n,r)$.
+dusun: Toplam 45 tokalaşma olduysa toplantıda kaç kişi vardı?
+yanit: $\frac{n(n-1)}{2}=45$, $n(n-1)=90=10\cdot9$: 10 kişi.
+
 ::yanilgi m1 tip=kombinasyon-hesap
 yanlis: Kombinasyonda seçilenlerin sırası önemlidir; $C(n, r) = P(n, r)$.
 neden: {A, B} ve {B, A} aynı seçimdir; permütasyon her seçimi $r!$ kez sayar.
@@ -138,10 +157,29 @@ cevap: 185
 
 ::tamamla baslik="En az bir fizikçi"
 soru: Aynı 10 öğretmenden en az 1 fizik öğretmeninin bulunduğu 4 kişilik bir komisyon kaç farklı şekilde seçilebilir?
-1. Tüm komisyonlar: $C(10, 4) = 210$.
-?2. Hiç fizikçi olmayanlar: $C(6, 4) = 15$.
-?3. En az bir fizikçi: $210 - 15 = 195$.
+1. Tüm komisyonlar: $C(10, 4) = 210$. || Önce hiçbir koşul olmadan bütün seçimleri saydık.
+?2. Hiç fizikçi olmayanlar: $C(6, 4) = 15$. || “En az bir”in tümleyeni “hiç”tir: yalnız 6 matematikçiden seçim.
+?3. En az bir fizikçi: $210 - 15 = 195$. || Tümden istenmeyen durumu çıkardık.
 cevap: 195
+
+::ornek baslik="En az iki kız"
+soru: 5 kız ve 4 erkek arasından en az 2 kızın bulunduğu 3 kişilik bir ekip kaç farklı şekilde seçilir?
+1. 2 kız + 1 erkek: $C(5,2)\cdot C(4,1)=10\cdot4=40$. || “En az 2” durumlara ayrılır: 2 kız ya da 3 kız.
+2. 3 kız: $C(5,3)=10$. || İkinci durum.
+3. Toplam $40+10=50$. || Ayrık durumlar toplanır.
+cevap: 50. Kontrol: tümü $C(9,3)=84$; 0 kız $C(4,3)=4$, 1 kız $5\cdot C(4,2)=30$; $84-4-30=50$.
+
+::sorgula s2-pizza baslik="Sucuk mutlaka olsun"
+durum: Bir pizzacıda 8 farklı malzeme var; pizzana tam 3 malzeme seçeceksin. Arkadaşın sucuğun mutlaka olmasını istiyor.
+soru: Kaç farklı seçim yapılabilir?
+A) 56 || $C(8,3)$; sucuk koşulunu kullanmadın.
++B) 21 || Sucuk seçildi; kalan 7 malzemeden 2 tane: $C(7,2)=21$.
+C) 35 || $C(7,3)$; bu, sucuğun olmadığı seçimlerin sayısıdır.
+kontrol: 21
+neden: Kesin seçilen eleman kenara ayrılır; geriye kalan 2 malzeme, kalan 7 malzemeden seçilir: $C(7,2)=21$.
+sinav: “Mutlaka olsun” denen elemanı önceden seç, kalan yerleri kalanlardan doldur. “Olmasın” denen elemanı listeden çıkar.
+dusun: Sucuk asla olmasın denseydi kaç seçim olurdu?
+yanit: Kalan 7 malzemeden 3: $C(7,3)=35$. Kontrol: $21+35=56=C(8,3)$.
 
 ::yanilgi m2 tip=secim-problemi
 yanlis: En az 1 fizikçi için önce 1 fizikçi seç (4), sonra kalan 9 kişiden 3 kişi seç (84): $4 \cdot 84 = 336$.
@@ -173,6 +211,24 @@ soru: 10 kişilik bir kulüpten 1 başkan, 1 başkan yardımcısı ve 3 kişilik
 2. Kalan 8 kişiden kurul: $C(8, 3) = 56$. || Kurulda sıra yok.
 3. $90 \cdot 56 = 5040$. || Çarpma ilkesi.
 cevap: 5040
+
+::ornek baslik="Kurul ve kurul başkanı: iki sıra, aynı sonuç"
+soru: 9 kişiden 3 kişilik bir kurul seçilecek ve kurul üyelerinden biri kurul başkanı olacak. Kaç farklı seçim yapılabilir?
+1. Önce kurul, sonra başkan: $C(9,3)\cdot3=84\cdot3=252$. || Seçilen 3 kişiden biri başkan olur.
+2. Önce başkan, sonra diğer 2 üye: $9\cdot C(8,2)=9\cdot28=252$. || Aynı durumu başka bir sırayla saydık.
+3. İki yol aynı sonucu verir. || Saymayı kontrol etmenin iyi bir yolu.
+cevap: 252.
+
+::sorgula s3-temsilci baslik="Sınıf başkanı ve yardımcı ekip"
+durum: 30 kişilik bir sınıftan bir sınıf başkanı ve aynı görevi paylaşan 2 kişilik bir yardımcı ekip seçilecek.
+soru: Kaç farklı seçim yapılabilir?
+A) 24 360 || $P(30,3)$; yardımcıları sıralı saydın, oysa ikisinin görevi aynı.
++B) 12 180 || Başkan 30; kalan 29 kişiden 2 yardımcı: $30\cdot C(29,2)=30\cdot406$.
+C) 4060 || $C(30,3)$; başkanı diğerlerinden ayırt etmedin.
+neden: Farklı görev (başkan) sıralı seçilir: 30 seçenek. Aynı görevi paylaşanlar grup olarak seçilir: $C(29,2)=406$. Çarpım $12\,180$.
+sinav: Önce farklı görevleri tek tek seç, sonra aynı görevi paylaşanları kombinasyonla seç; seçimleri çarp.
+dusun: Başkan, bir yardımcı ve bir sekreter seçilseydi kaç seçim olurdu?
+yanit: Üç farklı görev: $P(30,3)=30\cdot29\cdot28=24\,360$.
 
 ::soru c3 tip=secip-siralama zorluk=2
 8 kişilik bir sınıftan 1 sınıf başkanı ve 2 kişilik bir temsilci grubu kaç farklı şekilde seçilebilir?
@@ -220,6 +276,25 @@ cevap: 30
 yanlis: Aynı doğru üzerindeki noktalardan seçilen üç nokta da bir üçgen oluşturur.
 neden: Doğrusal üç noktanın oluşturduğu şekil bir doğru parçasıdır, üçgen değildir.
 dogru: Üçgen sayısı $C(n, 3) - C(k, 3)$ ($k$ doğrusal nokta sayısı).
+
+::ornek baslik="Altıgenin köşegenleri"
+soru: Bir düzgün altıgenin kaç köşegeni vardır?
+1. 6 köşeden ikisini birleştiren her doğru parçası: $C(6,2)=15$. || Her köşe ikilisi bir doğru parçası verir.
+2. Bunların 6 tanesi altıgenin kenarıdır. || Komşu köşeleri birleştiren parçalar kenardır.
+3. Köşegen sayısı $15-6=9$. || Kenarları çıkardık.
+cevap: 9. Genel kural: $n$ kenarlı çokgende $C(n,2)-n=\frac{n(n-3)}{2}$ köşegen.
+
+::sorgula s4-turnuva baslik="Turnuvada maç sayısı"
+durum: 6 takımın katıldığı bir turnuvada her takım diğer her takımla bir kez maç yapacak.
+soru: Toplam kaç maç oynanır?
+A) 30 || $6\cdot5$; A–B ve B–A maçlarını ayrı saydın.
++B) 15 || Her maç 2 takımlık bir seçimdir: $C(6,2)=15$.
+C) 36 || Takım kendisiyle maç yapmaz.
+kontrol: 15
+neden: Bir maç, 6 takımdan 2'sinin seçilmesiyle belirlenir; sıra önemli değildir. $C(6,2)=15$.
+sinav: Tokalaşma, maç, doğru parçası gibi “ikili” sayımlar hep $C(n,2)$'dir. Geometride doğrusal noktalar ayrıca çıkarılır.
+dusun: Turnuva rövanşlı (her ikili iki maç, biri kendi sahasında) olsaydı kaç maç oynanırdı?
+yanit: 30 maç. Artık sıra (ev sahibi) önemli: $P(6,2)=30$.
 
 ::soru c4 tip=kombinasyon-geometri zorluk=2
 Bir çember üzerindeki 8 noktadan kaç farklı dörtgen çizilebilir?

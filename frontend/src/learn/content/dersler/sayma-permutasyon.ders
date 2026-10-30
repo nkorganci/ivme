@@ -103,10 +103,29 @@ cevap: a) 81, b) 24
 
 ::tamamla baslik="Durumlara ayırma"
 soru: 0, 1, 2, 3, 4 rakamlarıyla rakamları farklı üç basamaklı kaç çift sayı yazılabilir?
-1. Birler 0 ise: yüzler 4, onlar 3 seçenek → 12.
-?2. Birler 2 ya da 4 ise (2 seçenek): yüzler 3 (0 ve birlerdeki hariç), onlar 3 → $2 \cdot 3 \cdot 3 = 18$.
-?3. Toplam $12 + 18 = 30$.
+1. Birler 0 ise: yüzler 4, onlar 3 seçenek → 12. || Birler 0 olunca yüzler basamağı için 0 sorunu kalkar; kalan 4 rakamdan biri seçilir.
+?2. Birler 2 ya da 4 ise (2 seçenek): yüzler 3 (0 ve birlerdeki hariç), onlar 3 → $2 \cdot 3 \cdot 3 = 18$. || Yüzler basamağına 0 ve birlerdeki rakam yazılamaz; durumları ayrı saymak bu yüzden gerekir.
+?3. Toplam $12 + 18 = 30$. || Durumlar ayrık (birler ya 0 ya 2/4); veya ile bağlı durumlar toplanır.
 cevap: 30
+
+::ornek baslik="Şifre: tekrar serbest mi, yasak mı?"
+soru: 3 haneli bir kilidin her hanesi 0–9 rakamlarından birini gösteriyor. Kaç farklı şifre vardır? Rakamların farklı olması istenirse kaç şifre kalır?
+1. Tekrar serbestse her hane 10 seçenek: $10\cdot10\cdot10=1000$. || Hanelerin seçimi art arda yapılır; çarpılır.
+2. Rakamlar farklıysa: 1. hane 10, 2. hane kalan 9, 3. hane kalan 8 seçenek. || Kullanılan rakam bir sonraki haneden düşer.
+3. $10\cdot9\cdot8=720$. || Kilitte ilk hane 0 olabilir; sayı yazmıyoruz.
+cevap: 1000 şifre; rakamları farklı 720 şifre.
+
+::sorgula s1-menu baslik="Lokantada menü"
+durum: Bir lokantada 3 çeşit çorba, 4 çeşit ana yemek ve 2 çeşit tatlı var. Menü; bir çorba, bir ana yemek ve bir tatlıdan oluşuyor.
+soru: Kaç farklı menü oluşturulabilir?
+A) 9 || Seçenekleri topladın; çorba, ana yemek ve tatlı birlikte (“ve”) seçiliyor.
++B) 24 || $3\cdot4\cdot2=24$.
+C) 12 || Tatlı seçimini unuttun.
+kontrol: 3*4*2
+neden: Her çorba her ana yemekle, her ikili de her tatlıyla eşleşebilir. Art arda yapılan seçimlerde seçenek sayıları çarpılır.
+sinav: “Ve” ile bağlı aşamalar çarpılır; “veya” ile ayrılan ayrık seçenekler toplanır.
+dusun: Menü “bir ana yemek ve yanında ya bir çorba ya da bir tatlı” olsaydı kaç menü olurdu?
+yanit: Yan seçim $3+2=5$ seçenek; ana yemekle: $4\cdot5=20$ menü.
 
 ::yanilgi m1 tip=temel-ilke
 yanlis: 4 mektup 3 posta kutusuna $4^3 = 64$ farklı şekilde atılır.
@@ -148,6 +167,25 @@ soru: $\dfrac{9! + 10!}{9! - 8!}$ işleminin sonucunu bul.
 3. $\dfrac{11 \cdot 9 \cdot 8!}{8 \cdot 8!} = \dfrac{99}{8}$. || $9! = 9 \cdot 8!$.
 cevap: $\frac{99}{8}$
 
+::ornek baslik="Permütasyondan $n$'yi bul"
+soru: $P(n,2)=56$ olduğuna göre $n$ kaçtır?
+1. $P(n,2)=n(n-1)$. || $n$ nesneden 2'sini sıralamak: ilk yere $n$, ikinci yere $n-1$ seçenek.
+2. $n(n-1)=56$; ardışık iki sayının çarpımı 56: $8\cdot7$. || Çarpanları ardışık sayılar olarak aradık.
+3. $n=8$. || $n$ pozitif tam sayı olmalı.
+cevap: 8. Kontrol: 8 kişiden başkan ve yardımcı $8\cdot7=56$ şekilde seçilir.
+
+::sorgula s2-yaris baslik="Madalya sıralaması"
+durum: 8 sporcunun katıldığı bir yarışta altın, gümüş ve bronz madalya verilecek.
+soru: Madalyalar kaç farklı şekilde dağıtılabilir?
+A) 24 || Bu yalnız 3 kişinin kendi aralarında sıralanışıdır ($3!$); kimin madalya alacağı da seçilmeli.
++B) 336 || Altın 8, gümüş 7, bronz 6 seçenek: $P(8,3)=336$.
+C) 512 || $8^3$; aynı sporcu iki madalya alamaz.
+kontrol: 8*7*6
+neden: Sıra önemlidir (altın ≠ gümüş). Altın için 8, gümüş için kalan 7, bronz için kalan 6 sporcu: $8\cdot7\cdot6=336=\frac{8!}{5!}$.
+sinav: $P(n,r)=\frac{n!}{(n-r)!}$: $n$ farklı nesneden $r$ tanesini sıralı seçmek.
+dusun: Yalnız ilk üçe giren sporcuların kimler olduğu önemli olsaydı (sıra önemsiz) kaç farklı grup olurdu?
+yanit: Her üçlü $3!=6$ farklı sıralamayla sayılmıştı: $336:6=56$ grup.
+
 ::yanilgi m2 tip=faktoriyel-p
 yanlis: $7! - 6! = 1!$
 neden: Faktöriyel çıkarmaya dağılmaz; $7!$ ile $6!$ arasındaki fark çok büyüktür.
@@ -181,10 +219,29 @@ cevap: 720
 
 ::tamamla baslik="Hiçbir iki kız yan yana olmasın"
 soru: Aynı 3 kız ve 4 erkek, hiçbir iki kız yan yana gelmeyecek şekilde kaç farklı biçimde dizilebilir?
-1. Erkekler $4! = 24$ şekilde dizilir ve 5 boşluk oluşur: _E_E_E_E_.
-?2. 3 kız 5 boşluğa $P(5, 3) = 60$ şekilde yerleşir.
-?3. $24 \cdot 60 = 1440$.
+1. Erkekler $4! = 24$ şekilde dizilir ve 5 boşluk oluşur: _E_E_E_E_. || Önce kısıtı olmayanları dizeriz; aralar ve uçlar kızlar için yer olur.
+?2. 3 kız 5 boşluğa $P(5, 3) = 60$ şekilde yerleşir. || Her boşluğa en çok bir kız konunca iki kız yan yana gelmez; kızlar farklı olduğu için sıra önemli.
+?3. $24 \cdot 60 = 1440$. || Erkeklerin dizilişi ve kızların yerleşimi art arda yapılır; çarpılır.
 cevap: 1440
+
+::ornek baslik="Belirli yer koşulu"
+soru: 6 kişi bir sıraya diziliyor. A kişisi sıranın ya en başında ya da en sonunda olmak zorundaysa kaç farklı dizilim vardır?
+1. Önce koşullu kişiyi yerleştir: A için 2 yer. || Kısıtı olan önce yerleşir.
+2. Kalan 5 kişi kalan 5 yere $5!=120$ şekilde dizilir. || Kısıtsız kişiler serbest.
+3. $2\cdot120=240$. || İki aşama art arda; çarpılır.
+cevap: 240.
+
+::sorgula s3-foto baslik="Aile fotoğrafı"
+durum: Anne, baba ve 3 çocuk bir fotoğraf için yan yana dizilecek. Anne ile baba yan yana durmak istiyor.
+soru: Kaç farklı diziliş vardır?
+A) 24 || Anne-babayı tek blok saydın ama bloğun içini (anne–baba / baba–anne) unuttun.
++B) 48 || Blok + 3 çocuk = 4 nesne: $4!=24$; blok içi $2!$: $24\cdot2=48$.
+C) 120 || Bu, hiçbir koşul olmadan 5 kişinin dizilişidir.
+kontrol: 24*2
+neden: Yan yana olacakları tek bir nesne gibi düşün: [anne-baba], Ç1, Ç2, Ç3 → $4!=24$. Blok kendi içinde 2 şekilde dizilir. Toplam $48$.
+sinav: Yan yana olacaklar blok olur; blok sayısı kadar nesne dizilir, sonra blok içi sıralanır.
+dusun: Anne ile baba sıranın iki ucunda durmak isteseydi kaç diziliş olurdu?
+yanit: Uçlara anne-baba 2 şekilde, ortadaki 3 çocuk $3!=6$ şekilde: $12$ diziliş.
 
 ::yanilgi m3 tip=siralama-kosul
 yanlis: Yan yana olacak 2 kişiyi tek kişi sayınca sonuç $(n-1)!$ olur.
@@ -235,6 +292,25 @@ soru: ANKARA kelimesinin harfleri kullanılarak anlamlı ya da anlamsız 6 harfl
 1. Harfler: A (3 tane), N, K, R. || Özdeşleri say.
 2. $\frac{6!}{3!} = \frac{720}{6} = 120$. || Özdeş A'ların sıralanışına böl.
 cevap: 120
+
+::ornek baslik="Yuvarlak masada yan yana iki kişi"
+soru: 6 kişi yuvarlak bir masaya oturacak. A ile B yan yana oturmak zorundaysa kaç farklı oturuş vardır?
+1. A ile B tek blok: masada 5 nesne var. || Yan yana olanları birleştirdik.
+2. Yuvarlak masada 5 nesne $(5-1)!=24$ şekilde oturur. || Dönmeler aynı sayıldığı için bir nesne sabitlenir.
+3. Blok içi $2!=2$: $24\cdot2=48$. || A–B ve B–A farklıdır.
+cevap: 48.
+
+::sorgula s4-masa baslik="Yuvarlak masada oturuş"
+durum: 5 arkadaş yuvarlak bir masaya oturacak. Herkes bir kişi sağa kayarsa oturuş aynı sayılıyor; çünkü herkesin sağındaki ve solundaki kişi değişmiyor.
+soru: Kaç farklı oturuş vardır?
+A) 120 || $5!$; düz sıra gibi saydın. Yuvarlak masada her oturuşu 5 kez saymış olursun.
++B) 24 || Bir kişiyi sabitle, kalan 4 kişiyi diz: $(5-1)!=24$.
+C) 12 || Bu, ters çevrilebilen nesneler (kolye gibi) içindir; masada sağ ve sol farklıdır.
+kontrol: 24
+neden: Düz sırada $5!=120$ diziliş var. Yuvarlak masada her oturuş, 5 farklı dönmeyle aynı kalır: $120:5=24$. Kısa yol: bir kişiyi sabitleyip diğerlerini $4!$ şekilde dizmek.
+sinav: Dairesel permütasyon $(n-1)!$; ters çevrilebilen dizilerde (kolye, bilezik) ayrıca 2'ye bölünür.
+dusun: 5 farklı boncuktan bir kolye yapılacak; kolye ters çevrilebiliyor. Kaç farklı kolye olur?
+yanit: $\frac{(5-1)!}{2}=12$ kolye.
 
 ::soru c4 tip=tekrarli-dairesel zorluk=2
 KÜTÜK kelimesinin harfleri kullanılarak anlamlı ya da anlamsız 5 harfli kaç farklı kelime yazılabilir?
