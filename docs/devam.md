@@ -7,6 +7,14 @@ alınır. İlgisiz PDF envanteri çalışmasına bu görev yerine dönme.
 
 ## Etkin görev
 
+| Alan | Değer |
+|---|---|
+| Güncelleme | 29 Ekim 2026 — Codex |
+| Etkin görev | `12.02` — Konuyu Öğrenelim öğretim deneyimi |
+| Son uygulama commit'i | `1423779` — 33 dersin görsel keşfi, ortak oynatıcı ve 6 gerçek çözümlü örnek |
+| Durum | Bu kapsam commit edildi; Node, masaüstü/mobil ve canlı sayfa kontrolleri geçti |
+| Sıradaki görev | Aşağıdaki bölüm bazlı genişletme; ilk aday temel-kavramlar s2–s5 |
+
 29 Ekim 2026: Kullanıcı, Claude'un Konuyu Öğrenelim modülünü daha anlaşılır, temelden
 ileri düzeye, görsel ve etkileşimli yapmamızı istedi. Sonraki mesajlarda günlük kullanım,
 ilginç bağlantılar, **önce örnek çözüm sonra koşullu hızlı ipuçları** ve iki ajan için
@@ -59,8 +67,10 @@ kalıcı devam kaydı özellikle istendi. Bu beklentiler AGENTS.md'ye yazıldı.
 - Canlı sayfaların masaüstü/mobil salt okuma kontrolü geçti:
   `veri/ui-denetim/konu-ogrenme-canli.json`. Giriş öncesi beklenen auth/me 401 test
   kapsamından ayrıldı; giriş sonrası 401 hâlâ hata sayılır. Konsol/taşma/istek hatası yok.
-- Plan denetimi ve commit öncesi kontrol geçti. Son değişikliklerin servis edilen
-  sürümü yerel izleyiciyle doğrulanır; tam sonuç commit açıklamasında ve Git geçmişinde.
+- Plan denetimi ve commit öncesi kontrol geçti. Yerel izleyici son paketi başarıyla
+  sundu; HTTP 200 ve `index-B4JdWD3x.js` doğrulandı. Uygulama commit'i `1423779`;
+  `98fe6ca` önceki Claude sürümüdür. Push yapılmadı. Kontrolleri yeniden başlatmak
+  yerine yalnız yeni değişikliklerin etkilediği kapsamı denetle.
 - Sonraki içerikler bu standarda uyar. Diğer ders/ünitelere yeni içerik eklerken aynı
   33 dersi yeniden üretme; mevcut örnekleri genişlet. Gerçek kaynak görselini okumadan
   çözüme veya öğretmen onayına dair iddia ekleme.
