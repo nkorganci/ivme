@@ -96,6 +96,24 @@ soru: $x^3 + 5x^2 - x - 5$ ifadesini çarpanlarına ayır.
 3. $x^2 - 1 = (x - 1)(x + 1)$: $(x + 5)(x - 1)(x + 1)$. || İki kare farkıyla devam.
 cevap: $(x + 5)(x - 1)(x + 1)$
 
+::ornek baslik="Ters parantezi görünür kılmak"
+soru: $x(a-b)+y(b-a)$ ifadesini çarpanlarına ayır.
+1. $b-a=-(a-b)$ yaz: $x(a-b)-y(a-b)$. || İki parantez aynı olmadan ortak çarpan alınamaz.
+2. Ortak çarpan $(a-b)$: $(a-b)(x-y)$. || Aynı parantezi dışarı aldık.
+3. Kontrol: $ax-bx-ay+by$; ilk ifadeyi açınca da aynısı çıkar. || Çarpanlara ayırmayı çarparak doğrularız.
+cevap: $(a-b)(x-y)$.
+
+::sorgula s1-tost baslik="Kantinin cirosu"
+durum: Bir kantinde tostun tanesi 37 lira. Sabah 63, öğlen 37 tost satıldı.
+soru: Günlük tost cirosunu en kısa yoldan nasıl hesaplarsın?
++A) 37'yi ortak paranteze alırım: $37\cdot(63+37)=37\cdot100$. || Ortak çarpan iki çarpımı tek ve kolay bir çarpıma indirir.
+B) $37\cdot63$ ve $37\cdot37$'yi ayrı ayrı hesaplayıp toplarım. || Doğru sonuç verir ama gereksiz uzundur.
+C) $63\cdot37$'yi bulup 2 ile çarparım. || Satış adetleri farklı; iki çarpım eşit değil.
+neden: $37\cdot63+37\cdot37=37(63+37)=37\cdot100=3700$ lira. Ortak çarpanı dışarı almak, dağılma özelliğini tersten kullanmaktır.
+sinav: Her terimde ortak olan çarpanı paranteze al; ortak çarpan görünmüyorsa ikişerli grupla ya da $(b-a)=-(a-b)$ dönüşümünü dene.
+dusun: $48\cdot52$'yi kafadan nasıl hesaplarsın?
+yanit: $(50-2)(50+2)=50^2-2^2=2500-4=2496$. Bu, iki kare farkı özdeşliğidir.
+
 ::yanilgi m1 tip=ortak-gruplama
 yanlis: $8(2 - a)^4 + 7(a - 2)^3$ ifadesinde ortak çarpan yoktur.
 neden: Çift kuvvette işaret kaybolur: $(2 - a)^4 = (a - 2)^4$; iki terimde de $(a - 2)^3$ vardır.
@@ -151,6 +169,25 @@ soru: $x - y = 3$ ve $xy = 10$ olduğuna göre $x^2 + y^2$ kaçtır?
 3. $x^2 + y^2 = 29$. || Kontrol: $x = 5$, $y = 2$ için $25 + 4 = 29$ ✓
 cevap: 29
 
+::ornek baslik="Özdeşlikle kafadan hesap"
+soru: $98^2$ ve $103\cdot97$ çarpımlarını özdeşliklerle hesapla.
+1. $98^2=(100-2)^2=10000-400+4$. || Tam kare: $(a-b)^2=a^2-2ab+b^2$.
+2. $98^2=9604$. || Ortadaki $2ab$ terimini unutmak en sık hatadır.
+3. $103\cdot97=(100+3)(100-3)=10000-9=9991$. || İki kare farkı: $(a+b)(a-b)=a^2-b^2$.
+cevap: $98^2=9604$, $103\cdot97=9991$.
+
+::sorgula s2-kasa baslik="Pazarcının hesabı"
+durum: Bir pazarcı 48 kasa domatesi kasası 52 liradan sattı ve toplamı kafadan hesaplamak istiyor.
+soru: Toplam kaç liradır?
++A) 2496 lira || $(50-2)(50+2)=2500-4$.
+B) 2500 lira || $50\cdot50$; iki sayı 50'den farklı.
+C) 2504 lira || $2^2$'yi ekledin; iki kare farkında çıkarılır.
+kontrol: 48*52
+neden: 48 ve 52, 50'nin 2 eksiği ve 2 fazlası: $(50-2)(50+2)=50^2-2^2=2496$. İki kare farkı özdeşliği çarpımı kolay bir çıkarmaya çevirir.
+sinav: $a^2-b^2=(a-b)(a+b)$ ve $(a\pm b)^2=a^2\pm2ab+b^2$. Toplam ve çarpım verilen sorularda $x^2+y^2=(x+y)^2-2xy$.
+dusun: $199\cdot201$'i kafadan hesapla.
+yanit: $(200-1)(200+1)=40000-1=39999$.
+
 ::yanilgi m2 tip=ozdeslik
 yanlis: $x^2 + 9 = (x + 3)(x - 3)$
 neden: $(x + 3)(x - 3) = x^2 - 9$'dur; bu iki kare farkıdır.
@@ -184,10 +221,28 @@ cevap: $(2x - 3)(x - 2)$
 
 ::tamamla baslik="MEBİ örneği: değişken değiştirme"
 soru: $16x^4 - 16x^2 + 3$ ifadesini çarpanlarına ayır.
-1. $a = 4x^2$ olsun: $a^2 - 4a + 3$.
-?2. $a^2 - 4a + 3 = (a - 3)(a - 1)$.
-?3. $(4x^2 - 3)(4x^2 - 1) = (4x^2 - 3)(2x - 1)(2x + 1)$.
+1. $a = 4x^2$ olsun: $a^2 - 4a + 3$. || Yalnız x üzeri 4 ve x kare terimleri var; 4x² ifadesini tek bir harf yapınca tanıdık bir üç terimli çıkar.
+?2. $a^2 - 4a + 3 = (a - 3)(a - 1)$. || Çarpımı 3, toplamı $-4$ olan iki sayı $-3$ ve $-1$.
+?3. $(4x^2 - 3)(4x^2 - 1) = (4x^2 - 3)(2x - 1)(2x + 1)$. || $a$ yerine $4x^2$ geri yazıldı; $4x^2-1$ iki kare farkıdır.
 cevap: $(4x^2 - 3)(2x - 1)(2x + 1)$
+
+::ornek baslik="Sabit terim negatifken"
+soru: $x^2-x-12$ ifadesini çarpanlarına ayır.
+1. Çarpımı $-12$, toplamı $-1$ olan iki sayı ara. || $(x+m)(x+n)=x^2+(m+n)x+mn$.
+2. Çarpım negatif: sayılar ters işaretli. $-4$ ve $3$: çarpım $-12$, toplam $-1$. || Mutlak değerce büyük olan, toplamın işaretini alır.
+3. $(x-4)(x+3)$. || Kontrol: $x^2+3x-4x-12=x^2-x-12$.
+cevap: $(x-4)(x+3)$.
+
+::sorgula s3-hali baslik="Halının diğer kenarı"
+durum: Dikdörtgen bir halının alanı $x^2+7x+12$ metrekare, kenarlarından biri $(x+3)$ metre.
+soru: Halının diğer kenarı kaç metredir?
++A) $x+4$ || $x^2+7x+12=(x+3)(x+4)$.
+B) $x+9$ || Kenarların çarpımı alanı vermeli; $(x+3)(x+9)=x^2+12x+27$.
+C) $x^2+4$ || Diğer kenar birinci dereceden olmalı; çarpımın derecesi 2.
+neden: Çarpımı 12, toplamı 7 olan iki sayı 3 ve 4: $x^2+7x+12=(x+3)(x+4)$. Bir kenar $(x+3)$ ise diğeri $(x+4)$.
+sinav: $x^2+bx+c$ ifadesinde çarpımı $c$, toplamı $b$ olan iki sayıyı bul. Baş katsayı 1 değilse çapraz çarpımları kontrol et.
+dusun: $x=2$ için halının kenarları ve alanı kaç olur? Polinomla kontrol et.
+yanit: Kenarlar 5 m ve 6 m, alan 30 m². Polinomla: $4+14+12=30$.
 
 ::yanilgi m3 tip=uc-terimli
 yanlis: $x^2 - 5x - 6 = (x - 2)(x - 3)$
@@ -218,6 +273,24 @@ soru: $\dfrac{x^2 - 9}{x^2 + x - 6}$ ifadesini sadeleştir.
 2. Payda: $(x + 3)(x - 2)$. || Üç terimli.
 3. $\frac{x - 3}{x - 2}$, $x \neq -3, 2$. || Ortak çarpan $(x + 3)$.
 cevap: $\frac{x - 3}{x - 2}$
+
+::ornek baslik="Ortak çarpanı her iki tarafta bul"
+soru: $\dfrac{2x^2+6x}{x^2-9}$ ifadesini sadeleştir.
+1. Pay: $2x(x+3)$. || Ortak çarpan $2x$.
+2. Payda: $(x-3)(x+3)$. || İki kare farkı.
+3. $\dfrac{2x}{x-3}$, $x\neq\pm3$. || Ortak çarpan $(x+3)$ sadeleşti; paydayı sıfır yapan değerler tanım dışında kalır.
+cevap: $\dfrac{2x}{x-3}$ ($x\neq3$, $x\neq-3$).
+
+::sorgula s4-terim baslik="x'ler sadeleşir mi?"
+durum: Arkadaşın $\dfrac{x+6}{x+2}$ ifadesindeki $x$'leri sadeleştirip sonucu $\dfrac{6}{2}=3$ buluyor.
+soru: Bu sadeleştirme doğru mu?
+A) Doğru; pay ve paydada $x$ var. || $x$ bir terimdir, çarpan değildir; toplama içindeki terimler sadeleşmez.
++B) Yanlış; yalnız çarpanlar sadeleşir. $x=2$ için ifade $\frac{8}{4}=2$, 3 değil. || Bir karşı örnek, eşitliğin her zaman doğru olmadığını gösterir.
+C) Doğru, ama yalnız $x$ pozitifken || $x=2$ pozitiftir ve sonuç 3 çıkmaz.
+neden: Sadeleştirme, pay ve paydayı aynı sayıya bölmektir. $x+6$ ile $x+2$'nin ortak çarpanı yoktur; $x$'i “silmek” bir bölme değildir. $x=2$ için $\frac{8}{4}=2\neq3$.
+sinav: Rasyonel ifadelerde önce pay ve paydayı çarpanlarına ayır, yalnız ortak çarpanları sadeleştir ve tanım dışı değerleri yaz.
+dusun: $\dfrac{2x+6}{x+3}$ ifadesi sadeleşir mi?
+yanit: Evet. $2x+6=2(x+3)$; ortak çarpan $(x+3)$: sonuç 2 ($x\neq-3$).
 
 ::soru c4 tip=rasyonel-sadelestirme zorluk=2
 $\dfrac{x^2 - 4x + 4}{x^2 - 4}$ ifadesinin sadeleşmiş biçimi aşağıdakilerden hangisidir?

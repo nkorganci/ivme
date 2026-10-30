@@ -6,15 +6,11 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 
 ## Etkin görev
 
-- Güncelleme: 29 Ekim 2026 — Claude.
-- Bölme ve Bölünebilme pilotu tamamlandı, push edildi. Kullanıcının sonraki talimatı:
-  **ilk konudan (sıra 100 `temel-kavramlar`) başlayarak** diğer dersleri aynı biçime getirmek.
-- Diğer 32 dersin her bölümünde `::duzey` zaten var; eksik olan her bölümde `::sorgula`,
-  bölüm başına daha fazla gerekçeli örnek, koşullu kısa yol ve gerekiyorsa bölüm keşfi.
-  Sıra: `temel-kavramlar` → `sayi-basamaklari` → `ebob-ekok` → `rasyonel-sayilar` → … (`sira:` alanı).
-- Dönüştürülenler `testler/konu-ogrenme-bicim.test.mjs` `YENI_BICIM` listesindedir; listede olmayan
-  sıradaki ders bir sonraki iştir. Yeni bölüm keşfi/modeli ve görseli okunmuş yeni gerçek soru bu
-  turda eklenmez; her bölüme sorgulama, ikinci gerekçeli örnek ve eksik adım gerekçeleri eklenir.
+- Güncelleme: 30 Ekim 2026 — Claude.
+- Etkin yarım iş yok. Bölme pilotu ve ardından 32 dersin tamamı aynı biçime getirildi ve push edildi.
+- Açık karar (kullanıcıda): pilottaki daha derin katmanın (bölüm başına etkileşimli keşif modeli,
+  görseli okunmuş gerçek sınav sorusu, ~24 çözümlü örnek) diğer derslere de yayılıp yayılmayacağı.
+  Bu turda diğer derslere yeni keşif modeli ve yeni gerçek soru eklenmedi.
 
 ## Tamamlanan kapsam
 
@@ -41,15 +37,20 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
   ustalık testinden hariç; soru kodu ve özgün görüntüler korunur.
 - Yöntem: somut bağlam → gerekçe → çözümlü örnek → koşullu kısa yol → öğrenci denemesi
   → gerçek soru. IES kaynak bağlantısı ve pilot dosya/komutları öğretim sözleşmesinde.
+- Diğer 32 ders (sıra 100–1010): her bölüme bir `::sorgula`, en az iki gerekçeli çözümlü
+  örnek; gerekçesiz bütün çözüm/tamamlama adımlarına gerekçe eklendi. Var olan soru/kart
+  kimlikleri korunur. Sorgulama sayıları `kontrol:` ifadesiyle ya da elle doğrulandı.
+- `testler/konu-ogrenme-bicim.test.mjs` artık bütün `.ders` dosyalarını denetler; yeni ders de
+  her bölümde üç düzey, sorgulama, iki gerekçeli örnek ve adım gerekçesi olmadan geçmez.
 
 ## Doğrulama ve kalan iş
 
-- 31 Node testi geçti (içerik/KaTeX, motor, keşif, pilot; yeni: her bölümde düzey+sorgula
-  ve senaryo sayılarının bağımsız hesabı).
-- Ayrı paket `veri/ui-denetim/bolme-pilot-dist` ile `--duzey`, `--kesif`, `--gercek-ornek`
-  ve tam ders akışı masaüstü/mobilde geçti; taşma, konsol/istek hatası yok.
-- Kalan: diğer derslere aynı biçim (yukarıdaki sıra). Her ders için `::sorgula` ekle,
-  sonra `node --test testler/konu-ogrenme-icerik.test.mjs` ve `--duzey <ders>` çalıştır.
+- 64 Node testi geçti: içerik/KaTeX ve kopya soru denetimi, motor, keşif, pilot ve 33 dersin
+  biçim testi.
+- Ayrı paket `veri/ui-denetim/bolme-pilot-dist` ile her ders için `--duzey`, bütün derslerde
+  `--kesif`, `--gercek-ornek` ve iki dersin tam akışı masaüstü/mobilde geçti; taşma,
+  konsol/istek hatası yok.
+- Kalan: kullanıcının içerik değerlendirmesi ve yukarıdaki açık karar.
 
 ## Sıradaki komut
 

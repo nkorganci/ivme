@@ -105,6 +105,24 @@ soru: $P(x) = x^{n - 3} + 2x^{\frac{6}{n}} + 5$ bir polinom olduğuna göre $n$'
 3. İkisi birlikte: $n \in \{3, 6\}$; toplam 9. || Kesişim.
 cevap: 9
 
+::ornek baslik="Açmadan katsayılar toplamı ve sabit terim"
+soru: $P(x)=(x-2)^3+4x$ polinomunun katsayılar toplamını ve sabit terimini bul.
+1. Katsayılar toplamı $P(1)=(1-2)^3+4=-1+4=3$. || $x=1$ verince her terim kendi katsayısına eşit olur.
+2. Sabit terim $P(0)=(0-2)^3+0=-8$. || $x=0$ verince yalnız sabit terim kalır.
+3. Polinomu açmaya gerek kalmadı. || Kontrol: $P(x)=x^3-6x^2+16x-8$; katsayılar toplamı $1-6+16-8=3$.
+cevap: Katsayılar toplamı 3, sabit terim $-8$.
+
+::sorgula s1-kutu baslik="Kutunun hacmi bir polinom mu?"
+durum: Kenarı $x$ cm olan kare bir kartonun her köşesinden 2 cm'lik kareler kesilip kenarlar katlanarak üstü açık bir kutu yapılıyor. Kutunun hacmi $V(x)=2(x-4)^2$ cm³.
+soru: $V(x)$ bir polinom mudur; derecesi kaçtır?
++A) Evet; derecesi 2 || $V(x)=2x^2-16x+32$; bütün üsler doğal sayı.
+B) Hayır; parantez içinde yazılmış || Parantez açılınca üsleri doğal sayı olan terimler çıkar; polinomdur.
+C) Evet; derecesi 3 || Hacim üç boyutludur ama $x$ yalnız tabanın iki kenarında; yükseklik sabit 2 cm.
+neden: Taban $(x-4)\times(x-4)$, yükseklik 2: $V(x)=2(x-4)^2=2x^2-16x+32$. Terimlerin üsleri 2, 1, 0; en büyük üs 2: ikinci dereceden bir polinom.
+sinav: Polinom olmak için bütün üsler doğal sayı olmalı; derece en büyük üstür. Katsayılar toplamı $P(1)$, sabit terim $P(0)$.
+dusun: Kartonun kenarı 10 cm ise kutunun hacmi kaç cm³ olur?
+yanit: $V(10)=2\cdot6^2=72$ cm³.
+
 ::yanilgi m1 tip=polinom-kavram
 yanlis: $\sqrt{x} + 1$ bir polinomdur.
 neden: $\sqrt{x} = x^{\frac{1}{2}}$ ve $\frac{1}{2}$ bir doğal sayı değildir.
@@ -144,6 +162,24 @@ soru: $\text{der}[P(x)] = 3$ ve $\text{der}[Q(x)] = 2$ olduğuna göre $\text{de
 3. $P(x^2) \cdot Q$: $2 \cdot 3 + 2 = 8$. || $P(x^2)$'nin derecesi 6.
 cevap: 5, 6, 8
 
+::ornek baslik="İki polinomu çarpmak"
+soru: $(2x-1)(x^2+3x-2)$ çarpımını yap ve derecesini bul.
+1. $2x$ ile çarp: $2x^3+6x^2-4x$. || Birinci polinomun her terimi ikincinin her terimiyle çarpılır.
+2. $-1$ ile çarp: $-x^2-3x+2$. || İkinci terimin çarpımları.
+3. Topla: $2x^3+5x^2-7x+2$; derece $1+2=3$. || Aynı dereceli terimler birleşir.
+cevap: $2x^3+5x^2-7x+2$; derece 3. Kontrol: $x=1$ için $1\cdot2=2$ ve $2+5-7+2=2$.
+
+::sorgula s2-bahce baslik="Bahçenin alan polinomu"
+durum: Dikdörtgen bir bahçenin eni $(x+3)$ metre, boyu $(2x-1)$ metre.
+soru: Bahçenin alanını veren polinomun derecesi ve sabit terimi nedir?
+A) Derece 2, sabit terim 3 || Sabit terimler $3$ ve $-1$ çarpılır: $-3$.
++B) Derece 2, sabit terim $-3$ || $(x+3)(2x-1)=2x^2+5x-3$.
+C) Derece 1 || İki birinci dereceden polinomun çarpımının derecesi $1+1=2$'dir.
+neden: Alan $=(x+3)(2x-1)=2x^2-x+6x-3=2x^2+5x-3$. Çarpımın derecesi derecelerin toplamıdır; sabit terim sabit terimlerin çarpımıdır.
+sinav: $\text{der}(P\cdot Q)=\text{der}(P)+\text{der}(Q)$; toplamda derece, büyük olanın derecesidir.
+dusun: $x=2$ için bahçenin alanı kaç m² olur? İki yoldan kontrol et.
+yanit: Kenarlar 5 m ve 3 m: 15 m². Polinomla: $2\cdot4+10-3=15$.
+
 ::yanilgi m2 tip=polinom-islem
 yanlis: $\text{der}(P + Q) = \text{der}(P) + \text{der}(Q)$
 neden: Toplamada kuvvetler toplanmaz; en büyük dereceli terim kalır.
@@ -177,10 +213,28 @@ cevap: Bölüm $x - 2$, kalan $2x$
 
 ::tamamla baslik="Birinci dereceden bölen"
 soru: $P(x) = 2x^3 + x^2 - 5x + 4$ polinomunun $x + 2$ ile bölümünden elde edilen bölüm ve kalanı bul.
-1. $2x^2(x + 2) = 2x^3 + 4x^2$; çıkarınca $-3x^2 - 5x + 4$.
-?2. $-3x(x + 2) = -3x^2 - 6x$; çıkarınca $x + 4$.
-?3. $1 \cdot (x + 2)$; çıkarınca kalan $2$. Bölüm $2x^2 - 3x + 1$.
+1. $2x^2(x + 2) = 2x^3 + 4x^2$; çıkarınca $-3x^2 - 5x + 4$. || Bölünenin ilk terimi $2x^3$, bölenin ilk terimi $x$: bölümün ilk terimi $2x^2$.
+?2. $-3x(x + 2) = -3x^2 - 6x$; çıkarınca $x + 4$. || Kalan ifadenin ilk terimi $-3x^2$; $x$ ile bölünce $-3x$.
+?3. $1 \cdot (x + 2)$; çıkarınca kalan $2$. Bölüm $2x^2 - 3x + 1$. || Kalanın derecesi bölenin derecesinden küçük olunca bölme biter.
 cevap: Bölüm $2x^2 - 3x + 1$, kalan 2
+
+::ornek baslik="Bölme eşitliğinden polinomu kurmak"
+soru: Bir $P(x)$ polinomunun $x-1$ ile bölümünden bölüm $x^2+2$, kalan 3'tür. $P(x)$'i yaz ve $P(2)$'yi bul.
+1. $P(x)=(x-1)(x^2+2)+3$. || Bölünen = bölen × bölüm + kalan.
+2. Aç: $x^3+2x-x^2-2+3=x^3-x^2+2x+1$. || Çarpımı dağıttık ve sabitleri birleştirdik.
+3. $P(2)=8-4+4+1=9$. || Kontrol: eşitlikten $(2-1)(4+2)+3=9$.
+cevap: $P(x)=x^3-x^2+2x+1$; $P(2)=9$.
+
+::sorgula s3-sayi baslik="Sayı bölmesiyle karşılaştır"
+durum: 47'yi 5'e bölünce $47=5\cdot9+2$ yazılır ve kalan bölenden küçüktür: $2<5$. Polinom bölmesinde de $P(x)=Q(x)\cdot B(x)+K(x)$ yazılıyor.
+soru: “Kalan bölenden küçük” kuralının polinomlardaki karşılığı hangisidir?
+A) Kalanın katsayıları bölenin katsayılarından küçüktür. || Katsayıların büyüklüğü değil, derece karşılaştırılır.
++B) Kalanın derecesi bölenin derecesinden küçüktür. || Bölme, kalanın derecesi bölenden küçük olana kadar sürer.
+C) Kalan her zaman bir sayıdır. || Bölen ikinci dereceden ise kalan $ax+b$ biçiminde olabilir.
+neden: Sayılarda bir kez daha bölebiliyorsak bölme bitmemiştir. Polinomlarda da kalanın derecesi bölenin derecesine eşit ya da büyükse bir adım daha bölünür. Bu yüzden $\text{der}(K)<\text{der}(Q)$.
+sinav: Bölenin derecesi 1 ise kalan bir sayıdır; 2 ise kalan en çok birinci derecedendir ($ax+b$).
+dusun: $x^2+1$ ile bölümde kalan en çok kaçıncı dereceden olabilir?
+yanit: Birinci dereceden: $ax+b$ biçiminde.
 
 ::yanilgi m3 tip=polinom-bolme
 yanlis: Kalanın derecesi bölenin derecesine eşit olabilir.
@@ -212,6 +266,24 @@ soru: $P(x) = x^3 - 2x^2 + 6x - 5$ polinomunun bir çarpanının $x - 1$ olduğu
 2. $P(1) = 1 - 2 + 6 - 5 = 0$. || Kalan.
 3. Kalan 0 olduğundan $x - 1$ bir çarpandır: $P(x) = (x - 1)(x^2 - x + 5)$. || Tam bölünme.
 cevap: Kalan 0; $x - 1$ çarpandır.
+
+::ornek baslik="ax − b ile bölümde kalan"
+soru: $P(x)=4x^3-2x+1$ polinomunun $2x-1$ ile bölümünden kalan kaçtır?
+1. Bölenin kökü: $2x-1=0$, $x=\frac{1}{2}$. || Kalan, bölen sıfır olunca polinomun aldığı değerdir.
+2. $P\!\left(\frac{1}{2}\right)=4\cdot\frac{1}{8}-2\cdot\frac{1}{2}+1=\frac{1}{2}-1+1$. || Kesirli kök yerine konur.
+3. Kalan $\frac{1}{2}$. || Bölen birinci dereceden; kalan bir sayı.
+cevap: $\frac{1}{2}$.
+
+::sorgula s4-kontrol baslik="Arkadaşının çarpanlara ayırmasını kontrol et"
+durum: Arkadaşın $P(x)=x^3-6x^2+11x-6$ polinomunun $(x-1)(x-2)(x-3)$ biçiminde yazıldığını söylüyor.
+soru: Uzun bölme ya da çarpma yapmadan bunu en hızlı nasıl kontrol edersin?
++A) $P(1)$, $P(2)$ ve $P(3)$'ün 0 olup olmadığına bakarım. || $x-a$ çarpansa $P(a)=0$'dır.
+B) Uzun bölme yapmak şarttır. || Kalan teoremi, bölme yapmadan kalanı verir.
+C) Katsayıları toplarım. || Katsayılar toplamı yalnız $P(1)$'i verir; diğer kökleri göstermez.
+neden: $P(1)=1-6+11-6=0$, $P(2)=8-24+22-6=0$, $P(3)=27-54+33-6=0$. Üç değer de 0 olduğu için $x-1$, $x-2$, $x-3$ çarpandır. Baş katsayı 1 ve derece 3 olduğundan $P(x)=(x-1)(x-2)(x-3)$.
+sinav: $P(x)$'in $x-a$ ile bölümünden kalan $P(a)$'dır. $P(a)=0$ ise $x-a$ bir çarpan, $a$ bir köktür.
+dusun: $P(4)$ kaçtır? Çarpanlı yazımla kontrol et.
+yanit: $64-96+44-6=6$. Çarpanlarla: $(4-1)(4-2)(4-3)=3\cdot2\cdot1=6$.
 
 ::soru c4 tip=kalan-bulma zorluk=2
 $P(x) = x^4 + ax^2 - 3x + 2$ polinomunun $x - 1$ ile bölümünden kalan 5 olduğuna göre $a$ kaçtır?

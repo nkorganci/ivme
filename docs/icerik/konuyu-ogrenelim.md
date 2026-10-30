@@ -54,8 +54,8 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
    ve en az bir `::sorgula` bulunur; aksi hâlde üstteki “Anlatımı seç” o bölümde hiçbir şeyi değiştirmez.
    `::sorgula` alanları: `durum:`, `soru:`, `A)`–`E)` seçenekleri (`+` doğru, `||` gerekçe), `neden:`,
    `sinav:`, isteğe bağlı `dusun:`/`yanit:` ve sayısal cevapta `kontrol:` (doğru seçeneğin ilk sayısını vermeli).
-   Dönüştürülen ders `testler/konu-ogrenme-bicim.test.mjs` içindeki `YENI_BICIM` listesine eklenir; test her
-   bölümde düzey, sorgulama, en az iki gerekçeli çözümlü örnek ve her adımda gerekçe arar. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
+   `testler/konu-ogrenme-bicim.test.mjs` bütün `.ders` dosyalarında her bölümde düzey, sorgulama,
+   en az iki gerekçeli çözümlü örnek ve her adımda gerekçe arar; 33 dersin hepsi bu biçimdedir. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
    `?1.` biçimindeki adım öğrencinin önce düşünüp yazacağı gizli adımdır.
 6. Gerçek soruyu kaynak görüntüsünden incele. Çözümü yazılmış örneği `::cikmis KOD tip=...`
    ile doğru bölümde bağla; `WORKED_EXAMS` kayıtları banka üretiminde elle incelenmiş
@@ -143,8 +143,9 @@ yeni dış dağıtım kullanıcı talimatı olmadan yapılmaz.
 
 ## Bölme ve bölünebilme pilotu
 
-Kullanıcının seçtiği tek konu bu pilottur. Diğer matematik derslerine yayma kararı
-kullanıcının örneği değerlendirmesinden sonra alınır. Sekiz bölümün kimlikleri
+Bu ders en derin örnektir. Düzeyli anlatım, günlük hayat sorgulaması ve gerekçeli örnek
+katmanı bütün derslere yayıldı; bölüm keşif modelleri ve görseli okunmuş gerçek sorular ise
+şimdilik yalnız bu derstedir. Sekiz bölümün kimlikleri
 `s1, s1b, s2, s2b, s3, s3b, s4, s4b` şeklindedir. Eski dört bölüm kimliği ve mevcut
 ön test/kontrol/havuz soru kimlikleri korunur. Yeni kontrol kimlikleri yalnız bu derse
 aittir; öğrenci geçmişi silinmez. Dört oturum yaklaşık 35'er dakikalık planlama

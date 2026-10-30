@@ -1,13 +1,14 @@
-// Yeni öğretim biçimine geçirilmiş derslerin yapısal denetimi. Bir ders dönüştürüldükçe YENI_BICIM listesine eklenir.
+// Öğretim biçiminin yapısal denetimi (bütün dersler).
 // Biçim: her bölümde üç düzeyi dolu ::duzey, en az bir ::sorgula, en az iki gerekçeli çözümlü örnek;
 // her çözüm adımında "neden" ve her örnekte sonuç/kontrol satırı. Sorgulamadaki kontrol: ifadesi doğru seçeneğin sayısını vermeli.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { evaluate, numericChoice } from '../frontend/src/learn/content/checks.js';
 
-export const YENI_BICIM = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'sayi-kesir-problemleri', 'yas-isci-problemleri', 'yuzde-karisim', 'kar-zarar', 'hareket-problemleri', 'grafik-rutin-olmayan', 'onermeler', 'kosullu-onerme', 'kumeler-temel', 'kume-islemleri', 'merkezi-egilim', 'veri-grafikleri', 'sayma-permutasyon', 'kombinasyon', 'binom', 'olasilik', 'kosullu-olasilik', 'fonksiyon-kavrami', 'fonksiyon-grafikleri', 'bileske-ters'];
+// Bütün dersler bu biçimdedir; yeni eklenen .ders dosyası da otomatik denetlenir.
+export const YENI_BICIM = readdirSync(new URL('../frontend/src/learn/content/dersler/', import.meta.url)).filter((f) => f.endsWith('.ders')).map((f) => f.replace(/\.ders$/, '')).sort();
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const firstNumber = (text) => {
