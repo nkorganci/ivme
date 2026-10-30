@@ -132,15 +132,17 @@ export function model(id, v) {
   }
   if (id === 'esitsizlik-bolge') {
     const start = v.zero ? 0 : 1;
+    // Pozitif katsayılar bütün çözümleri bu kesişimlerin içinde sınırlar.
+    const xMax = Math.max(8, Math.ceil(v.c / v.a)), yMax = Math.max(6, Math.ceil(v.c / v.b));
     const points = [];
-    for (let x = start; x <= 8; x++) for (let y = start; y <= 6; y++) {
+    for (let x = start; x <= xMax; x++) for (let y = start; y <= yMax; y++) {
       const t = v.a * x + v.b * y;
       if (v.strict ? t < v.c : t <= v.c) points.push([x, y]);
     }
     const rows = {};
     points.forEach(([, y]) => { rows[y] = (rows[y] ?? 0) + 1; });
     const counts = Object.entries(rows).sort((p, q) => Number(p[0]) - Number(q[0])).map(([y, n]) => `y=${y}: ${n}`);
-    return { kind: 'esitsizlik-bolge', ...v, points, count: points.length,
+    return { kind: 'esitsizlik-bolge', ...v, xMax, yMax, points, count: points.length,
       equation: `${v.a === 1 ? '' : v.a}x + ${v.b === 1 ? '' : v.b}y ${v.strict ? '<' : '≤'} ${v.c}: ${points.length} nokta`,
       observation: points.length ? `Satır satır: ${counts.join('; ')}. ${v.strict ? 'Doğrunun üzerindeki noktalar (eşitlik) sayılmadı.' : 'Doğrunun üzerindeki noktalar da sayıldı.'}${v.zero ? ' Eksenler üzerindeki (0’lı) noktalar da dahil.' : ''}` : 'Bu sınırla hiçbir nokta koşulu sağlamıyor: en küçük değer bile sınırı aşıyor.' };
   }

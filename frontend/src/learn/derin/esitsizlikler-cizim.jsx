@@ -17,7 +17,7 @@ function Ayna({ model: m }) {
   return <>
     <T x={240} y={22} style={{ fontSize: 14 }}>önce</T>
     <Dogru y={60} lo={-15} hi={15} />
-    <C x={NX(m.a)} y={60} r={7} tone="primary" /><T x={NX(m.a)} y={44} style={{ fontSize: 13 }}>a</T>
+    <C x={NX(m.a)} y={60} r={7} tone="primary" /><T x={NX(m.a)} y={m.a === m.b ? 28 : 44} style={{ fontSize: 13 }}>a</T>
     <C x={NX(m.b)} y={60} r={7} tone="good" /><T x={NX(m.b)} y={44} style={{ fontSize: 13 }}>b</T>
     <L x1={NX(m.a)} y1={68} x2={NX(m.ka)} y2={172} tone="accent-line" strokeDasharray="5 4" />
     <L x1={NX(m.b)} y1={68} x2={NX(m.kb)} y2={172} tone="line" strokeDasharray="5 4" />
@@ -77,22 +77,23 @@ function Ifade({ model: m }) {
   </>;
 }
 
-const GX = (x) => 50 + x * 48;
-const GY = (y) => 250 - y * 36;
 function Bolge({ model: m }) {
+  const GX = (x) => 50 + x / m.xMax * 384;
+  const GY = (y) => 250 - y / m.yMax * 216;
+  const tickX = Math.ceil(m.xMax / 8), tickY = Math.ceil(m.yMax / 6);
   const f = (x) => (m.c - m.a * x) / m.b;
-  const xa = Math.max(0, (m.c - m.b * 6.6) / m.a), xb = Math.min(8.6, m.c / m.a);
+  const xa = 0, xb = m.c / m.a;
   const inside = new Set(m.points.map(([x, y]) => `${x},${y}`));
   return <>
-    {times(9, (x) => <L key={`v${x}`} x1={GX(x)} y1={GY(0)} x2={GX(x)} y2={GY(6)} tone="grid-line" />)}
-    {times(7, (y) => <L key={`h${y}`} x1={GX(0)} y1={GY(y)} x2={GX(8)} y2={GY(y)} tone="grid-line" />)}
-    <L x1={GX(0)} y1={GY(0)} x2={GX(8.5)} y2={GY(0)} />
-    <L x1={GX(0)} y1={GY(0)} x2={GX(0)} y2={GY(6.5)} />
-    {times(9, (x) => <T key={`tx${x}`} x={GX(x)} y={GY(0) + 16} style={{ fontSize: 11 }}>{x}</T>)}
-    {times(7, (y) => y > 0 && <T key={`ty${y}`} x={GX(0) - 10} y={GY(y) + 4} style={{ fontSize: 11 }}>{y}</T>)}
+    {times(m.xMax+1, (x) => <L key={`v${x}`} x1={GX(x)} y1={GY(0)} x2={GX(x)} y2={GY(m.yMax)} tone="grid-line" />)}
+    {times(m.yMax+1, (y) => <L key={`h${y}`} x1={GX(0)} y1={GY(y)} x2={GX(m.xMax)} y2={GY(y)} tone="grid-line" />)}
+    <L x1={GX(0)} y1={GY(0)} x2={450} y2={GY(0)} />
+    <L x1={GX(0)} y1={GY(0)} x2={GX(0)} y2={25} />
+    {times(m.xMax+1, (x) => x % tickX === 0 && <T key={`tx${x}`} x={GX(x)} y={GY(0) + 16} style={{ fontSize: 11 }}>{x}</T>)}
+    {times(m.yMax+1, (y) => y > 0 && y % tickY === 0 && <T key={`ty${y}`} x={GX(0) - 14} y={GY(y) + 4} style={{ fontSize: 11 }}>{y}</T>)}
     <L x1={GX(xa)} y1={GY(f(xa))} x2={GX(xb)} y2={GY(f(xb))} tone="accent-line" strokeWidth={3} strokeDasharray={m.strict ? '7 5' : undefined} />
-    {times(9, (x) => times(7, (y) => (m.zero || (x > 0 && y > 0)) && <C key={`p${x}-${y}`} x={GX(x)} y={GY(y)} r={inside.has(`${x},${y}`) ? 6 : 3} tone={inside.has(`${x},${y}`) ? 'good' : 'soft'} />))}
-    <T x={GX(8)} y={22} anchor="end" style={{ fontSize: 14 }}>{`${m.count} nokta`}</T>
+    {times(m.xMax+1, (x) => times(m.yMax+1, (y) => (m.zero || (x > 0 && y > 0)) && <C key={`p${x}-${y}`} x={GX(x)} y={GY(y)} r={inside.has(`${x},${y}`) ? Math.min(6, 90 / m.yMax) : 2} tone={inside.has(`${x},${y}`) ? 'good' : 'soft'} />))}
+    <T x={GX(m.xMax)} y={22} anchor="end" style={{ fontSize: 14 }}>{`${m.count} nokta`}</T>
   </>;
 }
 

@@ -277,6 +277,17 @@ async function runDiscoveries(mobile) {
           await pause(20);
         }
       })()`);
+      if (id === 'esitsizlik-bolge') {
+        await evalJs(`(async () => {
+          const inputs = [...document.querySelectorAll('.lm-control input')];
+          for (const input of inputs.slice(0, 2)) {
+            Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, '1');
+            input.dispatchEvent(new Event('input', { bubbles: true }));
+            await new Promise(r => setTimeout(r, 30));
+          }
+        })()`);
+        assert.ok(await evalJs('document.querySelector(".lm-lab").textContent.includes("153")'), 'x+y≤16 için 153 nokta görünmeli');
+      }
       assert.ok(await evalJs('document.querySelector(".lm-observation").textContent.length > 40'));
       assert.ok(!(await evalJs('Boolean(document.querySelector(".katex-error"))')), `${id} formül hatası`);
       await evalJs(click('.lm-zoom-button'));

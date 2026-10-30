@@ -6,13 +6,15 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 
 ## Etkin görev
 
-- Güncelleme: 30 Ekim 2026 — Claude.
+- Güncelleme: 30 Ekim 2026 — Codex.
 - Kullanıcı talimatı: bütün matematik derslerini bölme pilotu kadar derin yap; sonra
   token kalırsa matematikte henüz olmayan konuları da aynı kalitede ekle. Acele yok.
 - Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
   Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
   olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
-- Durum: kullanıcı isteğiyle duraklatıldı. Devam ederken bu listeden sürdür.
+- Durum: kullanıcı devam talimatı verdi; çalışma etkin. Kapsam 9, 10, 11 ve 12.
+  sınıf matematiği. Mevcut 33 dersin varlığı dört sınıfın tamamlandığı anlamına gelmez;
+  özellikle 11–12. sınıf eksik dersleri ayrıca envantere alınmalı.
 - Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`, `rasyonel-sayilar`,
   `birinci-derece-denklemler`, `esitsizlikler`. Sıradaki: `mutlak-deger`, sonra
   `uslu-ifadeler`, `koklu-ifadeler`, `oran-oranti` ve `sira:` düzenindeki diğerleri.
@@ -24,9 +26,14 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
   ilk bloğu dersin kendi giriş keşfi kalır. (5) `DERIN` listesine ekle, model ve gerçek
   soru taramasını derin teste yaz. (6) Node testleri, ayrı pakette UI denetimleri
   (`--kesif`, `--gercek-ornek`, `--duzey`, tam akış) ve lab görüntülerine bak.
-  (7) Kanıt tablosu, bu not, `python scripts/ivme.py kontrol`, commit, `git push ivme main`.
-- `esitsizlikler` keşif lab görüntüleri (`veri/ui-denetim/konu-ogrenme/*-kesif-lab-esitsizlik-*`)
-  testlerden geçti ama gözle henüz incelenmedi; devamda önce bunlara bak.
+  (7) Kanıt tablosu, bu not, `python scripts/ivme.py kontrol`, yerel commit.
+  Kullanıcı push istemediği için AGENTS.md uyarınca push yapılmaz.
+- `esitsizlikler` keşif görüntüleri masaüstü ve mobilde gözle incelendi.
+  Bölge modelinin sabit 8×6 sınırı geçerli noktaları eksiltiyordu; eksenler artık
+  katsayılara göre genişliyor. Bağımsız tarama testi ve UI sınır senaryosu
+  x+y≤16, x,y≥0 için 153 noktayı doğruluyor. Aynada eşit konumdaki etiketler ayrıldı.
+  Derin model testleri 14/14; beş keşfin masaüstü/mobil UI testi hatasız.
+  Güncel bölge ve ayna ekran görüntüleri ayrıca gözle kontrol edildi.
 - Banka eşlemesi “Birinci Dereceden Denklemler ve Eşitsizlikler” ÖSYM bloğunun çoğunu
   `esitsizlikler`e atıyor; bir kısmı denklem, mutlak değer ya da geometri sorusu.
   TYT-0617 (üç bilinmeyenli içecek sistemi, cevap E) ve TYT-0623 (denklem) denklem

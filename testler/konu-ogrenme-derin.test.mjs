@@ -258,9 +258,11 @@ test('esitsizlikler: keşif modelleri ve gerçek soruların bağımsız taramas�
   for (const a of range(1, 4)) for (const b of range(1, 4)) for (const c of range(4, 16)) for (const strict of [0, 1]) for (const zero of [0, 1]) {
     const m = model('esitsizlik-bolge', { a, b, c, strict, zero });
     let n = 0;
-    for (let x = 1 - zero; x <= 8; x++) for (let y = 1 - zero; y <= 6; y++) if (strict ? a * x + b * y < c : a * x + b * y <= c) n++;
+    for (let x = 1 - zero; x <= 16; x++) for (let y = 1 - zero; y <= 16; y++) if (strict ? a * x + b * y < c : a * x + b * y <= c) n++;
     assert.equal(m.count, n);
+    assert.ok(m.points.every(([x,y]) => x <= m.xMax && y <= m.yMax));
   }
+  assert.equal(model('esitsizlik-bolge', { a:1, b:1, c:16, strict:0, zero:1 }).count, 153);
   // TYT-0614: S + Ç = K, Ç + M > K, M + S ≤ K → S < M ≤ Ç her zaman.
   for (const S of range(1, 12)) for (const M of range(1, 12)) for (const C of range(1, 12)) {
     const K = S + C;
