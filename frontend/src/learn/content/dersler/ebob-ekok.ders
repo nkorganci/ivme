@@ -120,6 +120,25 @@ soru: 360'ın kaç pozitif böleni vardır? Bunlardan kaç tanesi tektir?
 3. Tek bölende 2 bulunmaz: $2$'nin üssü yalnız 0 olabilir; $1 \cdot 3 \cdot 2 = 6$. || 2'nin seçenek sayısı 1'e iner.
 cevap: 24 pozitif bölen; 6'sı tek.
 
+::ornek baslik="Tam kare bölenleri saymak"
+soru: 360'ın kaç tane tam kare pozitif böleni vardır?
+1. $360=2^3\cdot3^2\cdot5$. || Bölen sorularında önce asal çarpanlara ayırırız.
+2. Tam kare bir bölende her asalın üssü çift olmalı. 2 için üs 0 veya 2 (2 seçenek); 3 için 0 veya 2 (2 seçenek); 5 için yalnız 0 (1 seçenek). || $5^1$'den çift üs olarak yalnız $5^0$ alınabilir.
+3. Sayma ilkesiyle $2\cdot2\cdot1=4$. || Her asal için seçimler bağımsızdır; seçenekler çarpılır.
+cevap: 4 tane: $1, 4, 9, 36$. Kontrol: dördü de 360'ı böler ve tam karedir.
+
+::sorgula s1-grup baslik="Sınıfı eşit gruplara ayırmak"
+durum: 36 kişilik bir sınıf, her grupta eşit sayıda öğrenci olacak şekilde gruplara ayrılacak. Tek kişilik gruplar da, bütün sınıfın tek grup olması da kabul ediliyor.
+soru: Kaç farklı grup büyüklüğü seçilebilir?
+A) 7 || Tek kişilik gruplarla bütün sınıfın tek grup olduğu durumu (1 ve 36) dışarıda bıraktın.
++B) 9 || Grup büyüklüğü 36'nın bir pozitif böleni olmalı; $36=2^2\cdot3^2$'nin $(2+1)(2+1)=9$ böleni var.
+C) 18 || Bölen sayısı sayının yarısı değildir; bölenleri tek tek ya da formülle say.
+kontrol: (2+1)*(2+1)
+neden: Grup büyüklüğü $g$ ise grup sayısı $\frac{36}{g}$ tam sayı olmalı; yani $g$, 36'nın böleni. Bölenler $1, 2, 3, 4, 6, 9, 12, 18, 36$. Formül de aynı sonucu verir: $36=2^2\cdot3^2$, $(2+1)(2+1)=9$.
+sinav: “Kaç farklı şekilde eş gruplara ayrılır?” sorusu bir bölen sayısı sorusudur. Ek koşul varsa (her grupta en az 2 kişi gibi) bölen listesinden ilgili uçları çıkar.
+dusun: Her grupta en az 2, en çok 12 kişi olsun denirse kaç seçenek kalır?
+yanit: 6 seçenek: $2, 3, 4, 6, 9, 12$. 1, 18 ve 36 koşulu sağlamaz.
+
 ::yanilgi m1 tip=asal-bolen
 yanlis: 1 bir asal sayıdır, çünkü yalnız 1'e ve kendisine bölünür.
 neden: Asal sayının tanımı 1'den büyük olmayı ve tam iki pozitif böleni olmayı ister; 1'in tek böleni vardır.
@@ -158,6 +177,25 @@ soru: EBOB$(a, b) = 6$, EKOK$(a, b) = 72$ ve $a = 18$ ise $b$ kaçtır?
 2. $b = 432 : 18 = 24$. || Kontrol: EBOB(18, 24) = 6 ✓, EKOK = 72 ✓.
 cevap: $b = 24$
 
+::ornek baslik="EBOB'u ve toplamı bilinen iki sayı"
+soru: EBOB'u 6 ve toplamı 60 olan iki pozitif tam sayıyı bul.
+1. $a=6m$, $b=6n$ yaz; $m$ ile $n$ aralarında asal olmalı. || Ortak çarpanı dışarı aldık; içeride başka ortak çarpan kalırsa EBOB 6'dan büyük olurdu.
+2. $6m+6n=60$, yani $m+n=10$. || Toplam koşulu küçük bir denkleme indi.
+3. Toplamı 10 olan çiftler: $(1,9)$, $(2,8)$, $(3,7)$, $(4,6)$, $(5,5)$. Aralarında asal olanlar $(1,9)$ ve $(3,7)$. || $(2,8)$, $(4,6)$, $(5,5)$ ortak çarpan taşır; EBOB büyür.
+cevap: $\{6, 54\}$ veya $\{18, 42\}$. Kontrol: EBOB$(6,54)=6$ ve EBOB$(18,42)=6$; ikisinde de toplam 60.
+
+::sorgula s2-disli baslik="Dişli çarklar yeniden aynı yerde"
+durum: Bir bisiklet düzeneğinde 12 dişli küçük bir çark ile 18 dişli büyük bir çark birbirine geçiyor. Başlangıçta birbirine değen iki dişi boyadık.
+soru: Boyalı dişler yeniden karşılaşana kadar küçük çark kaç tur döner?
+A) 2 tur || Bu, büyük çarkın tur sayısıdır.
++B) 3 tur || Geçen diş sayısı EKOK$(12,18)=36$; küçük çark $36:12=3$ tur döner.
+C) 18 tur || Her iki çark da aynı sayıda diş ilerler; geçen diş sayısı ikisinin ortak katıdır, 18 tur çok fazladır.
+kontrol: 36/12
+neden: Her adımda iki çark da bir diş ilerler. Boyalı dişlerin ikisi de başa dönmüş olmalı: geçen diş sayısı hem 12'nin hem 18'in katı, en küçüğü EKOK$(12,18)=36$. Küçük çark $36:12=3$, büyük çark $36:18=2$ tur döner. Ayrıca $12\cdot18=216=6\cdot36=$ EBOB · EKOK.
+sinav: EKOK$(a,b)=\frac{a\cdot b}{\text{EBOB}(a,b)}$; çarpımı doğrudan EKOK sanma.
+dusun: Dişler 8 ve 15 olsaydı küçük ve büyük çark kaçar tur dönerdi?
+yanit: 8 ile 15 aralarında asal, EKOK 120. Küçük çark 15 tur, büyük çark 8 tur döner.
+
 ::bosluk b1 cevap=12 tip=ebob-ekok-hesap zorluk=1
 EBOB$(48, 60)$ kaçtır?
 cozum: $48 = 2^4 \cdot 3$, $60 = 2^2 \cdot 3 \cdot 5$. Ortaklar küçük üsle: $2^2 \cdot 3 = 12$.
@@ -192,9 +230,28 @@ soru: 24 m ve 36 m uzunluğundaki iki tel, hiç artmayacak şekilde eşit ve en 
 2. Parça sayısı $\frac{24}{12} + \frac{36}{12} = 2 + 3 = 5$. || Her teli parça boyuna böl.
 cevap: 5 parça
 
+::ornek baslik="Zemini en büyük kare fayanslarla döşemek"
+soru: 120 cm × 84 cm boyutlarındaki dikdörtgen bir zemin, kesilmemiş eş ve olabildiğince büyük kare fayanslarla döşenecek. Kaç fayans gerekir?
+1. Fayans kenarı iki boyutu da tam bölmeli ve en büyük olmalı: EBOB$(120,84)$. || Kesilmemiş fayans, her kenarın fayans kenarına tam bölünmesini ister.
+2. $120=2^3\cdot3\cdot5$, $84=2^2\cdot3\cdot7$; EBOB $=2^2\cdot3=12$ cm. || Ortak asallar, küçük üsleriyle.
+3. Uzun kenara $120:12=10$, kısa kenara $84:12=7$ fayans; toplam $10\cdot7=70$. || Alanda sayılar çarpılır.
+cevap: 70 fayans. Kontrol: $70\cdot12^2=10080=120\cdot84$.
+
+::sorgula s3-paket baslik="Hediye paketleri"
+durum: 24 kalem ve 36 silgiyle hediye paketleri hazırlanacak. Her pakette aynı sayıda kalem ve aynı sayıda silgi olacak; hiçbiri artmayacak.
+soru: En çok kaç paket hazırlanabilir?
+A) 6 paket || 6 paket olur (4 kalem, 6 silgi); ama daha fazla paket yapılabilir.
++B) 12 paket || Paket sayısı 24 ve 36'yı bölmeli; en büyüğü EBOB$(24,36)=12$.
+C) 72 paket || 72, EKOK'tur; 72 pakete 24 kalem yetmez.
+kontrol: 12
+neden: Paket sayısı $p$ ise her pakete $\frac{24}{p}$ kalem ve $\frac{36}{p}$ silgi düşer; ikisi de tam sayı olmalı. En büyük $p$ EBOB$(24,36)=12$: her pakette 2 kalem ve 3 silgi.
+sinav: “Eşit ve en çok”, “hiç artmadan” sözleri bölme demektir; EBOB arıyoruz. Birleştirme veya “aynı anda” ise EKOK sorusudur.
+dusun: Kalem sayısı 25 olsaydı en çok kaç paket yapılırdı?
+yanit: EBOB$(25,36)=1$. Sayılar aralarında asal olduğu için yalnız 1 paket yapılabilir.
+
 ::tamamla baslik="Tarlanın çevresine ağaç"
 soru: Kenarları 60 m ve 84 m olan dikdörtgen bir tarlanın çevresine, köşelere de gelecek şekilde eşit aralıklarla ağaç dikilecektir. En az kaç ağaç gerekir?
-1. Aralık her iki kenarı bölmeli ve en büyük olmalı: EBOB(60, 84) = 12 m.
+1. Aralık her iki kenarı bölmeli ve en büyük olmalı: EBOB(60, 84) = 12 m. || Köşelere ağaç gelecekse aralık iki kenar uzunluğunu da tam bölmelidir.
 ?2. Çevre $2(60 + 84) = 288$ m; aralık sayısı $288 : 12 = 24$. || Çevreyi aralığa böl.
 ?3. Çevre kapalı bir şekil olduğundan ağaç sayısı aralık sayısına eşittir: 24. || Başladığın köşe sona da denk gelir.
 cevap: 24 ağaç
@@ -242,6 +299,18 @@ soru: 4'e bölündüğünde 3, 6'ya bölündüğünde 5, 9'a bölündüğünde 8
 3. $x = 35$. || Kontrol: $35 = 4 \cdot 8 + 3 = 6 \cdot 5 + 5 = 9 \cdot 3 + 8$ ✓
 cevap: $35$
 
+::sorgula s4-otobus baslik="İki otobüs hattı"
+durum: Bir duraktan A hattı 12 dakikada, B hattı 20 dakikada bir kalkıyor. Saat 08.00'de iki otobüs birlikte kalktı.
+soru: Bir sonraki ortak kalkış saat kaçta?
+A) 08.32 || 12 ile 20'yi topladın; 32 dakika iki aralığın ortak katı değildir.
++B) 09.00 || EKOK$(12,20)=60$ dakika.
+C) 12.00 || $12\cdot20=240$ dakika ortak bir kattır ama en küçüğü değildir.
+kontrol: 8+60/60
+neden: Ortak kalkış zamanı, 12'nin ve 20'nin ortak katı kadar sonra gelir. En küçük ortak kat EKOK$(12,20)=60$ dakika. $12\cdot20=240$ de ortak kattır; ama EBOB$(12,20)=4$ olduğundan EKOK $\frac{240}{4}=60$'tır.
+sinav: “Aynı anda”, “birlikte”, “yeniden karşılaşma” sözleri EKOK'u gösterir. Sonra soruda istenen saat, gün veya kaçıncı kez bilgisine dönüştür.
+dusun: 08.00 ile 12.00 arasında (ikisi dahil) otobüsler kaç kez birlikte kalkar?
+yanit: Her 60 dakikada bir: 08.00, 09.00, 10.00, 11.00, 12.00; 5 kez.
+
 ::strateji tip=ekok-problem baslik="Kalanlı EKOK"
 ipucu: "… 5'erli sayılınca 2, 6'şarlı sayılınca 3 artıyor"
 1. Kalanlar aynı mı ($r$)? Sayı $= \text{EKOK} \cdot n + r$.
@@ -277,6 +346,24 @@ soru: Burak 4 günde bir tenis kursuna gidiyor. Kursa pazartesi başladığına 
 1. İlk kursa gitti; kalan $12 - 1 = 11$ kurs için $11 \cdot 4 = 44$ gün geçer. || $n$. kez için $(n - 1)$ periyot.
 2. $44 = 7 \cdot 6 + 2$; pazartesiden 2 gün sonra. || Haftanın periyodu 7.
 cevap: Çarşamba
+
+::ornek baslik="Bir zaman aralığında kaç kez birlikte?"
+soru: Kırmızı bir lamba 45 saniyede, mavi bir lamba 60 saniyede bir yanıyor. Saat 20.00'de birlikte yandılar. 20.30 ile 21.00 arasında (ikisi dahil) kaç kez birlikte yanarlar?
+1. Birlikte yanma periyodu EKOK$(45,60)=180$ saniye, yani 3 dakika. || $45=3^2\cdot5$, $60=2^2\cdot3\cdot5$; büyük üsler $2^2\cdot3^2\cdot5=180$.
+2. 20.00'den itibaren ortak anlar her 3 dakikada: 20.30 bunlardan biridir, çünkü 30, 3'ün katı. || Aralığın başı ortak bir an mı, önce bunu kontrol ettik.
+3. 20.30, 20.33, …, 21.00: $\frac{30}{3}+1=11$. || Ardışık sayılarda terim sayısı: adım sayısı + 1.
+cevap: 11 kez. Kontrol: 21.00, 20.00'den 60 dakika sonradır; 60 da 3'ün katı.
+
+::sorgula s5-dogumgunu baslik="Doğum günü gelecek yıl hangi güne düşer?"
+durum: Bu yıl doğum günün pazartesiye denk geldi. Gelecek doğum gününe kadar 365 gün geçecek.
+soru: Gelecek doğum günün hangi güne denk gelir?
+A) Pazartesi || 365, 7'nin katı değildir; aynı güne dönmez.
++B) Salı || $365=7\cdot52+1$: 52 tam hafta ve 1 gün.
+C) Perşembe || 365'in 7 ile kalanı 1'dir; 3 gün ilerlemez.
+neden: Hafta 7 günde bir tekrar eder. $365=7\cdot52+1$ olduğu için 52 tam hafta günü değiştirmez; geriye kalan 1 gün pazartesiyi salıya taşır.
+sinav: Periyodik sorularda geçen süreyi periyoda böl ve yalnız kalana bak. “$n$. kez” deniyorsa $(n-1)$ periyot geçtiğini unutma.
+dusun: Arada bir 29 Şubat varsa, yani 366 gün geçerse doğum günün hangi güne denk gelir?
+yanit: $366=7\cdot52+2$; iki gün ilerler: çarşamba.
 
 ::bosluk b2 cevap=9 tip=periyodik zorluk=2
 $7^{2026}$ sayısının birler basamağındaki rakam kaçtır?

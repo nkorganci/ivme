@@ -5,12 +5,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
-import { evaluate } from '../frontend/src/learn/content/checks.js';
+import { evaluate, numericChoice } from '../frontend/src/learn/content/checks.js';
 
-export const YENI_BICIM = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari'];
+export const YENI_BICIM = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const firstNumber = (text) => {
+  const exact = numericChoice(text);
+  if (exact != null) return exact;
   const match = String(text).replace(/\$/g, '').match(/-?\d+(?:[.,]\d+)?/);
   return match ? Number(match[0].replace(',', '.')) : null;
 };
