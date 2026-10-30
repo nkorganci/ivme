@@ -19,7 +19,8 @@ const live = process.argv.includes('--live');
 const discoveryOnly = process.argv.includes('--kesif');
 const guidedOnly = process.argv.includes('--gercek-ornek');
 const lessonsDir = join(ROOT, 'frontend/src/learn/content/dersler');
-const conceptId = process.argv.slice(2).find((a) => !a.startsWith('--')) ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
+const requestedConcept = process.argv.slice(2).find((a) => !a.startsWith('--'));
+const conceptId = requestedConcept ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
 
 const db = { events: [], profile: null, seq: 0 };
 const LETTERS = 'ABCDE';
@@ -254,11 +255,14 @@ async function runDiscoveries(mobile) {
   const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
   const steps = [];
   try {
-    for (const file of readdirSync(lessonsDir).filter((f) => f.endsWith('.ders'))) {
-      const id = file.replace(/\.ders$/, '');
-      await goto(`/konuyu-ogrenelim/ders/${id}`);
-      await wait('document.querySelector(".lr-intro .btn-secondary")');
-      await evalJs(click('.lr-intro .btn-secondary'));
+    const discoveries = readdirSync(lessonsDir).filter((f) => f.endsWith('.ders') && (!requestedConcept || f === requestedConcept + '.ders')).flatMap((file) => {
+      const lesson = parseLesson(readFileSync(join(lessonsDir, file), 'utf8'));
+      return lesson.sections.flatMap((section, index) => section.blocks.filter((b) => b.type === 'exploration').map((b) => ({ lesson, index, id: b.conceptId })));
+    });
+    for (const { lesson, index, id } of discoveries) {
+      db.events = [{ id: 'open-'+id, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId: lesson.id }];
+      for (let i = 0; i < index; i++) db.events.push({ id: id+'-'+i, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'section', conceptId: lesson.id, sectionId: lesson.sections[i].id, nextSectionId: lesson.sections[i+1].id, ms: 1 });
+      await goto(`/konuyu-ogrenelim/ders/${lesson.id}`);
       await wait('document.querySelector(".lm-lab")');
       assert.equal(await evalJs('document.querySelector(".lr-reader-tools button[aria-pressed=true]").textContent'), 'Temelden');
       await evalJs(`(async () => {
@@ -277,7 +281,7 @@ async function runDiscoveries(mobile) {
       await wait('document.querySelector("dialog[open]")');
       await evalJs(click('dialog[open] button', 'Kapat'));
       assert.equal(await evalJs('Boolean(document.querySelector("dialog[open]"))'), false);
-      if (['rasyonel-sayilar', 'birinci-derece-denklemler', 'carpanlara-ayirma', 'temel-kavramlar'].includes(id)) {
+      if (requestedConcept || ['rasyonel-sayilar', 'birinci-derece-denklemler', 'carpanlara-ayirma', 'temel-kavramlar'].includes(id)) {
         await evalJs('document.querySelector(".lm-exploration").scrollIntoView({ block: "start" })');
         await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-kesif-${id}.png`));
       }
@@ -308,6 +312,7 @@ async function runGuided(mobile) {
   const steps = [];
   try {
     for (const [code, guide] of Object.entries(WORKED_EXAMS)) {
+      if (requestedConcept && guide.conceptId !== requestedConcept) continue;
       const lesson = parseLesson(readFileSync(join(lessonsDir, `${guide.conceptId}.ders`), 'utf8'), guide.conceptId);
       const section = lesson.sections.findIndex((s) => s.blocks.some((b) => b.code === code));
       db.events = [{ id: `open-${code}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId: guide.conceptId }];

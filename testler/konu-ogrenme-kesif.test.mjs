@@ -13,7 +13,8 @@ const lessons = readdirSync(dir).filter((f) => f.endsWith('.ders')).map((f) => p
 const model = (id, overrides = {}) => calculateModel(id, { ...initialValues(id), ...overrides });
 
 test('her dersin özgün bağlamı, gerekçeli örneği, deneyi ve aktarım sorusu var', () => {
-  assert.deepEqual(Object.keys(EXPLORATIONS).sort(), lessons.map((l) => l.id).sort());
+  const ids = lessons.flatMap((l) => l.sections.flatMap((s) => s.blocks.filter((b) => b.type === 'exploration').map((b) => b.conceptId)));
+  assert.deepEqual(Object.keys(EXPLORATIONS).sort(), [...new Set(ids)].sort());
   for (const lesson of lessons) {
     const e = EXPLORATIONS[lesson.id];
     assert.equal(lesson.sections[0].blocks[0].conceptId, lesson.id);

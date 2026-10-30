@@ -16,8 +16,11 @@ export function mathSegments(text) {
 
 function textsOf(lesson) {
   const texts = [lesson.goal, lesson.why, lesson.selfExplain, ...lesson.keyPoints, ...lesson.practice, ...lesson.archetypes.flatMap((a) => [a.title, a.cue, a.strategy])];
-  const discovery = EXPLORATIONS[lesson.id];
-  if (discovery) texts.push(discovery.title, discovery.story, discovery.experiment, discovery.example, discovery.tip, discovery.trap, discovery.expert, ...discovery.terms.flat(), ...discovery.steps.flat(), ...discovery.transfer);
+  const discoveryIds = new Set(lesson.sections.flatMap((s) => s.blocks.filter((b) => b.type === 'exploration').map((b) => b.conceptId)));
+  for (const id of discoveryIds) {
+    const discovery = EXPLORATIONS[id];
+    if (discovery) texts.push(discovery.title, discovery.story, discovery.experiment, discovery.example, discovery.tip, discovery.trap, discovery.expert, ...discovery.terms.flat(), ...discovery.steps.flat(), ...discovery.transfer);
+  }
   for (const card of lesson.flashcards) texts.push(card.front, card.back);
   for (const q of lessonQuestions(lesson)) texts.push(q.stem, q.explain, q.hint, ...q.choices.flatMap((c) => [c.text, c.feedback]));
   for (const section of lesson.sections) {
@@ -165,7 +168,7 @@ export function validateLessons(lessons, options = {}) {
     if (!blocks.some((b) => b.type === 'key_idea')) err('ana fikir bloğu yok');
     if (!blocks.some((b) => b.type === 'leveled')) err('düzeyli anlatım yok');
     for (const block of blocks) {
-      if (block.type === 'exploration' && block.conceptId !== lesson.id) err('keşif başka dersin kimliğine bağlanmış');
+      if (block.type === 'exploration' && (!EXPLORATIONS[block.conceptId] || (EXPLORATIONS[block.conceptId].lessonId ?? block.conceptId) !== lesson.id)) err('keşif eksik veya başka derse ait');
       if (block.type === 'misconception' && !(block.wrong && block.why && block.right)) err('yanılgı kartında yanlis/neden/dogru eksik');
       if ((block.type === 'worked' || block.type === 'faded') && block.steps.length < 2) err(`"${block.title}" en az 2 adım`);
       if (block.type === 'worked' && !block.problem) err(`"${block.title}" soru yok`);

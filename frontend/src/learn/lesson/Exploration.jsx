@@ -4,6 +4,7 @@ import { MathText, Markdown } from '../math.jsx';
 import { MODEL_CONTROLS, calculateModel, fmt, initialValues } from './models.js';
 import './learning-experience.css';
 import FigureZoom from './FigureZoom.jsx';
+import DivisionDiagram from './DivisionDiagram.jsx';
 
 const letters = 'ABCDE';
 const times = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
@@ -15,6 +16,9 @@ function Diagram({ model: m, title }) {
   const id = useId().replaceAll(':', '');
   let drawing;
   switch (m.kind) {
+    case 'division-place':
+    case 'division-filters':
+    case 'division-cycle': drawing = <DivisionDiagram model={m} />; break;
     case 'nested': drawing = <>
       {rect(14, 16, 452, 226, 'soft')}{text(240, 41, 'Gerçek sayılar ℝ')}
       {rect(28, 53, 294, 176, m.tier <= 2 ? 'primary-soft' : 'empty')}{text(175, 77, 'Rasyonel ℚ')}

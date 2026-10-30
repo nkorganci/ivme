@@ -11,13 +11,14 @@ Kalıcı beklentiler [AGENTS.md](../../AGENTS.md) içinde, etkin devam noktası
 |---|---|
 | `frontend/src/learn/content/dersler/*.ders` | Elle yazılan ders kaynağı; sabit ders/bölüm/soru kimlikleri korunur |
 | `content/parser.js` | `.ders` ayrıştırıcısı; tarayıcı ve Node denetimleri aynı kodu kullanır |
-| `content/explorations.js` | Mevcut 33 matematik dersi için özgün yaşam bağlamı, terimler, deney, gerekçeli örnek, aktarım sorusu, kısa yol, tuzak ve ileri açıklama |
+| `content/explorations.js` | Mevcut 33 matematik dersinin giriş keşifleri; bölüm keşifleri de bu kayıt üzerinden çözülür |
+| `content/division-explorations.js`, `lesson/division-models.js`, `lesson/DivisionDiagram.jsx` | Yalnız bölünebilme pilotu: basamak katkısı, ortak koşul ve kalan döngüsü keşifleri, sayısal modelleri ve SVG çizimleri |
 | `lesson/models.js` | 33 dersin sınırlı, deterministik sayısal modelleri ve kontrol aralıkları; `eval` yok |
 | `lesson/Exploration.jsx` | Görerek anla → birlikte çöz → kendin dene akışı; deneme puanlanmaz |
 | `lesson/learning-experience.css` | Okunur ders yüzeyi, bölüm yolu, mobil düzen, model ve büyük görsel görünümü |
 | `lesson/Blocks.jsx` | Ortak ders blokları; çözümlü örnekler sırayla açılır, gerekçeleri görünür |
 | `lesson/FigureZoom.jsx` | Klavye/Escape ile kapanan büyük görsel penceresi |
-| `content/worked-exams.js` | Özgün görselleri okunmuş altı gerçek sınav sorusunun açıklamalı çözümü ve koşullu kısa yolu |
+| `content/worked-exams.js` | Özgün görselleri okunmuş sekiz gerçek sınav sorusunun açıklamalı çözümü ve koşullu kısa yolu |
 | `lesson/GuidedExam.jsx` | Özgün soru görseli → adımlı çözüm → kısa yol → sağlama; puan üretmez |
 | `components/QuestionImage.jsx` (ön yüz kökü) | `readingWidth` ile ders örneklerini ekran altına düştüğünde küçültmeden okunur genişlikte gösterir; diğer soru ekranlarının sığdırma tercihi korunur |
 | `scripts/konu-ogrenme-banka.mjs` | DB'yi yalnız okuyarak soru kimliği/konu bağlarını üretir; öğrenci cevabı veya DB içeriği değiştirmez |
@@ -39,6 +40,8 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
    ihtiyaç, sıfırdan terim açıklaması, somut deney, en az üç gerekçeli çözüm adımı,
    farklı sayılarla aktarım sorusu ve cevap gerekçesi içerir. Pratik yol örnekten sonra,
    geçerlilik koşulu ve tipik hata ile birlikte verilir. İleri açıklama da anlam kurar.
+   Sonraki bölümler ayrı keşif kimliği kullanabilir; kaydın `lessonId` alanı sahibi olan
+   derse eşit olmalıdır. Doğrulayıcı, bütün bölüm keşiflerinin metnini ve formüllerini tarar.
 3. `MODEL_CONTROLS` ve `calculateModel` kaydı yaz. Genel bir grafik her konuya zorla
    uygulanmaz: kesirde eş parça; denklemde denge; kökte alan; harekette kapanan mesafe;
    koşullu olasılıkta daralan örnek uzay gibi kavramın kendisini temsil et.
@@ -74,6 +77,13 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0662 | Yüzde; ortak bütünden kapasite | E, 13 kg | `d19e022a7bbb4939af4a8dc450c13a0ad2013eb0e963f95df1c00bf050675f7f` |
 | TYT-0666 | Hareket; süre farkından yol | B, 75 km/sa | `769e8ec2c72d2896934b68b876673c8221136ca7079b7b0eb5b781eff22be99e` |
 | TYT-0621 | Mutlak değer; orta noktalarla yakınlık | B, 5 | `302135a347dacda32a544be739f7286278347bbe523647e00f7099b4ce8d66b4` |
+| AYT_Sayisal-0014 | Bölme; basamak açılımı ve bölme eşitliği | D, 11 | `4223c87a90dd86fc2f9e4a855d5684f6c90bb38f955cf0e821cb56d39e951209` |
+| TYT-0593 | Bölünebilme; iki durum, 5/9/12 koşullarını birleştirme | A, 7 | `9e127ed9096c20e7c64d884dd2173d607bbce3d090cc7459ad346b1417482593` |
+
+AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
+İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap
+anahtarıyla karşılaştırılmıştır. TYT-0593'ün eski otomatik `bolme-algoritmasi` eşlemesi,
+görsel inceleme sonucu `bilesik-kural` olarak düzeltilmiştir; banka betikle üretilir.
 
 TYT-0541 önce temel kavramlar içinden açılmaya çalışılıyor ama başka ders bankasına ait
 olduğundan görünmüyordu; rasyonel sayılardaki kesir bölümüne bağlandı. TYT-0653 otomatik
@@ -121,3 +131,50 @@ Motorun mevcut yedek ders soruları ve eksik kapsam davranışı korunur.
 Son aşama: `python scripts/ivme.py plan`, `python scripts/ivme.py kontrol`, yerel
 izleyici/sunum kontrolü (`durum --hizli`, gerekirse `bekle`). Yerel commit yapılır; push ve
 yeni dış dağıtım kullanıcı talimatı olmadan yapılmaz.
+
+## Bölme ve bölünebilme pilotu
+
+Kullanıcının seçtiği tek konu bu pilottur. Diğer matematik derslerine yayma kararı
+kullanıcının örneği değerlendirmesinden sonra alınır. Sekiz bölümün kimlikleri
+`s1, s1b, s2, s2b, s3, s3b, s4, s4b` şeklindedir. Eski dört bölüm kimliği ve mevcut
+ön test/kontrol/havuz soru kimlikleri korunur. Yeni kontrol kimlikleri yalnız bu derse
+aittir; öğrenci geçmişi silinmez. Dört oturum yaklaşık 35'er dakikalık planlama
+tahminidir; öğrencinin örnekleri kendi hızında incelemesi beklenir.
+
+Akış: somut ihtiyaç → terimler → neden → gerekçeli örnek → koşullu kısa yol →
+eksik adımı tamamlama / bağımsız deneme → gerçek soru. Tasarım,
+[IES öğretim rehberinin](https://ies.ed.gov/ncee/wwc/PracticeGuide/1) çözümlü örneklerle
+alıştırmayı dönüşümlü sunma, somut ve soyut gösterimleri bağlama, görseli açıklamayla
+birleştirme ve açıklayıcı sorular sorma önerilerinden yararlanır. Bunun bir öğrencide
+ölçülmüş öğrenme başarısı veya bağımsız öğretmen onayı olduğu iddia edilmez.
+
+Kapsam: 24 çözümlü örnek, 3 adım tamamlama, 4 etkileşimli keşif, 4 yeni kısa kontrol,
+2 gerçek sınav çözümü. İlk bölümdeki kutu modeli korunur; üç yeni model yalnız bu
+derse bağlanır. 11'de tam bölünme/işaretli kalan ayrımı, aralarında asal olma koşulu,
+bölmede kalanları doğrudan bölememe ve kuvvetlerde döngünün başlangıcı açıkça öğretilir.
+Temel gerekçeler düzey seçiminin arkasına gizlenmez.
+
+Okunan PDF kaynakları (arşiv değiştirilmez):
+
+- `../Kaynaklar/ogm-materyal/Matematik/TYT-AYT Ortak/Konu Ozetleri 9. Sinif/09 - KALANLI BOLME - BOLUNEBILME KURALLARI - I.pdf`, sayfa 1: bölme şeması, temel kurallar, rakam/kalan örnekleri.
+- Aynı klasörde `10 - BOLUNEBILME KURALLARI-II.pdf`, sayfa 1: aralarında asal çarpanlar, kalanların toplamı/çarpımı; soru 1 ve 2 pilotta gerekçeli çözülür.
+- PDF metin katmanı okunaksız olduğundan iki sayfa görüntülenerek incelenmiştir.
+  ÖSYM soruları özgün kırpım/görsel ve kodlarıyla gösterilir.
+
+Yalnız pilotu denetlemek için:
+
+```powershell
+node --test testler/bolme-pilot.test.mjs
+cd frontend
+node node_modules/vite/bin/vite.js build --outDir ../veri/ui-denetim/bolme-pilot-dist
+cd ..
+$env:IVME_TEST_DIST='D:/workspace/ivme/uygulama/veri/ui-denetim/bolme-pilot-dist'
+node testler/konu-ogrenme-ui.mjs --kesif bolme-bolunebilme
+node testler/konu-ogrenme-ui.mjs --gercek-ornek bolme-bolunebilme
+node testler/konu-ogrenme-ui.mjs bolme-bolunebilme
+```
+
+`--kesif` artık seçilen dersin bütün bölüm keşiflerini sınar. İsteğe bağlı ders
+parametresi, gerçek örnek denetimini de aynı derse sınırlar. Pilot testleri sayısal
+modellerin bütün girişlerini, rakam örneklerinin tüm adaylarını, gerçek soruların
+cevaplarını ve ustalık dışlama bağlarını kontrol eder. UI testi sahte API ile çalışır.

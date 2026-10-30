@@ -1,9 +1,11 @@
 // Sınırlı ve deterministik görsel modeller. Kullanıcı girdisi kod olarak çalıştırılmaz.
+import { DIVISION_CONTROLS, divisionModel } from './division-models.js';
 const range = (key, label, value, min, max, step = 1) => ({ key, label, value, min, max, step });
 const select = (key, label, value, options) => ({ key, label, value, options });
 const yesNo = [[0, 'Yanlış'], [1, 'Doğru']];
 const variable = range('x', 'Girdi (x)', 2, -3, 5);
 export const MODEL_CONTROLS = {
+  ...DIVISION_CONTROLS,
   'temel-kavramlar': [select('n', 'İnceleyeceğin sayı', 0, [[0, '3'], [1, '−3'], [2, '1/2'], [3, '√9'], [4, '√2'], [5, '0']])],
   'sayi-basamaklari': [range('a', 'Yüzler', 3, 1, 9), range('b', 'Onlar', 2, 0, 9), range('c', 'Birler', 4, 0, 9)],
   'bolme-bolunebilme': [range('n', 'Kitap sayısı', 23, 10, 30), range('d', 'Kutunun kapasitesi', 5, 2, 6)],
@@ -44,6 +46,7 @@ const gcd = (a, b) => b ? gcd(b, a % b) : a;
 const fraction = (a, b) => { const g = gcd(a, b); return `${a / g}/${b / g}`; };
 
 export function calculateModel(id, v) {
+  if (DIVISION_CONTROLS[id]) return divisionModel(id, v);
   switch (id) {
     case 'temel-kavramlar': {
       const values = [{ name: '3', tier: 0 }, { name: '−3', tier: 1 }, { name: '1/2', tier: 2 }, { name: '√9 = 3', tier: 0 }, { name: '√2', tier: 3 }, { name: '0', tier: 0 }];

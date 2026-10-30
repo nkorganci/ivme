@@ -1,105 +1,58 @@
 # İvme devir notu
 
-Önce bu notu oku; aynı keşif/üretim işine baştan başlama. Ortak çalışma ve kalıcı kullanıcı
-beklentileri `AGENTS.md` içindedir; Claude `CLAUDE.md` ile aynı dosyayı okur.
-Teknik ayrıntı yalnız gerektiğinde [Konuyu Öğrenelim sözleşmesinden](icerik/konuyu-ogrenelim.md)
-alınır. İlgisiz PDF envanteri çalışmasına bu görev yerine dönme.
+Önce bu notu ve AGENTS.md içindeki kalıcı öğretim beklentisini oku. Önceki 33 dersin
+giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
+[öğretim sözleşmesi](icerik/konuyu-ogrenelim.md).
 
 ## Etkin görev
 
-| Alan | Değer |
-|---|---|
-| Güncelleme | 29 Ekim 2026 — Codex |
-| Etkin görev | `12.02` — Konuyu Öğrenelim öğretim deneyimi |
-| Son uygulama commit'i | `1423779` — 33 dersin görsel keşfi, ortak oynatıcı ve 6 gerçek çözümlü örnek |
-| Durum | Bu kapsam commit edildi; Node, masaüstü/mobil ve canlı sayfa kontrolleri geçti |
-| Sıradaki görev | Aşağıdaki bölüm bazlı genişletme; ilk aday temel-kavramlar s2–s5 |
+- Güncelleme: 29 Ekim 2026 — Codex.
+- Kullanıcının son kapsamı: **yalnız Bölme ve Bölünebilme Kuralları** için sıfırdan,
+  mantığını öğreten, günlük örnekli ve gerçek soru seviyesine hazırlayan pilot.
+- Diğer dersleri bu standarda yaymak, kullanıcının pilotu değerlendirmesinden sonra.
+  Önceki temel-kavramlar s2–s5 genişletmesi otomatik sıradaki görev değildir.
 
-29 Ekim 2026: Kullanıcı, Claude'un Konuyu Öğrenelim modülünü daha anlaşılır, temelden
-ileri düzeye, görsel ve etkileşimli yapmamızı istedi. Sonraki mesajlarda günlük kullanım,
-ilginç bağlantılar, **önce örnek çözüm sonra koşullu hızlı ipuçları** ve iki ajan için
-kalıcı devam kaydı özellikle istendi. Bu beklentiler AGENTS.md'ye yazıldı.
+## Tamamlanan kapsam
 
-## Korunan başlangıç
+- `bolme-bolunebilme.ders`: 8 bölüm / 4 oturum; 24 gerekçeli çözümlü örnek,
+  3 adım tamamlama, 4 yeni küçük kontrol, bölüm sonu yöntem ve hata açıklamaları.
+- Eski s1–s4, ön test/kontrol/havuz ve e1/b1 kimlikleri korunur. S1b–s4b eklenir.
+  Test motoru ve öğrenci DB kayıtları değiştirilmez.
+- İlk kutu keşfi korunur; `division-explorations.js`, `division-models.js` ve
+  `DivisionDiagram.jsx` ile 3 yeni bölüm keşfi: basamak katkısı, ortak koşul,
+  kuvvetlerde kalan döngüsü. Tüm girişlerde sayısal sonuç/görsel aynı veriyle üretilir.
+- Bölüm keşiflerinde `lessonId` sahipliği vardır; doğrulayıcı artık yalnız ilk keşfi
+  değil derste kullanılan bütün keşiflerin formüllerini tarar.
+- OGM 9. sınıf özet 09 ve 10'un ilk sayfaları görüntülenerek okundu. 2020 AYT
+  `AYT_Sayisal-0014` ve 2021 TYT `TYT-0593` özgün görsellerinden çözülüp rehberlendi.
+  Sonuçlar D/11 ve A/7; DB anahtarıyla eşleşiyor. Hash'ler öğretim sözleşmesinde.
+- TYT-0593 görsel incelemeyle `bilesik-kural` tipine düzeltildi. Banka betikle üretildi;
+  yalnız bu dersin bankası ve özet istatistiği değişti. İki çözümlü gerçek soru bağımsız
+  ustalık testinden hariç; soru kodu ve özgün görüntüler korunur.
+- Yöntem: somut bağlam → gerekçe → çözümlü örnek → koşullu kısa yol → öğrenci denemesi
+  → gerçek soru. IES kaynak bağlantısı ve pilot dosya/komutları öğretim sözleşmesinde.
 
-- Claude'un 33 ders, öğrenme motoru ve API çalışması değişiklikten önce yerel `main` üzerinde
-  **98fe6ca** (`Preserve Claude learning engine and initial mathematics lessons`) ile commit edildi.
-- PostgreSQL öğrenci verileri ve özgün PDF arşivi değiştirilmedi. Yeni çalışma ön yüz,
-  elle yazılan öğretim içeriği, soru banka çıktıları ve doğrulama betikleri üzerindedir.
-- Kullanıcı push istemedi. Yerel commit gerekli; dış dağıtım/push yapılmaz.
+## Doğrulama ve kalan iş
 
-## Uygulanan kapsam
+- 29 Node testi geçti: mevcut içerik/KaTeX, 298 sayısal soru, motor, keşif modelleri;
+  pilot için tüm rakam çiftleri, yeni modellerin girişleri, iki gerçek soru ve dışlama.
+- Ayrı Vite paketi başarılı: `veri/ui-denetim/bolme-pilot-dist`.
+- Dört keşif ve iki gerçek örnek masaüstü/mobilde geçti; taşma, konsol/istek hatası yok.
+- Sekiz bölümlük öğrenme/ustalık akışı masaüstü/mobilde geçti. Son eklemede eski e1
+  eşleştirme kontrolü de korundu; içerik testleri tekrar geçti.
+- Son pakette e1 dahil 8 bölüm / 28 ders olayı / 6 ustalık sorusu masaüstü ve mobilde
+  geçti. Canlı salt okuma sayfa denetimleri de geçti; taşma/konsol/istek hatası yok.
+  Sonuçlar araç çıktılarında; ekranlar `veri/ui-denetim/konu-ogrenme/` altında.
+- Plan denetimi ve 17 staged dosya için commit öncesi kontrol geçti.
+- Kullanıcıdan içerik değerlendirmesi beklenir; başka konuya kendiliğinden geçme.
 
-- 33 matematik dersinin ilk bölümüne konuya özgü görsel keşif eklendi: günlük bağlam,
-  temel terimler, değiştirilebilir model, 3+ gerekçeli adım, yeni deneme, koşullu kısa yol,
-  yaygın hata ve ileri açıklama. Model hesabı/çizimi ayrı dosyalarda.
-- Ders ekranı: okunur metin, bölüm yolu, Temelden/Bağlantıları kur/Derinleş seçimi,
-  isteğe bağlı ön test, sırayla açılan çözümler, görünür nedenler, büyük görsel penceresi.
-- Özgün görselleri okunarak **6 gerçek TYT sorusuna** adımlı çözüm ve hızlı yol yazıldı.
-  Kodlar ve görüntü hash'leri teknik sözleşmede. Bu örnekler ustalık testinden hariç.
-- Eksik `frontend/src/learn/bank` çıktıları mevcut betikle oluşturuldu. Otomatik eşleme
-  her sorunun incelendiği anlamına gelmez. TYT-0653 yanlış oran/orantı eşlemesinden
-  sayı basamaklarına düzeltildi; TYT-0541 görünmeyen temel-kavramlar bağlantısından
-  rasyonel sayılara taşındı. Betik `WORKED_EXAMS` eşlemelerini önceliklendirir.
-- İşlem önceliği metni, uç değerlerde aşırı genel kural ve iki doğru seçenek veren
-  temel-kavramlar/h1 sorusu düzeltildi. Mevcut ders/soru kimlikleri korundu.
-
-## Şu anki doğrulama ve devam noktası
-
-- 24 Node testi geçti: içerik/KaTeX, 298 sayısal soru, motor, 33 modelin bütün kontrol
-  kombinasyonları, gerçek örneklerin bağımsız hesapları ve ustalık hariç tutma.
-- `npm run build` geçti. İzleyiciyle aynı dist'i kullanan ilk UI denemesinde dosya yarışına
-  rastlandı; UI testi `IVME_TEST_DIST` destekli ayrı pakete geçirildi. Bu giderilmiş
-  altyapı sorununu yeniden araştırma.
-- UI için ayrı Vite paketi hazır: `veri/ui-denetim/konu-ogrenme-dist`.
-- 33 keşfin tamamı masaüstü ve mobilde geçti (66 ekran akışı; taşma/konsol/istek hatası yok).
-  Rasyonel-sayilar tam öğrenme akışı da iki boyutta geçti: 5 bölüm, 22 ders olayı,
-  6 soruluk ustalık ve hata/ilerleme/harita/ayarlar. Sonuçlar:
-  `veri/ui-denetim/konu-ogrenme-kesif.json`, `veri/ui-denetim/konu-ogrenme-akis.json`.
-- Altı gerçek sorunun hesap sonuçları DB cevap anahtarlarıyla da karşılaştırıldı;
-  doğrulama anahtarı değiştirmez ve öğrenci cevabı üretmez.
-- Son görsel incelemede kesir parçaları değişirken geçici ara geometrinin yanlış bir
-  miktar izlenimi vermemesi için SVG geometri geçişi kaldırıldı; şekil ve sayı eşzamanlı.
-- Altı rehberli gerçek örnek masaüstü/mobilde geçti (12 akış): cevap önce saklı,
-  adımlar açılıyor, kısa yol sonuçtan sonra, alıştırma bağlantısı doğru, öğrenci puanı
-  üretilmiyor. Görsel genişliği dar ekranda 288 px; uzun sayfada küçülme `readingWidth`
-  desteğiyle giderildi. Sonuç `veri/ui-denetim/konu-ogrenme-gercek.json`.
-- Canlı sayfaların masaüstü/mobil salt okuma kontrolü geçti:
-  `veri/ui-denetim/konu-ogrenme-canli.json`. Giriş öncesi beklenen auth/me 401 test
-  kapsamından ayrıldı; giriş sonrası 401 hâlâ hata sayılır. Konsol/taşma/istek hatası yok.
-- Plan denetimi ve commit öncesi kontrol geçti. Yerel izleyici son paketi başarıyla
-  sundu; HTTP 200 ve `index-B4JdWD3x.js` doğrulandı. Uygulama commit'i `1423779`;
-  `98fe6ca` önceki Claude sürümüdür. Push yapılmadı. Kontrolleri yeniden başlatmak
-  yerine yalnız yeni değişikliklerin etkilediği kapsamı denetle.
-- Sonraki içerikler bu standarda uyar. Diğer ders/ünitelere yeni içerik eklerken aynı
-  33 dersi yeniden üretme; mevcut örnekleri genişlet. Gerçek kaynak görselini okumadan
-  çözüme veya öğretmen onayına dair iddia ekleme.
-
-## Sıradaki içerik işi (yeniden keşif yapma)
-
-Bu commit mevcut 33 dersin **ilk bölümündeki keşif katmanını ve ortak oynatıcıyı**
-geliştirir; bütün alt bölümler için ayrı simülasyon veya bütün çıkmış sorular için
-çözüm yazıldığı iddia edilmez. Sonraki kapsam [12.02](plan/12-icerik-ve-yayin.md):
-
-1. `temel-kavramlar.ders` s2 (tek–çift), s3 (işaret), s4 (ardışık), s5 (uç değer)
-   için aynı derinliği bölüm bazında yay. s1 sayı kümeleri keşfini tekrar yazma.
-2. Her bölümde mevcut çözümlü örneği oku; ona özgü değiştirilebilir görsel ve işlem
-   gerekçesi ekle. Örnekten sonra kısa yol, koşul, yanlış yöntem ve sağlama gelsin.
-3. `WORKED_EXAMS` içindeki altı örnek dışındaki gerçek sorularda önce özgün kırpımı
-   aç, hesapla, DB anahtarıyla karşılaştır; sonra doğru ders/bölüm/tip bağı ve hash kaydı
-   ekle. Otomatik banka eşlemesi kesin kanıt değildir. Gerçek DB'ye test cevabı yazma.
-4. Yeni bir görsel blok veya bölüm eklenince yalnız değişen kapsamın anlamlı testini
-   ve UI'sini çalıştır. Tüm PDF arşivini/OCR hattını yeniden çalıştırma.
-
-## Hızlı devam komutları
+## Sıradaki komut
 
 ```powershell
 git status --short
-git log -3 --oneline
-Get-Content veri/ui-denetim/konu-ogrenme-kesif.json
-Get-Content veri/ui-denetim/konu-ogrenme-akis.json
 python scripts/ivme.py durum --hizli
 ```
 
-Ayrıntılı test/üretim komutları teknik sözleşmede. Önceki PDF uzlaştırmasının açık işleri
-[12.01](plan/12-icerik-ve-yayin.md) kapsamında; önceki kanıt ve yedekler korunur.
+Devamda önce bu pilot için gelen geri bildirimi uygula. Başarılı testleri girdi değişmeden
+tekrarlama. UI testleri yalnız sahte API ile; gerçek öğrenci DB'sine test cevabı yazma.
+Yerel main commit'i gerekir; kullanıcı istemedikçe push/dış dağıtım yapılmaz.
