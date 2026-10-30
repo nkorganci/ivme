@@ -104,6 +104,10 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0604 | Birinci derece denklemler; terazide aktarma, $x=2w$ | E, 40 | `b6a468eb2f9a7e2c495ccfcfcd63e5e305e7b3c97bc0ded916ffe03e52925ca7` |
 | TYT-0611 | Birinci derece denklemler; fark verilince iki durum | C, I ve III | `325469fdc8c3addc4b864dd84349fa03bf7af8c59f256a3af13745117b5c60f6` |
 | TYT-0607 | Birinci derece denklemler; tek denklemden oran (bardak = 2 fincan) | B, 7 | `54645c9a572c96c8d8fed9e0198adfa50db16a26deb37850f47b9bf88a059427` |
+| TYT-0614 | Eşitsizlikler; sözel sınırlar, eşitliği yerine koyup sıralama | D, S < M ≤ Ç | `be2ebd904dce0b5f5f19197d82cd2d277384bc4a080e1bdc13697a99a575ccfc` |
+| TYT-0620 | Eşitsizlikler; a > ab > 2a > ac, negatife bölme | A | `01a79c8e6300554a118887e3a8e7f376fac1843308da32db6b23eec5dac569c9` |
+| TYT-0613 | Eşitsizlikler; K·L çarpımının aralığı | D | `8b0b7b03170a02d72d0ffbd8a04e93a39237065f72af455383539ef79278249d` |
+| TYT-0616 | Eşitsizlikler; bölgeden katsayı işaretleri | A, +, −, −, − | `4ba98a541f302e51c22a9b0b558bc0810da4fecbab0ad51cd29d081f103fffd3` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap

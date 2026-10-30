@@ -47,8 +47,10 @@ esitsizlik-cozme 2 1-3
 aralik-ifade 2 1-3
 iki-bilinmeyen 1 1-3
 
-@oturum Aralıklar ve eşitsizlik çözme | s1 s2
-@oturum İfadenin aralığı ve iki bilinmeyen | s3 s4
+@oturum Aralıklar ve sözel sınırlar | s1 s1b
+@oturum Eşitsizlik çözme ve işaret | s2 s2b
+@oturum İfadenin aralığı | s3 s3b
+@oturum İki bilinmeyenli eşitsizlikler | s4 s4b
 
 @ontest
 ::soru o1 tip=esitsizlik-cozme zorluk=1
@@ -141,7 +143,74 @@ E) 10 || Bu, birleşimdeki $(-2, 9)$ tam sayı sayısıdır.
 kontrol: 6-3+1
 cozum: $A \cap B = [3, 6]$ (3 $B$'de, 6 $A$'da kapalı); tam sayılar $3, 4, 5, 6$: 4 tane.
 
-@bolum s2 10 | Eşitsizlik çözme: yön ne zaman değişir?
+@bolum s1b 15 | Sözel sınırlar ve aralık işlemleri
+::kesfet esitsizlik-aralik
+
+::duzey baslik="Sınır sözcüklerini işarete çevirmek"
+L1: Günlük dildeki sınırlar birer eşitsizliktir: “en az 18” $x\geq18$, “en çok 40” $x\leq40$, “40'ı aşmaz” $x\leq40$, “40'ı aşar” $x>40$, “18'den küçük değil” $x\geq18$, “tam olarak” $=$. Her cümleyi önce işarete, sonra aralığa çevirirsen sınırın dahil olup olmadığı karışmaz.
+L2: Koşullar “ve” ile bağlanıyorsa kesişim, “veya” ile bağlanıyorsa birleşim alınır. Eşitsizlikleri birleştirirken ortak bir ifade ara: $S+Ç=K$ ve $Ç+M>K$ verildiyse $K$ yerine $S+Ç$ yazınca $Ç+M>S+Ç$, yani $M>S$ olur.
+L3: Bir eşitlik ve birkaç eşitsizlik birlikte verildiğinde eşitliği eşitsizliklerde yerine koymak ortak terimleri götürür; geriye değişkenler arasındaki sıra kalır. Böylece hiçbir değer hesaplanmadan sıralama yapılır. Sıralamada $<$ ile $\leq$ farkını da taşı: “aşmamak” eşitliğe izin verir.
+
+::ornek baslik="Sözel koşuldan aralığa"
+soru: Bir sınavda 50'den az olmayan notlar geçer; 85'i aşan notlar “pekiyi” sayılır. Notlar tam sayıdır. Geçen ama “pekiyi” olmayan kaç farklı not vardır?
+1. “50'den az olmayan”: $n\geq50$. “85'i aşan” pekiyi: $n>85$; pekiyi olmayan $n\leq85$. || Her sözel sınırı tek tek işarete çevirdik.
+2. İki koşul birlikte: $50\leq n\leq85$, yani $[50,85]$. || “Geçen ve pekiyi olmayan” iki koşulun kesişimidir.
+3. Tam sayılar: $85-50+1=36$. || İki uç da kapalı; ikisi de sayılır.
+cevap: 36 farklı not.
+
+::ornek baslik="“Ve” ile “veya”"
+soru: $A=\{x:-2<x\leq4\}$ ve $B=\{x: x<1 \text{ veya } x\geq6\}$ için $A\cap B$ nedir? Kaç tam sayı içerir?
+1. $B$ iki parçalı: $(-\infty,1)\cup[6,\infty)$. || “Veya” birleşim demektir.
+2. $A=(-2,4]$ ile kesiştir: ikinci parça $A$ ile örtüşmez; ilk parçayla ortak kısım $(-2,1)$. || 1, $B$'de hariç olduğu için kesişimde de hariç.
+3. Tam sayılar $-1$ ve $0$. || Açık uçlar ($-2$ ve 1) sayılmaz.
+cevap: $A\cap B=(-2,1)$; 2 tam sayı.
+
+::ornek baslik="Eşitliği yerine koyup sıralamak"
+soru: $a+b=10$, $b+c>10$ ve $a+c<10$ olduğuna göre $a$, $b$, $c$ nasıl sıralanır?
+1. $b+c>10=a+b$ ise $c>a$. || Eşitliği eşitsizlikte yerine koyduk; ortak $b$ gitti.
+2. $a+c<10=a+b$ ise $c<b$. || Bu kez ortak $a$ gitti.
+3. Birleştir: $a<c<b$. || $c$ iki eşitsizlikte de var; ortaya yerleşir.
+cevap: $a<c<b$. Örnek: $a=2$, $b=8$, $c=5$: $13>10$, $7<10$ ✓
+
+::ornek baslik="İki koşulun kesişimi"
+soru: $x-3\geq0$ ve $2x<15$ koşullarını birlikte sağlayan kaç tam sayı vardır?
+1. $x\geq3$ ve $x<7{,}5$. || Her eşitsizliği ayrı çözdük.
+2. Birlikte: $3\leq x<7{,}5$. || “Birlikte” kesişimdir.
+3. Tam sayılar $3,4,5,6,7$: 5 tane. || 7,5 tam sayı değil; içerideki en büyük tam sayı 7.
+cevap: 5
+
+::cikmis TYT-0614 tip=aralik
+
+::sorgula s1b-kargo baslik="Kargo ücreti hangi basamakta?"
+durum: Bir kargo firmasının tarifesi: 2 kg'a kadar 60 TL; 2 kg'ı aşan ve 5 kg'ı aşmayan paketler 90 TL; 5 kg'ı aşan paketler 130 TL. Paketin tartıda tam 5 kg geldi.
+soru: Ne kadar ödersin?
+A) 60 TL || 60 TL yalnız 2 kg'a kadar olan paketler için.
++B) 90 TL || 5 kg, “5 kg'ı aşmayan” aralığına girer: $2<m\leq5$.
+C) 130 TL || 130 TL için paketin 5 kg'ı aşması gerekir; tam 5 kg aşmaz.
+kontrol: 90
+neden: Basamaklar $m\leq2$, $2<m\leq5$, $m>5$ biçimindedir. “Aşmayan” sınırı dahil eder; “aşan” dışarıda bırakır. $m=5$ ikinci basamakta.
+sinav: Basamaklı tarifelerde sınır değerlerini (tam 2 kg, tam 5 kg) mutlaka hangi aralığa düştüğüne bakarak yerleştir; seçenekler çoğu zaman bu sınırlara kurulur.
+dusun: Tam 2 kg'lık paket ne kadar öder?
+yanit: “2 kg'a kadar” 2'yi dahil eder: 60 TL.
+
+::yanilgi m4 tip=aralik
+yanlis: “40'ı aşmayan” $x<40$ demektir.
+neden: Aşmamak eşit olmayı engellemez; 40 da 40'ı aşmaz.
+dogru: “40'ı aşmayan” $x\leq40$; “40'ı aşan” $x>40$.
+
+::soru c5 tip=aralik zorluk=1
+$x$ bir tam sayıdır. “$x$, $-3$'ten küçük değil ve 5'i aşmıyor” koşulunu sağlayan kaç $x$ vardır?
+A) 7 || İki ucu da dışarıda bıraktın; ikisi de dahil.
+B) 8 || Bir ucu unuttun.
++C) 9 || Doğru: $-3\leq x\leq5$; $5-(-3)+1=9$.
+D) 10 || Bir fazla saydın.
+E) 11 || Uçların dışına taştın.
+kontrol: 5-(-3)+1
+cozum: “$-3$'ten küçük değil” $x\geq-3$; “5'i aşmıyor” $x\leq5$. $[-3,5]$ aralığında $5-(-3)+1=9$ tam sayı var.
+
+@bolum s2 12 | Eşitsizlik çözme: yön ne zaman değişir?
+::kesfet esitsizlik-ayna
+
 ::fikir
 Eşitsizlik denklem gibi çözülür; tek fark: **negatif bir sayıyla çarpar ya da bölersen yön değişir.**
 
@@ -197,7 +266,78 @@ E) 11 || 9 da sağlar.
 kontrol: 8+1
 cozum: 6 ile çarp: $3x - 2(x + 1) > 6$, yani $x - 2 > 6$ ve $x > 8$. En küçük tam sayı 9.
 
-@bolum s3 10 | Değişkenlerin aralığından ifadenin aralığı
+@bolum s2b 15 | İşaret bilgisiyle eşitsizlik: harfe bölmek ve ters almak
+::duzey baslik="Önce işaret, sonra işlem"
+L1: $a<0$ ise $3a<2a$: negatif bir sayının 3 katı, 2 katından küçüktür. Bu yüzden “$a>2a$” eşitsizliği tam olarak $a$ negatif olduğunda doğrudur. Bir harfe bölmeden önce o harfin işaretini bilmen gerekir.
+L2: İşareti bilinen bir harfe bölmek serbesttir: $a<0$ ve $ab>2a$ ise iki tarafı $a$'ya bölünce yön değişir, $b<2$ bulunur. İşareti bilinmiyorsa bölme; önce işareti çıkar. Zincir eşitsizliklerde ($a>ab>2a$) her parçayı ayrı incele.
+L3: Ters alma aynı işaretli sayılarda yön değiştirir: $2<x<5\Rightarrow\frac{1}{5}<\frac{1}{x}<\frac{1}{2}$; $-4<x<-1\Rightarrow-1<\frac{1}{x}<-\frac{1}{4}$. Aralık 0'ı içerirse ($-1<x<2$, $x\neq0$) $\frac{1}{x}$ iki parçaya ayrılır: $\frac{1}{x}<-1$ veya $\frac{1}{x}>\frac{1}{2}$.
+
+::ornek baslik="İşaretleri çıkarmak"
+soru: $a\cdot b<0$ ve $a<b$ olduğuna göre $a$ ile $b$'nin işaretleri nedir?
+1. Çarpım negatif: biri pozitif, biri negatif. || Aynı işaretli iki sayının çarpımı pozitiftir.
+2. $a<b$ olduğundan küçük olan $a$ negatif, büyük olan $b$ pozitif. || Her negatif sayı her pozitif sayıdan küçüktür.
+3. Sonuç $a<0<b$. || İki bilgiyi birleştirdik.
+cevap: $a<0$, $b>0$. Örnek: $a=-2$, $b=3$: $ab=-6<0$ ✓
+
+::ornek baslik="Negatif harfe bölmek"
+soru: $a<0$ ve $3a<ab<a$ olduğuna göre $b$ hangi aralıktadır?
+1. Üç parçayı $a$'ya böl. $a$ negatif olduğu için iki işaret de döner. || Negatif sayıya bölme sırayı ters çevirir.
+2. $\frac{3a}{a}>\frac{ab}{a}>\frac{a}{a}$, yani $3>b>1$. || Her parça sadeleşti.
+3. $1<b<3$. || Küçükten büyüğe yazdık.
+cevap: $1<b<3$. Kontrol: $a=-1$, $b=2$: $-3<-2<-1$ ✓
+
+::ornek baslik="Negatif aralıkta ters alma"
+soru: $-4<x<-1$ olduğuna göre $\frac{2}{x}$ hangi aralıktadır?
+1. $x$'in bütün değerleri negatif; ters alma yönü çevirir: $-1<\frac{1}{x}<-\frac{1}{4}$. || $\frac{1}{-4}=-\frac{1}{4}$ ve $\frac{1}{-1}=-1$; sıra yer değiştirir.
+2. 2 ile çarp (pozitif, yön değişmez): $-2<\frac{2}{x}<-\frac{1}{2}$. || Pozitif çarpan sırayı korur.
+3. Kontrol: $x=-2$ için $\frac{2}{x}=-1$; aralıkta. || Bir değerle doğruladık.
+cevap: $\left(-2,-\frac{1}{2}\right)$
+
+::ornek baslik="Sıfırı içeren aralıkta ters alma"
+soru: $-1<x<2$ ve $x\neq0$ olduğuna göre $\frac{1}{x}$ hangi değerleri alır?
+1. Aralığı 0'da ikiye ayır: $-1<x<0$ ve $0<x<2$. || Ters alma yalnız aynı işaretli sayılarda düzgün çalışır.
+2. $-1<x<0$ için $\frac{1}{x}<-1$; $0<x<2$ için $\frac{1}{x}>\frac{1}{2}$. || Her parçada ayrı ayrı ters aldık; 0'a yaklaştıkça $\frac{1}{x}$ sınırsız büyür.
+3. Birleşim: $\frac{1}{x}<-1$ veya $\frac{1}{x}>\frac{1}{2}$. || Arada $[-1,\frac{1}{2}]$ boşluğu kalır.
+cevap: $(-\infty,-1)\cup\left(\frac{1}{2},\infty\right)$
+
+::tamamla baslik="Sen dene · işaret tablosu"
+soru: $a<0<b$ olduğuna göre $\frac{a}{b}$, $a\cdot b$ ve $b-a$ sayılarının işaretleri nedir?
+1. $\frac{a}{b}$: negatif bölü pozitif, negatif. || Farklı işaretli bölüm negatiftir.
+?2. $a\cdot b$: negatif çarpı pozitif, negatif. || Çarpımda da aynı kural.
+?3. $b-a=b+(-a)$: iki pozitifin toplamı, pozitif. || $a$ negatif olduğu için $-a$ pozitiftir.
+cevap: $\frac{a}{b}<0$, $ab<0$, $b-a>0$.
+
+::cikmis TYT-0620 tip=esitsizlik-cozme
+
+::sorgula s2b-taksit baslik="Taksit sayısı ve taksit tutarı"
+durum: 1200 TL'lik bir alışverişi eşit taksitlerle ödeyeceksin. Mağaza en az 4, en çok 6 taksit kabul ediyor.
+soru: Bir taksitin tutarı hangi aralıktadır?
++A) 200 TL ile 300 TL arasında; az taksitte tutar yüksek || $T=\frac{1200}{n}$, $4\leq n\leq6$: ters alınca $200\leq T\leq300$.
+B) 4800 TL ile 7200 TL arasında || Böleceğine çarptın.
+C) 200 TL ile 300 TL arasında; çok taksitte tutar yüksek || Aralık doğru ama ilişki ters: taksit sayısı arttıkça tutar azalır.
+neden: Taksit tutarı $\frac{1200}{n}$; $n$ büyüdükçe tutar küçülür. $n=4$ için 300 TL, $n=6$ için 200 TL. Ters alma pozitif sayılarda sırayı çevirir.
+sinav: Bir büyüklük ötekinin tersiyle orantılıysa (süre–hız, taksit–tutar) aralığın uçları yer değiştirir. Hangi ucun hangisine gittiğini bir değerle kontrol et.
+dusun: 5 taksitte bir taksit kaç TL olur?
+yanit: $1200:5=240$ TL.
+
+::yanilgi m5 tip=esitsizlik-cozme
+yanlis: $ab>2a$ ise iki tarafı $a$'ya bölerek her zaman $b>2$ bulunur.
+neden: $a$'nın işareti bilinmeden bölünemez; $a<0$ ise yön değişir ve $b<2$ olur.
+dogru: Önce $a$'nın işaretini bul. $a>0$ ise $b>2$, $a<0$ ise $b<2$.
+
+::soru c6 tip=esitsizlik-cozme zorluk=2
+$a<0$ olmak üzere $2a<ab<-a$ olduğuna göre $b$'nin alabileceği tam sayı değerlerinin toplamı kaçtır?
+A) $-1$ || $-1$ aralığın ucu; dahil değil.
+B) $0$ || Bir değeri eksik topladın.
++C) $1$ || Doğru: $a$'ya bölünce $2>b>-1$; $b\in\{0,1\}$.
+D) $2$ || 2 aralığın ucu; dahil değil.
+E) $3$ || Yönü çevirmeyi unuttun.
+kontrol: 0+1
+cozum: $a<0$ olduğu için $a$'ya bölünce yönler döner: $\frac{2a}{a}>b>\frac{-a}{a}$, yani $-1<b<2$. Tam sayılar 0 ve 1; toplam 1.
+
+@bolum s3 12 | Değişkenlerin aralığından ifadenin aralığı
+::kesfet esitsizlik-ifade
+
 ::fikir
 İfadeyi değil **her değişkenin etkisini** düşün: toplamda alt + alt, üst + üst; **çıkarmada** alt sınır $a_{\min} - b_{\max}$, üst sınır $a_{\max} - b_{\min}$. Çarpımda dört uç çarpımına bak.
 
@@ -254,7 +394,71 @@ E) 9 || İki ucu da dahil ettin.
 kontrol: 1-(-5)+1
 cozum: $x - y$ için alt sınır $-1 - 5 = -6$, üst sınır $4 - 2 = 2$: $-6 < x - y < 2$. Tam sayılar $-5, -4, -3, -2, -1, 0, 1$: 7 tane.
 
-@bolum s4 8 | İki bilinmeyenli eşitsizlikler
+@bolum s3b 15 | İfadenin aralığında derinleşme: bağımlı değişkenler ve tam sayılar
+::duzey baslik="Köşeler ne zaman yeter, ne zaman yetmez?"
+L1: İki değişken birbirinden bağımsız olarak kendi aralığında dolaşıyorsa toplam, fark ve çarpımın en küçük ve en büyük değeri köşelerdedir: $(a_{\min},b_{\min})$, $(a_{\min},b_{\max})$, $(a_{\max},b_{\min})$, $(a_{\max},b_{\max})$. Dördünü hesapla, en küçüğü ve en büyüğü seç.
+L2: Değişkenler birbirine bağlıysa ($a+b=6$ gibi) önce birini öbürü cinsinden yaz. $1<a<4$ ve $b=6-a$ için $ab=a(6-a)$; bağımsızmış gibi köşe almak ($2<ab<20$) yanlış ve çok geniş bir aralık verir. Doğru aralık $9-(a-3)^2$ biçiminden bulunur: $(5,9]$.
+L3: Değişkenler tam sayıysa aralığın içindeki her değer alınmayabilir; köşeleri tam sayılardan seç ve gerekirse ifadenin aldığı değerleri tek tek yaz. Bir noktanın konumu bir uzaklık koşuluyla verilmişse ($K=1+t$, $L=2-t$) tek bir değişkene inerek aralık bulunur.
+
+::ornek baslik="Çarpımda dört köşe"
+soru: $-2\leq a\leq1$ ve $-3\leq b\leq2$ olduğuna göre $a\cdot b$ hangi aralıktadır?
+1. Köşeler: $(-2)(-3)=6$, $(-2)(2)=-4$, $1\cdot(-3)=-3$, $1\cdot2=2$. || İşaretler karışık; dördünü de hesaplamak gerekir.
+2. En küçük $-4$, en büyük 6. || Köşelerin en küçüğü ve en büyüğü.
+3. $-4\leq ab\leq6$. || Uçlar kapalı; köşelere ulaşılabiliyor.
+cevap: $[-4,6]$. Uçları eşleştirmek ($(-2)(-3)$ ve $1\cdot2$) $[2,6]$ verirdi; $-4$ kaçardı.
+
+::ornek baslik="Bağımlı değişkenler"
+soru: $a+b=6$ ve $1<a<4$ olduğuna göre $a\cdot b$ hangi aralıktadır?
+1. $b=6-a$: $ab=a(6-a)=6a-a^2=9-(a-3)^2$. || Tek değişkene indik; tam kare biçimi en büyük değeri gösterir.
+2. $1<a<4$ ise $-2<a-3<1$; kare: $0\leq(a-3)^2<4$. || Aralık 0'ı içerdiği için karenin alt sınırı 0; üst sınır 0'dan en uzak uç ($-2$).
+3. $9-4<ab\leq9-0$: $5<ab\leq9$. || Kare büyüdükçe $ab$ küçülür.
+cevap: $(5,9]$. Bağımsız köşeler ($2<ab<20$) yanlış olurdu.
+
+::ornek baslik="Tam sayı değişkenler"
+soru: $x$ ve $y$ tam sayılar, $-2<x<3$ ve $1\leq y\leq4$ olduğuna göre $x\cdot y$'nin en küçük ve en büyük değeri kaçtır?
+1. Tam sayı değerleri: $x\in\{-1,0,1,2\}$, $y\in\{1,2,3,4\}$. || Açık uçlar ($-2$, 3) alınmaz.
+2. En küçük: negatif $x$ ile en büyük $y$: $(-1)\cdot4=-4$. || Negatif sayıyı büyük bir pozitifle çarpmak daha küçük sonuç verir.
+3. En büyük: $2\cdot4=8$. || İki pozitifin en büyükleri.
+cevap: En küçük $-4$, en büyük 8.
+
+::tamamla baslik="Sen dene · kare ve fark"
+soru: $1<a<3$ ve $-2<b<1$ olduğuna göre $a^2-b$ hangi aralıktadır?
+1. $1<a<3$ ve $a$ pozitif: $1<a^2<9$. || Pozitif aralıkta kare yönü korur.
+?2. $-2<b<1$ ise $-1<-b<2$. || $-1$ ile çarpınca uçlar yer değiştirir.
+?3. Topla: $0<a^2-b<11$. || Aynı yönlü eşitsizlikler toplanır.
+cevap: $(0,11)$
+
+::cikmis TYT-0613 tip=aralik-ifade
+
+::sorgula s3b-bahce baslik="Bahçeye ne kadar tel gerekir?"
+durum: Dikdörtgen bir bahçenin eni 4 m ile 6 m, boyu 7 m ile 10 m arasında olacak (uçlar dahil). Bahçenin çevresine bir sıra tel çekilecek.
+soru: Gereken tel uzunluğu hangi aralıktadır?
++A) 22 m ile 32 m arası || Çevre $2(e+b)$: en küçük $2(4+7)=22$, en büyük $2(6+10)=32$.
+B) 28 m ile 60 m arası || Bu, alanın aralığıdır ($4\cdot7$ ile $6\cdot10$).
+C) 11 m ile 16 m arası || Bu, en ile boyun toplamı; çevre bunun 2 katı.
+neden: Çevre en ve boyun ikisinde de artan bir ifadedir: ikisi en küçükken en küçük, ikisi en büyükken en büyük. $22\leq2(e+b)\leq32$.
+sinav: Her değişkenin ifadeyi büyütüp büyütmediğini sor; toplama ve pozitif çarpımda küçük + küçük, büyük + büyük eşleşir.
+dusun: Bahçenin alanı hangi aralıktadır?
+yanit: $4\cdot7=28$ ile $6\cdot10=60$ arası: $[28,60]$ m².
+
+::yanilgi m6 tip=aralik-ifade
+yanlis: $a+b=6$ ve $1<a<4$ ise $b$, 2 ile 5 arasındadır; o hâlde $ab$, $1\cdot2=2$ ile $4\cdot5=20$ arasındadır.
+neden: $a$ ile $b$ bağımsız değil: $a=4$'e yaklaşınca $b$ 2'ye yaklaşır; $a=4$, $b=5$ köşesi hiç oluşmaz.
+dogru: $b=6-a$ yazılır: $ab=9-(a-3)^2$ ve aralık $(5,9]$.
+
+::soru c7 tip=aralik-ifade zorluk=2
+$-3<a<2$ ve $-1<b<4$ olduğuna göre $a\cdot b$'nin alabileceği en büyük tam sayı değeri kaçtır?
+A) 3 || Bu, $(-3)(-1)$ köşesi; daha büyüğü var.
+B) 6 || Hesabı köşelerle tekrar et.
++C) 7 || Doğru: köşeler $3,-12,-2,8$; $ab<8$, en büyük tam sayı 7.
+D) 8 || 8 uç değer; eşitsizlikler kesin olduğu için ulaşılamaz.
+E) 12 || İşareti kaybettin: $(-3)\cdot4=-12$.
+kontrol: 8-1
+cozum: Köşeler $(-3)(-1)=3$, $(-3)(4)=-12$, $2\cdot(-1)=-2$, $2\cdot4=8$. Aralık $(-12,8)$; en büyük tam sayı 7.
+
+@bolum s4 12 | İki bilinmeyenli eşitsizlikler
+::kesfet esitsizlik-bolge
+
 ::fikir
 İki bilinmeyenli eşitsizlikte bir değişkeni **sırayla sabitle**, diğerinin alabileceği değerleri say. Grafikte $y > mx + n$ doğrunun **üstü**, $y < mx + n$ **altı**dır.
 
@@ -314,11 +518,77 @@ E) 7 || Uçlar dahil değil.
 kontrol: 2+3
 cozum: $x$ en çok 2; $y$, $x$'ten büyük ve 4'ten küçük: en çok 3. $x + y = 5$.
 
+@bolum s4b 15 | Eşitsizlik sistemleri ve düzlemde bölgeler
+::duzey baslik="Hangi taraf boyanır?"
+L1: $y>x+1$ doğrunun üst tarafıdır. Hangi tarafın boyanacağını bulmak için doğru üzerinde olmayan bir nokta dene; çoğu zaman orijin kolaydır: $(0,0)$ için $0>1$ yanlış, demek ki orijin bölgede değil, öbür taraf boyanır.
+L2: $ax+by\leq c$ biçiminde $y$'yi yalnız bırakırken $b$'ye bölünür: $b>0$ ise “$\leq$” doğrunun altını, $b<0$ ise üstünü verir. İki eşitsizliğin çözüm kümesi iki bölgenin kesişimidir; köşesi iki doğrunun kesim noktasıdır.
+L3: Bölge grafikle verilip katsayılar sorulduğunda doğruyu $y=mx+n$ biçimine getir: eğimin işareti (artan mı azalan mı) ve $y$ eksenini kestiği yer, katsayıların işaretlerini ayrı ayrı söyler. Sonra bölgedeki bir test noktasıyla eşitsizliğin yönünü doğrula. “En büyük $x+y$” gibi sorularda değer köşelerden birinde oluşur.
+
+::ornek baslik="Test noktasıyla taraf seçmek"
+soru: $2x-y<4$ eşitsizliğinin çözüm bölgesi $2x-y=4$ doğrusunun hangi tarafıdır?
+1. $y$'yi yalnız bırak: $-y<4-2x$, $-1$ ile çarp: $y>2x-4$. || Negatif sayıyla çarpınca yön değişti.
+2. Bölge doğrunun üstü. Orijinle kontrol: $2\cdot0-0=0<4$ doğru; orijin bölgede. || Orijin doğrunun üstünde ($0>-4$); iki yol aynı sonucu verdi.
+3. Sınır kesin ($<$) olduğu için doğru kesikli çizilir. || Doğru üzerindeki noktalar çözüm değildir.
+cevap: Doğrunun üst tarafı (orijinin bulunduğu taraf), sınır hariç.
+
+::ornek baslik="Sistemin tam sayılı noktaları"
+soru: $x\geq0$, $y\geq0$, $x+y\leq4$ ve $y\geq x$ koşullarını sağlayan kaç tam sayılı $(x,y)$ noktası vardır?
+1. $x=0$: $0\leq y\leq4$, 5 nokta. || $y\geq x$ ve $x+y\leq4$ birlikte $x\leq y\leq4-x$ verir.
+2. $x=1$: $1\leq y\leq3$, 3 nokta; $x=2$: $y=2$, 1 nokta. || $x=3$ için $3\leq y\leq1$ olur; boş.
+3. Toplam $5+3+1=9$. || Her satırdaki sayıları topladık.
+cevap: 9 nokta.
+
+::ornek baslik="En büyük değer köşede"
+soru: $x\geq0$, $y\geq0$, $x+2y\leq8$ ve $3x+y\leq9$ olduğuna göre $x+y$ en çok kaçtır?
+1. Bölgenin köşeleri: $(0,0)$, $(3,0)$, $(0,4)$ ve iki doğrunun kesimi. || Doğrusal bir ifade en büyük değerini köşede alır.
+2. Kesim: $x+2y=8$ ve $3x+y=9$; ikinciden $y=9-3x$, $x+18-6x=8$, $x=2$, $y=3$. || Yerine koyma.
+3. Köşelerde $x+y$: 0, 3, 4, 5. En büyüğü 5. || Kesim noktası $(2,3)$.
+cevap: 5
+
+::tamamla baslik="Sen dene · üçgen bölgedeki noktalar"
+soru: $x\geq1$, $y\geq1$ ve $y\leq-x+5$ koşullarını sağlayan kaç tam sayılı nokta vardır?
+1. $x=1$: $1\leq y\leq4$, 4 nokta. || Üst sınır $-x+5$.
+?2. $x=2$: 3 nokta; $x=3$: 2 nokta; $x=4$: 1 nokta. || Her adımda üst sınır 1 azalır.
+?3. Toplam $4+3+2+1=10$. || $x=5$ için $1\leq y\leq0$, boş.
+cevap: 10
+
+::cikmis TYT-0616 tip=iki-bilinmeyen
+
+::sorgula s4b-calisma baslik="Günlük çalışma planı"
+durum: Bir öğrenci günde en çok 6 saat ders çalışacak ve matematiğe en az fizik kadar zaman ayıracak. Bugün 3 saat matematik, 2 saat fizik planladı.
+soru: Bu plan kurallara uyuyor mu?
++A) Uyuyor: $3+2\leq6$ ve $3\geq2$ || İki koşul da sağlanıyor; nokta $(3,2)$ bölgenin içinde.
+B) Uymuyor: toplam 6 saati aşıyor || Toplam 5 saat; 6'yı aşmıyor.
+C) Uymuyor: matematik fizikten az || Matematik 3, fizik 2 saat; matematik daha fazla.
+neden: Kurallar $m+f\leq6$ ve $m\geq f$. $(m,f)=(3,2)$ için $5\leq6$ ve $3\geq2$: iki eşitsizlik de doğru. Plan, iki yarı düzlemin kesişiminde.
+sinav: Sözel kısıtları eşitsizliklere çevir; bir seçimin uygun olup olmadığını anlamak için noktayı bütün eşitsizliklerde dene.
+dusun: Bu kurallarla fiziğe en çok kaç saat ayrılabilir?
+yanit: $f\leq m$ ve $m+f\leq6$ ise $2f\leq6$, $f\leq3$: en çok 3 saat (3 saat matematikle).
+
+::yanilgi m7 tip=iki-bilinmeyen
+yanlis: “$\leq$” işareti her zaman doğrunun altını gösterir.
+neden: $y$'yi yalnız bırakırken negatif bir katsayıya bölünürse yön değişir: $x-y\leq2$, $y\geq x-2$ demektir; doğrunun üstü.
+dogru: Önce $y$'yi yalnız bırak ya da bir test noktası dene; tarafı işaret değil, son eşitsizlik söyler.
+
+::soru c8 tip=iki-bilinmeyen zorluk=2
+$x$ ve $y$ pozitif tam sayılar, $x+y\leq6$ ve $y>x$ olduğuna göre kaç $(x,y)$ ikilisi vardır?
+A) 4 || Yalnız $x=1$ satırını saydın.
+B) 5 || Bir ikiliyi eksik saydın.
++C) 6 || Doğru: $x=1$ için $y=2..5$ (4), $x=2$ için $y=3,4$ (2).
+D) 8 || $y\geq x$ gibi saydın; $y>x$ kesin.
+E) 9 || 0'ı da saydın; sayılar pozitif.
+kontrol: 4+2
+cozum: $x=1$: $1<y\leq5$, 4 değer; $x=2$: $2<y\leq4$, 2 değer; $x=3$: $3<y\leq3$, yok. Toplam 6.
+
 ::ozet
 - Köşeli parantez dahil, normal parantez hariç; $\infty$ her zaman açık.
 - Negatif sayıyla çarpma/bölmede yön değişir; çift taraflı eşitsizlikte üç parçaya aynı işlem.
 - İfadenin aralığı: çıkarmada $a_{\min} - b_{\max}$; çarpımda dört uç; karede 0'ı kontrol et.
 - İki bilinmeyende bir değişkeni sabitle, diğerini say.
+- “Aşmak” $>$, “aşmamak” $\leq$; eşitliği eşitsizliklerde yerine koyarak sıralama yap.
+- Harfe bölmeden önce işaretini bul; ters alma aynı işaretlilerde yönü çevirir.
+- Bağımlı değişkenlerde köşe kuralı yetmez; tek değişkene in.
+- Bölgeyi test noktasıyla seç; doğrusal ifadenin en büyüğü köşededir.
 
 @pratik
 - Çalışma sırası: aralık gösterimlerini sayı doğrusuyla eşleştirerek başla; sonra eşitsizlik çözme, en son aralıktan ifade aralığı sorularına geç.
@@ -335,6 +605,11 @@ cozum: $x$ en çok 2; $y$, $x$'ten büyük ve 4'ten küçük: en çok 3. $x + y 
 - $-3 \leq x \leq 2$ ise $x^2$? :: $0 \leq x^2 \leq 9$
 - $[a, b]$ ($a, b$ tam sayı) aralığındaki tam sayı sayısı :: $b - a + 1$
 - $y > mx + n$ grafikte nerededir? :: Doğrunun üst bölgesi (doğru kesikli).
+- “40'ı aşmayan” hangi işaret? :: $x\leq40$
+- $a<0$ iken $ab>2a$ ne verir? :: $b<2$ (negatife bölünce yön döner)
+- $2<x<5$ ise $\frac{1}{x}$? :: $\frac{1}{5}<\frac{1}{x}<\frac{1}{2}$
+- $a+b=6$, $1<a<4$ ise $ab$? :: $9-(a-3)^2$ ile: $(5,9]$
+- Bölgenin hangi taraf olduğunu nasıl anlarım? :: Doğru üzerinde olmayan bir test noktası (çoğu zaman orijin) dene.
 
 @ozet
 - Aralıklarda uçların dahil olup olmadığı parantez türüyle gösterilir; işlemleri aynı sayı doğrusunda yap.

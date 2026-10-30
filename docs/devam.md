@@ -12,11 +12,25 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 - Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
   Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
   olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
+- Durum: kullanıcı isteğiyle duraklatıldı. Devam ederken bu listeden sürdür.
 - Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`, `rasyonel-sayilar`,
-  `birinci-derece-denklemler`. Sıradaki: `esitsizlikler`, sonra `mutlak-deger` …
+  `birinci-derece-denklemler`, `esitsizlikler`. Sıradaki: `mutlak-deger`, sonra
+  `uslu-ifadeler`, `koklu-ifadeler`, `oran-oranti` ve `sira:` düzenindeki diğerleri.
+- Her ders için adımlar: (1) bankadaki ÖSYM kodlarının görselini aç, çöz, DB anahtarıyla
+  salt okuma doğrula; bölüm başına en çok bir `::cikmis`. (2) `frontend/src/learn/derin/`
+  altında `<ders>.js` + `<ders>-cizim.jsx` yaz, `derin/index.js` ve `derin/cizimler.jsx`
+  kayıtlarına ekle. (3) Rehberi `worked-exams.js`'e ekle, bankayı yeniden üret.
+  (4) `s1b…` bölümlerini ekle (düzey, sorgula, ≥3 gerekçeli örnek, kontrol); ilk bölümün
+  ilk bloğu dersin kendi giriş keşfi kalır. (5) `DERIN` listesine ekle, model ve gerçek
+  soru taramasını derin teste yaz. (6) Node testleri, ayrı pakette UI denetimleri
+  (`--kesif`, `--gercek-ornek`, `--duzey`, tam akış) ve lab görüntülerine bak.
+  (7) Kanıt tablosu, bu not, `python scripts/ivme.py kontrol`, commit, `git push ivme main`.
+- `esitsizlikler` keşif lab görüntüleri (`veri/ui-denetim/konu-ogrenme/*-kesif-lab-esitsizlik-*`)
+  testlerden geçti ama gözle henüz incelenmedi; devamda önce bunlara bak.
 - Banka eşlemesi “Birinci Dereceden Denklemler ve Eşitsizlikler” ÖSYM bloğunun çoğunu
-  `esitsizlikler`e atıyor; bir kısmı denklem, ondalık ya da geometri sorusu. Ders
-  derinleştirilirken görsel okunarak uygun soru doğru derse rehberle taşınır.
+  `esitsizlikler`e atıyor; bir kısmı denklem, mutlak değer ya da geometri sorusu.
+  TYT-0617 (üç bilinmeyenli içecek sistemi, cevap E) ve TYT-0623 (denklem) denklem
+  dersine; TYT-0605, 0608, 0615, 0618, 0619, 0622 mutlak değer dersine uygun adaylardır.
 
 ## Tamamlanan kapsam
 

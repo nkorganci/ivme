@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -231,4 +231,49 @@ test('birinci-derece-denklemler: keşif modelleri ve gerçek soruların bağıms
   for (let a = 0.5; a <= 40; a += 0.5) for (const b of [a + 8, a - 8]) if (b > 0 && Math.abs(b - 2 * a) === 3) heights.add(b);
   assert.deepEqual([...heights].sort((x, y) => x - y), [13, 19]);
   for (const [code, answer] of [['TYT-0604', 'E'], ['TYT-0607', 'B'], ['TYT-0611', 'C']]) assert.equal(WORKED_EXAMS[code].answer, answer);
+});
+
+test('esitsizlikler: keşif modelleri ve gerçek soruların bağımsız taraması', () => {
+  for (const a of range(-5, 5)) for (const b of range(-5, 5)) for (const k of range(-3, 3)) {
+    const m = model('esitsizlik-ayna', { a, b, k });
+    assert.equal(m.flipped, k < 0 && a !== b);
+  }
+  // Kesişim gösterimi, yarım adımlarla taranan üyelikle aynı olmalı.
+  const member = (cap, x) => {
+    if (cap === '∅') return false;
+    if (cap.startsWith('{')) return x === Number(cap.slice(1, -1).replace('−', '-'));
+    const [lo, hi] = cap.slice(1, -1).split(', ').map((t) => Number(t.replace('−', '-')));
+    return (cap[0] === '[' ? x >= lo : x > lo) && (cap.at(-1) === ']' ? x <= hi : x < hi);
+  };
+  for (const p of range(-4, 4)) for (const q of range(-4, 4)) for (const r of range(-4, 4)) for (const s of range(-4, 4)) {
+    const m = model('esitsizlik-aralik', { p, q, r, s });
+    for (let x = -6; x <= 6; x += 0.5) assert.equal(member(m.cap, x), p <= x && x < q && r < x && x <= s, `${p} ${q} ${r} ${s} ${x} ${m.cap}`);
+  }
+  for (const a1 of range(-3, 3)) for (const a2 of range(-3, 3)) for (const b1 of range(-3, 3)) for (const b2 of range(-3, 3)) for (const op of range(0, 3)) {
+    const m = model('esitsizlik-ifade', { a1, a2, b1, b2, op });
+    const vals = [];
+    for (let a = Math.min(a1, a2); a <= Math.max(a1, a2) + 1e-9; a += 0.25) for (let b = Math.min(b1, b2); b <= Math.max(b1, b2) + 1e-9; b += 0.25) vals.push([(x, y) => x + y, (x, y) => x - y, (x, y) => x * y, (x, y) => 2 * x - 3 * y][op](a, b));
+    assert.ok(Math.abs(Math.min(...vals) - m.min) < 1e-9 && Math.abs(Math.max(...vals) - m.max) < 1e-9);
+  }
+  for (const a of range(1, 4)) for (const b of range(1, 4)) for (const c of range(4, 16)) for (const strict of [0, 1]) for (const zero of [0, 1]) {
+    const m = model('esitsizlik-bolge', { a, b, c, strict, zero });
+    let n = 0;
+    for (let x = 1 - zero; x <= 8; x++) for (let y = 1 - zero; y <= 6; y++) if (strict ? a * x + b * y < c : a * x + b * y <= c) n++;
+    assert.equal(m.count, n);
+  }
+  // TYT-0614: S + Ç = K, Ç + M > K, M + S ≤ K → S < M ≤ Ç her zaman.
+  for (const S of range(1, 12)) for (const M of range(1, 12)) for (const C of range(1, 12)) {
+    const K = S + C;
+    if (C + M > K && M + S <= K) assert.ok(S < M && M <= C);
+  }
+  // TYT-0620: a > ab > 2a > ac → a < 0, 1 < b < 2, c > 2.
+  for (let a = -3; a <= 3; a += 0.5) for (let b = -3; b <= 3; b += 0.25) for (let c = -3; c <= 4; c += 0.25) {
+    if (a > a * b && a * b > 2 * a && 2 * a > a * c) assert.ok(a < 0 && b > 1 && b < 2 && c > 2);
+  }
+  // TYT-0613: K = 1 + t, L = 2 − t, 0 < t < 1/2 → 2 < KL < 2,25.
+  for (let t = 0.01; t < 0.5; t += 0.01) { const p = (1 + t) * (2 - t); assert.ok(p > 2 && p < 2.25); }
+  // TYT-0616: a > 0, b < 0, c < 0, d < 0 → bölge iki doğrunun altında, kesim üçüncü bölgede; (0, −10) çözüm.
+  const [a, b, c, d] = [1, -1, -1, -1];
+  assert.ok(0 + a * -10 <= b && 0 + c * -10 >= d);
+  for (const [code, answer] of [['TYT-0614', 'D'], ['TYT-0620', 'A'], ['TYT-0613', 'D'], ['TYT-0616', 'A']]) assert.equal(WORKED_EXAMS[code].answer, answer);
 });
