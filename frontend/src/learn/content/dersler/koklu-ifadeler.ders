@@ -99,6 +99,31 @@ L1: $\sqrt{16} = 4$, çünkü $4^2 = 16$. $\sqrt[3]{-27} = -3$, çünkü $(-3)^3
 L2: Rasyonel üs: $\sqrt[n]{a^m} = a^{m/n}$. Bu eşitlik köklü işlemleri üs kurallarına çevirir. $\sqrt{x^2} = |x|$, $\sqrt[3]{x^3} = x$: çift dereceli kök mutlak değer verir. $x^2 = 16$ denkleminin kökleri $\pm 4$'tür ama $\sqrt{16}$ yalnız 4'tür.
 L3: "$\sqrt{x - 3}$ bir gerçek sayı belirttiğine göre" ifadesi $x \geq 3$ koşulunu verir; birden çok kök varsa koşulların kesişimini al. Payda kök içerirse ($\frac{1}{\sqrt{x - 3}}$) içi sıfır da olamaz: $x > 3$.
 
+::ornek baslik="Kök ne zaman tanımlı?"
+soru: $\sqrt{6-2x}+\sqrt[3]{x-9}$ ifadesi hangi $x$ gerçek sayıları için tanımlıdır?
+1. Karekök çift dereceli: içi negatif olamaz, $6-2x\geq0$. || Kendisiyle çarpılınca negatif sonuç veren gerçek sayı yoktur.
+2. $-2x\geq-6$, yani $x\leq3$. || Negatif sayıya bölünce eşitsizlik yön değiştirdi.
+3. Küp kök tek dereceli: $x-9$ negatif olsa da tanımlıdır. || $(-2)^3=-8$ olduğu için $\sqrt[3]{-8}=-2$.
+cevap: $x\leq3$. Kontrol: $x=3$ için $\sqrt{0}+\sqrt[3]{-6}$ tanımlı; $x=4$ için $\sqrt{-2}$ tanımsız.
+
+::ornek baslik="Kare ile karekök sırası önemli mi?"
+soru: $\sqrt{(-5)^2}$, $(\sqrt{5})^2$ ve $\sqrt[3]{(-2)^3}$ değerlerini bul.
+1. $\sqrt{(-5)^2}=\sqrt{25}=5$. || Önce kare alındı, sonuç pozitif; karekök negatif olmayan sonucu verir: $\sqrt{x^2}=|x|$.
+2. $(\sqrt{5})^2=5$. || $\sqrt{5}$, karesi 5 olan pozitif sayıdır; tanım gereği.
+3. $\sqrt[3]{(-2)^3}=\sqrt[3]{-8}=-2$. || Tek dereceli kök işareti korur.
+cevap: $5$, $5$, $-2$. Çift dereceli kök mutlak değer verir; tek dereceli kök vermez.
+
+::sorgula s1-oda baslik="Alanı 50 m² olan kare oda"
+durum: Alanı 50 m² olan kare biçimli bir odanın kenar uzunluğunu bulmak istiyorsun.
+soru: Odanın kenarı için hangisi doğrudur?
+A) Tam 7 m || $7^2=49$; alan 50 değil 49 olurdu.
++B) $\sqrt{50}=5\sqrt{2}$ m, yani 7 m'den biraz fazla || Kenarın karesi alanı verir; $49<50<64$.
+C) 25 m || Alanı 2'ye böldün; kare alanı kenar × kenardır.
+neden: Kenar $a$ ise $a^2=50$, yani $a=\sqrt{50}=\sqrt{25\cdot2}=5\sqrt{2}$. $7^2=49$ ve $8^2=64$ olduğundan kenar 7 ile 8 arasında, 7'ye çok yakın: yaklaşık 7,07 m.
+sinav: “$\sqrt{50}$ hangi iki ardışık tam sayı arasındadır?” sorularında kök içini iki ardışık tam karenin arasına sıkıştırırsın.
+dusun: Odanın alanı iki katına (100 m²) çıksaydı kenar kaç kat büyürdü?
+yanit: Kenar $\sqrt{100}=10$ m olurdu; $\frac{10}{5\sqrt{2}}=\sqrt{2}$ kat. Alan 2 katına çıkınca kenar $\sqrt{2}$ katına çıkar.
+
 ::yanilgi m1 tip=kok-disi
 yanlis: $\sqrt{16} = \pm 4$
 neden: Karekök sembolü negatif olmayan kökü gösterir; $\pm$, $x^2 = 16$ denkleminin iki çözümünden gelir.
@@ -128,6 +153,24 @@ soru: $\sqrt{12} + \sqrt{27} - \sqrt{48}$ işleminin sonucu kaçtır?
 1. Her birini $\sqrt{3}$ cinsinden yaz: $\sqrt{12} = 2\sqrt{3}$, $\sqrt{27} = 3\sqrt{3}$, $\sqrt{48} = 4\sqrt{3}$. || Tam kareler: 4, 9, 16.
 2. Katsayıları topla: $(2 + 3 - 4)\sqrt{3} = \sqrt{3}$. || Benzer terimler gibi.
 cevap: $\sqrt{3}$
+
+::ornek baslik="Köklerle çarpma ve bölme"
+soru: $\frac{\sqrt{6}\cdot\sqrt{15}}{\sqrt{10}}$ işleminin sonucu kaçtır?
+1. Aynı dereceli kökler tek kök altında birleşir: $\sqrt{\frac{6\cdot15}{10}}$. || $\sqrt{a}\cdot\sqrt{b}=\sqrt{ab}$ ve $\frac{\sqrt{a}}{\sqrt{b}}=\sqrt{\frac{a}{b}}$; çarpma ve bölmede geçerli, toplamada değil.
+2. $\frac{90}{10}=9$. || Kök içini sadeleştirdik.
+3. $\sqrt{9}=3$. || Tam kare çıktı.
+cevap: 3
+
+::sorgula s2-arsa baslik="İki kare arsanın kenarları"
+durum: Yan yana iki kare arsanın alanları 18 m² ve 8 m².
+soru: İki arsanın kenar uzunluklarının toplamı kaç metredir?
+A) $\sqrt{26}$ m || Kökler toplanırken içleri toplanmaz: $\sqrt{18}+\sqrt{8}\neq\sqrt{26}$.
++B) $5\sqrt{2}$ m || $\sqrt{18}=3\sqrt{2}$, $\sqrt{8}=2\sqrt{2}$; toplam $5\sqrt{2}$.
+C) 13 m || Alanların ortalamasını aldın; kenar, alanın kareköküdür.
+neden: Kenarlar $\sqrt{18}=\sqrt{9\cdot2}=3\sqrt{2}$ ve $\sqrt{8}=\sqrt{4\cdot2}=2\sqrt{2}$. Kök içleri aynı olunca katsayılar toplanır: $5\sqrt{2}\approx7{,}07$ m.
+sinav: Toplama–çıkarma ancak kök içleri aynı olan terimler arasında yapılır; önce tam kareleri dışarı çıkar.
+dusun: Alanı 26 m² olan tek bir kare arsanın kenarı, iki kenarın toplamından büyük mü küçük mü?
+yanit: Küçük: $\sqrt{26}\approx5{,}1$ m, toplam ise yaklaşık $7{,}07$ m.
 
 ::yanilgi m2 tip=kok-disi
 yanlis: $\sqrt{9} + \sqrt{16} = \sqrt{25}$
@@ -162,9 +205,27 @@ cevap: $\sqrt{7} + \sqrt{3}$
 
 ::tamamla baslik="Eşlenik çarpımı"
 soru: $(\sqrt{5} + 2)(\sqrt{5} - 2)$ kaçtır?
-1. İki kare farkı: $(\sqrt{5})^2 - 2^2$.
-?2. $5 - 4 = 1$.
+1. İki kare farkı: $(\sqrt{5})^2 - 2^2$. || Toplam ile farkın çarpımı, kareler farkıdır.
+?2. $5 - 4 = 1$. || Kökün karesi kök içini verir.
 cevap: $1$
+
+::ornek baslik="Eşlenikle birbirini götüren terimler"
+soru: $\frac{1}{\sqrt{3}+\sqrt{2}}+\frac{1}{\sqrt{2}+1}$ işleminin sonucu kaçtır?
+1. Birinci kesri $\sqrt{3}-\sqrt{2}$ ile genişlet: payda $3-2=1$, kesir $\sqrt{3}-\sqrt{2}$. || Eşlenikle çarpınca payda kökten kurtulur.
+2. İkinci kesri $\sqrt{2}-1$ ile genişlet: payda $2-1=1$, kesir $\sqrt{2}-1$. || Aynı yöntem.
+3. Toplam $(\sqrt{3}-\sqrt{2})+(\sqrt{2}-1)=\sqrt{3}-1$. || Ortadaki $\sqrt{2}$'ler birbirini götürdü.
+cevap: $\sqrt{3}-1$. Kontrol: yaklaşık $0{,}318+0{,}414=0{,}732$.
+
+::sorgula s3-kagit baslik="A4 kâğıdının oranı"
+durum: A4 kâğıdında uzun kenarın kısa kenara oranı $\sqrt{2}$'dir. Kısa kenarın uzun kenara oranını hızlı hesaplamak istiyorsun.
+soru: $\frac{1}{\sqrt{2}}$ oranının hesaplaması en kolay biçimi hangisidir?
++A) $\frac{\sqrt{2}}{2}$ || Pay ve paydayı $\sqrt{2}$ ile çarptık; $\frac{1{,}414}{2}\approx0{,}707$.
+B) $\frac{2}{\sqrt{2}}$ || Bu $\sqrt{2}$'ye eşittir; istenen oran değil.
+C) $1{,}41$ || Bu uzun kenarın kısa kenara oranıdır; tersini istiyoruz.
+neden: $\frac{1}{\sqrt{2}}=\frac{1\cdot\sqrt{2}}{\sqrt{2}\cdot\sqrt{2}}=\frac{\sqrt{2}}{2}$. Paydayı kökten kurtarınca bölme, yaklaşık değeri 2'ye bölmeye dönüşür: $0{,}707$.
+sinav: Paydada tek kök varsa aynı kökle, $\sqrt{a}\pm\sqrt{b}$ varsa eşleniğiyle genişlet.
+dusun: A4 kâğıdı uzun kenarından ortadan katlanınca A5 olur. A5'te uzun kenarın kısa kenara oranı yine $\sqrt{2}$ midir?
+yanit: Evet. Kenarlar $a$ ve $a\sqrt{2}$ ise A5'in kenarları $\frac{a\sqrt{2}}{2}$ ve $a$; oran $\frac{a}{a\sqrt{2}/2}=\frac{2}{\sqrt{2}}=\sqrt{2}$.
 
 ::yanilgi m3 tip=eslenik
 yanlis: $\frac{1}{\sqrt{5} - \sqrt{3}} = \frac{1}{\sqrt{5}} - \frac{1}{\sqrt{3}}$
@@ -198,9 +259,27 @@ cevap: $\sqrt{5} + \sqrt{2}$
 
 ::tamamla baslik="Eksi işaretli"
 soru: $\sqrt{8 - 2\sqrt{15}}$ ifadesini sadeleştir.
-1. Toplamı 8, çarpımı 15: 5 ve 3.
+1. Toplamı 8, çarpımı 15: 5 ve 3. || $(\sqrt{m}-\sqrt{n})^2=m+n-2\sqrt{mn}$ olduğundan $m+n=8$, $mn=15$ aranır.
 ?2. Eksi durumda büyük önce: $\sqrt{5} - \sqrt{3}$. || Sonuç pozitif olmalı.
 cevap: $\sqrt{5} - \sqrt{3}$
+
+::ornek baslik="Önce $2\sqrt{b}$ biçimine getir"
+soru: $\sqrt{11+\sqrt{72}}$ ifadesini sadeleştir.
+1. $\sqrt{72}=\sqrt{4\cdot18}=2\sqrt{18}$; ifade $\sqrt{11+2\sqrt{18}}$. || Kuralı kullanmak için kökün önünde 2 katsayısı gerekir.
+2. Toplamı 11, çarpımı 18 olan iki sayı: 9 ve 2. || $m+n=11$, $mn=18$.
+3. $\sqrt{9}+\sqrt{2}=3+\sqrt{2}$. || 9 tam kare; bir terim sadeleşti.
+cevap: $3+\sqrt{2}$. Kontrol: $(3+\sqrt{2})^2=9+6\sqrt{2}+2=11+6\sqrt{2}$ ve $6\sqrt{2}=\sqrt{72}$.
+
+::sorgula s4-hali baslik="Kare halının kenarı"
+durum: Kare biçimli bir halının alanı $5+2\sqrt{6}$ m² olarak hesaplandı.
+soru: Halının kenar uzunluğu kaç metredir?
+A) $\sqrt{5}+\sqrt{6}$ m || Karesi $11+2\sqrt{30}$ eder; alanı vermez.
++B) $\sqrt{3}+\sqrt{2}$ m || $(\sqrt{3}+\sqrt{2})^2=3+2+2\sqrt{6}=5+2\sqrt{6}$.
+C) $5+\sqrt{6}$ m || Kök almadan kenar yazılamaz; bu sayı alandan bile büyük.
+neden: Kenar $\sqrt{5+2\sqrt{6}}$'dır. Toplamı 5, çarpımı 6 olan iki sayı 3 ve 2: kenar $\sqrt{3}+\sqrt{2}\approx3{,}15$ m. Kontrol için kenarın karesini al.
+sinav: $\sqrt{a\pm2\sqrt{b}}$ kalıbında toplamı $a$, çarpımı $b$ olan sayıları ara; eksi işaretlide büyükten küçüğü çıkar.
+dusun: Alan $5-2\sqrt{6}$ m² olsaydı kenar ne olurdu?
+yanit: $\sqrt{3}-\sqrt{2}\approx0{,}32$ m. Büyükten küçüğü çıkardık; kenar pozitif olmalı.
 
 ::soru c4 tip=ic-ice zorluk=2
 $\sqrt{9 - 2\sqrt{14}}$ ifadesi aşağıdakilerden hangisine eşittir?
@@ -230,6 +309,25 @@ cevap: $c < a < b$
 ::bosluk b1 cevap=18 tip=denklem zorluk=1
 $\sqrt{x - 2} + 5 = 9$ olduğuna göre $x$ kaçtır?
 cozum: $\sqrt{x - 2} = 4 \Rightarrow x - 2 = 16 \Rightarrow x = 18$. Dene: $\sqrt{16} + 5 = 9$ ✓
+
+::ornek baslik="Kare almak sahte kök doğurabilir"
+soru: $\sqrt{x-5}=-2$ denklemini çöz.
+1. İki tarafın karesini al: $x-5=4$, $x=9$. || Kökten kurtulmak için kare aldık; bu adım yeni çözümler ekleyebilir.
+2. Dene: $\sqrt{9-5}=\sqrt{4}=2\neq-2$. || Bulunan değeri her zaman ilk denklemde kontrol et.
+3. Karekök negatif olmayan sonuç verir; $-2$'ye hiç eşit olamaz. || Bunu baştan görmek, işlemi gereksiz kılardı.
+cevap: Çözüm yok, ÇK $=\varnothing$.
+
+::sorgula s5-tas baslik="Düşen taş kaç saniyede yere ulaşır?"
+durum: Hava direnci yok sayılırsa $h$ metreden bırakılan bir taş yaklaşık $t=\sqrt{\frac{h}{5}}$ saniyede yere düşer. 20 metreden bırakılan taş 2 saniyede düşüyor.
+soru: 80 metreden bırakılan taş kaç saniyede düşer?
+A) 8 saniye || Yükseklik 4 katına çıktı ama süre karekökle değişir; 4 katına çıkmaz.
++B) 4 saniye || $\sqrt{\frac{80}{5}}=\sqrt{16}=4$.
+C) $2\sqrt{2}$ saniye || Bu, yükseklik 2 katına (40 m) çıksaydı geçerli olurdu.
+kontrol: sqrt(80/5)
+neden: $t=\sqrt{\frac{80}{5}}=\sqrt{16}=4$. Yükseklik 4 katına çıkınca süre $\sqrt{4}=2$ katına çıkar: $2\cdot2=4$ saniye.
+sinav: $\sqrt{k\cdot a}=\sqrt{k}\cdot\sqrt{a}$: kök içindeki bir çarpan, dışarı karekökü olarak çıkar.
+dusun: Düşme süresini 3 katına çıkarmak için yükseklik kaç katına çıkmalı?
+yanit: 9 katına. 20 m yerine 180 m: $\sqrt{\frac{180}{5}}=\sqrt{36}=6$ saniye.
 
 ::yanilgi m4 tip=denklem
 yanlis: $\sqrt{x} + 13 = 8$ ise $\sqrt{x} = -5$ ve $x = 25$.

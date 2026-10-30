@@ -104,6 +104,33 @@ L1: $2^3 = 2 \cdot 2 \cdot 2 = 8$. Üssü bir azaltınca 2'ye bölersin: $2^2 = 
 L2: $a^0 = 1$ ($a \neq 0$; $0^0$ belirsizdir), $a^{-n} = \frac{1}{a^n}$, $(\frac{a}{b})^{-n} = (\frac{b}{a})^n$. İşaret: negatif tabanın çift kuvveti pozitif, tek kuvveti negatiftir. $-2^4$ ile $(-2)^4$ farklıdır: üs yalnız hemen önündeki sayıya etki eder, $-2^4 = -16$.
 L3: Tanımlar kuralları korumak için seçilmiştir: $a^m \cdot a^n = a^{m+n}$ kuralının $n = 0$'da da geçerli olması için $a^0 = 1$ olmalı; $a^n \cdot a^{-n} = a^0 = 1$ olması için $a^{-n} = \frac{1}{a^n}$ olmalı. Ezberlemek yerine bu tutarlılığı hatırlarsan kuralı unutmazsın.
 
+::ornek baslik="Parantez ve negatif üs aynı şey değil"
+soru: $(-3)^2$, $-3^2$, $3^{-2}$ ve $(-3)^{-2}$ sayılarını hesapla.
+1. $(-3)^2=(-3)\cdot(-3)=9$. || Parantez varsa üs eksi işaretine de uygulanır.
+2. $-3^2=-(3\cdot3)=-9$. || Parantez yoksa üs yalnız 3'e etki eder; eksi en sonda gelir.
+3. $3^{-2}=\frac{1}{3^2}=\frac{1}{9}$. || Negatif üs “ters çevir” demektir; sayıyı negatif yapmaz.
+4. $(-3)^{-2}=\frac{1}{(-3)^2}=\frac{1}{9}$. || Önce ters çevir, sonra çift kuvvet işareti siler.
+cevap: $9$, $-9$, $\frac{1}{9}$, $\frac{1}{9}$. Kontrol: dördünden yalnız biri negatif; o da parantezsiz olan.
+
+::ornek baslik="Kesrin negatif kuvveti"
+soru: $\left(\frac{2}{3}\right)^{-2}+4^0-2^{-1}$ işleminin sonucu kaçtır?
+1. $\left(\frac{2}{3}\right)^{-2}=\left(\frac{3}{2}\right)^2=\frac{9}{4}$. || Kesrin negatif kuvvetinde kesir ters çevrilir, üs pozitif olur.
+2. $4^0=1$ ve $2^{-1}=\frac{1}{2}$. || Sıfırdan farklı her sayının 0. kuvveti 1'dir.
+3. $\frac{9}{4}+1-\frac{1}{2}=\frac{9}{4}+\frac{4}{4}-\frac{2}{4}=\frac{11}{4}$. || Paydaları 4'te eşitledik.
+cevap: $\frac{11}{4}$
+
+::sorgula s1-bakteri baslik="Bakteriler 3 saat önce kaç taneydi?"
+durum: Bir laboratuvar kabındaki bakteri sayısı her saat 2 katına çıkıyor. Şu an kapta 800 bakteri var.
+soru: 3 saat önce kapta kaç bakteri vardı?
+A) 6400 || Bu, 3 saat sonraki sayıdır: $800\cdot2^3$.
++B) 100 || Geriye gitmek her saat 2'ye bölmektir: $800\cdot2^{-3}=\frac{800}{8}$.
+C) Yaklaşık 267 || $800:3$ yaptın; her saat sayı 3 azalmıyor, yarıya iniyor.
+kontrol: 800/8
+neden: $t$ saat sonraki sayı $800\cdot2^{t}$'dir. $t=-3$ geçmişi gösterir: $800\cdot2^{-3}=\frac{800}{2^3}=100$. Şu an $t=0$ ve $800\cdot2^0=800$; sıfırıncı kuvvetin 1 olması da bu örüntüden gelir.
+sinav: $a^{-n}=\frac{1}{a^n}$ kuralı “geriye doğru aynı oranda küçülme” demektir. İşlemde negatif üsleri önce kesre çevir.
+dusun: 5 saat sonra kapta kaç bakteri olur?
+yanit: $800\cdot2^5=800\cdot32=25\,600$.
+
 ::yanilgi m1 tip=negatif-sifir
 yanlis: $2^{-3} = -8$
 neden: Negatif üs bir işaret değil, çarpma işlemine göre ters alma talimatıdır.
@@ -146,6 +173,25 @@ soru: $\frac{8^3 \cdot 4^2}{16^3}$ işleminin sonucu kaçtır?
 2. Pay: $2^{9+4} = 2^{13}$; bölüm: $2^{13 - 12} = 2^1$. || Çarpımda topla, bölümde çıkar.
 cevap: $2$
 
+::ornek baslik="Üsleri aynı tabanları birleştir"
+soru: $2^5\cdot5^7$ sayısını hesapla ve kaç basamaklı olduğunu bul.
+1. $5^7=5^5\cdot5^2$ diye ayır. || Üsleri eşit olan çarpımları birleştirebilmek için ortak üs oluşturduk.
+2. $2^5\cdot5^5=(2\cdot5)^5=10^5$. || Üsler aynıysa tabanlar çarpılır: $a^n\cdot b^n=(ab)^n$.
+3. $10^5\cdot5^2=25\cdot10^5=2\,500\,000$. || Kalan çarpanı ayrıca yazdık.
+cevap: $2\,500\,000$; 7 basamaklı.
+
+::sorgula s2-kagit baslik="Kâğıdı 10 kez katlamak"
+durum: 0,1 mm kalınlığındaki bir kâğıt her katlanışta iki kat kalınlaşıyor. Kâğıdı (teorik olarak) 10 kez katladığını düşün.
+soru: Kâğıdın kalınlığı kaç mm olur?
+A) 2 mm || $0{,}1\cdot2\cdot10$ yaptın; her katlama kalınlığa 0,2 mm eklemiyor, kalınlığı 2 ile çarpıyor.
++B) 102,4 mm || $0{,}1\cdot2^{10}=0{,}1\cdot1024$.
+C) 1 mm || $0{,}1\cdot10$; katlama sayısıyla çarpmak yanlıştır.
+kontrol: 0.1*1024
+neden: Her katlama bir kez 2 ile çarpmaktır; 10 katlama $2\cdot2\cdots2=2^{10}=1024$ kat demektir. $0{,}1\cdot1024=102{,}4$ mm, yani 10 cm'den fazla. Önce 5, sonra 5 kez daha katlarsan $2^5\cdot2^5=2^{10}$: üsler toplanır.
+sinav: Tekrarlanan çarpma üstür; aynı tabanlı çarpımlarda üsler toplanır, kuvvetin kuvvetinde çarpılır.
+dusun: Kâğıt 20 kez katlanabilseydi kalınlık yaklaşık kaç metre olurdu?
+yanit: $0{,}1\cdot2^{20}=0{,}1\cdot1\,048\,576\approx104\,858$ mm, yani yaklaşık 105 metre.
+
 ::yanilgi m2 tip=kurallar
 yanlis: $2^3 \cdot 2^4 = 2^{12}$
 neden: Üsler yalnız kuvvetin kuvvetinde çarpılır; aynı tabanlı çarpımda toplanır.
@@ -179,9 +225,27 @@ cevap: $x = 2$
 
 ::tamamla baslik="Kesirli ifade"
 soru: $\frac{5^{n+1} + 5^n}{5^n}$ ifadesinin değeri kaçtır?
-1. Payı $5^n$ parantezine al: $5^n(5 + 1) = 6 \cdot 5^n$.
-?2. Sadeleştir: $\frac{6 \cdot 5^n}{5^n} = 6$.
+1. Payı $5^n$ parantezine al: $5^n(5 + 1) = 6 \cdot 5^n$. || Pay toplamdır; üsler toplanmaz, önce ortak çarpanı dışarı aldık.
+?2. Sadeleştir: $\frac{6 \cdot 5^n}{5^n} = 6$. || Pay ve paydadaki aynı çarpan sadeleşir.
 cevap: $6$ ($n$'den bağımsız)
+
+::ornek baslik="Toplamdan üssü bul"
+soru: $5^{x+1}+5^x=150$ olduğuna göre $x$ kaçtır?
+1. En küçük kuvvet $5^x$; $5^{x+1}=5\cdot5^x$. || Her terimi aynı kuvvetin katı olarak yazdık.
+2. $5^x(5+1)=150$, yani $6\cdot5^x=150$ ve $5^x=25$. || Ortak paranteze alınca tek üslü terim kaldı.
+3. $25=5^2$, dolayısıyla $x=2$. || Tabanlar eşitse üsler eşittir.
+cevap: $x=2$. Kontrol: $125+25=150$.
+
+::sorgula s3-depo baslik="İki depo birleşince"
+durum: İki ayrı depoda $2^{10}$'ar litre su var. İki deponun suyu büyük tek bir depoya boşaltılıyor.
+soru: Büyük depoda kaç litre su olur?
+A) $2^{20}$ litre || Toplamada üsler toplanmaz. $2^{20}$ yaklaşık bir milyon litre eder; iki depo bu kadar tutmaz.
++B) $2^{11}$ litre || $2^{10}+2^{10}=2\cdot2^{10}=2^{11}=2048$.
+C) $4^{10}$ litre || Tabanları toplamak da yanlış; $4^{10}=2^{20}$ eder.
+neden: Aynı miktardan iki tane: $2\cdot2^{10}=2^{1}\cdot2^{10}=2^{11}$. Çarpımda üsler toplanır; toplamada ise önce ortak parantez alınır. $2^{10}=1024$ ve $2\cdot1024=2048=2^{11}$.
+sinav: $a^x+a^x=2a^x$; $3^x+3^x+3^x=3\cdot3^x=3^{x+1}$. Ortak paranteze al, sonra çarpımı tek kuvvete çevir.
+dusun: Dört depo birleşseydi kaç litre olurdu? Tek bir 2'nin kuvveti olarak yaz.
+yanit: $4\cdot2^{10}=2^2\cdot2^{10}=2^{12}=4096$ litre.
 
 ::yanilgi m3 tip=ortak-paranteze
 yanlis: $2^x + 2^x = 2^{2x}$
@@ -212,6 +276,24 @@ soru: $a = 2^{30}$, $b = 3^{20}$, $c = 5^{10}$ sayılarını sırala.
 1. Üslerin EBOB'u 10: $a = (2^3)^{10} = 8^{10}$, $b = (3^2)^{10} = 9^{10}$, $c = 5^{10}$. || Ortak üs.
 2. Tabanlar: $5 < 8 < 9$. || Üs aynı, taban büyük olan büyük.
 cevap: $c < a < b$
+
+::ornek baslik="Çok büyük iki sayıyı hesaplamadan karşılaştır"
+soru: $2^{100}$ mü büyüktür, $10^{30}$ mu?
+1. Ortak üs 10 olsun: $2^{100}=(2^{10})^{10}$ ve $10^{30}=(10^3)^{10}$. || Üsleri eşitleyince yalnız tabanları karşılaştırırız.
+2. $2^{10}=1024$ ve $10^3=1000$. || İki taban da tanıdık sayılar.
+3. $1024>1000$ olduğundan $1024^{10}>1000^{10}$, yani $2^{100}>10^{30}$. || Üs pozitif ve aynıysa büyük taban büyük sayı verir.
+cevap: $2^{100}$ daha büyüktür.
+
+::sorgula s4-odul baslik="Hangi ödülü seçmeli?"
+durum: Bir yarışmada iki ödül seçeneği var: A) $2^{30}$ kuruş, B) $10^{9}$ kuruş (10 milyon lira).
+soru: Hangi ödül daha büyüktür?
++A) $2^{30}$ kuruş || $2^{30}=(2^{10})^3=1024^3>1000^3=10^9$.
+B) $10^{9}$ kuruş || $10^9=1000^3$; $1024^3$ bundan büyüktür.
+C) İkisi eşittir || $2^{10}$ ile $10^3$ yakın ama eşit değil; fark üçüncü kuvvette büyür.
+neden: Üsleri eşitle: $2^{30}=1024^3$ ve $10^9=1000^3$. Taban büyük olan büyük: $2^{30}=1\,073\,741\,824$ kuruş, yaklaşık 10,7 milyon lira.
+sinav: Sıralama sorularında ortak üs ya da ortak taban kur. $2^{10}\approx10^3$ yaklaşımı büyüklük tahmini için çok kullanışlıdır.
+dusun: $2^{40}$ ile $10^{12}$'yi karşılaştır.
+yanit: $2^{40}=1024^4>1000^4=10^{12}$; $2^{40}$ daha büyüktür.
 
 ::yanilgi m4 tip=siralama
 yanlis: Üssü büyük olan üslü sayı her zaman daha büyüktür.
@@ -245,14 +327,33 @@ cevap: $x = 5$
 
 ::tamamla baslik="$a^b = 1$ üç durum"
 soru: $(x - 3)^{x+2} = 1$ denklemini sağlayan $x$ değerlerinin toplamı kaçtır?
-1. Üs 0: $x + 2 = 0 \Rightarrow x = -2$; taban $-5 \neq 0$ ✓.
+1. Üs 0: $x + 2 = 0 \Rightarrow x = -2$; taban $-5 \neq 0$ ✓. || Sıfırdan farklı her sayının 0. kuvveti 1; tabanın 0 olmadığını kontrol ettik.
 ?2. Taban 1: $x - 3 = 1 \Rightarrow x = 4$ ✓. || Her kuvveti 1'dir.
-?3. Taban $-1$: $x - 3 = -1 \Rightarrow x = 2$; üs $4$ çift ✓. Toplam $-2 + 4 + 2 = 4$.
+?3. Taban $-1$: $x - 3 = -1 \Rightarrow x = 2$; üs $4$ çift ✓. Toplam $-2 + 4 + 2 = 4$. || $-1$'in yalnız çift kuvvetleri 1'dir; üssün çift olduğunu kontrol ettik.
 cevap: $4$
 
 ::bosluk b1 cevap=-1 tip=denklem zorluk=2
 $3^{2x - 1} = \frac{1}{27}$ olduğuna göre $x$ kaçtır?
 cozum: $\frac{1}{27} = 3^{-3}$; $2x - 1 = -3$, $x = -1$.
+
+::ornek baslik="Tabanı 1'den küçük üslü eşitsizlik"
+soru: $\left(\frac{1}{3}\right)^{x-1}>9$ eşitsizliğini çöz.
+1. Tabanı 3 yap: $\left(\frac{1}{3}\right)^{x-1}=3^{-(x-1)}=3^{1-x}$ ve $9=3^2$. || Tabanı 1'den büyük yazınca yön hatası riski kalkar.
+2. Taban $3>1$: üsler aynı yönde karşılaştırılır: $1-x>2$. || Büyük kuvvet, büyük sayı.
+3. $-x>1$, yani $x<-1$. || $-1$ ile çarpınca yön değişti.
+cevap: $x<-1$. Kontrol: $x=-2$ için $\left(\frac{1}{3}\right)^{-3}=27>9$; $x=0$ için $3>9$ yanlış.
+
+::sorgula s5-top baslik="Sekerek alçalan top"
+durum: Bir top 160 cm yükseklikten bırakılıyor. Her sekişte bir önceki yüksekliğin yarısına çıkıyor.
+soru: Top kaçıncı sekişten sonra ilk kez 10 cm'nin altına çıkar?
+A) 4. sekişten sonra || 4. sekişte $160\cdot\left(\frac{1}{2}\right)^4=10$ cm; tam 10, altında değil.
++B) 5. sekişten sonra || $160\cdot\left(\frac{1}{2}\right)^5=5$ cm.
+C) 16. sekişten sonra || $160:10=16$; yükseklik her sekişte 10 cm azalmıyor, yarıya iniyor.
+kontrol: 5
+neden: $n$. sekişteki yükseklik $160\cdot\left(\frac{1}{2}\right)^n=\frac{160}{2^n}$. $\frac{160}{2^n}<10$ için $2^n>16=2^4$, yani $n>4$. İlk tam sayı $n=5$.
+sinav: Taban 0 ile 1 arasındayken üs büyüdükçe değer küçülür. Eşitsizliği tabanı 1'den büyük olacak şekilde yazmak ($2^n>16$) yön hatasını önler.
+dusun: Top kaçıncı sekişten sonra ilk kez 1 cm'nin altına çıkar?
+yanit: $2^n>160$; $2^7=128$ yetmez, $2^8=256$ yeter. 8. sekişten sonra (0,625 cm).
 
 ::yanilgi m5 tip=denklem
 yanlis: $a^b = 1$ ise mutlaka $b = 0$'dır.
