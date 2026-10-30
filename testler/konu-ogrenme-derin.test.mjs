@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -149,4 +149,51 @@ test('ebob-ekok: keşif modelleri ve gerçek soruların bağımsız taraması', 
   }
   assert.deepEqual([...totals], [10]);
   for (const [code, answer] of [['AYT_Sayisal-0018', 'A'], ['AYT_Sayisal-0035', 'C']]) assert.equal(WORKED_EXAMS[code].answer, answer);
+});
+
+test('rasyonel-sayilar: keşif modelleri ve gerçek soruların bağımsız taraması', () => {
+  for (const f of range(0, 9)) for (const g of range(0, 9)) for (const op of [0, 1]) {
+    const m = model('rasyonel-ortakpayda', { f, g, op });
+    const exact = op ? Math.abs(m.a * m.d - m.c * m.b) : m.a * m.d + m.c * m.b;
+    assert.equal(m.R * m.b * m.d, exact * m.l);
+    assert.equal(m.l % m.b, 0); assert.equal(m.l % m.d, 0);
+  }
+  for (const f of range(0, 4)) for (const g of range(0, 5)) {
+    const m = model('rasyonel-bolme', { f, g });
+    assert.equal(m.whole * m.den + m.rest, m.a * m.d); assert.equal(m.den, m.b * m.c);
+    assert.ok(m.rest >= 0 && m.rest < m.den);
+  }
+  for (const x of range(0, 4)) for (const k of range(-3, 3)) {
+    const m = model('rasyonel-virgul', { x, k });
+    const num = (t) => Number(t.replace(',', '.'));
+    assert.ok(Math.abs(num(m.to) - num(m.from) * 10 ** k) < 1e-9 * Math.max(1, num(m.to)));
+  }
+  const twoFive = (n) => { while (n % 2 === 0) n /= 2; while (n % 5 === 0) n /= 5; return n === 1; };
+  for (const a of range(1, 12)) for (const n of range(0, 11)) {
+    const m = model('rasyonel-devirli', { a, n });
+    assert.equal(m.finite, twoFive(m.q));
+    const head = m.finite ? m.digits : m.digits.slice(0, m.start), cyc = m.finite ? [] : m.digits.slice(m.start);
+    let value = m.whole + head.reduce((s, d, i) => s + d / 10 ** (i + 1), 0);
+    if (cyc.length) value += Number(cyc.join('')) / (10 ** head.length * (10 ** cyc.length - 1));
+    assert.ok(Math.abs(value - m.p / m.q) < 1e-12, `${a}/${m.q}`);
+    if (!m.finite) assert.ok(cyc.length <= m.q - 1);
+  }
+  for (const a of range(1, 15)) for (const b of range(2, 15)) for (const [c, d] of [[3, 4], [5, 7], [11, 14], [1, 2]]) {
+    const m = model('rasyonel-sayidogrusu', { a, b, c, d });
+    assert.equal(m.cmp, a / b > c / d + 1e-12 ? '>' : a / b < c / d - 1e-12 ? '<' : '=');
+    assert.ok(m.mid >= Math.min(m.x, m.y) - 1e-12 && m.mid <= Math.max(m.x, m.y) + 1e-12);
+  }
+  // TYT-0574: toplamı 1 olan iki ikili kurulunca dışarıda kalan sayı.
+  const list = [[1, 3], [1, 6], [6, 8], [8, 12], [9, 36]];
+  const one = ([p, q], [r, s]) => p * s + r * q === q * s;
+  const left = list.filter((x, i) => { const rest = list.filter((_, j) => j !== i); return one(rest[0], rest[1]) && one(rest[2], rest[3]) || one(rest[0], rest[2]) && one(rest[1], rest[3]) || one(rest[0], rest[3]) && one(rest[1], rest[2]); });
+  assert.deepEqual(left, [[1, 6]]);
+  // TYT-0557: kuruşla hesap; para üstü 20 kuruş.
+  assert.equal(1000 - (5 * 99 + 110 + 3 * 125), 20);
+  // TYT-0566: A, B, C delikleri 1., 3. ve 6. delik; milimetreyle.
+  const gap = (781 - 743) / 2;
+  assert.equal(743 + 5 * gap, 838);
+  // TYT-0562: leke 1,2 m ile 4/3 m arasında; seçeneklerden yalnız 1,3.
+  assert.deepEqual([11, 13, 14, 16, 17].filter((t) => t > 12 && 3 * t < 40), [13]);
+  for (const [code, answer] of [['TYT-0574', 'A'], ['TYT-0557', 'A'], ['TYT-0566', 'B'], ['TYT-0562', 'B']]) assert.equal(WORKED_EXAMS[code].answer, answer);
 });

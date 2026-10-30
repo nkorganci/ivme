@@ -47,8 +47,10 @@ ondalik 1 1-2
 devirli 1 1-3
 siralama 2 1-3
 
-@oturum Kesirlerle işlemler | s1 s2
-@oturum Ondalık, devirli ve sıralama | s3 s4 s5
+@oturum Kesirlerle toplama ve çıkarma | s1 s1b
+@oturum Çarpma, bölme ve iç içe kesirler | s2 s2b
+@oturum Ondalık ve devirli sayılar | s3 s3b s4 s4b
+@oturum Sıralama ve sayı doğrusu | s5 s5b
 
 @ontest
 ::soru o1 tip=kesir-islem zorluk=1
@@ -148,7 +150,74 @@ E) $1$ || $\frac{12}{12}$ olmaz; payların toplamı 11.
 kontrol: 3/4-1/6+1/3
 cozum: EKOK(4, 6, 3) = 12: $\frac{9}{12} - \frac{2}{12} + \frac{4}{12} = \frac{11}{12}$.
 
-@bolum s2 10 | Çarpma, bölme ve merdiven kesirler
+@bolum s1b 15 | Toplama ve çıkarmada derinleşme: tam sayılı kesirler ve sadeleşen toplamlar
+::kesfet rasyonel-ortakpayda
+
+::duzey baslik="Ortak paydayı akıllıca kullanmak"
+L1: Tam sayılı kesirlerde tam kısımları ve kesir kısımlarını ayrı topla: $3\frac{1}{4}+2\frac{2}{3}=5+\frac{3}{12}+\frac{8}{12}=5\frac{11}{12}$. Çıkarmada kesir kısmı yetmezse bir tamı ödünç al: $5\frac{1}{6}-2\frac{3}{4}$'te $\frac{1}{6}<\frac{3}{4}$, bu yüzden $5\frac{1}{6}=4\frac{7}{6}$ yazılır.
+L2: Bir kesrin 1'e tamamlayıcısı $1-\frac{a}{b}=\frac{b-a}{b}$'dir. “Geriye ne kaldı?”, “dolması için ne kadar gerekir?” soruları bu tamamlayıcıyı sorar. Sonucu akılla kontrol et: toplam her terimden büyük, kalan 0 ile 1 arasında olmalı.
+L3: Paydası iki çarpanın çarpımı olan uzun toplamlar sadeleşir: $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$ ve genel olarak $\frac{k}{n(n+k)}=\frac{1}{n}-\frac{1}{n+k}$. Payda farkı 2 ise her terim $\frac{1}{2}\left(\frac{1}{n}-\frac{1}{n+2}\right)$ olur; toplamda yalnız baştaki ve sondaki parçalar kalır.
+
+::ornek baslik="Tam sayılı kesirde ödünç almak"
+soru: $5\frac{1}{6}-2\frac{3}{4}$ işleminin sonucu kaçtır?
+1. Kesir kısımlarını ortak paydaya getir: $\frac{1}{6}=\frac{2}{12}$, $\frac{3}{4}=\frac{9}{12}$. || EKOK(6, 4) = 12.
+2. $\frac{2}{12}<\frac{9}{12}$: bir tam ödünç al. $5\frac{2}{12}=4\frac{14}{12}$. || Bir tam $\frac{12}{12}$'dir; kesir kısmına eklenir.
+3. $4\frac{14}{12}-2\frac{9}{12}=2\frac{5}{12}$. || Tam kısımlar ve kesir kısımları ayrı çıkarıldı.
+cevap: $2\frac{5}{12}$. Kontrol: $\frac{31}{6}-\frac{11}{4}=\frac{62}{12}-\frac{33}{12}=\frac{29}{12}=2\frac{5}{12}$ ✓
+
+::ornek baslik="Payda farkı 2 olan sadeleşen toplam"
+soru: $\frac{1}{1\cdot3}+\frac{1}{3\cdot5}+\frac{1}{5\cdot7}+\frac{1}{7\cdot9}+\frac{1}{9\cdot11}$ toplamı kaçtır?
+1. $\frac{1}{n}-\frac{1}{n+2}=\frac{2}{n(n+2)}$; yani $\frac{1}{n(n+2)}=\frac{1}{2}\left(\frac{1}{n}-\frac{1}{n+2}\right)$. || Fark iki çarpanın farkı (2) kadar pay üretir; bu yüzden $\frac{1}{2}$ ile düzeltilir.
+2. Toplam $\frac{1}{2}\left[\left(1-\frac{1}{3}\right)+\left(\frac{1}{3}-\frac{1}{5}\right)+\ldots+\left(\frac{1}{9}-\frac{1}{11}\right)\right]$. || İç parçalar birbirini götürür.
+3. $\frac{1}{2}\left(1-\frac{1}{11}\right)=\frac{1}{2}\cdot\frac{10}{11}=\frac{5}{11}$. || Yalnız ilk ve son parça kaldı.
+cevap: $\frac{5}{11}$. Kontrol: ilk iki terim $\frac{1}{3}+\frac{1}{15}=\frac{6}{15}=\frac{2}{5}=\frac{1}{2}\left(1-\frac{1}{5}\right)$ ✓
+
+::ornek baslik="Deponun dolması için kalan"
+soru: Bir deponun $\frac{3}{8}$'i dolu. Önce deponun $\frac{1}{4}$'ü kadar su eklendi, sonra $\frac{1}{6}$'sı kadar su kullanıldı. Deponun dolması için deponun ne kadarı daha gerekir?
+1. Son durum $\frac{3}{8}+\frac{1}{4}-\frac{1}{6}$; EKOK(8, 4, 6) = 24: $\frac{9}{24}+\frac{6}{24}-\frac{4}{24}=\frac{11}{24}$. || Ekleme ve kullanma aynı bütünün (deponun) kesirleri; doğrudan toplanır ve çıkarılır.
+2. Dolması için $1-\frac{11}{24}=\frac{13}{24}$. || 1'e tamamlayıcı.
+3. Akıl kontrolü: $\frac{11}{24}$ yarıdan biraz az; eksik kısım yarıdan biraz fazla olmalı. || $\frac{13}{24}>\frac{12}{24}$ ✓
+cevap: Deponun $\frac{13}{24}$'ü.
+
+::tamamla baslik="Sen dene · beş terimli sadeleşen toplam"
+soru: $\frac{1}{2}+\frac{1}{6}+\frac{1}{12}+\frac{1}{20}+\frac{1}{30}$ toplamı kaçtır?
+1. Paydalar $1\cdot2$, $2\cdot3$, $3\cdot4$, $4\cdot5$, $5\cdot6$. || Ardışık iki sayının çarpımı olduklarını fark etmek sorunun anahtarıdır.
+?2. Her terim $\frac{1}{n}-\frac{1}{n+1}$: $\left(1-\frac{1}{2}\right)+\left(\frac{1}{2}-\frac{1}{3}\right)+\ldots+\left(\frac{1}{5}-\frac{1}{6}\right)$. || İç parçalar birbirini götürür.
+?3. Geriye $1-\frac{1}{6}=\frac{5}{6}$ kalır. || İlk ve son parça.
+cevap: $\frac{5}{6}$
+
+::cikmis TYT-0574 tip=kesir-islem
+
+::sorgula s1b-pizza baslik="Pizzadan geriye ne kaldı?"
+durum: Bir pizzanın $\frac{1}{3}$'ünü Ali, $\frac{1}{4}$'ünü Ece yedi. Can da kalan pizzanın yarısını yedi.
+soru: Pizzanın ne kadarı kaldı?
++A) $\frac{5}{24}$ || Ali ve Ece'den sonra $\frac{5}{12}$ kaldı; Can bunun yarısını yedi: $\frac{5}{24}$ kalır.
+B) $\frac{5}{12}$ || Bu, Can yemeden önce kalan kısım.
+C) Hiç kalmadı || Can'ın yediğini bütün pizzanın yarısı saydın. “Kalanın yarısı” $\frac{5}{12}$'nin yarısıdır.
+kontrol: (1-1/3-1/4)/2
+neden: Ali ile Ece toplam $\frac{4}{12}+\frac{3}{12}=\frac{7}{12}$ yedi; kalan $\frac{5}{12}$. Can bunun yarısını, yani $\frac{5}{24}$'ünü yedi; geriye yine $\frac{5}{24}$ kaldı.
+sinav: “Bütünün kesri” ile “kalanın kesri” farklıdır. Kalanın kesri sorulduysa önce kalanı bul, sonra onunla çarp.
+dusun: Can kalanın yarısı yerine bütün pizzanın $\frac{1}{4}$'ünü yeseydi ne kalırdı?
+yanit: $\frac{5}{12}-\frac{3}{12}=\frac{2}{12}=\frac{1}{6}$.
+
+::yanilgi m6 tip=kesir-islem
+yanlis: $2\frac{1}{3}$, $2\cdot\frac{1}{3}=\frac{2}{3}$ demektir.
+neden: Tam sayılı kesirde tam kısım ile kesir kısmı arasında görünmeyen bir **toplama** vardır; çarpma yoktur.
+dogru: $2\frac{1}{3}=2+\frac{1}{3}=\frac{7}{3}$.
+
+::soru c6 tip=kesir-islem zorluk=2
+$3\frac{1}{2}-1\frac{2}{3}+\frac{5}{6}$ işleminin sonucu kaçtır?
+A) $\frac{5}{3}$ || $\frac{5}{6}$'yı eklemeyi unuttun.
+B) $2$ || Paydaları 6'da eşitledikten sonra payları yeniden topla.
+C) $\frac{7}{3}$ || Bir payı yanlış çevirdin: $3\frac{1}{2}=\frac{21}{6}$.
++D) $\frac{8}{3}$ || Doğru: $\frac{21}{6}-\frac{10}{6}+\frac{5}{6}=\frac{16}{6}=\frac{8}{3}$.
+E) $3$ || $1\frac{2}{3}$'ü $\frac{4}{3}$ gibi aldın.
+kontrol: 7/2-5/3+5/6
+cozum: $3\frac{1}{2}=\frac{21}{6}$, $1\frac{2}{3}=\frac{10}{6}$. $\frac{21-10+5}{6}=\frac{16}{6}=\frac{8}{3}$.
+
+@bolum s2 12 | Çarpma, bölme ve merdiven kesirler
+::kesfet rasyonel-bolme
+
 ::fikir
 Çarpmada **pay × pay, payda × payda**; bölmede **ikinci kesri ters çevirip çarp**. Merdiven (iç içe) kesirlerde **en alttaki** kesirden başla.
 
@@ -207,7 +276,62 @@ cozum: Payda: $2 - \frac{1}{2} = \frac{3}{2}$. $3 : \frac{3}{2} = 3 \cdot \frac{
 
 ::cikmis TYT-0541 tip=kesir-islem
 
-@bolum s3 8 | Ondalık sayılar
+@bolum s2b 15 | Kesrin kesri, büyük sayılar ve harfli merdivenler
+::duzey baslik="Çarpma ve bölmeyi yapı olarak görmek"
+L1: “Bir sayının $\frac{2}{3}$'ü” çarpmadır: 60'ın $\frac{2}{3}$'ü $60\cdot\frac{2}{3}=40$. “60'ın $\frac{2}{3}$'ünün $\frac{3}{4}$'ü” ise iki çarpma art arda: $60\cdot\frac{2}{3}\cdot\frac{3}{4}=30$. Tersini sorarsa (“$\frac{2}{3}$'ü 40 olan sayı”) bölme yaparız: $40:\frac{2}{3}=60$.
+L2: Büyük sayılarla verilen kesirlerde hesaplamadan önce ortak çarpanı paranteze al: $\frac{1001\cdot999+1001}{1001\cdot100}=\frac{1001(999+1)}{1001\cdot100}=10$. Pay ve paydada aynı çarpanı görmek, dört basamaklı çarpmaları gereksiz kılar.
+L3: Merdiven kesirlerde harf de olabilir: $1+\cfrac{1}{1+\cfrac{1}{x}}=1+\frac{x}{x+1}=\frac{2x+1}{x+1}$. Önce harfli biçimi sadeleştir, sonra değer koy; aynı kalıp birçok soruda tekrar eder. $\frac{1}{1+\frac{1}{x}}=\frac{x}{x+1}$ dönüşümünü ezberlemek yerine pay ve paydayı $x$ ile çarparak kendin üret.
+
+::ornek baslik="Kesrin kesrinden sayıya"
+soru: Bir sayının $\frac{3}{4}$'ünün $\frac{2}{3}$'ü 18'dir. Bu sayının $\frac{5}{6}$'sı kaçtır?
+1. $x\cdot\frac{3}{4}\cdot\frac{2}{3}=\frac{x}{2}=18$. || “-ünün” sözcüğü art arda çarpma demektir; 3'ler sadeleşti.
+2. $x=36$. || İki tarafı 2 ile çarptık.
+3. $36\cdot\frac{5}{6}=30$. || İstenen kesri sayıyla çarptık.
+cevap: 30. Kontrol: $36\cdot\frac{3}{4}=27$, $27\cdot\frac{2}{3}=18$ ✓
+
+::ornek baslik="Ortak çarpanla büyük sayılar"
+soru: $\dfrac{1001\cdot999+1001}{1001\cdot100}$ işleminin sonucu kaçtır?
+1. Payın iki teriminde de 1001 var: $1001\cdot999+1001\cdot1=1001\cdot(999+1)=1001\cdot1000$. || Dağılma özelliğini geriye doğru kullandık.
+2. $\frac{1001\cdot1000}{1001\cdot100}$: 1001'ler sadeleşir. || Pay ve paydada aynı çarpan.
+3. $\frac{1000}{100}=10$. || Kalan bölme.
+cevap: 10
+
+::ornek baslik="Harfli merdiven kesir"
+soru: $1+\cfrac{1}{1+\cfrac{1}{x}}$ ifadesini tek kesir olarak yaz ve $x=2$ için değerini bul.
+1. En alttan: $1+\frac{1}{x}=\frac{x+1}{x}$. || Ortak payda $x$.
+2. $\cfrac{1}{\frac{x+1}{x}}=\frac{x}{x+1}$; ifade $1+\frac{x}{x+1}=\frac{2x+1}{x+1}$. || Kesrin tersi, sonra ortak payda $x+1$.
+3. $x=2$ için $\frac{5}{3}$. || İkinci bölümdeki merdiven kesir örneği tam bu değerdi.
+cevap: $\frac{2x+1}{x+1}$; $x=2$ için $\frac{5}{3}$.
+
+::sorgula s2b-tarif baslik="Tarifi küçültmek"
+durum: Bir kek tarifi $\frac{3}{4}$ su bardağı şeker istiyor. Sen tarifin yalnız $\frac{2}{3}$'ünü yapacaksın.
+soru: Kaç su bardağı şeker koymalısın?
++A) $\frac{1}{2}$ bardak || Tarifin $\frac{2}{3}$'ü: $\frac{3}{4}\cdot\frac{2}{3}=\frac{1}{2}$.
+B) $\frac{9}{8}$ bardak || Böldün; tarifi küçültürken miktar azalmalı, $\frac{9}{8}$ ise $\frac{3}{4}$'ten büyük.
+C) $\frac{1}{12}$ bardak || Çıkardın: $\frac{3}{4}-\frac{2}{3}$. “Bir şeyin kesri” çarpma ister.
+neden: Her malzeme aynı oranda küçülür: $\frac{3}{4}$'ün $\frac{2}{3}$'ü $\frac{3\cdot2}{4\cdot3}=\frac{1}{2}$. Akıl kontrolü: 1'den küçük bir kesirle çarpınca miktar azalır.
+sinav: “-in/-ın kesri” çarpmadır; “içinde kaç tane” bölmedir. Sonucun büyümesi mi küçülmesi mi gerektiğini önceden kestir.
+dusun: Tarifin $1\frac{1}{2}$ katını yapsaydın kaç bardak şeker gerekirdi?
+yanit: $\frac{3}{4}\cdot\frac{3}{2}=\frac{9}{8}=1\frac{1}{8}$ bardak.
+
+::yanilgi m7 tip=kesir-islem
+yanlis: $\frac{1001\cdot999+1001}{1001\cdot100}$ ifadesinde paydaki ve paydadaki 1001'ler hemen sadeleşir: $\frac{999+1001}{100}$.
+neden: Sadeleştirme yalnız **çarpanlar** arasında yapılır. Paydaki ikinci 1001 bir toplananın parçası değil, toplananın kendisidir; önce ortak çarpan paranteze alınmalıdır.
+dogru: $\frac{1001(999+1)}{1001\cdot100}=\frac{1000}{100}=10$.
+
+::soru c7 tip=kesir-islem zorluk=3
+$\cfrac{2}{1-\cfrac{1}{1-\cfrac{1}{3}}}$ ifadesinin değeri kaçtır?
+A) $-6$ || $1-\frac{3}{2}$'yi $-\frac{1}{3}$ gibi aldın.
++B) $-4$ || Doğru: $1-\frac{1}{3}=\frac{2}{3}$, $\frac{1}{2/3}=\frac{3}{2}$, $1-\frac{3}{2}=-\frac{1}{2}$, $2:\left(-\frac{1}{2}\right)=-4$.
+C) $-1$ || Son bölmede bölen kesri ters çevirmeyi unuttun.
+D) $4$ || İşareti kaybettin: $1-\frac{3}{2}$ negatiftir.
+E) $6$ || Hem işareti hem bir basamağı yanlış hesapladın.
+kontrol: 2/(1-1/(1-1/3))
+cozum: En alttan: $1-\frac{1}{3}=\frac{2}{3}$; $\frac{1}{2/3}=\frac{3}{2}$; $1-\frac{3}{2}=-\frac{1}{2}$; $\frac{2}{-1/2}=-4$.
+
+@bolum s3 10 | Ondalık sayılar
+::kesfet rasyonel-virgul
+
 ::fikir
 10'un kuvvetleriyle çarpmak virgülü **sağa**, bölmek **sola** kaydırır. Bölmede önce **böleni virgülden kurtar**: pay ve paydayı aynı 10'un kuvvetiyle çarp.
 
@@ -228,6 +352,8 @@ soru: $1{,}25\cdot0{,}8+0{,}36:0{,}12$ işleminin sonucu kaçtır?
 2. Bölme: pay ve paydayı 100 ile çarp: $\frac{36}{12}=3$. || Önce böleni virgülden kurtardık.
 3. $1+3=4$. || Çarpma ve bölme bitti; sırada toplama var.
 cevap: 4. Kontrol: $1{,}25=\frac{5}{4}$ ve $0{,}8=\frac{4}{5}$; çarpımları 1.
+
+::cikmis TYT-0557 tip=ondalik
 
 ::sorgula s3-peynir baslik="Peynirin tutarı"
 durum: Kilogramı 12,50 lira olan peynirden 0,4 kg aldın.
@@ -256,7 +382,60 @@ E) $10$ || Kesri ters çevirdin.
 kontrol: 0.3*0.02/0.06
 cozum: Pay: $0{,}3 \cdot 0{,}02 = 0{,}006$. $\frac{0{,}006}{0{,}06} = \frac{6}{60} = 0{,}1$.
 
-@bolum s4 9 | Devirli ondalık sayılar
+@bolum s3b 15 | Ondalıklarla problemler: ölçme, para ve tahmin
+::duzey baslik="Ondalığı doğru araca çevirmek"
+L1: Para ve uzunluk sorularında ondalığı küçük birime çevirmek işi tam sayılara indirir: 9,80 TL = 980 kuruş, 3,8 cm = 38 mm. Hesabı tam sayılarla yap, sonucu geri çevir.
+L2: Sık kullanılan ondalıkların kesir karşılıklarını bil: $0{,}5=\frac{1}{2}$, $0{,}25=\frac{1}{4}$, $0{,}75=\frac{3}{4}$, $0{,}2=\frac{1}{5}$, $0{,}125=\frac{1}{8}$. $0{,}125\cdot64$ gibi çarpımlar kesirle tek adımda biter: $\frac{64}{8}=8$.
+L3: Uzun bir ifadede bütün virgülleri tek seferde kaldır: pay ve paydayı en çok ondalık basamağı olan sayıya göre aynı $10^k$ ile çarp. Eşit aralıklı ölçek, raf ya da delik sorularında önce “bir aralık kaç?” sorusunu çöz; aralık sayısı nokta sayısından 1 eksiktir.
+
+::ornek baslik="Kesre çevirerek çarpmak"
+soru: $0{,}125\cdot64+0{,}75\cdot12$ işleminin sonucu kaçtır?
+1. $0{,}125=\frac{1}{8}$: $\frac{64}{8}=8$. || Kesir karşılığı çarpmayı bölmeye çevirdi.
+2. $0{,}75=\frac{3}{4}$: $\frac{3\cdot12}{4}=9$. || Aynı yol.
+3. $8+9=17$. || Toplama en son.
+cevap: 17
+
+::ornek baslik="Virgülleri tek seferde kaldırmak"
+soru: $\dfrac{0{,}24+0{,}6}{0{,}012}$ işleminin sonucu kaçtır?
+1. En çok ondalık basamak paydada (3 basamak): pay ve paydayı 1000 ile çarp. || Kesrin pay ve paydası aynı sayıyla çarpılınca değer değişmez.
+2. $\frac{240+600}{12}=\frac{840}{12}$. || Paydaki her terim 1000 ile çarpıldı.
+3. $840:12=70$. || Tam sayı bölmesi.
+cevap: 70. Kontrol: $70\cdot0{,}012=0{,}84=0{,}24+0{,}6$ ✓
+
+::ornek baslik="Eşit aralıklı cetvel"
+soru: Bir cetvelde 2,4 cm ile 4,2 cm arası 6 eşit aralığa bölünmüştür. 2,4 cm'den başlayarak sayılan 4. çizgi kaç cm'yi gösterir?
+1. Aralığın uzunluğu $4{,}2-2{,}4=1{,}8$ cm; bir aralık $1{,}8:6=0{,}3$ cm. || Eşit aralıkta önce bir adımı buluruz.
+2. 4. çizgi başlangıçtan 4 aralık sonra: $4\cdot0{,}3=1{,}2$ cm. || Başlangıç çizgisi 0. çizgidir.
+3. $2{,}4+1{,}2=3{,}6$ cm. || Başlangıç değerine ekledik.
+cevap: 3,6 cm.
+
+::cikmis TYT-0566 tip=ondalik
+
+::sorgula s3b-fis baslik="Market fişini akılda hesaplamak"
+durum: Sepetinde 4,99 TL, 2,49 TL ve 7,95 TL'lik üç ürün var. Kasaya 20 TL veriyorsun.
+soru: Ne kadar para üstü almalısın?
++A) 4,57 TL || Fiyatlar $5-0{,}01$, $2{,}5-0{,}01$, $8-0{,}05$: toplam $15{,}5-0{,}07=15{,}43$; para üstü $4{,}57$.
+B) 4,43 TL || Yuvarlarken eklediğin kuruşları geri çıkarman gerekirdi; sen eklemişsin (toplamı 15,57 buldun).
+C) 5,57 TL || Toplamı 14,43 buldun; tam kısımları toplarken bir lira eksik saydın.
+kontrol: 2000/100-(499+249+795)/100
+neden: Kuruşla hesap: $499+249+795=1543$ kuruş $=15{,}43$ TL. $20-15{,}43=4{,}57$ TL. Yuvarlama yöntemi aynı sonucu verir: tam fiyatlara yuvarla, eklediğin kuruşları geri çıkar.
+sinav: Ondalık toplamada virgülleri alt alta koy ya da küçük birime çevir. Fiyatları yuvarlayıp düzeltmek seçenekleri hızla eler.
+dusun: Kasiyer “50 kuruşunuz var mı?” diye soruyor. 20 TL ile birlikte 50 kuruş verirsen ne kadar para üstü alırsın?
+yanit: $20{,}50-15{,}43=5{,}07$ TL. Kasiyer bozuk para yerine 5 TL ve 7 kuruş verebilir.
+
+::soru c8 tip=ondalik zorluk=2
+$\dfrac{0{,}36}{0{,}012}-\dfrac{1{,}5}{0{,}05}$ işleminin sonucu kaçtır?
++A) 0 || Doğru: $\frac{360}{12}-\frac{150}{5}=30-30=0$.
+B) $-27$ || İlk bölmeyi 3 buldun: virgülü bir basamak eksik kaydırdın.
+C) 27 || İkinci bölmeyi 3 buldun.
+D) 30 || Yalnız bir bölmeyi hesapladın.
+E) 60 || Farkı değil toplamı aldın.
+kontrol: 360/12-150/5
+cozum: $\frac{0{,}36}{0{,}012}=\frac{360}{12}=30$ ve $\frac{1{,}5}{0{,}05}=\frac{150}{5}=30$. Fark 0.
+
+@bolum s4 10 | Devirli ondalık sayılar
+::kesfet rasyonel-devirli
+
 ::fikir
 $a{,}b\overline{cd} = \dfrac{abcd - ab}{990}$: **pay** sayının tamamından devretmeyen kısım çıkar; **payda** devreden basamak kadar 9, devretmeyen ondalık basamak kadar 0.
 
@@ -310,7 +489,69 @@ E) $\frac{2}{3}$ || İlk sayıyı yanlış çevirdin.
 kontrol: 1/6+1/3
 cozum: $0{,}1\overline{6} = \frac{16 - 1}{90} = \frac{15}{90} = \frac{1}{6}$ ve $0{,}\overline{3} = \frac{1}{3}$. Toplam $\frac{1}{6} + \frac{2}{6} = \frac{1}{2}$.
 
-@bolum s5 8 | Rasyonel sayıları sıralama
+@bolum s4b 15 | Sonlu mu devirli mi? Devirli sayılarla işlem
+::duzey baslik="Paydaya bakarak ondalığı tahmin etmek"
+L1: Bir kesri ondalığa çevirirken bölme ya biter ya da kalanlar tekrar etmeye başlar. $\frac{1}{4}=0{,}25$ biter; $\frac{1}{3}=0{,}333\ldots$ hiç bitmez. Hangisinin olacağını bölmeye başlamadan da anlayabiliriz.
+L2: Kesri önce sadeleştir. Paydada yalnız 2 ve 5 çarpanları kalıyorsa ondalık sonludur: $\frac{7}{40}=0{,}175$, çünkü $40=2^3\cdot5$. Başka bir asal kalıyorsa devirlidir: $\frac{7}{30}=0{,}2\overline{3}$. $\frac{21}{60}$ ise sadeleşince $\frac{7}{20}$ olur; sonludur.
+L3: Uzun bölmede kalanlar $1, 2, \ldots, q-1$ arasındadır; en geç $q$ adımda biri tekrar eder. Bu yüzden devir uzunluğu en çok $q-1$'dir: $\frac{1}{7}=0{,}\overline{142857}$ tam 6 basamak. Devirli sayılarla işlemde her zaman kesre çevir: $0{,}\overline{ab}+0{,}\overline{ba}=\frac{11(a+b)}{99}=\frac{a+b}{9}$.
+
+::ornek baslik="Sadeleştir, sonra karar ver"
+soru: $\frac{7}{40}$, $\frac{7}{30}$ ve $\frac{21}{60}$ kesirlerinden hangileri sonlu ondalık açılıma sahiptir?
+1. $\frac{7}{40}$: sade; $40=2^3\cdot5$. Sonlu: $\frac{7\cdot25}{1000}=0{,}175$. || Paydayı 1000'e tamamladık; bu ancak payda yalnız 2 ve 5 içerirse mümkündür.
+2. $\frac{7}{30}$: sade; $30=2\cdot3\cdot5$, 3 var. Devirli: $0{,}2\overline{3}$. || 3 çarpanı 10'un hiçbir kuvvetini bölmez.
+3. $\frac{21}{60}=\frac{7}{20}$; $20=2^2\cdot5$. Sonlu: $0{,}35$. || 60'taki 3 sadeleşti; karar sade kesre göre verilir.
+cevap: $\frac{7}{40}$ ve $\frac{21}{60}$ sonlu; $\frac{7}{30}$ devirli.
+
+::ornek baslik="Devirli sayılarla bölme"
+soru: $\dfrac{1{,}\overline{2}-0{,}\overline{5}}{0{,}0\overline{6}}$ işleminin sonucu kaçtır?
+1. $1{,}\overline{2}=\frac{12-1}{9}=\frac{11}{9}$, $0{,}\overline{5}=\frac{5}{9}$. || Kural: (tamamı − devretmeyen) / 9'lar.
+2. $0{,}0\overline{6}=\frac{6-0}{90}=\frac{1}{15}$. || Devretmeyen bir ondalık basamak paydaya bir 0 ekler.
+3. $\frac{11}{9}-\frac{5}{9}=\frac{6}{9}=\frac{2}{3}$; $\frac{2}{3}:\frac{1}{15}=\frac{2}{3}\cdot15=10$. || Bölmede bölen ters çevrilir.
+cevap: 10
+
+::ornek baslik="1/7'nin 100. ondalık basamağı"
+soru: $\frac{1}{7}$ sayısının ondalık açılımında virgülden sonraki 100. basamak kaçtır?
+1. $\frac{1}{7}=0{,}\overline{142857}$: devir 6 basamak. || Uzun bölmede kalanlar 1, 3, 2, 6, 4, 5 sırasıyla döner.
+2. $100=6\cdot16+4$. || 16 tam devirden sonra 4 basamak daha.
+3. Devrin 4. basamağı 8. || Kalan $r$ ise devrin $r$. basamağı; kalan 0 olsaydı son basamak (7) olurdu.
+cevap: 8
+
+::tamamla baslik="Sen dene · iki basamaklı devirler"
+soru: $a$ ve $b$ rakam olmak üzere $0{,}\overline{ab}+0{,}\overline{ba}=1{,}\overline{2}$ ise $a+b$ kaçtır?
+1. $0{,}\overline{ab}=\frac{10a+b}{99}$, $0{,}\overline{ba}=\frac{10b+a}{99}$. || İki basamak devrediyor: paydada 99.
+?2. Toplam $\frac{11a+11b}{99}=\frac{a+b}{9}$. || 11 sadeleşti.
+?3. $1{,}\overline{2}=\frac{12-1}{9}=\frac{11}{9}$; o hâlde $a+b=11$. || Paydalar eşit, paylar eşit olmalı.
+cevap: $a+b=11$
+
+::sorgula s4b-ekran baslik="Hesap makinesinin göstermediği basamak"
+durum: Hesap makinesi $2:7$ işlemini 0,2857142857 olarak gösteriyor. Ekran yalnız 10 ondalık basamak gösterebiliyor.
+soru: Virgülden sonraki 20. basamak kaçtır?
+A) 2 || Bu, devrin ilk basamağı. 20'nin 6 ile bölümünden kalan 1 değil, 2.
++B) 8 || $\frac{2}{7}=0{,}\overline{285714}$ ve $20=6\cdot3+2$: devrin 2. basamağı.
+C) 4 || Bu, devrin son basamağı; kalan 0 olsaydı doğru olurdu.
+kontrol: 8
+neden: Ekrandaki basamaklardan devir okunur: 285714 tekrar ediyor (6 basamak). 20. basamak için $20=6\cdot3+2$: üç tam devirden sonra 2. basamak, yani 8.
+sinav: “$n$. basamak” sorularında devri yaz, $n$'yi devir uzunluğuna böl ve kalana bak. Devirden önce devretmeyen basamaklar varsa onları önce çıkar.
+dusun: $\frac{1}{7}$ ile $\frac{2}{7}$'nin ondalıkları neden aynı altı rakamdan oluşuyor?
+yanit: $\frac{1}{7}$'nin uzun bölmesinde kalanlar 1, 3, 2, 6, 4, 5 döngüsündedir. $\frac{2}{7}$ bu döngüye 2 kalanından girer: aynı döngü, farklı başlangıç noktası.
+
+::yanilgi m8 tip=devirli
+yanlis: Paydasında 3 olan her kesir devirli ondalıktır; örneğin $\frac{9}{30}$.
+neden: Karar sadeleşmiş kesre göre verilir. $\frac{9}{30}=\frac{3}{10}$; paydada 3 kalmaz.
+dogru: $\frac{9}{30}=0{,}3$ sonludur. Önce sadeleştir, sonra paydanın asal çarpanlarına bak.
+
+::soru c9 tip=devirli zorluk=2
+Aşağıdaki kesirlerden hangisinin ondalık açılımı sonludur?
+A) $\frac{1}{6}$ || $6=2\cdot3$: devirli, $0{,}1\overline{6}$.
+B) $\frac{5}{12}$ || $12=2^2\cdot3$: devirli, $0{,}41\overline{6}$.
++C) $\frac{9}{24}$ || Doğru: sadeleşince $\frac{3}{8}$, $8=2^3$: $0{,}375$.
+D) $\frac{7}{15}$ || $15=3\cdot5$: devirli, $0{,}4\overline{6}$.
+E) $\frac{4}{9}$ || $9=3^2$: devirli, $0{,}\overline{4}$.
+cozum: Sade kesrin paydasına bak: $\frac{9}{24}=\frac{3}{8}$ ve $8=2^3$; ondalık sonludur: $0{,}375$. Diğerlerinin paydasında 3 kalır.
+
+@bolum s5 10 | Rasyonel sayıları sıralama
+::kesfet rasyonel-sayidogrusu
+
 ::fikir
 Önce **kısa yolu ara**, yoksa ondalığa çevir. Pay ile payda farkı eşitse: **basit kesirlerde büyük paylı**, bileşik kesirlerde küçük paylı kesir büyüktür. Negatiflerde pozitif sırayı ters çevir.
 
@@ -371,12 +612,79 @@ D) $z < x < y$ || $y$ en küçüğüdür.
 +E) $y < z < x$ || Doğru: $0{,}625 < 0{,}65 < 0{,}666\ldots$
 cozum: $y = \frac{5}{8} = 0{,}625$, $z = 0{,}65$, $x = 0{,}666\ldots$: $y < z < x$.
 
+@bolum s5b 15 | Sıralamada derinleşme: aralıklar, ara kesir ve harfli sayılar
+::fikir
+İki farklı kesrin arasında **her zaman başka kesirler vardır**. Bir aralıkta sayı aramak için paydaları büyüt ya da ara kesri $\frac{a+c}{b+d}$ kullan. Harfli sıralamalarda bir değer deneyip kuralla doğrula.
+
+::duzey baslik="Aralıklar ve referans sayılar"
+L1: $\frac{1}{3}$ ile $\frac{1}{2}$ arasında bir kesir bulmak için ortak paydayı büyüt: $\frac{4}{12}$ ile $\frac{6}{12}$ arasında $\frac{5}{12}$ var. Payda ne kadar büyürse araya o kadar çok kesir sığar.
+L2: Referans sayılarla karşılaştır: $\frac{7}{15}<\frac{1}{2}<\frac{8}{15}$, çünkü $\frac{1}{2}=\frac{7{,}5}{15}$. 1'den büyük kesirler (bileşik) her basit kesirden büyüktür. Ara kesir $\frac{a+c}{b+d}$ her zaman $\frac{a}{b}$ ile $\frac{c}{d}$ arasındadır.
+L3: $0<x<1$ ise $x^2<x<\sqrt{x}<1<\frac{1}{x}$: 1'den küçük bir sayıyla çarpmak küçültür, 1'den küçük bir sayıya bölmek büyütür. $x>1$ olunca sıra tersine döner: $\frac{1}{x}<1<\sqrt{x}<x<x^2$. Negatif $x$ için önce işaretleri ayır.
+
+::ornek baslik="İki kesrin arasına üç kesir"
+soru: $\frac{2}{5}$ ile $\frac{3}{5}$ arasında, paydası 20 olan üç kesir yaz.
+1. $\frac{2}{5}=\frac{8}{20}$, $\frac{3}{5}=\frac{12}{20}$. || Paydayı 4 katına çıkardık.
+2. Aradaki paylar 9, 10, 11: $\frac{9}{20}$, $\frac{10}{20}$, $\frac{11}{20}$. || Payda büyüyünce araya yeni kesirler girdi.
+3. Kontrol: $0{,}4<0{,}45<0{,}5<0{,}55<0{,}6$. || Ondalıkla doğruladık.
+cevap: $\frac{9}{20}$, $\frac{10}{20}=\frac{1}{2}$, $\frac{11}{20}$.
+
+::ornek baslik="1'e göre karşılaştırma"
+soru: $a=\frac{2023}{2024}$, $b=\frac{2024}{2025}$, $c=\frac{2025}{2024}$ sayılarını sırala.
+1. $c>1$, çünkü pay paydadan büyük; $a$ ve $b$ ise 1'den küçük. || Bileşik kesir her basit kesirden büyüktür.
+2. $a=1-\frac{1}{2024}$, $b=1-\frac{1}{2025}$. $\frac{1}{2025}<\frac{1}{2024}$ olduğundan $b$, 1'e daha yakın: $a<b$. || Pay–payda farkı eşit basit kesirlerde büyük paylı büyüktür; nedeni 1'den çıkarılan kısmın küçülmesi.
+3. $a<b<c$. || Üç karşılaştırmayı birleştirdik.
+cevap: $a<b<c$
+
+::ornek baslik="0 ile 1 arasındaki sayının kuvvetleri"
+soru: $0<x<1$ olmak üzere $x$, $x^2$, $\sqrt{x}$ ve $\frac{1}{x}$ sayılarını sırala.
+1. Deneme: $x=0{,}25$ için $x^2=0{,}0625$, $\sqrt{x}=0{,}5$, $\frac{1}{x}=4$. || Uygun bir değer koymak sırayı hemen gösterir; tam kare seçmek kökü kolaylaştırır.
+2. Kural: $x<1$ olduğundan $x\cdot x<x$; $\sqrt{x}\cdot\sqrt{x}=x$ ve $\sqrt{x}<1$ olduğundan $x<\sqrt{x}$; $\frac{1}{x}>1$. || Denemeyi genel bir nedenle doğruladık.
+3. $x^2<x<\sqrt{x}<\frac{1}{x}$. || Sıra birleşti.
+cevap: $x^2<x<\sqrt{x}<\frac{1}{x}$
+
+::tamamla baslik="Sen dene · ara kesir"
+soru: $\frac{5}{8}$ ile $\frac{7}{11}$ arasında, paydası 19 olan bir kesir bul.
+1. Ara kesir: $\frac{5+7}{8+11}=\frac{12}{19}$. || Ara kesrin paydası tam 19.
+?2. $5\cdot19=95<96=8\cdot12$, yani $\frac{5}{8}<\frac{12}{19}$. || Çapraz çarpım.
+?3. $12\cdot11=132<133=19\cdot7$, yani $\frac{12}{19}<\frac{7}{11}$. || İkinci karşılaştırma da tuttu.
+cevap: $\frac{12}{19}$
+
+::cikmis TYT-0562 tip=siralama
+
+::sorgula s5b-paket baslik="Hangi paket daha ekonomik?"
+durum: Markette aynı kahvenin iki paketi var: 750 gramlık paket 54 TL, 1,2 kilogramlık paket 84 TL.
+soru: Hangisi daha ekonomik?
+A) 750 g paket, çünkü daha ucuz || Fiyatı değil, birim fiyatı karşılaştırmalısın.
++B) 1,2 kg paket || $84:1{,}2=70$ TL/kg, $54:0{,}75=72$ TL/kg.
+C) İkisi aynı || Birim fiyatlar 72 ve 70; yakın ama eşit değil.
+neden: Kilogram fiyatları $\frac{54}{0{,}75}=72$ ve $\frac{84}{1{,}2}=70$ TL. Kesir karşılaştırması olarak da görülür: $\frac{54}{750}$ ile $\frac{84}{1200}$; çapraz çarpım $54\cdot1200=64800>63000=84\cdot750$, yani küçük paketin gram fiyatı daha yüksek.
+sinav: Oran karşılaştırmasında birimleri eşitle (TL/kg) ya da çapraz çarp. Ham sayılar (54 TL ile 84 TL) yanıltır.
+dusun: 750 gramlık paketin fiyatı kaç TL olsaydı iki paket eşit ekonomik olurdu?
+yanit: $0{,}75\cdot70=52{,}5$ TL.
+
+::yanilgi m9 tip=siralama
+yanlis: Payı ve paydası daha büyük olan kesir daha büyüktür: $\frac{2}{5}>\frac{1}{2}$.
+neden: Kesrin değeri payın paydaya oranıdır; ikisinin büyüklüğü tek başına bir şey söylemez. Çapraz çarp: $2\cdot2=4<5=5\cdot1$.
+dogru: $\frac{2}{5}<\frac{1}{2}$; karşılaştırmayı çapraz çarpımla ya da ondalıkla yap.
+
+::soru c10 tip=siralama zorluk=2
+$0<x<1$ olduğuna göre aşağıdakilerden hangisi her zaman en büyüktür?
+A) $x$ || $\sqrt{x}$ ve $\frac{1}{x}$, $x$'ten büyüktür.
+B) $x^2$ || 1'den küçük sayının karesi küçülür; en küçüklerden biri.
+C) $x^3$ || Küp daha da küçüktür.
++D) $\frac{1}{x}$ || Doğru: $x<1$ ise $\frac{1}{x}>1$; diğerlerinin hepsi 1'den küçük.
+E) $\sqrt{x}$ || $\sqrt{x}<1<\frac{1}{x}$.
+cozum: $0<x<1$ için $x^3<x^2<x<\sqrt{x}<1<\frac{1}{x}$. En büyüğü $\frac{1}{x}$.
+
 ::ozet
 - Toplama–çıkarma: paydaları EKOK'ta eşitle; çarpma: pay × pay; bölme: ikinciyi ters çevir.
 - Merdiven kesirde en alttan başla; $\frac{1}{a/b} = \frac{b}{a}$.
 - Ondalıkta böleni virgülden kurtar; çarpımda virgülden sonraki basamaklar toplanır.
 - Devirli: (tamamı − devretmeyen) / (9'lar ve 0'lar); $0{,}\overline{9} = 1$.
 - Sıralama: kısa yol yoksa ondalığa çevir ya da çapraz çarp; negatiflerde ters.
+- Kalanın kesri ile bütünün kesri farklıdır; büyük sayılarda önce ortak çarpanı paranteze al.
+- Sade kesrin paydası yalnız 2 ve 5 içeriyorsa ondalık sonlu, değilse devirlidir.
+- İki kesrin arasında ara kesir $\frac{a+c}{b+d}$ vardır; $0<x<1$ için $x^2<x<\sqrt{x}<\frac{1}{x}$.
 
 @pratik
 - Kesir işlemlerinde her adımı ayrı satıra yaz; işaretleri ve işlem önceliğini koru. Hız için önce çapraz sadeleştir.
@@ -394,6 +702,10 @@ cozum: $y = \frac{5}{8} = 0{,}625$, $z = 0{,}65$, $x = 0{,}666\ldots$: $y < z < 
 - Pay–payda farkı eşit basit kesirlerden hangisi büyük? :: Payı büyük olan ($\frac{8}{9} > \frac{7}{8}$).
 - Negatif kesirleri sıralamak :: Pozitif hâllerini sırala, sırayı ters çevir.
 - $0{,}3 \cdot 0{,}02$ = ? :: $0{,}006$ (virgülden sonra 1 + 2 = 3 basamak)
+- $\frac{1}{n(n+1)}$ nasıl ayrılır? :: $\frac{1}{n}-\frac{1}{n+1}$
+- Hangi kesirlerin ondalığı sonludur? :: Sadeleşince paydası yalnız 2 ve 5 çarpanı içerenler.
+- $\frac{a}{b}$ ile $\frac{c}{d}$ arasında bir kesir :: Ara kesir $\frac{a+c}{b+d}$
+- $0<x<1$ için sıralama :: $x^2<x<\sqrt{x}<\frac{1}{x}$
 
 @ozet
 - Kesirlerde toplama–çıkarma ortak paydayla (EKOK), çarpma pay–payda çarpımıyla, bölme bölenin tersiyle yapılır.

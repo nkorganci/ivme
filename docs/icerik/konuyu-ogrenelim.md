@@ -97,6 +97,10 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | AYT_Sayisal-0006 | Sayı basamakları; yer değiştirme döngüsü 6 | A, 321 | `3a5b2646bece4d5e05081f9134050a194a4e0cfde1cd487f5e1d1fa92868f2a3` |
 | AYT_Sayisal-0018 | EBOB–EKOK; EBOB + EKOK = 289, $m=da$, $n=db$ ile ayrım | A, 41 | `bb417d4ed470ad8edd95711daf6081bf05ca7ce210684c531acff7a525133deb` |
 | AYT_Sayisal-0035 | EBOB–EKOK; asal çarpan üslerinden $a+b+c+d$ | C, 10 | `65c7fd3d951b76ee31f72bb13f1882044d28abbc48b6d8e890f25122c95dc1f3` |
+| TYT-0574 | Rasyonel sayılar; sadeleştir, toplamı 1 olan ikililer | A, $\frac{1}{6}$ | `411109ac906273c02dd9ff1493b4553f2599ee9bd65edeff27f8f83445550a91` |
+| TYT-0557 | Rasyonel sayılar; kuruşlu fiyatlarla para üstü | A, 0,2 | `89d8b41ccfb2537d2d14692eea5caeab7d801853500db09fd14aa7bc569eed42` |
+| TYT-0566 | Rasyonel sayılar; eşit aralıklı kemer delikleri | B, 83,8 | `d9e513bd76da24eb04de634b0b915c4717e5ee905df0323ce24b119cb54f6f89` |
+| TYT-0562 | Rasyonel sayılar; çekmece sınırları arasındaki yükseklik | B, 1,3 | `9b98f701a7efcf714022667d7634a06f2f3eeca4106fca7d5abb1cb85fd9e0b8` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap
