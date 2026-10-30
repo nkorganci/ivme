@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { evaluate, numericChoice } from '../frontend/src/learn/content/checks.js';
 
-export const YENI_BICIM = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar'];
+export const YENI_BICIM = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const firstNumber = (text) => {

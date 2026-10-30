@@ -259,7 +259,8 @@ export default function LessonPage() {
   const showLeveled = () => requestAnimationFrame(() => {
     const box = document.querySelector('.lr-section .lr-leveled');
     if (!box) return;
-    box.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    // Anında kaydırma: art arda seçimlerde yumuşak kaydırmalar birbirini yarıda kesebiliyor; değişeni vurgu gösterir.
+    box.scrollIntoView({ block: 'start' });
     box.classList.remove('lr-flash');
     void box.offsetWidth;
     box.classList.add('lr-flash');

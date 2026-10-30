@@ -108,6 +108,24 @@ soru: $A = [-3, 5)$ ve $B = (1, 8]$ için $A \cap B$ ve $A \setminus B$ nedir?
 3. $A$'dan $B$'yi çıkar: $-3$ ile 1 arası; 1 $B$'ye ait olmadığı için $A$'da kalır: $A \setminus B = [-3, 1]$. || Farkta uçların durumu tersine döner.
 cevap: $A \cap B = (1, 5)$, $A \setminus B = [-3, 1]$
 
+::ornek baslik="Birleşimdeki tam sayılar"
+soru: $A=(-4,2]$ ve $B=[0,6)$ için $A\cup B$ kümesini yaz ve kaç tam sayı içerdiğini bul.
+1. İki aralığı aynı doğruda çiz: $A$, $-4$'ten 2'ye; $B$, 0'dan 6'ya. 0 ile 2 arası ortak. || Aralıklar üst üste biniyor; birleşim tek parça olur.
+2. Birleşimin sol ucu $A$'nın açık $-4$'ü, sağ ucu $B$'nin açık 6'sı: $A\cup B=(-4,6)$. || Uç, ait olduğu aralıktaki durumunu korur.
+3. Tam sayılar $-3,-2,\ldots,5$: $5-(-3)+1=9$ tane. || Açık uçlar ($-4$ ve 6) sayılmaz.
+cevap: $A\cup B=(-4,6)$; 9 tam sayı.
+
+::sorgula s1-tren baslik="Lunapark treninin boy sınırı"
+durum: Bir lunapark treninde kural şöyle: “Boyun en az 120 cm olmalı ve 140 cm'den kısa olmalı.”
+soru: Bu kuralı doğru gösteren aralık hangisi; boyu tam 140 cm olan çocuk binebilir mi?
+A) $[120,140]$; binebilir. || “140 cm'den kısa” demek 140'ın dahil olmadığı anlamına gelir.
++B) $[120,140)$; binemez. || “En az 120” 120'yi dahil eder; “140'tan kısa” 140'ı dışarıda bırakır.
+C) $(120,140)$; binemez. || Uç doğru ama 120 cm'lik çocuk da binebilir; sol uç kapalı olmalı.
+neden: “En az”, “en çok”, “-den küçük değil” sözleri ucu dahil eder: köşeli parantez. “-den kısa / küçük / büyük” ucu dışarıda bırakır: normal parantez. Kural $120\leq h<140$, yani $[120,140)$.
+sinav: Sözel ifadeyi önce eşitsizliğe ($\leq$ mi, $<$ mi) çevir, sonra aralık gösterimine geç. Tam sayı sayımında açık uçları saymamayı unutma.
+dusun: Boylar tam santimetre olarak ölçülüyorsa bu trene kaç farklı boy değeri uyar?
+yanit: $120, 121, \ldots, 139$: $139-120+1=20$ farklı değer.
+
 ::yanilgi m1 tip=aralik
 yanlis: $x \geq 2$ için aralık $[2, \infty]$ diye yazılır.
 neden: $\infty$ bir sayı değildir; ulaşılamaz, dahil edilemez.
@@ -140,10 +158,29 @@ cevap: $x \geq 3$, yani $[3, \infty)$
 
 ::tamamla baslik="Çift taraflı eşitsizlik"
 soru: $-4 < 2x - 6 \leq 8$ eşitsizliğini sağlayan kaç tam sayı vardır?
-1. Üç parçaya 6 ekle: $2 < 2x \leq 14$.
-?2. Üç parçayı 2'ye böl (pozitif, yön değişmez): $1 < x \leq 7$.
-?3. Tam sayılar $2, 3, 4, 5, 6, 7$: 6 tane.
+1. Üç parçaya 6 ekle: $2 < 2x \leq 14$. || Ortadaki -6 terimini yok etmek için üç parçaya da aynı sayıyı ekledik.
+?2. Üç parçayı 2'ye böl (pozitif, yön değişmez): $1 < x \leq 7$. || Pozitif sayıya bölmek eşitsizliğin yönünü korur.
+?3. Tam sayılar $2, 3, 4, 5, 6, 7$: 6 tane. || 1 açık uç olduğu için alınmaz; 7 kapalı uç olduğu için alınır.
 cevap: 6
+
+::ornek baslik="İki koşulu birlikte sağlayan tam sayılar"
+soru: $x$ bir tam sayı, $3-2x\geq-7$ ve $x>-2$ olduğuna göre $x$ kaç farklı değer alabilir?
+1. $3-2x\geq-7$ ise $-2x\geq-10$. || 3'ü karşı tarafa taşıdık; yön değişmez.
+2. $-2$'ye bölünce yön değişir: $x\leq5$. || Negatif sayıya bölmek sayı doğrusunu ters çevirir.
+3. $x>-2$ ile birlikte $-2<x\leq5$: $-1,0,1,2,3,4,5$. || İki koşulun kesişimini aldık.
+cevap: 7 farklı değer. Kontrol: $x=5$ için $3-10=-7\geq-7$ doğru; $x=6$ için $-9\geq-7$ yanlış.
+
+::sorgula s2-paket baslik="Bütçeyle internet paketi"
+durum: Bir telefon tarifesi aylık 60 lira sabit ücret ve her GB internet için 15 lira alıyor. Aylık bütçen 150 lira.
+soru: Bütçeni aşmadan en çok kaç GB alabilirsin?
+A) 10 GB || $150:15$ yaptın; sabit 60 lirayı unutmuşsun.
++B) 6 GB || $60+15x\leq150$, $15x\leq90$, $x\leq6$.
+C) 7 GB || $60+15\cdot7=165$ lira; bütçeyi aşar.
+kontrol: (150-60)/15
+neden: Toplam ödeme $60+15x$ en çok 150 olmalı: $60+15x\leq150$. İki taraftan 60 çıkar, 15'e böl (pozitif, yön değişmez): $x\leq6$.
+sinav: “En çok, aşmadan, en fazla” sözleri $\leq$ demektir. Çözüm bir aralık çıkar; soru tam sayı istiyorsa aralıktaki uygun tam sayıyı seç.
+dusun: Bütçe 160 lira olsaydı ve GB yalnız tam sayı olarak satılsaydı en çok kaç GB alınırdı?
+yanit: $15x\leq100$, $x\leq6{,}\overline{6}$. Tam sayı olması gerektiği için yine 6 GB; 7 GB 165 lira eder.
 
 ::yanilgi m2 tip=esitsizlik-cozme
 yanlis: $-2x > 6 \Rightarrow x > -3$
@@ -178,10 +215,29 @@ cevap: $(-8, 5)$
 
 ::tamamla baslik="Karenin aralığı"
 soru: $-3 \leq x \leq 2$ olduğuna göre $x^2$'nin alabileceği değerler hangi aralıktadır?
-1. Aralık 0'ı içeriyor; $x = 0$ için $x^2 = 0$ en küçük değerdir.
-?2. En büyük değer, 0'dan en uzak uçtan gelir: $(-3)^2 = 9 > 2^2 = 4$.
-?3. $0 \leq x^2 \leq 9$.
+1. Aralık 0'ı içeriyor; $x = 0$ için $x^2 = 0$ en küçük değerdir. || Kare hiçbir zaman negatif olmaz; 0'a ulaşılabiliyorsa en küçük değer odur.
+?2. En büyük değer, 0'dan en uzak uçtan gelir: $(-3)^2 = 9 > 2^2 = 4$. || Kare, sayının 0'a uzaklığı büyüdükçe büyür.
+?3. $0 \leq x^2 \leq 9$. || En küçük ve en büyük değeri aralık olarak yazdık; ikisi de ulaşılabilir olduğu için uçlar kapalı.
 cevap: $[0, 9]$
+
+::ornek baslik="Bölümün aralığı"
+soru: $1\leq a\leq4$ ve $2\leq b\leq5$ olduğuna göre $\frac{a}{b}$ hangi aralıktadır?
+1. İki sayı da pozitif; bölüm, pay büyüdükçe büyür, payda büyüdükçe küçülür. || Her değişkenin ifadeye etkisini ayrı düşündük.
+2. En küçük değer: en küçük pay, en büyük payda: $\frac{1}{5}$. || Bölümü küçültmek için payı küçült, paydayı büyüt.
+3. En büyük değer: en büyük pay, en küçük payda: $\frac{4}{2}=2$. || Tersini yaptık.
+cevap: $\left[\frac{1}{5},2\right]$. Uçlar kapalı; çünkü $a$ ve $b$ uç değerlere ulaşabiliyor.
+
+::sorgula s3-yolculuk baslik="Yolculuk en çok kaç saat sürer?"
+durum: Bir yolculuğun uzunluğu 120 km ile 180 km arasında; aracın ortalama hızı ise saatte 60 km ile 90 km arasında olacak (uçlar dahil).
+soru: Yolculuk en çok kaç saat sürer?
+A) 2 saat || $180:90$ yaptın; uzun yolu hızlı giderek süreyi uzatamazsın, en yavaş hızı al.
++B) 3 saat || En uzun yol, en düşük hızla: $180:60=3$.
+C) $\frac{4}{3}$ saat || $120:90$ en kısa süredir.
+kontrol: 180/60
+neden: Süre $=\frac{\text{yol}}{\text{hız}}$. Süreyi büyütmek için payı (yolu) en büyük, paydayı (hızı) en küçük seç: $\frac{180}{60}=3$ saat. Süreyi küçültmek için tersi: $\frac{120}{90}=\frac{4}{3}$ saat.
+sinav: Bir ifadenin aralığı sorulunca her değişkenin ifadeyi büyütüp büyütmediğini sor. Çıkarmada ve bölmede ikinci değişkenin etkisi terstir.
+dusun: Yolculuk en az kaç dakika sürer?
+yanit: $\frac{120}{90}=\frac{4}{3}$ saat, yani 80 dakika.
 
 ::yanilgi m3 tip=aralik-ifade
 yanlis: $1 < a < 3$ ve $2 < b < 5$ ise $-1 < a - b < -2$
@@ -228,6 +284,25 @@ soru: $x$ ve $y$ pozitif tam sayılar ve $2x + 3y < 14$ olduğuna göre kaç tan
 2. $y = 2$: $2x < 8$, $x \in \{1, 2, 3\}$: 3 ikili. $y = 3$: $2x < 5$: 2 ikili. || Her adımda yeniden çöz.
 3. $y = 4$: $2x < 2$, pozitif $x$ yok. Toplam $5 + 3 + 2 = 10$. || Grafikteki yeşil noktalar.
 cevap: 10
+
+::ornek baslik="Sıfır dahilken ikili sayma"
+soru: $x$ ve $y$ doğal sayılar (0 dahil) ve $x+2y\leq6$ olduğuna göre kaç $(x,y)$ ikilisi vardır?
+1. Katsayısı büyük olan $y$'yi sabitle: $y$ en çok 3 olabilir. || $y=4$ için $2y=8>6$ olur.
+2. $y=0$: $x\leq6$, 7 değer; $y=1$: $x\leq4$, 5 değer; $y=2$: $x\leq2$, 3 değer; $y=3$: $x\leq0$, 1 değer. || Her durumda $x$'in sayısı, kalan miktar $+1$'dir; 0 da sayılır.
+3. Toplam $7+5+3+1=16$. || Durumlar ayrık; topladık.
+cevap: 16. “Pozitif” denseydi 0 sayılmaz ve sonuç değişirdi.
+
+::sorgula s4-kirtasiye baslik="100 lirayla defter ve kalem"
+durum: Defterin tanesi 20 lira, kalemin tanesi 10 lira. 100 lirayı aşmadan, her birinden en az bir tane alacaksın.
+soru: Kaç farklı (defter sayısı, kalem sayısı) seçimi yapılabilir?
++A) 20 || $2d+k\leq10$; $d=1,2,3,4$ için $k$ sayısı $8,6,4,2$.
+B) 16 || 0'ı da dahil eden bir sayım gibi düşündün; burada her üründen en az bir tane alınıyor.
+C) 4 || Bu, 100 liranın tamamını harcayan seçimlerin sayısıdır.
+kontrol: 8+6+4+2
+neden: $20d+10k\leq100$ eşitsizliğini 10'a böl: $2d+k\leq10$. $d=1$ için $k\leq8$ (8 seçim), $d=2$ için $k\leq6$ (6), $d=3$ için $k\leq4$ (4), $d=4$ için $k\leq2$ (2). $d=5$ için kalem alacak para kalmaz. Toplam 20.
+sinav: İki bilinmeyenli eşitsizlikte birini sabitleyip diğerinin değerlerini say. “Pozitif” mi, “doğal sayı” mı yazıyor; sınırı ona göre al.
+dusun: 100 liranın tamamı harcanmak zorunda olsaydı kaç seçim kalırdı?
+yanit: $2d+k=10$ ve $d,k\geq1$: $(1,8),(2,6),(3,4),(4,2)$; 4 seçim.
 
 ::soru c4 tip=iki-bilinmeyen zorluk=2
 $x$ ve $y$ tam sayılar, $-2 < x < 3$ ve $x < y < 4$ olduğuna göre $x + y$'nin en büyük değeri kaçtır?

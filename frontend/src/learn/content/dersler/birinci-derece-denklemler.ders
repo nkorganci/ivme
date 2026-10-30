@@ -99,6 +99,25 @@ soru: $\frac{x - 1}{2} - \frac{x - 3}{4} = 2$ denklemini çöz.
 3. $x + 1 = 8$, yani $x = 7$. Sağlama: $\frac{6}{2} - \frac{4}{4} = 3 - 1 = 2$ ✓ || Sağlama hatayı yakalar.
 cevap: $x = 7$
 
+::ornek baslik="Ondalıklı katsayılar ve iki taraftaki bilinmeyen"
+soru: $0{,}3x+1{,}2=0{,}5x-0{,}4$ denklemini çöz.
+1. Her terimi 10 ile çarp: $3x+12=5x-4$. || Terazinin iki kefesini aynı sayıyla çarpmak dengeyi bozmaz; virgüller gider.
+2. $x$'leri katsayısı büyük olan sağ tarafta topla: $12+4=5x-3x$, yani $16=2x$. || Katsayı pozitif kalsın diye $3x$'i sağa, $-4$'ü sola taşıdık.
+3. $x=8$. || İki tarafı 2'ye böldük.
+cevap: $x=8$. Sağlama: sol $0{,}3\cdot8+1{,}2=3{,}6$, sağ $0{,}5\cdot8-0{,}4=3{,}6$.
+
+::sorgula s1-taksi baslik="Taksi kaç kilometre gitti?"
+durum: Bir taksi 20 lira açılış ücreti ve her kilometre için 12 lira alıyor. Yolculuğun sonunda 140 lira ödedin.
+soru: Taksi kaç kilometre gitti?
+A) Yaklaşık 11,67 km || $140:12$ yaptın; açılış ücreti kilometreye bağlı değildir, önce çıkarılmalı.
++B) 10 km || $20+12x=140$, $12x=120$, $x=10$.
+C) 13 km || 13 km için $20+12\cdot13=176$ lira ödenirdi.
+kontrol: (140-20)/12
+neden: Ödenen tutar $20+12x$ biçimindedir. Terazinin iki kefesinden 20 lira alırsan $12x=120$ kalır; iki tarafı 12'ye bölünce $x=10$. Sağlama: $20+120=140$.
+sinav: Problemi denkleme çevirirken sabit kısmı (açılış, kira, giriş ücreti) ve değişen kısmı (km, saat, adet) ayrı yaz.
+dusun: 200 liran varsa bu taksiyle en çok kaç kilometre gidebilirsin?
+yanit: $20+12x\leq200$, $12x\leq180$, $x\leq15$: en çok 15 km.
+
 ::yanilgi m1 tip=denklem-cozme
 yanlis: $-(x - 3) = -x - 3$
 neden: Eksi işareti parantezin içindeki **her** terimi çarpar: $-1 \cdot (-3) = +3$.
@@ -133,8 +152,26 @@ L3: İki tarafın özdeş olması ÇK $= \mathbb{R}$ demektir: $(a - 3)x + 5 = 2
 soru: $(a - 3)x + 5 = 2x + b$ denkleminin çözüm kümesi $\mathbb{R}$ olduğuna göre $a + b$ kaçtır?
 1. Bir tarafa topla: $(a - 3 - 2)x + 5 - b = 0$, yani $(a - 5)x = b - 5$. || $ax = b$ biçimi.
 2. ÇK $= \mathbb{R}$ için katsayı ve sağ taraf sıfır: $a = 5$, $b = 5$. || İki koşul birden.
-3. $a + b = 10$.
+3. $a + b = 10$. || Bulduğumuz iki değeri topladık.
 cevap: $10$
+
+::ornek baslik="Çözümü olmayan ve sonsuz çözümlü durum"
+soru: $(m^2-4)x=m+2$ denklemi için çözüm kümesinin boş küme ve $\mathbb{R}$ olduğu $m$ değerlerini bul.
+1. Katsayı sıfır olmalı: $m^2-4=0$, yani $m=2$ veya $m=-2$. || Tek çözümden çıkmanın tek yolu $x$'in katsayısının sıfır olmasıdır.
+2. $m=2$ için sağ taraf $2+2=4\neq0$: $0\cdot x=4$, çözüm yok. || Hiçbir sayının 0 katı 4 olmaz.
+3. $m=-2$ için sağ taraf $-2+2=0$: $0\cdot x=0$, her sayı çözüm. || Eşitlik her $x$ için doğru.
+cevap: $m=2$ için ÇK $=\varnothing$; $m=-2$ için ÇK $=\mathbb{R}$. Diğer bütün $m$ değerlerinde tek çözüm vardır.
+
+::sorgula s2-tarife baslik="İki tarife hangi dakikada eşitlenir?"
+durum: A tarifesi aylık 50 lira sabit ücret ve konuşulan her dakika için 1 lira alıyor. B tarifesi aylık 30 lira sabit ücret ve her dakika için yine 1 lira alıyor.
+soru: Kaç dakika konuşulursa iki tarifenin faturası eşit olur?
+A) 20 dakikada || 20, sabit ücretlerin farkıdır; dakika ücretleri aynı olduğu için bu fark hiç kapanmaz.
+B) 0 dakikada || Hiç konuşulmasa bile faturalar 50 ve 30 liradır; eşit değil.
++C) Hiçbir zaman || $50+x=30+x$ denklemi $50=30$ çelişkisine iner; çözüm kümesi boştur.
+neden: $50+x=30+x$ yazıp iki taraftan $x$ çıkarınca $50=30$ kalır; bu hiçbir $x$ için doğru değildir. Denklem $0\cdot x=-20$ biçimindedir: katsayı 0, sağ taraf sıfırdan farklı. B tarifesi her zaman 20 lira daha ucuzdur.
+sinav: Denklemi $a\cdot x=b$ biçimine getir. $a=0$ iken $b\neq0$ ise çözüm yok, $b=0$ ise her sayı çözümdür.
+dusun: B tarifesinin sabit ücreti de 50 lira olsaydı ne olurdu?
+yanit: $50+x=50+x$ her $x$ için doğru olurdu; iki fatura her dakikada eşittir. Çözüm kümesi bütün uygun dakika değerleridir.
 
 ::yanilgi m2 tip=ozel-durum
 yanlis: $0 \cdot x = 0$ denkleminin tek çözümü $x = 0$'dır.
@@ -176,10 +213,29 @@ cevap: $(x, y) = (3, 4)$
 
 ::tamamla baslik="Yerine koyma"
 soru: $3x + 2y = 16$ ve $x - y = 2$ sistemini çöz.
-1. İkinci denklemden $x = y + 2$.
+1. İkinci denklemden $x = y + 2$. || Katsayısı 1 olan bilinmeyeni yalnız bırakmak en kısa yoldur.
 ?2. Birinci denklemde yerine yaz: $3(y + 2) + 2y = 16$, yani $5y + 6 = 16$. || $3y + 6 + 2y$
-?3. $y = 2$ ve $x = 4$. Sağlama: $3 \cdot 4 + 2 \cdot 2 = 16$ ✓
+?3. $y = 2$ ve $x = 4$. Sağlama: $3 \cdot 4 + 2 \cdot 2 = 16$ ✓ || $y$ bulununca $x=y+2$ eşitliğine geri koyduk.
 cevap: $(4, 2)$
+
+::ornek baslik="Bilet problemi: adet ve para denklemi"
+soru: Bir sinemada öğrenci bileti 60 lira, tam bilet 90 lira. Bir seansta 40 bilet satıldı ve 2850 lira toplandı. Kaç öğrenci bileti satıldı?
+1. Öğrenci bileti $x$, tam bilet $y$ olsun: $x+y=40$ ve $60x+90y=2850$. || Biri adet, diğeri para bilgisi; iki bilinmeyen için iki denklem.
+2. İlk denklemi 60 ile çarpıp ikinciden çıkar: $30y=2850-2400=450$, $y=15$. || $x$'in katsayılarını eşitleyip yok ettik.
+3. $x=40-15=25$. || Adet denklemine geri koyduk.
+cevap: 25 öğrenci bileti. Kontrol: $25\cdot60+15\cdot90=1500+1350=2850$.
+
+::sorgula s3-jeton baslik="Jetonların puanı"
+durum: Bir oyun salonunda mavi jeton 5 puan, sarı jeton 1 puan değerinde. Elinde toplam 20 jeton ve 52 puan var.
+soru: Kaç mavi jetonun var?
++A) 8 || $x+y=20$, $5x+y=52$; çıkarınca $4x=32$.
+B) 12 || 12, sarı jetonların sayısıdır.
+C) 10 || Yarı yarıya düşündün; $10\cdot5+10\cdot1=60$ puan eder.
+kontrol: (52-20)/4
+neden: Mavi $x$, sarı $y$: $x+y=20$ ve $5x+y=52$. İkinciden birinciyi çıkarınca $y$'ler gider: $4x=32$, $x=8$; sarı $y=12$. Kontrol: $8\cdot5+12=52$.
+sinav: “Toplam adet ve toplam değer” verilen bütün sorular bu iki denklemle kurulur: madeni para, bilet, iki tür ürün.
+dusun: Denklem kurmadan şöyle düşünebilir misin: “Hepsi sarı olsaydı kaç puan olurdu?”
+yanit: Hepsi sarı olsaydı 20 puan olurdu; 32 puan eksik. Her sarıyı maviyle değiştirmek 4 puan ekler: $32:4=8$ mavi jeton. Bu, yok etme yönteminin sözlü hâlidir.
 
 ::strateji tip=sistem baslik="Problemi sisteme çevir"
 ipucu: Toplam adet ve toplam para (madeni para, bilet, iki tür ürün)
@@ -217,6 +273,25 @@ soru: $a + b = 8$, $b + c = 11$, $a + c = 13$ olduğuna göre $a + b + c$ kaçt�
 1. Üç eşitliği topla: $2a + 2b + 2c = 32$. || Her harf iki kez geçer.
 2. $a + b + c = 16$. || İstersen $c = 16 - 8 = 8$ gibi tek tek de bulursun.
 cevap: $16$
+
+::ornek baslik="Oran verilince tek bilinmeyene in"
+soru: $\frac{x}{y}=\frac{2}{3}$ ve $x+y=35$ olduğuna göre $2x-y$ kaçtır?
+1. $x=2k$, $y=3k$ yaz. || Oran, iki sayının $k$ katsayısıyla aynı ölçekte büyüdüğünü söyler.
+2. $2k+3k=35$, yani $k=7$; $x=14$, $y=21$. || İki bilinmeyen tek bilinmeyene indi.
+3. $2x-y=28-21=7$. || İstenen ifadeyi hesapladık.
+cevap: 7. Kontrol: $\frac{14}{21}=\frac{2}{3}$ ve $14+21=35$.
+
+::sorgula s4-simit baslik="Simit ile çayın toplam fiyatı"
+durum: Bir kantinde 2 simit ve 1 çay 35 lira; 1 simit ve 2 çay 31 lira tutuyor.
+soru: 1 simit ve 1 çay birlikte kaç lira eder?
++A) 22 lira || İki siparişi topla: 3 simit ve 3 çay 66 lira; üçe böl.
+B) 33 lira || $66:2$ yaptın; toplamda 3 simit ve 3 çay var, 2 değil.
+C) 66 lira || Bu, iki siparişin toplamıdır: 3 simit ve 3 çay.
+kontrol: (35+31)/3
+neden: Simit $s$, çay $c$ olsun: $2s+c=35$, $s+2c=31$. Taraf tarafa toplayınca $3s+3c=66$, yani $s+c=22$. Fiyatları tek tek bulmadan istenen ifadeye ulaştık.
+sinav: Soru tek tek değerleri değil bir ifadeyi istiyorsa, denklemleri toplayıp çıkararak doğrudan o ifadeyi elde etmeyi dene.
+dusun: Bir simit kaç liradır?
+yanit: Denklemleri çıkar: $s-c=4$. $s+c=22$ ile birlikte $s=13$, $c=9$. Kontrol: $2\cdot13+9=35$, $13+2\cdot9=31$.
 
 ::soru c4 tip=ifade-degeri zorluk=2
 $x + 2y = 11$ ve $2x + y = 7$ olduğuna göre $x + y$ kaçtır?
