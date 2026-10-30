@@ -1,8 +1,6 @@
 // Temel Kavramlar: bölüm keşifleri. Özgün öğretim örnekleri; sınav sorusu değildir.
 const sign = (n) => (n > 0 ? '+' : n < 0 ? '−' : '0');
-const show = (n) => (n < 0 ? `−${-n}` : String(n)).replace('.', ',');
-const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹';
-export const power = (base, n) => `${base < 0 ? `(${show(base)})` : show(base)}${String(n).split('').map((d) => SUP[d]).join('')}`;
+import { power, show } from './yardim.js';
 
 export const explorations = {
   'temel-tekcift': {
@@ -119,7 +117,7 @@ export function model(id, v) {
     const pair = v.a + last;
     const sum = (pair * v.n) / 2;
     return { kind: 'temel-ardisik', ...v, terms, last, pair, sum,
-      equation: `Terim sayısı (${last} − ${v.a}) ÷ ${v.r} + 1 = ${v.n} · Toplam ${v.n} × ${pair} ÷ 2 = ${sum}`,
+      equation: `Terim sayısı (${last} − ${v.a}) ÷ ${v.r} + 1 = ${v.n}; Toplam ${v.n} × ${pair} ÷ 2 = ${sum}`,
       observation: `Alt alta gelen her sütun ${v.a} + ${last} = ${pair} eder; ${v.n} sütun ${v.n * pair} verir. Diziyi iki kez yazdığımız için ikiye böleriz: ${sum}. Ortalama terim ${show(pair / 2)}.` };
   }
   if (id === 'temel-ucdeger') {
@@ -127,7 +125,7 @@ export function model(id, v) {
     const products = Array.from({ length: 11 }, (_, i) => (i + 1) * (11 - i));
     const area = v.x * y;
     return { kind: 'temel-ucdeger', ...v, y, area, products,
-      equation: `${v.x} × ${y} = ${area} · en büyük 6 × 6 = 36`,
+      equation: `${v.x} × ${y} = ${area}; en büyük 6 × 6 = 36`,
       observation: area === 36
         ? 'Kenarlar eşit: dikdörtgen kare oldu ve çarpım en büyük değerine, 36’ya ulaştı.'
         : `Kenarlar arasındaki fark ${Math.abs(v.x - y)}. Çarpım ${area}; 36’dan ${36 - area} eksik. Bu eksiklik (x − 6)² = ${(v.x - 6) ** 2} kadardır: sayılar ortadan uzaklaştıkça çarpım küçülür.` };

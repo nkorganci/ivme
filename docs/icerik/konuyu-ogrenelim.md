@@ -92,6 +92,9 @@ Görüntüdeki metin/şekil/seçenekler okunarak çözüm yazılmıştır; bağ�
 | TYT-0554 | Temel kavramlar; çift katsayıları atarak teklik | E, II ve III | `79f3aa331010dc384a48aef06cade06cf2d2eb17f9c39f502e2a65d88479df6b` |
 | TYT-0582 | Temel kavramlar; bölümün tekliğinden durumlara ayırma | D, I ve III | `c765ca06941b081d04464cb11b7bfd38c9e364b7e4f015bfe333ed2e163b7d9f` |
 | AYT_Sayisal-0012 | Temel kavramlar; eşitsizlik zincirinden işaret | D, I ve III | `b556f1d46287b150442dc6a62b604078252faf2a13db64240da77ada0da3c22b` |
+| TYT-0578 | Sayı basamakları; tombala satırlarından 9A=17+11B | E, 143 | `cf4ea0a29197bffa3af78a7aed8efd73585c05059db8d78a7dca62b6067ba76f` |
+| TYT-0573 | Sayı basamakları; 9(C−A)=11B+1 ve farklı rakamlar | C, 3 | `f90a7431c7e7dc16091bacc3cff6ed20a4a9e4b6a30baac1abc7848c7ae1ddfa` |
+| AYT_Sayisal-0006 | Sayı basamakları; yer değiştirme döngüsü 6 | A, 321 | `3a5b2646bece4d5e05081f9134050a194a4e0cfde1cd487f5e1d1fa92868f2a3` |
 
 AYT_Sayisal-0014 görseli `veri/resimler-pilot/kirpilmis/AYT/matematik/` altındadır.
 İki bölünebilme çözümü tüm rakam çiftlerinin bağımsız taramasıyla ve mevcut DB cevap

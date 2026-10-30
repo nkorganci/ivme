@@ -2,8 +2,9 @@
 // JSX içermez; Node testleri de bu dosyayı içe aktarır. Çizimler derin/cizimler.jsx içindedir.
 // Her ders modülü { explorations, controls, model(id, değerler) } dışa aktarır; keşif kimlikleri ders önekiyle başlar.
 import * as temelKavramlar from './temel-kavramlar.js';
+import * as sayiBasamaklari from './sayi-basamaklari.js';
 
-const MODULES = [temelKavramlar];
+const MODULES = [temelKavramlar, sayiBasamaklari];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

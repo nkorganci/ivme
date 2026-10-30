@@ -47,8 +47,10 @@ basamak-degisim 1 1-3
 rakam-kosul 2 1-3
 basamak-sayisi 1 1-3
 
-@oturum Çözümleme ve basamak değişimleri | s1 s2
-@oturum Rakam koşulları ve basamak sayısı | s3 s4
+@oturum Çözümleme ve rakam denklemleri | s1 s1b
+@oturum Rakam ekleme, değiştirme ve döngüler | s2 s2b
+@oturum Rakam koşulları ve sayma | s3 s3b
+@oturum Basamak sayısı ve son rakam | s4 s4b
 
 @ontest
 ::soru o1 tip=cozumleme zorluk=1
@@ -129,6 +131,8 @@ yanlis: $AB = A \cdot B$; örneğin $A = 3$, $B = 4$ ise $AB = 12$.
 neden: Harflerin yan yana yazılması, rakamlardan oluşan sayıyı gösterir.
 dogru: $AB = 10A + B = 34$. Çarpım kastedilse $A \cdot B$ diye ayrıca belirtilir.
 
+::cikmis TYT-0578 tip=cozumleme
+
 ::soru c1 tip=cozumleme zorluk=1
 $ABC$ ve $CBA$ üç basamaklı sayılardır. $ABC - CBA = 297$ olduğuna göre $A - C$ kaçtır?
 +A) 3 || Doğru: $ABC - CBA = 99(A - C) = 297$.
@@ -139,7 +143,68 @@ E) 33 || 297'yi 9'a böldün; üç basamaklıda katsayı 99'dur.
 kontrol: 297/99
 cozum: $(100A + 10B + C) - (100C + 10B + A) = 99A - 99C = 99(A - C) = 297$, yani $A - C = 3$.
 
-@bolum s2 10 | Rakam ekleme ve yer değiştirme
+@bolum s1b 20 | Çözümlemeyle denklem: rakam bilmeceleri
+::kesfet basamak-ters
+
+::duzey baslik="Harfli sayılardan denkleme"
+L1: Harfli bir sayıyı hep aynı biçimde açarız: $AB=10A+B$, $ABC=100A+10B+C$. Eşitliğin iki tarafını da açınca harfler birbirine bağlanır. Sonra harflerin rakam olduğunu (0–9) ve ilk basamağın 0 olamayacağını kullanırız.
+L2: Açtıktan sonra aynı harfleri bir tarafta topla; katsayılar çoğu zaman 9, 11, 99, 101 ya da 111'in katlarıdır. Örneğin $ABA=101A+10B$, $ABAB=101\cdot AB$, $AAA=111A$. Bir taraf 9'un katıysa diğer taraf da 9'un katı olmalıdır; bu, adayları hızla azaltır.
+L3: Tek denklem ve iki bilinmeyen varsa çözümü rakam koşulları verir: $9A=17+11B$ eşitliğinde $B$'yi 0–9 arasında tarayıp sağ tarafın 9'un katı olduğu değeri ararız. Tarama yerine kalanlarla da düşünülebilir: $17+11B$'nin 9 ile kalanı $8+2B$'nin kalanına eşittir; bunun 0 olması için $B=5$ olmalıdır.
+
+::sorgula s1b-park baslik="Ters okunan park numarası"
+durum: Bir otoparkta araçlara iki basamaklı park numarası veriliyor. Bir sürücü kendi numarasını tersten okuduğunda 36 daha büyük bir numara elde ediyor.
+soru: Sürücünün park numarası için hangisi kesinlikle doğrudur?
+A) Rakamları toplamı 4'tür. || Toplam değil, rakamlar arasındaki fark bilgisi var.
++B) Birler rakamı, onlar rakamından 4 fazladır. || $BA-AB=9(B-A)=36$, yani $B-A=4$.
+C) Numara 15'tir. || 15'in tersi 51 ve fark 36; ama 26, 37, 48, 59 da uyar.
+neden: Numara $AB$ olsun: $BA-AB=9(B-A)=36$, yani $B-A=4$. Olası numaralar 15, 26, 37, 48, 59. Kesin olan yalnız rakamlar arasındaki farktır.
+sinav: Yer değiştirme farkı her zaman $9\cdot$(rakam farkı)'dır; soru çoğu zaman “en büyük”, “en küçük” ya da “kaç farklı” diye devam eder.
+dusun: Bu koşulu sağlayan kaç farklı park numarası vardır? Numaralardan biri 04 olabilir mi?
+yanit: 5 numara: 15, 26, 37, 48, 59. 04 iki basamaklı bir sayı değildir; tersi 40 olsa da onlar rakamı 0 olamaz.
+
+::ornek baslik="ABAB her zaman 101'in katıdır"
+soru: Dört basamaklı $ABAB$ sayısının 101'e bölündüğünü göster. $ABAB=2727$ ise $AB$ kaçtır?
+1. $ABAB=1000A+100B+10A+B=1010A+101B$. || Her harfi basamak değeriyle çarptık.
+2. $1010A+101B=101(10A+B)=101\cdot AB$. || Ortak çarpan 101 dışarı çıktı.
+3. $2727=101\cdot27$, dolayısıyla $AB=27$. || $ABAB$, $AB$'nin 101 katıdır.
+cevap: $ABAB=101\cdot AB$; $AB=27$. Kontrol: $27\cdot101=2727$.
+
+::ornek baslik="Sayı, rakamları toplamının katı"
+soru: İki basamaklı $AB$ sayısı, rakamları toplamının 7 katına eşittir. Kaç tane böyle sayı vardır?
+1. $10A+B=7(A+B)=7A+7B$. || Sözel bilgiyi çözümleyerek denkleme çevirdik.
+2. $3A=6B$, yani $A=2B$. || Harfleri bir tarafa topladık.
+3. $B=1,2,3,4$ için $A=2,4,6,8$: 21, 42, 63, 84. $B=5$ olursa $A=10$ rakam değil; $B=0$ ise $A=0$ olur ve sayı iki basamaklı olmaz. || Rakam aralığı adayları sınırladı.
+cevap: 4 sayı. Kontrol: $84=7\cdot12$ ve $8+4=12$.
+
+::ornek baslik="AAA bölü rakamları toplamı"
+soru: $AAA$ üç basamaklı bir sayıdır. $\frac{AAA}{A+A+A}$ bölümü kaçtır? Bu bölüm $A$'ya bağlı mı?
+1. $AAA=100A+10A+A=111A$. || Aynı rakam üç basamağa da yazıldı.
+2. Rakamlar toplamı $3A$. || Paydayı da $A$ cinsinden yazdık.
+3. $\frac{111A}{3A}=37$; $A$ sadeleşir. || $A\neq0$, çünkü sayı üç basamaklı.
+cevap: Her zaman 37. Kontrol: $\frac{555}{15}=37$.
+
+::tamamla baslik="Sen dene · sayı ile tersinin toplamı"
+soru: İki basamaklı $AB$ sayısı ile $BA$ sayısının toplamı 154'tür. $A>B$ ise $AB$ en çok kaçtır?
+1. $AB+BA=11(A+B)=154$, yani $A+B=14$. || Toplamda katsayı 11'dir.
+?2. En büyük $AB$ için onlar rakamı en büyük olmalı: $A=9$, $B=5$. || Onlar basamağı birlerden daha değerlidir; $A>B$ koşulu da sağlanıyor.
+?3. $AB=95$. || Kontrol: $95+59=154$.
+cevap: 95.
+
+::cikmis TYT-0573 tip=cozumleme
+
+::soru c5 tip=cozumleme zorluk=2
+İki basamaklı $AB$ sayısı, rakamları çarpımının 2 katına eşittir. Buna göre $A+B$ kaçtır?
+A) 6 || 33 için $2\cdot9=18\neq33$; denklemi çözümleyerek kur.
+B) 8 || Örneğin 44 için $2\cdot16=32\neq44$.
++C) 9 || Doğru: yalnız 36 sağlar; $2\cdot3\cdot6=36$.
+D) 11 || 56 için $2\cdot30=60\neq56$.
+E) 12 || 48 için $2\cdot32=64\neq48$.
+kontrol: 3+6
+cozum: $10A+B=2AB$ ise $B(2A-1)=10A$, $B=\frac{10A}{2A-1}$. $A=1,\ldots,9$ için yalnız $A=3$ bir rakam verir: $B=\frac{30}{5}=6$. Sayı 36 ve $A+B=9$.
+
+@bolum s2 15 | Rakam ekleme ve yer değiştirme
+::kesfet basamak-ekle
+
 ::fikir
 Sağa bir rakam eklemek sayıyı **10 katına çıkarıp** o rakamı ekler: $x \to 10x + d$. Bir rakamı değiştirmek, sayıyı **(değişim) × (basamak değeri)** kadar değiştirir.
 
@@ -197,7 +262,60 @@ cozum: $AB - BA = 9(A - B) = 36$, yani $A - B = 4$. En büyük $AB$ için $A = 9
 
 ::cikmis TYT-0653 tip=basamak-degisim
 
-@bolum s3 10 | Rakam koşulları: en büyük ve en küçük
+@bolum s2b 15 | Yanlış okuma, yanlış yazma ve döngülü değişimler
+::duzey baslik="Değişimi basamak değeriyle ölçmek"
+L1: Bir rakam yanlış yazılırsa sayı, rakam farkı çarpı basamak değeri kadar değişir: 352 yerine 382 yazmak onlar basamağında 3 fark yaratır, sayı $3\cdot10=30$ büyür.
+L2: Toplamada bir terim yanlış yazılırsa sonuç aynı miktarda değişir; çarpmada ise bu fark diğer çarpanla çarpılarak yansır. Yer değiştirme işlemleri tekrar ediyorsa ilk birkaç adımı yaz; sayı başa dönüyorsa döngü uzunluğunu bul.
+L3: Döngülü sorularda adım numarasını döngü uzunluğuna böl ve kalanı kullan; kalan 0 ise döngünün son adımı alınır. Adımlar tek–çift sırasına göre farklı işlem yapıyorsa döngü uzunluğunun çift olması gerekir; ancak o zaman işlem sırası da başa döner.
+
+::sorgula s2b-ters baslik="6 mı, 9 mu?"
+durum: Bir öğrenci kâğıttaki toplama işleminde 63 sayısını kâğıdı ters tutarak 93 olarak okudu ve toplamı 157 buldu.
+soru: Doğru toplam kaçtır?
+A) 187 || Yanlış okunan sayı doğrusundan büyük; doğru toplam daha küçük olmalı.
++B) 127 || 93 ile 63 arasındaki fark 30; yanlış toplamdan 30 çıkar.
+C) 154 || Fark, rakamlar arasındaki 3 değil; onlar basamağında olduğu için $3\cdot10=30$'dur.
+kontrol: 157-30
+neden: Onlar basamağındaki 6 yerine 9 okununca sayı $3\cdot10=30$ büyüdü. Toplam da 30 fazla çıktı: doğru toplam $157-30=127$.
+sinav: Yanlış okuma ve yazma sorularında “rakam farkı × basamak değeri” kadar değişim yaz; bu değişim toplamaya aynen, çarpmaya diğer çarpanla çarpılarak yansır.
+dusun: Aynı öğrenci 63'ü 93 okuyup 4 ile çarpsaydı sonuç doğrusundan ne kadar fazla çıkardı?
+yanit: $30\cdot4=120$ fazla: $93\cdot4=372$, $63\cdot4=252$.
+
+::ornek baslik="Çarpmada yer değiştiren rakamlar"
+soru: Bir öğrenci bir sayıyı 27 ile çarpacakken 27 yerine 72 yazdı ve sonucu doğrusundan 405 fazla buldu. Çarpılan sayı kaçtır?
+1. Yanlış ve doğru çarpanın farkı $72-27=45$. || Rakamlar yer değiştirdi: $9\cdot(7-2)=45$.
+2. Sonuçlar arasındaki fark $72x-27x=45x=405$. || Çarpım, değişen çarpan kadar ölçeklenir.
+3. $x=9$. || İki tarafı 45'e böldük.
+cevap: 9. Kontrol: $72\cdot9=648$, $27\cdot9=243$; fark 405.
+
+::ornek baslik="Rakam değişiminden ilk sayıya"
+soru: Üç basamaklı bir sayının yüzler rakamı 2 azaltılıp birler rakamı 5 artırılınca sayı 516 oluyor. İlk sayı kaçtır?
+1. Değişim: $-2\cdot100+5\cdot1=-195$. || Her rakam değişimi, basamak değeriyle çarpılır.
+2. Yeni sayı = eski sayı − 195; eski sayı $=516+195=711$. || Değişimi geri aldık.
+3. Kontrol: 711'in yüzler rakamı 7 → 5, birler rakamı 1 → 6: 516. || Rakamların 0–9 sınırını aşmadığını da gördük.
+cevap: 711.
+
+::ornek baslik="Son rakamı başa almak bir döngüdür"
+soru: 1234 sayısında her adımda son rakam silinip başa yazılıyor: 1234 → 4123 → … 50. adımın sonunda hangi sayı elde edilir?
+1. Adım 1: 4123, adım 2: 3412, adım 3: 2341, adım 4: 1234. || Dört rakamlı sayıda son rakamı başa almak 4 adımda başa döner.
+2. $50=4\cdot12+2$: 12 tam turdan sonra 2 adım daha. || Adım numarasını döngü uzunluğuna böldük.
+3. 2. adımın sonucu 3412. || Kalan 2 olduğu için döngünün 2. adımı.
+cevap: 3412.
+
+::cikmis AYT_Sayisal-0006 tip=basamak-degisim
+
+::soru c6 tip=basamak-degisim zorluk=2
+Bir toplama işleminde toplananlardan biri olan 458 sayısının onlar rakamı yanlışlıkla 2 yazılmış ve toplam 1342 bulunmuştur. Doğru toplam kaçtır?
+A) 1312 || Değişimin yönünü ters aldın; yanlış yazılan sayı daha küçük, doğru toplam daha büyük olmalı.
+B) 1345 || 3 farkı birler basamağında değil onlar basamağındadır: 30.
++C) 1372 || Doğru: 458 yerine 428 yazılmış; toplam 30 eksik.
+D) 1642 || 300 ekledin; değişen basamak yüzler değil onlar.
+E) 1352 || Farkı 10 aldın; rakam farkı 3, basamak değeri 10: 30.
+kontrol: 1342+30
+cozum: 458 yerine 428 yazılmış: sayı $3\cdot10=30$ küçük yazıldı. Toplam da 30 eksik çıktı: doğru toplam $1342+30=1372$.
+
+@bolum s3 15 | Rakam koşulları: en büyük ve en küçük
+::kesfet basamak-rakam
+
 ::fikir
 En büyük sayı için büyük rakamlar **solda**, en küçük için küçük rakamlar solda; ama **ilk basamak 0 olamaz**. Ek koşulu (çift, tek, toplam) son basamakta sağla.
 
@@ -256,7 +374,64 @@ cozum: En büyük $987$, en küçük $102$ (ilk basamak 0 olamaz, rakamlar farkl
 
 ::cikmis TYT-0551 tip=rakam-kosul
 
-@bolum s4 9 | Kaç basamaklı? Sondaki sıfırlar
+@bolum s3b 15 | Kaç farklı sayı? Rakam koşullarıyla saymak
+::duzey baslik="Basamakları tek tek doldurarak saymak"
+L1: Üç basamaklı bir sayı için üç kutu çizeriz: yüzler, onlar, birler. Her kutuya kaç farklı rakam yazılabileceğini bulur, sonra bu sayıları çarparız. İlk kutuya 0 yazılamaz.
+L2: Koşullu kutuyu önce doldur: “çift” ise birler kutusu, “5 ile bölünen” ise birler 0 ya da 5. Rakamlar farklıysa doldurduğun her kutu sonraki kutuların seçeneğini bir azaltır. 0 hem ilk kutuyu hem son kutuyu etkiliyorsa durumlara ayır: son rakam 0 olan ve olmayan.
+L3: Bazen durumlara ayırmak yerine tümden çıkarmak kısadır: rakamları farklı üç basamaklı sayılar $9\cdot9\cdot8=648$; bunlardan tek olanlar $8\cdot8\cdot5=320$; çift olanlar $648-320=328$. İki yolun aynı sonucu vermesi iyi bir kontroldür.
+
+::sorgula s3b-pin baslik="Telefon kilidi kaç farklı olabilir?"
+durum: Bir telefonun 4 haneli kilit kodunda her hane 0–9 rakamlarından biri olabiliyor ve rakamlar tekrar edebiliyor.
+soru: Kaç farklı kilit kodu vardır?
+A) 9000 || Kilit kodu bir sayı değildir; 0 ile başlayabilir.
++B) 10 000 || Her hane 10 seçenek: $10\cdot10\cdot10\cdot10$.
+C) 5040 || Bu, rakamların farklı olduğu kodların sayısıdır: $10\cdot9\cdot8\cdot7$.
+neden: Dört hanenin her birine 10 rakamdan biri yazılabilir: $10\cdot10\cdot10\cdot10=10\,000$. 0000'dan 9999'a kadar her dizi bir koddur. “Dört basamaklı sayı” istenseydi ilk hane 0 olamazdı ve $9\cdot10^3=9000$ olurdu.
+sinav: Saymada önce “sayı mı, dizi mi?” diye sor: sayıda ilk basamak 0 olamaz; kod, şifre ve plakada olabilir.
+dusun: Rakamları farklı 4 haneli kaç kod vardır?
+yanit: $10\cdot9\cdot8\cdot7=5040$.
+
+::ornek baslik="Rakamları farklı üç basamaklı çift sayılar"
+soru: Rakamları birbirinden farklı üç basamaklı kaç çift sayı vardır?
+1. Birler 0 ise: yüzler 9 seçenek (1–9), onlar kalan 8: $9\cdot8=72$. || 0 birlerde kullanıldı; yüzler için 0 sorunu kalmadı.
+2. Birler 2, 4, 6 ya da 8 ise (4 seçenek): yüzler 0 ve birlerdeki rakam dışında 8, onlar kalan 8: $4\cdot8\cdot8=256$. || Bu kez 0 onlar basamağına yazılabilir; yüzlerde yasak.
+3. Toplam $72+256=328$. || Durumlar ayrık; toplandı.
+cevap: 328. Kontrol: farklı rakamlı 648 üç basamaklı sayıdan 320'si tek; $648-320=328$.
+
+::ornek baslik="Rakamları toplamı 5 olan sayılar"
+soru: Rakamları toplamı 5 olan kaç tane üç basamaklı sayı vardır?
+1. Yüzler rakamı $a$ en az 1; kalan iki rakamın toplamı $5-a$. || İlk basamak 0 olamaz.
+2. $b+c=k$ için ($0\leq k\leq9$) $k+1$ seçenek vardır: $b=0,1,\ldots,k$. || $b$ seçilince $c$ kendiliğinden belirlenir.
+3. $a=1,2,3,4,5$ için $5+4+3+2+1=15$. || Durumları topladık.
+cevap: 15. Örnek: 104, 140, 113 ve 500 bu sayılardandır.
+
+::ornek baslik="5 ile bölünen, rakamları farklı sayılar"
+soru: Rakamları birbirinden farklı üç basamaklı kaç sayı 5 ile tam bölünür?
+1. Birler 0 ise: yüzler 9, onlar 8 seçenek: $72$. || 0 birlerde; yüzler için 0 yasağı sorun olmaz.
+2. Birler 5 ise: yüzler 0 ve 5 dışında 8 seçenek, onlar kalan 8: $64$. || 0 bu kez onlar basamağına yazılabilir.
+3. Toplam $72+64=136$. || Durumlar ayrık.
+cevap: 136.
+
+::tamamla baslik="Sen dene · rakamları farklı tek sayılar"
+soru: Rakamları birbirinden farklı üç basamaklı kaç tek sayı vardır?
+1. Birler tek olmalı: 1, 3, 5, 7, 9 → 5 seçenek. || Koşullu kutu önce doldurulur.
+?2. Yüzler: 0 ve birlerdeki rakam olamaz → 8 seçenek. || İlk basamak kuralı ve farklılık.
+?3. Onlar: kalan 8 rakam; toplam $5\cdot8\cdot8=320$. || Çarpma ilkesi.
+cevap: 320.
+
+::soru c7 tip=rakam-kosul zorluk=2
+Rakamları birbirinden farklı üç basamaklı kaç sayının birler rakamı 7'dir?
+A) 72 || Yüzler basamağına 7'yi de yazdın; rakamlar farklı olmalı.
+B) 81 || Onlar için 9 seçenek saydın; 7 ve yüzlerdeki rakam kullanılamaz.
++C) 64 || Doğru: yüzler 8, onlar 8 seçenek.
+D) 90 || Rakam tekrarına izin vermiş gibi saydın: $9\cdot10$.
+E) 56 || Yüzler için 7 seçenek saydın; 0 ve 7 çıkınca 8 kalır.
+kontrol: 8*8
+cozum: Birler 7. Yüzler 0 ve 7 dışında 8 rakam. Onlar, kullanılan iki rakam dışında 8 rakam (0 dahil). $8\cdot8=64$.
+
+@bolum s4 15 | Kaç basamaklı? Sondaki sıfırlar
+::kesfet basamak-sifir
+
 ::fikir
 $k \cdot 10^n$ ($1 \leq k < 10$) sayısı **$n + 1$ basamaklıdır**. $2^a \cdot 5^b$ çarpımında küçük üs kadar 10 oluşur; geri kalan çarpanı ayrıca say.
 
@@ -306,6 +481,56 @@ B) 14 || $10^{14}$ tek başına 15 basamaklıdır.
 D) 16 || $5 \cdot 10^{14}$'te 5 tek basamaklı; ek basamak yok.
 E) 22 || Üsleri toplamak basamak sayısını vermez.
 cozum: $4^7 = 2^{14}$. $2^{14} \cdot 5^{15} = 5 \cdot (2 \cdot 5)^{14} = 5 \cdot 10^{14}$: 15 basamaklı.
+
+@bolum s4b 15 | Son rakam: büyük kuvvetlerin birler basamağı
+::kesfet basamak-sonrakam
+
+::duzey baslik="Birler basamağını izlemek"
+L1: İki sayıyı çarptığında sonucun birler basamağı yalnız çarpanların birler basamağına bağlıdır: $37\cdot48$'in birler basamağı $7\cdot8=56$'nın birler basamağıdır: 6. Bu yüzden büyük sayıları tümüyle hesaplamadan son rakamlarını bulabiliriz.
+L2: Bir sayının kuvvetlerinde son rakamlar tekrar eder: 2'nin kuvvetleri 2, 4, 8, 6, 2, … (4'lük döngü); 3 için 3, 9, 7, 1; 7 için 7, 9, 3, 1; 8 için 8, 4, 2, 6. 0, 1, 5, 6 ile bitenlerin her kuvveti aynı rakamla biter; 4 ve 9 iki adımlık döngüdedir.
+L3: Üssü döngü uzunluğuna böl: kalan $r>0$ ise döngünün $r$. elemanı, kalan 0 ise son elemanı alınır. Bütün döngü uzunlukları 4'ü böldüğü için $n\geq1$ olmak üzere $a^{n}$ ile $a^{n+4}$ aynı rakamla biter. Son rakam, 10 ile bölümden kalandır; aynı yöntem 10 ile kalan sorularını da çözer.
+
+::sorgula s4b-sayac baslik="Ekranda yalnız son rakam görünüyor"
+durum: Bir sayacın ekranında yalnız son rakam görünüyor. Sayaç 1'den başlıyor ve her saniye gösterdiği sayıyı 3 ile çarpıyor: 3, 9, 27, 81, …
+soru: 20. saniyede ekranda hangi rakam görünür?
+A) 3 || Döngünün başına döndün; 20, 4'ün katı olduğu için döngünün son elemanı seçilir.
+B) 9 || 20'nin 4 ile kalanını 2 aldın; kalan 0'dır.
++C) 1 || $3^{20}$: döngü 3, 9, 7, 1 ve 20, 4'ün katı.
+neden: Son rakam yalnız son rakamlarla belirlenir: 3, 9, 27'nin 7'si, 81'in 1'i, sonra yine 3. Döngü 4 uzunluğunda. $20=4\cdot5$: beş tam döngü bitti; son eleman 1.
+sinav: “$7^{50}$'nin birler basamağı” ya da “10 ile bölümünden kalan” soruları aynı döngüyle çözülür.
+dusun: Sayaç 3 yerine 7 ile çarpsaydı 20. saniyede ne görünürdü?
+yanit: 7'nin döngüsü 7, 9, 3, 1; yine 4 uzunluğunda. 20, 4'ün katı: 1.
+
+::ornek baslik="Tek kuvvetin son rakamı"
+soru: $7^{43}$ sayısının birler basamağındaki rakam kaçtır?
+1. 7'nin kuvvetlerinin son rakamları: 7, 9, 3, 1 ve tekrar. || $7\cdot7=49$, $9\cdot7=63$, $3\cdot7=21$, $1\cdot7=7$.
+2. $43=4\cdot10+3$. || Üssü döngü uzunluğuna böldük.
+3. Döngünün 3. elemanı 3. || Kalan 3.
+cevap: 3.
+
+::ornek baslik="İki kuvvetin toplamının son rakamı"
+soru: $2^{50}+3^{50}$ sayısının birler basamağı kaçtır?
+1. $50=4\cdot12+2$. 2'nin döngüsü 2, 4, 8, 6: $2^{50}$ 4 ile biter. || İkinci eleman.
+2. 3'ün döngüsü 3, 9, 7, 1: $3^{50}$ 9 ile biter. || Aynı kalan, ikinci eleman.
+3. $4+9=13$; toplamın son rakamı 3. || Toplamın son rakamı, son rakamların toplamının son rakamıdır.
+cevap: 3.
+
+::ornek baslik="Çarpımın son rakamı"
+soru: $13^{2026}\cdot18^{7}$ sayısının birler basamağı kaçtır?
+1. Yalnız son rakamlara bak: $3^{2026}$ ve $8^{7}$. || 13 ile 3, 18 ile 8 aynı son rakam döngüsüne sahiptir.
+2. $2026=4\cdot506+2$: 3'ün döngüsünde ikinci eleman 9. $7=4\cdot1+3$: 8'in döngüsü 8, 4, 2, 6'da üçüncü eleman 2. || Her kuvveti ayrı döngüsünde yerleştirdik.
+3. $9\cdot2=18$; son rakam 8. || Çarpımın son rakamı, son rakamların çarpımının son rakamıdır.
+cevap: 8.
+
+::soru c8 tip=basamak-sayisi zorluk=2
+$8^{25}$ sayısının birler basamağındaki rakam kaçtır?
+A) 2 || Üssün 4 ile kalanını 3 aldın; $25=4\cdot6+1$.
+B) 4 || Kalanı 2 aldın; kalan 1'dir.
+C) 6 || Kalanı 0 sandın; 25, 4'ün katı değildir.
++D) 8 || Doğru: döngü 8, 4, 2, 6 ve kalan 1.
+E) 0 || 8'in kuvvetlerinde 5 çarpanı olmadığı için hiçbiri 0 ile bitmez.
+kontrol: 8
+cozum: 8'in kuvvetlerinin son rakamları 8, 4, 2, 6 döngüsündedir. $25=4\cdot6+1$; döngünün 1. elemanı 8.
 
 ::ozet
 - $AB = 10A + B$; $AB + BA = 11(A + B)$, $AB - BA = 9(A - B)$, $ABC - CBA = 99(A - C)$.

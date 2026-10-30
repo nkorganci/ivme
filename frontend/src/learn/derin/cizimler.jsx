@@ -1,4 +1,5 @@
 // Derin bölüm keşiflerinin SVG çizimleri: model.kind → bileşen. Çizim 480×290 alanına yapılır.
 import { diagrams as temelKavramlar } from './temel-kavramlar-cizim.jsx';
+import { diagrams as sayiBasamaklari } from './sayi-basamaklari-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari };

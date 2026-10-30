@@ -49,17 +49,33 @@ function inlineMarkdown(text, keyBase) {
 /** Satır içi metin: matematik + kalın/eğik. Satır sonları <br> olur. */
 export function MathText({ text, className = '' }) {
   const value = String(text ?? '');
+  // Formül içeren kalın aralıklar (**$x$ eğim**) önce ayrılır; aksi hâlde formül ayrımı ** işaretlerini yalnız bırakır.
+  const out = [];
+  let last = 0;
+  let k = 0;
+  for (const bold of value.matchAll(/\*\*([^*]+?)\*\*/g)) {
+    if (!bold[1].includes('$')) continue;
+    if (bold.index > last) out.push(...mathRun(value.slice(last, bold.index), `s${k}`));
+    out.push(<strong key={`b${k}`}>{mathRun(bold[1], `b${k}`)}</strong>);
+    last = bold.index + bold[0].length;
+    k += 1;
+  }
+  if (last < value.length) out.push(...mathRun(value.slice(last), `s${k}`));
+  return <span className={className}>{out}</span>;
+}
+
+function mathRun(value, keyBase) {
   const out = [];
   let last = 0;
   let i = 0;
   for (const match of value.matchAll(MATH)) {
-    if (match.index > last) out.push(...withBreaks(value.slice(last, match.index), `t${i}`));
-    out.push(<Tex key={`m${i}`} tex={match[1] ?? match[2]} display={!!match[1]} />);
+    if (match.index > last) out.push(...withBreaks(value.slice(last, match.index), `${keyBase}t${i}`));
+    out.push(<Tex key={`${keyBase}m${i}`} tex={match[1] ?? match[2]} display={!!match[1]} />);
     last = match.index + match[0].length;
     i += 1;
   }
-  if (last < value.length) out.push(...withBreaks(value.slice(last), `t${i}`));
-  return <span className={className}>{out}</span>;
+  if (last < value.length) out.push(...withBreaks(value.slice(last), `${keyBase}t${i}`));
+  return out;
 }
 
 function withBreaks(text, keyBase) {

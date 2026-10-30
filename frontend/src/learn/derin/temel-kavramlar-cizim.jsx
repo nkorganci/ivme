@@ -1,5 +1,5 @@
 import { C, L, R, T, times } from './svg.jsx';
-import { power } from './temel-kavramlar.js';
+import { power } from './yardim.js';
 
 const show = (n) => (n < 0 ? `−${-n}` : String(n));
 
