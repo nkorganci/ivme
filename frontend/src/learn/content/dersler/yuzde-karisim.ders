@@ -80,7 +80,9 @@ E) 32 || Fazla.
 kontrol: (0.15*40+0.4*60)/100*100
 cozum: Tuz: $40 \cdot 0{,}15 + 60 \cdot 0{,}40 = 6 + 24 = 30$ litre. Oran $\frac{30}{100} = $ %30.
 
-@bolum s1 9 | Yüzde: 100 üzerinden oran
+@bolum s1 16 | Yüzde: 100 üzerinden oran
+::kesfet yuzde-karisim
+
 ::fikir
 **Yüzde, paydası 100 olan orandır:** %$x$ $= \frac{x}{100}$. "$a$'nın %$x$'i" demek $a \cdot \frac{x}{100}$ demektir. Sık kullanılan yüzdeleri kesir olarak bilmek hesabı çok hızlandırır.
 
@@ -125,6 +127,8 @@ D) 60 || Hesabı kontrol et.
 E) 65 || Yüzdeyi öğrenci sayısı sandın.
 kontrol: 26*100/65
 cozum: Erkekler $100 - 35 = $ %65: $0{,}65 \cdot x = 26 \Rightarrow x = 40$.
+
+::cikmis TYT-0662 tip=yuzde-hesap
 
 @bolum s2 9 | Ardışık yüzde değişimleri: çarpan yöntemi
 ::fikir

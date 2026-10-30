@@ -80,7 +80,9 @@ D) $(-6, -2)$ || Bu $-2a$'nın aralığı; 5 eklemeyi unuttun.
 E) $(2, 6)$ || $2a$'nın aralığı.
 cozum: $-2$ ile çarp (yön değişir): $-6 < -2a < -2$. 5 ekle: $-1 < 5 - 2a < 3$.
 
-@bolum s1 8 | Aralıklar
+@bolum s1 15 | Aralıklar
+::kesfet esitsizlikler
+
 ::fikir
 **Köşeli parantez** ucu dahil eder, **normal parantez** etmez. $\infty$ bir sayı değildir; her zaman açık uçla yazılır: $[2, \infty)$.
 

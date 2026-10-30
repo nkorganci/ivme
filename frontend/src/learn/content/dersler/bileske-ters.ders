@@ -79,7 +79,9 @@ E) 5 || Hesabı yeniden yap.
 kontrol: 2
 cozum: $f^{-1}(5) = 2 \Leftrightarrow f(2) = 5$: $2a + 1 = 5 \Rightarrow a = 2$.
 
-@bolum s1 9 | Bileşke: sağdan sola
+@bolum s1 16 | Bileşke: sağdan sola
+::kesfet bileske-ters
+
 ::fikir
 $(f \circ g)(x) = f(g(x))$: önce **$g$**, sonra **$f$** uygulanır (**sağdan sola**). Bileşkenin değişme özelliği yoktur: genellikle $f \circ g \neq g \circ f$.
 

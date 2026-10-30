@@ -69,6 +69,15 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 
 ## 12.02 — Eksik ders notu ve gerçek kaynaklı ipucu kapsamını genişlet
 
+**Konuyu Öğrenelim öğretim standardı:** Yeni dersler ve mevcut derslerin yeni bölümleri
+[ortak öğretim sözleşmesine](../icerik/konuyu-ogrenelim.md) uyar: günlük bağlam, temelden
+kavram açıklaması, etkileşimli model, gerekçeli örnek, örnekten sonra koşullu hızlı yol,
+öğrenci denemesi ve özgün gerçek soru. Mevcut 33 dersin keşif katmanını baştan üretme.
+Görseli incelenmiş altı gerçek örneği diğer derslere/alt soru tiplerine genişlet; otomatik
+banka konu eşlemelerini görsel okuma kanıtı olmadan doğrulanmış sayma. Her dersin bütün
+alt konularının aynı derinlikte görsel kapsama ulaşması ayrı içerik genişletmesidir;
+ilk bölümdeki keşif, tüm alt konuların uzman incelemesi yerine geçmez.
+
 Durum: `KISMI_KAYNAKLI_ICERIK`. Yayımlanmış rehberler `frontend/public/kaynakli-notlar.json`
 içindedir; hepsi öğretmen onayı bekler. Notu olmayan kontrollü konuların kimlik bazlı tek
 listesi `python scripts/note-coverage.py` çıktısındaki (`veri/content-labels/note-coverage.json`)

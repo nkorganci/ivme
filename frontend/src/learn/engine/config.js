@@ -17,7 +17,7 @@ export const ENGINE = Object.freeze({
   // Soru başına saniye (yapılandırma); öğrencinin 30 cevabından sonra kendi ortancası kullanılır.
   pace: { TYT: 75, AYT: 105, ownAfterAttempts: 30, missedFactor: 1.5 },
   placement: { perUnit: 2, maxMinutes: 20, l1Below: 40, l3Above: 75, testOutPerArchetype: 1, testOutMax: 4 },
-  lesson: { wrongChecksForL1: 2, defaultLevel: 'L2' },
+  lesson: { wrongChecksForL1: 2, defaultLevel: 'L1' },
   streak: { minMinutes: 10, minAttempts: 5, freezeWeekDays: 4, maxFreezes: 3 },
 });
 

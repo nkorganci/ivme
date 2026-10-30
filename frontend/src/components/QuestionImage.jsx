@@ -6,7 +6,7 @@ import { useDisplayPreference } from '../useDisplayPreference.js';
  * Soru görseli: alanında ortalanır, tıklayınca büyür; yüklenemezse bilgi kutusu gösterir.
  * "Sığdır" açıkken görsel, yanıt denetimlerine de yer bırakarak ekrana sığar.
  */
-export default function QuestionImage({ id, version, alt = 'Soru görseli', solution = false, onReady }) {
+export default function QuestionImage({ id, version, alt = 'Soru görseli', solution = false, onReady, readingWidth = false }) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [zoom, setZoom] = useState(false);
@@ -62,9 +62,10 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
 
   // Genişlik ve yükseklik sınırlarının ikisine de uy; uzun sorular için alt ölçek sınırı koyma.
   const fitWidth = useMemo(() => {
+    if (readingWidth && natural && box.w) return Math.max(1, Math.min(natural.w, box.w - 4));
     if (!fit || !natural || !box.w) return undefined;
     return Math.max(1, Math.floor(Math.min(natural.w, box.w - 4, natural.w * (box.h - 4) / natural.h)));
-  }, [fit, natural, box]);
+  }, [fit, natural, box, readingWidth]);
 
   useEffect(() => {
     if (!zoom) return undefined;
@@ -104,7 +105,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
           onError={() => setFailed(true)}
         />
       </button>
-      <button
+      {!readingWidth && <button
         type="button"
         className="image-fit"
         onClick={toggleFit}
@@ -112,7 +113,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
         title={fit ? 'Tam genişlikte göster (daha büyük)' : 'Ekrana sığdır (kaydırma gerekmez)'}
       >
         {fit ? '↔ Genişlet' : '⤢ Sığdır'}
-      </button>
+      </button>}
       {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
       {zoom && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş görsel" onClick={(e) => e.target === e.currentTarget && setZoom(false)}>

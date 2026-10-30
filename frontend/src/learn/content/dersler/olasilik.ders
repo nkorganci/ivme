@@ -80,7 +80,9 @@ E) $\frac{25}{36}$ || Bu hiç 6 gelmeme olasılığıdır.
 kontrol: 1-25/36
 cozum: Hiç 6 gelmemesi $\frac{5}{6} \cdot \frac{5}{6} = \frac{25}{36}$; en az bir 6: $1 - \frac{25}{36} = \frac{11}{36}$.
 
-@bolum s1 8 | Deney, örnek uzay ve olay
+@bolum s1 15 | Deney, örnek uzay ve olay
+::kesfet olasilik
+
 ::fikir
 **Deney** tekrarlanabilir süreç, **çıktı** her bir sonuç, **örnek uzay** $E$ tüm çıktıların kümesi, **olay** $E$'nin her alt kümesidir. $n$ para atılınca $s(E) = 2^n$, $n$ zar atılınca $s(E) = 6^n$.
 

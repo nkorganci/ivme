@@ -1,0 +1,127 @@
+/* Öğretim yüzeyi: tema renkleri, okunur satırlar, klavye ve dar ekran desteği. */
+.lr-lesson { --reading-width: 76ch; }
+.lr-lesson .lr-goal { max-width: 100ch; line-height: 1.7; }
+.lr-lesson .lr-lesson-head { padding: clamp(18px, 3vw, 32px); }
+.lr-lesson-title h1 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); letter-spacing: -.025em; }
+.lr-lesson .lr-crumbs { margin-bottom: 14px; }
+.lr-lesson-meter { margin-top: 18px; }
+.lr-reader { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 24px; align-items: start; }
+.lr-lesson-outline { position: sticky; top: 20px; padding: 16px 0; }
+.lr-lesson-outline ol { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 6px; }
+.lr-lesson-outline button { display: flex; width: 100%; align-items: flex-start; gap: 12px; padding: 13px 10px; border: 1px solid transparent; border-radius: 10px; background: transparent; text-align: left; color: var(--ink); font: inherit; line-height: 1.5; cursor: pointer; }
+.lr-lesson-outline button[aria-current] { border-color: var(--line); background: var(--surface); box-shadow: 0 4px 16px color-mix(in srgb, var(--ink) 5%, transparent); }
+.lr-lesson-outline button:disabled { opacity: .55; cursor: default; }
+.lr-outline-number { font-size: .8rem; color: var(--navy); font-weight: 800; padding-top: 2px; }
+.lr-lesson-outline small { display: block; margin-top: 4px; color: var(--text-muted); font-size: .75rem; }
+.lr-outline-help { border-top: 1px solid var(--line); margin: 24px 10px 0; padding-top: 20px; font-size: .85rem; line-height: 1.65; color: var(--text-muted); }
+.lr-outline-help p { margin: 6px 0; }
+.lr-reader > .lr-section { min-width: 0; padding: clamp(18px, 3vw, 36px); }
+.lr-reader .lr-section-head { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.lr-reader .lr-section-head h2 { font-size: clamp(1.2rem, 2vw, 1.65rem); line-height: 1.4; }
+.lr-reader-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 16px 0 24px; font-size: .85rem; color: var(--text-muted); }
+.lr-reader-tools .lr-level-switch { margin: 0; }
+.lr-lesson .lr-blocks { gap: 28px; }
+.lr-lesson .lr-md { font-size: 1rem; line-height: 1.85; overflow-wrap: anywhere; }
+.lr-lesson .lr-md p { line-height: 1.85; margin-bottom: 14px; }
+.lr-lesson .lr-md > :last-child { margin-bottom: 0; }
+.lr-lesson .lr-md > p, .lr-lesson .lr-md > ul, .lr-lesson .lr-md > ol { max-width: var(--reading-width); }
+.lr-lesson .lr-key, .lr-lesson .lr-worked, .lr-lesson .lr-check, .lr-lesson .lr-misconception, .lr-lesson .lr-strategy { padding: clamp(16px, 2vw, 24px); }
+.lr-lesson .lr-leveled { padding: 8px 0; }
+.lr-lesson .lr-level-switch { flex-wrap: wrap; border-radius: 12px; }
+.lr-lesson .lr-level-switch button { min-height: 38px; border-radius: 9px; font-size: .8rem; }
+.lr-lesson .lr-worked h4, .lr-lesson .lr-strategy h4 { font-size: 1.1rem; margin-bottom: 16px; }
+.lr-guided-steps { gap: 18px; margin-top: 18px; }
+.lr-guided-steps li::marker { font-weight: 800; color: var(--ok); }
+.lr-guided-steps .lr-why { border: 0; padding: 12px 16px; border-radius: 8px; background: var(--ok-soft); line-height: 1.7; font-size: .93rem; }
+.lr-step-hidden label { display: grid; gap: 8px; flex: 1 1 230px; }
+.lr-step-hidden input { width: 100%; min-height: 44px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); padding: 10px; border-radius: 8px; font: inherit; }
+.lr-lesson .lr-worked-answer { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--line); }
+.lr-lesson .lr-choice { min-height: 52px; font-size: 1rem; padding: 12px; }
+.lr-lesson .lr-section-nav { padding-top: 24px; margin-top: 30px; }
+.lr-learning-path { counter-reset: path; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 28px 0; }
+.lr-learning-path li { display: grid; gap: 8px; padding: 20px; border-radius: 12px; background: var(--tint); border: 1px solid var(--line); }
+.lr-learning-path li::before { counter-increment: path; content: '0' counter(path); color: var(--navy); font-weight: 800; }
+.lr-learning-path span { font-size: .9rem; line-height: 1.7; color: var(--text-muted); }
+.lm-eyebrow { margin: 0 0 8px; color: var(--navy); font-size: .73rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; display: block; }
+.lm-exploration { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--surface); }
+.lm-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px; background: var(--tint); }
+.lm-heading h3 { margin: 0; font-size: clamp(1.15rem, 2vw, 1.6rem); color: var(--ink); line-height: 1.4; }
+.lm-badge { font-size: .72rem; color: var(--ok); background: var(--ok-soft); border: 1px solid color-mix(in srgb, var(--ok) 25%, transparent); border-radius: 20px; padding: 6px 10px; white-space: nowrap; }
+.lm-phases { display: flex; border-block: 1px solid var(--line); background: var(--surface); }
+.lm-phases button { display: flex; align-items: center; justify-content: center; gap: 8px; flex: 1; padding: 15px 8px; min-height: 56px; border: 0; border-bottom: 3px solid transparent; border-radius: 0; font: inherit; font-size: .8rem; font-weight: 650; color: var(--text-muted); background: transparent; cursor: pointer; }
+.lm-phases button[aria-pressed=true] { border-bottom-color: var(--navy); color: var(--navy); background: var(--tint); }
+.lm-phases button > span { display: inline-grid; place-items: center; width: 23px; height: 23px; flex: none; border-radius: 50%; border: 1px solid var(--line); font-size: .7rem; }
+.lm-phases button[aria-pressed=true] > span { background: var(--navy); color: var(--surface); }
+.lm-phase { display: grid; gap: 22px; padding: clamp(16px, 2.5vw, 26px); }
+.lm-phase > .btn { justify-self: start; }
+.lm-story { padding-left: 16px; border-left: 3px solid var(--ok); }
+.lm-terms { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 0 16px; min-width: 0; }
+.lm-terms summary { padding: 14px 0; cursor: pointer; color: var(--navy); font-size: .9rem; font-weight: 650; line-height: 1.6; }
+.lm-terms dl { display: grid; gap: 16px; margin: 4px 0 20px; }
+.lm-terms dt { font-weight: 750; font-size: .95rem; }
+.lm-terms dd { margin: 4px 0 0; color: var(--text-muted); font-size: .93rem; line-height: 1.75; }
+.lm-terms > .lr-md { padding: 4px 0 20px; }
+.lm-predict { font-size: .95rem; line-height: 1.75; }
+.lm-predict strong { color: var(--navy); }
+.lm-predict p { margin: 6px 0 0; }
+.lm-lab { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(210px, 1fr); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.lm-canvas { padding: 16px 12px; background: var(--tint); display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.lm-diagram { display: block; width: 100%; height: auto; overflow: visible; color: var(--ink); }
+.lm-diagram text { fill: currentColor; font-family: var(--font); font-size: 16px; }
+.lm-diagram .lm-large { font-size: 23px; font-weight: 750; }
+.lm-diagram .lm-inverse { fill: var(--surface); }
+.lm-primary { fill: var(--navy); stroke: var(--navy); }
+.lm-good { fill: var(--ok); stroke: var(--ok); }
+.lm-warn { fill: var(--warn); }
+.lm-primary-soft { fill: color-mix(in srgb, var(--navy) 13%, var(--surface)); stroke: var(--navy); stroke-width: 1; }
+.lm-good-soft { fill: var(--ok-soft); stroke: var(--ok); }
+.lm-warn-soft { fill: var(--warn-soft); stroke: var(--warn); }
+.lm-soft { fill: var(--tint); stroke: var(--line); }
+.lm-empty { fill: var(--surface); stroke: var(--line); }
+.lm-line { stroke: var(--ink); stroke-width: 1.5; }
+.lm-accent-line { stroke: var(--navy); }
+.lm-grid-line { stroke: var(--line); }
+.lm-unit-line { stroke: var(--surface); opacity: .6; }
+.lm-mean-line { stroke: var(--warn); }
+.lm-equation { border-top: 1px solid var(--line); margin-top: 10px; padding: 16px 4px 2px; text-align: center; color: var(--navy); font-size: 1.04rem; font-weight: 750; line-height: 1.6; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.lm-controls { padding: 20px; display: grid; gap: 18px; align-content: start; background: var(--surface); border-left: 1px solid var(--line); }
+.lm-control { display: grid; gap: 10px; min-width: 0; font-size: .85rem; }
+.lm-control > span { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.lm-control output { color: var(--navy); background: var(--tint); font-weight: 800; border-radius: 6px; padding: 3px 9px; }
+.lm-control input[type=range] { width: 100%; min-height: 30px; cursor: pointer; accent-color: var(--navy); }
+.lm-control select { width: 100%; min-width: 0; min-height: 44px; padding: 8px 10px; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.lm-reset { justify-self: start; font-size: .8rem; }
+.lm-observation { background: var(--ok-soft); padding: 14px; border-radius: 10px; font-size: .86rem; line-height: 1.75; }
+.lm-observation strong { color: var(--ok); }
+.lm-observation p { margin: 6px 0 0; }
+.lm-example-problem { padding: 20px; background: var(--tint); border: 1px solid var(--line); border-radius: 12px; }
+.lm-reasoning { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+.lm-reasoning li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 14px; }
+.lm-step-number { display: grid; place-items: center; width: 32px; height: 32px; background: var(--ok-soft); color: var(--ok); border-radius: 50%; font-size: .85rem; font-weight: 800; }
+.lm-reasoning h4 { margin: 2px 0 8px; font-size: 1rem; line-height: 1.5; }
+.lm-transfer h4 { margin: 8px 0; font-size: 1.05rem; line-height: 1.7; }
+.lm-transfer-options { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.lm-transfer-options button { flex: 1 1 150px; padding: 15px; min-height: 50px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; }
+.lm-transfer-options button[aria-pressed=true] { border: 2px solid var(--navy); background: var(--tint); font-weight: 700; }
+.lm-transfer-options button:disabled { cursor: default; }
+.lm-tip, .lm-trap { padding: 18px 20px; border-radius: 12px; border-left: 4px solid var(--ok); background: var(--ok-soft); line-height: 1.75; }
+.lm-trap { border-color: var(--warn); background: var(--warn-soft); }
+.lm-trap > strong { display: block; margin-bottom: 8px; }
+.lm-next-note { margin: 0; font-size: .9rem; color: var(--text-muted); line-height: 1.75; }
+.lm-zoom-button { font-size: .8rem; margin-top: 12px; align-self: center; }
+.lm-zoom { width: min(960px, calc(100% - 24px)); max-width: calc(100% - 24px); max-height: 90vh; border: 1px solid var(--line); border-radius: 16px; padding: 20px; color: var(--ink); background: var(--surface); }
+.lm-zoom::backdrop { background: color-mix(in srgb, var(--ink) 65%, transparent); }
+.lm-zoom header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.lm-zoom-scroll { overflow: auto; max-height: 65vh; padding: 20px 0; }
+.lm-zoom-scroll > .lm-diagram, .lm-zoom-scroll > .lr-svg { width: 760px; max-width: none; margin-inline: auto; }
+.lr-guided-exam { border: 1px solid var(--line); border-top: 4px solid var(--navy); }
+.lr-guided-exam .lr-bank-image { margin: 18px 0; }
+.lr-guided-exam .lm-reasoning { margin-top: 24px; }
+.lm-exam-conclusion { display: grid; gap: 18px; margin-top: 20px; }
+.lm-exam-conclusion > .btn { justify-self: start; }
+.lr-lesson :is(button, input, select, summary, a):focus-visible { outline: 3px solid var(--navy); outline-offset: 4px; }
+/* Nicelik değişince şekil ve sayı aynı anda güncellenir; ara geometri yanlış miktar göstermesin. */
+@media (prefers-reduced-motion: no-preference) { .lm-phases button { transition: background-color .15s; } }
+@media (max-width: 1250px) { .lm-lab { grid-template-columns: minmax(0, 1fr); } .lm-controls { border-left: 0; border-top: 1px solid var(--line); grid-template-columns: repeat(2, minmax(0, 1fr)); } .lm-controls > .lm-eyebrow, .lm-observation { grid-column: 1 / -1; } .lm-canvas { padding-inline: 20px; } .lm-diagram { max-width: 540px; align-self: center; } }
+@media (max-width: 950px) { .lr-reader { grid-template-columns: minmax(0, 1fr); gap: 12px; } .lr-lesson-outline { position: static; padding: 0; } .lr-lesson-outline > .lm-eyebrow, .lr-outline-help { display: none; } .lr-lesson-outline ol { display: flex; gap: 8px; overflow-x: auto; margin: 0; padding: 4px 0 10px; } .lr-lesson-outline li { flex: 0 0 210px; } .lr-lesson-outline button { height: 100%; font-size: .8rem; padding: 10px; } .lr-learning-path { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .lr-reader > .lr-section { padding: 16px 12px; } .lr-lesson .lr-blocks { gap: 22px; } .lm-heading { padding: 18px 16px; } .lm-badge { display: none; } .lm-phase { padding: 16px 12px; gap: 20px; } .lm-phases button { flex-direction: column; font-size: .73rem; line-height: 1.4; padding: 10px 4px; gap: 6px; } .lm-controls { padding: 16px; grid-template-columns: minmax(0, 1fr); } .lm-canvas { padding: 10px 6px; } .lm-equation { font-size: .95rem; } .lm-story { padding-left: 12px; } .lm-reasoning { gap: 20px; } .lm-reasoning li { gap: 10px; grid-template-columns: 28px minmax(0, 1fr); } .lm-step-number { width: 28px; height: 28px; } .lr-lesson .lr-md { font-size: 1rem; } .lm-example-problem, .lm-tip, .lm-trap { padding: 16px; } }

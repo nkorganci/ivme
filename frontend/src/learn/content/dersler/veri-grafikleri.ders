@@ -80,7 +80,9 @@ E) 35 || Bu açıklıktır; grup sayısına böl.
 kontrol: 9
 cozum: Açıklık $47 - 12 = 35$; $35 : 4 = 8{,}75$. Bölümden büyük en küçük doğal sayı 9'dur.
 
-@bolum s1 9 | Daire grafiği: açı payla orantılı
+@bolum s1 16 | Daire grafiği: açı payla orantılı
+::kesfet veri-grafikleri
+
 ::fikir
 Daire grafiğinde her dilimin **merkez açısı, payıyla orantılıdır**: $\text{açı} = 360° \cdot \frac{\text{pay}}{\text{bütün}}$. Açıdan sayıya geçerken orantı kur: $90°$ bütünün $\frac{1}{4}$'üdür.
 

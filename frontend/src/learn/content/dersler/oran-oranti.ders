@@ -81,7 +81,9 @@ E) 240 || $k = 40$; $4k$ hesapla.
 kontrol: 360/9*4
 cozum: Paylar $2k, 3k, 4k$; $9k = 360$, $k = 40$; en büyük pay $4k = 160$ TL.
 
-@bolum s1 9 | Oran, orantı ve orantı sabiti
+@bolum s1 16 | Oran, orantı ve orantı sabiti
+::kesfet oran-oranti
+
 ::fikir
 Eşit oranlar gördüğünde hemen **$k$** de: $\frac{a}{2} = \frac{b}{3} = \frac{c}{5} = k$ ise $a = 2k$, $b = 3k$, $c = 5k$. Üç bilinmeyen tek bilinmeyene iner.
 

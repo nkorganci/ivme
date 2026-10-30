@@ -81,7 +81,9 @@ D) 143 || Hesabı yeniden yap.
 kontrol: 12^2
 cozum: Toplamlar 1, 4, 9, 16, … tam karelerdir; ilk $n$ tek sayının toplamı $n^2$. $12^2 = 144$.
 
-@bolum s1 10 | Grafik okuma
+@bolum s1 17 | Grafik okuma
+::kesfet grafik-rutin-olmayan
+
 ::fikir
 Grafikte önce **eksenleri ve birimleri** oku. **Eğim = değişim hızı** ($\frac{\Delta y}{\Delta x}$), **yatay parça = değişim yok** (durma, bekleme), **kesişim = iki niceliğin eşit olduğu an**.
 

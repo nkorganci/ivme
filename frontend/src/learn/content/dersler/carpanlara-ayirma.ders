@@ -78,7 +78,9 @@ D) $x + 2$ || $2 \cdot 6 = 12$; toplamları $-1$ değil.
 +E) $x - 4$ || Doğru: $(x - 4)(x + 3)$.
 cozum: Çarpımı $-12$, toplamı $-1$ olan sayılar $-4$ ve $3$: $(x - 4)(x + 3)$.
 
-@bolum s1 8 | Ortak çarpan ve gruplandırma
+@bolum s1 15 | Ortak çarpan ve gruplandırma
+::kesfet carpanlara-ayirma
+
 ::fikir
 Her terimde ortak olan çarpanı **parantez dışına al**; ortak çarpan yoksa terimleri **ikişerli grupla** ve her gruptan ortak çarpan çıkar. $(b - a) = -(a - b)$ dönüşümü ortak çarpanı görünür kılar.
 

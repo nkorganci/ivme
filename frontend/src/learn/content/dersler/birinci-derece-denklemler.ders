@@ -81,7 +81,9 @@ E) $3$ || Katsayı $2 \neq 0$.
 kontrol: 1
 cozum: $(m + 1 - 2)x = m + 3$, yani $(m - 1)x = m + 3$. Boş küme için $m - 1 = 0$ ve $m + 3 \neq 0$: $m = 1$.
 
-@bolum s1 9 | Denklem bir terazidir
+@bolum s1 16 | Denklem bir terazidir
+::kesfet birinci-derece-denklemler
+
 ::fikir
 Denklem iki kefesi dengede bir terazidir: **iki tarafa aynı işlemi** yaparsan denge bozulmaz. Amaç bilinmeyeni bir kefede yalnız bırakmaktır.
 

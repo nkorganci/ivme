@@ -78,7 +78,9 @@ D) $y = 2x + 1$ || Doğrusal fonksiyondur.
 E) $y = \sqrt{x}$ || $x \geq 0$ için tek bir $y$ verir.
 cozum: $x^2 + y^2 = 4$ bir çemberdir; $x = 0$ için iki $y$ değeri ($\pm 2$) vardır, dikey doğru testini geçemez.
 
-@bolum s1 10 | Grafikten okuma
+@bolum s1 17 | Grafikten okuma
+::kesfet fonksiyon-grafikleri
+
 ::fikir
 Grafikteki $(a, b)$ noktası $f(a) = b$ demektir. **Tanım kümesi** grafiğin x eksenine, **görüntü kümesi** y eksenine izdüşümüdür. $f(x) = k$ denkleminin çözüm sayısı, $y = k$ doğrusunun grafiği kestiği nokta sayısıdır.
 

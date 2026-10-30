@@ -1,5 +1,8 @@
 // Ders içeriği denetimi (Node testi kullanır; tarayıcı paketine girmez).
 import { lessonQuestions } from './parser.js';
+import { EXPLORATIONS } from './explorations.js';
+import { MODEL_CONTROLS } from '../lesson/models.js';
+import { WORKED_EXAMS } from './worked-exams.js';
 
 const CHECK_TYPES = new Set(['quick_check', 'fill_blank', 'match_pairs', 'drag_order', 'categorize']);
 const MATH = /\$\$([\s\S]+?)\$\$|\$([^$\n]+?)\$/g;
@@ -13,6 +16,8 @@ export function mathSegments(text) {
 
 function textsOf(lesson) {
   const texts = [lesson.goal, lesson.why, lesson.selfExplain, ...lesson.keyPoints, ...lesson.practice, ...lesson.archetypes.flatMap((a) => [a.title, a.cue, a.strategy])];
+  const discovery = EXPLORATIONS[lesson.id];
+  if (discovery) texts.push(discovery.title, discovery.story, discovery.experiment, discovery.example, discovery.tip, discovery.trap, discovery.expert, ...discovery.terms.flat(), ...discovery.steps.flat(), ...discovery.transfer);
   for (const card of lesson.flashcards) texts.push(card.front, card.back);
   for (const q of lessonQuestions(lesson)) texts.push(q.stem, q.explain, q.hint, ...q.choices.flatMap((c) => [c.text, c.feedback]));
   for (const section of lesson.sections) {
@@ -152,12 +157,15 @@ export function validateLessons(lessons, options = {}) {
     for (const a of lesson.archetypes) if (!lesson.pool.some((q) => q.archetype === a.id)) warn(`havuzda ${a.id} tipi soru yok`);
 
     const blocks = lesson.sections.flatMap((s) => s.blocks);
+    if (lesson.sections[0]?.blocks[0]?.type !== 'exploration') err('ilk bölüm gündelik bağlam ve görsel keşifle (::kesfet) başlamalı');
+    if (!EXPLORATIONS[lesson.id] || !MODEL_CONTROLS[lesson.id]) err('konuya özgü keşif anlatımı veya etkileşimli model eksik');
     if (blocks.filter((b) => b.type === 'misconception').length < 2) err('en az 2 yanılgı kartı');
     if (!blocks.some((b) => b.type === 'worked')) err('çözümlü örnek yok');
     if (!blocks.some((b) => b.type === 'faded')) err('adım adım tamamlamalı örnek yok');
     if (!blocks.some((b) => b.type === 'key_idea')) err('ana fikir bloğu yok');
     if (!blocks.some((b) => b.type === 'leveled')) err('düzeyli anlatım yok');
     for (const block of blocks) {
+      if (block.type === 'exploration' && block.conceptId !== lesson.id) err('keşif başka dersin kimliğine bağlanmış');
       if (block.type === 'misconception' && !(block.wrong && block.why && block.right)) err('yanılgı kartında yanlis/neden/dogru eksik');
       if ((block.type === 'worked' || block.type === 'faded') && block.steps.length < 2) err(`"${block.title}" en az 2 adım`);
       if (block.type === 'worked' && !block.problem) err(`"${block.title}" soru yok`);
@@ -187,7 +195,11 @@ export function validateLessons(lessons, options = {}) {
           if (problem) err(`kaydırıcı ifadesi "${fn.expr}": ${problem}`);
         }
       }
-      if (block.type === 'past_question' && options.bankCodes && !options.bankCodes.has(block.code)) err(`çıkmış soru kodu bankada yok: ${block.code}`);
+      if (block.type === 'past_question') {
+        if (options.bankCodes && !options.bankCodes.has(block.code)) err(`çıkmış soru kodu bankada yok: ${block.code}`);
+        const guide = WORKED_EXAMS[block.code];
+        if (guide && (guide.conceptId !== lesson.id || !archetypeIds.has(guide.archetype))) err(`${block.code}: görseli incelenmiş örnek yanlış ders veya soru tipinde`);
+      }
     }
     if (lesson.flashcards.length < 5) err('en az 5 kart');
     if (lesson.flashcards.some((c) => !c.front || !c.back)) err('kartta ön/arka eksik');

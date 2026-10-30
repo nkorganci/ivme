@@ -10,6 +10,7 @@ import { MathText, Markdown } from '../math.jsx';
 import { BASE, ExamBadges, LEVELS, ProgressBar, minutesText } from '../ui.jsx';
 import { ENGINE } from '../engine/config.js';
 import { loadBank } from '../bank.js';
+import { EXPLORATIONS } from '../content/explorations.js';
 
 function previousAnswers(state, conceptId, contexts) {
   const out = {};
@@ -61,6 +62,7 @@ export default function LessonPage() {
   if (!lesson || !meta) return <Navigate to={`${BASE}/harita`} replace />;
 
   const section = lesson.sections[sectionIndex];
+  const discovery = EXPLORATIONS[conceptId];
   const done = new Set(concept?.sectionsDone ?? []);
   const minutesLeft = lesson.sections.filter((s) => !done.has(s.id)).reduce((sum, s) => sum + s.minutes, 0);
   const sessionIndex = Math.max(0, lesson.sessions.findIndex((s) => s.sections.includes(section?.id)));
@@ -104,7 +106,7 @@ export default function LessonPage() {
       record(makeEvent('lesson', { conceptId, action: 'section', sectionId: section.id, nextSectionId: nextSection?.id ?? null, ms: Math.round(performance.now() - sectionStarted.current) }));
     }
     if (!nextSection) {
-      setStage(completed ? 'done' : lesson.pretest.length ? 'posttest' : 'explain');
+      setStage(completed ? 'done' : lesson.pretest.length && pretestDone ? 'posttest' : 'explain');
       return;
     }
     const session = lesson.sessions[sessionIndex];
@@ -144,14 +146,16 @@ export default function LessonPage() {
     const prereqs = lesson.prereq.map((id) => index.byId[id]).filter((p) => p && !state.concepts[p.id]?.firstMasteredAt);
     return <div className="lr-page lr-lesson">{header}
       <section className="card lr-intro">
-        <h2>Neden bu konu?</h2>
-        <Markdown text={lesson.why} />
-        <h3>Bu derste</h3>
+        <p className="lm-eyebrow">Ezberden önce anlamak</p>
+        <h2>{discovery?.title || 'Bu konuyu birlikte öğrenelim'}</h2>
+        <Markdown text={discovery?.story || lesson.why} />
+        <ol className="lr-learning-path"><li><strong>Gör ve keşfet</strong><span>Günlük bir durumdan başlayıp değerleri kendin değiştir.</span></li><li><strong>Birlikte çöz</strong><span>İşlemleri, nedenleri ve sonucu kontrol etmeyi öğren.</span></li><li><strong>Soruya uygula</strong><span>Örnekten kısa yolu çıkar, sonra gerçek sorularda dene.</span></li></ol>
+        <h3>Adım adım ders yolun</h3>
         <ol className="lr-session-list">{lesson.sessions.map((s, i) => <li key={i}><strong>Oturum {i + 1}:</strong> {s.title} <span className="muted">· {minutesText(s.minutes)}</span></li>)}</ol>
         {prereqs.length > 0 && <aside className="lr-callout">Önce şuna bakmanı öneririm: {prereqs.map((p, i) => <span key={p.id}>{i ? ', ' : ''}<Link to={`${BASE}/konu/${p.id}`}>{p.title}</Link></span>)}. İstersen yine de başlayabilirsin.</aside>}
         <div className="lr-actions">
           {lesson.pretest.length > 0 && !pretestDone
-            ? <button type="button" className="btn btn-primary btn-lg" onClick={() => setStage('pretest')}>Başla: önce kısa ön test</button>
+            ? <><button type="button" className="btn btn-primary btn-lg" onClick={() => setStage('pretest')}>Önce kendimi deneyeyim</button><button type="button" className="btn btn-secondary" onClick={openLesson}>İlk kez öğreniyorum, anlatımla başla</button></>
             : <button type="button" className="btn btn-primary btn-lg" onClick={openLesson}>Derse başla</button>}
         </div>
       </section>
@@ -230,7 +234,7 @@ export default function LessonPage() {
       <section className="card lr-done">
         <h2>{completed ? 'Ders gözden geçirildi' : 'Ders tamam!'}</h2>
         <ul>
-          <li><strong>{lesson.flashcards.length} kart</strong> destene eklendi; FSRS onları unutmadan hemen önce geri getirecek.</li>
+          <li><strong>{lesson.flashcards.length} tekrar kartı</strong> destene eklendi. Cevaplarına göre uygun aralıklarla yeniden karşına çıkacak.</li>
           <li><strong>Ustalık testi</strong> bir sonraki oturumunda planında: her soru tipinden gerçek sınav soruları ({meta.mastery.mix.reduce((s, m) => s + m.count, 0)} soru, ≈{meta.mastery.minutes} dk). Araya zaman girmesi kalıcılığı ölçer.</li>
           <li>Geçince konu <strong>1 · 3 · 7 · 14 · 30 · 60 gün</strong> aralıklarla kısa tekrarlarla taze tutulur.</li>
         </ul>
@@ -248,12 +252,25 @@ export default function LessonPage() {
   }
 
   const levelLabel = LEVELS.find((l) => l.id === level)?.label;
+  const frontier = Math.max(startIndex, ...lesson.sections.map((s, i) => done.has(s.id) ? i + 1 : 0));
+  const remainingChecks = checksInSection.filter((b) => !answers[checkId(b)]).length;
   return <div className="lr-page lr-lesson">{header}
-    <section className="card lr-section">
+    <div className="lr-reader">
+    <aside className="lr-lesson-outline" aria-label="Ders yolun">
+      <p className="lm-eyebrow">Ders yolun</p>
+      <ol>{lesson.sections.map((s, i) => <li key={s.id}><button type="button" aria-current={i === sectionIndex ? 'step' : undefined}
+        disabled={!completed && i > frontier} onClick={() => setSectionIndex(i)}>
+        <span className="lr-outline-number" aria-label={done.has(s.id) ? 'Tamamlandı' : undefined}>{done.has(s.id) ? '✓' : String(i + 1).padStart(2, '0')}</span>
+        <span><MathText text={s.title} /><small>{done.has(s.id) ? 'Tamamlandı' : `Yaklaşık ${s.minutes} dk`}</small></span>
+      </button></li>)}</ol>
+      <div className="lr-outline-help"><strong>Acele etmen gerekmiyor.</strong><p>Önce nedenini kendi cümlenle söyle. Sonra örneği kapatıp yeniden çöz.</p></div>
+    </aside>
+    <section className="card lr-section" aria-label="Ders anlatımı">
       <div className="lr-section-head">
         <h2><span className="muted">{sectionIndex + 1}.</span> <MathText text={section.title} /></h2>
         <span className="small muted">≈{section.minutes} dk · Anlatım: {levelLabel}</span>
       </div>
+      <div className="lr-reader-tools"><span>Anlatımı seç:</span><div className="lr-level-switch" role="group" aria-label="Ders anlatım düzeyi">{LEVELS.map((l) => <button key={l.id} type="button" className={level === l.id ? 'active' : ''} aria-pressed={level === l.id} title={l.hint} onClick={() => setLevel(l.id)}>{l.label}</button>)}</div></div>
       <div className="lr-blocks">{section.blocks.map((block, i) => <div key={`${section.id}-${i}`} className={`lr-block lr-block-${block.type}`}><Block block={block} ctx={ctx} /></div>)}</div>
       {offer === 'L1' && <aside className="lr-offer" role="status">İki kontrol sorusu zorladı. <strong>Daha basit anlatayım mı?</strong>
         <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setLevel('L1'); setOffer(null); document.querySelector('.lr-leveled')?.scrollIntoView({ block: 'start', behavior: 'smooth' }); }}>Evet, basit anlat</button>
@@ -266,8 +283,9 @@ export default function LessonPage() {
         <button type="button" className="btn btn-primary" disabled={!allAnswered && !completed} onClick={finishSection}>
           {sectionIndex === lesson.sections.length - 1 ? 'Dersi bitir' : 'Devam'}
         </button>
-        {!allAnswered && !completed && <span className="small muted">Devam etmek için bölümdeki kontrol sorularını cevapla (doğru olması gerekmez).</span>}
+        {!allAnswered && !completed && <span className="small muted">{remainingChecks} kontrol kaldı. Yanlış yapabilirsin; açıklamalar öğrenmenin bir parçası.</span>}
       </div>
     </section>
+    </div>
   </div>;
 }

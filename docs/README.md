@@ -11,6 +11,7 @@ Görev için yalnız ilgili bölümü aç. `devam.md` oturum geçişini; klasör
 | Kaynaklı içerik üretimi | [Ders notları](icerik/kaynakli-ders-notlari.md), [soru analizi](icerik/soru-analizi.md) |
 | Akıllı Öğretmen içeriği yazımı (benzetme, aha, radar, animasyon) | [Öğretim tasarımı](icerik/akilli-ogretmen-ogretim-tasarimi.md) |
 | İnteraktif Öğrenme üniteleri (laboratuvar, sınav soruları, yeni ünite ekleme) | [İnteraktif öğrenme](icerik/interaktif-ogrenme.md) |
+| Konuyu Öğrenelim: sıfırdan anlatım, görsel keşif, gerekçeli gerçek örnek, Claude/Codex ortak devamı | [Öğretim ve doğrulama sözleşmesi](icerik/konuyu-ogrenelim.md) |
 | Tekrarlanan komutlar ve kontrol | [İşlem tarifleri](islemler/README.md) |
 | Çalıştırma/yayın ve soru içe aktarma | [Uygulama işletimi](islemler/uygulama-calistirma-ve-yayin.md), [soru aktarımı](islemler/soru-ice-aktarma.md) |
 | Onaylanmamış ürün önerileri | [Kullanıcı rolleri tasarımı](tasarim/kullanici-yonetimi.md) |

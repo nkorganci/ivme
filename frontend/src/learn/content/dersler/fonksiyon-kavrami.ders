@@ -80,7 +80,9 @@ D) 2 || Bu yalnız $a$'dır.
 kontrol: 2-(-1)
 cozum: Sabit fonksiyonda $x$'li terimler yok olur: $a - 2 = 0$, $b + 1 = 0$. $a = 2$, $b = -1$; $a - b = 3$.
 
-@bolum s1 9 | Fonksiyon nedir?
+@bolum s1 16 | Fonksiyon nedir?
+::kesfet fonksiyon-kavrami
+
 ::fikir
 $A$'dan $B$'ye bir bağıntının fonksiyon olması için $A$'daki **her eleman** $B$'de **bir ve yalnız bir** elemanla eşlenmelidir. $A$ tanım kümesi, $B$ değer kümesi, $f(A)$ görüntü kümesidir ve $f(A) \subseteq B$.
 

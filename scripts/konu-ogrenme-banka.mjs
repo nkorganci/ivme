@@ -14,6 +14,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
+import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 
 const APP = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const LESSONS = join(APP, 'frontend/src/learn/content/dersler');
@@ -137,7 +138,8 @@ function main() {
     const heading = fold(record?.heading ?? q.topic ?? '');
     const text = fold(`${record?.text ?? ''} ${q.ocr ?? ''} ${q.ocr ? '' : pastTexts.get(q.code) ?? ''}`);
     const cats = q.cats ?? [];
-    const candidates = rules.filter((r) => cats.some((c) => r.categories.has(c)) && r.lesson.exams.includes(q.exam));
+    const reviewed = WORKED_EXAMS[q.code];
+    const candidates = rules.filter((r) => (reviewed ? r.lesson.id === reviewed.conceptId : cats.some((c) => r.categories.has(c))) && r.lesson.exams.includes(q.exam));
     if (!candidates.length) {
       for (const c of cats) unassigned[c] = (unassigned[c] ?? 0) + 1;
       continue;
@@ -150,6 +152,7 @@ function main() {
       return { r, score: head + keys + Math.min(3, arch) * 0.5, how: head ? 'heading' : keys || arch ? 'keyword' : 'none' };
     }).sort((a, b) => b.score - a.score || a.r.lesson.order - b.r.lesson.order);
     let best = scored[0];
+    if (reviewed) best = { ...best, score: 100, how: 'visual_review' };
     if (best.score <= 0) {
       const fallback = scored.find((item) => item.r.lesson.bankDefault && item.score > -100);
       if (candidates.length === 1 && best.score > -100) best = { ...best, how: 'single' };
@@ -163,7 +166,7 @@ function main() {
     reasons[best.how] = (reasons[best.how] ?? 0) + 1;
     const archetypeScores = best.r.archetypes.map((a) => ({ id: a.id, score: a.exclude.some((re) => re.test(text)) ? -1 : a.keywords.filter((re) => re.test(text) || re.test(heading)).length }))
       .sort((a, b) => b.score - a.score);
-    const archetype = archetypeScores[0]?.score > 0 && archetypeScores[0].score > (archetypeScores[1]?.score ?? 0) - 0 ? archetypeScores[0].id : null;
+    const archetype = reviewed?.archetype ?? (archetypeScores[0]?.score > 0 && archetypeScores[0].score > (archetypeScores[1]?.score ?? 0) ? archetypeScores[0].id : null);
     byConcept[best.r.lesson.id].push({
       c: q.code, i: q.id, a: archetype, d: difficultyOf(q, record), x: q.exam, ...(q.bank === 'CIKMIS' ? { k: 1, y: q.year ?? undefined } : {}),
       s: q.bank === 'CIKMIS' ? 'ÖSYM' : SOURCE[q.code.split('-')[0]] ?? 'OGM', ...(q.sol ? { w: 1 } : {}), ...(q.choices !== 5 ? { n: q.choices } : {}),

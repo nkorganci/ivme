@@ -88,7 +88,9 @@ D) $a < c < b$ || $a = \sqrt{12} > \sqrt{11}$.
 E) $c < b < a$ || $b = \sqrt{18} > a$.
 cozum: $a = \sqrt{12}$, $b = \sqrt{18}$, $c = \sqrt{11}$; kök içleri sıralanır: $c < a < b$.
 
-@bolum s1 7 | Kök nedir, ne zaman tanımlıdır?
+@bolum s1 14 | Kök nedir, ne zaman tanımlıdır?
+::kesfet koklu-ifadeler
+
 ::fikir
 $\sqrt[n]{a}$, $n$. kuvveti $a$ olan sayıdır ve $a^{1/n}$ ile aynıdır. **Çift dereceli** kökte içi **negatif olamaz**; karekök her zaman **negatif olmayan** sonuç verir: $\sqrt{16} = 4$.
 

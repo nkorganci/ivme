@@ -8,6 +8,10 @@ import { LEVELS } from '../ui.jsx';
 import { LessonQuestion, BankQuestion } from '../items.jsx';
 import { rng, shuffle } from '../engine/random.js';
 import NumberLine from './NumberLine.jsx';
+import Exploration from './Exploration.jsx';
+import FigureZoom from './FigureZoom.jsx';
+import GuidedExam from './GuidedExam.jsx';
+import { WORKED_EXAMS } from '../content/worked-exams.js';
 
 const colorOf = (name) => COLORS[name] ?? (name === 'ink' ? COLORS.ink : COLORS.navy);
 
@@ -31,9 +35,10 @@ function sanitizeSvg(svg) {
 
 function Visual({ block }) {
   const html = useMemo(() => sanitizeSvg(block.svg), [block.svg]);
-  return <figure className="lr-figure" role="img" aria-label={block.alt}>
-    <div className="lr-svg" dangerouslySetInnerHTML={{ __html: html }} />
+  return <figure className="lr-figure">
+    <div className="lr-svg" role="img" aria-label={block.alt} dangerouslySetInnerHTML={{ __html: html }} />
     {block.caption && <figcaption><MathText text={block.caption} /></figcaption>}
+    <FigureZoom><div className="lr-svg" role="img" aria-label={block.alt} dangerouslySetInnerHTML={{ __html: html }} /></FigureZoom>
   </figure>;
 }
 
@@ -111,21 +116,25 @@ function Leveled({ block, level, setLevel }) {
 
 function Steps({ block, faded = false }) {
   const [open, setOpen] = useState({});
-  const [why, setWhy] = useState({});
-  const allRevealed = block.steps.every((s, i) => !s.hidden || open[i]);
+  const [shown, setShown] = useState(1);
+  const [notes, setNotes] = useState({});
+  const allRevealed = shown >= block.steps.length && block.steps.every((s, i) => !s.hidden || open[i]);
   return <section className={`lr-worked${faded ? ' faded' : ''}`}>
     <h4>{faded ? 'Sıra sende' : 'Çözümlü örnek'}{block.title ? `: ${block.title}` : ''}</h4>
     {block.problem && <div className="lr-worked-problem"><Markdown text={block.problem} /></div>}
-    <ol className="lr-steps">
-      {block.steps.map((step, i) => <li key={i}>
+    <p className="small muted">{faded ? 'Eksik adımda önce kendi işlemini yaz. Sonra çözümle karşılaştır.' : 'Her adımda ne yaptığımıza ve neden yaptığımıza birlikte bakalım.'}</p>
+    <ol className="lr-steps lr-guided-steps">
+      {block.steps.slice(0, shown).map((step, i) => <li key={i}>
         {step.hidden && !open[i]
-          ? <div className="lr-step-hidden"><span>Bu adımı önce sen düşün.</span><button type="button" className="btn btn-secondary btn-sm" onClick={() => setOpen((o) => ({ ...o, [i]: true }))}>Adımı göster</button></div>
+          ? <div className="lr-step-hidden"><label>Bu adımda ne yapardın?<input aria-label={`${i + 1}. adım için düşüncen`} value={notes[i] || ''} onChange={(e) => setNotes((n) => ({ ...n, [i]: e.target.value }))} placeholder="İşlemini veya gerekçeni yaz…" /></label><button type="button" className="btn btn-secondary btn-sm" onClick={() => setOpen((o) => ({ ...o, [i]: true }))}>Adımı göster</button></div>
           : <><Markdown text={step.text} />
-            {step.why && (why[i] ? <p className="lr-why small"><strong>Neden?</strong> <MathText text={step.why} /></p>
-              : <button type="button" className="lr-why-btn" onClick={() => setWhy((w) => ({ ...w, [i]: true }))}>Neden?</button>)}</>}
+            {notes[i] && <p className="small muted"><strong>Senin düşüncen:</strong> {notes[i]}</p>}
+            {step.why && <p className="lr-why"><strong>Neden bu işlem?</strong> <MathText text={step.why} /></p>}</>}
       </li>)}
     </ol>
-    {block.answer && (!faded || allRevealed) && <p className="lr-worked-answer"><strong>Cevap:</strong> <MathText text={block.answer} /></p>}
+    {shown < block.steps.length && <div className="lr-actions"><button type="button" className="btn btn-secondary btn-sm" onClick={() => setShown((n) => n + 1)}>Sonraki çözüm adımı ({shown}/{block.steps.length})</button>
+      <button type="button" className="lr-link small" onClick={() => setShown(block.steps.length)}>Bütün adımları incele</button></div>}
+    {block.answer && allRevealed && <p className="lr-worked-answer"><strong>Sonuç ve kontrol:</strong> <MathText text={block.answer} /></p>}
   </section>;
 }
 
@@ -288,6 +297,7 @@ function Categorize({ block, onResult, answered, seed }) {
  */
 export function Block({ block, ctx }) {
   switch (block.type) {
+    case 'exploration': return <Exploration conceptId={block.conceptId} />;
     case 'markdown': return <Markdown text={block.text} />;
     case 'key_idea': return <aside className="lr-key"><span className="lr-key-label">{block.title || 'Ana fikir'}</span><Markdown text={block.text} /></aside>;
     case 'note': return <aside className={`lr-note lr-note-${block.tone}`}>{block.title && <strong>{block.title}</strong>}<Markdown text={block.text} /></aside>;
@@ -328,7 +338,8 @@ export function Block({ block, ctx }) {
 function PastQuestion({ block, ctx }) {
   const question = ctx.pastQuestion?.(block.code);
   const [open, setOpen] = useState(false);
-  if (!question) return null;
+  if (!question) return <aside className="lr-note">Bu örneğin özgün soru görseli şu anda yüklenemedi. Bölümdeki çözümlü örneklerle devam edebilirsin.</aside>;
+  if (WORKED_EXAMS[block.code]) return <GuidedExam question={question} guide={WORKED_EXAMS[block.code]} />;
   return <section className="lr-past">
     <span className="lr-check-label">Çıkmış soruyla dene</span>
     {block.note && <p className="small"><MathText text={block.note} /></p>}

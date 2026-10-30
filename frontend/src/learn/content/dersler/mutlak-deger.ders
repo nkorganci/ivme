@@ -82,7 +82,9 @@ E) 10 || Fazla.
 kontrol: -2-1+0+1+2+3+4
 cozum: $-3 \leq x - 1 \leq 3$, yani $-2 \leq x \leq 4$. Tam sayılar $-2, \ldots, 4$; toplam 7.
 
-@bolum s1 9 | Mutlak değer bir uzaklıktır
+@bolum s1 16 | Mutlak değer bir uzaklıktır
+::kesfet mutlak-deger
+
 ::fikir
 $|x|$, $x$'in **0'a uzaklığıdır**; $|a - b|$ ise $a$ ile $b$ arasındaki **uzaklıktır**. Uzaklık negatif olamaz: $|x| \geq 0$.
 
@@ -277,6 +279,8 @@ cozum: Kritik noktalar $-1, 2, 5$; en küçük değer ortanca $x = 2$'de: $|0| +
 - $|A| = c$: $A = \pm c$ ($c \geq 0$); dışarıda değişken varsa kökleri dene.
 - $|A| \leq c$ arada, $|A| \geq c$ dışarıda.
 - $|x - a| + |x - b|$'nin en küçüğü $|a - b|$; üç terimde ortanca nokta.
+
+::cikmis TYT-0621 tip=uzaklik-minimum
 
 @pratik
 - Çalışma sırası: önce uzaklık yorumunu sayı doğrusunda çizerek otomatikleştir; sonra açma–sadeleştirme, denklem, eşitsizlik ve en küçük değer sorularına geç.

@@ -20,9 +20,9 @@ export function StatusBadge({ status }) {
 }
 
 export const LEVELS = [
-  { id: 'L1', label: 'Basit', hint: 'Adım adım, günlük dille' },
-  { id: 'L2', label: 'Normal', hint: 'Ders kitabı düzeyi' },
-  { id: 'L3', label: 'Derin', hint: 'Neden ve kısayollar' },
+  { id: 'L1', label: 'Temelden', hint: 'İlk kez öğreniyorum; somut örneklerle anlat' },
+  { id: 'L2', label: 'Bağlantıları kur', hint: 'Temeli biliyorum; matematik diline geçelim' },
+  { id: 'L3', label: 'Derinleş', hint: 'Gerekçeler, özel durumlar ve sınavda kısa yollar' },
 ];
 
 export const CONFIDENCE = [

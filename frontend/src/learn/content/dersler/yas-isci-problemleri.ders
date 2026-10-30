@@ -81,7 +81,9 @@ E) 51 || 5 yıl önce toplam azalır.
 kontrol: 36-3*5
 cozum: Üç kişinin her biri 5 yaş küçüktü: $36 - 3 \cdot 5 = 21$.
 
-@bolum s1 10 | Yaş farkı hiç değişmez
+@bolum s1 17 | Yaş farkı hiç değişmez
+::kesfet yas-isci-problemleri
+
 ::fikir
 İki kişinin **yaş farkı sabittir**. Herkesin yaşı aynı hızla (yılda 1) artar; bu yüzden "biri diğerinin yaşına geldiğinde" geçen süre **yaş farkı kadardır**.
 

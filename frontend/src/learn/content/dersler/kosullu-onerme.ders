@@ -77,7 +77,9 @@ D) $\exists x \in \mathbb{R}, x^2 \leq 0$ || $\geq$'nin değili $<$'dir, $\leq$ 
 E) $\forall x \in \mathbb{R}, x^2 \leq 0$ || Hem niceleyici hem eşitsizlik yanlış değişti.
 cozum: $(\forall x, p(x))' \equiv \exists x, p'(x)$. $x^2 \geq 0$'ın değili $x^2 < 0$: "$\exists x \in \mathbb{R}, x^2 < 0$".
 
-@bolum s1 10 | Koşullu önerme: tek yanlış durum
+@bolum s1 17 | Koşullu önerme: tek yanlış durum
+::kesfet kosullu-onerme
+
 ::fikir
 $p \Rightarrow q$ yalnız **$p$ doğru, $q$ yanlış** iken yanlıştır; diğer üç durumda doğrudur. Sadeleştirmenin anahtarı: $p \Rightarrow q \equiv p' \vee q$.
 

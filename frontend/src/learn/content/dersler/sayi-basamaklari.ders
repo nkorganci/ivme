@@ -79,7 +79,9 @@ D) 11 || Fazla.
 E) 18 || Üsleri topladın; basamak sayısı böyle bulunmaz.
 cozum: $2^{10} \cdot 5^8 = 2^2 \cdot (2 \cdot 5)^8 = 4 \cdot 10^8 = 400\,000\,000$: 9 basamaklıdır.
 
-@bolum s1 10 | Basamak değeri ve çözümleme
+@bolum s1 17 | Basamak değeri ve çözümleme
+::kesfet sayi-basamaklari
+
 ::fikir
 Bir rakamın değeri, durduğu yere bağlıdır: $abc = 100a + 10b + c$. Harfli bir sayı ($AB$) iki rakamın **çarpımı değil**, iki basamaklı bir sayıdır: $AB = 10A + B$.
 
@@ -155,6 +157,8 @@ C) 84 || $84 - 48 = 36$; daha büyüğü var.
 E) 99 || Rakamlar aynı olursa fark 0 olur.
 cozum: $AB - BA = 9(A - B) = 36$, yani $A - B = 4$. En büyük $AB$ için $A = 9$, $B = 5$: $95$.
 
+::cikmis TYT-0653 tip=basamak-degisim
+
 @bolum s3 10 | Rakam koşulları: en büyük ve en küçük
 ::fikir
 En büyük sayı için büyük rakamlar **solda**, en küçük için küçük rakamlar solda; ama **ilk basamak 0 olamaz**. Ek koşulu (çift, tek, toplam) son basamakta sağla.
@@ -192,6 +196,8 @@ D) 888 || 999 ve 111'de rakamlar aynı.
 E) 897 || 090 üç basamaklı değil.
 kontrol: 987-102
 cozum: En büyük $987$, en küçük $102$ (ilk basamak 0 olamaz, rakamlar farklı): $987 - 102 = 885$.
+
+::cikmis TYT-0551 tip=rakam-kosul
 
 @bolum s4 9 | Kaç basamaklı? Sondaki sıfırlar
 ::fikir

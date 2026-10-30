@@ -80,7 +80,9 @@ E) 729 || Bu $3^6$'dır.
 kontrol: (2-1)^6
 cozum: Katsayılar toplamı için $x = 1$: $(2 - 1)^6 = 1$.
 
-@bolum s1 8 | Pascal üçgeni
+@bolum s1 15 | Pascal üçgeni
+::kesfet binom
+
 ::fikir
 Pascal üçgeninde her sayı **üstündeki iki sayının toplamıdır**; $n$. satır $(x + y)^n$ açılımının katsayılarını verir: $\binom{n}{0}, \binom{n}{1}, \ldots, \binom{n}{n}$.
 

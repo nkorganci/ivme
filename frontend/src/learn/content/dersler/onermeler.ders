@@ -76,7 +76,9 @@ D) $p' \vee q'$ || $(q')' \equiv q$; çift değil olumlu yapar.
 E) $p \wedge q$ || Değil işlemini uygulamadın.
 cozum: De Morgan: $(p \wedge q')' \equiv p' \vee (q')' \equiv p' \vee q$.
 
-@bolum s1 8 | Önerme ve doğruluk değeri
+@bolum s1 15 | Önerme ve doğruluk değeri
+::kesfet onermeler
+
 ::fikir
 **Önerme**, doğru ya da yanlış **kesin bir hüküm** bildiren ifadedir. Yanlış bir hüküm de önermedir ("7 çifttir" $\equiv 0$). Soru, emir, dilek ve kişisel beğeni önerme değildir. $p$'nin **değili** $p'$, doğruluk değerini tersine çevirir.
 

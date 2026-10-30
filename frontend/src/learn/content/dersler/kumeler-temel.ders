@@ -79,7 +79,9 @@ E) 24 || Fazla.
 kontrol: 2^3
 cozum: $a$ kesin var, $b$ kesin yok; kalan $c, d, e$ için var/yok: $2^3 = 8$.
 
-@bolum s1 8 | Küme, eleman ve gösterimler
+@bolum s1 15 | Küme, eleman ve gösterimler
+::kesfet kumeler-temel
+
 ::fikir
 Küme, **iyi tanımlanmış ve birbirinden farklı** nesnelerin topluluğudur. Bir kümenin içinde küme olabilir: $\{2, 3\}$ **tek bir eleman**dır. $\varnothing$ boş kümedir ama $\{\varnothing\}$ **bir elemanlıdır**.
 

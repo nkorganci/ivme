@@ -80,7 +80,9 @@ E) 6 || Hesabı yeniden yap.
 kontrol: 8-8+6-4
 cozum: $x - 2 = 0 \Rightarrow x = 2$; kalan $P(2) = 8 - 8 + 6 - 4 = 2$.
 
-@bolum s1 9 | Polinom kavramı
+@bolum s1 16 | Polinom kavramı
+::kesfet polinom-islemleri
+
 ::fikir
 $P(x) = a_n x^n + \cdots + a_1 x + a_0$ ifadesinin polinom olması için **bütün üslerin doğal sayı** olması gerekir. En büyük üs **derece**, onun katsayısı **baş katsayı**, $a_0$ **sabit terimdir**. Katsayılar toplamı $P(1)$, sabit terim $P(0)$.
 

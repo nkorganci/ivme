@@ -81,7 +81,9 @@ E) 4 || Yalnız $B$'nin kalanını aldın.
 kontrol: 3+2*4-10
 cozum: Sayıların yerine kalanları koy: $3 + 2 \cdot 4 = 11$. $11 = 5 \cdot 2 + 1$; kalan 1.
 
-@bolum s1 10 | Bölme algoritması
+@bolum s1 17 | Bölme algoritması
+::kesfet bolme-bolunebilme
+
 ::fikir
 Her bölme şu denklemdir: **Bölünen = Bölen × Bölüm + Kalan**, ve kalan her zaman bölenden küçüktür: $0 \leq K < B$.
 

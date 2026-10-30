@@ -79,7 +79,9 @@ E) 120 || Bu tüm dizilişlerdir.
 kontrol: 24*2
 cozum: A ile B'yi tek blok say: 4 nesne $4! = 24$ şekilde, blok kendi içinde $2! = 2$ şekilde dizilir: 48.
 
-@bolum s1 9 | Saymanın temel ilkesi
+@bolum s1 16 | Saymanın temel ilkesi
+::kesfet sayma-permutasyon
+
 ::fikir
 Aşamalar **art arda** yapılıyorsa ("ve") seçenek sayıları **çarpılır**; **ayrık** seçeneklerden biri yapılıyorsa ("veya") **toplanır**.
 

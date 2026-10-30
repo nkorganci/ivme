@@ -78,7 +78,9 @@ C) Açıklık büyüktür. || Küçük sapma genellikle verilerin yakın olduğu
 E) Tepe değer yoktur. || Sapma tepe değer hakkında bilgi vermez.
 cozum: Standart sapma verilerin ortalamadan uzaklığını ölçer; küçükse veriler ortalamaya yakındır, grup homojen ve istikrarlıdır.
 
-@bolum s1 9 | Aritmetik ortalama
+@bolum s1 16 | Aritmetik ortalama
+::kesfet merkezi-egilim
+
 ::fikir
 **Toplam = ortalama × veri sayısı.** Ortalama sorularının çoğu, toplamı yazıp yeni toplamı yeni veri sayısına bölmekle çözülür.
 

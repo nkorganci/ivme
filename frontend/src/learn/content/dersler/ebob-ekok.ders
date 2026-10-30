@@ -87,7 +87,9 @@ D) Cuma || Kalan 2; salı + 2.
 E) Cumartesi || Kalan 4 değil.
 cozum: 7 günde bir aynı gün gelir. $100 = 7 \cdot 14 + 2$; salıdan 2 gün sonrası perşembedir.
 
-@bolum s1 10 | Asal sayılar ve bölen sayısı
+@bolum s1 17 | Asal sayılar ve bölen sayısı
+::kesfet ebob-ekok
+
 ::fikir
 Her sayı **asal çarpanların çarpımı** olarak tek bir biçimde yazılır: $360 = 2^3 \cdot 3^2 \cdot 5$. Pozitif bölen sayısı: üslere 1 ekle, çarp: $(3+1)(2+1)(1+1) = 24$.
 

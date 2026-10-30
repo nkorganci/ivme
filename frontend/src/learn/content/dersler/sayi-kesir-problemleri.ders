@@ -81,7 +81,9 @@ E) 240 || İki kez yarıya böldün.
 kontrol: 40*3
 cozum: Yarısından sonra $\frac{1}{2}$, kalanın $\frac{2}{3}$'ü kalır: $\frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3}$. $\frac{x}{3} = 40 \Rightarrow x = 120$.
 
-@bolum s1 10 | Sözel ifadeden denkleme
+@bolum s1 17 | Sözel ifadeden denkleme
+::kesfet sayi-kesir-problemleri
+
 ::fikir
 Problemin dili cebire çevrilir: **"katı"** çarpma, **"fazlası"** toplama, **"eksiği"** çıkarma, **"'inin"** çarpmadır. İsteneni $x$ seç ve cümleleri sırayla çevir.
 

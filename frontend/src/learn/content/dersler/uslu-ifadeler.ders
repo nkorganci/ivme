@@ -89,7 +89,9 @@ E) 31 || Üslü ifadeyle doğrusal ifade karıştırıldı.
 kontrol: 5-1
 cozum: $32 = 2^5$; tabanlar eşitlenince $x + 1 = 5$, $x = 4$.
 
-@bolum s1 8 | Üs nedir? Sıfır ve negatif üsün nedeni
+@bolum s1 15 | Üs nedir? Sıfır ve negatif üsün nedeni
+::kesfet uslu-ifadeler
+
 ::fikir
 $a^n$, $n$ tane $a$'nın çarpımıdır. Üs her **1 azaldığında** sayı **$a$'ya bölünür**; bu örüntü $a^0 = 1$ ve $a^{-n} = \frac{1}{a^n}$ sonuçlarını zorunlu kılar.
 

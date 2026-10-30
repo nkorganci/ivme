@@ -255,6 +255,7 @@ function parseBlock(lessonId, head, lines, line) {
   const title = attrs.baslik ?? '';
   switch (type) {
     case 'metin': return { type: 'markdown', text };
+    case 'kesfet': return { type: 'exploration', conceptId: positional[0] || lessonId };
     case 'fikir': return { type: 'key_idea', text, title };
     case 'not': return { type: 'note', text, tone: attrs.ton ?? 'info', title };
     case 'duzey': return { type: 'leveled', levels: leveled(lines), title };

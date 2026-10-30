@@ -43,7 +43,7 @@ anahtar: en büyük değer | en küçük değer | en fazla | en az | alabileceğ
 @tip kumeler-islem 15 s1
 ad: Sayı kümeleri ve işlem özellikleri
 ipucu: "Aşağıdakilerden hangisi rasyonel/irrasyonel sayıdır?", işlem önceliği, etkisiz ve yutan eleman, "hangisi doğal sayı değildir".
-strateji: Önce sayıyı sadeleştir ($\sqrt{9} = 3$ rasyoneldir!), sonra en dar kümeyi bul: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. İşlemde sıra: üs → parantez → çarpma/bölme (soldan) → toplama/çıkarma.
+strateji: Önce sayıyı sadeleştir ($\sqrt{9} = 3$ rasyoneldir!), sonra en dar kümeyi bul: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. İşlemde sıra: önce parantez içi (kendi içinde işlem önceliğiyle), sonra üs, çarpma/bölme (soldan sağa), toplama/çıkarma (soldan sağa).
 anahtar: rasyonel sayı | irrasyonel | doğal sayı | gerçek sayı | işlem önceliği | etkisiz eleman | yutan eleman | kapalı
 
 @ustalik
@@ -86,7 +86,9 @@ D) 26 || $y = 1$; ama 0 da bir rakamdır.
 kontrol: 3*9-0
 cozum: Büyütmek için $x$'i en büyük (9), çıkarılan $y$'yi en küçük (0) seç: $3 \cdot 9 - 0 = 27$.
 
-@bolum s1 8 | Sayı kümeleri: hangi sayı nereye ait?
+@bolum s1 15 | Sayı kümeleri: hangi sayı nereye ait?
+::kesfet temel-kavramlar
+
 ::fikir
 Her sayı kümesi bir öncekini içine alır: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. İrrasyonel sayılar ($\mathbb{Q}'$) rasyonellerin dışında ama gerçek sayıların içindedir: $\mathbb{Q} \cup \mathbb{Q}' = \mathbb{R}$.
 
@@ -139,7 +141,7 @@ D) $\sqrt{0{,}25}$ || $\sqrt{0{,}25} = 0{,}5 = \frac{1}{2}$, rasyonel.
 cozum: Kökü tam çıkmayan tek seçenek $\sqrt{12} = 2\sqrt{3}$'tür; irrasyoneldir.
 
 ::bilmelisin
-- İşlem önceliği: üs → parantez içi → çarpma ve bölme (soldan sağa) → toplama ve çıkarma.
+- İşlem önceliği: parantez içini kendi işlem sırasıyla bitir; sonra üs, çarpma ve bölme (soldan sağa), toplama ve çıkarma (soldan sağa).
 - Toplamanın etkisiz elemanı 0, çarpmanın etkisiz elemanı 1; çarpmanın yutan elemanı 0.
 - 0'ın çarpmaya göre tersi yoktur; $\frac{a}{0}$ tanımsızdır.
 
@@ -262,7 +264,7 @@ cozum: Beş terimin ortancası ortalamadır: $\frac{115}{5} = 23$. Terimler $19,
 
 @bolum s5 10 | En büyük – en küçük değer
 ::fikir
-Bir ifadeyi **büyütmek** için toplanan ve çarpılan terimleri büyüt, **çıkarılan ve bölen** terimleri küçült. Küçültmek için tam tersini yap. Sonra koşulları ("farklı", "pozitif", "rakam") kontrol et.
+Önce değişkenlerin işaretlerini ve birbirine bağlı olup olmadıklarını belirle. Diğer miktarlar sabitken, pozitif bir toplamda eklenen miktarı büyütmek sonucu artırır; pozitif paylı kesirde pozitif paydayı büyütmek sonucu azaltır. **Toplam sabitse** iki pozitif sayının çarpımı birbirlerine yaklaştıkça büyür. Her adımda "farklı", "pozitif", "rakam" koşullarını koru.
 
 ::duzey
 L1: Bir kesrin değerini büyütmek istiyorsan payı büyüt, paydayı küçült: $\frac{8}{2}$, $\frac{8}{4}$'ten büyüktür. Çıkarmada da "az çıkarırsan çok kalır": $9 - 0$, $9 - 5$'ten büyüktür.
@@ -293,14 +295,13 @@ E) 25 || $x = y = 5$ olurdu; ama sayılar farklı olmalı.
 kontrol: 6*4
 cozum: Toplam sabitken çarpım, sayılar birbirine yaklaştıkça büyür. Eşit olamadıkları için $6 \cdot 4 = 24$ en büyük değerdir.
 
-::cikmis TYT-0541 not="Çıkmış bir TYT sorusuyla kendini dene; çözümünde bu bölümün kontrol listesini kullan."
 
 ::ozet
 - $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$; irrasyoneller $\mathbb{R}$ içinde, $\mathbb{Q}$ dışında. Önce sadeleştir: $\sqrt{9} = 3$.
 - Toplamda aynılar çift; çarpımda tek bir çift sonucu çift yapar.
 - Çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır.
 - Terim sayısı $\frac{\text{son} - \text{ilk}}{\text{fark}} + 1$; toplam $\frac{\text{ilk} + \text{son}}{2} \cdot n$.
-- Büyütmek için toplananı ve çarpılanı büyüt, çıkarılanı ve böleni küçült; koşulları en sonda kontrol et.
+- Uç değerlerde önce işaret, tanım kümesi ve bağlı koşulları kontrol et. Toplamı sabit pozitif sayılarda en büyük çarpım, birbirine en yakın uygun sayılarda bulunur.
 
 @pratik
 - Çalışma sırası: önce tek–çift ve işaret kurallarını 2–3 sayı örneğiyle kendin doğrula, sonra ardışık sayılara ve en büyük–en küçük sorularına geç.
@@ -325,7 +326,7 @@ cozum: Toplam sabitken çarpım, sayılar birbirine yaklaştıkça büyür. Eşi
 - Tek–çift: toplamda "aynılar çift", çarpımda tek bir çift çarpan sonucu çift yapar; "her zaman" sorusunda karşı örnek ara.
 - İşaret: çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır; önce çift kuvvetleri at.
 - Ardışık sayılar: terim sayısında $+1$'i unutma; toplam ortalama × terim sayısıdır, ortanca terim ortalamaya eşittir.
-- En büyük–en küçük: etkisi büyük değişkene uç değer ver, sonra koşulları kontrol et.
+- En büyük–en küçük: önce koşulları ve işaretleri belirle; birbirine bağlı değişkenlerde tek tek uç değer seçme. Sabit toplamda pozitif çarpım için birbirine yakın sayıları dene.
 
 @aciklama
 Bir arkadaşına şu iki soruyu iki üç cümleyle açıkla: (1) "Neden iki tek sayının toplamı her zaman çifttir?" (2) "4, 7, 10, …, 61 dizisinde terim sayısını bulurken neden $+1$ ekliyoruz?"
@@ -335,7 +336,7 @@ Bir arkadaşına şu iki soruyu iki üç cümleyle açıkla: (1) "Neden iki tek 
 $a$ ve $b$ tam sayılar olmak üzere $(a + 2) \cdot b$ tek sayıdır. Buna göre aşağıdakilerden hangisi **çift** sayıdır?
 A) $a$
 B) $b$
-C) $a + b$
+C) $a + b + 1$
 +D) $a \cdot b + b$
 E) $a^2$
 cozum: Çarpım tek olduğundan $b$ tek ve $a + 2$ tek, yani $a$ tektir. $a b + b = b(a + 1)$; $a + 1$ çift olduğundan ifade çifttir.

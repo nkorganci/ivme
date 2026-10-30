@@ -80,7 +80,9 @@ E) $\frac{3}{5}$ || Bu yalnız ilk çekilişin olasılığıdır.
 kontrol: 3/5*2/4
 cozum: İlk kırmızı $\frac{3}{5}$; geriye 2 kırmızı ve toplam 4 bilye: $\frac{2}{4}$. $\frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10}$.
 
-@bolum s1 9 | Koşullu olasılık: örnek uzayı daralt
+@bolum s1 16 | Koşullu olasılık: örnek uzayı daralt
+::kesfet kosullu-olasilik
+
 ::fikir
 $B$'nin gerçekleştiği biliniyorsa örnek uzay **$B$'ye daralır**: $P(A \mid B) = \frac{s(A \cap B)}{s(B)} = \frac{P(A \cap B)}{P(B)}$.
 

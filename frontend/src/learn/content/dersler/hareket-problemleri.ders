@@ -81,7 +81,9 @@ E) 55 || Fazla; yavaş bölümde daha uzun süre geçer.
 kontrol: 2*60*40/(60+40)
 cozum: Yol 120 km olsun: gidiş 2 sa, dönüş 3 sa; toplam 240 km, 5 sa: $\frac{240}{5} = 48$ km/sa.
 
-@bolum s1 9 | Yol = hız × zaman
+@bolum s1 16 | Yol = hız × zaman
+::kesfet hareket-problemleri
+
 ::fikir
 **$x = V \cdot t$.** İşleme başlamadan **birimleri eşle**: dakikayı saate çevir ($24 \text{ dk} = 0{,}4 \text{ sa}$), km/sa'i m/sn'ye çevirmek için **3,6'ya böl**.
 
@@ -195,6 +197,8 @@ D) 10 || Hesabı yeniden yap.
 E) 18 || Hızları topladın.
 kontrol: 2*12*6/(12+6)
 cozum: Yol 24 km olsun: ilk yarı $12 : 12 = 1$ sa, ikinci yarı $12 : 6 = 2$ sa. $\frac{24}{3} = 8$ km/sa.
+
+::cikmis TYT-0666 tip=yol-hiz-zaman
 
 @bolum s4 9 | Akıntı, dairesel pist, tren ve tünel
 ::fikir

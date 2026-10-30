@@ -8,12 +8,16 @@ import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
+import { parseLesson } from '../frontend/src/learn/content/parser.js';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-const dist = join(ROOT, 'frontend/dist');
+const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(ROOT, 'frontend/dist');
 const out = join(ROOT, 'veri/ui-denetim/konu-ogrenme');
 mkdirSync(out, { recursive: true });
 const live = process.argv.includes('--live');
+const discoveryOnly = process.argv.includes('--kesif');
+const guidedOnly = process.argv.includes('--gercek-ornek');
 const lessonsDir = join(ROOT, 'frontend/src/learn/content/dersler');
 const conceptId = process.argv.slice(2).find((a) => !a.startsWith('--')) ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
 
@@ -78,7 +82,14 @@ async function run(mobile) {
   const overflow = () => evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2');
   const steps = [];
   try {
-    if (live) await login('student');
+    if (live) {
+      await login('student');
+      // Girişten önceki beklenen 401 yalnız kimlik kontrolüdür. Giriş sonrası 401 hatadır.
+      for (let i = failedRequests.length - 1; i >= 0; i--) {
+        const f = failedRequests[i];
+        if ((f.status === 401 && new URL(f.url).pathname === '/api/auth/me') || new URL(f.url).pathname === '/favicon.ico') failedRequests.splice(i, 1);
+      }
+    }
     await goto('/konuyu-ogrenelim');
     await wait('document.body.innerText.includes("Bugünün planı")', 30000);
     await shot('bugun');
@@ -238,10 +249,100 @@ async function run(mobile) {
   }
 }
 
+async function runDiscoveries(mobile) {
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
+  const steps = [];
+  try {
+    for (const file of readdirSync(lessonsDir).filter((f) => f.endsWith('.ders'))) {
+      const id = file.replace(/\.ders$/, '');
+      await goto(`/konuyu-ogrenelim/ders/${id}`);
+      await wait('document.querySelector(".lr-intro .btn-secondary")');
+      await evalJs(click('.lr-intro .btn-secondary'));
+      await wait('document.querySelector(".lm-lab")');
+      assert.equal(await evalJs('document.querySelector(".lr-reader-tools button[aria-pressed=true]").textContent'), 'Temelden');
+      await evalJs(`(async () => {
+        const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+        for (const input of document.querySelectorAll('.lm-control input, .lm-control select')) {
+          const proto = input.tagName === 'SELECT' ? HTMLSelectElement.prototype : HTMLInputElement.prototype;
+          const value = input.tagName === 'SELECT' ? input.options[input.options.length - 1].value : input.max;
+          Object.getOwnPropertyDescriptor(proto, 'value').set.call(input, value);
+          input.dispatchEvent(new Event(input.tagName === 'SELECT' ? 'change' : 'input', { bubbles: true }));
+          await pause(20);
+        }
+      })()`);
+      assert.ok(await evalJs('document.querySelector(".lm-observation").textContent.length > 40'));
+      assert.ok(!(await evalJs('Boolean(document.querySelector(".katex-error"))')), `${id} formül hatası`);
+      await evalJs(click('.lm-zoom-button'));
+      await wait('document.querySelector("dialog[open]")');
+      await evalJs(click('dialog[open] button', 'Kapat'));
+      assert.equal(await evalJs('Boolean(document.querySelector("dialog[open]"))'), false);
+      if (['rasyonel-sayilar', 'birinci-derece-denklemler', 'carpanlara-ayirma', 'temel-kavramlar'].includes(id)) {
+        await evalJs('document.querySelector(".lm-exploration").scrollIntoView({ block: "start" })');
+        await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-kesif-${id}.png`));
+      }
+      await evalJs(click('.lm-phases button', 'Birlikte'));
+      await wait('document.querySelector(".lm-reasoning li")');
+      for (let i = 0; i < 6; i++) {
+        if (!(await evalJs(click('.lm-phase .btn-primary', 'Sonraki adım')))) break;
+        await pause(25);
+      }
+      assert.ok(await evalJs('document.querySelectorAll(".lm-reasoning li").length >= 3'));
+      await evalJs(click('.lm-phase .btn-primary', 'Benzer'));
+      await wait('document.querySelector(".lm-transfer-options")');
+      await evalJs(click('.lm-transfer-options button'));
+      await evalJs(click('.lm-transfer .btn-primary', 'kontrol'));
+      await wait('document.querySelector(".lm-transfer .lr-feedback")');
+      steps.push({ step: id, overflow: await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2') });
+    }
+    return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests].filter((f) => !f.url?.includes('favicon')) };
+  } catch (error) {
+    await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-kesif-hata.png`));
+    return { mobile, steps, failure: error.message, page: await evalJs('location.pathname'), errors: [...errors], failedRequests: [...failedRequests] };
+  } finally { browser.close(); }
+}
+
+async function runGuided(mobile) {
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
+  const steps = [];
+  try {
+    for (const [code, guide] of Object.entries(WORKED_EXAMS)) {
+      const lesson = parseLesson(readFileSync(join(lessonsDir, `${guide.conceptId}.ders`), 'utf8'), guide.conceptId);
+      const section = lesson.sections.findIndex((s) => s.blocks.some((b) => b.code === code));
+      db.events = [{ id: `open-${code}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId: guide.conceptId }];
+      for (let i = 0; i < section; i++) db.events.push({ id: `${code}-${i}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'section', conceptId: guide.conceptId, sectionId: lesson.sections[i].id, nextSectionId: lesson.sections[i + 1].id, ms: 1 });
+      await goto(`/konuyu-ogrenelim/ders/${guide.conceptId}`);
+      await wait('document.querySelector(".lr-guided-exam .image-btn img")?.naturalWidth > 0');
+      const before = db.events.length;
+      assert.equal(await evalJs('Boolean(document.querySelector(".lm-exam-conclusion"))'), false, 'cevap başlangıçta görünmemeli');
+      await evalJs('document.querySelector(".lr-guided-exam").scrollIntoView({block:"start"})');
+      const width = await evalJs('document.querySelector(".lr-guided-exam .image-btn img").getBoundingClientRect().width');
+      assert.ok(width > (mobile ? 200 : 400), `${code}: özgün soru çok küçük (${width})`);
+      for (let i = 0; i < guide.steps.length; i++) {
+        assert.ok(await evalJs(click('.lr-guided-exam .btn-primary')));
+        await pause(40);
+      }
+      await wait('document.querySelector(".lm-exam-conclusion")');
+      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion').textContent.includes(${JSON.stringify(guide.result)})`));
+      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion a').href.includes('tip=${guide.archetype}')`));
+      assert.ok(!(await evalJs('Boolean(document.querySelector(".katex-error"))')));
+      assert.equal(db.events.length, before, 'rehberli çözüm puan/deneme olayı üretmemeli');
+      await evalJs('document.querySelector(".lm-exam-conclusion").scrollIntoView({block:"center"})');
+      await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-gercek-${code}.png`));
+      steps.push({ step: code, width, overflow: await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2') });
+    }
+    return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests].filter((f) => !f.url?.includes('favicon')) };
+  } catch (error) {
+    await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-gercek-hata.png`));
+    return { mobile, steps, failure: error.message, page: await evalJs('location.pathname'), errors: [...errors], failedRequests: [...failedRequests] };
+  } finally { browser.close(); }
+}
+
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await run(mobile));
+    report.runs.push(await (guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();

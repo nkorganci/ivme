@@ -80,7 +80,9 @@ C) $c < a < b$ || $c$ en büyüktür.
 E) $b < c < a$ || $\frac{7}{9} > \frac{3}{4}$.
 cozum: Ondalık açılımlar: $b \approx 0{,}714$, $a = 0{,}75$, $c \approx 0{,}778$. Ya da çapraz çarp: $3 \cdot 7 = 21 > 20 = 5 \cdot 4$, yani $a > b$; $3 \cdot 9 = 27 < 28 = 7 \cdot 4$, yani $c > a$.
 
-@bolum s1 10 | Kesirler, sadeleştirme, toplama ve çıkarma
+@bolum s1 17 | Kesirler, sadeleştirme, toplama ve çıkarma
+::kesfet rasyonel-sayilar
+
 ::fikir
 Kesirleri toplamak için önce **aynı büyüklükte dilimlere** (ortak payda) çevir, sonra dilimleri say. Ortak payda paydaların **EKOK'udur**.
 
@@ -164,6 +166,8 @@ D) $6$ || Yalnız $2$'yi aldın: $3 \cdot 2$.
 E) $9$ || Hesabı adım adım tekrar et.
 kontrol: 3/(2-1/2)
 cozum: Payda: $2 - \frac{1}{2} = \frac{3}{2}$. $3 : \frac{3}{2} = 3 \cdot \frac{2}{3} = 2$.
+
+::cikmis TYT-0541 tip=kesir-islem
 
 @bolum s3 8 | Ondalık sayılar
 ::fikir

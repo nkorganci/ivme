@@ -1,0 +1,470 @@
+{
+ "concepts": {
+  "bileske-ters": {
+   "total": 132,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 0
+   },
+   "archetypes": {
+    "bileske-deger": 8,
+    "bileske-kural": 9,
+    "ters-bulma": 61,
+    "ters-ozellik": 0
+   },
+   "untyped": 54
+  },
+  "binom": {
+   "total": 71,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 7
+   },
+   "archetypes": {
+    "pascal-katsayi": 8,
+    "genel-terim": 28,
+    "katsayi-toplam": 21,
+    "negatif-kesirli": 0
+   },
+   "untyped": 14
+  },
+  "birinci-derece-denklemler": {
+   "total": 178,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 1
+   },
+   "archetypes": {
+    "denklem-cozme": 9,
+    "ozel-durum": 13,
+    "sistem": 107,
+    "ifade-degeri": 20
+   },
+   "untyped": 29
+  },
+  "bolme-bolunebilme": {
+   "total": 248,
+   "cikmis": {
+    "TYT": 12,
+    "AYT": 5
+   },
+   "archetypes": {
+    "bolme-algoritmasi": 69,
+    "kural": 44,
+    "bilesik-kural": 5,
+    "kalan-islem": 0
+   },
+   "untyped": 130
+  },
+  "carpanlara-ayirma": {
+   "total": 104,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 0
+   },
+   "archetypes": {
+    "ortak-gruplama": 0,
+    "ozdeslik": 11,
+    "uc-terimli": 11,
+    "rasyonel-sadelestirme": 69
+   },
+   "untyped": 13
+  },
+  "ebob-ekok": {
+   "total": 211,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 2
+   },
+   "archetypes": {
+    "asal-bolen": 21,
+    "ebob-ekok-hesap": 41,
+    "ebob-problem": 10,
+    "ekok-problem": 19,
+    "periyodik": 28
+   },
+   "untyped": 92
+  },
+  "esitsizlikler": {
+   "total": 465,
+   "cikmis": {
+    "TYT": 26,
+    "AYT": 0
+   },
+   "archetypes": {
+    "aralik": 38,
+    "esitsizlik-cozme": 15,
+    "aralik-ifade": 125,
+    "iki-bilinmeyen": 19
+   },
+   "untyped": 268
+  },
+  "fonksiyon-grafikleri": {
+   "total": 64,
+   "cikmis": {
+    "TYT": 2,
+    "AYT": 0
+   },
+   "archetypes": {
+    "grafik-okuma": 6,
+    "isaret-aralik": 6,
+    "dogru-testi": 0,
+    "dogrusal-model": 20
+   },
+   "untyped": 32
+  },
+  "fonksiyon-kavrami": {
+   "total": 605,
+   "cikmis": {
+    "TYT": 9,
+    "AYT": 0
+   },
+   "archetypes": {
+    "tanim-goruntu": 41,
+    "deger-bulma": 49,
+    "fonksiyon-cesit": 91,
+    "parcali-islem": 24
+   },
+   "untyped": 400
+  },
+  "grafik-rutin-olmayan": {
+   "total": 228,
+   "cikmis": {
+    "TYT": 19,
+    "AYT": 0
+   },
+   "archetypes": {
+    "grafik-okuma": 6,
+    "tablo-sema": 88,
+    "en-az-en-cok": 54,
+    "oruntu-strateji": 31
+   },
+   "untyped": 49
+  },
+  "hareket-problemleri": {
+   "total": 211,
+   "cikmis": {
+    "TYT": 14,
+    "AYT": 0
+   },
+   "archetypes": {
+    "yol-hiz-zaman": 114,
+    "karsilasma": 21,
+    "ortalama-hiz": 9,
+    "akinti-pist": 5
+   },
+   "untyped": 62
+  },
+  "kar-zarar": {
+   "total": 136,
+   "cikmis": {
+    "TYT": 4,
+    "AYT": 0
+   },
+   "archetypes": {
+    "kar-yuzde": 31,
+    "indirim-zam": 7,
+    "kar-indirim": 15,
+    "adet-maliyet": 6
+   },
+   "untyped": 77
+  },
+  "koklu-ifadeler": {
+   "total": 184,
+   "cikmis": {
+    "TYT": 2,
+    "AYT": 0
+   },
+   "archetypes": {
+    "kok-disi": 61,
+    "eslenik": 4,
+    "ic-ice": 0,
+    "siralama": 9,
+    "denklem": 13
+   },
+   "untyped": 97
+  },
+  "kombinasyon": {
+   "total": 142,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 2
+   },
+   "archetypes": {
+    "kombinasyon-hesap": 5,
+    "secim-problemi": 35,
+    "secip-siralama": 2,
+    "kombinasyon-geometri": 52
+   },
+   "untyped": 48
+  },
+  "kosullu-olasilik": {
+   "total": 26,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 0
+   },
+   "archetypes": {
+    "kosullu-tablo": 16,
+    "carpma-kurali": 0,
+    "bagimsiz": 1,
+    "agac-bilesik": 1
+   },
+   "untyped": 8
+  },
+  "kosullu-onerme": {
+   "total": 44,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 0
+   },
+   "archetypes": {
+    "ise-deger": 6,
+    "karsit-ters": 8,
+    "iki-yonlu": 0,
+    "niceleyici": 22
+   },
+   "untyped": 8
+  },
+  "kume-islemleri": {
+   "total": 129,
+   "cikmis": {
+    "TYT": 3,
+    "AYT": 4
+   },
+   "archetypes": {
+    "islem-venn": 42,
+    "eleman-sayisi": 8,
+    "kume-problemi": 40,
+    "kartezyen": 3
+   },
+   "untyped": 36
+  },
+  "kumeler-temel": {
+   "total": 347,
+   "cikmis": {
+    "TYT": 6,
+    "AYT": 6
+   },
+   "archetypes": {
+    "gosterim": 94,
+    "alt-kume-sayi": 26,
+    "kosullu-alt-kume": 27,
+    "esitlik": 43
+   },
+   "untyped": 157
+  },
+  "merkezi-egilim": {
+   "total": 192,
+   "cikmis": {
+    "TYT": 10,
+    "AYT": 0
+   },
+   "archetypes": {
+    "ortalama": 96,
+    "medyan-mod": 32,
+    "yayilim": 30,
+    "olcu-donusum": 0
+   },
+   "untyped": 34
+  },
+  "mutlak-deger": {
+   "total": 295,
+   "cikmis": {
+    "TYT": 2,
+    "AYT": 0
+   },
+   "archetypes": {
+    "tanim-acma": 42,
+    "denklem": 13,
+    "esitsizlik": 46,
+    "uzaklik-minimum": 44
+   },
+   "untyped": 150
+  },
+  "olasilik": {
+   "total": 525,
+   "cikmis": {
+    "TYT": 9,
+    "AYT": 9
+   },
+   "archetypes": {
+    "ornek-uzay": 56,
+    "basit-olasilik": 330,
+    "tumleyen-birlesim": 15,
+    "sayma-olasilik": 3
+   },
+   "untyped": 121
+  },
+  "onermeler": {
+   "total": 283,
+   "cikmis": {
+    "TYT": 6,
+    "AYT": 9
+   },
+   "archetypes": {
+    "onerme-deger": 14,
+    "baglac-tablo": 180,
+    "de-morgan": 1,
+    "deger-cikarim": 6
+   },
+   "untyped": 82
+  },
+  "oran-oranti": {
+   "total": 189,
+   "cikmis": {
+    "TYT": 5,
+    "AYT": 0
+   },
+   "archetypes": {
+    "oran-ozellik": 4,
+    "dogru-ters": 39,
+    "paylastirma": 9,
+    "bilesik": 3
+   },
+   "untyped": 134
+  },
+  "polinom-islemleri": {
+   "total": 511,
+   "cikmis": {
+    "TYT": 3,
+    "AYT": 11
+   },
+   "archetypes": {
+    "polinom-kavram": 93,
+    "polinom-islem": 7,
+    "polinom-bolme": 116,
+    "kalan-bulma": 14
+   },
+   "untyped": 281
+  },
+  "rasyonel-sayilar": {
+   "total": 75,
+   "cikmis": {
+    "TYT": 12,
+    "AYT": 0
+   },
+   "archetypes": {
+    "kesir-islem": 14,
+    "ondalik": 33,
+    "devirli": 0,
+    "siralama": 16
+   },
+   "untyped": 12
+  },
+  "sayi-basamaklari": {
+   "total": 210,
+   "cikmis": {
+    "TYT": 15,
+    "AYT": 5
+   },
+   "archetypes": {
+    "cozumleme": 12,
+    "basamak-degisim": 10,
+    "rakam-kosul": 54,
+    "basamak-sayisi": 10
+   },
+   "untyped": 124
+  },
+  "sayi-kesir-problemleri": {
+   "total": 265,
+   "cikmis": {
+    "TYT": 35,
+    "AYT": 0
+   },
+   "archetypes": {
+    "denklem-kurma": 73,
+    "kesir": 26,
+    "adet-tutar": 39,
+    "ters-islem": 52
+   },
+   "untyped": 75
+  },
+  "sayma-permutasyon": {
+   "total": 439,
+   "cikmis": {
+    "TYT": 9,
+    "AYT": 8
+   },
+   "archetypes": {
+    "temel-ilke": 170,
+    "faktoriyel-p": 61,
+    "siralama-kosul": 14,
+    "tekrarli-dairesel": 18
+   },
+   "untyped": 176
+  },
+  "temel-kavramlar": {
+   "total": 413,
+   "cikmis": {
+    "TYT": 23,
+    "AYT": 29
+   },
+   "archetypes": {
+    "tek-cift": 42,
+    "isaret": 59,
+    "ardisik": 33,
+    "en-buyuk-kucuk": 78,
+    "kumeler-islem": 41
+   },
+   "untyped": 160
+  },
+  "uslu-ifadeler": {
+   "total": 198,
+   "cikmis": {
+    "TYT": 16,
+    "AYT": 0
+   },
+   "archetypes": {
+    "kurallar": 102,
+    "negatif-sifir": 0,
+    "ortak-paranteze": 0,
+    "siralama": 2,
+    "denklem": 8
+   },
+   "untyped": 86
+  },
+  "veri-grafikleri": {
+   "total": 153,
+   "cikmis": {
+    "TYT": 7,
+    "AYT": 0
+   },
+   "archetypes": {
+    "daire-grafik": 38,
+    "sutun-cizgi": 17,
+    "histogram": 14,
+    "grafik-secim": 27
+   },
+   "untyped": 57
+  },
+  "yas-isci-problemleri": {
+   "total": 188,
+   "cikmis": {
+    "TYT": 8,
+    "AYT": 0
+   },
+   "archetypes": {
+    "yas-fark": 29,
+    "yas-toplam": 35,
+    "isci-birlikte": 62,
+    "isci-asamali": 6
+   },
+   "untyped": 56
+  },
+  "yuzde-karisim": {
+   "total": 133,
+   "cikmis": {
+    "TYT": 14,
+    "AYT": 0
+   },
+   "archetypes": {
+    "yuzde-hesap": 50,
+    "yuzde-degisim": 11,
+    "karisim-derisim": 25,
+    "karisim-degisim": 6
+   },
+   "untyped": 41
+  }
+ }
+}

@@ -79,7 +79,9 @@ E) 18 || Bu Almanca bilenlerin sayısıdır.
 kontrol: 25+18-(40-7)
 cozum: En az bir dil bilen $40 - 7 = 33$. $25 + 18 - x = 33 \Rightarrow x = 10$.
 
-@bolum s1 9 | Kesişim, birleşim, fark, tümleme
+@bolum s1 16 | Kesişim, birleşim, fark, tümleme
+::kesfet kume-islemleri
+
 ::fikir
 **Kesişim** ortak elemanlar ($\cap$, "ve"), **birleşim** tüm elemanlar ($\cup$, "veya"), **fark** $A \setminus B$: $A$'da olup $B$'de olmayanlar, **tümleyen** $A'$: evrensel kümede olup $A$'da olmayanlar.
 

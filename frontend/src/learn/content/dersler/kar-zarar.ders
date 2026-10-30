@@ -81,7 +81,9 @@ E) 40 || Yüzdeleri çıkardın; indirim etikete uygulanır.
 kontrol: (1.5*0.9-1)*100
 cozum: Alış 100 olsun: etiket 150, satış $150 \cdot 0{,}9 = 135$; kâr %35.
 
-@bolum s1 9 | Kâr ve zarar: taban alış fiyatıdır
+@bolum s1 16 | Kâr ve zarar: taban alış fiyatıdır
+::kesfet kar-zarar
+
 ::fikir
 Kâr ve zarar yüzdesi **alış (maliyet) fiyatı** üzerinden hesaplanır. Alışa **100** de: %20 kârla satış 120, %15 zararla satış 85 olur.
 
