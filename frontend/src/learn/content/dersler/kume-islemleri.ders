@@ -120,6 +120,24 @@ soru: $E = \{1, 2, \ldots, 8\}$, $A = \{1, 2, 3, 4\}$ ve $B = \{3, 4, 5, 6\}$ i�
 3. $A' \cap B' = \{7, 8\}$. || İki yol aynı kümeyi verir.
 cevap: İkisi de $\{7, 8\}$
 
+::ornek baslik="Fark işlemi yön ister"
+soru: $E=\{1,2,\ldots,8\}$, $A=\{1,2,3,4\}$ ve $B=\{3,4,5,6\}$ için $A\setminus B$, $B\setminus A$ ve $A\cap B'$ kümelerini bul.
+1. $A\setminus B$: $A$'da olup $B$'de olmayanlar: $\{1,2\}$. || 3 ve 4 iki kümede de var; çıkarılır.
+2. $B\setminus A$: $B$'de olup $A$'da olmayanlar: $\{5,6\}$. || Fark yön değiştirince sonuç değişir.
+3. $B'=\{1,2,7,8\}$ ve $A\cap B'=\{1,2\}$. || “$A$'da olup $B$'de olmayan” ile “$A$ ve $B$'nin tümleyeni” aynı bölgedir.
+cevap: $A\setminus B=\{1,2\}$, $B\setminus A=\{5,6\}$, $A\cap B'=A\setminus B$.
+
+::sorgula s1-parti baslik="Ortak doğum günü partisi"
+durum: Ece'nin arkadaşları {Ali, Can, Deniz, Efe}, Fırat'ın arkadaşları {Can, Efe, Gül}. İkisi ortak bir parti verecek ve yalnız ikisinin de arkadaşı olanları çağıracak.
+soru: Kimler davet edilir?
++A) Can ve Efe || İki kümenin kesişimi: $\{\text{Can},\text{Efe}\}$.
+B) Ali, Can, Deniz, Efe ve Gül || Bu birleşimdir: en az birinin arkadaşı olanlar.
+C) Ali ve Deniz || Bu, yalnız Ece'nin arkadaşlarıdır (fark).
+neden: “İkisinin de arkadaşı” = iki kümede birden bulunan = kesişim. “En az birinin arkadaşı” birleşim, “yalnız Ece'nin arkadaşı” ise $E\setminus F$ farkıdır.
+sinav: Sözel ifadeleri işleme çevir: “ve / ikisi de” kesişim, “veya / en az biri” birleşim, “yalnız …” fark.
+dusun: İkisinden en az birinin arkadaşlarının hepsi çağrılsaydı kaç kişi gelirdi?
+yanit: Birleşim $\{\text{Ali},\text{Can},\text{Deniz},\text{Efe},\text{Gül}\}$: 5 kişi.
+
 ::yanilgi m1 tip=islem-venn
 yanlis: $A \setminus B$ ile $B \setminus A$ aynı kümedir.
 neden: Fark işleminin değişme özelliği yoktur: $\{1, 2, 3\} \setminus \{3, 4\} = \{1, 2\}$ ama $\{3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
@@ -153,10 +171,29 @@ cevap: 7
 
 ::tamamla baslik="Formülle"
 soru: $s(A) = 15$, $s(B) = 11$ ve $s(A \cup B) = 20$ olduğuna göre $s(A \cap B)$ ve $s(A \setminus B)$ kaçtır?
-1. $20 = 15 + 11 - s(A \cap B)$.
-?2. $s(A \cap B) = 6$.
-?3. $s(A \setminus B) = 15 - 6 = 9$.
+1. $20 = 15 + 11 - s(A \cap B)$. || Kesişimdeki elemanlar iki kez sayıldığı için bir kez çıkarılır.
+?2. $s(A \cap B) = 6$. || $26-s(A\cap B)=20$ denkleminden.
+?3. $s(A \setminus B) = 15 - 6 = 9$. || Yalnız A bölgesi, A kümesinden ortak kısmın çıkarılmasıdır.
 cevap: 6 ve 9
+
+::ornek baslik="Birleşim en çok ve en az kaç olabilir?"
+soru: $s(A)=12$ ve $s(B)=9$ olduğuna göre $s(A\cup B)$ en çok ve en az kaçtır?
+1. $s(A\cup B)=12+9-s(A\cap B)=21-s(A\cap B)$. || Birleşimi, kesişime bağlı yazdık.
+2. En çok: kesişim boşsa ($s(A\cap B)=0$) $21$. || Ortak eleman yoksa hiçbiri iki kez sayılmaz.
+3. En az: kesişim en büyükken. Kesişim küçük kümeden büyük olamaz; $B\subseteq A$ ise $s(A\cap B)=9$ ve birleşim $12$. || Küçük küme büyüğün içinde kalınca birleşim büyük kümeye eşit olur.
+cevap: En çok 21, en az 12.
+
+::sorgula s2-kulup baslik="İki kulübe birden üye olanlar"
+durum: 25 kişilik bir sınıfta 18 öğrenci satranç, 14 öğrenci müzik kulübüne üye. Her öğrenci en az bir kulübe üye.
+soru: İki kulübe birden üye olan kaç öğrenci vardır?
+A) 0 || $18+14=32$, sınıf mevcudu 25'ten büyük; bazı öğrenciler iki kez sayılıyor.
++B) 7 || $25=18+14-s(\text{ikisi})$, $s(\text{ikisi})=7$.
+C) 32 || Bu, üyeliklerin toplamıdır; kişi sayısı değil.
+kontrol: 18+14-25
+neden: Herkes en az bir kulübe üye olduğundan birleşim 25'tir. $s(A\cup B)=s(A)+s(B)-s(A\cap B)$: $25=32-s(A\cap B)$, yani 7 öğrenci iki kulübe birden üyedir.
+sinav: Kümelerin eleman sayıları toplamı birleşimden büyükse fark, kesişimin eleman sayısıdır.
+dusun: Her öğrencinin en az bir kulübe üye olduğu bilinmeseydi iki kulübe üye öğrenci sayısı en az ve en çok kaç olabilirdi?
+yanit: En az 7 (birleşim en çok 25 olabilir), en çok 14 (bütün müzikçiler satranççı da olabilir).
 
 ::yanilgi m2 tip=eleman-sayisi
 yanlis: $s(A \cup B) = s(A) + s(B)$'dir.
@@ -201,10 +238,29 @@ cevap: 35
 
 ::tamamla baslik="Yalnız çay içenler"
 soru: 30 kişilik bir grupta 18 kişi çay, 15 kişi kahve içiyor; 5 kişi ikisini de içmiyor. Yalnız çay içen kaç kişidir?
-1. En az birini içen: $30 - 5 = 25$.
-?2. İkisini de içen: $18 + 15 - 25 = 8$.
-?3. Yalnız çay: $18 - 8 = 10$.
+1. En az birini içen: $30 - 5 = 25$. || “Hiçbiri” birleşimin dışıdır; tümden çıkarınca birleşim kalır.
+?2. İkisini de içen: $18 + 15 - 25 = 8$. || Birleşim formülünden kesişim.
+?3. Yalnız çay: $18 - 8 = 10$. || Çay içenlerden ikisini de içenler çıkarılır.
 cevap: 10
+
+::ornek baslik="Hiçbiri ve yalnız biri"
+soru: Bir ankete katılan 40 kişiden 25'i kitap okuyor, 20'si dizi izliyor, 12'si ikisini de yapıyor. Hiçbirini yapmayan ve yalnız birini yapan kaç kişidir?
+1. En az birini yapan: $25+20-12=33$. || Birleşim formülü.
+2. Hiçbirini yapmayan: $40-33=7$. || Birleşimin dışı.
+3. Yalnız birini yapan: $33-12=21$ (yalnız kitap 13, yalnız dizi 8). || Birleşimden kesişimi çıkardık.
+cevap: Hiçbiri 7, yalnız biri 21. Kontrol: $13+12+8+7=40$.
+
+::sorgula s3-dil baslik="Yalnız bir dil bilenler"
+durum: Bir şirkette İngilizce bilen 30, Almanca bilen 12 kişi var. İki dili de bilen 5 kişi.
+soru: Yalnız bir yabancı dil bilen kaç kişi vardır?
+A) 42 || İki dili bilenleri iki kez saydın; onlar “yalnız bir dil” bilmiyor.
++B) 32 || Yalnız İngilizce $30-5=25$, yalnız Almanca $12-5=7$.
+C) 37 || Bu, en az bir dil bilenlerin sayısıdır (birleşim).
+kontrol: 30+12-2*5
+neden: Venn bölgeleri: yalnız İngilizce 25, ikisi 5, yalnız Almanca 7. Yalnız bir dil $25+7=32$; en az bir dil $25+5+7=37$.
+sinav: “Yalnız biri” = birleşim − kesişim $=s(A)+s(B)-2\cdot s(A\cap B)$.
+dusun: Şirkette 50 kişi çalışıyorsa hiçbir yabancı dil bilmeyen kaç kişi vardır?
+yanit: $50-37=13$ kişi.
 
 ::yanilgi m3 tip=kume-problemi
 yanlis: "En az birini yapan" ile "yalnız birini yapan" aynı sayıdır.
@@ -236,6 +292,25 @@ soru: $(2x - 1, y + 3) = (5, 2x)$ olduğuna göre $x + y$ kaçtır?
 2. İkinci bileşenler: $y + 3 = 2x = 6$, $y = 3$. || Bulunan $x$'i yerine koy.
 3. $x + y = 6$. || Kontrol: $(5, 6) = (5, 6)$ ✓
 cevap: 6
+
+::ornek baslik="Kartezyen çarpımı listele"
+soru: $A=\{1,2\}$ ve $B=\{x,y,z\}$ için $A\times B$'yi yaz. $A\times B=B\times A$ midir?
+1. $A\times B$'nin elemanları: $(1,x)$, $(1,y)$, $(1,z)$, $(2,x)$, $(2,y)$, $(2,z)$. || İlk bileşen $A$'dan, ikinci bileşen $B$'den seçilir.
+2. $s(A\times B)=2\cdot3=6$. || Her $A$ elemanı, $B$'nin 3 elemanıyla eşleşir.
+3. $B\times A$'nın elemanları $(x,1)$ gibidir; $(1,x)\neq(x,1)$. Kümeler eşit değildir. || Sıralı ikilide sıra önemlidir.
+cevap: 6 elemanlı; $A\times B\neq B\times A$ (ama eleman sayıları eşittir).
+
+::sorgula s4-kombin baslik="Kıyafet kombinleri"
+durum: Dolabında 3 tişört ve 4 pantolon var. Bir kombin, bir tişört ve bir pantolondan oluşuyor.
+soru: Kaç farklı kombin yapabilirsin?
+A) 7 || Tişört ve pantolon sayılarını topladın; her tişört her pantolonla eşleşebilir.
++B) 12 || Kombinler $T\times P$'nin elemanlarıdır: $3\cdot4=12$.
+C) 24 || Aynı kombini iki kez saydın; tişört–pantolon sırası kombinin kendisini değiştirmez.
+kontrol: 3*4
+neden: Her kombin (tişört, pantolon) biçiminde bir sıralı ikilidir. Tişört kümesi ile pantolon kümesinin kartezyen çarpımının eleman sayısı $3\cdot4=12$'dir.
+sinav: $s(A\times B)=s(A)\cdot s(B)$. Sıralı ikili eşitliğinde bileşenler sırasıyla eşitlenir.
+dusun: Dolaba 2 çift ayakkabı eklenirse (tişört, pantolon, ayakkabı) kaç kombin olur?
+yanit: $3\cdot4\cdot2=24$ kombin.
 
 ::soru c4 tip=kartezyen zorluk=2
 $s(A \times B) = 15$ ve $s(A) > s(B) > 1$ olduğuna göre $s(A) - s(B)$ kaçtır?

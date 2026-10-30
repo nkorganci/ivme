@@ -103,6 +103,24 @@ soru: $A = \{x \mid x \in \mathbb{Z}, -3 < x \leq 2\}$ ve $B = \{x^2 \mid x \in 
 3. $B = \{0, 1, 4\}$: $s(B) = 3$. || Tekrar edenler bir kez.
 cevap: $s(A) = 5$, $s(B) = 3$
 
+::ornek baslik="Küme içinde küme ve boş küme"
+soru: $A=\{1,\{2,3\},\varnothing\}$ kümesi için $s(A)$'yı bul; $\{2,3\}\in A$, $2\in A$, $\varnothing\in A$ ve $\varnothing\subseteq A$ ifadelerinin doğru olup olmadığını belirle.
+1. Elemanlar $1$, $\{2,3\}$ ve $\varnothing$: $s(A)=3$. || Süslü parantez içindeki $\{2,3\}$ tek bir elemandır.
+2. $\{2,3\}\in A$ doğru; $2\in A$ yanlış. || 2, $A$'nın değil, $A$'nın elemanı olan $\{2,3\}$ kümesinin elemanıdır.
+3. $\varnothing\in A$ doğru, çünkü listede açıkça yazıyor; $\varnothing\subseteq A$ da doğru, çünkü boş küme her kümenin alt kümesidir. || $\in$ eleman olmayı, $\subseteq$ alt küme olmayı sorar.
+cevap: $s(A)=3$; yalnız $2\in A$ yanlıştır.
+
+::sorgula s1-uzun baslik="Uzun boylular bir küme midir?"
+durum: Öğretmen “Sınıftaki uzun boylu öğrenciler” diye bir liste yapmak istiyor.
+soru: “Sınıftaki uzun boylu öğrenciler” bir küme belirtir mi?
+A) Evet; sınıfta uzun boylu öğrenciler vardır. || Kimin uzun sayılacağı kişiden kişiye değişir; listeye kimin gireceği kesin değil.
++B) Hayır; “uzun” iyi tanımlı değildir. || Bir öğrencinin listeye girip girmediğine herkes aynı kararı veremez.
+C) Yalnız boyu 1,80 m üstündekiler varsa küme olur. || Bu bir sınır koymak demektir; sınır konunca artık ifade değişmiş olur.
+neden: Küme için “iyi tanımlı” olmak gerekir: herhangi bir nesnenin kümeye ait olup olmadığı tartışmasız belirlenebilmelidir. “Uzun” kişiden kişiye değişir. “Boyu 170 cm'den uzun olan öğrenciler” ise iyi tanımlıdır.
+sinav: “Küme belirtir mi?” sorularında kişisel yargı içeren sözcüklere (güzel, büyük, zeki, uzun) dikkat et.
+dusun: “Sınıfta ekim ayında doğan öğrenciler” bir küme belirtir mi?
+yanit: Evet. Her öğrencinin doğum ayı kesindir; kimin kümeye ait olduğu tartışmasız belirlenir.
+
 ::yanilgi m1 tip=gosterim
 yanlis: $\{\varnothing\}$ boş kümedir.
 neden: $\{\varnothing\}$ kümesinin bir elemanı vardır: $\varnothing$.
@@ -140,6 +158,25 @@ soru: Bir kümenin alt küme sayısı ile öz alt küme sayısının toplamı 12
 2. $2 \cdot 2^n = 128 \Rightarrow 2^{n+1} = 2^7$. || Düzenle.
 3. $n = 6$. || Kontrol: $64 + 63 = 127$ ✓
 cevap: 6
+
+::ornek baslik="Öz alt küme ile boş olmayan alt küme"
+soru: Bir kümenin öz alt küme sayısı 31'dir. Bu kümenin en az bir elemanlı alt kümelerinin sayısı kaçtır?
+1. $2^n-1=31$, $2^n=32$, $n=5$. || Öz alt küme, kümenin kendisi dışındaki alt kümelerdir.
+2. Tüm alt kümeler $2^5=32$; bunlardan biri boş kümedir. || Her eleman için “var / yok” seçimi.
+3. En az bir elemanlı alt kümeler $32-1=31$. || Bu kez çıkarılan kümenin kendisi değil, boş kümedir.
+cevap: 31. Sayılar aynı çıktı ama çıkarılan alt kümeler farklı: öz alt kümede kümenin kendisi, boş olmayan alt kümede $\varnothing$ çıkarılır.
+
+::sorgula s2-pizza baslik="Ek malzemeli pizza"
+durum: Bir pizzacıda 5 farklı ek malzeme var: mantar, zeytin, mısır, biber ve sucuk. Ek malzeme seçmeyebilir ya da istediğin kadarını seçebilirsin.
+soru: Kaç farklı ek malzeme seçimi yapılabilir?
+A) 5 || Yalnız tek malzemeli seçimleri saydın.
+B) 25 || $5\cdot5$; her malzeme için 5 seçenek yok, yalnız “var / yok” var.
++C) 32 || Her malzeme için 2 seçenek: $2^5=32$.
+kontrol: 2^5
+neden: Bir seçim, malzeme kümesinin bir alt kümesidir. Her malzeme ya eklenir ya eklenmez: $2\cdot2\cdot2\cdot2\cdot2=32$. Hiç malzeme seçmemek (boş küme) de bir seçimdir.
+sinav: $n$ elemanlı kümenin alt küme sayısı $2^n$'dir; “en az bir” denirse boş küme çıkarılır.
+dusun: En az bir malzeme seçmek zorunlu olsaydı kaç seçim olurdu?
+yanit: $32-1=31$ seçim.
 
 ::yanilgi m2 tip=alt-kume-sayi
 yanlis: $n$ elemanlı kümenin öz alt küme sayısı $2^n - 2$'dir; boş küme ve kümenin kendisi çıkarılır.
@@ -182,9 +219,28 @@ cevap: 48
 
 ::tamamla baslik="Biri var, ikisi yok"
 soru: $A = \{a, b, c, d, e, f\}$ kümesinin alt kümelerinin kaç tanesinde $a$ bulunur, $b$ ve $c$ bulunmaz?
-1. $a$, $b$, $c$ için karar verildi; kalan eleman sayısı $6 - 3 = 3$.
-?2. $2^3 = 8$ alt küme.
+1. $a$, $b$, $c$ için karar verildi; kalan eleman sayısı $6 - 3 = 3$. || Durumu belirlenmiş elemanlar için seçim yapılmaz; kenara ayrılır.
+?2. $2^3 = 8$ alt küme. || Kalan her eleman için “var / yok” seçimi yapılır.
 cevap: 8
+
+::ornek baslik="En az bir çift sayı içeren alt kümeler"
+soru: $A=\{1,2,3,4,5\}$ kümesinin alt kümelerinin kaç tanesinde en az bir çift sayı bulunur?
+1. Tüm alt kümeler $2^5=32$. || Önce hepsini saydık.
+2. Hiç çift sayı içermeyenler, $\{1,3,5\}$'in alt kümeleridir: $2^3=8$. || “En az bir” sorusunun tümleyeni “hiç”tir.
+3. $32-8=24$. || Tümden istenmeyeni çıkardık.
+cevap: 24. Doğrudan saymak (yalnız 2, yalnız 4, ikisi birlikte…) daha uzun ve hataya açıktır.
+
+::sorgula s3-zeytin baslik="Zeytin olsun, mantar olmasın"
+durum: Bir pizzacıda 6 farklı ek malzeme var. Arkadaşın “Zeytin mutlaka olsun, mantar asla olmasın; gerisini sen seç.” diyor.
+soru: Kaç farklı malzeme seçimi yapılabilir?
+A) 64 || Bu, hiç koşul olmadan yapılabilecek seçim sayısıdır.
+B) 32 || Yalnız zeytin koşulunu uyguladın; mantar da kenara ayrılmalı.
++C) 16 || Zeytin ve mantarın durumu belli; kalan 4 malzeme için $2^4$.
+kontrol: 2^4
+neden: Durumu kesin olan malzemeler (zeytin var, mantar yok) için seçim yapılmaz. Kalan 4 malzemenin her biri için “var / yok”: $2^4=16$.
+sinav: “$a$ bulunsun, $b$ bulunmasın” sorularında koşullu elemanları kenara ayır, kalan $k$ eleman için $2^k$ hesapla. “$a$ veya $b$ bulunsun” ise tümden ikisinin de bulunmadığı durumu çıkar.
+dusun: Zeytin veya mantardan en az biri olsun denseydi kaç seçim olurdu?
+yanit: $2^6-2^4=64-16=48$ seçim.
 
 ::yanilgi m3 tip=kosullu-alt-kume
 yanlis: "$a$ veya $b$ bulunur" sayısı, "$a$ bulunur" ile "$b$ bulunur" sayılarının toplamıdır.
@@ -216,6 +272,24 @@ soru: $\{2a - 1, 7\} = \{5, b + 1\}$ olduğuna göre $a + b$ kaçtır?
 2. Kalan eşleşme: $2a - 1 = 5$, $a = 3$. || Diğer elemanlar eşleşir.
 3. $a + b = 9$. || Kontrol: $\{5, 7\} = \{5, 7\}$ ✓
 cevap: 9
+
+::ornek baslik="Farklı yazılmış aynı küme"
+soru: $A=\{x\mid x^2=4\}$, $B=\{-2,2\}$ ve $C=\{2,-2,2\}$ kümeleri eşit midir?
+1. $x^2=4$ denkleminin çözümleri $-2$ ve $2$: $A=\{-2,2\}$. || Ortak özellikle verilen kümeyi listeye çevirdik.
+2. $C$'de 2 iki kez yazılmış; kümede tekrar eden eleman bir kez sayılır: $C=\{-2,2\}$. || Kümede sıra ve tekrar önemli değildir.
+3. Üçünün elemanları aynıdır: $A=B=C$. || Her biri diğerinin alt kümesidir.
+cevap: Üç küme de eşittir; $s(A)=s(B)=s(C)=2$.
+
+::sorgula s4-liste baslik="İki alışveriş listesi"
+durum: Ayşe'nin alışveriş listesi: süt, ekmek, yumurta. Ali'nin listesi: yumurta, süt, ekmek, süt.
+soru: Alınacak ürünlerin kümesi açısından iki liste aynı mıdır?
+A) Hayır; ürünlerin sırası farklı. || Kümede sıra önemli değildir.
+B) Hayır; Ali'nin listesinde süt iki kez yazılmış. || Kümede tekrar eden eleman bir kez sayılır.
++C) Evet; iki listede de aynı üç ürün var. || İki küme de $\{\text{süt},\text{ekmek},\text{yumurta}\}$.
+neden: İki küme, aynı elemanlara sahipse eşittir. Sıra ve tekrar kümeyi değiştirmez. Alınacak adet önemliyse liste yetmez; ama kümesi aynıdır.
+sinav: Eşit küme sorularında bilinen elemanlardan başla; her elemanın karşı kümede bir eşi olmalı. $A=B$ için $A\subseteq B$ ve $B\subseteq A$ gerekir.
+dusun: Ali listesine peynir eklerse iki küme arasındaki ilişki ne olur?
+yanit: Ayşe'nin kümesi Ali'nin kümesinin öz alt kümesi olur; kümeler artık eşit değildir.
 
 ::soru c4 tip=esitlik zorluk=2
 $\{a + 2, 4\} = \{7, b - 1\}$ olduğuna göre $a \cdot b$ kaçtır?
