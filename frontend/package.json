@@ -13,11 +13,13 @@
     "ag-grid-community": "^36.2.0",
     "ag-grid-react": "^36.2.0",
     "exceljs": "^4.4.0",
+    "katex": "^0.19.1",
     "pdfjs-dist": "^6.4.299",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.4",
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "ts-fsrs": "^6.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.1.2",

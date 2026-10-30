@@ -1,0 +1,380 @@
+@ders temel-kavramlar
+baslik: Sayı Kümeleri ve Temel Kavramlar
+kisa: Temel kavramlar
+sinav: TYT AYT
+unite: temel
+sinif: 9
+sira: 100
+kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Sayı kümelerini ayırt etmek; tek–çift ve pozitif–negatif analizini sayı vererek yapmak; ardışık sayılarda terim sayısı ve toplamı bulmak; koşullu en büyük–en küçük değer sorularını sistemli çözmek.
+neden: TYT Matematik'in ilk soruları neredeyse her yıl bu konudan gelir: 2018–2026 arasında **Sayı Kümeleri** başlığında 59 çıkmış TYT sorusu var, AYT'de de "Temel Kavramlar" başlığında 42 soru. Daha önemlisi, tek–çift ve işaret analizi problemlerin, polinomların ve eşitsizliklerin içinde gizli bir araç olarak tekrar tekrar kullanılır.
+kaynak: MEBİ TYT Konu Özeti — Sayı Kümeleri, Temel İşlemler, Tek ve Çift Sayılar, Pozitif ve Negatif Sayılar, Ardışık Sayılar | OGM 9. Sınıf Konu Özetleri 07–08 | OGM Video Notları TYT 01 — Temel Kavramlar
+tekrar: 12
+ustalik-dk: 14
+hedef-sure: 60
+anahtar: tek sayı | çift sayı | tek tam sayı | çift tam sayı | ardışık | pozitif | negatif | işaret | en büyük | en küçük | irrasyonel | sayı kümesi | doğal sayı | tam sayı | /[^a-z]a\s*[.·]\s*b\s*[<>]/
+baslik-kurali: temel kavramlar | sayı kümeleri | /^9\.3\.1\.1/ | tek ve çift | pozitif ve negatif | ardışık sayılar | temel işlemler
+haric: basamak | rasyonel sayılar > ondalık | devirli | ebob | ekok | bölünebilme | kalan
+
+@tip tek-cift 20 s2
+ad: Tek–çift analizi
+ipucu: "a ve b tam sayılar, … tek sayı olduğuna göre hangileri her zaman çifttir?" gibi sorular; ifadede çarpım, toplam ve kuvvet bir arada.
+strateji: Önce verilen koşulu en basit hâle getir (çarpım tekse iki çarpan da tektir). Sonra tablo kuralını uygula; emin değilsen harfler yerine küçük tek/çift sayılar koy ve her öncülü dene. "Her zaman" sorusunda tek bir karşı örnek öncülü eler.
+anahtar: tek sayı | çift sayı | tek tam sayı | çift tam sayı | tektir | çifttir | her zaman çift | her zaman tek
+
+@tip isaret 20 s3
+ad: Pozitif–negatif işaret analizi
+ipucu: "a·b < 0, b/c > 0 olduğuna göre…" ya da kuvvetli ifadelerde ($a^2 b^5 < 0$) işaret soruluyor.
+strateji: Çift kuvvetler işareti siler (her zaman pozitif ya da sıfır), tek kuvvet tabanın işaretini taşır. Önce çift kuvvetleri at, kalan eşitsizlikten işaretleri tek tek çıkar; sonra soruyu "+" ve "−" sembolleriyle hesapla.
+anahtar: pozitif | negatif | işaret | < 0 | > 0 | sıfırdan küçük | sıfırdan büyük | ters işaretli
+
+@tip ardisik 20 s4
+ad: Ardışık sayılar: terim sayısı ve toplam
+ipucu: "ardışık çift/tek sayılar", "kaç terim vardır", "toplamı", "ortanca terim".
+strateji: Terim sayısı $= \frac{\text{son} - \text{ilk}}{\text{fark}} + 1$; toplam $= \frac{\text{ilk} + \text{son}}{2} \cdot \text{terim sayısı}$. Ardışık sayılarda ortanca terim ortalamaya eşittir: toplamı terim sayısına bölmek ortanca terimi verir.
+anahtar: ardışık | terim sayısı | ortanca | toplamı kaçtır | 1 + 2 + 3
+
+@tip en-buyuk-kucuk 25 s5
+ad: Koşullu en büyük–en küçük değer
+ipucu: "x, y farklı pozitif tam sayılar / farklı rakamlar olmak üzere … ifadesinin alabileceği en büyük değer".
+strateji: İfadeyi büyütmek için toplanan ve çarpılan terimleri büyüt, çıkarılan ve bölen terimleri küçült; küçültmek için tersini yap. Önce en etkili değişkene (katsayısı büyük olana) en uç değeri ver, sonra "farklı olma" ve "pozitif/tam sayı" koşulunu kontrol et.
+anahtar: en büyük değer | en küçük değer | en fazla | en az | alabileceği | farklı pozitif tam sayı | farklı rakam
+
+@tip kumeler-islem 15 s1
+ad: Sayı kümeleri ve işlem özellikleri
+ipucu: "Aşağıdakilerden hangisi rasyonel/irrasyonel sayıdır?", işlem önceliği, etkisiz ve yutan eleman, "hangisi doğal sayı değildir".
+strateji: Önce sayıyı sadeleştir ($\sqrt{9} = 3$ rasyoneldir!), sonra en dar kümeyi bul: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. İşlemde sıra: üs → parantez → çarpma/bölme (soldan) → toplama/çıkarma.
+anahtar: rasyonel sayı | irrasyonel | doğal sayı | gerçek sayı | işlem önceliği | etkisiz eleman | yutan eleman | kapalı
+
+@ustalik
+tek-cift 1 1-2
+isaret 1 1-3
+ardisik 1 1-3
+en-buyuk-kucuk 2 1-3
+kumeler-islem 1 1-2
+
+@oturum Kümeler, tek–çift, işaret | s1 s2 s3
+@oturum Ardışık sayılar ve en büyük–en küçük | s4 s5
+
+@ontest
+::soru o1 tip=tek-cift zorluk=1
+$a$ tek, $b$ çift tam sayı olduğuna göre aşağıdakilerden hangisi kesinlikle tek sayıdır?
+A) $a \cdot b$ || Tek × çift = çift.
++B) $a + b$ || Doğru: tek + çift her zaman tektir.
+C) $a + 1$ || Tek + 1 = çift.
+D) $b^2$ || Çift sayının karesi çifttir.
+E) $a \cdot b + b$ || Çift + çift = çift.
+cozum: Tek + çift = tek. Örnek: $a = 3$, $b = 4$ için $a + b = 7$.
+
+::soru o2 tip=ardisik zorluk=1
+$4, 7, 10, \ldots, 61$ dizisinde kaç terim vardır?
+A) 19 || $\frac{61-4}{3} = 19$ ara sayısıdır; terim sayısı için +1 eklenir.
++B) 20 || Doğru: $\frac{61-4}{3} + 1 = 20$.
+C) 21 || Bir fazla saydın.
+D) 57 || Son ile ilk terimin farkı terim sayısı değildir.
+E) 18 || Bir eksik ve +1 yok.
+kontrol: (61-4)/3+1
+cozum: Terim sayısı $= \frac{61 - 4}{3} + 1 = 19 + 1 = 20$.
+
+::soru o3 tip=en-buyuk-kucuk zorluk=2
+$x$ ve $y$ birbirinden farklı rakamlardır. $3x - y$ ifadesinin alabileceği en büyük değer kaçtır?
+A) 18 || $x$'i 9'dan küçük seçmişsin.
+B) 24 || $y$'yi 3 seçtin; daha küçük olabilir.
+C) 25 || $y = 2$ seçtin; $y$ daha küçük olabilir.
+D) 26 || $y = 1$; ama 0 da bir rakamdır.
++E) 27 || Doğru: $x = 9$, $y = 0$ ile $27 - 0 = 27$.
+kontrol: 3*9-0
+cozum: Büyütmek için $x$'i en büyük (9), çıkarılan $y$'yi en küçük (0) seç: $3 \cdot 9 - 0 = 27$.
+
+@bolum s1 8 | Sayı kümeleri: hangi sayı nereye ait?
+::fikir
+Her sayı kümesi bir öncekini içine alır: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. İrrasyonel sayılar ($\mathbb{Q}'$) rasyonellerin dışında ama gerçek sayıların içindedir: $\mathbb{Q} \cup \mathbb{Q}' = \mathbb{R}$.
+
+::duzey
+L1: **Rakam** sayıları yazmak için kullandığımız 10 semboldür: $0, 1, 2, \ldots, 9$. **Doğal sayılar** saymaya 0'dan başlar: $\mathbb{N} = \{0, 1, 2, \ldots\}$. Bunlara negatifleri ekleyince **tam sayılar** ($\mathbb{Z}$) olur.
+Kesir olarak yazılabilen her sayı **rasyoneldir**: $\frac{1}{2}$, $-3 = \frac{-3}{1}$, $0{,}25 = \frac{1}{4}$. Kesir olarak yazılamayanlar **irrasyoneldir**: $\sqrt{2}$, $\pi$. İkisinin hepsine birden **gerçek sayılar** ($\mathbb{R}$) denir.
+L2: $a, b \in \mathbb{Z}$ ve $b \neq 0$ olmak üzere $\frac{a}{b}$ biçiminde yazılabilen sayılar **rasyonel** ($\mathbb{Q}$), yazılamayanlar **irrasyonel** ($\mathbb{Q}'$) sayılardır. Tam kare olmayan sayıların karekökleri ($\sqrt{2}, \sqrt{5}$), $\pi$ ve $e$ irrasyoneldir. Devirli ondalıklar ($0{,}\overline{3} = \frac{1}{3}$) rasyoneldir; çünkü kesre çevrilebilirler.
+Negatif sayının karekökü ($\sqrt{-4}$) gerçek sayı değildir. Sıfır doğal sayıdır, ne pozitif ne negatiftir.
+L3: Kümeler, işlemlere göre **kapalılık** ile de ayrılır: $\mathbb{N}$ toplama ve çarpmaya göre kapalıdır ama çıkarmaya göre değil ($2 - 5 \notin \mathbb{N}$). $\mathbb{Z}$ çıkarmaya göre de kapalıdır ama bölmeye göre değil. $\mathbb{Q}$ dört işleme (0'a bölme hariç) kapalıdır. İrrasyoneller toplamaya göre kapalı **değildir**: $\sqrt{2} + (-\sqrt{2}) = 0$. Sınavda "hangisi her zaman irrasyoneldir" sorusunda bu tür karşı örnekleri ara.
+
+::gorsel alt="İç içe sayı kümeleri: N, Z'nin; Z, Q'nun; Q, R'nin içinde. İrrasyonel sayılar R içinde, Q'nun dışında." aciklama="Her küme bir öncekini içerir; irrasyoneller ayrı bir bölge."
+<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="500" height="240" rx="18" class="accent nofill" stroke-width="2.5"/>
+  <text x="26" y="36" class="accent" font-size="18" font-weight="700">ℝ gerçek sayılar</text>
+  <rect x="26" y="50" width="300" height="186" rx="14" class="good nofill" stroke-width="2.5"/>
+  <text x="40" y="74" class="good" font-size="16" font-weight="700">ℚ rasyonel</text>
+  <rect x="42" y="88" width="210" height="132" rx="12" class="warn nofill" stroke-width="2.5"/>
+  <text x="56" y="110" class="warn" font-size="15" font-weight="700">ℤ tam sayılar</text>
+  <rect x="58" y="124" width="112" height="82" rx="10" class="accent nofill" stroke-width="2"/>
+  <text x="70" y="146" class="accent" font-size="14" font-weight="700">ℕ doğal</text>
+  <text x="70" y="174" font-size="14" fill="currentColor">0, 1, 2, 3…</text>
+  <text x="182" y="168" font-size="14" fill="currentColor">−1, −7</text>
+  <text x="266" y="128" font-size="14" fill="currentColor">1/2</text>
+  <text x="262" y="170" font-size="14" fill="currentColor">0,333…</text>
+  <rect x="340" y="50" width="156" height="186" rx="14" class="bad nofill" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="352" y="74" class="bad" font-size="16" font-weight="700">ℚ′ irrasyonel</text>
+  <text x="360" y="120" font-size="15" fill="currentColor">√2, √3, √5</text>
+  <text x="360" y="150" font-size="15" fill="currentColor">π ≈ 3,1415…</text>
+  <text x="360" y="180" font-size="15" fill="currentColor">e ≈ 2,718…</text>
+</svg>
+
+::sinifla k1 baslik="Sayıları kümelerine yerleştir (en dar küme)"
+Doğal: 0; $\sqrt{16}$
+Tam ama doğal değil: $-5$; $-\sqrt{9}$
+Rasyonel ama tam değil: $\frac{3}{4}$; $0{,}\overline{6}$; $-2{,}5$
+İrrasyonel: $\sqrt{7}$; $\pi$; $1 + \sqrt{2}$
+
+::yanilgi m1 tip=kumeler-islem
+yanlis: $\sqrt{9}$ kök içinde olduğu için irrasyoneldir.
+neden: Kök işareti tek başına bir şey söylemez; önce sadeleştir. $\sqrt{9} = 3$ bir doğal sayıdır.
+dogru: Yalnız tam kare olmayan sayıların kökleri ($\sqrt{2}, \sqrt{12}$) irrasyoneldir.
+
+::soru c1 tip=kumeler-islem zorluk=1
+Aşağıdakilerden hangisi **irrasyonel** bir sayıdır?
+A) $\sqrt{25}$ || $\sqrt{25} = 5$, doğal sayı.
+B) $0{,}\overline{4}$ || Devirli ondalık $= \frac{4}{9}$, rasyonel.
+C) $-\frac{7}{3}$ || Kesir olarak yazılmış; rasyonel.
+D) $\sqrt{0{,}25}$ || $\sqrt{0{,}25} = 0{,}5 = \frac{1}{2}$, rasyonel.
++E) $\sqrt{12}$ || Doğru: $\sqrt{12} = 2\sqrt{3}$; 12 tam kare değil.
+cozum: Kökü tam çıkmayan tek seçenek $\sqrt{12} = 2\sqrt{3}$'tür; irrasyoneldir.
+
+::bilmelisin
+- İşlem önceliği: üs → parantez içi → çarpma ve bölme (soldan sağa) → toplama ve çıkarma.
+- Toplamanın etkisiz elemanı 0, çarpmanın etkisiz elemanı 1; çarpmanın yutan elemanı 0.
+- 0'ın çarpmaya göre tersi yoktur; $\frac{a}{0}$ tanımsızdır.
+
+@bolum s2 10 | Tek–çift: iki ihtimalle düşün
+::fikir
+Bir tam sayı ya tektir ya çifttir. Toplamada **"aynılar çift"** verir (T+T = Ç, Ç+Ç = Ç); çarpımda **tek bir çift sayı** sonucu çift yapar. Bu iki cümle neredeyse bütün tek–çift sorularını çözer.
+
+::tablo baslik="Tek (T) ve çift (Ç) ile işlemler"
+| İşlem | T ile T | T ile Ç | Ç ile Ç |
+| Toplama / çıkarma | Ç | T | Ç |
+| Çarpma | T | Ç | Ç |
+| Kuvvet $a^n$ ($n \geq 1$) | tabanın tekliği korunur | — | tabanın çiftliği korunur |
+
+::duzey
+L1: Çift sayıyı "eşleşmiş" nesneler gibi düşün: 6 elma 3 çift yapar. Tek sayıda bir nesne açıkta kalır. İki tek sayıyı toplayınca açıktaki iki nesne birbiriyle eşleşir, sonuç çift olur. Çarpımda ise çarpanlardan biri çiftse her grup eşleşir, sonuç çift olur.
+L2: $n \in \mathbb{Z}$ için çift sayılar $2n$, tek sayılar $2n + 1$ biçimindedir. $(2n+1) + (2m+1) = 2(n+m+1)$ olduğundan iki tek sayının toplamı çifttir. Çarpımın tek olması için **bütün** çarpanlar tek olmalıdır. Kuvvet almak tekliği/çiftliği değiştirmez: $a$ tek ise $a^5$ de tektir.
+L3: Koşul bir denklemse onu sadeleştir: $a \cdot b + a = a(b+1)$ tek ise hem $a$ hem $b+1$ tektir, yani $b$ çifttir. "Her zaman" sorularında öncülü çürütmek için **tek bir karşı örnek** yeter; "olabilir" sorularında ise **tek bir örnek** yeter. Bu, soruyu hesaplamadan çözmenin yoludur.
+
+::yanilgi m2 tip=tek-cift
+yanlis: Tek × çift = tek, çünkü "teklerden biri var".
+neden: Çarpımda tek bir çift çarpan bile sonucu çift yapar: $3 \cdot 4 = 12$.
+dogru: Çarpım ancak bütün çarpanlar tekse tektir.
+
+::ornek baslik="Koşulu sadeleştir, sonra karar ver"
+soru: $a$ ve $b$ tam sayılar ve $a \cdot b + 3b$ tek sayıdır. Buna göre $a$ ve $b$ için ne söylenebilir?
+1. İfadeyi çarpanlarına ayır: $a b + 3b = b(a + 3)$. || Çarpım biçimi, tek–çift kararını kolaylaştırır.
+2. Çarpım tek olduğuna göre iki çarpan da tektir: $b$ tek ve $a + 3$ tek. || Çarpımda tek çift çarpan sonucu çift yapardı.
+3. $a + 3$ tek ise $a$ çifttir (çift + tek = tek). || 3 tek; toplamın tek olması için $a$ çift olmalı.
+cevap: $b$ tek, $a$ çifttir.
+
+::strateji tip=tek-cift baslik="Sayı ver, öncülleri dene"
+ipucu: "hangileri her zaman tektir/çifttir" ve öncüllü (I, II, III) sorular
+1. Koşulu sağlayan en küçük sayıları seç (ör. tek için 1 ve 3, çift için 0 ve 2).
+2. Her öncülü bu sayılarla hesapla.
+3. "Her zaman" için bir öncül tek bir örnekte bile yanlışsa elenir; şüphede ikinci bir örnek dene.
+
+::soru c2 tip=tek-cift zorluk=2
+$x$ ve $y$ pozitif tam sayılardır. $x^3 \cdot y$ çift ve $x + y$ tek sayıdır. Buna göre aşağıdakilerden hangisi kesinlikle doğrudur?
+A) $x$ tektir. || $x$ tek de olabilir çift de; aşağıdaki çözümü incele.
+B) $y$ tektir. || $y$ çift de olabilir.
++C) $x \cdot y$ çifttir. || Doğru: biri tek biri çift olduğundan çarpım çifttir.
+D) $x - y$ çifttir. || Biri tek biri çift; fark tektir.
+E) $y^2 + x$ çifttir. || Biri tek biri çift olduğundan $y^2 + x$ tektir.
+cozum: $x + y$ tek ise biri tek, diğeri çifttir. O zaman $x^3 y$ zaten çifttir (çarpanlardan biri çift). Hangisinin çift olduğu belli değildir; ama çarpım $x y$ her durumda çifttir.
+
+@bolum s3 10 | Pozitif–negatif: işaretleri ayıkla
+::fikir
+**Çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır.** $a^2 \geq 0$ her zaman doğrudur; $a^3$ ise $a$ ile aynı işaretlidir. İşaret sorusunda önce çift kuvvetleri at.
+
+::duzey
+L1: Negatif bir sayıyı kendisiyle iki kez çarparsan eksiler birbirini götürür: $(-2)^2 = 4$. Üç kez çarparsan bir eksi kalır: $(-2)^3 = -8$. Bu yüzden çift kuvvetler pozitif, tek kuvvetler tabanla aynı işaretli olur.
+L2: Çarpma ve bölmede işaretler aynıysa sonuç pozitif, farklıysa negatiftir. Toplamada ters işaretli iki sayı için sonucun işareti, mutlak değerce büyük olanın işaretidir. $a^2 b^5 < 0$ gibi bir koşulda $a^2 > 0$ olduğundan $b^5 < 0$, yani $b < 0$ bulunur.
+L3: İşaretleri bulduktan sonra soruyu sembolle hesapla: $a > 0$, $b < 0$ için $\frac{a - b}{a \cdot b}$ ifadesinde pay $(+) - (-) = (+)$, payda $(+)(-) = (-)$; sonuç negatiftir. Toplama veya çıkarmada işaret her zaman belli olmayabilir: $a + b$'nin işareti için büyüklük bilgisi gerekir. Sınavda "kesinlikle" sorusunda bu belirsiz durumu fark etmek kritik.
+
+::ornek baslik="MEBİ örneği: kuvvetlerden işaret bulma"
+soru: $a$ ve $b$ sıfırdan farklı gerçek sayılar, $a^2 \cdot b^5 < 0$ ve $a^7 \cdot b^8 > 0$ olduğuna göre $a$ ve $b$'nin işaretleri nedir?
+1. $a^2 > 0$ olduğundan $b^5 < 0$; tek kuvvet tabanın işaretini taşır, yani $b < 0$. || Çift kuvvet pozitiftir, eşitsizliğin işaretine katkı vermez.
+2. $b^8 > 0$ olduğundan $a^7 > 0$, yani $a > 0$. || Aynı mantık, bu kez $b$'nin kuvveti çift.
+cevap: $a > 0$ ve $b < 0$.
+
+::tamamla baslik="İşaretten ifadeye"
+soru: $x \cdot y < 0$ ve $y \cdot z > 0$, $x > 0$ olduğuna göre $\frac{x \cdot z}{y}$ ifadesinin işareti nedir?
+1. $x > 0$ ve $x y < 0$ olduğundan $y < 0$.
+?2. $y z > 0$ ve $y < 0$ olduğundan $z < 0$. || Aynı işaretliler çarpılınca pozitif olur.
+?3. $\frac{x z}{y} = \frac{(+)(-)}{(-)} = \frac{(-)}{(-)}$, yani pozitif.
+cevap: Pozitif.
+
+::yanilgi m3 tip=isaret
+yanlis: $a < b$ ise $a^2 < b^2$ olur.
+neden: Negatif sayılarda kare alma sırayı bozabilir: $-5 < 2$ ama $25 > 4$.
+dogru: Kare alma yalnız iki sayı da pozitifken sırayı korur; işaret bilinmiyorsa sayı vererek kontrol et.
+
+::soru c3 tip=isaret zorluk=2
+$a \cdot b^3 > 0$ ve $b \cdot c^2 < 0$ olduğuna göre aşağıdakilerden hangisi **kesinlikle** doğrudur?
+A) $c > 0$ || $c^2$ işareti siler; $c$'nin işareti bilinemez.
++B) $a \cdot b > 0$ || Doğru: $b < 0$ ve $a b^3 > 0$'dan $a < 0$; ikisi de negatif.
+C) $a > 0$ || $a$ negatiftir.
+D) $a + c < 0$ || $c$'nin işareti ve büyüklüğü bilinmiyor.
+E) $b > 0$ || $b c^2 < 0$ ve $c^2 > 0$ olduğundan $b < 0$.
+cozum: $c^2 > 0$ olduğundan $b < 0$. $b^3 < 0$ ve $a b^3 > 0$ ise $a < 0$. İkisi de negatif olduğundan $a b > 0$. $c$ hakkında yalnız $c \neq 0$ bilinir.
+
+@bolum s4 10 | Ardışık sayılar: Gauss'un hilesi
+::fikir
+Ardışık sayılarda **ortadaki terim ortalamadır**. Bu yüzden toplam $= \text{ortalama} \times \text{terim sayısı} = \frac{\text{ilk} + \text{son}}{2} \cdot n$ olur.
+
+::adimlar baslik="1'den 100'e kadar toplam: küçük Gauss'un yöntemi"
+1. Toplamı iki kez yaz; biri ters sırada: $1 + 2 + \ldots + 100$ ve $100 + 99 + \ldots + 1$.
+2. Alt alta gelenler her seferinde $101$ eder: $1 + 100$, $2 + 99$, …
+3. 100 tane $101$ var, ama toplamı iki kez yazdık: $\frac{100 \cdot 101}{2} = 5050$.
+4. Genel kural: $1 + 2 + \ldots + n = \frac{n(n+1)}{2}$.
+cevap: Aynı fikir her ardışık dizide çalışır: $\frac{\text{ilk} + \text{son}}{2} \cdot n$.
+
+::duzey
+L1: Terim sayısını bulmak için "kaç adım attım" diye düşün: 4'ten 61'e 3'er 3'er gidersen $\frac{61 - 4}{3} = 19$ adım atarsın. Başladığın sayıyı da sayarsan 20 terim olur. Bu yüzden formülde $+1$ vardır.
+L2: Ortak farkı $r$ olan ardışık sayılarda terim sayısı $n = \frac{\text{son} - \text{ilk}}{r} + 1$, toplam $T = \frac{\text{ilk} + \text{son}}{2} \cdot n$'dir. Özel toplamlar: $1 + 3 + 5 + \ldots + (2n - 1) = n^2$ ve $2 + 4 + \ldots + 2n = n(n+1)$.
+L3: Ardışık sayıları bilinmeyenle kurarken **ortanca terimi** $x$ seçmek hesabı kısaltır: üç ardışık çift sayı $x - 2, x, x + 2$; toplamları $3x$. Toplamı verilen tek sayıda terimin ortancası $\frac{T}{n}$'dir. Çift sayıda terimde ortadaki iki terimin ortalaması yine ortalamaya eşittir.
+
+::bosluk b1 cevap=5050 tip=ardisik zorluk=1
+$1 + 2 + 3 + \ldots + 100$ toplamı kaçtır?
+cozum: $\frac{100 \cdot 101}{2} = 5050$.
+
+::bosluk b2 cevap=169 tip=ardisik zorluk=1
+$1 + 3 + 5 + \ldots + 25$ toplamı kaçtır?
+cozum: Terim sayısı $\frac{25 - 1}{2} + 1 = 13$; ilk $n$ tek sayının toplamı $n^2 = 169$.
+
+::yanilgi m4 tip=ardisik
+yanlis: $10$'dan $30$'a kadar olan çift sayılar $\frac{30 - 10}{2} = 10$ tanedir.
+neden: Bu, aradaki adım sayısıdır; başlangıç terimini saymadın.
+dogru: $\frac{30 - 10}{2} + 1 = 11$ terim vardır: $10, 12, \ldots, 30$.
+
+::soru c4 tip=ardisik zorluk=2
+Ardışık beş tek sayının toplamı 115'tir. Bu sayıların en büyüğü kaçtır?
+A) 21 || Bu, ortancadan bir adım öncesi.
+B) 23 || 23 ortanca terimdir; en büyük, ondan iki adım sonradır.
+C) 25 || Ortancadan yalnız bir adım ileri gittin; beş terimde en büyük iki adım ileridedir.
++D) 27 || Doğru: ortanca $115 : 5 = 23$, en büyük $23 + 4 = 27$.
+E) 29 || Ortancadan üç adım (6) ileri gittin.
+kontrol: 115/5+4
+cozum: Beş terimin ortancası ortalamadır: $\frac{115}{5} = 23$. Terimler $19, 21, 23, 25, 27$; en büyüğü $27$.
+
+@bolum s5 10 | En büyük – en küçük değer
+::fikir
+Bir ifadeyi **büyütmek** için toplanan ve çarpılan terimleri büyüt, **çıkarılan ve bölen** terimleri küçült. Küçültmek için tam tersini yap. Sonra koşulları ("farklı", "pozitif", "rakam") kontrol et.
+
+::duzey
+L1: Bir kesrin değerini büyütmek istiyorsan payı büyüt, paydayı küçült: $\frac{8}{2}$, $\frac{8}{4}$'ten büyüktür. Çıkarmada da "az çıkarırsan çok kalır": $9 - 0$, $9 - 5$'ten büyüktür.
+L2: Önce **etkisi en büyük** değişkene karar ver (katsayısı büyük olan ya da çarpımda olan). Ona en uç değeri ver, kalan değişkenlere koşullara uygun en iyi değerleri sırayla dağıt. "Farklı rakamlar" koşulunda aynı rakamı iki kez kullanamazsın; "pozitif tam sayı" koşulunda 0 kullanılamaz.
+L3: Negatif sayılar işin içine girince kural tersine dönebilir: $x \cdot y$ çarpımını büyütmek için iki negatif sayı da seçilebilir ($(-9)(-8) = 72$). Ayrıca kısıt bir eşitlikse ($x + y = 12$ gibi) bir değişkeni diğerinin cinsinden yaz; ifade tek değişkene iner ve uç değeri bulmak kolaylaşır.
+
+::ornek baslik="Farklı pozitif tam sayılar"
+soru: $a, b, c$ birbirinden farklı pozitif tam sayılar ve $a + b + c = 12$ olduğuna göre $a$ en çok kaç olabilir?
+1. $a$'yı büyütmek için $b$ ve $c$'yi en küçük yap. || Toplam sabit; diğerlerinden alınan her birim $a$'ya kalır.
+2. Farklı pozitif tam sayıların en küçükleri $1$ ve $2$'dir. || 0 pozitif değil; aynı sayı iki kez seçilemez.
+3. $a = 12 - 1 - 2 = 9$. || $9, 1, 2$ birbirinden farklı; koşullar sağlanıyor.
+cevap: $a$ en çok $9$ olur.
+
+::strateji tip=en-buyuk-kucuk baslik="Uç değer kontrol listesi"
+ipucu: "alabileceği en büyük / en küçük değer"
+1. İfadede her değişkenin etkisini yaz: artınca ifade artıyor mu, azalıyor mu?
+2. Etkisi en büyük değişkene en uç değeri ver.
+3. Koşulları (farklı, pozitif, rakam, tam sayı) kontrol et; gerekirse bir sonraki değere geç.
+4. Negatif değerler serbestse işaret değişimini ayrıca dene.
+
+::soru c5 tip=en-buyuk-kucuk zorluk=2
+$x$ ve $y$ birbirinden farklı **pozitif** tam sayılar ve $x + y = 10$ olduğuna göre $x \cdot y$ çarpımının alabileceği **en büyük** değer kaçtır?
+A) 9 || $9 \cdot 1$; bu en küçük çarpımlardan biri.
+B) 16 || $8 \cdot 2$; daha yakın sayılar seç.
+C) 21 || $7 \cdot 3 = 21$; daha yakın sayılar daha büyük çarpım verir.
++D) 24 || Doğru: $x = 6$, $y = 4$ ile $24$; birbirine en yakın farklı sayılar.
+E) 25 || $x = y = 5$ olurdu; ama sayılar farklı olmalı.
+kontrol: 6*4
+cozum: Toplam sabitken çarpım, sayılar birbirine yaklaştıkça büyür. Eşit olamadıkları için $6 \cdot 4 = 24$ en büyük değerdir.
+
+::cikmis TYT-0541 not="Çıkmış bir TYT sorusuyla kendini dene; çözümünde bu bölümün kontrol listesini kullan."
+
+::ozet
+- $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$; irrasyoneller $\mathbb{R}$ içinde, $\mathbb{Q}$ dışında. Önce sadeleştir: $\sqrt{9} = 3$.
+- Toplamda aynılar çift; çarpımda tek bir çift sonucu çift yapar.
+- Çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır.
+- Terim sayısı $\frac{\text{son} - \text{ilk}}{\text{fark}} + 1$; toplam $\frac{\text{ilk} + \text{son}}{2} \cdot n$.
+- Büyütmek için toplananı ve çarpılanı büyüt, çıkarılanı ve böleni küçült; koşulları en sonda kontrol et.
+
+@pratik
+- Çalışma sırası: önce tek–çift ve işaret kurallarını 2–3 sayı örneğiyle kendin doğrula, sonra ardışık sayılara ve en büyük–en küçük sorularına geç.
+- Sınav yaklaşımı: "her zaman" sorusunda hesaplamadan önce karşı örnek ara; "olabilir" sorusunda tek bir örnek yeter. Öncüllü sorularda en kolay öncülden başla.
+- En sık tuzaklar: 0'ı pozitif saymak, $\sqrt{9}$'u irrasyonel sanmak, terim sayısında $+1$'i unutmak, farklı rakam ya da pozitiflik koşulunu atlamak.
+- Hedef süre soru başı 60 saniye; 90 saniyeyi geçen soruyu işaretle ve Hatalarım'dan 1, 3, 7 gün sonra yeniden çöz.
+- Günlük pratik: Konu testinden sonra Çıkmış sorular setinde 2018–2026 sorularını yıl sırasıyla çöz; yanlışlarını tipine göre (tek–çift, işaret, ardışık) not al.
+
+@kartlar
+- $\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$ arasındaki ilişki nedir? :: $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$ ve $\mathbb{Q} \cup \mathbb{Q}' = \mathbb{R}$.
+- $0{,}\overline{3}$ rasyonel midir? :: Evet: $0{,}\overline{3} = \frac{1}{3}$. Devirli ondalıklar kesre çevrilebilir.
+- Tek × çift = ? :: Çift. Çarpımda bir çift çarpan sonucu çift yapar.
+- Tek + tek = ? :: Çift ("aynılar çift").
+- $a^2 b^3 < 0$ ise $b$'nin işareti? :: $b < 0$; çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır.
+- Ardışık sayılarda terim sayısı formülü :: $\frac{\text{son} - \text{ilk}}{\text{ortak fark}} + 1$
+- $1 + 2 + \ldots + n$ :: $\frac{n(n+1)}{2}$
+- İlk $n$ tek sayının toplamı :: $n^2$
+- Toplamı sabit iki farklı pozitif tam sayının çarpımı ne zaman en büyük? :: Sayılar birbirine en yakın olduğunda.
+
+@ozet
+- Sayı kümeleri iç içedir ($\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$); irrasyoneller kesir olarak yazılamaz, önce sadeleştirip karar verilir.
+- Tek–çift: toplamda "aynılar çift", çarpımda tek bir çift çarpan sonucu çift yapar; "her zaman" sorusunda karşı örnek ara.
+- İşaret: çift kuvvet işareti siler, tek kuvvet tabanın işaretini taşır; önce çift kuvvetleri at.
+- Ardışık sayılar: terim sayısında $+1$'i unutma; toplam ortalama × terim sayısıdır, ortanca terim ortalamaya eşittir.
+- En büyük–en küçük: etkisi büyük değişkene uç değer ver, sonra koşulları kontrol et.
+
+@aciklama
+Bir arkadaşına şu iki soruyu iki üç cümleyle açıkla: (1) "Neden iki tek sayının toplamı her zaman çifttir?" (2) "4, 7, 10, …, 61 dizisinde terim sayısını bulurken neden $+1$ ekliyoruz?"
+
+@havuz
+::soru h1 tip=tek-cift zorluk=2
+$a$ ve $b$ tam sayılar olmak üzere $(a + 2) \cdot b$ tek sayıdır. Buna göre aşağıdakilerden hangisi **çift** sayıdır?
+A) $a$
+B) $b$
+C) $a + b$
++D) $a \cdot b + b$
+E) $a^2$
+cozum: Çarpım tek olduğundan $b$ tek ve $a + 2$ tek, yani $a$ tektir. $a b + b = b(a + 1)$; $a + 1$ çift olduğundan ifade çifttir.
+
+::soru h2 tip=isaret zorluk=2
+$\frac{a}{b} < 0$ ve $a \cdot c > 0$ olduğuna göre aşağıdakilerden hangisi kesinlikle negatiftir?
++A) $b \cdot c$
+B) $a^2 \cdot b$
+C) $a \cdot c$
+D) $a^2 \cdot c$
+E) $a + c$
+cozum: $a$ ve $b$ ters işaretli, $a$ ve $c$ aynı işaretli; o hâlde $b$ ve $c$ ters işaretlidir: $b c < 0$.
+
+::soru h3 tip=ardisik zorluk=2
+$12 + 15 + 18 + \ldots + 60$ toplamı kaçtır?
+A) 576
+B) 594
++C) 612
+D) 648
+E) 680
+kontrol: (12+60)/2*17
+cozum: Terim sayısı $\frac{60 - 12}{3} + 1 = 17$; toplam $\frac{12 + 60}{2} \cdot 17 = 36 \cdot 17 = 612$.
+
+::soru h4 tip=en-buyuk-kucuk zorluk=2
+$x$ ve $y$ birer rakamdır. $\frac{x + 1}{y + 2}$ ifadesinin alabileceği en büyük değer kaçtır?
++A) $5$
+B) $\frac{11}{2}$
+C) $6$
+D) $9$
+E) $10$
+kontrol: (9+1)/(0+2)
+cozum: Payı büyüt ($x = 9$), paydayı küçült ($y = 0$): $\frac{10}{2} = 5$.
+
+::soru h5 tip=kumeler-islem zorluk=1
+$12 - 6 : 3 \cdot 2 + 2^2$ işleminin sonucu kaçtır?
+A) 6
+B) 8
+C) 10
++D) 12
+E) 20
+kontrol: 12-6/3*2+2^2
+cozum: Üs: $2^2 = 4$. Çarpma–bölme soldan sağa: $6 : 3 = 2$, $2 \cdot 2 = 4$. Sonra $12 - 4 + 4 = 12$.

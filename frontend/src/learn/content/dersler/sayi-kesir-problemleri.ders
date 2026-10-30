@@ -1,0 +1,301 @@
+@ders sayi-kesir-problemleri
+baslik: Sayı ve Kesir Problemleri
+kisa: Sayı–kesir problemleri
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 410
+onkosul: oran-oranti
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: Sözel ifadeleri cebirsel ifadelere çevirip denklem kurmak; kesir problemlerinde bütünü paydaların EKOK'uyla seçmek; adet–tutar sorularını iki bilinmeyenle ya da tek bilinmeyenle çözmek; "kalan" problemlerini sondan başa doğru çözmek.
+neden: Sayı ve kesir problemleri TYT'deki 100 çıkmış problem sorusunun (2018–2026) yaklaşık üçte birini oluşturur; "yeni nesil" soruların çoğu da aslında iyi kurulmuş bir denklemdir. Denklemi doğru kurmayı öğrenmek problemlerin yarısını çözmek demektir.
+kaynak: MEBİ TYT Konu Özeti — Sayı Problemleri, Kesir Problemleri | OGM 9. Sınıf Konu Özetleri 31–32 | 3 Adım TYT Matematik — Sayı, Kesir, Yaş, İşçi Problemleri
+tekrar: 12
+ustalik-dk: 16
+hedef-sure: 75
+anahtar: sayının | /\bkati(\b|ni|na|nin|ndan)/ | fazlası | eksiği | yarısı | üçte | dörtte | çeyreği | kesir | kalanın | ardışık | bilet | masa | sayfa | soru çöz
+baslik-kurali: sayı problemleri | kesir problemleri | sayı, kesir | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: /\byas(\b|i\b|in|lar|ta|tan|ca)/ | işçi | havuz | musluk | % | /\byuzde(\b|si|sin|lik|ler)/ | /\bkm\b/ | /\bhiz(\b|la|i|in|lar|da|iy)/ | /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | orantılı
+
+@tip denklem-kurma 30 s1
+ad: Sözel ifadeyi denkleme çevirme
+ipucu: "Bir sayının 3 katının 7 fazlası", "ardışık üç çift sayının toplamı", "büyüğü küçüğünün 3 katından 4 eksik".
+strateji: İsteneni $x$ seç; her cümleyi sırayla cebire çevir ("katı" çarpma, "fazlası" toplama, "eksiği" çıkarma). Ardışık sayılarda ortadakini $x$ al. Denklemi çöz, sonucu sözel koşulla kontrol et.
+anahtar: sayının | /\bkati(\b|ni|na|nin|ndan)/ | fazlası | eksiği | ardışık | toplamı | farkı
+
+@tip kesir 30 s2
+ad: Kesir problemleri: bütün ve parçalar
+ipucu: "Kitabın $\frac{2}{5}$'ini ilk gün, kalanın $\frac{1}{2}$'sini ikinci gün", "120'nin $\frac{2}{5}$'inin $\frac{3}{4}$'ü".
+strateji: Bütüne paydaların EKOK'unun katı de (ör. $10x$); her adımda "kalan"ı yeniden yaz. "Kalanın" sözcüğü bir önceki adımdan kalanı gösterir, bütünü değil. Telin orta noktası kesilen parçanın yarısı kadar kayar.
+anahtar: kesir | frac | /\d\/\d/ | kalanın | yarısı | üçte | dörtte | beşte | çeyreği | sayfa
+
+@tip adet-tutar 20 s3
+ad: Adet ve tutar: iki tür nesne
+ipucu: "Öğrenci bileti 30 TL, tam bilet 45 TL; 50 kişi 1800 TL", "46 masanın bir kısmı üç, diğerleri iki kişilik".
+strateji: Bir türün adedine $x$ de, diğeri $\text{toplam} - x$ olsun; tutar (ya da kapasite) denklemini yaz. Kısa yol: hepsini ucuz tür say, fazlalığı fiyat farkına böl.
+anahtar: bilet | masa | kişilik | tanesi | adet | tl ödedi
+
+@tip ters-islem 20 s4
+ad: Sondan başa çalışma ve kalan problemleri
+ipucu: "Önce yarısını harcadı, kalanın üçte birini verdi, 40 TL kaldı", "bir sayıya 5 ekleyip 3 ile çarpıyoruz…".
+strateji: İşlemleri tersinden geri al: son durumdan başla, her adımın ters işlemini uygula (ekleme ↔ çıkarma, çarpma ↔ bölme). Kesirli kalanlarda "kalan oran"ları çarp: $\frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3}$.
+anahtar: kaldı | kalan | harcadı | verdi | başlangıçta | ilk durumda
+
+@ustalik
+denklem-kurma 2 1-3
+kesir 2 1-3
+adet-tutar 1 1-3
+ters-islem 1 1-3
+
+@oturum Denklem kurma ve kesirler | s1 s2
+@oturum Adet–tutar ve sondan başa | s3 s4
+
+@ontest
+::soru o1 tip=denklem-kurma zorluk=1
+Bir sayının 3 katının 7 fazlası 34'tür. Bu sayı kaçtır?
+A) 7 || $3 \cdot 7 + 7 = 28$.
++B) 9 || Doğru: $3x + 7 = 34$.
+C) 11 || $3 \cdot 11 + 7 = 40$.
+D) 13 || Fazla.
+E) 27 || $3x = 27$; $x = 9$.
+kontrol: (34-7)/3
+cozum: $3x + 7 = 34 \Rightarrow 3x = 27 \Rightarrow x = 9$.
+
+::soru o2 tip=kesir zorluk=1
+120 sayısının $\frac{2}{5}$'inin $\frac{3}{4}$'ü kaçtır?
+A) 16 || Kesirleri sırayla uygula.
+B) 24 || $\frac{2}{5} \cdot 120 = 48$; $48$'in $\frac{3}{4}$'ü?
+C) 30 || $\frac{1}{4}$'ü aldın.
+D) 32 || Hesabı yeniden yap.
++E) 36 || Doğru: $120 \cdot \frac{2}{5} \cdot \frac{3}{4} = 36$.
+kontrol: 120*2/5*3/4
+cozum: "'inin" çarpma demektir: $120 \cdot \frac{2}{5} = 48$, $48 \cdot \frac{3}{4} = 36$.
+
+::soru o3 tip=ters-islem zorluk=2
+Ali parasının yarısını harcıyor, kalanın $\frac{1}{3}$'ünü kardeşine veriyor ve 40 TL'si kalıyor. Ali'nin başlangıçta kaç TL'si vardı?
+A) 80 || Kalan, başlangıcın $\frac{1}{3}$'üdür.
+B) 100 || Hesabı kontrol et.
++C) 120 || Doğru: kalan $\frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3}$.
+D) 160 || Kardeşe verdiği bütünün değil kalanın $\frac{1}{3}$'ü.
+E) 240 || İki kez yarıya böldün.
+kontrol: 40*3
+cozum: Yarısından sonra $\frac{1}{2}$, kalanın $\frac{2}{3}$'ü kalır: $\frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3}$. $\frac{x}{3} = 40 \Rightarrow x = 120$.
+
+@bolum s1 10 | Sözel ifadeden denkleme
+::fikir
+Problemin dili cebire çevrilir: **"katı"** çarpma, **"fazlası"** toplama, **"eksiği"** çıkarma, **"'inin"** çarpmadır. İsteneni $x$ seç ve cümleleri sırayla çevir.
+
+::tablo baslik="Sözel ifade → cebirsel ifade"
+| Sözel ifade | Cebirsel ifade |
+| Bir sayının 5 fazlası | $x + 5$ |
+| Bir sayının 5 katının 14 eksiği | $5x - 14$ |
+| Bir sayının yarısının 7 fazlası | $\frac{x}{2} + 7$ |
+| Karesi ile kendisinin toplamı 30 | $x^2 + x = 30$ |
+| Farkı 8 olan iki sayı | $x$ ve $x - 8$ |
+| Ardışık üç çift sayı | $x - 2$, $x$, $x + 2$ |
+
+::eslestir e1 baslik="Cümleyi ifadeyle eşleştir"
+- 3 katının 4 eksiği :: $3x - 4$
+- 4 eksiğinin 3 katı :: $3(x - 4)$
+- yarısının 6 fazlası :: $\frac{x}{2} + 6$
+- 6 fazlasının yarısı :: $\frac{x + 6}{2}$
+
+::duzey
+L1: "Bir sayının 3 katının 7 fazlası 34" cümlesini parça parça çevir: sayı $x$, 3 katı $3x$, 7 fazlası $3x + 7$, "34'tür" ise $= 34$. Böylece $3x + 7 = 34$ olur.
+L2: Sıra önemlidir: "4 eksiğinin 3 katı" $3(x - 4)$, "3 katının 4 eksiği" $3x - 4$'tür. Ardışık sayılarda ortadaki terimi $x$ seçmek denklemi sadeleştirir: $(x - 2) + x + (x + 2) = 3x$. İki sayılı sorularda bir sayıyı diğerinin cinsinden yaz.
+L3: Denklemi kurduktan sonra çözümün anlamlı olup olmadığını kontrol et: kişi sayısı tam sayı, uzunluk pozitif olmalı. Sonuç kesirli çıkarsa bir çeviriyi yanlış yapmışsındır; en sık hata "katı" ile "fazlası"nın sırasıdır.
+
+::ornek baslik="Ardışık çift sayılar"
+soru: Ardışık üç çift sayının toplamı 78'dir. Bu sayıların en büyüğü kaçtır?
+1. Ortadakini $x$ al: $x - 2$, $x$, $x + 2$. || Simetrik seçim.
+2. $3x = 78 \Rightarrow x = 26$. || $-2$ ve $+2$ birbirini götürür.
+3. En büyük $x + 2 = 28$. || Kontrol: $24 + 26 + 28 = 78$ ✓
+cevap: 28
+
+::yanilgi m1 tip=denklem-kurma
+yanlis: "Bir sayının 4 eksiğinin 3 katı" $3x - 4$'tür.
+neden: Önce 4 eksiği alınır ($x - 4$), sonra o ifadenin 3 katı: parantez gerekir.
+dogru: $3(x - 4) = 3x - 12$.
+
+::soru c1 tip=denklem-kurma zorluk=2
+Ardışık üç çift sayının toplamı 78 olduğuna göre bu sayıların en büyüğü kaçtır?
+A) 24 || Bu en küçüğüdür.
+B) 26 || Bu ortadakidir.
++C) 28 || Doğru: $3x = 78$, $x = 26$, en büyük $28$.
+D) 30 || Ardışık çiftler 2'şer artar.
+E) 32 || Fazla.
+kontrol: 78/3+2
+cozum: $x - 2 + x + x + 2 = 3x = 78 \Rightarrow x = 26$; en büyük $28$.
+
+@bolum s2 10 | Kesir problemleri: bütüne EKOK de
+::fikir
+Bütüne **paydaların EKOK'unun katı** de: kesirler tam sayıya döner. **"Kalanın"** sözcüğü her adımda bütünü değil, bir önceki adımdan kalanı gösterir.
+
+::duzey
+L1: Bir kitabın $\frac{2}{5}$'i ve kalanın $\frac{1}{2}$'si okunuyorsa kitaba $10x$ sayfa de: ilk gün $4x$ okunur, $6x$ kalır; ikinci gün $6x$'in yarısı $3x$ okunur, $3x$ kalır.
+L2: "A'nın $\frac{2}{5}$'i" çarpma demektir: $A \cdot \frac{2}{5}$. Bütün seçerken bütün paydaları (kalanın kesirleri dahil) karşılayan EKOK'u kullan. Zaman–iş karışımı sorularda (günde 25 soru…) her parçanın gün sayısını ayrı yaz ve topla.
+L3: Telin bir ucundan $\frac{1}{6}$'sı kesilirse orta noktası kesilen parçanın yarısı kadar ($\frac{1}{12}$ boy) yer değiştirir; MEBİ'nin klasik örneği budur. "Kalanın" zincirleri çarpılarak tek kesre iner: $\frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10}$.
+
+::ornek baslik="MEBİ örneği: Göktuğ'un soruları"
+soru: Göktuğ sorularının $\frac{1}{3}$'ünü günde 25 soru, kalanını günde 20 soru çözerek toplam 14 günde bitiriyor. Kaç soru çözmüştür?
+1. Bütüne $3x$ de: ilk kısım $x$, kalan $2x$ soru. || Payda 3.
+2. Günler: $\frac{x}{25} + \frac{2x}{20} = 14$. || Her kısmın süresi = soru ÷ günlük hız.
+3. 100 ile çarp: $4x + 10x = 1400$, $x = 100$; toplam $3x = 300$. || EKOK(25, 20) = 100.
+cevap: 300 soru
+
+::tamamla baslik="Kalanın kesri"
+soru: Bir öğrenci kitabının $\frac{2}{5}$'ini ilk gün, kalanın $\frac{1}{2}$'sini ikinci gün okuyor ve geriye 60 sayfa kalıyor. Kitap kaç sayfadır?
+1. Kitap $10x$ olsun; ilk gün $4x$, kalan $6x$.
+?2. İkinci gün $6x$'in yarısı $3x$ okunur; kalan $3x$.
+?3. $3x = 60 \Rightarrow x = 20$; kitap $200$ sayfa.
+cevap: 200 sayfa
+
+::yanilgi m2 tip=kesir
+yanlis: "$\frac{2}{5}$'ini okudu, kalanın $\frac{1}{2}$'sini okudu" ise toplam $\frac{2}{5} + \frac{1}{2}$'sini okumuştur.
+neden: İkinci kesir bütüne değil, kalan $\frac{3}{5}$'e uygulanır: $\frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10}$.
+dogru: Toplam okunan $\frac{2}{5} + \frac{3}{10} = \frac{7}{10}$.
+
+::soru c2 tip=kesir zorluk=2
+Bir öğrenci kitabının $\frac{1}{3}$'ünü ilk gün, kalanın $\frac{3}{4}$'ünü ikinci gün okuyor ve geriye 40 sayfa kalıyor. Kitap kaç sayfadır?
+A) 120 || Kalan, kitabın $\frac{1}{3}$'ü değil $\frac{1}{6}$'sıdır.
+B) 160 || Yalnız ikinci günü hesaba kattın.
+C) 200 || Hesabı yeniden yap.
++D) 240 || Doğru: kalan $\frac{2}{3} \cdot \frac{1}{4} = \frac{1}{6}$; $\frac{240}{6} = 40$.
+E) 480 || Kalanı $\frac{1}{12}$ aldın; ikinci gün kalanın $\frac{1}{4}$'ü kalır.
+kontrol: 40*6
+cozum: Kitap $12x$: ilk gün $4x$, kalan $8x$; ikinci gün $6x$, kalan $2x = 40$. $x = 20$, kitap 240 sayfa.
+
+@bolum s3 9 | Adet ve tutar: iki tür nesne
+::fikir
+İki tür nesne varsa **birinin adedine $x$** de, diğeri **toplam − $x$** olsun. Tutar ya da kapasite denklemi tek bilinmeyenli olur.
+
+::duzey
+L1: 46 masanın bazıları 2, bazıları 3 kişilikse ve toplam 117 kişi oturabiliyorsa iki kişilik masa $x$, üç kişilik $46 - x$ olur: $2x + 3(46 - x) = 117$.
+L2: Kısa yol (varsayım yöntemi): bütün masaları 2 kişilik varsay: $46 \cdot 2 = 92$ kişi. Gerçek kapasite 117; fark 25. Her üç kişilik masa 1 fazla kişi alır: 25 masa üç kişilik, 21 masa iki kişilik.
+L3: Aynı yöntem bilet, madeni para, iki tür soru (doğru–yanlış puanı) sorularında çalışır. Puan sorularında yanlışın götürdüğü puana dikkat: doğru +4, yanlış −1 ise bir doğruyu yanlışa çevirmek 5 puan kaybettirir.
+
+::ornek baslik="MEBİ örneği: kafe masaları"
+soru: Bir kafedeki 46 masanın bir kısmı üç, diğerleri iki kişiliktir. Toplam kapasite 117 kişi olduğuna göre iki kişilik masa sayısı kaçtır?
+1. İki kişilik $x$, üç kişilik $46 - x$. || Bir türü $x$ seç.
+2. $2x + 3(46 - x) = 117 \Rightarrow 138 - x = 117$. || Kapasite denklemi.
+3. $x = 21$. || Kontrol: $42 + 75 = 117$ ✓
+cevap: 21
+
+::strateji tip=adet-tutar baslik="Hepsini ucuz say"
+ipucu: İki fiyat (ya da iki kapasite), toplam adet ve toplam tutar
+1. Hepsinin ucuz türden olduğunu varsay; varsayılan tutarı hesapla.
+2. Gerçek tutar ile varsayılan tutarın farkını bul.
+3. Farkı iki fiyatın farkına böl: pahalı türün adedi çıkar.
+
+::soru c3 tip=adet-tutar zorluk=2
+Bir sinemada öğrenci bileti 30 TL, tam bilet 45 TL'dir. 50 kişilik bir grup toplam 1800 TL ödediğine göre kaç tam bilet alınmıştır?
++A) 20 || Doğru: hepsi öğrenci olsaydı 1500 TL; fark 300, her tam bilet 15 TL fazla.
+B) 25 || $25 \cdot 15 = 375 \neq 300$.
+C) 30 || Bu öğrenci bileti sayısıdır.
+D) 35 || Fazla.
+E) 40 || Fazla.
+kontrol: (1800-30*50)/15
+cozum: Hepsi öğrenci olsaydı $50 \cdot 30 = 1500$ TL. Fark $300$ TL; her tam bilet 15 TL fazla: $300 : 15 = 20$ tam bilet.
+
+@bolum s4 8 | Sondan başa çalış
+::fikir
+Son durum verilmişse **sondan başa** git ve her işlemin **tersini** uygula: ekleme ↔ çıkarma, çarpma ↔ bölme. Kesirli harcamalarda kalan oranları çarp.
+
+::duzey
+L1: "Bir sayıya 5 ekleyip 3 ile çarpıyor, sonra 4 çıkarıyoruz; sonuç 32." Geri sar: 32'ye 4 ekle (36), 3'e böl (12), 5 çıkar (7). Sayı 7'dir.
+L2: Kesirli kalanlarda her adımda "kalan oranı" yaz: yarısını harcayınca $\frac{1}{2}$ kalır, kalanın $\frac{1}{3}$'ünü verince kalanın $\frac{2}{3}$'ü kalır. Toplam kalan oran $\frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3}$.
+L3: Arada sabit miktarlar varsa (önce yarısını, sonra 10 TL daha harcadı) sondan başa gitmek denklemden daha hızlıdır: kalan + 10, sonra 2 ile çarp. Böyle zincirlerde denklem kurarsan iç içe parantezler oluşur; geri sarma bunları önler.
+
+::ornek baslik="İşlemleri geri sar"
+soru: Bir sayıya 5 ekleyip sonucu 3 ile çarpıyor, sonra 4 çıkarıyoruz ve 32 buluyoruz. Sayı kaçtır?
+1. Son işlem "4 çıkar"ın tersi: $32 + 4 = 36$. || Sondan başla.
+2. "3 ile çarp"ın tersi: $36 : 3 = 12$.
+3. "5 ekle"nin tersi: $12 - 5 = 7$. || Kontrol: $(7 + 5) \cdot 3 - 4 = 32$ ✓
+cevap: 7
+
+::yanilgi m3 tip=ters-islem
+yanlis: Geri sararken işlemleri baştan sona sırayla tersine çevirmek yeterlidir.
+neden: Son yapılan işlem ilk geri alınmalıdır; sıra da tersine döner.
+dogru: Sondan başla: son işlemin tersini ilk uygula.
+
+::soru c4 tip=ters-islem zorluk=2
+Bir sayı 2 ile çarpılıp 6 eklendikten sonra sonuç 4'e bölünüyor ve 9 elde ediliyor. Bu sayı kaçtır?
+A) 12 || 6'yı geri almadan önce 2'ye böldün; son eklenen 6 önce geri alınır.
++B) 15 || Doğru: $9 \cdot 4 = 36$, $36 - 6 = 30$, $30 : 2 = 15$.
+C) 18 || Bu $36 : 2$; 6'yı da geri al.
+D) 21 || Kontrol: $(21 \cdot 2 + 6) : 4 = 12$.
+E) 30 || Bu $2x$'tir; 2'ye bölmeyi unuttun.
+kontrol: (9*4-6)/2
+cozum: Geri sar: $9 \cdot 4 = 36$, $36 - 6 = 30$, $30 : 2 = 15$. Kontrol: $(15 \cdot 2 + 6) : 4 = 9$ ✓
+
+::ozet
+- Sözel ifadeyi parça parça çevir; sıraya ve parantezlere dikkat.
+- Kesirlerde bütüne paydaların EKOK'unun katı de; "kalanın" bir önceki kalana uygulanır.
+- İki tür nesnede birine $x$ de ya da hepsini ucuz varsay.
+- Son durum verilmişse sondan başa, ters işlemlerle git.
+
+@pratik
+- Çalışma sırası: önce çeviri tablosundaki ifadeleri (katı, fazlası, eksiği, 'inin) hızlı eşleştir; sonra kesir problemlerinde bütün seçmeyi, en son adet–tutar ve geri sarmayı çalış.
+- Sınav yaklaşımı: problemi okurken isteneni yuvarlak içine al ve $x$'e onu ver; kesirli soruda bütüne EKOK kadar $x$ de.
+- Şıklardan geriye gitmek meşrudur: şıklardaki değerleri koşullara koyarak birkaç saniyede eleme yap (özellikle tam sayı sonuçlu sorularda).
+- En sık tuzaklar: "kalanın" kesrini bütüne uygulamak, "4 eksiğinin 3 katı"nda parantezi unutmak, ardışık çift sayıları 1'er artırmak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra çıkmış sorular setinde problemleri çöz; yanlışlarının hangi çeviri adımından kaynaklandığını Hatalarım'da not et.
+
+@kartlar
+- "Bir sayının 3 katının 7 fazlası" :: $3x + 7$
+- "4 eksiğinin 3 katı" :: $3(x - 4)$
+- Ardışık üç çift sayıyı nasıl seçersin? :: $x - 2$, $x$, $x + 2$
+- Kesir problemlerinde bütün nasıl seçilir? :: Paydaların EKOK'unun katı ($10x$ gibi).
+- $\frac{2}{5}$'i sonra kalanın $\frac{1}{2}$'si: toplam kalan? :: $\frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10}$
+- İki tür nesne (bilet) kısa yolu :: Hepsini ucuz say; fark ÷ fiyat farkı = pahalı adedi.
+- Telin $\frac{1}{6}$'sı kesilince orta nokta ne kadar kayar? :: Kesilen parçanın yarısı kadar: $\frac{1}{12}$ boy.
+
+@ozet
+- Problemler sözel ifadelerin cebire doğru çevrilmesiyle çözülür; sıra ve parantez anlamı belirler.
+- Kesir problemlerinde bütün EKOK ile seçilir ve her adımda kalan yeniden yazılır.
+- Adet–tutar sorularında bir türün adedi $x$ alınır ya da varsayım yöntemi kullanılır.
+- Son durumu verilen problemler ters işlemlerle sondan başa çözülür.
+
+@aciklama
+Kendi cümlelerinle açıkla: (1) "Kesir problemlerinde bütüne neden $10x$ gibi bir değer veririz?" (2) "Bilet sorusunda 'hepsini ucuz say' yöntemi neden işe yarar?"
+
+@havuz
+::soru h1 tip=denklem-kurma zorluk=2
+İki sayının toplamı 48'dir. Büyük sayı, küçük sayının 3 katından 4 eksiktir. Büyük sayı kaçtır?
+A) 31
+B) 33
++C) 35
+D) 37
+E) 39
+kontrol: 3*13-4
+cozum: Küçük $x$, büyük $3x - 4$: $4x - 4 = 48 \Rightarrow x = 13$; büyük $35$.
+
+::soru h2 tip=kesir zorluk=2
+Bir telin bir ucundan $\frac{1}{6}$'sı kesildiğinde telin orta noktası 15 cm yer değiştiriyor. Telin kesilmeden önceki uzunluğu kaç cm'dir?
+A) 90
+B) 120
+C) 150
++D) 180
+E) 360
+kontrol: 15*12
+cozum: Orta nokta kesilen parçanın yarısı kadar kayar: $\frac{x}{12} = 15 \Rightarrow x = 180$ cm.
+
+::soru h3 tip=adet-tutar zorluk=2
+Bir otoparktaki otomobil ve motosikletlerin toplam sayısı 40, toplam tekerlek sayısı 130'dur. Otoparkta kaç otomobil vardır?
+A) 20
++B) 25
+C) 28
+D) 30
+E) 35
+kontrol: (130-2*40)/2
+cozum: Hepsi motosiklet olsaydı $40 \cdot 2 = 80$ tekerlek olurdu. Fark $50$; her otomobil 2 tekerlek fazla: $50 : 2 = 25$ otomobil.
+
+::soru h4 tip=ters-islem zorluk=2
+Bir depodaki suyun önce $\frac{1}{4}$'ü, sonra kalanın $\frac{1}{3}$'ü kullanılıyor ve depoda 30 litre su kalıyor. Depoda başlangıçta kaç litre su vardı?
+A) 45
++B) 60
+C) 72
+D) 90
+E) 120
+kontrol: 30*2
+cozum: Kalan oran $\frac{3}{4} \cdot \frac{2}{3} = \frac{1}{2}$. $\frac{x}{2} = 30 \Rightarrow x = 60$.

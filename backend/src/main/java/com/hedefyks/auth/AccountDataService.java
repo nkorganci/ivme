@@ -34,7 +34,7 @@ public class AccountDataService {
     public Map<String, Object> export(Long userId, String password) {
         User user = verifiedStudent(userId, password);
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("formatVersion", 5);
+        data.put("formatVersion", 6);
         data.put("exportedAt", Instant.now().toString());
         data.put("profile", Map.of("id", user.getId(), "username", user.getUsername(),
                 "email", user.getEmail(), "phone", user.getPhone() == null ? "" : user.getPhone(),
@@ -104,6 +104,10 @@ public class AccountDataService {
                 + "independent_correct, assisted_correct, wrong, hints_used, explain_correct, explain_total, "
                 + "transfer_correct, streak, last_outcome, last_practiced_at, next_review_at "
                 + "FROM tutor_skill_states WHERE user_id = ? ORDER BY skill_key", userId));
+        data.put("learningEngineProfiles", jdbc.queryForList("SELECT subject, settings::text AS settings, revision, updated_at "
+                + "FROM learning_engine_profiles WHERE user_id = ? ORDER BY subject", userId));
+        data.put("learningEngineEvents", jdbc.queryForList("SELECT id, subject, kind, concept_id, question_id, correct, "
+                + "occurred_at, payload::text AS payload FROM learning_engine_events WHERE user_id = ? ORDER BY id", userId));
         return data;
     }
 

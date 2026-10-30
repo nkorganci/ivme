@@ -1,0 +1,317 @@
+@ders kume-islemleri
+baslik: Kümelerde İşlemler ve Küme Problemleri
+kisa: Küme işlemleri
+sinav: TYT AYT
+unite: kumeler
+sinif: 9
+sira: 610
+onkosul: kumeler-temel
+kategori: excel.tyt.matematik.f5eb57d988154c825935 excel.ayt.matematik.f5eb57d988154c825935
+hedef: Kesişim, birleşim, fark ve tümleme işlemlerini Venn şemasıyla yapmak; $s(A \cup B) = s(A) + s(B) - s(A \cap B)$ bağıntısını ve De Morgan kurallarını kullanmak; küme problemlerini Venn bölgeleri ya da tabloyla çözmek; kartezyen çarpımın eleman sayısını bulmak.
+neden: Küme problemleri (iki ya da üç kümeli Venn soruları) TYT'de doğrudan ya da problem sorularının içinde görülür; kümeler başlığında 2018–2026'da TYT'de 9, AYT'de 10 çıkmış soru var. Venn şemasını bölge bölge doldurmayı öğrenen için bu sorular basit bir hesaba dönüşür.
+kaynak: MEBİ TYT Konu Özeti — Kümelerde Kesişim ve Birleşim, Fark ve Tümleme, Küme Problemleri, Kartezyen Çarpım | OGM 9. Sınıf Konu Özetleri 03–06 | OGM 9. Sınıf Ders Anlatım Sunuları 06–09
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 75
+anahtar: kesişim | birleşim | fark | tümleyen | ∩ | ∪ | cap | cup | setminus | kartezyen | sıralı ikili | en az birini | yalnız birini | hiçbirini | ikisini de
+baslik-kurali: /^9\.2\.2/ | kümelerde işlemler | kümeler
+
+@tip islem-venn 25 s1
+ad: Kesişim, birleşim, fark, tümleme
+ipucu: "$A \setminus B$ kümesi", "$(A \cap B)'$ kümesinin eleman sayısı", "$(A \cup B)' = A' \cap B'$".
+strateji: Kesişim ortak elemanlar, birleşim hepsi, $A \setminus B$ yalnız $A$'da olanlar, $A'$ evrensel kümede olup $A$'da olmayanlar. Tümleyenli ifadelerde De Morgan kullan: $(A \cup B)' = A' \cap B'$, $(A \cap B)' = A' \cup B'$; $A \setminus B = A \cap B'$.
+anahtar: ∩ | ∪ | cap | cup | setminus | tümleyen | kesişim | birleşim | fark kümesi
+
+@tip eleman-sayisi 25 s2
+ad: Eleman sayısı bağıntıları
+ipucu: "$s(A) = 12$, $s(B) = 9$, $s(A \cap B) = 4$", "$s(A \setminus B) = 2 \cdot s(B \setminus A)$".
+strateji: Venn şemasında bölgelere değişken ver (yalnız $A$, ortak, yalnız $B$) ve verilenleri bölgelerle yaz. $s(A \cup B) = s(A) + s(B) - s(A \cap B)$, $s(A \setminus B) = s(A) - s(A \cap B)$.
+anahtar: s(a ∪ b) | s(a ∩ b) | s(a) | s(b) | eleman sayısı
+
+@tip kume-problemi 35 s3
+ad: Küme problemleri: Venn ve tablo
+ipucu: "En az birini yapan", "yalnız birini yapan", "hiçbirini yapmayan", "gözlüklü kız öğrenci sayısı".
+strateji: Problemi Venn bölgelerine çevir ve en içten (hepsinde ortak olandan) dışa doğru doldur. "En az biri" birleşim, "yalnız biri" kesişim dışı kısımlar, "hiçbiri" birleşimin dışıdır. Ayrık özellikler (kız–erkek, gözlüklü–gözlüksüz) için tablo kur.
+anahtar: en az birini | yalnız birini | sadece | hiçbirini | ikisini de | her ikisini | kişilik | öğrenci
+
+@tip kartezyen 15 s4
+ad: Kartezyen çarpım
+ipucu: "$s(A \times B) = 15$", "$(2x - 1, y + 3) = (5, 2x)$".
+strateji: $s(A \times B) = s(A) \cdot s(B)$. Sıralı ikililerde sıra önemlidir: $(a, b) = (c, d) \Leftrightarrow a = c$ ve $b = d$. $A \times B$ kümesinin alt küme sayısı $2^{s(A) \cdot s(B)}$'dir.
+anahtar: kartezyen | × | times | sıralı ikili
+
+@ustalik
+islem-venn 1 1-2
+eleman-sayisi 2 1-3
+kume-problemi 2 1-3
+kartezyen 1 1-2
+
+@oturum İşlemler ve eleman sayısı | s1 s2
+@oturum Küme problemleri ve kartezyen çarpım | s3 s4
+
+@ontest
+::soru o1 tip=islem-venn zorluk=1
+$A = \{1, 2, 3, 4, 5\}$ ve $B = \{4, 5, 6, 7\}$ olduğuna göre $A \setminus B$ kümesi aşağıdakilerden hangisidir?
+A) $\{4, 5\}$ || Bu $A \cap B$'dir.
+B) $\{6, 7\}$ || Bu $B \setminus A$'dır.
+C) $\{1, 2, 3, 6, 7\}$ || Bu iki farkın birleşimidir.
+D) $\{1, 2, 3, 4, 5, 6, 7\}$ || Bu $A \cup B$'dir.
++E) $\{1, 2, 3\}$ || Doğru: $A$'da olup $B$'de olmayanlar.
+cozum: $A \setminus B$: $A$'nın elemanlarından $B$'de de bulunan 4 ve 5 çıkarılır: $\{1, 2, 3\}$.
+
+::soru o2 tip=eleman-sayisi zorluk=1
+$s(A) = 12$, $s(B) = 9$ ve $s(A \cap B) = 4$ olduğuna göre $s(A \cup B)$ kaçtır?
+A) 16 || Hesabı kontrol et: $21 - 4$.
++B) 17 || Doğru: $12 + 9 - 4 = 17$.
+C) 18 || Hesabı yeniden yap.
+D) 21 || Kesişim iki kez sayıldı; bir kez çıkar.
+E) 25 || Kesişimi çıkarmak yerine ekledin.
+kontrol: 12+9-4
+cozum: $s(A \cup B) = s(A) + s(B) - s(A \cap B) = 12 + 9 - 4 = 17$.
+
+::soru o3 tip=kume-problemi zorluk=2
+40 kişilik bir sınıfta 25 öğrenci İngilizce, 18 öğrenci Almanca biliyor; 7 öğrenci iki dili de bilmiyor. İki dili de bilen kaç öğrenci vardır?
++A) 10 || Doğru: en az birini bilen 33; $25 + 18 - 33 = 10$.
+B) 11 || Hesabı kontrol et.
+C) 12 || Hiçbirini bilmeyenleri yeniden düşün.
+D) 15 || Fazla.
+E) 18 || Bu Almanca bilenlerin sayısıdır.
+kontrol: 25+18-(40-7)
+cozum: En az bir dil bilen $40 - 7 = 33$. $25 + 18 - x = 33 \Rightarrow x = 10$.
+
+@bolum s1 9 | Kesişim, birleşim, fark, tümleme
+::fikir
+**Kesişim** ortak elemanlar ($\cap$, "ve"), **birleşim** tüm elemanlar ($\cup$, "veya"), **fark** $A \setminus B$: $A$'da olup $B$'de olmayanlar, **tümleyen** $A'$: evrensel kümede olup $A$'da olmayanlar.
+
+::gorsel alt="Dikdörtgen evrensel küme içinde kesişen iki çember: sol parça A fark B, ortak parça A kesişim B, sağ parça B fark A, dışarısı A birleşim B'nin tümleyeni." aciklama="Dört bölge: yalnız $A$, ortak, yalnız $B$ ve ikisinin de dışı."
+<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="5" width="350" height="190" rx="6" fill="none" stroke="var(--ink)"/>
+<text x="18" y="26" font-size="14" fill="var(--ink)">E</text>
+<circle cx="140" cy="105" r="72" fill="var(--tint)" fill-opacity="0.7" stroke="var(--navy)" stroke-width="2"/>
+<circle cx="220" cy="105" r="72" fill="var(--tint)" fill-opacity="0.7" stroke="var(--pen-red)" stroke-width="2"/>
+<text x="92" y="46" font-size="15" fill="var(--navy)">A</text>
+<text x="262" y="46" font-size="15" fill="var(--pen-red)">B</text>
+<text x="112" y="110" text-anchor="middle" font-size="12" fill="var(--ink)">A \ B</text>
+<text x="180" y="110" text-anchor="middle" font-size="12" fill="var(--ink)">A ∩ B</text>
+<text x="248" y="110" text-anchor="middle" font-size="12" fill="var(--ink)">B \ A</text>
+<text x="300" y="186" text-anchor="middle" font-size="12" fill="var(--ink)">(A ∪ B)′</text>
+</svg>
+
+::tablo baslik="İşlem özellikleri"
+| Özellik | Sonuç |
+| $A \cap \varnothing$ ve $A \setminus A$ | $\varnothing$ |
+| $A \cup \varnothing$ ve $A \setminus \varnothing$ | $A$ |
+| $A \cup A'$ ve $A \cap A'$ | $E$ ve $\varnothing$ |
+| $(A \cup B)'$ | $A' \cap B'$ |
+| $(A \cap B)'$ | $A' \cup B'$ |
+| $A \setminus B$ | $A \cap B'$ |
+
+::duzey
+L1: Futbol oynayanlar $A$, basketbol oynayanlar $B$ olsun. İkisini de oynayanlar kesişim, en az birini oynayanlar birleşim, yalnız futbol oynayanlar $A \setminus B$, futbol oynamayanlar $A'$'dür.
+L2: De Morgan kuralları mantıktaki gibidir: tümleyen parantezin içine girerken $\cap$ ile $\cup$ yer değiştirir. Fark işleminin değişme özelliği yoktur: $A \setminus B \neq B \setminus A$. $A \subseteq B$ ise $A \cap B = A$ ve $A \cup B = B$.
+L3: Uzun ifadeleri sadeleştirmek için $A \setminus B = A \cap B'$ yaz ve dağılma–yutma kurallarını kullan: $(A \cup B) \cap A = A$, $A \cup (A \cap B) = A$. Venn şemasında her ifadeyi tarayarak da kontrol edebilirsin.
+
+::ornek baslik="De Morgan'ı doğrula"
+soru: $E = \{1, 2, \ldots, 8\}$, $A = \{1, 2, 3, 4\}$ ve $B = \{3, 4, 5, 6\}$ için $(A \cup B)'$ ve $A' \cap B'$ kümelerini bul.
+1. $A \cup B = \{1, 2, 3, 4, 5, 6\}$, $(A \cup B)' = \{7, 8\}$. || Birleşim sonra tümleyen.
+2. $A' = \{5, 6, 7, 8\}$, $B' = \{1, 2, 7, 8\}$. || Önce tümleyenler.
+3. $A' \cap B' = \{7, 8\}$. || İki yol aynı kümeyi verir.
+cevap: İkisi de $\{7, 8\}$
+
+::yanilgi m1 tip=islem-venn
+yanlis: $A \setminus B$ ile $B \setminus A$ aynı kümedir.
+neden: Fark işleminin değişme özelliği yoktur: $\{1, 2, 3\} \setminus \{3, 4\} = \{1, 2\}$ ama $\{3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
+dogru: $A \setminus B$ yalnız $A$'ya ait kısımdır; $B \setminus A$ yalnız $B$'ye ait kısımdır.
+
+::soru c1 tip=islem-venn zorluk=1
+$E = \{1, 2, \ldots, 10\}$, $A = \{2, 4, 6, 8, 10\}$ ve $B = \{1, 2, 3, 4, 5\}$ olduğuna göre $(A \cap B)'$ kümesinin eleman sayısı kaçtır?
+A) 2 || Bu $A \cap B$'nin eleman sayısıdır.
+B) 5 || Hesabı kontrol et.
+C) 6 || Tümleyeni evrensel kümeye göre al.
++D) 8 || Doğru: $A \cap B = \{2, 4\}$; $10 - 2 = 8$.
+E) 10 || Bu evrensel kümenin eleman sayısıdır.
+kontrol: 10-2
+cozum: $A \cap B = \{2, 4\}$. Tümleyeni $E$'nin geri kalanı: $10 - 2 = 8$ eleman.
+
+@bolum s2 9 | Eleman sayısı bağıntıları
+::fikir
+$s(A \cup B) = s(A) + s(B) - s(A \cap B)$: kesişimdeki elemanlar iki kez sayıldığı için bir kez çıkarılır. $s(A \setminus B) = s(A) - s(A \cap B)$.
+
+::duzey
+L1: Venn şemasında üç bölge vardır: yalnız $A$ ($x$), ortak ($y$), yalnız $B$ ($z$). $s(A) = x + y$, $s(B) = y + z$, $s(A \cup B) = x + y + z$. Bütün sorular bu üç harfle yazılabilir.
+L2: Oranlı bilgileri bölgelere yaz: "$s(A \setminus B) = 2 \cdot s(B \setminus A)$" ise yalnız $B$'ye $x$, yalnız $A$'ya $2x$ de. Sonra birleşim ya da toplam bilgisinden $x$'i bul.
+L3: Üç kümede: $s(A \cup B \cup C) = s(A) + s(B) + s(C) - s(A \cap B) - s(A \cap C) - s(B \cap C) + s(A \cap B \cap C)$. Pratikte formül yerine Venn şemasını en içten doldurmak daha güvenlidir.
+
+::ornek baslik="Bölgelerden kesişim"
+soru: $s(A \cup B) = 20$, $s(A \setminus B) = 8$ ve $s(B \setminus A) = 5$ olduğuna göre $s(A \cap B)$ kaçtır?
+1. Bölgeler: yalnız $A$ = 8, yalnız $B$ = 5, ortak = $y$. || Venn'e yaz.
+2. $8 + y + 5 = 20$. || Birleşim üç bölgenin toplamı.
+3. $y = 7$. || Kontrol: $s(A) = 15$, $s(B) = 12$, $15 + 12 - 7 = 20$ ✓
+cevap: 7
+
+::tamamla baslik="Formülle"
+soru: $s(A) = 15$, $s(B) = 11$ ve $s(A \cup B) = 20$ olduğuna göre $s(A \cap B)$ ve $s(A \setminus B)$ kaçtır?
+1. $20 = 15 + 11 - s(A \cap B)$.
+?2. $s(A \cap B) = 6$.
+?3. $s(A \setminus B) = 15 - 6 = 9$.
+cevap: 6 ve 9
+
+::yanilgi m2 tip=eleman-sayisi
+yanlis: $s(A \cup B) = s(A) + s(B)$'dir.
+neden: Ortak elemanlar hem $s(A)$'da hem $s(B)$'de sayılır; toplamda iki kez sayılmış olur.
+dogru: $s(A \cup B) = s(A) + s(B) - s(A \cap B)$; yalnız ayrık kümelerde düz toplam doğrudur.
+
+::soru c2 tip=eleman-sayisi zorluk=2
+$s(A \setminus B) = 2 \cdot s(B \setminus A)$, $s(A \cap B) = 4$ ve $s(A \cup B) = 19$ olduğuna göre $s(A)$ kaçtır?
+A) 9 || Bu $s(B)$'dir.
+B) 10 || Bu yalnız $A$ bölgesidir; ortak kısmı ekle.
+C) 12 || Hesabı kontrol et.
++D) 14 || Doğru: $3x + 4 = 19$, $x = 5$; $s(A) = 10 + 4$.
+E) 15 || Hesabı yeniden yap.
+kontrol: 2*5+4
+cozum: Yalnız $B$ = $x$, yalnız $A$ = $2x$: $2x + x + 4 = 19 \Rightarrow x = 5$. $s(A) = 2x + 4 = 14$.
+
+@bolum s3 11 | Küme problemleri: Venn ve tablo
+::fikir
+Problemi **Venn bölgelerine** çevir ve en içten dışa doğru doldur. **"En az biri"** birleşim, **"yalnız biri"** kesişim dışındaki kısımlar, **"hiçbiri"** birleşimin dışıdır. Ayrık özellikler (kız–erkek, gözlüklü–gözlüksüz) için **tablo** kur.
+
+::tablo baslik="İki spor için bölgeler (a: yalnız A, b: ikisi, c: yalnız B, d: hiçbiri)"
+| İfade | Bölgeler |
+| A sporunu yapanlar | $a + b$ |
+| Yalnız A sporunu yapanlar | $a$ |
+| İki sporu da yapanlar | $b$ |
+| En az birini yapanlar | $a + b + c$ |
+| Yalnız birini yapanlar | $a + c$ |
+| En çok birini yapanlar | $a + c + d$ |
+| Hiçbirini yapmayanlar | $d$ |
+
+::duzey
+L1: 30 kişiden 18'i çay, 15'i kahve içiyor ve 5 kişi hiçbirini içmiyorsa en az birini içenler 25 kişidir. $18 + 15 = 33$, 25'ten 8 fazla: bu 8 kişi iki kez sayılmıştır, yani ikisini de içenlerdir.
+L2: Üç kümeli sorularda Venn şemasını ortadan başlayarak doldur: önce üçünde ortak olanlar, sonra tam ikisinde olanlar, en son yalnız birinde olanlar. Her bilgiyi kullandığında ilgili bölgeyi işaretle.
+L3: Kişiler iki ayrık özellikle sınıflanıyorsa (kız/erkek ve gözlüklü/gözlüksüz) Venn yerine 2×2 tablo kullan; her hücre bir bölge gibidir. "Gözlüksüz veya erkek" gibi ifadeler üç hücrenin toplamıdır.
+
+::ornek baslik="MEBİ örneği: gözlüklü öğrenciler (tablo)"
+soru: Bir sınıfta gözlüklü kız sayısı gözlüksüz erkek sayısının 2 katı; gözlüklü erkek sayısı gözlüksüz erkek sayısından 3 eksik; gözlüksüz kız sayısı gözlüklü kız sayısının yarısından 3 fazla; gözlüksüz veya erkek öğrenci sayısı 21'dir. Sınıf mevcudu kaçtır?
+1. Gözlüksüz erkek $x$: gözlüklü kız $2x$, gözlüklü erkek $x - 3$, gözlüksüz kız $x + 3$. || 2×2 tablonun hücreleri.
+2. Gözlüksüz veya erkek: $(x + 3) + x + (x - 3) = 3x = 21$, $x = 7$. || Üç hücre.
+3. Mevcut: $2x + (x + 3) + (x - 3) + x = 5x = 35$. || Dört hücrenin toplamı.
+cevap: 35
+
+::tamamla baslik="Yalnız çay içenler"
+soru: 30 kişilik bir grupta 18 kişi çay, 15 kişi kahve içiyor; 5 kişi ikisini de içmiyor. Yalnız çay içen kaç kişidir?
+1. En az birini içen: $30 - 5 = 25$.
+?2. İkisini de içen: $18 + 15 - 25 = 8$.
+?3. Yalnız çay: $18 - 8 = 10$.
+cevap: 10
+
+::yanilgi m3 tip=kume-problemi
+yanlis: "En az birini yapan" ile "yalnız birini yapan" aynı sayıdır.
+neden: "En az biri" ikisini de yapanları da kapsar.
+dogru: En az biri = yalnız biri + ikisi de.
+
+::soru c3 tip=kume-problemi zorluk=2
+50 kişilik bir grupta futbol oynayanlar 28, basketbol oynayanlar 22 kişidir; 8 kişi iki sporu da oynamamaktadır. Yalnız bir spor yapan kaç kişidir?
+A) 26 || Hesabı kontrol et.
+B) 30 || İkisini de yapanları yeniden hesapla: 8.
++C) 34 || Doğru: en az biri 42, ikisi 8; $42 - 8 = 34$.
+D) 36 || Hesabı yeniden yap.
+E) 42 || Bu en az bir spor yapanların sayısıdır.
+kontrol: 42-8
+cozum: En az biri $50 - 8 = 42$. İkisi de $28 + 22 - 42 = 8$. Yalnız biri $42 - 8 = 34$.
+
+@bolum s4 7 | Kartezyen çarpım
+::fikir
+$A \times B = \{(a, b) \mid a \in A, b \in B\}$ ve $s(A \times B) = s(A) \cdot s(B)$. Sıralı ikilide **sıra önemlidir**: $(1, 2) \neq (2, 1)$; bu yüzden genellikle $A \times B \neq B \times A$.
+
+::duzey
+L1: 3 çeşit çorba ve 4 çeşit ana yemek olan bir menüde bir çorba ile bir ana yemek seçmenin $3 \cdot 4 = 12$ yolu vardır. Her seçim bir sıralı ikilidir: (çorba, ana yemek).
+L2: İki sıralı ikili ancak birinci bileşenler kendi aralarında, ikinci bileşenler kendi aralarında eşitse eşittir: $(a, b) = (c, d) \Leftrightarrow a = c$ ve $b = d$. $s(A \times B) = s(B \times A)$ ama kümeler farklıdır.
+L3: Çarpım bilgisi ve ek koşuldan eleman sayıları bulunur: $s(A \times B) = 15$ ve $s(A) > s(B) > 1$ ise $5 \cdot 3$. $A \times B$ kümesinin alt küme sayısı $2^{s(A) \cdot s(B)}$'dir; bağıntılar bu alt kümelerdir.
+
+::ornek baslik="Sıralı ikili eşitliği"
+soru: $(2x - 1, y + 3) = (5, 2x)$ olduğuna göre $x + y$ kaçtır?
+1. Birinci bileşenler: $2x - 1 = 5$, $x = 3$. || Sıra önemli.
+2. İkinci bileşenler: $y + 3 = 2x = 6$, $y = 3$. || Bulunan $x$'i yerine koy.
+3. $x + y = 6$. || Kontrol: $(5, 6) = (5, 6)$ ✓
+cevap: 6
+
+::soru c4 tip=kartezyen zorluk=2
+$s(A \times B) = 15$ ve $s(A) > s(B) > 1$ olduğuna göre $s(A) - s(B)$ kaçtır?
+A) 1 || $15 = 5 \cdot 3$; fark 1 değil.
++B) 2 || Doğru: $s(A) = 5$, $s(B) = 3$.
+C) 3 || Hesabı kontrol et.
+D) 4 || $s(B) > 1$ olduğundan $15 \cdot 1$ olamaz.
+E) 12 || $s(B) = 1$ alınamaz.
+kontrol: 5-3
+cozum: $15 = 15 \cdot 1 = 5 \cdot 3$; $s(B) > 1$ olduğundan $s(A) = 5$, $s(B) = 3$: fark 2.
+
+::ozet
+- Kesişim ortak, birleşim hepsi, $A \setminus B$ yalnız $A$, $A'$ evrensel kümenin geri kalanı.
+- $s(A \cup B) = s(A) + s(B) - s(A \cap B)$; De Morgan: $(A \cup B)' = A' \cap B'$.
+- Küme problemlerinde Venn'i en içten doldur; ayrık özelliklerde tablo kur.
+- $s(A \times B) = s(A) \cdot s(B)$; sıralı ikilide sıra önemlidir.
+
+@pratik
+- Çalışma sırası: önce Venn şemasının dört bölgesini ve işlem adlarını eşleştir, sonra eleman sayısı bağıntısını, en son problem ve kartezyen çarpım sorularını çalış.
+- Sınav yaklaşımı: her küme sorusunda Venn şemasını çiz ve bölgelere değişken yaz; "en az", "yalnız", "hiçbiri" kelimelerinin altını çiz.
+- Üç kümeli sorularda ortadan başla ve her bilgiyi kullandığında işaretle; toplamı en sonda kontrol et.
+- En sık tuzaklar: kesişimi iki kez saymak, "en az biri" ile "yalnız biri"yi karıştırmak, $A \setminus B$ ile $B \setminus A$'yı karıştırmak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra çıkmış sorular setini çöz; tablo yöntemini gerektiren soruları ayrıca işaretle.
+
+@kartlar
+- $s(A \cup B)$ :: $s(A) + s(B) - s(A \cap B)$
+- $s(A \setminus B)$ :: $s(A) - s(A \cap B)$
+- $(A \cup B)'$ :: $A' \cap B'$
+- $A \setminus B$ başka nasıl yazılır? :: $A \cap B'$
+- "En çok birini yapanlar" :: Yalnız A + yalnız B + hiçbiri
+- $s(A \times B)$ :: $s(A) \cdot s(B)$
+- $(a, b) = (c, d)$ ne demektir? :: $a = c$ ve $b = d$
+
+@ozet
+- Kümelerde kesişim, birleşim, fark ve tümleme işlemleri Venn şemasının bölgeleriyle gösterilir.
+- Birleşimin eleman sayısı, iki kez sayılan kesişim çıkarılarak bulunur.
+- Küme problemleri Venn bölgeleri ya da ayrık özellikler için tablo kurularak çözülür.
+- Kartezyen çarpım sıralı ikililerden oluşur ve eleman sayısı iki kümenin eleman sayılarının çarpımıdır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$s(A \cup B)$ hesaplanırken kesişim neden bir kez çıkarılır?" (2) "Gözlüklü öğrenci örneğinde neden Venn şeması yerine tablo kullandık?"
+
+@havuz
+::soru h1 tip=islem-venn zorluk=2
+$E = \{1, 2, \ldots, 9\}$, $A = \{1, 3, 5, 7, 9\}$ ve $B = \{1, 2, 3, 4\}$ olduğuna göre $A' \setminus B$ kümesi aşağıdakilerden hangisidir?
++A) $\{6, 8\}$
+B) $\{2, 4\}$
+C) $\{2, 4, 6, 8\}$
+D) $\{5, 7, 9\}$
+E) $\{6, 8, 9\}$
+cozum: $A' = \{2, 4, 6, 8\}$. $B$'de olan 2 ve 4 çıkarılır: $\{6, 8\}$.
+
+::soru h2 tip=eleman-sayisi zorluk=2
+$s(A) = 2 \cdot s(B)$, $s(A \cap B) = 3$ ve $s(A \cup B) = 24$ olduğuna göre $s(B)$ kaçtır?
+A) 7
+B) 8
++C) 9
+D) 10
+E) 12
+kontrol: 27/3
+cozum: $s(B) = b$, $s(A) = 2b$: $2b + b - 3 = 24 \Rightarrow b = 9$.
+
+::soru h3 tip=kume-problemi zorluk=3
+Bir okulda tiyatro, müzik ve resim kulüplerinden en az birine üye 30 öğrenci vardır. Tiyatroya 14, müziğe 12, resme 15 öğrenci üyedir; tam iki kulübe üye olan 7, üç kulübe de üye olan 2 öğrenci vardır. Yalnız bir kulübe üye kaç öğrenci vardır?
+A) 19
++B) 21
+C) 23
+D) 25
+E) 27
+kontrol: 41-2*7-3*2
+cozum: Üyelik toplamı $14 + 12 + 15 = 41$; tam iki kulüptekiler 2'şer, üç kulüptekiler 3'er kez sayılır: yalnız bir $= 41 - 2 \cdot 7 - 3 \cdot 2 = 21$. Kontrol: $21 + 7 + 2 = 30$ ✓
+
+::soru h4 tip=kartezyen zorluk=2
+$A = \{1, 2, 3\}$ ve $B = \{a, b\}$ olduğuna göre $A \times B$ kümesinin alt küme sayısı kaçtır?
+A) 6
+B) 12
+C) 32
+D) 36
++E) 64
+kontrol: 2^6
+cozum: $s(A \times B) = 3 \cdot 2 = 6$; alt küme sayısı $2^6 = 64$.

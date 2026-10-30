@@ -41,6 +41,7 @@ const TutorSession = lazy(() => import('./pages/TutorSession.jsx'));
 const TutorReview = lazy(() => import('./pages/TutorReview.jsx'));
 const InteractiveLearning = lazy(() => import('./pages/InteractiveLearning.jsx'));
 const InteractiveUnit = lazy(() => import('./pages/InteractiveUnit.jsx'));
+const LearnSection = lazy(() => import('./learn/LearnSection.jsx'));
 
 function ResourceLibraryRedirect() {
   const location=useLocation();
@@ -136,6 +137,8 @@ export default function App() {
             {/* İnteraktif Öğrenme sınav seçiminden bağımsızdır; ünite içeriği ön yüzde tanımlıdır. */}
             <Route path="/interaktif-ogrenme" element={<Suspense fallback={<Loading text="İnteraktif Öğrenme yükleniyor…" />}><InteractiveLearning /></Suspense>} />
             <Route path="/interaktif-ogrenme/:subjectId/:unitId" element={<Suspense fallback={<Loading text="Laboratuvar yükleniyor…" />}><InteractiveUnit /></Suspense>} />
+            {/* Konuyu Öğrenelim: TYT–AYT Matematik öğrenme motoru; sınav seçiminden bağımsızdır. */}
+            <Route path="/konuyu-ogrenelim/*" element={<Suspense fallback={<Loading text="Konuyu Öğrenelim yükleniyor…" />}><LearnSection /></Suspense>} />
             <Route path="/geri-bildirim" element={<Feedback />} />
           </Route>
           <Route path="/hesap" element={<Account />} />

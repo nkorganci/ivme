@@ -1,0 +1,348 @@
+@ders rasyonel-sayilar
+baslik: Rasyonel Sayılar ve Ondalık Sayılar
+kisa: Rasyonel sayılar
+sinav: TYT AYT
+unite: temel
+sinif: 9
+sira: 140
+onkosul: ebob-ekok
+kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Kesirlerle dört işlemi ve merdiven kesirleri hatasız yapmak; ondalık sayılarda virgülü doğru kaydırmak; devirli ondalık sayıyı kesre çevirmek; rasyonel sayıları hızlı kurallarla sıralamak.
+neden: Rasyonel sayılar TYT'nin ilk sorularında hesap becerisi olarak, problemlerde ise "kesir problemi" olarak karşına çıkar. Sıralama ve devirli ondalık soruları "Sayı Kümeleri" başlığındaki 59 çıkmış TYT sorusunun önemli bir kısmını oluşturur.
+kaynak: MEBİ TYT Konu Özeti — Rasyonel Sayılarda İşlemler, Ondalıklı ve Devirli Ondalıklı Sayılar | OGM 9. Sınıf Konu Özetleri 07–08 | MEBİ Tarama Testi TYT — Rasyonel Sayılar > Ondalık Sayılar
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: rasyonel | kesir | ondalık | devirli | virgül | pay | payda | sırala | sıralaması | /\d,\d/ | /a\s*<\s*b\s*<\s*c/ | işleminin sonucu
+baslik-kurali: rasyonel sayılar | ondalık sayılar | /^9\.3\.1\.1/ | sayı kümeleri
+haric: basamak | bölün | ebob | ekok | asal | ardışık | tek sayı | çift sayı
+
+@tip kesir-islem 30 s1
+ad: Kesirlerle dört işlem ve merdiven kesirler
+ipucu: Paydaları farklı kesirler, tam sayılı kesirler, iç içe (merdiven) kesirler ve uzun işlem dizileri.
+strateji: Toplama–çıkarmada paydaları EKOK'ta eşitle; çarpmada önce çapraz sadeleştir; bölmede ikinci kesri ters çevirip çarp. Merdiven kesri en alttan yukarı doğru çöz. İşlem önceliği: parantez, çarpma–bölme (soldan), toplama–çıkarma.
+anahtar: işleminin sonucu | kesir | \frac | ifadesinin değeri | sadeleş | payda
+
+@tip ondalik 20 s3
+ad: Ondalık sayılarla işlem
+ipucu: "$\frac{0{,}12}{0{,}004}$", virgüllü çarpma ve bölme, 10'un kuvvetleriyle çarpma.
+strateji: Bölmede böleni virgülden kurtarmak için pay ve paydayı aynı 10'un kuvvetiyle çarp. Çarpmada virgülleri yok say, sonra virgülden sonraki basamak sayılarının toplamı kadar virgül koy.
+anahtar: virgül | ondalık | /\d,\d/ | 0,
+
+@tip devirli 20 s4
+ad: Devirli ondalık sayılar
+ipucu: "$0{,}\overline{4}$", "$2{,}1\overline{5}$" gibi üstü çizili sayılar; devirli sayıların toplamı ya da oranı.
+strateji: Devirli sayı = (virgülsüz sayının tamamı − devretmeyen kısım) / (devreden basamak sayısı kadar 9, devretmeyen ondalık basamak kadar 0). Sonucu sadeleştir; $0{,}\overline{9} = 1$ olduğunu unutma.
+anahtar: devirli | devreden | 0,(3) | overline | üstü çizili
+
+@tip siralama 30 s5
+ad: Rasyonel sayıları sıralama
+ipucu: "$a = \frac{3}{4}$, $b = \frac{5}{7}$, $c = \frac{7}{9}$ sıralaması", "aşağıdakilerden hangisi doğrudur: $x < y < z$".
+strateji: Önce bir kural ara: paydalar ya da paylar eşitse kolay; pay ile payda farkı eşitse basit kesirlerde büyük paylı büyüktür, bileşik kesirlerde küçük paylı büyüktür. Kural yoksa ondalığa çevir ya da çapraz çarp. Negatiflerde pozitif sırayı ters çevir.
+anahtar: sıralaması | sıralanışı | doğru sıralama | < b < | küçükten büyüğe | büyükten küçüğe
+
+@ustalik
+kesir-islem 2 1-3
+ondalik 1 1-2
+devirli 1 1-3
+siralama 2 1-3
+
+@oturum Kesirlerle işlemler | s1 s2
+@oturum Ondalık, devirli ve sıralama | s3 s4 s5
+
+@ontest
+::soru o1 tip=kesir-islem zorluk=1
+$\frac{1}{2} + \frac{1}{3}$ işleminin sonucu kaçtır?
+A) $\frac{2}{5}$ || Paylar ve paydalar ayrı ayrı toplanmaz.
++B) $\frac{5}{6}$ || Doğru: $\frac{3}{6} + \frac{2}{6} = \frac{5}{6}$.
+C) $\frac{1}{6}$ || Paydalar çarpıldı ama paylar düzenlenmedi.
+D) $\frac{1}{3}$ || Hesabı tekrar et: paydaları 6'da eşitle.
+E) $1$ || $\frac{1}{2} + \frac{1}{2}$ olsaydı 1 ederdi.
+kontrol: 1/2+1/3
+cozum: Paydaları 6'da eşitle: $\frac{3}{6} + \frac{2}{6} = \frac{5}{6}$.
+
+::soru o2 tip=devirli zorluk=2
+$0{,}\overline{4} = 0{,}444\ldots$ sayısı hangi kesre eşittir?
+A) $\frac{2}{5}$ || $\frac{2}{5} = 0{,}4$; devretmez.
+B) $\frac{11}{25}$ || $\frac{11}{25} = 0{,}44$; sonra durur.
++C) $\frac{4}{9}$ || Doğru: devreden tek basamak, paydada bir 9.
+D) $\frac{4}{99}$ || İki 9, iki basamak devrederse kullanılır.
+E) $\frac{9}{4}$ || Kesri ters yazdın.
+kontrol: 4/9
+cozum: $0{,}\overline{4} = \frac{4 - 0}{9} = \frac{4}{9}$.
+
+::soru o3 tip=siralama zorluk=2
+$a = \frac{3}{4}$, $b = \frac{5}{7}$, $c = \frac{7}{9}$ olduğuna göre doğru sıralama hangisidir?
+A) $a < b < c$ || $\frac{5}{7} < \frac{3}{4}$ olduğundan $b$, $a$'dan küçüktür.
+B) $a < c < b$ || $b$ en küçüktür.
+C) $c < a < b$ || $c$ en büyüktür.
++D) $b < a < c$ || Doğru: $0{,}714 < 0{,}75 < 0{,}778$.
+E) $b < c < a$ || $\frac{7}{9} > \frac{3}{4}$.
+cozum: Ondalık açılımlar: $b \approx 0{,}714$, $a = 0{,}75$, $c \approx 0{,}778$. Ya da çapraz çarp: $3 \cdot 7 = 21 > 20 = 5 \cdot 4$, yani $a > b$; $3 \cdot 9 = 27 < 28 = 7 \cdot 4$, yani $c > a$.
+
+@bolum s1 10 | Kesirler, sadeleştirme, toplama ve çıkarma
+::fikir
+Kesirleri toplamak için önce **aynı büyüklükte dilimlere** (ortak payda) çevir, sonra dilimleri say. Ortak payda paydaların **EKOK'udur**.
+
+::duzey
+L1: $\frac{1}{2}$ bir çikolatanın yarısı, $\frac{1}{3}$ üçte biridir. Bunları toplamak için çikolatayı 6 eşit dilime böl: yarısı 3 dilim, üçte biri 2 dilim eder; toplam 5 dilim: $\frac{5}{6}$.
+L2: Basit kesirde pay paydadan küçük, bileşik kesirde büyük ya da eşittir; tam sayılı kesir $2\frac{1}{3} = \frac{7}{3}$ biçiminde bileşik kesre çevrilir. Genişletme ve sadeleştirme kesrin değerini değiştirmez: $\frac{a}{b} = \frac{k \cdot a}{k \cdot b}$. Toplama–çıkarmada paydalar EKOK'ta eşitlenir, paylar toplanır.
+L3: Uzun toplamlarda iptal eden yapı ara: $\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \ldots = (1 - \frac{1}{2}) + (\frac{1}{2} - \frac{1}{3}) + \ldots$ Sonuçta yalnız ilk ve son terim kalır. Çarpım dizileri de benzer biçimde sadeleşir: $\frac{1}{2} \cdot \frac{2}{3} \cdot \frac{3}{4} \cdots \frac{9}{10} = \frac{1}{10}$.
+
+::gorsel alt="Üç şerit modeli: üstte yarım (6 dilimin 3'ü), ortada üçte bir (6 dilimin 2'si), altta toplam 6 dilimin 5'i." aciklama="Ortak payda, iki kesri aynı dilim büyüklüğünde yazmaktır: 3/6 + 2/6 = 5/6."
+<svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg">
+  <g font-size="16" fill="currentColor"><text x="8" y="36">1/2 = 3/6</text><text x="8" y="96">1/3 = 2/6</text><text x="8" y="156">toplam 5/6</text></g>
+  <rect x="140" y="14" width="300" height="34" class="accent soft"/>
+  <rect x="140" y="14" width="150" height="34" class="accent"/>
+  <rect x="140" y="74" width="300" height="34" class="good soft"/>
+  <rect x="140" y="74" width="100" height="34" class="good"/>
+  <rect x="140" y="134" width="300" height="34" class="muted soft"/>
+  <rect x="140" y="134" width="150" height="34" class="accent"/>
+  <rect x="290" y="134" width="100" height="34" class="good"/>
+  <g class="nofill" stroke-width="2" stroke="currentColor">
+    <rect x="140" y="14" width="300" height="34"/><rect x="140" y="74" width="300" height="34"/><rect x="140" y="134" width="300" height="34"/>
+    <path d="M190 14v34M240 14v34M290 14v34M340 14v34M390 14v34M190 74v34M240 74v34M290 74v34M340 74v34M390 74v34M190 134v34M240 134v34M290 134v34M340 134v34M390 134v34"/>
+  </g>
+</svg>
+
+::ornek baslik="Tam sayılı kesirle çıkarma"
+soru: $2\frac{1}{3} - \frac{3}{4}$ işleminin sonucu kaçtır?
+1. Bileşik kesre çevir: $2\frac{1}{3} = \frac{2 \cdot 3 + 1}{3} = \frac{7}{3}$. || Tam sayılı kesirle doğrudan işlem yapılmaz.
+2. Paydaları EKOK(3, 4) = 12'de eşitle: $\frac{28}{12} - \frac{9}{12}$. || $\frac{7}{3} = \frac{28}{12}$, $\frac{3}{4} = \frac{9}{12}$.
+3. $\frac{28 - 9}{12} = \frac{19}{12}$. || Payları çıkar, paydayı koru.
+cevap: $\frac{19}{12}$
+
+::yanilgi m1 tip=kesir-islem
+yanlis: $\frac{1}{2} + \frac{1}{3} = \frac{1 + 1}{2 + 3} = \frac{2}{5}$
+neden: Paydalar dilim büyüklüğüdür; farklı büyüklükteki dilimler sayılarak toplanamaz. Sonuç $\frac{2}{5}$, $\frac{1}{2}$'den bile küçük çıkıyor: imkânsız.
+dogru: Önce paydaları eşitle: $\frac{3}{6} + \frac{2}{6} = \frac{5}{6}$.
+
+::soru c1 tip=kesir-islem zorluk=1
+$\frac{3}{4} - \frac{1}{6} + \frac{1}{3}$ işleminin sonucu kaçtır?
+A) $\frac{1}{4}$ || İşaretleri kontrol et: $-\frac{1}{6}$ ve $+\frac{1}{3}$.
+B) $\frac{3}{5}$ || Paylar ve paydalar ayrı ayrı işleme sokulmaz.
+C) $\frac{5}{6}$ || $\frac{10}{12}$ çıkmaz; payları yeniden topla.
++D) $\frac{11}{12}$ || Doğru: $\frac{9}{12} - \frac{2}{12} + \frac{4}{12} = \frac{11}{12}$.
+E) $1$ || $\frac{12}{12}$ olmaz; payların toplamı 11.
+kontrol: 3/4-1/6+1/3
+cozum: EKOK(4, 6, 3) = 12: $\frac{9}{12} - \frac{2}{12} + \frac{4}{12} = \frac{11}{12}$.
+
+@bolum s2 10 | Çarpma, bölme ve merdiven kesirler
+::fikir
+Çarpmada **pay × pay, payda × payda**; bölmede **ikinci kesri ters çevirip çarp**. Merdiven (iç içe) kesirlerde **en alttaki** kesirden başla.
+
+::duzey
+L1: "Yarımın yarısı" $\frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}$'tür. "3'ün içinde kaç tane yarım var?" sorusu $3 : \frac{1}{2} = 3 \cdot 2 = 6$ demektir. Bu yüzden bölmede ikinci kesir ters çevrilir.
+L2: Çarpmadan önce çapraz sadeleştirme hesabı küçültür: $\frac{8}{15} \cdot \frac{5}{12} = \frac{2}{3} \cdot \frac{1}{3} = \frac{2}{9}$. Merdiven kesirde en alt kesri tek kesir yap, bir üst basamağa çık: $1 + \cfrac{1}{1 + \cfrac{1}{2}} = 1 + \cfrac{1}{\frac{3}{2}} = 1 + \frac{2}{3} = \frac{5}{3}$.
+L3: $\frac{1}{\frac{a}{b}} = \frac{b}{a}$ kuralı merdivenleri hızlandırır. Ardışık bölmelerde soldan sağa ilerle: $\frac{2}{3} : \frac{4}{9} \cdot \frac{1}{3}$ önce bölme, sonra çarpma. Kesrin pay ve paydası aynı ifadeyle çarpılarak merdiven tek adımda sadeleştirilebilir.
+
+::ornek baslik="Merdiven kesir"
+soru: $1 + \cfrac{1}{1 + \cfrac{1}{2}}$ ifadesinin değeri kaçtır?
+1. En alttan başla: $1 + \frac{1}{2} = \frac{3}{2}$. || Merdivenin en alt basamağı.
+2. Bir üst basamak: $\cfrac{1}{\frac{3}{2}} = \frac{2}{3}$. || Kesrin tersi.
+3. $1 + \frac{2}{3} = \frac{5}{3}$. || Son basamak.
+cevap: $\frac{5}{3}$
+
+::tamamla baslik="Soldan sağa"
+soru: $\frac{2}{3} : \frac{4}{9} \cdot \frac{1}{3}$ işleminin sonucu kaçtır?
+1. Bölme ve çarpma aynı öncelikte; soldan başla: $\frac{2}{3} : \frac{4}{9} = \frac{2}{3} \cdot \frac{9}{4}$.
+?2. Sadeleştir ve çarp: $\frac{2}{3} \cdot \frac{9}{4} = \frac{3}{2}$. || $2$ ile $4$, $3$ ile $9$ sadeleşir.
+?3. $\frac{3}{2} \cdot \frac{1}{3} = \frac{1}{2}$.
+cevap: $\frac{1}{2}$
+
+::yanilgi m2 tip=kesir-islem
+yanlis: Bölmede ilk kesir ters çevrilir: $\frac{2}{3} : \frac{4}{9} = \frac{3}{2} \cdot \frac{4}{9}$.
+neden: Ters çevrilen, **bölen**dir (ikinci kesir); birinci kesir aynen kalır.
+dogru: $\frac{2}{3} : \frac{4}{9} = \frac{2}{3} \cdot \frac{9}{4} = \frac{3}{2}$.
+
+::soru c2 tip=kesir-islem zorluk=2
+$\cfrac{3}{2 - \cfrac{1}{2}}$ ifadesinin değeri kaçtır?
++A) $2$ || Doğru: $2 - \frac{1}{2} = \frac{3}{2}$ ve $3 : \frac{3}{2} = 2$.
+B) $3$ || Paydadaki kesri hesaba katmadın.
+C) $\frac{9}{2}$ || $3 \cdot \frac{3}{2}$ yaptın; bölmede ters çevrilir.
+D) $6$ || Yalnız $2$'yi aldın: $3 \cdot 2$.
+E) $9$ || Hesabı adım adım tekrar et.
+kontrol: 3/(2-1/2)
+cozum: Payda: $2 - \frac{1}{2} = \frac{3}{2}$. $3 : \frac{3}{2} = 3 \cdot \frac{2}{3} = 2$.
+
+@bolum s3 8 | Ondalık sayılar
+::fikir
+10'un kuvvetleriyle çarpmak virgülü **sağa**, bölmek **sola** kaydırır. Bölmede önce **böleni virgülden kurtar**: pay ve paydayı aynı 10'un kuvvetiyle çarp.
+
+::duzey
+L1: $0{,}3 \cdot 10 = 3$; virgül bir basamak sağa kaydı. $4{,}5 : 100 = 0{,}045$; virgül iki basamak sola kaydı. Ondalık sayıları toplarken virgüller alt alta gelmelidir.
+L2: Çarpmada virgülleri yok say, sonra çarpanların virgülden sonraki basamak sayılarını topla: $0{,}3 \cdot 0{,}02$'de $1 + 2 = 3$ basamak, $3 \cdot 2 = 6$ olduğundan sonuç $0{,}006$. Bölmede $\frac{0{,}12}{0{,}004}$'ü 1000 ile genişlet: $\frac{120}{4} = 30$.
+L3: Ondalık sayıyı kesre çevirmek çoğu zaman en temiz yoldur: $0{,}25 = \frac{1}{4}$, $0{,}125 = \frac{1}{8}$, $0{,}2 = \frac{1}{5}$. Karmaşık bir ifadede pay ve paydanın hepsini aynı 10'un kuvvetiyle çarparak virgülleri tek seferde kaldırabilirsin.
+
+::ornek baslik="Böleni virgülden kurtar"
+soru: $\frac{0{,}12}{0{,}004}$ kaçtır?
+1. Paydanın virgülden sonra 3 basamağı var: pay ve paydayı 1000 ile çarp. || Kesir genişletilince değer değişmez.
+2. $\frac{120}{4} = 30$. || Artık tam sayı bölmesi.
+cevap: $30$
+
+::yanilgi m3 tip=ondalik
+yanlis: $0{,}3 \cdot 0{,}2 = 0{,}6$
+neden: Virgülden sonraki basamak sayıları toplanır: $1 + 1 = 2$ basamak.
+dogru: $0{,}3 \cdot 0{,}2 = 0{,}06$.
+
+::soru c3 tip=ondalik zorluk=1
+$\frac{0{,}3 \cdot 0{,}02}{0{,}06}$ işleminin sonucu kaçtır?
+A) $0{,}001$ || Virgülü fazla kaydırdın.
+B) $0{,}01$ || Pay $0{,}006$, payda $0{,}06$: oran $0{,}1$.
++C) $0{,}1$ || Doğru: $\frac{0{,}006}{0{,}06} = 0{,}1$.
+D) $1$ || Paydayı yanlış aldın.
+E) $10$ || Kesri ters çevirdin.
+kontrol: 0.3*0.02/0.06
+cozum: Pay: $0{,}3 \cdot 0{,}02 = 0{,}006$. $\frac{0{,}006}{0{,}06} = \frac{6}{60} = 0{,}1$.
+
+@bolum s4 9 | Devirli ondalık sayılar
+::fikir
+$a{,}b\overline{cd} = \dfrac{abcd - ab}{990}$: **pay** sayının tamamından devretmeyen kısım çıkar; **payda** devreden basamak kadar 9, devretmeyen ondalık basamak kadar 0.
+
+::duzey
+L1: $\frac{1}{3} = 0{,}333\ldots$ biliyorsun; buna $0{,}\overline{3}$ denir. Aynı biçimde $0{,}\overline{4} = \frac{4}{9}$, $0{,}\overline{7} = \frac{7}{9}$. İki basamak devrederse paydaya iki 9 gelir: $0{,}\overline{36} = \frac{36}{99}$.
+L2: Kural: (virgülsüz sayının tamamı − devretmeyen kısım) / (devreden basamak sayısı kadar 9 ve devretmeyen ondalık basamak sayısı kadar 0). Örnek: $2{,}1\overline{5} = \frac{215 - 21}{90} = \frac{194}{90} = \frac{97}{45}$.
+L3: Kuralın nedeni: $x = 0{,}\overline{4}$ ise $10x = 4{,}\overline{4}$; çıkarınca $9x = 4$. Devreden kısım çıkarmada kaybolur. Aynı yoldan $0{,}\overline{9} = \frac{9}{9} = 1$ bulunur; yani $0{,}999\ldots$ ile 1 aynı sayıdır.
+
+::ornek baslik="Kısmen devreden sayı"
+soru: $2{,}1\overline{5}$ sayısını kesir olarak yaz.
+1. Virgülsüz sayının tamamı 215, devretmeyen kısım 21. || Devreden yalnız 5.
+2. Payda: devreden 1 basamak → bir 9; devretmeyen ondalık 1 basamak → bir 0: $90$. || Kural.
+3. $\frac{215 - 21}{90} = \frac{194}{90} = \frac{97}{45}$. || 2 ile sadeleştir.
+cevap: $\frac{97}{45}$
+
+::bosluk b1 cevap=4/11 tip=devirli zorluk=2
+$0{,}\overline{36}$ sayısının en sade kesir hâli nedir? (pay/payda biçiminde yaz, ör. 3/7)
+cozum: $0{,}\overline{36} = \frac{36}{99} = \frac{4}{11}$.
+
+::yanilgi m4 tip=devirli
+yanlis: $0{,}\overline{9}$, 1'den çok az küçük bir sayıdır.
+neden: Aradaki farkı yazmaya çalış: hiçbir pozitif sayı yeterince küçük değildir. Kural da $\frac{9}{9} = 1$ verir.
+dogru: $0{,}\overline{9} = 1$; benzer biçimde $0{,}4\overline{9} = 0{,}5$.
+
+::soru c4 tip=devirli zorluk=2
+$0{,}1\overline{6} + 0{,}\overline{3}$ toplamı kaçtır?
+A) $\frac{1}{3}$ || $0{,}1\overline{6}$'yı unuttun.
+B) $0{,}49$ || Devirli sayıları ondalık gibi toplayamazsın.
++C) $\frac{1}{2}$ || Doğru: $\frac{1}{6} + \frac{1}{3} = \frac{1}{2}$.
+D) $\frac{5}{9}$ || $0{,}1\overline{6}$'yı $\frac{2}{9}$ aldın.
+E) $\frac{2}{3}$ || İlk sayıyı yanlış çevirdin.
+kontrol: 1/6+1/3
+cozum: $0{,}1\overline{6} = \frac{16 - 1}{90} = \frac{15}{90} = \frac{1}{6}$ ve $0{,}\overline{3} = \frac{1}{3}$. Toplam $\frac{1}{6} + \frac{2}{6} = \frac{1}{2}$.
+
+@bolum s5 8 | Rasyonel sayıları sıralama
+::fikir
+Önce **kısa yolu ara**, yoksa ondalığa çevir. Pay ile payda farkı eşitse: **basit kesirlerde büyük paylı**, bileşik kesirlerde küçük paylı kesir büyüktür. Negatiflerde pozitif sırayı ters çevir.
+
+::tablo baslik="Sıralama kısa yolları"
+| Durum | Kural | Örnek |
+| Paydalar eşit | Payı büyük olan büyük | $\frac{5}{9} > \frac{4}{9}$ |
+| Paylar eşit | Paydası küçük olan büyük | $\frac{3}{7} > \frac{3}{8}$ |
+| Basit kesir, pay–payda farkı eşit | Payı büyük olan büyük | $\frac{8}{9} > \frac{7}{8}$ |
+| Bileşik kesir, pay–payda farkı eşit | Payı küçük olan büyük | $\frac{5}{4} > \frac{6}{5}$ |
+| Negatif kesirler | Pozitif sıranın tersi | $-\frac{1}{2} > -\frac{2}{3}$ |
+
+::sirala s1 baslik="Küçükten büyüğe sırala"
+1. $\frac{7}{12}$
+2. $\frac{3}{5}$
+3. $\frac{5}{8}$
+4. $\frac{2}{3}$
+
+::duzey
+L1: Kesirleri karşılaştırmanın en güvenli yolu onları aynı paydaya getirmek ya da ondalığa çevirmektir: $\frac{3}{4} = 0{,}75$, $\frac{5}{7} \approx 0{,}71$. Hangisi büyükse kesri de büyüktür.
+L2: İki kesri karşılaştırırken çapraz çarp: $\frac{a}{b}$ ile $\frac{c}{d}$ için ($b, d > 0$) $a \cdot d$ ile $b \cdot c$'yi karşılaştır. Çok kesir varsa tabloda verilen kısa yollar hız kazandırır.
+L3: Pay–payda farkı kuralının nedeni: $\frac{n}{n+1} = 1 - \frac{1}{n+1}$; $n$ büyüdükçe çıkarılan kısım küçülür, kesir 1'e yaklaşır. Bileşik kesirde $\frac{n+1}{n} = 1 + \frac{1}{n}$; $n$ büyüdükçe kesir küçülür. Negatif sayılarda sayı doğrusunda sola gidildikçe küçüldüğü için sıra ters döner.
+
+::ornek baslik="Negatif kesirler"
+soru: $a = -\frac{2}{3}$, $b = -\frac{3}{4}$, $c = -\frac{5}{6}$ sayılarını sırala.
+1. Pozitif hâllerini sırala: pay–payda farkı 1, basit kesir; $\frac{2}{3} < \frac{3}{4} < \frac{5}{6}$. || Büyük paylı büyük.
+2. Negatiflerde sırayı ters çevir: $-\frac{5}{6} < -\frac{3}{4} < -\frac{2}{3}$. || Sıfırdan uzaklaşan negatif küçülür.
+cevap: $c < b < a$
+
+::yanilgi m5 tip=siralama
+yanlis: $\frac{1}{2} < \frac{2}{3}$ olduğuna göre $-\frac{1}{2} < -\frac{2}{3}$ olur.
+neden: Negatif sayılarda sayı doğrusunda sola gidildikçe değer küçülür; büyük pozitifin negatifi daha küçüktür.
+dogru: $-\frac{2}{3} < -\frac{1}{2}$.
+
+::soru c5 tip=siralama zorluk=2
+$x = 0{,}\overline{6}$, $y = \frac{5}{8}$, $z = 0{,}65$ olduğuna göre doğru sıralama hangisidir?
+A) $y < x < z$ || $x = 0{,}666\ldots$ en büyüğüdür.
+B) $z < y < x$ || $y = 0{,}625 < 0{,}65 = z$.
+C) $x < y < z$ || Devirli sayıyı küçük sandın.
+D) $z < x < y$ || $y$ en küçüğüdür.
++E) $y < z < x$ || Doğru: $0{,}625 < 0{,}65 < 0{,}666\ldots$
+cozum: $y = \frac{5}{8} = 0{,}625$, $z = 0{,}65$, $x = 0{,}666\ldots$: $y < z < x$.
+
+::ozet
+- Toplama–çıkarma: paydaları EKOK'ta eşitle; çarpma: pay × pay; bölme: ikinciyi ters çevir.
+- Merdiven kesirde en alttan başla; $\frac{1}{a/b} = \frac{b}{a}$.
+- Ondalıkta böleni virgülden kurtar; çarpımda virgülden sonraki basamaklar toplanır.
+- Devirli: (tamamı − devretmeyen) / (9'lar ve 0'lar); $0{,}\overline{9} = 1$.
+- Sıralama: kısa yol yoksa ondalığa çevir ya da çapraz çarp; negatiflerde ters.
+
+@pratik
+- Kesir işlemlerinde her adımı ayrı satıra yaz; işaretleri ve işlem önceliğini koru. Hız için önce çapraz sadeleştir.
+- Sıralama sorularında önce kısa yol tablosunu dene (eşit payda, eşit pay, eşit fark); olmazsa ondalığa çevir, üç basamak yeter.
+- Devirli sayıyı görünce kuralı hemen yaz: (tamamı − devretmeyen) / (9'lar ve 0'lar); sonucu mutlaka sadeleştir.
+- Sınav yaklaşımı: şıklar birbirine yakınsa yaklaşık ondalık değerle eleme yap; merdiven kesirde en alttan başla.
+- En sık tuzaklar: payları ve paydaları ayrı toplamak, bölmede ilk kesri ters çevirmek, negatiflerde sırayı ters çevirmemek. Hedef süre 60 saniye.
+
+@kartlar
+- $\frac{a}{b} + \frac{c}{d}$ nasıl yapılır? :: Paydaları EKOK'ta eşitle, payları topla.
+- $\frac{a}{b} : \frac{c}{d}$ = ? :: $\frac{a}{b} \cdot \frac{d}{c}$ (bölen ters çevrilir).
+- $0{,}\overline{ab}$ = ? :: $\frac{ab}{99}$
+- $a{,}b\overline{c}$ = ? :: $\frac{abc - ab}{90}$
+- $0{,}\overline{9}$ = ? :: $1$
+- Pay–payda farkı eşit basit kesirlerden hangisi büyük? :: Payı büyük olan ($\frac{8}{9} > \frac{7}{8}$).
+- Negatif kesirleri sıralamak :: Pozitif hâllerini sırala, sırayı ters çevir.
+- $0{,}3 \cdot 0{,}02$ = ? :: $0{,}006$ (virgülden sonra 1 + 2 = 3 basamak)
+
+@ozet
+- Kesirlerde toplama–çıkarma ortak paydayla (EKOK), çarpma pay–payda çarpımıyla, bölme bölenin tersiyle yapılır.
+- Merdiven kesirler en alttan çözülür; uzun toplam ve çarpımlarda sadeleşen yapı aranır.
+- Ondalık bölmede böleni virgülden kurtar; çarpımda virgülden sonraki basamak sayılarını topla.
+- Devirli sayıyı (tamamı − devretmeyen)/(9'lar ve 0'lar) kuralıyla kesre çevir.
+- Sıralamada önce kısa yol, sonra ondalık ya da çapraz çarpım; negatiflerde sıra tersine döner.
+
+@aciklama
+Kendi cümlelerinle açıkla: (1) "$\frac{1}{2} + \frac{1}{3}$ neden $\frac{2}{5}$ olamaz?" (2) "$0{,}\overline{4}$'ün neden $\frac{4}{9}$ olduğunu $x = 0{,}\overline{4}$ diyerek göster."
+
+@havuz
+::soru h1 tip=kesir-islem zorluk=2
+$\left(1 - \frac{1}{2}\right)\left(1 - \frac{1}{3}\right)\left(1 - \frac{1}{4}\right) \cdots \left(1 - \frac{1}{10}\right)$ çarpımı kaçtır?
++A) $\frac{1}{10}$
+B) $\frac{1}{9}$
+C) $\frac{1}{11}$
+D) $\frac{9}{10}$
+E) $\frac{1}{20}$
+kontrol: 1/10
+cozum: Çarpanlar $\frac{1}{2} \cdot \frac{2}{3} \cdot \frac{3}{4} \cdots \frac{9}{10}$; ardışık pay ve paydalar sadeleşir: $\frac{1}{10}$.
+
+::soru h2 tip=ondalik zorluk=1
+$\frac{2{,}4}{0{,}06} - \frac{0{,}5}{0{,}01}$ işleminin sonucu kaçtır?
++A) $-10$
+B) $-1$
+C) $1$
+D) $10$
+E) $90$
+kontrol: 2.4/0.06-0.5/0.01
+cozum: $\frac{2{,}4}{0{,}06} = \frac{240}{6} = 40$ ve $\frac{0{,}5}{0{,}01} = 50$. $40 - 50 = -10$.
+
+::soru h3 tip=devirli zorluk=2
+$\cfrac{0{,}\overline{6}}{0{,}0\overline{3}}$ işleminin sonucu kaçtır?
+A) $\frac{1}{20}$
+B) $2$
+C) $10$
++D) $20$
+E) $30$
+kontrol: (2/3)/(1/30)
+cozum: $0{,}\overline{6} = \frac{6}{9} = \frac{2}{3}$, $0{,}0\overline{3} = \frac{3}{90} = \frac{1}{30}$. $\frac{2}{3} \cdot 30 = 20$.
+
+::soru h4 tip=siralama zorluk=2
+$a = \frac{11}{12}$, $b = \frac{13}{14}$, $c = \frac{15}{16}$ olduğuna göre doğru sıralama hangisidir?
++A) $a < b < c$
+B) $c < b < a$
+C) $b < a < c$
+D) $a < c < b$
+E) $c < a < b$
+cozum: Basit kesirler ve pay–payda farkı 1'de eşit; payı büyük olan büyüktür: $a < b < c$.

@@ -1,0 +1,353 @@
+@ders uslu-ifadeler
+baslik: Üslü İfadeler ve Üslü Denklemler
+kisa: Üslü ifadeler
+sinav: TYT AYT
+unite: uslu-koklu
+sinif: 9
+sira: 300
+onkosul: rasyonel-sayilar
+karisan: koklu-ifadeler
+kategori: excel.tyt.matematik.85a51a7cfcbaab213488 excel.ayt.matematik.85a51a7cfcbaab213488 excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Üs kurallarını doğru sırayla uygulayıp tabanları eşitleyerek sadeleştirmek; sıfır ve negatif üsün anlamını kavramak; toplama–çıkarmada ortak paranteze almak; üslü sayıları sıralamak ve üslü denklem/eşitsizlik çözmek.
+neden: "Üslü İfadeler ve Denklemler" başlığında 18 çıkmış TYT sorusu var; AYT'de üstel–logaritmik fonksiyonların, türev ve integralin dili üslü ifadelerdir. Kurallar oturmadan AYT'nin yarısı zorlaşır.
+kaynak: MEBİ TYT Konu Özeti — Üslü İfadeler ve Özellikleri, Üslü İfade İçeren Denklemler ve Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 21–24 | OGM Video Notları TYT 02 — Üslü Sayılar
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: üslü | kuvvet | taban | /\d\s*\^/ | /\^\s*\(?-?\d/ | üssü
+baslik-kurali: üslü ifade | üslü ve köklü ifadeler | /^9\.3\.4\.1/ | üslü sayılar | üslü denklem
+haric: √ | karekök | köklü | logaritma | log
+
+@tip kurallar 30 s2
+ad: Kurallarla sadeleştirme ve taban eşitleme
+ipucu: Farklı tabanlar (4, 8, 16, 27, 125 …) çarpım ve bölüm içinde: "$\frac{8^3 \cdot 4^2}{16^3}$ kaçtır?"
+strateji: Bütün tabanları aynı asala çevir ($8 = 2^3$, $27 = 3^3$). Çarpımda üsleri topla, bölümde çıkar, kuvvetin kuvvetinde çarp. Taban çevirmeyi parantezle yaz: $8^3 = (2^3)^3 = 2^9$.
+anahtar: işleminin sonucu | ifadesinin değeri | sadeleş | kaçtır
+
+@tip negatif-sifir 15 s1
+ad: Sıfır ve negatif üs, işaret
+ipucu: "$2^{-3}$", "$(\frac{1}{3})^{-2}$", "$(-2)^4$ ile $-2^4$", sıfırıncı kuvvet.
+strateji: $a^0 = 1$ ($a \neq 0$), $a^{-n} = \frac{1}{a^n}$; negatif üs kesri ters çevirir: $(\frac{a}{b})^{-n} = (\frac{b}{a})^n$. Negatif tabanın çift kuvveti pozitif, tek kuvveti negatiftir; $-2^4 = -16$ ama $(-2)^4 = 16$.
+anahtar: ^-1 | ^-2 | ^0 | negatif kuvvet | sıfırıncı
+
+@tip ortak-paranteze 20 s3
+ad: Toplama–çıkarmada ortak parantez
+ipucu: "$2^{x+2} + 2^{x+1} + 2^x = 56$", "$\frac{3^{n+2} - 3^n}{3^n}$" gibi aynı tabanlı toplamlar.
+strateji: Toplanan üslü ifadeleri en küçük kuvvet parantezine al: $2^{x+2} + 2^{x+1} + 2^x = 2^x(4 + 2 + 1) = 7 \cdot 2^x$. Toplamada üsler asla toplanmaz.
+anahtar: ^(x+1) | ^(x+2) | ^(n+1) | + 2^x | ortak paranteze
+
+@tip siralama 15 s4
+ad: Üslü sayıları sıralama
+ipucu: "$a = 3^{40}$, $b = 4^{30}$, $c = 5^{20}$ sıralaması".
+strateji: Tabanları ya da üsleri eşitle: üslerin EBOB'una göre $3^{40} = (3^4)^{10} = 81^{10}$ gibi yaz ve tabanları karşılaştır. Taban 0 ile 1 arasındaysa büyük üs küçük sayı verir; eşitlenemiyorsa sayıyı iki kuvvet arasına sıkıştır.
+anahtar: sıralaması | sıralanışı | < b < | doğru sıralama
+
+@tip denklem 20 s5
+ad: Üslü denklem ve eşitsizlikler
+ipucu: "$4^{x+1} = 8^{x-1}$", "$(x - 3)^{x+2} = 1$", "$(\frac{1}{2})^x < 8$".
+strateji: Tabanları eşitle, üsleri eşitle ($a \neq -1, 0, 1$). $a^b = 1$ için üç durum: üs 0 (taban ≠ 0), taban 1, taban $-1$ ve üs çift. Eşitsizlikte taban 1'den büyükse yön korunur, 0 ile 1 arasındaysa yön değişir.
+anahtar: denkleminin | eşitliğini sağlayan | = 1 | eşitsizliğinin | x kaçtır
+
+@ustalik
+kurallar 2 1-2
+negatif-sifir 1 1-2
+ortak-paranteze 1 1-3
+siralama 1 2-3
+denklem 1 1-3
+
+@oturum Üs, kurallar ve ortak parantez | s1 s2 s3
+@oturum Sıralama ve üslü denklemler | s4 s5
+
+@ontest
+::soru o1 tip=kurallar zorluk=1
+$2^3 \cdot 2^4$ işleminin sonucu aşağıdakilerden hangisidir?
+A) $2^1$ || Üsleri çıkardın; çarpımda üsler toplanır.
++B) $2^7$ || Doğru: aynı tabanlı çarpımda üsler toplanır.
+C) $2^{12}$ || Üsleri çarptın; kuvvetin kuvvetinde çarpılır.
+D) $4^7$ || Tabanlar çarpılmaz; taban aynı kalır.
+E) $4^{12}$ || İki hata birden.
+kontrol: 2^7
+cozum: $2^3 \cdot 2^4 = 2^{3+4} = 2^7 = 128$.
+
+::soru o2 tip=negatif-sifir zorluk=1
+$2^{-3}$ sayısının değeri kaçtır?
+A) $-8$ || Negatif üs sayıyı negatif yapmaz.
+B) $-\frac{1}{8}$ || Negatif üs işaret değil, ters çevirme demektir.
++C) $\frac{1}{8}$ || Doğru: $2^{-3} = \frac{1}{2^3}$.
+D) $\frac{1}{6}$ || $2 \cdot 3$ değil, $2^3 = 8$.
+E) $8$ || Ters çevirmeyi unuttun.
+kontrol: 1/8
+cozum: $2^{-3} = \frac{1}{2^3} = \frac{1}{8}$.
+
+::soru o3 tip=denklem zorluk=2
+$2^{x+1} = 32$ olduğuna göre $x$ kaçtır?
+A) 3 || $2^4 = 16$.
++B) 4 || Doğru: $32 = 2^5$, $x + 1 = 5$.
+C) 5 || $x + 1 = 5$; $x = 4$.
+D) 16 || $32 : 2$ işlemi üssü vermez.
+E) 31 || Üslü ifadeyle doğrusal ifade karıştırıldı.
+kontrol: 5-1
+cozum: $32 = 2^5$; tabanlar eşitlenince $x + 1 = 5$, $x = 4$.
+
+@bolum s1 8 | Üs nedir? Sıfır ve negatif üsün nedeni
+::fikir
+$a^n$, $n$ tane $a$'nın çarpımıdır. Üs her **1 azaldığında** sayı **$a$'ya bölünür**; bu örüntü $a^0 = 1$ ve $a^{-n} = \frac{1}{a^n}$ sonuçlarını zorunlu kılar.
+
+::tablo baslik="2'nin kuvvetleri: her adımda 2'ye bölünür"
+| Üs | 3 | 2 | 1 | 0 | $-1$ | $-2$ | $-3$ |
+| $2^n$ | 8 | 4 | 2 | 1 | $\frac{1}{2}$ | $\frac{1}{4}$ | $\frac{1}{8}$ |
+
+::duzey
+L1: $2^3 = 2 \cdot 2 \cdot 2 = 8$. Üssü bir azaltınca 2'ye bölersin: $2^2 = 4$, $2^1 = 2$. Bir kez daha bölünce $2^0 = 1$ olur; bir kez daha bölünce $2^{-1} = \frac{1}{2}$. Negatif üs "ters çevir" demektir, sayıyı negatif yapmaz.
+L2: $a^0 = 1$ ($a \neq 0$; $0^0$ belirsizdir), $a^{-n} = \frac{1}{a^n}$, $(\frac{a}{b})^{-n} = (\frac{b}{a})^n$. İşaret: negatif tabanın çift kuvveti pozitif, tek kuvveti negatiftir. $-2^4$ ile $(-2)^4$ farklıdır: üs yalnız hemen önündeki sayıya etki eder, $-2^4 = -16$.
+L3: Tanımlar kuralları korumak için seçilmiştir: $a^m \cdot a^n = a^{m+n}$ kuralının $n = 0$'da da geçerli olması için $a^0 = 1$ olmalı; $a^n \cdot a^{-n} = a^0 = 1$ olması için $a^{-n} = \frac{1}{a^n}$ olmalı. Ezberlemek yerine bu tutarlılığı hatırlarsan kuralı unutmazsın.
+
+::yanilgi m1 tip=negatif-sifir
+yanlis: $2^{-3} = -8$
+neden: Negatif üs bir işaret değil, çarpma işlemine göre ters alma talimatıdır.
+dogru: $2^{-3} = \frac{1}{2^3} = \frac{1}{8}$; sayı pozitif kalır.
+
+::soru c1 tip=negatif-sifir zorluk=1
+$(-2)^3 + (-2)^2 - 2^0$ işleminin sonucu kaçtır?
+A) $-7$ || $(-2)^2 = 4$ pozitiftir.
++B) $-5$ || Doğru: $-8 + 4 - 1 = -5$.
+C) $-3$ || $2^0 = 1$, 0 değil.
+D) $3$ || $(-2)^3 = -8$ negatiftir.
+E) $11$ || İşaretleri tekrar kontrol et.
+kontrol: -8+4-1
+cozum: $(-2)^3 = -8$ (tek kuvvet), $(-2)^2 = 4$ (çift kuvvet), $2^0 = 1$. $-8 + 4 - 1 = -5$.
+
+@bolum s2 10 | Kurallar ve taban eşitleme
+::fikir
+Önce bütün tabanları **aynı asala** çevir, sonra kuralları uygula: çarpımda üsler **toplanır**, bölümde **çıkarılır**, kuvvetin kuvvetinde **çarpılır**.
+
+::bilmelisin
+- $a^m \cdot a^n = a^{m+n}$ ve $\frac{a^m}{a^n} = a^{m-n}$
+- $(a^m)^n = a^{m \cdot n}$
+- $a^n \cdot b^n = (a \cdot b)^n$ ve $\frac{a^n}{b^n} = (\frac{a}{b})^n$
+- Sık tabanlar: $4 = 2^2$, $8 = 2^3$, $16 = 2^4$, $32 = 2^5$, $9 = 3^2$, $27 = 3^3$, $81 = 3^4$, $25 = 5^2$, $125 = 5^3$
+
+::eslestir e1 baslik="Kuralı sonucuyla eşleştir"
+- $a^5 \cdot a^3$ :: $a^8$
+- $\frac{a^5}{a^3}$ :: $a^2$
+- $(a^5)^3$ :: $a^{15}$
+- $2^5 \cdot 5^5$ :: $10^5$
+
+::duzey
+L1: $2^3 \cdot 2^4$'te 3 tane 2 ile 4 tane 2'yi yan yana çarpıyorsun: toplam 7 tane 2. Bölümde ise paydaki ve paydadaki 2'ler birbirini götürür: $\frac{2^5}{2^3}$'te 3 tane sadeleşir, 2 tane kalır.
+L2: Farklı tabanlar birleşmez; önce ortak asala çevir: $\frac{8^3 \cdot 4^2}{16^3} = \frac{2^9 \cdot 2^4}{2^{12}} = 2^{13 - 12} = 2$. Üsleri aynı, tabanları farklı çarpımlarda tabanları birleştir: $2^5 \cdot 5^5 = 10^5$.
+L3: Kuvvetin kuvveti ile kuvvetin üssü karıştırılmamalı: $(2^3)^2 = 2^6$ ama $2^{3^2} = 2^9$. Üs kuleleri yukarıdan aşağı okunur. Sınavda "taban eşitleme" ilk refleks olmalı; sayıları açıp hesaplamak hem uzun hem hataya açıktır.
+
+::ornek baslik="Tabanları eşitle"
+soru: $\frac{8^3 \cdot 4^2}{16^3}$ işleminin sonucu kaçtır?
+1. Tabanları 2'ye çevir: $8^3 = 2^9$, $4^2 = 2^4$, $16^3 = 2^{12}$. || $(2^3)^3 = 2^9$
+2. Pay: $2^{9+4} = 2^{13}$; bölüm: $2^{13 - 12} = 2^1$. || Çarpımda topla, bölümde çıkar.
+cevap: $2$
+
+::yanilgi m2 tip=kurallar
+yanlis: $2^3 \cdot 2^4 = 2^{12}$
+neden: Üsler yalnız kuvvetin kuvvetinde çarpılır; aynı tabanlı çarpımda toplanır.
+dogru: $2^3 \cdot 2^4 = 2^7$.
+
+::soru c2 tip=kurallar zorluk=1
+$\frac{9^2 \cdot 27}{3^5}$ işleminin sonucu kaçtır?
+A) 1 || Pay $3^7$, payda $3^5$.
+B) 3 || Üsleri yeniden topla: $4 + 3 = 7$.
++C) 9 || Doğru: $\frac{3^4 \cdot 3^3}{3^5} = 3^2$.
+D) 27 || $3^3$ değil, $3^2$.
+E) 81 || Paydayı sadeleştirmeyi unuttun.
+kontrol: 3^4*3^3/3^5
+cozum: $9^2 = 3^4$, $27 = 3^3$. $\frac{3^{4+3}}{3^5} = 3^2 = 9$.
+
+@bolum s3 8 | Toplama–çıkarmada ortak parantez
+::fikir
+Toplama ve çıkarmada **üsler toplanmaz**; aynı tabanlı terimleri **en küçük kuvvet parantezine** alırsın: $2^{x+2} + 2^{x+1} + 2^x = 2^x(4 + 2 + 1)$.
+
+::duzey
+L1: $2^x + 2^x$, aynı şeyden iki tane demektir: $2 \cdot 2^x = 2^{x+1}$. $3 \cdot 3^x = 3^{x+1}$. Ama $2^x + 2^x$ asla $2^{2x}$ değildir.
+L2: Her terimi en küçük kuvvetin katı olarak yaz: $2^{x+2} = 4 \cdot 2^x$, $2^{x+1} = 2 \cdot 2^x$. Sonra katsayıları topla. Kesirli ifadelerde pay ve paydayı ayrı ayrı parantezine alıp sadeleştir.
+L3: Bu yöntem üslü denklemleri doğrusal hâle getirir: $3^{x+2} - 3^x = 72 \Rightarrow 3^x(9 - 1) = 72 \Rightarrow 3^x = 9$. AYT'de üstel denklemlerde $2^x = t$ dönüşümü aynı fikrin genelleştirilmesidir.
+
+::ornek baslik="Parantez denklemi çözer"
+soru: $3^{x+2} - 3^x = 72$ olduğuna göre $x$ kaçtır?
+1. Ortak parantez: $3^x(3^2 - 1) = 3^x \cdot 8$. || En küçük kuvvet $3^x$.
+2. $8 \cdot 3^x = 72 \Rightarrow 3^x = 9 = 3^2$. || Tek üslü terim kaldı.
+3. $x = 2$. || Tabanlar eşit, üsler eşit.
+cevap: $x = 2$
+
+::tamamla baslik="Kesirli ifade"
+soru: $\frac{5^{n+1} + 5^n}{5^n}$ ifadesinin değeri kaçtır?
+1. Payı $5^n$ parantezine al: $5^n(5 + 1) = 6 \cdot 5^n$.
+?2. Sadeleştir: $\frac{6 \cdot 5^n}{5^n} = 6$.
+cevap: $6$ ($n$'den bağımsız)
+
+::yanilgi m3 tip=ortak-paranteze
+yanlis: $2^x + 2^x = 2^{2x}$
+neden: Toplamada üsler toplanmaz; aynı terimden iki tane vardır.
+dogru: $2^x + 2^x = 2 \cdot 2^x = 2^{x+1}$.
+
+::soru c3 tip=ortak-paranteze zorluk=2
+$2^{x+2} + 2^{x+1} + 2^x = 56$ olduğuna göre $x$ kaçtır?
+A) 2 || $7 \cdot 2^2 = 28$.
++B) 3 || Doğru: $7 \cdot 2^x = 56$, $2^x = 8$.
+C) 4 || $7 \cdot 16 = 112$.
+D) 5 || Fazla.
+E) 8 || $2^x = 8$; istenen $x$.
+kontrol: log(8)/log(2)
+cozum: $2^x(4 + 2 + 1) = 7 \cdot 2^x = 56$, yani $2^x = 8 = 2^3$ ve $x = 3$.
+
+@bolum s4 8 | Üslü sayıları sıralama
+::fikir
+Ya **tabanları** ya **üsleri** eşitle. Üsler eşitse büyük taban büyüktür; tabanlar eşitse (taban > 1) büyük üs büyüktür. Taban 0 ile 1 arasındaysa sıra **tersine** döner.
+
+::duzey
+L1: $3^{40}$, $4^{30}$, $5^{20}$'yi doğrudan karşılaştıramazsın; ama üslerin hepsi 10'un katı: $3^{40} = 81^{10}$, $4^{30} = 64^{10}$, $5^{20} = 25^{10}$. Artık üsler aynı; tabanı büyük olan büyüktür.
+L2: Üslerin EBOB'una göre yaz ve tabanları karşılaştır ya da tabanları ortak asala çevirip üsleri karşılaştır. $(\frac{1}{2})^3 = \frac{1}{8} < (\frac{1}{2})^2 = \frac{1}{4}$: taban 1'den küçükse üs büyüdükçe sayı küçülür.
+L3: Eşitlenemiyorsa sıkıştır: $2^x = 17$ ise $16 < 17 < 32$ olduğundan $4 < x < 5$. Aynı yolla $3^y = 29$ için $3 < y < 4$. Bu, logaritmanın sezgisel hâlidir ve AYT'de basamak sayısı sorularına zemin hazırlar.
+
+::ornek baslik="Üsleri eşitle"
+soru: $a = 2^{30}$, $b = 3^{20}$, $c = 5^{10}$ sayılarını sırala.
+1. Üslerin EBOB'u 10: $a = (2^3)^{10} = 8^{10}$, $b = (3^2)^{10} = 9^{10}$, $c = 5^{10}$. || Ortak üs.
+2. Tabanlar: $5 < 8 < 9$. || Üs aynı, taban büyük olan büyük.
+cevap: $c < a < b$
+
+::yanilgi m4 tip=siralama
+yanlis: Üssü büyük olan üslü sayı her zaman daha büyüktür.
+neden: Taban 0 ile 1 arasındaysa üs büyüdükçe sayı küçülür: $(0{,}5)^3 < (0{,}5)^2$. Tabanlar farklıysa üsse bakmak tek başına yetmez.
+dogru: Önce tabanları ya da üsleri eşitle, sonra karşılaştır; taban 1'den küçükse sırayı ters çevir.
+
+::soru c4 tip=siralama zorluk=2
+$a = 3^{40}$, $b = 4^{30}$, $c = 5^{20}$ olduğuna göre doğru sıralama hangisidir?
+A) $a < b < c$ || Üsler eşitlenince tabanlar $81, 64, 25$.
+B) $b < a < c$ || $c$ en küçüktür.
+C) $c < a < b$ || $81 > 64$, yani $a > b$.
+D) $a < c < b$ || $a$ en büyüktür.
++E) $c < b < a$ || Doğru: $25^{10} < 64^{10} < 81^{10}$.
+cozum: Üsleri 10'da eşitle: $a = 81^{10}$, $b = 64^{10}$, $c = 25^{10}$. Sıralama $c < b < a$.
+
+@bolum s5 10 | Üslü denklemler ve eşitsizlikler
+::fikir
+Tabanlar eşitse üsler eşittir: $a^m = a^n \Rightarrow m = n$ (yeter ki $a \neq -1, 0, 1$). $a^b = 1$ ise **üç durum** vardır: üs 0, taban 1 ya da taban $-1$ ve üs çift.
+
+::duzey
+L1: $2^{x+1} = 32$'de 32'yi 2'nin kuvveti olarak yaz: $2^5$. Tabanlar aynı olunca üsler de aynı olmalı: $x + 1 = 5$.
+L2: $4^{x+1} = 8^{x-1}$: $2^{2x+2} = 2^{3x-3}$, yani $2x + 2 = 3x - 3$, $x = 5$. $x^n = y^n$ denkleminde $n$ tekse $x = y$, çiftse $|x| = |y|$. $a^b = 1$ için: $b = 0$ (ve $a \neq 0$), $a = 1$, veya $a = -1$ ve $b$ çift.
+L3: Eşitsizlikte taban 1'den büyükse üsler aynı yönde karşılaştırılır; 0 ile 1 arasındaysa yön değişir: $(\frac{1}{2})^x < 8 \Rightarrow 2^{-x} < 2^3 \Rightarrow -x < 3 \Rightarrow x > -3$. Tabanı $\frac{1}{2}$ olarak bırakıp yön değiştirerek de aynı sonuca varırsın.
+
+::ornek baslik="Tabanları eşitle"
+soru: $4^{x+1} = 8^{x-1}$ denklemini çöz.
+1. Tabanları 2'ye çevir: $2^{2(x+1)} = 2^{3(x-1)}$. || Kuvvetin kuvveti.
+2. Üsleri eşitle: $2x + 2 = 3x - 3$. || Taban 2, istisna değil.
+3. $x = 5$. || Sağlama: $4^6 = 2^{12} = 8^4$ ✓
+cevap: $x = 5$
+
+::tamamla baslik="$a^b = 1$ üç durum"
+soru: $(x - 3)^{x+2} = 1$ denklemini sağlayan $x$ değerlerinin toplamı kaçtır?
+1. Üs 0: $x + 2 = 0 \Rightarrow x = -2$; taban $-5 \neq 0$ ✓.
+?2. Taban 1: $x - 3 = 1 \Rightarrow x = 4$ ✓. || Her kuvveti 1'dir.
+?3. Taban $-1$: $x - 3 = -1 \Rightarrow x = 2$; üs $4$ çift ✓. Toplam $-2 + 4 + 2 = 4$.
+cevap: $4$
+
+::bosluk b1 cevap=-1 tip=denklem zorluk=2
+$3^{2x - 1} = \frac{1}{27}$ olduğuna göre $x$ kaçtır?
+cozum: $\frac{1}{27} = 3^{-3}$; $2x - 1 = -3$, $x = -1$.
+
+::yanilgi m5 tip=denklem
+yanlis: $a^b = 1$ ise mutlaka $b = 0$'dır.
+neden: Taban 1 olunca her üs 1 verir; taban $-1$ ve üs çift olunca da sonuç 1'dir.
+dogru: Üç durumu da kontrol et: $b = 0$ ($a \neq 0$), $a = 1$, $a = -1$ ve $b$ çift.
+
+::soru c5 tip=denklem zorluk=2
+$9^{x - 1} = 27^{2 - x}$ olduğuna göre $x$ kaçtır?
+A) $\frac{5}{8}$ || Kesri ters yazdın.
+B) $\frac{4}{5}$ || Üsleri yeniden eşitle: $2x - 2 = 6 - 3x$.
+C) $1$ || $9^0 = 1$, $27^1 = 27$; eşit değil.
++D) $\frac{8}{5}$ || Doğru: $5x = 8$.
+E) $2$ || $9^1 = 9$, $27^0 = 1$.
+kontrol: 8/5
+cozum: $3^{2(x-1)} = 3^{3(2-x)}$, yani $2x - 2 = 6 - 3x$ ve $5x = 8$, $x = \frac{8}{5}$.
+
+::ozet
+- $a^0 = 1$, $a^{-n} = \frac{1}{a^n}$; negatif tabanın çift kuvveti pozitif.
+- Önce tabanları ortak asala çevir; çarpımda topla, bölümde çıkar, kuvvetin kuvvetinde çarp.
+- Toplamada üs toplanmaz: en küçük kuvvet parantezine al.
+- Sıralamada taban ya da üs eşitle; taban 1'den küçükse sıra ters.
+- Denklemde tabanları eşitle; $a^b = 1$ için üç durum.
+
+@pratik
+- Çalışma sırası: önce 2, 3 ve 5'in ilk kuvvetlerini (ör. $2^{10} = 1024$, $3^5 = 243$) ve sık tabanları ($8 = 2^3$, $27 = 3^3$) ezberle; taban eşitleme hızını bunlar belirler.
+- Sınav yaklaşımı: üslü ifade görünce ilk iş tabanları ortak asala çevirmek; sayıları açıp hesaplamaya çalışma.
+- Toplama içeren ifadelerde (ör. $2^{x+2} + 2^x$) refleks olarak en küçük kuvveti paranteze al; üslü denklemlerin çoğu bu adımla doğrusala iner.
+- En sık tuzaklar: $2^{-3}$'ü negatif sanmak, $-2^4$ ile $(-2)^4$'ü karıştırmak, toplamada üsleri toplamak, $a^b = 1$'de taban $-1$ durumunu unutmak.
+- Hedef süre soru başı 60 saniye. Konu testinden sonra çıkmış sorular setini çöz; AYT'ye hazırlanıyorsan üstel fonksiyon dersine geçmeden bu konunun ustalık testini mutlaka geç.
+
+@kartlar
+- $a^m \cdot a^n$ = ? :: $a^{m+n}$
+- $\frac{a^m}{a^n}$ = ? :: $a^{m-n}$
+- $(a^m)^n$ = ? :: $a^{mn}$
+- $a^{-n}$ = ? :: $\frac{1}{a^n}$
+- $a^0$ = ? ($a \neq 0$) :: $1$ ($0^0$ belirsiz)
+- $-2^4$ ile $(-2)^4$ :: $-16$ ve $16$
+- $2^x + 2^x$ = ? :: $2^{x+1}$
+- $a^b = 1$'in üç durumu :: $b = 0$ ($a \neq 0$), $a = 1$, $a = -1$ ve $b$ çift.
+- $(\frac{1}{2})^x < 8$ çözümü :: $x > -3$ (taban 1'den küçükse yön değişir)
+
+@ozet
+- Sıfır ve negatif üs, kuralların tutarlı kalması için tanımlanmıştır: $a^0 = 1$, $a^{-n} = \frac{1}{a^n}$.
+- Sadeleştirmede tabanları ortak asala çevir; çarpımda üsleri topla, bölümde çıkar, kuvvetin kuvvetinde çarp.
+- Toplama–çıkarmada ortak paranteze al; üsler toplanmaz.
+- Sıralamada taban ya da üs eşitlenir; 0 ile 1 arasındaki tabanlarda sıra tersine döner.
+- Üslü denklemde tabanlar eşitlenip üsler eşitlenir; $a^b = 1$ üç durumla çözülür.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Neden $2^0 = 1$ ve $2^{-1} = \frac{1}{2}$?" (2'nin kuvvetleri tablosunu kullan.) (2) "$2^x + 2^x$ neden $2^{2x}$ değil de $2^{x+1}$'dir?"
+
+@havuz
+::soru h1 tip=kurallar zorluk=2
+$\frac{25^3 \cdot 125}{5^7}$ işleminin sonucu kaçtır?
+A) $\frac{1}{5}$
+B) 5
++C) 25
+D) 125
+E) 625
+kontrol: 5^6*5^3/5^7
+cozum: $25^3 = 5^6$, $125 = 5^3$. $\frac{5^9}{5^7} = 5^2 = 25$.
+
+::soru h2 tip=negatif-sifir zorluk=2
+$\left(\frac{1}{3}\right)^{-2} + (-1)^5 \cdot 4^0$ işleminin sonucu kaçtır?
+A) 6
+B) 7
++C) 8
+D) 9
+E) 10
+kontrol: 9-1
+cozum: $(\frac{1}{3})^{-2} = 3^2 = 9$; $(-1)^5 \cdot 4^0 = -1 \cdot 1 = -1$. Toplam 8.
+
+::soru h3 tip=ortak-paranteze zorluk=2
+$\frac{3^{x+2} - 3^{x+1}}{3^x}$ ifadesinin değeri kaçtır?
+A) 3
++B) 6
+C) 9
+D) 12
+E) 27
+kontrol: 9-3
+cozum: Pay: $3^x(9 - 3) = 6 \cdot 3^x$. $\frac{6 \cdot 3^x}{3^x} = 6$.
+
+::soru h4 tip=siralama zorluk=3
+$a = 2^{-20}$, $b = 4^{-8}$, $c = 8^{-7}$ olduğuna göre doğru sıralama hangisidir?
+A) $a < b < c$
++B) $c < a < b$
+C) $b < a < c$
+D) $c < b < a$
+E) $a < c < b$
+cozum: Hepsi 2 tabanında: $a = 2^{-20}$, $b = 2^{-16}$, $c = 2^{-21}$. Taban 1'den büyük, üs büyüyen büyük: $-21 < -20 < -16$, yani $c < a < b$.
+
+::soru h5 tip=denklem zorluk=2
+$5^{2x - 3} = 125^{x - 2}$ olduğuna göre $x$ kaçtır?
+A) 1
+B) 2
++C) 3
+D) 4
+E) 6
+kontrol: 6-3
+cozum: $125^{x-2} = 5^{3x - 6}$. $2x - 3 = 3x - 6$, $x = 3$.

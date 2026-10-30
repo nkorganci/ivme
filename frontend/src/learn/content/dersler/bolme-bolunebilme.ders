@@ -1,0 +1,320 @@
+@ders bolme-bolunebilme
+baslik: Bölme ve Bölünebilme Kuralları
+kisa: Bölünebilme
+sinav: TYT AYT
+unite: temel
+sinif: 9
+sira: 120
+onkosul: sayi-basamaklari
+kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8 excel.tyt.matematik.c15cc6aeffd9ec9ece58 excel.ayt.matematik.c15cc6aeffd9ec9ece58
+hedef: Bölme algoritmasını ($A = B \cdot C + K$) denkleme çevirmek; 2, 3, 4, 5, 8, 9, 10, 11 kurallarıyla bilinmeyen rakamı bulmak; 6, 12, 15, 18, 36, 45 gibi bileşik bölenleri aralarında asal çarpanlara ayırarak kullanmak; kalanlarla toplama, çarpma ve kuvvet almak.
+neden: TYT'de 2018–2026 arasında 11 çıkmış "Bölünebilme Kuralları" sorusu var; OGM bankasında bu başlıkta 361 TYT sorusu bulunuyor. Bölünebilme aynı zamanda EBOB–EKOK, rasyonel sayılar ve polinomlarda kalan bulmanın temelidir.
+kaynak: MEBİ TYT Konu Özeti — Tam Sayılarda Kalanlı Bölme, Bölünebilme Kuralları 1–2 | OGM 9. Sınıf Konu Özetleri 09–10 | Dört Dörtlük TYT Matematik — Bölünebilme Kuralları
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: bölün | bölümünden kalan | tam bölün | kalansız | bölünebilme | ile bölümü | bölen | bölünen | bölüm | kalan kaçtır
+baslik-kurali: bölme - bölünebilme | bölünebilme kuralları | /^9\.3\.2\.1/ | kalanlı bölme | bölünebilme
+haric: ebob | ekok | asal çarpan | pozitif bölen | periyot | günde bir
+
+@tip bolme-algoritmasi 25 s1
+ad: Bölme algoritması: bölünen, bölen, bölüm, kalan
+ipucu: "… ile bölündüğünde bölüm 12, kalan 5", "kalan en büyük değerini aldığında", art arda iki bölme işlemi.
+strateji: Her bölmeyi $A = B \cdot C + K$ ve $0 \leq K < B$ diye yaz. En büyük kalan $B - 1$'dir. Art arda bölmelerde içteki denklemi dıştakinin yerine koy: $A = 6B + 4$, $B = 5C + 3$ ise $A = 30C + 22$.
+anahtar: bölüm | kalan | bölündüğünde | bölünen | en büyük kalan | bölen
+
+@tip kural 35 s2
+ad: Bölünebilme kuralıyla rakam bulma
+ipucu: "4a8 sayısı 9 ile tam bölünüyor", "73a sayısının 5 ile bölümünden kalan 3".
+strateji: Önce son basamağa bakan kuralları uygula (2, 5, 10), sonra son iki/üç basamak (4, 8), en son bütün rakamlara bakanları (3, 9, 11). Her adım olası rakam kümesini daraltır; kesişimi al.
+anahtar: ile tam bölün | ile bölünebil | rakamlar toplamı | ile bölümünden kalan | 3 ile | 4 ile | 9 ile | 11 ile | 8 ile
+
+@tip bilesik-kural 20 s3
+ad: Bileşik sayılarla bölünebilme
+ipucu: "15 ile", "36 ile", "45 ile", "72 ile tam bölünebilen" sayılar.
+strateji: Böleni **aralarında asal** çarpanlara ayır: $12 = 3 \cdot 4$, $18 = 2 \cdot 9$, $36 = 4 \cdot 9$, $45 = 5 \cdot 9$, $72 = 8 \cdot 9$. İki kuralı ayrı ayrı uygula ve ortak çözümleri al. $12 = 2 \cdot 6$ gibi ortak çarpanlı ayrıştırma yanlış sonuç verir.
+anahtar: 6 ile | 12 ile | 15 ile | 18 ile | 24 ile | 36 ile | 45 ile | 72 ile | 30 ile
+
+@tip kalan-islem 20 s4
+ad: Kalanlarla işlem
+ipucu: "A'nın 7 ile bölümünden kalan 5 ise $A^2 + 3A$'nın kalanı", "$3^{20}$'nin 5 ile bölümünden kalan".
+strateji: Sayının yerine kalanını koy, işlemi yap, sonucu yine aynı bölene böl. Kuvvetlerde kalanlar bir döngüye girer; döngünün uzunluğunu bul, üssü bu uzunluğa böl.
+anahtar: bölümünden kalan | kalanı kaçtır | kalan kaç | ^ | üssü
+
+@ustalik
+bolme-algoritmasi 1 1-3
+kural 2 1-2
+bilesik-kural 2 1-3
+kalan-islem 1 1-3
+
+@oturum Bölme algoritması ve temel kurallar | s1 s2
+@oturum Bileşik bölenler ve kalanlarla işlem | s3 s4
+
+@ontest
+::soru o1 tip=bolme-algoritmasi zorluk=1
+Bir doğal sayı 7 ile bölündüğünde bölüm 12, kalan 5 oluyor. Bu sayı kaçtır?
+A) 79 || Kalanı ekleyeceğine çıkardın: $84 - 5$.
+B) 84 || Kalanı eklemedin.
++C) 89 || Doğru: $7 \cdot 12 + 5 = 89$.
+D) 91 || $7 \cdot 13$; bölüm 12.
+E) 96 || $7 + 12$ gibi bir toplamdan yola çıkma; $A = B \cdot C + K$.
+kontrol: 7*12+5
+cozum: Bölünen $= $ bölen $\cdot$ bölüm $+$ kalan $= 7 \cdot 12 + 5 = 89$.
+
+::soru o2 tip=kural zorluk=1
+Üç basamaklı $4a8$ sayısı 9 ile tam bölündüğüne göre $a$ kaçtır?
+A) 3 || $4 + 3 + 8 = 15$, 9'un katı değil.
+B) 4 || $4 + 4 + 8 = 16$.
+C) 5 || $4 + 5 + 8 = 17$.
++D) 6 || Doğru: $4 + 6 + 8 = 18$.
+E) 9 || $4 + 9 + 8 = 21$.
+kontrol: 18-12
+cozum: Rakamlar toplamı $12 + a$, 9'un katı olmalı: $12 + a = 18$, yani $a = 6$.
+
+::soru o3 tip=kalan-islem zorluk=2
+$A$'nın 5 ile bölümünden kalan 3, $B$'nin 5 ile bölümünden kalan 4'tür. $A + 2B$ sayısının 5 ile bölümünden kalan kaçtır?
+A) 0 || $3 + 8 = 11$; 11'in 5 ile bölümünden kalan 0 değil.
++B) 1 || Doğru: $3 + 2 \cdot 4 = 11$, kalan 1.
+C) 2 || Hesabı yeniden yap: $3 + 8 = 11$.
+D) 3 || Yalnız $A$'nın kalanını aldın.
+E) 4 || Yalnız $B$'nin kalanını aldın.
+kontrol: 3+2*4-10
+cozum: Sayıların yerine kalanları koy: $3 + 2 \cdot 4 = 11$. $11 = 5 \cdot 2 + 1$; kalan 1.
+
+@bolum s1 10 | Bölme algoritması
+::fikir
+Her bölme şu denklemdir: **Bölünen = Bölen × Bölüm + Kalan**, ve kalan her zaman bölenden küçüktür: $0 \leq K < B$.
+
+::duzey
+L1: 23 şekeri 5 çocuğa eşit paylaştırırsan her biri 4 şeker alır ve 3 şeker artar: $23 = 5 \cdot 4 + 3$. Artan şeker 5 olsaydı herkese bir tane daha verirdin; bu yüzden kalan, bölenden küçük olmak zorundadır.
+L2: $A = B \cdot C + K$ ve $0 \leq K < B$. Kalan 0 ise $A$, $B$'ye tam bölünür. Kalanın alabileceği en büyük değer $B - 1$'dir; "bölünen en çok kaç" sorularında kalanı $B - 1$ seç. Bölünen ve bölen bir $k$ sayısının katıysa kalan da $k$'nin katıdır.
+L3: Art arda bölmeler iç içe denklemlerdir: $A = 6B + 4$ ve $B = 5C + 3$ ise $A = 6(5C + 3) + 4 = 30C + 22$. Buradan $A$'nın 30 ile bölümünden kalan 22'dir; ayrıca $A$'nın 6 ile bölümünden kalan 4'tür. Kalan bölümden küçükse bölen ile bölüm yer değiştirince kalan değişmez.
+
+::ornek baslik="Kalan en büyük olunca"
+soru: Bir doğal sayı 9 ile bölündüğünde bölüm 14'tür. Kalan en büyük değerini aldığında bölünen kaçtır?
+1. Kalan 9'dan küçük olmalı; en büyüğü 8. || $0 \leq K < 9$.
+2. Bölünen $= 9 \cdot 14 + 8 = 126 + 8 = 134$. || $A = B \cdot C + K$.
+cevap: $134$
+
+::tamamla baslik="İç içe bölmeler"
+soru: $A = 6B + 4$ ve $B = 5C + 3$ ($A, B, C$ doğal sayı). $A$'nın 30 ile bölümünden kalan kaçtır?
+1. $B$'nin ifadesini $A$'da yerine koy: $A = 6(5C + 3) + 4$.
+?2. Dağıt: $A = 30C + 18 + 4 = 30C + 22$. || Çarpma toplama üzerine dağılır.
+?3. $22 < 30$ olduğundan kalan 22'dir.
+cevap: $22$
+
+::yanilgi m1 tip=bolme-algoritmasi
+yanlis: 5 ile bölmede kalan 5 olabilir.
+neden: Kalan bölene eşit olursa bölüme bir eklenebilirdi; bölme tamamlanmamış demektir.
+dogru: Kalan her zaman $0 \leq K < B$; 5 ile bölmede kalan 0, 1, 2, 3 veya 4'tür.
+
+::soru c1 tip=bolme-algoritmasi zorluk=2
+$A$ ve $B$ doğal sayılar ve $A = 8B + 5$'tir. $A$'nın 4 ile bölümünden kalan kaçtır?
+A) 0 || $8B$ 4'e bölünür ama $+5$ kalan bırakır.
++B) 1 || Doğru: $8B$ 4'ün katı; $5 = 4 + 1$.
+C) 2 || $5$'in 4 ile bölümünden kalan 1'dir.
+D) 3 || Kalanı yanlış hesapladın.
+E) 5 || Kalan bölenden (4) küçük olmalı.
+kontrol: 5-4
+cozum: $8B = 4 \cdot 2B$ her zaman 4'e bölünür. $A = 4 \cdot 2B + 5 = 4(2B + 1) + 1$; kalan 1.
+
+@bolum s2 10 | Temel bölünebilme kuralları
+::fikir
+Kurallar üç gruptadır: **son basamak** (2, 5, 10), **son iki/üç basamak** (4, 25 / 8) ve **bütün rakamlar** (3, 9, 11). Önce son basamağa bakan kuralla başla; olasılıklar hızla daralır.
+
+::tablo baslik="Bölünebilme kuralları ve kalan"
+| Bölen | Tam bölünme koşulu | Kalan nasıl bulunur? |
+| 2 | Birler basamağı çift | Birler basamağının 2 ile kalanı |
+| 3 | Rakamlar toplamı 3'ün katı | Rakamlar toplamının 3 ile kalanı |
+| 4 | Son iki basamak 4'ün katı | Son iki basamağın 4 ile kalanı |
+| 5 | Birler basamağı 0 veya 5 | Birler basamağının 5 ile kalanı |
+| 8 | Son üç basamak 8'in katı | Son üç basamağın 8 ile kalanı |
+| 9 | Rakamlar toplamı 9'un katı | Rakamlar toplamının 9 ile kalanı |
+| 10 | Birler basamağı 0 | Birler basamağı |
+| 11 | Sağdan $+, -, +, -$ ile toplam 11'in katı | Bu toplamın 11 ile kalanı |
+
+::eslestir e1 baslik="Bölen ile bakacağın yeri eşleştir"
+- 4 ile bölünme :: son iki basamak
+- 8 ile bölünme :: son üç basamak
+- 9 ile bölünme :: rakamlar toplamı
+- 5 ile bölünme :: birler basamağı 0 ya da 5
+- 11 ile bölünme :: sağdan $+, -, +, -$ toplamı
+
+::duzey
+L1: 10'luk sistemde her basamak 10'un bir kuvvetidir. 10, 2'ye ve 5'e bölündüğü için yalnız son basamağa bakmak yeter. 100, 4'e bölündüğü için 4'te son iki basamağa, 1000, 8'e bölündüğü için 8'de son üç basamağa bakarız.
+L2: 3 ve 9 kuralının nedeni: $10 = 9 + 1$, $100 = 99 + 1$; yani her basamak değeri 9'un katından 1 fazladır. Bu yüzden sayının 9 ile kalanı, rakamlarının toplamının 9 ile kalanına eşittir. Bilinmeyen rakam sorularında önce kalanı en kesin belirleyen kuralı uygula.
+L3: 11 kuralında $10 \equiv -1$ (11'e göre) olduğundan basamak değerleri sırayla $+1, -1, +1, \ldots$ gibi davranır. Toplam negatif çıkarsa 11'in katlarını ekleyerek kalanı bul. "Kalan 3" gibi sorularda kural, tam bölünmeyi değil kalanı belirler: $73a$'nın 5 ile kalanı 3 ise $a \in \{3, 8\}$.
+
+::ornek baslik="İki kural birlikte"
+soru: Dört basamaklı $5a4b$ sayısı hem 4 hem 9 ile tam bölünüyor. $a + b$ en çok kaçtır?
+1. 4 kuralı: son iki basamak $4b$; $40, 44, 48$ 4'ün katı, yani $b \in \{0, 4, 8\}$. || Önce son basamaklara bakan kural.
+2. 9 kuralı: $5 + a + 4 + b = 9 + a + b$, 9'un katı olmalı; $a + b \in \{0, 9, 18\}$. || Rakamlar en çok 9 olduğundan $a + b \leq 18$.
+3. $a + b = 18$ için $a = b = 9$ gerekir ama $b \in \{0, 4, 8\}$. Bu yüzden en büyük $a + b = 9$ (ör. $a = 1$, $b = 8$). || Kesişimde olmayan seçenek elenir.
+cevap: $9$
+
+::yanilgi m2 tip=kural
+yanlis: Bir sayının 4 ile bölünmesi için birler basamağı 4'ün katı olmalıdır.
+neden: 4 ile bölünme son **iki** basamağa bakılarak anlaşılır: 116 4'e bölünür ama 6, 4'ün katı değildir.
+dogru: Son iki basamağın oluşturduğu sayı 4'ün katıysa sayı 4'e bölünür.
+
+::soru c2 tip=kural zorluk=1
+Üç basamaklı $73a$ sayısı 3 ile tam bölünüyor ve 5 ile bölümünden kalan 3'tür. Buna göre $a$ kaçtır?
+A) 1 || $7 + 3 + 1 = 11$, 3'ün katı değil.
+B) 2 || 3 ile bölünür ama 5 ile kalanı 2 olur.
+C) 3 || 5 ile kalanı 3 ama rakamlar toplamı 13.
+D) 5 || 5 ile tam bölünür, kalan 0.
++E) 8 || Doğru: 5 ile kalan 3 ve $7 + 3 + 8 = 18$.
+kontrol: 18-10
+cozum: 5 ile kalan 3 ise birler basamağı 3 veya 8. 3 ile bölünme: $10 + a$, 3'ün katı. $a = 3$ için 13 olmaz; $a = 8$ için 18 olur.
+
+@bolum s3 10 | 11 kuralı ve bileşik bölenler
+::fikir
+Bileşik bir bölen için onu **aralarında asal** çarpanlara ayır ve her birinin kuralını uygula: $12 = 3 \cdot 4$, $18 = 2 \cdot 9$, $36 = 4 \cdot 9$, $45 = 5 \cdot 9$, $72 = 8 \cdot 9$.
+
+::duzey
+L1: 15'e bölünen bir sayı hem 3'e hem 5'e bölünmek zorundadır; çünkü $15 = 3 \cdot 5$. Tersi de doğrudur: 3'e ve 5'e bölünen sayı 15'e bölünür. Ama bu yalnız çarpanlar ortak böleni olmayan sayılarsa geçerlidir.
+L2: $a$ ve $b$ aralarında asalsa, hem $a$'ya hem $b$'ye bölünen sayı $a \cdot b$'ye bölünür. $12 = 2 \cdot 6$ yazarsan hata yaparsın: 6 sayısı hem 2'ye hem 6'ya bölünür ama 12'ye bölünmez. 25 ile bölünme için son iki basamak 00, 25, 50 veya 75 olmalıdır.
+L3: Kalan sorularında da aynı ayrıştırma işe yarar. Örneğin 12 ile kalanı bulmak için 3 ve 4 ile kalanları bul, sonra 0–11 arasında ikisini birden sağlayan sayıyı seç. Bu, Çin kalan teoreminin küçük bir örneğidir ve uzun bölmeden çok daha hızlıdır.
+
+::ornek baslik="11 kuralı"
+soru: Dört basamaklı $7a35$ sayısı 11 ile tam bölündüğüne göre $a$ kaçtır?
+1. Sağdan başlayarak $+, -, +, -$ ile işaretle: $5 - 3 + a - 7$. || Birler basamağı $+$ ile başlar.
+2. Toplam $a - 5$; 11'in katı olmalı. Rakam olduğundan $a - 5 = 0$. || $a - 5 = 11$ için $a = 16$ olurdu, rakam değil.
+3. $a = 5$; kontrol: $7535 = 11 \cdot 685$. || Bulduğun rakamı yerine koymak hatayı yakalar.
+cevap: $a = 5$
+
+::tamamla baslik="45 ile bölünen en büyük sayı"
+soru: Dört basamaklı $2a5b$ sayısı 45 ile tam bölünüyor. Bu koşulu sağlayan en büyük sayı kaçtır?
+1. $45 = 5 \cdot 9$ (aralarında asal): 5 kuralından $b \in \{0, 5\}$.
+?2. $b = 5$: rakamlar toplamı $2 + a + 5 + 5 = 12 + a$, 9'un katı: $a = 6$. Sayı $2655$. || 9 kuralı.
+?3. $b = 0$: $7 + a$, 9'un katı: $a = 2$. Sayı $2250$. En büyüğü $2655$.
+cevap: $2655$
+
+::yanilgi m3 tip=bilesik-kural
+yanlis: $12 = 2 \cdot 6$ olduğundan 2'ye ve 6'ya bölünen her sayı 12'ye bölünür.
+neden: 2 ile 6 ortak böleni olan sayılardır; 6, 18, 30 gibi sayılar 2'ye ve 6'ya bölünür ama 12'ye bölünmez.
+dogru: Aralarında asal çarpanları kullan: 12'ye bölünme için 3'e **ve** 4'e bölünme gerekir.
+
+::strateji tip=bilesik-kural baslik="Böl, ayrı ayrı uygula, kesiştir"
+ipucu: "… 36 ile tam bölünebildiğine göre"
+1. Böleni aralarında asal çarpanlara ayır (36 = 4 · 9).
+2. Son basamaklara bakan kuralla (4) birler basamağının seçeneklerini çıkar.
+3. Rakamlar toplamı kuralıyla (9) her seçenek için diğer rakamı bul.
+4. İstenen (en büyük, en küçük, toplam) değeri seçenekler arasından seç.
+
+::soru c3 tip=bilesik-kural zorluk=2
+Dört basamaklı $4a7b$ sayısı 15 ile tam bölünüyor. $a$'nın alabileceği farklı değerlerin toplamı kaçtır?
+A) 12 || Yalnız $b = 0$ durumunu saydın.
+B) 15 || Yalnız $b = 5$ durumunu saydın.
+C) 18 || Bazı değerleri kaçırdın.
++D) 27 || Doğru: $a \in \{1, 2, 4, 5, 7, 8\}$.
+E) 45 || Bütün rakamları topladın.
+kontrol: 1+2+4+5+7+8
+cozum: $15 = 3 \cdot 5$. $b \in \{0, 5\}$. $b = 0$: $11 + a$, 3'ün katı: $a \in \{1, 4, 7\}$. $b = 5$: $16 + a$: $a \in \{2, 5, 8\}$. Toplam $1 + 4 + 7 + 2 + 5 + 8 = 27$.
+
+@bolum s4 9 | Kalanlarla işlem
+::fikir
+Kalanlar **toplanır, çarpılır ve kuvveti alınır**; sonuç yine aynı bölene bölünür. Sayının kendisini bilmeden kalanı bulabilirsin.
+
+::duzey
+L1: Saat 10'dan 5 saat sonra saat 3 olur: $15$'in 12 ile bölümünden kalan 3'tür. Saat hesabı kalanlarla toplamadır. Aynı fikir her bölen için çalışır.
+L2: $A$'nın $x$ ile kalanı $a$, $B$'nin kalanı $b$ ise $A + B$, $A \cdot B$ ve $A^n$'nin kalanları sırasıyla $a + b$, $a \cdot b$ ve $a^n$'nin $x$ ile bölümünden kalanlardır. Örneğin $A \equiv 5$ (7'ye göre) ise $A^2 + 3A \equiv 25 + 15 = 40 \equiv 5$.
+L3: Büyük kuvvetlerde kalanlar döngüye girer: $3^1, 3^2, 3^3, 3^4$'ün 5 ile kalanları $3, 4, 2, 1$; sonra tekrar başlar. Döngü 4 uzunluğunda olduğundan $3^{20}$'nin kalanı $3^4$'ünkiyle aynıdır: 1. Birler basamağı soruları da 10 ile kalan sorusudur.
+
+::ornek baslik="Kalanı yerine koy"
+soru: $A$'nın 7 ile bölümünden kalan 5'tir. $A^2 + 3A$'nın 7 ile bölümünden kalan kaçtır?
+1. $A$ yerine 5 koy: $5^2 + 3 \cdot 5 = 25 + 15 = 40$. || Kalanlarla işlem kuralı.
+2. $40 = 7 \cdot 5 + 5$; kalan 5. || Sonucu yine 7'ye böl.
+cevap: $5$
+
+::bosluk b1 cevap=1 tip=kalan-islem zorluk=2
+$3^{20}$ sayısının 5 ile bölümünden kalan kaçtır?
+cozum: $3, 9, 27, 81$'in 5 ile kalanları $3, 4, 2, 1$; döngü 4. $20$, 4'ün katı olduğundan kalan $3^4$'ünki: 1.
+
+::yanilgi m4 tip=kalan-islem
+yanlis: $A$'nın 6 ile kalanı 4 ise $4A$'nın 6 ile kalanı 16'dır.
+neden: Kalan bölenden küçük olmalı; 16'yı yeniden 6'ya bölmen gerekir.
+dogru: $4 \cdot 4 = 16 = 6 \cdot 2 + 4$; kalan 4.
+
+::soru c4 tip=kalan-islem zorluk=2
+$A$ sayısının 6 ile bölümünden kalan 4'tür. $4A + 3$ sayısının 6 ile bölümünden kalan kaçtır?
++A) 1 || Doğru: $4 \cdot 4 + 3 = 19$, kalan 1.
+B) 2 || $19$'u 6'ya böl: kalan 1.
+C) 3 || Yalnız $+3$'ü kalan saydın.
+D) 4 || $A$'nın kalanını yazdın.
+E) 5 || Hesabı kontrol et: $16 + 3 = 19$.
+kontrol: 4*4+3-18
+cozum: $4 \cdot 4 + 3 = 19 = 6 \cdot 3 + 1$; kalan 1.
+
+::ozet
+- $A = B \cdot C + K$, $0 \leq K < B$; en büyük kalan $B - 1$.
+- Kurallar: son basamak (2, 5, 10), son iki/üç basamak (4, 25 / 8), rakamlar toplamı (3, 9), işaretli toplam (11).
+- Bileşik bölenleri aralarında asal çarpanlara ayır: $36 = 4 \cdot 9$, $12 = 3 \cdot 4$.
+- Kalanlarla toplama, çarpma, kuvvet; kuvvetlerde kalan döngüsünü bul.
+
+@pratik
+- Kural tablosunu bir kez yaz ve nedenini (10'un kuvvetleri) anla; sınavda kuralı hatırlayamazsan nedeninden türetebilirsin.
+- Bilinmeyen rakam sorularında sıra: son basamak kuralları → son iki/üç basamak → rakamlar toplamı. Her adımda olası rakamları liste hâlinde yaz.
+- Bileşik bölende ilk iş aralarında asal çarpanlara ayırmak: $36 = 4 \cdot 9$, $12 = 3 \cdot 4$; asla $12 = 2 \cdot 6$ değil.
+- Kalan sorularında sayıyı bulmaya çalışma; kalanı yerine koy. Büyük kuvvette kalan döngüsünü bul ve üssü döngü uzunluğuna böl.
+- En sık tuzaklar: kalanı bölene eşit ya da büyük yazmak, 4 için yalnız son basamağa bakmak, 11 kuralında işareti soldan başlatmak. Hedef süre 60 saniye.
+
+@kartlar
+- Bölme algoritması :: $A = B \cdot C + K$ ve $0 \leq K < B$
+- 4 ile bölünebilme :: Son iki basamağın oluşturduğu sayı 4'ün katı.
+- 8 ile bölünebilme :: Son üç basamağın oluşturduğu sayı 8'in katı.
+- 9 ile bölümünden kalan :: Rakamlar toplamının 9 ile bölümünden kalan.
+- 11 ile bölünebilme :: Sağdan $+, -, +, -$ ile toplanan rakamların toplamı 11'in katı.
+- 36 ile bölünebilme :: 4 ile ve 9 ile bölünebilme (aralarında asal çarpanlar).
+- $A \equiv a$, $B \equiv b$ ise $A \cdot B$'nin kalanı? :: $a \cdot b$'nin aynı bölenle kalanı.
+- $3^n$'nin 5 ile kalan döngüsü :: $3, 4, 2, 1$ (4 adımda tekrar).
+
+@ozet
+- Her bölmeyi $A = B \cdot C + K$ ($0 \leq K < B$) diye yaz; iç içe bölmelerde yerine koy.
+- Bilinmeyen rakamda önce son basamak kurallarını, sonra rakamlar toplamı kurallarını uygula; kesişimi al.
+- Bileşik bölenleri aralarında asal çarpanlara ayır; ortak çarpanlı ayrıştırma yanlış sonuç verir.
+- Kalanlarla işlem yap, sonucu yine böl; büyük kuvvetlerde kalan döngüsünü kullan.
+
+@aciklama
+İki soruyu kendi cümlelerinle cevapla: (1) "Bir sayının 9 ile bölümünden kalan neden rakamlarının toplamının 9 ile kalanına eşittir?" (2) "12'ye bölünmeyi kontrol ederken neden 2 ve 6'ya değil de 3 ve 4'e bakıyoruz?"
+
+@havuz
+::soru h1 tip=bolme-algoritmasi zorluk=2
+Bir doğal sayı 12 ile bölündüğünde bölüm, kalanın 3 katıdır. Bu sayı en çok kaç olabilir?
+A) 371
+B) 395
++C) 407
+D) 419
+E) 431
+kontrol: 12*33+11
+cozum: Kalan $k$ ise bölüm $3k$ ve sayı $12 \cdot 3k + k = 37k$. Kalan en çok 11: $37 \cdot 11 = 407$.
+
+::soru h2 tip=kural zorluk=2
+Dört basamaklı $3a4b$ sayısı 5 ile tam bölünüyor ve 9 ile bölümünden kalan 4'tür. $a$'nın alabileceği en büyük değer kaçtır?
+A) 1
+B) 4
+C) 5
++D) 6
+E) 9
+kontrol: 15-9
+cozum: $b \in \{0, 5\}$. $3 + a + 4 + b = 7 + a + b$'nin 9 ile kalanı 4: $a + b \in \{6, 15\}$. $b = 0$ için $a = 6$; $b = 5$ için $a = 1$. En büyük $a = 6$.
+
+::soru h3 tip=bilesik-kural zorluk=3
+Altı basamaklı $52a43b$ sayısı 36 ile tam bölünüyor. $a + b$'nin alabileceği en büyük değer kaçtır?
+A) 4
+B) 9
+C) 11
++D) 13
+E) 18
+kontrol: 7+6
+cozum: $36 = 4 \cdot 9$. 4 kuralı: $3b$ 4'ün katı, $b \in \{2, 6\}$. 9 kuralı: $14 + a + b$, 9'un katı: $a + b \in \{4, 13\}$. $b = 6$, $a = 7$ ile $a + b = 13$.
+
+::soru h4 tip=kalan-islem zorluk=2
+$x$ doğal sayısının 9 ile bölümünden kalan 7'dir. $x^3$ sayısının 9 ile bölümünden kalan kaçtır?
++A) 1
+B) 4
+C) 7
+D) 8
+E) 0
+kontrol: 343-342
+cozum: $7^3 = 343 = 9 \cdot 38 + 1$; kalan 1.

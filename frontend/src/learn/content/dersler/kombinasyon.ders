@@ -1,0 +1,302 @@
+@ders kombinasyon
+baslik: Kombinasyon ve Seçme Problemleri
+kisa: Kombinasyon
+sinav: TYT AYT
+unite: sayma-olasilik
+sinif: 10
+sira: 810
+onkosul: sayma-permutasyon
+kategori: excel.tyt.matematik.f035f2fb95a3f15c26ab excel.ayt.matematik.f035f2fb95a3f15c26ab excel.tyt.matematik.9442d82c159081577c80 excel.ayt.matematik.9442d82c159081577c80
+hedef: Seçme ile sıralamayı ayırt edip $C(n, r) = \frac{n!}{r!(n-r)!}$'yi kullanmak; kombinasyonun özelliklerini ($C(n, r) = C(n, n-r)$, toplamın $2^n$ olması) uygulamak; "en az", "en çok", "belirli kişi bulunsun" koşullu seçimleri yapmak; seç-sonra-sırala sorularını ve nokta–doğru–üçgen sayımını çözmek.
+neden: Kombinasyon "Sıralama ve Seçme" başlığındaki çıkmış soruların (2018–2026'da TYT'de 9, AYT'de 10) en büyük parçasıdır ve olasılıkta torbadan çekme sorularının dilidir. Komisyon seçme kalıbı oturunca soruların çoğu iki satırda biter.
+kaynak: MEBİ TYT Konu Özeti — Kombinasyon Kavramı ve Özellikleri, Kombinasyon Problemleri, Kombinasyon ve Geometri | OGM 10. Sınıf Konu Özetleri 01–02 — Kombinasyon | 3 Adım TYT Matematik — Permütasyon, Kombinasyon, Binom
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: kombinasyon | c(n | seçil | seçme | komisyon | grup | takım | ekip | alt küme | üçgen | doğru | nokta
+baslik-kurali: /^10\.1\.1\.(4|5)\b/ | kombinasyon
+
+@tip kombinasyon-hesap 20 s1
+ad: Kombinasyon hesabı ve özellikleri
+ipucu: "$C(7, 2)$", "$C(n, 3) = C(n, 5)$ ise", "$C(n, 2) = 28$".
+strateji: $C(n, r) = \frac{n(n-1)\cdots(n-r+1)}{r!}$. $C(n, r) = C(n, n-r)$ olduğundan $C(n, a) = C(n, b)$ ise $a = b$ ya da $a + b = n$. $C(n, 0) + C(n, 1) + \cdots + C(n, n) = 2^n$.
+anahtar: c(n | kombinasyon | binom katsayı | 2^n
+
+@tip secim-problemi 35 s2
+ad: Koşullu seçim: en az, en çok, belirli kişi
+ipucu: "6 matematik, 4 fizik öğretmeninden en fazla 2 fizikçi", "en az bir kız", "x bulunur ama y bulunmaz".
+strateji: Seçimi gruplara ayır (kızlardan kaç, erkeklerden kaç), her grubun seçimini çarp, durumları topla. "En az bir" sorularında tümleyen: tümü − hiç. Belirli kişi bulunacaksa onu seçilmiş say, bulunmayacaksa havuzdan çıkar.
+anahtar: komisyon | seçilecek | en az | en çok | en fazla | bulunmak üzere | ekip | takım
+
+@tip secip-siralama 20 s3
+ad: Seç, sonra sırala ya da görevlendir
+ipucu: "1 başkan, 1 yardımcı ve 3 kişilik bir kurul", "başkan ve 2 kişilik temsilci grubu".
+strateji: Farklı görevler sırayı önemli kılar; aynı görevi paylaşanlar bir gruptur. Önce farklı görevleri tek tek seç (permütasyon), sonra kalanlardan grubu seç (kombinasyon); seçimleri çarp.
+anahtar: başkan | yardımcı | sekreter | kurul | görev | temsilci
+
+@tip kombinasyon-geometri 25 s4
+ad: Nokta, doğru, üçgen ve çokgen sayısı
+ipucu: "Herhangi üçü doğrusal olmayan 7 nokta", "çember üzerindeki 8 noktadan kaç dörtgen", "4'ü bir doğru üzerinde".
+strateji: Herhangi üçü doğrusal olmayan $n$ noktayla $C(n, 2)$ doğru, $C(n, 3)$ üçgen, $C(n, 4)$ dörtgen çizilir. Doğrusal noktalar varsa onlardan seçilen üçlüler üçgen olmaz: $C(n, 3) - C(k, 3)$. $n$ doğru en çok $C(n, 2)$ noktada kesişir.
+anahtar: nokta | üçgen | dörtgen | doğru | doğrusal | kesişim noktası | çember üzerinde
+
+@ustalik
+kombinasyon-hesap 1 1-2
+secim-problemi 2 1-3
+secip-siralama 1 1-3
+kombinasyon-geometri 2 1-3
+
+@oturum Kombinasyon ve seçim | s1 s2
+@oturum Görevlendirme ve geometri | s3 s4
+
+@ontest
+::soru o1 tip=kombinasyon-hesap zorluk=1
+$C(7, 2)$ kaçtır?
++A) 21 || Doğru: $\frac{7 \cdot 6}{2} = 21$.
+B) 28 || Bu $C(8, 2)$'dir.
+C) 35 || Bu $C(7, 3)$'tür.
+D) 42 || Bu $P(7, 2)$'dir; kombinasyonda $2!$'ye bölünür.
+E) 49 || $7^2$ değil.
+kontrol: 7*6/2
+cozum: $C(7, 2) = \frac{7 \cdot 6}{2!} = 21$.
+
+::soru o2 tip=secim-problemi zorluk=1
+8 kişilik bir gruptan 3 kişilik bir komisyon kaç farklı şekilde seçilebilir?
+A) 24 || $8 \cdot 3$ değil.
+B) 48 || Hesabı kontrol et: $\frac{8 \cdot 7 \cdot 6}{3!}$.
++C) 56 || Doğru: $C(8, 3) = 56$.
+D) 112 || Hesabı yeniden yap.
+E) 336 || Bu $P(8, 3)$'tür; komisyonda sıra önemsiz.
+kontrol: 8*7*6/6
+cozum: Komisyonda sıra önemli değildir: $C(8, 3) = \frac{8 \cdot 7 \cdot 6}{6} = 56$.
+
+::soru o3 tip=kombinasyon-geometri zorluk=2
+Herhangi üçü doğrusal olmayan 7 noktayla kaç farklı üçgen çizilebilir?
+A) 21 || Bu doğru sayısıdır, $C(7, 2)$.
++B) 35 || Doğru: $C(7, 3) = 35$.
+C) 42 || Hesabı kontrol et.
+D) 70 || Bu $C(8, 4)$'tür.
+E) 210 || Bu $P(7, 3)$'tür; üçgende köşelerin sırası önemsiz.
+kontrol: 35
+cozum: Her 3 nokta bir üçgen belirler: $C(7, 3) = \frac{7 \cdot 6 \cdot 5}{6} = 35$.
+
+@bolum s1 8 | Kombinasyon: seçmek, sıralamak değil
+::fikir
+**Kombinasyon seçmektir, sıralamak değil:** $C(n, r) = \binom{n}{r} = \frac{n!}{r!(n-r)!}$. Seçilen $r$ nesneyi sıralarsan permütasyon olur: $P(n, r) = C(n, r) \cdot r!$.
+
+::tablo baslik="Kombinasyonun özellikleri"
+| Özellik | Örnek |
+| $C(n, 0) = C(n, n) = 1$ | $C(5, 0) = 1$ |
+| $C(n, 1) = n$ | $C(9, 1) = 9$ |
+| $C(n, r) = C(n, n - r)$ | $C(10, 7) = C(10, 3) = 120$ |
+| $C(n, r) + C(n, r + 1) = C(n + 1, r + 1)$ | $C(5, 2) + C(5, 3) = C(6, 3)$ |
+| $C(n, 0) + C(n, 1) + \cdots + C(n, n) = 2^n$ | Toplam alt küme sayısı |
+
+::duzey
+L1: Ali, Can ve Ece'den 2 kişilik bir takım seçerken {Ali, Can} ile {Can, Ali} aynı takımdır. Bu yüzden 3 kişiden 2 kişilik $\frac{3 \cdot 2}{2} = 3$ takım vardır; sıralasaydık 6 olurdu.
+L2: Hesap kısa yolu: $C(10, 3) = \frac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = 120$. Büyük $r$ için $C(n, r) = C(n, n - r)$ ile küçük olanı hesapla. $C(n, a) = C(n, b)$ ve $a \neq b$ ise $a + b = n$.
+L3: $n$ elemanlı kümenin $r$ elemanlı alt kümelerinin sayısı $C(n, r)$'dir; bütün alt kümeler toplanınca $2^n$ çıkar (kümeler dersindeki kural). Pascal eşitliği bir sonraki derste binom katsayılarını üretir.
+
+::ornek baslik="Kombinasyon denklemi"
+soru: $C(n, 2) = 28$ olduğuna göre $n$ kaçtır?
+1. $\frac{n(n-1)}{2} = 28 \Rightarrow n(n-1) = 56$. || Tanımı yaz.
+2. $56 = 8 \cdot 7$ olduğundan $n = 8$. || Ardışık iki sayının çarpımı.
+cevap: 8
+
+::yanilgi m1 tip=kombinasyon-hesap
+yanlis: Kombinasyonda seçilenlerin sırası önemlidir; $C(n, r) = P(n, r)$.
+neden: {A, B} ve {B, A} aynı seçimdir; permütasyon her seçimi $r!$ kez sayar.
+dogru: $P(n, r) = C(n, r) \cdot r!$; seçme sorularında $C(n, r)$ kullanılır.
+
+::soru c1 tip=kombinasyon-hesap zorluk=2
+$C(n, 3) = C(n, 5)$ olduğuna göre $C(n, 2)$ kaçtır?
+A) 15 || $n = 6$ değil; $3 + 5 = n$.
+B) 21 || Bu $C(7, 2)$'dir.
+C) 24 || Hesabı kontrol et.
++D) 28 || Doğru: $n = 8$, $C(8, 2) = 28$.
+E) 56 || Bu $C(8, 3)$'tür.
+kontrol: 28
+cozum: $C(n, 3) = C(n, 5)$ ve $3 \neq 5$ ise $3 + 5 = n = 8$. $C(8, 2) = 28$.
+
+@bolum s2 11 | Koşullu seçim problemleri
+::fikir
+Seçimi **gruplara ayır** (kızlardan kaç, erkeklerden kaç), her grubun seçimini **çarp**, durumları **topla**. **"En az bir"** sorularında tümleyen: tümü − hiç.
+
+::duzey
+L1: 5 kız ve 4 erkekten 2 kız ve 2 erkek seçmek iki ayrı seçimdir: kızlardan $C(5, 2) = 10$, erkeklerden $C(4, 2) = 6$. Art arda yapıldıkları için çarpılır: 60 ekip.
+L2: Belirli bir kişi mutlaka bulunacaksa onu seçilmiş say ve kalan yerleri diğerlerinden doldur; bulunmayacaksa havuzdan çıkar. MEBİ örneği: $\{a, b, c, d, 1, x, y\}$'nin 3 elemanlı alt kümelerinden $x$'i içerip $y$'yi içermeyenler $C(5, 2) = 10$'dur.
+L3: "İki kişi birlikte olmasın" = tümü − ikisinin birlikte olduğu seçimler. "En çok 2" gibi koşullarda durumları (0, 1, 2) ayrı ayrı say ve topla; durum sayısı fazlaysa tümleyeni düşün.
+
+::ornek baslik="MEBİ örneği: komisyonda en fazla 2 fizikçi"
+soru: 6 matematik ve 4 fizik öğretmeni arasından en fazla 2 fizik öğretmeninin bulunduğu 4 kişilik bir komisyon kaç farklı şekilde seçilebilir?
+1. 2 fizikçi + 2 matematikçi: $C(4, 2) \cdot C(6, 2) = 6 \cdot 15 = 90$. || Durum 1.
+2. 1 fizikçi + 3 matematikçi: $C(4, 1) \cdot C(6, 3) = 4 \cdot 20 = 80$. || Durum 2.
+3. 0 fizikçi + 4 matematikçi: $C(6, 4) = 15$; toplam $90 + 80 + 15 = 185$. || Durumları topla.
+cevap: 185
+
+::tamamla baslik="En az bir fizikçi"
+soru: Aynı 10 öğretmenden en az 1 fizik öğretmeninin bulunduğu 4 kişilik bir komisyon kaç farklı şekilde seçilebilir?
+1. Tüm komisyonlar: $C(10, 4) = 210$.
+?2. Hiç fizikçi olmayanlar: $C(6, 4) = 15$.
+?3. En az bir fizikçi: $210 - 15 = 195$.
+cevap: 195
+
+::yanilgi m2 tip=secim-problemi
+yanlis: En az 1 fizikçi için önce 1 fizikçi seç (4), sonra kalan 9 kişiden 3 kişi seç (84): $4 \cdot 84 = 336$.
+neden: İki fizikçinin bulunduğu bir komisyon, hangisinin "ilk" seçildiğine göre birden çok kez sayılır.
+dogru: Tümleyen kullan: $C(10, 4) - C(6, 4) = 195$.
+
+::soru c2 tip=secim-problemi zorluk=2
+5 kız ve 4 erkek öğrenci arasından 2 kız ve 2 erkekten oluşan 4 kişilik bir ekip kaç farklı şekilde seçilebilir?
+A) 36 || Hesabı kontrol et: $C(5, 2) = 10$.
++B) 60 || Doğru: $C(5, 2) \cdot C(4, 2) = 10 \cdot 6$.
+C) 90 || Hesabı yeniden yap.
+D) 120 || Seçimleri sıraladın; ekipte sıra önemsiz.
+E) 126 || Bu $C(9, 4)$'tür; cinsiyet koşulu var.
+kontrol: 10*6
+cozum: Kızlardan $C(5, 2) = 10$, erkeklerden $C(4, 2) = 6$; ekip sayısı $10 \cdot 6 = 60$.
+
+@bolum s3 8 | Seç, sonra görevlendir
+::fikir
+Önce **farklı görevleri** tek tek seç (sıra önemli), sonra **aynı görevi paylaşanları** grup olarak seç (sıra önemsiz); seçimleri çarp.
+
+::duzey
+L1: 10 kişilik bir kulüpten bir başkan ve bir yardımcı seçmek sıralıdır: başkan 10, yardımcı 9 → 90. Ama 2 kişilik bir kurul seçmek sırasızdır: $C(10, 2) = 45$.
+L2: Karışık görevlerde farklı görevleri önce yerleştir: 1 başkan, 1 yardımcı ve 3 kişilik kurul için $10 \cdot 9 \cdot C(8, 3) = 5040$. Sıra fark etmez: önce kurulu seçip sonra başkanı seçmek de aynı sonucu verir.
+L3: Gruplara ayırma: 6 kişiyi 2'şer kişilik 3 isimsiz gruba ayırmak $\frac{C(6, 2) \cdot C(4, 2) \cdot C(2, 2)}{3!} = 15$'tir; gruplar isimliyse (A, B, C takımları) $3!$'e bölünmez: 90.
+
+::ornek baslik="Başkan, yardımcı ve kurul"
+soru: 10 kişilik bir kulüpten 1 başkan, 1 başkan yardımcısı ve 3 kişilik bir denetim kurulu kaç farklı şekilde seçilebilir?
+1. Başkan 10, yardımcı 9 seçenek: $10 \cdot 9 = 90$. || Farklı görevler sıralı.
+2. Kalan 8 kişiden kurul: $C(8, 3) = 56$. || Kurulda sıra yok.
+3. $90 \cdot 56 = 5040$. || Çarpma ilkesi.
+cevap: 5040
+
+::soru c3 tip=secip-siralama zorluk=2
+8 kişilik bir sınıftan 1 sınıf başkanı ve 2 kişilik bir temsilci grubu kaç farklı şekilde seçilebilir?
+A) 56 || Başkan seçimini unuttun.
+B) 84 || Hesabı kontrol et.
+C) 112 || Temsilcileri 7 kişiden seçmelisin: $C(7, 2)$.
++D) 168 || Doğru: $8 \cdot C(7, 2) = 8 \cdot 21$.
+E) 336 || Temsilci grubunu sıraladın; grupta sıra önemsiz.
+kontrol: 8*21
+cozum: Başkan 8 seçenek; kalan 7 kişiden 2 kişilik grup $C(7, 2) = 21$: $8 \cdot 21 = 168$.
+
+@bolum s4 9 | Kombinasyon ve geometri
+::fikir
+Herhangi üçü doğrusal olmayan $n$ noktayla $C(n, 2)$ doğru, $C(n, 3)$ üçgen, $C(n, 4)$ dörtgen çizilir. **Doğrusal noktalar** varsa bu noktalardan seçilen üçlüler üçgen oluşturmaz: çıkar.
+
+::grafik alt="Üstteki doğru üzerinde 4 nokta, alttaki paralel doğru üzerinde 3 nokta." aciklama="Üstte 4, altta 3 nokta: $C(7, 3) - C(4, 3) - C(3, 3) = 35 - 4 - 1 = 30$ üçgen."
+x: 0 5
+y: -0.8 2.8
+parca: 0.3 2 4.7 2 | line | kesik
+parca: 0.3 0 4.7 0 | line | kesik
+nokta: 1 2 | | navy
+nokta: 2 2 | | navy
+nokta: 3 2 | | navy
+nokta: 4 2 | | navy
+nokta: 1.5 0 | | red
+nokta: 2.5 0 | | red
+nokta: 3.5 0 | | red
+parca: 1 2 2.5 0 | navy
+parca: 2.5 0 3.5 0 | navy
+parca: 3.5 0 1 2 | navy
+
+::duzey
+L1: İki noktadan tek bir doğru geçer; bu yüzden 5 noktadan (herhangi üçü doğrusal değilse) $C(5, 2) = 10$ doğru geçer. Her üç nokta bir üçgen, her dört nokta bir dörtgen belirler.
+L2: Bazı noktalar aynı doğru üzerindeyse onlardan seçilen üç nokta üçgen değil, doğru parçası verir. Üçgen sayısı: $C(n, 3)$ − (her doğrusal grup için $C(k, 3)$). Doğru sayısında da $k$ doğrusal nokta $C(k, 2)$ yerine tek doğru verir.
+L3: Kesişim noktası sayısının en büyük değeri: $n$ doğru en çok $C(n, 2)$, $n$ çember en çok $2 \cdot C(n, 2)$, $n$ üçgen en çok $6 \cdot C(n, 2)$ noktada kesişir (her ikili için en çok kesişim × ikili sayısı).
+
+::ornek baslik="Doğrusal noktalarla üçgen"
+soru: Paralel iki doğrudan birinin üzerinde 4, diğerinin üzerinde 3 nokta vardır. Bu 7 noktanın üçünü köşe kabul eden kaç üçgen çizilebilir?
+1. Tüm üçlüler: $C(7, 3) = 35$. || Önce hepsi.
+2. Üstteki doğrudan seçilen üçlüler $C(4, 3) = 4$, alttakinden $C(3, 3) = 1$. || Bunlar üçgen değil.
+3. $35 - 4 - 1 = 30$. || Doğrusal üçlüleri çıkar.
+cevap: 30
+
+::yanilgi m3 tip=kombinasyon-geometri
+yanlis: Aynı doğru üzerindeki noktalardan seçilen üç nokta da bir üçgen oluşturur.
+neden: Doğrusal üç noktanın oluşturduğu şekil bir doğru parçasıdır, üçgen değildir.
+dogru: Üçgen sayısı $C(n, 3) - C(k, 3)$ ($k$ doğrusal nokta sayısı).
+
+::soru c4 tip=kombinasyon-geometri zorluk=2
+Bir çember üzerindeki 8 noktadan kaç farklı dörtgen çizilebilir?
+A) 28 || Bu doğru sayısıdır, $C(8, 2)$.
+B) 56 || Bu üçgen sayısıdır, $C(8, 3)$.
++C) 70 || Doğru: $C(8, 4) = 70$.
+D) 120 || Hesabı kontrol et.
+E) 336 || Bu $P(8, 3)$'tür.
+kontrol: 70
+cozum: Çember üzerindeki noktaların hiçbir üçü doğrusal değildir; her 4 nokta bir dörtgen belirler: $C(8, 4) = 70$.
+
+::ozet
+- Seçmede sıra önemsiz: $C(n, r) = \frac{n!}{r!(n-r)!}$; $P(n, r) = C(n, r) \cdot r!$.
+- $C(n, r) = C(n, n-r)$ ve bütün $C(n, k)$'ların toplamı $2^n$.
+- Koşullu seçimde gruplara ayır, çarp, topla; "en az bir" için tümü − hiç.
+- Farklı görevler sıralı, ortak görev sırasız; nokta sayımında doğrusal üçlüleri çıkar.
+
+@pratik
+- Çalışma sırası: önce "sıra önemli mi?" kararını on soruda yüksek sesle ver, sonra komisyon kalıbını (gruplara ayır–çarp–topla), en son görevlendirme ve geometri sorularını çalış.
+- Sınav yaklaşımı: seçme sorusunda her grubu ayrı yaz (kızlardan $C(5, 2)$, erkeklerden $C(4, 2)$ gibi) ve çarp; "en az" gördüğünde önce tümleyenin kolay olup olmadığına bak.
+- Kombinasyon hesabında $C(n, r) = C(n, n - r)$ ile küçük $r$'yi seç; payda ile paydayı hesaplamadan sadeleştir.
+- En sık tuzaklar: komisyonu sıralamak, "en az bir" sorusunda bir kişiyi önceden seçip çift saymak, doğrusal noktaları üçgen saymak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra çıkmış sorular setini çöz; ardından olasılık dersinde aynı sayımı torba sorularında kullan.
+
+@kartlar
+- $C(n, r)$ formülü :: $\frac{n!}{r!(n-r)!}$
+- $P(n, r)$ ile $C(n, r)$ ilişkisi :: $P(n, r) = C(n, r) \cdot r!$
+- $C(n, a) = C(n, b)$ ve $a \neq b$ ise :: $a + b = n$
+- $C(n, 0) + C(n, 1) + \cdots + C(n, n)$ :: $2^n$
+- "En az bir" seçimi :: Tümü − hiç seçilmeyen
+- Herhangi üçü doğrusal olmayan $n$ noktayla üçgen sayısı :: $C(n, 3)$
+- $n$ doğrunun en çok kesişim noktası :: $C(n, 2)$
+
+@ozet
+- Kombinasyon, sıranın önemli olmadığı seçimlerin sayısıdır ve permütasyonun $r!$'e bölünmüş hâlidir.
+- Kombinasyonun simetri ve toplam özellikleri hesapları kısaltır.
+- Koşullu seçim problemleri gruplara ayrılarak ve gerektiğinde tümleyen kullanılarak çözülür.
+- Farklı görevler sıralı, aynı görevi paylaşanlar sırasız seçilir; nokta ve doğru sayımında doğrusal noktalar ayrıca değerlendirilir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "8 kişiden 3 kişilik komisyon seçerken neden $P(8, 3)$ değil de $C(8, 3)$ kullanırız?" (2) "En az bir fizikçi içeren komisyonları neden 'önce bir fizikçi seç' diye sayamayız?"
+
+@havuz
+::soru h1 tip=kombinasyon-hesap zorluk=2
+$C(6, 1) + C(6, 2) + C(6, 3) + C(6, 4) + C(6, 5) + C(6, 6)$ toplamı kaçtır?
+A) 31
+B) 32
+C) 62
++D) 63
+E) 64
+kontrol: 2^6-1
+cozum: $C(6, 0) + \cdots + C(6, 6) = 2^6 = 64$; $C(6, 0) = 1$ toplamda yok: $64 - 1 = 63$.
+
+::soru h2 tip=secim-problemi zorluk=2
+$A = \{a, b, c, d, 1, x, y\}$ kümesinin 3 elemanlı alt kümelerinin kaç tanesinde $x$ bulunur ama $y$ bulunmaz?
++A) 10
+B) 15
+C) 20
+D) 21
+E) 35
+kontrol: 10
+cozum: $x$ seçilmiş sayılır, $y$ havuzdan çıkar; kalan 5 elemandan 2'si seçilir: $C(5, 2) = 10$.
+
+::soru h3 tip=secip-siralama zorluk=2
+6 kişilik bir gruptan 1 başkan, 1 başkan yardımcısı ve 2 kişilik bir kurul kaç farklı şekilde seçilebilir?
+A) 60
+B) 90
+C) 120
+D) 150
++E) 180
+kontrol: 6*5*6
+cozum: Başkan 6, yardımcı 5; kalan 4 kişiden kurul $C(4, 2) = 6$: $6 \cdot 5 \cdot 6 = 180$.
+
+::soru h4 tip=kombinasyon-geometri zorluk=2
+Düzlemde herhangi ikisi paralel olmayan ve herhangi üçü aynı noktadan geçmeyen 6 doğru en çok kaç noktada kesişir?
+A) 6
+B) 10
+C) 12
+D) 14
++E) 15
+kontrol: 15
+cozum: Her iki doğru bir noktada kesişir: $C(6, 2) = 15$.

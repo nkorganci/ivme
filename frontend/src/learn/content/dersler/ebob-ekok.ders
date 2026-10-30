@@ -1,0 +1,380 @@
+@ders ebob-ekok
+baslik: Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler
+kisa: EBOB–EKOK
+sinav: TYT AYT
+unite: temel
+sinif: 9
+sira: 130
+onkosul: bolme-bolunebilme
+kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8 excel.tyt.matematik.c15cc6aeffd9ec9ece58 excel.ayt.matematik.c15cc6aeffd9ec9ece58
+hedef: Sayıları asal çarpanlarına ayırıp bölen sayısını bulmak; EBOB ve EKOK'u hesaplamak ve $a \cdot b = \text{EBOB} \cdot \text{EKOK}$ ilişkisini kullanmak; problemde EBOB mu EKOK mu gerektiğine karar vermek; periyodik olayları kalanla çözmek.
+neden: EBOB–EKOK ve periyodik problemler TYT'de "Bölünebilme" başlığı altında düzenli sorulur ve AYT'nin "Temel Kavramlar" sorularında nöbet, zil, otobüs gibi günlük durumlarla karşına çıkar. Kararı (bölmek mi birleştirmek mi?) doğru veren öğrenci hesabı saniyeler içinde yapar.
+kaynak: MEBİ TYT Konu Özeti — Asal Çarpanlar, EBOB-EKOK Kavramları, EBOB-EKOK Problemleri, Periyodik Problemler | OGM 9. Sınıf Konu Özetleri 11–12 | 3 Adım TYT Matematik — EBOB-EKOK, Periyodik Olarak Tekrar Eden Durumlar
+tekrar: 12
+ustalik-dk: 16
+hedef-sure: 75
+anahtar: ebob | ekok | asal | bölen sayısı | pozitif bölen | ortak bölen | ortak kat | en az kaç | en büyük kare | aralarında asal | günde bir | hangi gün | nöbet | periyot | aynı anda | birlikte | eşit aralık
+baslik-kurali: ebob | ekok | periyodik | /^9\.3\.2\.(2|3)/ | asal çarpan | asal ve aralarında asal
+haric:
+
+@tip asal-bolen 25 s1
+ad: Asal çarpanlar ve bölen sayısı
+ipucu: "Kaç tane pozitif böleni vardır?", "asal olmayan bölenleri", "tek bölenlerinin sayısı", "$2^a \cdot 3^4$'ün 30 böleni varsa".
+strateji: Sayıyı $p^a q^b r^c$ biçimine getir. Pozitif bölen sayısı $(a+1)(b+1)(c+1)$, tam sayı bölen sayısı bunun iki katı. Tek bölenler için 2'nin üssünü 0 al; asal olmayan bölenler = bütün bölenler − asal bölenler.
+anahtar: asal çarpan | pozitif bölen | bölen sayısı | tam sayı bölen | asal bölen | böleni vardır | asal olmayan
+
+@tip ebob-ekok-hesap 20 s2
+ad: EBOB–EKOK hesaplama ve özellikleri
+ipucu: "EBOB(a, b) = 6, EKOK(a, b) = 72, a = 18 ise b", "iki sayının EBOB'u ve EKOK'u".
+strateji: EBOB: ortak asal çarpanların küçük üslüleri; EKOK: bütün asal çarpanların büyük üslüleri. İki sayı için $a \cdot b = \text{EBOB} \cdot \text{EKOK}$. Biri diğerinin katıysa EBOB küçük, EKOK büyük sayıdır; aralarında asalsa EBOB 1, EKOK çarpımdır.
+anahtar: ebob( | ekok( | ebob'u | ekok'u | en büyük ortak bölen | en küçük ortak kat
+
+@tip ebob-problem 20 s3
+ad: EBOB problemleri: eşit ve en büyük parçalar
+ipucu: "Hiç artmayacak şekilde eşit ve en büyük parçalara", "en az kaç parça", "eşit aralıklarla ağaç dikmek", "en büyük kare/küp parçalar".
+strateji: Bir bütünü **bölüyorsan** EBOB'u al. Parça uzunluğu EBOB, parça sayısı her uzunluğun EBOB'a bölümlerinin toplamı. Kapalı bir çevreye dikilen ağaç sayısı aralık sayısına eşittir; düz bir yolda aralık sayısı + 1'dir.
+anahtar: eşit ve en büyük | en az kaç parça | artmayacak | parçalara | eşit aralıklarla | ağaç | kare şeklinde | küp şeklinde | şişe | bölünecek
+
+@tip ekok-problem 20 s4
+ad: EKOK problemleri: birleştirme ve kalanlı sayılar
+ipucu: "Yan yana dizilerek en küçük kare", "aynı anda", "5'erli sayılınca 2 artıyor", "en az kaç".
+strateji: Küçük parçaları **birleştiriyorsan** ya da olaylar **aynı anda** oluyorsa EKOK'u al. Kalanlı sorularda: kalanlar aynıysa ($r$) sayı $\text{EKOK} \cdot n + r$; "bölen − kalan" aynıysa ($k$) sayı $\text{EKOK} \cdot n - k$.
+anahtar: en küçük kare | dizilerek | erli sayılınca | artıyor | eksik kalıyor | aynı anda | birlikte | en az kaç tane
+
+@tip periyodik 15 s5
+ad: Periyodik problemler
+ipucu: "Hangi gün", "4 günde bir", "100 gün sonra", "birler basamağındaki rakam", saat ve nöbet soruları.
+strateji: Geçen süreyi periyoda böl, kalana bak (haftada periyot 7). $n$. kez olacak bir olay için $(n - 1)$ periyot geçer. Birden çok olayın birlikte tekrarı için periyot, EKOK'tur. Kuvvetlerin son rakamı da 4'lü döngüler kurar.
+anahtar: günde bir | hangi gün | gün sonra | haftanın | nöbet | periyot | saatte bir | birler basamağındaki | son rakamı | kez
+
+@ustalik
+asal-bolen 1 1-3
+ebob-ekok-hesap 1 1-2
+ebob-problem 1 1-3
+ekok-problem 2 1-3
+periyodik 1 1-3
+
+@oturum Asal çarpanlar ve EBOB–EKOK hesabı | s1 s2
+@oturum EBOB ve EKOK problemleri | s3 s4
+@oturum Periyodik problemler | s5
+
+@ontest
+::soru o1 tip=asal-bolen zorluk=1
+72 sayısının kaç tane pozitif böleni vardır?
+A) 6 || $72 = 2^3 \cdot 3^2$; üslere 1 ekleyip çarp.
+B) 8 || Bir çarpanı eksik saydın.
+C) 10 || Bölen sayısı üslerin toplamı değil, (üs + 1)'lerin çarpımıdır.
++D) 12 || Doğru: $(3 + 1)(2 + 1) = 12$.
+E) 14 || Fazla saydın.
+kontrol: (3+1)*(2+1)
+cozum: $72 = 2^3 \cdot 3^2$. Pozitif bölen sayısı $(3 + 1)(2 + 1) = 12$.
+
+::soru o2 tip=ekok-problem zorluk=1
+Bir duraktan iki otobüs kalkıyor: biri 12 dakikada, diğeri 18 dakikada bir. İlk kez saat 09.00'da birlikte kalktıklarına göre ikinci kez saat kaçta birlikte kalkarlar?
+A) 09.06 || 6, sayıların EBOB'udur; birlikte kalkış için ortak kat gerekir.
+B) 09.18 || 18 dakikada 12'li otobüs henüz kalkmaz.
+C) 09.30 || Süreleri toplamak yanlış.
++D) 09.36 || Doğru: EKOK(12, 18) = 36 dakika.
+E) 12.36 || $12 \cdot 18 = 216$ dakika ortak bir kat ama en küçüğü değil.
+cozum: Birlikte kalkış periyodu EKOK(12, 18) = 36 dakika. 09.00'dan 36 dakika sonra: 09.36.
+
+::soru o3 tip=periyodik zorluk=2
+Bugün günlerden salı. 100 gün sonra hangi gün olur?
+A) Pazartesi || Kalanı yanlış saydın.
+B) Çarşamba || 100'ün 7 ile kalanı 2'dir, 1 değil.
++C) Perşembe || Doğru: $100 = 7 \cdot 14 + 2$; salıdan 2 gün sonra.
+D) Cuma || Kalan 2; salı + 2.
+E) Cumartesi || Kalan 4 değil.
+cozum: 7 günde bir aynı gün gelir. $100 = 7 \cdot 14 + 2$; salıdan 2 gün sonrası perşembedir.
+
+@bolum s1 10 | Asal sayılar ve bölen sayısı
+::fikir
+Her sayı **asal çarpanların çarpımı** olarak tek bir biçimde yazılır: $360 = 2^3 \cdot 3^2 \cdot 5$. Pozitif bölen sayısı: üslere 1 ekle, çarp: $(3+1)(2+1)(1+1) = 24$.
+
+::duzey
+L1: **Asal sayı**, 1'den büyük ve yalnız 1'e ve kendisine bölünen sayıdır: $2, 3, 5, 7, 11, 13, \ldots$ 2 tek çift asaldır; 1 asal değildir. Bir sayıyı asal çarpanlarına ayırmak için en küçük asaldan başlayarak bölmeye devam edersin (bölen merdiveni).
+L2: $A = p^a q^b r^c$ ise pozitif bölen sayısı $(a+1)(b+1)(c+1)$, tam sayı bölen sayısı $2(a+1)(b+1)(c+1)$'dir. Ortak böleni yalnız 1 olan sayılara **aralarında asal** denir; ardışık sayılar aralarında asaldır. Tek bölenleri saymak için 2'nin üssünü 0 al.
+L3: Formülün nedeni sayma ilkesidir: bir bölen, $p$'den $0, 1, \ldots, a$ tane ($a + 1$ seçenek), $q$'dan $0, \ldots, b$ tane alarak kurulur. Aynı fikirle "çift bölen", "3'e bölünen bölen" ya da "tam kare bölen" sayılır: tam kare bölende her üs çift olmalıdır.
+
+::gorsel alt="360 sayısının bölen merdiveni: 360, 180, 90, 45, 15, 5, 1; bölenler 2, 2, 2, 3, 3, 5. Sonuç 360 = 2 üssü 3 çarpı 3 üssü 2 çarpı 5." aciklama="Bölen merdiveni: en küçük asaldan başla, bölünemeyince bir sonraki asala geç."
+<svg viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg">
+  <line x1="170" y1="14" x2="170" y2="262" class="accent" stroke-width="2.5"/>
+  <g font-size="20" text-anchor="end" fill="currentColor">
+    <text x="156" y="40">360</text><text x="156" y="76">180</text><text x="156" y="112">90</text>
+    <text x="156" y="148">45</text><text x="156" y="184">15</text><text x="156" y="220">5</text><text x="156" y="256">1</text>
+  </g>
+  <g font-size="20" font-weight="700" class="good">
+    <text x="186" y="40">2</text><text x="186" y="76">2</text><text x="186" y="112">2</text>
+    <text x="186" y="148">3</text><text x="186" y="184">3</text><text x="186" y="220">5</text>
+  </g>
+  <text x="232" y="132" font-size="19" font-weight="700" class="accent">360 = 2³ · 3² · 5</text>
+  <text x="232" y="164" font-size="16" fill="currentColor">bölen sayısı: 4 · 3 · 2 = 24</text>
+</svg>
+
+::ornek baslik="Bütün bölenler ve tek bölenler"
+soru: 360'ın kaç pozitif böleni vardır? Bunlardan kaç tanesi tektir?
+1. $360 = 2^3 \cdot 3^2 \cdot 5^1$. || Bölen merdiveni.
+2. Pozitif bölen sayısı $(3+1)(2+1)(1+1) = 24$. || Her asal için (üs + 1) seçenek.
+3. Tek bölende 2 bulunmaz: $2$'nin üssü yalnız 0 olabilir; $1 \cdot 3 \cdot 2 = 6$. || 2'nin seçenek sayısı 1'e iner.
+cevap: 24 pozitif bölen; 6'sı tek.
+
+::yanilgi m1 tip=asal-bolen
+yanlis: 1 bir asal sayıdır, çünkü yalnız 1'e ve kendisine bölünür.
+neden: Asal sayının tanımı 1'den büyük olmayı ve tam iki pozitif böleni olmayı ister; 1'in tek böleni vardır.
+dogru: En küçük asal sayı 2'dir; 1 ne asaldır ne bileşik.
+
+::soru c1 tip=asal-bolen zorluk=2
+$2^a \cdot 3^4$ sayısının 30 tane pozitif böleni olduğuna göre $a$ kaçtır?
+A) 3 || $(3+1) \cdot 5 = 20$.
+B) 4 || $(4+1) \cdot 5 = 25$.
++C) 5 || Doğru: $(a+1)(4+1) = 30$, $a + 1 = 6$.
+D) 6 || $(6+1) \cdot 5 = 35$.
+E) 25 || $30 - 5$ işlemi formül değil.
+kontrol: 30/5-1
+cozum: Bölen sayısı $(a+1)(4+1) = 30$, yani $a + 1 = 6$ ve $a = 5$.
+
+@bolum s2 8 | EBOB ve EKOK hesabı
+::fikir
+**EBOB:** ortak asal çarpanların **küçük** üslüleri. **EKOK:** bütün asal çarpanların **büyük** üslüleri. İki sayı için $a \cdot b = \text{EBOB}(a,b) \cdot \text{EKOK}(a,b)$.
+
+::tablo baslik="24 ve 36 için"
+| Sayı | Asal çarpanlar |
+| 24 | $2^3 \cdot 3$ |
+| 36 | $2^2 \cdot 3^2$ |
+| EBOB (küçük üsler) | $2^2 \cdot 3 = 12$ |
+| EKOK (büyük üsler) | $2^3 \cdot 3^2 = 72$ |
+| Kontrol | $24 \cdot 36 = 864 = 12 \cdot 72$ |
+
+::duzey
+L1: EBOB iki sayının ikisini de tam bölen en büyük sayıdır; EKOK ikisinin de tam katı olan en küçük pozitif sayıdır. 24 ve 36'nın ortak bölenleri $1, 2, 3, 4, 6, 12$; en büyüğü 12. Ortak katları $72, 144, \ldots$; en küçüğü 72.
+L2: Asal çarpanlarla hesap en hızlısıdır: EBOB için ikisinde de bulunan asallardan küçük üslüyü, EKOK için bütün asallardan büyük üslüyü al. Bir sayı diğerinin katıysa EBOB küçük sayı, EKOK büyük sayıdır. Aralarında asal sayılarda EBOB 1, EKOK çarpımdır.
+L3: $a = d \cdot m$, $b = d \cdot n$ ($d = $ EBOB, $m$ ile $n$ aralarında asal) yazılabilir; o zaman EKOK $= d \cdot m \cdot n$ ve $a \cdot b = d \cdot (dmn)$. Bu gösterim "EBOB'u 6, toplamı 60 olan iki sayı" gibi sorularda bilinmeyeni azaltır: $6m + 6n = 60$, $m + n = 10$, $m, n$ aralarında asal.
+
+::ornek baslik="Çarpım ilişkisi"
+soru: EBOB$(a, b) = 6$, EKOK$(a, b) = 72$ ve $a = 18$ ise $b$ kaçtır?
+1. $a \cdot b = \text{EBOB} \cdot \text{EKOK}$: $18 \cdot b = 6 \cdot 72 = 432$. || İki sayı için geçerli özellik.
+2. $b = 432 : 18 = 24$. || Kontrol: EBOB(18, 24) = 6 ✓, EKOK = 72 ✓.
+cevap: $b = 24$
+
+::bosluk b1 cevap=12 tip=ebob-ekok-hesap zorluk=1
+EBOB$(48, 60)$ kaçtır?
+cozum: $48 = 2^4 \cdot 3$, $60 = 2^2 \cdot 3 \cdot 5$. Ortaklar küçük üsle: $2^2 \cdot 3 = 12$.
+
+::yanilgi m2 tip=ebob-ekok-hesap
+yanlis: İki sayının EKOK'u her zaman çarpımlarıdır.
+neden: Bu yalnız sayılar aralarında asalsa doğrudur; ortak çarpanlar bir kez sayılır.
+dogru: EKOK$(a, b) = \frac{a \cdot b}{\text{EBOB}(a, b)}$; örneğin EKOK(12, 18) $= \frac{216}{6} = 36$.
+
+::soru c2 tip=ebob-ekok-hesap zorluk=1
+EBOB$(a, b) = 4$, EKOK$(a, b) = 60$ ve $a = 12$ olduğuna göre $b$ kaçtır?
+A) 5 || $5$ ile $12$'nin EBOB'u 1 olur.
+B) 10 || EBOB(12, 10) = 2, 4 değil.
+C) 15 || EBOB(12, 15) = 3.
+D) 16 || EKOK(12, 16) = 48.
++E) 20 || Doğru: $12 \cdot b = 4 \cdot 60$, $b = 20$.
+kontrol: 4*60/12
+cozum: $12 \cdot b = 4 \cdot 60 = 240$, yani $b = 20$. Kontrol: EBOB(12, 20) = 4, EKOK = 60.
+
+@bolum s3 9 | EBOB problemleri: bölmek
+::fikir
+Bir bütünü **eşit ve olabildiğince büyük parçalara bölüyorsan** EBOB kullanırsın. Parça büyüdükçe parça sayısı azalır; "en az kaç parça" da aynı sorudur.
+
+::duzey
+L1: 24 cm ve 36 cm'lik iki şeridi artık kalmadan eşit parçalara keseceksin. Parça boyu ikisini de tam bölmeli: 1, 2, 3, 4, 6 ya da 12 cm. En uzun parça 12 cm'dir; o zaman 2 + 3 = 5 parça çıkar.
+L2: Uzunluklar, alanlar veya hacimler **eş ve en büyük** parçalara ayrılıyorsa parça ölçüsü EBOB'dur. Dikdörtgen bir alanı en büyük karelere bölmek: kare kenarı EBOB(en, boy). Prizmayı en büyük küplere bölmek: küp kenarı EBOB(a, b, c); küp sayısı $\frac{a}{e} \cdot \frac{b}{e} \cdot \frac{c}{e}$.
+L3: Ağaç dikme sorularında aralık EBOB'dur; ama sayım şekle göre değişir: **kapalı** bir çevrede ağaç sayısı = aralık sayısı; **açık** bir yolda ağaç sayısı = aralık sayısı + 1. Köşelere ağaç gelmesi isteniyorsa aralık her kenarı bölmelidir; bu da EBOB'u zorunlu kılar.
+
+::ornek baslik="İki tel, en az parça"
+soru: 24 m ve 36 m uzunluğundaki iki tel, hiç artmayacak şekilde eşit ve en uzun parçalara bölünecektir. En az kaç parça elde edilir?
+1. Parça boyu ikisini de bölmeli ve en büyük olmalı: EBOB(24, 36) = 12 m. || "Eşit ve en uzun" → EBOB.
+2. Parça sayısı $\frac{24}{12} + \frac{36}{12} = 2 + 3 = 5$. || Her teli parça boyuna böl.
+cevap: 5 parça
+
+::tamamla baslik="Tarlanın çevresine ağaç"
+soru: Kenarları 60 m ve 84 m olan dikdörtgen bir tarlanın çevresine, köşelere de gelecek şekilde eşit aralıklarla ağaç dikilecektir. En az kaç ağaç gerekir?
+1. Aralık her iki kenarı bölmeli ve en büyük olmalı: EBOB(60, 84) = 12 m.
+?2. Çevre $2(60 + 84) = 288$ m; aralık sayısı $288 : 12 = 24$. || Çevreyi aralığa böl.
+?3. Çevre kapalı bir şekil olduğundan ağaç sayısı aralık sayısına eşittir: 24. || Başladığın köşe sona da denk gelir.
+cevap: 24 ağaç
+
+::strateji tip=ebob-problem baslik="Bölüyor musun, birleştiriyor musun?"
+ipucu: "eşit ve en büyük parça", "artmayacak şekilde", "en az kaç parça"
+1. Büyük bir şey küçük eş parçalara mı ayrılıyor? Öyleyse EBOB.
+2. Parça ölçüsü EBOB; parça sayısı = her uzunluk ÷ EBOB toplamı (alan/hacimde çarpım).
+3. Ağaçta şekli kontrol et: kapalı çevre → aralık sayısı; açık yol → aralık sayısı + 1.
+
+::yanilgi m3 tip=ebob-problem
+yanlis: Kapalı bir çevreye dikilen ağaç sayısı, aralık sayısından 1 fazladır.
+neden: Kapalı çevrede başlangıç ve bitiş noktası aynıdır; son ağaç ilk ağaçla çakışır.
+dogru: Kapalı çevrede ağaç sayısı = aralık sayısı. Düz bir yolda ise aralık sayısı + 1.
+
+::soru c3 tip=ebob-problem zorluk=2
+Boyutları 18 cm, 24 cm ve 30 cm olan dikdörtgenler prizması biçimindeki bir tahta blok, hiç artmayacak şekilde eş ve en büyük küplere bölünecektir. Kaç küp elde edilir?
+A) 12 || Bölümleri topladın; hacimde çarpılır.
+B) 30 || Küp kenarını yanlış aldın.
++C) 60 || Doğru: kenar 6 cm; $3 \cdot 4 \cdot 5 = 60$.
+D) 72 || Küp kenarı 6; boyutları 6'ya böl.
+E) 120 || Küp kenarını 3 aldın; en büyük küp istendi.
+kontrol: (18/6)*(24/6)*(30/6)
+cozum: Küp kenarı EBOB(18, 24, 30) = 6 cm. Küp sayısı $\frac{18}{6} \cdot \frac{24}{6} \cdot \frac{30}{6} = 3 \cdot 4 \cdot 5 = 60$.
+
+@bolum s4 10 | EKOK problemleri: birleştirmek ve aynı anda
+::fikir
+Küçük parçaları **birleştirip en küçük büyük şekli** (kare, küp) kuruyorsan ya da olaylar **aynı anda** tekrarlanıyorsa EKOK kullanırsın. Kalanlı sorularda: **bölen − kalan** hep aynıysa sayı $\text{EKOK} \cdot n - (\text{fark})$'tır.
+
+::duzey
+L1: Eni 6 cm, boyu 10 cm olan kartonları yan yana dizerek bir kare yapacaksın. Karenin kenarı hem 6'nın hem 10'un katı olmalı: 30, 60, … En küçüğü 30 cm. Bir kenara $30 : 6 = 5$, diğerine $30 : 10 = 3$ karton gelir: 15 karton.
+L2: "Aynı anda", "birlikte", "yeniden karşılaşma" → EKOK. Kalanlı sayılar: bir sayı 4'e bölününce 3, 6'ya bölününce 5, 9'a bölününce 8 kalan veriyorsa, sayıya 1 eklersen hepsine tam bölünür: $x + 1 = \text{EKOK}(4, 6, 9) = 36$, $x = 35$. Kalanlar aynıysa ($r$): $x = \text{EKOK} \cdot n + r$.
+L3: Bir aralıkta kaç sayı istendiğinde $x = 30n - 3$ gibi genel biçimi yaz ve $n$'yi tara: 100'den küçük olanlar $27, 57, 87$. Kalanlar ne aynı ne de "bölen − kalan" aynıysa küçük sayılardan deneyerek ilk ortak sayıyı bul, sonra EKOK ekleyerek ilerle.
+
+::ornek baslik="Kartonlarla en küçük kare"
+soru: Eni 6 cm, boyu 10 cm olan dikdörtgen kartonlar aynı yönde yan yana ve üst üste dizilerek en küçük kare oluşturulacaktır. Kaç karton gerekir?
+1. Kare kenarı 6'nın ve 10'un ortak katı, en küçüğü: EKOK(6, 10) = 30 cm. || Birleştirme → EKOK.
+2. Karton sayısı $\frac{30}{6} \cdot \frac{30}{10} = 5 \cdot 3 = 15$. || Her yönde kaç karton sığdığını çarp.
+cevap: 15 karton
+
+::ornek baslik="Kalanlı en küçük sayı"
+soru: 4'e bölündüğünde 3, 6'ya bölündüğünde 5, 9'a bölündüğünde 8 kalan veren en küçük doğal sayı kaçtır?
+1. Her durumda kalan, bölenden 1 eksik: $4 - 3 = 6 - 5 = 9 - 8 = 1$. || "Bölen − kalan" aynı.
+2. O hâlde $x + 1$ üç sayıya da tam bölünür: $x + 1 = \text{EKOK}(4, 6, 9) = 36$. || En küçük ortak kat.
+3. $x = 35$. || Kontrol: $35 = 4 \cdot 8 + 3 = 6 \cdot 5 + 5 = 9 \cdot 3 + 8$ ✓
+cevap: $35$
+
+::strateji tip=ekok-problem baslik="Kalanlı EKOK"
+ipucu: "… 5'erli sayılınca 2, 6'şarlı sayılınca 3 artıyor"
+1. Kalanlar aynı mı ($r$)? Sayı $= \text{EKOK} \cdot n + r$.
+2. "Bölen − kalan" aynı mı ($k$)? Sayı $= \text{EKOK} \cdot n - k$.
+3. Aralık koşulu varsa $n = 1, 2, 3, \ldots$ yazıp koşula uyan değeri seç.
+
+::yanilgi m4 tip=ekok-problem
+yanlis: 5'e bölününce 2, 6'ya bölününce 3 kalan veren sayı EKOK + 2 veya EKOK + 3'tür.
+neden: Kalanlar farklı olduğu için doğrudan eklenemez; burada ortak olan "bölen − kalan" farkıdır: $5 - 2 = 6 - 3 = 3$.
+dogru: Sayı $= \text{EKOK}(5, 6) \cdot n - 3 = 30n - 3$: $27, 57, 87, \ldots$
+
+::soru c4 tip=ekok-problem zorluk=2
+Bir sepetteki yumurtalar 5'erli sayılınca 2, 6'şarlı sayılınca 3 yumurta artıyor. Sepette 100'den az yumurta olduğuna göre en çok kaç yumurta olabilir?
+A) 27 || Bu da koşulu sağlar ama en büyüğü değil.
+B) 33 || $33 = 5 \cdot 6 + 3$; 5 ile kalan 3 olur.
+C) 57 || Koşulu sağlar; daha büyüğü var.
++D) 87 || Doğru: sayı $30n - 3$; 100'den küçük en büyüğü 87.
+E) 93 || $93 = 5 \cdot 18 + 3$; 5 ile kalan 2 değil.
+kontrol: 30*3-3
+cozum: $5 - 2 = 6 - 3 = 3$ olduğundan sayı $30n - 3$: $27, 57, 87$. 100'den küçük en büyüğü 87.
+
+@bolum s5 8 | Periyodik problemler
+::fikir
+Tekrar eden olaylarda **geçen süreyi periyoda böl, kalana bak**. $n$. kez olacak bir şey için $(n - 1)$ periyot geçer.
+
+::duzey
+L1: Hafta 7 günde bir tekrar eder. Bugün pazartesiyse 7, 14, 21 gün sonra yine pazartesidir. 23 gün sonrası için $23 = 7 \cdot 3 + 2$: üç tam hafta ve 2 gün; pazartesiden 2 gün sonra çarşamba.
+L2: Bir öğrenci 4 günde bir kursa gidiyorsa ilk kursundan sonraki 11 kurs için $11 \cdot 4 = 44$ gün geçer; 12. kurs ilk kurstan 44 gün sonradır. İki olay birlikte tekrarlanıyorsa ortak periyot EKOK'tur: 5 ve 8 günde bir nöbet tutan iki asker 40 günde bir birlikte nöbet tutar.
+L3: Sayıların son rakamı da periyodiktir: 7'nin kuvvetleri $7, 9, 3, 1$ ile biter; döngü 4. $7^{2026}$ için $2026$'yı 4'e böl: kalan 2, yani son rakam ikinci terim: 9. Kalan 0 çıkarsa döngünün son terimi alınır.
+
+::ornek baslik="MEBİ örneği: kursun 12. günü"
+soru: Burak 4 günde bir tenis kursuna gidiyor. Kursa pazartesi başladığına göre 12. kez kursa hangi gün gider?
+1. İlk kursa gitti; kalan $12 - 1 = 11$ kurs için $11 \cdot 4 = 44$ gün geçer. || $n$. kez için $(n - 1)$ periyot.
+2. $44 = 7 \cdot 6 + 2$; pazartesiden 2 gün sonra. || Haftanın periyodu 7.
+cevap: Çarşamba
+
+::bosluk b2 cevap=9 tip=periyodik zorluk=2
+$7^{2026}$ sayısının birler basamağındaki rakam kaçtır?
+cozum: Son rakamlar $7, 9, 3, 1$ döngüsünde (4 adım). $2026 = 4 \cdot 506 + 2$; ikinci terim: 9.
+
+::yanilgi m5 tip=periyodik
+yanlis: 4 günde bir giden biri 12. kez, $12 \cdot 4 = 48$ gün sonra gider.
+neden: İlk gidiş başlangıç anıdır; 12. gidişe kadar 11 aralık vardır.
+dogru: $11 \cdot 4 = 44$ gün sonra gider.
+
+::soru c5 tip=periyodik zorluk=2
+İki nöbetçiden biri 6 günde, diğeri 8 günde bir nöbet tutmaktadır. İlk kez cuma günü birlikte nöbet tuttuklarına göre üçüncü kez birlikte nöbet tuttukları gün hangisidir?
+A) Pazartesi || 48'in 7 ile kalanı 6'dır.
+B) Salı || Kalanı yeniden say.
+C) Çarşamba || Cuma + 6 gün.
++D) Perşembe || Doğru: EKOK 24; $2 \cdot 24 = 48$ gün; $48 = 7 \cdot 6 + 6$.
+E) Cuma || 48 gün 7'nin katı değil.
+cozum: Birlikte nöbet periyodu EKOK(6, 8) = 24 gün. Üçüncü kez için $2 \cdot 24 = 48$ gün geçer. $48 = 7 \cdot 6 + 6$; cumadan 6 gün sonra perşembe.
+
+::ozet
+- Bölen sayısı: $(a+1)(b+1)(c+1)$; tam sayı bölen sayısı bunun 2 katı.
+- EBOB küçük üsler, EKOK büyük üsler; $a \cdot b = \text{EBOB} \cdot \text{EKOK}$.
+- Bölüyorsan EBOB, birleştiriyor ya da aynı anı arıyorsan EKOK.
+- Kalanlı EKOK: kalanlar aynıysa $+r$, "bölen − kalan" aynıysa $-k$.
+- Periyodik: süreyi periyoda böl, kalana bak; $n$. kez için $(n-1)$ periyot.
+
+@pratik
+- Problemi okur okumaz karar ver ve yaz: bölüyorsan EBOB, birleştiriyor ya da aynı anı arıyorsan EKOK. Karar vermeden hesaba geçme.
+- Hesabı asal çarpanlarla yap; bölen merdiveninde sayıları yan yana bölmek EBOB ve EKOK'u aynı anda verir.
+- Kalanlı sorularda önce sor: kalanlar mı aynı, bölen − kalan farkı mı aynı? Cevaba göre EKOK'a ekle ya da çıkar.
+- Periyodik sorularda $n$. kez için $(n - 1)$ periyot geçer; haftaya göre kalan 0 ise aynı gündür.
+- En sık tuzaklar: kapalı çevrede ağaç sayısına $+1$ eklemek, EKOK'u çarpım sanmak, 1'i asal saymak. Hedef süre soru başı 75 saniye.
+
+@kartlar
+- $p^a q^b r^c$'nin pozitif bölen sayısı :: $(a+1)(b+1)(c+1)$
+- EBOB nasıl bulunur? :: Ortak asal çarpanların küçük üslülerinin çarpımı.
+- EKOK nasıl bulunur? :: Bütün asal çarpanların büyük üslülerinin çarpımı.
+- İki sayı için EBOB ile EKOK ilişkisi :: $a \cdot b = \text{EBOB}(a,b) \cdot \text{EKOK}(a,b)$
+- "Eşit ve en büyük parçalara bölmek" hangisi? :: EBOB
+- "Aynı anda yeniden", "en küçük kare oluşturmak" hangisi? :: EKOK
+- Kapalı çevreye ağaç sayısı :: Aralık sayısına eşittir (düz yolda +1).
+- 4'e bölününce 3, 6'ya bölününce 5 kalan veren sayılar :: $\text{EKOK}(4,6) \cdot n - 1 = 12n - 1$
+- $n$. kez olacak periyodik olay için geçen süre :: $(n - 1) \times$ periyot
+
+@ozet
+- Sayıyı asal çarpanlarına ayır; bölen sayısı için üslere 1 ekleyip çarp, tek bölenlerde 2'nin üssünü 0 al.
+- EBOB ortak çarpanların küçük üslüleri, EKOK bütün çarpanların büyük üslüleridir; çarpımları sayıların çarpımına eşittir.
+- Problemde önce karar ver: bölmek, en az parça → EBOB; birleştirmek, aynı anda → EKOK.
+- Kalanlı sayılarda "bölen − kalan" veya kalan ortaksa EKOK'tan çıkar ya da ekle.
+- Periyodik sorularda geçen süreyi periyoda böl; $n$. tekrar için $n - 1$ periyot say.
+
+@aciklama
+Bir arkadaşına şu iki soruyu açıkla: (1) "Bir problemde EBOB mu yoksa EKOK mu kullanacağıma nasıl karar veririm?" (2) "360'ın bölen sayısını bulurken neden üslere 1 ekleyip çarpıyoruz?"
+
+@havuz
+::soru h1 tip=asal-bolen zorluk=2
+540 sayısının asal olmayan kaç tane pozitif böleni vardır?
+A) 18
+B) 20
++C) 21
+D) 24
+E) 27
+kontrol: 3*4*2-3
+cozum: $540 = 2^2 \cdot 3^3 \cdot 5$; pozitif bölen sayısı $3 \cdot 4 \cdot 2 = 24$. Asal bölenler 2, 3, 5: $24 - 3 = 21$.
+
+::soru h2 tip=ebob-ekok-hesap zorluk=2
+İki sayının EBOB'u 6, EKOK'u 90'dır. Sayılardan biri 18 olduğuna göre diğeri kaçtır?
+A) 15
+B) 24
++C) 30
+D) 36
+E) 45
+kontrol: 6*90/18
+cozum: $18 \cdot b = 6 \cdot 90 = 540$, $b = 30$. Kontrol: EBOB(18, 30) = 6, EKOK = 90.
+
+::soru h3 tip=ebob-problem zorluk=2
+120 litre zeytinyağı ve 180 litre ayçiçek yağı, karıştırılmadan, eşit hacimli ve olabildiğince büyük şişelere tamamen doldurulacaktır. En az kaç şişe gerekir?
++A) 5
+B) 6
+C) 10
+D) 12
+E) 15
+kontrol: 120/60+180/60
+cozum: Şişe hacmi EBOB(120, 180) = 60 litre. Şişe sayısı $2 + 3 = 5$.
+
+::soru h4 tip=ekok-problem zorluk=2
+Üç zil 15, 20 ve 30 dakikada bir çalmaktadır. Saat 08.00'de birlikte çaldıklarına göre saat 18.00'e kadar (18.00 dahil) kaç kez birlikte çalarlar?
+A) 9
+B) 10
++C) 11
+D) 12
+E) 20
+kontrol: 600/60+1
+cozum: Birlikte çalma periyodu EKOK(15, 20, 30) = 60 dakika. 08.00, 09.00, …, 18.00: $10 + 1 = 11$ kez.
+
+::soru h5 tip=periyodik zorluk=2
+Bir hemşire 3 günde bir nöbet tutmaktadır. İlk nöbetini pazar günü tuttuğuna göre 20. nöbetini hangi gün tutar?
++A) Pazartesi
+B) Salı
+C) Çarşamba
+D) Cumartesi
+E) Pazar
+cozum: 20. nöbet için $19 \cdot 3 = 57$ gün geçer. $57 = 7 \cdot 8 + 1$; pazardan 1 gün sonra pazartesi.

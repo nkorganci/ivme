@@ -1,0 +1,308 @@
+@ders grafik-rutin-olmayan
+baslik: Rutin Olmayan Problemler: Grafik, Tablo ve Strateji
+kisa: Rutin olmayan problemler
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 460
+onkosul: sayi-kesir-problemleri hareket-problemleri
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: Grafikten değişim hızını, durmayı ve kesişimi okumak; tablo, tarife ve kampanya bilgisiyle verilen çok adımlı problemleri düzenlemek; en az–en çok sorularında tam sayı koşulunu ve en kötü durumu kullanmak; örüntü ve döngüleri ilk adımları listeleyerek genellemek.
+neden: TYT'nin son yıllardaki problem soruları büyük ölçüde "yeni nesil"dir: uzun bir metin, bir tablo ya da grafik ve birkaç adımlı akıl yürütme ister. Bu ders MEBİ'nin rutin olmayan problem çözme adımlarını (verileri belirle, isteneni anla, şekil–liste–tablo yap, sistematik düşün, akıl yürüt) somut stratejilere çevirir.
+kaynak: MEBİ TYT Konu Özeti — Rutin Olmayan Problemler | MEBİ Tarama Testi TYT — Hareket Problemleri > Rutin Olmayan Problemler | OGM 10. Sınıf Konu Özetleri 14 — Fonksiyon Grafiklerini Yorumlama
+tekrar: 12
+ustalik-dk: 16
+hedef-sure: 90
+anahtar: grafik | tablo | en az | en çok | en fazla | örüntü | kural | tarife | kampanya | emin olmak
+baslik-kurali: rutin olmayan problemler | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+banka-varsayilan: evet
+
+@tip grafik-okuma 30 s1
+ad: Grafik okuma: değişim hızı, durma, kesişim
+ipucu: "Yol–zaman grafiği", "deponun su miktarı–zaman grafiği", "iki aracın grafikleri kesişiyor".
+strateji: Önce eksenleri ve birimleri oku. Doğru parçasında eğim değişim hızıdır ($\frac{\Delta y}{\Delta x}$: km/sa, L/sa); yatay parça değişim olmadığını (durma, bekleme) gösterir; iki grafiğin kesişimi iki niceliğin eşit olduğu andır.
+anahtar: grafik | eğim | doğru parçası | eksen | noktasından | grafiği
+
+@tip tablo-sema 20 s2
+ad: Tablo, tarife ve kampanya
+ipucu: "İlk 2 saat 40 TL, sonraki her saat 15 TL", "3 defter alana 1 kalem hediye", "10 GB dahil, aşan her GB".
+strateji: Uzun metindeki her bilgiyi bir satıra yaz. "İlk …, sonraki her …" yapısında önce sabit kısmı, sonra aşan kısmı hesapla; "başlamış saat/GB" ifadesi yukarı yuvarlama demektir. Kampanyada hediye edilenleri ödenecek adetten düş.
+anahtar: tablo | tarife | ücret | kampanya | hediye | /\btl\b/ | paket
+
+@tip en-az-en-cok 25 s3
+ad: En az–en çok ve tam sayı koşulu
+ipucu: "En çok kaç kişi olabilir?", "en büyüğü en az kaçtır?", "aynı renkten 3 bilyeden emin olmak için".
+strateji: Bilinmeyenleri ve tam sayı koşulunu yaz. İsteneni büyütmek (küçültmek) için diğer değişkenleri uç değere götür, sonra koşulu sağlayıp sağlamadığını kontrol et. "Emin olmak için" sorularında en kötü durumu kur ve 1 ekle.
+anahtar: en az | en çok | en fazla | en küçük | en büyük | emin olmak
+
+@tip oruntu-strateji 25 s4
+ad: Örüntü, liste ve döngü
+ipucu: "1 kare için 4, 2 kare için 7 kibrit", "2, 6, 12, 20, …", "24 egzersiz 14.45–15.03 arasında".
+strateji: İlk 4–5 adımı tabloya yaz, artışı ya da tekrar periyodunu bul ve genel kuralı yaz (ör. $3n + 1$). Kuralı küçük bir adımla doğrula, sonra istenen adıma uygula. Zaman sorularında süreleri saniyeye ya da dakikaya çevir.
+anahtar: örüntü | kural | adım | terim | kibrit | kare | dizil | dakika başında
+
+@ustalik
+grafik-okuma 2 1-3
+tablo-sema 1 1-2
+en-az-en-cok 1 1-3
+oruntu-strateji 2 1-3
+
+@oturum Grafik ve tablo okuma | s1 s2
+@oturum Strateji: uç değer ve örüntü | s3 s4
+
+@ontest
+::soru o1 tip=grafik-okuma zorluk=1
+Bir aracın yol–zaman grafiği $(0, 0)$ noktasından $(3, 240)$ noktasına giden bir doğru parçasıdır (zaman saat, yol km). Aracın hızı saatte kaç km'dir?
+A) 3 || Bu sürenin kendisidir.
+B) 60 || Hesabı kontrol et: $240 : 3$.
+C) 72 || Hesabı yeniden yap.
++D) 80 || Doğru: eğim $\frac{240}{3} = 80$.
+E) 240 || Bu toplam yoldur.
+kontrol: 240/3
+cozum: Yol–zaman grafiğinde eğim hızdır: $\frac{240 - 0}{3 - 0} = 80$ km/sa.
+
+::soru o2 tip=en-az-en-cok zorluk=2
+Bir postanede yalnız 2 TL'lik ve 5 TL'lik pullar satılmaktadır. Tam 31 TL'lik pul almak isteyen biri en az kaç pul almalıdır?
+A) 7 || Kontrol: 7 pulla 31 TL elde edilemez.
++B) 8 || Doğru: $5 \cdot 5 + 3 \cdot 2 = 31$.
+C) 9 || Daha çok 5 TL'lik pul kullanabilirsin.
+D) 10 || Fazla.
+E) 11 || Fazla.
+kontrol: 5+3
+cozum: Pul sayısını azaltmak için 5 TL'lik pulları artır: 6 tane 30 TL eder ama kalan 1 TL ödenemez. 5 tane (25 TL) + 3 tane 2 TL (6 TL) $= 31$: 8 pul.
+
+::soru o3 tip=oruntu-strateji zorluk=2
+1'den başlayarak ardışık tek sayılar toplanıyor: $1$, $1 + 3$, $1 + 3 + 5$, … İlk 12 tek sayının toplamı kaçtır?
+A) 120 || Örüntüye bak: 1, 4, 9, 16, …
+B) 121 || Bu ilk 11 tek sayının toplamıdır.
+C) 132 || Hesabı kontrol et.
+D) 143 || Hesabı yeniden yap.
++E) 144 || Doğru: ilk $n$ tek sayının toplamı $n^2$.
+kontrol: 12^2
+cozum: Toplamlar 1, 4, 9, 16, … tam karelerdir; ilk $n$ tek sayının toplamı $n^2$. $12^2 = 144$.
+
+@bolum s1 10 | Grafik okuma
+::fikir
+Grafikte önce **eksenleri ve birimleri** oku. **Eğim = değişim hızı** ($\frac{\Delta y}{\Delta x}$), **yatay parça = değişim yok** (durma, bekleme), **kesişim = iki niceliğin eşit olduğu an**.
+
+::grafik alt="Deponun su miktarı 0–3 saat arasında 600 litreden 240 litreye doğrusal azalıyor, 3–5 saat arasında 240 litrede sabit, 5–8 saat arasında 600 litreye doğrusal artıyor." aciklama="İnen parça boşaltma ($-120$ L/sa), yatay parça bekleme, çıkan parça doldurma ($+120$ L/sa)."
+x: 0 9
+y: 0 700
+parca: 0 600 3 240 | navy
+parca: 3 240 5 240 | navy
+parca: 5 240 8 600 | navy
+nokta: 3 240 | (3, 240) | red
+nokta: 5 240 | (5, 240) | red
+xetiket: zaman (sa)
+yetiket: su (L)
+
+::duzey
+L1: Grafiği bir hikâye gibi oku: ilk 3 saatte su 600 litreden 240 litreye iniyor (depo boşaltılıyor), sonra 2 saat hiç değişmiyor (musluklar kapalı), sonra 3 saatte yeniden 600 litreye çıkıyor (depo dolduruluyor).
+L2: Hız eğimdir: boşaltma $\frac{240 - 600}{3 - 0} = -120$ L/sa, doldurma $\frac{600 - 240}{8 - 5} = 120$ L/sa. Yol–zaman grafiğinde de aynı: eğim hız, yatay parça durma. İki aracın grafikleri aynı eksende ise kesiştikleri nokta karşılaşma ya da yetişme anıdır.
+L3: Grafik doğrudan çizilmemiş, noktalarla anlatılmış olabilir: "(0, 0) ile (2, 120) noktalarından geçen doğru" hız 60 demektir. Kesişimi bulmak için iki doğrunun denklemini yaz ve eşitle: $60t = 90(t - 1) \Rightarrow t = 3$. Eğimi büyük olan grafik daha hızlı değişen niceliktir.
+
+::ornek baslik="Grafikten hız ve bekleme"
+soru: Yukarıdaki grafiğe göre depo kaç saat boyunca ne dolmuş ne boşalmıştır? Depo saatte kaç litre hızla boşaltılmıştır?
+1. Yatay parça 3. ve 5. saatler arasında: 2 saat değişim yok. || Yatay = bekleme.
+2. Boşaltma: 3 saatte $600 - 240 = 360$ litre azalmış. || İnen parça.
+3. Hız $360 : 3 = 120$ L/sa. || Eğim.
+cevap: 2 saat; 120 L/sa
+
+::yanilgi m1 tip=grafik-okuma
+yanlis: Yol–zaman grafiğindeki yatay parça aracın sabit hızla gittiğini gösterir.
+neden: Yatay parçada zaman ilerler ama yol değişmez; araç duruyordur.
+dogru: Sabit hız eğik bir doğru parçasıdır; yatay parça hızın sıfır olduğu andır.
+
+::soru c1 tip=grafik-okuma zorluk=2
+A aracının yol–zaman grafiği $(0, 0)$ ve $(2, 120)$ noktalarından geçen bir doğrudur. B aracı aynı noktadan 1 saat sonra aynı yöne yola çıkıyor; grafiği $(1, 0)$ ve $(2, 90)$ noktalarından geçen bir doğrudur (zaman saat, yol km). B aracı A aracına başlangıç noktasından kaç km uzakta yetişir?
+A) 90 || Bu, B'nin ilk saatte aldığı yoldur.
+B) 120 || Bu, A'nın 2. saatteki konumudur; B henüz yetişmedi.
+C) 150 || Hesabı kontrol et: $60t = 90(t - 1)$.
++D) 180 || Doğru: $t = 3$; $60 \cdot 3 = 180$.
+E) 270 || $t = 3$'te B'nin hızıyla tüm süreyi çarptın.
+kontrol: 60*3
+cozum: A'nın hızı $\frac{120}{2} = 60$, B'nin hızı $\frac{90}{1} = 90$ km/sa. $60t = 90(t - 1) \Rightarrow t = 3$; yetişme $60 \cdot 3 = 180$ km'de.
+
+@bolum s2 9 | Tablo, tarife ve kampanya
+::fikir
+Uzun metinli soruda **her bilgiyi bir satıra** yaz. "İlk …, sonraki her …" yapısında önce sabit kısmı, sonra aşan kısmı hesapla. **"Başlamış saat"** yukarı yuvarlama demektir.
+
+::tablo baslik="Bir internet paketinin tarifesi"
+| Kalem | Ücret |
+| Aylık sabit ücret (10 GB dahil) | 120 TL |
+| 10 GB'ı aşan her başlamış 1 GB | 15 TL |
+| Gece kullanımı (00.00–07.00) | Kotadan düşülmez |
+
+::sirala r1 baslik="MEBİ'nin rutin olmayan problem çözme adımlarını sırala"
+1. Verileri belirle.
+2. İsteneni anla.
+3. Gerekirse şekil çiz, liste ya da tablo yap.
+4. Sistematik düşün (dene, düzenle, genelle).
+5. Akıl yürüt ve sonucu kontrol et.
+
+::duzey
+L1: Paket 10 GB'a kadar 120 TL. 13,4 GB kullanırsan 3,4 GB aşarsın; "başlamış GB" sayıldığı için bu 4 GB demektir: $4 \cdot 15 = 60$ TL. Fatura $120 + 60 = 180$ TL.
+L2: Önce tablodaki kuralı kendi cümlenle yaz, sonra soruya uygula. Kampanyalarda (3 alana 1 bedava, ikincisi yarı fiyatına) ödenen ve alınan adetleri ayrı say. Gereksiz bilgi de verilebilir (gece kullanımı gibi); her bilgiyi kullanmak zorunda değilsin.
+L3: Karşılaştırma sorularında (hangi tarife daha ucuz?) iki tarifenin ücretini kullanım miktarına göre yaz ve eşit oldukları noktayı bul: bu bir denklemdir. Grafik ve tablo birlikte verildiyse tablo değerlerini grafikte işaretleyerek kontrol et.
+
+::ornek baslik="Tarifeyle fatura"
+soru: Yukarıdaki tarifeye göre bir ayda gündüz 13,4 GB ve gece 2 GB kullanan birinin faturası kaç TL olur?
+1. Gece kullanımı kotadan düşülmez: yalnız 13,4 GB sayılır. || Gereksiz bilgiyi ayıkla.
+2. Aşım $13{,}4 - 10 = 3{,}4$ GB → başlamış 4 GB. || Yukarı yuvarlama.
+3. Fatura $120 + 4 \cdot 15 = 180$ TL. || Sabit + aşım.
+cevap: 180 TL
+
+::soru c2 tip=tablo-sema zorluk=2
+Bir kırtasiyede defterin tanesi 12 TL, kalemin tanesi 5 TL'dir. Kırtasiye "her 3 defter alana 1 kalem hediye" kampanyası yapıyor. Ali 6 defter ve 4 kalem alıyor. Kampanyadan yararlanan Ali kaç TL öder?
+A) 72 || Kalemler de var; yalnız 2'si hediye.
++B) 82 || Doğru: 6 defter 72 TL; 2 kalem hediye, 2 kalem 10 TL.
+C) 87 || Yalnız 1 kalem hediye saydın; 6 defter 2 hediye getirir.
+D) 92 || Kampanyayı unuttun.
+E) 97 || Hesabı kontrol et.
+kontrol: 6*12+2*5
+cozum: 6 defter $= 72$ TL ve 2 kalem hediye. Ödenecek kalem $4 - 2 = 2$: $10$ TL. Toplam $82$ TL.
+
+@bolum s3 10 | En az, en çok ve en kötü durum
+::fikir
+**En çok / en az** sorusunda bilinmeyenleri ve **tam sayı koşulunu** yaz; isteneni büyütmek için diğerlerini **uç değere** götür ve koşulu kontrol et. **"Emin olmak için"** sorularında en kötü durumu kur, **1 ekle**.
+
+::duzey
+L1: 2 TL ve 5 TL'lik pullarla 31 TL'yi en az pulla ödemek için olabildiğince çok 5 TL'lik pul kullanırsın. 6 tane 30 TL eder ama kalan 1 TL ödenemez; 5 tane 25 TL eder, kalan 6 TL üç tane 2 TL'lik pulla ödenir: 8 pul.
+L2: Toplamı sabit sayılardan "en büyüğü en az" isteniyorsa sayıları birbirine olabildiğince yakın seç; "en büyüğü en çok" isteniyorsa diğerlerini olabildiğince küçük seç. Farklı olma koşulu varsa sayıları ardışık seç ve fazlalığı en büyüklere dağıt.
+L3: En kötü durum (güvercin yuvası) fikri: 3 kırmızı ve 10 mavi bilyeden aynı renkten 5 bilyeden emin olmak için en kötü durumda 3 kırmızının tamamı ve 4 mavi çekilir (7 bilye, henüz 5 aynı renk yok); bir sonraki bilye mutlaka 5. maviyi verir: 8 bilye. Bir rengin sayısı hedefin altındaysa o rengin hepsi en kötü duruma girer.
+
+::ornek baslik="MEBİ örneği: ramazan kolisi"
+soru: Bir köyde birey sayısı 3 ve 3'ten az olan ailelere 2, 3'ten fazla olan ailelere 3 koli dağıtılıyor. Hiçbir ailede 8'den fazla kişi yoktur. Köyde toplam 79 koli dağıtıldığına göre köyün nüfusu en çok kaç kişi olabilir?
+1. Küçük aile sayısı $x$, büyük aile sayısı $y$: $2x + 3y = 79$. || Bilinmeyenleri yaz.
+2. Nüfusun en çok olması için $y$ en büyük olmalı: $x = 0$ ve $x = 1$ için $y$ tam sayı değil; $x = 2$ için $y = 25$. || Uç değeri dene, koşulu kontrol et.
+3. Küçük ailelerde 3, büyük ailelerde 8 kişi: $2 \cdot 3 + 25 \cdot 8 = 206$. || Her aileyi de uç değere götür.
+cevap: 206
+
+::tamamla baslik="En kötü durum"
+soru: Bir çekmecede 6 siyah ve 4 beyaz çorap vardır. Karanlıkta en az kaç çorap çekilirse en az bir siyah ve en az bir beyaz çorap çekildiğinden emin olunur?
+1. En kötü durumda önce hep aynı renk gelir: 6 siyahın tamamı. || En kötü durumu kur.
+?2. Bir sonraki çorap mutlaka beyazdır: $6 + 1 = 7$. || 1 ekle.
+cevap: 7
+
+::yanilgi m2 tip=en-az-en-cok
+yanlis: 3 kırmızı ve 10 mavi bilyeden aynı renkten 5 bilyeden emin olmak için $4 + 4 + 1 = 9$ bilye çekmek gerekir.
+neden: Kırmızı yalnız 3 tanedir; en kötü durumda $3 + 4 = 7$ bilye çekilir.
+dogru: $3 + 4 + 1 = 8$ bilye yeterlidir.
+
+::soru c3 tip=en-az-en-cok zorluk=2
+Toplamları 50 olan dört farklı pozitif tam sayıdan en büyüğü en az kaçtır?
+A) 12 || $50 : 4$'ü aşağı yuvarladın; sayılar farklı olmalı.
+B) 13 || Kontrol: en büyüğü 13 ise toplam en çok $13 + 12 + 11 + 10 = 46$.
++C) 14 || Doğru: $14 + 13 + 12 + 11 = 50$.
+D) 15 || Daha küçüğü mümkün: 14.
+E) 44 || Bu, en büyüğün alabileceği en büyük değerdir.
+kontrol: (50+6)/4
+cozum: En büyük $M$ ise toplam en çok $M + (M - 1) + (M - 2) + (M - 3) = 4M - 6$. $4M - 6 \geq 50 \Rightarrow M \geq 14$; $14 + 13 + 12 + 11 = 50$ ✓
+
+@bolum s4 9 | Örüntü, liste ve döngü
+::fikir
+Tekrarlayan durumlarda **ilk 4–5 adımı tabloya yaz**, artışı ya da tekrar periyodunu bul, **genel kuralı yaz** ve küçük bir adımla doğrula. Zaman sorularında süreleri saniyeye ya da dakikaya çevir.
+
+::tablo baslik="Kibrit çöpleriyle yan yana kareler"
+| Kare sayısı ($n$) | 1 | 2 | 3 | 4 |
+| Kibrit sayısı | 4 | 7 | 10 | 13 |
+| Kural | $3 \cdot 1 + 1$ | $3 \cdot 2 + 1$ | $3 \cdot 3 + 1$ | $3 \cdot 4 + 1$ |
+
+::duzey
+L1: İlk karede 4 kibrit var; her yeni kare bir kenarı öncekiyle paylaştığı için 3 kibrit ekler: 4, 7, 10, 13, … Artış hep 3 olduğu için kural $3n + 1$'dir.
+L2: Artış sabitse kural $an + b$ biçimindedir ($a$ artış miktarı). Artışlar da düzenli artıyorsa (2, 6, 12, 20: artışlar 4, 6, 8) kural ikinci derecedendir; burada terimler $1 \cdot 2$, $2 \cdot 3$, $3 \cdot 4$, $4 \cdot 5$ yani $n(n + 1)$.
+L3: Döngülerde periyodu bul: 45 saniyelik egzersizler 4 egzersizde bir (180 sn = 3 dk) dakika başına denk gelir. Haftanın günleri (7), saat (12/24), ay (30) gibi döngülerde kalanlı bölme kullanılır; EBOB–EKOK dersindeki periyodik problemlerle aynı fikirdir.
+
+::ornek baslik="MEBİ örneği: egzersiz zamanları"
+soru: Aslı ilk egzersize 14.45'te başlıyor ve ara vermeden son egzersizi 15.03'te bitiriyor. 24 egzersizin her birine eşit süre ayırdığına göre egzersizlerden kaç tanesi dakika başında başlamıştır?
+1. Toplam süre 18 dk $= 1080$ sn; her egzersiz $1080 : 24 = 45$ sn. || Süreyi saniyeye çevir.
+2. Başlangıçlar: 14.45.00, 14.45.45, 14.46.30, 14.47.15, 14.48.00, … || İlk adımları listele.
+3. Her 4 egzersizde bir dakika başı: 1., 5., 9., 13., 17., 21. → 6 egzersiz. || Periyot 4.
+cevap: 6
+
+::yanilgi m3 tip=oruntu-strateji
+yanlis: Bir örüntünün kuralını bulmak için ilk iki terime bakmak yeterlidir.
+neden: 2, 4, … örüntüsü 2'şer artabilir (6, 8, …) ya da ikiye katlanabilir (8, 16, …); iki terim kuralı belirlemez.
+dogru: En az 3–4 terimi listele ve kuralı başka bir terimle doğrula.
+
+::soru c4 tip=oruntu-strateji zorluk=2
+Kibrit çöpleriyle yan yana kareler yapılıyor: 1 kare için 4, 2 kare için 7, 3 kare için 10 çöp gerekiyor. Bu şekilde 25 kare yapmak için kaç kibrit çöpü gerekir?
+A) 75 || Her kare 3 çöp ekler ama ilk kare 4 çöptür.
++B) 76 || Doğru: $3 \cdot 25 + 1 = 76$.
+C) 78 || Hesabı kontrol et: kural $3n + 1$.
+D) 79 || Bu 26 kare için gereken sayıdır.
+E) 100 || Kareler kenar paylaşır; her kare 4 çöp istemez.
+kontrol: 3*25+1
+cozum: Her yeni kare 3 çöp ekler: kural $3n + 1$. $n = 25$ için $76$.
+
+::ozet
+- Grafikte eğim değişim hızı, yatay parça durma, kesişim eşitliktir.
+- Tablo ve tarifelerde her bilgiyi bir satıra yaz; "başlamış" yukarı yuvarlamadır.
+- En az–en çok sorularında uç değeri dene, tam sayı koşulunu kontrol et; "emin olmak" için en kötü durum + 1.
+- Örüntüde ilk adımları listele, kuralı yaz ve doğrula.
+
+@pratik
+- Çalışma sırası: önce grafik okuma (eğim, yatay parça, kesişim), sonra tablo–tarife soruları; en az–en çok ve örüntü stratejilerini en sona bırak, çünkü önceki derslerin denklem kurma becerisini kullanırlar.
+- Sınav yaklaşımı: uzun metinli soruda okurken verileri kenara madde madde yaz ve isteneni yuvarlak içine al; ilk okumada hesap yapma.
+- Strateji seçimi: "en çok/en az" görürsen uç değer, "emin olmak" görürsen en kötü durum, tekrar eden bir yapı görürsen ilk 4–5 adımı listele.
+- En sık tuzaklar: yatay parçayı sabit hız sanmak, başlamış saati aşağı yuvarlamak, en kötü durumda sayısı az olan rengi fazla saymak, iki terimden kural uydurmak.
+- Hedef süre soru başı 90 saniye. Konu testinden sonra çıkmış sorular setini çöz; yeni nesil sorularda önce hangi stratejiyi kullanacağını bir kelimeyle yaz.
+
+@kartlar
+- Yol–zaman grafiğinde eğim :: Hız
+- Grafikteki yatay parça :: Değişim yok (durma, bekleme)
+- İki grafiğin kesişimi :: İki niceliğin eşit olduğu an (karşılaşma, yetişme)
+- "Başlamış saat" ifadesi :: Yukarı yuvarlama (5 sa 20 dk → 6 saat)
+- "Emin olmak için en az kaç?" :: En kötü durum + 1
+- Toplamı sabit farklı sayılarda en büyüğü en az :: Sayıları ardışık ve birbirine yakın seç.
+- Kibrit kareler 4, 7, 10, … kuralı :: $3n + 1$
+
+@ozet
+- Grafik okumada eğim değişim hızını, yatay parça durmayı, kesişim eşitliği gösterir.
+- Tablo, tarife ve kampanya bilgileri satır satır düzenlenerek hesaplanır.
+- En az–en çok sorularında uç değerler tam sayı koşuluyla denenir; kesinlik soruları en kötü durumla çözülür.
+- Örüntü ve döngülerde ilk adımlar listelenip genel kural yazılır ve doğrulanır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Ramazan kolisi örneğinde nüfusu en çok yapmak için neden büyük aile sayısını en büyük, her ailedeki kişi sayısını da en çok seçtik?" (2) "Çekmece sorusunda neden önce 6 siyahın tamamını çektiğimizi varsaydık?"
+
+@havuz
+::soru h1 tip=grafik-okuma zorluk=2
+Bir deponun su miktarı–zaman grafiği $(0, 600)$ noktasından $(6, 0)$ noktasına giden bir doğru parçasıdır (zaman saat, su litre). Depoda 240 litre su kaldığında kaç saat geçmiştir?
+A) 2
+B) $2{,}4$
+C) 3
+D) $3{,}2$
++E) $3{,}6$
+kontrol: (600-240)/100
+cozum: Boşalma hızı $\frac{600}{6} = 100$ L/sa. $600 - 100t = 240 \Rightarrow t = 3{,}6$ saat.
+
+::soru h2 tip=tablo-sema zorluk=2
+Bir otoparkın tarifesi şöyledir: ilk 2 saat 40 TL, sonraki her başlamış saat 15 TL. Otoparkta 5 saat 20 dakika kalan bir sürücü kaç TL öder?
+A) 85
+B) 90
+C) 95
++D) 100
+E) 115
+kontrol: 40+4*15
+cozum: 5 saat 20 dakika, başlamış saatlerle 6 saattir. İlk 2 saat 40 TL, kalan 4 saat $4 \cdot 15 = 60$ TL: toplam 100 TL.
+
+::soru h3 tip=en-az-en-cok zorluk=3
+Bir torbada 5 kırmızı, 7 mavi ve 9 yeşil bilye vardır. Bakmadan çekilen bilyelerden aynı renkten 8 bilye çekildiğinden emin olmak için en az kaç bilye çekilmelidir?
+A) 8
+B) 16
+C) 19
++D) 20
+E) 22
+kontrol: 5+7+7+1
+cozum: En kötü durum: 5 kırmızının tamamı, 7 mavi, 7 yeşil (19 bilye, hâlâ 8 aynı renk yok). Bir sonraki bilye 8. yeşili verir: 20.
+
+::soru h4 tip=oruntu-strateji zorluk=2
+$2, 6, 12, 20, 30, \ldots$ örüntüsünün 10. terimi kaçtır?
++A) 110
+B) 112
+C) 120
+D) 121
+E) 132
+kontrol: 10*11
+cozum: Terimler $1 \cdot 2$, $2 \cdot 3$, $3 \cdot 4$, … yani $n(n + 1)$. 10. terim $10 \cdot 11 = 110$.

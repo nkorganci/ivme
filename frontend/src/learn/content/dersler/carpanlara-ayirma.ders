@@ -1,0 +1,296 @@
+@ders carpanlara-ayirma
+baslik: Çarpanlara Ayırma ve Rasyonel İfadeler
+kisa: Çarpanlara ayırma
+sinav: TYT AYT
+unite: polinomlar
+sinif: 10
+sira: 1010
+onkosul: polinom-islemleri
+kategori: excel.tyt.matematik.58dc018a000831b1b740 excel.ayt.matematik.58dc018a000831b1b740
+hedef: Ortak çarpan parantezine alma ve gruplandırmayı kullanmak; iki kare farkı, tam kare, küp toplamı ve farkı özdeşliklerini tanıyıp uygulamak; $x^2 + bx + c$ ve $ax^2 + bx + c$ üç terimlilerini çarpanlarına ayırmak; değişken değiştirme yöntemini uygulamak; rasyonel ifadeleri sadeleştirmek.
+neden: Çarpanlara ayırma OGM soru bankasında polinom sorularının en kalabalık kazanımıdır. İkinci dereceden denklemlerden limitteki "$\frac{0}{0}$" belirsizliğine ve integrale kadar AYT'nin hemen her konusunda bir hesap aracıdır.
+kaynak: MEBİ TYT Konu Özeti — Ortak Çarpan Parantezine Alma, Tam Kare ve İki Kare Farkı, Tam Küp ve Küp Toplamı–Farkı, Üç Terimli İfadeler, Rasyonel İfadeler | OGM 10. Sınıf Konu Özetleri 27–30 | OGM 10. Sınıf Ders Anlatım Sunuları 22–24
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: çarpanlarına ayır | çarpanlarından biri | özdeşlik | sadeleş | iki kare farkı | tam kare | rasyonel ifade | ifadesinin eşiti
+baslik-kurali: /^10\.3\.2/ | çarpanlara ayrılması | çarpanlarına ayrılması | polinomlar ve çarpanlara ayırma
+
+@tip ortak-gruplama 20 s1
+ad: Ortak çarpan ve gruplandırma
+ipucu: "$ax + bx + ay + by$", "$x^3 + 5x^2 - x - 5$", "$8(2 - a)^4 + 7(a - 2)^3$".
+strateji: Her terimde ortak olanı parantez dışına al. Ortak çarpan yoksa terimleri ikişerli grupla, her gruptan ortak çarpan çıkar; aynı parantez oluşmalı. $(b - a) = -(a - b)$; çift kuvvette işaret kaybolur: $(b - a)^2 = (a - b)^2$.
+anahtar: ortak çarpan | parantez | grupla
+
+@tip ozdeslik 30 s2
+ad: Özdeşlikler: iki kare farkı, tam kare, küp
+ipucu: "$101^2 - 99^2$", "$x + y = 7$, $xy = 12$ ise $x^2 + y^2$", "$x + \frac{1}{x} = 3$".
+strateji: $a^2 - b^2 = (a - b)(a + b)$; $(a \pm b)^2 = a^2 \pm 2ab + b^2$; $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$. Toplam–çarpım verilen sorularda $x^2 + y^2 = (x + y)^2 - 2xy$ gibi düzenlemeler kullan.
+anahtar: iki kare | tam kare | x^2 + y^2 | x + 1/x | küp | özdeşlik
+
+@tip uc-terimli 30 s3
+ad: Üç terimli ifadeler ve değişken değiştirme
+ipucu: "$x^2 - x - 12$", "$3x^2 + 5x - 2$ ifadesinin çarpanlarından biri", "$16x^4 - 16x^2 + 3$".
+strateji: $x^2 + bx + c$ için çarpımı $c$, toplamı $b$ olan iki sayı bul. $ax^2 + bx + c$ için baş katsayıyı ve sabit terimi çarpanlarına ayır; çapraz çarpımların toplamı ortadaki terimi vermeli. Tekrarlayan ifadeye yeni harf ver.
+anahtar: x^2 + | x^2 - | çarpanlarından biri | üç terimli
+
+@tip rasyonel-sadelestirme 20 s4
+ad: Rasyonel ifadeleri sadeleştirme
+ipucu: "$\frac{x^2 - 9}{x^2 + x - 6}$ ifadesinin sadeleşmiş biçimi", "işleminin sonucu".
+strateji: Pay ve paydayı önce çarpanlarına ayır, sonra ortak çarpanları sadeleştir; terimler değil, yalnız çarpanlar sadeleşir. Paydayı sıfır yapan değerler tanım dışıdır. Bölmede ikinci ifadeyi ters çevirip çarp.
+anahtar: sadeleş | rasyonel | ifadesinin en sade | işleminin sonucu | kesir
+
+@ustalik
+ortak-gruplama 1 1-2
+ozdeslik 2 1-3
+uc-terimli 2 1-3
+rasyonel-sadelestirme 1 1-3
+
+@oturum Ortak çarpan ve özdeşlikler | s1 s2
+@oturum Üç terimliler ve rasyonel ifadeler | s3 s4
+
+@ontest
+::soru o1 tip=ortak-gruplama zorluk=1
+$ax + bx + ay + by$ ifadesinin çarpanlarına ayrılmış biçimi aşağıdakilerden hangisidir?
++A) $(a + b)(x + y)$ || Doğru: $x(a + b) + y(a + b)$.
+B) $(a + x)(b + y)$ || Çarpınca $ab + ay + bx + xy$ olur.
+C) $ab + xy$ || Bu bir çarpım değildir.
+D) $(a - b)(x - y)$ || İşaretler hep artıydı.
+E) $(a + y)(b + x)$ || Çarpınca $ab + ax + by + xy$ olur.
+cozum: Gruplandır: $x(a + b) + y(a + b) = (a + b)(x + y)$.
+
+::soru o2 tip=ozdeslik zorluk=1
+$101^2 - 99^2$ işleminin sonucu kaçtır?
+A) 4 || Bu yalnız $(101 - 99)^2$'dir.
+B) 40 || Hesabı kontrol et: $(101 - 99)(101 + 99)$.
+C) 200 || Bu toplamdır; farkla çarp.
++D) 400 || Doğru: $2 \cdot 200 = 400$.
+E) 404 || Hesabı yeniden yap.
+kontrol: 2*200
+cozum: İki kare farkı: $(101 - 99)(101 + 99) = 2 \cdot 200 = 400$.
+
+::soru o3 tip=uc-terimli zorluk=2
+$x^2 - x - 12$ ifadesinin çarpanlarından biri aşağıdakilerden hangisidir?
+A) $x + 4$ || $(x + 4)(x - 3) = x^2 + x - 12$; orta terimin işareti ters.
+B) $x - 3$ || $(x - 3)$ ile çarpım $-x$ vermez.
+C) $x - 6$ || $6 \cdot 2 = 12$ ama fark 1 değil, 4.
+D) $x + 2$ || $2 \cdot 6 = 12$; toplamları $-1$ değil.
++E) $x - 4$ || Doğru: $(x - 4)(x + 3)$.
+cozum: Çarpımı $-12$, toplamı $-1$ olan sayılar $-4$ ve $3$: $(x - 4)(x + 3)$.
+
+@bolum s1 8 | Ortak çarpan ve gruplandırma
+::fikir
+Her terimde ortak olan çarpanı **parantez dışına al**; ortak çarpan yoksa terimleri **ikişerli grupla** ve her gruptan ortak çarpan çıkar. $(b - a) = -(a - b)$ dönüşümü ortak çarpanı görünür kılar.
+
+::duzey
+L1: $6x^2 + 9x$ ifadesinde her terimde $3x$ vardır: $3x(2x + 3)$. Ortak çarpan almak dağılma özelliğini geriye doğru uygulamaktır.
+L2: Dört terimde ortak çarpan yoksa ikişerli grupla: $ax + bx + ay + by = x(a + b) + y(a + b) = (a + b)(x + y)$. Gruplardan aynı parantez çıkmalıdır; çıkmıyorsa terimlerin sırasını değiştir.
+L3: İşaret dönüşümü: $(2 - a) = -(a - 2)$, çift kuvvette $(2 - a)^4 = (a - 2)^4$, tek kuvvette $(2 - a)^3 = -(a - 2)^3$. MEBİ örneği: $8(2 - a)^4 + 7(a - 2)^3 = (a - 2)^3[8(a - 2) + 7] = (a - 2)^3(8a - 9)$.
+
+::ornek baslik="MEBİ örneği: gruplandırma"
+soru: $x^3 + 5x^2 - x - 5$ ifadesini çarpanlarına ayır.
+1. Grupla: $x^2(x + 5) - 1 \cdot (x + 5)$. || Her gruptan ortak çarpan.
+2. $(x + 5)(x^2 - 1)$. || Aynı parantez dışarı.
+3. $x^2 - 1 = (x - 1)(x + 1)$: $(x + 5)(x - 1)(x + 1)$. || İki kare farkıyla devam.
+cevap: $(x + 5)(x - 1)(x + 1)$
+
+::yanilgi m1 tip=ortak-gruplama
+yanlis: $8(2 - a)^4 + 7(a - 2)^3$ ifadesinde ortak çarpan yoktur.
+neden: Çift kuvvette işaret kaybolur: $(2 - a)^4 = (a - 2)^4$; iki terimde de $(a - 2)^3$ vardır.
+dogru: $(a - 2)^3[8(a - 2) + 7] = (a - 2)^3(8a - 9)$.
+
+::soru c1 tip=ortak-gruplama zorluk=2
+$a^2 - ab + ac - bc$ ifadesinin çarpanlarına ayrılmış biçimi aşağıdakilerden hangisidir?
+A) $(a + b)(a - c)$ || Çarpınca $a^2 - ac + ab - bc$ olur.
+B) $(a - b)(a - c)$ || Çarpınca $+bc$ çıkar.
+C) $(a + b)(a + c)$ || İşaretleri kontrol et.
++D) $(a - b)(a + c)$ || Doğru: $a(a - b) + c(a - b)$.
+E) $a(a - b + c)$ || $-bc$ teriminde $a$ çarpanı yoktur.
+cozum: Grupla: $a(a - b) + c(a - b) = (a - b)(a + c)$.
+
+@bolum s2 10 | Özdeşlikler
+::fikir
+**İki kare farkı:** $a^2 - b^2 = (a - b)(a + b)$. **Tam kare:** $(a \pm b)^2 = a^2 \pm 2ab + b^2$. **Küp toplamı/farkı:** $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$.
+
+::gorsel alt="Kenarı a + b olan kare; içinde a kare, iki tane ab dikdörtgeni ve b kare." aciklama="$(a + b)^2 = a^2 + 2ab + b^2$: büyük karenin alanı dört parçanın toplamıdır."
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="20" width="120" height="120" fill="var(--tint)" stroke="var(--navy)" stroke-width="2"/>
+<rect x="140" y="20" width="60" height="120" fill="var(--pen-blue)" fill-opacity="0.2" stroke="var(--navy)" stroke-width="2"/>
+<rect x="20" y="140" width="120" height="60" fill="var(--pen-blue)" fill-opacity="0.2" stroke="var(--navy)" stroke-width="2"/>
+<rect x="140" y="140" width="60" height="60" fill="var(--pen-green)" fill-opacity="0.25" stroke="var(--navy)" stroke-width="2"/>
+<text x="72" y="86" font-size="16" fill="var(--ink)">a²</text>
+<text x="158" y="86" font-size="15" fill="var(--ink)">ab</text>
+<text x="70" y="176" font-size="15" fill="var(--ink)">ab</text>
+<text x="160" y="176" font-size="15" fill="var(--ink)">b²</text>
+<text x="76" y="14" font-size="13" fill="var(--ink)">a</text>
+<text x="166" y="14" font-size="13" fill="var(--ink)">b</text>
+<text x="6" y="84" font-size="13" fill="var(--ink)">a</text>
+<text x="6" y="174" font-size="13" fill="var(--ink)">b</text>
+</svg>
+
+::tablo baslik="Özdeşlikler"
+| Özdeşlik | Açılım |
+| $a^2 - b^2$ | $(a - b)(a + b)$ |
+| $(a + b)^2$ | $a^2 + 2ab + b^2$ |
+| $(a - b)^2$ | $a^2 - 2ab + b^2$ |
+| $a^3 + b^3$ | $(a + b)(a^2 - ab + b^2)$ |
+| $a^3 - b^3$ | $(a - b)(a^2 + ab + b^2)$ |
+| $(a + b)^3$ | $a^3 + 3a^2b + 3ab^2 + b^3$ |
+
+::duzey
+L1: Kenarı $a + b$ olan bir karenin alanı, içindeki dört parçanın toplamıdır: bir $a^2$, bir $b^2$ ve iki tane $ab$. $(a + b)^2 = a^2 + b^2$ dersen iki dikdörtgeni unutmuş olursun.
+L2: Sayısal hesaplarda özdeşlik kısayoldur: $101^2 - 99^2 = 2 \cdot 200 = 400$, $99^2 = (100 - 1)^2 = 9801$. Toplam ve çarpım verilen sorularda $x^2 + y^2 = (x + y)^2 - 2xy$, $(x - y)^2 = (x + y)^2 - 4xy$.
+L3: $x + \frac{1}{x} = k$ ise $x^2 + \frac{1}{x^2} = k^2 - 2$ ve $x^3 + \frac{1}{x^3} = k^3 - 3k$. Küp farkı: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$; ikinci çarpan gerçek sayılarda çarpanlarına ayrılmaz.
+
+::ornek baslik="Farktan kareler toplamına"
+soru: $x - y = 3$ ve $xy = 10$ olduğuna göre $x^2 + y^2$ kaçtır?
+1. $(x - y)^2 = x^2 - 2xy + y^2$. || Tam kare özdeşliği.
+2. $9 = x^2 + y^2 - 20$. || Bilinenleri yerine koy.
+3. $x^2 + y^2 = 29$. || Kontrol: $x = 5$, $y = 2$ için $25 + 4 = 29$ ✓
+cevap: 29
+
+::yanilgi m2 tip=ozdeslik
+yanlis: $x^2 + 9 = (x + 3)(x - 3)$
+neden: $(x + 3)(x - 3) = x^2 - 9$'dur; bu iki kare farkıdır.
+dogru: $x^2 + 9$ (iki kare toplamı) gerçek katsayılı çarpanlara ayrılmaz.
+
+::soru c2 tip=ozdeslik zorluk=2
+$x + y = 7$ ve $xy = 12$ olduğuna göre $x^2 + y^2$ kaçtır?
+A) 13 || Hesabı kontrol et.
++B) 25 || Doğru: $49 - 2 \cdot 12 = 25$.
+C) 37 || $2xy$ yerine $xy$ çıkardın.
+D) 49 || $2xy$'yi çıkarmayı unuttun.
+E) 73 || $2xy$'yi ekledin; çıkarılmalı.
+kontrol: 49-24
+cozum: $x^2 + y^2 = (x + y)^2 - 2xy = 49 - 24 = 25$.
+
+@bolum s3 10 | Üç terimli ifadeler
+::fikir
+$x^2 + bx + c$: **çarpımı $c$, toplamı $b$** olan iki sayıyı bul: $(x + m)(x + n)$. $ax^2 + bx + c$: baş katsayıyı ve sabit terimi çarpanlarına ayır; **çapraz çarpımların toplamı** ortadaki terimi vermeli.
+
+::duzey
+L1: $x^2 + 5x + 6$ için çarpımı 6, toplamı 5 olan iki sayı 2 ve 3'tür: $(x + 2)(x + 3)$. Kontrol için geri çarp: $x^2 + 3x + 2x + 6$ ✓.
+L2: İşaretler: sabit terim pozitifse iki sayı aynı işaretli (orta terimin işaretinde), negatifse ters işaretlidir. $ax^2 + bx + c$'de çapraz çarpım: $2x^2 - 7x + 6$ için $2x$ ve $x$, $-3$ ve $-2$: $-4x - 3x = -7x$ ✓ → $(2x - 3)(x - 2)$.
+L3: Değişken değiştirme: tekrarlayan bir ifadeye yeni harf ver. $16x^4 - 16x^2 + 3$'te $a = 4x^2$: $a^2 - 4a + 3 = (a - 3)(a - 1)$, yani $(4x^2 - 3)(4x^2 - 1)$; sonra $4x^2 - 1 = (2x - 1)(2x + 1)$.
+
+::ornek baslik="MEBİ örneği: baş katsayı 1 değil"
+soru: $2x^2 - 7x + 6$ ifadesini çarpanlarına ayır.
+1. $2x^2 = 2x \cdot x$, $6 = (-3)(-2)$. || Uç terimleri ayır.
+2. Çapraz: $2x \cdot (-2) + x \cdot (-3) = -7x$ ✓ || Orta terim tutuyor.
+3. $(2x - 3)(x - 2)$. || Satırları yan yana yaz.
+cevap: $(2x - 3)(x - 2)$
+
+::tamamla baslik="MEBİ örneği: değişken değiştirme"
+soru: $16x^4 - 16x^2 + 3$ ifadesini çarpanlarına ayır.
+1. $a = 4x^2$ olsun: $a^2 - 4a + 3$.
+?2. $a^2 - 4a + 3 = (a - 3)(a - 1)$.
+?3. $(4x^2 - 3)(4x^2 - 1) = (4x^2 - 3)(2x - 1)(2x + 1)$.
+cevap: $(4x^2 - 3)(2x - 1)(2x + 1)$
+
+::yanilgi m3 tip=uc-terimli
+yanlis: $x^2 - 5x - 6 = (x - 2)(x - 3)$
+neden: $(x - 2)(x - 3) = x^2 - 5x + 6$; sabit terim $-6$ için sayılar ters işaretli olmalı.
+dogru: Çarpımı $-6$, toplamı $-5$: $-6$ ve $1$ → $(x - 6)(x + 1)$.
+
+::soru c3 tip=uc-terimli zorluk=2
+$3x^2 + 5x - 2$ ifadesinin çarpanlarından biri aşağıdakilerden hangisidir?
+A) $3x + 1$ || $(3x + 1)(x - 2) = 3x^2 - 5x - 2$; orta terim ters.
+B) $x - 2$ || Çapraz çarpımı kontrol et.
+C) $3x - 2$ || $(3x - 2)(x + 1) = 3x^2 + x - 2$.
+D) $x + 1$ || Sabit terim $-2$ için $1 \cdot (-2)$ ya da $(-1) \cdot 2$ olmalı.
++E) $3x - 1$ || Doğru: $(3x - 1)(x + 2) = 3x^2 + 6x - x - 2$.
+cozum: $3x^2 = 3x \cdot x$, $-2 = (-1)(2)$: çapraz $3x \cdot 2 + x \cdot (-1) = 5x$ ✓. $(3x - 1)(x + 2)$.
+
+@bolum s4 8 | Rasyonel ifadeleri sadeleştirme
+::fikir
+Pay ve paydayı **önce çarpanlarına ayır**, sonra **ortak çarpanları** sadeleştir. Yalnız çarpanlar sadeleşir, terimler sadeleşmez. Paydayı sıfır yapan değerler tanım dışıdır.
+
+::duzey
+L1: $\frac{6}{9} = \frac{2 \cdot 3}{3 \cdot 3} = \frac{2}{3}$: ortak çarpan 3 sadeleşti. $\frac{x + 3}{x + 5}$'te ise 3 ile 5'i sadeleştiremezsin; çünkü $x$ ile toplanmışlardır, çarpan değildirler.
+L2: $\frac{x^2 - 9}{x^2 + x - 6} = \frac{(x - 3)(x + 3)}{(x + 3)(x - 2)} = \frac{x - 3}{x - 2}$; $x \neq -3$ ve $x \neq 2$. Sadeleşen çarpanın kökü de tanım dışı kalır.
+L3: Toplama–çıkarmada paydaları çarpanlarına ayırıp ortak payda (EKOK) bul; bölmede ikinci kesri ters çevirip çarp. Sonucu en sade biçime getirmek için son adımda yine çarpanlara ayır.
+
+::ornek baslik="Önce ayır, sonra sadeleştir"
+soru: $\dfrac{x^2 - 9}{x^2 + x - 6}$ ifadesini sadeleştir.
+1. Pay: $(x - 3)(x + 3)$. || İki kare farkı.
+2. Payda: $(x + 3)(x - 2)$. || Üç terimli.
+3. $\frac{x - 3}{x - 2}$, $x \neq -3, 2$. || Ortak çarpan $(x + 3)$.
+cevap: $\frac{x - 3}{x - 2}$
+
+::soru c4 tip=rasyonel-sadelestirme zorluk=2
+$\dfrac{x^2 - 4x + 4}{x^2 - 4}$ ifadesinin sadeleşmiş biçimi aşağıdakilerden hangisidir?
+A) $\frac{x + 2}{x - 2}$ || Pay ile payda yer değiştirmiş.
++B) $\frac{x - 2}{x + 2}$ || Doğru: $\frac{(x - 2)^2}{(x - 2)(x + 2)}$.
+C) $x - 1$ || Terimleri sadeleştirdin; önce çarpanlara ayır.
+D) $-x + 1$ || Terimler sadeleşmez.
+E) $\frac{1}{x + 2}$ || Payda $(x - 2)^2$'nin yalnız bir çarpanı sadeleşir.
+cozum: Pay $(x - 2)^2$, payda $(x - 2)(x + 2)$: $\frac{x - 2}{x + 2}$.
+
+::ozet
+- Ortak çarpanı dışarı al; yoksa grupla; $(b - a) = -(a - b)$.
+- $a^2 - b^2 = (a - b)(a + b)$; $(a \pm b)^2 = a^2 \pm 2ab + b^2$; $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$.
+- $x^2 + bx + c$: çarpımı $c$ toplamı $b$; $ax^2 + bx + c$: çapraz çarpım.
+- Rasyonel ifadede önce çarpanlara ayır, sonra yalnız çarpanları sadeleştir.
+
+@pratik
+- Çalışma sırası: önce ortak çarpan ve gruplandırma, sonra özdeşlik tablosunu ezberle, ardından üç terimliler ve en son rasyonel ifadeler.
+- Sınav yaklaşımı: bir ifadeyi gördüğünde sırayla sor: ortak çarpan var mı → iki kare farkı mı → tam kare mi → üç terimli mi → gruplanabilir mi? Her adımdan sonra çarpanların daha da ayrılıp ayrılmadığını kontrol et.
+- Şıkları geri çarparak kontrol et; çarpanlara ayırmada yanlış şıkkı açarak elemek çok hızlıdır.
+- En sık tuzaklar: $(a + b)^2 = a^2 + b^2$, $x^2 + 9$'u ayırmaya çalışmak, sabit terim negatifken işaretleri aynı seçmek, rasyonel ifadede terim sadeleştirmek.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra ikinci dereceden denklemler dersine geç; kök bulmanın en hızlı yolu çarpanlara ayırmaktır.
+
+@kartlar
+- İki kare farkı :: $a^2 - b^2 = (a - b)(a + b)$
+- $(a - b)^2$ :: $a^2 - 2ab + b^2$
+- $a^3 - b^3$ :: $(a - b)(a^2 + ab + b^2)$
+- $a^3 + b^3$ :: $(a + b)(a^2 - ab + b^2)$
+- $x^2 + y^2$, toplam ve çarpım cinsinden :: $(x + y)^2 - 2xy$
+- $x + \frac{1}{x} = k$ ise $x^2 + \frac{1}{x^2}$ :: $k^2 - 2$
+- $x^2 + bx + c$ nasıl ayrılır? :: Çarpımı $c$, toplamı $b$ olan iki sayıyla: $(x + m)(x + n)$
+
+@ozet
+- Çarpanlara ayırma, bir polinomu daha düşük dereceli polinomların çarpımı olarak yazmaktır; ortak çarpan ve gruplandırma ilk adımlardır.
+- İki kare farkı, tam kare ve küp özdeşlikleri hem çarpanlara ayırmada hem sayısal hesaplarda kısayoldur.
+- Üç terimli ifadeler çarpım–toplam ilişkisiyle ya da çapraz çarpımla, karmaşık ifadeler değişken değiştirmeyle ayrılır.
+- Rasyonel ifadeler pay ve payda çarpanlarına ayrıldıktan sonra ortak çarpanlar sadeleştirilerek basitleştirilir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$(a + b)^2$ neden $a^2 + b^2$'ye eşit değildir? Kare çizerek göster." (2) "$\frac{x + 3}{x + 5}$ ifadesinde 3 ile 5 neden sadeleşmez?"
+
+@havuz
+::soru h1 tip=ortak-gruplama zorluk=2
+$x^3 - 2x^2 - 9x + 18$ ifadesinin çarpanlarından biri aşağıdakilerden hangisi değildir?
+A) $x - 2$
+B) $x - 3$
+C) $x + 3$
++D) $x + 2$
+E) $x^2 - 9$
+cozum: $x^2(x - 2) - 9(x - 2) = (x - 2)(x^2 - 9) = (x - 2)(x - 3)(x + 3)$. $x + 2$ çarpan değildir.
+
+::soru h2 tip=ozdeslik zorluk=2
+$x + \dfrac{1}{x} = 3$ olduğuna göre $x^2 + \dfrac{1}{x^2}$ kaçtır?
+A) 5
++B) 7
+C) 9
+D) 11
+E) 27
+kontrol: 9-2
+cozum: $\left(x + \frac{1}{x}\right)^2 = x^2 + 2 + \frac{1}{x^2} = 9$; $x^2 + \frac{1}{x^2} = 7$.
+
+::soru h3 tip=uc-terimli zorluk=2
+$x^4 - 5x^2 + 4$ ifadesinin çarpanlarından biri aşağıdakilerden hangisidir?
+A) $x - 3$
+B) $x + 4$
+C) $x^2 + 1$
+D) $x^2 + 4$
++E) $x + 2$
+cozum: $a = x^2$: $a^2 - 5a + 4 = (a - 1)(a - 4) = (x^2 - 1)(x^2 - 4) = (x - 1)(x + 1)(x - 2)(x + 2)$.
+
+::soru h4 tip=rasyonel-sadelestirme zorluk=2
+$\dfrac{x^3 - 8}{x^2 + 2x + 4} \cdot \dfrac{1}{x - 2}$ işleminin sonucu aşağıdakilerden hangisidir?
++A) $1$
+B) $x - 2$
+C) $x + 2$
+D) $x^2 + 2x + 4$
+E) $\frac{1}{x - 2}$
+cozum: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$; sadeleşince $(x - 2) \cdot \frac{1}{x - 2} = 1$ ($x \neq 2$).

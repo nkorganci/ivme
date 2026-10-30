@@ -1,0 +1,298 @@
+@ders kosullu-onerme
+baslik: Koşullu Önerme ve Niceleyiciler
+kisa: Koşullu önerme
+sinav: TYT AYT
+unite: mantik
+sinif: 9
+sira: 510
+onkosul: onermeler
+kategori: excel.tyt.matematik.4c4876ddd9383c03d782 excel.ayt.matematik.4c4876ddd9383c03d782
+hedef: $p \Rightarrow q$ koşullu önermesinin yalnız $1 \Rightarrow 0$ durumunda yanlış olduğunu kullanmak; $p \Rightarrow q \equiv p' \vee q$ denkliğiyle sadeleştirmek; karşıt, ters ve karşıt tersi ayırt etmek; iki yönlü koşullu önermeyi, her ve bazı niceleyicilerinin değilini kullanmak; tanım, aksiyom, teorem ve ispat kavramlarını tanımak.
+neden: Koşullu önerme, mantık sorularının en sık sınanan parçasıdır: OGM soru bankasında mantık sorularının en büyük grubu "koşullu ve iki yönlü koşullu önerme" kazanımına aittir. $p \Rightarrow q \equiv p' \vee q$ denkliği bütün sadeleştirme sorularının anahtarıdır.
+kaynak: MEBİ TYT Konu Özeti — Koşullu Önerme, İki Yönlü Koşullu Önerme, Niceleyiciler, Tanım–Aksiyom–Teorem–İspat | OGM 9. Sınıf Ders Anlatım Sunuları 02 — Koşullu ve İki Yönlü Koşullu Önermeler | 3 Adım TYT Matematik — Mantık
+tekrar: 10
+ustalik-dk: 12
+hedef-sure: 50
+anahtar: ⇒ | ⇔ | rightarrow | leftrightarrow | ise | ancak ve ancak | karşıt | niceleyici | ∀ | ∃ | forall | exists | her | bazı | teorem | aksiyom | hipotez
+baslik-kurali: /^9\.1\.1\.(3|4)/ | /^9\.1\.2/ | mantık
+
+@tip ise-deger 30 s1
+ad: Koşullu önermenin doğruluk değeri
+ipucu: "$p \equiv 1$, $q \equiv 0$ iken $p \Rightarrow q$", "$(p \Rightarrow q) \wedge p$ önermesinin en sade biçimi".
+strateji: $p \Rightarrow q$ yalnız $1 \Rightarrow 0$ iken yanlıştır. Sadeleştirmek için $p \Rightarrow q \equiv p' \vee q$ yaz; özel durumlar: $0 \Rightarrow p \equiv 1$, $p \Rightarrow 1 \equiv 1$, $1 \Rightarrow p \equiv p$, $p \Rightarrow 0 \equiv p'$.
+anahtar: ⇒ | rightarrow | ise | koşullu
+
+@tip karsit-ters 20 s2
+ad: Karşıt, ters ve karşıt ters
+ipucu: "$p \Rightarrow q$ önermesinin karşıt tersi", "aşağıdakilerden hangisi verilen önermeye denktir?".
+strateji: Karşıt $q \Rightarrow p$ (yer değiştir), ters $p' \Rightarrow q'$ (değillerini al), karşıt ters $q' \Rightarrow p'$ (ikisini birden yap). Yalnız karşıt ters asıl önermeye denktir.
+anahtar: karşıt | tersi | karşıt tersi | denk olan
+
+@tip iki-yonlu 20 s3
+ad: İki yönlü koşullu önerme
+ipucu: "$p \Leftrightarrow q \equiv 0$ olduğuna göre", "ancak ve ancak".
+strateji: $p \Leftrightarrow q$ değerler aynıyken 1, farklıyken 0'dır; $\veebar$'nin tam tersidir. $p \Leftrightarrow q \equiv (p \Rightarrow q) \wedge (q \Rightarrow p)$ ve $(p \Leftrightarrow q)' \equiv p \Leftrightarrow q'$.
+anahtar: ⇔ | leftrightarrow | ancak ve ancak | iki yönlü
+
+@tip niceleyici 30 s4
+ad: Niceleyiciler ve değili; teorem dili
+ipucu: "$\forall x \in \mathbb{R}, x^2 \geq 0$ önermesinin değili", "bazı öğrenciler…", "teoremin hipotezi".
+strateji: Değil alınırken $\forall \leftrightarrow \exists$ yer değiştirir ve içteki önermenin değili alınır ($=$ ↔ $\neq$, $<$ ↔ $\geq$, $>$ ↔ $\leq$). Teorem $p \Rightarrow q$ biçimindedir: $p$ hipotez, $q$ hüküm; aksiyom ispatsız kabul edilir.
+anahtar: ∀ | ∃ | forall | exists | her | bazı | hiçbir | en az bir | teorem | aksiyom | hipotez | hüküm | açık önerme
+
+@ustalik
+ise-deger 2 1-3
+karsit-ters 1 1-2
+iki-yonlu 1 1-3
+niceleyici 2 1-3
+
+@oturum Koşullu önerme ve denkleri | s1 s2
+@oturum İki yönlü önerme ve niceleyiciler | s3 s4
+
+@ontest
+::soru o1 tip=ise-deger zorluk=1
+$p \equiv 1$ ve $q \equiv 0$ olduğuna göre aşağıdakilerden hangisinin doğruluk değeri 0'dır?
+A) $q \Rightarrow p$ || $0 \Rightarrow 1 \equiv 1$; hipotez yanlışsa önerme doğrudur.
++B) $p \Rightarrow q$ || Doğru: $1 \Rightarrow 0$ tek yanlış durumdur.
+C) $q \Rightarrow q$ || $0 \Rightarrow 0 \equiv 1$.
+D) $p' \Rightarrow q$ || $0 \Rightarrow 0 \equiv 1$.
+E) $q' \Rightarrow p$ || $1 \Rightarrow 1 \equiv 1$.
+cozum: Koşullu önerme yalnız $1 \Rightarrow 0$ iken yanlıştır: $p \Rightarrow q \equiv 1 \Rightarrow 0 \equiv 0$.
+
+::soru o2 tip=karsit-ters zorluk=1
+$p \Rightarrow q$ önermesinin karşıt tersi aşağıdakilerden hangisidir?
+A) $q \Rightarrow p$ || Bu karşıttır (yalnız yer değiştirme).
+B) $p' \Rightarrow q'$ || Bu terstir (yalnız değil alma).
+C) $p \Rightarrow q'$ || Bu üçünden biri değildir.
+D) $q \Rightarrow p'$ || Hem yer değiştir hem iki önermenin değilini al.
++E) $q' \Rightarrow p'$ || Doğru: yer değiştir ve değillerini al.
+cozum: Karşıt ters, hem yerleri değiştirip hem değilleri almaktır: $q' \Rightarrow p'$. Asıl önermeye denktir.
+
+::soru o3 tip=niceleyici zorluk=2
+"$\forall x \in \mathbb{R}, x^2 \geq 0$" önermesinin değili aşağıdakilerden hangisidir?
++A) $\exists x \in \mathbb{R}, x^2 < 0$ || Doğru: $\forall \to \exists$ ve $\geq \to <$.
+B) $\forall x \in \mathbb{R}, x^2 < 0$ || Niceleyici de değişmeli: $\forall \to \exists$.
+C) $\exists x \in \mathbb{R}, x^2 \geq 0$ || İçteki önermenin değilini almadın.
+D) $\exists x \in \mathbb{R}, x^2 \leq 0$ || $\geq$'nin değili $<$'dir, $\leq$ değil.
+E) $\forall x \in \mathbb{R}, x^2 \leq 0$ || Hem niceleyici hem eşitsizlik yanlış değişti.
+cozum: $(\forall x, p(x))' \equiv \exists x, p'(x)$. $x^2 \geq 0$'ın değili $x^2 < 0$: "$\exists x \in \mathbb{R}, x^2 < 0$".
+
+@bolum s1 10 | Koşullu önerme: tek yanlış durum
+::fikir
+$p \Rightarrow q$ yalnız **$p$ doğru, $q$ yanlış** iken yanlıştır; diğer üç durumda doğrudur. Sadeleştirmenin anahtarı: $p \Rightarrow q \equiv p' \vee q$.
+
+::tablo baslik="İse bağlacı"
+| $p$ | $q$ | $p \Rightarrow q$ |
+| 1 | 1 | 1 |
+| 1 | 0 | 0 |
+| 0 | 1 | 1 |
+| 0 | 0 | 1 |
+
+::duzey
+L1: "Yağmur yağarsa şemsiye alırım" sözünü ne zaman bozmuş olursun? Yalnız yağmur yağdığı hâlde şemsiye almazsan. Yağmur yağmazsa şemsiye alsan da almasan da sözün bozulmaz. Tablodaki tek 0 budur.
+L2: $p \Rightarrow q \equiv p' \vee q$ denkliğini ezberle; her sadeleştirme sorusu bununla başlar. Özel durumlar tablodan okunur: $0 \Rightarrow p \equiv 1$, $p \Rightarrow 1 \equiv 1$, $1 \Rightarrow p \equiv p$, $p \Rightarrow 0 \equiv p'$, $p \Rightarrow p \equiv 1$, $p \Rightarrow p' \equiv p'$.
+L3: Koşullu önermenin değili $(p \Rightarrow q)' \equiv p \wedge q'$'dür (tersi olan $p' \Rightarrow q'$ ile karıştırma). Zincirlerde parantezden başla: $(p \Rightarrow q) \Rightarrow r \equiv (p' \vee q)' \vee r \equiv (p \wedge q') \vee r$.
+
+::ornek baslik="Totoloji çıkıyor"
+soru: $(p \Rightarrow q') \vee q$ önermesinin en sade biçimi nedir?
+1. $p \Rightarrow q' \equiv p' \vee q'$. || İse'yi veya'ya çevir.
+2. $(p' \vee q') \vee q \equiv p' \vee (q' \vee q)$. || Birleşme.
+3. $q' \vee q \equiv 1$, $p' \vee 1 \equiv 1$. || Her zaman doğru (totoloji).
+cevap: $1$
+
+::yanilgi m1 tip=ise-deger
+yanlis: $p$ yanlışsa $p \Rightarrow q$ önermesi de yanlıştır.
+neden: Hipotez yanlışken koşullu önerme her zaman doğrudur: $0 \Rightarrow q \equiv 1$.
+dogru: Tek yanlış durum $1 \Rightarrow 0$'dır.
+
+::soru c1 tip=ise-deger zorluk=2
+$(p \Rightarrow q) \wedge p$ önermesinin en sade biçimi aşağıdakilerden hangisidir?
+A) $p$ || $q$'yu atamazsın; $p \equiv 1$, $q \equiv 0$ için ifade 0'dır.
+B) $q$ || $p \equiv 0$, $q \equiv 1$ için ifade 0'dır, $q \equiv 1$.
+C) $p \vee q$ || Dağılma sonrası $\wedge$ kalır.
++D) $p \wedge q$ || Doğru: $(p' \vee q) \wedge p \equiv (p' \wedge p) \vee (q \wedge p)$.
+E) $1$ || $p \equiv 0$ iken ifade 0'dır.
+cozum: $(p' \vee q) \wedge p \equiv (p' \wedge p) \vee (q \wedge p) \equiv 0 \vee (p \wedge q) \equiv p \wedge q$.
+
+@bolum s2 8 | Karşıt, ters, karşıt ters
+::fikir
+$p \Rightarrow q$ için **karşıt** $q \Rightarrow p$, **ters** $p' \Rightarrow q'$, **karşıt ters** $q' \Rightarrow p'$. **Yalnız karşıt ters** asıl önermeye denktir.
+
+::tablo baslik="Dört biçim"
+| Ad | Biçim | Asıl önermeye denk mi? |
+| Asıl önerme | $p \Rightarrow q$ | — |
+| Karşıt | $q \Rightarrow p$ | Hayır |
+| Ters | $p' \Rightarrow q'$ | Hayır |
+| Karşıt ters | $q' \Rightarrow p'$ | Evet |
+
+::duzey
+L1: "Bir sayı 6'ya bölünüyorsa 3'e bölünür" doğrudur. Karşıtı "3'e bölünüyorsa 6'ya bölünür" yanlıştır (9). Karşıt tersi "3'e bölünmüyorsa 6'ya bölünmez" ise doğrudur; asıl önermeyle aynı şeyi söyler.
+L2: Karşıt ile ters birbirine denktir (biri diğerinin karşıt tersidir). Bu yüzden bir koşullu önerme ile karşıtı farklı doğruluk değeri alabilir; "doğru önermenin karşıtı da doğrudur" sonucu çıkarılamaz.
+L3: Karşıt tersin denkliği ispatın da temelidir: "$q$ değilse $p$ değildir" göstermek "$p$ ise $q$"yu ispatlar (olmayana ergi ile ispata yakın bir fikir). $p' \vee q$ denkliğiyle kontrol: $q' \Rightarrow p' \equiv q \vee p'$.
+
+::ornek baslik="Bölünebilme önermesi"
+soru: "Bir sayı 6'ya bölünüyorsa 3'e bölünür." önermesinin karşıtını, tersini ve karşıt tersini yaz; doğruluk değerlerini belirle.
+1. Karşıt: "3'e bölünüyorsa 6'ya bölünür." → Yanlış (9). || Yer değiştir.
+2. Ters: "6'ya bölünmüyorsa 3'e bölünmez." → Yanlış (9). || Değillerini al.
+3. Karşıt ters: "3'e bölünmüyorsa 6'ya bölünmez." → Doğru. || Asıl önermeye denk.
+cevap: Karşıt 0, ters 0, karşıt ters 1
+
+::yanilgi m2 tip=karsit-ters
+yanlis: Bir koşullu önerme doğruysa karşıtı da doğrudur.
+neden: 4'e bölünen her sayı çifttir ama her çift sayı 4'e bölünmez (6).
+dogru: Yalnız karşıt ters asıl önermeye denktir.
+
+::soru c2 tip=karsit-ters zorluk=2
+"$x = 2$ ise $x^2 = 4$" önermesinin karşıtı ve karşıtın doğruluk değeri aşağıdakilerden hangisidir?
+A) "$x^2 = 4$ ise $x = 2$"; doğru || $x = -2$ için $x^2 = 4$ ama $x \neq 2$.
++B) "$x^2 = 4$ ise $x = 2$"; yanlış || Doğru: karşıt yer değiştirmedir; $x = -2$ karşı örnektir.
+C) "$x \neq 2$ ise $x^2 \neq 4$"; yanlış || Bu terstir, karşıt değil.
+D) "$x^2 \neq 4$ ise $x \neq 2$"; doğru || Bu karşıt terstir.
+E) "$x \neq 2$ ise $x^2 \neq 4$"; doğru || Bu terstir ve $x = -2$ için yanlıştır.
+cozum: Karşıt $q \Rightarrow p$: "$x^2 = 4$ ise $x = 2$". $x = -2$ için hipotez doğru, hüküm yanlış: önerme yanlıştır.
+
+@bolum s3 8 | İki yönlü koşullu önerme
+::fikir
+$p \Leftrightarrow q$, $p$ ile $q$ **aynı** doğruluk değerine sahipken doğru, farklıyken yanlıştır: $p \Leftrightarrow q \equiv (p \Rightarrow q) \wedge (q \Rightarrow p)$. **$\veebar$'nin tam tersidir:** $p \Leftrightarrow q \equiv (p \veebar q)'$.
+
+::tablo baslik="İki yönlü ile ya da"
+| $p$ | $q$ | $p \Leftrightarrow q$ | $p \veebar q$ |
+| 1 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 1 |
+| 0 | 0 | 1 | 0 |
+
+::duzey
+L1: "Bir üçgen eşkenardır ancak ve ancak üç açısı eşittir" iki yönde de doğrudur: eşkenarsa açıları eşittir, açıları eşitse eşkenardır. İki tarafın değerleri aynı olduğu sürece önerme doğrudur; ikisi de yanlışken de.
+L2: Özellikler: $p \Leftrightarrow 1 \equiv p$, $p \Leftrightarrow 0 \equiv p'$, $p \Leftrightarrow p \equiv 1$, $p \Leftrightarrow p' \equiv 0$, $p \Leftrightarrow q \equiv p' \Leftrightarrow q'$. Değili: $(p \Leftrightarrow q)' \equiv p \Leftrightarrow q' \equiv p \veebar q$.
+L3: Çıkarım sorularında $\Leftrightarrow \equiv 1$ "değerler aynı", $\Leftrightarrow \equiv 0$ "değerler farklı" demektir; koşullu önermenin $\Rightarrow \equiv 0$ bilgisiyle (hipotez 1, hüküm 0) birleşince bütün değerler belirlenir.
+
+::ornek baslik="İki bilgiyi birleştir"
+soru: $p \Leftrightarrow q \equiv 0$ ve $q \Rightarrow r \equiv 0$ olduğuna göre $p$ ve $r$'nin doğruluk değerleri nedir?
+1. $q \Rightarrow r \equiv 0$: $q \equiv 1$, $r \equiv 0$. || Tek yanlış durum.
+2. $p \Leftrightarrow q \equiv 0$: $p$ ile $q$ farklı. || İki yönlü yanlış.
+3. $p \equiv 0$. || $q \equiv 1$ olduğuna göre.
+cevap: $p \equiv 0$, $r \equiv 0$
+
+::tamamla baslik="Değilli iki yönlü"
+soru: $p \Leftrightarrow q' \equiv 1$ ve $p \equiv 1$ olduğuna göre $q$'nun doğruluk değeri nedir?
+1. $p \Leftrightarrow q' \equiv 1$: $p$ ile $q'$ aynı.
+?2. $q' \equiv 1$, yani $q \equiv 0$.
+cevap: $q \equiv 0$
+
+::yanilgi m3 tip=iki-yonlu
+yanlis: $p \Leftrightarrow q$ yalnız iki önerme de doğruyken doğrudur.
+neden: İkisi de yanlışken de değerler aynıdır: $0 \Leftrightarrow 0 \equiv 1$.
+dogru: $p \Leftrightarrow q$ değerler aynıyken (1–1 ya da 0–0) doğrudur.
+
+::soru c3 tip=iki-yonlu zorluk=2
+$p \equiv 0$, $q \equiv 1$, $r \equiv 1$ olduğuna göre aşağıdakilerden hangisinin doğruluk değeri 1'dir?
+A) $p \Leftrightarrow q$ || Değerler farklı: 0.
+B) $q \Leftrightarrow r'$ || $1 \Leftrightarrow 0 \equiv 0$.
+C) $p \Leftrightarrow r$ || $0 \Leftrightarrow 1 \equiv 0$.
++D) $p' \Leftrightarrow r$ || Doğru: $1 \Leftrightarrow 1 \equiv 1$.
+E) $(q \Leftrightarrow r)'$ || $q \Leftrightarrow r \equiv 1$, değili 0.
+cozum: $p' \equiv 1$ ve $r \equiv 1$; değerler aynı olduğu için $p' \Leftrightarrow r \equiv 1$.
+
+@bolum s4 9 | Niceleyiciler ve teorem dili
+::fikir
+**Her** ($\forall$) tümü, **bazı** ($\exists$) en az biri demektir. Değil alınırken **$\forall \leftrightarrow \exists$** yer değiştirir ve içteki önermenin değili alınır: $(\forall x, p(x))' \equiv \exists x, p'(x)$.
+
+::tablo baslik="Değil alırken"
+| Gösterim | Değili |
+| $\forall$ (her) | $\exists$ (bazı) |
+| $\exists$ (bazı) | $\forall$ (her) |
+| $=$ | $\neq$ |
+| $<$ | $\geq$ |
+| $>$ | $\leq$ |
+| $\leq$ | $>$ |
+| $\geq$ | $<$ |
+
+::duzey
+L1: "Sınıftaki her öğrenci gözlüklüdür" önermesini çürütmek için tek bir gözlüksüz öğrenci yeter. Bu yüzden değili "Bazı öğrenciler gözlüklü değildir" olur; "Hiçbir öğrenci gözlüklü değildir" demek fazla iddialıdır.
+L2: İçinde değişken olan "$x + 3 = 5$" gibi ifadelere **açık önerme** denir; doğruluk değeri $x$'e bağlıdır. Açık önermeyi doğrulayan değerlerin kümesi **doğruluk kümesidir**: $x \in \mathbb{Z}$, $x^2 < 9$ için $\{-2, -1, 0, 1, 2\}$.
+L3: Teorem $p \Rightarrow q$ biçiminde ispatlanabilen önermedir; $p$ **hipotez**, $q$ **hüküm**dür. **Aksiyom** ispatsız doğru kabul edilen önermedir (çelişmemeli, birbirinden bağımsız ve az sayıda olmalı). Tanım ise bir kavramı bilinen terimlerle kesin olarak açıklar.
+
+::ornek baslik="Bazı'nın değili"
+soru: "$\exists x \in \mathbb{N}, x + 3 < 5$" önermesinin değilini yaz; önermenin ve değilinin doğruluk değerlerini belirle.
+1. Değil: $\forall x \in \mathbb{N}, x + 3 \geq 5$. || $\exists \to \forall$, $< \to \geq$.
+2. Asıl önerme: $x = 0$ için $3 < 5$ doğru; önerme 1. || Bir örnek yeter.
+3. Değili: $x = 0$ için $3 \geq 5$ yanlış; değil 0. || Bir karşı örnek yeter.
+cevap: Önerme 1, değili 0
+
+::soru c4 tip=niceleyici zorluk=2
+Aşağıdaki önermelerden hangisinin doğruluk değeri 0'dır?
+A) $\forall x \in \mathbb{R}, x^2 \geq 0$ || Her gerçek sayının karesi negatif değildir: 1.
++B) $\exists x \in \mathbb{R}, x^2 < 0$ || Doğru: karesi negatif olan gerçek sayı yoktur.
+C) $\forall x \in \mathbb{N}, x + 1 > x$ || Her doğal sayı için doğrudur: 1.
+D) $\exists x \in \mathbb{Z}, x^2 = 4$ || $x = 2$ ya da $-2$: 1.
+E) $\exists x \in \mathbb{N}, x < 1$ || $x = 0$ sağlar: 1.
+cozum: Gerçek sayıların karesi negatif olamaz; "bazı $x$ için $x^2 < 0$" önermesi yanlıştır.
+
+::ozet
+- $p \Rightarrow q$ yalnız $1 \Rightarrow 0$ iken yanlış; $p \Rightarrow q \equiv p' \vee q$.
+- Karşıt $q \Rightarrow p$, ters $p' \Rightarrow q'$, karşıt ters $q' \Rightarrow p'$; yalnız karşıt ters denktir.
+- $p \Leftrightarrow q$ değerler aynıyken doğru; $(p \veebar q)'$'ye denktir.
+- Niceleyicinin değili: $\forall \leftrightarrow \exists$ ve içteki önermenin değili.
+
+@pratik
+- Çalışma sırası: önce $p \Rightarrow q$ tablosunu ve $p' \vee q$ denkliğini, sonra karşıt–ters–karşıt ters ayrımını, en son niceleyicileri ve iki yönlü önermeyi çalış.
+- Sınav yaklaşımı: içinde $\Rightarrow$ geçen her sadeleştirme sorusunda ilk satırda $\Rightarrow$'ları $p' \vee q$ biçimine çevir; sonra önceki dersin De Morgan kurallarını uygula.
+- Doğruluk değeri sorusunda "$\Rightarrow \equiv 0$" bilgisini gördüğün an hipotez 1, hüküm 0 yaz; bu en güçlü ipucudur.
+- En sık tuzaklar: hipotez yanlışken önermeyi yanlış saymak, tersi değil ile karıştırmak ($(p \Rightarrow q)' \equiv p \wedge q'$), "her"in değilini "hiçbir" sanmak.
+- Hedef süre soru başı 50 saniye. Konu testinden sonra çıkmış sorular setini çöz; mantık soruları iki dersin kurallarını birlikte ister.
+
+@kartlar
+- $p \Rightarrow q$ ne zaman yanlıştır? :: Yalnız $p \equiv 1$, $q \equiv 0$ iken.
+- $p \Rightarrow q$ denkliği :: $p' \vee q$
+- $(p \Rightarrow q)'$ :: $p \wedge q'$
+- Karşıt ters ve denklik :: $q' \Rightarrow p'$; asıl önermeye denktir.
+- $p \Leftrightarrow q$ ne zaman doğrudur? :: $p$ ile $q$ aynı değerdeyken.
+- $(\forall x, p(x))'$ :: $\exists x, p'(x)$
+- Teoremde hipotez ve hüküm :: $p \Rightarrow q$'da $p$ hipotez, $q$ hüküm.
+
+@ozet
+- Koşullu önerme yalnız hipotez doğru, hüküm yanlış iken yanlıştır ve $p' \vee q$ önermesine denktir.
+- Bir koşullu önermenin karşıtı ve tersi ona denk değildir; karşıt tersi ise denktir.
+- İki yönlü koşullu önerme iki tarafın doğruluk değerleri aynıyken doğrudur.
+- Niceleyicili önermelerin değilinde her ile bazı yer değiştirir ve içteki önermenin değili alınır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "'Yağmur yağarsa şemsiye alırım' sözü yağmur yağmadığında neden bozulmuş sayılmaz?" (2) "'Her öğrenci gözlüklüdür' önermesinin değili neden 'Hiçbir öğrenci gözlüklü değildir' değildir?"
+
+@havuz
+::soru h1 tip=ise-deger zorluk=2
+$(p \Rightarrow q)'$ önermesinin denki aşağıdakilerden hangisidir?
+A) $p' \Rightarrow q'$
++B) $p \wedge q'$
+C) $p' \wedge q$
+D) $q \Rightarrow p$
+E) $p' \vee q$
+cozum: $(p \Rightarrow q)' \equiv (p' \vee q)' \equiv p \wedge q'$.
+
+::soru h2 tip=karsit-ters zorluk=2
+"Bir sayı 10'a bölünüyorsa 5'e bölünür." önermesine denk olan önerme aşağıdakilerden hangisidir?
+A) Bir sayı 5'e bölünüyorsa 10'a bölünür.
+B) Bir sayı 10'a bölünmüyorsa 5'e bölünmez.
++C) Bir sayı 5'e bölünmüyorsa 10'a bölünmez.
+D) Bir sayı 10'a bölünüyorsa 5'e bölünmez.
+E) Bir sayı 5'e bölünüyorsa 10'a bölünmez.
+cozum: Denk olan karşıt terstir: $q' \Rightarrow p'$, "5'e bölünmüyorsa 10'a bölünmez".
+
+::soru h3 tip=iki-yonlu zorluk=2
+$(p \Leftrightarrow q)'$ önermesi aşağıdakilerden hangisine denktir?
+A) $p' \Leftrightarrow q'$
+B) $p \wedge q$
+C) $q \Rightarrow p$
+D) $p' \vee q$
++E) $p \Leftrightarrow q'$
+cozum: $p \Leftrightarrow q$ değerler aynıyken doğrudur; değili değerler farklıyken doğrudur: $p \Leftrightarrow q' \equiv p \veebar q$.
+
+::soru h4 tip=niceleyici zorluk=2
+"Bazı öğrenciler kitap okumaz." önermesinin değili aşağıdakilerden hangisidir?
+A) Bazı öğrenciler kitap okur.
+B) Hiçbir öğrenci kitap okumaz.
++C) Bütün öğrenciler kitap okur.
+D) Bütün öğrenciler kitap okumaz.
+E) En az bir öğrenci kitap okur.
+cozum: $\exists \to \forall$ ve "okumaz" → "okur": "Bütün öğrenciler kitap okur."

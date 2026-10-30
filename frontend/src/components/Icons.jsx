@@ -56,6 +56,13 @@ const PATHS = {
       <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
     </>
   ),
+  target: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="5" />
+      <path d="M12 12l6-6M15 6h3v3" />
+    </>
+  ),
   collapse: (
     <>
       <path d="m11 17-5-5 5-5" />

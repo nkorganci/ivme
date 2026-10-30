@@ -1,0 +1,318 @@
+@ders kar-zarar
+baslik: Kâr–Zarar ve İndirim Problemleri
+kisa: Kâr–zarar
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 440
+onkosul: yuzde-karisim
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: Kâr ve zararın maliyet (alış) üzerinden, indirim ve zammın etiket (satış) üzerinden hesaplandığını ayırt etmek; alış → etiket → satış zincirini çarpanlarla kurmak; adet ve birim fiyatla verilen alım–satımlarda toplam kârı ve kâr yüzdesini bulmak.
+neden: Kâr–zarar, yüzde bilgisinin günlük hayattaki en yaygın uygulamasıdır. TYT'de doğrudan kâr–zarar sorusu her yıl çıkmasa da indirim, zam ve kampanya hesapları yeni nesil problemlerin içine sıkça yerleşir. Hata hemen her zaman "hangi fiyatın yüzdesi?" sorusunda yapılır; bu ders o kararı otomatik hâle getirir.
+kaynak: MEBİ TYT Konu Özeti — Kâr-Zarar Problemleri | OGM 9. Sınıf Konu Özetleri 36 | 3 Adım TYT Matematik — Kar-Zarar, Yüzde, Karışım, Hareket Problemleri
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 75
+anahtar: /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | maliyet | alış fiyat | satış fiyat | etiket | indirim | /\bzam(\b|m|l|d)/
+baslik-kurali: kâr-zarar problemleri | kar - zarar | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: /\bkm\b/ | /\bhiz(\b|la|i|in|lar|da|iy)/ | karıştır | /\byas(\b|i\b|in|lar|ta|tan|ca)/ | işçi
+
+@tip kar-yuzde 30 s1
+ad: Kâr ve zarar yüzdesi (maliyet üzerinden)
+ipucu: "540 TL'ye satarak %20 kâr ediyor", "alışı 300 TL olan ürünü 246 TL'ye satıyor".
+strateji: Kâr–zarar yüzdesi **alış fiyatı** üzerinden hesaplanır: alışa 100 (ya da $100x$) de. %$k$ kârda satış $= \text{alış} \cdot (1 + \frac{k}{100})$, %$k$ zararda $\text{alış} \cdot (1 - \frac{k}{100})$. Alış isteniyorsa satışı çarpana böl.
+anahtar: /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | alış | maliyet
+
+@tip indirim-zam 25 s2
+ad: İndirim ve zam (etiket fiyatı üzerinden)
+ipucu: "Önce %25, sonra %10 indirim", "%30 indirimle 245 TL", "%25 zamdan sonra eski fiyata dönmek için".
+strateji: İndirim ve zam **o anki fiyat** üzerinden yapılır. Her birini çarpana çevir (%25 indirim $\times 0{,}75$) ve ardışık olanları çarp. İndirimden önceki fiyat isteniyorsa çarpana böl.
+anahtar: indirim | /\bzam(\b|m|l|d)/ | indirimli
+
+@tip kar-indirim 25 s3
+ad: Etiket, indirim ve kâr birlikte
+ipucu: "Etiket fiyatı alışın %50 fazlası; %20 indirimle satılıyor", "indirimle satınca %4 kâr ediyor".
+strateji: Zinciri kur: alış $\xrightarrow{\text{etiket payı}}$ etiket $\xrightarrow{\text{indirim}}$ satış. Alışa 100 de ve çarpanları sırayla uygula: satış $= 100 \cdot (1 + \frac{e}{100})(1 - \frac{i}{100})$. Kâr yüzdesi yine alışa göre okunur; yüzdeler çıkarılmaz.
+anahtar: etiket | indirim | /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar
+
+@tip adet-maliyet 20 s4
+ad: Adet ve birim fiyatla alım–satım
+ipucu: "Tanesi 4 TL'ye alınan 120 kalemin 80'i 6 TL'den…", "12 tanesinin satış fiyatına 15 tane alabiliyor".
+strateji: Toplam maliyet = adet × birim alış; gelir = her grubun adet × birim satışı; kâr = gelir − maliyet. "$a$ tanesinin satış fiyatı $b$ tanesinin alış fiyatına eşit" ise satış/alış $= \frac{b}{a}$.
+anahtar: düzine | kırıl | bozul | /tanesi(ni)? \d+(,\d+)? tl/ | /tl.{0,2}den sat/
+
+@ustalik
+kar-yuzde 2 1-3
+indirim-zam 1 1-2
+kar-indirim 2 1-3
+adet-maliyet 1 1-3
+
+@oturum Kâr–zarar ve indirim | s1 s2
+@oturum Zincir ve adet soruları | s3 s4
+
+@ontest
+::soru o1 tip=kar-yuzde zorluk=1
+Alış fiyatı 400 TL olan bir ürün %15 kârla satılıyor. Ürünün satış fiyatı kaç TL'dir?
+A) 415 || 15 TL değil, alışın %15'i kadar kâr.
++B) 460 || Doğru: $400 \cdot 1{,}15 = 460$.
+C) 470 || Hesabı kontrol et: $400 \cdot 0{,}15 = 60$.
+D) 480 || Bu %20 kârdır.
+E) 500 || Bu %25 kârdır.
+kontrol: 400*1.15
+cozum: Kâr alış üzerinden: $400 \cdot \frac{15}{100} = 60$ TL; satış $460$ TL.
+
+::soru o2 tip=indirim-zam zorluk=1
+Etiket fiyatı 250 TL olan bir ürüne %20 indirim yapılıyor. Ürünün indirimli fiyatı kaç TL'dir?
++A) 200 || Doğru: $250 \cdot 0{,}8 = 200$.
+B) 205 || Hesabı kontrol et: indirim 50 TL.
+C) 210 || İndirim 40 TL değil, 50 TL.
+D) 225 || Bu %10 indirimdir.
+E) 230 || 20 TL değil, %20 indirim.
+kontrol: 250*0.8
+cozum: İndirim $250 \cdot 0{,}2 = 50$ TL; indirimli fiyat $200$ TL.
+
+::soru o3 tip=kar-indirim zorluk=2
+Bir ürünün etiket fiyatı, alış fiyatının %50 fazlasıdır. Ürün etiket fiyatı üzerinden %10 indirimle satılırsa kâr yüzde kaç olur?
+A) 25 || Çarpanları çarp: $1{,}5 \cdot 0{,}9$.
+B) 30 || Hesabı kontrol et: $1{,}5 \cdot 0{,}9 = 1{,}35$.
+C) 32 || Hesabı yeniden yap.
++D) 35 || Doğru: $1{,}5 \cdot 0{,}9 = 1{,}35$.
+E) 40 || Yüzdeleri çıkardın; indirim etikete uygulanır.
+kontrol: (1.5*0.9-1)*100
+cozum: Alış 100 olsun: etiket 150, satış $150 \cdot 0{,}9 = 135$; kâr %35.
+
+@bolum s1 9 | Kâr ve zarar: taban alış fiyatıdır
+::fikir
+Kâr ve zarar yüzdesi **alış (maliyet) fiyatı** üzerinden hesaplanır. Alışa **100** de: %20 kârla satış 120, %15 zararla satış 85 olur.
+
+::tablo baslik="Alış 100 iken"
+| Durum | Satış fiyatı | Çarpan |
+| %20 kâr | 120 | $1{,}2$ |
+| %35 kâr | 135 | $1{,}35$ |
+| %15 zarar | 85 | $0{,}85$ |
+| %40 zarar | 60 | $0{,}6$ |
+
+::duzey
+L1: 100 TL'ye aldığın bir kitabı 120 TL'ye satarsan 20 TL kâr edersin. Bu kâr alışın %20'sidir. Aynı kitabı 85 TL'ye satarsan 15 TL zarar edersin: %15 zarar. Yüzdenin tabanı hep **alış** fiyatıdır.
+L2: Satış fiyatı verilip alış soruluyorsa çarpana böl: %20 kârla 540 TL'ye satılan ürünün alışı $540 : 1{,}2 = 450$ TL. Satışın %20'sini çıkarmak ($540 \cdot 0{,}8 = 432$) yanlıştır; çünkü kâr satışın değil alışın %20'sidir.
+L3: Kâr yüzdesi $= \frac{\text{satış} - \text{alış}}{\text{alış}} \cdot 100$. Birden çok ürünün toplam kârı soruluyorsa her ürünün alışını ayrı bul, kârları TL olarak topla, sonra toplam alışa böl; yüzdeleri doğrudan ortalamak yanlış sonuç verir.
+
+::ornek baslik="Satıştan alışa"
+soru: Bir satıcı bir ürünü 540 TL'ye satarak %20 kâr ediyor. Ürünün alış fiyatı kaç TL'dir?
+1. Alış $x$ olsun; %20 kârla satış $1{,}2x$. || Taban alıştır.
+2. $1{,}2x = 540 \Rightarrow x = 450$. || Çarpana böl.
+3. Kontrol: $450$'nin %20'si 90; $450 + 90 = 540$ ✓ || $540 \cdot 0{,}8 = 432$ yanlış olurdu.
+cevap: 450 TL
+
+::yanilgi m1 tip=kar-yuzde
+yanlis: 540 TL'ye %20 kârla satılan ürünün alışı $540 - 540 \cdot 0{,}2 = 432$ TL'dir.
+neden: Kâr, satışın değil alışın %20'sidir; satıştan yüzde çıkarmak tabanı değiştirir.
+dogru: $1{,}2 \cdot \text{alış} = 540 \Rightarrow \text{alış} = 450$.
+
+::soru c1 tip=kar-yuzde zorluk=2
+Bir satıcı bir ürünü 340 TL'ye satarak %15 zarar ediyor. Ürünün alış fiyatı kaç TL'dir?
+A) 289 || Satıştan %15 çıkardın; zarar alışın %15'idir.
+B) 355 || Hesabı kontrol et: $0{,}85x = 340$.
+C) 375 || Hesabı yeniden yap.
+D) 391 || Satışa %15 ekledin; taban alış olmalı.
++E) 400 || Doğru: $0{,}85x = 340$.
+kontrol: 340/0.85
+cozum: %15 zararla satış $0{,}85x$: $0{,}85x = 340 \Rightarrow x = 400$ TL.
+
+@bolum s2 9 | İndirim ve zam: taban o anki fiyattır
+::fikir
+İndirim ve zam **o anki (etiket) fiyat** üzerinden yapılır. Her birini çarpana çevir ve ardışık olanları **çarp**: önce %25, sonra %10 indirim $= 0{,}75 \cdot 0{,}9 = 0{,}675$ (toplam %32,5 indirim).
+
+::duzey
+L1: 200 TL'lik bir montta %25 indirim 50 TL eder; mont 150 TL'ye düşer. Üstüne %10 indirim daha gelirse bu kez 150'nin %10'u (15 TL) düşer: 135 TL. İki indirim toplam %35 değil, %32,5'tir.
+L2: Ardışık indirimlerde çarpanları çarp; zam varsa çarpan 1'den büyüktür. İndirimden önceki fiyat isteniyorsa çarpana böl: %30 indirimle 245 TL'ye satılıyorsa etiket $245 : 0{,}7 = 350$ TL.
+L3: Bir zammı geri almak için gereken indirim daha küçüktür: %25 zamdan sonra eski fiyata dönmek için $1 : 1{,}25 = 0{,}8$, yani %20 indirim gerekir. Tersine, %20 indirimi geri almak için %25 zam gerekir.
+
+::ornek baslik="Ardışık iki indirim"
+soru: Etiket fiyatı 480 TL olan bir ürüne önce %25, sonra %10 indirim yapılıyor. Ürünün son fiyatı kaç TL'dir?
+1. Çarpanlar: $0{,}75$ ve $0{,}9$. || Her indirimi çarpana çevir.
+2. $480 \cdot 0{,}75 = 360$, $360 \cdot 0{,}9 = 324$. || İkinci indirim yeni fiyata uygulanır.
+3. Son fiyat 324 TL (toplam indirim %32,5). || %35 indirim 312 TL verirdi.
+cevap: 324 TL
+
+::tamamla baslik="İndirimden etikete"
+soru: %30 indirimle 245 TL'ye satılan bir ürünün etiket fiyatı kaç TL'dir?
+1. İndirim çarpanı $0{,}7$: $0{,}7 \cdot E = 245$.
+?2. $E = 245 : 0{,}7 = 350$ TL.
+cevap: 350 TL
+
+::yanilgi m2 tip=indirim-zam
+yanlis: Önce %20, sonra %10 indirim toplam %30 indirimdir.
+neden: İkinci indirim indirimli fiyata uygulanır; çarpanlar $0{,}8 \cdot 0{,}9 = 0{,}72$ verir.
+dogru: Toplam indirim %28'dir.
+
+::soru c2 tip=indirim-zam zorluk=2
+Bir ürüne önce %20, sonra indirimli fiyat üzerinden %10 indirim yapılıyor. Toplam indirim yüzde kaçtır?
+A) 25 || Çarpanları çarp: $0{,}8 \cdot 0{,}9$.
++B) 28 || Doğru: $0{,}8 \cdot 0{,}9 = 0{,}72$.
+C) 30 || İndirimler toplanmaz; ikincisi indirimli fiyata uygulanır.
+D) 32 || Hesabı kontrol et.
+E) 35 || Fazla.
+kontrol: (1-0.8*0.9)*100
+cozum: $0{,}8 \cdot 0{,}9 = 0{,}72$; fiyatın %72'si kalır, toplam indirim %28.
+
+@bolum s3 10 | Zincir: alış → etiket → satış
+::fikir
+Alıştan satışa giden yol bir **çarpan zinciridir**: alış $\times (1 + \text{etiket payı}) \times (1 - \text{indirim}) =$ satış. Alışa 100 de, çarpanları sırayla uygula; kâr yüzdesini yine alışa göre oku.
+
+::gorsel alt="Alış 100'den etiket 150'ye, oradan %20 indirimle satış 120'ye giden üç kutulu zincir." aciklama="Alış 100 → etiket 150 → satış 120: kâr %20 (yüzdeler çıkarılmaz)."
+<svg viewBox="0 0 420 110" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="30" width="100" height="50" rx="8" fill="var(--tint)" stroke="var(--navy)"/>
+<text x="60" y="52" text-anchor="middle" font-size="13" fill="var(--ink)">Alış</text>
+<text x="60" y="70" text-anchor="middle" font-size="15" fill="var(--navy)">100</text>
+<rect x="160" y="30" width="100" height="50" rx="8" fill="var(--tint)" stroke="var(--navy)"/>
+<text x="210" y="52" text-anchor="middle" font-size="13" fill="var(--ink)">Etiket</text>
+<text x="210" y="70" text-anchor="middle" font-size="15" fill="var(--navy)">150</text>
+<rect x="310" y="30" width="100" height="50" rx="8" fill="var(--tint)" stroke="var(--ok)"/>
+<text x="360" y="52" text-anchor="middle" font-size="13" fill="var(--ink)">Satış</text>
+<text x="360" y="70" text-anchor="middle" font-size="15" fill="var(--ok)">120</text>
+<line x1="112" y1="55" x2="156" y2="55" stroke="var(--ink)" stroke-width="2"/>
+<line x1="262" y1="55" x2="306" y2="55" stroke="var(--ink)" stroke-width="2"/>
+<text x="134" y="22" text-anchor="middle" font-size="12" fill="var(--ink)">× 1,5</text>
+<text x="284" y="22" text-anchor="middle" font-size="12" fill="var(--ink)">× 0,8</text>
+<text x="210" y="102" text-anchor="middle" font-size="12" fill="var(--ink)">kâr = 120 − 100 = %20</text>
+</svg>
+
+::duzey
+L1: Bir dükkân 100 TL'ye aldığı ayakkabının etiketine 150 TL yazıyor. İndirim döneminde %20 indirim yapınca ayakkabı $150 \cdot 0{,}8 = 120$ TL'ye satılıyor. Dükkân yine 20 TL, yani %20 kâr eder.
+L2: Çarpanlar çarpılır: $1{,}5 \cdot 0{,}8 = 1{,}2$. "%50 fazla etiket, %20 indirim, %30 kâr" diye yüzdeleri çıkarmak yanlıştır, çünkü indirim etikete, etiket payı alışa uygulanır. Bilinmeyen etiket payı ya da indirim varsa zincir denklemi kur: $100 \cdot (1 + \frac{e}{100}) \cdot 0{,}8 = 104$.
+L3: Zarar da aynı zincirde görünür: çarpım 1'in altına düşerse zarar vardır ($1{,}2 \cdot 0{,}75 = 0{,}9$: %10 zarar). "Kâr etmemek için en fazla yüzde kaç indirim?" sorusunda çarpımı 1'e eşitle: $1{,}25 \cdot (1 - i) = 1 \Rightarrow i = $ %20.
+
+::ornek baslik="Etiket payı ve indirim"
+soru: Bir ürünün etiket fiyatı alış fiyatının %50 fazlasıdır. Ürün etiket fiyatı üzerinden %20 indirimle satılırsa kâr yüzde kaç olur?
+1. Alış 100: etiket $100 \cdot 1{,}5 = 150$. || Alışa 100 de.
+2. Satış $150 \cdot 0{,}8 = 120$. || İndirim etikete uygulanır.
+3. Kâr $120 - 100 = 20$: %20. || Yüzdeler çıkarılmaz ($50 - 20 = 30$ değil).
+cevap: %20
+
+::strateji tip=kar-indirim baslik="Zincir yöntemi"
+ipucu: Soruda hem etiket/indirim hem kâr/zarar geçiyor
+1. Alışa 100 de.
+2. Etiket payını uygula (× $1 + \frac{e}{100}$), sonra indirimi uygula (× $1 - \frac{i}{100}$).
+3. Satış − 100 kâr (ya da zarar) yüzdesidir.
+4. Bilinmeyen varsa zinciri denklem olarak yaz.
+
+::yanilgi m3 tip=kar-indirim
+yanlis: Etiket alışın %50 fazlası, indirim %20 ise kâr %30'dur.
+neden: İndirim etikete uygulanır; çarpanlar $1{,}5 \cdot 0{,}8 = 1{,}2$ verir.
+dogru: Kâr %20'dir.
+
+::soru c3 tip=kar-indirim zorluk=2
+Bir mağaza alış fiyatı 250 TL olan bir ürünün etiketine 400 TL yazıyor. Ürün etiket fiyatı üzerinden %30 indirimle satılırsa kâr yüzde kaç olur?
+A) 10 || Satış $400 \cdot 0{,}7 = 280$; kârı alışa böl.
++B) 12 || Doğru: satış 280, kâr 30; $\frac{30}{250} = $ %12.
+C) 20 || Hesabı kontrol et.
+D) 30 || Yüzdeleri çıkardın ($60 - 30$).
+E) 60 || Bu etiket payıdır; indirimi unuttun.
+kontrol: (400*0.7-250)/250*100
+cozum: Satış $400 \cdot 0{,}7 = 280$ TL; kâr $280 - 250 = 30$ TL; $\frac{30}{250} \cdot 100 = $ %12.
+
+@bolum s4 8 | Adet ve birim fiyat
+::fikir
+**Maliyet = adet × birim alış**, **gelir = her grubun adet × birim satışı**, **kâr = gelir − maliyet**. Kırılan, bozulan ya da hediye edilen ürünler maliyete girer ama gelir getirmez.
+
+::duzey
+L1: Tanesi 5 TL'den 200 yumurta alırsan 1000 TL ödersin. 20'si kırılırsa satabileceğin 180 yumurta kalır. Tanesini 7 TL'den satarsan $180 \cdot 7 = 1260$ TL alırsın: kâr $1260 - 1000 = 260$ TL, yani %26.
+L2: Farklı fiyatlardan satılan gruplar için geliri ayrı ayrı hesapla ve topla. Kâr yüzdesi toplam kârın toplam maliyete oranıdır.
+L3: "12 tanesinin satış fiyatı 15 tanesinin alış fiyatına eşit" ifadesi $12S = 15A$ demektir; $\frac{S}{A} = \frac{15}{12} = 1{,}25$, kâr %25. Sayılar yer değiştirirse (15 tanesinin satışı = 12 tanesinin alışı) %20 zarar olur.
+
+::ornek baslik="Kırılan yumurtalar"
+soru: Tanesi 5 TL'ye alınan 200 yumurtanın 20'si kırılıyor, kalanı tanesi 7 TL'den satılıyor. Kâr yüzde kaçtır?
+1. Maliyet $200 \cdot 5 = 1000$ TL. || Kırılanlar da parayla alındı.
+2. Gelir $180 \cdot 7 = 1260$ TL. || Yalnız sağlamlar satılır.
+3. Kâr $260$ TL; $\frac{260}{1000} = $ %26. || Taban maliyet.
+cevap: %26
+
+::tamamla baslik="Satış adedi ile alış adedi"
+soru: Bir manav 12 portakalın satış fiyatına 15 portakal alabiliyor. Manavın kârı yüzde kaçtır?
+1. $12 \cdot S = 15 \cdot A$.
+?2. $\frac{S}{A} = \frac{15}{12} = 1{,}25$.
+?3. Kâr %25.
+cevap: %25
+
+::soru c4 tip=adet-maliyet zorluk=2
+Tanesi 4 TL'ye alınan 120 kalemin 80'i tanesi 6 TL'den, kalanı tanesi 3 TL'den satılıyor. Bu satıştan kaç TL kâr edilir?
+A) 80 || Gelir $480 + 120 = 600$; maliyeti çıkar.
+B) 100 || Hesabı kontrol et.
+C) 110 || Hesabı yeniden yap.
++D) 120 || Doğru: gelir 600, maliyet 480.
+E) 160 || Yalnız 80 kalemin kârını aldın; 40 kalemde zarar var.
+kontrol: 80*6+40*3-120*4
+cozum: Maliyet $120 \cdot 4 = 480$; gelir $80 \cdot 6 + 40 \cdot 3 = 600$; kâr $120$ TL.
+
+::ozet
+- Kâr–zarar yüzdesi alış üzerinden; alışa 100 de.
+- İndirim ve zam o anki fiyat üzerinden; ardışık olanların çarpanlarını çarp.
+- Alış → etiket → satış zincirinde çarpanları sırayla uygula; yüzdeler çıkarılmaz.
+- Adet sorularında maliyet ve geliri ayrı hesapla; kırılanlar maliyete girer.
+
+@pratik
+- Çalışma sırası: önce her soruda "yüzdenin tabanı hangi fiyat?" kararını yaz (alış mı, etiket mi), sonra zincir yöntemini, en son adet sorularını çalış.
+- Sınav yaklaşımı: kâr–zarar sorusunda alışa 100 de; sayılar küçük ve kesirsiz kalır. Etiket ve indirim varsa çarpanları alt alta yaz.
+- Kısa yol: kâr etmemek için yapılabilecek en büyük indirim, etiket çarpanının tersidir ($1{,}25 \to$ %20).
+- En sık tuzaklar: satıştan yüzde çıkararak alış bulmak, ardışık indirimleri toplamak, etiket payından indirimi çıkararak kâr bulmak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra çıkmış sorular setini çöz; yanlışlarında tabanı hangi fiyata koyduğunu kontrol et.
+
+@kartlar
+- Kâr–zarar yüzdesinin tabanı :: Alış (maliyet) fiyatı
+- İndirim ve zammın tabanı :: O anki (etiket) fiyat
+- %20 kârla 540 TL'ye satılan ürünün alışı :: $540 : 1{,}2 = 450$ TL
+- Önce %20 sonra %10 indirim :: $0{,}8 \cdot 0{,}9 = 0{,}72$ → toplam %28
+- Etiket %50 fazla, %20 indirim :: $1{,}5 \cdot 0{,}8 = 1{,}2$ → %20 kâr
+- %25 zammı geri almak için indirim :: %20
+- 12 tanesinin satışı = 15 tanesinin alışı :: $\frac{S}{A} = \frac{15}{12}$ → %25 kâr
+
+@ozet
+- Kâr ve zarar yüzdeleri alış fiyatına göre hesaplanır.
+- İndirim ve zam yapıldıkları andaki fiyata uygulanır ve ardışık olanlar çarpılır.
+- Alış, etiket ve satış arasındaki ilişki çarpan zinciriyle kurulur.
+- Adetli alım–satımda toplam kâr, toplam gelir ile toplam maliyetin farkıdır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "%20 kârla 540 TL'ye satılan ürünün alışı neden 432 değil de 450 TL'dir?" (2) "Etiket %50 fazla ve %20 indirim yapılınca kâr neden %30 değil de %20 olur?"
+
+@havuz
+::soru h1 tip=kar-yuzde zorluk=2
+Alış fiyatı 300 TL olan bir ürün 246 TL'ye satılıyor. Zarar yüzde kaçtır?
+A) 12
+B) 15
+C) 16
++D) 18
+E) 20
+kontrol: (300-246)/300*100
+cozum: Zarar $300 - 246 = 54$ TL; $\frac{54}{300} \cdot 100 = $ %18.
+
+::soru h2 tip=indirim-zam zorluk=2
+Bir ürünün fiyatına %25 zam yapılıyor. Ürünün yeniden eski fiyatına inmesi için yeni fiyat üzerinden yüzde kaç indirim yapılmalıdır?
++A) 20
+B) $22{,}5$
+C) 25
+D) 30
+E) 35
+kontrol: (1-1/1.25)*100
+cozum: Eski fiyat 100 ise yeni 125. $125 \cdot (1 - i) = 100 \Rightarrow i = 0{,}2$: %20.
+
+::soru h3 tip=kar-indirim zorluk=3
+Bir satıcı bir ürünü etiket fiyatı üzerinden %20 indirimle sattığında %4 kâr ediyor. Etiket fiyatı alış fiyatının yüzde kaç fazlasıdır?
+A) 20
+B) 24
+C) 25
+D) 28
++E) 30
+kontrol: (1.04/0.8-1)*100
+cozum: Alış 100, satış 104. $E \cdot 0{,}8 = 104 \Rightarrow E = 130$: etiket alışın %30 fazlası.
+
+::soru h4 tip=adet-maliyet zorluk=2
+Bir manav 20 portakalın satış fiyatına 28 portakal alabiliyor. Manavın kârı yüzde kaçtır?
+A) 20
+B) 28
+C) 30
+D) 35
++E) 40
+kontrol: (28/20-1)*100
+cozum: $20S = 28A \Rightarrow \frac{S}{A} = 1{,}4$; kâr %40.

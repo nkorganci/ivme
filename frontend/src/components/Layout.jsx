@@ -16,6 +16,7 @@ const ITEMS = [
   [CURRICULUM_HOME, 'Dersler', 'book'],
   ['/akilli-ogretmen', 'Akıllı Öğretmen', 'layers'],
   ['/interaktif-ogrenme', 'İnteraktif Öğrenme', 'atom'],
+  ['/konuyu-ogrenelim', 'Konuyu Öğrenelim', 'target'],
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/ogrenci-takip', 'Öğrenci Takip Portalı', 'clock'],
   ['/calisma/yeni', STUDY_LABEL, 'play'],
@@ -23,6 +24,14 @@ const ITEMS = [
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
 const TRACKING_PATH = '/ogrenci-takip';
+const LEARN_PATH = '/konuyu-ogrenelim';
+const LEARN_ITEMS = [
+  [LEARN_PATH, 'Bugün'],
+  [`${LEARN_PATH}/harita`, 'Konu haritası'],
+  [`${LEARN_PATH}/hatalarim`, 'Hatalarım'],
+  [`${LEARN_PATH}/ilerleme`, 'İlerleme'],
+  [`${LEARN_PATH}/ayarlar`, 'Ayarlar'],
+];
 const REVIEW_PATH = '/ogretmen-dogrulamasi';
 // Üçüncü alan: yalnız bu sınav ailesinde görünen alt menü (boşsa her sınavda görünür).
 const TRACKING_ITEMS = [
@@ -85,6 +94,8 @@ export default function Layout() {
   const sidebarRef=useRef(null);
   const [, setQuestionBank] = useState(''); // Soru ekranının mevcut Outlet sözleşmesini korur.
   const trackingActive = pathname === TRACKING_PATH || pathname.startsWith(`${TRACKING_PATH}/`);
+  const learnActive = pathname === LEARN_PATH || pathname.startsWith(`${LEARN_PATH}/`);
+  const [learnOpen, setLearnOpen] = useState(learnActive);
   const lessonsActive = isResourcePath(pathname);
   const [lessonsOpen, setLessonsOpen] = useState(lessonsActive);
   const [trackingOpen, setTrackingOpen] = useState(trackingActive);
@@ -106,6 +117,7 @@ export default function Layout() {
     if (trackingActive) setTrackingOpen(true);
   }, [trackingActive]);
   useEffect(() => { if (lessonsActive) setLessonsOpen(true); }, [lessonsActive]);
+  useEffect(() => { if (learnActive) setLearnOpen(true); }, [learnActive]);
 
   useEffect(() => { if (reviewActive) setReviewOpen(true); }, [reviewActive]);
 
@@ -195,6 +207,17 @@ export default function Layout() {
                 {[['all','Bütün branşlar'], ...reviewBranches].map(([id,name]) => <NavLink key={id} to={`${REVIEW_PATH}/${id}`}
                   className={({ isActive: selected }) => selected ? 'active' : ''}
                   onClick={e => { if (user.role !== 'OPERATOR') { e.preventDefault(); switchReview(id); } }}>{name}</NavLink>)}
+              </div>}
+            </div>;
+            if (to === LEARN_PATH) return <div className="side-nav-group" key={to}>
+              <button type="button" className={`side-nav-toggle${active ? ' active' : ''}`} aria-expanded={learnOpen && !rail} aria-controls="learn-subnav"
+                aria-label={`${text} alt menüsünü ${learnOpen && !rail ? 'kapat' : 'aç'}`}
+                onClick={() => { if (rail) { toggleRail(); setLearnOpen(true); } else if (!active) { setLearnOpen(true); navigate(LEARN_PATH); } else setLearnOpen((open) => !open); }}>
+                <Icon name={icon} /><span className="label">{text}</span><span className="side-nav-chevron label" aria-hidden="true">{learnOpen ? '▴' : '▾'}</span>
+              </button>
+              {learnOpen && !rail && <div id="learn-subnav" className="side-subnav">
+                {LEARN_ITEMS.map(([path, label]) => <NavLink key={path} to={path} end={path === LEARN_PATH}
+                  className={({ isActive: selected }) => selected || (path === LEARN_PATH && /^\/konuyu-ogrenelim\/(konu|ders|calis|seviye)/.test(pathname)) ? 'active' : ''}>{label}</NavLink>)}
               </div>}
             </div>;
             if (to === TRACKING_PATH) return <div className="side-nav-group" key={to}>

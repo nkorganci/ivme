@@ -1,0 +1,331 @@
+@ders veri-grafikleri
+baslik: Verilerin Grafikle Gösterilmesi
+kisa: Veri grafikleri
+sinav: TYT
+unite: veri
+sinif: 9
+sira: 710
+onkosul: merkezi-egilim
+kategori: excel.tyt.matematik.d8fb8edba6e86247de33
+hedef: Daire grafiğinde merkez açı ile miktar arasında orantı kurmak; sütun ve çizgi grafiklerinden miktar, fark ve yüzde değişim okumak; grup genişliğini bulup histogram oluşturmak ve okumak; bir veri için uygun grafik türünü seçmek ve grafikler arasında dönüşüm yapmak.
+neden: Veri soruları TYT'de çoğunlukla bir grafik üzerinden sorulur ("Veri" başlığında 2018–2026'da 17 çıkmış soru). Grafik okumayı hızlandırmak, aynı beceriyi isteyen problem ve fonksiyon grafiği sorularına da doğrudan katkı sağlar.
+kaynak: MEBİ TYT Konu Özeti — Histogram, Grafik Çeşitleri | OGM 9. Sınıf Ders Anlatım Sunuları 44–45 — Veri, Histogram | MEBİ Tarama Testi TYT — Veri Grafikleri
+tekrar: 10
+ustalik-dk: 14
+hedef-sure: 70
+anahtar: grafik | daire grafiği | sütun grafiği | çizgi grafiği | histogram | merkez açı | grup genişliği | dilim | frekans
+baslik-kurali: /^9\.5\.2/ | verilerin grafik ile gösterilmesi | veri grafikleri | veri - 1
+
+@tip daire-grafik 30 s1
+ad: Daire grafiği ve merkez açı
+ipucu: "Dilimin merkez açısı 150° ise", "36 öğrencinin 9'u … merkez açı kaç derece?".
+strateji: Merkez açı payla orantılıdır: $\text{açı} = 360° \cdot \frac{\text{pay}}{\text{bütün}}$. Açıdan sayıya geçerken $\frac{\text{açı}}{360°}$ oranını bütünle çarp. Açılar orantılı verilirse $360°$'yi orana göre paylaştır.
+anahtar: daire grafiği | merkez açı | dilim | derece | °
+
+@tip sutun-cizgi 30 s2
+ad: Sütun ve çizgi grafikleri
+ipucu: "Satışların en çok arttığı ay", "bir önceki yıla göre yüzde artış", "sınıfların kitap sayıları".
+strateji: Önce eksenleri, birimleri ve ölçeği oku. Değişim miktarı fark, değişim oranı fark ÷ başlangıç değeridir. Çizgi grafiğinde en dik parça en büyük artış miktarıdır; yüzde artış için başlangıca böl.
+anahtar: sütun grafiği | çizgi grafiği | grafiğe göre | aylara göre | yıllara göre | artış
+
+@tip histogram 20 s3
+ad: Histogram ve grup genişliği
+ipucu: "4 gruba ayrılarak histogram çizilecek", "grup genişliği", "10–19 grubunun frekansı".
+strateji: Açıklığı grup sayısına böl; bölümden büyük olan en küçük doğal sayı grup genişliğidir (bölüm tam sayı olsa bile bir fazlası). Grupları en küçük veriden başlatıp frekansları say.
+anahtar: histogram | grup genişliği | grup sayısı | frekans | sınıf aralığı
+
+@tip grafik-secim 20 s4
+ad: Uygun grafik ve grafikler arası dönüşüm
+ipucu: "En uygun grafik türü", "daire grafiğindeki veri sütun grafiğine dönüştürülürse".
+strateji: Zamana bağlı değişim → çizgi; kategorileri karşılaştırma → sütun; bütünün parçaları → daire; gruplandırılmış sürekli veri → histogram. Dönüşümde önce bütünü (toplamı) bul, sonra her parçayı yeni grafiğin diline çevir.
+anahtar: uygun grafik | grafik türü | dönüştür | tablodan
+
+@ustalik
+daire-grafik 2 1-3
+sutun-cizgi 2 1-3
+histogram 1 1-2
+grafik-secim 1 1-3
+
+@oturum Daire, sütun ve çizgi grafikleri | s1 s2
+@oturum Histogram ve grafik seçimi | s3 s4
+
+@ontest
+::soru o1 tip=daire-grafik zorluk=1
+Bir sınıftaki 36 öğrencinin 9'u gözlüklüdür. Bu sınıfın daire grafiğinde gözlüklü öğrencileri gösteren dilimin merkez açısı kaç derecedir?
+A) 36 || 9 öğrenci 36 derece değildir; oranı kullan.
+B) 45 || Bu bütünün $\frac{1}{8}$'idir.
+C) 60 || Bu bütünün $\frac{1}{6}$'sıdır.
++D) 90 || Doğru: $\frac{9}{36} = \frac{1}{4}$; $360° \cdot \frac{1}{4} = 90°$.
+E) 120 || Bu bütünün $\frac{1}{3}$'üdür.
+kontrol: 360*9/36
+cozum: Gözlüklüler bütünün $\frac{9}{36} = \frac{1}{4}$'ü; merkez açı $360° \cdot \frac{1}{4} = 90°$.
+
+::soru o2 tip=sutun-cizgi zorluk=1
+Bir sütun grafiğinde bir mağazanın ocak, şubat ve mart aylarındaki satışları sırasıyla 40, 50 ve 70 adet olarak gösterilmiştir. Şubattan marta satışlar yüzde kaç artmıştır?
+A) 20 || 20 artış miktarıdır; yüzdeye çevir.
++B) 40 || Doğru: $\frac{20}{50} \cdot 100 = 40$.
+C) 50 || Bu ocaktan marta değil; hesabı kontrol et.
+D) 75 || Bu ocaktan marta artıştır.
+E) 140 || Mart satışını şubata böldün; artışı kullan.
+kontrol: 20/50*100
+cozum: Artış $70 - 50 = 20$ adet; başlangıç şubat (50): $\frac{20}{50} = $ %40.
+
+::soru o3 tip=histogram zorluk=2
+En küçük değeri 12, en büyük değeri 47 olan bir veri grubu 4 gruba ayrılarak histogram çizilecektir. Grup genişliği kaç olmalıdır?
+A) 8 || Bölümü aşağı yuvarladın; en büyük veri dışarıda kalır.
++B) 9 || Doğru: $35 : 4 = 8{,}75$; bundan büyük en küçük doğal sayı 9.
+C) 10 || Daha küçük bir genişlik yeterli.
+D) 12 || Bu en küçük veridir.
+E) 35 || Bu açıklıktır; grup sayısına böl.
+kontrol: 9
+cozum: Açıklık $47 - 12 = 35$; $35 : 4 = 8{,}75$. Bölümden büyük en küçük doğal sayı 9'dur.
+
+@bolum s1 9 | Daire grafiği: açı payla orantılı
+::fikir
+Daire grafiğinde her dilimin **merkez açısı, payıyla orantılıdır**: $\text{açı} = 360° \cdot \frac{\text{pay}}{\text{bütün}}$. Açıdan sayıya geçerken orantı kur: $90°$ bütünün $\frac{1}{4}$'üdür.
+
+::gorsel alt="120 öğrencinin spor tercihleri: futbol 90 derece, basketbol 120 derece, voleybol 60 derece, yüzme 90 derece olan dört dilimli daire grafiği." aciklama="120 öğrencinin spor tercihi: futbol $90°$, basketbol $120°$, voleybol $60°$, yüzme $90°$."
+<svg viewBox="0 0 320 210" xmlns="http://www.w3.org/2000/svg">
+<path d="M110,105 L110,25 A80,80 0 0,1 190,105 Z" fill="var(--tint)" stroke="var(--ink)"/>
+<path d="M110,105 L190,105 A80,80 0 0,1 70,174.28 Z" fill="var(--pen-blue)" fill-opacity="0.25" stroke="var(--ink)"/>
+<path d="M110,105 L70,174.28 A80,80 0 0,1 30,105 Z" fill="var(--pen-green)" fill-opacity="0.25" stroke="var(--ink)"/>
+<path d="M110,105 L30,105 A80,80 0 0,1 110,25 Z" fill="var(--pen-red)" fill-opacity="0.2" stroke="var(--ink)"/>
+<text x="142" y="70" font-size="11" fill="var(--ink)">Futbol</text>
+<text x="142" y="83" font-size="11" fill="var(--ink)">90°</text>
+<text x="120" y="140" font-size="11" fill="var(--ink)">Basketbol 120°</text>
+<text x="52" y="135" font-size="11" fill="var(--ink)">Voleybol</text>
+<text x="58" y="148" font-size="11" fill="var(--ink)">60°</text>
+<text x="52" y="70" font-size="11" fill="var(--ink)">Yüzme</text>
+<text x="58" y="83" font-size="11" fill="var(--ink)">90°</text>
+<text x="210" y="60" font-size="12" fill="var(--ink)">Toplam: 120 öğrenci</text>
+<text x="210" y="80" font-size="12" fill="var(--ink)">360° ↔ 120 kişi</text>
+<text x="210" y="100" font-size="12" fill="var(--ink)">3° ↔ 1 kişi</text>
+</svg>
+
+::duzey
+L1: Bütün daire $360°$ ve bütün grup (120 öğrenci) demektir. $360° : 120 = 3°$ olduğuna göre her öğrenci $3°$'lik bir dilimle gösterilir. $90°$'lik dilim $90 : 3 = 30$ öğrenci eder.
+L2: Açı ile yüzde arasında geçiş: $90°$ bütünün %25'i, $120°$ bütünün $\frac{1}{3}$'ü, $60°$ bütünün $\frac{1}{6}$'sıdır. Açılar oranla verilirse (2, 3, 4 ile orantılı) $360°$'yi bu orana göre paylaştır.
+L3: İki farklı daire grafiğini karşılaştırırken bütünler farklıysa açılar doğrudan karşılaştırılamaz: 100 kişilik bir grubun $90°$'si 25 kişi, 200 kişilik grubun $60°$'si 33 kişidir. Önce açıları sayıya çevir.
+
+::ornek baslik="Açıdan kişi sayısına"
+soru: Yukarıdaki grafiğe göre basketbolu seçen kaç öğrenci vardır? Futbolu seçenler voleybolu seçenlerden kaç fazladır?
+1. Her öğrenci $360° : 120 = 3°$. || Birim açı.
+2. Basketbol $120° : 3° = 40$ öğrenci. || Açıyı birim açıya böl.
+3. Futbol 30, voleybol 20: fark 10. || $(90° - 60°) : 3° = 10$.
+cevap: 40 öğrenci; 10 fazla
+
+::yanilgi m1 tip=daire-grafik
+yanlis: Merkez açısı $60°$ olan dilim bütünün %60'ıdır.
+neden: Bütün $360°$'dir, 100° değil.
+dogru: $60°$ bütünün $\frac{60}{360} = \frac{1}{6}$'sı, yaklaşık %16,7'sidir.
+
+::soru c1 tip=daire-grafik zorluk=2
+Bir okuldaki 240 öğrencinin dil tercihleri daire grafiğinde gösterilmiştir. İngilizceyi seçenleri gösteren dilimin merkez açısı $150°$ olduğuna göre İngilizceyi seçen kaç öğrenci vardır?
+A) 80 || Hesabı kontrol et: $240 \cdot \frac{150}{360}$.
+B) 90 || Hesabı yeniden yap.
++C) 100 || Doğru: $240 \cdot \frac{150}{360} = 100$.
+D) 120 || Bu bütünün yarısıdır; $150° < 180°$.
+E) 150 || Açıyı öğrenci sayısı sandın.
+kontrol: 240*150/360
+cozum: $\frac{150}{360} = \frac{5}{12}$; $240 \cdot \frac{5}{12} = 100$ öğrenci.
+
+@bolum s2 9 | Sütun ve çizgi grafikleri
+::fikir
+**Sütun grafiği** kesikli verileri karşılaştırır; **çizgi grafiği** zamana bağlı değişimi gösterir. Okurken önce eksen birimlerini ve ölçeği kontrol et.
+
+::grafik alt="Beş aylık satış çizgi grafiği: 1. ay 20, 2. ay 35, 3. ay 30, 4. ay 50, 5. ay 45 adet." aciklama="Aylık satışlar (adet): 20, 35, 30, 50, 45. En dik çıkış 3. aydan 4. aya."
+x: 0 6
+y: 0 60
+parca: 1 20 2 35 | navy
+parca: 2 35 3 30 | navy
+parca: 3 30 4 50 | navy
+parca: 4 50 5 45 | navy
+nokta: 1 20 | 20 | navy
+nokta: 2 35 | 35 | navy
+nokta: 3 30 | 30 | navy
+nokta: 4 50 | 50 | red
+nokta: 5 45 | 45 | navy
+xetiket: ay
+yetiket: satış (adet)
+
+::duzey
+L1: Çizgi grafiğinde her nokta bir ayın satışını gösterir. Çizgi yukarı çıkıyorsa satış artmış, aşağı iniyorsa azalmıştır. En dik çıkış en büyük artıştır.
+L2: Değişim miktarı (fark) ile değişim oranını (yüzde) ayır: 20'den 35'e artış 15 adet ve %75; 30'dan 50'ye artış 20 adet ama %66,7. Yüzde artış her zaman başlangıç değerine bölünerek bulunur.
+L3: Ölçek tuzağı: dikey eksen 0'dan başlamıyorsa küçük farklar büyük görünür. Grafikten değer okurken ara çizgilerin kaçar birim olduğunu kontrol et; sütun grafiğinde de sütunların boyunu ölçekle çarp.
+
+::ornek baslik="Grafikten değişim"
+soru: Yukarıdaki grafiğe göre satışların en çok arttığı aylar hangileridir ve 1. aydan 5. aya satışlar yüzde kaç artmıştır?
+1. Artışlar: $+15$, $-5$, $+20$, $-5$; en büyük artış 3. aydan 4. aya (+20). || Ardışık farklar.
+2. 1. aydan 5. aya artış $45 - 20 = 25$ adet. || Uç değerler.
+3. Yüzde artış $\frac{25}{20} \cdot 100 = $ %125. || Başlangıca böl.
+cevap: 3. aydan 4. aya; %125
+
+::yanilgi m2 tip=sutun-cizgi
+yanlis: Artış miktarı en büyük olan dönemin yüzde artışı da en büyüktür.
+neden: Yüzde artış başlangıç değerine bağlıdır: 20'den 30'a artış %50, 100'den 120'ye artış %20'dir.
+dogru: Yüzde artışı karşılaştırırken her dönemin farkını kendi başlangıç değerine böl.
+
+::soru c2 tip=sutun-cizgi zorluk=2
+Bir fabrikanın üretimi bir çizgi grafiğinde 2021'de 400, 2022'de 500, 2023'te 400, 2024'te 600 adet olarak gösterilmiştir. Üretimin bir önceki yıla göre en büyük yüzde artışı yüzde kaçtır?
+A) 20 || Bu 2022'nin 2023'e göre azalışıdır.
+B) 25 || Bu 2022'deki artıştır; 2024'ü de hesapla.
+C) 33 || 200'ü 600'e böldün; başlangıca böl.
+D) 40 || Hesabı kontrol et.
++E) 50 || Doğru: 2024'te $\frac{200}{400} = $ %50.
+kontrol: 200/400*100
+cozum: Artışlar: 2022'de $\frac{100}{400} = $ %25, 2024'te $\frac{200}{400} = $ %50 (2023'te azalış). En büyük %50.
+
+@bolum s3 8 | Histogram
+::fikir
+Histogram, gruplandırılmış verilerin frekanslarını **bitişik sütunlarla** gösterir. **Grup genişliği**: açıklık ÷ grup sayısından **büyük olan en küçük doğal sayı**.
+
+::grafik alt="Üç gruplu histogram: 3–7 yaş 2 kişi, 8–12 yaş 4 kişi, 13–17 yaş 3 kişi." aciklama="MEBİ örneği: yaşlar 3, 4, 8, 8, 10, 12, 13, 16, 17; gruplar 3–7, 8–12, 13–17."
+x: 0 20
+y: 0 5
+parca: 2.5 0 2.5 2 | navy
+parca: 2.5 2 7.5 2 | navy
+parca: 7.5 0 7.5 4 | navy
+parca: 7.5 4 12.5 4 | navy
+parca: 12.5 0 12.5 4 | navy
+parca: 12.5 3 17.5 3 | navy
+parca: 17.5 0 17.5 3 | navy
+yazi: 5 2.3 | 2
+yazi: 10 4.3 | 4
+yazi: 15 3.3 | 3
+xetiket: yaş grupları (3–7, 8–12, 13–17)
+yetiket: kişi sayısı
+
+::duzey
+L1: Histogram bir sütun grafiğine benzer ama sütunlar bitişiktir, çünkü yatay eksen sürekli aralıkları (yaş grupları gibi) gösterir. Her sütunun yüksekliği o gruptaki veri sayısıdır (frekans).
+L2: Histogram adımları: verileri sırala → açıklığı bul → grup sayısını seç → grup genişliğini hesapla → grupları en küçük veriden başlatarak frekans tablosu yap → sütunları çiz. Grup genişliği kuralı en büyük verinin son gruba sığmasını sağlar.
+L3: Bölüm tam sayı çıksa bile bir fazlası alınır: açıklık 24 ve 4 grup için $24 : 4 = 6$, genişlik 7'dir; 6 alınırsa en büyük veri beşinci bir gruba taşar. Histogramdan yüzde, "en az" ve "en çok" yorumları frekansların toplamıyla yapılır.
+
+::ornek baslik="MEBİ örneği: yaş grupları"
+soru: Bir gruptaki üyelerin yaşları $3, 4, 8, 8, 10, 12, 13, 16, 17$'dir. Veriler 3 gruba ayrılarak histogram çizilecektir. Grupları ve frekanslarını bul.
+1. Açıklık $17 - 3 = 14$; $14 : 3 \approx 4{,}67$; grup genişliği 5. || Bölümden büyük en küçük doğal sayı.
+2. Gruplar: 3–7, 8–12, 13–17. || En küçük veriden başla.
+3. Frekanslar: 2, 4, 3. || Her gruptaki verileri say.
+cevap: 3–7: 2, 8–12: 4, 13–17: 3
+
+::tamamla baslik="Bölüm tam sayı çıkarsa"
+soru: Açıklığı 24 olan bir veri grubu 4 gruba ayrılacaktır. Grup genişliği kaç olmalıdır?
+1. $24 : 4 = 6$.
+?2. 6'dan büyük en küçük doğal sayı 7: genişlik 7.
+cevap: 7
+
+::yanilgi m3 tip=histogram
+yanlis: Açıklık grup sayısına tam bölünüyorsa grup genişliği bölümün kendisidir.
+neden: Kural "bölümden büyük en küçük doğal sayı" der; bölüm alınırsa en büyük veri son grubun dışında kalır.
+dogru: $24 : 4 = 6$ ise grup genişliği 7'dir.
+
+::soru c3 tip=histogram zorluk=2
+Bir veri grubunun en küçük değeri 21, en büyük değeri 59'dur. Veriler 5 gruba ayrılarak histogram çizilecektir. Grup genişliği kaç olmalıdır?
+A) 7 || Bölümü aşağı yuvarladın.
++B) 8 || Doğru: $38 : 5 = 7{,}6$; bundan büyük en küçük doğal sayı 8.
+C) 9 || Daha küçük genişlik yeterli.
+D) 10 || Hesabı kontrol et.
+E) 38 || Bu açıklıktır.
+kontrol: 8
+cozum: Açıklık $59 - 21 = 38$; $38 : 5 = 7{,}6$; grup genişliği 8.
+
+@bolum s4 8 | Uygun grafik ve dönüşüm
+::fikir
+**Zamana bağlı değişim** → çizgi; **kategorileri karşılaştırma** → sütun; **bütünün parçaları** → daire; **gruplandırılmış sürekli veri** → histogram. Tablodan grafiğe geçerken toplamı ve ölçeği koru.
+
+::sinifla g1 baslik="Hangi grafik daha uygun?"
+Çizgi grafiği: Bir bebeğin aylara göre kilosu; Bir şehrin yıllara göre nüfusu
+Sütun grafiği: Sınıfların okuduğu kitap sayıları; Ülkelerin kazandığı madalya sayıları
+Daire grafiği: Aile bütçesinin harcama kalemlerine dağılımı; Bir seçimde partilerin oy oranları
+
+::duzey
+L1: Bir şeyin zamanla nasıl değiştiğini görmek istiyorsan noktaları sırayla birleştiren çizgi grafiği; farklı grupları yan yana karşılaştırmak istiyorsan sütun grafiği; bir bütünün nasıl paylaşıldığını görmek istiyorsan daire grafiği kullanılır.
+L2: Tablodan daire grafiğine: her kategori için açı $= 360° \cdot \frac{\text{değer}}{\text{toplam}}$. Daire grafiğinden sütuna: önce bütünü bul, sonra her açıyı miktara çevir. Açıların toplamı $360°$, miktarların toplamı bütün olmalıdır.
+L3: Aynı soruda iki grafik verilebilir (biri oranları, diğeri miktarları gösterir). Ortak bir değeri (aynı kategori) iki grafikte eşleştirerek bütünü bul; bu soruların anahtarı budur.
+
+::ornek baslik="Tablodan daire grafiğine"
+soru: Bir kitapçıda bir günde 45 roman, 30 hikâye, 15 şiir ve 30 deneme kitabı satılmıştır. Bu veri daire grafiğiyle gösterilirse dilimlerin merkez açıları kaçar derece olur?
+1. Toplam $45 + 30 + 15 + 30 = 120$ kitap; her kitap $3°$. || Birim açı.
+2. Roman $135°$, hikâye $90°$, şiir $45°$, deneme $90°$. || Miktar × birim açı.
+3. Kontrol: $135 + 90 + 45 + 90 = 360$ ✓ || Açıların toplamı.
+cevap: $135°$, $90°$, $45°$, $90°$
+
+::soru c4 tip=grafik-secim zorluk=2
+Bir ailenin aylık 24 000 TL'lik bütçesinde kira için ayrılan kısım daire grafiğinde $105°$'lik dilimle gösterilmektedir. Aynı veri sütun grafiğine dönüştürülürse kira sütunu kaç TL'yi gösterir?
+A) 6000 || Bu $90°$'ye karşılık gelir.
+B) 6500 || Hesabı kontrol et.
++C) 7000 || Doğru: $24000 \cdot \frac{105}{360} = 7000$.
+D) 7500 || Hesabı yeniden yap.
+E) 8400 || Bu %35'tir; $105°$ bütünün yaklaşık %29'udur.
+kontrol: 24000*105/360
+cozum: $\frac{105}{360} = \frac{7}{24}$; $24000 \cdot \frac{7}{24} = 7000$ TL.
+
+::ozet
+- Daire grafiğinde açı $= 360° \cdot \frac{\text{pay}}{\text{bütün}}$; açıdan sayıya birim açıyla geç.
+- Sütun ve çizgi grafiklerinde değişim miktarı fark, değişim oranı fark ÷ başlangıçtır.
+- Grup genişliği: açıklık ÷ grup sayısından büyük en küçük doğal sayı.
+- Zaman → çizgi, karşılaştırma → sütun, parça–bütün → daire, gruplandırılmış veri → histogram.
+
+@pratik
+- Çalışma sırası: önce daire grafiğinde birim açı ($360° \div$ bütün) fikrini, sonra çizgi grafiğinde fark ve yüzde değişimi, en son histogram kuralını ve grafik seçimini çalış.
+- Sınav yaklaşımı: grafikli soruda önce eksen başlıklarını ve birimleri yaz; değerleri grafiğin yanına tablo olarak dök, sonra hesapla.
+- Daire grafiği sorusunda bütünü bilmiyorsan, bilinen bir dilimin miktarı ve açısından birim açıyı bul.
+- En sık tuzaklar: açıyı yüzde sanmak, yüzde artışı bitiş değerine bölmek, grup genişliğinde bölüm tam sayıyken bir fazlasını almamak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra çıkmış sorular setini çöz; grafikli soruların çoğu bir önceki dersin ortalama ve ortanca bilgisini de ister.
+
+@kartlar
+- Daire grafiğinde merkez açı :: $360° \cdot \frac{\text{pay}}{\text{bütün}}$
+- $90°$, $120°$, $60°$ bütünün kaçta kaçı? :: $\frac{1}{4}$, $\frac{1}{3}$, $\frac{1}{6}$
+- Yüzde artış :: $\frac{\text{yeni} - \text{eski}}{\text{eski}} \cdot 100$
+- Grup genişliği kuralı :: Açıklık ÷ grup sayısından büyük en küçük doğal sayı
+- Zamana bağlı değişim için grafik :: Çizgi grafiği
+- Bütünün parçaları için grafik :: Daire grafiği
+- Histogramın sütun grafiğinden farkı :: Sütunlar bitişiktir; yatay eksen sürekli aralıklardır.
+
+@ozet
+- Daire grafiğinde dilimlerin merkez açıları temsil ettikleri miktarlarla orantılıdır.
+- Sütun ve çizgi grafikleri karşılaştırma ve zamana bağlı değişim için kullanılır; yüzde değişim başlangıç değerine göre hesaplanır.
+- Histogram gruplandırılmış verilerin frekanslarını bitişik sütunlarla gösterir ve grup genişliği belirli bir kuralla seçilir.
+- Veri türüne ve amaca göre uygun grafik seçilir; grafikler arası dönüşümde bütün korunur.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "120 öğrencilik bir daire grafiğinde $120°$'lik dilim neden 40 öğrencidir?" (2) "Açıklık 24 ve grup sayısı 4 iken grup genişliği neden 6 değil de 7'dir?"
+
+@havuz
+::soru h1 tip=daire-grafik zorluk=2
+Bir daire grafiğinde A, B ve C dilimlerinin merkez açıları sırasıyla 2, 3 ve 4 sayılarıyla orantılıdır. C diliminin merkez açısı kaç derecedir?
+A) 80
+B) 120
+C) 140
++D) 160
+E) 180
+kontrol: 360/9*4
+cozum: $2k + 3k + 4k = 360° \Rightarrow k = 40°$; C dilimi $4k = 160°$.
+
+::soru h2 tip=sutun-cizgi zorluk=2
+Bir sütun grafiğinde dört sınıfın okuduğu kitap sayıları 9-A: 36, 9-B: 48, 9-C: 30 ve 9-D: 46 olarak verilmiştir. Bu sınıfların okuduğu kitap sayılarının ortalaması kaçtır?
++A) 40
+B) 42
+C) 44
+D) 46
+E) 48
+kontrol: (36+48+30+46)/4
+cozum: Toplam $36 + 48 + 30 + 46 = 160$; $160 : 4 = 40$.
+
+::soru h3 tip=histogram zorluk=2
+Bir histogramda 10–19, 20–29 ve 30–39 gruplarının frekansları sırasıyla 4, 7 ve 9'dur. Verilerin yüzde kaçı 20 ya da daha büyüktür?
+A) 35
+B) 45
+C) 55
+D) 70
++E) 80
+kontrol: 16/20*100
+cozum: Toplam 20 veri; 20 ve üstü $7 + 9 = 16$: $\frac{16}{20} = $ %80.
+
+::soru h4 tip=grafik-secim zorluk=1
+Bir öğrencinin bir yıl boyunca aylık deneme sınavı netlerindeki değişimi göstermek için en uygun grafik türü aşağıdakilerden hangisidir?
+A) Daire grafiği
+B) Histogram
++C) Çizgi grafiği
+D) Venn şeması
+E) Resim grafiği
+cozum: Zamana bağlı değişimi göstermek için çizgi grafiği kullanılır.

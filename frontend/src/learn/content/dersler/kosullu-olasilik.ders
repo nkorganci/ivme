@@ -1,0 +1,314 @@
+@ders kosullu-olasilik
+baslik: Koşullu Olasılık, Bağımsız ve Bileşik Olaylar
+kisa: Koşullu olasılık
+sinav: AYT
+unite: sayma-olasilik
+sinif: 11
+sira: 840
+onkosul: olasilik
+kategori: excel.ayt.matematik.9442d82c159081577c80
+hedef: Koşullu olasılığı $P(A \mid B) = \frac{s(A \cap B)}{s(B)} = \frac{P(A \cap B)}{P(B)}$ ile hesaplamak; çarpma kuralını ve geri konmadan çekilişleri kullanmak; bağımsız ve bağımlı olayları ayırt etmek; bileşik olayların olasılığını ağaç diyagramıyla bulmak.
+neden: AYT olasılık soruları (2018–2026'da 9 çıkmış soru) çoğunlukla bir tablo ya da aşamalı bir deney üzerinden koşullu olasılık ister. Tablo okumayı ve ağaç diyagramı kurmayı öğrenen için bu sorular düz bir orana iner.
+kaynak: MEBİ AYT Konu Özeti — Koşullu Olasılık, Bağımsız Olaylar, Bileşik Olayların Olasılığı, Deneysel Olasılık | OGM Ders Anlatım Sunuları 11. Sınıf 42 — Olasılık | OGM Soru Bankası 11. Sınıf — Olasılık
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 80
+anahtar: bilindiğine göre | olduğu bilindiğine | koşullu | bağımsız | bağımlı | geri konmadan | ağaç | art arda | olasılığı
+baslik-kurali: /^11\.7/ | koşullu olasılık
+
+@tip kosullu-tablo 30 s1
+ad: Koşullu olasılık: örnek uzayı daralt
+ipucu: "Seçilen öğrencinin erkek olduğu bilindiğine göre", "toplamın 8 olduğu bilindiğine göre".
+strateji: "… bilindiğine göre" kısmı yeni örnek uzaydır. $P(A \mid B) = \frac{s(A \cap B)}{s(B)}$: paydaya yalnız $B$'nin elemanlarını, paya $B$ içinde $A$'yı sağlayanları yaz. $P(A \mid B)$ ile $P(B \mid A)$'yı karıştırma.
+anahtar: bilindiğine göre | olduğu bilinen | koşullu | tablo
+
+@tip carpma-kurali 25 s2
+ad: Çarpma kuralı ve geri konmadan çekiliş
+ipucu: "Geri konmadan art arda iki bilye", "ikisinin de kırmızı olma olasılığı".
+strateji: $P(A \cap B) = P(A) \cdot P(B \mid A)$. Art arda çekilişte her adımın olasılığını o andaki duruma göre yaz (geri konmazsa toplam ve ilgili renk azalır), sonra çarp. Farklı sıralar varsa her sırayı ayrı hesaplayıp topla.
+anahtar: geri konmadan | art arda | ardışık | ikinci çekilen | birincisi
+
+@tip bagimsiz 20 s3
+ad: Bağımsız ve bağımlı olaylar
+ipucu: "Atışlar bağımsızdır", "en az birinin vurma olasılığı", "yalnız birinin geçme olasılığı".
+strateji: Bağımsız olaylarda $P(A \cap B) = P(A) \cdot P(B)$ ve $P(A \mid B) = P(A)$. "En az biri" için $1 - P(A')P(B')$; "yalnız biri" için $P(A)P(B') + P(A')P(B)$. Ayrık (olasılıkları pozitif) olaylar bağımsız değildir.
+anahtar: bağımsız | bağımlı | birbirini etkilemez | geri konularak | en az biri | yalnız biri
+
+@tip agac-bilesik 25 s4
+ad: Ağaç diyagramı ve bileşik olaylar
+ipucu: "Çekilen top yeşilse B torbasından, maviyse C torbasından", "makinelerin kusurlu ürün oranları".
+strateji: Aşamalı deneyde ağaç çiz: dallar boyunca olasılıkları çarp, istenen sonuca giden dalları topla. Sonuç biliniyorsa ilk aşamayı sormak koşullu olasılıktır: istenen dal ÷ o sonuca giden bütün dallar.
+anahtar: torbasından | ağaç | makine | kusurlu | önce | sonra | ikinci torba
+
+@ustalik
+kosullu-tablo 2 1-3
+carpma-kurali 1 1-3
+bagimsiz 1 1-3
+agac-bilesik 2 1-3
+
+@oturum Koşullu olasılık ve çarpma kuralı | s1 s2
+@oturum Bağımsızlık ve ağaç diyagramı | s3 s4
+
+@ontest
+::soru o1 tip=kosullu-tablo zorluk=1
+Bir zar atılıyor. Gelen sayının çift olduğu bilindiğine göre 4'ten büyük olma olasılığı kaçtır?
+A) $\frac{1}{6}$ || Örnek uzay çiftlere daraldı: 3 çıktı.
++B) $\frac{1}{3}$ || Doğru: çiftler {2, 4, 6}, 4'ten büyük olan yalnız 6.
+C) $\frac{1}{2}$ || 4'ten büyük çift yalnız 6'dır.
+D) $\frac{2}{3}$ || 4 dahil değil.
+E) $1$ || Hesabı kontrol et.
+kontrol: 1/3
+cozum: Yeni örnek uzay $\{2, 4, 6\}$; 4'ten büyük olan $\{6\}$: $\frac{1}{3}$.
+
+::soru o2 tip=bagimsiz zorluk=1
+Bir zar ve bir madenî para birlikte atılıyor. Zarın 6, paranın tura gelme olasılığı kaçtır?
++A) $\frac{1}{12}$ || Doğru: $\frac{1}{6} \cdot \frac{1}{2}$.
+B) $\frac{1}{8}$ || Hesabı kontrol et.
+C) $\frac{1}{6}$ || Paranın olasılığını da çarpmalısın.
+D) $\frac{1}{3}$ || Olasılıklar toplanmaz; bağımsız olaylarda çarpılır.
+E) $\frac{2}{3}$ || $\frac{1}{6} + \frac{1}{2}$ toplamı; "ve" için çarp.
+kontrol: 1/12
+cozum: Zar ile para birbirini etkilemez: $\frac{1}{6} \cdot \frac{1}{2} = \frac{1}{12}$.
+
+::soru o3 tip=carpma-kurali zorluk=2
+Bir torbada 3 kırmızı ve 2 mavi bilye vardır. Geri konmadan art arda iki bilye çekiliyor. İkisinin de kırmızı olma olasılığı kaçtır?
++A) $\frac{3}{10}$ || Doğru: $\frac{3}{5} \cdot \frac{2}{4}$.
+B) $\frac{9}{25}$ || Bu geri konarak çekilişin sonucudur.
+C) $\frac{2}{5}$ || Hesabı kontrol et.
+D) $\frac{9}{20}$ || İkinci çekilişte kırmızı sayısı da azalır: 2.
+E) $\frac{3}{5}$ || Bu yalnız ilk çekilişin olasılığıdır.
+kontrol: 3/5*2/4
+cozum: İlk kırmızı $\frac{3}{5}$; geriye 2 kırmızı ve toplam 4 bilye: $\frac{2}{4}$. $\frac{3}{5} \cdot \frac{1}{2} = \frac{3}{10}$.
+
+@bolum s1 9 | Koşullu olasılık: örnek uzayı daralt
+::fikir
+$B$'nin gerçekleştiği biliniyorsa örnek uzay **$B$'ye daralır**: $P(A \mid B) = \frac{s(A \cap B)}{s(B)} = \frac{P(A \cap B)}{P(B)}$.
+
+::tablo baslik="MEBİ örneği: İngilizce kulübündeki 38 öğrenci"
+| | 10. sınıf | 11. sınıf | Toplam |
+| Kız | 10 | 6 | 16 |
+| Erkek | 8 | 14 | 22 |
+| Toplam | 18 | 20 | 38 |
+
+::duzey
+L1: Kulüpten rastgele biri seçiliyor ve seçilenin erkek olduğu söyleniyor. Artık yalnız 22 erkek arasından seçim yapılmış gibi düşün; bunların 8'i 10. sınıf: $\frac{8}{22}$.
+L2: Formül: $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$. Sayılarla çalışırken $s(E)$'ler sadeleşir: $\frac{s(A \cap B)}{s(B)}$. Tabloda koşul bir satır ya da sütun seçer; cevap o satırdaki hücrenin satır toplamına oranıdır.
+L3: $P(A \mid B) \neq P(B \mid A)$: $P(\text{10. sınıf} \mid \text{erkek}) = \frac{8}{22}$ ama $P(\text{erkek} \mid \text{10. sınıf}) = \frac{8}{18}$. Paydalar farklı koşullardan gelir. Çarpma kuralı da buradan çıkar: $P(A \cap B) = P(B) \cdot P(A \mid B)$.
+
+::ornek baslik="MEBİ örneği: erkek olduğu bilindiğine göre"
+soru: Yukarıdaki tabloya göre kulüpten rastgele bir başkan seçiliyor. Seçilen öğrencinin erkek olduğu bilindiğine göre 10. sınıf öğrencisi olma olasılığı kaçtır?
+1. Koşul: erkek → yeni örnek uzay 22 öğrenci. || Satırı seç.
+2. Bunlardan 10. sınıf olanlar: 8. || Kesişim.
+3. $P = \frac{8}{22} = \frac{4}{11}$. || $\frac{s(A \cap B)}{s(B)}$.
+cevap: $\frac{4}{11}$
+
+::yanilgi m1 tip=kosullu-tablo
+yanlis: $P(A \mid B)$ ile $P(B \mid A)$ aynıdır.
+neden: Paydalar farklıdır: birinde $s(B)$, diğerinde $s(A)$ kullanılır.
+dogru: Tabloda $P(\text{10. sınıf} \mid \text{erkek}) = \frac{8}{22}$, $P(\text{erkek} \mid \text{10. sınıf}) = \frac{8}{18}$.
+
+::soru c1 tip=kosullu-tablo zorluk=2
+Yukarıdaki tablodaki 38 öğrenciden rastgele seçilen öğrencinin 11. sınıf öğrencisi olduğu bilindiğine göre kız olma olasılığı kaçtır?
+A) $\frac{3}{19}$ || Bu $\frac{6}{38}$'dir; örnek uzayı 11. sınıflara daralt.
++B) $\frac{3}{10}$ || Doğru: $\frac{6}{20}$.
+C) $\frac{3}{8}$ || Bu $\frac{6}{16}$'dır, yani kız olduğu bilindiğinde 11. sınıf olma olasılığı.
+D) $\frac{1}{2}$ || Hesabı kontrol et.
+E) $\frac{7}{10}$ || Bu erkek olma olasılığıdır.
+kontrol: 6/20
+cozum: Koşul: 11. sınıf → 20 öğrenci; bunların 6'sı kız: $\frac{6}{20} = \frac{3}{10}$.
+
+@bolum s2 8 | Çarpma kuralı ve geri konmadan çekiliş
+::fikir
+$P(A \cap B) = P(A) \cdot P(B \mid A)$. Geri konmadan art arda çekilişlerde ikinci çekilişin olasılığı **ilk sonuca göre** değişir.
+
+::duzey
+L1: 4 beyaz ve 6 siyah toptan önce bir top çekip geri koymazsan torbada 9 top kalır. İlk top beyazsa geriye 3 beyaz kalır; ikinci çekilişin olasılıkları buna göre yazılır.
+L2: Belirli bir sıra isteniyorsa (önce beyaz sonra siyah) tek çarpım yeterlidir. Sıra belirtilmemişse (bir beyaz bir siyah) iki sırayı da hesapla ve topla: BS + SB.
+L3: Geri konmadan art arda çekiliş ile aynı anda çekiliş aynı olasılıkları verir: $\frac{C(4, 1) C(6, 1)}{C(10, 2)} = \frac{24}{45}$ ve $\frac{4}{10} \cdot \frac{6}{9} + \frac{6}{10} \cdot \frac{4}{9} = \frac{48}{90}$. Hangisi kolaysa onu seç.
+
+::ornek baslik="Önce beyaz, sonra siyah"
+soru: Bir torbada 4 beyaz ve 6 siyah top vardır. Geri konmadan art arda iki top çekiliyor. Birincinin beyaz, ikincinin siyah olma olasılığı kaçtır?
+1. Birinci beyaz: $\frac{4}{10}$. || İlk adım.
+2. İkinci siyah (9 top kaldı, 6'sı siyah): $\frac{6}{9}$. || Koşullu olasılık.
+3. $\frac{4}{10} \cdot \frac{6}{9} = \frac{24}{90} = \frac{4}{15}$. || Çarpma kuralı.
+cevap: $\frac{4}{15}$
+
+::tamamla baslik="İkisi aynı renk"
+soru: Aynı torbadan geri konmadan çekilen iki topun aynı renk olma olasılığı kaçtır?
+1. İkisi beyaz: $\frac{4}{10} \cdot \frac{3}{9} = \frac{12}{90}$.
+?2. İkisi siyah: $\frac{6}{10} \cdot \frac{5}{9} = \frac{30}{90}$.
+?3. Toplam $\frac{42}{90} = \frac{7}{15}$.
+cevap: $\frac{7}{15}$
+
+::soru c2 tip=carpma-kurali zorluk=2
+Bir sınıfta 12 kız ve 8 erkek öğrenci vardır. Rastgele art arda iki öğrenci (aynı kişi iki kez seçilmeden) seçiliyor. İkisinin de erkek olma olasılığı kaçtır?
++A) $\frac{14}{95}$ || Doğru: $\frac{8}{20} \cdot \frac{7}{19}$.
+B) $\frac{4}{25}$ || Bu geri konarak seçimdir; ikinci seçimde 19 kişi kalır.
+C) $\frac{7}{38}$ || Hesabı kontrol et.
+D) $\frac{28}{95}$ || Bir sıralamayı iki kez saydın.
+E) $\frac{2}{5}$ || Bu yalnız ilk seçimin olasılığıdır.
+kontrol: 8/20*7/19
+cozum: İlk erkek $\frac{8}{20}$, ikinci erkek $\frac{7}{19}$: $\frac{56}{380} = \frac{14}{95}$.
+
+@bolum s3 8 | Bağımsız ve bağımlı olaylar
+::fikir
+Birinin gerçekleşmesi diğerini etkilemiyorsa olaylar **bağımsızdır**: $P(A \cap B) = P(A) \cdot P(B)$, yani $P(A \mid B) = P(A)$. Geri konarak yapılan çekilişler ve farklı zarlar bağımsızdır.
+
+::duzey
+L1: Bir zarı iki kez atarsan ilk atış ikinciyi etkilemez; iki atışta da 6 gelme olasılığı $\frac{1}{6} \cdot \frac{1}{6} = \frac{1}{36}$. Geri konmadan çekilişlerde ise ilk sonuç ikinciyi etkiler: olaylar bağımlıdır.
+L2: Bağımsız olaylarda "en az biri" için tümleyen: $1 - P(A')P(B')$. "Yalnız biri" için iki durum: $P(A)P(B') + P(A')P(B)$. Bağımsızlık testi: $P(A \cap B) = P(A) \cdot P(B)$ eşitliği sağlanıyor mu?
+L3: Ayrık ile bağımsızı karıştırma: ayrık olaylardan biri olursa diğeri olamaz, yani birbirlerini kesin olarak etkilerler; olasılıkları pozitifse bağımsız olamazlar ($P(A \cap B) = 0 \neq P(A)P(B)$).
+
+::ornek baslik="Hedefe en az bir isabet"
+soru: A'nın bir hedefi vurma olasılığı $0{,}7$, B'nin $0{,}6$'dır ve atışlar bağımsızdır. İkisi birer atış yaptığında hedefin vurulma olasılığı kaçtır?
+1. İkisinin de ıskalaması: $0{,}3 \cdot 0{,}4 = 0{,}12$. || Bağımsız: çarp.
+2. En az biri vurur: $1 - 0{,}12 = 0{,}88$. || Tümleyen.
+cevap: $0{,}88$
+
+::yanilgi m2 tip=bagimsiz
+yanlis: Ayrık olaylar bağımsızdır.
+neden: Ayrık olaylardan biri gerçekleşince diğeri gerçekleşemez; biri diğerini etkiler.
+dogru: Olasılıkları pozitif ayrık olaylar bağımlıdır: $P(A \cap B) = 0 \neq P(A) \cdot P(B)$.
+
+::soru c3 tip=bagimsiz zorluk=2
+Bağımsız $A$ ve $B$ olayları için $P(A) = 0{,}4$ ve $P(B) = 0{,}5$'tir. $P(A \cup B)$ kaçtır?
+A) $0{,}2$ || Bu $P(A \cap B)$'dir.
+B) $0{,}45$ || Hesabı kontrol et.
+C) $0{,}5$ || Hesabı yeniden yap.
++D) $0{,}7$ || Doğru: $0{,}4 + 0{,}5 - 0{,}2$.
+E) $0{,}9$ || Kesişimi çıkarmadın.
+kontrol: 0.4+0.5-0.2
+cozum: Bağımsız: $P(A \cap B) = 0{,}4 \cdot 0{,}5 = 0{,}2$. $P(A \cup B) = 0{,}4 + 0{,}5 - 0{,}2 = 0{,}7$.
+
+@bolum s4 10 | Ağaç diyagramı ve bileşik olaylar
+::fikir
+Aşamalı deneylerde **ağaç diyagramı** çiz: dallar boyunca olasılıkları **çarp**, istenen sonuca giden dalları **topla**.
+
+::gorsel alt="Ağaç diyagramı: A torbasından yeşil (4/9) gelirse B torbasından yeşil 6/9, mavi gelirse (5/9) C torbasından yeşil 2/6." aciklama="MEBİ örneği: ikinci topun yeşil olma olasılığı $\frac{4}{9} \cdot \frac{6}{9} + \frac{5}{9} \cdot \frac{2}{6} = \frac{13}{27}$."
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="30" cy="100" r="6" fill="var(--navy)"/>
+<line x1="36" y1="96" x2="150" y2="50" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="36" y1="104" x2="150" y2="150" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="80" y="62" font-size="12" fill="var(--ink)">4/9</text>
+<text x="80" y="148" font-size="12" fill="var(--ink)">5/9</text>
+<text x="156" y="54" font-size="12" fill="var(--pen-green)">Yeşil → B torbası</text>
+<text x="156" y="154" font-size="12" fill="var(--navy)">Mavi → C torbası</text>
+<line x1="270" y1="50" x2="350" y2="30" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="270" y1="50" x2="350" y2="72" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="270" y1="150" x2="350" y2="128" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="270" y1="150" x2="350" y2="172" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="295" y="32" font-size="11" fill="var(--ink)">6/9</text>
+<text x="295" y="78" font-size="11" fill="var(--ink)">3/9</text>
+<text x="295" y="132" font-size="11" fill="var(--ink)">2/6</text>
+<text x="295" y="178" font-size="11" fill="var(--ink)">4/6</text>
+<text x="354" y="34" font-size="12" fill="var(--pen-green)">Y ✓</text>
+<text x="354" y="76" font-size="12" fill="var(--navy)">M</text>
+<text x="354" y="132" font-size="12" fill="var(--pen-green)">Y ✓</text>
+<text x="354" y="176" font-size="12" fill="var(--navy)">M</text>
+</svg>
+
+::duzey
+L1: Ağaç, deneyin her aşamasındaki seçenekleri dallar hâlinde gösterir. Bir yol boyunca ilerlemek "önce bu, sonra şu" demektir: olasılıklar çarpılır. Aynı sonuca giden farklı yollar ise "ya bu yol ya şu yol" demektir: toplanır.
+L2: Üretim–kusur gibi sorularda ilk dal kaynağı (makine), ikinci dal sonucu (kusurlu–sağlam) gösterir. Kusurlu ürün olasılığı: her makine dalının (pay × kusur oranı) çarpımlarının toplamı.
+L3: Sonuç biliniyorsa (ikinci top yeşil geldi) "ilk top hangisiydi?" sorusu koşullu olasılıktır: o sonuca giden istenen dal ÷ o sonuca giden bütün dallar. Deneysel olasılık ise deney sayısı arttıkça bu teorik değere yaklaşır.
+
+::ornek baslik="MEBİ örneği: iki aşamalı torba"
+soru: A torbasında 4 yeşil 5 mavi, B torbasında 6 yeşil 3 mavi, C torbasında 2 yeşil 4 mavi top vardır. A'dan bir top çekiliyor; yeşilse B'den, maviyse C'den bir top çekiliyor. İkinci çekilen topun yeşil olma olasılığı kaçtır?
+1. Yeşil → B'den yeşil: $\frac{4}{9} \cdot \frac{6}{9} = \frac{24}{81} = \frac{8}{27}$. || Birinci yol.
+2. Mavi → C'den yeşil: $\frac{5}{9} \cdot \frac{2}{6} = \frac{10}{54} = \frac{5}{27}$. || İkinci yol.
+3. $\frac{8}{27} + \frac{5}{27} = \frac{13}{27}$. || Yolları topla.
+cevap: $\frac{13}{27}$
+
+::tamamla baslik="Sonuçtan geriye"
+soru: Aynı deneyde ikinci top yeşil geldiğine göre birinci topun yeşil olma olasılığı kaçtır?
+1. Yeşile giden yollar toplamı $\frac{13}{27}$.
+?2. Bunlardan birinci topu yeşil olan yol $\frac{8}{27}$.
+?3. $\frac{8/27}{13/27} = \frac{8}{13}$.
+cevap: $\frac{8}{13}$
+
+::yanilgi m3 tip=agac-bilesik
+yanlis: Ağaç diyagramında bir yol boyunca dalların olasılıkları toplanır.
+neden: Bir yol art arda aşamaları gösterir ("önce … sonra"); art arda olaylar çarpılır.
+dogru: Yol boyunca çarp, farklı yolları topla.
+
+::soru c4 tip=agac-bilesik zorluk=2
+Bir fabrikada ürünlerin %60'ı A makinesinde, %40'ı B makinesinde üretiliyor. A'nın ürünlerinin %5'i, B'nin ürünlerinin %10'u kusurludur. Rastgele seçilen bir ürünün kusurlu olma olasılığı kaçtır?
+A) $0{,}03$ || Bu yalnız A dalının katkısıdır.
+B) $0{,}04$ || Bu yalnız B dalının katkısıdır.
+C) $0{,}05$ || Kusur oranlarını tartmadan alamazsın.
+D) $0{,}06$ || Hesabı kontrol et.
++E) $0{,}07$ || Doğru: $0{,}6 \cdot 0{,}05 + 0{,}4 \cdot 0{,}1$.
+kontrol: 0.6*0.05+0.4*0.1
+cozum: A dalı $0{,}6 \cdot 0{,}05 = 0{,}03$; B dalı $0{,}4 \cdot 0{,}1 = 0{,}04$. Toplam $0{,}07$.
+
+::ozet
+- $P(A \mid B) = \frac{s(A \cap B)}{s(B)}$: koşul örnek uzayı daraltır; $P(A \mid B) \neq P(B \mid A)$.
+- Çarpma kuralı: $P(A \cap B) = P(A) \cdot P(B \mid A)$; geri konmadan çekilişte olasılıklar her adımda güncellenir.
+- Bağımsız olaylarda $P(A \cap B) = P(A)P(B)$; ayrık olaylar bağımsız değildir.
+- Ağaçta yol boyunca çarp, yolları topla; sonuçtan geriye soru koşullu olasılıktır.
+
+@pratik
+- Çalışma sırası: önce tablodan koşullu olasılık okumayı, sonra geri konmadan çekilişleri, en son bağımsız olaylar ve ağaç diyagramını çalış.
+- Sınav yaklaşımı: "bilindiğine göre" ifadesinin altını çiz ve o grubu yeni örnek uzay olarak yaz; aşamalı deneylerde mutlaka ağaç çiz.
+- Kontrol alışkanlığı: ağaçtaki bütün yolların olasılıkları toplamı 1 olmalıdır; bir dal eksikse hemen fark edersin.
+- En sık tuzaklar: $P(A \mid B)$ ile $P(B \mid A)$'yı karıştırmak, geri konmadan çekilişte paydayı azaltmamak, yol boyunca toplamak, ayrık olayları bağımsız sanmak.
+- Hedef süre soru başı 80 saniye. Konu testinden sonra AYT çıkmış sorular setini çöz; tablo ve ağaç gerektiren soruları ayrıca işaretle.
+
+@kartlar
+- Koşullu olasılık :: $P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{s(A \cap B)}{s(B)}$
+- Çarpma kuralı :: $P(A \cap B) = P(A) \cdot P(B \mid A)$
+- Bağımsız olaylarda kesişim :: $P(A \cap B) = P(A) \cdot P(B)$
+- Bağımsız iki olaydan en az biri :: $1 - P(A') \cdot P(B')$
+- Ağaç diyagramında yol ve yollar :: Yol boyunca çarp, farklı yolları topla.
+- Ayrık olaylar bağımsız mıdır? :: Hayır (olasılıklar pozitifse bağımlıdır).
+- Geri konmadan iki çekilişte ikinci adım :: Toplam ve ilgili renk sayısı bir azalır.
+
+@ozet
+- Koşullu olasılıkta bilinen olay yeni örnek uzaydır ve olasılık bu daralmış uzayda hesaplanır.
+- Art arda olayların olasılığı çarpma kuralıyla bulunur; geri konmadan çekilişlerde olasılıklar her adımda değişir.
+- Bağımsız olaylar birbirini etkilemez ve kesişim olasılığı olasılıkların çarpımıdır.
+- Bileşik olaylarda ağaç diyagramı kurulur; yol boyunca çarpılır, aynı sonuca giden yollar toplanır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Tablodaki öğrencinin erkek olduğu biliniyorsa neden paydaya 38 yerine 22 yazarız?" (2) "Ağaç diyagramında neden bir yol boyunca çarpıp farklı yolları toplarız?"
+
+@havuz
+::soru h1 tip=kosullu-tablo zorluk=2
+İki zar birlikte atılıyor. Üst yüzlerdeki sayıların toplamının 8 olduğu bilindiğine göre zarlardan birinin 3 olma olasılığı kaçtır?
+A) $\frac{1}{18}$
+B) $\frac{1}{6}$
+C) $\frac{1}{5}$
+D) $\frac{1}{3}$
++E) $\frac{2}{5}$
+kontrol: 2/5
+cozum: Toplamı 8 olanlar: $(2, 6), (3, 5), (4, 4), (5, 3), (6, 2)$ → 5. Birinde 3 olanlar $(3, 5), (5, 3)$ → 2. $P = \frac{2}{5}$.
+
+::soru h2 tip=carpma-kurali zorluk=2
+Bir kutudaki 10 ampulün 3'ü bozuktur. Geri konmadan art arda 2 ampul alınıyor. İkisinin de sağlam olma olasılığı kaçtır?
++A) $\frac{7}{15}$
+B) $\frac{49}{100}$
+C) $\frac{1}{2}$
+D) $\frac{3}{5}$
+E) $\frac{7}{10}$
+kontrol: 7/10*6/9
+cozum: $\frac{7}{10} \cdot \frac{6}{9} = \frac{42}{90} = \frac{7}{15}$.
+
+::soru h3 tip=bagimsiz zorluk=2
+Ali'nin bir sınavı geçme olasılığı $\frac{2}{3}$, Veli'nin $\frac{3}{4}$'tür ve sonuçlar bağımsızdır. İkisinden yalnız birinin sınavı geçme olasılığı kaçtır?
+A) $\frac{1}{12}$
+B) $\frac{1}{4}$
++C) $\frac{5}{12}$
+D) $\frac{1}{2}$
+E) $\frac{11}{12}$
+kontrol: 2/3*1/4+1/3*3/4
+cozum: Yalnız Ali $\frac{2}{3} \cdot \frac{1}{4} = \frac{2}{12}$; yalnız Veli $\frac{1}{3} \cdot \frac{3}{4} = \frac{3}{12}$. Toplam $\frac{5}{12}$.
+
+::soru h4 tip=agac-bilesik zorluk=3
+Bir torbada 2 kırmızı ve 3 mavi top vardır. Bir top çekilip rengine bakılıyor; top, aynı renkten bir top daha eklenerek torbaya geri konuyor. Sonra ikinci bir top çekiliyor. İkinci topun kırmızı olma olasılığı kaçtır?
+A) $\frac{1}{3}$
++B) $\frac{2}{5}$
+C) $\frac{1}{2}$
+D) $\frac{3}{5}$
+E) $\frac{2}{3}$
+kontrol: 2/5*3/6+3/5*2/6
+cozum: İlk kırmızı: $\frac{2}{5} \cdot \frac{3}{6}$; ilk mavi: $\frac{3}{5} \cdot \frac{2}{6}$. Toplam $\frac{6}{30} + \frac{6}{30} = \frac{2}{5}$.

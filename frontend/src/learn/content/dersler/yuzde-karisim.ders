@@ -1,0 +1,322 @@
+@ders yuzde-karisim
+baslik: Yüzde ve Karışım Problemleri
+kisa: Yüzde–karışım
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 430
+onkosul: oran-oranti
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: Yüzdeyi "100 üzerinden oran" olarak kullanıp yüzde–kesir–ondalık arasında hızlı geçiş yapmak; ardışık yüzde değişimlerini çarpanlarla hesaplamak; karışım problemlerinde saf madde miktarını izleyerek iki karışımı birleştirmek, su eklemek ya da buharlaştırmak.
+neden: Yüzde, TYT problemlerinin ortak dilidir: 2018–2026 TYT problem sorularının yaklaşık yedide biri yüzde ya da karışım hesabı içerir; kâr–zarar, nüfus ve istatistik soruları da aynı dili kullanır. Karışım soruları "madde miktarı korunur" fikrini öğretir.
+kaynak: MEBİ TYT Konu Özeti — Yüzde Problemleri, Karışım Problemleri | OGM 9. Sınıf Konu Özetleri 34 | 3 Adım TYT Matematik — Kar-Zarar, Yüzde, Karışım, Hareket Problemleri
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 75
+anahtar: /\byuzde(\b|si|sin|lik|ler)/ | % | karışım | tuzlu su | şekerli | alkol | derişim | buharlaş | su eklen | nüfus
+baslik-kurali: yüzde problemleri | karışım problemleri | kar - zarar, yüzde, karışım | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | maliyet | alış fiyat | satış fiyat | etiket | indirim | /\bzam(\b|m|l|d)/ | /\bkm\b/ | /\bhiz(\b|la|i|in|lar|da|iy)/
+
+@tip yuzde-hesap 25 s1
+ad: Bir sayının yüzdesi ve yüzdesi verilen sayı
+ipucu: "240'ın %35'i", "%40'ı kız olan sınıfta 18 erkek", "bir sayının %30'u 42 ise".
+strateji: "$a$'nın %$x$'i" $= a \cdot \frac{x}{100}$. Sayının kendisi isteniyorsa bilinen parçanın yüzdesine böl: parça $\div \frac{x}{100}$. Hangi yüzdenin hangi parçaya ait olduğunu (kız mı, erkek mi) önce yaz.
+anahtar: /\byuzde(\b|si|sin|lik|ler)/ | % | yüzdesi kaç | sınıf mevcudu
+
+@tip yuzde-degisim 25 s2
+ad: Ardışık yüzde değişimleri ve değişim oranı
+ipucu: "Önce %20 arttı, sonra %20 azaldı", "%20 azalarak 240'a düştü", "iki yıl üst üste %10 arttı".
+strateji: Her değişimi çarpana çevir: %$x$ artış $\times (1 + \frac{x}{100})$, %$x$ azalış $\times (1 - \frac{x}{100})$. Ardışık değişimlerde çarpanları çarp; yüzdeleri toplama. Değişimden önceki değer isteniyorsa çarpana böl.
+anahtar: arttır | artar | artmış | artış | azal | nüfus | yüzde kaç
+
+@tip karisim-derisim 30 s3
+ad: İki karışımın birleşimi
+ipucu: "%15'lik 40 litre ile %40'lık 60 litre karıştırılıyor", "kaç kg %60'lık karışım eklenmeli".
+strateji: Saf madde miktarı = karışım miktarı × oran. İki karışımda madde miktarları toplanır: $A \cdot x + B \cdot y = (A + B) \cdot z$. Sonuç oranı iki oranın arasında ve miktarı büyük olana daha yakındır.
+anahtar: karışım | karıştır | tuzlu | şekerli | alkol | derişim
+
+@tip karisim-degisim 20 s4
+ad: Su ekleme, buharlaştırma, madde ekleme
+ipucu: "Kaç litre su eklenirse tuz oranı %15 olur?", "kaç kg su buharlaştırılırsa".
+strateji: Su eklenince ya da buharlaşınca **madde miktarı değişmez**, yalnız toplam değişir. Su %0, saf madde %100 oranlı karışım gibi düşünülebilir. Madde miktarını sabit tutarak yeni oran denklemini kur.
+anahtar: su eklen | su ilave | buharlaş | saf madde | saf su | saf tuz | saf alkol | ekleniyor
+
+@ustalik
+yuzde-hesap 1 1-2
+yuzde-degisim 2 1-3
+karisim-derisim 2 1-3
+karisim-degisim 1 1-3
+
+@oturum Yüzde ve yüzde değişimi | s1 s2
+@oturum Karışım problemleri | s3 s4
+
+@ontest
+::soru o1 tip=yuzde-hesap zorluk=1
+240 sayısının %35'i kaçtır?
+A) 72 || Bu %30'udur.
+B) 78 || Hesabı kontrol et: $240 \cdot \frac{35}{100}$.
+C) 80 || Bu $\frac{1}{3}$'üdür.
++D) 84 || Doğru: $240 \cdot 0{,}35 = 84$.
+E) 96 || Bu %40'ıdır.
+kontrol: 240*35/100
+cozum: $240 \cdot \frac{35}{100} = 84$. Kısa yol: %10'u 24, %5'i 12; $3 \cdot 24 + 12 = 84$.
+
+::soru o2 tip=yuzde-degisim zorluk=2
+Bir şehrin nüfusu bir yılda %20 artmış, ertesi yıl %20 azalmıştır. İki yılın sonunda nüfus başlangıca göre nasıl değişmiştir?
+A) Değişmemiştir. || Yüzdeler farklı tabanlara uygulanır; birbirini götürmez.
+B) %4 artmıştır. || Çarpanlar: $1{,}2 \cdot 0{,}8 = 0{,}96$; azalma var.
+C) %2 azalmıştır. || $0{,}96$, %4 azalma demektir.
+D) %20 azalmıştır. || İkinci azalma artmış nüfusa uygulanır.
++E) %4 azalmıştır. || Doğru: $1{,}2 \cdot 0{,}8 = 0{,}96$.
+cozum: Çarpanlar: $1{,}2 \cdot 0{,}8 = 0{,}96$. Nüfus başlangıcın %96'sı: %4 azalmıştır.
+
+::soru o3 tip=karisim-derisim zorluk=2
+Tuz oranı %15 olan 40 litre tuzlu su ile tuz oranı %40 olan 60 litre tuzlu su karıştırılıyor. Yeni karışımın tuz oranı yüzde kaçtır?
+A) 25 || Miktarları oranlarla ters eşleştirdin.
+B) $27{,}5$ || Oranların düz ortalaması; miktarlar farklı olduğu için ağırlıklı ortalama gerekir.
+C) 28 || Tuz miktarını yeniden hesapla: $6 + 24$.
++D) 30 || Doğru: tuz $6 + 24 = 30$ litre, toplam 100 litre.
+E) 32 || Fazla.
+kontrol: (0.15*40+0.4*60)/100*100
+cozum: Tuz: $40 \cdot 0{,}15 + 60 \cdot 0{,}40 = 6 + 24 = 30$ litre. Oran $\frac{30}{100} = $ %30.
+
+@bolum s1 9 | Yüzde: 100 üzerinden oran
+::fikir
+**Yüzde, paydası 100 olan orandır:** %$x$ $= \frac{x}{100}$. "$a$'nın %$x$'i" demek $a \cdot \frac{x}{100}$ demektir. Sık kullanılan yüzdeleri kesir olarak bilmek hesabı çok hızlandırır.
+
+::tablo baslik="Yüzde – kesir – ondalık"
+| Yüzde | Kesir | Ondalık |
+| %50 | $\frac{1}{2}$ | $0{,}5$ |
+| %25 | $\frac{1}{4}$ | $0{,}25$ |
+| %20 | $\frac{1}{5}$ | $0{,}2$ |
+| %12,5 | $\frac{1}{8}$ | $0{,}125$ |
+| %10 | $\frac{1}{10}$ | $0{,}1$ |
+| %75 | $\frac{3}{4}$ | $0{,}75$ |
+
+::eslestir e1 baslik="Yüzdeyi kesirle eşleştir"
+- %25 :: $\frac{1}{4}$
+- %20 :: $\frac{1}{5}$
+- %12,5 :: $\frac{1}{8}$
+- %75 :: $\frac{3}{4}$
+
+::duzey
+L1: %35, "her 100'de 35" demektir. 180'in %35'ini bulmak için 180'i 100'lük parçalara böl gibi düşün: 100'de 35 ise 180'de $1{,}8 \cdot 35 = 63$. Pratik yol: %10'u 18, %5'i 9; %35 $= 3 \cdot 18 + 9 = 63$.
+L2: Üç temel soru vardır: (1) parça = bütün $\times \frac{x}{100}$; (2) yüzde = $\frac{\text{parça}}{\text{bütün}} \cdot 100$; (3) bütün = parça $\div \frac{x}{100}$. Soruda verilen yüzdenin hangi parçaya ait olduğunu belirle: %40'ı kız ise erkekler %60'tır.
+L3: "Bir sayının %30'u 42 ise %45'i kaç?" sorusunda sayıyı bulmadan oranla gidilebilir: $\frac{45}{30} = 1{,}5$, $42 \cdot 1{,}5 = 63$. Yüzde puanı ile yüzde farkını karıştırma: %20'den %25'e çıkış 5 yüzde puanıdır ama %25'lik bir artıştır.
+
+::ornek baslik="Yüzdesi verilen bütün"
+soru: Bir sınıftaki öğrencilerin %40'ı kızdır. Sınıfta 18 erkek öğrenci olduğuna göre sınıf mevcudu kaçtır?
+1. Erkeklerin oranı $100 - 40 = $ %60. || Verilen sayı erkeklere ait.
+2. $\frac{60}{100} \cdot x = 18$. || Parça = bütün × oran.
+3. $x = 18 \cdot \frac{100}{60} = 30$. || Kontrol: 12 kız, 18 erkek ✓
+cevap: 30
+
+::yanilgi m1 tip=yuzde-hesap
+yanlis: %40'ı kız olan sınıfta 18 erkek varsa mevcut $18 : 0{,}4 = 45$'tir.
+neden: 18, kızlara değil erkeklere aittir; erkeklerin oranı %60'tır.
+dogru: $0{,}6 \cdot x = 18 \Rightarrow x = 30$.
+
+::soru c1 tip=yuzde-hesap zorluk=1
+Bir sınıftaki öğrencilerin %35'i kızdır. Sınıfta 26 erkek öğrenci olduğuna göre sınıf mevcudu kaçtır?
++A) 40 || Doğru: erkekler %65; $0{,}65x = 26$.
+B) 45 || Kontrol: 45'in %65'i 26 değil.
+C) 52 || Erkekler sınıfın yarısı değil; oranları %65.
+D) 60 || Hesabı kontrol et.
+E) 65 || Yüzdeyi öğrenci sayısı sandın.
+kontrol: 26*100/65
+cozum: Erkekler $100 - 35 = $ %65: $0{,}65 \cdot x = 26 \Rightarrow x = 40$.
+
+@bolum s2 9 | Ardışık yüzde değişimleri: çarpan yöntemi
+::fikir
+Her yüzde değişimi bir **çarpandır**: %20 artış $\times 1{,}2$, %20 azalış $\times 0{,}8$. Ardışık değişimlerde **çarpanlar çarpılır**, yüzdeler toplanmaz.
+
+::tablo baslik="Değişim → çarpan"
+| Değişim | Çarpan |
+| %10 artış | $1{,}1$ |
+| %25 artış | $1{,}25$ |
+| %20 azalış | $0{,}8$ |
+| %50 azalış | $0{,}5$ |
+| %20 artış, sonra %20 azalış | $1{,}2 \cdot 0{,}8 = 0{,}96$ (%4 azalış) |
+
+::duzey
+L1: 100 kişilik bir köy %20 büyürse 120 kişi olur. Ertesi yıl %20 küçülürse 120'nin %20'si olan 24 kişi azalır: 96 kişi. Yani "+%20, −%20" başa dönmez; %4 azalma olur.
+L2: Değişim yüzdesi $= \frac{\text{yeni} - \text{eski}}{\text{eski}} \cdot 100$ (taban her zaman **eski** değer). Değişimden sonraki değer verilip önceki soruluyorsa çarpana bölünür: %20 azalarak 240 olduysa önceki $240 : 0{,}8 = 300$.
+L3: İki yıl üst üste %10 artış $1{,}1^2 = 1{,}21$: %21 artış. Bir artışı geri almak için gereken azalış daha küçüktür: %25 artıştan sonra eski değere dönmek için $1 : 1{,}25 = 0{,}8$, yani %20 azalış gerekir.
+
+::ornek baslik="Önceki değeri bulma"
+soru: Bir okulun öğrenci sayısı %20 azalarak 240'a düşmüştür. Azalmadan önce kaç öğrenci vardı?
+1. %20 azalış çarpanı $0{,}8$: $0{,}8 \cdot x = 240$. || Önceki değer bilinmiyor.
+2. $x = 240 : 0{,}8 = 300$. || Çarpana böl.
+3. Kontrol: 300'ün %20'si 60; $300 - 60 = 240$ ✓ || 240'ın %20 fazlası (288) yanlış olurdu.
+cevap: 300
+
+::yanilgi m2 tip=yuzde-degisim
+yanlis: Önce %20 artıp sonra %20 azalan bir değer başlangıçtaki değerine döner.
+neden: Azalış artmış değere uygulanır; çarpanlar $1{,}2 \cdot 0{,}8 = 0{,}96$ verir.
+dogru: Ardışık değişimlerde çarpanları çarp: sonuç %4 azalmadır.
+
+::soru c2 tip=yuzde-degisim zorluk=2
+Bir kütüphanedeki kitap sayısı %25 azalarak 360'a düşmüştür. Azalmadan önce kütüphanede kaç kitap vardı?
+A) 400 || Kontrol: 400'ün %75'i 300'dür.
+B) 420 || Hesabı yeniden yap: $0{,}75x = 360$.
+C) 432 || Hesabı kontrol et.
+D) 450 || 360'ın %25 fazlasını aldın; taban önceki değerdir.
++E) 480 || Doğru: $0{,}75x = 360$.
+kontrol: 360/0.75
+cozum: %25 azalış çarpanı $0{,}75$: $0{,}75 \cdot x = 360 \Rightarrow x = 480$.
+
+@bolum s3 10 | Karışım: madde miktarını izle
+::fikir
+**Madde miktarı = karışım miktarı × oran.** İki karışım birleşince madde miktarları ve karışım miktarları ayrı ayrı toplanır: $A \cdot x + B \cdot y = (A + B) \cdot z$.
+
+::tablo baslik="Karışım tablosu (her satır: miktar × oran = madde)"
+| Karışım | Miktar (L) | Tuz oranı | Tuz (L) |
+| 1. karışım | 30 | %20 | 6 |
+| 2. karışım | 20 | %50 | 10 |
+| Toplam | 50 | ? | 16 → %32 |
+
+::grafik alt="20 kg %30'luk karışıma %60'lık karışım eklendikçe oran 30'dan başlayıp 60'a yaklaşan bir eğri çiziyor." aciklama="Eklenen %60'lık karışım arttıkça oran 60'a yaklaşır ama asla geçemez; 10 kg eklenince oran %40."
+x: 0 100
+y: 0 70
+f: (6+0.6*x)/(20+x)*100 | navy | karışımın oranı (%)
+yatay: 60
+nokta: 10 40 | 10 kg → %40 | red
+
+::duzey
+L1: 30 litre suyun içinde %20 tuz varsa tuz $30 \cdot 0{,}2 = 6$ litredir. 20 litrelik %50'lik sudaki tuz 10 litre. Karıştırınca tuz $6 + 10 = 16$ litre, toplam 50 litre olur: oran $\frac{16}{50} = $ %32.
+L2: Bilinmeyen miktar sorularında da aynı denklem: $20 \cdot 0{,}3 + x \cdot 0{,}6 = (20 + x) \cdot 0{,}4$. Karışımın oranı her zaman iki oranın arasındadır; miktarı fazla olan karışımın oranına daha yakındır. Bu bilgi şıkları hızla eler.
+L3: Ağırlıklı ortalama kısa yolu: oranlar 30 ve 60, hedef 40. Uzaklıklar $40 - 30 = 10$ ve $60 - 40 = 20$; miktarlar bu uzaklıklarla **ters orantılıdır**: $\frac{x}{20} = \frac{10}{20}$, $x = 10$ kg. Sınavda denklemden hızlıdır.
+
+::ornek baslik="Kaç kg eklenmeli?"
+soru: Şeker oranı %30 olan 20 kg karışıma şeker oranı %60 olan kaç kg karışım eklenirse şeker oranı %40 olur?
+1. $20 \cdot 0{,}3 + x \cdot 0{,}6 = (20 + x) \cdot 0{,}4$. || Madde miktarları toplanır.
+2. $6 + 0{,}6x = 8 + 0{,}4x \Rightarrow 0{,}2x = 2$. || Düzenle.
+3. $x = 10$ kg. || Kontrol: şeker $6 + 6 = 12$, toplam 30; $\frac{12}{30} = $ %40 ✓
+cevap: 10 kg
+
+::strateji tip=karisim-derisim baslik="Karışım tablosu"
+ipucu: İki ya da daha çok karışım birleşiyor
+1. Her karışım için bir satır aç: miktar, oran, madde (= miktar × oran).
+2. Son satırda miktarları ve maddeleri ayrı ayrı topla.
+3. Oran = toplam madde ÷ toplam miktar; bilinmeyen varsa bu eşitlik denklemdir.
+4. Sonucun iki oranın arasında olduğunu kontrol et.
+
+::soru c3 tip=karisim-derisim zorluk=2
+Şeker oranı %20 olan 30 kg karışım ile şeker oranı %50 olan kaç kg karışım karıştırılırsa şeker oranı %30 olan bir karışım elde edilir?
++A) 15 || Doğru: $6 + 0{,}5x = 9 + 0{,}3x$.
+B) 20 || Kontrol: $\frac{6 + 10}{50} = 0{,}32$; fazla.
+C) 25 || Fazla; oran %30'u geçer.
+D) 30 || Eşit miktarda karıştırırsan oran %35 olur.
+E) 45 || Fazla.
+kontrol: (0.3*30-0.2*30)/(0.5-0.3)
+cozum: $30 \cdot 0{,}2 + 0{,}5x = 0{,}3(30 + x) \Rightarrow 0{,}2x = 3 \Rightarrow x = 15$ kg. Kısa yol: uzaklıklar 10 ve 20; $\frac{x}{30} = \frac{10}{20}$.
+
+@bolum s4 8 | Su ekleme ve buharlaştırma
+::fikir
+Su eklenince ya da su buharlaşınca **madde miktarı değişmez**; yalnız toplam değişir. Su, oranı **%0** olan; saf madde, oranı **%100** olan karışım gibi düşünülür.
+
+::duzey
+L1: 60 litre %20'lik tuzlu suda 12 litre tuz vardır. Kaç litre su eklersen ekle tuz yine 12 litredir; yalnız toplam artar. Tuzun %15 olması için toplam $12 : 0{,}15 = 80$ litre olmalı: 20 litre su eklenir.
+L2: Buharlaştırmada toplam azalır, madde sabit kalır, oran artar: 40 kg %25'lik karışımda 10 kg şeker vardır; oranın %50 olması için toplam 20 kg olmalı, 20 kg su buharlaşmalıdır.
+L3: Saf madde eklenince hem madde hem toplam artar: $\frac{12 + x}{60 + x}$. Hem su hem madde ekleniyorsa her eklemeyi tabloya ayrı satır olarak yaz (su: oran 0, madde: oran 1).
+
+::ornek baslik="Su ekleme"
+soru: Tuz oranı %20 olan 60 litre tuzlu suya kaç litre su eklenirse tuz oranı %15 olur?
+1. Tuz miktarı: $60 \cdot 0{,}2 = 12$ litre (değişmez). || Sabit kalanı bul.
+2. $\frac{12}{60 + x} = 0{,}15 \Rightarrow 60 + x = 80$. || Yeni oran denklemi.
+3. $x = 20$ litre. || Kontrol: $\frac{12}{80} = $ %15 ✓
+cevap: 20 litre
+
+::tamamla baslik="Buharlaştırma"
+soru: Şeker oranı %25 olan 40 kg şekerli sudan kaç kg su buharlaştırılırsa şeker oranı %50 olur?
+1. Şeker: $40 \cdot 0{,}25 = 10$ kg (değişmez).
+?2. $\frac{10}{40 - x} = 0{,}5 \Rightarrow 40 - x = 20$.
+?3. $x = 20$ kg su buharlaştırılmalı.
+cevap: 20 kg
+
+::yanilgi m3 tip=karisim-degisim
+yanlis: Tuzlu suya su eklenince tuz oranıyla birlikte tuz miktarı da azalır.
+neden: Eklenen suyun içinde tuz yoktur; tuz miktarı aynı kalır, yalnız toplam büyür.
+dogru: Madde miktarını sabit tut: $\frac{\text{madde}}{\text{yeni toplam}}$ yeni oranı verir.
+
+::soru c4 tip=karisim-degisim zorluk=2
+Tuz oranı %30 olan 40 litre tuzlu suya kaç litre su eklenirse tuz oranı %24 olur?
+A) 5 || Kontrol: $\frac{12}{45} \neq 0{,}24$.
+B) 6 || Oranların farkını (6) litre sandın.
+C) 8 || Hesabı kontrol et: toplam 50 litre olmalı.
++D) 10 || Doğru: $\frac{12}{50} = 0{,}24$.
+E) 12 || Bu tuz miktarıdır.
+kontrol: 12/0.24-40
+cozum: Tuz $40 \cdot 0{,}3 = 12$ litre (değişmez). $\frac{12}{40 + x} = 0{,}24 \Rightarrow 40 + x = 50 \Rightarrow x = 10$.
+
+::ozet
+- %$x$ $= \frac{x}{100}$; parça = bütün × oran, bütün = parça ÷ oran.
+- Ardışık yüzde değişimlerinde çarpanları çarp ($1{,}2 \cdot 0{,}8 = 0{,}96$).
+- Karışımda madde = miktar × oran; maddeler ve miktarlar ayrı toplanır.
+- Su ekleme ve buharlaştırmada madde miktarı sabittir.
+
+@pratik
+- Çalışma sırası: önce yüzde–kesir tablosunu ezberle (%12,5 = $\frac{1}{8}$ gibi), sonra çarpan yöntemiyle ardışık değişimleri, en son karışım tablosunu çalış.
+- Sınav yaklaşımı: yüzdeli her cümleyi çarpana çevir; karışım sorusunda üç sütunlu tabloyu (miktar–oran–madde) çizmeden başlama.
+- Şık eleme: karışımın oranı iki oranın arasında ve miktarı fazla olana yakındır; dışarıda kalan şıkları hesapsız ele.
+- En sık tuzaklar: "+%20, −%20" sonrası başa dönmek, değişimden önceki değeri bulurken çarpmak, yüzdeyi yanlış parçaya (kız yerine erkeğe) uygulamak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra çıkmış sorular setini çöz; tablo yöntemini her karışım sorusunda yazılı uygula.
+
+@kartlar
+- %12,5 kaç kesirdir? :: $\frac{1}{8}$
+- %20 artış ve %25 artış çarpanları :: $1{,}2$ ve $1{,}25$
+- %20 artış sonra %20 azalış :: $1{,}2 \cdot 0{,}8 = 0{,}96$ → %4 azalış
+- %20 azalarak 240 olan sayı :: $240 : 0{,}8 = 300$
+- İki karışımın birleşimi formülü :: $A \cdot x + B \cdot y = (A + B) \cdot z$
+- Su ve saf maddenin oranı :: Su %0, saf madde %100
+- Su eklenince ne değişmez? :: Madde (tuz, şeker) miktarı.
+
+@ozet
+- Yüzde, paydası 100 olan bir orandır ve kesir ya da ondalık olarak yazılabilir.
+- Ardışık yüzde değişimleri çarpanların çarpımıyla hesaplanır; yüzdeler toplanmaz.
+- Karışımlarda madde miktarı, karışım miktarı ile oranın çarpımıdır ve birleşmede toplanır.
+- Su eklemek ya da buharlaştırmak madde miktarını değiştirmez, yalnız oranı değiştirir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Nüfus %20 artıp sonra %20 azalınca neden başa dönmez?" (2) "20 kg %30'luk karışıma %60'lık karışım eklenince oran neden hiçbir zaman %60'ı geçemez?"
+
+@havuz
+::soru h1 tip=yuzde-hesap zorluk=2
+Bir sayının %30'u 42 olduğuna göre bu sayının %45'i kaçtır?
+A) 49
+B) 54
+C) 56
+D) 60
++E) 63
+kontrol: 140*45/100
+cozum: Sayı $42 : 0{,}3 = 140$; %45'i $63$. Kısa yol: $42 \cdot \frac{45}{30} = 63$.
+
+::soru h2 tip=yuzde-degisim zorluk=2
+Bir göldeki balık sayısı bir yılda %50 artıyor, ertesi yıl %40 azalıyor. İki yılın sonunda balık sayısı başlangıca göre yüzde kaç azalmıştır?
+A) 2
+B) 4
+C) 5
+D) 8
++E) 10
+kontrol: (1-1.5*0.6)*100
+cozum: $1{,}5 \cdot 0{,}6 = 0{,}9$; başlangıcın %90'ı kalır: %10 azalma.
+
+::soru h3 tip=karisim-derisim zorluk=2
+Alkol oranı %10 olan 30 litre karışım ile alkol oranı %35 olan 20 litre karışım karıştırılıyor. Yeni karışımın alkol oranı yüzde kaçtır?
+A) 18
++B) 20
+C) $22{,}5$
+D) 24
+E) 25
+kontrol: (0.1*30+0.35*20)/50*100
+cozum: Alkol $3 + 7 = 10$ litre, toplam 50 litre: $\frac{10}{50} = $ %20.
+
+::soru h4 tip=karisim-degisim zorluk=3
+Şeker oranı %20 olan 60 kg şekerli sudan kaç kg su buharlaştırılırsa şeker oranı %30 olur?
+A) 10
+B) 12
+C) 15
++D) 20
+E) 24
+kontrol: 60-12/0.3
+cozum: Şeker $60 \cdot 0{,}2 = 12$ kg (sabit). $\frac{12}{60 - x} = 0{,}3 \Rightarrow 60 - x = 40 \Rightarrow x = 20$.

@@ -1,0 +1,315 @@
+@ders onermeler
+baslik: Önermeler ve Bileşik Önermeler
+kisa: Önermeler
+sinav: TYT AYT
+unite: mantik
+sinif: 9
+sira: 500
+kategori: excel.tyt.matematik.4c4876ddd9383c03d782 excel.ayt.matematik.4c4876ddd9383c03d782
+hedef: Önermeyi ve doğruluk değerini tanımak; değil, ve, veya, ya da bağlaçlarının doğruluk tablolarını kullanmak; De Morgan kurallarıyla bileşik önermelerin değilini almak ve sadeleştirmek; bir bileşik önermenin doğruluk değerinden bileşenlerin değerlerini çıkarmak.
+neden: Mantık soruları (2018–2026'da TYT'de 6, AYT'de 9 çıkmış soru) kuralları az ve kesin olduğu için en hızlı puan getiren konulardandır. Doğruluk tablosu bir kez oturunca soru başına 30–45 saniye yeter.
+kaynak: MEBİ TYT Konu Özeti — Önermeler, Bileşik Önermeler | OGM 9. Sınıf Ders Anlatım Sunuları 01, 03 — Bileşik Önermeler, Önermeler | Dört Dörtlük TYT Matematik — Önermeler ve Bileşik Önermeler
+tekrar: 10
+ustalik-dk: 12
+hedef-sure: 45
+anahtar: önerme | doğruluk değeri | bileşik | ∧ | ∨ | ⊻ | wedge | vee | de morgan | değili | denk
+baslik-kurali: /^9\.1\.1\.(1|2)/ | önermeler ve bileşik önermeler | mantık
+
+@tip onerme-deger 20 s1
+ad: Önerme ve doğruluk değeri
+ipucu: "Aşağıdakilerden hangisi önermedir?", "p: '13 + 5 = 16' önermesinin doğruluk değeri".
+strateji: Kesin bir hüküm (doğru ya da yanlış) bildiriyorsa önermedir; yanlış hüküm de önermedir. Soru, emir, dilek ve kişisel beğeni önerme değildir. Değil ($p'$) doğruluk değerini tersine çevirir.
+anahtar: hangisi önermedir | önerme değildir | doğruluk değeri | değili
+
+@tip baglac-tablo 30 s2
+ad: Ve, veya, ya da bağlaçları
+ipucu: "$p \equiv 1$, $q \equiv 0$ iken $(p \vee q') \wedge r$", "hangisinin doğruluk değeri 1'dir?".
+strateji: $\wedge$: ikisi de 1 ise 1. $\vee$: en az biri 1 ise 1. $\veebar$: yalnız biri 1 ise 1. Önce değilleri yaz, sonra parantezlerin içinden dışına doğru hesapla.
+anahtar: ∧ | ∨ | ⊻ | wedge | vee | veebar | ve | veya | ya da
+
+@tip de-morgan 25 s3
+ad: De Morgan ve sadeleştirme
+ipucu: "$(p \wedge q')'$ önermesinin denki", "en sade biçimi".
+strateji: Değil parantezin içine girerken $\wedge$ ile $\vee$ yer değiştirir ve her önermenin değili alınır. Sonra $p \wedge p' \equiv 0$, $p \vee p' \equiv 1$, $p \wedge 1 \equiv p$, $p \vee 0 \equiv p$ kurallarını ve dağılma özelliğini uygula.
+anahtar: denki | denktir | en sade | sadeleş | de morgan | ≡
+
+@tip deger-cikarim 25 s4
+ad: Doğruluk değerinden bileşenleri bulma
+ipucu: "$(p \vee q')' \wedge r \equiv 1$ olduğuna göre", "hangisi kesinlikle doğrudur?".
+strateji: Kesin bilgi veren bağlaçtan başla: $\wedge \equiv 1$ ise iki taraf da 1; $\vee \equiv 0$ ise iki taraf da 0; $\veebar \equiv 1$ ise taraflar farklı. Bulduğun değerleri yerine koyarak diğerlerine geç.
+anahtar: olduğuna göre | kesinlikle | doğruluk değerleri sırasıyla | ≡ 1 | ≡ 0
+
+@ustalik
+onerme-deger 1 1-2
+baglac-tablo 2 1-3
+de-morgan 2 1-3
+deger-cikarim 1 1-3
+
+@oturum Önerme ve bağlaçlar | s1 s2
+@oturum De Morgan ve çıkarım | s3 s4
+
+@ontest
+::soru o1 tip=onerme-deger zorluk=1
+Aşağıdakilerden hangisi bir önermedir?
+A) Bugün sinemaya gidelim mi? || Soru cümlesi hüküm bildirmez.
+B) Kapıyı kapat. || Emir cümlesi hüküm bildirmez.
+C) Dünyanın en güzel şehri İstanbul'dur. || Kişisel beğeni; kesin hüküm değil.
++D) 7 bir çift sayıdır. || Doğru: yanlış ama kesin bir hüküm; doğruluk değeri 0 olan bir önerme.
+E) Keşke yarın tatil olsa. || Dilek cümlesi hüküm bildirmez.
+cozum: Önerme, doğru ya da yanlış kesin hüküm bildiren ifadedir. "7 bir çift sayıdır" yanlıştır ama kesin bir hükümdür: önermedir ($\equiv 0$).
+
+::soru o2 tip=baglac-tablo zorluk=1
+$p \equiv 1$ ve $q \equiv 0$ olduğuna göre aşağıdakilerden hangisinin doğruluk değeri 1'dir?
+A) $p \wedge q$ || "Ve" için ikisinin de doğru olması gerekir.
+B) $p' \vee q$ || $0 \vee 0 \equiv 0$.
+C) $(p \vee q)'$ || $p \vee q \equiv 1$, değili 0.
+D) $p' \wedge q'$ || $0 \wedge 1 \equiv 0$.
++E) $p \veebar q$ || Doğru: yalnız biri doğru, $1 \veebar 0 \equiv 1$.
+cozum: $p \veebar q$: değerler farklı olduğu için 1. Diğerleri: $p \wedge q \equiv 0$, $p' \vee q \equiv 0$, $(p \vee q)' \equiv 0$, $p' \wedge q' \equiv 0$.
+
+::soru o3 tip=de-morgan zorluk=2
+$(p \wedge q')'$ önermesinin denki aşağıdakilerden hangisidir?
+A) $p' \wedge q$ || Değil içeri girerken $\wedge$, $\vee$ olur.
++B) $p' \vee q$ || Doğru: $(p \wedge q')' \equiv p' \vee (q')' \equiv p' \vee q$.
+C) $p \vee q'$ || Her önermenin değilini almalısın.
+D) $p' \vee q'$ || $(q')' \equiv q$; çift değil olumlu yapar.
+E) $p \wedge q$ || Değil işlemini uygulamadın.
+cozum: De Morgan: $(p \wedge q')' \equiv p' \vee (q')' \equiv p' \vee q$.
+
+@bolum s1 8 | Önerme ve doğruluk değeri
+::fikir
+**Önerme**, doğru ya da yanlış **kesin bir hüküm** bildiren ifadedir. Yanlış bir hüküm de önermedir ("7 çifttir" $\equiv 0$). Soru, emir, dilek ve kişisel beğeni önerme değildir. $p$'nin **değili** $p'$, doğruluk değerini tersine çevirir.
+
+::tablo baslik="Değil işlemi"
+| $p$ | $p'$ |
+| 1 | 0 |
+| 0 | 1 |
+
+::sinifla s1k baslik="Önerme mi, değil mi?"
+Önerme: 13 + 5 = 16; Ankara Türkiye'nin başkentidir.; Her asal sayı tektir.; 0 bir doğal sayıdır.
+Önerme değil: Bugün sinemaya gidelim mi?; Kapıyı kapat.; Çilek en lezzetli meyvedir.; Keşke tatil uzun olsa.
+
+::duzey
+L1: "Ankara Türkiye'nin başkentidir" cümlesini herkes aynı şekilde doğru diye değerlendirir: bu bir önermedir. "13 + 5 = 16" de önermedir; yanlıştır ama kesin bir hükümdür. "Çilek en lezzetli meyvedir" ise kişiden kişiye değişir; önerme değildir.
+L2: Önermeler $p, q, r$ gibi harflerle gösterilir; doğruysa $p \equiv 1$, yanlışsa $p \equiv 0$ yazılır. Doğruluk değerleri aynı olan iki önerme denktir ($p \equiv q$). Değil, hükmü tersine çevirir: "−2 bir doğal sayıdır" ($\equiv 0$) önermesinin değili "−2 bir doğal sayı değildir" ($\equiv 1$).
+L3: Değilin değili önermenin kendisidir: $(p')' \equiv p$. "Her asal sayı tektir" önermesi yanlıştır, çünkü 2 asal ve çifttir; tek bir karşı örnek "her" ile başlayan bir önermeyi yanlış yapar.
+
+::ornek baslik="Doğruluk değerleri"
+soru: $p$: "3 bir asal sayıdır." ve $q$: "$2 + 2 = 5$" önermeleri veriliyor. $p$, $q$, $p'$ ve $q'$ önermelerinin doğruluk değerlerini bul.
+1. 3 asal sayıdır: $p \equiv 1$. || Kesin ve doğru hüküm.
+2. $2 + 2 = 4$: $q \equiv 0$. || Yanlış ama önerme.
+3. Değiller tersine döner: $p' \equiv 0$, $q' \equiv 1$. || $(p')' \equiv p$.
+cevap: $p \equiv 1$, $q \equiv 0$, $p' \equiv 0$, $q' \equiv 1$
+
+::yanilgi m1 tip=onerme-deger
+yanlis: Yanlış bir ifade önerme değildir.
+neden: Önerme olmak için doğru olmak gerekmez; kesin bir hüküm bildirmek yeter.
+dogru: "7 bir çift sayıdır" yanlıştır ama önermedir; doğruluk değeri 0'dır.
+
+::soru c1 tip=onerme-deger zorluk=1
+Aşağıdaki ifadelerden kaç tanesi önermedir? I. $2 + 3 = 6$ II. Saat kaç? III. En büyük iki basamaklı sayı 99'dur. IV. Mavi en güzel renktir. V. Her kare bir dikdörtgendir. VI. Türkiye'nin başkenti İzmir'dir.
+A) 1 || Yanlış hükümler de önermedir.
+B) 2 || I ve VI yanlış ama önermedir.
+C) 3 || Yanlış hüküm bildiren ifadeleri de say.
++D) 4 || Doğru: I, III, V ve VI kesin hüküm bildirir.
+E) 5 || IV kişisel beğenidir; II soru cümlesidir.
+kontrol: 4
+cozum: I ($\equiv 0$), III ($\equiv 1$), V ($\equiv 1$), VI ($\equiv 0$) önermedir. II soru, IV kişisel beğeni olduğu için önerme değildir: 4 önerme.
+
+@bolum s2 10 | Ve, veya, ya da
+::fikir
+**$\wedge$ (ve)** yalnız iki taraf da doğruysa doğru; **$\vee$ (veya)** en az biri doğruysa doğru; **$\veebar$ (ya da)** yalnız biri doğruysa doğrudur.
+
+::tablo baslik="Bağlaçların doğruluk tablosu"
+| $p$ | $q$ | $p \wedge q$ | $p \vee q$ | $p \veebar q$ |
+| 1 | 1 | 1 | 1 | 0 |
+| 1 | 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 1 | 1 |
+| 0 | 0 | 0 | 0 | 0 |
+
+::duzey
+L1: "Çay ve simit aldım" ancak ikisini de aldıysan doğrudur. "Çay veya simit aldım" en az birini aldıysan doğrudur. "Ya çay ya da simit aldım" ise yalnız birini aldıysan doğrudur; ikisini birden aldıysan yanlıştır.
+L2: Uzun ifadelerde önce değilleri yaz, sonra en içteki parantezden başla. Kısa yol: bir $\wedge$'nin bir tarafı 0 ise sonuç 0; bir $\vee$'nin bir tarafı 1 ise sonuç 1. Diğer tarafı hesaplamana gerek kalmaz.
+L3: Özellikler: $p \wedge p \equiv p$, $p \vee p \equiv p$; değişme ve birleşme her üç bağlaçta da vardır. $p \veebar q \equiv (p \wedge q') \vee (p' \wedge q)$: "ya da", tam olarak bir tarafın doğru olmasıdır.
+
+::ornek baslik="İçten dışa hesap"
+soru: $p \equiv 0$, $q \equiv 0$, $r \equiv 1$ olduğuna göre $(p \vee q') \wedge (q \veebar r)$ önermesinin doğruluk değeri nedir?
+1. Değiller: $q' \equiv 1$. || Önce değilleri yaz.
+2. $p \vee q' \equiv 0 \vee 1 \equiv 1$; $q \veebar r \equiv 0 \veebar 1 \equiv 1$. || Parantezleri ayrı hesapla.
+3. $1 \wedge 1 \equiv 1$. || Dış bağlaç.
+cevap: 1
+
+::tamamla baslik="Kısa yolla"
+soru: $p \equiv 1$, $q \equiv 1$, $r \equiv 0$ olduğuna göre $(p \veebar q) \vee (q \wedge r')$ önermesinin doğruluk değeri nedir?
+1. $p \veebar q \equiv 1 \veebar 1 \equiv 0$.
+?2. $q \wedge r' \equiv 1 \wedge 1 \equiv 1$.
+?3. $0 \vee 1 \equiv 1$.
+cevap: 1
+
+::yanilgi m2 tip=baglac-tablo
+yanlis: "Veya" ile "ya da" aynıdır; iki taraf da doğruysa ikisi de yanlış verir.
+neden: $p \vee q$ iki taraf da doğruyken doğrudur; yalnız $p \veebar q$ bu durumda yanlıştır.
+dogru: $1 \vee 1 \equiv 1$ ama $1 \veebar 1 \equiv 0$.
+
+::soru c2 tip=baglac-tablo zorluk=2
+$p \equiv 0$, $q \equiv 1$, $r \equiv 0$ olduğuna göre aşağıdakilerden hangisinin doğruluk değeri 0'dır?
+A) $p \vee q$ || $0 \vee 1 \equiv 1$.
+B) $q \wedge r'$ || $1 \wedge 1 \equiv 1$.
+C) $p' \veebar r$ || $1 \veebar 0 \equiv 1$.
++D) $q \veebar r'$ || Doğru: $1 \veebar 1 \equiv 0$.
+E) $(p \wedge r)'$ || $p \wedge r \equiv 0$, değili 1.
+cozum: $r' \equiv 1$ olduğundan $q \veebar r' \equiv 1 \veebar 1 \equiv 0$. Diğer seçeneklerin hepsi 1'dir.
+
+@bolum s3 9 | De Morgan ve sadeleştirme
+::fikir
+Değil parantezin içine girerken **$\wedge$ ile $\vee$ yer değiştirir** ve her önermenin değili alınır: $(p \wedge q)' \equiv p' \vee q'$, $(p \vee q)' \equiv p' \wedge q'$. Sadeleştirmede $p \wedge p' \equiv 0$, $p \vee p' \equiv 1$, $p \wedge 1 \equiv p$, $p \vee 0 \equiv p$.
+
+::tablo baslik="Sadeleştirme kuralları"
+| Kural | Sonuç |
+| $p \wedge p'$ | $0$ |
+| $p \vee p'$ | $1$ |
+| $p \wedge 1$ ve $p \vee 0$ | $p$ |
+| $p \wedge 0$ | $0$ |
+| $p \vee 1$ | $1$ |
+| $p \wedge (q \vee r)$ | $(p \wedge q) \vee (p \wedge r)$ |
+| $p \vee (q \wedge r)$ | $(p \vee q) \wedge (p \vee r)$ |
+
+::eslestir e1 baslik="Değili denkiyle eşleştir"
+- $(p \wedge q)'$ :: $p' \vee q'$
+- $(p \vee q)'$ :: $p' \wedge q'$
+- $(p' \wedge q)'$ :: $p \vee q'$
+- $(p \vee q')'$ :: $p' \wedge q$
+
+::duzey
+L1: "Hem yağmur yağıyor hem de rüzgâr esiyor" cümlesinin değili "Yağmur yağmıyor veya rüzgâr esmiyor" olur: ikisinden birinin olmaması yeter. "Ve" değil alınınca "veya"ya döner.
+L2: Uzun ifadede değili en dıştan içe doğru dağıt; her adımda bağlacı değiştir ve önermelerin değilini al. Çift değil olumluya döner: $(q')' \equiv q$. Sonra $p \wedge p'$ ve $p \vee p'$ gibi çiftleri ara.
+L3: Ortak önermeyi dağılma özelliğiyle dışarı al: $(p \vee q') \wedge q \equiv (p \wedge q) \vee (q' \wedge q) \equiv (p \wedge q) \vee 0 \equiv p \wedge q$. Yutma kuralları da işe yarar: $p \wedge (p \vee q) \equiv p$, $p \vee (p \wedge q) \equiv p$.
+
+::ornek baslik="Değil ve dağılma"
+soru: $[(p \vee q) \wedge p']'$ önermesinin en sade biçimi nedir?
+1. De Morgan: $(p \vee q)' \vee (p')' \equiv (p' \wedge q') \vee p$. || Dış değili dağıt.
+2. Dağılma: $(p \vee p') \wedge (p \vee q') \equiv 1 \wedge (p \vee q')$. || $p \vee p' \equiv 1$.
+3. $1 \wedge (p \vee q') \equiv p \vee q'$. || $1 \wedge x \equiv x$.
+cevap: $p \vee q'$
+
+::yanilgi m3 tip=de-morgan
+yanlis: $(p \wedge q)' \equiv p' \wedge q'$
+neden: Değil içeri girerken bağlaç da değişir; $p \equiv 1$, $q \equiv 0$ için $(p \wedge q)' \equiv 1$ ama $p' \wedge q' \equiv 0$.
+dogru: $(p \wedge q)' \equiv p' \vee q'$.
+
+::soru c3 tip=de-morgan zorluk=2
+$(p' \wedge q)' \wedge q$ önermesinin en sade biçimi aşağıdakilerden hangisidir?
++A) $p \wedge q$ || Doğru: $(p \vee q') \wedge q \equiv (p \wedge q) \vee 0$.
+B) $p \vee q$ || Dağılmadan sonra $q' \wedge q \equiv 0$ olur; $\vee$ değil.
+C) $p' \wedge q$ || De Morgan'da $p'$'nin değili $p$'dir.
+D) $q$ || $p \wedge q$ ifadesindeki $p$'yi atamazsın.
+E) $0$ || $p \wedge q$ her zaman 0 değildir.
+cozum: $(p' \wedge q)' \equiv p \vee q'$. $(p \vee q') \wedge q \equiv (p \wedge q) \vee (q' \wedge q) \equiv (p \wedge q) \vee 0 \equiv p \wedge q$.
+
+@bolum s4 8 | Doğruluk değerinden bileşenlere
+::fikir
+Kesin bilgi veren bağlaçla başla: **$\wedge \equiv 1$** ise iki taraf da 1; **$\vee \equiv 0$** ise iki taraf da 0. $\veebar \equiv 1$ ise taraflar farklı, $\veebar \equiv 0$ ise aynıdır.
+
+::tablo baslik="Hangi bilgi kesin sonuç verir?"
+| Verilen | Kesin sonuç |
+| $p \wedge q \equiv 1$ | $p \equiv 1$ ve $q \equiv 1$ |
+| $p \vee q \equiv 0$ | $p \equiv 0$ ve $q \equiv 0$ |
+| $p \veebar q \equiv 1$ | $p$ ile $q$ farklı |
+| $p \veebar q \equiv 0$ | $p$ ile $q$ aynı |
+| $p \wedge q \equiv 0$ | Yalnız "en az biri 0" (kesin değil) |
+| $p \vee q \equiv 1$ | Yalnız "en az biri 1" (kesin değil) |
+
+::duzey
+L1: "Hem matematik hem fizik sınavını geçtim" doğruysa iki sınavı da geçmişsindir. "Matematik veya fizik sınavını geçtim" yanlışsa ikisinden de kalmışsındır. Diğer durumlar tek başına kesin bilgi vermez.
+L2: Önce kesin bilgi veren dış bağlaca bak, sonra parantezlerin içine in. Değilli ifadelerde önce değili çöz: $(p \vee q')' \equiv 1$ ise $p \vee q' \equiv 0$, yani $p \equiv 0$ ve $q \equiv 1$.
+L3: Bazı sorularda yalnız bir kısmı belirlenir; "hangisi kesinlikle doğrudur" sorusunda belirlenemeyen değerlere dayanan seçenekleri ele. Belirlenemeyen önermeye iki değeri de verip seçeneği iki durumda da kontrol et.
+
+::ornek baslik="Dıştan içe çıkarım"
+soru: $(p \vee q')' \wedge r \equiv 1$ olduğuna göre $p$, $q$ ve $r$ önermelerinin doğruluk değerleri nedir?
+1. $\wedge \equiv 1$: $(p \vee q')' \equiv 1$ ve $r \equiv 1$. || Kesin bilgi.
+2. $(p \vee q')' \equiv 1 \Rightarrow p \vee q' \equiv 0$. || Değili çöz.
+3. $\vee \equiv 0$: $p \equiv 0$ ve $q' \equiv 0$, yani $q \equiv 1$. || Yine kesin bilgi.
+cevap: $p \equiv 0$, $q \equiv 1$, $r \equiv 1$
+
+::tamamla baslik="Ya da ile çıkarım"
+soru: $(p \veebar q) \vee r \equiv 0$ ve $q \equiv 1$ olduğuna göre $p$ ve $r$'nin doğruluk değerleri nedir?
+1. $\vee \equiv 0$: $p \veebar q \equiv 0$ ve $r \equiv 0$.
+?2. $p \veebar q \equiv 0$ ise $p$ ile $q$ aynı: $p \equiv 1$.
+cevap: $p \equiv 1$, $r \equiv 0$
+
+::soru c4 tip=deger-cikarim zorluk=2
+$(p' \vee q)' \wedge (r \vee s) \equiv 1$ ve $s \equiv 0$ olduğuna göre $p$, $q$ ve $r$ önermelerinin doğruluk değerleri sırasıyla aşağıdakilerden hangisidir?
++A) 1, 0, 1 || Doğru: $p' \vee q \equiv 0$ ve $r \vee s \equiv 1$.
+B) 0, 1, 1 || $p' \equiv 0$ olmalı, yani $p \equiv 1$.
+C) 1, 1, 0 || $q \equiv 0$ ve $r \equiv 1$ olmalı.
+D) 0, 0, 1 || $p' \vee q \equiv 0$ için $p' \equiv 0$ gerekir.
+E) 1, 0, 0 || $s \equiv 0$ iken $r \vee s \equiv 1$ için $r \equiv 1$ olmalı.
+cozum: $\wedge \equiv 1$: $(p' \vee q)' \equiv 1$ ve $r \vee s \equiv 1$. İlkinden $p' \vee q \equiv 0$: $p \equiv 1$, $q \equiv 0$. İkincisinden $s \equiv 0$ olduğu için $r \equiv 1$.
+
+::ozet
+- Önerme kesin hüküm bildirir; yanlış hüküm de önermedir.
+- $\wedge$ ikisi de 1, $\vee$ en az biri 1, $\veebar$ yalnız biri 1 iken doğrudur.
+- De Morgan: değil içeri girerken $\wedge \leftrightarrow \vee$ ve her önermenin değili.
+- $\wedge \equiv 1$ ve $\vee \equiv 0$ kesin bilgi verir; çıkarıma oradan başla.
+
+@pratik
+- Çalışma sırası: önce doğruluk tablosunu ezbere yazabilir hâle gel (üç bağlaç, dört satır), sonra De Morgan ve sadeleştirme kurallarını, en son çıkarım sorularını çalış.
+- Sınav yaklaşımı: "doğruluk değeri" sorusunda harflerin değerlerini ifadenin üstüne yaz, değilleri hemen çevir; kısa yolları (bir tarafı 0 olan $\wedge$, bir tarafı 1 olan $\vee$) kullan.
+- Sadeleştirme sorularında kuralları kullanamıyorsan şıkları $p$ ve $q$'ya 1–0 değerleri vererek dene; iki satırlık tablo çoğu yanlış şıkkı eler.
+- En sık tuzaklar: yanlış hükmü önerme saymamak, $\vee$ ile $\veebar$'yi karıştırmak, De Morgan'da bağlacı değiştirmeyi unutmak.
+- Hedef süre soru başı 45 saniye. Konu testinden sonra koşullu önerme dersine geç; çıkmış sorular iki dersi birlikte sınar.
+
+@kartlar
+- Önerme nedir? :: Doğru ya da yanlış kesin hüküm bildiren ifade (yanlış hüküm de önermedir).
+- $p \wedge q$ ne zaman doğrudur? :: Yalnız ikisi de doğruyken.
+- $p \vee q$ ne zaman yanlıştır? :: Yalnız ikisi de yanlışken.
+- $p \veebar q$ ne zaman doğrudur? :: Yalnız biri doğruyken.
+- $(p \wedge q)'$ :: $p' \vee q'$
+- $(p \vee q)'$ :: $p' \wedge q'$
+- $p \wedge p'$ ve $p \vee p'$ :: $0$ ve $1$
+
+@ozet
+- Önerme, doğruluk değeri 1 ya da 0 olan kesin bir hükümdür; değil işlemi bu değeri tersine çevirir.
+- Ve, veya, ya da bağlaçlarının doğruluk değerleri tablodan okunur ve parantezlerin içinden dışına doğru hesaplanır.
+- De Morgan kuralları değilin bağlaçları nasıl değiştirdiğini gösterir; sadeleştirme kurallarıyla birlikte denk önermeler bulunur.
+- Bir bileşik önermenin doğruluk değeri bilindiğinde kesin bilgi veren bağlaçtan başlanarak bileşenlerin değerleri bulunur.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "'7 bir çift sayıdır' yanlış olduğu hâlde neden bir önermedir?" (2) "$(p \wedge q)'$ önermesinin denki neden $p' \vee q'$'dür; bir örnek cümleyle göster."
+
+@havuz
+::soru h1 tip=onerme-deger zorluk=1
+$p$: "$-2$ bir doğal sayıdır." önermesinin değili ve bu değilin doğruluk değeri aşağıdakilerden hangisidir?
+A) $-2$ bir tam sayı değildir; 1
+B) $2$ bir doğal sayıdır; 1
+C) $-2$ bir doğal sayıdır; 0
+D) $-2$ bir doğal sayı değildir; 0
++E) $-2$ bir doğal sayı değildir; 1
+cozum: $p \equiv 0$ olduğundan değili "$-2$ bir doğal sayı değildir" doğrudur: $p' \equiv 1$.
+
+::soru h2 tip=baglac-tablo zorluk=2
+$p \equiv 1$, $q \equiv 0$, $r \equiv 0$ olduğuna göre aşağıdakilerden hangisinin doğruluk değeri 1'dir?
+A) $p \wedge r$
+B) $q \vee r$
+C) $(p \veebar q) \wedge r$
++D) $(q \veebar r)'$
+E) $p \wedge (q \vee r)$
+cozum: $q \veebar r \equiv 0 \veebar 0 \equiv 0$; değili 1. Diğerlerinin hepsinde bir $\wedge$'nin bir tarafı 0'dır ya da $q \vee r \equiv 0$'dır.
+
+::soru h3 tip=de-morgan zorluk=2
+$[p' \vee (q \wedge p)]'$ önermesinin denki aşağıdakilerden hangisidir?
++A) $p \wedge q'$
+B) $p' \wedge q$
+C) $p \vee q'$
+D) $p'$
+E) $1$
+cozum: $[p' \vee (q \wedge p)]' \equiv p \wedge (q \wedge p)' \equiv p \wedge (q' \vee p') \equiv (p \wedge q') \vee (p \wedge p') \equiv p \wedge q'$.
+
+::soru h4 tip=deger-cikarim zorluk=2
+$(p \wedge q) \vee r' \equiv 0$ olduğuna göre aşağıdakilerden hangisi kesinlikle doğrudur?
+A) $p \equiv 0$
+B) $q \equiv 1$
++C) $r \equiv 1$
+D) $r \equiv 0$
+E) $p \vee q \equiv 1$
+cozum: $\vee \equiv 0$: $p \wedge q \equiv 0$ ve $r' \equiv 0$. Buradan yalnız $r \equiv 1$ kesindir; $p \wedge q \equiv 0$ ise $p$ ve $q$'yu tek tek belirlemez.

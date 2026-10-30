@@ -1,0 +1,309 @@
+@ders esitsizlikler
+baslik: Aralıklar ve Birinci Dereceden Eşitsizlikler
+kisa: Eşitsizlikler
+sinav: TYT AYT
+unite: denklem
+sinif: 9
+sira: 210
+onkosul: birinci-derece-denklemler
+kategori: excel.tyt.matematik.ceb9fbdfaa16dc1f89eb excel.ayt.matematik.ceb9fbdfaa16dc1f89eb excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Aralıkları sayı doğrusunda göstermek ve aralık işlemleri yapmak; negatif sayıyla çarpınca yön değiştirmeyi unutmadan eşitsizlik çözmek; değişkenlerin aralığından bir ifadenin aralığını bulmak; iki bilinmeyenli eşitsizliklerin tam sayı çözümlerini saymak.
+neden: Eşitsizlikler TYT'de hem tek başına hem de "en büyük–en küçük değer" problemlerinin içinde sorulur; AYT'de ikinci dereceden eşitsizliklerin, mutlak değerin ve fonksiyonların tanım kümesi sorularının temelidir.
+kaynak: MEBİ TYT Konu Özeti — Gerçek Sayılar Kümesinde Aralık Kavramı, Basit Eşitsizlikler, Birinci Dereceden İki Bilinmeyenli Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 13, 15–16, 20
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: eşitsizli | aralık | /<\s*x\s*</ | ≤ | ≥ | en büyük tam sayı | en küçük tam sayı | sağlayan tam sayı | tam sayı değeri | alabileceği tam sayı
+baslik-kurali: aralık kavramı | basit eşitsizlik | eşitsizlik | /^9\.3\.3\.(1|2|4)/ | birinci dereceden denklem ve eşitsizlikler
+haric: mutlak | ikinci dereceden | parabol | işaret tablosu
+
+@tip aralik 20 s1
+ad: Aralık gösterimi ve aralık işlemleri
+ipucu: $[a, b)$, $(-\infty, 4]$ gibi gösterimler; aralıkların kesişimi, birleşimi, farkı; "kaç tam sayı vardır".
+strateji: Aralıkları aynı sayı doğrusunda üst üste çiz. Kesişim ortak kısım, birleşim kapsanan her yer, fark birinciden ikincinin çıkarılmasıdır. Tam sayı sayarken uçların açık mı kapalı mı olduğuna bak.
+anahtar: aralık | aralığında | kesişim | birleşim | [ | ∞
+
+@tip esitsizlik-cozme 30 s2
+ad: Birinci dereceden eşitsizlik çözme
+ipucu: "$-3x + 5 \leq 2x - 10$", "$-4 < 2x - 6 \leq 8$", "sağlayan en küçük tam sayı".
+strateji: Denklem gibi çöz; ama her iki tarafı **negatif** bir sayıyla çarparken ya da bölerken eşitsizliğin yönünü çevir. Çift taraflı eşitsizlikte üç parçaya da aynı işlemi uygula. Son olarak istenen tam sayıları uçlara dikkat ederek say.
+anahtar: eşitsizliğini sağlayan | eşitsizliğinin çözüm | en küçük tam sayı | en büyük tam sayı | çözüm aralığı
+
+@tip aralik-ifade 30 s3
+ad: Değişkenlerin aralığından ifadenin aralığı
+ipucu: "$-2 < a < 3$ ve $1 < b < 4$ ise $2a - b$ hangi aralıktadır?", "$x^2$'nin alabileceği değerler".
+strateji: Her değişkenin ifadeyi artırıp azalttığına bak. Toplamda alt + alt ve üst + üst; çıkarmada $a - b$'nin alt sınırı $a_{\min} - b_{\max}$. Çarpımda dört uç çarpımı karşılaştır. Kare alırken aralık 0'ı içeriyorsa alt sınır 0'dır.
+anahtar: olduğuna göre | ifadesinin alabileceği | hangi aralık | en büyük değeri | en küçük değeri | tam sayı değeri
+
+@tip iki-bilinmeyen 20 s4
+ad: İki bilinmeyenli eşitsizlikler ve tam sayı çözümleri
+ipucu: "$x, y$ pozitif tam sayılar ve $2x + 3y < 14$ ise kaç sıralı ikili vardır?"
+strateji: Değeri az olan değişkeni sırayla sabitle ($y = 1, 2, \ldots$), diğerinin alabileceği değerleri say ve topla. Grafik yorumunda $y > mx + n$ doğrunun üstü, $y < mx + n$ altıdır; eşitlik varsa doğru düz, yoksa kesikli çizilir.
+anahtar: sıralı ikili | pozitif tam sayılar | (x, y) | kaç farklı | ikilisi
+
+@ustalik
+aralik 1 1-2
+esitsizlik-cozme 2 1-3
+aralik-ifade 2 1-3
+iki-bilinmeyen 1 1-3
+
+@oturum Aralıklar ve eşitsizlik çözme | s1 s2
+@oturum İfadenin aralığı ve iki bilinmeyen | s3 s4
+
+@ontest
+::soru o1 tip=esitsizlik-cozme zorluk=1
+$2x - 3 < 7$ eşitsizliğini sağlayan en büyük tam sayı kaçtır?
+A) 2 || 4 de sağlar ve daha büyüktür.
+B) 3 || 4 de sağlar.
++C) 4 || Doğru: $x < 5$; en büyük tam sayı 4.
+D) 5 || Eşitsizlik "küçük", 5 dahil değil.
+E) 6 || $2 \cdot 6 - 3 = 9 > 7$.
+kontrol: 5-1
+cozum: $2x < 10$, yani $x < 5$. 5 dahil olmadığından en büyük tam sayı 4.
+
+::soru o2 tip=aralik zorluk=1
+$[-1, 3)$ aralığında kaç tane tam sayı vardır?
+A) 3 || $-1$ kapalı uçtur, sayılır.
++B) 4 || Doğru: $-1, 0, 1, 2$.
+C) 5 || 3 açık uçtur, dahil değil.
+D) 6 || Fazla saydın.
+E) 7 || Fazla saydın.
+kontrol: 2-(-1)+1
+cozum: Köşeli parantez $-1$'i dahil eder, normal parantez 3'ü dahil etmez: $-1, 0, 1, 2$: 4 tam sayı.
+
+::soru o3 tip=aralik-ifade zorluk=2
+$1 < a < 3$ olduğuna göre $5 - 2a$ ifadesi hangi aralıktadır?
++A) $(-1, 3)$ || Doğru: $-6 < -2a < -2$, sonra 5 ekle.
+B) $(3, 7)$ || $-2$ ile çarparken yön değişir; uçları da sırala.
+C) $(-1, 7)$ || Uçları karıştırdın.
+D) $(-6, -2)$ || Bu $-2a$'nın aralığı; 5 eklemeyi unuttun.
+E) $(2, 6)$ || $2a$'nın aralığı.
+cozum: $-2$ ile çarp (yön değişir): $-6 < -2a < -2$. 5 ekle: $-1 < 5 - 2a < 3$.
+
+@bolum s1 8 | Aralıklar
+::fikir
+**Köşeli parantez** ucu dahil eder, **normal parantez** etmez. $\infty$ bir sayı değildir; her zaman açık uçla yazılır: $[2, \infty)$.
+
+::sayidogrusu alt="Sayı doğrusunda -2'de dolu, 3'te boş daire ile [-2, 3) aralığı." aciklama="$[-2, 3)$: $-2$ dahil (dolu daire), 3 dahil değil (boş daire)."
+x: -4 5
+aralik: -2 3 | kapali ac | [−2, 3)
+
+::duzey
+L1: $[-2, 3)$ demek, $-2$'den başlayıp 3'e kadar (3 hariç) bütün sayılar demektir: $-2 \leq x < 3$. Sayı doğrusunda dahil olan uç dolu daire, dahil olmayan uç boş daire ile gösterilir.
+L2: Kapalı aralık $[a, b]$, açık aralık $(a, b)$, yarı açık $[a, b)$ ve $(a, b]$. Sınırsız aralıklar: $(a, \infty)$, $(-\infty, a]$. İşlemler: $A \cap B$ ortak kısım, $A \cup B$ birleşim, $A \setminus B$ yalnız $A$'da olanlar. Hepsini aynı sayı doğrusunda göstermek hatayı önler.
+L3: Aralıkta tam sayı sayımı: $[a, b]$'de ($a, b$ tam sayı) $b - a + 1$ tam sayı vardır; açık uç her biri için bir eksiltir. Tam sayı olmayan uçlarda en yakın içerideki tam sayıya yuvarla: $(-2{,}5;\ 3{,}2)$ aralığında $-2, \ldots, 3$: 6 tam sayı.
+
+::eslestir e1 baslik="Gösterimleri eşleştir"
+- $[-2, 3)$ :: $-2 \leq x < 3$
+- $(-2, 3]$ :: $-2 < x \leq 3$
+- $(-\infty, 4]$ :: $x \leq 4$
+- $(1, \infty)$ :: $x > 1$
+
+::ornek baslik="Kesişim ve fark"
+soru: $A = [-3, 5)$ ve $B = (1, 8]$ için $A \cap B$ ve $A \setminus B$ nedir?
+1. İkisini aynı doğruda çiz: $A$ $-3$'ten 5'e, $B$ 1'den 8'e. || Görsel karar en güvenlisidir.
+2. Ortak kısım 1 ile 5 arası; 1 $B$'de açık, 5 $A$'da açık: $A \cap B = (1, 5)$. || Bir uç kimde açıksa kesişimde de açıktır.
+3. $A$'dan $B$'yi çıkar: $-3$ ile 1 arası; 1 $B$'ye ait olmadığı için $A$'da kalır: $A \setminus B = [-3, 1]$. || Farkta uçların durumu tersine döner.
+cevap: $A \cap B = (1, 5)$, $A \setminus B = [-3, 1]$
+
+::yanilgi m1 tip=aralik
+yanlis: $x \geq 2$ için aralık $[2, \infty]$ diye yazılır.
+neden: $\infty$ bir sayı değildir; ulaşılamaz, dahil edilemez.
+dogru: $[2, \infty)$; sonsuz tarafı her zaman normal parantezle kapanır.
+
+::soru c1 tip=aralik zorluk=1
+$A = (-2, 6]$ ve $B = [3, 9)$ olduğuna göre $A \cap B$ kümesinde kaç tam sayı vardır?
+A) 3 || 3 ve 6 kapalı uçtur; ikisi de kesişimde.
++B) 4 || Doğru: $A \cap B = [3, 6]$: $3, 4, 5, 6$.
+C) 5 || Hesabı kontrol et: 3'ten 6'ya kadar say.
+D) 6 || Kesişim 3'ten başlar; $A$'nın tamamını saydın.
+E) 10 || Bu, birleşimdeki $(-2, 9)$ tam sayı sayısıdır.
+kontrol: 6-3+1
+cozum: $A \cap B = [3, 6]$ (3 $B$'de, 6 $A$'da kapalı); tam sayılar $3, 4, 5, 6$: 4 tane.
+
+@bolum s2 10 | Eşitsizlik çözme: yön ne zaman değişir?
+::fikir
+Eşitsizlik denklem gibi çözülür; tek fark: **negatif bir sayıyla çarpar ya da bölersen yön değişir.**
+
+::duzey
+L1: $3 < 5$ doğrudur. İki tarafı $-1$ ile çarparsan $-3$ ve $-5$ elde edersin; ama $-3 > -5$'tir. Negatif sayıyla çarpmak sayı doğrusunu aynada çevirir; büyük olan küçük olur. Bu yüzden işaret yön değiştirir.
+L2: Aynı sayıyı eklemek/çıkarmak ve pozitif sayıyla çarpmak yönü değiştirmez. Negatifle çarpma/bölme yönü değiştirir. Yönü aynı eşitsizlikler taraf tarafa toplanabilir; çıkarma ve bölme ise toplanamaz. Çift taraflı eşitsizlikte ($-4 < 2x - 6 \leq 8$) üç parçaya aynı işlemi uygula.
+L3: Pozitif sayılarda çarpmaya göre ters alma yönü değiştirir: $2 < x < 5 \Rightarrow \frac{1}{5} < \frac{1}{x} < \frac{1}{2}$. Aralık 0'ı içeriyorsa ters alma iki parçaya ayrılır. Değişkeni payda olan eşitsizlikleri ($\frac{3}{x} > 1$) her iki tarafı $x$ ile çarparak çözme; $x$'in işareti bilinmez. Bu tür sorular AYT'de işaret tablosuyla çözülür.
+
+::ornek baslik="Yön değişimi"
+soru: $-3x + 5 \leq 2x - 10$ eşitsizliğini çöz.
+1. Bilinmeyenleri sola, sabitleri sağa topla: $-3x - 2x \leq -10 - 5$, yani $-5x \leq -15$. || Denklemdeki gibi.
+2. $-5$'e böl: yön değişir: $x \geq 3$. || Negatife bölme.
+cevap: $x \geq 3$, yani $[3, \infty)$
+
+::tamamla baslik="Çift taraflı eşitsizlik"
+soru: $-4 < 2x - 6 \leq 8$ eşitsizliğini sağlayan kaç tam sayı vardır?
+1. Üç parçaya 6 ekle: $2 < 2x \leq 14$.
+?2. Üç parçayı 2'ye böl (pozitif, yön değişmez): $1 < x \leq 7$.
+?3. Tam sayılar $2, 3, 4, 5, 6, 7$: 6 tane.
+cevap: 6
+
+::yanilgi m2 tip=esitsizlik-cozme
+yanlis: $-2x > 6 \Rightarrow x > -3$
+neden: $-2$'ye bölerken yön değişmeliydi; $x = 0$ dene: $0 > 6$ yanlış, ama $0 > -3$ doğru çıkıyor.
+dogru: $x < -3$.
+
+::soru c2 tip=esitsizlik-cozme zorluk=2
+$\frac{x}{2} - \frac{x + 1}{3} > 1$ eşitsizliğini sağlayan en küçük tam sayı kaçtır?
+A) 7 || $x > 8$; 7 sağlamaz.
+B) 8 || Eşitsizlik "büyük"; 8 dahil değil.
++C) 9 || Doğru: $3x - 2x - 2 > 6$, $x > 8$.
+D) 10 || 9 da sağlar.
+E) 11 || 9 da sağlar.
+kontrol: 8+1
+cozum: 6 ile çarp: $3x - 2(x + 1) > 6$, yani $x - 2 > 6$ ve $x > 8$. En küçük tam sayı 9.
+
+@bolum s3 10 | Değişkenlerin aralığından ifadenin aralığı
+::fikir
+İfadeyi değil **her değişkenin etkisini** düşün: toplamda alt + alt, üst + üst; **çıkarmada** alt sınır $a_{\min} - b_{\max}$, üst sınır $a_{\max} - b_{\min}$. Çarpımda dört uç çarpımına bak.
+
+::duzey
+L1: $a$ 1 ile 3 arasında, $b$ 2 ile 5 arasında olsun. $a - b$'yi en küçük yapmak için $a$'yı küçük ($1$), $b$'yi büyük ($5$) seçersin: $-4$. En büyük için $a = 3$, $b = 2$: $1$. Yani $-4 < a - b < 1$.
+L2: Önce her parçanın aralığını ayrı yaz ($2a$, $-b$ gibi), sonra topla. $-b$'yi yazarken uçlar yer değiştirir: $1 < b < 4 \Rightarrow -4 < -b < -1$. Kesin eşitsizlik varsa sonuç da kesindir; uçlara ulaşılmaz.
+L3: Çarpım ve karede dikkat: $-2 \leq a \leq 3$ ve $-1 \leq b \leq 2$ için $a b$'nin uç adayları $(-2)(-1) = 2$, $(-2)(2) = -4$, $3(-1) = -3$, $3 \cdot 2 = 6$: aralık $[-4, 6]$. $-3 \leq x \leq 2$ için $x^2$: aralık 0'ı içerdiğinden alt sınır 0, üst sınır $\max(9, 4) = 9$.
+
+::ornek baslik="Doğrusal ifade"
+soru: $-2 < a < 3$ ve $1 < b < 4$ olduğuna göre $2a - b$ hangi aralıktadır?
+1. $-4 < 2a < 6$. || 2 ile çarp.
+2. $-4 < -b < -1$. || $-1$ ile çarp, uçlar yer değiştirir.
+3. Topla: $-8 < 2a - b < 5$. || Aynı yönlü eşitsizlikler toplanır.
+cevap: $(-8, 5)$
+
+::tamamla baslik="Karenin aralığı"
+soru: $-3 \leq x \leq 2$ olduğuna göre $x^2$'nin alabileceği değerler hangi aralıktadır?
+1. Aralık 0'ı içeriyor; $x = 0$ için $x^2 = 0$ en küçük değerdir.
+?2. En büyük değer, 0'dan en uzak uçtan gelir: $(-3)^2 = 9 > 2^2 = 4$.
+?3. $0 \leq x^2 \leq 9$.
+cevap: $[0, 9]$
+
+::yanilgi m3 tip=aralik-ifade
+yanlis: $1 < a < 3$ ve $2 < b < 5$ ise $-1 < a - b < -2$
+neden: Uçları ayrı ayrı çıkarmak ($1 - 2$ ve $3 - 5$) yanlış; çıkarmada büyük $b$ küçük sonuç verir.
+dogru: $a - b$'nin alt sınırı $1 - 5 = -4$, üst sınırı $3 - 2 = 1$: $-4 < a - b < 1$.
+
+::soru c3 tip=aralik-ifade zorluk=2
+$-1 < x < 4$ ve $2 < y < 5$ olduğuna göre $x - y$'nin alabileceği kaç farklı tam sayı değeri vardır?
+A) 5 || Aralık $(-6, 2)$; uçlar hariç.
+B) 6 || Bir değeri unuttun.
++C) 7 || Doğru: $-5, -4, \ldots, 1$.
+D) 8 || Uçlardan birini dahil ettin.
+E) 9 || İki ucu da dahil ettin.
+kontrol: 1-(-5)+1
+cozum: $x - y$ için alt sınır $-1 - 5 = -6$, üst sınır $4 - 2 = 2$: $-6 < x - y < 2$. Tam sayılar $-5, -4, -3, -2, -1, 0, 1$: 7 tane.
+
+@bolum s4 8 | İki bilinmeyenli eşitsizlikler
+::fikir
+İki bilinmeyenli eşitsizlikte bir değişkeni **sırayla sabitle**, diğerinin alabileceği değerleri say. Grafikte $y > mx + n$ doğrunun **üstü**, $y < mx + n$ **altı**dır.
+
+::grafik alt="2x + 3y = 14 doğrusu ve altında kalan bölge; pozitif tam sayı noktaları işaretli." aciklama="$2x + 3y < 14$: doğrunun altı (kesikli doğru, sınır dahil değil). Pozitif tam sayılı noktalar sayılır."
+x: -1 8
+y: -1 6
+f: (14 - 2x)/3 | navy | $2x + 3y = 14$ | -1 8 | kesik
+nokta: 1 1 | | green
+nokta: 2 1 | | green
+nokta: 3 1 | | green
+nokta: 4 1 | | green
+nokta: 5 1 | | green
+nokta: 1 2 | | green
+nokta: 2 2 | | green
+nokta: 3 2 | | green
+nokta: 1 3 | | green
+nokta: 2 3 | | green
+
+::duzey
+L1: $2x + 3y < 14$ ve $x, y$ pozitif tam sayılar olsun. $y = 1$ için $2x < 11$, yani $x = 1, \ldots, 5$ (5 ikili). $y = 2$ için $2x < 8$: $x = 1, 2, 3$ (3 ikili). $y = 3$ için $2x < 5$: $x = 1, 2$ (2 ikili). $y = 4$ için $2x < 2$: hiç yok. Toplam 10.
+L2: Hangi değişkeni sabitleyeceğini katsayısı büyük olandan seç; daha az durum çıkar. "Pozitif" (0 hariç) ile "negatif olmayan" (0 dahil) farkına dikkat et. Grafikte eşitsizlikte eşitlik yoksa sınır doğrusu kesikli çizilir.
+L3: Eşitsizlik sistemlerinde çözüm, bölgelerin kesişimidir. En büyük–en küçük değer sorularında ($x + y$ en çok kaç?) çoğu zaman köşe noktalarına ya da sınıra en yakın tam sayılı noktalara bakmak yeterlidir.
+
+::ornek baslik="Sıralı ikili sayma"
+soru: $x$ ve $y$ pozitif tam sayılar ve $2x + 3y < 14$ olduğuna göre kaç tane $(x, y)$ ikilisi vardır?
+1. $y = 1$: $2x < 11$, $x \in \{1, \ldots, 5\}$: 5 ikili. || Katsayısı büyük olanı sabitle.
+2. $y = 2$: $2x < 8$, $x \in \{1, 2, 3\}$: 3 ikili. $y = 3$: $2x < 5$: 2 ikili. || Her adımda yeniden çöz.
+3. $y = 4$: $2x < 2$, pozitif $x$ yok. Toplam $5 + 3 + 2 = 10$. || Grafikteki yeşil noktalar.
+cevap: 10
+
+::soru c4 tip=iki-bilinmeyen zorluk=2
+$x$ ve $y$ tam sayılar, $-2 < x < 3$ ve $x < y < 4$ olduğuna göre $x + y$'nin en büyük değeri kaçtır?
+A) 3 || $x = 2$, $y = 3$ seçilebilir.
+B) 4 || Daha büyüğü var.
++C) 5 || Doğru: $x = 2$, $y = 3$.
+D) 6 || $y < 4$; $y = 4$ olamaz.
+E) 7 || Uçlar dahil değil.
+kontrol: 2+3
+cozum: $x$ en çok 2; $y$, $x$'ten büyük ve 4'ten küçük: en çok 3. $x + y = 5$.
+
+::ozet
+- Köşeli parantez dahil, normal parantez hariç; $\infty$ her zaman açık.
+- Negatif sayıyla çarpma/bölmede yön değişir; çift taraflı eşitsizlikte üç parçaya aynı işlem.
+- İfadenin aralığı: çıkarmada $a_{\min} - b_{\max}$; çarpımda dört uç; karede 0'ı kontrol et.
+- İki bilinmeyende bir değişkeni sabitle, diğerini say.
+
+@pratik
+- Çalışma sırası: aralık gösterimlerini sayı doğrusuyla eşleştirerek başla; sonra eşitsizlik çözme, en son aralıktan ifade aralığı sorularına geç.
+- Sınav yaklaşımı: eşitsizliği çözdükten sonra uçtan bir sayı ve aralığın içinden bir sayı yerine koyarak 5 saniyede doğrula.
+- "Kaç tam sayı" sorularında uçların açık/kapalı durumunu soruyu okurken yuvarlak içine al; en çok puan uçlarda kaybedilir.
+- En sık tuzaklar: negatifle bölerken yönü çevirmemek, $a - b$'nin alt sınırını $a_{\min} - b_{\min}$ almak, $x^2$'de 0'ı unutmak.
+- Hedef süre soru başı 60 saniye. Konu testinde zorlandığın tip için "Bu tipten alıştırma" ile 5 soru çöz.
+
+@kartlar
+- $[a, b)$ ne demektir? :: $a \leq x < b$; $a$ dahil, $b$ hariç.
+- Negatif sayıyla çarpınca eşitsizlik? :: Yön değiştirir.
+- $1 < b < 4$ ise $-b$? :: $-4 < -b < -1$
+- $a - b$'nin alt sınırı :: $a_{\min} - b_{\max}$
+- $-3 \leq x \leq 2$ ise $x^2$? :: $0 \leq x^2 \leq 9$
+- $[a, b]$ ($a, b$ tam sayı) aralığındaki tam sayı sayısı :: $b - a + 1$
+- $y > mx + n$ grafikte nerededir? :: Doğrunun üst bölgesi (doğru kesikli).
+
+@ozet
+- Aralıklarda uçların dahil olup olmadığı parantez türüyle gösterilir; işlemleri aynı sayı doğrusunda yap.
+- Eşitsizlik çözerken negatif sayıyla çarpma ya da bölmede yön değişir; diğer işlemler denklemdeki gibidir.
+- Bir ifadenin aralığı her değişkenin etkisine göre uç değerlerden kurulur; çarpım ve karede ek kontrol gerekir.
+- İki bilinmeyenli tam sayı çözümleri bir değişken sabitlenerek sayılır.
+
+@aciklama
+Kendi cümlelerinle açıkla: (1) "Eşitsizliği $-2$ ile çarpınca neden yön değişir?" (Sayı doğrusundan bir örnek ver.) (2) "$1 < a < 3$ ve $2 < b < 5$ iken $a - b$'nin aralığını nasıl buldun?"
+
+@havuz
+::soru h1 tip=aralik zorluk=2
+$A = (-\infty, 4]$ ve $B = (-1, 6)$ olduğuna göre $A \setminus B$ kümesi hangisidir?
++A) $(-\infty, -1]$
+B) $(-\infty, -1)$
+C) $[4, 6)$
+D) $(-1, 4]$
+E) $(4, 6)$
+cozum: $A$'dan $B$ çıkarılınca $-1$'den küçük ve eşit sayılar kalır; $-1$, $B$'ye ait olmadığından $A \setminus B$'de kalır: $(-\infty, -1]$.
+
+::soru h2 tip=esitsizlik-cozme zorluk=2
+$-5 \leq 3 - 2x < 7$ eşitsizliğini sağlayan tam sayıların toplamı kaçtır?
+A) 7
++B) 9
+C) 10
+D) 12
+E) 15
+kontrol: -1+0+1+2+3+4
+cozum: 3 çıkar: $-8 \leq -2x < 4$. $-2$'ye böl (yön değişir): $-2 < x \leq 4$. Tam sayılar $-1, 0, 1, 2, 3, 4$; toplam 9.
+
+::soru h3 tip=aralik-ifade zorluk=3
+$-2 \leq a \leq 3$ ve $-1 \leq b \leq 2$ olduğuna göre $a \cdot b$'nin alabileceği en küçük değer kaçtır?
+A) $-6$
++B) $-4$
+C) $-3$
+D) $-2$
+E) $0$
+kontrol: -2*2
+cozum: Uç çarpımları: $(-2)(-1) = 2$, $(-2)(2) = -4$, $3(-1) = -3$, $3 \cdot 2 = 6$. En küçüğü $-4$.
+
+::soru h4 tip=iki-bilinmeyen zorluk=2
+$x$ ve $y$ pozitif tam sayılar ve $x + 2y \leq 8$ olduğuna göre kaç tane $(x, y)$ ikilisi vardır?
+A) 10
+B) 11
++C) 12
+D) 14
+E) 16
+kontrol: 6+4+2
+cozum: $y = 1$: $x \leq 6$ (6 ikili); $y = 2$: $x \leq 4$ (4); $y = 3$: $x \leq 2$ (2); $y = 4$: $x \leq 0$ (yok). Toplam 12.

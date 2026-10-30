@@ -1,0 +1,324 @@
+@ders fonksiyon-kavrami
+baslik: Fonksiyon Kavramı ve Fonksiyon Çeşitleri
+kisa: Fonksiyon kavramı
+sinav: TYT AYT
+unite: fonksiyonlar
+sinif: 10
+sira: 900
+onkosul: kumeler-temel
+kategori: excel.tyt.matematik.cfb36ba99fce84b745aa excel.ayt.matematik.cfb36ba99fce84b745aa
+hedef: Bir bağıntının fonksiyon olup olmadığına karar vermek; tanım, değer ve görüntü kümesini ayırt etmek; $f(ax + b)$ biçiminde verilen kurallarla değer ve kural bulmak; bire bir, örten, birim, sabit, tek ve çift fonksiyonları tanımak; parçalı fonksiyonlarda değer bulmak ve fonksiyonlarda dört işlem yapmak.
+neden: "Fonksiyonlar" başlığında 2018–2026'da 11 çıkmış TYT sorusu var; AYT'de ise fonksiyon dili limit, türev, integral ve trigonometrinin tamamında kullanılır. Bu ders AYT matematiğinin yarısının temelidir.
+kaynak: MEBİ TYT Konu Özeti — Fonksiyon Kavramı ve Gösterimi, Fonksiyon Soruları Çözülürken, İçine–Örten–Bire Bir–Eşit Fonksiyonlar, Birim ve Sabit Fonksiyon, Doğrusal ve Parçalı Fonksiyon, Tek ve Çift Fonksiyon, Fonksiyonlarda Dört İşlem | OGM 10. Sınıf Konu Özetleri 09–12 | OGM 10. Sınıf Ders Anlatım Sunuları 07–09
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: fonksiyon | f(x) | f( | tanım kümesi | görüntü kümesi | değer kümesi | bire bir | örten | sabit fonksiyon | birim fonksiyon | tek fonksiyon | çift fonksiyon | parçalı
+baslik-kurali: /^10\.2\.1\.1\b/ | /^10\.2\.2\.1\b/ | fonksiyon kavramı | doğrusal ve parçalı | fonksiyonlarda dört işlem | fonksiyonlar
+
+@tip tanim-goruntu 25 s1
+ad: Fonksiyon olma, tanım ve görüntü kümesi
+ipucu: "Aşağıdaki bağıntılardan hangisi fonksiyondur?", "görüntü kümesinin eleman sayısı", "A'dan B'ye kaç fonksiyon".
+strateji: Tanım kümesindeki her eleman bir ve yalnız bir görüntüye gitmeli; değer kümesinde açıkta eleman kalabilir. Görüntü kümesi için tanım elemanlarının görüntülerini hesapla ve tekrarları bir kez yaz. $s(A) = m$, $s(B) = n$ ise $A$'dan $B$'ye $n^m$ fonksiyon vardır.
+anahtar: tanım kümesi | görüntü kümesi | değer kümesi | fonksiyondur | fonksiyon değildir | kaç fonksiyon
+
+@tip deger-bulma 30 s2
+ad: $f(ax + b)$ ile değer ve kural bulma
+ipucu: "$f(2x - 1) = 3x + 4$ ise $f(5)$", "$f(3x - 2) = 6x + 5$ ise $f(x)$".
+strateji: Değer için parantezin içini istenen sayıya eşitle, bulduğun $x$'i sağ tarafa yaz. Kural için $ax + b = t$ de, $x$'i $t$ cinsinden yaz ve yerine koy. Fonksiyonel denklemlerde uygun $x$ değerleri vererek denklem sistemi kur.
+anahtar: f(2x | f(3x | f(x + | f(x - | olduğuna göre f( | kuralı
+
+@tip fonksiyon-cesit 25 s3
+ad: Bire bir, örten, birim, sabit, tek ve çift
+ipucu: "Sabit fonksiyon olduğuna göre", "tek fonksiyon olduğuna göre", "bire bir ve örten".
+strateji: Sabit fonksiyonda değişkenli terimlerin katsayıları 0'dır. Tek fonksiyonda yalnız tek dereceli terimler (sabit terim 0), çift fonksiyonda yalnız çift dereceli terimler bulunur. $\frac{ax + b}{cx + d}$ sabitse $\frac{a}{c} = \frac{b}{d}$.
+anahtar: bire bir | örten | içine | birim fonksiyon | sabit fonksiyon | tek fonksiyon | çift fonksiyon | f(-x)
+
+@tip parcali-islem 20 s4
+ad: Parçalı fonksiyon ve dört işlem
+ipucu: "$f(x) = \begin{cases} \ldots \end{cases}$ ise $f(f(3))$", "$(f \cdot g)(x)$ fonksiyonunun tanım kümesi".
+strateji: Parçalı fonksiyonda önce değerin hangi aralığa düştüğüne bak, o aralığın kuralını kullan; iç içe değerlerde içten dışa git. Dört işlemde tanım kümesi ortak kısımdır; bölümde paydayı sıfır yapan değerler çıkarılır.
+anahtar: parçalı | cases | (f + g) | (f · g) | (f/g) | f + g | f · g | dört işlem
+
+@ustalik
+tanim-goruntu 1 1-2
+deger-bulma 2 1-3
+fonksiyon-cesit 2 1-3
+parcali-islem 1 1-3
+
+@oturum Fonksiyon ve değer bulma | s1 s2
+@oturum Fonksiyon çeşitleri ve işlemler | s3 s4
+
+@ontest
+::soru o1 tip=tanim-goruntu zorluk=1
+$A = \{1, 2, 3\}$ ve $B = \{a, b\}$ olmak üzere $B$'den $A$'ya kaç farklı fonksiyon tanımlanabilir?
+A) 5 || Sayıları toplamadın mı? Her eleman için seçenekler çarpılır.
+B) 6 || $3 \cdot 2$ değil; $B$'nin her elemanı 3 seçenekten birini alır.
+C) 8 || Bu $A$'dan $B$'ye fonksiyon sayısıdır, $2^3$.
++D) 9 || Doğru: $B$'nin 2 elemanının her biri 3 seçenekten birine: $3^2 = 9$.
+E) 12 || Hesabı kontrol et.
+kontrol: 3^2
+cozum: Tanım kümesi $B$ (2 eleman), değer kümesi $A$ (3 eleman): her eleman 3 görüntüden birini seçer, $3^2 = 9$.
+
+::soru o2 tip=deger-bulma zorluk=1
+$f(2x - 1) = 3x + 4$ olduğuna göre $f(5)$ kaçtır?
++A) 13 || Doğru: $2x - 1 = 5 \Rightarrow x = 3$; $3 \cdot 3 + 4 = 13$.
+B) 15 || Hesabı kontrol et.
+C) 17 || $x = 3$ yerine başka bir değer kullandın.
+D) 19 || 5'i $x$ yerine yazdın; 5, $2x - 1$'in değeridir.
+E) 29 || Hesabı yeniden yap.
+kontrol: 3*3+4
+cozum: Parantezin içini 5'e eşitle: $2x - 1 = 5 \Rightarrow x = 3$. $f(5) = 3 \cdot 3 + 4 = 13$.
+
+::soru o3 tip=fonksiyon-cesit zorluk=2
+$f(x) = (a - 2)x^2 + (b + 1)x + 5$ fonksiyonu sabit fonksiyon olduğuna göre $a - b$ kaçtır?
+A) $-3$ || İşaretleri kontrol et: $b = -1$.
+B) $-1$ || $a = 2$, $b = -1$; $a - b$'yi yeniden hesapla.
+C) 1 || Bu $a + b$'dir.
+D) 2 || Bu yalnız $a$'dır.
++E) 3 || Doğru: $a = 2$, $b = -1$; $a - b = 3$.
+kontrol: 2-(-1)
+cozum: Sabit fonksiyonda $x$'li terimler yok olur: $a - 2 = 0$, $b + 1 = 0$. $a = 2$, $b = -1$; $a - b = 3$.
+
+@bolum s1 9 | Fonksiyon nedir?
+::fikir
+$A$'dan $B$'ye bir bağıntının fonksiyon olması için $A$'daki **her eleman** $B$'de **bir ve yalnız bir** elemanla eşlenmelidir. $A$ tanım kümesi, $B$ değer kümesi, $f(A)$ görüntü kümesidir ve $f(A) \subseteq B$.
+
+::gorsel alt="A kümesindeki a, b, c elemanları oklarla B kümesindeki 3 ve 5 elemanlarına gidiyor; B'deki -1 boşta kalıyor." aciklama="$f = \{(a, 3), (b, 5), (c, 3)\}$: fonksiyon (her elemanın tek görüntüsü var); görüntü kümesi $\{3, 5\} \subseteq B$."
+<svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="80" cy="90" rx="50" ry="70" fill="var(--tint)" stroke="var(--navy)"/>
+<ellipse cx="260" cy="90" rx="50" ry="70" fill="var(--tint)" stroke="var(--pen-red)"/>
+<text x="75" y="16" font-size="14" fill="var(--navy)">A</text>
+<text x="255" y="16" font-size="14" fill="var(--pen-red)">B</text>
+<text x="70" y="55" font-size="14" fill="var(--ink)">a</text>
+<text x="70" y="95" font-size="14" fill="var(--ink)">b</text>
+<text x="70" y="135" font-size="14" fill="var(--ink)">c</text>
+<text x="252" y="55" font-size="14" fill="var(--ink)">3</text>
+<text x="252" y="95" font-size="14" fill="var(--ink)">5</text>
+<text x="246" y="135" font-size="14" fill="var(--ink)">−1</text>
+<line x1="84" y1="51" x2="244" y2="51" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="84" y1="91" x2="244" y2="91" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="84" y1="131" x2="244" y2="55" stroke="var(--ink)" stroke-width="1.5"/>
+<polygon points="244,47 252,51 244,55" fill="var(--ink)"/>
+<polygon points="244,87 252,91 244,95" fill="var(--ink)"/>
+<text x="150" y="172" font-size="12" fill="var(--ink)">f: A → B</text>
+</svg>
+
+::tablo baslik="Fonksiyon mu?"
+| Durum | Fonksiyon mu? |
+| Tanım kümesinde bir eleman iki görüntüye gidiyor | Hayır |
+| Tanım kümesinde açıkta eleman var | Hayır |
+| Değer kümesinde açıkta eleman var | Evet (içine fonksiyon) |
+| İki farklı eleman aynı görüntüye gidiyor | Evet (bire bir değil) |
+
+::duzey
+L1: Bir otomat düşün: her düğmeye bastığında tek bir ürün çıkıyor. İki düğme aynı ürünü verebilir, bazı ürünler hiç seçilmeyebilir; ama bir düğme iki farklı ürün veremez ve çalışmayan düğme olamaz. Fonksiyon tam olarak budur.
+L2: $f: A \to B$, $y = f(x)$ yazımında $x$ bağımsız, $y$ bağımlı değişkendir. Görüntü kümesi, tanım elemanlarının görüntülerinden oluşur ve değer kümesinin alt kümesidir. $s(A) = m$, $s(B) = n$ ise $A$'dan $B$'ye $n^m$ fonksiyon tanımlanır (her eleman $n$ görüntüden birini seçer).
+L3: Bire bir fonksiyon sayısı $P(n, m) = \frac{n!}{(n-m)!}$ ($m \leq n$): her eleman farklı bir görüntü seçer. Tanım kümesi bir aralıksa görüntü kümesini bulmak için uç noktaların (ve varsa kritik noktaların) görüntülerine bak.
+
+::ornek baslik="Görüntü kümesi"
+soru: $A = \{1, 2, 3, 4\}$ ve $f: A \to \mathbb{Z}$, $f(x) = 2x - 1$ için görüntü kümesini bul.
+1. $f(1) = 1$, $f(2) = 3$, $f(3) = 5$, $f(4) = 7$. || Her elemanın görüntüsü.
+2. $f(A) = \{1, 3, 5, 7\}$. || Görüntü kümesi $\mathbb{Z}$'nin alt kümesi.
+cevap: $\{1, 3, 5, 7\}$
+
+::yanilgi m1 tip=tanim-goruntu
+yanlis: Değer kümesindeki her eleman eşlenmezse bağıntı fonksiyon olmaz.
+neden: Fonksiyon koşulu tanım kümesi içindir; değer kümesinde açıkta eleman kalabilir.
+dogru: Tanım kümesinde açıkta eleman kalmamalı ve hiçbir eleman iki görüntüye gitmemelidir.
+
+::soru c1 tip=tanim-goruntu zorluk=1
+$f: \{-2, -1, 0, 1, 2\} \to \mathbb{R}$, $f(x) = x^2 + 1$ fonksiyonunun görüntü kümesinin eleman sayısı kaçtır?
+A) 2 || Hesabı kontrol et: $f(0) = 1$ de var.
++B) 3 || Doğru: görüntüler $5, 2, 1, 2, 5$ → $\{1, 2, 5\}$.
+C) 4 || Tekrar eden görüntüler bir kez yazılır.
+D) 5 || Bu tanım kümesinin eleman sayısıdır.
+E) 6 || Fazla.
+kontrol: 3
+cozum: $f(\pm 2) = 5$, $f(\pm 1) = 2$, $f(0) = 1$. Görüntü kümesi $\{1, 2, 5\}$: 3 eleman.
+
+@bolum s2 10 | $f(ax + b)$ ile değer ve kural
+::fikir
+$f(ax + b)$ biçimindeki kurallarda **parantezin içini istenen değere eşitle**, bulduğun $x$'i kuralın diğer tarafına yaz. Kuralı bulmak için $ax + b = t$ dönüşümü yap.
+
+::duzey
+L1: $f(x) = 2x + 3$ ise $f(4)$ için $x$ yerine 4 yazılır: $11$. Parantezin içinde ne varsa kuraldaki $x$'in yerine o gelir: $f(a + 1) = 2a + 5$.
+L2: $f(2x - 1) = 3x + 4$ verildiğinde $f(5)$ istenirse 5, $x$'in değil $2x - 1$'in değeridir: $2x - 1 = 5$, $x = 3$, $f(5) = 13$. Kural istenirse $t = 3x - 2$ dönüşümüyle $x = \frac{t + 2}{3}$ yazılır ve yerine konur.
+L3: Fonksiyonel denklemlerde ($f(x) + 2f(-x) = 6x + 3$) $x$ ve $-x$ için iki denklem yaz; $f(1)$ ve $f(-1)$ bilinmeyenli bir sistem elde edersin. MEBİ'nin uyarısı: sağ taraf parantezdeki ifade cinsinden yazılabiliyorsa ($9x^2 - 12x + 13 = (3x - 2)^2 + 9$) kural doğrudan okunur.
+
+::ornek baslik="Kuralı bulma"
+soru: $f(3x - 2) = 6x + 5$ olduğuna göre $f(x)$ fonksiyonunun kuralını bul.
+1. $t = 3x - 2 \Rightarrow x = \frac{t + 2}{3}$. || Parantezin içini yeni değişkene eşitle.
+2. $f(t) = 6 \cdot \frac{t + 2}{3} + 5 = 2t + 4 + 5 = 2t + 9$. || Yerine koy.
+3. $f(x) = 2x + 9$. || Kontrol: $f(3x - 2) = 6x - 4 + 9 = 6x + 5$ ✓
+cevap: $f(x) = 2x + 9$
+
+::tamamla baslik="Tam kareye benzet"
+soru: $f(x + 1) = x^2 + 2x + 3$ olduğuna göre $f(x)$ fonksiyonunun kuralını bul.
+1. Sağ tarafı $(x + 1)$ cinsinden yaz: $x^2 + 2x + 3 = (x + 1)^2 + 2$.
+?2. $f(x + 1) = (x + 1)^2 + 2$ olduğundan $f(x) = x^2 + 2$.
+cevap: $f(x) = x^2 + 2$
+
+::yanilgi m2 tip=deger-bulma
+yanlis: $f(2x - 1) = 3x + 4$ ise $f(5) = 3 \cdot 5 + 4 = 19$'dur.
+neden: 5, $x$'in değil, parantezin içindeki $2x - 1$ ifadesinin değeridir.
+dogru: $2x - 1 = 5 \Rightarrow x = 3$; $f(5) = 3 \cdot 3 + 4 = 13$.
+
+::soru c2 tip=deger-bulma zorluk=2
+$f(3x + 1) = x^2 - 2x + 4$ olduğuna göre $f(7)$ kaçtır?
++A) 4 || Doğru: $3x + 1 = 7 \Rightarrow x = 2$; $4 - 4 + 4 = 4$.
+B) 8 || Hesabı kontrol et.
+C) 12 || $x = 2$ için $x^2 - 2x + 4$'ü yeniden hesapla.
+D) 20 || Hesabı yeniden yap.
+E) 39 || 7'yi $x$ yerine yazdın; 7, $3x + 1$'in değeridir.
+kontrol: 2^2-2*2+4
+cozum: $3x + 1 = 7 \Rightarrow x = 2$. $f(7) = 2^2 - 2 \cdot 2 + 4 = 4$.
+
+@bolum s3 9 | Fonksiyon çeşitleri
+::fikir
+**Bire bir:** farklı elemanların görüntüleri farklı. **Örten:** görüntü kümesi değer kümesine eşit. **Birim:** $f(x) = x$. **Sabit:** $f(x) = c$. **Çift:** $f(-x) = f(x)$ (y eksenine simetrik), **tek:** $f(-x) = -f(x)$ (orijine simetrik).
+
+::tablo baslik="Fonksiyon çeşitleri"
+| Çeşit | Koşul | Örnek |
+| Bire bir | $x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)$ | $f(x) = 2x + 1$ |
+| Örten | $f(A) = B$ | $f: \mathbb{R} \to \mathbb{R}$, $f(x) = x^3$ |
+| Birim | $f(x) = x$ | $I(x) = x$ |
+| Sabit | $f(x) = c$ | $f(x) = 4$ |
+| Çift | $f(-x) = f(x)$ | $x^2$, $\lvert x \rvert$, $\cos x$ |
+| Tek | $f(-x) = -f(x)$ | $x^3$, $x$, $\sin x$ |
+
+::sinifla s3k baslik="Tek mi, çift mi?"
+Çift fonksiyon: x² ; x⁴ − 3x² ; |x| ; 7
+Tek fonksiyon: x³ ; 5x ; x³ − 2x ; x⁵ + x
+Ne tek ne çift: x² + x ; x + 1 ; x³ + 2
+
+::duzey
+L1: $f(x) = x^2$ fonksiyonunda $f(3) = f(-3) = 9$: grafik y eksenine göre aynadır (çift). $f(x) = x^3$'te $f(-2) = -8 = -f(2)$: grafik orijine göre simetriktir (tek).
+L2: Polinomlarda kısa yol: yalnız çift dereceli terimler (sabit terim dahil) varsa çift, yalnız tek dereceli terimler varsa tek fonksiyondur. Tek fonksiyonda sabit terim 0 olmalıdır, çünkü $f(0) = -f(0)$'dan $f(0) = 0$ çıkar. Sabit fonksiyonda değişkenli bütün terimlerin katsayısı 0'dır.
+L3: $f(x) = \frac{ax + b}{cx + d}$ sabit fonksiyonsa $\frac{a}{c} = \frac{b}{d}$'dir (pay paydanın katıdır). Bire bir ve örten fonksiyonların tersi vardır; bunu bileşke–ters dersinde kullanacaksın. Tek ile çiftin çarpımı tek, iki tekin çarpımı çifttir.
+
+::ornek baslik="Tek fonksiyon koşulu"
+soru: $f(x) = (m - 3)x^3 + (n + 2)x^2 + 4x$ tek fonksiyon olduğuna göre $n$ kaçtır?
+1. Tek fonksiyonda çift dereceli terim bulunmaz. || $x^2$'li terim yok olmalı.
+2. $n + 2 = 0 \Rightarrow n = -2$. || $x^3$ ve $x$ tek dereceli; $m$ serbest.
+cevap: $n = -2$
+
+::yanilgi m3 tip=fonksiyon-cesit
+yanlis: $f(x) = x^3 + 2$ tek fonksiyondur, çünkü en büyük kuvvet tektir.
+neden: Sabit terim 2 çift derecelidir ($2x^0$); $f(-1) = 1$ ama $-f(1) = -3$.
+dogru: Tek fonksiyonda bütün terimler tek dereceli olmalı, sabit terim 0'dır.
+
+::soru c3 tip=fonksiyon-cesit zorluk=2
+$f(x) = (a + 1)x^3 + (b - 2)x^2 + 3x + c$ fonksiyonu tek fonksiyon olduğuna göre $b + c$ kaçtır?
+A) 0 || $b - 2 = 0$'dan $b = 2$.
+B) 1 || Hesabı kontrol et.
++C) 2 || Doğru: $b = 2$, $c = 0$.
+D) 3 || Sabit terim de 0 olmalı.
+E) 4 || Hesabı yeniden yap.
+kontrol: 2+0
+cozum: Tek fonksiyonda çift dereceli terimler yoktur: $b - 2 = 0$ ve sabit terim $c = 0$. $b + c = 2$.
+
+@bolum s4 8 | Parçalı fonksiyon ve dört işlem
+::fikir
+Parçalı fonksiyonda önce **değerin hangi aralığa düştüğüne** bak, sonra o aralığın kuralını kullan. Dört işlemde tanım kümesi **ortak kısımdır**; bölümde paydayı sıfır yapan değerler çıkarılır.
+
+::grafik alt="x küçüktür 1 iken y = x + 2 doğrusu (1'de içi boş nokta), x büyük eşittir 1 iken y = x kare eğrisi (1'de dolu nokta)." aciklama="$f(x) = x + 2$ ($x < 1$), $f(x) = x^2$ ($x \geq 1$): $x = 1$'de grafik sıçrar; $f(1) = 1$ (dolu nokta)."
+x: -3 3
+y: -1 6
+f: x+2 | navy | $x + 2$ ($x < 1$) | -3 1
+f: x^2 | red | $x^2$ ($x \geq 1$) | 1 2.4
+nokta: 1 3 | | navy | bos
+nokta: 1 1 | (1, 1) | red
+
+::duzey
+L1: Parçalı fonksiyon, aralığa göre değişen bir tarifedir: $x$ 1'den küçükse bir kural, 1 ya da daha büyükse başka bir kural. $f(0)$ için ilk kural ($0 + 2 = 2$), $f(2)$ için ikinci kural ($2^2 = 4$) kullanılır.
+L2: Sınır noktası hangi parçaya dahilse ($\leq$ ya da $<$) o kural kullanılır. İç içe değerlerde ($f(f(3))$) önce içteki değeri bul, sonra o sonucun hangi aralığa düştüğüne yeniden bak.
+L3: $(f + g)(x) = f(x) + g(x)$; tanım kümesi iki tanım kümesinin kesişimidir. $\left(\frac{f}{g}\right)(x)$'te ayrıca $g(x) = 0$ yapan değerler çıkarılır. Karekök içeren fonksiyonlarda kök içi negatif olamaz.
+
+::ornek baslik="Parçalı fonksiyonda değer"
+soru: $f(x) = \begin{cases} 2x + 1, & x < 2 \\ x^2 - 1, & x \geq 2 \end{cases}$ olduğuna göre $f(1) + f(3) + f(f(0))$ kaçtır?
+1. $f(1) = 3$ ($1 < 2$), $f(3) = 8$ ($3 \geq 2$). || Aralığı seç.
+2. $f(0) = 1$, $f(f(0)) = f(1) = 3$. || İçten dışa.
+3. $3 + 8 + 3 = 14$. || Topla.
+cevap: 14
+
+::soru c4 tip=parcali-islem zorluk=2
+$f(x) = \begin{cases} x + 3, & x \leq 1 \\ 2x - 1, & x > 1 \end{cases}$ olduğuna göre $f(f(3))$ kaçtır?
+A) 5 || Bu $f(3)$'tür; dıştaki fonksiyonu da uygula.
+B) 6 || Hesabı kontrol et.
+C) 7 || $f(5)$ için ikinci kuralı kullan: $5 > 1$.
+D) 8 || Birinci kuralı kullandın; $5 > 1$.
++E) 9 || Doğru: $f(3) = 5$, $f(5) = 9$.
+kontrol: 2*5-1
+cozum: $3 > 1$: $f(3) = 2 \cdot 3 - 1 = 5$. $5 > 1$: $f(5) = 2 \cdot 5 - 1 = 9$.
+
+::ozet
+- Fonksiyon: tanım kümesinin her elemanı tek görüntü; değer kümesinde açık eleman olabilir; $n^m$ fonksiyon.
+- $f(ax + b)$'de parantezi istenen değere eşitle; kural için $ax + b = t$.
+- Sabit: değişkenli katsayılar 0; tek: yalnız tek dereceler; çift: yalnız çift dereceler.
+- Parçalı fonksiyonda aralığı seç; dört işlemde tanım kümesi kesişim (bölümde payda $\neq 0$).
+
+@pratik
+- Çalışma sırası: önce fonksiyon olma ve görüntü kümesi, sonra $f(ax + b)$ ile değer–kural bulma (konunun en sık sorusu), en son fonksiyon çeşitleri ve parçalı fonksiyonları çalış.
+- Sınav yaklaşımı: $f(\ldots)$ içinde ifade gördüğünde ilk iş "parantezin içi kaça eşit olmalı?" sorusunu sormak; kuralı bulmadan da değer hesaplanabilir.
+- Tek–çift sorularında $f(-x)$ yazmak yerine dereceleri kontrol et; sabit terimi unutma.
+- En sık tuzaklar: $f(5)$ için $x = 5$ yazmak, değer kümesindeki açık elemanı "fonksiyon değil" saymak, parçalı fonksiyonda sınır noktasının hangi kurala ait olduğuna bakmamak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra fonksiyon grafikleri dersine geç; çıkmış sorular çoğunlukla grafikle birlikte gelir.
+
+@kartlar
+- Fonksiyon olma koşulu :: Tanım kümesindeki her eleman bir ve yalnız bir görüntüye gider.
+- $s(A) = m$, $s(B) = n$ ise $A$'dan $B$'ye fonksiyon sayısı :: $n^m$
+- $f(2x - 1) = 3x + 4$ ise $f(5)$ :: $2x - 1 = 5$, $x = 3$ → 13
+- Sabit fonksiyon koşulu :: Değişkenli terimlerin katsayıları 0
+- Tek fonksiyon :: $f(-x) = -f(x)$; yalnız tek dereceli terimler; orijine simetrik
+- Çift fonksiyon :: $f(-x) = f(x)$; yalnız çift dereceli terimler; y eksenine simetrik
+- $\frac{ax + b}{cx + d}$ sabit fonksiyon ise :: $\frac{a}{c} = \frac{b}{d}$
+
+@ozet
+- Fonksiyon, tanım kümesinin her elemanını değer kümesinin tek bir elemanıyla eşleyen bağıntıdır; görüntü kümesi değer kümesinin alt kümesidir.
+- Parantez içi ifadeli fonksiyon kurallarında değer, parantezin içini istenen sayıya eşitleyerek bulunur.
+- Fonksiyonlar bire bir, örten, birim, sabit, tek ve çift olma özelliklerine göre sınıflandırılır.
+- Parçalı fonksiyonlarda aralığa uygun kural kullanılır; fonksiyonlarda dört işlem ortak tanım kümesinde yapılır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$f(2x - 1) = 3x + 4$ iken $f(5)$ neden 19 değil de 13'tür?" (2) "Değer kümesinde boşta eleman kalan bir bağıntı neden yine de fonksiyondur?"
+
+@havuz
+::soru h1 tip=tanim-goruntu zorluk=2
+$s(A) = 3$ ve $s(B) = 4$ olmak üzere $A$'dan $B$'ye tanımlanabilecek bire bir fonksiyonların sayısı kaçtır?
+A) 7
+B) 12
++C) 24
+D) 64
+E) 81
+kontrol: 4*3*2
+cozum: Her eleman farklı bir görüntü seçer: $P(4, 3) = 4 \cdot 3 \cdot 2 = 24$.
+
+::soru h2 tip=deger-bulma zorluk=3
+Her $x$ gerçek sayısı için $f(x) + 2f(-x) = 6x + 3$ olduğuna göre $f(1)$ kaçtır?
+A) $-7$
++B) $-5$
+C) $-3$
+D) 3
+E) 7
+kontrol: -5
+cozum: $x = 1$: $f(1) + 2f(-1) = 9$. $x = -1$: $f(-1) + 2f(1) = -3$. $f(-1) = -3 - 2f(1)$ yerine konursa $f(1) - 6 - 4f(1) = 9 \Rightarrow f(1) = -5$.
+
+::soru h3 tip=fonksiyon-cesit zorluk=2
+$f(x) = \dfrac{(a - 1)x + 6}{2x + 3}$ fonksiyonu sabit fonksiyon olduğuna göre $a$ kaçtır?
++A) 5
+B) 6
+C) 7
+D) 8
+E) 9
+kontrol: 5
+cozum: $\frac{a - 1}{2} = \frac{6}{3} = 2 \Rightarrow a - 1 = 4 \Rightarrow a = 5$.
+
+::soru h4 tip=parcali-islem zorluk=2
+$f(x) = \sqrt{x - 1}$ ve $g(x) = \dfrac{1}{x - 3}$ olduğuna göre $(f \cdot g)(x)$ fonksiyonunun en geniş tanım kümesi aşağıdakilerden hangisidir?
+A) $\mathbb{R}$
+B) $[1, \infty)$
++C) $[1, \infty) \setminus \{3\}$
+D) $(3, \infty)$
+E) $\mathbb{R} \setminus \{3\}$
+cozum: $f$ için $x \geq 1$, $g$ için $x \neq 3$. Ortak tanım kümesi $[1, \infty) \setminus \{3\}$.

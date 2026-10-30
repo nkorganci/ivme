@@ -1,0 +1,292 @@
+@ders polinom-islemleri
+baslik: Polinom Kavramı, İşlemler ve Bölme
+kisa: Polinomlar
+sinav: TYT AYT
+unite: polinomlar
+sinif: 10
+sira: 1000
+onkosul: uslu-ifadeler
+kategori: excel.tyt.matematik.58dc018a000831b1b740 excel.ayt.matematik.58dc018a000831b1b740
+hedef: Polinom olma koşulunu ve derece, baş katsayı, sabit terim, katsayılar toplamı kavramlarını kullanmak; polinomlarda toplama, çarpma ve derece hesabı yapmak; bölme eşitliğini ($P = Q \cdot B + K$) kullanmak; bölme yapmadan kalanı $P(a)$ ile bulmak ve çarpan olma koşulunu uygulamak.
+neden: Polinomlar 2018–2026'da AYT'de 11, TYT'de 3 çıkmış soruyla düzenli bir konudur. "Kalan $= P(a)$" fikri hem polinom sorularının hem ikinci dereceden denklemlerin ve türevin temelidir.
+kaynak: MEBİ TYT Konu Özeti — Polinom Kavramı, Polinomlarda Toplama–Çıkarma–Çarpma, Polinomlarda Bölme, Bölme Yapmadan Kalan Bulma | OGM 10. Sınıf Konu Özetleri 23–26 | OGM 10. Sınıf Ders Anlatım Sunuları 20–21, 27
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: polinom | derece | baş katsayı | sabit terim | katsayılar toplamı | bölümünden kalan | bölüm | tam bölün | p(x) | der[
+baslik-kurali: /^10\.3\.1/ | polinom kavramı ve polinomlarda işlemler | polinomlar
+
+@tip polinom-kavram 25 s1
+ad: Polinom olma, derece, katsayılar toplamı
+ipucu: "$x^{n-3} + 2x^{6/n}$ polinom ise", "katsayılar toplamı", "$P(x + 2)$ veriliyor, $P(x)$'in sabit terimi".
+strateji: Polinomda bütün üsler doğal sayıdır. Katsayılar toplamı $P(1)$, sabit terim $P(0)$; $P(x + 2)$ verilmişse $P(1)$ için $x + 2 = 1$ yaz. Çift dereceli katsayılar toplamı $\frac{P(1) + P(-1)}{2}$.
+anahtar: polinom ise | polinomdur | derece | baş katsayı | sabit terim | katsayılar toplamı
+
+@tip polinom-islem 20 s2
+ad: Polinomlarda işlemler ve derece
+ipucu: "$\text{der}[P(x^2) \cdot Q(x)]$", "eşit polinomlar", "$(a - 1)x^2 + \ldots = 4x^2 + \ldots$".
+strateji: Çarpımda dereceler toplanır, $P(x^k)$'nin derecesi $k \cdot \text{der}(P)$, $P^k$'nın derecesi $k \cdot \text{der}(P)$'dir; toplamda derece en çok büyük olanınkidir. Eşit polinomlarda aynı dereceli terimlerin katsayılarını eşitle.
+anahtar: der[ | derecesi | eşit polinom | her x için | özdeş
+
+@tip polinom-bolme 25 s3
+ad: Bölme eşitliği ve bölme işlemi
+ipucu: "Bölüm $x + 3$, kalan $2x - 1$", "derecesi 5 olan polinom derecesi 2 olana bölünüyor".
+strateji: $P(x) = Q(x) \cdot B(x) + K(x)$ ve $\text{der}(K) < \text{der}(Q)$. Bölüm derecesi $\text{der}(P) - \text{der}(Q)$. Uzun bölmede baş terimleri böl, çarp, çıkar; kalanın derecesi bölenden küçük olana kadar devam et.
+anahtar: bölüm | bölen | bölünen | kalan | bölme
+
+@tip kalan-bulma 30 s4
+ad: Bölme yapmadan kalan: $P(a)$
+ipucu: "$x - 2$ ile bölümünden kalan", "$x + 2$ ile tam bölünüyorsa", "$(x - 1)(x - 2)$ ile bölümünden kalan".
+strateji: $P(x)$'in $x - a$ ile bölümünden kalan $P(a)$'dır; tam bölünüyorsa $P(a) = 0$. $ax - b$ ile bölümde kalan $P(\frac{b}{a})$. İkinci dereceden bölende kalanı $mx + n$ yaz ve bölenin köklerini yerine koy.
+anahtar: bölümünden kalan | tam bölün | çarpanı | kalan kaçtır | kökü
+
+@ustalik
+polinom-kavram 1 1-2
+polinom-islem 1 1-2
+polinom-bolme 2 1-3
+kalan-bulma 2 1-3
+
+@oturum Polinom kavramı ve işlemler | s1 s2
+@oturum Bölme ve kalan | s3 s4
+
+@ontest
+::soru o1 tip=polinom-kavram zorluk=1
+$P(x) = 3x^4 - 2x^2 + x - 5$ polinomunun katsayılar toplamı kaçtır?
++A) $-3$ || Doğru: $P(1) = 3 - 2 + 1 - 5 = -3$.
+B) $-1$ || Hesabı kontrol et.
+C) 1 || Sabit terim $-5$'i de topla.
+D) 3 || Bu baş katsayıdır.
+E) 6 || İşaretleri yok saydın.
+kontrol: 3-2+1-5
+cozum: Katsayılar toplamı $P(1) = 3 - 2 + 1 - 5 = -3$.
+
+::soru o2 tip=polinom-bolme zorluk=1
+Derecesi 5 olan bir polinom derecesi 2 olan bir polinoma bölündüğünde bölümün derecesi kaçtır?
+A) 2 || Bu bölenin derecesidir.
++B) 3 || Doğru: $5 - 2 = 3$.
+C) 5 || Bu bölünenin derecesidir.
+D) 7 || Dereceler bölmede çıkarılır.
+E) 10 || Dereceler çarpılmaz.
+kontrol: 5-2
+cozum: $\text{der}(B) = \text{der}(P) - \text{der}(Q) = 5 - 2 = 3$.
+
+::soru o3 tip=kalan-bulma zorluk=2
+$P(x) = x^3 - 2x^2 + 3x - 4$ polinomunun $x - 2$ ile bölümünden kalan kaçtır?
+A) $-26$ || Bu $P(-2)$'dir; $x - 2 = 0$ için $x = 2$.
+B) $-4$ || Bu sabit terimdir.
++C) 2 || Doğru: $P(2) = 8 - 8 + 6 - 4 = 2$.
+D) 4 || Hesabı kontrol et.
+E) 6 || Hesabı yeniden yap.
+kontrol: 8-8+6-4
+cozum: $x - 2 = 0 \Rightarrow x = 2$; kalan $P(2) = 8 - 8 + 6 - 4 = 2$.
+
+@bolum s1 9 | Polinom kavramı
+::fikir
+$P(x) = a_n x^n + \cdots + a_1 x + a_0$ ifadesinin polinom olması için **bütün üslerin doğal sayı** olması gerekir. En büyük üs **derece**, onun katsayısı **baş katsayı**, $a_0$ **sabit terimdir**. Katsayılar toplamı $P(1)$, sabit terim $P(0)$.
+
+::tablo baslik="$P(x) = 4x^3 - 2x + 7$ için"
+| Kavram | Değer |
+| Derece | 3 |
+| Baş katsayı | 4 |
+| Sabit terim | $P(0) = 7$ |
+| Katsayılar toplamı | $P(1) = 4 - 2 + 7 = 9$ |
+
+::duzey
+L1: $4x^3 - 2x + 7$ ifadesinde $x$'in en büyük kuvveti 3: polinom 3. derecedendir. Bu terimin katsayısı 4 baş katsayıdır; $x$'siz terim 7 sabit terimdir. $x$ yerine 1 yazarsan bütün katsayıları toplamış olursun.
+L2: Polinom olmayan ifadeler: $\sqrt{x}$ (üs $\frac{1}{2}$), $\frac{1}{x}$ (üs $-1$). $x^{n - 3}$ gibi üslerde $n - 3 \in \mathbb{N}$ şartı aranır. $P(x + 2)$ verilmişse $P(1)$ için $x + 2 = 1$, yani $x = -1$ yazılır.
+L3: Çift dereceli terimlerin katsayıları toplamı $\frac{P(1) + P(-1)}{2}$, tek dereceli terimlerinki $\frac{P(1) - P(-1)}{2}$. Sabit polinomun derecesi 0, sıfır polinomunun derecesi tanımsızdır.
+
+::ornek baslik="Polinom olma koşulu"
+soru: $P(x) = x^{n - 3} + 2x^{\frac{6}{n}} + 5$ bir polinom olduğuna göre $n$'nin alabileceği değerlerin toplamı kaçtır?
+1. $n - 3 \in \mathbb{N} \Rightarrow n \geq 3$. || Birinci üs doğal sayı.
+2. $\frac{6}{n} \in \mathbb{N} \Rightarrow n \in \{1, 2, 3, 6\}$. || İkinci üs doğal sayı.
+3. İkisi birlikte: $n \in \{3, 6\}$; toplam 9. || Kesişim.
+cevap: 9
+
+::yanilgi m1 tip=polinom-kavram
+yanlis: $\sqrt{x} + 1$ bir polinomdur.
+neden: $\sqrt{x} = x^{\frac{1}{2}}$ ve $\frac{1}{2}$ bir doğal sayı değildir.
+dogru: Polinomda bütün üsler doğal sayıdır ($0, 1, 2, \ldots$).
+
+::soru c1 tip=polinom-kavram zorluk=2
+$P(x + 2) = x^3 - 4x + 7$ olduğuna göre $P(x)$ polinomunun katsayılar toplamı kaçtır?
+A) 4 || Bu $P(x + 2)$'nin katsayılar toplamıdır, $P(3)$.
+B) 7 || Bu $P(2)$'dir.
++C) 10 || Doğru: $P(1)$ için $x = -1$: $-1 + 4 + 7 = 10$.
+D) 16 || Hesabı kontrol et.
+E) 22 || Hesabı yeniden yap.
+kontrol: -1+4+7
+cozum: $P(x)$'in katsayılar toplamı $P(1)$'dir. $x + 2 = 1 \Rightarrow x = -1$: $(-1)^3 - 4(-1) + 7 = 10$.
+
+@bolum s2 8 | İşlemler ve derece
+::fikir
+Toplama–çıkarmada **aynı dereceli terimler** toplanır; çarpmada her terim her terimle çarpılır. $\text{der}(P \cdot Q) = \text{der}(P) + \text{der}(Q)$, $\text{der}(P^k) = k \cdot \text{der}(P)$, $\text{der}(P(x^k)) = k \cdot \text{der}(P)$.
+
+::tablo baslik="Derece kuralları ($\text{der}\,P = m$, $\text{der}\,Q = n$, $m > n$)"
+| İfade | Derece |
+| $P \cdot Q$ | $m + n$ |
+| $P + Q$ | $m$ |
+| $P^k$ | $k \cdot m$ |
+| $P(x^k)$ | $k \cdot m$ |
+| $P(Q(x))$ | $m \cdot n$ |
+
+::duzey
+L1: $(x^2 + 1)(x^3 - x)$ çarpımında en büyük kuvvet $x^2 \cdot x^3 = x^5$'ten gelir: derece $2 + 3 = 5$. Toplamada ise derece artmaz; en büyük dereceli terim neyse odur.
+L2: $P(x^2)$'de her $x$ yerine $x^2$ yazılır; en büyük kuvvet ikiye katlanır. Eşit polinomlarda aynı dereceli terimlerin katsayıları eşittir: $(a - 1)x^2 + (b + 2)x + 3 = 4x^2 + 5x + c$ ise $a = 5$, $b = 3$, $c = 3$.
+L3: Toplamada baş terimler birbirini götürürse derece düşer: $(x^3 + x) + (-x^3 + 2)$'nin derecesi 1'dir. Bileşkede dereceler çarpılır: $\text{der}(P(Q(x))) = m \cdot n$.
+
+::ornek baslik="Dereceleri birleştir"
+soru: $\text{der}[P(x)] = 3$ ve $\text{der}[Q(x)] = 2$ olduğuna göre $\text{der}[P(x) \cdot Q(x)]$, $\text{der}[P^2(x) + Q(x)]$ ve $\text{der}[P(x^2) \cdot Q(x)]$ kaçtır?
+1. $P \cdot Q$: $3 + 2 = 5$. || Çarpımda topla.
+2. $P^2 + Q$: $P^2$'nin derecesi 6, $Q$'nunki 2 → 6. || Toplamda büyük olan.
+3. $P(x^2) \cdot Q$: $2 \cdot 3 + 2 = 8$. || $P(x^2)$'nin derecesi 6.
+cevap: 5, 6, 8
+
+::yanilgi m2 tip=polinom-islem
+yanlis: $\text{der}(P + Q) = \text{der}(P) + \text{der}(Q)$
+neden: Toplamada kuvvetler toplanmaz; en büyük dereceli terim kalır.
+dogru: $\text{der}(P \cdot Q) = \text{der}\,P + \text{der}\,Q$; $\text{der}(P + Q)$ en çok büyük olanın derecesidir.
+
+::soru c2 tip=polinom-islem zorluk=2
+$\text{der}[P(x)] = 4$ ve $\text{der}[Q(x)] = 3$ olduğuna göre $\text{der}[P(x^2) \cdot Q(x)]$ kaçtır?
+A) 7 || $P(x^2)$'nin derecesi 8'dir, 4 değil.
+B) 8 || $Q$'nun derecesini de ekle.
+C) 10 || Hesabı kontrol et.
++D) 11 || Doğru: $2 \cdot 4 + 3 = 11$.
+E) 24 || Dereceler çarpılmaz; çarpımda toplanır.
+kontrol: 2*4+3
+cozum: $\text{der}[P(x^2)] = 2 \cdot 4 = 8$; çarpımda toplanır: $8 + 3 = 11$.
+
+@bolum s3 9 | Bölme eşitliği
+::fikir
+$P(x) = Q(x) \cdot B(x) + K(x)$ ve $\text{der}(K) < \text{der}(Q)$. Bölümün derecesi $\text{der}(P) - \text{der}(Q)$'dur.
+
+::duzey
+L1: Sayılardaki bölme gibi: $17 = 5 \cdot 3 + 2$. Polinomda da bölünen = bölen × bölüm + kalan; kalan bölenden "küçük" olmalıdır, yani derecesi bölenin derecesinden küçüktür.
+L2: Uzun bölme adımları: bölünenin baş terimini bölenin baş terimine böl → bölümün ilk terimi; bu terimle böleni çarp ve bölünenden çıkar; kalanın derecesi bölenden küçük olana kadar tekrarla. Eksik dereceli terimleri 0 katsayıyla yaz.
+L3: Bölme eşitliği değer bulmanın en kısa yoludur: bölüm ve kalan verilmişse $P(a)$ için eşitliğe $x = a$ yaz; bölmeyi baştan yapmana gerek yoktur.
+
+::ornek baslik="Uzun bölme"
+soru: $P(x) = x^3 - 3x^2 + 5x - 2$ polinomunun $x^2 - x + 1$ ile bölümünden elde edilen bölüm ve kalanı bul.
+1. $x^3 : x^2 = x$; $x(x^2 - x + 1) = x^3 - x^2 + x$; çıkarınca $-2x^2 + 4x - 2$. || İlk adım.
+2. $-2x^2 : x^2 = -2$; $-2(x^2 - x + 1) = -2x^2 + 2x - 2$; çıkarınca $2x$. || İkinci adım.
+3. Bölüm $x - 2$, kalan $2x$. || Kontrol: $(x^2 - x + 1)(x - 2) + 2x = P(x)$ ✓
+cevap: Bölüm $x - 2$, kalan $2x$
+
+::tamamla baslik="Birinci dereceden bölen"
+soru: $P(x) = 2x^3 + x^2 - 5x + 4$ polinomunun $x + 2$ ile bölümünden elde edilen bölüm ve kalanı bul.
+1. $2x^2(x + 2) = 2x^3 + 4x^2$; çıkarınca $-3x^2 - 5x + 4$.
+?2. $-3x(x + 2) = -3x^2 - 6x$; çıkarınca $x + 4$.
+?3. $1 \cdot (x + 2)$; çıkarınca kalan $2$. Bölüm $2x^2 - 3x + 1$.
+cevap: Bölüm $2x^2 - 3x + 1$, kalan 2
+
+::yanilgi m3 tip=polinom-bolme
+yanlis: Kalanın derecesi bölenin derecesine eşit olabilir.
+neden: Kalanın derecesi bölenle eşitse bölme bir adım daha sürdürülebilir; bölme bitmemiştir.
+dogru: $\text{der}(K) < \text{der}(Q)$.
+
+::soru c3 tip=polinom-bolme zorluk=2
+Bir $P(x)$ polinomunun $x^2 + 1$ ile bölümünden elde edilen bölüm $x + 3$, kalan $2x - 1$'dir. $P(1)$ kaçtır?
+A) 5 || Kalanı da eklemelisin.
+B) 7 || Hesabı kontrol et: $(1 + 1)(1 + 3)$.
+C) 8 || Bu bölen × bölüm kısmıdır; kalan $2 \cdot 1 - 1 = 1$.
++D) 9 || Doğru: $2 \cdot 4 + 1 = 9$.
+E) 11 || Hesabı yeniden yap.
+kontrol: 2*4+1
+cozum: $P(x) = (x^2 + 1)(x + 3) + 2x - 1$. $P(1) = 2 \cdot 4 + 1 = 9$.
+
+@bolum s4 9 | Bölme yapmadan kalan
+::fikir
+**$P(x)$'in $x - a$ ile bölümünden kalan $P(a)$'dır.** $P(a) = 0$ ise $x - a$, $P(x)$'in bir **çarpanıdır** ($a$ bir köktür). $ax - b$ ile bölümde kalan $P\left(\frac{b}{a}\right)$'dır.
+
+::duzey
+L1: $P(x) = (x - a) \cdot B(x) + K$ eşitliğinde $x = a$ yazınca $(x - a)$ sıfır olur ve geriye yalnız kalan kalır: $P(a) = K$. Bölmeyi yapmadan kalanı bulmanın sırrı budur.
+L2: "Tam bölünür" ya da "çarpanıdır" demek kalanın 0 olması demektir: $P(a) = 0$. Bilinmeyen katsayılı sorularda bu koşul bir denklem verir. $x + 2$ ile bölümde $x = -2$ yazılır.
+L3: İkinci dereceden bölende kalan en çok birinci derecedendir: $P(x) = (x - 1)(x - 2) B(x) + mx + n$. $x = 1$ ve $x = 2$ yazarak $m$ ve $n$ için iki denklem elde edilir.
+
+::ornek baslik="MEBİ örneği: çarpan mı?"
+soru: $P(x) = x^3 - 2x^2 + 6x - 5$ polinomunun bir çarpanının $x - 1$ olduğunu göster ve $P(x)$'in $x - 1$ ile bölümünden kalanı bul.
+1. $x - 1 = 0 \Rightarrow x = 1$. || Bölenin kökü.
+2. $P(1) = 1 - 2 + 6 - 5 = 0$. || Kalan.
+3. Kalan 0 olduğundan $x - 1$ bir çarpandır: $P(x) = (x - 1)(x^2 - x + 5)$. || Tam bölünme.
+cevap: Kalan 0; $x - 1$ çarpandır.
+
+::soru c4 tip=kalan-bulma zorluk=2
+$P(x) = x^4 + ax^2 - 3x + 2$ polinomunun $x - 1$ ile bölümünden kalan 5 olduğuna göre $a$ kaçtır?
+A) 3 || $P(1) = 1 + a - 3 + 2$; denklemi yeniden çöz.
++B) 5 || Doğru: $a + 0 = 5$.
+C) 6 || Hesabı kontrol et.
+D) 7 || $-3 + 2$'yi hesaba kat.
+E) 9 || Hesabı yeniden yap.
+kontrol: 5
+cozum: Kalan $P(1) = 1 + a - 3 + 2 = a$. $a = 5$.
+
+::ozet
+- Polinomda üsler doğal sayı; katsayılar toplamı $P(1)$, sabit terim $P(0)$.
+- Çarpımda dereceler toplanır; $P(x^k)$ ve $P^k$'da derece $k$ katı.
+- $P = Q \cdot B + K$, $\text{der}\,K < \text{der}\,Q$, $\text{der}\,B = \text{der}\,P - \text{der}\,Q$.
+- $x - a$ ile bölümde kalan $P(a)$; tam bölünme ↔ $P(a) = 0$.
+
+@pratik
+- Çalışma sırası: önce $P(1)$ ve $P(0)$ ile katsayılar toplamı–sabit terim, sonra derece kuralları, en son bölme eşitliği ve kalan bulma soruları.
+- Sınav yaklaşımı: "kalan" kelimesini görünce bölmeye girişmeden bölenin kökünü bul ve yerine koy; ikinci dereceden bölende kalanı $mx + n$ olarak yaz.
+- $P(x + 2)$ gibi dönüşümlerde istenen değer için parantezin içini eşitle (fonksiyonlar dersindeki yöntem).
+- En sık tuzaklar: $x + 2$ ile bölümde $x = 2$ yazmak, toplamada dereceleri toplamak, kalanın derecesini bölenle eşit sanmak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra çarpanlara ayırma dersine geç; kalan ve çarpan fikri orada sürekli kullanılır.
+
+@kartlar
+- Katsayılar toplamı :: $P(1)$
+- Sabit terim :: $P(0)$
+- $\text{der}(P \cdot Q)$ :: $\text{der}\,P + \text{der}\,Q$
+- Bölme eşitliği :: $P(x) = Q(x) \cdot B(x) + K(x)$, $\text{der}\,K < \text{der}\,Q$
+- $x - a$ ile bölümden kalan :: $P(a)$
+- $x - a$, $P(x)$'in çarpanıdır ancak ve ancak :: $P(a) = 0$
+- $ax - b$ ile bölümden kalan :: $P\left(\frac{b}{a}\right)$
+
+@ozet
+- Polinom, üsleri doğal sayı olan terimlerin toplamıdır; derece, baş katsayı ve sabit terim bu terimlerden okunur.
+- Polinomların çarpımında dereceler toplanır, toplamında derece en çok büyük olanınkidir.
+- Bölme eşitliği bölünen, bölen, bölüm ve kalan arasındaki ilişkiyi verir; kalanın derecesi bölenden küçüktür.
+- Birinci dereceden bir bölenle bölümde kalan, bölenin kökünde polinomun değeridir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$P(x)$'in $x - 2$ ile bölümünden kalan neden $P(2)$'dir?" (2) "$P(x + 2)$ verilmişken $P(x)$'in katsayılar toplamını bulmak için neden $x = -1$ yazarız?"
+
+@havuz
+::soru h1 tip=polinom-kavram zorluk=2
+$P(x) = (2x - 1)^3 + (x + 1)^2$ polinomunun sabit terimi ile katsayılar toplamının toplamı kaçtır?
+A) 1
+B) 2
+C) 3
+D) 4
++E) 5
+kontrol: 0+5
+cozum: Sabit terim $P(0) = -1 + 1 = 0$; katsayılar toplamı $P(1) = 1 + 4 = 5$. Toplam 5.
+
+::soru h2 tip=polinom-islem zorluk=2
+Her $x$ gerçek sayısı için $(a - 1)x^2 + (b + 2)x + 3 = 4x^2 + 5x + c$ olduğuna göre $a + b + c$ kaçtır?
+A) 8
+B) 9
+C) 10
++D) 11
+E) 12
+kontrol: 5+3+3
+cozum: $a - 1 = 4$, $b + 2 = 5$, $c = 3$: $a = 5$, $b = 3$, $c = 3$; toplam 11.
+
+::soru h3 tip=polinom-bolme zorluk=2
+$P(x) = x^3 + 2x^2 - x + 5$ polinomunun $x^2 + x - 1$ ile bölümünden kalan aşağıdakilerden hangisidir?
+A) $x + 6$
++B) $-x + 6$
+C) $x - 6$
+D) $-x + 4$
+E) $2x + 5$
+cozum: Bölüm $x + 1$: $(x^2 + x - 1)(x + 1) = x^3 + 2x^2 - 1$. $P(x) - (x^3 + 2x^2 - 1) = -x + 6$.
+
+::soru h4 tip=kalan-bulma zorluk=3
+Bir $P(x)$ polinomunun $x - 1$ ile bölümünden kalan 4, $x - 2$ ile bölümünden kalan 7'dir. $P(x)$'in $(x - 1)(x - 2)$ ile bölümünden kalan aşağıdakilerden hangisidir?
++A) $3x + 1$
+B) $3x - 1$
+C) $x + 3$
+D) $4x + 7$
+E) $7x + 4$
+cozum: Kalan $mx + n$: $P(1) = m + n = 4$, $P(2) = 2m + n = 7$. $m = 3$, $n = 1$: kalan $3x + 1$.

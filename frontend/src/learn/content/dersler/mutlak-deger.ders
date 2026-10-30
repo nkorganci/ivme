@@ -1,0 +1,345 @@
+@ders mutlak-deger
+baslik: Mutlak Değer
+kisa: Mutlak değer
+sinav: TYT AYT
+unite: denklem
+sinif: 9
+sira: 220
+onkosul: esitsizlikler
+karisan: esitsizlikler
+kategori: excel.tyt.matematik.ceb9fbdfaa16dc1f89eb excel.ayt.matematik.ceb9fbdfaa16dc1f89eb excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Mutlak değeri uzaklık olarak yorumlamak; içindeki ifadenin işaretine göre açıp sadeleştirmek; mutlak değerli denklem ve eşitsizlikleri çözmek; $|x - a| + |x - b|$ gibi ifadelerin en küçük değerini kritik noktalarla bulmak.
+neden: Mutlak değer TYT'de birinci dereceden denklem ve eşitsizlik sorularının içinde, AYT'de "Temel Kavramlar" başlığında görünür. Uzaklık yorumu bir kez oturunca uzun vaka analizleri tek bir sayı doğrusu çizimine iner.
+kaynak: MEBİ TYT Konu Özeti — Mutlak Değer Kavramı ve Özellikleri, Mutlak Değerli Denklemler ve Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 17–18 | OGM Video Notları TYT 01 — Mutlak Değer
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 65
+anahtar: mutlak | /\|[^|\n]{1,20}\|/ | uzaklık | /i[x-z0-9 +−-]{1,8}l/
+baslik-kurali: mutlak değer | /^9\.3\.3\.3/
+haric:
+
+@tip tanim-acma 30 s1
+ad: Mutlak değeri işarete göre açma ve sadeleştirme
+ipucu: "$a < 0 < b$ olmak üzere $|a - b| + |a|$…", "$-1 < x < 4$ için $\sqrt{(x-4)^2} + |x + 1|$".
+strateji: Her mutlak değerin içine bak: içi pozitifse aynen, negatifse işaretini değiştirerek çıkar. İçi bilinmiyorsa verilen aralıktan bir sayı seç ve işareti onunla belirle. $\sqrt{x^2} = |x|$'i unutma.
+anahtar: olmak üzere | ifadesinin eşiti | sadeleş | √ | kök | ifadesi aşağıdakilerden
+
+@tip denklem 25 s3
+ad: Mutlak değerli denklemler
+ipucu: "$|2x - 3| = 7$", "$|x - 4| = 2x + 1$", "$|3x - 6| + |y + 2| = 0$".
+strateji: $|A| = c$ ($c \geq 0$) ise $A = c$ veya $A = -c$; $c < 0$ ise çözüm yok. Değişken mutlak değerin dışında da varsa bulduğun her kökü ilk denklemde dene. Mutlak değerlerin toplamı 0 ise her biri 0'dır.
+anahtar: denkleminin | köklerinin toplamı | köklerinin çarpımı | çözüm kümesi | = 0
+
+@tip esitsizlik 25 s4
+ad: Mutlak değerli eşitsizlikler
+ipucu: "$|2x - 1| < 5$", "$|x + 2| \geq 4$", "$2 \leq |x - 3| < 5$" ve "kaç tam sayı".
+strateji: $|A| \leq c$ ise $-c \leq A \leq c$ (arada); $|A| \geq c$ ise $A \leq -c$ veya $A \geq c$ (dışarıda). İki taraflıyı iki ayrı aralık olarak çöz. Tam sayıları uçlara dikkat ederek say.
+anahtar: eşitsizliğini sağlayan | eşitsizliğinin | tam sayı | ≤ | ≥
+
+@tip uzaklik-minimum 20 s5
+ad: Uzaklık yorumu ve en küçük değer
+ipucu: "$|x - 1| + |x + 3|$ ifadesinin en küçük değeri", "sayı doğrusunda uzaklık".
+strateji: $|x - a|$, $x$ ile $a$ arasındaki uzaklıktır. $|x - a| + |x - b|$'nin en küçük değeri $|a - b|$'dir ve $x$, $a$ ile $b$ arasındayken alınır. Üç terimde en küçük değer ortanca kritik noktada; kritik noktaları dene.
+anahtar: en küçük değer | en az | uzaklık | alabileceği en küçük
+
+@ustalik
+tanim-acma 2 1-2
+denklem 1 1-3
+esitsizlik 2 1-3
+uzaklik-minimum 1 1-3
+
+@oturum Uzaklık, açma ve sadeleştirme | s1 s2
+@oturum Denklemler, eşitsizlikler, en küçük değer | s3 s4 s5
+
+@ontest
+::soru o1 tip=tanim-acma zorluk=1
+$|-7| - |3 - 8|$ işleminin sonucu kaçtır?
+A) $-12$ || $|-7| = 7$ ve $|3 - 8| = 5$; ikisi de pozitiftir.
+B) $-2$ || İşaretleri karıştırdın.
++C) $2$ || Doğru: $7 - 5 = 2$.
+D) $4$ || $|3 - 8| = 5$; hesabı kontrol et.
+E) $12$ || $7 + 5$ değil, $7 - 5$.
+kontrol: 7-5
+cozum: $|-7| = 7$, $|3 - 8| = |-5| = 5$. $7 - 5 = 2$.
+
+::soru o2 tip=denklem zorluk=1
+$|x - 3| = 5$ denkleminin köklerinin çarpımı kaçtır?
++A) $-16$ || Doğru: kökler 8 ve $-2$.
+B) $-15$ || İkinci kök $-2$; $8 \cdot (-2)$.
+C) $-8$ || Yalnız bir kök değil, ikisinin çarpımı.
+D) $6$ || Bu köklerin toplamı.
+E) $16$ || Köklerden biri negatif.
+kontrol: 8*(-2)
+cozum: $x - 3 = 5 \Rightarrow x = 8$; $x - 3 = -5 \Rightarrow x = -2$. Çarpım $-16$.
+
+::soru o3 tip=esitsizlik zorluk=2
+$|x - 1| \leq 3$ eşitsizliğini sağlayan tam sayıların toplamı kaçtır?
+A) 5 || $-2$ ve 4 de dahil.
+B) 6 || Bir ucu unuttun.
++C) 7 || Doğru: $-2 \leq x \leq 4$; toplam 7.
+D) 9 || Toplamı yeniden hesapla.
+E) 10 || Fazla.
+kontrol: -2-1+0+1+2+3+4
+cozum: $-3 \leq x - 1 \leq 3$, yani $-2 \leq x \leq 4$. Tam sayılar $-2, \ldots, 4$; toplam 7.
+
+@bolum s1 9 | Mutlak değer bir uzaklıktır
+::fikir
+$|x|$, $x$'in **0'a uzaklığıdır**; $|a - b|$ ise $a$ ile $b$ arasındaki **uzaklıktır**. Uzaklık negatif olamaz: $|x| \geq 0$.
+
+::sayidogrusu alt="Sayı doğrusunda 3 ve 7 arasındaki uzaklık 4 birim; |7 − 3| = 4." aciklama="$|7 - 3| = |3 - 7| = 4$: iki sayı arasındaki uzaklık, hangisinden çıkarırsan çıkar aynıdır."
+x: -1 9
+aralik: 3 7 | kapali kapali | uzaklık 4
+nokta: 0 | kapali | 0
+
+::duzey
+L1: Evin okula uzaklığı 3 km ise okulun eve uzaklığı da 3 km'dir; uzaklık eksi olmaz. $|5| = 5$, $|-5| = 5$: ikisi de 0'a 5 birim uzaktır. $|7 - 3| = 4$ ise sayı doğrusunda 3 ile 7 arasındaki mesafedir.
+L2: Tanım: $x \geq 0$ ise $|x| = x$, $x < 0$ ise $|x| = -x$. İçi bilinen bir ifadeyi açarken içinin işaretine bak: $x < 2$ iken $|x - 2| = -(x - 2) = 2 - x$. Kritik nokta, mutlak değerin içini sıfır yapan değerdir; işaret orada değişir.
+L3: Bir aralıkta birden çok mutlak değer varsa her birini ayrı açıp topla: $-5 < x < 2$ iken $|x - 2| + |x + 5| = (2 - x) + (x + 5) = 7$. Sonucun $x$'e bağlı olmaması bir tesadüf değil: $x$, $-5$ ile 2 arasındayken bu iki uzaklığın toplamı aradaki uzaklıktır ($2 - (-5) = 7$).
+
+::ornek baslik="Aralıkta açma"
+soru: $-5 < x < 2$ olduğuna göre $|x - 2| + |x + 5|$ ifadesinin eşiti nedir?
+1. $x < 2$ olduğundan $x - 2 < 0$: $|x - 2| = 2 - x$. || İçi negatif, işaret değişir.
+2. $x > -5$ olduğundan $x + 5 > 0$: $|x + 5| = x + 5$. || İçi pozitif, aynen çıkar.
+3. Topla: $(2 - x) + (x + 5) = 7$. || Uzaklık yorumu: $-5$ ile 2 arası 7 birim.
+cevap: $7$
+
+::yanilgi m1 tip=tanim-acma
+yanlis: $|x - 5| = x - 5$, çünkü mutlak değer içindekini aynen verir.
+neden: Bu yalnız $x - 5 \geq 0$ iken doğrudur; $x = 2$ için $|2 - 5| = 3$ ama $2 - 5 = -3$.
+dogru: $x \geq 5$ ise $x - 5$, $x < 5$ ise $5 - x$.
+
+::soru c1 tip=tanim-acma zorluk=1
+$a < 0 < b$ olmak üzere $|a - b| + |a| - |b|$ ifadesi aşağıdakilerden hangisine eşittir?
++A) $-2a$ || Doğru: $(b - a) + (-a) - b = -2a$.
+B) $2a$ || $|a| = -a$; işaret hatası.
+C) $2b$ || $|a - b| = b - a$; $b$'ler sadeleşir.
+D) $-2b$ || Hesabı yeniden yap.
+E) $0$ || $a$'lı terimler birbirini götürmez.
+cozum: $a - b < 0$ olduğundan $|a - b| = b - a$; $|a| = -a$; $|b| = b$. Toplam $b - a - a - b = -2a$.
+
+@bolum s2 8 | Özellikler ve kökle ilişkisi
+::fikir
+$|x \cdot y| = |x| \cdot |y|$, $\left|\frac{x}{y}\right| = \frac{|x|}{|y|}$ ve en önemlisi **$\sqrt{x^2} = |x|$**. Toplamda ise yalnız $|x + y| \leq |x| + |y|$ doğrudur.
+
+::bilmelisin
+- $|x| \geq 0$, $|x| = |-x|$, $|x| \geq x$
+- $|x \cdot y| = |x| \cdot |y|$ ve $\left|\frac{x}{y}\right| = \frac{|x|}{|y|}$ ($y \neq 0$)
+- $\sqrt{x^2} = |x|$ (çift kök mutlak değer verir)
+- $|x + y| \leq |x| + |y|$ (eşitlik ancak $x$ ve $y$ aynı işaretliyse)
+- $|a| + |b| = 0 \Rightarrow a = 0$ ve $b = 0$
+
+::duzey
+L1: $\sqrt{(-3)^2} = \sqrt{9} = 3$'tür, $-3$ değil. Karekök her zaman negatif olmayan sonucu verir; bu yüzden $\sqrt{x^2} = |x|$ yazarız.
+L2: Kök içinde kare gören ifadeleri mutlak değere çevir: $\sqrt{(x - 4)^2} = |x - 4|$. Sonra verilen aralığa göre aç. $|\pi - 4|$ gibi sayısal ifadelerde içini yaklaşık değerle değerlendir: $\pi \approx 3{,}14 < 4$ olduğundan $|\pi - 4| = 4 - \pi$.
+L3: Üçgen eşitsizliği $|x + y| \leq |x| + |y|$ ve onun ikizi $|x - y| \geq ||x| - |y||$, en küçük–en büyük değer sorularında kısa yol verir. $|x| + |y| = 0$ yalnız iki terim de sıfırken mümkündür; "kareler toplamı 0" kuralının kardeşidir.
+
+::ornek baslik="Karekök ve mutlak değer"
+soru: $-1 < x < 4$ olduğuna göre $\sqrt{(x - 4)^2} + |x + 1|$ ifadesinin eşiti nedir?
+1. $\sqrt{(x - 4)^2} = |x - 4|$; $x < 4$ olduğundan $= 4 - x$. || Çift kök mutlak değer verir.
+2. $x > -1$ olduğundan $|x + 1| = x + 1$. || İçi pozitif.
+3. Toplam $(4 - x) + (x + 1) = 5$. || $-1$ ile 4 arası 5 birim.
+cevap: $5$
+
+::bosluk b1 cevap=1 tip=tanim-acma zorluk=1
+$|3 - \pi| + |\pi - 4|$ işleminin sonucu kaçtır? ($\pi \approx 3{,}14$)
+cozum: $3 - \pi < 0$ ise $|3 - \pi| = \pi - 3$; $\pi - 4 < 0$ ise $|\pi - 4| = 4 - \pi$. Toplam $(\pi - 3) + (4 - \pi) = 1$.
+
+::yanilgi m2 tip=tanim-acma
+yanlis: $\sqrt{x^2} = x$
+neden: $x = -3$ için $\sqrt{9} = 3 \neq -3$. Karekök negatif sonuç vermez.
+dogru: $\sqrt{x^2} = |x|$.
+
+::soru c2 tip=tanim-acma zorluk=2
+$x < -1$ olduğuna göre $\sqrt{x^2} + |x + 1|$ ifadesinin eşiti aşağıdakilerden hangisidir?
+A) $1$ || $\sqrt{x^2} = -x$ ve $|x + 1| = -x - 1$; toplam sabit değil.
+B) $-1$ || $x$'li terimler sadeleşmez.
+C) $2x + 1$ || İkisinin de işaretini değiştirmen gerekirdi.
++D) $-2x - 1$ || Doğru: $(-x) + (-x - 1) = -2x - 1$.
+E) $-2x + 1$ || $|x + 1| = -x - 1$; sabit $-1$ olmalı.
+cozum: $x < 0$ olduğundan $\sqrt{x^2} = |x| = -x$. $x + 1 < 0$ olduğundan $|x + 1| = -x - 1$. Toplam $-2x - 1$.
+
+@bolum s3 10 | Mutlak değerli denklemler
+::fikir
+$|A| = c$ ve $c \geq 0$ ise **iki ihtimal** vardır: $A = c$ veya $A = -c$. $c < 0$ ise **çözüm yoktur**. Değişken dışarıda da varsa bulduğun kökleri **mutlaka dene**.
+
+::duzey
+L1: "0'a uzaklığı 7 olan sayılar" iki tanedir: 7 ve $-7$. Bu yüzden $|x| = 7$ denkleminin iki çözümü vardır. "Uzaklığı $-3$ olan sayı" ise yoktur; $|x| = -3$ çözümsüzdür.
+L2: $|2x - 3| = 7$: $2x - 3 = 7$ ($x = 5$) veya $2x - 3 = -7$ ($x = -2$). Sağ tarafta değişken varsa ($|x - 4| = 2x + 1$) iki durumu çöz ama sağ tarafın negatif olduğu kökü at; çünkü mutlak değer negatife eşit olamaz.
+L3: $|A| = |B|$ ise $A = B$ veya $A = -B$. $|A| + |B| = 0$ ise $A = 0$ ve $B = 0$. Birden çok mutlak değer içeren denklemlerde kritik noktalarla sayı doğrusunu bölgelere ayır, her bölgede mutlak değerleri açıp çöz ve bulduğun kökün o bölgede olup olmadığını kontrol et.
+
+::ornek baslik="İki ihtimal"
+soru: $|2x - 3| = 7$ denkleminin köklerinin toplamı kaçtır?
+1. $2x - 3 = 7 \Rightarrow x = 5$. || Birinci ihtimal.
+2. $2x - 3 = -7 \Rightarrow x = -2$. || İkinci ihtimal.
+3. Toplam $5 + (-2) = 3$. || Kısa yol: kökler $\frac{3}{2}$'ye göre simetriktir; toplam $2 \cdot \frac{3}{2} = 3$.
+cevap: $3$
+
+::tamamla baslik="Değişken dışarıda da var"
+soru: $|x - 4| = 2x + 1$ denkleminin çözüm kümesini bul.
+1. Birinci durum: $x - 4 = 2x + 1 \Rightarrow x = -5$.
+?2. Dene: $|-5 - 4| = 9$, sağ taraf $2(-5) + 1 = -9$. Eşit değil: $x = -5$ atılır. || Mutlak değer negatife eşit olamaz.
+?3. İkinci durum: $x - 4 = -(2x + 1) \Rightarrow 3x = 3$, $x = 1$. Dene: $|1 - 4| = 3 = 2 \cdot 1 + 1$ ✓
+cevap: ÇK $= \{1\}$
+
+::yanilgi m3 tip=denklem
+yanlis: $|x + 2| = -3$ ise $x + 2 = 3$ veya $x + 2 = -3$.
+neden: Mutlak değer bir uzaklıktır, $-3$ olamaz; denklemin hiç çözümü yoktur.
+dogru: ÇK $= \varnothing$.
+
+::soru c3 tip=denklem zorluk=2
+$|3x - 6| + |y + 2| = 0$ olduğuna göre $x \cdot y$ kaçtır?
++A) $-4$ || Doğru: $x = 2$, $y = -2$.
+B) $-2$ || $y = -2$; $x \cdot y$ isteniyor.
+C) $0$ || İki mutlak değer de 0 olmalı; $x = 2$.
+D) $2$ || $x = 2$; işaret: $y = -2$.
+E) $4$ || $y$ negatiftir.
+kontrol: 2*(-2)
+cozum: İki negatif olmayan sayının toplamı 0 ise ikisi de 0'dır: $3x - 6 = 0$ ($x = 2$), $y + 2 = 0$ ($y = -2$). $x \cdot y = -4$.
+
+@bolum s4 9 | Mutlak değerli eşitsizlikler
+::fikir
+**$|A| \leq c$ → arada:** $-c \leq A \leq c$. **$|A| \geq c$ → dışarıda:** $A \leq -c$ veya $A \geq c$. Uzaklık dili: "1'e uzaklığı 3'ten az olan sayılar" bir aralıktır.
+
+::sayidogrusu alt="|x − 1| ≤ 3 çözüm aralığı: −2'den 4'e kapalı aralık." aciklama="$|x - 1| \leq 3$: 1'e en çok 3 birim uzak sayılar, $[-2, 4]$."
+x: -4 6
+aralik: -2 4 | kapali kapali | |x − 1| ≤ 3
+nokta: 1 | kapali | merkez
+
+::duzey
+L1: $|x - 1| \leq 3$ demek "$x$'in 1'e uzaklığı en çok 3" demektir. 1'den 3 sola ($-2$) ve 3 sağa (4) gidersin; arası çözümdür: $-2 \leq x \leq 4$. $|x - 1| > 3$ ise bu aralığın dışı çözümdür.
+L2: $|ax + b| < c$ için $-c < ax + b < c$ çift taraflı eşitsizliğini çöz. $|ax + b| \geq c$ için iki ayrı eşitsizlik çözüp birleştir. $|A| < 0$ çözümsüz, $|A| \leq 0$ yalnız $A = 0$, $|A| \geq 0$ her sayıdır.
+L3: $a \leq |x - m| \leq b$ biçimi iki parçalı bir aralıktır: merkezin iki yanında simetrik iki bant. "Sağlamayan tam sayılar" istenirse tümleyen aralığı saymak daha kısadır.
+
+::ornek baslik="Arada"
+soru: $|2x - 1| < 5$ eşitsizliğini sağlayan kaç tam sayı vardır?
+1. Arada: $-5 < 2x - 1 < 5$. || $|A| < c$ kalıbı.
+2. 1 ekle ve 2'ye böl: $-2 < x < 3$. || Üç parçaya aynı işlem.
+3. Tam sayılar $-1, 0, 1, 2$: 4 tane. || Uçlar dahil değil.
+cevap: 4
+
+::tamamla baslik="İki bant"
+soru: $2 \leq |x - 3| < 5$ eşitsizliğini sağlayan kaç tam sayı vardır?
+1. Sağ bant: $2 \leq x - 3 < 5 \Rightarrow 5 \leq x < 8$: $5, 6, 7$.
+?2. Sol bant: $-5 < x - 3 \leq -2 \Rightarrow -2 < x \leq 1$: $-1, 0, 1$.
+?3. Toplam $3 + 3 = 6$ tam sayı.
+cevap: 6
+
+::yanilgi m4 tip=esitsizlik
+yanlis: $|x| > 3 \Rightarrow -3 < x < 3$
+neden: "0'a uzaklığı 3'ten büyük" sayılar $-3$'ün solunda ve 3'ün sağındadır; arası değil, dışarısıdır.
+dogru: $x < -3$ veya $x > 3$.
+
+::soru c4 tip=esitsizlik zorluk=2
+$|x + 2| \geq 4$ eşitsizliğini **sağlamayan** kaç tam sayı vardır?
+A) 5 || Sağlamayanlar $-6 < x < 2$: $-5$'ten 1'e kadar.
+B) 6 || Bir tam sayıyı unuttun.
++C) 7 || Doğru: $-5, -4, \ldots, 1$.
+D) 8 || $-6$ ve 2 eşitsizliği sağlar, sayılmaz.
+E) 9 || Uçları dahil ettin.
+kontrol: 1-(-5)+1
+cozum: Sağlamayanlar $|x + 2| < 4$, yani $-4 < x + 2 < 4$: $-6 < x < 2$. Tam sayılar $-5, \ldots, 1$: 7 tane.
+
+@bolum s5 8 | Uzaklık toplamı ve en küçük değer
+::fikir
+$|x - a| + |x - b|$, $x$'in $a$'ya ve $b$'ye uzaklıklarının toplamıdır. $x$, $a$ ile $b$ **arasındayken** bu toplam en küçüktür ve **$|a - b|$**'ye eşittir.
+
+::grafik alt="f(x) = |x + 1| + |x − 3| grafiği: -1 ile 3 arasında yatay ve 4 değerinde; dışarıda artıyor." aciklama="$|x + 1| + |x - 3|$: $-1 \leq x \leq 3$ arasında değer hep 4 (en küçük); dışarıda büyüyor."
+x: -4 7
+y: -1 12
+f: abs(x+1)+abs(x-3) | navy | $|x+1| + |x-3|$
+nokta: -1 4 | −1 | red
+nokta: 3 4 | 3 | red
+
+::duzey
+L1: Sen $x$ noktasındasın ve hem $-1$'deki hem 3'teki markete gideceksin. İkisinin arasında durursan toplam yolun hep 4 olur (iki market arası). Dışarıda durursan aradaki yolu gidip ayrıca fazladan yürürsün.
+L2: $|x - a| + |x - b|$'nin en küçük değeri $|a - b|$, $a \leq x \leq b$ aralığında alınır. Üç terimli $|x - a| + |x - b| + |x - c|$'de ($a < b < c$) en küçük değer ortanca noktada ($x = b$) alınır ve $c - a$'ya eşittir.
+L3: Katsayılı terimler ($|2x - 4| = 2|x - 2|$) ağırlık gibi davranır; en küçük değer ağırlıklı ortancada alınır. Emin olmak için her kritik noktada ifadeyi hesapla ve en küçüğünü seç (MEBİ'nin önerdiği yol). Fark ifadesi $|x - a| - |x - b|$ ise en büyük değer $|a - b|$'dir.
+
+::ornek baslik="İki terim"
+soru: $|x - 1| + |x + 3|$ ifadesinin en küçük değeri kaçtır?
+1. Kritik noktalar 1 ve $-3$. || İçleri sıfır yapan değerler.
+2. $x$ ikisinin arasındayken toplam, aradaki uzaklıktır: $1 - (-3) = 4$. || Uzaklık yorumu.
+cevap: $4$
+
+::soru c5 tip=uzaklik-minimum zorluk=2
+$|x - 2| + |x + 1| + |x - 5|$ ifadesinin alabileceği en küçük değer kaçtır?
+A) 3 || Yalnız iki terimi düşündün.
+B) 5 || Ortanca noktada hesapla.
++C) 6 || Doğru: $x = 2$'de $0 + 3 + 3 = 6$.
+D) 7 || Kritik noktaları yeniden dene.
+E) 8 || $x = -1$ ya da $x = 5$'te 9 çıkar; ortanca daha küçük verir.
+kontrol: 0+3+3
+cozum: Kritik noktalar $-1, 2, 5$; en küçük değer ortanca $x = 2$'de: $|0| + |3| + |-3| = 6$. (Uçlarda 9 çıkar.)
+
+::ozet
+- $|x|$ 0'a, $|a - b|$ iki sayı arasına uzaklıktır; içi negatifse işaret değiştirerek açılır.
+- $\sqrt{x^2} = |x|$; $|a| + |b| = 0$ ise ikisi de 0.
+- $|A| = c$: $A = \pm c$ ($c \geq 0$); dışarıda değişken varsa kökleri dene.
+- $|A| \leq c$ arada, $|A| \geq c$ dışarıda.
+- $|x - a| + |x - b|$'nin en küçüğü $|a - b|$; üç terimde ortanca nokta.
+
+@pratik
+- Çalışma sırası: önce uzaklık yorumunu sayı doğrusunda çizerek otomatikleştir; sonra açma–sadeleştirme, denklem, eşitsizlik ve en küçük değer sorularına geç.
+- Sınav yaklaşımı: aralık verilmiş sadeleştirme sorularında aralıktan basit bir sayı seç (ör. $x = 0$), ifadeyi ve şıkları bu sayıyla hesapla; 20 saniyede doğru şık kalır.
+- Değişken mutlak değerin dışında da varsa bulduğun her kökü ilk denklemde dene; ÖSYM bu tuzağı sık kullanır.
+- En sık tuzaklar: $\sqrt{x^2} = x$ yazmak, $|x| > 3$'ü "arada" çözmek, $|A| = $ negatif sayı denklemine çözüm aramak.
+- Hedef süre soru başı 65 saniye. Konu testinden sonra çıkmış sorular setini çöz; yanlış yaptığın her soruyu Hatalarım'dan tekrar et.
+
+@kartlar
+- $|x|$'in geometrik anlamı :: $x$'in 0'a uzaklığı.
+- $|a - b|$'nin anlamı :: Sayı doğrusunda $a$ ile $b$ arasındaki uzaklık.
+- $\sqrt{x^2}$ = ? :: $|x|$
+- $|A| = c$ ($c \geq 0$) :: $A = c$ veya $A = -c$
+- $|A| \leq c$ :: $-c \leq A \leq c$ (arada)
+- $|A| \geq c$ :: $A \leq -c$ veya $A \geq c$ (dışarıda)
+- $|x - a| + |x - b|$'nin en küçük değeri :: $|a - b|$ ($x$, $a$ ile $b$ arasında)
+- $|a| + |b| = 0$ ise? :: $a = 0$ ve $b = 0$
+
+@ozet
+- Mutlak değer uzaklıktır; içinin işaretine göre açılır, $\sqrt{x^2} = |x|$ olarak yazılır.
+- Denklemlerde iki ihtimal çözülür, değişken dışarıdaysa kökler denenir; sağ taraf negatifse çözüm yoktur.
+- Eşitsizliklerde "küçük" arada, "büyük" dışarıda demektir.
+- Uzaklık toplamlarının en küçük değeri kritik noktalarla (iki terimde aradaki uzaklık, üç terimde ortanca) bulunur.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$|x - 1| \leq 3$ eşitsizliğini sayı doğrusunda uzaklık diliyle nasıl çözersin?" (2) "$|x - 4| = 2x + 1$ denkleminde neden bulduğun kökleri denemek zorundasın?"
+
+@havuz
+::soru h1 tip=tanim-acma zorluk=2
+$x < 0 < y$ olmak üzere $|x - y| - |y - x| + |2x|$ ifadesi aşağıdakilerden hangisine eşittir?
++A) $-2x$
+B) $2x$
+C) $0$
+D) $2y$
+E) $-2y$
+cozum: $|x - y| = |y - x|$ olduğundan ilk iki terim birbirini götürür. $|2x| = -2x$ ($x < 0$).
+
+::soru h2 tip=denklem zorluk=2
+$|2x - 1| = x + 4$ denkleminin köklerinin toplamı kaçtır?
+A) 2
+B) 3
++C) 4
+D) 5
+E) 6
+kontrol: 5+(-1)
+cozum: $2x - 1 = x + 4 \Rightarrow x = 5$ (dene: $9 = 9$ ✓). $2x - 1 = -(x + 4) \Rightarrow x = -1$ (dene: $3 = 3$ ✓). Toplam 4.
+
+::soru h3 tip=esitsizlik zorluk=2
+$|3 - 2x| \leq 5$ eşitsizliğini sağlayan kaç tam sayı vardır?
+A) 4
+B) 5
++C) 6
+D) 7
+E) 8
+kontrol: 4-(-1)+1
+cozum: $-5 \leq 3 - 2x \leq 5 \Rightarrow -8 \leq -2x \leq 2 \Rightarrow -1 \leq x \leq 4$: 6 tam sayı.
+
+::soru h4 tip=uzaklik-minimum zorluk=2
+$|x + 4| + |x - 6|$ ifadesinin alabileceği en küçük değer kaçtır?
+A) 2
+B) 6
+C) 8
++D) 10
+E) 12
+kontrol: 6-(-4)
+cozum: $x$, $-4$ ile 6 arasındayken toplam aradaki uzaklıktır: $6 - (-4) = 10$.

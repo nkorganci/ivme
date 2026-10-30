@@ -1,0 +1,304 @@
+@ders bileske-ters
+baslik: Bileşke Fonksiyon ve Ters Fonksiyon
+kisa: Bileşke ve ters
+sinav: TYT AYT
+unite: fonksiyonlar
+sinif: 10
+sira: 920
+onkosul: fonksiyon-kavrami
+kategori: excel.tyt.matematik.cfb36ba99fce84b745aa excel.ayt.matematik.cfb36ba99fce84b745aa
+hedef: $(f \circ g)(x) = f(g(x))$ bileşkesini sağdan sola hesaplamak; bileşke kuralını yazmak ve bileşkeden bilinmeyen fonksiyonu bulmak; bire bir ve örten fonksiyonun tersini bulmak ve $f(a) = b \Leftrightarrow f^{-1}(b) = a$ ilişkisini kullanmak; $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$ ve grafiklerin $y = x$'e göre simetrisini uygulamak.
+neden: Bileşke ve ters fonksiyon, OGM soru bankasında 10. sınıf fonksiyon sorularının en kalabalık iki kazanımıdır ve AYT'de türev (zincir kuralı), logaritma (üstelin tersi) ve trigonometrik fonksiyonların tersleri bu iki fikre dayanır.
+kaynak: MEBİ TYT Konu Özeti — İki Fonksiyonun Bileşkesi, Bir Fonksiyonun Tersi, Fonksiyon Grafikleri ile İlgili Uygulamalar | OGM 10. Sınıf Konu Özetleri 16–20 | OGM 10. Sınıf Ders Anlatım Sunuları 10–11, 13–14
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 75
+anahtar: bileşke | ∘ | circ | fog | gof | f^{-1} | f⁻¹ | tersi | ters fonksiyon | (f ∘ g)
+baslik-kurali: /^10\.2\.2\.(2|3)\b/ | bileşke | tersi | fonksiyonlar
+
+@tip bileske-deger 30 s1
+ad: Bileşkede değer: sağdan sola
+ipucu: "$(f \circ g)(3)$", "$(g \circ f)(-2) + (f \circ g)(3)$", "$(f \circ g \circ f)(2)$".
+strateji: $(f \circ g)(a) = f(g(a))$: önce içteki $g(a)$'yı hesapla, sonucu $f$'ye ver. Üçlü bileşkede en sağdan başla. $f \circ g$ ile $g \circ f$ genellikle farklıdır.
+anahtar: (f ∘ g)( | (g ∘ f)( | fog( | gof( | bileşke
+
+@tip bileske-kural 25 s2
+ad: Bileşke kuralı ve bilinmeyen fonksiyon
+ipucu: "$(f \circ g)(x)$ aşağıdakilerden hangisidir?", "$f(x) = 2x + 3$ ve $(f \circ g)(x) = 6x - 1$ ise $g(x)$".
+strateji: $(f \circ g)(x)$ için $f$'nin kuralında $x$ yerine $g(x)$ yaz. Dıştaki fonksiyon biliniyorsa onu uygula ve içteki bilinmeyeni yalnız bırak; içteki biliniyorsa parantezin içini yeni değişkene eşitle.
+anahtar: (f ∘ g)(x) | (g ∘ f)(x) | kuralı | aşağıdakilerden hangisidir
+
+@tip ters-bulma 30 s3
+ad: Ters fonksiyonu bulma
+ipucu: "$f(x) = 3x - 6$ ise $f^{-1}(x)$", "$f^{-1}(4)$ kaçtır?", "$\frac{2x + 1}{x - 3}$'ün tersi".
+strateji: Tek bir değer isteniyorsa tersi bulma: $f^{-1}(b) = a \Leftrightarrow f(a) = b$ denklemini çöz. Kural için $y = f(x)$ yaz, $x$'i yalnız bırak, $x$ ile $y$'yi değiştir. $\frac{ax + b}{cx + d}$'nin tersi $\frac{-dx + b}{cx - a}$.
+anahtar: f^{-1} | f⁻¹ | tersi | ters fonksiyon
+
+@tip ters-ozellik 15 s4
+ad: Ters fonksiyonun özellikleri ve grafiği
+ipucu: "$(g \circ f)^{-1}(10)$", "$f^{-1} = f$ ise", "$y = x$ doğrusuna göre simetrik".
+strateji: $f \circ f^{-1} = f^{-1} \circ f = I$. $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$ (sıra ters döner); tek değer için bileşkeyi kurup $(f \circ g)(a) = b$ denklemini çözmek de yeter. $f$ ile $f^{-1}$'in grafikleri $y = x$'e göre simetriktir.
+anahtar: (f ∘ g)^{-1} | (g ∘ f)^{-1} | y = x | simetrik | birim fonksiyon
+
+@ustalik
+bileske-deger 2 1-3
+bileske-kural 1 1-3
+ters-bulma 2 1-3
+ters-ozellik 1 1-3
+
+@oturum Bileşke fonksiyon | s1 s2
+@oturum Ters fonksiyon | s3 s4
+
+@ontest
+::soru o1 tip=bileske-deger zorluk=1
+$f(x) = 2x + 1$ ve $g(x) = x^2$ olduğuna göre $(f \circ g)(3)$ kaçtır?
++A) 19 || Doğru: $g(3) = 9$, $f(9) = 19$.
+B) 25 || Hesabı kontrol et.
+C) 36 || $2 \cdot 9 + 1$ yerine $4 \cdot 9$ hesapladın.
+D) 49 || Bu $(g \circ f)(3) = 7^2$'dir; sıra ters.
+E) 81 || Hesabı yeniden yap.
+kontrol: 2*9+1
+cozum: Önce içteki: $g(3) = 9$. Sonra $f(9) = 2 \cdot 9 + 1 = 19$.
+
+::soru o2 tip=ters-bulma zorluk=1
+$f(x) = 3x - 6$ olduğuna göre $f^{-1}(x)$ aşağıdakilerden hangisidir?
+A) $3x + 6$ || Tersi işlemleri tersine çevirir: önce 6 ekle, sonra 3'e böl.
+B) $\frac{x - 6}{3}$ || 6 çıkarılmaz, eklenir.
+C) $\frac{1}{3x - 6}$ || $f^{-1}$, $\frac{1}{f}$ değildir.
+D) $\frac{x}{3} - 6$ || Sıra yanlış: önce 6 ekle, sonra böl.
++E) $\frac{x + 6}{3}$ || Doğru: $y = 3x - 6 \Rightarrow x = \frac{y + 6}{3}$.
+cozum: $y = 3x - 6 \Rightarrow x = \frac{y + 6}{3}$; $f^{-1}(x) = \frac{x + 6}{3}$.
+
+::soru o3 tip=ters-ozellik zorluk=2
+$f(x) = ax + 1$ ve $f^{-1}(5) = 2$ olduğuna göre $a$ kaçtır?
+A) 1 || $f(2) = 5$ olmalı: $2a + 1 = 5$.
++B) 2 || Doğru: $f^{-1}(5) = 2 \Rightarrow f(2) = 5 \Rightarrow 2a + 1 = 5$.
+C) 3 || Hesabı kontrol et.
+D) 4 || $f(5) = 2$ değil, $f(2) = 5$.
+E) 5 || Hesabı yeniden yap.
+kontrol: 2
+cozum: $f^{-1}(5) = 2 \Leftrightarrow f(2) = 5$: $2a + 1 = 5 \Rightarrow a = 2$.
+
+@bolum s1 9 | Bileşke: sağdan sola
+::fikir
+$(f \circ g)(x) = f(g(x))$: önce **$g$**, sonra **$f$** uygulanır (**sağdan sola**). Bileşkenin değişme özelliği yoktur: genellikle $f \circ g \neq g \circ f$.
+
+::tablo baslik="Tablodan bileşke"
+| $x$ | 1 | 2 | 3 | 4 |
+| $f(x)$ | 3 | 4 | 1 | 2 |
+| $g(x)$ | 2 | 1 | 4 | 3 |
+| $(f \circ g)(x) = f(g(x))$ | $f(2) = 4$ | $f(1) = 3$ | $f(4) = 2$ | $f(3) = 1$ |
+
+::duzey
+L1: İki makine düşün: $g$ makinesi sayıyı alıp işliyor, çıkan sonuç $f$ makinesine giriyor. $(f \circ g)(3)$ için 3'ü önce $g$'ye at, çıkan sayıyı $f$'ye ver. Yazılış soldan sağa olsa da işlem sağdan sola yapılır.
+L2: Tablo ya da grafikle verilen fonksiyonlarda içteki değeri tablodan oku, sonra o değeri dıştaki fonksiyonun satırında ara. Üçlü bileşkede $(f \circ g \circ h)(a) = f(g(h(a)))$: en sağdaki önce.
+L3: Bileşkenin birleşme özelliği vardır: $f \circ (g \circ h) = (f \circ g) \circ h$. Birim fonksiyon etkisizdir: $f \circ I = I \circ f = f$. $f$ ve $g$ bire birse $f \circ g$ de bire birdir.
+
+::ornek baslik="İki sıra, iki sonuç"
+soru: $f(x) = x^2 - 1$ ve $g(x) = 3x + 2$ olduğuna göre $(f \circ g)(1)$ ve $(g \circ f)(1)$ değerlerini bul.
+1. $(f \circ g)(1)$: $g(1) = 5$, $f(5) = 24$. || Önce $g$.
+2. $(g \circ f)(1)$: $f(1) = 0$, $g(0) = 2$. || Önce $f$.
+3. $24 \neq 2$: bileşkede sıra önemlidir. || Değişme özelliği yok.
+cevap: 24 ve 2
+
+::yanilgi m1 tip=bileske-deger
+yanlis: $(f \circ g)(x)$ hesaplanırken önce $f$ uygulanır.
+neden: $f(g(x))$ yazımında içteki $g(x)$ önce hesaplanır; sonuç $f$'ye girer.
+dogru: Bileşke sağdan sola uygulanır: önce $g$, sonra $f$.
+
+::soru c1 tip=bileske-deger zorluk=2
+$f(x) = x + 4$ ve $g(x) = 2x - 1$ olduğuna göre $(g \circ f)(-2) + (f \circ g)(3)$ kaçtır?
+A) 9 || İlk terimi kontrol et: $f(-2) = 2$, $g(2) = 3$.
+B) 10 || Hesabı kontrol et.
+C) 11 || Hesabı yeniden yap.
++D) 12 || Doğru: $g(f(-2)) = g(2) = 3$, $f(g(3)) = f(5) = 9$.
+E) 14 || Sıraları karıştırdın.
+kontrol: 3+9
+cozum: $(g \circ f)(-2) = g(2) = 3$; $(f \circ g)(3) = f(5) = 9$. Toplam 12.
+
+@bolum s2 9 | Bileşke kuralı ve bilinmeyen fonksiyon
+::fikir
+$(f \circ g)(x)$ kuralını bulmak için $f$'nin kuralında **$x$ yerine $g(x)$'i** yaz. $f(g(x))$ verilip bir fonksiyon soruluyorsa **bilineni yerine koy** ve bilinmeyeni yalnız bırak.
+
+::duzey
+L1: $f(x) = 3x - 1$ kuralı "3 ile çarp, 1 çıkar" demektir. $(f \circ g)(x)$'te bu işlem $g(x)$'in tamamına uygulanır: $3 \cdot g(x) - 1$. $g(x) = x^2 + 2$ ise $3(x^2 + 2) - 1 = 3x^2 + 5$.
+L2: Dıştaki fonksiyon biliniyorsa: $f(x) = 2x + 3$ ve $(f \circ g)(x) = 6x - 1$ ise $2g(x) + 3 = 6x - 1$, buradan $g(x)$ yalnız bırakılır. İçteki biliniyorsa: $f(x + 2) = \ldots$ biçimine gelir; önceki dersteki $t$ dönüşümünü kullan.
+L3: $(f \circ g)(x) = (g \circ f)(x)$ koşulu katsayılar arasında bir denklem verir. İçteki fonksiyon bilinmiyor ama dıştakinin tersi kolaysa $g(x) = f^{-1}((f \circ g)(x))$ yazılabilir.
+
+::ornek baslik="Dıştaki biliniyor"
+soru: $f(x) = 2x + 3$ ve $(f \circ g)(x) = 6x - 1$ olduğuna göre $g(x)$ fonksiyonunu bul.
+1. $f(g(x)) = 2g(x) + 3$. || Dıştakinin kuralına $g(x)$'i koy.
+2. $2g(x) + 3 = 6x - 1 \Rightarrow 2g(x) = 6x - 4$. || Eşitle.
+3. $g(x) = 3x - 2$. || Kontrol: $2(3x - 2) + 3 = 6x - 1$ ✓
+cevap: $g(x) = 3x - 2$
+
+::tamamla baslik="İçteki biliniyor"
+soru: $g(x) = x + 2$ ve $(f \circ g)(x) = x^2 + 4x + 1$ olduğuna göre $f(x)$ fonksiyonunu bul.
+1. $f(x + 2) = x^2 + 4x + 1 = (x + 2)^2 - 3$.
+?2. $f(x) = x^2 - 3$.
+cevap: $f(x) = x^2 - 3$
+
+::yanilgi m2 tip=bileske-kural
+yanlis: $(f \circ g)(x) = f(x) \cdot g(x)$
+neden: Bileşke çarpım değil, iç içe uygulamadır; çarpım $(f \cdot g)(x)$ ile gösterilir.
+dogru: $(f \circ g)(x) = f(g(x))$.
+
+::soru c2 tip=bileske-kural zorluk=2
+$f(x) = 3x - 1$ ve $g(x) = x^2 + 2$ olduğuna göre $(f \circ g)(x)$ aşağıdakilerden hangisidir?
+A) $3x^2 + 1$ || $3 \cdot 2 - 1 = 5$; sabiti yeniden hesapla.
++B) $3x^2 + 5$ || Doğru: $3(x^2 + 2) - 1$.
+C) $9x^2 - 6x + 3$ || Bu $(g \circ f)(x) = (3x - 1)^2 + 2$'dir.
+D) $3x^2 + 2$ || $f$'nin $-1$'ini unuttun.
+E) $x^2 + 3x + 1$ || Bu iki fonksiyonun toplamıdır.
+cozum: $(f \circ g)(x) = f(x^2 + 2) = 3(x^2 + 2) - 1 = 3x^2 + 5$.
+
+@bolum s3 10 | Ters fonksiyon
+::fikir
+Bire bir ve örten $f$'nin tersi $f^{-1}$, $f$'nin yaptığını **geri alır**: $f(a) = b \Leftrightarrow f^{-1}(b) = a$. Kuralı bulmak için $y = f(x)$ yaz, $x$'i yalnız bırak, sonra $x$ ile $y$'nin yerini değiştir.
+
+::tablo baslik="Sık karşılaşılan tersler"
+| $f(x)$ | $f^{-1}(x)$ |
+| $ax + b$ | $\frac{x - b}{a}$ |
+| $\frac{ax + b}{cx + d}$ | $\frac{-dx + b}{cx - a}$ |
+| $x^3 + k$ | $\sqrt[3]{x - k}$ |
+
+::duzey
+L1: $f$ "2 ile çarp, sonra 3 ekle" diyorsa tersi işlemleri ters sırayla geri alır: "3 çıkar, sonra 2'ye böl". $f(x) = 2x + 3$ için $f^{-1}(x) = \frac{x - 3}{2}$.
+L2: Tek bir değer isteniyorsa ($f^{-1}(5)$) tersi bulmaya gerek yok: $f(a) = 5$ denklemini çöz, $a$ cevaptır. Tersin var olması için $f$ bire bir ve örten olmalıdır.
+L3: $\frac{ax + b}{cx + d}$ biçiminde tersi bulmak için $a$ ile $-d$'nin yerini değiştir: $\frac{-dx + b}{cx - a}$. $d = -a$ ise fonksiyon kendi tersidir ($f^{-1} = f$).
+
+::ornek baslik="Kesirli fonksiyonun tersi"
+soru: $f(x) = \dfrac{2x + 1}{x - 3}$ olduğuna göre $f^{-1}(x)$ fonksiyonunu bul.
+1. $y = \frac{2x + 1}{x - 3} \Rightarrow y(x - 3) = 2x + 1$. || İçler–dışlar.
+2. $xy - 2x = 3y + 1 \Rightarrow x = \frac{3y + 1}{y - 2}$. || $x$'i yalnız bırak.
+3. $f^{-1}(x) = \frac{3x + 1}{x - 2}$. || Formülle de: $a = 2$, $d = -3$ yer değiştirir.
+cevap: $f^{-1}(x) = \frac{3x + 1}{x - 2}$
+
+::tamamla baslik="Tersi bulmadan değer"
+soru: $f(x) = 4x - 3$ olduğuna göre $f^{-1}(5)$ kaçtır?
+1. $f^{-1}(5) = a \Leftrightarrow f(a) = 5$.
+?2. $4a - 3 = 5 \Rightarrow a = 2$.
+cevap: 2
+
+::yanilgi m3 tip=ters-bulma
+yanlis: $f^{-1}(x) = \frac{1}{f(x)}$
+neden: Buradaki $-1$ üs değil, fonksiyonun tersini gösteren işarettir.
+dogru: $f(2) = 7$ ise $f^{-1}(7) = 2$; $\frac{1}{f(x)}$ başka bir fonksiyondur.
+
+::soru c3 tip=ters-bulma zorluk=2
+$f(x) = \dfrac{x + 5}{2}$ olduğuna göre $f^{-1}(4)$ kaçtır?
+A) $\frac{1}{4}$ || $f^{-1}(4)$, $\frac{1}{f(4)}$ değildir.
+B) 2 || Hesabı kontrol et: $\frac{a + 5}{2} = 4$.
++C) 3 || Doğru: $\frac{a + 5}{2} = 4 \Rightarrow a = 3$.
+D) $4{,}5$ || Bu $f(4)$'tür.
+E) 13 || Hesabı yeniden yap: $a + 5 = 8$.
+kontrol: 3
+cozum: $f(a) = 4$: $\frac{a + 5}{2} = 4 \Rightarrow a + 5 = 8 \Rightarrow a = 3$.
+
+@bolum s4 8 | Tersin özellikleri ve grafiği
+::fikir
+$f \circ f^{-1} = f^{-1} \circ f = I$; $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$ (**sıra ters döner**); $f$ ile $f^{-1}$'in grafikleri **$y = x$ doğrusuna göre simetriktir**.
+
+::grafik alt="f(x) = 2x + 1 doğrusu, tersi y = (x − 1)/2 doğrusu ve kesikli y = x doğrusu; (1, 3) ve (3, 1) noktaları simetrik." aciklama="$f(1) = 3$ ise $f^{-1}(3) = 1$: $(1, 3)$ ve $(3, 1)$ noktaları $y = x$'e göre simetriktir."
+x: -3 5
+y: -3 5
+f: 2*x+1 | navy | $f(x) = 2x + 1$ | -2 2
+f: (x-1)/2 | red | $f^{-1}(x) = \frac{x - 1}{2}$ | -3 5
+f: x | line | $y = x$ | -3 5 | kesik
+nokta: 1 3 | (1, 3) | navy
+nokta: 3 1 | (3, 1) | red
+esit: evet
+
+::duzey
+L1: Çorap ve ayakkabıyı düşün: giyerken önce çorap sonra ayakkabı ($f \circ g$'de önce $g$), çıkarırken önce ayakkabı sonra çorap. Bileşkenin tersinde de sıra tersine döner: $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$.
+L2: Tek değer için iki yol vardır: bileşkeyi kurup $(f \circ g)(a) = b$'yi çözmek ya da $g^{-1}(f^{-1}(b))$ hesaplamak. Grafikte $(a, b)$ noktası $f$'de ise $(b, a)$ noktası $f^{-1}$'dedir.
+L3: Kendi tersi olan fonksiyonların grafiği $y = x$'e göre kendi kendine simetriktir: $f(x) = \frac{x + 3}{x - 1}$ ($d = -a$). Bir fonksiyon ile tersinin kesişim noktaları genellikle $y = x$ doğrusu üzerindedir.
+
+::ornek baslik="Bileşkenin tersi"
+soru: $f(x) = 2x - 3$ ve $g(x) = x + 5$ olduğuna göre $(f \circ g)^{-1}(9)$ kaçtır?
+1. $(f \circ g)(x) = 2(x + 5) - 3 = 2x + 7$. || Bileşkeyi kur.
+2. $(f \circ g)(a) = 9 \Rightarrow 2a + 7 = 9 \Rightarrow a = 1$. || Tersi bulmadan değer.
+3. Kontrol: $g^{-1}(f^{-1}(9)) = g^{-1}(6) = 1$ ✓ || Sıra ters döner.
+cevap: 1
+
+::soru c4 tip=ters-ozellik zorluk=2
+$f(x) = 3x + 2$ ve $g(x) = x - 4$ olduğuna göre $(g \circ f)^{-1}(10)$ kaçtır?
+A) 2 || Hesabı kontrol et: $(g \circ f)(x) = 3x - 2$.
+B) 3 || $(f \circ g)$ ile karıştırdın.
+C) $\frac{10}{3}$ || Hesabı yeniden yap.
++D) 4 || Doğru: $3a - 2 = 10 \Rightarrow a = 4$.
+E) 28 || Bu $(g \circ f)(10)$'dur.
+kontrol: 4
+cozum: $(g \circ f)(x) = (3x + 2) - 4 = 3x - 2$. $3a - 2 = 10 \Rightarrow a = 4$.
+
+::ozet
+- $(f \circ g)(x) = f(g(x))$: sağdan sola; genellikle $f \circ g \neq g \circ f$.
+- Bileşke kuralı: dıştakinin kuralına içtekini koy; bilinmeyeni eşitleyerek yalnız bırak.
+- $f^{-1}(b) = a \Leftrightarrow f(a) = b$; $\frac{ax + b}{cx + d}$'nin tersi $\frac{-dx + b}{cx - a}$.
+- $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$; $f$ ile $f^{-1}$ grafikleri $y = x$'e göre simetrik.
+
+@pratik
+- Çalışma sırası: önce bileşkede değer (sağdan sola), sonra bileşke kuralı ve bilinmeyen fonksiyon, en son ters fonksiyon ve özellikleri çalış.
+- Sınav yaklaşımı: tek bir değer soruluyorsa kural bulma; $f^{-1}(b)$ için $f(a) = b$ denklemini, $(f \circ g)^{-1}(b)$ için $(f \circ g)(a) = b$ denklemini çöz.
+- Bileşke sorularında içteki ifadeyi parantez içinde yaz; $3(x^2 + 2) - 1$ gibi parantezi atlamak en sık hesap hatasıdır.
+- En sık tuzaklar: bileşkeyi soldan sağa uygulamak, $f^{-1}$'i $\frac{1}{f}$ sanmak, $(f \circ g)^{-1}$'de sırayı korumak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra çıkmış sorular setini çöz; AYT'ye hazırlanıyorsan fonksiyonlarda uygulamalar ünitesine geç.
+
+@kartlar
+- $(f \circ g)(x)$ :: $f(g(x))$ (önce $g$)
+- Bileşkede değişme özelliği var mı? :: Yok; genellikle $f \circ g \neq g \circ f$.
+- $f^{-1}(b) = a$ ne demektir? :: $f(a) = b$
+- $ax + b$'nin tersi :: $\frac{x - b}{a}$
+- $\frac{ax + b}{cx + d}$'nin tersi :: $\frac{-dx + b}{cx - a}$
+- $(f \circ g)^{-1}$ :: $g^{-1} \circ f^{-1}$
+- $f$ ile $f^{-1}$ grafikleri :: $y = x$ doğrusuna göre simetrik
+
+@ozet
+- Bileşke fonksiyon iki fonksiyonun art arda uygulanmasıdır ve sağdan sola hesaplanır.
+- Bileşke kuralı dıştaki fonksiyona içtekinin yazılmasıyla elde edilir; bilinmeyen fonksiyon eşitleme ile bulunur.
+- Bire bir ve örten bir fonksiyonun tersi onun işlemlerini geri alır; değer sorularında tersi bulmak gerekmez.
+- Bileşkenin tersinde sıra tersine döner ve bir fonksiyon ile tersinin grafikleri $y = x$'e göre simetriktir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$(f \circ g)(3)$ hesaplanırken neden önce $g(3)$ bulunur?" (2) "$f^{-1}(5)$'i bulmak için neden $f$'nin tersini bulmak zorunda değiliz?"
+
+@havuz
+::soru h1 tip=bileske-deger zorluk=2
+$f(x) = x^2 - 3$ ve $g(x) = 2x + 1$ olduğuna göre $(f \circ g \circ f)(2)$ kaçtır?
++A) 6
+B) 7
+C) 9
+D) 15
+E) 33
+kontrol: 3^2-3
+cozum: En sağdan: $f(2) = 1$, $g(1) = 3$, $f(3) = 6$.
+
+::soru h2 tip=bileske-kural zorluk=2
+$f(x) = 3x - 2$ ve $(f \circ g)(x) = 6x + 7$ olduğuna göre $g(1)$ kaçtır?
+A) 3
++B) 5
+C) 7
+D) 9
+E) 13
+kontrol: 2*1+3
+cozum: $3g(x) - 2 = 6x + 7 \Rightarrow g(x) = 2x + 3$; $g(1) = 5$.
+
+::soru h3 tip=ters-bulma zorluk=2
+$f(x) = \dfrac{3x - 1}{x + 2}$ olduğuna göre $f^{-1}(2)$ kaçtır?
+A) 1
+B) 2
+C) 3
+D) 4
++E) 5
+kontrol: 5
+cozum: $f(a) = 2$: $3a - 1 = 2a + 4 \Rightarrow a = 5$.
+
+::soru h4 tip=ters-ozellik zorluk=2
+$f(x) = \dfrac{ax + 3}{x - 2}$ fonksiyonu için $f^{-1} = f$ olduğuna göre $a$ kaçtır?
+A) $-2$
+B) $-1$
+C) 1
++D) 2
+E) 3
+kontrol: 2
+cozum: $\frac{ax + b}{cx + d}$'nin tersi $\frac{-dx + b}{cx - a}$'dır; kendi tersi olması için $-d = a$: $a = 2$.

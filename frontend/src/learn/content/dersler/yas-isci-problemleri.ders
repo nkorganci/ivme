@@ -1,0 +1,293 @@
+@ders yas-isci-problemleri
+baslik: Yaş, İşçi ve Havuz Problemleri
+kisa: Yaş–işçi problemleri
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 420
+onkosul: sayi-kesir-problemleri
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: Yaş farkının hiç değişmediğini kullanarak zaman çizelgesi kurmak; toplam yaş sorularında kişi sayısını hesaba katmak; işçi ve havuz problemlerini birim zamanda yapılan iş üzerinden çözmek; aşamalı çalışma ve boşaltan musluk durumlarını yönetmek.
+neden: Yaş ve işçi–havuz problemleri TYT problemlerinin düzenli konuklarıdır. İkisinin de tek bir anahtar fikri vardır (yaş farkı sabittir; birim zamanda yapılan işler toplanır); bu fikir bir kez oturunca soru başına 40–60 saniye yeter.
+kaynak: MEBİ TYT Konu Özeti — Yaş Problemleri, İşçi Problemleri | OGM 9. Sınıf Konu Özetleri 33 | OGM Ders Anlatım Sunuları 9. Sınıf — Yaş ve İşçi Problemleri
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: /\byas(\b|i\b|in|lar|ta|tan|ca)/ | yıl önce | yıl sonra | doğduğunda | işçi | havuz | musluk | günde bitir | saatte doldur | birlikte çalış | boşalt
+baslik-kurali: yaş problemleri | işçi problemleri | yaş ve işçi | sayı, kesir, yaş, işçi | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: % | /\byuzde(\b|si|sin|lik|ler)/ | /\bkm\b/ | /\bhiz(\b|la|i|in|lar|da|iy)/ | /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | orantılı paylaş
+
+@tip yas-fark 30 s1
+ad: Yaş farkı ve zaman çizelgesi
+ipucu: "Kaç yıl sonra babasının yaşı oğlunun 2 katı olur?", "kardeşi Efe'nin yaşına geldiğinde".
+strateji: İki kişinin yaş farkı hiç değişmez. Şimdiki yaşları $x$ ve $y$ yaz; $t$ yıl sonra ikisine de $t$ ekle, $t$ yıl önce ikisinden de $t$ çıkar. "Biri diğerinin yaşına geldiğinde" geçen süre yaş farkı kadardır.
+anahtar: yıl sonra | yıl önce | katı olur | yaşına geldiğinde | doğduğunda | yaş farkı
+
+@tip yas-toplam 20 s2
+ad: Toplam yaş ve kişi sayısı
+ipucu: "Üç kardeşin yaşları toplamı", "4 yıl sonra yaşları toplamı", aileye sonradan katılan (doğan) kişi.
+strateji: $n$ kişinin yaşları toplamı $t$ yıl sonra $n \cdot t$ artar, $t$ yıl önce $n \cdot t$ azalır. O tarihte doğmamış kişi varsa onu hesaba katma; böyle sorularda "toplam azalması beklenenden az" ipucu verir.
+anahtar: yaşları toplamı | toplam yaş | kardeşin | ailenin | çocuklarının
+
+@tip isci-birlikte 30 s3
+ad: Birlikte çalışma: birim zamanda iş
+ipucu: "Ayşe 6, Fatma 12 günde; birlikte kaç günde?", "A musluğu doldurur, B musluğu boşaltır".
+strateji: Bir işi $a$ günde bitiren biri günde işin $\frac{1}{a}$'sını yapar. Birlikte: $\frac{1}{a} + \frac{1}{b} = \frac{1}{t}$. Boşaltan musluğun katkısı eksidir. Kesirle uğraşmamak için iş miktarına sürelerin EKOK'unu ver (ör. $12k$).
+anahtar: birlikte çalış | birlikte doldur | birlikte bitir | beraber çalış | günde bitir | saatte doldur | saatte boşalt | musluk | havuz | işçi
+
+@tip isci-asamali 20 s4
+ad: Aşamalı çalışma: biri bırakır, biri katılır
+ipucu: "İkisi birlikte 2 gün çalıştıktan sonra Cem bırakıyor", "Ali 3 gün çalışıp ayrılıyor, kalan işi Veli…".
+strateji: İşi EKOK birimiyle ($12k$) yaz, her aşamada yapılan işi hesapla ve toplamdan düş. Kalan işi kalan çalışanların günlük işine böl. Her aşamada kimin çalıştığını bir zaman çizgisine yaz.
+anahtar: kalan işi | işi bırak | işten ayrıl | işe katıl | çalıştıktan sonra | açıldıktan sonra
+
+@ustalik
+yas-fark 2 1-3
+yas-toplam 1 1-3
+isci-birlikte 2 1-3
+isci-asamali 1 1-3
+
+@oturum Yaş problemleri | s1 s2
+@oturum İşçi ve havuz problemleri | s3 s4
+
+@ontest
+::soru o1 tip=yas-fark zorluk=1
+Ali 12, babası 40 yaşındadır. Kaç yıl sonra babasının yaşı Ali'nin yaşının 2 katı olur?
+A) 12 || 12 yıl sonra: $52$ ve $24$; oran 2 değil.
+B) 14 || $54$ ve $26$; tam 2 katı değil.
++C) 16 || Doğru: $56 = 2 \cdot 28$.
+D) 18 || $58$ ve $30$.
+E) 28 || Bu yaş farkıdır.
+kontrol: 40-2*12
+cozum: $40 + t = 2(12 + t) \Rightarrow 40 + t = 24 + 2t \Rightarrow t = 16$.
+
+::soru o2 tip=isci-birlikte zorluk=1
+Bir işi Ayşe 6 günde, Fatma 12 günde bitirebiliyor. İkisi birlikte bu işi kaç günde bitirir?
+A) 3 || Birlikte günde $\frac{1}{6} + \frac{1}{12} = \frac{1}{4}$.
++B) 4 || Doğru: günde işin $\frac{1}{4}$'ü.
+C) 6 || Birlikte daha hızlı olmalı.
+D) 8 || Hesabı kontrol et.
+E) 9 || Sürelerin ortalaması değil.
+kontrol: 1/(1/6+1/12)
+cozum: Günde $\frac{1}{6} + \frac{1}{12} = \frac{3}{12} = \frac{1}{4}$ iş; 4 günde biter.
+
+::soru o3 tip=yas-toplam zorluk=2
+Üç kardeşin bugünkü yaşları toplamı 36'dır. 5 yıl önce bu üç kardeşin yaşları toplamı kaçtı? (5 yıl önce üçü de doğmuştu.)
++A) 21 || Doğru: her biri 5 yaş küçük: $36 - 15$.
+B) 26 || Yalnız iki kişiden çıkardın.
+C) 31 || Toplamdan yalnız 5 çıkardın.
+D) 33 || Hesabı kontrol et.
+E) 51 || 5 yıl önce toplam azalır.
+kontrol: 36-3*5
+cozum: Üç kişinin her biri 5 yaş küçüktü: $36 - 3 \cdot 5 = 21$.
+
+@bolum s1 10 | Yaş farkı hiç değişmez
+::fikir
+İki kişinin **yaş farkı sabittir**. Herkesin yaşı aynı hızla (yılda 1) artar; bu yüzden "biri diğerinin yaşına geldiğinde" geçen süre **yaş farkı kadardır**.
+
+::tablo baslik="Zaman çizelgesi"
+| Zaman | Kişi 1 | Kişi 2 | Fark |
+| $a$ yıl önce | $x - a$ | $y - a$ | $x - y$ |
+| Şimdi | $x$ | $y$ | $x - y$ |
+| $b$ yıl sonra | $x + b$ | $y + b$ | $x - y$ |
+
+::duzey
+L1: Ali 12, babası 40 yaşındaysa aralarında 28 yaş vardır ve bu fark sonsuza kadar 28 kalır. 16 yıl sonra Ali 28, babası 56 olur; fark yine 28'dir.
+L2: Soruyu bir zaman çizelgesine dök: şimdiki yaşlar $x$ ve $y$; geçmiş ya da gelecek için herkese aynı sayıyı ekle/çıkar. "Kaç katı" ilişkisini o zamanki yaşlarla yaz. Yaş farkı bilgisi tek başına çoğu zaman bir bilinmeyeni yok eder.
+L3: Klasik kısa yol: büyük $x$, küçük $y$ iken küçük, büyüğün yaşına geldiğinde büyük $2x - y$ yaşında olur; büyük, küçüğün yaşındayken küçük $2y - x$ yaşındaydı. Bu iki ifade "farkı ekle/çıkar" fikrinin sonucudur.
+
+::ornek baslik="MEBİ örneği: Efe ve kardeşi"
+soru: Kardeşi doğduğunda Efe 8 yaşındadır. Kardeşi Efe'nin yaşına geldiğinde ikisinin yaşları toplamı annelerinin yaşının yarısı olacaktır. Efe doğduğunda annesi kaç yaşındadır?
+1. Yaş farkı 8; kardeş 8 yaşına geldiğinde 8 yıl geçmiştir ve Efe 16 yaşındadır. || "Yaşına gelince" geçen süre = fark.
+2. Toplam $8 + 16 = 24$; anne $2 \cdot 24 = 48$ yaşında. || O andaki yaşlar.
+3. Efe doğduğunda anne $48 - 16 = 32$ yaşındaydı. || Efe'nin yaşı kadar geri git.
+cevap: 32
+
+::yanilgi m1 tip=yas-fark
+yanlis: Baba oğlunun 3 katı yaşındaysa 10 yıl sonra da 3 katı yaşında olur.
+neden: Yaşlar aynı miktarda (10) artar; oran değişir, sabit kalan farktır.
+dogru: 10 yıl sonraki yaşları ayrı ayrı yaz: $3x + 10$ ve $x + 10$.
+
+::soru c1 tip=yas-fark zorluk=2
+Ayşe doğduğunda ablası 6 yaşındadır. Ayşe, ablasının bugünkü yaşına geldiğinde ikisinin yaşları toplamı 42 olacaktır. Ablası bugün kaç yaşındadır?
+A) 12 || Bu, Ayşe'nin bugünkü yaşıdır.
+B) 15 || Kontrol: abla 15 ise o gün yaşlar 15 ve 21; toplam 36.
++C) 18 || Doğru: o gün Ayşe 18, abla 24; toplam 42.
+D) 21 || Toplamı ikiye böldün; o gün yaşları eşit değil, fark 6.
+E) 24 || Bu, ablanın o günkü yaşıdır.
+kontrol: (42-6)/2
+cozum: Fark 6. Abla bugün $a$ ise Ayşe $a$ yaşına geldiğinde 6 yıl geçer ve abla $a + 6$ olur: $a + (a + 6) = 42 \Rightarrow a = 18$.
+
+@bolum s2 8 | Toplam yaş ve kişi sayısı
+::fikir
+$n$ kişinin yaşları toplamı her yıl **$n$ artar**: $t$ yıl sonra $+n \cdot t$, $t$ yıl önce $-n \cdot t$. O tarihte doğmamış biri varsa ona yaş çıkarılmaz.
+
+::duzey
+L1: Üç kardeşin toplam yaşı 36 ise bir yıl sonra her biri bir yaş büyür; toplam 3 artar. 4 yıl sonra toplam $36 + 12 = 48$ olur.
+L2: Toplam yaş sorularında kişi sayısını yaz ve her zaman kaydırmada $n \cdot t$ kadar değiştir. Anne ile çocukların toplamı gibi grup karşılaştırmalarında her grubun kişi sayısını ayrı say: 6 yıl önce iki çocuğun toplamı $12$ azalır, annenin yaşı $6$ azalır.
+L3: "5 yıl önce toplam 21 eksik" gibi beklenmedik bir azalma (ör. 3 kişi için 15 değil de 12 azalma) birinin o tarihte doğmamış olduğunu gösterir. ÖSYM bu tuzağı küçük kardeşle kurar; toplamdaki farkı kişi sayısına bölerek kimin henüz doğmadığını bulursun.
+
+::ornek baslik="Anne ve çocuklar"
+soru: Bir anne ile iki çocuğunun yaşları toplamı 58'dir. 6 yıl önce annenin yaşı, çocuklarının yaşları toplamının 4 katıydı. Anne bugün kaç yaşındadır?
+1. Anne $m$, çocukların toplamı $s$: $m + s = 58$. || İki bilinmeyen.
+2. 6 yıl önce: anne $m - 6$, iki çocuğun toplamı $s - 12$: $m - 6 = 4(s - 12)$. || İki çocuk → 12 azalma.
+3. $m = 4s - 42$; $5s - 42 = 58 \Rightarrow s = 20$, $m = 38$. || Kontrol: $32 = 4 \cdot 8$ ✓
+cevap: 38
+
+::yanilgi m2 tip=yas-toplam
+yanlis: Üç kişinin toplam yaşı 4 yıl sonra 4 artar.
+neden: Her kişi 4 yaş büyür; toplam $3 \cdot 4 = 12$ artar.
+dogru: $n$ kişide toplam $n \cdot t$ değişir.
+
+::soru c2 tip=yas-toplam zorluk=2
+Bir baba ile üç çocuğunun yaşları toplamı 76'dır. 4 yıl önce babanın yaşı, çocuklarının yaşları toplamının 2 katıydı. Baba bugün kaç yaşındadır?
+A) 36 || Üç çocuğun toplamı 4 yılda 12 azalır; denklemi yeniden kur.
+B) 40 || Bu, babanın 4 yıl önceki yaşıdır.
+C) 42 || Kontrol: çocuklar 34 olur; 4 yıl önce $38 \neq 2 \cdot 22$.
++D) 44 || Doğru: çocukların toplamı 32; 4 yıl önce $40 = 2 \cdot 20$.
+E) 48 || Fazla.
+kontrol: 2*32-20
+cozum: $b + s = 76$ ve $b - 4 = 2(s - 12)$. $b = 2s - 20$, $3s = 96$, $s = 32$, $b = 44$.
+
+@bolum s3 10 | İşçi ve havuz: birim zamanda iş
+::fikir
+Bir işi $a$ günde bitiren biri **günde işin $\frac{1}{a}$'sını** yapar. Birlikte çalışınca günlük işler toplanır: $\frac{1}{a} + \frac{1}{b} = \frac{1}{t}$. **Boşaltan musluk** eksi katkıdır.
+
+::duzey
+L1: Ayşe bir işi 6 günde bitiriyorsa her gün işin altıda birini yapar. Fatma 12 günde bitiriyorsa her gün on ikide birini. Birlikte her gün $\frac{1}{6} + \frac{1}{12} = \frac{1}{4}$'ünü yaparlar; iş 4 günde biter.
+L2: Kesirden kaçınmak için iş miktarını sürelerin EKOK'u kadar birim seç: 6 ve 12 için $12k$. Ayşe günde $2k$, Fatma $k$; birlikte $3k$, iş $12k : 3k = 4$ günde biter. Havuzda dolduran musluk $+$, boşaltan $-$ yazılır.
+L3: Güç oranları verilirse ("A, B'nin 2 katı hızlı") günlük işleri $2v$ ve $v$ yaz. Birlikte çalışma süresi her zaman en hızlı kişinin süresinden kısadır; şıklarda daha uzun süre varsa doğrudan elenir.
+
+::ornek baslik="Üç işçi birlikte"
+soru: Üç işçi bir işi sırasıyla 10, 15 ve 30 günde bitirebiliyor. Üçü birlikte kaç günde bitirir?
+1. İş $= 30k$ (EKOK). Günlük işler: $3k$, $2k$, $k$. || Kesirsiz hesap.
+2. Birlikte günde $6k$. || Günlük işler toplanır.
+3. $30k : 6k = 5$ gün. || Kontrol: en hızlının (10 gün) altında ✓
+cevap: 5 gün
+
+::grafik alt="Doldurma 1/6 ve boşaltma 1/9 hızlarıyla havuzun dolma oranı zamana göre doğrusal artıyor; 18. saatte doluyor." aciklama="Net hız $\frac{1}{6} - \frac{1}{9} = \frac{1}{18}$: havuz 18 saatte dolar."
+x: 0 20
+y: 0 1.2
+f: x/18 | navy | net doluluk | 0 18
+yatay: 1 | dolu havuz
+nokta: 18 1 | 18 saat | red
+
+::yanilgi m3 tip=isci-birlikte
+yanlis: 6 ve 12 günde bitiren iki kişi birlikte $\frac{6 + 12}{2} = 9$ günde bitirir.
+neden: Birlikte çalışmak her ikisinden de hızlı olmalı; süre ortalaması alınmaz, günlük işler toplanır.
+dogru: $\frac{1}{6} + \frac{1}{12} = \frac{1}{4}$: 4 gün.
+
+::soru c3 tip=isci-birlikte zorluk=2
+Üç işçi bir işi sırasıyla 12, 20 ve 30 günde bitirebiliyor. Üçü birlikte bu işi kaç günde bitirir?
+A) 5 || Günlük toplam $\frac{1}{6}$'dır; yeniden topla.
++B) 6 || Doğru: $\frac{1}{12} + \frac{1}{20} + \frac{1}{30} = \frac{10}{60} = \frac{1}{6}$.
+C) 8 || Hesabı kontrol et: iş $60k$, günlük $10k$.
+D) 12 || Birlikte, en hızlıdan (12 gün) daha kısa sürede bitirmeliler.
+E) $\frac{62}{3}$ || Sürelerin ortalaması alınmaz; günlük işler toplanır.
+kontrol: 1/(1/12+1/20+1/30)
+cozum: İş $60k$; günlük işler $5k$, $3k$, $2k$; toplam $10k$. $60k : 10k = 6$ gün.
+
+@bolum s4 8 | Aşamalı çalışma
+::fikir
+İşi **EKOK birimiyle** yaz, her aşamada **kimin kaç gün** çalıştığını zaman çizgisine koy, yapılanı toplamdan düş; kalan işi kalan çalışana böl.
+
+::duzey
+L1: Cem 4, Caner 6 günde bitiriyorsa iş $12k$ olsun: Cem günde $3k$, Caner $2k$. İkisi 2 gün birlikte çalışırsa $2 \cdot 5k = 10k$ iş biter; geriye $2k$ kalır. Caner bunu 1 günde bitirir.
+L2: Aşamaları alt alta yaz: "ilk 3 gün yalnız Ali", "sonra ikisi birlikte". Her satırda yapılan iş = günlük iş × gün. Satırların toplamı tüm işe eşittir; bilinmeyen gün sayısını bu denklemden bul.
+L3: Musluk sorularında aşamalı açma–kapama da aynı tablodur: dolduran $+$, boşaltan $-$. Havuzun bir kısmı başta doluysa yapılacak iş yalnız boş kısımdır. Hız değişimi (bir işçi yarı hızla çalışmaya başladı) günlük işin değişmesi olarak yazılır.
+
+::ornek baslik="MEBİ örneği: Cem ve Caner"
+soru: Cem bir işi 4 günde, Caner 6 günde bitirebiliyor. İkisi birlikte başladıktan 2 gün sonra Cem işi bırakıyor. Kalan işi Caner kaç günde bitirir?
+1. İş $12k$; Cem günde $3k$, Caner günde $2k$. || EKOK(4, 6) = 12.
+2. 2 günde birlikte $2 \cdot 5k = 10k$; kalan $2k$. || Aşama 1.
+3. Caner $2k : 2k = 1$ günde bitirir. || Aşama 2.
+cevap: 1 gün
+
+::tamamla baslik="Biri ayrılınca"
+soru: Bir işi Ali 12, Veli 18 günde bitiriyor. Ali tek başına 3 gün çalışıp ayrılıyor. Kalan işi Veli kaç günde bitirir?
+1. İş $36k$; Ali günde $3k$, Veli günde $2k$.
+?2. Ali 3 günde $9k$ yapar; kalan $27k$.
+?3. Veli $27k : 2k = 13{,}5$ günde bitirir.
+cevap: $13{,}5$ gün
+
+::soru c4 tip=isci-asamali zorluk=2
+Bir işi Deniz 10 günde, Ece 15 günde bitirebiliyor. İkisi birlikte 3 gün çalıştıktan sonra Deniz işi bırakıyor. Kalan işi Ece kaç günde bitirir?
++A) $7{,}5$ || Doğru: kalan $15k$, Ece günde $2k$.
+B) 9 || 3 günde birlikte $15k$ iş yapılır; kalan $15k$.
+C) 10 || Bu, Deniz'in tek başına süresidir.
+D) 12 || Kalan işi yanlış hesapladın.
+E) 15 || Bu, Ece'nin tüm işi tek başına bitirme süresidir.
+kontrol: (30-15)/2
+cozum: İş $30k$; Deniz günde $3k$, Ece $2k$; birlikte 3 günde $15k$. Kalan $15k$; Ece $15k : 2k = 7{,}5$ günde bitirir.
+
+::ozet
+- Yaş farkı sabittir; "yaşına gelince" geçen süre farka eşittir.
+- $n$ kişinin toplam yaşı $t$ yılda $nt$ değişir; doğmamışları sayma.
+- İşçi/havuz: günlük işler toplanır; boşaltan eksi; işi EKOK birimiyle yaz.
+- Aşamalı işlerde zaman çizgisi kur, yapılanı düş, kalanı böl.
+
+@pratik
+- Çalışma sırası: yaş sorularında her seferinde üç satırlık zaman çizelgesi (önce–şimdi–sonra) çiz; işçi sorularında ilk iş, işe sürelerin EKOK'u kadar birim vermek.
+- Sınav yaklaşımı: birlikte çalışma sorusunda cevap en hızlı kişinin süresinden kısa olmalı; bu kuralla şıkların bir kısmını hesapsız ele.
+- Havuz sorularında musluğun dolduruyor mu boşaltıyor mu olduğunu işaretle; boşaltanı eksi yazmayı unutma.
+- En sık tuzaklar: yaş oranının sabit sanılması, toplam yaşta kişi sayısını unutmak, birlikte çalışma süresini ortalama almak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra Hatalarım'daki yanlışları zaman çizelgesi kurarak yeniden çöz.
+
+@kartlar
+- İki kişinin yaş farkı zamanla nasıl değişir? :: Hiç değişmez.
+- "Küçük, büyüğün yaşına geldiğinde" geçen süre :: Yaş farkı kadar.
+- $n$ kişinin toplam yaşı $t$ yıl sonra :: $n \cdot t$ artar.
+- $a$ günde bitiren biri günde işin ne kadarını yapar? :: $\frac{1}{a}$'sını
+- Birlikte çalışma formülü :: $\frac{1}{a} + \frac{1}{b} = \frac{1}{t}$
+- Dolduran ve boşaltan musluk birlikte :: $\frac{1}{a} - \frac{1}{b} = \frac{1}{t}$
+- İşçi sorularında kesirsiz yöntem :: İşe sürelerin EKOK'u kadar birim ver ($12k$).
+
+@ozet
+- Yaş problemleri zaman çizelgesiyle ve sabit yaş farkıyla çözülür.
+- Toplam yaş sorularında değişim kişi sayısı çarpı geçen yıldır; o tarihte doğmamışlar hesaba katılmaz.
+- İşçi ve havuz problemleri birim zamanda yapılan işin toplanmasıyla çözülür; boşaltma eksi katkıdır.
+- Aşamalı çalışmada her aşamanın işi hesaplanıp toplamdan düşülür.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Ali 12, babası 40 yaşındayken neden 16 yıl sonra babası Ali'nin 2 katı yaşında olur?" (2) "6 ve 12 günde bitiren iki kişinin birlikte 9 günde bitireceğini söylemek neden yanlıştır?"
+
+@havuz
+::soru h1 tip=yas-fark zorluk=2
+Bir babanın yaşı oğlunun yaşının 3 katıdır. 10 yıl sonra babanın yaşı oğlunun yaşının 2 katı olacaktır. Baba bugün kaç yaşındadır?
+A) 24
+B) 27
++C) 30
+D) 33
+E) 36
+kontrol: 3*10
+cozum: $3x + 10 = 2(x + 10) \Rightarrow x = 10$; baba $30$.
+
+::soru h2 tip=yas-toplam zorluk=2
+Dört kişilik bir ailenin yaşları toplamı 100'dür. 3 yıl önce bu ailenin yaşları toplamı kaçtı? (3 yıl önce dördü de doğmuştu.)
+A) 85
++B) 88
+C) 91
+D) 94
+E) 97
+kontrol: 100-4*3
+cozum: $100 - 4 \cdot 3 = 88$.
+
+::soru h3 tip=isci-birlikte zorluk=2
+Bir havuzu A musluğu 6 saatte dolduruyor, B musluğu dolu havuzu 9 saatte boşaltıyor. İki musluk boş havuza birlikte açılırsa havuz kaç saatte dolar?
+A) $3{,}6$
+B) 9
+C) 12
+D) 15
++E) 18
+kontrol: 1/(1/6-1/9)
+cozum: Net hız $\frac{1}{6} - \frac{1}{9} = \frac{1}{18}$; 18 saatte dolar.
+
+::soru h4 tip=isci-asamali zorluk=2
+Bir işi Ali 8 günde, Veli 24 günde bitirebiliyor. Ali tek başına 2 gün çalışıp ayrılıyor. Kalan işi Veli kaç günde bitirir?
+A) 16
++B) 18
+C) 20
+D) 21
+E) 22
+kontrol: (24-6)/1
+cozum: İş $24k$; Ali günde $3k$, Veli günde $k$. Ali 2 günde $6k$ yapar, kalan $18k$; Veli 18 günde bitirir.

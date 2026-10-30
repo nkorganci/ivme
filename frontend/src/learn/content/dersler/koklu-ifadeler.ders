@@ -1,0 +1,328 @@
+@ders koklu-ifadeler
+baslik: Köklü İfadeler ve Köklü Denklemler
+kisa: Köklü ifadeler
+sinav: TYT AYT
+unite: uslu-koklu
+sinif: 9
+sira: 310
+onkosul: uslu-ifadeler
+karisan: uslu-ifadeler
+kategori: excel.tyt.matematik.85a51a7cfcbaab213488 excel.ayt.matematik.85a51a7cfcbaab213488 excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Köklü ifadenin ne zaman tanımlı olduğunu bilmek; kök dışına çıkarıp benzer kökleri toplamak; eşlenikle paydayı kökten kurtarmak; $\sqrt{a \pm 2\sqrt{b}}$ biçimindeki iç içe kökleri açmak; köklü sayıları sıralamak ve köklü denklemleri kök kontrolüyle çözmek.
+neden: Köklü ifadeler TYT'de üslü ifadelerle aynı başlıkta (18 çıkmış soru) sorulur; AYT'de karmaşık sayılar, ikinci dereceden denklemin kökleri ve trigonometrik değerler ($\frac{\sqrt{3}}{2}$) köklerle çalışmayı gerektirir.
+kaynak: MEBİ TYT Konu Özeti — Köklü İfadeler ve Özellikleri, Köklü İfadeleri İçeren Denklemler ve Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 25–28 | OGM Video Notları TYT 02 — Köklü Sayılar
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: köklü | karekök | √ | /sqrt/ | eşlenik | kök içi | kökten kurtar
+baslik-kurali: köklü ifade | üslü ve köklü ifadeler | /^9\.3\.4\.2/ | köklü sayılar
+haric: logaritma | ikinci dereceden | diskriminant | karmaşık
+
+@tip kok-disi 30 s2
+ad: Kök dışına çıkarma ve benzer köklerle işlem
+ipucu: "$\sqrt{12} + \sqrt{27} - \sqrt{48}$", "$\sqrt{0{,}09}$", kökler çarpımı ve bölümü.
+strateji: Kök içini "tam kare × kalan" diye ayır: $\sqrt{48} = \sqrt{16 \cdot 3} = 4\sqrt{3}$. Yalnız kökün içi aynı olan terimler toplanır. Çarpma ve bölmede kökleri birleştir: $\sqrt{a}\sqrt{b} = \sqrt{ab}$.
+anahtar: işleminin sonucu | ifadesinin değeri | √ | karekök | sadeleş
+
+@tip eslenik 20 s3
+ad: Eşlenik ve paydayı kökten kurtarma
+ipucu: Paydada $\sqrt{a} \pm \sqrt{b}$ ya da $\sqrt{a} \pm c$; "$(\sqrt{7} + \sqrt{3})(\sqrt{7} - \sqrt{3})$".
+strateji: Pay ve paydayı paydanın eşleniğiyle çarp: $(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b}) = a - b$. Payda rasyonel olur; sonra sadeleştir.
+anahtar: eşlenik | paydayı kökten | rasyonel | (√ | √a - √b
+
+@tip ic-ice 15 s4
+ad: İç içe kökler ve $\sqrt{a \pm 2\sqrt{b}}$
+ipucu: "$\sqrt{7 + 2\sqrt{10}}$", "$\sqrt{2\sqrt{2\sqrt{2}}}$" gibi iç içe yazılmış kökler.
+strateji: $\sqrt{a + 2\sqrt{b}} = \sqrt{m} + \sqrt{n}$ ($m + n = a$, $mn = b$); eksi işaretlide büyükten küçüğü çıkar: $\sqrt{m} - \sqrt{n}$ ($m > n$). İç içe köklerde rasyonel üs kullan: $\sqrt{2\sqrt{2}} = 2^{3/4}$.
+anahtar: √( | iç içe | √√ | + 2√ | - 2√
+
+@tip siralama 15 s5
+ad: Köklü sayıları sıralama ve yaklaşık değer
+ipucu: "$a = 3\sqrt{2}$, $b = 2\sqrt{5}$, $c = \sqrt{17}$ sıralaması", farklı dereceli kökler, "hangi iki tam sayı arasındadır".
+strateji: Katsayıyı kökün içine al ($3\sqrt{2} = \sqrt{18}$) ve kök içlerini karşılaştır. Dereceler farklıysa kök derecelerini EKOK'ta eşitle. Tam sayı aralığı için en yakın tam karelere bak.
+anahtar: sıralaması | sıralanışı | < b < | arasındadır | yaklaşık
+
+@tip denklem 20 s5
+ad: Köklü denklemler ve tanım koşulu
+ipucu: "$\sqrt{x - 2} + 5 = 9$", "$\sqrt{3x + 1} = 5$", "ifadesi bir gerçek sayı belirttiğine göre".
+strateji: Kökü yalnız bırak, iki tarafın karesini al, çöz ve **mutlaka** ilk denklemde dene; kare alma sahte kök üretebilir. Çift dereceli kökte içi ≥ 0 olmalıdır; karekök negatife eşit olamaz.
+anahtar: denkleminin | gerçek sayı belirt | tanımlı | x kaçtır | eşitliğini sağlayan
+
+@ustalik
+kok-disi 2 1-2
+eslenik 1 1-3
+ic-ice 1 2-3
+siralama 1 1-3
+denklem 1 1-3
+
+@oturum Kökün anlamı, kök dışı ve eşlenik | s1 s2 s3
+@oturum İç içe kökler, sıralama ve denklemler | s4 s5
+
+@ontest
+::soru o1 tip=kok-disi zorluk=1
+$\sqrt{75} + \sqrt{12}$ işleminin sonucu kaçtır?
+A) $\sqrt{87}$ || Kök içleri toplanmaz.
+B) $3\sqrt{7}$ || $\sqrt{75} = 5\sqrt{3}$, $\sqrt{12} = 2\sqrt{3}$.
++C) $7\sqrt{3}$ || Doğru: $5\sqrt{3} + 2\sqrt{3}$.
+D) $10\sqrt{3}$ || Katsayıları çarptın; toplanmalı.
+E) $21$ || Kök kaybolmaz.
+kontrol: 7*sqrt(3)
+cozum: $\sqrt{75} = \sqrt{25 \cdot 3} = 5\sqrt{3}$, $\sqrt{12} = 2\sqrt{3}$. Toplam $7\sqrt{3}$.
+
+::soru o2 tip=eslenik zorluk=2
+$\frac{1}{\sqrt{3} - \sqrt{2}}$ ifadesi aşağıdakilerden hangisine eşittir?
+A) $1$ || Paydayı eşleniğiyle çarp.
+B) $\sqrt{6}$ || Çarpım değil, eşlenik gerekiyor.
+C) $\sqrt{3} - \sqrt{2}$ || Eşlenik işareti tersidir: $+$.
++D) $\sqrt{3} + \sqrt{2}$ || Doğru: payda $3 - 2 = 1$ olur.
+E) $\sqrt{5}$ || Kök içleri toplanmaz.
+kontrol: 1/(sqrt(3)-sqrt(2))
+cozum: $\frac{1}{\sqrt{3} - \sqrt{2}} \cdot \frac{\sqrt{3} + \sqrt{2}}{\sqrt{3} + \sqrt{2}} = \frac{\sqrt{3} + \sqrt{2}}{3 - 2} = \sqrt{3} + \sqrt{2}$.
+
+::soru o3 tip=siralama zorluk=2
+$a = 2\sqrt{3}$, $b = 3\sqrt{2}$, $c = \sqrt{11}$ olduğuna göre doğru sıralama hangisidir?
+A) $a < b < c$ || $c = \sqrt{11}$ en küçüktür.
++B) $c < a < b$ || Doğru: $\sqrt{11} < \sqrt{12} < \sqrt{18}$.
+C) $b < a < c$ || Katsayıyı kökün içine al.
+D) $a < c < b$ || $a = \sqrt{12} > \sqrt{11}$.
+E) $c < b < a$ || $b = \sqrt{18} > a$.
+cozum: $a = \sqrt{12}$, $b = \sqrt{18}$, $c = \sqrt{11}$; kök içleri sıralanır: $c < a < b$.
+
+@bolum s1 7 | Kök nedir, ne zaman tanımlıdır?
+::fikir
+$\sqrt[n]{a}$, $n$. kuvveti $a$ olan sayıdır ve $a^{1/n}$ ile aynıdır. **Çift dereceli** kökte içi **negatif olamaz**; karekök her zaman **negatif olmayan** sonuç verir: $\sqrt{16} = 4$.
+
+::duzey
+L1: $\sqrt{16} = 4$, çünkü $4^2 = 16$. $\sqrt[3]{-27} = -3$, çünkü $(-3)^3 = -27$. $\sqrt{-4}$ ise gerçek sayı değildir; hiçbir gerçek sayının karesi negatif olmaz. Tek dereceli köklerde (küp kök) negatif içe izin vardır.
+L2: Rasyonel üs: $\sqrt[n]{a^m} = a^{m/n}$. Bu eşitlik köklü işlemleri üs kurallarına çevirir. $\sqrt{x^2} = |x|$, $\sqrt[3]{x^3} = x$: çift dereceli kök mutlak değer verir. $x^2 = 16$ denkleminin kökleri $\pm 4$'tür ama $\sqrt{16}$ yalnız 4'tür.
+L3: "$\sqrt{x - 3}$ bir gerçek sayı belirttiğine göre" ifadesi $x \geq 3$ koşulunu verir; birden çok kök varsa koşulların kesişimini al. Payda kök içerirse ($\frac{1}{\sqrt{x - 3}}$) içi sıfır da olamaz: $x > 3$.
+
+::yanilgi m1 tip=kok-disi
+yanlis: $\sqrt{16} = \pm 4$
+neden: Karekök sembolü negatif olmayan kökü gösterir; $\pm$, $x^2 = 16$ denkleminin iki çözümünden gelir.
+dogru: $\sqrt{16} = 4$; $x^2 = 16 \Rightarrow x = \pm 4$.
+
+::soru c1 tip=kok-disi zorluk=1
+$\sqrt[3]{-27} + \sqrt{16}$ işleminin sonucu kaçtır?
+A) $-7$ || $\sqrt{16} = 4$ pozitiftir.
+B) $-1$ || İşaretleri kontrol et: $-3 + 4$.
++C) $1$ || Doğru: $-3 + 4 = 1$.
+D) $7$ || $\sqrt[3]{-27} = -3$, negatiftir.
+E) $13$ || $27$ ile $16$'yı toplamak kökleri vermez.
+kontrol: -3+4
+cozum: $\sqrt[3]{-27} = -3$ (tek dereceli kök negatif olabilir), $\sqrt{16} = 4$. Toplam 1.
+
+@bolum s2 10 | Kök dışına çıkarma ve işlemler
+::fikir
+Kök içini **tam kare × kalan** diye ayır, tam kareyi dışarı çıkar: $\sqrt{48} = 4\sqrt{3}$. Toplama–çıkarma **yalnız kök içi aynı** terimler arasında yapılır.
+
+::duzey
+L1: $\sqrt{48}$'in içinde 16 tam karesi saklı: $48 = 16 \cdot 3$. $\sqrt{16} = 4$ dışarı çıkar, 3 içeride kalır: $4\sqrt{3}$. Sonra $2\sqrt{3} + 3\sqrt{3} = 5\sqrt{3}$ tıpkı $2x + 3x = 5x$ gibi toplanır.
+L2: $\sqrt{a} \cdot \sqrt{b} = \sqrt{ab}$ ve $\frac{\sqrt{a}}{\sqrt{b}} = \sqrt{\frac{a}{b}}$ ($a, b > 0$). Dışarıdaki katsayı içeri karesiyle girer: $3\sqrt{2} = \sqrt{18}$. Ondalıklı kök içlerinde kesre çevir: $\sqrt{0{,}09} = \sqrt{\frac{9}{100}} = 0{,}3$.
+L3: Farklı dereceli kökler çarpılmadan önce derece EKOK'ta eşitlenir: $\sqrt{2} \cdot \sqrt[3]{2} = \sqrt[6]{2^3} \cdot \sqrt[6]{2^2} = \sqrt[6]{32}$. Ya da rasyonel üsle: $2^{1/2} \cdot 2^{1/3} = 2^{5/6}$. İkisi aynı yoldur.
+
+::ornek baslik="Benzer köklere getir"
+soru: $\sqrt{12} + \sqrt{27} - \sqrt{48}$ işleminin sonucu kaçtır?
+1. Her birini $\sqrt{3}$ cinsinden yaz: $\sqrt{12} = 2\sqrt{3}$, $\sqrt{27} = 3\sqrt{3}$, $\sqrt{48} = 4\sqrt{3}$. || Tam kareler: 4, 9, 16.
+2. Katsayıları topla: $(2 + 3 - 4)\sqrt{3} = \sqrt{3}$. || Benzer terimler gibi.
+cevap: $\sqrt{3}$
+
+::yanilgi m2 tip=kok-disi
+yanlis: $\sqrt{9} + \sqrt{16} = \sqrt{25}$
+neden: Kökler toplanırken içler toplanmaz: $3 + 4 = 7$, ama $\sqrt{25} = 5$.
+dogru: $\sqrt{a} + \sqrt{b} \neq \sqrt{a + b}$; yalnız çarpma ve bölmede kökler birleşir.
+
+::soru c2 tip=kok-disi zorluk=1
+$\sqrt{18} + \sqrt{50} - \sqrt{8}$ işleminin sonucu kaçtır?
+A) $4\sqrt{2}$ || $\sqrt{50} = 5\sqrt{2}$; yeniden topla.
++B) $6\sqrt{2}$ || Doğru: $3\sqrt{2} + 5\sqrt{2} - 2\sqrt{2}$.
+C) $8\sqrt{2}$ || $\sqrt{8}$'i çıkarmayı unuttun.
+D) $10\sqrt{2}$ || $\sqrt{8} = 2\sqrt{2}$ çıkarılmalı.
+E) $\sqrt{60}$ || Kök içleri toplanmaz.
+kontrol: 6*sqrt(2)
+cozum: $\sqrt{18} = 3\sqrt{2}$, $\sqrt{50} = 5\sqrt{2}$, $\sqrt{8} = 2\sqrt{2}$. $(3 + 5 - 2)\sqrt{2} = 6\sqrt{2}$.
+
+@bolum s3 8 | Eşlenik ve paydayı kökten kurtarma
+::fikir
+$\sqrt{a} - \sqrt{b}$'nin **eşleniği** $\sqrt{a} + \sqrt{b}$'dir; çarpımları kökten kurtulur: $(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b}) = a - b$.
+
+::duzey
+L1: İki kare farkı özdeşliği $(x - y)(x + y) = x^2 - y^2$'yi hatırla. $x = \sqrt{5}$, $y = \sqrt{3}$ alırsan $(\sqrt{5} - \sqrt{3})(\sqrt{5} + \sqrt{3}) = 5 - 3 = 2$: kök kayboldu. Paydada kök varsa pay ve paydayı eşlenikle çarpınca payda rasyonel olur.
+L2: $\frac{1}{\sqrt{a}}$ için eşlenik $\sqrt{a}$'dır: $\frac{1}{\sqrt{a}} = \frac{\sqrt{a}}{a}$. $\frac{1}{\sqrt{a} \pm \sqrt{b}}$ için ters işaretli toplam/farkla çarp. $\sqrt{a} \pm c$ için de aynı: $(\sqrt{5} + 2)(\sqrt{5} - 2) = 5 - 4 = 1$.
+L3: Eşlenik, pay ve paydayı aynı sayıyla çarpmak olduğundan değeri değiştirmez; yalnız biçimi değiştirir. Uzun kesir zincirlerinde ($\frac{1}{\sqrt{2} + 1} + \frac{1}{\sqrt{3} + \sqrt{2}} + \ldots$) her terimi eşlenikle açınca terimler iptal olur (teleskopik toplam).
+
+::ornek baslik="Paydayı rasyonel yap"
+soru: $\frac{4}{\sqrt{7} - \sqrt{3}}$ ifadesini sadeleştir.
+1. Pay ve paydayı $\sqrt{7} + \sqrt{3}$ ile çarp. || Paydanın eşleniği.
+2. Payda: $7 - 3 = 4$; ifade $\frac{4(\sqrt{7} + \sqrt{3})}{4}$. || İki kare farkı.
+3. $\sqrt{7} + \sqrt{3}$. || 4'ler sadeleşir.
+cevap: $\sqrt{7} + \sqrt{3}$
+
+::tamamla baslik="Eşlenik çarpımı"
+soru: $(\sqrt{5} + 2)(\sqrt{5} - 2)$ kaçtır?
+1. İki kare farkı: $(\sqrt{5})^2 - 2^2$.
+?2. $5 - 4 = 1$.
+cevap: $1$
+
+::yanilgi m3 tip=eslenik
+yanlis: $\frac{1}{\sqrt{5} - \sqrt{3}} = \frac{1}{\sqrt{5}} - \frac{1}{\sqrt{3}}$
+neden: Kesir paydadaki farka dağılmaz; bu yalnız payda için yanlış bir "parçalama"dır.
+dogru: Eşlenikle çarp: $\frac{\sqrt{5} + \sqrt{3}}{5 - 3} = \frac{\sqrt{5} + \sqrt{3}}{2}$.
+
+::soru c3 tip=eslenik zorluk=2
+$\frac{6}{\sqrt{5} + \sqrt{2}}$ ifadesi aşağıdakilerden hangisine eşittir?
+A) $\sqrt{5} - \sqrt{2}$ || Payda $5 - 2 = 3$; pay 6, sonuç 2 katı.
++B) $2\sqrt{5} - 2\sqrt{2}$ || Doğru: $\frac{6(\sqrt{5} - \sqrt{2})}{3}$.
+C) $3\sqrt{5} - 3\sqrt{2}$ || Paydayı 2 aldın; $5 - 2 = 3$.
+D) $2\sqrt{5} + 2\sqrt{2}$ || Eşlenik işareti terstir.
+E) $6\sqrt{3}$ || Kökler böyle birleşmez.
+kontrol: 6/(sqrt(5)+sqrt(2))
+cozum: $\frac{6}{\sqrt{5} + \sqrt{2}} \cdot \frac{\sqrt{5} - \sqrt{2}}{\sqrt{5} - \sqrt{2}} = \frac{6(\sqrt{5} - \sqrt{2})}{3} = 2\sqrt{5} - 2\sqrt{2}$.
+
+@bolum s4 8 | İç içe kökler
+::fikir
+$\sqrt{a + 2\sqrt{b}} = \sqrt{m} + \sqrt{n}$, burada **$m + n = a$** ve **$m \cdot n = b$**. Eksi işaretlide büyükten küçüğü çıkar: $\sqrt{a - 2\sqrt{b}} = \sqrt{m} - \sqrt{n}$ ($m > n$).
+
+::duzey
+L1: $(\sqrt{5} + \sqrt{2})^2 = 5 + 2 + 2\sqrt{10} = 7 + 2\sqrt{10}$. Demek ki $\sqrt{7 + 2\sqrt{10}} = \sqrt{5} + \sqrt{2}$. Toplamı 7, çarpımı 10 olan iki sayı arıyorsun: 5 ve 2.
+L2: Kök içindeki "2" katsayısını mutlaka görünür yap: $\sqrt{8 + \sqrt{60}} = \sqrt{8 + 2\sqrt{15}}$; toplamı 8, çarpımı 15: $\sqrt{5} + \sqrt{3}$. Eksi durumda sonuç pozitif olmalı; bu yüzden büyük kök önce yazılır.
+L3: Üst üste kökler rasyonel üsle çözülür: $\sqrt{2\sqrt{2\sqrt{2}}} = 2^{1/2} \cdot 2^{1/4} \cdot 2^{1/8} = 2^{7/8}$. Sonsuz iç içe köklerde $x = \sqrt{a + x}$ gibi kendini tekrar eden bir denklem kurulur; örneğin $\sqrt{6 + \sqrt{6 + \ldots}} = 3$.
+
+::ornek baslik="Toplamı ve çarpımı bul"
+soru: $\sqrt{7 + 2\sqrt{10}}$ ifadesini sadeleştir.
+1. Toplamı 7, çarpımı 10 olan iki pozitif sayı: 5 ve 2. || $m + n = 7$, $mn = 10$.
+2. $\sqrt{7 + 2\sqrt{10}} = \sqrt{5} + \sqrt{2}$. || Kontrol: $(\sqrt{5} + \sqrt{2})^2 = 7 + 2\sqrt{10}$ ✓
+cevap: $\sqrt{5} + \sqrt{2}$
+
+::tamamla baslik="Eksi işaretli"
+soru: $\sqrt{8 - 2\sqrt{15}}$ ifadesini sadeleştir.
+1. Toplamı 8, çarpımı 15: 5 ve 3.
+?2. Eksi durumda büyük önce: $\sqrt{5} - \sqrt{3}$. || Sonuç pozitif olmalı.
+cevap: $\sqrt{5} - \sqrt{3}$
+
+::soru c4 tip=ic-ice zorluk=2
+$\sqrt{9 - 2\sqrt{14}}$ ifadesi aşağıdakilerden hangisine eşittir?
++A) $\sqrt{7} - \sqrt{2}$ || Doğru: $7 + 2 = 9$, $7 \cdot 2 = 14$.
+B) $\sqrt{7} + \sqrt{2}$ || İşaret eksi olmalı.
+C) $\sqrt{14} - 3$ || $(\sqrt{14} - 3)^2 = 23 - 6\sqrt{14}$.
+D) $3 - \sqrt{14}$ || Negatif bir sayı; karekök negatif olamaz.
+E) $\sqrt{2} - \sqrt{7}$ || Negatif çıkar; büyük kökü önce yaz.
+kontrol: sqrt(9-2*sqrt(14))
+cozum: Toplamı 9, çarpımı 14 olan sayılar 7 ve 2. Eksi durumda büyük önce: $\sqrt{7} - \sqrt{2}$.
+
+@bolum s5 10 | Sıralama ve köklü denklemler
+::fikir
+**Sıralamada** katsayıyı içeri al ya da kök derecelerini eşitle. **Denklemde** kökü yalnız bırak, karesini al ve bulduğun kökü **mutlaka dene**: kare almak sahte kök doğurabilir.
+
+::duzey
+L1: $3\sqrt{2}$ ile $2\sqrt{5}$'i karşılaştırmak için katsayıları içeri al: $\sqrt{18}$ ve $\sqrt{20}$. Artık hangisinin büyük olduğu açık. $\sqrt{x} + 4 = 11$ denkleminde önce $\sqrt{x} = 7$ yaz, sonra kare al: $x = 49$.
+L2: Farklı dereceli köklerde dereceyi EKOK'ta eşitle: $\sqrt[3]{5}$ ile $\sqrt{3}$ için 6. dereceye çık: $\sqrt[6]{25}$ ve $\sqrt[6]{27}$. Yaklaşık değer için tam karelere bak: $8 < \sqrt{79} < 9$ çünkü $64 < 79 < 81$.
+L3: $\sqrt{x} + 13 = 8$ denkleminde $\sqrt{x} = -5$ olur; karekök negatife eşit olamayacağından çözüm yoktur. Kare almadan önce bu kontrolü yapmak sahte kökü baştan önler. İçinde değişken olan iki kök varsa birini yalnız bırakıp kare almayı iki kez tekrarlarsın; her seferinde tanım koşulunu yaz.
+
+::ornek baslik="Katsayıyı içeri al"
+soru: $a = 3\sqrt{2}$, $b = 2\sqrt{5}$, $c = \sqrt{17}$ sayılarını sırala.
+1. $a = \sqrt{9 \cdot 2} = \sqrt{18}$, $b = \sqrt{4 \cdot 5} = \sqrt{20}$, $c = \sqrt{17}$. || Katsayı karesiyle içeri girer.
+2. $17 < 18 < 20$. || Kök dereceleri aynı; içi büyük olan büyük.
+cevap: $c < a < b$
+
+::bosluk b1 cevap=18 tip=denklem zorluk=1
+$\sqrt{x - 2} + 5 = 9$ olduğuna göre $x$ kaçtır?
+cozum: $\sqrt{x - 2} = 4 \Rightarrow x - 2 = 16 \Rightarrow x = 18$. Dene: $\sqrt{16} + 5 = 9$ ✓
+
+::yanilgi m4 tip=denklem
+yanlis: $\sqrt{x} + 13 = 8$ ise $\sqrt{x} = -5$ ve $x = 25$.
+neden: Karekök negatif olamaz; kare alınca $-5$'in işareti kaybolur ve sahte kök oluşur. Dene: $\sqrt{25} + 13 = 18 \neq 8$.
+dogru: Denklemin gerçek sayılarda çözümü yoktur.
+
+::soru c5 tip=siralama zorluk=2
+$a = \sqrt[3]{5}$, $b = \sqrt{3}$, $c = \sqrt[6]{30}$ olduğuna göre doğru sıralama hangisidir?
++A) $a < b < c$ || Doğru: 6. kuvvetler $25 < 27 < 30$.
+B) $b < a < c$ || $a^6 = 25 < b^6 = 27$.
+C) $c < b < a$ || Dereceleri eşitle; $c$ en büyük.
+D) $a < c < b$ || $c^6 = 30 > 27$.
+E) $c < a < b$ || $c$ en büyüktür.
+cozum: Dereceleri 6'da eşitle: $a = \sqrt[6]{25}$, $b = \sqrt[6]{27}$, $c = \sqrt[6]{30}$. Sıralama $a < b < c$.
+
+::ozet
+- $\sqrt[n]{a} = a^{1/n}$; çift dereceli kökte içi ≥ 0, $\sqrt{x^2} = |x|$.
+- Tam kareyi dışarı çıkar; yalnız kök içi aynı terimler toplanır.
+- Paydadaki kökü eşlenikle kurtar: $(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b}) = a - b$.
+- $\sqrt{a \pm 2\sqrt{b}} = \sqrt{m} \pm \sqrt{n}$, $m + n = a$, $mn = b$.
+- Sıralamada katsayıyı içeri al, dereceleri eşitle; denklemde bulduğun kökü dene.
+
+@pratik
+- Çalışma sırası: önce 1'den 20'ye kadar tam kareleri ve 2, 3, 5 tabanlı küpleri ezberle; kök dışına çıkarma hızı bunlara bağlıdır. Sonra eşlenik ve iç içe köklere geç.
+- Sınav yaklaşımı: köklü ifadeli şıklar birbirine yakınsa her şıkkın yaklaşık değerini ($\sqrt{2} \approx 1{,}41$, $\sqrt{3} \approx 1{,}73$, $\sqrt{5} \approx 2{,}24$) hesaplayarak ele.
+- Paydada kök gördüğünde refleks: eşlenikle çarp. $\sqrt{a \pm 2\sqrt{b}}$ gördüğünde: toplamı $a$, çarpımı $b$ olan iki sayıyı ara.
+- En sık tuzaklar: $\sqrt{a} + \sqrt{b} = \sqrt{a + b}$ yazmak, $\sqrt{16} = \pm 4$ demek, köklü denklemde sahte kökü dışlamamak, eksi işaretli iç içe kökte küçük kökü önce yazmak.
+- Hedef süre soru başı 60 saniye. Konu testinden sonra Hatalarım'daki üslü–köklü sorularını birlikte tekrar et; iki konu sınavda aynı soruda buluşur.
+
+@kartlar
+- $\sqrt[n]{a^m}$ = ? :: $a^{m/n}$
+- $\sqrt{x^2}$ = ? :: $|x|$
+- $\sqrt{48}$ = ? :: $4\sqrt{3}$
+- $\sqrt{a} + \sqrt{b} = \sqrt{a + b}$ doğru mu? :: Hayır. Yalnız $\sqrt{a}\sqrt{b} = \sqrt{ab}$.
+- $(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b})$ = ? :: $a - b$
+- $\frac{1}{\sqrt{a}}$'yı rasyonel yap :: $\frac{\sqrt{a}}{a}$
+- $\sqrt{a + 2\sqrt{b}}$ = ? :: $\sqrt{m} + \sqrt{n}$; $m + n = a$, $mn = b$
+- $\sqrt[3]{5}$ ile $\sqrt{3}$ nasıl karşılaştırılır? :: 6. dereceye çıkar: $\sqrt[6]{25} < \sqrt[6]{27}$.
+
+@ozet
+- Köklü ifade rasyonel üslü bir sayıdır; çift dereceli kökte iç negatif olamaz ve karekök negatif olmayan değer verir.
+- Sadeleştirmede tam kare dışarı çıkar; toplama–çıkarma yalnız benzer köklerle yapılır.
+- Paydayı kökten kurtarmak için eşlenikle çarpılır; iki kare farkı kökü yok eder.
+- $\sqrt{a \pm 2\sqrt{b}}$ toplamı $a$, çarpımı $b$ olan sayılarla açılır.
+- Sıralamada katsayı içeri alınır ve dereceler eşitlenir; köklü denklemde bulunan kök mutlaka denenir.
+
+@aciklama
+Kendi cümlelerinle açıkla: (1) "Paydadaki $\sqrt{5} - \sqrt{3}$'ü neden $\sqrt{5} + \sqrt{3}$ ile çarparız?" (2) "$\sqrt{x} + 13 = 8$ denkleminin neden çözümü yoktur?"
+
+@havuz
+::soru h1 tip=kok-disi zorluk=2
+$\sqrt{0{,}09} + \sqrt{0{,}16} - \sqrt{0{,}01}$ işleminin sonucu kaçtır?
+A) $0{,}5$
++B) $0{,}6$
+C) $0{,}7$
+D) $0{,}8$
+E) $1$
+kontrol: 0.3+0.4-0.1
+cozum: $0{,}3 + 0{,}4 - 0{,}1 = 0{,}6$.
+
+::soru h2 tip=eslenik zorluk=2
+$(\sqrt{7} + \sqrt{3})(\sqrt{7} - \sqrt{3}) + (\sqrt{5} - 1)^2$ işleminin sonucu kaçtır?
++A) $10 - 2\sqrt{5}$
+B) $10 + 2\sqrt{5}$
+C) $8$
+D) $4$
+E) $10$
+kontrol: 10-2*sqrt(5)
+cozum: İlk çarpım $7 - 3 = 4$; $(\sqrt{5} - 1)^2 = 5 - 2\sqrt{5} + 1 = 6 - 2\sqrt{5}$. Toplam $10 - 2\sqrt{5}$.
+
+::soru h3 tip=ic-ice zorluk=3
+$\sqrt{11 + 2\sqrt{30}} - \sqrt{11 - 2\sqrt{30}}$ işleminin sonucu kaçtır?
+A) $2\sqrt{6}$
++B) $2\sqrt{5}$
+C) $2\sqrt{30}$
+D) $10$
+E) $2$
+kontrol: sqrt(11+2*sqrt(30))-sqrt(11-2*sqrt(30))
+cozum: $6 + 5 = 11$, $6 \cdot 5 = 30$: $(\sqrt{6} + \sqrt{5}) - (\sqrt{6} - \sqrt{5}) = 2\sqrt{5}$.
+
+::soru h4 tip=siralama zorluk=2
+$a = \sqrt{7}$, $b = \sqrt[3]{20}$, $c = 2{,}5$ olduğuna göre doğru sıralama hangisidir?
+A) $a < b < c$
+B) $a < c < b$
++C) $c < a < b$
+D) $b < c < a$
+E) $c < b < a$
+cozum: $a^2 = 7$ ve $c^2 = 6{,}25$ olduğundan $c < a$. 6. kuvvetler: $a^6 = 343$, $b^6 = 400$; $a < b$. Sıralama $c < a < b$.
+
+::soru h5 tip=denklem zorluk=2
+$\sqrt{3x + 1} = 5$ olduğuna göre $x$ kaçtır?
+A) 4
+B) 6
++C) 8
+D) 9
+E) 26
+kontrol: 24/3
+cozum: $3x + 1 = 25 \Rightarrow x = 8$. Dene: $\sqrt{25} = 5$ ✓

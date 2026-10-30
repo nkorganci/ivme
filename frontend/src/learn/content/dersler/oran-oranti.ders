@@ -1,0 +1,300 @@
+@ders oran-oranti
+baslik: Oran ve Orantı
+kisa: Oran–orantı
+sinav: TYT AYT
+unite: problemler
+sinif: 9
+sira: 400
+onkosul: birinci-derece-denklemler
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75 excel.ayt.matematik.c0b32de8d9a8ffca3f75 excel.ayt.matematik.3f49cb99b638ac0c1ce2
+hedef: Orantı sabitini ($k$) kullanarak orantı sorularını tek bilinmeyene indirmek; doğru ve ters orantıyı ayırt edip grafiğini yorumlamak; bir miktarı doğru ya da ters orantılı paylaştırmak; bileşik orantıyla işçi–makine–süre sorularını çözmek.
+neden: TYT'nin "Problemler" başlığı (2018–2026'da 100 çıkmış soru) en büyük matematik başlığıdır ve oran–orantı bütün problem türlerinin ortak dilidir. AYT'de oran–orantı "Temel Kavramlar" başlığının bir parçasıdır.
+kaynak: MEBİ TYT Konu Özeti — Oran-Orantı Kavramı ve Özellikleri, Oran-Orantı Problemleri | OGM 9. Sınıf Konu Özetleri 29–30 | 3 Adım TYT Matematik — Oran ve Orantı
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: oran | orantı | orantılı | ters orantı | doğru orantı | paylaştır | /\d+\s*:\s*\d+/ | orantı sabiti
+baslik-kurali: oran ve orantı | oran-orantı | /^9\.3\.5\.1/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: /\byas(\b|i\b|in|lar|ta|tan|ca)/ | % | /\byuzde(\b|si|sin|lik|ler)/ | /\bkm\b/ | /\bhiz(\b|la|i|in|lar|da|iy)/ | /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar
+
+@tip oran-ozellik 20 s1
+ad: Orantı sabiti ve orantı özellikleri
+ipucu: "$\frac{a}{2} = \frac{b}{3} = \frac{c}{5}$ ve $a + b + c = 50$", "$\frac{a}{b} = \frac{3}{5}$, $a + b = 40$".
+strateji: Eşit oranlara hemen $k$ de: $a = 2k$, $b = 3k$, $c = 5k$. Verilen toplam ya da fark $k$'yi verir. İçler çarpımı dışlar çarpımına eşittir; payların toplamı paydaların toplamına oranlanınca orantı sabiti değişmez.
+anahtar: = k | orantı sabiti | içler dışlar | içler çarpımı | a/b | a : b
+
+@tip dogru-ters 25 s2
+ad: Doğru ve ters orantı
+ipucu: "$x$ ile $y$ ters orantılı; $x = 4$ iken $y = 9$", hız–zaman, kişi–süre, fiyat–miktar.
+strateji: Önce ilişkiyi belirle: biri artınca diğeri de aynı oranda artıyorsa doğru ($\frac{y}{x} = k$), azalıyorsa ters ($x \cdot y = k$). $k$'yi verilen çiftten bul, sonra istenen değeri hesapla. "$x^2$ ile doğru orantılı" gibi ifadelerde $\frac{y}{x^2} = k$.
+anahtar: ters orantılı | doğru orantılı | ile orantılı | orantılıdır
+
+@tip paylastirma 30 s3
+ad: Orantılı paylaştırma
+ipucu: "360 TL'yi 2, 3, 4 ile doğru orantılı paylaştır", "yaşlarıyla ters orantılı", "en çok alan ile en az alan arasındaki fark".
+strateji: Doğru orantıda paylar $2k, 3k, 4k$; ters orantıda $\frac{k}{2}, \frac{k}{3}, \frac{k}{6}$ — paydaların EKOK'uyla çarpıp tam sayıya çevir. Toplam ya da fark denkleminden $k$'yi bul, istenen payı yaz.
+anahtar: paylaştır | paylaşı | ile ters orantılı | ile doğru orantılı | en çok alan | en az alan | payına
+
+@tip bilesik 25 s4
+ad: Bileşik orantı: işçi, makine, süre
+ipucu: "6 işçi günde 8 saat çalışarak 10 günde…", "5 makine 4 saatte 600 parça…".
+strateji: Yapılan iş, çalışan sayısı × günlük saat × gün ile doğru orantılıdır: $\frac{\text{işçi} \cdot \text{saat} \cdot \text{gün}}{\text{iş}}$ sabittir. İki durumu bu oranla eşitle; ters orantılı çiftlerin çarpımı sabit kalır.
+anahtar: makine | /\d+ isci/ | /gunde \d+ saat/ | parça üret
+
+@ustalik
+oran-ozellik 1 1-2
+dogru-ters 2 1-3
+paylastirma 2 1-3
+bilesik 1 1-3
+
+@oturum Oran, orantı ve orantı türleri | s1 s2
+@oturum Paylaştırma ve bileşik orantı | s3 s4
+
+@ontest
+::soru o1 tip=oran-ozellik zorluk=1
+$\frac{a}{b} = \frac{3}{5}$ ve $a + b = 40$ olduğuna göre $a$ kaçtır?
+A) 12 || $a = 3k$, $b = 5k$; $8k = 40$.
++B) 15 || Doğru: $k = 5$, $a = 3k = 15$.
+C) 18 || $k$'yi yanlış buldun.
+D) 24 || Bu $b$'ye yakın; $b = 25$.
+E) 25 || Bu $b$'dir.
+kontrol: 40*3/8
+cozum: $a = 3k$, $b = 5k$; $8k = 40$, $k = 5$; $a = 15$.
+
+::soru o2 tip=dogru-ters zorluk=1
+$x$ ile $y$ ters orantılıdır. $x = 4$ iken $y = 9$ olduğuna göre $x = 6$ iken $y$ kaçtır?
+A) 3 || Ters orantıda çarpım sabittir: $4 \cdot 9 = 36$.
+B) 4 || $36 : 6$ hesabını kontrol et.
++C) 6 || Doğru: $x \cdot y = 36$, $y = 6$.
+D) 12 || Ters orantıda $x$ artınca $y$ azalır.
+E) $13{,}5$ || Doğru orantı gibi hesapladın.
+kontrol: 4*9/6
+cozum: Ters orantıda $x \cdot y = k = 36$. $x = 6$ için $y = 6$.
+
+::soru o3 tip=paylastirma zorluk=2
+360 TL, 2, 3 ve 4 sayılarıyla doğru orantılı olarak paylaştırılıyor. En büyük pay kaç TL'dir?
+A) 80 || Bu en küçük pay ($2k$).
+B) 120 || Bu ortanca pay ($3k$).
++C) 160 || Doğru: $9k = 360$, $4k = 160$.
+D) 180 || Paranın yarısı; oranlar 2:3:4.
+E) 240 || $k = 40$; $4k$ hesapla.
+kontrol: 360/9*4
+cozum: Paylar $2k, 3k, 4k$; $9k = 360$, $k = 40$; en büyük pay $4k = 160$ TL.
+
+@bolum s1 9 | Oran, orantı ve orantı sabiti
+::fikir
+Eşit oranlar gördüğünde hemen **$k$** de: $\frac{a}{2} = \frac{b}{3} = \frac{c}{5} = k$ ise $a = 2k$, $b = 3k$, $c = 5k$. Üç bilinmeyen tek bilinmeyene iner.
+
+::duzey
+L1: Bir tarifte 2 bardak una 3 bardak süt konuyorsa un ile sütün oranı $2 : 3$'tür. Tarifi büyütürsen ikisi aynı katla artar: 4 una 6 süt, 6 una 9 süt. Bu "kat" $k$'dir: un $2k$, süt $3k$.
+L2: Oran aynı türden iki çokluğun bölümüdür; iki oranın eşitliği orantıdır. $\frac{a}{b} = \frac{c}{d}$ ise içler çarpımı dışlar çarpımına eşittir: $a \cdot d = b \cdot c$. Orantı sabiti $k$ ile her terimi yazmak toplam, fark ve çarpım sorularını tek denkleme indirir.
+L3: Orantının iki kullanışlı özelliği: (1) $\frac{a}{b} = \frac{c}{d} = k$ ise $\frac{a + c}{b + d} = k$ (paylar toplamı / paydalar toplamı); (2) oranlar çarpılınca sabit karesi alınır: $\frac{a}{b} \cdot \frac{c}{d} = k^2$. "$\frac{a + b}{a - b} = \frac{7}{3}$" gibi sorularda içler–dışlar çarpımı oranı doğrudan verir.
+
+::ornek baslik="Üç terimli orantı"
+soru: $\frac{a}{2} = \frac{b}{3} = \frac{c}{5}$ ve $a + b + c = 50$ olduğuna göre $c$ kaçtır?
+1. $a = 2k$, $b = 3k$, $c = 5k$. || Eşit oranlara $k$ de.
+2. $2k + 3k + 5k = 10k = 50$, $k = 5$. || Toplam denklemi.
+3. $c = 5k = 25$. || İstenen terim.
+cevap: $25$
+
+::yanilgi m1 tip=oran-ozellik
+yanlis: $\frac{a}{b} = \frac{3}{5}$ ise $a = 3$ ve $b = 5$'tir.
+neden: Oran yalnız ilişkiyi verir; $a = 6$, $b = 10$ da aynı oranı taşır.
+dogru: $a = 3k$ ve $b = 5k$; $k$ başka bir bilgiden bulunur.
+
+::soru c1 tip=oran-ozellik zorluk=1
+$\frac{a}{3} = \frac{b}{4} = \frac{c}{5}$ ve $a + b + c = 36$ olduğuna göre $b$ kaçtır?
+A) 9 || Bu $a$'dır ($3k$).
++B) 12 || Doğru: $12k = 36$, $b = 4k = 12$.
+C) 15 || Bu $c$'dir ($5k$).
+D) 16 || $k = 3$; $b = 4 \cdot 3$.
+E) 18 || Toplamı ikiye böldün; $k$'yi bul.
+kontrol: 36/12*4
+cozum: $a = 3k$, $b = 4k$, $c = 5k$; $12k = 36 \Rightarrow k = 3$; $b = 4k = 12$.
+
+@bolum s2 9 | Doğru ve ters orantı
+::fikir
+**Doğru orantı:** biri kaç katına çıkarsa diğeri de o kadar katına çıkar; $\frac{y}{x} = k$ (grafik: orijinden geçen doğru). **Ters orantı:** biri kaç katına çıkarsa diğeri o kadar katına bölünür; $x \cdot y = k$ (grafik: hiperbol).
+
+::grafik alt="Doğru orantı y = 2x orijinden geçen doğru; ters orantı y = 12/x eğrisi." aciklama="Mavi: doğru orantı $y = 2x$. Kırmızı: ters orantı $x \cdot y = 12$."
+x: 0 8
+y: 0 14
+f: 2x | navy | doğru orantı $y = 2x$
+f: 12/x | red | ters orantı $xy = 12$ | 0.5 8
+nokta: 2 6 | (2, 6) | red
+nokta: 3 6 | (3, 6) | navy
+
+::tablo baslik="Günlük hayatta doğru ve ters orantı"
+| Doğru orantı ($\frac{y}{x} = k$) | Ters orantı ($x \cdot y = k$) |
+| Alınan ürün miktarı – ödenen para | Hız – zaman (yol sabitken) |
+| Hız – alınan yol (süre sabitken) | İşçi sayısı – işin bitme süresi |
+| Çalışma süresi – yapılan iş | Kişi sayısı – yiyeceğin yetme süresi |
+
+::duzey
+L1: 1 kilo elma 20 TL ise 3 kilo 60 TL'dir: miktar 3 katına çıktı, para da 3 katına çıktı (doğru orantı). Aynı yolu 2 kat hızla gidersen yarı sürede varırsın (ters orantı).
+L2: Doğru orantıda $\frac{y_1}{x_1} = \frac{y_2}{x_2}$, ters orantıda $x_1 y_1 = x_2 y_2$. Önce soruda "biri artınca diğeri ne yapıyor?" sorusunu cevapla; formül ondan sonra gelir. Kuvvetli ilişkiler de olabilir: $y$, $x^2$ ile doğru orantılıysa $\frac{y}{x^2} = k$.
+L3: Grafikten ilişki okunur: orijinden geçen doğru doğru orantıdır; orijinden geçmeyen doğru ($y = 2x + 3$) orantı **değildir**. Ters orantının grafiği eksenlere yaklaşan bir eğridir ve her noktasında $x \cdot y$ aynıdır.
+
+::ornek baslik="Hız ve zaman"
+soru: Bir araç bir yolu 80 km/sa hızla 6 saatte gidiyor. Aynı yolu 120 km/sa hızla kaç saatte gider?
+1. Yol sabit; hız artınca süre azalır: ters orantı. || İlişkiyi önce belirle.
+2. $80 \cdot 6 = 120 \cdot t$. || Çarpım (yol) sabit.
+3. $t = 4$ saat. || Kontrol: hız 1,5 katı, süre 1,5'e bölündü.
+cevap: 4 saat
+
+::yanilgi m2 tip=dogru-ters
+yanlis: $y = 2x + 3$ ilişkisinde $x$ ile $y$ doğru orantılıdır, çünkü biri artınca diğeri de artar.
+neden: Doğru orantıda oran sabit olmalı; $x = 1$ için $\frac{y}{x} = 5$, $x = 2$ için $\frac{7}{2}$.
+dogru: Yalnız $y = kx$ biçimi (orijinden geçen doğru) doğru orantıdır.
+
+::soru c2 tip=dogru-ters zorluk=2
+Bir araç bir yolu 75 km/sa hızla 4 saatte gidiyor. Aynı yolu 120 km/sa hızla giderse kaç saat erken varır?
+A) 1 || Yeni süre $2{,}5$ saat; farkı yeniden hesapla.
++B) $1{,}5$ || Doğru: yeni süre $300 : 120 = 2{,}5$ saat; $4 - 2{,}5 = 1{,}5$.
+C) 2 || Hesabı kontrol et: $300 : 120 = 2{,}5$.
+D) $2{,}5$ || Bu yeni süredir; istenen fark.
+E) $6{,}4$ || Doğru orantı gibi hesapladın; hız artınca süre azalır.
+kontrol: 4-75*4/120
+cozum: Yol $75 \cdot 4 = 300$ km. Yeni süre $300 : 120 = 2{,}5$ saat; $4 - 2{,}5 = 1{,}5$ saat erken varır.
+
+@bolum s3 10 | Orantılı paylaştırma
+::fikir
+**Doğru orantılı** paylaşımda paylar $2k, 3k, 4k$; **ters orantılı** paylaşımda $\frac{k}{2}, \frac{k}{3}, \frac{k}{6}$. Ters orantıda paydaların EKOK'uyla çarpınca paylar tam sayılarla yazılır.
+
+::duzey
+L1: Üç kişi 2, 3 ve 4 saat çalışıp 360 TL kazandıysa parayı çalışma süreleriyle doğru orantılı bölersin: toplam 9 "pay" var, her pay 40 TL. 2 saat çalışan 80, 4 saat çalışan 160 TL alır.
+L2: Ters orantıda büyük sayıya küçük pay düşer: yaşlarıyla ters orantılı paylaşımda en büyük kardeş en az alır. $\frac{k}{3}, \frac{k}{4}, \frac{k}{6}$ paylarını EKOK(3, 4, 6) = 12 ile genişlet: $4m, 3m, 2m$. Artık doğru orantı gibi çözülür.
+L3: Fark verilen sorularda ($5k - 3k = 4800$) toplamı bulmadan $k$ bulunur. "Hem ile doğru hem ile ters orantılı" sorularda pay $= k \cdot \frac{\text{doğru}}{\text{ters}}$ biçiminde yazılır.
+
+::ornek baslik="MEBİ örneği: cevizler ters orantılı"
+soru: Furkan, Fatih ve Feyza 144 cevizi sırasıyla 3, 4 ve 6 ile ters orantılı paylaşıyor. En az ceviz alan kaç ceviz alır?
+1. Paylar $\frac{k}{3}, \frac{k}{4}, \frac{k}{6}$; EKOK 12 ile: $4m, 3m, 2m$. || Ters orantıyı tam sayılara çevir.
+2. $9m = 144$, $m = 16$. || Toplam denklemi.
+3. En az alan, en büyük sayıya karşılık gelen Feyza: $2m = 32$ ceviz. || Ters orantıda büyük sayı küçük pay.
+cevap: 32 ceviz
+
+::strateji tip=paylastirma baslik="Paylaştırma kalıbı"
+ipucu: "… ile doğru/ters orantılı paylaştırılıyor"
+1. Payları $k$ ile yaz (ters orantıda $\frac{k}{\text{sayı}}$).
+2. Ters orantıda paydaların EKOK'uyla genişletip tam sayılı paylara çevir.
+3. Toplam ya da fark denkleminden $k$'yi bul.
+4. İstenen kişinin payını yaz; en çok/en az kimin aldığını ilişkiden kontrol et.
+
+::yanilgi m3 tip=paylastirma
+yanlis: Yaşlarıyla ters orantılı paylaşımda en büyük kardeş en çok parayı alır.
+neden: Ters orantıda sayı büyüdükçe pay küçülür.
+dogru: En büyük kardeş en az, en küçük kardeş en çok alır.
+
+::soru c3 tip=paylastirma zorluk=2
+Bir miktar para Ali, Can ve Ece'ye yaşları olan 2, 3 ve 6 ile ters orantılı olarak paylaştırılıyor. Ali 90 TL aldığına göre paylaştırılan toplam para kaç TL'dir?
+A) 150 || Paylar 90, 60, 30.
++B) 180 || Doğru: $\frac{k}{2} = 90$, $k = 180$; toplam $90 + 60 + 30$.
+C) 210 || Can'ın payı $\frac{180}{3} = 60$.
+D) 270 || Doğru orantılı paylaştırdın.
+E) 330 || Hesabı kontrol et.
+kontrol: 180/2+180/3+180/6
+cozum: Paylar $\frac{k}{2}, \frac{k}{3}, \frac{k}{6}$. $\frac{k}{2} = 90 \Rightarrow k = 180$. Toplam $90 + 60 + 30 = 180$ TL.
+
+@bolum s4 8 | Bileşik orantı: işçi, makine ve süre
+::fikir
+Yapılan iş **çalışan sayısı × günlük saat × gün** ile doğru orantılıdır. İki durum için $\dfrac{\text{işçi} \cdot \text{saat} \cdot \text{gün}}{\text{iş}}$ oranı aynıdır.
+
+::duzey
+L1: 8 işçi bir duvarı 12 günde boyuyorsa iş "$8 \cdot 12 = 96$ işçi-günü" tutar. 6 işçiyle aynı iş yine 96 işçi-günü ister: $96 : 6 = 16$ gün.
+L2: Birden çok değişken değişiyorsa iş miktarını "işçi × saat × gün" birimiyle hesapla: 6 işçi günde 8 saat 10 gün çalışırsa iş $6 \cdot 8 \cdot 10 = 480$ işçi-saattir. Aynı iş 8 işçiyle günde 5 saatte $480 : 40 = 12$ günde biter.
+L3: İş miktarı da değişiyorsa oran kur: $\frac{5 \cdot 4}{600} = \frac{3 \cdot 6}{x}$. İşçilerin güçleri farklıysa (biri diğerinin 2 katı hızlı) güçlü işçiyi 2 işçi say. Bu fikir işçi–havuz problemlerine doğrudan taşınır.
+
+::ornek baslik="MEBİ örneği: duvar boyama"
+soru: Aynı güçteki 8 işçinin 12 günde boyadığı bir duvarı 6 işçi kaç günde boyar?
+1. İşçi azaldıkça süre artar: ters orantı. || İlişkiyi belirle.
+2. $8 \cdot 12 = 6 \cdot x$. || İşçi-günü sabit.
+3. $x = 16$ gün.
+cevap: 16 gün
+
+::tamamla baslik="Makine ve parça"
+soru: 5 makine 4 saatte 600 parça üretiyor. Aynı güçteki 3 makine 6 saatte kaç parça üretir?
+1. Bir makinenin bir saatlik üretimi: $\frac{600}{5 \cdot 4} = 30$ parça.
+?2. 3 makine 6 saatte: $3 \cdot 6 \cdot 30 = 540$ parça.
+cevap: 540
+
+::soru c4 tip=bilesik zorluk=2
+6 işçi günde 8 saat çalışarak bir işi 10 günde bitiriyor. Aynı güçteki 8 işçi günde 5 saat çalışarak aynı işi kaç günde bitirir?
+A) 8 || İş $480$ işçi-saat; günlük $40$.
+B) 10 || Günlük çalışma 48'den 40 işçi-saate düştü.
+C) $10{,}5$ || Hesabı yeniden yap.
++D) 12 || Doğru: $480 : (8 \cdot 5) = 12$.
+E) 15 || İşçi sayısının arttığını unuttun.
+kontrol: 6*8*10/(8*5)
+cozum: İş $6 \cdot 8 \cdot 10 = 480$ işçi-saat. Yeni günlük çalışma $8 \cdot 5 = 40$ işçi-saat; $480 : 40 = 12$ gün.
+
+::ozet
+- Eşit oranlara $k$ de; toplam/fark $k$'yi verir.
+- Doğru orantı $\frac{y}{x} = k$ (orijinden geçen doğru), ters orantı $xy = k$.
+- Paylaştırma: doğru orantıda $ak$, ters orantıda $\frac{k}{a}$ → EKOK ile tam sayıya çevir.
+- Bileşik orantı: işçi × saat × gün / iş sabittir.
+
+@pratik
+- Çalışma sırası: önce her soruda "doğru mu ters mi?" kararını yüksek sesle ver (on soruluk hızlı karar alıştırması), sonra paylaştırma ve bileşik orantıya geç.
+- Sınav yaklaşımı: "$\frac{a}{2} = \frac{b}{3}$" ya da "2'ye 3 oranında" görünce kalemin ilk iş $2k$ ve $3k$ yazsın; bilinmeyen sayısını bire indirmek hızın sırrıdır.
+- Ters orantılı paylaşımda paydaları EKOK'la tam sayıya çevir; kesirlerle uğraşma.
+- En sık tuzaklar: oranı değerin kendisi sanmak ($a = 3$, $b = 5$), $y = 2x + 3$'ü doğru orantı saymak, ters orantıda en büyük sayıya en büyük payı vermek.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra çıkmış sorular setini çöz; yeni nesil sorularda tablo verilmişse önce $k$'yi tablodan oku.
+
+@kartlar
+- $\frac{a}{2} = \frac{b}{3} = \frac{c}{5}$ ise :: $a = 2k$, $b = 3k$, $c = 5k$
+- İçler–dışlar çarpımı :: $\frac{a}{b} = \frac{c}{d} \Rightarrow ad = bc$
+- Doğru orantı :: $\frac{y}{x} = k$; grafik orijinden geçen doğru.
+- Ters orantı :: $x \cdot y = k$; grafik hiperbol.
+- 3, 4, 6 ile ters orantılı paylar :: $\frac{k}{3}, \frac{k}{4}, \frac{k}{6}$ → $4m, 3m, 2m$
+- Bileşik orantı (işçi soruları) :: $\frac{\text{işçi} \cdot \text{saat} \cdot \text{gün}}{\text{iş}}$ sabit
+- Yol sabitken hız ile zaman :: Ters orantılı.
+
+@ozet
+- Orantılı çoklukları $k$ ile yazmak problemi tek bilinmeyene indirir.
+- Doğru ve ters orantı, bir çokluk artınca diğerinin aynı oranda artması ya da azalmasıyla ayırt edilir.
+- Orantılı paylaştırmada ters orantılı paylar EKOK ile tam sayılı paylara çevrilir.
+- İşçi, makine ve süre soruları "işçi × saat × gün" iş birimiyle bileşik orantıdır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Hız ile zaman neden ters orantılıdır, hangi şart altında?" (2) "144 ceviz 3, 4, 6 ile ters orantılı paylaşılınca neden en az ceviz 6'ya karşılık gelen kişiye düşer?"
+
+@havuz
+::soru h1 tip=oran-ozellik zorluk=2
+$\frac{a + b}{a - b} = \frac{7}{3}$ olduğuna göre $\frac{a}{b}$ kaçtır?
+A) 2
++B) $\frac{5}{2}$
+C) 3
+D) $\frac{7}{3}$
+E) $\frac{10}{3}$
+kontrol: 10/4
+cozum: İçler–dışlar: $3a + 3b = 7a - 7b \Rightarrow 10b = 4a \Rightarrow \frac{a}{b} = \frac{5}{2}$.
+
+::soru h2 tip=dogru-ters zorluk=2
+$y$, $x^2$ ile doğru orantılıdır. $x = 2$ iken $y = 12$ olduğuna göre $x = 5$ iken $y$ kaçtır?
+A) 30
+B) 50
+C) 60
++D) 75
+E) 150
+kontrol: 3*25
+cozum: $\frac{y}{x^2} = \frac{12}{4} = 3$. $x = 5$ için $y = 3 \cdot 25 = 75$.
+
+::soru h3 tip=paylastirma zorluk=2
+Bir miras üç kardeşe 3, 4 ve 5 sayılarıyla doğru orantılı paylaştırılıyor. En çok alan ile en az alan arasındaki fark 4800 TL olduğuna göre miras kaç TL'dir?
+A) 19200
+B) 24000
++C) 28800
+D) 32000
+E) 36000
+kontrol: 12*2400
+cozum: $5k - 3k = 2k = 4800$, $k = 2400$. Miras $12k = 28800$ TL.
+
+::soru h4 tip=bilesik zorluk=2
+Aynı güçteki 4 makine 5 saatte 800 parça üretiyor. Bu makinelerden 6 tanesi 3 saatte kaç parça üretir?
+A) 480
+B) 600
+C) 640
++D) 720
+E) 960
+kontrol: 800/(4*5)*6*3
+cozum: Bir makine bir saatte $\frac{800}{20} = 40$ parça üretir. $6 \cdot 3 \cdot 40 = 720$.

@@ -1,0 +1,293 @@
+@ders olasilik
+baslik: Olasılık: Basit Olayların Olasılıkları
+kisa: Olasılık
+sinav: TYT AYT
+unite: sayma-olasilik
+sinif: 10
+sira: 830
+onkosul: kombinasyon
+kategori: excel.tyt.matematik.9442d82c159081577c80 excel.ayt.matematik.9442d82c159081577c80
+hedef: Deney, çıktı, örnek uzay ve olay kavramlarını kullanmak; eş olası çıktılarda $P(A) = \frac{s(A)}{s(E)}$ ile olasılık hesaplamak; tümleyen ($P(A') = 1 - P(A)$) ve birleşim ($P(A \cup B)$) kurallarını uygulamak; zar, para, kart ve torba sorularında saymayı olasılığa çevirmek.
+neden: Olasılık 2018–2026'da TYT'de 9, AYT'de 9 çıkmış soruyla iki sınavda da düzenli bir konudur ve sayma bilgisini doğrudan puana çevirir. Örnek uzayı doğru yazan öğrenci soruların çoğunu iki sayının oranına indirir.
+kaynak: MEBİ TYT Konu Özeti — Olasılıkta Temel Kavramlar, Basit Olayların Olasılıkları | OGM 10. Sınıf Konu Özetleri 05–08 — Basit Olayların Olasılığı | OGM 10. Sınıf Ders Anlatım Sunuları 03–06
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: olasılık | olasılığı | rastgele | örnek uzay | zar | madeni para | madenî para | torba | bilye | çekil | kart
+baslik-kurali: /^10\.1\.2/ | basit olayların olasılıkları | olasılıkta temel kavramlar | olasılık
+
+@tip ornek-uzay 20 s1
+ad: Deney, örnek uzay ve olay
+ipucu: "Üç madenî para atıldığında örnek uzay", "iki zar atıldığında toplamın 8 olduğu olay".
+strateji: Örnek uzayı yaz ya da say: $n$ para için $2^n$, $n$ zar için $6^n$ çıktı. İki zarda çıktılar sıralı ikilidir; $(2, 3)$ ile $(3, 2)$ farklıdır. Olay, örnek uzayın istenen koşulu sağlayan alt kümesidir.
+anahtar: örnek uzay | eleman sayısı | çıktı | olay | iki zar | madeni para
+
+@tip basit-olasilik 30 s2
+ad: Basit olayların olasılığı
+ipucu: "Bir zar atıldığında 5'ten küçük gelme", "1–50 numaralı kartlardan 7'nin katı".
+strateji: Çıktılar eş olasıysa $P(A) = \frac{s(A)}{s(E)}$. Önce örnek uzayın eleman sayısını, sonra istenen çıktıları say. Renkler değil, bilyelerin kendisi eş olasıdır.
+anahtar: olasılığı kaçtır | gelme olasılığı | olma olasılığı | rastgele seçilen
+
+@tip tumleyen-birlesim 25 s3
+ad: Tümleyen ve birleşim
+ipucu: "En az birinin 6 gelme olasılığı", "3'ün ya da 5'in katı olma", "hiçbirini bilmeme".
+strateji: "En az bir" için $1 - P(\text{hiç})$. "A ya da B" için $P(A \cup B) = P(A) + P(B) - P(A \cap B)$; ayrık olaylarda kesişim 0'dır. Yüzdelerle verilen sorularda Venn şeması kur.
+anahtar: en az bir | en az birinin | veya | ya da | hiçbirini | olmama
+
+@tip sayma-olasilik 25 s4
+ad: Olasılıkta sayma (kombinasyon ve permütasyon)
+ipucu: "Torbadan aynı anda 3 bilye çekiliyor", "5 kişi sıralanınca A ile B'nin yan yana olma olasılığı".
+strateji: İstenen durumları ve tüm durumları aynı yöntemle say: aynı anda çekilişte kombinasyon, sıralamada permütasyon. Sonra oranla; sadeleştirmeyi en sona bırak.
+anahtar: aynı anda | çekiliyor | sıralanıyor | dizil | rastgele seçilen
+
+@ustalik
+ornek-uzay 1 1-2
+basit-olasilik 2 1-3
+tumleyen-birlesim 2 1-3
+sayma-olasilik 1 1-3
+
+@oturum Örnek uzay ve basit olasılık | s1 s2
+@oturum Tümleyen, birleşim ve sayma | s3 s4
+
+@ontest
+::soru o1 tip=ornek-uzay zorluk=1
+Üç madenî para birlikte atıldığında örnek uzayın eleman sayısı kaçtır?
++A) 8 || Doğru: $2^3 = 8$.
+B) 9 || $3^2$ değil; her para 2 sonuç verir.
+C) 12 || Hesabı kontrol et.
+D) 16 || Bu dört para içindir.
+E) 27 || $3^3$ değil; her paranın 2 yüzü vardır.
+kontrol: 2^3
+cozum: Her para 2 sonuç verir: $2 \cdot 2 \cdot 2 = 8$.
+
+::soru o2 tip=basit-olasilik zorluk=1
+Bir zar atıldığında üst yüze 5'ten küçük bir sayı gelme olasılığı kaçtır?
+A) $\frac{1}{3}$ || 5'ten küçükler 1, 2, 3, 4'tür.
+B) $\frac{1}{2}$ || Hesabı kontrol et: 4 çıktı.
+C) $\frac{5}{9}$ || Örnek uzay 6 elemanlıdır.
++D) $\frac{2}{3}$ || Doğru: $\frac{4}{6}$.
+E) $\frac{5}{6}$ || 5 dahil değil.
+kontrol: 4/6
+cozum: 5'ten küçükler $\{1, 2, 3, 4\}$: $\frac{4}{6} = \frac{2}{3}$.
+
+::soru o3 tip=tumleyen-birlesim zorluk=2
+İki zar birlikte atıldığında en az birinin 6 gelme olasılığı kaçtır?
+A) $\frac{1}{6}$ || İki zar var; tümleyeni kullan.
+B) $\frac{5}{18}$ || Yalnız bir zarın 6 geldiği 10 durumu saydın; $(6, 6)$ da en az bir 6'dır.
++C) $\frac{11}{36}$ || Doğru: $1 - \frac{25}{36}$.
+D) $\frac{1}{3}$ || $\frac{1}{6} + \frac{1}{6}$; (6, 6) iki kez sayıldı.
+E) $\frac{25}{36}$ || Bu hiç 6 gelmeme olasılığıdır.
+kontrol: 1-25/36
+cozum: Hiç 6 gelmemesi $\frac{5}{6} \cdot \frac{5}{6} = \frac{25}{36}$; en az bir 6: $1 - \frac{25}{36} = \frac{11}{36}$.
+
+@bolum s1 8 | Deney, örnek uzay ve olay
+::fikir
+**Deney** tekrarlanabilir süreç, **çıktı** her bir sonuç, **örnek uzay** $E$ tüm çıktıların kümesi, **olay** $E$'nin her alt kümesidir. $n$ para atılınca $s(E) = 2^n$, $n$ zar atılınca $s(E) = 6^n$.
+
+::tablo baslik="İki zarın toplamları (satır: 1. zar, sütun: 2. zar)"
+| + | 1 | 2 | 3 | 4 | 5 | 6 |
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+| 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+| 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+
+::duzey
+L1: Bir para atmak bir deneydir; "yazı" ve "tura" çıktılardır, $E = \{Y, T\}$. İki para atınca $E = \{YY, YT, TY, TT\}$: 4 çıktı. YT ile TY farklıdır, çünkü paralar farklıdır.
+L2: Olaylar kümeler gibidir: kesin olay $E$, imkânsız olay $\varnothing$; ortak çıktısı olmayan olaylar ayrıktır. İki zar sorularında 36 hücreli tabloyu düşün; istenen toplamın kaç hücrede geçtiğini say.
+L3: Bir zarı iki kez atmak ile iki zarı birlikte atmak aynı örnek uzayı verir ($6^2 = 36$). Toplamı 7 olan çıktılar en çoktur (6 tane); bu yüzden toplam 7 en olası toplamdır.
+
+::ornek baslik="İki zarda toplam"
+soru: İki zar birlikte atıldığında üst yüzlerdeki sayıların toplamının 8 olduğu olayın elemanlarını yaz.
+1. Toplamı 8 olan sıralı ikililer: $(2, 6), (3, 5), (4, 4), (5, 3), (6, 2)$. || Birinci zar 2'den 6'ya.
+2. Olayın eleman sayısı 5. || $(4, 4)$ bir kez yazılır.
+cevap: 5 eleman
+
+::yanilgi m1 tip=ornek-uzay
+yanlis: İki zar atıldığında $(2, 3)$ ile $(3, 2)$ aynı çıktıdır; örnek uzay 21 elemanlıdır.
+neden: Zarlar farklıdır (birinci ve ikinci zar); 36 sıralı ikilinin her biri eş olasıdır.
+dogru: $s(E) = 36$; $(2, 3)$ ve $(3, 2)$ iki ayrı çıktıdır.
+
+::soru c1 tip=ornek-uzay zorluk=1
+İki zar birlikte atılıyor. Üst yüzlerdeki sayıların toplamının 5 olduğu olayın eleman sayısı kaçtır?
+A) 3 || $(1, 4)$ ile $(4, 1)$ ayrı çıktılardır.
++B) 4 || Doğru: $(1, 4), (2, 3), (3, 2), (4, 1)$.
+C) 5 || Hesabı kontrol et.
+D) 6 || Bu toplamın 7 olduğu olaydır.
+E) 8 || Fazla.
+kontrol: 4
+cozum: Toplamı 5 olan sıralı ikililer: $(1, 4), (2, 3), (3, 2), (4, 1)$: 4 eleman.
+
+@bolum s2 9 | Basit olasılık
+::fikir
+Çıktılar **eş olası** ise $P(A) = \frac{s(A)}{s(E)}$ ve $0 \leq P(A) \leq 1$. İmkânsız olayın olasılığı 0, kesin olayın 1'dir.
+
+::duzey
+L1: Bir zarda çift sayı gelmesi $\{2, 4, 6\}$: 3 çıktı. Örnek uzay 6 çıktı. Olasılık $\frac{3}{6} = \frac{1}{2}$: "istenenler bölü hepsi".
+L2: Önce örnek uzayın eleman sayısını yaz, sonra istenen çıktıları say. 1–30 arası kartlardan asal sayı çekme: asallar 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 (10 tane): $\frac{10}{30} = \frac{1}{3}$.
+L3: Eş olasılık şartına dikkat: torbada 1 kırmızı ve 3 mavi bilye varsa "iki renk var, kırmızı olasılığı $\frac{1}{2}$" demek yanlıştır; eş olası olan bilyelerdir: $\frac{1}{4}$. Koşullu bilgilerden bilye sayısı bulunacaksa olasılığı denklem olarak yaz.
+
+::ornek baslik="Kartlardan asal sayı"
+soru: Üzerinde 1'den 30'a kadar numaralar yazılı 30 karttan rastgele biri çekiliyor. Çekilen kartın asal sayı olma olasılığı kaçtır?
+1. $s(E) = 30$. || Örnek uzay.
+2. Asallar: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 → 10 tane. || İstenen çıktılar.
+3. $P = \frac{10}{30} = \frac{1}{3}$. || Oran.
+cevap: $\frac{1}{3}$
+
+::tamamla baslik="MEBİ örneği: olasılıktan bilye sayısı"
+soru: Bir torbada kırmızı, mavi ve sarı bilyeler vardır. Kırmızı bilye sayısı mavi ve sarı bilyelerin toplamına eşittir, mavi çekme olasılığı $\frac{2}{5}$'tir ve sarı bilye sayısı 1 ile 5 arasındadır. Torbada en az kaç mavi bilye vardır?
+1. Kırmızı $k$, mavi $m$, sarı $s$: $k = m + s$, toplam $2k$; $\frac{m}{2k} = \frac{2}{5} \Rightarrow 5m = 4k$.
+?2. $m = 4$ ise $k = 5$, $s = 1$: $1 < s < 5$ sağlanmaz.
+?3. $m = 8$ ise $k = 10$, $s = 2$: sağlanır. En az 8 mavi bilye.
+cevap: 8
+
+::yanilgi m2 tip=basit-olasilik
+yanlis: Torbada 1 kırmızı, 1 mavi, 1 yeşil ve 2 sarı bilye varsa 4 renk olduğu için sarı çekme olasılığı $\frac{1}{4}$'tür.
+neden: Eş olası olan renkler değil, bilyelerdir; 5 bilyenin 2'si sarıdır.
+dogru: $P(\text{sarı}) = \frac{2}{5}$.
+
+::soru c2 tip=basit-olasilik zorluk=2
+Üzerinde 1'den 50'ye kadar numaralar yazılı 50 karttan rastgele biri çekiliyor. Çekilen kartın 7'nin katı olma olasılığı kaçtır?
+A) $\frac{1}{10}$ || 7'nin katlarını yeniden say: 7, 14, …, 49.
++B) $\frac{7}{50}$ || Doğru: 7 kart.
+C) $\frac{1}{7}$ || Örnek uzay 49 değil 50 elemanlıdır.
+D) $\frac{4}{25}$ || Hesabı kontrol et.
+E) $\frac{1}{5}$ || Fazla.
+kontrol: 7/50
+cozum: 7'nin katları: 7, 14, 21, 28, 35, 42, 49 → 7 tane. $P = \frac{7}{50}$.
+
+@bolum s3 9 | Tümleyen ve birleşim
+::fikir
+**Tümleyen:** $P(A') = 1 - P(A)$; "en az bir" sorularında $1 - P(\text{hiç})$. **Birleşim:** $P(A \cup B) = P(A) + P(B) - P(A \cap B)$; ayrık olaylarda kesişim 0.
+
+::duzey
+L1: Üç para atınca "en az bir tura" demek "hepsi yazı olmasın" demektir. Hepsinin yazı gelmesi tek çıktıdır (YYY): $\frac{1}{8}$. En az bir tura: $1 - \frac{1}{8} = \frac{7}{8}$.
+L2: "3'ün ya da 5'in katı" sorusunda iki olayın ortak elemanları (15'in katları) iki kez sayılır; bir kez çıkar. Kümelerdeki $s(A \cup B)$ kuralının olasılık hâlidir.
+L3: Yüzdelerle verilen sorularda (öğrencilerin %60'ı İngilizce…) olasılıkları Venn bölgelerine yaz; "hiçbiri" birleşimin tümleyenidir. Ayrık olaylarda $P(A \cap B) = 0$ olduğundan birleşim düz toplamdır.
+
+::ornek baslik="Üçün ya da beşin katı"
+soru: 1'den 30'a kadar numaralı kartlardan rastgele biri çekiliyor. Kartın 3'ün ya da 5'in katı olma olasılığı kaçtır?
+1. 3'ün katları 10, 5'in katları 6 tane. || Ayrı ayrı say.
+2. İkisinin de katı (15'in katları): 15 ve 30 → 2 tane. || Kesişim.
+3. $\frac{10 + 6 - 2}{30} = \frac{14}{30} = \frac{7}{15}$. || Kesişimi bir kez çıkar.
+cevap: $\frac{7}{15}$
+
+::tamamla baslik="En az bir tura"
+soru: Üç madenî para atıldığında en az birinin tura gelme olasılığı kaçtır?
+1. Hiç tura gelmemesi: YYY → $\frac{1}{8}$.
+?2. En az bir tura: $1 - \frac{1}{8} = \frac{7}{8}$.
+cevap: $\frac{7}{8}$
+
+::yanilgi m3 tip=tumleyen-birlesim
+yanlis: $P(A \cup B) = P(A) + P(B)$ her zaman doğrudur.
+neden: $A$ ile $B$ ayrık değilse ortak çıktılar iki kez sayılır.
+dogru: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$; yalnız ayrık olaylarda düz toplam.
+
+::soru c3 tip=tumleyen-birlesim zorluk=2
+Bir sınıftaki öğrencilerin %60'ı İngilizce, %30'u Almanca biliyor; %20'si iki dili de biliyor. Rastgele seçilen bir öğrencinin iki dilden hiçbirini bilmeme olasılığı kaçtır?
+A) $0{,}1$ || Hesabı kontrol et: önce birleşimi bul.
+B) $0{,}2$ || Bu iki dili de bilenlerin oranıdır.
+C) $0{,}25$ || Hesabı yeniden yap.
++D) $0{,}3$ || Doğru: birleşim $0{,}7$; hiçbiri $1 - 0{,}7$.
+E) $0{,}7$ || Bu en az bir dili bilme olasılığıdır.
+kontrol: 1-(0.6+0.3-0.2)
+cozum: $P(İ \cup A) = 0{,}6 + 0{,}3 - 0{,}2 = 0{,}7$. Hiçbiri $1 - 0{,}7 = 0{,}3$.
+
+@bolum s4 10 | Olasılıkta sayma
+::fikir
+Eş olası çıktıları **sayma kurallarıyla** say: $P = \frac{\text{istenen durum sayısı}}{\text{tüm durum sayısı}}$. Aynı anda çekilen nesnelerde **kombinasyon**, sıralama sorularında **permütasyon** kullan; pay ve paydada **aynı yöntemi** kullan.
+
+::duzey
+L1: 5 kırmızı ve 3 beyaz bilyeden 2 bilye çekmenin tüm yolları $C(8, 2) = 28$'dir. İkisinin de kırmızı olduğu yollar $C(5, 2) = 10$. Olasılık $\frac{10}{28} = \frac{5}{14}$.
+L2: Karışık seçimlerde payı grup grup say: 2 kırmızı ve 1 mavi için $C(4, 2) \cdot C(6, 1)$. Payda tüm seçimler: $C(10, 3)$. Sıralamalı sorularda payda $n!$, pay koşula uyan sıralamalardır.
+L3: Pay ve paydada farklı yöntem kullanmak (birinde sıralı, diğerinde sırasız) yanlış sonuç verir. Aynı soruyu art arda çekiliş gibi de çözebilirsin ($\frac{5}{8} \cdot \frac{4}{7} = \frac{5}{14}$); iki yol aynı sonucu vermelidir.
+
+::ornek baslik="İki kırmızı bilye"
+soru: Bir torbada 5 kırmızı ve 3 beyaz bilye vardır. Rastgele aynı anda 2 bilye çekiliyor. İkisinin de kırmızı olma olasılığı kaçtır?
+1. Tüm durumlar: $C(8, 2) = 28$. || Aynı anda çekiliş: kombinasyon.
+2. İstenen: $C(5, 2) = 10$. || Kırmızılardan 2.
+3. $P = \frac{10}{28} = \frac{5}{14}$. || Kontrol: $\frac{5}{8} \cdot \frac{4}{7} = \frac{5}{14}$ ✓
+cevap: $\frac{5}{14}$
+
+::soru c4 tip=sayma-olasilik zorluk=2
+Bir torbada 4 kırmızı ve 6 mavi bilye vardır. Rastgele aynı anda 3 bilye çekiliyor. Çekilen bilyelerden 2'sinin kırmızı, 1'inin mavi olma olasılığı kaçtır?
+A) $\frac{1}{10}$ || Mavinin seçim sayısını ($C(6, 1) = 6$) unuttun.
+B) $\frac{1}{5}$ || Hesabı kontrol et: pay $6 \cdot 6 = 36$.
+C) $\frac{1}{4}$ || Hesabı yeniden yap.
++D) $\frac{3}{10}$ || Doğru: $\frac{C(4, 2) \cdot C(6, 1)}{C(10, 3)} = \frac{36}{120}$.
+E) $\frac{1}{2}$ || Fazla.
+kontrol: 36/120
+cozum: Tüm durumlar $C(10, 3) = 120$; istenen $C(4, 2) \cdot C(6, 1) = 6 \cdot 6 = 36$. $P = \frac{36}{120} = \frac{3}{10}$.
+
+::ozet
+- Örnek uzay: $n$ para $2^n$, $n$ zar $6^n$; zar çıktıları sıralı ikilidir.
+- Eş olası çıktılarda $P(A) = \frac{s(A)}{s(E)}$, $0 \leq P \leq 1$.
+- "En az bir" için $1 - P(\text{hiç})$; birleşimde kesişimi bir kez çıkar.
+- Pay ve paydayı aynı sayma yöntemiyle say (aynı anda çekiliş: kombinasyon).
+
+@pratik
+- Çalışma sırası: önce örnek uzayı doğru sayma (para, zar, kart), sonra basit olasılık, en son tümleyen–birleşim ve kombinasyonlu torba sorularını çalış.
+- Sınav yaklaşımı: her olasılık sorusunda ilk satıra $s(E)$'yi yaz; "en az bir" görürsen tümleyenle başla.
+- İki zar sorularında 6×6 tabloyu zihninde canlandır; toplam ya da fark koşulunu sağlayan hücreleri say.
+- En sık tuzaklar: renkleri eş olası saymak, $(2, 3)$ ile $(3, 2)$'yi aynı saymak, birleşimde kesişimi çıkarmamak, payı sıralı paydayı sırasız saymak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra çıkmış sorular setini çöz; AYT'ye hazırlanıyorsan koşullu olasılık dersine geç.
+
+@kartlar
+- $n$ madenî para atılınca örnek uzay :: $2^n$ eleman
+- İki zar atılınca örnek uzay :: 36 eleman (sıralı ikililer)
+- Basit olasılık formülü :: $P(A) = \frac{s(A)}{s(E)}$
+- Tümleyen kuralı :: $P(A') = 1 - P(A)$
+- Birleşim kuralı :: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+- "En az bir" olasılığı :: $1 - P(\text{hiç})$
+- İki zarda en olası toplam :: 7 (6 çıktı)
+
+@ozet
+- Olasılık, eş olası çıktılardan oluşan örnek uzayda istenen çıktıların oranıdır.
+- Örnek uzayın eleman sayısı sayma kurallarıyla bulunur; çıktılar sıralı düşünülür.
+- Tümleyen kuralı "en az bir" sorularını, birleşim kuralı "ya da" sorularını kolaylaştırır.
+- Torba ve sıralama sorularında pay ve payda aynı sayma yöntemiyle hesaplanır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "İki zar atıldığında neden 21 değil de 36 çıktı vardır?" (2) "İki zarda en az bir 6 gelme olasılığını neden $\frac{1}{6} + \frac{1}{6}$ ile hesaplayamayız?"
+
+@havuz
+::soru h1 tip=ornek-uzay zorluk=1
+İki madenî para ile bir zar birlikte atılıyor. Örnek uzayın eleman sayısı kaçtır?
+A) 10
+B) 12
+C) 18
+D) 20
++E) 24
+kontrol: 2*2*6
+cozum: $2 \cdot 2 \cdot 6 = 24$.
+
+::soru h2 tip=basit-olasilik zorluk=3
+Bir torbadaki kırmızı bilye sayısı, mavi ve sarı bilyelerin sayıları toplamının 3 katıdır. Torbadan çekilen bir bilyenin mavi olma olasılığı $\frac{1}{8}$'dir. Torbada 6 sarı bilye olduğuna göre kaç mavi bilye vardır?
+A) 2
+B) 4
++C) 6
+D) 8
+E) 12
+kontrol: 6
+cozum: $m + s = t$ ise kırmızı $3t$, toplam $4t$. $\frac{m}{4t} = \frac{1}{8} \Rightarrow t = 2m$. $m + 6 = 2m \Rightarrow m = 6$.
+
+::soru h3 tip=tumleyen-birlesim zorluk=2
+Bir öğrencinin matematik sınavını geçme olasılığı $0{,}8$, fizik sınavını geçme olasılığı $0{,}6$ ve ikisini de geçme olasılığı $0{,}5$'tir. Öğrencinin en az bir sınavı geçme olasılığı kaçtır?
+A) $0{,}5$
+B) $0{,}6$
+C) $0{,}7$
+D) $0{,}8$
++E) $0{,}9$
+kontrol: 0.8+0.6-0.5
+cozum: $P(M \cup F) = 0{,}8 + 0{,}6 - 0{,}5 = 0{,}9$.
+
+::soru h4 tip=sayma-olasilik zorluk=2
+A, B, C, D ve E harfleri rastgele bir sıraya diziliyor. A ile B'nin yan yana gelme olasılığı kaçtır?
+A) $\frac{1}{5}$
+B) $\frac{1}{4}$
++C) $\frac{2}{5}$
+D) $\frac{1}{2}$
+E) $\frac{3}{5}$
+kontrol: 48/120
+cozum: Yan yana: $4! \cdot 2! = 48$; tümü $5! = 120$. $P = \frac{48}{120} = \frac{2}{5}$.

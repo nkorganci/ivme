@@ -1,0 +1,297 @@
+@ders kumeler-temel
+baslik: Kümelerde Temel Kavramlar ve Alt Küme
+kisa: Kümeler ve alt küme
+sinav: TYT AYT
+unite: kumeler
+sinif: 9
+sira: 600
+kategori: excel.tyt.matematik.f5eb57d988154c825935 excel.ayt.matematik.f5eb57d988154c825935
+hedef: Kümeyi liste, Venn şeması ve ortak özellik yöntemiyle yazmak; eleman sayısını, boş kümeyi ve evrensel kümeyi tanımak; alt küme ve öz alt küme sayılarını $2^n$ ile hesaplamak; belirli elemanları içeren ya da içermeyen alt kümeleri saymak; iki kümenin eşitliğini kullanmak.
+neden: Kümeler 2018–2026'da TYT'de 9, AYT'de 10 çıkmış soruyla düzenli bir konudur; alt küme sayısı soruları $2^n$ kuralını bilen için 30 saniyelik puandır. Küme dili olasılık, fonksiyon ve sayı kümeleri konularının da ortak dilidir.
+kaynak: MEBİ TYT Konu Özeti — Kümelerde Temel Kavramlar, Alt Küme, İki Kümenin Eşitliği | OGM 9. Sınıf Konu Özetleri 01–02 | OGM 9. Sınıf Ders Anlatım Sunuları 04–05
+tekrar: 10
+ustalik-dk: 14
+hedef-sure: 60
+anahtar: küme | eleman sayısı | alt küme | öz alt küme | boş küme | evrensel | ∈ | ∉ | ⊂ | subset | s(a) | kapsar
+baslik-kurali: /^9\.2\.1/ | kümelerde temel kavramlar | kümeler
+
+@tip gosterim 20 s1
+ad: Küme, eleman ve gösterimler
+ipucu: "$A = \{1, \{2, 3\}, \varnothing, 4\}$ kümesinin eleman sayısı", "$\{x \mid x \in \mathbb{Z}, -2 \leq x < 3\}$".
+strateji: Kümeyi listeye çevir ve her elemanı bir kez say: iç içe küme $\{2, 3\}$ tek elemandır, $\varnothing$ de bir eleman olabilir, tekrar eden elemanlar bir kez sayılır. Ortak özellik yönteminde koşulu sağlayan değerleri tek tek yaz.
+anahtar: eleman sayısı | s(a) | ∈ | ∉ | ortak özellik | liste | boş küme
+
+@tip alt-kume-sayi 35 s2
+ad: Alt küme ve öz alt küme sayısı
+ipucu: "5 elemanlı kümenin öz alt küme sayısı", "2 eleman eklenince alt küme sayısı 48 artıyor".
+strateji: $n$ elemanlı kümenin alt küme sayısı $2^n$, öz alt küme sayısı $2^n - 1$. "En az 1 elemanlı" için boş kümeyi, "en az 2 elemanlı" için ayrıca $n$ tane tek elemanlıyı çıkar. Eleman eklenince alt küme sayısı ikinin kuvveti oranında katlanır.
+anahtar: alt küme sayısı | öz alt küme | alt kümelerinin sayısı | 2^
+
+@tip kosullu-alt-kume 30 s3
+ad: Belirli elemanları içeren ya da içermeyen alt kümeler
+ipucu: "$a$ bulunur, $b$ bulunmaz", "1 veya 5 bulunur", "$a$ ile $b$'den yalnız biri bulunur".
+strateji: Bulunması ya da bulunmaması istenen elemanları kenara ayır; kalan $k$ eleman için $2^k$ hesapla. "$a$ veya $b$ bulunur" = tüm alt kümeler − ikisinin de bulunmadığı alt kümeler.
+anahtar: bulunur | bulunmaz | bulunmayan | bulunan | içeren | içermeyen | yalnız biri
+
+@tip esitlik 15 s4
+ad: Kümelerin eşitliği ve kapsama
+ipucu: "$\{a + 2, 4\} = \{7, b - 1\}$", "$A \subseteq B$ ve $B \subseteq A$".
+strateji: Eşit kümelerde elemanlar aynıdır; sıra ve tekrar önemsizdir. Bir kümede kesin bilinen elemanı (sayıyı) karşı kümede ara; eşleştirmeyi o elemandan başlat. $A = B \Leftrightarrow (A \subseteq B) \wedge (B \subseteq A)$.
+anahtar: eşit küme | eşittir | = { | kapsar | ⊆
+
+@ustalik
+gosterim 1 1-2
+alt-kume-sayi 2 1-3
+kosullu-alt-kume 2 1-3
+esitlik 1 1-2
+
+@oturum Küme ve alt küme sayısı | s1 s2
+@oturum Koşullu alt kümeler ve eşitlik | s3 s4
+
+@ontest
+::soru o1 tip=gosterim zorluk=1
+$A = \{1, \{2, 3\}, \varnothing, 4\}$ kümesinin eleman sayısı kaçtır?
+A) 3 || $\varnothing$ burada bir elemandır; onu da say.
++B) 4 || Doğru: $1$, $\{2, 3\}$, $\varnothing$ ve $4$.
+C) 5 || $\{2, 3\}$ tek bir elemandır; 2 ve 3 ayrı sayılmaz.
+D) 6 || Hem iç kümeyi açtın hem fazladan saydın.
+E) 7 || Fazla.
+kontrol: 4
+cozum: Elemanlar $1$, $\{2, 3\}$, $\varnothing$ ve $4$'tür: $s(A) = 4$.
+
+::soru o2 tip=alt-kume-sayi zorluk=1
+5 elemanlı bir kümenin öz alt küme sayısı kaçtır?
+A) 16 || Bu 4 elemanlı kümenin alt küme sayısıdır.
+B) 25 || $5^2$ değil, $2^5$.
+C) 30 || Boş kümeyi de çıkardın; boş küme öz alt kümedir.
++D) 31 || Doğru: $2^5 - 1 = 31$.
+E) 32 || Bu alt küme sayısıdır; kümenin kendisini çıkar.
+kontrol: 2^5-1
+cozum: Alt küme sayısı $2^5 = 32$; öz alt küme sayısı kümenin kendisi hariç $32 - 1 = 31$.
+
+::soru o3 tip=kosullu-alt-kume zorluk=2
+$A = \{a, b, c, d, e\}$ kümesinin alt kümelerinden kaç tanesinde $a$ bulunur, $b$ bulunmaz?
+A) 4 || Kalan eleman sayısını yeniden say.
++B) 8 || Doğru: $a$ ve $b$ kenarda; kalan 3 eleman: $2^3 = 8$.
+C) 12 || Bu "$a$ veya $b$" sayısına yakın bir hesap.
+D) 16 || Yalnız $a$'yı kenara ayırdın.
+E) 24 || Fazla.
+kontrol: 2^3
+cozum: $a$ kesin var, $b$ kesin yok; kalan $c, d, e$ için var/yok: $2^3 = 8$.
+
+@bolum s1 8 | Küme, eleman ve gösterimler
+::fikir
+Küme, **iyi tanımlanmış ve birbirinden farklı** nesnelerin topluluğudur. Bir kümenin içinde küme olabilir: $\{2, 3\}$ **tek bir eleman**dır. $\varnothing$ boş kümedir ama $\{\varnothing\}$ **bir elemanlıdır**.
+
+::tablo baslik="Üç gösterim yöntemi"
+| Yöntem | Örnek |
+| Liste | $A = \{0, 2, 4, 6, 8\}$ |
+| Ortak özellik | $A = \{x \mid x \text{ çift rakam}\}$ |
+| Venn şeması | Kapalı bir eğri içinde elemanların önüne nokta |
+
+::duzey
+L1: "Sınıftaki uzun boylu öğrenciler" bir küme değildir, çünkü "uzun" kişiden kişiye değişir. "Sınıftaki boyu 1,70 m'den uzun öğrenciler" ise kümedir. Kümenin eleman sayısı $s(A)$ ile gösterilir.
+L2: Tekrar eden elemanlar bir kez yazılır: $\{1, 1, 2\} = \{1, 2\}$. İç içe kümeler tek eleman sayılır: $\{1, \{1\}\}$ iki elemanlıdır. Boş küme $\varnothing$ ya da $\{\ \}$ ile gösterilir ve $s(\varnothing) = 0$'dır.
+L3: Ortak özellik ile verilen kümeyi listeye çevir: $\{x \mid x \in \mathbb{Z}, -2 \leq x < 3\} = \{-2, -1, 0, 1, 2\}$. Görüntü kümelerinde aynı değeri veren elemanlar birleşir: $\{x^2 \mid x \in \{-1, 0, 1\}\} = \{0, 1\}$.
+
+::ornek baslik="Ortak özellikten listeye"
+soru: $A = \{x \mid x \in \mathbb{Z}, -3 < x \leq 2\}$ ve $B = \{x^2 \mid x \in A\}$ kümelerinin eleman sayılarını bul.
+1. $A = \{-2, -1, 0, 1, 2\}$: $s(A) = 5$. || $-3$ dahil değil, 2 dahil.
+2. Kareler: $4, 1, 0, 1, 4$. || Her elemanın karesini al.
+3. $B = \{0, 1, 4\}$: $s(B) = 3$. || Tekrar edenler bir kez.
+cevap: $s(A) = 5$, $s(B) = 3$
+
+::yanilgi m1 tip=gosterim
+yanlis: $\{\varnothing\}$ boş kümedir.
+neden: $\{\varnothing\}$ kümesinin bir elemanı vardır: $\varnothing$.
+dogru: Boş küme $\varnothing$ ya da $\{\ \}$'dir; $s(\varnothing) = 0$ ama $s(\{\varnothing\}) = 1$.
+
+::soru c1 tip=gosterim zorluk=2
+$A = \{x \mid x \in \mathbb{Z}, -1 \leq x \leq 3\}$ ve $B = \{x^2 \mid x \in A\}$ olduğuna göre $s(B)$ kaçtır?
++A) 4 || Doğru: $B = \{0, 1, 4, 9\}$.
+B) 5 || $(-1)^2 = 1^2$; tekrar eden eleman bir kez sayılır.
+C) 6 || Hesabı kontrol et.
+D) 7 || Fazla.
+E) 9 || Bu $B$'nin en büyük elemanıdır.
+kontrol: 4
+cozum: $A = \{-1, 0, 1, 2, 3\}$; kareler $1, 0, 1, 4, 9$; $B = \{0, 1, 4, 9\}$: $s(B) = 4$.
+
+@bolum s2 10 | Alt küme sayısı: her eleman için iki seçenek
+::fikir
+$n$ elemanlı bir kümenin **alt küme sayısı $2^n$**, **öz alt küme sayısı $2^n - 1$**'dir. Her eleman için iki seçenek vardır: alt kümede **var** ya da **yok**.
+
+::tablo baslik="Küçük kümelerde alt kümeler"
+| Küme | Alt kümeler | Sayı |
+| $\{\ \}$ | $\{\ \}$ | $1$ |
+| $\{a\}$ | $\{\ \}, \{a\}$ | $2$ |
+| $\{a, b\}$ | $\{\ \}, \{a\}, \{b\}, \{a, b\}$ | $4$ |
+| $\{a, b, c\}$ | 8 alt küme | $8$ |
+
+::duzey
+L1: $\{a, b, c\}$ kümesinden alt küme seçerken her elemana "alıyor muyum?" diye sorarsın: $a$ için 2, $b$ için 2, $c$ için 2 cevap. Toplam $2 \cdot 2 \cdot 2 = 8$ alt küme olur; hiçbirini almamak boş kümedir, hepsini almak kümenin kendisidir.
+L2: Boş küme ve kümenin kendisi her zaman alt kümedir. Öz alt küme kümenin kendisi dışındakilerdir: $2^n - 1$. "En az 1 elemanlı" alt küme sayısı $2^n - 1$, "en az 2 elemanlı" alt küme sayısı $2^n - 1 - n$'dir.
+L3: Eleman sayısı 1 artınca alt küme sayısı 2 katına çıkar. "Bir kümeye 2 eleman eklenince alt küme sayısı 96 artıyor" sorusunda $2^n \cdot 4 - 2^n = 3 \cdot 2^n = 96 \Rightarrow 2^n = 32$, $n = 5$.
+
+::ornek baslik="Toplamdan eleman sayısı"
+soru: Bir kümenin alt küme sayısı ile öz alt küme sayısının toplamı 127'dir. Küme kaç elemanlıdır?
+1. $2^n + (2^n - 1) = 127$. || İki formülü yaz.
+2. $2 \cdot 2^n = 128 \Rightarrow 2^{n+1} = 2^7$. || Düzenle.
+3. $n = 6$. || Kontrol: $64 + 63 = 127$ ✓
+cevap: 6
+
+::yanilgi m2 tip=alt-kume-sayi
+yanlis: $n$ elemanlı kümenin öz alt küme sayısı $2^n - 2$'dir; boş küme ve kümenin kendisi çıkarılır.
+neden: Öz alt kümelerden yalnız kümenin kendisi çıkarılır; boş küme bir öz alt kümedir.
+dogru: Öz alt küme sayısı $2^n - 1$'dir.
+
+::soru c2 tip=alt-kume-sayi zorluk=2
+Bir kümeye 2 eleman eklendiğinde alt küme sayısı 48 artıyor. Kümenin başlangıçtaki eleman sayısı kaçtır?
++A) 4 || Doğru: $3 \cdot 2^n = 48 \Rightarrow 2^n = 16$.
+B) 5 || Kontrol: $2^7 - 2^5 = 96 \neq 48$.
+C) 6 || Hesabı kontrol et.
+D) 8 || Fazla.
+E) 16 || Bu $2^n$'dir; $n$'yi bul.
+kontrol: 4
+cozum: $2^{n+2} - 2^n = 3 \cdot 2^n = 48 \Rightarrow 2^n = 16 \Rightarrow n = 4$.
+
+@bolum s3 10 | Belirli elemanları içeren alt kümeler
+::fikir
+**Bulunması ya da bulunmaması istenen elemanları kenara ayır**, kalan $k$ elemanla $2^k$ hesapla. **"$a$ veya $b$ bulunur"** = tüm alt kümeler − ikisinin de bulunmadığı alt kümeler.
+
+::tablo baslik="$n$ elemanlı kümede ($a, b$ kümenin elemanı)"
+| Koşul | Alt küme sayısı |
+| $a$ bulunur | $2^{n-1}$ |
+| $a$ bulunur, $b$ bulunmaz | $2^{n-2}$ |
+| $a$ ve $b$ birlikte bulunur | $2^{n-2}$ |
+| $a$ veya $b$ bulunur | $2^n - 2^{n-2}$ |
+| $a$ ile $b$'den yalnız biri bulunur | $2 \cdot 2^{n-2}$ |
+
+::duzey
+L1: $\{a, b, c, d\}$ kümesinin alt kümelerinde $a$ mutlaka olsun: $a$'yı alt kümeye koy, kararı kalan $b, c, d$ için ver: $2^3 = 8$ alt küme.
+L2: "$a$ veya $b$ bulunur" en az birinin bulunmasıdır. Doğrudan saymak yerine tümünden ($2^n$) ikisinin de bulunmadığı alt kümeleri ($2^{n-2}$) çıkar. "$a$ ya da $b$'den yalnız biri" ise iki durumdur: $a$ var $b$ yok, $b$ var $a$ yok.
+L3: Belirli eleman sayısında alt küme ("2 elemanlı alt küme sayısı") sayma ünitesindeki kombinasyonla bulunur; küçük kümelerde sistematik listeleme yeter: $\{a, b, c, d\}$ için $ab, ac, ad, bc, bd, cd$ → 6.
+
+::ornek baslik="Veya bulunur"
+soru: $A = \{1, 2, 3, 4, 5, 6\}$ kümesinin alt kümelerinin kaç tanesinde 1 veya 2 bulunur?
+1. Tüm alt kümeler: $2^6 = 64$. || Önce hepsi.
+2. 1 de 2 de bulunmayanlar: kalan 4 eleman, $2^4 = 16$. || Tümleyen durum.
+3. $64 - 16 = 48$. || En az biri bulunanlar.
+cevap: 48
+
+::tamamla baslik="Biri var, ikisi yok"
+soru: $A = \{a, b, c, d, e, f\}$ kümesinin alt kümelerinin kaç tanesinde $a$ bulunur, $b$ ve $c$ bulunmaz?
+1. $a$, $b$, $c$ için karar verildi; kalan eleman sayısı $6 - 3 = 3$.
+?2. $2^3 = 8$ alt küme.
+cevap: 8
+
+::yanilgi m3 tip=kosullu-alt-kume
+yanlis: "$a$ veya $b$ bulunur" sayısı, "$a$ bulunur" ile "$b$ bulunur" sayılarının toplamıdır.
+neden: $a$ ile $b$'nin birlikte bulunduğu alt kümeler iki kez sayılır.
+dogru: $2^n - 2^{n-2}$ (tümünden ikisinin de bulunmadığı alt kümeleri çıkar).
+
+::soru c3 tip=kosullu-alt-kume zorluk=2
+$A = \{1, 2, 3, 4, 5\}$ kümesinin alt kümelerinin kaç tanesinde 1 veya 5 bulunur?
+A) 8 || Bu, ikisinin de bulunmadığı alt küme sayısıdır.
+B) 16 || Bu yalnız "1 bulunur" sayısıdır.
+C) 20 || Hesabı kontrol et.
++D) 24 || Doğru: $32 - 8 = 24$.
+E) 32 || Bu tüm alt kümelerdir.
+kontrol: 2^5-2^3
+cozum: Tüm alt kümeler $2^5 = 32$; 1 de 5 de bulunmayanlar $2^3 = 8$; $32 - 8 = 24$.
+
+@bolum s4 7 | Kümelerin eşitliği
+::fikir
+$A = B$ **ancak ve ancak** $A \subseteq B$ ve $B \subseteq A$. Eşit kümelerde elemanlar aynıdır; **sıra ve tekrar önemli değildir**.
+
+::duzey
+L1: $\{1, 2, 3\}$, $\{3, 1, 2\}$ ve $\{1, 1, 2, 3\}$ aynı kümedir. Kümede önemli olan hangi elemanların bulunduğudur, sırası ya da kaç kez yazıldığı değil.
+L2: Bilinmeyenli eşitliklerde kesin bilinen sayıdan başla: $\{a + 2, 4\} = \{7, b - 1\}$ ise 4 sağdaki kümede olmalı; 7'ye eşit olamayacağı için $b - 1 = 4$, kalan eşleşme $a + 2 = 7$.
+L3: $A \subseteq B$ ve $B \subseteq C$ ise $A \subseteq C$ (geçişme). $A \subseteq B$ ise $s(A) \leq s(B)$; eleman sayıları eşit ve $A \subseteq B$ ise $A = B$'dir.
+
+::ornek baslik="Bilinmeyenli eşit kümeler"
+soru: $\{2a - 1, 7\} = \{5, b + 1\}$ olduğuna göre $a + b$ kaçtır?
+1. 7 sağ kümede olmalı; $5 \neq 7$ olduğundan $b + 1 = 7$, $b = 6$. || Bilinen sayıdan başla.
+2. Kalan eşleşme: $2a - 1 = 5$, $a = 3$. || Diğer elemanlar eşleşir.
+3. $a + b = 9$. || Kontrol: $\{5, 7\} = \{5, 7\}$ ✓
+cevap: 9
+
+::soru c4 tip=esitlik zorluk=2
+$\{a + 2, 4\} = \{7, b - 1\}$ olduğuna göre $a \cdot b$ kaçtır?
+A) 9 || Hesabı kontrol et.
+B) 12 || Eşleşmeyi kontrol et: 4, 7'ye eşit olamaz.
+C) 15 || $a$ ya da $b$'yi yanlış buldun.
+D) 20 || Hesabı yeniden yap.
++E) 25 || Doğru: $b - 1 = 4$, $a + 2 = 7$; $a = b = 5$.
+kontrol: 5*5
+cozum: 4 sağ kümede olmalı ve $4 \neq 7$: $b - 1 = 4 \Rightarrow b = 5$. Kalan: $a + 2 = 7 \Rightarrow a = 5$. $a \cdot b = 25$.
+
+::ozet
+- Küme elemanları tek tek sayılır; iç içe küme ve $\varnothing$ birer elemandır, tekrar sayılmaz.
+- Alt küme sayısı $2^n$, öz alt küme sayısı $2^n - 1$.
+- Koşullu alt kümelerde karar verilen elemanları ayır, kalan $k$ için $2^k$; "veya" için tümleyeni çıkar.
+- Eşit kümelerde elemanlar aynıdır; eşleştirmeye bilinen sayıdan başla.
+
+@pratik
+- Çalışma sırası: önce eleman sayma (iç içe küme, boş küme tuzakları), sonra $2^n$ ve $2^n - 1$ formülleri, en son koşullu alt küme ve eşitlik soruları.
+- Sınav yaklaşımı: alt küme sorusunda ilk iş $n$'yi (eleman sayısını) doğru belirlemek; koşulu okurken her elemanın yanına "var", "yok" ya da "serbest" yaz.
+- "Veya", "en az biri" gördüğünde tümleyen yolunu kullan: hepsi − hiçbiri.
+- En sık tuzaklar: $\{2, 3\}$'ü iki eleman saymak, öz alt kümede boş kümeyi çıkarmak, "veya"yı toplama ile hesaplamak.
+- Hedef süre soru başı 60 saniye. Konu testinden sonra kümelerde işlemler dersine geç; çıkmış sorular iki dersi birlikte kullanır.
+
+@kartlar
+- $n$ elemanlı kümenin alt küme sayısı :: $2^n$
+- Öz alt küme sayısı :: $2^n - 1$ (yalnız kümenin kendisi hariç)
+- $s(\{\varnothing\})$ :: $1$
+- "$a$ bulunur, $b$ bulunmaz" alt küme sayısı :: $2^{n-2}$
+- "$a$ veya $b$ bulunur" alt küme sayısı :: $2^n - 2^{n-2}$
+- En az 2 elemanlı alt küme sayısı :: $2^n - 1 - n$
+- Kümelerin eşitliği :: $A = B \Leftrightarrow A \subseteq B$ ve $B \subseteq A$
+
+@ozet
+- Küme iyi tanımlanmış farklı nesnelerden oluşur ve liste, Venn şeması ya da ortak özellik yöntemiyle gösterilir.
+- Her eleman için var–yok seçeneği olduğundan $n$ elemanlı kümenin $2^n$ alt kümesi vardır.
+- Belirli elemanların bulunması ya da bulunmaması istenen alt kümeler, kalan elemanlarla $2^k$ biçiminde sayılır.
+- İki küme ancak ve ancak birbirinin alt kümesi olduğunda eşittir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "3 elemanlı bir kümenin neden tam 8 alt kümesi vardır?" (2) "$\{1, 2, 3, 4, 5, 6\}$ kümesinin 1 veya 2 içeren alt kümelerini neden 64 − 16 ile sayarız?"
+
+@havuz
+::soru h1 tip=gosterim zorluk=1
+$A = \{0, \{0\}, \{1, 2\}, \varnothing\}$ kümesi için aşağıdakilerden hangisi yanlıştır?
+A) $0 \in A$
+B) $\{0\} \in A$
+C) $\{1, 2\} \in A$
++D) $1 \in A$
+E) $s(A) = 4$
+cozum: 1, $A$'nın elemanı değildir; eleman olan $\{1, 2\}$ kümesidir. Elemanlar $0$, $\{0\}$, $\{1, 2\}$, $\varnothing$: $s(A) = 4$.
+
+::soru h2 tip=alt-kume-sayi zorluk=2
+6 elemanlı bir kümenin en az 2 elemanlı alt kümelerinin sayısı kaçtır?
+A) 56
++B) 57
+C) 58
+D) 62
+E) 63
+kontrol: 2^6-1-6
+cozum: Tümü $2^6 = 64$; boş küme (1) ve tek elemanlılar (6) çıkarılır: $64 - 7 = 57$.
+
+::soru h3 tip=kosullu-alt-kume zorluk=2
+$A = \{a, b, c, d, e\}$ kümesinin alt kümelerinin kaç tanesinde $a$ ile $b$'den yalnız biri bulunur?
+A) 8
+B) 12
++C) 16
+D) 24
+E) 32
+kontrol: 2*2^3
+cozum: "$a$ var, $b$ yok" ve "$b$ var, $a$ yok" durumlarının her biri $2^3 = 8$: toplam 16.
+
+::soru h4 tip=esitlik zorluk=2
+$\{x + y, 6\} = \{10, x - y\}$ olduğuna göre $x \cdot y$ kaçtır?
+A) 6
+B) 8
+C) 10
+D) 12
++E) 16
+kontrol: 8*2
+cozum: 6 sağ kümede olmalı ve $6 \neq 10$: $x - y = 6$; kalan $x + y = 10$. $x = 8$, $y = 2$: $x \cdot y = 16$.

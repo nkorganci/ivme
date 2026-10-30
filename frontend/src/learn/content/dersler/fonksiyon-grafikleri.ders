@@ -1,0 +1,296 @@
+@ders fonksiyon-grafikleri
+baslik: Fonksiyon Grafikleri ve Doğrusal Modeller
+kisa: Fonksiyon grafikleri
+sinav: TYT AYT
+unite: fonksiyonlar
+sinif: 10
+sira: 910
+onkosul: fonksiyon-kavrami
+kategori: excel.tyt.matematik.cfb36ba99fce84b745aa excel.ayt.matematik.cfb36ba99fce84b745aa
+hedef: Grafikten $f(a)$ değerlerini, tanım ve görüntü kümesini okumak; $f(x) = k$ denkleminin çözüm sayısını bulmak; $f(x) > 0$ ve $f(x) < 0$ aralıklarını belirlemek; dikey ve yatay doğru testlerini uygulamak; doğrusal fonksiyonun eğimini ve kuralını iki noktadan yazıp gerçek hayat durumlarını modellemek.
+neden: TYT fonksiyon soruları çoğunlukla bir grafik üzerinden sorulur ve "doğrusal fonksiyon hikâyeleri" yeni nesil problemlerin sık kullandığı bir kalıptır. AYT'de türev ve integralin grafik yorumları da bu derste kurulan okuma becerisine dayanır.
+kaynak: MEBİ TYT Konu Özeti — Fonksiyon Grafiklerini Çizme, Fonksiyon Grafikleri ile İlgili Uygulamalar | OGM 10. Sınıf Konu Özetleri 13–15 — Fonksiyon Grafikleri, Grafik Yorumlama, Doğrusal Modeller | OGM 10. Sınıf Ders Anlatım Sunuları 12, 15, 41
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 75
+anahtar: grafik | grafiği | grafiğine göre | eğim | doğrusal | dikey doğru | yatay doğru | kökü | f(x) > 0 | f(x) < 0 | noktasından geçen
+baslik-kurali: /^10\.2\.1\.(2|3|4)\b/ | fonksiyon grafikleri | fonksiyonlar
+
+@tip grafik-okuma 30 s1
+ad: Grafikten değer, tanım ve görüntü kümesi
+ipucu: "Grafiğe göre $f(-2) + f(4)$", "$f(x) = 1$ denkleminin kaç kökü var?", "görüntü kümesi".
+strateji: Grafikteki $(a, b)$ noktası $f(a) = b$ demektir. Tanım kümesi grafiğin x eksenine, görüntü kümesi y eksenine izdüşümüdür. $f(x) = k$'nin çözüm sayısı, $y = k$ yatay doğrusunun grafiği kestiği nokta sayısıdır.
+anahtar: grafiğe göre | grafiği verilen | çözüm sayısı | kaç farklı kök | görüntü kümesi | tanım kümesi
+
+@tip isaret-aralik 20 s2
+ad: Fonksiyonun işareti: $f(x) > 0$, $f(x) < 0$
+ipucu: "$f(x) > 0$ eşitsizliğinin çözüm kümesi", "$f(x) \cdot g(x) < 0$".
+strateji: Grafik x ekseninin üstündeyse $f(x) > 0$, altındaysa $f(x) < 0$; x eksenini kestiği noktalar köklerdir ($f(x) = 0$). İki fonksiyonun çarpım ya da bölümünde işaret tablosu kur: aynı işaret pozitif, farklı işaret negatif.
+anahtar: f(x) > 0 | f(x) < 0 | f(x) · g(x) | işaret | üstünde | altında | pozitif | negatif
+
+@tip dogru-testi 20 s3
+ad: Dikey ve yatay doğru testi
+ipucu: "Hangisi bir fonksiyon grafiğidir?", "bire bir fonksiyon mudur?".
+strateji: Dikey doğru testi: her dikey doğru grafiği en çok bir noktada kesiyorsa grafik bir fonksiyondur. Yatay doğru testi: her yatay doğru en çok bir noktada kesiyorsa fonksiyon bire birdir; değer kümesindeki her yatay doğru en az bir noktada kesiyorsa örtendir.
+anahtar: fonksiyon grafiği | dikey | düşey | yatay doğru | bire bir mi | örten mi
+
+@tip dogrusal-model 30 s4
+ad: Doğrusal fonksiyon ve modelleme
+ipucu: "(1, 5) ve (3, 9) noktalarından geçen", "mum her saat 2 cm kısalıyor", "taksi açılış ücreti".
+strateji: $f(x) = mx + n$: $m$ eğim (birim artışta değişim), $n$ başlangıç değeri ($f(0)$). İki noktadan $m = \frac{y_2 - y_1}{x_2 - x_1}$, sonra bir noktayı yerine koyarak $n$'yi bul. Hikâyede başlangıç değerini ve sabit değişim miktarını belirle.
+anahtar: eğim | doğrusal | başlangıç | her saat | her dakika | açılış ücreti | sabit hızla | noktalarından geçen
+
+@ustalik
+grafik-okuma 2 1-3
+isaret-aralik 1 1-3
+dogru-testi 1 1-2
+dogrusal-model 2 1-3
+
+@oturum Grafik okuma ve işaret | s1 s2
+@oturum Doğru testleri ve doğrusal modeller | s3 s4
+
+@ontest
+::soru o1 tip=grafik-okuma zorluk=1
+$f(x) = 2x - 3$ fonksiyonunun grafiği y eksenini hangi noktada keser?
++A) $(0, -3)$ || Doğru: $f(0) = -3$.
+B) $(0, 3)$ || İşareti kontrol et: $f(0) = -3$.
+C) $(-3, 0)$ || y eksenini kesen noktada $x = 0$'dır.
+D) $\left(\frac{3}{2}, 0\right)$ || Bu x eksenini kestiği noktadır.
+E) $(0, 2)$ || 2 eğimdir, kesişim değil.
+cozum: y eksenini kestiği noktada $x = 0$: $f(0) = -3$; nokta $(0, -3)$.
+
+::soru o2 tip=dogrusal-model zorluk=1
+Grafiği $(1, 5)$ ve $(3, 9)$ noktalarından geçen doğrusal fonksiyonun eğimi kaçtır?
+A) 1 || Hesabı kontrol et: $\frac{9 - 5}{3 - 1}$.
++B) 2 || Doğru: $\frac{4}{2} = 2$.
+C) 3 || Bu $f(0)$'dır; eğim değil.
+D) 4 || Bu y'lerin farkıdır; x farkına böl.
+E) 5 || Hesabı yeniden yap.
+kontrol: (9-5)/(3-1)
+cozum: $m = \frac{9 - 5}{3 - 1} = \frac{4}{2} = 2$.
+
+::soru o3 tip=dogru-testi zorluk=2
+Aşağıdaki bağıntılardan hangisi $y$'yi $x$'in bir fonksiyonu olarak tanımlamaz?
+A) $y = x^2$ || Her $x$ için tek bir $y$ vardır.
+B) $y = \lvert x \rvert$ || Her $x$ için tek bir $y$ vardır.
++C) $x^2 + y^2 = 4$ || Doğru: $x = 0$ için $y = 2$ ve $y = -2$; dikey doğru iki noktada keser.
+D) $y = 2x + 1$ || Doğrusal fonksiyondur.
+E) $y = \sqrt{x}$ || $x \geq 0$ için tek bir $y$ verir.
+cozum: $x^2 + y^2 = 4$ bir çemberdir; $x = 0$ için iki $y$ değeri ($\pm 2$) vardır, dikey doğru testini geçemez.
+
+@bolum s1 10 | Grafikten okuma
+::fikir
+Grafikteki $(a, b)$ noktası $f(a) = b$ demektir. **Tanım kümesi** grafiğin x eksenine, **görüntü kümesi** y eksenine izdüşümüdür. $f(x) = k$ denkleminin çözüm sayısı, $y = k$ doğrusunun grafiği kestiği nokta sayısıdır.
+
+::grafik alt="(-4, -2), (-2, 2), (1, 2), (3, -2) ve (5, 0) noktalarını birleştiren kırık çizgi grafiği; y = 1 kesikli yatay doğrusu grafiği iki noktada kesiyor." aciklama="$f$: tanım kümesi $[-4, 5]$, görüntü kümesi $[-2, 2]$. Kesikli $y = 1$ doğrusu grafiği iki noktada keser: $f(x) = 1$'in iki kökü var."
+x: -5 6
+y: -3 3.5
+parca: -4 -2 -2 2 | navy
+parca: -2 2 1 2 | navy
+parca: 1 2 3 -2 | navy
+parca: 3 -2 5 0 | navy
+yatay: 1 | y = 1
+nokta: -4 -2 | (−4, −2) | navy
+nokta: -2 2 | (−2, 2) | navy
+nokta: 1 2 | (1, 2) | navy
+nokta: 3 -2 | (3, −2) | navy
+nokta: 5 0 | (5, 0) | navy
+
+::duzey
+L1: Grafikte $x = -2$'nin üstüne çık, grafiğe değdiğin yerin yüksekliği $f(-2)$'dir: 2. $x = 4$'te grafik $-1$ yüksekliğindedir: $f(4) = -1$. Grafik soldan sağa $-4$'ten $5$'e uzanır: tanım kümesi $[-4, 5]$.
+L2: Görüntü kümesi grafiğin en alt ve en üst yüksekliği arasıdır: $[-2, 2]$. $f(x) = 1$ için $y = 1$ yatay doğrusunu çiz ve kesişimleri say: 2 kök. $f(x) = 2$'de grafik $[-2, 1]$ aralığında yatay olduğu için sonsuz kök vardır.
+L3: Uç noktalarda içi boş daire varsa o nokta grafiğe dahil değildir; görüntü kümesinde de o değer (başka yerden gelmiyorsa) bulunmaz. Kırık çizgi grafiklerde her parçanın denklemini iki uç noktasından yazarak ara değerleri hesaplayabilirsin.
+
+::ornek baslik="Grafikten dört bilgi"
+soru: Yukarıdaki grafiğe göre $f(-2) + f(4)$ kaçtır? Tanım kümesi, görüntü kümesi ve $f(x) = 1$ denkleminin kök sayısı nedir?
+1. $f(-2) = 2$; $(3, -2)$–$(5, 0)$ parçasında $f(4) = -1$: toplam $1$. || Noktalardan oku.
+2. Tanım kümesi $[-4, 5]$, görüntü kümesi $[-2, 2]$. || İzdüşümler.
+3. $y = 1$ grafiği $x = -2{,}5$ ve $x = 1{,}5$'te keser: 2 kök. || Yatay doğruyu say.
+cevap: 1; $[-4, 5]$; $[-2, 2]$; 2 kök
+
+::yanilgi m1 tip=grafik-okuma
+yanlis: Görüntü kümesi, grafiğin x ekseni üzerinde kapladığı aralıktır.
+neden: x eksenindeki izdüşüm tanım kümesidir; görüntüler y ekseninde okunur.
+dogru: Tanım kümesi x eksenine, görüntü kümesi y eksenine izdüşümdür.
+
+::soru c1 tip=grafik-okuma zorluk=2
+Grafiği $(-4, -2)$, $(-2, 2)$, $(1, 2)$, $(3, -2)$ ve $(5, 0)$ noktalarını sırayla birleştiren doğru parçalarından oluşan $f$ fonksiyonu için $f(x) = -1$ denkleminin kaç farklı gerçek kökü vardır?
+A) 1 || Grafiğin her parçasını kontrol et.
+B) 2 || Son parça ($-2$'den 0'a) da $y = -1$'i keser.
++C) 3 || Doğru: $x = -3{,}5$, $x = 2{,}5$ ve $x = 4$.
+D) 4 || Yatay parça $y = 2$'dedir; $y = -1$'i kesmez.
+E) 5 || Fazla.
+kontrol: 3
+cozum: $y = -1$ doğrusu birinci parçayı ($x = -3{,}5$), üçüncü parçayı ($x = 2{,}5$) ve dördüncü parçayı ($x = 4$) keser: 3 kök.
+
+@bolum s2 8 | Fonksiyonun işareti
+::fikir
+Grafik **x ekseninin üstündeyse** $f(x) > 0$, **altındaysa** $f(x) < 0$; x eksenini kestiği noktalar **köklerdir** ($f(x) = 0$).
+
+::duzey
+L1: Yukarıdaki grafikte $-3$ ile $2$ arasında grafik x ekseninin üstünde: bu aralıkta $f(x) > 0$. $-4$ ile $-3$ arasında ve $2$ ile $5$ arasında altta: $f(x) < 0$. $-3$ ve $2$ köklerdir.
+L2: Eşitsizliğin çözüm kümesini yazarken uçlara dikkat: $f(x) > 0$ kökleri içermez, $f(x) \geq 0$ içerir. $x = 5$'te $f(5) = 0$ olduğu için $f(x) < 0$ çözümüne 5 girmez.
+L3: İki grafikle verilen $f(x) \cdot g(x) < 0$ sorusunda kökleri sayı doğrusuna koy, her aralıkta $f$ ve $g$'nin işaretini yaz; farklı işaretli aralıklar çözümdür. $\frac{f(x)}{g(x)}$'te ayrıca $g(x) = 0$ olan noktalar çıkarılır.
+
+::ornek baslik="Pozitif ve negatif aralıklar"
+soru: Yukarıdaki $f$ için $f(x) > 0$ ve $f(x) < 0$ eşitsizliklerinin çözüm kümelerini yaz.
+1. Kökler: $x = -3$ (birinci parça) ve $x = 2$ (üçüncü parça); ayrıca $f(5) = 0$. || x eksenini kestiği yerler.
+2. Üstte kalan: $(-3, 2)$ → $f(x) > 0$. || Kökler dahil değil.
+3. Altta kalan: $[-4, -3) \cup (2, 5)$ → $f(x) < 0$. || $-4$ tanım kümesinde ve $f(-4) = -2 < 0$.
+cevap: $f > 0$: $(-3, 2)$; $f < 0$: $[-4, -3) \cup (2, 5)$
+
+::soru c2 tip=isaret-aralik zorluk=2
+Grafiği $(-4, -2)$, $(-2, 2)$, $(1, 2)$, $(3, -2)$ ve $(5, 0)$ noktalarını sırayla birleştiren $f$ fonksiyonu için $f(x) > 0$ eşitsizliğini sağlayan kaç tam sayı vardır?
+A) 2 || Yalnız 0 ve 1'i saydın; $f(-2) = 2 > 0$ ve $f(-1) > 0$.
+B) 3 || Aralık $(-3, 2)$; $-2$'den $1$'e kadar bütün tam sayıları say.
++C) 4 || Doğru: $-2, -1, 0, 1$.
+D) 5 || Köklerden birini dahil ettin; $f(-3) = f(2) = 0$.
+E) 6 || İki kökü de dahil ettin; $f(x) > 0$ kökleri içermez.
+kontrol: 4
+cozum: $f(x) > 0$ aralığı $(-3, 2)$; tam sayılar $-2, -1, 0, 1$: 4 tane.
+
+@bolum s3 7 | Dikey ve yatay doğru testleri
+::fikir
+**Dikey doğru testi:** her dikey doğru grafiği en çok bir noktada kesiyorsa grafik **fonksiyondur**. **Yatay doğru testi:** her yatay doğru en çok bir noktada kesiyorsa fonksiyon **bire birdir**; değer kümesindeki her yatay doğru en az bir noktada kesiyorsa **örtendir**.
+
+::duzey
+L1: Bir grafiğin fonksiyon olması "her $x$ için tek bir $y$" demektir. Grafik üzerinde dik bir cetvel kaydır: cetvel herhangi bir yerde grafiği iki noktada kesiyorsa o $x$'in iki görüntüsü var demektir; grafik fonksiyon değildir. Çember bu testi geçemez.
+L2: Yatay cetvel kaydırmak bire birliği sınar: $y = x^2$'de $y = 4$ doğrusu grafiği $x = \pm 2$'de keser, bu yüzden bire bir değildir. $y = x^3$ ise her yatay doğruyu bir kez keser: bire bir ve ($\mathbb{R} \to \mathbb{R}$) örtendir.
+L3: Tersi alınabilen fonksiyonlar hem bire bir hem örten olanlardır; yatay doğru testi bu yüzden ters fonksiyon dersinin ön koşuludur. Tanım kümesi kısıtlanarak bire bir olmayan bir fonksiyon bire bir yapılabilir ($x^2$, $x \geq 0$ için).
+
+::ornek baslik="Testleri uygula"
+soru: $y = x^2$, $y = x^3$ ve $x = y^2$ bağıntılarını dikey ve yatay doğru testleriyle incele.
+1. $y = x^2$: dikey testi geçer (fonksiyon); $y = 4$ iki noktada keser (bire bir değil). || İki test.
+2. $y = x^3$: iki testi de geçer (bire bir fonksiyon). || Her doğru bir kez keser.
+3. $x = y^2$: $x = 4$ dikey doğrusu $y = \pm 2$'de keser (fonksiyon değil). || Yana yatmış parabol.
+cevap: $x^2$ fonksiyon ama bire bir değil; $x^3$ bire bir fonksiyon; $x = y^2$ fonksiyon değil.
+
+::yanilgi m2 tip=dogru-testi
+yanlis: Bir grafiği iki noktada kesen yatay doğru varsa grafik fonksiyon değildir.
+neden: Yatay doğru testi bire birliği sınar; fonksiyon olmayı dikey doğru testi belirler.
+dogru: $y = x^2$ fonksiyondur ama bire bir değildir.
+
+::soru c3 tip=dogru-testi zorluk=2
+Aşağıdaki fonksiyonlardan hangisi $\mathbb{R}$'den $\mathbb{R}$'ye bire bir bir fonksiyondur?
+A) $f(x) = x^2 + 1$ || $y = 2$ doğrusu $x = \pm 1$'de keser.
+B) $f(x) = \lvert x \rvert$ || $y = 3$ doğrusu iki noktada keser.
+C) $f(x) = 5$ || Sabit fonksiyon bire bir değildir.
++D) $f(x) = 3x - 2$ || Doğru: eğimi sıfırdan farklı doğrusal fonksiyon her yatay doğruyu bir kez keser.
+E) $f(x) = x^4$ || $y = 1$ doğrusu iki noktada keser.
+cozum: Yatay doğru testi: yalnız $3x - 2$'nin grafiğini her yatay doğru tam bir noktada keser.
+
+@bolum s4 10 | Doğrusal fonksiyon ve modelleme
+::fikir
+$f(x) = mx + n$: **$m$ eğim** (bağımsız değişken 1 artınca bağımlı değişkendeki değişim), **$n$ başlangıç değeri** ($f(0)$). İki noktadan eğim $m = \frac{y_2 - y_1}{x_2 - x_1}$.
+
+::kaydirici baslik="Eğim ve başlangıç değeri"
+f: m*x+n | navy | $y = mx + n$
+m: -3 3 1 0.5
+n: -4 4 2 1
+x: -5 5
+y: -6 6
+soru: $m$'yi değiştirince doğrunun dikliği, $n$'yi değiştirince y eksenini kestiği yer değişir. $m < 0$ iken doğru nasıl bir eğilim gösterir?
+
+::duzey
+L1: Taksi ücreti örneği: açılış 30 TL, her kilometre 12 TL ise $x$ km için ücret $f(x) = 12x + 30$. 12 eğimdir (her km'de artış), 30 başlangıçtır ($x = 0$'daki ücret). Mum her saat 2 cm kısalıyorsa eğim $-2$'dir.
+L2: Kural yazmak için iki nokta yeter: eğimi bul, sonra bir noktayı $y = mx + n$'ye koyarak $n$'yi hesapla. Tabloda $x$ eşit adımlarla artarken $y$ de eşit adımlarla değişiyorsa ilişki doğrusaldır.
+L3: Modelleme sorularında birimlere dikkat: eğim "birim başına değişim"dir (TL/km, cm/saat). İki doğrusal modelin eşit olduğu an grafiklerin kesişimidir: $12x + 30 = 15x + 18 \Rightarrow x = 4$ km'de iki taksi aynı ücreti alır.
+
+::ornek baslik="İki noktadan kural"
+soru: Grafiği $(2, 7)$ ve $(5, 16)$ noktalarından geçen doğrusal fonksiyonun kuralını bul ve $f(10)$'u hesapla.
+1. $m = \frac{16 - 7}{5 - 2} = 3$. || Eğim.
+2. $7 = 3 \cdot 2 + n \Rightarrow n = 1$. || Bir noktayı yerine koy.
+3. $f(x) = 3x + 1$; $f(10) = 31$. || Kontrol: $f(5) = 16$ ✓
+cevap: $f(x) = 3x + 1$; $f(10) = 31$
+
+::tamamla baslik="Yanan mum"
+soru: Boyu 24 cm olan bir mum yakıldıktan sonra her saat 1,5 cm kısalıyor. Mumun boyunu zamana bağlı bir fonksiyonla yaz ve mumun kaç saatte biteceğini bul.
+1. Başlangıç 24 cm, saatlik değişim $-1{,}5$: $h(t) = 24 - 1{,}5t$.
+?2. $h(t) = 0 \Rightarrow 1{,}5t = 24 \Rightarrow t = 16$ saat.
+cevap: $h(t) = 24 - 1{,}5t$; 16 saat
+
+::yanilgi m3 tip=dogrusal-model
+yanlis: $f(x) = 12x + 30$ modelinde 30 her kilometrede eklenen ücrettir.
+neden: Her birim artışta eklenen miktar eğimdir (12); 30, $x = 0$'daki başlangıç değeridir.
+dogru: Eğim = birim başına değişim, sabit terim = başlangıç değeri.
+
+::soru c4 tip=dogrusal-model zorluk=2
+Bir taksinin açılış ücreti 30 TL ve kilometre başına ücreti 12 TL'dir. Başka bir taksinin açılış ücreti 18 TL ve kilometre başına ücreti 15 TL'dir. Kaç kilometrelik yolculukta iki taksi aynı ücreti alır?
+A) 2 || Kontrol: $12 \cdot 2 + 30 = 54$, $15 \cdot 2 + 18 = 48$.
+B) 3 || Hesabı kontrol et.
++C) 4 || Doğru: $12x + 30 = 15x + 18 \Rightarrow x = 4$.
+D) 6 || Hesabı yeniden yap.
+E) 12 || Açılış ücretleri farkını kilometre ücretiyle karıştırdın.
+kontrol: (30-18)/(15-12)
+cozum: $12x + 30 = 15x + 18 \Rightarrow 3x = 12 \Rightarrow x = 4$ km; ikisi de 78 TL alır.
+
+::ozet
+- $(a, b)$ grafikte ise $f(a) = b$; tanım kümesi x'e, görüntü kümesi y'ye izdüşüm.
+- $f(x) = k$'nin kök sayısı = $y = k$ doğrusunun kesim sayısı.
+- Üstte $f > 0$, altta $f < 0$; x eksenini kestiği noktalar kök.
+- Dikey test → fonksiyon; yatay test → bire bir; $f(x) = mx + n$: $m$ değişim, $n$ başlangıç.
+
+@pratik
+- Çalışma sırası: önce grafikten değer ve kök sayısı okumayı, sonra işaret aralıklarını, en son doğru testleri ve doğrusal modelleri çalış.
+- Sınav yaklaşımı: grafikli soruda istenen değeri hangi eksende arayacağını önce yaz (değer → y ekseni, eleman → x ekseni); kök sayısında cetvel gibi yatay doğru çiz.
+- Doğrusal hikâyelerde başlangıç değerini ve birim başına değişimi ayrı ayrı işaretle; kuralı yazmadan hesaba girme.
+- En sık tuzaklar: tanım ve görüntü kümesini karıştırmak, içi boş noktayı dahil etmek, yatay doğru testini fonksiyon testi sanmak, eğim ile başlangıç değerini karıştırmak.
+- Hedef süre soru başı 75 saniye. Konu testinden sonra bileşke ve ters fonksiyon dersine geç; grafik okuma orada da kullanılacak.
+
+@kartlar
+- Grafikte $(a, b)$ noktası ne demektir? :: $f(a) = b$
+- Tanım kümesi grafikte nasıl okunur? :: x eksenine izdüşüm
+- $f(x) = k$ denkleminin kök sayısı :: $y = k$ doğrusunun grafiği kestiği nokta sayısı
+- Dikey doğru testi neyi sınar? :: Bağıntının fonksiyon olup olmadığını
+- Yatay doğru testi neyi sınar? :: Fonksiyonun bire bir olup olmadığını
+- İki noktadan geçen doğrunun eğimi :: $m = \frac{y_2 - y_1}{x_2 - x_1}$
+- $f(x) = mx + n$'de $n$ :: Başlangıç değeri, $f(0)$
+
+@ozet
+- Bir fonksiyonun grafiğinden değerler, tanım kümesi ve görüntü kümesi eksenlere izdüşümle okunur.
+- Grafiğin x ekseninin üstünde ve altında kaldığı aralıklar fonksiyonun işaretini verir.
+- Dikey doğru testi fonksiyon olmayı, yatay doğru testi bire bir olmayı sınar.
+- Doğrusal fonksiyonda eğim birim başına değişimi, sabit terim başlangıç değerini gösterir ve gerçek hayat durumlarını modeller.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Bir çemberin grafiği neden bir fonksiyon grafiği değildir?" (2) "Taksi ücreti $f(x) = 12x + 30$ ise 12 ve 30 sayıları neyi anlatır?"
+
+@havuz
+::soru h1 tip=grafik-okuma zorluk=2
+Grafiği $(0, 1)$, $(2, 5)$ ve $(6, -3)$ noktalarını sırayla birleştiren iki doğru parçasından oluşan $f$ fonksiyonu için $f(1) + f(4)$ kaçtır?
+A) 2
++B) 4
+C) 5
+D) 6
+E) 8
+kontrol: 3+1
+cozum: Birinci parça $(0, 1)$–$(2, 5)$: eğim 2, $f(1) = 3$. İkinci parça $(2, 5)$–$(6, -3)$: eğim $-2$, $f(4) = 5 - 4 = 1$. Toplam 4.
+
+::soru h2 tip=isaret-aralik zorluk=2
+$f(x) = x - 2$ ve $g(x) = x + 3$ olduğuna göre $f(x) \cdot g(x) < 0$ eşitsizliğini sağlayan kaç tam sayı vardır?
++A) 4
+B) 5
+C) 6
+D) 7
+E) 3
+kontrol: 4
+cozum: Kökler $-3$ ve $2$; çarpım bu iki kök arasında negatiftir: $(-3, 2)$. Tam sayılar $-2, -1, 0, 1$: 4 tane.
+
+::soru h3 tip=dogru-testi zorluk=2
+Aşağıdakilerden hangisi $y$'yi $x$'in fonksiyonu olarak tanımlar?
+A) $x = y^2$
+B) $x^2 + y^2 = 9$
+C) $x = 3$
++D) $y = x^2 - 4x$
+E) $y^2 = x + 1$
+cozum: Yalnız $y = x^2 - 4x$'te her $x$ için tek bir $y$ vardır. Diğerlerinde bazı $x$ değerleri iki $y$ verir ya da ($x = 3$) bir $x$ sonsuz $y$ verir.
+
+::soru h4 tip=dogrusal-model zorluk=2
+Bir deponun su miktarı doğrusal olarak azalmaktadır. Depoda 2. saatte 340 litre, 5. saatte 250 litre su vardır. Depo kaçıncı saatte boşalır?
+A) 10
+B) 11
+C) 12
++D) $\frac{40}{3}$
+E) 15
+kontrol: 400/30
+cozum: Eğim $\frac{250 - 340}{5 - 2} = -30$ L/sa. $f(t) = -30t + 400$ ($f(2) = 340$). $f(t) = 0 \Rightarrow t = \frac{400}{30} = \frac{40}{3}$ (13 saat 20 dakika).

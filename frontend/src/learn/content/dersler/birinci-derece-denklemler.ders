@@ -1,0 +1,299 @@
+@ders birinci-derece-denklemler
+baslik: Birinci Dereceden Denklemler ve Denklem Sistemleri
+kisa: Denklemler
+sinav: TYT AYT
+unite: denklem
+sinif: 9
+sira: 200
+onkosul: rasyonel-sayilar
+kategori: excel.tyt.matematik.ceb9fbdfaa16dc1f89eb excel.ayt.matematik.ceb9fbdfaa16dc1f89eb excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Kesirli ve parantezli birinci dereceden denklemleri hatasız çözmek; çözüm kümesinin tek eleman, $\mathbb{R}$ ya da $\varnothing$ olduğu durumları ayırmak; iki bilinmeyenli denklem sistemlerini yok etme ve yerine koymayla çözmek; istenen ifadeyi bilinmeyenleri tek tek bulmadan elde etmek.
+neden: Denklem kurmak ve çözmek bütün problemlerin (TYT'de her yıl 10'dan fazla soru) motorudur. "Birinci Dereceden Denklemler ve Eşitsizlikler" başlığında 28 çıkmış TYT sorusu ve OGM bankasında 896 TYT sorusu var.
+kaynak: MEBİ TYT Konu Özeti — Birinci Dereceden Bir ve İki Bilinmeyenli Denklemler | OGM 9. Sınıf Konu Özetleri 14, 19 | OGM Video Notları TYT 03 — Denklemler
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 60
+anahtar: denklem | çözüm kümesi | kökü | denklemini sağlayan | denklem sistemi | taraf tarafa | /x\s*\+\s*y\s*=/ | eşitliğini sağlayan | eşitlikleri veriliyor
+baslik-kurali: birinci dereceden bir bilinmeyenli denklem | birinci dereceden iki bilinmeyenli denklem | /^9\.3\.3\.(2|4)/ | birinci dereceden denklem ve eşitsizlikler | denklemler
+haric: mutlak | eşitsizlik | aralık | < x < | basamak | bölün | üslü | köklü | /\byas(\b|i\b|in|lar|ta|tan|ca)/ | işçi | /\byuzde(\b|si|sin|lik|ler)/ | /\bkm\b/
+
+@tip denklem-cozme 30 s1
+ad: Birinci dereceden denklem çözme
+ipucu: Kesirli ($\frac{x-1}{2} - \frac{x-3}{4} = 2$) ya da parantezli denklemler; "$x$ kaçtır?"
+strateji: Önce paydaları yok et: her terimi paydaların EKOK'uyla çarp. Sonra parantezleri dağıt (eksinin önündeki parantezde bütün işaretler değişir), bilinmeyenleri bir tarafa topla, katsayıya böl ve sağla.
+anahtar: denkleminin kökü | denklemini sağlayan | x kaçtır | çözüm kümesi
+
+@tip ozel-durum 20 s2
+ad: Çözüm kümesi: tek eleman, $\mathbb{R}$ ya da boş küme
+ipucu: "Çözüm kümesi boş küme / gerçek sayılar olduğuna göre $m$", "sonsuz çözümü vardır", parametreli denklemler.
+strateji: Denklemi $ax = b$ biçimine getir. $a \neq 0$: tek çözüm; $a = 0$ ve $b = 0$: ÇK $= \mathbb{R}$; $a = 0$ ve $b \neq 0$: ÇK $= \varnothing$. Parametreyi bu koşullardan çöz.
+anahtar: boş küme | gerçek sayılar | sonsuz çözüm | çözüm kümesi r | ∅ | ÇK
+
+@tip sistem 30 s3
+ad: İki bilinmeyenli denklem sistemleri
+ipucu: İki denklem, iki bilinmeyen: "$x + y = 10$, $x - y = 4$", para–adet, madeni para, bilet soruları.
+strateji: Katsayılar uygunsa taraf tarafa topla/çıkar (yok etme); bir bilinmeyen kolayca yalnız kalıyorsa yerine koy. Doğrular paralelse çözüm yok, çakışıksa sonsuz çözüm vardır: $\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}$ paralel.
+anahtar: denklem sistemi | x + y = | taraf tarafa | toplam | tane | adet
+
+@tip ifade-degeri 20 s4
+ad: Eşitliklerden istenen ifadenin değeri
+ipucu: "$a + b = 8$, $b + c = 11$, $a + c = 13$ ise $a + b + c$", "$x + 2y$ ve $2x + y$ verilmiş, $x + y$ isteniyor".
+strateji: İstenen ifadeyi gör ve verilen eşitlikleri taraf tarafa toplayarak/çıkararak doğrudan ona ulaş. Bilinmeyenleri tek tek bulmak çoğu zaman gereksiz ve uzundur.
+anahtar: ifadesinin değeri | eşitlikleri veriliyor | olduğuna göre a + | toplamı kaçtır
+
+@ustalik
+denklem-cozme 2 1-2
+ozel-durum 1 1-3
+sistem 2 1-3
+ifade-degeri 1 1-3
+
+@oturum Denklem çözme ve özel durumlar | s1 s2
+@oturum Denklem sistemleri ve ifade değeri | s3 s4
+
+@ontest
+::soru o1 tip=denklem-cozme zorluk=1
+$3x + 7 = x - 1$ denkleminin kökü kaçtır?
++A) $-4$ || Doğru: $2x = -8$.
+B) $-3$ || $3x - x = 2x$; $-1 - 7 = -8$.
+C) $3$ || İşaret hatası: $-1 - 7 = -8$, $+8$ değil.
+D) $4$ || Taraf değiştirirken işaret değişmeli.
+E) $8$ || $2x = -8$ ise $x = -4$; 2'ye bölmeyi unuttun.
+kontrol: -8/2
+cozum: $3x - x = -1 - 7$, yani $2x = -8$ ve $x = -4$. Sağlama: $3(-4) + 7 = -5 = -4 - 1$ ✓
+
+::soru o2 tip=sistem zorluk=1
+$x + y = 10$ ve $x - y = 4$ olduğuna göre $x \cdot y$ kaçtır?
+A) 12 || $x$ ve $y$'yi yeniden bul: $x = 7$, $y = 3$.
++B) 21 || Doğru: $x = 7$, $y = 3$.
+C) 24 || $6 \cdot 4$ değil; $x - y = 4$ fark.
+D) 28 || $x \cdot (x - y)$ hesapladın.
+E) 40 || $10 \cdot 4$ çarpımı istenen değil.
+kontrol: 7*3
+cozum: Taraf tarafa topla: $2x = 14$, $x = 7$; $y = 3$. $x \cdot y = 21$.
+
+::soru o3 tip=ozel-durum zorluk=2
+$(m + 1)x - 3 = 2x + m$ denkleminin çözüm kümesi boş küme olduğuna göre $m$ kaçtır?
+A) $-3$ || $m = -3$ için katsayı $-4 \neq 0$; denklemin tek çözümü ($x = 0$) olur.
+B) $-1$ || Katsayı $m - 1 = -2 \neq 0$; tek çözüm olur.
+C) $0$ || Katsayı $-1 \neq 0$.
++D) $1$ || Doğru: katsayı $m - 1 = 0$, sağ taraf $m + 3 = 4 \neq 0$.
+E) $3$ || Katsayı $2 \neq 0$.
+kontrol: 1
+cozum: $(m + 1 - 2)x = m + 3$, yani $(m - 1)x = m + 3$. Boş küme için $m - 1 = 0$ ve $m + 3 \neq 0$: $m = 1$.
+
+@bolum s1 9 | Denklem bir terazidir
+::fikir
+Denklem iki kefesi dengede bir terazidir: **iki tarafa aynı işlemi** yaparsan denge bozulmaz. Amaç bilinmeyeni bir kefede yalnız bırakmaktır.
+
+::duzey
+L1: Terazinin bir kefesinde $x$ ve 3 kilo, diğerinde 10 kilo varsa iki kefeden de 3 kilo alırsın: $x = 7$. Her adımda iki tarafa aynı şeyi yapmak "terimi karşıya atınca işareti değişir" kuralının nedenidir.
+L2: $ax + b = 0$ ($a \neq 0$) birinci dereceden bir bilinmeyenli denklemdir; kökü $x = -\frac{b}{a}$'dır. Kesirli denklemde önce her terimi paydaların EKOK'uyla çarp; parantezleri dağıt, bilinmeyenleri bir tarafa topla. Bulduğun kökü ilk denklemde yerine yazarak **sağla**.
+L3: En sık hata, eksinin önündeki parantezi dağıtmaktır: $-\frac{x - 3}{4}$ terimini 4 ile çarpınca $-(x - 3) = -x + 3$ olur. Kesir çizgisi bir parantez gibi davranır. Paydaları yok ederken **her** terimi (sağ taraftaki sabit dahil) çarpmayı unutma.
+
+::ornek baslik="Kesirli denklem"
+soru: $\frac{x - 1}{2} - \frac{x - 3}{4} = 2$ denklemini çöz.
+1. Paydaların EKOK'u 4; her terimi 4 ile çarp: $2(x - 1) - (x - 3) = 8$. || Sağdaki 2 de 4 ile çarpılır.
+2. Dağıt: $2x - 2 - x + 3 = 8$. || Eksinin önündeki parantezde iki işaret de değişir.
+3. $x + 1 = 8$, yani $x = 7$. Sağlama: $\frac{6}{2} - \frac{4}{4} = 3 - 1 = 2$ ✓ || Sağlama hatayı yakalar.
+cevap: $x = 7$
+
+::yanilgi m1 tip=denklem-cozme
+yanlis: $-(x - 3) = -x - 3$
+neden: Eksi işareti parantezin içindeki **her** terimi çarpar: $-1 \cdot (-3) = +3$.
+dogru: $-(x - 3) = -x + 3$.
+
+::soru c1 tip=denklem-cozme zorluk=1
+$3(x - 2) - 2(x + 1) = 4$ denkleminin kökü kaçtır?
+A) 4 || $-6 - 2 = -8$; $x - 8 = 4$.
+B) 8 || $x - 8 = 4$ ise $x = 12$.
+C) 10 || Bir işareti yanlış dağıttın.
++D) 12 || Doğru: $3x - 6 - 2x - 2 = 4$, $x = 12$.
+E) 14 || $-2(x + 1) = -2x - 2$; sabitleri yeniden topla.
+kontrol: 4+8
+cozum: $3x - 6 - 2x - 2 = 4$, yani $x - 8 = 4$ ve $x = 12$.
+
+@bolum s2 8 | Çözüm kümesi ne zaman $\mathbb{R}$, ne zaman boş?
+::fikir
+Denklemi $a \cdot x = b$ biçimine getir: $a \neq 0$ ise **tek çözüm**, $a = 0$ ve $b = 0$ ise **her sayı çözüm** (ÇK $= \mathbb{R}$), $a = 0$ ve $b \neq 0$ ise **çözüm yok** (ÇK $= \varnothing$).
+
+::tablo baslik="$a \cdot x = b$ biçiminde çözüm kümesi"
+| Durum | Denklem | Çözüm kümesi |
+| $a \neq 0$ | $3x = 6$ | $\{2\}$ |
+| $a = 0$, $b = 0$ | $0 \cdot x = 0$ | $\mathbb{R}$ (sonsuz çözüm) |
+| $a = 0$, $b \neq 0$ | $0 \cdot x = 5$ | $\varnothing$ (çözüm yok) |
+
+::duzey
+L1: $0 \cdot x = 5$ denklemine bak: hangi sayıyı 0 ile çarparsan çarp sonuç 0 olur, asla 5 olmaz; çözüm yoktur. $0 \cdot x = 0$ ise her sayı için doğrudur; bütün gerçek sayılar çözümdür.
+L2: Parametreli sorularda önce bütün $x$'li terimleri bir tarafa, sabitleri öbür tarafa topla: $(m - 1)x = m + 3$. "ÇK $= \mathbb{R}$" için iki koşul birden ($m - 1 = 0$ ve $m + 3 = 0$) gerekir; "ÇK $= \varnothing$" için katsayı sıfır, sağ taraf sıfırdan farklı olmalıdır.
+L3: İki tarafın özdeş olması ÇK $= \mathbb{R}$ demektir: $(a - 3)x + 5 = 2x + b$ her $x$ için doğruysa $x$'in katsayıları ve sabitler ayrı ayrı eşit olmalıdır: $a - 3 = 2$, $5 = b$. Bu "katsayıları eşitleme" fikri polinomlarda ve özdeşliklerde tekrar karşına çıkacak.
+
+::ornek baslik="Sonsuz çözüm"
+soru: $(a - 3)x + 5 = 2x + b$ denkleminin çözüm kümesi $\mathbb{R}$ olduğuna göre $a + b$ kaçtır?
+1. Bir tarafa topla: $(a - 3 - 2)x + 5 - b = 0$, yani $(a - 5)x = b - 5$. || $ax = b$ biçimi.
+2. ÇK $= \mathbb{R}$ için katsayı ve sağ taraf sıfır: $a = 5$, $b = 5$. || İki koşul birden.
+3. $a + b = 10$.
+cevap: $10$
+
+::yanilgi m2 tip=ozel-durum
+yanlis: $0 \cdot x = 0$ denkleminin tek çözümü $x = 0$'dır.
+neden: $x$ yerine hangi sayıyı koyarsan koy eşitlik doğrudur.
+dogru: ÇK $= \mathbb{R}$; denklemin sonsuz çözümü vardır.
+
+::soru c2 tip=ozel-durum zorluk=2
+$(2m - 4)x = m - 2$ denkleminin çözüm kümesi $\mathbb{R}$ olduğuna göre $m$ kaçtır?
+A) 0 || Katsayı $-4 \neq 0$; tek çözüm olur.
+B) 1 || Katsayı $-2 \neq 0$.
++C) 2 || Doğru: $2m - 4 = 0$ ve $m - 2 = 0$.
+D) 3 || Katsayı $2 \neq 0$.
+E) 4 || Katsayı $4 \neq 0$.
+kontrol: 4/2
+cozum: ÇK $= \mathbb{R}$ için $2m - 4 = 0$ ve $m - 2 = 0$: ikisi de $m = 2$ ile sağlanır.
+
+@bolum s3 11 | İki bilinmeyenli denklem sistemleri
+::fikir
+İki bilinmeyen için iki denklem gerekir. **Yok etme**: katsayıları ters yapıp taraf tarafa topla. **Yerine koyma**: bir bilinmeyeni yalnız bırakıp öbür denklemde yerine yaz. Her denklem bir doğrudur; çözüm, doğruların **kesim noktasıdır**.
+
+::grafik alt="x + y = 7 ve 2x − y = 2 doğruları (3, 4) noktasında kesişiyor." aciklama="Denklem sisteminin çözümü iki doğrunun kesim noktasıdır."
+x: -1 8
+y: -3 9
+f: 7 - x | navy | $x + y = 7$
+f: 2x - 2 | red | $2x - y = 2$
+nokta: 3 4 | (3, 4) | green
+
+::duzey
+L1: İki bilinmeyen iki ayrı bilgi ister. "İki sayının toplamı 7, birinin 2 katı ile diğerinin farkı 2" bilgilerinden önce birini yok edersin: $x + y = 7$ ile $2x - y = 2$'yi topladığında $y$'ler birbirini götürür, $3x = 9$ kalır.
+L2: Yok etmede bir bilinmeyenin katsayılarını eşit ve ters işaretli yap (gerekirse denklemleri sayılarla çarp). Yerine koymada katsayısı 1 olan bilinmeyeni seç. Bulduğun değeri iki denklemde de sağla.
+L3: $ax + by = c$ ve $dx + ey = f$ sisteminde $\frac{a}{d} = \frac{b}{e} = \frac{c}{f}$ ise doğrular çakışıktır (sonsuz çözüm); $\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}$ ise paraleldir (çözüm yok); $\frac{a}{d} \neq \frac{b}{e}$ ise tek çözüm vardır. Parametreli "çözümsüz sistem" sorularının hepsi bu oran koşuludur.
+
+::ornek baslik="Yok etme"
+soru: $x + y = 7$ ve $2x - y = 2$ sistemini çöz.
+1. $y$'lerin katsayıları $+1$ ve $-1$: taraf tarafa topla: $3x = 9$. || Ters katsayılar birbirini götürür.
+2. $x = 3$; ilk denklemde yerine koy: $3 + y = 7$, $y = 4$. || Kolay olan denklemi seç.
+3. Sağlama: $2 \cdot 3 - 4 = 2$ ✓ || Grafikte kesim noktası (3, 4).
+cevap: $(x, y) = (3, 4)$
+
+::tamamla baslik="Yerine koyma"
+soru: $3x + 2y = 16$ ve $x - y = 2$ sistemini çöz.
+1. İkinci denklemden $x = y + 2$.
+?2. Birinci denklemde yerine yaz: $3(y + 2) + 2y = 16$, yani $5y + 6 = 16$. || $3y + 6 + 2y$
+?3. $y = 2$ ve $x = 4$. Sağlama: $3 \cdot 4 + 2 \cdot 2 = 16$ ✓
+cevap: $(4, 2)$
+
+::strateji tip=sistem baslik="Problemi sisteme çevir"
+ipucu: Toplam adet ve toplam para (madeni para, bilet, iki tür ürün)
+1. Bilinmeyenleri adlandır: $x$ = birinci türün adedi, $y$ = ikinci türün adedi.
+2. Adet denklemi: $x + y = \text{toplam adet}$.
+3. Değer denklemi: $(\text{fiyat}_1)x + (\text{fiyat}_2)y = \text{toplam para}$.
+4. Yok etme: değer denkleminden küçük fiyat × adet denklemini çıkar.
+
+::yanilgi m3 tip=sistem
+yanlis: Her iki bilinmeyenli denklem sisteminin tek bir çözümü vardır.
+neden: Doğrular paralel olabilir (hiç kesişmez) ya da çakışık olabilir (her noktada kesişir).
+dogru: $\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}$ ise çözüm yok, üçü de eşitse sonsuz çözüm vardır.
+
+::soru c3 tip=sistem zorluk=2
+$2x + 3y = 12$ ve $3x + 2y = 13$ olduğuna göre $x - y$ kaçtır?
+A) $-1$ || Denklemleri ters sırayla çıkardın.
++B) $1$ || Doğru: ikinciden birinciyi çıkar: $x - y = 1$.
+C) $2$ || $x$ ve $y$'yi ayrı bulmana gerek yok; çıkarma doğrudan verir.
+D) $3$ || $x = 3$'tür; istenen $x - y$.
+E) $5$ || $x + y = 5$; istenen fark.
+kontrol: 13-12
+cozum: $(3x + 2y) - (2x + 3y) = 13 - 12$, yani $x - y = 1$. (İstersen: $x = 3$, $y = 2$.)
+
+@bolum s4 8 | İstenen ifadeyi doğrudan bul
+::fikir
+Soru $x$ ve $y$'yi değil bir **ifadeyi** istiyorsa, verilen eşitlikleri **taraf tarafa toplayıp çıkararak** o ifadeye doğrudan ulaş.
+
+::duzey
+L1: $x + 2y = 11$ ve $2x + y = 7$ verilsin, $x + y$ istensin. İki denklemi toplayınca $3x + 3y = 18$ olur; 3'e bölünce $x + y = 6$. $x$ ve $y$'yi ayrı ayrı bulmana hiç gerek kalmadı.
+L2: Simetrik sistemlerde (katsayıları yer değiştirmiş) toplam ve fark hemen bulunur. Üç değişkenli döngülü eşitliklerde ($a + b$, $b + c$, $c + a$) hepsini topla: $2(a + b + c)$ elde edersin.
+L3: Bazen istenen ifade bir denklemin katıdır: $2x - 4y = 6$ verildiyse $x - 2y = 3$, $3x - 6y = 9$. Oranlı sorularda ($\frac{x}{y} = \frac{2}{3}$) $x = 2k$, $y = 3k$ yazmak tek bilinmeyene indirir.
+
+::ornek baslik="Döngülü eşitlikler"
+soru: $a + b = 8$, $b + c = 11$, $a + c = 13$ olduğuna göre $a + b + c$ kaçtır?
+1. Üç eşitliği topla: $2a + 2b + 2c = 32$. || Her harf iki kez geçer.
+2. $a + b + c = 16$. || İstersen $c = 16 - 8 = 8$ gibi tek tek de bulursun.
+cevap: $16$
+
+::soru c4 tip=ifade-degeri zorluk=2
+$x + 2y = 11$ ve $2x + y = 7$ olduğuna göre $x + y$ kaçtır?
+A) 4 || $x - y = -4$; istenen toplam.
+B) 5 || Toplamı 3'e bölerken hata yaptın.
++C) 6 || Doğru: topla: $3x + 3y = 18$.
+D) 9 || $\frac{11 + 7}{2}$ değil; katsayılar 3'tür.
+E) 18 || $3(x + y) = 18$; 3'e bölmeyi unuttun.
+kontrol: (11+7)/3
+cozum: İki denklemi topla: $3x + 3y = 18$, yani $x + y = 6$.
+
+::ozet
+- Denklem terazidir: iki tarafa aynı işlem; kesirli denklemde önce EKOK ile çarp, eksinin önündeki parantezi dikkatle dağıt.
+- $ax = b$: $a \neq 0$ tek çözüm; $a = b = 0$ ise $\mathbb{R}$; $a = 0 \neq b$ ise $\varnothing$.
+- Sistem: yok etme ya da yerine koyma; çözüm doğruların kesim noktası.
+- İstenen ifadeyi taraf tarafa işlemle doğrudan bul.
+
+@pratik
+- Çalışma sırası: önce tek bilinmeyenli kesirli denklemlerde işaret hatalarını sıfırla (her gün 5 soru), sonra sistemlere ve parametreli sorulara geç.
+- Sınav yaklaşımı: soru bir ifade istiyorsa ($x + y$, $a + b + c$) bilinmeyenleri tek tek bulmadan önce taraf tarafa toplama ya da çıkarma dene.
+- Problemlerde denklem kurarken bilinmeyenin neyi gösterdiğini (adet mi, fiyat mı?) kâğıda yaz; sonucu birim ve mantık açısından kontrol et.
+- En sık tuzaklar: $-(x - 3)$'ü yanlış dağıtmak, sağ taraftaki sabiti EKOK ile çarpmayı unutmak, "çözüm kümesi boş" için iki koşulu karıştırmak.
+- Hedef süre soru başı 60 saniye. Konu testinden sonra çıkmış sorular setinde 2018–2026 sorularını çöz; yanlışlarını Hatalarım'da tekrar et.
+
+@kartlar
+- $ax + b = 0$ ($a \neq 0$) denkleminin kökü :: $x = -\frac{b}{a}$
+- $0 \cdot x = 0$ ise çözüm kümesi? :: $\mathbb{R}$ (sonsuz çözüm)
+- $0 \cdot x = 5$ ise çözüm kümesi? :: $\varnothing$ (çözüm yok)
+- $-(x - 3)$ = ? :: $-x + 3$
+- Yok etme yöntemi :: Bir bilinmeyenin katsayılarını ters yapıp denklemleri taraf tarafa topla.
+- Paralel doğrular (çözümsüz sistem) koşulu :: $\frac{a}{d} = \frac{b}{e} \neq \frac{c}{f}$
+- $a + b$, $b + c$, $c + a$ verilince $a + b + c$ nasıl bulunur? :: Üçünü topla, 2'ye böl.
+
+@ozet
+- Denklem çözerken iki tarafa aynı işlemi yap; kesirleri EKOK ile yok et, parantez ve işaretlere dikkat et, sonucu sağla.
+- Çözüm kümesinin $\mathbb{R}$ ya da $\varnothing$ olması, $ax = b$ biçiminde katsayı ve sağ tarafın sıfır olup olmamasına bağlıdır.
+- İki bilinmeyenli sistem yok etme ya da yerine koymayla çözülür; grafikte doğruların kesim noktasıdır.
+- İstenen ifade verilen eşitliklerin toplamı/farkıyla çoğu zaman doğrudan elde edilir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Denklemde bir terimi karşı tarafa atınca neden işareti değişir?" (2) "$(m - 1)x = m + 3$ denkleminin çözüm kümesi ne zaman boş kümedir, ne zaman tek elemanlıdır?"
+
+@havuz
+::soru h1 tip=denklem-cozme zorluk=2
+$\frac{2x + 1}{3} - \frac{x - 1}{2} = 2$ denkleminin kökü kaçtır?
+A) 5
+B) 6
++C) 7
+D) 8
+E) 9
+kontrol: 12-5
+cozum: 6 ile çarp: $2(2x + 1) - 3(x - 1) = 12$, yani $4x + 2 - 3x + 3 = 12$, $x + 5 = 12$, $x = 7$.
+
+::soru h2 tip=ozel-durum zorluk=2
+$ax + 3 = 2x + b$ denkleminin sonsuz sayıda çözümü olduğuna göre $a \cdot b$ kaçtır?
+A) 5
++B) 6
+C) 8
+D) 9
+E) 12
+kontrol: 2*3
+cozum: $(a - 2)x = b - 3$; sonsuz çözüm için $a = 2$ ve $b = 3$: $a \cdot b = 6$.
+
+::soru h3 tip=sistem zorluk=2
+Bir kumbarada yalnız 5 TL'lik ve 1 TL'lik toplam 30 madeni para ve 86 TL vardır. Kumbarada kaç tane 5 TL'lik madeni para vardır?
+A) 12
+B) 13
++C) 14
+D) 15
+E) 16
+kontrol: 56/4
+cozum: $x + y = 30$, $5x + y = 86$. Çıkar: $4x = 56$, $x = 14$.
+
+::soru h4 tip=ifade-degeri zorluk=2
+$3a + 2b = 17$ ve $2a + 3b = 13$ olduğuna göre $a - b$ kaçtır?
+A) $-4$
+B) $1$
+C) $2$
+D) $3$
++E) $4$
+kontrol: 17-13
+cozum: Birinciden ikinciyi çıkar: $a - b = 17 - 13 = 4$.

@@ -1,0 +1,317 @@
+@ders sayma-permutasyon
+baslik: Saymanın Temel İlkesi ve Permütasyon
+kisa: Sayma ve permütasyon
+sinav: TYT AYT
+unite: sayma-olasilik
+sinif: 10
+sira: 800
+kategori: excel.tyt.matematik.f035f2fb95a3f15c26ab excel.ayt.matematik.f035f2fb95a3f15c26ab excel.tyt.matematik.9442d82c159081577c80 excel.ayt.matematik.9442d82c159081577c80
+hedef: Toplama ve çarpma yoluyla saymayı ayırt etmek; rakam ve kıyafet gibi seçim sorularını kutu (basamak) yöntemiyle çözmek; faktöriyelli ifadeleri sadeleştirmek ve $P(n, r)$'yi kullanmak; yan yana olma–olmama koşullu sıralamaları, tekrarlı ve dairesel permütasyonları hesaplamak.
+neden: "Sıralama ve Seçme" başlığında 2018–2026'da TYT'de 9, AYT'de 10 çıkmış soru var; olasılık sorularının neredeyse tamamı da önce doğru saymayı gerektirir. Çarpma ilkesini kutularla uygulamayı öğrenen öğrenci bu konunun yarısını formülsüz çözer.
+kaynak: MEBİ TYT Konu Özeti — Saymanın Temel İlkesi, Faktöriyel Kavramı, Permütasyon, Tekrarlı Permütasyon | OGM 10. Sınıf Konu Özetleri — Sayma ve Olasılık | 3 Adım TYT Matematik — Permütasyon, Kombinasyon, Binom
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: kaç farklı | farklı şekilde | sıralan | dizil | permütasyon | faktöriyel | ! | yan yana | rakamları farklı | kelime | yuvarlak masa | çember etrafına
+baslik-kurali: /^10\.1\.1\.(1|2|3)\b/ | saymanın temel ilkesi | sıralama ve seçme | permütasyon
+
+@tip temel-ilke 25 s1
+ad: Toplama ve çarpma yoluyla sayma
+ipucu: "3 gömlek, 4 pantolon…", "rakamları farklı üç basamaklı kaç tek sayı", "4 mektup 3 posta kutusuna".
+strateji: Aşamalar art arda yapılıyorsa ("ve") seçenek sayılarını çarp; ayrık seçeneklerden biri yapılıyorsa ("veya") topla. Rakam sorularında kutu çiz ve en kısıtlı kutudan başla (birler basamağındaki tek–çift koşulu, başta 0 olamaz).
+anahtar: kaç farklı | basamaklı | rakamları farklı | posta kutusu | seçebilir | yol
+
+@tip faktoriyel-p 20 s2
+ad: Faktöriyel ve $P(n, r)$
+ipucu: "$\frac{9! + 10!}{9! - 8!}$", "$5 \cdot P(8, 3) = 8 \cdot P(n, 2)$".
+strateji: $n! = n \cdot (n-1)!$; toplama–çıkarmada en küçük faktöriyeli ortak paranteze al. $P(n, r) = \frac{n!}{(n-r)!} = n(n-1)\cdots(n-r+1)$: $n$ farklı nesneden $r$ tanesinin sıralanış sayısı.
+anahtar: faktöriyel | ! | p(n | permütasyon
+
+@tip siralama-kosul 35 s3
+ad: Koşullu sıralama: yan yana, ayrı, belirli yer
+ipucu: "A ile B yan yana", "hiçbir iki kız yan yana gelmeyecek", "matematik kitapları bir arada".
+strateji: Yan yana olacakları tek blok say, bloğu kendi içinde de sırala. Yan yana olmayacaklar için tümden yan yana olanları çıkar ya da diğerlerini dizip boşluklara yerleştir. Belirli yer koşulunu önce yerleştir.
+anahtar: yan yana | bir arada | ardışık | başta | sonda | gelmeyecek | olmamak
+
+@tip tekrarli-dairesel 20 s4
+ad: Tekrarlı ve dairesel permütasyon
+ipucu: "ANKARA kelimesinin harfleriyle", "yuvarlak masa etrafına", "ızgarada en kısa yol".
+strateji: Özdeş nesneler varsa $\frac{n!}{n_1! \, n_2! \cdots}$. Dairesel sıralamada bir kişiyi sabitle: $(n-1)!$. Izgarada en kısa yol, sağ ve yukarı adımların tekrarlı permütasyonudur.
+anahtar: kelime | harfleri | özdeş | yuvarlak | çember etrafına | dairesel | en kısa yol
+
+@ustalik
+temel-ilke 1 1-2
+faktoriyel-p 1 1-2
+siralama-kosul 2 1-3
+tekrarli-dairesel 2 1-3
+
+@oturum Sayma ilkesi ve faktöriyel | s1 s2
+@oturum Koşullu ve tekrarlı sıralama | s3 s4
+
+@ontest
+::soru o1 tip=temel-ilke zorluk=1
+3 farklı gömleği, 4 farklı pantolonu ve 2 farklı ayakkabısı olan biri bir gömlek, bir pantolon ve bir ayakkabıyı kaç farklı şekilde seçebilir?
+A) 9 || Seçenekleri topladın; üç seçim art arda yapılıyor.
+B) 12 || Ayakkabıyı unuttun.
+C) 18 || Hesabı kontrol et: $3 \cdot 4 \cdot 2$.
++D) 24 || Doğru: $3 \cdot 4 \cdot 2 = 24$.
+E) 36 || Hesabı yeniden yap.
+kontrol: 3*4*2
+cozum: Üç seçim art arda yapılır: $3 \cdot 4 \cdot 2 = 24$.
+
+::soru o2 tip=faktoriyel-p zorluk=1
+$P(6, 2)$ kaçtır?
+A) 12 || $P(6, 2) = 6 \cdot 5$.
+B) 15 || Bu $C(6, 2)$'dir; permütasyonda sıra önemlidir.
++C) 30 || Doğru: $6 \cdot 5 = 30$.
+D) 36 || $6^2$ değil; aynı nesne iki kez seçilemez.
+E) 360 || Fazla.
+kontrol: 6*5
+cozum: $P(6, 2) = \frac{6!}{4!} = 6 \cdot 5 = 30$.
+
+::soru o3 tip=siralama-kosul zorluk=2
+A, B, C, D ve E harflerinin her biri bir kez kullanılarak yazılan 5 harfli dizilişlerin kaçında A ile B yan yanadır?
+A) 24 || Blok kendi içinde de sıralanır: $\times 2$.
++B) 48 || Doğru: $4! \cdot 2! = 48$.
+C) 72 || Hesabı kontrol et.
+D) 96 || Bloğu 2 değil 4 kez saydın.
+E) 120 || Bu tüm dizilişlerdir.
+kontrol: 24*2
+cozum: A ile B'yi tek blok say: 4 nesne $4! = 24$ şekilde, blok kendi içinde $2! = 2$ şekilde dizilir: 48.
+
+@bolum s1 9 | Saymanın temel ilkesi
+::fikir
+Aşamalar **art arda** yapılıyorsa ("ve") seçenek sayıları **çarpılır**; **ayrık** seçeneklerden biri yapılıyorsa ("veya") **toplanır**.
+
+::tablo baslik="Kutu yöntemi: {0, 1, 2, 3, 4, 5} ile rakamları farklı üç basamaklı sayılar"
+| Basamak | Yüzler | Onlar | Birler |
+| Seçenek | 5 (0 olamaz) | 5 | 4 |
+| Toplam | $5 \cdot 5 \cdot 4 = 100$ | | |
+
+::duzey
+L1: 3 gömleğin her biriyle 4 pantolondan biri giyilebilir: $3 \cdot 4 = 12$ ikili. Bir de 2 ayakkabı eklenirse her ikiliye 2 seçenek gelir: 24. Art arda verilen her karar seçenek sayısını çarpar.
+L2: Rakam sorularında kutu çiz ve en kısıtlı kutudan başla: tek–çift koşulu birler basamağında, "0 olamaz" koşulu en baştadır. Bir koşul iki kutuyu birden etkiliyorsa (birler 0 mı değil mi) durumlara ayır ve topla.
+L3: "En az bir" sorularında tümleyen kullan: tüm durumlardan hiç olmayan durumları çıkar. Kim kimi seçiyor sorusuna dikkat: 4 mektubun her biri 3 kutudan birini seçer: $3^4$; kutular mektup seçmez.
+
+::ornek baslik="MEBİ örneği: mektuplar ve posta kutuları"
+soru: a) 4 mektup 3 posta kutusuna kaç farklı şekilde atılabilir? b) 3 mektup 4 posta kutusuna, bir kutuda en çok bir mektup olacak şekilde kaç farklı şekilde atılabilir?
+1. a) Her mektup 3 kutudan birini seçer: $3 \cdot 3 \cdot 3 \cdot 3 = 3^4 = 81$. || Seçimi mektuplar yapar.
+2. b) 1. mektup 4, 2. mektup kalan 3, 3. mektup kalan 2 kutudan birine: $4 \cdot 3 \cdot 2 = 24$. || Kutu tekrar kullanılamaz.
+cevap: a) 81, b) 24
+
+::tamamla baslik="Durumlara ayırma"
+soru: 0, 1, 2, 3, 4 rakamlarıyla rakamları farklı üç basamaklı kaç çift sayı yazılabilir?
+1. Birler 0 ise: yüzler 4, onlar 3 seçenek → 12.
+?2. Birler 2 ya da 4 ise (2 seçenek): yüzler 3 (0 ve birlerdeki hariç), onlar 3 → $2 \cdot 3 \cdot 3 = 18$.
+?3. Toplam $12 + 18 = 30$.
+cevap: 30
+
+::yanilgi m1 tip=temel-ilke
+yanlis: 4 mektup 3 posta kutusuna $4^3 = 64$ farklı şekilde atılır.
+neden: Seçimi mektuplar yapar; her mektup için 3 seçenek vardır.
+dogru: $3^4 = 81$ (seçenek sayısı üzeri seçim yapan sayısı).
+
+::soru c1 tip=temel-ilke zorluk=2
+1, 2, 3, 4, 5 ve 6 rakamları kullanılarak rakamları farklı üç basamaklı kaç tek sayı yazılabilir?
+A) 40 || Hesabı kontrol et: birler için 3 seçenek.
++B) 60 || Doğru: birler 3, yüzler 5, onlar 4.
+C) 90 || Rakamlar farklı olmalı; tekrar edemez.
+D) 108 || Rakamlar tekrar edemez.
+E) 120 || Bu tüm üç basamaklı sayılardır; tek olma koşulunu uygula.
+kontrol: 3*5*4
+cozum: Önce birler (1, 3, 5): 3 seçenek; sonra yüzler 5, onlar 4: $3 \cdot 5 \cdot 4 = 60$.
+
+@bolum s2 8 | Faktöriyel ve permütasyon
+::fikir
+$n! = n \cdot (n-1)!$; faktöriyelli toplamlarda **en küçük faktöriyeli ortak paranteze al**. $P(n, r) = \frac{n!}{(n-r)!}$: $n$ farklı nesneden $r$ tanesinin sıralanış sayısıdır.
+
+::tablo baslik="Sık kullanılan değerler"
+| İfade | Değer |
+| $0!$ ve $1!$ | $1$ |
+| $4!$ | $24$ |
+| $5!$ | $120$ |
+| $6!$ | $720$ |
+| $P(n, 1)$ | $n$ |
+| $P(n, n)$ | $n!$ |
+
+::duzey
+L1: 5 kişi bir sıraya $5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 = 5! = 120$ farklı şekilde dizilir: ilk yere 5, ikinciye 4 kişi kalır ve böyle devam eder.
+L2: 8 kişiden 3'ü bir kürsüye sırayla çıkacaksa $P(8, 3) = 8 \cdot 7 \cdot 6 = 336$. $\frac{n!}{(n-2)!} = n(n-1)$ gibi sadeleştirmeler denklemleri hızla çözer.
+L3: $n!$ içindeki bir $a$ asal çarpanının kuvveti: $n$'yi kalan $a$'dan küçük olana kadar $a$'ya böl, bölümleri topla. MEBİ örneği: $29!$ için $29 : 3 = 9$, $9 : 3 = 3$, $3 : 3 = 1$ → $9 + 3 + 1 = 13$.
+
+::ornek baslik="MEBİ örneği: faktöriyelli kesir"
+soru: $\dfrac{9! + 10!}{9! - 8!}$ işleminin sonucunu bul.
+1. Pay: $9! + 10 \cdot 9! = 9!(1 + 10) = 11 \cdot 9!$. || Küçük faktöriyeli ortak al.
+2. Payda: $9 \cdot 8! - 8! = 8!(9 - 1) = 8 \cdot 8!$. || Yine ortak paranteze al.
+3. $\dfrac{11 \cdot 9 \cdot 8!}{8 \cdot 8!} = \dfrac{99}{8}$. || $9! = 9 \cdot 8!$.
+cevap: $\frac{99}{8}$
+
+::yanilgi m2 tip=faktoriyel-p
+yanlis: $7! - 6! = 1!$
+neden: Faktöriyel çıkarmaya dağılmaz; $7!$ ile $6!$ arasındaki fark çok büyüktür.
+dogru: $7! - 6! = 6!(7 - 1) = 6 \cdot 720 = 4320$.
+
+::soru c2 tip=faktoriyel-p zorluk=2
+$\dfrac{7! - 6!}{5!}$ işleminin sonucu kaçtır?
+A) 6 || Hesabı kontrol et: $6!(7 - 1)$.
+B) 30 || $6! = 6 \cdot 5!$; payda sadeleşince 6 ile 6 çarpılır.
++C) 36 || Doğru: $\frac{6! \cdot 6}{5!} = 6 \cdot 6 = 36$.
+D) 42 || $7! : 5! = 42$ ama $6!$'yı da çıkarmalısın.
+E) 48 || Hesabı yeniden yap.
+kontrol: (5040-720)/120
+cozum: $7! - 6! = 6!(7 - 1) = 6 \cdot 6!$; $\frac{6 \cdot 6!}{5!} = 6 \cdot 6 = 36$.
+
+@bolum s3 11 | Koşullu sıralama
+::fikir
+**Yan yana olacaklar** tek blok sayılır, blok kendi içinde de sıralanır. **Yan yana olmayacaklar** için ya tümünden yan yana olanlar çıkarılır ya da diğerleri dizilip **aralara** yerleştirilir. **Belirli yer** koşulunu önce yerleştir.
+
+::duzey
+L1: 5 arkadaş fotoğraf çektirirken Ali ile Ayşe yan yana dursun istiyorsa ikisini kollarından bağlı tek kişi gibi düşün: 4 "kişi" $4!$ şekilde dizilir; Ali–Ayşe ya da Ayşe–Ali olarak $2!$: 48.
+L2: "Yan yana olmasın" = tüm sıralamalar − yan yana olanlar. 6 harfte A ile B yan yana olmasın: $6! - 5! \cdot 2! = 720 - 240 = 480$. Birden çok blok varsa blokları ve kalanları birlikte dizip her bloğun içini ayrıca sırala.
+L3: "Hiçbir iki kız yan yana gelmesin" gibi koşullarda tümleyen zorlaşır; önce erkekleri diz, sonra kızları erkeklerin oluşturduğu boşluklara yerleştir. 4 erkek 5 boşluk oluşturur; 3 kız bu boşluklara $P(5, 3)$ şekilde girer.
+
+::ornek baslik="Kızlar bir arada"
+soru: 3 kız ve 4 erkek öğrenci bir sıraya, kızlar yan yana olacak şekilde kaç farklı biçimde dizilebilir?
+1. 3 kız tek blok: 4 erkek + 1 blok = 5 nesne → $5! = 120$. || Bloğu tek nesne say.
+2. Blok içinde kızlar $3! = 6$ şekilde dizilir. || Bloğun içi.
+3. $120 \cdot 6 = 720$. || Çarpma ilkesi.
+cevap: 720
+
+::tamamla baslik="Hiçbir iki kız yan yana olmasın"
+soru: Aynı 3 kız ve 4 erkek, hiçbir iki kız yan yana gelmeyecek şekilde kaç farklı biçimde dizilebilir?
+1. Erkekler $4! = 24$ şekilde dizilir ve 5 boşluk oluşur: _E_E_E_E_.
+?2. 3 kız 5 boşluğa $P(5, 3) = 60$ şekilde yerleşir.
+?3. $24 \cdot 60 = 1440$.
+cevap: 1440
+
+::yanilgi m3 tip=siralama-kosul
+yanlis: Yan yana olacak 2 kişiyi tek kişi sayınca sonuç $(n-1)!$ olur.
+neden: Blok içindeki 2 kişi de kendi aralarında yer değiştirebilir.
+dogru: $(n-1)! \cdot 2!$.
+
+::soru c3 tip=siralama-kosul zorluk=2
+A, B, C, D, E ve F harfleri bir sıraya diziliyor. A ile B yan yana olmamak koşuluyla kaç farklı sıralama yapılabilir?
+A) 120 || Bu 5 nesnenin sıralanışıdır.
+B) 240 || Bu A ile B'nin yan yana olduğu sıralamalardır.
+C) 360 || Hesabı kontrol et.
++D) 480 || Doğru: $720 - 240 = 480$.
+E) 720 || Bu tüm sıralamalardır; koşulu uygula.
+kontrol: 720-240
+cozum: Tümü $6! = 720$; A–B yan yana $5! \cdot 2! = 240$; yan yana olmayan $720 - 240 = 480$.
+
+@bolum s4 9 | Tekrarlı ve dairesel permütasyon
+::fikir
+**Tekrarlı permütasyon:** $\frac{n!}{n_1! \cdot n_2! \cdots}$ (özdeşlerin kendi aralarında yer değiştirmesi yeni diziliş oluşturmaz). **Dairesel sıralama:** $(n-1)!$ (bir kişiyi sabitle). **Izgarada en kısa yol:** sağ ve yukarı adımların tekrarlı permütasyonu.
+
+::grafik alt="4 birim genişliğinde, 3 birim yüksekliğinde ızgara; A sol alt köşede, B sağ üst köşede." aciklama="A'dan B'ye en kısa yol: 4 sağ (S) ve 3 yukarı (Y) adım; $\frac{7!}{4! \, 3!} = 35$ yol."
+x: -0.5 4.5
+y: -0.5 3.5
+parca: 0 0 4 0 | line
+parca: 0 1 4 1 | line
+parca: 0 2 4 2 | line
+parca: 0 3 4 3 | line
+parca: 0 0 0 3 | line
+parca: 1 0 1 3 | line
+parca: 2 0 2 3 | line
+parca: 3 0 3 3 | line
+parca: 4 0 4 3 | line
+parca: 0 0 2 0 | red
+parca: 2 0 2 2 | red
+parca: 2 2 4 2 | red
+parca: 4 2 4 3 | red
+nokta: 0 0 | A | navy
+nokta: 4 3 | B | navy
+esit: evet
+
+::duzey
+L1: 6 kişi yuvarlak bir masaya oturursa herkesin bir sandalye sağa kaydığı oturuşlar aynı sayılır. Bir kişiyi sabitleyip diğer 5'ini sıralarsın: $5! = 120$.
+L2: Özdeş nesnelerin yer değiştirmesi yeni bir diziliş oluşturmaz; bu yüzden $n!$ özdeşlerin kendi içindeki sıralanışlarına bölünür: ANKARA'da 3 A var: $\frac{6!}{3!} = 120$.
+L3: Izgarada A'dan B'ye en kısa yol her zaman aynı sayıda sağ ve yukarı adımdan oluşur; yolu "SSYSY…" gibi bir kelime gibi düşün. 4 S ve 3 Y harfiyle yazılabilecek kelime sayısı $\frac{7!}{4! \, 3!} = 35$'tir.
+
+::ornek baslik="Tekrarlı harfler"
+soru: ANKARA kelimesinin harfleri kullanılarak anlamlı ya da anlamsız 6 harfli kaç farklı kelime yazılabilir?
+1. Harfler: A (3 tane), N, K, R. || Özdeşleri say.
+2. $\frac{6!}{3!} = \frac{720}{6} = 120$. || Özdeş A'ların sıralanışına böl.
+cevap: 120
+
+::soru c4 tip=tekrarli-dairesel zorluk=2
+KÜTÜK kelimesinin harfleri kullanılarak anlamlı ya da anlamsız 5 harfli kaç farklı kelime yazılabilir?
+A) 10 || Hesabı kontrol et: $\frac{5!}{2! \, 2!}$.
+B) 15 || Üç harfi de tekrarlı saydın; T yalnız bir tanedir.
+C) 20 || Hesabı yeniden yap.
++D) 30 || Doğru: $\frac{120}{2 \cdot 2} = 30$.
+E) 60 || Yalnız bir harfin tekrarını böldün; K ve Ü ikişer tane.
+kontrol: 120/4
+cozum: K (2), Ü (2), T (1): $\frac{5!}{2! \cdot 2!} = \frac{120}{4} = 30$.
+
+::ozet
+- Art arda kararlar çarpılır, ayrık seçenekler toplanır; kutuya en kısıtlı basamaktan başla.
+- $n! = n(n-1)!$; $P(n, r) = \frac{n!}{(n-r)!}$.
+- Yan yana: blok × bloğun içi; yan yana değil: tümü − yan yana ya da boşluklara yerleştir.
+- Tekrarlı: $\frac{n!}{n_1! n_2! \cdots}$; dairesel: $(n-1)!$; ızgara yolu: S ve Y adımlarının tekrarlı permütasyonu.
+
+@pratik
+- Çalışma sırası: önce kutu yöntemiyle rakam ve kıyafet sorularını hızlandır, sonra faktöriyel sadeleştirmeyi, en son koşullu, tekrarlı ve dairesel sıralamayı çalış.
+- Sınav yaklaşımı: her sayma sorusunda önce "sıra önemli mi?" diye sor; önemliyse permütasyon (bu ders), değilse kombinasyon (sonraki ders).
+- Koşullu sorularda en kısıtlı koşulu ilk yerleştir; "olmasın" koşulunda tümleyeni ya da boşluk yöntemini seç.
+- En sık tuzaklar: başa 0 koymak, bloğun içini sıralamayı unutmak, $3^4$ ile $4^3$'ü karıştırmak, tekrarlı harflerde bölmeyi eksik yapmak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra kombinasyon dersine geç; çıkmış sorular iki dersi birlikte kullanır.
+
+@kartlar
+- Saymanın temel ilkesi :: Art arda kararların seçenek sayıları çarpılır.
+- $n!$ ile $(n-1)!$ ilişkisi :: $n! = n \cdot (n-1)!$
+- $P(n, r)$ :: $\frac{n!}{(n-r)!}$
+- İki kişi yan yana olacak şekilde $n$ kişinin sıralanışı :: $(n-1)! \cdot 2!$
+- Tekrarlı permütasyon :: $\frac{n!}{n_1! \cdot n_2! \cdots}$
+- $n$ kişinin yuvarlak masaya oturuşu :: $(n-1)!$
+- Rakam sorusunda ilk doldurulan kutu :: En kısıtlı olan (birler ya da en baştaki basamak).
+
+@ozet
+- Art arda yapılan seçimlerin sayısı çarpma, ayrık seçeneklerin sayısı toplama yoluyla bulunur.
+- Faktöriyel ve permütasyon, farklı nesnelerin sıralanış sayısını verir.
+- Yan yana olma koşulunda blok yöntemi, yan yana olmama koşulunda tümleyen ya da boşluk yöntemi kullanılır.
+- Özdeş nesnelerde tekrarlı permütasyon, dairesel dizilişte bir nesneyi sabitleme kullanılır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "4 mektup 3 posta kutusuna neden $4^3$ değil de $3^4$ şekilde atılır?" (2) "Hiçbir iki kızın yan yana gelmemesi için neden önce erkekleri dizeriz?"
+
+@havuz
+::soru h1 tip=temel-ilke zorluk=2
+0, 1, 2, 3, 4 ve 5 rakamları kullanılarak rakamları farklı üç basamaklı kaç sayı yazılabilir?
+A) 60
+B) 80
++C) 100
+D) 120
+E) 180
+kontrol: 5*5*4
+cozum: Yüzler 5 (0 olamaz), onlar 5, birler 4: $5 \cdot 5 \cdot 4 = 100$.
+
+::soru h2 tip=faktoriyel-p zorluk=2
+$5 \cdot P(8, 3) = 8 \cdot P(n, 2)$ denklemini sağlayan $n$ pozitif tam sayısı kaçtır?
+A) 10
+B) 12
+C) 13
+D) 14
++E) 15
+kontrol: 15
+cozum: $5 \cdot 8 \cdot 7 \cdot 6 = 8 \cdot n(n-1) \Rightarrow n(n-1) = 210 = 15 \cdot 14 \Rightarrow n = 15$.
+
+::soru h3 tip=siralama-kosul zorluk=2
+Farklı 4 matematik ve farklı 3 fizik kitabı bir rafa, aynı derse ait kitaplar bir arada olacak şekilde kaç farklı biçimde dizilebilir?
+A) 144
++B) 288
+C) 576
+D) 1440
+E) 5040
+kontrol: 2*24*6
+cozum: İki ders bloğu $2!$ şekilde, matematik kitapları $4!$, fizik kitapları $3!$ şekilde dizilir: $2 \cdot 24 \cdot 6 = 288$.
+
+::soru h4 tip=tekrarli-dairesel zorluk=2
+Bir ızgarada A köşesinden B köşesine yalnız sağa ve yukarı giderek 5 sağ, 2 yukarı adımla gidiliyor. Kaç farklı en kısa yol vardır?
++A) 21
+B) 28
+C) 35
+D) 42
+E) 70
+kontrol: 5040/(120*2)
+cozum: 5 S ve 2 Y harfinin dizilişi: $\frac{7!}{5! \cdot 2!} = 21$.

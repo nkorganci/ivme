@@ -17,4 +17,12 @@
   --pen-red: #c43d52;
   --pen-blue: #245ca5;
   --pen-green: #23815c;
+  /* Konuyu Öğrenelim kavram durumları */
+  --lr-locked: #64748b;
+  --lr-locked-soft: #f1f5f9;
+  --lr-practice: #6d28d9;
+  --lr-practice-soft: #ede9fe;
+  --lr-due: #c2410c;
+  --lr-due-soft: #ffedd5;
+  --lr-gold: #b45309;
 }

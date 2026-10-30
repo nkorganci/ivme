@@ -1,0 +1,298 @@
+@ders sayi-basamaklari
+baslik: Sayı Basamakları
+kisa: Basamaklar
+sinav: TYT AYT
+unite: temel
+sinif: 9
+sira: 110
+onkosul: temel-kavramlar
+kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
+hedef: Sayıları çözümleyerek basamak değeriyle işlem yapmak; rakam yer değiştirme ve rakam ekleme sorularını denkleme çevirmek; rakam koşullu en büyük–en küçük sayıyı bulmak; bir sayının kaç basamaklı olduğunu ve sonundaki sıfır sayısını hesaplamak.
+neden: Basamak soruları TYT'nin "Sayı Kümeleri" başlığında neredeyse her yıl görünür ve problemlerin içinde de gizlidir ("iki basamaklı bir sayının rakamları yer değiştirince…"). Çözümleme bir kez oturunca bu sorular tek satırlık denklemlere dönüşür.
+kaynak: MEBİ TYT Konu Özeti — Sayı Basamakları | OGM Video Notları TYT 01 — Temel Kavramlar, Sayılar | 3 Adım TYT Matematik — Temel Kavramlar, Sayı Basamakları
+tekrar: 12
+ustalik-dk: 14
+hedef-sure: 60
+anahtar: basamak | rakamları farklı | rakamları birbirinden farklı | iki basamaklı | üç basamaklı | dört basamaklı | onlar basamağı | birler basamağı | yüzler basamağı | sayı değeri | basamak değeri | çözümle | kaç basamaklı | sondan kaç | rakamlarının yerleri | rakamları yer değiştir
+baslik-kurali: sayı basamakları | temel kavramlar, sayı basamakları | /^9\.3\.1\.1/ | sayı kümeleri
+haric: bölün | kalan | ebob | ekok | rasyonel | devirli
+
+@tip cozumleme 30 s1
+ad: Çözümleme ve basamak değeri
+ipucu: "AB ve BA iki basamaklı sayılar", "ABC − CBA", "abc üç basamaklı sayısı" gibi harfli sayılar.
+strateji: Harfli sayıyı hemen çözümle: $AB = 10A + B$, $ABC = 100A + 10B + C$. Kısa yollar: $AB + BA = 11(A + B)$, $AB - BA = 9(A - B)$, $ABC - CBA = 99(A - C)$. Sonra rakam koşulunu (0–9, ilk basamak ≠ 0) uygula.
+anahtar: ab + ba | ab - ba | abc - cba | çözümle | iki basamaklı ab | basamak değeri | sayı değeri
+
+@tip basamak-degisim 25 s2
+ad: Rakam ekleme ve yer değiştirme
+ipucu: "Sağına 3 yazılınca", "rakamları yer değiştirince 36 azalıyor", "bir rakamı 2 artırılırsa".
+strateji: Sağa rakam eklemek $x \to 10x + d$, sola eklemek $x \to d \cdot 10^n + x$ yapar ($n$: $x$'in basamak sayısı). Bir rakam değişince sayı (değişim × basamak değeri) kadar değişir. Denklemi kur, çöz, rakam koşulunu kontrol et.
+anahtar: sağına | soluna | yazılırsa | yazılınca | yer değiştir | artırılırsa | azaltılırsa | rakamlarının yerleri
+
+@tip rakam-kosul 25 s3
+ad: Rakam koşullu en büyük–en küçük sayı
+ipucu: "Rakamları birbirinden farklı üç basamaklı en büyük çift sayı", "rakamları toplamı 20 olan en küçük sayı".
+strateji: En büyük sayı için en büyük rakamları en soldaki basamaklara yaz; en küçük için tersini yap ama ilk basamağa 0 yazma. Koşulu (çift, tek, rakamlar toplamı) en son basamağa ya da sona bırakıp kontrol et.
+anahtar: en büyük | en küçük | rakamları farklı | rakamları birbirinden farklı | rakamları toplamı | rakamlar çarpımı
+
+@tip basamak-sayisi 20 s4
+ad: Kaç basamaklı? Sondaki sıfırlar
+ipucu: "$2^{10} \cdot 5^{8}$ sayısı kaç basamaklıdır?", "$25!$ sayısının sondan kaç basamağı 0'dır?"
+strateji: Sayıyı $k \cdot 10^n$ ($1 \leq k < 10$) biçimine getir: $n + 1$ basamaklıdır. $2^a 5^b$ çarpımında küçük üs kadar 10 oluşur. Faktöriyelde sondaki sıfır sayısı, 5 çarpanlarının sayısıdır: $\lfloor n/5 \rfloor + \lfloor n/25 \rfloor + \ldots$
+anahtar: kaç basamaklı | basamaklıdır | sondan kaç | sonunda kaç | sıfır vardır | faktöriyel | !
+
+@ustalik
+cozumleme 2 1-3
+basamak-degisim 1 1-3
+rakam-kosul 2 1-3
+basamak-sayisi 1 1-3
+
+@oturum Çözümleme ve basamak değişimleri | s1 s2
+@oturum Rakam koşulları ve basamak sayısı | s3 s4
+
+@ontest
+::soru o1 tip=cozumleme zorluk=1
+$AB$ ve $BA$ iki basamaklı sayılardır. $AB + BA = 121$ olduğuna göre $A + B$ kaçtır?
+A) 9 || $121 = 11(A + B)$; 9 olsaydı toplam 99 olurdu.
+B) 10 || $11 \cdot 10 = 110$ eder, 121 değil.
++C) 11 || Doğru: $AB + BA = 11(A + B) = 121$.
+D) 12 || $11 \cdot 12 = 132$.
+E) 13 || $11 \cdot 13 = 143$.
+kontrol: 121/11
+cozum: $AB + BA = (10A + B) + (10B + A) = 11(A + B) = 121$, yani $A + B = 11$.
+
+::soru o2 tip=rakam-kosul zorluk=1
+Rakamları birbirinden farklı üç basamaklı en büyük çift sayı kaçtır?
+A) 968 || Daha büyükleri var; onlar basamağına 8 yazılabilir.
+B) 978 || Birler basamağı 8; ama onlar basamağı daha büyük olabilir.
+C) 984 || 986 daha büyük ve koşulları sağlar.
++D) 986 || Doğru: yüzlerde 9, onlarda 8, birlerde kalan en büyük çift rakam 6.
+E) 987 || 987 tek sayıdır.
+cozum: Yüzler 9, onlar 8; birler çift ve 9, 8'den farklı olmalı: en büyüğü 6. Sayı 986.
+
+::soru o3 tip=basamak-sayisi zorluk=2
+$2^{10} \cdot 5^{8}$ sayısı kaç basamaklıdır?
+A) 8 || $10^8$ tek başına 9 basamaklıdır; ayrıca 4 çarpanı var.
++B) 9 || Doğru: $2^{10} 5^8 = 2^2 \cdot 10^8 = 4 \cdot 10^8$, 9 basamaklı.
+C) 10 || $4 \cdot 10^8$'in basamak sayısını bir fazla saydın.
+D) 11 || Fazla.
+E) 18 || Üsleri topladın; basamak sayısı böyle bulunmaz.
+cozum: $2^{10} \cdot 5^8 = 2^2 \cdot (2 \cdot 5)^8 = 4 \cdot 10^8 = 400\,000\,000$: 9 basamaklıdır.
+
+@bolum s1 10 | Basamak değeri ve çözümleme
+::fikir
+Bir rakamın değeri, durduğu yere bağlıdır: $abc = 100a + 10b + c$. Harfli bir sayı ($AB$) iki rakamın **çarpımı değil**, iki basamaklı bir sayıdır: $AB = 10A + B$.
+
+::duzey
+L1: Parayı düşün: 3 tane yüzlük, 4 tane onluk ve 7 tane birlik toplam 347 lira eder. Aynı 3 rakamı yüzler basamağında 300, onlar basamağında 30 değerindedir. Rakamın kendisine **sayı değeri**, durduğu yere göre kazandığı değere **basamak değeri** denir.
+L2: $abcde = 10000a + 1000b + 100c + 10d + e$ yazmaya **çözümleme** denir. Basamak sayısı belli bir sayının ilk rakamı 0 olamaz. Sık kullanılan sonuçlar: $AB + BA = 11(A + B)$, $AB - BA = 9(A - B)$, $ABC - CBA = 99(A - C)$.
+L3: Bu kısa yollar çözümlemenin sonucudur: $AB - BA = (10A + B) - (10B + A) = 9A - 9B$. Uzun sayılarda blok çözümleme işe yarar: $ABCDE = 1000 \cdot AB + CDE = 100 \cdot ABC + DE$. Örneğin $ABAB = 101 \cdot AB$ olduğundan her $ABAB$ sayısı 101'e bölünür.
+
+::tablo baslik="47 352 sayısında basamaklar"
+| Basamak | Sayı değeri | Basamak değeri |
+| On binler | 4 | $4 \cdot 10\,000 = 40\,000$ |
+| Binler | 7 | $7 \cdot 1000 = 7000$ |
+| Yüzler | 3 | $300$ |
+| Onlar | 5 | $50$ |
+| Birler | 2 | $2$ |
+
+::ornek baslik="Fark verilince rakamlar"
+soru: $AB$ ve $BA$ iki basamaklı sayılar ve $AB - BA = 54$ olduğuna göre $A + B$ en çok kaçtır?
+1. Çözümle: $AB - BA = 9(A - B) = 54$, yani $A - B = 6$. || Kısa yol; uzun yoldan da aynı sonuç çıkar.
+2. $BA$ iki basamaklı olduğundan $B \neq 0$. Uygun çiftler: $(7, 1)$, $(8, 2)$, $(9, 3)$. || $B = 0$ olsaydı $BA$ tek basamaklı olurdu.
+3. En büyük toplam $9 + 3 = 12$. || Toplamı büyütmek için en büyük $A$'yı seç.
+cevap: $12$
+
+::yanilgi m1 tip=cozumleme
+yanlis: $AB = A \cdot B$; örneğin $A = 3$, $B = 4$ ise $AB = 12$.
+neden: Harflerin yan yana yazılması, rakamlardan oluşan sayıyı gösterir.
+dogru: $AB = 10A + B = 34$. Çarpım kastedilse $A \cdot B$ diye ayrıca belirtilir.
+
+::soru c1 tip=cozumleme zorluk=1
+$ABC$ ve $CBA$ üç basamaklı sayılardır. $ABC - CBA = 297$ olduğuna göre $A - C$ kaçtır?
++A) 3 || Doğru: $ABC - CBA = 99(A - C) = 297$.
+B) 4 || $99 \cdot 4 = 396$.
+C) 9 || 297'yi 33'e böldün; fark 99'un katıdır.
+D) 11 || Fark 99'un katıdır; 11 olmaz.
+E) 33 || 297'yi 9'a böldün; üç basamaklıda katsayı 99'dur.
+kontrol: 297/99
+cozum: $(100A + 10B + C) - (100C + 10B + A) = 99A - 99C = 99(A - C) = 297$, yani $A - C = 3$.
+
+@bolum s2 10 | Rakam ekleme ve yer değiştirme
+::fikir
+Sağa bir rakam eklemek sayıyı **10 katına çıkarıp** o rakamı ekler: $x \to 10x + d$. Bir rakamı değiştirmek, sayıyı **(değişim) × (basamak değeri)** kadar değiştirir.
+
+::duzey
+L1: 25'in sağına 7 yazınca 257 olur: önce 25, 250 olmuş (10 katı), sonra 7 eklenmiş. 25'in soluna 7 yazınca 725 olur: 25'e 700 eklenmiş.
+L2: $x$ iki basamaklıysa soluna $d$ yazmak $x + 100d$, sağına yazmak $10x + d$ verir. İki basamaklı bir sayıda rakamlar yer değiştirince fark daima $9(A - B)$'dir; yani 9'un katıdır. Yüzler basamağındaki rakam 3 artarsa sayı 300 artar.
+L3: Bu sorular "değişim" yazarak hızlı çözülür: yeni sayı − eski sayı = verilen fark. Örneğin dört basamaklıda binler 1 azalıp birler 9 artarsa fark $-1000 + 9 = -991$ olur. Hangi basamağın değiştiğini yazmak, bütün sayıyı çözümlemekten daha kısadır.
+
+::ornek baslik="Sağa rakam yazma"
+soru: İki basamaklı bir sayının sağına 3 yazılınca oluşan üç basamaklı sayı, ilk sayıdan 444 fazladır. İlk sayı kaçtır?
+1. İlk sayı $x$ olsun; yeni sayı $10x + 3$. || Sağa yazmak 10 katı alıp rakam eklemektir.
+2. $10x + 3 - x = 444$, yani $9x = 441$. || Fark denklemi.
+3. $x = 49$. || 49 iki basamaklı; koşul sağlandı.
+cevap: $49$
+
+::tamamla baslik="Rakam değişince fark"
+soru: Dört basamaklı $4A7B$ sayısında $A$ rakamı 2 artırılır, $B$ rakamı 3 azaltılırsa sayı nasıl değişir?
+1. $A$ yüzler basamağındadır: sayı $2 \cdot 100 = 200$ artar.
+?2. $B$ birler basamağındadır: sayı $3 \cdot 1 = 3$ azalır. || Birler basamağının değeri 1'dir.
+?3. Toplam değişim $200 - 3 = 197$: sayı 197 artar.
+cevap: 197 artar.
+
+::yanilgi m2 tip=basamak-degisim
+yanlis: İki basamaklı bir sayının rakamları yer değiştirince sayı 40 azalabilir.
+neden: Fark $9(A - B)$ olduğundan daima 9'un katıdır; 40 olamaz.
+dogru: Fark 9, 18, 27, …, 81 olabilir. Soru 40 diyorsa bir yerde yanlış okuma vardır.
+
+::soru c2 tip=basamak-degisim zorluk=2
+İki basamaklı $AB$ sayısının rakamları yer değiştirince oluşan sayı, $AB$'den 36 küçüktür. Buna göre $AB$ en çok kaçtır?
+A) 51 || $51 - 15 = 36$ doğru; ama daha büyük sayılar var.
+B) 73 || $73 - 37 = 36$; daha büyüğü var.
+C) 84 || $84 - 48 = 36$; daha büyüğü var.
++D) 95 || Doğru: $A - B = 4$; en büyük $A = 9$, $B = 5$.
+E) 99 || Rakamlar aynı olursa fark 0 olur.
+cozum: $AB - BA = 9(A - B) = 36$, yani $A - B = 4$. En büyük $AB$ için $A = 9$, $B = 5$: $95$.
+
+@bolum s3 10 | Rakam koşulları: en büyük ve en küçük
+::fikir
+En büyük sayı için büyük rakamlar **solda**, en küçük için küçük rakamlar solda; ama **ilk basamak 0 olamaz**. Ek koşulu (çift, tek, toplam) son basamakta sağla.
+
+::duzey
+L1: En büyük sayıyı yazarken en değerli yer en soldaki basamaktır; oraya elindeki en büyük rakamı koy. En küçük sayıda ise en sola en küçük rakamı koyarsın; yalnız 0 en başta olamaz, o yüzden 0'ı ikinci basamağa koyarsın.
+L2: "Rakamları farklı" koşulu her rakamın bir kez kullanılmasını ister. "Çift" koşulu birler basamağının çift olmasını, "5 ile bölünme" 0 veya 5 olmasını ister. Önce sol basamakları açgözlü (en büyük/en küçük) doldur, son basamağı koşula göre seç; koşul sağlanmazsa bir önceki basamağı değiştir.
+L3: Rakamlar toplamı verilen sorularda (ör. toplamı 20 olan en küçük üç basamaklı sayı) **sağdan** doldurmak gerekir: birler 9, onlar 9, yüzler $20 - 18 = 2$: $299$. En büyük için soldan 9 yazarsın: $992$. Basamak sayısı serbestse daha az basamak daha küçük sayı demektir.
+
+::ornek baslik="Rakamları farklı en küçük tek sayı"
+soru: Rakamları birbirinden farklı dört basamaklı en küçük tek sayı kaçtır?
+1. Binler basamağına 0 yazılamaz; en küçük seçenek 1. || İlk basamak kuralı.
+2. Yüzler ve onlar basamağına kullanılmamış en küçük rakamlar: 0 ve 2. || Farklı rakam koşulu.
+3. Birler tek olmalı; 1 kullanıldı, kalan en küçük tek rakam 3. || Tek sayının birler basamağı tektir.
+cevap: $1023$
+
+::strateji tip=rakam-kosul baslik="Basamak basamak doldur"
+ipucu: "rakamları farklı … en büyük/en küçük … sayı"
+1. Basamak sayısını ve koşulları yaz (farklı, çift/tek, toplam, ilk basamak ≠ 0).
+2. Soldan başlayarak en etkili basamağa en uygun rakamı koy.
+3. Son basamağı koşula göre seç; olmuyorsa bir önceki basamakla takas et.
+4. Rakamlar toplamı verilmişse en küçük sayı için sağdan 9'larla doldur.
+
+::yanilgi m3 tip=rakam-kosul
+yanlis: Rakamları farklı en küçük üç basamaklı sayı 012'dir.
+neden: Üç basamaklı bir sayının ilk rakamı 0 olamaz; 012 aslında 12'dir, iki basamaklıdır.
+dogru: En küçüğü $102$'dir.
+
+::soru c3 tip=rakam-kosul zorluk=2
+Rakamları birbirinden farklı üç basamaklı en büyük sayı ile en küçük sayının farkı kaçtır?
+A) 876 || 978 en büyük değil; 987 daha büyük.
++B) 885 || Doğru: $987 - 102 = 885$.
+C) 887 || 100'de 0 tekrar ediyor; en küçük 102.
+D) 888 || 999 ve 111'de rakamlar aynı.
+E) 897 || 090 üç basamaklı değil.
+kontrol: 987-102
+cozum: En büyük $987$, en küçük $102$ (ilk basamak 0 olamaz, rakamlar farklı): $987 - 102 = 885$.
+
+@bolum s4 9 | Kaç basamaklı? Sondaki sıfırlar
+::fikir
+$k \cdot 10^n$ ($1 \leq k < 10$) sayısı **$n + 1$ basamaklıdır**. $2^a \cdot 5^b$ çarpımında küçük üs kadar 10 oluşur; geri kalan çarpanı ayrıca say.
+
+::duzey
+L1: $10 = 10^1$ iki basamaklı, $100 = 10^2$ üç basamaklı, $1000 = 10^3$ dört basamaklıdır. Yani $10^n$, $n + 1$ basamaklıdır. $3 \cdot 10^4 = 30\,000$ de beş basamaklıdır.
+L2: $2 \cdot 5 = 10$ olduğundan $2^{12} \cdot 5^9 = 2^3 \cdot (2 \cdot 5)^9 = 8 \cdot 10^9$: 10 basamaklı. Kalan çarpan 10'dan büyük çıkarsa (ör. $2^5 \cdot 10^7 = 32 \cdot 10^7$) basamak sayısı bir artar: $32 \cdot 10^7$, 9 basamaklıdır.
+L3: $n!$'in sonundaki sıfır sayısı, çarpımdaki 10'ların sayısıdır. 2 çarpanı her zaman 5'ten fazladır; o yüzden 5'leri saymak yeter: $\lfloor \frac{n}{5} \rfloor + \lfloor \frac{n}{25} \rfloor + \lfloor \frac{n}{125} \rfloor$. 25, iki tane 5 taşıdığı için bir kez daha sayılır.
+
+::ornek baslik="İki kuvvetin çarpımı"
+soru: $2^{12} \cdot 5^{9}$ sayısı kaç basamaklıdır?
+1. Küçük üs 9: $2^{12} \cdot 5^9 = 2^3 \cdot 2^9 \cdot 5^9 = 8 \cdot 10^9$. || 9 tane $(2 \cdot 5)$ eşleşir.
+2. $8 \cdot 10^9$, $k \cdot 10^n$ biçiminde $n = 9$: $9 + 1 = 10$ basamaklı. || $k = 8$ tek basamaklı olduğundan ek basamak yok.
+cevap: $10$ basamaklı.
+
+::bosluk b1 cevap=4 tip=basamak-sayisi zorluk=1
+$20!$ sayısının sonunda kaç tane sıfır vardır?
+cozum: $\lfloor 20/5 \rfloor = 4$ ve $\lfloor 20/25 \rfloor = 0$: 4 sıfır.
+
+::bosluk b2 cevap=12 tip=basamak-sayisi zorluk=2
+$50!$ sayısının sonunda kaç tane sıfır vardır?
+cozum: $\lfloor 50/5 \rfloor + \lfloor 50/25 \rfloor = 10 + 2 = 12$.
+
+::soru c4 tip=basamak-sayisi zorluk=2
+$4^{7} \cdot 5^{15}$ sayısı kaç basamaklıdır?
+A) 13 || Eksik saydın.
+B) 14 || $10^{14}$ tek başına 15 basamaklıdır.
++C) 15 || Doğru: $4^7 5^{15} = 2^{14} 5^{15} = 5 \cdot 10^{14}$.
+D) 16 || $5 \cdot 10^{14}$'te 5 tek basamaklı; ek basamak yok.
+E) 22 || Üsleri toplamak basamak sayısını vermez.
+cozum: $4^7 = 2^{14}$. $2^{14} \cdot 5^{15} = 5 \cdot (2 \cdot 5)^{14} = 5 \cdot 10^{14}$: 15 basamaklı.
+
+::ozet
+- $AB = 10A + B$; $AB + BA = 11(A + B)$, $AB - BA = 9(A - B)$, $ABC - CBA = 99(A - C)$.
+- Sağa rakam eklemek $10x + d$; bir rakamın değişimi × basamak değeri kadar fark.
+- En büyük için büyük rakamlar sola, en küçük için küçükler sola; ilk basamak 0 olamaz.
+- $k \cdot 10^n$ ($1 \leq k < 10$) $n + 1$ basamaklı; $n!$'in sondaki sıfırları 5'lerin sayısıdır.
+
+@pratik
+- Çözümlemeyi otomatikleştir: $AB$, $ABC$ görünce elin hemen $10A + B$, $100A + 10B + C$ yazsın; kısa yolları ezberleme, bir kez türet.
+- Sınav yaklaşımı: rakam koşullarını (0–9, ilk basamak ≠ 0, rakamlar farklı) soruyu okurken yanına yaz; şık eleme çoğu zaman bu koşullarla yapılır.
+- En sık tuzaklar: $AB$'yi çarpım sanmak, rakamların farklı olması koşulunu atlamak, $k \cdot 10^n$'de $k \geq 10$ kalınca bir basamak eklemeyi unutmak.
+- Hedef süre soru başı 60 saniye. Rakam yer değiştirme sorularında denklemi tek satırda kurmayı hedefle.
+- Pratik: Konu testinde zorlandığın tipte "Bu tipten alıştırma" ile 5 soru daha çöz; faktöriyel sıfırları için 25 ve 125'e bölmeyi unutma.
+
+@kartlar
+- $AB + BA$ = ? :: $11(A + B)$
+- $AB - BA$ = ? :: $9(A - B)$ — fark daima 9'un katıdır.
+- $ABC - CBA$ = ? :: $99(A - C)$
+- İki basamaklı $x$'in sağına $d$ yazılırsa yeni sayı? :: $10x + d$
+- $k \cdot 10^n$ ($1 \leq k < 10$) kaç basamaklı? :: $n + 1$ basamaklı.
+- $2^a \cdot 5^b$ ($a > b$) nasıl sadeleşir? :: $2^{a-b} \cdot 10^b$
+- $n!$'in sonundaki sıfır sayısı :: $\lfloor n/5 \rfloor + \lfloor n/25 \rfloor + \lfloor n/125 \rfloor + \ldots$
+- Rakamları farklı en küçük üç basamaklı sayı :: $102$ (ilk basamak 0 olamaz).
+
+@ozet
+- Harfli sayılar çözümlenir: $AB = 10A + B$; toplam ve farklarda 11, 9 ve 99 katsayıları çıkar.
+- Rakam ekleme ve değiştirme soruları "yeni − eski = fark" denklemiyle çözülür.
+- En büyük/en küçük sayıda soldan açgözlü doldur, son basamakta koşulu sağla; ilk basamak 0 olamaz.
+- Basamak sayısı için $k \cdot 10^n$ biçimine getir; faktöriyeldeki sıfırlar 5 çarpanlarından gelir.
+
+@aciklama
+Kendi cümlelerinle açıkla: "İki basamaklı bir sayının rakamları yer değiştirince fark neden her zaman 9'un katıdır?" Bir de $2^{10} \cdot 5^8$'in neden 9 basamaklı olduğunu anlat.
+
+@havuz
+::soru h1 tip=cozumleme zorluk=2
+$AB$, $BC$ ve $CA$ iki basamaklı sayılardır. $AB + BC + CA = 154$ olduğuna göre $A + B + C$ kaçtır?
+A) 12
+B) 13
++C) 14
+D) 15
+E) 16
+kontrol: 154/11
+cozum: $(10A + B) + (10B + C) + (10C + A) = 11(A + B + C) = 154$, yani $A + B + C = 14$.
+
+::soru h2 tip=basamak-degisim zorluk=2
+Üç basamaklı bir sayının soluna 2 yazılınca oluşan dört basamaklı sayı, ilk sayının 9 katına eşit oluyor. İlk sayı kaçtır?
+A) 200
++B) 250
+C) 225
+D) 275
+E) 300
+kontrol: 2000/8
+cozum: Yeni sayı $2000 + x = 9x$, yani $8x = 2000$, $x = 250$.
+
+::soru h3 tip=rakam-kosul zorluk=2
+Rakamları toplamı 21 olan üç basamaklı en küçük sayı ile en büyük sayının toplamı kaçtır?
+A) 1290
+B) 1382
++C) 1392
+D) 1395
+E) 1491
+kontrol: 399+993
+cozum: En küçük sayı için sağdan 9'larla doldur: birler 9, onlar 9, yüzler $21 - 18 = 3$: $399$. En büyük için soldan: $993$. Toplam $399 + 993 = 1392$.
+
+::soru h4 tip=basamak-sayisi zorluk=2
+$8^{5} \cdot 25^{6}$ sayısı kaç basamaklıdır?
+A) 12
++B) 13
+C) 14
+D) 15
+E) 16
+cozum: $8^5 = 2^{15}$, $25^6 = 5^{12}$. $2^{15} \cdot 5^{12} = 2^3 \cdot 10^{12} = 8 \cdot 10^{12}$: 13 basamaklı.

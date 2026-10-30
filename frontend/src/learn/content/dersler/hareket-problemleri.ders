@@ -1,0 +1,301 @@
+@ders hareket-problemleri
+baslik: Hareket Problemleri
+kisa: Hareket problemleri
+sinav: TYT
+unite: problemler
+sinif: 9
+sira: 450
+onkosul: oran-oranti
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+hedef: $\text{yol} = \text{hız} \cdot \text{zaman}$ bağıntısını birimleri eşleyerek kullanmak; karşılaşma ve yetişme sorularında yaklaşma hızını ($V_1 + V_2$ ya da $V_1 - V_2$) seçmek; ortalama hızı toplam yol ÷ toplam zaman olarak hesaplamak; akıntı, dairesel pist ve tren–tünel durumlarına uyarlamak.
+neden: 2018–2026 TYT problem sorularının yaklaşık yedide biri hız, yol ve zaman içerir; yeni nesil sorularda hareket çoğu zaman yol–zaman grafiğiyle verilir. AYT'de türevin "anlık hız" yorumu da bu derste kurduğun sezgiye dayanır.
+kaynak: MEBİ TYT Konu Özeti — Hareket Problemleri | OGM 9. Sınıf Konu Özetleri 35 | 3 Adım TYT Matematik — Kar-Zarar, Yüzde, Karışım, Hareket Problemleri
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 80
+anahtar: /\bhiz(\b|la|i|in|lar|da|iy)/ | /\bkm\b/ | km/sa | karşılaş | /\byetis(ir|ti\b|tig|me|ebil|ec)/ | akıntı | pist | /\btren(\b|in|e|i|le|ler)/ | tünel | hareket | yol alır | ortalama hız
+baslik-kurali: hareket problemleri | kar - zarar, yüzde, karışım, hareket | /^9\.3\.5\.2/ | denklemler ve eşitsizliklerle ilgili uygulamalar
+haric: % | /\byuzde(\b|si|sin|lik|ler)/ | /\bkar(la|li|i|in|ini|ina|dan|da)?\b/ | zarar | /\byas(\b|i\b|in|lar|ta|tan|ca)/ | işçi
+
+@tip yol-hiz-zaman 25 s1
+ad: Yol, hız, zaman ve birimler
+ipucu: "Saatte 75 km hızla 2 saat 24 dakikada", "18 km/sa hızla 25 dakikada kaç metre".
+strateji: $x = V \cdot t$. Önce birimleri eşle: dakikayı saate çevir (24 dk $= 0{,}4$ sa), km/sa'i m/sn'ye çevirmek için 3,6'ya böl. "2 saat 24 dakika" $2{,}24$ saat değildir.
+anahtar: km/sa | hızla | saatte | dakikada | metre | yol alır | saniye
+
+@tip karsilasma 30 s2
+ad: Karşılaşma ve yetişme
+ipucu: "Birbirine doğru aynı anda yola çıkan iki araç", "2 saat sonra aynı noktadan aynı yöne çıkan ikinci araç".
+strateji: Zıt yönde (birbirine doğru) aradaki mesafe $(V_1 + V_2)$ hızıyla kapanır; aynı yönde $(V_1 - V_2)$ hızıyla. Önce aradaki mesafeyi (geç çıkanın başlangıçtaki farkı dahil) bul, sonra yaklaşma hızına böl.
+anahtar: karşılaş | /\byetis(ir|ti\b|tig|me|ebil|ec)/ | birbirine doğru | zıt yön | aynı yön | aynı anda | arkasından
+
+@tip ortalama-hiz 20 s3
+ad: Ortalama hız
+ipucu: "Gidişte 90, dönüşte 60 km/sa", "yolun yarısını 12, kalanını 6 km/sa hızla".
+strateji: Ortalama hız $= \frac{\text{toplam yol}}{\text{toplam zaman}}$; hızların ortalaması değildir. Eşit yollarda $\frac{2 V_1 V_2}{V_1 + V_2}$, eşit sürelerde $\frac{V_1 + V_2}{2}$.
+anahtar: ortalama hız | gidiş | /\bdonus(\b|te|u\b)/ | yarısını | ortalama
+
+@tip akinti-pist 25 s4
+ad: Akıntı, dairesel pist ve tren–tünel
+ipucu: "Akıntı hızı 4 km/sa olan nehirde", "çevresi 600 m olan dairesel pistte", "200 m uzunluğundaki tren tünelden tamamen çıkıyor".
+strateji: Akıntı yönünde $V + a$, akıntıya karşı $V - a$. Dairesel pistte zıt yönlü ilk karşılaşma $\frac{\text{çevre}}{V_1 + V_2}$, aynı yönlü ilk yetişme $\frac{\text{çevre}}{V_1 - V_2}$. Tren bir tünelden tamamen geçerken aldığı yol tünel + tren boyudur.
+anahtar: akıntı | nehir | pist | dairesel | /\btren(\b|in|e|i|le|ler)/ | tünel | köprü | durgun su
+
+@ustalik
+yol-hiz-zaman 1 1-2
+karsilasma 2 1-3
+ortalama-hiz 1 1-3
+akinti-pist 2 1-3
+
+@oturum Hız, yol, zaman ve karşılaşma | s1 s2
+@oturum Ortalama hız ve özel durumlar | s3 s4
+
+@ontest
+::soru o1 tip=yol-hiz-zaman zorluk=1
+Saatte 75 km hızla giden bir araç 2 saat 24 dakikada kaç km yol alır?
+A) 150 || 24 dakikayı unuttun.
+B) 165 || Hesabı kontrol et: 24 dk $= 0{,}4$ sa.
+C) 168 || 2 saat 24 dakikayı $2{,}24$ saat aldın.
+D) 175 || Hesabı yeniden yap.
++E) 180 || Doğru: $75 \cdot 2{,}4 = 180$.
+kontrol: 75*2.4
+cozum: 24 dakika $= \frac{24}{60} = 0{,}4$ saat; $75 \cdot 2{,}4 = 180$ km.
+
+::soru o2 tip=karsilasma zorluk=1
+Aralarında 360 km bulunan iki araç saatte 70 km ve 50 km hızlarla aynı anda birbirlerine doğru yola çıkıyor. Kaç saat sonra karşılaşırlar?
++A) 3 || Doğru: $360 : (70 + 50) = 3$.
+B) 4 || Hesabı kontrol et: yaklaşma hızı 120 km/sa.
+C) 5 || Hesabı yeniden yap.
+D) 6 || Yalnız bir aracın hızını kullandın.
+E) 18 || Hızları çıkardın; zıt yönde hızlar toplanır.
+kontrol: 360/(70+50)
+cozum: Birbirlerine doğru giderken aradaki mesafe saatte $70 + 50 = 120$ km kapanır: $360 : 120 = 3$ saat.
+
+::soru o3 tip=ortalama-hiz zorluk=2
+Bir araç A'dan B'ye saatte 60 km, B'den A'ya saatte 40 km hızla gidiyor. Aracın gidiş–dönüşteki ortalama hızı saatte kaç km'dir?
+A) 45 || Hesabı kontrol et: $\frac{2 \cdot 60 \cdot 40}{100}$.
++B) 48 || Doğru: toplam yol ÷ toplam zaman.
+C) 50 || Hızların ortalaması ortalama hız değildir.
+D) 52 || Hesabı yeniden yap.
+E) 55 || Fazla; yavaş bölümde daha uzun süre geçer.
+kontrol: 2*60*40/(60+40)
+cozum: Yol 120 km olsun: gidiş 2 sa, dönüş 3 sa; toplam 240 km, 5 sa: $\frac{240}{5} = 48$ km/sa.
+
+@bolum s1 9 | Yol = hız × zaman
+::fikir
+**$x = V \cdot t$.** İşleme başlamadan **birimleri eşle**: dakikayı saate çevir ($24 \text{ dk} = 0{,}4 \text{ sa}$), km/sa'i m/sn'ye çevirmek için **3,6'ya böl**.
+
+::tablo baslik="Birim dönüşümleri"
+| km/sa | m/dk | m/sn |
+| 18 | 300 | 5 |
+| 36 | 600 | 10 |
+| 54 | 900 | 15 |
+| 72 | 1200 | 20 |
+| 90 | 1500 | 25 |
+
+::duzey
+L1: Saatte 60 km giden bir araç her dakika 1 km yol alır. 2 saatte 120 km, yarım saatte 30 km gider. Hız sabitse yol, süreyle doğru orantılıdır.
+L2: Süre "3 saat 20 dakika" gibi verildiyse dakikayı 60'a böl: $3 + \frac{20}{60} = \frac{10}{3}$ saat. Hız km/sa, istenen yol metre ise önce km bul, sonra 1000 ile çarp; ya da hızı m/dk'ya çevir (18 km/sa $= 300$ m/dk).
+L3: Üç büyüklükten ikisi verilirse üçüncüsü bulunur: $V = \frac{x}{t}$, $t = \frac{x}{V}$. Yol sabitken hız ile zaman ters orantılıdır (oran–orantı dersindeki kural); sorularda "aynı yolu" ifadesi bu ilişkiyi kullanmanı ister.
+
+::ornek baslik="Saat ve dakika"
+soru: Saatte 90 km hızla giden bir otobüs 3 saat 20 dakikada kaç km yol alır?
+1. $20 \text{ dk} = \frac{20}{60} = \frac{1}{3}$ sa; toplam $\frac{10}{3}$ sa. || Dakikayı saate çevir.
+2. $x = 90 \cdot \frac{10}{3} = 300$ km. || $x = V \cdot t$.
+3. "3,20 saat" alınsaydı $288$ km bulunurdu ✗ || Saat ondalığı dakika değildir.
+cevap: 300 km
+
+::yanilgi m1 tip=yol-hiz-zaman
+yanlis: 2 saat 24 dakika $2{,}24$ saattir.
+neden: Bir saat 60 dakikadır; 24 dakika saatin $\frac{24}{60} = 0{,}4$'üdür.
+dogru: 2 saat 24 dakika $= 2{,}4$ saat.
+
+::soru c1 tip=yol-hiz-zaman zorluk=2
+Bir bisikletli saatte 18 km sabit hızla 25 dakika ilerliyor. Bisikletli kaç metre yol alır?
+A) 450 || $18 \cdot 25$ birimleri eşlemeden çarpmak olur.
+B) 4500 || Hesabı kontrol et: 18 km/sa $= 300$ m/dk.
+C) 6000 || Hesabı yeniden yap.
++D) 7500 || Doğru: $300 \cdot 25 = 7500$.
+E) 9000 || Bu 30 dakikalık yoldur.
+kontrol: 18000/60*25
+cozum: 18 km/sa $= \frac{18000}{60} = 300$ m/dk; $300 \cdot 25 = 7500$ m.
+
+@bolum s2 10 | Karşılaşma ve yetişme
+::fikir
+**Zıt yönde** (birbirine doğru) aradaki mesafe saatte $V_1 + V_2$ kadar, **aynı yönde** $V_1 - V_2$ kadar kapanır. Süre $=$ aradaki mesafe ÷ yaklaşma hızı.
+
+::grafik alt="A aracının konumu 60t doğrusu, B aracının konumu 300 − 40t doğrusu; doğrular t = 3 saatte 180 km'de kesişiyor." aciklama="Konum–zaman grafiğinde doğruların kesiştiği nokta karşılaşma anıdır: $t = 3$ sa, A'dan 180 km uzakta."
+x: 0 6
+y: 0 320
+f: 60*x | navy | A aracı: $x = 60t$ | 0 5
+f: 300-40*x | red | B aracı: $x = 300 - 40t$ | 0 6
+nokta: 3 180 | karşılaşma (3, 180) | black
+
+::duzey
+L1: İki arkadaş 300 km uzaktan birbirine doğru biri 60, diğeri 40 km/sa hızla yürüyor gibi düşün: her saat aralarındaki mesafe $60 + 40 = 100$ km azalır. 300 km, 3 saatte biter. O ana kadar A $3 \cdot 60 = 180$ km gitmiştir.
+L2: Aynı yöndeki hareketlerde hızlı olan, yavaş olana her saat $V_1 - V_2$ kadar yaklaşır. Geç çıkan araç varsa önce erken çıkanın kazandığı mesafeyi hesapla: 2 saat önce 50 km/sa ile çıkan araç 100 km öndedir.
+L3: Konum–zaman grafiğinde her doğrunun eğimi o aracın hızıdır; kesişim noktası karşılaşma ya da yetişmedir. Karşılaşmadan sonra araçlar yine $V_1 + V_2$ hızıyla uzaklaşır: "karşılaştıktan 2 saat sonra aralarında kaç km olur?" sorusu böyle çözülür.
+
+::ornek baslik="Birbirine doğru"
+soru: Aralarında 300 km bulunan A ve B araçları saatte 60 km ve 40 km hızlarla aynı anda birbirlerine doğru yola çıkıyor. Kaç saat sonra karşılaşırlar ve bu sürede A kaç km yol almıştır?
+1. Yaklaşma hızı $60 + 40 = 100$ km/sa. || Zıt yönde hızlar toplanır.
+2. $t = 300 : 100 = 3$ saat. || Mesafe ÷ yaklaşma hızı.
+3. A'nın yolu $60 \cdot 3 = 180$ km. || Grafikteki kesişim noktası.
+cevap: 3 saat; 180 km
+
+::tamamla baslik="Arkadan yetişme"
+soru: Bir araç saatte 50 km hızla yola çıkıyor. 2 saat sonra aynı noktadan aynı yöne ikinci bir araç saatte 75 km hızla çıkıyor. İkinci araç birinciye kaç saatte yetişir?
+1. 2 saatte birinci araç $50 \cdot 2 = 100$ km öne geçer.
+?2. Aynı yönde yaklaşma hızı $75 - 50 = 25$ km/sa.
+?3. $100 : 25 = 4$ saat.
+cevap: 4 saat
+
+::yanilgi m2 tip=karsilasma
+yanlis: Aynı yönde giden iki aracın birbirine yaklaşma hızı $V_1 + V_2$'dir.
+neden: Aynı yönde ikisi de ilerler; aradaki mesafe yalnız hız farkı kadar kapanır.
+dogru: Aynı yönde $V_1 - V_2$, zıt yönde $V_1 + V_2$.
+
+::soru c2 tip=karsilasma zorluk=2
+Bir araç saatte 60 km hızla yola çıktıktan 3 saat sonra, aynı noktadan aynı yöne saatte 90 km hızla ikinci bir araç yola çıkıyor. İkinci araç birinciye kaç saatte yetişir?
+A) $1{,}2$ || Hızları topladın; aynı yönde hız farkı kullanılır.
+B) 2 || Yalnız ikinci aracın hızına böldün.
+C) 3 || Bu bekleme süresidir.
++D) 6 || Doğru: ara 180 km, yaklaşma hızı 30 km/sa.
+E) 9 || Hesabı kontrol et: $180 : 30$.
+kontrol: 60*3/(90-60)
+cozum: 3 saatte birinci araç $180$ km öndedir. Yaklaşma hızı $90 - 60 = 30$ km/sa: $180 : 30 = 6$ saat.
+
+@bolum s3 8 | Ortalama hız
+::fikir
+**Ortalama hız $= \frac{\text{toplam yol}}{\text{toplam zaman}}$.** Hızların aritmetik ortalaması değildir. Eşit yollarda $\frac{2 V_1 V_2}{V_1 + V_2}$, eşit sürelerde $\frac{V_1 + V_2}{2}$.
+
+::duzey
+L1: 180 km'lik yolu gidişte 90 km/sa (2 saat), dönüşte 60 km/sa (3 saat) ile gidersen toplam 360 km'yi 5 saatte gidersin: ortalama $360 : 5 = 72$ km/sa. 75 değil; çünkü yavaş giderken daha uzun süre geçirdin.
+L2: Yol bilinmiyorsa uygun bir değer seç (hızların EKOK'u gibi): 90 ve 60 için 180 km. Eşit yollar için formül $\frac{2 V_1 V_2}{V_1 + V_2}$ aynı sonucu verir: $\frac{2 \cdot 90 \cdot 60}{150} = 72$.
+L3: Süreler eşitse ortalama, hızların aritmetik ortalamasıdır (2 saat 70, 2 saat 50 → 60). Süreler farklıysa ağırlıklı ortalama alınır: 1 saat 90, 3 saat 50 km/sa için $\frac{1 \cdot 90 + 3 \cdot 50}{4} = 60$. Eşit yolda ortalama hız her zaman aritmetik ortalamadan küçüktür.
+
+::ornek baslik="Gidiş ve dönüş"
+soru: Bir araç A'dan B'ye saatte 90 km, B'den A'ya saatte 60 km hızla gidiyor. Gidiş–dönüşteki ortalama hızı saatte kaç km'dir?
+1. Yol 180 km olsun: gidiş $180 : 90 = 2$ sa, dönüş $180 : 60 = 3$ sa. || Uygun yol seç.
+2. Toplam 360 km, 5 sa. || Toplam yol ve toplam zaman.
+3. Ortalama $360 : 5 = 72$ km/sa. || Formül: $\frac{2 \cdot 90 \cdot 60}{150} = 72$.
+cevap: 72 km/sa
+
+::yanilgi m3 tip=ortalama-hiz
+yanlis: Gidişte 90, dönüşte 60 km/sa giden aracın ortalama hızı $\frac{90 + 60}{2} = 75$ km/sa'tir.
+neden: Yavaş bölümde daha uzun süre geçer; ortalama hız toplam yolun toplam zamana bölümüdür.
+dogru: $\frac{2 \cdot 90 \cdot 60}{90 + 60} = 72$ km/sa.
+
+::soru c3 tip=ortalama-hiz zorluk=2
+Bir koşucu bir yolun yarısını saatte 12 km, kalan yarısını saatte 6 km hızla koşuyor. Koşucunun bu yoldaki ortalama hızı saatte kaç km'dir?
++A) 8 || Doğru: $\frac{2 \cdot 12 \cdot 6}{18} = 8$.
+B) 9 || Hızların ortalaması ortalama hız değildir.
+C) $9{,}5$ || Hesabı kontrol et.
+D) 10 || Hesabı yeniden yap.
+E) 18 || Hızları topladın.
+kontrol: 2*12*6/(12+6)
+cozum: Yol 24 km olsun: ilk yarı $12 : 12 = 1$ sa, ikinci yarı $12 : 6 = 2$ sa. $\frac{24}{3} = 8$ km/sa.
+
+@bolum s4 9 | Akıntı, dairesel pist, tren ve tünel
+::fikir
+**Akıntı:** akıntı yönünde $V + a$, karşı $V - a$. **Dairesel pist:** zıt yönde ilk karşılaşma $\frac{\text{çevre}}{V_1 + V_2}$, aynı yönde ilk yetişme $\frac{\text{çevre}}{V_1 - V_2}$. **Tren–tünel:** tamamen geçiş yolu = tünel + tren boyu.
+
+::duzey
+L1: Nehirde akıntıyla aynı yöne giden bir tekne, akıntının hızı kadar fazladan itilir: durgun suda 20 km/sa giden tekne, 4 km/sa akıntıda akıntı yönünde 24, karşı yönde 16 km/sa gider.
+L2: Dairesel pistte aynı noktadan çıkan iki koşucu zıt yönde koşarsa ilk karşılaşmada ikisinin toplam yolu bir tur (çevre) eder. Aynı yönde koşarlarsa hızlı olan bir tur fazla koştuğunda yetişir: $\frac{\text{çevre}}{V_1 - V_2}$.
+L3: Tren tünele girdiği andan tamamen çıktığı ana kadar ön ucu tünel boyu + tren boyu kadar yol alır. Hız km/sa ise m/sn'ye çevir ($\div 3{,}6$): 108 km/sa $= 30$ m/sn. Bir direği geçme süresi yalnız tren boyu ÷ hızdır.
+
+::ornek baslik="Dairesel pist"
+soru: Çevresi 400 m olan dairesel bir pistte aynı noktadan dakikada 60 m ve 40 m hızla koşmaya başlayan iki koşucu zıt yönde koşarsa kaç dakika sonra ilk kez karşılaşır? Aynı yönde koşarlarsa hızlı olan diğerine kaç dakikada yetişir?
+1. Zıt yön: $400 : (60 + 40) = 4$ dk. || İkisinin toplam yolu bir tur.
+2. Aynı yön: $400 : (60 - 40) = 20$ dk. || Hızlı olan bir tur fazla koşar.
+cevap: 4 dk; 20 dk
+
+::tamamla baslik="Tren ve köprü"
+soru: Uzunluğu 150 m olan bir tren saatte 54 km hızla, uzunluğu 450 m olan bir köprüyü kaç saniyede tamamen geçer?
+1. 54 km/sa $= 54 : 3{,}6 = 15$ m/sn.
+?2. Alınacak yol: köprü + tren $= 450 + 150 = 600$ m.
+?3. $600 : 15 = 40$ sn.
+cevap: 40 sn
+
+::soru c4 tip=akinti-pist zorluk=2
+Çevresi 600 m olan dairesel bir pistte aynı noktadan zıt yönlerde dakikada 70 m ve 50 m hızla koşmaya başlayan iki koşucu kaç dakika sonra ilk kez karşılaşır?
+A) 4 || Hesabı kontrol et: $600 : 120$.
++B) 5 || Doğru: $600 : (70 + 50) = 5$.
+C) 6 || Hesabı yeniden yap.
+D) 10 || Hızların ortalamasını kullandın.
+E) 30 || Hızları çıkardın; zıt yönde hızlar toplanır.
+kontrol: 600/(70+50)
+cozum: Zıt yönde ilk karşılaşmada toplam yol bir tur: $600 : (70 + 50) = 5$ dakika.
+
+::ozet
+- $x = V \cdot t$; birimleri eşle (dakika → saat, km/sa → m/sn için ÷ 3,6).
+- Zıt yönde yaklaşma hızı $V_1 + V_2$, aynı yönde $V_1 - V_2$.
+- Ortalama hız = toplam yol ÷ toplam zaman; eşit yolda $\frac{2V_1V_2}{V_1 + V_2}$.
+- Akıntı $V \pm a$; dairesel pistte bir tur; tren–tünelde tünel + tren boyu.
+
+@pratik
+- Çalışma sırası: önce birim dönüşümlerini (dakika–saat, km/sa–m/sn) hızlandır, sonra karşılaşma–yetişmeyi şekil çizerek çalış; ortalama hız ve özel durumlar en sona.
+- Sınav yaklaşımı: her hareket sorusunda bir doğru parçası çiz, araçları ve yönleri ok ile göster; "aradaki mesafe" ve "yaklaşma hızı"nı yazmadan bölme yapma.
+- Yol verilmeyen ortalama hız sorularında hızların EKOK'unu yol olarak seç; kesirle uğraşma.
+- En sık tuzaklar: 2 saat 24 dakikayı 2,24 saat almak, aynı yönde hızları toplamak, ortalama hızı hızların ortalaması sanmak, tren boyunu unutmak.
+- Hedef süre soru başı 80 saniye. Konu testinden sonra çıkmış sorular setini çöz; grafikli sorularda eğimi hız olarak oku.
+
+@kartlar
+- Yol–hız–zaman bağıntısı :: $x = V \cdot t$
+- km/sa → m/sn :: 3,6'ya böl (72 km/sa = 20 m/sn).
+- Zıt yönde karşılaşma süresi :: $\frac{\text{mesafe}}{V_1 + V_2}$
+- Aynı yönde yetişme süresi :: $\frac{\text{aradaki mesafe}}{V_1 - V_2}$
+- Eşit yollarda ortalama hız :: $\frac{2 V_1 V_2}{V_1 + V_2}$
+- Akıntı yönünde ve akıntıya karşı hız :: $V + a$ ve $V - a$
+- Tren tünelden tamamen geçerken alınan yol :: Tünel boyu + tren boyu
+
+@ozet
+- Yol, hız ve zamandan ikisi bilinince üçüncüsü $x = V \cdot t$ ile bulunur; birimler önce eşlenir.
+- Karşılaşma ve yetişme sorularında aradaki mesafe yaklaşma hızına bölünür.
+- Ortalama hız toplam yolun toplam zamana bölümüdür, hızların ortalaması değildir.
+- Akıntı, dairesel pist ve tren–tünel soruları aynı bağıntının uyarlamalarıdır.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "Aynı yönde giden iki araç birbirine neden hız farkı kadar yaklaşır?" (2) "Gidişte 90, dönüşte 60 km/sa giden aracın ortalama hızı neden 75 değil de 72 km/sa'tir?"
+
+@havuz
+::soru h1 tip=yol-hiz-zaman zorluk=2
+Bir araç 300 km'lik bir yolun ilk 90 km'sini $1{,}5$ saatte gidiyor. Aynı hızla devam ederse yolun tamamını kaç saatte bitirir?
+A) 4
+B) $4{,}5$
+C) $4{,}8$
++D) 5
+E) 6
+kontrol: 300/(90/1.5)
+cozum: Hız $90 : 1{,}5 = 60$ km/sa; $300 : 60 = 5$ saat.
+
+::soru h2 tip=karsilasma zorluk=2
+A ve B kentlerinden aynı anda birbirine doğru saatte 80 km ve 60 km hızlarla hareket eden iki araç 3 saat sonra karşılaşıyor. A ile B arası kaç km'dir?
+A) 60
+B) 180
+C) 240
+D) 360
++E) 420
+kontrol: (80+60)*3
+cozum: Yaklaşma hızı $80 + 60 = 140$ km/sa; $140 \cdot 3 = 420$ km.
+
+::soru h3 tip=ortalama-hiz zorluk=3
+Bir araç 2 saat saatte 80 km, ardından 3 saat saatte 60 km hızla gidiyor. Aracın bu yolculuktaki ortalama hızı saatte kaç km'dir?
+A) 66
++B) 68
+C) 70
+D) 72
+E) 75
+kontrol: (2*80+3*60)/5
+cozum: Toplam yol $160 + 180 = 340$ km, toplam süre 5 saat: $\frac{340}{5} = 68$ km/sa.
+
+::soru h4 tip=akinti-pist zorluk=3
+Uzunluğu 300 m olan bir tren saatte 90 km hızla, uzunluğu $1{,}2$ km olan bir tünele giriyor. Trenin tünelden tamamen çıkması kaç saniye sürer?
+A) 48
++B) 60
+C) 66
+D) 72
+E) 80
+kontrol: 1500/25
+cozum: 90 km/sa $= 25$ m/sn. Yol $1200 + 300 = 1500$ m; $1500 : 25 = 60$ sn.

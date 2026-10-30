@@ -1,0 +1,288 @@
+@ders merkezi-egilim
+baslik: Merkezi Eğilim ve Yayılım Ölçüleri
+kisa: Ortalama, ortanca, sapma
+sinav: TYT
+unite: veri
+sinif: 9
+sira: 700
+kategori: excel.tyt.matematik.d8fb8edba6e86247de33
+hedef: Aritmetik ortalamayı "toplam = ortalama × veri sayısı" ilişkisiyle kullanmak; ortancayı ve tepe değeri bulmak; açıklık ve standart sapmayı hesaplayıp yorumlamak; verilere sayı eklenince ya da veriler bir sayıyla çarpılınca ölçülerin nasıl değiştiğini bilmek.
+neden: "Veri" başlığında 2018–2026 arasında 17 çıkmış TYT sorusu var; bu, TYT'de problemlerden sonra en çok soru gelen matematik başlıklarından biridir. Sorular çoğunlukla bir tablo ya da günlük hayat durumu üzerinden ortalama, ortanca ve standart sapma yorumu ister.
+kaynak: MEBİ TYT Konu Özeti — Veri, Merkezi Yayılım Ölçüleri | OGM 9. Sınıf Ders Anlatım Sunuları 44 — Veri, Merkezi Eğilim ve Yayılım Ölçüleri | 3 Adım TYT Matematik — Veri
+tekrar: 12
+ustalik-dk: 15
+hedef-sure: 70
+anahtar: ortalama | aritmetik ortalama | ortanca | medyan | tepe değer | mod | açıklık | standart sapma | veri grubu | veri
+baslik-kurali: /^9\.5\.1/ | merkezi eğilim ve yayılım | veri ve istatistik | veri - 1
+
+@tip ortalama 30 s1
+ad: Aritmetik ortalama ve toplam
+ipucu: "5 sayının ortalaması 12; 18 eklenirse", "20 kızın ortalaması 72, 16 erkeğin 63".
+strateji: Toplam = ortalama × veri sayısı. Veri eklenince ya da çıkarılınca yeni toplamı yeni veri sayısına böl. İki grubun ortak ortalaması ağırlıklıdır: $\frac{n_1 \bar{x}_1 + n_2 \bar{x}_2}{n_1 + n_2}$.
+anahtar: aritmetik ortalama | ortalaması | ortalama
+
+@tip medyan-mod 25 s2
+ad: Ortanca ve tepe değer
+ipucu: "Veri grubunun ortancası", "en çok tekrar eden", "ortancası 8 ise $x$".
+strateji: Önce verileri sırala. $n$ tekse ortanca $\frac{n+1}{2}$. terim; çiftse ortadaki iki terimin ortalaması. Tepe değer en çok tekrar eden veridir; birden fazla olabilir.
+anahtar: ortanca | medyan | tepe değer | mod | en çok tekrar
+
+@tip yayilim 25 s3
+ad: Açıklık ve standart sapma
+ipucu: "Açıklığı kaçtır?", "standart sapması kaçtır?", "hangi grup daha istikrarlıdır?".
+strateji: Açıklık = en büyük − en küçük. Standart sapma: ortalamayı bul, farkların karelerini topla, $n - 1$'e böl, karekök al. Küçük sapma verilerin ortalamaya yakın (homojen, istikrarlı) olduğunu gösterir.
+anahtar: açıklık | standart sapma | yayılım | homojen | istikrarlı
+
+@tip olcu-donusum 20 s4
+ad: Verilere işlem yapınca ölçüler
+ipucu: "Her veriye 5 eklenirse", "her veri 3 ile çarpılıp 2 çıkarılırsa".
+strateji: Her veriye $k$ eklenince ortalama, ortanca ve tepe değer $k$ artar; açıklık ve standart sapma değişmez. Her veri $k$ ile çarpılınca bütün ölçüler $k$ katına çıkar (sapma $|k|$ katı).
+anahtar: her veriye | her bir veri | eklenirse | çarpılırsa | ile çarpılıp
+
+@ustalik
+ortalama 2 1-3
+medyan-mod 1 1-3
+yayilim 2 1-3
+olcu-donusum 1 1-3
+
+@oturum Ortalama, ortanca, tepe değer | s1 s2
+@oturum Yayılım ve dönüşümler | s3 s4
+
+@ontest
+::soru o1 tip=ortalama zorluk=1
+5 sayının aritmetik ortalaması 12'dir. Bu sayılara 18 eklenirse yeni ortalama kaç olur?
+A) 12 || Yeni sayı ortalamadan büyük; ortalama artar.
+B) $12{,}5$ || Hesabı kontrol et: $\frac{60 + 18}{6}$.
++C) 13 || Doğru: toplam 78, 6 sayı.
+D) 14 || Hesabı yeniden yap.
+E) 15 || 12 ile 18'in ortalamasını aldın; 5 sayının ağırlığı var.
+kontrol: (5*12+18)/6
+cozum: Toplam $5 \cdot 12 = 60$; yeni toplam 78, yeni veri sayısı 6: $\frac{78}{6} = 13$.
+
+::soru o2 tip=medyan-mod zorluk=1
+$7, 3, 9, 3, 5, 11, 3, 8$ veri grubunun ortancası ile tepe değerinin toplamı kaçtır?
+A) 8 || Ortancayı sıraladıktan sonra bul.
++B) 9 || Doğru: ortanca $\frac{5 + 7}{2} = 6$, tepe değer 3.
+C) 10 || Ortancayı sıralamadan aldın.
+D) 11 || Hesabı kontrol et.
+E) 12 || Fazla.
+kontrol: 6+3
+cozum: Sıralı: $3, 3, 3, 5, 7, 8, 9, 11$. 8 veri: ortanca 4. ve 5. terimin ortalaması $\frac{5 + 7}{2} = 6$; tepe değer 3. Toplam 9.
+
+::soru o3 tip=yayilim zorluk=2
+Standart sapması küçük olan bir veri grubu için aşağıdakilerden hangisi söylenebilir?
+A) Veriler birbirinden çok uzaktır. || Bu büyük sapmanın yorumudur.
+B) Ortalama küçüktür. || Sapma ortalamanın büyüklüğünü söylemez.
+C) Açıklık büyüktür. || Küçük sapma genellikle verilerin yakın olduğunu gösterir.
++D) Veriler ortalamaya yakındır; grup homojendir. || Doğru: sapma, ortalamadan uzaklığın ölçüsüdür.
+E) Tepe değer yoktur. || Sapma tepe değer hakkında bilgi vermez.
+cozum: Standart sapma verilerin ortalamadan uzaklığını ölçer; küçükse veriler ortalamaya yakındır, grup homojen ve istikrarlıdır.
+
+@bolum s1 9 | Aritmetik ortalama
+::fikir
+**Toplam = ortalama × veri sayısı.** Ortalama sorularının çoğu, toplamı yazıp yeni toplamı yeni veri sayısına bölmekle çözülür.
+
+::duzey
+L1: 5 öğrencinin not ortalaması 70 ise notların toplamı $5 \cdot 70 = 350$'dir. Altıncı bir öğrenci 82 alırsa toplam 432 olur ve yeni ortalama $432 : 6 = 72$'ye çıkar.
+L2: İki grubun ortak ortalaması grup ortalamalarının düz ortalaması değildir; büyük grup ortalamayı kendine çeker: $\frac{n_1 \bar{x}_1 + n_2 \bar{x}_2}{n_1 + n_2}$. Bir veri yanlış yazılmışsa toplamdaki farkı düzelt ve yeniden böl.
+L3: Verilerin ortalamadan farklarının toplamı her zaman 0'dır. Bir veri $d$ kadar değişirse ortalama $\frac{d}{n}$ kadar değişir; bu kısa yol yanlış yazılmış veri sorularını hızlandırır.
+
+::ornek baslik="İki grubun ortalaması"
+soru: Bir sınıftaki 20 kızın not ortalaması 72, 16 erkeğin not ortalaması 63'tür. Sınıfın not ortalaması kaçtır?
+1. Kızların toplamı $20 \cdot 72 = 1440$, erkeklerin $16 \cdot 63 = 1008$. || Ortalamaları toplama çevir.
+2. Sınıf toplamı 2448, öğrenci sayısı 36. || Toplamları ve sayıları ayrı topla.
+3. $2448 : 36 = 68$. || $\frac{72 + 63}{2} = 67{,}5$ yanlış olurdu.
+cevap: 68
+
+::yanilgi m1 tip=ortalama
+yanlis: İki grubun ortak ortalaması, grup ortalamalarının ortalamasıdır.
+neden: Gruplar farklı büyüklükteyse büyük grubun etkisi daha fazladır.
+dogru: $\frac{n_1 \bar{x}_1 + n_2 \bar{x}_2}{n_1 + n_2}$ (ağırlıklı ortalama).
+
+::soru c1 tip=ortalama zorluk=2
+Bir sınıftaki 12 öğrencinin not ortalaması 65'tir. Notu 43 olan bir öğrenci sınıftan ayrılırsa kalan öğrencilerin not ortalaması kaç olur?
+A) 64 || Ortalamanın altındaki bir not çıkınca ortalama artar.
+B) 66 || Hesabı kontrol et: $\frac{780 - 43}{11}$.
++C) 67 || Doğru: $737 : 11 = 67$.
+D) 68 || Hesabı yeniden yap.
+E) 70 || Fazla.
+kontrol: (12*65-43)/11
+cozum: Toplam $12 \cdot 65 = 780$; yeni toplam $780 - 43 = 737$; $737 : 11 = 67$.
+
+@bolum s2 9 | Ortanca ve tepe değer
+::fikir
+**Ortanca** (medyan), veriler sıralandığında tam ortadaki değerdir: $n$ tekse $\frac{n+1}{2}$. terim, $n$ çiftse $\frac{n}{2}$. ve $\left(\frac{n}{2} + 1\right)$. terimlerin ortalaması. **Tepe değer** (mod) en çok tekrar eden veridir; birden fazla olabilir.
+
+::duzey
+L1: 7 kişinin boylarını kısadan uzuna sıraladığında dördüncü kişinin boyu ortancadır. 6 kişi varsa ortada iki kişi vardır; ikisinin ortalaması ortancadır.
+L2: Ortancayı bulmadan önce mutlaka sırala. Tepe değer için her verinin kaç kez geçtiğini say; eşit sayıda en çok tekrar eden iki veri varsa iki tepe değer vardır. Her veri grubunun yalnız bir ortancası vardır.
+L3: Ortanca ve tepe değer uç değerlerden ortalamaya göre daha az etkilenir: bir şirkette çok yüksek bir maaş ortalamayı yukarı çeker ama ortancayı çok az değiştirir. Bilinmeyen veri içeren sorularda bilinmeyenin sıradaki yerini durumlara ayırarak dene.
+
+::ornek baslik="Üç ölçü birlikte"
+soru: $12, 7, 15, 7, 10, 20, 13$ veri grubunun ortalamasını, ortancasını ve tepe değerini bul.
+1. Toplam 84, 7 veri: ortalama 12. || Toplam ÷ sayı.
+2. Sıralı: $7, 7, 10, 12, 13, 15, 20$; 4. terim 12. || $n = 7$ tek.
+3. En çok tekrar eden 7. || Tepe değer.
+cevap: Ortalama 12, ortanca 12, tepe değer 7
+
+::tamamla baslik="Çift sayıda veri"
+soru: $4, 9, 2, 7, 9, 5$ veri grubunun ortancasını ve tepe değerini bul.
+1. Sıralı: $2, 4, 5, 7, 9, 9$.
+?2. $n = 6$: ortanca $\frac{5 + 7}{2} = 6$.
+?3. Tepe değer 9.
+cevap: Ortanca 6, tepe değer 9
+
+::yanilgi m2 tip=medyan-mod
+yanlis: Ortanca, veriler yazıldığı sırada ortadaki değerdir.
+neden: Ortanca sıralı veride tanımlıdır; sıralamadan alınan "orta" değer rastgeledir.
+dogru: Önce küçükten büyüğe sırala, sonra ortadaki terimi (ya da iki terimin ortalamasını) al.
+
+::soru c2 tip=medyan-mod zorluk=2
+$x$ bir doğal sayı olmak üzere $4, 9, x, 12, 6, 10$ veri grubunun ortancası 8'dir. $x$ kaçtır?
+A) 4 || Kontrol: ortanca $\frac{6 + 9}{2} = 7{,}5$ olur.
+B) 5 || $x$ 6'dan küçükse ortanca $7{,}5$ olur.
+C) 6 || Kontrol: $\frac{6 + 9}{2} = 7{,}5$.
++D) 7 || Doğru: sıralı $4, 6, 7, 9, 10, 12$; $\frac{7 + 9}{2} = 8$.
+E) 8 || Kontrol: $\frac{8 + 9}{2} = 8{,}5$.
+kontrol: 7
+cozum: 6 veri; ortanca 3. ve 4. terimin ortalaması. $6 \leq x \leq 9$ ise sıralı $4, 6, x, 9, 10, 12$ ve $\frac{x + 9}{2} = 8 \Rightarrow x = 7$. Diğer durumlarda ortanca 8 olmaz.
+
+@bolum s3 9 | Açıklık ve standart sapma
+::fikir
+**Açıklık** = en büyük − en küçük. **Standart sapma** verilerin ortalamadan ne kadar uzak olduğunu ölçer: $S = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}$. Küçük sapma → veriler ortalamaya yakın (homojen, istikrarlı).
+
+::tablo baslik="Adım adım standart sapma: 3, 5, 7, 9, 11 (ortalama 7)"
+| Veri $x_i$ | $x_i - \bar{x}$ | $(x_i - \bar{x})^2$ |
+| 3 | $-4$ | 16 |
+| 5 | $-2$ | 4 |
+| 7 | 0 | 0 |
+| 9 | 2 | 4 |
+| 11 | 4 | 16 |
+| Toplam | 0 | 40 → $\frac{40}{4} = 10$ → $S = \sqrt{10}$ |
+
+::duzey
+L1: İki sınıfın matematik ortalaması 60 olsun. Birinde notlar 55 ile 65 arasında, diğerinde 20 ile 100 arasında. Ortalama aynı ama ikinci sınıfın notları çok daha dağınık: standart sapması büyüktür.
+L2: MEBİ'nin işlem sırası: ortalamayı bul → her verinin ortalamadan farkını al → farkların karelerini topla → veri sayısının 1 eksiğine böl → karekök al. Farkların toplamı 0 çıkmalıdır; bu bir kontrol adımıdır.
+L3: Açıklık yalnız iki uç değere bakar; yüzeysel bir yayılım ölçüsüdür. Standart sapma bütün verileri kullanır. İki sporcudan sapması küçük olan daha istikrarlıdır; ortalamaları eşitse seçim sapmaya göre yapılır.
+
+::ornek baslik="Küçük bir veri grubu"
+soru: $1, 4, 4, 7$ veri grubunun açıklığını ve standart sapmasını bul.
+1. Açıklık $7 - 1 = 6$; ortalama $\frac{16}{4} = 4$. || Önce ortalama.
+2. Farklar $-3, 0, 0, 3$; kareler toplamı $9 + 0 + 0 + 9 = 18$. || Farkların toplamı 0 ✓
+3. $\frac{18}{4 - 1} = 6$, $S = \sqrt{6}$. || $n - 1$'e böl, karekök al.
+cevap: Açıklık 6, standart sapma $\sqrt{6}$
+
+::yanilgi m3 tip=yayilim
+yanlis: Açıklıkları eşit olan iki veri grubunun standart sapmaları da eşittir.
+neden: Açıklık yalnız uç değerlere bakar; aradaki verilerin dağılımı sapmayı değiştirir.
+dogru: $\{1, 5, 5, 9\}$ ve $\{1, 1, 9, 9\}$'un açıklığı 8'dir ama ikincisinin sapması daha büyüktür.
+
+::soru c3 tip=yayilim zorluk=2
+$2, 4, 6, 8, 10$ veri grubunun standart sapması kaçtır?
+A) 2 || Farkların karelerini topladın mı?
+B) $2\sqrt{2}$ || Veri sayısına böldün; $n - 1 = 4$'e bölünür.
+C) 3 || Hesabı kontrol et.
++D) $\sqrt{10}$ || Doğru: $\frac{16 + 4 + 0 + 4 + 16}{4} = 10$.
+E) 8 || Bu açıklıktır.
+kontrol: sqrt(10)
+cozum: Ortalama 6; farklar $-4, -2, 0, 2, 4$; kareler toplamı 40; $\frac{40}{5 - 1} = 10$; $S = \sqrt{10}$.
+
+@bolum s4 8 | Verilere işlem yapınca ölçüler
+::fikir
+Her veriye **$k$ eklenirse** ortalama, ortanca ve tepe değer $k$ artar; **açıklık ve standart sapma değişmez**. Her veri **$k$ ile çarpılırsa** bütün ölçüler $k$ katına çıkar (sapma $|k|$ katı).
+
+::tablo baslik="Ölçüler nasıl değişir?"
+| Ölçü | Her veriye $k$ eklenirse | Her veri $k$ ile çarpılırsa |
+| Ortalama, ortanca, tepe değer | $k$ artar | $k$ katına çıkar |
+| Açıklık | Değişmez | $\lvert k \rvert$ katına çıkar |
+| Standart sapma | Değişmez | $\lvert k \rvert$ katına çıkar |
+
+::duzey
+L1: Öğretmen bütün öğrencilere 5 puan eklerse sınıf ortalaması 5 artar. Ama en yüksek ile en düşük not arasındaki fark (açıklık) aynı kalır; herkes aynı miktarda kaydı.
+L2: Notlar 2 ile çarpılırsa (100'lük sistemden 200'lük sisteme geçiş gibi) ortalama da, notlar arasındaki farklar da 2 katına çıkar; bu yüzden açıklık ve sapma da 2 katı olur. Önce çarpma sonra ekleme varsa sırayla uygula.
+L3: Uç değer etkisi: veri grubuna çok büyük bir değer eklenirse ortalama ve standart sapma büyük ölçüde değişir; ortanca az değişir. Bu yüzden gelir gibi uç değerli verilerde ortanca daha temsilî bir ölçüdür.
+
+::ornek baslik="Çarp ve ekle"
+soru: Ortalaması 40, standart sapması 6 olan bir veri grubunun her verisi 2 ile çarpılıp 5 eklenirse yeni ortalama ve yeni standart sapma kaç olur?
+1. Çarpma: ortalama 80, sapma 12. || İkisi de 2 katı.
+2. Ekleme: ortalama 85, sapma 12. || Ekleme sapmayı değiştirmez.
+cevap: Ortalama 85, standart sapma 12
+
+::soru c4 tip=olcu-donusum zorluk=2
+Bir veri grubunun ortalaması 20, açıklığı 12 ve standart sapması 4'tür. Her veri 3 ile çarpılıp 2 çıkarılırsa yeni açıklık ile yeni standart sapmanın toplamı kaç olur?
+A) 16 || Bunlar eski değerlerin toplamıdır.
+B) 34 || Sapmayı da 3 ile çarpmalısın.
+C) 44 || 2 çıkarmak açıklığı ve sapmayı değiştirmez.
+D) 46 || Hesabı kontrol et.
++E) 48 || Doğru: açıklık 36, sapma 12.
+kontrol: 3*12+3*4
+cozum: Çarpma açıklığı ve sapmayı 3 katına çıkarır: 36 ve 12. 2 çıkarmak bunları değiştirmez. Toplam 48.
+
+::ozet
+- Toplam = ortalama × veri sayısı; iki grubun ortalaması ağırlıklıdır.
+- Ortanca sıralı verinin ortasıdır; tepe değer en çok tekrar edendir.
+- Açıklık = en büyük − en küçük; standart sapma $n - 1$'e bölünerek hesaplanır, küçükse grup homojendir.
+- $+k$: konum ölçüleri $k$ artar, yayılım değişmez; $\times k$: hepsi $|k|$ katına çıkar.
+
+@pratik
+- Çalışma sırası: önce toplam–ortalama ilişkisini, sonra sıralayarak ortanca bulmayı, en son standart sapma hesabını ve dönüşüm kurallarını çalış.
+- Sınav yaklaşımı: veri listesi verilen her soruda ilk iş verileri küçükten büyüğe sıralayıp sayısını yazmak; ortalama sorularında hemen toplamı hesapla.
+- Standart sapma sorularında farkların toplamının 0 çıktığını kontrol et; $n - 1$'e bölmeyi unutma. Yorum sorularında "küçük sapma = istikrarlı" kuralını kullan.
+- En sık tuzaklar: iki grubun ortalamasını düz ortalamak, sıralamadan ortanca almak, her veriye sayı eklenince sapmanın da arttığını sanmak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra veri grafikleri dersine geç; çıkmış sorular grafikten ortalama ve ortanca ister.
+
+@kartlar
+- Toplam ile ortalama ilişkisi :: Toplam = ortalama × veri sayısı
+- $n$ tekken ortanca :: $\frac{n+1}{2}$. terim (sıralı veride)
+- $n$ çiftken ortanca :: $\frac{n}{2}$. ve $\left(\frac{n}{2} + 1\right)$. terimlerin ortalaması
+- Tepe değer :: En çok tekrar eden veri (birden fazla olabilir)
+- Standart sapma formülü :: $S = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}$
+- Her veriye $k$ eklenince standart sapma :: Değişmez.
+- Her veri $k$ ile çarpılınca standart sapma :: $|k|$ katına çıkar.
+
+@ozet
+- Aritmetik ortalama verilerin toplamının veri sayısına bölümüdür ve toplamla birlikte düşünülür.
+- Ortanca sıralanmış verilerin ortasındaki değer, tepe değer en çok tekrar eden veridir; ikisi de uç değerlerden az etkilenir.
+- Açıklık ve standart sapma verilerin yayılımını ölçer; küçük sapma homojen bir grubu gösterir.
+- Verilere sabit eklemek konum ölçülerini kaydırır, yayılımı değiştirmez; sabitle çarpmak bütün ölçüleri ölçekler.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "20 kız ve 16 erkeğin ortak ortalaması neden 72 ile 63'ün ortalaması değildir?" (2) "Herkese 5 puan eklenince standart sapma neden değişmez?"
+
+@havuz
+::soru h1 tip=ortalama zorluk=2
+Ortalaması 15 olan 8 sayıdan biri 23 yerine yanlışlıkla 31 yazılmıştır. Doğru ortalama kaçtır?
+A) 13
++B) 14
+C) 15
+D) 16
+E) 17
+kontrol: (8*15-8)/8
+cozum: Yanlış toplam 120; doğru toplam $120 - 8 = 112$; $112 : 8 = 14$.
+
+::soru h2 tip=medyan-mod zorluk=2
+$4, 4, 6, 8, 10, 10, 10, 12$ veri grubunun ortalaması, ortancası ve tepe değeri için aşağıdakilerden hangisi doğrudur?
++A) ortalama < ortanca < tepe değer
+B) ortanca < ortalama < tepe değer
+C) tepe değer < ortanca < ortalama
+D) ortalama < tepe değer < ortanca
+E) ortanca < tepe değer < ortalama
+cozum: Ortalama $\frac{64}{8} = 8$; ortanca $\frac{8 + 10}{2} = 9$; tepe değer 10. Sıra: $8 < 9 < 10$.
+
+::soru h3 tip=yayilim zorluk=2
+Aşağıdaki veri gruplarından hangisinin standart sapması en büyüktür?
+A) $5, 5, 5, 5$
+B) $4, 5, 5, 6$
+C) $3, 5, 5, 7$
+D) $4, 4, 6, 6$
++E) $1, 5, 5, 9$
+cozum: Hepsinin ortalaması 5. Farkların kareleri toplamı: A) 0, B) 2, C) 8, D) 4, E) 32. En büyük toplam en büyük sapmayı verir.
+
+::soru h4 tip=olcu-donusum zorluk=2
+Ortalaması 12, ortancası 11 ve standart sapması 3 olan bir veri grubunun her verisine 5 eklenirse aşağıdakilerden hangisi doğru olur?
+A) Ortalama 17, standart sapma 8
++B) Ortalama 17, ortanca 16, standart sapma 3
+C) Ortalama 12, standart sapma 3
+D) Ortanca 11, standart sapma 8
+E) Ortalama 60, standart sapma 15
+cozum: Ekleme ortalama ve ortancayı 5 artırır (17 ve 16), standart sapmayı değiştirmez (3).

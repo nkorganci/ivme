@@ -1,0 +1,294 @@
+@ders binom
+baslik: Binom Açılımı ve Pascal Üçgeni
+kisa: Binom
+sinav: AYT
+unite: sayma-olasilik
+sinif: 10
+sira: 820
+onkosul: kombinasyon
+kategori: excel.ayt.matematik.8139749dd0017d49e725
+hedef: Pascal üçgenini ve binom katsayılarını kullanmak; $(x + y)^n$ açılımında terim sayısını ve genel terimi ($\binom{n}{r} x^{n-r} y^r$) yazmak; istenen kuvvetin katsayısını bulmak; katsayılar toplamını ve sabit terimi hesaplamak; negatif ve kesirli terimli açılımlarda $x$'ten bağımsız terimi bulmak.
+neden: Binom 2018–2026'da AYT'de 7 çıkmış soruyla neredeyse her yıl bir soru getiren kısa bir konudur. Genel terim formülünü kullanabilen öğrenci bu soruyu bir dakikada çözer.
+kaynak: MEBİ TYT Konu Özeti — Binom Açılımı | OGM 10. Sınıf Konu Özetleri 03–04 — Pascal Üçgeni ve Binom Açılımı | OGM 10. Sınıf Ders Anlatım Sunuları 01–02
+tekrar: 10
+ustalik-dk: 12
+hedef-sure: 70
+anahtar: binom | açılım | açılımında | pascal | terim | katsayı | sabit terim | katsayılar toplamı
+baslik-kurali: /^10\.1\.1\.(5|6|7)\b/ | binom | pascal
+
+@tip pascal-katsayi 20 s1
+ad: Pascal üçgeni ve terim sayısı
+ipucu: "$(a + b)^7$ açılımında kaç terim", "katsayısı en büyük terim".
+strateji: $(x + y)^n$ açılımında $n + 1$ terim vardır, her terimde üsler toplamı $n$'dir ve katsayılar Pascal üçgeninin $n$. satırıdır: $\binom{n}{0}, \binom{n}{1}, \ldots, \binom{n}{n}$ (simetrik).
+anahtar: pascal | kaç terim | terim sayısı | en büyük katsayı
+
+@tip genel-terim 40 s2
+ad: Genel terim ve istenen kuvvetin katsayısı
+ipucu: "$(x + 2)^5$ açılımında $x^3$'lü terimin katsayısı", "baştan 3. terim".
+strateji: $x$'in azalan kuvvetlerine göre baştan $(r+1)$. terim $\binom{n}{r} x^{n-r} y^r$'dir. İstenen kuvveti veren $r$'yi üslerden bul; katsayıya sabitlerin kuvvetini de kat.
+anahtar: lü terim | li terim | lı terim | baştan | sondan | ortanca terim | katsayısı
+
+@tip katsayi-toplam 20 s3
+ad: Katsayılar toplamı ve sabit terim
+ipucu: "$(2x - 1)^6$ açılımındaki katsayılar toplamı", "$(2x - 3y + 4)^7$ açılımındaki sabit terim".
+strateji: Katsayılar toplamı için bütün değişkenlere 1 ver; polinom açılımlarında sabit terim için bütün değişkenlere 0 ver. Çift dereceli terimlerin katsayıları toplamı $\frac{P(1) + P(-1)}{2}$'dir.
+anahtar: katsayılar toplamı | sabit terim | katsayıları toplamı
+
+@tip negatif-kesirli 20 s4
+ad: Negatif ve kesirli terimler
+ipucu: "$(x - 2)^5$", "$\left(x^2 + \frac{1}{x}\right)^6$ açılımında $x$'ten bağımsız terim".
+strateji: $(x - y)^n$'de işaretler $(-y)^r$'den gelir ($+, -, +, \ldots$). $x^a$ ve $\frac{1}{x^b}$ içeren açılımlarda genel terimdeki $x$'in üssünü yaz ve istenen üsse (bağımsız terim için 0'a) eşitle; $x = 0$ verilemez.
+anahtar: bağımsız terim | frac{1}{x} | 1/x | negatif
+
+@ustalik
+pascal-katsayi 1 1-2
+genel-terim 2 1-3
+katsayi-toplam 1 1-2
+negatif-kesirli 2 1-3
+
+@oturum Pascal üçgeni ve genel terim | s1 s2
+@oturum Katsayılar toplamı ve özel terimler | s3 s4
+
+@ontest
+::soru o1 tip=pascal-katsayi zorluk=1
+$(a + b)^7$ açılımında kaç terim vardır?
+A) 7 || $(a + b)^n$'de $n + 1$ terim vardır.
++B) 8 || Doğru: $7 + 1 = 8$.
+C) 14 || Hesabı kontrol et.
+D) 49 || $7^2$ değil.
+E) 128 || Bu katsayılar toplamıdır, $2^7$.
+kontrol: 8
+cozum: $(a + b)^n$ açılımında $n + 1$ terim vardır: $8$.
+
+::soru o2 tip=genel-terim zorluk=2
+$(x + 2)^5$ açılımında $x^3$'lü terimin katsayısı kaçtır?
+A) 10 || $2^2 = 4$'ü de katsayıya kat.
+B) 20 || $2$'nin kuvveti 2'dir, 1 değil.
+C) 32 || Bu sabit terimdir, $2^5$.
++D) 40 || Doğru: $\binom{5}{2} \cdot 2^2 = 10 \cdot 4$.
+E) 80 || Hesabı kontrol et.
+kontrol: 10*4
+cozum: $x^3$ için $r = 2$: $\binom{5}{2} x^3 \cdot 2^2 = 10 \cdot 4 \, x^3 = 40x^3$.
+
+::soru o3 tip=katsayi-toplam zorluk=1
+$(2x - 1)^6$ açılımındaki katsayılar toplamı kaçtır?
+A) $-1$ || $(2 - 1)^6$ hesapla; çift kuvvet.
+B) 0 || $x = 1$ yaz: $(2 - 1)^6$.
++C) 1 || Doğru: $(2 \cdot 1 - 1)^6 = 1$.
+D) 64 || Bu $2^6$'dır; $-1$'i de hesaba kat.
+E) 729 || Bu $3^6$'dır.
+kontrol: (2-1)^6
+cozum: Katsayılar toplamı için $x = 1$: $(2 - 1)^6 = 1$.
+
+@bolum s1 8 | Pascal üçgeni
+::fikir
+Pascal üçgeninde her sayı **üstündeki iki sayının toplamıdır**; $n$. satır $(x + y)^n$ açılımının katsayılarını verir: $\binom{n}{0}, \binom{n}{1}, \ldots, \binom{n}{n}$.
+
+::tablo baslik="Pascal üçgeni"
+| $n$ | Katsayılar | Toplam |
+| 0 | 1 | 1 |
+| 1 | 1, 1 | 2 |
+| 2 | 1, 2, 1 | 4 |
+| 3 | 1, 3, 3, 1 | 8 |
+| 4 | 1, 4, 6, 4, 1 | 16 |
+| 5 | 1, 5, 10, 10, 5, 1 | 32 |
+
+::duzey
+L1: $(a + b)^2 = a^2 + 2ab + b^2$: katsayılar 1, 2, 1. $(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$: katsayılar 1, 3, 3, 1. Bu sayılar Pascal üçgeninin satırlarıdır; bir sonraki satırı komşuları toplayarak yazarsın.
+L2: $(x + y)^n$ açılımında $n + 1$ terim vardır; $x$'in üssü $n$'den 0'a azalırken $y$'nin üssü 0'dan $n$'ye artar, her terimde üsler toplamı $n$'dir. Katsayılar simetriktir: $\binom{n}{r} = \binom{n}{n-r}$.
+L3: Bir satırın toplamı $2^n$'dir. Pascal eşitliği $\binom{n}{r} + \binom{n}{r+1} = \binom{n+1}{r+1}$ üçgenin "üstteki iki sayının toplamı" kuralının kombinasyon diliyle söylenişidir. En büyük katsayı ortadadır ($n$ çiftse $\binom{n}{n/2}$).
+
+::ornek baslik="Pascal ile açılım"
+soru: $(a + b)^4$ ifadesini Pascal üçgeninden yararlanarak aç.
+1. 4. satır: 1, 4, 6, 4, 1. || Katsayılar.
+2. Üsler: $a^4, a^3b, a^2b^2, ab^3, b^4$. || $a$ azalır, $b$ artar.
+3. $a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$. || Katsayı × üsler.
+cevap: $a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$
+
+::yanilgi m1 tip=pascal-katsayi
+yanlis: $(a + b)^2 = a^2 + b^2$
+neden: Ortadaki $2ab$ terimi unutulmuştur; Pascal satırı 1, 2, 1'dir.
+dogru: $(a + b)^2 = a^2 + 2ab + b^2$; $(a + b)^n$'de $n + 1$ terim vardır.
+
+::soru c1 tip=pascal-katsayi zorluk=2
+$(x + y)^6$ açılımında katsayısı en büyük olan terimin katsayısı kaçtır?
+A) 6 || Bu $\binom{6}{1}$'dir.
+B) 15 || Bu $\binom{6}{2}$'dir; ortadaki terim daha büyük.
++C) 20 || Doğru: ortadaki terim $\binom{6}{3} = 20$.
+D) 32 || Hesabı kontrol et.
+E) 64 || Bu katsayılar toplamıdır.
+kontrol: 20
+cozum: 6. satır: 1, 6, 15, 20, 15, 6, 1. En büyük katsayı ortadaki $\binom{6}{3} = 20$.
+
+@bolum s2 11 | Genel terim
+::fikir
+$(x + y)^n$ açılımında, $x$'in azalan kuvvetlerine göre **baştan $(r+1)$. terim** $\binom{n}{r} x^{n-r} y^{r}$'dir. İstenen kuvveti veren $r$'yi üslerden bul.
+
+::duzey
+L1: $(x + 3)^6$ açılımında $x^4$'lü terimi arıyorsan $x$'in üssü $6 - r = 4$ olmalı: $r = 2$. Terim $\binom{6}{2} x^4 \cdot 3^2$'dir. Katsayı yalnız $\binom{6}{2}$ değil, $3^2$ ile çarpımıdır.
+L2: Baştan kaçıncı terim istendiğinde $r$ = sıra − 1'dir: baştan 3. terim için $r = 2$. Sondan $(r+1)$. terim $\binom{n}{r} x^{r} y^{n-r}$'dir. $x$'in önünde katsayı varsa ($2x$) o katsayı da kuvvet alır: $(2x)^{n-r}$.
+L3: $n$ çiftse ortanca terim $r = \frac{n}{2}$ ile bulunur; $n$ tekse ortanca terim yoktur. $x^a y^b$'li terim sorulursa $a + b = n$ olmalıdır; değilse böyle bir terim yoktur.
+
+::ornek baslik="İstenen kuvvetin katsayısı"
+soru: $(x + 3)^6$ açılımında $x^4$'lü terimin katsayısı kaçtır?
+1. $x^{6-r} = x^4 \Rightarrow r = 2$. || Üssü eşitle.
+2. Terim: $\binom{6}{2} x^4 \cdot 3^2 = 15 \cdot 9 \, x^4$. || Genel terim.
+3. Katsayı $135$. || Sabitin kuvvetini unutma.
+cevap: 135
+
+::tamamla baslik="Baştan 3. terim"
+soru: $(2x + 1)^5$ açılımında $x$'in azalan kuvvetlerine göre baştan 3. terimi bul.
+1. Baştan 3. terim için $r = 2$.
+?2. $\binom{5}{2} (2x)^3 \cdot 1^2 = 10 \cdot 8x^3$.
+?3. Terim $80x^3$.
+cevap: $80x^3$
+
+::yanilgi m2 tip=genel-terim
+yanlis: $(x + 3)^6$ açılımında $x^4$'lü terimin katsayısı $\binom{6}{2} = 15$'tir.
+neden: Terim $\binom{6}{2} x^4 \cdot 3^2$'dir; $3^2$ de katsayının parçasıdır.
+dogru: Katsayı $15 \cdot 9 = 135$.
+
+::soru c2 tip=genel-terim zorluk=2
+$(3x + 1)^4$ açılımında $x^2$'li terimin katsayısı kaçtır?
+A) 6 || $(3x)^2$'deki $3^2 = 9$'u da kat.
+B) 18 || $3$'ün karesini al: $9$.
+C) 36 || Hesabı kontrol et: $\binom{4}{2} = 6$.
++D) 54 || Doğru: $\binom{4}{2} \cdot 3^2 = 6 \cdot 9$.
+E) 81 || Bu $x^4$'lü terimin katsayısıdır.
+kontrol: 6*9
+cozum: $x^2$ için $(3x)^{4-r}$'de $4 - r = 2$, $r = 2$: $\binom{4}{2} (3x)^2 = 6 \cdot 9 x^2 = 54x^2$.
+
+@bolum s3 8 | Katsayılar toplamı ve sabit terim
+::fikir
+**Katsayılar toplamı:** değişkenlerin hepsine **1** ver. **Sabit terim** (polinom açılımlarında): değişkenlerin hepsine **0** ver.
+
+::duzey
+L1: $(2x - 1)^3$ açılımı $8x^3 - 12x^2 + 6x - 1$'dir; katsayılar toplamı $8 - 12 + 6 - 1 = 1$. Açmadan: $x = 1$ yaz, $(2 - 1)^3 = 1$. Sabit terim $x = 0$ ile $(-1)^3 = -1$.
+L2: Çok değişkenli ifadelerde bütün değişkenlere aynı anda 1 (ya da 0) verilir: $(2x - 3y + 4)^7$ için katsayılar toplamı $(2 - 3 + 4)^7 = 3^7$, sabit terim $4^7$.
+L3: Çift dereceli terimlerin katsayıları toplamı $\frac{P(1) + P(-1)}{2}$, tek dereceli terimlerinki $\frac{P(1) - P(-1)}{2}$'dir. $x = -1$ vermek tek dereceli terimlerin işaretini değiştirir.
+
+::ornek baslik="MEBİ örneği: üç terimli ifade"
+soru: $(2x - 3y + 4)^7$ ifadesinin açılımındaki katsayılar toplamını ve sabit terimi bul.
+1. Katsayılar toplamı: $x = y = 1$ → $(2 - 3 + 4)^7 = 3^7$. || Değişkenlere 1.
+2. Sabit terim: $x = y = 0$ → $4^7$. || Değişkenlere 0.
+cevap: $3^7$ ve $4^7$
+
+::soru c3 tip=katsayi-toplam zorluk=2
+$(x^2 - 3x + 1)^5$ ifadesinin açılımındaki katsayılar toplamı ile sabit terimin toplamı kaçtır?
+A) $-1$ || Sabit terimi de ekle.
++B) 0 || Doğru: katsayılar toplamı $(-1)^5 = -1$, sabit terim $1$.
+C) 1 || Katsayılar toplamını yeniden hesapla: $1 - 3 + 1 = -1$.
+D) 2 || $(-1)^5$ negatiftir.
+E) 32 || $2^5$ değil.
+kontrol: -1+1
+cozum: $x = 1$: $(1 - 3 + 1)^5 = (-1)^5 = -1$. $x = 0$: $1^5 = 1$. Toplam $0$.
+
+@bolum s4 9 | Negatif ve kesirli terimler
+::fikir
+$(x - y)^n$ açılımında işaretler sırayla $+, -, +, -, \ldots$ ($(-y)^r$'den gelir). $\left(x^a + \frac{1}{x^b}\right)^n$ gibi ifadelerde **$x$'ten bağımsız terim** için genel terimdeki $x$'in üssünü **0'a eşitle**; burada $x = 0$ verilemez.
+
+::duzey
+L1: $(x - 2)^3 = x^3 - 6x^2 + 12x - 8$: işaretler değişir, çünkü $-2$'nin tek kuvvetleri negatiftir. Genel terimde $(-2)^r$ yazarsan işaret kendiliğinden gelir.
+L2: $\left(x^2 + \frac{1}{x}\right)^6$'da genel terim $\binom{6}{r} (x^2)^{6-r} (x^{-1})^r = \binom{6}{r} x^{12 - 3r}$. $x$'ten bağımsız terim için $12 - 3r = 0$, $r = 4$: $\binom{6}{4} = 15$.
+L3: Üssü eşitleyen $r$ doğal sayı çıkmazsa o kuvvette terim yoktur (katsayı 0). İşaretli ve kesirli birlikte: $\left(x - \frac{1}{x}\right)^8$'de genel terim $(-1)^r \binom{8}{r} x^{8 - 2r}$.
+
+::ornek baslik="$x$'ten bağımsız terim"
+soru: $\left(x^2 + \dfrac{1}{x}\right)^6$ açılımında $x$'ten bağımsız terim kaçtır?
+1. Genel terim: $\binom{6}{r} (x^2)^{6-r} \left(\frac{1}{x}\right)^r = \binom{6}{r} x^{12 - 3r}$. || Üsleri birleştir.
+2. $12 - 3r = 0 \Rightarrow r = 4$. || Bağımsız terim: üs 0.
+3. $\binom{6}{4} = 15$. || $x = 0$ yazılamaz; üs yöntemi şart.
+cevap: 15
+
+::tamamla baslik="Negatif sabit"
+soru: $(x - 2)^5$ açılımında $x^2$'li terimin katsayısı kaçtır?
+1. $x^{5-r} = x^2 \Rightarrow r = 3$.
+?2. $\binom{5}{3} (-2)^3 = 10 \cdot (-8)$.
+?3. Katsayı $-80$.
+cevap: $-80$
+
+::yanilgi m3 tip=negatif-kesirli
+yanlis: $\left(x + \frac{1}{x}\right)^n$ açılımında sabit terimi bulmak için $x = 0$ yazılır.
+neden: $\frac{1}{x}$, $x = 0$ için tanımsızdır; sabit terim $x$'in üssü 0 olan terimdir.
+dogru: Genel terimdeki $x$'in üssünü 0'a eşitle ve $r$'yi bul.
+
+::soru c4 tip=negatif-kesirli zorluk=2
+$\left(x - \dfrac{1}{x}\right)^8$ açılımında $x$'ten bağımsız terim kaçtır?
+A) $-70$ || $r = 4$ çift; $(-1)^4 = 1$.
+B) $-56$ || Hesabı kontrol et: $\binom{8}{4}$.
+C) 28 || Bu $\binom{8}{2}$'dir.
+D) 56 || Bu $\binom{8}{3}$'tür.
++E) 70 || Doğru: $(-1)^4 \binom{8}{4} = 70$.
+kontrol: 70
+cozum: Genel terim $\binom{8}{r} x^{8-r} \left(-\frac{1}{x}\right)^r = (-1)^r \binom{8}{r} x^{8-2r}$. $8 - 2r = 0 \Rightarrow r = 4$: $\binom{8}{4} = 70$.
+
+::ozet
+- $(x + y)^n$: $n + 1$ terim, üsler toplamı $n$, katsayılar Pascal'ın $n$. satırı.
+- Baştan $(r+1)$. terim $\binom{n}{r} x^{n-r} y^r$; sabitlerin kuvvetini katsayıya kat.
+- Katsayılar toplamı: değişkenlere 1; polinomda sabit terim: değişkenlere 0.
+- Kesirli terimlerde $x$'in üssünü eşitle; negatif terimde işaret $(-y)^r$'den gelir.
+
+@pratik
+- Çalışma sırası: önce Pascal üçgenini 6. satıra kadar yazabilir hâle gel, sonra genel terim formülünü, en son katsayılar toplamı ve kesirli terimleri çalış.
+- Sınav yaklaşımı: binom sorusunda ilk satıra genel terimi $\binom{n}{r} (\ldots)^{n-r} (\ldots)^r$ biçiminde yaz ve $x$'in üssünü $r$ cinsinden bul; istenen üsse eşitle.
+- Katsayılar toplamı ya da sabit terim sorusunda açılım yapma; 1 ve 0 yerine koyma yeter (kesirli terim yoksa).
+- En sık tuzaklar: sabitin kuvvetini katsayıya katmamak, baştan $k$. terimde $r = k$ almak ($r = k - 1$ olmalı), $\frac{1}{x}$'li ifadede $x = 0$ yazmak.
+- Hedef süre soru başı 70 saniye. Konu testinden sonra AYT çıkmış sorular setini çöz; binom soruları genellikle tek bir genel terim hesabıdır.
+
+@kartlar
+- $(x + y)^n$ açılımında terim sayısı :: $n + 1$
+- Baştan $(r+1)$. terim :: $\binom{n}{r} x^{n-r} y^r$
+- Katsayılar toplamı nasıl bulunur? :: Bütün değişkenlere 1 verilir.
+- Polinom açılımında sabit terim :: Bütün değişkenlere 0 verilir.
+- Pascal üçgeni kuralı :: Her sayı üstündeki iki sayının toplamı.
+- $\left(x^a + \frac{1}{x^b}\right)^n$'de bağımsız terim :: Genel terimdeki $x$'in üssünü 0'a eşitle.
+- $(x + y)^n$ katsayılarının toplamı :: $2^n$
+
+@ozet
+- Binom açılımının katsayıları Pascal üçgeninden ya da kombinasyondan elde edilir ve simetriktir.
+- Genel terim formülü istenen kuvvetteki terimi açılım yapmadan verir.
+- Katsayılar toplamı değişkenlere 1, polinom açılımında sabit terim değişkenlere 0 verilerek bulunur.
+- Negatif ve kesirli terimli açılımlarda işaret ve üs genel terim üzerinden izlenir.
+
+@aciklama
+Bir arkadaşına açıkla: (1) "$(x + 3)^6$ açılımında $x^4$'lü terimin katsayısı neden 15 değil de 135'tir?" (2) "$\left(x^2 + \frac{1}{x}\right)^6$'da sabit terimi bulmak için neden $x = 0$ yazamayız?"
+
+@havuz
+::soru h1 tip=pascal-katsayi zorluk=1
+$(a + b)^n$ açılımında 9 terim olduğuna göre $n$ kaçtır?
+A) 7
++B) 8
+C) 9
+D) 10
+E) 18
+kontrol: 8
+cozum: Terim sayısı $n + 1 = 9 \Rightarrow n = 8$.
+
+::soru h2 tip=genel-terim zorluk=2
+$(2x + y)^5$ açılımında $x^2 y^3$'lü terimin katsayısı kaçtır?
+A) 10
+B) 20
++C) 40
+D) 80
+E) 160
+kontrol: 10*4
+cozum: $y^3$ için $r = 3$: $\binom{5}{3} (2x)^2 y^3 = 10 \cdot 4 x^2 y^3 = 40x^2y^3$.
+
+::soru h3 tip=katsayi-toplam zorluk=2
+$(x + 1)^n$ açılımındaki katsayılar toplamı 64 olduğuna göre $n$ kaçtır?
++A) 6
+B) 7
+C) 8
+D) 16
+E) 32
+kontrol: 6
+cozum: $x = 1$: $2^n = 64 \Rightarrow n = 6$.
+
+::soru h4 tip=negatif-kesirli zorluk=3
+$\left(x^2 - \dfrac{2}{x}\right)^6$ açılımında $x^3$'lü terimin katsayısı kaçtır?
++A) $-160$
+B) $-80$
+C) 80
+D) 160
+E) 240
+kontrol: -160
+cozum: Genel terim $\binom{6}{r} (x^2)^{6-r} \left(-\frac{2}{x}\right)^r = \binom{6}{r} (-2)^r x^{12 - 3r}$. $12 - 3r = 3 \Rightarrow r = 3$: $20 \cdot (-8) = -160$.
