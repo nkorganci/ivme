@@ -96,6 +96,24 @@ soru: Bir sınıftaki 20 kızın not ortalaması 72, 16 erkeğin not ortalaması
 3. $2448 : 36 = 68$. || $\frac{72 + 63}{2} = 67{,}5$ yanlış olurdu.
 cevap: 68
 
+::ornek baslik="Hedef ortalama için gereken not"
+soru: Bir öğrencinin 4 sınavdaki not ortalaması 70'tir. 5. sınavdan kaç alırsa 5 sınavın ortalaması 74 olur?
+1. İlk 4 sınavın toplamı $4\cdot70=280$. || Ortalamayı toplama çevirdik.
+2. Hedef toplam $5\cdot74=370$. || Yeni ortalama, yeni veri sayısıyla çarpılır.
+3. 5. sınav notu $370-280=90$. || Eksik toplamı son sınav tamamlar.
+cevap: 90. Kontrol: $\frac{280+90}{5}=74$.
+
+::sorgula s1-maas baslik="Ortalama maaş neyi anlatır?"
+durum: Bir şirkette 9 çalışan ayda 20 000 lira, müdür 110 000 lira kazanıyor. Şirketin iş ilanında “Ortalama maaşımız 29 000 lira” yazıyor.
+soru: Bu ortalama, çalışanların çoğunun ne kazandığını iyi anlatır mı?
+A) Evet; ortalama her zaman tipik değeri verir. || Ortalama, uç değerlerden çok etkilenir.
++B) Hayır; tek bir yüksek maaş ortalamayı yukarı çekiyor. || 10 kişiden 9'u 20 000 kazanıyor; ortanca 20 000.
+C) Ortalama yanlış hesaplanmış. || $\frac{9\cdot20\,000+110\,000}{10}=29\,000$; hesap doğru.
+neden: Toplam $180\,000+110\,000=290\,000$, ortalama $29\,000$. Ama 10 kişiden 9'u 20 000 alıyor; ortanca ve tepe değer 20 000'dir. Uç değer varsa ortanca, tipik değeri daha iyi gösterir.
+sinav: Ortalama $=\frac{\text{toplam}}{\text{veri sayısı}}$; bir veri değişince toplam değişir ve ortalama kayar. Ortanca ise yalnız sıralamadaki orta değere bakar.
+dusun: Bu şirketteki maaşların ortancası kaçtır?
+yanit: Sıralı 10 maaşta 5. ve 6. değerler 20 000: ortanca 20 000 lira.
+
 ::yanilgi m1 tip=ortalama
 yanlis: İki grubun ortak ortalaması, grup ortalamalarının ortalamasıdır.
 neden: Gruplar farklı büyüklükteyse büyük grubun etkisi daha fazladır.
@@ -129,10 +147,28 @@ cevap: Ortalama 12, ortanca 12, tepe değer 7
 
 ::tamamla baslik="Çift sayıda veri"
 soru: $4, 9, 2, 7, 9, 5$ veri grubunun ortancasını ve tepe değerini bul.
-1. Sıralı: $2, 4, 5, 7, 9, 9$.
-?2. $n = 6$: ortanca $\frac{5 + 7}{2} = 6$.
-?3. Tepe değer 9.
+1. Sıralı: $2, 4, 5, 7, 9, 9$. || Ortanca için önce veriler küçükten büyüğe sıralanır.
+?2. $n = 6$: ortanca $\frac{5 + 7}{2} = 6$. || Çift sayıda veride ortadaki iki terimin (3. ve 4.) ortalaması alınır.
+?3. Tepe değer 9. || 9 iki kez geçiyor; diğer değerler birer kez.
 cevap: Ortanca 6, tepe değer 9
+
+::ornek baslik="Bir veri eklenince ortanca"
+soru: $5, 8, 9, 12, 15$ veri grubuna 20 eklenirse ortanca nasıl değişir?
+1. Başta $n=5$; ortanca 3. terim: 9. || Tek sayıda veride tam ortadaki terim.
+2. 20 eklenince sıralı veri $5, 8, 9, 12, 15, 20$; $n=6$. || Yeni veriyi sıradaki yerine koyduk.
+3. Ortanca 3. ve 4. terimlerin ortalaması: $\frac{9+12}{2}=10{,}5$. || Çift sayıda veride iki orta terim vardır.
+cevap: 9'dan 10,5'e çıkar. Eklenen 20 çok büyük olsa da ortanca yalnız 1,5 arttı; ortalama ise 9,8'den 11,5'e çıkar.
+
+::sorgula s2-ayakkabi baslik="Hangi numarayı stoklamalı?"
+durum: Bir ayakkabı mağazasında geçen ay satılan numaralar: 37, 38, 38, 38, 39, 40, 42, 43, 44. Mağaza bu ay en çok bir numaradan fazla sipariş verecek.
+soru: Hangi numaradan en çok sipariş vermelidir?
++A) 38 (tepe değer) || En çok satılan numara 38; üç kez satılmış.
+B) 39 (ortanca) || Ortanca, en çok talep gören numarayı göstermez.
+C) 40 (ortalamaya en yakın numara) || Ortalama yaklaşık 39,9; ama 40 numaradan yalnız bir çift satılmış.
+neden: “En çok talep” sorusu tepe değer sorusudur. 38 numara üç kez satılmış; diğerleri birer kez. Ortanca 39, ortalama yaklaşık 39,9'dur ama bu numaralar daha az satılmıştır.
+sinav: Ortalama, ortanca ve tepe değer farklı soruları yanıtlar. Hangisinin istendiğini sorunun bağlamı belirler.
+dusun: Satılan ayakkabıların renklerini (siyah, beyaz, kahverengi) incelerken hangi ölçü kullanılabilir?
+yanit: Yalnız tepe değer. Renkler sayı olmadığı için ortalama ve sıralama (ortanca) anlamsızdır.
 
 ::yanilgi m2 tip=medyan-mod
 yanlis: Ortanca, veriler yazıldığı sırada ortadaki değerdir.
@@ -174,6 +210,24 @@ soru: $1, 4, 4, 7$ veri grubunun açıklığını ve standart sapmasını bul.
 3. $\frac{18}{4 - 1} = 6$, $S = \sqrt{6}$. || $n - 1$'e böl, karekök al.
 cevap: Açıklık 6, standart sapma $\sqrt{6}$
 
+::ornek baslik="Ortalamaları aynı iki grubun yayılımı"
+soru: A: $8, 10, 12$ ve B: $4, 10, 16$ veri gruplarının ortalamalarını ve standart sapmalarını karşılaştır.
+1. İki grubun da ortalaması 10. || Toplamlar 30, veri sayıları 3.
+2. A: farklar $-2, 0, 2$; kareler toplamı 8; $S_A=\sqrt{\frac{8}{2}}=2$. || $n-1=2$'ye böldük.
+3. B: farklar $-6, 0, 6$; kareler toplamı 72; $S_B=\sqrt{\frac{72}{2}}=6$. || Veriler ortalamadan 3 kat uzak.
+cevap: Ortalamalar eşit (10); $S_A=2$, $S_B=6$. A grubu daha tutarlıdır.
+
+::sorgula s3-basket baslik="Kritik maçta hangi oyuncu?"
+durum: İki basketbolcunun son 5 maçtaki sayıları: A: 18, 20, 22, 19, 21. B: 5, 35, 10, 30, 20. İkisinin de maç başına ortalaması 20.
+soru: Koç kritik maçta güvenilir, istikrarlı bir oyuncu istiyor. Kimi seçmeli?
++A) A oyuncusunu || A'nın sayıları ortalamaya çok yakın; standart sapması küçük.
+B) B oyuncusunu || B bazen çok sayı atıyor ama bazen çok az; sapması büyük.
+C) Fark yok; ortalamalar eşit || Ortalama, istikrarı ölçmez; yayılım ölçüleri gerekir.
+neden: Ortalamalar eşit olduğunda istikrarı yayılım belirler. A'nın açıklığı $22-18=4$, B'ninki $35-5=30$. A'nın standart sapması da çok daha küçüktür: A daha tutarlıdır.
+sinav: Standart sapma küçükse veriler ortalamaya yakındır (homojen, istikrarlı). Ortalamaları aynı grupları karşılaştırırken sapmaya bak.
+dusun: İki oyuncunun açıklıkları kaçtır?
+yanit: A: $22-18=4$; B: $35-5=30$.
+
 ::yanilgi m3 tip=yayilim
 yanlis: Açıklıkları eşit olan iki veri grubunun standart sapmaları da eşittir.
 neden: Açıklık yalnız uç değerlere bakar; aradaki verilerin dağılımı sapmayı değiştirir.
@@ -209,6 +263,24 @@ soru: Ortalaması 40, standart sapması 6 olan bir veri grubunun her verisi 2 il
 1. Çarpma: ortalama 80, sapma 12. || İkisi de 2 katı.
 2. Ekleme: ortalama 85, sapma 12. || Ekleme sapmayı değiştirmez.
 cevap: Ortalama 85, standart sapma 12
+
+::ornek baslik="Celsius'tan Fahrenheit'a"
+soru: Bir haftanın günlük sıcaklıklarının ortalaması 20 °C, standart sapması 5 °C'dir. Sıcaklıklar $F=1{,}8C+32$ ile Fahrenheit'a çevrilirse yeni ortalama ve standart sapma ne olur?
+1. Her veri 1,8 ile çarpılıyor: ortalama $36$, sapma $9$. || Çarpma bütün ölçüleri aynı katsayıyla büyütür.
+2. Sonra 32 ekleniyor: ortalama $36+32=68$; sapma değişmez, 9. || Ekleme verileri kaydırır ama aralarındaki uzaklıkları değiştirmez.
+3. Sonuç: 68 °F ve 9 °F. || Kontrol: $1{,}8\cdot20+32=68$.
+cevap: Ortalama 68 °F, standart sapma 9 °F.
+
+::sorgula s4-puan baslik="Herkese 5 puan"
+durum: Bir öğretmen sınavdaki bir soruyu iptal edip herkesin notuna 5 puan ekledi.
+soru: Sınıfın not ortalaması ve en yüksek ile en düşük not arasındaki fark (açıklık) nasıl değişir?
+A) İkisi de 5 artar. || En yüksek ve en düşük not birlikte 5 arttığı için farkları aynı kalır.
++B) Ortalama 5 artar, açıklık değişmez. || Her veriye eklenen sabit, ortalamayı kaydırır; yayılımı değiştirmez.
+C) İkisi de değişmez. || Bütün notlar arttığı için ortalama da artar.
+neden: Her veri 5 artınca toplam $5n$ artar, ortalama 5 artar. En yüksek ve en düşük not da 5'er artar; farkları aynı kalır. Standart sapma da değişmez.
+sinav: Her veriye $k$ eklemek konum ölçülerini (ortalama, ortanca, tepe değer) $k$ artırır; yayılım ölçülerini (açıklık, sapma) değiştirmez.
+dusun: Öğretmen herkesin notunu %10 artırsaydı (1,1 ile çarpsaydı) ortalama ve açıklık nasıl değişirdi?
+yanit: İkisi de 1,1 katına çıkardı; çarpma hem konumu hem yayılımı ölçekler.
 
 ::soru c4 tip=olcu-donusum zorluk=2
 Bir veri grubunun ortalaması 20, açıklığı 12 ve standart sapması 4'tür. Her veri 3 ile çarpılıp 2 çıkarılırsa yeni açıklık ile yeni standart sapmanın toplamı kaç olur?

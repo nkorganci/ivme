@@ -116,6 +116,25 @@ soru: Yukarıdaki grafiğe göre basketbolu seçen kaç öğrenci vardır? Futbo
 3. Futbol 30, voleybol 20: fark 10. || $(90° - 60°) : 3° = 10$.
 cevap: 40 öğrenci; 10 fazla
 
+::ornek baslik="Açıdan yüzdeye ve kişiye"
+soru: 250 kişilik bir ankette bir seçeneği gösteren dilimin merkez açısı $72°$'dir. Bu seçenek bütünün yüzde kaçıdır ve kaç kişi seçmiştir?
+1. Oran $\frac{72}{360}=\frac{1}{5}$. || Dilimin açısı, bütünün (360°) içindeki payıdır.
+2. $\frac{1}{5}=$ %20. || Kesri yüzdeye çevirdik.
+3. Kişi sayısı $250\cdot\frac{1}{5}=50$. || Aynı oran kişilere de uygulanır.
+cevap: %20; 50 kişi.
+
+::sorgula s1-butce baslik="Bütçe grafiğinde mutfak payı"
+durum: Bir ailenin aylık 30 000 liralık bütçesi daire grafiğinde gösteriliyor. Mutfak harcamalarının dilimi $108°$.
+soru: Aile mutfağa ayda kaç lira ayırıyor?
+A) 10 800 lira || Açıyı 100 ile çarptın; açı, 360 derecelik bütünün payıdır.
++B) 9000 lira || $30\,000\cdot\frac{108}{360}=30\,000\cdot0{,}3=9000$.
+C) 108 lira || Açı bir para miktarı değildir; bütünün payını gösterir.
+kontrol: 30000*108/360
+neden: $108°$, bütünün $\frac{108}{360}=\frac{3}{10}$'u, yani %30'udur. Bütçenin %30'u 9000 lira.
+sinav: Daire grafiğinde açı $=360°\cdot\frac{\text{pay}}{\text{bütün}}$. Açıdan miktara geçerken aynı orantıyı ters yönde kur.
+dusun: Bütçe aynı kalırken mutfak harcaması 12 000 liraya çıksaydı dilim kaç derece olurdu?
+yanit: $\frac{12\,000}{30\,000}\cdot360°=144°$.
+
 ::yanilgi m1 tip=daire-grafik
 yanlis: Merkez açısı $60°$ olan dilim bütünün %60'ıdır.
 neden: Bütün $360°$'dir, 100° değil.
@@ -161,6 +180,24 @@ soru: Yukarıdaki grafiğe göre satışların en çok arttığı aylar hangiler
 2. 1. aydan 5. aya artış $45 - 20 = 25$ adet. || Uç değerler.
 3. Yüzde artış $\frac{25}{20} \cdot 100 = $ %125. || Başlangıca böl.
 cevap: 3. aydan 4. aya; %125
+
+::ornek baslik="Eksen sıfırdan başlamazsa"
+soru: Bir sütun grafiğinde dikey eksen 90'dan başlıyor. A sütunu 95, B sütunu 100 değerini gösteriyor. Görselde B sütunu A'nın kaç katı uzun görünür; gerçekte B, A'dan yüzde kaç büyüktür?
+1. Görünen boylar eksenin başladığı 90'dan ölçülür: A için $95-90=5$, B için $100-90=10$ birim. || Çizimde sütunlar 90 çizgisinden yükselir.
+2. Görselde B, A'nın $\frac{10}{5}=2$ katı uzun görünür. || Göz, sütunların boylarını karşılaştırır.
+3. Gerçekte $\frac{100-95}{95}\approx0{,}053$: yaklaşık %5,3 büyük. || Değerler 0'dan ölçülür.
+cevap: 2 katı uzun görünür; gerçekte yalnız yaklaşık %5,3 büyüktür.
+
+::sorgula s2-haber baslik="Müşteri sayısı iki katına mı çıktı?"
+durum: Bir şirketin sunumundaki sütun grafiğinde müşteri sayısı 1. yıl 1050, 2. yıl 1100 olarak gösteriliyor. Dikey eksen 1000'den başladığı için 2. yılın sütunu 1. yılınkinin iki katı uzun görünüyor.
+soru: Grafik hangi bilgiyi doğru verir?
+A) Müşteri sayısı iki katına çıkmış. || Sütun boyları 1000'den ölçüldüğü için fark büyük görünür.
++B) Müşteri sayısı yaklaşık %4,8 artmış. || $\frac{1100-1050}{1050}\approx0{,}048$.
+C) Müşteri sayısı azalmış. || 1100, 1050'den büyüktür.
+neden: Gerçek artış $1100-1050=50$ müşteri; $\frac{50}{1050}\approx$ %4,8. Eksen 1000'den başlayınca sütunlar 50 ve 100 birim boyunda çizilir ve iki kat fark varmış gibi görünür.
+sinav: Grafik okumadan önce eksenin nereden başladığını ve birimleri kontrol et. Yüzde değişim her zaman gerçek değerlerle hesaplanır.
+dusun: Eksen 0'dan başlasaydı iki sütunun boyları oranı kaç olurdu?
+yanit: $\frac{1100}{1050}\approx1{,}05$; sütunlar neredeyse eşit boyda görünürdü.
 
 ::yanilgi m2 tip=sutun-cizgi
 yanlis: Artış miktarı en büyük olan dönemin yüzde artışı da en büyüktür.
@@ -211,9 +248,27 @@ cevap: 3–7: 2, 8–12: 4, 13–17: 3
 
 ::tamamla baslik="Bölüm tam sayı çıkarsa"
 soru: Açıklığı 24 olan bir veri grubu 4 gruba ayrılacaktır. Grup genişliği kaç olmalıdır?
-1. $24 : 4 = 6$.
-?2. 6'dan büyük en küçük doğal sayı 7: genişlik 7.
+1. $24 : 4 = 6$. || Grup genişliği için önce açıklığı grup sayısına böleriz.
+?2. 6'dan büyük en küçük doğal sayı 7: genişlik 7. || Genişlik tam 6 olursa en büyük veri son gruba sığmaz; bölümden büyük en küçük doğal sayı seçilir.
 cevap: 7
+
+::ornek baslik="Boy verilerini gruplamak"
+soru: Bir sınıftaki öğrencilerin boyları 150 cm ile 184 cm arasındadır. Veriler 4 gruba ayrılarak histogram çizilecektir. Grupları yaz.
+1. Açıklık $184-150=34$; $34:4=8{,}5$. || Açıklığı grup sayısına böldük.
+2. 8,5'ten büyük en küçük doğal sayı 9: genişlik 9. || Bütün veriler gruplara sığmalı.
+3. Gruplar: 150–158, 159–167, 168–176, 177–185. || En küçük veriden başlayıp genişlik kadar ilerledik; 184 son gruba girer.
+cevap: 150–158, 159–167, 168–176, 177–185.
+
+::sorgula s3-kosu baslik="Histogramdan tek bir kişinin süresi"
+durum: Bir koşu yarışının sonuçlarını gösteren histogramda “40–49 dakika” sütunu 6 kişiyi gösteriyor. Ali de bu grupta.
+soru: Bu histogramdan Ali'nin süresini tam olarak bulabilir miyiz?
+A) Evet; grubun ortası olan 45 dakikadır. || Grubun ortası yalnız bir tahmindir; Ali 40 dakika da koşmuş olabilir.
++B) Hayır; yalnız 40 ile 49 dakika arasında olduğunu biliriz. || Histogram, gruptaki tek tek değerleri değil frekansı gösterir.
+C) Evet; 40 dakikadır. || Grubun başlangıç değeri, Ali'nin süresi olmak zorunda değildir.
+neden: Gruplandırma yapılınca tek tek veriler kaybolur; yalnız kaç verinin hangi aralığa düştüğü kalır. Bu yüzden histogramdan bir kişinin değeri tam bulunamaz.
+sinav: Histogram sorularında frekansları topla, oranları hesapla; ama grubun içindeki dağılım hakkında kesin bir yargıya varma.
+dusun: Bu histogramdan yarışmacıların ortalama süresini tam olarak bulabilir miyiz?
+yanit: Hayır, yalnız yaklaşık bulabiliriz: her grubun ortasını o gruptaki herkesin süresi saymak bir tahmindir.
 
 ::yanilgi m3 tip=histogram
 yanlis: Açıklık grup sayısına tam bölünüyorsa grup genişliği bölümün kendisidir.
@@ -250,6 +305,24 @@ soru: Bir kitapçıda bir günde 45 roman, 30 hikâye, 15 şiir ve 30 deneme kit
 2. Roman $135°$, hikâye $90°$, şiir $45°$, deneme $90°$. || Miktar × birim açı.
 3. Kontrol: $135 + 90 + 45 + 90 = 360$ ✓ || Açıların toplamı.
 cevap: $135°$, $90°$, $45°$, $90°$
+
+::ornek baslik="Tablodan sütun grafiğine: ölçeği koru"
+soru: Bir otoparka 08–10 arasında 12, 10–12 arasında 30, 12–14 arasında 18 araç girdi. Sütun grafiğinde en uzun sütun 3 cm çizilirse diğer sütunlar kaç cm olmalıdır?
+1. Ölçek: 30 araç 3 cm ise 1 araç $0{,}1$ cm. || En uzun sütundan birim boyu bulduk.
+2. 12 araç $1{,}2$ cm; 18 araç $1{,}8$ cm. || Her değeri aynı ölçekle çizdik.
+3. Kontrol: $1{,}2:1{,}8:3=12:18:30$. || Boyların oranı değerlerin oranıyla aynı.
+cevap: 1,2 cm ve 1,8 cm.
+
+::sorgula s4-kantin baslik="Kantin satışları için hangi grafik?"
+durum: Okul kantininin müdürü, bir haftada satılan tost, poğaça, meyve suyu ve sütün toplam satış içindeki paylarını göstermek istiyor.
+soru: En uygun grafik hangisidir?
+A) Çizgi grafiği || Çizgi grafiği zaman içindeki değişimi gösterir; burada bir bütünün payları isteniyor.
+B) Histogram || Histogram gruplandırılmış sayısal veriler içindir; ürünler kategoridir.
++C) Daire grafiği || Bütünün parçalara dağılımını en iyi daire grafiği gösterir.
+neden: “Toplam içindeki pay” bir bütünün parçalara bölünmesidir; her dilimin açısı ürünün payıyla orantılıdır. Daire grafiği bunu bir bakışta gösterir.
+sinav: Zamana bağlı değişim → çizgi; kategorileri karşılaştırma → sütun; bütünün parçaları → daire; gruplandırılmış sürekli veri → histogram.
+dusun: Müdür ürünlerin satış adetlerini birbiriyle karşılaştırmak isteseydi hangi grafiği seçmeliydi?
+yanit: Sütun grafiğini; sütun boyları adetleri doğrudan karşılaştırır.
 
 ::soru c4 tip=grafik-secim zorluk=2
 Bir ailenin aylık 24 000 TL'lik bütçesinde kira için ayrılan kısım daire grafiğinde $105°$'lik dilimle gösterilmektedir. Aynı veri sütun grafiğine dönüştürülürse kira sütunu kaç TL'yi gösterir?
