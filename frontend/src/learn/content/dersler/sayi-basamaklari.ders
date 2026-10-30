@@ -105,6 +105,25 @@ soru: $AB$ ve $BA$ iki basamaklı sayılar ve $AB - BA = 54$ olduğuna göre $A 
 3. En büyük toplam $9 + 3 = 12$. || Toplamı büyütmek için en büyük $A$'yı seç.
 cevap: $12$
 
+::ornek baslik="Toplam ve fark birlikte verilince"
+soru: $AB$ ve $BA$ iki basamaklı sayılardır. $AB+BA=132$ ve $A-B=2$ olduğuna göre $AB$ kaçtır?
+1. $AB+BA=(10A+B)+(10B+A)=11(A+B)$. || Her rakam bir kez onlar, bir kez birler basamağında durur; katkısı $10+1=11$ kattır.
+2. $11(A+B)=132$, yani $A+B=12$. || Tek denklemden iki rakamın toplamını bulduk.
+3. $A+B=12$ ve $A-B=2$ taraf tarafa toplanır: $2A=14$, $A=7$, $B=5$. || Toplayınca $B$ yok olur; sonra $B$'yi geri koyarak buluruz.
+cevap: $AB=75$. Kontrol: $75+57=132$ ve $7-5=2$.
+
+::sorgula s1-kasa baslik="Kasa neden 27 lira eksik?"
+durum: Bir kasiyer 74 liralık bir ürünü kasaya yanlışlıkla 47 lira olarak girdi. Gün sonunda kasa eksik çıktı.
+soru: Kasa kaç lira eksik çıkar?
++A) 27 lira || $74-47=9\cdot(7-4)=27$.
+B) 30 lira || Rakamlar yer değiştirince fark onluk bir sayı olmak zorunda değil; 9'un katıdır.
+C) 3 lira || 3, rakamlar arasındaki farktır; sayı farkı bunun 9 katıdır.
+kontrol: 74-47
+neden: $74-47=(10\cdot7+4)-(10\cdot4+7)=9\cdot7-9\cdot4=9\cdot(7-4)=27$. İki basamaklı bir tutarın rakamları yer değiştirince fark her zaman 9'un katıdır. Bu yüzden kasa farkı 9'a bölünüyorsa, rakamların yer değiştirmiş olabileceğinden şüphelenilir.
+sinav: $AB-BA=9(A-B)$ kalıbı, “rakamları yer değiştirince sayı 36 azalıyor” gibi soruların ilk satırıdır.
+dusun: Kasa farkı 45 lira çıksaydı, yer değiştiren rakamlar arasındaki fark ne olurdu? Bir örnek tutar ver.
+yanit: $9(A-B)=45$, yani $A-B=5$. Örnek: 72 lira yerine 27 lira ya da 94 yerine 49 girilmiş olabilir.
+
 ::yanilgi m1 tip=cozumleme
 yanlis: $AB = A \cdot B$; örneğin $A = 3$, $B = 4$ ise $AB = 12$.
 neden: Harflerin yan yana yazılması, rakamlardan oluşan sayıyı gösterir.
@@ -138,10 +157,29 @@ cevap: $49$
 
 ::tamamla baslik="Rakam değişince fark"
 soru: Dört basamaklı $4A7B$ sayısında $A$ rakamı 2 artırılır, $B$ rakamı 3 azaltılırsa sayı nasıl değişir?
-1. $A$ yüzler basamağındadır: sayı $2 \cdot 100 = 200$ artar.
+1. $A$ yüzler basamağındadır: sayı $2 \cdot 100 = 200$ artar. || Yüzler basamağındaki her birimlik artış sayıyı 100 artırır.
 ?2. $B$ birler basamağındadır: sayı $3 \cdot 1 = 3$ azalır. || Birler basamağının değeri 1'dir.
-?3. Toplam değişim $200 - 3 = 197$: sayı 197 artar.
+?3. Toplam değişim $200 - 3 = 197$: sayı 197 artar. || Artış ve azalışı işaretleriyle topladık; diğer rakamlar değişmedi.
 cevap: 197 artar.
+
+::ornek baslik="Sola rakam yazma"
+soru: İki basamaklı bir sayının soluna 4 yazılınca oluşan üç basamaklı sayı, ilk sayının 9 katı oluyor. İlk sayı kaçtır?
+1. İlk sayı $x$ olsun; soluna 4 yazınca $400+x$ olur. || Yeni sol basamak yüzler basamağıdır; 4'ün basamak değeri 400.
+2. $400+x=9x$, yani $8x=400$. || Sözü denkleme çevirip $x$'leri bir tarafta topladık.
+3. $x=50$. || 50 iki basamaklı; koşul sağlanıyor.
+cevap: 50. Kontrol: $450=9\cdot50$.
+
+::sorgula s2-etiket baslik="Etikete fazladan bir sıfır"
+durum: Bir marketteki fiyat etiketinde 35 lira yazmalıyken, sayının sağına yanlışlıkla bir 0 eklenmiş.
+soru: Etiketteki fiyat, gerçek fiyattan kaç lira fazladır?
+A) 0 lira || Sağa yazılan 0, her rakamı bir basamak sola kaydırır: 35, 350 olur.
+B) 10 lira || Sağa rakam eklemek 10 eklemek değil, 10 ile çarpmaktır.
++C) 315 lira || $350-35=315=9\cdot35$.
+kontrol: 350-35
+neden: Sağa bir $d$ rakamı yazmak sayıyı $10x+d$ yapar. Burada $d=0$: $10\cdot35=350$. Fark $10x-x=9x=9\cdot35=315$.
+sinav: “İki basamaklı bir sayının sağına 3 yazılınca sayı 444 artıyor” sorusu aynı kalıptır: $10x+3-x=444$.
+dusun: Sıfır yerine sayının soluna bir 1 eklenseydi (135 lira) fark ne olurdu?
+yanit: 100 lira. Sola yazılan rakam, basamak değeri kadar ekler: $1\cdot100$.
 
 ::yanilgi m2 tip=basamak-degisim
 yanlis: İki basamaklı bir sayının rakamları yer değiştirince sayı 40 azalabilir.
@@ -174,6 +212,25 @@ soru: Rakamları birbirinden farklı dört basamaklı en küçük tek sayı kaç
 2. Yüzler ve onlar basamağına kullanılmamış en küçük rakamlar: 0 ve 2. || Farklı rakam koşulu.
 3. Birler tek olmalı; 1 kullanıldı, kalan en küçük tek rakam 3. || Tek sayının birler basamağı tektir.
 cevap: $1023$
+
+::ornek baslik="Rakamlar toplamı verilince en küçük sayı"
+soru: Rakamları birbirinden farklı ve rakamları toplamı 20 olan en küçük üç basamaklı sayı kaçtır?
+1. Farklı iki rakamın toplamı en çok $9+8=17$ olur. || En küçük sayı için yükü sağdaki basamaklar taşımalı.
+2. Bu yüzden yüzler basamağı en az $20-17=3$. || Yüzler 2 olsaydı kalan iki rakamın toplamı 18 olurdu; farklı rakamlarla olmaz.
+3. Yüzler 3 iken kalan $17=8+9$; onlara küçük olan 8, birlere 9: $389$. || Onlar basamağı birlerden değerli olduğu için küçük rakam oraya.
+cevap: 389. Kontrol: $3+8+9=20$ ve rakamlar farklı.
+
+::sorgula s3-kilit baslik="Valiz kilidi bir sayı mı?"
+durum: Bir valiz kilidinde üç tekerlek var; her biri 0–9 rakamlarını gösteriyor. Şifre için rakamları farklı, rakamları toplamı 15 olan ve okunuşu en küçük diziyi seçmek istiyorsun.
+soru: Hangi dizi seçilir?
+A) 159 || Bu, en küçük üç basamaklı sayı olurdu; kilitte ilk tekerlek 0 olabilir.
++B) 069 || İlk tekerlek 0; kalan $6+9=15$ ve onlar yerinde en küçük olası rakam 6.
+C) 078 || $0+7+8=15$ doğru; ama 069 daha küçük.
+D) 555 || Toplam 15 ama rakamlar farklı değil.
+neden: En küçük dizi için en soldaki tekerleğe en küçük rakamı koyarız; kilitte 0 yasak değildir. Kalan iki farklı rakamın toplamı 15 olmalı. İkincisi en çok 9 olabileceği için ortadaki rakam en az $15-9=6$: 069. “Üç basamaklı sayı” istenseydi ilk basamak 0 olamazdı; o zaman en küçük 159 olurdu.
+sinav: “Rakamları farklı … en küçük üç basamaklı sayı” sorularında ilk basamak en az 1'dir. Sağdaki basamakları büyük rakamlarla doldurarak soldakini küçük tutarsın.
+dusun: Aynı koşullarla en büyük şifre hangisidir?
+yanit: 960. Sola en büyük rakam 9; kalan 6'yı iki farklı rakama bölerken ortadakini büyük tut: 6 ve 0. Kontrol: $9+6+0=15$.
 
 ::strateji tip=rakam-kosul baslik="Basamak basamak doldur"
 ipucu: "rakamları farklı … en büyük/en küçük … sayı"
@@ -213,6 +270,25 @@ soru: $2^{12} \cdot 5^{9}$ sayısı kaç basamaklıdır?
 1. Küçük üs 9: $2^{12} \cdot 5^9 = 2^3 \cdot 2^9 \cdot 5^9 = 8 \cdot 10^9$. || 9 tane $(2 \cdot 5)$ eşleşir.
 2. $8 \cdot 10^9$, $k \cdot 10^n$ biçiminde $n = 9$: $9 + 1 = 10$ basamaklı. || $k = 8$ tek basamaklı olduğundan ek basamak yok.
 cevap: $10$ basamaklı.
+
+::ornek baslik="Faktöriyelin sonundaki sıfırlar"
+soru: $25!$ sayısının sonunda kaç tane sıfır vardır?
+1. Sondaki her sıfır bir $10=2\cdot5$ çarpanından gelir. || Bir sayıyı 10 ile çarpmak sağına bir sıfır ekler.
+2. 1'den 25'e kadar 2 çarpanları 5'lerden çoktur; 5'leri sayarız: 5, 10, 15, 20, 25 → 5 tane. || Her 5'e eşlik edecek bir 2 vardır.
+3. $25=5\cdot5$ iki tane 5 taşır; bir kez daha sayılır: $5+1=6$. || $\lfloor 25/25\rfloor=1$ bu ek 5'i gösterir.
+cevap: 6. Kontrol: $25!=15\,511\,210\,043\,330\,985\,984\,000\,000$; sonda 6 sıfır var.
+
+::sorgula s4-vida baslik="Kutulardaki vidaları saymak"
+durum: Bir fabrikada her birinde $5^{12}$ vida bulunan $2^{9}$ kutu dolduruldu.
+soru: Toplam vida sayısı kaç basamaklıdır?
+A) 10 basamaklı || $10^9$ tek başına 10 basamaklıdır; önünde 125 olduğu için daha fazla basamak var.
++B) 12 basamaklı || $2^9\cdot5^{12}=5^3\cdot10^9=125\cdot10^9$.
+C) 21 basamaklı || Üsleri toplamak basamak sayısını vermez.
+kontrol: 3+9
+neden: Eşleşen dokuz tane $2\cdot5$ çifti $10^9$ yapar; geriye $5^3=125$ kalır: $125\cdot10^9=125\,000\,000\,000$. 125'in 3 basamağı ve 9 sıfır: 12 basamak.
+sinav: Önce 10'ları eşleştir, kalan çarpanın basamak sayısını ayrıca say: $k\cdot10^n$ sayısının basamak sayısı, $k$'nin basamak sayısı $+n$'dir.
+dusun: Kutu sayısı $2^{12}$ olsaydı toplam kaç basamaklı olurdu?
+yanit: $2^{12}\cdot5^{12}=10^{12}$: bir tane 1 ve 12 sıfır, 13 basamak.
 
 ::bosluk b1 cevap=4 tip=basamak-sayisi zorluk=1
 $20!$ sayısının sonunda kaç tane sıfır vardır?

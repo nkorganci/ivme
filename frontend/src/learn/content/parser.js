@@ -175,11 +175,11 @@ function leveled(lines) {
   return levels;
 }
 
-const INQUIRY_FIELDS = { durum: 'situation', soru: 'prompt', neden: 'why', sinav: 'exam', dusun: 'reflect', yanit: 'reflectAnswer' };
+const INQUIRY_FIELDS = { durum: 'situation', soru: 'prompt', neden: 'why', sinav: 'exam', dusun: 'reflect', yanit: 'reflectAnswer', kontrol: 'check' };
 
 /** Günlük hayattan sorgula: durum → soru → seçenekler (A–E, `+` doğru, `||` geri bildirim) → neden → sınavdaki karşılığı. */
 function inquiry(lines, line) {
-  const out = { situation: '', prompt: '', choices: [], why: '', exam: '', reflect: '', reflectAnswer: '' };
+  const out = { situation: '', prompt: '', choices: [], why: '', exam: '', reflect: '', reflectAnswer: '', check: '' };
   let target = null;
   for (const raw of lines) {
     if (!raw.trim() || raw.startsWith('%%')) continue;

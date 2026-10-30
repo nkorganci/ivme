@@ -120,11 +120,31 @@ L3: Kümeler, işlemlere göre **kapalılık** ile de ayrılır: $\mathbb{N}$ to
   <text x="360" y="180" font-size="15" fill="currentColor">e ≈ 2,718…</text>
 </svg>
 
+::sorgula s1-pizza baslik="Pizzanın ne kadarını yedin?"
+durum: Bir pizza 8 eş dilime bölündü ve sen 3 dilim yedin.
+soru: Yediğin miktarı “pizzanın ne kadarı” olarak tek bir sayıyla anlatmak için hangi küme gerekir?
+A) Doğal sayılar yeter. || 3 dilim bir doğal sayıdır; ama soru pizzanın ne kadarını yediğini soruyor ve $\frac{3}{8}$ doğal sayı değildir.
+B) Tam sayılar gerekir. || Tam sayılar negatifleri ekler; bir bütünün parçasını anlatmaz.
++C) Rasyonel sayılar gerekir. || Yediğin miktar $\frac{3}{8}$; iki tam sayının oranı.
+D) İrrasyonel sayılar gerekir. || $\frac{3}{8}=0{,}375$ kesir olarak yazıldı; irrasyonel olamaz.
+neden: Parçayı “8'de 3” diye anlatırız: $\frac{3}{8}$. Payı ve paydası tam sayı olan (payda 0 değil) her sayı rasyoneldir. Saymak için doğal sayılar yeterliydi; paylaştırınca kesirlere, yani rasyonel sayılara ihtiyaç doğdu.
+sinav: “Hangisi rasyoneldir/irrasyoneldir?” sorusunda sorduğun şey hep aynıdır: Bu sayı iki tam sayının oranı olarak yazılabilir mi? Önce sadeleştir, sonra karar ver.
+dusun: Kenarları 1 metre olan kare bir bahçenin köşegeni kaç metredir? Bu uzunluk hangi kümededir; cetvelle ölçtüğün değer ne olur?
+yanit: Pisagor bağıntısıyla köşegen $\sqrt{1^2+1^2}=\sqrt{2}$ metredir; irrasyoneldir. Cetvel yaklaşık değer verir: yaklaşık 1,41 m. Ölçülen 1,41 rasyoneldir ama köşegenin tam uzunluğu değildir.
+
 ::sinifla k1 baslik="Sayıları kümelerine yerleştir (en dar küme)"
 Doğal: 0; $\sqrt{16}$
 Tam ama doğal değil: $-5$; $-\sqrt{9}$
 Rasyonel ama tam değil: $\frac{3}{4}$; $0{,}\overline{6}$; $-2{,}5$
 İrrasyonel: $\sqrt{7}$; $\pi$; $1 + \sqrt{2}$
+
+::ornek baslik="Önce sadeleştir, sonra en dar kümeyi seç"
+soru: $\sqrt{0{,}49}$, $\frac{12}{4}$, $-\sqrt{20}$ ve $0{,}1\overline{6}$ sayılarının her birinin ait olduğu en dar kümeyi bul.
+1. $\sqrt{0{,}49}=0{,}7=\frac{7}{10}$: rasyonel, tam sayı değil. || $0{,}7\cdot0{,}7=0{,}49$. Kök işareti tek başına sayıyı irrasyonel yapmaz.
+2. $\frac{12}{4}=3$: doğal sayı. || Kesir görünümü aldatmasın; önce sadeleştir.
+3. $-\sqrt{20}=-2\sqrt{5}$: irrasyonel. || 20 tam kare değil ($16<20<25$); tam kare olmayan doğal sayının karekökü irrasyoneldir.
+4. $0{,}1\overline{6}=\frac{1}{6}$: rasyonel. || Devirli ondalıklar kesre çevrilebilir: $\frac{1}{6}=0{,}1666\ldots$
+cevap: Sırasıyla $\mathbb{Q}$, $\mathbb{N}$, $\mathbb{Q}'$, $\mathbb{Q}$. Kontrol: her birini kesir olarak yazmayı dene; yalnız $-\sqrt{20}$ yazılamaz.
 
 ::yanilgi m1 tip=kumeler-islem
 yanlis: $\sqrt{9}$ kök içinde olduğu için irrasyoneldir.
@@ -145,6 +165,14 @@ cozum: Kökü tam çıkmayan tek seçenek $\sqrt{12} = 2\sqrt{3}$'tür; irrasyon
 - Toplamanın etkisiz elemanı 0, çarpmanın etkisiz elemanı 1; çarpmanın yutan elemanı 0.
 - 0'ın çarpmaya göre tersi yoktur; $\frac{a}{0}$ tanımsızdır.
 
+::ornek baslik="İşlem önceliği: hangi işlem önce?"
+soru: $18-12:(2+4)\cdot3+2^3$ işleminin sonucu kaçtır?
+1. Parantez: $2+4=6$. || Parantez içi her şeyden önce biter.
+2. Üs: $2^3=8$. || Üs, çarpma ve bölmeden önce gelir.
+3. Bölme ve çarpma soldan sağa: $12:6=2$, sonra $2\cdot3=6$. || Aynı öncelikte olduklarından soldaki önce yapılır. $6\cdot3$ önce yapılsaydı $12:18$ gibi başka bir işlem çıkardı.
+4. Toplama ve çıkarma soldan sağa: $18-6+8=20$. || $6+8$ önce toplanırsa $18-14=4$ gibi yanlış bir sonuç bulunur.
+cevap: 20. Kontrol: işlemleri aynı sırayla yeniden yaz; her adımda yalnız bir işlem yap.
+
 @bolum s2 10 | Tek–çift: iki ihtimalle düşün
 ::fikir
 Bir tam sayı ya tektir ya çifttir. Toplamada **"aynılar çift"** verir (T+T = Ç, Ç+Ç = Ç); çarpımda **tek bir çift sayı** sonucu çift yapar. Bu iki cümle neredeyse bütün tek–çift sorularını çözer.
@@ -160,6 +188,18 @@ L1: Çift sayıyı "eşleşmiş" nesneler gibi düşün: 6 elma 3 çift yapar. T
 L2: $n \in \mathbb{Z}$ için çift sayılar $2n$, tek sayılar $2n + 1$ biçimindedir. $(2n+1) + (2m+1) = 2(n+m+1)$ olduğundan iki tek sayının toplamı çifttir. Çarpımın tek olması için **bütün** çarpanlar tek olmalıdır. Kuvvet almak tekliği/çiftliği değiştirmez: $a$ tek ise $a^5$ de tektir.
 L3: Koşul bir denklemse onu sadeleştir: $a \cdot b + a = a(b+1)$ tek ise hem $a$ hem $b+1$ tektir, yani $b$ çifttir. "Her zaman" sorularında öncülü çürütmek için **tek bir karşı örnek** yeter; "olabilir" sorularında ise **tek bir örnek** yeter. Bu, soruyu hesaplamadan çözmenin yoludur.
 
+::sorgula s2-dans baslik="Dans gösterisinde eşleşme"
+durum: İki sınıf bir dans gösterisi için ikili eşleşiyor. Birinci sınıfta 27, ikinci sınıfta 15 öğrenci var; her sınıfta bir öğrenci eşsiz kalıyor.
+soru: İki sınıf birleşip yeniden eşleşirse kaç öğrenci eşsiz kalır?
+A) 2 öğrenci || Her sınıftan açıkta kalan iki öğrenci artık birbiriyle eşleşebilir.
+B) 1 öğrenci || Toplam 42 çifttir; açıkta kalan olmaz.
++C) 0 öğrenci || $27+15=42=2\cdot21$; herkes eşleşir.
+kontrol: (27+15)-2*21
+neden: Tek sayı “çiftler + 1 açıkta” demektir: $27=2\cdot13+1$, $15=2\cdot7+1$. Birleşince açıktaki iki kişi yeni bir çift olur: $42=2\cdot21$. Tek + tek = çift kuralının nedeni budur.
+sinav: “$a$ ve $b$ tek ise $a+b$ …” sorularında bu eşleşme resmi işe yarar. Çarpımda ise tek bir çift çarpan sonucu çift yapar.
+dusun: Üç sınıfın üçünde de tek sayıda öğrenci olsaydı, hepsi birleşince kaç kişi eşsiz kalırdı?
+yanit: 1 kişi. İlk iki açıkta kalan eşleşir, üçüncüsü yalnız kalır: tek + tek + tek = tek. Örnek: $27+15+9=51$.
+
 ::yanilgi m2 tip=tek-cift
 yanlis: Tek × çift = tek, çünkü "teklerden biri var".
 neden: Çarpımda tek bir çift çarpan bile sonucu çift yapar: $3 \cdot 4 = 12$.
@@ -171,6 +211,13 @@ soru: $a$ ve $b$ tam sayılar ve $a \cdot b + 3b$ tek sayıdır. Buna göre $a$ 
 2. Çarpım tek olduğuna göre iki çarpan da tektir: $b$ tek ve $a + 3$ tek. || Çarpımda tek çift çarpan sonucu çift yapardı.
 3. $a + 3$ tek ise $a$ çifttir (çift + tek = tek). || 3 tek; toplamın tek olması için $a$ çift olmalı.
 cevap: $b$ tek, $a$ çifttir.
+
+::ornek baslik="Ardışık iki tam sayının çarpımı"
+soru: $n$ bir tam sayı olmak üzere $n(n+1)$ her zaman çift midir? $n^2+n+1$ için ne söylenebilir?
+1. $n$ ile $n+1$ ardışıktır; biri tek, diğeri çifttir. || Tam sayılar birer artarken tek ve çift sırayla gelir.
+2. Çarpımda bir çift çarpan yeter: $n(n+1)$ her zaman çifttir. || Örnek: $3\cdot4=12$, $(-2)\cdot(-1)=2$, $0\cdot1=0$.
+3. $n^2+n+1=n(n+1)+1$, yani çift + 1: her zaman tek. || Yeni ifadeyi kararını bildiğimiz parçaya benzettik.
+cevap: $n(n+1)$ her zaman çift, $n^2+n+1$ her zaman tek. Kontrol: $n=4$ için $20$ ve $21$.
 
 ::strateji tip=tek-cift baslik="Sayı ver, öncülleri dene"
 ipucu: "hangileri her zaman tektir/çifttir" ve öncüllü (I, II, III) sorular
@@ -196,6 +243,18 @@ L1: Negatif bir sayıyı kendisiyle iki kez çarparsan eksiler birbirini götür
 L2: Çarpma ve bölmede işaretler aynıysa sonuç pozitif, farklıysa negatiftir. Toplamada ters işaretli iki sayı için sonucun işareti, mutlak değerce büyük olanın işaretidir. $a^2 b^5 < 0$ gibi bir koşulda $a^2 > 0$ olduğundan $b^5 < 0$, yani $b < 0$ bulunur.
 L3: İşaretleri bulduktan sonra soruyu sembolle hesapla: $a > 0$, $b < 0$ için $\frac{a - b}{a \cdot b}$ ifadesinde pay $(+) - (-) = (+)$, payda $(+)(-) = (-)$; sonuç negatiftir. Toplama veya çıkarmada işaret her zaman belli olmayabilir: $a + b$'nin işareti için büyüklük bilgisi gerekir. Sınavda "kesinlikle" sorusunda bu belirsiz durumu fark etmek kritik.
 
+::sorgula s3-dalgic baslik="Dalgıç 4 dakika önce neredeydi?"
+durum: Bir dalgıç dakikada 3 metre aşağı iniyor; yani yüksekliği dakikada $-3$ metre değişiyor. Şu an deniz yüzeyinin 15 metre altında.
+soru: 4 dakika önce şimdikine göre neredeydi?
+A) 12 metre daha aşağıda || İnen biri geçmişte daha yukarıdaydı; hız da geçmişe giden süre de negatif.
++B) 12 metre daha yukarıda || $(-3)\cdot(-4)=+12$: geçmişe giden süre negatif, değişim pozitif.
+C) Aynı yerde || Sabit hızla hareket ettiği için 4 dakika önce başka bir derinlikteydi.
+kontrol: (-3)*(-4)
+neden: Yükseklikteki değişim $=$ hız $\times$ geçen süre. Geçmişe gittiğimiz için süre $-4$ dakika: $(-3)\cdot(-4)=+12$. Dalgıç 4 dakika önce 12 metre daha yukarıdaydı, yani yüzeyin 3 metre altında. Negatif × negatif = pozitif kuralı “ters yön × geri giden zaman” durumunu anlatır.
+sinav: İşaret sorularında $(-)\cdot(-)=(+)$ ve $\frac{(-)}{(-)}=(+)$ kurallarını kullanırsın. Sonuç bir konum değişimiyse işaretini yönle birlikte yorumla.
+dusun: Dalgıç dakikada 3 metre yükseliyor olsaydı ($+3$), 4 dakika önce neredeydi?
+yanit: $(+3)\cdot(-4)=-12$: 12 metre daha aşağıdaydı. Pozitif × negatif = negatif.
+
 ::ornek baslik="MEBİ örneği: kuvvetlerden işaret bulma"
 soru: $a$ ve $b$ sıfırdan farklı gerçek sayılar, $a^2 \cdot b^5 < 0$ ve $a^7 \cdot b^8 > 0$ olduğuna göre $a$ ve $b$'nin işaretleri nedir?
 1. $a^2 > 0$ olduğundan $b^5 < 0$; tek kuvvet tabanın işaretini taşır, yani $b < 0$. || Çift kuvvet pozitiftir, eşitsizliğin işaretine katkı vermez.
@@ -204,10 +263,17 @@ cevap: $a > 0$ ve $b < 0$.
 
 ::tamamla baslik="İşaretten ifadeye"
 soru: $x \cdot y < 0$ ve $y \cdot z > 0$, $x > 0$ olduğuna göre $\frac{x \cdot z}{y}$ ifadesinin işareti nedir?
-1. $x > 0$ ve $x y < 0$ olduğundan $y < 0$.
+1. $x > 0$ ve $x y < 0$ olduğundan $y < 0$. || Pozitif bir sayıyla çarpım negatifse diğer çarpan negatiftir.
 ?2. $y z > 0$ ve $y < 0$ olduğundan $z < 0$. || Aynı işaretliler çarpılınca pozitif olur.
-?3. $\frac{x z}{y} = \frac{(+)(-)}{(-)} = \frac{(-)}{(-)}$, yani pozitif.
+?3. $\frac{x z}{y} = \frac{(+)(-)}{(-)} = \frac{(-)}{(-)}$, yani pozitif. || Önce payın işaretini bul; aynı işaretlilerin bölümü pozitiftir.
 cevap: Pozitif.
+
+::ornek baslik="Toplamın işareti neden belirsiz kalabilir?"
+soru: $a<0<b$ olduğuna göre $a\cdot b$, $\frac{b}{a}$ ve $a+b$ ifadelerinin işaretleri kesin olarak bilinebilir mi?
+1. $a\cdot b$: negatif × pozitif = negatif; kesin. || Çarpımda yalnız işaretler belirleyicidir.
+2. $\frac{b}{a}$: pozitif ÷ negatif = negatif; kesin. || Bölmede işaret kuralı çarpmayla aynıdır.
+3. $a+b$: $a=-5$, $b=2$ ise $-3$; $a=-1$, $b=4$ ise $3$. İşaret belli değil. || Toplamada büyüklük de önemlidir; iki örnek farklı işaret verince “kesinlikle” denemez.
+cevap: $a\cdot b<0$ ve $\frac{b}{a}<0$ kesin; $a+b$'nin işareti bilinemez. Kontrol: üç ifadeyi iki örnek çiftle hesapla.
 
 ::yanilgi m3 tip=isaret
 yanlis: $a < b$ ise $a^2 < b^2$ olur.
@@ -239,6 +305,25 @@ L1: Terim sayısını bulmak için "kaç adım attım" diye düşün: 4'ten 61'e
 L2: Ortak farkı $r$ olan ardışık sayılarda terim sayısı $n = \frac{\text{son} - \text{ilk}}{r} + 1$, toplam $T = \frac{\text{ilk} + \text{son}}{2} \cdot n$'dir. Özel toplamlar: $1 + 3 + 5 + \ldots + (2n - 1) = n^2$ ve $2 + 4 + \ldots + 2n = n(n+1)$.
 L3: Ardışık sayıları bilinmeyenle kurarken **ortanca terimi** $x$ seçmek hesabı kısaltır: üç ardışık çift sayı $x - 2, x, x + 2$; toplamları $3x$. Toplamı verilen tek sayıda terimin ortancası $\frac{T}{n}$'dir. Çift sayıda terimde ortadaki iki terimin ortalaması yine ortalamaya eşittir.
 
+::sorgula s4-sayfa baslik="Kaç sayfa okudun?"
+durum: Bir kitabı 15. sayfadan başlayıp 42. sayfanın sonuna kadar okudun.
+soru: Toplam kaç sayfa okudun?
+A) 27 sayfa || $42-15=27$ sayfalar arasındaki adım sayısıdır; başladığın 15. sayfayı saymadın.
++B) 28 sayfa || $42-15+1=28$: başlangıç sayfası da okundu.
+C) 26 sayfa || Hem başlangıç hem bitiş sayfasını dışarıda bıraktın.
+kontrol: 42-15+1
+neden: 15'ten 42'ye birer birer giderken 27 adım atarsın. Ama okunan sayfalar adımlar değil, durduğun yerlerdir; 15. sayfa da okundu. Terim sayısı $\frac{42-15}{1}+1=28$.
+sinav: Ardışık sayılarda terim sayısı $\frac{\text{son}-\text{ilk}}{\text{fark}}+1$; “+1” başlangıç terimidir.
+dusun: Yalnız çift numaralı sayfalarda birer resim varsa 15. ile 42. sayfa arasında kaç resim gördün?
+yanit: Çift sayfalar 16, 18, …, 42: $\frac{42-16}{2}+1=14$ resim.
+
+::ornek baslik="Bir aralıktaki katların toplamı"
+soru: 20'den 80'e kadar (ikisi dahil) 4'ün katlarının toplamı kaçtır?
+1. Terimler $20, 24, \ldots, 80$; ortak fark 4. || İlk ve son terim 4'ün katı; dizi bunlarla başlar ve biter.
+2. Terim sayısı $\frac{80-20}{4}+1=16$. || 15 adım atılır; başlangıç terimi de sayılınca 16.
+3. Toplam $\frac{20+80}{2}\cdot16=50\cdot16=800$. || Ortalama terim 50; 16 terimin toplamı ortalama × terim sayısıdır.
+cevap: 800. Kontrol: $4\cdot(5+6+\ldots+20)=4\cdot200=800$.
+
 ::bosluk b1 cevap=5050 tip=ardisik zorluk=1
 $1 + 2 + 3 + \ldots + 100$ toplamı kaçtır?
 cozum: $\frac{100 \cdot 101}{2} = 5050$.
@@ -246,6 +331,13 @@ cozum: $\frac{100 \cdot 101}{2} = 5050$.
 ::bosluk b2 cevap=169 tip=ardisik zorluk=1
 $1 + 3 + 5 + \ldots + 25$ toplamı kaçtır?
 cozum: Terim sayısı $\frac{25 - 1}{2} + 1 = 13$; ilk $n$ tek sayının toplamı $n^2 = 169$.
+
+::ornek baslik="Ortanca terimi bilinmeyen seç"
+soru: Ardışık üç çift sayının toplamı 78'dir. En küçüğü kaçtır?
+1. Ortanca terimi $x$ seç: $x-2$, $x$, $x+2$. || Simetrik seçimde $-2$ ve $+2$ toplamda birbirini götürür.
+2. Toplam $3x=78$, $x=26$. || Ardışık sayılarda toplam = ortanca × terim sayısı.
+3. En küçük $26-2=24$. || Ardışık çift sayılar ikişer ikişer artar.
+cevap: 24. Kontrol: $24+26+28=78$ ve üçü de çift.
 
 ::yanilgi m4 tip=ardisik
 yanlis: $10$'dan $30$'a kadar olan çift sayılar $\frac{30 - 10}{2} = 10$ tanedir.
@@ -271,12 +363,31 @@ L1: Bir kesrin değerini büyütmek istiyorsan payı büyüt, paydayı küçült
 L2: Önce **etkisi en büyük** değişkene karar ver (katsayısı büyük olan ya da çarpımda olan). Ona en uç değeri ver, kalan değişkenlere koşullara uygun en iyi değerleri sırayla dağıt. "Farklı rakamlar" koşulunda aynı rakamı iki kez kullanamazsın; "pozitif tam sayı" koşulunda 0 kullanılamaz.
 L3: Negatif sayılar işin içine girince kural tersine dönebilir: $x \cdot y$ çarpımını büyütmek için iki negatif sayı da seçilebilir ($(-9)(-8) = 72$). Ayrıca kısıt bir eşitlikse ($x + y = 12$ gibi) bir değişkeni diğerinin cinsinden yaz; ifade tek değişkene iner ve uç değeri bulmak kolaylaşır.
 
+::sorgula s5-bahce baslik="20 metre çitle en büyük bahçe"
+durum: 20 metrelik bir çitle dikdörtgen bir bahçe çevireceksin. Kenar uzunlukları tam metre olacak.
+soru: Bahçenin alanı en çok kaç metrekare olur?
+A) 9 m² (9 m ve 1 m) || Çok uzun ve ince bir bahçe; kenarlar birbirinden uzaklaştıkça alan küçülür.
+B) 24 m² (6 m ve 4 m) || Kenarlar eşit olabilir; daha yakın bir seçim var.
++C) 25 m² (5 m ve 5 m) || İki komşu kenarın toplamı 10; birbirine en yakın seçim 5 ve 5.
+kontrol: 5*5
+neden: Çevre 20 ise iki komşu kenarın toplamı 10'dur. Toplam sabitken çarpım, sayılar birbirine yaklaştıkça büyür: $1\cdot9=9$, $2\cdot8=16$, $3\cdot7=21$, $4\cdot6=24$, $5\cdot5=25$.
+sinav: “$x+y=10$ ise $x\cdot y$ en çok kaç?” sorusu aynı hesaptır. Soru “farklı” derse eşit seçim yasaklanır ve cevap 24 olur.
+dusun: Kenarların birbirinden farklı olması istenseydi en büyük alan ne olurdu?
+yanit: $6\cdot4=24$ m². 5 ve 5 yasak olunca birbirine en yakın farklı tam sayılar 6 ve 4'tür.
+
 ::ornek baslik="Farklı pozitif tam sayılar"
 soru: $a, b, c$ birbirinden farklı pozitif tam sayılar ve $a + b + c = 12$ olduğuna göre $a$ en çok kaç olabilir?
 1. $a$'yı büyütmek için $b$ ve $c$'yi en küçük yap. || Toplam sabit; diğerlerinden alınan her birim $a$'ya kalır.
 2. Farklı pozitif tam sayıların en küçükleri $1$ ve $2$'dir. || 0 pozitif değil; aynı sayı iki kez seçilemez.
 3. $a = 12 - 1 - 2 = 9$. || $9, 1, 2$ birbirinden farklı; koşullar sağlanıyor.
 cevap: $a$ en çok $9$ olur.
+
+::ornek baslik="Katsayısı büyük olana önce karar ver"
+soru: $a$, $b$, $c$ birbirinden farklı rakamlardır. $2a+3b-c$ ifadesinin alabileceği en büyük değer kaçtır?
+1. $c$ çıkarıldığı için en küçük rakamı al: $c=0$. || Az çıkarırsan çok kalır.
+2. Katsayısı büyük olan $b$'ye en büyük rakamı ver: $b=9$. || $b$'nin her birimi 3, $a$'nın her birimi 2 katkı verir.
+3. Kalan en büyük rakam $a=8$: $2\cdot8+3\cdot9-0=43$. || Rakamlar farklı olmalı; 9 kullanıldı.
+cevap: 43. Kontrol: $a=9$, $b=8$ seçilseydi $18+24=42<43$ olurdu.
 
 ::strateji tip=en-buyuk-kucuk baslik="Uç değer kontrol listesi"
 ipucu: "alabileceği en büyük / en küçük değer"

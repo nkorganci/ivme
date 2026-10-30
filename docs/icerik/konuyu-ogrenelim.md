@@ -51,7 +51,11 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
    penceresi dar ekranda yatay kaydırılabilir; sayfanın kendisi taşmamalı.
 5. `::duzey` L1/L2/L3, `::sorgula`, `::ornek`, `::tamamla`, `::strateji`, `::yanilgi` ve kontrol
    sorularını ilgili bölümde kullan. Yeni standartta **her bölümde** bir `::duzey` (üç düzey de dolu)
-   ve en az bir `::sorgula` bulunur; aksi hâlde üstteki “Anlatımı seç” o bölümde hiçbir şeyi değiştirmez. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
+   ve en az bir `::sorgula` bulunur; aksi hâlde üstteki “Anlatımı seç” o bölümde hiçbir şeyi değiştirmez.
+   `::sorgula` alanları: `durum:`, `soru:`, `A)`–`E)` seçenekleri (`+` doğru, `||` gerekçe), `neden:`,
+   `sinav:`, isteğe bağlı `dusun:`/`yanit:` ve sayısal cevapta `kontrol:` (doğru seçeneğin ilk sayısını vermeli).
+   Dönüştürülen ders `testler/konu-ogrenme-bicim.test.mjs` içindeki `YENI_BICIM` listesine eklenir; test her
+   bölümde düzey, sorgulama, en az iki gerekçeli çözümlü örnek ve her adımda gerekçe arar. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
    `?1.` biçimindeki adım öğrencinin önce düşünüp yazacağı gizli adımdır.
 6. Gerçek soruyu kaynak görüntüsünden incele. Çözümü yazılmış örneği `::cikmis KOD tip=...`
    ile doğru bölümde bağla; `WORKED_EXAMS` kayıtları banka üretiminde elle incelenmiş
@@ -99,7 +103,7 @@ kapsamını genişletirken her yeni sorunun kodu, konu, çözüm gerekçesi ve k
 ## Tekrarlanabilir denetimler
 
 ```powershell
-node --test testler/konu-ogrenme-icerik.test.mjs testler/konu-ogrenme-motor.test.mjs testler/konu-ogrenme-kesif.test.mjs
+node --test testler/konu-ogrenme-icerik.test.mjs testler/konu-ogrenme-motor.test.mjs testler/konu-ogrenme-kesif.test.mjs testler/konu-ogrenme-bicim.test.mjs
 ```
 
 İçerik/sayısal kontroller, keşif modellerinin bütün kontrol kombinasyonları, bilinen gerçek

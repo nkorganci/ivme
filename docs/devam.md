@@ -12,6 +12,9 @@ giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
 - Diğer 32 dersin her bölümünde `::duzey` zaten var; eksik olan her bölümde `::sorgula`,
   bölüm başına daha fazla gerekçeli örnek, koşullu kısa yol ve gerekiyorsa bölüm keşfi.
   Sıra: `temel-kavramlar` → `sayi-basamaklari` → `ebob-ekok` → `rasyonel-sayilar` → … (`sira:` alanı).
+- Dönüştürülenler `testler/konu-ogrenme-bicim.test.mjs` `YENI_BICIM` listesindedir; listede olmayan
+  sıradaki ders bir sonraki iştir. Yeni bölüm keşfi/modeli ve görseli okunmuş yeni gerçek soru bu
+  turda eklenmez; her bölüme sorgulama, ikinci gerekçeli örnek ve eksik adım gerekçeleri eklenir.
 
 ## Tamamlanan kapsam
 
