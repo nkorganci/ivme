@@ -5,5 +5,10 @@ import { diagrams as ebobEkok } from './ebob-ekok-cizim.jsx';
 import { diagrams as rasyonelSayilar } from './rasyonel-sayilar-cizim.jsx';
 import { diagrams as denklemler } from './birinci-derece-denklemler-cizim.jsx';
 import { diagrams as esitsizlikler } from './esitsizlikler-cizim.jsx';
+import { diagrams as mutlakDeger } from './mutlak-deger-cizim.jsx';
+import { diagrams as usluIfadeler } from './uslu-ifadeler-cizim.jsx';
+import { diagrams as kokluIfadeler } from './koklu-ifadeler-cizim.jsx';
+import { diagrams as oranOranti } from './oran-oranti-cizim.jsx';
+import { diagrams as ikinciDerece } from './ikinci-derece-denklemler-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece };

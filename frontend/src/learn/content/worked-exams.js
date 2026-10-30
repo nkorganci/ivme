@@ -1,6 +1,8 @@
 // Özgün soru kırpımları okunarak yazılan çözümler. Öğretmen onayı iddiası içermez.
 // Kaynak kodları değişmez; soru metni yeniden yazılmaz. Kanıt: docs/icerik/konuyu-ogrenelim.md.
+import { MATH_CONTINUATION_EXAMS } from './worked-math-continuation.js';
 export const WORKED_EXAMS = {
+  ...MATH_CONTINUATION_EXAMS,
   'AYT_Sayisal-0014': {
     conceptId: 'bolme-bolunebilme', archetype: 'bolme-algoritmasi', answer: 'D',
     title: '2020 AYT · basamak açılımını bölme denklemine yerleştir',

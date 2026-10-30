@@ -48,8 +48,10 @@ denklem 1 1-3
 esitsizlik 2 1-3
 uzaklik-minimum 1 1-3
 
-@oturum Uzaklık, açma ve sadeleştirme | s1 s2
-@oturum Denklemler, eşitsizlikler, en küçük değer | s3 s4 s5
+@oturum Uzaklık ve kritik noktalar | s1 s1b
+@oturum Açma ve denklemler | s2 s3
+@oturum Kök kontrolü ve eşitsizlikler | s3b s4
+@oturum Aralıktan mutlak değere ve en küçük değer | s4b s5
 
 @ontest
 ::soru o1 tip=tanim-acma zorluk=1
@@ -138,6 +140,74 @@ D) $-2b$ || Hesabı yeniden yap.
 E) $0$ || $a$'lı terimler birbirini götürmez.
 cozum: $a - b < 0$ olduğundan $|a - b| = b - a$; $|a| = -a$; $|b| = b$. Toplam $b - a - a - b = -2a$.
 
+::ornek baslik="Aynı mesafe, farklı yön"
+soru: $|x-6|=9$ ise $x$ hangi iki noktada olabilir?
+1. 6 noktasından sağa 9 birim git: $x=15$. || Uzaklık sağ yönde pozitif farktır.
+2. Sola 9 birim git: $x=-3$. || Konum negatif olabilir; uzaklık yine pozitiftir.
+3. $|15-6|=|-3-6|=9$. || İki adayı da ilk koşulla doğruladık.
+cevap: $-3$ ve $15$; orta noktaları 6'dır.
+
+::strateji tip=tanim-acma baslik="Konum ile uzaklığı ayır."
+ipucu: Konum ile uzaklığı ayır.
+1. Önce referans noktasını işaretle, sonra her iki yöndeki mesafeyi düşün.
+2. Koşul: Bir doğru üzerindeki mesafe mutlak farktır; sayıların pozitif olması gerekmez.
+3. Dikkat: $|x-a|$ içindeki $a$ ile uzaklığı birbirine karıştırma.
+
+@bolum s1b 16 | Kritik noktalar ve parçalı anlatım
+::kesfet mutlak-parcali
+
+::duzey
+L1: $|x+2|$ içindeki ifade $x=-2$'de sıfır olur. Bu noktanın solunda negatif, sağında pozitiftir. $|x-4|$ ise 4'te yön değiştirir. Önce bu iki noktayı sırala; hangi bölgede yürüdüğünü bilmeden işaret değiştirme.
+L2: $|x+2|+|x-4|$ solda $-2x+2$, arada 6, sağda $2x-2$ olur. Her parça bulunduğu bölgede geçerlidir. Bir denklemden çıkan sayı o bölgeye düşmüyorsa o parçanın çözümü değildir.
+L3: Bu toplamın grafiği süreklidir; parçalar sınırda aynı değeri verir. Minimum 6 yalnız tek bir noktada değil, $[-2,4]$ aralığının tamamında alınır. Hedef 6'dan büyükse iki, küçükse sıfır kök vardır.
+
+::ornek baslik="Üç bölgede aynı ifadeyi aç"
+soru: $f(x)=|x+1|+|x-5|$ fonksiyonunu bölgelere ayır.
+1. Kritik noktalar $-1$ ve 5. Solda iki iç de negatif: $f(x)=-x-1+5-x=4-2x$. || Mutlak değerin içi negatifse ters işaretlisi alınır.
+2. $-1\leq x\leq5$ iken $f(x)=x+1+5-x=6$. || Bir mesafe artarken diğeri aynı miktar azalır.
+3. $x>5$ iken $f(x)=x+1+x-5=2x-4$. || İki iç de pozitiftir; sınırda iki formül de 6 verir.
+cevap: Solda $4-2x$, arada 6, sağda $2x-4$.
+
+::ornek baslik="İşaretli farkın sınırları"
+soru: $g(x)=|x+2|-|x-4|$ ifadesinin alabileceği değerler nedir?
+1. $x\leq-2$ iken $g(x)=-x-2-(4-x)=-6$. || Çıkarmada ikinci parantezin her terimi işaret değiştirir.
+2. $-2\leq x\leq4$ iken $g(x)=x+2-(4-x)=2x-2$. || Doğrusal parça −6'dan 6'ya çıkar.
+3. $x\geq4$ iken $g(x)=x+2-(x-4)=6$. || Sağ dış bölgede uzaklıkların farkı sabittir.
+cevap: $[-6,6]$; örneğin $x=1$ için fark 0.
+
+::ornek baslik="Hedef minimuma eşitse"
+soru: $|x+4|+|x-2|=6$ denkleminin çözüm kümesi nedir?
+1. Uçlar $-4$ ve 2; aralarındaki uzaklık 6. || İki mesafenin toplamı bundan küçük olamaz.
+2. $-4\leq x\leq2$ iken toplam $(x+4)+(2-x)=6$. || Aradaki bütün noktalar hedefi sağlar.
+3. Aralığın dışında toplam 6'dan büyüktür; örneğin $x=3$ için $7+1=8$. || Dışarı bir adım iki mesafeyi birden büyütür.
+cevap: $[-4,2]$; yalnız iki uç değil bütün aralık.
+
+::sorgula s1b-kargo baslik="İki depoya toplam yol"
+durum: Düz bir yolun 2. ve 8. kilometrelerinde iki depo bulunuyor. Kurye yol üzerinde bir noktadan iki depoya olan mesafelerini topluyor.
+soru: Toplam mesafesi 6 km olan başlangıç noktaları hangileridir?
++A) 2 ile 8 arasındaki bütün noktalar || İki deponun arasındayken mesafeler toplamı depoların arasıdır.
+B) Yalnız 5. kilometre || Orta nokta uygundur ama diğer ara noktalar da uygundur.
+C) Yalnız 2. ve 8. kilometre || Örneğin 3. kilometrede de $1+5=6$.
+neden: $|x-2|+|x-8|\geq6$ ve eşitlik iki depo arasında alınır. Dışarı çıkınca iki mesafe de artar.
+sinav: Mutlak değer toplamında hedef minimumsa çözüm bir aralık olabilir; otomatik olarak iki kök arama.
+dusun: Toplam 10 km olursa başlangıç noktaları neresi olur?
+yanit: Fazlalık 4, dışarı gidilecek mesafe 2: 0. veya 10. kilometre. İkisinde de mesafeler toplamı 10.
+
+::yanilgi m1b tip=uzaklik-minimum
+yanlis: İki mutlak değer içeren her denklemin iki çözümü vardır.
+neden: Hedef minimuma eşitse bütün aralık, minimumdan küçükse boş küme olabilir.
+dogru: Önce uzaklıkların en küçük toplamını bul; sonra hedefi onunla karşılaştır.
+
+::soru c1b tip=uzaklik-minimum zorluk=2
+$|x-1|+|x-7|=6$ denklemini sağlayan kaç tam sayı vardır?
+A) 2 || Yalnız uçları saydın; aradaki noktalar da uygundur.
+B) 6 || İki kapalı uç arasındaki sayımda bir eklenir.
++C) 7 || 1,2,3,4,5,6,7 noktalarının hepsi uygundur.
+kontrol: 7-1+1
+cozum: En küçük toplam $7-1=6$; $1\leq x\leq7$ aralığının tamamı sağlar. Yedi tam sayı vardır.
+
+::cikmis TYT-0608 tip=uzaklik-minimum
+
 @bolum s2 8 | Özellikler ve kökle ilişkisi
 ::fikir
 $|x \cdot y| = |x| \cdot |y|$, $\left|\frac{x}{y}\right| = \frac{|x|}{|y|}$ ve en önemlisi **$\sqrt{x^2} = |x|$**. Toplamda ise yalnız $|x + y| \leq |x| + |y|$ doğrudur.
@@ -198,6 +268,19 @@ C) $2x + 1$ || İkisinin de işaretini değiştirmen gerekirdi.
 E) $-2x + 1$ || $|x + 1| = -x - 1$; sabit $-1$ olmalı.
 cozum: $x < 0$ olduğundan $\sqrt{x^2} = |x| = -x$. $x + 1 < 0$ olduğundan $|x + 1| = -x - 1$. Toplam $-2x - 1$.
 
+::ornek baslik="Çarpanın mutlak değeri"
+soru: $x<2$ iken $\sqrt{9(x-2)^2}$ ifadesini sadeleştir.
+1. $\sqrt{9(x-2)^2}=3|x-2|$. || Karekök kareyi işareti kaybederek geri alır; sonuç negatif olamaz.
+2. $x<2$ olduğundan $|x-2|=2-x$. || İç negatif; ters işaretlisini yazdık.
+3. Sonuç $3(2-x)=6-3x$. || Çarpan dağılır; $x=0$ için iki ifade de 6.
+cevap: $6-3x$; $3x-6$ bu aralıkta negatif olurdu.
+
+::strateji tip=tanim-acma baslik="Kareden sonra gelen kökü uzaklık olarak oku."
+ipucu: Kareden sonra gelen kökü uzaklık olarak oku.
+1. $\sqrt{A^2}=|A|$ yaz, sonra verilen aralıktan A'nın işaretini belirle.
+2. Koşul: Gerçek A için geçerlidir; $\sqrt{A}$ ile $\sqrt{A^2}$ farklı tanım koşullarına sahiptir.
+3. Dikkat: İçinde kare var diye mutlak değeri atlamak negatif sonuç üretebilir.
+
 @bolum s3 10 | Mutlak değerli denklemler
 ::fikir
 $|A| = c$ ve $c \geq 0$ ise **iki ihtimal** vardır: $A = c$ veya $A = -c$. $c < 0$ ise **çözüm yoktur**. Değişken dışarıda da varsa bulduğun kökleri **mutlaka dene**.
@@ -254,7 +337,88 @@ E) $4$ || $y$ negatiftir.
 kontrol: 2*(-2)
 cozum: İki negatif olmayan sayının toplamı 0 ise ikisi de 0'dır: $3x - 6 = 0$ ($x = 2$), $y + 2 = 0$ ($y = -2$). $x \cdot y = -4$.
 
+::ornek baslik="Sıfır hedefinde iki kök birleşir"
+soru: $|5x-15|=0$ denkleminin kaç farklı gerçek kökü vardır?
+1. Uzaklık sıfırsa iç sıfır olmalı: $5x-15=0$. || Negatif olmayan bir sayı ancak kendisi sıfırken 0'a eşittir.
+2. $5x=15$ ve $x=3$. || İki tarafa aynı işlemi yaptık.
+3. $5x-15=+0$ ve $5x-15=-0$ aynı denklemdir. || İki dal yazmak burada iki farklı kök üretmez.
+cevap: Bir farklı kök: 3. Sağlama $|15-15|=0$.
+
+::strateji tip=denklem baslik="Önce sağ tarafın işaretini belirle."
+ipucu: Önce sağ tarafın işaretini belirle.
+1. Sabit hedef negatifse dur; sıfırsa içi sıfırla; pozitifse iki dalı çöz.
+2. Koşul: Dışarıda değişken varsa her adayı ilk denklemde doğrula.
+3. Dikkat: İki dal aynı kökü verirse bu kökü bir kez say.
+
+@bolum s3b 16 | Dışarıda değişken ve iç içe mutlak değer
+::kesfet mutlak-denklem
+
+::duzey
+L1: $|x-4|=2x+1$ ifadesinde sol taraf bir uzaklıktır, sağ taraf da negatif olmamalıdır. Önce iki yönü ayrı dene; bulduğun sayıyı en baştaki eşitliğe yaz. Eşitlik çıkmıyorsa sayı çözüm değildir.
+L2: İç içe mutlak değerde önce en dıştaki uzaklığı çöz. $||x|-3|=2$ için $|x|-3=2$ veya $|x|-3=-2$ olur; buradan $|x|=5$ ve $|x|=1$ gelir. Her ikisi de negatif olmadığı için ikişer kök verir.
+L3: Kare almak eşitliğin işaret bilgisini siler: $A^2=B^2$ koşulu $A=B$ veya $A=-B$ demektir. Başlangıçta $|A|=B$ varsa ayrıca $B\geq0$ gerekir. Kontrol fazladan kökleri bu nedenle eler.
+
+::ornek baslik="Geçersiz kökü neden atıyoruz?"
+soru: $|x-2|=3x+2$ denklemini çöz.
+1. Sağ taraf negatif olamaz: $x\geq-2/3$. || Sol tarafın uzaklık olması bu koşulu zorunlu kılar.
+2. $x-2=3x+2$ için $x=-2$; $2-x=3x+2$ için $x=0$. || Mutlak değer için iki işaret ihtimalini çözdük.
+3. $x=-2$ sağ tarafı −4 yapar, elenir. $x=0$ için iki taraf 2. || Adaylar ilk denklemde sınanır.
+cevap: $\{0\}$.
+
+::ornek baslik="İç içe uzaklıkta dört kök"
+soru: $||x|-4|=1$ denkleminin köklerini bul.
+1. Dış mutlak değeri çöz: $|x|-4=1$ veya $|x|-4=-1$. || Dıştaki uzaklığın hedefi pozitif 1.
+2. $|x|=5$ veya $|x|=3$ elde edilir. || Her iki sağ taraf da negatif değil.
+3. $x=\pm5$ veya $x=\pm3$; ilk ifadede hepsi 1 verir. || Her iç denklem iki farklı kök üretir.
+cevap: $\{-5,-3,3,5\}$.
+
+::ornek baslik="Dallardan biri tamamen elenir"
+soru: $||x|-2|=5$ denkleminin kaç kökü vardır?
+1. $|x|-2=5$ veya $|x|-2=-5$. || Dıştaki mutlak değerin iki olasılığıdır.
+2. $|x|=7$ veya $|x|=-3$. İkinci denklemin çözümü yoktur. || Uzaklık negatif olamaz; ikinci dal yeni kök üretmez.
+3. İlk dal $x=-7$ ve $x=7$ verir. || Sağlama: $|7-2|=5$.
+cevap: İki kök vardır; dört dalı körlemesine sayamayız.
+
+::tamamla baslik="Dıştan içe çöz, farklı kökleri say"
+soru: $||x|-5|=5$ denkleminin kaç farklı kökü vardır?
+1. $|x|-5=5$ veya $|x|-5=-5$ yazılır. || Önce en dıştaki mutlak değeri çözeriz.
+?2. $|x|=10$ veya $|x|=0$ olur. || Her iki denklemin hedefini ayrı kontrol ederiz.
+?3. Kökler −10, 10 ve 0'dır; 0 bir kez sayılır. || Artı sıfır ve eksi sıfır farklı sayılar değildir.
+cevap: 3 farklı kök. Üçünde de dış uzaklık 5'tir.
+
+::sorgula s3b-sensor baslik="Sensörün sapmasının sapması"
+durum: Bir sensör konumun 0'a uzaklığını ölçüyor. Bu uzaklığın 4 metreden farkının büyüklüğü 1 metre.
+soru: Kaç farklı konum mümkündür?
+A) 2 || Ölçülen uzaklık yalnız 5 değil, 3 de olabilir.
+B) 3 || Hem 3 hem 5 uzaklığı iki yönde gerçekleşir; sıfır çıkmıyor.
++C) 4 || Konumlar −5, −3, 3, 5.
+kontrol: 4
+neden: $||x|-4|=1$ önce $|x|=3$ veya 5 verir. İkisi de pozitif; her biri iki farklı konuma karşılık gelir.
+sinav: İç içe mutlak değeri dıştan içe çöz; her dalın negatif olup olmadığını ve köklerin tekrarını kontrol et.
+dusun: Sapma 4 metre olsaydı kaç farklı konum olurdu?
+yanit: $|x|=8$ veya 0; konumlar −8,0,8: üç farklı kök.
+
+::yanilgi m3b tip=denklem
+yanlis: İç içe iki mutlak değer her zaman dört kök verir.
+neden: İç dallardan biri negatif olabilir veya sıfırda iki kök birleşebilir.
+dogru: Her dalı ayrı çöz, negatif hedefi ele, tekrarlanan kökü bir kez say.
+
+::soru c3b tip=denklem zorluk=3
+$||x|-3|=4$ denkleminin farklı gerçek köklerinin çarpımı kaçtır?
+A) $-1$ || Dış dalı çözdükten sonra içteki hedefleri kontrol et.
++B) $-49$ || Yalnız $|x|=7$ geçerlidir; kökler −7 ve 7.
+C) $49$ || İki kök ters işaretlidir.
+kontrol: (-7)*7
+cozum: $|x|-3=\pm4$; $|x|=7$ veya −1. İkinci olanaksızdır; çarpım $(-7)7=-49$.
+
+::strateji tip=denklem baslik="Kök adaylarını güvenli biçimde ele."
+ipucu: Kök adaylarını güvenli biçimde ele.
+1. Dış mutlak değeri çöz; her yeni uzaklık hedefini kontrol et; en son bütün adayları ilk ifadede dene.
+2. Koşul: Negatif hedefin çözümü yoktur; sıfır hedef tek kök verir.
+3. Dikkat: Kare alarak bulunan her adayı otomatik kabul etme.
+
 @bolum s4 9 | Mutlak değerli eşitsizlikler
+::kesfet mutlak-bant
 ::fikir
 **$|A| \leq c$ → arada:** $-c \leq A \leq c$. **$|A| \geq c$ → dışarıda:** $A \leq -c$ veya $A \geq c$. Uzaklık dili: "1'e uzaklığı 3'ten az olan sayılar" bir aralıktır.
 
@@ -315,7 +479,83 @@ E) 9 || Uçları dahil ettin.
 kontrol: 1-(-5)+1
 cozum: Sağlamayanlar $|x + 2| < 4$, yani $-4 < x + 2 < 4$: $-6 < x < 2$. Tam sayılar $-5, \ldots, 1$: 7 tane.
 
+::ornek baslik="Sıfır yarıçapta dört farklı sonuç"
+soru: $|x-3|<0$, $|x-3|\leq0$, $|x-3|>0$ ve $|x-3|\geq0$ koşullarını karşılaştır.
+1. Uzaklık negatif olamaz; $|x-3|<0$ için çözüm yok. || Mutlak değerin en küçük değeri sıfırdır.
+2. $|x-3|\leq0$ yalnız $x=3$; $|x-3|>0$ ise $x\ne3$. || Sıfır uzaklık ancak merkezde alınır.
+3. $|x-3|\geq0$ bütün gerçek sayılarda doğrudur. || Eşitliğe de izin verildiğinden hiçbir sayı dışlanmaz.
+cevap: Sırasıyla $\varnothing$, $\{3\}$, $\mathbb{R}\setminus\{3\}$ ve $\mathbb{R}$.
+
+::strateji tip=esitsizlik baslik="Uç noktaların hangi tarafta kaldığını izle."
+ipucu: Uç noktaların hangi tarafta kaldığını izle.
+1. Önce merkezi ve yarıçapı yaz; iç/dış bölgeyi seç; eşitlik varsa sınırları dahil et.
+2. Koşul: Yarıçap negatif veya sıfırsa genel kalıptan önce uzaklığın negatif olamayacağını kullan.
+3. Dikkat: ≤ koşulunun tümleyeni > olur; ≥ olmaz.
+
+::cikmis TYT-0618 tip=esitsizlik
+
+@bolum s4b 16 | Verilen aralığı mutlak değerle ifade et
+
+::duzey
+L1: Bir aralığın ortasını ve o ortadan uca mesafeyi bulursan, aralığı tek bir uzaklık koşuluyla anlatabilirsin. Örneğin 10 ile 18 arası, 14'e en çok 4 uzaklıktaki sayılardır.
+L2: $L\leq x\leq U$ koşulunun merkezi $(L+U)/2$, yarıçapı $(U-L)/2$ olur. Bu yüzden $|x-(L+U)/2|\leq(U-L)/2$. Önce gerçek konum aralığını kur; değişim miktarının aralığını konum diye kullanma.
+L3: Açık iki uç için <, kapalı iki uç için ≤ kullanılır. Tek ucu açık bir aralık, tek bir simetrik $|x-m|<r$ veya ≤ kalıbına sığmaz; ek koşul gerekir. Sözlü kısıtlar birden fazlaysa önce kesişim aralığını bul.
+
+::ornek baslik="Merkez ve yarıçap"
+soru: $8\leq x\leq20$ aralığını tek mutlak değerli eşitsizlikle yaz.
+1. Merkez $(8+20)/2=14$. || İki uca eşit uzaklıktaki noktadır.
+2. Yarıçap $(20-8)/2=6$. || Tüm genişlik 12; merkezden bir uca 6.
+3. $|x-14|\leq6$. || İki sınır da aralığa dahil.
+cevap: $|x-14|\leq6$; açınca $8\leq x\leq20$.
+
+::ornek baslik="Azalma miktarı ile kalan miktar"
+soru: 900 m uzunluğundaki bir makaradan 240 ile 320 m arasında kablo kullanılıyor. Kalan kabloyu mutlak değerle ifade et.
+1. Kalan uzunluk $x=900-u$ olsun; kullanılan $u$ 240 ile 320 arasında. || Kullanılanı toplamdan çıkarırız.
+2. En az kalan $900-320=580$, en çok kalan $900-240=660$. || Daha çok kullanmak daha az kalan demektir.
+3. Merkez 620, yarıçap 40: $|x-620|\leq40$. || Konum aralığını bulduktan sonra merkeze çevirdik.
+cevap: $|x-620|\leq40$; uçlar 580 ve 660.
+
+::ornek baslik="İki koşuldan ortak aralık"
+soru: $|x-5|<6$ ve $x>2$ koşullarını sağlayan aralığı tek mutlak değerle yaz.
+1. İlk koşul $-1<x<11$ verir. || Merkez 5, yarıçap 6.
+2. $x>2$ ile kesiştir: $2<x<11$. || İki koşul birlikte istendiği için ortak bölge alınır.
+3. Merkez $13/2$, yarıçap $9/2$: $|2x-13|<9$. || Kesirli kalıbın iki tarafını pozitif 2 ile çarptık.
+cevap: $|2x-13|<9$; iki uç da açık.
+
+::sorgula s4b-kutu baslik="Üretimde uzunluk toleransı"
+durum: Bir kutuya girecek parçaların uzunluğu 46 cm ile 54 cm arasında, iki sınır dahil.
+soru: Bu kuralı hangi koşul anlatır?
+A) $|x-46|\leq8$ || Bu koşul 38 ile 54 arasını kabul eder; sol sınır yanlış.
++B) $|x-50|\leq4$ || Orta nokta 50, merkezden her uca 4 cm.
+C) $|x-50|\leq8$ || 8 aralığın bütün genişliğidir; yarıçap 4 olmalı.
+neden: $46\leq x\leq54$ koşulunda merkez $(46+54)/2=50$, yarıçap $(54-46)/2=4$ olur.
+sinav: Aralıktan mutlak değere geçerken toplamı ve farkı ikiye böl; yalnız bir ucu merkez sanma.
+dusun: Sınırdaki parçalar kabul edilmese işaret ne olur?
+yanit: $|x-50|<4$; 46 ve 54 artık dışarıda kalır.
+
+::yanilgi m4b tip=esitsizlik
+yanlis: Aralığın genişliği 8 ise mutlak değerin sağ tarafı 8 olur.
+neden: Mutlak değer merkezden uca uzaklığı ölçer; aralığın tamamı iki yarıçaptır.
+dogru: Sağ tarafa genişliğin yarısını yaz; ortayı da iki ucun ortalamasıyla bul.
+
+::soru c4b tip=esitsizlik zorluk=2
+$|x-m|\leq r$ koşulunun çözüm aralığı $[-6,10]$ ise $m+r$ kaçtır?
+A) 2 || Bu yalnız merkez m'dir; r=8 eklenmeli.
++B) 10 || Merkez 2, yarıçap 8; toplam sağ uçtur.
+C) 16 || Bu aralığın tam genişliğidir.
+kontrol: (-6+10)/2+(10-(-6))/2
+cozum: $m=2$, $r=8$ ve $m+r=10$. Uçlar $m-r=-6$ ile $m+r=10$.
+
+::strateji tip=esitsizlik baslik="Sözel aralığı uzaklık diline çevir."
+ipucu: Sözel aralığı uzaklık diline çevir.
+1. Önce sorulan niceliğin alt ve üst sınırını bul; sonra merkez ve yarıçapı hesapla.
+2. Koşul: Tek bir simetrik kalıp iki ucu da açık veya iki ucu da kapalı aralık içindir.
+3. Dikkat: Kullanılan miktar ile kalan miktarın sınırları ters eşleşir.
+
+::cikmis TYT-0605 tip=esitsizlik
+
 @bolum s5 8 | Uzaklık toplamı ve en küçük değer
+::kesfet mutlak-ortanca
 ::fikir
 $|x - a| + |x - b|$, $x$'in $a$'ya ve $b$'ye uzaklıklarının toplamıdır. $x$, $a$ ile $b$ **arasındayken** bu toplam en küçüktür ve **$|a - b|$**'ye eşittir.
 
@@ -365,6 +605,19 @@ D) 7 || Kritik noktaları yeniden dene.
 E) 8 || $x = -1$ ya da $x = 5$'te 9 çıkar; ortanca daha küçük verir.
 kontrol: 0+3+3
 cozum: Kritik noktalar $-1, 2, 5$; en küçük değer ortanca $x = 2$'de: $|0| + |3| + |-3| = 6$. (Uçlarda 9 çıkar.)
+
+::ornek baslik="Ağırlık değişince en iyi nokta değişir"
+soru: $2|x-1|+|x-7|$ ifadesinin en küçük değeri nedir?
+1. $|x-1|+|x-7|\geq6$. || İki uç arasındaki mesafe toplam için alt sınırdır.
+2. İfade bu toplamın yanında bir $|x-1|$ daha içerir; dolayısıyla en az 6'dır. || Ek terim negatif olamaz.
+3. $x=1$ için $2\cdot0+6=6$. || Alt sınıra ulaşabildiğimiz için 6 gerçekten minimumdur.
+cevap: En küçük değer 6, yalnız $x=1$'de. Eşit ağırlıklı ortanca kuralını düşünmeden uygulama.
+
+::strateji tip=uzaklik-minimum baslik="Alt sınırı bul ve ulaşılabildiğini göster."
+ipucu: Alt sınırı bul ve ulaşılabildiğini göster.
+1. Uçları eşleştir, kalan uzaklığı sıfırlayacak noktayı dene; katsayı varsa ağırlık olarak düşün.
+2. Koşul: Sade ortanca kuralı eşit ağırlıklı uzaklık toplamları içindir.
+3. Dikkat: Yalnız alt sınır yazmak yetmez; uygun x ile eşitliği de göstermelisin.
 
 ::ozet
 - $|x|$ 0'a, $|a - b|$ iki sayı arasına uzaklıktır; içi negatifse işaret değiştirerek açılır.

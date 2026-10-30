@@ -55,8 +55,10 @@ ortak-paranteze 1 1-3
 siralama 1 2-3
 denklem 1 1-3
 
-@oturum Üs, kurallar ve ortak parantez | s1 s2 s3
-@oturum Sıralama ve üslü denklemler | s4 s5
+@oturum Üssün anlamı ve parantez | s1 s1b
+@oturum Kuvvet kuralları ve bilimsel gösterim | s2 s2b
+@oturum Ortak çarpan ve sıralama | s3 s4
+@oturum Tekrarlanan değişim ve denklemler | s4b s5
 
 @ontest
 ::soru o1 tip=kurallar zorluk=1
@@ -146,6 +148,77 @@ E) $11$ || İşaretleri tekrar kontrol et.
 kontrol: -8+4-1
 cozum: $(-2)^3 = -8$ (tek kuvvet), $(-2)^2 = 4$ (çift kuvvet), $2^0 = 1$. $-8 + 4 - 1 = -5$.
 
+::ornek baslik="Başlangıçta henüz çarpma yok"
+soru: Bir oyunda başlangıç puanı 7; her tur üç katına çıkıyor. Sıfır ve iki tur sonunda puanlar kaçtır?
+1. Sıfır turda işlem yapılmadı: puan 7. || Başlangıcı birinci tur diye saymıyoruz.
+2. İki turda $7\cdot3\cdot3=63$. || Her tamamlanan tur bir çarpan ekler.
+3. Model $7\cdot3^n$; n=0 için $3^0=1$ olmalı. || Sıfır üs başlangıcı korur.
+cevap: 7 ve 63. Sıfır üs, sıfırla çarpmak değildir.
+
+::cikmis TYT-0630 tip=negatif-sifir
+
+@bolum s1b 14 | Parantez, işaret ve kuvvetin kuvveti
+::kesfet uslu-parantez
+
+::duzey
+L1: $(-2)^4$ dört tane −2'nin çarpımıdır. $-2^4$ ise önce dört tane 2'yi çarpıp sonuca eksi koymaktır. Parantez, hangi işaretin tekrarlanan çarpana ait olduğunu söyler; sadece yazım süsü değildir.
+L2: $(a^m)^n=a^{mn}$ çünkü n tane grubun her birinde m tane a vardır. Buna karşılık $a^{(m^n)}$ içinde üstteki kuvvet önce hesaplanır; üslerin çarpımıyla aynı olmak zorunda değildir.
+L3: İki gösterimin bazı sayılarda eşit çıkması genel eşitlik kanıtı olmaz. Örneğin $2^{(2^2)}=(2^2)^2=16$ ama $2^{(1^3)}=2$ ve $(2^1)^3=8$. Bir tek karşı örnek genel iddiayı çürütür.
+
+::ornek baslik="Dışarıdaki eksiyi sıraya koy"
+soru: $(-4)^2+(-4^2)$ kaçtır?
+1. $(-4)^2=16$. || İki negatif çarpan pozitif verir.
+2. $-4^2=-(4^2)=-16$. || Üs dışarıdaki eksiden önce hesaplanır.
+3. $16+(-16)=0$. || Aynı büyüklükte ters işaretli iki sayı toplandı.
+cevap: 0; parantezler aynı işlemi belirtmiyor.
+
+::ornek baslik="Grubun grubu"
+soru: $(5^2)^3$ ifadesi 5'in kaçıncı kuvvetidir?
+1. $(5\cdot5)(5\cdot5)(5\cdot5)$ yaz. || Üç grubun her birinde iki çarpan var.
+2. Toplam $2+2+2=6$ çarpan sayılır. || Üsler bu yüzden çarpılır.
+3. $(5^2)^3=5^6$. || 5²⁺³ değil; o kural iki kuvvetin çarpımı içindir.
+cevap: Altıncı kuvvet; $25^3=15625=5^6$.
+
+::ornek baslik="Üstteki kuvvetin önceliği"
+soru: $3^{(2^3)}$ ile $(3^2)^3$ ifadelerini karşılaştır.
+1. İlkinde önce $2^3=8$; sonuç $3^8=6561$. || Üs kendi içinde bir işlemdir.
+2. İkincide üslerin çarpımı $2\cdot3=6$; sonuç $3^6=729$. || Kuvvetin kuvveti kuralı yalnız bu parantezde geçerli.
+3. İlk sayı ikincinin $3^2=9$ katıdır. || Aynı tabanlı bölmede üs farkı $8-6=2$.
+cevap: Eşit değiller; ilk ifade 9 katıdır.
+
+::tamamla baslik="Parantezi okuyarak karar ver"
+soru: $(-3)^2-(-3^2)$ kaçtır?
+1. Parantezli kuvvet $(-3)(-3)=9$. || Eksi tabanın parçasıdır.
+?2. Parantezsiz kuvvet $-(3\cdot3)=-9$. || Dışarıdaki eksi kuvvetten sonra uygulanır.
+?3. $9-(-9)=18$. || Negatifi çıkarmak pozitifini eklemektir.
+cevap: 18.
+
+::sorgula s1b-hesap baslik="Hesap makinesine nasıl girilmeli?"
+durum: Negatif 5'in karesini hesaplamak istiyorsun. İki öğrenci işlemi $(-5)^2$ ve $-5^2$ biçiminde yazıyor.
+soru: Matematiksel işlem önceliğine göre hangi sonuçlar çıkar?
+A) İkisi de 25 || İkinci ifadede eksi tabana dahil değil.
++B) Birincisi 25, ikincisi −25 || Parantez, negatifin de çarpan olarak tekrarlanmasını sağlar.
+C) İkisi de −25 || İki negatif sayının çarpımı pozitiftir.
+neden: $(-5)(-5)=25$; $-(5\cdot5)=-25$. Matematiksel gösterimde üs dışarıdaki eksiden önce gelir.
+sinav: Eksi işaretinin tabanda mı dışarıda mı olduğunu okumadan üs kuralı uygulama.
+dusun: Üs 3 olsaydı iki sonuç aynı olur muydu?
+yanit: Evet; $(-5)^3=-125$ ve $-5^3=-125$. Bu örnekte eşit olmaları her üste eşit olacaklarını kanıtlamaz.
+
+::yanilgi m1b tip=kurallar
+yanlis: Kuvvetin kuvvetiyle üs kulesinde daima üsler çarpılır.
+neden: Üs kulesinde üstteki kuvvet önce hesaplanır; parantez başka gruplama belirtir.
+dogru: $(a^b)^c=a^{bc}$; $a^{(b^c)}$ için önce $b^c$ bulunur.
+
+::soru c1b tip=kurallar zorluk=2
+$(2^3)^4$ sayısı $2^{(3^2)}$ sayısının kaç katıdır?
+A) 2 || Üsler 12 ve 9'dur; fark 3.
+B) 4 || Kuvvetin kuvvetinde üsleri çarp.
++C) 8 || $2^{12}/2^9=2^3=8$.
+kontrol: 2^(3*4)/2^(3^2)
+cozum: İlk üs $3\cdot4=12$, ikinci üs $3^2=9$; oran $2^{12-9}=8$.
+
+::cikmis TYT-0644 tip=kurallar
+
 @bolum s2 10 | Kurallar ve taban eşitleme
 ::fikir
 Önce bütün tabanları **aynı asala** çevir, sonra kuralları uygula: çarpımda üsler **toplanır**, bölümde **çıkarılır**, kuvvetin kuvvetinde **çarpılır**.
@@ -207,7 +280,70 @@ E) 81 || Paydayı sadeleştirmeyi unuttun.
 kontrol: 3^4*3^3/3^5
 cozum: $9^2 = 3^4$, $27 = 3^3$. $\frac{3^{4+3}}{3^5} = 3^2 = 9$.
 
+::ornek baslik="Aynı üs, farklı taban"
+soru: $4^5\cdot25^5$ kaçtır?
+1. İki çarpanın üssü 5: $(4\cdot25)^5$. || Aynı üslü kuvvetlerin tabanları çarpılabilir.
+2. $100^5=(10^2)^5=10^{10}$. || Kuvvetin kuvvetinde üsler çarpılır.
+3. Sonuç 1'in yanında 10 sıfırdır. || 10 tabanlı tam pozitif kuvvetin basamak anlamıyla kontrol.
+cevap: $10^{10}$; bu bir çarpım, toplama değil.
+
+::cikmis TYT-0634 tip=kurallar
+
+@bolum s2b 14 | Bilimsel gösterim ve birimlerin kuvveti
+
+::duzey
+L1: Çok büyük veya çok küçük sayıları bir sayı ile 10'un kuvvetinin çarpımı olarak yazabiliriz. $450000=4{,}5\cdot10^5$. Baştaki sayı 1 ile 10 arasında tutulur; böylece yazımı standartlaştırırız.
+L2: Virgülü sola taşırsan katsayı küçülür; sayıyı korumak için 10'un üssü büyür. Sağa taşırsan tersi olur. Uzunlukta birimi 100 kat küçültmek, alanda 100² ve hacimde 100³ kat sayı demektir.
+L3: $1\leq a<10$ iken $a\cdot10^n$ sayısının büyüklük mertebesini n belirler. Bilimsel gösterim yaklaşık sayı olmak zorunda değildir; katsayı yuvarlanmadıysa eşitlik tamdır. Yuvarlama yaparsan yaklaşık işareti kullan.
+
+::ornek baslik="Küçük sayıyı standartlaştır"
+soru: $0{,}000072$ sayısını bilimsel gösterimle yaz.
+1. Katsayı 7,2 olsun; virgül altı değil beş basamak sağa taşındı. || Katsayı 1 ile 10 arasında olmalı.
+2. $7{,}2\cdot10^{-5}$ yaz. || Eski sayı daha küçük; negatif üs bu küçültmeyi yapar.
+3. $7{,}2/100000=0{,}000072$. || Ters dönüşümle basamak sayısını kontrol.
+cevap: $7{,}2\cdot10^{-5}$.
+
+::ornek baslik="Çarpım sonunda katsayıyı düzelt"
+soru: $(6\cdot10^4)(3\cdot10^{-2})$ sayısının bilimsel gösterimi nedir?
+1. Katsayılar $6\cdot3=18$, kuvvetler $10^{4-2}=10^2$. || Aynı tabanlı çarpımda üsler toplanır.
+2. Ara sonuç $18\cdot10^2$. || Sayısal olarak doğru ama katsayı standart aralıkta değil.
+3. $18=1{,}8\cdot10$: sonuç $1{,}8\cdot10^3$. || Katsayıyı küçültürken üssü bir artırdık.
+cevap: $1{,}8\cdot10^3=1800$.
+
+::ornek baslik="Alan biriminde iki kuvvet"
+soru: $0{,}03$ m² kaç cm²'dir?
+1. $1$ m $=100$ cm. || Uzunluk birimini önce belirledik.
+2. $1$ m² $=(100$ cm$)^2=10000$ cm². || Alan iki uzunluğun çarpımıdır.
+3. $0{,}03\cdot10000=300$ cm². || Çarpanı 100 değil 100² kullandık.
+cevap: 300 cm²; 0,1 m × 0,3 m dikdörtgeni 10 cm × 30 cm'dir.
+
+::sorgula s2b-dosya baslik="Aynı birimde dosya boyutu"
+durum: İki dosya $2\cdot10^6$ bayt ve $5\cdot10^5$ bayt. Toplam boyutu bilimsel gösterimle yazacaksın.
+soru: Toplam hangisidir?
+A) $7\cdot10^{11}$ || Toplamada üsleri toplamak çarpım kuralını yanlış taşır.
+B) $7\cdot10^6$ || İkinci katsayı aynı kuvvette 0,5 olur; 5 değil.
++C) $2{,}5\cdot10^6$ || $5\cdot10^5=0{,}5\cdot10^6$; katsayılar 2+0,5.
+neden: Önce ortak 10 kuvvetine getir: $(2+0{,}5)10^6$. Bayt birimi değişmedi, yalnız sayının gösterimi değişti.
+sinav: Bilimsel gösterimde toplamada ortak kuvvet, çarpmada katsayı çarpımı ve üs toplamı kullanılır.
+dusun: İlk dosya ikincinin kaç katıdır?
+yanit: $(2/5)10^{6-5}=4$ katı.
+
+::soru c2b tip=kurallar zorluk=2
+$3\cdot10^{-3}+7\cdot10^{-4}$ kaçtır?
+A) $10^{-7}$ || Toplamada kuvvetler çarpılmaz.
++B) $0{,}0037$ || $0{,}003+0{,}0007=0{,}0037$.
+C) $0{,}01$ || Katsayıları aynı kuvvete çevirmeden topladın.
+kontrol: 3*10^(-3)+7*10^(-4)
+cozum: $3\cdot10^{-3}=30\cdot10^{-4}$; toplam $37\cdot10^{-4}=0{,}0037$.
+
+::strateji tip=kurallar baslik="Kuvvet kuralını işlemin türüne göre seç"
+ipucu: Aynı taban veya aynı üs görünüyor.
+1. Çarpımda aynı tabanın üslerini topla, bölümde çıkar; kuvvetin kuvvetinde çarp.
+2. Toplamada bu kuralları kullanma; ortak kuvvet parantezine al.
+3. Sıfır veya negatif üste tabanın sıfır olamayacağını kontrol et.
+
 @bolum s3 8 | Toplama–çıkarmada ortak parantez
+::kesfet uslu-ortak
 ::fikir
 Toplama ve çıkarmada **üsler toplanmaz**; aynı tabanlı terimleri **en küçük kuvvet parantezine** alırsın: $2^{x+2} + 2^{x+1} + 2^x = 2^x(4 + 2 + 1)$.
 
@@ -262,6 +398,19 @@ E) 8 || $2^x = 8$; istenen $x$.
 kontrol: log(8)/log(2)
 cozum: $2^x(4 + 2 + 1) = 7 \cdot 2^x = 56$, yani $2^x = 8 = 2^3$ ve $x = 3$.
 
+::ornek baslik="Negatif üslerde ortak çarpan"
+soru: $3^{-2}+3^{-3}$ kaçtır?
+1. $3^{-2}=3\cdot3^{-3}$. || Üs farkı 1 olduğundan bir çarpan 3 ayrılır.
+2. Toplam $3^{-3}(3+1)=4\cdot3^{-3}$. || Dağılma kuralı negatif üslerde de çalışır; taban sıfır değil.
+3. $4/27$. || Ayrı hesap $1/9+1/27=4/27$ aynı sonucu verir.
+cevap: $\frac4{27}$.
+
+::strateji tip=ortak-paranteze baslik="Toplamayı çarpıma dönüştür"
+ipucu: Aynı tabanın iki kuvveti toplanıyor veya çıkarılıyor.
+1. Küçük üslü kuvveti ortak çarpan seç.
+2. Her terimi ortak çarpana böl; ilk terim için paranteze 1 yazmayı unutma.
+3. Ortak çarpanla parantezi çarpıp ilk ifadeyi geri elde ederek kontrol et.
+
 @bolum s4 8 | Üslü sayıları sıralama
 ::fikir
 Ya **tabanları** ya **üsleri** eşitle. Üsler eşitse büyük taban büyüktür; tabanlar eşitse (taban > 1) büyük üs büyüktür. Taban 0 ile 1 arasındaysa sıra **tersine** döner.
@@ -308,6 +457,63 @@ C) $c < a < b$ || $81 > 64$, yani $a > b$.
 D) $a < c < b$ || $a$ en büyüktür.
 +E) $c < b < a$ || Doğru: $25^{10} < 64^{10} < 81^{10}$.
 cozum: Üsleri 10'da eşitle: $a = 81^{10}$, $b = 64^{10}$, $c = 25^{10}$. Sıralama $c < b < a$.
+
+::ornek baslik="Kesir tabanda yönü gör"
+soru: $(2/3)^2$, $(2/3)^3$, $(2/3)^{-1}$ sayılarını küçükten büyüğe sırala.
+1. İlk iki kuvvette taban 0 ile 1 arasında; üçüncü kuvvet ikinciden küçüktür. || Her ek çarpan, sayıyı 2/3 katına indirir.
+2. Negatif üs tersini verir: $(2/3)^{-1}=3/2>1$. || Taban pozitif ve 1'den küçük.
+3. $(2/3)^3<(2/3)^2<(2/3)^{-1}$. || Yaklaşık 0,296 < 0,444 < 1,5.
+cevap: Sıra üçüncü kuvvet, ikinci kuvvet, negatif birinci kuvvet.
+
+@bolum s4b 14 | Tekrarlanan büyüme ve küçülme
+::kesfet uslu-buyume
+
+::duzey
+L1: Her adımda aynı sayıyı eklemek ile aynı katına çıkarmak farklıdır. Başlangıç 1 iken “her tur 3 ekle” 1,4,7,10; “her tur 3 katı” 1,3,9,27 verir. Önce cümlenin hangisini söylediğini belirle.
+L2: Başlangıç A, sabit çarpan k ve n tamamlanmış adım için sonuç $Ak^n$ olur. Her tur yüzde 20 azalmada k=0,8; yüzde 20 artmada k=1,2. Her seferinde oran güncel miktara uygulanır.
+L3: Sabit yüzdeyle önce artış sonra aynı oranda azalış başlangıcı geri getirmez: $(1+p)(1-p)=1-p^2$. Çarpan 1 olmadıkça ardışık adımların farkı sabit olmaz; oranı sabit kalır.
+
+::ornek baslik="Her tur kalan pay"
+soru: Başlangıçta 625 boncuk var; her tur boncukların beşte biri ayrılıyor. Üç tur sonra kaç boncuk kalır?
+1. Kalan oran $4/5$; model $625(4/5)^3$. || Ayrılan beşte bir, kalan beşte dört.
+2. $625=5^4$; sonuç $5^4\cdot4^3/5^3=5\cdot64$. || Ortak kuvvetler sadeleşti.
+3. $320$. Sıra 625,500,400,320. || Her tur kalan miktarın beşte biri ayrılıyor.
+cevap: 320.
+
+::ornek baslik="Artış ve azalış neden birbirini götürmez?"
+soru: Bir ürünün 200 TL fiyatı önce yüzde 50 artıyor, sonra yeni fiyat yüzde 50 azalıyor. Son fiyat kaç?
+1. İlk çarpan 1,5; $200\cdot1{,}5=300$. || Artış eski fiyatın yarısı.
+2. İkinci çarpan 0,5; $300\cdot0{,}5=150$. || Azalış yeni fiyatın yarısı; 100 TL değil 150 TL.
+3. Birleşik çarpan $1{,}5\cdot0{,}5=0{,}75$. || Başlangıcın dörtte üçü kaldı.
+cevap: 150 TL; başlangıca dönmez.
+
+::ornek baslik="Tur sayısını kuvvetle bul"
+soru: Başlangıçta 5 hücre var; her tur üç katına çıkıyor. Hücre sayısı 1215 olduğunda kaç tur tamamlanmıştır?
+1. $5\cdot3^n=1215$. || Başlangıç sayısı ile tekrarlanan çarpanı ayırdık.
+2. $3^n=243=3^5$. || İki tarafı 5'e böldük.
+3. $n=5$. || Pozitif ve 1'den farklı tabanda kuvvetler eşitse üsler eşittir.
+cevap: 5 tur; $5\cdot243=1215$.
+
+::sorgula s4b-oyun baslik="Her gün aynı ödül mü?"
+durum: İki oyunda başlangıç puanı 2. Birincide her tur 2 puan ekleniyor; ikincide her tur iki katına çıkıyor.
+soru: Üç tur sonunda puanlar ne olur?
+A) İkisi de 8 || Katlama üç kez uygulanınca ikinci oyun 16 olur.
++B) Birinci 8, ikinci 16 || $2+3\cdot2=8$ ve $2\cdot2^3=16$.
+C) Birinci 6, ikinci 8 || Başlangıç puanını ve tur sayısını eksilttin.
+neden: Birinci model $2+2n$, ikinci $2\cdot2^n$. Üç tamamlanmış tur için n=3.
+sinav: Soruda “her seferinde aynı miktar” ile “aynı oran” ifadelerini ayır; n=0 kontrolü yap.
+dusun: İlk turda ikisi de 4 verdiğine göre süreçlerin aynı olduğunu söyleyebilir miyiz?
+yanit: Hayır. İki turda birinci $2+4=6$, ikinci $2\cdot4=8$. Tek bir adımda eşitlik, bütün adımlarda eşitlik anlamına gelmez.
+
+::soru c4b tip=denklem zorluk=2
+Başlangıçta 7 parça her tur ikiye ayrılıyor. Kaç tamamlanmış turdan sonra 448 parça olur?
+A) 5 || $7\cdot2^5=224$; bir tur daha gerek.
+B) 7 || $7\cdot2^7=896$; bir tur fazla.
++C) 6 || $448/7=64=2^6$.
+kontrol: 6
+cozum: $7\cdot2^n=448$, $2^n=64=2^6$ ve n=6. Başlangıç tur sayılmaz.
+
+::cikmis TYT-0632 tip=kurallar
 
 @bolum s5 10 | Üslü denklemler ve eşitsizlikler
 ::fikir
@@ -369,6 +575,19 @@ C) $1$ || $9^0 = 1$, $27^1 = 27$; eşit değil.
 E) $2$ || $9^1 = 9$, $27^0 = 1$.
 kontrol: 8/5
 cozum: $3^{2(x-1)} = 3^{3(2-x)}$, yani $2x - 2 = 6 - 3x$ ve $5x = 8$, $x = \frac{8}{5}$.
+
+::ornek baslik="Taban 1 ise üs belirlenmez"
+soru: $1^{2x-3}=1$ eşitliğinden $x=2$ sonucu çıkar mı?
+1. Gerçek üs için 1'in kuvveti 1'dir. || Taban 1 olunca çıktı üs değişse de sabittir.
+2. $x=0$ seçersek üs −3, sonuç yine 1. || x=2 dışında bir çözüm gösterdik.
+3. Eşitlik bütün gerçek x'lerde doğrudur. || Üsleri eşitlemek için taban pozitif ve 1'den farklı olmalı.
+cevap: Hayır; tek bir x bulunamaz. $a^u=a^v$ kuralının taban koşulunu kontrol et.
+
+::strateji tip=denklem baslik="Önce tabanın koşullarını kontrol et"
+ipucu: İki kuvvet eşit veya karşılaştırılıyor.
+1. Ortak taban pozitif ve 1'den farklıysa eşitlikte üsleri eşitle.
+2. Eşitsizlikte taban 1'den büyükse yönü koru; 0 ile 1 arasındaysa yönü çevir.
+3. Sıfır, 1, −1 veya negatif tabanlarda genel gerçek üs kuralını körlemesine uygulama; tanımı ve özel durumları incele.
 
 ::ozet
 - $a^0 = 1$, $a^{-n} = \frac{1}{a^n}$; negatif tabanın çift kuvveti pozitif.

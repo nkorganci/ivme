@@ -11,15 +11,15 @@ Kalıcı beklentiler [AGENTS.md](../../AGENTS.md) içinde, etkin devam noktası
 |---|---|
 | `frontend/src/learn/content/dersler/*.ders` | Elle yazılan ders kaynağı; sabit ders/bölüm/soru kimlikleri korunur |
 | `content/parser.js` | `.ders` ayrıştırıcısı; tarayıcı ve Node denetimleri aynı kodu kullanır |
-| `content/explorations.js` | Mevcut 33 matematik dersinin giriş keşifleri; bölüm keşifleri de bu kayıt üzerinden çözülür |
+| `content/explorations.js` | Mevcut matematik derslerinin giriş keşifleri; bölüm keşifleri de bu kayıt üzerinden çözülür |
 | `content/division-explorations.js`, `lesson/division-models.js`, `lesson/DivisionDiagram.jsx` | Yalnız bölünebilme pilotu: basamak katkısı, ortak koşul ve kalan döngüsü keşifleri, sayısal modelleri ve SVG çizimleri |
-| `lesson/models.js` | 33 dersin sınırlı, deterministik sayısal modelleri ve kontrol aralıkları; `eval` yok |
+| `lesson/models.js` | Derslerin sınırlı, deterministik sayısal modelleri ve kontrol aralıkları; `eval` yok |
 | `lesson/Exploration.jsx` | Görerek anla → birlikte çöz → kendin dene akışı; deneme puanlanmaz |
 | `lesson/learning-experience.css` | Okunur ders yüzeyi, bölüm yolu, mobil düzen, model ve büyük görsel görünümü |
 | `lesson/Blocks.jsx` | Ortak ders blokları; çözümlü örnekler sırayla açılır, gerekçeleri görünür |
 | `lesson/DailyInquiry.jsx` | `::sorgula` bloğu: günlük durum → seçim → seçeneğe özel geri bildirim → gerekçe ve sınavdaki karşılığı → “Sen de sorgula”; puan/olay üretmez |
 | `lesson/FigureZoom.jsx` | Klavye/Escape ile kapanan büyük görsel penceresi |
-| `content/worked-exams.js` | Özgün görselleri okunmuş sekiz gerçek sınav sorusunun açıklamalı çözümü ve koşullu kısa yolu |
+| `content/worked-exams.js` | Özgün görselleri okunmuş gerçek sınav sorularının açıklamalı çözümü ve koşullu kısa yolu |
 | `lesson/GuidedExam.jsx` | Özgün soru görseli → adımlı çözüm → kısa yol → sağlama; puan üretmez |
 | `components/QuestionImage.jsx` (ön yüz kökü) | `readingWidth` ile ders örneklerini ekran altına düştüğünde küçültmeden okunur genişlikte gösterir; diğer soru ekranlarının sığdırma tercihi korunur |
 | `scripts/konu-ogrenme-banka.mjs` | DB'yi yalnız okuyarak soru kimliği/konu bağlarını üretir; öğrenci cevabı veya DB içeriği değiştirmez |
@@ -55,7 +55,7 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
    `::sorgula` alanları: `durum:`, `soru:`, `A)`–`E)` seçenekleri (`+` doğru, `||` gerekçe), `neden:`,
    `sinav:`, isteğe bağlı `dusun:`/`yanit:` ve sayısal cevapta `kontrol:` (doğru seçeneğin ilk sayısını vermeli).
    `testler/konu-ogrenme-bicim.test.mjs` bütün `.ders` dosyalarında her bölümde düzey, sorgulama,
-   en az iki gerekçeli çözümlü örnek ve her adımda gerekçe arar; 33 dersin hepsi bu biçimdedir. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
+   en az iki gerekçeli çözümlü örnek ve her adımda gerekçe arar; 34 dersin hepsi bu biçimdedir. `::ornek` adımında `||` sonrası işlemin gerekçesidir;
    `?1.` biçimindeki adım öğrencinin önce düşünüp yazacağı gizli adımdır.
 6. Gerçek soruyu kaynak görüntüsünden incele. Çözümü yazılmış örneği `::cikmis KOD tip=...`
    ile doğru bölümde bağla; `WORKED_EXAMS` kayıtları banka üretiminde elle incelenmiş
@@ -162,6 +162,38 @@ izleyici/sunum kontrolü (`durum --hizli`, gerekirse `bekle`). Yerel commit yap�
 yeni dış dağıtım kullanıcı talimatı olmadan yapılmaz.
 
 ## Pilot derinliğindeki dersler
+
+Kapsamı tekrar saymak için **node scripts/konu-ogrenme-kapsam.mjs --write** kullanılır;
+çıktı veri/konu-ogrenme-kapsam.json içindedir. PILOT_YAPISI yalnız aşağıdaki
+yapısal ölçütlerin sağlandığını belirtir; matematik denetimleri konu-ogrenme-derin.test.mjs,
+arayüz ve görsel inceleme ayrıca yapılır. Öğretmen onayı değildir. Geniş
+“İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri”
+kategorisindeki bir denklem dersi, karmaşık sayıları ve sistemleri tamamlamış sayılmaz.
+
+İkinci derece dersinin kaynakları OGM 10. sınıf özet 34 ve 37'nin görsel olarak okunan
+ilk sayfalarıdır. Özgün sorular yeniden yazılmaz; kodları ve görselleriyle
+gösterilir. Yeni TYT/AYT çözümlerinin sonuçları DB cevap anahtarından yalnız okunarak
+karşılaştırılmıştır; öğrenci kaydına yazma veya öğretmen onayı işlemi yapılmamıştır.
+
+Ek çözümler content/worked-math-continuation.js içindedir ve WORKED_EXAMS kaydına katılır.
+Görüntüsü okunmuş yeni örneklerin kanıtları:
+
+| Kod | Ders / çözüm fikri | Sonuç | Görsel SHA-256 |
+|---|---|---|---|
+| TYT-0605 | Mutlak değer; sıcaklık aralığının merkezi ve yarıçapı | A, \|x−13\|≤2 | ed2a5790824f906e3911e1bf419b2908e039a8e05db838cb22651a28962ff81e |
+| TYT-0608 | Mutlak değer; simetrik konumlardan A=4 veya 12 | B, 16 | 8fff5895ef8c0c7e7ef0406ab1ad8454c21691412ad0c946fbd1acdcbbeb87ee |
+| TYT-0618 | Mutlak değer; iki uygun aralığın dışında | D, 5 | d7958e43f4892baa8e990c634af93a790f4cbb28f09b49b2d502155f4c52386e |
+| TYT-0630 | Üslü ifadeler; tekrarlanan üçe parçalama | E, 81 | b86ae29b1fa30d80160b8d292738718ccb0c679c0dbb9a295b9b91dba740a17c |
+| TYT-0632 | Üslü ifadeler; altı tur kalan oran (4/5)⁶ | B, 2¹⁸ | b1293134c42acb369ece382661d19a4b21c7336d93ef5dc939c5d0f7e3343cd9 |
+| TYT-0634 | Üslü ifadeler; okul başına 35 öğretmen + müdür | C, 6⁶ | 98c82940b91fbccd74b67ee03fed25bd11478bedc8162aeee010d060dd2e195e |
+| TYT-0644 | Üslü ifadeler; iki farklı parantezleme | B, 2 ve 8 | 944077e769943dbbda39dc0cac3cb1295dfe583df5ea6b37c42a91fe99b9471d |
+| TYT-0633 | Köklü ifadeler; görselde 9/16, hedef 12/16 | C, 3 | c6013bb8893d4e748158c7c4d9792b9bca73566ac72770a33d517141ceb5667c |
+| TYT-0637 | Köklü ifadeler; yanlış bölüm/doğru çarpım farkı | B, √15 | 484529f7eed1031345fcc1340466d9c434973dff5661c63263cac0a28f0eb247 |
+| TYT-0680 | Oran-orantı; eşit mavi adedi, farklı paydalar | E, 36 | 88ad23dc0a9393a6de41562534c4f636b1e70e966206382a5cc69a9152ebf534 |
+| TYT-0740 | Oran-orantı; alan ve kat için iki ücret sabiti | E, 60 | fbdc908758297fabdd88912d87329f708e394f8dfd24d6275e2e6cfc5dbe8190 |
+| AYT_Sayisal-0097 | İkinci derece; t=m−n≠0 ile sadeleştirme | A, 2 | 91ca3823ae0c77498f8b7b26aaa4b9b2d753f0d09951eba98fdd9e3872156146 |
+| AYT_Sayisal-0099 | İkinci derece; kök çarpımı ve toplamı | C, 10 | 347e52f5c63debfc5880cb1d3265f10b581458754d340a6d37a20e0f539f5798 |
+| AYT_Sayisal-0102 | İkinci derece; Δ'yı kök yaz, c çarpımını bul | D, 1/2 | 536ad2ffcd810987c62e73e57b6e4c9743756d92930ffd4a659387b9e300fc47 |
 
 Bölme pilotunun derinliği diğer derslere ders ders yayılır. Bir ders ancak şu ölçütlerle
 `testler/konu-ogrenme-derin.test.mjs` içindeki `DERIN` listesine girer: en az 8 bölüm (eski

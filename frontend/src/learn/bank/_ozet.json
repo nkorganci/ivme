@@ -86,18 +86,18 @@
    "untyped": 91
   },
   "esitsizlikler": {
-   "total": 462,
+   "total": 459,
    "cikmis": {
-    "TYT": 23,
+    "TYT": 20,
     "AYT": 0
    },
    "archetypes": {
     "aralik": 39,
     "esitsizlik-cozme": 16,
-    "aralik-ifade": 125,
+    "aralik-ifade": 124,
     "iki-bilinmeyen": 20
    },
-   "untyped": 262
+   "untyped": 260
   },
   "fonksiyon-grafikleri": {
    "total": 64,
@@ -155,6 +155,21 @@
    },
    "untyped": 62
   },
+  "ikinci-derece-denklemler": {
+   "total": 473,
+   "cikmis": {
+    "TYT": 0,
+    "AYT": 3
+   },
+   "archetypes": {
+    "tanim-carpan": 240,
+    "kok-formulu": 13,
+    "delta": 1,
+    "vieta": 57,
+    "yeni-denklem": 1
+   },
+   "untyped": 161
+  },
   "kar-zarar": {
    "total": 136,
    "cikmis": {
@@ -177,12 +192,12 @@
    },
    "archetypes": {
     "kok-disi": 61,
-    "eslenik": 4,
+    "eslenik": 5,
     "ic-ice": 0,
     "siralama": 9,
     "denklem": 13
    },
-   "untyped": 97
+   "untyped": 96
   },
   "kombinasyon": {
    "total": 142,
@@ -269,16 +284,16 @@
    "untyped": 34
   },
   "mutlak-deger": {
-   "total": 295,
+   "total": 298,
    "cikmis": {
-    "TYT": 2,
+    "TYT": 5,
     "AYT": 0
    },
    "archetypes": {
     "tanim-acma": 42,
     "denklem": 13,
-    "esitsizlik": 46,
-    "uzaklik-minimum": 44
+    "esitsizlik": 48,
+    "uzaklik-minimum": 45
    },
    "untyped": 150
   },
@@ -319,10 +334,10 @@
    "archetypes": {
     "oran-ozellik": 4,
     "dogru-ters": 39,
-    "paylastirma": 9,
+    "paylastirma": 10,
     "bilesik": 3
    },
-   "untyped": 134
+   "untyped": 133
   },
   "polinom-islemleri": {
    "total": 511,
@@ -416,13 +431,13 @@
     "AYT": 0
    },
    "archetypes": {
-    "kurallar": 102,
-    "negatif-sifir": 0,
+    "kurallar": 103,
+    "negatif-sifir": 1,
     "ortak-paranteze": 0,
     "siralama": 2,
-    "denklem": 8
+    "denklem": 7
    },
-   "untyped": 86
+   "untyped": 85
   },
   "veri-grafikleri": {
    "total": 153,

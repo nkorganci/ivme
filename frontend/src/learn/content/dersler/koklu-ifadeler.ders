@@ -55,8 +55,10 @@ ic-ice 1 2-3
 siralama 1 1-3
 denklem 1 1-3
 
-@oturum Kökün anlamı, kök dışı ve eşlenik | s1 s2 s3
-@oturum İç içe kökler, sıralama ve denklemler | s4 s5
+@oturum Kökün anlamı ve tanım koşulu | s1 s1b
+@oturum Kök dışı ve yaklaşık konum | s2 s2b
+@oturum Eşlenik ve iç içe kökler | s3 s4
+@oturum Kesirli üs ve denklem kontrolü | s4b s5
 
 @ontest
 ::soru o1 tip=kok-disi zorluk=1
@@ -139,7 +141,69 @@ E) $13$ || $27$ ile $16$'yı toplamak kökleri vermez.
 kontrol: -3+4
 cozum: $\sqrt[3]{-27} = -3$ (tek dereceli kök negatif olabilir), $\sqrt{16} = 4$. Toplam 1.
 
+::ornek baslik="Denklemin iki kökü ile karekökün tek değeri"
+soru: $x^2=49$ ile $x=\sqrt{49}$ aynı çözüm kümesine sahip mi?
+1. $x^2=49$ için $x=7$ ve $x=-7$. || İki işaretin karesi aynıdır.
+2. $\sqrt{49}=7$ tanım gereği negatif olmayan değerdir. || Karekök işareti bir fonksiyonun tek çıktısını gösterir.
+3. İkinci eşitlik yalnız $x=7$ verir. || Denklem çözmek ile kök işaretinin değerini bulmak ayrı işlemlerdir.
+cevap: Hayır; ilkinde iki, ikincide bir çözüm var.
+
+@bolum s1b 14 | Çift ve tek dereceli kökte tanım
+
+::duzey
+L1: Gerçek bir sayının karesi negatif olamaz. Bu nedenle karekök içinde negatif sayı bulunursa gerçek sonuç yoktur. Küpte ise negatif bir sayı çıkabilir: $(-2)^3=-8$, dolayısıyla $\sqrt[3]{-8}=-2$.
+L2: Çift dereceli kökte iç ≥0 olmalı; kök paydadaysa ayrıca sıfır olamaz. Birden fazla kök varsa her birinin koşulunu yazıp kesiştir. Tek dereceli kökün içi herhangi bir gerçek sayı olabilir.
+L3: $\sqrt{A^2}=|A|$ bütün gerçek A için geçerlidir. $\sqrt[3]{A^3}=A$ ise işareti korur. Çarpımın kökünü ayırma gibi kuralları gerçek sayılarda uygularken ayrı köklerin de tanımlı olduğundan emin ol.
+
+::ornek baslik="İki karekökün ortak tanımı"
+soru: $\sqrt{x+5}+\sqrt{7-x}$ hangi gerçek x'lerde tanımlıdır?
+1. İlk kök için $x+5\geq0$, yani $x\geq-5$. || Kök içi negatif olamaz.
+2. İkinci kök için $7-x\geq0$, yani $x\leq7$. || Aynı koşulu ikinci köke ayrı yazdık.
+3. İkisi birlikte $-5\leq x\leq7$. || “Ve” koşulu kesişimdir.
+cevap: $[-5,7]$; uçlarda köklerden biri sıfır olabilir.
+
+::ornek baslik="Paydadaki kökte sınır dışlanır"
+soru: $1/\sqrt{2x-6}$ ifadesinin gerçek tanım kümesi nedir?
+1. Karekök için $2x-6\geq0$. || Kök içi koşulu.
+2. Payda sıfır olamaz; $2x-6\ne0$. || Bir bölme işlemi daha var.
+3. Koşullar birleşince $2x-6>0$, yani $x>3$. || Sıfır uç artık dışarıda.
+cevap: $(3,\infty)$; x=3 seçilirse 0'a bölme oluşur.
+
+::ornek baslik="Tek dereceli kökte işaret korunur"
+soru: $\sqrt[3]{-125}+\sqrt{(-6)^2}$ kaçtır?
+1. $\sqrt[3]{-125}=-5$. || $(-5)^3=-125$.
+2. $\sqrt{(-6)^2}=|-6|=6$. || Karekök negatif olmayan değeri seçer.
+3. $-5+6=1$. || İki kökün işaret kuralları farklıdır.
+cevap: 1.
+
+::sorgula s1b-kare baslik="Alan negatif olabilir mi?"
+durum: Bir karenin alanı $x-4$ birimkare, kenarı da $\sqrt{x-4}$ olarak modelleniyor.
+soru: Hangi x değeri gerçek bir kenar uzunluğu vermez?
+A) 4 || Kök 0'dır; kare dejenere olur ama ifade gerçektir.
++B) 3 || Alan −1; gerçek karekök yok.
+C) 8 || Alan 4, kenar 2.
+kontrol: 3
+neden: Gerçek ifade için $x-4\geq0$, yani $x\geq4$. Pozitif alanlı gerçek bir kare istense ayrıca x>4 olmalı.
+sinav: İfadenin tanımlı olması ile bağlamın pozitif uzunluk istemesini ayrı denetle.
+dusun: Kenarın tersi $1/\sqrt{x-4}$ kullanılsa x=4 kabul edilir mi?
+yanit: Hayır; payda sıfır olacağı için x>4 gerekir.
+
+::soru c1b tip=denklem zorluk=2
+$\sqrt{x-2}+\sqrt{8-x}$ ifadesi kaç farklı tam x değeri için tanımlıdır?
+A) 5 || Uçlarda kök sıfır olabilir; dışlama.
+B) 6 || 2 ve 8 dahil sayılmalı.
++C) 7 || 2,3,4,5,6,7,8 uygundur.
+kontrol: 8-2+1
+cozum: $x\geq2$ ve $x\leq8$; iki uç dahil yedi tam sayı.
+
+::strateji tip=denklem baslik="Önce tanım alanı"
+ipucu: Birden fazla kök veya paydada kök var.
+1. Çift dereceli her kökün içini ≥0 yap; tek dereceli kökte bu kısıt gerekmez.
+2. Paydadaki ifadeyi sıfırdan farklı tut.
+3. Koşulları kesiştir; geometrik bağlam pozitif uzunluk istiyorsa onu da uygula.
+
 @bolum s2 10 | Kök dışına çıkarma ve işlemler
+::kesfet kok-carpan
 ::fikir
 Kök içini **tam kare × kalan** diye ayır, tam kareyi dışarı çıkar: $\sqrt{48} = 4\sqrt{3}$. Toplama–çıkarma **yalnız kök içi aynı** terimler arasında yapılır.
 
@@ -187,7 +251,70 @@ E) $\sqrt{60}$ || Kök içleri toplanmaz.
 kontrol: 6*sqrt(2)
 cozum: $\sqrt{18} = 3\sqrt{2}$, $\sqrt{50} = 5\sqrt{2}$, $\sqrt{8} = 2\sqrt{2}$. $(3 + 5 - 2)\sqrt{2} = 6\sqrt{2}$.
 
+::ornek baslik="Toplamı köklere bölmek neden olmaz?"
+soru: $\sqrt{9+16}$ ile $\sqrt9+\sqrt{16}$ ifadelerini karşılaştır.
+1. İlk ifade $\sqrt{25}=5$. || Kök içinde önce toplama yapılır.
+2. İkinci ifade $3+4=7$. || İki ayrı kökün sonuçları toplanır.
+3. 5 ile 7 farklıdır. || Tek bir karşı örnek genel dağıtma kuralının yanlışlığını gösterir.
+cevap: Karekök toplama üzerine dağılmaz; uygun koşullarda çarpım üzerine ayrılabilir.
+
+::cikmis TYT-0633 tip=kok-disi
+
+@bolum s2b 14 | Köklü sayıyı sayı doğrusunda bul
+
+::duzey
+L1: $\sqrt{30}$ tam sayı değildir. $5^2=25<30<36=6^2$ olduğundan 5 ile 6 arasındadır. Sayının tam ondalık açılımını bilmeden konumunu ve yakınlığını belirleyebilirsin.
+L2: Pozitif sayılarda karekök artandır: $0\leq a<b$ ise $\sqrt a<\sqrt b$. Katsayı varsa pozitif katsayının karesini köke alabilirsin: $3\sqrt2=\sqrt{18}$. Sonra kök içlerini karşılaştır.
+L3: Kare alma sadece negatif olmayan sayılarda sıralamayı korur. $-5<2$ iken kareler 25>4 olur. Karşılaştırmada önce işaret; sonra mutlak büyüklük; negatifler için büyüklük sırasının tersini düşün.
+
+::ornek baslik="Ardışık tam kareler"
+soru: $\sqrt{70}$ hangi iki ardışık tam sayı arasındadır?
+1. $8^2=64$, $9^2=81$. || 70'i çevreleyen tam kareleri seçtik.
+2. $64<70<81$. || Her üç sayı da negatif değil.
+3. $8<\sqrt{70}<9$. || Karekök bu bölgede sıralamayı korur.
+cevap: 8 ile 9 arasında; $\sqrt{70}$'in tam kısmı 8.
+
+::ornek baslik="Katsayıyı köke alarak sırala"
+soru: $3\sqrt3$ ile $2\sqrt7$ sayılarından hangisi büyüktür?
+1. İkisi de pozitif. || Kare alarak karşılaştırmak güvenli.
+2. Kareleri 27 ve 28. || $(3\sqrt3)^2=9\cdot3$, $(2\sqrt7)^2=4\cdot7$.
+3. $3\sqrt3<2\sqrt7$. || Pozitif sayılarda büyük kare büyük sayıya aittir.
+cevap: $2\sqrt7$ daha büyüktür.
+
+::ornek baslik="Negatif köklerde sıralama"
+soru: $-\sqrt{18}$ ile $-4$ sayılarını sırala.
+1. $\sqrt{18}>\sqrt{16}=4$. || Pozitif büyüklükleri karşılaştırdık.
+2. İki tarafı −1 ile çarp: $-\sqrt{18}<-4$. || Negatif çarpan sıralamayı ters çevirir.
+3. Yaklaşık −4,243 < −4. || Sayı doğrusunda daha soldaki sayı küçüktür.
+cevap: $-\sqrt{18}$ daha küçüktür.
+
+::sorgula s2b-halilik baslik="Kare halının kenarı"
+durum: Alanı 50 m² olan kare halıyı 7 m ile 8 m arasında eni olan bir bölmeye yerleştirmeyi düşünüyorsun.
+soru: Halının kenarı hangi aralıktadır?
++A) 7 ile 8 m arasında || 49<50<64; karekök 7 ile 8 arasında.
+B) 6 ile 7 m arasında || 7²=49, 50 bundan büyük.
+C) Tam 25 m || Alanı ikiye bölmek karekök değildir.
+neden: Karenin kenarı $\sqrt{50}$; karesi alanı geri vermelidir. 7² ve 8² ile çevreleyebiliriz.
+sinav: Tam ondalık değer hesaplamak yerine komşu tam kareleri kullan.
+dusun: Eni tam 7 m olan bölmeye halı kesilmeden sığar mı?
+yanit: Hayır; $\sqrt{50}>7$. Yaklaşık değer yerine bu kesin karşılaştırma yeterlidir.
+
+::soru c2b tip=siralama zorluk=2
+$5<\sqrt n<6$ koşulunu sağlayan kaç tam n vardır?
+A) 9 || 26'dan 35'e kadar uçlar dahil on sayı var.
++B) 10 || 25<n<36; n=26,…,35.
+C) 11 || 25 ve 36 koşulu sağlamaz.
+kontrol: 35-26+1
+cozum: Pozitif sayılarda kare al: 25<n<36. Aradaki tam sayılar 26–35, toplam 10.
+
+::strateji tip=siralama baslik="Hesaplamadan önce işareti oku"
+ipucu: İki köklü sayı karşılaştırılıyor.
+1. İşaretleri farklıysa sıralama hemen bellidir.
+2. İkisi de pozitifse karelerini karşılaştır; ikisi negatifse büyüklük sırasını ters çevir.
+3. Yaklaşık hesap yerine tam kare sınırlarını kullan; eşitlik ihtimalini atlama.
+
 @bolum s3 8 | Eşlenik ve paydayı kökten kurtarma
+::kesfet kok-eslenik
 ::fikir
 $\sqrt{a} - \sqrt{b}$'nin **eşleniği** $\sqrt{a} + \sqrt{b}$'dir; çarpımları kökten kurtulur: $(\sqrt{a} - \sqrt{b})(\sqrt{a} + \sqrt{b}) = a - b$.
 
@@ -242,6 +369,15 @@ E) $6\sqrt{3}$ || Kökler böyle birleşmez.
 kontrol: 6/(sqrt(5)+sqrt(2))
 cozum: $\frac{6}{\sqrt{5} + \sqrt{2}} \cdot \frac{\sqrt{5} - \sqrt{2}}{\sqrt{5} - \sqrt{2}} = \frac{6(\sqrt{5} - \sqrt{2})}{3} = 2\sqrt{5} - 2\sqrt{2}$.
 
+::ornek baslik="Aynı eşlenik, iki farklı işlem"
+soru: $\sqrt5+\sqrt2$ ifadesinin eşleniğiyle çarpımı ile bölümü nedir?
+1. Çarpım $(\sqrt5+\sqrt2)(\sqrt5-\sqrt2)=3$. || İki kare farkı.
+2. Bölümde pay ve paydayı $\sqrt5+\sqrt2$ ile çarp: $(7+2\sqrt{10})/3$. || Paydayı eşlenikle rasyonel yaptık.
+3. Sonuçlar 3 ve $(7+2\sqrt{10})/3$; aynı işlem değiller. || Eşlenik aynı olsa bile çarpma ve bölme farklı.
+cevap: Çarpım 3, bölüm $(7+2\sqrt{10})/3$.
+
+::cikmis TYT-0637 tip=eslenik
+
 @bolum s4 8 | İç içe kökler
 ::fikir
 $\sqrt{a + 2\sqrt{b}} = \sqrt{m} + \sqrt{n}$, burada **$m + n = a$** ve **$m \cdot n = b$**. Eksi işaretlide büyükten küçüğü çıkar: $\sqrt{a - 2\sqrt{b}} = \sqrt{m} - \sqrt{n}$ ($m > n$).
@@ -291,7 +427,75 @@ E) $\sqrt{2} - \sqrt{7}$ || Negatif çıkar; büyük kökü önce yaz.
 kontrol: sqrt(9-2*sqrt(14))
 cozum: Toplamı 9, çarpımı 14 olan sayılar 7 ve 2. Eksi durumda büyük önce: $\sqrt{7} - \sqrt{2}$.
 
+::ornek baslik="İç içe kökte dış sonuç negatif olamaz"
+soru: $\sqrt{17-12\sqrt2}$ ifadesini sadeleştir.
+1. $17=9+8$ ve $12\sqrt2=2\cdot3\cdot2\sqrt2$; iç ifade $(3-2\sqrt2)^2$. || Tam kare açılımının orta terimiyle eşleştirdik.
+2. Kökten $|3-2\sqrt2|$ çıkar. || Karekök negatif olmayan değeri seçer; içteki ifadenin işaretine bakmalıyız.
+3. $3>2\sqrt2$ çünkü iki pozitif sayının kareleri 9>8; sonuç $3-2\sqrt2$. || Mutlak değerin içinin pozitif olduğunu gerekçelendirdik.
+cevap: $3-2\sqrt2$; karesi başlangıçtaki ifadeyi verir ve sonuç pozitiftir.
+
+@bolum s4b 14 | Kesirli üs, çift kök ve tek kök
+
+::duzey
+L1: Pozitif a için $a^{1/2}$ ile $\sqrt a$ aynı sayıdır; yarım kez çarpma anlamına gelmez. $a^{1/3}$ ise küpköktür. Kök derecesi birim parça sayısını, paydaki üs kaçıncı kuvveti aldığını belirtir.
+L2: Pozitif tabanda $a^{m/n}=(\sqrt[n]a)^m$ ve olağan üs kuralları geçerlidir. Negatif tabanda kesirli üs, kökün derecesi ve kesrin sade biçimi dikkat ister; pozitif tabanlı kuralları koşulsuz genişletme.
+L3: Çift dereceli kök negatif olmayan değeri seçer. $\sqrt[4]{x^4}=|x|$; $\sqrt[3]{x^3}=x$. Köklerin üst üste gelmesinde pozitif tabanda dereceler çarpılır: $\sqrt{\sqrt[3]{a}}=a^{1/6}$.
+
+::ornek baslik="Önce kök sonra kuvvet"
+soru: $27^{2/3}$ kaçtır?
+1. Payda 3: $\sqrt[3]{27}=3$. || Pozitif tabanda kesirli üs kökle yazılabilir.
+2. Pay 2: $3^2=9$. || Kökten çıkan sayının karesini aldık.
+3. $9^3=729=27^2$. || Sonucun üçüncü kuvveti başlangıcın karesini verir.
+cevap: 9; $27\cdot2/3$ işlemi yapılmaz.
+
+::ornek baslik="Ters kuvvetli kesir"
+soru: $16^{-3/4}$ kaçtır?
+1. $\sqrt[4]{16}=2$. || Önce pozitif tabanın dördüncü kökünü aldık.
+2. $2^3=8$. || Paydaki 3 kuvveti belirler.
+3. Negatif üs tersini aldırır: $1/8$. || Taban sıfır değil.
+cevap: $\frac18$; $16^{3/4}\cdot16^{-3/4}=1$.
+
+::ornek baslik="Çift ve tek kökte aynı negatif sayı"
+soru: $x=-2$ iken $\sqrt[4]{x^4}$ ve $\sqrt[3]{x^3}$ kaçtır?
+1. $\sqrt[4]{(-2)^4}=\sqrt[4]{16}=2$. || Çift dereceli kök negatif olmayan çıktıyı seçer.
+2. $\sqrt[3]{(-2)^3}=\sqrt[3]{-8}=-2$. || Tek dereceli kök işareti korur.
+3. İlki $|x|$, ikincisi x. || İki farklı ters alma koşulunu gördük.
+cevap: Sırasıyla 2 ve −2.
+
+::tamamla baslik="Kesirli kuvveti kökle kontrol et"
+soru: $81^{3/4}$ kaçtır?
+1. 81'in dördüncü kökü 3. || $3^4=81$.
+?2. $3^3=27$. || Paydaki üs 3, kökten çıkan sayıya uygulanır.
+?3. $27^4=81^3$. || Üs kuralıyla sonucun tutarlılığını kontrol ettik.
+cevap: 27.
+
+::sorgula s4b-kup baslik="Küpün alanı değil kenarı"
+durum: Hacmi 64 cm³ olan bir küpün kenarını bulacaksın.
+soru: Hangi işlem doğru kenarı verir?
+A) $\sqrt{64}=8$ || Bu kenarın karesini 64 yapar; küp hacmi üç çarpan ister.
++B) $\sqrt[3]{64}=4$ || 4×4×4=64.
+C) $64/3$ || Hacim üç kenarın toplamı değil çarpımıdır.
+neden: Küp hacmi a³ olduğu için ters işlem küpköktür. Ölçünün birimi de cm³'ten cm'ye iner.
+sinav: Alan için karekök, hacim için küpkök; işlemi bağlamdaki boyut belirler.
+dusun: Kenar iki katına çıkarsa hacim kaç katına çıkar?
+yanit: $2^3=8$ kat; hacim 512 cm³ olur.
+
+::soru c4b tip=kok-disi zorluk=2
+$32^{2/5}$ kaçtır?
+A) 2 || Bu yalnız beşinci kök; karesini almalısın.
+B) 8 || Paydaki kuvvet 2, 3 değil.
++C) 4 || Beşinci kök 2; karesi 4.
+kontrol: 4
+cozum: $32=2^5$, dolayısıyla $(2^5)^{2/5}=2^2=4$; taban pozitif.
+
+::strateji tip=kok-disi baslik="Kökü kesirli kuvvete bağla"
+ipucu: Pozitif tabanlı kesirli üs var.
+1. Paydadaki sayıya göre kökü al; paydaki sayıya göre kuvvetini al.
+2. Üs negatifse sonucun tersini al.
+3. Çift dereceli kökte çıkan değer negatif olamaz; negatif tabanda ayrıca tanım koşulunu incele.
+
 @bolum s5 10 | Sıralama ve köklü denklemler
+::kesfet kok-denklem
 ::fikir
 **Sıralamada** katsayıyı içeri al ya da kök derecelerini eşitle. **Denklemde** kökü yalnız bırak, karesini al ve bulduğun kökü **mutlaka dene**: kare almak sahte kök doğurabilir.
 
@@ -342,6 +546,24 @@ C) $c < b < a$ || Dereceleri eşitle; $c$ en büyük.
 D) $a < c < b$ || $c^6 = 30 > 27$.
 E) $c < a < b$ || $c$ en büyüktür.
 cozum: Dereceleri 6'da eşitle: $a = \sqrt[6]{25}$, $b = \sqrt[6]{27}$, $c = \sqrt[6]{30}$. Sıralama $a < b < c$.
+
+::ornek baslik="Kare almadan önce sağ tarafı denetle"
+soru: $\sqrt{2x+3}=-1$ denkleminin gerçek çözümü var mı?
+1. Sol taraf tanımlı olduğunda negatif değildir. || Karekökün temel özelliği.
+2. Sağ taraf −1; eşitlik olanaksızdır. || Negatif olmayan sayı negatife eşit olamaz.
+3. Kare alsaydık $2x+3=1$ ile x=−1 adayı gelirdi; ilk denklemde $\sqrt1=1\ne-1$. || Kare alma işaret bilgisini kaybettirdi.
+cevap: Çözüm yok; $\varnothing$.
+
+::yanilgi m5b tip=denklem
+yanlis: Karesi alınmış denklemi sağlayan her sayı ilk köklü denklemin de çözümüdür.
+neden: Kare alma pozitif ile negatifin farkını siler; başlangıçtaki işaret koşulu kaybolur.
+dogru: Tanım ve işaret koşullarını koru; her adayı ilk denklemde kontrol et.
+
+::strateji tip=denklem baslik="Aday ile kökü ayır"
+ipucu: Karekökün karşısında x içeren ifade bulunuyor.
+1. Kökün içini ≥0, karşı tarafı ≥0 yap.
+2. Kökü yalnız bırakıp kare al; elde edilen denklemi çöz.
+3. Bütün adayları ilk eşitlikte dene; elenen adayı cevap kümesine yazma.
 
 ::ozet
 - $\sqrt[n]{a} = a^{1/n}$; çift dereceli kökte içi ≥ 0, $\sqrt{x^2} = |x|$.

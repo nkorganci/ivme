@@ -1,91 +1,64 @@
 # İvme devir notu
 
-Önce bu notu ve AGENTS.md içindeki kalıcı öğretim beklentisini oku. Önceki 33 dersin
-giriş keşfini veya soru bankasını baştan üretme. Ayrıntı:
-[öğretim sözleşmesi](icerik/konuyu-ogrenelim.md).
+Önce AGENTS.md ve bu not okunur. Tamamlanan keşifleri veya soru bankasını baştan üretme.
+Ayrıntı: [öğretim sözleşmesi](icerik/konuyu-ogrenelim.md).
 
 ## Etkin görev
 
 - Güncelleme: 30 Ekim 2026 — Codex.
-- Kullanıcı talimatı: bütün matematik derslerini bölme pilotu kadar derin yap; sonra
-  token kalırsa matematikte henüz olmayan konuları da aynı kalitede ekle. Acele yok.
-- Yöntem ve ölçüt: öğretim sözleşmesindeki “Pilot derinliğindeki dersler” bölümü.
-  Dönüştürülenler `testler/konu-ogrenme-derin.test.mjs` `DERIN` listesindedir; listede
-  olmayan ilk ders (`sira:` sırasıyla) bir sonraki iştir.
-- Durum: kullanıcı devam talimatı verdi; çalışma etkin. Kapsam 9, 10, 11 ve 12.
-  sınıf matematiği. Mevcut 33 dersin varlığı dört sınıfın tamamlandığı anlamına gelmez;
-  özellikle 11–12. sınıf eksik dersleri ayrıca envantere alınmalı.
-- Tamamlanan: `temel-kavramlar`, `sayi-basamaklari`, `ebob-ekok`, `rasyonel-sayilar`,
-  `birinci-derece-denklemler`, `esitsizlikler`. Sıradaki: `mutlak-deger`, sonra
-  `uslu-ifadeler`, `koklu-ifadeler`, `oran-oranti` ve `sira:` düzenindeki diğerleri.
-- Her ders için adımlar: (1) bankadaki ÖSYM kodlarının görselini aç, çöz, DB anahtarıyla
-  salt okuma doğrula; bölüm başına en çok bir `::cikmis`. (2) `frontend/src/learn/derin/`
-  altında `<ders>.js` + `<ders>-cizim.jsx` yaz, `derin/index.js` ve `derin/cizimler.jsx`
-  kayıtlarına ekle. (3) Rehberi `worked-exams.js`'e ekle, bankayı yeniden üret.
-  (4) `s1b…` bölümlerini ekle (düzey, sorgula, ≥3 gerekçeli örnek, kontrol); ilk bölümün
-  ilk bloğu dersin kendi giriş keşfi kalır. (5) `DERIN` listesine ekle, model ve gerçek
-  soru taramasını derin teste yaz. (6) Node testleri, ayrı pakette UI denetimleri
-  (`--kesif`, `--gercek-ornek`, `--duzey`, tam akış) ve lab görüntülerine bak.
-  (7) Kanıt tablosu, bu not, `python scripts/ivme.py kontrol`, yerel commit.
-  Kullanıcı push istemediği için AGENTS.md uyarınca push yapılmaz.
-- `esitsizlikler` keşif görüntüleri masaüstü ve mobilde gözle incelendi.
-  Bölge modelinin sabit 8×6 sınırı geçerli noktaları eksiltiyordu; eksenler artık
-  katsayılara göre genişliyor. Bağımsız tarama testi ve UI sınır senaryosu
-  x+y≤16, x,y≥0 için 153 noktayı doğruluyor. Aynada eşit konumdaki etiketler ayrıldı.
-  Derin model testleri 14/14; beş keşfin masaüstü/mobil UI testi hatasız.
-  Güncel bölge ve ayna ekran görüntüleri ayrıca gözle kontrol edildi.
-- Banka eşlemesi “Birinci Dereceden Denklemler ve Eşitsizlikler” ÖSYM bloğunun çoğunu
-  `esitsizlikler`e atıyor; bir kısmı denklem, mutlak değer ya da geometri sorusu.
-  TYT-0617 (üç bilinmeyenli içecek sistemi, cevap E) ve TYT-0623 (denklem) denklem
-  dersine; TYT-0605, 0608, 0615, 0618, 0619, 0622 mutlak değer dersine uygun adaylardır.
+- Kullanıcı: yalnız matematik; bütün TYT ve AYT konularını bölme pilotu derinliğinde
+  tamamla, eksik dersleri de ekle. Kapsam bitmedi; başka branşa geçilmez.
+- Envanter: node scripts/konu-ogrenme-kapsam.mjs --write. Şu anda 34 ders;
+  12 pilot yapısında, 22 mevcut ders derinleştirilecek, ayrıca 22 alt kapsamda ders yok.
+  Yapı sayacı öğretmen onayı veya bütün alt konuların pedagojik tamamlığı değildir.
+  Eksik ders kimlikleri aynı betikte; açık kapsam [12.02](plan/12-icerik-ve-yayin.md).
+- Sıradaki mevcut ders: sayi-kesir-problemleri, sonra yuzde-karisim, kar-zarar,
+  hareket-problemleri, yas-isci-problemleri ve sira düzeni. Yeni AYT derslerinde
+  karmaşık sayılar, eşitsizlik/sistemler ve parabol henüz yok; ikinci derece dersi
+  geniş katalog kategorisinin yalnız denklem/kök-katsayı kısmını kapsar.
 
 ## Tamamlanan kapsam
 
-- Pilot eksikleri giderildi: üstteki “Anlatımı seç” 8 bölümün yalnız birinde `::duzey`
-  bulduğu için çoğu bölümde hiçbir şey değiştirmiyordu. Artık her bölümde konuya özgü
-  L1/L2/L3 kutusu var; seçim kutuya kaydırır, vurgular, keşifte kelimeleri (L1) veya
-  “Bir adım ileri”yi (L3) açar. L1'deki başarılı öğrenciye de üst düzey önerilir.
-- Yeni `::sorgula` bloğu (Günlük hayattan sorgula, `DailyInquiry.jsx`): her bölümde bir
-  günlük senaryo; puan/olay üretmez. Ayrıştırıcı ve doğrulayıcı biçimi denetler.
-- `bolme-bolunebilme.ders`: 8 bölüm / 4 oturum; 24 gerekçeli çözümlü örnek,
-  3 adım tamamlama, 4 yeni küçük kontrol, bölüm sonu yöntem ve hata açıklamaları.
-- Eski s1–s4, ön test/kontrol/havuz ve e1/b1 kimlikleri korunur. S1b–s4b eklenir.
-  Test motoru ve öğrenci DB kayıtları değiştirilmez.
-- İlk kutu keşfi korunur; `division-explorations.js`, `division-models.js` ve
-  `DivisionDiagram.jsx` ile 3 yeni bölüm keşfi: basamak katkısı, ortak koşul,
-  kuvvetlerde kalan döngüsü. Tüm girişlerde sayısal sonuç/görsel aynı veriyle üretilir.
-- Bölüm keşiflerinde `lessonId` sahipliği vardır; doğrulayıcı artık yalnız ilk keşfi
-  değil derste kullanılan bütün keşiflerin formüllerini tarar.
-- OGM 9. sınıf özet 09 ve 10'un ilk sayfaları görüntülenerek okundu. 2020 AYT
-  `AYT_Sayisal-0014` ve 2021 TYT `TYT-0593` özgün görsellerinden çözülüp rehberlendi.
-  Sonuçlar D/11 ve A/7; DB anahtarıyla eşleşiyor. Hash'ler öğretim sözleşmesinde.
-- TYT-0593 görsel incelemeyle `bilesik-kural` tipine düzeltildi. Banka betikle üretildi;
-  yalnız bu dersin bankası ve özet istatistiği değişti. İki çözümlü gerçek soru bağımsız
-  ustalık testinden hariç; soru kodu ve özgün görüntüler korunur.
-- Yöntem: somut bağlam → gerekçe → çözümlü örnek → koşullu kısa yol → öğrenci denemesi
-  → gerçek soru. IES kaynak bağlantısı ve pilot dosya/komutları öğretim sözleşmesinde.
-- Diğer 32 ders (sıra 100–1010): her bölüme bir `::sorgula`, en az iki gerekçeli çözümlü
-  örnek; gerekçesiz bütün çözüm/tamamlama adımlarına gerekçe eklendi. Var olan soru/kart
-  kimlikleri korunur. Sorgulama sayıları `kontrol:` ifadesiyle ya da elle doğrulandı.
-- `testler/konu-ogrenme-bicim.test.mjs` artık bütün `.ders` dosyalarını denetler; yeni ders de
-  her bölümde üç düzey, sorgulama, iki gerekçeli örnek ve adım gerekçesi olmadan geçmez.
+- Bu pakette mutlak-deger, uslu-ifadeler, koklu-ifadeler ve oran-oranti derinleştirildi;
+  ikinci-derece-denklemler yeni eklendi. Beş dersin her biri 8 bölüm ve 24 gerekçeli
+  çözümlü örnek; her bölümde L1/L2/L3, günlük sorgulama ve bağımsız kontrol bulunur.
+  Bölüm başına en çok bir rehberli gerçek soru vardır.
+- Yeni 17 etkileşimli keşif: mutlak değerde 4, üslü/köklü/oranda üçer, yeni ikinci
+  derece dersinde giriş dahil 4. Modeller, çizimler ve kayıtlar learn/derin altındadır.
+- Yeni 14 kaynak görseli okunmuş TYT/AYT rehberi, content/worked-math-continuation.js
+  üzerinden WORKED_EXAMS'e katılır. Soru kodları, sonuçlar ve görüntü SHA-256 kanıtları
+  öğretim sözleşmesindedir; hepsi DB anahtarıyla salt okuma karşılaştırıldı.
+- Banka yalnız betikle üretildi. TYT-0605,0608,0618 görsel okumayla eşitsizlikten
+  mutlak değere taşındı; diğer eski ders ve soru kimlikleri korunur. Yeni denklem
+  bankasındaki otomatik eşlemeler görsel inceleme/öğretmen onayı sayılmaz.
+- İkinci derece kaynakları: OGM 10. sınıf özet 34 ve 37, ilk sayfaları görsel okundu.
+  Üslü ifadede parantez, kökte işaret ve tanım, oranda ayrı sabitler ve birim verim,
+  ikinci derecede a≠0, sıfır kökünün korunması, Δ, Vieta ve yeni denklem koşulları işlendi.
 
-## Doğrulama ve kalan iş
+## Doğrulama
 
-- 64 Node testi geçti: içerik/KaTeX ve kopya soru denetimi, motor, keşif, pilot ve 33 dersin
-  biçim testi.
-- Ayrı paket `veri/ui-denetim/bolme-pilot-dist` ile her ders için `--duzey`, bütün derslerde
-  `--kesif`, `--gercek-ornek` ve iki dersin tam akışı masaüstü/mobilde geçti; taşma,
-  konsol/istek hatası yok.
-- Kalan: kullanıcının içerik değerlendirmesi ve yukarıdaki açık karar.
+- 89 Node testi geçti: içerik/KaTeX, hesap/şık, kopya soru, motor, keşif, biçim,
+  bölme pilotu ve 12 derin ders. Yeni modellerin tüm sınırlı girdileri ve matematiksel
+  değişmezleri; yeni gerçek soruların bağımsız hesapları derin testte.
+- Ayrı Vite paketi: veri/ui-denetim/matematik-derin-dist. Beş dersin keşif, rehberli
+  gerçek soru, düzey/sorgulama ve tam akış testleri masaüstü/mobilde geçti.
+  Taşma, konsol/istek hatası yok; keşif lab görüntüleri gözle incelendi.
+- Son işaret/yuvarlama açıklaması düzeltmeleri için ikinci derece ve oran keşifleri
+  son pakette ayrıca denetlendi; sonuçlar veri/ui-denetim/son-kesif-*.json.
+- Öğrenci DB'sine test cevabı yazılmadı; bütün UI denetimleri sahte API ile.
+  Kaynak arşivi değiştirilmedi. Plan ve 31 dosyalık commit öncesi kontrol geçti.
+  Yerel izleyici son paketi sundu; izleyiciyle aynı Windows PowerShell ortamında
+  kaynak/sunulan paket parmak izi eşleşti. Konu haritası ve yeni ders çalışan
+  1010 uygulamasında hatasız açıldı. Dört eski dersin tüm eski soru ve bölüm
+  kimlikleri önceki commit ile karşılaştırılıp korunduğu doğrulandı. Push yapılmadı.
 
 ## Sıradaki komut
 
-```powershell
-git status --short
-python scripts/ivme.py durum --hizli
-```
+    git status --short
+    node scripts/konu-ogrenme-kapsam.mjs --write
 
-Devamda önce bu pilot için gelen geri bildirimi uygula. Başarılı testleri girdi değişmeden
-tekrarlama. UI testleri yalnız sahte API ile; gerçek öğrenci DB'sine test cevabı yazma.
-Yerel main commit'i gerekir; kullanıcı istemedikçe push/dış dağıtım yapılmaz.
+Ardından sayi-kesir-problemleri bankasının ÖSYM görsellerini aç, çöz ve salt okuma
+cevap karşılaştırması yap. Mevcut giriş keşfi ile soru kimliklerini koruyarak en az
+8 bölüm / 20 gerekçeli örnek / 3 tamamlama / 4 keşif / 2 görseli okunmuş gerçek soru
+ölçütünü tamamla. DERIN listesine ancak model ve gerçek soru hesap testleriyle ekle.
+Ayrıntılı yöntem öğretim sözleşmesindedir. Geçen testleri girdi değişmeden tekrarlama.

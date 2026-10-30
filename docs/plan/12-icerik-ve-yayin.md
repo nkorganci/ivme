@@ -78,11 +78,24 @@ banka konu eşlemelerini görsel okuma kanıtı olmadan doğrulanmış sayma. He
 alt konularının aynı derinlikte görsel kapsama ulaşması ayrı içerik genişletmesidir;
 ilk bölümdeki keşif, tüm alt konuların uzman incelemesi yerine geçmez.
 
-**Etkin içerik sınırı:** Kullanıcı önce yalnız bölme ve bölünebilmenin bütün anlatımını
-pilot olarak istedi. Bu pilot sekiz bölüm, dört keşif, gerekçeli örnekler ve iki
-TYT/AYT çözümüyle hazırlanır. Diğer konulara yayılım, kullanıcının bu örneğe ilişkin
-değerlendirmesinden sonra yapılır; önceki “temel-kavramlar s2–s5” genişletmesi otomatik
-sıradaki görev değildir. Ayrıntılar [öğretim sözleşmesinde](../icerik/konuyu-ogrenelim.md).
+**Etkin içerik sınırı:** Kullanıcı yalnız matematikte bütün TYT ve AYT konularının
+bölme pilotuna göre tamamlanmasını istedi. Mevcut derslerin derinleştirilmesi ve
+hiç bulunmayan derslerin eklenmesi aynı görevin kapsamındadır. Başka branşa geçilmez.
+Güncel sayım: **node scripts/konu-ogrenme-kapsam.mjs --write**.
+34 mevcut dersin 12'si pilot yapısında, 22'si derinleştirilecek; ayrıca 22 eksik alt
+kapsam vardır. Geniş katalog kategorisi bağını bütün alt konuların tamlığı sayma.
+
+- Sıradaki mevcut ders sayi-kesir-problemleri; sonra yüzde-karışım, kâr-zarar,
+  hareket, yaş-işçi ve ders sırasındaki kalan matematik dersleri.
+- Eksik kapsam: ispat yöntemleri; karmaşık sayılar; ikinci derece/rasyonel
+  eşitsizlikler ve sistemler; fonksiyon dönüşümleri; parabol; yönlü açılar ve
+  trigonometrik fonksiyonlar; sinüs/kosinüs teoremleri ve ters trigonometrik fonksiyonlar;
+  toplam-fark/iki kat açı ve trigonometrik denklemler; üstel fonksiyon ve logaritma;
+  diziler; limit ve süreklilik; türev ve uygulamaları; belirsiz/belirli integral ve
+  uygulamaları. Kimlikler kapsam betiğindedir; yeni ders eklendikçe sayaç güncellenir.
+- Her derste özgün soru görseli, koşullu kısa yol, konuya uygun etkileşimli model,
+  gerekçeli örnek ve bağımsız aktarım korunur. Soru eşlemesi veya test geçişi öğretmen
+  onayı olarak sunulmaz. Ayrıntılar [öğretim sözleşmesinde](../icerik/konuyu-ogrenelim.md).
 
 Durum: `KISMI_KAYNAKLI_ICERIK`. Yayımlanmış rehberler `frontend/public/kaynakli-notlar.json`
 içindedir; hepsi öğretmen onayı bekler. Notu olmayan kontrollü konuların kimlik bazlı tek

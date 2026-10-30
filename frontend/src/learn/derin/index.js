@@ -7,8 +7,13 @@ import * as ebobEkok from './ebob-ekok.js';
 import * as rasyonelSayilar from './rasyonel-sayilar.js';
 import * as denklemler from './birinci-derece-denklemler.js';
 import * as esitsizlikler from './esitsizlikler.js';
+import * as mutlakDeger from './mutlak-deger.js';
+import * as usluIfadeler from './uslu-ifadeler.js';
+import * as kokluIfadeler from './koklu-ifadeler.js';
+import * as oranOranti from './oran-oranti.js';
+import * as ikinciDerece from './ikinci-derece-denklemler.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

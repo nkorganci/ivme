@@ -47,8 +47,10 @@ dogru-ters 2 1-3
 paylastirma 2 1-3
 bilesik 1 1-3
 
-@oturum Oran, orantı ve orantı türleri | s1 s2
-@oturum Paylaştırma ve bileşik orantı | s3 s4
+@oturum Oran ve birimler | s1 s1b
+@oturum Doğru, ters ve yanıltıcı ilişkiler | s2 s2b
+@oturum Paylaştırma ve sabitlerin seçimi | s3 s3b
+@oturum Bileşik orantı ve verim | s4 s4b
 
 @ontest
 ::soru o1 tip=oran-ozellik zorluk=1
@@ -133,7 +135,76 @@ E) 18 || Toplamı ikiye böldün; $k$'yi bul.
 kontrol: 36/12*4
 cozum: $a = 3k$, $b = 4k$, $c = 5k$; $12k = 36 \Rightarrow k = 3$; $b = 4k = 12$.
 
+::ornek baslik="Aynı oran aynı fark değildir"
+soru: $a/b=3/5$ ve $b-a=18$ ise a ve b nedir?
+1. $a=3k$, $b=5k$ yaz. || Oran değerleri gerçek sayıları ortak bir çarpanla belirler.
+2. $5k-3k=18$, $k=9$. || Fark da aynı ortak çarpanla ölçeklenir.
+3. $a=27$, $b=45$. || 27/45=3/5 ve 45−27=18.
+cevap: 27 ve 45; oran 3/5 iken fark 2 olmak zorunda değildir.
+
+@bolum s1b 14 | Parça, bütün ve birimlerin oranı
+
+::duzey
+L1: Bir tarifte 2 bardak süt ve 3 bardak su varsa süt/su oranı 2/3, süt/toplam oranı 2/5'tir. Payda hangi bütünü anlattığını değiştirir. Sayıları bölmeden önce iki niceliğin adını yaz.
+L2: Aynı türden ölçülerin oranında önce birimleri eşitle: 2 metre/50 santimetre, 200/50=4 olur. Farklı türden ölçülerin oranı birim taşır; yol/zaman birimi km/sa olan hızdır.
+L3: Eşdeğer oranlarda pay ve payda aynı sıfır olmayan sayıyla çarpılır. Payda sıfır olamaz; oran bağlamında adet ve uzunluklar genellikle pozitiftir. Bir miktarın diğerinden yüzde kaç fazla olduğu, farkın hangi miktara bölündüğüne bağlıdır.
+
+::ornek baslik="Parçanın bütüne oranı"
+soru: Kırmızı/mavi boncuk oranı 4/7; toplam 55 boncuk. Kırmızıların bütüne oranı ve adedi nedir?
+1. Toplam pay $4+7=11$. || Bütün iki grubun toplamıdır.
+2. Kırmızı/bütün $4/11$; bir pay $55/11=5$. || 4/7 parçanın diğer parçaya oranıdır.
+3. Kırmızı $4\cdot5=20$. || Gerçek adet için pay sayısını bir payla çarptık.
+cevap: $4/11$ ve 20; mavi 35, toplam 55.
+
+::ornek baslik="Aynı türde birimi eşitle"
+soru: 1,5 metrelik bir şeridin 30 santimetrelik şeride oranı nedir?
+1. $1{,}5$ m $=150$ cm. || Aynı tür ölçülerin oranı aynı birimle kurulmalı.
+2. $150/30=5$. || Şeritlerden beş kısa olan, bir uzun olana eşittir.
+3. Birimler sadeleşir; oran birimsizdir. || İki ölçü de cm cinsinde.
+cevap: 5; 1,5/30 kullanmak birimleri karıştırır.
+
+::ornek baslik="Ters oran ters yorum"
+soru: A'nın parasının B'ninkine oranı 3/4. B'nin parası A'nın parasından yüzde kaç fazla?
+1. A=3k, B=4k; fark k. || Ortak çarpan kullanınca gerçek paraları bilmek gerekmiyor.
+2. İstenen fark/A: $k/(3k)=1/3$. || “A'dan fazla” cümlesinde karşılaştırma tabanı A.
+3. Yüzde olarak $100/3$. || Aynı farkı B'ye bölersek farklı soru çözülür.
+cevap: Yüzde $33\frac13$; A ise B'den yüzde 25 azdır.
+
+::sorgula s1b-tarif baslik="Sütün oranı hangi bütüne?"
+durum: Bir karışımda 3 ölçek süt, 2 ölçek su var; başka madde yok.
+soru: Sütün karışımın tamamına oranı nedir?
+A) $3/2$ || Bu süt/su oranıdır; tamamı 5 ölçek.
++B) $3/5$ || Toplam 3+2=5; süt üç pay.
+C) $2/5$ || Bu suyun karışıma oranı.
+kontrol: 3/5
+neden: Oranın paydasında hangi miktarın istendiğini önce adlandır: süt/toplam = 3/(3+2).
+sinav: Parça/parça oranıyla parça/bütün oranını birbirine karıştırma.
+dusun: Aynı oranda 20 ölçek karışımda kaç ölçek süt gerekir?
+yanit: $20\cdot3/5=12$ ölçek süt; 8 ölçek su.
+
+::tamamla baslik="Birimleri sırayla eşitle"
+soru: 2 kg'ın 250 g'a oranı kaçtır?
+1. 2 kg=2000 g. || Aynı birime çevirdik.
+?2. Oran $2000/250=8$. || Pay ve payda aynı tür nicelik.
+?3. 250 gramın sekiz katı 2000 gram. || Ters çarpımla kontrol ettik.
+cevap: 8.
+
+::soru c1b tip=oran-ozellik zorluk=2
+A/B=2/7 ise A'nın A+B toplamına oranı nedir?
+A) $2/7$ || Paydada yalnız B değil toplam isteniyor.
+B) $7/9$ || Bu B'nin toplama oranı.
++C) $2/9$ || A=2k, B=7k ve toplam 9k.
+kontrol: 2/(2+7)
+cozum: $A/(A+B)=2k/(9k)=2/9$; toplam sıfır değil.
+
+::strateji tip=oran-ozellik baslik="Orandaki iki niceliği adlandır"
+ipucu: “Oranı”, “bütüne”, “kaç kat”, “yüzde kaç fazla” deniyor.
+1. Pay ve paydanın adını yaz; parça mı bütün mü belirle.
+2. Aynı tür niceliklerde birimi eşitle.
+3. Gerçek miktarlar bilinmiyorsa ortak k kullan; paydayı sıfır yapma.
+
 @bolum s2 9 | Doğru ve ters orantı
+::kesfet oran-tur
 ::fikir
 **Doğru orantı:** biri kaç katına çıkarsa diğeri de o kadar katına çıkar; $\frac{y}{x} = k$ (grafik: orijinden geçen doğru). **Ters orantı:** biri kaç katına çıkarsa diğeri o kadar katına bölünür; $x \cdot y = k$ (grafik: hiperbol).
 
@@ -197,7 +268,67 @@ E) $6{,}4$ || Doğru orantı gibi hesapladın; hız artınca süre azalır.
 kontrol: 4-75*4/120
 cozum: Yol $75 \cdot 4 = 300$ km. Yeni süre $300 : 120 = 2{,}5$ saat; $4 - 2{,}5 = 1{,}5$ saat erken varır.
 
+::ornek baslik="Sabit yol için hız ile süre"
+soru: 180 km yol 60 km/sa hızla 3 saatte gidiliyor. Aynı yol 90 km/sa hızla kaç saat?
+1. Sabit çarpım hız×süre=180. || Yol değişmiyor.
+2. $90t=180$, $t=2$. || Daha hızlı gidince süre azalmalı.
+3. Hız 3/2 katına çıktı; süre 2/3 katı oldu. || Ters orantının değişim yönünü kontrol ettik.
+cevap: 2 saat; doğru orantıyla 4,5 saat yazmak ters yönde değiştirir.
+
+@bolum s2b 14 | Her artan ilişki doğru orantı değildir
+
+::duzey
+L1: Takside yol arttıkça ücret artar. Ama sabit açılış ücreti varsa yol iki katına çıkınca toplam ücret iki katına çıkmaz. “İkisi de artıyor” gözlemi tek başına doğru orantı kanıtı değildir.
+L2: Doğru orantıda $y=kx$, ters orantıda $xy=k$. $y=kx+b$ ve b≠0 ise bölüm sabit değildir; artan bir doğrusal ilişki olabilir ama doğru orantı değildir. Sabit bir ilişkiyi test etmek için en az iki farklı veri çiftini kontrol et.
+L3: Bir modelin bütün aralıkta geçerli olması için bağlamdaki koşulların da sabit kalması gerekir. Toplu alım indirimi, işçilerin birbirini engellemesi veya arıza gibi etkiler basit orantıyı bozabilir. Verilen varsayımı sorunun dışında icat etme.
+
+::ornek baslik="Açılış ücreti"
+soru: $U=20+5x$ lira ücret, yol x km. 2 km ile 4 km ücretleri doğru orantılı mı?
+1. Ücretler 30 ve 40 lira. || Formülde x yerine yazdık.
+2. Oranlar $30/2=15$, $40/4=10$. || Ücret/yol sabit değil.
+3. Yol iki kat ama ücret 4/3 kat. || 20 liralık sabit bölüm ölçeklenmedi.
+cevap: Hayır; toplam ücret yolla doğru orantılı değildir.
+
+::ornek baslik="Tablodan türü tanı"
+soru: (x,y) çiftleri (2,12), (3,8), (6,4). Hangi orantı modeliyle uyumlular?
+1. Bölümler 6, 8/3 ve 2; sabit değil. || Doğru orantıyı sınadık.
+2. Çarpımlar 24,24,24. || Ters orantıda korunan büyüklük.
+3. Verilen üç çift $y=24/x$ ile uyumlu. || Pozitif ve sıfırdan farklı x değerlerinde model tutuyor.
+cevap: Ters orantı; yalnız bu veriler tüm gerçek dünyada modeli kanıtlamaz.
+
+::ornek baslik="Birim fiyat değişirse"
+soru: 1 kg ürün 40 TL, 3 kg paket 105 TL. Ücret kütleyle aynı doğru orantıda mı?
+1. İlk birim fiyat 40 TL/kg. || Bir kilogramlık fiyat.
+2. Paket birim fiyatı $105/3=35$ TL/kg. || Aynı birimde oran hesapladık.
+3. 40≠35; tek sabit k yok. || İndirim birim fiyatı değiştirmiş.
+cevap: Hayır; paketlerde ayrı fiyat modeli vardır.
+
+::sorgula s2b-salon baslik="Sabit ücretli çalışma salonu"
+durum: Bir salonda giriş 30 TL, her saat 10 TL. Bir saat 40 TL, iki saat 50 TL.
+soru: Süre ile toplam ücret doğru orantılı mı?
+A) Evet, ikisi de artıyor || Birlikte artmak yeterli değil; oran sabit kalmalı.
++B) Hayır, giriş ücreti oranı değiştiriyor || Saat başına toplam 40 ve 25 TL olur.
+C) Ters orantılı || Süre artınca toplam ücret azalmıyor; çarpım da sabit değil.
+neden: $U=30+10t$; $U/t=30/t+10$ sabit değildir. Yalnız ek saat ücreti süreyle orantılıdır.
+sinav: Doğru orantıyı artış yönünden değil sabit bölümden tanı.
+dusun: Giriş ücreti kaldırılırsa nasıl değişir?
+yanit: $U=10t$ olur; t>0 için U/t=10 sabit, doğru orantı.
+
+::yanilgi m2b tip=dogru-ters
+yanlis: Biri artarken diğeri artıyorsa doğru orantı vardır.
+neden: $y=x+1$ de artar ama y/x sabit değildir.
+dogru: Sabit bölüm veya sabit çarpımı kontrol et; bağlamdaki sabit koşulu da belirt.
+
+::soru c2b tip=dogru-ters zorluk=2
+$y=6x+12$ için x=3 ve x=6 değerlerindeki y değerlerinin farkı kaçtır?
+A) 12 || Bu sabit açılış; iki değerin farkında silinir.
++B) 18 || 30 ve 48; fark 18.
+C) 30 || Bu ilk y değeridir.
+kontrol: (6*6+12)-(6*3+12)
+cozum: x üç artınca y $6\cdot3=18$ artar; bu toplamların doğru orantılı olduğu anlamına gelmez.
+
 @bolum s3 10 | Orantılı paylaştırma
+::kesfet oran-pay
 ::fikir
 **Doğru orantılı** paylaşımda paylar $2k, 3k, 4k$; **ters orantılı** paylaşımda $\frac{k}{2}, \frac{k}{3}, \frac{k}{6}$. Ters orantıda paydaların EKOK'uyla çarpınca paylar tam sayılarla yazılır.
 
@@ -254,7 +385,73 @@ E) 330 || Hesabı kontrol et.
 kontrol: 180/2+180/3+180/6
 cozum: Paylar $\frac{k}{2}, \frac{k}{3}, \frac{k}{6}$. $\frac{k}{2} = 90 \Rightarrow k = 180$. Toplam $90 + 60 + 30 = 180$ TL.
 
+::ornek baslik="Ters paylaşımda sıralama"
+soru: 120 TL, 2 ve 3 ile ters orantılı paylaştırılırsa paylar nedir?
+1. Ters ağırlıklar $1/2:1/3=3:2$. || Ortak 6 ile çarparak kesirleri giderdik.
+2. Bir pay $120/(3+2)=24$. || Toplam beş ağırlık payı var.
+3. Paylar 72 ve 48. || 2×72=3×48=144; çarpımlar sabit.
+cevap: 2'ye karşılık 72 TL, 3'e karşılık 48 TL.
+
+::cikmis TYT-0680 tip=paylastirma
+
+@bolum s3b 14 | İki bağımsız orantı ve ortak miktar
+
+::duzey
+L1: Bir faturada su bedeli kullanılan suyla, taşıma bedeli mesafeyle orantılı olabilir. İki hizmetin toplamını yalnız su miktarıyla orantılayamayız. Her parçayı kendi birim fiyatıyla yazmak gerekir.
+L2: $T=ak+bm$ gibi toplamda a ve b farklı orantı sabitleridir. Aynı tür işlem ve aynı fiyatlandırma için sabit korunur; farklı hizmete aynı k'yı zorla vermek ek bilgi uydurmaktır.
+L3: Eşit adet bilgisiyle eşit oran bilgisi de farklıdır. Paylar eşitse oranların paydaları değişebilir. İki denklem verildiyse sabitlerin oranını bulmak gerçek ücretleri bulmadan sorulanı çözmeye yetebilir.
+
+::ornek baslik="Alan ile katın iki ayrı ücreti"
+soru: Aidat $T=as+bk$ olsun. 80 m² 1. kat 100 TL, 60 m² 2. kat 100 TL ise b/a oranı nedir?
+1. $80a+b=60a+2b$. || Eşit toplam aidatları eşitledik.
+2. $20a=b$. || Alan farkının bedeli bir kat farkını karşılar.
+3. a≠0 için b/a=20. || İki fiyatı ayrı bulmak gerekmiyor.
+cevap: 20; a=1,b=20 seçilirse iki toplam da 100.
+
+::ornek baslik="Eşit adet, farklı payda"
+soru: Bir kutuda 20, diğerinde 30 kalem var. Mavi adetleri eşit; ilk kutuda mavi oranı 3/5. İkincide oran ne?
+1. İlk mavi adet $20\cdot3/5=12$. || Oranla toplamı çarparız.
+2. İkinci kutuda da 12 mavi var. || Eşit olan oran değil adettir.
+3. İkinci oran $12/30=2/5$. || Bütün değişince pay aynı olsa da oran değişir.
+cevap: $2/5$.
+
+::ornek baslik="Oranlardan sabitleri ele"
+soru: Ücret $T=4s+bk$; 10 km ve 1 paket için ücret, 5 km ve 3 paketin ücretine eşit. b kaçtır?
+1. $40+b=20+3b$. || İki toplamı ayrı bileşenleriyle yazdık.
+2. $20=2b$, b=10. || Aynı terimleri iki taraftan çıkardık.
+3. İlk ücret 50, ikincisi $20+30=50$. || Sağlama aynı toplamı verdi.
+cevap: Paket başına 10 TL; yolun birim ücretiyle aynı sabit değildir.
+
+::sorgula s3b-tasima baslik="Faturanın iki kalemi"
+durum: Nakliye ücreti kilogram başına 2 TL ile kilometre başına 3 TL'nin toplamı. 10 kg yük, 4 km taşınıyor.
+soru: Toplam ücret kaçtır?
+A) 240 TL || İki bileşeni çarpmak yerine toplamalısın.
+B) 28 TL || Kilometre ücretini yanlış çarptın; 3×4=12.
++C) 32 TL || 2×10+3×4=20+12.
+kontrol: 2*10+3*4
+neden: Ayrı hizmetlerin tutarları ayrı hesaplanır, sonra toplanır. Birimlerin ikisi de TL'ye dönüşür.
+sinav: Birden çok orantılı bileşenin toplamında her bileşenin sabitini ve birimini koru.
+dusun: Yalnız yük iki katına çıkarsa ücret iki katına çıkar mı?
+yanit: Hayır; $2\cdot20+3\cdot4=52$ TL. Yol bileşeni sabit kaldı.
+
+::soru c3b tip=oran-ozellik zorluk=2
+$T=ak+bm$ ve $6a+2b=4a+3b$ ise b/a kaçtır? a>0.
+A) 1 || 2a=b eşitliğini çöz.
++B) 2 || Her iki taraftan 4a ve 2b çıkarınca b=2a.
+C) 3 || Katsayıları tek başına oranlama.
+kontrol: 2
+cozum: $6a-4a=3b-2b$, $2a=b$, dolayısıyla b/a=2.
+
+::strateji tip=oran-ozellik baslik="Toplamda bileşenleri ayır"
+ipucu: “İki ücretin toplamı”, “alanla ve katla” gibi iki farklı büyüklük geçiyor.
+1. Her bileşene kendi birim sabitini yaz.
+2. Verilen toplam eşitlikleri kur; sabitlerin oranı yetiyorsa tek tek fiyat arama.
+3. Sonucu tüm bileşenlerle yeniden hesapla; toplamı tek orantı gibi kullanma.
+
+::cikmis TYT-0740 tip=dogru-ters
+
 @bolum s4 8 | Bileşik orantı: işçi, makine ve süre
+::kesfet oran-bilesik
 ::fikir
 Yapılan iş **çalışan sayısı × günlük saat × gün** ile doğru orantılıdır. İki durum için $\dfrac{\text{işçi} \cdot \text{saat} \cdot \text{gün}}{\text{iş}}$ oranı aynıdır.
 
@@ -304,6 +501,79 @@ C) $10{,}5$ || Hesabı yeniden yap.
 E) 15 || İşçi sayısının arttığını unuttun.
 kontrol: 6*8*10/(8*5)
 cozum: İş $6 \cdot 8 \cdot 10 = 480$ işçi-saat. Yeni günlük çalışma $8 \cdot 5 = 40$ işçi-saat; $480 : 40 = 12$ gün.
+
+::ornek baslik="Üretim miktarını da sabit sanma"
+soru: 2 makine 3 saatte 60 parça üretiyor. Eş verimli 3 makine 4 saatte kaç parça üretir?
+1. Verim $60/(2\cdot3)=10$ parça/(makine·saat). || Bir makinenin bir saatlik üretimine indik.
+2. Yeni emek $3\cdot4=12$ makine-saat. || İki bağımsız çarpan birlikte değişti.
+3. Üretim $12\cdot10=120$. || Makine-saat ile birim verim çarpılır.
+cevap: 120 parça; eskiye göre emek ve üretim iki kat.
+
+@bolum s4b 14 | Verim, değişen iş ve varsayımı kontrol
+
+::duzey
+L1: İşçi sayısı tek başına yeterli bilgi değildir. Her işçinin bir saatte yaptığı iş ve günde çalıştığı saat de gerekir. Önce bir işçi-saatin ne kadar ürettiğini bul; sonra toplam emekle çarp.
+L2: Aynı verimde $Q=v\cdot w\cdot h\cdot d$. İş miktarı Q artarsa gereken gün d artar; işçi w veya günlük saat h artarsa d azalır. Her değişimi ayrı oranla kurmak yanlış yön seçimini önler.
+L3: Verimler farklıysa işçiler eş kişi olarak toplanmaz; saatlik üretimleri toplanır. Ortak çalışmanın verimi azaltıldığı açıkça verilmişse onu da modele kat. Sabit verim varsayımını, gerçek dünyada her zaman kanıtlanmış ilişki gibi sunma.
+
+::ornek baslik="İş iki kat, kapasite üç kat"
+soru: 4 işçi günde 6 saat çalışıp bir işi 9 günde bitiriyor. İki kat işi 8 işçi günde 9 saatle kaç günde bitirir?
+1. Eski emek $4\cdot6\cdot9=216$ işçi-saat. || Bir işin gerektirdiği toplam emek.
+2. İki iş 432 işçi-saat; yeni günlük kapasite $8\cdot9=72$. || İş ve günlük kapasite ayrı değişti.
+3. Gün $432/72=6$. || Birimler işçi-saat bölü işçi-saat/gün.
+cevap: 6 gün; gün sayısının azalması kapasite artışının iş artışından büyük olmasıyla tutarlı.
+
+::ornek baslik="Farklı verimli makineleri topla"
+soru: A makinesi saatte 5, B saatte 7 parça üretir. Birlikte 84 parçayı kaç saatte üretirler?
+1. Ortak saatlik üretim $5+7=12$. || Bağımsız üretimleri aynı sürede toplanır.
+2. $12t=84$, t=7. || Toplam üretim hız×süre.
+3. A 35, B 49 parça üretir; toplam 84. || Makine katkılarını ayrı kontrol ettik.
+cevap: 7 saat; iki makineyi eş verimli saymadık.
+
+::ornek baslik="Verim de azalırsa"
+soru: 5 makine saatte kişi başı 12 parça ile 2 saatte üretim yapıyor. 10 makinenin her birinin verimi saatte 9 parçaya düşerse aynı üretim kaç saatte olur?
+1. Eski üretim $5\cdot12\cdot2=120$. || Sabit tutulacak iş miktarını bulduk.
+2. Yeni saatlik toplam $10\cdot9=90$. || Makine iki kat ama birim verim azaldı.
+3. Süre $120/90=4/3$ saat. || Yalnız makine sayısına göre yarı süre kullanmak yanlış olur.
+cevap: $4/3$ saat, yani 80 dakika; $90\cdot4/3=120$.
+
+::tamamla baslik="Bileşik oranı birimle doğrula"
+soru: 3 işçi günde 5 saatle 4 günde bir iş yapıyor. 5 işçi günde 6 saatle kaç günde aynı işi yapar?
+1. Gereken toplam emek $3\cdot5\cdot4=60$ işçi-saat. || İş ve verim sabit.
+?2. Yeni günlük kapasite $5\cdot6=30$ işçi-saat/gün. || İşçi ve günlük saat birlikte çarpılır.
+?3. $60/30=2$ gün. || Kapasite iki kat, gün yarı.
+cevap: 2 gün.
+
+::sorgula s4b-atolye baslik="Atölyenin yeni çalışma düzeni"
+durum: 4 eş verimli işçi, günde 3 saatle 6 günde bir işi bitiriyor. İşçi sayısı 6'ya, günlük saat 4'e çıkıyor; iş aynı.
+soru: Yeni süre kaç gündür?
++A) 3 || Eski emek 72, yeni günlük kapasite 24; 72/24=3.
+B) 4 || Yalnız işçi artışını dikkate aldın; saat de arttı.
+C) 8 || Kapasite artarken sabit işin süresi artmaz.
+kontrol: 4*3*6/(6*4)
+neden: Emek sabit: $4\cdot3\cdot6=6\cdot4\cdot d$. Buradan d=3.
+sinav: Her çarpanı yazıp sorulanı yalnız bırak; değişim yönünü sonradan tahmininle karşılaştır.
+dusun: İş de iki katına çıksaydı kaç gün olurdu?
+yanit: 144 işçi-saat gerekir; günlük 24 ile 6 gün.
+
+::yanilgi m4b tip=bilesik
+yanlis: İşçi sayısı artarsa iş miktarı ve günlük saat ne olursa olsun süre aynı oranda azalır.
+neden: Süreyi toplam iş ve günlük kapasitenin oranı belirler; diğer çarpanlar da değişebilir.
+dogru: $d=Q/(vwh)$ yaz; her değişeni bu denklemde izle.
+
+::soru c4b tip=bilesik zorluk=3
+Bir iş 6 işçiyle günde 4 saat çalışılarak 5 günde bitiyor. İşin yarısı 3 işçiyle günde 5 saat çalışılırsa kaç gün sürer?
+A) 2 || Eski işin yarısı 60 işçi-saattir; yeni günlük kapasite 15.
+B) 3 || 15×3=45, gereken 60 değil.
++C) 4 || 60/15=4.
+kontrol: (6*4*5/2)/(3*5)
+cozum: Eski iş 120 işçi-saat; yarısı 60. Yeni ekip günde 15 işçi-saat üretir; 4 gün gerekir.
+
+::strateji tip=bilesik baslik="Birim verime in"
+ipucu: İşçi, makine, saat, gün ve üretim birlikte değişiyor.
+1. Gerekirse önce bir işçi-saatin üretimini bul.
+2. Aynı işi veya yeni iş miktarını toplam emek cinsinden yaz; yeni günlük kapasiteye böl.
+3. Birimleri, varsayılan sabit verimi ve artış/azalış yönünü kontrol et.
 
 ::ozet
 - Eşit oranlara $k$ de; toplam/fark $k$'yi verir.

@@ -1,0 +1,613 @@
+@ders ikinci-derece-denklemler
+baslik: İkinci Dereceden Denklemler ve Kök-Katsayı İlişkileri
+kisa: İkinci derece denklemler
+sinav: TYT AYT
+unite: ikinci-derece
+sinif: 10
+sira: 1100
+onkosul: carpanlara-ayirma koklu-ifadeler
+karisan: birinci-derece-denklemler
+kategori: excel.tyt.matematik.14d232b544077857888b excel.ayt.matematik.14d232b544077857888b
+hedef: İkinci derece koşulunu tanımak; çarpan, tam kare ve kök formülüyle çözmek; diskriminantı yorumlamak; kök-katsayı ilişkilerinden yeni denklemler ve simetrik ifadeler kurmak.
+neden: Alan ve çarpım koşulları x² doğurur. Yalnız kökleri hesaplamayı değil hangi yöntemin gerekli olduğunu öğrenmek AYT'deki parametre sorularını kısaltır.
+kaynak: OGM 10. Sınıf Konu Özeti 34 — İkinci Dereceden Denklemlerin Çözümü, sayfa 1 | OGM 10. Sınıf Konu Özeti 37 — Kökler ile Katsayılar Arasındaki İlişki, sayfa 1
+tekrar: 15
+ustalik-dk: 18
+hedef-sure: 100
+anahtar: ikinci dereceden | diskriminant | kökler toplamı | kökler çarpımı | kökleri | denklemin bir kökü
+baslik-kurali: ikinci dereceden bir bilinmeyenli | kökleri ile katsayıları | diskriminant
+haric: karmaşık | eşitsizlik | sistemleri
+
+@tip tanim-carpan 25 s1
+ad: Derece, sıfır çarpımı ve kök kontrolü
+ipucu: Denklem ikinci derecedir, bir kökü verilmiştir veya kolay çarpanlara ayrılır.
+strateji: Düzenle, x² katsayısının sıfır olmadığını denetle; çarpanlara ayır ve her çarpanı sıfırla.
+anahtar: ikinci dereceden | köklerinden biri | çarpan
+
+@tip kok-formulu 20 s2b
+ad: Tam kare ve kök formülü
+ipucu: Kolay çarpan yok; gerçek köklerin değeri isteniyor.
+strateji: a,b,c'yi işaretleriyle oku; Δ=b²−4ac ve x=(−b±√Δ)/(2a) uygula, ilk denklemde kontrol et.
+anahtar: çözüm kümesi | köklerini bulunuz | denkleminin çözümü
+
+@tip delta 15 s2b
+ad: Gerçek kök sayısı ve parametre
+ipucu: İki farklı, çift katlı veya gerçek kökü yok deniyor.
+strateji: Önce a≠0; sonra Δ'nın pozitif, sıfır veya negatif olmasını kullan.
+anahtar: diskriminant | çift katlı | gerçek kökü | farklı kök
+
+@tip vieta 25 s3b
+ad: Köklerin toplamı, çarpımı ve simetrik ifadeler
+ipucu: Kökler tek tek değil toplam, çarpım veya kareler toplamı soruluyor.
+strateji: S=−b/a ve P=c/a yaz; isteneni S ve P ile ifade et; bölme varsa P≠0 koşulunu koru.
+anahtar: toplamı | çarpımı | kareleri | oranı
+
+@tip yeni-denklem 15 s4
+ad: Kökleri dönüştürülmüş yeni denklem
+ipucu: Köklerin katını, fazlasını veya tersini kök kabul eden denklem isteniyor.
+strateji: Yeni köklerin toplamını S', çarpımını P' olarak bul; y²−S'y+P'=0 kur.
+anahtar: kök kabul | kökleri olan | terslerini | yeni denklem
+
+@ustalik
+tanim-carpan 2 1-3
+kok-formulu 1 1-3
+delta 1 1-3
+vieta 1 1-3
+yeni-denklem 1 1-3
+
+@oturum Derece ve çarpanlar | s1 s1b
+@oturum Tam kare ve diskriminant | s2 s2b
+@oturum Parametre ve kök-katsayı | s3 s3b
+@oturum Yeni denklem ve ileri bağlantılar | s4 s4b
+
+@ontest
+::soru o1 tip=tanim-carpan zorluk=1
+$x^2-11x=0$ denkleminin farklı gerçek kök sayısı kaçtır?
+A) 0 || x=0 ve x=11 eşitliği sağlar.
+B) 1 || x'e bölmek sıfır kökünü kaybettirir.
++C) 2 || x(x−11)=0; iki farklı kök.
+kontrol: 2
+cozum: x=0 veya 11. Sıfır çarpımını kullandık; x ile bölmedik.
+
+::soru o2 tip=delta zorluk=1
+$x^2+4x+4=0$ denkleminin tek farklı kökü kaçtır?
++A) $-2$ || (x+2)²=0.
+B) 2 || Çarpanın sıfır olduğu x'i bul.
+C) 4 || Sabit terim kök değildir.
+kontrol: -2
+cozum: Δ=0; x=−4/2=−2. İlk ifadede 4−8+4=0.
+
+::soru o3 tip=vieta zorluk=1
+$3x^2-9x+2=0$ denkleminin kökler toplamı kaçtır?
+A) 9 || Baş katsayı 3'e bölmelisin.
++B) 3 || −b/a=9/3.
+C) $2/3$ || Bu kökler çarpımıdır.
+kontrol: 9/3
+cozum: S=−(−9)/3=3; kökleri ayrı hesaplamak gerekmez.
+
+@bolum s1 15 | Alan neden ikinci derece oluşturur?
+::kesfet ikinci-derece-denklemler
+
+::fikir
+$ax^2+bx+c=0$ biçiminde a≠0 ise denklem ikinci derecedendir. Kök, yerine yazınca sol tarafı sıfır yapan sayıdır. Bağlamın pozitif uzunluk gibi ek koşulları cebirsel köklerden bazılarını eleyebilir.
+
+::duzey
+L1: Bir karenin alanı kenarın kendisiyle çarpımıdır; bu yüzden x² yazarız. Denklemde iki tarafı aynı işlemlerle düzenler, bütün terimleri bir tarafa toplarız. Kökü bulunca yerine yazarak gerçekten sıfır verdiğini görürüz.
+L2: Standart biçimden a,b,c okunur. Eksik terimin katsayısı 0'dır; $2x^2-8=0$ için b=0. a sıfırsa ikinci dereceden söz edemeyiz; denklem doğrusal veya sabit bir eşitlik olabilir.
+L3: Bir ifadenin ilk görünüşündeki en büyük kuvveti değil, sadeleştirilmiş denklemin derecesini kullan. İki tarafta x³ terimleri birbirini götürebilir. Parametreli soruda yüksek dereceli katsayıları sıfırlarken x² katsayısının sıfır olmamasını ayrıca yaz.
+
+::ornek baslik="Standart biçime getir"
+soru: $2x(x-3)=5$ denkleminde a,b,c nedir?
+1. Çarpımı aç: $2x^2-6x=5$. || Dağılma kuralı.
+2. 5'i iki taraftan çıkar: $2x^2-6x-5=0$. || Standart biçimde sağ taraf sıfır olmalı.
+3. a=2,b=−6,c=−5. || Katsayıyı önündeki işaretle birlikte okuduk.
+cevap: 2,−6,−5; a sıfır değil.
+
+::ornek baslik="Derece koşulunda sıfır olmayanı unutma"
+soru: $(m-2)x^3+(m+n)x^2+5=0$ ikinci derecedense m ve n için ne gerekir?
+1. x³ katsayısı 0: m=2. || Daha yüksek derece kalmamalı.
+2. x² katsayısı $2+n\ne0$. || İkinci dereceyi koruyan terim silinmemeli.
+3. n≠−2. || İki koşul birlikte gereklidir.
+cevap: m=2, n≠−2; n=−2 olursa 5=0 kalır.
+
+::ornek baslik="Kökü yerine koy"
+soru: $x^2+px-12=0$ denkleminin bir kökü 3 ise p kaçtır?
+1. x=3 yaz: $9+3p-12=0$. || Kök eşitliği sağlar.
+2. $3p=3$, p=1. || Aynı işlemlerle p'yi yalnız bıraktık.
+3. Denklem $x^2+x-12=(x+4)(x-3)=0$. || Verilen kök 3 gerçekten bir çarpanı sıfırlıyor.
+cevap: p=1; diğer kök −4.
+
+::sorgula s1-bahce baslik="Negatif ölçü neden elenir?"
+durum: Eni x, uzunluğu x+1 olan dikdörtgenin alanı 12 m²; cebir x=3 ve x=−4 köklerini veriyor.
+soru: Bahçenin eni ne olmalıdır?
++A) 3 m || Uzunluk 4 m ve alan 12; ölçüler pozitif.
+B) −4 m || Cebirsel kök ama negatif uzunluk fiziksel bağlama uymaz.
+C) İki kökün toplamı −1 m || Toplamı değil bahçenin enini arıyoruz.
+kontrol: 3
+neden: $x(x+1)=12$ cebirsel olarak iki köke sahiptir. Bahçe ölçüsü x>0 koşulunu da sağlamalı.
+sinav: Denklem çözüm kümesi ile bağlama uygun cevap kümesini ayır.
+dusun: Yalnız gerçek sayılarda denklem çözülse −4 atılır mıydı?
+yanit: Hayır; −4 ve 3 ikisi de cebirsel köktür.
+
+::yanilgi m1 tip=tanim-carpan
+yanlis: x² görünen her denklem ikinci derecedendir.
+neden: x² katsayısı düzenlemeden sonra sıfır olabilir; daha yüksek kuvvet de kalabilir.
+dogru: Sadeleştir, en yüksek sıfır olmayan kuvvetin 2 olduğunu doğrula.
+
+::soru c1 tip=tanim-carpan zorluk=2
+$(t-1)x^3+(t+2)x^2+x=0$ denklemi ikinci derecedense t kaçtır?
+A) −2 || Bu x²'yi siler ama x³ kalır.
++B) 1 || x³ silinir, x² katsayısı 3 kalır.
+C) 0 || x³ katsayısı −1 olur.
+kontrol: 1
+cozum: t−1=0 için t=1; t+2=3≠0.
+
+@bolum s1b 15 | Çarpanlara ayır ve sıfır kökünü koru
+::kesfet ikinci-carpan
+
+::duzey
+L1: İki gerçek sayının çarpımı sıfırsa en az biri sıfırdır. (x−2)(x+5)=0 için x=2 veya x=−5. Toplamın sıfır olması aynı şey değildir; 2+(−2)=0 iken iki terim de sıfır değil.
+L2: $ax^2+bx+c$ çarpanlara ayrıldığında çapraz terimleri kontrol et. Ortak x varsa onu çarpan al; x'e bölerek silme. Aynı çarpan iki kez varsa tek farklı kök vardır ama kök çift katlıdır.
+L3: Çarpan biçimi a(x−r)(x−s), baş katsayıyı ve kökleri birlikte gösterir. Bu ifade açılınca x katsayısı −a(r+s), sabit a·rs olur. Kökler kesirli olsa da yöntem geçerlidir.
+
+::ornek baslik="Sıfır kökü kaybolmasın"
+soru: $3x^2-12x=0$ denklemini çöz.
+1. Ortak $3x$ çıkar: $3x(x-4)=0$. || İki terimde de aynı çarpan var.
+2. $x=0$ veya x−4=0. || 3 sıfır olamayacağı için iki x koşulu kalır.
+3. Kökler 0 ve 4. || İkisi de ilk ifadeyi sıfırlar.
+cevap: $\{0,4\}$.
+
+::ornek baslik="Baş katsayı bir değilse"
+soru: $2x^2+x-6=0$ denklemini çöz.
+1. $(2x-3)(x+2)$ açılımını dene. || Sabit −6, baş çarpım 2x² olmalı.
+2. Açılım $2x^2+4x-3x-6=2x^2+x-6$. || Orta terimi de doğruladık.
+3. x=3/2 veya x=−2. || Her çarpanı sıfırladık.
+cevap: $\{-2,3/2\}$.
+
+::ornek baslik="Çift katlı kök"
+soru: $4x^2+12x+9=0$ denkleminin farklı köklerini bul.
+1. İfade $(2x+3)^2$. || Tam kare açılımında orta terim 12x.
+2. $2x+3=0$, x=−3/2. || Bir sayının karesi 0 ise kendisi 0'dır.
+3. Aynı çarpan iki kez var ama farklı kök tek. || Çözüm kümesi tekrarlı eleman taşımaz.
+cevap: $\{-3/2\}$; çift katlı kök.
+
+::tamamla baslik="Önce ortak çarpan"
+soru: $5x^2+15x=0$ denkleminin köklerinin toplamı kaçtır?
+1. $5x(x+3)=0$. || Ortak çarpan x korunur.
+?2. Kökler 0 ve −3. || Her çarpanı sıfıra eşitle.
+?3. Toplam −3. || İki farklı kökü topladık.
+cevap: −3.
+
+::sorgula s1b-kutu baslik="İki kapıdan en az biri açık"
+durum: Bir modelin koşulu (x−2)(x−6)=0. Bir öğrenci iki çarpanın aynı anda sıfır olmasını istiyor.
+soru: Doğru yorum hangisi?
+A) Hem x=2 hem x=6 aynı anda || Tek x iki farklı sayı olamaz; “ve” yerine “veya”.
++B) x=2 veya x=6 || En az bir çarpanın sıfır olması yeter.
+C) x=4 || Orta noktada çarpım (2)(−2)=−4; sıfır değil.
+neden: Çarpım sıfır kuralı iki durumun birleşimidir; her kök ayrı bir çözüm oluşturur.
+sinav: “Veya” ile “ve” ayrımı sıfır çarpımında ve mutlak değer dallarında da önemlidir.
+dusun: Çarpanlar aynı olsaydı kaç farklı kök kalırdı?
+yanit: (x−2)²=0 için yalnız 2; bir farklı, çift katlı kök.
+
+::soru c1b tip=tanim-carpan zorluk=2
+$x^2=9x$ denkleminin köklerinin çarpımı kaçtır?
++A) 0 || Kökler 0 ve 9.
+B) 9 || Bu sıfır olmayan kök; çarpım değil.
+C) 81 || Tek kökün karesini aldın.
+kontrol: 0*9
+cozum: x(x−9)=0; kökler 0 ve 9, çarpım 0.
+
+::strateji tip=tanim-carpan baslik="Çarpan çözümünü üç kez kontrol et"
+ipucu: Ortak çarpan, tam kare veya iki kare farkı görünüyor.
+1. Çarpanları açıp ilk polinomu elde et.
+2. Her çarpanı ayrı sıfıra eşitle; sıfır olabilecek çarpanla bölme.
+3. Kökleri ilk denklemde ve sorunun bağlamında kontrol et.
+
+@bolum s2 15 | Tam kareye tamamlamak formülün nedenini gösterir
+
+::duzey
+L1: $x^2+6x$ ifadesini bir karenin açılımına benzet: (x+3)²=x²+6x+9. İki tarafa 9 eklemek, bilinmeyeni bir tek karenin içine toplar. Sonra karekök alırken iki işaret ihtimalini kullanırız.
+L2: x²+px+q=0 denkleminde önce q'yu karşıya al, iki tarafa (p/2)² ekle. Sonuç $(x+p/2)^2=p^2/4-q$. Sağ tarafın işareti gerçek kök sayısını gösterir.
+L3: a≠0 iken önce a'ya bölerek aynı dönüşüm uygulanır. $(x+b/(2a))^2=(b^2-4ac)/(4a^2)$. Kök formülü bu eşitliğin çözülmüş hâlidir; ezberin arkasındaki neden tam kare özdeşliğidir.
+
+::ornek baslik="İki tarafa aynı sayıyı ekle"
+soru: $x^2+6x-7=0$ denklemini tam kareyle çöz.
+1. $x^2+6x=7$. || Sabit terimi karşı tarafa taşıdık.
+2. İki tarafa 9 ekle: $(x+3)^2=16$. || Orta katsayının yarısının karesi 9.
+3. x+3=±4; x=1 veya −7. || Kare eşitliği iki işareti gerektirir.
+cevap: 1 ve −7; toplam −6, çarpım −7.
+
+::ornek baslik="Tam sayı olmayan kök"
+soru: $x^2-4x+1=0$ denklemini çöz.
+1. $x^2-4x=-1$. || Karesel ve doğrusal terimleri bir arada tuttuk.
+2. İki tarafa 4: $(x-2)^2=3$. || (−4/2)²=4 ekledik.
+3. $x=2\pm\sqrt3$. || İki olası işareti koruduk.
+cevap: $2-\sqrt3$ ve $2+\sqrt3$; ikisi 2'ye göre simetrik.
+
+::ornek baslik="Gerçek kök yokluğunu gerekçelendir"
+soru: $x^2+2x+4=0$ neden gerçek köke sahip değildir?
+1. $x^2+2x+4=(x+1)^2+3$. || Tam kare için 1 ekleyip 1 çıkardık.
+2. Gerçek x için $(x+1)^2\geq0$. || Kare negatif olamaz.
+3. İfade en az 3; 0 olamaz. || Alt sınır sıfırın üstünde.
+cevap: Gerçek çözüm kümesi $\varnothing$.
+
+::tamamla baslik="Eksik eklemeyi seç"
+soru: $x^2-10x=11$ denklemini tam kareye tamamla.
+1. Yarı katsayı −5; karesi 25. || Tam karedeki orta terimi oluşturur.
+?2. İki tarafa 25 ekle: $(x-5)^2=36$. || Eşitliği korumak için iki tarafa aynı sayı.
+?3. x=5±6; kökler −1 ve 11. || Kare alma işlemini iki işaretle tersine çevirdik.
+cevap: −1 ve 11; ikisi ilk eşitliği sağlar.
+
+::sorgula s2-kare baslik="Eksik köşe"
+durum: x²+8x alan ifadesini (x+4)² tam kare alanına tamamlıyorsun.
+soru: Ne kadar alan eklenir?
+A) 4 || Bu kenar ekidir; alanı 4².
+B) 8 || Orta katsayıyı doğrudan eklemek tam kare oluşturmaz.
++C) 16 || (x+4)²=x²+8x+16.
+kontrol: 4^2
+neden: İki kenara 4'lük şerit eklendiğinde köşede 4×4'lük kare tamamlanır; cebirde eklenen sayı da 16'dır.
+sinav: Orta katsayının yarısını alıp karesini ekle; eşitliğin öbür tarafına da aynı sayıyı ekle.
+dusun: Orta terim 10x olsaydı eklenen sayı ne olurdu?
+yanit: (10/2)²=25.
+
+::soru c2 tip=kok-formulu zorluk=2
+$x^2-8x+13=0$ denklemi $(x-4)^2=k$ biçimine getirilirse k kaçtır?
+A) 13 || Bu eski sabit; tam kare dönüşümüyle değişir.
++B) 3 || (x−4)²=16−13.
+C) 16 || Kareye tamamlama sayısı; sağ tarafta 13 çıkarılır.
+kontrol: 16-13
+cozum: x²−8x=−13; iki tarafa 16 ekle: (x−4)²=3.
+
+@bolum s2b 17 | Kök formülü ve diskriminant
+::kesfet ikinci-delta
+
+::duzey
+L1: Kök formülü, çarpanlara ayıramadığımız denklemlerde de çalışır. a,b,c'yi işaretleriyle yaz; önce Δ=b²−4ac bul. Δ negatifse gerçek kök yok; sıfırsa tek farklı kök; pozitifse iki farklı kök.
+L2: $\Delta\geq0$ ise $x=(-b\pm\sqrt\Delta)/(2a)$. Paydadaki 2a bütün payı böler. b negatifken −b pozitif olur; b² hesaplarken negatif b'yi paranteze al.
+L3: Δ'nın işareti a<0 olduğunda da kök sayısını aynı şekilde belirler. Δ=0, grafiğin x eksenine teğet olmasıyla eşleşir. Δ<0 gerçek kök olmadığını söyler; karmaşık sayılardaki çözümler ayrı derste incelenir.
+
+::ornek baslik="Formülü işaretleriyle uygula"
+soru: $2x^2-4x-1=0$ denkleminin kökleri nedir?
+1. a=2,b=−4,c=−1; Δ=16+8=24. || −4ac terimi burada pozitiftir.
+2. $x=(4\pm\sqrt{24})/4$. || −b=4, payda 2a=4.
+3. $x=1\pm\sqrt6/2$. || √24=2√6 ile sadeleştirdik.
+cevap: $1-\sqrt6/2$ ve $1+\sqrt6/2$.
+
+::ornek baslik="Aynı formülde çift katlı kök"
+soru: $9x^2-12x+4=0$ denklemini çöz.
+1. Δ=144−144=0. || a=9,b=−12,c=4.
+2. $x=12/18=2/3$. || ±√0 iki farklı sayı üretmez.
+3. $(3x-2)^2=0$ aynı kökü verir. || Çarpanla bağımsız kontrol.
+cevap: Tek farklı kök $2/3$.
+
+::ornek baslik="Kök sayısı için değerlerini arama"
+soru: $-2x^2+3x+4=0$ kaç farklı gerçek kök taşır?
+1. a=−2,b=3,c=4. || Baş katsayı negatif ama sıfır değil.
+2. Δ=9−4(−2)4=41>0. || İki farklı gerçek kök koşulu.
+3. Köklerin değerlerini hesaplamaya gerek yok. || Sorulan yalnız adettir.
+cevap: 2 farklı gerçek kök.
+
+::sorgula s2b-ates baslik="Eğri hedef çizgisine ulaşıyor mu?"
+durum: Bir modelde yükseklik farkı f(x)=(x−2)²+1. Hedef çizgisi f(x)=0 ile gösteriliyor.
+soru: Grafik hedef çizgisini kaç noktada keser?
++A) 0 || Kare en az 0; f en az 1.
+B) 1 || Tepe noktasının yüksekliği 1, hedef 0 değil.
+C) 2 || Her ikinci derece denklem gerçek kök taşımak zorunda değildir.
+kontrol: 0
+neden: f=x²−4x+5 için Δ=−4. Tam kare biçimi de sıfıra ulaşılamadığını gösterir.
+sinav: Diskriminantın cebirsel işaretini grafik kesişimiyle birlikte yorumla.
+dusun: Son +1 yerine 0 olsaydı ne olurdu?
+yanit: (x−2)²=0, bir farklı kesişim x=2; Δ=0.
+
+::yanilgi m2b tip=delta
+yanlis: Δ=0 olursa çözüm yoktur.
+neden: Kök formülünde √Δ=0 olur; −b/(2a) geçerli bir köktür.
+dogru: Δ<0 gerçek kök yok; Δ=0 çift katlı kök; Δ>0 iki farklı kök.
+
+::soru c2b tip=delta zorluk=2
+$x^2-6x+k=0$ çift katlı köke sahipse k kaçtır?
+A) 6 || Δ=36−4k sıfır olmalı.
+B) 3 || Kökün kendisi 3'tür; k değil.
++C) 9 || 36−4k=0.
+kontrol: 36/4
+cozum: Δ=0 için k=9; denklem (x−3)²=0.
+
+::strateji tip=kok-formulu baslik="Sorulan kadar hesapla"
+ipucu: Kolay çarpan yok veya yalnız kök sayısı isteniyor.
+1. Standart biçimde a,b,c ve a≠0 koşulunu yaz.
+2. Yalnız sayı soruluyorsa Δ işaretinde dur; kök değeri gerekiyorsa formüle devam et.
+3. Payda 2a'nın bütün payı böldüğünü ve iki adayın ilk denklemi sağladığını kontrol et.
+
+@bolum s3 15 | Parametreyi kök ve derece koşuluyla bul
+
+::duzey
+L1: Bir kök verilmişse bütün kökleri bulmaya çalışmadan verilen sayıyı x yerine yaz. Yeni denklem yalnız parametreyi içerir. Parametreyi bulduktan sonra asıl denklem hâlâ ikinci derece mi, kontrol et.
+L2: Çift katlı kök için Δ=0 yazılır; iki farklı gerçek kök için Δ>0. Fakat a bir parametreye bağlıysa a≠0 koşulu da gerekir. Adayın dereceyi düşürmesi onu sorunun kapsamından çıkarır.
+L3: Parametrenin kendisi kök olunca da yerine koyma yöntemi geçerlidir. Ortak bir ifade oluşursa onu t ile adlandırmak hataları azaltır. Sıfır olmadığı verilen ifadeyle sadeleştirebilirsin; bu bilgi verilmemişse sıfır durumunu ayrıca incele.
+
+::ornek baslik="Verilen kökle tek işlem"
+soru: $x^2+(p-2)x-8=0$ denkleminin kökü 4 ise p nedir?
+1. x=4 yaz: $16+4(p-2)-8=0$. || Kök eşitliği sağlamalı.
+2. $4p=0$, p=0. || Parantezi açıp sabitleri topladık.
+3. Denklem $x^2-2x-8=(x-4)(x+2)=0$. || Verilen kök ve derece korunuyor.
+cevap: p=0; diğer kök −2.
+
+::ornek baslik="İki farklı kök isteyen parametre"
+soru: $x^2+2x+m=0$ iki farklı gerçek köke sahipse m hangi aralıktadır?
+1. Δ=4−4m. || Katsayılardan hesapladık.
+2. İki farklı kök için 4−4m>0. || Eşitlik çift katlı kök yapardı.
+3. m<1. || Negatif katsayıyla bölerken yön değişir.
+cevap: $(-\infty,1)$; m=1 bu koşula dahil değil.
+
+::ornek baslik="Derecenin düşmesini ele"
+soru: $(m-1)x^2+2x+1=0$ ikinci dereceden ve çift katlı köklüyse m kaçtır?
+1. a=m−1≠0; m≠1. || Sorunun ikinci derece koşulu.
+2. Δ=4−4(m−1)=8−4m=0; m=2. || Çift katlı kök.
+3. a=1≠0, denklem (x+1)²=0. || Bulduğumuz aday dereceyi bozmadı.
+cevap: m=2.
+
+::sorgula s3-kok baslik="Bir kök bütün denklemi sınar"
+durum: $x^2+px+6=0$ denkleminin köklerinden birinin −2 olduğu söyleniyor.
+soru: p hangi sayı olmalı?
+A) −5 || Kök yerine yazınca 4+10+6=20; sıfır değil.
++B) 5 || 4−10+6=0.
+C) 3 || 4−6+6=4; kök koşulu sağlanmaz.
+kontrol: 5
+neden: x=−2 yaz: 4−2p+6=0; p=5. Yeni denklem (x+2)(x+3)=0.
+sinav: Bir kök verildiğinde önce yerine koy; gereksiz kök formülü hesabı yapma.
+dusun: Diğer kök nedir?
+yanit: −3; toplam −5 ve çarpım 6.
+
+::soru c3 tip=tanim-carpan zorluk=2
+$x^2+(k+1)x-10=0$ denkleminin bir kökü 2 ise k kaçtır?
+A) −4 || Yerine koyunca 4−6−10=−12; eşitlik sağlanmaz.
++B) 2 || Yerine koyunca 4+6−10=0.
+C) 4 || Bu değer x=2'yi kök yapmaz.
+kontrol: 2
+cozum: x=2 için 4+2k+2−10=0; 2k=4, k=2.
+
+::cikmis AYT_Sayisal-0097 tip=tanim-carpan
+
+@bolum s3b 17 | Kökler toplamı ve çarpımından yeni bilgi
+::kesfet ikinci-vieta
+
+::duzey
+L1: (x−r)(x−s) açılırsa x²−(r+s)x+rs gelir. Bu nedenle köklerin toplamı x katsayısının ters işaretine, çarpımı sabit terime bağlıdır. Baş katsayı 1 değilse önce ona bölmek gerekir.
+L2: ax²+bx+c=0 için S=−b/a, P=c/a. Kök kareleri toplamı S²−2P; kök farkının karesi S²−4P; terslerinin toplamı S/P, fakat P≠0 olmalı.
+L3: Gerçek kök varsayımı verilmediyse S²−4P≥0 koşulunu da denetle. Gerçek köklerde P<0 işaretlerin zıt olduğunu, P>0 aynı işaretli olabileceklerini gösterir; ikincide ortak işareti S belirler.
+
+::ornek baslik="Baş katsayıyla böl"
+soru: $4x^2-8x-3=0$ köklerinin toplamı ve çarpımı nedir?
+1. a=4,b=−8,c=−3. || İşaretlerle okuduk.
+2. S=8/4=2; P=−3/4. || Her iki oran da baş katsayıya bölünür.
+3. P negatif; gerçek kökler zıt işaretlidir. || Δ=64+48>0 ile gerçeklik de tutuyor.
+cevap: S=2, P=−3/4.
+
+::ornek baslik="Köklerin kareleri toplamı"
+soru: $x^2-5x+3=0$ köklerinin kareleri toplamı kaçtır?
+1. S=5, P=3. || Kök-katsayı ilişkisi.
+2. $(r+s)^2=r^2+2rs+s^2$. || İstenen ifadeyi özdeşlikle ayırdık.
+3. $r^2+s^2=25-6=19$. || S²−2P hesaplandı.
+cevap: 19; tek tek kök bulmak gerekmedi.
+
+::ornek baslik="Terslerin toplamında sıfır koşulu"
+soru: $2x^2-7x+3=0$ köklerinin terslerinin toplamı kaçtır?
+1. S=7/2, P=3/2. || Baş katsayı 2'ye böldük.
+2. $1/r+1/s=(r+s)/(rs)=S/P$. || Paydaları eşitledik.
+3. $(7/2)/(3/2)=7/3$. || P≠0; iki kökün de tersi tanımlı.
+cevap: $7/3$; kökler 3 ve 1/2 olursa tersleri 1/3+2.
+
+::sorgula s3b-iki-sayi baslik="Sayıları ayrı bulmak şart mı?"
+durum: İki gerçek sayının toplamı 7, çarpımı 10. Karelerinin toplamı isteniyor.
+soru: En kısa gerekçeli hesap hangisi?
+A) 49 || Toplamın karesinde fazladan 2rs var.
+B) 39 || Çarpımı bir kez çıkardın; iki kez çıkmalı.
++C) 29 || 7²−2×10=29.
+kontrol: 7^2-2*10
+neden: (r+s)²=r²+s²+2rs. İstenen r²+s² için iki çarpımı çıkardık.
+sinav: Simetrik ifadeyi S ve P ile yaz; kökleri ayrı çözmek çoğu kez fazladan iştir.
+dusun: Sayıların farkının karesi kaçtır?
+yanit: S²−4P=49−40=9; kökler 2 ve 5.
+
+::soru c3b tip=vieta zorluk=2
+$3x^2-15x+9=0$ köklerinin kareleri toplamı kaçtır?
+A) 16 || S=5 ve P=3; 25−6 hesapla.
++B) 19 || S²−2P=25−6.
+C) 22 || 2P yerine P çıkardın.
+kontrol: 5^2-2*3
+cozum: Baş katsayıya böl: S=5,P=3. Kareler toplamı 19.
+
+::strateji tip=vieta baslik="İfadeyi S ve P diline çevir"
+ipucu: Köklerin toplamı, çarpımı, kareleri veya tersleri soruluyor.
+1. S=−b/a ve P=c/a yaz; işaretleri kontrol et.
+2. Özdeşlikle isteneni S ve P cinsinden kur.
+3. Bölme varsa P≠0, gerçek kök gerekiyorsa Δ≥0 koşulunu koru.
+
+::cikmis AYT_Sayisal-0099 tip=vieta
+
+@bolum s4 16 | Kökleri verilen veya dönüştürülen denklem
+
+::duzey
+L1: İki kökü r ve s biliyorsan (x−r)(x−s)=0 bir denklem kurar. Önce çarpan biçimi, sonra açılım. Aynı denklemi sıfır olmayan sabitle çarpmak kökleri değiştirmez.
+L2: S ve P verilirse baş katsayısı 1 denklem x²−Sx+P=0. Kökleri 2r ve 2s yapmak yeni toplamı 2S, yeni çarpımı 4P yapar; ikisine aynı katsayıyı uygulama.
+L3: Kökler αr+β ve αs+β olursa S'=αS+2β; P'=α²P+αβS+β². Bu formül iki çarpanı açarak çıkar; ezberlemek yerine yeni kökleri adlandırıp toplam/çarpımı hesaplamak güvenlidir.
+
+::ornek baslik="Verilen iki kökten denklem"
+soru: Kökleri −2 ve 5 olan baş katsayısı 1 denklemi kur.
+1. S=3, P=−10. || Verilen kökleri topladık ve çarptık.
+2. $x^2-3x-10=0$. || x²−Sx+P biçimi.
+3. $(x+2)(x-5)=0$ açılımıyla aynı. || İşaretleri bağımsız kontrol ettik.
+cevap: $x^2-3x-10=0$.
+
+::ornek baslik="Kökleri iki katına çıkar"
+soru: $x^2-3x+1=0$ köklerinin iki katını kök kabul eden denklemi kur.
+1. Eski S=3,P=1. || Kökleri tek tek bulmadık.
+2. Yeni toplam 6, yeni çarpım 4. || (2r)(2s)=4rs.
+3. $y^2-6y+4=0$. || Yeni değişkenle denklemi yazdık.
+cevap: $y^2-6y+4=0$; x=y/2 dönüşümü de aynı sonucu verir.
+
+::ornek baslik="Kökleri bir artır"
+soru: $x^2+4x+2=0$ köklerinin bir fazlasını kök kabul eden denklem nedir?
+1. Eski S=−4,P=2. || Katsayılardan.
+2. Yeni toplam S+2=−2; yeni çarpım P+S+1=−1. || (r+1)(s+1)=rs+r+s+1.
+3. $y^2+2y-1=0$. || −S'=+2.
+cevap: $y^2+2y-1=0$; x=y−1 yerine koyarak sağla.
+
+::sorgula s4-olcek baslik="İki kökü aynı ölçekte büyüt"
+durum: İki kökün toplamı 4, çarpımı 3. Her kökü 3 katına çıkarıyorsun.
+soru: Yeni toplam ve çarpım ne olur?
+A) 12 ve 9 || Çarpımda her iki kökteki 3 çarpanı da var.
++B) 12 ve 27 || Toplam 3 kat, çarpım 9 kat.
+C) 7 ve 6 || Burada üç eklenmiyor, üçle çarpılıyor.
+neden: 3r+3s=3S=12; (3r)(3s)=9P=27.
+sinav: Kök dönüşümünde toplam ile çarpım aynı biçimde ölçeklenmez.
+dusun: Yeni denklemin baş katsayısı 1 ise biçimi nedir?
+yanit: y²−12y+27=0.
+
+::tamamla baslik="Ters köklerin denkleminde koşul"
+soru: $x^2-6x+2=0$ köklerinin terslerini kök kabul eden denklemi kur.
+1. S=6,P=2≠0; köklerin tersleri var. || Çarpım sıfır değil.
+?2. Yeni toplam S/P=3; yeni çarpım 1/P=1/2. || Ortak payda ve ters çarpım.
+?3. $y^2-3y+1/2=0$; 2 ile çarp: $2y^2-6y+1=0$. || Sıfır olmayan sabitle çarpma kökleri korur.
+cevap: $2y^2-6y+1=0$.
+
+::soru c4 tip=yeni-denklem zorluk=2
+Kökleri r,s olan $x^2-2x-1=0$ veriliyor. Kökleri r+2 ve s+2 olan baş katsayısı 1 denklemin sabit terimi kaçtır?
+A) 3 || P+2S+4 hesabını yeniden yap.
+B) 6 || −1+4+4=7.
++C) 7 || Yeni çarpım rs+2(r+s)+4.
+kontrol: -1+2*2+4
+cozum: S=2,P=−1; yeni çarpım −1+4+4=7.
+
+@bolum s4b 17 | Köklerin ilişkisini ve parametreyi birleştir
+
+::duzey
+L1: Köklerden biri diğerinin iki katı gibi bilgi veriliyorsa kökleri t ve 2t diye yaz. Toplam ve çarpım iki ayrı koşul verir. Hesabın sonunda kökleri veya parametreyi soran cümleyi yeniden oku.
+L2: Diskriminant da bir kökse x yerine Δ yazılır. Bu işlem parametre için yeni bir ikinci derece denklem doğurabilir. Yalnız parametrelerin çarpımı isteniyorsa ikinci denklemin köklerini tek tek bulmak yerine yeniden kök-katsayı kullan.
+L3: İşaret bilgisi sadeleştirmeyi sınırlar: pozitif a,b verildiyse a veya b sıfır değildir. “Birbirinden farklı” ifadesi bazı ortak çarpanların sıfır olamayacağını söyler. Her sadeleştirmenin dayandığı koşulu açık tut.
+
+::ornek baslik="Kökler oranıyla parametre"
+soru: $x^2-9x+k=0$ köklerinden biri diğerinin iki katıysa k kaçtır?
+1. Kökler t ve 2t; toplam 3t=9, t=3. || Kökler toplamı −b/a.
+2. Kökler 3 ve 6; çarpım 18. || Sıfır veya işaret belirsizliği kalmadı.
+3. k=P=18. || Sabit terim baş katsayı 1 olduğundan kök çarpımı.
+cevap: 18; (x−3)(x−6)=x²−9x+18.
+
+::ornek baslik="Kök farkını çözmeden bul"
+soru: $2x^2-10x+7=0$ denkleminin kökleri r,s ise $(r-s)^2$ kaçtır?
+1. S=5, P=7/2. || Baş katsayı 2 ile böl.
+2. $(r-s)^2=(r+s)^2-4rs$. || Tam kare özdeşliği.
+3. $25-14=11$. || Diskriminantla da Δ/a²=44/4=11.
+cevap: 11; kökleri tek tek bulmadık.
+
+::ornek baslik="Diskriminant kök olunca"
+soru: $x^2+px+2=0$ denkleminin bir kökü 1 ise diskriminant kaçtır?
+1. x=1 yaz: 1+p+2=0; p=−3. || Verilen kök parametreyi belirler.
+2. Δ=p²−8=9−8=1. || Parametreyi diskriminantta kullandık.
+3. Denklem (x−1)(x−2)=0. || Δ=1'in aynı zamanda bir kök olduğu bu örnekte görülür; genel kural değildir.
+cevap: 1.
+
+::sorgula s4b-isaret baslik="Zıt işaretli kökleri tanı"
+durum: İkinci derece bir denklemin köklerinin çarpımı −6, toplamı 1.
+soru: Köklerin işaretleri hakkında ne söylenir?
++A) Zıt işaretli iki gerçek kök || Çarpım negatif; Δ=S²−4P=25>0.
+B) İkisi de pozitif || İki pozitifin çarpımı pozitif olur.
+C) İkisi de negatif || İki negatifin çarpımı da pozitif olur.
+neden: Çarpım −6 ise işaretler zıttır. S=1,P=−6 için denklem x²−x−6=(x−3)(x+2).
+sinav: Kök işaretinde yalnız toplamı değil çarpımı ve gerçek kök koşulunu birlikte kullan.
+dusun: Toplam −1 olsaydı işaretler değişir miydi?
+yanit: Yine zıt olurdu; pozitif kökün büyüklüğü bu kez daha küçük olurdu.
+
+::yanilgi m4b tip=vieta
+yanlis: Kökler toplamı pozitifse iki kök de pozitiftir.
+neden: 3 ve −2'nin toplamı pozitif ama işaretleri zıttır.
+dogru: Gerçek köklerde önce P'ye bak; P>0 ise ortak işareti S belirler, P<0 ise işaretler zıttır.
+
+::soru c4b tip=vieta zorluk=3
+$x^2-7x+5=0$ kökleri r,s ise $(r-s)^2$ kaçtır?
+A) 39 || Farkın karesi S²−4P, S²−2P değil.
++B) 29 || 49−20=29.
+C) 44 || P'yi yalnız bir kez çıkardın.
+kontrol: 7^2-4*5
+cozum: S=7,P=5; (r−s)²=49−20=29.
+
+::strateji tip=yeni-denklem baslik="Koşulları işlemden önce not et"
+ipucu: Parametre, kök oranı veya diskriminantın kök olması verilmiş.
+1. Kök olan ifadeyi x yerine koy; ortak ifadeye gerekirse kısa bir ad ver.
+2. Sıfır olmadığı verilmeden harfli çarpanla bölme.
+3. Yeni denklemin yalnız toplamı/çarpımı isteniyorsa kök-katsayıyla bitir; adayların asıl koşullara uyduğunu kontrol et.
+
+::cikmis AYT_Sayisal-0102 tip=delta
+
+::ozet
+- İkinci derece için düzenlenmiş x² katsayısı sıfır olamaz.
+- Çarpanlara ayırma sıfır kökünü korur; x'e bölme kaybettirebilir.
+- Tam kareye tamamlama kök formülünün gerekçesidir.
+- Δ'nın işareti gerçek kök sayısını; S ve P simetrik ifadeleri belirler.
+- Parametreyi bulunca dereceyi, işareti ve bağlamı yeniden denetle.
+
+@pratik
+- Önce standart biçim, ardından kolay çarpan olup olmadığını kontrol et.
+- Yalnız kök sayısı soruluyorsa diskriminant işaretinde dur.
+- Simetrik ifadede S ve P kullan; yeni köklerde toplamla çarpımı ayrı dönüştür.
+- Gösterilen gerçek soruları bağımsız ustalık sorusu sayma; farklı bir soruyla yöntemi kendi başına dene.
+
+@kartlar
+- İkinci derece koşulu :: ax²+bx+c=0, a≠0; en yüksek sıfır olmayan kuvvet 2.
+- Sıfır çarpımı :: AB=0 ise A=0 veya B=0; iki koşul birlikte gerekmez.
+- Diskriminant :: Δ=b²−4ac; pozitif iki, sıfır bir farklı, negatif sıfır gerçek kök.
+- Kök formülü :: x=(−b±√Δ)/(2a); gerçek kök için Δ≥0.
+- Toplam ve çarpım :: S=−b/a, P=c/a.
+- Kareler toplamı :: r²+s²=S²−2P.
+- Kök farkının karesi :: (r−s)²=S²−4P=Δ/a².
+- Yeni denklem :: Kökleri r,s olan baş katsayısı 1 denklem x²−Sx+P=0.
+- Ters kök koşulu :: P≠0; yeni toplam S/P, yeni çarpım 1/P.
+
+@ozet
+- Derece, tanım ve bağlam koşulları bütün çözüm boyunca korunur.
+- Çarpanlar kolaysa sıfır çarpımı; değilse tam kare veya formül.
+- Kökleri ayrı istemeyen soruda S ve P ile hesapla.
+
+@aciklama
+Yeni bir soruda hangi yöntemi önce seçtiğini ve nedenini anlat. Bir çarpanla bölseydin hangi kökü kaybedebilirdin? Diskriminant ve kök-katsayı hangi farklı soruları kısaltıyor?
+
+@havuz
+::soru h1 tip=tanim-carpan zorluk=2
+$2x^2-18=0$ denkleminin büyük kökü kaçtır?
+A) 9 || x²=9; kökleri ±3.
+B) −3 || Bu küçük kök.
++C) 3 || 2×9−18=0.
+kontrol: 3
+cozum: x²=9; kökler −3,3; büyük kök 3.
+
+::soru h2 tip=kok-formulu zorluk=2
+$x^2-2x-5=0$ kökleri $1\pm\sqrt k$ biçimindeyse k kaçtır?
++A) 6 || (x−1)²=6.
+B) 5 || Tam kareye tamamlamak için iki tarafa 1 eklenir.
+C) 4 || (x−1)²=4, farklı denklem verir.
+kontrol: 6
+cozum: x²−2x=5, (x−1)²=6.
+
+::soru h3 tip=delta zorluk=2
+$x^2+4x+m=0$ gerçek köklüyse m'nin alabileceği en büyük değer kaçtır?
+A) 2 || Δ=16−4m≥0; üst sınır 4.
++B) 4 || m=4 çift katlı kök verir ve kabul edilir.
+C) 8 || Δ negatif olur.
+kontrol: 4
+cozum: 16−4m≥0 için m≤4. En büyük 4.
+
+::soru h4 tip=vieta zorluk=2
+$2x^2+6x-5=0$ denkleminin kökler toplamı kaçtır?
++A) −3 || −b/a=−6/2.
+B) 3 || İşaret tersini unutma.
+C) −5/2 || Bu kökler çarpımı.
+kontrol: -6/2
+cozum: S=−3.
+
+::soru h5 tip=yeni-denklem zorluk=2
+Kökleri r,s olan $x^2-4x+2=0$ veriliyor. Kökleri r−1,s−1 olan denklemin kökler çarpımı kaçtır?
+A) 1 || P−S+1=2−4+1=−1.
+B) 3 || Köklerden bir çıkarılıyor; toplam ve çarpım farklı değişir.
++C) −1 || (r−1)(s−1)=rs−r−s+1.
+kontrol: 2-4+1
+cozum: Yeni çarpım P−S+1=−1.

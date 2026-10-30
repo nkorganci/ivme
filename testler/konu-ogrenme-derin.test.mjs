@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -48,6 +48,174 @@ test('temel-kavramlar: keşif modelleri sayılarla aynı şeyi söyler', () => {
   for (const x of range(1, 11)) {
     const m = model('temel-ucdeger', { x });
     assert.equal(m.area, 36 - (x - 6) ** 2); assert.ok(m.area <= 36);
+  }
+});
+
+test('mutlak değer: parçalı toplam, tek geçerli kök, açık/kapalı bant ve ortanca', () => {
+  for (const x of range(-6,8)) {
+    const m=model('mutlak-parcali',{x});
+    assert.equal(m.total, x < -2 ? 2-2*x : x <= 4 ? 6 : 2*x-2);
+    assert.equal(m.total,m.left+m.right);
+  }
+  for (const b of range(-10,4)) {
+    const m=model('mutlak-denklem',{b});
+    const expected=b<=-8 ? -4-b : (4-b)/3;
+    assert.deepEqual(m.accepted,[expected]);
+    assert.ok(Math.abs(Math.abs(expected-4)-2*expected-b)<1e-9);
+  }
+  for(const m of range(-4,4)) for(const r of range(0,5)) for(const op of range(0,3)) {
+    const actual=model('mutlak-bant',{m,r,op});
+    const within=(x)=>x>m-r && x<m+r, closed=(x)=>x>=m-r && x<=m+r;
+    const expected=range(-10,10).filter((x)=>[within(x),closed(x),!closed(x),!within(x)][op]);
+    assert.deepEqual(actual.points,expected);
+  }
+  for(const c of range(2,9)) {
+    const values=range(-6,10).map((x)=>model('mutlak-ortanca',{x,c}));
+    assert.equal(Math.min(...values.map((m)=>m.total)),c+3);
+    assert.ok(values.every((m)=>m.total>=m.minimum));
+    assert.equal(values.find((m)=>m.x===1).total,c+3);
+  }
+  const A=range(1,30).filter((a)=>[a/2,-a/2].some((x)=>Math.abs(x-a)===6));
+  assert.deepEqual(A,[4,12]); assert.equal(A.reduce((a,b)=>a+b,0),16);
+  for(let t=-10;t<=25;t+=.25) {
+    assert.equal(Math.abs(t-13)<=2,t>=11&&t<=15);
+    const goodA=t>-6&&t<4,goodB=t>6&&t<20;
+    if([-1,0,3,5,7].includes(t)) assert.equal(!goodA&&!goodB,t===5);
+  }
+});
+
+test('üslü ifadeler: işaret, toplamda ortak çarpan, tur sayısı ve gerçek örnekler', () => {
+  for(const n of range(1,6)) {
+    const m=model('uslu-parantez',{n});
+    assert.equal(m.inside,m.factors.reduce((a,b)=>a*b,1));
+    assert.equal(m.outside,-Number(2n**BigInt(n)));
+  }
+  for(const n of range(0,5)) for(const d of range(0,3)) {
+    const m=model('uslu-ortak',{n,d});
+    assert.equal(m.total,Number(2n**BigInt(n)+2n**BigInt(n+d)));
+    assert.equal(m.common*(1+m.multiplier),m.total);
+  }
+  for(const a of [2,3]) for(const n of range(0,6)) {
+    const m=model('uslu-buyume',{a,n});
+    assert.equal(m.points[0].exp,1);
+    for(let i=1;i<m.points.length;i++) {
+      assert.equal(m.points[i].exp/m.points[i-1].exp,a);
+      assert.equal(m.points[i].linear-m.points[i-1].linear,2);
+    }
+  }
+  let pieces=1; for(let i=0;i<4;i++) pieces*=3;
+  assert.equal(pieces,81);
+  let players=1000000; for(let i=0;i<6;i++) players-=players/5;
+  assert.equal(players,2**18);
+  assert.equal(81*16*(35+1),6**6);
+  const choices=[[1,2,3],[2,1,3],[2,2,2],[3,0,3],[3,2,1]];
+  assert.deepEqual(choices.map(([a,b,c])=>a**(b**c)!==(a**b)**c),[false,true,false,false,false]);
+});
+
+test('köklü ifadeler: tam kare çarpanı, eşlenik, tanım koşulu ve gerçek sorular', () => {
+  for(const n of range(1,80)) {
+    const m=model('kok-carpan',{n});
+    assert.equal(m.s*m.s*m.r,n);
+    for(let p=2;p*p<=m.r;p++) assert.notEqual(m.r%(p*p),0);
+    assert.ok(Math.abs(m.s*Math.sqrt(m.r)-Math.sqrt(n))<1e-12);
+  }
+  for(const pair of range(0,3)) {
+    const m=model('kok-eslenik',{pair});
+    assert.ok(Math.abs(m.long*m.short-m.area)<1e-12);
+    assert.ok(m.short>0);
+    assert.ok(Math.abs(1/m.short-m.long/m.area)<1e-12);
+  }
+  for(const c of range(1,6)) for(const d of range(0,3)) {
+    const m=model('kok-denklem',{c,d});
+    assert.equal(m.accepted.length,1);
+    for(const x of m.candidates) assert.ok(Math.abs(x+c-(x-d)**2)<1e-10);
+    const root=m.accepted[0];
+    assert.ok(root>=d && root+c>=0);
+    assert.ok(Math.abs(Math.sqrt(root+c)-(root-d))<1e-10);
+    assert.ok(m.candidates.filter((x)=>!m.accepted.includes(x)).every((x)=>x<d));
+  }
+  assert.equal(Math.sqrt(9/16)*16-9,3);
+  const a=Math.sqrt(10)+Math.sqrt(6),b=Math.sqrt(10)-Math.sqrt(6);
+  assert.ok(Math.abs(a/b-a*b-Math.sqrt(15))<1e-12);
+});
+
+test('ikinci derece: alan, sıfır çarpımı, diskriminant, Vieta ve özgün AYT çözümleri', () => {
+  for(const x of range(1,8)) {
+    const m=model('ikinci-derece-denklemler',{x});
+    assert.equal(m.area,x*x+2*x);
+    assert.equal(m.area===24,x===4);
+  }
+  for(const r of range(-4,4)) for(const s of range(-4,4)) {
+    const m=model('ikinci-carpan',{r,s});
+    assert.deepEqual(m.roots,[...new Set([r,s])].sort((a,b)=>a-b));
+    for(const [x,y] of m.points) assert.ok(Math.abs(y-(x-r)*(x-s))<1e-10);
+    const v=model('ikinci-vieta',{r,s});
+    assert.equal(v.S*v.S-2*v.P,r*r+s*s);
+    if(r&&s) assert.ok(Math.abs(v.reciprocal-(1/r+1/s))<1e-12);
+    else assert.equal(v.reciprocal,null);
+  }
+  for(const a of [-2,-1,1,2]) for(const b of range(-6,6)) for(const c of range(-3,6)) {
+    const m=model('ikinci-delta',{a,b,c});
+    const vertexValue=c-b*b/(4*a);
+    const crosses=a>0 ? vertexValue<0 : vertexValue>0;
+    assert.equal(m.roots.length,vertexValue===0?1:crosses?2:0);
+    for(const root of m.roots) {
+      assert.ok(root>=m.lo&&root<=m.hi,'kök grafik penceresinin içinde');
+      assert.ok(Math.abs(a*root*root+b*root+c)<1e-9);
+    }
+  }
+  const ratios=new Set();
+  for(const m of range(-12,12).filter(Boolean)) for(const n of range(-24,24).filter(Boolean)) if(m!==n) {
+    const x=m-n;
+    if(x*x+(m+1)*x+n-m===0) ratios.add(n/m);
+  }
+  assert.deepEqual([...ratios],[2]);
+  // 2020 AYT: a,b>0; önce çarpım a²=4 verir. Pozitiflik a=2 dalını seçer.
+  const a=2,b=8;
+  assert.equal(a+b,5*b/(2*a)); assert.equal(a*b,8*b/(2*a));
+  assert.equal(2*a*a*a-5*b*a+8*b,0);
+  assert.equal(2*a*b*b-5*b*b+8*b,0);
+  const cs=[(23-Math.sqrt(17))/32,(23+Math.sqrt(17))/32];
+  for(const c of cs) {
+    const d=4-4*c;
+    assert.ok(d>=0 && Math.abs(d*d-2*d+c)<1e-12);
+  }
+  assert.ok(Math.abs(cs[0]*cs[1]-.5)<1e-12);
+  for(const [code,answer] of [['AYT_Sayisal-0097','A'],['AYT_Sayisal-0099','C'],['AYT_Sayisal-0102','D']]) {
+    assert.equal(WORKED_EXAMS[code].answer,answer);
+    assert.ok(load('ikinci-derece-denklemler').practiceIds.includes(code));
+  }
+});
+
+test('oran-orantı: korunan bölüm/çarpım, bütünü koruyan paylar, birim verim', () => {
+  for(const x of range(1,8)) {
+    const m=model('oran-tur',{x});
+    assert.equal(m.direct/x,3); assert.equal(m.inverse*x,24);
+  }
+  for(const k of range(1,4)) {
+    const m=model('oran-pay',{k});
+    assert.equal(m.direct.reduce((a,b)=>a+b,0),m.total);
+    assert.equal(m.inverse.reduce((a,b)=>a+b,0),m.total);
+    for(const [i,w] of [2,3,6].entries()) {
+      assert.equal(m.direct[i]/w,6*k); assert.equal(m.inverse[i]*w,66*k);
+    }
+  }
+  for(const w of range(2,6)) for(const h of range(2,8)) for(const d of range(1,5)) {
+    const m=model('oran-bilesik',{w,h,d});
+    let count=0;
+    for(let day=0;day<d;day++) for(let worker=0;worker<w;worker++) for(let hour=0;hour<h;hour++) count+=2;
+    assert.equal(m.total,count);
+    assert.equal(m.total,m.cells*m.perCell);
+  }
+  const boxes=[18,24,36];
+  const common=range(0,18).filter((n)=>boxes.some((b)=>n/b===1/2)&&boxes.some((b)=>n/b===1/3));
+  assert.deepEqual(common,[12]); assert.equal(3*common[0],36);
+  const areas=[];
+  for(const x of range(1,150)) if(110+10===(4/3)*(70+2*10)&&110+10===(4/3)*(x+3*10)) areas.push(x);
+  assert.deepEqual(areas,[60]);
+  for(const [code,answer] of [['TYT-0605','A'],['TYT-0608','B'],['TYT-0618','D'],['TYT-0630','E'],['TYT-0632','B'],['TYT-0634','C'],['TYT-0644','B'],['TYT-0633','C'],['TYT-0637','B'],['TYT-0680','E'],['TYT-0740','E']]) {
+    assert.equal(WORKED_EXAMS[code].answer,answer);
+    assert.ok(load(WORKED_EXAMS[code].conceptId).practiceIds.includes(code));
   }
 });
 
