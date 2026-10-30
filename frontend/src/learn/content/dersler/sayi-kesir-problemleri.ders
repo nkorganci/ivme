@@ -107,12 +107,31 @@ L1: "Bir sayının 3 katının 7 fazlası 34" cümlesini parça parça çevir: s
 L2: Sıra önemlidir: "4 eksiğinin 3 katı" $3(x - 4)$, "3 katının 4 eksiği" $3x - 4$'tür. Ardışık sayılarda ortadaki terimi $x$ seçmek denklemi sadeleştirir: $(x - 2) + x + (x + 2) = 3x$. İki sayılı sorularda bir sayıyı diğerinin cinsinden yaz.
 L3: Denklemi kurduktan sonra çözümün anlamlı olup olmadığını kontrol et: kişi sayısı tam sayı, uzunluk pozitif olmalı. Sonuç kesirli çıkarsa bir çeviriyi yanlış yapmışsındır; en sık hata "katı" ile "fazlası"nın sırasıdır.
 
-::ornek baslik="Ardışık çift sayılar"
-soru: Ardışık üç çift sayının toplamı 78'dir. Bu sayıların en büyüğü kaçtır?
-1. Ortadakini $x$ al: $x - 2$, $x$, $x + 2$. || Simetrik seçim.
-2. $3x = 78 \Rightarrow x = 26$. || $-2$ ve $+2$ birbirini götürür.
-3. En büyük $x + 2 = 28$. || Kontrol: $24 + 26 + 28 = 78$ ✓
-cevap: 28
+::ornek baslik="Ardışık tek sayılar"
+soru: Ardışık üç tek sayının toplamı 87'dir. Bu sayıların en küçüğü kaçtır?
+1. Ortadakini $x$ al: $x - 2$, $x$, $x + 2$. || Ardışık tek sayılar da ikişer artar; simetrik seçimde $-2$ ve $+2$ birbirini götürür.
+2. $3x = 87 \Rightarrow x = 29$. || Toplam, ortanca terimin 3 katıdır.
+3. En küçük $x - 2 = 27$. || Kontrol: $27 + 29 + 31 = 87$ ve üçü de tek.
+cevap: 27
+
+::ornek baslik="Katı ve fazlası aynı cümlede"
+soru: Bir sayının 3 katının 7 eksiği, aynı sayının 2 katının 5 fazlasına eşittir. Bu sayı kaçtır?
+1. Sayıya $x$ de. “3 katının 7 eksiği” $3x-7$, “2 katının 5 fazlası” $2x+5$. || Cümleyi parça parça cebire çevirdik.
+2. $3x-7=2x+5$. || “Eşittir” sözü iki ifadenin arasına eşittir işareti koyar.
+3. $x=12$. || $x$'leri sola, sayıları sağa topladık.
+cevap: 12. Kontrol: $36-7=29$ ve $24+5=29$.
+
+::sorgula s1-harclik baslik="Kimin parası ne kadar?"
+durum: Ece'nin parası, Can'ın parasının 2 katından 10 lira eksik. İkisinin parası toplam 80 lira.
+soru: Ece'nin kaç lirası var?
++A) 50 lira || Can $x$, Ece $2x-10$: $3x-10=80$, $x=30$; Ece $2\cdot30-10=50$.
+B) 30 lira || Bu, Can'ın parasıdır.
+C) 60 lira || “10 lira eksik” kısmını unuttun: $2\cdot30=60$.
+kontrol: 2*30-10
+neden: Karşılaştırılan kişiyi (Can) $x$ seçmek denklemi sade tutar: Ece $2x-10$. Toplam $x+(2x-10)=80$, $3x=90$, $x=30$. Ece 50 lira.
+sinav: “… katından … eksik/fazla” cümlelerinde önce kıyaslanan kişiye $x$ de, diğerini onun cinsinden yaz.
+dusun: Ece, Can'a 10 lira verirse ikisinin parası nasıl olur?
+yanit: Ece $50-10=40$, Can $30+10=40$: eşit olurlar.
 
 ::yanilgi m1 tip=denklem-kurma
 yanlis: "Bir sayının 4 eksiğinin 3 katı" $3x - 4$'tür.
@@ -147,10 +166,29 @@ cevap: 300 soru
 
 ::tamamla baslik="Kalanın kesri"
 soru: Bir öğrenci kitabının $\frac{2}{5}$'ini ilk gün, kalanın $\frac{1}{2}$'sini ikinci gün okuyor ve geriye 60 sayfa kalıyor. Kitap kaç sayfadır?
-1. Kitap $10x$ olsun; ilk gün $4x$, kalan $6x$.
-?2. İkinci gün $6x$'in yarısı $3x$ okunur; kalan $3x$.
-?3. $3x = 60 \Rightarrow x = 20$; kitap $200$ sayfa.
+1. Kitap $10x$ olsun; ilk gün $4x$, kalan $6x$. || Paydalar 5 ve 2; bütüne EKOK'un katı (10x) deyince kesirler tam sayı olur.
+?2. İkinci gün $6x$'in yarısı $3x$ okunur; kalan $3x$. || “Kalanın” sözü bütünü değil, ilk günden kalan 6x'i gösterir.
+?3. $3x = 60 \Rightarrow x = 20$; kitap $200$ sayfa. || Geriye kalan parçayı verilen 60 sayfaya eşitledik.
 cevap: 200 sayfa
+
+::ornek baslik="İki doluluk oranı arasındaki fark"
+soru: Bir depo $\frac{3}{8}$'i doluyken içine 30 litre su eklenince $\frac{3}{4}$'ü dolu oluyor. Depo kaç litredir?
+1. Eklenen su, iki oran arasındaki farka karşılık gelir: $\frac{3}{4}-\frac{3}{8}=\frac{6}{8}-\frac{3}{8}=\frac{3}{8}$. || Depodaki su önce ve sonra aynı deponun kesirleriyle anlatılıyor.
+2. $\frac{3}{8}$'i 30 litre ise $\frac{1}{8}$'i 10 litre. || Kesrin bir parçasını bulduk.
+3. Bütün $8\cdot10=80$ litre. || 8 parçanın hepsi.
+cevap: 80 litre. Kontrol: $30$ litreden $60$ litreye çıktı; $\frac{30}{80}=\frac{3}{8}$, $\frac{60}{80}=\frac{3}{4}$.
+
+::sorgula s2-maas baslik="Maaştan ne kadar kaldı?"
+durum: Maaşının $\frac{1}{4}$'ünü kiraya, kalanın $\frac{1}{3}$'ünü mutfak alışverişine harcıyorsun.
+soru: Maaşının kaçta kaçı geriye kalır?
+A) $\frac{5}{12}$ || $1-\frac{1}{4}-\frac{1}{3}$ yaptın; ikinci harcama bütünün değil kalanın üçte biri.
++B) $\frac{1}{2}$ || Kiradan sonra $\frac{3}{4}$ kalır; bunun $\frac{2}{3}$'ü: $\frac{3}{4}\cdot\frac{2}{3}=\frac{1}{2}$.
+C) $\frac{2}{7}$ || Paydaları toplayarak bir kesir oluşturmak anlamlı değil.
+kontrol: 1/2
+neden: Maaşa $12x$ de. Kira $3x$, kalan $9x$. Mutfak kalanın üçte biri: $3x$. Geriye $9x-3x=6x$, yani maaşın $\frac{6x}{12x}=\frac{1}{2}$'si kalır.
+sinav: “Kalanın” kelimesini gördüğünde bir önceki adımdan kalan miktarla çalış. Bütüne paydaların EKOK'unun katını demek hesabı tam sayılarla yürütür.
+dusun: Geriye 9000 lira kaldıysa maaş kaç liradır?
+yanit: Maaşın yarısı 9000 lira; maaş 18 000 lira.
 
 ::yanilgi m2 tip=kesir
 yanlis: "$\frac{2}{5}$'ini okudu, kalanın $\frac{1}{2}$'sini okudu" ise toplam $\frac{2}{5} + \frac{1}{2}$'sini okumuştur.
@@ -189,6 +227,25 @@ ipucu: İki fiyat (ya da iki kapasite), toplam adet ve toplam tutar
 2. Gerçek tutar ile varsayılan tutarın farkını bul.
 3. Farkı iki fiyatın farkına böl: pahalı türün adedi çıkar.
 
+::ornek baslik="Tavuklar ve koyunlar"
+soru: Bir çiftlikte tavuk ve koyunlardan oluşan 30 hayvan var. Hayvanların toplam 84 ayağı olduğuna göre kaç koyun vardır?
+1. Hepsinin tavuk olduğunu varsay: $30\cdot2=60$ ayak. || Ucuz türü (az ayaklıyı) varsaymak tek bilinmeyenli bir sayım verir.
+2. Eksik ayak $84-60=24$. Bir tavuğu koyunla değiştirmek 2 ayak ekler. || Her değişimin etkisi iki türün farkıdır.
+3. $24:2=12$ koyun, $30-12=18$ tavuk. || Fark, değişim sayısını verir.
+cevap: 12 koyun. Kontrol: $12\cdot4+18\cdot2=48+36=84$.
+
+::sorgula s3-kumbara baslik="Kumbaradaki madeni paralar"
+durum: Bir kumbarada yalnız 1 liralık ve 50 kuruşluk madeni paralar var. Toplam 20 madeni para ve 14 lira var.
+soru: Kumbarada kaç tane 1 liralık var?
++A) 8 || Hepsi 50 kuruş olsaydı 10 lira olurdu; 4 lira eksik. Her 1 liralık 50 kuruş ekler: $4:0{,}5=8$.
+B) 12 || Bu, 50 kuruşlukların sayısıdır.
+C) 4 || 4 lira, eksik tutardır; adet değildir.
+kontrol: (14-10)/0.5
+neden: 1 liralık $x$, 50 kuruşluk $20-x$: $x+0{,}5(20-x)=14$, $0{,}5x=4$, $x=8$. Denklemle de “hepsini ucuz say” yöntemiyle de aynı sonuç: 8 tane 1 lira ve 12 tane 50 kuruş.
+sinav: İki tür nesne, toplam adet ve toplam değer verilince ya bir türe $x$ deyip denklem kur ya da hepsini ucuz say, farkı bölerek pahalı türü bul.
+dusun: Aynı 20 parayla toplam 21 lira olabilir mi?
+yanit: Hayır. 20 paranın hepsi 1 lira olsa bile toplam 20 lira eder; 21'e ulaşılamaz.
+
 ::soru c3 tip=adet-tutar zorluk=2
 Bir sinemada öğrenci bileti 30 TL, tam bilet 45 TL'dir. 50 kişilik bir grup toplam 1800 TL ödediğine göre kaç tam bilet alınmıştır?
 +A) 20 || Doğru: hepsi öğrenci olsaydı 1500 TL; fark 300, her tam bilet 15 TL fazla.
@@ -211,9 +268,28 @@ L3: Arada sabit miktarlar varsa (önce yarısını, sonra 10 TL daha harcadı) s
 ::ornek baslik="İşlemleri geri sar"
 soru: Bir sayıya 5 ekleyip sonucu 3 ile çarpıyor, sonra 4 çıkarıyoruz ve 32 buluyoruz. Sayı kaçtır?
 1. Son işlem "4 çıkar"ın tersi: $32 + 4 = 36$. || Sondan başla.
-2. "3 ile çarp"ın tersi: $36 : 3 = 12$.
+2. "3 ile çarp"ın tersi: $36 : 3 = 12$. || Çarpmanın tersi bölmedir.
 3. "5 ekle"nin tersi: $12 - 5 = 7$. || Kontrol: $(7 + 5) \cdot 3 - 4 = 32$ ✓
 cevap: 7
+
+::ornek baslik="Kesirli harcamaları geri sar"
+soru: Bir öğrenci parasının yarısını kitaba, kalanın $\frac{1}{3}$'ünü yemeğe harcıyor ve geriye 40 lirası kalıyor. Başlangıçta kaç lirası vardı?
+1. Yemekten sonra kalan, yemekten önceki paranın $\frac{2}{3}$'üdür: önce $40:\frac{2}{3}=60$ lira vardı. || Son adımı geri aldık; çarpmanın tersi bölme.
+2. Kitaptan sonra kalan, başlangıcın yarısıdır: $60\cdot2=120$ lira. || Bir önceki adımı geri aldık.
+3. Başlangıç 120 lira. || Kontrol: $120\to60\to40$.
+cevap: 120 lira.
+
+::sorgula s4-otobus baslik="Otobüste kaç yolcu vardı?"
+durum: Bir otobüs ilk durakta yolcularının yarısını indirip 6 yeni yolcu alıyor. İkinci durakta 10 yolcu iniyor ve otobüste 20 yolcu kalıyor.
+soru: Otobüs ilk duraktan önce kaç yolcuyla geliyordu?
++A) 48 || Sondan başa: $20+10=30$, $30-6=24$, $24\cdot2=48$.
+B) 22 || İşlemleri tersine çevirmeden yaptın.
+C) 32 || Yarıya inme adımını geri alırken 2 ile çarpmadın.
+kontrol: (20+10-6)*2
+neden: Son durumdan geriye git, her işlemin tersini uygula: “10 indi”nin tersi 10 ekle (30), “6 bindi”nin tersi 6 çıkar (24), “yarısı indi”nin tersi 2 ile çarp (48).
+sinav: Son durum verilmişse sondan başa çalış; ekleme ↔ çıkarma, çarpma ↔ bölme.
+dusun: Bulduğun cevabı ileriye doğru kontrol et.
+yanit: 48 yolcunun yarısı iner: 24; 6 biner: 30; 10 iner: 20. Doğru.
 
 ::yanilgi m3 tip=ters-islem
 yanlis: Geri sararken işlemleri baştan sona sırayla tersine çevirmek yeterlidir.

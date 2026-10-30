@@ -99,6 +99,25 @@ soru: $\frac{a}{2} = \frac{b}{3} = \frac{c}{5}$ ve $a + b + c = 50$ olduğuna g�
 3. $c = 5k = 25$. || İstenen terim.
 cevap: $25$
 
+::ornek baslik="Fark verilen oran"
+soru: $\frac{a}{b}=\frac{3}{5}$ ve $b-a=14$ olduğuna göre $a+b$ kaçtır?
+1. $a=3k$, $b=5k$ yaz. || Oran, iki sayının aynı $k$ ile ölçeklenen 3 ve 5 parça olduğunu söyler.
+2. $b-a=5k-3k=2k=14$, $k=7$. || 2 parçanın 14 ettiğini bulduk; bir parça 7.
+3. $a+b=8k=56$. || Toplam 8 parçadır.
+cevap: 56. Kontrol: $a=21$, $b=35$; $\frac{21}{35}=\frac{3}{5}$ ve $35-21=14$.
+
+::sorgula s1-kek baslik="Tarifi büyütmek"
+durum: Bir kek tarifinde 3 yumurta ve 2 su bardağı un kullanılıyor. Elinde 9 yumurta var ve keki aynı oranda büyütmek istiyorsun.
+soru: Kaç su bardağı un kullanmalısın?
+A) 8 bardak || Yumurtaya 6 ekledin diye una da 6 ekledin; oranlar toplamayla değil çarpmayla korunur.
++B) 6 bardak || Yumurta 3 katına çıktı; un da 3 katına: $2\cdot3=6$.
+C) 4,5 bardak || Oranı ters kurdun: $\frac{3}{2}$ değil, yumurta başına $\frac{2}{3}$ bardak un düşer.
+kontrol: 9/3*2
+neden: $\frac{\text{yumurta}}{\text{un}}=\frac{3}{2}=\frac{9}{x}$ ise $x=6$. Orantı sabiti $k=3$: tarif 3 katına çıktı, her malzeme 3 katına çıkar.
+sinav: Eşit oranlar görünce bir $k$ yaz: yumurta $3k$, un $2k$. $3k=9$ ise $k=3$ ve un $2k=6$.
+dusun: Elinde 5 bardak un varsa aynı oranda kaç yumurta gerekir? Sonuç tam sayı mı?
+yanit: $\frac{5}{2}\cdot3=7{,}5$ yumurta. Yarım yumurta kullanılamayacağı için oran tam korunamaz; 7 ya da 8 yumurtayla yaklaşık olur.
+
 ::yanilgi m1 tip=oran-ozellik
 yanlis: $\frac{a}{b} = \frac{3}{5}$ ise $a = 3$ ve $b = 5$'tir.
 neden: Oran yalnız ilişkiyi verir; $a = 6$, $b = 10$ da aynı oranı taşır.
@@ -144,6 +163,25 @@ soru: Bir araç bir yolu 80 km/sa hızla 6 saatte gidiyor. Aynı yolu 120 km/sa 
 3. $t = 4$ saat. || Kontrol: hız 1,5 katı, süre 1,5'e bölündü.
 cevap: 4 saat
 
+::ornek baslik="Doğru orantıda birim değer"
+soru: Bir musluk 12 dakikada 90 litre su akıtıyor. Aynı hızla 150 litre kaç dakikada akar?
+1. Süre uzadıkça akan su artar: doğru orantı. || İlişkiyi önce belirledik; aynı akış hızında iki miktar aynı oranda büyür.
+2. Dakikada akan su: $\frac{90}{12}=7{,}5$ litre. || Orantı sabiti birim değerdir.
+3. $150:7{,}5=20$ dakika. || İstenen miktarı birim değere böldük.
+cevap: 20 dakika. Kontrol: $\frac{90}{12}=\frac{150}{20}$.
+
+::sorgula s2-pizza baslik="Pizza dilimleri"
+durum: Bir pizza 4 kişi arasında eşit paylaşıldığında kişi başına 3 dilim düşüyor. Sofraya 2 kişi daha katılıyor.
+soru: 6 kişi aynı pizzayı eşit paylaşırsa kişi başına kaç dilim düşer?
+A) 4,5 dilim || Doğru orantı kurdun; kişi artınca kişi başı dilim artmaz, azalır.
++B) 2 dilim || Toplam $4\cdot3=12$ dilim sabit; $12:6=2$.
+C) 5 dilim || Kişi sayısındaki artışı dilime ekledin.
+kontrol: 4*3/6
+neden: Pizza değişmiyor; toplam dilim sayısı $4\cdot3=12$ sabittir. Kişi sayısı × kişi başı dilim $=12$: bu bir ters orantıdır. $6\cdot x=12$, $x=2$.
+sinav: Önce “sabit kalan nedir?” diye sor. Çarpım sabitse ters orantı ($x\cdot y=k$), oran sabitse doğru orantıdır ($\frac{y}{x}=k$).
+dusun: Kişi sayısı 4'ten 8'e çıkarsa kişi başı dilim nasıl değişir?
+yanit: Kişi sayısı 2 katına çıkınca kişi başı dilim yarıya iner: $12:8=1{,}5$ dilim.
+
 ::yanilgi m2 tip=dogru-ters
 yanlis: $y = 2x + 3$ ilişkisinde $x$ ile $y$ doğru orantılıdır, çünkü biri artınca diğeri de artar.
 neden: Doğru orantıda oran sabit olmalı; $x = 1$ için $\frac{y}{x} = 5$, $x = 2$ için $\frac{7}{2}$.
@@ -182,6 +220,25 @@ ipucu: "… ile doğru/ters orantılı paylaştırılıyor"
 3. Toplam ya da fark denkleminden $k$'yi bul.
 4. İstenen kişinin payını yaz; en çok/en az kimin aldığını ilişkiden kontrol et.
 
+::ornek baslik="Farkı bilinen doğru orantılı paylaşım"
+soru: Bir miktar para 2, 3 ve 5 sayılarıyla doğru orantılı paylaştırılıyor. En çok alan, en az alandan 900 lira fazla alıyor. Toplam para kaç liradır?
+1. Paylar $2k$, $3k$, $5k$. || Doğru orantıda büyük sayı büyük pay alır.
+2. En çok ile en az arasındaki fark $5k-2k=3k=900$, $k=300$. || Fark denklemi tek bilinmeyenli.
+3. Toplam $10k=3000$ lira. || $2k+3k+5k=10k$.
+cevap: 3000 lira. Kontrol: paylar 600, 900, 1500; $1500-600=900$.
+
+::sorgula s3-ortak baslik="Kârı yatırımla paylaşmak"
+durum: İki ortak bir işe 30 000 ve 50 000 lira koydu. Yıl sonunda 16 000 lira kâr, yatırımlarla doğru orantılı paylaşılacak.
+soru: Daha az yatırım yapan ortak kaç lira alır?
+A) 8000 lira || Eşit paylaştırdın; yatırımlar farklı olduğu için paylar da farklı olmalı.
++B) 6000 lira || Oran $30\,000:50\,000=3:5$; $3k+5k=16\,000$, $k=2000$, pay $3k$.
+C) 10 000 lira || Bu, daha çok yatırım yapan ortağın payıdır.
+kontrol: 16000/8*3
+neden: Yatırımların oranı $3:5$. Kâr 8 parçaya bölünür; bir parça $16\,000:8=2000$. Az yatıran 3 parça (6000), çok yatıran 5 parça (10 000) alır.
+sinav: Paylaştırmada önce oranı en sade hâle getir, payları $k$ ile yaz, toplam ya da fark denkleminden $k$'yi bul.
+dusun: Ortaklardan biri 5 ay, diğeri 3 ay çalışsaydı ve kâr hem yatırım hem süreyle doğru orantılı paylaşılsaydı paylar nasıl olurdu?
+yanit: Ağırlıklar $30\,000\cdot5=150\,000$ ve $50\,000\cdot3=150\,000$; oran $1:1$. Her ortak 8000 lira alır.
+
 ::yanilgi m3 tip=paylastirma
 yanlis: Yaşlarıyla ters orantılı paylaşımda en büyük kardeş en çok parayı alır.
 neden: Ters orantıda sayı büyüdükçe pay küçülür.
@@ -210,14 +267,33 @@ L3: İş miktarı da değişiyorsa oran kur: $\frac{5 \cdot 4}{600} = \frac{3 \c
 soru: Aynı güçteki 8 işçinin 12 günde boyadığı bir duvarı 6 işçi kaç günde boyar?
 1. İşçi azaldıkça süre artar: ters orantı. || İlişkiyi belirle.
 2. $8 \cdot 12 = 6 \cdot x$. || İşçi-günü sabit.
-3. $x = 16$ gün.
+3. $x = 16$ gün. || İki tarafı 6'ya böldük; işçi azalınca süre aynı oranda arttı.
 cevap: 16 gün
 
 ::tamamla baslik="Makine ve parça"
 soru: 5 makine 4 saatte 600 parça üretiyor. Aynı güçteki 3 makine 6 saatte kaç parça üretir?
-1. Bir makinenin bir saatlik üretimi: $\frac{600}{5 \cdot 4} = 30$ parça.
-?2. 3 makine 6 saatte: $3 \cdot 6 \cdot 30 = 540$ parça.
+1. Bir makinenin bir saatlik üretimi: $\frac{600}{5 \cdot 4} = 30$ parça. || Önce birim üretimi bulmak her durumu karşılaştırmayı kolaylaştırır.
+?2. 3 makine 6 saatte: $3 \cdot 6 \cdot 30 = 540$ parça. || Üretim, makine sayısı ve saatle doğru orantılıdır; birim üretimi ikisiyle çarptık.
 cevap: 540
+
+::ornek baslik="İşin miktarı da değişirse"
+soru: 4 işçi 6 günde 3 duvar boyuyor. Aynı güçteki 6 işçi 8 günde kaç duvar boyar?
+1. Boyanan duvar, işçi × gün ile doğru orantılıdır: $\frac{\text{duvar}}{\text{işçi}\cdot\text{gün}}$ sabittir. || Daha çok işçi ya da daha çok gün, daha çok iş demektir.
+2. $\frac{3}{4\cdot6}=\frac{x}{6\cdot8}$, yani $\frac{3}{24}=\frac{x}{48}$. || İki durumu aynı oranda eşitledik.
+3. $x=6$ duvar. || İşçi-günü 2 katına çıktı; iş de 2 katına çıktı.
+cevap: 6 duvar.
+
+::sorgula s4-havuz baslik="Musluk sayısı artınca"
+durum: Özdeş 3 musluk bir havuzu 8 saatte dolduruyor. Aynı güçte 2 musluk daha açılıyor.
+soru: 5 musluk havuzu kaç saatte doldurur?
+A) Yaklaşık 13,3 saat || Doğru orantı kurdun; musluk artınca süre uzamaz, kısalır.
++B) 4,8 saat (4 saat 48 dakika) || Musluk × saat sabit: $3\cdot8=5\cdot x$.
+C) 6 saat || 8'den eklenen musluk sayısını çıkardın; süre bu şekilde azalmaz.
+kontrol: 3*8/5
+neden: Havuzu doldurmak için gereken “musluk-saat” miktarı sabittir: $3\cdot8=24$. 5 musluk için $x=\frac{24}{5}=4{,}8$ saat, yani 4 saat 48 dakika.
+sinav: İşçi, makine, musluk sorularında iş sabitse “kaynak × süre” çarpımı sabittir: ters orantı.
+dusun: Havuzun 4 saatte dolması için kaç musluk gerekir?
+yanit: $24:4=6$ musluk.
 
 ::soru c4 tip=bilesik zorluk=2
 6 işçi günde 8 saat çalışarak bir işi 10 günde bitiriyor. Aynı güçteki 8 işçi günde 5 saat çalışarak aynı işi kaç günde bitirir?

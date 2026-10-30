@@ -105,6 +105,25 @@ soru: Kardeşi doğduğunda Efe 8 yaşındadır. Kardeşi Efe'nin yaşına geldi
 3. Efe doğduğunda anne $48 - 16 = 32$ yaşındaydı. || Efe'nin yaşı kadar geri git.
 cevap: 32
 
+::ornek baslik="Kaç yıl sonra iki katı?"
+soru: Bugün baba 40, oğlu 12 yaşındadır. Kaç yıl sonra babanın yaşı oğlunun yaşının 2 katı olur?
+1. $t$ yıl sonra baba $40+t$, oğul $12+t$ yaşında olur. || Herkesin yaşı aynı süre kadar artar.
+2. $40+t=2(12+t)$, yani $40+t=24+2t$. || “2 katı” sözünü denkleme çevirdik.
+3. $t=16$. || $t$'leri bir tarafta topladık.
+cevap: 16 yıl sonra. Kontrol: baba 56, oğul 28; $56=2\cdot28$. Fark 28 hep aynı; o gün oğlun yaşı farka eşit olur.
+
+::sorgula s1-kardes baslik="Kardeşin senin yaşına gelince"
+durum: Sen 15, kardeşin 9 yaşındasın.
+soru: Kardeşin 15 yaşına geldiğinde sen kaç yaşında olacaksın?
+A) 15 || Senin yaşın da her yıl artıyor; o gün 15'te kalmazsın.
++B) 21 || Kardeşinin 15 olması için 6 yıl geçmeli; sen de $15+6=21$ olursun.
+C) 24 || Yaşları topladın; bu sorulan değil.
+kontrol: 15+6
+neden: Yaş farkı $15-9=6$ hiç değişmez. Kardeşin bugünkü yaşına gelmesi için 6 yıl geçer; bu sürede sen de 6 yaş büyürsün: 21. Kardeşin her zaman senden 6 yaş küçük kalır.
+sinav: “Biri diğerinin yaşına geldiğinde” geçen süre, yaş farkıdır.
+dusun: Hiç kardeşinin yaşının tam 2 katı olduğun bir yıl oldu mu?
+yanit: $15+t=2(9+t)$ ise $t=-3$: 3 yıl önce sen 12, kardeşin 6 yaşındaydı. O yıl kardeşinin yaşının 2 katıydın.
+
 ::yanilgi m1 tip=yas-fark
 yanlis: Baba oğlunun 3 katı yaşındaysa 10 yıl sonra da 3 katı yaşında olur.
 neden: Yaşlar aynı miktarda (10) artar; oran değişir, sabit kalan farktır.
@@ -136,6 +155,25 @@ soru: Bir anne ile iki çocuğunun yaşları toplamı 58'dir. 6 yıl önce annen
 3. $m = 4s - 42$; $5s - 42 = 58 \Rightarrow s = 20$, $m = 38$. || Kontrol: $32 = 4 \cdot 8$ ✓
 cevap: 38
 
+::ornek baslik="O tarihte doğmamış biri varsa"
+soru: Anne, baba ve iki çocuktan oluşan bir ailenin yaşları toplamı bugün 90'dır. Küçük çocuk 3 yaşındadır. 5 yıl önce ailenin yaşları toplamı kaçtı?
+1. 5 yıl önce küçük çocuk doğmamıştı; o yıl toplamda yalnız 3 kişi vardı. || Doğmamış birine negatif yaş verilmez.
+2. Bu 3 kişinin her biri 5 yaş küçüktü: $3\cdot5=15$ azalma. || Toplam yaş, kişi sayısı × geçen süre kadar değişir.
+3. Küçük çocuğun bugünkü 3 yaşı da toplamdan çıkar: $90-15-3=72$. || O tarihte hiç yaşı yoktu.
+cevap: 72. Dört kişi sayılsaydı $90-20=70$ gibi yanlış bir sonuç bulunurdu.
+
+::sorgula s2-takim baslik="Takımın yaş toplamı"
+durum: Bir futbol takımındaki 11 oyuncunun yaşları toplamı bugün 264.
+soru: Aynı 11 oyuncunun 2 yıl sonra yaşları toplamı kaç olur?
+A) 266 || Toplama 2 ekledin; ama 11 oyuncunun her biri 2 yaş büyür.
++B) 286 || $264+11\cdot2=286$.
+C) 528 || Toplamı 2 ile çarptın; yaşlar 2 katına çıkmaz.
+kontrol: 264+11*2
+neden: Her oyuncu 2 yıl sonra 2 yaş büyük olur. 11 oyuncu için toplam artış $11\cdot2=22$: $264+22=286$.
+sinav: $n$ kişinin yaş toplamı $t$ yıl sonra $n\cdot t$ artar. O tarihte doğmamış biri varsa yalnız var olanları say.
+dusun: Takımın yaş ortalaması 2 yıl sonra nasıl değişir?
+yanit: Bugün $264:11=24$; 2 yıl sonra $286:11=26$. Ortalama da 2 artar.
+
 ::yanilgi m2 tip=yas-toplam
 yanlis: Üç kişinin toplam yaşı 4 yıl sonra 4 artar.
 neden: Her kişi 4 yaş büyür; toplam $3 \cdot 4 = 12$ artar.
@@ -166,6 +204,25 @@ soru: Üç işçi bir işi sırasıyla 10, 15 ve 30 günde bitirebiliyor. Üçü
 2. Birlikte günde $6k$. || Günlük işler toplanır.
 3. $30k : 6k = 5$ gün. || Kontrol: en hızlının (10 gün) altında ✓
 cevap: 5 gün
+
+::ornek baslik="Dolduran ve boşaltan birlikte açıkken"
+soru: Bir musluk boş havuzu 4 saatte dolduruyor, bir gider dolu havuzu 6 saatte boşaltıyor. İkisi birlikte açılırsa boş havuz kaç saatte dolar?
+1. Havuz $12k$ olsun (EKOK). Musluk saatte $3k$ doldurur, gider saatte $2k$ boşaltır. || Kesirsiz çalışmak için havuzu EKOK birimiyle yazdık.
+2. Net hız saatte $3k-2k=k$. || Boşaltan katkı eksi işaretlidir.
+3. $12k:k=12$ saat. || Kontrol: $\frac{1}{4}-\frac{1}{6}=\frac{1}{12}$.
+cevap: 12 saat. Aşağıdaki grafikte musluk 6, gider 9 saatte çalışınca net hızın $\frac{1}{18}$'e düştüğünü görebilirsin.
+
+::sorgula s3-temizlik baslik="Evi birlikte temizlemek"
+durum: Sen evi tek başına 3 saatte, kardeşin 6 saatte temizleyebiliyor.
+soru: İkiniz birlikte çalışırsanız ev kaç saatte temizlenir?
+A) 4,5 saat || Sürelerin ortalamasını aldın; birlikte çalışan, en hızlı kişiden de çabuk bitirir.
++B) 2 saat || Saatte işin $\frac{1}{3}+\frac{1}{6}=\frac{1}{2}$'si yapılır.
+C) 9 saat || Süreleri topladın; birlikte çalışmak süreyi uzatmaz.
+kontrol: 1/(1/3+1/6)
+neden: İşi 6 parça say: sen saatte 2 parça, kardeşin 1 parça; birlikte saatte 3 parça. $6:3=2$ saat. Akıl kontrolü: sonuç en hızlı kişinin süresinden (3 saat) az olmalı.
+sinav: Birlikte çalışmada süreler değil, birim zamandaki işler toplanır: $\frac{1}{a}+\frac{1}{b}=\frac{1}{t}$.
+dusun: İşin 1,5 saatte bitmesi için tek başına kaç saatte temizleyebilen üçüncü bir kişi katılmalı?
+yanit: Saatte $\frac{2}{3}$ iş gerekir; ikiniz $\frac{1}{2}$ yapıyorsunuz. Eksik $\frac{1}{6}$: tek başına 6 saatte temizleyen biri.
 
 ::grafik alt="Doldurma 1/6 ve boşaltma 1/9 hızlarıyla havuzun dolma oranı zamana göre doğrusal artıyor; 18. saatte doluyor." aciklama="Net hız $\frac{1}{6} - \frac{1}{9} = \frac{1}{18}$: havuz 18 saatte dolar."
 x: 0 20
@@ -207,10 +264,29 @@ cevap: 1 gün
 
 ::tamamla baslik="Biri ayrılınca"
 soru: Bir işi Ali 12, Veli 18 günde bitiriyor. Ali tek başına 3 gün çalışıp ayrılıyor. Kalan işi Veli kaç günde bitirir?
-1. İş $36k$; Ali günde $3k$, Veli günde $2k$.
-?2. Ali 3 günde $9k$ yapar; kalan $27k$.
-?3. Veli $27k : 2k = 13{,}5$ günde bitirir.
+1. İş $36k$; Ali günde $3k$, Veli günde $2k$. || EKOK(12, 18) = 36; işi 36k alınca günlük işler tam sayı olur.
+?2. Ali 3 günde $9k$ yapar; kalan $27k$. || Ali'nin yaptığını toplam işten düştük.
+?3. Veli $27k : 2k = 13{,}5$ günde bitirir. || Kalan işi Veli'nin günlük işine böldük.
 cevap: $13{,}5$ gün
+
+::ornek baslik="Önce biri, sonra ikisi birlikte"
+soru: Bir havuzu A musluğu 6 saatte, B musluğu 12 saatte dolduruyor. Önce A musluğu tek başına 3 saat açık kalıyor, sonra B de açılıyor. Havuz toplam kaç saatte dolar?
+1. Havuz $12k$; A saatte $2k$, B saatte $k$ doldurur. || EKOK(6, 12) = 12.
+2. A tek başına 3 saatte $6k$ doldurur; kalan $6k$. || Birinci aşama.
+3. İkisi birlikte saatte $3k$: $6k:3k=2$ saat. Toplam $3+2=5$ saat. || İkinci aşama ve iki sürenin toplamı.
+cevap: 5 saat.
+
+::sorgula s4-odev baslik="Proje ödevi"
+durum: Bir proje ödevini sen tek başına 12 günde, arkadaşın 6 günde bitirebilir. Birlikte 2 gün çalıştınız, sonra arkadaşın başka bir işe geçti.
+soru: Kalan işi sen tek başına kaç günde bitirirsin?
++A) 6 gün || İş $12k$; birlikte günde $3k$, 2 günde $6k$; kalan $6k$, sen günde $k$.
+B) 10 gün || $12-2$ yaptın; birlikte çalışılan günlerde senin tek başına yapacağından fazlası yapıldı.
+C) 3 gün || Kalan işi arkadaşının hızıyla böldün.
+kontrol: (12-6)/1
+neden: İşi 12 parça say: sen günde 1, arkadaşın günde 2 parça yapar. Birlikte 2 günde $2\cdot3=6$ parça biter; kalan 6 parçayı sen günde 1 parçayla 6 günde bitirirsin.
+sinav: Aşamalı işlerde işi EKOK birimiyle yaz, her aşamada yapılanı toplamdan düş, kalan işi kalan çalışanın hızına böl.
+dusun: Arkadaşın değil de sen ayrılsaydın, kalan işi arkadaşın kaç günde bitirirdi?
+yanit: Kalan 6 parçayı günde 2 parçayla 3 günde bitirirdi.
 
 ::soru c4 tip=isci-asamali zorluk=2
 Bir işi Deniz 10 günde, Ece 15 günde bitirebiliyor. İkisi birlikte 3 gün çalıştıktan sonra Deniz işi bırakıyor. Kalan işi Ece kaç günde bitirir?
