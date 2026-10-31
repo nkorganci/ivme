@@ -39,7 +39,7 @@ REGISTRY = 'frontend/src/learn/content/kanit/index.js'
 ARCHIVE = APP.parent / 'veri-hatti/ogm-yks-cikmis/ham/sorular_son.json'
 BOOKS = APP.parent / 'Kaynaklar/yks-cikmis-sorular/OGM Kitapciklari'
 READER = APP / 'scripts/icerik-hatti-ders.mjs'
-GENERIC_TESTS = ('testler/icerik-hatti.test.mjs', 'testler/konu-ogrenme-bicim.test.mjs')
+GENERIC_TESTS = ('testler/icerik-hatti.test.mjs', 'testler/konu-ogrenme-bicim.test.mjs', 'testler/konu-ogrenme-ortak-set.test.mjs')
 TEST_INPUT_DIRS = ('frontend/src/learn/content', 'frontend/src/learn/engine')
 STAGES = ('kaynak', 'kanit', 'taslak', 'derle', 'dogrula', 'inceleme', 'paket')
 REACHED = {'kaynak': 'EXTRACTED', 'kanit': 'EVIDENCE_READY', 'taslak': 'DRAFTED', 'derle': 'DRAFTED',
@@ -669,7 +669,7 @@ def dogrula_run(ctx):
     text = result.stdout + result.stderr
     count = lambda key: int((re.findall(rf'^(?:#|ℹ) {key} (\d+)', text, re.M) or ['0'])[-1])
     if result.returncode or count('fail') or not count('pass'):
-        failing = [l.strip() for l in text.splitlines() if l.lstrip().startswith('not ok')][:8]
+        failing = [l.strip() for l in text.splitlines() if l.lstrip().startswith(('not ok', '✖')) and 'failing tests' not in l][:8]
         raise Stop('FAILED', f'Doğrulama başarısız ({count("fail")} test):\n  ' + '\n  '.join(failing or text.splitlines()[-15:]),
                    f'node --test {" ".join(test_files(ctx))}')
     return {'tests': test_files(ctx), 'pass': count('pass'), 'fail': 0}, {}

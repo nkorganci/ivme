@@ -7,13 +7,18 @@ import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
+import { EVIDENCE } from '../frontend/src/learn/content/kanit/index.js';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(ROOT, 'frontend/dist');
 const out = join(ROOT, 'veri/ui-denetim/konu-ogrenme');
 mkdirSync(out, { recursive: true });
-const pilot = process.argv.includes('--pilot');
-const CONCEPT = pilot ? 'bolme-bolunebilme' : 'temel-kavramlar';
+// --pilot [kavram]: kaynaklı kanıtı olan konunun (TAS-08/09) açıklamalı aktarım seti; kavram verilmezse bölme pilotu.
+const pilotAt = process.argv.indexOf('--pilot');
+const pilot = pilotAt >= 0;
+const pilotArg = process.argv[pilotAt + 1];
+const CONCEPT = pilot ? (pilotArg && !pilotArg.startsWith('-') ? pilotArg : 'bolme-bolunebilme') : 'temel-kavramlar';
+const PILOT_CODES = pilot ? EVIDENCE[CONCEPT].independentCodes : [];
 const groups = JSON.parse(readFileSync(join(ROOT, 'frontend/src/learn/bank/_gorsel.json'), 'utf8')).groups;
 const bank = JSON.parse(readFileSync(join(ROOT, `frontend/src/learn/bank/${CONCEPT}.json`), 'utf8')).questions;
 const codeOf = new Map(bank.map((q) => [q.i, q.c]));
@@ -59,7 +64,7 @@ const http = createServer(async (req, res) => {
     const code = decodeURIComponent(byCode[1]);
     const row = bank.find((q) => q.c === code);
     return json({ id: row?.i ?? 1, code, bank: 'OGM', examType: row?.x ?? 'TYT', year: row?.y,
-      source: 'OGM çıkmış sorular', subject: 'Matematik', topic: pilot ? 'Bölme ve bölünebilme' : 'Temel kavramlar',
+      source: 'OGM çıkmış sorular', subject: 'Matematik', topic: pilot ? CONCEPT : 'Temel kavramlar',
       choiceCount: 5, hasSolutionImage: false, hasApprovedHint: false,
       helpfulness: { helpful: 0, notHelpful: 0, mine: null, canVote: false } });
   }
@@ -80,7 +85,8 @@ const http = createServer(async (req, res) => {
   const image = p.match(/^\/api\/questions\/(\d+)\/(image|solution-image)$/);
   if (image) {
     const code = codeOf.get(Number(image[1]));
-    const file = join(ROOT, `veri/resimler-pilot/kirpilmis/TYT/matematik/${code}.webp`);
+    const exam = bank.find((q) => q.c === code)?.x ?? 'TYT';
+    const file = join(ROOT, `veri/resimler-pilot/kirpilmis/${exam}/matematik/${code}.webp`);
     if (pilot && existsSync(file)) { res.writeHead(200, { 'Content-Type': 'image/webp' }); return res.end(readFileSync(file)); }
     res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); return res.end(svg(`Soru ${image[1]}`));
   }
@@ -205,11 +211,11 @@ async function runPilot(mobile) {
   server.sessions.clear(); server.answers.clear(); server.answerPosts.length = 0; server.posts.length = 0;
   try {
     await goto(`/konuyu-ogrenelim/konu/${CONCEPT}`);
-    await wait('[...document.querySelectorAll("a")].some(a => a.textContent.includes("Konu testi (2 soru)"))');
+    await wait(`[...document.querySelectorAll("a")].some(a => a.textContent.includes("Konu testi (${PILOT_CODES.length} soru)"))`);
     assert.ok(await evalJs('document.body.innerText.includes("bütün soru tiplerini kapsayan ustalık testi değildir")'));
     await goto(`/konuyu-ogrenelim/pratik?tur=test&konu=${CONCEPT}`);
     await wait('document.querySelector(".qpage .choices button:not(:disabled)")');
-    assert.deepEqual(server.posts[0].items.map((i) => codeOf.get(i.questionId)).sort(), ['TYT-0592', 'TYT-0597']);
+    assert.deepEqual(server.posts[0].items.map((i) => codeOf.get(i.questionId)).sort(), [...PILOT_CODES].sort());
     const session = [...server.sessions.values()][0];
     for (const q of session.questions) {
       await goto(`/soru/${q.code}?sessionId=${session.id}`);
@@ -239,7 +245,7 @@ async function runPilot(mobile) {
       assert.equal(await evalJs('!!document.querySelector(".katex-error")'), false);
       assert.equal(await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2'), false);
       await evalJs('document.querySelector(".lr-guided-exam").scrollIntoView({block:"start"})');
-      await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-tas08-${q.code}.png`));
+      await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-pilot-${CONCEPT}-${q.code}.png`));
       await evalJs('[...document.querySelectorAll("button")].find(b => b.textContent.includes("Yeniden çalış")).click()');
       assert.equal(await evalJs('!!document.querySelector(".lr-guided-exam")'), false, 'yeni denemede çözüm saklanır');
     }

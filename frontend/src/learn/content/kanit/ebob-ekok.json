@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 1,
+  "conceptId": "ebob-ekok",
+  "contentVersion": 1,
+  "lessonSha256": "71cf62bcbc149d0842b75b830458b3cfe45653b60897552a15b9cbbce61b0ffd",
+  "primarySource": {
+    "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
+    "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
+    "sha256": "8ff2f001aad6f332362a0a219cee714204ac69cc2281f48e0fe3211829927bcd"
+  },
+  "review": {
+    "teacherApproved": false,
+    "studentTransferObserved": false
+  },
+  "claims": {
+    "asal": {
+      "title": "Asal sayı: 1 ve kendisinden başka pozitif böleni olmayan, 1’den büyük tam sayı (sözlük)",
+      "page": 367,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=367",
+      "blocks": [
+        {
+          "id": "blk-d7523210f639",
+          "bbox": [
+            73.53,
+            280.97,
+            112.69,
+            293.36
+          ],
+          "textSha256": "bcb31c377d555486753bae32c59028e3c792a7250e171c6d2e25cc4f494e22ef"
+        },
+        {
+          "id": "blk-3266e90bfc1c",
+          "bbox": [
+            258.23,
+            267.34,
+            514.16,
+            293.36
+          ],
+          "textSha256": "311dcfae35d05e17a9d2d2518159b62c5a936b90a32e5902fe6f840014f49595"
+        },
+        {
+          "id": "blk-d1cae9234790",
+          "bbox": [
+            258.23,
+            295.34,
+            388.43,
+            321.36
+          ],
+          "textSha256": "68ab04687d07ee9a7d8ee569fe67474ab943b4e181834c2c8ce2761f68a4f3ba"
+        }
+      ],
+      "layoutSha256": "d5a3b7bdbdbc1e33618f9b1861489ecd00909fc7f445c238f29efdbe4ea1a5ba"
+    },
+    "aralarinda": {
+      "title": "Aralarında asal: 1’den başka ortak pozitif böleni yok",
+      "page": 94,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=94",
+      "blocks": [
+        {
+          "id": "blk-487ec764b93b",
+          "bbox": [
+            62.22,
+            622.63,
+            167.45,
+            670.65
+          ],
+          "textSha256": "0b4460f269088471df2215ff6ed82643a44ae1894582623fa7349f4cf04b42dd"
+        },
+        {
+          "id": "blk-df116e0c6d4d",
+          "bbox": [
+            62.22,
+            670.63,
+            165.9,
+            742.65
+          ],
+          "textSha256": "f3ad19439c2c1e6f446e8d16a5e7d09d5f38b0a80dc995b02fe24f768f0b9b68"
+        }
+      ],
+      "layoutSha256": "40137227aacfd67f6fe32e69c0ae20911bbefc73f387c4492c18e99cf7f1a1b3"
+    },
+    "ardisik": {
+      "title": "Ardışık iki sayı ve 1 her sayıyla aralarında asal",
+      "page": 95,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=95",
+      "blocks": [
+        {
+          "id": "blk-7858a6a18230",
+          "bbox": [
+            413.15,
+            96.25,
+            532.3,
+            144.27
+          ],
+          "textSha256": "7174597555393578b6fb398a8db259e71e227c036cc4d8eeee2c1616d7c822de"
+        }
+      ],
+      "layoutSha256": "68e763aef9dd23416c9df8296862cd98adca9233848b317109871db5f9c6b640"
+    },
+    "ebob_tanim": {
+      "title": "EBOB: pozitif ortak bölenlerin en büyüğü",
+      "page": 98,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=98",
+      "blocks": [
+        {
+          "id": "blk-50449fa0545d",
+          "bbox": [
+            201.26,
+            420.28,
+            535.03,
+            456.3
+          ],
+          "textSha256": "9096b03e4358b01d96bf264afe95c51249167c1cd4742d3dbd602d1deabb3908"
+        },
+        {
+          "id": "blk-225e1e47c42c",
+          "bbox": [
+            198.43,
+            359.62,
+            535.75,
+            383.85
+          ],
+          "textSha256": "e698ecf3f9c1d5b7593c0e7048ca51ef657b84a1380711022cc8351d120c6177"
+        }
+      ],
+      "layoutSha256": "aa02b88d8b0962a4259d12239dc94a59375a237e4dd01c5b4d224a43dd5df0cd"
+    },
+    "ekok_tanim": {
+      "title": "EKOK: pozitif ortak katların en küçüğü",
+      "page": 98,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=98",
+      "blocks": [
+        {
+          "id": "blk-0b91b29e0795",
+          "bbox": [
+            201.54,
+            648.93,
+            534.77,
+            672.95
+          ],
+          "textSha256": "a89bc7a59e9b96a6789820d0891fb775bcefbc5d2592de186dfbbe521907e48b"
+        },
+        {
+          "id": "blk-ca8bbc55a41e",
+          "bbox": [
+            198.43,
+            577.92,
+            537.86,
+            604.14
+          ],
+          "textSha256": "92d1e2f51b790cf16b8a9d9aa371ba1c7ef79ba2b8c1bedf01dee9937de4b41c"
+        }
+      ],
+      "layoutSha256": "aa02b88d8b0962a4259d12239dc94a59375a237e4dd01c5b4d224a43dd5df0cd"
+    },
+    "carpim": {
+      "title": "İki sayma sayısında a·b = EBOB·EKOK",
+      "page": 98,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=98",
+      "blocks": [
+        {
+          "id": "blk-d1b9dff94fda",
+          "bbox": [
+            207.21,
+            680.76,
+            451.54,
+            765.15
+          ],
+          "textSha256": "ed4fd78d519f012b22724ea65b62c943073d28c04254249e8461957df0bf7e88"
+        }
+      ],
+      "layoutSha256": "aa02b88d8b0962a4259d12239dc94a59375a237e4dd01c5b4d224a43dd5df0cd"
+    },
+    "aralarinda_ebob": {
+      "title": "Aralarında asal sayılarda EBOB 1, EKOK çarpım",
+      "page": 99,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=99",
+      "blocks": [
+        {
+          "id": "blk-fac149ce9178",
+          "bbox": [
+            68.67,
+            62.54,
+            295.58,
+            74.93
+          ],
+          "textSha256": "12cdd64d135d32f94e5ffcd2f9d9ae5d8507db2f363b61597460d32b2eacb5f8"
+        },
+        {
+          "id": "blk-5cf44aff021b",
+          "bbox": [
+            68.67,
+            77.91,
+            327.57,
+            119.93
+          ],
+          "textSha256": "98fa79fd15efe1d542f7f690bcc4587a1709f8986501e260d51b6b48311f95c8"
+        }
+      ],
+      "layoutSha256": "cc83729626d18624cfbebe61e34e8ada13749ec82baa72f7fe3f1477634f2ca5"
+    },
+    "kat": {
+      "title": "Biri diğerinin katıysa EBOB küçük, EKOK büyük sayı",
+      "page": 99,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=99",
+      "blocks": [
+        {
+          "id": "blk-1edb15d17de3",
+          "bbox": [
+            68.67,
+            131.54,
+            343.88,
+            155.93
+          ],
+          "textSha256": "df6d336e43beadd8ebdf16c7bde8921289b67687bbe2f2b3dbe2ea82ab353d6b"
+        }
+      ],
+      "layoutSha256": "cc83729626d18624cfbebe61e34e8ada13749ec82baa72f7fe3f1477634f2ca5"
+    },
+    "usler": {
+      "title": "Asal çarpanlarda EBOB küçük üsler, EKOK büyük üsler",
+      "page": 99,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=99",
+      "blocks": [
+        {
+          "id": "blk-b8ba36258368",
+          "bbox": [
+            59.53,
+            418.5,
+            398.42,
+            442.52
+          ],
+          "textSha256": "6dbb64b7253483eccfbf0f76ef3b1d5fa3ad213c925fbb63d0e4d88732317efb"
+        },
+        {
+          "id": "blk-08bbc6f9cfad",
+          "bbox": [
+            59.53,
+            465.84,
+            398.44,
+            489.86
+          ],
+          "textSha256": "f064035d80e92836a5523c68c881e9234e74097e0a5aa126e51f4737f848682b"
+        }
+      ],
+      "layoutSha256": "cc83729626d18624cfbebe61e34e8ada13749ec82baa72f7fe3f1477634f2ca5"
+    },
+    "uc_sayi": {
+      "title": "Üç sayının EBOB ve EKOK’u",
+      "page": 99,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=99",
+      "blocks": [
+        {
+          "id": "blk-674b2d98dbca",
+          "bbox": [
+            59.24,
+            606.65,
+            395.14,
+            634.86
+          ],
+          "textSha256": "03147caf6edb23b033022a3196a305a6232410ba7652ed5684075e9bde2e5fbe"
+        },
+        {
+          "id": "blk-35ad997eb574",
+          "bbox": [
+            59.24,
+            742.06,
+            386.67,
+            754.08
+          ],
+          "textSha256": "f841413e1074ccfbaef6cd9c6fa2735f78ff1bb9d8554c72073818dc26cd7520"
+        }
+      ],
+      "layoutSha256": "cc83729626d18624cfbebe61e34e8ada13749ec82baa72f7fe3f1477634f2ca5"
+    },
+    "ortak_kisim": {
+      "title": "K=8x, L=8y (x, y aralarında asal) ve EKOK=8xy",
+      "page": 102,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=102",
+      "blocks": [
+        {
+          "id": "blk-16f23e888f76",
+          "bbox": [
+            198.43,
+            342.4,
+            537.84,
+            394.61
+          ],
+          "textSha256": "208a5df8a0f2ae61b11ed825efc8193bcfb08bead6b79e39dc741033d39e4530"
+        },
+        {
+          "id": "blk-db184431d452",
+          "bbox": [
+            201.26,
+            465.93,
+            436.67,
+            477.95
+          ],
+          "textSha256": "791c51ac9446c8d38ad507810e89125fde07793283447a238fa05dc5579b739b"
+        }
+      ],
+      "layoutSha256": "d24aab34848c2fc844aaf4f2fd1b88e331f3e7ed6d8648ad7e28320a536999da"
+    },
+    "ebob_parca": {
+      "title": "Eş ve en büyük kare parçalar için EBOB",
+      "page": 103,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=103",
+      "blocks": [
+        {
+          "id": "blk-625499e5dcc6",
+          "bbox": [
+            59.53,
+            374.7,
+            398.36,
+            438.91
+          ],
+          "textSha256": "2582d3f2d934ff2af4656e3fe8af15796a519307b4d2717d2ebc4ad921e8bd05"
+        }
+      ],
+      "layoutSha256": "c90350bdb6c4a29e0fabf2e2acba7911c0a7d441f1a70ad22f4c96a6f7fb876f"
+    },
+    "ebob_cevre": {
+      "title": "Çevreye eşit aralıklı direk: EBOB ve çevre/EBOB",
+      "page": 104,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=104",
+      "blocks": [
+        {
+          "id": "blk-432815f846da",
+          "bbox": [
+            195.59,
+            292.33,
+            535.47,
+            325.93
+          ],
+          "textSha256": "1925d1a40c9c16ba774b93ccb3ca2e5defd01916d4280fbc7835a72c8279d9e8"
+        },
+        {
+          "id": "blk-269d7f47a9b5",
+          "bbox": [
+            206.93,
+            333.91,
+            501.91,
+            429.94
+          ],
+          "textSha256": "570489651f239d3dfd0f74bbbbcd9a23fea1a4444514b83e43b831a95d195a80"
+        }
+      ],
+      "layoutSha256": "90643d76dc28df05f382ce4a870673459043a2d7405fd50e3a52977f629eeae5"
+    },
+    "ekok_kalan": {
+      "title": "Her bölmede aynı kalan: EKOK + kalan",
+      "page": 103,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=103",
+      "blocks": [
+        {
+          "id": "blk-a61cb0249048",
+          "bbox": [
+            59.53,
+            131.56,
+            394.39,
+            171.78
+          ],
+          "textSha256": "cdfba832bf863b73b9726a82f0771d66b6a9c244badf7b97cec640fa13cea0e6"
+        }
+      ],
+      "layoutSha256": "c90350bdb6c4a29e0fabf2e2acba7911c0a7d441f1a70ad22f4c96a6f7fb876f"
+    },
+    "ekok_ayni": {
+      "title": "Aynı anda tekrar: süreler EKOK’u",
+      "page": 103,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=103",
+      "blocks": [
+        {
+          "id": "blk-096b8de8d2aa",
+          "bbox": [
+            56.69,
+            638.38,
+            396.7,
+            686.96
+          ],
+          "textSha256": "98a206b50332865c3decf138341c5618bf70602b0cc2ff1fc209de547bb6dea6"
+        }
+      ],
+      "layoutSha256": "c90350bdb6c4a29e0fabf2e2acba7911c0a7d441f1a70ad22f4c96a6f7fb876f"
+    },
+    "gun": {
+      "title": "Gün sorusunda 7 ile kalan",
+      "page": 106,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=106",
+      "blocks": [
+        {
+          "id": "blk-f0a6cbb062f7",
+          "bbox": [
+            198.43,
+            410.16,
+            535.12,
+            450.38
+          ],
+          "textSha256": "a5482881ac0eb34c1c03e0c61bd0b6a4e51af3f93cf269dbdc7c0571fcea8afa"
+        }
+      ],
+      "layoutSha256": "b651d2095f7810ee6b5a4b62e5c422eee5bdc0bd8edf782e1027f3a25d04ff08"
+    },
+    "saat": {
+      "title": "Saat döngüsünde 24 ile kalan",
+      "page": 106,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=106",
+      "blocks": [
+        {
+          "id": "blk-8b561101d323",
+          "bbox": [
+            198.43,
+            281.89,
+            537.24,
+            322.11
+          ],
+          "textSha256": "79c95c98b4b402bcbc4114bc82a26cf1f88b61081f2d150f7c2123a71f3d7f7a"
+        }
+      ],
+      "layoutSha256": "b651d2095f7810ee6b5a4b62e5c422eee5bdc0bd8edf782e1027f3a25d04ff08"
+    },
+    "baslangic": {
+      "title": "n. kez için n−1 aralık",
+      "page": 106,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=106",
+      "blocks": [
+        {
+          "id": "blk-f147f8afdb06",
+          "bbox": [
+            199.06,
+            635.14,
+            537.89,
+            687.35
+          ],
+          "textSha256": "57de2a1a9de63786975f3f2807aa9730a83dd8044748e2e665902d570eca890a"
+        }
+      ],
+      "layoutSha256": "b651d2095f7810ee6b5a4b62e5c422eee5bdc0bd8edf782e1027f3a25d04ff08"
+    },
+    "ekok_periyot": {
+      "title": "Birlikte tekrar: EKOK periyodu ve n−1",
+      "page": 107,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=107",
+      "blocks": [
+        {
+          "id": "blk-75aa31006bac",
+          "bbox": [
+            59.53,
+            428.66,
+            398.07,
+            480.88
+          ],
+          "textSha256": "bfcdb35d391b3025ef64f5b3cd1ca3c49cdb34cb8244e645d7b7890a8e1daa9d"
+        }
+      ],
+      "layoutSha256": "2403ed6b60d9453627142d90cdbbd4a4267206d57b883b23280a346a6c3b7f29"
+    },
+    "dongu": {
+      "title": "Tekrarlanan dizide konum için kalan",
+      "page": 107,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=107",
+      "blocks": [
+        {
+          "id": "blk-307c9673871e",
+          "bbox": [
+            59.84,
+            634.83,
+            398.4,
+            675.04
+          ],
+          "textSha256": "f635812cea3aad20983cd4ea2420d04222c5a2e255c37e1915fe5e4f2f34f0fc"
+        }
+      ],
+      "layoutSha256": "2403ed6b60d9453627142d90cdbbd4a4267206d57b883b23280a346a6c3b7f29"
+    }
+  },
+  "sections": {
+    "s1": {
+      "claims": [
+        "asal",
+        "usler",
+        "aralarinda"
+      ],
+      "note": "Asal sayı tanımı kitabın sözlüğünden; asal çarpanlar EBOB–EKOK örneklerinde kullanılır. Pozitif bölen sayısı formülü kitapta yok: üs seçimlerini çarpma ilkesiyle sayan özgün türetimdir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s1b": {
+      "claims": [
+        "asal",
+        "usler"
+      ],
+      "note": "Özgün türetim: koşullu bölen sayısı, bölenlerin toplamı ve asallık denemesi aynı üs seçim tablosundan çıkarılır; kitapta bu başlık yok.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s2": {
+      "claims": [
+        "ebob_tanim",
+        "ekok_tanim",
+        "usler",
+        "carpim"
+      ],
+      "note": "Tanımlar ve küçük/büyük üs kuralı kitaptan; çarpım ilişkisi iki sayma sayısı içindir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s2b": {
+      "claims": [
+        "ortak_kisim",
+        "aralarinda_ebob",
+        "kat",
+        "carpim",
+        "uc_sayi"
+      ],
+      "note": "a=dm, b=dn yazımı kitabın K=8x, L=8y örneğinin genellemesidir. Üç sayıda çarpım eşitliğinin bozulduğu örnek özgün türetimdir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s3": {
+      "claims": [
+        "ebob_tanim",
+        "ebob_parca",
+        "ebob_cevre"
+      ],
+      "note": "Bölme problemleri kitaptaki kare çim ve çevre direği örnekleriyle aynı ilkeye dayanır.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s3b": {
+      "claims": [
+        "ebob_parca",
+        "ebob_cevre"
+      ],
+      "note": "Özgün türetim: kalanlı EBOB (kalanları çıkarıp EBOB almak), açık yolda uç ağaç ve parça sınırı.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s4": {
+      "claims": [
+        "ekok_tanim",
+        "ekok_kalan",
+        "ekok_ayni"
+      ],
+      "note": "Birleştirme ve aynı anda tekrar kitaptaki öğrenci ve makine örnekleriyle aynı ilkeye dayanır.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s4b": {
+      "claims": [
+        "ekok_kalan",
+        "ekok_tanim"
+      ],
+      "note": "Bölen−kalan farkının ortak olduğu durum, farklı kalanlarda tarama ve aralıkta sayma özgün türetimdir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s5": {
+      "claims": [
+        "gun",
+        "baslangic",
+        "ekok_periyot"
+      ],
+      "note": "Kurs ve nöbet örnekleri kitaptaki periyodik problemlerle aynıdır.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s5b": {
+      "claims": [
+        "saat",
+        "dongu",
+        "gun"
+      ],
+      "note": "Kuvvetlerin son rakam döngüsü özgün türetimdir; kitap saat ve tekrar eden rakam dizisini verir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    }
+  },
+  "questions": {
+    "AYT_Sayisal-0035": {
+      "sectionId": "s2",
+      "role": "guided",
+      "claims": [
+        "usler"
+      ],
+      "imageSha256": "65c7fd3d951b76ee31f72bb13f1882044d28abbc48b6d8e890f25122c95dc1f3",
+      "sourceSha256": "41a0dde626e56a4a9d191b1fa3767f78bfc17600be8586a6876b68e1ae73efe5",
+      "solutionSha256": "93249da9da3918c99c3d0182a9b7e57cfed989fd9208332621d1e013e726ce94",
+      "imagePath": "veri/resimler-pilot/kirpilmis/AYT/matematik/AYT_Sayisal-0035.webp",
+      "exam": "AYT",
+      "year": 2025,
+      "archiveId": "2025-AYT-MAT-04",
+      "sourceBook": "AYT_Sayisal",
+      "sourcePage": 22,
+      "bookQuestion": 35,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "C"
+    },
+    "AYT_Sayisal-0018": {
+      "sectionId": "s2b",
+      "role": "guided",
+      "claims": [
+        "ortak_kisim",
+        "aralarinda_ebob"
+      ],
+      "imageSha256": "bb417d4ed470ad8edd95711daf6081bf05ca7ce210684c531acff7a525133deb",
+      "sourceSha256": "41a0dde626e56a4a9d191b1fa3767f78bfc17600be8586a6876b68e1ae73efe5",
+      "solutionSha256": "f665165b249ee4b9e9e14fe7fa77e51364473d2298ba6436e2c50e1c5da8225f",
+      "imagePath": "veri/resimler-pilot/kirpilmis/AYT/matematik/AYT_Sayisal-0018.webp",
+      "exam": "AYT",
+      "year": 2021,
+      "archiveId": "2021-AYT-MAT-04",
+      "sourceBook": "AYT_Sayisal",
+      "sourcePage": 18,
+      "bookQuestion": 18,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "A"
+    },
+    "TYT-0713": {
+      "sectionId": "s1",
+      "role": "independent",
+      "claims": [
+        "usler",
+        "asal"
+      ],
+      "imageSha256": "d0b24a0552042cf64f666f7b92b05a39fcb462d6bec1acbaa018e9d2bbdaad30",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "62c6ed3dc19688d0541727737906fc5feba9ca75e166439b9ba3ed3f63a7cfb7",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0713.webp",
+      "exam": "TYT",
+      "year": 2023,
+      "archiveId": "2023-TYT-TEM-24",
+      "sourceBook": "TYT",
+      "sourcePage": 271,
+      "bookQuestion": 173,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "C"
+    },
+    "AYT_Sayisal-0021": {
+      "sectionId": "s2b",
+      "role": "independent",
+      "claims": [
+        "ortak_kisim",
+        "aralarinda_ebob"
+      ],
+      "imageSha256": "a3eae58c6aa542e4cfa9b53d8774780ac8ec42eae3f0b9bc20f0603525e0c9d7",
+      "sourceSha256": "41a0dde626e56a4a9d191b1fa3767f78bfc17600be8586a6876b68e1ae73efe5",
+      "solutionSha256": "311e44d364297b14e2133bdcbfd8c1031c1b352f898f1153d076ba467e062ba7",
+      "imagePath": "veri/resimler-pilot/kirpilmis/AYT/matematik/AYT_Sayisal-0021.webp",
+      "exam": "AYT",
+      "year": 2022,
+      "archiveId": "2022-AYT-MAT-03",
+      "sourceBook": "AYT_Sayisal",
+      "sourcePage": 19,
+      "bookQuestion": 21,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "C"
+    }
+  },
+  "independentCodes": [
+    "TYT-0713",
+    "AYT_Sayisal-0021"
+  ],
+  "testScope": "Asal çarpanlardan bölen seçmeyi ve ortak kısımla EKOK hesabını ölçer"
+}

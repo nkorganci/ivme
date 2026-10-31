@@ -84,7 +84,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.10) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.11; PDF kanıt çıkarımı) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Kısmen (kaynaklı pilot ve UI kabulü; insan incelemesi açık) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
-| 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Kısmen (hat ve pilot taşıma; ikinci konu taslakta) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
+| 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlandı (12.13; iki konu öğretmen incelemesinde) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
 | 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
 | 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Tamamlanmadı (yalnız öneri) | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
 | 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Kısmen (kural ve TAS-01 regresyonları var; sürekli iş) | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
@@ -430,7 +430,7 @@ Pilot ancak şu kanıtlarla çoğaltılır: ana kaynak bağları tamam; bütün 
 ## 11. TAS-09 ve TAS-12: Tekrarlanan işleri agent iş akışına dönüştürme
 
 **Uygulama durumu (TAS-09, 12.13):** Önerilen görev kaydı ve aşamalar `python scripts/ivme.py icerik` komutu
-olarak kuruldu; bölme pilotu aynı kanıtla taşındı, ikinci konu EBOB–EKOK taslak aşamasında. Bu bölümdeki
+olarak kuruldu; bölme pilotu aynı kanıtla taşındı, ikinci konu EBOB–EKOK aynı ölçütlerle hattan geçti. Bu bölümdeki
 “mevcut bir komut değildir” notları öneri dönemini anlatır. Kullanım ve kalan iş: [içerik hattı](../islemler/icerik-hatti.md).
 
 ### 11.1. Önce süreç, sonra agent

@@ -2,7 +2,7 @@
 
 Bir konunun ders/çözüm içeriğini ana kaynak kanıtına bağlayan, aşama hash'li ve kaldığı
 yerden devam eden tek komut. Bölme–bölünebilme pilotu (TAS-08) bu hatta taşındı; ikinci
-konu EBOB–EKOK hatta yürütülüyor. Yaklaşım: [inceleme §11](../tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#11-tas-09-ve-tas-12-tekrarlanan-işleri-agent-iş-akışına-dönüştürme).
+konu EBOB–EKOK aynı ölçütlerle hattan geçti. Yaklaşım: [inceleme §11](../tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#11-tas-09-ve-tas-12-tekrarlanan-işleri-agent-iş-akışına-dönüştürme).
 
 ## Komutlar
 
@@ -35,7 +35,7 @@ bekleniyor, `1` girdi/kanıt/test hatası, `2` kullanım hatası. Hat model ça�
 | `kanit` | İddia bloklarını (bbox, metin hash'i), soru kaydını, görsel/kitapçık hash'ini toplar | Eksik blok/sayfa; görsel incelenmemiş (`imageSha256` yok) → `WAITING` |
 | `taslak` | Dersi ve çözümleri şablona göre denetler: bölüm sırası, her bölümde üç düzey + sorgula + iki gerekçeli örnek, rehberli soru doğru bölümde, bağımsız soru derste yok, çözümde ne/neden, check/tip/mistake, cevap anahtarı | Eksik varsa görev paketini yazar → `WAITING` (3) |
 | `derle` | Kanıt JSON'unu ve kayıt modülünü üretir; değişmeyen dosya yazılmaz | Kuru kontrolde fark |
-| `dogrula` | `icerik-hatti.test.mjs`, biçim testi ve görevdeki konu testleri | Test hatası |
+| `dogrula` | `icerik-hatti.test.mjs`, biçim testi, ortak set seçimi testi ve görevdeki konu testleri | Test hatası |
 | `inceleme` | İnsan kararlarından `teacherApproved`/`studentTransferObserved` | Asla otomatik onay yok |
 | `paket` | Yayın manifesti; dış yayın/push ayrı kullanıcı talimatı ister | — |
 
@@ -64,4 +64,8 @@ bankasında değilse `WORKED_EXAMS` kaydı eklendikten sonra `node scripts/konu-
 ```powershell
 ..\.venv\Scripts\python.exe -X utf8 testler/icerik-hatti-test.py   # 9 test: devam, kesinti, kilit, değişen kapsam, kuru kontrol, insan kararı
 node --test testler/icerik-hatti.test.mjs                         # derlenmiş her görevin kanıt/ders/çözüm/test seti tutarlılığı
+python scripts/ivme.py ui konu-ogrenme-ui <kavram> --duzey                 # bölüm kaynakları ve üç düzey, masaüstü/mobil
+python scripts/ivme.py ui konu-ogrenme-ortak-set-ui --pilot <kavram>       # açıklamalı aktarım seti, çözüm cevaptan sonra
 ```
+
+UI betikleri için önce `IVME_TEST_DIST` ile ayrı derleme kullan ([pilot kabulü](../icerik/tas08-pilot-kabul.md#tekrarlanabilir-denetim)).

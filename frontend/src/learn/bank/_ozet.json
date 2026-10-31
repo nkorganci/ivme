@@ -29,16 +29,16 @@
    "untyped": 14
   },
   "birinci-derece-denklemler": {
-   "total": 181,
+   "total": 180,
    "cikmis": {
     "TYT": 3,
-    "AYT": 1
+    "AYT": 0
    },
    "archetypes": {
     "denklem-cozme": 10,
     "ozel-durum": 14,
     "sistem": 108,
-    "ifade-degeri": 20
+    "ifade-degeri": 19
    },
    "untyped": 29
   },
@@ -71,14 +71,14 @@
    "untyped": 13
   },
   "ebob-ekok": {
-   "total": 211,
+   "total": 213,
    "cikmis": {
-    "TYT": 0,
-    "AYT": 2
+    "TYT": 1,
+    "AYT": 3
    },
    "archetypes": {
-    "asal-bolen": 21,
-    "ebob-ekok-hesap": 42,
+    "asal-bolen": 22,
+    "ebob-ekok-hesap": 43,
     "ebob-problem": 10,
     "ekok-problem": 19,
     "periyodik": 28
@@ -128,9 +128,9 @@
    "untyped": 400
   },
   "grafik-rutin-olmayan": {
-   "total": 228,
+   "total": 227,
    "cikmis": {
-    "TYT": 19,
+    "TYT": 18,
     "AYT": 0
    },
    "archetypes": {
@@ -139,7 +139,7 @@
     "en-az-en-cok": 54,
     "oruntu-strateji": 31
    },
-   "untyped": 49
+   "untyped": 48
   },
   "hareket-problemleri": {
    "total": 211,

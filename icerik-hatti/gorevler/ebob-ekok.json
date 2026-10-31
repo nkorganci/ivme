@@ -5,7 +5,7 @@
  "templateVersion": "konuyu-ogrenelim/tas08-v1",
  "lesson": "frontend/src/learn/content/dersler/ebob-ekok.ders",
  "output": "frontend/src/learn/content/kanit/ebob-ekok.json",
- "testScope": "EBOB–EKOK ilişkisini ölçer",
+ "testScope": "Asal çarpanlardan bölen seçmeyi ve ortak kısımla EKOK hesabını ölçer",
  "primarySource": {
   "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
   "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",

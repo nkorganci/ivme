@@ -6,6 +6,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { collapseTwins, expandBank, lastSeen, pickMastery, pickPast, pickPractice, pickReview, tierOf } from '../frontend/src/learn/engine/selection.js';
 import { PRACTICE_SIZE, TEST_SIZE, pickSharedSet, plannedSize, requestItems, sizeNote } from '../frontend/src/learn/engine/sharedSet.js';
+import { evidenceFor } from '../frontend/src/learn/content/evidence.js';
 
 const root = new URL('../frontend/src/learn/', import.meta.url);
 const groups = JSON.parse(readFileSync(new URL('bank/_gorsel.json', root), 'utf8')).groups;
@@ -41,11 +42,11 @@ test('çıkmış sorular: gizli 40 sınırı yok; bütün 52 soru açılır ve g
   assert.equal(pickPast({ bank }).length, 52);
 });
 
-test('konu testi: genel havuzda en çok 12, bölme pilotunda 2 açıklamalı aktarım; tekillik ve kararlı seçim', () => {
+test('konu testi: genel havuzda en çok 12, kaynaklı konularda yalnız açıklamalı aktarım soruları; tekillik ve kararlı seçim', () => {
   assert.ok(concepts.length >= 30);
   for (const id of concepts) {
     const bank = load(id);
-    const want = id === 'bolme-bolunebilme' ? 2 : Math.min(TEST_SIZE, bank.length);
+    const want = evidenceFor(id) ? evidenceFor(id).independentCodes.length : Math.min(TEST_SIZE, bank.length);
     assert.equal(plannedSize('test', bank), want, id);
     for (const seed of ['a', 'b', 'c']) {
       const items = pickSharedSet({ type: 'test', meta: lessons[id], bank, state: state(), seed });

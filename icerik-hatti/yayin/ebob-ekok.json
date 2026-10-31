@@ -1,0 +1,85 @@
+{
+  "schema": "ivme.icerik-yayin/v1",
+  "taskId": "content:ebob-ekok:1",
+  "conceptId": "ebob-ekok",
+  "status": "REVIEW_REQUIRED",
+  "preparedAt": "2026-10-31T23:40:23+00:00",
+  "templateVersion": "konuyu-ogrenelim/tas08-v1",
+  "specSha256": "1bbb6e57185371bb0d6f9a3865ee04d67f661910be0d57237b820d9337f48c18",
+  "lesson": {
+    "path": "frontend/src/learn/content/dersler/ebob-ekok.ders",
+    "sha256": "71cf62bcbc149d0842b75b830458b3cfe45653b60897552a15b9cbbce61b0ffd"
+  },
+  "output": {
+    "path": "frontend/src/learn/content/kanit/ebob-ekok.json",
+    "sha256": "994b5e8963bf0580b840487458a2fcdd5d3fed49c63c8f2c6e94a0c28a8290bd"
+  },
+  "contentSha256": "4b357b9b9722ff1cd191ac1e83e76aaa530dbd610fbd2b318206b89fde15f9f4",
+  "validation": {
+    "tests": [
+      "testler/icerik-hatti.test.mjs",
+      "testler/konu-ogrenme-bicim.test.mjs",
+      "testler/konu-ogrenme-ortak-set.test.mjs",
+      "testler/ebob-ekok-pilot.test.mjs"
+    ],
+    "pass": 52,
+    "fail": 0
+  },
+  "review": {
+    "teacherApproved": false,
+    "studentTransferObserved": false,
+    "pendingSections": [
+      "s1",
+      "s1b",
+      "s2",
+      "s2b",
+      "s3",
+      "s3b",
+      "s4",
+      "s4b",
+      "s5",
+      "s5b"
+    ],
+    "pendingQuestions": [
+      "AYT_Sayisal-0018",
+      "AYT_Sayisal-0021",
+      "AYT_Sayisal-0035",
+      "TYT-0713"
+    ],
+    "changeRequests": 0,
+    "staleDecisions": 0
+  },
+  "stages": {
+    "kaynak": {
+      "inputKey": "553a5f39a421abfec078b7dbc2fc2207bf5898b1dec15572d899f7b2d03a2014",
+      "outputSha256": "fffaff2cdf3f1ee9758e55a0c07e0fa1f21570cbd24f5cbfd0e0c4bcc2ec4aaa"
+    },
+    "kanit": {
+      "inputKey": "9d5ea609e1302113434342af0768f284c8122604307e72b7946e61778d6c2541",
+      "outputSha256": "8f37db4f8f873fa8ed305a87cc6708efc08842132824c7a5d00de1f8bb35b7b1"
+    },
+    "taslak": {
+      "inputKey": "7b1eef0758187f8624dfc3bd490b410ff9c2013ef90e55f157c9fe40bdb83e47",
+      "outputSha256": "cbb9fa35817aa17a631bee6f4e69666bdb3a4c9a82e3799770e43b4064c21c32"
+    },
+    "derle": {
+      "inputKey": "e6ee6d106da7f59bd44cf889b84f3cee85501977d45dbdd64924cf9f0df1accb",
+      "outputSha256": "fbd0d859c14d1460372fb4f07ed94313eda07a5e1f08d2eec0154bbc17bc7901"
+    },
+    "dogrula": {
+      "inputKey": "848860f1eb786d1b6eed4859858dc231df51bfdd37bf0dc94efdcb91148f3eef",
+      "outputSha256": "dfa30886004fe71f370dad2ee9570690385dd098aa780dbb15a7d6f0110809a5"
+    },
+    "inceleme": {
+      "inputKey": "c15f94253f8a4a7ab985011c8ec5d3bfa004dfaf73d13364ba4c2299abdffcb8",
+      "outputSha256": "91dba5a78534f6f926a3280399a0c2d5237859f2ae73b9183f5226c087dbf6fc"
+    }
+  },
+  "previous": {
+    "gitRevision": "5a57c5f",
+    "sha256": null,
+    "restore": null
+  },
+  "changes": {},
+  "externalPublish": "Dış yayın/push ayrı kullanıcı talimatıyla; APPROVED olmadan pedagojik kabul sayılmaz."
+}

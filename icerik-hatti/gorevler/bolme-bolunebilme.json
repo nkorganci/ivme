@@ -200,8 +200,7 @@
  },
  "tests": [
   "testler/tas08-pilot.test.mjs",
-  "testler/bolme-pilot.test.mjs",
-  "testler/konu-ogrenme-ortak-set.test.mjs"
+  "testler/bolme-pilot.test.mjs"
  ],
  "modelPlan": {
   "draft": {
