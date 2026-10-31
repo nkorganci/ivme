@@ -3,10 +3,11 @@ import { usePageTitle } from '../../hooks.js';
 import { useLearn } from '../LearnContext.jsx';
 import { makeEvent } from '../api.js';
 import { getLesson } from '../content/lessons.js';
+import { scopeToTracks } from '../content/parser.js';
 import { dayKey, formatDay } from '../engine/dates.js';
 import { lessonProgress } from '../engine/plan.js';
 import { MathText, Markdown } from '../math.jsx';
-import { ArchetypeBars, BASE, DueText, ExamBadges, MasteryRing, StatusBadge, minutesText } from '../ui.jsx';
+import { ArchetypeBars, BASE, CatalogTopics, DueText, ExamBadges, MasteryRing, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
 import { bankCount, pastCount } from '../bank.js';
 
 const HISTORY = { mastery: 'Ustalık testi', testout: 'Kısa ustalık testi', review: 'Tekrar', reteach: 'Yeniden anlatım' };
@@ -16,15 +17,17 @@ const OUTCOME = { up: 'bir basamak yukarı', same: 'aynı basamak', lapse: 'risk
 export default function ConceptPage() {
   const { conceptId } = useParams();
   const navigate = useNavigate();
-  const { index, state, today, record } = useLearn();
+  const { index, state, today, record, settings } = useLearn();
+  const catalog = useLearnCatalog();
   const meta = index.byId[conceptId];
   usePageTitle(meta ? `${meta.title} · Konuyu Öğrenelim` : 'Konuyu Öğrenelim');
   if (!meta) return <Navigate to={`${BASE}/harita`} replace />;
   const lesson = getLesson(conceptId);
   const concept = state.concepts[conceptId];
-  const progress = lessonProgress(meta, concept);
+  const progress = lessonProgress(meta, concept, settings.tracks);
+  const required = scopeToTracks(meta, settings.tracks);
   const prereqs = meta.prereq.map((id) => index.byId[id]).filter((p) => p && !state.concepts[p.id].firstMasteredAt);
-  const unit = index.units.find((u) => u.id === meta.unit);
+  const crumb = catalogCrumb(catalog, meta.categories);
 
   const startAnyway = () => {
     record(makeEvent('concept', { conceptId, action: 'start_anyway' }));
@@ -61,10 +64,11 @@ export default function ConceptPage() {
   if (pastCount(conceptId) > 0) actions.push(<Link key="past" className="btn btn-secondary" to={`${BASE}/calis?tur=cikmis&konu=${conceptId}`}>Çıkmış sorular ({pastCount(conceptId)})</Link>);
 
   return <div className="lr-page lr-concept-page">
-    <nav className="lr-crumbs small" aria-label="Konum"><Link to={BASE}>Konuyu Öğrenelim</Link> › <Link to={`${BASE}/harita`}>Konu haritası</Link> › {unit?.title}</nav>
+    <nav className="lr-crumbs small" aria-label="Konum"><Link to={BASE}>Konuyu Öğrenelim</Link> › <Link to={`${BASE}/harita`}>Konu haritası</Link>{crumb && ` › ${crumb}`}</nav>
     <header className="card lr-concept-head">
       <div>
         <div className="lr-lesson-title"><h1>{meta.title}</h1><ExamBadges exams={meta.exams} /></div>
+        <CatalogTopics catalog={catalog} categories={meta.categories} />
         <StatusBadge status={concept.status} />
         <p className="lr-goal"><MathText text={meta.goal} /></p>
         <div className="lr-actions">{actions}</div>
@@ -95,7 +99,7 @@ export default function ConceptPage() {
           <dt>Kalıcılık</dt><dd>{concept.retained ? 'İlk aralıklı tekrarı geçti' : concept.firstMasteredAt ? 'İlk tekrar bekleniyor' : '—'}</dd>
           <dt>Unutma (lapse)</dt><dd>{concept.lapses}</dd>
           <dt>Çalışma süresi</dt><dd>{minutesText(concept.minutesSpent)}</dd>
-          <dt>Ders</dt><dd>{concept.lessonCompletedAt ? 'Tamamlandı' : concept.lessonOpenedAt ? `${concept.sectionsDone.length}/${meta.sections.length} bölüm` : `${meta.sections.length} bölüm · ${minutesText(meta.minutes)}`}</dd>
+          <dt>Ders</dt><dd>{concept.lessonCompletedAt ? 'Tamamlandı' : concept.lessonOpenedAt ? `${required.sections.filter((x) => concept.sectionsDone.includes(x.id)).length}/${required.sections.length} bölüm` : `${required.sections.length} bölüm · ${minutesText(required.minutes)}`}</dd>
           <dt>Banka</dt><dd>{bankCount(conceptId)} soru{pastCount(conceptId) ? ` · ${pastCount(conceptId)} ÖSYM çıkmış` : ''}</dd>
         </dl>
         {concept.history.length > 0 && <>

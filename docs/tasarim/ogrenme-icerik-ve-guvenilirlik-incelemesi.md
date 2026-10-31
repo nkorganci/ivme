@@ -1,6 +1,6 @@
 # Öğrenme, kaynak işleme ve kayıt güvenilirliği: bulgular ve önerilen yaklaşım
 
-**Durum: TAS-01 UYGULANDI; DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
+**Durum: TAS-01 ve TAS-03 UYGULANDI; DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
 
 **İnceleme tabanı:** `2026-10-31`, yerel `8fe4403` commit'i. İlgili proje `D:/workspace/ivme/uygulama`dır; sohbetin başlangıç dizini olan `wrestling` değildir. Bulgular kaynak kodu, şema, mevcut test dosyaları, mimari belgeler ve dosya envanterinin salt okunur incelemesine dayanır. Canlı öğrenci hesabıyla işlem yapılmadı; kesinti/yarış testleri çalıştırılmadı; bütün PDF sayfaları ve soru görselleri okunmadı. Dolayısıyla **kodda görülen davranış**, **kullanıcının bildirdiği sorun**, **doğrulanacak risk** ve **öneri** birbirinden ayrılmıştır.
 
@@ -36,7 +36,7 @@ karardaki “kaydedilmemiş öğrenci olayı” değildir; ilgili içerik işind
 | Alan | İncelemede görülen | Sonuç / yapılacak değerlendirme |
 |---|---|---|
 | Ortak müfredat | Excel `KONULAR` sayfası → kontrollü katalog → `learning_catalog.current_categories` → metadata akışı belgelenmiş | İkinci ana ders/ünite/konu listesi oluşturma. Öğretim katmanındaki bağları tamamla |
-| Öğretim adları | `learn/content/units.js` elle tanımlı ünite listesi; `.ders` içinde `baslik`, `unite`, `sinav`, `kategori` | Ana katalog adları değişince bu başlıkların kendiliğinden güncelleneceği varsayılamaz |
+| Öğretim adları | `learn/content/units.js` elle tanımlı ünite listesi; `.ders` içinde `baslik`, `unite`, `sinav`, `kategori` | TAS-03 ile düzeltildi: ders/ünite/konu adı ve rozet DB kataloğundan kimlikle okunur; `units.js` ad taşımaz (§5) |
 | Öğretim kapsamı | 34 `.ders` dosyası mevcut; devir notu 12 pilot yapısında, 22 derinleştirilecek ders ve 22 eksik alt kapsam bildiriyor | Dosya sayısı salt okunur sayıldı; diğer kalite sayıları önceki devir beyanıdır, bu incelemede yeniden doğrulanmadı |
 | Banka cevapları | `LearnService.bankAnswer()` sunucuda puanlıyor, `AttemptService` üzerinden bağımsız pratik kaydı ve öğrenme olayı yazıyor | “Hiç DB kaydı yok” doğru değil. Ortak oturum ve bütün alıştırma türlerinin takibi eksik kapsamdır |
 | Ders içi cevaplar | `lesson_q` olayları `learning_engine_events` içinde; `correct` istemciden geliyor | Ortak konu sayımına bağlama ve sunucuda doğrulama gerekiyor |
@@ -74,22 +74,22 @@ karardaki “kaydedilmemiş öğrenci olayı” değildir; ilgili içerik işind
 
 Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek başına uygulama talimatı değildir. **Güncel yapılan/kalan kapsam ve doğrulama kanıtı [görev durum tablosunda](../gorev-durumu.md) tutulur.** Bu bölüm öncelik/bağımlılık referansıdır; durumların ikinci kopyası değildir. Kullanıcı uygulama istediğinde ayrıntılı işler mevcut numaralı plana bağlanır. Her önemli ilerlemede durum tablosu ve etkilenen teknik bölüm güncellenir; eski bulgunun çözüldüğü kanıtıyla belirtilir, çözülmüş sorun açıkmış gibi bırakılmaz.
 
-| Sıra / kimlik | Öncelik | İş | Bağımlılık | Tamamlandı demek için gereken kanıt |
-|---|---|---|---|---|
-| 1 — TAS-01 | P0 | Kayıt onayı, kuyruk kaybı, idempotency ve hesap izolasyonu | Mevcut öğrenme/cevap akışları | Kesinti, 400, kota, çoklu sekme ve kaybolan yanıt senaryolarında kayıp/çift sayım yok |
-| 2 — TAS-02 | P0 | DB erişimi, readiness, kayıt hatası ve dış alarm | TAS-01 ile birlikte | DB kesintisi görünür; yanlış başarı bildirimi yok; uygulama kapalıyken dış uyarı çalışıyor |
-| 3 — TAS-03 | P1 | Tek katalog, adlar, konu bağları ve TYT/AYT kapsamı | Mevcut katalog | Bir ad düzeltmesi bütün ilgili ekranlarda aynı kimlikle görünür; geçmiş korunur |
-| 4 — TAS-04 | P1 | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
-| 5 — TAS-05 | P1 | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
-| 6 — TAS-06 | P1 | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
-| 7 — TAS-07 | P1 | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
-| 8 — TAS-08 | P1 | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
-| 9 — TAS-09 | P2 | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
-| 10 — TAS-10 | P2 | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
-| 11 — TAS-11 | P2 | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
-| 12 — TAS-12 | Sürekli | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
+| Sıra / kimlik | Öncelik — model | Durum | İş | Bağımlılık | Tamamlandı demek için gereken kanıt |
+|---|---|---|---|---|---|
+| 1 — TAS-01 | P0 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı | Kayıt onayı, kuyruk kaybı, idempotency ve hesap izolasyonu | Mevcut öğrenme/cevap akışları | Kesinti, 400, kota, çoklu sekme ve kaybolan yanıt senaryolarında kayıp/çift sayım yok |
+| 2 — TAS-02 | P0 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmen (Actuator/metrik/webhook uyarısı eklendi; kalan kapsam açık) | DB erişimi, readiness, kayıt hatası ve dış alarm | TAS-01 ile birlikte | DB kesintisi görünür; yanlış başarı bildirimi yok; uygulama kapalıyken dış uyarı çalışıyor |
+| 3 — TAS-03 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.07; bölüm kapsamı içerik işaretlemesi TAS-08) | Tek katalog, adlar, konu bağları ve TYT/AYT kapsamı | Mevcut katalog | Bir ad düzeltmesi bütün ilgili ekranlarda aynı kimlikle görünür; geçmiş korunur |
+| 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
+| 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
+| 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
+| 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
+| 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Tamamlanmadı (yalnız öneri) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
+| 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
+| 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
+| 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Tamamlanmadı (yalnız öneri) | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
+| 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Kısmen (kural ve TAS-01 regresyonları var; sürekli iş) | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
 
-P0 içerik genişletmesinden önce ele alınmalıdır. P1 bağımlılıkları kapatıldığında pilot ve üretim işi ilerler. Tahmini gün veya maliyet yazılmadı; donanım, kaynak kalitesi ve insan inceleme kapasitesi ölçülmeden güvenilir süre çıkarılamaz.
+Öncelik sütunundaki model, §19.3’teki ana seçimdir; parantez içi alternatiftir. P0 içerik genişletmesinden önce ele alınmalıdır. P1 bağımlılıkları kapatıldığında pilot ve üretim işi ilerler. Tahmini gün veya maliyet yazılmadı; donanım, kaynak kalitesi ve insan inceleme kapasitesi ölçülmeden güvenilir süre çıkarılamaz.
 
 ## 4. TAS-01: Öğrenci kayıtlarında güvenilir kalıcılık
 
@@ -118,6 +118,20 @@ hizmeti durdurulmadı. Depolama engelliyken zorla tarayıcı kapatmaya karşı g
 verilmez; taslak bellekte korunur, ilerleme durur ve uyarı gösterilir.
 
 ## 5. TAS-03: Tek ders–ünite–konu referansı ve sınav kapsamı
+
+**Uygulandı (12.07).** Konuyu Öğrenelim ekranları (harita, kavram, ders) ders/ünite/konu
+adını `/api/learning-resources/metadata` kataloğundan `kategori:` kimliğiyle okur
+(`frontend/src/learn/catalog.js`); harita katalog ünitesine göre gruplanır, ders içi sıra
+`sira:` ile korunur. İki sınavdaki aynı Excel satırı tek konu ve iki rozetle, tek sınav
+konusu tek rozetle görünür; seçilemeyen eski kimlik `canonicalTopicIds` ile güncel konuya
+bağlanır. `units.js` yalnız seviye testi basamaklarının kimliğidir, ad taşımaz. Doğrulayıcı
+`sinav:` ile katalog sınavlarının eşitliğini, seçilemeyen/başka derse ait kimliği ve
+`@bolum … AYT` bölüm kapsamını denetler; hedefi dışındaki bölüm öğrenciye zorunlu
+görünmez. Karma sette hedef sınav kaynaklı sorular önce gelir; diğer sınavın sorusu yalnız
+iki sınava ortak derste kullanılır. Kanıt: `testler/konu-ogrenme-katalog.test.mjs` ve
+`testler/konu-ogrenme-ui.mjs` (sahte katalogda ad düzeltmesi harita/kavram/ders sayfasında
+aynı kimlikle görünür). Henüz hiçbir bölüm sınav kapsamıyla işaretlenmedi; kaynak kanıtlı
+işaretleme TAS-08 içerik işidir. Aşağısı ilk tasarım gerekçesidir.
 
 ### 5.1. Kaynak sahipliği
 

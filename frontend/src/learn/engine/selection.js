@@ -142,7 +142,13 @@ export function pickMixed({ index, banks, state, seed, track, size = 24 }) {
   const used = new Set(queued(state));
   const candidates = index.concepts.filter((m) => m.exams.includes(track) && state.concepts[m.id]?.masteryValid && banks[m.id]?.length);
   if (!candidates.length) return [];
-  const groups = Object.fromEntries(candidates.map((m) => [m.id, ranked(banks[m.id].filter((q) => !q.exam || q.exam === track || m.exams.length > 1), state, random)]));
+  // Kaynak sınavı ≠ öğretim uygunluğu: hedef sınavın soruları önce; diğer sınavın soruları yalnız iki sınava
+  // ortak kavramda ve her öncelik katmanında sonra gelir (TAS-03, §5.2).
+  const groups = Object.fromEntries(candidates.map((m) => {
+    const own = ranked(banks[m.id].filter((q) => !q.exam || q.exam === track), state, random);
+    const other = m.exams.length > 1 ? ranked(banks[m.id].filter((q) => q.exam && q.exam !== track), state, random) : [[], [], []];
+    return [m.id, own.map((tier, i) => [...tier, ...other[i]])];
+  }));
   const chosen = [];
   for (let slot = 0; slot < size * 4 && chosen.length < size; slot += 1) {
     const key = weightedPick(candidates.map((m) => ({ key: m.id, weight: Math.max(5, 100 - (state.concepts[m.id].mastery ?? 0)) })), random);
@@ -180,7 +186,7 @@ export function pickPlacement({ index, banks, track, seed }) {
     for (let round = 0; ordered.length < ENGINE.placement.perUnit && lists.some((list) => list.length); round += 1) {
       for (const list of lists) if (list.length && ordered.length < ENGINE.placement.perUnit) ordered.push(list.shift());
     }
-    return { unitId: unit.id, title: unit.title, questions: ordered };
+    return { unitId: unit.id, questions: ordered };
   }).filter((unit) => unit.questions.length);
 }
 

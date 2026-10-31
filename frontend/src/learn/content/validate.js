@@ -99,6 +99,25 @@ export function validateLessons(lessons, options = {}) {
     if (!lesson.sources.length) err('kaynak yok');
     if (!lesson.categories.length) err('katalog kategorisi yok');
     if (options.categories) for (const category of lesson.categories) if (!options.categories.has(category)) err(`katalogda olmayan kategori: ${category}`);
+    if (options.catalog) {
+      // TAS-03: ders rozeti katalog kapsamının aynısıdır; ad/ünite/sınav ikinci kez elle tanımlanmaz.
+      const linked = lesson.categories.map((id) => options.catalog.get(id)).filter(Boolean);
+      for (const c of linked) {
+        if (c.selectable === false) err(`seçilemeyen eski katalog kimliği: ${c.id}`);
+        if (c.subjectId && c.subjectId !== lesson.subject) err(`başka derse ait kategori: ${c.id} (${c.subjectId})`);
+      }
+      const catalogExams = [...new Set(linked.map((c) => c.exam))].sort();
+      if (linked.length && catalogExams.join() !== [...lesson.exams].sort().join()) err(`sinav (${lesson.exams.join(' ')}) bağlı katalog konularının sınavlarıyla (${catalogExams.join(' ')}) aynı değil`);
+    }
+    for (const section of lesson.sections) {
+      if (!section.exams?.length) continue;
+      if (section.exams.some((e) => !lesson.exams.includes(e))) err(`${section.id}: bölüm sınavı (${section.exams.join(' ')}) dersin sınavları içinde olmalı`);
+      if (lesson.exams.every((e) => section.exams.includes(e))) err(`${section.id}: bölüm sınavı dersin bütün sınavlarını kapsıyor; alanı boş bırak`);
+    }
+    for (const exam of lesson.exams) {
+      const applies = lesson.sections.filter((s) => !s.exams?.length || s.exams.includes(exam));
+      if (applies.length < 3) err(`${exam} hedefinde en az 3 bölüm kalmalı (${applies.length})`);
+    }
     for (const id of lesson.prereq) if (!ids.has(id)) err(`bilinmeyen önkoşul: ${id}`);
     for (const id of lesson.confused) if (!ids.has(id)) err(`bilinmeyen karışan kavram: ${id}`);
     if (!(lesson.review.minutes >= 5 && lesson.review.minutes <= 30)) err('tekrar dakikası 5–30 olmalı');

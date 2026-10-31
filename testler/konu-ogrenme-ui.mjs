@@ -25,6 +25,12 @@ const requestedConcept = process.argv.slice(2).find((a) => !a.startsWith('--'));
 const conceptId = requestedConcept ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
 
 const db = { events: [], profile: null, seq: 0 };
+// TAS-03 kabulü: katalogdaki ad düzeltmesi aynı kimlikle haritada, kavram ve ders sayfasında görünür.
+const lessonCategories = parseLesson(readFileSync(join(lessonsDir, `${conceptId}.ders`), 'utf8'), conceptId).categories;
+const RENAMED_ROW = lessonCategories[0].split('.').pop();
+const RENAMED_TOPIC = 'Katalogda düzeltilmiş konu adı (UI testi)';
+const catalog = JSON.parse(readFileSync(join(ROOT, 'frontend/src/data/curriculumIdentities.json'), 'utf8')).canonicalUnits
+  .map((c) => (c.id.split('.').pop() === RENAMED_ROW ? { ...c, topic: RENAMED_TOPIC } : c));
 const LETTERS = 'ABCDE';
 const svg = (text) => `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260"><rect width="720" height="260" fill="white" stroke="black"/><text x="30" y="120" font-size="28">${text}</text><text x="30" y="170" font-size="20">A) 1  B) 2  C) 3  D) 4  E) 5</text></svg>`;
 
@@ -64,6 +70,7 @@ const server = live ? null : createServer(async (req, res) => {
   }
   const image = p.match(/^\/api\/questions\/(\d+)\/(image|solution-image)$/);
   if (image) { res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); return res.end(svg(`${image[2] === 'image' ? 'Soru' : 'Çözüm'} ${image[1]}`)); }
+  if (p === '/api/learning-resources/metadata') return json({ summary: {}, branches: [], categories: catalog });
   if (p.startsWith('/api/')) return json(null);
   const path = resolve(dist, `.${decodeURIComponent(p)}`);
   const file = path.startsWith(dist + sep) && extname(path) && existsSync(path) ? path : join(dist, 'index.html');
@@ -108,8 +115,16 @@ async function run(mobile) {
       return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests] };
     }
 
+    const renamedVisible = `document.querySelector(".lr-catalog-topics")?.innerText.includes(${JSON.stringify(RENAMED_TOPIC)})`;
+    await goto(`/konuyu-ogrenelim/konu/${conceptId}`);
+    await wait(renamedVisible, 20000);
+    await goto('/konuyu-ogrenelim/harita');
+    await wait(`document.querySelector(".lr-map")?.innerText.includes(${JSON.stringify(RENAMED_TOPIC)})`, 20000);
+    assert.equal(await evalJs('[...document.querySelectorAll(".lr-unit h2")].some((h) => h.innerText.includes("bulunamayan"))'), false, 'her ders katalog ünitesine yerleşir');
+    steps.push({ step: 'katalog-adi', renamed: RENAMED_TOPIC });
     await goto(`/konuyu-ogrenelim/ders/${conceptId}`);
     await wait('document.querySelector(".lr-intro")');
+    await wait(renamedVisible, 20000);
     await shot('ders-giris');
     assert.ok(await evalJs(click('.lr-intro .btn-primary')));
     // Ön test: şık → güven; cevap gösterilmez.

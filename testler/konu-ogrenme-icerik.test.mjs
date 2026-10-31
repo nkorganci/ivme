@@ -17,6 +17,7 @@ const files = readdirSync(DIR).filter((name) => name.endsWith('.ders')).sort();
 const lessons = files.map((name) => parseLesson(readFileSync(join(DIR, name), 'utf8'), name.replace(/\.ders$/, '')));
 const identities = JSON.parse(readFileSync(join(ROOT, 'frontend/src/data/curriculumIdentities.json'), 'utf8'));
 const categories = new Set(identities.canonicalUnits.filter((u) => u.subject === 'Matematik').map((u) => u.id));
+const catalog = new Map(identities.canonicalUnits.map((u) => [u.id, u]));
 const bankCodes = new Set();
 if (existsSync(BANK)) {
   for (const name of readdirSync(BANK).filter((n) => n.endsWith('.json') && n !== '_ozet.json')) {
@@ -27,7 +28,7 @@ if (existsSync(BANK)) {
 test('her ders ayrıştırılır ve doğrulanır', () => {
   assert.ok(lessons.length > 0, 'ders yok');
   const fileIds = Object.fromEntries(files.map((name, i) => [lessons[i].id, name.replace(/\.ders$/, '')]));
-  const { errors, warnings } = validateLessons(lessons, { units: UNITS, categories, checkMath, checkExpr, fileIds, bankCodes: bankCodes.size ? bankCodes : null });
+  const { errors, warnings } = validateLessons(lessons, { units: UNITS, categories, catalog, checkMath, checkExpr, fileIds, bankCodes: bankCodes.size ? bankCodes : null });
   if (warnings.length) console.log(`Uyarılar (${warnings.length}):\n  ${warnings.slice(0, 40).join('\n  ')}`);
   assert.deepEqual(errors, []);
 });

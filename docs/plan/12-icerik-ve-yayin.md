@@ -169,6 +169,14 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
 
+## 12.07 — TAS-03 ortak katalog ve sınav kapsamı
+
+Durum: `TAMAMLANDI`. Konuyu Öğrenelim ad ve rozetleri ortak DB kataloğundan kimlikle
+gelir; bölüm düzeyi kontrollü sınav kapsamı ve doğrulaması eklendi. Ayrıntı ve kanıt
+[görev tablosunda](../gorev-durumu.md) ve [inceleme §5'te](../tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#5-tas-03-tek-dersünitekonu-referansı-ve-sınav-kapsamı).
+Kalan tek iş içeriktir: kaynak kanıtı olan bölümleri `@bolum … AYT/TYT` ile işaretlemek
+(TAS-08); kanıtsız kapsam otomatik yazılmaz.
+
 ## 12.06 — TAS-02 sağlık ve izleme temeli
 
 Durum: `KISMI_DIS_ORTAM_BEKLIYOR`. Liveness yalnız uygulama sürecini, readiness

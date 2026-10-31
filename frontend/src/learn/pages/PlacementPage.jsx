@@ -11,7 +11,7 @@ import { nextPlacementQuestion, placementResult } from '../engine/placement.js';
 import { BankQuestion } from '../items.jsx';
 import { BASE } from '../ui.jsx';
 
-/** Seviye testi (spec §9): ≤ 20 dk, her üniteden 2 orta soru; ilk yanlış ünite başlangıç, iki doğru geçme adayı. */
+/** Seviye testi (spec §9): ≤ 20 dk, her öğrenme basamağından 2 orta soru; ilk yanlış basamak başlangıç, iki doğru geçme adayı. */
 export default function PlacementPage() {
   const { track } = useParams();
   usePageTitle(`${track} seviye testi · Konuyu Öğrenelim`);
@@ -53,12 +53,13 @@ export default function PlacementPage() {
 
   if (result) {
     const startUnit = index.units.find((u) => u.id === result.startUnit);
+    const startConcept = startUnit && index.byId[startUnit.concepts.find((id) => index.byId[id].exams.includes(track)) ?? startUnit.concepts[0]];
     return <div className="lr-page">{head}
       <section className="card lr-result">
         <h2>%{result.pct} ({result.correct}/{result.total})</h2>
         <p>Önerilen anlatım düzeyi: <strong>{result.level === 'L1' ? 'Basit' : 'Normal'}</strong>{result.suggestL3 ? ' — konularda derin anlatım önerileri de göreceksin.' : '.'}</p>
         {result.testOut.length > 0 && <p><strong>{result.testOut.length} kavramı</strong> kısa bir ustalık testiyle geçebilirsin: {result.testOut.map((id) => index.byId[id]?.title).join(', ')}.</p>}
-        {startUnit && <p>Başlangıç noktan: <strong>{startUnit.title}</strong>. Planın buradan başlayacak; istediğin konuyu her zaman seçebilirsin.</p>}
+        {startConcept && <p>Başlangıç noktan: <strong><Link to={`${BASE}/konu/${startConcept.id}`}>{startConcept.title}</Link></strong>. Planın buradan başlayacak; istediğin konuyu her zaman seçebilirsin.</p>}
         <div className="lr-actions"><Link className="btn btn-primary" to={BASE}>Bugünün planına git</Link><Link className="btn btn-secondary" to={`${BASE}/harita?sinav=${track}`}>Konu haritası</Link></div>
       </section>
     </div>;
@@ -68,11 +69,11 @@ export default function PlacementPage() {
     const done = state.placement[track];
     return <div className="lr-page">{head}
       <section className="card">
-        <p>Her üniteden iki orta zorlukta soru. İkisini de doğru yaparsan o ünitenin kavramlarını <strong>kısa bir ustalık testiyle geçebilirsin</strong>; ilk yanlış yaptığın ünite başlangıç noktan olur. Puanın derslerdeki anlatım düzeyini ayarlar.</p>
+        <p>Her öğrenme basamağından iki orta zorlukta soru. İkisini de doğru yaparsan o basamağın kavramlarını <strong>kısa bir ustalık testiyle geçebilirsin</strong>; ilk yanlış yaptığın basamak başlangıç noktan olur. Puanın derslerdeki anlatım düzeyini ayarlar.</p>
         {done && <p className="small muted">Bu testi daha önce yaptın (%{done.pct}). Yeniden yapmak sonucu günceller.</p>}
         {!units ? <p className="muted">Sorular hazırlanıyor…</p> : units.length === 0 ? <p className="muted">Banka soruları henüz eşlenmedi.</p> :
           <div className="lr-actions">
-            <button type="button" className="btn btn-primary btn-lg" onClick={() => { setStartedAt(Date.now()); setCurrent(nextPlacementQuestion(units, {}, Date.now(), Date.now())); }}>Teste başla ({units.length} ünite)</button>
+            <button type="button" className="btn btn-primary btn-lg" onClick={() => { setStartedAt(Date.now()); setCurrent(nextPlacementQuestion(units, {}, Date.now(), Date.now())); }}>Teste başla ({units.length} basamak)</button>
             <button type="button" className="btn btn-secondary" onClick={skip}>Atla, en baştan başlayacağım</button>
           </div>}
       </section>
@@ -83,7 +84,7 @@ export default function PlacementPage() {
   const asked = Object.keys(answers).length;
   return <div className="lr-page">{head}
     <section className="card lr-runner">
-      <p className="small muted">Ünite: <strong>{current.unit.title}</strong> · {asked + 1}. soru</p>
+      <p className="small muted">Basamak {units.indexOf(current.unit) + 1}/{units.length}: <strong>{index.byId[current.question.conceptId]?.title}</strong> · {asked + 1}. soru</p>
       <BankQuestion question={current.question} conceptId={current.question.conceptId} context="placement" setId={setId} answerBank={answerBank}
         onAnswered={(value) => { setAnswers((a) => ({ ...a, [current.question.code]: value.correct })); setAnswered(true); }} />
       {answered && <div className="lr-section-nav"><button type="button" className="btn btn-primary" onClick={() => advance(answers)}>Sonraki</button>

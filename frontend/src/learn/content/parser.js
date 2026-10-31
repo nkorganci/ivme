@@ -437,8 +437,9 @@ export function parseLesson(source, fallbackId = '') {
         break;
       case 'bolum': {
         const [left, title] = splitOnce(rest, '|');
-        const [sectionId, minutes] = splitWords(left);
-        lesson.sections.push({ id: sectionId, title: title.trim(), minutes: Number(minutes) || 8, blocks: parseBlocks(id, directive.body, directive.line), line: directive.line });
+        // `@bolum s5 15 AYT | Başlık`: isteğe bağlı kontrollü sınav kapsamı; boşsa dersin bütün sınavları.
+        const [sectionId, minutes, ...exams] = splitWords(left);
+        lesson.sections.push({ id: sectionId, title: title.trim(), minutes: Number(minutes) || 8, exams: exams.map((e) => e.toUpperCase()), blocks: parseBlocks(id, directive.body, directive.line), line: directive.line });
         break;
       }
       case 'kartlar':
@@ -473,6 +474,22 @@ export function lessonQuestions(lesson) {
   return [...lesson.pretest.map((q) => ({ ...q, sectionId: '@ontest' })), ...fromSections, ...lesson.pool.map((q) => ({ ...q, sectionId: '@havuz' }))];
 }
 
+/**
+ * Öğrencinin hedef sınavlarına göre zorunlu bölümler (TAS-03). Kapsamı olmayan bölüm dersin bütün sınavlarına
+ * aittir; `AYT` bölümü yalnız AYT hedefinde görünür. Ders ya da dizin kaydı alır, aynı biçimde döndürür.
+ */
+export function scopeToTracks(lesson, tracks) {
+  if (!tracks?.length || !lesson?.sections?.some((s) => s.exams?.length)) return lesson;
+  const applies = (s) => !s.exams?.length || s.exams.some((exam) => tracks.includes(exam));
+  const sections = lesson.sections.filter(applies);
+  if (!sections.length || sections.length === lesson.sections.length) return lesson;
+  const minutesOf = Object.fromEntries(sections.map((s) => [s.id, s.minutes]));
+  const sessions = (lesson.sessions ?? []).map((s) => ({ ...s, sections: s.sections.filter((id) => id in minutesOf) }))
+    .filter((s) => s.sections.length)
+    .map((s) => ({ ...s, minutes: s.sections.reduce((sum, id) => sum + minutesOf[id], 0) }));
+  return { ...lesson, sections, sessions, minutes: sections.reduce((sum, s) => sum + s.minutes, 0), otherExamSections: lesson.sections.filter((s) => !applies(s)) };
+}
+
 /** Ders listesi → kavram dizini (ağır içerik olmadan) ve ünite ağacı. */
 export function buildIndex(lessons, units) {
   const concepts = lessons.map((lesson) => ({
@@ -480,7 +497,7 @@ export function buildIndex(lessons, units) {
     prereq: lesson.prereq, confused: lesson.confused, categories: lesson.categories, goal: lesson.goal, why: lesson.why,
     archetypes: lesson.archetypes.map(({ id, share, core, title, cue, strategy }) => ({ id, share, core, title, cue, strategy })),
     mastery: lesson.mastery, review: lesson.review, sessions: lesson.sessions,
-    sections: lesson.sections.map(({ id, title, minutes }) => ({ id, title, minutes })), minutes: lesson.minutes,
+    sections: lesson.sections.map(({ id, title, minutes, exams }) => ({ id, title, minutes, exams })), minutes: lesson.minutes,
     practiceIds: lesson.practiceIds, flashcards: lesson.flashcards.length, practice: lesson.practice, targetSeconds: lesson.targetSeconds,
   })).sort((a, b) => a.order - b.order || a.id.localeCompare(b.id));
   const byId = Object.fromEntries(concepts.map((c) => [c.id, c]));

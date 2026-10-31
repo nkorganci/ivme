@@ -37,5 +37,9 @@ izleyici makinesinde HTTPS site adresi ve webhook ile
 kesintisi/iyileşmesinde gelen bildirimi doğrulamak. Kurulum tarifi
 [sağlık ve izleme](islemler/saglik-ve-izleme.md) dosyasında.
 
+TAS-03 / 12.07 tamamlandı: öğrenme ekranlarında ders/ünite/konu adı ve rozet DB
+kataloğundan kimlikle okunuyor; bölüm sınav kapsamı (`@bolum … AYT`) destekleniyor ama
+henüz hiçbir bölüm işaretlenmedi (kaynak kanıtlı işaretleme TAS-08). Kanıt görev tablosunda.
+
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

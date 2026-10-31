@@ -98,6 +98,14 @@
 .lr-lesson-title { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .lr-lesson-title h1 { margin: 0; }
 .lr-exams { display: inline-flex; gap: 4px; }
+/* Müfredattaki yer: ortak katalog ders › ünite › konu (TAS-03) */
+.lr-catalog-topics { list-style: none; margin: 6px 0; padding: 0; display: grid; gap: 4px; }
+.lr-catalog-topics li { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+.lr-catalog-topic { font-weight: 600; }
+.lr-catalog-entry { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.lr-catalog-entry + .lr-catalog-entry::before { content: '·'; color: var(--text-muted); margin-right: 2px; }
+.lr-catalog-state { margin: 6px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.lr-concept-topics { line-height: 1.35; }
 .lr-goal { margin: 6px 0; }
 .lr-concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--gap); }
 .lr-concept-grid .card { margin: 0; }

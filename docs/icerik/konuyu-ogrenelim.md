@@ -37,6 +37,13 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
 1. `.ders` dosyasında mevcut `@ders`, `@tip`, `@ustalik`, `@oturum`, `@ontest`, `@bolum`,
    `@kartlar`, `@ozet`, `@pratik`, `@aciklama`, `@havuz` biçimini kullan. Kaynak ve katalog
    kategorisini ver; başka bir dersin kimliklerini kopyalama.
+   Ders, ünite ve resmî konu adı ortak DB kataloğundan `kategori:` kimliğiyle okunur
+   (`learn/catalog.js`); `.ders` ve `units.js` ikinci ad listesi tutmaz. `baslik:` öğretim
+   başlığıdır. `sinav:` bağlı katalog kimliklerinin sınavlarıyla aynı olmalıdır; iki
+   sınavdaki konu için `excel.tyt…` ve `excel.ayt…` kimliklerinin ikisi yazılır. Yalnız bir
+   sınavda gerekli bölüm, kaynak kanıtıyla `@bolum s5 15 AYT | Başlık` biçiminde işaretlenir;
+   hedefi bu sınavı içermeyen öğrencinin ders yolunda ve ilerlemesinde zorunlu sayılmaz.
+   Kanıtı olmayan bölüm kapsamı yazılmaz; `L1/L2/L3` düzeyi sınav kapsamı değildir.
 2. İlk bölüm `::kesfet <ders-kimliği>` ile başlar. `EXPLORATIONS` kaydı gerçek bir günlük
    ihtiyaç, sıfırdan terim açıklaması, somut deney, en az üç gerekçeli çözüm adımı,
    farklı sayılarla aktarım sorusu ve cevap gerekçesi içerir. Pratik yol örnekten sonra,

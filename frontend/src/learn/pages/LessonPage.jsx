@@ -3,11 +3,12 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { usePageTitle } from '../../hooks.js';
 import { useLearn } from '../LearnContext.jsx';
 import { getLesson } from '../content/lessons.js';
+import { scopeToTracks } from '../content/parser.js';
 import { makeEvent } from '../api.js';
 import { Block, CHECK_BLOCKS, checkId } from '../lesson/Blocks.jsx';
 import { LessonQuestion } from '../items.jsx';
 import { MathText, Markdown } from '../math.jsx';
-import { BASE, ExamBadges, LEVELS, ProgressBar, minutesText } from '../ui.jsx';
+import { BASE, CatalogTopics, ExamBadges, LEVELS, ProgressBar, minutesText, useLearnCatalog } from '../ui.jsx';
 import { ENGINE } from '../engine/config.js';
 import { loadBank } from '../bank.js';
 import { EXPLORATIONS } from '../content/explorations.js';
@@ -27,8 +28,10 @@ export default function LessonPage() {
   const { conceptId } = useParams();
   const navigate = useNavigate();
   const learn = useLearn();
-  const { state, index, record, answerBank } = learn;
-  const lesson = useMemo(() => { try { return getLesson(conceptId); } catch { return null; } }, [conceptId]);
+  const { state, index, record, answerBank, settings } = learn;
+  const catalog = useLearnCatalog();
+  // Hedef sınav dışındaki bölümler (ör. TYT öğrencisine yalnız AYT bölümü) zorunlu akışa girmez.
+  const lesson = useMemo(() => { try { return scopeToTracks(getLesson(conceptId), settings.tracks); } catch { return null; } }, [conceptId, settings.tracks]);
   const meta = index.byId[conceptId];
   const concept = state.concepts[conceptId];
   usePageTitle(lesson ? `${lesson.title} · Konuyu Öğrenelim` : 'Konuyu Öğrenelim');
@@ -143,6 +146,8 @@ export default function LessonPage() {
   const header = <header className="lr-lesson-head card" ref={top}>
     <nav className="lr-crumbs small" aria-label="Konum"><Link to={BASE}>Konuyu Öğrenelim</Link> › <Link to={`${BASE}/harita`}>Konu haritası</Link> › <Link to={`${BASE}/konu/${conceptId}`}>{lesson.title}</Link></nav>
     <div className="lr-lesson-title"><h1>{lesson.title}</h1><ExamBadges exams={lesson.exams} /></div>
+    <CatalogTopics catalog={catalog} categories={lesson.categories} />
+    {lesson.otherExamSections?.length > 0 && <p className="small muted">Hedef sınavına girmeyen {lesson.otherExamSections.length} bölüm ({[...new Set(lesson.otherExamSections.flatMap((s) => s.exams))].join(', ')}) bu ders yolunda gösterilmiyor; hedeflerini Ayarlar'dan değiştirebilirsin.</p>}
     <p className="lr-goal"><strong>Hedef:</strong> <MathText text={lesson.goal} /></p>
     <div className="lr-lesson-meter">
       <ProgressBar value={done.size} max={lesson.sections.length} label="Bölüm ilerlemesi" />
@@ -292,7 +297,7 @@ export default function LessonPage() {
     </aside>
     <section className="card lr-section" aria-label="Ders anlatımı">
       <div className="lr-section-head">
-        <h2><span className="muted">{sectionIndex + 1}.</span> <MathText text={section.title} /></h2>
+        <h2><span className="muted">{sectionIndex + 1}.</span> <MathText text={section.title} /> {section.exams?.length > 0 && <ExamBadges exams={section.exams} />}</h2>
         <span className="small muted">≈{section.minutes} dk · Anlatım: {levelLabel}</span>
       </div>
       <div className="lr-reader-tools"><span>Anlatımı seç:</span><div className="lr-level-switch" role="group" aria-label="Ders anlatım düzeyi">{LEVELS.map((l) => <button key={l.id} type="button" className={level === l.id ? 'active' : ''} aria-pressed={level === l.id} title={l.hint} onClick={() => chooseLevel(l.id)}>{l.label}</button>)}</div>

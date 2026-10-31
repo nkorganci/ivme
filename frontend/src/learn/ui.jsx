@@ -1,8 +1,55 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../api.js';
+import { catalogById, lessonScope } from './catalog.js';
 import { ENGINE } from './engine/config.js';
 import { formatDay, relativeDay } from './engine/dates.js';
 
 export const BASE = '/konuyu-ogrenelim';
+
+const CATALOG = '/api/learning-resources/metadata';
+
+/** Ortak DB kataloğu (Dersler, Soru Çöz ve kaynaklarla aynı okuma önbelleği). */
+export function useLearnCatalog() {
+  const [state, setState] = useState({ byId: null, error: null });
+  const [attempt, setAttempt] = useState(0);
+  useEffect(() => {
+    let active = true;
+    api.getReference(CATALOG)
+      .then((data) => { if (active) setState({ byId: catalogById(data?.categories), error: null }); })
+      .catch((error) => { if (active) setState({ byId: null, error }); });
+    return () => { active = false; };
+  }, [attempt]);
+  const retry = () => { api.invalidateReferences(); setState({ byId: null, error: null }); setAttempt((n) => n + 1); };
+  return { ...state, loading: !state.byId && !state.error, retry };
+}
+
+export function CatalogError({ catalog }) {
+  return <p className="small muted lr-catalog-state">Müfredattaki ders, ünite ve konu adları yüklenemedi.{' '}
+    <button type="button" className="btn btn-secondary btn-sm" onClick={catalog.retry}>Yeniden dene</button></p>;
+}
+
+/** Dersin müfredattaki yeri: Ders › Ünite › Konu ve her konunun kendi TYT/AYT kapsamı. */
+export function CatalogTopics({ catalog, categories }) {
+  if (catalog.error) return <CatalogError catalog={catalog} />;
+  if (!catalog.byId) return <p className="small muted lr-catalog-state" role="status">Müfredat konusu yükleniyor…</p>;
+  const scope = lessonScope(categories, catalog.byId);
+  if (!scope.topics.length) return <p className="small muted lr-catalog-state">Bu dersin müfredat bağı katalogda bulunamadı.</p>;
+  return <ul className="lr-catalog-topics small" aria-label="Müfredattaki yeri">
+    {scope.units.map((u) => <li key={u.id}>
+      <span className="muted">{u.subject} › {u.name} ›</span>
+      {scope.topics.filter((t) => t.unitId === u.id).map((t) => <span key={t.key} className="lr-catalog-entry">
+        <span className="lr-catalog-topic">{t.topic}</span> <ExamBadges exams={t.exams} /></span>)}
+    </li>)}
+  </ul>;
+}
+
+/** Breadcrumb için katalog ders ve ünite adı; katalog yoksa boş kalır (elle yazılmış ünite adı kullanılmaz). */
+export function catalogCrumb(catalog, categories) {
+  if (!catalog.byId) return '';
+  const scope = lessonScope(categories, catalog.byId);
+  return scope.units.length ? `${scope.subject} › ${scope.units.map((u) => u.name).join(' · ')}` : '';
+}
 
 export const STATUS = {
   locked: { label: 'Önkoşullu', tone: 'locked', hint: 'Önkoşulu bitince açılır; istersen yine de başlayabilirsin.' },

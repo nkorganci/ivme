@@ -60,7 +60,7 @@ export function forecast(state, index) {
     const concepts = index.concepts.filter((m) => trackOf(m, cfg) === track && state.scope.has(m.id));
     const left = concepts.filter((m) => !state.concepts[m.id].firstMasteredAt);
     const minutesLeft = Math.round(left.reduce((sum, m) => {
-      const progress = lessonProgress(m, state.concepts[m.id]);
+      const progress = lessonProgress(m, state.concepts[m.id], cfg.tracks);
       return sum + (progress.done ? 0 : progress.totalLeft ?? m.minutes) + m.mastery.minutes;
     }, 0) * ratio);
     const share = cfg.tracks.length > 1 ? 0.5 : 1;

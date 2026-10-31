@@ -1,3 +1,4 @@
+import { scopeToTracks } from '../content/parser.js';
 import { ENGINE } from './config.js';
 import { dayKey, daysBetween, hoursBetween, weekday } from './dates.js';
 import { interval, planMode } from './ladder.js';
@@ -21,8 +22,9 @@ export function paceMinutes(state, track) {
   return ((state.pace?.[track] ?? ENGINE.pace[track] ?? 90) * ENGINE.pace.missedFactor) / 60;
 }
 
-/** Dersin şu anki oturumu ve kalan dakikası. */
-export function lessonProgress(meta, concept) {
+/** Dersin şu anki oturumu ve kalan dakikası; hedef sınav dışındaki bölümler (TAS-03) sayılmaz. */
+export function lessonProgress(lessonMeta, concept, tracks) {
+  const meta = scopeToTracks(lessonMeta, tracks);
   const done = new Set(concept?.sectionsDone ?? []);
   const sessions = meta.sessions?.length ? meta.sessions : [{ title: meta.title, sections: meta.sections.map((s) => s.id) }];
   const minutesOf = (id) => meta.sections.find((s) => s.id === id)?.minutes ?? 8;
@@ -100,7 +102,7 @@ function candidates({ state, index, summary }) {
     return concept.status === 'learning' && !concept.reteach && concept.lessonOpenedAt && !concept.lessonCompletedAt;
   }).sort((a, b) => (state.concepts[b.id].lastActivityAt ?? '').localeCompare(state.concepts[a.id].lastActivityAt ?? ''))
     .map((m) => {
-      const progress = lessonProgress(m, state.concepts[m.id]);
+      const progress = lessonProgress(m, state.concepts[m.id], cfg.tracks);
       return {
         key: `learn:${m.id}`, kind: 'learn', conceptId: m.id, track: trackOf(m, cfg), minutes: Math.max(5, progress.remaining), priority: 1,
         session: progress.session, sessions: progress.sessions, continuing: true,
@@ -122,7 +124,7 @@ function candidates({ state, index, summary }) {
     const next = scoped.filter((m) => trackOf(m, cfg) === track && state.concepts[m.id].status === 'available' && !state.concepts[m.id].lessonOpenedAt)
       .sort((a, b) => a.order - b.order).slice(0, room);
     for (const m of next) {
-      const progress = lessonProgress(m, state.concepts[m.id]);
+      const progress = lessonProgress(m, state.concepts[m.id], cfg.tracks);
       fresh.push({
         key: `learn:${m.id}`, kind: 'learn', conceptId: m.id, track, minutes: Math.max(5, progress.remaining), priority: 1,
         session: 1, sessions: progress.sessions, continuing: false,
@@ -232,7 +234,7 @@ export function isDone(item, current, planDate, index) {
     case 'learn': {
       if (!concept) return false;
       if (onPlanDay(concept.lessonCompletedAt)) return true;
-      const progress = lessonProgress(index.byId[item.conceptId], concept);
+      const progress = lessonProgress(index.byId[item.conceptId], concept, current.settings.tracks);
       return progress.done || progress.session > (item.session ?? 1);
     }
     case 'missed': return setToday(['missed']) || current.dueQueue.length === 0;
