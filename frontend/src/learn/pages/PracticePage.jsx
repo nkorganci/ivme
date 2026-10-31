@@ -31,7 +31,7 @@ export function approachOf(index, conceptId, archetypeId) {
   return tips ? { title: meta.title, cue: '', strategy: tips } : null;
 }
 
-const storageKey = (type, conceptId, track, today) => `ivme:konu-ogrenme:set:${type}:${conceptId ?? ''}:${track ?? ''}:${today}`;
+const storageKey = (userId, type, conceptId, track, today, archetype) => `ivme:konu-ogrenme:set:v3:${userId}:${type}:${conceptId ?? ''}:${track ?? ''}:${today}:${archetype ?? ''}`;
 
 function lessonCard(cardId) {
   const [conceptId, localId] = cardId.split(':');
@@ -140,15 +140,21 @@ export default function PracticePage() {
   const { state, index, record, answerBank, today } = learn;
   const meta = conceptId ? index.byId[conceptId] : null;
   usePageTitle(`${TITLES[type] ?? 'Çalış'}${meta ? ` · ${meta.title}` : ''} · Konuyu Öğrenelim`);
-  const key = storageKey(type, conceptId, track, today);
+  const key = storageKey(learn.userId, type, conceptId, track, today, archetype);
   const [session, setSession] = useState(() => {
-    try { return JSON.parse(sessionStorage.getItem(key) ?? 'null'); } catch { return null; }
+    try {
+      for (const oldKey of Object.keys(sessionStorage)) {
+        if (oldKey.startsWith('ivme:konu-ogrenme:set:') && !oldKey.startsWith('ivme:konu-ogrenme:set:v3:')) sessionStorage.removeItem(oldKey);
+      }
+      return JSON.parse(sessionStorage.getItem(key) ?? 'null');
+    } catch { return null; }
   });
   const [error, setError] = useState('');
   const [stage, setStage] = useState(type === 'reteach' ? 'teach' : 'run');
   const [finished, setFinished] = useState(null);
   const [answer, setAnswer] = useState(null);
   const started = useRef(false);
+  const finishEvent = useRef(null);
 
   useEffect(() => {
     if (session || started.current || (conceptId && !meta)) return;
@@ -163,6 +169,20 @@ export default function PracticePage() {
       else sessionStorage.removeItem(key);
     } catch { /* depolama kapalı olabilir */ }
   }, [session, finished, key]);
+
+  const currentItem = session?.items[session.position];
+  const restoredAnswer = learn.events.findLast((event) => event.kind === 'attempt'
+    && event.setId === session?.setId && event.itemType === currentItem?.type
+    && event.itemId === (currentItem?.question?.code ?? currentItem?.question?.id ?? currentItem?.cardId));
+  useEffect(() => {
+    if (!restoredAnswer || currentItem?.type === 'bank') return;
+    setAnswer(restoredAnswer);
+    setSession((current) => ({ ...current, results: [
+      ...current.results.filter((result) => result.code !== restoredAnswer.itemId),
+      { code: restoredAnswer.itemId, archetypeId: restoredAnswer.archetypeId,
+        correct: restoredAnswer.correct, graded: restoredAnswer.itemType !== 'flashcard' },
+    ] }));
+  }, [restoredAnswer, currentItem?.type]);
 
   if (conceptId && !meta) return <Navigate to={`${BASE}/harita`} replace />;
   const lesson = conceptId ? getLesson(conceptId) : null;
@@ -204,9 +224,11 @@ export default function PracticePage() {
   }
 
   const items = session.items;
-  const finish = () => {
+  const finish = async () => {
     const cards = type === 'testout' && lesson ? lesson.flashcards.map((c) => c.id) : undefined;
-    record(makeEvent('set', { action: 'done', setId: session.setId, setType: type, conceptId: conceptId ?? null, track: track ?? null, ...(cards ? { cards } : {}) }));
+    finishEvent.current ??= makeEvent('set', { action: 'done', setId: session.setId, setType: type, conceptId: conceptId ?? null, track: track ?? null, ...(cards ? { cards } : {}) });
+    const saved = await learn.confirm(finishEvent.current);
+    if (!saved) return;
     setFinished({ result: setResult(session.results.filter((r) => r.graded)), results: session.results });
   };
 
@@ -228,7 +250,7 @@ export default function PracticePage() {
     if (session.position + 1 >= items.length) finish();
     else setSession((s) => ({ ...s, position: s.position + 1 }));
   };
-  const remember = (entry) => setSession((s) => ({ ...s, results: [...s.results, entry] }));
+  const remember = (entry) => setSession((s) => ({ ...s, results: [...s.results.filter((r) => r.code !== entry.code), entry] }));
 
   const onBank = async (value) => {
     setAnswer(value);
@@ -275,10 +297,10 @@ export default function PracticePage() {
         <BankQuestion question={item.question} conceptId={item.question.conceptId ?? conceptId} context={type} setId={session.setId} archetypeId={item.archetype} answerBank={answerBank} onAnswered={onBank} before={before}
           approach={type === 'placement' ? null : approachOf(index, item.question.conceptId ?? conceptId, item.archetype ?? item.question.archetype)} />
       </>}
-      {item.type === 'lesson_q' && <LessonQuestion question={item.question} onAnswered={onLesson} />}
+      {item.type === 'lesson_q' && <LessonQuestion question={item.question} initial={restoredAnswer ?? null} onAnswered={onLesson} />}
       {item.type === 'flashcard' && (() => {
         const card = lessonCard(item.cardId);
-        return card ? <><p className="small muted">{card.lessonTitle}</p><FlashcardItem card={card} onAnswered={onCard} /></> : <p className="muted">Kart bulunamadı.</p>;
+        return card ? <><p className="small muted">{card.lessonTitle}</p><FlashcardItem card={card} initial={restoredAnswer ?? null} onAnswered={onCard} /></> : <p className="muted">Kart bulunamadı.</p>;
       })()}
       <div className="lr-section-nav">
         <button type="button" className="btn btn-primary" disabled={!answer && item.type !== 'flashcard'} onClick={advance}

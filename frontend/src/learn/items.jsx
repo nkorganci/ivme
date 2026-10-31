@@ -4,6 +4,7 @@ import QuestionImage from '../components/QuestionImage.jsx';
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import { MathText, Markdown } from './math.jsx';
 import { ConfidencePicker } from './ui.jsx';
+import { useLearn } from './LearnContext.jsx';
 import { makeEvent } from './api.js';
 
 const elapsed = (start) => Math.max(0, Math.round(performance.now() - start));
@@ -13,6 +14,7 @@ const elapsed = (start) => Math.max(0, Math.round(performance.now() - start));
  * silent: ön testte cevap gösterilmez ("Dersin sonunda bu sorulara döneceğiz").
  */
 export function LessonQuestion({ question, onAnswered, silent = false, initial = null, compact = false }) {
+  const { pending } = useLearn();
   const [chosen, setChosen] = useState(initial?.chosen ?? null);
   const [result, setResult] = useState(initial);
   const [hintOpen, setHintOpen] = useState(false);
@@ -23,6 +25,9 @@ export function LessonQuestion({ question, onAnswered, silent = false, initial =
     setHintOpen(false);
     started.current = performance.now();
   }, [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (initial) { setChosen(initial.chosen); setResult(initial); }
+  }, [initial]);
 
   const submit = (confidence) => {
     const correct = chosen === question.answer;
@@ -53,7 +58,7 @@ export function LessonQuestion({ question, onAnswered, silent = false, initial =
         : <button type="button" className="btn btn-secondary btn-sm" onClick={() => setHintOpen(true)}>İpucu</button>}
     </div>}
     {!answered && chosen && <ConfidencePicker onPick={submit} />}
-    {answered && silent && <p className="lr-feedback neutral" role="status">Kaydedildi. Dersin sonunda bu soruya döneceğiz ve cevabını o zaman göreceksin.</p>}
+    {answered && silent && <p className="lr-feedback neutral" role="status">{pending ? 'Sunucu onayı bekleniyor.' : 'Sunucuya kaydedildi.'} Dersin sonunda bu soruya döneceğiz ve cevabını o zaman göreceksin.</p>}
     {answered && !silent && <div className={`lr-feedback ${result.correct ? 'good' : 'bad'}`} role="status">
       <p className="lr-feedback-title">{result.correct ? 'Doğru!' : `Doğru cevap ${question.answer}.`}{result.correct && result.confidence === 1 ? ' Tahmin ettin ama doğru — 3 gün sonra bir kez daha karşına çıkacak.' : ''}</p>
       {choiceOf(result.chosen)?.feedback && <p><MathText text={choiceOf(result.chosen).feedback} /></p>}
@@ -69,34 +74,56 @@ export function LessonQuestion({ question, onAnswered, silent = false, initial =
  * Yanlışta çözüm görseli (varsa) açılabilir.
  */
 export function BankQuestion({ question, conceptId, context, setId, archetypeId, answerBank, onAnswered, before = null, approach = null }) {
+  const { events, pendingBank } = useLearn();
+  const notified = useRef(null);
   const [chosen, setChosen] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [solution, setSolution] = useState(false);
+  const request = useRef(null);
   const started = useRef(performance.now());
   useEffect(() => {
-    setChosen(null); setResult(null); setError(''); setSolution(false);
+    request.current = pendingBank(question.code, context, setId) ?? null;
+    notified.current = null;
+    setChosen(request.current?.chosen ?? null); setResult(null); setError(''); setSolution(false); setBusy(false);
     started.current = performance.now();
-  }, [question.code]);
+  }, [question.code, context, setId, pendingBank]);
+
+  useEffect(() => {
+    const saved = events.findLast((event) => event.itemType === 'bank' && event.itemId === question.code
+      && event.context === context && event.setId === setId && (setId || request.current?.id === event.id));
+    if (!saved || notified.current === saved.id) return;
+    notified.current = saved.id;
+    const value = { chosen: saved.chosen, confidence: saved.confidence, correct: saved.correct, correctAnswer: saved.correctAnswer, hasSolution: saved.hasSolution ?? false, event: saved };
+    setChosen(saved.chosen); setResult(value); setError('');
+    onAnswered?.(value);
+  }, [events, question.code, context, setId]);
 
   const submit = async (confidence) => {
+    if (busy || result) return;
     setBusy(true);
     setError('');
-    const event = makeEvent('attempt', {
+    const event = request.current ?? makeEvent('attempt', {
       itemType: 'bank', itemId: question.code, questionId: question.id, conceptId: question.conceptId ?? conceptId,
       archetypeId: archetypeId ?? question.archetype ?? null, difficulty: question.difficulty, context, chosen, confidence,
       timeMs: elapsed(started.current), hintUsed: false, exam: question.exam, ...(setId ? { setId } : {}),
     });
+    request.current = event;
     try {
       const response = await answerBank(event);
-      const value = { chosen, confidence, correct: response.correct, correctAnswer: response.correctAnswer, hasSolution: response.hasSolution, event: response.event };
+      if (request.current !== event) return;
+      const value = { chosen: response.event.chosen, confidence: response.event.confidence, correct: response.correct, correctAnswer: response.correctAnswer, hasSolution: response.hasSolution, event: response.event };
       setResult(value);
-      onAnswered?.(value);
+      if (notified.current !== response.event.id) {
+        notified.current = response.event.id;
+        onAnswered?.(value);
+      }
     } catch (problem) {
+      if (request.current !== event) return;
       setError(problem.status === 0 ? 'Bağlantı yok: banka soruları sunucuda puanlanır. Bağlantı gelince tekrar dene.' : problem.message);
     } finally {
-      setBusy(false);
+      if (request.current === event) setBusy(false);
     }
   };
 
@@ -107,7 +134,7 @@ export function BankQuestion({ question, conceptId, context, setId, archetypeId,
       <Link to={`/soru/${encodeURIComponent(question.code)}`} target="_blank" rel="noreferrer">Soru sayfasında aç ↗</Link>
     </div>
     <div className="lr-bank-image"><QuestionImage id={question.id} alt={`Soru ${question.code}`} /></div>
-    <ChoiceButtons count={question.choices} value={chosen} onSelect={(letter) => !result && setChosen(letter)} disabled={!!result || busy}
+    <ChoiceButtons count={question.choices} value={chosen} onSelect={(letter) => !result && setChosen(letter)} disabled={!!result || busy || !!request.current}
       correct={result?.correctAnswer ?? null} wrong={result && !result.correct ? result.chosen : null} />
     {!result && chosen && <ConfidencePicker onPick={submit} disabled={busy} />}
     {error && <p className="field-error" role="alert">{error}</p>}
@@ -127,11 +154,12 @@ export function BankQuestion({ question, conceptId, context, setId, archetypeId,
 }
 
 /** Kart: ön yüz → çevir → "Bilemedim / Emin değildim / Bildim" (FSRS puanı cevaptan türetilir). */
-export function FlashcardItem({ card, onAnswered }) {
+export function FlashcardItem({ card, onAnswered, initial = null }) {
   const [flipped, setFlipped] = useState(false);
   const [done, setDone] = useState(null);
   const started = useRef(performance.now());
   useEffect(() => { setFlipped(false); setDone(null); started.current = performance.now(); }, [card.id]);
+  useEffect(() => { if (initial) { setFlipped(true); setDone(initial); } }, [initial]);
   const rate = (correct, confidence) => {
     const value = { correct, confidence, timeMs: elapsed(started.current) };
     setDone(value);

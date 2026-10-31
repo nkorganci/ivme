@@ -76,7 +76,7 @@ if (server) process.env.IVME_URL = `http://127.0.0.1:${server.address().port}`;
 const { tarayiciAc, pause } = await import('./lib/tarayici.mjs');
 
 const report = { concept: conceptId, live, runs: [] };
-const click = (selector, text) => `(() => { const el = [...document.querySelectorAll(${JSON.stringify(selector)})].find((e) => !e.disabled && ${text ? `e.textContent.includes(${JSON.stringify(text)})` : 'true'}); if (!el) return false; el.scrollIntoView({ block: 'center' }); el.click(); return true; })()`;
+const click = (selector, text) => `(async () => { for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await new Promise(r => setTimeout(r, 50)); const el = [...document.querySelectorAll(${JSON.stringify(selector)})].find((e) => !e.matches(':disabled') && ${text ? `e.textContent.includes(${JSON.stringify(text)})` : 'true'}); if (!el) return false; el.scrollIntoView({ block: 'center' }); el.click(); return true; })()`;
 
 async function run(mobile) {
   const browser = await tarayiciAc({ mobile });
@@ -132,6 +132,7 @@ async function run(mobile) {
       }
       if (!(await evalJs('Boolean(document.querySelector(".lr-section"))'))) break;
       sections += 1;
+      await wait('!document.querySelector(".lr-save-boundary:disabled")');
       // Bölümdeki bütün kontrolleri cevapla.
       await evalJs(`(async () => {
         const wait = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -139,21 +140,21 @@ async function run(mobile) {
         for (const check of document.querySelectorAll('.lr-check')) {
           const choice = [...check.querySelectorAll('.lr-choice')].find((c) => !c.disabled);
           if (!choice) continue;
-          choice.click(); await wait(80);
+          choice.click(); await wait(80); for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await wait(50);
           const sure = [...check.querySelectorAll('.lr-confidence button')].find((b) => b.textContent.includes('Eminim'));
-          sure?.click(); await wait(80);
+          sure?.click(); await wait(80); for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await wait(50);
         }
         for (const fill of document.querySelectorAll('.lr-fill')) {
           const input = fill.querySelector('input:not(:disabled)'); if (!input) continue;
           setValue(input, '12'); await wait(50);
-          [...fill.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80);
+          [...fill.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80); for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await wait(50);
         }
         for (const box of document.querySelectorAll('.lr-sort, .lr-match')) {
           for (const row of box.querySelectorAll('li')) { row.querySelector('button:not(:disabled)')?.click(); await wait(20); }
-          [...box.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80);
+          [...box.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80); for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await wait(50);
         }
         for (const box of document.querySelectorAll('.lr-order')) {
-          [...box.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80);
+          [...box.querySelectorAll('button')].find((b) => b.textContent.includes('Kontrol'))?.click(); await wait(80); for (let i = 0; i < 200 && document.querySelector('.lr-save-boundary:disabled'); i++) await wait(50);
         }
         for (const step of document.querySelectorAll('.lr-step-hidden button')) { step.click(); await wait(20); }
         for (const button of document.querySelectorAll('.lr-reveal button, .lr-why-btn')) { button.click(); await wait(20); }

@@ -307,3 +307,5 @@
 @media (prefers-reduced-motion: reduce) {
   .lr-ring-value, .lr-progress span { transition: none; }
 }
+
+.lr-save-boundary { border: 0; padding: 0; margin: 0; min-width: 0; }

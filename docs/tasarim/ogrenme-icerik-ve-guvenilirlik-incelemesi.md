@@ -1,8 +1,22 @@
 # Öğrenme, kaynak işleme ve kayıt güvenilirliği: bulgular ve önerilen yaklaşım
 
-**Durum: İNCELEME / UYGULAMA BEKLİYOR.** Bu belge kullanıcının paylaştığı bütün maddeleri birlikte değerlendirir. Bir uygulama talimatı, tamamlanmış düzeltme veya yeni içerik üretme izni değildir. Bu çalışma kapsamında yalnız dokümantasyon hazırlanır; uygulama kodu, öğrenci verileri, kaynak PDF'ler, modeller ve yayın değiştirilmez.
+**Durum: TAS-01 UYGULANDI; DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
 
 **İnceleme tabanı:** `2026-10-31`, yerel `8fe4403` commit'i. İlgili proje `D:/workspace/ivme/uygulama`dır; sohbetin başlangıç dizini olan `wrestling` değildir. Bulgular kaynak kodu, şema, mevcut test dosyaları, mimari belgeler ve dosya envanterinin salt okunur incelemesine dayanır. Canlı öğrenci hesabıyla işlem yapılmadı; kesinti/yarış testleri çalıştırılmadı; bütün PDF sayfaları ve soru görselleri okunmadı. Dolayısıyla **kodda görülen davranış**, **kullanıcının bildirdiği sorun**, **doğrulanacak risk** ve **öneri** birbirinden ayrılmıştır.
+
+## Referans ve ileriye dönük kapsam
+
+**Referans günü: 2026-10-31 (America/Chicago).** Kaynak gerçek, bu gün itibarıyla
+DB'ye kaydedilmiş verilerdir; eski DB kayıtları, hesaplar, diğer çalışmalar ve
+logları korunur. Geçmişte DB'ye ulaşmamış olaylar tarayıcı kuyruğu/loglardan yeniden
+oluşturulmaz veya sonradan gönderilmez. Eski öğrenme bekleyenleri atılır; yeni
+akışta oluşan bekleyen olaylar ise sunucu onayına kadar korunur ve aynı kimlikle
+yeniden denenir. Bu karar kayıt kaybı yaşayan yeni olayları silme izni değildir.
+
+TAS-01–12 bu sınırla uygulanır. Eski DB geçmişini silmek, filtreleyip gizlemek,
+yeniden puanlamak, eksik eski kayıtları tamamlamak veya geçmiş logları yeniden
+oynatmak kapsam dışıdır. Kaynak PDF, soru bankası, katalog ve içerik kanıtları bu
+karardaki “kaydedilmemiş öğrenci olayı” değildir; ilgili içerik işinde kullanılabilir.
 
 ## 1. Önce okunacak kısa karar özeti
 
@@ -27,10 +41,10 @@
 | Banka cevapları | `LearnService.bankAnswer()` sunucuda puanlıyor, `AttemptService` üzerinden bağımsız pratik kaydı ve öğrenme olayı yazıyor | “Hiç DB kaydı yok” doğru değil. Ortak oturum ve bütün alıştırma türlerinin takibi eksik kapsamdır |
 | Ders içi cevaplar | `lesson_q` olayları `learning_engine_events` içinde; `correct` istemciden geliyor | Ortak konu sayımına bağlama ve sunucuda doğrulama gerekiyor |
 | Konu takibi | `LearningResourceService.progress()` tamamlanmış pratik ve teslim edilmiş deneme kayıtlarını birleştiriyor | `lesson_q` ve self-check akışları bu sorguya doğrudan dahil değil; mevcut banka köprüsü ayrıca korunmalı |
-| Kalıcılık kuyruğu | `LearnContext.jsx` 400 yanıtında `setOutbox([])` yapıyor; `api.js` yalnız son 500 olayı saklıyor, depolama hatasını yutuyor | Sessiz veri kaybına yol açabilecek kod yolları var; P0 |
-| Kayıt bildirimi | `LessonQuestion` cevap sonrasında sunucu onayı beklemeden yerel sonucu gösteriyor; sessiz modda “Kaydedildi” yazıyor | Yerel bekleyen durum ile DB tarafından onaylanan durum ayrılmalı |
-| Tekrar gönderme | Sunucuda `(user_id, client_event_id)` tekilliği var; `BankQuestion.submit()` her çağrıda yeni olay kimliği üretiyor | Yanıtı kaybolan başarılı isteğin kullanıcı tarafından tekrarı aynı işlem kimliğini korumayabilir |
-| Setin devamı | `PracticePage.jsx` seti `sessionStorage` içinde tutuyor; anahtarında kullanıcı ve soru tipi (`archetype`) yok | Farklı tip seçiminde eski setin kullanılması ve aynı sekmede hesap geçişi incelenmeli; cihazlar arası set devamı garanti değil |
+| Kalıcılık kuyruğu | `LearnContext.jsx` 400 yanıtında `setOutbox([])` yapıyor; `api.js` yalnız son 500 olayı saklıyor, depolama hatasını yutuyor | TAS-01 ile düzeltildi; olay bazlı kuyruk ve hata görünürlüğü için §4 |
+| Kayıt bildirimi | `LessonQuestion` cevap sonrasında sunucu onayı beklemeden yerel sonucu gösteriyor; sessiz modda “Kaydedildi” yazıyor | TAS-01 ile bekleyen/onaylanan durum ve ilerleme kilidi ayrıldı |
+| Tekrar gönderme | Sunucuda `(user_id, client_event_id)` tekilliği var; `BankQuestion.submit()` her çağrıda yeni olay kimliği üretiyor | TAS-01 ile aynı istek kimliği/gövdesi korunuyor; farklı gövde 409 |
+| Setin devamı | `PracticePage.jsx` seti `sessionStorage` içinde tutuyor; anahtarında kullanıcı ve soru tipi (`archetype`) yok | TAS-01 kullanıcı/tip anahtarını ve ekran izolasyonunu ekledi; cihazlar arası set devamı TAS-05 kapsamı |
 | Ortak pratik ekranı | Konu sayfası kendi `/calis?tur=...` rotasını açıyor; banka sorusunda ayrıca yeni sekmede `/soru/{code}` bağlantısı var | Yeni sekme bağlantısı kısmen var; doğrudan ortak PRATIK seti gereksinimi karşılanmıyor |
 | 52 / 40 uyuşmazlığı | `temel-kavramlar.json`: 413 kayıt, 52 çıkmış; `pickPast()` varsayılan `limit=40`, çağıran bu sınırı değiştirmiyor | Gösterilen sayı ile açılan set uyuşmazlığı kaynak kodunda doğrulandı |
 | Beş aynı soru bildirimi | İncelenen temel kavramlar bankasında yinelenen `code` veya `id` yok; seçimlerin bir kısmı kod bazında tekilleştiriyor | Kullanıcı bildirimi açık. Aynı görsel, farklı kod, eski set, render veya kaynak eşleme sorunu henüz elenmedi |
@@ -79,30 +93,29 @@ P0 içerik genişletmesinden önce ele alınmalıdır. P1 bağımlılıkları ka
 
 ## 4. TAS-01: Öğrenci kayıtlarında güvenilir kalıcılık
 
-### 4.1. Sorunları ayrı ele al
+TAS-01 / 12.05 uygulandı. Ayrıntılı davranış ve test kanıtı
+[öğrenme kayıt sözleşmesinde](../mimari/ogrenme-kayit-guvenilirligi.md), güncel
+kapanış kaydı [görev durum tablosunda](../gorev-durumu.md) bulunur.
 
-- **400 durumunda bütün kuyruğun silinmesi:** bir bozuk olay diğer geçerli olayları kaybettirmemeli. Reddedilen olay kimliği/nedeni ayrı tutulmalı; geçerli olaylar korunmalı. Toplu işlem atomik reddediliyorsa istemci hiçbirini onaylanmış saymamalı.
-- **Son 500 kayıt sınırı:** `slice(-500)` ile eski kayıtların sessiz düşmesi uygun değil. Kapasite dolarsa görünür uyarı ve güvenli durma/yeniden deneme gerekir.
-- **Depolama hatasının yutulması:** özel kip, disk/kota sorunu veya bozuk JSON görünmez olmamalı. Bellekte var olan kayıt kalıcı sayılmaz.
-- **Erken başarı mesajı:** `Kaydediliyor`, `Sunucuya kaydedildi`, `Kaydedilemedi — tekrar dene` durumları ayrılmalı. Sayaçların bekleyen veriyi kullanması gerekiyorsa bunun geçici olduğu açıkça gösterilmeli.
-- **Aynı işlemde farklı kimlik:** kullanıcı yeniden denediğinde ilk istek DB'ye yazılmış ama yanıtı kaybolmuş olabilir. Aynı mantıksal cevabın tekrarında aynı `clientEventId` korunmalı; yeni gerçek çözüm yeni kimlik almalı.
-- **Sekmeler ve hesaplar:** kuyruk/oturum durumu kullanıcı değişiminde yeniden yüklenmeli; başka öğrencinin bekleyen olayları yeni hesapla gönderilmemeli. Çoklu sekmenin aynı depolama anahtarını ezmesi için ayrıca test gerekir.
+- 400 durumunda kuyruk silinmez; hatalı olay kimliği/nedeniyle ayrılır ve geçerli
+  kayıtlar gönderilir. Yalnız sunucunun onayladığı kimlikler çıkarılır.
+- 500 olay sınırı kaldırıldı. Kullanıcı/olay bazlı anahtarlar sekmelerin birbirinin
+  kuyruğunu ezmesini önler. Eski kaydedilmemiş v1/v2 kuyruk atılır; yeni v3 kuyrukta bozuk veri/kota hatası görünürdür.
+- Sunucu onayı öncesi ilerleme/ustalık kalıcı sayılmaz; tamamlama onay bekler.
+  Bellekte kalan taslak, sunucu kaydı olarak gösterilmez.
+- Banka cevabı yeniden deneme ve yenilemede aynı kimlik/gövdeyi korur.
+  Kullanıcı satırı kilidi eşzamanlı gönderimi sıralar; farklı gövde 409 verir.
+  Cevap ve öğrenme olayı aynı transaction'da yazılır.
+- Kullanıcı değişiminde ekran/kuyruk ayrılır; istek sahibinin oturumla uyuşması
+  kontrol edilir. Pratik anahtarına kullanıcı ve soru tipi eklendi.
+- Başka ekrandaki yarım bağımsız pratik artık otomatik `SKIP` ile kapanmaz.
+  `REVEAL`, doğru cevabın sunulmasıdır; çözüm görselinin açılması değildir.
 
-### 4.2. Önerilen kayıt sözleşmesi
-
-1. İstemci soru/cevap işlemi için sabit bir istek kimliği üretir.
-2. Sunucu oturumdaki kullanıcıyı, içerik kimliğini/sürümünü ve cevap geçerliliğini doğrular.
-3. Cevap, olay ve gerekli denetim izi aynı DB işleminde yazılır. İlk uygulama için mevcut Spring/PostgreSQL yapısı yeterlidir; yeni mesaj altyapısı gerekmez.
-4. Transaction commit olduktan sonra sunucu kayıt kimliği/sürümü döner.
-5. İstemci yalnız onaylanan olayları bekleyen listeden çıkarır. Aynı isteğin tekrarı aynı sonucu döndürür.
-6. Aynı istek kimliği farklı soru veya cevapla gelirse eski sonucu sessizce uygulamak yerine uyuşmazlık açıkça ele alınır.
-7. Kullanıcı başka cihazdan açtığında DB kaydı görünür; tarayıcı belleği kayıt kaynağı olmaz.
-
-Kullanıcının “cache'de durmamalı” isteği için önerilen varsayılan: **sunucu kaydı tamamlanmadan cevabı kalıcı tamamlandı sayma ve kritik ilerleme adımını onaylama**. Bağlantı yokken bekleyen bir taslak tutulacaksa bu yalnız kaybı azaltan geçici mekanizmadır; “veritabanına kaydedildi” değildir. Çevrimdışı çözüm ürün özelliği olarak seçilirse ayrı senkronizasyon tasarımı gerekir. Mevcut öğretim sözleşmesinin aksine bütün uygulamayı yeni bir IndexedDB sistemine taşımak önerilmez.
-
-**Ek doğrulama:** `LearnService.bankAnswer()` yarım bağımsız pratik turunda `SKIP`, yanlış cevapta `REVEAL` üretebiliyor. Başka ekranda devam eden çalışmaya etkisi ve çözüm gösterilmeden “gösterildi” anlamına gelip gelmediği incelenmeli. Kaydetme ve pedagojik olaylar aynı şey değildir.
-
-**Kabul senaryoları:** istekten önce bağlantı kesilmesi; commit sonrası yanıt kaybı; aynı cevabın eşzamanlı gönderimi; toplu istekte tek geçersiz olay; 500'den fazla bekleyen olay; depolama kapalı; iki sekme; aynı sekmede hesap değişimi; DB yeniden açıldıktan sonra geri okuma. Hepsi test ortamında yürütülmelidir.
+**Kabul kanıtı:** 9 kuyruk testi, geçici DB üzerinde 12 backend testi,
+masaüstü/mobil 10 kayıt kabulü ve tam temel-kavramlar ders/ustalık akışı geçti. Yeni referans kapsamının son test kanıtı görev tablosunda tutulur.
+DB kesintisi test DB bağlantısının sonlandırılmasıyla doğrulandı; gerçek öğrenci
+hizmeti durdurulmadı. Depolama engelliyken zorla tarayıcı kapatmaya karşı garanti
+verilmez; taslak bellekte korunur, ilerleme durur ve uyarı gösterilir.
 
 ## 5. TAS-03: Tek ders–ünite–konu referansı ve sınav kapsamı
 
@@ -505,7 +518,7 @@ Mevcut hesap onayı korunarak **kayıt + kalıcı bildirim işi** aynı transact
 | Hata enjeksiyonu | DB kapalı, commit sonrası yanıt kaybı, 400, timeout, yerel kota | Sessiz kayıp ve çift kaydı önleme |
 | İçerik regresyonu | Bilinen doğru soru/şekil/çözüm paketi | Model/prompt değişince kalite kaybını bulma |
 | Görsel/erişilebilirlik | Mobil şekil, taşma, klavye, renk dışı sonuç bildirimi | Öğrenme ekranının kullanılabilirliği |
-| Migration/geri dönüş | Eski kimlik/ilerleme korunması, eski/yeni toplam | Öğrenci geçmişini kaybetmeme |
+| Referans DB ve yeni kayıt | Mevcut DB geçmişi değişmez; eski kaydedilmemiş kuyruk gönderilmez; yeni olay kaybolmaz | Geçmişe dokunmadan yeni kaydın güvencesi |
 | Bildirim | Fake SMTP/sağlayıcı, retry, rollback, yinelenen gönderim | Kayıt ve mail bağımsız güvenilirliği |
 | Performans | Olay geçmişi büyümesi, geniş set, havuz sorgusu, içerik işi | Kullanıcı sayısı/veri büyümesindeki sınır |
 | Kurtarma | Ayrı test ortamına yedek geri yükleme ve geri okuma | Yedeğin gerçekten kullanılabilirliği |
@@ -607,7 +620,7 @@ Tabloda **ana seçim**, göreve başlarken açılacak modeldir. “Alternatif”
 | **TAS-11 — video/transkript/ipucu** | Altyazı/ASR + kareler için **Terra `high`** | Hattın kodu **Sol/Sonnet `high`**; anlatımı düzenleme **Opus `high`** | Metin modelleri ses tanıma yerine geçirilmez. Luna yalnız zamanlı metinden aday bölümleri çıkarır; matematiksel ipucunun koşullarını Astra doğrular |
 | **TAS-12 — test, devir ve kalite** | Test tasarımı **Astra `high`**; test kodu **Sol `high`** | Claude'da **Opus `high` → Sonnet `high`** | Testleri script çalıştırır. Terra ekran/şekil incelemesi yapar. Luna mevcut kanıttan kısa devir/rapor taslağı çıkarabilir; yapılmamış testi geçmiş veya işi tamamlanmış sayamaz |
 
-**İlk paket için doğrudan seçim:** TAS-01'i **GPT-6 Astra / Extra high (`xhigh`)** ile aç; Claude kullanacaksan **Opus 5.5 / `high`** seç. Bu işler tamamlandıktan sonra tanımı net uygulama işleri için **GPT-6.1 Sol / `high`** veya **Sonnet 5.5 / `high`** yeterliliğini testlerle değerlendir. Şu an yalnız belge güncellendi; görevler başlatılmadı.
+**İlk paket için doğrudan seçim:** TAS-01'i **GPT-6 Astra / Extra high (`xhigh`)** ile aç; Claude kullanacaksan **Opus 5.5 / `high`** seç. Bu işler tamamlandıktan sonra tanımı net uygulama işleri için **GPT-6.1 Sol / `high`** veya **Sonnet 5.5 / `high`** yeterliliğini testlerle değerlendir. Model tablosu öneridir; TAS-01’in güncel uygulama kanıtı §4’tedir.
 
 ### 19.4. Düşünme düzeyi nasıl seçilmeli?
 

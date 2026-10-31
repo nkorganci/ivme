@@ -51,8 +51,14 @@ export default function LessonPage() {
   const [bank, setBank] = useState([]);
   const sectionStarted = useRef(performance.now());
   const top = useRef(null);
+  const confirmations = useRef({});
 
   useEffect(() => { loadBank(conceptId).then(setBank).catch(() => setBank([])); }, [conceptId]);
+  useEffect(() => {
+    setAnswers((current) => ({ ...current, ...previousAnswers(state, conceptId, ['quick_check']) }));
+    setPre((current) => ({ ...current, ...previousAnswers(state, conceptId, ['pretest']) }));
+    setPost((current) => ({ ...current, ...previousAnswers(state, conceptId, ['posttest']) }));
+  }, [state, conceptId]);
   useEffect(() => {
     sectionStarted.current = performance.now();
     top.current?.scrollIntoView({ block: 'start' });
@@ -100,10 +106,12 @@ export default function LessonPage() {
   const checksInSection = section ? section.blocks.filter((b) => CHECK_BLOCKS.has(b.type)) : [];
   const allAnswered = checksInSection.every((b) => answers[checkId(b)]);
 
-  const finishSection = () => {
+  const finishSection = async () => {
     const nextSection = lesson.sections[sectionIndex + 1];
     if (!completed) {
-      record(makeEvent('lesson', { conceptId, action: 'section', sectionId: section.id, nextSectionId: nextSection?.id ?? null, ms: Math.round(performance.now() - sectionStarted.current) }));
+      confirmations.current[section.id] ??= makeEvent('lesson', { conceptId, action: 'section', sectionId: section.id, nextSectionId: nextSection?.id ?? null, ms: Math.round(performance.now() - sectionStarted.current) });
+      const saved = await learn.confirm(confirmations.current[section.id]);
+      if (!saved) return;
     }
     if (!nextSection) {
       setStage(completed ? 'done' : lesson.pretest.length && pretestDone ? 'posttest' : 'explain');
@@ -118,13 +126,13 @@ export default function LessonPage() {
     setSectionIndex(sectionIndex + 1);
   };
 
-  const complete = () => {
-    record([
+  const complete = async () => {
+    confirmations.current.complete ??= [
       makeEvent('lesson', { conceptId, action: 'explain', text: explain.slice(0, 1000) }),
       makeEvent('lesson', { conceptId, action: 'rate', ratings }),
       makeEvent('lesson', { conceptId, action: 'complete', cards: lesson.flashcards.map((c) => c.id) }),
-    ]);
-    setStage('done');
+    ];
+    if (await learn.confirm(confirmations.current.complete)) setStage('done');
   };
 
   const ctx = {

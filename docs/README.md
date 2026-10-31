@@ -7,6 +7,7 @@ Görev için yalnız ilgili bölümü aç. `devam.md` oturum geçişini; klasör
 | Etkin/yarım iş ve açık işler | [Devir](devam.md), [yol haritası](plan/README.md) |
 | Yapılan/kalan önemli işler, tamamlanma kanıtı ve tekrar çalışmayı önleme | [Güncel görev durum tablosu](gorev-durumu.md) |
 | Sistem akışı ve veri sahipliği | [Mimari](mimari/README.md), [veri kaynakları](mimari/veri-kaynaklari.md) |
+| Yeni öğrenme kayıtlarının güvenilirliği ve referans DB kuralı | [Kayıt sözleşmesi](mimari/ogrenme-kayit-guvenilirligi.md) |
 | API, veri modeli, roller | [API ve mimari](sozlesmeler/api.md), [öğretmen doğrulaması](sozlesmeler/ogretmen-dogrulamasi.md) |
 | Etiket, kaynak ve kanıt sözleşmesi | [Ortak etiketler](sozlesmeler/ortak-etiketler.md), [şemalar](semalar/learning-resource-v2.schema.json) |
 | Kaynaklı içerik üretimi | [Ders notları](icerik/kaynakli-ders-notlari.md), [soru analizi](icerik/soru-analizi.md) |

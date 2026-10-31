@@ -26,7 +26,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Pattern;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +41,7 @@ public class LearnService {
     private static final Set<String> ITEM_TYPES = Set.of("bank", "lesson_q", "flashcard");
     private static final Set<String> CONTEXTS = Set.of("pretest", "posttest", "quick_check", "misconception", "mastery", "testout",
             "review", "missed", "mixed", "placement", "reteach", "practice", "flashcards", "sibling", "test", "cikmis");
-    private static final Set<String> SERVER_FIELDS = Set.of("seq", "correctAnswer", "recordedAt");
+    private static final Set<String> SERVER_FIELDS = Set.of("seq", "correctAnswer", "recordedAt", "hasSolution");
     private static final Pattern CONCEPT = Pattern.compile("^[a-z0-9-]{1,80}$");
     private static final Pattern ITEM = Pattern.compile("^[\\p{L}\\p{N}_:.\\-]{1,120}$");
     private static final int MAX_PAYLOAD = 6000;
@@ -105,6 +104,7 @@ public class LearnService {
     @Transactional
     public List<JsonNode> append(long userId, String subject, List<JsonNode> events) {
         requireSubject(subject);
+        lockUser(userId);
         if (events == null || events.isEmpty()) throw ApiException.badRequest("Kaydedilecek olay yok.");
         if (events.size() > MAX_BATCH) throw ApiException.badRequest("Tek istekte en çok " + MAX_BATCH + " olay gönderilir.");
         List<JsonNode> saved = new ArrayList<>();
@@ -120,11 +120,13 @@ public class LearnService {
     @Transactional
     public Map<String, Object> bankAnswer(long userId, String subject, JsonNode raw) {
         requireSubject(subject);
+        lockUser(userId);
         Event event = validate(raw);
         if (!"attempt".equals(event.kind()) || !"bank".equals(event.itemType())) throw ApiException.badRequest("Banka cevabı bir attempt olayı olmalı.");
         Long questionId = event.payload().path("questionId").canConvertToLong() ? event.payload().path("questionId").asLong() : null;
         if (questionId == null) throw ApiException.badRequest("Soru kimliği gerekli.");
         JsonNode existing = existing(userId, event.id());
+        if (existing != null) requireSame(existing, event);
         Question question = questions.findById(questionId).filter(q -> existing != null || q.isActive())
                 .orElseThrow(() -> ApiException.notFound("Soru bulunamadı."));
         JsonNode recorded = existing;
@@ -136,7 +138,7 @@ public class LearnService {
             int seconds = (int) Math.min(21600, Math.max(0, event.payload().path("timeMs").asLong(0) / 1000));
             PracticeState before = attempts.state(questionId, userId, null);
             if (!before.roundComplete() && !before.attempts().isEmpty())
-                attempts.submit(questionId, userId, new AttemptRequest(derived(event.id(), "skip"), AttemptEventType.SKIP, null, 0, null));
+                throw ApiException.conflict("Bu sorunun diğer ekranda açık bir pratik turu var. Önce o turu tamamlayıp tekrar dene.");
             attempts.submit(questionId, userId, new AttemptRequest(event.id(), AttemptEventType.ANSWER, chosen, seconds, null));
             boolean correct = chosen.equals(question.getCorrectAnswer());
             if (!correct) attempts.submit(questionId, userId, new AttemptRequest(derived(event.id(), "reveal"), AttemptEventType.REVEAL, null, 0, null));
@@ -145,7 +147,7 @@ public class LearnService {
             payload.put("correct", correct);
             payload.put("code", question.getCode());
             recorded = insert(userId, subject, new Event(event.id(), event.at(), event.kind(), event.conceptId(), event.itemType(), payload),
-                    Map.of("correct", correct, "correctAnswer", question.getCorrectAnswer(), "questionId", questionId));
+                    Map.of("correct", correct, "correctAnswer", question.getCorrectAnswer(), "questionId", questionId, "hasSolution", question.getSolutionImage() != null && !question.getSolutionImage().isBlank()));
         }
         Map<String, Object> out = new LinkedHashMap<>();
         out.put("event", recorded);
@@ -196,25 +198,42 @@ public class LearnService {
 
     private JsonNode insert(long userId, String subject, Event event, Map<String, Object> serverFields) {
         JsonNode existing = existing(userId, event.id());
-        if (existing != null) return existing;
+        if (existing != null) {
+            requireSame(existing, event);
+            return existing;
+        }
         ObjectNode stored = event.payload().deepCopy();
         if (serverFields != null) serverFields.forEach((key, value) -> stored.set(key, mapper.valueToTree(value)));
         Long questionId = stored.path("questionId").canConvertToLong() && "attempt".equals(event.kind()) ? stored.path("questionId").asLong() : null;
         if (questionId != null && !questions.existsById(questionId)) throw ApiException.badRequest("Soru bulunamadı.");
         Boolean correct = stored.path("correct").isBoolean() ? stored.path("correct").asBoolean() : null;
-        try {
             Long id = jdbc.queryForObject("""
                     INSERT INTO learning_engine_events(user_id, client_event_id, subject, kind, concept_id, item_type, question_id, correct, occurred_at, payload)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb) RETURNING id
                     """, Long.class, userId, event.id(), subject, event.kind(), event.conceptId(), event.itemType(), questionId, correct,
                     Timestamp.from(event.at()), write(stored));
-            stored.put("seq", id);
-            return stored;
-        } catch (DuplicateKeyException race) {
-            JsonNode again = existing(userId, event.id());
-            if (again == null) throw race;
-            return again;
+            return withSeq(write(stored), id);
+    }
+
+    // AttemptService uses the same row lock. Acquire it before reading any practice/event state.
+    private void lockUser(long userId) {
+        jdbc.queryForObject("SELECT id FROM users WHERE id = ? FOR UPDATE", Long.class, userId);
+    }
+
+    private ObjectNode requestIdentity(JsonNode node) {
+        ObjectNode value = ((ObjectNode) node).deepCopy();
+        SERVER_FIELDS.forEach(value::remove);
+        if ("bank".equals(value.path("itemType").asText())) {
+            value.remove(List.of("correct", "code"));
+            value.put("chosen", value.path("chosen").asText().trim().toUpperCase(java.util.Locale.ROOT));
         }
+        return value;
+    }
+
+    private void requireSame(JsonNode existing, Event event) {
+        if (!requestIdentity(existing).equals((left, right) -> left.isNumber() && right.isNumber()
+                ? left.decimalValue().compareTo(right.decimalValue()) : (left.equals(right) ? 0 : 1), requestIdentity(event.payload())))
+            throw ApiException.conflict("Olay kimliği başka bir işlemde kullanılmış. Bekleyen özgün kayıt korunuyor.");
     }
 
     private JsonNode existing(long userId, UUID id) {

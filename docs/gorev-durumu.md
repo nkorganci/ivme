@@ -4,6 +4,20 @@ Bu dosya önemli işlerin **tek güncel durum tablosudur**. Ayrıntılı gereksi
 
 Başlangıç kapsamı bu inceleme ve `TAS-01–12` önerileridir. Önceki bütün uygulama geçmişi buraya aktarılmadı; eski açık işler plan dosyalarında kalır. Eski bir işe gerçekten dönüldüğünde mevcut görev kimliğiyle satır eklenir; geçmişi baştan tarayıp yeniden üretme. Satır bulunmaması, işin daha önce yapılmadığının kanıtı değildir: önce ilgili plan/devir/çıktı kontrol edilir.
 
+## Referans ve ileriye dönük kapsam
+
+**Referans günü: 2026-10-31 (America/Chicago).** Kaynak gerçek, bu gün itibarıyla
+DB'ye kaydedilmiş verilerdir; eski DB kayıtları, hesaplar, diğer çalışmalar ve
+logları korunur. Geçmişte DB'ye ulaşmamış olaylar tarayıcı kuyruğu/loglardan yeniden
+oluşturulmaz veya sonradan gönderilmez. Eski öğrenme bekleyenleri atılır; yeni
+akışta oluşan bekleyen olaylar ise sunucu onayına kadar korunur ve aynı kimlikle
+yeniden denenir. Bu karar kayıt kaybı yaşayan yeni olayları silme izni değildir.
+
+TAS-01–12 bu sınırla uygulanır. Eski DB geçmişini silmek, filtreleyip gizlemek,
+yeniden puanlamak, eksik eski kayıtları tamamlamak veya geçmiş logları yeniden
+oynatmak kapsam dışıdır. Kaynak PDF, soru bankası, katalog ve içerik kanıtları bu
+karardaki “kaydedilmemiş öğrenci olayı” değildir; ilgili içerik işinde kullanılabilir.
+
 ## Güncelleme kuralı
 
 1. Başlamadan ilgili satırı, bağlı gereksinimi ve mevcut kanıtı oku. `TAMAMLANDI` ve girdiler aynıysa işi tekrar yapma.
@@ -26,18 +40,18 @@ Durumlar: `ONERI`, `BEKLIYOR`, `SURUYOR`, `KISMI`, `DOGRULAMA_BEKLIYOR`, `ENGELL
 | BELGE-01 | İnceleme ve yaklaşım — **TAMAMLANDI** | Kullanıcının 22 maddesi; kod/belge incelemesi, öncelik ve kabul ölçütleri | [İnceleme](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md); commit `13286d5`; `ivme.py plan` ve `ivme.py kontrol` geçti | İncelemeyi baştan yapma; uygulama istenirse yalnız ilgili görev/girdiyi tazele |
 | BELGE-02 | Göreve göre model seçimi — **TAMAMLANDI** | TAS-01–12 için model, düşünme düzeyi, alternatif ve inceleme/yükseltme koşulları | [Model tablosu](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#193-her-görev-için-uygulanabilir-model-ataması); commit `56b2cc0`; plan/kural kontrolleri geçti | Model bilgisi değişirse ilgili resmî kaynağı kontrol et; proje benchmark'ı henüz yapılmadı |
 | BELGE-03 | Kalıcı görev güncelleme kuralı — **TAMAMLANDI** | Ortak agent kuralı, tek durum tablosu, plan/devir bağlantıları | [AGENTS.md](../AGENTS.md), [devir tarifi](islemler/devir.md), bu dosya; `python scripts/ivme.py plan`, `python scripts/ivme.py kontrol` ve `git diff --check` geçti; kayıt bu belge değişikliğiyle birlikte sürümlenir | Her önemli görevde bu kuralı uygula; arka plan takip servisi kurulmadı |
-| TAS-01 | Kayıt güvenilirliği — **ONERI** | Bulgular ve kabul senaryoları hazır; uygulama başlamadı | [§4](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#4-tas-01-öğrenci-kayıtlarında-güvenilir-kalıcılık) | Uygulama talimatıyla P0 kayıt paketi |
-| TAS-02 | Sağlık ve izleme — **ONERI** | Katmanlar ve ölçümler önerildi; kurulmadı | [§13](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#13-tas-02-pgadmin-yerine-doğru-sağlık-ve-kayıt-denetimi) | Uygulama talimatıyla TAS-01'e eşlik eden sağlık/uyarı kapsamı |
-| TAS-03 | Ortak katalog ve kapsam — **ONERI** | Kimlik/ad/sınav ayrımı tasarlandı; kod değişmedi | [§5](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#5-tas-03-tek-dersünitekonu-referansı-ve-sınav-kapsamı) | Yetkilendirilince eşleme/etki analizi |
-| TAS-04 | Ortak cevap ve sayım — **ONERI** | Sayım sözleşmesi önerildi; entegrasyon yapılmadı | [§6](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#6-tas-04-her-yerdeki-çözümü-konu-takibine-bağlama) | TAS-01/03 sonrası uygulama |
-| TAS-05 | Ortak PRATIK seti — **ONERI** | Doğru adet ve tekrar tanılama planı hazır; düzeltme yapılmadı | [§7](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#7-tas-05-tek-çözüm-ekranı-yeni-sekme-ve-gerçek-soru-seti) | TAS-03/04 sonrası uygulama |
-| TAS-06 | Kişisel zorluk/tekrar — **ONERI** | Mevcut oy altyapısına eklenecek kapsam belirlendi | [§8](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#8-tas-06-öğrenciye-özel-zorluk-ve-tekrar-tercihleri) | TAS-03/05 sonrası uygulama |
-| TAS-07 | PDF kanıt hattı — **ONERI** | Aşama hash'i, şekil/kanıt paketi ve pilot yöntemi hazır | [§9](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#9-tas-07-binlerce-pdf-için-tekrar-etmeyen-kaynak-işleme-hattı) | Mevcut çıktıları kullan; yeni çıkarım henüz yetkilendirilmedi |
-| TAS-08 | Öğretim pilotunun ek kabul kapsamı — **ONERI** | Önceki pilot mevcut; bu incelemenin yeni uçtan uca kabul kapsamı uygulanmadı | [§10](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#10-tas-08-kaliteli-pilot-ana-kaynak-ve-açıklamalı-çözümler) | Mevcut pilotu baştan üretme; TAS-05/07 sonrası eksikleri tamamla |
-| TAS-09 | İçerik otomasyonu — **ONERI** | Görev manifesti ve aşamalar önerildi; yeni agent/CLI kurulmadı | [§11](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#11-tas-09-ve-tas-12-tekrarlanan-işleri-agent-iş-akışına-dönüştürme) | TAS-08 sonrası otomasyon pilotu |
-| TAS-10 | Yeni kayıt bildirimi — **ONERI** | Kalıcı bildirim/retry yaklaşımı hazır; e-posta gönderimi eklenmedi | [§15](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#15-tas-10-yeni-kayıtta-yöneticiye-bildirim) | Yetkilendirilince sağlayıcı/alıcı ve uygulama |
-| TAS-11 | Video/transkript/ipucu — **ONERI** | Kaynak/ASR/kare yöntemi hazır; video işlenmedi | [§12](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#12-tas-11-youtubedan-zamanlı-metin-soru-karesi-ve-ipucu) | TAS-07 sonrası yetkilendirilmiş küçük pilot |
-| TAS-12 | Test ve devir disiplini — **KISMI** | Belge/görev güncelleme kuralı eklendi; mevcut test altyapısı korunuyor | BELGE-03; [test yaklaşımı](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#16-test-stratejisi-var-olanı-tamamla) | Yeni uygulama testleri/izleme henüz yapılmadı; ilgili görev yetkilendirilince ekle |
+| TAS-01 | Kayıt güvenilirliği — **TAMAMLANDI** | 12.05 kapandı: sunucu onayı, kayıpsız yeni kuyruk, idempotency, hesap/sekme izolasyonu; mevcut DB korunur, eski kaydedilmemiş kuyruk gönderilmez | [Kayıt sözleşmesi ve testler](mimari/ogrenme-kayit-guvenilirligi.md): 9 Node, 12 backend, masaüstü/mobil 10 kayıt kabulü ve tam ders akışı; 95 öğrenme/402 pratik kaydının hash’i değişmedi; sunulan sürüm kaynakla eşleşti | Bu kapsamda açık iş yok; TAS-02 ayrı uygulama kapsamıdır |
+| TAS-02 | Sağlık ve izleme — **ONERI** | Katmanlar ve ölçümler önerildi; kurulmadı | [§13](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#13-tas-02-pgadmin-yerine-doğru-sağlık-ve-kayıt-denetimi) | Yeni işlemlerde sağlık/uyarı; eski log/başarı kayıtlarını tamamlama yok |
+| TAS-03 | Ortak katalog ve kapsam — **ONERI** | Kimlik/ad/sınav ayrımı tasarlandı; kod değişmedi | [§5](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#5-tas-03-tek-dersünitekonu-referansı-ve-sınav-kapsamı) | Mevcut katalogdan yeni akışın bağları; eski öğrenci kayıtlarını dönüştürme yok |
+| TAS-04 | Ortak cevap ve sayım — **ONERI** | Sayım sözleşmesi önerildi; entegrasyon yapılmadı | [§6](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#6-tas-04-her-yerdeki-çözümü-konu-takibine-bağlama) | Yeni cevap/sayım entegrasyonu; mevcut DB geçmişi korunur, kayıp eski cevap aranmaz |
+| TAS-05 | Ortak PRATIK seti — **ONERI** | Doğru adet ve tekrar tanılama planı hazır; düzeltme yapılmadı | [§7](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#7-tas-05-tek-çözüm-ekranı-yeni-sekme-ve-gerçek-soru-seti) | Yeni PRATIK setleri; DB dışındaki eski setleri yeniden kurma yok |
+| TAS-06 | Kişisel zorluk/tekrar — **ONERI** | Mevcut oy altyapısına eklenecek kapsam belirlendi | [§8](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#8-tas-06-öğrenciye-özel-zorluk-ve-tekrar-tercihleri) | Yeni tercih/değerlendirmeler; mevcut DB kayıtları korunur |
+| TAS-07 | PDF kanıt hattı — **ONERI** | Aşama hash'i, şekil/kanıt paketi ve pilot yöntemi hazır | [§9](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#9-tas-07-binlerce-pdf-için-tekrar-etmeyen-kaynak-işleme-hattı) | Yeni kaynak işlemleri; öğrenci geçmişi için geriye dönük kayıt üretimi yok |
+| TAS-08 | Öğretim pilotunun ek kabul kapsamı — **ONERI** | Önceki pilot mevcut; bu incelemenin yeni uçtan uca kabul kapsamı uygulanmadı | [§10](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#10-tas-08-kaliteli-pilot-ana-kaynak-ve-açıklamalı-çözümler) | Mevcut içerik pilotunda yeni kabul akışı; eski eksik öğrenci olayını tamamlama yok |
+| TAS-09 | İçerik otomasyonu — **ONERI** | Görev manifesti ve aşamalar önerildi; yeni agent/CLI kurulmadı | [§11](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#11-tas-09-ve-tas-12-tekrarlanan-işleri-agent-iş-akışına-dönüştürme) | Yeni iş akışları; geçmiş başarısız işleri/logları kendiliğinden yeniden oynatma yok |
+| TAS-10 | Yeni kayıt bildirimi — **ONERI** | Kalıcı bildirim/retry yaklaşımı hazır; e-posta gönderimi eklenmedi | [§15](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#15-tas-10-yeni-kayıtta-yöneticiye-bildirim) | Yeni hesaplardan itibaren bildirim; eski kayıtlara geriye dönük gönderim yok |
+| TAS-11 | Video/transkript/ipucu — **ONERI** | Kaynak/ASR/kare yöntemi hazır; video işlenmedi | [§12](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#12-tas-11-youtubedan-zamanlı-metin-soru-karesi-ve-ipucu) | Yeni video/ipucu hattı; eski öğrenci etkileşimlerini tahminle kaydetme yok |
+| TAS-12 | Test ve devir disiplini — **KISMI** | Belge/görev kuralı ve TAS-01 kayıt/kesinti/yarış/hesap regresyonları eklendi; mevcut test altyapısı korunuyor | BELGE-03 ve TAS-01 kanıtı; [test yaklaşımı](tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#16-test-stratejisi-var-olanı-tamamla) | Diğer TAS görevlerinin kendi test/izleme kabulü; TAS-01 testlerini sebepsiz tekrarlama |
 
 ## Kanıtı güncel tutma
 

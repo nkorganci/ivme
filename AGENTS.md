@@ -13,6 +13,11 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 ## Veri ve ürün sınırları
 
 - Kalıcı DB `ivme` içindeki öğrenci kayıtlarını ve içerik karar geçmişini koru. Testleri yalnız geçici `ivme_test` üzerinde `python scripts/ivme.py test` ile çalıştır. Özgün `../Kaynaklar/` arşivi yalnız okunur.
+- TAS-01–12 için referans günü **2026-10-31**: mevcut DB'de kaydedilmiş bütün veriler
+  korunur; geçmişte DB'ye ulaşmamış olay/kuyruk/loglardan kayıt tamamlama veya
+  yeniden oynatma yapılmaz. Eski öğrenme tarayıcı kuyruğu atılır; bu geçişten sonra
+  oluşan yeni olaylar onaylanana kadar korunur ve aynı kimlikle yeniden denenir.
+  Hesaplar, diğer çalışmalar, içerikler ve DB geçmişi silinmez.
 - Sözlük, kaynak kimliği, kanıt ve öğretmen onayı için [ortak etiket sözleşmesini](docs/sozlesmeler/ortak-etiketler.md) ve ilgili [şemayı](docs/semalar/learning-resource-v2.schema.json) kullan. Üretilmiş JSON'u elle düzenleme; kanıtı olmayan içeriğe öğretmen onayı yazma.
 - Ön yüzde tabloları `frontend/src/components/DataGrid.jsx` üzerinden AG Grid Community ile çiz; başka tablo bileşeni veya düz `<table>` ekleme. Ortak renkler `frontend/src/theme.css` değişkenlerindedir. Tablo başlığı/hücresi ortalı ve grid alanı dolu olmalı.
 

@@ -47,9 +47,10 @@ class LearnFlowTest extends TestBase {
         send(ayse, put("/api/konu-ogrenme/profile"), "{\"subject\":\"fizik\",\"settings\":{}}").andExpect(status().isBadRequest());
 
         UUID open = UUID.randomUUID();
-        String body = "{\"subject\":\"matematik\",\"events\":[" + lesson(open, "open") + "," + lesson(UUID.randomUUID(), "section") + "]}";
+        String openEvent = lesson(open, "open");
+        String body = "{\"subject\":\"matematik\",\"events\":[" + openEvent + "," + lesson(UUID.randomUUID(), "section") + "]}";
         send(ayse, post("/api/konu-ogrenme/events"), body).andExpect(status().isOk()).andExpect(jsonPath("$.events.length()").value(2));
-        send(ayse, post("/api/konu-ogrenme/events"), "{\"events\":[" + lesson(open, "open") + "]}").andExpect(status().isOk());
+        send(ayse, post("/api/konu-ogrenme/events"), "{\"events\":[" + openEvent + "]}").andExpect(status().isOk());
         JsonNode state = read(send(ayse, get("/api/konu-ogrenme"), null));
         assertThat(state.get("events")).hasSize(2);
         assertThat(state.get("events").get(0).get("seq").asLong()).isPositive();
@@ -80,7 +81,8 @@ class LearnFlowTest extends TestBase {
         MockHttpSession mehmet = login("mehmet", "Sifre1234");
 
         UUID first = UUID.randomUUID();
-        JsonNode wrong = read(send(ayse, post("/api/konu-ogrenme/bank-answer"), bank(first, q.getId(), "a")).andExpect(status().isOk()));
+        String firstBody = bank(first, q.getId(), "a");
+        JsonNode wrong = read(send(ayse, post("/api/konu-ogrenme/bank-answer"), firstBody).andExpect(status().isOk()));
         assertThat(wrong.get("correct").asBoolean()).isFalse();
         assertThat(wrong.get("correctAnswer").asText()).isEqualTo("C");
         assertThat(wrong.get("hasSolution").asBoolean()).isTrue();
@@ -92,7 +94,7 @@ class LearnFlowTest extends TestBase {
         send(mehmet, get("/api/questions/" + q.getId() + "/solution-image"), null).andExpect(status().isNotFound());
         Integer practiceRows = jdbc.queryForObject("SELECT count(*) FROM question_attempts WHERE question_id = ?", Integer.class, q.getId());
 
-        send(ayse, post("/api/konu-ogrenme/bank-answer"), bank(first, q.getId(), "a")).andExpect(jsonPath("$.correct").value(false));
+        send(ayse, post("/api/konu-ogrenme/bank-answer"), firstBody).andExpect(jsonPath("$.correct").value(false));
         assertThat(jdbc.queryForObject("SELECT count(*) FROM question_attempts WHERE question_id = ?", Integer.class, q.getId())).isEqualTo(practiceRows);
         assertThat(jdbc.queryForObject("SELECT count(*) FROM learning_engine_events WHERE question_id = ?", Integer.class, q.getId())).isEqualTo(1);
 

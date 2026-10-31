@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { usePageTitle } from '../../hooks.js';
 import { useLearn } from '../LearnContext.jsx';
@@ -16,13 +16,14 @@ export default function PlacementPage() {
   const { track } = useParams();
   usePageTitle(`${track} seviye testi · Konuyu Öğrenelim`);
   const learn = useLearn();
-  const { index, answerBank, record, settings, updateSettings, state } = learn;
+  const { index, answerBank, settings, updateSettings, state } = learn;
   const [units, setUnits] = useState(null);
   const [answers, setAnswers] = useState({});
   const [startedAt, setStartedAt] = useState(null);
   const [current, setCurrent] = useState(null);
   const [answered, setAnswered] = useState(false);
   const [result, setResult] = useState(null);
+  const finishEvent = useRef(null);
   const setId = useMemo(() => uuid(), []);
 
   useEffect(() => {
@@ -34,9 +35,10 @@ export default function PlacementPage() {
   if (!['TYT', 'AYT'].includes(track)) return <Navigate to={BASE} replace />;
   const head = <div className="page-head"><h1>{track} Matematik seviye testi</h1><span className="muted">isteğe bağlı · en çok {ENGINE.placement.maxMinutes} dk</span></div>;
 
-  const finish = (final) => {
+  const finish = async (final) => {
     const outcome = placementResult(units, final, index, track);
-    record(makeEvent('set', { action: 'done', setId, setType: 'placement', track, level: outcome.level, startUnit: outcome.startUnit, testOut: outcome.testOut }));
+    finishEvent.current ??= makeEvent('set', { action: 'done', setId, setType: 'placement', track, level: outcome.level, startUnit: outcome.startUnit, testOut: outcome.testOut });
+    if (!await learn.confirm(finishEvent.current)) return;
     setResult(outcome);
   };
   const advance = (final) => {
