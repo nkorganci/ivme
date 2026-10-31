@@ -11,6 +11,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py kontrol [--hepsi]     commit öncesi kural denetimleri (pre-commit bunu çağırır)
   python scripts/ivme.py plan                  plan/bağlantı denetimi (plan-check.py)
   python scripts/ivme.py pdf sorular <pdf> ... PDF metin önce soru çıkarımı (scripts/pdf-metin.py)
+  python scripts/ivme.py pdf kanit olustur|toplu|dogrula|goster|ozet|karar|pilot ...   sürümlü PDF kanıt paketi (scripts/pdf_kanit_paketi.py)
   python scripts/ivme.py ollama ...            yerel model (scripts/ollama-sor.py)
   python scripts/ivme.py ogretim dogrula|aktar Akıllı Öğretmen içerikleri (scripts/ogretim-icerigi.py)
 """
@@ -317,6 +318,8 @@ def cmd_plan(args):
 
 
 def cmd_pdf(args):
+    if args[:1] == ["kanit"]:
+        return run([python_for_tools(), "-X", "utf8", "scripts/pdf_kanit_paketi.py", *args[1:]]).returncode
     return run([python_for_tools(), "scripts/pdf-metin.py", *args]).returncode
 
 

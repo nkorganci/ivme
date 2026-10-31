@@ -21,6 +21,8 @@ mürekkep (şekil/tablo/grafik) kalmasıyla belirlenir; açık gri filigran say�
 yalnız bu sorular için PNG üretir. Sonuçlar PDF SHA-256'sıyla
 `veri/pdf-metin-onbellek/` altında önbelleğe alınır. Özgün PDF değiştirilmez.
 
+Sayfa/blok/şekil/denklem düzeyinde sürümlü kanıt paketi için [PDF kanıt paketi](pdf-kanit-hatti.md) (`python scripts/ivme.py pdf kanit ...`).
+
 Metin katmanı olmayan sayfalar için `scripts/pdf-page-ocr.py` (önbellekli Türkçe OCR) ve
 `scripts/pdf-readability-fallback.py` kullanılır.
 
