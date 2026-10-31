@@ -9,6 +9,7 @@ import com.hedefyks.question.QuestionSelectionMode;
 import com.hedefyks.question.QuestionHistorySelection;
 import com.hedefyks.study.StudySessionDtos.CreateRequest;
 import com.hedefyks.study.StudySessionDtos.Session;
+import com.hedefyks.study.StudySessionDtos.Origin;
 import com.hedefyks.study.StudySessionDtos.SessionQuestion;
 import com.hedefyks.study.StudySessionDtos.QuestionStatus;
 import com.hedefyks.study.StudySessionDtos.AnswerResult;
@@ -94,7 +95,8 @@ public class StudySessionService {
                 SELECT id, started_at, selection_mode, filter_bank, filter_exam_type,
                        filter_subject, filter_topic, time_limit_seconds,
                        started_at + time_limit_seconds * interval '1 second' AS deadline_at,
-                       clock_timestamp() AS server_now, ended_at, status FROM study_sessions
+                       clock_timestamp() AS server_now, ended_at, status, origin, learning_kind, learning_concept_id,
+                       learning_scope->>'archetypeId' AS learning_archetype, learning_scope->>'title' AS learning_title FROM study_sessions
                 WHERE id = :sessionId AND user_id = :userId AND mode = 'PRACTICE'
                 """).param("sessionId", sessionId).param("userId", userId)
                 .query((rs, row) -> new Header(rs.getLong("id"), rs.getTimestamp("started_at").toInstant(),
@@ -106,7 +108,9 @@ public class StudySessionService {
                         rs.getTimestamp("deadline_at") == null ? null : rs.getTimestamp("deadline_at").toInstant(),
                         rs.getTimestamp("server_now").toInstant(),
                         rs.getTimestamp("ended_at") == null ? null : rs.getTimestamp("ended_at").toInstant(),
-                        rs.getString("status")))
+                        rs.getString("status"),
+                        "KONU_OGRENME".equals(rs.getString("origin")) ? new Origin(rs.getString("learning_kind"),
+                                rs.getString("learning_concept_id"), rs.getString("learning_archetype"), rs.getString("learning_title")) : null))
                 .optional().orElseThrow(() -> ApiException.notFound("Pratik oturumu bulunamadı."));
         List<SessionQuestion> questions = jdbc.sql("""
                 WITH rounds AS (
@@ -152,7 +156,7 @@ public class StudySessionService {
         }
         return new Session(header.id(), header.startedAt(), header.selectionMode(), header.bank(),
                 header.examType(), header.subject(), header.topic(), questions.size(), header.timeLimitSeconds(),
-                header.deadlineAt(), header.serverNow(), header.endedAt(), header.status(), result, questions);
+                header.deadlineAt(), header.serverNow(), header.endedAt(), header.status(), result, questions, header.origin());
     }
 
     @Transactional
@@ -367,5 +371,5 @@ public class StudySessionService {
     private record Header(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
                           QuestionBank bank, ExamType examType, String subject, String topic,
                           Integer timeLimitSeconds, Instant deadlineAt, Instant serverNow,
-                          Instant endedAt, String status) {}
+                          Instant endedAt, String status, Origin origin) {}
 }

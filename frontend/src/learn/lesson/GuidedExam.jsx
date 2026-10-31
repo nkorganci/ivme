@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import { MathText, Markdown } from '../math.jsx';
-import { BASE } from '../ui.jsx';
+import { SharedSetLink } from '../ui.jsx';
 
 export default function GuidedExam({ question, guide }) {
   const [shown, setShown] = useState(0);
@@ -20,7 +20,7 @@ export default function GuidedExam({ question, guide }) {
       <p className="lr-worked-answer"><strong>Sonuç:</strong> {guide.result}</p>
       <aside className="lm-tip"><span className="lm-eyebrow">Şimdi kısa yol · hangi koşulda?</span><Markdown text={guide.tip} /></aside>
       <details className="lm-terms"><summary>Sonucumu nasıl kontrol ederim?</summary><Markdown text={guide.check} /></details>
-      <Link className="btn btn-secondary" to={`${BASE}/calis?tur=practice&konu=${guide.conceptId}&tip=${guide.archetype}`}>Benzer sorularda kendin dene →</Link>
+      <SharedSetLink className="btn btn-secondary" type="practice" conceptId={guide.conceptId} archetype={guide.archetype}>Benzer sorularda kendin dene →</SharedSetLink>
     </div>}
   </section>;
 }

@@ -17,6 +17,7 @@ import PageInk from '../components/PageInk.jsx';
 import { useExamTrack } from '../examTrack.jsx';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic', 'page'];
+const LEARN_PATH = '/konuyu-ogrenelim';
 
 export default function QuestionDetail() {
   const { bankName } = useExamTrack();
@@ -85,6 +86,8 @@ function QuestionView({ q, filters, session, reload }) {
   const [hintBusy, setHintBusy] = useState(false);
   const [hintError, setHintError] = useState('');
   const answering = useRef(false);
+  const [search] = useSearchParams();
+  const resumeNotice = search.get('devam') === '1' && sessionPosition >= 0;
   const practice = usePractice(q.id, sessionId);
   const state = practice.state;
   useEffect(() => {
@@ -208,6 +211,7 @@ function QuestionView({ q, filters, session, reload }) {
             </Link>
             <strong className="code">{q.code}</strong>
             {sessionId && <strong>{sessionPosition + 1} / {session.questions.length}</strong>}
+            {session?.origin && <Link to={`${LEARN_PATH}/konu/${session.origin.conceptId}`} title={session.origin.title}>Konuya dön</Link>}
             <span className="badge badge-primary">{examLabel(q.examType)}</span>
             <span className="badge badge-muted">{q.subject}</span>
             {q.topic && <span className="muted qtopic" title={q.topic}>{q.topic}</span>}
@@ -238,6 +242,7 @@ function QuestionView({ q, filters, session, reload }) {
                 )}
               </Strip>
             )}
+            {session?.origin && resumeNotice && <Strip tone="info">{session.origin.title}: yarım kalan set sürüyor ({session.questions.filter((item) => item.status === 'COMPLETED').length}/{session.questions.length} soru tamamlandı).</Strip>}
             {info && !status && !error && !practice.error && <Strip tone="info">{info}</Strip>}
             <div className="qbar">
               <button type="button" className="btn btn-secondary" disabled={moving || practice.busy || (sessionId && sessionPosition === 0)} onClick={() => go('prev')} title="Önceki soru (←)">‹ Önceki</button>

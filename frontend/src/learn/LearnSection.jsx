@@ -17,6 +17,7 @@ const MistakesPage = lazy(() => import('./pages/MistakesPage.jsx'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage.jsx'));
 const SettingsPage = lazy(() => import('./pages/SettingsPage.jsx'));
 const PlacementPage = lazy(() => import('./pages/PlacementPage.jsx'));
+const SharedPracticeStart = lazy(() => import('./pages/SharedPracticeStart.jsx'));
 
 export const LEARN_TABS = [
   ['', 'Bugün'],
@@ -56,6 +57,7 @@ function Shell() {
         <Route path="konu/:conceptId" element={<ConceptPage />} />
         <Route path="ders/:conceptId" element={<LessonPage />} />
         <Route path="calis" element={<PracticePage key={location.search} />} />
+        <Route path="pratik" element={<SharedPracticeStart />} />
         <Route path="seviye/:track" element={<PlacementPage />} />
         <Route path="hatalarim" element={<MistakesPage />} />
         <Route path="ilerleme" element={<ProgressPage />} />

@@ -32,7 +32,7 @@ export function LearnProvider({ children }) {
 
 function UserLearnProvider({ children, userId }) {
   const index = useMemo(() => getIndex(), []);
-  const [server, setServer] = useState({ loading: true, error: null, events: [], profile: null });
+  const [server, setServer] = useState({ loading: true, error: null, events: [], profile: null, practiceSets: [] });
   const [queueVersion, setQueueVersion] = useState(0);
   const [clock, setClock] = useState(() => new Date());
   const active = useRef(true);
@@ -64,7 +64,7 @@ function UserLearnProvider({ children, userId }) {
       const merged = new Map((data.events ?? []).map((event) => [event.id, event]));
       savedEvents.current.forEach((event, id) => merged.set(id, event));
       merged.forEach((event, id) => savedEvents.current.set(id, event));
-      setServer({ loading: false, error: null, events: [...merged.values()], profile: data.profile ?? null });
+      setServer({ loading: false, error: null, events: [...merged.values()], profile: data.profile ?? null, practiceSets: data.practiceSets ?? [] });
     } catch (error) {
       if (active.current) setServer((current) => ({ ...current, loading: false, error }));
     }
@@ -77,12 +77,15 @@ function UserLearnProvider({ children, userId }) {
     const storage = (event) => {
       if (event.key === null || event.key.startsWith(queue.prefix)) { queue.restore(); queue.changed(); retry(); load(); }
     };
+    // Başka sekmede (ortak PRATIK seti) verilen cevaplar bu sekmeye dönünce okunur.
+    const refocus = () => { if (document.visibilityState === 'visible') load(); };
     window.addEventListener('online', retry);
     window.addEventListener('storage', storage);
+    document.addEventListener('visibilitychange', refocus);
     const timer = setInterval(() => { setClock(new Date()); retry(); }, 30000);
     return () => {
       active.current = false; queue.active = false;
-      window.removeEventListener('online', retry); window.removeEventListener('storage', storage); clearInterval(timer);
+      window.removeEventListener('online', retry); window.removeEventListener('storage', storage); document.removeEventListener('visibilitychange', refocus); clearInterval(timer);
     };
   }, [load, queue]);
   useEffect(() => {
@@ -156,9 +159,9 @@ function UserLearnProvider({ children, userId }) {
 
   const value = useMemo(() => ({
     loading: server.loading, error: server.error, reload: load, syncError, pending, flush, userId, confirm,
-    index, summary: bankSummary, settings, profile: server.profile, events, state, today, now: clock,
+    index, summary: bankSummary, settings, profile: server.profile, events, state, today, now: clock, practiceSets: server.practiceSets,
     plan: { ...plan, items: planItems }, nextUp, record, recordNew, answerBank, pendingBank, updateSettings,
-  }), [server.loading, server.error, load, syncError, pending, flush, userId, confirm, queueVersion, index, settings, server.profile, events, state, today, clock, plan, planItems, nextUp, record, recordNew, answerBank, pendingBank, updateSettings]);
+  }), [server.loading, server.error, server.practiceSets, load, syncError, pending, flush, userId, confirm, queueVersion, index, settings, server.profile, events, state, today, clock, plan, planItems, nextUp, record, recordNew, answerBank, pendingBank, updateSettings]);
 
   return <LearnContext.Provider value={value}>{children}</LearnContext.Provider>;
 }

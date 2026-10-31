@@ -5,6 +5,8 @@ import com.hedefyks.user.AppUserDetails;
 import com.hedefyks.common.RecordWriteMetrics;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +25,12 @@ public class LearnController {
     public record BankAnswerBody(String subject, JsonNode event, Long expectedUserId) {}
 
     private final LearnService service;
+    private final LearnPracticeSets practiceSets;
     private final RecordWriteMetrics writeMetrics;
 
-    public LearnController(LearnService service, RecordWriteMetrics writeMetrics) {
+    public LearnController(LearnService service, LearnPracticeSets practiceSets, RecordWriteMetrics writeMetrics) {
         this.service = service;
+        this.practiceSets = practiceSets;
         this.writeMetrics = writeMetrics;
     }
 
@@ -52,6 +56,15 @@ public class LearnController {
     public Map<String, Object> bankAnswer(@AuthenticationPrincipal AppUserDetails me, @RequestBody BankAnswerBody body) {
         requireOwner(me, body.expectedUserId());
         return writeMetrics.measure("learn_bank_answer", () -> service.bankAnswer(me.id(), subject(body.subject()), body.event()));
+    }
+
+    /** TAS-05: konu testi / çıkmış sorular / tip alıştırması için ortak PRATIK oturumu kurar (aynı istek kimliği aynı seti döndürür). */
+    @PostMapping("/practice-sets")
+    public ResponseEntity<Map<String, Object>> practiceSet(@AuthenticationPrincipal AppUserDetails me, @RequestBody LearnPracticeSets.CreateBody body) {
+        requireOwner(me, body == null ? null : body.expectedUserId());
+        var created = writeMetrics.measure("learn_practice_set", () -> practiceSets.create(me.id(), body));
+        return ResponseEntity.status(created.repeated() || created.resumed() ? HttpStatus.OK : HttpStatus.CREATED)
+                .body(Map.of("session", created.session(), "resumed", created.resumed()));
     }
 
     private static void requireOwner(AppUserDetails me, Long expectedUserId) {

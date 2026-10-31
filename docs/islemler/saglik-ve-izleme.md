@@ -7,7 +7,7 @@
 - `GET /actuator/metrics` ve `/actuator/metrics/{ad}`: yalnız ADMIN oturumu. Diğer Actuator uçları kapalıdır.
 - Readiness `SELECT 1` düzeyinde bağlantı kontrolüdür; yazma/commit, disk, katalog doğruluğu veya yedekten geri dönüş garantisi değildir. Liveness DB arızasında yeniden başlatma döngüsü yaratmaz.
 
-`ivme.record.write` timer'ında `operation=learn_profile|learn_events|learn_bank_answer|practice_answer`, `result=success|failure`, `count`, `totalTime` ve p95 süre bulunur. Ölçüm servis çağrısı ve transaction dönüşünü kapsar. Kullanıcı/soru/olay kimliği etiket değildir. Bellek içi metrikler yeniden başlatmada sıfırlanır; uzun süreli tarih için dış metrik toplayıcı gerekir. Genel HTTP 5xx ve süre için Actuator `http.server.requests`, havuz için `hikaricp.*` metrikleri kullanılabilir. `ServiceErrorMetrics` DB'ye yazılamayınca uyarı logu üretir; DB hatası ayrıca `GlobalExceptionHandler` tarafından loglanır ve öğrenciye kayıt başarısızlığı döner.
+`ivme.record.write` timer'ında `operation=learn_profile|learn_events|learn_bank_answer|learn_practice_set|practice_answer`, `result=success|failure`, `count`, `totalTime` ve p95 süre bulunur. Ölçüm servis çağrısı ve transaction dönüşünü kapsar. Kullanıcı/soru/olay kimliği etiket değildir. Bellek içi metrikler yeniden başlatmada sıfırlanır; uzun süreli tarih için dış metrik toplayıcı gerekir. Genel HTTP 5xx ve süre için Actuator `http.server.requests`, havuz için `hikaricp.*` metrikleri kullanılabilir. `ServiceErrorMetrics` DB'ye yazılamayınca uyarı logu üretir; DB hatası ayrıca `GlobalExceptionHandler` tarafından loglanır ve öğrenciye kayıt başarısızlığı döner.
 
 ## Dış uyarı
 

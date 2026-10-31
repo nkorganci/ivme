@@ -169,6 +169,18 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
 
+## 12.09 — TAS-05 ortak PRATIK seti
+
+Durum: `TAMAMLANDI`. Konu testi, çıkmış sorular ve “Bu tipten alıştırma” bağlantıları
+yeni sekmede sunucuda kurulan ortak PRATIK oturumunu (`/soru/{kod}?sessionId=`) açar:
+karalama, çözüm ve Bitir akışı Soru Çöz & Pratik ile aynıdır. Gösterilen sayı kurulan setle
+aynıdır (12 = `min(12, tekil soru)`, çıkmış sorularda gizli 40 sınırı yok, 52/52). Aynı
+görseli farklı kodla taşıyan kitapçık kopyaları (Eşit Ağırlık/Sayısal) tanılandı; sunucu ve
+ders motoru görsel baytıyla tekilleştirir. Ortak ekrandaki cevaplar ders motoruna okunur
+(ikinci kez yazılmaz). Ayrıntı ve kanıt [ortak PRATIK seti](../mimari/ogrenci-ilerlemesi.md#ortak-pratik-seti-tas-05)
+ve [görev tablosunda](../gorev-durumu.md). Eski DB oturumları ve `sessionStorage` setleri
+yeniden kurulmadı.
+
 ## 12.08 — TAS-04 ortak cevap ve konu sayımı
 
 Durum: `TAMAMLANDI`. Ders içi sorular ve kaynaklı not alıştırması sunucu cevap

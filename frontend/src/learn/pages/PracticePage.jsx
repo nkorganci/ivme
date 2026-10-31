@@ -13,7 +13,8 @@ import { pickMastery, pickMixed, pickPast, pickPractice, pickReview, pickSibling
 import { BankQuestion, FlashcardItem, LessonQuestion } from '../items.jsx';
 import { Block } from '../lesson/Blocks.jsx';
 import { MathText, Markdown } from '../math.jsx';
-import { BASE, ProgressBar } from '../ui.jsx';
+import { SHARED_TYPES } from '../engine/sharedSet.js';
+import { BASE, ProgressBar, sharedSetPath } from '../ui.jsx';
 
 const TITLES = {
   mastery: 'Ustalık testi', testout: 'Kısa ustalık testi (geçme)', review: 'Aralıklı tekrar', missed: 'Yanlışlarım geri geldi',
@@ -130,7 +131,20 @@ async function buildItems({ type, conceptId, track, archetype, learn }) {
 
 const serialize = (items) => items.map((item) => (item.type === 'flashcard' ? item : { ...item, question: item.question }));
 
+/**
+ * Konu testi, çıkmış sorular ve tip alıştırması ortak PRATIK oturumudur (TAS-05): eski /calis adresleri başlatma sayfasına
+ * yönlenir. Yerel akış (`yerel=1`) yalnız banka sorusu bulunmayan tipin ders içi alıştırma havuzunu çalıştırır.
+ */
 export default function PracticePage() {
+  const [params] = useSearchParams();
+  const wanted = params.get('tur') ?? 'practice';
+  if (SHARED_TYPES.includes(wanted) && params.get('konu') && !params.get('yerel') && (wanted !== 'practice' || params.get('tip'))) {
+    return <Navigate to={sharedSetPath({ type: wanted, conceptId: params.get('konu'), archetype: params.get('tip') })} replace />;
+  }
+  return <EnginePractice />;
+}
+
+function EnginePractice() {
   const [params] = useSearchParams();
   const type = params.get('tur') ?? 'practice';
   const conceptId = params.get('konu');

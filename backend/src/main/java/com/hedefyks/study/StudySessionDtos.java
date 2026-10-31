@@ -65,9 +65,12 @@ public final class StudySessionDtos {
                                  int questionCount, int solvedCount,
                                  String resumeQuestionCode, String resumeQuestionBank) {}
 
+    /** Oturum Konuyu Öğrenelim'den açıldıysa kaynağı: TOPIC_TEST / PAST_EXAM / ARCHETYPE, ders kavramı ve başlık. */
+    public record Origin(String kind, String conceptId, String archetypeId, String title) {}
+
     public record Session(Long id, Instant startedAt, QuestionSelectionMode selectionMode,
                           QuestionBank bank, ExamType examType, String subject, String topic,
                           int questionCount, Integer timeLimitSeconds, Instant deadlineAt,
                           Instant serverNow, Instant endedAt, String status, Result result,
-                          List<SessionQuestion> questions) {}
+                          List<SessionQuestion> questions, Origin origin) {}
 }

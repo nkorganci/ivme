@@ -20,7 +20,7 @@ const categories = new Set(identities.canonicalUnits.filter((u) => u.subject ===
 const catalog = new Map(identities.canonicalUnits.map((u) => [u.id, u]));
 const bankCodes = new Set();
 if (existsSync(BANK)) {
-  for (const name of readdirSync(BANK).filter((n) => n.endsWith('.json') && n !== '_ozet.json')) {
+  for (const name of readdirSync(BANK).filter((n) => n.endsWith('.json') && !n.startsWith('_'))) {
     for (const q of JSON.parse(readFileSync(join(BANK, name), 'utf8')).questions) bankCodes.add(q.c);
   }
 }

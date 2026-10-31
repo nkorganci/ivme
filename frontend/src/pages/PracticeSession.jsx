@@ -32,8 +32,11 @@ export default function PracticeSession() {
   return (
     <>
       <div className="page-head">
-        <div><h1>{data.status === 'COMPLETED' ? 'Pratik sonucu' : 'Pratik oturumun'}</h1><p className="muted">{data.questionCount} soru · {MODE[data.selectionMode] || 'Karışık'} · {data.timeLimitSeconds ? `${data.timeLimitSeconds / 60} dakika` : 'Süresiz'} · {formatDate(data.startedAt)}</p></div>
-        <Link className="btn btn-secondary" to="/calisma/yeni">Yeni pratik</Link>
+        <div><h1>{data.status === 'COMPLETED' ? 'Pratik sonucu' : 'Pratik oturumun'}{data.origin ? `: ${data.origin.title}` : ''}</h1><p className="muted">{data.questionCount} soru · {data.origin ? 'Konuyu Öğrenelim' : MODE[data.selectionMode] || 'Karışık'} · {data.timeLimitSeconds ? `${data.timeLimitSeconds / 60} dakika` : 'Süresiz'} · {formatDate(data.startedAt)}</p></div>
+        <div>
+          {data.origin && <Link className="btn btn-primary" to={`/konuyu-ogrenelim/konu/${data.origin.conceptId}`}>Konuya dön</Link>}{' '}
+          <Link className="btn btn-secondary" to="/calisma/yeni">Yeni pratik</Link>
+        </div>
       </div>
       {data.status === 'IN_PROGRESS' && <p className="muted">Soru sırası kaydedildi. Bir soruyu çözdükten sonra Sonraki düğmesiyle devam edebilirsin.</p>}
       <p><Link to="/calisma/yarim-kalan">Yarım kalan tüm pratik ve denemeleri göster</Link></p>

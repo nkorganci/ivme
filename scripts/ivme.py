@@ -280,6 +280,10 @@ def cmd_kontrol(args):
             "frontend/public/kaynakli-notlar.json", "backend/src/main/resources/learn/answer-keys.json") for n in files):
         if run(["node", "scripts/cevap-anahtari.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("cevap anahtarı güncel değil: node scripts/cevap-anahtari.mjs çalıştır ve dosyayı ekle")
+    # Banka değişince aynı görselli kitapçık kopyaları yeniden hesaplanmalı (TAS-05 ikiz görsel haritası).
+    bank_changed = any(n.startswith("frontend/src/learn/bank/") and not n.rsplit("/", 1)[-1].startswith("_") for n in files)
+    if bank_changed and "frontend/src/learn/bank/_gorsel.json" not in files:
+        problems.append("banka dosyası değişti: node scripts/ortak-set-tani.mjs --yaz çalıştır ve _gorsel.json dosyasını ekle")
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
     if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
         print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")

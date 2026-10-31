@@ -217,7 +217,7 @@ export default function Layout() {
               </button>
               {learnOpen && !rail && <div id="learn-subnav" className="side-subnav">
                 {LEARN_ITEMS.map(([path, label]) => <NavLink key={path} to={path} end={path === LEARN_PATH}
-                  className={({ isActive: selected }) => selected || (path === LEARN_PATH && /^\/konuyu-ogrenelim\/(konu|ders|calis|seviye)/.test(pathname)) ? 'active' : ''}>{label}</NavLink>)}
+                  className={({ isActive: selected }) => selected || (path === LEARN_PATH && /^\/konuyu-ogrenelim\/(konu|ders|calis|pratik|seviye)/.test(pathname)) ? 'active' : ''}>{label}</NavLink>)}
               </div>}
             </div>;
             if (to === TRACKING_PATH) return <div className="side-nav-group" key={to}>

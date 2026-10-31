@@ -10,9 +10,42 @@ export function expandBank(conceptId, raw = []) {
   }));
 }
 
+/**
+ * Aynı görseli taşıyan kodlardan (kitapçık kopyaları) birini tutar: çıkmış olan, sonra kod sırasındaki ilk.
+ * Tutulan soru diğerlerini `twins` olarak taşır; ikizin görülmesi tutulan soruyu da görülmüş sayar.
+ * groups: kod → görsel grubu (scripts/ortak-set-tani.mjs --yaz → bank/_gorsel.json).
+ */
+export function collapseTwins(bank, groups = {}) {
+  const byGroup = new Map();
+  for (const q of bank) {
+    const group = groups[q.code];
+    if (!group) continue;
+    if (!byGroup.has(group)) byGroup.set(group, []);
+    byGroup.get(group).push(q);
+  }
+  const dropped = new Set();
+  for (const list of byGroup.values()) {
+    if (list.length < 2) continue;
+    list.sort((a, b) => Number(b.cikmis) - Number(a.cikmis) || a.code.localeCompare(b.code));
+    list[0].twins = list.slice(1).map((q) => q.code);
+    for (const q of list.slice(1)) dropped.add(q.code);
+  }
+  return bank.filter((q) => !dropped.has(q.code));
+}
+
+/** Sorunun ya da görsel ikizlerinin en son görüldüğü an (ISO); hiç görülmediyse null. */
+export function lastSeen(question, state) {
+  let last = null;
+  for (const code of [question.code, ...(question.twins ?? [])]) {
+    const at = state.seen[code];
+    if (at && (!last || at > last)) last = at;
+  }
+  return last;
+}
+
 /** 0: hiç görülmedi · 1: 30 günden önce görüldü · 2: yakında görüldü (yanlış kuyruğu dışında tekrar edilmez). */
 export function tierOf(question, state) {
-  const last = state.seen[question.code];
+  const last = lastSeen(question, state);
   if (!last) return 0;
   return ageDays(last, state.now) > ENGINE.repeatGuardDays ? 1 : 2;
 }
@@ -129,7 +162,7 @@ export function pickPractice({ bank, state, archetype, count = 5, seed }) {
 export function pickSibling({ bank, archetype, state, seed, exclude = [] }) {
   const random = rng(seed);
   const used = new Set([...queued(state), ...exclude]);
-  const pool = bank.filter((q) => q.archetype && q.archetype === archetype && !used.has(q.code) && !state.seen[q.code]);
+  const pool = bank.filter((q) => q.archetype && q.archetype === archetype && !used.has(q.code) && !lastSeen(q, state));
   return shuffle(pool, random)[0] ?? null;
 }
 
@@ -224,10 +257,21 @@ export function pickTest({ meta, bank, state, seed, size = 12, practicePool = []
   return shuffle(items, random).sort((a, b) => difficulty(a) - difficulty(b));
 }
 
-/** Kavrama eşlenen ÖSYM çıkmış soruları, yıl sırasıyla (en çok 40). */
-export function pickPast({ bank, limit = 40 }) {
+/** Kavrama eşlenen ÖSYM çıkmış soruları, yıl sırasıyla. Gizli sınır yoktur: gösterilen sayı = açılan set (TAS-05). */
+export function pickPast({ bank, limit = Infinity }) {
   return bank.filter((q) => q.cikmis)
     .sort((a, b) => (a.year ?? 0) - (b.year ?? 0) || a.code.localeCompare(b.code))
     .slice(0, limit)
     .map((q) => ({ type: 'bank', question: q, archetype: q.archetype }));
+}
+
+/**
+ * Seçilen soruların sayısı `size`ın altında kaldıysa banka geri kalanından tamamlar (önce görülmemiş, sonra eski, en son yakın).
+ * Tip kotası bankayı tüketemese de bankada soru varsa set tam boyutta kurulur; aynı soru ikinci kez konmaz.
+ */
+export function topUp({ chosen, bank, state, seed, size }) {
+  if (chosen.length >= size) return chosen;
+  const used = new Set(chosen.map((item) => item.question.code));
+  const more = takeFrom(ranked(bank.filter((q) => !used.has(q.code)), state, rng(`${seed}:topup`)), size - chosen.length, used, true);
+  return [...chosen, ...more.map((q) => ({ type: 'bank', question: q, archetype: q.archetype }))];
 }

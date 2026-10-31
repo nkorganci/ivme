@@ -55,8 +55,11 @@ public class LearnService {
     private final QuestionRepository questions;
     private final AttemptService attempts;
     private final AnswerKeys keys;
+    private final LearnPracticeSets practiceSets;
 
-    public LearnService(JdbcTemplate jdbc, ObjectMapper mapper, QuestionRepository questions, AttemptService attempts, AnswerKeys keys) {
+    public LearnService(JdbcTemplate jdbc, ObjectMapper mapper, QuestionRepository questions, AttemptService attempts, AnswerKeys keys,
+                        LearnPracticeSets practiceSets) {
+        this.practiceSets = practiceSets;
         this.jdbc = jdbc;
         this.mapper = mapper;
         this.questions = questions;
@@ -69,8 +72,12 @@ public class LearnService {
         requireSubject(subject);
         Map<String, Object> out = new LinkedHashMap<>();
         out.put("profile", profile(userId, subject));
-        out.put("events", jdbc.query("SELECT id, payload::text FROM learning_engine_events WHERE user_id = ? AND subject = ? ORDER BY id",
+        List<JsonNode> events = new ArrayList<>(jdbc.query("SELECT id, payload::text FROM learning_engine_events WHERE user_id = ? AND subject = ? ORDER BY id",
                 (rs, row) -> withSeq(rs.getString(2), rs.getLong(1)), userId, subject));
+        // TAS-05: ortak PRATIK ekranındaki cevaplar motora türetilmiş olay olarak okunur; ikinci kez yazılmaz.
+        events.addAll(practiceSets.engineEvents(userId));
+        out.put("events", events);
+        out.put("practiceSets", practiceSets.summaries(userId));
         out.put("serverNow", Instant.now().toString());
         return out;
     }

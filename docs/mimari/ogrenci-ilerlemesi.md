@@ -62,6 +62,52 @@ Yeni paralel soru geçmişi yoktur; `progress` mevcut kayıtları tek sözleşme
 Kanıt: `TopicAnswerContractTest` (geçici DB), `learn.AnswerKeysTest` ve
 `node --test testler/cevap-anahtari.test.mjs`.
 
+## Ortak PRATIK seti (TAS-05)
+
+Konuyu Öğrenelim'deki **Konu testi, Çıkmış sorular ve “Bu tipten alıştırma”** bağlantıları
+yeni sekmede `/konuyu-ogrenelim/pratik?tur=test|cikmis|practice&konu=…[&tip=…]` adresini açar.
+GET yalnız sayfayı açar; oturum sabit bir istek kimliğiyle `POST /api/konu-ogrenme/practice-sets`
+çağrısıyla kurulur ve sayfa ortak çözüm ekranına (`/soru/{kod}?sessionId=…`) yönlenir.
+Karalama, cevap, çözüm, ipucu ve Bitir akışı Soru Çöz & Pratik ile aynıdır.
+Eski `/calis?tur=test|cikmis|practice` adresleri buraya yönlenir; banka sorusu olmayan
+bir tipte ders içi alıştırma havuzu (`yerel=1`) çalışır. Mastery, tekrar, yanlışlar, karma set
+ve yeniden anlatım yerel motorda kalır (bağımsız ustalık ölçümü ayrı).
+
+- **Kayıt:** `study_sessions` (`mode=PRACTICE`, `origin=KONU_OGRENME`, `learning_kind`
+  `TOPIC_TEST|PAST_EXAM|ARCHETYPE`, kavram, başlık, katalog sürümü) ve `session_questions`
+  (sıra, soru tipi, zorluk, görünen görselin SHA-256 özeti). Yeni tablo yoktur; yarım kalanlar,
+  geçmiş, istatistik, hesap dışa aktarımı ve silme mevcut pratik akışıyla çalışır.
+- **Sunucu doğrulaması:** soru etkin, TYT/AYT Matematik, katalogda öğrenciye açık ve dersin
+  `kategori:` kimliklerinden birine bağlı olmalı; yinelenen kimlik 400, uygun olmayan soru 409.
+  Çıkmış setine yalnız `CIKMIS` + yıl + `exam_archive_positions` konumu olan soru girer.
+  **Görünen görseli (kırpılmış/onarılmış varyant dâhil) aynı bayt olan iki soru bir sette
+  bulunamaz** (409). En çok 120 soru.
+- **İdempotency ve devam:** aynı kullanıcı + istek kimliği aynı seti döndürür (200). `resume`
+  (varsayılan) aynı kavram/tür/tip için açık ve çözülmemiş soru içeren seti döndürür; bütün
+  soruları çözülmüş açık set tamamlanır ve yenisi kurulur. Kullanıcı satırı kilidi eşzamanlı
+  iki sekmeyi sıralar.
+- **Adetler:** “Konu testi (12 soru)” = `min(12, tekil soru)`; tip payı yetmezse bankanın
+  kalanından tamamlanır, havuz küçükse gerçek sayı yazılır ve aynı soruyla doldurulmaz.
+  “Çıkmış sorular (52)” bankadaki bütün ÖSYM soruları (gizli 40 sınırı kaldırıldı).
+  Sayılar yüklenen (ikizleri ayıklanmış) bankadan hesaplanır.
+- **Aynı soru, farklı kod (tanılama):** Eşit Ağırlık ve Sayısal deneme kitapçıkları aynı
+  görseli iki kodla taşır (ör. `3d-ayt-esit-agirlik-02-05` = `3d-ayt-sayisal-01-05`;
+  `temel-kavramlar` 413 kayıttan 53'ü, toplam 676 kod). ÖSYM çıkmış sorularında ikiz yoktur.
+  `scripts/ortak-set-tani.mjs` bunu raporlar ve `frontend/src/learn/bank/_gorsel.json`
+  haritasını üretir; `loadBank` ikizlerden birini tutar (çıkmış > kod sırası), ikizin
+  görülmesi tutulan soruyu da görülmüş sayar. Bank üretici bu dosyayı silmez; banka
+  değişince `node scripts/ortak-set-tani.mjs --yaz`, kontrol için `--kontrol`.
+- **Motor köprüsü:** ortak ekrandaki her (soru, tur) için ilk cevap, `GET /api/konu-ogrenme`
+  yanıtında türetilmiş bir `attempt` olayı olarak (`shared:true`, `setId=ps-{oturum}`, kimlik cevap
+  satırından türetilir) ve `practiceSets` özetiyle gelir. `learning_engine_events`'e ikinci kez
+  yazılmaz; iptal edilen set katılmaz. Motor bunları görülmüş soru, soru tipi istatistiği ve
+  yanlış kuyruğu için kullanır; Konu takibi yine yalnız `question_attempts` üzerinden sayar.
+- **Sınırlar:** referans günü öncesi sorular ve DB dışı eski `sessionStorage` setleri yeniden
+  kurulmaz. Cevap anahtarı istemciye gönderilmez; puan mevcut pratik akışında sunucudadır.
+
+Kanıt: `LearnPracticeSetTest` (geçici DB), `node --test testler/konu-ogrenme-ortak-set.test.mjs`,
+`node testler/konu-ogrenme-ortak-set-ui.mjs` ve `node scripts/ortak-set-tani.mjs --kontrol`.
+
 Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme ve pratik
 tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
 sayfasına değil tüm geçmişe uygulanır; deneme özeti, filtre sonrası kayıtlar üzerinden

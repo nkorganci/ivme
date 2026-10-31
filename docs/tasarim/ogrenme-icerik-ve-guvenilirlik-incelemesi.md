@@ -1,6 +1,6 @@
 # Öğrenme, kaynak işleme ve kayıt güvenilirliği: bulgular ve önerilen yaklaşım
 
-**Durum: TAS-01 ve TAS-03 UYGULANDI; DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
+**Durum: TAS-01, TAS-03, TAS-04 ve TAS-05 UYGULANDI (TAS-02 kısmi); DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
 
 **İnceleme tabanı:** `2026-10-31`, yerel `8fe4403` commit'i. İlgili proje `D:/workspace/ivme/uygulama`dır; sohbetin başlangıç dizini olan `wrestling` değildir. Bulgular kaynak kodu, şema, mevcut test dosyaları, mimari belgeler ve dosya envanterinin salt okunur incelemesine dayanır. Canlı öğrenci hesabıyla işlem yapılmadı; kesinti/yarış testleri çalıştırılmadı; bütün PDF sayfaları ve soru görselleri okunmadı. Dolayısıyla **kodda görülen davranış**, **kullanıcının bildirdiği sorun**, **doğrulanacak risk** ve **öneri** birbirinden ayrılmıştır.
 
@@ -44,10 +44,10 @@ karardaki “kaydedilmemiş öğrenci olayı” değildir; ilgili içerik işind
 | Kalıcılık kuyruğu | `LearnContext.jsx` 400 yanıtında `setOutbox([])` yapıyor; `api.js` yalnız son 500 olayı saklıyor, depolama hatasını yutuyor | TAS-01 ile düzeltildi; olay bazlı kuyruk ve hata görünürlüğü için §4 |
 | Kayıt bildirimi | `LessonQuestion` cevap sonrasında sunucu onayı beklemeden yerel sonucu gösteriyor; sessiz modda “Kaydedildi” yazıyor | TAS-01 ile bekleyen/onaylanan durum ve ilerleme kilidi ayrıldı |
 | Tekrar gönderme | Sunucuda `(user_id, client_event_id)` tekilliği var; `BankQuestion.submit()` her çağrıda yeni olay kimliği üretiyor | TAS-01 ile aynı istek kimliği/gövdesi korunuyor; farklı gövde 409 |
-| Setin devamı | `PracticePage.jsx` seti `sessionStorage` içinde tutuyor; anahtarında kullanıcı ve soru tipi (`archetype`) yok | TAS-01 kullanıcı/tip anahtarını ve ekran izolasyonunu ekledi; cihazlar arası set devamı TAS-05 kapsamı |
-| Ortak pratik ekranı | Konu sayfası kendi `/calis?tur=...` rotasını açıyor; banka sorusunda ayrıca yeni sekmede `/soru/{code}` bağlantısı var | Yeni sekme bağlantısı kısmen var; doğrudan ortak PRATIK seti gereksinimi karşılanmıyor |
-| 52 / 40 uyuşmazlığı | `temel-kavramlar.json`: 413 kayıt, 52 çıkmış; `pickPast()` varsayılan `limit=40`, çağıran bu sınırı değiştirmiyor | Gösterilen sayı ile açılan set uyuşmazlığı kaynak kodunda doğrulandı |
-| Beş aynı soru bildirimi | İncelenen temel kavramlar bankasında yinelenen `code` veya `id` yok; seçimlerin bir kısmı kod bazında tekilleştiriyor | Kullanıcı bildirimi açık. Aynı görsel, farklı kod, eski set, render veya kaynak eşleme sorunu henüz elenmedi |
+| Setin devamı | `PracticePage.jsx` seti `sessionStorage` içinde tutuyor; anahtarında kullanıcı ve soru tipi (`archetype`) yok | TAS-01 kullanıcı/tip anahtarını ve ekran izolasyonunu ekledi; TAS-05 ile konu testi/çıkmış/alıştırma seti sunucuda PRATIK oturumudur ve cihazlar arası sürer (§7.4) |
+| Ortak pratik ekranı | Konu sayfası kendi `/calis?tur=...` rotasını açıyor; banka sorusunda ayrıca yeni sekmede `/soru/{code}` bağlantısı var | TAS-05 ile düzeltildi: bağlantı yeni sekmede doğrudan ortak PRATIK oturumunu açar (§7.4) |
+| 52 / 40 uyuşmazlığı | `temel-kavramlar.json`: 413 kayıt, 52 çıkmış; `pickPast()` varsayılan `limit=40`, çağıran bu sınırı değiştirmiyor | Doğrulandı ve TAS-05 ile düzeltildi: gizli 40 sınırı kalktı; 52 çıkmış sorunun hepsi açılır (§7.4) |
+| Beş aynı soru bildirimi | İncelenen temel kavramlar bankasında yinelenen `code` veya `id` yok; seçimlerin bir kısmı kod bazında tekilleştiriyor | Doğrulanmış neden bulundu ve giderildi: Eşit Ağırlık/Sayısal deneme kitapçıkları aynı görseli farklı kodla taşıyor; set artık görsel baytıyla tekil (§7.4). Yeni bildirimde set kimliği ve kodlar istenir |
 | Soru çözümü | `BankQuestion` varsa çözüm görseli ve soru tipinin genel yaklaşımını gösteriyor; bazı gerçek sorular için özel rehberler var | Her sorunun kaynaklı, adım adım çözümü olduğu sonucu çıkarılamaz; genel strateji soru çözümü yerine geçmez |
 | Öğrenci zorluk oyu | `FeedbackService` kullanıcı/soru için `RATING` ve `difficultyVote` saklıyor; `QuestionService` kişisel değerlendirmeyi okuyor | Baştan aynı oylama sistemini kurma. Kişisel filtre, tekrar tercihi ve bütün ekranlara yayılım eksik |
 | PDF hattı | Metin, OCR, yerel model, hash önbelleği, kaynak kabulü, iş kuyruğu ve kaynak kayıtları mevcut | Ders anlatımı/şekil/kanıt paketi üretimini bu hattın üzerine ekle |
@@ -80,7 +80,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 2 — TAS-02 | P0 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmen (Actuator/metrik/webhook uyarısı eklendi; kalan kapsam açık) | DB erişimi, readiness, kayıt hatası ve dış alarm | TAS-01 ile birlikte | DB kesintisi görünür; yanlış başarı bildirimi yok; uygulama kapalıyken dış uyarı çalışıyor |
 | 3 — TAS-03 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.07; bölüm kapsamı içerik işaretlemesi TAS-08) | Tek katalog, adlar, konu bağları ve TYT/AYT kapsamı | Mevcut katalog | Bir ad düzeltmesi bütün ilgili ekranlarda aynı kimlikle görünür; geçmiş korunur |
 | 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.08) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
-| 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
+| 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.09) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
 | 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Tamamlanmadı (yalnız öneri) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
@@ -205,6 +205,8 @@ Mevcut sistem genel tekil sayıyı ilk karşılaşma/ilk yanıt kurallarıyla he
 
 ## 7. TAS-05: Tek çözüm ekranı, yeni sekme ve gerçek soru seti
 
+**Uygulandı (12.09).** Aşağıdaki öneri uygulandı; kararlar, tanılama sonucu ve kanıt §7.4'tedir. §7.1–7.3 tasarım gerekçesi olarak kalır.
+
 Kullanıcının 9 ve 12. maddelerinin birlikte yorumu: **bağlantıya bir kez tıklanınca yeni sekmede doğrudan ortak, karalama yapılabilen PRATIK oturumu açılır; ayrıca “Soru sayfasında aç” tıklamak gerekmez.** Ders sekmesi yerinde kalır.
 
 ### 7.1. Önerilen akış
@@ -241,6 +243,31 @@ Bir test hesabında etkilenen akışı aç; setin `questionId`, `code`, görünt
 | Başka soru tipine tıklanınca aynı set | `storageKey` içinde `archetype` bulunmaması ve rota geçişi |
 
 Bu incelemede kök neden kesinleştirilmedi. Üretilmiş banka JSON'unu elle değiştirmek yerine üretici/eşleme ya da UI akışındaki kanıtlanan neden düzeltilmelidir.
+
+### 7.4. Uygulama (TAS-05, 12.09) ve tanılama sonucu
+
+Akış, §7.1'deki gibi uygulandı; ayrıntılı sözleşme
+[ortak PRATIK seti](../mimari/ogrenci-ilerlemesi.md#ortak-pratik-seti-tas-05) bölümündedir.
+Set türü adı kodda `study_sessions.origin='KONU_OGRENME'` + `learning_kind` (`TOPIC_TEST`,
+`PAST_EXAM`, `ARCHETYPE`); yeni tablo gerekmedi. Mastery, tekrar, yanlışlar, karma set ve
+yeniden anlatım bağımsız ölçüm olduğundan yerel motorda kaldı.
+
+§7.3 tanılaması gerçek bankada çalıştırıldı (`scripts/ortak-set-tani.mjs`, DB salt okuma, görünen
+görsel baytı SHA-256):
+
+| Gözlem | Sonuç |
+|---|---|
+| Aynı `id`/`code` | Hiçbir kavramda yok; bir kod iki kavram bankasında da yok |
+| ID farklı, görsel aynı | **Var.** `3d-ayt-esit-agirlik-NN-MM` ile `3d-ayt-sayisal-KK-MM` (ve `md-` kitapçıkları) bayt olarak aynı görsel; toplam 676 kod, `temel-kavramlar` bankasında 413 kayıttan 53 ikili. Kod bazlı tekilleştirme bunları yakalamaz |
+| Çıkmış (ÖSYM) sorularda ikiz | Yok; 52 çıkmış sorunun 52'si tekil; 372 çıkmış sorunun hepsi `CIKMIS` + yıl + resmî kitapçık konumuna sahip |
+| URL farklı, bayt aynı | Yukarıdaki kitapçık kopyalarıdır (aynı kaynak sayfanın iki baskısı) |
+| Başka soru tipine tıklayınca aynı set | TAS-01'de kapatıldı (`storageKey` kullanıcı + tip içerir) |
+
+Düzeltme: sunucu, setteki görünen görsel baytı aynı olan iki soruyu 409 ile reddeder; ön yüzde
+`loadBank` ikizlerden birini tutar; bütün ders motoru seçimleri (ustalık, tekrar, karma set)
+aynı tekilleştirilmiş bankayı kullanır. Sayılar (12 / 52) yüklenen bankadan hesaplanır ve kurulan
+setle aynıdır. Kök neden tek başına bildirilen “beş aynı soru”yu kanıtlamaz; ancak aynı görselin
+bir sette tekrar görünmesinin doğrulanmış tek nedeni budur ve artık oluşamaz.
 
 ## 8. TAS-06: Öğrenciye özel zorluk ve tekrar tercihleri
 

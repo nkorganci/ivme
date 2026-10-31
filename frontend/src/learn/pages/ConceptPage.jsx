@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { usePageTitle } from '../../hooks.js';
 import { useLearn } from '../LearnContext.jsx';
@@ -7,8 +8,9 @@ import { scopeToTracks } from '../content/parser.js';
 import { dayKey, formatDay } from '../engine/dates.js';
 import { lessonProgress } from '../engine/plan.js';
 import { MathText, Markdown } from '../math.jsx';
-import { ArchetypeBars, BASE, CatalogTopics, DueText, ExamBadges, MasteryRing, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
-import { bankCount, pastCount } from '../bank.js';
+import { ArchetypeBars, BASE, CatalogTopics, DueText, ExamBadges, MasteryRing, SharedSetLink, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
+import { bankCount, loadBank, pastCount } from '../bank.js';
+import { plannedSize, sizeNote } from '../engine/sharedSet.js';
 
 const HISTORY = { mastery: 'Ustalık testi', testout: 'Kısa ustalık testi', review: 'Tekrar', reteach: 'Yeniden anlatım' };
 const OUTCOME = { up: 'bir basamak yukarı', same: 'aynı basamak', lapse: 'risk — yeniden anlatım' };
@@ -17,9 +19,17 @@ const OUTCOME = { up: 'bir basamak yukarı', same: 'aynı basamak', lapse: 'risk
 export default function ConceptPage() {
   const { conceptId } = useParams();
   const navigate = useNavigate();
-  const { index, state, today, record, settings } = useLearn();
+  const { index, state, today, record, settings, practiceSets } = useLearn();
   const catalog = useLearnCatalog();
   const meta = index.byId[conceptId];
+  // Set boyutları gerçek (ikizleri ayıklanmış) bankadan gelir; bankaya inmeden sayı uydurulmaz.
+  const [bank, setBank] = useState(null);
+  useEffect(() => {
+    let active = true;
+    setBank(null);
+    loadBank(conceptId).then((loaded) => { if (active) setBank(loaded); }).catch(() => {});
+    return () => { active = false; };
+  }, [conceptId]);
   usePageTitle(meta ? `${meta.title} · Konuyu Öğrenelim` : 'Konuyu Öğrenelim');
   if (!meta) return <Navigate to={`${BASE}/harita`} replace />;
   const lesson = getLesson(conceptId);
@@ -60,8 +70,14 @@ export default function ConceptPage() {
       break;
   }
   if (concept.lessonCompletedAt || concept.firstMasteredAt) actions.push(<Link key="lesson" className="btn btn-secondary" to={`${BASE}/ders/${conceptId}`}>Dersi gözden geçir</Link>);
-  if (concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) actions.push(<Link key="test" className="btn btn-secondary" to={`${BASE}/calis?tur=test&konu=${conceptId}`}>Konu testi (12 soru)</Link>);
-  if (pastCount(conceptId) > 0) actions.push(<Link key="past" className="btn btn-secondary" to={`${BASE}/calis?tur=cikmis&konu=${conceptId}`}>Çıkmış sorular ({pastCount(conceptId)})</Link>);
+  const openSet = (kind, archetype = null) => practiceSets.find((s) => s.status === 'IN_PROGRESS' && s.conceptId === conceptId && s.kind === kind && (s.archetypeId ?? null) === archetype);
+  const setLabel = (title, size, open) => (open ? `${title}: devam (${open.answered}/${open.total})` : size == null ? title : `${title} (${size} soru)`);
+  const testSize = bank ? plannedSize('test', bank) : null;
+  const pastSize = bank ? plannedSize('cikmis', bank) : null;
+  if ((concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && testSize !== 0) {
+    actions.push(<SharedSetLink key="test" className="btn btn-secondary" type="test" conceptId={conceptId}>{setLabel('Konu testi', testSize, openSet('TOPIC_TEST'))}</SharedSetLink>);
+  }
+  if (pastSize == null ? pastCount(conceptId) > 0 : pastSize > 0) actions.push(<SharedSetLink key="past" className="btn btn-secondary" type="cikmis" conceptId={conceptId}>{setLabel('Çıkmış sorular', pastSize, openSet('PAST_EXAM'))}</SharedSetLink>);
 
   return <div className="lr-page lr-concept-page">
     <nav className="lr-crumbs small" aria-label="Konum"><Link to={BASE}>Konuyu Öğrenelim</Link> › <Link to={`${BASE}/harita`}>Konu haritası</Link>{crumb && ` › ${crumb}`}</nav>
@@ -77,6 +93,8 @@ export default function ConceptPage() {
       <MasteryRing value={concept.mastery} size={96} />
     </header>
 
+    {bank && sizeNote('test', bank) && (concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && <p className="small muted lr-set-note">{sizeNote('test', bank)}</p>}
+
     <div className="lr-concept-grid">
       <section className="card">
         <h2>Soru tipleri</h2>
@@ -86,7 +104,8 @@ export default function ConceptPage() {
             <details><summary>{a.title}</summary>
               <p className="small"><strong>Bunu görünce:</strong> <MathText text={a.cue} /></p>
               <p className="small"><strong>Yöntem:</strong> <MathText text={a.strategy} /></p>
-              {(concept.lessonOpenedAt || concept.firstMasteredAt) && <Link className="btn btn-secondary btn-sm" to={`${BASE}/calis?tur=practice&konu=${conceptId}&tip=${a.id}`}>Bu tipten alıştırma</Link>}
+              {(concept.lessonOpenedAt || concept.firstMasteredAt) && <SharedSetLink className="btn btn-secondary btn-sm" type="practice" conceptId={conceptId} archetype={a.id}>
+                {openSet('ARCHETYPE', a.id) ? `Bu tipten alıştırma: devam (${openSet('ARCHETYPE', a.id).answered}/${openSet('ARCHETYPE', a.id).total})` : 'Bu tipten alıştırma'}</SharedSetLink>}
             </details>
           </li>)}
         </ul>
@@ -100,7 +119,8 @@ export default function ConceptPage() {
           <dt>Unutma (lapse)</dt><dd>{concept.lapses}</dd>
           <dt>Çalışma süresi</dt><dd>{minutesText(concept.minutesSpent)}</dd>
           <dt>Ders</dt><dd>{concept.lessonCompletedAt ? 'Tamamlandı' : concept.lessonOpenedAt ? `${required.sections.filter((x) => concept.sectionsDone.includes(x.id)).length}/${required.sections.length} bölüm` : `${required.sections.length} bölüm · ${minutesText(required.minutes)}`}</dd>
-          <dt>Banka</dt><dd>{bankCount(conceptId)} soru{pastCount(conceptId) ? ` · ${pastCount(conceptId)} ÖSYM çıkmış` : ''}</dd>
+          <dt>Banka</dt><dd>{bank ? `${bank.length} tekil soru` : `${bankCount(conceptId)} kayıt`}{pastSize ? ` · ${pastSize} ÖSYM çıkmış` : pastSize == null && pastCount(conceptId) ? ` · ${pastCount(conceptId)} ÖSYM çıkmış` : ''}
+            {bank && bankCount(conceptId) > bank.length && <span className="small muted"> ({bankCount(conceptId)} kayıttan {bankCount(conceptId) - bank.length}'i aynı görselin kitapçık kopyası)</span>}</dd>
         </dl>
         {concept.history.length > 0 && <>
           <h3>Geçmiş</h3>

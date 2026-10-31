@@ -7,6 +7,19 @@ import { formatDay, relativeDay } from './engine/dates.js';
 
 export const BASE = '/konuyu-ogrenelim';
 
+/** Ortak PRATIK seti başlatma adresi (TAS-05): tur = test | cikmis | practice. GET yalnız sayfayı açar; oturum POST ile kurulur. */
+export function sharedSetPath({ type, conceptId, archetype = null }) {
+  const query = new URLSearchParams({ tur: type, konu: conceptId });
+  if (archetype) query.set('tip', archetype);
+  return `${BASE}/pratik?${query}`;
+}
+
+/** Seti yeni sekmede açar (ders sekmesi yerinde kalır); sekme açılamazsa aynı adrese normal bağlantı olarak gider. */
+export function SharedSetLink({ type, conceptId, archetype = null, className, children }) {
+  return <Link className={className} to={sharedSetPath({ type, conceptId, archetype })} target="_blank" rel="noopener noreferrer">
+    {children}<span className="sr-only"> (yeni sekmede açılır)</span></Link>;
+}
+
 const CATALOG = '/api/learning-resources/metadata';
 
 /** Ortak DB kataloğu (Dersler, Soru Çöz ve kaynaklarla aynı okuma önbelleği). */

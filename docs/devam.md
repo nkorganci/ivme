@@ -46,7 +46,14 @@ puanlanıyor; Konu takibi banka/pratik/deneme, açık pratik, ders alıştırmas
 tekrarını tek sözleşmeyle ayrı sütunlarda sayıyor. Eski DB kayıtları yeniden
 puanlanmadı. `.ders` veya `kaynakli-notlar.json` cevabı değişirse
 `node scripts/cevap-anahtari.mjs` aynı commit'te çalıştırılmalı. Bu kapsamda açık iş
-yok; sıradaki öneri TAS-05 (ortak PRATIK seti), kullanıcı seçerse.
+yok.
+
+TAS-05 / 12.09 tamamlandı: konu testi, çıkmış sorular ve tip alıştırması yeni sekmede
+sunucuda kurulan ortak PRATIK oturumunu açar (`POST /api/konu-ogrenme/practice-sets`,
+V93); sayılar gerçek setle aynı (12 / 52), görsel baytı aynı kitapçık kopyaları bir sette
+bulunmaz (`scripts/ortak-set-tani.mjs --yaz` banka değişince çalıştırılır). Ortak
+ekrandaki cevaplar `GET /api/konu-ogrenme`'de motor olayı olarak okunur. Bu kapsamda
+açık iş yok; kullanıcı sıradaki görev olarak **TAS-06** (kişisel zorluk/tekrar) dedi.
 
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

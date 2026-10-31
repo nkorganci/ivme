@@ -47,9 +47,11 @@ public class AccountDataService {
                 + "FROM exam_questions eq JOIN exams e ON e.id = eq.exam_id "
                 + "WHERE e.user_id = ? ORDER BY eq.exam_id, eq.question_order", userId));
         data.put("studySessions", jdbc.queryForList("SELECT id, mode, selection_mode, status, filter_bank, "
-                + "filter_exam_type, filter_subject, filter_topic, time_limit_seconds, started_at, ended_at "
+                + "filter_exam_type, filter_subject, filter_topic, time_limit_seconds, started_at, ended_at, "
+                + "origin, learning_kind, learning_concept_id, learning_scope::text AS learning_scope "
                 + "FROM study_sessions WHERE user_id = ? ORDER BY id", userId));
-        data.put("sessionQuestions", jdbc.queryForList("SELECT sq.session_id, sq.question_id, sq.position "
+        data.put("sessionQuestions", jdbc.queryForList("SELECT sq.session_id, sq.question_id, sq.position, "
+                + "sq.learning_archetype, sq.learning_difficulty, sq.content_sha256 "
                 + "FROM session_questions sq JOIN study_sessions s ON s.id = sq.session_id "
                 + "WHERE s.user_id = ? ORDER BY sq.session_id, sq.position", userId));
         data.put("questionAttempts", jdbc.queryForList("SELECT id, question_id, session_id, event_type, practice_round, "

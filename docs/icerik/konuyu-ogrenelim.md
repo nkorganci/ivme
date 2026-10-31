@@ -162,9 +162,14 @@ içerik okuması yukarıdaki hash kayıtlarıyla ayrıca yapılmıştır. Normal
 son test → tamamlanma → ustalık → diğer sayfalar. `--live`: yalnız okuma, servis edilen
 sayfalarda gezinme. Ekranlar `veri/ui-denetim/konu-ogrenme/` altında. `IVME_TEST_DIST`
 yalnız UI paketini seçer; gerçek kullanıcı verisini etkilemez.
+Ortak PRATIK seti için `node testler/konu-ogrenme-ortak-set-ui.mjs` (bağlantılar yeni sekmede,
+52 çıkmış / 12 test soru, aynı istek kimliği tek oturum, hata ve yeniden dene) ve
+`node --test testler/konu-ogrenme-ortak-set.test.mjs` çalıştırılır.
 
 Banka girdileri değişmişse `node scripts/konu-ogrenme-banka.mjs --rapor` ile kapsamı gör;
-üretim gerekiyorsa `node scripts/konu-ogrenme-banka.mjs`. JSON'u elle düzeltme ve her
+üretim gerekiyorsa `node scripts/konu-ogrenme-banka.mjs`; ardından aynı görselli kitapçık
+kopyaları için `node scripts/ortak-set-tani.mjs --yaz` (kontrol: `--kontrol`; ayrıntı:
+[ortak PRATIK seti](../mimari/ogrenci-ilerlemesi.md#ortak-pratik-seti-tas-05)). JSON'u elle düzeltme ve her
 oturumda nedensiz yeniden üretme. Betik varsayılan eşlemelerde başlık/anahtar kelime kullanır;
 bazı soru tiplerinde yeterli soru yoktur, bütün eşlemeler görsel olarak incelenmiş değildir.
 Motorun mevcut yedek ders soruları ve eksik kapsam davranışı korunur.

@@ -7,7 +7,8 @@
 // Girdi: PostgreSQL `ivme` (etkin, öğrenciye açık sorular ve ortak katalog kategorileri), OGM kayıt dosyaları
 // (kitap/test başlığı, kazanım, PDF metni), ÖSYM çıkmış soru kitapçığı metni ve ders dosyalarındaki kategori,
 // başlık kuralı ve anahtar kelimeler.
-// Çıktıda cevap anahtarı yoktur; puanlama sunucuda yapılır.
+// Çıktıda cevap anahtarı yoktur; puanlama sunucuda yapılır. `_` ile başlayan dosyalar (_ozet, _gorsel) bu betiğin silme kapsamı dışındadır;
+// banka değişince `node scripts/ortak-set-tani.mjs --yaz` ile ikiz görsel haritasını (_gorsel.json) yenile.
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -199,7 +200,7 @@ function main() {
     }
   }
   if (!reportOnly) {
-    for (const name of readdirSync(OUT).filter((n) => n.endsWith('.json') && n !== '_ozet.json')) {
+    for (const name of readdirSync(OUT).filter((n) => n.endsWith('.json') && !n.startsWith('_'))) {
       if (!byConcept[name.replace(/\.json$/, '')]) rmSync(join(OUT, name));
     }
     writeFileSync(join(OUT, '_ozet.json'), `${JSON.stringify(summary, null, 1)}\n`);

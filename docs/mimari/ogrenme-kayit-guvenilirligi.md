@@ -51,8 +51,11 @@ Banka sonucu kayıp yanıttan sonra yeniden okunabilir; onay gelince soru devam 
 Hesap değişiminde provider kullanıcı anahtarıyla yeniden kurulur. Önceki isteklerin
 gecikmiş sonuçları yeni ekranı değiştirmez. Pratik seti anahtarı kullanıcı, tür,
 konu, sınav, gün ve soru tipini içerir; tip değişimi yeni ekran durumu açar.
-Sunucudaki cevaplar cihazlar arasında okunur; pratik setinin kendisini cihazlar
-arasında sürdürmek TAS-05 kapsamındadır.
+Sunucudaki cevaplar cihazlar arasında okunur. Konu testi, çıkmış sorular ve tip
+alıştırması artık sunucuda ortak PRATIK oturumudur ([TAS-05](ogrenci-ilerlemesi.md#ortak-pratik-seti-tas-05));
+set cihazlar arasında yarım kalanlar listesinden ve ders sayfasındaki “devam” bağlantısından
+sürdürülür, tarayıcı `sessionStorage` kalıcı set yerine geçmez. Ders içi mastery, tekrar,
+karma set ve yeniden anlatım yerel motorda kalır.
 
 ## Bağımsız pratik ve pedagojik olay
 

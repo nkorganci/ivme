@@ -8,7 +8,7 @@ import { makeEvent } from '../api.js';
 import { Block, CHECK_BLOCKS, checkId } from '../lesson/Blocks.jsx';
 import { LessonQuestion } from '../items.jsx';
 import { MathText, Markdown } from '../math.jsx';
-import { BASE, CatalogTopics, ExamBadges, LEVELS, ProgressBar, minutesText, useLearnCatalog } from '../ui.jsx';
+import { BASE, CatalogTopics, ExamBadges, LEVELS, ProgressBar, SharedSetLink, minutesText, useLearnCatalog } from '../ui.jsx';
 import { ENGINE } from '../engine/config.js';
 import { loadBank } from '../bank.js';
 import { EXPLORATIONS } from '../content/explorations.js';
@@ -260,7 +260,7 @@ export default function LessonPage() {
         <div className="lr-actions">
           <Link className="btn btn-primary" to={BASE}>Bugünün planına dön</Link>
           <Link className="btn btn-secondary" to={`${BASE}/konu/${conceptId}`}>Konu sayfası</Link>
-          <Link className="btn btn-secondary" to={`${BASE}/calis?tur=test&konu=${conceptId}`}>Konu testi çöz</Link>
+          <SharedSetLink className="btn btn-secondary" type="test" conceptId={conceptId}>Konu testi çöz</SharedSetLink>
         </div>
       </section>
     </div>;
