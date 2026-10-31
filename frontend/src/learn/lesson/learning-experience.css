@@ -162,3 +162,4 @@
 .lr-inquiry-reflect textarea { width: 100%; min-height: 64px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; resize: vertical; }
 .lr-inquiry-reflect .btn { justify-self: start; }
 .lr-inquiry-answer { padding: 10px 12px; border-radius: 8px; background: var(--ok-soft); }
+.lr-question-source { display: flex; flex-wrap: wrap; gap: 0.35rem 0.75rem; }

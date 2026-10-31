@@ -282,7 +282,7 @@ function QuestionView({ q, filters, session, reload }) {
           </section>}
           {!ready && state?.correctAnswer && pilotEvidence.questions[q.code] && WORKED_EXAMS[q.code] && <GuidedExam
             key={`${q.code}-${state.round ?? ''}`} afterAnswer
-            question={{ id: q.id, code: q.code, year: q.examYear, exam: q.examType, source: q.source }} guide={WORKED_EXAMS[q.code]} />}
+            question={{ id: q.id, code: q.code, year: q.year, exam: q.examType, source: q.source }} guide={WORKED_EXAMS[q.code]} />}
           {solution && (
             <Modal title="Çözüm" wide onClose={() => setSolution(false)}>
               <QuestionImage id={q.id} solution alt={`${q.code} çözümü`} />

@@ -83,7 +83,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.09) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
 | 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.10) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.11; PDF kanıt çıkarımı) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
-| 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Tamamlanmadı (yalnız öneri) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
+| 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Kısmen (kaynaklı pilot ve UI kabulü; insan incelemesi açık) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
 | 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
 | 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Tamamlanmadı (yalnız öneri) | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
@@ -375,6 +375,15 @@ Her konu için küçük bir **kaynak paketi** hazırlanmalı: ana kaynak bölüm
 Önce katalog kimliği ve tam metin araması yeterli mi ölçülmeli. Anlamsal arama gerekirse mevcut veriye eklenmeli; vektör veritabanı kurmak tek başına bu sorunu çözmez. Agent bütün arşivi prompt'a koymaz; belirlenen görev için seçilmiş paket ve yalnız gerekli görselleri alır. Özetler yön bulmak içindir; matematiksel iddianın dayanağı özgün bloktur.
 
 ## 10. TAS-08: Kaliteli pilot, ana kaynak ve açıklamalı çözümler
+
+**Uygulama durumu:** Sekiz bölüm, tam MEB kitabındaki 11 iddiaya blok/sayfa
+kanıtıyla bağlandı. İki rehberli ve iki bağımsız sorunun sürümlü, özgün türetim
+çözümleri mevcut. Konu testi yalnız iki açıklamalı aktarım sorusunu kullanır;
+bu kapsam tüm soru tiplerinin ustalık ölçümü değildir. Kaynak/hash ve 20 odaklı
+Node kontrolü, masaüstü/mobil bölüm ve ortak pratik kabulü geçti. Öğretmen incelemesi
+ve gerçek öğrenci aktarım gözlemi yapılmadı; TAS-08 henüz tamamlanmış sayılmaz.
+Kapsam, kanıtlar, tekrar komutları ve insan kabulü
+[pilot kabul kaydında](../icerik/tas08-pilot-kabul.md). Aşağıdaki ölçütler korunur.
 
 ### 10.1. Pilot seçimi ve kaynak sırası
 

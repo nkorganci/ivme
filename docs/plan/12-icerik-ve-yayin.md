@@ -243,6 +243,13 @@ kanıt olmadan dış uyarının üretimde etkin olduğu söylenmez.
 
 ## 12.12 — TAS-08 kaynaklı öğretim pilotu
 
-Durum: `DEVAM`. Mevcut bölme–bölünebilme dersine tam ana kaynak, iddia/blok
-bağı, sürümlü çözümler ve ortak pratikte açıklamalı aktarım seti ekleniyor.
-Doğrulama ve kalan kabul adımları görev tablosunda güncellenecek.
+Durum: `KISMI`. Bölme–bölünebilme dersinin sekiz bölümü tam MEB kitabındaki
+11 iddiaya bağlandı; iki rehberli ve iki bağımsız sorunun sürümlü çözümleri mevcut.
+Kaynak/hash denetimi ve 20 odaklı Node testi; masaüstü/mobil sekiz bölüm ve
+açıklamalı ortak pratik kabulü geçti. Temel kavramlarda 12/52 regresyonu geçti.
+İki aktarım sorusu bütün konunun ustalık ölçümü değildir.
+
+Kalan somut adım: öğretmenin sekiz bölüm ve dört soruya ilişkin inceleme kararını
+kaydetmesi; ardından çözümleri görmemiş gerçek öğrenciyle bağımsız aktarım gözlemi.
+Bu kanıtlar olmadan çoğaltma kabulü verilmez. Kayıt ölçütleri ve yeniden çalıştırma
+komutları [pilot kabulünde](../icerik/tas08-pilot-kabul.md).

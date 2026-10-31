@@ -288,6 +288,25 @@ def cmd_kontrol(args):
         # Dosyada yapay bir fark istemek yerine gerçek banka/görsel güncelliğini doğrula.
         if run(["node", "scripts/ortak-set-tani.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("ikiz görsel haritası güncel değil: node scripts/ortak-set-tani.mjs --yaz çalıştır ve çıktıyı ekle")
+    # Pilotun ders/çözüm/kapsam girdileri değişince eski kanıtla kabul edilmesin.
+    pilot_inputs = {
+        "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
+        "frontend/src/learn/content/bolme-pilot-evidence.json",
+        "frontend/src/learn/content/bolme-transfer-exams.js",
+        "frontend/src/learn/content/worked-exams.js",
+        "frontend/src/learn/engine/sharedSet.js",
+        "frontend/src/learn/bank/bolme-bolunebilme.json",
+        "scripts/tas08_pilot_spec.py", "scripts/tas08_pilot_kanit.py",
+        "testler/tas08-pilot.test.mjs", "scripts/ivme.py",
+    }
+    if "--hepsi" in args or pilot_inputs.intersection(files):
+        result = run(["node", "--test", "testler/tas08-pilot.test.mjs"], capture_output=True)
+        if result.returncode:
+            problems.append("TAS-08 pilot kanıtı/kabulü başarısız:\n" + result.stdout[-3000:] + result.stderr[-500:])
+    if {"scripts/tas08_pilot_spec.py", "scripts/tas08_pilot_kanit.py"}.intersection(files):
+        result = run([python_for_tools(), "scripts/tas08_pilot_kanit.py"], capture_output=True)
+        if result.returncode:
+            problems.append("TAS-08 kaynak tanımı çıktıyla doğrulanamadı (eksik yerel kaynak için --hazirla):\n" + result.stderr[-1000:])
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
     if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
         print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")

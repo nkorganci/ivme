@@ -58,7 +58,10 @@ const http = createServer(async (req, res) => {
   if (byCode) {
     const code = decodeURIComponent(byCode[1]);
     const row = bank.find((q) => q.c === code);
-    return json({ id: row?.i ?? 1, code, bank: 'OGM', examType: row?.x ?? 'TYT', subject: 'Matematik', topic: 'Temel kavramlar', choiceCount: 5, hasSolutionImage: false, hasApprovedHint: false });
+    return json({ id: row?.i ?? 1, code, bank: 'OGM', examType: row?.x ?? 'TYT', year: row?.y,
+      source: 'OGM çıkmış sorular', subject: 'Matematik', topic: pilot ? 'Bölme ve bölünebilme' : 'Temel kavramlar',
+      choiceCount: 5, hasSolutionImage: false, hasApprovedHint: false,
+      helpfulness: { helpful: 0, notHelpful: 0, mine: null, canVote: false } });
   }
   if (/^\/api\/questions\/\d+\/practice$/.test(p)) {
     if (req.method === 'POST') {
@@ -73,6 +76,7 @@ const http = createServer(async (req, res) => {
     }
     return json(server.answers.get(p) ?? { attempts: [], canAnswer: true, canReveal: false, roundComplete: false, round: 1, remainingAttempts: 2 });
   }
+  if (/^\/api\/questions\/\d+\/board$/.test(p)) return json({ version: 0, strokes: [] });
   const image = p.match(/^\/api\/questions\/(\d+)\/(image|solution-image)$/);
   if (image) {
     const code = codeOf.get(Number(image[1]));
@@ -210,6 +214,8 @@ async function runPilot(mobile) {
     for (const q of session.questions) {
       await goto(`/soru/${q.code}?sessionId=${session.id}`);
       await wait('document.querySelector(".qpage .choices button:not(:disabled)")');
+      await wait('document.querySelector(".board-status") && !document.querySelector(".board-error")');
+      assert.equal(await evalJs('!!document.querySelector(".board-retry")'), false, 'karalama hatası yok');
       assert.equal(await evalJs('!!document.querySelector(".lr-guided-exam")'), false, 'cevaptan önce çözüm yok');
       const answer = WORKED_EXAMS[q.code].answer;
       await evalJs(`document.querySelector('.choices button[aria-label="Şık E"]').click()`);
@@ -219,6 +225,7 @@ async function runPilot(mobile) {
       await wait('document.querySelector(".choices button:not(:disabled)")');
       await evalJs(`document.querySelector('.choices button[aria-label="Şık ${answer}"]').click()`);
       await wait('document.querySelector(".lr-guided-exam .btn-primary")');
+      assert.ok(await evalJs(`document.querySelector('.lr-guided-exam .lr-question-source').innerText.includes(${JSON.stringify(String(bank.find((row) => row.c === q.code).y))})`), 'çözümün sınav yılı API year alanından gelir');
       const writes = server.answerPosts.length;
       for (const step of WORKED_EXAMS[q.code].steps) {
         await evalJs('document.querySelector(".lr-guided-exam .btn-primary").click()');
@@ -238,6 +245,10 @@ async function runPilot(mobile) {
     }
     assert.deepEqual(errors.filter((e) => !/favicon|Failed to load resource/.test(e)), []);
     return { mobile, pilot: true, questions: session.questions.map((q) => q.code), answerPosts: server.answerPosts.length };
+  } catch (error) {
+    console.error('PİLOT:', { mobile, posts: server.answerPosts, errors,
+      page: await evalJs('document.querySelector("main")?.innerText').catch(() => '?') });
+    throw error;
   } finally { browser.close(); }
 }
 

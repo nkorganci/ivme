@@ -129,6 +129,10 @@ kapsamını genişletirken her yeni sorunun kodu, konu, çözüm gerekçesi ve k
 
 ## Tekrarlanabilir denetimler
 
+TAS-08'in tam ana kaynak, blok/sayfa kanıtı, iki bağımsız aktarım sorusu ve ortak
+pratikte cevap sonrası çözüm kapsamı [pilot kabul kaydında](tas08-pilot-kabul.md).
+Öğretmen incelemesi ve gerçek öğrenci gözlemi açık; teknik kabul bunların yerine geçmez.
+
 ```powershell
 node --test testler/konu-ogrenme-icerik.test.mjs testler/konu-ogrenme-motor.test.mjs testler/konu-ogrenme-kesif.test.mjs testler/konu-ogrenme-bicim.test.mjs
 ```
