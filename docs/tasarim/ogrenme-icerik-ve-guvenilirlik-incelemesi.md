@@ -56,6 +56,8 @@
 
 ## 3. Öncelik ve bağımlılık sırası
 
+**Hangi modeli açmalıyım?** Her `TAS-*` işi için ana model, düşünme düzeyi, alternatif ve kontrol önerisi [§19 — Göreve göre AI modeli seçimi](#19-göreve-göre-ai-modeli-seçimi) bölümündedir. Önce görev satırını, ardından yalnız o görevin teknik bölümünü oku.
+
 Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; açık uygulama görevi veya yapılmış iş değildir. Hepsinin uygulama durumu **BAŞLANMADI**. Kullanıcı uygulama istediğinde ilgili işler mevcut numaralı plana taşınmalı; bu dosyada ikinci bir canlı görev listesi yürütülmemelidir.
 
 | Sıra / kimlik | Öncelik | İş | Bağımlılık | Tamamlandı demek için gereken kanıt |
@@ -547,3 +549,179 @@ Başlangıçtaki `01` ve `02` ile sonraki `1–20` ayrı tutuldu; toplam 22 iste
 Sonrasında TAS-03/04/05 ile kimlik, sayım ve ortak çözüm ekranı birleştirilir. PDF kanıt paketi mevcut pilot için hazırlanır; ancak pilot kabulünden sonra toplu üretim ölçeklenir. Diğer derslere genişleme mimaride mümkün tutulur; mevcut matematik uygulama kapsamı kullanıcı yeni talimat vermeden kendiliğinden genişletilmez.
 
 **Bu inceleme sonunda yapılan:** kaynak kodu/belge incelemesi, salt okunur dosya sayımı, yöntemlerin resmî teknik belgelerle kontrolü, bu tasarım belgesi ve bulunabilirlik bağlantıları. **Yapılmayan:** kod düzeltmesi, DB migration/veri yazımı, PDF/OCR/model çalıştırması, e-posta gönderimi, agent kurulumu veya yayın. Uygulama kabul kutularının hiçbiri tamamlandı işaretlenmemiştir.
+
+## 19. Göreve göre AI modeli seçimi
+
+**Model bilgisi kontrol tarihi:** `2026-10-31`. Aşağıdaki model adları ve genel yetenek konumlandırmaları resmî OpenAI/Anthropic belgelerinden kontrol edildi. **İvme görevlerine yapılan atamalar ise bu projenin risklerine göre öneridir; modeller bu repo üzerinde karşılaştırmalı çalıştırılmadı.** Bir modelin diğer sağlayıcıdaki modelden matematik, Türkçe veya Spring konusunda kesin daha iyi olduğu iddia edilmiyor.
+
+Kullanıcının önceliği kaliteli sonuçtur. Bu nedenle kritik işlerde güçlü model ve bağımsız kontrol öneriliyor; dosya sayımı, OCR, hash ve test çalıştırma gibi deterministik işler yine uygun araçla yapılıyor. “En pahalı modeli bütün PDF'lere gönder” yaklaşımı kalite veya izlenebilirlik sağlamaz.
+
+### 19.1. Kısa seçim rehberi
+
+| Yapacağın iş | İlk açılacak model / araç | Önerilen başlangıç |
+|---|---|---|
+| Veri kaybı, transaction, yarış koşulu, kimlik taşıma, sistem tasarımı | **GPT-6 Astra** | `xhigh`; kaynak kodu ve kabul senaryolarıyla |
+| Tanımı belirli, çok dosyalı uygulama geliştirme ve test yazımı | **GPT-6.1 Sol** | `high` |
+| Ekran, PDF şekli/kırpımı, grafik etiketi, görsel karşılaştırma | **GPT-6.1 Terra** | `high`; zor matematiksel yorum Astra'ya |
+| Küçük belge düzenleme, hazır veriden alan çıkarma, ön sınıflama | **GPT-6 Luna** | `medium`; sonuç şema/kuralla doğrulanır |
+| Kaynaklı öğretim anlatımı ve pilotun bütünlüğünü değerlendirme | **Claude Opus 5.5** | `high`; matematik için ayrı hesap/kaynak kontrolü |
+| Claude ortamında tanımı belirli uygulama geliştirme | **Claude Sonnet 5.5** | `high`; zor mimari sorun Opus'a |
+| PDF metni/OCR/hash/tekillik ve mevcut testler | **Mevcut script/OCR/test araçları** | Bu işler için LLM çağrısı varsayılan değil |
+| Video sesini zamanlı metne dönüştürme | **Mevcut altyazı, yoksa uygun yerel ASR** | §12'deki hat; konuşma tanımayı metin modeliyle karıştırma |
+
+Bu tablo pratik görev dağılımıdır. Saf kalite önceliğinde ve süre/maliyet kısıtı yoksa karmaşık OpenAI işlerini Astra ile yürütmek uygun başlangıçtır; Sol/Terra/Luna önerileri belirli aşamaları daha verimli yürütmek içindir. OpenAI'nin rehberi de model seçimini aynı görev ve girdilerle karşılaştırarak doğrulamayı önerir. [OpenAI model seçimi](https://developers.openai.com/api/docs/guides/model-selection)
+
+### 19.2. Model adları, sürümleri ve roller
+
+“ChatGPT” ürün/çalışma ortamı adıdır; görev kaydında modelin tam adı kullanılmalıdır. **Sol 6 ile Sol 6.1 aynı sürüm değildir.** Aşağıdaki API kimlikleri belirsizliği önlemek içindir; model seçicisindeki etiketler ve erişilebilir ayarlar kullanılan ürüne göre değişebilir. Hesabındaki abonelik, kota veya Claude erişimi bu incelemede sorgulanmadı.
+
+| Model | Tam model kimliği | Resmî konumlandırma ve bu plan için kullanım |
+|---|---|---|
+| GPT-6 Astra | `gpt-6-astra` | Karmaşık muhakeme/kodlama için en yetenekli OpenAI modeli olarak sunuluyor. Kritik tasarım ve zor hata çözümü için öneri. [Model belgesi](https://developers.openai.com/api/docs/models/gpt-6-astra) |
+| GPT-6.1 Sol | `gpt-6.1-sol` | Karmaşık kodlama ve araçlı işlerde daha düşük maliyetli güçlü seçenek. Belirli kapsamlı geliştirmede ana çalışma modeli önerisi. [Model belgesi](https://developers.openai.com/api/docs/models/gpt-6.1-sol) |
+| GPT-6 Sol | `gpt-6-sol` | Kodlama/agent işleri için önceki Sol sürümü; resmî sayfa yeni sürüm olarak 6.1'e yönlendiriyor. Mevcut erişimin buysa kullanılabilir; 6.1 gibi kaydetme. Yeni çalışma için burada 6.1 öneriliyor, otomatik sürüm değişikliği yapılmıyor. [Model belgesi](https://developers.openai.com/api/docs/models/gpt-6-sol) |
+| GPT-6.1 Terra | `gpt-6.1-terra` | Görsel muhakeme, bilgisayar kullanımı ve açık yazım odaklı. PDF şekli/ekran incelemesine uygun aday; “sadece frontend modeli” değildir. [Model belgesi](https://developers.openai.com/api/docs/models/gpt-6.1-terra) |
+| GPT-6 Luna | `gpt-6-luna` | Dar kapsamlı, yüksek hacimli işler için verimli seçenek. Hazır metnin yapılandırılması/ön elemesi; kritik doğruluk kararının tek sahibi yapılmıyor. [Model belgesi](https://developers.openai.com/api/docs/models/gpt-6-luna) |
+| Claude Opus 5.5 | `claude-opus-5-5` | Uzun süren agent kodlaması ve bilgi işleri için sunuluyor. Bu planda karmaşık Claude işleri, öğretim taslağı ve farklı sağlayıcıyla inceleme adayı. [Model belgesi](https://platform.claude.com/docs/en/models/opus-5-5/overview) |
+| Claude Sonnet 5.5 | `claude-sonnet-5-5` | Hız ve yetenek dengesi. Bu planda günlük uygulama ve şablonu oturmuş içerik üretimi için Claude alternatifi. [Model belgesi](https://platform.claude.com/docs/en/models/sonnet-5-5/overview) |
+
+Claude tarafında Opus'u “mutlak en üst model” diye adlandırmamak gerekir: resmî katalog ayrıca **Claude Fable 5.1** (`claude-fable-5-1`) modelini zorlu muhakeme ve uzun iş akışları için konumlandırıyor. Kullanıcının saydığı Opus/Sonnet seçenekleri bu planın ana Claude yoludur; **erişimin varsa ve Opus yüksek düşünme düzeyinde pilot ölçütünü karşılayamıyorsa** Fable değerlendirilebilir. Yeni abonelik veya erişim gereksinimi varsayılmıyor. [Anthropic model kataloğu](https://platform.claude.com/docs/en/models/overview), [Fable 5.1](https://platform.claude.com/docs/en/models/fable-5-1/overview)
+
+### 19.3. Her görev için uygulanabilir model ataması
+
+Tabloda **ana seçim**, göreve başlarken açılacak modeldir. “Alternatif” aynı iş için başka ortamda çalışabileceğin seçenektir; iki modelin aynı dosyalarda eşzamanlı değişiklik yapması istenmiyor. “Kontrol” kritik değişiklikten sonra ayrı, salt okunur inceleme aşamasıdır. Bağımsız model kontrolü test/kanıt/öğretmen incelemesinin yerine geçmez.
+
+| Görev | Ana seçim ve düşünme düzeyi | Alternatif / verimli uygulama yolu | Gerekçe ve kontrol |
+|---|---|---|---|
+| **TAS-01 — kayıt güvenilirliği** | **Astra `xhigh`** | Claude'da **Opus 5.5 `high`**; tasarım ve hata senaryoları kesinleşirse dar düzeltmeleri Sol `high` yapabilir | Kuyruk kaybı, kaybolan yanıt, idempotency ve hesap izolasyonu birlikte ele alınmalı. Astra yazarsa Opus, Opus yazarsa Astra kritik farkı inceler; yarış/commit testleri zorunlu |
+| **TAS-02 — sağlık ve izleme temeli** | **Sol 6.1 `high`** | **Sonnet 5.5 `high`** | Mevcut Spring/DB yapısına sınırlı entegrasyon. Liveness/readiness tasarımını ve DB kesintisinde alarm yolunu Astra `high` inceler. Tüm işletim mimarisi değişecekse baştan Astra |
+| **TAS-03 — katalog ve kimlik birliği** | **Astra `xhigh`** | **Opus 5.5 `high`**; kabul edilmiş eşleme tasarımının uygulanması Sol `high` | Eski kimlik/ilerleme korunması ve çoktan çoğa kapsam riski. Başlıkları Luna'ya topluca yeniden yazdırma. Diğer sağlayıcıyla migration/etki incelemesi |
+| **TAS-04 — ortak cevap ve konu sayımı** | **Astra `xhigh`** | **Opus 5.5 `high`** | Aynı cevap iki yerde kayıtlıyken çift sayım, ilk/son sonuç ve rehberli/bağımsız ayrımı. Bağımsız kontrol ve gerçek PostgreSQL entegrasyon testi |
+| **TAS-05 — ortak PRATIK ve doğru setler** | **Sol 6.1 `high`** | **Sonnet 5.5 `high`**; ekran/görsel tanılama **Terra `high`** | Rota, oturum, seçim ve UI birlikte değişir. TAS-04 sözleşmesi hazır olmalı. Set/olay sınırını Astra, görsel tekrar/karalama akışını Terra ve E2E kontrol eder |
+| **TAS-06 — kişisel zorluk/tekrar** | **Sol 6.1 `high`** | **Sonnet 5.5 `high`** | Tanımı belirli DB/API/UI işi. İki öğrenciyle izolasyon ve eşzamanlı kayıt testleri; yeni yetki/kimlik tasarımı çıkarsa Astra'ya yükselt |
+| **TAS-07 — PDF/şekil kanıt hattı** | Hattın kodu: **Sol 6.1 `high`**; çıkarım: **script/OCR** | Kod için **Sonnet 5.5 `high`**; şekil/yerleşim incelemesi **Terra `high`** | Her PDF'yi güçlü modele okutma. Metin sınıflama Luna/yerel model ile aday olarak yapılabilir. Belirsiz formül veya kaynak çelişkisi Astra `xhigh`; nihai kabul kaynak/hesap incelemesiyle |
+| **TAS-08 — kaliteli öğretim pilotu** | Anlatım ve bütünlük: **Opus 5.5 `high`** | Tek OpenAI yolunda **Astra `high`**, zor çözümde `xhigh` | Opus seçimi Türkçede kanıtlanmış üstünlük iddiası değil, yazım ve bağımsız kontrolü ayırma önerisi. Matematiği Astra özgün soru üzerinden bağımsız çözer; şekilleri Terra; uygulama entegrasyonunu Sol yapabilir |
+| **TAS-09 — içerik üretimini otomatikleştirme** | **Sol 6.1 `high`** | **Opus 5.5 `high`** | Manifest, checkpoint, sürüm ve yeniden başlatma kodu. Yayın/yeniden işleme tasarımını Astra inceler. Her içerik adımı kendi modeline yönlenir; bütün aşamaları tek modelle yapma zorunluluğu yok |
+| **TAS-10 — kayıt e-postası** | **Sol 6.1 `high`** | **Sonnet 5.5 `high`** | Kalıcı bildirim işi, retry ve sağlayıcı hataları. Transaction/outbox sınırı için Astra `high` incelemesi; kısa e-posta şablonu Luna `medium` olabilir |
+| **TAS-11 — video/transkript/ipucu** | Altyazı/ASR + kareler için **Terra `high`** | Hattın kodu **Sol/Sonnet `high`**; anlatımı düzenleme **Opus `high`** | Metin modelleri ses tanıma yerine geçirilmez. Luna yalnız zamanlı metinden aday bölümleri çıkarır; matematiksel ipucunun koşullarını Astra doğrular |
+| **TAS-12 — test, devir ve kalite** | Test tasarımı **Astra `high`**; test kodu **Sol `high`** | Claude'da **Opus `high` → Sonnet `high`** | Testleri script çalıştırır. Terra ekran/şekil incelemesi yapar. Luna mevcut kanıttan kısa devir/rapor taslağı çıkarabilir; yapılmamış testi geçmiş veya işi tamamlanmış sayamaz |
+
+**İlk paket için doğrudan seçim:** TAS-01'i **GPT-6 Astra / Extra high (`xhigh`)** ile aç; Claude kullanacaksan **Opus 5.5 / `high`** seç. Bu işler tamamlandıktan sonra tanımı net uygulama işleri için **GPT-6.1 Sol / `high`** veya **Sonnet 5.5 / `high`** yeterliliğini testlerle değerlendir. Şu an yalnız belge güncellendi; görevler başlatılmadı.
+
+### 19.4. Düşünme düzeyi nasıl seçilmeli?
+
+OpenAI model sayfalarında Astra ve Sol 6.1 için `low / medium / high / xhigh / max`; Terra 6.1 ve Luna için bunlara ek `none` belgeleniyor. Ancak kullanılan uygulamanın seçicisi bu ayarların hepsini sunmayabilir. Tablo önerileri arayüzde mevcut olduğu ölçüde uygulanır; prompt'a “Astra ol” yazmak model seçmek değildir. [Astra](https://developers.openai.com/api/docs/models/gpt-6-astra), [Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [Terra](https://developers.openai.com/api/docs/models/gpt-6.1-terra), [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna)
+
+Bu proje için başlangıç önerisi:
+
+- **`medium`:** girdisi hazır, dar kapsamlı düzenleme ve sınıflama.
+- **`high`:** çoğu kodlama, kaynaklı içerik ve görsel inceleme işi.
+- **`xhigh`:** veri tutarlılığı, migration, zor matematik, belirsiz kök neden veya çelişkili kaynak.
+- **`max`:** `high/xhigh` ile çözülemeyen belirli zor alt problem için ölçerek; her görevin varsayılanı değil.
+
+Claude effort ayarı ayrı bir sağlayıcı ayarıdır; aynı `high` etiketi aynı düşünme miktarı anlamına gelmez. Opus 5.5'in belgelenen varsayılanı `medium`, Sonnet 5.5'in `high`dır; bu planda kritik işler için Opus'a `high` **bilinçli öneri** olarak yazıldı. Arayüz farklı düşünme seçenekleri gösteriyorsa mevcut seçeneği ve gerçek model sürümünü görev kaydına geçir; varsayılanın otomatik olarak `high` olduğunu sanma. [Claude effort](https://platform.claude.com/docs/en/build-with-claude/effort)
+
+Düşünme düzeyi, araç yetkisi ve bağlam kalitesi ayrı şeylerdir. Kaynak görseli verilmeyen güçlü model eksik şekli güvenilir biçimde tamamlayamaz; repo/test araçlarına erişmeyen sohbet modeli dosyayı gerçekten değiştirmiş veya testi çalıştırmış sayılmaz.
+
+### 19.5. İçerik üretiminde aşama bazlı model zinciri
+
+TAS-07/08/09 için önerilen zincir; aşamalar sırayla yürütülebilir, eşzamanlı agent kurulumu gerekmez:
+
+```text
+Mevcut PDF/metin/OCR scriptleri
+  → Luna / yerel model: yalnız aday yapılandırma ve ön eleme
+  → Terra: gerekli şekil/kırpım ve görsel kaynak kontrolü
+  → Opus: kanıt paketinden öğretim taslağı
+  → Astra: zor matematik ve karşı örneklerin bağımsız kontrolü
+  → Sol: kabul edilen içeriği mevcut .ders/model/test yapısına yerleştirme
+  → Script/testler + gerekli insan incelemesi
+```
+
+Her aşamada model çağrısı zorunlu değildir. Dijital metin ve basit tablo script ile doğru çıkıyorsa Luna/Terra aşaması atlanabilir. Tek sağlayıcı istenirse Opus yazım aşamasını Astra veya pilotta yeterli bulunan Sol üstlenebilir; Claude ile kodlamada Sol yerine Sonnet kullanılabilir. Kaynak/öğrenci gizliliği sınırları model değişince gevşetilmez.
+
+**Bağımsız matematik kontrolü:** ikinci modele önce özgün soru, şekil ve koşulları ver; birinci modelin cevabını doğru kabul etmesini isteme. Kendi çözümü ve araçla hesap sonucu elde edildikten sonra karşılaştır. İki modelin aynı sonucu söylemesi kanıt değildir; ikisi de aynı eksik kaynağa veya aynı yanlış varsayıma dayanabilir. Uyuşmazlıkta kaynak/hesap ve gerekirse alan uzmanı kararı aranır.
+
+**Kod incelemesi:** ikinci modele görev gereksinimi, gerçek diff, ilgili kod ve test çıktısını ver; “onayla” yerine kayıp kayıt, çift sayım, yetki sızıntısı ve atlanmış hata senaryosu ara. Ayrı modelin bütün projeyi yeniden yazmasına gerek yoktur. Kritik inceleme tamamlanmadan yalnız üretici modelin “bitti” mesajı kabul kanıtı olmaz.
+
+### 19.6. Ne zaman daha güçlü modele geçmeli?
+
+| Gözlem | Önerilen sonraki adım |
+|---|---|
+| Eksik PDF sayfası/görsel, yanlış dosya veya araç erişimi yok | Önce girdiyi/erişimi düzelt; daha güçlü model eksik kanıtı oluşturamaz |
+| Luna/yerel model şemayı tutturuyor ama konu/terim anlamında yanılıyor | Temsilî örnek ve izinli kategori listesiyle Sol; görselse Terra |
+| Terra görseli okuyor ama eşitsizlik/ölçek/özel durum belirsiz | Özgün kırpım + gerekli komşu bağlam + hesap kontrolüyle Astra `xhigh` |
+| Sol/Sonnet aynı hatayı ikinci dar denemede çözemiyor | Denenen yaklaşım/başarısız testleri kısa devirle Astra/Opus'a aktar; baştan tüm incelemeyi yaptırma |
+| Görev kimlik taşıma, transaction veya birçok sayım kuralını değiştiriyor | Başlangıçtan Astra/Opus; düşük modelde başarısızlık bekleme |
+| Opus yüksek düşünmede zor uzun görevin kabul ölçütünü karşılamıyor | Daha küçük görev/girdi kontrolü; erişim varsa Fable 5.1 ile aynı örneği karşılaştır |
+| Model sonucu iyi ama bütün süreç pahalı | Önce bağlamı küçült, önbellek ve deterministik aşamaları kullan; sonra aynı örnekte daha ekonomik modeli dene |
+
+Modelin kendi verdiği “%95 eminim” gibi bir sayı tek başına yönlendirme eşiği olamaz. Yükseltme kararı şema hatası, yanlış hesap, kaynak eksikliği, başarısız test veya insan düzeltme gereksinimi gibi gözlenebilir kanıtlara dayanmalı.
+
+### 19.7. En iyi modeli bu projede nasıl doğrulayacağız?
+
+Bu bölüm bir ölçüm planıdır; sonuçları henüz yoktur. İlk pilot için aynı küçük görev paketini aday modellere aynı kaynaklarla ver; değerlendirme hedefini ve beklenen sonucu önceden belirle. Aşağıdaki sayılar başlangıç önerisidir:
+
+| Paket | Temsilî içerik | Başarı ölçüsü |
+|---|---|---|
+| Kod | 3–5 hata/özellik örneği; bir yarış/rollback ve bir katalog/sayım vakası | Gerçek testler, korunmuş kimlik/geçmiş, gereksiz değişiklik yok |
+| PDF/görsel | 20–30 zor sayfa/bölge; tarama, tablo, üs/kök, grafik | Atlanan şekil/sembol, yanlış bbox/kaynak, insan düzeltme süresi |
+| Matematik | 10–20 soru; konuya özgü farklı koşul/yanılgı | Doğru sonuç, geçerli gerekçe, özel durum ve bağımsız hesap |
+| Anlatım | Aynı konunun 2–3 bölümü | Terim açıklığı, örnekten kurala geçiş, kaynak doğruluğu, kapsam ve gerçek öğrenci aktarımı |
+
+P0 işlerinde veri kaybı, kullanıcılar arası sızıntı ve çift kayıt **kabul etmeme nedeni** olmalı; iyi yazım puanı bunları telafi etmemeli. Kritik matematik hatası veya sahte kaynak da aynı şekilde ele alınmalı. Az sayıda örnekte başarı genel doğruluk garantisi değildir; sadece sonraki pilot için seçim kanıtıdır.
+
+Ölçülecek toplam maliyet: model kullanımı + yeniden deneme + başarısız iş + insan düzeltmesi + süre. API token fiyatını ChatGPT/Claude abonelik kotasıyla aynı şey sayma. Bu belgede sabit fiyat veya görev başına süre vaadi yoktur. Model/prompt sürümü değiştiğinde yalnız ilgili küçük değerlendirme paketi yeniden çalıştırılır; bütün arşiv tekrar işlenmez.
+
+### 19.8. Model seçimini görev kaydına ve devir notuna bağlama
+
+§11'deki önerilen manifest şu alanlarla genişletilebilir; **bu örnek çalıştırılan bir yapılandırma değildir**:
+
+```yaml
+modelPlan:
+  taskId: TAS-01
+  stage: implement
+  primary:
+    provider: openai
+    model: gpt-6-astra
+    effort: xhigh
+  review:
+    provider: anthropic
+    model: claude-opus-5-5
+    effort: high
+    mode: read-only
+  actualModel: null       # calisma basladiginda gercek model
+  actualEffort: null
+  inputManifestHash: null
+  promptVersion: null
+  validationReport: null
+  escalationReason: null
+```
+
+Agent çalışmaya başlarken seçilen model bu öneriden farklıysa mevcut modeli ve farkın etkisini belirtmeli; başka modele geçtiğini iddia etmemelidir. Kullanıcı manuel olarak model değiştirip aynı görev kaydından devam edebilir. Bu plan mevcut oturumun modelini değiştirmez, otomatik API çağrısı veya ek agent başlatmaz.
+
+Model değiştirilirken kısa devir paketi yeterlidir: **task ID, aşama, mevcut commit/diff, girdi/çıktı manifesti, geçen/başarısız testler, açık sorun ve tek sonraki adım**. Önceki bütün konuşmayı ve PDF arşivini tekrar göndermek gerekmez. Çalışma aynı dosyada sürüyorsa bir model yazmayı bitirip farkı kaydettikten sonra diğeri incelemelidir.
+
+### 19.9. Modeli seçtikten sonra kullanılacak kısa görev girdisi
+
+Model uygulamanın seçicisinden seçilir. Aşağıdaki örnek ancak uygulama ayrıca istendiğinde kullanılmalıdır:
+
+```text
+İvme'de TAS-01'i uygula.
+Model önerisi: GPT-6 Astra, xhigh. Mevcut model farklıysa belirt.
+AGENTS.md, inceleme belgesinin §4 ve §19 bölümleri ile ilgili kodu oku.
+Mevcut öğrenci verisini ve kimlikleri koru; geçici ivme_test üzerinde doğrula.
+Kayıp yanıt, aynı istek tekrarı, kuyrukta geçersiz olay ve hesap geçişini kapsa.
+Sonucu gerçek diff/test kanıtı ve kısa devir notuyla teslim et.
+```
+
+İkinci modelde kontrol örneği:
+
+```text
+TAS-01 değişikliğini yalnız incele; kod değiştirme.
+Gereksinimleri, gerçek diff'i ve test raporunu kullan.
+Kayıp kayıt, çift sayım, transaction ve hesap izolasyonu açıklarını ara.
+Her bulguyu dosya/işlev ve tekrar üretme senaryosuyla yaz.
+Test edilmemiş durumu geçti kabul etme; sorun bulamazsan inceleme sınırını belirt.
+```
+
+**Bu ekin sonucu:** TAS-01–12 için model/araç önerisi, düşünme düzeyi, alternatif, kontrol ve yükseltme koşulları belirlendi. Henüz model karşılaştırması, içerik üretimi, kod düzeltmesi veya agent kurulumu yapılmadı.

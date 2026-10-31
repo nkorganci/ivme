@@ -5,7 +5,7 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 ## Başlangıç ve devir
 
 - Önce `git status --short` ile kullanıcı değişikliklerini koru. Devam isteniyorsa [devir notunu](docs/devam.md), yalnız ilgili açık işi ve gerekli rehber bölümünü oku. Yeni kullanıcı talimatı, devirdeki sıradaki görevin önüne geçer.
-- Öğrenme, PDF üretimi, ortak pratik, kayıt güvenilirliği veya izleme işleri için [bulgular ve yaklaşım incelemesine](docs/tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md) bak. Belge öneridir; yalnız inceleme talebini uygulama yetkisi sayma, ilgili bölümü oku.
+- Öğrenme, PDF üretimi, ortak pratik, kayıt güvenilirliği veya izleme işleri için [bulgular ve yaklaşım incelemesine](docs/tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md) bak. Göreve göre model/düşünme düzeyi ve alternatifler §19'dadır; mevcut modeli farklı bir modelmiş gibi sunma. Belge öneridir; yalnız inceleme talebini uygulama yetkisi sayma, ilgili bölümü oku.
 - Devirde yalnız yarım işin konumu, sonraki komut ve açık karar tutulur; geçmiş işler `git log` ve sürümlü raporlardadır. Görev sonunda devir notunu gerekiyorsa güncelle ve tamamlanan değişikliği yerel `main` dalına commit et. Kullanıcı istemedikçe push yapma.
 - Tekrarlanan komutları `python scripts/ivme.py` ve [işlem tariflerinden](docs/islemler/README.md) seç. İş ikinci kez elle kuruluyorsa betik veya kısa tarif ekle; çıktı/hash önbelleğini kullan.
 
