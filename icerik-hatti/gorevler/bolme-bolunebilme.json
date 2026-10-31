@@ -1,0 +1,212 @@
+{
+ "schema": "ivme.icerik-gorev/v1",
+ "conceptId": "bolme-bolunebilme",
+ "contentVersion": 1,
+ "templateVersion": "konuyu-ogrenelim/tas08-v1",
+ "lesson": "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
+ "output": "frontend/src/learn/content/kanit/bolme-bolunebilme.json",
+ "testScope": "Rakam koşullarını ölçer",
+ "primarySource": {
+  "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
+  "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
+  "sha256": "8ff2f001aad6f332362a0a219cee714204ac69cc2281f48e0fe3211829927bcd",
+  "local": "veri/tas08/kaynak/matematik-9.pdf",
+  "pages": "88-96,106-107"
+ },
+ "claims": {
+  "bolme": {
+   "page": 88,
+   "blocks": [
+    "blk-9e3cdb0be845",
+    "blk-a40e844acd8e",
+    "blk-453e0396c427",
+    "blk-ad706c99b3ba"
+   ],
+   "title": "Bölme eşitliği ve kalan sınırı"
+  },
+  "basamak4": {
+   "page": 90,
+   "blocks": [
+    "blk-605953edd002",
+    "blk-a63c9061026b"
+   ],
+   "title": "Son iki basamak ve 100 katsayısı"
+  },
+  "basamak8": {
+   "page": 92,
+   "blocks": [
+    "blk-858111ab8236",
+    "blk-bc2370d3315e",
+    "blk-1f2433657b94",
+    "blk-b319a1708b29"
+   ],
+   "title": "Son üç basamak ve 1000 katsayısı"
+  },
+  "toplam3": {
+   "page": 90,
+   "blocks": [
+    "blk-b23018c8f720",
+    "blk-ed55304a07cc"
+   ],
+   "title": "Rakam toplamının 3 ile kalanı"
+  },
+  "toplam9": {
+   "page": 92,
+   "blocks": [
+    "blk-e21d514103ea"
+   ],
+   "title": "Rakam toplamının 9 ile kalanı"
+  },
+  "isaret11": {
+   "page": 93,
+   "blocks": [
+    "blk-e975fcc5ad86"
+   ],
+   "title": "11 için sağdan başlayan işaretli toplam"
+  },
+  "negatif11": {
+   "page": 94,
+   "blocks": [
+    "blk-45e1ffbd25cb"
+   ],
+   "title": "Negatif işaretli toplamı kalan aralığına taşıma"
+  },
+  "ortak": {
+   "page": 94,
+   "blocks": [
+    "blk-aa24db497e02",
+    "blk-487ec764b93b",
+    "blk-df60a1c14e38"
+   ],
+   "title": "Aralarında asal çarpanların ortak koşulu"
+  },
+  "saat": {
+   "page": 106,
+   "blocks": [
+    "blk-8b561101d323"
+   ],
+   "title": "Saat döngüsünde 24 ile kalan"
+  },
+  "baslangic": {
+   "page": 106,
+   "blocks": [
+    "blk-f147f8afdb06"
+   ],
+   "title": "İlk olayın sayıldığı periyotta bir eksik aralık"
+  },
+  "dongu": {
+   "page": 107,
+   "blocks": [
+    "blk-307c9673871e"
+   ],
+   "title": "Tekrarlanan dizide kalan ile konum"
+  }
+ },
+ "sections": {
+  "s1": {
+   "claims": [
+    "bolme"
+   ],
+   "note": "Doğal sayılarda eş gruplar ve artan; bölen pozitiftir."
+  },
+  "s1b": {
+   "claims": [
+    "bolme"
+   ],
+   "note": "Basamak açılımını bölme eşitliğine yerleştirme. AYT örneği ortak temelin uygulamasıdır."
+  },
+  "s2": {
+   "claims": [
+    "basamak4",
+    "basamak8"
+   ],
+   "note": "2, 5, 10 ve 25 kuralları aynı basamak açılımından özgün olarak türetilir."
+  },
+  "s2b": {
+   "claims": [
+    "toplam3",
+    "toplam9"
+   ],
+   "note": "Rakam sınırları ve bütün koşulların kesişimi birlikte denetlenir."
+  },
+  "s3": {
+   "claims": [
+    "isaret11",
+    "negatif11"
+   ],
+   "note": "Tam bölünme ile işaretli kalan hesabı birbirinden ayrılır."
+  },
+  "s3b": {
+   "claims": [
+    "ortak",
+    "toplam9",
+    "basamak4"
+   ],
+   "note": "12 için 3 ve 4; ortak bölen varsa çarpım kuralı uygulanmaz."
+  },
+  "s4": {
+   "claims": [
+    "bolme",
+    "saat"
+   ],
+   "note": "Özgün türetim: A=dq+r, B=dp+s açılımlarıyla toplam, fark ve çarpım."
+  },
+  "s4b": {
+   "claims": [
+    "bolme",
+    "ortak",
+    "baslangic",
+    "dongu"
+   ],
+   "note": "Özgün türetim: kalanları ardışık çarparak kuvvet döngüsü; bölmenin karşı örneği."
+  }
+ },
+ "questions": {
+  "AYT_Sayisal-0014": {
+   "sectionId": "s1b",
+   "role": "guided",
+   "claims": [
+    "bolme"
+   ],
+   "imageSha256": "4223c87a90dd86fc2f9e4a855d5684f6c90bb38f955cf0e821cb56d39e951209"
+  },
+  "TYT-0593": {
+   "sectionId": "s3b",
+   "role": "guided",
+   "claims": [
+    "toplam9",
+    "basamak4",
+    "ortak"
+   ],
+   "imageSha256": "9e127ed9096c20e7c64d884dd2173d607bbce3d090cc7459ad346b1417482593"
+  },
+  "TYT-0592": {
+   "sectionId": "s1b",
+   "role": "independent",
+   "claims": [
+    "bolme"
+   ],
+   "imageSha256": "eda917ba5b399561b31015f06f187092de4405e7801dec186677a816b012d323"
+  },
+  "TYT-0597": {
+   "sectionId": "s2b",
+   "role": "independent",
+   "claims": [
+    "bolme",
+    "toplam3"
+   ],
+   "imageSha256": "bc5f909dfc09bd63643071cc057dbd8ba66cfa57b21a2c47ea4dd787ad40fe10"
+  }
+ },
+ "tests": [
+  "testler/tas08-pilot.test.mjs",
+  "testler/bolme-pilot.test.mjs",
+  "testler/konu-ogrenme-ortak-set.test.mjs"
+ ],
+ "modelPlan": {
+  "draft": {
+   "recommended": "claude-opus-5-5 high (OpenAI: Astra high)",
+   "actual": "TAS-08 oturumu; model kaydı pilot kabulünde"
+  }
+ }
+}

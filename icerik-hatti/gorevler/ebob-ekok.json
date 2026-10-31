@@ -1,0 +1,296 @@
+{
+ "schema": "ivme.icerik-gorev/v1",
+ "conceptId": "ebob-ekok",
+ "contentVersion": 1,
+ "templateVersion": "konuyu-ogrenelim/tas08-v1",
+ "lesson": "frontend/src/learn/content/dersler/ebob-ekok.ders",
+ "output": "frontend/src/learn/content/kanit/ebob-ekok.json",
+ "testScope": "EBOB–EKOK ilişkisini ölçer",
+ "primarySource": {
+  "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
+  "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
+  "sha256": "8ff2f001aad6f332362a0a219cee714204ac69cc2281f48e0fe3211829927bcd",
+  "local": "veri/tas08/kaynak/matematik-9.pdf",
+  "pages": "94-107,367"
+ },
+ "claims": {
+  "asal": {
+   "page": 367,
+   "blocks": [
+    "blk-d7523210f639",
+    "blk-3266e90bfc1c",
+    "blk-d1cae9234790"
+   ],
+   "title": "Asal sayı: 1 ve kendisinden başka pozitif böleni olmayan, 1’den büyük tam sayı (sözlük)"
+  },
+  "aralarinda": {
+   "page": 94,
+   "blocks": [
+    "blk-487ec764b93b",
+    "blk-df116e0c6d4d"
+   ],
+   "title": "Aralarında asal: 1’den başka ortak pozitif böleni yok"
+  },
+  "ardisik": {
+   "page": 95,
+   "blocks": [
+    "blk-7858a6a18230"
+   ],
+   "title": "Ardışık iki sayı ve 1 her sayıyla aralarında asal"
+  },
+  "ebob_tanim": {
+   "page": 98,
+   "blocks": [
+    "blk-50449fa0545d",
+    "blk-225e1e47c42c"
+   ],
+   "title": "EBOB: pozitif ortak bölenlerin en büyüğü"
+  },
+  "ekok_tanim": {
+   "page": 98,
+   "blocks": [
+    "blk-0b91b29e0795",
+    "blk-ca8bbc55a41e"
+   ],
+   "title": "EKOK: pozitif ortak katların en küçüğü"
+  },
+  "carpim": {
+   "page": 98,
+   "blocks": [
+    "blk-d1b9dff94fda"
+   ],
+   "title": "İki sayma sayısında a·b = EBOB·EKOK"
+  },
+  "aralarinda_ebob": {
+   "page": 99,
+   "blocks": [
+    "blk-fac149ce9178",
+    "blk-5cf44aff021b"
+   ],
+   "title": "Aralarında asal sayılarda EBOB 1, EKOK çarpım"
+  },
+  "kat": {
+   "page": 99,
+   "blocks": [
+    "blk-1edb15d17de3"
+   ],
+   "title": "Biri diğerinin katıysa EBOB küçük, EKOK büyük sayı"
+  },
+  "usler": {
+   "page": 99,
+   "blocks": [
+    "blk-b8ba36258368",
+    "blk-08bbc6f9cfad"
+   ],
+   "title": "Asal çarpanlarda EBOB küçük üsler, EKOK büyük üsler"
+  },
+  "uc_sayi": {
+   "page": 99,
+   "blocks": [
+    "blk-674b2d98dbca",
+    "blk-35ad997eb574"
+   ],
+   "title": "Üç sayının EBOB ve EKOK’u"
+  },
+  "ortak_kisim": {
+   "page": 102,
+   "blocks": [
+    "blk-16f23e888f76",
+    "blk-db184431d452"
+   ],
+   "title": "K=8x, L=8y (x, y aralarında asal) ve EKOK=8xy"
+  },
+  "ebob_parca": {
+   "page": 103,
+   "blocks": [
+    "blk-625499e5dcc6"
+   ],
+   "title": "Eş ve en büyük kare parçalar için EBOB"
+  },
+  "ebob_cevre": {
+   "page": 104,
+   "blocks": [
+    "blk-432815f846da",
+    "blk-269d7f47a9b5"
+   ],
+   "title": "Çevreye eşit aralıklı direk: EBOB ve çevre/EBOB"
+  },
+  "ekok_kalan": {
+   "page": 103,
+   "blocks": [
+    "blk-a61cb0249048"
+   ],
+   "title": "Her bölmede aynı kalan: EKOK + kalan"
+  },
+  "ekok_ayni": {
+   "page": 103,
+   "blocks": [
+    "blk-096b8de8d2aa"
+   ],
+   "title": "Aynı anda tekrar: süreler EKOK’u"
+  },
+  "gun": {
+   "page": 106,
+   "blocks": [
+    "blk-f0a6cbb062f7"
+   ],
+   "title": "Gün sorusunda 7 ile kalan"
+  },
+  "saat": {
+   "page": 106,
+   "blocks": [
+    "blk-8b561101d323"
+   ],
+   "title": "Saat döngüsünde 24 ile kalan"
+  },
+  "baslangic": {
+   "page": 106,
+   "blocks": [
+    "blk-f147f8afdb06"
+   ],
+   "title": "n. kez için n−1 aralık"
+  },
+  "ekok_periyot": {
+   "page": 107,
+   "blocks": [
+    "blk-75aa31006bac"
+   ],
+   "title": "Birlikte tekrar: EKOK periyodu ve n−1"
+  },
+  "dongu": {
+   "page": 107,
+   "blocks": [
+    "blk-307c9673871e"
+   ],
+   "title": "Tekrarlanan dizide konum için kalan"
+  }
+ },
+ "sections": {
+  "s1": {
+   "claims": [
+    "asal",
+    "usler",
+    "aralarinda"
+   ],
+   "note": "Asal sayı tanımı kitabın sözlüğünden; asal çarpanlar EBOB–EKOK örneklerinde kullanılır. Pozitif bölen sayısı formülü kitapta yok: üs seçimlerini çarpma ilkesiyle sayan özgün türetimdir."
+  },
+  "s1b": {
+   "claims": [
+    "asal",
+    "usler"
+   ],
+   "note": "Özgün türetim: koşullu bölen sayısı, bölenlerin toplamı ve asallık denemesi aynı üs seçim tablosundan çıkarılır; kitapta bu başlık yok."
+  },
+  "s2": {
+   "claims": [
+    "ebob_tanim",
+    "ekok_tanim",
+    "usler",
+    "carpim"
+   ],
+   "note": "Tanımlar ve küçük/büyük üs kuralı kitaptan; çarpım ilişkisi iki sayma sayısı içindir."
+  },
+  "s2b": {
+   "claims": [
+    "ortak_kisim",
+    "aralarinda_ebob",
+    "kat",
+    "carpim",
+    "uc_sayi"
+   ],
+   "note": "a=dm, b=dn yazımı kitabın K=8x, L=8y örneğinin genellemesidir. Üç sayıda çarpım eşitliğinin bozulduğu örnek özgün türetimdir."
+  },
+  "s3": {
+   "claims": [
+    "ebob_tanim",
+    "ebob_parca",
+    "ebob_cevre"
+   ],
+   "note": "Bölme problemleri kitaptaki kare çim ve çevre direği örnekleriyle aynı ilkeye dayanır."
+  },
+  "s3b": {
+   "claims": [
+    "ebob_parca",
+    "ebob_cevre"
+   ],
+   "note": "Özgün türetim: kalanlı EBOB (kalanları çıkarıp EBOB almak), açık yolda uç ağaç ve parça sınırı."
+  },
+  "s4": {
+   "claims": [
+    "ekok_tanim",
+    "ekok_kalan",
+    "ekok_ayni"
+   ],
+   "note": "Birleştirme ve aynı anda tekrar kitaptaki öğrenci ve makine örnekleriyle aynı ilkeye dayanır."
+  },
+  "s4b": {
+   "claims": [
+    "ekok_kalan",
+    "ekok_tanim"
+   ],
+   "note": "Bölen−kalan farkının ortak olduğu durum, farklı kalanlarda tarama ve aralıkta sayma özgün türetimdir."
+  },
+  "s5": {
+   "claims": [
+    "gun",
+    "baslangic",
+    "ekok_periyot"
+   ],
+   "note": "Kurs ve nöbet örnekleri kitaptaki periyodik problemlerle aynıdır."
+  },
+  "s5b": {
+   "claims": [
+    "saat",
+    "dongu",
+    "gun"
+   ],
+   "note": "Kuvvetlerin son rakam döngüsü özgün türetimdir; kitap saat ve tekrar eden rakam dizisini verir."
+  }
+ },
+ "questions": {
+  "AYT_Sayisal-0035": {
+   "sectionId": "s2",
+   "role": "guided",
+   "claims": [
+    "usler"
+   ],
+   "imageSha256": "65c7fd3d951b76ee31f72bb13f1882044d28abbc48b6d8e890f25122c95dc1f3"
+  },
+  "AYT_Sayisal-0018": {
+   "sectionId": "s2b",
+   "role": "guided",
+   "claims": [
+    "ortak_kisim",
+    "aralarinda_ebob"
+   ],
+   "imageSha256": "bb417d4ed470ad8edd95711daf6081bf05ca7ce210684c531acff7a525133deb"
+  },
+  "TYT-0713": {
+   "sectionId": "s1",
+   "role": "independent",
+   "claims": [
+    "usler",
+    "asal"
+   ],
+   "imageSha256": "d0b24a0552042cf64f666f7b92b05a39fcb462d6bec1acbaa018e9d2bbdaad30"
+  },
+  "AYT_Sayisal-0021": {
+   "sectionId": "s2b",
+   "role": "independent",
+   "claims": [
+    "ortak_kisim",
+    "aralarinda_ebob"
+   ],
+   "imageSha256": "a3eae58c6aa542e4cfa9b53d8774780ac8ec42eae3f0b9bc20f0603525e0c9d7"
+  }
+ },
+ "tests": [
+  "testler/ebob-ekok-pilot.test.mjs"
+ ],
+ "modelPlan": {
+  "draft": {
+   "recommended": "claude-opus-5-5 high (OpenAI: Astra high)",
+   "actual": "claude-opus-5-5 (Claude Code); düşünme düzeyi oturum ayarı"
+  }
+ }
+}

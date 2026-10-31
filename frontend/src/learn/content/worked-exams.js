@@ -2,9 +2,11 @@
 // Kaynak kodları değişmez; soru metni yeniden yazılmaz. Kanıt: docs/icerik/konuyu-ogrenelim.md.
 import { MATH_CONTINUATION_EXAMS } from './worked-math-continuation.js';
 import { DIVISION_TRANSFER_EXAMS } from './bolme-transfer-exams.js';
+import { EBOB_TRANSFER_EXAMS } from './ebob-transfer-exams.js';
 export const WORKED_EXAMS = {
   ...MATH_CONTINUATION_EXAMS,
   ...DIVISION_TRANSFER_EXAMS,
+  ...EBOB_TRANSFER_EXAMS,
   'AYT_Sayisal-0014': {
     conceptId: 'bolme-bolunebilme', archetype: 'bolme-algoritmasi', answer: 'D',
     title: '2020 AYT · basamak açılımını bölme denklemine yerleştir',
@@ -147,6 +149,7 @@ export const WORKED_EXAMS = {
     result: 'A · 41',
     tip: 'EBOB ve EKOK birlikte geçiyorsa hemen $m=da$, $n=db$ yaz: EKOK $=dab$ ve $m\\cdot n=d^2ab$. Bir toplam ya da fark verilirse $d$ ortak çarpan olur; $d$’yi verilen sayının bölenleri arasında ara.',
     check: 'EBOB$(9,32)=1$, EKOK$(9,32)=288$; $1+288=289$ ve $9+32=41\\neq289$.',
+    mistake: '$m+n\\neq289$ koşulunu atlayıp ilk bulduğun $(17,272)$ veya $(1,288)$ çiftini cevap sanma; ikisinde de toplam 289 olur. $16=2\\cdot8$ gibi ortak çarpanlı ayrımlar aralarında asal olmadığı için EBOB’u değiştirir.',
   },
   'AYT_Sayisal-0035': {
     conceptId: 'ebob-ekok', archetype: 'ebob-ekok-hesap', answer: 'C',
@@ -161,6 +164,7 @@ export const WORKED_EXAMS = {
     result: 'C · 10',
     tip: 'EBOB ve EKOK asal çarpanlarla verildiyse her asalı ayrı incele: o asalın iki sayıdaki üsleri EBOB’daki ve EKOK’taki üslerdir (hangisinin hangisi olduğu belirsiz). Bir üssün çift olmak zorunda olması gibi ek bilgiler sırayı belirler.',
     check: '$M=6^3\\cdot5=2^3\\cdot3^3\\cdot5$, $N=10^5\\cdot9=2^5\\cdot3^2\\cdot5^5$. EBOB $=2^3\\cdot3^2\\cdot5$, EKOK $=2^5\\cdot3^3\\cdot5^5$.',
+    mistake: '$9^d$’yi $3^d$ sanma: $9^d=3^{2d}$ olduğundan 3’ün N’deki üssü çifttir ve sırayı bu belirler. Bileşik tabanları asallara ayırmadan üsleri karşılaştırırsan $a$ ile $d$’yi karıştırırsın.',
   },
   'TYT-0574': {
     conceptId: 'rasyonel-sayilar', archetype: 'kesir-islem', answer: 'A',

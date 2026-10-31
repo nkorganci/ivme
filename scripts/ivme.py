@@ -14,6 +14,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py pdf kanit olustur|toplu|dogrula|goster|ozet|karar|pilot ...   sürümlü PDF kanıt paketi (scripts/pdf_kanit_paketi.py)
   python scripts/ivme.py ollama ...            yerel model (scripts/ollama-sor.py)
   python scripts/ivme.py ogretim dogrula|aktar Akıllı Öğretmen içerikleri (scripts/ogretim-icerigi.py)
+  python scripts/ivme.py icerik durum|calistir|kontrol <kavram>   TAS-09 kaynaklı konu içerik hattı (scripts/icerik_hatti.py)
 """
 
 import json
@@ -288,25 +289,29 @@ def cmd_kontrol(args):
         # Dosyada yapay bir fark istemek yerine gerçek banka/görsel güncelliğini doğrula.
         if run(["node", "scripts/ortak-set-tani.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("ikiz görsel haritası güncel değil: node scripts/ortak-set-tani.mjs --yaz çalıştır ve çıktıyı ekle")
-    # Pilotun ders/çözüm/kapsam girdileri değişince eski kanıtla kabul edilmesin.
-    pilot_inputs = {
-        "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
-        "frontend/src/learn/content/bolme-pilot-evidence.json",
-        "frontend/src/learn/content/bolme-transfer-exams.js",
-        "frontend/src/learn/content/worked-exams.js",
-        "frontend/src/learn/engine/sharedSet.js",
-        "frontend/src/learn/bank/bolme-bolunebilme.json",
-        "scripts/tas08_pilot_spec.py", "scripts/tas08_pilot_kanit.py",
-        "testler/tas08-pilot.test.mjs", "scripts/ivme.py",
-    }
-    if "--hepsi" in args or pilot_inputs.intersection(files):
-        result = run(["node", "--test", "testler/tas08-pilot.test.mjs"], capture_output=True)
+    # TAS-09: kaynaklı konu içeriğinin ders/çözüm/kanıt/seçim girdileri değişince eski kanıtla kabul edilmesin.
+    tasks = sorted((APP / "icerik-hatti/gorevler").glob("*.json"))
+    specs = [s for s in (json.loads(p.read_text(encoding="utf-8")) for p in tasks) if (APP / s["output"]).is_file()]
+    content_inputs = {"frontend/src/learn/engine/sharedSet.js", "frontend/src/learn/engine/selection.js",
+                      "frontend/src/learn/content/evidence.js", "frontend/src/learn/content/parser.js",
+                      "frontend/src/learn/bank/_gorsel.json", "scripts/icerik_hatti.py", "scripts/icerik-hatti-ders.mjs",
+                      "testler/icerik-hatti.test.mjs", "scripts/ivme.py"}
+    for spec in specs:
+        content_inputs |= {spec["lesson"], spec["output"], f"frontend/src/learn/bank/{spec['conceptId']}.json", *spec.get("tests", [])}
+    content_changed = any(n in content_inputs or n.startswith(("icerik-hatti/", "frontend/src/learn/content/kanit/"))
+                          or (n.startswith("frontend/src/learn/content/") and n.endswith("-exams.js")) for n in files)
+    if "--hepsi" in args or content_changed:
+        tests = ["testler/icerik-hatti.test.mjs", *sorted({t for spec in specs for t in spec.get("tests", [])})]
+        result = run(["node", "--test", *tests], capture_output=True)
         if result.returncode:
-            problems.append("TAS-08 pilot kanıtı/kabulü başarısız:\n" + result.stdout[-3000:] + result.stderr[-500:])
-    if {"scripts/tas08_pilot_spec.py", "scripts/tas08_pilot_kanit.py"}.intersection(files):
-        result = run([python_for_tools(), "scripts/tas08_pilot_kanit.py"], capture_output=True)
+            problems.append("İçerik hattı kanıtı/kabulü başarısız:\n" + result.stdout[-3000:] + result.stderr[-500:])
+    # Görev tanımı, insan kararı veya hat kodu değişince kanıt yerel kaynaktan yeniden hesaplanır (yazmadan).
+    if "--hepsi" in args or any(n.startswith("icerik-hatti/") or n in ("scripts/icerik_hatti.py", "scripts/icerik-hatti-ders.mjs")
+                                for n in files):
+        result = run([python_for_tools(), "-X", "utf8", "scripts/icerik_hatti.py", "kontrol"], capture_output=True)
         if result.returncode:
-            problems.append("TAS-08 kaynak tanımı çıktıyla doğrulanamadı (eksik yerel kaynak için --hazirla):\n" + result.stderr[-1000:])
+            problems.append("İçerik hattı çıktısı girdilerle doğrulanamadı (yerel kaynak yoksa: "
+                            "python scripts/ivme.py icerik calistir <kavram>):\n" + result.stdout[-1500:] + result.stderr[-500:])
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
     if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
         print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")
@@ -354,6 +359,10 @@ def cmd_ogretim(args):
                env={**os.environ, "PYTHONIOENCODING": "utf-8"}).returncode
 
 
+def cmd_icerik(args):
+    return run([python_for_tools(), "-X", "utf8", "scripts/icerik_hatti.py", *(args or ["durum"])]).returncode
+
+
 def cmd_devir_kontrol(args):
     """Claude Code Stop kancası: kod/belge değişmiş ama devir dosyası güncellenmemişse bir kez hatırlatır."""
     try:
@@ -375,7 +384,8 @@ def cmd_devir_kontrol(args):
 
 
 COMMANDS = {"devir-kontrol": cmd_devir_kontrol, "durum": cmd_durum, "bekle": cmd_bekle, "test": cmd_test, "kontrol": cmd_kontrol, "ui": cmd_ui,
-            "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim}
+            "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim,
+            "icerik": cmd_icerik}
 
 
 def main(argv=None):

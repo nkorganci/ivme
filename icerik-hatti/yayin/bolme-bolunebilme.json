@@ -1,0 +1,84 @@
+{
+  "schema": "ivme.icerik-yayin/v1",
+  "taskId": "content:bolme-bolunebilme:1",
+  "conceptId": "bolme-bolunebilme",
+  "status": "REVIEW_REQUIRED",
+  "preparedAt": "2026-10-31T23:28:34+00:00",
+  "templateVersion": "konuyu-ogrenelim/tas08-v1",
+  "specSha256": "ac10b0cdf62c021586baed94cb81fee1521bd2573a4bf9bb48650c48c54a36eb",
+  "lesson": {
+    "path": "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
+    "sha256": "d33651116f090f7475614f1d57a260a09d51b7a58d3dfbfb46873a7bce378b70"
+  },
+  "output": {
+    "path": "frontend/src/learn/content/kanit/bolme-bolunebilme.json",
+    "sha256": "6c8bc099da5af5079bf544bc577c2e4c1f0aa9246d26f4d99f3fe5e6bac0581e"
+  },
+  "contentSha256": "d8e6c9428989554d54337afce33e179b90a3ff5e2e7c4c94855b19d4c8b9ad71",
+  "validation": {
+    "tests": [
+      "testler/icerik-hatti.test.mjs",
+      "testler/konu-ogrenme-bicim.test.mjs",
+      "testler/tas08-pilot.test.mjs",
+      "testler/bolme-pilot.test.mjs",
+      "testler/konu-ogrenme-ortak-set.test.mjs"
+    ],
+    "pass": 58,
+    "fail": 0
+  },
+  "review": {
+    "teacherApproved": false,
+    "studentTransferObserved": false,
+    "pendingSections": [
+      "s1",
+      "s1b",
+      "s2",
+      "s2b",
+      "s3",
+      "s3b",
+      "s4",
+      "s4b"
+    ],
+    "pendingQuestions": [
+      "AYT_Sayisal-0014",
+      "TYT-0592",
+      "TYT-0593",
+      "TYT-0597"
+    ],
+    "changeRequests": 0,
+    "staleDecisions": 0
+  },
+  "stages": {
+    "kaynak": {
+      "inputKey": "6ff4def68868dcf1be427aa04ad161941ba7fbec279e9febcb814836e627297f",
+      "outputSha256": "e1061b3c91abccb3dc7f6d143ee1c4de6daeb587f8fb3554795af337c72c5828"
+    },
+    "kanit": {
+      "inputKey": "d852fcedfa99e1332fa24173e0a73c978c0ea6deee77dda3f35e48806cdd829f",
+      "outputSha256": "9500cec87942ab2901a507c7e3390db9e72ea81ddc2470a8eeafbc31fda103e5"
+    },
+    "taslak": {
+      "inputKey": "c4e088c9ab7549f5dcbb6a3aa9853a8f44309d641667818b92fb48dead01790e",
+      "outputSha256": "3ace0fac054434425701a9a56eb372b14e5503dd219f73ed1636bd1e38e5b7d1"
+    },
+    "derle": {
+      "inputKey": "98c742ca3eeac353ef98ba4e5d741422bfee80631e86b2fd1242a1844f531e70",
+      "outputSha256": "fd9cc0df3a23c8107b70690d01f8c55ec811f17a5308d99b8663a18b65d8af17"
+    },
+    "dogrula": {
+      "inputKey": "9dbaf9b25bfb950e28f2c79119904c283df0e8247f455fb2d33171f0310f42a8",
+      "outputSha256": "7f58c2f921f4dd208f6771f428b020c9121838c3cfe342037541f960eb05abeb"
+    },
+    "inceleme": {
+      "inputKey": "9078f64b9a7189a3f130e5cda31c71820d92424553314f17c8205a7c954c00d7",
+      "outputSha256": "8c474ba1654636940ebb70a621ceaf29404085092f5ff42ffa29c1851374b37d"
+    }
+  },
+  "previous": {
+    "gitRevision": "3fe9189",
+    "sha256": null,
+    "restore": null
+  },
+  "changes": {},
+  "externalPublish": "Dış yayın/push ayrı kullanıcı talimatıyla; APPROVED olmadan pedagojik kabul sayılmaz."
+}

@@ -1,12 +1,13 @@
-import evidence from '../content/bolme-pilot-evidence.json';
+import { evidenceFor, evidenceForQuestion, examScope } from '../content/evidence.js';
 
 export function PilotSectionSources({ conceptId, sectionId }) {
-  const section = conceptId === evidence.conceptId && evidence.sections[sectionId];
+  const evidence = evidenceFor(conceptId);
+  const section = evidence?.sections[sectionId];
   if (!section) return null;
   const pages = [...new Set(section.claims.map((id) => evidence.claims[id].page))];
   return <details className="lm-terms lr-pilot-sources">
     <summary>Bu bölümün kaynağı ve kapsamı</summary>
-    <p>{evidence.primarySource.title}. TYT ve AYT için ortak temel.</p>
+    <p>{evidence.primarySource.title}. {examScope(section.exams)}</p>
     <p>{section.note}</p>
     <ul>{pages.map((page) => <li key={page}><a href={`${evidence.primarySource.url}#page=${page}`} target="_blank" rel="noopener noreferrer">Ana ders kitabı · sayfa {page} ↗</a></li>)}</ul>
     <p className="small muted">Anlatım ve örnekler İvme’nin özgün açıklamalarıdır. Kaynak ve hesap kontrolü yapıldı; bağımsız öğretmen incelemesi bekleniyor.</p>
@@ -14,7 +15,8 @@ export function PilotSectionSources({ conceptId, sectionId }) {
 }
 
 export function PilotSolutionSources({ code }) {
-  const source = evidence.questions[code];
+  const evidence = evidenceForQuestion(code);
+  const source = evidence?.questions[code];
   if (!source) return null;
   return <details className="lm-terms lr-pilot-solution-source">
     <summary>Çözümün kaynağı ve inceleme durumu</summary>

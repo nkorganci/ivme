@@ -19,6 +19,7 @@ Kalıcı beklentiler [AGENTS.md](../../AGENTS.md) içinde, etkin devam noktası
 | `lesson/Blocks.jsx` | Ortak ders blokları; çözümlü örnekler sırayla açılır, gerekçeleri görünür |
 | `lesson/DailyInquiry.jsx` | `::sorgula` bloğu: günlük durum → seçim → seçeneğe özel geri bildirim → gerekçe ve sınavdaki karşılığı → “Sen de sorgula”; puan/olay üretmez |
 | `lesson/FigureZoom.jsx` | Klavye/Escape ile kapanan büyük görsel penceresi |
+| `content/kanit/*.json`, `content/kanit/index.js`, `content/evidence.js` | Kaynaklı konu kanıtı ([içerik hattı](../islemler/icerik-hatti.md) üretir); konu testi bu konularda yalnız bağımsız açıklamalı sorulardan kurulur |
 | `content/worked-exams.js` | Özgün görselleri okunmuş gerçek sınav sorularının açıklamalı çözümü ve koşullu kısa yolu |
 | `lesson/GuidedExam.jsx` | Özgün soru görseli → adımlı çözüm → kısa yol → sağlama; puan üretmez |
 | `components/QuestionImage.jsx` (ön yüz kökü) | `readingWidth` ile ders örneklerini ekran altına düştüğünde küçültmeden okunur genişlikte gösterir; diğer soru ekranlarının sığdırma tercihi korunur |

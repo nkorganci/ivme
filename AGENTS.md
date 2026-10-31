@@ -51,6 +51,9 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
 - Kaynak PDF görüntüsü veya özgün çizim kullanılabilir. Özgün soru kodunu/görselini koru;
   görmeden ayrıntılı çözüm yazma. Otomatik konu eşlemesini görsel inceleme veya öğretmen
   onayı gibi sunma. Çözümü derste gösterilen soru bağımsız ustalık testine girmemeli.
+- Kaynaklı konu içeriği (ana kaynak kanıtı, açıklamalı soru, konu testi) [içerik hattıyla](docs/islemler/icerik-hatti.md)
+  üretilir: `python scripts/ivme.py icerik calistir <kavram>`; 3 dönerse `veri/icerik-hatti/<kavram>/gorev-taslak.md`
+  paketini tamamla ve yeniden çalıştır. Öğretmen kararı/öğrenci gözlemi (`icerik karar|gozlem`) yalnız insan girdisidir.
 - Mevcut dersler ve bundan sonra eklenecekler aynı standarda uyar. Yeni ders yalnız
   `.ders` özetiyle tamamlanmış sayılmaz: keşif anlatımı, uygun görsel model, gerekçeli
   örnek, aktarım sorusu, koşullu kısa yol ve yanlış düşünce geri bildirimi gerekir.

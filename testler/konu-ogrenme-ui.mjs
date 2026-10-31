@@ -11,7 +11,8 @@ import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
-import pilotEvidence from '../frontend/src/learn/content/bolme-pilot-evidence.json' with { type: 'json' };
+import { EVIDENCE } from '../frontend/src/learn/content/kanit/index.js';
+import { examScope } from '../frontend/src/learn/content/evidence.js';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(ROOT, 'frontend/dist');
@@ -400,13 +401,14 @@ async function runLevels(mobile) {
       await wait('document.querySelector(".lr-section .lr-reader-tools")');
       assert.ok(await evalJs(`document.querySelector('.lr-section-head h2').textContent.includes(${JSON.stringify(section.title.replace(/\$[^$]*\$/g, '').slice(0, 12))})`), `${section.id}: yanlış bölüm açıldı`);
       const before = db.events.length;
-      if (conceptId === pilotEvidence.conceptId) {
+      const pilotEvidence = EVIDENCE[conceptId];
+      if (pilotEvidence) {
         await wait('!document.querySelector(".lr-save-boundary:disabled")');
         await evalJs('document.querySelector(".lr-pilot-sources summary").click()');
         const pages = [...new Set(pilotEvidence.sections[section.id].claims.map((id) => pilotEvidence.claims[id].page))];
         assert.deepEqual(await evalJs('[...document.querySelectorAll(".lr-pilot-sources a")].map(a => a.href)'),
           pages.map((page) => `${pilotEvidence.primarySource.url}#page=${page}`));
-        assert.ok(await evalJs('document.querySelector(".lr-pilot-sources").innerText.includes("TYT ve AYT için ortak temel")'));
+        assert.ok(await evalJs(`document.querySelector(".lr-pilot-sources").innerText.includes(${JSON.stringify(examScope(pilotEvidence.sections[section.id].exams))})`));
       }
       if (leveled) {
         for (const level of ['L3', 'L2', 'L1']) {

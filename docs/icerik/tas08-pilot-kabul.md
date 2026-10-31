@@ -13,9 +13,9 @@ ilanı değildir. Sınav kapsamı ortak katalogdaki TYT/AYT konu kimliklerinden 
 kitap, matematiksel tanım ve gerekçelerin kaynağıdır. Pilotun sekiz bölümü de ortak
 temeldir; gerçek AYT örneği kullanılması bölümü yalnız AYT kapsamına geçirmez.
 
-`scripts/tas08_pilot_spec.py` seçilmiş 11 iddianın blok kimliklerini, bölüm bağlarını
-ve incelenmiş soru görsellerinin hash'lerini tutar. `scripts/tas08_pilot_kanit.py`
-TAS-07 paketini doğrulayarak `frontend/src/learn/content/bolme-pilot-evidence.json`
+`icerik-hatti/gorevler/bolme-bolunebilme.json` seçilmiş 11 iddianın blok kimliklerini, bölüm bağlarını
+ve incelenmiş soru görsellerinin hash'lerini tutar. TAS-09 [içerik hattı](../islemler/icerik-hatti.md)
+TAS-07 paketini doğrulayarak `frontend/src/learn/content/kanit/bolme-bolunebilme.json`
 çıktısını üretir: kitap hash'i, fiziksel sayfa, blok/bbox/metin hash'i, bölüm,
 soru görseli ve kaynak kitapçık hash'i, sınav/yıl/arşiv konumu, çözüm hash'i/sürümü.
 Üretilmiş JSON elle değiştirilmez. Kaynak bağlantıları her bölümde açılabilir.
@@ -39,7 +39,7 @@ Kaynak/hesap kontrolü öğretmen onayı yerine geçmez.
 
 | Ölçüt | Kanıt / sonuç |
 |---|---|
-| Ana kaynak, bölüm ve çözüm güncelliği | `tas08_pilot_kanit.py`: 8 bölüm, 11 iddia, 4 kaynaklı soru; hash kontrolü geçti |
+| Ana kaynak, bölüm ve çözüm güncelliği | `ivme.py icerik kontrol bolme-bolunebilme`: 8 bölüm, 11 iddia, 4 kaynaklı soru; hash kontrolü geçti |
 | Matematik, şekil ve soru tekilliği | `tas08-pilot.test.mjs`, `bolme-pilot.test.mjs`, `konu-ogrenme-ortak-set.test.mjs`: 20/20 geçti |
 | Sekiz bölümün arayüzü | `konu-ogrenme-ui.mjs bolme-bolunebilme --duzey`: masaüstü/mobil, üç düzey, yanlış/doğru geri bildirim ve kaynak sayfaları; taşma/konsol/istek hatası yok |
 | Bağımsız aktarımın ortak çözüm ekranı | `konu-ogrenme-ortak-set-ui.mjs --pilot`: masaüstü/mobil; cevap öncesi ve ilk yanlışta çözüm saklı, doğru cevaptan sonra adımlar/kaynak açılır; okumak yeni cevap üretmez; yeniden çalışınca çözüm saklanır |
@@ -68,14 +68,13 @@ ile hesaplanır; farklı PowerShell sürümlerinin dosya sıralaması aynı vars
 ## Tekrarlanabilir denetim
 
 ```powershell
-..\.venv\Scripts\python.exe scripts/tas08_pilot_kanit.py
+python scripts/ivme.py icerik kontrol bolme-bolunebilme
 node --test testler/tas08-pilot.test.mjs testler/bolme-pilot.test.mjs testler/konu-ogrenme-ortak-set.test.mjs
 ```
 
-Kaynak dosyaları eksikse önce aynı Python ile `scripts/tas08_pilot_kanit.py --hazirla`
-çalıştırılır. Bilinçli içerik değişikliğinde kaynak/hesap incelemesi ve sürüm kararı
-yapıldıktan sonra `--yaz` ile çıktı yenilenir; fark incelenir. Commit denetimi pilot
-girdileri değiştiğinde `tas08-pilot.test.mjs` çalıştırır.
+Yerel kaynak eksikse veya bilinçli içerik değişikliği yapıldıysa `python scripts/ivme.py icerik calistir bolme-bolunebilme`
+kaynağı indirir/paketler ve yalnız değişen aşamaları çalıştırır; kanıt ve manifest farkı incelenir.
+Commit denetimi pilot girdileri değiştiğinde `icerik-hatti.test.mjs` ve konu testlerini çalıştırır.
 
 İzleyicinin paketini değiştirmeden UI denetimi:
 

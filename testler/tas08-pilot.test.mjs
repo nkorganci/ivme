@@ -8,7 +8,7 @@ import { expandBank, collapseTwins } from '../frontend/src/learn/engine/selectio
 import { plannedSize, pickSharedSet } from '../frontend/src/learn/engine/sharedSet.js';
 
 const read = (path) => readFileSync(new URL('../' + path, import.meta.url));
-const evidence = JSON.parse(read('frontend/src/learn/content/bolme-pilot-evidence.json'));
+const evidence = JSON.parse(read('frontend/src/learn/content/kanit/bolme-bolunebilme.json'));
 const lessonBytes = read('frontend/src/learn/content/dersler/bolme-bolunebilme.ders');
 const lesson = parseLesson(lessonBytes.toString());
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');

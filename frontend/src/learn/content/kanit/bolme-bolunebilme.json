@@ -507,5 +507,6 @@
   "independentCodes": [
     "TYT-0592",
     "TYT-0597"
-  ]
+  ],
+  "testScope": "Rakam koşullarını ölçer"
 }

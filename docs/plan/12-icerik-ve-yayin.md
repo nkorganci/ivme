@@ -241,6 +241,21 @@ Kalan ortam adımı: dış makinede HTTPS adresi, zamanlayıcı ve webhook ile b
 kurup uygulamayı kapatarak gerçek alarm ve iyileşme bildirimini gözlemek. Bu
 kanıt olmadan dış uyarının üretimde etkin olduğu söylenmez.
 
+## 12.13 — TAS-09 kaynaklı konu içerik hattı
+
+Durum: `KISMI`. `python scripts/ivme.py icerik calistir <kavram>` görev tanımından
+(`icerik-hatti/gorevler/`) kaynak paketini, iddia kanıtını, şablon denetimini, kanıt
+derlemesini, testleri, insan inceleme durumunu ve yayın manifestini aşama hash'leriyle
+üretir; değişmeyen aşama atlanır, kesintide yalnız eksik aşama çalışır. Taslak eksikse
+agent görev paketi yazılır; hat model çağırmaz ve onay yazmaz. Bölme pilotu aynı kanıtla
+hatta taşındı. Tarif ve kanıt: [içerik hattı](../islemler/icerik-hatti.md).
+
+Kalan somut adım (EBOB–EKOK ikinci konu): konu testi `testler/ebob-ekok-pilot.test.mjs`,
+bağımsız iki sorunun bankaya alınması (`konu-ogrenme-banka.mjs`, `ortak-set-tani.mjs --yaz`),
+`icerik calistir ebob-ekok`, ders `kaynak:` satırının ana kitaba bağlanması ve masaüstü/mobil
+ders + ortak pratik UI kabulü. Ardından öğretmen incelemesi; pilot kabulü (12.12) gibi
+teknik geçiş pedagojik onay sayılmaz.
+
 ## 12.12 — TAS-08 kaynaklı öğretim pilotu
 
 Durum: `KISMI`. Bölme–bölünebilme dersinin sekiz bölümü tam MEB kitabındaki

@@ -1,9 +1,9 @@
 import { pickPast, pickPractice, pickTest, topUp, visible } from './selection.js';
-import pilot from '../content/bolme-pilot-evidence.json' with { type: 'json' };
+import { evidenceFor } from '../content/evidence.js';
 
-// Pilotun konu testi yalnız açıklaması tamamlanmış, derste çözümü gösterilmeyen sorulardan oluşur.
-// Daha geniş çıkmış/pratik havuzlarının içerik incelemesi ayrı; eksik set rastgele soruyla doldurulmaz.
-const testPool = (bank) => bank.filter((q) => q.conceptId !== pilot.conceptId || pilot.independentCodes.includes(q.code));
+// Kaynaklı kanıtı olan konunun (TAS-08/09) testi yalnız açıklaması tamamlanmış, derste çözümü gösterilmeyen sorulardan
+// oluşur. Daha geniş çıkmış/pratik havuzlarının içerik incelemesi ayrı; eksik set rastgele soruyla doldurulmaz.
+const testPool = (bank) => bank.filter((q) => !evidenceFor(q.conceptId) || evidenceFor(q.conceptId).independentCodes.includes(q.code));
 
 // TAS-05: konu testi, çıkmış sorular ve tip alıştırması ortak PRATIK oturumu olarak açılır. Burada yalnız banka
 // sorusu vardır (ders içi `lesson_q` ortak soru ekranında çözülemez); gösterilen sayı = kurulan setin boyutu.
@@ -32,7 +32,8 @@ export function plannedSize(type, all, archetype = null, state = {}) {
 /** Kısa açıklama: istenen sayı kurulamıyorsa gerçek sayı ve nedeni (aynı soruyla doldurulmaz). */
 export function sizeNote(type, bank, archetype = null, state = {}) {
   const size = plannedSize(type, bank, archetype, state);
-  if (type === 'test' && bank.some((q) => q.conceptId === pilot.conceptId)) return `Açıklamalı pilot: ${size} bağımsız aktarım sorusu. Rakam koşullarını ölçer; bütün soru tiplerini kapsayan ustalık testi değildir. Diğer çıkmış soruların ayrıntılı çözüm incelemesi sürüyor.`;
+  const evidence = type === 'test' && evidenceFor(bank.find((q) => evidenceFor(q.conceptId))?.conceptId);
+  if (evidence) return `Açıklamalı pilot: ${size} bağımsız aktarım sorusu. ${evidence.testScope}; bütün soru tiplerini kapsayan ustalık testi değildir. Diğer çıkmış soruların ayrıntılı çözüm incelemesi sürüyor.`;
   const wanted = type === 'test' ? TEST_SIZE : type === 'practice' ? PRACTICE_SIZE : null;
   if (wanted && size < wanted) return `Bankada bu kapsam için ${size} tekil soru var; set ${size} soruyla kurulur, aynı soruyla doldurulmaz.`;
   return '';

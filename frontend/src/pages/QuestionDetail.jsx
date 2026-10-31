@@ -16,7 +16,7 @@ import Modal from '../components/Modal.jsx';
 import PageInk from '../components/PageInk.jsx';
 import { useExamTrack } from '../examTrack.jsx';
 import { WORKED_EXAMS } from '../learn/content/worked-exams.js';
-import pilotEvidence from '../learn/content/bolme-pilot-evidence.json';
+import { evidenceForQuestion } from '../learn/content/evidence.js';
 import GuidedExam from '../learn/lesson/GuidedExam.jsx';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic', 'page'];
@@ -280,7 +280,7 @@ function QuestionView({ q, filters, session, reload }) {
             </>}
             {hintError && <p role="alert" className="text-danger">{hintError}</p>}
           </section>}
-          {!ready && state?.correctAnswer && pilotEvidence.questions[q.code] && WORKED_EXAMS[q.code] && <GuidedExam
+          {!ready && state?.correctAnswer && evidenceForQuestion(q.code) && WORKED_EXAMS[q.code] && <GuidedExam
             key={`${q.code}-${state.round ?? ''}`} afterAnswer
             question={{ id: q.id, code: q.code, year: q.year, exam: q.examType, source: q.source }} guide={WORKED_EXAMS[q.code]} />}
           {solution && (

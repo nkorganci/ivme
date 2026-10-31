@@ -15,6 +15,7 @@ kalır. Bir komut değişince tarif aynı commit'te güncellenir.
 | PDF'den soru çıkarma (metin önce, görsel yalnız gerekince) ve yerel Ollama | [pdf-ve-yerel-model.md](pdf-ve-yerel-model.md) |
 | TYT/AYT PDF–banka kaynağı, tekrar ve tamlık uzlaştırması | [pdf-kapsam-uzlastirma.md](pdf-kapsam-uzlastirma.md) |
 | PDF sayfa/blok/şekil/denklem kanıt paketi (aşama hash'li, tekrar işlemeyen) | [pdf-kanit-hatti.md](pdf-kanit-hatti.md) |
+| Kaynaklı konu içeriği: kaynak → kanıt → taslak → doğrulama → inceleme → paket (`ivme.py icerik`) | [icerik-hatti.md](icerik-hatti.md) |
 | Akıllı Öğretmen içeriği ekleme/aktarma | [ogretim-icerigi.md](ogretim-icerigi.md) |
 | İnteraktif Öğrenme ünitesi ekleme ve denetleme | [interaktif-ogrenme.md](../icerik/interaktif-ogrenme.md#yeni-ünite-ekleme) |
 | Yeni KPSS sınavı ekleme | [14. adım — ekleme hattı](../plan/14-kpss.md#bir-kpss-sınavını-ekleme-hattı-her-sınav-için-aynı) |
