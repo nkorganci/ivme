@@ -168,3 +168,20 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 **Tamamlanma kanıtı:** ölçüm dönemi, gerçek katılımcı sayısı, anonimleştirilmiş bulgular ve her yeni sorunun görev kimliği.
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
+
+## 12.06 — TAS-02 sağlık ve izleme temeli
+
+Durum: `KISMI_DIS_ORTAM_BEKLIYOR`. Liveness yalnız uygulama sürecini, readiness
+uygulama durumunu ve PostgreSQL bağlantısını ölçer. Öğrenme ve pratik kayıtları
+transaction dönüşünden sonra sonuç ve süre metriği üretir. Dış kontrol betiği
+readiness'i uygulama makinesinden bağımsız olarak sorgular; üç başarısız kontrolde
+bir kez alarm, iki başarılı kontrolde bir kez iyileşme bildirir.
+
+Kabul: DB kesintisi readiness'i DOWN yapar, liveness UP kalır; kayıt hatası
+öğrenciye görünür ve DB'den bağımsız metrik/logda iz bırakır; uygulama veya makine
+kapandığında dış makinedeki izleyici webhook uyarısı üretir. İşletim ve sınırlar
+[sağlık/izleme tarifindedir](../islemler/saglik-ve-izleme.md).
+
+Kalan ortam adımı: dış makinede HTTPS adresi, zamanlayıcı ve webhook ile betiği
+kurup uygulamayı kapatarak gerçek alarm ve iyileşme bildirimini gözlemek. Bu
+kanıt olmadan dış uyarının üretimde etkin olduğu söylenmez.

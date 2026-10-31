@@ -2,6 +2,7 @@ package com.hedefyks.question;
 
 import com.hedefyks.common.ApiException;
 import com.hedefyks.common.PageResponse;
+import com.hedefyks.common.RecordWriteMetrics;
 import com.hedefyks.question.AttemptDtos.AttemptRequest;
 import com.hedefyks.question.AttemptDtos.PracticeState;
 import com.hedefyks.question.QuestionDtos.FilterRow;
@@ -38,6 +39,7 @@ public class QuestionController {
     private final ImageStorage images;
     private final QrService qr;
     private final AttemptService attempts;
+    private final RecordWriteMetrics writeMetrics;
     private final BoardService boards;
     private final QuestionAvailabilityService availability;
     private final QuestionHelpfulnessService helpfulness;
@@ -45,7 +47,7 @@ public class QuestionController {
     private final com.hedefyks.examtrack.ExamTrackService tracks;
 
     public QuestionController(QuestionService service, QuestionRepository questions, ImageStorage images, QrService qr,
-                              AttemptService attempts, BoardService boards, QuestionAvailabilityService availability,
+                              AttemptService attempts, RecordWriteMetrics writeMetrics, BoardService boards, QuestionAvailabilityService availability,
                               QuestionHelpfulnessService helpfulness, HintService hints,
                               com.hedefyks.examtrack.ExamTrackService tracks) {
         this.service = service;
@@ -53,6 +55,7 @@ public class QuestionController {
         this.images = images;
         this.qr = qr;
         this.attempts = attempts;
+        this.writeMetrics = writeMetrics;
         this.boards = boards;
         this.availability = availability;
         this.helpfulness = helpfulness;
@@ -151,7 +154,7 @@ public class QuestionController {
     @PostMapping("/{id}/practice")
     public PracticeState practiceEvent(@PathVariable Long id, @Valid @RequestBody AttemptRequest req,
                                        @AuthenticationPrincipal AppUserDetails me) {
-        return attempts.submit(id, me.id(), req);
+        return writeMetrics.measure("practice_answer", () -> attempts.submit(id, me.id(), req));
     }
 
     @GetMapping("/{id}/board")

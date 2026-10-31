@@ -35,6 +35,23 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+      show-components: never
+      group:
+        readiness:
+          include: readinessState,db
+        liveness:
+          include: livenessState
+
 app:
   csrf-cookie-name: ${YKS_CSRF_COOKIE:XSRF-TOKEN}
   public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir

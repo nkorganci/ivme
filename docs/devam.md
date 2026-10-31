@@ -27,5 +27,15 @@ V90 yalnız teknik işaret tablosu eklemişti; V91 bu kullanılmayan tabloyu kal
 
 TAS-01'de kalan somut iş yok. Sıradaki görev kullanıcı tarafından seçilir;
 yeni görevde ilk komut `git status --short`, ardından yalnız ilgili görev satırı.
+TAS-02 sağlık ve izleme temeli kodlandı: Actuator liveness/readiness + DB,
+öğrenme/pratik yazma metrikleri, dış webhook alarm/iyileşme betiği. Geçici DB'de
+12 ilgili backend testi, dış betikte 4 test geçti; yerel sunulan sağlık uçları
+200/UP, kapalı uçlar anonim isteğe 401 döndü. Gerçek öğrenci DB'si değiştirilmedi.
+Gerçek dış alarmın etkinliği henüz kanıtlanmadı. Sonraki somut adım: ayrı bir
+izleyici makinesinde HTTPS site adresi ve webhook ile
+`scripts/dis-saglik-izle.py` betiğini her dakika çalıştırıp test ortamı
+kesintisi/iyileşmesinde gelen bildirimi doğrulamak. Kurulum tarifi
+[sağlık ve izleme](islemler/saglik-ve-izleme.md) dosyasında.
+
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

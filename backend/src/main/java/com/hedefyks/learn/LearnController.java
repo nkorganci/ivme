@@ -2,6 +2,7 @@ package com.hedefyks.learn;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.hedefyks.user.AppUserDetails;
+import com.hedefyks.common.RecordWriteMetrics;
 import java.util.List;
 import java.util.Map;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,9 +23,11 @@ public class LearnController {
     public record BankAnswerBody(String subject, JsonNode event, Long expectedUserId) {}
 
     private final LearnService service;
+    private final RecordWriteMetrics writeMetrics;
 
-    public LearnController(LearnService service) {
+    public LearnController(LearnService service, RecordWriteMetrics writeMetrics) {
         this.service = service;
+        this.writeMetrics = writeMetrics;
     }
 
     @GetMapping
@@ -36,19 +39,19 @@ public class LearnController {
     @PutMapping("/profile")
     public Map<String, Object> profile(@AuthenticationPrincipal AppUserDetails me, @RequestBody ProfileBody body) {
         requireOwner(me, body.expectedUserId());
-        return service.saveProfile(me.id(), subject(body.subject()), body.settings(), body.revision());
+        return writeMetrics.measure("learn_profile", () -> service.saveProfile(me.id(), subject(body.subject()), body.settings(), body.revision()));
     }
 
     @PostMapping("/events")
     public Map<String, Object> events(@AuthenticationPrincipal AppUserDetails me, @RequestBody EventsBody body) {
         requireOwner(me, body.expectedUserId());
-        return Map.of("events", service.append(me.id(), subject(body.subject()), body.events()));
+        return writeMetrics.measure("learn_events", () -> Map.of("events", service.append(me.id(), subject(body.subject()), body.events())));
     }
 
     @PostMapping("/bank-answer")
     public Map<String, Object> bankAnswer(@AuthenticationPrincipal AppUserDetails me, @RequestBody BankAnswerBody body) {
         requireOwner(me, body.expectedUserId());
-        return service.bankAnswer(me.id(), subject(body.subject()), body.event());
+        return writeMetrics.measure("learn_bank_answer", () -> service.bankAnswer(me.id(), subject(body.subject()), body.event()));
     }
 
     private static void requireOwner(AppUserDetails me, Long expectedUserId) {
