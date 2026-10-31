@@ -169,6 +169,17 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
 
+## 12.11 — TAS-07 sürümlü PDF kanıt hattı
+
+Durum: `TAMAMLANDI`. `scripts/pdf_kanit_paketi.py` özgün PDF'den sayfa, metin bloğu,
+denklem adayı, çizgili tablo, şekil kırpımı ve gerektiğinde OCR kanıtını aşama hash'iyle
+saklar. Aynı kaynak ve sürüm tekrar işlendiğinde aşamalar kullanılır; bozuk çıktının
+hızlı atlanması engellenir. İnsan kararı yeniden üretilebilir paketten ayrıdır. Sabit
+matematik pilotu 10 kaynak/52 sayfada altı düzen türünü kapsadı; ikinci geçişte yeni
+düzen/kırpım/OCR ve model çağrısı yok, bütün paketler doğrulandı. Kanıt ve sınırlar
+[PDF kanıt hattında](../islemler/pdf-kanit-hatti.md). Konu için seçilmiş ana kaynak,
+iddia → blok/sayfa bağı ve öğretim kabulü TAS-08 kapsamında hazırlanacak.
+
 ## 12.10 — TAS-06 kişisel zorluk ve tekrar tercihleri
 
 Durum: `TAMAMLANDI`. Öğrenci her soru için kendi zorluk etiketini (mevcut oy kaydı, tek kayıt, atomik yazma, temizlenebilir)

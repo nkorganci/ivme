@@ -170,6 +170,13 @@ class LayoutTest(PackCase):
         self.assertEqual([(r['pageIndex'], r['printedLabel']) for r in (self.page(pdf, n) for n in (1, 2, 3))],
                          [(1, 'i'), (2, '5'), (3, '6')])
 
+    def test_text_font_box_is_clipped_to_visible_page(self):
+        pdf = make_pdf(self.dir / 'edge.pdf', lambda page, n: text(page, 20, 840, 'Sayfa kenarindaki metin', 25))
+        self.build(pdf)
+        record = self.page(pdf, 1)
+        self.assertEqual(record['layout']['blocks'][0]['bbox'][3], 842)
+        self.assertTrue(kanit.verify_pack(self.pack(pdf))['ok'])
+
     def test_rotated_page_keeps_boxes_inside_the_rotated_space(self):
         pdf = make_pdf(self.dir / 'rot.pdf', lambda page, n: (figure_page(page), page.set_rotation(90)))
         self.build(pdf)
@@ -236,6 +243,16 @@ class MathProfileTest(unittest.TestCase):
 
 
 class StageKeyTest(PackCase):
+    def test_same_bytes_keep_both_archive_paths_in_one_pack(self):
+        first = make_pdf(self.dir / 'one.pdf', figure_page)
+        second = self.dir / 'two.pdf'
+        second.write_bytes(first.read_bytes())
+        self.build(first, relative='Matematik/one.pdf')
+        _, stats = self.build(second, relative='Matematik/two.pdf')
+        source = kanit.read_json(self.pack(first) / 'kaynak.json')
+        self.assertEqual(source['paths'], ['Matematik/one.pdf', 'Matematik/two.pdf'])
+        self.assertEqual((stats['layoutBuilt'], stats['layoutReused']), (0, 1))
+
     def test_second_run_rebuilds_nothing_and_page_files_are_byte_identical(self):
         pdf = make_pdf(self.dir / 'again.pdf', figure_page, pages=3)
         _, first = self.build(pdf)
@@ -282,7 +299,7 @@ class StageKeyTest(PackCase):
         self.assertNotEqual(base, kanit.layout_key('a' * 64, 2, 'd'))
         self.assertNotEqual(base, kanit.layout_key('a' * 64, 1, 'e'))
         self.assertEqual(base, kanit.layout_key('a' * 64, 1, 'd'))
-        with patch.object(kanit, 'LAYOUT_VERSION', 'kanit-layout-v2'):
+        with patch.object(kanit, 'LAYOUT_VERSION', 'kanit-layout-test-next'):
             self.assertNotEqual(base, kanit.layout_key('a' * 64, 1, 'd'))
         with patch.object(kanit, 'TOOL', 'pymupdf-0.0'):
             self.assertNotEqual(base, kanit.layout_key('a' * 64, 1, 'd'))
@@ -299,7 +316,7 @@ class IntegrityTest(PackCase):
         report = kanit.verify_pack(self.pack(pdf))
         self.assertFalse(report['ok'])
         self.assertTrue(any('0002.json' in p for p in report['problems']))
-        _, stats = self.build(pdf, pages='1-3')
+        _, stats = self.build(pdf)
         self.assertEqual((stats['layoutBuilt'], stats['layoutReused'], stats['repaired']), (1, 2, 1))
         self.assertTrue(kanit.verify_pack(self.pack(pdf))['ok'])
 
@@ -310,15 +327,16 @@ class IntegrityTest(PackCase):
         original = crop.read_bytes()
         crop.write_bytes(b'bozuk')
         self.assertFalse(kanit.verify_pack(self.pack(pdf))['ok'])
-        _, stats = self.build(pdf, pages='1')
+        _, stats = self.build(pdf)
         self.assertEqual((stats['cropsBuilt'], stats['layoutReused']), (1, 1))
+        self.assertEqual(stats['skippedPack'], 0)
         self.assertEqual(crop.read_bytes(), original)
 
     def test_half_written_page_file_counts_as_missing(self):
         pdf = make_pdf(self.dir / 'half.pdf', figure_page)
         self.build(pdf)
         (self.pack(pdf) / 'sayfalar' / '0001.json').write_text('{"schema": "ivme.pdf-kanit/v1.sayfa", "layou', encoding='utf-8')
-        _, stats = self.build(pdf, pages='1')
+        _, stats = self.build(pdf)
         self.assertEqual((stats['layoutBuilt'], stats['layoutReused']), (1, 0))
         self.assertTrue(kanit.verify_pack(self.pack(pdf))['ok'])
 

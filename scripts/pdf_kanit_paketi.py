@@ -34,7 +34,7 @@ DECISIONS = APP / 'veri/content-labels/pdf-kanit-kararlar'
 TESSDATA = APP / 'veri/tessdata'
 
 SCHEMA = 'ivme.pdf-kanit/v1'
-LAYOUT_VERSION = 'kanit-layout-v1'
+LAYOUT_VERSION = 'kanit-layout-v2'
 CROP_VERSION = 'kanit-crop-v1'
 OCR_VERSION = 'kanit-ocr-lines-v1'
 TOOL = f'pymupdf-{pymupdf.VersionBind}'
@@ -191,9 +191,24 @@ def text_lines(page):
         for line in block['lines']:
             text = ''.join(span['text'] for span in line['spans']).strip()
             if text:
-                lines.append({'text': text, 'bbox': pymupdf.Rect(line['bbox']) * matrix, 'block': block['number'],
+                # PDF font metrics can extend beyond the visible page. Evidence boxes
+                # and crop coordinates use the visible, rotated page space.
+                rect = (pymupdf.Rect(line['bbox']) * matrix) & page.rect
+                if rect.is_empty:
+                    continue
+                lines.append({'text': text, 'bbox': rect, 'block': block['number'],
                               'spans': [(span['font'], span['size'], span['flags'], span['text']) for span in line['spans']]})
     return lines
+
+
+def unique_ids(records):
+    """Disambiguate identical visible text/figure overlays on one page."""
+    seen = {}
+    for record in records:
+        base = record['id']
+        seen[base] = seen.get(base, 0) + 1
+        if seen[base] > 1:
+            record['id'] = f'{base}-{seen[base]}'
 
 
 def math_profile(lines):
@@ -549,6 +564,7 @@ def build_layout(page, sha, decor, memo, params=LAYOUT_PARAMS):
     blocks = [pairs[i][1] for i in order]
     for position, record in enumerate(blocks):
         record['order'] = position
+    unique_ids(blocks)
     figures = []
     for region in sorted(regions, key=lambda r: (r['rect'].y0, r['rect'].x0)):
         rect = region['rect'] & page.rect
@@ -557,6 +573,7 @@ def build_layout(page, sha, decor, memo, params=LAYOUT_PARAMS):
         figure = figure_record(sha, number, rect, region['kinds'], region['xrefs'], label_text[:300], len(region['labelLines']), caption)
         figure['embeddedImages'] = embedded_image_hashes(page.parent, figure['xrefs'], memo)
         figures.append(figure)
+    unique_ids(figures)
     raster_area = sum(pymupdf.Rect(f['bbox']).get_area() for f in figures if 'raster' in f['sources']) / max(1, page.rect.get_area())
     blank_render = quality['chars'] == 0 and render['inkRatio'] < params['blankInkRatio']
     page_image = any(item['kind'] == 'PAGE_IMAGE' for item in background)
@@ -900,11 +917,13 @@ def build_pack(path, pages=None, ocr=False, ocr_lines=False, relative=None, out=
     directory = pack_dir(sha, out)
     stats = Stats()
     previous = read_json(directory / 'ozet.json')
+    source_record = read_json(directory / 'kaynak.json')
     if (previous and previous.get('complete') and not pages and not ocr_lines and not previous.get('failures')
             and previous['versions'] == current_versions() and not previous['ocrPendingPages']
             and previous.get('decisionsSha256') == digest_of(load_decisions(sha))
             and len(list((directory / 'sayfalar').glob('*.json'))) == previous['pagesExpected']
-            and read_json(directory / 'kaynak.json')):
+            and source_record and (not relative or relative in source_record.get('paths', []))
+            and (integrity := verify_pack(directory))['ok'] and not integrity['stalePages']):
         stats['skippedPack'] = 1
         return previous, stats
     with PackLock(directory) as lock:

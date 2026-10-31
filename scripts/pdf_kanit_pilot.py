@@ -18,7 +18,18 @@ REPORT = kanit.OUT / 'pilot-matematik/rapor.json'
 # (path under Kaynaklar/ogm-materyal/Matematik, pages). Chosen by hand from the source
 # inventory so that every layout family is present; sizes stay inside the pilot range
 # of 10-20 sources and 50-100 pages.
-SPEC = []
+SPEC = [
+    ('TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf', '1-10'),
+    ('AYT/Ders Anlatim Sunulari 11. Sinif/41 - KURE.pdf', '1-4'),
+    ('TYT-AYT Ortak/Konu Ozetleri 9. Sinif/03 - KUMELERDE ISLEMLER- I.pdf', '1'),
+    ('TYT-AYT Ortak/Konu Ozetleri 9. Sinif/02 - KUMELERDE TEMEL KAVRAMLAR- II.pdf', '1'),
+    ('TYT-AYT Ortak/OGM Soru Bankasi 10. Sinif/01 - Sayma ve Olasilik (Bolum 1).pdf', '1-6'),
+    ('AYT/Konu Anlatimi (Video Notlari)/14 - LIMIT VE SUREKLILIK.pdf', '1-12'),
+    ('TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/01 - bilesik onermeler.pdf', '1-5'),
+    ('TYT-AYT Ortak/Konu Ozetleri 9. Sinif/01 - KUMELERDE TEMEL KAVRAMLAR- I.pdf', '1'),
+    ('TYT-AYT Ortak/OGM Soru Bankasi 9. Sinif/01 - Mantik.pdf', '1-8'),
+    ('AYT/YKS Kampi Testleri/Matematik (AYT) - Test 01.pdf', '1-4'),
+]
 
 CATEGORIES = {
     'dijital_metin': 'metin katmanı kullanılabilir, ≥3 blok',
@@ -118,6 +129,6 @@ def main(write=False):
         REPORT.parent.mkdir(parents=True, exist_ok=True)
         kanit.write_json(REPORT, report, indent=1)
     print(text)
-    raise SystemExit(0 if all(report['acceptance'].values() if False else [
-        report['acceptance']['everyCategoryPresent'], report['acceptance']['noRecomputationOnSecondPass'],
-        report['acceptance']['everyPackVerified'], report['acceptance']['modelCalls'] == 0]) else 1)
+    accepted = all(value for key, value in report['acceptance'].items() if key not in ('modelCalls', 'externalCalls'))
+    accepted = accepted and report['acceptance']['modelCalls'] == 0 and report['acceptance']['externalCalls'] == 0
+    raise SystemExit(0 if accepted else 1)

@@ -59,7 +59,18 @@ TAS-06 / 12.10 tamamlandı: kişisel zorluk etiketi (mevcut `feedback.difficulty
 tercihi (V94 `student_question_preferences`) yalnız öğrenciye aittir; gizlenen sorular otomatik
 pratik havuzundan, motor setlerinden ve öneri örneğinden çıkar, bekleyen “tekrar göster” öne
 alınır; Soru Çöz & Pratik'te kişisel süzgeçler ve sıfırlama vardır. Cevap geçmişi, denemeler ve
-sabit kitapçık değişmez. Bu kapsamda açık iş yok; sıradaki görevi (TAS-07…) kullanıcı seçer.
+sabit kitapçık değişmez. Bu kapsamda açık iş yok.
+
+TAS-07 / 12.11 tamamlandı: `pdf_kanit_paketi.py` sürümlü PDF kanıtını oluşturur;
+`pdf_kanit_pilot.py` sabit 10 matematik kaynağının 52 sayfasını iki geçişte ölçtü.
+Altı kategori mevcut, 10/10 paket bütünlüğü geçti; ikinci geçişte yeni düzen,
+kırpım ve OCR üretilmedi, model/dış çağrı yapılmadı. Gerçek PDF'lerde görülen
+sayfa dışına taşan bbox ve yinelenen kimlik düzeltildi; eski paketlerin etkilenen
+sayfaları onarıldı. `veri/pdf-kanit/pilot-matematik/rapor.json` yeniden üretilebilir
+rapordur; özgün `Kaynaklar/` ve öğrenci DB'si değişmedi. Birim testleri ve plan/
+kontrol sonucu görev tablosunda. TAS-07'de açık iş yok; sonraki somut içerik adımı
+TAS-08'de seçilmiş ana kaynak için iddia → blok/sayfa kanıt paketi oluşturmak.
+Sıradaki komut: `git status --short`, ardından TAS-08 görev satırı ve §10.
 
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

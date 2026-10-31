@@ -364,7 +364,7 @@ Yerel modelde şemalı çıktı biçim hatalarını azaltabilir; içerik doğrul
 
 Depodaki varsayılan model, makine için otomatik olarak en iyi seçenek kabul edilmemeli. Donanım ve kalite ölçülmedi. Aynı temsilî paket üzerinde mevcut model/kurallı yöntem/güçlü model karşılaştırılmalı: **matematik sembolü hatası, şekil eksikliği, konu eşleme hatası, insan düzeltme süresi, süre ve kaynak tüketimi**. Yerel modelin API token maliyeti olmaması, toplam maliyetinin sıfır olduğu anlamına gelmez.
 
-Başlangıç için önerilen pilot: matematikten 10–20 kaynak ve 50–100 temsilî sayfa/bölge; dijital metin, tarama, iki sütun, tablo, grafik ve yoğun denklem örnekleri içerir. Bunlar önerilen örneklem büyüklükleridir, tamamlanmış inceleme değildir. Diğer derslere geçişte yeni şekil/terim türleri ayrıca örneklenmeli.
+Başlangıç için önerilen pilot: matematikten 10–20 kaynak ve 50–100 temsilî sayfa/bölge; dijital metin, tarama, iki sütun, tablo, grafik ve yoğun denklem örnekleri içerir. TAS-07 çıkarım pilotu 10 kaynak/52 sayfada bu altı kategoriyi kapsadı; sürümlü kanıt paketi ve ikinci geçiş sonucu [işlem tarifindedir](../islemler/pdf-kanit-hatti.md). Bu makine çıkarımı, matematiksel/alan doğruluğu ve öğretmen kabulü değildir. Diğer derslere geçişte yeni şekil/terim türleri ayrıca örneklenmeli.
 
 ### 9.6. Kaynağı tekrar okumadan konu üretme
 
