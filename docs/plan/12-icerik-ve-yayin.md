@@ -169,6 +169,16 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
 
+## 12.08 — TAS-04 ortak cevap ve konu sayımı
+
+Durum: `TAMAMLANDI`. Ders içi sorular ve kaynaklı not alıştırması sunucu cevap
+anahtarıyla puanlanır; cevap anındaki konu bağı saklanır. Konu takibi soru bankası,
+pratik, deneme, Konuyu Öğrenelim banka cevabı, açık pratik, ders alıştırması ve kart
+tekrarını tek sayım sözleşmesiyle ayrı sütunlarda gösterir; banka cevabı iki kez
+sayılmaz, rehberli cevap bağımsız ölçüm sayılmaz. Mevcut DB kayıtları yeniden
+puanlanmaz. Sözleşme ve kanıt [öğrenci ilerlemesinde](../mimari/ogrenci-ilerlemesi.md#ortak-cevap-ve-sayım-sözleşmesi-tas-04)
+ve [görev tablosunda](../gorev-durumu.md).
+
 ## 12.07 — TAS-03 ortak katalog ve sınav kapsamı
 
 Durum: `TAMAMLANDI`. Konuyu Öğrenelim ad ve rozetleri ortak DB kataloğundan kimlikle

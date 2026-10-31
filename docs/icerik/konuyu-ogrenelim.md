@@ -136,6 +136,11 @@ node --test testler/konu-ogrenme-icerik.test.mjs testler/konu-ogrenme-motor.test
 İçerik/sayısal kontroller, keşif modellerinin bütün kontrol kombinasyonları, bilinen gerçek
 soruların bağımsız hesapları ve örneklerin ustalık testinden çıkarılması denetlenir.
 
+Ders sorusu, boşluk/eşleştirme/sıralama/gruplama cevabı veya `kategori:` değişince sunucu
+cevap anahtarını aynı commit'te yenile: `node scripts/cevap-anahtari.mjs`, ardından
+`node --test testler/cevap-anahtari.test.mjs`. Ders soruları sunucuda bu anahtarla
+puanlanır; `ivme.py kontrol` güncel olmayan anahtarı reddeder.
+
 İzleyici `frontend/dist` klasörünü yeniden derleme sırasında değiştirebildiği için UI
 denetimine ayrı paket üret; izleyiciyi kapatma ve gerçek DB'de test cevabı üretme:
 

@@ -12,6 +12,7 @@ import './Curriculum.css';
 const number = value => value == null ? '—' : value.toLocaleString('tr-TR');
 const numeric = (field, headerName, extra = {}) => ({ field, headerName, cellDataType: 'number', minWidth: 85,
   valueFormatter: ({ value }) => number(value), ...extra });
+const pair = (good, bad) => `${number(good ?? 0)} / ${number(bad ?? 0)}`;
 const ALL_SUBJECTS = 'Bütün dersler';
 // Header padding plus the select's padding, border and native arrow.
 const SUBJECT_SELECT_EXTRA = 46;
@@ -95,8 +96,11 @@ export default function Curriculum() {
   };
   const topicRows = scope.map(c => {
     const count = byProgress.get(c.id), bank = byCoverage.get(c.id)?.bankCounts;
+    const exercise = count?.exercise, review = count?.review;
     return { ...c, done: Boolean(completed[c.id]), correct: count?.correct || 0, wrong: count?.wrong || 0,
-      solved: (count?.correct || 0) + (count?.wrong || 0), ogm: bank?.OGM || 0, cikmis: bank?.CIKMIS || 0 };
+      solved: (count?.correct || 0) + (count?.wrong || 0), ogm: bank?.OGM || 0, cikmis: bank?.CIKMIS || 0,
+      answers: count?.answers || 0, lastCorrect: count?.lastCorrect || 0, lastWrong: count?.lastWrong || 0, inProgress: count?.inProgress || 0,
+      exerciseItems: exercise?.items || 0, exercise, reviews: review?.reviews || 0, review };
   });
   const distribution = useMemo(() => distributionRows(categories).filter(row => (!selectedSubject || row.subjectId === selectedSubject)
     && (!exam || kpss || row[exam.toLowerCase()])), [categories, selectedSubject, exam, kpss]);
@@ -121,9 +125,23 @@ export default function Curriculum() {
     // Topic tracking gives the topic 20% less room than the distribution table; long names wrap.
     ...baseColumns.map(column => column.field === 'topic' ? { ...column, minWidth: 208, flex: 1.6 } : column),
     // KPSS'de soru bankası henüz yok; yalnız ÖSYM çıkmış soruları sayılır.
-    ...(kpss ? [] : [numeric('ogm', 'Soru bankası', { cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) })]),
+    ...(kpss ? [] : [numeric('ogm', 'Soru bankası', { minWidth: 105, cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) })]),
     numeric('cikmis', 'Çıkmış soru', { cellRenderer: ({ data }) => data && bankLink(data, 'CIKMIS', data.cikmis) }),
-    numeric('solved', 'Çözdüğüm'), numeric('correct', 'Doğru'), numeric('wrong', 'Yanlış'),
+    numeric('solved', 'Çözdüğüm', { minWidth: 105, headerTooltip: 'Bitirilen pratik ve denemelerde tekil soru; doğru/yanlış ilk yanıttır.' }),
+    numeric('correct', 'Doğru'), numeric('wrong', 'Yanlış'),
+    numeric('answers', 'Toplam cevap', { minWidth: 105, headerTooltip: 'Aynı sorunun tekrar çözümleri dahil bütün cevaplar; tekil sayıyı artırmaz.' }),
+    { colId: 'last', headerName: 'Son sonuç D / Y', minWidth: 105, sortable: false, filter: false,
+      headerTooltip: 'Her sorunun en son cevabı: doğru / yanlış.', valueGetter: ({ data }) => data && pair(data.lastCorrect, data.lastWrong) },
+    numeric('inProgress', 'Devam eden', { minWidth: 105, headerTooltip: 'Henüz bitirilmemiş pratikte cevapladığın, yukarıdaki sayıma girmemiş sorular.' }),
+    // Konuyu Öğrenelim ve kaynaklı notlar yalnız YKS'dedir.
+    ...(kpss ? [] : [numeric('exerciseItems', 'Ders alıştırması', { minWidth: 120,
+      headerTooltip: 'Konuyu Öğrenelim ders soruları ve not alıştırmaları; soru bankasından ayrı sayılır.',
+      valueFormatter: ({ data }) => data && (data.exerciseItems ? `${number(data.exerciseItems)} · ${pair(data.exercise.firstCorrect, data.exercise.firstWrong)}` : '0'),
+      tooltipValueGetter: ({ data }) => data?.exerciseItems ? `${number(data.exerciseItems)} alıştırma · ilk sonuç ${pair(data.exercise.firstCorrect, data.exercise.firstWrong)} doğru/yanlış`
+        + ` · bağımsız ${number(data.exercise.independentCorrect)}/${number(data.exercise.independentItems)} doğru · rehberli cevap ${number(data.exercise.guidedAnswers)}`
+        + (data.exercise.unverifiedAnswers ? ` · sunucuda puanlanmamış eski cevap ${number(data.exercise.unverifiedAnswers)}` : '') : null }),
+    numeric('reviews', 'Kart tekrarı', { minWidth: 105, headerTooltip: 'Kartlardaki öz değerlendirme; doğru cevap sayılmaz.',
+      tooltipValueGetter: ({ data }) => data?.reviews ? `${number(data.review.cards)} kart · son değerlendirmede bildiğin ${number(data.review.lastKnown)}` : null })]),
     { colId: 'actions', headerName: 'Çalış', minWidth: 215, filter: false, sortable: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <div className="curriculum-cell-links">
         <Link to={'/calisma/yeni' + qs({ examType: exam, categoryId: [data.id] })}>Pratik yap</Link>
@@ -170,7 +188,7 @@ export default function Curriculum() {
     <p className="muted small">{tab === 'dagilim'
       ? '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
       : kpss ? 'Çıkmış soru sayısı ÖSYM kitapçıklarındaki her sorunun tek tek okunarak bağlandığı konudur; sınırı tartışmalı sorular öğretmen onayı bekler. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'
-      : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'}</p>
+      : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; tekrar çözümler Toplam cevap ve Son sonuçta görünür. Ders alıştırması ve kart tekrarı soru bankasından ayrı sayılır. Bitti işareti ayrı kaydedilir.'}</p>
     {kpss ? <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop()} · {track.name} ders, ünite ve konuları
       ÖSYM başvuru kılavuzu Tablo-1 (testlerin kapsamı) ve güvenilir konu listeleriyle doğrulandı.
       Dersler, Çıkmış Sorular ve Soru Çöz aynı ders, ünite ve konu kayıtlarını kullanır.</p>

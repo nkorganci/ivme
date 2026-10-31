@@ -1,0 +1,6663 @@
+{
+ "schemaVersion": 1,
+ "lessonItems": {
+  "bileske-ters:c1": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bileske-ters:c2": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "bileske-ters:c3": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "bileske-ters:c4": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bileske-ters:h1": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "bileske-ters:h2": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "bileske-ters:h3": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "bileske-ters:h4": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bileske-ters:o1": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "bileske-ters:o2": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "bileske-ters:o3": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "binom:c1": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "binom:c2": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "binom:c3": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "binom:c4": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "binom:h1": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "binom:h2": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "binom:h3": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "binom:h4": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "binom:o1": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "binom:o2": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "binom:o3": {
+   "conceptId": "binom",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:c1": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "birinci-derece-denklemler:c2": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:c3": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "birinci-derece-denklemler:c4": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:c5": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:c6": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "birinci-derece-denklemler:c7": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:c8": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "birinci-derece-denklemler:h1": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:h2": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "birinci-derece-denklemler:h3": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "birinci-derece-denklemler:h4": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "birinci-derece-denklemler:o1": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "birinci-derece-denklemler:o2": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "birinci-derece-denklemler:o3": {
+   "conceptId": "birinci-derece-denklemler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bolme-bolunebilme:b1": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "fill",
+   "answers": [
+    "1"
+   ],
+   "tolerance": 1e-9,
+   "version": "2ef865198e3a7f5b"
+  },
+  "bolme-bolunebilme:c1": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "bolme-bolunebilme:c2": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "bolme-bolunebilme:c3": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bolme-bolunebilme:c4": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "bolme-bolunebilme:e1": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "match",
+   "rights": [
+    "son iki basamak",
+    "son üç basamak",
+    "rakamlar toplamı",
+    "birler basamağı 0 ya da 5",
+    "sağdan $+, -, +, -$ toplamı"
+   ],
+   "version": "8876151313ffe5f4"
+  },
+  "bolme-bolunebilme:h1": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "bolme-bolunebilme:h2": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bolme-bolunebilme:h3": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bolme-bolunebilme:h4": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "bolme-bolunebilme:o1": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "bolme-bolunebilme:o2": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "bolme-bolunebilme:o3": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "bolme-bolunebilme:temel-islem": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "fill",
+   "answers": [
+    "3"
+   ],
+   "tolerance": 1e-9,
+   "version": "e9588464f384d63c"
+  },
+  "bolme-bolunebilme:temel-onbir": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "fill",
+   "answers": [
+    "7"
+   ],
+   "tolerance": 1e-9,
+   "version": "fb7c19358c488078"
+  },
+  "bolme-bolunebilme:temel-paket": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "fill",
+   "answers": [
+    "6"
+   ],
+   "tolerance": 1e-9,
+   "version": "77da5719a8fa9a21"
+  },
+  "bolme-bolunebilme:temel-sekiz": {
+   "conceptId": "bolme-bolunebilme",
+   "type": "fill",
+   "answers": [
+    "4"
+   ],
+   "tolerance": 1e-9,
+   "version": "1829c59b9b90d628"
+  },
+  "carpanlara-ayirma:c1": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "carpanlara-ayirma:c2": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "carpanlara-ayirma:c3": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "carpanlara-ayirma:c4": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "carpanlara-ayirma:h1": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "carpanlara-ayirma:h2": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "carpanlara-ayirma:h3": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "carpanlara-ayirma:h4": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "carpanlara-ayirma:o1": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "carpanlara-ayirma:o2": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "carpanlara-ayirma:o3": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "ebob-ekok:b1": {
+   "conceptId": "ebob-ekok",
+   "type": "fill",
+   "answers": [
+    "12"
+   ],
+   "tolerance": 1e-9,
+   "version": "f9057227054da360"
+  },
+  "ebob-ekok:b2": {
+   "conceptId": "ebob-ekok",
+   "type": "fill",
+   "answers": [
+    "9"
+   ],
+   "tolerance": 1e-9,
+   "version": "5ef2aede083644c6"
+  },
+  "ebob-ekok:c1": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:c10": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "ebob-ekok:c2": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "ebob-ekok:c3": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:c4": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "ebob-ekok:c5": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "ebob-ekok:c6": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:c7": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:c8": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:c9": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:h1": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:h2": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:h3": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "ebob-ekok:h4": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "ebob-ekok:h5": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "ebob-ekok:o1": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "ebob-ekok:o2": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "ebob-ekok:o3": {
+   "conceptId": "ebob-ekok",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c1": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "esitsizlikler:c2": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c3": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c4": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c5": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c6": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c7": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:c8": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:e1": {
+   "conceptId": "esitsizlikler",
+   "type": "match",
+   "rights": [
+    "$-2 \\leq x < 3$",
+    "$-2 < x \\leq 3$",
+    "$x \\leq 4$",
+    "$x > 1$"
+   ],
+   "version": "f6063393c9642ea2"
+  },
+  "esitsizlikler:h1": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "esitsizlikler:h2": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "esitsizlikler:h3": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "esitsizlikler:h4": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:o1": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "esitsizlikler:o2": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "esitsizlikler:o3": {
+   "conceptId": "esitsizlikler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-grafikleri:c1": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-grafikleri:c2": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-grafikleri:c3": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "fonksiyon-grafikleri:c4": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-grafikleri:h1": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "fonksiyon-grafikleri:h2": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-grafikleri:h3": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "fonksiyon-grafikleri:h4": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "fonksiyon-grafikleri:o1": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-grafikleri:o2": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "fonksiyon-grafikleri:o3": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-kavrami:c1": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "fonksiyon-kavrami:c2": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-kavrami:c3": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-kavrami:c4": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "fonksiyon-kavrami:h1": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-kavrami:h2": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "fonksiyon-kavrami:h3": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-kavrami:h4": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-kavrami:o1": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "fonksiyon-kavrami:o2": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "fonksiyon-kavrami:o3": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "fonksiyon-kavrami:s3k": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "categorize",
+   "groups": {
+    "7": "Çift fonksiyon",
+    "x²": "Çift fonksiyon",
+    "x⁴ − 3x²": "Çift fonksiyon",
+    "|x|": "Çift fonksiyon",
+    "x³": "Tek fonksiyon",
+    "5x": "Tek fonksiyon",
+    "x³ − 2x": "Tek fonksiyon",
+    "x⁵ + x": "Tek fonksiyon",
+    "x² + x": "Ne tek ne çift",
+    "x + 1": "Ne tek ne çift",
+    "x³ + 2": "Ne tek ne çift"
+   },
+   "version": "b108306bd1bce885"
+  },
+  "grafik-rutin-olmayan:c1": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "grafik-rutin-olmayan:c2": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "grafik-rutin-olmayan:c3": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "grafik-rutin-olmayan:c4": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "grafik-rutin-olmayan:h1": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "grafik-rutin-olmayan:h2": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "grafik-rutin-olmayan:h3": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "grafik-rutin-olmayan:h4": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "grafik-rutin-olmayan:o1": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "grafik-rutin-olmayan:o2": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "grafik-rutin-olmayan:o3": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "grafik-rutin-olmayan:r1": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "order",
+   "items": [
+    "Verileri belirle.",
+    "İsteneni anla.",
+    "Gerekirse şekil çiz, liste ya da tablo yap.",
+    "Sistematik düşün (dene, düzenle, genelle).",
+    "Akıl yürüt ve sonucu kontrol et."
+   ],
+   "version": "2bf8821c6e5b044a"
+  },
+  "hareket-problemleri:c1": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "hareket-problemleri:c2": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "hareket-problemleri:c3": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "hareket-problemleri:c4": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "hareket-problemleri:h1": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "hareket-problemleri:h2": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "hareket-problemleri:h3": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "hareket-problemleri:h4": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "hareket-problemleri:o1": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "hareket-problemleri:o2": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "hareket-problemleri:o3": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "ikinci-derece-denklemler:c1": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:c1b": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "9156b28fb0fc81ba"
+  },
+  "ikinci-derece-denklemler:c2": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:c2b": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "ikinci-derece-denklemler:c3": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:c3b": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:c4": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "ikinci-derece-denklemler:c4b": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:h1": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "ikinci-derece-denklemler:h2": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "9156b28fb0fc81ba"
+  },
+  "ikinci-derece-denklemler:h3": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "ikinci-derece-denklemler:h4": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "9156b28fb0fc81ba"
+  },
+  "ikinci-derece-denklemler:h5": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "ikinci-derece-denklemler:o1": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "ikinci-derece-denklemler:o2": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "9156b28fb0fc81ba"
+  },
+  "ikinci-derece-denklemler:o3": {
+   "conceptId": "ikinci-derece-denklemler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "kar-zarar:c1": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kar-zarar:c2": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kar-zarar:c3": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kar-zarar:c4": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kar-zarar:h1": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kar-zarar:h2": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kar-zarar:h3": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kar-zarar:h4": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kar-zarar:o1": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kar-zarar:o2": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kar-zarar:o3": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "koklu-ifadeler:b1": {
+   "conceptId": "koklu-ifadeler",
+   "type": "fill",
+   "answers": [
+    "18"
+   ],
+   "tolerance": 1e-9,
+   "version": "862d63488cd5a77b"
+  },
+  "koklu-ifadeler:c1": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "koklu-ifadeler:c1b": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "koklu-ifadeler:c2": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "koklu-ifadeler:c2b": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "koklu-ifadeler:c3": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "koklu-ifadeler:c4": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "koklu-ifadeler:c4b": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "koklu-ifadeler:c5": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "koklu-ifadeler:h1": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "koklu-ifadeler:h2": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "koklu-ifadeler:h3": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "koklu-ifadeler:h4": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "koklu-ifadeler:h5": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "koklu-ifadeler:o1": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "koklu-ifadeler:o2": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "koklu-ifadeler:o3": {
+   "conceptId": "koklu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kombinasyon:c1": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kombinasyon:c2": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kombinasyon:c3": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kombinasyon:c4": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kombinasyon:h1": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kombinasyon:h2": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kombinasyon:h3": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kombinasyon:h4": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kombinasyon:o1": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kombinasyon:o2": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kombinasyon:o3": {
+   "conceptId": "kombinasyon",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-olasilik:c1": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-olasilik:c2": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kosullu-olasilik:c3": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kosullu-olasilik:c4": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kosullu-olasilik:h1": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kosullu-olasilik:h2": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kosullu-olasilik:h3": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kosullu-olasilik:h4": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-olasilik:o1": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-olasilik:o2": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kosullu-olasilik:o3": {
+   "conceptId": "kosullu-olasilik",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kosullu-onerme:c1": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kosullu-onerme:c2": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:c3": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kosullu-onerme:c4": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:h1": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:h2": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kosullu-onerme:h3": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kosullu-onerme:h4": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kosullu-onerme:o1": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:o2": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kosullu-onerme:o3": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kume-islemleri:c1": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kume-islemleri:c2": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kume-islemleri:c3": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kume-islemleri:c4": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kume-islemleri:h1": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kume-islemleri:h2": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kume-islemleri:h3": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kume-islemleri:h4": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kume-islemleri:o1": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kume-islemleri:o2": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kume-islemleri:o3": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kumeler-temel:c1": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kumeler-temel:c2": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "kumeler-temel:c3": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kumeler-temel:c4": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kumeler-temel:h1": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kumeler-temel:h2": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kumeler-temel:h3": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "kumeler-temel:h4": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "kumeler-temel:o1": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kumeler-temel:o2": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "kumeler-temel:o3": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "merkezi-egilim:c1": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "merkezi-egilim:c2": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "merkezi-egilim:c3": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "merkezi-egilim:c4": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "merkezi-egilim:h1": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "merkezi-egilim:h2": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "merkezi-egilim:h3": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "merkezi-egilim:h4": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "merkezi-egilim:o1": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "merkezi-egilim:o2": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "merkezi-egilim:o3": {
+   "conceptId": "merkezi-egilim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "mutlak-deger:b1": {
+   "conceptId": "mutlak-deger",
+   "type": "fill",
+   "answers": [
+    "1"
+   ],
+   "tolerance": 1e-9,
+   "version": "2ef865198e3a7f5b"
+  },
+  "mutlak-deger:c1": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "mutlak-deger:c1b": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "mutlak-deger:c2": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "mutlak-deger:c3": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "mutlak-deger:c3b": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "mutlak-deger:c4": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "mutlak-deger:c4b": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "mutlak-deger:c5": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "mutlak-deger:h1": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "mutlak-deger:h2": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "mutlak-deger:h3": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "mutlak-deger:h4": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "mutlak-deger:o1": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "mutlak-deger:o2": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "mutlak-deger:o3": {
+   "conceptId": "mutlak-deger",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "olasilik:c1": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "olasilik:c2": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "olasilik:c3": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "olasilik:c4": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "olasilik:h1": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "olasilik:h2": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "olasilik:h3": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "olasilik:h4": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "olasilik:o1": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "olasilik:o2": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "olasilik:o3": {
+   "conceptId": "olasilik",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "onermeler:c1": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "onermeler:c2": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "onermeler:c3": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "onermeler:c4": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "onermeler:e1": {
+   "conceptId": "onermeler",
+   "type": "match",
+   "rights": [
+    "$p' \\vee q'$",
+    "$p' \\wedge q'$",
+    "$p \\vee q'$",
+    "$p' \\wedge q$"
+   ],
+   "version": "bd7fb7eb4af5f540"
+  },
+  "onermeler:h1": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "onermeler:h2": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "onermeler:h3": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "onermeler:h4": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "onermeler:o1": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "onermeler:o2": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "onermeler:o3": {
+   "conceptId": "onermeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "onermeler:s1k": {
+   "conceptId": "onermeler",
+   "type": "categorize",
+   "groups": {
+    "13 + 5 = 16": "Önerme",
+    "Ankara Türkiye'nin başkentidir.": "Önerme",
+    "Her asal sayı tektir.": "Önerme",
+    "0 bir doğal sayıdır.": "Önerme",
+    "Bugün sinemaya gidelim mi?": "Önerme değil",
+    "Kapıyı kapat.": "Önerme değil",
+    "Çilek en lezzetli meyvedir.": "Önerme değil",
+    "Keşke tatil uzun olsa.": "Önerme değil"
+   },
+   "version": "f8ad46f0ccb8b817"
+  },
+  "oran-oranti:c1": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "oran-oranti:c1b": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "oran-oranti:c2": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "oran-oranti:c2b": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "oran-oranti:c3": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "oran-oranti:c3b": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "oran-oranti:c4": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "oran-oranti:c4b": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "oran-oranti:h1": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "oran-oranti:h2": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "oran-oranti:h3": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "oran-oranti:h4": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "oran-oranti:o1": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "oran-oranti:o2": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "oran-oranti:o3": {
+   "conceptId": "oran-oranti",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "polinom-islemleri:c1": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "polinom-islemleri:c2": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "polinom-islemleri:c3": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "polinom-islemleri:c4": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "polinom-islemleri:h1": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "polinom-islemleri:h2": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "polinom-islemleri:h3": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "polinom-islemleri:h4": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "polinom-islemleri:o1": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "polinom-islemleri:o2": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "polinom-islemleri:o3": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "rasyonel-sayilar:b1": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "fill",
+   "answers": [
+    "4/11"
+   ],
+   "tolerance": 1e-9,
+   "version": "9a88ac70341455d1"
+  },
+  "rasyonel-sayilar:c1": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "rasyonel-sayilar:c10": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "rasyonel-sayilar:c2": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "rasyonel-sayilar:c3": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "rasyonel-sayilar:c4": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "rasyonel-sayilar:c5": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "rasyonel-sayilar:c6": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "rasyonel-sayilar:c7": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "rasyonel-sayilar:c8": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "rasyonel-sayilar:c9": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "rasyonel-sayilar:h1": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "rasyonel-sayilar:h2": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "rasyonel-sayilar:h3": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "rasyonel-sayilar:h4": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "rasyonel-sayilar:o1": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "rasyonel-sayilar:o2": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "rasyonel-sayilar:o3": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "rasyonel-sayilar:s1": {
+   "conceptId": "rasyonel-sayilar",
+   "type": "order",
+   "items": [
+    "$\\frac{7}{12}$",
+    "$\\frac{3}{5}$",
+    "$\\frac{5}{8}$",
+    "$\\frac{2}{3}$"
+   ],
+   "version": "d85c6b829a19ac7f"
+  },
+  "sayi-basamaklari:b1": {
+   "conceptId": "sayi-basamaklari",
+   "type": "fill",
+   "answers": [
+    "4"
+   ],
+   "tolerance": 1e-9,
+   "version": "1829c59b9b90d628"
+  },
+  "sayi-basamaklari:b2": {
+   "conceptId": "sayi-basamaklari",
+   "type": "fill",
+   "answers": [
+    "12"
+   ],
+   "tolerance": 1e-9,
+   "version": "f9057227054da360"
+  },
+  "sayi-basamaklari:c1": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "sayi-basamaklari:c2": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayi-basamaklari:c3": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-basamaklari:c4": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:c5": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:c6": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:c7": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:c8": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayi-basamaklari:h1": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:h2": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-basamaklari:h3": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:h4": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-basamaklari:o1": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-basamaklari:o2": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayi-basamaklari:o3": {
+   "conceptId": "sayi-basamaklari",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:c1": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-kesir-problemleri:c2": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayi-kesir-problemleri:c3": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "sayi-kesir-problemleri:c4": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:e1": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "match",
+   "rights": [
+    "$3x - 4$",
+    "$3(x - 4)$",
+    "$\\frac{x}{2} + 6$",
+    "$\\frac{x + 6}{2}$"
+   ],
+   "version": "30d33cd953760311"
+  },
+  "sayi-kesir-problemleri:h1": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-kesir-problemleri:h2": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayi-kesir-problemleri:h3": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:h4": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:o1": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:o2": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "sayi-kesir-problemleri:o3": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayma-permutasyon:c1": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayma-permutasyon:c2": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayma-permutasyon:c3": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayma-permutasyon:c4": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayma-permutasyon:h1": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayma-permutasyon:h2": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "sayma-permutasyon:h3": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayma-permutasyon:h4": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "sayma-permutasyon:o1": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "sayma-permutasyon:o2": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayma-permutasyon:o3": {
+   "conceptId": "sayma-permutasyon",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:b1": {
+   "conceptId": "temel-kavramlar",
+   "type": "fill",
+   "answers": [
+    "5050"
+   ],
+   "tolerance": 1e-9,
+   "version": "f0b1aa7d132f94c1"
+  },
+  "temel-kavramlar:b2": {
+   "conceptId": "temel-kavramlar",
+   "type": "fill",
+   "answers": [
+    "169"
+   ],
+   "tolerance": 1e-9,
+   "version": "6dc34df9f027e12d"
+  },
+  "temel-kavramlar:c1": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "temel-kavramlar:c10": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "temel-kavramlar:c2": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "temel-kavramlar:c3": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:c4": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "temel-kavramlar:c5": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "temel-kavramlar:c6": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:c7": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "temel-kavramlar:c8": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "temel-kavramlar:c9": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:h1": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "temel-kavramlar:h2": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "temel-kavramlar:h3": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "temel-kavramlar:h4": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "temel-kavramlar:h5": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "temel-kavramlar:k1": {
+   "conceptId": "temel-kavramlar",
+   "type": "categorize",
+   "groups": {
+    "0": "Doğal",
+    "$\\sqrt{16}$": "Doğal",
+    "$-5$": "Tam ama doğal değil",
+    "$-\\sqrt{9}$": "Tam ama doğal değil",
+    "$\\frac{3}{4}$": "Rasyonel ama tam değil",
+    "$0{,}\\overline{6}$": "Rasyonel ama tam değil",
+    "$-2{,}5$": "Rasyonel ama tam değil",
+    "$\\sqrt{7}$": "İrrasyonel",
+    "$\\pi$": "İrrasyonel",
+    "$1 + \\sqrt{2}$": "İrrasyonel"
+   },
+   "version": "2270da8171b4eaf3"
+  },
+  "temel-kavramlar:o1": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:o2": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "temel-kavramlar:o3": {
+   "conceptId": "temel-kavramlar",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "uslu-ifadeler:b1": {
+   "conceptId": "uslu-ifadeler",
+   "type": "fill",
+   "answers": [
+    "-1"
+   ],
+   "tolerance": 1e-9,
+   "version": "55bd753035ce9329"
+  },
+  "uslu-ifadeler:c1": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "uslu-ifadeler:c1b": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "uslu-ifadeler:c2": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "uslu-ifadeler:c2b": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "c2a5f217ead03c15"
+  },
+  "uslu-ifadeler:c3": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "uslu-ifadeler:c4": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "uslu-ifadeler:c4b": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C"
+   ],
+   "version": "10da8b624a5e5476"
+  },
+  "uslu-ifadeler:c5": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "uslu-ifadeler:e1": {
+   "conceptId": "uslu-ifadeler",
+   "type": "match",
+   "rights": [
+    "$a^8$",
+    "$a^2$",
+    "$a^{15}$",
+    "$10^5$"
+   ],
+   "version": "79ba29f614b97ac4"
+  },
+  "uslu-ifadeler:h1": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "uslu-ifadeler:h2": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "uslu-ifadeler:h3": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "uslu-ifadeler:h4": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "uslu-ifadeler:h5": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "uslu-ifadeler:o1": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "uslu-ifadeler:o2": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "uslu-ifadeler:o3": {
+   "conceptId": "uslu-ifadeler",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "veri-grafikleri:c1": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "veri-grafikleri:c2": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "veri-grafikleri:c3": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "veri-grafikleri:c4": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "veri-grafikleri:g1": {
+   "conceptId": "veri-grafikleri",
+   "type": "categorize",
+   "groups": {
+    "Bir bebeğin aylara göre kilosu": "Çizgi grafiği",
+    "Bir şehrin yıllara göre nüfusu": "Çizgi grafiği",
+    "Sınıfların okuduğu kitap sayıları": "Sütun grafiği",
+    "Ülkelerin kazandığı madalya sayıları": "Sütun grafiği",
+    "Aile bütçesinin harcama kalemlerine dağılımı": "Daire grafiği",
+    "Bir seçimde partilerin oy oranları": "Daire grafiği"
+   },
+   "version": "d5937cb13fee58ff"
+  },
+  "veri-grafikleri:h1": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "veri-grafikleri:h2": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "veri-grafikleri:h3": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "veri-grafikleri:h4": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "veri-grafikleri:o1": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "veri-grafikleri:o2": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "veri-grafikleri:o3": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yas-isci-problemleri:c1": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "yas-isci-problemleri:c2": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "yas-isci-problemleri:c3": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yas-isci-problemleri:c4": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "yas-isci-problemleri:h1": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "yas-isci-problemleri:h2": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yas-isci-problemleri:h3": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yas-isci-problemleri:h4": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yas-isci-problemleri:o1": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "yas-isci-problemleri:o2": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yas-isci-problemleri:o3": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "yuzde-karisim:c1": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "yuzde-karisim:c2": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yuzde-karisim:c3": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
+  "yuzde-karisim:c4": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "yuzde-karisim:e1": {
+   "conceptId": "yuzde-karisim",
+   "type": "match",
+   "rights": [
+    "$\\frac{1}{4}$",
+    "$\\frac{1}{5}$",
+    "$\\frac{1}{8}$",
+    "$\\frac{3}{4}$"
+   ],
+   "version": "4f49b971a1b210ef"
+  },
+  "yuzde-karisim:h1": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yuzde-karisim:h2": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yuzde-karisim:h3": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "yuzde-karisim:h4": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "yuzde-karisim:o1": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
+  "yuzde-karisim:o2": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yuzde-karisim:o3": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  }
+ },
+ "concepts": {
+  "bileske-ters": {
+   "categoryIds": [
+    "excel.ayt.matematik.cfb36ba99fce84b745aa",
+    "excel.tyt.matematik.cfb36ba99fce84b745aa"
+   ],
+   "flashcards": [
+    "bileske-ters:k1",
+    "bileske-ters:k2",
+    "bileske-ters:k3",
+    "bileske-ters:k4",
+    "bileske-ters:k5",
+    "bileske-ters:k6",
+    "bileske-ters:k7"
+   ]
+  },
+  "binom": {
+   "categoryIds": [
+    "excel.ayt.matematik.8139749dd0017d49e725"
+   ],
+   "flashcards": [
+    "binom:k1",
+    "binom:k2",
+    "binom:k3",
+    "binom:k4",
+    "binom:k5",
+    "binom:k6",
+    "binom:k7"
+   ]
+  },
+  "birinci-derece-denklemler": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.ceb9fbdfaa16dc1f89eb"
+   ],
+   "flashcards": [
+    "birinci-derece-denklemler:k1",
+    "birinci-derece-denklemler:k2",
+    "birinci-derece-denklemler:k3",
+    "birinci-derece-denklemler:k4",
+    "birinci-derece-denklemler:k5",
+    "birinci-derece-denklemler:k6",
+    "birinci-derece-denklemler:k7",
+    "birinci-derece-denklemler:k8",
+    "birinci-derece-denklemler:k9",
+    "birinci-derece-denklemler:k10",
+    "birinci-derece-denklemler:k11"
+   ]
+  },
+  "bolme-bolunebilme": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.c15cc6aeffd9ec9ece58",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.c15cc6aeffd9ec9ece58"
+   ],
+   "flashcards": [
+    "bolme-bolunebilme:k1",
+    "bolme-bolunebilme:k2",
+    "bolme-bolunebilme:k3",
+    "bolme-bolunebilme:k4",
+    "bolme-bolunebilme:k5",
+    "bolme-bolunebilme:k6",
+    "bolme-bolunebilme:k7",
+    "bolme-bolunebilme:k8",
+    "bolme-bolunebilme:k9",
+    "bolme-bolunebilme:k10",
+    "bolme-bolunebilme:k11"
+   ]
+  },
+  "carpanlara-ayirma": {
+   "categoryIds": [
+    "excel.ayt.matematik.58dc018a000831b1b740",
+    "excel.tyt.matematik.58dc018a000831b1b740"
+   ],
+   "flashcards": [
+    "carpanlara-ayirma:k1",
+    "carpanlara-ayirma:k2",
+    "carpanlara-ayirma:k3",
+    "carpanlara-ayirma:k4",
+    "carpanlara-ayirma:k5",
+    "carpanlara-ayirma:k6",
+    "carpanlara-ayirma:k7"
+   ]
+  },
+  "ebob-ekok": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.c15cc6aeffd9ec9ece58",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.c15cc6aeffd9ec9ece58"
+   ],
+   "flashcards": [
+    "ebob-ekok:k1",
+    "ebob-ekok:k2",
+    "ebob-ekok:k3",
+    "ebob-ekok:k4",
+    "ebob-ekok:k5",
+    "ebob-ekok:k6",
+    "ebob-ekok:k7",
+    "ebob-ekok:k8",
+    "ebob-ekok:k9",
+    "ebob-ekok:k10",
+    "ebob-ekok:k11",
+    "ebob-ekok:k12",
+    "ebob-ekok:k13"
+   ]
+  },
+  "esitsizlikler": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.ceb9fbdfaa16dc1f89eb"
+   ],
+   "flashcards": [
+    "esitsizlikler:k1",
+    "esitsizlikler:k2",
+    "esitsizlikler:k3",
+    "esitsizlikler:k4",
+    "esitsizlikler:k5",
+    "esitsizlikler:k6",
+    "esitsizlikler:k7",
+    "esitsizlikler:k8",
+    "esitsizlikler:k9",
+    "esitsizlikler:k10",
+    "esitsizlikler:k11",
+    "esitsizlikler:k12"
+   ]
+  },
+  "fonksiyon-grafikleri": {
+   "categoryIds": [
+    "excel.ayt.matematik.cfb36ba99fce84b745aa",
+    "excel.tyt.matematik.cfb36ba99fce84b745aa"
+   ],
+   "flashcards": [
+    "fonksiyon-grafikleri:k1",
+    "fonksiyon-grafikleri:k2",
+    "fonksiyon-grafikleri:k3",
+    "fonksiyon-grafikleri:k4",
+    "fonksiyon-grafikleri:k5",
+    "fonksiyon-grafikleri:k6",
+    "fonksiyon-grafikleri:k7"
+   ]
+  },
+  "fonksiyon-kavrami": {
+   "categoryIds": [
+    "excel.ayt.matematik.cfb36ba99fce84b745aa",
+    "excel.tyt.matematik.cfb36ba99fce84b745aa"
+   ],
+   "flashcards": [
+    "fonksiyon-kavrami:k1",
+    "fonksiyon-kavrami:k2",
+    "fonksiyon-kavrami:k3",
+    "fonksiyon-kavrami:k4",
+    "fonksiyon-kavrami:k5",
+    "fonksiyon-kavrami:k6",
+    "fonksiyon-kavrami:k7"
+   ]
+  },
+  "grafik-rutin-olmayan": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "grafik-rutin-olmayan:k1",
+    "grafik-rutin-olmayan:k2",
+    "grafik-rutin-olmayan:k3",
+    "grafik-rutin-olmayan:k4",
+    "grafik-rutin-olmayan:k5",
+    "grafik-rutin-olmayan:k6",
+    "grafik-rutin-olmayan:k7"
+   ]
+  },
+  "hareket-problemleri": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "hareket-problemleri:k1",
+    "hareket-problemleri:k2",
+    "hareket-problemleri:k3",
+    "hareket-problemleri:k4",
+    "hareket-problemleri:k5",
+    "hareket-problemleri:k6",
+    "hareket-problemleri:k7"
+   ]
+  },
+  "ikinci-derece-denklemler": {
+   "categoryIds": [
+    "excel.ayt.matematik.14d232b544077857888b",
+    "excel.tyt.matematik.14d232b544077857888b"
+   ],
+   "flashcards": [
+    "ikinci-derece-denklemler:k1",
+    "ikinci-derece-denklemler:k2",
+    "ikinci-derece-denklemler:k3",
+    "ikinci-derece-denklemler:k4",
+    "ikinci-derece-denklemler:k5",
+    "ikinci-derece-denklemler:k6",
+    "ikinci-derece-denklemler:k7",
+    "ikinci-derece-denklemler:k8",
+    "ikinci-derece-denklemler:k9"
+   ]
+  },
+  "kar-zarar": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "kar-zarar:k1",
+    "kar-zarar:k2",
+    "kar-zarar:k3",
+    "kar-zarar:k4",
+    "kar-zarar:k5",
+    "kar-zarar:k6",
+    "kar-zarar:k7"
+   ]
+  },
+  "koklu-ifadeler": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.85a51a7cfcbaab213488",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.85a51a7cfcbaab213488"
+   ],
+   "flashcards": [
+    "koklu-ifadeler:k1",
+    "koklu-ifadeler:k2",
+    "koklu-ifadeler:k3",
+    "koklu-ifadeler:k4",
+    "koklu-ifadeler:k5",
+    "koklu-ifadeler:k6",
+    "koklu-ifadeler:k7",
+    "koklu-ifadeler:k8"
+   ]
+  },
+  "kombinasyon": {
+   "categoryIds": [
+    "excel.ayt.matematik.9442d82c159081577c80",
+    "excel.ayt.matematik.f035f2fb95a3f15c26ab",
+    "excel.tyt.matematik.9442d82c159081577c80",
+    "excel.tyt.matematik.f035f2fb95a3f15c26ab"
+   ],
+   "flashcards": [
+    "kombinasyon:k1",
+    "kombinasyon:k2",
+    "kombinasyon:k3",
+    "kombinasyon:k4",
+    "kombinasyon:k5",
+    "kombinasyon:k6",
+    "kombinasyon:k7"
+   ]
+  },
+  "kosullu-olasilik": {
+   "categoryIds": [
+    "excel.ayt.matematik.9442d82c159081577c80"
+   ],
+   "flashcards": [
+    "kosullu-olasilik:k1",
+    "kosullu-olasilik:k2",
+    "kosullu-olasilik:k3",
+    "kosullu-olasilik:k4",
+    "kosullu-olasilik:k5",
+    "kosullu-olasilik:k6",
+    "kosullu-olasilik:k7"
+   ]
+  },
+  "kosullu-onerme": {
+   "categoryIds": [
+    "excel.ayt.matematik.4c4876ddd9383c03d782",
+    "excel.tyt.matematik.4c4876ddd9383c03d782"
+   ],
+   "flashcards": [
+    "kosullu-onerme:k1",
+    "kosullu-onerme:k2",
+    "kosullu-onerme:k3",
+    "kosullu-onerme:k4",
+    "kosullu-onerme:k5",
+    "kosullu-onerme:k6",
+    "kosullu-onerme:k7"
+   ]
+  },
+  "kume-islemleri": {
+   "categoryIds": [
+    "excel.ayt.matematik.f5eb57d988154c825935",
+    "excel.tyt.matematik.f5eb57d988154c825935"
+   ],
+   "flashcards": [
+    "kume-islemleri:k1",
+    "kume-islemleri:k2",
+    "kume-islemleri:k3",
+    "kume-islemleri:k4",
+    "kume-islemleri:k5",
+    "kume-islemleri:k6",
+    "kume-islemleri:k7"
+   ]
+  },
+  "kumeler-temel": {
+   "categoryIds": [
+    "excel.ayt.matematik.f5eb57d988154c825935",
+    "excel.tyt.matematik.f5eb57d988154c825935"
+   ],
+   "flashcards": [
+    "kumeler-temel:k1",
+    "kumeler-temel:k2",
+    "kumeler-temel:k3",
+    "kumeler-temel:k4",
+    "kumeler-temel:k5",
+    "kumeler-temel:k6",
+    "kumeler-temel:k7"
+   ]
+  },
+  "merkezi-egilim": {
+   "categoryIds": [
+    "excel.tyt.matematik.d8fb8edba6e86247de33"
+   ],
+   "flashcards": [
+    "merkezi-egilim:k1",
+    "merkezi-egilim:k2",
+    "merkezi-egilim:k3",
+    "merkezi-egilim:k4",
+    "merkezi-egilim:k5",
+    "merkezi-egilim:k6",
+    "merkezi-egilim:k7"
+   ]
+  },
+  "mutlak-deger": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.ceb9fbdfaa16dc1f89eb",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.ceb9fbdfaa16dc1f89eb"
+   ],
+   "flashcards": [
+    "mutlak-deger:k1",
+    "mutlak-deger:k2",
+    "mutlak-deger:k3",
+    "mutlak-deger:k4",
+    "mutlak-deger:k5",
+    "mutlak-deger:k6",
+    "mutlak-deger:k7",
+    "mutlak-deger:k8"
+   ]
+  },
+  "olasilik": {
+   "categoryIds": [
+    "excel.ayt.matematik.9442d82c159081577c80",
+    "excel.tyt.matematik.9442d82c159081577c80"
+   ],
+   "flashcards": [
+    "olasilik:k1",
+    "olasilik:k2",
+    "olasilik:k3",
+    "olasilik:k4",
+    "olasilik:k5",
+    "olasilik:k6",
+    "olasilik:k7"
+   ]
+  },
+  "onermeler": {
+   "categoryIds": [
+    "excel.ayt.matematik.4c4876ddd9383c03d782",
+    "excel.tyt.matematik.4c4876ddd9383c03d782"
+   ],
+   "flashcards": [
+    "onermeler:k1",
+    "onermeler:k2",
+    "onermeler:k3",
+    "onermeler:k4",
+    "onermeler:k5",
+    "onermeler:k6",
+    "onermeler:k7"
+   ]
+  },
+  "oran-oranti": {
+   "categoryIds": [
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "oran-oranti:k1",
+    "oran-oranti:k2",
+    "oran-oranti:k3",
+    "oran-oranti:k4",
+    "oran-oranti:k5",
+    "oran-oranti:k6",
+    "oran-oranti:k7"
+   ]
+  },
+  "polinom-islemleri": {
+   "categoryIds": [
+    "excel.ayt.matematik.58dc018a000831b1b740",
+    "excel.tyt.matematik.58dc018a000831b1b740"
+   ],
+   "flashcards": [
+    "polinom-islemleri:k1",
+    "polinom-islemleri:k2",
+    "polinom-islemleri:k3",
+    "polinom-islemleri:k4",
+    "polinom-islemleri:k5",
+    "polinom-islemleri:k6",
+    "polinom-islemleri:k7"
+   ]
+  },
+  "rasyonel-sayilar": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2"
+   ],
+   "flashcards": [
+    "rasyonel-sayilar:k1",
+    "rasyonel-sayilar:k2",
+    "rasyonel-sayilar:k3",
+    "rasyonel-sayilar:k4",
+    "rasyonel-sayilar:k5",
+    "rasyonel-sayilar:k6",
+    "rasyonel-sayilar:k7",
+    "rasyonel-sayilar:k8",
+    "rasyonel-sayilar:k9",
+    "rasyonel-sayilar:k10",
+    "rasyonel-sayilar:k11",
+    "rasyonel-sayilar:k12"
+   ]
+  },
+  "sayi-basamaklari": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2"
+   ],
+   "flashcards": [
+    "sayi-basamaklari:k1",
+    "sayi-basamaklari:k2",
+    "sayi-basamaklari:k3",
+    "sayi-basamaklari:k4",
+    "sayi-basamaklari:k5",
+    "sayi-basamaklari:k6",
+    "sayi-basamaklari:k7",
+    "sayi-basamaklari:k8"
+   ]
+  },
+  "sayi-kesir-problemleri": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "sayi-kesir-problemleri:k1",
+    "sayi-kesir-problemleri:k2",
+    "sayi-kesir-problemleri:k3",
+    "sayi-kesir-problemleri:k4",
+    "sayi-kesir-problemleri:k5",
+    "sayi-kesir-problemleri:k6",
+    "sayi-kesir-problemleri:k7"
+   ]
+  },
+  "sayma-permutasyon": {
+   "categoryIds": [
+    "excel.ayt.matematik.9442d82c159081577c80",
+    "excel.ayt.matematik.f035f2fb95a3f15c26ab",
+    "excel.tyt.matematik.9442d82c159081577c80",
+    "excel.tyt.matematik.f035f2fb95a3f15c26ab"
+   ],
+   "flashcards": [
+    "sayma-permutasyon:k1",
+    "sayma-permutasyon:k2",
+    "sayma-permutasyon:k3",
+    "sayma-permutasyon:k4",
+    "sayma-permutasyon:k5",
+    "sayma-permutasyon:k6",
+    "sayma-permutasyon:k7"
+   ]
+  },
+  "temel-kavramlar": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2"
+   ],
+   "flashcards": [
+    "temel-kavramlar:k1",
+    "temel-kavramlar:k2",
+    "temel-kavramlar:k3",
+    "temel-kavramlar:k4",
+    "temel-kavramlar:k5",
+    "temel-kavramlar:k6",
+    "temel-kavramlar:k7",
+    "temel-kavramlar:k8",
+    "temel-kavramlar:k9"
+   ]
+  },
+  "uslu-ifadeler": {
+   "categoryIds": [
+    "excel.ayt.matematik.3d78be385716237007f8",
+    "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.ayt.matematik.85a51a7cfcbaab213488",
+    "excel.tyt.matematik.3d78be385716237007f8",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
+    "excel.tyt.matematik.85a51a7cfcbaab213488"
+   ],
+   "flashcards": [
+    "uslu-ifadeler:k1",
+    "uslu-ifadeler:k2",
+    "uslu-ifadeler:k3",
+    "uslu-ifadeler:k4",
+    "uslu-ifadeler:k5",
+    "uslu-ifadeler:k6",
+    "uslu-ifadeler:k7",
+    "uslu-ifadeler:k8",
+    "uslu-ifadeler:k9"
+   ]
+  },
+  "veri-grafikleri": {
+   "categoryIds": [
+    "excel.tyt.matematik.d8fb8edba6e86247de33"
+   ],
+   "flashcards": [
+    "veri-grafikleri:k1",
+    "veri-grafikleri:k2",
+    "veri-grafikleri:k3",
+    "veri-grafikleri:k4",
+    "veri-grafikleri:k5",
+    "veri-grafikleri:k6",
+    "veri-grafikleri:k7"
+   ]
+  },
+  "yas-isci-problemleri": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "yas-isci-problemleri:k1",
+    "yas-isci-problemleri:k2",
+    "yas-isci-problemleri:k3",
+    "yas-isci-problemleri:k4",
+    "yas-isci-problemleri:k5",
+    "yas-isci-problemleri:k6",
+    "yas-isci-problemleri:k7"
+   ]
+  },
+  "yuzde-karisim": {
+   "categoryIds": [
+    "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
+   ],
+   "flashcards": [
+    "yuzde-karisim:k1",
+    "yuzde-karisim:k2",
+    "yuzde-karisim:k3",
+    "yuzde-karisim:k4",
+    "yuzde-karisim:k5",
+    "yuzde-karisim:k6",
+    "yuzde-karisim:k7"
+   ]
+  }
+ },
+ "notePractice": {
+  "note:tyt-turkce:sozcukte-anlam": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-turkce:sozcukte-yapi": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:fiilde-cati": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-turkce:cumlede-anlam": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:paragrafta-dusunce": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-turkce:paragrafta-yapi": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-turkce:paragrafta-anlatim": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-turkce:ses-bilgisi": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:yazim-kurallari": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:noktalama-isaretleri": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:sozcuk-turleri": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:tamlamalar": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:fiil-ek-fiil-fiilimsi": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:cumlenin-ogeleri": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-turkce:cumle-turleri": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-turkce:anlatim-bozukluklari": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-edebiyat:siirde-ahenk": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-edebiyat:halk-edebiyati": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-edebiyat:divan-edebiyati": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:tanzimat-edebiyati": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-edebiyat:servetifunun-fecriati": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:milli-edebiyat": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:cumhuriyet-edebiyati": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-edebiyat:roman-hikaye": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:tiyatro": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-edebiyat:ogretici-metinler": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:yazar-eser-eslestirme": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-edebiyat:edebi-metin-ve-tur": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-edebiyat:soz-sanatlari": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-edebiyat:edebi-akimlar": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:islamiyet-oncesi": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-edebiyat:gecis-donemi": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-tarih:tarih-bilimi": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-tarih:ataturk-ilkeleri": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-cografya:harita-bilgisi": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-cografya:atmosfer-iklim": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-felsefe:bilginin-imkani": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-felsefe:varlik-felsefesi": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-din:ibadet-kapsami": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-din:bilgi-inanc": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-biyoloji:canlilarin-ortak-ozellikleri": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-biyoloji:hucre-yapisi": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:tyt-kimya:atom-modelleri": {
+   "answer": 3,
+   "choices": 4,
+   "version": "66c30e24809c5954"
+  },
+  "note:tyt-kimya:periyodik-sistem": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:tyt-fizik:fiziksel-nicelikler": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:tyt-fizik:hareket-yol-yer-degistirme": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-matematik:fonksiyon-girdi-grafik": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-matematik:polinom-derece-carpan": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-matematik:trigonometri-bolge-ozdeslik": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-fizik:vektorler": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  },
+  "note:ayt-fizik:newton-serbest-cisim": {
+   "answer": 0,
+   "choices": 4,
+   "version": "1d8663779fdc2c35"
+  },
+  "note:ayt-kimya:kuantum-elektron": {
+   "answer": 3,
+   "choices": 4,
+   "version": "66c30e24809c5954"
+  },
+  "note:ayt-kimya:gazlar-degisken-kosul": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-biyoloji:impuls-iletimi": {
+   "answer": 1,
+   "choices": 4,
+   "version": "88d814c5ff3302ee"
+  },
+  "note:ayt-biyoloji:endokrin-hedef-geri-bildirim": {
+   "answer": 2,
+   "choices": 4,
+   "version": "01c2fd5c81586ae2"
+  }
+ }
+}

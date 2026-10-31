@@ -137,6 +137,7 @@ function Practice({ lesson, groupId }) {
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saveError, setSaveError] = useState('');
+  const [serverCorrect, setServerCorrect] = useState(null);
   const practice = lesson.practice;
   const itemKey = `note:${groupId}:${lesson.id}`;
   useEffect(() => {
@@ -144,7 +145,7 @@ function Practice({ lesson, groupId }) {
     api.get(`/api/self-checks/latest?kind=SOURCE_PRACTICE&itemKey=${encodeURIComponent(itemKey)}`)
       .then((attempt) => {
         if (!active || !attempt) return;
-        setSelected(attempt.answers[0]); setChecked(true); setShowAnswer(true);
+        setSelected(attempt.answers[0]); setChecked(true); setShowAnswer(true); setServerCorrect(attempt.correct ?? null);
       })
       .catch((error) => { if (active) setSaveError(`Önceki alıştırma okunamadı: ${error.message}`); })
       .finally(() => { if (active) setLoading(false); });
@@ -154,9 +155,11 @@ function Practice({ lesson, groupId }) {
     if (selected === null || busy || loading) return;
     setBusy(true); setSaveError('');
     try {
-      await api.post('/api/self-checks', {
-        kind: 'SOURCE_PRACTICE', itemKey, answers: [selected],
+      // Çözüm cevaptan önce açıldıysa sunucu bu denemeyi rehberli sayar (Konu takibi, TAS-04).
+      const saved = await api.post('/api/self-checks', {
+        kind: 'SOURCE_PRACTICE', itemKey, answers: [selected], solutionSeen: showAnswer,
       });
+      setServerCorrect(saved?.correct ?? null);
       setChecked(true); setShowAnswer(true);
     } catch (error) { setSaveError(`Alıştırma kaydedilemedi: ${error.message}`); }
     finally { setBusy(false); }
@@ -183,8 +186,8 @@ function Practice({ lesson, groupId }) {
       </button>
     </div>
     {saveError && <p role="alert" className="field-error">{saveError}</p>}
-    {checked && <p role="status" className={selected === practice.answer ? 'source-practice-correct' : 'source-practice-retry'}>
-      {selected === practice.answer ? 'Doğru. Şimdi doğru seçeneğin gerekçesini kendi cümlenle açıklamayı dene.'
+    {checked && <p role="status" className={(serverCorrect ?? selected === practice.answer) ? 'source-practice-correct' : 'source-practice-retry'}>
+      {(serverCorrect ?? selected === practice.answer) ? 'Doğru. Şimdi doğru seçeneğin gerekçesini kendi cümlenle açıklamayı dene.'
         : 'Bu seçim doğru değil. Aşağıdaki gerekçeyi incele; sonra hangi adımı kaçırdığını belirle.'}
     </p>}
     {showAnswer && <p id={`answer-${lesson.id}`} className="source-notes-answer">{practice.explanation}</p>}
@@ -194,7 +197,7 @@ function Practice({ lesson, groupId }) {
       <button type="button" onClick={() => jumpTo('konunun-mantigi')}>Kavramları karıştırdım → Temele dön</button>
       <button type="button" onClick={() => jumpTo('soru-kaliplari')}>Kökü yanlış yorumladım → Kalıbı karşılaştır</button>
       <button type="button" onClick={() => jumpTo('cozum-yolu')}>Yöntemi uygulayamadım → Adımları izle</button>
-      <button type="button" onClick={() => { setSelected(null); setChecked(false); setShowAnswer(false); }}>Alıştırmayı yeniden dene</button>
+      <button type="button" onClick={() => { setSelected(null); setChecked(false); setShowAnswer(false); setServerCorrect(null); }}>Alıştırmayı yeniden dene</button>
     </div>}
   </section>;
 }

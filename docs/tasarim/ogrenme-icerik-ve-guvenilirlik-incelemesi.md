@@ -79,7 +79,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 1 — TAS-01 | P0 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı | Kayıt onayı, kuyruk kaybı, idempotency ve hesap izolasyonu | Mevcut öğrenme/cevap akışları | Kesinti, 400, kota, çoklu sekme ve kaybolan yanıt senaryolarında kayıp/çift sayım yok |
 | 2 — TAS-02 | P0 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmen (Actuator/metrik/webhook uyarısı eklendi; kalan kapsam açık) | DB erişimi, readiness, kayıt hatası ve dış alarm | TAS-01 ile birlikte | DB kesintisi görünür; yanlış başarı bildirimi yok; uygulama kapalıyken dış uyarı çalışıyor |
 | 3 — TAS-03 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.07; bölüm kapsamı içerik işaretlemesi TAS-08) | Tek katalog, adlar, konu bağları ve TYT/AYT kapsamı | Mevcut katalog | Bir ad düzeltmesi bütün ilgili ekranlarda aynı kimlikle görünür; geçmiş korunur |
-| 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
+| 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.08) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
 | 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
 | 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
@@ -164,6 +164,18 @@ Görünen standart: **Ders › Ünite › Konu**. Birden fazla konu kapsanıyors
 **Kabul:** bir katalog adını test ortamında değiştir; Konu takibi, harita, ders başlığı, pratik, geçmiş ve kaynak ekranlarında kimlik/ad tutarlılığını doğrula. Tarihsel etiket anlık kayıtları değişmemeli. TYT öğrencisine AYT bölümü zorunlu görünmemeli.
 
 ## 6. TAS-04: Her yerdeki çözümü Konu takibine bağlama
+
+**Uygulandı (12.08).** Ders içi sorular ve kaynaklı not alıştırması sunucu cevap anahtarıyla
+(`scripts/cevap-anahtari.mjs` → `answer-keys.json`) puanlanır; cevap anındaki konu bağı ve
+rehberli/bağımsız modu kayda yazılır. `/api/learning-resources/progress` banka/pratik/deneme
+sayımına toplam cevap, son sonuç, açık pratik, ders alıştırması ve kart tekrarını ekler;
+Konuyu Öğrenelim banka cevabı yalnız `question_attempts` üzerinden sayılır. Yeni paralel
+tablo yoktur; V92 yalnız not alıştırmasına sonuç/çözüm görüldü/anahtar sürümü/konu anlık
+kaydı sütunlarını ekler. Mevcut kayıtlar yeniden puanlanmaz veya konuyla doldurulmaz;
+doğrulanmamış cevap olarak ayrı sayılır (aşağıdaki "geçiş" önerisi referans günü kuralıyla
+dry-run eşlemeye gerek bırakmadı). Güncel sözleşme
+[öğrenci ilerlemesinde](../mimari/ogrenci-ilerlemesi.md#ortak-cevap-ve-sayım-sözleşmesi-tas-04);
+aşağısı ilk tasarım gerekçesidir.
 
 ### 6.1. Ortak kayıt modeli
 

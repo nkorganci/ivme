@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node ../scripts/content-taxonomy-check.mjs --project && node ../scripts/content-review-catalog.mjs && node ../scripts/pdf-review-labels.mjs && vite build",
+    "build": "node ../scripts/cevap-anahtari.mjs && node ../scripts/content-taxonomy-check.mjs --project && node ../scripts/content-review-catalog.mjs && node ../scripts/pdf-review-labels.mjs && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

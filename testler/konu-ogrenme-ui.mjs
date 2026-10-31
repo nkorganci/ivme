@@ -209,6 +209,12 @@ async function run(mobile) {
     const after = await evalJs(`fetch('/api/konu-ogrenme').then((r) => r.json())`);
     assert.ok(after.events.some((e) => e.kind === 'lesson' && e.action === 'complete' && e.conceptId === conceptId), 'ders tamam olayı kaydedilmeli');
     assert.ok(after.events.some((e) => e.context === 'pretest') && after.events.some((e) => e.context === 'posttest'), 'ön/son test denemeleri kaydedilmeli');
+    // TAS-04: sunucu puanlaması için şıklı soruda `chosen`, diğer etkileşimli öğelerde `response` gönderilir.
+    const answerKeys = JSON.parse(readFileSync(join(ROOT, 'backend/src/main/resources/learn/answer-keys.json'), 'utf8')).lessonItems;
+    for (const event of after.events.filter((e) => e.itemType === 'lesson_q' && answerKeys[e.itemId])) {
+      if (answerKeys[event.itemId].type === 'choice') assert.match(String(event.chosen ?? ''), /^[A-E]$/, `${event.itemId} şıkkı`);
+      else assert.ok(event.response !== undefined && event.response !== null, `${event.itemId} cevap gövdesi`);
+    }
     steps.push({ step: 'ders', sections, events: after.events.length });
 
     await goto(`/konuyu-ogrenelim/konu/${conceptId}`);

@@ -60,7 +60,9 @@ arasında sürdürmek TAS-05 kapsamındadır.
 kapatmaz: 409 verir, öğrenci o turu tamamladıktan sonra bekleyen cevabı tekrar yollar.
 Yanlış banka cevabı, mevcut tek cevaplı öğrenme akışında doğru şıkkı döndürdüğü için
 `REVEAL` ile turu tamamlar. Bu, çözüm görselinin açıldığına dair bir kanıt değildir.
-Ders içi soruların sunucuda puanlanması ve ortak konu sayımı TAS-04'te kalır.
+Ders içi sorular sunucu cevap anahtarıyla puanlanır; istemcinin `correct` beyanı yalnız
+yerel geri bildirimdir ve aynı olayın yeniden denemesinde kimlik karşılaştırmasına girmez.
+Ortak konu sayımı [öğrenci ilerlemesindeki TAS-04 sözleşmesindedir](ogrenci-ilerlemesi.md#ortak-cevap-ve-sayım-sözleşmesi-tas-04).
 
 ## Doğrulama kanıtı
 

@@ -91,6 +91,8 @@ export default function LessonPage() {
     itemType: 'lesson_q', itemId: item.type === 'quick_check' ? item.question.id : item.id ?? item.question?.id, conceptId,
     archetypeId: (item.question ?? item).archetype ?? null, difficulty: (item.question ?? item).difficulty ?? 1, context,
     chosen: value.chosen ?? null, correct: !!value.correct, confidence: value.confidence ?? null, timeMs: value.timeMs ?? 0, hintUsed: !!value.hintUsed,
+    // Sunucu bu cevap gövdesinden puanlar (TAS-04); `correct` yalnız yerel geri bildirimdir.
+    ...(value.response !== undefined ? { response: value.response } : {}),
   });
 
   const onCheck = (item, value) => {

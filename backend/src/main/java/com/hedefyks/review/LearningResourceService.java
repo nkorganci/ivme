@@ -19,11 +19,14 @@ public class LearningResourceService {
     private final ContentReviewService reviews;
     private final com.hedefyks.topicpdf.TopicPdfService pdfs;
     private final SharedQuestionLabels sharedLabels;
+    private final com.hedefyks.learn.AnswerKeys answerKeys;
     public LearningResourceService(JdbcTemplate jdbc, ObjectMapper json, LearningLabelStore store,
-                                   ReviewCatalog vocabulary, ContentReviewService reviews,com.hedefyks.topicpdf.TopicPdfService pdfs,SharedQuestionLabels sharedLabels) {
+                                   ReviewCatalog vocabulary, ContentReviewService reviews,com.hedefyks.topicpdf.TopicPdfService pdfs,SharedQuestionLabels sharedLabels,
+                                   com.hedefyks.learn.AnswerKeys answerKeys) {
         this.jdbc=jdbc;this.json=json;this.store=store;this.vocabulary=vocabulary;this.reviews=reviews;
         this.pdfs=pdfs;
         this.sharedLabels=sharedLabels;
+        this.answerKeys=answerKeys;
     }
     public Map<String,Object> metadata() {
         return metadata(exam->true);
@@ -81,15 +84,19 @@ public class LearningResourceService {
         return Map.of("summary",total.result(),"categories",rows);
     }
     /**
-     * A question counts once, at its first answered encounter in a finished practice or submitted exam.
-     * An unanswered exam slot only stands for the question while it was never answered anywhere, so a later
-     * practice answer reaches the topic rows instead of staying hidden behind the earlier blank.
+     * TAS-04 ortak sayım sözleşmesi. Soru: tamamlanmış pratik ve teslim edilmiş denemede her soru bir kez, ilk
+     * yanıtlandığı karşılaşmada sayılır; deneme boşu yalnız soru hiç yanıtlanmadıkça karşılaşmadır. Toplam cevap ve
+     * son sonuç ayrıca verilir. Konuyu Öğrenelim banka cevabı `question_attempts` üzerinden gelir; öğrenme olayındaki
+     * kopyası yeniden sayılmaz. Açık pratikteki cevaplar "devam eden" olarak ayrıdır. Ders içi soru ve not alıştırması
+     * bankadan ayrı "alıştırma"dır: yalnız sunucu puanı doğru/yanlışa girer, rehberli cevap bağımsız ölçüm sayılmaz.
+     * Kart öz değerlendirmesi "tekrar"dır, doğru cevap sayılmaz. Genel toplamlar tekildir; konu alt toplamları örtüşebilir.
      */
     public Map<String,Object> progress(Long userId,String classification) {
         if(!Set.of("CURRENT","HISTORICAL").contains(classification))throw ApiException.badRequest("İlerleme sınıflaması geçersiz.");
-        String overrides;
-        try{overrides=json.writeValueAsString(reviews.studentOverrides());}catch(Exception e){throw new IllegalStateException(e);}
+        boolean historical="HISTORICAL".equals(classification);
+        String overrides=overridesJson();
         var total=new ProgressCount();var categories=new LinkedHashMap<String,ProgressCount>();int[] unclassified={0};
+        var counted=new HashSet<Long>();
         String sql=effectiveSql()+"""
             , events AS (
               SELECT question_id,is_correct,created_at AS occurred_at,id AS source_id,0 AS source_order,
@@ -100,31 +107,181 @@ public class LearningResourceService {
                 WHERE e.user_id=? AND e.status='SUBMITTED' AND e.submitted_at IS NOT NULL
             ), ranked AS (
               SELECT *,row_number() OVER(PARTITION BY question_id ORDER BY (is_correct IS NULL),occurred_at,source_order,source_id) AS rn,
-                count(*) OVER(PARTITION BY question_id) AS attempts FROM events
+                row_number() OVER(PARTITION BY question_id ORDER BY (is_correct IS NULL),occurred_at DESC,source_order DESC,source_id DESC) AS last_rn,
+                count(*) OVER(PARTITION BY question_id) AS attempts,
+                count(is_correct) OVER(PARTITION BY question_id) AS answers FROM events
             )
-            SELECT f.question_id,f.is_correct,f.active_seconds,f.attempts,
+            SELECT f.question_id,f.is_correct,f.active_seconds,f.attempts,f.answers,l.is_correct AS last_correct,
               CASE WHEN ?='HISTORICAL' THEN f.learning_label_snapshot->'labels'->'assignments'
                 ELSE i.labels->'assignments' END::text AS assignments
-            FROM ranked f JOIN questions q ON q.id=f.question_id
+            FROM ranked f JOIN ranked l ON l.question_id=f.question_id AND l.last_rn=1
+              JOIN questions q ON q.id=f.question_id
               LEFT JOIN effective i ON i.question_code=q.code WHERE f.rn=1
             """;
         jdbc.query(sql,rs->{
-            Boolean correct=(Boolean)rs.getObject("is_correct");long repeats=rs.getLong("attempts")-1,seconds=rs.getLong("active_seconds");
-            total.add(correct,repeats,seconds);var ids=new HashSet<String>();String assignments=rs.getString("assignments");
-            if(assignments!=null)try{for(var a:json.readTree(assignments))
-                if(!"PREREQUISITE".equals(a.path("relation").asText()) && !a.path("categoryId").asText().startsWith("system."))ids.add(a.path("categoryId").asText());
-            }catch(java.io.IOException e){throw new IllegalStateException(e);}
-            ids.remove("");if(ids.isEmpty())unclassified[0]++;
-            for(String id:ids)categories.computeIfAbsent(id,key->new ProgressCount()).add(correct,repeats,seconds);
+            Boolean correct=(Boolean)rs.getObject("is_correct"),last=(Boolean)rs.getObject("last_correct");
+            long repeats=rs.getLong("attempts")-1,seconds=rs.getLong("active_seconds"),answers=rs.getLong("answers");
+            counted.add(rs.getLong("question_id"));
+            total.add(correct,last,answers,repeats,seconds);
+            var ids=topicIds(rs.getString("assignments"));if(ids.isEmpty())unclassified[0]++;
+            for(String id:ids)categories.computeIfAbsent(id,key->new ProgressCount()).add(correct,last,answers,repeats,seconds);
         },overrides,userId,userId,classification);
-        var rows=new ArrayList<Map<String,Object>>();categories.forEach((id,count)->{var row=count.result();row.put("categoryId",id);rows.add(row);});
-        return Map.of("classification",classification,"summary",total.result(),"categories",rows,"unclassified",unclassified[0],
-            "counting","QUESTION_FIRST_ANSWERED_ENCOUNTER; blank only while never answered; topic subtotals may overlap; no historical label backfill", "mediaProgressRecorded",false);
+        // Açık pratikteki cevaplar kayıtlıdır ama oturum bitmeden tamamlanmış sayıma girmez; ayrı gösterilir.
+        long[] inProgress={0};var openByCategory=new HashMap<String,Long>();
+        jdbc.query(effectiveSql()+"""
+            SELECT DISTINCT ON (a.question_id) a.question_id,
+              CASE WHEN ?='HISTORICAL' THEN a.learning_label_snapshot->'labels'->'assignments' ELSE i.labels->'assignments' END::text AS assignments
+            FROM question_attempts a JOIN study_sessions s ON s.id=a.session_id AND s.user_id=a.user_id
+              JOIN questions q ON q.id=a.question_id LEFT JOIN effective i ON i.question_code=q.code
+            WHERE a.user_id=? AND s.status='IN_PROGRESS' AND a.event_type='ANSWER' ORDER BY a.question_id,a.id
+            """,rs->{
+            if(counted.contains(rs.getLong("question_id")))return;
+            inProgress[0]++;
+            for(String id:topicIds(rs.getString("assignments")))openByCategory.merge(id,1L,Long::sum);
+        },overrides,classification,userId);
+        var exercise=exercise(userId,historical,overrides);
+        var review=review(userId,historical);
+        var ids=new LinkedHashSet<String>(categories.keySet());ids.addAll(openByCategory.keySet());
+        ids.addAll(exercise.byCategory().keySet());ids.addAll(review.byCategory().keySet());
+        var rows=new ArrayList<Map<String,Object>>();
+        for(String id:ids){var row=categories.getOrDefault(id,new ProgressCount()).result();row.put("categoryId",id);
+            row.put("inProgress",openByCategory.getOrDefault(id,0L));
+            row.put("exercise",exercise.byCategory().getOrDefault(id,new ExerciseCount()).result());
+            row.put("review",review.byCategory().getOrDefault(id,new ReviewCount()).result());rows.add(row);}
+        var out=new LinkedHashMap<String,Object>();
+        out.put("classification",classification);out.put("summary",total.result());out.put("inProgress",inProgress[0]);
+        out.put("exercise",exercise.total().result());out.put("review",review.total().result());
+        out.put("categories",rows);out.put("unclassified",unclassified[0]);
+        out.put("counting","QUESTION_FIRST_ANSWERED_ENCOUNTER; blank only while never answered; topic subtotals may overlap; no historical label backfill");
+        out.put("countingContract",COUNTING_CONTRACT);out.put("mediaProgressRecorded",false);
+        return out;
+    }
+    private static final Map<String,String> COUNTING_CONTRACT=Map.of(
+        "question","Tamamlanmış pratik + teslim edilmiş deneme; soru başına ilk yanıtlanan karşılaşma (total/correct/wrong/blank), toplam cevap (answers), son yanıt (lastCorrect/lastWrong)",
+        "learnBank","Konuyu Öğrenelim banka cevabı question_attempts üzerinden sayılır; learning_engine_events kopyası tekrar sayılmaz",
+        "inProgress","Açık pratik oturumunda cevaplanmış, henüz tamamlanmış sayıma girmemiş tekil sorular",
+        "exercise","Ders içi soru ve not alıştırması; doğru/yanlış yalnız sunucu puanı; rehberli cevap bağımsız ölçüm sayılmaz",
+        "review","Kart öz değerlendirmesi; tekrar etkinliğidir, doğru cevap sayılmaz");
+
+    private String overridesJson(){
+        try{return json.writeValueAsString(reviews.studentOverrides());}catch(Exception e){throw new IllegalStateException(e);}
+    }
+    /** Öğrenciye görünen konu bağları: ön koşul ve system.* yer tutucusu hariç. */
+    private Set<String> topicIds(String assignments){
+        var ids=new LinkedHashSet<String>();
+        if(assignments!=null)try{for(var a:json.readTree(assignments))
+            if(!"PREREQUISITE".equals(a.path("relation").asText()) && !a.path("categoryId").asText().startsWith("system."))ids.add(a.path("categoryId").asText());
+        }catch(java.io.IOException e){throw new IllegalStateException(e);}
+        ids.remove("");return ids;
+    }
+    private Set<String> snapshotIds(com.fasterxml.jackson.databind.JsonNode snapshot){
+        var ids=new LinkedHashSet<String>();
+        if(snapshot!=null)for(var id:snapshot)if(!id.asText().startsWith("system."))ids.add(id.asText());
+        ids.remove("");return ids;
+    }
+    private com.fasterxml.jackson.databind.JsonNode tree(String text){
+        try{return text==null?null:json.readTree(text);}catch(java.io.IOException e){throw new IllegalStateException(e);}
+    }
+    /** Not alıştırmasının cevap anındaki konu bağı (TAS-04 anlık kaydı); katalogda yoksa boş. */
+    public List<String> studentTopicIds(String itemKey){
+        var rows=jdbc.query(effectiveSql()+" SELECT (i.labels->'assignments')::text FROM effective i WHERE i.item_key=?",(rs,n)->rs.getString(1),overridesJson(),itemKey);
+        return rows.isEmpty()?List.of():List.copyOf(topicIds(rows.getFirst()));
+    }
+
+    private record Breakdown<T>(T total,Map<String,T> byCategory){}
+    /** Ders içi soru (öğrenme olayı) ve not alıştırması; öğe başına deneme sırasıyla birleştirilir. */
+    private Breakdown<ExerciseCount> exercise(long userId,boolean historical,String overrides){
+        var items=new LinkedHashMap<String,ExerciseItem>();
+        jdbc.query("""
+            SELECT * FROM (
+              SELECT 'lesson:'||(payload->>'itemId') AS item_key,payload::text AS payload,correct,concept_id,
+                NULL::text AS snapshot,NULL::boolean AS solution_seen,occurred_at AS at,id
+                FROM learning_engine_events WHERE user_id=? AND kind='attempt' AND item_type='lesson_q'
+              UNION ALL
+              SELECT item_key,NULL,correct,NULL,category_snapshot::text,solution_seen,created_at,id
+                FROM student_self_check_attempts WHERE user_id=? AND kind='SOURCE_PRACTICE'
+            ) x ORDER BY at,id
+            """,rs->{
+            String key=rs.getString("item_key");Boolean correct=(Boolean)rs.getObject("correct");
+            var item=items.computeIfAbsent(key,k->new ExerciseItem());
+            String scoring,mode;com.fasterxml.jackson.databind.JsonNode snapshot;
+            var payload=tree(rs.getString("payload"));
+            if(payload!=null){
+                // Eski kayıtta scoring/mode yok: istemci puanı doğrulanmamış sayılır, mod bağlamdan çıkarılır.
+                scoring=payload.path("scoring").asText("CLIENT");
+                mode=payload.hasNonNull("mode")?payload.get("mode").asText():com.hedefyks.learn.AnswerKeys.mode("lesson_q",payload);
+                snapshot=payload.get("categoryIds");
+                var lessonKey=answerKeys.lessonItem(payload.path("itemId").asText());
+                item.current=answerKeys.conceptCategories(lessonKey!=null?lessonKey.conceptId():rs.getString("concept_id"));
+            }else{
+                scoring=correct==null?"CLIENT":"SERVER";
+                mode=Boolean.TRUE.equals(rs.getObject("solution_seen"))?"GUIDED":"INDEPENDENT";
+                snapshot=tree(rs.getString("snapshot"));
+                item.note=key;
+            }
+            item.historical.addAll(snapshotIds(snapshot));
+            item.add("SERVER".equals(scoring)?correct:null,mode);
+        },userId,userId);
+        var notes=items.values().stream().filter(i->i.note!=null).map(i->i.note).toList();
+        var noteTopics=new HashMap<String,Set<String>>();
+        if(!historical&&!notes.isEmpty())jdbc.query(effectiveSql()+" SELECT i.item_key,(i.labels->'assignments')::text FROM effective i WHERE i.item_key=ANY(?)",
+            rs->{noteTopics.put(rs.getString(1),topicIds(rs.getString(2)));},overrides,notes.toArray(String[]::new));
+        var total=new ExerciseCount();var byCategory=new HashMap<String,ExerciseCount>();
+        for(var item:items.values()){
+            total.add(item);
+            Collection<String> ids=historical?item.historical:item.note!=null?noteTopics.getOrDefault(item.note,Set.of()):item.current;
+            for(String id:ids)if(!id.startsWith("system."))byCategory.computeIfAbsent(id,k->new ExerciseCount()).add(item);
+        }
+        return new Breakdown<>(total,byCategory);
+    }
+    /** Kart öz değerlendirmesi: kart başına tekrar sayısı ve son değerlendirme. */
+    private Breakdown<ReviewCount> review(long userId,boolean historical){
+        var cards=new LinkedHashMap<String,ReviewCard>();
+        jdbc.query("""
+            SELECT payload->>'itemId',correct,concept_id,(payload->'categoryIds')::text FROM learning_engine_events
+            WHERE user_id=? AND kind='attempt' AND item_type='flashcard' ORDER BY occurred_at,id
+            """,rs->{
+            var card=cards.computeIfAbsent(rs.getString(1),k->new ReviewCard());
+            card.reviews++;card.known=Boolean.TRUE.equals(rs.getObject(2));
+            card.current=answerKeys.conceptCategories(rs.getString(3));
+            card.historical.addAll(snapshotIds(tree(rs.getString(4))));
+        },userId);
+        var total=new ReviewCount();var byCategory=new HashMap<String,ReviewCount>();
+        for(var card:cards.values()){total.add(card);for(String id:historical?card.historical:card.current)byCategory.computeIfAbsent(id,k->new ReviewCount()).add(card);}
+        return new Breakdown<>(total,byCategory);
+    }
+    private static final class ExerciseItem {
+        long answers,guided,unverified;Boolean first,last,firstIndependent;String note;
+        Collection<String> current=List.of();final Set<String> historical=new LinkedHashSet<>();
+        void add(Boolean correct,String mode){answers++;if("GUIDED".equals(mode))guided++;
+            if(correct==null){unverified++;return;}
+            if(first==null)first=correct;last=correct;
+            if(!"GUIDED".equals(mode)&&firstIndependent==null)firstIndependent=correct;}
+    }
+    private static final class ExerciseCount {
+        long items,answers,firstCorrect,firstWrong,lastCorrect,lastWrong,independentItems,independentCorrect,guidedAnswers,unverifiedAnswers;
+        void add(ExerciseItem i){items++;answers+=i.answers;guidedAnswers+=i.guided;unverifiedAnswers+=i.unverified;
+            if(i.first!=null){if(i.first)firstCorrect++;else firstWrong++;}
+            if(i.last!=null){if(i.last)lastCorrect++;else lastWrong++;}
+            if(i.firstIndependent!=null){independentItems++;if(i.firstIndependent)independentCorrect++;}}
+        Map<String,Object> result(){var r=new LinkedHashMap<String,Object>();r.put("items",items);r.put("answers",answers);
+            r.put("firstCorrect",firstCorrect);r.put("firstWrong",firstWrong);r.put("lastCorrect",lastCorrect);r.put("lastWrong",lastWrong);
+            r.put("independentItems",independentItems);r.put("independentCorrect",independentCorrect);
+            r.put("guidedAnswers",guidedAnswers);r.put("unverifiedAnswers",unverifiedAnswers);return r;}
+    }
+    private static final class ReviewCard {long reviews;boolean known;Collection<String> current=List.of();final Set<String> historical=new LinkedHashSet<>();}
+    private static final class ReviewCount {
+        long cards,reviews,known;
+        void add(ReviewCard c){cards++;reviews+=c.reviews;if(c.known)known++;}
+        Map<String,Object> result(){var r=new LinkedHashMap<String,Object>();r.put("cards",cards);r.put("reviews",reviews);r.put("lastKnown",known);return r;}
     }
     private static final class ProgressCount {
-        long total,correct,wrong,blank,repeats,seconds;
-        void add(Boolean answer,long repeat,long active){total++;if(answer==null)blank++;else if(answer)correct++;else wrong++;repeats+=repeat;seconds+=active;}
-        Map<String,Object> result(){var r=new LinkedHashMap<String,Object>();r.put("total",total);r.put("correct",correct);r.put("wrong",wrong);r.put("blank",blank);r.put("repeatAttempts",repeats);r.put("firstActiveSeconds",seconds);return r;}
+        long total,correct,wrong,blank,repeats,seconds,answers,lastCorrect,lastWrong;
+        void add(Boolean answer,Boolean last,long answered,long repeat,long active){total++;if(answer==null)blank++;else if(answer)correct++;else wrong++;
+            if(last!=null){if(last)lastCorrect++;else lastWrong++;}answers+=answered;repeats+=repeat;seconds+=active;}
+        Map<String,Object> result(){var r=new LinkedHashMap<String,Object>();r.put("total",total);r.put("correct",correct);r.put("wrong",wrong);r.put("blank",blank);
+            r.put("answers",answers);r.put("lastCorrect",lastCorrect);r.put("lastWrong",lastWrong);
+            r.put("repeatAttempts",repeats);r.put("firstActiveSeconds",seconds);return r;}
     }
     private static final class Coverage {
         final Map<String,Set<String>> keys=new HashMap<>();final Set<String> assets=new HashSet<>(),references=new HashSet<>();

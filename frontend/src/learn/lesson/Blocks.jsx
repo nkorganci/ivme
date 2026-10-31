@@ -7,6 +7,7 @@ import { MathText, Markdown } from '../math.jsx';
 import { LEVELS } from '../ui.jsx';
 import { LessonQuestion, BankQuestion } from '../items.jsx';
 import { rng, shuffle } from '../engine/random.js';
+import { fillCorrect } from './scoring.js';
 import NumberLine from './NumberLine.jsx';
 import Exploration from './Exploration.jsx';
 import FigureZoom from './FigureZoom.jsx';
@@ -168,25 +169,12 @@ function FlipCards({ block }) {
   </section>;
 }
 
-function parseAnswer(text) {
-  const value = String(text).trim().replace(/\s+/g, '').replace(',', '.').replace('−', '-');
-  const fraction = value.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);
-  if (fraction) return Number(fraction[1]) / Number(fraction[2]);
-  return value === '' ? NaN : Number(value);
-}
-
 function FillBlank({ block, onResult, answered }) {
   const [text, setText] = useState('');
   const [result, setResult] = useState(answered ?? null);
   const check = () => {
-    const numeric = parseAnswer(text);
-    const correct = block.answers.some((answer) => {
-      const expected = parseAnswer(answer);
-      return Number.isFinite(expected) && Number.isFinite(numeric)
-        ? Math.abs(expected - numeric) <= Math.max(block.tolerance, 1e-9)
-        : answer.trim().toLocaleLowerCase('tr') === text.trim().toLocaleLowerCase('tr');
-    });
-    const value = { correct, chosen: text.slice(0, 40), confidence: 3 };
+    const correct = fillCorrect(block.answers, block.tolerance, text);
+    const value = { correct, chosen: text.slice(0, 40), response: text.slice(0, 200), confidence: 3 };
     setResult(value);
     onResult?.(value);
   };
@@ -211,7 +199,8 @@ function MatchPairs({ block, onResult, answered, seed }) {
   const [result, setResult] = useState(answered ?? null);
   const check = () => {
     const correct = block.pairs.every(([, right], i) => chosen[i] === right);
-    const value = { correct, chosen: `${block.pairs.filter(([, right], i) => chosen[i] === right).length}/${block.pairs.length}`, confidence: 3 };
+    const value = { correct, chosen: `${block.pairs.filter(([, right], i) => chosen[i] === right).length}/${block.pairs.length}`,
+      response: block.pairs.map((_, i) => chosen[i] ?? null), confidence: 3 };
     setResult(value);
     onResult?.(value);
   };
@@ -248,7 +237,7 @@ function DragOrder({ block, onResult, answered, seed }) {
   });
   const check = () => {
     const correct = items.join('\u0001') === block.items.join('\u0001');
-    const value = { correct, chosen: '', confidence: 3 };
+    const value = { correct, chosen: '', response: items, confidence: 3 };
     setResult(value);
     onResult?.(value);
   };
@@ -277,7 +266,8 @@ function Categorize({ block, onResult, answered, seed }) {
   const [result, setResult] = useState(answered ?? null);
   const check = () => {
     const right = all.filter((entry) => placed[entry.item] === entry.group).length;
-    const value = { correct: right === all.length, chosen: `${right}/${all.length}`, confidence: 3 };
+    const value = { correct: right === all.length, chosen: `${right}/${all.length}`,
+      response: Object.fromEntries(all.map((entry) => [entry.item, placed[entry.item] ?? null])), confidence: 3 };
     setResult(value);
     onResult?.(value);
   };

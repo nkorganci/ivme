@@ -1,0 +1,18 @@
+[
+ {"answers": ["6"], "tolerance": 1e-9, "text": "6", "expected": true},
+ {"answers": ["6"], "tolerance": 1e-9, "text": " 6,0 ", "expected": true},
+ {"answers": ["6"], "tolerance": 1e-9, "text": "6 .0", "expected": true},
+ {"answers": ["6"], "tolerance": 1e-9, "text": "12/2", "expected": true},
+ {"answers": ["6"], "tolerance": 1e-9, "text": "7", "expected": false},
+ {"answers": ["-3"], "tolerance": 1e-9, "text": "−3", "expected": true},
+ {"answers": ["0,5"], "tolerance": 1e-9, "text": "1/2", "expected": true},
+ {"answers": ["0.333"], "tolerance": 0.001, "text": "1/3", "expected": true},
+ {"answers": ["0.33"], "tolerance": 1e-9, "text": "1/3", "expected": false},
+ {"answers": ["1e3"], "tolerance": 1e-9, "text": "1000", "expected": true},
+ {"answers": ["İki"], "tolerance": 1e-9, "text": "iki", "expected": true},
+ {"answers": ["Asal"], "tolerance": 1e-9, "text": " asal ", "expected": true},
+ {"answers": ["a", "6"], "tolerance": 1e-9, "text": "6", "expected": true},
+ {"answers": ["6"], "tolerance": 1e-9, "text": "", "expected": false},
+ {"answers": ["6"], "tolerance": 1e-9, "text": "6/0", "expected": false},
+ {"answers": ["x"], "tolerance": 1e-9, "text": "X", "expected": true}
+]

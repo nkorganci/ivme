@@ -41,7 +41,8 @@ public class LearnService {
     private static final Set<String> ITEM_TYPES = Set.of("bank", "lesson_q", "flashcard");
     private static final Set<String> CONTEXTS = Set.of("pretest", "posttest", "quick_check", "misconception", "mastery", "testout",
             "review", "missed", "mixed", "placement", "reteach", "practice", "flashcards", "sibling", "test", "cikmis");
-    private static final Set<String> SERVER_FIELDS = Set.of("seq", "correctAnswer", "recordedAt", "hasSolution");
+    private static final Set<String> SERVER_FIELDS = Set.of("seq", "correctAnswer", "recordedAt", "hasSolution",
+            "scoring", "keyVersion", "clientCorrect", "categoryIds", "mode");
     private static final Pattern CONCEPT = Pattern.compile("^[a-z0-9-]{1,80}$");
     private static final Pattern ITEM = Pattern.compile("^[\\p{L}\\p{N}_:.\\-]{1,120}$");
     private static final int MAX_PAYLOAD = 6000;
@@ -53,12 +54,14 @@ public class LearnService {
     private final ObjectMapper mapper;
     private final QuestionRepository questions;
     private final AttemptService attempts;
+    private final AnswerKeys keys;
 
-    public LearnService(JdbcTemplate jdbc, ObjectMapper mapper, QuestionRepository questions, AttemptService attempts) {
+    public LearnService(JdbcTemplate jdbc, ObjectMapper mapper, QuestionRepository questions, AttemptService attempts, AnswerKeys keys) {
         this.jdbc = jdbc;
         this.mapper = mapper;
         this.questions = questions;
         this.attempts = attempts;
+        this.keys = keys;
     }
 
     @Transactional(readOnly = true)
@@ -111,7 +114,7 @@ public class LearnService {
         for (JsonNode raw : events) {
             Event event = validate(raw);
             if ("bank".equals(event.itemType())) throw ApiException.badRequest("Banka sorusu cevabı /bank-answer ile puanlanır.");
-            saved.add(insert(userId, subject, event, null));
+            saved.add(insert(userId, subject, event, serverFields(event)));
         }
         return saved;
     }
@@ -155,6 +158,33 @@ public class LearnService {
         out.put("correctAnswer", recorded.path("correctAnswer").asText());
         out.put("hasSolution", question.getSolutionImage() != null && !question.getSolutionImage().isBlank());
         return out;
+    }
+
+    /**
+     * TAS-04: ders sorusu sonucu sunucu anahtarından hesaplanır; istemci beyanı farklıysa `clientCorrect` olarak saklanır.
+     * Anahtarda olmayan ya da cevap gövdesi eksik öğe `scoring=CLIENT` ile kaydedilir ve Konu takibinde doğru/yanlışa girmez.
+     * Konu bağı (`categoryIds`) cevap anındaki ders kataloğunun anlık kaydıdır.
+     */
+    private Map<String, Object> serverFields(Event event) {
+        if (!"attempt".equals(event.kind())) return null;
+        Map<String, Object> fields = new LinkedHashMap<>();
+        fields.put("mode", AnswerKeys.mode(event.itemType(), event.payload()));
+        if ("lesson_q".equals(event.itemType())) {
+            AnswerKeys.LessonKey key = keys.lessonItem(event.payload().path("itemId").asText());
+            Boolean correct = key == null ? null : AnswerKeys.score(key, event.payload());
+            boolean claimed = event.payload().path("correct").asBoolean();
+            if (correct == null) fields.put("scoring", "CLIENT");
+            else {
+                fields.put("scoring", "SERVER");
+                fields.put("keyVersion", key.version());
+                fields.put("correct", correct);
+                if (correct != claimed) fields.put("clientCorrect", claimed);
+            }
+            fields.put("categoryIds", keys.conceptCategories(key != null ? key.conceptId() : event.conceptId()));
+        } else {
+            fields.put("categoryIds", keys.conceptCategories(event.conceptId()));
+        }
+        return fields;
     }
 
     record Event(UUID id, Instant at, String kind, String conceptId, String itemType, ObjectNode payload) {}
@@ -227,6 +257,8 @@ public class LearnService {
             value.remove(List.of("correct", "code"));
             value.put("chosen", value.path("chosen").asText().trim().toUpperCase(java.util.Locale.ROOT));
         }
+        // Sunucu puanı istemci beyanının yerine geçer; aynı cevabın yeniden denemesi beyan farkıyla 409 almaz.
+        if ("lesson_q".equals(value.path("itemType").asText())) value.remove("correct");
         return value;
     }
 

@@ -41,5 +41,12 @@ TAS-03 / 12.07 tamamlandı: öğrenme ekranlarında ders/ünite/konu adı ve roz
 kataloğundan kimlikle okunuyor; bölüm sınav kapsamı (`@bolum … AYT`) destekleniyor ama
 henüz hiçbir bölüm işaretlenmedi (kaynak kanıtlı işaretleme TAS-08). Kanıt görev tablosunda.
 
+TAS-04 / 12.08 tamamlandı: ders içi soru ve not alıştırması sunucu cevap anahtarıyla
+puanlanıyor; Konu takibi banka/pratik/deneme, açık pratik, ders alıştırması ve kart
+tekrarını tek sözleşmeyle ayrı sütunlarda sayıyor. Eski DB kayıtları yeniden
+puanlanmadı. `.ders` veya `kaynakli-notlar.json` cevabı değişirse
+`node scripts/cevap-anahtari.mjs` aynı commit'te çalıştırılmalı. Bu kapsamda açık iş
+yok; sıradaki öneri TAS-05 (ortak PRATIK seti), kullanıcı seçerse.
+
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

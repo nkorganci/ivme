@@ -90,8 +90,8 @@ public class AccountDataService {
         data.put("mathTutoringFiles", jdbc.queryForList("SELECT f.id, f.lesson_id, f.original_name, "
                 + "f.content_type, f.content FROM math_tutoring_files f "
                 + "JOIN math_tutoring_lessons l ON l.id = f.lesson_id WHERE l.user_id = ? ORDER BY f.id", userId));
-        data.put("selfCheckAttempts", jdbc.queryForList("SELECT kind, item_key, answers::text AS answers, created_at "
-                + "FROM student_self_check_attempts WHERE user_id = ? ORDER BY id", userId));
+        data.put("selfCheckAttempts", jdbc.queryForList("SELECT kind, item_key, answers::text AS answers, correct, solution_seen, "
+                + "key_version, category_snapshot::text AS category_snapshot, created_at FROM student_self_check_attempts WHERE user_id = ? ORDER BY id", userId));
         data.put("recordAudit", jdbc.queryForList("SELECT record_type, record_key, operation, revision, occurred_at "
                 + "FROM user_record_audit WHERE user_id = ? ORDER BY id", userId));
         data.put("tutorSessions", jdbc.queryForList("SELECT s.id, q.code AS question_code, s.status, s.outcome, "

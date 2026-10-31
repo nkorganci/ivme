@@ -275,6 +275,11 @@ def cmd_kontrol(args):
             except (ValueError, IndexError, KeyError):
                 errors = [result.stdout[-400:] + result.stderr[-400:]]
             problems += ["plan-check: " + e for e in errors]
+    # Ders/not cevabı değişince sunucu puanlama anahtarı da aynı commit'te yenilenmeli (TAS-04).
+    if "--hepsi" in args or any(n.startswith("frontend/src/learn/content/dersler/") or n in (
+            "frontend/public/kaynakli-notlar.json", "backend/src/main/resources/learn/answer-keys.json") for n in files):
+        if run(["node", "scripts/cevap-anahtari.mjs", "--kontrol"], capture_output=True).returncode:
+            problems.append("cevap anahtarı güncel değil: node scripts/cevap-anahtari.mjs çalıştır ve dosyayı ekle")
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
     if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
         print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")

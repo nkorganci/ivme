@@ -27,6 +27,41 @@ sayılır; pratik seçimi de aynı bağları kullanır. "Bitti" işaretleri ayr�
 içindeki eski İlerlemem sekmesi kaldırılmıştır; ayrı bir İlerlemem veri tablosu
 yoktur. Eski `/ilerleme` ve `/gecmis?tab=progress` adresleri Konu takibine gider.
 
+## Ortak cevap ve sayım sözleşmesi (TAS-04)
+
+Yeni paralel soru geçmişi yoktur; `progress` mevcut kayıtları tek sözleşmeyle okur
+(yanıttaki `countingContract`). Her giriş noktası DB'ye yazılır ve kendi sütununda görünür:
+
+| Giriş noktası | Kayıt | Konu takibinde | Bağımsız ölçüm |
+|---|---|---|---|
+| Soru bankası, pratik, deneme | `question_attempts`, `exam_questions` | Çözdüğüm/Doğru/Yanlış = soru başına ilk yanıt; Toplam cevap; Son sonuç D/Y | Evet |
+| Konuyu Öğrenelim banka sorusu | `question_attempts` + öğrenme olayı | Banka satırıyla aynı; olay kopyası tekrar sayılmaz | Evet |
+| Açık (bitmemiş) pratik | `question_attempts` | Devam eden: henüz sayılmamış tekil soru | Oturum bitince |
+| Ders içi soru (`lesson_q`) | `learning_engine_events` | Ders alıştırması: tekil öğe, ilk/son sonuç | Yalnız rehbersiz bağlam |
+| Kaynaklı not alıştırması | `student_self_check_attempts` | Ders alıştırması | Çözüm önceden açılmadıysa |
+| Kart (“bildim”) | `learning_engine_events` | Kart tekrarı; doğru cevap değildir | Hayır |
+
+- **Sunucu puanı:** `scripts/cevap-anahtari.mjs`, `.ders` dosyalarından ve
+  `kaynakli-notlar.json`'dan `backend/src/main/resources/learn/answer-keys.json`
+  dosyasını üretir (`npm run build` de çalıştırır). Ders sorusunda istemci `chosen`/
+  `response` gönderir; sunucu `correct`, `scoring=SERVER`, `keyVersion` yazar ve farklı
+  istemci beyanını `clientCorrect` olarak saklar. Anahtarda olmayan veya gövdesi eksik
+  cevap `scoring=CLIENT` olur ve doğru/yanlışa girmez. Boşluk puanlaması ön yüzde
+  `lesson/scoring.js`, sunucuda `AnswerKeys` içindedir; ortak örnekler iki tarafta denenir.
+- **Rehberli/bağımsız:** `quick_check`, `misconception`, `reteach` bağlamı veya açılmış
+  ipucu `mode=GUIDED`; kart `REVIEW`; diğerleri `INDEPENDENT`. Not alıştırmasında çözüm
+  cevaptan önce açıldıysa `solution_seen=true` rehberli sayılır.
+- **Konu bağı:** ders sorusu ve kart dersin `kategori:` kimliklerine, not alıştırması
+  katalogdaki `note:` kaydının konularına sayılır. Cevap anındaki bağ olaya
+  (`categoryIds`) veya `category_snapshot` alanına yazılır; `HISTORICAL` bunu kullanır.
+- **Eski kayıt:** referans günü öncesindeki ders olayları yeniden puanlanmaz ve konu
+  anlık kaydıyla doldurulmaz; doğrulanmamış cevap olarak ayrı sayılır.
+- Genel toplamlar tekildir; çok konulu öğe birden fazla konu satırında görünebilir.
+  Rehber bilgi testi (`GUIDE_QUIZ`) müfredat konusu olmadığı için Konu takibine girmez.
+
+Kanıt: `TopicAnswerContractTest` (geçici DB), `learn.AnswerKeysTest` ve
+`node --test testler/cevap-anahtari.test.mjs`.
+
 Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme ve pratik
 tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
 sayfasına değil tüm geçmişe uygulanır; deneme özeti, filtre sonrası kayıtlar üzerinden
@@ -84,7 +119,8 @@ korumasına girer.
 TYT/AYT deneme çizelgeleri, gerçek sınav/cevap/sonuç, pratik oturumu ve olayları,
 öğrenci ilerlemesi, matematik dersleri ve geri bildirim PostgreSQL kayıtlarıdır.
 Rehber bilgi testi ve konu notu mini alıştırmalarının tamamlanan yanıtları
-`student_self_check_attempts` içinde kullanıcıya bağlı, deneme geçmişiyle saklanır.
+`student_self_check_attempts` içinde kullanıcıya bağlı, deneme geçmişiyle saklanır;
+not alıştırması sunucuda puanlanır ve konu bağıyla saklanır (yukarıdaki TAS-04 sözleşmesi).
 Soru bankası, pratik ve denemede soru kimliğine bağlı tam sayfa karalama;
 PDF görüntüleyicide katalog kimliği ve fiziksel sayfa numarasına bağlı karalama
 `page_annotations` içinde kullanıcıya özel saklanır. Yaz/Tıkla modu gezinmeyi
