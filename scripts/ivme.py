@@ -284,7 +284,10 @@ def cmd_kontrol(args):
     # Banka değişince aynı görselli kitapçık kopyaları yeniden hesaplanmalı (TAS-05 ikiz görsel haritası).
     bank_changed = any(n.startswith("frontend/src/learn/bank/") and not n.rsplit("/", 1)[-1].startswith("_") for n in files)
     if bank_changed and "frontend/src/learn/bank/_gorsel.json" not in files:
-        problems.append("banka dosyası değişti: node scripts/ortak-set-tani.mjs --yaz çalıştır ve _gorsel.json dosyasını ekle")
+        # Yalnız soru tipi değişmişse yeniden üretilen ikiz haritasının baytları aynı kalabilir.
+        # Dosyada yapay bir fark istemek yerine gerçek banka/görsel güncelliğini doğrula.
+        if run(["node", "scripts/ortak-set-tani.mjs", "--kontrol"], capture_output=True).returncode:
+            problems.append("ikiz görsel haritası güncel değil: node scripts/ortak-set-tani.mjs --yaz çalıştır ve çıktıyı ekle")
     code_changed = any(n.startswith(("frontend/src/", "backend/src/", "scripts/")) for n in files)
     if code_changed and "docs/devam.md" not in files and "--hepsi" not in args:
         print("Not: kod değişti ama docs/devam.md commit'te yok; yarım iş varsa devir dosyasını güncelle.")

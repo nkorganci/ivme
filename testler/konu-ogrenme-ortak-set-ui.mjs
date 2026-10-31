@@ -6,17 +6,19 @@ import { createServer } from 'node:http';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(ROOT, 'frontend/dist');
 const out = join(ROOT, 'veri/ui-denetim/konu-ogrenme');
 mkdirSync(out, { recursive: true });
-const CONCEPT = 'temel-kavramlar';
+const pilot = process.argv.includes('--pilot');
+const CONCEPT = pilot ? 'bolme-bolunebilme' : 'temel-kavramlar';
 const groups = JSON.parse(readFileSync(join(ROOT, 'frontend/src/learn/bank/_gorsel.json'), 'utf8')).groups;
 const bank = JSON.parse(readFileSync(join(ROOT, `frontend/src/learn/bank/${CONCEPT}.json`), 'utf8')).questions;
 const codeOf = new Map(bank.map((q) => [q.i, q.c]));
 
-const server = { posts: [], sessions: new Map(), failNext: 0, nextId: 700 };
+const server = { posts: [], sessions: new Map(), failNext: 0, nextId: 700, answers: new Map(), answerPosts: [] };
 const svg = (text) => `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260"><rect width="720" height="260" fill="white" stroke="black"/><text x="30" y="120" font-size="28">${text}</text></svg>`;
 
 const http = createServer(async (req, res) => {
@@ -58,9 +60,26 @@ const http = createServer(async (req, res) => {
     const row = bank.find((q) => q.c === code);
     return json({ id: row?.i ?? 1, code, bank: 'OGM', examType: row?.x ?? 'TYT', subject: 'Matematik', topic: 'Temel kavramlar', choiceCount: 5, hasSolutionImage: false, hasApprovedHint: false });
   }
-  if (/^\/api\/questions\/\d+\/practice$/.test(p) && req.method === 'GET') return json({ attempts: [], canAnswer: true, canReveal: false, roundComplete: false, round: 1, remainingAttempts: 2 });
+  if (/^\/api\/questions\/\d+\/practice$/.test(p)) {
+    if (req.method === 'POST') {
+      server.answerPosts.push(body);
+      const code = codeOf.get(Number(p.split('/')[3]));
+      const correct = body.answer === WORKED_EXAMS[code]?.answer;
+      const result = { attempts: [{ eventType: 'ANSWER', selectedAnswer: body.answer, correct }], canAnswer: !correct,
+        canReveal: !correct, roundComplete: correct, round: 1, remainingAttempts: correct ? 0 : 1,
+        correctAnswer: correct ? WORKED_EXAMS[code].answer : null };
+      server.answers.set(p, result);
+      return json(result);
+    }
+    return json(server.answers.get(p) ?? { attempts: [], canAnswer: true, canReveal: false, roundComplete: false, round: 1, remainingAttempts: 2 });
+  }
   const image = p.match(/^\/api\/questions\/(\d+)\/(image|solution-image)$/);
-  if (image) { res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); return res.end(svg(`Soru ${image[1]}`)); }
+  if (image) {
+    const code = codeOf.get(Number(image[1]));
+    const file = join(ROOT, `veri/resimler-pilot/kirpilmis/TYT/matematik/${code}.webp`);
+    if (pilot && existsSync(file)) { res.writeHead(200, { 'Content-Type': 'image/webp' }); return res.end(readFileSync(file)); }
+    res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); return res.end(svg(`Soru ${image[1]}`));
+  }
   if (p === '/api/learning-resources/metadata') return json({ summary: {}, branches: [], categories: JSON.parse(readFileSync(join(ROOT, 'frontend/src/data/curriculumIdentities.json'), 'utf8')).canonicalUnits });
   if (p.startsWith('/api/')) return json(null);
   const path = resolve(dist, `.${decodeURIComponent(p)}`);
@@ -176,9 +195,55 @@ async function run(mobile) {
   }
 }
 
+async function runPilot(mobile) {
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors } = browser;
+  server.sessions.clear(); server.answers.clear(); server.answerPosts.length = 0; server.posts.length = 0;
+  try {
+    await goto(`/konuyu-ogrenelim/konu/${CONCEPT}`);
+    await wait('[...document.querySelectorAll("a")].some(a => a.textContent.includes("Konu testi (2 soru)"))');
+    assert.ok(await evalJs('document.body.innerText.includes("bütün soru tiplerini kapsayan ustalık testi değildir")'));
+    await goto(`/konuyu-ogrenelim/pratik?tur=test&konu=${CONCEPT}`);
+    await wait('document.querySelector(".qpage .choices button:not(:disabled)")');
+    assert.deepEqual(server.posts[0].items.map((i) => codeOf.get(i.questionId)).sort(), ['TYT-0592', 'TYT-0597']);
+    const session = [...server.sessions.values()][0];
+    for (const q of session.questions) {
+      await goto(`/soru/${q.code}?sessionId=${session.id}`);
+      await wait('document.querySelector(".qpage .choices button:not(:disabled)")');
+      assert.equal(await evalJs('!!document.querySelector(".lr-guided-exam")'), false, 'cevaptan önce çözüm yok');
+      const answer = WORKED_EXAMS[q.code].answer;
+      await evalJs(`document.querySelector('.choices button[aria-label="Şık E"]').click()`);
+      await wait('document.querySelector(".choice.wrong")');
+      assert.equal(await evalJs('!!document.querySelector(".lr-guided-exam")'), false, 'ilk yanlış çözümü açmaz');
+      await evalJs('[...document.querySelectorAll("button")].find(b => b.textContent.includes("Tekrar dene")).click()');
+      await wait('document.querySelector(".choices button:not(:disabled)")');
+      await evalJs(`document.querySelector('.choices button[aria-label="Şık ${answer}"]').click()`);
+      await wait('document.querySelector(".lr-guided-exam .btn-primary")');
+      const writes = server.answerPosts.length;
+      for (const step of WORKED_EXAMS[q.code].steps) {
+        await evalJs('document.querySelector(".lr-guided-exam .btn-primary").click()');
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      await wait('document.querySelector(".lm-exam-conclusion")');
+      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion').innerText.includes(${JSON.stringify(WORKED_EXAMS[q.code].result)})`));
+      await evalJs('document.querySelector(".lr-pilot-solution-source summary").click()');
+      assert.ok(await evalJs('document.querySelector(".lr-pilot-solution-source").innerText.includes("öğretmen incelemesi bekleniyor")'));
+      assert.equal(server.answerPosts.length, writes, 'çözüm okumak yeni cevap üretmez');
+      assert.equal(await evalJs('!!document.querySelector(".katex-error")'), false);
+      assert.equal(await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2'), false);
+      await evalJs('document.querySelector(".lr-guided-exam").scrollIntoView({block:"start"})');
+      await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-tas08-${q.code}.png`));
+      await evalJs('[...document.querySelectorAll("button")].find(b => b.textContent.includes("Yeniden çalış")).click()');
+      assert.equal(await evalJs('!!document.querySelector(".lr-guided-exam")'), false, 'yeni denemede çözüm saklanır');
+    }
+    assert.deepEqual(errors.filter((e) => !/favicon|Failed to load resource/.test(e)), []);
+    return { mobile, pilot: true, questions: session.questions.map((q) => q.code), answerPosts: server.answerPosts.length };
+  } finally { browser.close(); }
+}
+
 const report = [];
 try {
-  for (const mobile of [false, true]) report.push(await run(mobile));
+  for (const mobile of [false, true]) report.push(await (pilot ? runPilot(mobile) : run(mobile)));
   console.log(JSON.stringify(report, null, 1));
 } finally {
   http.close();

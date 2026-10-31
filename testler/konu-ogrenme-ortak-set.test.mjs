@@ -41,11 +41,11 @@ test('çıkmış sorular: gizli 40 sınırı yok; bütün 52 soru açılır ve g
   assert.equal(pickPast({ bank }).length, 52);
 });
 
-test('her kavramda: konu testi boyutu = min(12, tekil soru), kod ve görsel tekil, kararlı tohum aynı seti verir', () => {
+test('konu testi: genel havuzda en çok 12, bölme pilotunda 2 açıklamalı aktarım; tekillik ve kararlı seçim', () => {
   assert.ok(concepts.length >= 30);
   for (const id of concepts) {
     const bank = load(id);
-    const want = Math.min(TEST_SIZE, bank.length);
+    const want = id === 'bolme-bolunebilme' ? 2 : Math.min(TEST_SIZE, bank.length);
     assert.equal(plannedSize('test', bank), want, id);
     for (const seed of ['a', 'b', 'c']) {
       const items = pickSharedSet({ type: 'test', meta: lessons[id], bank, state: state(), seed });

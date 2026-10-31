@@ -12,6 +12,7 @@ import { BASE, CatalogTopics, ExamBadges, LEVELS, ProgressBar, SharedSetLink, mi
 import { ENGINE } from '../engine/config.js';
 import { loadBank } from '../bank.js';
 import { EXPLORATIONS } from '../content/explorations.js';
+import { PilotSectionSources } from '../lesson/PilotSources.jsx';
 
 function previousAnswers(state, conceptId, contexts) {
   const out = {};
@@ -307,6 +308,7 @@ export default function LessonPage() {
           ? <>Bu bölümde <button type="button" className="lr-link" onClick={() => showLeveled()}>“Seçtiğin anlatım” kutusu</button> buna göre değişir{hasDiscovery ? '; keşifte kelimeler (Temelden) veya “Bir adım ileri” notu (Derinleş) açık gelir' : ''}. Çözümlü örneklerin gerekçeleri her düzeyde görünür.</>
           : 'Bu bölümün anlatımı her düzeyde aynıdır.'}</p></div>
       <div className="lr-blocks">{section.blocks.map((block, i) => <div key={`${section.id}-${i}`} className={`lr-block lr-block-${block.type}`}><Block block={block} ctx={ctx} /></div>)}</div>
+      <PilotSectionSources conceptId={conceptId} sectionId={section.id} />
       {offer === 'L1' && <aside className="lr-offer" role="status">İki kontrol sorusu zorladı. <strong>Daha basit anlatayım mı?</strong>
         <button type="button" className="btn btn-secondary btn-sm" onClick={() => { setOffer(null); chooseLevel('L1'); }}>Evet, basit anlat</button>
         <button type="button" className="lr-link" onClick={() => setOffer(null)}>Böyle kalsın</button></aside>}

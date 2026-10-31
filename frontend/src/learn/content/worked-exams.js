@@ -1,8 +1,10 @@
 // Özgün soru kırpımları okunarak yazılan çözümler. Öğretmen onayı iddiası içermez.
 // Kaynak kodları değişmez; soru metni yeniden yazılmaz. Kanıt: docs/icerik/konuyu-ogrenelim.md.
 import { MATH_CONTINUATION_EXAMS } from './worked-math-continuation.js';
+import { DIVISION_TRANSFER_EXAMS } from './bolme-transfer-exams.js';
 export const WORKED_EXAMS = {
   ...MATH_CONTINUATION_EXAMS,
+  ...DIVISION_TRANSFER_EXAMS,
   'AYT_Sayisal-0014': {
     conceptId: 'bolme-bolunebilme', archetype: 'bolme-algoritmasi', answer: 'D',
     title: '2020 AYT · basamak açılımını bölme denklemine yerleştir',
@@ -16,6 +18,7 @@ export const WORKED_EXAMS = {
     result: 'D · 11',
     tip: 'Rakamlı bölme sorusunda önce açılım, sonra bölme eşitliği, en son rakam sınırı. Bir taraf 10’un katıysa birler basamağını kullanmak adayları hızla azaltır.',
     check: '292=21×13+19; 19<21. A=2, B=9 ve A+B=11. Üç basamak ve kalan koşulları sağlanıyor.',
+    mistake: 'ABA, A×B×A değildir. 19 kalanını yazıp 19<bölen koşulunu unutma; her denklem çözümü geçerli bir bölme olmayabilir.',
   },
   'TYT-0593': {
     conceptId: 'bolme-bolunebilme', archetype: 'bilesik-kural', answer: 'A',
@@ -31,6 +34,7 @@ export const WORKED_EXAMS = {
     result: 'A · 7',
     tip: '“Biri … diğeri …” sorularında iki yerleşimi ayrı tut. Ortak rakam toplamını bir kez kur; son basamak kuralıyla adayları azalt. 9 koşulu varsa 12 için yalnız eksik 4 kontrolünü ayrıca yap.',
     check: '225=5×45=9×25; 252=12×21=9×28. Rakamlar A=2, B=5; toplam 7.',
+    mistake: '9’a bölünmek, 12’ye bölünmeyi garanti etmez: 558 bir karşı örnek. Ayrıca “biri, diğeri” dendiği için iki yerleşimi de sınamalısın.',
   },
   'TYT-0588': {
     conceptId: 'temel-kavramlar', archetype: 'kumeler-islem', answer: 'E',

@@ -1,0 +1,511 @@
+{
+  "schemaVersion": 1,
+  "conceptId": "bolme-bolunebilme",
+  "contentVersion": 1,
+  "lessonSha256": "d33651116f090f7475614f1d57a260a09d51b7a58d3dfbfb46873a7bce378b70",
+  "primarySource": {
+    "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
+    "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
+    "sha256": "8ff2f001aad6f332362a0a219cee714204ac69cc2281f48e0fe3211829927bcd"
+  },
+  "review": {
+    "teacherApproved": false,
+    "studentTransferObserved": false
+  },
+  "claims": {
+    "bolme": {
+      "title": "Bölme eşitliği ve kalan sınırı",
+      "page": 88,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=88",
+      "blocks": [
+        {
+          "id": "blk-9e3cdb0be845",
+          "bbox": [
+            201.63,
+            501.96,
+            389.87,
+            513.98
+          ],
+          "textSha256": "2130c48d812c9cb59c2690b4f96435252efeaaf4389164faeb07c0946b5ece6d"
+        },
+        {
+          "id": "blk-a40e844acd8e",
+          "bbox": [
+            201.63,
+            519.63,
+            525.0,
+            531.65
+          ],
+          "textSha256": "46724dea2f9f83f6c6e601a0a1497508a7ca012b8b2c12285c512e80cbe7d506"
+        },
+        {
+          "id": "blk-453e0396c427",
+          "bbox": [
+            237.13,
+            541.63,
+            426.36,
+            560.51
+          ],
+          "textSha256": "3e1cfdea2fe2442607a68462cc638078ea210c2322e6195b7e15796d69962a9f"
+        },
+        {
+          "id": "blk-ad706c99b3ba",
+          "bbox": [
+            201.63,
+            572.64,
+            532.03,
+            596.66
+          ],
+          "textSha256": "b5d2487fb2e5341c336e81c7f554f33f35dc86b9fb55d20743bf8fa2425e0c30"
+        }
+      ],
+      "layoutSha256": "30b5344049545117fac25100e9e0a3e13e2af700bce5de2adf37da38bebc323a"
+    },
+    "basamak4": {
+      "title": "Son iki basamak ve 100 katsayısı",
+      "page": 90,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=90",
+      "blocks": [
+        {
+          "id": "blk-605953edd002",
+          "bbox": [
+            201.26,
+            583.84,
+            535.04,
+            619.86
+          ],
+          "textSha256": "fcc479c530a3c0ad3b56c13777f71c9b84d7d7ccd80c3503afd8658debe33a7d"
+        },
+        {
+          "id": "blk-a63c9061026b",
+          "bbox": [
+            201.26,
+            691.18,
+            535.0,
+            727.2
+          ],
+          "textSha256": "c8f2014e39e2f4d6069d07ce4ec8843841bf1a3e1bbbbc7f978bcc00cb923046"
+        }
+      ],
+      "layoutSha256": "3fd0c82a29668257831fea36def88a5dedc5474f5f3a56a4eda9841af95f4e30"
+    },
+    "basamak8": {
+      "title": "Son üç basamak ve 1000 katsayısı",
+      "page": 92,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=92",
+      "blocks": [
+        {
+          "id": "blk-858111ab8236",
+          "bbox": [
+            201.26,
+            85.76,
+            535.0,
+            109.78
+          ],
+          "textSha256": "75b4cbf65add8c58fc7ea236ab54d65d61332c5159f505ea5ac50b57811c9c60"
+        },
+        {
+          "id": "blk-bc2370d3315e",
+          "bbox": [
+            201.26,
+            115.43,
+            384.08,
+            127.45
+          ],
+          "textSha256": "e24f135fcf5711e9e34c8f034f281a65f28550ef99fc2acfe45e9e7b2b2e2989"
+        },
+        {
+          "id": "blk-1f2433657b94",
+          "bbox": [
+            201.26,
+            133.1,
+            496.13,
+            145.12
+          ],
+          "textSha256": "a80f68b44ec5995aec0234664f22702bc8bb2330366e31d99cb073431d28ed64"
+        },
+        {
+          "id": "blk-b319a1708b29",
+          "bbox": [
+            201.26,
+            150.77,
+            532.92,
+            186.79
+          ],
+          "textSha256": "01d4850da59fdbd9a37497e2e5d5f0a735f2146bfa7c7f2cbcc18904c16c7cdf"
+        }
+      ],
+      "layoutSha256": "47a308dd6ea3c45f7ddc6c92141e83c4db587b7fc752c7367679ba869b74e498"
+    },
+    "toplam3": {
+      "title": "Rakam toplamının 3 ile kalanı",
+      "page": 90,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=90",
+      "blocks": [
+        {
+          "id": "blk-b23018c8f720",
+          "bbox": [
+            201.26,
+            84.34,
+            504.34,
+            96.36
+          ],
+          "textSha256": "a111893e3e4c47574397a2bd579d9171e595ed9278ddf8364c0ea641db0151df"
+        },
+        {
+          "id": "blk-ed55304a07cc",
+          "bbox": [
+            201.26,
+            198.03,
+            535.05,
+            234.05
+          ],
+          "textSha256": "88d9f86bda698d793825d548ef6d272ad9b0ba08415b5cc5ad4f58cae3f892cf"
+        }
+      ],
+      "layoutSha256": "3fd0c82a29668257831fea36def88a5dedc5474f5f3a56a4eda9841af95f4e30"
+    },
+    "toplam9": {
+      "title": "Rakam toplamının 9 ile kalanı",
+      "page": 92,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=92",
+      "blocks": [
+        {
+          "id": "blk-e21d514103ea",
+          "bbox": [
+            201.27,
+            520.79,
+            532.92,
+            544.81
+          ],
+          "textSha256": "b779fdd85517162f8eaa0a8dfe2bc1392916f60a30cc3e49c86180aaa85cf974"
+        }
+      ],
+      "layoutSha256": "47a308dd6ea3c45f7ddc6c92141e83c4db587b7fc752c7367679ba869b74e498"
+    },
+    "isaret11": {
+      "title": "11 için sağdan başlayan işaretli toplam",
+      "page": 93,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=93",
+      "blocks": [
+        {
+          "id": "blk-e975fcc5ad86",
+          "bbox": [
+            62.68,
+            726.29,
+            394.4,
+            774.31
+          ],
+          "textSha256": "074273596d9f6f730e270a2a42aa9e79c0183400a3a02d5d8888ce1ad553110a"
+        }
+      ],
+      "layoutSha256": "fb2f408c842c3f9b6b5d9ff4346c511d9eaf46b66a382545515a5bf0ac501562"
+    },
+    "negatif11": {
+      "title": "Negatif işaretli toplamı kalan aralığına taşıma",
+      "page": 94,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=94",
+      "blocks": [
+        {
+          "id": "blk-45e1ffbd25cb",
+          "bbox": [
+            196.1,
+            147.67,
+            530.66,
+            181.27
+          ],
+          "textSha256": "9f058ad0879b8a652a5b3c9e5139bdcbcf54d403815efb402c4924100b6a7708"
+        }
+      ],
+      "layoutSha256": "40137227aacfd67f6fe32e69c0ae20911bbefc73f387c4492c18e99cf7f1a1b3"
+    },
+    "ortak": {
+      "title": "Aralarında asal çarpanların ortak koşulu",
+      "page": 94,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=94",
+      "blocks": [
+        {
+          "id": "blk-aa24db497e02",
+          "bbox": [
+            201.26,
+            619.78,
+            531.35,
+            659.0
+          ],
+          "textSha256": "0d267c16e1bb8a02b7b68dc4388a48d85a20e7f02ef95366b9c55a45845b34b4"
+        },
+        {
+          "id": "blk-487ec764b93b",
+          "bbox": [
+            62.22,
+            622.63,
+            167.45,
+            670.65
+          ],
+          "textSha256": "0b4460f269088471df2215ff6ed82643a44ae1894582623fa7349f4cf04b42dd"
+        },
+        {
+          "id": "blk-df60a1c14e38",
+          "bbox": [
+            209.76,
+            664.65,
+            421.33,
+            760.67
+          ],
+          "textSha256": "5c4deca0da83a66380fd6467cc683ade8bd80c163028d2768042c986963b03e5"
+        }
+      ],
+      "layoutSha256": "40137227aacfd67f6fe32e69c0ae20911bbefc73f387c4492c18e99cf7f1a1b3"
+    },
+    "saat": {
+      "title": "Saat döngüsünde 24 ile kalan",
+      "page": 106,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=106",
+      "blocks": [
+        {
+          "id": "blk-8b561101d323",
+          "bbox": [
+            198.43,
+            281.89,
+            537.24,
+            322.11
+          ],
+          "textSha256": "79c95c98b4b402bcbc4114bc82a26cf1f88b61081f2d150f7c2123a71f3d7f7a"
+        }
+      ],
+      "layoutSha256": "b651d2095f7810ee6b5a4b62e5c422eee5bdc0bd8edf782e1027f3a25d04ff08"
+    },
+    "baslangic": {
+      "title": "İlk olayın sayıldığı periyotta bir eksik aralık",
+      "page": 106,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=106",
+      "blocks": [
+        {
+          "id": "blk-f147f8afdb06",
+          "bbox": [
+            199.06,
+            635.14,
+            537.89,
+            687.35
+          ],
+          "textSha256": "57de2a1a9de63786975f3f2807aa9730a83dd8044748e2e665902d570eca890a"
+        }
+      ],
+      "layoutSha256": "b651d2095f7810ee6b5a4b62e5c422eee5bdc0bd8edf782e1027f3a25d04ff08"
+    },
+    "dongu": {
+      "title": "Tekrarlanan dizide kalan ile konum",
+      "page": 107,
+      "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf#page=107",
+      "blocks": [
+        {
+          "id": "blk-307c9673871e",
+          "bbox": [
+            59.84,
+            634.83,
+            398.4,
+            675.04
+          ],
+          "textSha256": "f635812cea3aad20983cd4ea2420d04222c5a2e255c37e1915fe5e4f2f34f0fc"
+        }
+      ],
+      "layoutSha256": "2403ed6b60d9453627142d90cdbbd4a4267206d57b883b23280a346a6c3b7f29"
+    }
+  },
+  "sections": {
+    "s1": {
+      "claims": [
+        "bolme"
+      ],
+      "note": "Doğal sayılarda eş gruplar ve artan; bölen pozitiftir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s1b": {
+      "claims": [
+        "bolme"
+      ],
+      "note": "Basamak açılımını bölme eşitliğine yerleştirme. AYT örneği ortak temelin uygulamasıdır.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s2": {
+      "claims": [
+        "basamak4",
+        "basamak8"
+      ],
+      "note": "2, 5, 10 ve 25 kuralları aynı basamak açılımından özgün olarak türetilir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s2b": {
+      "claims": [
+        "toplam3",
+        "toplam9"
+      ],
+      "note": "Rakam sınırları ve bütün koşulların kesişimi birlikte denetlenir.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s3": {
+      "claims": [
+        "isaret11",
+        "negatif11"
+      ],
+      "note": "Tam bölünme ile işaretli kalan hesabı birbirinden ayrılır.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s3b": {
+      "claims": [
+        "ortak",
+        "toplam9",
+        "basamak4"
+      ],
+      "note": "12 için 3 ve 4; ortak bölen varsa çarpım kuralı uygulanmaz.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s4": {
+      "claims": [
+        "bolme",
+        "saat"
+      ],
+      "note": "Özgün türetim: A=dq+r, B=dp+s açılımlarıyla toplam, fark ve çarpım.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    },
+    "s4b": {
+      "claims": [
+        "bolme",
+        "ortak",
+        "baslangic",
+        "dongu"
+      ],
+      "note": "Özgün türetim: kalanları ardışık çarparak kuvvet döngüsü; bölmenin karşı örneği.",
+      "exams": [
+        "TYT",
+        "AYT"
+      ]
+    }
+  },
+  "questions": {
+    "AYT_Sayisal-0014": {
+      "sectionId": "s1b",
+      "role": "guided",
+      "claims": [
+        "bolme"
+      ],
+      "imageSha256": "4223c87a90dd86fc2f9e4a855d5684f6c90bb38f955cf0e821cb56d39e951209",
+      "sourceSha256": "41a0dde626e56a4a9d191b1fa3767f78bfc17600be8586a6876b68e1ae73efe5",
+      "solutionSha256": "41a8e947e7fb398fe94e287844c91c877147476a064f33b05225c9b40b75825d",
+      "imagePath": "veri/resimler-pilot/kirpilmis/AYT/matematik/AYT_Sayisal-0014.webp",
+      "exam": "AYT",
+      "year": 2020,
+      "archiveId": "2020-AYT-MAT-07",
+      "sourceBook": "AYT_Sayisal",
+      "sourcePage": 17,
+      "bookQuestion": 14,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "D"
+    },
+    "TYT-0593": {
+      "sectionId": "s3b",
+      "role": "guided",
+      "claims": [
+        "toplam9",
+        "basamak4",
+        "ortak"
+      ],
+      "imageSha256": "9e127ed9096c20e7c64d884dd2173d607bbce3d090cc7459ad346b1417482593",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "3bbd53d0e124f8aab0bd67ef47b6bb1dfa43b4c2bcb132e423c7d4307285b3ee",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0593.webp",
+      "exam": "TYT",
+      "year": 2021,
+      "archiveId": "2021-TYT-TEM-15",
+      "sourceBook": "TYT",
+      "sourcePage": 237,
+      "bookQuestion": 53,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "A"
+    },
+    "TYT-0592": {
+      "sectionId": "s1b",
+      "role": "independent",
+      "claims": [
+        "bolme"
+      ],
+      "imageSha256": "eda917ba5b399561b31015f06f187092de4405e7801dec186677a816b012d323",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "814267444acf50fed4f78f63a41ae25f6817a6ee3060042d8dd8188739e379f9",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0592.webp",
+      "exam": "TYT",
+      "year": 2020,
+      "archiveId": "2020-TYT-TEM-10",
+      "sourceBook": "TYT",
+      "sourcePage": 236,
+      "bookQuestion": 52,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "A"
+    },
+    "TYT-0597": {
+      "sectionId": "s2b",
+      "role": "independent",
+      "claims": [
+        "bolme",
+        "toplam3"
+      ],
+      "imageSha256": "bc5f909dfc09bd63643071cc057dbd8ba66cfa57b21a2c47ea4dd787ad40fe10",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "95afca446422c005722f47b534b89d609bdb6d6ddb764145bbe3fb7e8ea970d3",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0597.webp",
+      "exam": "TYT",
+      "year": 2024,
+      "archiveId": "2024-TYT-TEM-14",
+      "sourceBook": "TYT",
+      "sourcePage": 238,
+      "bookQuestion": 57,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "B"
+    }
+  },
+  "independentCodes": [
+    "TYT-0592",
+    "TYT-0597"
+  ]
+}

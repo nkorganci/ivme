@@ -1,4 +1,9 @@
 import { pickPast, pickPractice, pickTest, topUp, visible } from './selection.js';
+import pilot from '../content/bolme-pilot-evidence.json' with { type: 'json' };
+
+// Pilotun konu testi yalnız açıklaması tamamlanmış, derste çözümü gösterilmeyen sorulardan oluşur.
+// Daha geniş çıkmış/pratik havuzlarının içerik incelemesi ayrı; eksik set rastgele soruyla doldurulmaz.
+const testPool = (bank) => bank.filter((q) => q.conceptId !== pilot.conceptId || pilot.independentCodes.includes(q.code));
 
 // TAS-05: konu testi, çıkmış sorular ve tip alıştırması ortak PRATIK oturumu olarak açılır. Burada yalnız banka
 // sorusu vardır (ders içi `lesson_q` ortak soru ekranında çözülemez); gösterilen sayı = kurulan setin boyutu.
@@ -17,7 +22,7 @@ export const SET_TITLES = { test: 'Konu testi', cikmis: 'Çıkmış sorular', pr
 export function plannedSize(type, all, archetype = null, state = {}) {
   const bank = visible(all, state);
   switch (type) {
-    case 'test': return Math.min(TEST_SIZE, bank.length);
+    case 'test': return Math.min(TEST_SIZE, testPool(bank).length);
     case 'cikmis': return bank.filter((q) => q.cikmis).length;
     case 'practice': return Math.min(PRACTICE_SIZE, bank.filter((q) => !archetype || q.archetype === archetype).length);
     default: return 0;
@@ -27,6 +32,7 @@ export function plannedSize(type, all, archetype = null, state = {}) {
 /** Kısa açıklama: istenen sayı kurulamıyorsa gerçek sayı ve nedeni (aynı soruyla doldurulmaz). */
 export function sizeNote(type, bank, archetype = null, state = {}) {
   const size = plannedSize(type, bank, archetype, state);
+  if (type === 'test' && bank.some((q) => q.conceptId === pilot.conceptId)) return `Açıklamalı pilot: ${size} bağımsız aktarım sorusu. Rakam koşullarını ölçer; bütün soru tiplerini kapsayan ustalık testi değildir. Diğer çıkmış soruların ayrıntılı çözüm incelemesi sürüyor.`;
   const wanted = type === 'test' ? TEST_SIZE : type === 'practice' ? PRACTICE_SIZE : null;
   if (wanted && size < wanted) return `Bankada bu kapsam için ${size} tekil soru var; set ${size} soruyla kurulur, aynı soruyla doldurulmaz.`;
   return '';
@@ -40,8 +46,9 @@ export function pickSharedSet({ type, meta, bank, state, seed, archetype = null 
   let items;
   switch (type) {
     case 'test': {
-      const picked = pickTest({ meta, bank, state, seed, size: TEST_SIZE, practicePool: [] }).filter((item) => item.type === 'bank');
-      items = topUp({ chosen: picked, bank: visible(bank, state), state, seed, size: plannedSize('test', bank, null, state) });
+      const candidates = testPool(bank);
+      const picked = pickTest({ meta, bank: candidates, state, seed, size: TEST_SIZE, practicePool: [] }).filter((item) => item.type === 'bank');
+      items = topUp({ chosen: picked, bank: visible(candidates, state), state, seed, size: plannedSize('test', bank, null, state) });
       break;
     }
     case 'cikmis':

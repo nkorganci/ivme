@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import { MathText, Markdown } from '../math.jsx';
 import { SharedSetLink } from '../ui.jsx';
+import { PilotSolutionSources } from './PilotSources.jsx';
+import '../learn.css';
+import './learning-experience.css';
 
-export default function GuidedExam({ question, guide }) {
+export default function GuidedExam({ question, guide, afterAnswer = false }) {
   const [shown, setShown] = useState(0);
   const finished = shown === guide.steps.length;
   return <section className="lr-worked lr-guided-exam">
-    <p className="lm-eyebrow">Gerçek sınav sorusu · birlikte çözelim</p>
+    <p className="lm-eyebrow">{afterAnswer ? 'Cevabından sonra · açıklamalı çözüm' : 'Gerçek sınav sorusu · birlikte çözelim'}</p>
     <h4>{guide.title}</h4>
     <div className="lr-question-source small"><span>{question.year} {question.exam} · {question.source}</span><Link to={`/soru/${encodeURIComponent(question.code)}`} target="_blank" rel="noreferrer">Özgün soru sayfası ↗</Link></div>
-    <div className="lr-bank-image"><QuestionImage id={question.id} readingWidth alt={`${question.year} ${question.exam}: ${guide.title}`} /></div>
-    <p className="small muted">Bu bir çözümlü örnek; test puanına eklenmez. Çözümü açmadan önce ilk adımı kendin düşün.</p>
+    {!afterAnswer && <div className="lr-bank-image"><QuestionImage id={question.id} readingWidth alt={`${question.year} ${question.exam}: ${guide.title}`} /></div>}
+    <p className="small muted">{afterAnswer ? 'Kendi yönteminle karşılaştır: ilk ayrıldığınız adım neresi? Çözümü okumak yeni bir cevap kaydı oluşturmaz.' : 'Bu bir çözümlü örnek; test puanına eklenmez. Çözümü açmadan önce ilk adımı kendin düşün.'}</p>
     {shown > 0 && <div className="lm-predict"><strong>Soruda neyi fark ediyoruz?</strong><p>{guide.cue}</p></div>}
     <ol className="lm-reasoning">{guide.steps.slice(0, shown).map((s, i) => <li key={i}><span className="lm-step-number">{i + 1}</span><div><Markdown text={s.text} /><p className="lr-why"><strong>Neden?</strong> <MathText text={s.why} /></p></div></li>)}</ol>
     {!finished && <div className="lr-actions"><button type="button" className="btn btn-primary" onClick={() => setShown((s) => s + 1)}>{shown ? `Sonraki çözüm adımı (${shown}/${guide.steps.length})` : 'Çözümü adım adım aç'}</button></div>}
@@ -20,6 +23,9 @@ export default function GuidedExam({ question, guide }) {
       <p className="lr-worked-answer"><strong>Sonuç:</strong> {guide.result}</p>
       <aside className="lm-tip"><span className="lm-eyebrow">Şimdi kısa yol · hangi koşulda?</span><Markdown text={guide.tip} /></aside>
       <details className="lm-terms"><summary>Sonucumu nasıl kontrol ederim?</summary><Markdown text={guide.check} /></details>
+      {guide.mistake && <aside className="lr-callout"><strong>Sık yapılan hata</strong><Markdown text={guide.mistake} /></aside>}
+      <PilotSolutionSources code={question.code} />
+      <Link to={`/konuyu-ogrenelim/ders/${guide.conceptId}`}>İlgili derse dön →</Link>
       <SharedSetLink className="btn btn-secondary" type="practice" conceptId={guide.conceptId} archetype={guide.archetype}>Benzer sorularda kendin dene →</SharedSetLink>
     </div>}
   </section>;

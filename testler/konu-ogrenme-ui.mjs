@@ -349,6 +349,7 @@ async function runGuided(mobile) {
   const steps = [];
   try {
     for (const [code, guide] of Object.entries(WORKED_EXAMS)) {
+      if (guide.teachingRole === 'independent') continue;
       if (requestedConcept && guide.conceptId !== requestedConcept) continue;
       const lesson = parseLesson(readFileSync(join(lessonsDir, `${guide.conceptId}.ders`), 'utf8'), guide.conceptId);
       const section = lesson.sections.findIndex((s) => s.blocks.some((b) => b.code === code));
@@ -367,7 +368,7 @@ async function runGuided(mobile) {
       }
       await wait('document.querySelector(".lm-exam-conclusion")');
       assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion').textContent.includes(${JSON.stringify(guide.result)})`));
-      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion a').href.includes('tip=${guide.archetype}')`));
+      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion a.btn-secondary').href.includes('tip=${guide.archetype}')`));
       assert.ok(!(await evalJs('Boolean(document.querySelector(".katex-error"))')));
       assert.equal(db.events.length, before, 'rehberli çözüm puan/deneme olayı üretmemeli');
       await evalJs('document.querySelector(".lm-exam-conclusion").scrollIntoView({block:"center"})');

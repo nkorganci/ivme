@@ -240,3 +240,9 @@ kapandığında dış makinedeki izleyici webhook uyarısı üretir. İşletim v
 Kalan ortam adımı: dış makinede HTTPS adresi, zamanlayıcı ve webhook ile betiği
 kurup uygulamayı kapatarak gerçek alarm ve iyileşme bildirimini gözlemek. Bu
 kanıt olmadan dış uyarının üretimde etkin olduğu söylenmez.
+
+## 12.12 — TAS-08 kaynaklı öğretim pilotu
+
+Durum: `DEVAM`. Mevcut bölme–bölünebilme dersine tam ana kaynak, iddia/blok
+bağı, sürümlü çözümler ve ortak pratikte açıklamalı aktarım seti ekleniyor.
+Doğrulama ve kalan kabul adımları görev tablosunda güncellenecek.

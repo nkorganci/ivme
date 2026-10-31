@@ -82,7 +82,7 @@ test('sayma modelleri aynı sonucu yeniden saymaz; doğruluk tabloları dört du
 test('incelenen gerçek örnekler doğru derste ve ustalık testinden hariç', () => {
   for (const [code, guide] of Object.entries(WORKED_EXAMS)) {
     const lesson = lessons.find((l) => l.id === guide.conceptId);
-    assert.ok(lesson.practiceIds.includes(code), `${code}: örnek testten hariç olmalı`);
+    assert.equal(lesson.practiceIds.includes(code), guide.teachingRole !== 'independent', `${code}: rehberli/bağımsız rolü`);
     const bank = JSON.parse(readFileSync(new URL(`../frontend/src/learn/bank/${lesson.id}.json`, import.meta.url), 'utf8'));
     const q = bank.questions.find((q) => q.c === code);
     assert.ok(q, `${code} kendi bankasında yok`); assert.equal(q.a, guide.archetype);
