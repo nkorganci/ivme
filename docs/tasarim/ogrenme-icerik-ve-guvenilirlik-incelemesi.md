@@ -82,7 +82,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.08) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
 | 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.09) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
 | 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.10) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
-| 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
+| 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.11; PDF kanıt çıkarımı) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Tamamlanmadı (yalnız öneri) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
 | 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
@@ -288,6 +288,8 @@ Ortak soru bileşeninde tercih kontrolleri; Soru Çöz & Pratik'te **Öğretmen 
 Yeni tablo gerekirse bütün zorluk oylarını çift yazan bir model yerine mevcut kayıtla tek sahiplik seçilmelidir. Banka dışı mini sorular için de kararlı öğrenme öğesi kimliği gereklidir. Tercihler hesap dışa aktarımı/silme ve denetim kapsamına alınmalıdır.
 
 ## 9. TAS-07: Binlerce PDF için tekrar etmeyen kaynak işleme hattı
+
+**Uygulama durumu:** TAS-07'nin PDF kanıt çıkarımı [12.11](../plan/12-icerik-ve-yayin.md#1211--tas-07-sürümlü-pdf-kanıt-hattı) kapsamında tamamlandı. Sabit matematik pilotunda 10 kaynak/52 sayfa ve altı düzen kategorisi işlendi; ikinci geçişte düzen, kırpım veya OCR yeniden üretilmedi. Diskteki 16 mevcut paketin bütünlüğü ve çıkarıcı sürümü doğrulandı. Bunların 238 sayfası `COMPLETE`, görseldeki matematik tablosunun OCR ile okunamadığı bir sayfa `PROBLEM/OCR_UNREADABLE` durumundadır; özgün sayfa kırpımı korunur. 1000+ dosyalık toplu performans ölçümü yapılmadı. `COMPLETE` çıkarım durumudur, denklem veya öğretmen doğruluğu değildir. **Konuya seçilmiş kaynak paketi, iddia → blok/sayfa eşlemesi, çözüm ve içerik yayını TAS-08 kapsamındadır.** Aşağıdaki uçtan uca zincirin bu sonraki adımları tamamlanmış sayılmaz. Sayılar ve sınırlar [işlem tarifinde](../islemler/pdf-kanit-hatti.md) ve [görev durumunda](../gorev-durumu.md) izlenir.
 
 ### 9.1. Mevcut hattı genişlet
 

@@ -179,6 +179,11 @@ matematik pilotu 10 kaynak/52 sayfada altı düzen türünü kapsadı; ikinci ge
 düzen/kırpım/OCR ve model çağrısı yok, bütün paketler doğrulandı. Kanıt ve sınırlar
 [PDF kanıt hattında](../islemler/pdf-kanit-hatti.md). Konu için seçilmiş ana kaynak,
 iddia → blok/sayfa bağı ve öğretim kabulü TAS-08 kapsamında hazırlanacak.
+Mevcut 16 paketin eski düzen sürümündeki 179 sayfası yeniden işlendi; 16/16 paket
+bütünlüğü geçti ve eski sürüm sayfası kalmadı. `7bf6c888b1ac-p0016`
+(`TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf`, fiziksel sayfa 16)
+matematik tablosu `OCR_UNREADABLE` olarak açıkça işaretlidir; sayfa kırpımı korunur ve gerektiğinde
+TAS-08 içerik incelemesinde görselden okunur.
 
 ## 12.10 — TAS-06 kişisel zorluk ve tekrar tercihleri
 

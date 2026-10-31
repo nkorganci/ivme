@@ -70,6 +70,9 @@ sayfaları onarıldı. `veri/pdf-kanit/pilot-matematik/rapor.json` yeniden üret
 rapordur; özgün `Kaynaklar/` ve öğrenci DB'si değişmedi. Birim testleri ve plan/
 kontrol sonucu görev tablosunda. TAS-07'de açık iş yok; sonraki somut içerik adımı
 TAS-08'de seçilmiş ana kaynak için iddia → blok/sayfa kanıt paketi oluşturmak.
+Ek denetimde 16 paketteki 179 eski sürüm sayfası yenilendi: bütünlük 16/16,
+eski sürüm 0. Bir matematik tablosu sayfası `OCR_UNREADABLE` kalır; özgün
+kırpım korunur ve ilgili konu seçilirse TAS-08'de görselden incelenir.
 Sıradaki komut: `git status --short`, ardından TAS-08 görev satırı ve §10.
 
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
