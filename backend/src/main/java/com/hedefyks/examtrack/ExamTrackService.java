@@ -76,7 +76,8 @@ public class ExamTrackService {
         var sources = !requested.isEmpty() ? requested
                 : allowed.stream().filter(s -> exam == null || s.examType() == exam).toList();
         return new QuestionFilter(filter.bank(), exam, filter.subject(), filter.topic(), filter.categoryId(),
-                filter.categoryMatch(), filter.includeCandidates(), filter.questionTypeId(), filter.teacherDifficulty(), sources);
+                filter.categoryMatch(), filter.includeCandidates(), filter.questionTypeId(), filter.teacherDifficulty(), sources,
+                filter.myDifficulty(), filter.mark(), filter.skipHidden());
     }
 
     public void requireExam(ExamType examType, Long userId) {

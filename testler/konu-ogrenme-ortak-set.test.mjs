@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
-import { collapseTwins, expandBank, lastSeen, pickPast, tierOf } from '../frontend/src/learn/engine/selection.js';
+import { collapseTwins, expandBank, lastSeen, pickMastery, pickPast, pickPractice, pickReview, tierOf } from '../frontend/src/learn/engine/selection.js';
 import { PRACTICE_SIZE, TEST_SIZE, pickSharedSet, plannedSize, requestItems, sizeNote } from '../frontend/src/learn/engine/sharedSet.js';
 
 const root = new URL('../frontend/src/learn/', import.meta.url);
@@ -12,7 +12,7 @@ const groups = JSON.parse(readFileSync(new URL('bank/_gorsel.json', root), 'utf8
 const lessons = Object.fromEntries(readdirSync(new URL('content/dersler/', root)).filter((n) => n.endsWith('.ders'))
   .map((n) => [n.replace(/\.ders$/, ''), parseLesson(readFileSync(new URL(`content/dersler/${n}`, root), 'utf8'), n.replace(/\.ders$/, ''))]));
 const load = (id) => collapseTwins(expandBank(id, JSON.parse(readFileSync(new URL(`bank/${id}.json`, root), 'utf8')).questions), groups);
-const state = (seen = {}) => ({ seen, queue: {}, now: new Date('2026-10-31T12:00:00Z') });
+const state = (seen = {}) => ({ seen, queue: {}, concepts: {}, dueCards: [], now: new Date('2026-10-31T12:00:00Z') });
 const concepts = Object.keys(lessons).filter((id) => { try { load(id); return true; } catch { return false; } });
 
 test('temel-kavramlar: 413 kayıt, 53 kitapçık kopyası ayrılır → 360 tekil soru; 52 çıkmış soruda ikiz yok', () => {
@@ -111,4 +111,44 @@ test('ikiz haritası: her grup en az iki kodu aynı bankada barındırır', () =
   const owners = new Map();
   for (const id of concepts) for (const q of expandBank(id, JSON.parse(readFileSync(new URL(`bank/${id}.json`, root), 'utf8')).questions)) owners.set(q.code, id);
   for (const codes of byGroup.values()) assert.ok(new Set(codes.map((c) => owners.get(c))).size === 1 || codes.every((c) => owners.has(c)));
+});
+
+test('TAS-06: “Tekrar gösterme” dediği sorular hiçbir otomatik sette yer almaz; gösterilen sayı = kurulan set', () => {
+  const meta = lessons['temel-kavramlar'];
+  const bank = load('temel-kavramlar');
+  const hiddenQuestions = [...bank.filter((q) => q.cikmis).slice(0, 3), ...bank.filter((q) => !q.cikmis).slice(0, 60)];
+  const hidden = new Set(hiddenQuestions.map((q) => q.id));
+  const hiding = { ...state(), hidden };
+  const codes = (items) => items.map((i) => i.question.code);
+  for (const type of ['test', 'cikmis']) {
+    const items = pickSharedSet({ type, meta, bank, state: hiding, seed: 'g' });
+    assert.ok(items.every((i) => !hidden.has(i.question.id)), type);
+    assert.equal(items.length, plannedSize(type, bank, null, hiding), type);
+  }
+  assert.equal(plannedSize('cikmis', bank, null, hiding), 49, '52 çıkmıştan 3 gizli');
+  assert.equal(plannedSize('cikmis', bank, null, state()), 52);
+  for (const archetype of meta.archetypes.map((a) => a.id)) {
+    const items = pickSharedSet({ type: 'practice', meta, bank, state: hiding, seed: 'g', archetype });
+    assert.ok(items.every((i) => !hidden.has(i.question.id)), archetype);
+    assert.equal(items.length, plannedSize('practice', bank, archetype, hiding), archetype);
+  }
+  assert.ok(pickMastery({ meta, bank, state: hiding, seed: 'g', practicePool: [] }).every((i) => !hidden.has(i.question.id)));
+  assert.ok(pickReview({ meta, bank, state: hiding, seed: 'g' }).filter((i) => i.question).every((i) => !hidden.has(i.question.id)));
+  // Gizli soru yoksa hiçbir şey değişmez.
+  assert.deepEqual(codes(pickSharedSet({ type: 'test', meta, bank, state: { ...state(), hidden: new Set() }, seed: 'g' })), codes(pickSharedSet({ type: 'test', meta, bank, state: state(), seed: 'g' })));
+});
+
+test('TAS-06: bekleyen “Tekrar göster” sorusu yakın zamanda görülmüş olsa da öne alınır', () => {
+  const meta = lessons['temel-kavramlar'];
+  const bank = load('temel-kavramlar');
+  const archetype = meta.archetypes[0].id;
+  const target = bank.filter((q) => q.archetype === archetype && !q.cikmis)[5];
+  const recent = state({ [target.code]: '2026-10-31T10:00:00.000Z' });
+  const without = pickPractice({ bank, state: recent, archetype, count: 6, seed: 'a' });
+  assert.ok(!without.some((i) => i.question.id === target.id), 'yakın zamanda görülen soru normalde seçilmez');
+  const wanting = { ...recent, again: new Set([target.id]) };
+  for (const seed of ['a', 'b', 'c']) assert.ok(pickPractice({ bank, state: wanting, archetype, count: 6, seed }).some((i) => i.question.id === target.id), seed);
+  assert.ok(pickSharedSet({ type: 'practice', meta, bank, state: wanting, seed: 'a', archetype }).some((i) => i.question.id === target.id));
+  // Gizli ve tekrar aynı anda: gizli kazanır.
+  assert.ok(!pickPractice({ bank, state: { ...wanting, hidden: new Set([target.id]) }, archetype, count: 6, seed: 'a' }).some((i) => i.question.id === target.id));
 });

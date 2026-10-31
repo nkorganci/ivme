@@ -7,6 +7,7 @@ import Segmented from '../components/Segmented.jsx';
 import StudyNavigation from '../components/StudyNavigation.jsx';
 import FullExamForm from '../components/FullExamForm.jsx';
 import QuestionSourceSelect from '../components/QuestionSourceSelect.jsx';
+import PersonalMarks from '../components/PersonalMarks.jsx';
 import { Field } from '../components/Field.jsx';
 import { Alert, ErrorBox, Loading } from '../components/States.jsx';
 import { formatNumber } from '../format.js';
@@ -71,18 +72,28 @@ function PracticeForm() {
   const [timed, setTimed] = useState(false);
   const [minutes, setMinutes] = useState('20');
   const [availabilityState, setAvailabilityState] = useState(null);
+  // TAS-06: kişisel işaretler. Gizlediklerim varsayılan havuzdan çıkar; sayılar oturum kurulurken uygulanan süzgeçle aynıdır.
+  const personal = { myDifficulty: searchParams.get('myDifficulty') || '', mark: searchParams.get('mark') || '' };
+  const [marks, setMarks] = useState(null);
+  const [marksLoaded, setMarksLoaded] = useState(false);
   const [unfinished, setUnfinished] = useState(null);
   const [unfinishedError, setUnfinishedError] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
-  const availabilityQuery = !hasSource ? null : qs(scoped ? { topicPdfId } : { bank, source, history, ...filter, ...commonSelection });
+  const availabilityQuery = !hasSource ? null : qs(scoped ? { topicPdfId, practice: true } : { bank, source, history, ...filter, ...commonSelection, ...personal, practice: true });
   const wholePool = !scoped && !hasHistory && source.length === questionSources.length
     && !bank && !filter.examType && !filter.subject && !filter.topic && !hasCategories
-    && !commonSelection.questionTypeId && !commonSelection.teacherDifficulty;
+    && !commonSelection.questionTypeId && !commonSelection.teacherDifficulty
+    && !personal.myDifficulty && !personal.mark && marks?.hidden === 0;
   const availability = availabilityState?.key === availabilityQuery ? availabilityState.data : null;
   const availabilityError = availabilityState?.key === availabilityQuery ? availabilityState.error : '';
-  const loading = availabilityState?.key !== availabilityQuery || availabilityState.loading;
+  const loading = !marksLoaded || availabilityState?.key !== availabilityQuery || availabilityState.loading;
+  const changePersonal = next => setSearchParams(current => {
+    const p = new URLSearchParams(current);
+    for (const key of ['myDifficulty', 'mark']) { if (next[key]) p.set(key, next[key]); else p.delete(key); }
+    return p;
+  }, { replace: true });
   const changeCommon=next=>{
     setSearchParams(current=>{const p=new URLSearchParams(current);p.delete('categoryId');next.categoryId.forEach(id=>p.append('categoryId',id));
       p.delete('scope');
@@ -100,6 +111,15 @@ function PracticeForm() {
   }, []);
 
   useEffect(() => {
+    let current = true;
+    api.get('/api/question-preferences/summary')
+      .then((data) => { if (current) { setMarks(data); setMarksLoaded(true); } })
+      .catch(() => { if (current) setMarksLoaded(true); });
+    return () => { current = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!marksLoaded) return undefined;
     if (availabilityQuery === null) {
       setAvailabilityState({ key: null, data: { total: 0, remaining: 0, solved: 0, everWrong: 0 }, loading: false });
       return;
@@ -111,7 +131,7 @@ function PracticeForm() {
       .then(data => { if (current) setAvailabilityState({ key: availabilityQuery, data, loading: false }); })
       .catch(e => { if (current) setAvailabilityState({ key: availabilityQuery, error: e.message, loading: false }); });
     return () => { current = false; };
-  }, [availabilityQuery, wholePool]);
+  }, [availabilityQuery, wholePool, marksLoaded]);
 
   const n = Number(count);
   const validCount = count.trim() !== '' && Number.isInteger(n) && n >= 1 && n <= 120;
@@ -156,6 +176,7 @@ function PracticeForm() {
       questionCount: n,
       topicPdfId: scoped ? Number(topicPdfId) : undefined,
       ...(!scoped?commonSelection:{}),
+      ...(!scoped ? { myDifficulty: personal.myDifficulty || undefined, mark: personal.mark || undefined } : {}),
     };
     try {
       const session = await api.post('/api/study-sessions', {
@@ -196,6 +217,7 @@ function PracticeForm() {
           questionScope={{bank,source,examType:filter.examType,includeCandidates:commonSelection.includeCandidates,questionTypeId:commonSelection.questionTypeId,teacherDifficulty:commonSelection.teacherDifficulty}}
           disabled={!hasSource}/>
         {!hasSource && <p className="field-hint" role="status">Devam etmek için en az bir kaynak seç.</p>}
+        {hasSource && <PersonalMarks value={personal} onChange={changePersonal} summary={marks} onSummary={setMarks} disabled={busy} />}
       </>}
 
       {!hasHistory && <label className="checkbox practice-include-solved">
@@ -211,6 +233,7 @@ function PracticeForm() {
         {hasHistory ? 'Seçtiğin kaynak ve filtrelerde bu çözüm geçmişine uyan soru yok. Kaynak veya geçmiş seçimini değiştirebilirsin.'
           : availability.total > 0 ? 'Bu seçimde henüz yanıtlamadığın soru kalmadı. Çözdüğün soruları dahil edebilir veya filtreleri değiştirebilirsin.'
           : hasCategories && !commonSelection.includeCandidates ? <>Seçilen konuda doğrulanmış eşlemeye sahip soru yok. Geçici eşlemelerle çalışmak için <button type="button" className="btn btn-secondary btn-sm" onClick={()=>changeCommon({...commonSelection,includeCandidates:true})}>Geçici eşlemeleri dahil et</button></>
+          : personal.myDifficulty || personal.mark ? 'Seçtiğin kişisel işarete uyan soru yok. Kişisel işaret veya zorluk etiketi süzgecini değiştirebilirsin.'
           : commonSelection.teacherDifficulty ? 'Seçilen zorlukta öğretmen tarafından doğrulanmış soru yok. Bütün zorlukları seçebilirsin.'
           : 'Bu kaynak ve konu seçimine uyan soru yok. Kaynağı veya konuyu değiştirebilirsin.'}
       </Alert>}

@@ -99,6 +99,8 @@ public class RecommendationService {
                 userId, userId, normalized,
                 OffsetDateTime.ofInstant(now.minusSeconds(MAX_DAYS * 86400L), ZoneOffset.UTC),
                 OffsetDateTime.ofInstant(now, ZoneOffset.UTC));
+        Set<Long> hidden = new HashSet<>(jdbc.queryForList(
+                "SELECT question_id FROM student_question_preferences WHERE user_id = ? AND repeat_preference = 'HIDE'", Long.class, userId));
         Set<Long> unique = new HashSet<>();
         Map<Long, List<Evidence>> byType = new HashMap<>();
         long allTimed = 0;
@@ -131,11 +133,14 @@ public class RecommendationService {
             boolean slow = timed >= MIN_PER_TYPE && allTimed >= MIN_TOTAL
                     && (double) seconds / timed > subjectAverage * 1.5;
             if (success >= 60 && !slow) continue;
+            // Öğrencinin "Tekrar gösterme" dediği soru örnek olarak önerilmez; istatistik geçmişi aynı kalır (TAS-06).
             Evidence first = group.stream().filter(row -> !row.correct()).findFirst().orElse(group.getFirst());
+            Evidence example = group.stream().filter(row -> !row.correct() && !hidden.contains(row.questionId())).findFirst()
+                    .or(() -> group.stream().filter(row -> !hidden.contains(row.questionId())).findFirst()).orElse(null);
             suggestions.add(new Suggestion(first.code(), first.type(), first.skill(), first.subtopic(),
                     first.prerequisite(), group.size(), correct, group.size() - correct,
                     success, timed == 0 ? null : Math.round((double) seconds / timed), slow,
-                    first.questionId(), first.questionCode()));
+                    example == null ? 0L : example.questionId(), example == null ? null : example.questionCode()));
         }
         suggestions.sort(Comparator.comparingDouble(Suggestion::recentWeightedSuccess)
                 .thenComparing(Suggestion::questionTypeCode));

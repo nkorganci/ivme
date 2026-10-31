@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuestionImage from '../components/QuestionImage.jsx';
+import QuestionPreferences from '../components/QuestionPreferences.jsx';
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import { MathText, Markdown } from './math.jsx';
 import { ConfidencePicker } from './ui.jsx';
@@ -74,7 +75,7 @@ export function LessonQuestion({ question, onAnswered, silent = false, initial =
  * Yanlışta çözüm görseli (varsa) açılabilir.
  */
 export function BankQuestion({ question, conceptId, context, setId, archetypeId, answerBank, onAnswered, before = null, approach = null }) {
-  const { events, pendingBank } = useLearn();
+  const { events, pendingBank, reload } = useLearn();
   const notified = useRef(null);
   const [chosen, setChosen] = useState(null);
   const [result, setResult] = useState(null);
@@ -145,6 +146,8 @@ export function BankQuestion({ question, conceptId, context, setId, archetypeId,
       {result.hasSolution && <button type="button" className="btn btn-secondary btn-sm" onClick={() => setSolution((v) => !v)}>{solution ? 'Çözümü gizle' : 'Çözümü gör'}</button>}
       {solution && <div className="lr-bank-image"><QuestionImage id={question.id} solution alt={`Soru ${question.code} çözümü`} /></div>}
     </div>}
+    {result && <details className="lr-prefs"><summary>Kişisel işaretlerim: zorluk ve tekrar</summary>
+      <QuestionPreferences questionId={question.id} onChanged={reload} /></details>}
     {result && approach && <aside className="lr-approach">
       <span className="lr-check-label">Çözüm yaklaşımı{approach.title ? `: ${approach.title}` : ''}</span>
       {approach.cue && <p className="small"><strong>Bunu görünce:</strong> <MathText text={approach.cue} /></p>}

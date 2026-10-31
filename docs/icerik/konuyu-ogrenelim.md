@@ -162,6 +162,7 @@ içerik okuması yukarıdaki hash kayıtlarıyla ayrıca yapılmıştır. Normal
 son test → tamamlanma → ustalık → diğer sayfalar. `--live`: yalnız okuma, servis edilen
 sayfalarda gezinme. Ekranlar `veri/ui-denetim/konu-ogrenme/` altında. `IVME_TEST_DIST`
 yalnız UI paketini seçer; gerçek kullanıcı verisini etkilemez.
+Kişisel zorluk etiketi ve tekrar tercihi için `node testler/kisisel-tercih-ui.mjs` (soru ekranı, süzgeçler, sıfırlama).
 Ortak PRATIK seti için `node testler/konu-ogrenme-ortak-set-ui.mjs` (bağlantılar yeni sekmede,
 52 çıkmış / 12 test soru, aynı istek kimliği tek oturum, hata ve yeniden dene) ve
 `node --test testler/konu-ogrenme-ortak-set.test.mjs` çalıştırılır.

@@ -174,11 +174,13 @@ await waitFor("document.querySelector('.choice.correct')", 'doğru şık işaret
 ok('Açıkça cevap gösterilince doğru şık vurgulandı', await ev("!!document.querySelector('.choice.correct')"));
 ok('Video çözüm bağlantısı göründü', (await text()).includes('Video'));
 await shot('05-soru-detay');
-// değerlendirme: Karalamayı küçült, Zor + 4 yıldız → Kaydet
+// kişisel işaret ve değerlendirme: Karalamayı küçült, kişisel etiket Zor (anında kaydedilir) + 4 yıldız → Kaydet
 await clickText('Küçült', '.qside button');
 await ev("document.querySelectorAll('.qside details').forEach((d) => { d.open = true; })");
 await sleep(200);
 await ev("document.querySelectorAll('.segmented input[type=radio]')[2].click()");
+await waitText('Zorluk etiketin: Zor', 6000);
+ok('Kişisel zorluk etiketi kaydedildi', (await text()).includes('Zorluk etiketin: Zor'));
 await ev("document.querySelector('button[aria-label=\"4 yıldız\"]').click()");
 await clickText('Kaydet', 'button');
 await waitText('Değerlendirmen kaydedildi', 6000);

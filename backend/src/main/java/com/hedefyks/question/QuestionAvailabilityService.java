@@ -353,7 +353,9 @@ public class QuestionAvailabilityService {
             case WRONG -> sql.append(" AND m.ever_wrong = true");
             case MIXED -> { }
         }
-        sql.append(" ORDER BY random() LIMIT :limit");
+        // Bekleyen "tekrar göster" soruları önce, kalanı rastgele (TAS-06); sıra yalnız otomatik pratik havuzunda değişir.
+        sql.append(filter.skipHidden() ? " ORDER BY (CASE WHEN " + QuestionPreferenceService.AGAIN_PENDING + " THEN 0 ELSE 1 END), random() LIMIT :limit"
+                : " ORDER BY random() LIMIT :limit");
         params.put("limit", limit);
         return jdbc.sql(sql.toString()).params(params).query(Long.class).list();
     }
@@ -371,7 +373,8 @@ public class QuestionAvailabilityService {
         if (topicPdfId == null) return filter;
         topicPdfs.approvedQuestionCodes(topicPdfId);
         return new QuestionFilter(QuestionBank.OGM, ExamType.TYT, "Türkçe",
-                topicPdfs.detail(topicPdfId).verifiedTopic(),filter.categoryId(),filter.categoryMatch(),filter.includeCandidates(),filter.questionTypeId(),filter.teacherDifficulty());
+                topicPdfs.detail(topicPdfId).verifiedTopic(),filter.categoryId(),filter.categoryMatch(),filter.includeCandidates(),filter.questionTypeId(),filter.teacherDifficulty(),
+                List.of(),filter.myDifficulty(),filter.mark(),filter.skipHidden());
     }
 
     private void addFilters(StringBuilder sql, Map<String, Object> params,
@@ -403,5 +406,23 @@ public class QuestionAvailabilityService {
             sql.append(" AND q.code IN (:approvedCodes)");
             params.put("approvedCodes", topicPdfs.approvedQuestionCodes(topicPdfId));
         }
+        addPersonalFilters(sql, params, filter);
+    }
+
+    /** TAS-06 kişisel süzgeçler: yalnız :userId'nin kendi işaretlerine bakar; çağıran :userId'yi bağlamış olmalıdır. */
+    private static void addPersonalFilters(StringBuilder sql, Map<String, Object> params, QuestionFilter filter) {
+        if (!filter.hasPersonal()) return;
+        String mine = "SELECT 1 FROM feedback pf WHERE pf.user_id = :userId AND pf.question_id = q.id AND pf.category = 'RATING' AND pf.difficulty_vote";
+        if ("NONE".equals(filter.myDifficulty())) sql.append(" AND NOT EXISTS (").append(mine).append(" IS NOT NULL)");
+        else if (filter.myDifficulty() != null) {
+            sql.append(" AND EXISTS (").append(mine).append(" = :myDifficulty)");
+            params.put("myDifficulty", filter.myDifficulty());
+        }
+        if ("AGAIN".equals(filter.mark())) sql.append(" AND ").append(QuestionPreferenceService.AGAIN_MARKED);
+        else if ("HIDE".equals(filter.mark())) sql.append(" AND ").append(QuestionPreferenceService.HIDDEN);
+        else if ("UNMARKED".equals(filter.mark())) {
+            sql.append(" AND NOT EXISTS (SELECT 1 FROM student_question_preferences sp WHERE sp.user_id = :userId AND sp.question_id = q.id)")
+               .append(" AND NOT EXISTS (").append(mine).append(" IS NOT NULL)");
+        } else if (filter.skipHidden()) sql.append(" AND NOT ").append(QuestionPreferenceService.HIDDEN);
     }
 }

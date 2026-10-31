@@ -50,14 +50,21 @@ export function tierOf(question, state) {
   return ageDays(last, state.now) > ENGINE.repeatGuardDays ? 1 : 2;
 }
 
+/**
+ * Kişisel tercih (TAS-06): "Tekrar gösterme" dediği sorular (state.hidden) otomatik seçimden çıkar; bekleyen "Tekrar göster"
+ * soruları (state.again) yakın zamanda görülmüş olsa da görülmemişlerle aynı katmanda ve en önde yer alır.
+ */
+export const visible = (pool, state) => (state.hidden?.size ? pool.filter((q) => !state.hidden.has(q.id)) : pool);
+
 function ranked(pool, state, random, { preferPast = true } = {}) {
   const groups = [[], [], []];
-  for (const q of shuffle(pool, random)) groups[tierOf(q, state)].push(q);
-  if (preferPast) {
-    for (const group of groups) {
+  for (const q of shuffle(visible(pool, state), random)) groups[state.again?.has(q.id) ? 0 : tierOf(q, state)].push(q);
+  for (const group of groups) {
+    if (preferPast) {
       const index = group.findIndex((q) => q.cikmis);
       if (index > 0) group.unshift(group.splice(index, 1)[0]);
     }
+    if (state.again?.size) group.sort((a, b) => Number(state.again.has(b.id)) - Number(state.again.has(a.id)));
   }
   return groups;
 }
@@ -162,7 +169,7 @@ export function pickPractice({ bank, state, archetype, count = 5, seed }) {
 export function pickSibling({ bank, archetype, state, seed, exclude = [] }) {
   const random = rng(seed);
   const used = new Set([...queued(state), ...exclude]);
-  const pool = bank.filter((q) => q.archetype && q.archetype === archetype && !used.has(q.code) && !lastSeen(q, state));
+  const pool = visible(bank, state).filter((q) => q.archetype && q.archetype === archetype && !used.has(q.code) && !lastSeen(q, state));
   return shuffle(pool, random)[0] ?? null;
 }
 
@@ -258,8 +265,8 @@ export function pickTest({ meta, bank, state, seed, size = 12, practicePool = []
 }
 
 /** Kavrama eşlenen ÖSYM çıkmış soruları, yıl sırasıyla. Gizli sınır yoktur: gösterilen sayı = açılan set (TAS-05). */
-export function pickPast({ bank, limit = Infinity }) {
-  return bank.filter((q) => q.cikmis)
+export function pickPast({ bank, state = {}, limit = Infinity }) {
+  return visible(bank, state).filter((q) => q.cikmis)
     .sort((a, b) => (a.year ?? 0) - (b.year ?? 0) || a.code.localeCompare(b.code))
     .slice(0, limit)
     .map((q) => ({ type: 'bank', question: q, archetype: q.archetype }));

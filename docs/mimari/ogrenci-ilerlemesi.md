@@ -108,6 +108,48 @@ ve yeniden anlatım yerel motorda kalır (bağımsız ustalık ölçümü ayrı)
 Kanıt: `LearnPracticeSetTest` (geçici DB), `node --test testler/konu-ogrenme-ortak-set.test.mjs`,
 `node testler/konu-ogrenme-ortak-set-ui.mjs` ve `node scripts/ortak-set-tani.mjs --kontrol`.
 
+## Kişisel zorluk ve tekrar tercihleri (TAS-06)
+
+İki ayrı, yalnız o öğrenciye ait işaret vardır; ikisi de oturumdan belirlenen kullanıcıya yazılır ve başka öğrenci,
+öğretmen veya yönetici ekranında “senin etiketin” olarak görünmez:
+
+| İşaret | Kayıt | Anlamı |
+|---|---|---|
+| **Benim zorluk etiketim** KOLAY / ORTA / ZOR / etiketsiz | mevcut `feedback` RATING satırı, `difficulty_vote` (kullanıcı+soru başına tek kayıt) | Kişisel filtre ve görünüm. Öğretmen zorluğu (katalog etiketi, `teacherDifficulty` süzgeci) ortak ve ayrıdır. “Topluluk” özeti, öğrencilerin kendi etiketlerinin anonim toplamıdır; ikinci bir oy sistemi yoktur |
+| **Tekrar tercihim** DEFAULT / AGAIN / HIDE | `student_question_preferences` (V94; satır yoksa DEFAULT) | HIDE: otomatik pratik havuzu, motor setleri ve önerilerin örnek sorusundan çıkar. AGAIN: sonraki otomatik seçimde öne alınır |
+
+- **API:** `PUT /api/question-preferences/questions/{id}` gövde `{"difficulty":"KOLAY|ORTA|ZOR|NONE","repeat":"DEFAULT|AGAIN|HIDE"}`
+  (olmayan alan değişmez; NONE etiketi temizler), `GET …/questions/{id}`, `GET …/summary`, `POST …/reset`
+  (`REPEAT|DIFFICULTY|ALL`). Soru ayrıntısı `myEvaluation` (etiket, yıldız) ve `myRepeat` taşır.
+- **Denetim bulguları ve düzeltmeler:** kısmi benzersiz indeks vardı ama `findMine()` + `save()` eşzamanlı iki isteği 500 ile
+  bozabiliyordu → tek deyimlik `INSERT … ON CONFLICT DO UPDATE`. `/api/feedback` RATING gönderimi, gönderilmeyen alanı
+  siliyordu (yalnız yıldız verince etiket kayboluyordu) → `COALESCE` ile birleştirme. Etiketi temizleme yoktu → `NONE`;
+  yıldızı ve mesajı olmayan boş satır silinir, yıldız/mesaj varsa korunur. Soru ekranındaki “Zorluk oyu” ayrı bir kayıt
+  değil, aynı etiketin kişisel kontrolüdür; yıldız formu yalnız puan gönderir.
+- **Seçime etkisi (yalnız otomatik pratik):** `QuestionFilter.forPractice()` — `POST /api/study-sessions`, `GET
+  /api/questions/availability?practice=true` aynı süzgeci uygular, bu yüzden gösterilen sayı = kurulan set. Gizlenen
+  sorular çıkar; açık süzgeç `mark=HIDE` (Gizlediklerim), `mark=AGAIN` (Tekrar istediklerim), `mark=UNMARKED`
+  (İşaretlemediklerim: tekrar tercihi ve zorluk etiketi yok) ve `myDifficulty=KOLAY|ORTA|ZOR|NONE` (Öğrenci zorluk etiketi)
+  bu varsayılanı geçer. Çıkmış/Soru Bankası listesi, soru ekranına doğrudan erişim, denemeler (sabit kitapçık dâhil) ve
+  `pool-summary` tablosu değişmez; cevaplar, istatistikler ve geçmiş silinmez veya yeniden hesaplanmaz.
+- **AGAIN sırası:** işaretten sonra henüz cevaplanmamış (`question_attempts` ANSWER yok) AGAIN soruları otomatik seçimde
+  önce gelir; soru bir kez cevaplanınca bekleyen sırası biter, işaret kalır (“Tekrar istediklerim”de görünür). Aynı sette
+  soru zaten bir kez bulunur; yeniden işaretlemek sırayı yeniden kurar.
+- **Konuyu Öğrenelim:** `GET /api/konu-ogrenme` yalnız kendi `questionPreferences` bilgisini (gizli, bekleyen tekrar,
+  zorluk etiketleri) döndürür; motor `state.hidden/again` ile bütün seçicilerde (ustalık, tekrar, karma, konu testi, çıkmış,
+  alıştırma) gizlileri çıkarır, bekleyenleri öne alır; ders sayfasındaki 12 / 52 sayıları gizlileri de düşer ve not düşer.
+  Banka sorusundan sonra “Kişisel işaretlerim” açılır; ortak soru ekranında aynı bileşen vardır.
+- **Önerilerin örnek sorusu:** HIDE ise seçilmez; tümü gizliyse örnek gösterilmez. Tip istatistiği geçmişten aynen hesaplanır.
+- **Sıfırlama:** `REPEAT` yalnız tekrar tercihlerini, `DIFFICULTY` yalnız zorluk etiketlerini (topluluk sayımından da çıkar),
+  `ALL` ikisini siler; yalnız çağıran öğrencinin satırları. Soru Çöz & Pratik'teki “Kişisel işaretlerim” bölümü onay ister.
+- **Hesap:** dışa aktarma `questionPreferences` ve `feedback.difficulty_vote` alanlarını içerir; hesap silinince tercih
+  satırları açıkça silinir; her değişiklik `user_record_audit` iz kaydı bırakır (içerik tekrarlanmaz).
+- **Sınır:** kişisel işaret bu adımda banka sorusuna (`questions`) uygulanır. Ders içi mini soru ve not alıştırmasının
+  kararlı kimliği (`konu:öğe`, `note:…`) mevcuttur; bunlara kişisel etiket gerekirse tablo `item_key` ile genelleştirilir.
+
+Kanıt: `QuestionPreferenceTest` (geçici DB: izolasyon, 8 eşzamanlı yazma, süzgeçler, sıfırlama, dışa aktarma/silme),
+`node --test testler/konu-ogrenme-ortak-set.test.mjs` ve `node testler/kisisel-tercih-ui.mjs`.
+
 Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme ve pratik
 tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API
 sayfasına değil tüm geçmişe uygulanır; deneme özeti, filtre sonrası kayıtlar üzerinden

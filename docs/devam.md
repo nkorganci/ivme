@@ -53,7 +53,13 @@ sunucuda kurulan ortak PRATIK oturumunu açar (`POST /api/konu-ogrenme/practice-
 V93); sayılar gerçek setle aynı (12 / 52), görsel baytı aynı kitapçık kopyaları bir sette
 bulunmaz (`scripts/ortak-set-tani.mjs --yaz` banka değişince çalıştırılır). Ortak
 ekrandaki cevaplar `GET /api/konu-ogrenme`'de motor olayı olarak okunur. Bu kapsamda
-açık iş yok; kullanıcı sıradaki görev olarak **TAS-06** (kişisel zorluk/tekrar) dedi.
+açık iş yok.
+
+TAS-06 / 12.10 tamamlandı: kişisel zorluk etiketi (mevcut `feedback.difficulty_vote`) ve tekrar
+tercihi (V94 `student_question_preferences`) yalnız öğrenciye aittir; gizlenen sorular otomatik
+pratik havuzundan, motor setlerinden ve öneri örneğinden çıkar, bekleyen “tekrar göster” öne
+alınır; Soru Çöz & Pratik'te kişisel süzgeçler ve sıfırlama vardır. Cevap geçmişi, denemeler ve
+sabit kitapçık değişmez. Bu kapsamda açık iş yok; sıradaki görevi (TAS-07…) kullanıcı seçer.
 
 Push istenmedi. Diğer açık içerik işi [12.02](plan/12-icerik-ve-yayin.md) kapsamında
 kalır; kayıt görevi için dersleri veya soru bankasını baştan üretme.

@@ -76,8 +76,11 @@ public class QuestionController {
     public QuestionAvailabilityService.Availability availability(QuestionFilter filter,
                                                                  @RequestParam(required = false) Integer topicPdfId,
                                                                  @RequestParam(required = false) List<QuestionHistorySelection> history,
+                                                                 @RequestParam(defaultValue = "false") boolean practice,
                                                                  @AuthenticationPrincipal AppUserDetails me) {
-        return availability.count(me.id(), tracks.scope(filter, me.id()), topicPdfId, history);
+        var scoped = tracks.scope(filter, me.id());
+        // practice=true: Soru Çöz & Pratik havuzu; oturum kurulurken uygulanan kişisel süzgeçle aynı sayıyı verir (TAS-06).
+        return availability.count(me.id(), practice ? scoped.forPractice() : scoped, topicPdfId, history);
     }
 
     @GetMapping("/category-counts")

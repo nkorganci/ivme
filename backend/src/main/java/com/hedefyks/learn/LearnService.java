@@ -12,6 +12,7 @@ import com.hedefyks.question.AttemptEventType;
 import com.hedefyks.question.AttemptService;
 import com.hedefyks.question.ExamType;
 import com.hedefyks.question.Question;
+import com.hedefyks.question.QuestionPreferenceService;
 import com.hedefyks.question.QuestionRepository;
 import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
@@ -56,10 +57,12 @@ public class LearnService {
     private final AttemptService attempts;
     private final AnswerKeys keys;
     private final LearnPracticeSets practiceSets;
+    private final QuestionPreferenceService preferences;
 
     public LearnService(JdbcTemplate jdbc, ObjectMapper mapper, QuestionRepository questions, AttemptService attempts, AnswerKeys keys,
-                        LearnPracticeSets practiceSets) {
+                        LearnPracticeSets practiceSets, QuestionPreferenceService preferences) {
         this.practiceSets = practiceSets;
+        this.preferences = preferences;
         this.jdbc = jdbc;
         this.mapper = mapper;
         this.questions = questions;
@@ -78,6 +81,8 @@ public class LearnService {
         events.addAll(practiceSets.engineEvents(userId));
         out.put("events", events);
         out.put("practiceSets", practiceSets.summaries(userId));
+        // TAS-06: yalnız bu öğrencinin gizlediği / bekleyen tekrar istediği sorular ve kişisel zorluk etiketleri.
+        out.put("questionPreferences", preferences.engineView(userId));
         out.put("serverNow", Instant.now().toString());
         return out;
     }

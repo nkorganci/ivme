@@ -1,4 +1,4 @@
-import { pickPast, pickPractice, pickTest, topUp } from './selection.js';
+import { pickPast, pickPractice, pickTest, topUp, visible } from './selection.js';
 
 // TAS-05: konu testi, çıkmış sorular ve tip alıştırması ortak PRATIK oturumu olarak açılır. Burada yalnız banka
 // sorusu vardır (ders içi `lesson_q` ortak soru ekranında çözülemez); gösterilen sayı = kurulan setin boyutu.
@@ -10,8 +10,12 @@ export const SHARED_TYPES = Object.keys(SET_KINDS);
 
 export const SET_TITLES = { test: 'Konu testi', cikmis: 'Çıkmış sorular', practice: 'Soru tipi alıştırması' };
 
-/** Bu bankadan kurulabilecek tekil soru sayısı (bank, ikizleri tekilleştirilmiş loadBank çıktısıdır). */
-export function plannedSize(type, bank, archetype = null) {
+/**
+ * Bu bankadan kurulabilecek tekil soru sayısı (bank, ikizleri tekilleştirilmiş loadBank çıktısıdır). state verilirse
+ * öğrencinin "Tekrar gösterme" dediği sorular da hariçtir (TAS-06): gösterilen sayı = kurulan set.
+ */
+export function plannedSize(type, all, archetype = null, state = {}) {
+  const bank = visible(all, state);
   switch (type) {
     case 'test': return Math.min(TEST_SIZE, bank.length);
     case 'cikmis': return bank.filter((q) => q.cikmis).length;
@@ -21,8 +25,8 @@ export function plannedSize(type, bank, archetype = null) {
 }
 
 /** Kısa açıklama: istenen sayı kurulamıyorsa gerçek sayı ve nedeni (aynı soruyla doldurulmaz). */
-export function sizeNote(type, bank, archetype = null) {
-  const size = plannedSize(type, bank, archetype);
+export function sizeNote(type, bank, archetype = null, state = {}) {
+  const size = plannedSize(type, bank, archetype, state);
   const wanted = type === 'test' ? TEST_SIZE : type === 'practice' ? PRACTICE_SIZE : null;
   if (wanted && size < wanted) return `Bankada bu kapsam için ${size} tekil soru var; set ${size} soruyla kurulur, aynı soruyla doldurulmaz.`;
   return '';
@@ -37,11 +41,11 @@ export function pickSharedSet({ type, meta, bank, state, seed, archetype = null 
   switch (type) {
     case 'test': {
       const picked = pickTest({ meta, bank, state, seed, size: TEST_SIZE, practicePool: [] }).filter((item) => item.type === 'bank');
-      items = topUp({ chosen: picked, bank, state, seed, size: plannedSize('test', bank) });
+      items = topUp({ chosen: picked, bank: visible(bank, state), state, seed, size: plannedSize('test', bank, null, state) });
       break;
     }
     case 'cikmis':
-      items = pickPast({ bank });
+      items = pickPast({ bank, state });
       break;
     case 'practice':
       items = pickPractice({ bank, state, archetype, count: PRACTICE_SIZE, seed });

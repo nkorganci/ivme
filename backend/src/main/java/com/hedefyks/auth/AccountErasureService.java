@@ -18,6 +18,7 @@ public class AccountErasureService {
         jdbc.update("DELETE FROM feedback WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM learning_engine_events WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM learning_engine_profiles WHERE user_id = ?", userId);
+        jdbc.update("DELETE FROM student_question_preferences WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM question_attempts WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM study_sessions WHERE user_id = ?", userId);
         jdbc.update("DELETE FROM exams WHERE user_id = ?", userId);

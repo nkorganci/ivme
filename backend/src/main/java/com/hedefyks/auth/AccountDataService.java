@@ -70,6 +70,8 @@ public class AccountDataService {
                 + "FROM question_boards WHERE user_id = ? ORDER BY question_id", userId));
         data.put("pageAnnotations", jdbc.queryForList("SELECT resource_type, resource_id, page_number, strokes_json, graph_json, version, updated_at "
                 + "FROM page_annotations WHERE user_id = ? ORDER BY resource_type, resource_id, page_number", userId));
+        data.put("questionPreferences", jdbc.queryForList("SELECT p.question_id, q.code AS question_code, p.repeat_preference, p.updated_at "
+                + "FROM student_question_preferences p JOIN questions q ON q.id = p.question_id WHERE p.user_id = ? ORDER BY p.question_id", userId));
         data.put("feedback", jdbc.queryForList("SELECT question_id, category, difficulty_vote, rating, message, "
                 + "resolved, created_at, updated_at FROM feedback WHERE user_id = ? ORDER BY id", userId));
         data.put("activityEvents", jdbc.queryForList("SELECT session_key, event_type, active_seconds, created_at "

@@ -30,7 +30,14 @@ public final class StudySessionDtos {
             @NotNull(message = "İstek kimliği gerekli.") UUID clientRequestId,
             List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,
             List<com.hedefyks.question.QuestionSource> source,
-            List<@NotNull QuestionHistorySelection> history) {
+            List<@NotNull QuestionHistorySelection> history,
+            String myDifficulty, String mark) {
+        public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
+                Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId,
+                List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,
+                List<com.hedefyks.question.QuestionSource> source,List<QuestionHistorySelection> history) {
+            this(bank,examType,subject,topic,selectionMode,questionCount,durationMinutes,topicPdfId,clientRequestId,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,history,null,null);
+        }
         public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
                 Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId,
                 List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,

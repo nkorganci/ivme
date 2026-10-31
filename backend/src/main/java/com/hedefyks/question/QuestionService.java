@@ -34,10 +34,13 @@ public class QuestionService {
     private final HintService hints;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
     private final com.hedefyks.review.LearningResourceService resources;
+    private final QuestionPreferenceService preferences;
 
     public QuestionService(QuestionRepository questions, FeedbackRepository feedback,
                            QuestionTaxonomyService taxonomy, QuestionHelpfulnessService helpfulness,
-                           HintService hints, com.hedefyks.review.SharedQuestionLabels sharedLabels,com.hedefyks.review.LearningResourceService resources) {
+                           HintService hints, com.hedefyks.review.SharedQuestionLabels sharedLabels,com.hedefyks.review.LearningResourceService resources,
+                           QuestionPreferenceService preferences) {
+        this.preferences = preferences;
         this.questions = questions;
         this.feedback = feedback;
         this.taxonomy = taxonomy;
@@ -116,6 +119,7 @@ public class QuestionService {
         return new QuestionDetail(q.getId(), q.getCode(), q.getBank(), q.getExamType(), Objects.toString(presentation.get("subject"),q.getSubject()),
                 Objects.toString(presentation.get("topic"),q.getTopic()),
                 q.getYear(), q.getSource(), q.getChoiceCount(), q.getSolutionImage() != null, avg, agg.count(), votes, mine,
-                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId), hints.available(q.getId()));
+                taxonomy.approved(q.getId()), helpfulness.summary(q.getId(), userId), hints.available(q.getId()),
+                preferences.state(userId, q.getId()).repeat());
     }
 }

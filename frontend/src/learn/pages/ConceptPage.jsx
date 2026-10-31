@@ -72,8 +72,9 @@ export default function ConceptPage() {
   if (concept.lessonCompletedAt || concept.firstMasteredAt) actions.push(<Link key="lesson" className="btn btn-secondary" to={`${BASE}/ders/${conceptId}`}>Dersi gözden geçir</Link>);
   const openSet = (kind, archetype = null) => practiceSets.find((s) => s.status === 'IN_PROGRESS' && s.conceptId === conceptId && s.kind === kind && (s.archetypeId ?? null) === archetype);
   const setLabel = (title, size, open) => (open ? `${title}: devam (${open.answered}/${open.total})` : size == null ? title : `${title} (${size} soru)`);
-  const testSize = bank ? plannedSize('test', bank) : null;
-  const pastSize = bank ? plannedSize('cikmis', bank) : null;
+  const testSize = bank ? plannedSize('test', bank, null, state) : null;
+  const pastSize = bank ? plannedSize('cikmis', bank, null, state) : null;
+  const hiddenCount = bank ? bank.filter((q) => state.hidden?.has(q.id)).length : 0;
   if ((concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && testSize !== 0) {
     actions.push(<SharedSetLink key="test" className="btn btn-secondary" type="test" conceptId={conceptId}>{setLabel('Konu testi', testSize, openSet('TOPIC_TEST'))}</SharedSetLink>);
   }
@@ -93,7 +94,8 @@ export default function ConceptPage() {
       <MasteryRing value={concept.mastery} size={96} />
     </header>
 
-    {bank && sizeNote('test', bank) && (concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && <p className="small muted lr-set-note">{sizeNote('test', bank)}</p>}
+    {bank && (concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && (sizeNote('test', bank, null, state) || hiddenCount > 0) && <p className="small muted lr-set-note">
+      {hiddenCount > 0 ? `“Tekrar gösterme” dediğin ${hiddenCount} soru setlerden çıkarıldı (Soru Çöz & Pratik'te Gizlediklerim bölümünden geri alabilirsin). ` : ''}{sizeNote('test', bank, null, state)}</p>}
 
     <div className="lr-concept-grid">
       <section className="card">

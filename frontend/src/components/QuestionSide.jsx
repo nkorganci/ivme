@@ -3,6 +3,7 @@ import { StarValue } from './Stars.jsx';
 import QuestionBoard from './QuestionBoard.jsx';
 import ScientificCalculator from './ScientificCalculator.jsx';
 import RatingForm from './RatingForm.jsx';
+import QuestionPreferences from './QuestionPreferences.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
 import { api } from '../api.js';
@@ -93,6 +94,7 @@ export default function QuestionSide({ q, onRated, canVote, boardAction }) {
             <p className="muted small">Henüz zorluk oyu yok.</p>
           ) : (
             <>
+              <p className="muted small">Zorluk oyları öğrencilerin kendi zorluk etiketlerinin anonim toplamıdır; öğretmen zorluğu değildir.</p>
               <div className="votebar" role="img" aria-label={DIFFICULTIES.map((d) => `${difficultyLabel(d)} ${votes[d] || 0} oy`).join(', ')}>
                 {DIFFICULTIES.map((d) => (
                   <span key={d} className={`vote-${TONE[d]}`} style={{ width: `${((votes[d] || 0) / total) * 100}%` }} />
@@ -123,7 +125,14 @@ export default function QuestionSide({ q, onRated, canVote, boardAction }) {
       </details>
 
       <details className="fold">
-        <summary>Değerlendir</summary>
+        <summary>Kişisel işaretlerim</summary>
+        <div className="fold-body">
+          <QuestionPreferences questionId={q.id} initial={{ difficulty: q.myEvaluation?.difficultyVote ?? null, repeat: q.myRepeat ?? 'DEFAULT' }} />
+        </div>
+      </details>
+
+      <details className="fold">
+        <summary>Soruyu puanla</summary>
         <div className="fold-body">
           <RatingForm question={q} onSaved={onRated} />
         </div>

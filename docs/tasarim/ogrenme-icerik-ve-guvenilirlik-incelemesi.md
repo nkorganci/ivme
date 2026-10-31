@@ -1,6 +1,6 @@
 # Öğrenme, kaynak işleme ve kayıt güvenilirliği: bulgular ve önerilen yaklaşım
 
-**Durum: TAS-01, TAS-03, TAS-04 ve TAS-05 UYGULANDI (TAS-02 kısmi); DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
+**Durum: TAS-01, TAS-03, TAS-04, TAS-05 ve TAS-06 UYGULANDI (TAS-02 kısmi); DİĞER ÖNERİLER UYGULAMA BEKLİYOR.** Belgenin ilk sürümü salt okunur incelemeydi. Kullanıcının sonraki talimatıyla kayıt güvenilirliği uygulandı; güncel sözleşme ve test kanıtı §4’te, görev durumu tek tabloda tutulur. Diğer öneriler uygulama yetkisi değildir.
 
 **İnceleme tabanı:** `2026-10-31`, yerel `8fe4403` commit'i. İlgili proje `D:/workspace/ivme/uygulama`dır; sohbetin başlangıç dizini olan `wrestling` değildir. Bulgular kaynak kodu, şema, mevcut test dosyaları, mimari belgeler ve dosya envanterinin salt okunur incelemesine dayanır. Canlı öğrenci hesabıyla işlem yapılmadı; kesinti/yarış testleri çalıştırılmadı; bütün PDF sayfaları ve soru görselleri okunmadı. Dolayısıyla **kodda görülen davranış**, **kullanıcının bildirdiği sorun**, **doğrulanacak risk** ve **öneri** birbirinden ayrılmıştır.
 
@@ -81,7 +81,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 3 — TAS-03 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.07; bölüm kapsamı içerik işaretlemesi TAS-08) | Tek katalog, adlar, konu bağları ve TYT/AYT kapsamı | Mevcut katalog | Bir ad düzeltmesi bütün ilgili ekranlarda aynı kimlikle görünür; geçmiş korunur |
 | 4 — TAS-04 | P1 — Astra `xhigh` (Claude: Opus 5.5 `high`) | Tamamlandı (12.08) | Ortak cevap/sayım sözleşmesi ve mini alıştırma entegrasyonu | TAS-01, TAS-03 | Her giriş noktasında DB kaydı ve doğru konu satırı; tekrar ve ustalık ayrımı |
 | 5 — TAS-05 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.09) | Ortak PRATIK seti, yeni sekme, doğru adet ve soru tekilliği | TAS-03, TAS-04 | Doğrudan yazılabilir çözüm ekranı; 12/52 gibi sayılar gerçek setle eşleşir |
-| 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
+| 6 — TAS-06 | P1 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.10) | Kişisel zorluk ve tekrar tercihleri | TAS-03, TAS-05 | Kullanıcıya özel DB kaydı, filtre, sıfırlama ve iki hesapla izolasyon |
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Tamamlanmadı (yalnız öneri) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
@@ -270,6 +270,8 @@ setle aynıdır. Kök neden tek başına bildirilen “beş aynı soru”yu kan�
 bir sette tekrar görünmesinin doğrulanmış tek nedeni budur ve artık oluşamaz.
 
 ## 8. TAS-06: Öğrenciye özel zorluk ve tekrar tercihleri
+
+**Uygulandı (12.10).** Sözleşme, denetim bulguları ve kanıt [kişisel zorluk ve tekrar tercihleri](../mimari/ogrenci-ilerlemesi.md#kişisel-zorluk-ve-tekrar-tercihleri-tas-06) bölümündedir; aşağıdaki öneri tasarım gerekçesi olarak kalır. Uygulamada “tekrar göster” ayrı bir kuyruk tablosu yerine bekleyen (cevaplanmamış) işaret olarak otomatik seçimde öne alınır; ders içi mini sorulara kişisel işaret bu adımda eklenmedi.
 
 Mevcut `feedback.difficulty_vote` kişisel zorluk için yeniden kullanılabilir. Önce DB'de kullanıcı/soru başına tekillik, eşzamanlı güncelleme ve temizleme davranışı denetlenmeli. `findMine()` sonrası kayıt yapmak tek başına eşzamanlı tekillik garantisi değildir.
 

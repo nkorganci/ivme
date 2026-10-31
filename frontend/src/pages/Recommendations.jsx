@@ -245,8 +245,9 @@ function PersonalizedSuggestions() {
         <details><summary>Neden öneriyoruz?</summary><p>Son 90 gündeki onaylı soru tipi etiketleri kullanıldı; son 30 gündeki yanıtlar iki kat ağırlıklı. Ağırlıklı ilk deneme başarısı %{suggestion.recentWeightedSuccess}.</p>
           {suggestion.averageActiveSeconds != null && <p>Ölçülen ortalama aktif süre: yaklaşık {suggestion.averageActiveSeconds} saniye.{suggestion.slowerThanSubject ? ' Bu, ders ortalamasından belirgin uzun.' : ''}</p>}
           {suggestion.prerequisite && <p>Önce göz atılabilecek alt konu: {suggestion.prerequisite}.</p>}</details>
-        <div className="goal-actions"><Link className="btn btn-primary" to={`/soru/${encodeURIComponent(suggestion.exampleQuestionCode)}`}>Şimdi çalış</Link>
+        {suggestion.exampleQuestionCode ? <div className="goal-actions"><Link className="btn btn-primary" to={`/soru/${encodeURIComponent(suggestion.exampleQuestionCode)}`}>Şimdi çalış</Link>
           <button type="button" className="btn btn-secondary" onClick={() => { setReportId(suggestion.exampleQuestionId); setReportText(''); setNotice(null); }}>Etiket hatası bildir</button></div>
+          : <p className="muted small">Bu tipteki örnek soruları “Tekrar gösterme” dediğin için örnek gösterilmiyor.</p>}
         {reportId === suggestion.exampleQuestionId && <form onSubmit={(event) => report(event, suggestion)}>
           <label className="field"><span className="field-label">Etiketteki sorunu anlat</span><textarea minLength="5" maxLength="1500" required value={reportText} onChange={(event) => setReportText(event.target.value)} /></label>
           <div className="goal-actions"><button className="btn btn-primary" disabled={busy}>Bildir</button><button type="button" className="btn btn-secondary" onClick={() => setReportId(null)}>Vazgeç</button></div>

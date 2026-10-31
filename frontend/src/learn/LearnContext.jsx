@@ -10,6 +10,7 @@ import { addDays, dayKey, fromDayKey } from './engine/dates.js';
 import { buildPlan, dueLoad, isDone } from './engine/plan.js';
 
 const LearnContext = createContext(null);
+const NO_PREFERENCES = { hidden: [], again: [], difficulty: {} };
 // Keep quota-denied drafts alive across SPA navigation and account switches in this tab.
 const pendingByUser = new Map();
 window.addEventListener('beforeunload', (event) => {
@@ -32,7 +33,7 @@ export function LearnProvider({ children }) {
 
 function UserLearnProvider({ children, userId }) {
   const index = useMemo(() => getIndex(), []);
-  const [server, setServer] = useState({ loading: true, error: null, events: [], profile: null, practiceSets: [] });
+  const [server, setServer] = useState({ loading: true, error: null, events: [], profile: null, practiceSets: [], questionPreferences: NO_PREFERENCES });
   const [queueVersion, setQueueVersion] = useState(0);
   const [clock, setClock] = useState(() => new Date());
   const active = useRef(true);
@@ -64,7 +65,7 @@ function UserLearnProvider({ children, userId }) {
       const merged = new Map((data.events ?? []).map((event) => [event.id, event]));
       savedEvents.current.forEach((event, id) => merged.set(id, event));
       merged.forEach((event, id) => savedEvents.current.set(id, event));
-      setServer({ loading: false, error: null, events: [...merged.values()], profile: data.profile ?? null, practiceSets: data.practiceSets ?? [] });
+      setServer({ loading: false, error: null, events: [...merged.values()], profile: data.profile ?? null, practiceSets: data.practiceSets ?? [], questionPreferences: data.questionPreferences ?? NO_PREFERENCES });
     } catch (error) {
       if (active.current) setServer((current) => ({ ...current, loading: false, error }));
     }
@@ -100,7 +101,10 @@ function UserLearnProvider({ children, userId }) {
   const events = server.events;
 
   const today = dayKey(clock);
-  const state = useMemo(() => derive({ events, index, settings, now: clock }), [events, index, settings, clock]);
+  // TAS-06: kişisel tercihler (gizlenen / bekleyen tekrar istenen sorular) seçim mantığının okuduğu duruma eklenir.
+  const preferences = server.questionPreferences;
+  const state = useMemo(() => Object.assign(derive({ events, index, settings, now: clock }),
+    { hidden: new Set(preferences.hidden), again: new Set(preferences.again) }), [events, index, settings, clock, preferences]);
 
   // Plan günün başındaki duruma göre kurulur (gün içinde sabit kalır); tamamlanma bugünkü durumdan okunur.
   const beforeRef = useRef({ key: '', list: [] });
@@ -159,9 +163,9 @@ function UserLearnProvider({ children, userId }) {
 
   const value = useMemo(() => ({
     loading: server.loading, error: server.error, reload: load, syncError, pending, flush, userId, confirm,
-    index, summary: bankSummary, settings, profile: server.profile, events, state, today, now: clock, practiceSets: server.practiceSets,
+    index, summary: bankSummary, settings, profile: server.profile, events, state, today, now: clock, practiceSets: server.practiceSets, questionPreferences: preferences,
     plan: { ...plan, items: planItems }, nextUp, record, recordNew, answerBank, pendingBank, updateSettings,
-  }), [server.loading, server.error, server.practiceSets, load, syncError, pending, flush, userId, confirm, queueVersion, index, settings, server.profile, events, state, today, clock, plan, planItems, nextUp, record, recordNew, answerBank, pendingBank, updateSettings]);
+  }), [server.loading, server.error, server.practiceSets, preferences, load, syncError, pending, flush, userId, confirm, queueVersion, index, settings, server.profile, events, state, today, clock, plan, planItems, nextUp, record, recordNew, answerBank, pendingBank, updateSettings]);
 
   return <LearnContext.Provider value={value}>{children}</LearnContext.Provider>;
 }

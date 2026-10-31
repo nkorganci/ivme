@@ -169,6 +169,15 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 
 İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
 
+## 12.10 — TAS-06 kişisel zorluk ve tekrar tercihleri
+
+Durum: `TAMAMLANDI`. Öğrenci her soru için kendi zorluk etiketini (mevcut oy kaydı, tek kayıt, atomik yazma, temizlenebilir)
+ve tekrar tercihini (`student_question_preferences`) saklar; öğretmen zorluğundan ve topluluk özetinden ayrıdır. Gizlenen
+sorular otomatik pratik havuzundan, motor setlerinden ve önerilerin örnek sorusundan çıkar; “tekrar göster” sonraki
+otomatik seçimde öne alınır. Soru Çöz & Pratik'te Öğrenci zorluk etiketi ve Kişisel işaret süzgeçleri, sayılar oturumla
+aynı; toplu sıfırlama, hesap dışa aktarma/silme ve denetim izi. Cevap geçmişi ve denemeler değişmez. Ayrıntı ve kanıt
+[ortak sözleşmede](../mimari/ogrenci-ilerlemesi.md#kişisel-zorluk-ve-tekrar-tercihleri-tas-06) ve [görev tablosunda](../gorev-durumu.md).
+
 ## 12.09 — TAS-05 ortak PRATIK seti
 
 Durum: `TAMAMLANDI`. Konu testi, çıkmış sorular ve “Bu tipten alıştırma” bağlantıları
