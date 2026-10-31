@@ -3,7 +3,15 @@
 Önce AGENTS.md ve bu not okunur. Tamamlanan keşifleri veya soru bankasını baştan üretme.
 Ayrıntı: [öğretim sözleşmesi](icerik/konuyu-ogrenelim.md).
 
-## Etkin görev
+## Güncel görev kapsamı
+
+Son kullanıcı talimatı yalnız inceleme/model seçimi belgeleri ve her önemli görevde
+MD durumunun güncellenmesidir. İnceleme ve model tablosu tamamlandı; takip kuralının
+güncel kanıtı [görev durum tablosunda](gorev-durumu.md) `BELGE-03` satırındadır.
+Uygulama/PDF/DB işlemi başlatılmadı. Önerilen `TAS-*` işlerini uygulama yetkisi sayma.
+Yeni görevde önce ilgili durum satırını kontrol et; tamamlanan incelemeyi tekrarlama.
+
+## Önceki yarım uygulama işi — bu belge görevi sırasında ilerletilmedi
 
 - Güncelleme: 30 Ekim 2026 — Codex.
 - Kullanıcı: yalnız matematik; bütün TYT ve AYT konularını bölme pilotu derinliğinde

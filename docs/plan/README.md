@@ -1,6 +1,6 @@
 # İvme yol haritası
 
-Açık uygulama işleri yalnız numaralı adım dosyalarında tanımlanır. Etkin/yarım iş [devir notunda](../devam.md) tutulur; teknik sözleşmeler [belge dizinindedir](../README.md). Bir iş kapanınca adım dosyasındaki maddesi silinir. Tüm işler kapanınca kalıcı karar ilgili teknik belgeye aktarılır, adım dosyası ve bu tablodaki satır kaldırılır; kalan kimlikler yeniden numaralanmaz.
+Açık uygulama işlerinin ayrıntıları yalnız numaralı adım dosyalarında tanımlanır. Önemli işlerin güncel durumu ve tamamlanma kanıtı [görev durum tablosunda](../gorev-durumu.md), etkin/yarım işin devam noktası [devir notunda](../devam.md) tutulur; teknik sözleşmeler [belge dizinindedir](../README.md). Her önemli ilerlemede ilgili kayıt güncellenir. Bir iş kapanınca kısa sonuç ve doğrulama kanıtı durum tablosuna yazıldıktan sonra adım dosyasındaki maddesi silinir; tamamlanan durum satırı korunur. Tüm işler kapanınca kalıcı karar ilgili teknik belgeye aktarılır, adım dosyası ve bu tablodaki satır kaldırılır; kalan kimlikler yeniden numaralanmaz.
 
 | Adım | Açık iş ve bağımlılık |
 |---|---|

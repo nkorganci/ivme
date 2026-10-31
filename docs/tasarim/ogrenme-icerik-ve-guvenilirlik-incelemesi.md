@@ -58,7 +58,7 @@
 
 **Hangi modeli açmalıyım?** Her `TAS-*` işi için ana model, düşünme düzeyi, alternatif ve kontrol önerisi [§19 — Göreve göre AI modeli seçimi](#19-göreve-göre-ai-modeli-seçimi) bölümündedir. Önce görev satırını, ardından yalnız o görevin teknik bölümünü oku.
 
-Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; açık uygulama görevi veya yapılmış iş değildir. Hepsinin uygulama durumu **BAŞLANMADI**. Kullanıcı uygulama istediğinde ilgili işler mevcut numaralı plana taşınmalı; bu dosyada ikinci bir canlı görev listesi yürütülmemelidir.
+Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek başına uygulama talimatı değildir. **Güncel yapılan/kalan kapsam ve doğrulama kanıtı [görev durum tablosunda](../gorev-durumu.md) tutulur.** Bu bölüm öncelik/bağımlılık referansıdır; durumların ikinci kopyası değildir. Kullanıcı uygulama istediğinde ayrıntılı işler mevcut numaralı plana bağlanır. Her önemli ilerlemede durum tablosu ve etkilenen teknik bölüm güncellenir; eski bulgunun çözüldüğü kanıtıyla belirtilir, çözülmüş sorun açıkmış gibi bırakılmaz.
 
 | Sıra / kimlik | Öncelik | İş | Bağımlılık | Tamamlandı demek için gereken kanıt |
 |---|---|---|---|---|
@@ -393,12 +393,13 @@ Mevcut düzen korunur:
 - `AGENTS.md`: kısa, kalıcı kurallar ve hangi belge ne zaman okunur.
 - `CLAUDE.md`: mevcut `@AGENTS.md` yönlendirmesi; ikinci kural kopyası yok.
 - `docs/README.md`: görev türüne göre belge dizini.
+- `docs/gorev-durumu.md`: önemli görev başına tek güncel durum, kısa tamamlanan kapsam, kanıt ve kalan adım; her önemli ilerlemede güncellenir, tamamlanan satır korunur.
 - `docs/plan/`: yalnız yetkilendirilmiş açık uygulama işleri ve kabul ölçütleri.
 - `docs/devam.md`: etkin iş, son çıktı/kanıt, kalan somut adım ve gerekli komut; bütün geçmiş değil.
 - Sürümlü manifest/raporlar: tamamlanan işin kanıtı; Git dışındaki kritik kararlar da yedekli.
 - `git log`: tamamlanmış kod/belge değişikliklerinin geçmişi.
 
-**Bu belgenin rolü:** bulgu ve yaklaşım referansı. Yeni kullanıcı talimatı eski devirdeki “matematik içeriğine devam” komutunun önüne geçer. Bu inceleme sonrası yalnız “devam et” ifadesinde hangi işin kastedildiği son kullanıcı bağlamından belirlenmeli; bu belgedeki öneriler kendiliğinden uygulamaya dönüşmemelidir.
+**Bu belgenin rolü:** bulgu ve yaklaşım referansı. Yeni kullanıcı talimatı eski devirdeki “matematik içeriğine devam” komutunun önüne geçer. Bu inceleme sonrası yalnız “devam et” ifadesinde hangi işin kastedildiği son kullanıcı bağlamından belirlenmeli; bu belgedeki öneriler kendiliğinden uygulamaya dönüşmemelidir. Kullanıcının önemli işlerde MD güncelleme talimatı ortak çalışma kuralına alındı: [güncelleme ve tekrar çalışmayı önleme](../gorev-durumu.md). Bunun belgelenmesi yeni test/izleme veya içerik otomasyonunun tamamlandığı anlamına gelmez.
 
 Uygulama ayrıca istendiğinde kısa görev örneği:
 
