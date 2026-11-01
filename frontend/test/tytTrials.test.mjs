@@ -149,3 +149,21 @@ test('yeni ders netleri sınırları korur ve boş diğer branşları grafikte s
   assert.equal(point.net, null);
   assert.equal(tytNetInput(updateTytNet(trial, 'fizik', ''), TYT_COLUMNS[2]), '');
 });
+
+test('grafik fen ve sosyal derslerini ayrı verir, eski toplu neti derslere dağıtmaz', () => {
+  const entered = { id: 'new', date: '2026-11-01', name: '', answers: { tarih: { correct: 4, wrong: 4 } },
+    nets: { fizik: '3,5', kimya: '-', biyoloji: '', cografya: '0', din: '2' }, testNets: { math: '20' } };
+  const legacy = { id: 'old', date: '2026-10-01', name: '', answers: {}, nets: {}, testNets: { science: '11', social: '14' } };
+  const [old, point] = buildTytChartData([entered, legacy].map((trial) => ({ ...trial, ...calculateTrial(trial) })));
+  assert.equal(point.fizik, 3.5);
+  assert.equal(point.kimya, null);
+  assert.equal(point.biyoloji, null);
+  assert.equal(point.tarih, 3);
+  assert.equal(point.cografya, 0);
+  assert.equal(point.felsefe, null);
+  assert.equal(point.din, 2);
+  assert.equal(point.math, 20);
+  assert.equal(old.science, 11);
+  assert.equal(old.social, 14);
+  for (const key of ['fizik', 'kimya', 'biyoloji', 'tarih', 'cografya', 'felsefe', 'din']) assert.equal(old[key], null);
+});

@@ -4,8 +4,13 @@ import { buildTytChartData } from '../tytTrials.js';
 const BRANCHES = [
   { key: 'math', title: 'Matematik', color: 'var(--navy)' },
   { key: 'turkish', title: 'Türkçe', color: 'var(--ok)' },
-  { key: 'science', title: 'Fen Bilimleri', color: 'var(--warn)' },
-  { key: 'social', title: 'Sosyal Bilimler', color: 'var(--bad)' },
+  { key: 'fizik', title: 'Fizik', color: 'var(--warn)' },
+  { key: 'kimya', title: 'Kimya', color: 'var(--bad)' },
+  { key: 'biyoloji', title: 'Biyoloji', color: 'var(--chart-cyan)' },
+  { key: 'tarih', title: 'Tarih', color: 'var(--chart-purple)' },
+  { key: 'cografya', title: 'Coğrafya', color: 'var(--chart-magenta)' },
+  { key: 'felsefe', title: 'Felsefe', color: 'var(--chart-slate)' },
+  { key: 'din', title: 'Din Kültürü', color: 'var(--chart-olive)' },
 ];
 
 const number = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
@@ -38,7 +43,7 @@ export default function TytTrialCharts({ rows, branches = BRANCHES, points: supp
           </div>
           {trials.length < points.length && <p className="muted small">Net girilmemiş denemeler grafikte gösterilmez.</p>}
           <div className="tyt-chart-scroll" role="region" aria-label="Branş netleri grafiği; gerekirse yatay kaydırın" tabIndex={0}>
-            <div className="tyt-chart" style={{ width: Math.max(640, trials.length * 168, branches.length * 105) }} role="img" aria-label={summary}>
+            <div className="tyt-chart" style={{ width: Math.max(640, trials.length * branches.length * 42, branches.length * 105) }} role="img" aria-label={summary}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data} margin={{ top: 16, right: 12, bottom: 4, left: 0 }} accessibilityLayer barGap={3}>
                   <CartesianGrid stroke="var(--line)" strokeDasharray="3 3" vertical={false} />

@@ -13,6 +13,12 @@
   --warn: #d97706;
   --warn-soft: #fef3c7;
   --focus: #93c5fd;
+  /* Deneme grafiği: dokuz branşı ayırt etmek için --navy, --ok, --warn ve --bad'e eklenen tonlar */
+  --chart-cyan: #0891b2;
+  --chart-purple: #6d28d9;
+  --chart-magenta: #be185d;
+  --chart-olive: #4d7c0f;
+  --chart-slate: #64748b;
   --pen-black: #263238;
   --pen-red: #c43d52;
   --pen-blue: #245ca5;

@@ -39,6 +39,15 @@ dönüştürmez. Eski matematik/geometri ders netleri Matematik sütununda topla
 Yeni girişler her dersin `−soru/4 … soru` sınırını korur; grafik girilmemiş
 diğer testleri sıfır kabul etmez. DB şeması ve kaydetme/revizyon sözleşmesi değişmez.
 
+“Branş netlerini karşılaştır” grafiği TYT'de dokuz branşı ayrı çubuk grubu olarak
+çizer: Matematik, Türkçe, Fizik, Kimya, Biyoloji, Tarih, Coğrafya, Felsefe, Din Kültürü.
+Fen ve sosyal testleri toplu gösterilmez. Fizik…Din değerleri yalnız girilmiş ders
+netlerinden (veya eski doğru-yanlış kaydından) gelir; boş veya sayıya çevrilemeyen
+girdi çizilmez, sıfır sayılmaz. Eski toplu fen/sosyal neti derslere dağıtılmadığı
+için o denemelerde bu ders çubukları yoktur. Y ekseni tüm branşlarda 40'a kadardır;
+grafik genişliği deneme × branş sayısıyla büyür, dar ekranda kendi içinde kayar.
+AYT grafiği aynı bileşeni kullanır.
+
 Net girişleri virgül veya noktayla iki ondalık basamağı destekler. Hücrelerin
 sayısal değeri sıralama için korunur; metin girdisi her satır güncellemesinde
 yenilenir. Böylece `3` → `3,` → `3,2` → `3,25` ve negatif net yazılırken

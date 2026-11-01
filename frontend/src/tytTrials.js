@@ -20,9 +20,10 @@ export const TESTS = [
 
 // Matematik (geometri dahil) ve Türkçe tek testtir; fen/sosyal ayrı derslerdir.
 // Eski matematik/geometri kayıtları SUBJECTS üzerinden okunmaya devam eder.
+const SEPARATE_SUBJECTS = SUBJECTS.filter(({ test }) => test === 'science' || test === 'social');
 export const TYT_COLUMNS = [
   ...TESTS.slice(0, 2).map((test) => ({ ...test, test: test.key, aggregate: true })),
-  ...SUBJECTS.filter(({ test }) => test === 'science' || test === 'social'),
+  ...SEPARATE_SUBJECTS,
 ];
 
 export function tytNetInput(trial, column) {
@@ -93,12 +94,22 @@ export function buildTytChartData(trials) {
         : entered !== '';
       return [key, available ? trial.totals[key] : null];
     }));
+    // Fen ve sosyal dersleri grafikte ayrı gösterilir. Eski toplu netler derslere dağıtılmadığından
+    // yalnız girilmiş ders netleri (veya eski doğru-yanlış kaydı) çizilir; sayıya çevrilemeyen ara girdi çizilmez.
+    const subjects = Object.fromEntries(SEPARATE_SUBJECTS.map((subject) => {
+      const entered = trial.nets?.[subject.key];
+      const available = entered === undefined
+        ? trial.answers?.[subject.key] !== undefined
+        : entered !== '' && Number.isFinite(Number(String(entered).replace(',', '.')));
+      return [subject.key, available ? subjectNet(trial, subject) : null];
+    }));
     const complete = TESTS.every(({ key }) => values[key] !== null);
     return {
       id: trial.id,
       date: trial.date,
       label: `${trial.date.slice(8, 10)}.${trial.date.slice(5, 7)}.${trial.date.slice(0, 4)}`,
       ...values,
+      ...subjects,
       net: complete ? trial.net : null,
       score: complete ? trial.score : null,
     };
