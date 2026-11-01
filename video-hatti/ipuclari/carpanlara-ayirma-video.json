@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "iki-kare-farkinda-kareyi-tam-yaz",
+    "providerId": "youtube:lvO7HeZXo3I",
+    "startSeconds": 1300,
+    "endSeconds": 1420,
+    "quote": "Ellerim kırılaydı",
+    "frameSeconds": [
+      1390
+    ],
+    "rule": "İki kare farkını uygulamadan önce her terimi bir şeyin karesi olarak yaz: 9b² = (3b)², 2⁸ = (2⁴)², m = (√m)². Çarpanlara bu tabanlar girer.",
+    "condition": "İfade gerçekten iki karenin farkı olmalı. Katsayının kendisi tam kare değilse (2b² gibi) gerçek sayılarda √2 ile yazılır; TYT'de genellikle tam kare katsayılar kullanılır.",
+    "example": "a² − 9b² = (a − 3b)(a + 3b); 25² − 15² = 10 · 40 = 400; 2⁸ − 1 = (2⁴ − 1)(2⁴ + 1) = 15 · 17.",
+    "counterexample": "a² − 9b² = (a − 9b)(a + 9b) yazılırsa çarpım a² − 81b² olur; 9'un kendisi değil karekökü (3) çarpana girer.",
+    "rationale": "(x − y)(x + y) = x² − y² özdeşliğinde x ve y kare alınmadan önceki tabanlardır; bu yüzden önce ‘neyin karesi?’ sorusu cevaplanır.",
+    "agentSourceReview": "Claude 1390. saniye karesini açtı: İki Kare Farkı kutusu (x² − y² = (x − y)(x + y)), Örnek 5'te 25² − 15² = (25 − 15)(25 + 15) = 10 · 40 = 400, a² − 9b² = (a − 3b)(a + 3b), 2⁸ − 1 = (2⁴ − 1)(2⁴ + 1) = 15 · 17 ve m − n = (√m)² − (√n)² tahtada görünüyor. Değerler bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "terim-ekle-cikar-tam-kare",
+    "providerId": "youtube:lvO7HeZXo3I",
+    "startSeconds": 1890,
+    "endSeconds": 2010,
+    "quote": "tam kareye tamamlama metodu diyoruz",
+    "frameSeconds": [
+      2000
+    ],
+    "rule": "İfade bir tam kareye çok benziyorsa eksik ya da fazla terimi ekleyip çıkar: x⁴ + 8x² + 36 = (x² + 4)² + 20. Böylece en küçük değer ya da yeni bir çarpanlama görünür.",
+    "condition": "Eklenen ve çıkarılan terim aynı olmalı (ifadenin değeri değişmez). Tam karenin ortadaki terimi 2·(birinci)·(ikinci) olmalı; önce ilk ve son terimden adayı kur.",
+    "example": "x⁴ + 8x² + 36 = (x⁴ + 8x² + 16) + 20 = (x² + 4)² + 20; x⁴ − 2x³ + 1 = (x² − x)² + 1 − x².",
+    "counterexample": "(x² + 4)² + 20 ifadesi iki kare farkı değildir; +20 olduğu için gerçek sayılarda çarpanlara ayrılmaz. Kalan terim negatif bir tam kare olsaydı (− 4x² gibi) iki kare farkına dönerdi.",
+    "rationale": "(a + b)² = a² + 2ab + b²: ilk iki terim a ve 2ab'yi belirler, gereken b² ile eldeki sabitin farkı ayrıca yazılır. Değeri değiştirmeden biçimi değiştirir.",
+    "agentSourceReview": "Claude 2000. saniye karesini açtı: Terim Ekleme–Çıkarma kutusu (x⁴ + 8x² + 36 − 20 + 20 = (x² + 4)² + 20 ve x⁴ − 2x³ + 1 + x² − x² → (x² − x)² + 1 − x²) ile (x² + 4)² ve (x² − x)² açılımları tahtada görünüyor. Özdeşlikler bağımsız denetlendi.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

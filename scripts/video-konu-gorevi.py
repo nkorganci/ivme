@@ -8,29 +8,24 @@ seçilir (en çok üç). Süreler veri/video-hatti/listeler/tam/<liste>.txt dosy
 korunur; yalnız eksikler yazılır. İndirme için: python scripts/ivme.py video edin <görev> --erisim
 """
 import json
+import re
 import sys
 from pathlib import Path
 
 APP = Path(__file__).resolve().parents[1]
 LISTS = APP / 'veri/video-hatti/listeler/tam'
-TOPICS = {
-    'temel-kavramlar': 'tyt.matematik.temel-kavramlar', 'sayi-basamaklari': 'tyt.matematik.sayi-basamaklari',
-    'bolme-bolunebilme': 'tyt.matematik.bolme-ve-bolunebilme', 'ebob-ekok': 'tyt.matematik.ebob-ve-ekok',
-    'rasyonel-sayilar': 'tyt.matematik.rasyonel-sayilar', 'birinci-derece-denklemler': 'tyt.matematik.birinci-dereceden-denklemler',
-    'esitsizlikler': 'tyt.matematik.basit-esitsizlikler', 'mutlak-deger': 'tyt.matematik.mutlak-deger',
-    'uslu-ifadeler': 'tyt.matematik.uslu-sayilar', 'koklu-ifadeler': 'tyt.matematik.koklu-sayilar',
-    'carpanlara-ayirma': 'tyt.matematik.carpanlara-ayirma', 'oran-oranti': 'tyt.matematik.oran-ve-oranti',
-    'sayi-kesir-problemleri': 'tyt.matematik.sayi-ve-kesir-problemleri', 'yas-isci-problemleri': 'tyt.matematik.yas-problemleri',
-    'yuzde-karisim': 'tyt.matematik.karisim-problemleri', 'kar-zarar': 'tyt.matematik.yuzde-k-r-ve-zarar-problemleri',
-    'hareket-problemleri': 'tyt.matematik.hareket-problemleri', 'grafik-rutin-olmayan': 'tyt.matematik.rutin-olmayan-problemler',
-    'veri-grafikleri': 'tyt.matematik.veri-ve-istatistik', 'merkezi-egilim': 'tyt.matematik.veri-ve-istatistik',
-    'onermeler': 'tyt.matematik.mantik', 'kosullu-onerme': 'tyt.matematik.mantik',
-    'kumeler-temel': 'tyt.matematik.kumeler', 'kume-islemleri': 'tyt.matematik.kumeler-kartezyen-carpim',
-    'fonksiyon-kavrami': 'tyt.matematik.fonksiyonlara-giris', 'fonksiyon-grafikleri': 'tyt.matematik.fonksiyonlara-giris',
-    'bileske-ters': 'tyt.matematik.fonksiyonlara-giris', 'polinom-islemleri': 'tyt.matematik.polinomlar',
-    'sayma-permutasyon': 'tyt.matematik.permutasyon', 'kombinasyon': 'tyt.matematik.kombinasyon',
-    'olasilik': 'tyt.matematik.olasilik', 'binom': 'tyt.matematik.binom-acilimi',
-}
+def topic_for(lesson):
+    """Dersin katalog kimlikleriyle eşleşen kontrollü sözlük konusunu seçer (video-protips.py aynı kuralı denetler)."""
+    text = (APP / f'frontend/src/learn/content/dersler/{lesson}.ders').read_text(encoding='utf-8')
+    categories = set(re.search(r'^kategori:\s*(.+)$', text, re.M).group(1).split())
+    taxonomy = json.loads((APP / 'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf-8'))['categories']
+    matches = [c['id'] for c in taxonomy if 'subtopic' not in c['id'] and set(c.get('canonicalTopicIds') or [c['id']]) & categories]
+    words = set(lesson.split('-'))
+    # Anlamca en yakın konu: ders kimliğiyle ortak sözcük sayısı, sonra TYT konusu, sonra genel 'problemler'.
+    matches.sort(key=lambda m: (-len(words & set(re.split('[.-]', m))), not m.startswith('tyt.matematik.'),
+                                m != 'tyt.matematik.problemler', len(m)))
+    return matches[0] if matches else None
+
 PLAYLIST_FILES = {'PL1': 'PLYh67QmhXVyA.txt', 'PL2': 'PLVoSZ0D0CB3qkytIGl01_CAPZuKgaMbxw.txt'}
 NOTE = ('Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. '
         'Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır.')
@@ -56,8 +51,9 @@ def main(argv):
     lesson, chosen = argv[0], argv[1:]
     spec = json.loads((APP / 'scripts/matematik-konu-listesi.json').read_text(encoding='utf-8'))
     topic = next((k for k in spec['konular'] if k['id'] == lesson), None)
-    if topic is None or lesson not in TOPICS:
-        print(f'{lesson}: konu listesinde veya konu eşlemesinde yok', file=sys.stderr)
+    topic_id = topic_for(lesson) if topic else None
+    if topic is None or topic_id is None:
+        print(f'{lesson}: konu listesinde ya da kontrollü sözlükte eşleşen konu yok', file=sys.stderr)
         return 1
     if not chosen:
         chosen = [v for key in ('PL1', 'PL2') for v in topic['videolar'][key][:1]]
@@ -76,7 +72,7 @@ def main(argv):
         playlist_key = known[chosen[0]][1]
         playlist = spec['oynatmaListeleri'][playlist_key]
         task = {
-            'schema': 'video-evidence-v1', 'id': task_id, 'topicId': TOPICS[lesson],
+            'schema': 'video-evidence-v1', 'id': task_id, 'topicId': topic_id,
             'playlist': {'providerId': 'youtube-playlist:' + playlist['url'].split('list=')[1], 'url': playlist['url'],
                          'selection': 'Konu listesindeki ' + lesson + ' videoları: ' +
                                       '; '.join(f'{v} ({known[v][1]}: {known[v][2]})' for v in chosen) +

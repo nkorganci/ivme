@@ -207,6 +207,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "carpanlara-ayirma-video",
+      "conceptId": "carpanlara-ayirma",
+      "hints": [
+        {
+          "id": "iki-kare-farkinda-kareyi-tam-yaz",
+          "title": "İki kare farkında önce ‘neyin karesi?’",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "terim-ekle-cikar-tam-kare",
+          "title": "Terim ekle–çıkar: tam kareye tamamla",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

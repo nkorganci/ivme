@@ -1,7 +1,7 @@
 {
   "schema": "video-evidence-v1",
   "id": "carpanlara-ayirma-video",
-  "topicId": "tyt.matematik.carpanlara-ayirma",
+  "topicId": "tyt.matematik.polinomlar",
   "playlist": {
     "providerId": "youtube-playlist:PLYh67QmhXVyA",
     "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
@@ -16,20 +16,11 @@
       },
       "media": "veri/video-hatti/medya/lvO7HeZXo3I.mp4",
       "transcript": "veri/video-hatti/medya/lvO7HeZXo3I.tr.json3",
-      "frameSeconds": [],
+      "frameSeconds": [
+        1390,
+        2000
+      ],
       "durationSeconds": 3166,
-      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
-    },
-    {
-      "providerId": "youtube:ehFJaEwSH48",
-      "usage": {
-        "status": "PROCESSING_ALLOWED",
-        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
-      },
-      "media": "veri/video-hatti/medya/ehFJaEwSH48.mp4",
-      "transcript": "veri/video-hatti/medya/ehFJaEwSH48.tr.json3",
-      "frameSeconds": [],
-      "durationSeconds": 3017,
       "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
     }
   ],

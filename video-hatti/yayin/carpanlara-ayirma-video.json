@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "carpanlara-ayirma-video",
+  "topicId": "tyt.matematik.polinomlar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355",
+  "taskHash": "b8d059039f2ca290b5ddc2dc21dd66c78e17f0418a9310ee6f7efa5826259110",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\carpanlara-ayirma-video",
+  "artifacts": {
+    "asamalar\\youtube-lvO7HeZXo3I-metin\\50efc3e7bf42d7c735660183ce45ce625b7390ad0bc59b71fdbadecaaf1403e5.json": "72e379609312b4025f6a4ddfbebbb311830bf3bfd43f9181b1c859f95dc762b9",
+    "asamalar\\youtube-lvO7HeZXo3I-kareler\\bb7c211ff2bcb7621f6f8bc6667cbf88014ec6b3f0d99b5070e98ec72a793ba9.json": "b7500609634ee9a9690b79930738fe91652b589dc6dd160423d919672d319aa4",
+    "kareler\\198f9291fa72a60554b00280a9211d1ec6e01a3fdc52d32e5fffc4607c0cc4a1.png": "eef5c087d2f45483ef1a10c60243042bf9214c807b3da7e19b428b4280988ff6",
+    "kareler\\1dddbdded81a8733d6a53159e1be1f1074d2303996739d99bc4605319afb18b2.png": "7f67178d402236fc176519540fed34d86049431e9779e183705c13108f60017d",
+    "asamalar\\matematik-denetimi\\95cdad7dd2e8297f99bddb54d6a0826afd3dd44116db30a683c48f4b658940c7.json": "4a22da5675348f73eb4967387cd2f4d45f0effe60248866786c8d1659bea8f29",
+    "surumler\\9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355.json": "cccc71b65d7030070f7ae1170a89fd433be483f8e7913503735baa0ee29ba352",
+    "surumler\\9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355.oneriler.md": "715198904ae0d5ed5fe066d0f76ef4437d4e8eb4b78703853181cbada403d968"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-carpanlara-ayirma-test.py",
+        "sha256": "4afb7e28fba5e32e8e56b4ad2f6727f7916384fe233f8fc09da1160af525b646",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "carpanlara-ayirma-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.535
+    },
+    "videos": [
+      {
+        "providerId": "youtube:lvO7HeZXo3I",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:lvO7HeZXo3I",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1031,
+      "normalization": {
+        "captionControlEvents": 1021,
+        "endClippedCues": 0,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1390,
+          "file": "kareler\\1dddbdded81a8733d6a53159e1be1f1074d2303996739d99bc4605319afb18b2.png",
+          "sha256": "7f67178d402236fc176519540fed34d86049431e9779e183705c13108f60017d",
+          "pixelHash": "1dddbdded81a8733d6a53159e1be1f1074d2303996739d99bc4605319afb18b2",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2000,
+          "file": "kareler\\198f9291fa72a60554b00280a9211d1ec6e01a3fdc52d32e5fffc4607c0cc4a1.png",
+          "sha256": "eef5c087d2f45483ef1a10c60243042bf9214c807b3da7e19b428b4280988ff6",
+          "pixelHash": "198f9291fa72a60554b00280a9211d1ec6e01a3fdc52d32e5fffc4607c0cc4a1",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "iki-kare-farkinda-kareyi-tam-yaz",
+      "contentHash": "05547b6dbf505f5f8ae642cee7db8c40dbab8b424fc1274e3fbf7cbcb7fa0150",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "terim-ekle-cikar-tam-kare",
+      "contentHash": "30998816e4dfb97229a158070f73040c76321b789a0673bde246d37bcc86b52e",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

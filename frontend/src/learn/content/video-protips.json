@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "dca52650584bba35a0fda78b5728db5e6666d0e2b70a3e11d30281104316135d",
+  "inputsHash": "c7b6a682a97eef76d2da943d8a73a5afe273fc74300a86ca113f594a0f136bae",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -483,6 +483,52 @@
       },
       "evidenceHash": "696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc",
       "contentHash": "db633539137cac91ba0fec7dc90bdf686ec9a7d7a3887f680959318d88de4ca6",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "carpanlara-ayirma-video:iki-kare-farkinda-kareyi-tam-yaz",
+      "conceptId": "carpanlara-ayirma",
+      "topicId": "tyt.matematik.polinomlar",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "İki kare farkında önce ‘neyin karesi?’",
+      "rule": "İki kare farkını uygulamadan önce her terimi bir şeyin karesi olarak yaz: 9b² = (3b)², 2⁸ = (2⁴)², m = (√m)². Çarpanlara bu tabanlar girer.",
+      "condition": "İfade gerçekten iki karenin farkı olmalı. Katsayının kendisi tam kare değilse (2b² gibi) gerçek sayılarda √2 ile yazılır; TYT'de genellikle tam kare katsayılar kullanılır.",
+      "example": "a² − 9b² = (a − 3b)(a + 3b); 25² − 15² = 10 · 40 = 400; 2⁸ − 1 = (2⁴ − 1)(2⁴ + 1) = 15 · 17.",
+      "counterexample": "a² − 9b² = (a − 9b)(a + 9b) yazılırsa çarpım a² − 81b² olur; 9'un kendisi değil karekökü (3) çarpana girer.",
+      "rationale": "(x − y)(x + y) = x² − y² özdeşliğinde x ve y kare alınmadan önceki tabanlardır; bu yüzden önce ‘neyin karesi?’ sorusu cevaplanır.",
+      "source": {
+        "providerId": "youtube:lvO7HeZXo3I",
+        "startSeconds": 1300,
+        "endSeconds": 1420
+      },
+      "evidenceHash": "9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355",
+      "contentHash": "05547b6dbf505f5f8ae642cee7db8c40dbab8b424fc1274e3fbf7cbcb7fa0150",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "carpanlara-ayirma-video:terim-ekle-cikar-tam-kare",
+      "conceptId": "carpanlara-ayirma",
+      "topicId": "tyt.matematik.polinomlar",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "Terim ekle–çıkar: tam kareye tamamla",
+      "rule": "İfade bir tam kareye çok benziyorsa eksik ya da fazla terimi ekleyip çıkar: x⁴ + 8x² + 36 = (x² + 4)² + 20. Böylece en küçük değer ya da yeni bir çarpanlama görünür.",
+      "condition": "Eklenen ve çıkarılan terim aynı olmalı (ifadenin değeri değişmez). Tam karenin ortadaki terimi 2·(birinci)·(ikinci) olmalı; önce ilk ve son terimden adayı kur.",
+      "example": "x⁴ + 8x² + 36 = (x⁴ + 8x² + 16) + 20 = (x² + 4)² + 20; x⁴ − 2x³ + 1 = (x² − x)² + 1 − x².",
+      "counterexample": "(x² + 4)² + 20 ifadesi iki kare farkı değildir; +20 olduğu için gerçek sayılarda çarpanlara ayrılmaz. Kalan terim negatif bir tam kare olsaydı (− 4x² gibi) iki kare farkına dönerdi.",
+      "rationale": "(a + b)² = a² + 2ab + b²: ilk iki terim a ve 2ab'yi belirler, gereken b² ile eldeki sabitin farkı ayrıca yazılır. Değeri değiştirmeden biçimi değiştirir.",
+      "source": {
+        "providerId": "youtube:lvO7HeZXo3I",
+        "startSeconds": 1890,
+        "endSeconds": 2010
+      },
+      "evidenceHash": "9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355",
+      "contentHash": "30998816e4dfb97229a158070f73040c76321b789a0673bde246d37bcc86b52e",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

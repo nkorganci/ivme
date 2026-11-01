@@ -1,7 +1,7 @@
 {
   "schema": "video-evidence-v1",
   "id": "grafik-rutin-olmayan-video",
-  "topicId": "tyt.matematik.rutin-olmayan-problemler",
+  "topicId": "tyt.matematik.problemler",
   "playlist": {
     "providerId": "youtube-playlist:PLYh67QmhXVyA",
     "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",

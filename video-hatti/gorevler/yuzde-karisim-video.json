@@ -1,7 +1,7 @@
 {
   "schema": "video-evidence-v1",
   "id": "yuzde-karisim-video",
-  "topicId": "tyt.matematik.karisim-problemleri",
+  "topicId": "tyt.matematik.problemler",
   "playlist": {
     "providerId": "youtube-playlist:PLYh67QmhXVyA",
     "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
