@@ -1,0 +1,134 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "sayi-basamaklari-video",
+  "topicId": "tyt.matematik.sayi-basamaklari",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6",
+  "taskHash": "5477380a6b8a7c84270f58eba8e6166f7b1aac194a6652b3e97accfe8dea0206",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\sayi-basamaklari-video",
+  "artifacts": {
+    "asamalar\\youtube-DvUDBzs9y8s-metin\\b2aa6db7188407fe2748b7c7cb270994faa87983c18171af8496232d803b0156.json": "9c6d027b3b9a8f84ab0064156140551b14ce2d201fe88bb22d2d664ced5bbb72",
+    "asamalar\\youtube-DvUDBzs9y8s-kareler\\e1256ae7a4cb5c82fa9eb98c73333ecbf8225204aefa767861ed79672b6a851f.json": "d6e6642218519f4064d6fc2722018b31620ef078d012390c5dd7be74ba5ccda4",
+    "kareler\\0ba8c4f8e760890e3af921ad5c5d253ec6298a692c8502ae7d84659d0590d99b.png": "67b760dd71a96fd8a2c2d176983f433476c2ba0cae09a5395242822acbb73e2c",
+    "kareler\\2d3dbf6e94e5219910cff154508d532d49f863994fbf30cd5e676c22554decf3.png": "420d5b94c5702d5a3c891fcde3fd5e71be36b5bf3fe77052d21179362807595b",
+    "asamalar\\youtube-hjyeXOCNyqA-metin\\b168f8d51e74a90c04a6ef102b0ac784331691a7d21fb7db55ec48b1b6f86739.json": "c250250ea4dee4dddb81a996bd8c9f9defffb821c92e311404d4eade1acc3cf6",
+    "asamalar\\youtube-hjyeXOCNyqA-kareler\\b0e6be7d317b42a87520f001d5bab36e3e6d37d7c524baec571a07afeee3ed3d.json": "4419f5b6f9df52a89a89eada776b71c3f9e455ea038266a1d253f4193bdf1819",
+    "kareler\\17de6a0646c0efec8782e0d40afdf797165bcf285b947692cf0939392ec4036b.png": "b7b1d2d515d9795b3ecc96d50c5e4d2b79e60fd57a58d5ccaf5b3bd158e35198",
+    "asamalar\\matematik-denetimi\\a72b826547abc5a36aa43de585a69f9007be931d5323337a70833ef4dee182d7.json": "da8b864f8621a2cc13bbe9a87aa648830eae1566ff87b3a6e598abd530f2e4a2",
+    "surumler\\b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6.json": "8ba7e3e98fd8917dc558e8d943c368056794a182628c39b11a2727670b53a2b0",
+    "surumler\\b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6.oneriler.md": "ae803f101e35686fc66779b70f151d4b1532718cd0ddfafc634f0b0ab3690c81"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-sayi-basamaklari-test.py",
+        "sha256": "9462d6c6e3ddff5377cdbb15098f7a613a82ed83e28a8613fc04d0c55cc78e89",
+        "exitCode": 0,
+        "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "sayi-basamaklari-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 3,
+      "stagesBuilt": 5,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 5.225
+    },
+    "videos": [
+      {
+        "providerId": "youtube:DvUDBzs9y8s",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:hjyeXOCNyqA",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 3,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DvUDBzs9y8s",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1359,
+      "normalization": {
+        "captionControlEvents": 1346,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 545,
+          "file": "kareler\\0ba8c4f8e760890e3af921ad5c5d253ec6298a692c8502ae7d84659d0590d99b.png",
+          "sha256": "67b760dd71a96fd8a2c2d176983f433476c2ba0cae09a5395242822acbb73e2c",
+          "pixelHash": "0ba8c4f8e760890e3af921ad5c5d253ec6298a692c8502ae7d84659d0590d99b",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1615,
+          "file": "kareler\\2d3dbf6e94e5219910cff154508d532d49f863994fbf30cd5e676c22554decf3.png",
+          "sha256": "420d5b94c5702d5a3c891fcde3fd5e71be36b5bf3fe77052d21179362807595b",
+          "pixelHash": "2d3dbf6e94e5219910cff154508d532d49f863994fbf30cd5e676c22554decf3",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:hjyeXOCNyqA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 736,
+      "normalization": {
+        "captionControlEvents": 726,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 480,
+          "file": "kareler\\17de6a0646c0efec8782e0d40afdf797165bcf285b947692cf0939392ec4036b.png",
+          "sha256": "b7b1d2d515d9795b3ecc96d50c5e4d2b79e60fd57a58d5ccaf5b3bd158e35198",
+          "pixelHash": "17de6a0646c0efec8782e0d40afdf797165bcf285b947692cf0939392ec4036b",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "iki-basamakli-tersinde-sifir-elemesi",
+      "contentHash": "e891c9f73fb46d7cff8e75ef46986371dbde826aa7480753dd700b49b8e78438",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "harf-verilmeyen-sayiyi-cozumle",
+      "contentHash": "2489279ff3853f57dffbf8a5b4b15b14fbeb502675a7e6b5fb45cfc4d69a6ae1",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "alt-alta-carpmada-satirlarin-anlami",
+      "contentHash": "b2d8a197977121c03192e54aad6788a72bbeef94879ed38944ef81771def64a7",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "bilesik-bolende-kalani-paylastir",
+    "providerId": "youtube:04dPFpTLCpA",
+    "startSeconds": 3960,
+    "endSeconds": 4060,
+    "quote": "kalan bölenden küçük olmak zorunda",
+    "frameSeconds": [
+      4040
+    ],
+    "rule": "Bileşik bir bölene göre kalan verildiyse böleni aralarında asal çarpanlarına ayır (30 = 3 · 10) ve kalanı her çarpana aktar; aktarılan kalan o çarpandan büyükse yeniden böl.",
+    "condition": "Çarpanlar aralarında asal olmalı (30 için 3 ve 10; 5 ve 6 seçilirse 6'nın kuralı yine 2 ve 3'e ayrılır). Kalan, büyük bölene göre verilen gerçek kalan olmalı.",
+    "example": "31AB sayısının 30 ile bölümünden kalan 5: 10'a göre kalan 5, yani B = 5. 3'e göre kalan 5 değil 2; 3 + 1 + A + 5 = 9 + A sayısının 3'e göre kalanı 2, A ∈ {2, 5, 8}. A + B en çok 13.",
+    "counterexample": "3'e göre kalanı 5 yazıp 9 + A = 3k + 5 kurmak da aynı A'ları verir ama ‘kalan 5’ bir kalan değildir; 7'ye göre kalan 9 gibi durumlarda sayıyı büyüttüğün için kolayca yanlış aday üretirsin. Kalanı her zaman bölenden küçük yaz.",
+    "rationale": "N = 30q + 5 = 3(10q + 1) + 2 ve N = 10(3q) + 5. Aynı eşitliği küçük bölenlere göre yeniden gruplayınca kalan, büyük kalanın küçük bölene göre kalanı olur.",
+    "agentSourceReview": "Claude 4040. saniye karesini açtı: Örnek 14'ün metni (31AB, 30 ile bölümünden kalan 5, A + B en çok), 30 → 3 ve 10 ağacı, 10 altında 5, 3 altında 5 → 2 ve 9 + A = 3k + 2, 7 + A = 3k satırları tahtada görünüyor. Bütün A, B rakamları bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "once-az-basamakli-kurali-uygula",
+    "providerId": "youtube:04dPFpTLCpA",
+    "startSeconds": 4720,
+    "endSeconds": 4830,
+    "quote": "hangisini önce kullanmak lazım 4'le bölünebilmeyle",
+    "frameSeconds": [
+      4800
+    ],
+    "rule": "Birden fazla kural birlikte gerekiyorsa önce en az basamağa bakan kuralı (2, 5, 10 → son basamak; 4 → son iki basamak) uygula; çıkan az sayıdaki adayı rakam toplamı kuralıyla (3, 9) ele.",
+    "condition": "Kurallar aynı sayıya birlikte uygulanmalı (12 = 3 · 4 gibi aralarında asal çarpanlar). Sıra sonucu değiştirmez; yalnız denenecek aday sayısını azaltır.",
+    "example": "2021 TYT: ABA 5'e bölünürse A = 5 ve AAB = 55B 12'ye bölünmeli. Önce 4: 5B ∈ {52, 56}, B ∈ {2, 6}. Sonra 9: 552 (toplam 12) ve 556 (toplam 16) 9'a bölünmez; bu durum elenir.",
+    "counterexample": "Önce 9 kuralından başlanırsa 5 + 5 + B = 18 için B = 8 ve 558 bulunur; 58 dörde bölünmediği için aynı sonuca varılır. Sıra yanlış değildir ama son basamak koşulu birden çok rakamı aynı anda elediği için daha kısa yoldur.",
+    "rationale": "Son basamak kuralları tek ya da iki basamaklı küçük bir aday listesi üretir; rakam toplamı kuralı bütün basamakları ilgilendirdiği için aday listesini doğrulamada kullanılır. MEBİ konu özetindeki ‘önce birler, sonra son iki, son üç basamak, en son rakam toplamı’ sırası da budur.",
+    "agentSourceReview": "Claude 4800. saniye karesini açtı: 2021 TYT çıkmış sorusu (AAB ve ABA, biri 5'e diğeri 12'ye), 558, 585, 552 ve 556 üstü çizili adaylar ve AA0, AA5, A0A, A5 durum listesi tahtada görünüyor. Bütün A, B rakamları bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

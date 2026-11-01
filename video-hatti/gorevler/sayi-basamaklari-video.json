@@ -1,0 +1,46 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "sayi-basamaklari-video",
+  "topicId": "tyt.matematik.sayi-basamaklari",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki sayi-basamaklari videoları: DvUDBzs9y8s (PL1: Sayı Basamakları-1 | 8.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); hjyeXOCNyqA (PL1: Sayı Basamakları-2 | 8.Gün - 2.Video | 70 Günde TYT Matematik Kampı | 2026). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DvUDBzs9y8s",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/DvUDBzs9y8s.mp4",
+      "transcript": "veri/video-hatti/medya/DvUDBzs9y8s.tr.json3",
+      "frameSeconds": [
+        545,
+        1615
+      ],
+      "durationSeconds": 4031,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:hjyeXOCNyqA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/hjyeXOCNyqA.mp4",
+      "transcript": "veri/video-hatti/medya/hjyeXOCNyqA.tr.json3",
+      "frameSeconds": [
+        480
+      ],
+      "durationSeconds": 2158,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/sayi-basamaklari-video.json",
+  "lesson": "frontend/src/learn/content/dersler/sayi-basamaklari.ders",
+  "verificationTests": [
+    "testler/video-ipucu-sayi-basamaklari-test.py"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "ebob-ekok-video",
+  "topicId": "tyt.matematik.ebob-ve-ekok",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki EBOB–EKOK videosu sPZus-twlX0 (PL1: Ebob Ekok-1 | 15.Gün - 1.Video). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:sPZus-twlX0",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/sPZus-twlX0.mp4",
+      "transcript": "veri/video-hatti/medya/sPZus-twlX0.tr.json3",
+      "frameSeconds": [
+        2200,
+        3040
+      ],
+      "durationSeconds": 4394,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/ebob-ekok-video.json",
+  "lesson": "frontend/src/learn/content/dersler/ebob-ekok.ders",
+  "verificationTests": [
+    "testler/video-ipucu-ebob-ekok-test.py"
+  ]
+}

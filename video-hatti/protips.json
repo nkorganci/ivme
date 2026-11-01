@@ -5,8 +5,87 @@
       "taskId": "mert-hoca-tek-cift",
       "conceptId": "temel-kavramlar",
       "hints": [
-        { "id": "sifir-ve-negatiflerde-ciftlik", "title": "Sıfır ve negatif sayılarda çiftlik", "sectionIds": ["s2"] },
-        { "id": "iki-katli-terimden-kalanin-ciftligi", "title": "İki katlı terimden kalan sayının çiftliği", "sectionIds": ["s2b"] }
+        {
+          "id": "sifir-ve-negatiflerde-ciftlik",
+          "title": "Sıfır ve negatif sayılarda çiftlik",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "iki-katli-terimden-kalanin-ciftligi",
+          "title": "İki katlı terimden kalan sayının çiftliği",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
+    },
+    {
+      "taskId": "sayi-basamaklari-video",
+      "conceptId": "sayi-basamaklari",
+      "hints": [
+        {
+          "id": "iki-basamakli-tersinde-sifir-elemesi",
+          "title": "Ters sayı da iki basamaklıysa sıfır elenir",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "harf-verilmeyen-sayiyi-cozumle",
+          "title": "Harf verilmemiş sayıyı AB diye yaz ve çözümle",
+          "sectionIds": [
+            "s1b"
+          ]
+        },
+        {
+          "id": "alt-alta-carpmada-satirlarin-anlami",
+          "title": "Alt alta çarpmada satırlar neyi gösterir?",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
+    },
+    {
+      "taskId": "bolme-bolunebilme-video",
+      "conceptId": "bolme-bolunebilme",
+      "hints": [
+        {
+          "id": "bilesik-bolende-kalani-paylastir",
+          "title": "Bileşik bölene göre kalanı çarpanlara aktar",
+          "sectionIds": [
+            "s3b"
+          ]
+        },
+        {
+          "id": "once-az-basamakli-kurali-uygula",
+          "title": "Önce son basamak kuralı, sonra rakam toplamı",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
+    },
+    {
+      "taskId": "ebob-ekok-video",
+      "conceptId": "ebob-ekok",
+      "hints": [
+        {
+          "id": "ebob-katlari-aralarinda-asal",
+          "title": "EBOB'u dışarı al: kalan katlar aralarında asal",
+          "sectionIds": [
+            "s2b"
+          ]
+        },
+        {
+          "id": "kalanlari-esitleyen-ortak-ekleme",
+          "title": "Farklı kalanları ortak bir eklemeyle sıfırla",
+          "sectionIds": [
+            "s4b"
+          ]
+        }
       ]
     }
   ]

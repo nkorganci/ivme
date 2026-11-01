@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "bolme-bolunebilme-video",
+  "topicId": "tyt.matematik.bolme-ve-bolunebilme",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d",
+  "taskHash": "105af07c8b50d8c522d581bb4d9cc27852028072ba8c806b00317b97d95f2ec8",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\bolme-bolunebilme-video",
+  "artifacts": {
+    "asamalar\\youtube-04dPFpTLCpA-metin\\d792427f538d6800792aa6ae6407c02a73762263c2f196aa8f27ead7b8114581.json": "d9c6a84ada300af578837c12d3546c7b72c8fa8cf1441a065e6370245edace1e",
+    "asamalar\\youtube-04dPFpTLCpA-kareler\\ed8769548c992597b413be58a94fb73654724832d945521c95f6a81c4cb252be.json": "4196ceb0eb1cadbf0c98822098a37f81d367046eb749f10e5258c58b1682b2e3",
+    "kareler\\dcdd4656cee26c55e98c081d70fba7d301da35391847df82a52d37234a95e70b.png": "0e0b6ff31068592d99566223ea3529adc19c7fd2cfef3f4440d4cdb0d424a7fe",
+    "kareler\\f74befc4feab01e08cc249f508238dd6c140bcb5b8af3095969dae53fcb229e1.png": "ef5cf84851a79ffdd2b4cb3abdfc27e7d6a7cd3d5ef3aa0f958a6d86175c2389",
+    "asamalar\\matematik-denetimi\\4525546337482240fb921a6c334cb33477dfc6f9bdb7cd10dfb6cdda81e427da.json": "6ad3c44220fae096c83e5ab083e53f1d95568fc7afd19e901a05e83c02f363d8",
+    "surumler\\92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d.json": "867c811cc5cd82cd28c19738313018c6950f58233abd54f30b58ca3d37c1e241",
+    "surumler\\92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d.oneriler.md": "f81ec72b92ca682dbc6c77ef951c0cf45deeb3cd6d42947cf007c8f0df36002e"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-bolme-bolunebilme-test.py",
+        "sha256": "eb223ad2401a4f093b7a42d4955e3432349573ad3ff42a3fc9851b1cda00fa02",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "bolme-bolunebilme-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.852
+    },
+    "videos": [
+      {
+        "providerId": "youtube:04dPFpTLCpA",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:04dPFpTLCpA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1793,
+      "normalization": {
+        "captionControlEvents": 1774,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 4040,
+          "file": "kareler\\dcdd4656cee26c55e98c081d70fba7d301da35391847df82a52d37234a95e70b.png",
+          "sha256": "0e0b6ff31068592d99566223ea3529adc19c7fd2cfef3f4440d4cdb0d424a7fe",
+          "pixelHash": "dcdd4656cee26c55e98c081d70fba7d301da35391847df82a52d37234a95e70b",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 4800,
+          "file": "kareler\\f74befc4feab01e08cc249f508238dd6c140bcb5b8af3095969dae53fcb229e1.png",
+          "sha256": "ef5cf84851a79ffdd2b4cb3abdfc27e7d6a7cd3d5ef3aa0f958a6d86175c2389",
+          "pixelHash": "f74befc4feab01e08cc249f508238dd6c140bcb5b8af3095969dae53fcb229e1",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "bilesik-bolende-kalani-paylastir",
+      "contentHash": "5caa3a54682234430396ad2580cff3cd50f3a06b23fcb8be34aa7630bb725579",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "once-az-basamakli-kurali-uygula",
+      "contentHash": "8a9a2a8622f03e1d7abef0d945f951f536483323f52a1a6bd2e5cbddf74170db",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

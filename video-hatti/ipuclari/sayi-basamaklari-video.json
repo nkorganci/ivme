@@ -1,0 +1,53 @@
+[
+  {
+    "id": "iki-basamakli-tersinde-sifir-elemesi",
+    "providerId": "youtube:DvUDBzs9y8s",
+    "startSeconds": 486,
+    "endSeconds": 600,
+    "quote": "onlar basamağına 0 gelemez",
+    "frameSeconds": [
+      545
+    ],
+    "rule": "AB − BA = 9(A − B). Soru BA'nın da iki basamaklı olduğunu söylüyorsa B = 0 olamaz; rakam farkından çıkan aday listesinden sıfırlı ikiliyi ele.",
+    "condition": "AB ve BA ikisi de iki basamaklı doğal sayı olarak verilmeli. Yalnız AB iki basamaklı denirse B = 0 serbesttir. Harfler yan yana yazılıp “iki basamaklı” denmediyse AB, A·B çarpımı demektir.",
+    "example": "AB = BA + 36 ise 9(A − B) = 36 ve A − B = 4. Adaylar 95, 84, 73, 62, 51 ve 40; 40'ın tersi 04 iki basamaklı olmadığı için 5 sayı kalır.",
+    "counterexample": "Soru BA'yı iki basamaklı saymasaydı (BA = 10B + A ve B = 0 serbest) 40 − 4 = 36 da sağlardı ve cevap 6 olurdu.",
+    "rationale": "İki basamaklı bir sayının onlar basamağı 0 olamaz; BA'da onlar basamağına B geçtiği için B ≥ 1 koşulu doğar. Fark yalnız A − B'yi belirler; iki sayının rakam koşulları ayrıca uygulanır.",
+    "agentSourceReview": "Claude 545. saniye karesini açtı: Örnek 2'de ab = ba + 36, 9(a − b) = 36, a − b = 4, 95–84–73–62–51 listesi, üstü çizilmiş 40 satırı ve “5 tane” notu tahtada görünüyor. Otomatik altyazıdaki formüller doğru varsayılmadı; sayım bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "harf-verilmeyen-sayiyi-cozumle",
+    "providerId": "youtube:DvUDBzs9y8s",
+    "startSeconds": 1500,
+    "endSeconds": 1660,
+    "quote": "rakamları toplamının 7 katına eşit olması lazım",
+    "frameSeconds": [
+      1615
+    ],
+    "rule": "Soru sayıya harf vermese de iki basamaklı sayıyı AB diye yaz ve çözümle: AB = 7(A + B) ise 10A + B = 7A + 7B, yani A = 2B.",
+    "condition": "Sayı iki basamaklı olmalı ve koşul rakamlar cinsinden (rakamlar toplamı, ters sayı vb.) verilmeli. Çözümden sonra A ≥ 1 ve A, B ≤ 9 rakam koşulu uygulanır.",
+    "example": "A = 2B için B = 1, 2, 3, 4: 21, 42, 63, 84. En büyük ile en küçüğün farkı 84 − 21 = 63. Sağlama: 84 = 7 · 12.",
+    "counterexample": "B = 5 için A = 10 rakam değildir; B = 0 için sayı iki basamaklı olmaz. Koşul “8 katı” olsaydı 2A = 7B çıkar ve yalnız 72 sağlar; aynı yöntem bu kez tek sayı verir.",
+    "rationale": "Çözümleme bilinmeyeni rakamlara indirir; eşitlik A ile B arasında bir orana döner ve 0–9 rakam aralığı olası sayıları sınırlı sayıda bırakır.",
+    "agentSourceReview": "Claude 1615. saniye karesini açtı: Örnek 7'nin metni, ab = 7·(a + b), 10a + b = 7a + 7b, 3a = 6b, a = 2b, (2,1)…(8,4) listesi ve 84 − 21 = 63 tahtada görünüyor. Bütün iki basamaklı sayılar bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "alt-alta-carpmada-satirlarin-anlami",
+    "providerId": "youtube:hjyeXOCNyqA",
+    "startSeconds": 410,
+    "endSeconds": 540,
+    "quote": "ilk satır 123'ü 8 katı",
+    "frameSeconds": [
+      480
+    ],
+    "rule": "Alt alta çarpmada her satır, çarpılan sayının çarpandaki bir rakamla çarpımıdır: 38 ile çarpımda ilk satır xyz·8, ikinci satır xyz·3'tür; ikinci satırın bir basamak sola kaydırılması onu 10 ile çarpar.",
+    "condition": "Hangi satırın hangi rakamla çarpıldığı ve kaydırmanın nasıl yapıldığı soruda açıkça anlatılmalı. Kaydırma başka yöne ya da başka miktarda yapılırsa satırların katsayısını yeniden kur.",
+    "example": "Satırlar kaydırılmadan çıkarılırsa xyz·8 − xyz·3 = 5·xyz = 3225, xyz = 645. Doğru sonuç 645 · 38 = 24510.",
+    "counterexample": "Satırlar kaydırılmadan toplansaydı sonuç 11·xyz olurdu (8 + 3), 38·xyz değil. Doğru çarpımda ikinci satır 30·xyz olarak girer: 8·xyz + 30·xyz = 38·xyz.",
+    "rationale": "38 = 8 + 3·10. Kaydırma, onlar basamağındaki 3'ün değerinin 30 olduğunu gösterir; kaydırma unutulunca bu 10 çarpanı kaybolur ve satırlar yalnız rakam katları olarak kalır.",
+    "agentSourceReview": "Claude 480. saniye karesini açtı: Soru 6'nın metni ve seçenekleri, abcd → xyz·8, klmn → xyz·3, 5·xyz = 3225, 3225 : 5 = 645 bölmesi ve 645 × 38 başlangıcı tahtada görünüyor. 24510 bağımsız hesapla doğrulandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

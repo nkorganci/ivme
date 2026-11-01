@@ -3,7 +3,7 @@
   "taskId": "mert-hoca-tek-cift",
   "topicId": "tyt.matematik.temel-kavramlar",
   "status": "REVIEW_REQUIRED",
-  "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+  "evidenceHash": "631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984",
   "taskHash": "f17a3e2b9030a4b0b639bfbcebfcfaf805ea65cc33dacd30af87c888ab8d4219",
   "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
   "evidenceDirectory": "veri\\video-hatti\\mert-hoca-tek-cift",
@@ -19,8 +19,8 @@
     "kareler\\be1ced192c457b88e6fdf99aca1c186fd166560bd84bf42cc3e6d5ea1a67d96e.png": "61c7342b92181e80308a6214e84fc17c86722642a9a08acb6347b77d2e14594f",
     "kareler\\cfc9cd59d6f0292b83f396838c64e100238009ffc26870f544d41e971d2d8125.png": "76c756573d878d83e8483e21f66142453a4fc19f8f295fb9e54c19d7ebfa1f1e",
     "asamalar\\matematik-denetimi\\e0ab058a410790a1fcec995b14546f0e248da8da4d5ca68ea551d130ad4aeddb.json": "f4a5beb615588310a9ae4efc9b321bcb1c2be7c85dc53d68896cd165b7b2a370",
-    "surumler\\89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981.json": "aa1c464d3178b8f4f4563e114562eadf1abdb07ee54c356d8c6fed44d99b2495",
-    "surumler\\89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981.oneriler.md": "bed9c0711d6b584025d11f0f1f438be0cb4e22c3353f2caab85213857f185942"
+    "surumler\\631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984.json": "39d66ffa4443e6dd5f4988d80d3bb6eeb49718fbd99231b1af84e174362f9c2d",
+    "surumler\\631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984.oneriler.md": "5f5342ff438497722f103a1f8325daa95f99337e3c2c3c710e028d9d7aba046d"
   },
   "verification": {
     "status": "SCRIPT_CHECKED",
@@ -39,7 +39,7 @@
   "lastRun": {
     "taskId": "mert-hoca-tek-cift",
     "status": "REVIEW_REQUIRED",
-    "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+    "evidenceHash": "631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984",
     "metrics": {
       "networkRequests": 0,
       "asrCalls": 0,
@@ -47,7 +47,7 @@
       "stagesBuilt": 0,
       "stagesReused": 5,
       "modelCalls": 0,
-      "elapsedSeconds": 0.755
+      "elapsedSeconds": 0.796
     },
     "videos": [
       {

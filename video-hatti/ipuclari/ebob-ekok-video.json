@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ebob-katlari-aralarinda-asal",
+    "providerId": "youtube:sPZus-twlX0",
+    "startSeconds": 2100,
+    "endSeconds": 2320,
+    "quote": "kesinlikle aralarında asal olmak zorundadır",
+    "frameSeconds": [
+      2200
+    ],
+    "rule": "EBOB(A, B) = n ise A = n·x ve B = n·y yazılır; x ile y aralarında asal olmak zorundadır.",
+    "condition": "A ve B pozitif tam sayı, n onların EBOB'u olmalı. x ve y pozitif tam sayıdır; ayrıca soru farklılık, basamak sayısı gibi koşullar verebilir.",
+    "example": "EBOB(A, B) = 8 ve A, B farklı pozitif tam sayılarsa A + B = 8(x + y); aralarında asal ve farklı en küçük x, y için x + y = 1 + 2 = 3, en az toplam 24 (8 ve 16).",
+    "counterexample": "EBOB = 5 iken x = 4, y = 6 seçilirse A = 20, B = 30 ve EBOB(20, 30) = 10 olur; x ile y'nin ortak böleni 2, EBOB'a eklenir.",
+    "rationale": "x ile y'nin 1'den büyük ortak böleni d olsaydı n·d de A ile B'yi bölerdi ve EBOB n'den büyük çıkardı. Bu yüzden EBOB'u dışarı aldıktan sonra kalan katlar ortak bölen taşıyamaz.",
+    "agentSourceReview": "Claude 2200. saniye karesini açtı: ‘ÖZELLİK: EBOB(A,B) = n ise A = n·x, B = n·y, x ile y ar. asal’ kutusu, EBOB(A,B) = 5 ve A = 5x, B = 5y yazımı ile Örnek 9 (EBOB = 8) tahtada görünüyor. Sayısal iddialar bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "kalanlari-esitleyen-ortak-ekleme",
+    "providerId": "youtube:sPZus-twlX0",
+    "startSeconds": 2930,
+    "endSeconds": 3060,
+    "quote": "35'in katını eklersem 7'yi ve 5'i bozmadan devam ederim",
+    "frameSeconds": [
+      3040
+    ],
+    "rule": "Bir sayı farklı bölenlere göre farklı kalanlar veriyorsa her ifadeyi bölenin katı yapan ortak bir miktar ekle (ya da çıkar); sonra sayı + o miktar, bölenlerin EKOK'unun katıdır.",
+    "condition": "Bölenler aralarında asal olmalı ya da EKOK ayrıca hesaplanmalı. Eklenen miktar bir ifadede tutmuşsa sonraki eklemeler o bölenlerin ortak katı (burada 35) olmalı ki tutan koşul bozulmasın.",
+    "example": "A = 3x + 1 = 5y − 1 = 7z + 1: önce +6 ile 5'in ve 7'nin katı, sonra +35 ile 3'ün katı da olur. A + 41 = 105k; en küçük üç basamaklı A = 210 − 41 = 169.",
+    "counterexample": "Yalnız +6 eklemek 3x + 7'yi 3'ün katı yapmaz; 5'in katı olan +5 eklemek ise 7'nin katı olan kısmı bozar. Ortak miktar bütün koşulları birlikte sağlamalı.",
+    "rationale": "A + c her bölenin katıysa bölenlerin ortak katıdır; aralarında asal 3, 5, 7 için EKOK 105. Eklemeyi bölenlerin EKOK'u adımlarıyla sürdürmek daha önce sağlanan bölünmeleri korur.",
+    "agentSourceReview": "Claude 3040. saniye karesini açtı: Örnek 15'in metni (A = 3x + 1 = 5y − 1 = 7z + 1, en küçük üç basamaklı A), +6 satırı, A + 41 = 3x + 42 = 5y + 40 = 7z + 42, A + 41 = 105k ve k = 1 için A = 64 tahtada görünüyor. 169 bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

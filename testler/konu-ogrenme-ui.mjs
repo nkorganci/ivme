@@ -323,7 +323,10 @@ async function runProtips(mobile) {
       else assert.equal(await evalJs('document.querySelectorAll(".lr-video-protip").length'), 0, 'ilgisiz bölümde ipucu gösterilmemeli');
       assert.equal(db.events.length, count, 'protip açmak/okumak öğrenme veya onay olayı üretmemeli');
     }
-    await goto('/konuyu-ogrenelim/konu/bolme-bolunebilme');
+    // Sızma denetimi: kendi protipi olmayan bir konu seçilir (protip kapsamı genişledikçe sabit konu yanlış alarm verir).
+    const withTips = new Set(JSON.parse(readFileSync(join(ROOT, 'frontend/src/learn/content/video-protips.json'), 'utf8')).tips.map((t) => t.conceptId));
+    const other = readdirSync(join(ROOT, 'frontend/src/learn/content/dersler')).map((f) => f.replace(/\.ders$/, '')).find((id) => !withTips.has(id));
+    await goto(`/konuyu-ogrenelim/konu/${other}`);
     await wait('document.querySelector(".lr-concept-page")');
     assert.equal(await evalJs('document.querySelectorAll(".lr-video-protip").length'), 0, 'başka konuya ipucu sızmamalı');
     return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests].filter((f) => !f.url?.includes('favicon')) };

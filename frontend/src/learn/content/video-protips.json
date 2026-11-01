@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "e549a45ab1ef925278dbd141e6c2ba19ec8b74db8c8257118880b23fba58b44e",
+  "inputsHash": "02996b87a59007a79c6cf438152c6d405489341912ad730b2d54be015f36653f",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -21,7 +21,7 @@
         "startSeconds": 180,
         "endSeconds": 216
       },
-      "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+      "evidenceHash": "631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984",
       "contentHash": "7f5e7c39cd68382cd573d0c623524b73571042dde699fab50d1f5338349ca286",
       "reviewStatus": "PENDING",
       "teacherApproved": false
@@ -44,8 +44,169 @@
         "startSeconds": 227,
         "endSeconds": 330
       },
-      "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+      "evidenceHash": "631678eed0f39ab245a6f8b93220b1a2cf077c34da43d43b62806015715a9984",
       "contentHash": "7b27ab0e855390514925ad93f75ee48a52505c76381487788f77293764f9df66",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "sayi-basamaklari-video:iki-basamakli-tersinde-sifir-elemesi",
+      "conceptId": "sayi-basamaklari",
+      "topicId": "tyt.matematik.sayi-basamaklari",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "Ters sayı da iki basamaklıysa sıfır elenir",
+      "rule": "AB − BA = 9(A − B). Soru BA'nın da iki basamaklı olduğunu söylüyorsa B = 0 olamaz; rakam farkından çıkan aday listesinden sıfırlı ikiliyi ele.",
+      "condition": "AB ve BA ikisi de iki basamaklı doğal sayı olarak verilmeli. Yalnız AB iki basamaklı denirse B = 0 serbesttir. Harfler yan yana yazılıp “iki basamaklı” denmediyse AB, A·B çarpımı demektir.",
+      "example": "AB = BA + 36 ise 9(A − B) = 36 ve A − B = 4. Adaylar 95, 84, 73, 62, 51 ve 40; 40'ın tersi 04 iki basamaklı olmadığı için 5 sayı kalır.",
+      "counterexample": "Soru BA'yı iki basamaklı saymasaydı (BA = 10B + A ve B = 0 serbest) 40 − 4 = 36 da sağlardı ve cevap 6 olurdu.",
+      "rationale": "İki basamaklı bir sayının onlar basamağı 0 olamaz; BA'da onlar basamağına B geçtiği için B ≥ 1 koşulu doğar. Fark yalnız A − B'yi belirler; iki sayının rakam koşulları ayrıca uygulanır.",
+      "source": {
+        "providerId": "youtube:DvUDBzs9y8s",
+        "startSeconds": 486,
+        "endSeconds": 600
+      },
+      "evidenceHash": "b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6",
+      "contentHash": "e891c9f73fb46d7cff8e75ef46986371dbde826aa7480753dd700b49b8e78438",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "sayi-basamaklari-video:harf-verilmeyen-sayiyi-cozumle",
+      "conceptId": "sayi-basamaklari",
+      "topicId": "tyt.matematik.sayi-basamaklari",
+      "sectionIds": [
+        "s1b"
+      ],
+      "title": "Harf verilmemiş sayıyı AB diye yaz ve çözümle",
+      "rule": "Soru sayıya harf vermese de iki basamaklı sayıyı AB diye yaz ve çözümle: AB = 7(A + B) ise 10A + B = 7A + 7B, yani A = 2B.",
+      "condition": "Sayı iki basamaklı olmalı ve koşul rakamlar cinsinden (rakamlar toplamı, ters sayı vb.) verilmeli. Çözümden sonra A ≥ 1 ve A, B ≤ 9 rakam koşulu uygulanır.",
+      "example": "A = 2B için B = 1, 2, 3, 4: 21, 42, 63, 84. En büyük ile en küçüğün farkı 84 − 21 = 63. Sağlama: 84 = 7 · 12.",
+      "counterexample": "B = 5 için A = 10 rakam değildir; B = 0 için sayı iki basamaklı olmaz. Koşul “8 katı” olsaydı 2A = 7B çıkar ve yalnız 72 sağlar; aynı yöntem bu kez tek sayı verir.",
+      "rationale": "Çözümleme bilinmeyeni rakamlara indirir; eşitlik A ile B arasında bir orana döner ve 0–9 rakam aralığı olası sayıları sınırlı sayıda bırakır.",
+      "source": {
+        "providerId": "youtube:DvUDBzs9y8s",
+        "startSeconds": 1500,
+        "endSeconds": 1660
+      },
+      "evidenceHash": "b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6",
+      "contentHash": "2489279ff3853f57dffbf8a5b4b15b14fbeb502675a7e6b5fb45cfc4d69a6ae1",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "sayi-basamaklari-video:alt-alta-carpmada-satirlarin-anlami",
+      "conceptId": "sayi-basamaklari",
+      "topicId": "tyt.matematik.sayi-basamaklari",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "Alt alta çarpmada satırlar neyi gösterir?",
+      "rule": "Alt alta çarpmada her satır, çarpılan sayının çarpandaki bir rakamla çarpımıdır: 38 ile çarpımda ilk satır xyz·8, ikinci satır xyz·3'tür; ikinci satırın bir basamak sola kaydırılması onu 10 ile çarpar.",
+      "condition": "Hangi satırın hangi rakamla çarpıldığı ve kaydırmanın nasıl yapıldığı soruda açıkça anlatılmalı. Kaydırma başka yöne ya da başka miktarda yapılırsa satırların katsayısını yeniden kur.",
+      "example": "Satırlar kaydırılmadan çıkarılırsa xyz·8 − xyz·3 = 5·xyz = 3225, xyz = 645. Doğru sonuç 645 · 38 = 24510.",
+      "counterexample": "Satırlar kaydırılmadan toplansaydı sonuç 11·xyz olurdu (8 + 3), 38·xyz değil. Doğru çarpımda ikinci satır 30·xyz olarak girer: 8·xyz + 30·xyz = 38·xyz.",
+      "rationale": "38 = 8 + 3·10. Kaydırma, onlar basamağındaki 3'ün değerinin 30 olduğunu gösterir; kaydırma unutulunca bu 10 çarpanı kaybolur ve satırlar yalnız rakam katları olarak kalır.",
+      "source": {
+        "providerId": "youtube:hjyeXOCNyqA",
+        "startSeconds": 410,
+        "endSeconds": 540
+      },
+      "evidenceHash": "b0073179ed7a32bed9fa00a12ba24151d0d6a1ad43ba21fd83ae1c676d2cfca6",
+      "contentHash": "b2d8a197977121c03192e54aad6788a72bbeef94879ed38944ef81771def64a7",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "bolme-bolunebilme-video:bilesik-bolende-kalani-paylastir",
+      "conceptId": "bolme-bolunebilme",
+      "topicId": "tyt.matematik.bolme-ve-bolunebilme",
+      "sectionIds": [
+        "s3b"
+      ],
+      "title": "Bileşik bölene göre kalanı çarpanlara aktar",
+      "rule": "Bileşik bir bölene göre kalan verildiyse böleni aralarında asal çarpanlarına ayır (30 = 3 · 10) ve kalanı her çarpana aktar; aktarılan kalan o çarpandan büyükse yeniden böl.",
+      "condition": "Çarpanlar aralarında asal olmalı (30 için 3 ve 10; 5 ve 6 seçilirse 6'nın kuralı yine 2 ve 3'e ayrılır). Kalan, büyük bölene göre verilen gerçek kalan olmalı.",
+      "example": "31AB sayısının 30 ile bölümünden kalan 5: 10'a göre kalan 5, yani B = 5. 3'e göre kalan 5 değil 2; 3 + 1 + A + 5 = 9 + A sayısının 3'e göre kalanı 2, A ∈ {2, 5, 8}. A + B en çok 13.",
+      "counterexample": "3'e göre kalanı 5 yazıp 9 + A = 3k + 5 kurmak da aynı A'ları verir ama ‘kalan 5’ bir kalan değildir; 7'ye göre kalan 9 gibi durumlarda sayıyı büyüttüğün için kolayca yanlış aday üretirsin. Kalanı her zaman bölenden küçük yaz.",
+      "rationale": "N = 30q + 5 = 3(10q + 1) + 2 ve N = 10(3q) + 5. Aynı eşitliği küçük bölenlere göre yeniden gruplayınca kalan, büyük kalanın küçük bölene göre kalanı olur.",
+      "source": {
+        "providerId": "youtube:04dPFpTLCpA",
+        "startSeconds": 3960,
+        "endSeconds": 4060
+      },
+      "evidenceHash": "92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d",
+      "contentHash": "5caa3a54682234430396ad2580cff3cd50f3a06b23fcb8be34aa7630bb725579",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "bolme-bolunebilme-video:once-az-basamakli-kurali-uygula",
+      "conceptId": "bolme-bolunebilme",
+      "topicId": "tyt.matematik.bolme-ve-bolunebilme",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "Önce son basamak kuralı, sonra rakam toplamı",
+      "rule": "Birden fazla kural birlikte gerekiyorsa önce en az basamağa bakan kuralı (2, 5, 10 → son basamak; 4 → son iki basamak) uygula; çıkan az sayıdaki adayı rakam toplamı kuralıyla (3, 9) ele.",
+      "condition": "Kurallar aynı sayıya birlikte uygulanmalı (12 = 3 · 4 gibi aralarında asal çarpanlar). Sıra sonucu değiştirmez; yalnız denenecek aday sayısını azaltır.",
+      "example": "2021 TYT: ABA 5'e bölünürse A = 5 ve AAB = 55B 12'ye bölünmeli. Önce 4: 5B ∈ {52, 56}, B ∈ {2, 6}. Sonra 9: 552 (toplam 12) ve 556 (toplam 16) 9'a bölünmez; bu durum elenir.",
+      "counterexample": "Önce 9 kuralından başlanırsa 5 + 5 + B = 18 için B = 8 ve 558 bulunur; 58 dörde bölünmediği için aynı sonuca varılır. Sıra yanlış değildir ama son basamak koşulu birden çok rakamı aynı anda elediği için daha kısa yoldur.",
+      "rationale": "Son basamak kuralları tek ya da iki basamaklı küçük bir aday listesi üretir; rakam toplamı kuralı bütün basamakları ilgilendirdiği için aday listesini doğrulamada kullanılır. MEBİ konu özetindeki ‘önce birler, sonra son iki, son üç basamak, en son rakam toplamı’ sırası da budur.",
+      "source": {
+        "providerId": "youtube:04dPFpTLCpA",
+        "startSeconds": 4720,
+        "endSeconds": 4830
+      },
+      "evidenceHash": "92e8ff771418a1bfc864b607dea252041604751aa8e4fb96126363bdbf4b019d",
+      "contentHash": "8a9a2a8622f03e1d7abef0d945f951f536483323f52a1a6bd2e5cbddf74170db",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "ebob-ekok-video:ebob-katlari-aralarinda-asal",
+      "conceptId": "ebob-ekok",
+      "topicId": "tyt.matematik.ebob-ve-ekok",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "EBOB'u dışarı al: kalan katlar aralarında asal",
+      "rule": "EBOB(A, B) = n ise A = n·x ve B = n·y yazılır; x ile y aralarında asal olmak zorundadır.",
+      "condition": "A ve B pozitif tam sayı, n onların EBOB'u olmalı. x ve y pozitif tam sayıdır; ayrıca soru farklılık, basamak sayısı gibi koşullar verebilir.",
+      "example": "EBOB(A, B) = 8 ve A, B farklı pozitif tam sayılarsa A + B = 8(x + y); aralarında asal ve farklı en küçük x, y için x + y = 1 + 2 = 3, en az toplam 24 (8 ve 16).",
+      "counterexample": "EBOB = 5 iken x = 4, y = 6 seçilirse A = 20, B = 30 ve EBOB(20, 30) = 10 olur; x ile y'nin ortak böleni 2, EBOB'a eklenir.",
+      "rationale": "x ile y'nin 1'den büyük ortak böleni d olsaydı n·d de A ile B'yi bölerdi ve EBOB n'den büyük çıkardı. Bu yüzden EBOB'u dışarı aldıktan sonra kalan katlar ortak bölen taşıyamaz.",
+      "source": {
+        "providerId": "youtube:sPZus-twlX0",
+        "startSeconds": 2100,
+        "endSeconds": 2320
+      },
+      "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+      "contentHash": "319e2d29838f1b79e215af55ba831879324b598b1db2adb470b2dc92fb4eaf75",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "ebob-ekok-video:kalanlari-esitleyen-ortak-ekleme",
+      "conceptId": "ebob-ekok",
+      "topicId": "tyt.matematik.ebob-ve-ekok",
+      "sectionIds": [
+        "s4b"
+      ],
+      "title": "Farklı kalanları ortak bir eklemeyle sıfırla",
+      "rule": "Bir sayı farklı bölenlere göre farklı kalanlar veriyorsa her ifadeyi bölenin katı yapan ortak bir miktar ekle (ya da çıkar); sonra sayı + o miktar, bölenlerin EKOK'unun katıdır.",
+      "condition": "Bölenler aralarında asal olmalı ya da EKOK ayrıca hesaplanmalı. Eklenen miktar bir ifadede tutmuşsa sonraki eklemeler o bölenlerin ortak katı (burada 35) olmalı ki tutan koşul bozulmasın.",
+      "example": "A = 3x + 1 = 5y − 1 = 7z + 1: önce +6 ile 5'in ve 7'nin katı, sonra +35 ile 3'ün katı da olur. A + 41 = 105k; en küçük üç basamaklı A = 210 − 41 = 169.",
+      "counterexample": "Yalnız +6 eklemek 3x + 7'yi 3'ün katı yapmaz; 5'in katı olan +5 eklemek ise 7'nin katı olan kısmı bozar. Ortak miktar bütün koşulları birlikte sağlamalı.",
+      "rationale": "A + c her bölenin katıysa bölenlerin ortak katıdır; aralarında asal 3, 5, 7 için EKOK 105. Eklemeyi bölenlerin EKOK'u adımlarıyla sürdürmek daha önce sağlanan bölünmeleri korur.",
+      "source": {
+        "providerId": "youtube:sPZus-twlX0",
+        "startSeconds": 2930,
+        "endSeconds": 3060
+      },
+      "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+      "contentHash": "285cbd7e1d417becda6dde5fe2c95fb75e1c9b2610a6795cdcb4e5fbda8e9040",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

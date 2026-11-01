@@ -54,16 +54,16 @@ konunun konumunu yaz.
 ## Liste
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **1/32 bitti**. Sıradaki TYT konusu: `sayi-basamaklari`.
+TYT: **3/32 bitti**. Sıradaki TYT konusu: `ebob-ekok`.
 
 ### TYT (şu anki aşama)
 
 | # | Durum | Kimlik | Konu | Sınıf | Aşama | Bölüm/örnek/tamamla/keşif | Rehberli çıkmış / TYT 2018–26 | Video protip · liste | PDF okundu | Kalan iş |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1 | ✅ BİTTİ | `temel-kavramlar` | Sayı Kümeleri ve Temel Kavramlar | 9 | TYT | 10/28/3/5 | 4 / 50 (Sayı Kümeleri) | 2 · PL1 10, PL2 10 | 3/3 | — · PDF karşılaştırmasında eksik bulunan dört kalıp eklendi: harfli ardışık çift ifadeler (±2), bir sayının ardışık katları, ortak harfli iki çarpım, irrasyonel katsayıları sıfırlama. |
-| 2 | 🟡 EKSİK | `sayi-basamaklari` | Sayı Basamakları | 9 | TYT | 8/22/3/6 | 5 / 50 (Sayı Kümeleri) | 0 · PL1 2, PL2 0 | 2/3 | video protip 0/2 · PDF karşılaştırmasıyla iki kalıp eklendi: AB+BA=(A+B)² / AB−BA=A²−B² türü ve ABC+BCA+CAB=111(A+B+C). |
-| 3 | 🟡 EKSİK | `bolme-bolunebilme` | Bölme ve Bölünebilme Kuralları | 9 | TYT | 8/27/3/4 | 4 / 11 (Bölünebilme Kuralları) | 0 · PL1 2, PL2 3 | 3/3 | video protip 0/2 · Bu konunun OGM ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti okundu. MEBİ'deki “önce birler, sonra son iki/üç basamak, en son rakam toplamı” sırası dersteki aday-eleme stratejisiyle örtüşüyor. |
-| 4 | 🟡 EKSİK | `ebob-ekok` | Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler | 9 | TYT | 10/27/4/6 | 2 / 50 (Sayı Kümeleri) | 0 · PL1 2, PL2 3 | 0/3 | çıkmış soru 2/3; video protip 0/2; ders anlatım PDF okunmadı · Ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti kaynak. |
+| 2 | ✅ BİTTİ | `sayi-basamaklari` | Sayı Basamakları | 9 | TYT | 8/22/3/6 | 5 / 50 (Sayı Kümeleri) | 3 · PL1 2, PL2 0 | 2/3 | — · PDF karşılaştırmasıyla iki kalıp eklendi: AB+BA=(A+B)² / AB−BA=A²−B² türü ve ABC+BCA+CAB=111(A+B+C). |
+| 3 | ✅ BİTTİ | `bolme-bolunebilme` | Bölme ve Bölünebilme Kuralları | 9 | TYT | 8/27/3/4 | 4 / 11 (Bölünebilme Kuralları) | 2 · PL1 2, PL2 3 | 3/3 | — · Bu konunun OGM ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti okundu. MEBİ'deki “önce birler, sonra son iki/üç basamak, en son rakam toplamı” sırası dersteki aday-eleme stratejisiyle örtüşüyor. |
+| 4 | 🟡 EKSİK | `ebob-ekok` | Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler | 9 | TYT | 10/27/4/6 | 2 / 50 (Sayı Kümeleri) | 2 · PL1 2, PL2 3 | 0/3 | çıkmış soru 2/3; ders anlatım PDF okunmadı · Ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti kaynak. |
 | 5 | 🟡 EKSİK | `rasyonel-sayilar` | Rasyonel Sayılar ve Ondalık Sayılar | 9 | TYT | 10/25/4/6 | 5 / 50 (Sayı Kümeleri) | 0 · PL1 4, PL2 5 | 0/4 | video protip 0/2; ders anlatım PDF okunmadı |
 | 6 | 🟡 EKSİK | `birinci-derece-denklemler` | Birinci Dereceden Denklemler ve Denklem Sistemleri | 9 | TYT | 8/23/5/5 | 3 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 0 · PL1 2, PL2 1 | 0/3 | video protip 0/2; ders anlatım PDF okunmadı |
 | 7 | 🟡 EKSİK | `esitsizlikler` | Aralıklar ve Birinci Dereceden Eşitsizlikler | 9 | TYT | 8/22/5/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 0 · PL1 2, PL2 2 | 0/3 | video protip 0/2; ders anlatım PDF okunmadı |

@@ -1,0 +1,32 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "bolme-bolunebilme-video",
+  "topicId": "tyt.matematik.bolme-ve-bolunebilme",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki bölünebilme videosu 04dPFpTLCpA (PL1: Bölünebilme | 13.Gün - 2.Video). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:04dPFpTLCpA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/04dPFpTLCpA.mp4",
+      "transcript": "veri/video-hatti/medya/04dPFpTLCpA.tr.json3",
+      "frameSeconds": [
+        4040,
+        4800
+      ],
+      "durationSeconds": 5055,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/bolme-bolunebilme-video.json",
+  "lesson": "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
+  "verificationTests": [
+    "testler/video-ipucu-bolme-bolunebilme-test.py"
+  ]
+}

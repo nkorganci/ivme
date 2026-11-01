@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "ebob-ekok-video",
+  "topicId": "tyt.matematik.ebob-ve-ekok",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+  "taskHash": "16eba19bd94b382706e4b69e485c43970dcab8ae8f823f287ebbd3810b4fb8b8",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\ebob-ekok-video",
+  "artifacts": {
+    "asamalar\\youtube-sPZus-twlX0-metin\\6a77c0f95950bacf59e388910e4e423c546d07393f3b525825a466e21fd22282.json": "8d6baa60fa64c78d75e1e141e33a557d55b17bb8099381343270222e361bfeec",
+    "asamalar\\youtube-sPZus-twlX0-kareler\\66b6693a9cffea69823e003070fdd8fe4e94ad9978677cac97919198c2b4eb27.json": "08499c97d927749047299e8cfd63305ebbbdae460757cbf2b11c512b33ca0e08",
+    "kareler\\17e5b491407f24844b96b86e94f5aced096c888aae7c86a91c4a0d5a52d1649d.png": "029af33ebf5a01cf16bb231e9de928167455b67a9a68ec583fe3d58c3d23cd44",
+    "kareler\\901eebb9af87d506147635e466957ce23884bc4adf1f26ea7820a4906355e5a2.png": "9058dfa50f54778d100c36f160c0931dc951820393a91a272f1081d6b139ab6d",
+    "asamalar\\matematik-denetimi\\103f5a19371604475d3a5f595aeb3d95e37d1df52cbff23813a183f9814500d0.json": "2f07ce8c63779a72022f583677faf9836684266da076937ba0a81fbc945b0251",
+    "surumler\\99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9.json": "9273da05dacbc6e66c3a9e1fdb7ffbe8b57b32b9176cd06a5abb2c0dfd816de8",
+    "surumler\\99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9.oneriler.md": "cb7d2a79fe47002c53283e0ea0cc2bd183fbfc0dd1392becd11108e9c2f7416d"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-ebob-ekok-test.py",
+        "sha256": "0de34075f28401bd51b287ed1fb841a7a2566a9634dcd03700569502441565a3",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.004s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "ebob-ekok-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.87
+    },
+    "videos": [
+      {
+        "providerId": "youtube:sPZus-twlX0",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:sPZus-twlX0",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1575,
+      "normalization": {
+        "captionControlEvents": 1567,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2200,
+          "file": "kareler\\17e5b491407f24844b96b86e94f5aced096c888aae7c86a91c4a0d5a52d1649d.png",
+          "sha256": "029af33ebf5a01cf16bb231e9de928167455b67a9a68ec583fe3d58c3d23cd44",
+          "pixelHash": "17e5b491407f24844b96b86e94f5aced096c888aae7c86a91c4a0d5a52d1649d",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 3040,
+          "file": "kareler\\901eebb9af87d506147635e466957ce23884bc4adf1f26ea7820a4906355e5a2.png",
+          "sha256": "9058dfa50f54778d100c36f160c0931dc951820393a91a272f1081d6b139ab6d",
+          "pixelHash": "901eebb9af87d506147635e466957ce23884bc4adf1f26ea7820a4906355e5a2",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "ebob-katlari-aralarinda-asal",
+      "contentHash": "319e2d29838f1b79e215af55ba831879324b598b1db2adb470b2dc92fb4eaf75",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "kalanlari-esitleyen-ortak-ekleme",
+      "contentHash": "285cbd7e1d417becda6dde5fe2c95fb75e1c9b2610a6795cdcb4e5fbda8e9040",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

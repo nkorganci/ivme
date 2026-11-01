@@ -141,3 +141,20 @@ geçişte beş aşama önbellekten, sıfır decode/ASR/model/ağ çağrısı; ed
 yeni süreç. Makineye özgü süre ve güncel hash küçük
 [pilot manifestindedir](../../video-hatti/yayin/mert-hoca-tek-cift.json).
 Öğretmen onayı, öğrenci kazanımı ve bütün playlistin işlenmesi bu kabul değildir.
+
+## Matematik konuları için protip hazırlama (MAT-TYT)
+
+Konu–video eşlemesi `scripts/matematik-konu-listesi.json` içindedir (iki TYT kampı listesi;
+tam listeler `veri/video-hatti/listeler/tam/`). Bir ders için:
+
+```powershell
+python scripts/video-konu-gorevi.py <ders> [video-kimliği ...]   # görev + boş ipucu dosyası
+python scripts/ivme.py video edin <ders>-video --erisim             # medya + altyazı (tek tek, beklemeli)
+python scripts/video-altyazi.py puf <video-id>                      # püf noktası adayları
+python scripts/video-altyazi.py kare <video-id> 545 1615             # tahta karelerini gör
+python scripts/video-altyazi.py alinti <video-id> <bas> <bit> "<alıntı>"
+```
+
+Kareyi açıp soruyu ve formülü doğrulamadan ipucu yazma; ipucunu `testler/video-ipucu-<ders>-test.py`
+içinde bütün olasılıkları tarayarak sına. Görevin `frameSeconds` alanına yalnız incelenen kareleri yaz,
+sonra `video calistir`, `video paket`, `protips.json` yerleşimi ve `video protips`.
