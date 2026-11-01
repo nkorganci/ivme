@@ -331,7 +331,12 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/24 - KOKLU IFADELERDE ISLEMLER.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/22 - KOKLU IFADELER.pdf (metin)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/23 - KOKLU IFADELER ILE ILGILI OZELLIKLER.pdf (metin)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/24 - KOKLU IFADELERDE ISLEMLER.pdf (metin)",
+        "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf s.12-20"
+      ],
       "videolar": {
         "PL1": [
           "w-0um03TV7g",
@@ -342,7 +347,8 @@
           "fMh2fu9bJkw",
           "kQT8PCGOHGk"
         ]
-      }
+      },
+      "not": "Kaynak kalıpları (tanım aralığı, çift kökte |x|, eşlenik, derece eşitleme, kök içine alma, a±2√b) derste var. Çıkmış: TYT-0641, TYT-0643 eklendi. Protip: karesiz kalan çarpan; kök derecesi kadar kuvvet ve çift kökte kontrol."
     },
     {
       "id": "carpanlara-ayirma",

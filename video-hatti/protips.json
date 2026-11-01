@@ -187,6 +187,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "koklu-ifadeler-video",
+      "conceptId": "koklu-ifadeler",
+      "hints": [
+        {
+          "id": "kokte-kalan-karesiz-carpan",
+          "title": "Kök içinde kalan sayı karesiz olmalı",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "kok-derecesi-kadar-kuvvet",
+          "title": "Kök derecesi kadar kuvvet: çiftte kontrol et",
+          "sectionIds": [
+            "s5"
+          ]
+        }
+      ]
     }
   ]
 }

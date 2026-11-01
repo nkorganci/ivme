@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "63b8750138fba20ee5e3adede3901ca4654a20fc43ded1d5434518a9665bec23",
+  "inputsHash": "dca52650584bba35a0fda78b5728db5e6666d0e2b70a3e11d30281104316135d",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -437,6 +437,52 @@
       },
       "evidenceHash": "aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879",
       "contentHash": "439e09de7452ed8a64d785626293084600d7b06bd4f90c9b2173135886db3d2a",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "koklu-ifadeler-video:kokte-kalan-karesiz-carpan",
+      "conceptId": "koklu-ifadeler",
+      "topicId": "tyt.matematik.koklu-sayilar",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "Kök içinde kalan sayı karesiz olmalı",
+      "rule": "√n = a√b biçiminde kök içinde kalan b, tam kare çarpanı olmayan sayıdır. n'yi (en büyük tam kare) × (kalan) diye ayır; kalan kısım hangi kökle eşleşiyorsa o yazılıştır.",
+      "condition": "Kare kök ve pozitif tam sayılar için. Kalanın içinde 4, 9, 25 gibi bir tam kare kalıyorsa ayırma bitmemiştir (√72 = 2√18 eksik, 6√2 tam).",
+      "example": "12, 54, 72, 125 sayılarından üçü √□ = ■√6, ■√3, ■√5 kalıplarına yerleşecek: 54 = 9·6 → 3√6, 12 = 4·3 → 2√3, 125 = 25·5 → 5√5. 72 = 36·2 kalıplara uymaz. Mavi kutular toplamı 3 + 2 + 5 = 10.",
+      "counterexample": "√72'yi 2√18 bırakıp ‘içinde 18 = 9·2 var, 3'e de 6'ya da benzer’ demek yanlış eşleme yaptırır; tam ayrıştırma 6√2'dir ve listede √2 kutusu yoktur.",
+      "rationale": "√(k²·b) = k√b ve b karesiz ise bu yazılış tektir; aynı köklü sayının iki farklı ‘en sade’ biçimi olamaz.",
+      "source": {
+        "providerId": "youtube:w-0um03TV7g",
+        "startSeconds": 1554,
+        "endSeconds": 1733
+      },
+      "evidenceHash": "696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc",
+      "contentHash": "e7699d6b90027b0a6e7ef2a73192b587b3efa7839bc4c6e89a75c812cfd6f3aa",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "koklu-ifadeler-video:kok-derecesi-kadar-kuvvet",
+      "conceptId": "koklu-ifadeler",
+      "topicId": "tyt.matematik.koklu-sayilar",
+      "sectionIds": [
+        "s5"
+      ],
+      "title": "Kök derecesi kadar kuvvet: çiftte kontrol et",
+      "rule": "Köklü denklemde kökten kurtulmak için iki tarafın kök derecesi kadar kuvvetini al. Tek dereceli kökte bulunan çözüm doğrudan geçerlidir; çift dereceli kökte bulunan değeri yerine koyup kontrol et.",
+      "condition": "Kök tek başına bir tarafta olmalı (gerekirse önce yalnız bırak). Çift dereceli kökte kök içi ≥ 0 ve kökün eşit olduğu taraf ≥ 0 olmalı.",
+      "example": "∛(1 − x) = 2 → 1 − x = 8 → x = −7; küp kök olduğu için kontrol gerekmez. √(x + 3) = x − 3 → x + 3 = (x − 3)² → x = 1 ya da x = 6; yalnız x = 6 sağlar (x = 1'de sağ taraf −2).",
+      "counterexample": "√(x + 3) = x − 3'te x = 1'i kabul etmek: √4 = 2 ama sağ taraf −2; kare almak −2 = 2 gibi yanlış eşitlikleri de doğru gösterir.",
+      "rationale": "Tek kuvvet alma bire birdir, yeni kök eklemez. Kare almak ise a = b ile a = −b'yi birleştirir; bu yüzden fazladan kök doğabilir.",
+      "source": {
+        "providerId": "youtube:w-0um03TV7g",
+        "startSeconds": 3740,
+        "endSeconds": 3840
+      },
+      "evidenceHash": "696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc",
+      "contentHash": "db633539137cac91ba0fec7dc90bdf686ec9a7d7a3887f680959318d88de4ca6",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

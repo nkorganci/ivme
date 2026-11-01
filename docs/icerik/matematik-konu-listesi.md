@@ -54,7 +54,7 @@ konunun konumunu yaz.
 ## Liste
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **9/32 bitti**. Sıradaki TYT konusu: `koklu-ifadeler`.
+TYT: **10/32 bitti**. Sıradaki TYT konusu: `carpanlara-ayirma`.
 
 ### TYT (şu anki aşama)
 
@@ -69,7 +69,7 @@ TYT: **9/32 bitti**. Sıradaki TYT konusu: `koklu-ifadeler`.
 | 7 | ✅ BİTTİ | `esitsizlikler` | Aralıklar ve Birinci Dereceden Eşitsizlikler | 9 | TYT | 8/23/5/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 2 · PL1 2, PL2 2 | 3/4 | — · Eklenen: (x+y)/(xy) = 1/x + 1/y ile aralık. Protip: fark aralığında negatifle çarpıp toplama; tam sayılarda uç değer seçimi. |
 | 8 | ✅ BİTTİ | `mutlak-deger` | Mutlak Değer | 9 | TYT | 8/26/3/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 2 · PL1 2, PL2 3 | 2/2 | — · Sunu 16 dosya adına rağmen denklem sistemlerini işler (birinci derece denklemler s3). Eklenen: işaret çarpanı |x|/x, ağırlıklı üç uzaklık toplamı. Protip: |a−b|=|b−a| ile birleştirme; sağ taraf x'liyse kök kontrolü. |
 | 9 | ✅ BİTTİ | `uslu-ifadeler` | Üslü İfadeler ve Üslü Denklemler | 9 | TYT | 8/25/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 2 · PL1 2, PL2 5 | 3/4 | — · Kaynaklar dersle karşılaştırıldı; eklenen: farklı tabanları birbirine yerleştirme (5^x = 3, 9^y = 125). Protip: çift kuvvette iki durum; eşit oranlı dörtlüde x³ = a²d. |
-| 10 | 🟡 EKSİK | `koklu-ifadeler` | Köklü İfadeler ve Köklü Denklemler | 9 | TYT | 8/26/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 0 · PL1 2, PL2 3 | 0/4 | video protip 0/2; ders anlatım PDF okunmadı |
+| 10 | ✅ BİTTİ | `koklu-ifadeler` | Köklü İfadeler ve Köklü Denklemler | 9 | TYT | 8/26/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 2 · PL1 2, PL2 3 | 4/4 | — · Kaynak kalıpları (tanım aralığı, çift kökte |x|, eşlenik, derece eşitleme, kök içine alma, a±2√b) derste var. Çıkmış: TYT-0641, TYT-0643 eklendi. Protip: karesiz kalan çarpan; kök derecesi kadar kuvvet ve çift kökte kontrol. |
 | 11 | 🟡 EKSİK | `carpanlara-ayirma` | Çarpanlara Ayırma ve Rasyonel İfadeler | 10 | TYT | 8/25/3/4 | 3 / 3 (Polinomlar) | 0 · PL1 2, PL2 2 | 4/4 | video protip 0/2 · 8 bölüme derinleştirildi (3 keşif modeli: ortak kenar, kare içinde kare, çapraz çarpım). Çıkmış: TYT-0792, TYT-0794, AYT_Sayisal-0095. Sunulardan eklenen: üslü ifadede değişken değiştirme, büyük sayılarda iki kare farkı, sadeleşen kesir parametresi. |
 | 12 | 🟡 EKSİK | `oran-oranti` | Oran ve Orantı | 9 | TYT | 8/34/3/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 2, PL2 4 | 3/3 | video protip 0/2 · PDF karşılaştırmasıyla eklenenler: katsayılı genişletme, ax=by=cz, altın oran, dişli çark, oran zinciri, kalan kişi-gün, aritmetik/geometrik ortalama (hiçbir derste yoktu). Çıkmış: TYT-0701, TYT-0723 eklendi. |
 | 13 | 🟡 EKSİK | `sayi-kesir-problemleri` | Sayı ve Kesir Problemleri | 9 | TYT | 4/8/1/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 6, PL2 3 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

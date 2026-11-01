@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "koklu-ifadeler-video",
+  "topicId": "tyt.matematik.koklu-sayilar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc",
+  "taskHash": "31dab1a3e1ffb8e6cd418569783cbba6fd4d688b7c36183b8c3a394f9e3fbbb6",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\koklu-ifadeler-video",
+  "artifacts": {
+    "asamalar\\youtube-w-0um03TV7g-metin\\841cbd4754555c3181f7fb9595f354f837041ff5d0fc7b3f5eee4851e87f9f2e.json": "d50a1d314ffe8a7e78287605294a1d16df5ddbcd1a3ffe95ff0ed0d35d0a2413",
+    "asamalar\\youtube-w-0um03TV7g-kareler\\9c37a7daf9128fd5b38e96998f27dd0b5d3e2bd69d8f91f4e91447d68574c636.json": "6b322dc1739b78d71216849de7c6b576a6a6ce1174649485b827ab56c3bf3f3b",
+    "kareler\\169b92f7f3b001500e17cfd377a49c352e27ad35e239e45f21da59113a7b9add.png": "5f50f461da8a798773e3e4014ed4a149e94ba13747db4565c19b436e995cd24c",
+    "kareler\\466dd743a94e0f5a21aad9aed674e99467b317b47243c3b245637cad85e9150d.png": "9b647f229543ae69b391ce8b04900f9cdc80b4fc4bb41a4b1c53ccc8b1fa67e0",
+    "asamalar\\matematik-denetimi\\44bc6a070fda48bf5dfe93696199e6e589803377117ab43eda42c0fa870fdd67.json": "b18cd303621f1f505d5e7aff4faccd2f1d0f8289c1908cec903bb4743f11602c",
+    "surumler\\696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc.json": "88646c0de21a728ff4f8b011c1947514ecd64e3e6c4b6e05274c088db9260b91",
+    "surumler\\696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc.oneriler.md": "ddadbe3602760220178c76d6029e95718713e0f4d3d0a41c2c3f759e1b0d8547"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-koklu-ifadeler-test.py",
+        "sha256": "05d4909b4acc50ea58350987caccc6abdd288231cbe3adfc6ce221d2f0deec0c",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "koklu-ifadeler-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "696570a6063cd793dab47f7e04337a17e015da0539920cf0a4b1049b8436cffc",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.106
+    },
+    "videos": [
+      {
+        "providerId": "youtube:w-0um03TV7g",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:w-0um03TV7g",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1558,
+      "normalization": {
+        "captionControlEvents": 1547,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1650,
+          "file": "kareler\\466dd743a94e0f5a21aad9aed674e99467b317b47243c3b245637cad85e9150d.png",
+          "sha256": "9b647f229543ae69b391ce8b04900f9cdc80b4fc4bb41a4b1c53ccc8b1fa67e0",
+          "pixelHash": "466dd743a94e0f5a21aad9aed674e99467b317b47243c3b245637cad85e9150d",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 3790,
+          "file": "kareler\\169b92f7f3b001500e17cfd377a49c352e27ad35e239e45f21da59113a7b9add.png",
+          "sha256": "5f50f461da8a798773e3e4014ed4a149e94ba13747db4565c19b436e995cd24c",
+          "pixelHash": "169b92f7f3b001500e17cfd377a49c352e27ad35e239e45f21da59113a7b9add",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "kokte-kalan-karesiz-carpan",
+      "contentHash": "e7699d6b90027b0a6e7ef2a73192b587b3efa7839bc4c6e89a75c812cfd6f3aa",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "kok-derecesi-kadar-kuvvet",
+      "contentHash": "db633539137cac91ba0fec7dc90bdf686ec9a7d7a3887f680959318d88de4ca6",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

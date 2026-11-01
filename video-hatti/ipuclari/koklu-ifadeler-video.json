@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "kokte-kalan-karesiz-carpan",
+    "providerId": "youtube:w-0um03TV7g",
+    "startSeconds": 1554,
+    "endSeconds": 1733,
+    "quote": "çıkamayan sayı 6 3 ve 5 olarak kalmalı",
+    "frameSeconds": [
+      1650
+    ],
+    "rule": "√n = a√b biçiminde kök içinde kalan b, tam kare çarpanı olmayan sayıdır. n'yi (en büyük tam kare) × (kalan) diye ayır; kalan kısım hangi kökle eşleşiyorsa o yazılıştır.",
+    "condition": "Kare kök ve pozitif tam sayılar için. Kalanın içinde 4, 9, 25 gibi bir tam kare kalıyorsa ayırma bitmemiştir (√72 = 2√18 eksik, 6√2 tam).",
+    "example": "12, 54, 72, 125 sayılarından üçü √□ = ■√6, ■√3, ■√5 kalıplarına yerleşecek: 54 = 9·6 → 3√6, 12 = 4·3 → 2√3, 125 = 25·5 → 5√5. 72 = 36·2 kalıplara uymaz. Mavi kutular toplamı 3 + 2 + 5 = 10.",
+    "counterexample": "√72'yi 2√18 bırakıp ‘içinde 18 = 9·2 var, 3'e de 6'ya da benzer’ demek yanlış eşleme yaptırır; tam ayrıştırma 6√2'dir ve listede √2 kutusu yoktur.",
+    "rationale": "√(k²·b) = k√b ve b karesiz ise bu yazılış tektir; aynı köklü sayının iki farklı ‘en sade’ biçimi olamaz.",
+    "agentSourceReview": "Claude 1650. saniye karesini açtı: Örnek 6'nın metni (12, 54, 72 ve 125; sarı kutular, mavi kutular tam sayı), √54 = 3√6, √12 = □√3, √125 = 5√5 yazımları ve yanda √72 = 6√2 hesabı tahtada görünüyor. Bütün yerleşimler bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "kok-derecesi-kadar-kuvvet",
+    "providerId": "youtube:w-0um03TV7g",
+    "startSeconds": 3740,
+    "endSeconds": 3840,
+    "quote": "çift dereceli köklü denklem sorularında bulduğunuzu yerine yazmanız gerekebilir",
+    "frameSeconds": [
+      3790
+    ],
+    "rule": "Köklü denklemde kökten kurtulmak için iki tarafın kök derecesi kadar kuvvetini al. Tek dereceli kökte bulunan çözüm doğrudan geçerlidir; çift dereceli kökte bulunan değeri yerine koyup kontrol et.",
+    "condition": "Kök tek başına bir tarafta olmalı (gerekirse önce yalnız bırak). Çift dereceli kökte kök içi ≥ 0 ve kökün eşit olduğu taraf ≥ 0 olmalı.",
+    "example": "∛(1 − x) = 2 → 1 − x = 8 → x = −7; küp kök olduğu için kontrol gerekmez. √(x + 3) = x − 3 → x + 3 = (x − 3)² → x = 1 ya da x = 6; yalnız x = 6 sağlar (x = 1'de sağ taraf −2).",
+    "counterexample": "√(x + 3) = x − 3'te x = 1'i kabul etmek: √4 = 2 ama sağ taraf −2; kare almak −2 = 2 gibi yanlış eşitlikleri de doğru gösterir.",
+    "rationale": "Tek kuvvet alma bire birdir, yeni kök eklemez. Kare almak ise a = b ile a = −b'yi birleştirir; bu yüzden fazladan kök doğabilir.",
+    "agentSourceReview": "Claude 3790. saniye karesini açtı: PRATİK kutusu (köklü denklemde kökten kurtulmak; kökün derecesi kadar kuvvet almak), Örnek 17 (∛(1 − x) = 2), küp alma, 1 − x = 8 ve x = −7 tahtada görünüyor. Çift dereceli karşı örnek özgün türetimdir ve bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]
