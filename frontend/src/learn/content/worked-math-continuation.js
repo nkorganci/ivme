@@ -33,6 +33,53 @@ export const MATH_CONTINUATION_EXAMS = {
     ], result:'D · 1/2', tip:'Diskriminant kökse Δ’yı x yerine yaz. Parametre için oluşan yeni denklemde toplam/çarpım sorulursa kök-katsayıyı yeniden kullan.',
     check:'Yeni diskriminant 23²−4×16×8=17>0; iki gerçek c=(23±√17)/32 var. İkisi de c<1 olduğundan asıl Δ>0; çarpımları (529−17)/1024=1/2.',
   },
+  'TYT-0641': {
+    conceptId:'koklu-ifadeler', archetype:'kok-disi', answer:'D', title:'2023 TYT · A√B’nin bütün yazılışları',
+    cue:'Kenar A√B ise alan A²B=720. A², 720’nin tam kare bölenidir; olası bütün (A,B) ikililerini yazıp toplamları seçeneklerle karşılaştır.',
+    steps:[
+      {text:'$(A\sqrt B)^2=A^2B=720=2^4\cdot3^2\cdot5$.',why:'Karenin alanı kenarın karesidir; kök kareyle kaybolur.'},
+      {text:'Tam kare bölenler 1, 4, 9, 16, 36, 144; A=1,2,3,4,6,12.',why:'A² içindeki her asalın üssü çift olmalı ve 720’deki üssü aşmamalı.'},
+      {text:'(A,B): (1,720), (2,180), (3,80), (4,45), (6,20), (12,5). Toplamlar 721, 182, 83, 49, 26, 17.',why:'B=720/A²; her yazılış aynı kenarı verir.'},
+      {text:'Seçeneklerden 26, 49, 83, 182 listede var; 127 yok. D seçeneği.',why:'“Olamaz” sorusunda listede olmayan tek seçenek aranır.'},
+    ], result:'D · 127', tip:'A√B biçiminde A²’yi sayının tam kare bölenlerinden seç. Yalnız en sade biçimi (12√5) değil bütün yazılışları listele.',
+    check:'4√45: 16·45=720 ✓; 6√20: 36·20=720 ✓. 127 için B=127−A ve A²(127−A)=720 tam sayı çözümü yok.',
+    mistake:'Yalnız en sade biçimi alıp A+B=17 bulmak ve diğer yazılışları unutmak.',
+  },
+  'TYT-0643': {
+    conceptId:'koklu-ifadeler', archetype:'kok-disi', answer:'D', title:'2024 TYT · kök bölümü tam sayı olsun',
+    cue:'a=√720 rasyonel değil, b de değil; ama a/b tam sayı olabilir. Önce √720’yi sadeleştir; b’nin aynı kök türünü taşıması gerekir.',
+    steps:[
+      {text:'$\sqrt{720}=\sqrt{144\cdot5}=12\sqrt5$.',why:'En büyük tam kare çarpan 144.'},
+      {text:'$\sqrt5$, $\sqrt{20}=2\sqrt5$, $\sqrt{45}=3\sqrt5$, $\sqrt{80}=4\sqrt5$: bölümler 12, 6, 4, 3.',why:'Kök içleri aynı kalınca kökler sadeleşir; 12’yi bölen katsayılar tam sayı verir.'},
+      {text:'$\sqrt{60}=2\sqrt{15}$: $\frac{12\sqrt5}{2\sqrt{15}}=\frac{6}{\sqrt3}=2\sqrt3$, tam sayı değil. D seçeneği.',why:'Kök içleri farklı (5 ve 15) kaldığı için bölüm irrasyonel.'},
+    ], result:'D · √60', tip:'İki kökün bölümünün tam sayı olması için ikisini de sadeleştir: kök içleri aynı olmalı, katsayı oranı da tam sayı olmalı.',
+    check:'720/60=12 tam kare değil; √(720/b²) için b²=60 verirse 720/60=12 ve √12 irrasyonel.',
+    mistake:'“İkisi de irrasyonelse bölüm de irrasyoneldir” sanmak; notun söylediği gibi aynı kök türünde bölüm tam sayı olabilir.',
+  },
+  'TYT-0594': {
+    conceptId:'bolme-bolunebilme', archetype:'kural', answer:'B', title:'2022 TYT · AB ile BA’nın rakam toplamı aynıdır',
+    cue:'30=2·3·5 ve 2, 3, 5 asal; çarpım her birine bölünmeli. Asal bir sayı çarpımı bölüyorsa çarpanlardan birini böler. AB ile BA aynı rakamlardan oluştuğu için 3 koşulu ikisinde aynıdır.',
+    steps:[
+      {text:'5 çarpımı böler, o hâlde AB ya da BA 5’e bölünür: son rakamı 0 ya da 5. İkisi de iki basamaklı olduğu için A,B≠0; rakamlardan biri 5.',why:'5 asal; asal bir çarpımı bölüyorsa çarpanlardan birini böler. 0 olsaydı ters sayı iki basamaklı olmazdı.'},
+      {text:'3 çarpımı böler; AB ile BA’nın rakam toplamı aynı (A+B), yani ikisi birlikte 3’e bölünür ya da hiçbiri bölünmez. A+B 3’ün katı.',why:'3 kuralı yalnız rakam toplamına bakar; rakamların yeri değişmesi toplamı değiştirmez.'},
+      {text:'2 çarpımı böler: sayılardan birinin son rakamı çift, yani A ya da B çift. Diğer rakam 5 olduğundan çift rakam 2, 4, 6 ya da 8.',why:'Çarpım çiftse çarpanlardan biri çifttir.'},
+      {text:'5+çift rakam 3’ün katı: 5+4=9 tek seçenek (7, 9, 11, 13 diğerleri). A+B=9; B seçeneği.',why:'Üç koşulu birlikte uyguladık. Örnek: 54·45=2430=30·81.'},
+    ], result:'B · 9', tip:'AB ve BA birlikte geçiyorsa 3 ve 9 kuralı ikisinde aynı sonucu verir (rakam toplamı ortak). Asal bölenleri ayrı ayrı dağıt: her asal en az bir çarpana gitmeli.',
+    check:'54·45=2430, 2430:30=81. Rakam toplamı 9 olan diğer “5’li” ikili yok.',
+    mistake:'30’u AB’nin tek başına bölmesi gerektiğini sanmak; çarpımda 2, 3 ve 5 farklı çarpanlara dağılabilir.',
+  },
+  'TYT-0599': {
+    conceptId:'bolme-bolunebilme', archetype:'kalan-islem', answer:'A', title:'2025 TYT · iki kalan eşit: önce küçük kalanın sınırı',
+    cue:'Ortak kalan 5’e göre kalan olduğu için en fazla 4. 5’e göre kalan B’nin 5’e göre kalanıdır; 9’a göre kalan rakam toplamından gelir. B’yi iki gruba ayır.',
+    steps:[
+      {text:'Ortak kalan $r$ olsun. 5’e göre kalan olduğundan $0\le r\le4$ ve $r$, B’nin 5’e bölümünden kalandır.',why:'Kalan bölenden küçüktür; küçük bölen ortak kalanı sınırlar.'},
+      {text:'9’a göre kalan, rakam toplamı $A+3+4+B=A+7+B$’nin 9’a göre kalanıdır.',why:'9 kuralı kalan için de geçerlidir.'},
+      {text:'B=0–4 ise $r=B$: $A+7+B\equiv B$ (mod 9), yani $A+7$ 9’un katı; A=2.',why:'B iki taraftan sadeleşti; A tek başına kaldı.'},
+      {text:'B=5–9 ise $r=B-5$: $A+7+B\equiv B-5$, yani $A+12$ 9’un katı; A=6. Toplam 2+6=8; A seçeneği.',why:'Kalan tanımı B’nin hangi aralıkta olduğuna göre değiştiği için iki durum zorunlu.'},
+    ], result:'A · 8', tip:'İki kalan eşitse önce küçük bölenden kalanın üst sınırını yaz. Son rakama bağlı kuralda (2, 5, 10) son rakamı kalan aralıklarına göre gruplara ayır.',
+    check:'2340: 5’e göre 0, 9’a göre 0. 6347: 5’e göre 2, 9’a göre 2 (6+3+4+7=20).',
+    mistake:'B’yi yalnız 0–4 arasında düşünüp A=6 durumunu kaçırmak; B=5–9 da aynı kalanları (0–4) verir.',
+  },
   'TYT-0605': {
     conceptId:'mutlak-deger', archetype:'esitsizlik', answer:'A', title:'2018 TYT · artış aralığından sıcaklık aralığına',
     cue:'6–10 derece, sıcaklığın kendisi değil artış miktarı. Önce 5 dereceye ekle; sonra yeni aralığın merkezini bul.',

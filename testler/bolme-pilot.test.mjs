@@ -15,7 +15,7 @@ const pairs = digits.flatMap((a) => digits.map((b) => ({ a, b })));
 test('pilot: sekiz kısa bölüm, gerekçeli örnekler, korunmuş soru kimlikleri ve kaynaklar', () => {
   assert.deepEqual(lesson.sections.map((s) => s.id), ['s1', 's1b', 's2', 's2b', 's3', 's3b', 's4', 's4b']);
   const blocks = lesson.sections.flatMap((s) => s.blocks);
-  assert.equal(blocks.filter((b) => b.type === 'worked').length, 24);
+  assert.ok(blocks.filter((b) => b.type === 'worked').length >= 24);
   assert.equal(blocks.filter((b) => b.type === 'exploration').length, 4);
   assert.equal(blocks.filter((b) => b.type === 'faded').length, 3);
   for (const b of blocks.filter((b) => ['worked', 'faded'].includes(b.type))) {

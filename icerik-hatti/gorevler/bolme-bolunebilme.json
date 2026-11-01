@@ -196,11 +196,30 @@
     "toplam3"
    ],
    "imageSha256": "bc5f909dfc09bd63643071cc057dbd8ba66cfa57b21a2c47ea4dd787ad40fe10"
+  },
+  "TYT-0594": {
+   "sectionId": "s2b",
+   "role": "guided",
+   "claims": [
+    "toplam3",
+    "ortak"
+   ],
+   "imageSha256": "d215bd9b411b403aa6ea8c710d7b0d55bca20600e46e29c3f3d467e13474bd5d"
+  },
+  "TYT-0599": {
+   "sectionId": "s4b",
+   "role": "guided",
+   "claims": [
+    "bolme",
+    "toplam9"
+   ],
+   "imageSha256": "e235cfcf18dec96e62a3fc74e27018c1aca80506b415241998ff0badc26141c2"
   }
  },
  "tests": [
-  "testler/tas08-pilot.test.mjs",
-  "testler/bolme-pilot.test.mjs"
+  "testler/bolme-pilot.test.mjs",
+  "testler/matematik-tyt-cikmis.test.mjs",
+  "testler/tas08-pilot.test.mjs"
  ],
  "modelPlan": {
   "draft": {

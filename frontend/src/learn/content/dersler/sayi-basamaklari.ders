@@ -234,6 +234,20 @@ soru: İki basamaklı bir sayının soluna 4 yazılınca oluşan üç basamaklı
 3. $x=50$. || 50 iki basamaklı; koşul sağlanıyor.
 cevap: 50. Kontrol: $450=9\cdot50$.
 
+::ornek baslik="Yer değiştirme farkı başka bir ifadeye eşitse"
+soru: $AB$ ve $BA$ iki basamaklı doğal sayılardır. $AB+BA=(A+B)^2$ olduğuna göre bu koşulu sağlayan kaç farklı $AB$ sayısı vardır?
+1. $AB+BA=11(A+B)$. || İki sayıda da her rakam bir kez onlar, bir kez birler basamağındadır.
+2. $11(A+B)=(A+B)^2$ ve $A+B\neq0$ olduğu için iki taraf $A+B$'ye bölünür: $A+B=11$. || Sıfır olmadığı kesin olan ortak çarpanla sadeleştirdik; $A,B\geq1$ çünkü iki sayı da iki basamaklı.
+3. $A+B=11$ ve $1\leq A,B\leq9$: $(2,9),(3,8),\ldots,(9,2)$ — 8 ikili. || $A=1$ için $B=10$ rakam değildir; aralığı uçlardan kontrol ettik.
+cevap: 8 sayı (29, 38, 47, 56, 65, 74, 83, 92). Benzer kalıp: $AB-BA=A^2-B^2$ ise $9(A-B)=(A-B)(A+B)$; ya $A=B$ ya da $A+B=9$ — iki durumu da say.
+
+::ornek baslik="Döngüsel üç sayının toplamı"
+soru: $A$, $B$, $C$ sıfırdan farklı rakamlardır. $ABC+BCA+CAB=1554$ olduğuna göre $A+B+C$ kaçtır?
+1. Her rakam yüzler, onlar ve birler basamağında birer kez bulunur. || Toplamdaki her rakamın katkısı $100+10+1=111$ katıdır.
+2. $111(A+B+C)=1554$. || Üç çözümlemeyi alt alta toplamak bu katsayıyı verir.
+3. $A+B+C=1554:111=14$. || Sağlama: $111\cdot14=1554$.
+cevap: 14. Aynı fikir: $AB+BA=11(A+B)$ iki basamaklı, $ABC+BCA+CAB=111(A+B+C)$ üç basamaklı döngüdür; $(AB)^2-(BA)^2=99(A-B)(A+B)$ ise iki kare farkıyla gelir.
+
 ::sorgula s2-etiket baslik="Etikete fazladan bir sıfır"
 durum: Bir marketteki fiyat etiketinde 35 lira yazmalıyken, sayının sağına yanlışlıkla bir 0 eklenmiş.
 soru: Etiketteki fiyat, gerçek fiyattan kaç lira fazladır?

@@ -323,6 +323,26 @@ soru: $84a$ sayısı 3'e tam bölünüyor; 5 ile bölümünden kalan 4. $a$ kaç
 ?3. $a=9$; sayı 849. || Tek koşulu değil, iki koşulu da sağlayan adayı seç.
 cevap: 9. Kontrol: $849=3\cdot283$ ve $849=5\cdot169+4$.
 
+::metin
+### Gerçek TYT sorusu: ters sayıların ortak rakam toplamı
+$AB$ ile $BA$ aynı rakamlardan oluşur; rakam toplamları eşittir. Bu yüzden 3 ve 9 kuralı ikisi için aynı sonucu verir. Bir çarpımın asal bir sayıya bölünmesi ise o asalın çarpanlardan **en az birini** bölmesi demektir.
+
+::cikmis TYT-0594 tip=kural
+
+::ornek baslik="Benzer soru · 30 yerine 45"
+soru: $AB$ ve $BA$ iki basamaklı doğal sayılardır. $AB\cdot BA$ çarpımı 45 ile tam bölünüyorsa $A+B$ toplamının alabileceği değerlerin toplamı kaçtır?
+1. $45=9\cdot5$. 5 asal: $AB$ ya da $BA$ 5 ile biter; rakamlar sıfır olamadığı için rakamlardan biri 5. || Asal bölen çarpanlardan birine gitmek zorunda.
+2. 9 için: $A+B$ 3'ün katıysa iki sayı da 3'e bölünür ve çarpım $3\cdot3=9$'a bölünür; değilse hiçbiri 3'e bölünmez. || Ortak rakam toplamı iki 3 çarpanını birlikte getirir; 9'u tek sayının bölmesi gerekmez.
+3. $5+x$ 3'ün katı: $x=1,4,7$; $A+B=6,9,12$. || Bu kez çiftlik koşulu yok; 2 yalnız 30'da vardı.
+cevap: $6+9+12=27$. Kontrol: $15\cdot51=765=45\cdot17$; $57\cdot75=4275=45\cdot95$.
+
+::ornek baslik="Rakam zinciri: önce aday listesi, sonra 4 kuralı"
+soru: $A$, $B$, $C$ birbirinden farklı ve sıfırdan farklı rakamlardır. $B$ rakamı $A$'nın, $C$ rakamı $B$'nin birer tam sayı katıdır. $ABC$ üç basamaklı sayısı 4 ile tam bölünebildiğine göre kaç farklı $ABC$ sayısı vardır?
+1. $A\geq1$ (yüzler basamağı) ve katlar en az 2 kat: $B\geq2A$, $C\geq2B\geq4A$; $C\leq9$ olduğundan $A=1$ ya da $A=2$. || Rakamlar farklı olduğu için kat çarpanı 1 olamaz.
+2. Adaylar: 124, 126, 128, 136, 139, 148 ve 248. || $A=1$ için $B=2,3,4$; $A=2$ için yalnız $B=4$, $C=8$.
+3. 4 kuralı son iki basamağa bakar: 24, 28, 36, 48, 48 dörde bölünür; 26 ve 39 bölünmez. || Bu kez rakam toplamı değil, son iki basamak eler.
+cevap: 5 sayı: 124, 128, 136, 148, 248. “Sıfırdan farklı” denmeseydi $C=0$ da $B$'nin katı sayılırdı ($0=0\cdot B$) ve 120, 140, 240 … gibi sayılar eklenirdi; sıfır koşulunu her zaman oku. Aynı zincirde hangi kuralın uygulanacağı soruya göre değişir; aday listesi yöntemi değişmez.
+
 ::strateji tip=kural baslik="Sayıdaki rakamları birer aday olarak izle"
 ipucu: “a ve b birer rakam”, “en büyük”, “farklı değerler” sözleri geçiyor.
 1. İlk rakam için 1–9, diğerleri için 0–9 yaz. “Rakamları farklı” koşulu varsa ayrıca not et.
@@ -627,6 +647,19 @@ soru: Çift bir $A$ sayısının 6 ile kalanının 4 olduğunu biliyoruz. $A/2$'
 2. $A=10$ da 6 ile kalan 4 verir; bu kez $A/2=5$, kalan 5. || Aynı başlangıç kalanına rağmen bölümün kalanı değişti.
 3. İki geçerli örneğin sonuçları farklı. || Bir tek sonuç çıkarmak için bilgi yetersiz.
 cevap: Hayır. “4'ü 2'ye bölerim, kalan 2” genellemesi yanlış. Toplama ve çarpmada çalışan yöntem, bölmede koşulsuz çalışmaz.
+
+::metin
+### Gerçek TYT sorusu: iki farklı bölene göre aynı kalan
+Kalan bölenden küçüktür; iki kalan eşitse ortak kalan **küçük bölenden** küçük olmak zorundadır. Son rakama bağlı bir kuralda son rakamı kalanına göre gruplara ayır.
+
+::cikmis TYT-0599 tip=kalan-islem
+
+::ornek baslik="Benzer soru · 5 ve 3'e göre aynı kalan"
+soru: Dört basamaklı $A15B$ sayısının 5 ile bölümünden kalan, 3 ile bölümünden kalana eşittir. $A$ rakamının alabileceği değerlerin toplamı kaçtır?
+1. Ortak kalan 3'e göre kalan olduğu için 0, 1 ya da 2. 5'e göre kalan $B$'den gelir: $B\in\{0,1,2\}$ ($r=B$) ya da $B\in\{5,6,7\}$ ($r=B-5$). || Küçük bölen (3) kalanı sınırladı; 3, 4, 8, 9 son rakamları kalan 3 ya da 4 verdiği için elendi.
+2. 3'e göre kalan rakam toplamından: $A+1+5+B=A+6+B$. $r=B$ ise $A+6$ 3'ün katı, $A\in\{3,6,9\}$. || $B$ sadeleşti.
+3. $r=B-5$ ise $A+11$ 3'ün katı, $A\in\{1,4,7\}$. || İkinci grup yeni $A$ değerleri getirdi.
+cevap: $1+3+4+6+7+9=30$. Kontrol: 3150 (kalanlar 0, 0), 1155 (0, 0), 4157 (2, 2).
 
 ::strateji tip=kalan-islem baslik="Kalan sorusunda ilk yapacağın işlem"
 ipucu: “Kalanı”, “kuvveti”, “aynı kalan”, “en az kaç eklenir” deniyor.

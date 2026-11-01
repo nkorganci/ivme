@@ -287,7 +287,7 @@ alıştırmayı dönüşümlü sunma, somut ve soyut gösterimleri bağlama, gö
 birleştirme ve açıklayıcı sorular sorma önerilerinden yararlanır. Bunun bir öğrencide
 ölçülmüş öğrenme başarısı veya bağımsız öğretmen onayı olduğu iddia edilmez.
 
-Kapsam: 24 çözümlü örnek, 3 adım tamamlama, 4 etkileşimli keşif, 4 yeni kısa kontrol,
+Kapsam: en az 24 çözümlü örnek, 3 adım tamamlama, 4 etkileşimli keşif, 4 yeni kısa kontrol,
 8 düzeyli anlatım, 8 günlük hayat sorgulaması, 2 gerçek sınav çözümü. İlk bölümdeki kutu modeli korunur; üç yeni model yalnız bu
 derse bağlanır. 11'de tam bölünme/işaretli kalan ayrımı, aralarında asal olma koşulu,
 bölmede kalanları doğrudan bölememe ve kuvvetlerde döngünün başlangıcı açıkça öğretilir.

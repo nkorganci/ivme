@@ -111,25 +111,37 @@
       "asama": "TYT",
       "cikmis": "sayi-kumeleri",
       "pdfAnlatim": [
-        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf s.13-14",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/10 - SAYI KUMELERI.pdf s.4",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.18"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf s.13-14",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/10 - SAYI KUMELERI.pdf s.4"
+      ],
       "videolar": {
         "PL1": [
           "DvUDBzs9y8s",
           "hjyeXOCNyqA"
         ],
         "PL2": []
-      }
+      },
+      "not": "PDF karşılaştırmasıyla iki kalıp eklendi: AB+BA=(A+B)² / AB−BA=A²−B² türü ve ABC+BCA+CAB=111(A+B+C)."
     },
     {
       "id": "bolme-bolunebilme",
       "asama": "TYT",
       "cikmis": "bolunebilme",
       "pdfAnlatim": [
-        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/09 - KALANLI BOLME - BOLUNEBILME KURALLARI - I.pdf",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/10 - BOLUNEBILME KURALLARI-II.pdf",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.21-23"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/09 - KALANLI BOLME - BOLUNEBILME KURALLARI - I.pdf s.1 (görsel; metin katmanı bozuk)",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/10 - BOLUNEBILME KURALLARI-II.pdf s.1 (görsel)",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.21-23"
+      ],
       "videolar": {
         "PL1": [
           "fHXNNbRJMxc",
@@ -140,14 +152,17 @@
           "fIR3cEopCQU",
           "3MpsvsONdmQ"
         ]
-      }
+      },
+      "not": "Bu konunun OGM ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti okundu. MEBİ'deki “önce birler, sonra son iki/üç basamak, en son rakam toplamı” sırası dersteki aday-eleme stratejisiyle örtüşüyor."
     },
     {
       "id": "ebob-ekok",
       "asama": "TYT",
       "cikmis": "sayi-kumeleri",
       "pdfAnlatim": [
-        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/11 - EBOB-EKOK.pdf",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/12 - GERCEK HAYATTA PERIYODIK OLARAK TEKRAR EDEN DURUMLARI ICEREN PROBLEMLER.pdf",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.24-27"
       ],
       "pdfOkundu": [],
       "videolar": {
@@ -160,14 +175,18 @@
           "fAicvlTRvxI",
           "gwblNvcbwKQ"
         ]
-      }
+      },
+      "not": "Ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti kaynak."
     },
     {
       "id": "rasyonel-sayilar",
       "asama": "TYT",
       "cikmis": "sayi-kumeleri",
       "pdfAnlatim": [
-        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/11 - GERCEK SAYILAR KUMESINDE TOPLAMA ve CARPMA ISLEMLERI.pdf s.9-15",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/07 - SAYI KUMELERI.pdf",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/08 - GERCEK SAYILAR KUMESINDE TOPLAMA VE CARPMA ISLEMININ OZELLIKLERI.pdf",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.28-30"
       ],
       "pdfOkundu": [],
       "videolar": {

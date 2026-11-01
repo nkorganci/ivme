@@ -50,11 +50,11 @@
    },
    "archetypes": {
     "bolme-algoritmasi": 69,
-    "kural": 44,
+    "kural": 45,
     "bilesik-kural": 6,
-    "kalan-islem": 0
+    "kalan-islem": 1
    },
-   "untyped": 129
+   "untyped": 127
   },
   "carpanlara-ayirma": {
    "total": 104,
@@ -185,13 +185,13 @@
    "untyped": 77
   },
   "koklu-ifadeler": {
-   "total": 184,
+   "total": 186,
    "cikmis": {
-    "TYT": 2,
+    "TYT": 4,
     "AYT": 0
    },
    "archetypes": {
-    "kok-disi": 61,
+    "kok-disi": 63,
     "eslenik": 5,
     "ic-ice": 0,
     "siralama": 9,
@@ -425,9 +425,9 @@
    "untyped": 160
   },
   "uslu-ifadeler": {
-   "total": 198,
+   "total": 196,
    "cikmis": {
-    "TYT": 16,
+    "TYT": 14,
     "AYT": 0
    },
    "archetypes": {
@@ -437,7 +437,7 @@
     "siralama": 2,
     "denklem": 7
    },
-   "untyped": 85
+   "untyped": 83
   },
   "veri-grafikleri": {
    "total": 153,

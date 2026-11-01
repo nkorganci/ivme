@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "conceptId": "bolme-bolunebilme",
   "contentVersion": 1,
-  "lessonSha256": "d33651116f090f7475614f1d57a260a09d51b7a58d3dfbfb46873a7bce378b70",
+  "lessonSha256": "efe216f94f573fe5af5ef696ced3d46acd879d3e59863ecca9c70923d0692ac8",
   "primarySource": {
     "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
     "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
@@ -502,6 +502,56 @@
       "solutionOrigin": "IVME_DERIVATION",
       "answerOrigin": "EXISTING_OSYM_KEY",
       "answerKey": "B"
+    },
+    "TYT-0594": {
+      "sectionId": "s2b",
+      "role": "guided",
+      "claims": [
+        "toplam3",
+        "ortak"
+      ],
+      "imageSha256": "d215bd9b411b403aa6ea8c710d7b0d55bca20600e46e29c3f3d467e13474bd5d",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "0100ddb1906e25778b2b2e8fa2c156ff0d131d92016e0132d399b3393653e6c9",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0594.webp",
+      "exam": "TYT",
+      "year": 2022,
+      "archiveId": "2022-TYT-TEM-14",
+      "sourceBook": "TYT",
+      "sourcePage": 237,
+      "bookQuestion": 54,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "B"
+    },
+    "TYT-0599": {
+      "sectionId": "s4b",
+      "role": "guided",
+      "claims": [
+        "bolme",
+        "toplam9"
+      ],
+      "imageSha256": "e235cfcf18dec96e62a3fc74e27018c1aca80506b415241998ff0badc26141c2",
+      "sourceSha256": "eb46450ff459bed19c7dc7839fca979aacf4c1501b9f1e7c59199a1db24d7904",
+      "solutionSha256": "d2bc83f80d5c20b78907b9ae81c67f5a9de9a6e3220b360a147050baeff8e8de",
+      "imagePath": "veri/resimler-pilot/kirpilmis/TYT/matematik/TYT-0599.webp",
+      "exam": "TYT",
+      "year": 2025,
+      "archiveId": "2025-TYT-TEM-14",
+      "sourceBook": "TYT",
+      "sourcePage": 238,
+      "bookQuestion": 59,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "A"
     }
   },
   "independentCodes": [

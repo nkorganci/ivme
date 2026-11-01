@@ -148,6 +148,19 @@ soru: $x^2=49$ ile $x=\sqrt{49}$ aynı çözüm kümesine sahip mi?
 3. İkinci eşitlik yalnız $x=7$ verir. || Denklem çözmek ile kök işaretinin değerini bulmak ayrı işlemlerdir.
 cevap: Hayır; ilkinde iki, ikincide bir çözüm var.
 
+::metin
+### Gerçek TYT sorusu: iki kök oranı ne zaman tam sayı?
+$\sqrt{720}$'yi kök dışına çıkar: $12\sqrt5$. Bölümün tam sayı olması için payda da $\sqrt5$'in rasyonel bir katı olmalı; kök içleri sadeleşince **aynı kök** kalmalıdır.
+
+::cikmis TYT-0643 tip=kok-disi
+
+::ornek baslik="Benzer soru · aynı kökü ara"
+soru: $a=\sqrt{392}$ ise $\frac{a}{b}$ sayısının tam sayı olmasını sağlayan $b$ aşağıdakilerden hangisi **olamaz**? A) $\sqrt2$ · B) $\sqrt8$ · C) $\sqrt{24}$ · D) $\sqrt{98}$ · E) $\sqrt{392}$
+1. $392=196\cdot2$, $\sqrt{392}=14\sqrt2$. || En büyük tam kare çarpanı (196) dışarı aldık.
+2. $\sqrt8=2\sqrt2$, $\sqrt{98}=7\sqrt2$, $\sqrt{392}=14\sqrt2$; bölümler 14, 7, 2, 1. || Kök içi aynı kalınca bölüm $\frac{14}{k}$ olur; $k$ 14'ü bölüyorsa tam sayıdır.
+3. $\sqrt{24}=2\sqrt6$: $\frac{14\sqrt2}{2\sqrt6}=\frac{7}{\sqrt3}$ irrasyonel. || Kök içleri farklı kaldı; bölüm tam sayı olamaz.
+cevap: C. Dikkat: $b=\sqrt{18}=3\sqrt2$ olsaydı bölüm $\frac{14}{3}$ olurdu — rasyonel ama tam sayı değil. Soru “rasyonel” mi “tam sayı” mı istiyor, oku.
+
 @bolum s1b 14 | Çift ve tek dereceli kökte tanım
 
 ::duzey
@@ -312,6 +325,19 @@ ipucu: İki köklü sayı karşılaştırılıyor.
 1. İşaretleri farklıysa sıralama hemen bellidir.
 2. İkisi de pozitifse karelerini karşılaştır; ikisi negatifse büyüklük sırasını ters çevir.
 3. Yaklaşık hesap yerine tam kare sınırlarını kullan; eşitlik ihtimalini atlama.
+
+::metin
+### Gerçek TYT sorusu: $A\sqrt B$ biçiminin bütün yazılışları
+Kenar $A\sqrt B$ ise alan $A^2B$'dir. $A^2$, alanın **tam kare bölenidir**; bu yüzden olası $A$ değerleri alanın tam kare bölenlerinden okunur. Yalnız “en sade” biçime bakma, hepsini listele.
+
+::cikmis TYT-0641 tip=kok-disi
+
+::ornek baslik="Benzer soru · tam kare bölenleri listele"
+soru: $A$ ve $B$ pozitif tam sayılardır. Kenarı $A\sqrt B$ birim olan bir karenin alanı 432 birimkaredir. $A+B$ toplamı aşağıdakilerden hangisi **olamaz**? A) 15 · B) 18 · C) 31 · D) 52 · E) 110
+1. Alan $(A\sqrt B)^2=A^2B=432=2^4\cdot3^3$. || Kökü karesine alınca kaybolur.
+2. Tam kare bölenler: 1, 4, 9, 16, 36, 144. $(A,B)$: (1,432), (2,108), (3,48), (4,27), (6,12), (12,3). || $A^2$'deki üsler çift olmalı ve 432'nin üslerini aşmamalı.
+3. Toplamlar: 433, 110, 51, 31, 18, 15. || Her yazılışı ayrı topladık; yalnız en sade biçim $12\sqrt3$ değil.
+cevap: D) 52. Listede 51 var ama 52 yok; bir hesap hatası tek farkla yanlış seçeneğe götürür, toplamları dikkatle yaz.
 
 @bolum s3 8 | Eşlenik ve paydayı kökten kurtarma
 ::kesfet kok-eslenik

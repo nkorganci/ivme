@@ -3,18 +3,18 @@
   "taskId": "content:ebob-ekok:1",
   "conceptId": "ebob-ekok",
   "status": "REVIEW_REQUIRED",
-  "preparedAt": "2026-10-31T23:40:23+00:00",
+  "preparedAt": "2026-11-01T23:06:37+00:00",
   "templateVersion": "konuyu-ogrenelim/tas08-v1",
   "specSha256": "1bbb6e57185371bb0d6f9a3865ee04d67f661910be0d57237b820d9337f48c18",
   "lesson": {
     "path": "frontend/src/learn/content/dersler/ebob-ekok.ders",
-    "sha256": "71cf62bcbc149d0842b75b830458b3cfe45653b60897552a15b9cbbce61b0ffd"
+    "sha256": "920dd59697567262f13e1d2b7672274b1b3a9de483a6dea2dc406043bf5da3d2"
   },
   "output": {
     "path": "frontend/src/learn/content/kanit/ebob-ekok.json",
-    "sha256": "994b5e8963bf0580b840487458a2fcdd5d3fed49c63c8f2c6e94a0c28a8290bd"
+    "sha256": "21e7449efe5c38b9601843389726988829e373a416fbc3524ec4efde49d349c4"
   },
-  "contentSha256": "4b357b9b9722ff1cd191ac1e83e76aaa530dbd610fbd2b318206b89fde15f9f4",
+  "contentSha256": "8526d5d80480603abbdba84603063f6629c853ee62f1f98e784ff1934589f0f9",
   "validation": {
     "tests": [
       "testler/icerik-hatti.test.mjs",
@@ -59,27 +59,44 @@
       "outputSha256": "8f37db4f8f873fa8ed305a87cc6708efc08842132824c7a5d00de1f8bb35b7b1"
     },
     "taslak": {
-      "inputKey": "7b1eef0758187f8624dfc3bd490b410ff9c2013ef90e55f157c9fe40bdb83e47",
-      "outputSha256": "cbb9fa35817aa17a631bee6f4e69666bdb3a4c9a82e3799770e43b4064c21c32"
+      "inputKey": "b15228aa5f70c23c8242ff161b5ef1322229b414add9f331e26b1182f14f892e",
+      "outputSha256": "0f87fc1ad63cfdcff081bdfde07ed7fde43f672fe34a99077252386aab399e81"
     },
     "derle": {
-      "inputKey": "e6ee6d106da7f59bd44cf889b84f3cee85501977d45dbdd64924cf9f0df1accb",
-      "outputSha256": "fbd0d859c14d1460372fb4f07ed94313eda07a5e1f08d2eec0154bbc17bc7901"
+      "inputKey": "675c238d5c1d6e97c032e607ea29594c60c192c0588034cad84450d5f86689ff",
+      "outputSha256": "5fd7c6cba6e50db64dab5632ebc28f5dafd6f29b96c9467e1eee5b4a4b373520"
     },
     "dogrula": {
-      "inputKey": "848860f1eb786d1b6eed4859858dc231df51bfdd37bf0dc94efdcb91148f3eef",
+      "inputKey": "55824a60aa7378ea5e403ae5e948006c7b825db108c6acdfbaf30d6206d5ff7a",
       "outputSha256": "dfa30886004fe71f370dad2ee9570690385dd098aa780dbb15a7d6f0110809a5"
     },
     "inceleme": {
-      "inputKey": "c15f94253f8a4a7ab985011c8ec5d3bfa004dfaf73d13364ba4c2299abdffcb8",
+      "inputKey": "8a0e0e58c6e90c14fec646b4a1254556318e0a8f4f066c0e2b84e25f927ee57e",
       "outputSha256": "91dba5a78534f6f926a3280399a0c2d5237859f2ae73b9183f5226c087dbf6fc"
     }
   },
   "previous": {
-    "gitRevision": "5a57c5f",
-    "sha256": null,
-    "restore": null
+    "gitRevision": "50132b9",
+    "sha256": "994b5e8963bf0580b840487458a2fcdd5d3fed49c63c8f2c6e94a0c28a8290bd",
+    "restore": "git checkout 50132b9 -- frontend/src/learn/content/kanit/ebob-ekok.json frontend/src/learn/content/dersler/ebob-ekok.ders"
   },
-  "changes": {},
+  "changes": {
+    "sections": {
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "questions": {
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "claims": {
+      "added": [],
+      "removed": [],
+      "changed": []
+    },
+    "lessonChanged": true
+  },
   "externalPublish": "Dış yayın/push ayrı kullanıcı talimatıyla; APPROVED olmadan pedagojik kabul sayılmaz."
 }

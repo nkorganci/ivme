@@ -3,27 +3,28 @@
   "taskId": "content:bolme-bolunebilme:1",
   "conceptId": "bolme-bolunebilme",
   "status": "REVIEW_REQUIRED",
-  "preparedAt": "2026-10-31T23:40:22+00:00",
+  "preparedAt": "2026-11-01T23:08:21+00:00",
   "templateVersion": "konuyu-ogrenelim/tas08-v1",
-  "specSha256": "a5991719e778b7f243a78fef3672086fac33749eaef29102154838df039b5c90",
+  "specSha256": "33139ecc492652c26401eba46359403ff58a534f8a721735dd39005d6aeaf938",
   "lesson": {
     "path": "frontend/src/learn/content/dersler/bolme-bolunebilme.ders",
-    "sha256": "d33651116f090f7475614f1d57a260a09d51b7a58d3dfbfb46873a7bce378b70"
+    "sha256": "efe216f94f573fe5af5ef696ced3d46acd879d3e59863ecca9c70923d0692ac8"
   },
   "output": {
     "path": "frontend/src/learn/content/kanit/bolme-bolunebilme.json",
-    "sha256": "6c8bc099da5af5079bf544bc577c2e4c1f0aa9246d26f4d99f3fe5e6bac0581e"
+    "sha256": "fa49c271bfd6b74e6aceef29d549163ef1fda5cd7c133ec7214d812e034dbf01"
   },
-  "contentSha256": "d8e6c9428989554d54337afce33e179b90a3ff5e2e7c4c94855b19d4c8b9ad71",
+  "contentSha256": "86c70d9aafbab8638308b40b7075eeb2dc49d53c81b3e947e056f3d299b59410",
   "validation": {
     "tests": [
       "testler/icerik-hatti.test.mjs",
       "testler/konu-ogrenme-bicim.test.mjs",
       "testler/konu-ogrenme-ortak-set.test.mjs",
-      "testler/tas08-pilot.test.mjs",
-      "testler/bolme-pilot.test.mjs"
+      "testler/bolme-pilot.test.mjs",
+      "testler/matematik-tyt-cikmis.test.mjs",
+      "testler/tas08-pilot.test.mjs"
     ],
-    "pass": 58,
+    "pass": 62,
     "fail": 0
   },
   "review": {
@@ -43,7 +44,9 @@
       "AYT_Sayisal-0014",
       "TYT-0592",
       "TYT-0593",
-      "TYT-0597"
+      "TYT-0594",
+      "TYT-0597",
+      "TYT-0599"
     ],
     "changeRequests": 0,
     "staleDecisions": 0
@@ -54,30 +57,30 @@
       "outputSha256": "e1061b3c91abccb3dc7f6d143ee1c4de6daeb587f8fb3554795af337c72c5828"
     },
     "kanit": {
-      "inputKey": "d852fcedfa99e1332fa24173e0a73c978c0ea6deee77dda3f35e48806cdd829f",
-      "outputSha256": "9500cec87942ab2901a507c7e3390db9e72ea81ddc2470a8eeafbc31fda103e5"
+      "inputKey": "6bb601ec9f0721a132d1ad8f7044985e109cd77f4e369663f4e006322b5e8ffa",
+      "outputSha256": "37fdfea70549c9d7a42a818627b0a9971b34c27462b7031942e1689ac88f640f"
     },
     "taslak": {
-      "inputKey": "d1a30fdef500623c954ae878ae8e3b4f892c78fb691ceb44aded1f5a52736cde",
-      "outputSha256": "3ace0fac054434425701a9a56eb372b14e5503dd219f73ed1636bd1e38e5b7d1"
+      "inputKey": "efccd23ac0e206525ef3ab4b8c408564d9e4b6e30494002d33e1b259b594b254",
+      "outputSha256": "5a72f0a038e80652be9c2dfece580341a8e45f7e89cf67e12f95fd19a3b09737"
     },
     "derle": {
-      "inputKey": "d938ffdafe0916e83cefcec9051d7b134797333a0ae33ca6af10b5141aa90232",
-      "outputSha256": "fd9cc0df3a23c8107b70690d01f8c55ec811f17a5308d99b8663a18b65d8af17"
+      "inputKey": "734eba08a0ed40cb35bc3e4a5779a4eeef991260c1820a1df2450995e88f6bdd",
+      "outputSha256": "0cd8c54bc2fa0c2017e6fdf1c70d11cb2e7aac59988f49e8fcc391e9866309ef"
     },
     "dogrula": {
-      "inputKey": "c161e522adb5114afe9012cbf00e3c705554d361c69dc0b8216b7d0bed2176ec",
-      "outputSha256": "8928c3da752d33fe8517f49c761ad80689bbf4f42d7a57cc56a1dc3ba9bf6b99"
+      "inputKey": "31cfd7f93d0d430eba16f9406611c97529e7e90c50e5d3fdacf94391a6606eb4",
+      "outputSha256": "55cfa2c4216d2855f41c0d43ae38f036db6c99ebb21491013813eda0377673d8"
     },
     "inceleme": {
-      "inputKey": "9078f64b9a7189a3f130e5cda31c71820d92424553314f17c8205a7c954c00d7",
-      "outputSha256": "8c474ba1654636940ebb70a621ceaf29404085092f5ff42ffa29c1851374b37d"
+      "inputKey": "2e7fb0d422ae13125275f99a02fc7b87b6e0a4743d3f4b47cd8e3b4e3ab9c069",
+      "outputSha256": "e2b0760ab13f9ff63e5ac90ab03d447c5212f7395bfcf4cad53d05d3eac256f1"
     }
   },
   "previous": {
-    "gitRevision": "5a57c5f",
+    "gitRevision": "50132b9",
     "sha256": "6c8bc099da5af5079bf544bc577c2e4c1f0aa9246d26f4d99f3fe5e6bac0581e",
-    "restore": "git checkout 5a57c5f -- frontend/src/learn/content/kanit/bolme-bolunebilme.json frontend/src/learn/content/dersler/bolme-bolunebilme.ders"
+    "restore": "git checkout 50132b9 -- frontend/src/learn/content/kanit/bolme-bolunebilme.json frontend/src/learn/content/dersler/bolme-bolunebilme.ders"
   },
   "changes": {
     "sections": {
@@ -86,7 +89,10 @@
       "changed": []
     },
     "questions": {
-      "added": [],
+      "added": [
+        "TYT-0594",
+        "TYT-0599"
+      ],
       "removed": [],
       "changed": []
     },
@@ -95,7 +101,7 @@
       "removed": [],
       "changed": []
     },
-    "lessonChanged": false
+    "lessonChanged": true
   },
   "externalPublish": "Dış yayın/push ayrı kullanıcı talimatıyla; APPROVED olmadan pedagojik kabul sayılmaz."
 }

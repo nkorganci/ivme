@@ -194,6 +194,13 @@ soru: 391 sayısının asal olup olmadığını en az denemeyle belirle.
 3. $17\cdot23=391$. || Bir bölen bulunca durulur.
 cevap: 391 asal değil: $391=17\cdot23$. Pozitif bölenleri 1, 17, 23, 391.
 
+::ornek baslik="İki gruplamadan toplam, sonra bölen"
+soru: Bir çiftçinin elmaları 5'erli kasalara konunca iki basamaklı $AB$ kadar, 6'şarlı kasalara konunca iki basamaklı $BA$ kadar kasa doluyor; hiç elma artmıyor. Elmalar her kasada eşit sayıda olacak biçimde başka kasalara dağıtılırsa kasa sayısı aşağıdakilerden hangisi olabilir? A) 36 · B) 40 · C) 45 · D) 50 · E) 60
+1. Toplam iki gruplamada aynı: $5(10A+B)=6(10B+A)$, yani $44A=55B$ ve $4A=5B$. || Çözümleme rakamlar arasında oran verir.
+2. $A$ ve $B$ rakam, sıfırdan farklı: $4A=5B$ yalnız $A=5$, $B=4$ ile sağlanır. Toplam $5\cdot54=270$; kontrol $6\cdot45=270$. || 5 ile 4 aralarında asal; $A$ 5'in, $B$ 4'ün katı olmalı ve rakam sınırı tek ikili bırakır.
+3. $270=2\cdot3^3\cdot5$. Kasa sayısı 270'in böleni olmalı: $270:45=6$ ✓; 36, 40, 50, 60 bölmez. || Eşit gruplama bölen demektir; asal çarpanda 4 ($2^2$) ya da 25 olmadığı için 36, 40, 60 ve 50 elenir.
+cevap: C) 45. İki adım: rakam denklemi toplamı tek değere indirir; “eşit gruplara ayırma” seçenekleri bölen testiyle eler.
+
 ::sorgula s1b-bahce baslik="Alanı 60 m² olan bahçeler"
 durum: Bir belediye, alanı 60 m² olan dikdörtgen bir hobi bahçesi ayıracak. Kenar uzunlukları tam metre olacak; 3×20 ile 20×3 aynı bahçe sayılıyor.
 soru: Kaç farklı bahçe tasarlanabilir?
