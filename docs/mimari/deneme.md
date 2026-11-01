@@ -47,6 +47,16 @@ eski toplamların korunması, ders sınırları, 120 netlik yeni kayıt ve yenid
 bellekteki API ile doğrular. `--live` aynı kabulde assetleri çalışan 1010'dan okur;
 gerçek öğrenci veritabanına test kaydı yazmaz.
 
+Kullanıcı belirli bir öğrencinin gerçek sonuçlarının işlenmesini açıkça istediğinde
+yalnız o hesap güncellenir. Kullanıcı adı/kimliği ve mevcut çizelgeler önce okunur;
+önceki durum, kullanıcı girdisi ve kayıt sonrası doğrulama Git dışında tutulur.
+Boş çizelgeye giriş, hesap kimliği ve çizelgenin hâlâ boş olduğu kontrol edilerek
+iki çizelgeyi birlikte kaydeden tek işlemde yapılabilir; eşzamanlı yeni kayıt varsa
+işlem durur. Ders netleri uygulamanın doğrulama ve toplama işlevleriyle denetlenir.
+Kaynakta basılmış toplam ile derslerin toplamı farklıysa ders netleri değiştirilmez;
+toplam derslerden hesaplanır ve fark kullanıcıya bildirilir. Bu yetkili veri girişi
+test verisi eklemek veya geçmiş olay/kuyrukları yeniden oynatmak değildir.
+
 ## Deneme ve sınav arşivi
 
 Deneme formunda kaynak adları seçilen sınava göre “TYT Çıkmış Sorular” /
