@@ -9,7 +9,7 @@ onkosul: birinci-derece-denklemler
 kategori: excel.tyt.matematik.ceb9fbdfaa16dc1f89eb excel.ayt.matematik.ceb9fbdfaa16dc1f89eb excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
 hedef: Aralıkları sayı doğrusunda göstermek ve aralık işlemleri yapmak; negatif sayıyla çarpınca yön değiştirmeyi unutmadan eşitsizlik çözmek; değişkenlerin aralığından bir ifadenin aralığını bulmak; iki bilinmeyenli eşitsizliklerin tam sayı çözümlerini saymak.
 neden: Eşitsizlikler TYT'de hem tek başına hem de "en büyük–en küçük değer" problemlerinin içinde sorulur; AYT'de ikinci dereceden eşitsizliklerin, mutlak değerin ve fonksiyonların tanım kümesi sorularının temelidir.
-kaynak: MEBİ TYT Konu Özeti — Gerçek Sayılar Kümesinde Aralık Kavramı, Basit Eşitsizlikler, Birinci Dereceden İki Bilinmeyenli Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 13, 15–16, 20
+kaynak: MEBİ TYT Konu Özeti — Gerçek Sayılar Kümesinde Aralık Kavramı, Basit Eşitsizlikler, Birinci Dereceden İki Bilinmeyenli Eşitsizlikler | OGM 9. Sınıf Konu Özetleri 13, 15–16, 20 | OGM 9. Sınıf Ders Anlatım Sunuları 12, 14, 17
 tekrar: 12
 ustalik-dk: 15
 hedef-sure: 60
@@ -413,6 +413,13 @@ soru: $a+b=6$ ve $1<a<4$ olduğuna göre $a\cdot b$ hangi aralıktadır?
 2. $1<a<4$ ise $-2<a-3<1$; kare: $0\leq(a-3)^2<4$. || Aralık 0'ı içerdiği için karenin alt sınırı 0; üst sınır 0'dan en uzak uç ($-2$).
 3. $9-4<ab\leq9-0$: $5<ab\leq9$. || Kare büyüdükçe $ab$ küçülür.
 cevap: $(5,9]$. Bağımsız köşeler ($2<ab<20$) yanlış olurdu.
+
+::ornek baslik="Kesirli ifadeyi terimlerine ayır: (x+y)/(xy)"
+soru: $1\le x<5$ ve $-1\le y<-\frac13$ ise $\dfrac{x+y}{x\cdot y}$ ifadesinin değer aralığı nedir?
+1. $\dfrac{x+y}{xy}=\dfrac1y+\dfrac1x$. || Pay ve paydada iki değişken birlikte durduğunda uç değerleri doğrudan eşleştirmek yanlış sonuç verir; ifadeyi tek değişkenli terimlere ayırdık.
+2. $x$ pozitif: $\frac15<\frac1x\le1$. $y$ negatif: $-3<\frac1y\le-1$. || Aynı işaretli aralıkta ters alınca sıra döner: $y=-1\Rightarrow\frac1y=-1$, $y\to-\frac13\Rightarrow\frac1y\to-3$.
+3. Taraf tarafa topla: $\frac15-3<\frac1x+\frac1y\le1-1$, yani $-\frac{14}5<\dfrac{x+y}{xy}\le0$. || İki terim bağımsız; aynı yönlü aralıklar toplanır.
+cevap: $\left(-\frac{14}{5},\,0\right]$. Kontrol: $x=1$, $y=-1$ için $\frac{0}{-1}=0$; $x\to5$, $y\to-\frac13$ için $\frac15-3$'e yaklaşır.
 
 ::ornek baslik="Tam sayı değişkenler"
 soru: $x$ ve $y$ tam sayılar, $-2<x<3$ ve $1\leq y\leq4$ olduğuna göre $x\cdot y$'nin en küçük ve en büyük değeri kaçtır?

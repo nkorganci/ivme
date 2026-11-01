@@ -163,3 +163,13 @@ test('birinci derece denklemler: derece koşulu ve üçerli toplamlar', () => {
   }
   assert.deepEqual(found, [[3, 7, 10, 14]]);
 });
+
+test('eşitsizlikler: (x+y)/(xy) aralığı', () => {
+  let lo = Infinity, hi = -Infinity;
+  for (let i = 0; i < 400; i++) for (let j = 0; j < 400; j++) {
+    const x = 1 + 4 * i / 400, y = -1 + (2 / 3) * j / 400;
+    const v = (x + y) / (x * y); lo = Math.min(lo, v); hi = Math.max(hi, v);
+  }
+  assert.ok(lo > -14 / 5 && lo < -14 / 5 + 0.05);
+  assert.equal(hi + 0, 0);
+});

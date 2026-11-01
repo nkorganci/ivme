@@ -54,7 +54,7 @@ konunun konumunu yaz.
 ## Liste
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **6/32 bitti**. Sıradaki TYT konusu: `esitsizlikler`.
+TYT: **7/32 bitti**. Sıradaki TYT konusu: `mutlak-deger`.
 
 ### TYT (şu anki aşama)
 
@@ -66,7 +66,7 @@ TYT: **6/32 bitti**. Sıradaki TYT konusu: `esitsizlikler`.
 | 4 | ✅ BİTTİ | `ebob-ekok` | Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler | 9 | TYT | 10/28/4/6 | 3 / 50 (Sayı Kümeleri) | 2 · PL1 2, PL2 3 | 3/3 | — · Ders anlatım sunusu veya TYT video notu yok; özetler ve MEBİ kaynak, ders karşılıyor. Çıkmış: AYT_Sayisal-0022 (asal bölen kümeleri) eklendi; TYT-0713 ve AYT_Sayisal-0021 bağımsız aktarım sorusu. |
 | 5 | ✅ BİTTİ | `rasyonel-sayilar` | Rasyonel Sayılar ve Ondalık Sayılar | 9 | TYT | 10/26/4/6 | 5 / 50 (Sayı Kümeleri) | 2 · PL1 4, PL2 5 | 2/4 | — · Kaynaklar dersle karşılaştırıldı; eklenen: a,b̄ + b,ā = 10 sayımı (0,9̄ = 1 tuzağı). Protip: teleskop çarpım ve kalanın kesri. |
 | 6 | ✅ BİTTİ | `birinci-derece-denklemler` | Birinci Dereceden Denklemler ve Denklem Sistemleri | 9 | TYT | 8/25/5/5 | 3 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 2 · PL1 2, PL2 1 | 2/3 | — · Sunu 12 aralık kavramını işler (eşitsizlikler dersinin kaynağı). Eklenen: derece koşulu, üçerli toplamlar. Protip: n nesne n−1 aralık; çözüm kümesi bütün sayılar için iki koşul. |
-| 7 | 🟡 EKSİK | `esitsizlikler` | Aralıklar ve Birinci Dereceden Eşitsizlikler | 9 | TYT | 8/22/5/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 0 · PL1 2, PL2 2 | 0/4 | video protip 0/2; ders anlatım PDF okunmadı |
+| 7 | ✅ BİTTİ | `esitsizlikler` | Aralıklar ve Birinci Dereceden Eşitsizlikler | 9 | TYT | 8/23/5/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 2 · PL1 2, PL2 2 | 3/4 | — · Eklenen: (x+y)/(xy) = 1/x + 1/y ile aralık. Protip: fark aralığında negatifle çarpıp toplama; tam sayılarda uç değer seçimi. |
 | 8 | 🟡 EKSİK | `mutlak-deger` | Mutlak Değer | 9 | TYT | 8/24/3/5 | 4 / 28 (Birinci Dereceden Denklemler ve Eşitsizlikler) | 0 · PL1 2, PL2 3 | 0/3 | video protip 0/2; ders anlatım PDF okunmadı |
 | 9 | 🟡 EKSİK | `uslu-ifadeler` | Üslü İfadeler ve Üslü Denklemler | 9 | TYT | 8/24/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 0 · PL1 2, PL2 5 | 0/4 | video protip 0/2; ders anlatım PDF okunmadı |
 | 10 | 🟡 EKSİK | `koklu-ifadeler` | Köklü İfadeler ve Köklü Denklemler | 9 | TYT | 8/26/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 0 · PL1 2, PL2 3 | 0/4 | video protip 0/2; ders anlatım PDF okunmadı |

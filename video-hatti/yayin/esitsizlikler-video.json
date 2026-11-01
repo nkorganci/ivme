@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "esitsizlikler-video",
+  "topicId": "tyt.matematik.basit-esitsizlikler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433",
+  "taskHash": "dc45c3b37ca4a81a77559f5a5d738bb0735c965a8d156a33bfa5c830282f6587",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\esitsizlikler-video",
+  "artifacts": {
+    "asamalar\\youtube-dHYAFxvNNsA-metin\\eb4ef41ac780843749fb844964d0e755fcedc8e112e6529e901c4cffd1395dd8.json": "b837f63d1ba7aa798b54d2331f60d0de7c18cc275579b1508d11ca9577076b6c",
+    "asamalar\\youtube-dHYAFxvNNsA-kareler\\4a4827fea582385048bba444496bc4b4fbe40cf876a9dd1b92480a4438794595.json": "11253813a2060d818270e9fb9709b2af46b881d46f43955f8159a6610a7378e9",
+    "kareler\\3c19c8e4383d5172bb7bf46c8eb243e61419feb9a2aa2040b78afacc9f43b251.png": "a0efdb0e0018ce27ac64d19e2a7b55309bf33593fcc0cf48e53903a341481bde",
+    "kareler\\a350027ba4849557ade439c266e185a1fdff936ba605f867c80f50d387491e44.png": "67b8a53dde850fa93440b43f2aa3c29f6170473b05e015f5e3e5d237363f00ce",
+    "asamalar\\matematik-denetimi\\085b9f3d9ad86fba44f14af08fcd0ed05409ad50d7dc9616569cad9a17f3d758.json": "150c7e6a86e875da73d7a568a24f00f7c71bdba81ff0562b4a53cdcc15bed865",
+    "surumler\\60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433.json": "476347ca5284c490b751ba19d5e7a991a1e8ab0ee5ee77a7717798de69e3781b",
+    "surumler\\60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433.oneriler.md": "d071cf0722b2ec64968f7765741391eadf1073da5502e1cd8aa22c4053b5a862"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-esitsizlikler-test.py",
+        "sha256": "b9298cf232c24516953d605cec7c4cbe061d94313a13279e7afd3bc37a96785b",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.019s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "esitsizlikler-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.603
+    },
+    "videos": [
+      {
+        "providerId": "youtube:dHYAFxvNNsA",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:dHYAFxvNNsA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1394,
+      "normalization": {
+        "captionControlEvents": 1382,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2780,
+          "file": "kareler\\3c19c8e4383d5172bb7bf46c8eb243e61419feb9a2aa2040b78afacc9f43b251.png",
+          "sha256": "a0efdb0e0018ce27ac64d19e2a7b55309bf33593fcc0cf48e53903a341481bde",
+          "pixelHash": "3c19c8e4383d5172bb7bf46c8eb243e61419feb9a2aa2040b78afacc9f43b251",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 3230,
+          "file": "kareler\\a350027ba4849557ade439c266e185a1fdff936ba605f867c80f50d387491e44.png",
+          "sha256": "67b8a53dde850fa93440b43f2aa3c29f6170473b05e015f5e3e5d237363f00ce",
+          "pixelHash": "a350027ba4849557ade439c266e185a1fdff936ba605f867c80f50d387491e44",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "esitsizlik-taraf-tarafa-toplama",
+      "contentHash": "c38a4ba253612ce60c80aad09fcbf52f0ee540461f2a401530e6ea7bcd61501c",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "tam-sayida-uc-degerleri-sec",
+      "contentHash": "60631a289728cd40a0c37437a39896f15c633d32db3c6092a19c2f56923c2bb0",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

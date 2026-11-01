@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "562ae3964d47e71027dd375384f662edd70bb65833dd7bd0b8e0f56b749122c7",
+  "inputsHash": "4c81b4487867df1d8222a4c188e407ad7ba1dc4cf5e3c338bd185c3f82708bac",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -299,6 +299,52 @@
       },
       "evidenceHash": "c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a",
       "contentHash": "9da036fdeac8fc1f693b0a6a2bdce78758bff1abb855b2c26f4614abc6d2783e",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "esitsizlikler-video:esitsizlik-taraf-tarafa-toplama",
+      "conceptId": "esitsizlikler",
+      "topicId": "tyt.matematik.basit-esitsizlikler",
+      "sectionIds": [
+        "s3"
+      ],
+      "title": "Fark aralığı: negatifle çarp, sonra topla",
+      "rule": "Eşitsizlikler yalnız aynı yönlüyse taraf tarafa toplanır. Fark gerekiyorsa çıkarılacak ifadeyi önce negatif sayıyla çarp (yön değişir), sonra topla: 3x − 2y = 3x + (−2y).",
+      "condition": "Değişkenler bağımsız gerçek sayılar olmalı ve iki aralık aynı yönde (ikisi de küçükten büyüğe) yazılmalı. Uçlarda kesin (<) ve kesin olmayan (≤) birleşince sonuç ucu kesin olur.",
+      "example": "−2 < x ≤ 6 ve −5 ≤ y ≤ 4: −6 < 3x ≤ 18 ve −8 ≤ −2y ≤ 10. Toplam −14 < 3x − 2y ≤ 28; en küçük tam sayı değeri −13.",
+      "counterexample": "Aralıkları doğrudan çıkarmak (−6 − (−5) < 3x − 2y ≤ 18 − 4 gibi) yanlış sınır verir: −1 ile 14 arası çıkar ama x = −1,9, y = 4 için 3x − 2y = −13,7 bu aralığın dışındadır.",
+      "rationale": "Toplamın en küçüğü iki terimin en küçüklerinin toplamıdır; −2y'nin en küçüğü y en büyükken oluşur. Negatifle çarpma bu ters eşleşmeyi otomatik yapar.",
+      "source": {
+        "providerId": "youtube:dHYAFxvNNsA",
+        "startSeconds": 2629,
+        "endSeconds": 2830
+      },
+      "evidenceHash": "60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433",
+      "contentHash": "c38a4ba253612ce60c80aad09fcbf52f0ee540461f2a401530e6ea7bcd61501c",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "esitsizlikler-video:tam-sayida-uc-degerleri-sec",
+      "conceptId": "esitsizlikler",
+      "topicId": "tyt.matematik.basit-esitsizlikler",
+      "sectionIds": [
+        "s3b"
+      ],
+      "title": "Tam sayılarda aralık toplamı değil uç değer",
+      "rule": "Değişkenler tam sayıysa aralıkları toplamak yerine her değişkenin alabileceği uç tam sayıyı seç: 3x − 4y'nin en büyüğü için x en büyük, y en küçük tam sayı.",
+      "condition": "Değişkenler birbirinden bağımsız tam sayılar olmalı ve ifade her değişkene göre tek yönlü (doğrusal) değişmeli.",
+      "example": "−4 < x < 5 ve −3 < y < 8 tam sayılar: x = 4, y = −2 için 3x − 4y = 12 + 8 = 20.",
+      "counterexample": "Gerçel aralık hesabı −44 < 3x − 4y < 27 verir ve ‘en büyük tam sayı 26’ dedirtir; ama x ve y tam sayıyken 26'ya ulaşan değer yoktur. 26 ancak x, y gerçel sayıysa olur.",
+      "rationale": "Açık uçlu aralıkta x'in tam sayı en büyüğü 4'tür, gerçel olarak 5'e yaklaşabilir. Aralık toplamı bu ‘yaklaşabilen’ değerleri kullandığı için tam sayılarda ulaşılamayan bir üst sınır verir.",
+      "source": {
+        "providerId": "youtube:dHYAFxvNNsA",
+        "startSeconds": 3150,
+        "endSeconds": 3270
+      },
+      "evidenceHash": "60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433",
+      "contentHash": "60631a289728cd40a0c37437a39896f15c633d32db3c6092a19c2f56923c2bb0",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

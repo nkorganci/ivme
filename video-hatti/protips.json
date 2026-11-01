@@ -127,6 +127,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "esitsizlikler-video",
+      "conceptId": "esitsizlikler",
+      "hints": [
+        {
+          "id": "esitsizlik-taraf-tarafa-toplama",
+          "title": "Fark aralığı: negatifle çarp, sonra topla",
+          "sectionIds": [
+            "s3"
+          ]
+        },
+        {
+          "id": "tam-sayida-uc-degerleri-sec",
+          "title": "Tam sayılarda aralık toplamı değil uç değer",
+          "sectionIds": [
+            "s3b"
+          ]
+        }
+      ]
     }
   ]
 }

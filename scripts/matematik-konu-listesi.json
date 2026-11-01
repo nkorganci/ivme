@@ -247,7 +247,11 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/17 - BIRINCI DERECEDEN IKI BILINMEYENLI ESITSIZLIKLER.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/12 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER.pdf s.1-18",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/14 - BIRINCI DERECEDEN BIR BILINMEYENLI ESITSIZLIKLER.pdf s.1-19 (görsel)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/17 - BIRINCI DERECEDEN IKI BILINMEYENLI ESITSIZLIKLER.pdf s.1-17"
+      ],
       "videolar": {
         "PL1": [
           "dHYAFxvNNsA",
@@ -257,7 +261,8 @@
           "EWSRVaTIzoQ",
           "dEkZxYJJV1Y"
         ]
-      }
+      },
+      "not": "Eklenen: (x+y)/(xy) = 1/x + 1/y ile aralık. Protip: fark aralığında negatifle çarpıp toplama; tam sayılarda uç değer seçimi."
     },
     {
       "id": "mutlak-deger",
