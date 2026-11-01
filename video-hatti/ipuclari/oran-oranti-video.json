@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "katsayili-esitlikte-ekok",
+    "providerId": "youtube:h3eXcwYR1NM",
+    "startSeconds": 1647,
+    "endSeconds": 1980,
+    "quote": "bunların ekokuna bakıyorsunuz",
+    "frameSeconds": [
+      1720
+    ],
+    "rule": "3x = 2y = 5z biçimindeki eşitliklerde ortak değeri katsayıların EKOK'unun katı yaz: 3x = 2y = 5z = 30k ise x = 10k, y = 15k, z = 6k.",
+    "condition": "Katsayılar sıfırdan farklı olmalı. EKOK yerine herhangi bir ortak kat da doğru sonuç verir; EKOK yalnız sayıları küçük tutar.",
+    "example": "3x = 2y = 5z ve x + y + z = 93: x = 10k, y = 15k, z = 6k, 31k = 93, k = 3. x − z = 30 − 18 = 12.",
+    "counterexample": "x = 3k, y = 2k, z = 5k yazmak (katsayıları doğrudan paylara koymak) ters orantıyı unutur: 3x = 9k, 2y = 4k eşit değildir. Katsayısı büyük olanın değeri küçük olur.",
+    "rationale": "3x = 30k ise x = 30k/3 = 10k; ortak değeri katsayıların hepsine bölünebilen bir sayı seçince bütün bilinmeyenler tam sayı katsayılı olur.",
+    "agentSourceReview": "Claude 1720. saniye karesini açtı: Örnek 7'nin metni (3x = 2y = 5z, x + y + z = 93, x − z) ve 3x = 2y = 5z yazımı tahtada görünüyor; çözüm adımları altyazıdan okundu ve bağımsız hesaplandı.",
+    "questionCompleteness": "PARTIAL_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "hangi-kutu-8-tam-sayi-secer",
+    "providerId": "youtube:h3eXcwYR1NM",
+    "startSeconds": 2880,
+    "endSeconds": 3060,
+    "quote": "kutuların birinde 8 top varsa",
+    "frameSeconds": [
+      2980
+    ],
+    "rule": "a = 2b = 3c = 4d gibi zincirde önce ortak katla yaz (a = 12x, b = 6x, c = 4x, d = 3x). ‘Kutulardan birinde 8 var’ deniyorsa her kutuyu 8 yapıp bütün kutuların tam sayı kaldığı durumu seç.",
+    "condition": "Nesneler bölünemeyen adetler olmalı (top, kişi). Hangi kutunun 8 olduğu söylenmediğinde tam sayı koşulu tek durumu bırakır; birden fazla durum kalırsa hepsi değerlendirilir.",
+    "example": "2020 TYT: A = 12x, B = 6x, C = 4x, D = 3x. 4x = 8 ise x = 2: 24, 12, 8, 6 — hepsi tam sayı; toplam 25x = 50. 12x = 8, 6x = 8 ya da 3x = 8 seçilirse bazı kutular kesirli olur.",
+    "counterexample": "A = 8 kabul edilirse x = 2/3 ve B = 4, C = 8/3 olur; kesirli top olamaz. ‘Birinde 8’ bilgisini en büyük kutuya yerleştirmek alışkanlığı yanlış sonuç verir.",
+    "rationale": "Oran yalnız oranları belirler; gerçek adetler ortak çarpana bağlıdır. Tam sayı koşulu ortak çarpanın alabileceği değerleri sınırlar.",
+    "agentSourceReview": "Claude 2980. saniye karesini açtı: 2020 TYT çıkmış sorusunun metni ve seçenekleri (A, B'nin 2 katına, C'nin 3 katına, D'nin 4 katına eşit; birinde 8 top; toplam) ve A = 12x, B = 6x, C = 4x yazımı tahtada görünüyor. Bütün durumlar bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

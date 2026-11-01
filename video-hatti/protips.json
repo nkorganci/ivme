@@ -227,6 +227,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "oran-oranti-video",
+      "conceptId": "oran-oranti",
+      "hints": [
+        {
+          "id": "katsayili-esitlikte-ekok",
+          "title": "3x = 2y = 5z: katsayıların EKOK'unu kullan",
+          "sectionIds": [
+            "s1"
+          ]
+        },
+        {
+          "id": "hangi-kutu-8-tam-sayi-secer",
+          "title": "Hangi kutu 8? Tam sayı koşulu seçer",
+          "sectionIds": [
+            "s3"
+          ]
+        }
+      ]
     }
   ]
 }

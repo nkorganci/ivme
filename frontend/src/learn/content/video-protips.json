@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "c7b6a682a97eef76d2da943d8a73a5afe273fc74300a86ca113f594a0f136bae",
+  "inputsHash": "eea913f4c69078b3160625ec00a80271e0db769b7e0820fe99e07ca2b9424f5a",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -529,6 +529,52 @@
       },
       "evidenceHash": "9303cd99ba05dcf4ba50c3a1f09219d569aee0569e1be13d965b973f79ab8355",
       "contentHash": "30998816e4dfb97229a158070f73040c76321b789a0673bde246d37bcc86b52e",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "oran-oranti-video:katsayili-esitlikte-ekok",
+      "conceptId": "oran-oranti",
+      "topicId": "tyt.matematik.oran-ve-oranti",
+      "sectionIds": [
+        "s1"
+      ],
+      "title": "3x = 2y = 5z: katsayıların EKOK'unu kullan",
+      "rule": "3x = 2y = 5z biçimindeki eşitliklerde ortak değeri katsayıların EKOK'unun katı yaz: 3x = 2y = 5z = 30k ise x = 10k, y = 15k, z = 6k.",
+      "condition": "Katsayılar sıfırdan farklı olmalı. EKOK yerine herhangi bir ortak kat da doğru sonuç verir; EKOK yalnız sayıları küçük tutar.",
+      "example": "3x = 2y = 5z ve x + y + z = 93: x = 10k, y = 15k, z = 6k, 31k = 93, k = 3. x − z = 30 − 18 = 12.",
+      "counterexample": "x = 3k, y = 2k, z = 5k yazmak (katsayıları doğrudan paylara koymak) ters orantıyı unutur: 3x = 9k, 2y = 4k eşit değildir. Katsayısı büyük olanın değeri küçük olur.",
+      "rationale": "3x = 30k ise x = 30k/3 = 10k; ortak değeri katsayıların hepsine bölünebilen bir sayı seçince bütün bilinmeyenler tam sayı katsayılı olur.",
+      "source": {
+        "providerId": "youtube:h3eXcwYR1NM",
+        "startSeconds": 1647,
+        "endSeconds": 1980
+      },
+      "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+      "contentHash": "2cefe6f6f4e2f9d3416fbe04752d619bfd800c31963271f4aaaed2b9ac9fccb8",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "oran-oranti-video:hangi-kutu-8-tam-sayi-secer",
+      "conceptId": "oran-oranti",
+      "topicId": "tyt.matematik.oran-ve-oranti",
+      "sectionIds": [
+        "s3"
+      ],
+      "title": "Hangi kutu 8? Tam sayı koşulu seçer",
+      "rule": "a = 2b = 3c = 4d gibi zincirde önce ortak katla yaz (a = 12x, b = 6x, c = 4x, d = 3x). ‘Kutulardan birinde 8 var’ deniyorsa her kutuyu 8 yapıp bütün kutuların tam sayı kaldığı durumu seç.",
+      "condition": "Nesneler bölünemeyen adetler olmalı (top, kişi). Hangi kutunun 8 olduğu söylenmediğinde tam sayı koşulu tek durumu bırakır; birden fazla durum kalırsa hepsi değerlendirilir.",
+      "example": "2020 TYT: A = 12x, B = 6x, C = 4x, D = 3x. 4x = 8 ise x = 2: 24, 12, 8, 6 — hepsi tam sayı; toplam 25x = 50. 12x = 8, 6x = 8 ya da 3x = 8 seçilirse bazı kutular kesirli olur.",
+      "counterexample": "A = 8 kabul edilirse x = 2/3 ve B = 4, C = 8/3 olur; kesirli top olamaz. ‘Birinde 8’ bilgisini en büyük kutuya yerleştirmek alışkanlığı yanlış sonuç verir.",
+      "rationale": "Oran yalnız oranları belirler; gerçek adetler ortak çarpana bağlıdır. Tam sayı koşulu ortak çarpanın alabileceği değerleri sınırlar.",
+      "source": {
+        "providerId": "youtube:h3eXcwYR1NM",
+        "startSeconds": 2880,
+        "endSeconds": 3060
+      },
+      "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+      "contentHash": "156f6a58229741ae187687f018af134318ac5fadff72f2b11be8e848b658a282",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

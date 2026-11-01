@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "oran-oranti-video",
+  "topicId": "tyt.matematik.oran-ve-oranti",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+  "taskHash": "7d37f795d7aef2366d9c0ddad34af1714d801e464464763c3de2b69f67572dc6",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\oran-oranti-video",
+  "artifacts": {
+    "asamalar\\youtube-h3eXcwYR1NM-metin\\f0f116fde1f580eadfb60b85da6c06a1d437d360500d6421f714f065bd896ba2.json": "3bf1666352fa56575c0976203c9546593ebacbd2d48d886fee227d875e83aa1e",
+    "asamalar\\youtube-h3eXcwYR1NM-kareler\\51bd89625d2cc08bf9b7c5fae987fd3af88b369c2d02b85b6b255aa13e6db1d3.json": "b2edb7cf35b53ba97efb562ff2e5a0e9753f4eb7e25faf182c98ab2a1c7e9069",
+    "kareler\\116eb8ac8dd69f0d9c5e977e77fbed0e211299c6d8d71a98a76387bd5a9fc3a3.png": "a66e8dcd509cad4aea7733355850c116762b19f621ea76a5a9483bac8c95d861",
+    "kareler\\d809706e5df601c5e0b1a0b0d0f5c6ef689f0468fa2484220c5887419d1287e8.png": "57be8e5389f4c626abc0601519881fc0085c5eae28a08c934b41c2b585246bb0",
+    "asamalar\\matematik-denetimi\\22cbe199f50890586a6f11a99875939a131bb2bfe9a7775d65230fd7e6689b50.json": "4a47916d9af4093e470e43799ead1c1f41e5f900782252cdca7b2afa9e3cb9db",
+    "surumler\\0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549.json": "e130e7e0b7b7be3156bc1d2cb4276e0b2ab44fd753a4c514d387b6101c7daf21",
+    "surumler\\0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549.oneriler.md": "8c89e1e278dde4b4f028a19cf352c2b62f27cf1ff92bd2c6a60bdaebcee50655"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-oran-oranti-test.py",
+        "sha256": "31aa514a2619b9aee874fa183e8d35e782f4ef2e24b9a6cd29ca98c71ead3158",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.021s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "oran-oranti-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.986
+    },
+    "videos": [
+      {
+        "providerId": "youtube:h3eXcwYR1NM",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:h3eXcwYR1NM",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1054,
+      "normalization": {
+        "captionControlEvents": 1036,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1720,
+          "file": "kareler\\116eb8ac8dd69f0d9c5e977e77fbed0e211299c6d8d71a98a76387bd5a9fc3a3.png",
+          "sha256": "a66e8dcd509cad4aea7733355850c116762b19f621ea76a5a9483bac8c95d861",
+          "pixelHash": "116eb8ac8dd69f0d9c5e977e77fbed0e211299c6d8d71a98a76387bd5a9fc3a3",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2980,
+          "file": "kareler\\d809706e5df601c5e0b1a0b0d0f5c6ef689f0468fa2484220c5887419d1287e8.png",
+          "sha256": "57be8e5389f4c626abc0601519881fc0085c5eae28a08c934b41c2b585246bb0",
+          "pixelHash": "d809706e5df601c5e0b1a0b0d0f5c6ef689f0468fa2484220c5887419d1287e8",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "katsayili-esitlikte-ekok",
+      "contentHash": "2cefe6f6f4e2f9d3416fbe04752d619bfd800c31963271f4aaaed2b9ac9fccb8",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "hangi-kutu-8-tam-sayi-secer",
+      "contentHash": "156f6a58229741ae187687f018af134318ac5fadff72f2b11be8e848b658a282",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
