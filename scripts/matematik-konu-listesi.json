@@ -222,7 +222,10 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/13 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER 2.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/13 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER 2.pdf s.1-22",
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf s.1-23"
+      ],
       "videolar": {
         "PL1": [
           "DzPV2vxTmXM",
@@ -231,13 +234,15 @@
         "PL2": [
           "rxL14D2aUd4"
         ]
-      }
+      },
+      "not": "Sunu 12 aralık kavramını işler (eşitsizlikler dersinin kaynağı). Eklenen: derece koşulu, üçerli toplamlar. Protip: n nesne n−1 aralık; çözüm kümesi bütün sayılar için iki koşul."
     },
     {
       "id": "esitsizlikler",
       "asama": "TYT",
       "cikmis": "denklem-esitsizlik",
       "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/12 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER.pdf",
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/14 - BIRINCI DERECEDEN BIR BILINMEYENLI ESITSIZLIKLER.pdf",
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/17 - BIRINCI DERECEDEN IKI BILINMEYENLI ESITSIZLIKLER.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"

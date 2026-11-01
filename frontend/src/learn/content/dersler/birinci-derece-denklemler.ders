@@ -9,7 +9,7 @@ onkosul: rasyonel-sayilar
 kategori: excel.tyt.matematik.ceb9fbdfaa16dc1f89eb excel.ayt.matematik.ceb9fbdfaa16dc1f89eb excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
 hedef: Kesirli ve parantezli birinci dereceden denklemleri hatasız çözmek; çözüm kümesinin tek eleman, $\mathbb{R}$ ya da $\varnothing$ olduğu durumları ayırmak; iki bilinmeyenli denklem sistemlerini yok etme ve yerine koymayla çözmek; istenen ifadeyi bilinmeyenleri tek tek bulmadan elde etmek.
 neden: Denklem kurmak ve çözmek bütün problemlerin (TYT'de her yıl 10'dan fazla soru) motorudur. "Birinci Dereceden Denklemler ve Eşitsizlikler" başlığında 28 çıkmış TYT sorusu ve OGM bankasında 896 TYT sorusu var.
-kaynak: MEBİ TYT Konu Özeti — Birinci Dereceden Bir ve İki Bilinmeyenli Denklemler | OGM 9. Sınıf Konu Özetleri 14, 19 | OGM Video Notları TYT 03 — Denklemler
+kaynak: MEBİ TYT Konu Özeti — Birinci Dereceden Bir ve İki Bilinmeyenli Denklemler | OGM 9. Sınıf Konu Özetleri 14, 19 | OGM Video Notları TYT 03 — Denklemler | OGM 9. Sınıf Ders Anlatım Sunusu 13 — Birinci Dereceden Bir Bilinmeyenli Denklemler
 tekrar: 12
 ustalik-dk: 15
 hedef-sure: 60
@@ -276,6 +276,20 @@ soru: $(2m-1)x+m=3x+7$ denkleminin kökü 2 olduğuna göre $m$ kaçtır?
 2. $4m-2+m=13$, $5m=15$. || Dağıtıp topladık.
 3. $m=3$. || Sağlama: $5\cdot2+3=13=6+7$ ✓
 cevap: $m=3$
+
+::ornek baslik="Denklem birinci dereceden olsun diye"
+soru: $(m-3)x^2+(n+2)x+5=0$ ifadesi $x$'e bağlı birinci dereceden bir bilinmeyenli denklemdir ve kökü 1'dir. $m+n$ kaçtır?
+1. Birinci derece için $x^2$'li terim olmamalı: $m-3=0$, $m=3$. || Derece, sıfırdan farklı katsayılı en büyük üstür.
+2. $x$'li terim kalmalı: $n+2\ne0$. Denklem $(n+2)x+5=0$. || Katsayı da sıfır olsaydı denklem ya çelişki ya özdeşlik olurdu.
+3. Kök 1: $(n+2)+5=0$, $n=-7$; $n+2=-5\ne0$ ✓. $m+n=-4$. || Kökü yerine koyduk, koşulu kontrol ettik.
+cevap: $-4$.
+
+::ornek baslik="Üçerli toplamlardan tek sayıya"
+soru: $a<b<c<d$ tam sayılarının üçerli toplamları 20, 24, 27 ve 31'dir. $c$ kaçtır?
+1. Dört üçerli toplamı topla: her sayı üç kez sayılır, $3(a+b+c+d)=102$, yani $a+b+c+d=34$. || Her sayı dört üçlünün üçünde vardır.
+2. En küçük üçlü toplam en büyük sayıyı dışarıda bırakır: $a+b+c=20$, $d=14$. En büyük toplam en küçük sayıyı dışarıda bırakır: $b+c+d=31$, $a=3$. || Sıralama hangi sayının dışarıda kaldığını söyler.
+3. $a+b+d=24$ ise $c=34-24=10$; $a+c+d=27$ ise $b=7$. || Kalan iki toplam ortadaki sayıları verir.
+cevap: 10. Kontrol: $3<7<10<14$ ve toplamlar $20, 24, 27, 31$.
 
 ::ornek baslik="Yasak değer: paydayı sıfır yapan kök"
 soru: $\dfrac{x+1}{x-2}=\dfrac{3}{x-2}$ denkleminin çözüm kümesini bul. $\dfrac{2x+1}{x+3}=1$ ile karşılaştır.

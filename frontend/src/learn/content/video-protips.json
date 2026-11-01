@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "d82030d6caaca01170f04079c24635df17c8b5665bbcd188046afb36dec795bb",
+  "inputsHash": "562ae3964d47e71027dd375384f662edd70bb65833dd7bd0b8e0f56b749122c7",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -253,6 +253,52 @@
       },
       "evidenceHash": "b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729",
       "contentHash": "fe28b8db9f97ad6de63e8e35f8140c210aeeef7a47d6501f38412c4c7d2cbb35",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "birinci-derece-denklemler-video:n-nesne-n-eksi-bir-aralik",
+      "conceptId": "birinci-derece-denklemler",
+      "topicId": "tyt.matematik.birinci-dereceden-denklemler",
+      "sectionIds": [
+        "s1b"
+      ],
+      "title": "n nesne, n − 1 aralık",
+      "rule": "Bir doğru boyunca dizilmiş n nesne arasında n − 1 aralık vardır. Aralıklar düzenli artıyorsa (x + 4, x + 8, …) toplamı terim sayısı ve ardışık toplamla tek bilinmeyenli denkleme dönüşür.",
+      "condition": "Nesneler bir doğru boyunca uçlarda başlayıp bitmeli. Kapalı bir pist ya da çember etrafında n nesne n aralık oluşturur.",
+      "example": "8 ağaçta 7 aralık: x + 4, x + 8, …, x + 28. Toplam 7x + 4(1 + 2 + … + 7) = 7x + 112 = 329, x = 31. 1. ile 4. ağaç arası üç aralık: 35 + 39 + 43 = 117.",
+      "counterexample": "8 aralık sayılırsa 8x + 4·36 = 329 olur ve x tam sayı bile çıkmaz; ağaçlar bir çemberin etrafında olsaydı ise gerçekten 8 aralık olurdu.",
+      "rationale": "Her aralık iki komşu nesne arasındadır; ilk nesneden sonra gelen her nesne yeni bir aralık açar. Bu yüzden aralık sayısı nesne sayısından bir eksiktir.",
+      "source": {
+        "providerId": "youtube:DzPV2vxTmXM",
+        "startSeconds": 1180,
+        "endSeconds": 1400
+      },
+      "evidenceHash": "c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a",
+      "contentHash": "7fdb202098b3030f0e9f972f2b0ff9a261ab2f5db5bc5a35953f2d878bdc4773",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "birinci-derece-denklemler-video:cozum-kumesi-tum-gercel-sayilar",
+      "conceptId": "birinci-derece-denklemler",
+      "topicId": "tyt.matematik.birinci-dereceden-denklemler",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "Çözüm kümesi bütün sayılar: iki koşul birlikte",
+      "rule": "ax + b = cx + d denkleminin çözüm kümesi bütün gerçek sayılarsa iki koşul birlikte gerekir: x'ler gitmeli (a = c) ve kalan sayılar eşit olmalı (b = d). Boş küme için a = c ama b ≠ d.",
+      "condition": "Denklem birinci dereceden ve x'e göre düzenlenmiş olmalı. Tek çözüm için x'in katsayıları farklı olmalı (a ≠ c); parametreler bu üç durumu ayırır.",
+      "example": "2mx + 5 = 3(x − 1) + 4n her x için doğruysa 2m = 3 ve 5 = −3 + 4n; m = 3/2, n = 2, m + n = 7/2.",
+      "counterexample": "Yalnız 2m = 3 koşulu yetmez: n = 1 seçilirse 5 = 1 olur ve çözüm kümesi boş kümedir. Boş küme isteniyorsa b = d koşulu tersine çevrilir (n ≠ 2).",
+      "rationale": "x'li terimler eşitse her x için iki taraf aynı miktarda değişir; geriye kalan sabitler eşitse eşitlik her x için doğru, eşit değilse hiçbir x için doğru değildir.",
+      "source": {
+        "providerId": "youtube:DzPV2vxTmXM",
+        "startSeconds": 1860,
+        "endSeconds": 1990
+      },
+      "evidenceHash": "c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a",
+      "contentHash": "9da036fdeac8fc1f693b0a6a2bdce78758bff1abb855b2c26f4614abc6d2783e",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

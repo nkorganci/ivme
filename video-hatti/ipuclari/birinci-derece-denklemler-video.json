@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "n-nesne-n-eksi-bir-aralik",
+    "providerId": "youtube:DzPV2vxTmXM",
+    "startSeconds": 1180,
+    "endSeconds": 1400,
+    "quote": "8 ağaç var o zaman 7 tane Aralık var",
+    "frameSeconds": [
+      1330
+    ],
+    "rule": "Bir doğru boyunca dizilmiş n nesne arasında n − 1 aralık vardır. Aralıklar düzenli artıyorsa (x + 4, x + 8, …) toplamı terim sayısı ve ardışık toplamla tek bilinmeyenli denkleme dönüşür.",
+    "condition": "Nesneler bir doğru boyunca uçlarda başlayıp bitmeli. Kapalı bir pist ya da çember etrafında n nesne n aralık oluşturur.",
+    "example": "8 ağaçta 7 aralık: x + 4, x + 8, …, x + 28. Toplam 7x + 4(1 + 2 + … + 7) = 7x + 112 = 329, x = 31. 1. ile 4. ağaç arası üç aralık: 35 + 39 + 43 = 117.",
+    "counterexample": "8 aralık sayılırsa 8x + 4·36 = 329 olur ve x tam sayı bile çıkmaz; ağaçlar bir çemberin etrafında olsaydı ise gerçekten 8 aralık olurdu.",
+    "rationale": "Her aralık iki komşu nesne arasındadır; ilk nesneden sonra gelen her nesne yeni bir aralık açar. Bu yüzden aralık sayısı nesne sayısından bir eksiktir.",
+    "agentSourceReview": "Claude 1330. saniye karesini açtı: Soru 1'in metni ve seçenekleri (8 ağaç, yol 329 m), 1–8 numaralı ağaçlar, x + 4, x + 8, …, x + 28 aralıkları, 7x + 112 = 329, x = 31 ve 35 + 39 + 43 = 117 hesabı tahtada görünüyor. Sonuç bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "cozum-kumesi-tum-gercel-sayilar",
+    "providerId": "youtube:DzPV2vxTmXM",
+    "startSeconds": 1860,
+    "endSeconds": 1990,
+    "quote": "kalan sayıların da birbirine eşit olması gerekiyor",
+    "frameSeconds": [
+      1900
+    ],
+    "rule": "ax + b = cx + d denkleminin çözüm kümesi bütün gerçek sayılarsa iki koşul birlikte gerekir: x'ler gitmeli (a = c) ve kalan sayılar eşit olmalı (b = d). Boş küme için a = c ama b ≠ d.",
+    "condition": "Denklem birinci dereceden ve x'e göre düzenlenmiş olmalı. Tek çözüm için x'in katsayıları farklı olmalı (a ≠ c); parametreler bu üç durumu ayırır.",
+    "example": "2mx + 5 = 3(x − 1) + 4n her x için doğruysa 2m = 3 ve 5 = −3 + 4n; m = 3/2, n = 2, m + n = 7/2.",
+    "counterexample": "Yalnız 2m = 3 koşulu yetmez: n = 1 seçilirse 5 = 1 olur ve çözüm kümesi boş kümedir. Boş küme isteniyorsa b = d koşulu tersine çevrilir (n ≠ 2).",
+    "rationale": "x'li terimler eşitse her x için iki taraf aynı miktarda değişir; geriye kalan sabitler eşitse eşitlik her x için doğru, eşit değilse hiçbir x için doğru değildir.",
+    "agentSourceReview": "Claude 1900. saniye karesini açtı: Örnek 8'in metni (2mx + 5 = 3(x − 1) + 4n, çözüm kümesi gerçel sayılar, m + n), dağıtılmış 3x − 3 + 4n satırı ve 2m = 3, m = 3/2 tahtada görünüyor. n = 2 ve 7/2 bağımsız hesaplandı.",
+    "questionCompleteness": "PARTIAL_IN_REVIEWED_FRAME"
+  }
+]

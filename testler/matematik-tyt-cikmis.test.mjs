@@ -153,3 +153,13 @@ test('rasyonel sayılar: a,b̄ + b,ā = 10 sayımı', () => {
   for (const a of range(1, 9)) for (const b of range(0, 9)) if (Math.abs(a + b / 9 + b + a / 9 - 10) < 1e-9) ok.push(10 * a + b);
   assert.deepEqual(ok, [18, 27, 36, 45, 54, 63, 72, 81, 90]);
 });
+
+test('birinci derece denklemler: derece koşulu ve üçerli toplamlar', () => {
+  const n = -7; assert.equal(n + 2 + 5, 0); assert.notEqual(n + 2, 0); assert.equal(3 + n, -4);
+  const found = [];
+  for (const a of range(-20, 20)) for (const b of range(a + 1, 25)) for (const c of range(b + 1, 30)) for (const d of range(c + 1, 35)) {
+    const sums = [a + b + c, a + b + d, a + c + d, b + c + d].sort((x, y) => x - y);
+    if (sums.join() === '20,24,27,31') found.push([a, b, c, d]);
+  }
+  assert.deepEqual(found, [[3, 7, 10, 14]]);
+});

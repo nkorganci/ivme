@@ -107,6 +107,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "birinci-derece-denklemler-video",
+      "conceptId": "birinci-derece-denklemler",
+      "hints": [
+        {
+          "id": "n-nesne-n-eksi-bir-aralik",
+          "title": "n nesne, n − 1 aralık",
+          "sectionIds": [
+            "s1b"
+          ]
+        },
+        {
+          "id": "cozum-kumesi-tum-gercel-sayilar",
+          "title": "Çözüm kümesi bütün sayılar: iki koşul birlikte",
+          "sectionIds": [
+            "s2"
+          ]
+        }
+      ]
     }
   ]
 }

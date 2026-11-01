@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "birinci-derece-denklemler-video",
+  "topicId": "tyt.matematik.birinci-dereceden-denklemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a",
+  "taskHash": "f47841ebb27667900e7048b9d2feac34adcef567a019a2570fe50660cbeaa710",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\birinci-derece-denklemler-video",
+  "artifacts": {
+    "asamalar\\youtube-DzPV2vxTmXM-metin\\980b02e8a7091e496e4b69d8f736a161e219b57273cdda38a13195664d6a1855.json": "8259b866d51a9e98913a70c1a8203e1ea920643c9e17007fdae5f7c11b10e2be",
+    "asamalar\\youtube-DzPV2vxTmXM-kareler\\bebbe9f890befbc4938fdaa86da09f116d47957c2a2c1ec68c5615a3b5087b67.json": "d14bbcc84aa4a9c108c7e0567b3e4f78044d0dfac4420490031ac6ee88b5e4db",
+    "kareler\\7048b733ff2d6140aa741fcb899b6b08b150b21a0df65c64547a4c39db87e985.png": "5591cf7fd8c0fa89273f6b91a5e194ca588898b201fde68e9c1d94b26439cf11",
+    "kareler\\b3e6dd2df59b723fdf553967c7249a120a669779a1282af3b25d5971c38b36a5.png": "e36f7ed264eb43496e7eaae314994cd010c05db7f1d6729ed1f3294cb212f588",
+    "asamalar\\matematik-denetimi\\7457d2c8bfb6b6f1aaf17ad62c2e13688a7f4df2ed688f42c1f19d05e4883c80.json": "a32f714ed83bd94a6b61bfd9ca39f8f53ed2fa7e672eb00c8a5515dee908653e",
+    "surumler\\c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a.json": "728b1299e6724ca07e17a1c10521662d9196b24da510d9fb089c10e384232149",
+    "surumler\\c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a.oneriler.md": "ccf571bad841f5bbb4256a26da3f22641f139f288397de32ad8eb26f46f4938c"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-birinci-derece-denklemler-test.py",
+        "sha256": "73324480bd2a8fbf39cc8b1641212a60ba0ea0f234630e8a3b4d52486751a62f",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "birinci-derece-denklemler-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "c37a8fe9d88227054663aac1eaf8a7fdcb830e53fd928d548f9a3d232f06145a",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.418
+    },
+    "videos": [
+      {
+        "providerId": "youtube:DzPV2vxTmXM",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DzPV2vxTmXM",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1124,
+      "normalization": {
+        "captionControlEvents": 1116,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1330,
+          "file": "kareler\\b3e6dd2df59b723fdf553967c7249a120a669779a1282af3b25d5971c38b36a5.png",
+          "sha256": "e36f7ed264eb43496e7eaae314994cd010c05db7f1d6729ed1f3294cb212f588",
+          "pixelHash": "b3e6dd2df59b723fdf553967c7249a120a669779a1282af3b25d5971c38b36a5",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1900,
+          "file": "kareler\\7048b733ff2d6140aa741fcb899b6b08b150b21a0df65c64547a4c39db87e985.png",
+          "sha256": "5591cf7fd8c0fa89273f6b91a5e194ca588898b201fde68e9c1d94b26439cf11",
+          "pixelHash": "7048b733ff2d6140aa741fcb899b6b08b150b21a0df65c64547a4c39db87e985",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "n-nesne-n-eksi-bir-aralik",
+      "contentHash": "7fdb202098b3030f0e9f972f2b0ff9a261ab2f5db5bc5a35953f2d878bdc4773",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "cozum-kumesi-tum-gercel-sayilar",
+      "contentHash": "9da036fdeac8fc1f693b0a6a2bdce78758bff1abb855b2c26f4614abc6d2783e",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
