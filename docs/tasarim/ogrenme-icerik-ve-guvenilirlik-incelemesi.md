@@ -85,7 +85,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 7 — TAS-07 | P1 — Sol 6.1 `high` + script/OCR (Claude: Sonnet 5.5 `high`) | Tamamlandı (12.11; PDF kanıt çıkarımı) | PDF/şekil çıkarımını sürümlü kanıt paketine dönüştürme | Mevcut hat, TAS-03 | Temsilî kaynaklarda metin/şekil/denklem izlenebilir; aynı girdide gereksiz model çağrısı yok |
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Kısmen (kaynaklı pilot ve UI kabulü; insan incelemesi açık) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlandı (12.13; iki konu öğretmen incelemesinde) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
-| 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Tamamlanmadı (yalnız öneri) | Yöneticiye yeni kayıt bildirimi | TAS-02; sağlayıcı/alıcı yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
+| 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmi (12.14; uygulandı, gerçek gönderim kabulü bekliyor) | Yöneticiye yeni kayıt bildirimi | TAS-02; Brevo gönderen/API yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
 | 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Tamamlanmadı (yalnız öneri) | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
 | 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Kısmen (kural ve TAS-01 regresyonları var; sürekli iş) | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
 
@@ -560,6 +560,12 @@ Log alanları: zaman, ortam/sürüm, request/trace ID, işlem, anonimleştirilmi
 Uyarılarda tekilleştirme, bekleme süresi, önem seviyesi ve iyileşme bildirimi olmalı. İlk eşikler pilotta ölçülür; “readiness birkaç kontrol boyunca başarısız”, “onaysız kayıt yaşı kabul edilen süreyi aşıyor” gibi kurallar açıkça tanımlanır. Her uyarının kısa müdahale tarifi ve sorumlusu bulunur. Salt dashboard hazırlamak yeterli değildir.
 
 ## 15. TAS-10: Yeni kayıtta yöneticiye bildirim
+
+**Uygulama durumu (12.14):** V95 outbox, kayıtla atomik iş oluşturma, lease ile
+çalışan Brevo HTTP göndericisi, artan retry ve yönetim paneli uygulandı. Eksik ayarda
+iş korunur. Sağlayıcı olarak kullanıcı tercihiyle ücretsiz Brevo seçildi; alıcı yerel
+ayardadır. Doğrulanmış gönderen/API anahtarı ve gerçek alıcıya ulaşma kabulü açık.
+[İşletim ve doğrulama tarifi](../islemler/kayit-bildirimleri.md).
 
 Mevcut hesap onayı korunarak **kayıt + kalıcı bildirim işi** aynı transaction içinde oluşturulmalı. İş kaydı commit sonrasında gönderici tarafından işlenir. Kayıt başarılı olup e-posta geçici hata verirse öğrenci hesabı geri alınmaz; bildirim tekrar denenir.
 

@@ -11,6 +11,7 @@ kalır. Bir komut değişince tarif aynı commit'te güncellenir.
 | Değişikliği doğrulama: izleyici, backend testi, ekran denetimi | [dogrulama.md](dogrulama.md) |
 | Yerel uygulama, paket, HTTPS tüneli ve yedek | [uygulama-calistirma-ve-yayin.md](uygulama-calistirma-ve-yayin.md) |
 | Sağlık uçları, kayıt metrikleri ve dış uyarı | [saglik-ve-izleme.md](saglik-ve-izleme.md) |
+| Yeni kayıt e-postası, Brevo kurulumu ve kalıcı bildirim/retry | [kayit-bildirimleri.md](kayit-bildirimleri.md) |
 | Soru CSV/JSON içe aktarma ve görsel kırpma | [soru-ice-aktarma.md](soru-ice-aktarma.md) |
 | PDF'den soru çıkarma (metin önce, görsel yalnız gerekince) ve yerel Ollama | [pdf-ve-yerel-model.md](pdf-ve-yerel-model.md) |
 | TYT/AYT PDF–banka kaynağı, tekrar ve tamlık uzlaştırması | [pdf-kapsam-uzlastirma.md](pdf-kapsam-uzlastirma.md) |

@@ -8,6 +8,7 @@ import Pager from '../../components/Pager.jsx';
 import Modal from '../../components/Modal.jsx';
 import { Field } from '../../components/Field.jsx';
 import { Alert, Empty, ErrorBox, Loading } from '../../components/States.jsx';
+import RegistrationNotifications from './RegistrationNotifications.jsx';
 
 const ROLES = [
   ['USER', 'Öğrenci', 'öğrenci'], ['TEACHER', 'Öğretmen', 'öğretmen'],
@@ -69,6 +70,7 @@ export default function AdminAccounts() {
   const selectedLabel = ROLES.find(([value]) => value === role)?.[2] || 'kullanıcı';
   return <section aria-label="Kullanıcı yönetimi">
     <h2>Kullanıcılar</h2>
+    <RegistrationNotifications revision={revision} />
     {summary.error && <ErrorBox error={summary.error} onRetry={summary.retry} />}
     <div className="rate-row" role="group" aria-label="Kullanıcı rolleri">
       <button type="button" className={`btn ${role === '' ? 'btn-primary' : 'btn-secondary'}`} aria-pressed={role === ''} onClick={() => selectRole('')}>

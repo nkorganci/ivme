@@ -53,6 +53,12 @@ management:
           include: livenessState
 
 app:
+  registration-mail:
+    enabled: ${YKS_KAYIT_BILDIRIM_ETKIN:true}
+    recipient: ${YKS_KAYIT_BILDIRIM_ALICI:}
+    sender: ${YKS_KAYIT_BILDIRIM_GONDEREN:}
+    api-key: ${YKS_BREVO_API_ANAHTARI:}
+    management-url: ${YKS_KAYIT_BILDIRIM_YONETIM_ADRESI:}
   csrf-cookie-name: ${YKS_CSRF_COOKIE:XSRF-TOKEN}
   public-base-url: ${YKS_SITE_ADRESI:}     # üretimde HTTPS adresi zorunlu; dev ortamında yerel istek adresi kullanılabilir
   images:

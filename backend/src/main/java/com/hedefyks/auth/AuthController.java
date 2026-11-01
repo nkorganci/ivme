@@ -46,6 +46,7 @@ public class AuthController {
     private final AuthenticationManager authManager;
     private final SecurityContextRepository contextRepository;
     private final LoginActivity loginActivity;
+    private final com.hedefyks.notification.RegistrationNotificationOutbox registrationNotifications;
 
     // Kaba kuvvet koruması: aynı IP + kullanıcı için 10 dk'da 8, aynı IP için toplam 40 hatalı giriş; IP başına saatte 10 kayıt
     private final SlidingWindowLimiter loginPerUser = new SlidingWindowLimiter(8, Duration.ofMinutes(10));
@@ -53,15 +54,18 @@ public class AuthController {
     private final SlidingWindowLimiter registerPerIp = new SlidingWindowLimiter(10, Duration.ofHours(1));
 
     public AuthController(UserRepository users, PasswordEncoder encoder, AuthenticationManager authManager,
-                          SecurityContextRepository contextRepository, LoginActivity loginActivity) {
+                          SecurityContextRepository contextRepository, LoginActivity loginActivity,
+                          com.hedefyks.notification.RegistrationNotificationOutbox registrationNotifications) {
         this.users = users;
         this.encoder = encoder;
         this.authManager = authManager;
         this.contextRepository = contextRepository;
         this.loginActivity = loginActivity;
+        this.registrationNotifications = registrationNotifications;
     }
 
     @PostMapping("/register")
+    @org.springframework.transaction.annotation.Transactional
     public ResponseEntity<UserDto> register(@Valid @RequestBody RegisterRequest req, HttpServletRequest request) {
         String ip = clientIp(request);
         if (registerPerIp.isBlocked(ip)) {
@@ -89,6 +93,7 @@ public class AuthController {
         u.setCategory(req.category());
         u.setRole(switch(req.category()) { case STUDENT -> Role.USER; case PARENT -> Role.PARENT; case TEACHER -> Role.TEACHER; });
         users.save(u);
+        registrationNotifications.enqueue(u.getId());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(UserDto.of(u));
     }

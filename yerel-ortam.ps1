@@ -1,4 +1,4 @@
-# The only local runtime is main on port 1010 and database ivme.
+﻿# The only local runtime is main on port 1010 and database ivme.
 function Get-IvmeLocalEnvironment {
     $repoRoot = $PSScriptRoot
     $branch = (& git -C $repoRoot branch --show-current).Trim()
@@ -14,14 +14,19 @@ function Get-IvmeLocalEnvironment {
         CsrfCookie = 'XSRF-TOKEN'
         DbUser = 'root'
         DbPassword = 'root'
+        RegistrationMailRecipient = ''
+        RegistrationMailSender = ''
+        RegistrationMailManagementUrl = ''
+        BrevoApiKey = ''
         Images = (Join-Path $repoRoot 'veri\resimler-pilot')
         PdfCatalog = (Join-Path $repoRoot 'veri\ogm-konu-pdf-katalog\entries')
         PdfSource = [IO.Path]::GetFullPath((Join-Path $repoRoot '..\Kaynaklar\ogm-materyal'))
     }
     $localFile = Join-Path $repoRoot '.codex\local-environment.json'
     if (Test-Path -LiteralPath $localFile) {
-        $localSettings = Get-Content -LiteralPath $localFile -Raw | ConvertFrom-Json
-        foreach ($key in @('DbUser', 'DbPassword', 'Images', 'PdfCatalog', 'PdfSource')) {
+        $localSettings = Get-Content -LiteralPath $localFile -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach ($key in @('DbUser', 'DbPassword', 'Images', 'PdfCatalog', 'PdfSource',
+                'RegistrationMailRecipient', 'RegistrationMailSender', 'RegistrationMailManagementUrl', 'BrevoApiKey')) {
             if ($localSettings.PSObject.Properties.Name -contains $key) { $settings[$key] = $localSettings.$key }
         }
     }
@@ -42,4 +47,15 @@ function Set-IvmeLocalEnvironment {
     $env:YKS_CSRF_COOKIE = $Settings.CsrfCookie
     $env:VITE_CSRF_COOKIE_NAME = $Settings.CsrfCookie
     $env:IVME_API_TARGET = "http://127.0.0.1:$($Settings.ApiPort)"
+    $mailVariables = @{
+        RegistrationMailRecipient = 'YKS_KAYIT_BILDIRIM_ALICI'
+        RegistrationMailSender = 'YKS_KAYIT_BILDIRIM_GONDEREN'
+        RegistrationMailManagementUrl = 'YKS_KAYIT_BILDIRIM_YONETIM_ADRESI'
+        BrevoApiKey = 'YKS_BREVO_API_ANAHTARI'
+    }
+    foreach ($key in $mailVariables.Keys) {
+        if ($Settings.$key) {
+            [Environment]::SetEnvironmentVariable($mailVariables[$key], [string]$Settings.$key, 'Process')
+        }
+    }
 }

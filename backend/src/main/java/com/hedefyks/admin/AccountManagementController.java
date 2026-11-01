@@ -17,7 +17,22 @@ public class AccountManagementController {
     public record StatusRequest(@NotNull Boolean enabled, @NotNull @Size(max=500) String reason) {}
     public record DeleteRequest(@NotBlank String confirmation, @NotNull @Size(max=500) String reason) {}
     private final AccountManagementService service;
-    public AccountManagementController(AccountManagementService service) { this.service=service; }
+    private final com.hedefyks.notification.RegistrationNotificationOutbox notifications;
+    public AccountManagementController(AccountManagementService service,
+            com.hedefyks.notification.RegistrationNotificationOutbox notifications) {
+        this.service=service; this.notifications=notifications;
+    }
+
+    @GetMapping("/registration-notifications")
+    public com.hedefyks.notification.RegistrationNotificationOutbox.Overview notifications() {
+        return notifications.overview();
+    }
+
+    @PostMapping("/registration-notifications/{id}/retry")
+    public ResponseEntity<Void> retryNotification(@PathVariable long id) {
+        notifications.retry(id);
+        return ResponseEntity.noContent().build();
+    }
 
     @GetMapping
     public PageResponse<AccountManagementService.Account> list(@RequestParam(required=false) Role role,

@@ -243,6 +243,17 @@ Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve che
 
 ## Operatör ve yönetici uçları
 
+`GET /api/admin/accounts/registration-notifications` yalnız `SITE_MANAGER` için
+`configured`, `waiting`, `failed`, `accepted` sayıları ve en yeni 30 işin `recent`
+listesini döndürür. İşte hesap/iş kimliği, durum, deneme, sonraki deneme zamanı,
+sınırlı hata kodu ve varsa sağlayıcı mesaj kimliği bulunur; API anahtarı dönmez.
+`POST /api/admin/accounts/registration-notifications/{id}/retry` CSRF ile yalnız
+`FAILED` işi yeniden kuyruğa alır (204); diğer durumlarda 400 döner.
+Yeni herkese açık kayıt hesabı ve outbox işi aynı transaction'da commit olur;
+e-posta kayıt yanıtı içinde gönderilmez. Eski hesaplar için geriye dönük iş yoktur.
+Gönderici yapılandırması ve en az bir kez gönderim sınırı
+[bildirim tarifinde](../islemler/kayit-bildirimleri.md) açıklanır.
+
 `GET /api/admin/accounts?role=&query=&page=0&size=25`, açık `SITE_MANAGER`
 yetkisiyle bütün hesap rollerini listeler. `/summary` her rol için sıfırları da
 içeren kesin sayıları verir. Liste/sayımlar silinen (`archived_at`) hesapları

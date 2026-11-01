@@ -252,6 +252,18 @@ hatta taşındı; EBOB–EKOK ikinci konu olarak aynı ölçütlerle hattan geç
 hesap ve masaüstü/mobil UI kabulü). Tarif ve kanıt: [içerik hattı](../islemler/icerik-hatti.md).
 İki konu da öğretmen incelemesini bekler; teknik geçiş pedagojik onay sayılmaz.
 
+## 12.14 — TAS-10 yeni kayıt bildirimi
+
+Durum: `KISMI_GERCEK_GONDERIM_BEKLIYOR`. Kayıtla aynı transaction'da outbox işi,
+Brevo HTTP göndericisi, kalıcı retry/lease ve yönetimde bildirim görünümü uygulandı.
+Eski hesaplara geriye dönük iş oluşturulmaz. Kurulum, hata giderme ve test komutu
+[bildirim tarifinde](../islemler/kayit-bildirimleri.md).
+
+Kalan somut adım: Brevo hesabında göndereni doğrulayıp API anahtarını Git dışı yerel
+ayara gir; yeni normal kayıtla doğru alıcıya ulaşmayı ve yönetim bağlantısını doğrula.
+Sağlayıcının kabulü gelen kutusuna teslim/okunma değildir; gerçek alıcı kabulü
+olmadan bu adım tamamlandı sayılmaz.
+
 ## 12.12 — TAS-08 kaynaklı öğretim pilotu
 
 Durum: `KISMI`. Bölme–bölünebilme dersinin sekiz bölümü tam MEB kitabındaki

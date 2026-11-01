@@ -9,6 +9,13 @@ spring:
     password: ${YKS_DB_SIFRE:root}
 
 app:
+  registration-mail:
+    worker-enabled: false
+    enabled: false
+    recipient: ""
+    sender: ""
+    api-key: ""
+    management-url: ""
   images:
     dir: ../ornek-veri/resimler
   admin:
