@@ -38,6 +38,8 @@ const columns = [
   { field: 'date', headerName: 'Tarih', pinned: 'left', width: 155, minWidth: 155, sort: 'asc', autoHeaderHeight: false,
     cellRenderer: TrialInput, cellRendererParams: { field: 'date', type: 'date', label: 'tarih' } },
   ...TYT_COLUMNS.map((test) => ({ colId: `${test.key}.net`, headerName: `${test.label}\n${test.questions} soru`,
+    // 3 → 3, sayısal olarak aynı olsa da kontrollü girdinin metni yenilenmeli.
+    equals: () => false,
     width: 140, minWidth: 125, autoHeaderHeight: false, cellDataType: 'number', valueGetter: ({ data }) => {
       const raw = data ? tytNetInput(data, test) : '';
       const value = Number(String(raw).replace(',', '.'));

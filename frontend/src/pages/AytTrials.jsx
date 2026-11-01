@@ -94,6 +94,8 @@ function AytTrialsForUser() {
   const columns = useMemo(() => [
     { field: 'date', headerName: 'Tarih', pinned: 'left', width: 155, minWidth: 155, sort: 'asc', autoHeaderHeight: false, cellRenderer: DateInput },
     ...tests.map((test) => ({ colId: `${test.key}.net`, headerName: `${test.label}\n${test.questions} soru`,
+      // 3 → 3, sayısal olarak aynı olsa da kontrollü girdinin metni yenilenmeli.
+      equals: () => false,
       width: 155, minWidth: 140, autoHeaderHeight: false, cellDataType: 'number', valueGetter: ({ data }) =>
         data?.testNets?.[test.key] === undefined || data.testNets[test.key] === '' ? null : data.nets[test.key],
       cellRenderer: NetInput, cellRendererParams: { test } })),

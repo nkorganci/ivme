@@ -14,7 +14,19 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
 | TAS-02 / 12.06 | Dış makinede webhook/zamanlayıcı kurulumu ve gerçek kesinti/iyileşme bildirimi açık; [işletim tarifi](islemler/saglik-ve-izleme.md). |
 
-## Son kapanan iş: ADMIN-01
+## Son kapanan iş: DENEME-02
+
+TYT ve AYT net hücrelerinde sayısal değeri eşit kalan `3` → `3,` gibi ara
+girişler artık metni eski değere döndürmez. Yeni deneme ekleyip `3,25` ve
+negatif net yazma, odak, kayıt ve yenileme masaüstü/mobil tarayıcıda geçti;
+önceki sürümde aynı test `3,` yerine `3` okuyarak hatayı doğruladı.
+Node deneme testleri 15/15 geçti. Raporlar `veri/ui-denetim/deneme-tablolari/`:
+`rapor.json`, `virgul-surum.json`. İzleyici derledi; Windows PowerShell 5.1
+kaynak/paket parmak izi, HTTP sürümü ve servis edilen assetler eşleşti.
+Gerçek öğrenci DB'sine test kaydı yazılmadı; bu kapsamda kalan iş yok.
+Sıradaki komut: `git status --short`; yeni hata/girdi yoksa testleri tekrarlama.
+
+## Önceki kapanan iş: ADMIN-01
 
 Yönetim tablosundaki **Hesabına gir**, seçilen etkin/onaylı öğrencinin gerçek
 principal ve yetkileriyle oturumu açar. Yöneticiye dönüş, hesap bandı (sınav

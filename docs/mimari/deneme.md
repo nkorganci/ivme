@@ -39,11 +39,17 @@ dönüştürmez. Eski matematik/geometri ders netleri Matematik sütununda topla
 Yeni girişler her dersin `−soru/4 … soru` sınırını korur; grafik girilmemiş
 diğer testleri sıfır kabul etmez. DB şeması ve kaydetme/revizyon sözleşmesi değişmez.
 
+Net girişleri virgül veya noktayla iki ondalık basamağı destekler. Hücrelerin
+sayısal değeri sıralama için korunur; metin girdisi her satır güncellemesinde
+yenilenir. Böylece `3` → `3,` → `3,2` → `3,25` ve negatif net yazılırken
+sayısal olarak eşit ara değerler girdiyi eski metne döndürmez; odak korunur.
+
 Başlıklar ortalı, 80 px yüksekliğinde ve tam ders adlarını gösterecek genişliktedir;
 mobilde tablo kendi içinde yatay kayar. Birim denetimi:
 `node --test frontend/test/tytTrials.test.mjs frontend/test/aytTrials.test.mjs`.
 `node testler/trial-tables-ui.mjs` masaüstü/mobil ders sütunları, dört alan geçişi,
-eski toplamların korunması, ders sınırları, 120 netlik yeni kayıt ve yeniden yüklemeyi
+eski toplamların korunması, ders sınırları, yeni TYT/AYT denemelerinde karakter
+karakter virgüllü/noktalı ve negatif net girişi, odak, 120 netlik kayıt ve yeniden yüklemeyi
 bellekteki API ile doğrular. `--live` aynı kabulde assetleri çalışan 1010'dan okur;
 gerçek öğrenci veritabanına test kaydı yazmaz.
 

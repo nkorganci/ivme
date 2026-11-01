@@ -98,6 +98,19 @@ try {
       await evalJs(`(() => { const select = document.querySelector('.tyt-controls select'); select.value = ${JSON.stringify(area)}; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
       await pause(150);
     };
+    const typeNet = async (key, value, rowId) => {
+      await input(key, '', rowId);
+      const selector = `.ag-row[row-id="${rowId}"] .ag-cell[col-id="${key}.net"] input`;
+      await evalJs(`document.querySelector(${JSON.stringify(selector)}).focus()`);
+      let prefix = '';
+      for (const character of value) {
+        prefix += character;
+        await browser.cdp('Input.insertText', { text: character });
+        await pause(80);
+        assert.equal(await evalJs(`document.querySelector(${JSON.stringify(selector)})?.value`), prefix, `${key}: typed ${prefix}`);
+        assert.ok(await evalJs(`document.activeElement === document.querySelector(${JSON.stringify(selector)})`), `${key}: focus retained`);
+      }
+    };
     try {
       await goto('/ogrenci-takip/tyt-denemeleri');
       await wait(`document.querySelector('.ag-row')`);
@@ -118,6 +131,10 @@ try {
       await wait(`new Set([...document.querySelectorAll('.ag-row[row-id]')].map(e => e.getAttribute('row-id'))).size === 2`);
       await pause(150);
       const newId = sheets.tyt.rows.find(row => row.id !== 'legacy').id;
+      await typeNet('math', '3,25', newId);
+      await typeNet('fizik', '-0,25', newId);
+      assert.equal(sheets.tyt.rows.find(row => row.id === newId).testNets.math, '3,25');
+      assert.equal(sheets.tyt.rows.find(row => row.id === newId).nets.fizik, '-0,25');
       for (const [key, value] of Object.entries({ math: '40', turkish: '40', fizik: '7', kimya: '7', biyoloji: '6', tarih: '5', cografya: '5', felsefe: '5', din: '5' })) await input(key, value, newId);
       await scroll(10000);
       await wait(`document.querySelector('.ag-row[row-id="${newId}"] .ag-cell[col-id="net"]')?.innerText === '120,00'`);
@@ -150,10 +167,20 @@ try {
       await input('physics', '14');
       assert.equal(sheets.ayt.rows[0].testNets.physics, '14');
       assert.equal(sheets.ayt.rows[0].testNets.history2, '5', 'Other area values retained');
+      await evalJs(`[...document.querySelectorAll('button')].find(e => e.textContent.includes('Deneme ekle')).click()`);
+      await wait(`new Set([...document.querySelectorAll('.ag-row[row-id]')].map(e => e.getAttribute('row-id'))).size === 2`);
+      await pause(150);
+      const newAytId = sheets.ayt.rows.find(row => row.id !== 'ayt').id;
+      await typeNet('math', '3,25', newAytId);
+      await typeNet('physics', '-0.25', newAytId);
+      assert.equal(sheets.ayt.rows.find(row => row.id === newAytId).testNets.math, '3,25');
+      assert.equal(sheets.ayt.rows.find(row => row.id === newAytId).testNets.physics, '-0.25');
+      await goto('/ogrenci-takip/ayt-denemeleri');
+      await wait(`document.querySelector('.ag-row[row-id="${newAytId}"] .ag-cell[col-id="math.net"] input')?.value === '3,25'`);
       assert.equal(await evalJs(`document.documentElement.scrollWidth > innerWidth + 2`), false, 'Page overflow');
       assert.deepEqual(browser.errors, []);
       assert.deepEqual(browser.failedRequests, []);
-      reports.push({ viewport: mobile ? 'mobil' : 'masaustu', liveAssets: live, ok: true, tytColumns, aytAreas: Object.keys(expected), retainedLegacyTotals: true, savedAndReloaded: true });
+      reports.push({ viewport: mobile ? 'mobil' : 'masaustu', liveAssets: live, ok: true, tytColumns, aytAreas: Object.keys(expected), retainedLegacyTotals: true, savedAndReloaded: true, typedDecimalNets: true });
       console.log(JSON.stringify(reports.at(-1)));
     } catch (error) {
       await browser.screenshot(join(output, `${mobile ? 'mobil' : 'masaustu'}-hata.png`));
