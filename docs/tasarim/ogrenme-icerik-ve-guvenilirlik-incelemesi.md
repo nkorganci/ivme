@@ -86,7 +86,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 8 — TAS-08 | P1 — Opus 5.5 `high` (OpenAI: Astra `high`) | Kısmen (kaynaklı pilot ve UI kabulü; insan incelemesi açık) | Mevcut öğretim pilotunu bütün kabul ölçütleriyle tamamlamak | TAS-05, TAS-07 | Ana kaynak, bölüm kapsamı, gerçek soru ve kaynaklı çözüm; bağımsız öğrenme kontrolü |
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlandı (12.13; iki konu öğretmen incelemesinde) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
 | 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmi (12.14; uygulandı, gerçek gönderim kabulü bekliyor) | Yöneticiye yeni kayıt bildirimi | TAS-02; Brevo gönderen/API yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
-| 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Tamamlanmadı (yalnız öneri) | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
+| 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Teknik pilot tamamlandı (12.15); öğretmen incelemesi ayrı | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
 | 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Kısmen (kural ve TAS-01 regresyonları var; sürekli iş) | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
 
 Öncelik sütunundaki model, §19.3’teki ana seçimdir; parantez içi alternatiftir. P0 içerik genişletmesinden önce ele alınmalıdır. P1 bağımlılıkları kapatıldığında pilot ve üretim işi ilerler. Tahmini gün veya maliyet yazılmadı; donanım, kaynak kalitesi ve insan inceleme kapasitesi ölçülmeden güvenilir süre çıkarılamaz.
@@ -504,6 +504,15 @@ Pilot standardı ve kaynak kanıtıyla yalnız eksik aşamayı tamamla.
 
 ## 12. TAS-11: YouTube'dan zamanlı metin, soru karesi ve ipucu
 
+**Uygulama (12.15):** `ivme.py video` hattı kullanıcının Mert Hoca listesinden
+iki tek–çift videosunda çalıştı: zamanlı otomatik altyazı, seçilmiş kare, koşul ve
+karşı örneği olan iki ipucu, dar kapsamlı matematik denetimi ve sürümlü ders
+değişiklik önerisi. Negatif erişim önbelleği korunur; ikinci geçiş çıkarım/model/ağ
+çağrısı yapmaz. İpuçları öğretmen onayı bekler. [İşlem tarifi](../islemler/video-kanit-hatti.md)
+ve [sürümlü küçük manifest](../../video-hatti/yayin/mert-hoca-tek-cift.json) gerçek kapsamı taşır.
+Model atama tablosu öneridir; pilot Codex tarafından yapıldı, o tablodaki farklı
+modeller çalıştırılmış gibi raporlanmadı. Aşağıdaki sıra tasarım gerekçesidir.
+
 Bu mümkün bir iş akışıdır; her YouTube videosu için otomatik altyazı indirme garantisi yoktur. Resmî `captions.download` yöntemi videoyu düzenleme yetkisi gerektirir; rastgele herkese açık videonun altyazısına genel erişim varsayılmamalıdır. [YouTube captions.download](https://developers.google.com/youtube/data/reference/rest/v3/captions/download)
 
 Önerilen sıra:
@@ -516,7 +525,7 @@ Bu mümkün bir iş akışıdır; her YouTube videosu için otomatik altyazı in
 6. İpucu kaydı: video kimliği, başlangıç/bitiş, özgün metin/kare referansı, konu, koşul, örnek, karşı örnek ve inceleme durumu.
 7. Doğrulanan ipucu ana derse sürümlü değişiklik önerisi olur. Önce küçük bir konuda 2–3 video ile kalite/maliyet değerlendirilir.
 
-Karede eksik kalan soru tamamlanmış soru diye yayımlanmamalı; uygun özgün soru kaynağı varsa onunla bağlanmalı. Kaynak kullanım durumu manifestte tutulmalı; erişilemeyen materyal için sürekli başarısız istek döngüsü kurulmamalı. Bu görev kapsamında video indirilmedi veya transkripsiyon yapılmadı.
+Karede eksik kalan soru tamamlanmış soru diye yayımlanmamalı; uygun özgün soru kaynağı varsa onunla bağlanmalı. Kaynak kullanım durumu manifestte tutulmalı; erişilemeyen materyal için sürekli başarısız istek döngüsü kurulmamalı. İlk incelemede video indirilmemişti; 12.15 pilotunda iki video ve kamuya açık otomatik altyazı yerel inceleme için alındı. ASR çalıştırılmadı; ham içerik yeniden yayımlanmadı.
 
 ## 13. TAS-02: pgAdmin yerine doğru sağlık ve kayıt denetimi
 

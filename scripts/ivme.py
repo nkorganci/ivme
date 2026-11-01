@@ -15,6 +15,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py ollama ...            yerel model (scripts/ollama-sor.py)
   python scripts/ivme.py ogretim dogrula|aktar Akıllı Öğretmen içerikleri (scripts/ogretim-icerigi.py)
   python scripts/ivme.py icerik durum|calistir|kontrol <kavram>   TAS-09 kaynaklı konu içerik hattı (scripts/icerik_hatti.py)
+  python scripts/ivme.py video durum|calistir|kontrol <gorev>    TAS-11 zamanlı metin/kare/ipucu paketi (scripts/video_hatti.py)
 """
 
 import json
@@ -289,7 +290,15 @@ def cmd_kontrol(args):
         # Dosyada yapay bir fark istemek yerine gerçek banka/görsel güncelliğini doğrula.
         if run(["node", "scripts/ortak-set-tani.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("ikiz görsel haritası güncel değil: node scripts/ortak-set-tani.mjs --yaz çalıştır ve çıktıyı ekle")
-    # TAS-09: kaynaklı konu içeriğinin ders/çözüm/kanıt/seçim girdileri değişince eski kanıtla kabul edilmesin.
+    # TAS-11: video kanıt hattı ve pilot iddiaları değişince dar kabul yeniden çalışır.
+    if "--hepsi" in args or any(n.startswith("video-hatti/") or n in (
+            "scripts/video_hatti.py", "scripts/video-content-probe.py", "testler/video-hatti-test.py",
+            "testler/video-content-probe-test.py", "testler/tek-cift-video-pilot-test.py") for n in files):
+        for test in ("testler/video-hatti-test.py", "testler/video-content-probe-test.py", "testler/tek-cift-video-pilot-test.py"):
+            result = run([python_for_tools(), "-X", "utf8", test], capture_output=True)
+            if result.returncode:
+                problems.append(f"Video kanıt/ipucu denetimi başarısız: {test}\n{result.stdout[-1000:]}\n{result.stderr[-1500:]}")
+    # TAS-09: kaynaklı konu içeriği değişince eski kanıtla kabul edilmesin.
     tasks = sorted((APP / "icerik-hatti/gorevler").glob("*.json"))
     specs = [s for s in (json.loads(p.read_text(encoding="utf-8")) for p in tasks) if (APP / s["output"]).is_file()]
     content_inputs = {"frontend/src/learn/engine/sharedSet.js", "frontend/src/learn/engine/selection.js",
@@ -363,6 +372,10 @@ def cmd_icerik(args):
     return run([python_for_tools(), "-X", "utf8", "scripts/icerik_hatti.py", *(args or ["durum"])]).returncode
 
 
+def cmd_video(args):
+    return run([python_for_tools(), "-X", "utf8", "scripts/video_hatti.py", *(args or ["durum"])]).returncode
+
+
 def cmd_devir_kontrol(args):
     """Claude Code Stop kancası: kod/belge değişmiş ama devir dosyası güncellenmemişse bir kez hatırlatır."""
     try:
@@ -385,7 +398,7 @@ def cmd_devir_kontrol(args):
 
 COMMANDS = {"devir-kontrol": cmd_devir_kontrol, "durum": cmd_durum, "bekle": cmd_bekle, "test": cmd_test, "kontrol": cmd_kontrol, "ui": cmd_ui,
             "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim,
-            "icerik": cmd_icerik}
+            "icerik": cmd_icerik, "video": cmd_video}
 
 
 def main(argv=None):

@@ -1,0 +1,50 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "mert-hoca-tek-cift",
+  "topicId": "tyt.matematik.temel-kavramlar",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "userReference": "https://www.youtube.com/watch?v=kxSfD0uwGFQ&list=PLYh67QmhXVyA&index=2",
+    "selection": "Tek ve Çift Sayılar dersinin iki parçası. Konu ilişkisi adaydır; başlık içerik kanıtı sayılmaz."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:3YsyrEGKyiU",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık oynatma listesinden yerel eğitim/içerik inceleme pilotu. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/3YsyrEGKyiU.mp4",
+      "transcript": "veri/video-hatti/medya/3YsyrEGKyiU.tr.json3",
+      "frameSeconds": [
+        180,
+        215,
+        250
+      ],
+      "durationSeconds": 3408,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:jxgYHbqQ8HE",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık oynatma listesinden yerel eğitim/içerik inceleme pilotu. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/jxgYHbqQ8HE.mp4",
+      "transcript": "veri/video-hatti/medya/jxgYHbqQ8HE.tr.json3",
+      "frameSeconds": [
+        180,
+        240,
+        300
+      ],
+      "durationSeconds": 2206,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/mert-hoca-tek-cift.json",
+  "lesson": "frontend/src/learn/content/dersler/temel-kavramlar.ders",
+  "verificationTests": [
+    "testler/tek-cift-video-pilot-test.py"
+  ]
+}

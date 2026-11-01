@@ -1,0 +1,153 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "mert-hoca-tek-cift",
+  "topicId": "tyt.matematik.temel-kavramlar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+  "taskHash": "f17a3e2b9030a4b0b639bfbcebfcfaf805ea65cc33dacd30af87c888ab8d4219",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\mert-hoca-tek-cift",
+  "artifacts": {
+    "asamalar\\youtube-3YsyrEGKyiU-metin\\4fd3a2f1e160acb92cca231f374c6ec0616f552b0f85c337e2f43247909e6aaf.json": "c0997166b49c664ae9e27fcba091e3f44bb8e3160a11e39d57388477830634a1",
+    "asamalar\\youtube-3YsyrEGKyiU-kareler\\157e3d3578607239d40f39ee8ea56bdf9d00d631851d0087f34a7661ec1797f8.json": "66990f55657fb8224526995349f07fe5354274372faa2b62274b9d36301a2bae",
+    "kareler\\132bdfca3c9beb10539b7367833de90a7124ab463424498cbd844d3b3dfe8464.png": "5f06d5b66e773c06b1f5e476d20cc864b9fa46703135311f73e39ef256464378",
+    "kareler\\2357b666f9836646115b27f4c47f12d0ac0901e445616efee167f5315af6db23.png": "e17cdbb1c27da665a83c792f8a34de7db9f36bc62cf89065543b54797523121b",
+    "kareler\\e60042e51dee54c4808297950f6ac851fd90dc9a570b3fe16abe29d9e828e5d5.png": "fec9e2aba3bcf6d501de62599f8d4b4dd78b4873da07568dc4348b617ff1521a",
+    "asamalar\\youtube-jxgYHbqQ8HE-metin\\f2f326baab1107a45fde7fa43b3627e11a2874f5652c046094c35e155bd12f49.json": "861f2cccbfc18865c015db40747943cb97af8d5a081f93d57270f7eb0f329091",
+    "asamalar\\youtube-jxgYHbqQ8HE-kareler\\0ae6b40a2b2347b172340e053314c6e8546cb1a13d6646ac3eb3ce656e9045e7.json": "1faab6c29304b8c1e47849f6745da173edb531e84a94edc50fb99e0d77933626",
+    "kareler\\4fc37928478ed34b800f8ee896f8803fea088bd89d8c9088957a98b8e6ce5620.png": "dc528639bb1501f81775042fcef4bd43cc709dca2abb6fbd3a479195c4ad37e3",
+    "kareler\\be1ced192c457b88e6fdf99aca1c186fd166560bd84bf42cc3e6d5ea1a67d96e.png": "61c7342b92181e80308a6214e84fc17c86722642a9a08acb6347b77d2e14594f",
+    "kareler\\cfc9cd59d6f0292b83f396838c64e100238009ffc26870f544d41e971d2d8125.png": "76c756573d878d83e8483e21f66142453a4fc19f8f295fb9e54c19d7ebfa1f1e",
+    "asamalar\\matematik-denetimi\\e0ab058a410790a1fcec995b14546f0e248da8da4d5ca68ea551d130ad4aeddb.json": "f4a5beb615588310a9ae4efc9b321bcb1c2be7c85dc53d68896cd165b7b2a370",
+    "surumler\\89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981.json": "aa1c464d3178b8f4f4563e114562eadf1abdb07ee54c356d8c6fed44d99b2495",
+    "surumler\\89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981.oneriler.md": "bed9c0711d6b584025d11f0f1f438be0cb4e22c3353f2caab85213857f185942"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/tek-cift-video-pilot-test.py",
+        "sha256": "ba21ecb66c7523adabdedc4a7c43107e2d26014cc314d92ae6edc444d59049ab",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "mert-hoca-tek-cift",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 5,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.755
+    },
+    "videos": [
+      {
+        "providerId": "youtube:3YsyrEGKyiU",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:jxgYHbqQ8HE",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:3YsyrEGKyiU",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık oynatma listesinden yerel eğitim/içerik inceleme pilotu. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1327,
+      "normalization": {
+        "captionControlEvents": 1317,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 180,
+          "file": "kareler\\2357b666f9836646115b27f4c47f12d0ac0901e445616efee167f5315af6db23.png",
+          "sha256": "e17cdbb1c27da665a83c792f8a34de7db9f36bc62cf89065543b54797523121b",
+          "pixelHash": "2357b666f9836646115b27f4c47f12d0ac0901e445616efee167f5315af6db23",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 215,
+          "file": "kareler\\e60042e51dee54c4808297950f6ac851fd90dc9a570b3fe16abe29d9e828e5d5.png",
+          "sha256": "fec9e2aba3bcf6d501de62599f8d4b4dd78b4873da07568dc4348b617ff1521a",
+          "pixelHash": "e60042e51dee54c4808297950f6ac851fd90dc9a570b3fe16abe29d9e828e5d5",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 250,
+          "file": "kareler\\132bdfca3c9beb10539b7367833de90a7124ab463424498cbd844d3b3dfe8464.png",
+          "sha256": "5f06d5b66e773c06b1f5e476d20cc864b9fa46703135311f73e39ef256464378",
+          "pixelHash": "132bdfca3c9beb10539b7367833de90a7124ab463424498cbd844d3b3dfe8464",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:jxgYHbqQ8HE",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık oynatma listesinden yerel eğitim/içerik inceleme pilotu. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 867,
+      "normalization": {
+        "captionControlEvents": 861,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 180,
+          "file": "kareler\\4fc37928478ed34b800f8ee896f8803fea088bd89d8c9088957a98b8e6ce5620.png",
+          "sha256": "dc528639bb1501f81775042fcef4bd43cc709dca2abb6fbd3a479195c4ad37e3",
+          "pixelHash": "4fc37928478ed34b800f8ee896f8803fea088bd89d8c9088957a98b8e6ce5620",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 240,
+          "file": "kareler\\be1ced192c457b88e6fdf99aca1c186fd166560bd84bf42cc3e6d5ea1a67d96e.png",
+          "sha256": "61c7342b92181e80308a6214e84fc17c86722642a9a08acb6347b77d2e14594f",
+          "pixelHash": "be1ced192c457b88e6fdf99aca1c186fd166560bd84bf42cc3e6d5ea1a67d96e",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 300,
+          "file": "kareler\\cfc9cd59d6f0292b83f396838c64e100238009ffc26870f544d41e971d2d8125.png",
+          "sha256": "76c756573d878d83e8483e21f66142453a4fc19f8f295fb9e54c19d7ebfa1f1e",
+          "pixelHash": "cfc9cd59d6f0292b83f396838c64e100238009ffc26870f544d41e971d2d8125",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "sifir-ve-negatiflerde-ciftlik",
+      "contentHash": "7f5e7c39cd68382cd573d0c623524b73571042dde699fab50d1f5338349ca286",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "iki-katli-terimden-kalanin-ciftligi",
+      "contentHash": "7b27ab0e855390514925ad93f75ee48a52505c76381487788f77293764f9df66",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

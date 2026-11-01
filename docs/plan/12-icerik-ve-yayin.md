@@ -252,6 +252,19 @@ hatta taşındı; EBOB–EKOK ikinci konu olarak aynı ölçütlerle hattan geç
 hesap ve masaüstü/mobil UI kabulü). Tarif ve kanıt: [içerik hattı](../islemler/icerik-hatti.md).
 İki konu da öğretmen incelemesini bekler; teknik geçiş pedagojik onay sayılmaz.
 
+## 12.15 — TAS-11 video kanıt ve ipucu pilotu
+
+Durum: `TEKNIK_PILOT_TAMAMLANDI`. Kullanıcının Mert Hoca listesindeki tek–çift
+dersinin iki videosu işlendi; zamanlı metin, seçilmiş kare ve matematik kontrolü
+olan iki ipucu sürümlü ders değişiklik önerisine bağlandı. İkinci geçişte ağ,
+decode veya model çağrısı yok; ilgili 21 test geçti. Mevcut öğrenci verisine
+yazılmaz. Araç ve yeniden çalıştırma tarifi [video kanıt hattındadır](../islemler/video-kanit-hatti.md).
+
+Kalan içerik kabulü: öğretmen iki ipucunu kaynaklarıyla incelemeli; uygun içeriği
+TAS-09 üzerinden ders değişikliği olarak ele almalı. Üretilen ipuçları `PENDING`,
+matematik denetimi `SCRIPT_CHECKED`; öğretmen onayı yazılmadı. Bütün liste ve ASR
+donanım değerlendirmesi bu küçük teknik pilotun kabulü değildir.
+
 ## 12.14 — TAS-10 yeni kayıt bildirimi
 
 Durum: `KISMI_GERCEK_GONDERIM_BEKLIYOR`. Kayıtla aynı transaction'da outbox işi,

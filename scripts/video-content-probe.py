@@ -16,7 +16,13 @@ import xml.etree.ElementTree as ET
 
 APP=Path(__file__).resolve().parents[1]
 STATE=APP/'veri/content-labels'
-VERSION='public-caption-playlist-v2'
+VERSION='public-caption-playlist-v3'
+VIDEO_VERSION='public-caption-playlist-v2'
+
+
+def cache_version(identity):
+    # Yeni playlist ayrıştırıcısı, değişmeyen video erişim hatalarını geçersizleştirmez.
+    return VIDEO_VERSION if identity.startswith('youtube:') else VERSION
 
 
 def load(path):return json.loads(path.read_text(encoding='utf-8'))
@@ -41,6 +47,11 @@ def playlist_entries(data):
                     code=row.get('videoId','')
                     title=row.get('title',{})
                     title=title.get('simpleText') or ''.join(r.get('text','') for r in title.get('runs',[]))
+                    if re.fullmatch('[a-zA-Z0-9_-]{11}',code):
+                        found.setdefault(code,{'providerId':'youtube:'+code,'title':title,'url':'https://www.youtube.com/watch?v='+code})
+                elif key=='lockupViewModel' and isinstance(row,dict) and row.get('contentType')=='LOCKUP_CONTENT_TYPE_VIDEO':
+                    code=row.get('contentId','')
+                    title=row.get('metadata',{}).get('lockupMetadataViewModel',{}).get('title',{}).get('content','')
                     if re.fullmatch('[a-zA-Z0-9_-]{11}',code):
                         found.setdefault(code,{'providerId':'youtube:'+code,'title':title,'url':'https://www.youtube.com/watch?v='+code})
                 walk(row)
@@ -71,7 +82,7 @@ def timed_segments(raw,fmt,duration):
 
 
 def probe(identity,metadata):
-    row={'providerId':identity,'extractorVersion':VERSION,'checkedAt':datetime.now(timezone.utc).isoformat(),
+    row={'providerId':identity,'extractorVersion':cache_version(identity),'checkedAt':datetime.now(timezone.utc).isoformat(),
          'sourceMetadataFingerprint':metadata.get('metadataFingerprint'),'attempts':[],'status':'MANUAL_REVIEW_REQUIRED'}
     try:
         status,raw=get(metadata['url']);html=raw.decode('utf-8','replace')
@@ -126,7 +137,7 @@ def main():
     cache=STATE/'video-content-cache';cache.mkdir(exist_ok=True)
     output={};used=0;reused=0
     for identity,metadata in inventory.items():
-        file=cache/(identity.replace(':','-')+'-'+VERSION+'.json')
+        file=cache/(identity.replace(':','-')+'-'+cache_version(identity)+'.json')
         saved=load(file) if file.exists() else None
         if saved and not args.refresh and saved.get('sourceMetadataFingerprint')==metadata.get('metadataFingerprint'):
             output[identity]=saved;reused+=1;continue

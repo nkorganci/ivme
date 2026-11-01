@@ -1,0 +1,4 @@
+# İsteğe bağlı video edinimi; uygulamanın ana bağımlılık listesine eklenmez.
+yt-dlp[default]==2026.10.26
+# ASR: yalnız ihtiyaç halinde faster-whisper ve önceden indirilmiş yerel model.
+# Kare çıkarımı: mevcut Pillow + PATH'te ffmpeg/ffprobe.

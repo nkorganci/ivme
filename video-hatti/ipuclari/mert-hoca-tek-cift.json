@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sifir-ve-negatiflerde-ciftlik",
+    "providerId": "youtube:3YsyrEGKyiU",
+    "startSeconds": 180,
+    "endSeconds": 216,
+    "quote": "kesinlikle bir çift sayıdır",
+    "frameSeconds": [180, 215],
+    "rule": "Bir tam sayı 2k biçiminde yazılabiliyorsa çifttir; sıfır ve negatif tam sayılar da bu tanıma dahildir.",
+    "condition": "Sayı ve k tam sayı olmalı. Pozitif olmak gerekmez; kesirli sayılara tek/çift etiketi verilmez.",
+    "example": "0 = 2 × 0 ve −6 = 2 × (−3); ikisi de çifttir.",
+    "counterexample": "1 = 2 × 0,5 eşitliği 1'i çift yapmaz; 0,5 tam sayı değildir. 1 tek sayıdır.",
+    "rationale": "Çiftliğin ölçütü işaret değil, ikiye kalansız bölünmedir. Sıfırın pozitif veya negatif olmaması çiftliğini etkilemez.",
+    "agentSourceReview": "Codex 180 ve 215. saniye karelerini açtı: tahtada sıfır ve negatif çift tam sayılar var. Bu kareler bir test sorusu değil, tanım/özellik sayfasıdır. Otomatik altyazıdaki bütün formüllerin doğru olduğu varsayılmadı.",
+    "questionCompleteness": "NOT_A_QUESTION"
+  },
+  {
+    "id": "iki-katli-terimden-kalanin-ciftligi",
+    "providerId": "youtube:jxgYHbqQ8HE",
+    "startSeconds": 227,
+    "endSeconds": 330,
+    "quote": "K kesinlikle çift",
+    "frameSeconds": [240, 300],
+    "rule": "K + 2E = 36 ve E tam sayıysa K zorunlu olarak çifttir. Bu bilgi E'nin tekliğini belirlemez; K = E olması da mümkündür.",
+    "condition": "K ve E tam sayı öğrenci sayılarıdır; her birinin aldığı miktar sabittir. Kalan ve başlangıç miktarı aynı birimle sayılmalıdır.",
+    "example": "Başlangıçtan kalanı çıkarınca 36 dilim tüketilmiştir. K = 36 − 2E = 2(18 − E). E = 12, K = 12 hem denklemi sağlar hem eşitliğin mümkün olduğunu gösterir.",
+    "counterexample": "E = 10, K = 16 da denklemi sağlar; dolayısıyla E mutlaka tek değildir. E tam sayı koşulu kalkarsa E = 0,5 ve K = 35 seçilerek K'nın çiftliği de bozulur.",
+    "rationale": "İki katlı terim çifttir; çift toplamdan çift terim çıkınca çift kalır. Bu bir toplamın paritesi bilgisidir; her değişkenin değerini veya paritesini tek başına belirlemez.",
+    "agentSourceReview": "Codex 240 ve 300. saniye karelerini açtı. Örnek 11'in metni ve üç öncülü ilk karede tam görünür; ikinci karede K + 2E = 36 yazılıdır. Buradaki anlatım özgün bir çıkarımdır; soru görseli yeni bir banka sorusu olarak yayımlanmadı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]
