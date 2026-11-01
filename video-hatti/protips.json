@@ -1,0 +1,13 @@
+{
+  "schema": "video-protips-v1",
+  "placements": [
+    {
+      "taskId": "mert-hoca-tek-cift",
+      "conceptId": "temel-kavramlar",
+      "hints": [
+        { "id": "sifir-ve-negatiflerde-ciftlik", "title": "Sıfır ve negatif sayılarda çiftlik", "sectionIds": ["s2"] },
+        { "id": "iki-katli-terimden-kalanin-ciftligi", "title": "İki katlı terimden kalan sayının çiftliği", "sectionIds": ["s2b"] }
+      ]
+    }
+  ]
+}

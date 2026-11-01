@@ -508,7 +508,10 @@ Pilot standardı ve kaynak kanıtıyla yalnız eksik aşamayı tamamla.
 iki tek–çift videosunda çalıştı: zamanlı otomatik altyazı, seçilmiş kare, koşul ve
 karşı örneği olan iki ipucu, dar kapsamlı matematik denetimi ve sürümlü ders
 değişiklik önerisi. Negatif erişim önbelleği korunur; ikinci geçiş çıkarım/model/ağ
-çağrısı yapmaz. İpuçları öğretmen onayı bekler. [İşlem tarifi](../islemler/video-kanit-hatti.md)
+çağrısı yapmaz. Kullanıcı talimatıyla ipuçları konu ve ilgili ders bölümünde protip
+olarak görünür; “Öğretmen kontrolü bekliyor” etiketi incelemeyi ayrı gösterir.
+Uzun vadeli hedef tüm uygun video/konu içerikleridir; iki video başlangıçtır.
+[İşlem tarifi](../islemler/video-kanit-hatti.md)
 ve [sürümlü küçük manifest](../../video-hatti/yayin/mert-hoca-tek-cift.json) gerçek kapsamı taşır.
 Model atama tablosu öneridir; pilot Codex tarafından yapıldı, o tablodaki farklı
 modeller çalıştırılmış gibi raporlanmadı. Aşağıdaki sıra tasarım gerekçesidir.

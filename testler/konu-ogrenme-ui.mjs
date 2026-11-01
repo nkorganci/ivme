@@ -6,7 +6,7 @@
 //   node testler/konu-ogrenme-ui.mjs --duzey [kavram]  (her bölümde anlatım düzeyi ve günlük hayattan sorgula)
 import assert from 'node:assert/strict';
 import { createServer } from 'node:http';
-import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
@@ -19,6 +19,7 @@ const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : 
 const out = join(ROOT, 'veri/ui-denetim/konu-ogrenme');
 mkdirSync(out, { recursive: true });
 const live = process.argv.includes('--live');
+const protipsOnly = process.argv.includes('--protip');
 const discoveryOnly = process.argv.includes('--kesif');
 const guidedOnly = process.argv.includes('--gercek-ornek');
 const levelsOnly = process.argv.includes('--duzey');
@@ -276,6 +277,62 @@ async function run(mobile) {
   }
 }
 
+async function runProtips(mobile) {
+  assert.ok(!live, '--protip sahte API ile çalışır; gerçek öğrenci kayıtlarına yazılmaz');
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
+  const steps = [];
+  const tips = JSON.parse(readFileSync(join(ROOT, 'frontend/src/learn/content/video-protips.json'), 'utf8')).tips.filter((t) => t.conceptId === conceptId);
+  const lesson = parseLesson(readFileSync(join(lessonsDir, `${conceptId}.ders`), 'utf8'), conceptId);
+  const checkVisible = async (expected, step) => {
+    await wait(`document.querySelectorAll('.lr-video-protip').length === ${expected.length}`);
+    assert.equal(await evalJs('document.querySelectorAll(".lr-video-protip-review").length'), expected.length);
+    for (const tip of expected) {
+      const card = `document.querySelector('[data-protip-id="${tip.id}"]')`;
+      assert.equal(await evalJs(`${card}.querySelector('.lr-video-protip-review').textContent`), 'Öğretmen kontrolü bekliyor');
+      assert.ok(await evalJs(`${card}.textContent.includes(${JSON.stringify(tip.condition)})`));
+      const link = new URL(await evalJs(`${card}.querySelector('a').href`));
+      assert.equal(link.searchParams.get('v'), tip.source.providerId.slice(8));
+      assert.equal(link.searchParams.get('t'), `${Math.floor(tip.source.startSeconds)}s`);
+      await evalJs(`${card}.querySelector('summary').click()`);
+      assert.equal(await evalJs(`${card}.querySelector('details').open`), true);
+      assert.ok(await evalJs(`${card}.innerText.includes(${JSON.stringify(tip.counterexample)})`));
+      await evalJs(`${card}.querySelector('summary').click()`);
+    }
+    const overflow = await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2');
+    steps.push({ step, tips: expected.length, overflow });
+    await evalJs('document.querySelector(".lr-video-protips").scrollIntoView({block:"start"})');
+    await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-protip-${step}.png`));
+  };
+  try {
+    assert.ok(tips.length, 'hedef konuda protip bulunamadı');
+    const before = db.events.length;
+    await goto(`/konuyu-ogrenelim/konu/${conceptId}#video-protips`);
+    await checkVisible(tips, 'konu');
+    assert.equal(db.events.length, before, 'konuda protip okumak öğrenme olayı üretmemeli');
+    // İlgili bölüm ve ilgisiz bölüm için ilerleme yalnız sahte API'de kurulur.
+    for (const sectionId of [...new Set(tips.flatMap((t) => t.sectionIds)), lesson.sections[0].id]) {
+      const index = lesson.sections.findIndex((s) => s.id === sectionId);
+      db.events = [{ id: `protip-open-${sectionId}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId }];
+      for (let i = 0; i < index; i++) db.events.push({ id: `protip-${sectionId}-${i}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'section', conceptId, sectionId: lesson.sections[i].id, nextSectionId: lesson.sections[i + 1].id, ms: 1 });
+      const count = db.events.length;
+      await goto(`/konuyu-ogrenelim/ders/${conceptId}`);
+      await wait(`document.querySelector('.lr-section h2')?.innerText.includes(${JSON.stringify(lesson.sections[index].title)})`);
+      const expected = tips.filter((t) => t.sectionIds.includes(sectionId));
+      if (expected.length) await checkVisible(expected, sectionId);
+      else assert.equal(await evalJs('document.querySelectorAll(".lr-video-protip").length'), 0, 'ilgisiz bölümde ipucu gösterilmemeli');
+      assert.equal(db.events.length, count, 'protip açmak/okumak öğrenme veya onay olayı üretmemeli');
+    }
+    await goto('/konuyu-ogrenelim/konu/bolme-bolunebilme');
+    await wait('document.querySelector(".lr-concept-page")');
+    assert.equal(await evalJs('document.querySelectorAll(".lr-video-protip").length'), 0, 'başka konuya ipucu sızmamalı');
+    return { mobile, steps, errors: [...errors], failedRequests: [...failedRequests].filter((f) => !f.url?.includes('favicon')) };
+  } catch (error) {
+    await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-protip-hata.png`));
+    return { mobile, steps, failure: error.message, errors: [...errors], failedRequests: [...failedRequests] };
+  } finally { browser.close(); }
+}
+
 async function runDiscoveries(mobile) {
   const browser = await tarayiciAc({ mobile });
   const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
@@ -469,7 +526,7 @@ async function runLevels(mobile) {
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await (levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
+    report.runs.push(await (protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();
@@ -481,4 +538,5 @@ const problems = report.runs.flatMap((r) => [
   ...r.steps.filter((s) => s.overflow).map((s) => `${r.mobile ? 'mobil' : 'masaüstü'} yatay taşma: ${s.step}`),
 ]);
 console.log(JSON.stringify({ ...report, problems, screenshots: out }, null, 2));
+if (protipsOnly) writeFileSync(join(out, 'protip-rapor.json'), JSON.stringify({ ...report, problems }, null, 2) + '\n');
 process.exitCode = problems.length ? 1 : 0;

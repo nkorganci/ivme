@@ -8,7 +8,7 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|
-| TAS-11 / 12.15 | Teknik pilot tamamlandı: kullanıcının Mert Hoca listesinden iki tek–çift videosu, 2194 segment, altı kare, iki matematik kontrolü yapılmış ipucu ve ders değişiklik önerisi. Öğretmen iki ipucunu incelemeli. [Tarif](islemler/video-kanit-hatti.md). |
+| TAS-11 / 12.15 | Teknik pilot ve protip UI: iki ipucu Temel Kavramlar konu sayfasında ve `s2`/`s2b` bölümlerinde “Öğretmen kontrolü bekliyor” etiketiyle kullanılır. Kullanıcı bu görünürlüğü istedi; öğretmen incelemesi engel değildir. Uzun vadeli hedef tüm uygun video/konu içerikleridir; yaygınlaştırma [12.15'te](plan/12-icerik-ve-yayin.md#1215--tas-11-video-kanıt-ve-ipucu-pilotu). |
 | TAS-10 / 12.14 | Uygulandı; 17/17 backend testi, masaüstü/mobil bildirim UI testi ve yerel sunulan sürüm doğrulandı. Brevo seçildi; gerçek gönderim için doğrulanmış gönderen ve Git dışı API anahtarı bekleniyor. [Kurulum](islemler/kayit-bildirimleri.md). |
 | TAS-09 / 12.13 | Tamamlandı: içerik hattı, bölme pilotu taşındı, EBOB–EKOK ikinci konu hattan geçti. Açık: iki konunun öğretmen incelemesi (insan girdisi). |
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
@@ -25,17 +25,26 @@ yt-dlp değiştirilmedi. İlk playlist yanıtındaki 100 video tam liste sayılm
 Doğrulama: 14 hat, 4 erişim/playlist ve 3 matematik testi; iki videoda 2194 segment,
 altı kare ve iki ipucu. İkinci çalıştırma beş aşamayı kullandı; sıfır ağ, decode,
 ASR/model; yeniden edinim sıfır süreç. İpuçları `PENDING`, matematik
-`SCRIPT_CHECKED`; öğretmen/öğrenci kabulü uydurulmadı. UI veya sunucu kodu değişmedi.
+`SCRIPT_CHECKED`; öğretmen/öğrenci kabulü uydurulmadı. Ek protip UI kabulü:
+masaüstü/mobil konu ve ilgili iki ders bölümü; etiket, koşul, açılır açıklama,
+zamanlı video bağlantıları, ilgisiz konu/bölümde gizleme, taşma ve hatasız açılış.
+Rapor `veri/ui-denetim/konu-ogrenme/protip-rapor.json`; gerçek öğrenci DB'sine yazılmaz.
+İzleyici son sürümü sundu; canlı öğrenci görünümü masaüstü/mobil hatasız
+(`protip-canli.json`). Windows PowerShell kaynak/paket parmak izi ve HTTP/yerel
+sürüm eşleşti (`protip-surum.json`); build ve commit kontrolü geçti.
 
-Kalan somut iş: öğretmen `video-hatti/ipuclari/mert-hoca-tek-cift.json` içindeki
-iki ipucunu kaynak kareleriyle incelesin; uygun olanı TAS-09 üzerinden sürümlü ders
-değişikliği olarak ele al. Agent'ın matematik/görsel kontrolü öğretmen kararı değildir.
-Kaynak ve kod değişmediyse yeniden indirme/çıkarım yapma.
+Ürün kararı: kullanıcı mevcut ipuçlarını **şimdi protip olarak** kullanmak ve
+uzun vadede yöntemi bütün uygun video/konulara uygulamak istiyor. Öğretmen kontrolü
+etiketi görünür; inceleme protipi gizleme gerekçesi değildir. Öğretmen onayı ayrı
+insan kararıdır. Kalan yaygınlaştırma kapsamı 12.15'te; ilk 100 satırın dışındaki
+liste kapsamı ve konu grupları aşamalı tamamlanır. Kaynak değişmediyse yeniden çıkarma.
 
-Sıradaki komut: `python scripts/ivme.py video durum mert-hoca-tek-cift`; ardından
-`veri/video-hatti/mert-hoca-tek-cift/inceleme.md` ve manifestteki `.oneriler.md`
-dosyasını aç. İçerik girdisi değişirse `video calistir`, ardından `video paket`
-ile kanıtı güncelle. Push/dış yayın istenmedi.
+UI: `http://localhost:1010/konuyu-ogrenelim/konu/temel-kavramlar#video-protips`.
+`video-hatti/protips.json` hedef konu/bölüm ve başlıkları tanımlar; `video protips`
+kanıttan öğrenci izdüşümünü üretir, `video protips --kontrol` güncelliğini denetler.
+Sıradaki komut: `python scripts/ivme.py video protips --kontrol`. Yeni kaynak
+işlenecekse 12.15 kapsamından bir konu grubu seç; mevcut kanıtı baştan üretme.
+Ana ders değişikliği TAS-09'dan geçer. Push/dış yayın istenmedi.
 
 ## TAS-10 devam noktası
 

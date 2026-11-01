@@ -35,6 +35,32 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
 
 ## İçerik sırası ve yeni ders ekleme
 
+### Videodan protip: ürün kararı ve yaygınlaştırma
+
+Kaynaklı video ipuçları konu sayfasında ve ilgili ders bölümünde **protip** olarak
+kullanılır. Kaynak metni/kareleri ve matematik kontrolü olan, öğretmen incelemesi
+bekleyen içerik “Öğretmen kontrolü bekliyor” etiketiyle öğrenciye gösterilir.
+Kullanıcı bu kullanımı açıkça istedi; öğretmen incelemesi protip görünürlüğünü
+bekletmez ve `teacherApproved` kendiliğinden değiştirilmez.
+
+Her protip kural, kullanım koşulu, örnek, neden çalıştığı, karşı örnek ve kaynak
+videonun zamanlı bağlantısını taşır. Gösterim/ayrıntı açma puan veya öğrenme olayı
+üretmez. Uygun konu ve bölüm sabit kimliklerle bağlanır; ipucu diğer konulara yayılmaz.
+Ham transkript, iç inceleme notu ve yerel dosya yolları öğrenci paketine alınmaz.
+
+Uzun vadeli hedef bu yöntemi bütün uygun video/konu içeriklerine uygulamaktır.
+İlk iki tek–çift videosu başlangıç pilotudur. Yaygınlaştırma aynı sağlayıcı kimliği,
+kaynak/hash önbelleği, konu eşlemesi ve matematik denetimiyle aşamalı yürür;
+başlıktan ipucu uydurulmaz. Somut kalan işler [12.15 planındadır](../plan/12-icerik-ve-yayin.md#1215--tas-11-video-kanıt-ve-ipucu-pilotu).
+
+`video-hatti/protips.json` hedef ders/bölüm ve kart başlıklarını tanımlar.
+`python scripts/ivme.py video protips` mevcut video kanıtını doğrulayıp
+`frontend/src/learn/content/video-protips.json` izdüşümünü üretir; üretilmiş JSON
+elle düzenlenmez. `lesson/VideoProtips.jsx` konu ve bölüm ekranlarında aynı kartı
+kullanır. Dersin ana anlatımı/ustalık seti ayrıca mevcut içerik sözleşmesine uyar.
+
+### Ders yazma adımları
+
 1. `.ders` dosyasında mevcut `@ders`, `@tip`, `@ustalik`, `@oturum`, `@ontest`, `@bolum`,
    `@kartlar`, `@ozet`, `@pratik`, `@aciklama`, `@havuz` biçimini kullan. Kaynak ve katalog
    kategorisini ver; başka bir dersin kimliklerini kopyalama.

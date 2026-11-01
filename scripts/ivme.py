@@ -298,6 +298,11 @@ def cmd_kontrol(args):
             result = run([python_for_tools(), "-X", "utf8", test], capture_output=True)
             if result.returncode:
                 problems.append(f"Video kanıt/ipucu denetimi başarısız: {test}\n{result.stdout[-1000:]}\n{result.stderr[-1500:]}")
+    if "--hepsi" in args or any(n.startswith("video-hatti/") or n in (
+            "scripts/video-protips.py", "frontend/src/learn/content/video-protips.json") for n in files):
+        result = run([python_for_tools(), "-X", "utf8", "scripts/video-protips.py", "--kontrol"], capture_output=True)
+        if result.returncode:
+            problems.append("Video protip görünümü güncel değil:\n" + result.stdout[-1000:] + result.stderr[-1000:])
     # TAS-09: kaynaklı konu içeriği değişince eski kanıtla kabul edilmesin.
     tasks = sorted((APP / "icerik-hatti/gorevler").glob("*.json"))
     specs = [s for s in (json.loads(p.read_text(encoding="utf-8")) for p in tasks) if (APP / s["output"]).is_file()]
@@ -373,6 +378,8 @@ def cmd_icerik(args):
 
 
 def cmd_video(args):
+    if args[:1] == ["protips"]:
+        return run([python_for_tools(), "-X", "utf8", "scripts/video-protips.py", *args[1:]]).returncode
     return run([python_for_tools(), "-X", "utf8", "scripts/video_hatti.py", *(args or ["durum"])]).returncode
 
 

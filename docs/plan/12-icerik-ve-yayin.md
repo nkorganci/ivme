@@ -260,10 +260,27 @@ olan iki ipucu sürümlü ders değişiklik önerisine bağlandı. İkinci geçi
 decode veya model çağrısı yok; ilgili 21 test geçti. Mevcut öğrenci verisine
 yazılmaz. Araç ve yeniden çalıştırma tarifi [video kanıt hattındadır](../islemler/video-kanit-hatti.md).
 
-Kalan içerik kabulü: öğretmen iki ipucunu kaynaklarıyla incelemeli; uygun içeriği
-TAS-09 üzerinden ders değişikliği olarak ele almalı. Üretilen ipuçları `PENDING`,
-matematik denetimi `SCRIPT_CHECKED`; öğretmen onayı yazılmadı. Bütün liste ve ASR
-donanım değerlendirmesi bu küçük teknik pilotun kabulü değildir.
+**UI ve ürün kararı (TAS-11.UI):** Kullanıcı iki ipucunun şimdi protip olarak
+kullanılmasını istedi. “Öğretmen kontrolü bekliyor” etiketiyle konu ve ilgili ders
+bölümünde gösterilir; öğretmen incelemesi görünürlüğü engellemez. İpuçları `PENDING`,
+matematik `SCRIPT_CHECKED` kalır. Ana ders değişiklikleri TAS-09 sözleşmesini korur.
+UI tamamlandı: masaüstü/mobil konu ve ilgili iki bölümün kabulü; canlı öğrenci
+görünümü ve sunulan sürüm/kaynak eşleşmesi geçti. Giriş sonrası adres:
+`/konuyu-ogrenelim/konu/temel-kavramlar#video-protips`.
+
+**Uzun vadeli hedef:** hattı bütün uygun video/konu içeriklerine uygulamak.
+Kalan yaygınlaştırma işleri:
+
+- Kullanıcının seçtiği playlistin ilk yanıt dışındaki kalan videolarını da
+  tekil kimlikle envantere al; kapsamı tam/kısmi olarak açık tut.
+- Aynı kaynağı tekrar indirmeden/işlemeden konu gruplarını aşamalı işle; her
+  ipucunu zamanlı metin/kare, koşul, gerekçe ve karşı örneğe bağla.
+- Matematik denetiminden geçen ipuçlarını uygun konu ve bölümde protip olarak
+  kullan; öğretmen kontrolünü görünür etiketle ayrı izlet.
+- Konu ve kaynak sayısı arttıkça maliyet/kalite/kapsam ölçümlerini kaydet.
+  ASR gereken kaynaklarda ayrıca donanım/süre/kalite pilotu yap.
+
+Bu işler tüm playlistin işlendiği veya bütün ipuçlarının onaylandığı anlamına gelmez.
 
 ## 12.14 — TAS-10 yeni kayıt bildirimi
 

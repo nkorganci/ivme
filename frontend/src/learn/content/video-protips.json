@@ -1,0 +1,53 @@
+{
+  "schema": "video-protips-v1",
+  "generatedBy": "scripts/video-protips.py",
+  "inputsHash": "e549a45ab1ef925278dbd141e6c2ba19ec8b74db8c8257118880b23fba58b44e",
+  "tips": [
+    {
+      "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
+      "conceptId": "temel-kavramlar",
+      "topicId": "tyt.matematik.temel-kavramlar",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "Sıfır ve negatif sayılarda çiftlik",
+      "rule": "Bir tam sayı 2k biçiminde yazılabiliyorsa çifttir; sıfır ve negatif tam sayılar da bu tanıma dahildir.",
+      "condition": "Sayı ve k tam sayı olmalı. Pozitif olmak gerekmez; kesirli sayılara tek/çift etiketi verilmez.",
+      "example": "0 = 2 × 0 ve −6 = 2 × (−3); ikisi de çifttir.",
+      "counterexample": "1 = 2 × 0,5 eşitliği 1'i çift yapmaz; 0,5 tam sayı değildir. 1 tek sayıdır.",
+      "rationale": "Çiftliğin ölçütü işaret değil, ikiye kalansız bölünmedir. Sıfırın pozitif veya negatif olmaması çiftliğini etkilemez.",
+      "source": {
+        "providerId": "youtube:3YsyrEGKyiU",
+        "startSeconds": 180,
+        "endSeconds": 216
+      },
+      "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+      "contentHash": "7f5e7c39cd68382cd573d0c623524b73571042dde699fab50d1f5338349ca286",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "mert-hoca-tek-cift:iki-katli-terimden-kalanin-ciftligi",
+      "conceptId": "temel-kavramlar",
+      "topicId": "tyt.matematik.temel-kavramlar",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "İki katlı terimden kalan sayının çiftliği",
+      "rule": "K + 2E = 36 ve E tam sayıysa K zorunlu olarak çifttir. Bu bilgi E'nin tekliğini belirlemez; K = E olması da mümkündür.",
+      "condition": "K ve E tam sayı öğrenci sayılarıdır; her birinin aldığı miktar sabittir. Kalan ve başlangıç miktarı aynı birimle sayılmalıdır.",
+      "example": "Başlangıçtan kalanı çıkarınca 36 dilim tüketilmiştir. K = 36 − 2E = 2(18 − E). E = 12, K = 12 hem denklemi sağlar hem eşitliğin mümkün olduğunu gösterir.",
+      "counterexample": "E = 10, K = 16 da denklemi sağlar; dolayısıyla E mutlaka tek değildir. E tam sayı koşulu kalkarsa E = 0,5 ve K = 35 seçilerek K'nın çiftliği de bozulur.",
+      "rationale": "İki katlı terim çifttir; çift toplamdan çift terim çıkınca çift kalır. Bu bir toplamın paritesi bilgisidir; her değişkenin değerini veya paritesini tek başına belirlemez.",
+      "source": {
+        "providerId": "youtube:jxgYHbqQ8HE",
+        "startSeconds": 227,
+        "endSeconds": 330
+      },
+      "evidenceHash": "89141648fff86e69cdb6a10726140488891c3be083816996f6556dd6c9987981",
+      "contentHash": "7b27ab0e855390514925ad93f75ee48a52505c76381487788f77293764f9df66",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    }
+  ]
+}

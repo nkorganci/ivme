@@ -14,6 +14,8 @@ python scripts/ivme.py video edin mert-hoca-tek-cift --erisim
 python scripts/ivme.py video calistir mert-hoca-tek-cift
 python scripts/ivme.py video kontrol mert-hoca-tek-cift
 python scripts/ivme.py video paket mert-hoca-tek-cift
+python scripts/ivme.py video protips
+python scripts/ivme.py video protips --kontrol
 python scripts/ivme.py video durum
 ```
 
@@ -90,8 +92,33 @@ kalır. Eksik soru başka ayrıntılar uydurularak banka sorusuna dönüştürü
 
 Her sürüm `veri/video-hatti/<görev>/surumler/<hash>.json` ve `.oneriler.md`
 dosyalarını üretir. Öneri hedef dersin mevcut hash'ini de taşır; dersi değiştirmez.
-Öğretmen kaynağı, bütün soruyu ve gerekçeyi inceleyince uygun içerik
-[TAS-09 hattından](icerik-hatti.md) sürümlü ders değişikliği olarak ele alınır.
+Kullanıcı talimatıyla ipuçları **şimdi protip olarak UI'da kullanılır**:
+“Öğretmen kontrolü bekliyor” etiketi, koşul, örnek/gerekçe/karşı örnek ve zamanlı
+video bağlantısı gösterilir. Bu kullanım öğretmen onayı yazmaz. Protiplerin ötesindeki
+ana ders değişiklikleri [TAS-09 hattında](icerik-hatti.md) ele alınır.
+
+## UI görünümü ve yeni protip ekleme
+
+İlk görünüm: `/konuyu-ogrenelim/konu/temel-kavramlar#video-protips`.
+Derste aynı kartlar yalnız `s2` ve `s2b` bölümlerinde görünür. `video-hatti/protips.json`
+yerleşimleri (görev, kavram, ipucu, başlık, bölüm kimlikleri) tanımlar;
+`video protips` mevcut kanıtı doğrular ve öğrenci için yalnız gerekli alanları
+`frontend/src/learn/content/video-protips.json` içine üretir. Kaynak medya tekrar
+işlenmez. `--kontrol` Git'teki girdilerle izdüşümün güncelliğini yazmadan denetler;
+commit kontrolüne bağlıdır. İç inceleme/transkript/dosya yolları paketlenmez.
+
+Yeni protip: mevcut video görevini tamamla, `video paket` ile küçük manifesti
+güncelle, `protips.json` içine uygun konu/bölüm yerleşimini ekle, `video protips`
+çalıştır ve ilgili konu UI kontrolünü yap. Öğretmen incelemesi bekleyen kartlar
+görünür; `teacherApproved=false`, `reviewStatus=PENDING` korunur. Uzun vadeli hedef
+bütün uygun kaynaklardır; yaygınlaştırma kapsamı [12.15'te](../plan/12-icerik-ve-yayin.md#1215--tas-11-video-kanıt-ve-ipucu-pilotu) tutulur.
+
+```powershell
+# Ayrı ön yüz derlemesiyle; gerçek öğrenci DB'sine yazmaz.
+$env:IVME_TEST_DIST = "$PWD/veri/ui-denetim/video-protip-dist"
+# frontend içinde: npm run build -- --outDir $env:IVME_TEST_DIST
+node testler/konu-ogrenme-ui.mjs temel-kavramlar --protip
+```
 
 ## Önbellek ve kabul
 

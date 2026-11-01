@@ -11,6 +11,7 @@ import { MathText, Markdown } from '../math.jsx';
 import { ArchetypeBars, BASE, CatalogTopics, DueText, ExamBadges, MasteryRing, SharedSetLink, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
 import { bankCount, loadBank, pastCount } from '../bank.js';
 import { plannedSize, sizeNote } from '../engine/sharedSet.js';
+import VideoProtips from '../lesson/VideoProtips.jsx';
 
 const HISTORY = { mastery: 'Ustalık testi', testout: 'Kısa ustalık testi', review: 'Tekrar', reteach: 'Yeniden anlatım' };
 const OUTCOME = { up: 'bir basamak yukarı', same: 'aynı basamak', lapse: 'risk — yeniden anlatım' };
@@ -139,6 +140,8 @@ export default function ConceptPage() {
       <ul className="lr-practice-tips">{meta.practice.map((tip, i) => <li key={i}><MathText text={tip} /></li>)}</ul>
       {meta.targetSeconds && <p className="small muted">Hedef süre: soru başı {meta.targetSeconds} saniye. Konu testi ve çıkmış sorular setinde süreni bu hedefle karşılaştır.</p>}
     </section>}
+
+    <VideoProtips conceptId={conceptId} />
 
     <section className="card">
       <h2>Neden önemli?</h2>
