@@ -6,13 +6,13 @@ export const AYT_TESTS = {
   physics: { key: 'physics', label: 'Fizik', questions: 14 },
   chemistry: { key: 'chemistry', label: 'Kimya', questions: 13 },
   biology: { key: 'biology', label: 'Biyoloji', questions: 13 },
-  literature: { key: 'literature', label: 'Edebiyat', questions: 24 },
+  literature: { key: 'literature', label: 'Türk Dili ve Edebiyatı', questions: 24 },
   history1: { key: 'history1', label: 'Tarih-1', questions: 10 },
   geography1: { key: 'geography1', label: 'Coğrafya-1', questions: 6 },
   history2: { key: 'history2', label: 'Tarih-2', questions: 11 },
   geography2: { key: 'geography2', label: 'Coğrafya-2', questions: 11 },
   philosophy: { key: 'philosophy', label: 'Felsefe Grubu', questions: 12 },
-  religion: { key: 'religion', label: 'Din / Ek Felsefe', questions: 6 },
+  religion: { key: 'religion', label: 'Din Kültürü / Ek Felsefe', questions: 6 },
   language: { key: 'language', label: 'Yabancı Dil (YDT)', questions: 80 },
 };
 

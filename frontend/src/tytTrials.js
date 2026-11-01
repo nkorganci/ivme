@@ -8,15 +8,47 @@ export const SUBJECTS = [
   { key: 'tarih', label: 'Tarih', questions: 5, test: 'social' },
   { key: 'cografya', label: 'Coğrafya', questions: 5, test: 'social' },
   { key: 'felsefe', label: 'Felsefe', questions: 5, test: 'social' },
-  { key: 'din', label: 'Din / Ek Felsefe', questions: 5, test: 'social' },
+  { key: 'din', label: 'Din Kültürü / Ek Felsefe', questions: 5, test: 'social' },
 ];
 
 export const TESTS = [
   { key: 'math', label: 'Matematik', questions: 40 },
   { key: 'turkish', label: 'Türkçe', questions: 40 },
   { key: 'science', label: 'Fen Bilimleri', questions: 20 },
-  { key: 'social', label: 'Sosyal Bilgiler', questions: 20 },
+  { key: 'social', label: 'Sosyal Bilimler', questions: 20 },
 ];
+
+// Matematik (geometri dahil) ve Türkçe tek testtir; fen/sosyal ayrı derslerdir.
+// Eski matematik/geometri kayıtları SUBJECTS üzerinden okunmaya devam eder.
+export const TYT_COLUMNS = [
+  ...TESTS.slice(0, 2).map((test) => ({ ...test, test: test.key, aggregate: true })),
+  ...SUBJECTS.filter(({ test }) => test === 'science' || test === 'social'),
+];
+
+export function tytNetInput(trial, column) {
+  if (!column.aggregate) {
+    if (trial.nets?.[column.key] !== undefined) return trial.nets[column.key];
+    return trial.answers?.[column.key] === undefined ? '' : String(subjectNet(trial, column));
+  }
+  if (trial.testNets?.[column.key] !== undefined) return trial.testNets[column.key];
+  const subjects = SUBJECTS.filter(({ test }) => test === column.test);
+  return subjects.some(({ key }) => trial.nets?.[key] !== undefined || trial.answers?.[key] !== undefined)
+    ? String(subjects.reduce((sum, subject) => sum + subjectNet(trial, subject), 0)) : '';
+}
+
+export function updateTytNet(trial, key, raw) {
+  const column = TYT_COLUMNS.find((item) => item.key === key);
+  if (!column || !/^-?\d*(?:[.,]\d{0,2})?$/.test(raw)) return trial;
+  const value = Number(raw.replace(',', '.'));
+  if (Number.isFinite(value) && (value < -column.questions / 4 || value > column.questions)) return trial;
+  if (column.aggregate) return { ...trial, testNets: { ...trial.testNets, [key]: raw } };
+  const updated = { ...trial, nets: { ...trial.nets, [key]: raw }, testNets: { ...trial.testNets } };
+  const group = SUBJECTS.filter(({ test }) => test === column.test);
+  const complete = group.every((subject) => /^-?\d+(?:[.,]\d{0,2})?$/.test(tytNetInput(updated, subject)));
+  // Toplu eski netin ders dağılımı bilinmez: bütün dersler girilene kadar koru.
+  if (complete || updated.testNets[column.test] === '') delete updated.testNets[column.test];
+  return updated;
+}
 
 // Yaklaşık test ağırlıkları. Tek dershane referansı bütün ağırlıklara aynı oranda uygulanır.
 const COEFFICIENT = { math: 3.8725, turkish: 3.8725, science: 3.9898, social: 3.9898 };
@@ -52,11 +84,13 @@ export function sortTrialsByDate(trials) {
 
 export function buildTytChartData(trials) {
   return sortTrialsByDate(trials).filter((trial) => trial.date).map((trial) => {
-    const hasLegacyResult = Object.keys(trial.answers ?? {}).length > 0
-      || Object.keys(trial.nets ?? {}).length > 0;
     const values = Object.fromEntries(TESTS.map(({ key }) => {
       const entered = trial.testNets?.[key];
-      const available = entered === undefined ? hasLegacyResult : entered !== '';
+      const available = entered === undefined
+        ? SUBJECTS.some((subject) => subject.test === key
+          && (trial.nets?.[subject.key] !== undefined && trial.nets[subject.key] !== ''
+            || trial.answers?.[subject.key] !== undefined))
+        : entered !== '';
       return [key, available ? trial.totals[key] : null];
     }));
     const complete = TESTS.every(({ key }) => values[key] !== null);

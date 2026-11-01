@@ -2,6 +2,51 @@
 
 [Mimari dizini](README.md) · Ne zaman okunur: Deneme planı, kapsam, yıla ait sınav, arşiv konumları.
 
+## Öğrenci takip portalı: TYT / AYT deneme çizelgeleri
+
+`/ogrenci-takip/tyt-denemeleri` ve `/ogrenci-takip/ayt-denemeleri` ortak
+`DataGrid` ile tarih, ders netleri ve toplam neti gösterir. Puan, yerleştirme,
+sıralama ve işlem/silme sütunları yoktur; Excel de yalnız görünen sütunları içerir.
+OBP girişi ve puan/sıra açıklamaları kaldırılmıştır. Önceki OBP değeri kayıtta
+korunur. AYT ekranı TYT kaydına ihtiyaç duymadan açılır.
+
+Alan seçimi iki ekranda da Sayısal, Sözel ve Eşit Ağırlık seçeneklerini içerir;
+mevcut Yalnız TYT / Dil seçenekleri korunur. TYT bütün alanlarda aynı 120 soruyu
+kapsar: Matematik (geometri dahil) 40, Türkçe 40, Fizik 7, Kimya 7, Biyoloji 6,
+Tarih 5, Coğrafya 5, Felsefe 5, Din Kültürü / Ek Felsefe 5.
+AYT alanı sütunları ve toplam net hesabını değiştirir; başka alanın girilmiş
+netleri silinmez. Her alanın kapsamı 80 sorudur:
+
+- Sayısal: Matematik 40, Fizik 14, Kimya 13, Biyoloji 13.
+- Eşit Ağırlık: Matematik 40, Türk Dili ve Edebiyatı 24, Tarih-1 10, Coğrafya-1 6.
+- Sözel: Türk Dili ve Edebiyatı 24, Tarih-1 10, Coğrafya-1 6, Tarih-2 11,
+  Coğrafya-2 11, Felsefe Grubu 12, Din Kültürü / Ek Felsefe 6.
+- Dil: YDT 80.
+
+Felsefe Grubu resmî test bölümüdür; felsefe, psikoloji, sosyoloji ve mantığı kapsar.
+Din dersinden muaf olan öğrenci aynı sütuna alternatif felsefe/felsefe grubu netini
+girer; alternatifler standart soru sayısına eklenmez. Kaynak:
+[ÖSYM 2026-YKS kılavuzu, Tablo 1B](https://www.osym.gov.tr/2026yuksekogretim-kurumlari-sinavi-yks-kilavuzu).
+
+TYT'de yeni fen/sosyal ders netleri mevcut `nets` alanına yazılır. Eski
+`answers`, ders `nets` ve dört testin `testNets` kayıtları okunmaya devam eder.
+Eski toplu fen/sosyal neti derslere tahminen dağıtılmaz; ilgili ders hücreleri
+bilinmiyorsa boş kalır. Tablo üstünde tarih ve eski toplam gösterilir. Bir grubun
+bütün dersleri sayısal netle (0 dahil) tamamlandığında, kullanıcı düzenlemesi
+yalnız o grubun `testNets` değerini kaldırır ve ders toplamını kullanır.
+Kısmi giriş sırasında eski grup toplamı korunur; salt sayfa açılması kayıtları
+dönüştürmez. Eski matematik/geometri ders netleri Matematik sütununda toplanır.
+Yeni girişler her dersin `−soru/4 … soru` sınırını korur; grafik girilmemiş
+diğer testleri sıfır kabul etmez. DB şeması ve kaydetme/revizyon sözleşmesi değişmez.
+
+Başlıklar ortalı, 80 px yüksekliğinde ve tam ders adlarını gösterecek genişliktedir;
+mobilde tablo kendi içinde yatay kayar. Birim denetimi:
+`node --test frontend/test/tytTrials.test.mjs frontend/test/aytTrials.test.mjs`.
+`node testler/trial-tables-ui.mjs` masaüstü/mobil ders sütunları, dört alan geçişi,
+eski toplamların korunması, ders sınırları, 120 netlik yeni kayıt ve yeniden yüklemeyi
+bellekteki API ile doğrular. `--live` aynı kabulde assetleri çalışan 1010'dan okur;
+gerçek öğrenci veritabanına test kaydı yazmaz.
+
 ## Deneme ve sınav arşivi
 
 Deneme formunda kaynak adları seçilen sınava göre “TYT Çıkmış Sorular” /

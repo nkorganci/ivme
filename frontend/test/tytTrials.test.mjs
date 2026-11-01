@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildTytChartData, calculateTrial, estimateTytRank, sortTrialsByDate, validTrial } from '../src/tytTrials.js';
+import { TYT_COLUMNS, buildTytChartData, calculateTrial, estimateTytRank, sortTrialsByDate, tytNetInput, updateTytNet, validTrial } from '../src/tytTrials.js';
 
 test('denemeleri eski tarihten yeni tarihe, sonuçlarıyla birlikte sıralar', () => {
   const trials = [
@@ -97,4 +97,55 @@ test('TYT sırası 2026 resmi eşiklerinden arada hesaplanır', () => {
   assert.equal(estimateTytRank(300), 417935);
   assert.equal(estimateTytRank(290), Math.round((417935 + 577094) / 2));
   assert.equal(estimateTytRank(110), null);
+});
+
+test('TYT ders sütunları 120 soruyu kapsar; eski geometri neti matematiğe dahildir', () => {
+  assert.deepEqual(TYT_COLUMNS.map(({ key, questions }) => [key, questions]), [
+    ['math', 40], ['turkish', 40], ['fizik', 7], ['kimya', 7], ['biyoloji', 6],
+    ['tarih', 5], ['cografya', 5], ['felsefe', 5], ['din', 5],
+  ]);
+  const trial = { answers: {}, nets: { matematik: '25', geometri: '8' } };
+  assert.equal(tytNetInput(trial, TYT_COLUMNS[0]), '33');
+  assert.equal(tytNetInput(trial, TYT_COLUMNS[2]), '');
+  assert.equal(tytNetInput(updateTytNet(trial, 'math', '40'), TYT_COLUMNS[0]), '40');
+});
+
+test('ders netleri kaydolur; eski fen/sosyal toplamı dersler tamamlanınca değiştirilir', () => {
+  const original = { id: 'legacy', date: '2026-11-01', name: '', answers: {}, nets: {},
+    testNets: { math: '20', turkish: '30', science: '11', social: '14' } };
+  let trial = updateTytNet(original, 'fizik', '5,25');
+  assert.equal(calculateTrial(trial).net, 75);
+  assert.equal(original.nets.fizik, undefined);
+  trial = updateTytNet(trial, 'kimya', '4');
+  trial = updateTytNet(trial, 'biyoloji', '-');
+  assert.equal(trial.testNets.science, '11');
+  trial = updateTytNet(trial, 'biyoloji', '0');
+  assert.equal(trial.testNets.science, undefined);
+  assert.equal(trial.testNets.social, '14');
+  assert.equal(calculateTrial(trial).net, 73.25);
+  assert.equal(validTrial(trial), true);
+  trial = updateTytNet(trial, 'tarih', '4');
+  trial = updateTytNet(trial, 'cografya', '3');
+  trial = updateTytNet(trial, 'felsefe', '2');
+  trial = updateTytNet(trial, 'din', '1');
+  assert.equal(trial.testNets.social, undefined);
+  assert.equal(calculateTrial(trial).net, 69.25);
+  assert.equal(calculateTrial(original).net, 75);
+});
+
+test('yeni ders netleri sınırları korur ve boş diğer branşları grafikte sıfır yapmaz', () => {
+  const original = { id: 'new', date: '2026-11-01', name: '', answers: {}, nets: {}, testNets: {} };
+  assert.equal(updateTytNet(original, 'fizik', '7,25'), original);
+  assert.equal(updateTytNet(original, 'din', '-1,5'), original);
+  assert.equal(updateTytNet(original, 'kimya', 'abc'), original);
+  let trial = updateTytNet(original, 'fizik', '-1,75');
+  trial = updateTytNet(trial, 'kimya', '0');
+  const result = calculateTrial(trial);
+  assert.equal(result.net, -1.75);
+  const [point] = buildTytChartData([{ ...trial, ...result }]);
+  assert.equal(point.science, -1.75);
+  assert.equal(point.social, null);
+  assert.equal(point.math, null);
+  assert.equal(point.net, null);
+  assert.equal(tytNetInput(updateTytNet(trial, 'fizik', ''), TYT_COLUMNS[2]), '');
 });

@@ -4,11 +4,10 @@ import { api } from '../api.js';
 import DataGrid from '../components/DataGrid.jsx';
 import AytTrialCharts from '../components/AytTrialCharts.jsx';
 import { usePageTitle } from '../hooks.js';
-import { AYT_AREAS, AYT_TESTS, calculateAytTrial, createAytTrial, latestTytTrial, validAytTrial } from '../aytTrials.js';
-import { calculateTrial, sortTrialsByDate } from '../tytTrials.js';
+import { AYT_AREAS, AYT_TESTS, calculateAytTrial, createAytTrial, validAytTrial } from '../aytTrials.js';
+import { sortTrialsByDate } from '../tytTrials.js';
 
 const number = new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const integer = new Intl.NumberFormat('tr-TR');
 
 function DateInput({ data, context }) {
   return <input className="tyt-cell-input" type="date" aria-label="Deneme tarihi" value={data.date}
@@ -21,11 +20,6 @@ function NetInput({ data, test, context }) {
     onChange={(event) => context.actions.current.net(data.id, test.key, event.target.value)} />;
 }
 
-function RemoveButton({ data, context }) {
-  return <button type="button" className="btn btn-secondary tyt-remove" aria-label={`${data.date || 'Deneme'} denemesini sil`}
-    onClick={() => context.actions.current.remove(data.id)}>Sil</button>;
-}
-
 export default function AytTrials() {
   const { user } = useAuth();
   return <AytTrialsForUser key={user.id} />;
@@ -34,7 +28,6 @@ export default function AytTrials() {
 function AytTrialsForUser() {
   usePageTitle('AYT Deneme Takibi');
   const [state, setState] = useState(null);
-  const [tyt, setTyt] = useState(null);
   const [loadError, setLoadError] = useState('');
   const [saveStatus, setSaveStatus] = useState('idle');
   const [saveError, setSaveError] = useState('');
@@ -50,12 +43,11 @@ function AytTrialsForUser() {
   useEffect(() => {
     let active = true;
     setLoadError('');
-    Promise.all([api.get('/api/ayt-trials'), api.get('/api/tyt-trials')]).then(([remote, tytRemote]) => {
+    api.get('/api/ayt-trials').then((remote) => {
       if (!active) return;
       const loaded = { area: AYT_AREAS[remote.area] ? remote.area : 'SAY', rows: remote.rows.filter(validAytTrial) };
       revision.current = remote.revision;
       savedSnapshot.current = JSON.stringify(loaded);
-      setTyt(tytRemote);
       setState(loaded);
     }).catch((error) => { if (active) setLoadError(error.message); });
     return () => { active = false; };
@@ -94,25 +86,18 @@ function AytTrialsForUser() {
     return () => window.removeEventListener('beforeunload', warn);
   }, [saveStatus]);
 
-  const lastTyt = useMemo(() => latestTytTrial(tyt?.rows), [tyt]);
-  const tytScore = lastTyt ? calculateTrial(lastTyt).score : null;
-  const obpValue = Number(String(tyt?.obp ?? '').replace(',', '.'));
-  const obp = tyt?.obp && Number.isFinite(obpValue) && obpValue >= 250 && obpValue <= 500 ? obpValue : null;
   const area = state?.area ?? 'SAY';
   const tests = Object.keys(AYT_AREAS[area].weights).map((key) => AYT_TESTS[key]);
   const rows = useMemo(() => sortTrialsByDate((state?.rows ?? []).map((row) => ({
-    ...row, ...calculateAytTrial(row, area, tytScore, obp),
-  }))), [state?.rows, area, tytScore, obp]);
+    ...row, ...calculateAytTrial(row, area, null),
+  }))), [state?.rows, area]);
   const columns = useMemo(() => [
-    { field: 'date', headerName: 'Tarih', pinned: 'left', width: 155, minWidth: 155, sort: 'asc', cellRenderer: DateInput },
+    { field: 'date', headerName: 'Tarih', pinned: 'left', width: 155, minWidth: 155, sort: 'asc', autoHeaderHeight: false, cellRenderer: DateInput },
     ...tests.map((test) => ({ colId: `${test.key}.net`, headerName: `${test.label}\n${test.questions} soru`,
-      width: 155, minWidth: 155, valueGetter: ({ data }) => data?.nets?.[test.key] ?? 0,
+      width: 155, minWidth: 140, autoHeaderHeight: false, cellDataType: 'number', valueGetter: ({ data }) =>
+        data?.testNets?.[test.key] === undefined || data.testNets[test.key] === '' ? null : data.nets[test.key],
       cellRenderer: NetInput, cellRendererParams: { test } })),
-    { field: 'net', headerName: 'Alan\nToplam Net', width: 140, valueFormatter: ({ value }) => number.format(value ?? 0) },
-    { field: 'score', headerName: `${area} puanı ≈`, width: 130, valueFormatter: ({ value }) => value == null ? '—' : number.format(value) },
-    { field: 'placement', headerName: 'Yerleştirme ≈', width: 145, valueFormatter: ({ value }) => value == null ? '—' : number.format(value) },
-    { field: 'rank', headerName: `${area} sıra ≈`, width: 130, valueFormatter: ({ value }) => value == null ? '—' : integer.format(value) },
-    { colId: 'remove', headerName: 'İşlem', width: 88, filter: false, sortable: false, cellRenderer: RemoveButton },
+    { field: 'net', headerName: 'Alan\nToplam Net', width: 140, minWidth: 140, autoHeaderHeight: false, valueFormatter: ({ value }) => number.format(value ?? 0) },
   ], [area]);
 
   actions.current = {
@@ -124,10 +109,6 @@ function AytTrialsForUser() {
       if (Number.isFinite(value) && (value < -test.questions / 4 || value > test.questions)) return;
       setState((current) => ({ ...current, rows: current.rows.map((row) => row.id === id
         ? { ...row, testNets: { ...row.testNets, [key]: raw } } : row) }));
-    },
-    remove: (id) => {
-      if (!window.confirm('Bu deneme silinsin mi?')) return;
-      setState((current) => ({ ...current, rows: current.rows.filter((row) => row.id !== id) }));
     },
   };
 
@@ -149,19 +130,17 @@ function AytTrialsForUser() {
       <button type="button" className="btn btn-primary" onClick={() => setState((current) => ({ ...current, rows: [...current.rows, createAytTrial()] }))}>+ Deneme ekle</button>
       <button type="button" className="btn btn-secondary" onClick={() => flush.current(true)} disabled={saveStatus === 'pending'}>Kaydet</button>
     </div>
-    {lastTyt
-      ? <p className="muted small">Hesapta kullanılan son TYT denemesi: {lastTyt.date} · {number.format(tytScore)} puan. OBP: {obp === null ? 'girilmemiş' : number.format(obp)}.</p>
-      : <p className="field-error" role="status">Alan puanını hesaplamak için önce TYT Denemeleri bölümünde tarihli ve puanı hesaplanabilen bir deneme girin.</p>}
+    <p className="muted small">{area === 'DIL' ? 'YDT 80 sorudan oluşur.' : 'Seçilen alanın dersleri toplam 80 sorudur. Matematik geometriyi de içerir.'} Net = doğru − yanlış / 4.</p>
+    {area === 'SOZ' && <p className="muted small">Felsefe Grubu; felsefe, psikoloji, sosyoloji ve mantık derslerini kapsar. Din Kültürü dersinden muafsanız aynı sütuna ek felsefe grubu netini girin.</p>}
     {saveStatus === 'error'
       ? <p className="tyt-save-status tyt-save-status--error" role="alert">Kaydedilemedi: {saveError} <button className="btn btn-secondary" type="button" onClick={() => flush.current()}>Tekrar dene</button></p>
       : <p className="tyt-save-status" role="status">{saveStatus === 'saved' ? '✓ Kayıt edildi.' : saveStatus === 'pending' ? 'Veritabanına kaydediliyor…' : 'Denemeleriniz otomatik kaydedilir.'}</p>}
     <div className="card tracking-scroll worksheet-frame tyt-grid-frame">
       <DataGrid mode="worksheet" scrollable columnSorting className="tyt-grid" rowData={rows} columnDefs={columns}
-        gridOptions={{ getRowId: ({ data }) => data.id, context: { actions }, rowHeight: 56, headerHeight: 58 }} />
+        gridOptions={{ getRowId: ({ data }) => data.id, context: { actions }, rowHeight: 56, headerHeight: 80 }} />
     </div>
     {rows.length === 0 && <p className="muted">Henüz deneme yok. “Deneme ekle” ile başlayın.</p>}
     <AytTrialCharts rows={rows} tests={tests} />
-    <p className="muted small">Puan tahmini, 2026-YKS kılavuzundaki TYT %40 ve AYT/YDT %60 test ağırlıklarıyla, son TYT denemesi kullanılarak hesaplanır. Sıra, 2026 sınav puanı dağılımına göre yaklaşık değerdir. Gerçek ÖSYM puanı ve sırası sınavın ortalaması ve standart sapmasına göre değişebilir. Yerleştirme puanına girilmişse OBP × 0,12 eklenir.</p>
-    <p className="muted small">Kaynak: <a href="https://www.osym.gov.tr/2026yuksekogretim-kurumlari-sinavi-yks-kilavuzu" target="_blank" rel="noopener noreferrer">ÖSYM 2026-YKS kılavuzu</a> · <a href="https://dokuman.osym.gov.tr/pdfdokuman/2026/YKS/SB/sayisal_ykdd21072026.pdf" target="_blank" rel="noopener noreferrer">ÖSYM 2026-YKS sayısal bilgiler</a></p>
+    <p className="muted small">Dersler ve soru sayıları: <a href="https://www.osym.gov.tr/2026yuksekogretim-kurumlari-sinavi-yks-kilavuzu" target="_blank" rel="noopener noreferrer">ÖSYM 2026-YKS kılavuzu</a></p>
   </>;
 }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { AYT_AREAS, calculateAytTrial, estimateAytRank, latestTytTrial, validAytTrial } from '../src/aytTrials.js';
+import { AYT_AREAS, AYT_TESTS, calculateAytTrial, estimateAytRank, latestTytTrial, validAytTrial } from '../src/aytTrials.js';
 import { calculateTrial } from '../src/tytTrials.js';
 
 test('alan ağırlıkları %60 eder ve ilgili dersleri gösterir', () => {
@@ -9,7 +9,11 @@ test('alan ağırlıkları %60 eder ve ilgili dersleri gösterir', () => {
   }
   assert.deepEqual(Object.keys(AYT_AREAS.SAY.weights), ['math', 'physics', 'chemistry', 'biology']);
   assert.deepEqual(Object.keys(AYT_AREAS.EA.weights), ['math', 'literature', 'history1', 'geography1']);
+  assert.deepEqual(Object.keys(AYT_AREAS.SOZ.weights), ['literature', 'history1', 'geography1', 'history2', 'geography2', 'philosophy', 'religion']);
   assert.deepEqual(Object.keys(AYT_AREAS.DIL.weights), ['language']);
+  for (const config of Object.values(AYT_AREAS)) {
+    assert.equal(Object.keys(config.weights).reduce((sum, key) => sum + AYT_TESTS[key].questions, 0), 80);
+  }
 });
 
 test('alan puanı son TYT puanı, AYT ağırlıkları ve OBP ile hesaplanır', () => {

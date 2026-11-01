@@ -14,7 +14,26 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
 | TAS-02 / 12.06 | Dış makinede webhook/zamanlayıcı kurulumu ve gerçek kesinti/iyileşme bildirimi açık; [işletim tarifi](islemler/saglik-ve-izleme.md). |
 
-## Son kapanan iş: TAS-12 / 12.16
+## Son kapanan iş: DENEME-01
+
+TYT ders sütunları ayrı; AYT Sayısal/Sözel/Eşit Ağırlık/Dil dersleri ve
+Tarih-1/2, Coğrafya-1/2 ayrımı doğrulandı. Puan, yerleştirme, sıra ve işlem
+sütunları ile OBP girişi kaldırıldı. Eski kayıtlar ve saklanmış OBP korunur;
+eski fen/sosyal toplamı, ilgili derslerin tamamı girilince ders toplamına geçer.
+Başlıklar 80 px; tam ders adları ve toplam sütunu kırpılmıyor.
+
+Doğrulama: TYT/AYT Node 15/15; `node testler/trial-tables-ui.mjs --live`
+masaüstü/mobil geçti. Dört alan, her dersin soru sınırı, eski netler, 120 netlik
+yeni kayıt, kayıt sonrası yeniden yükleme ve sayfa taşması kontrol edildi.
+API bellekte; gerçek öğrenci DB'sine test kaydı yazılmadı. İzleyici build'i ve
+Windows PowerShell kaynak/paket parmak izi, HTTP sürümü/asset eşleşmesi geçti.
+Raporlar `veri/ui-denetim/deneme-tablolari/canli-rapor.json` ve `surum.json`.
+Teknik kararlar [deneme sözleşmesinde](mimari/deneme.md). Yerel main commit'i;
+push/dış dağıtım yok. Bu kapsamda kalan iş yok; girdi değişmedikçe testi tekrarlama.
+Yeni deneme takibi değişikliğinde ilk komut:
+`node --test frontend/test/tytTrials.test.mjs frontend/test/aytTrials.test.mjs`.
+
+## TAS-12 devam noktası
 
 Teknik temel tamamlandı: `ivme.py kalite plan|calistir|durum TAS-XX`, on iki görev
 profili, kaynak/komut/log hash'li kanıt, kesintide rapor, XML tabanlı backend sonucu

@@ -5,7 +5,7 @@ const BRANCHES = [
   { key: 'math', title: 'Matematik', color: 'var(--navy)' },
   { key: 'turkish', title: 'Türkçe', color: 'var(--ok)' },
   { key: 'science', title: 'Fen Bilimleri', color: 'var(--warn)' },
-  { key: 'social', title: 'Sosyal Bilgiler', color: 'var(--bad)' },
+  { key: 'social', title: 'Sosyal Bilimler', color: 'var(--bad)' },
 ];
 
 const number = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
