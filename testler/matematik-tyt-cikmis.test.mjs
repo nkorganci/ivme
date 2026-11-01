@@ -138,3 +138,12 @@ test('çarpanlara ayırma: sunu kalıpları (üslü değişken, iki kare farkı,
   const as = range(-40, 40).filter((a) => [2, 3].some((r) => r * r + a * r + 12 === 0));
   assert.deepEqual(as, [-8, -7]);
 });
+
+test('AYT-0022: asal bölen kümeleri; benzer soru 14 ve 21', () => {
+  const primes = (n) => { const out = new Set(); for (let p = 2; n > 1; p++) while (n % p === 0) { out.add(p); n /= p; } return out; };
+  const P = range(2, 60).filter((p) => primes(p).size === 1 && primes(p).has(p));
+  const semi = P.flatMap((p) => P.filter((q) => q > p).map((q) => p * q));
+  assert.deepEqual(semi.filter((n) => primes(66 * n).size === 5 && primes(70 * n).size === 3), [35]);
+  linked('AYT_Sayisal-0022', 'A');
+  assert.deepEqual(semi.filter((n) => primes(30 * n).size === 4 && primes(42 * n).size === 3).sort((a, b) => a - b), [14, 21]);
+});

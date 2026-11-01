@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "sayma-permutasyon-video",
+  "topicId": "tyt.matematik.permutasyon",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki sayma-permutasyon videoları: JHMENIAC_X8 (PL1: Permütasyon-1 | 65.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); 4Q_bmTXsEIw (PL2: 49 Günde TYT Matematik Kampı 46.Gün 1.Video | Sayma Yöntemleri | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:JHMENIAC_X8",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/JHMENIAC_X8.mp4",
+      "transcript": "veri/video-hatti/medya/JHMENIAC_X8.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2946,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:4Q_bmTXsEIw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/4Q_bmTXsEIw.mp4",
+      "transcript": "veri/video-hatti/medya/4Q_bmTXsEIw.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3703,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/sayma-permutasyon-video.json",
+  "lesson": "frontend/src/learn/content/dersler/sayma-permutasyon.ders",
+  "verificationTests": [
+    "testler/video-ipucu-sayma-permutasyon-test.py"
+  ]
+}

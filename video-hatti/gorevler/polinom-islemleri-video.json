@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "polinom-islemleri-video",
+  "topicId": "tyt.matematik.polinomlar",
+  "playlist": {
+    "providerId": "youtube-playlist:PLVoSZ0D0CB3qkytIGl01_CAPZuKgaMbxw",
+    "url": "https://www.youtube.com/playlist?list=PLVoSZ0D0CB3qkytIGl01_CAPZuKgaMbxw",
+    "selection": "Konu listesindeki polinom-islemleri videoları: t_TS_bnc_Y4 (PL2: Polinomlar | 49 Günde TYT Matematik Kampı 44. Gün | 1.Video | 2027 | Rehber Matematik); 2RwwzsBVF0U (PL2: Polinomlar | 49 Günde TYT Matematik Kampı 44. Gün | 2.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:t_TS_bnc_Y4",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/t_TS_bnc_Y4.mp4",
+      "transcript": "veri/video-hatti/medya/t_TS_bnc_Y4.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3242,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:2RwwzsBVF0U",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/2RwwzsBVF0U.mp4",
+      "transcript": "veri/video-hatti/medya/2RwwzsBVF0U.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2733,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/polinom-islemleri-video.json",
+  "lesson": "frontend/src/learn/content/dersler/polinom-islemleri.ders",
+  "verificationTests": [
+    "testler/video-ipucu-polinom-islemleri-test.py"
+  ]
+}

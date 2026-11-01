@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "fonksiyon-grafikleri-video",
+  "topicId": "tyt.matematik.fonksiyonlara-giris",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki fonksiyon-grafikleri videoları: mHmETeWXEe0 (PL1: Fonksiyonlar-5 | 61.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); Dbn2eYpmAI8 (PL2: Fonksiyonlar - 3 | 49 Günde TYT Matematik Kampı 42. Gün | 1.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:mHmETeWXEe0",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/mHmETeWXEe0.mp4",
+      "transcript": "veri/video-hatti/medya/mHmETeWXEe0.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 1895,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:Dbn2eYpmAI8",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/Dbn2eYpmAI8.mp4",
+      "transcript": "veri/video-hatti/medya/Dbn2eYpmAI8.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3254,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/fonksiyon-grafikleri-video.json",
+  "lesson": "frontend/src/learn/content/dersler/fonksiyon-grafikleri.ders",
+  "verificationTests": [
+    "testler/video-ipucu-fonksiyon-grafikleri-test.py"
+  ]
+}

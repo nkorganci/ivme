@@ -282,10 +282,20 @@
     "aralarinda_ebob"
    ],
    "imageSha256": "a3eae58c6aa542e4cfa9b53d8774780ac8ec42eae3f0b9bc20f0603525e0c9d7"
+  },
+  "AYT_Sayisal-0022": {
+   "sectionId": "s1",
+   "role": "guided",
+   "claims": [
+    "asal",
+    "usler"
+   ],
+   "imageSha256": "bfc2f600e1da020bab53925e180535fb0b306eb61276746b27f03a0c617732d2"
   }
  },
  "tests": [
-  "testler/ebob-ekok-pilot.test.mjs"
+  "testler/ebob-ekok-pilot.test.mjs",
+  "testler/matematik-tyt-cikmis.test.mjs"
  ],
  "modelPlan": {
   "draft": {

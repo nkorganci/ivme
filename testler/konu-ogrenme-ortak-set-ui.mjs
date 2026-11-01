@@ -110,19 +110,19 @@ async function run(mobile) {
   const steps = [];
   server.sessions.clear();
   try {
-    // 1) Konu sayfası: bağlantılar yeni sekmede açılır ve sayılar gerçek setlerdir (413 kayıt → 360 tekil; 52 çıkmış; konu testi 12).
+    // 1) Konu sayfası: bağlantılar yeni sekmede açılır ve sayılar gerçek setlerdir (412 kayıt → 359 tekil; 51 çıkmış; konu testi 12).
     await goto(`/konuyu-ogrenelim/konu/${CONCEPT}`);
     await wait('document.querySelector(".lr-concept-page")', 30000);
-    await wait('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Çıkmış sorular (52 soru)")) && [...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Konu testi (12 soru)"))', 30000);
+    await wait('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Çıkmış sorular (51 soru)")) && [...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Konu testi (12 soru)"))', 30000);
     const links = await evalJs(`[...document.querySelectorAll('.lr-actions a')].map((a) => ({ text: a.textContent.replace(/\\s+/g, ' ').trim(), target: a.target, rel: a.rel, href: a.getAttribute('href') }))`);
     const past = links.find((l) => l.text.startsWith('Çıkmış sorular'));
     const test = links.find((l) => l.text.startsWith('Konu testi'));
     assert.ok(past && test, JSON.stringify(links));
-    assert.match(past.text, /Çıkmış sorular \(52 soru\)/);
+    assert.match(past.text, /Çıkmış sorular \(51 soru\)/);
     assert.match(test.text, /Konu testi \(12 soru\)/);
     for (const link of [past, test]) { assert.equal(link.target, '_blank'); assert.match(link.rel, /noopener/); }
     assert.equal(past.href, `/konuyu-ogrenelim/pratik?tur=cikmis&konu=${CONCEPT}`);
-    assert.ok(await evalJs('document.body.innerText.includes("360 tekil soru")'), 'banka satırı tekil soru sayısını göstermeli');
+    assert.ok(await evalJs('document.body.innerText.includes("359 tekil soru")'), 'banka satırı tekil soru sayısını göstermeli');
     assert.equal(await overflow(), false);
     await screenshot(join(out, `${label}-ortak-set-konu.png`));
     steps.push({ step: 'konu-baglantilari', past: past.text, test: test.text });
@@ -136,12 +136,12 @@ async function run(mobile) {
     assert.equal(server.posts.length, 1);
     const pastBody = server.posts[0];
     assert.equal(pastBody.kind, 'PAST_EXAM');
-    assert.equal(pastBody.items.length, 52, 'gizli 40 sınırı yok');
-    assert.equal(new Set(pastBody.items.map((i) => i.questionId)).size, 52);
+    assert.equal(pastBody.items.length, 51, 'gizli 40 sınırı yok');
+    assert.equal(new Set(pastBody.items.map((i) => i.questionId)).size, 51);
     assert.match(pastBody.clientRequestId, /^[0-9a-f-]{36}$/);
     const location = await evalJs('location.pathname + location.search');
     assert.match(location, new RegExp(`sessionId=${firstId}`));
-    assert.ok(await evalJs('document.querySelector(".qstrip").innerText.includes("1 / 52")'), 'sıra göstergesi 1 / 52 olmalı');
+    assert.ok(await evalJs('document.querySelector(".qstrip").innerText.includes("1 / 51")'), 'sıra göstergesi 1 / 51 olmalı');
     assert.ok(await evalJs('[...document.querySelectorAll(".qstrip a")].some((a) => a.textContent.includes("Konuya dön") && a.getAttribute("href").endsWith("/konuyu-ogrenelim/konu/temel-kavramlar"))'));
     await screenshot(join(out, `${label}-ortak-set-soru.png`));
     steps.push({ step: 'cikmis-oturumu', items: pastBody.items.length, location });
@@ -150,7 +150,7 @@ async function run(mobile) {
     await goto(`/pratik/${firstId}`);
     await wait('document.querySelector(".practice-list li")', 30000);
     assert.ok(await evalJs('document.querySelector("h1").innerText.includes("Çıkmış sorular")'));
-    assert.equal(await evalJs('document.querySelectorAll(".practice-list li").length'), 52);
+    assert.equal(await evalJs('document.querySelectorAll(".practice-list li").length'), 51);
     assert.equal(await evalJs('[...document.querySelectorAll("a")].some((a) => a.textContent.includes("Konuya dön"))'), true);
     steps.push({ step: 'oturum-ekrani' });
 
@@ -172,7 +172,7 @@ async function run(mobile) {
 
     // Açık setler ders sayfasında "devam" olarak görünür ve ilerleme sayısını taşır.
     await goto(`/konuyu-ogrenelim/konu/${CONCEPT}`);
-    await wait('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Çıkmış sorular: devam (0/52)"))', 30000);
+    await wait('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Çıkmış sorular: devam (0/51)"))', 30000);
     assert.ok(await evalJs('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Konu testi: devam (0/12)"))'));
 
     // 5) Eski adres başlatma sayfasına yönlenir.

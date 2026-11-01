@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "onermeler-video",
+  "topicId": "tyt.matematik.mantik",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki onermeler videoları: pdVMfd_lFUQ (PL1: Mantık-1 | 53.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); Qqd3-PtGcdk (PL2: Mantık | 49 Günde TYT Matematik Kampı 36.Gün | 1.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:pdVMfd_lFUQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/pdVMfd_lFUQ.mp4",
+      "transcript": "veri/video-hatti/medya/pdVMfd_lFUQ.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2724,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:Qqd3-PtGcdk",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/Qqd3-PtGcdk.mp4",
+      "transcript": "veri/video-hatti/medya/Qqd3-PtGcdk.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3406,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/onermeler-video.json",
+  "lesson": "frontend/src/learn/content/dersler/onermeler.ders",
+  "verificationTests": [
+    "testler/video-ipucu-onermeler-test.py"
+  ]
+}

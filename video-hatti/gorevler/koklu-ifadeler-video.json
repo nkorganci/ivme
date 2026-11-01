@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "koklu-ifadeler-video",
+  "topicId": "tyt.matematik.koklu-sayilar",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki koklu-ifadeler videoları: w-0um03TV7g (PL1: Köklü Sayılar-1 | 25.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); RgWrgpxfj2g (PL2: Radical Expressions - 1 | 49-Day TYT Mathematics Bootcamp Day 21 | Video 1 | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:w-0um03TV7g",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/w-0um03TV7g.mp4",
+      "transcript": "veri/video-hatti/medya/w-0um03TV7g.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 4505,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:RgWrgpxfj2g",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/RgWrgpxfj2g.mp4",
+      "transcript": "veri/video-hatti/medya/RgWrgpxfj2g.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3170,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/koklu-ifadeler-video.json",
+  "lesson": "frontend/src/learn/content/dersler/koklu-ifadeler.ders",
+  "verificationTests": [
+    "testler/video-ipucu-koklu-ifadeler-test.py"
+  ]
+}

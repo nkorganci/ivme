@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "yas-isci-problemleri-video",
+  "topicId": "tyt.matematik.yas-problemleri",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki yas-isci-problemleri videoları: Ny4I-1pcmgY (PL1: Yaş Problemleri-1 | 37.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); HJNleId31GA (PL1: İşçi Problemleri-1 | 47.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:Ny4I-1pcmgY",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/Ny4I-1pcmgY.mp4",
+      "transcript": "veri/video-hatti/medya/Ny4I-1pcmgY.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3826,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:HJNleId31GA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/HJNleId31GA.mp4",
+      "transcript": "veri/video-hatti/medya/HJNleId31GA.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3073,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/yas-isci-problemleri-video.json",
+  "lesson": "frontend/src/learn/content/dersler/yas-isci-problemleri.ders",
+  "verificationTests": [
+    "testler/video-ipucu-yas-isci-problemleri-test.py"
+  ]
+}

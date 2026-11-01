@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "veri-grafikleri-video",
+  "topicId": "tyt.matematik.veri-ve-istatistik",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki veri-grafikleri videoları: DFaJHs-F7lI (PL1: Veri Analizi (İstatistik) | 50.Gün - 2.Video | 70 Günde TYT Matematik Kampı | 2026); L_8OZ-66HHg (PL2: Veri Analiz | 49 Günde TYT Matematik Kampı 45. Gün |  2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DFaJHs-F7lI",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/DFaJHs-F7lI.mp4",
+      "transcript": "veri/video-hatti/medya/DFaJHs-F7lI.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2574,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:L_8OZ-66HHg",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/L_8OZ-66HHg.mp4",
+      "transcript": "veri/video-hatti/medya/L_8OZ-66HHg.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3347,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/veri-grafikleri-video.json",
+  "lesson": "frontend/src/learn/content/dersler/veri-grafikleri.ders",
+  "verificationTests": [
+    "testler/video-ipucu-veri-grafikleri-test.py"
+  ]
+}

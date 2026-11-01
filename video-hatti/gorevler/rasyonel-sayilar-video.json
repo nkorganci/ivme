@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "rasyonel-sayilar-video",
+  "topicId": "tyt.matematik.rasyonel-sayilar",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki rasyonel-sayilar videoları: 7lC03cLsvlQ (PL1: Rasyonel Sayılar-1 | 10.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); uw4bVFVbIy4 (PL2: Rasyonel Sayılar 1 | Rasyonel Sayıların Temelini Burada Bitir! | TYT Matematik 7. Gün | 1.Video). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:7lC03cLsvlQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/7lC03cLsvlQ.mp4",
+      "transcript": "veri/video-hatti/medya/7lC03cLsvlQ.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 4408,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:uw4bVFVbIy4",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/uw4bVFVbIy4.mp4",
+      "transcript": "veri/video-hatti/medya/uw4bVFVbIy4.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2328,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/rasyonel-sayilar-video.json",
+  "lesson": "frontend/src/learn/content/dersler/rasyonel-sayilar.ders",
+  "verificationTests": [
+    "testler/video-ipucu-rasyonel-sayilar-test.py"
+  ]
+}

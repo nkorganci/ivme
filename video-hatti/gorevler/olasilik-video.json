@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "olasilik-video",
+  "topicId": "tyt.matematik.olasilik",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki olasilik videoları: wWLodePjvUA (PL1: Olasılık-1 | 69.Gün -1.Video | 70 Günde TYT Matematik Kampı | 2026); hT8dfrNoYxI (PL2: 49 Günde TYT Matematik Kampı 49.Gün 1.Video | Olasılık| Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:wWLodePjvUA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/wWLodePjvUA.mp4",
+      "transcript": "veri/video-hatti/medya/wWLodePjvUA.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 4520,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:hT8dfrNoYxI",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/hT8dfrNoYxI.mp4",
+      "transcript": "veri/video-hatti/medya/hT8dfrNoYxI.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3160,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/olasilik-video.json",
+  "lesson": "frontend/src/learn/content/dersler/olasilik.ders",
+  "verificationTests": [
+    "testler/video-ipucu-olasilik-test.py"
+  ]
+}

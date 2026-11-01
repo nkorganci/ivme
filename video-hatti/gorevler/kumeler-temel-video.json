@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "kumeler-temel-video",
+  "topicId": "tyt.matematik.kumeler",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki kumeler-temel videoları: OnGgW4VrrdE (PL1: Kümeler-1 | 55.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); I-rpBtyZkUw (PL2: Kümeler 1 | 49 Günde TYT Matematik Kampı 37. Gün (2027)). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:OnGgW4VrrdE",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/OnGgW4VrrdE.mp4",
+      "transcript": "veri/video-hatti/medya/OnGgW4VrrdE.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 1927,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:I-rpBtyZkUw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/I-rpBtyZkUw.mp4",
+      "transcript": "veri/video-hatti/medya/I-rpBtyZkUw.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 6463,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/kumeler-temel-video.json",
+  "lesson": "frontend/src/learn/content/dersler/kumeler-temel.ders",
+  "verificationTests": [
+    "testler/video-ipucu-kumeler-temel-test.py"
+  ]
+}

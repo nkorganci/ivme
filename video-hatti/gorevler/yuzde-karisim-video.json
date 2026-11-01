@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "yuzde-karisim-video",
+  "topicId": "tyt.matematik.karisim-problemleri",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki yuzde-karisim videoları: tC_hmX97EPw (PL1: Yüzde Problemleri-1 | 39.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); YDcFBZRqTFQ (PL1: Karışım Problemleri-1 | 43.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:tC_hmX97EPw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/tC_hmX97EPw.mp4",
+      "transcript": "veri/video-hatti/medya/tC_hmX97EPw.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2690,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:YDcFBZRqTFQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/YDcFBZRqTFQ.mp4",
+      "transcript": "veri/video-hatti/medya/YDcFBZRqTFQ.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2620,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/yuzde-karisim-video.json",
+  "lesson": "frontend/src/learn/content/dersler/yuzde-karisim.ders",
+  "verificationTests": [
+    "testler/video-ipucu-yuzde-karisim-test.py"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "esitsizlikler-video",
+  "topicId": "tyt.matematik.basit-esitsizlikler",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki esitsizlikler videoları: dHYAFxvNNsA (PL1: Basit Eşitsizlikler-1 | 19.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); EWSRVaTIzoQ (PL2: Simple Inequalities | 49-Day TYT Math Camp Day 15 | Video 1 | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:dHYAFxvNNsA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/dHYAFxvNNsA.mp4",
+      "transcript": "veri/video-hatti/medya/dHYAFxvNNsA.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3992,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:EWSRVaTIzoQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/EWSRVaTIzoQ.mp4",
+      "transcript": "veri/video-hatti/medya/EWSRVaTIzoQ.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3257,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/esitsizlikler-video.json",
+  "lesson": "frontend/src/learn/content/dersler/esitsizlikler.ders",
+  "verificationTests": [
+    "testler/video-ipucu-esitsizlikler-test.py"
+  ]
+}

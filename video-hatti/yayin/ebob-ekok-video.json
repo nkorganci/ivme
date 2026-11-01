@@ -3,7 +3,7 @@
   "taskId": "ebob-ekok-video",
   "topicId": "tyt.matematik.ebob-ve-ekok",
   "status": "REVIEW_REQUIRED",
-  "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+  "evidenceHash": "d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee",
   "taskHash": "16eba19bd94b382706e4b69e485c43970dcab8ae8f823f287ebbd3810b4fb8b8",
   "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
   "evidenceDirectory": "veri\\video-hatti\\ebob-ekok-video",
@@ -13,8 +13,8 @@
     "kareler\\17e5b491407f24844b96b86e94f5aced096c888aae7c86a91c4a0d5a52d1649d.png": "029af33ebf5a01cf16bb231e9de928167455b67a9a68ec583fe3d58c3d23cd44",
     "kareler\\901eebb9af87d506147635e466957ce23884bc4adf1f26ea7820a4906355e5a2.png": "9058dfa50f54778d100c36f160c0931dc951820393a91a272f1081d6b139ab6d",
     "asamalar\\matematik-denetimi\\103f5a19371604475d3a5f595aeb3d95e37d1df52cbff23813a183f9814500d0.json": "2f07ce8c63779a72022f583677faf9836684266da076937ba0a81fbc945b0251",
-    "surumler\\99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9.json": "9273da05dacbc6e66c3a9e1fdb7ffbe8b57b32b9176cd06a5abb2c0dfd816de8",
-    "surumler\\99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9.oneriler.md": "cb7d2a79fe47002c53283e0ea0cc2bd183fbfc0dd1392becd11108e9c2f7416d"
+    "surumler\\d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee.json": "5eeb438f3a02c23ffb257c86102d91b3dc5f63826fadb165d3315bb881eb8ca0",
+    "surumler\\d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee.oneriler.md": "c48dc53a8cf6b40706163576a44ce4253375d50648a901cd5c80d62b9a7a43ef"
   },
   "verification": {
     "status": "SCRIPT_CHECKED",
@@ -33,15 +33,15 @@
   "lastRun": {
     "taskId": "ebob-ekok-video",
     "status": "REVIEW_REQUIRED",
-    "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+    "evidenceHash": "d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee",
     "metrics": {
       "networkRequests": 0,
       "asrCalls": 0,
-      "frameDecodes": 2,
-      "stagesBuilt": 3,
-      "stagesReused": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
       "modelCalls": 0,
-      "elapsedSeconds": 0.87
+      "elapsedSeconds": 0.444
     },
     "videos": [
       {

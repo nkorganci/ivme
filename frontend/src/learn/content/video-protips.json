@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "02996b87a59007a79c6cf438152c6d405489341912ad730b2d54be015f36653f",
+  "inputsHash": "79b209413bd63a009034ecd2ccd49a69eca4140f67b3ad3b5a1ee38f60873905",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -182,7 +182,7 @@
         "startSeconds": 2100,
         "endSeconds": 2320
       },
-      "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+      "evidenceHash": "d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee",
       "contentHash": "319e2d29838f1b79e215af55ba831879324b598b1db2adb470b2dc92fb4eaf75",
       "reviewStatus": "PENDING",
       "teacherApproved": false
@@ -205,7 +205,7 @@
         "startSeconds": 2930,
         "endSeconds": 3060
       },
-      "evidenceHash": "99a6c7f08ab92aeb7426a204f53a274826f02dcf62eeb78e8c89b0ab3616d9c9",
+      "evidenceHash": "d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee",
       "contentHash": "285cbd7e1d417becda6dde5fe2c95fb75e1c9b2610a6795cdcb4e5fbda8e9040",
       "reviewStatus": "PENDING",
       "teacherApproved": false

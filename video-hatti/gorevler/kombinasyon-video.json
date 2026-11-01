@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "kombinasyon-video",
+  "topicId": "tyt.matematik.kombinasyon",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki kombinasyon videoları: CxxjhL3zDso (PL1: Kombinasyon-1 | 66.Gün -1.Video | 70 Günde TYT Matematik Kampı | 2026); MsHvF-xYikw (PL2: 49 Günde TYT Matematik Kampı 47.Gün 1.Video | Kombinasyon | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:CxxjhL3zDso",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/CxxjhL3zDso.mp4",
+      "transcript": "veri/video-hatti/medya/CxxjhL3zDso.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2603,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:MsHvF-xYikw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/MsHvF-xYikw.mp4",
+      "transcript": "veri/video-hatti/medya/MsHvF-xYikw.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2822,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/kombinasyon-video.json",
+  "lesson": "frontend/src/learn/content/dersler/kombinasyon.ders",
+  "verificationTests": [
+    "testler/video-ipucu-kombinasyon-test.py"
+  ]
+}

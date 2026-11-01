@@ -155,6 +155,19 @@ E) 25 || $30 - 5$ işlemi formül değil.
 kontrol: 30/5-1
 cozum: Bölen sayısı $(a+1)(4+1) = 30$, yani $a + 1 = 6$ ve $a = 5$.
 
+::metin
+### Gerçek AYT sorusu: asal bölenler kümesi
+Bir çarpımın asal bölenleri, çarpanlarının asal bölenlerinin **birleşimidir**. Asal bölen sayısı artmıyorsa yeni çarpan yeni asal getirmemiştir; arttıysa kaç yeni asal geldiğini sayarak çarpanı bulursun.
+
+::cikmis AYT_Sayisal-0022 tip=asal-bolen
+
+::ornek baslik="Benzer soru · yeni asal sayısını say"
+soru: $n$ iki farklı asal sayının çarpımıdır. $30\cdot n$ sayısının 4, $42\cdot n$ sayısının 3 farklı asal böleni vardır. $n$'nin alabileceği değerlerin toplamı kaçtır?
+1. $42=2\cdot3\cdot7$ ve $42n$'nin yine 3 asal böleni var: $n$'nin asalları $\{2,3,7\}$ içinde. || Yeni asal gelseydi sayı artardı.
+2. $30=2\cdot3\cdot5$; $30n$'nin 4 asal böleni var: $n$ tam bir yeni asal getiriyor. $\{2,3,7\}$ içinde $\{2,3,5\}$'te olmayan yalnız 7. || Diğer asal 2 ya da 3 olmalı ki ikinci bir yeni asal gelmesin.
+3. $n=2\cdot7=14$ ya da $n=3\cdot7=21$; toplam 35. || İki durumu da yazdık.
+cevap: 35. Kontrol: $30\cdot14=2^2\cdot3\cdot5\cdot7$, $30\cdot21=2\cdot3^2\cdot5\cdot7$ (4 asal); $42\cdot14$ ve $42\cdot21$ yalnız 2, 3, 7.
+
 @bolum s1b 15 | Bölen sayma ustalığı: koşullu bölenler
 ::kesfet ebob-bolen
 

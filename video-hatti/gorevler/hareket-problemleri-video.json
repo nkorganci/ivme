@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "hareket-problemleri-video",
+  "topicId": "tyt.matematik.hareket-problemleri",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki hareket-problemleri videoları: 0Atl6uSc90g (PL1: Hareket Problemleri-1 | 45.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); SGW09mdmzGQ (PL2: Motion Problems | 49-Day TYT Math Camp Day 29 | Video 1 | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:0Atl6uSc90g",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/0Atl6uSc90g.mp4",
+      "transcript": "veri/video-hatti/medya/0Atl6uSc90g.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3022,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:SGW09mdmzGQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/SGW09mdmzGQ.mp4",
+      "transcript": "veri/video-hatti/medya/SGW09mdmzGQ.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2767,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/hareket-problemleri-video.json",
+  "lesson": "frontend/src/learn/content/dersler/hareket-problemleri.ders",
+  "verificationTests": [
+    "testler/video-ipucu-hareket-problemleri-test.py"
+  ]
+}

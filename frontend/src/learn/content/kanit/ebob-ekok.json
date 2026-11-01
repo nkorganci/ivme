@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "conceptId": "ebob-ekok",
   "contentVersion": 1,
-  "lessonSha256": "920dd59697567262f13e1d2b7672274b1b3a9de483a6dea2dc406043bf5da3d2",
+  "lessonSha256": "19b74c8dfa030611cd9076bdea9ced5608f9eeb10d555f3749d8fbafd3323a7f",
   "primarySource": {
     "title": "MEB Matematik 9 · Denklemler ve Eşitsizlikler (2017–23 programı)",
     "url": "https://ogmmateryal.eba.gov.tr/panel/upload/pdf/3y2qa2oq1vx.pdf",
@@ -695,6 +695,31 @@
       "solutionOrigin": "IVME_DERIVATION",
       "answerOrigin": "EXISTING_OSYM_KEY",
       "answerKey": "C"
+    },
+    "AYT_Sayisal-0022": {
+      "sectionId": "s1",
+      "role": "guided",
+      "claims": [
+        "asal",
+        "usler"
+      ],
+      "imageSha256": "bfc2f600e1da020bab53925e180535fb0b306eb61276746b27f03a0c617732d2",
+      "sourceSha256": "41a0dde626e56a4a9d191b1fa3767f78bfc17600be8586a6876b68e1ae73efe5",
+      "solutionSha256": "34218a3c1fa630b48c08fc8214194d0e72b4c45ec491a993d28d532923aa15f1",
+      "imagePath": "veri/resimler-pilot/kirpilmis/AYT/matematik/AYT_Sayisal-0022.webp",
+      "exam": "AYT",
+      "year": 2022,
+      "archiveId": "2022-AYT-MAT-04",
+      "sourceBook": "AYT_Sayisal",
+      "sourcePage": 19,
+      "bookQuestion": 22,
+      "questionVersion": 1,
+      "solutionVersion": 1,
+      "review": "SOURCE_AND_CALCULATION_CHECKED",
+      "teacherApproved": false,
+      "solutionOrigin": "IVME_DERIVATION",
+      "answerOrigin": "EXISTING_OSYM_KEY",
+      "answerKey": "A"
     }
   },
   "independentCodes": [

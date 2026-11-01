@@ -138,6 +138,18 @@ export const MATH_CONTINUATION_EXAMS = {
     check:'$30\\cdot50-10^2=1500-100=1400$ ✓.',
     mistake:'x=10’u bulup çevreyi $2(x+20+2x+30)$ yerine yalnız $x+20+2x+30=80$ diye yarım hesaplamak.',
   },
+  'AYT_Sayisal-0022': {
+    conceptId:'ebob-ekok', archetype:'asal-bolen', answer:'A', title:'2022 AYT · asal bölen sayısından çarpanları seçmek',
+    cue:'Asal bölen sayısı yalnız farklı asalları sayar. 66 ve 70’in asal çarpanlarını yaz; n’nin iki asalı bu listeye kaç yeni asal ekliyor, ona bak.',
+    steps:[
+      {text:'$66=2\\cdot3\\cdot11$ (3 asal bölen), $70=2\\cdot5\\cdot7$ (3 asal bölen).',why:'Önce bilinen sayıların asal çarpanlarını yazdık.'},
+      {text:'$70n$’nin asal bölen sayısı yine 3: n’nin asal çarpanları $\\{2,5,7\\}$ içinden olmalı.',why:'n yeni bir asal getirseydi 70n’nin asal bölen sayısı artardı.'},
+      {text:'$66n$’nin asal bölen sayısı 5: n, $\\{2,3,11\\}$ dışında iki farklı asal getiriyor. $\\{2,5,7\\}$ içinde bunlar yalnız 5 ve 7.',why:'Aynı asal iki kez sayılmaz; iki yeni bölen için iki farklı yeni asal gerekir.'},
+      {text:'$n=5\\cdot7=35$; rakamları toplamı $3+5=8$. A seçeneği.',why:'Soru n’nin rakamları toplamını istiyor.'},
+    ], result:'A · 8', tip:'“Asal bölen sayısı” farklı asal çarpan sayısıdır; üsler önemsizdir. Çarpımın asal bölenleri, çarpanların asal kümelerinin birleşimidir.',
+    check:'$66\\cdot35=2\\cdot3\\cdot5\\cdot7\\cdot11$ (5 asal), $70\\cdot35=2\\cdot5^2\\cdot7^2$ (3 asal).',
+    mistake:'Pozitif bölen sayısı ile asal bölen sayısını karıştırmak: $70\\cdot35$’in 18 pozitif böleni var ama yalnız 3 asal böleni.',
+  },
   'TYT-0605': {
     conceptId:'mutlak-deger', archetype:'esitsizlik', answer:'A', title:'2018 TYT · artış aralığından sıcaklık aralığına',
     cue:'6–10 derece, sıcaklığın kendisi değil artış miktarı. Önce 5 dereceye ekle; sonra yeni aralığın merkezini bul.',

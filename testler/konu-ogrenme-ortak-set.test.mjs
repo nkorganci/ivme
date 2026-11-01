@@ -16,13 +16,13 @@ const load = (id) => collapseTwins(expandBank(id, JSON.parse(readFileSync(new UR
 const state = (seen = {}) => ({ seen, queue: {}, concepts: {}, dueCards: [], now: new Date('2026-10-31T12:00:00Z') });
 const concepts = Object.keys(lessons).filter((id) => { try { load(id); return true; } catch { return false; } });
 
-test('temel-kavramlar: 413 kayıt, 53 kitapçık kopyası ayrılır → 360 tekil soru; 52 çıkmış soruda ikiz yok', () => {
+test('temel-kavramlar: 412 kayıt, 53 kitapçık kopyası ayrılır → 359 tekil soru; 51 çıkmış soruda ikiz yok', () => {
   const raw = expandBank('temel-kavramlar', JSON.parse(readFileSync(new URL('bank/temel-kavramlar.json', root), 'utf8')).questions);
   const bank = load('temel-kavramlar');
-  assert.equal(raw.length, 413);
-  assert.equal(bank.length, 360);
-  assert.equal(raw.filter((q) => q.cikmis).length, 52);
-  assert.equal(bank.filter((q) => q.cikmis).length, 52, 'çıkmış sorular hiç elenmemeli');
+  assert.equal(raw.length, 412);
+  assert.equal(bank.length, 359);
+  assert.equal(raw.filter((q) => q.cikmis).length, 51);
+  assert.equal(bank.filter((q) => q.cikmis).length, 51, 'çıkmış sorular hiç elenmemeli');
   // Elenen her kod, tutulan bir sorunun ikizi olarak kayıtlıdır.
   const kept = new Set(bank.map((q) => q.code));
   const twinCodes = new Set(bank.flatMap((q) => q.twins ?? []));
@@ -30,16 +30,16 @@ test('temel-kavramlar: 413 kayıt, 53 kitapçık kopyası ayrılır → 360 teki
   for (const q of raw) assert.ok(kept.has(q.code) || twinCodes.has(q.code), q.code);
 });
 
-test('çıkmış sorular: gizli 40 sınırı yok; bütün 52 soru açılır ve gösterilen sayıyla aynıdır', () => {
+test('çıkmış sorular: gizli 40 sınırı yok; bütün 51 soru açılır ve gösterilen sayıyla aynıdır', () => {
   const bank = load('temel-kavramlar');
-  assert.equal(plannedSize('cikmis', bank), 52);
+  assert.equal(plannedSize('cikmis', bank), 51);
   const items = pickSharedSet({ type: 'cikmis', meta: lessons['temel-kavramlar'], bank, state: state(), seed: 's' });
-  assert.equal(items.length, 52);
-  assert.equal(new Set(items.map((i) => i.question.code)).size, 52);
+  assert.equal(items.length, 51);
+  assert.equal(new Set(items.map((i) => i.question.code)).size, 51);
   assert.ok(items.every((i) => i.question.cikmis));
   const years = items.map((i) => i.question.year);
   assert.deepEqual(years, [...years].sort((a, b) => a - b), 'yıl sırası');
-  assert.equal(pickPast({ bank }).length, 52);
+  assert.equal(pickPast({ bank }).length, 51);
 });
 
 test('konu testi: genel havuzda en çok 12, kaynaklı konularda yalnız açıklamalı aktarım soruları; tekillik ve kararlı seçim', () => {
@@ -126,8 +126,8 @@ test('TAS-06: “Tekrar gösterme” dediği sorular hiçbir otomatik sette yer 
     assert.ok(items.every((i) => !hidden.has(i.question.id)), type);
     assert.equal(items.length, plannedSize(type, bank, null, hiding), type);
   }
-  assert.equal(plannedSize('cikmis', bank, null, hiding), 49, '52 çıkmıştan 3 gizli');
-  assert.equal(plannedSize('cikmis', bank, null, state()), 52);
+  assert.equal(plannedSize('cikmis', bank, null, hiding), 48, '51 çıkmıştan 3 gizli');
+  assert.equal(plannedSize('cikmis', bank, null, state()), 51);
   for (const archetype of meta.archetypes.map((a) => a.id)) {
     const items = pickSharedSet({ type: 'practice', meta, bank, state: hiding, seed: 'g', archetype });
     assert.ok(items.every((i) => !hidden.has(i.question.id)), archetype);

@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "mutlak-deger-video",
+  "topicId": "tyt.matematik.mutlak-deger",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki mutlak-deger videoları: kYFIOKWQ5QI (PL1: Mutlak Değer-1 | 21.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); 0oHSINuR6e4 (PL2: Mutlak Değer - 1 | 49 Günde TYT Matematik Kampı 16.Gün | 1.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:kYFIOKWQ5QI",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/kYFIOKWQ5QI.mp4",
+      "transcript": "veri/video-hatti/medya/kYFIOKWQ5QI.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 4433,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:0oHSINuR6e4",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/0oHSINuR6e4.mp4",
+      "transcript": "veri/video-hatti/medya/0oHSINuR6e4.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3049,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/mutlak-deger-video.json",
+  "lesson": "frontend/src/learn/content/dersler/mutlak-deger.ders",
+  "verificationTests": [
+    "testler/video-ipucu-mutlak-deger-test.py"
+  ]
+}

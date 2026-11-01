@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "kosullu-onerme-video",
+  "topicId": "tyt.matematik.mantik",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki kosullu-onerme videoları: eKNHKxkb8sU (PL1: Mantık-2 | 53.Gün - 2.Video | 70 Günde TYT Matematik Kampı | 2026); Qqd3-PtGcdk (PL2: Mantık | 49 Günde TYT Matematik Kampı 36.Gün | 1.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:eKNHKxkb8sU",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/eKNHKxkb8sU.mp4",
+      "transcript": "veri/video-hatti/medya/eKNHKxkb8sU.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2902,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:Qqd3-PtGcdk",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/Qqd3-PtGcdk.mp4",
+      "transcript": "veri/video-hatti/medya/Qqd3-PtGcdk.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3406,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/kosullu-onerme-video.json",
+  "lesson": "frontend/src/learn/content/dersler/kosullu-onerme.ders",
+  "verificationTests": [
+    "testler/video-ipucu-kosullu-onerme-test.py"
+  ]
+}

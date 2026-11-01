@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "kar-zarar-video",
+  "topicId": "tyt.matematik.yuzde-k-r-ve-zarar-problemleri",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki kar-zarar videoları: tVSR09d3Jts (PL1: Kâr Zarar Problemleri-1 | 41.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); zmfTiTHCsPw (PL2: Day 32). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:tVSR09d3Jts",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/tVSR09d3Jts.mp4",
+      "transcript": "veri/video-hatti/medya/tVSR09d3Jts.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2504,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:zmfTiTHCsPw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/zmfTiTHCsPw.mp4",
+      "transcript": "veri/video-hatti/medya/zmfTiTHCsPw.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3020,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/kar-zarar-video.json",
+  "lesson": "frontend/src/learn/content/dersler/kar-zarar.ders",
+  "verificationTests": [
+    "testler/video-ipucu-kar-zarar-test.py"
+  ]
+}

@@ -3,26 +3,27 @@
   "taskId": "content:ebob-ekok:1",
   "conceptId": "ebob-ekok",
   "status": "REVIEW_REQUIRED",
-  "preparedAt": "2026-11-01T23:06:37+00:00",
+  "preparedAt": "2026-11-01T23:29:09+00:00",
   "templateVersion": "konuyu-ogrenelim/tas08-v1",
-  "specSha256": "1bbb6e57185371bb0d6f9a3865ee04d67f661910be0d57237b820d9337f48c18",
+  "specSha256": "814290774341630dec9ad6c32a89479ffb9947d0ebf7727f7b52c9f4549150b6",
   "lesson": {
     "path": "frontend/src/learn/content/dersler/ebob-ekok.ders",
-    "sha256": "920dd59697567262f13e1d2b7672274b1b3a9de483a6dea2dc406043bf5da3d2"
+    "sha256": "19b74c8dfa030611cd9076bdea9ced5608f9eeb10d555f3749d8fbafd3323a7f"
   },
   "output": {
     "path": "frontend/src/learn/content/kanit/ebob-ekok.json",
-    "sha256": "21e7449efe5c38b9601843389726988829e373a416fbc3524ec4efde49d349c4"
+    "sha256": "ddbc8c01a8d5cf20cb72a690823697dbb468ab2bfcdaed1b9dd6e47207fbe5d4"
   },
-  "contentSha256": "8526d5d80480603abbdba84603063f6629c853ee62f1f98e784ff1934589f0f9",
+  "contentSha256": "86f5cb21e52c4aeb7eb74cccb033e209274a30abb4cdbbbaba23fbff59f43022",
   "validation": {
     "tests": [
       "testler/icerik-hatti.test.mjs",
       "testler/konu-ogrenme-bicim.test.mjs",
       "testler/konu-ogrenme-ortak-set.test.mjs",
-      "testler/ebob-ekok-pilot.test.mjs"
+      "testler/ebob-ekok-pilot.test.mjs",
+      "testler/matematik-tyt-cikmis.test.mjs"
     ],
-    "pass": 52,
+    "pass": 61,
     "fail": 0
   },
   "review": {
@@ -43,6 +44,7 @@
     "pendingQuestions": [
       "AYT_Sayisal-0018",
       "AYT_Sayisal-0021",
+      "AYT_Sayisal-0022",
       "AYT_Sayisal-0035",
       "TYT-0713"
     ],
@@ -55,30 +57,30 @@
       "outputSha256": "fffaff2cdf3f1ee9758e55a0c07e0fa1f21570cbd24f5cbfd0e0c4bcc2ec4aaa"
     },
     "kanit": {
-      "inputKey": "9d5ea609e1302113434342af0768f284c8122604307e72b7946e61778d6c2541",
-      "outputSha256": "8f37db4f8f873fa8ed305a87cc6708efc08842132824c7a5d00de1f8bb35b7b1"
+      "inputKey": "9d3e999152986a39e1c0986e43d8f78d5c3ac2c61324c931c02b78ad946baa67",
+      "outputSha256": "cfb8b268108e5477d62caff0480da72e9ac96856ea5d7335d3d04055dd9d4fb8"
     },
     "taslak": {
-      "inputKey": "b15228aa5f70c23c8242ff161b5ef1322229b414add9f331e26b1182f14f892e",
-      "outputSha256": "0f87fc1ad63cfdcff081bdfde07ed7fde43f672fe34a99077252386aab399e81"
+      "inputKey": "3ff32a050c6174f16008268286a33e16fbb1e3163c71a0f2b919eda8a1568107",
+      "outputSha256": "377326df91d614dfbf2ce73236ec06458b360b8bb6fe61cde5fa614f28a079aa"
     },
     "derle": {
-      "inputKey": "675c238d5c1d6e97c032e607ea29594c60c192c0588034cad84450d5f86689ff",
-      "outputSha256": "5fd7c6cba6e50db64dab5632ebc28f5dafd6f29b96c9467e1eee5b4a4b373520"
+      "inputKey": "5122624df407ed43cf3512c267f9af69372fbacbddcbf1b85009b796ce5e2c3c",
+      "outputSha256": "8e26733d0115f7786f60a3d8442c129fe0f7d8df874c19b72140d3bf4447fd66"
     },
     "dogrula": {
-      "inputKey": "55824a60aa7378ea5e403ae5e948006c7b825db108c6acdfbaf30d6206d5ff7a",
-      "outputSha256": "dfa30886004fe71f370dad2ee9570690385dd098aa780dbb15a7d6f0110809a5"
+      "inputKey": "146abe0136f2c1ed1ca35a3d3550706d4dc71813c0499b7301d2052ce4fc59e1",
+      "outputSha256": "027163fc06f90e840312b798db1d961c582efa879f01cfc5c05900972abbdfc8"
     },
     "inceleme": {
-      "inputKey": "8a0e0e58c6e90c14fec646b4a1254556318e0a8f4f066c0e2b84e25f927ee57e",
-      "outputSha256": "91dba5a78534f6f926a3280399a0c2d5237859f2ae73b9183f5226c087dbf6fc"
+      "inputKey": "273243402254d574fd496a469101a47dfd9dbda17b3051ae6844d1729e8eab07",
+      "outputSha256": "622b913d51cdc5364b7d993d1dd897527f680b35be3afb077ce4ce6488592a0b"
     }
   },
   "previous": {
-    "gitRevision": "50132b9",
-    "sha256": "994b5e8963bf0580b840487458a2fcdd5d3fed49c63c8f2c6e94a0c28a8290bd",
-    "restore": "git checkout 50132b9 -- frontend/src/learn/content/kanit/ebob-ekok.json frontend/src/learn/content/dersler/ebob-ekok.ders"
+    "gitRevision": "b6a2d18",
+    "sha256": "21e7449efe5c38b9601843389726988829e373a416fbc3524ec4efde49d349c4",
+    "restore": "git checkout b6a2d18 -- frontend/src/learn/content/kanit/ebob-ekok.json frontend/src/learn/content/dersler/ebob-ekok.ders"
   },
   "changes": {
     "sections": {
@@ -87,7 +89,9 @@
       "changed": []
     },
     "questions": {
-      "added": [],
+      "added": [
+        "AYT_Sayisal-0022"
+      ],
       "removed": [],
       "changed": []
     },

@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "birinci-derece-denklemler-video",
+  "topicId": "tyt.matematik.birinci-dereceden-denklemler",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki birinci-derece-denklemler videoları: DzPV2vxTmXM (PL1: I ve II Bilinmeyenli Denklemler-1 | 17.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); rxL14D2aUd4 (PL2: Denklem Çözümü | 49 Günde TYT Matematik Kampı 14.Gün | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DzPV2vxTmXM",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/DzPV2vxTmXM.mp4",
+      "transcript": "veri/video-hatti/medya/DzPV2vxTmXM.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3169,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:rxL14D2aUd4",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/rxL14D2aUd4.mp4",
+      "transcript": "veri/video-hatti/medya/rxL14D2aUd4.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 3296,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/birinci-derece-denklemler-video.json",
+  "lesson": "frontend/src/learn/content/dersler/birinci-derece-denklemler.ders",
+  "verificationTests": [
+    "testler/video-ipucu-birinci-derece-denklemler-test.py"
+  ]
+}

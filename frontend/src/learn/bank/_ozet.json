@@ -71,13 +71,13 @@
    "untyped": 13
   },
   "ebob-ekok": {
-   "total": 213,
+   "total": 214,
    "cikmis": {
     "TYT": 1,
-    "AYT": 3
+    "AYT": 4
    },
    "archetypes": {
-    "asal-bolen": 22,
+    "asal-bolen": 23,
     "ebob-ekok-hesap": 43,
     "ebob-problem": 10,
     "ekok-problem": 19,
@@ -410,10 +410,10 @@
    "untyped": 176
   },
   "temel-kavramlar": {
-   "total": 413,
+   "total": 412,
    "cikmis": {
     "TYT": 23,
-    "AYT": 29
+    "AYT": 28
    },
    "archetypes": {
     "tek-cift": 42,
@@ -422,7 +422,7 @@
     "en-buyuk-kucuk": 78,
     "kumeler-islem": 42
    },
-   "untyped": 160
+   "untyped": 159
   },
   "uslu-ifadeler": {
    "total": 196,

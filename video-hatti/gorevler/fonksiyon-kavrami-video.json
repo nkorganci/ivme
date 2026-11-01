@@ -1,0 +1,41 @@
+{
+  "schema": "video-evidence-v1",
+  "id": "fonksiyon-kavrami-video",
+  "topicId": "tyt.matematik.fonksiyonlara-giris",
+  "playlist": {
+    "providerId": "youtube-playlist:PLYh67QmhXVyA",
+    "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA",
+    "selection": "Konu listesindeki fonksiyon-kavrami videoları: bAisadeAerA (PL1: Fonksiyonlar-1 | 59.Gün - 1.Video | 70 Günde TYT Matematik Kampı | 2026); 1DApaH26NFs (PL2: Fonksiyonlar - 1 | 49 Günde TYT Matematik Kampı 40. Gün | 1.Video | 2027 | Rehber Matematik). Başlık konu adayıdır; içerik kanıtı altyazı ve karelerdir."
+  },
+  "sources": [
+    {
+      "providerId": "youtube:bAisadeAerA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/bAisadeAerA.mp4",
+      "transcript": "veri/video-hatti/medya/bAisadeAerA.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 5345,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    },
+    {
+      "providerId": "youtube:1DApaH26NFs",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "media": "veri/video-hatti/medya/1DApaH26NFs.mp4",
+      "transcript": "veri/video-hatti/medya/1DApaH26NFs.tr.json3",
+      "frameSeconds": [],
+      "durationSeconds": 2790,
+      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
+    }
+  ],
+  "hints": "video-hatti/ipuclari/fonksiyon-kavrami-video.json",
+  "lesson": "frontend/src/learn/content/dersler/fonksiyon-kavrami.ders",
+  "verificationTests": [
+    "testler/video-ipucu-fonksiyon-kavrami-test.py"
+  ]
+}

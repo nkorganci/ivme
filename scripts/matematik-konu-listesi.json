@@ -164,7 +164,11 @@
         "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/12 - GERCEK HAYATTA PERIYODIK OLARAK TEKRAR EDEN DURUMLARI ICEREN PROBLEMLER.pdf",
         "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.24-27"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/11 - EBOB-EKOK.pdf s.1 (görsel)",
+        "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/12 - GERCEK HAYATTA PERIYODIK OLARAK TEKRAR EDEN DURUMLARI ICEREN PROBLEMLER.pdf s.1 (önceki TAS-09 hattında)",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.24-27"
+      ],
       "videolar": {
         "PL1": [
           "sPZus-twlX0",
@@ -176,7 +180,7 @@
           "gwblNvcbwKQ"
         ]
       },
-      "not": "Ders anlatım sunusu veya TYT video notu yok; konu özetleri ve MEBİ özeti kaynak."
+      "not": "Ders anlatım sunusu veya TYT video notu yok; özetler ve MEBİ kaynak, ders karşılıyor. Çıkmış: AYT_Sayisal-0022 (asal bölen kümeleri) eklendi; TYT-0713 ve AYT_Sayisal-0021 bağımsız aktarım sorusu."
     },
     {
       "id": "rasyonel-sayilar",
