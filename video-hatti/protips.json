@@ -147,6 +147,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "mutlak-deger-video",
+      "conceptId": "mutlak-deger",
+      "hints": [
+        {
+          "id": "ters-farki-ayni-mutlak-deger",
+          "title": "|a − b| = |b − a|: ortak çarpanla birleştir",
+          "sectionIds": [
+            "s3"
+          ]
+        },
+        {
+          "id": "sag-taraf-xli-ise-kok-dene",
+          "title": "Sağ taraf x'liyse kökleri yerine koyup ele",
+          "sectionIds": [
+            "s3b"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -173,3 +173,13 @@ test('eşitsizlikler: (x+y)/(xy) aralığı', () => {
   assert.ok(lo > -14 / 5 && lo < -14 / 5 + 0.05);
   assert.equal(hi + 0, 0);
 });
+
+test('mutlak değer: işaret çarpanı ve ağırlıklı uzaklık toplamı', () => {
+  const vals = new Set();
+  for (const x of [-3, -0.5, 0.5, 4]) for (const y of [-2, -0.1, 0.3, 7]) vals.add(Math.abs(x) / x + Math.abs(y) / y);
+  assert.deepEqual([...vals].sort((a, b) => a - b), [-2, 0, 2]);
+  let best = Infinity;
+  // x = i/100 → değerleri 100 ile çarpıp tam sayıda karşılaştır (kayan nokta yuvarlaması olmasın).
+  for (let i = -800; i <= 800; i++) best = Math.min(best, Math.abs(i + 300) + Math.abs(i) + Math.abs(2 * i - 400));
+  assert.equal(best, 700);
+});

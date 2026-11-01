@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "4c81b4487867df1d8222a4c188e407ad7ba1dc4cf5e3c338bd185c3f82708bac",
+  "inputsHash": "c86af3e22d0ea2c11f66f5bee773d8480e178ab30b6d9da9bc5605bae2c6bcab",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -345,6 +345,52 @@
       },
       "evidenceHash": "60dcce2c56a86efb0e6538bc17c723bd38af349b7a631181d3348990f80d7433",
       "contentHash": "60631a289728cd40a0c37437a39896f15c633d32db3c6092a19c2f56923c2bb0",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "mutlak-deger-video:ters-farki-ayni-mutlak-deger",
+      "conceptId": "mutlak-deger",
+      "topicId": "tyt.matematik.mutlak-deger",
+      "sectionIds": [
+        "s3"
+      ],
+      "title": "|a − b| = |b − a|: ortak çarpanla birleştir",
+      "rule": "|a − b| = |b − a|. İçlerinden ortak çarpanı dışarı al, ters farkları aynı biçime getir; mutlak değerler benzer terim gibi toplanır.",
+      "condition": "Çıkan çarpanın mutlak değeri alınmalı: |8 − 4x| = |−4| · |x − 2| = 4|x − 2|. Mutlak değerler yalnız içleri aynı olduğunda toplanabilir.",
+      "example": "|3x − 6| + |8 − 4x| = 14 → 3|x − 2| + 4|x − 2| = 7|x − 2| = 14 → |x − 2| = 2 → x = 4 ya da x = 0; değerler toplamı 4.",
+      "counterexample": "|x − 2| + |x − 3| ifadesi 2|x − 2| gibi birleştirilemez; içleri farklıdır. Ayrıca |8 − 4x| = −4|x − 2| yazmak yanlıştır, çarpanın mutlak değeri pozitiftir.",
+      "rationale": "a − b ile b − a sayı doğrusunda sıfıra eşit uzaklıktaki iki karşıt sayıdır; uzaklıkları aynıdır. |k · u| = |k| · |u| özelliği ortak çarpanı dışarı almayı sağlar.",
+      "source": {
+        "providerId": "youtube:kYFIOKWQ5QI",
+        "startSeconds": 1960,
+        "endSeconds": 2243
+      },
+      "evidenceHash": "948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1",
+      "contentHash": "e6304e40997dcd097b6019c7c77ec130ef2eb12d1b7f0065b44fd00005734049",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "mutlak-deger-video:sag-taraf-xli-ise-kok-dene",
+      "conceptId": "mutlak-deger",
+      "topicId": "tyt.matematik.mutlak-deger",
+      "sectionIds": [
+        "s3b"
+      ],
+      "title": "Sağ taraf x'liyse kökleri yerine koyup ele",
+      "rule": "|f(x)| = g(x) ve g(x) x'li bir ifadeyse iki durumu (f = g, f = −g) çöz; sonra her kökü yerine koyup g(x) ≥ 0 olduğunu kontrol et. Sağlamayan kök elenir.",
+      "condition": "Sağ tarafta mutlak değer yoksa ve sağ taraf x'e bağlıysa geçerlidir. Sağ taraf sabit ya da mutlak değerli olduğunda (|f| = |g|) bulunan iki durumun kökleri doğrudan geçerlidir.",
+      "example": "|x + 1| = 2x + 5: x + 1 = 2x + 5 → x = −4, ama 2(−4) + 5 = −3 < 0, elenir. x + 1 = −(2x + 5) → x = −2, 2(−2) + 5 = 1 ✓. Tek çözüm x = −2.",
+      "counterexample": "|2x − 1| = |x + 11| denkleminde x = 12 ve x = −10/3 ikisi de sağlar; iki taraf da mutlak değerli olduğu için eleme gerekmez.",
+      "rationale": "Mutlak değer negatif olamaz; sağ taraf negatif bir sayıya eşitse eşitlik imkânsızdır. Durumlara ayırma bu bilgiyi kaybettiği için kontrol sonradan yapılır.",
+      "source": {
+        "providerId": "youtube:kYFIOKWQ5QI",
+        "startSeconds": 3100,
+        "endSeconds": 3260
+      },
+      "evidenceHash": "948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1",
+      "contentHash": "1fea1b3bf3a1e1372a05a8aa8e09a41b9b349fbbcd9e53427d980b0d8cbdf4d3",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

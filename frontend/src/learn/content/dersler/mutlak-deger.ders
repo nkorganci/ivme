@@ -231,6 +231,13 @@ soru: $-1 < x < 4$ olduğuna göre $\sqrt{(x - 4)^2} + |x + 1|$ ifadesinin eşit
 3. Toplam $(4 - x) + (x + 1) = 5$. || $-1$ ile 4 arası 5 birim.
 cevap: $5$
 
+::ornek baslik="İşaret çarpanı: |x|/x"
+soru: $x$ ve $y$ sıfırdan farklı gerçek sayılardır. $\dfrac{|x|}{x}+\dfrac{|y|}{y}$ ifadesinin alabileceği değerler nelerdir?
+1. $\dfrac{|x|}{x}$, $x>0$ ise $1$, $x<0$ ise $-1$'dir. || Mutlak değer yalnız işareti siler; bölünce geriye işaret kalır.
+2. Dört işaret durumu: $(+,+)\to2$, $(+,-)$ ya da $(-,+)\to0$, $(-,-)\to-2$. || Her terim yalnız iki değer alabildiği için durumları tek tek saydık.
+3. Alabileceği değerler $\{-2,0,2\}$; en büyüğü 2. || 1 ya da 3 gibi değerler mümkün değil.
+cevap: $-2$, $0$, $2$. Not: $\dfrac{|5x|}{5x}=\dfrac{|x|}{x}$; pozitif katsayı işareti değiştirmez, $\dfrac{|-5x|}{x}$ ise $-5$ ile değil $5$ ile çarpılır.
+
 ::ornek baslik="Köklü sayılarla mutlak değer"
 soru: $\sqrt{(2-\sqrt{5})^2}+|\sqrt{5}-3|$ işleminin sonucu kaçtır?
 1. $\sqrt{(2-\sqrt{5})^2}=|2-\sqrt{5}|$. || Çift kök, içindekinin mutlak değerini verir.
@@ -576,6 +583,13 @@ soru: $|x - 1| + |x + 3|$ ifadesinin en küçük değeri kaçtır?
 1. Kritik noktalar 1 ve $-3$. || İçleri sıfır yapan değerler.
 2. $x$ ikisinin arasındayken toplam, aradaki uzaklıktır: $1 - (-3) = 4$. || Uzaklık yorumu.
 cevap: $4$
+
+::ornek baslik="Katsayılı üç uzaklığın toplamı"
+soru: $|x+3|+|x|+|2x-4|$ ifadesinin en küçük değeri kaçtır?
+1. $|2x-4|=2|x-2|$: noktalar $-3$ (ağırlık 1), $0$ (ağırlık 1), $2$ (ağırlık 2). || Katsayı, o noktaya olan uzaklığın kaç kez sayıldığını söyler.
+2. Toplam ağırlık 4; ortadaki ağırlık (2. ve 3. birim) $0$ ile $2$ arasında. Bu aralıkta sağa giderken $-3$ ve $0$'dan uzaklaşma (+2) ile $2$'ye yaklaşma (−2) dengelenir. || Uzaklık toplamı ağırlıklı ortanca noktada en küçüktür.
+3. $x=0$: $3+0+4=7$; $x=2$: $5+2+0=7$; $x=1$: $4+1+2=7$. || Aralığın her noktası aynı değeri verir.
+cevap: 7. Aralığın dışında değer büyür: $x=3$ için $6+3+2=11$, $x=-1$ için $2+1+6=9$.
 
 ::ornek baslik="Uzaklık toplamı verilince"
 soru: $|x+2|+|x-4|=10$ denklemini sağlayan $x$ değerlerini bul.

@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "ters-farki-ayni-mutlak-deger",
+    "providerId": "youtube:kYFIOKWQ5QI",
+    "startSeconds": 1960,
+    "endSeconds": 2243,
+    "quote": "Mutlak değer a yazıyorsam - A da yazarım",
+    "frameSeconds": [
+      2040
+    ],
+    "rule": "|a − b| = |b − a|. İçlerinden ortak çarpanı dışarı al, ters farkları aynı biçime getir; mutlak değerler benzer terim gibi toplanır.",
+    "condition": "Çıkan çarpanın mutlak değeri alınmalı: |8 − 4x| = |−4| · |x − 2| = 4|x − 2|. Mutlak değerler yalnız içleri aynı olduğunda toplanabilir.",
+    "example": "|3x − 6| + |8 − 4x| = 14 → 3|x − 2| + 4|x − 2| = 7|x − 2| = 14 → |x − 2| = 2 → x = 4 ya da x = 0; değerler toplamı 4.",
+    "counterexample": "|x − 2| + |x − 3| ifadesi 2|x − 2| gibi birleştirilemez; içleri farklıdır. Ayrıca |8 − 4x| = −4|x − 2| yazmak yanlıştır, çarpanın mutlak değeri pozitiftir.",
+    "rationale": "a − b ile b − a sayı doğrusunda sıfıra eşit uzaklıktaki iki karşıt sayıdır; uzaklıkları aynıdır. |k · u| = |k| · |u| özelliği ortak çarpanı dışarı almayı sağlar.",
+    "agentSourceReview": "Claude 2040. saniye karesini açtı: Örnek 12'nin metni (|3x − 6| + |8 − 4x| = 14, x'in değerleri toplamı), |2 − x| = |x − 2| notu, 3|x − 2| + 4|x − 2| = 14, 7|x − 2| = 14, |x − 2| = 2, x = 4 ve x = 0 ile sonuç 4 tahtada görünüyor. Bütün x değerleri bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "sag-taraf-xli-ise-kok-dene",
+    "providerId": "youtube:kYFIOKWQ5QI",
+    "startSeconds": 3100,
+    "endSeconds": 3260,
+    "quote": "denemeden direkt çözüme alamıyoruz",
+    "frameSeconds": [
+      3200
+    ],
+    "rule": "|f(x)| = g(x) ve g(x) x'li bir ifadeyse iki durumu (f = g, f = −g) çöz; sonra her kökü yerine koyup g(x) ≥ 0 olduğunu kontrol et. Sağlamayan kök elenir.",
+    "condition": "Sağ tarafta mutlak değer yoksa ve sağ taraf x'e bağlıysa geçerlidir. Sağ taraf sabit ya da mutlak değerli olduğunda (|f| = |g|) bulunan iki durumun kökleri doğrudan geçerlidir.",
+    "example": "|x + 1| = 2x + 5: x + 1 = 2x + 5 → x = −4, ama 2(−4) + 5 = −3 < 0, elenir. x + 1 = −(2x + 5) → x = −2, 2(−2) + 5 = 1 ✓. Tek çözüm x = −2.",
+    "counterexample": "|2x − 1| = |x + 11| denkleminde x = 12 ve x = −10/3 ikisi de sağlar; iki taraf da mutlak değerli olduğu için eleme gerekmez.",
+    "rationale": "Mutlak değer negatif olamaz; sağ taraf negatif bir sayıya eşitse eşitlik imkânsızdır. Durumlara ayırma bu bilgiyi kaybettiği için kontrol sonradan yapılır.",
+    "agentSourceReview": "Claude 3200. saniye karesini açtı: Örnek 19'un metni (|x + 1| = 2x + 5), iki durum x + 1 = 2x + 5 → x = −4 (üstü çizili) ve x + 1 = −2x − 5 → x = −2 (kutulu) ile 1 = 1 kontrolü tahtada görünüyor. Kökler bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

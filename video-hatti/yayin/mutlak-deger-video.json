@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "mutlak-deger-video",
+  "topicId": "tyt.matematik.mutlak-deger",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1",
+  "taskHash": "822fb47031477509b32fe9ea2f8ef4ecf440af83101a711c3672a6d515258dce",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\mutlak-deger-video",
+  "artifacts": {
+    "asamalar\\youtube-kYFIOKWQ5QI-metin\\957e7cd9e16fe9abf972aefc11de6f7b271b74584733dc85d81075703ab210e4.json": "28d66d231c964b2644f9d5f6517a82d2f7895a4f0b243546ce8067c0481d286d",
+    "asamalar\\youtube-kYFIOKWQ5QI-kareler\\a778152b9030bf2e818fbb7da0d8fa926a735d01bd02e14c6ebf77a44374b0b9.json": "6c50f719fc6dd323e88b4354257cf26dbb00e09ba280303589e61c745e22f094",
+    "kareler\\44a5e6e56691c6abea77ac59bd2efff1e6cf455c40edd2339d2b5a77b8f595bc.png": "55e27a5c24efa62fa9c34f3b1ff07677e12fda1edb874148853be85731c0147f",
+    "kareler\\adbaaa6d301bc9ec78908bed5b36ddbba9930a041daf6b02dd79c2cd5193deb6.png": "9a514b59ffd29931d14388da575579b074c7dd79b2eedb8b335f74e671b1f0af",
+    "asamalar\\matematik-denetimi\\898f4be7ced7e574bac1eabdaa9b05ddbed7af9d90ae41331ef02481103658b0.json": "73a966a169040abbff0f1396e3203a4928b06f5b0406129a9500b96711c6052c",
+    "surumler\\948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1.json": "2a9c971fe19857290b636a7a2b065cf130c9847a4496898efd3bde126b38d07e",
+    "surumler\\948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1.oneriler.md": "411e67547ec67813e40358f9605a07edb753d906ba4f2519d24b7c5e0c37b01a"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-mutlak-deger-test.py",
+        "sha256": "1748b82d005c22bb6d3ae29d37cc66e9f14bd318cd2d41f5cd4970b61f2646cf",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.002s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "mutlak-deger-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.618
+    },
+    "videos": [
+      {
+        "providerId": "youtube:kYFIOKWQ5QI",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:kYFIOKWQ5QI",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1540,
+      "normalization": {
+        "captionControlEvents": 1530,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2040,
+          "file": "kareler\\44a5e6e56691c6abea77ac59bd2efff1e6cf455c40edd2339d2b5a77b8f595bc.png",
+          "sha256": "55e27a5c24efa62fa9c34f3b1ff07677e12fda1edb874148853be85731c0147f",
+          "pixelHash": "44a5e6e56691c6abea77ac59bd2efff1e6cf455c40edd2339d2b5a77b8f595bc",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 3200,
+          "file": "kareler\\adbaaa6d301bc9ec78908bed5b36ddbba9930a041daf6b02dd79c2cd5193deb6.png",
+          "sha256": "9a514b59ffd29931d14388da575579b074c7dd79b2eedb8b335f74e671b1f0af",
+          "pixelHash": "adbaaa6d301bc9ec78908bed5b36ddbba9930a041daf6b02dd79c2cd5193deb6",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "ters-farki-ayni-mutlak-deger",
+      "contentHash": "e6304e40997dcd097b6019c7c77ec130ef2eb12d1b7f0065b44fd00005734049",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "sag-taraf-xli-ise-kok-dene",
+      "contentHash": "1fea1b3bf3a1e1372a05a8aa8e09a41b9b349fbbcd9e53427d980b0d8cbdf4d3",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

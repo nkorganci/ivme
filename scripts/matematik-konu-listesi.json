@@ -220,11 +220,13 @@
       "pdfAnlatim": [
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/12 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER.pdf",
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/13 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER 2.pdf",
-        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf"
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/16 - MUTLAK DEGERLI ESITSIZLIKLER.pdf (içerik: denklem sistemleri)"
       ],
       "pdfOkundu": [
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/13 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER 2.pdf s.1-22",
-        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf s.1-23"
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf s.1-23",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/16 - MUTLAK DEGERLI ESITSIZLIKLER.pdf s.1-20 (denklem sistemleri; ders s3/s3b karşılıyor)"
       ],
       "videolar": {
         "PL1": [
@@ -270,10 +272,12 @@
       "cikmis": "denklem-esitsizlik",
       "pdfAnlatim": [
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/15 - MUTLAK DEGER.pdf",
-        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/16 - MUTLAK DEGERLI ESITSIZLIKLER.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/15 - MUTLAK DEGER.pdf s.1-21",
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf s.20-29"
+      ],
       "videolar": {
         "PL1": [
           "kYFIOKWQ5QI",
@@ -284,7 +288,8 @@
           "oRork5UDM8o",
           "FpNgkMK3SsU"
         ]
-      }
+      },
+      "not": "Sunu 16 dosya adına rağmen denklem sistemlerini işler (birinci derece denklemler s3). Eklenen: işaret çarpanı |x|/x, ağırlıklı üç uzaklık toplamı. Protip: |a−b|=|b−a| ile birleştirme; sağ taraf x'liyse kök kontrolü."
     },
     {
       "id": "uslu-ifadeler",
