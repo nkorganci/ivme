@@ -150,6 +150,52 @@ export const MATH_CONTINUATION_EXAMS = {
     check:'$66\\cdot35=2\\cdot3\\cdot5\\cdot7\\cdot11$ (5 asal), $70\\cdot35=2\\cdot5^2\\cdot7^2$ (3 asal).',
     mistake:'Pozitif bölen sayısı ile asal bölen sayısını karıştırmak: $70\\cdot35$’in 18 pozitif böleni var ama yalnız 3 asal böleni.',
   },
+  'TYT-0651': {
+    conceptId:'sayi-kesir-problemleri', archetype:'denklem-kurma', answer:'E', title:'2018 TYT · konuşmayı iki denkleme çevir',
+    cue:'Müşteri 30 TL veriyor; para üstü yok. “1 kg kiraz daha vereyim” para üstünün kirazın kilosuna eşit olduğunu, “1 kg muz ver, 3 TL daha vereyim” muzun kilosunun para üstünden 3 TL fazla olduğunu söyler.',
+    steps:[
+      {text:'Para üstü $30-3K-3M$ ve bu bir kilo kiraza eşit: $30-3K-3M=K$, yani $4K+3M=30$.',why:'Manav para üstü yerine 1 kg kiraz vermeyi öneriyor.'},
+      {text:'Müşteri para üstünü bırakıp 3 TL ekleyerek 1 kg muz istiyor: $M=K+3$.',why:'Para üstü $K$ TL’dir; üstüne 3 TL eklenince 1 kg muzun fiyatı olur.'},
+      {text:'$4K+3(K+3)=30$, $7K=21$, $K=3$, $M=6$.',why:'İkinci denklemi birinciye koyduk.'},
+      {text:'$K+M=9$; E seçeneği.',why:'Soru iki fiyatın toplamını istiyor.'},
+    ], result:'E · 9', tip:'Diyalog sorularında her cümle bir eşitliktir: önce “para üstü” gibi gizli miktarı adlandır, sonra her öneriyi o miktarla yaz.',
+    check:'3 kg kiraz 9, 3 kg muz 18: 27 TL; para üstü 3 = 1 kg kiraz; 3 + 3 = 6 = 1 kg muz.',
+    mistake:'Para üstünü yok sayıp $3K+3M=30$ yazmak; bu yalnız $K+M=10$ verir ve seçeneklerde yok.',
+  },
+  'TYT-0655': {
+    conceptId:'sayi-kesir-problemleri', archetype:'denklem-kurma', answer:'A', title:'2018 TYT · iç içe bardak kulesi doğrusal büyür',
+    cue:'İlk bardak tam boyuyla sayılır, sonraki her bardak yalnız taban farkı kadar yükseltir. Bu yüzden n bardaklı kule $a+(n-1)d$; toplam ilişkisinden $a$ ile $d$’nin oranını bul.',
+    steps:[
+      {text:'$n$ bardaklı kule: $a+(n-1)d$ ($a$ bir bardağın boyu, $d$ ardışık tabanlar arası).',why:'Bardaklar iç içe geçtiği için her yeni bardak yalnız $d$ ekler.'},
+      {text:'$(a+5d)+(a+8d)=a+17d$, yani $a=4d$.',why:'6 ve 9 bardaklı kulelerin toplamı 18 bardaklıya eşit.'},
+      {text:'8 ve 12 bardaklı: $2a+18d=8d+18d=26d$.',why:'$a=4d$ yerine kondu.'},
+      {text:'$4d+(n-1)d=26d$, $n=23$; A seçeneği.',why:'Tek kule biçimine eşitledik.'},
+    ], result:'A · 23', tip:'“Sabit + adım × (n − 1)” biçimindeki büyümelerde iki bilinmeyen tek bir oranla bağlanır; toplam bilgisi bu oranı verir.',
+    check:'$a=4$, $d=1$ seç: 9 + 12 = 21 = 4 + 17 ✓; 11 + 15 = 26 = 4 + 22 ✓.',
+    mistake:'Kule yüksekliğini bardak sayısıyla orantılı sanmak ($8+12=20$ bardak); ilk bardağın tam boyu orantıyı bozar.',
+  },
+  'TYT-0659': {
+    conceptId:'sayi-kesir-problemleri', archetype:'adet-tutar', answer:'D', title:'2019 TYT · boş yerdeki azalma = giren − çıkan',
+    cue:'Saat 10.00’da boş yer $26+6$, saat 22.00’de $2+9$. Her giren araç bir boş yeri doldurur, her çıkan bir yer açar.',
+    steps:[
+      {text:'Boş yer 32’den 11’e indi: giren − çıkan $=21$.',why:'Net değişim farkı verir.'},
+      {text:'Giren + çıkan $=51$.',why:'Soruda verilen toplam.'},
+      {text:'Toplayınca $2\\cdot\\text{giren}=72$, giren $=36$; D seçeneği.',why:'İki denklemi taraf tarafa topladık.'},
+    ], result:'D · 36', tip:'Bir sayaçtaki değişim yalnız farkı verir; toplam ayrıca verilmişse iki sayı “(toplam + fark)/2” ve “(toplam − fark)/2”dir.',
+    check:'Giren 36, çıkan 15: $36-15=21$, $36+15=51$.',
+    mistake:'Boş yerdeki 21’lik azalmayı giren araç sayısı sanmak; aynı sürede çıkan araçlar boş yer açtı.',
+  },
+  'TYT-0660': {
+    conceptId:'sayi-kesir-problemleri', archetype:'kesir', answer:'A', title:'2019 TYT · eksik kalan payın dörtte biri',
+    cue:'Planlanan pay $\\frac H7$. Ali, Buse ve Can yarısını verince toplam $3\\cdot\\frac{H}{14}$ eksik kalır; bu eksik diğer dört kişiye eşit bölünür.',
+    steps:[
+      {text:'Üç kişinin eksik bıraktığı: $3\\cdot\\frac{H}{14}=\\frac{3H}{14}$.',why:'Her biri payının yarısını, $\\frac{H}{14}$’ü vermedi.'},
+      {text:'Dört kişinin her biri fazladan $\\frac{3H}{14}:4=\\frac{3H}{56}$ öder.',why:'Eksik eşit bölüşülür.'},
+      {text:'$\\frac{3H}{56}=6$, $H=112$; A seçeneği.',why:'Fazla ödenen 6 TL.'},
+    ], result:'A · 112', tip:'“Eksik verilen payı diğerleri tamamlar” sorularında yalnız eksiği hesapla ve paylaştır; planlanan payı tekrar yazmaya gerek yok.',
+    check:'Pay 16; üç kişi 8’er verir (24 TL eksik); dört kişi 6’şar fazla: 22’şer. $3\\cdot8+4\\cdot22=112$.',
+    mistake:'Fazla ödemeyi yedi kişiye bölmek; eksik yalnız ödeyebilen dört kişiye kalır.',
+  },
   'TYT-0605': {
     conceptId:'mutlak-deger', archetype:'esitsizlik', answer:'A', title:'2018 TYT · artış aralığından sıcaklık aralığına',
     cue:'6–10 derece, sıcaklığın kendisi değil artış miktarı. Önce 5 dereceye ekle; sonra yeni aralığın merkezini bul.',

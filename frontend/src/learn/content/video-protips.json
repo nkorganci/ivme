@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "eea913f4c69078b3160625ec00a80271e0db769b7e0820fe99e07ca2b9424f5a",
+  "inputsHash": "b3f197927f3c5c6ecffbbc58d57b9b316a12bdb5bf939027ecb3ed86a5057b4c",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -575,6 +575,52 @@
       },
       "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
       "contentHash": "156f6a58229741ae187687f018af134318ac5fadff72f2b11be8e848b658a282",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "sayi-kesir-problemleri-video:kesrin-degeri-pay-payda-kat",
+      "conceptId": "sayi-kesir-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "“Değeri 2/3 olan kesir” = 2x/3x",
+      "rule": "“Değeri 2/3 olan kesir” payın 2, paydanın 3 olduğunu söylemez; kesir 2x/3x biçimindedir. Pay ve paydaya ekleme–çıkarma yapılan sorularda bu ortak x ile denklem kurulur.",
+      "condition": "Kesrin değeri verilmeli ve pay ile paydaya ayrı ayrı işlem yapılmalı. x pozitif olmalı; sonuçta pay ve payda tam sayıysa x de buna uygun çıkar.",
+      "example": "Değeri 2/3 olan kesrin payına 5 eklenip paydasından 20 çıkarılınca değer 3/2 oluyor: (2x + 5)/(3x − 20) = 3/2 → 4x + 10 = 9x − 60 → x = 14. Başlangıçtaki pay 28 (kesir 28/42).",
+      "counterexample": "Kesri doğrudan 2/3 alıp (2 + 5)/(3 − 20) yazmak negatif payda verir ve değer 3/2 olmaz; değer bilgisi gerçek pay ve paydayı belirlemez.",
+      "rationale": "Bir kesrin değeri, pay ve paydayı aynı sayıyla genişletince değişmez; bu yüzden değeri 2/3 olan bütün kesirler 2x/3x ailesidir. Ek bilgi ailenin hangi üyesi olduğunu seçer.",
+      "source": {
+        "providerId": "youtube:-bWXNIFPNSc",
+        "startSeconds": 591,
+        "endSeconds": 744
+      },
+      "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+      "contentHash": "f5f0b73db23103fc920cc211a1b8e1a80969ea20a87c5111ac77e50cc052604c",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "sayi-kesir-problemleri-video:tel-orta-noktasi-yarim-kayar",
+      "conceptId": "sayi-kesir-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s4b"
+      ],
+      "title": "Telin orta noktası kesilenin yarısı kadar kayar",
+      "rule": "Bir telin bir ucundan parça kesilince telin orta noktası kesilen parçanın yarısı kadar kayar; kesilen uzunluk = 2 × kayma.",
+      "condition": "Kesim yalnız bir uçtan yapılmalı ve orta nokta, kesilmeyen uca göre ölçülmeli. İki uçtan farklı miktarlar kesilirse kayma, kesilen parçaların farkının yarısıdır.",
+      "example": "Telin ucundan 2/5'i kesilince orta nokta 8 cm kayıyor: kesilen 16 cm. Tel 5x, kesilen 2x = 16 → x = 8, tel 40 cm.",
+      "counterexample": "Kaymayı kesilen parça sanmak (2x = 8) teli 20 cm yapar; o zaman kesilen 8 cm ve orta nokta yalnız 4 cm kayar, soruyu sağlamaz.",
+      "rationale": "Orta nokta, kesilmeyen uçtan kalan uzunluğun yarısıdır: L/2 yerine (L − p)/2. Fark p/2'dir.",
+      "source": {
+        "providerId": "youtube:-bWXNIFPNSc",
+        "startSeconds": 1646,
+        "endSeconds": 1741
+      },
+      "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+      "contentHash": "85ca85425c19b64a2a3245e1f6e04b9bb0ee1338b305835d7e41532db21608a9",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

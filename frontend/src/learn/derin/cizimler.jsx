@@ -11,5 +11,6 @@ import { diagrams as kokluIfadeler } from './koklu-ifadeler-cizim.jsx';
 import { diagrams as oranOranti } from './oran-oranti-cizim.jsx';
 import { diagrams as ikinciDerece } from './ikinci-derece-denklemler-cizim.jsx';
 import { diagrams as carpanlaraAyirma } from './carpanlara-ayirma-cizim.jsx';
+import { diagrams as sayiKesir } from './sayi-kesir-problemleri-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir };

@@ -4671,6 +4671,58 @@
    ],
    "version": "1472983ce40becda"
   },
+  "sayi-kesir-problemleri:c5": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-kesir-problemleri:c6": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "sayi-kesir-problemleri:c7": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "sayi-kesir-problemleri:c8": {
+   "conceptId": "sayi-kesir-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "sayi-kesir-problemleri:e1": {
    "conceptId": "sayi-kesir-problemleri",
    "type": "match",

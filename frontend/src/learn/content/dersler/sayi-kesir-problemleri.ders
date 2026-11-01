@@ -9,7 +9,7 @@ onkosul: oran-oranti
 kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
 hedef: Sözel ifadeleri cebirsel ifadelere çevirip denklem kurmak; kesir problemlerinde bütünü paydaların EKOK'uyla seçmek; adet–tutar sorularını iki bilinmeyenle ya da tek bilinmeyenle çözmek; "kalan" problemlerini sondan başa doğru çözmek.
 neden: Sayı ve kesir problemleri TYT'deki 100 çıkmış problem sorusunun (2018–2026) yaklaşık üçte birini oluşturur; "yeni nesil" soruların çoğu da aslında iyi kurulmuş bir denklemdir. Denklemi doğru kurmayı öğrenmek problemlerin yarısını çözmek demektir.
-kaynak: MEBİ TYT Konu Özeti — Sayı Problemleri, Kesir Problemleri | OGM 9. Sınıf Konu Özetleri 31–32 | 3 Adım TYT Matematik — Sayı, Kesir, Yaş, İşçi Problemleri
+kaynak: MEBİ TYT Konu Özeti — Sayı Problemleri, Kesir Problemleri | OGM 9. Sınıf Konu Özetleri 31–32 | 3 Adım TYT Matematik — Sayı, Kesir, Yaş, İşçi Problemleri | OGM 9. Sınıf Ders Anlatım Sunuları 28–29 | OGM Video Notları TYT 04 — Problemler | Özgün görselleri incelenen sorular: 2018 TYT (TYT-0651, TYT-0655), 2019 TYT (TYT-0659, TYT-0660)
 tekrar: 12
 ustalik-dk: 16
 hedef-sure: 75
@@ -47,8 +47,10 @@ kesir 2 1-3
 adet-tutar 1 1-3
 ters-islem 1 1-3
 
-@oturum Denklem kurma ve kesirler | s1 s2
-@oturum Adet–tutar ve sondan başa | s3 s4
+@oturum Denklem kurma, sıra ve kutu | s1 s1b
+@oturum Kesirler ve kalanın kesri | s2 s2b
+@oturum Adet–tutar ve iki durum | s3 s3b
+@oturum Sondan başa ve zamanla azalan | s4 s4b
 
 @ontest
 ::soru o1 tip=denklem-kurma zorluk=1
@@ -148,6 +150,83 @@ E) 32 || Fazla.
 kontrol: 78/3+2
 cozum: $x - 2 + x + x + 2 = 3x = 78 \Rightarrow x = 26$; en büyük $28$.
 
+::metin
+### Gerçek TYT sorusu: konuşmayı denkleme çevir
+Her cümle bir eşitliktir. “Bozuk param yok, 1 kg kiraz daha vereyim” cümlesi **para üstünün** 1 kg kirazın fiyatına eşit olduğunu söyler; ikinci cümle muzun fiyatını kirazınkine bağlar.
+
+::cikmis TYT-0651 tip=denklem-kurma
+
+::ornek baslik="Benzer soru · para üstü yerine ürün"
+soru: Elmanın kilogramı $E$ TL, armudun $A$ TL'dir. 2 kg elma ve 2 kg armut alan müşteri 30 TL veriyor. Satıcı: “Bozuk param yok, 1 kg elma daha vereyim.” Müşteri: “Elma istemem; 1 kg armut ver, ben 5 TL daha vereyim.” $E+A$ kaçtır?
+1. Para üstü $30-2E-2A$, 1 kg elmaya eşit: $30-2E-2A=E$, yani $3E+2A=30$. || İlk cümle: para üstü = bir elmanın fiyatı.
+2. 1 kg armut = para üstü + 5: $A=E+5$. || İkinci cümle: müşteri para üstünü bırakıp 5 TL ekliyor.
+3. $3E+2E+10=30$, $E=4$, $A=9$; $E+A=13$. || Yerine koyduk. Kontrol: $8+18=26$, para üstü 4 = bir kg elma.
+cevap: 13.
+
+@bolum s1b 16 | Sıra, kutu ve katlanan sayılar: saymayı denkleme bağla
+::kesfet sk-sira
+
+::duzey baslik="Saymayla denklem kurmak"
+L1: Bir kuyrukta baştan 5. olanın önünde 4 kişi vardır. Sıra numarası “önündekiler + kendisi”dir. Kutulara eşit dağıtım sorusunda iki dağıtım aynı toplamı anlatır: “6'şar koyunca 12 artıyor” ile “8'er koyunca 2 kutu boş” aynı oyuncakları sayar.
+L2: Bilinmeyeni çoğu zaman sorulan şey değil, iki durumda **değişmeyen** şey seç: kutu sayısı, toplam sayfa, kuyruktaki iki kişinin yeri. “Her gün bir öncekinin 2 katı” gibi büyüyen dizilerde ilk günü $x$ al: $x+2x+4x+\ldots$
+L3: Doğrusal modellerde ($h=a+(n-1)d$ gibi) iki ölçüm bir bilinmeyeni yok eder: $h(6)+h(9)=h(18)$ ilişkisi $a$ ile $d$ arasındaki oranı verir; sonra herhangi bir kule bu oranla hesaplanır. Sabit kısım ($a$) ile artan kısmı ($d$) ayrı düşün.
+
+::ornek baslik="Kuyrukta en çok ve en az kişi"
+soru: Bir kuyrukta Ali baştan 9., Ece sondan 12. sıradadır ve aralarında 4 kişi vardır. Kuyrukta en çok ve en az kaç kişi olabilir?
+1. Ali önde: Ali'nin önünde 8, aralarında 4, Ece ve arkasında 12 kişi: $9+4+12=25$. || İki kişi farklı yerlerde; hiçbiri iki kez sayılmadı.
+2. Ece önde: Ece baştan $9-4-1=4$. sırada. Sondan 12. olduğuna göre toplam $4+12-1=15$. || Ece'nin hem baştan hem sondan sırası biliniyor; kendisi iki kez sayıldığı için $-1$.
+3. En çok 25, en az 15. || Soru kim önde demediği için iki çizim gerekir.
+cevap: En çok 25, en az 15. Kontrol: 15 kişilik dizilimde Ece 4., aradakiler 5.–8., Ali 9.
+
+::ornek baslik="İki dağıtım, aynı oyuncaklar"
+soru: Oyuncaklar 6'şar kutulara konursa 12 oyuncak artıyor; 8'er konursa 2 kutu boş kalıyor. Kaç oyuncak vardır?
+1. Kutu sayısı $k$: $6k+12$ oyuncak. || İlk dağıtım: kutular dolu, 12 dışarıda.
+2. İkinci dağıtımda $k-2$ kutu dolu: $8(k-2)$. || Boş kalan kutulara oyuncak konmadı.
+3. $6k+12=8k-16$, $k=14$; oyuncak $6\cdot14+12=96$. || Kontrol: $8\cdot12=96$.
+cevap: 96 oyuncak (14 kutu).
+
+::ornek baslik="Her gün iki katı"
+soru: Bir kitabı 5 günde bitiren Selin her gün bir önceki gün okuduğunun 2 katı sayfa okuyor. Kitap 186 sayfa olduğuna göre son gün kaç sayfa okumuştur?
+1. İlk gün $x$: $x, 2x, 4x, 8x, 16x$. || “Bir öncekinin 2 katı” her gün çarpar.
+2. $31x=186$, $x=6$. || Katsayılar toplamı $1+2+4+8+16=31$.
+3. Son gün $16x=96$ sayfa. || İstenen son günün sayfası.
+cevap: 96 sayfa. Kontrol: $6+12+24+48+96=186$.
+
+::metin
+### Gerçek TYT sorusu: iç içe bardaklar doğrusal büyür
+İlk bardağın tam boyu $a$, sonraki her bardak yüksekliği yalnız $d$ kadar artırır: $n$ bardaklı kule $a+(n-1)d$. İki kulenin toplamı üçüncüye eşitse $a$ ile $d$ arasındaki oran çıkar.
+
+::cikmis TYT-0655 tip=denklem-kurma
+
+::ornek baslik="Benzer soru · iç içe sandalyeler"
+soru: Özdeş sandalyeler üst üste konunca her yeni sandalye yığını aynı miktar yükseltiyor. 4 ve 7 sandalyelik iki yığının yükseklikleri toplamı 15 sandalyelik yığının yüksekliğine eşit. 6 ve 10 sandalyelik iki yığının toplamı kaç sandalyelik yığına eşittir?
+1. $n$ sandalyelik yığın: $a+(n-1)d$. $(a+3d)+(a+6d)=a+14d$, yani $a=5d$. || İlk sandalye $a$, sonrakiler $d$ ekler.
+2. 6 ve 10'luk yığınlar: $2a+14d=10d+14d=24d$. || $a=5d$ yerine kondu.
+3. $a+(n-1)d=24d$ ise $5d+(n-1)d=24d$, $n=20$. || Yığını aynı biçimde yazıp eşitledik.
+cevap: 20 sandalyelik yığın.
+
+::sorgula s1b-sinema baslik="Sinema kuyruğu"
+durum: Sinema kuyruğundaki bir arkadaşın “Baştan da 7.'yim, sondan da 7.” diyor.
+soru: Kuyrukta kaç kişi var?
++A) 13 || Önünde 6, arkasında 6 kişi: $6+1+6=13$.
+B) 14 || Arkadaşını iki kez saydın.
+C) 12 || Arkadaşını hiç saymadın.
+kontrol: 7+7-1
+neden: Baştan 7. olan kişinin önünde 6 kişi, sondan 7. olanın arkasında 6 kişi vardır; kendisi bir kez sayılır: $7+7-1=13$.
+sinav: Sıra problemlerinde “baştan + sondan − 1” kişinin kendisini bir kez sayar; iki farklı kişi varsa önce kim önde, ona karar ver.
+dusun: Baştan 7., sondan 10. olan biri varsa kuyruk kaç kişidir?
+yanit: $7+10-1=16$ kişi.
+
+::soru c5 tip=denklem-kurma zorluk=2
+Kalemler 5'er kalemlik kutulara konursa 3 kalem artıyor; 6'şar konursa son kutuya 4 kalem düşüyor (diğer kutular dolu). Kaç kalem vardır?
+A) 23 || $23=5\cdot4+3$ ama 6'şar dağıtımda son kutu 5 kalem alır.
+B) 25 || 5'er koyunca artmaz.
++C) 28 || Doğru: $5k+3=6k-2$, $k=5$.
+D) 30 || 6'şar konunca tam dolar.
+E) 33 || $5\cdot6+3$; ikinci koşulu kontrol et.
+kontrol: 5*5+3
+cozum: Kutu sayısı $k$: $5k+3=6(k-1)+4=6k-2$, $k=5$; kalem $28$. Kontrol: $6\cdot4+4=28$.
+
 @bolum s2 10 | Kesir problemleri: bütüne EKOK de
 ::fikir
 Bütüne **paydaların EKOK'unun katı** de: kesirler tam sayıya döner. **"Kalanın"** sözcüğü her adımda bütünü değil, bir önceki adımdan kalanı gösterir.
@@ -205,6 +284,76 @@ E) 480 || Kalanı $\frac{1}{12}$ aldın; ikinci gün kalanın $\frac{1}{4}$'ü k
 kontrol: 40*6
 cozum: Kitap $12x$: ilk gün $4x$, kalan $8x$; ikinci gün $6x$, kalan $2x = 40$. $x = 20$, kitap 240 sayfa.
 
+::metin
+### Gerçek TYT sorusu: eksik ödenen payı kim tamamlar?
+Planlanan pay $\frac H7$. Üç kişi yalnız yarısını ödeyince eksik kalan miktar diğer dört kişiye bölünür. Her birinin **fazla** ödediği, eksik kalanın dörtte biridir.
+
+::cikmis TYT-0660 tip=kesir
+
+::ornek baslik="Benzer soru · altı arkadaşın hediyesi"
+soru: 6 arkadaş bir hediyenin tutarını eşit paylaşacaktır. İkisi payının yalnız yarısını verebiliyor; kalan tutarı diğer dört kişi eşit paylaşıyor. Bu dört kişinin her biri planlanandan 5 TL fazla verdiğine göre hediye kaç TL'dir?
+1. Planlanan pay $\frac H6$; iki kişinin eksik bıraktığı toplam $2\cdot\frac{H}{12}=\frac H6$. || Her biri payının yarısını, yani $\frac{H}{12}$'yi eksik bıraktı.
+2. Eksik $\frac H6$ dört kişiye eşit bölünür: kişi başı $\frac{H}{24}$ fazla. || Fazla ödenen, eksiğin dörtte biri.
+3. $\frac{H}{24}=5$, $H=120$ TL. || Kontrol: pay 20; iki kişi 10'ar; kalan 100 dört kişiye 25'er, her biri 5 fazla.
+cevap: 120 TL.
+
+@bolum s2b 16 | Kalanın kesri tekrarlanınca: zıplayan top, azalan para
+::kesfet sk-kalan
+
+::duzey baslik="Her adım yeni bir bütün"
+L1: “Kalanın” sözcüğü, kesrin artık başlangıç miktarına değil **elde kalana** uygulandığını söyler. Pastanın yarısını yedin, kalanın yarısını kardeşin yedi: geriye $\frac12\cdot\frac12=\frac14$ kalır, sıfır değil.
+L2: Aynı kesir her adımda kalana uygulanıyorsa kalan oranlar çarpılır: her gün $\frac25$ harcanırsa $n$ gün sonra $\left(\frac35\right)^n$ kalır. Sondan başa dönmek için son miktarı bu çarpıma böl.
+L3: Bir kabın “tamamı dolu” ve “kısmen dolu” ağırlıkları verilirse fark, aradaki kesrin ağırlığıdır: dolu 900 g, $\frac23$'ü dolu 700 g ise $\frac13$ su 200 g eder. Böylece su ve boş kabın ağırlığı ayrılır.
+
+::ornek baslik="Zıplayan top"
+soru: Bir top yere çarptığında bırakıldığı yüksekliğin $\frac23$'ü kadar yükseliyor. Üçüncü kez yere çarpıp yükseldiğinde 16 cm'ye çıkıyor. Top kaç cm'den bırakılmıştır?
+1. Her çarpmada yükseklik $\frac23$ ile çarpılır. || Kesir, bir önceki yüksekliğe uygulanır; ilk yüksekliğe değil.
+2. Üç çarpma: $h\cdot\left(\frac23\right)^3=\frac{8h}{27}=16$. || Kalan oranlar çarpıldı.
+3. $h=54$ cm. || Kontrol: 54 → 36 → 24 → 16.
+cevap: 54 cm.
+
+::ornek baslik="Her gün kalanın kesri"
+soru: Bir öğrenci her gün cebindeki paranın $\frac14$'ünü harcıyor. Üç gün sonra 54 TL'si kalıyor. Başlangıçta kaç TL'si vardı?
+1. Her gün $\frac34$'ü kalır. || “Cebindeki para” her gün değişen miktardır.
+2. $x\cdot\left(\frac34\right)^3=\frac{27x}{64}=54$. || Üç günün kalan oranlarını çarptık.
+3. $x=128$ TL. || Kontrol: 128 → 96 → 72 → 54.
+cevap: 128 TL. Tuzak: $x-3\cdot\frac x4=54$ kurmak bütünün kesridir ve $x=216$ verir.
+
+::ornek baslik="Dolu ve kısmen dolu kap"
+soru: Bir şişe tamamen su doluyken 900 g, $\frac23$'ü doluyken 700 g geliyor. Boş şişe kaç gramdır?
+1. Fark $900-700=200$ g, suyun $\frac13$'ünün ağırlığıdır. || Şişe iki durumda da aynı; fark yalnız sudan gelir.
+2. Suyun tamamı $3\cdot200=600$ g. || Üçte biri 200 ise bütünü 600.
+3. Boş şişe $900-600=300$ g. || Dolu ağırlıktan suyu çıkardık.
+cevap: 300 g. Kontrol: $300+\frac23\cdot600=700$.
+
+::tamamla baslik="Sen dene · saat saat azalan su"
+soru: Bir depo her saat içindeki suyun $\frac13$'ünü kaybediyor. 2 saat sonra depoda 40 L su kaldığına göre başlangıçta kaç L vardı?
+1. Her saat $\frac23$'ü kalır. || Kayıp, o andaki suyun üçte biri.
+?2. $x\cdot\left(\frac23\right)^2=\frac{4x}{9}=40$. || İki saatin kalan oranları çarpıldı.
+?3. $x=90$ L. || Kontrol: 90 → 60 → 40.
+cevap: 90 L.
+
+::sorgula s2b-pasta baslik="Pastadan geriye ne kaldı?"
+durum: Bir pastanın yarısını sen yiyorsun, kalanın yarısını da kardeşin yiyor.
+soru: Pastanın ne kadarı kaldı?
+A) Hiç kalmadı || İki yarım, bütünün değil, farklı miktarların yarısıdır.
++B) $\frac14$'ü || Önce $\frac12$, sonra onun yarısı: $\frac12\cdot\frac12=\frac14$.
+C) $\frac12$'si || Kardeşinin yediğini çıkarmadın.
+neden: İlk adımda $\frac12$ kaldı. Kardeşin bu kalanın yarısını yedi; geriye $\frac12\cdot\frac12=\frac14$ kaldı. “Kalanın” kesri her adımda yeni bütüne uygulanır.
+sinav: “Kalanın”, “geriye kalanın” sözcükleri kalan oranları çarptırır; “bütünün”, “ilk paranın” sözcükleri kesilen parçaları toplatır.
+dusun: Üçüncü bir kişi de kalanın yarısını yerse ne kalır?
+yanit: $\frac14\cdot\frac12=\frac18$.
+
+::soru c6 tip=kesir zorluk=2
+Bir top bırakıldığı yüksekliğin $\frac34$'ü kadar zıplıyor. İkinci kez yere çarpıp yükseldiğinde 45 cm'ye çıktığına göre top kaç cm yükseklikten bırakılmıştır?
+A) 60 || Yalnız bir zıplama hesapladın.
+B) 72 || $45\cdot\frac{16}{10}$; kesirleri kontrol et.
++C) 80 || Doğru: $h\cdot\frac{9}{16}=45$.
+D) 90 || $45\cdot2$; oran $\frac34$, yarı değil.
+E) 96 || Hesabı kontrol et.
+kontrol: 45*16/9
+cozum: İki zıplama: $h\cdot\left(\frac34\right)^2=\frac{9h}{16}=45$, $h=80$. Kontrol: 80 → 60 → 45.
+
 @bolum s3 9 | Adet ve tutar: iki tür nesne
 ::fikir
 İki tür nesne varsa **birinin adedine $x$** de, diğeri **toplam − $x$** olsun. Tutar ya da kapasite denklemi tek bilinmeyenli olur.
@@ -256,6 +405,63 @@ E) 40 || Fazla.
 kontrol: (1800-30*50)/15
 cozum: Hepsi öğrenci olsaydı $50 \cdot 30 = 1500$ TL. Fark $300$ TL; her tam bilet 15 TL fazla: $300 : 15 = 20$ tam bilet.
 
+@bolum s3b 16 | İki durum, bir değişim: giriş–çıkış, binen–inen, kapasite
+::kesfet sk-adet
+
+::duzey baslik="Önce ne değişmedi, sonra ne değişti?"
+L1: Bir otoparkta boş yer sayısı azaldıysa giren araç çıkandan fazladır. Azalma miktarı, giren ile çıkanın **farkıdır**; ayrıca toplamları verilirse iki sayı kolayca bulunur.
+L2: Tabloyla düşün: satırlar “ilk durum” ve “son durum”, sütunlar türler. Değişimi her hücreye yaz (5 erkek indi: $2x-5$). Son durumdaki ilişkiyi (eşitlik, kat) denklem yap.
+L3: Kapasite sorularında “en fazla” sözcüğü her yatağın/sandalyenin dolu olduğunu söyler: 2 ve 3 yataklı 60 odada en fazla 150 kişi → $3x+2(60-x)=150$. Hepsini 2 yataklı sayıp fazlalığı 1'e bölmek aynı sonuçtur.
+
+::metin
+### Gerçek TYT sorusu: boş yer azalması net girişi verir
+Her giren araç boş yerleri 1 azaltır, her çıkan 1 artırır. Boş yerlerdeki toplam değişim **giren − çıkan**'dır; toplam ise ayrıca verilmiştir.
+
+::cikmis TYT-0659 tip=adet-tutar
+
+::ornek baslik="Benzer soru · kütüphanedeki boş masalar"
+soru: Bir kütüphanede sabah 40, akşam 15 boş masa vardır; her gelen kişi bir masaya oturur, ayrılan masasını boşaltır. Gün içinde gelen ve ayrılan kişi sayılarının toplamı 61 ise kaç kişi gelmiştir?
+1. Boş masa $40-15=25$ azaldı: gelen − ayrılan $=25$. || Net değişim farkı verir.
+2. gelen + ayrılan $=61$. || Toplam verildi.
+3. Toplayınca $2\cdot\text{gelen}=86$, gelen $=43$; ayrılan $18$. || İki denklem, iki bilinmeyen.
+cevap: 43 kişi. Kontrol: $43-18=25$, $43+18=61$.
+
+::ornek baslik="Otobüste binen ve inenler"
+soru: Bir otobüsteki erkek yolcu sayısı kadın yolcu sayısının 2 katıdır. Bir durakta 5 erkek iniyor, 5 kadın biniyor ve sayılar eşitleniyor. Otobüste başlangıçta kaç yolcu vardı?
+1. İlk durum: kadın $x$, erkek $2x$. || Kat ilişkisi ilk duruma aittir.
+2. Son durum: kadın $x+5$, erkek $2x-5$; $2x-5=x+5$. || Değişimi hücrelere yazdık, son ilişki eşitlik.
+3. $x=10$; başlangıçta $10+20=30$ yolcu. || Kontrol: sonra 15 ve 15.
+cevap: 30 yolcu.
+
+::ornek baslik="Kapasite: en fazla kişi"
+soru: Bir otelde 2 ve 3 yataklı toplam 60 oda vardır. Otel aynı anda en fazla 150 kişi konaklatabildiğine göre kaç tane 3 yataklı oda vardır?
+1. Hepsini 2 yataklı say: $2\cdot60=120$ kişi. || “En fazla” bütün yatakların dolu olduğunu söyler.
+2. Fazlalık $150-120=30$; her 3 yataklı oda 1 kişi fazla. || Kısa yol: fazlalık ÷ fark.
+3. 3 yataklı oda $30$. || Kontrol: $3\cdot30+2\cdot30=150$.
+cevap: 30.
+
+::sorgula s3b-merdiven baslik="İkişer çık, üçer in"
+durum: Ayhan bir merdiveni ikişer basamak çıkıp üçer basamak iniyor. Çıkarken ve inerken attığı toplam adım sayısı 25.
+soru: Merdiven kaç basamaklıdır?
++A) 30 || $\frac n2+\frac n3=\frac{5n}{6}=25$, $n=30$.
+B) 50 || Yalnız ikişer çıkışı 25 adım saydın.
+C) 25 || Adım sayısı basamak sayısı değildir.
+kontrol: 25*6/5
+neden: Çıkarken $\frac n2$, inerken $\frac n3$ adım atılır. $\frac n2+\frac n3=\frac{5n}{6}=25$ ise $n=30$. Basamak sayısı 2'ye ve 3'e bölünmeli; 30 uygun.
+sinav: Adım ve basamak farklı birimlerdir: adım sayısı = basamak ÷ adım başına basamak.
+dusun: Toplam 35 adım olsaydı?
+yanit: $\frac{5n}{6}=35$, $n=42$ basamak.
+
+::soru c7 tip=adet-tutar zorluk=2
+30 kişilik bir sınıfta 2 ve 3 kişilik toplam 13 sıra var ve bütün sıralar tam dolu. Kaç tane 3 kişilik sıra vardır?
+A) 3 || $3\cdot3+2\cdot10=29$.
++B) 4 || Doğru: hepsi 2'lik → 26, fazla 4 kişi.
+C) 5 || $15+16=31$.
+D) 9 || 9 tane 2'lik sıra var.
+E) 10 || Hesabı kontrol et.
+kontrol: 30-2*13
+cozum: Hepsi 2 kişilik olsaydı $26$ kişi. Fazla $30-26=4$; her 3'lük sıra 1 fazla: 4 tane 3 kişilik sıra.
+
 @bolum s4 8 | Sondan başa çalış
 ::fikir
 Son durum verilmişse **sondan başa** git ve her işlemin **tersini** uygula: ekleme ↔ çıkarma, çarpma ↔ bölme. Kesirli harcamalarda kalan oranları çarp.
@@ -305,6 +511,61 @@ D) 21 || Kontrol: $(21 \cdot 2 + 6) : 4 = 12$.
 E) 30 || Bu $2x$'tir; 2'ye bölmeyi unuttun.
 kontrol: (9*4-6)/2
 cozum: Geri sar: $9 \cdot 4 = 36$, $36 - 6 = 30$, $30 : 2 = 15$. Kontrol: $(15 \cdot 2 + 6) : 4 = 9$ ✓
+
+@bolum s4b 15 | Zamanla azalan miktarlar: mum, tel ve depo
+::duzey baslik="Her saat aynı miktar mı, aynı oran mı?"
+L1: Bir mum her saat aynı miktarda kısalır. Boyu $L$ olan mum 6 saatte bitiyorsa saatte $\frac L6$ kısalır; $t$ saat sonra boyu $L-\frac{Lt}{6}$ olur.
+L2: Boyları eşit iki mum için ortak boyu, bitiş sürelerinin EKOK'u seç (6 ve 8 saat → 24 birim): hesap tam sayılarla yürür. İki mumun kalan boylarını yazıp istenen ilişkiyi (eşit, 2 katı) kur.
+L3: Bir telin ucundan parça kesilince orta noktası kesilen parçanın **yarısı** kadar kayar: orta nokta, telin kalan uzunluğunun yarısıdır. “Orta nokta 6 cm kaydı” bilgisi kesilen parçanın 12 cm olduğunu söyler.
+
+::ornek baslik="İki mumdan biri diğerinin 2 katı"
+soru: Boyları eşit iki mumdan biri 6, diğeri 8 saatte tamamen eriyor. İkisi aynı anda yakılınca kaç saat sonra uzun mum kısa mumun 2 katı olur?
+1. Boy 24 birim olsun: hızlı mum saatte 4, yavaş mum saatte 3 birim kısalır. || 24, 6 ile 8'in EKOK'u.
+2. $24-3t=2(24-4t)$, $24-3t=48-8t$. || Yavaş eriyen mum uzun kalır.
+3. $5t=24$, $t=4{,}8$ saat (4 saat 48 dakika). || Kontrol: boylar 9,6 ve 4,8; oran 2.
+cevap: 4,8 saat.
+
+::ornek baslik="Telin orta noktası kayıyor"
+soru: Bir telin bir ucundan $\frac15$'i kesilince orta noktası 6 cm kayıyor. Telin ilk uzunluğu kaç cm'dir?
+1. Kesilen parça $p$ ise orta nokta $\frac p2$ kayar: $\frac p2=6$, $p=12$ cm. || Kalan telin ortası, kesilmeyen uçtan kalan uzunluğun yarısıdır.
+2. $\frac15$'i 12 cm: tel $5\cdot12=60$ cm. || Kesirden bütüne döndük.
+3. Kontrol: orta nokta önce 30'da, sonra $\frac{48}2=24$'te; kayma 6. || Ölçüyü kesilmeyen uçtan aldık.
+cevap: 60 cm.
+
+::ornek baslik="İki depo ne zaman eşitlenir?"
+soru: A deposunda 200 L, B deposunda 120 L su vardır. A'dan günde 12 L, B'den günde 4 L kullanılıyor. Kaçıncı günün sonunda depolardaki su miktarları eşit olur?
+1. $t$ gün sonra A: $200-12t$, B: $120-4t$. || Her gün aynı miktar azalır: doğrusal model.
+2. $200-12t=120-4t$, $8t=80$. || Eşitlik denklemi.
+3. $t=10$; ikisinde de 80 L. || Kontrol: $200-120=80$, $120-40=80$.
+cevap: 10. gün.
+
+::tamamla baslik="Sen dene · boyları eşitlenen mumlar"
+soru: Saat 08.00'de boyları 30 cm ve 40 cm olan iki mum yakılıyor. İlki saatte 3 cm, ikincisi 5 cm kısalıyor. Saat kaçta boyları eşit olur?
+1. $t$ saat sonra: $30-3t$ ve $40-5t$. || Her mum kendi hızıyla kısalır.
+?2. $30-3t=40-5t$, $t=5$ saat. || Uzun mum daha hızlı kısaldığı için yetişir.
+?3. Saat 13.00'te ikisi de 15 cm. || 08.00'e 5 saat ekledik.
+cevap: 13.00.
+
+::sorgula s4b-mum baslik="Hangisi daha uzun kalır?"
+durum: Boyları eşit iki mumdan biri 4, diğeri 6 saatte eriyor. Elektrik kesilince ikisini aynı anda yaktın ve 2 saat sonra elektrik geldi.
+soru: O anda mumlar için hangisi doğrudur?
++A) 6 saatlik mum, öbürünün $\frac43$ katı uzunluktadır. || Kalanlar $\frac23$ ve $\frac12$; oran $\frac43$.
+B) İkisi eşit uzunluktadır. || Aynı sürede farklı hızla kısaldılar.
+C) 4 saatlik mum daha uzundur. || Hızlı eriyen mum daha kısa kalır.
+neden: 2 saatte birinci mum $\frac24=\frac12$'sini, ikincisi $\frac26=\frac13$'ünü kaybeder. Kalanlar $\frac12$ ve $\frac23$; $\frac23:\frac12=\frac43$.
+sinav: Eriyen mumlarda kalan boyu “boy × (1 − geçen süre / toplam süre)” ile yaz; oranı kalan boylardan kur.
+dusun: Kaç saat sonra uzun olan kısanın 2 katı olur?
+yanit: $1-\frac t6=2\left(1-\frac t4\right)$, $t=3$ saat: kalanlar $\frac12$ ve $\frac14$.
+
+::soru c8 tip=ters-islem zorluk=2
+Bir telin bir ucundan $\frac14$'ü kesilince orta noktası 5 cm kayıyor. Telin uzunluğu kaç cm'dir?
+A) 20 || Kesilen parçayı 5 cm aldın.
+B) 30 || Hesabı kontrol et.
++C) 40 || Doğru: kesilen 10 cm, telin dörtte biri.
+D) 50 || Oran $\frac14$, $\frac15$ değil.
+E) 60 || Hesabı kontrol et.
+kontrol: 5*2*4
+cozum: Orta nokta kesilen parçanın yarısı kadar kayar: kesilen $2\cdot5=10$ cm. Bu telin $\frac14$'ü: tel 40 cm.
 
 ::ozet
 - Sözel ifadeyi parça parça çevir; sıraya ve parantezlere dikkat.

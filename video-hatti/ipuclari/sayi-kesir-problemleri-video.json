@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "kesrin-degeri-pay-payda-kat",
+    "providerId": "youtube:-bWXNIFPNSc",
+    "startSeconds": 591,
+    "endSeconds": 744,
+    "quote": "Payı 2nin katı paydası da 3'ün katı",
+    "frameSeconds": [
+      700
+    ],
+    "rule": "“Değeri 2/3 olan kesir” payın 2, paydanın 3 olduğunu söylemez; kesir 2x/3x biçimindedir. Pay ve paydaya ekleme–çıkarma yapılan sorularda bu ortak x ile denklem kurulur.",
+    "condition": "Kesrin değeri verilmeli ve pay ile paydaya ayrı ayrı işlem yapılmalı. x pozitif olmalı; sonuçta pay ve payda tam sayıysa x de buna uygun çıkar.",
+    "example": "Değeri 2/3 olan kesrin payına 5 eklenip paydasından 20 çıkarılınca değer 3/2 oluyor: (2x + 5)/(3x − 20) = 3/2 → 4x + 10 = 9x − 60 → x = 14. Başlangıçtaki pay 28 (kesir 28/42).",
+    "counterexample": "Kesri doğrudan 2/3 alıp (2 + 5)/(3 − 20) yazmak negatif payda verir ve değer 3/2 olmaz; değer bilgisi gerçek pay ve paydayı belirlemez.",
+    "rationale": "Bir kesrin değeri, pay ve paydayı aynı sayıyla genişletince değişmez; bu yüzden değeri 2/3 olan bütün kesirler 2x/3x ailesidir. Ek bilgi ailenin hangi üyesi olduğunu seçer.",
+    "agentSourceReview": "Claude 700. saniye karesini açtı: Örnek 3'ün metni (değeri 2/3 olan kesir; paya 5 eklenip paydadan 20 çıkarılınca 3/2), 2x ve 3x yazımı, (2x + 5)/(3x − 20) = 3/2 ve 4x + 10 = 9x − 60 satırları tahtada görünüyor. Sonuç bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "tel-orta-noktasi-yarim-kayar",
+    "providerId": "youtube:-bWXNIFPNSc",
+    "startSeconds": 1646,
+    "endSeconds": 1741,
+    "quote": "kesme miktarı vardır",
+    "frameSeconds": [
+      1700
+    ],
+    "rule": "Bir telin bir ucundan parça kesilince telin orta noktası kesilen parçanın yarısı kadar kayar; kesilen uzunluk = 2 × kayma.",
+    "condition": "Kesim yalnız bir uçtan yapılmalı ve orta nokta, kesilmeyen uca göre ölçülmeli. İki uçtan farklı miktarlar kesilirse kayma, kesilen parçaların farkının yarısıdır.",
+    "example": "Telin ucundan 2/5'i kesilince orta nokta 8 cm kayıyor: kesilen 16 cm. Tel 5x, kesilen 2x = 16 → x = 8, tel 40 cm.",
+    "counterexample": "Kaymayı kesilen parça sanmak (2x = 8) teli 20 cm yapar; o zaman kesilen 8 cm ve orta nokta yalnız 4 cm kayar, soruyu sağlamaz.",
+    "rationale": "Orta nokta, kesilmeyen uçtan kalan uzunluğun yarısıdır: L/2 yerine (L − p)/2. Fark p/2'dir.",
+    "agentSourceReview": "Claude 1700. saniye karesini açtı: Örnek 8'in metni (telin ucundan 2/5'i kesilince orta nokta 8 cm kayıyor), 50 cm'lik örnek telde 10 cm kesince orta noktanın 25'ten 20'ye 5 cm kaydığı çizim ve 2x, 3x, 5x, 16 = yazımları tahtada görünüyor. Bütün değerler bağımsız tarandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

@@ -415,7 +415,11 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/29 - KESIR PROBLEMLERI.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/28 - SAYI PROBLEMLERI.pdf s.1-17 (görsel)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/29 - KESIR PROBLEMLERI.pdf s.1-17 (görsel)",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf s.1-8"
+      ],
       "videolar": {
         "PL1": [
           "AEixrkLd6b8",
@@ -430,7 +434,8 @@
           "aB-InsUgqPU",
           "40KRKqNfPu8"
         ]
-      }
+      },
+      "not": "8 bölüme derinleştirildi (keşif: kuyrukta en çok/en az, kalanın kesri / bütünün kesri, hepsini ucuz say). Çıkmış: TYT-0651, 0655, 0659, 0660. Kaynaklardan: kuyruk, kutu dağıtımı, katlanan sayfa, zıplayan top, dolu/kısmen dolu kap, mum, tel orta noktası."
     },
     {
       "id": "yas-isci-problemleri",

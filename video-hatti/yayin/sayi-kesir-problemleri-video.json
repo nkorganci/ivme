@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "sayi-kesir-problemleri-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+  "taskHash": "ee536723a907bad82ca1e84fa634554152ddf7338fa21e70170786044356e350",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\sayi-kesir-problemleri-video",
+  "artifacts": {
+    "asamalar\\youtube--bWXNIFPNSc-metin\\b8eda929ae170e27fc85f27d07699b36dc2206f0bcc01a6e721eaee069ff3ad9.json": "8f1121cbc0124b9028ab01139f5eb7fa431190322bdb2b281ccf228e2a3de1f6",
+    "asamalar\\youtube--bWXNIFPNSc-kareler\\8c7fe4a45faf0f222c126e0d113b1ca59054e4404c1199b649eff03f471eefd9.json": "d679b7396e7e8b76c3f21cf55f164f4caf25ae42c4adcae5bce99e86203a929a",
+    "kareler\\10f7f7fb1ace1558315fdc29d09f07e71bfa1a84962480d7dfd002396a014f96.png": "abdad006fb0b52371dac96b9d0582c6888f1ce45a703c2afdce76695268eab8d",
+    "kareler\\5f4dcb8521c37a61c12ea08c2bf16637169eed72da1d1ea0da5026e8a1b55243.png": "b011ea712907dc653ea90ce00e92c155ff63c3b423fcd09a14e1ba6378dce2e6",
+    "asamalar\\matematik-denetimi\\d7e4298fbf7dd46fec1d06555c7b15fab96f01e2a9ba49cfd08ff8106c3b05c8.json": "f19b1e2c0424e5f8e9b78143bfd040312ffb047e45b1a541e8ef71cb65e20efb",
+    "surumler\\18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf.json": "3507a9b1101690630481fa3b3ea9cbbccd914b5bbf8b8622fcc7326371b0d68b",
+    "surumler\\18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf.oneriler.md": "1cafe83cbb1fb68c89aed6bfc739fe642d07f035a77356877cfa4255e8efe97a"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-sayi-kesir-problemleri-test.py",
+        "sha256": "b403ef29fdaea83ab64880823cbecee8161cfc81192e6de2322174d210797373",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "sayi-kesir-problemleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.813
+    },
+    "videos": [
+      {
+        "providerId": "youtube:-bWXNIFPNSc",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:-bWXNIFPNSc",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 920,
+      "normalization": {
+        "captionControlEvents": 910,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 700,
+          "file": "kareler\\10f7f7fb1ace1558315fdc29d09f07e71bfa1a84962480d7dfd002396a014f96.png",
+          "sha256": "abdad006fb0b52371dac96b9d0582c6888f1ce45a703c2afdce76695268eab8d",
+          "pixelHash": "10f7f7fb1ace1558315fdc29d09f07e71bfa1a84962480d7dfd002396a014f96",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1700,
+          "file": "kareler\\5f4dcb8521c37a61c12ea08c2bf16637169eed72da1d1ea0da5026e8a1b55243.png",
+          "sha256": "b011ea712907dc653ea90ce00e92c155ff63c3b423fcd09a14e1ba6378dce2e6",
+          "pixelHash": "5f4dcb8521c37a61c12ea08c2bf16637169eed72da1d1ea0da5026e8a1b55243",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "kesrin-degeri-pay-payda-kat",
+      "contentHash": "f5f0b73db23103fc920cc211a1b8e1a80969ea20a87c5111ac77e50cc052604c",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "tel-orta-noktasi-yarim-kayar",
+      "contentHash": "85ca85425c19b64a2a3245e1f6e04b9bb0ee1338b305835d7e41532db21608a9",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

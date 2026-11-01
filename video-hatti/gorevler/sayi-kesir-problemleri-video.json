@@ -9,18 +9,6 @@
   },
   "sources": [
     {
-      "providerId": "youtube:AEixrkLd6b8",
-      "usage": {
-        "status": "PROCESSING_ALLOWED",
-        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
-      },
-      "media": "veri/video-hatti/medya/AEixrkLd6b8.mp4",
-      "transcript": "veri/video-hatti/medya/AEixrkLd6b8.tr.json3",
-      "frameSeconds": [],
-      "durationSeconds": 3362,
-      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
-    },
-    {
       "providerId": "youtube:-bWXNIFPNSc",
       "usage": {
         "status": "PROCESSING_ALLOWED",
@@ -28,20 +16,11 @@
       },
       "media": "veri/video-hatti/medya/-bWXNIFPNSc.mp4",
       "transcript": "veri/video-hatti/medya/-bWXNIFPNSc.tr.json3",
-      "frameSeconds": [],
+      "frameSeconds": [
+        700,
+        1700
+      ],
       "durationSeconds": 2662,
-      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
-    },
-    {
-      "providerId": "youtube:q_lX4leWW_g",
-      "usage": {
-        "status": "PROCESSING_ALLOWED",
-        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
-      },
-      "media": "veri/video-hatti/medya/q_lX4leWW_g.mp4",
-      "transcript": "veri/video-hatti/medya/q_lX4leWW_g.tr.json3",
-      "frameSeconds": [],
-      "durationSeconds": 3201,
       "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
     }
   ],

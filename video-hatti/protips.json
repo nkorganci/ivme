@@ -247,6 +247,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "sayi-kesir-problemleri-video",
+      "conceptId": "sayi-kesir-problemleri",
+      "hints": [
+        {
+          "id": "kesrin-degeri-pay-payda-kat",
+          "title": "“Değeri 2/3 olan kesir” = 2x/3x",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "tel-orta-noktasi-yarim-kayar",
+          "title": "Telin orta noktası kesilenin yarısı kadar kayar",
+          "sectionIds": [
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

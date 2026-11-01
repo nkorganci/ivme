@@ -188,3 +188,45 @@ test('üslü ifadeler: tabanları birbirine yerleştirme', () => {
   const x = Math.log(3) / Math.log(5), y = Math.log(125) / Math.log(9);
   assert.ok(Math.abs(x * y - 1.5) < 1e-12);
 });
+
+test('sayı-kesir problemleri: TYT-0651, 0655, 0659, 0660 ve benzer sorular', () => {
+  const kim = []; for (let K = 1; K <= 30; K++) for (let M = 1; M <= 30; M++) if (30 - 3 * K - 3 * M === K && M === K + 3) kim.push(K + M);
+  assert.deepEqual(kim, [9]); linked('TYT-0651', 'E');
+  const elma = []; for (let E = 1; E <= 30; E++) for (let A = 1; A <= 30; A++) if (30 - 2 * E - 2 * A === E && A === E + 5) elma.push(E + A);
+  assert.deepEqual(elma, [13]);
+  // Kule: a + (n−1)d; 6 + 9 = 18 ⇒ a = 4d; 8 + 12 ⇒ n.
+  const tower = (a, d, n) => a + (n - 1) * d;
+  for (const d of range(1, 5)) { const a = 4 * d; assert.equal(tower(a, d, 6) + tower(a, d, 9), tower(a, d, 18)); assert.equal(tower(a, d, 8) + tower(a, d, 12), tower(a, d, 23)); }
+  linked('TYT-0655', 'A');
+  for (const d of range(1, 5)) { const a = 5 * d; assert.equal(tower(a, d, 4) + tower(a, d, 7), tower(a, d, 15)); assert.equal(tower(a, d, 6) + tower(a, d, 10), tower(a, d, 20)); }
+  const park = []; for (let g = 0; g <= 51; g++) { const c = 51 - g; if ((26 + 6) - (2 + 9) === g - c) park.push(g); }
+  assert.deepEqual(park, [36]); linked('TYT-0659', 'D');
+  const lib = []; for (let g = 0; g <= 61; g++) if (g - (61 - g) === 25) lib.push(g);
+  assert.deepEqual(lib, [43]);
+  const gift = range(1, 400).filter((H) => H % 56 === 0 && 3 * H / 56 === 6); assert.deepEqual(gift, [112]); linked('TYT-0660', 'A');
+  const gift6 = range(1, 400).filter((H) => H % 24 === 0 && H / 24 === 5); assert.deepEqual(gift6, [120]);
+});
+
+test('sayı-kesir problemleri: yeni örneklerin sayısal sonuçları', () => {
+  // Kuyruk: Ali baştan 9, Ece sondan 12, arada 4.
+  assert.equal(9 + 12 + 4, 25); assert.equal((9 - 4 - 1) + 12 - 1, 15);
+  assert.deepEqual(range(1, 40).filter((k) => 6 * k + 12 === 8 * (k - 2)), [14]);
+  assert.equal(6 * (1 + 2 + 4 + 8 + 16), 186);
+  assert.deepEqual(range(1, 20).filter((k) => 5 * k + 3 === 6 * (k - 1) + 4), [5]);
+  assert.equal(54 * 2 ** 3, 16 * 3 ** 3);
+  assert.equal(128 * 3 ** 3, 54 * 4 ** 3);
+  assert.equal(900 - 3 * 200, 300);
+  assert.equal(90 * 2 ** 2, 40 * 3 ** 2);
+  assert.equal(80 * 3 ** 2, 45 * 4 ** 2);
+  assert.deepEqual(range(1, 60).filter((x) => 2 * x - 5 === x + 5), [10]);
+  assert.deepEqual(range(0, 60).filter((x) => 3 * x + 2 * (60 - x) === 150), [30]);
+  assert.deepEqual(range(1, 60).filter((n) => n % 6 === 0 && n / 2 + n / 3 === 25), [30]);
+  assert.deepEqual(range(0, 13).filter((x) => 3 * x + 2 * (13 - x) === 30), [4]);
+  const t = 24 / 5; assert.ok(Math.abs((24 - 3 * t) - 2 * (24 - 4 * t)) < 1e-12);
+  assert.equal(60 / 2 - (60 - 12) / 2, 6);
+  assert.deepEqual(range(0, 20).filter((d) => 200 - 12 * d === 120 - 4 * d), [10]);
+  assert.deepEqual(range(0, 10).filter((h) => 30 - 3 * h === 40 - 5 * h), [5]);
+  assert.ok(Math.abs((1 - 2 / 6) / (1 - 2 / 4) - 4 / 3) < 1e-12);
+  assert.ok(Math.abs((1 - 3 / 6) - 2 * (1 - 3 / 4)) < 1e-12);
+  assert.equal(40 / 2 - (40 - 10) / 2, 5);
+});

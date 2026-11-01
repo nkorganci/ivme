@@ -54,7 +54,7 @@ konunun konumunu yaz.
 ## Liste
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **12/32 bitti**. Sıradaki TYT konusu: `sayi-kesir-problemleri`.
+TYT: **13/32 bitti**. Sıradaki TYT konusu: `yas-isci-problemleri`.
 
 ### TYT (şu anki aşama)
 
@@ -72,7 +72,7 @@ TYT: **12/32 bitti**. Sıradaki TYT konusu: `sayi-kesir-problemleri`.
 | 10 | ✅ BİTTİ | `koklu-ifadeler` | Köklü İfadeler ve Köklü Denklemler | 9 | TYT | 8/26/3/4 | 4 / 18 (Üslü İfadeler ve Denklemler) | 2 · PL1 2, PL2 3 | 4/4 | — · Kaynak kalıpları (tanım aralığı, çift kökte |x|, eşlenik, derece eşitleme, kök içine alma, a±2√b) derste var. Çıkmış: TYT-0641, TYT-0643 eklendi. Protip: karesiz kalan çarpan; kök derecesi kadar kuvvet ve çift kökte kontrol. |
 | 11 | ✅ BİTTİ | `carpanlara-ayirma` | Çarpanlara Ayırma ve Rasyonel İfadeler | 10 | TYT | 8/25/3/4 | 3 / 3 (Polinomlar) | 2 · PL1 2, PL2 2 | 4/4 | — · 8 bölüme derinleştirildi (3 keşif modeli: ortak kenar, kare içinde kare, çapraz çarpım). Çıkmış: TYT-0792, TYT-0794, AYT_Sayisal-0095. Sunulardan eklenen: üslü ifadede değişken değiştirme, büyük sayılarda iki kare farkı, sadeleşen kesir parametresi. |
 | 12 | ✅ BİTTİ | `oran-oranti` | Oran ve Orantı | 9 | TYT | 8/34/3/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 2, PL2 4 | 3/3 | — · PDF karşılaştırmasıyla eklenenler: katsayılı genişletme, ax=by=cz, altın oran, dişli çark, oran zinciri, kalan kişi-gün, aritmetik/geometrik ortalama (hiçbir derste yoktu). Çıkmış: TYT-0701, TYT-0723 eklendi. |
-| 13 | 🟡 EKSİK | `sayi-kesir-problemleri` | Sayı ve Kesir Problemleri | 9 | TYT | 4/8/1/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 6, PL2 3 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 13 | ✅ BİTTİ | `sayi-kesir-problemleri` | Sayı ve Kesir Problemleri | 9 | TYT | 8/23/3/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 6, PL2 3 | 3/3 | — · 8 bölüme derinleştirildi (keşif: kuyrukta en çok/en az, kalanın kesri / bütünün kesri, hepsini ucuz say). Çıkmış: TYT-0651, 0655, 0659, 0660. Kaynaklardan: kuyruk, kutu dağıtımı, katlanan sayfa, zıplayan top, dolu/kısmen dolu kap, mum, tel orta noktası. |
 | 14 | 🟡 EKSİK | `yas-isci-problemleri` | Yaş, İşçi ve Havuz Problemleri | 9 | TYT | 4/8/1/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 4, PL2 2 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 15 | 🟡 EKSİK | `yuzde-karisim` | Yüzde ve Karışım Problemleri | 9 | TYT | 4/8/1/1 | 1 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 4, PL2 2 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 1/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 16 | 🟡 EKSİK | `kar-zarar` | Kâr–Zarar ve İndirim Problemleri | 9 | TYT | 4/8/2/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 2, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

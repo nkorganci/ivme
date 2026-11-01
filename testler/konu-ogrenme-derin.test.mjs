@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler', 'carpanlara-ayirma'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler', 'carpanlara-ayirma', 'sayi-kesir-problemleri'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -463,5 +463,29 @@ test('carpanlara-ayirma: keşif modelleri sayılarla aynı şeyi söyler', () =>
     const m = model('carpan-capraz', { m: mm, r, n, s });
     for (const x of [-2, 0, 1, 3]) assert.equal((mm * x + n) * (r * x + s) + 0, m.lead * x * x + m.middle * x + m.constant + 0);
     for (const x of [-2, 0, 1, 3]) assert.equal((mm * x + s) * (r * x + n) + 0, m.lead * x * x + m.swapped * x + m.constant + 0);
+  }
+});
+
+test('sayi-kesir-problemleri: keşif modelleri sayılarla aynı şeyi söyler', () => {
+  for (const a of range(3, 20)) for (const b of range(3, 20)) for (const k of range(0, 8)) {
+    const m = model('sk-sira', { a, b, k });
+    // Güler önde: Güler a, Ömer n−b+1; aralarında k kişi.
+    assert.equal((m.nMax - b + 1) - a - 1, k);
+    if (m.nMin !== null) {
+      assert.equal(a - m.front - 1, k); assert.equal(m.nMin - b + 1, m.front); assert.ok(m.nMin >= a);
+    } else assert.ok(a - k - 1 < 1 || b < k + 2);
+  }
+  for (const q of range(2, 5)) for (const p of range(1, 4)) for (const n of range(1, 4)) {
+    const m = model('sk-kalan', { q, p, n });
+    const pe = Math.min(p, q - 1);
+    assert.ok(Math.abs(m.steps[n].kalan - ((q - pe) / q) ** n) < 1e-12);
+    assert.ok(m.steps[n].kalan > 0);
+    assert.equal(m.steps[n].butun, Math.max(0, 1 - n * pe / q));
+  }
+  for (const N of range(8, 20)) for (const x of range(0, 20)) for (const d of range(1, 4)) {
+    const m = model('sk-adet', { N, x, d });
+    const xe = Math.min(x, N);
+    assert.equal(m.total, 3 * (N - xe) + (3 + d) * xe);
+    assert.equal((m.total - 3 * N) / d, xe);
   }
 });

@@ -13,8 +13,9 @@ import * as kokluIfadeler from './koklu-ifadeler.js';
 import * as oranOranti from './oran-oranti.js';
 import * as ikinciDerece from './ikinci-derece-denklemler.js';
 import * as carpanlaraAyirma from './carpanlara-ayirma.js';
+import * as sayiKesir from './sayi-kesir-problemleri.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

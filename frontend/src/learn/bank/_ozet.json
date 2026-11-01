@@ -389,11 +389,11 @@
    },
    "archetypes": {
     "denklem-kurma": 73,
-    "kesir": 26,
-    "adet-tutar": 39,
-    "ters-islem": 52
+    "kesir": 27,
+    "adet-tutar": 40,
+    "ters-islem": 51
    },
-   "untyped": 75
+   "untyped": 74
   },
   "sayma-permutasyon": {
    "total": 439,
