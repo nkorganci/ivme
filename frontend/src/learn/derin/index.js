@@ -12,8 +12,9 @@ import * as usluIfadeler from './uslu-ifadeler.js';
 import * as kokluIfadeler from './koklu-ifadeler.js';
 import * as oranOranti from './oran-oranti.js';
 import * as ikinciDerece from './ikinci-derece-denklemler.js';
+import * as carpanlaraAyirma from './carpanlara-ayirma.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

@@ -81,3 +81,60 @@ test('TYT-0701 ve TYT-0723: gruptan gruba geçiş ve adet × birim oranı; benze
   linked('TYT-0723', 'A');
   assert.equal((3 * 6) / (4 * 1), 9 / 2);
 });
+
+test('çarpanlara ayırma: TYT-0792, TYT-0794, AYT-0095 ve benzer sorular', () => {
+  for (const a of range(2, 12)) for (const b of range(1, a - 1)) {
+    const [I, II, IV] = [b * b, b * (a - b), (a - b) ** 2];
+    assert.equal(a * a - 2 * a * b + 2 * b * b, I + IV);
+    assert.equal(2 * a * b - 2 * b * b, 2 * II);
+  }
+  linked('TYT-0792', 'B');
+  // Sabitleri karışmış çarpanlama: bütün tam sayı m,r,n,s yerleşimleri tek bir b verir.
+  const swappedB = (lead, wrongMid, c) => {
+    const out = new Set();
+    for (const m of range(-lead, lead)) for (const r of range(-lead, lead)) for (const n of range(-40, 40)) for (const s of range(-40, 40)) {
+      if (m * r !== lead || n * s !== c || m * n + s * r !== wrongMid) continue;
+      out.add(m * s + n * r);
+    }
+    return [...out];
+  };
+  assert.deepEqual(swappedB(2, 1, -21), [11]);
+  linked('TYT-0794', 'A');
+  assert.deepEqual(swappedB(3, 13, -10), [-1]);
+  const field = range(1, 200).filter((x) => (x + 20) * (2 * x + 30) - x * x === 1400);
+  assert.deepEqual(field, [10]); assert.equal(2 * (30 + 50), 160);
+  linked('AYT_Sayisal-0095', 'C');
+  const sim = range(1, 200).filter((x) => (x + 12) * (2 * x + 8) - x * x === 624);
+  assert.deepEqual(sim, [12]); assert.equal(2 * (24 + 32), 112);
+});
+
+test('çarpanlara ayırma: yeni örneklerin sayısal sonuçları', () => {
+  assert.equal((2 ** 12 - 2 ** 10) / (2 ** 10 + 2 ** 9), 2);
+  const pos = (f) => { const r = []; for (const x of range(1, 30)) for (const y of range(1, 30)) if (f(x, y)) r.push([x, y]); return r; };
+  assert.deepEqual([...new Set(pos((x, y) => x * y + x + y === 14).map(([x, y]) => x + y))], [6]);
+  assert.equal((37 * 45 + 37 * 55) / 74, 50);
+  assert.equal(Math.max(...pos((a, b) => a * b - a - b === 11).map(([a, b]) => a + b)), 15);
+  assert.equal(Math.max(...pos((x, y) => x * y + 2 * x + y === 10).map(([x, y]) => x + y)), 5);
+  assert.equal(64 - 48, 16); assert.equal(125 - 90, 35); assert.equal(36 - 22, 14);
+  for (const x of [-5, -2, 0.5, 3, 7]) {
+    assert.ok(Math.abs((x ** 2 + x) ** 2 - 8 * (x ** 2 + x) + 12 - (x + 2) * (x - 1) * (x + 3) * (x - 2)) < 1e-9);
+    if (![1, -1, -3, 0, 2, 3, -2].includes(x)) {
+      assert.ok(Math.abs(1 / (x - 1) - 1 / (x + 1) - 2 / (x * x - 1)) < 1e-9);
+      assert.ok(Math.abs(((x * x - 4) / (x + 3)) / ((x - 2) / (x * x + 3 * x)) - x * (x + 2)) < 1e-9);
+      assert.ok(Math.abs(((x * x - x - 6) / (x * x - 9)) * ((x + 3) / (x + 2)) - 1) < 1e-9);
+    }
+  }
+  assert.deepEqual([1, 2, -2].map((x) => x ** 3 - x * x - 4 * x + 4), [0, 0, 0]);
+  assert.equal((1001 ** 2 - 1) / 1000, 1002);
+});
+
+test('çarpanlara ayırma: sunu kalıpları (üslü değişken, iki kare farkı, sadeleşen kesir)', () => {
+  for (const x of [-1, 0, 0.5, 1, 2]) {
+    assert.ok(Math.abs(9 ** x - 3 ** (x + 1) + 2 - (3 ** x - 1) * (3 ** x - 2)) < 1e-9);
+    assert.ok(Math.abs(2 ** (2 * x + 1) - 5 * 2 ** x + 3 - (2 * 2 ** x - 3) * (2 ** x - 1)) < 1e-9);
+  }
+  assert.equal(5555 ** 2 - 4444 ** 2, 11108889);
+  assert.equal(String(5555 ** 2 - 4444 ** 2).length, 8);
+  const as = range(-40, 40).filter((a) => [2, 3].some((r) => r * r + a * r + 12 === 0));
+  assert.deepEqual(as, [-8, -7]);
+});

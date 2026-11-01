@@ -57,15 +57,15 @@
    "untyped": 127
   },
   "carpanlara-ayirma": {
-   "total": 104,
+   "total": 107,
    "cikmis": {
-    "TYT": 0,
-    "AYT": 0
+    "TYT": 2,
+    "AYT": 1
    },
    "archetypes": {
     "ortak-gruplama": 0,
-    "ozdeslik": 11,
-    "uc-terimli": 11,
+    "ozdeslik": 12,
+    "uc-terimli": 13,
     "rasyonel-sadelestirme": 69
    },
    "untyped": 13
@@ -340,18 +340,18 @@
    "untyped": 131
   },
   "polinom-islemleri": {
-   "total": 511,
+   "total": 508,
    "cikmis": {
-    "TYT": 3,
-    "AYT": 11
+    "TYT": 1,
+    "AYT": 10
    },
    "archetypes": {
     "polinom-kavram": 93,
     "polinom-islem": 7,
-    "polinom-bolme": 116,
+    "polinom-bolme": 115,
     "kalan-bulma": 14
    },
-   "untyped": 281
+   "untyped": 279
   },
   "rasyonel-sayilar": {
    "total": 75,

@@ -9,7 +9,7 @@ onkosul: polinom-islemleri
 kategori: excel.tyt.matematik.58dc018a000831b1b740 excel.ayt.matematik.58dc018a000831b1b740
 hedef: Ortak çarpan parantezine alma ve gruplandırmayı kullanmak; iki kare farkı, tam kare, küp toplamı ve farkı özdeşliklerini tanıyıp uygulamak; $x^2 + bx + c$ ve $ax^2 + bx + c$ üç terimlilerini çarpanlarına ayırmak; değişken değiştirme yöntemini uygulamak; rasyonel ifadeleri sadeleştirmek.
 neden: Çarpanlara ayırma OGM soru bankasında polinom sorularının en kalabalık kazanımıdır. İkinci dereceden denklemlerden limitteki "$\frac{0}{0}$" belirsizliğine ve integrale kadar AYT'nin hemen her konusunda bir hesap aracıdır.
-kaynak: MEBİ TYT Konu Özeti — Ortak Çarpan Parantezine Alma, Tam Kare ve İki Kare Farkı, Tam Küp ve Küp Toplamı–Farkı, Üç Terimli İfadeler, Rasyonel İfadeler | OGM 10. Sınıf Konu Özetleri 27–30 | OGM 10. Sınıf Ders Anlatım Sunuları 22–24
+kaynak: MEBİ TYT Konu Özeti — Ortak Çarpan Parantezine Alma, Tam Kare ve İki Kare Farkı, Tam Küp ve Küp Toplamı–Farkı, Üç Terimli İfadeler, Rasyonel İfadeler | OGM 10. Sınıf Konu Özetleri 27–30 | OGM 10. Sınıf Ders Anlatım Sunuları 22–26 | OGM Video Notları TYT 08 — Çarpanlara Ayırma | Özgün görselleri incelenen sorular: 2018 TYT (TYT-0792), 2021 TYT (TYT-0794), 2023 AYT (AYT_Sayisal-0095)
 tekrar: 12
 ustalik-dk: 15
 hedef-sure: 70
@@ -46,8 +46,10 @@ ozdeslik 2 1-3
 uc-terimli 2 1-3
 rasyonel-sadelestirme 1 1-3
 
-@oturum Ortak çarpan ve özdeşlikler | s1 s2
-@oturum Üç terimliler ve rasyonel ifadeler | s3 s4
+@oturum Ortak çarpan ve gruplandırma | s1 s1b
+@oturum Özdeşlikler ve alan modeli | s2 s2b
+@oturum Üç terimliler ve denklemler | s3 s3b
+@oturum Rasyonel ifadeler | s4 s4b
 
 @ontest
 ::soru o1 tip=ortak-gruplama zorluk=1
@@ -128,6 +130,64 @@ C) $(a + b)(a + c)$ || İşaretleri kontrol et.
 E) $a(a - b + c)$ || $-bc$ teriminde $a$ çarpanı yoktur.
 cozum: Grupla: $a(a - b) + c(a - b) = (a - b)(a + c)$.
 
+@bolum s1b 15 | Ortak çarpanı görmek: sayılar, kuvvetler ve tam sayı çözümleri
+::kesfet carpan-ortak
+
+::duzey baslik="Ortak çarpan nerede saklanır?"
+L1: Ortak çarpan her zaman tek harf değildir: $2^{12}$ ile $2^{10}$'un ortak çarpanı $2^{10}$'dur, $37\cdot45$ ile $37\cdot55$'in ortak çarpanı 37'dir. Önce her terimi çarpım olarak yaz, sonra hepsinde bulunanı bir kez dışarı al.
+L2: Dört terimde gruplandırma, eksik bir sabitle de yapılabilir: $xy+x+y+1=(x+1)(y+1)$. Soruda $xy+x+y=14$ gibi bir eşitlik varsa iki tarafa 1 ekleyip çarpım biçimine getir; tam sayılarda çarpım, bölen çiftlerine ayrılır.
+L3: Genel kalıp $xy+ax+by+ab=(x+b)(y+a)$. Hangi sabitin ekleneceğini $a\cdot b$ belirler. Tam sayı çözüm sayarken çarpanların işaret ve büyüklük koşullarını (pozitif, rakam, farklı) ayrıca uygula.
+
+::ornek baslik="Kuvvetlerde ortak çarpan"
+soru: $\dfrac{2^{12}-2^{10}}{2^{10}+2^{9}}$ işleminin sonucu kaçtır?
+1. Pay: $2^{12}-2^{10}=2^{9}(2^3-2)=2^9\cdot6$. || En küçük kuvvet $2^9$'u hem payda hem paydada dışarı almak işi eşitler.
+2. Payda: $2^{10}+2^{9}=2^{9}(2+1)=2^9\cdot3$. || Aynı ortak çarpanı seçtik.
+3. $\dfrac{2^9\cdot6}{2^9\cdot3}=2$. || Ortak çarpan $2^9$ sadeleşti.
+cevap: 2. Tuzak: $\frac{2^{12}}{2^{10}}-\frac{2^{10}}{2^9}$ gibi terim terim bölmek; toplamın bölümü böyle dağılmaz.
+
+::ornek baslik="Bir ekle, çarpıma çevir"
+soru: $x$ ve $y$ pozitif tam sayılardır. $xy+x+y=14$ olduğuna göre $x+y$ kaçtır?
+1. İki tarafa 1 ekle: $xy+x+y+1=15$, yani $(x+1)(y+1)=15$. || Gruplandırma: $x(y+1)+(y+1)$.
+2. $x+1\ge2$ ve $y+1\ge2$: $15=3\cdot5$ ya da $5\cdot3$. || $1\cdot15$ seçilirse $x=0$ olur; pozitif değil.
+3. $x=2,y=4$ ya da $x=4,y=2$; ikisinde de $x+y=6$. || İki çözüm aynı toplamı verir.
+cevap: 6. Kontrol: $2\cdot4+2+4=14$.
+
+::ornek baslik="Sayısal ifadeyi ortak çarpanla sadeleştir"
+soru: $\dfrac{37\cdot45+37\cdot55}{74}$ kaçtır?
+1. Pay: $37(45+55)=37\cdot100$. || İki terimde de 37 var.
+2. $74=2\cdot37$. || Paydayı da çarpan olarak yazdık.
+3. $\dfrac{37\cdot100}{2\cdot37}=50$. || 37 sadeleşti.
+cevap: 50. Hesap makinesiz yol: önce ortak çarpan, sonra sadeleştirme.
+
+::tamamla baslik="Sen dene · bir çıkar, çarpıma çevir"
+soru: $a$ ve $b$ pozitif tam sayılardır. $ab-a-b=11$ olduğuna göre $a+b$ en çok kaçtır?
+1. İki tarafa 1 ekle: $ab-a-b+1=12$, yani $(a-1)(b-1)=12$. || $a(b-1)-(b-1)=(a-1)(b-1)$.
+?2. $(a-1,b-1)$: $(1,12),(2,6),(3,4)$ ve ters sıraları; $a+b=15,10,9$. || Toplam $(a-1)+(b-1)+2$; çarpanlar birbirinden uzaklaştıkça toplam büyür.
+?3. En çok 15 ($a=2$, $b=13$). || Kontrol: $26-2-13=11$.
+cevap: 15.
+
+::sorgula s1b-parsel baslik="Yan yana iki parsel"
+durum: Genişliği 3 metre olan iki şerit bahçe yan yana; birinin uzunluğu 17 m, diğerininki 23 m. Bahçıvan toplam alanı hızlıca hesaplamak istiyor.
+soru: Toplam alan kaç metrekaredir?
++A) 120 || Ortak genişlik 3: $3\cdot(17+23)=3\cdot40$.
+B) 69 || Bu yalnız ikinci şeridin alanı.
+C) 391 || $17\cdot23$; iki uzunluğu çarpmak bir alan vermez.
+kontrol: 3*(17+23)
+neden: İki dikdörtgenin ortak kenarı 3 m. $3\cdot17+3\cdot23=3(17+23)=120$: ortak çarpanı dışarı almak, aynı genişlikteki şeritleri tek şerit gibi düşünmektir.
+sinav: Her terimde ortak olan çarpanı bir kez yaz; parantezin içine kalanları topla.
+dusun: Şeritlerden biri 3 m, diğeri 5 m genişlikte olsaydı aynı yöntem işe yarar mıydı?
+yanit: Hayır; ortak çarpan kalmaz. $3\cdot17+5\cdot23=51+115=166$ ayrı ayrı hesaplanır.
+
+::soru c5 tip=ortak-gruplama zorluk=2
+$x$ ve $y$ pozitif tam sayılardır. $xy+2x+y=10$ olduğuna göre $x+y$ en çok kaçtır?
+A) 4 || $x=2,y=2$ veya $x=3,y=1$ çözümleri; daha büyüğü var.
++B) 5 || Doğru: $(x+1)(y+2)=12$, $x=1$, $y=4$.
+C) 6 || Bu toplamı veren pozitif tam sayı çözümü yok.
+D) 7 || $(x+1)(y+2)=12$'yi sağlamaz.
+E) 12 || 12, çarpımın değeridir.
+kontrol: 1+4
+cozum: İki tarafa 2 ekle: $xy+2x+y+2=(x+1)(y+2)=12$. $y\ge1$ olduğundan $y+2\ge3$: $(2,6)\to(1,4)$, $(3,4)\to(2,2)$, $(4,3)\to(3,1)$. En büyük toplam $1+4=5$.
+
 @bolum s2 10 | Özdeşlikler
 ::fikir
 **İki kare farkı:** $a^2 - b^2 = (a - b)(a + b)$. **Tam kare:** $(a \pm b)^2 = a^2 \pm 2ab + b^2$. **Küp toplamı/farkı:** $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$.
@@ -176,6 +236,13 @@ soru: $98^2$ ve $103\cdot97$ çarpımlarını özdeşliklerle hesapla.
 3. $103\cdot97=(100+3)(100-3)=10000-9=9991$. || İki kare farkı: $(a+b)(a-b)=a^2-b^2$.
 cevap: $98^2=9604$, $103\cdot97=9991$.
 
+::ornek baslik="Büyük sayılarda iki kare farkı"
+soru: $5555^2-4444^2$ sayısı kaç basamaklıdır?
+1. $(5555-4444)(5555+4444)=1111\cdot9999$. || İki kare farkı, kareleri tek tek hesaplamadan çarpıma çevirir.
+2. $1111\cdot9999=1111\cdot(10000-1)=11110000-1111$. || 9999'u $10^4-1$ yazınca çarpma çıkarmaya döner.
+3. $=11108889$. || Sekiz rakam.
+cevap: 8 basamaklı. Kontrol: $1111\cdot9999<1111\cdot10^4=11110000$ (8 basamak) ve $>10^7$.
+
 ::sorgula s2-kasa baslik="Pazarcının hesabı"
 durum: Bir pazarcı 48 kasa domatesi kasası 52 liradan sattı ve toplamı kafadan hesaplamak istiyor.
 soru: Toplam kaç liradır?
@@ -202,6 +269,70 @@ D) 49 || $2xy$'yi çıkarmayı unuttun.
 E) 73 || $2xy$'yi ekledin; çıkarılmalı.
 kontrol: 49-24
 cozum: $x^2 + y^2 = (x + y)^2 - 2xy = 49 - 24 = 25$.
+
+@bolum s2b 15 | Alan modeli ve toplam–çarpım verilen sorular
+::kesfet carpan-alan
+
+::duzey baslik="Özdeşliği bir şekil olarak görmek"
+L1: Kenarı $a$ olan bir karenin köşesine kenarı $b$ olan kare koyunca dört parça oluşur: $b^2$, iki tane $b(a-b)$ ve $(a-b)^2$. Bu parçaların toplamı $a^2$'dir. Her özdeşlik bu parçalardan birkaçını toplamaktır.
+L2: Toplam ve çarpım verildiğinde istenen ifadeyi bunlarla yaz: $x^2+y^2=(x+y)^2-2xy$, $(x-y)^2=(x+y)^2-4xy$, $x^3+y^3=(x+y)^3-3xy(x+y)$. Bilinmeyenleri tek tek bulmaya çalışma.
+L3: Üç terimde $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$. $x-\frac1x=k$ ise $x^2+\frac1{x^2}=k^2+2$; karede ortaya çıkan $-2$ geri eklenir.
+
+::metin
+### Gerçek TYT sorusu: ifadeyi bölgelere bölmek
+$a^2-2ab+2b^2$ ifadesini tanıdık parçalara ayır: $(a^2-2ab+b^2)+b^2=(a-b)^2+b^2$. Sonra hangi bölgenin kenarlarının $a-b$, hangisinin $b$ olduğunu şekilden oku.
+
+::cikmis TYT-0792 tip=ozdeslik
+
+::ornek baslik="Benzer soru · iki dikdörtgenin toplamı"
+soru: Kenarı $a$ olan kare, köşesindeki kenarı $b$ olan I. kare ile dört bölgeye ayrılmıştır (II ve III dikdörtgen, IV kare). $2ab-2b^2$ ifadesi hangi iki bölgenin alanları toplamıdır?
+1. II ve III'ün kenarları $b$ ve $a-b$; her birinin alanı $ab-b^2$. || Kenarları şekilden okuduk.
+2. $2ab-2b^2=2(ab-b^2)=2b(a-b)$. || Ortak çarpan $2b$.
+3. Bu, iki dikdörtgenin toplamı: II ve III. || Kontrol: $a=5,b=2$: $20-8=12=6+6$.
+cevap: II ve III. IV ise $(a-b)^2=a^2-2ab+b^2$'dir.
+
+::ornek baslik="Farkın karesi toplamdan"
+soru: $x+y=8$ ve $xy=12$ olduğuna göre $|x-y|$ kaçtır?
+1. $(x-y)^2=(x+y)^2-4xy$. || $(x+y)^2$ ile $(x-y)^2$ arasındaki fark $4xy$'dir.
+2. $64-48=16$. || Bilinenleri yerine koyduk.
+3. $|x-y|=4$. || Karekök alınca işaret belirsizleşir; mutlak değer onu taşır.
+cevap: 4. Kontrol: $x=6,y=2$.
+
+::ornek baslik="Küp toplamı, toplam ve çarpımdan"
+soru: $a+b=5$ ve $ab=6$ olduğuna göre $a^3+b^3$ kaçtır?
+1. $(a+b)^3=a^3+b^3+3ab(a+b)$. || Açılımda karma terimler $3a^2b+3ab^2=3ab(a+b)$.
+2. $125=a^3+b^3+3\cdot6\cdot5$. || Bilinenleri yerine koyduk.
+3. $a^3+b^3=125-90=35$. || Kontrol: $a=2,b=3$: $8+27=35$.
+cevap: 35.
+
+::ornek baslik="Üç sayının kareleri toplamı"
+soru: $a+b+c=6$ ve $ab+bc+ca=11$ ise $a^2+b^2+c^2$ kaçtır?
+1. $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$. || Üç terimli karede her ikili çarpım iki kez çıkar.
+2. $36=a^2+b^2+c^2+22$. || Yerine koyduk.
+3. $a^2+b^2+c^2=14$. || Kontrol: 1, 2, 3 sayıları: $1+4+9=14$.
+cevap: 14.
+
+::sorgula s2b-yol baslik="Bahçenin çevresindeki yol"
+durum: Kenarı 10 m olan kare bir bahçenin içinde, kenarlar boyunca 1 m genişliğinde taş yol var; ortada kenarı 8 m olan kare çimen kalıyor.
+soru: Taş yolun alanı kaç metrekaredir?
++A) 36 || $10^2-8^2=(10-8)(10+8)=2\cdot18$.
+B) 4 || $(10-8)^2$; bu, iki kare farkı değil farkın karesi.
+C) 64 || Bu çimenin alanı.
+kontrol: 10*10-8*8
+neden: Yol, büyük kareden küçük kare çıkınca kalan alan: $a^2-b^2=(a-b)(a+b)=2\cdot18=36$. $(a-b)^2$ yalnız köşedeki küçük kareyi verir.
+sinav: Büyük kareden küçük kare çıkıyorsa iki kare farkı; kenar farkıyla kurulan kare ise $(a-b)^2$.
+dusun: Yol 2 m genişliğinde olsaydı alan kaç olurdu?
+yanit: İç kare 6 m: $100-36=64=(10-6)(10+6)$.
+
+::soru c6 tip=ozdeslik zorluk=2
+$x-\dfrac1x=3$ olduğuna göre $x^2+\dfrac1{x^2}$ kaçtır?
+A) 7 || $x+\frac1x=3$ olsaydı 7 olurdu; burada işaret farklı.
+B) 9 || 2 eklemeyi unuttun.
++C) 11 || Doğru: $9+2=11$.
+D) 13 || Hesabı kontrol et.
+E) 27 || Küpü aldın; kare isteniyor.
+kontrol: 9+2
+cozum: $\left(x-\frac1x\right)^2=x^2-2+\frac1{x^2}=9$, yani $x^2+\frac1{x^2}=11$.
 
 @bolum s3 10 | Üç terimli ifadeler
 ::fikir
@@ -258,6 +389,83 @@ D) $x + 1$ || Sabit terim $-2$ için $1 \cdot (-2)$ ya da $(-1) \cdot 2$ olmalı
 +E) $3x - 1$ || Doğru: $(3x - 1)(x + 2) = 3x^2 + 6x - x - 2$.
 cozum: $3x^2 = 3x \cdot x$, $-2 = (-1)(2)$: çapraz $3x \cdot 2 + x \cdot (-1) = 5x$ ✓. $(3x - 1)(x + 2)$.
 
+::metin
+### Gerçek TYT sorusu: sabitlerin yeri karışınca
+Çapraz çarpımda baş katsayıyı $m\cdot r$, sabiti $n\cdot s$ verir; ikisi sabitlerin yerinden etkilenmez. Yalnız orta terim değişir. Yanlış yazılan çarpanlamadan $m,n,r,s$'yi bul, sonra doğru yerleşimin orta katsayısını hesapla.
+
+::cikmis TYT-0794 tip=uc-terimli
+
+::ornek baslik="Benzer soru · baş katsayı 3"
+soru: $b$ tam sayı olmak üzere $3x^2+bx-10$ polinomunu $(mx+n)(rx+s)$ biçiminde ayırmak isteyen biri, $m,n,r,s$ tam sayılarını bulduktan sonra $n$ ile $s$'nin yerini karıştırıp $3x^2+13x-10$ polinomunun çarpanlarını buluyor. $b$ kaçtır?
+1. $3x^2+13x-10=(3x-2)(x+5)$. || Çapraz: $3x\cdot5+(-2)\cdot x=13x$.
+2. Yanlış yazılan $(mx+s)(rx+n)$: $m=3$, $s=-2$, $r=1$, $n=5$. || Sabitler karışmış; doğru biçimde yerleri değişir.
+3. Doğru biçim $(3x+5)(x-2)=3x^2-6x+5x-10$; $b=-1$. || Baş ve sabit terim aynı kaldı, yalnız orta terim değişti.
+cevap: $-1$. Kontrol: iki yerleşimde de $3\cdot1=3$ ve $5\cdot(-2)=-10$.
+
+@bolum s3b 15 | Üç terimliyi denkleme ve alana taşımak
+::kesfet carpan-capraz
+
+::duzey baslik="Çarpanlara ayırma neden denklem çözer?"
+L1: İki sayının çarpımı 0 ise sayılardan en az biri 0'dır. $(x-3)(x+5)=0$ ise ya $x-3=0$ ya $x+5=0$. Bu yüzden bir denklemi önce “$\ldots=0$” biçimine getirip çarpanlara ayırırız.
+L2: Alan ve uzunluk problemlerinde iki kökten yalnız biri anlamlıdır: uzunluk negatif olamaz. $(x+80)(x-10)=0$ ise $x=10$; $-80$ elenir.
+L3: Değişken değiştirme dördüncü dereceyi ikinci dereceye indirir: $(x^2+x)^2-8(x^2+x)+12$ için $t=x^2+x$. Bulunan $t$ çarpanları yeniden $x$ cinsinden yazılıp gerekirse tekrar ayrılır.
+
+::metin
+### Gerçek AYT sorusu: alan farkından üç terimliye
+Tarlanın alanı ile ayçiçeği karesinin alanının farkı bilinen bir sayıdır. Farkı açınca bir üç terimli çıkar; çarpanlarına ayırıp negatif kökü ele.
+
+::cikmis AYT_Sayisal-0095 tip=uc-terimli
+
+::ornek baslik="Benzer soru · kalan alandan kenar"
+soru: Kenarları $(x+12)$ ve $(2x+8)$ metre olan dikdörtgen bir arazinin köşesindeki kenarı $x$ metre olan kare bölgeye sera kurulmuştur. Kalan alan 624 m² olduğuna göre arazinin çevresi kaç metredir?
+1. $(x+12)(2x+8)-x^2=x^2+32x+96=624$. || Kalan alan, toplam alan eksi kare.
+2. $x^2+32x-528=0$; çarpımı $-528$, toplamı 32: 44 ve $-12$. $(x+44)(x-12)=0$. || Çarpanlara ayırdık.
+3. Uzunluk pozitif: $x=12$. Kenarlar 24 ve 32; çevre $2(24+32)=112$. || Negatif kök elendi.
+cevap: 112 m. Kontrol: $24\cdot32-144=768-144=624$.
+
+::ornek baslik="Değişken değiştirme ile dördüncü derece"
+soru: $(x^2+x)^2-8(x^2+x)+12$ ifadesini çarpanlarına ayır.
+1. $t=x^2+x$: $t^2-8t+12=(t-2)(t-6)$. || Tekrarlayan ifadeye tek harf verdik.
+2. $(x^2+x-2)(x^2+x-6)$. || $t$'yi geri yazdık.
+3. $x^2+x-2=(x+2)(x-1)$, $x^2+x-6=(x+3)(x-2)$. || Her ikinci derece çarpanı yeniden ayırdık.
+cevap: $(x+2)(x-1)(x+3)(x-2)$.
+
+::ornek baslik="Üslü ifadede değişken değiştirme"
+soru: $9^x-3^{x+1}+2$ ifadesini çarpanlarına ayır ve ifadeyi sıfır yapan $x$ değerlerini bul.
+1. $9^x=(3^x)^2$ ve $3^{x+1}=3\cdot3^x$; $t=3^x$ olsun: $t^2-3t+2$. || Üsleri aynı tabana çevirince tekrarlayan ifade $3^x$ ortaya çıkar.
+2. $t^2-3t+2=(t-1)(t-2)$, yani $(3^x-1)(3^x-2)$. || Çarpımı 2, toplamı $-3$.
+3. $3^x=1$ ise $x=0$; $3^x=2$ ise $x=\log_3 2$ (TYT'de genellikle yalnız $3^x$ değeri istenir). || $t=3^x$ her zaman pozitif olduğu için negatif $t$ kökü çıksaydı elenirdi.
+cevap: $(3^x-1)(3^x-2)$. Aynı fikir: $2^{2x+1}-5\cdot2^x+3=2t^2-5t+3=(2t-3)(t-1)$, $t=2^x$.
+
+::ornek baslik="Gruplandırarak denklem çözmek"
+soru: $x^3-x^2-4x+4=0$ denkleminin köklerinin toplamı kaçtır?
+1. $x^2(x-1)-4(x-1)=(x-1)(x^2-4)$. || Gruplandırma.
+2. $(x-1)(x-2)(x+2)=0$; kökler $1$, $2$, $-2$. || Çarpım sıfırsa bir çarpan sıfır.
+3. Toplam $1+2-2=1$. || Bütün kökleri topladık.
+cevap: 1.
+
+::sorgula s3b-poster baslik="Posterin kenarları"
+durum: Bir posterin alanı $x^2+5x+6$ desimetrekare ve kenarları $x$'e bağlı birinci dereceden ifadeler. $x=4$ dm seçiliyor.
+soru: Posterin kenarları kaç desimetredir?
++A) 6 ve 7 || $x^2+5x+6=(x+2)(x+3)$; $x=4$ için 6 ve 7.
+B) 5 ve 8 || Çarpım 40; alan $16+20+6=42$.
+C) 3 ve 14 || Çarpım 42 ama kenar ifadeleri $(x+2)(x+3)$'ten gelmiyor.
+kontrol: 4+2
+neden: Çarpımı 6, toplamı 5 olan sayılar 2 ve 3: $(x+2)(x+3)$. $x=4$ için kenarlar 6 ve 7, alan 42 dm².
+sinav: Alan verilip kenarlar istenirse alanı çarpanlarına ayır; çarpanlar kenarlardır.
+dusun: $x$ kaç olursa poster kare olur?
+yanit: $x+2=x+3$ hiçbir zaman sağlanmaz; bu poster hiçbir $x$ için kare olamaz.
+
+::soru c7 tip=uc-terimli zorluk=2
+$x^2+2x-15=0$ denkleminin pozitif kökü kaçtır?
+A) 2 || $4+4-15\ne0$.
++B) 3 || Doğru: $(x+5)(x-3)=0$.
+C) 5 || $-5$ köktür; işaret ters.
+D) 15 || Sabit terimdir.
+E) 1 || $1+2-15\ne0$.
+kontrol: 3
+cozum: Çarpımı $-15$, toplamı 2: 5 ve $-3$. $(x+5)(x-3)=0$; pozitif kök 3.
+
 @bolum s4 8 | Rasyonel ifadeleri sadeleştirme
 ::fikir
 Pay ve paydayı **önce çarpanlarına ayır**, sonra **ortak çarpanları** sadeleştir. Yalnız çarpanlar sadeleşir, terimler sadeleşmez. Paydayı sıfır yapan değerler tanım dışıdır.
@@ -300,6 +508,67 @@ C) $x - 1$ || Terimleri sadeleştirdin; önce çarpanlara ayır.
 D) $-x + 1$ || Terimler sadeleşmez.
 E) $\frac{1}{x + 2}$ || Payda $(x - 2)^2$'nin yalnız bir çarpanı sadeleşir.
 cozum: Pay $(x - 2)^2$, payda $(x - 2)(x + 2)$: $\frac{x - 2}{x + 2}$.
+
+@bolum s4b 15 | Rasyonel ifadelerle dört işlem ve tanım kümesi
+::duzey baslik="Kesirlerdeki kurallar harfle de geçerli"
+L1: $\frac12+\frac13$ için ortak payda 6'dır. $\frac1{x-1}+\frac1{x+1}$ için de ortak payda iki paydanın çarpımı $(x-1)(x+1)$'dir. Sayı kesirlerindeki her kural burada da geçerli; yalnız paydayı sıfır yapan $x$ değerleri yasaktır.
+L2: Bölme: ikinci kesri ters çevir ve çarp. Çarpmadan önce her pay ve paydayı çarpanlarına ayır; sadeleştirme çarpım hâlindeyken yapılır.
+L3: Tanım kümesi sadeleştirmeden önce belirlenir: $\frac{x^2-1}{x-1}$ sadeleşince $x+1$ olur ama $x=1$ başta yasaktı ve yasak kalır. Bölmede ters çevrilen kesrin payı da sıfır olamaz.
+
+::ornek baslik="Ortak paydayla çıkarma"
+soru: $\dfrac1{x-1}-\dfrac1{x+1}$ işleminin sonucu nedir?
+1. Ortak payda $(x-1)(x+1)=x^2-1$. || Paydalar ortak çarpan içermiyor; çarpımları EKOK'tur.
+2. $\dfrac{(x+1)-(x-1)}{x^2-1}$. || Her payı eksik çarpanla genişlettik.
+3. $\dfrac{2}{x^2-1}$, $x\ne\pm1$. || Parantezi açınca $x$'ler gider.
+cevap: $\dfrac2{x^2-1}$.
+
+::ornek baslik="Kesir sadeleşebiliyorsa ortak kök vardır"
+soru: $\dfrac{x^2+ax+12}{x^2-5x+6}$ ifadesi sadeleşebilen bir kesir olduğuna göre $a$'nın alabileceği değerlerin toplamı kaçtır?
+1. Payda $(x-2)(x-3)$. Kesrin sadeleşmesi için pay da $(x-2)$ ya da $(x-3)$ çarpanını içermeli. || Ortak çarpan yoksa sadeleştirilecek bir şey kalmaz.
+2. $(x-2)$ çarpansa $x=2$ payı sıfırlar: $4+2a+12=0$, $a=-8$. $(x-3)$ çarpansa $9+3a+12=0$, $a=-7$. || Çarpan teoremi: $(x-r)$ çarpansa $r$ yerine yazılınca ifade 0 olur.
+3. Toplam $-8+(-7)=-15$. || İki durum ayrı $a$ verir.
+cevap: $-15$. Kontrol: $a=-8$: $x^2-8x+12=(x-2)(x-6)$; $a=-7$: $x^2-7x+12=(x-3)(x-4)$.
+
+::ornek baslik="Bölme: ters çevir, ayır, sadeleştir"
+soru: $\dfrac{x^2-4}{x+3}:\dfrac{x-2}{x^2+3x}$ işleminin sonucu nedir?
+1. $\dfrac{(x-2)(x+2)}{x+3}\cdot\dfrac{x(x+3)}{x-2}$. || İkinci kesri ters çevirdik ve her ifadeyi çarpanlara ayırdık.
+2. $(x-2)$ ve $(x+3)$ sadeleşir: $x(x+2)$. || Yalnız çarpanlar sadeleşir.
+3. Tanım dışı: $x\ne-3$, $x\ne0$, $x\ne2$. || Paydalar ve ters çevrilen pay sıfır olamaz.
+cevap: $x(x+2)=x^2+2x$.
+
+::ornek baslik="Özdeşlikle sayısal sadeleştirme"
+soru: $\dfrac{1001^2-1}{1000}$ kaçtır?
+1. $1001^2-1=(1001-1)(1001+1)$. || İki kare farkı.
+2. $=1000\cdot1002$. || Çarpım biçimi.
+3. $\dfrac{1000\cdot1002}{1000}=1002$. || 1000 sadeleşti.
+cevap: 1002.
+
+::tamamla baslik="Sen dene · çarp ve sadeleştir"
+soru: $\dfrac{x^2-x-6}{x^2-9}\cdot\dfrac{x+3}{x+2}$ işleminin sonucu nedir?
+1. $x^2-x-6=(x-3)(x+2)$, $x^2-9=(x-3)(x+3)$. || Önce bütün ifadeleri çarpanlara ayır.
+?2. $\dfrac{(x-3)(x+2)}{(x-3)(x+3)}\cdot\dfrac{x+3}{x+2}=1$. || $(x-3)$, $(x+3)$ ve $(x+2)$ sadeleşir.
+?3. Tanım dışı: $x\ne3$, $x\ne-3$, $x\ne-2$. || Sonuç 1 olsa da bu değerlerde ifade tanımsız.
+cevap: 1 ($x\ne\pm3$, $x\ne-2$).
+
+::sorgula s4b-tanim baslik="Aynı ifade mi?"
+durum: Bir öğrenci $\dfrac{x^2-1}{x-1}$ ifadesini sadeleştirip $x+1$ yazıyor ve “ikisi tamamen aynı” diyor.
+soru: Bu iddia için hangisi doğrudur?
+A) Her gerçek $x$ için aynıdır. || $x=1$'de ilk ifade $\frac00$; tanımsızdır.
++B) $x=1$ dışındaki her $x$ için aynıdır. || Sadeleşen $(x-1)$ çarpanının kökü tanım dışında kalır.
+C) Hiçbir $x$ için aynı değildir. || $x=2$ için ikisi de 3.
+neden: $\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}$; $x\ne1$ iken $x+1$'e eşit. $x=1$'de payda sıfır olduğu için ifade tanımsızdır; $x+1$ ise 2 değerini alır.
+sinav: Sadeleştirmeden önce paydayı sıfır yapan değerleri yaz; sonuç ifadede de bu değerler yasak kalır.
+dusun: $\frac{x^2-4}{x+2}$ ifadesi hangi $x$ dışında $x-2$'ye eşittir?
+yanit: $x=-2$ dışında.
+
+::soru c8 tip=rasyonel-sadelestirme zorluk=2
+$\dfrac{x^3-x}{x^2+x}$ ifadesinin sadeleşmiş biçimi aşağıdakilerden hangisidir?
++A) $x-1$ || Doğru: $\frac{x(x-1)(x+1)}{x(x+1)}$.
+B) $x+1$ || $(x+1)$ paydada da var; sadeleşir.
+C) $x$ || Paydadaki $x$ de sadeleşir.
+D) $x^2-1$ || Paydadaki çarpanlar sadeleşmeli.
+E) $\frac{x-1}{x}$ || Paydada $x$ kalmaz.
+cozum: Pay $x(x^2-1)=x(x-1)(x+1)$, payda $x(x+1)$; sonuç $x-1$ ($x\ne0$, $x\ne-1$).
 
 ::ozet
 - Ortak çarpanı dışarı al; yoksa grupla; $(b - a) = -(a - b)$.

@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler', 'carpanlara-ayirma'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });
@@ -446,4 +446,22 @@ test('esitsizlikler: keşif modelleri ve gerçek soruların bağımsız taramas�
   const [a, b, c, d] = [1, -1, -1, -1];
   assert.ok(0 + a * -10 <= b && 0 + c * -10 >= d);
   for (const [code, answer] of [['TYT-0614', 'D'], ['TYT-0620', 'A'], ['TYT-0613', 'D'], ['TYT-0616', 'A']]) assert.equal(WORKED_EXAMS[code].answer, answer);
+});
+
+test('carpanlara-ayirma: keşif modelleri sayılarla aynı şeyi söyler', () => {
+  for (const a of range(1, 6)) for (const b of range(1, 6)) for (const c of range(1, 6)) {
+    const m = model('carpan-ortak', { a, b, c });
+    assert.equal(m.left + m.right, m.total); assert.equal(m.total, a * (b + c));
+  }
+  for (const b of range(1, 4)) for (const d of range(1, 5)) {
+    const m = model('carpan-alan', { b, d });
+    assert.equal(m.I + m.II + m.III + m.IV, m.total);
+    assert.equal(m.IV, m.a ** 2 - 2 * m.a * b + b ** 2);
+    assert.equal(m.II + m.III + m.IV, m.a ** 2 - b ** 2);
+  }
+  for (const mm of range(1, 3)) for (const r of range(1, 3)) for (const n of range(-7, 7)) for (const s of range(-7, 7)) {
+    const m = model('carpan-capraz', { m: mm, r, n, s });
+    for (const x of [-2, 0, 1, 3]) assert.equal((mm * x + n) * (r * x + s) + 0, m.lead * x * x + m.middle * x + m.constant + 0);
+    for (const x of [-2, 0, 1, 3]) assert.equal((mm * x + s) * (r * x + n) + 0, m.lead * x * x + m.swapped * x + m.constant + 0);
+  }
 });

@@ -326,7 +326,12 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/24 - RASYONEL IFADELERIN SADELESTIRILMESI.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/08 - CARPANLARA AYIRMA POLINOMLAR.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/22 - CARPANLARA AYIRMA YONTEMLERI.pdf s.1-11",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/23 - CARPANLARA AYIRMA YONTEMLERI 2.pdf s.1-16",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/24 - RASYONEL IFADELERIN SADELESTIRILMESI.pdf s.1-17",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/26 - POLINOMLARIN CARPANLARA AYRILMASI.pdf s.1-26"
+      ],
       "videolar": {
         "PL1": [
           "lvO7HeZXo3I",
@@ -336,7 +341,8 @@
           "ehFJaEwSH48",
           "76U7UpdJYFg"
         ]
-      }
+      },
+      "not": "8 bölüme derinleştirildi (3 keşif modeli: ortak kenar, kare içinde kare, çapraz çarpım). Çıkmış: TYT-0792, TYT-0794, AYT_Sayisal-0095. Sunulardan eklenen: üslü ifadede değişken değiştirme, büyük sayılarda iki kare farkı, sadeleşen kesir parametresi."
     },
     {
       "id": "oran-oranti",

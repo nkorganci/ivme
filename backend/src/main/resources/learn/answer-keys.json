@@ -734,6 +734,58 @@
    ],
    "version": "1472983ce40becda"
   },
+  "carpanlara-ayirma:c5": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "carpanlara-ayirma:c6": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "carpanlara-ayirma:c7": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "carpanlara-ayirma:c8": {
+   "conceptId": "carpanlara-ayirma",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
   "carpanlara-ayirma:h1": {
    "conceptId": "carpanlara-ayirma",
    "type": "choice",
