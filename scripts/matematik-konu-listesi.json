@@ -192,7 +192,10 @@
         "TYT-AYT Ortak/Konu Ozetleri 9. Sinif/08 - GERCEK SAYILAR KUMESINDE TOPLAMA VE CARPMA ISLEMININ OZELLIKLERI.pdf",
         "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.28-30"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/11 - GERCEK SAYILAR KUMESINDE TOPLAMA ve CARPMA ISLEMLERI.pdf s.9-15 (görsel)",
+        "TYT/MEBI Konu Ozeti - TYT Matematik.pdf s.28-30"
+      ],
       "videolar": {
         "PL1": [
           "7lC03cLsvlQ",
@@ -207,7 +210,8 @@
           "ixoGssPBYAA",
           "bWuZJjQgSqc"
         ]
-      }
+      },
+      "not": "Kaynaklar dersle karşılaştırıldı; eklenen: a,b̄ + b,ā = 10 sayımı (0,9̄ = 1 tuzağı). Protip: teleskop çarpım ve kalanın kesri."
     },
     {
       "id": "birinci-derece-denklemler",

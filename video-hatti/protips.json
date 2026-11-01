@@ -87,6 +87,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "rasyonel-sayilar-video",
+      "conceptId": "rasyonel-sayilar",
+      "hints": [
+        {
+          "id": "ardisik-kesirlerde-zincir-sadelesme",
+          "title": "Ardışık kesirlerin çarpımı: ortası sadeleşir",
+          "sectionIds": [
+            "s2"
+          ]
+        },
+        {
+          "id": "kalanin-kesri-carpilir",
+          "title": "Kalanın kesri: kalan oranları çarp",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

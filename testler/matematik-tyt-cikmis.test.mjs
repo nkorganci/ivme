@@ -147,3 +147,9 @@ test('AYT-0022: asal bölen kümeleri; benzer soru 14 ve 21', () => {
   linked('AYT_Sayisal-0022', 'A');
   assert.deepEqual(semi.filter((n) => primes(30 * n).size === 4 && primes(42 * n).size === 3).sort((a, b) => a - b), [14, 21]);
 });
+
+test('rasyonel sayılar: a,b̄ + b,ā = 10 sayımı', () => {
+  const ok = [];
+  for (const a of range(1, 9)) for (const b of range(0, 9)) if (Math.abs(a + b / 9 + b + a / 9 - 10) < 1e-9) ok.push(10 * a + b);
+  assert.deepEqual(ok, [18, 27, 36, 45, 54, 63, 72, 81, 90]);
+});

@@ -502,6 +502,13 @@ soru: $\frac{7}{40}$, $\frac{7}{30}$ ve $\frac{21}{60}$ kesirlerinden hangileri 
 3. $\frac{21}{60}=\frac{7}{20}$; $20=2^2\cdot5$. Sonlu: $0{,}35$. || 60'taki 3 sadeleşti; karar sade kesre göre verilir.
 cevap: $\frac{7}{40}$ ve $\frac{21}{60}$ sonlu; $\frac{7}{30}$ devirli.
 
+::ornek baslik="İki devirli sayının toplamından rakam sayımı"
+soru: $a$ ve $b$ rakamlardır. $a,\overline{b}+b,\overline{a}=10$ eşitliğini sağlayan kaç tane iki basamaklı $ab$ sayısı vardır?
+1. $a,\overline{b}=a+\frac{b}{9}$ ve $b,\overline{a}=b+\frac{a}{9}$. || Tek basamak devreden kısım $\frac{\text{rakam}}{9}$ eder: $0,\overline{b}=\frac b9$.
+2. Toplam $(a+b)+\frac{a+b}{9}=\frac{10(a+b)}{9}=10$, yani $a+b=9$. || Ortak çarpan $a+b$ dışarı alındı.
+3. $ab$ iki basamaklı: $a=1,\ldots,9$ ve $b=9-a$; 18, 27, …, 90 → 9 sayı. || $a=9$, $b=0$ da uygun: $9,\overline0+0,\overline9=9+1=10$.
+cevap: 9. Dikkat: $0,\overline9=1$ olduğu için $90$ sayısı da sayılır; “devreden 9 olamaz” diye elemek yanlış olur.
+
 ::ornek baslik="Devirli sayılarla bölme"
 soru: $\dfrac{1{,}\overline{2}-0{,}\overline{5}}{0{,}0\overline{6}}$ işleminin sonucu kaçtır?
 1. $1{,}\overline{2}=\frac{12-1}{9}=\frac{11}{9}$, $0{,}\overline{5}=\frac{5}{9}$. || Kural: (tamamı − devretmeyen) / 9'lar.

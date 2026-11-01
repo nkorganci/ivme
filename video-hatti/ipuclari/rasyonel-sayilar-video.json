@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "ardisik-kesirlerde-zincir-sadelesme",
+    "providerId": "youtube:7lC03cLsvlQ",
+    "startSeconds": 3240,
+    "endSeconds": 3420,
+    "quote": "2er gitti 3ler gitti 4'ler gitti",
+    "frameSeconds": [
+      3330
+    ],
+    "rule": "1 − 1/k = (k − 1)/k biçimindeki ardışık kesirler çarpılırken her pay bir sonraki paydayla sadeleşir; çarpımda yalnız ilk pay ile son payda kalır.",
+    "condition": "Kesirler ardışık olmalı: bir kesrin paydası bir sonrakinin payı. Ortak üs varsa önce tabanları çarp (x^a · y^a = (x·y)^a), sonra üssü uygula.",
+    "example": "(1 − 1/2)² · (1 − 1/3)² · … · (1 − 1/9)² = (1/2 · 2/3 · … · 8/9)² = (1/9)² = 1/81.",
+    "counterexample": "(1 + 1/2)(1 + 1/3)…(1 + 1/9) = 3/2 · 4/3 · … · 10/9 = 10/2 = 5: bu kez ilk payda ile son pay kalır. Hangi uçların kaldığını yazmadan ‘hep 1/n kalır’ deme.",
+    "rationale": "Çarpma birleşme ve değişme özelliğine sahiptir; aynı sayı bir kesirde payda, diğerinde pay olduğunda bölme ve çarpma birbirini götürür. Zincirin ortası tamamen sadeleşir.",
+    "agentSourceReview": "Claude 3330. saniye karesini açtı: Örnek 15'in tanımı (1 − 1/2)² · … · (1 − 1/n)², 1/2, 2/3, 3/4 ve (1 − 1/9)² yazımı, x^a · y^a = (x · y)^a notu ve 1/2 · 2/3 · … çarpımının başlangıcı tahtada görünüyor. 1/81 bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "kalanin-kesri-carpilir",
+    "providerId": "youtube:7lC03cLsvlQ",
+    "startSeconds": 4020,
+    "endSeconds": 4140,
+    "quote": "1/4 keserseniz geriye 3/4 kalır",
+    "frameSeconds": [
+      4080
+    ],
+    "rule": "Bir miktarın 1/4'ü kesilirse 3/4'ü kalır; sonra kalanın 1/4'ü kesilirse kalanın 3/4'ü kalır. Ardışık ‘kalanın kesri’ adımlarında kalan oranlar çarpılır: 3/4 · 3/4.",
+    "condition": "İkinci kesir kalan parçaya uygulanmalı (‘kalanın 1/4'ü’). Kesir ilk bütüne uygulanırsa (‘ipin bir 1/4'ü daha’) oranlar çarpılmaz, kesilen parçalar toplanır.",
+    "example": "4x cm ipten iki kez kalanın 1/4'ü kesilirse y = 4x · 3/4 · 3/4 = 9x/4, yani y/x = 9/4.",
+    "counterexample": "İki kez ilk ipin 1/4'ü kesilseydi 4x − x − x = 2x kalırdı ve y/x = 2 olurdu; ‘kalanın’ sözcüğü sonucu değiştirir.",
+    "rationale": "Kesmeden sonra kalan miktar yeni bütündür; aynı kesir bu yeni bütüne uygulandığı için her adımda kalan, öncekinin 3/4 katıdır.",
+    "agentSourceReview": "Claude 4080. saniye karesini açtı: Soru 3'ün metni ve seçenekleri, 4x · 1/4 = x, 4x − x = 3x, 3x · 1/4 = 3x/4, 3x − 3x/4 = y, 9x/4 = y ve 9x = 4y satırları tahtada görünüyor. 9/4 bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

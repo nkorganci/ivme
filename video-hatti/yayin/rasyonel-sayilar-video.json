@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "rasyonel-sayilar-video",
+  "topicId": "tyt.matematik.rasyonel-sayilar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729",
+  "taskHash": "05a8619432472362e40b08236186a0d503396d19bbbfaf1b77a6bd05df3e56cf",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\rasyonel-sayilar-video",
+  "artifacts": {
+    "asamalar\\youtube-7lC03cLsvlQ-metin\\bc838efac61123703da3678d1832da4dfbe7c94f0bc8de85094a9cdfc78c0bed.json": "86c45a68435a16d10dd62b5cf119c1f49f9ca13c86255ef992abd2a211706bd9",
+    "asamalar\\youtube-7lC03cLsvlQ-kareler\\941858d38ccd6a8c80b2853b782d5dc70dbbb4a2609a22cd8a12897a72367032.json": "380d1fdc37f17ecbfd04ec611d918a76e11eff11a7c9fe65b0a90695383b31da",
+    "kareler\\596428e9001a5b1a865e88754fcb2a53b70ce03fa0acd60d1851b7c2c0607bc2.png": "9faaaaec2d1a081452a81ef51739d9a6d914a4b6b94b1f34246a5d82551a584b",
+    "kareler\\cb6baeaae4b3ad82f37b9dcb23aa6a78bbe4b7500e6fdd016ecb7fcd78e2e2b2.png": "8c56f5bd82b9d94ae13ff36276bc051ccf5480364eaef7c544b5b55fb44f4a7b",
+    "asamalar\\matematik-denetimi\\e9be9d5b022f9f92d8d8bbe0a0a390e3d093744a199d812829eff5ab0a20d32e.json": "3529572325eecd972c69502e85ef9b0d62c046107033360becce8b04c63671fb",
+    "surumler\\b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729.json": "807a1674fe6be8acd0bccebe4c7cc3f6a4fa1fd05d13e98b0d882b91ac7e27bb",
+    "surumler\\b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729.oneriler.md": "8e9515254e97dd51e148bb44ef3d29956405051a83358193a0dae7ed39c85a7f"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-rasyonel-sayilar-test.py",
+        "sha256": "a081890e51f9af0a4cbfc203b46c9bec4533362a5fccee0e73189a9b5d6a77d1",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "rasyonel-sayilar-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.717
+    },
+    "videos": [
+      {
+        "providerId": "youtube:7lC03cLsvlQ",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:7lC03cLsvlQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1497,
+      "normalization": {
+        "captionControlEvents": 1475,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 3330,
+          "file": "kareler\\cb6baeaae4b3ad82f37b9dcb23aa6a78bbe4b7500e6fdd016ecb7fcd78e2e2b2.png",
+          "sha256": "8c56f5bd82b9d94ae13ff36276bc051ccf5480364eaef7c544b5b55fb44f4a7b",
+          "pixelHash": "cb6baeaae4b3ad82f37b9dcb23aa6a78bbe4b7500e6fdd016ecb7fcd78e2e2b2",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 4080,
+          "file": "kareler\\596428e9001a5b1a865e88754fcb2a53b70ce03fa0acd60d1851b7c2c0607bc2.png",
+          "sha256": "9faaaaec2d1a081452a81ef51739d9a6d914a4b6b94b1f34246a5d82551a584b",
+          "pixelHash": "596428e9001a5b1a865e88754fcb2a53b70ce03fa0acd60d1851b7c2c0607bc2",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "ardisik-kesirlerde-zincir-sadelesme",
+      "contentHash": "cbc9ea75f391fcdba18a9458d9e99f939b76f8744ea3d7923894ac99a8660c34",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "kalanin-kesri-carpilir",
+      "contentHash": "fe28b8db9f97ad6de63e8e35f8140c210aeeef7a47d6501f38412c4c7d2cbb35",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

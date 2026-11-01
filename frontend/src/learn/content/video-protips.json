@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "79b209413bd63a009034ecd2ccd49a69eca4140f67b3ad3b5a1ee38f60873905",
+  "inputsHash": "d82030d6caaca01170f04079c24635df17c8b5665bbcd188046afb36dec795bb",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -207,6 +207,52 @@
       },
       "evidenceHash": "d42d2b5762588067e2c1710fcb359075d41f3ee20c107c7797e9f21acfa11dee",
       "contentHash": "285cbd7e1d417becda6dde5fe2c95fb75e1c9b2610a6795cdcb4e5fbda8e9040",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "rasyonel-sayilar-video:ardisik-kesirlerde-zincir-sadelesme",
+      "conceptId": "rasyonel-sayilar",
+      "topicId": "tyt.matematik.rasyonel-sayilar",
+      "sectionIds": [
+        "s2"
+      ],
+      "title": "Ardışık kesirlerin çarpımı: ortası sadeleşir",
+      "rule": "1 − 1/k = (k − 1)/k biçimindeki ardışık kesirler çarpılırken her pay bir sonraki paydayla sadeleşir; çarpımda yalnız ilk pay ile son payda kalır.",
+      "condition": "Kesirler ardışık olmalı: bir kesrin paydası bir sonrakinin payı. Ortak üs varsa önce tabanları çarp (x^a · y^a = (x·y)^a), sonra üssü uygula.",
+      "example": "(1 − 1/2)² · (1 − 1/3)² · … · (1 − 1/9)² = (1/2 · 2/3 · … · 8/9)² = (1/9)² = 1/81.",
+      "counterexample": "(1 + 1/2)(1 + 1/3)…(1 + 1/9) = 3/2 · 4/3 · … · 10/9 = 10/2 = 5: bu kez ilk payda ile son pay kalır. Hangi uçların kaldığını yazmadan ‘hep 1/n kalır’ deme.",
+      "rationale": "Çarpma birleşme ve değişme özelliğine sahiptir; aynı sayı bir kesirde payda, diğerinde pay olduğunda bölme ve çarpma birbirini götürür. Zincirin ortası tamamen sadeleşir.",
+      "source": {
+        "providerId": "youtube:7lC03cLsvlQ",
+        "startSeconds": 3240,
+        "endSeconds": 3420
+      },
+      "evidenceHash": "b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729",
+      "contentHash": "cbc9ea75f391fcdba18a9458d9e99f939b76f8744ea3d7923894ac99a8660c34",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "rasyonel-sayilar-video:kalanin-kesri-carpilir",
+      "conceptId": "rasyonel-sayilar",
+      "topicId": "tyt.matematik.rasyonel-sayilar",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "Kalanın kesri: kalan oranları çarp",
+      "rule": "Bir miktarın 1/4'ü kesilirse 3/4'ü kalır; sonra kalanın 1/4'ü kesilirse kalanın 3/4'ü kalır. Ardışık ‘kalanın kesri’ adımlarında kalan oranlar çarpılır: 3/4 · 3/4.",
+      "condition": "İkinci kesir kalan parçaya uygulanmalı (‘kalanın 1/4'ü’). Kesir ilk bütüne uygulanırsa (‘ipin bir 1/4'ü daha’) oranlar çarpılmaz, kesilen parçalar toplanır.",
+      "example": "4x cm ipten iki kez kalanın 1/4'ü kesilirse y = 4x · 3/4 · 3/4 = 9x/4, yani y/x = 9/4.",
+      "counterexample": "İki kez ilk ipin 1/4'ü kesilseydi 4x − x − x = 2x kalırdı ve y/x = 2 olurdu; ‘kalanın’ sözcüğü sonucu değiştirir.",
+      "rationale": "Kesmeden sonra kalan miktar yeni bütündür; aynı kesir bu yeni bütüne uygulandığı için her adımda kalan, öncekinin 3/4 katıdır.",
+      "source": {
+        "providerId": "youtube:7lC03cLsvlQ",
+        "startSeconds": 4020,
+        "endSeconds": 4140
+      },
+      "evidenceHash": "b29256435d14bf8a3f52c687824f3d9e32950a816513f83e8a2f8425dcfb8729",
+      "contentHash": "fe28b8db9f97ad6de63e8e35f8140c210aeeef7a47d6501f38412c4c7d2cbb35",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }
