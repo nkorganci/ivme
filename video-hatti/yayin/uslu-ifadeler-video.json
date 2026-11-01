@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "uslu-ifadeler-video",
+  "topicId": "tyt.matematik.uslu-sayilar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879",
+  "taskHash": "628864e409a7784220b0b3e52b1c526df7e1b0e97a9f07c1cbca706cb8b17b6d",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\uslu-ifadeler-video",
+  "artifacts": {
+    "asamalar\\youtube-bj2GmlIqirM-metin\\2654c6262899a918370ada56aaade2515e8fb7e7f232f2e0492b9703cf0880fc.json": "bbb003edabb30d7aca0b14dd440932a17b2bf787cb2bc0b4df0c8a499980cc68",
+    "asamalar\\youtube-bj2GmlIqirM-kareler\\596fdd0811d4197ed2c45813ce4bca6123a1ae507ab9aea4cc2409985bbb29e7.json": "15bd0e03a4547cd5350ad925475f1dad75e058d971001d901d4e7c96af03bbfc",
+    "kareler\\677ccad2ecb1ca3a00d1547855fa6bdff49869462f3fe593ea0fdd672cd359bc.png": "eb6302b5464d97fd1e72ead44e4080b08464316d850d0599be5f7682141f98b6",
+    "kareler\\84848567cf69b11c3cfe1e42a2843e58cb468698a78c3acc3c58664488d67b4c.png": "bc0ec93bcaf3ff66d211daf7b95cbd5253d314b9f0bebbd9777c9a79e66cb4ea",
+    "asamalar\\matematik-denetimi\\e5a98fbf54f691ea97c9305fe7f75e6cb7999faf15e98887058e1b1ee177442a.json": "83c2dfdd0f3d9e45c04f77025afdf4291d03c7444a63f524626935c55929ac98",
+    "surumler\\aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879.json": "e56c95c7eb1d689b35576b97cddb8eb0f60fd7bf29ee89b764aece46b1c172ad",
+    "surumler\\aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879.oneriler.md": "94c4a3e903894d814ec573110e6da81ca0268c3521a96de43d5931e556480ce4"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-uslu-ifadeler-test.py",
+        "sha256": "26410a4f2fad6d460333679c8a86e920a005863c3087a87daa70beb618c77954",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "uslu-ifadeler-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.444
+    },
+    "videos": [
+      {
+        "providerId": "youtube:bj2GmlIqirM",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:bj2GmlIqirM",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1545,
+      "normalization": {
+        "captionControlEvents": 1532,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 3900,
+          "file": "kareler\\84848567cf69b11c3cfe1e42a2843e58cb468698a78c3acc3c58664488d67b4c.png",
+          "sha256": "bc0ec93bcaf3ff66d211daf7b95cbd5253d314b9f0bebbd9777c9a79e66cb4ea",
+          "pixelHash": "84848567cf69b11c3cfe1e42a2843e58cb468698a78c3acc3c58664488d67b4c",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 4560,
+          "file": "kareler\\677ccad2ecb1ca3a00d1547855fa6bdff49869462f3fe593ea0fdd672cd359bc.png",
+          "sha256": "eb6302b5464d97fd1e72ead44e4080b08464316d850d0599be5f7682141f98b6",
+          "pixelHash": "677ccad2ecb1ca3a00d1547855fa6bdff49869462f3fe593ea0fdd672cd359bc",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "cift-kuvvette-iki-durum",
+      "contentHash": "dba333bf1415651dc31df5a7b06faeaa323a6679c9be6d981c81377bc678ca12",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "esit-oranli-dortlude-orta-terim",
+      "contentHash": "439e09de7452ed8a64d785626293084600d7b06bd4f90c9b2173135886db3d2a",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

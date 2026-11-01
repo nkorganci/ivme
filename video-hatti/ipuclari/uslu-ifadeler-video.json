@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "cift-kuvvette-iki-durum",
+    "providerId": "youtube:bj2GmlIqirM",
+    "startSeconds": 3870,
+    "endSeconds": 3960,
+    "quote": "kuvvet çift tabanlar birbirine eşit de olabilir birbirinin eksilisi de olabilir",
+    "frameSeconds": [
+      3900
+    ],
+    "rule": "xⁿ = yⁿ ise: n tekse x = y; n çiftse x = y ya da x = −y. Tabanlarda bilinmeyen varsa çift kuvvette iki denklem kurulur.",
+    "condition": "n pozitif tam sayı olmalı ve iki tarafın üssü aynı olmalı. Tabanlar gerçek sayıdır; n = 0 durumu ayrıca incelenir (her sıfırdan farklı taban için 1).",
+    "example": "(3a − 10)⁶ = (a + 2)⁶: 3a − 10 = a + 2 → a = 6 ya da 3a − 10 = −(a + 2) → a = 2. (2b − 3)⁵ = (b + 3)⁵: tek kuvvet, yalnız 2b − 3 = b + 3 → b = 6. a + b'nin değerleri 12 ve 8; toplamları 20.",
+    "counterexample": "Tek kuvvette eksili durumu yazmak yanlış kök üretir: 2b − 3 = −(b + 3) → b = 0 olur ama (−3)⁵ = −243 ≠ 3⁵ = 243.",
+    "rationale": "Çift kuvvet işareti siler: (−y)ⁿ = yⁿ. Tek kuvvet işareti korur ve sayılar üzerinde bire bir olduğundan aynı sonucu yalnız aynı taban verir.",
+    "agentSourceReview": "Claude 3900. saniye karesini açtı: ÖZELLİK kutusu (xⁿ = yⁿ → n tek ise x = y; n çift ise x = y veya x = −y) ve x³ = y³ → x = y notu tahtada görünüyor. Örnek altyazıdan okunup bağımsız tarandı; kare yalnız özelliği gösteriyor.",
+    "questionCompleteness": "PARTIAL_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "esit-oranli-dortlude-orta-terim",
+    "providerId": "youtube:bj2GmlIqirM",
+    "startSeconds": 4480,
+    "endSeconds": 4640,
+    "quote": "x ile y'nin çarpımı 2 üzeri 90",
+    "frameSeconds": [
+      4560
+    ],
+    "rule": "a, x, y, d komşu oranları eşit dizilmişse (a/x = x/y = y/d) uçların çarpımı ortadakilerin çarpımına eşittir (a·d = x·y) ve x² = a·y; ikisinden x³ = a²·d.",
+    "condition": "Oranlar aynı yönde (soldan sağa) ve sıfırdan farklı sayılarla kurulmalı. Üslü sayılarda önce bütün tabanları aynı asala çevir (4 = 2², 8 = 2³).",
+    "example": "4¹⁵, x, y, 8²⁰: a = 2³⁰, d = 2⁶⁰. x·y = 2⁹⁰ ve y = x²/2³⁰ → x³ = 2¹²⁰ → x = 2⁴⁰ = 32⁸.",
+    "counterexample": "x = √(a·d) = 2⁴⁵ yazmak üç adımlı dizide yanlıştır; o formül yalnız tek orta terim (a, x, d) için geçerlidir. Burada iki ara terim var, x³ = a²d.",
+    "rationale": "Ortak oran r ise x = a·r, y = a·r², d = a·r³. Böylece x³ = a³r³ = a²·(a·r³) = a²·d; uçların ve ortaların çarpımı a²r³'e eşittir.",
+    "agentSourceReview": "Claude 4560. saniye karesini açtı: Soru 2'nin metni ve seçenekleri (4¹⁵, x, y, 8²⁰ kutuları; komşu oranlar eşit), 4¹⁵/x = x/y = y/8²⁰, x² = 2³⁰·y, x·y = 2⁹⁰, x³ = 2¹²⁰ = (2⁴⁰)³ satırları tahtada görünüyor. D seçeneği 32⁸ = 2⁴⁰ bağımsız doğrulandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

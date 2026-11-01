@@ -246,6 +246,13 @@ soru: $\frac{8^3 \cdot 4^2}{16^3}$ işleminin sonucu kaçtır?
 2. Pay: $2^{9+4} = 2^{13}$; bölüm: $2^{13 - 12} = 2^1$. || Çarpımda topla, bölümde çıkar.
 cevap: $2$
 
+::ornek baslik="Farklı tabanları birbirine yerleştir"
+soru: $5^x=3$ ve $9^y=125$ olduğuna göre $x\cdot y$ kaçtır?
+1. $9^y=(3^2)^y=3^{2y}$ ve $125=5^3$. || İki eşitliği aynı iki taban (3 ve 5) cinsinden yazdık.
+2. $3=5^x$ olduğundan $3^{2y}=(5^x)^{2y}=5^{2xy}$. || Birinci eşitliği ikincinin içine yerleştirdik; artık iki taraf da 5'in kuvveti.
+3. $5^{2xy}=5^3$, yani $2xy=3$, $x\cdot y=\frac32$. || Tabanlar eşit (5 ≠ 0, ±1), üsler eşit.
+cevap: $\frac32$. $x$ ile $y$ ayrı ayrı tam sayı değil; soru yalnız çarpımı istediği için tek tek bulmaya gerek yok.
+
 ::ornek baslik="Üsleri aynı tabanları birleştir"
 soru: $2^5\cdot5^7$ sayısını hesapla ve kaç basamaklı olduğunu bul.
 1. $5^7=5^5\cdot5^2$ diye ayır. || Üsleri eşit olan çarpımları birleştirebilmek için ortak üs oluşturduk.

@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "c86af3e22d0ea2c11f66f5bee773d8480e178ab30b6d9da9bc5605bae2c6bcab",
+  "inputsHash": "63b8750138fba20ee5e3adede3901ca4654a20fc43ded1d5434518a9665bec23",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -391,6 +391,52 @@
       },
       "evidenceHash": "948f1d4cdcd3efd20084e8eec14e6995ddc1c5306dcf0b9e364969c2d5c5d9d1",
       "contentHash": "1fea1b3bf3a1e1372a05a8aa8e09a41b9b349fbbcd9e53427d980b0d8cbdf4d3",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "uslu-ifadeler-video:cift-kuvvette-iki-durum",
+      "conceptId": "uslu-ifadeler",
+      "topicId": "tyt.matematik.uslu-sayilar",
+      "sectionIds": [
+        "s5"
+      ],
+      "title": "Çift kuvvette x = y ya da x = −y",
+      "rule": "xⁿ = yⁿ ise: n tekse x = y; n çiftse x = y ya da x = −y. Tabanlarda bilinmeyen varsa çift kuvvette iki denklem kurulur.",
+      "condition": "n pozitif tam sayı olmalı ve iki tarafın üssü aynı olmalı. Tabanlar gerçek sayıdır; n = 0 durumu ayrıca incelenir (her sıfırdan farklı taban için 1).",
+      "example": "(3a − 10)⁶ = (a + 2)⁶: 3a − 10 = a + 2 → a = 6 ya da 3a − 10 = −(a + 2) → a = 2. (2b − 3)⁵ = (b + 3)⁵: tek kuvvet, yalnız 2b − 3 = b + 3 → b = 6. a + b'nin değerleri 12 ve 8; toplamları 20.",
+      "counterexample": "Tek kuvvette eksili durumu yazmak yanlış kök üretir: 2b − 3 = −(b + 3) → b = 0 olur ama (−3)⁵ = −243 ≠ 3⁵ = 243.",
+      "rationale": "Çift kuvvet işareti siler: (−y)ⁿ = yⁿ. Tek kuvvet işareti korur ve sayılar üzerinde bire bir olduğundan aynı sonucu yalnız aynı taban verir.",
+      "source": {
+        "providerId": "youtube:bj2GmlIqirM",
+        "startSeconds": 3870,
+        "endSeconds": 3960
+      },
+      "evidenceHash": "aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879",
+      "contentHash": "dba333bf1415651dc31df5a7b06faeaa323a6679c9be6d981c81377bc678ca12",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "uslu-ifadeler-video:esit-oranli-dortlude-orta-terim",
+      "conceptId": "uslu-ifadeler",
+      "topicId": "tyt.matematik.uslu-sayilar",
+      "sectionIds": [
+        "s4b"
+      ],
+      "title": "Eşit oranlı dörtlüde x³ = a²·d",
+      "rule": "a, x, y, d komşu oranları eşit dizilmişse (a/x = x/y = y/d) uçların çarpımı ortadakilerin çarpımına eşittir (a·d = x·y) ve x² = a·y; ikisinden x³ = a²·d.",
+      "condition": "Oranlar aynı yönde (soldan sağa) ve sıfırdan farklı sayılarla kurulmalı. Üslü sayılarda önce bütün tabanları aynı asala çevir (4 = 2², 8 = 2³).",
+      "example": "4¹⁵, x, y, 8²⁰: a = 2³⁰, d = 2⁶⁰. x·y = 2⁹⁰ ve y = x²/2³⁰ → x³ = 2¹²⁰ → x = 2⁴⁰ = 32⁸.",
+      "counterexample": "x = √(a·d) = 2⁴⁵ yazmak üç adımlı dizide yanlıştır; o formül yalnız tek orta terim (a, x, d) için geçerlidir. Burada iki ara terim var, x³ = a²d.",
+      "rationale": "Ortak oran r ise x = a·r, y = a·r², d = a·r³. Böylece x³ = a³r³ = a²·(a·r³) = a²·d; uçların ve ortaların çarpımı a²r³'e eşittir.",
+      "source": {
+        "providerId": "youtube:bj2GmlIqirM",
+        "startSeconds": 4480,
+        "endSeconds": 4640
+      },
+      "evidenceHash": "aef0f46a55dd7617cbbcffbbb93cf93c2c99ee5a61b37d7089017603d0434879",
+      "contentHash": "439e09de7452ed8a64d785626293084600d7b06bd4f90c9b2173135886db3d2a",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

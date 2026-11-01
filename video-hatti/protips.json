@@ -167,6 +167,26 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "uslu-ifadeler-video",
+      "conceptId": "uslu-ifadeler",
+      "hints": [
+        {
+          "id": "cift-kuvvette-iki-durum",
+          "title": "Çift kuvvette x = y ya da x = −y",
+          "sectionIds": [
+            "s5"
+          ]
+        },
+        {
+          "id": "esit-oranli-dortlude-orta-terim",
+          "title": "Eşit oranlı dörtlüde x³ = a²·d",
+          "sectionIds": [
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

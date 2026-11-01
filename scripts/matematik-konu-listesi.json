@@ -301,7 +301,11 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/20 - USLU DENKLEMLER.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/18 - USLU IFADELER.pdf (metin)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/20 - USLU DENKLEMLER.pdf s.1-16 (görsel)",
+        "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf s.1-11"
+      ],
       "videolar": {
         "PL1": [
           "bj2GmlIqirM",
@@ -314,7 +318,8 @@
           "KKOXMeUnass",
           "PNSlBbMGWfY"
         ]
-      }
+      },
+      "not": "Kaynaklar dersle karşılaştırıldı; eklenen: farklı tabanları birbirine yerleştirme (5^x = 3, 9^y = 125). Protip: çift kuvvette iki durum; eşit oranlı dörtlüde x³ = a²d."
     },
     {
       "id": "koklu-ifadeler",

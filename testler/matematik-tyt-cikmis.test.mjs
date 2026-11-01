@@ -183,3 +183,8 @@ test('mutlak değer: işaret çarpanı ve ağırlıklı uzaklık toplamı', () =
   for (let i = -800; i <= 800; i++) best = Math.min(best, Math.abs(i + 300) + Math.abs(i) + Math.abs(2 * i - 400));
   assert.equal(best, 700);
 });
+
+test('üslü ifadeler: tabanları birbirine yerleştirme', () => {
+  const x = Math.log(3) / Math.log(5), y = Math.log(125) / Math.log(9);
+  assert.ok(Math.abs(x * y - 1.5) < 1e-12);
+});
