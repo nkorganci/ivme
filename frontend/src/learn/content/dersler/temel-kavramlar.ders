@@ -8,7 +8,7 @@ sira: 100
 kategori: excel.tyt.matematik.3f49cb99b638ac0c1ce2 excel.ayt.matematik.3f49cb99b638ac0c1ce2 excel.tyt.matematik.3d78be385716237007f8 excel.ayt.matematik.3d78be385716237007f8
 hedef: Sayı kümelerini ayırt etmek; tek–çift ve pozitif–negatif analizini sayı vererek yapmak; ardışık sayılarda terim sayısı ve toplamı bulmak; koşullu en büyük–en küçük değer sorularını sistemli çözmek.
 neden: TYT Matematik'in ilk soruları neredeyse her yıl bu konudan gelir: 2018–2026 arasında **Sayı Kümeleri** başlığında 59 çıkmış TYT sorusu var, AYT'de de "Temel Kavramlar" başlığında 42 soru. Daha önemlisi, tek–çift ve işaret analizi problemlerin, polinomların ve eşitsizliklerin içinde gizli bir araç olarak tekrar tekrar kullanılır.
-kaynak: MEBİ TYT Konu Özeti — Sayı Kümeleri, Temel İşlemler, Tek ve Çift Sayılar, Pozitif ve Negatif Sayılar, Ardışık Sayılar | OGM 9. Sınıf Konu Özetleri 07–08 | OGM Video Notları TYT 01 — Temel Kavramlar
+kaynak: MEBİ TYT Konu Özeti — Sayı Kümeleri, Temel İşlemler, Tek ve Çift Sayılar, Pozitif ve Negatif Sayılar, Ardışık Sayılar | OGM 9. Sınıf Konu Özetleri 07–08 | OGM Video Notları TYT 01 — Temel Kavramlar, s.1–14 | OGM 9. Sınıf Ders Anlatım Sunuları 10–11 — Sayı Kümeleri, Toplama ve Çarpmanın Özellikleri
 tekrar: 12
 ustalik-dk: 14
 hedef-sure: 60
@@ -159,6 +159,13 @@ soru: $a$ ve $b$ irrasyonel sayılar olsun. $a+b$, $a\cdot b$ ve $a-b$ her zaman
 2. $a=b=\sqrt{2}$ seç: $a\cdot b=2$ ve $a-b=0$; ikisi de rasyonel. || Çarpım ve fark için de birer karşı örnek bulduk.
 3. $q$ rasyonel, $x$ irrasyonel olsun. $q+x=r$ rasyonel olsaydı $x=r-q$ de rasyonel olurdu; bu imkânsız. Demek ki $q+x$ her zaman irrasyoneldir. || İki rasyonelin farkı rasyoneldir; varsayım bir çelişki doğurdu.
 cevap: İrrasyoneller toplama, çarpma ve çıkarmaya göre kapalı değildir. Rasyonel + irrasyonel ise her zaman irrasyoneldir: örneğin $3+\sqrt{2}$.
+
+::ornek baslik="İfade rasyonel olsun diye katsayıları sıfırla"
+soru: $a$ ve $b$ tam sayılardır. $(a-4)\sqrt{3}+(b+2)\sqrt{5}$ ifadesi bir rasyonel sayı olduğuna göre $a\cdot b$ kaçtır?
+1. $\sqrt{3}$ ve $\sqrt{5}$ irrasyoneldir ve biri diğerinin rasyonel katı değildir; birbirini götüremezler. || $\sqrt{3}$ ile $-\sqrt{3}$ birbirini götürebilir ama $\sqrt{3}$ ile $\sqrt{5}$ götüremez.
+2. Toplam rasyonel olacaksa iki kök teriminin katsayısı da 0 olmalı: $a-4=0$, $b+2=0$. || Sıfırdan farklı bir tam sayı ile $\sqrt{3}$'ün çarpımı irrasyoneldir.
+3. $a=4$, $b=-2$; $a\cdot b=-8$. || Bulunan değerlerle ifade $0\cdot\sqrt{3}+0\cdot\sqrt{5}=0$ olur; 0 rasyoneldir.
+cevap: $-8$. Dikkat: $(a-4)\sqrt{3}+(b+2)\sqrt{12}$ olsaydı $\sqrt{12}=2\sqrt{3}$ olduğu için tek koşul $(a-4)+2(b+2)=0$ olurdu; önce kökleri sadeleştir.
 
 ::soru c1 tip=kumeler-islem zorluk=1
 Aşağıdakilerden hangisi **irrasyonel** bir sayıdır?
@@ -561,6 +568,21 @@ soru: Bir sinema salonunun ilk sırasında 12 koltuk var ve her sıra bir öncek
 3. $26\cdot15=390$. || Çarpmayı yaptık.
 cevap: 390 koltuk.
 
+::ornek baslik="Harfli iki ifade ardışık çift sayıysa"
+soru: $k$ bir tam sayıdır. $(5k+2)$ ile $(3k+8)$ ardışık iki çift sayı olduğuna göre $k$'nin alabileceği değerlerin toplamı kaçtır?
+1. Hangisinin büyük olduğu verilmedi; ardışık iki çift sayının farkı $+2$ ya da $-2$'dir. || “Ardışık” yalnız aradaki uzaklığı söyler; sıralamayı söylemez.
+2. $(5k+2)-(3k+8)=2k-6$. $2k-6=2$ ise $k=4$; $2k-6=-2$ ise $k=2$. || İki durumu ayrı denklem olarak çözdük.
+3. Kontrol: $k=4$ için $22$ ve $20$; $k=2$ için $12$ ve $14$. İkisinde de sayılar çift. || Farkın 2 olması yetmez; terimlerin gerçekten çift olduğunu ayrıca denetledik.
+4. Toplam $4+2=6$. || Soru bütün uygun $k$ değerlerinin toplamını istiyor.
+cevap: 6. Tuzak: $(5k+1)$ ile $(7k-5)$ için de $k=4$ ya da $k=2$ çıkar ama sayılar $21, 23$ ve $11, 9$ olur; tek oldukları için hiçbiri uygun değildir.
+
+::ornek baslik="Bir sayının ardışık katları"
+soru: 4 ile tam bölünebilen ardışık 6 doğal sayının toplamı 132'dir. Bu sayıların en küçüğü kaçtır?
+1. Sayılar $4a, 4(a+1), \ldots, 4(a+5)$. || 4'ün ardışık katları dörder dörder artar; ortak çarpan 4'tür.
+2. Toplam $4(6a+15)=132$, yani $6a+15=33$, $a=3$. || $a+(a+1)+\ldots+(a+5)=6a+15$; ortak çarpanı dışarı aldık.
+3. En küçüğü $4\cdot3=12$. || İstenen ilk terimdir, $a$ değil.
+cevap: 12. Kontrol: $12+16+20+24+28+32=132$; ortalama $132:6=22$, ortadaki iki terim 20 ve 24.
+
 ::tamamla baslik="Sen dene · ardışık çift sayıların toplamı"
 soru: $2+4+6+\ldots+2n=110$ olduğuna göre $n$ kaçtır?
 1. $2+4+\ldots+2n=2(1+2+\ldots+n)=n(n+1)$. || Her terimden 2'yi ortak paranteze aldık.
@@ -670,6 +692,13 @@ soru: $x$ ve $y$ pozitif tam sayılar ve $x+y=10$'dur. $x^2+y^2$ en az kaçtır?
 2. $x^2+y^2$'yi küçültmek için $xy$'yi büyütmeliyiz; $xy$ en çok $5\cdot5=25$: $100-50=50$. || Toplam sabitken çarpım, sayılar eşitken en büyüktür.
 3. Farklı olmaları gerekirse $6\cdot4=24$: $100-48=52$. || Ortaya en yakın farklı ikiliyi seçtik.
 cevap: En az 50; farklı olmak zorundaysa 52. Kontrol: $25+25=50$, $36+16=52$.
+
+::ornek baslik="Ortak harfli iki çarpım"
+soru: $a$, $b$, $c$ pozitif tam sayılar; $a\cdot b=18$ ve $b\cdot c=30$'dur. $a+b+c$ toplamının alabileceği en büyük ve en küçük değer kaçtır?
+1. $b$ iki çarpımda da var; hem 18'i hem 30'u böler. Ortak bölenler: 1, 2, 3, 6. || Önce ortak harfin alabileceği değerleri sınırladık; diğer iki harf $b$ seçilince kendiliğinden belirlenir.
+2. $b=1$: $18+1+30=49$; $b=2$: $9+2+15=26$; $b=3$: $6+3+10=19$; $b=6$: $3+6+5=14$. || Dört durumun hepsini yazdık; az durum varken tahmin yerine taramak güvenlidir.
+3. En büyük 49, en küçük 14. || $b$ büyüdükçe $a$ ve $c$ küçülür; toplam en çok $b=1$, en az ortak bölenin en büyüğü $b=6$ iken.
+cevap: En büyük 49, en küçük 14. Not: harfler tam sayı (negatif olabilir) olsaydı $b=-1$ ile $-18-1-30=-49$ gibi daha küçük toplamlar da çıkardı; “pozitif” koşulunu her zaman oku.
 
 ::soru c10 tip=en-buyuk-kucuk zorluk=2
 $x$ ve $y$ tam sayılar; $-4\leq x\leq1$ ve $-2\leq y\leq3$'tür. $x\cdot y$ çarpımının alabileceği **en büyük** değer kaçtır?

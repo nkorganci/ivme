@@ -54,13 +54,13 @@ konunun konumunu yaz.
 ## Liste
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **0/32 bitti**. Sıradaki TYT konusu: `temel-kavramlar`.
+TYT: **1/32 bitti**. Sıradaki TYT konusu: `sayi-basamaklari`.
 
 ### TYT (şu anki aşama)
 
 | # | Durum | Kimlik | Konu | Sınıf | Aşama | Bölüm/örnek/tamamla/keşif | Rehberli çıkmış / TYT 2018–26 | Video protip · liste | PDF okundu | Kalan iş |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | 🟡 EKSİK | `temel-kavramlar` | Sayı Kümeleri ve Temel Kavramlar | 9 | TYT | 10/24/3/5 | 4 / 50 (Sayı Kümeleri) | 2 · PL1 10, PL2 10 | 0/3 | ders anlatım PDF okunmadı |
+| 1 | ✅ BİTTİ | `temel-kavramlar` | Sayı Kümeleri ve Temel Kavramlar | 9 | TYT | 10/28/3/5 | 4 / 50 (Sayı Kümeleri) | 2 · PL1 10, PL2 10 | 3/3 | — · PDF karşılaştırmasında eksik bulunan dört kalıp eklendi: harfli ardışık çift ifadeler (±2), bir sayının ardışık katları, ortak harfli iki çarpım, irrasyonel katsayıları sıfırlama. |
 | 2 | 🟡 EKSİK | `sayi-basamaklari` | Sayı Basamakları | 9 | TYT | 8/20/3/6 | 5 / 50 (Sayı Kümeleri) | 0 · PL1 2, PL2 0 | 0/1 | video protip 0/2; ders anlatım PDF okunmadı |
 | 3 | 🟡 EKSİK | `bolme-bolunebilme` | Bölme ve Bölünebilme Kuralları | 9 | TYT | 8/24/3/4 | 2 / 11 (Bölünebilme Kuralları) | 0 · PL1 2, PL2 3 | 0/1 | çıkmış soru 2/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 4 | 🟡 EKSİK | `ebob-ekok` | Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler | 9 | TYT | 10/26/4/6 | 2 / 50 (Sayı Kümeleri) | 0 · PL1 2, PL2 3 | 0/1 | çıkmış soru 2/3; video protip 0/2; ders anlatım PDF okunmadı |

@@ -73,7 +73,11 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/10 - SAYI KUMELERI.pdf",
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/11 - GERCEK SAYILAR KUMESINDE TOPLAMA ve CARPMA ISLEMLERI.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf s.1-14",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/10 - SAYI KUMELERI.pdf s.1-28",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/11 - GERCEK SAYILAR KUMESINDE TOPLAMA ve CARPMA ISLEMLERI.pdf s.1-18"
+      ],
       "videolar": {
         "PL1": [
           "IZcoQiHlq3s",
@@ -99,7 +103,8 @@
           "j66fq0PTMcc",
           "vxHhbCNd1e8"
         ]
-      }
+      },
+      "not": "PDF karşılaştırmasında eksik bulunan dört kalıp eklendi: harfli ardışık çift ifadeler (±2), bir sayının ardışık katları, ortak harfli iki çarpım, irrasyonel katsayıları sıfırlama."
     },
     {
       "id": "sayi-basamaklari",
