@@ -1,0 +1,782 @@
+{
+  "schema": "matematik-konu-listesi-v1",
+  "aciklama": "9–12. sınıf TYT/AYT matematik konularının tek takip listesi. Durum sütunları node scripts/konu-ogrenme-kapsam.mjs --liste ile ders dosyalarından ölçülür ve docs/icerik/matematik-konu-listesi.md içine yazılır. Elle doldurulan alan yalnız pdfOkundu ve not'tur; pdfOkundu yalnız sayfa görselleri/metni gerçekten okunmuş ders anlatım kaynaklarını listeler.",
+  "asama": "TYT",
+  "kaynakKok": "../Kaynaklar/ogm-materyal/Matematik/",
+  "oynatmaListeleri": {
+    "PL1": {
+      "ad": "70 Günde TYT Matematik Kampı",
+      "url": "https://www.youtube.com/playlist?list=PLYh67QmhXVyA"
+    },
+    "PL2": {
+      "ad": "49 Günde TYT Matematik Kampı (Rehber Matematik)",
+      "url": "https://www.youtube.com/playlist?list=PLVoSZ0D0CB3qkytIGl01_CAPZuKgaMbxw"
+    }
+  },
+  "cikmisKategorileri": {
+    "sayi-kumeleri": {
+      "ad": "Sayı Kümeleri",
+      "tyt2018_2026": 50
+    },
+    "bolunebilme": {
+      "ad": "Bölünebilme Kuralları",
+      "tyt2018_2026": 11
+    },
+    "denklem-esitsizlik": {
+      "ad": "Birinci Dereceden Denklemler ve Eşitsizlikler",
+      "tyt2018_2026": 28
+    },
+    "uslu": {
+      "ad": "Üslü İfadeler ve Denklemler",
+      "tyt2018_2026": 18
+    },
+    "problemler": {
+      "ad": "Denklemler ve Eşitsizlikler ile İlgili Uygulamalar",
+      "tyt2018_2026": 100
+    },
+    "onermeler": {
+      "ad": "Önermeler ve Bileşik Önermeler",
+      "tyt2018_2026": 6
+    },
+    "kumeler": {
+      "ad": "Kümeler",
+      "tyt2018_2026": 9
+    },
+    "siralama-secme": {
+      "ad": "Sıralama ve Seçme",
+      "tyt2018_2026": 9
+    },
+    "olasilik": {
+      "ad": "Basit Olayların Olasılıkları",
+      "tyt2018_2026": 9
+    },
+    "fonksiyonlar": {
+      "ad": "Fonksiyonlar",
+      "tyt2018_2026": 11
+    },
+    "polinomlar": {
+      "ad": "Polinomlar",
+      "tyt2018_2026": 3
+    },
+    "veri": {
+      "ad": "Veri",
+      "tyt2018_2026": 17
+    }
+  },
+  "konular": [
+    {
+      "id": "temel-kavramlar",
+      "asama": "TYT",
+      "cikmis": "sayi-kumeleri",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/10 - SAYI KUMELERI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/11 - GERCEK SAYILAR KUMESINDE TOPLAMA ve CARPMA ISLEMLERI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "IZcoQiHlq3s",
+          "RNDT1bx2EoM",
+          "BBsGVmdYw2g",
+          "irYvDtUHSvI",
+          "3YsyrEGKyiU",
+          "jxgYHbqQ8HE",
+          "a0POTTi-e98",
+          "IQCWy0LgtA4",
+          "yakZNteYiog",
+          "_5sZsWPI7a4"
+        ],
+        "PL2": [
+          "f6P_SLrivps",
+          "AmVxR0lZHJk",
+          "2_p7WgLjshw",
+          "M4LUh7PoROo",
+          "yJnGJ-6CN-s",
+          "9BeJxigTg6s",
+          "WbWhA1JODhM",
+          "sJSlppnrrW8",
+          "j66fq0PTMcc",
+          "vxHhbCNd1e8"
+        ]
+      }
+    },
+    {
+      "id": "sayi-basamaklari",
+      "asama": "TYT",
+      "cikmis": "sayi-kumeleri",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "DvUDBzs9y8s",
+          "hjyeXOCNyqA"
+        ],
+        "PL2": []
+      }
+    },
+    {
+      "id": "bolme-bolunebilme",
+      "asama": "TYT",
+      "cikmis": "bolunebilme",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "fHXNNbRJMxc",
+          "04dPFpTLCpA"
+        ],
+        "PL2": [
+          "fzxuuyda-uU",
+          "fIR3cEopCQU",
+          "3MpsvsONdmQ"
+        ]
+      }
+    },
+    {
+      "id": "ebob-ekok",
+      "asama": "TYT",
+      "cikmis": "sayi-kumeleri",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "sPZus-twlX0",
+          "6-RKtaB2KnI"
+        ],
+        "PL2": [
+          "hll0okEqGeQ",
+          "fAicvlTRvxI",
+          "gwblNvcbwKQ"
+        ]
+      }
+    },
+    {
+      "id": "rasyonel-sayilar",
+      "asama": "TYT",
+      "cikmis": "sayi-kumeleri",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "7lC03cLsvlQ",
+          "jDQ7W0yjEIo",
+          "VZB6JaU5QMQ",
+          "OVfNofqsPZI"
+        ],
+        "PL2": [
+          "uw4bVFVbIy4",
+          "FSM2WR_wkpg",
+          "c0XBJxAJJqY",
+          "ixoGssPBYAA",
+          "bWuZJjQgSqc"
+        ]
+      }
+    },
+    {
+      "id": "birinci-derece-denklemler",
+      "asama": "TYT",
+      "cikmis": "denklem-esitsizlik",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/12 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/13 - BIRINCI DERECEDEN DENKLEMLER ve ESITSIZLIKLER 2.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "DzPV2vxTmXM",
+          "e0h7Y8wXFhE"
+        ],
+        "PL2": [
+          "rxL14D2aUd4"
+        ]
+      }
+    },
+    {
+      "id": "esitsizlikler",
+      "asama": "TYT",
+      "cikmis": "denklem-esitsizlik",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/14 - BIRINCI DERECEDEN BIR BILINMEYENLI ESITSIZLIKLER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/17 - BIRINCI DERECEDEN IKI BILINMEYENLI ESITSIZLIKLER.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "dHYAFxvNNsA",
+          "wUdeygyxgXA"
+        ],
+        "PL2": [
+          "EWSRVaTIzoQ",
+          "dEkZxYJJV1Y"
+        ]
+      }
+    },
+    {
+      "id": "mutlak-deger",
+      "asama": "TYT",
+      "cikmis": "denklem-esitsizlik",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/15 - MUTLAK DEGER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/16 - MUTLAK DEGERLI ESITSIZLIKLER.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/01 - TEMEL KAVRAMLAR-SAYILAR-BASIT ESITSIZLIKLER-MUTLAK DEGER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "kYFIOKWQ5QI",
+          "kJ94FAYZCaM"
+        ],
+        "PL2": [
+          "0oHSINuR6e4",
+          "oRork5UDM8o",
+          "FpNgkMK3SsU"
+        ]
+      }
+    },
+    {
+      "id": "uslu-ifadeler",
+      "asama": "TYT",
+      "cikmis": "uslu",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/18 - USLU IFADELER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/19 - USLU IFADELERIN OZELLIKLERI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/20 - USLU DENKLEMLER.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "bj2GmlIqirM",
+          "D9p1c2khhcY"
+        ],
+        "PL2": [
+          "404ZeqaefXI",
+          "63rAczN90hU",
+          "s9ELOmDLPR8",
+          "KKOXMeUnass",
+          "PNSlBbMGWfY"
+        ]
+      }
+    },
+    {
+      "id": "koklu-ifadeler",
+      "asama": "TYT",
+      "cikmis": "uslu",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/22 - KOKLU IFADELER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/23 - KOKLU IFADELER ILE ILGILI OZELLIKLER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/24 - KOKLU IFADELERDE ISLEMLER.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/02 - USLU SAYILAR -KOKLU SAYILAR.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "w-0um03TV7g",
+          "Cst84YiQiJw"
+        ],
+        "PL2": [
+          "RgWrgpxfj2g",
+          "fMh2fu9bJkw",
+          "kQT8PCGOHGk"
+        ]
+      }
+    },
+    {
+      "id": "carpanlara-ayirma",
+      "asama": "TYT",
+      "cikmis": "polinomlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/22 - CARPANLARA AYIRMA YONTEMLERI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/23 - CARPANLARA AYIRMA YONTEMLERI 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/24 - RASYONEL IFADELERIN SADELESTIRILMESI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/08 - CARPANLARA AYIRMA POLINOMLAR.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "lvO7HeZXo3I",
+          "Vje_nRc2Z6A"
+        ],
+        "PL2": [
+          "ehFJaEwSH48",
+          "76U7UpdJYFg"
+        ]
+      }
+    },
+    {
+      "id": "oran-oranti",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/26 - ORAN - ORANTI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/27 - ORAN - ORANTI PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "h3eXcwYR1NM",
+          "pg-v3frx3I8"
+        ],
+        "PL2": [
+          "isapXRnwHDE",
+          "TlVUK68WTC8",
+          "7Wv7fkgdGN0",
+          "jXZ5DO6IWHs"
+        ]
+      }
+    },
+    {
+      "id": "sayi-kesir-problemleri",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/28 - SAYI PROBLEMLERI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/29 - KESIR PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "AEixrkLd6b8",
+          "3yGKqG0Jjw0",
+          "flQd8dLq3gw",
+          "djEhtnmTgbk",
+          "-bWXNIFPNSc",
+          "N9Sdi0UV8vM"
+        ],
+        "PL2": [
+          "q_lX4leWW_g",
+          "aB-InsUgqPU",
+          "40KRKqNfPu8"
+        ]
+      }
+    },
+    {
+      "id": "yas-isci-problemleri",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/30 - YAS VE ISCI PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "Ny4I-1pcmgY",
+          "NlrcO9nBD1c",
+          "HJNleId31GA",
+          "CHgpG4EsWS8"
+        ],
+        "PL2": [
+          "e_Xttdc49ZA",
+          "SyQzKS7jWZc"
+        ]
+      }
+    },
+    {
+      "id": "yuzde-karisim",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/31 - YUZDE VE KARISIM PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "tC_hmX97EPw",
+          "xok56Ne-ugU",
+          "YDcFBZRqTFQ",
+          "vHrHv7veQEk"
+        ],
+        "PL2": [
+          "XW8bdPPnJV4",
+          "sjp5E0Nf-Ds"
+        ]
+      }
+    },
+    {
+      "id": "kar-zarar",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/33 - KAR VE ZARAR PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "tVSR09d3Jts",
+          "ZttCaZ_B2D0"
+        ],
+        "PL2": [
+          "zmfTiTHCsPw"
+        ]
+      }
+    },
+    {
+      "id": "hareket-problemleri",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/32 - HAREKET PROBLEMLERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "0Atl6uSc90g",
+          "fsiooriM6Lc"
+        ],
+        "PL2": [
+          "SGW09mdmzGQ",
+          "300gQ3-RPRM"
+        ]
+      }
+    },
+    {
+      "id": "grafik-rutin-olmayan",
+      "asama": "TYT",
+      "cikmis": "problemler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/12 - FONKSIYON GRAFIKLERINI YORUMLAMA.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "65pM6ofAgi8"
+        ],
+        "PL2": [
+          "T_4xGcD2Mq0",
+          "423BgvXkMEQ"
+        ]
+      }
+    },
+    {
+      "id": "veri-grafikleri",
+      "asama": "TYT",
+      "cikmis": "veri",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/45 - HISTOGRAM.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/07 - OLASILIK - ISTATISTIK.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "DFaJHs-F7lI"
+        ],
+        "PL2": [
+          "L_8OZ-66HHg"
+        ]
+      }
+    },
+    {
+      "id": "merkezi-egilim",
+      "asama": "TYT",
+      "cikmis": "veri",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/44 - VERI, MERKEZI EGILIM VE YAYILIM OLCULERI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/07 - OLASILIK - ISTATISTIK.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "DFaJHs-F7lI"
+        ],
+        "PL2": [
+          "L_8OZ-66HHg"
+        ]
+      }
+    },
+    {
+      "id": "onermeler",
+      "asama": "TYT",
+      "cikmis": "onermeler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/03 - ONERMELER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/01 - bilesik onermeler.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "pdVMfd_lFUQ",
+          "eKNHKxkb8sU"
+        ],
+        "PL2": [
+          "Qqd3-PtGcdk"
+        ]
+      }
+    },
+    {
+      "id": "kosullu-onerme",
+      "asama": "TYT",
+      "cikmis": "onermeler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/02 - KOSULLU VE IKI YONLU KOSULLU ONERMELER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "pdVMfd_lFUQ",
+          "eKNHKxkb8sU"
+        ],
+        "PL2": [
+          "Qqd3-PtGcdk"
+        ]
+      }
+    },
+    {
+      "id": "kumeler-temel",
+      "asama": "TYT",
+      "cikmis": "kumeler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/04 - kumelerde temel kavramlar-1.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/05 - kumelerde temel kavramlar-2.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/05 - KUMELER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "OnGgW4VrrdE",
+          "fzP8bSerFTU"
+        ],
+        "PL2": [
+          "I-rpBtyZkUw"
+        ]
+      }
+    },
+    {
+      "id": "kume-islemleri",
+      "asama": "TYT",
+      "cikmis": "kumeler",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/06 - kumelerde islemler 1.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/07 - kumelerde islemler 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/08 - kumeler ile ilgili uygulamalar.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/09 - kartezyen carpim.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/05 - KUMELER.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "y4YAW2Eau8o",
+          "f663WnQXIhQ",
+          "VNwR_aKdUU8",
+          "wt28nzVCSeM"
+        ],
+        "PL2": [
+          "U9NTTbV6aaE",
+          "EW6OWxjXYtY"
+        ]
+      }
+    },
+    {
+      "id": "fonksiyon-kavrami",
+      "asama": "TYT",
+      "cikmis": "fonksiyonlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/07 - FONKSIYONLAR 1.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/08 - FONKSIYONLAR 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/09 - FONKSIYON CESITLERI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "bAisadeAerA",
+          "0UI9TWbVZHw",
+          "9gYkgWO95wU",
+          "8uCG1x9KnC8"
+        ],
+        "PL2": [
+          "1DApaH26NFs",
+          "QdJJHOf1QP0",
+          "G29j93ojCJI",
+          "T3lJwpuGcNo"
+        ]
+      }
+    },
+    {
+      "id": "fonksiyon-grafikleri",
+      "asama": "TYT",
+      "cikmis": "fonksiyonlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/12 - FONKSIYON GRAFIKLERINI YORUMLAMA.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/15 - FONKSIYONLARIN GRAFIKLERI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/41 - DOGRUSAL FONKSIYONLARLA MODELLENEBILEN GUNLUK HAYAT DURUMLARI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "mHmETeWXEe0",
+          "J9zJj1DSouE"
+        ],
+        "PL2": [
+          "Dbn2eYpmAI8",
+          "gI1KGY8M5H0"
+        ]
+      }
+    },
+    {
+      "id": "bileske-ters",
+      "asama": "TYT",
+      "cikmis": "fonksiyonlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/10 - FONKSIYONLARIN TERSI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/11 - FONKSIYONLARIN TERSI 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/13 - FONKSIYONLARDA BILESKE ISLEMI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/14 - FONKSIYONLARDA BILESKE ISLEMI 2.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "aXrfeTqT9-Q",
+          "c0YaEISH7y4"
+        ],
+        "PL2": [
+          "olnFB6uOtj0",
+          "oFJqXfAlD8s"
+        ]
+      }
+    },
+    {
+      "id": "polinom-islemleri",
+      "asama": "TYT",
+      "cikmis": "polinomlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/20 - POLINOM KAVRAMI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/21 - POLINOM KAVRAMI 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/27 - POLINOMLARLA BOLME ISLEMI.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/08 - CARPANLARA AYIRMA POLINOMLAR.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [],
+        "PL2": [
+          "t_TS_bnc_Y4",
+          "2RwwzsBVF0U"
+        ]
+      }
+    },
+    {
+      "id": "ikinci-derece-denklemler",
+      "asama": "TYT",
+      "cikmis": "polinomlar",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/28 - IKINCI DERECEDEN BIR BILINMEYENLI DENKLEMLER.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/29 - IKINCI DERECEDEN BIR BILINMEYENLI DENKLEMLERIN COZUM KUMESI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/31 - IKINCI DERECEDEN BIR BILINMEYENLI DEKLEMLERIN KOKLERI VE KATSAYILARI ARASINDAKI ILISKI.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [],
+        "PL2": []
+      },
+      "not": "İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz."
+    },
+    {
+      "id": "sayma-permutasyon",
+      "asama": "TYT",
+      "cikmis": "siralama-secme",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/06 - PERMUTASYON-KOMBINASYON-BINOM.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "JHMENIAC_X8",
+          "vXczsrqu9RE"
+        ],
+        "PL2": [
+          "4Q_bmTXsEIw",
+          "y_5UBXBroe0"
+        ]
+      }
+    },
+    {
+      "id": "kombinasyon",
+      "asama": "TYT",
+      "cikmis": "siralama-secme",
+      "pdfAnlatim": [
+        "TYT/Konu Anlatimi (Video Notlari)/06 - PERMUTASYON-KOMBINASYON-BINOM.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "CxxjhL3zDso",
+          "oSLCHj5WBn0"
+        ],
+        "PL2": [
+          "MsHvF-xYikw",
+          "zrn7yd_0JxE"
+        ]
+      }
+    },
+    {
+      "id": "olasilik",
+      "asama": "TYT",
+      "cikmis": "olasilik",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/03 - BASIT OLAYLARIN OLASILIKLARI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/04 - BASIT OLAYLARIN OLASILIKLARI 2.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/05 - BASIT OLAYLARIN OLASILIKLARI 3.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/07 - OLASILIK - ISTATISTIK.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "wWLodePjvUA",
+          "krk0QsWTz40"
+        ],
+        "PL2": [
+          "hT8dfrNoYxI",
+          "EO4Rl9tvCdw"
+        ]
+      }
+    },
+    {
+      "id": "binom",
+      "asama": "AYT",
+      "cikmis": "siralama-secme",
+      "pdfAnlatim": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/01 - PASKAL UCGENI VE BINOM ACILIMI.pdf",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/02 - BINOM ACILIMI 2.pdf",
+        "TYT/Konu Anlatimi (Video Notlari)/06 - PERMUTASYON-KOMBINASYON-BINOM.pdf"
+      ],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [
+          "0z4T6paM5mg",
+          "MuZqJKKQc1I"
+        ],
+        "PL2": [
+          "ZIPYC2XjrWU"
+        ]
+      },
+      "not": "Katalogda yalnız AYT; iki TYT kampı da binomu işler. AYT aşamasında tamamlanır."
+    },
+    {
+      "id": "kosullu-olasilik",
+      "asama": "AYT",
+      "cikmis": null,
+      "pdfAnlatim": [],
+      "pdfOkundu": [],
+      "videolar": {
+        "PL1": [],
+        "PL2": []
+      }
+    }
+  ]
+}

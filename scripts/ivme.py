@@ -284,6 +284,15 @@ def cmd_kontrol(args):
             "frontend/public/kaynakli-notlar.json", "backend/src/main/resources/learn/answer-keys.json") for n in files):
         if run(["node", "scripts/cevap-anahtari.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("cevap anahtarı güncel değil: node scripts/cevap-anahtari.mjs çalıştır ve dosyayı ekle")
+    # Matematik konu listesi ölçülen durumdan üretilir; ders/çıkmış/protip değişince belge de güncellenmeli.
+    if "--hepsi" in args or any(n.startswith("frontend/src/learn/content/dersler/") or n in (
+            "scripts/matematik-konu-listesi.json", "scripts/konu-ogrenme-kapsam.mjs", "docs/icerik/matematik-konu-listesi.md",
+            "frontend/src/learn/content/video-protips.json") or (n.startswith("frontend/src/learn/content/worked") and n.endswith(".js"))
+            for n in files):
+        result = run(["node", "scripts/konu-ogrenme-kapsam.mjs", "--liste", "--kontrol"], capture_output=True)
+        if result.returncode:
+            problems.append("Matematik konu listesi güncel değil: node scripts/konu-ogrenme-kapsam.mjs --liste çalıştır ve belgeyi ekle\n"
+                            + result.stderr[-400:])
     # Banka değişince aynı görselli kitapçık kopyaları yeniden hesaplanmalı (TAS-05 ikiz görsel haritası).
     bank_changed = any(n.startswith("frontend/src/learn/bank/") and not n.rsplit("/", 1)[-1].startswith("_") for n in files)
     if bank_changed and "frontend/src/learn/bank/_gorsel.json" not in files:

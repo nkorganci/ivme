@@ -35,6 +35,10 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
 [docs/devam.md](docs/devam.md), yalnız uygulama ayrıntısı gerektiğinde
 [öğretim sözleşmesi](docs/icerik/konuyu-ogrenelim.md) okunur.
 
+- **Matematik işine başlamadan önce** [matematik konu listesini](docs/icerik/matematik-konu-listesi.md)
+  oku (`node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` sıradaki konuyu verir).
+  ✅ BİTTİ satırlarına tekrar bakma; ilk eksik satırdan devam et. Durum elle değil ölçütlerden
+  üretilir; konu bitince listeyi aynı commit'te `--liste` ile yenile. Etkin aşama TYT; AYT bekler.
 - Amaç öğrencinin **mantığı kavraması ve gerçek soruyu kendi başına çözebilmesi**.
   Kısa özetleri uzun metne çevirmek yeterli değildir. Hiç bilmeyen için terimleri ve
   sembolleri açıklayarak başla; temel → bağlantılar → ileri gerekçe/özel durum sırasını koru.

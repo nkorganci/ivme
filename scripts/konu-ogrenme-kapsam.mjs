@@ -1,6 +1,8 @@
 // Yerel TYT/AYT Matematik kapsamı. Dersin bulunması veya geniş katalog kategorisine
 // bağlanması, o kategorinin bütün alt konularının tamamlandığı anlamına gelmez.
 // node scripts/konu-ogrenme-kapsam.mjs [--write]
+// node scripts/konu-ogrenme-kapsam.mjs --liste [--kontrol]: matematik konu listesini
+// (docs/icerik/matematik-konu-listesi.md) ölçülen durumla yazar; --kontrol yazmadan uyuşmazlıkta 1 döner.
 import {mkdirSync,readFileSync,readdirSync,writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
@@ -50,6 +52,63 @@ if(process.argv.includes('--write')) {
   mkdirSync(join(root,'veri'),{recursive:true});
   writeFileSync(join(root,'veri/konu-ogrenme-kapsam.json'),JSON.stringify(report,null,2)+'\n');
 }
+if(process.argv.includes('--liste')) process.exit(topicList());
 console.log(JSON.stringify(report.summary));
 console.log('Sıradaki mevcut ders: '+(existing.find((l)=>l.structure==='DERINLESTIRILECEK')?.id??'yok'));
 console.log('Eksik dersler: '+missing.map((l)=>l.id).join(', '));
+
+// Matematik konu listesi: TYT/AYT “bitti” işareti yalnız ölçülen ölçütlerden gelir; elle ✅ yazılmaz.
+// Ölçütler: pilot yapısı, en az 3 görseli okunmuş rehberli çıkmış soru, en az 2 video protipi
+// (konuya video yoksa uygulanmaz) ve okunmuş ders anlatım PDF'i (pdfOkundu, listede elle tutulur).
+function topicList() {
+  const spec=JSON.parse(readFileSync(join(root,'scripts/matematik-konu-listesi.json'),'utf8'));
+  const tips=JSON.parse(readFileSync(join(root,'frontend/src/learn/content/video-protips.json'),'utf8')).tips;
+  const docPath=join(root,'docs/icerik/matematik-konu-listesi.md');
+  const byId=Object.fromEntries(existing.map((l)=>[l.id,l]));
+  const known=new Set(spec.konular.map((k)=>k.id));
+  const extra=existing.filter((l)=>!known.has(l.id)).map((l)=>l.id);
+  if(extra.length) { console.error('Listede olmayan ders: '+extra.join(', ')+' (scripts/matematik-konu-listesi.json)'); return 1; }
+  const rows=[];
+  const row=(k,n)=>{
+    const l=byId[k.id],c=l?.counts;
+    const protips=tips.filter((t)=>t.conceptId===k.id).length;
+    const hasVideo=(k.videolar?.PL1?.length||0)+(k.videolar?.PL2?.length||0)>0;
+    const cat=k.cikmis?spec.cikmisKategorileri[k.cikmis]:null;
+    const missingParts=[];
+    if(!l) missingParts.push('ders yok');
+    else {
+      if(l.structure!=='PILOT_YAPISI') missingParts.push('derinleştir ('+[c.sections<8&&'bölüm '+c.sections+'/8',c.worked<20&&'örnek '+c.worked+'/20',c.faded<3&&'tamamla '+c.faded+'/3',c.explorations<4&&'keşif '+c.explorations+'/4'].filter(Boolean).join(', ')+')');
+      if(c.guided<3) missingParts.push('çıkmış soru '+c.guided+'/3');
+      if(hasVideo&&protips<2) missingParts.push('video protip '+protips+'/2');
+      if(!k.pdfOkundu?.length) missingParts.push('ders anlatım PDF okunmadı');
+    }
+    const status=!l?'⬜ DERS YOK':missingParts.length?'🟡 EKSİK':'✅ BİTTİ';
+    const structure=l?`${c.sections}/${c.worked}/${c.faded}/${c.explorations}`:'—';
+    const exams=l?`${c.guided}`+(cat?` / ${cat.tyt2018_2026} (${cat.ad})`:''):'—';
+    const video=hasVideo?`${protips} · PL1 ${k.videolar.PL1.length}, PL2 ${k.videolar.PL2.length}`:'video yok';
+    rows.push(`| ${n} | ${status} | \`${k.id}\` | ${l?.title??k.baslik??k.id} | ${l?.grade??k.sinif??''} | ${k.asama} | ${structure} | ${exams} | ${video} | ${k.pdfOkundu?.length??0}/${k.pdfAnlatim?.length??0} | ${missingParts.join('; ')||'—'}${k.not?' · '+k.not:''} |`);
+    return status;
+  };
+  const head='| # | Durum | Kimlik | Konu | Sınıf | Aşama | Bölüm/örnek/tamamla/keşif | Rehberli çıkmış / TYT 2018–26 | Video protip · liste | PDF okundu | Kalan iş |\n|---|---|---|---|---|---|---|---|---|---|---|';
+  const tyt=spec.konular.filter((k)=>k.asama==='TYT'),ayt=spec.konular.filter((k)=>k.asama==='AYT');
+  const tytStatus=tyt.map((k,i)=>row(k,i+1)),tytRows=rows.splice(0);
+  ayt.forEach((k,i)=>row(k,i+1));
+  missing.forEach((m,i)=>rows.push(`| ${ayt.length+i+1} | ⬜ DERS YOK | \`${m.id}\` | ${m.title} | ${m.grade} | AYT | — | — | — | 0/0 | ders yok |`));
+  const done=tytStatus.filter((s)=>s.startsWith('✅')).length;
+  const next=tyt.find((k,i)=>!tytStatus[i].startsWith('✅'));
+  const body=[`TYT: **${done}/${tyt.length} bitti**. Sıradaki TYT konusu: ${next?'`'+next.id+'`':'yok — TYT tamam; AYT aşamasına geç'}.`,
+    '','### TYT (şu anki aşama)','',head,...tytRows,'','### AYT (TYT bitince)','',head,...rows].join('\n');
+  const start='<!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->',end='<!-- liste:bitis -->';
+  const doc=readFileSync(docPath,'utf8').replace(/\r\n/g,'\n');
+  const a=doc.indexOf(start),b=doc.indexOf(end);
+  if(a<0||b<a) { console.error('Belgede liste işaretleri yok: '+docPath); return 1; }
+  const next_doc=doc.slice(0,a+start.length)+'\n'+body+'\n'+doc.slice(b);
+  if(process.argv.includes('--kontrol')) {
+    if(next_doc!==doc) { console.error('Matematik konu listesi güncel değil: node scripts/konu-ogrenme-kapsam.mjs --liste'); return 1; }
+    console.log(`Matematik konu listesi güncel. TYT ${done}/${tyt.length} bitti; sıradaki ${next?.id??'yok'}.`);
+    return 0;
+  }
+  writeFileSync(docPath,next_doc);
+  console.log(`TYT ${done}/${tyt.length} bitti; sıradaki ${next?.id??'yok'}.`);
+  return 0;
+}
