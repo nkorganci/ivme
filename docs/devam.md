@@ -14,6 +14,20 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
 | TAS-02 / 12.06 | Dış makinede webhook/zamanlayıcı kurulumu ve gerçek kesinti/iyileşme bildirimi açık; [işletim tarifi](islemler/saglik-ve-izleme.md). |
 
+## Son kapanan iş: TAS-12 / 12.16
+
+Teknik temel tamamlandı: `ivme.py kalite plan|calistir|durum TAS-XX`, on iki görev
+profili, kaynak/komut/log hash'li kanıt, kesintide rapor, XML tabanlı backend sonucu
+ve pre-commit regresyonları. [Tarif](islemler/test-ve-devir.md),
+[sürümlü kanıt](../testler/kanit/tas12.json). 26/26 araç testi ve geçici `ivme_test`
+üzerinde TopicAnswerContractTest 2/2 geçti; olmayan sınıf sıfır test/çıkış 1 ile
+reddedildi. Gerçek öğrenci DB'sine test yazılmadı; uygulama kodu değişmedi.
+
+Bu teknik kapsamda kalan iş yok. Sıradaki kontrol:
+`python scripts/ivme.py kalite durum TAS-12`. Yeni işte ilgili TAS profilini seç;
+geçerli kanıtı sebepsiz tekrarlama. Diğer görevlerin dış ortam/insan kabulleri
+yukarıdaki tablodadır; bu test geçişi onları kapatmaz. Yerel main commit'i yapılır.
+
 ## TAS-11 devam noktası
 
 Tamamlanan: `scripts/video_hatti.py`, `ivme.py video`; görev/ipucu girdileri ve

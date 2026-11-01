@@ -25,6 +25,7 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 - Değişen davranışı ilgili teknik belgede düzelt; tarihli iş günlüğünü belgelere kopyalama. Açık iş [yol haritasında](docs/plan/README.md), etkin/yarım iş devir notunda, tekrar eden işlem `docs/islemler/` altında kalır.
 - Değişiklikle ilgili en küçük anlamlı denetimi çalıştır. Belge/plan için `python scripts/ivme.py plan`, commit öncesi `python scripts/ivme.py kontrol`; ön yüz için gerektiğinde `npm run build`, sayfa için `python scripts/ivme.py sayfa /yol`.
+- TAS işlerinde [test/devir tarifini](docs/islemler/test-ve-devir.md) kullan: `python scripts/ivme.py kalite plan|durum|calistir TAS-XX`. Önce mevcut kanıtı kontrol et; yalnız değişen kapsamı çalıştır. Yeni test/kaynak bağımlılığını `testler/kalite-profilleri.json` girdilerine ekle. `PASS` yalnız otomatik test sonucudur; eksik UI, insan veya dış ortam kabulünü kapatma.
 - Uygulama kodu değiştiyse yerel izleyicinin sonucu ve servis edilen sürümü doğrula. Çalışma/yeniden başlatma ayrıntıları [işletim tarifinde](docs/islemler/uygulama-calistirma-ve-yayin.md). Yeni dış dağıtım ve push için açık kullanıcı talimatını bekle.
 
 ## Konuyu Öğrenelim: kullanıcının kalıcı öğretim beklentisi

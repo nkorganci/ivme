@@ -1,5 +1,9 @@
 # Değişikliği doğrulama
 
+TAS görevlerinde mevcut testleri seçmek ve sürüme bağlı rapor üretmek için
+[görev bazlı test ve devir tarifini](test-ve-devir.md) kullan:
+`python scripts/ivme.py kalite plan TAS-12`. Bu komut UI/insan kabulünü ayrıca gösterir.
+
 ## Çalışan uygulama
 
 - Kaynak izleyicisi (`canli-izle.ps1`) `frontend/src`, `backend/src/main/java`,
@@ -19,7 +23,9 @@ python scripts/ivme.py test ExamTrackFlowTest,KpssTrackScopeTest
 
 Komut izleyiciden ayrı `backend/target-tests` çıktısını kullanır, geçici `ivme_test`
 veritabanını kurup kaldırır ve sonucu `testler/bilinen-hatalar.md` ile karşılaştırır:
-yalnız **YENİ** hatalar dikkat ister. Tam çıktı `backend/target/ivme-test-son.log`.
+bilinen hatalar `KNOWN_FAILURES`, yeni hata/bozuk rapor/ortam hatası `FAIL`, kısmi
+atlama `INCOMPLETE` olur. Hiç test çalışmaması başarı değildir. Tam çıktı
+`backend/target/ivme-test-son.log`, kaynak hash'li kanıt `backend/target/ivme-test-son.json`.
 Gerçek `ivme` veritabanında test çalıştırılmaz.
 
 ## Ekran denetimi (ekran görüntüsü yerine)

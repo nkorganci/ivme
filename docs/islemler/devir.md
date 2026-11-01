@@ -2,6 +2,12 @@
 
 Her iki araç [AGENTS.md](../../AGENTS.md) kurallarını kullanır; [CLAUDE.md](../../CLAUDE.md) yalnız onu içe alır. Devir dosyası geçmiş rapor değildir.
 
+Test seçimi ve kanıt için [TAS-12 tarifini](test-ve-devir.md) kullan:
+`python scripts/ivme.py kalite durum TAS-XX` mevcut kanıtı denetler,
+`kalite plan TAS-XX` gerekli komutları gösterir. Devirde görev/aşama, mevcut
+commit veya diff, rapor yolu, geçen/başarısız/atlanmış testler ve tek sonraki adım
+bulunur. Otomatik test geçişi insan/dış ortam kabulünü kapatmaz.
+
 Devam isteği için kısa girdi:
 
 ```text

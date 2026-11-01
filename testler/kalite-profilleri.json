@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "checks": {
+    "kayit-node": {
+      "kind": "node",
+      "args": [
+        "testler/konu-ogrenme-kayit.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs",
+        "frontend/src/api.js"
+      ]
+    },
+    "kayit-db": {
+      "kind": "backend",
+      "args": [
+        "LearnFlowTest,LearnReliabilityTest,AttemptTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "saglik-db": {
+      "kind": "backend",
+      "args": [
+        "HealthMonitoringTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "dis-izleme": {
+      "kind": "python",
+      "args": [
+        "testler/dis-saglik-izle-test.py"
+      ],
+      "inputs": [
+        "scripts/dis-saglik-izle.py"
+      ]
+    },
+    "katalog-node": {
+      "kind": "node",
+      "args": [
+        "testler/konu-ogrenme-katalog.test.mjs",
+        "testler/konu-ogrenme-icerik.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs"
+      ]
+    },
+    "cevap-node": {
+      "kind": "node",
+      "args": [
+        "testler/cevap-anahtari.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs",
+        "frontend/public/kaynakli-notlar.json",
+        "backend/src/main/resources/learn/*",
+        "backend/src/test/resources/learn/*"
+      ]
+    },
+    "cevap-db": {
+      "kind": "backend",
+      "args": [
+        "TopicAnswerContractTest,learn.AnswerKeysTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "ortak-set-node": {
+      "kind": "node",
+      "args": [
+        "testler/konu-ogrenme-ortak-set.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs"
+      ]
+    },
+    "ortak-set-db": {
+      "kind": "backend",
+      "args": [
+        "LearnPracticeSetTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "tercih-db": {
+      "kind": "backend",
+      "args": [
+        "QuestionPreferenceTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "pdf-kanit": {
+      "kind": "python",
+      "args": [
+        "testler/pdf-kanit-test.py"
+      ],
+      "inputs": [
+        "scripts/pdf_kanit*.py",
+        "scripts/pdf_ocr_cache.py"
+      ]
+    },
+    "pilot-node": {
+      "kind": "node",
+      "args": [
+        "testler/tas08-pilot.test.mjs",
+        "testler/bolme-pilot.test.mjs",
+        "testler/ebob-ekok-pilot.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs",
+        "icerik-hatti/**/*"
+      ]
+    },
+    "icerik-node": {
+      "kind": "node",
+      "args": [
+        "testler/icerik-hatti.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/package*.json",
+        "testler/*.test.mjs",
+        "scripts/*.mjs",
+        "icerik-hatti/**/*"
+      ]
+    },
+    "icerik-hat": {
+      "kind": "python",
+      "args": [
+        "testler/icerik-hatti-test.py"
+      ],
+      "inputs": [
+        "scripts/icerik_hatti.py",
+        "scripts/pdf_kanit*.py",
+        "scripts/pdf_ocr_cache.py",
+        "icerik-hatti/**/*",
+        "frontend/src/learn/**/*",
+        "veri/pdf-kanit/**/manifest.json",
+        "veri/pdf-kanit/**/pages/**/*.json"
+      ]
+    },
+    "bildirim-db": {
+      "kind": "backend",
+      "args": [
+        "RegistrationNotificationTest,notification.BrevoRegistrationMailTest,RegistrationApprovalTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "video-hat": {
+      "kind": "python",
+      "args": [
+        "testler/video-hatti-test.py"
+      ],
+      "inputs": [
+        "scripts/video_hatti.py",
+        "video-hatti/**/*"
+      ]
+    },
+    "video-erisim": {
+      "kind": "python",
+      "args": [
+        "testler/video-content-probe-test.py"
+      ],
+      "inputs": [
+        "scripts/video-content-probe.py",
+        "scripts/video-source-inventory.py"
+      ]
+    },
+    "video-matematik": {
+      "kind": "python",
+      "args": [
+        "testler/tek-cift-video-pilot-test.py"
+      ],
+      "inputs": [
+        "video-hatti/**/*",
+        "scripts/video_hatti.py"
+      ]
+    },
+    "test-kaniti": {
+      "kind": "python",
+      "args": [
+        "testler/test-kaniti-test.py"
+      ],
+      "inputs": [
+        "scripts/test_kaniti.py",
+        "testler/backend-test.ps1"
+      ]
+    },
+    "kalite": {
+      "kind": "python",
+      "args": [
+        "testler/kalite-test.py"
+      ],
+      "inputs": [
+        "scripts/kalite.py",
+        "scripts/test_kaniti.py",
+        "scripts/ivme.py",
+        "testler/kalite-profilleri.json"
+      ]
+    },
+    "plan": {
+      "kind": "plan",
+      "args": [
+        "scripts/plan-check.py"
+      ],
+      "inputs": [
+        "docs/**/*.md",
+        "AGENTS.md",
+        "README.md",
+        "backend/src/main/resources/content-taxonomy.json"
+      ]
+    }
+  },
+  "profiles": {
+    "TAS-01": {
+      "checks": [
+        "kayit-node",
+        "kayit-db"
+      ],
+      "remainingAcceptance": [
+        "Masaüstü/mobil kayıt ve tam ders UI; sunulan sürüm; mevcut DB geçmişinin korunması"
+      ],
+      "nextAction": "Değişen kayıt akışında konu-ogrenme-kayit-ui.mjs kabulünü değerlendir."
+    },
+    "TAS-02": {
+      "checks": [
+        "dis-izleme",
+        "saglik-db"
+      ],
+      "remainingAcceptance": [
+        "Dış makinede gerçek kesinti/iyileşme uyarısı"
+      ],
+      "nextAction": "Dış ortam kabulü için docs/islemler/saglik-ve-izleme.md kullan."
+    },
+    "TAS-03": {
+      "checks": [
+        "katalog-node"
+      ],
+      "remainingAcceptance": [
+        "Katalog adı/kapsamı için masaüstü/mobil UI ve canlı katalog"
+      ],
+      "nextAction": "Değişen konu için konu-ogrenme-ui.mjs çalıştır."
+    },
+    "TAS-04": {
+      "checks": [
+        "cevap-node",
+        "cevap-db"
+      ],
+      "remainingAcceptance": [
+        "Ders/not cevabı ile Konu takibi uçtan uca kabulü"
+      ],
+      "nextAction": "Ortak cevap sözleşmesi ve değişen UI akışını doğrula."
+    },
+    "TAS-05": {
+      "checks": [
+        "ortak-set-node",
+        "ortak-set-db"
+      ],
+      "remainingAcceptance": [
+        "Masaüstü/mobil ortak PRATIK yeni sekme ve doğru set sayısı"
+      ],
+      "nextAction": "konu-ogrenme-ortak-set-ui.mjs ile değişen akışı doğrula."
+    },
+    "TAS-06": {
+      "checks": [
+        "tercih-db"
+      ],
+      "remainingAcceptance": [
+        "Masaüstü/mobil kişisel tercih UI"
+      ],
+      "nextAction": "kisisel-tercih-ui.mjs kabulünü değerlendir."
+    },
+    "TAS-07": {
+      "checks": [
+        "pdf-kanit"
+      ],
+      "remainingAcceptance": [
+        "Gerçek kaynak pilotunun bütünlüğü ve görsel inceleme"
+      ],
+      "nextAction": "Değişen PDF paketini pdf kanit dogrula ile denetle; özgün kaynağı koru."
+    },
+    "TAS-08": {
+      "checks": [
+        "pilot-node"
+      ],
+      "remainingAcceptance": [
+        "Kaynak hash/kırpım incelemesi",
+        "Öğretmen kararı ve gerçek öğrenci aktarım gözlemi",
+        "Masaüstü/mobil pilot UI"
+      ],
+      "nextAction": "docs/icerik/tas08-pilot-kabul.md içindeki insan kabulünü tamamla."
+    },
+    "TAS-09": {
+      "checks": [
+        "icerik-hat",
+        "icerik-node",
+        "pilot-node"
+      ],
+      "remainingAcceptance": [
+        "Gerçek kaynak için icerik kontrol",
+        "İkinci konu UI ve öğretmen/öğrenci kabulü"
+      ],
+      "nextAction": "Değişen kavramı içerik hattında doğrula; insan kararını ayrı kaydet."
+    },
+    "TAS-10": {
+      "checks": [
+        "bildirim-db"
+      ],
+      "remainingAcceptance": [
+        "Masaüstü/mobil bildirim UI",
+        "Doğrulanmış sağlayıcıyla gerçek alıcı kabulü"
+      ],
+      "nextAction": "docs/islemler/kayit-bildirimleri.md içindeki gerçek gönderim kabulünü tamamla."
+    },
+    "TAS-11": {
+      "checks": [
+        "video-hat",
+        "video-erisim",
+        "video-matematik"
+      ],
+      "remainingAcceptance": [
+        "Gerçek zamanlı kaynak/kare incelemesi",
+        "Protip UI ve öğretmen kontrolü etiketi",
+        "Yaygınlaştırma/ASR kapsamı ayrı değerlendirilir"
+      ],
+      "nextAction": "Değişen video/ipucunu video kontrol ve video protips --kontrol ile doğrula."
+    },
+    "TAS-12": {
+      "checks": [
+        "test-kaniti",
+        "kalite",
+        "plan"
+      ],
+      "remainingAcceptance": [
+        "Görev tablosu, gerçek kanıt ve tek sonraki adımın agent tarafından güncellenmesi"
+      ],
+      "nextAction": "Raporu görev tablosuna bağla; sonraki değişiklikte ilgili TAS profilini seç."
+    }
+  }
+}

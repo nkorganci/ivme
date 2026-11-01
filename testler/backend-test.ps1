@@ -22,7 +22,7 @@ try {
     try {
         # Separate output lets live packaging and tests compile without deleting each other's classes/reports.
         $testBuild = Join-Path $repo 'backend/target-tests'
-        if ($Test) { & mvn.cmd -q test "-Dyks.build.directory=$testBuild" "-Dtest=$Test" '-Dsurefire.failIfNoSpecifiedTests=false' }
+        if ($Test) { & mvn.cmd -q test "-Dyks.build.directory=$testBuild" "-Dtest=$Test" '-Dsurefire.failIfNoSpecifiedTests=true' }
         else { & mvn.cmd test "-Dyks.build.directory=$testBuild" }
         $testExit = $LASTEXITCODE
     } finally { Pop-Location }
@@ -30,4 +30,6 @@ try {
     & $psql -v ON_ERROR_STOP=1 -h localhost -U $settings.DbUser -d postgres -c 'DROP DATABASE ivme_test WITH (FORCE)'
     if ($LASTEXITCODE -ne 0) { throw 'Geçici test veritabanı kaldırılamadı.' }
 }
+# Yalnız Maven tamamlanıp geçici DB temizlendikten sonra yazılır.
+Write-Output "IVME_TEST_RESULT=$testExit"
 exit $testExit

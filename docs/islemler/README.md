@@ -9,6 +9,7 @@ kalır. Bir komut değişince tarif aynı commit'te güncellenir.
 |---|---|
 | Claude ↔ Codex devri, oturum açma/kapama | [devir.md](devir.md) |
 | Değişikliği doğrulama: izleyici, backend testi, ekran denetimi | [dogrulama.md](dogrulama.md) |
+| TAS-01–12 test seçimi, kaynak hash'li kanıt ve ortak devir | [test-ve-devir.md](test-ve-devir.md) |
 | Yerel uygulama, paket, HTTPS tüneli ve yedek | [uygulama-calistirma-ve-yayin.md](uygulama-calistirma-ve-yayin.md) |
 | Sağlık uçları, kayıt metrikleri ve dış uyarı | [saglik-ve-izleme.md](saglik-ve-izleme.md) |
 | Yeni kayıt e-postası, Brevo kurulumu ve kalıcı bildirim/retry | [kayit-bildirimleri.md](kayit-bildirimleri.md) |

@@ -1,0 +1,128 @@
+{
+  "taskId": "TAS-12",
+  "planId": "12.16",
+  "status": "TAMAMLANDI_TEKNIK_TEMEL",
+  "backendSmoke": {
+    "selection": "TopicAnswerContractTest",
+    "status": "PASS",
+    "totals": {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "testler/backend-test.ps1",
+      "-Test",
+      "TopicAnswerContractTest"
+    ],
+    "startedAt": "2026-11-01T15:10:10.891822+00:00",
+    "finishedAt": "2026-11-01T15:10:28.388396+00:00",
+    "processExitCode": 0
+  },
+  "backendInputsSha256": "39719847d5b94e06cb769dcd6c479f8c5c6ed7e468449334e5ea218cd4ce183b",
+  "backendReport": "veri/kalite/TAS-12/backend-smoke.json",
+  "missingClassProbe": {
+    "selection": "Tas12MissingTest",
+    "status": "FAIL",
+    "totals": {
+      "tests": 0,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-File",
+      "testler/backend-test.ps1",
+      "-Test",
+      "Tas12MissingTest"
+    ],
+    "startedAt": "2026-11-01T15:12:31.935252+00:00",
+    "finishedAt": "2026-11-01T15:12:34.957459+00:00",
+    "processExitCode": 1,
+    "problems": [
+      "Bu çalıştırmada test raporu/test yok.",
+      "İstenen test çalışmadı: Tas12MissingTest",
+      "Test süreci başarısız: 1"
+    ],
+    "expectedFailure": true
+  },
+  "missingClassReport": "veri/kalite/TAS-12/backend-negative.json",
+  "scope": "TAS-01–12 görev profilleri, kaynak hashli test kanıtı ve ortak devir; diğer görevlerin insan/dış ortam kabulünü kapatmaz.",
+  "quality": {
+    "runId": "20261101T151356-12d9e526",
+    "status": "PASS",
+    "startedAt": "2026-11-01T15:13:56.190333+00:00",
+    "finishedAt": "2026-11-01T15:13:57.053277+00:00",
+    "commit": "6891f3777f5a724bff44f81c18d1b4f8a71ba2ee",
+    "command": [
+      "python",
+      "scripts/ivme.py",
+      "kalite",
+      "calistir",
+      "TAS-12"
+    ],
+    "inputsSha256": "2a3f7368a186a0c32fc4d43fe5241aa4860e9eb889172203f9b58933d32a69aa",
+    "report": "veri/kalite/TAS-12/20261101T151356-12d9e526/rapor.json",
+    "checks": [
+      {
+        "id": "test-kaniti",
+        "command": [
+          "D:\\workspace\\ivme\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "testler/test-kaniti-test.py"
+        ],
+        "status": "PASS",
+        "exitCode": 0,
+        "logSha256": "e896c1ef11aaeea9933661f990e964b7ff58a08bb3803d1b496c6533cc7aaf82",
+        "totals": {
+          "tests": 13,
+          "skipped": 0
+        }
+      },
+      {
+        "id": "kalite",
+        "command": [
+          "D:\\workspace\\ivme\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "testler/kalite-test.py"
+        ],
+        "status": "PASS",
+        "exitCode": 0,
+        "logSha256": "689c6e70d993038ed69d0bb8eff85dc8fdbeddb0bf98ce52d0e55eb3e21f8bee",
+        "totals": {
+          "tests": 13,
+          "skipped": 0
+        }
+      },
+      {
+        "id": "plan",
+        "command": [
+          "D:\\workspace\\ivme\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "scripts/plan-check.py"
+        ],
+        "status": "PASS",
+        "exitCode": 0,
+        "logSha256": "1164da53fd028f34660a45ecaa8a44331254a33eea880dd1261cfc815ab9c3bf"
+      }
+    ]
+  },
+  "limitations": [
+    "Yalnız TAS-12 profili ve seçili backend smoke çalıştırıldı; bütün TAS profilleri veya tam uygulama takımı tekrar çalıştırılmadı.",
+    "UI/öğretmen/öğrenci ve dış ortam kabulü otomatik test sonucu değildir.",
+    "Kaynak hash kapsamı profil girdileriyle sınırlı; araç/ortam değişikliği ayrıca değerlendirilir."
+  ]
+}

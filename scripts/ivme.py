@@ -10,6 +10,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py ui <betik>            testler/ altındaki UI betiğini çalıştır (adsız: listele)
   python scripts/ivme.py kontrol [--hepsi]     commit öncesi kural denetimleri (pre-commit bunu çağırır)
   python scripts/ivme.py plan                  plan/bağlantı denetimi (plan-check.py)
+  python scripts/ivme.py kalite plan|calistir|durum TAS-12   görev bazlı test ve sürümlü kanıt
   python scripts/ivme.py pdf sorular <pdf> ... PDF metin önce soru çıkarımı (scripts/pdf-metin.py)
   python scripts/ivme.py pdf kanit olustur|toplu|dogrula|goster|ozet|karar|pilot ...   sürümlü PDF kanıt paketi (scripts/pdf_kanit_paketi.py)
   python scripts/ivme.py ollama ...            yerel model (scripts/ollama-sor.py)
@@ -24,6 +25,8 @@ import re
 import subprocess
 import sys
 import time
+
+from test_kaniti import BACKEND_INPUTS, assess_backend, fingerprint, write_json
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import URLError
@@ -167,50 +170,48 @@ def known_failures():
 
 def cmd_test(args):
     tests = next((a for a in args if not a.startswith("-")), "")
+    if tests and not re.fullmatch(r"[A-Za-z0-9_.*]+(?:,[A-Za-z0-9_.*]+)*", tests):
+        print("Test seçimi virgülle ayrılmış sınıf adları olmalı (paket veya * kullanılabilir).")
+        return 2
     command = ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "testler/backend-test.ps1"]
     if tests:
         command += ["-Test", tests]
+    patterns = BACKEND_INPUTS
+    inputs = fingerprint(APP, patterns)
+    report_dir = APP / "backend/target-tests/surefire-reports"
+    before = {p.name: (p.stat().st_mtime_ns, p.stat().st_size) for p in report_dir.glob("TEST-*.xml")}
+    started = datetime.now(timezone.utc).isoformat()
     print("Çalışıyor: " + " ".join(command[-3:] if tests else command[-1:]), flush=True)
-    started = time.time()
-    result = run(command, capture_output=True)
-    # Odaklı çalıştırma -q ile özet yazmaz; sayıları bu çalıştırmanın surefire raporlarından al.
-    reports = [p for p in (APP / "backend/target-tests/surefire-reports").glob("TEST-*.xml") if p.stat().st_mtime >= started - 1]
-    suite_totals = [0, 0, 0, 0]
-    for report in reports:
-        head = report.read_text(encoding="utf-8", errors="replace")[:2000]
-        for i, key in enumerate(("tests", "failures", "errors", "skipped")):
-            match = re.search(rf'<testsuite[^>]*\s{key}="(\d+)"', head)
-            suite_totals[i] += int(match.group(1)) if match else 0
-    text = result.stdout + result.stderr
+    try:
+        result = run(command, capture_output=True)
+    except OSError as error:
+        result = subprocess.CompletedProcess(command, 1, "", str(error))
+    reports = [p for p in report_dir.glob("TEST-*.xml")
+               if before.get(p.name) != (p.stat().st_mtime_ns, p.stat().st_size)]
+    output = result.stdout + result.stderr
     log = APP / "backend/target/ivme-test-son.log"
     log.parent.mkdir(parents=True, exist_ok=True)
-    log.write_text(text, encoding="utf-8")
-    failed = set(re.findall(r"^\[ERROR\]\s+(?:com\.hedefyks\.)?([A-Za-z0-9_]+)\.([A-Za-z0-9_]+)(?::\d+|\s+--|\s+»|\s+\S*Time)",
-                            text, re.M))
-    failed = {f"{cls}.{method}" for cls, method in failed if cls[0].isupper() and not method[0].isupper()}
-    totals = re.findall(r"Tests run: (\d+), Failures: (\d+), Errors: (\d+), Skipped: (\d+)\s*$", text, re.M)
-    known = known_failures()
-    new = sorted(failed - known)
-    fixed = sorted(name for name in known if name.split(".")[0] in text and name not in failed) if not tests else []
-    if totals:
-        run_, fail, err, skip = totals[-1]
-        print(f"Toplam {run_} test · {fail} başarısız · {err} hata · {skip} atlandı")
-    elif reports:
-        print(f"Toplam {suite_totals[0]} test ({len(reports)} sınıf) · {suite_totals[1]} başarısız · "
-              f"{suite_totals[2]} hata · {suite_totals[3]} atlandı")
-    else:
-        print("UYARI: hiç test raporu üretilmedi; test adlarını kontrol et (ör. tutor.TutorPolicyTest).")
-    print(f"Bilinen hata: {len(failed & known)}  ·  YENİ hata: {len(new)}")
-    for name in new:
-        print("  YENİ  " + name)
-    for name in fixed:
-        print("  düzelmiş görünüyor (bilinen-hatalar.md'den silinebilir): " + name)
-    if result.returncode and not failed:
-        print("Testler derlenemedi veya ortam hatası; ayrıntı: " + str(log))
-        print("\n".join(text.splitlines()[-25:]))
-        return result.returncode
+    log.write_text(output, encoding="utf-8")
+    cleanup_ok = re.search(rf"^IVME_TEST_RESULT={result.returncode}\s*$", result.stdout, re.M) is not None
+    evidence = assess_backend(reports, known_failures(), result.returncode, cleanup_ok, tests)
+    if inputs != fingerprint(APP, patterns):
+        evidence["status"] = "FAIL"
+        evidence["problems"].append("Test sırasında kaynak değişti; kanıt geçerli değil.")
+    evidence.update(schemaVersion=1, startedAt=started, finishedAt=datetime.now(timezone.utc).isoformat(),
+                    command=command, selection=tests or "ALL", inputs=inputs,
+                    commit=out(["git", "rev-parse", "HEAD"]), processExitCode=result.returncode,
+                    reports=[p.name for p in reports], log=str(log.relative_to(APP)))
+    target = APP / "backend/target/ivme-test-son.json"
+    write_json(target, evidence)
+    counts = evidence["totals"]
+    print(f"Toplam {counts['tests']} test · {counts['failures']} başarısız · "
+          f"{counts['errors']} hata · {counts['skipped']} atlandı")
+    print(f"Sonuç: {evidence['status']} · bilinen {len(evidence['knownFailures'])} · yeni {len(evidence['newFailures'])}")
+    for problem in evidence["problems"]:
+        print("  " + problem)
+    print("Kanıt: " + str(target))
     print("Tam çıktı: " + str(log))
-    return 1 if new else 0
+    return 0 if evidence["status"] in ("PASS", "KNOWN_FAILURES") else 1
 
 
 # ---------------------------------------------------------------- kontrol
@@ -290,6 +291,14 @@ def cmd_kontrol(args):
         # Dosyada yapay bir fark istemek yerine gerçek banka/görsel güncelliğini doğrula.
         if run(["node", "scripts/ortak-set-tani.mjs", "--kontrol"], capture_output=True).returncode:
             problems.append("ikiz görsel haritası güncel değil: node scripts/ortak-set-tani.mjs --yaz çalıştır ve çıktıyı ekle")
+    # TAS-12: doğrulama aracının yanlış başarı üretmesini commit öncesi engelle.
+    if "--hepsi" in args or any(n in ("scripts/ivme.py", "scripts/test_kaniti.py", "scripts/kalite.py",
+            "testler/kalite-profilleri.json", "testler/backend-test.ps1", "testler/test-kaniti-test.py",
+            "testler/kalite-test.py") for n in files):
+        for test in ("testler/test-kaniti-test.py", "testler/kalite-test.py"):
+            result = run([sys.executable, "-X", "utf8", test], capture_output=True)
+            if result.returncode:
+                problems.append(f"Test kanıtı regresyonu başarısız: {test}\n{result.stdout[-500:]}\n{result.stderr[-1500:]}")
     # TAS-11: video kanıt hattı ve pilot iddiaları değişince dar kabul yeniden çalışır.
     if "--hepsi" in args or any(n.startswith("video-hatti/") or n in (
             "scripts/video_hatti.py", "scripts/video-content-probe.py", "testler/video-hatti-test.py",
@@ -383,6 +392,10 @@ def cmd_video(args):
     return run([python_for_tools(), "-X", "utf8", "scripts/video_hatti.py", *(args or ["durum"])]).returncode
 
 
+def cmd_kalite(args):
+    return run([python_for_tools(), "-X", "utf8", "scripts/kalite.py", *args]).returncode
+
+
 def cmd_devir_kontrol(args):
     """Claude Code Stop kancası: kod/belge değişmiş ama devir dosyası güncellenmemişse bir kez hatırlatır."""
     try:
@@ -405,7 +418,7 @@ def cmd_devir_kontrol(args):
 
 COMMANDS = {"devir-kontrol": cmd_devir_kontrol, "durum": cmd_durum, "bekle": cmd_bekle, "test": cmd_test, "kontrol": cmd_kontrol, "ui": cmd_ui,
             "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim,
-            "icerik": cmd_icerik, "video": cmd_video}
+            "icerik": cmd_icerik, "video": cmd_video, "kalite": cmd_kalite}
 
 
 def main(argv=None):
