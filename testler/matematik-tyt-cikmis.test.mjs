@@ -69,3 +69,15 @@ test('TYT-0594 ve TYT-0599: ters sayılar ve iki kalan; benzer sorular', () => {
   assert.deepEqual(similar, [1, 3, 4, 6, 7, 9]);
   assert.equal(similar.reduce((x, y) => x + y, 0), 30);
 });
+
+test('TYT-0701 ve TYT-0723: gruptan gruba geçiş ve adet × birim oranı; benzer sorular', () => {
+  const k701 = range(1, 200).filter((k) => 3 * (k + 12) === 2 * (2 * k - 12));
+  assert.deepEqual(k701, [60]); assert.equal(3 * k701[0], 180);
+  linked('TYT-0701', 'D');
+  const kSim = range(1, 100).filter((k) => 2 * k + 6 === 5 * k - 6);
+  assert.deepEqual(kSim, [4]); assert.equal(7 * kSim[0], 28);
+  // 2k·c / (3k·p) = 8/5 → p/c = 5/12
+  assert.equal((2 * 12) / (3 * 5), 8 / 5);
+  linked('TYT-0723', 'A');
+  assert.equal((3 * 6) / (4 * 1), 9 / 2);
+});

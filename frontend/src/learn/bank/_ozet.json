@@ -332,12 +332,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "oran-ozellik": 4,
-    "dogru-ters": 39,
+    "oran-ozellik": 5,
+    "dogru-ters": 40,
     "paylastirma": 10,
     "bilesik": 3
    },
-   "untyped": 133
+   "untyped": 131
   },
   "polinom-islemleri": {
    "total": 511,

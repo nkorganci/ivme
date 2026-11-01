@@ -142,6 +142,28 @@ soru: $a/b=3/5$ ve $b-a=18$ ise a ve b nedir?
 3. $a=27$, $b=45$. || 27/45=3/5 ve 45−27=18.
 cevap: 27 ve 45; oran 3/5 iken fark 2 olmak zorunda değildir.
 
+::ornek baslik="Katsayılarla genişletme: orantı sabiti değişmez"
+soru: $\frac{a}{b}=\frac{c}{d}=\frac{e}{f}=\frac23$; $2a+3c-e=24$ ve $3d-f=12$ olduğuna göre $b$ kaçtır?
+1. $a=\frac23b$, $c=\frac23d$, $e=\frac23f$ olduğundan $2a+3c-e=\frac23(2b+3d-f)$. || Payları ve paydaları **aynı katsayılarla** birleştirirsen oran yine $k$ olur: $\frac{2a+3c-e}{2b+3d-f}=k$.
+2. $\frac{24}{2b+3d-f}=\frac23$, yani $2b+3d-f=36$. || Paydadaki ifadenin tamamını bulduk.
+3. $3d-f=12$ verildiği için $2b+12=36$, $b=12$. || Bilinen parçayı çıkardık.
+cevap: 12. Koşul: payları birleştirirken kullandığın katsayılar paydaları birleştirirken de aynı olmalı ($2,3,-1$); farklı katsayı oranı bozar.
+
+::ornek baslik="Aynı çarpıma eşit üç ifade"
+soru: $ax=by=cz=12$ ve $\frac1x+\frac1y+\frac1z=\frac14$ olduğuna göre $a+b+c$ kaçtır?
+1. $a=\frac{12}{x}$, $b=\frac{12}{y}$, $c=\frac{12}{z}$. || Çarpım sabitse her çarpan diğerinin tersiyle orantılıdır (ters orantı).
+2. $a+b+c=12\left(\frac1x+\frac1y+\frac1z\right)$. || Ortak çarpan 12'yi dışarı aldık.
+3. $12\cdot\frac14=3$. || Verilen toplamı yerine koyduk.
+cevap: 3. Kontrol: $x=y=z=12$ seçilirse $\frac1{12}\cdot3=\frac14$ ✓ ve $a=b=c=1$, toplam 3.
+
+::ornek baslik="Merak · altın oran neden 1,618?"
+soru: Bir doğru parçası iki parçaya ayrılıyor: büyük parça $a$, küçük parça $b$. Bütünün büyük parçaya oranı, büyük parçanın küçük parçaya oranına eşit: $\frac{a+b}{a}=\frac ab$. Bu ortak oran yaklaşık kaçtır?
+1. Ortak oran $k=\frac ab$ olsun; $\frac{a+b}{a}=1+\frac ba=1+\frac1k$. || Paydaki bütünü iki parçaya ayırdık.
+2. $1+\frac1k=k$, yani $k^2=k+1$. || İki oran eşit olduğu için aynı $k$'ye eşitledik.
+3. Pozitif çözüm $k=\frac{1+\sqrt5}{2}\approx1{,}618$. || Fibonacci sayılarının ardışık oranları ($\frac{8}{5}=1{,}6$, $\frac{13}{8}=1{,}625$, $\frac{21}{13}\approx1{,}615$) bu sayıya yaklaşır.
+cevap: Yaklaşık 1,618 (altın oran). Bu bir orantıdır: aynı oran hem parça–parça hem bütün–parça ilişkisinde korunur.
+
+
 @bolum s1b 14 | Parça, bütün ve birimlerin oranı
 
 ::duzey
@@ -203,6 +225,33 @@ ipucu: “Oranı”, “bütüne”, “kaç kat”, “yüzde kaç fazla” den
 2. Aynı tür niceliklerde birimi eşitle.
 3. Gerçek miktarlar bilinmiyorsa ortak k kullan; paydayı sıfır yapma.
 
+::ornek baslik="Aritmetik ve geometrik ortalama: aynı alan mı, aynı çevre mi?"
+soru: Kenarları 4 m ve 9 m olan dikdörtgen bir halı var. Aynı **çevreye** sahip karenin kenarı ile aynı **alana** sahip karenin kenarını bulup karşılaştır.
+1. Aynı çevre: $2(4+9)=26$, kare kenarı $\frac{4+9}{2}=6{,}5$. Bu, 4 ile 9'un **aritmetik ortalamasıdır** (AO). || Toplam korunuyor; toplamı eşit paylaştırmak ortalamadır.
+2. Aynı alan: $4\cdot9=36$, kare kenarı $\sqrt{36}=6$. Bu, 4 ile 9'un **geometrik ortalamasıdır** (GO $=\sqrt{ab}$). || Çarpım korunuyor; aynı çarpımı veren iki eşit sayı kareköktür.
+3. $6{,}5>6$. Genel olarak $a,b\ge0$ için $\frac{a+b}{2}-\sqrt{ab}=\frac{(\sqrt a-\sqrt b)^2}{2}\ge0$. || Fark bir tam karenin yarısı olduğu için negatif olamaz.
+cevap: AO = 6,5, GO = 6; her zaman AO ≥ GO, eşitlik yalnız $a=b$ iken. $\frac ab=\frac{GO^2}{b^2}$: GO, $a$ ile $b$ arasındaki “orta orantılı”dır: $\frac{a}{GO}=\frac{GO}{b}$ ($\frac46=\frac69$).
+
+::ornek baslik="AO = GO ise iki sayı eşittir"
+soru: $x$ ve $y$ gerçek sayılar; $A=3x+y-10$ ve $B=x+3y+6$ negatif olmayan sayılardır. $A$ ile $B$'nin aritmetik ortalaması geometrik ortalamasına eşitse $x-y$ kaçtır?
+1. $\frac{A+B}{2}=\sqrt{AB}$ ise $(\sqrt A-\sqrt B)^2=0$, yani $A=B$. || AO ile GO'nun farkı $\frac{(\sqrt A-\sqrt B)^2}{2}$; sıfırsa kökler eşit.
+2. $3x+y-10=x+3y+6$, $2x-2y=16$. || İki ifadeyi eşitleyip benzer terimleri topladık.
+3. $x-y=8$. || Tek denklemden yalnız fark bulunur; $x$ ve $y$ ayrı ayrı belirlenmez.
+cevap: 8. Kontrol: $x=10$, $y=2$: $A=22$, $B=22$; AO = GO = 22.
+
+::metin
+### Gerçek TYT sorusu: oran değişince bütün sabit kalır
+Müzelerin toplam sayısı değişmez; yalnız “gittiği” grubundan “gitmediği” grubuna değil, tersine 12 müze geçer. Önce ilk orana $k$ ver, sonra değişen miktarları **aynı $k$ ile** yaz.
+
+::cikmis TYT-0701 tip=oran-ozellik
+
+::ornek baslik="Benzer soru · gruplar arası geçiş"
+soru: Bir sınıfta gözlüklülerin gözlüksüzlere oranı $\frac{2}{5}$'tir. Göz muayenesinden sonra gözlüksüz 6 öğrenciye gözlük verilince gözlüklü ve gözlüksüz sayısı eşit oluyor. Sınıfta kaç öğrenci vardır?
+1. Gözlüklü $2k$, gözlüksüz $5k$, toplam $7k$. || İlk oran ortak çarpanla yazılır.
+2. 6 öğrenci gruptan gruba geçer: $2k+6=5k-6$. || Toplam değişmez; bir grup 6 artarken diğeri 6 azalır.
+3. $3k=12$, $k=4$; toplam $7k=28$. || Kontrol: önce 8 ve 20, sonra 14 ve 14.
+cevap: 28 öğrenci. Tuzak: yalnız gözlüklüye 6 ekleyip gözlüksüzü sabit bırakmak toplamı değiştirir.
+
 @bolum s2 9 | Doğru ve ters orantı
 ::kesfet oran-tur
 ::fikir
@@ -233,6 +282,14 @@ soru: Bir araç bir yolu 80 km/sa hızla 6 saatte gidiyor. Aynı yolu 120 km/sa 
 2. $80 \cdot 6 = 120 \cdot t$. || Çarpım (yol) sabit.
 3. $t = 4$ saat. || Kontrol: hız 1,5 katı, süre 1,5'e bölündü.
 cevap: 4 saat
+
+::ornek baslik="Dişli çarklar: diş × tur sabittir"
+soru: Birbirini çeviren iki dişli çarktan küçüğünde 30, büyüğünde 45 diş var. Küçük çark 12 tur attığında büyük çark kaç tur atar?
+1. Temas noktasından geçen diş sayısı iki çarkta aynıdır: $30\cdot12=360$ diş geçer. || Çarklar birbirini kaydırmadan çevirir; geçen diş sayısı ortaktır.
+2. Büyük çark için $45\cdot x=360$. || Diş sayısı × tur sabit: ters orantı.
+3. $x=8$. || Çok dişli çark daha az tur atar.
+cevap: 8 tur. Kontrol: diş oranı $45:30=3:2$, tur oranı $8:12=2:3$ — ters çevrilmiş.
+
 
 ::ornek baslik="Doğru orantıda birim değer"
 soru: Bir musluk 12 dakikada 90 litre su akıtıyor. Aynı hızla 150 litre kaç dakikada akar?
@@ -327,6 +384,19 @@ C) 30 || Bu ilk y değeridir.
 kontrol: (6*6+12)-(6*3+12)
 cozum: x üç artınca y $6\cdot3=18$ artar; bu toplamların doğru orantılı olduğu anlamına gelmez.
 
+::metin
+### Gerçek TYT sorusu: adet oranı ile kütle oranını ayır
+“Şişe sayısı” ve “toplam kütle” farklı niceliklerdir. Toplam kütle = adet × bir şişenin kütlesi. İki oranı çarpım olarak yaz; istenen tek şişe oranı kalan çarpandır.
+
+::cikmis TYT-0723 tip=dogru-ters
+
+::ornek baslik="Benzer soru · adet ve fiyat"
+soru: Bir kırtasiyede bir günde satılan defter sayısı kalem sayısının $\frac{3}{4}$'ü, defterlerden elde edilen toplam gelir kalemlerden elde edilen gelirin $\frac{9}{2}$ katıdır. Bir defterin fiyatı bir kalemin fiyatının kaç katıdır?
+1. Defter $3k$, kalem $4k$ adet; defter fiyatı $d$, kalem fiyatı $c$. || Adet oranını ortak çarpanla yazdık.
+2. $\frac{3k\cdot d}{4k\cdot c}=\frac92$. || Toplam gelir = adet × birim fiyat.
+3. $\frac{d}{c}=\frac92\cdot\frac43=6$. || $k$ sadeleşir; adet oranının tersiyle çarptık.
+cevap: 6 katı. Kontrol: 3 defter × 6 TL = 18 TL; 4 kalem × 1 TL = 4 TL; $18:4=\frac92$.
+
 @bolum s3 10 | Orantılı paylaştırma
 ::kesfet oran-pay
 ::fikir
@@ -343,6 +413,14 @@ soru: Furkan, Fatih ve Feyza 144 cevizi sırasıyla 3, 4 ve 6 ile ters orantıl�
 2. $9m = 144$, $m = 16$. || Toplam denklemi.
 3. En az alan, en büyük sayıya karşılık gelen Feyza: $2m = 32$ ceviz. || Ters orantıda büyük sayı küçük pay.
 cevap: 32 ceviz
+
+::ornek baslik="İki oranı ortak terimde birleştir"
+soru: Bir boyacı A, B ve C boyalarını $\frac AB=\frac25$ ve $\frac BC=\frac34$ oranlarında karıştırıyor. Toplam 82 litre boya kullandığına göre C kaç litredir?
+1. B iki oranda da var: ilkinde 5 pay, ikincisinde 3 pay. Ortak kat 15: $A:B=6:15$, $B:C=15:20$. || Ortak terimi EKOK'a eşitleyince iki oran tek zincire bağlanır.
+2. $A:B:C=6:15:20$; toplam 41 pay. || Pay ve paydayı aynı sayıyla genişlettik; oranlar değişmedi.
+3. Bir pay $82:41=2$ litre; $C=20\cdot2=40$ litre. || İstenen kısmın payıyla çarptık.
+cevap: 40 litre (A 12, B 30, C 40). Tuzak: $2:5:4$ yazmak; B'nin iki oranda farklı sayılarla temsil edildiğini unutur.
+
 
 ::strateji tip=paylastirma baslik="Paylaştırma kalıbı"
 ipucu: "… ile doğru/ters orantılı paylaştırılıyor"
@@ -522,6 +600,14 @@ soru: 4 işçi günde 6 saat çalışıp bir işi 9 günde bitiriyor. İki kat i
 2. İki iş 432 işçi-saat; yeni günlük kapasite $8\cdot9=72$. || İş ve günlük kapasite ayrı değişti.
 3. Gün $432/72=6$. || Birimler işçi-saat bölü işçi-saat/gün.
 cevap: 6 gün; gün sayısının azalması kapasite artışının iş artışından büyük olmasıyla tutarlı.
+
+::ornek baslik="Yolda değişen kişi sayısı: kalan kişi-gün"
+soru: Bir kampta 30 kişiye 40 gün yetecek kadar yiyecek var. 10 gün sonra 10 kişi kamptan ayrılırsa kalan yiyecek kalanlara kaç gün yeter?
+1. Toplam yiyecek $30\cdot40=1200$ kişi-gün. || Yiyecek miktarını kişi × gün birimiyle ölçtük.
+2. 10 günde $30\cdot10=300$ kişi-gün tüketildi; 900 kişi-gün kaldı. || Değişiklikten önceki dönemi ayrı hesapladık.
+3. Kalan 20 kişi: $900:20=45$ gün. || Kalan miktar ile yeni kişi sayısı ters orantılı.
+cevap: 45 gün. Tuzak: 40 günü baştan yeni kişi sayısına göre ölçeklemek ($40\cdot\frac{30}{20}=60$); geçen 10 gün ayrıca düşülmeli.
+
 
 ::ornek baslik="Farklı verimli makineleri topla"
 soru: A makinesi saatte 5, B saatte 7 parça üretir. Birlikte 84 parçayı kaç saatte üretirler?

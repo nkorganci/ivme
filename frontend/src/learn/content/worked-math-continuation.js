@@ -80,6 +80,29 @@ export const MATH_CONTINUATION_EXAMS = {
     check:'2340: 5’e göre 0, 9’a göre 0. 6347: 5’e göre 2, 9’a göre 2 (6+3+4+7=20).',
     mistake:'B’yi yalnız 0–4 arasında düşünüp A=6 durumunu kaçırmak; B=5–9 da aynı kalanları (0–4) verir.',
   },
+  'TYT-0701': {
+    conceptId:'oran-oranti', archetype:'oran-ozellik', answer:'D', title:'2022 TYT · gruptan gruba geçişte bütün sabit',
+    cue:'Gittiği:gitmediği = 1:2. Tatilde 12 müze “gitmediği”nden “gittiği”ne geçer; toplam müze sayısı değişmez.',
+    steps:[
+      {text:'Gittiği $k$, gitmediği $2k$; toplam $3k$.',why:'Oran gerçek sayıları değil ortak çarpanı verir.'},
+      {text:'Tatilden sonra gittiği $k+12$, gitmediği $2k-12$: $\frac{k+12}{2k-12}=\frac23$.',why:'Gezilen 12 müze bir gruptan çıkıp diğerine girer.'},
+      {text:'$3k+36=4k-24$, $k=60$.',why:'İçler–dışlar çarpımı.'},
+      {text:'Toplam $3k=180$; D seçeneği.',why:'Soru listedeki bütün müzeleri istiyor.'},
+    ], result:'D · 180', tip:'Bir gruptan diğerine geçiş varsa: biri +x, diğeri −x; toplam sabit. İlk oranı k ile yaz, yeni oranı aynı k ile kur.',
+    check:'Önce 60 ve 120 (1:2); sonra 72 ve 108, $72:108=2:3$.',
+    mistake:'12’yi yalnız gittiklerine ekleyip gitmediklerinden düşmemek: $\frac{k+12}{2k}=\frac23$ farklı ve yanlış sonuç verir.',
+  },
+  'TYT-0723': {
+    conceptId:'oran-oranti', archetype:'dogru-ters', answer:'A', title:'2024 TYT · adet oranı × tek kütle oranı',
+    cue:'Cam adedi plastik adedinin 2/3’ü; toplam kütlelerin oranı 8/5. Toplam kütle = adet × bir şişenin kütlesi.',
+    steps:[
+      {text:'Plastik $3k$, cam $2k$ şişe; bir cam $c$, bir plastik $p$ kütleli.',why:'Adet oranını ortak çarpanla yazdık.'},
+      {text:'$\frac{2k\cdot c}{3k\cdot p}=\frac85$.',why:'Toplam kütle adet ile tek kütlenin çarpımıdır.'},
+      {text:'$\frac cp=\frac85\cdot\frac32=\frac{12}5$; $\frac pc=\frac5{12}$. A seçeneği.',why:'Soru plastiğin camın kaç katı olduğunu, yani $p/c$’yi istiyor.'},
+    ], result:'A · 5/12', tip:'Toplam oranı = adet oranı × birim oranı. İstenen birim oranı, toplam oranını adet oranına bölerek bulunur; hangi kesrin istendiğine (p/c mi c/p mi) dikkat.',
+    check:'Cam 2 şişe × 12 = 24, plastik 3 şişe × 5 = 15; $24:15=8:5$.',
+    mistake:'c/p=12/5’i cevap sanmak (seçeneklerde yok ama 5/2 ve 9/4 gibi yakın sayılar tuzaktır).',
+  },
   'TYT-0605': {
     conceptId:'mutlak-deger', archetype:'esitsizlik', answer:'A', title:'2018 TYT · artış aralığından sıcaklık aralığına',
     cue:'6–10 derece, sıcaklığın kendisi değil artış miktarı. Önce 5 dereceye ekle; sonra yeni aralığın merkezini bul.',

@@ -347,7 +347,11 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/27 - ORAN - ORANTI PROBLEMLERI.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/26 - ORAN - ORANTI.pdf s.1-25 (görsel)",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/27 - ORAN - ORANTI PROBLEMLERI.pdf s.1-22 (görsel)",
+        "TYT/Konu Anlatimi (Video Notlari)/03 - DENKLEMLER ORAN ORANTI.pdf s.1-23"
+      ],
       "videolar": {
         "PL1": [
           "h3eXcwYR1NM",
@@ -359,7 +363,8 @@
           "7Wv7fkgdGN0",
           "jXZ5DO6IWHs"
         ]
-      }
+      },
+      "not": "PDF karşılaştırmasıyla eklenenler: katsayılı genişletme, ax=by=cz, altın oran, dişli çark, oran zinciri, kalan kişi-gün, aritmetik/geometrik ortalama (hiçbir derste yoktu). Çıkmış: TYT-0701, TYT-0723 eklendi."
     },
     {
       "id": "sayi-kesir-problemleri",
