@@ -15,8 +15,38 @@ Oturum `HttpOnly`, `SameSite=Lax` çereziyle taşınır. Çerezler `JSESSIONID` 
 |---|---|
 | `USER` | Kendi soru, sınav, geri bildirim ve hesap akışı |
 | `ADMIN` | `GET /api/admin/stats`; yalnız kayıtlı öğrenci ve tamamlanan deneme sayısı |
-| Ek `SITE_MANAGER` yetkisi | `GET /api/admin/students`; salt okunur öğrenci listesi ve araması. ADMIN rolüne otomatik verilmez |
+| Ek `SITE_MANAGER` yetkisi | `/api/admin/accounts/**` kullanıcı yönetimi; `GET /api/admin/students` öğrenci listesi ve araması. ADMIN rolüne otomatik verilmez |
 | `OPERATOR` | `/api/operator/**`; soru ve geri bildirim bakımı, CSV/JSON içe alma |
+
+### Yönetici adına öğrenci oturumu
+
+Etkin ve onaylı `ADMIN` + `SITE_MANAGER`, `POST /api/admin/accounts/{id}/impersonate`
+ile etkin ve onaylı bir `USER` hesabına parola sormadan geçer. Oturumdaki principal
+ve yetkiler öğrencininkilerle değiştirilir; bütün öğrenci API'leri mevcut veri
+sahipliği kurallarıyla seçilen öğrenciyi okur/yazar. Öğrenci ekranında yönetici
+yetkileri bulunmaz. Başka yönetici/öğretmen/veli hesabına ve iç içe geçişe izin verilmez.
+
+Asıl yönetici kimliği yalnız sunucu oturumunda tutulur. `UserDto.impersonating`
+başlangıç yanıtında ve `GET /api/auth/me` içinde bu durumu bildirir; yenilemeden
+sonra da öğrenci hesabı açık kalır. `POST /api/auth/impersonation/stop` yönetici
+yetkisini DB'den tekrar denetleyerek eski hesabı açar. Her iki geçiş CSRF gerektirir,
+oturum kimliğini yeniler ve `account_audit` tablosuna `IMPERSONATE_START` /
+`IMPERSONATE_STOP` yazar. Normal giriş dönüş kimliğini temizler; çıkış bütün
+oturumu bitirir. Yönetici hesabı kapanır veya yönetim yetkisi kaldırılırsa öğrenci
+oturumu sonraki API isteğinde iptal edilir. Öğrencinin kendi açık oturumu etkilenmez.
+
+Yönetim tablosundaki **Hesabına gir** seçili öğrenciyi açar; öğrenci ekranındaki
+kalıcı bant hesabı ve işlemlerin bu öğrenciye kaydedildiğini belirtir.
+**Yönetici hesabına dön** `/yonetim` sayfasını açar. Her geçişte sayfa tamamen
+yüklenerek önceki hesabın bileşenleri ve bellek önbelleği bırakılır. İstemci API
+istekleri `X-Ivme-User-Id` ile ekrandaki hesabı belirtir; başka sekmede hesap
+değişmişse sunucu isteği işlemden önce `409` ve `X-Ivme-Account-Changed: true`
+ile reddeder, istemci sayfayı yeniler; eski yazma otomatik tekrarlanmaz.
+
+Yönetici erişimi öğrencinin son giriş/aktif süre istatistiğini artırmaz. Normal
+öğrenci hesap işlemlerindeki mevcut parola doğrulaması geçerlidir. Doğrulama:
+`python scripts/ivme.py test StudentImpersonationTest,AuthTest,SecurityHardeningTest`;
+`node testler/admin-student-account-ui.mjs --live` (API bellekte, assetler yerel uygulamadan).
 
 ## Soru ve sınav uçları
 

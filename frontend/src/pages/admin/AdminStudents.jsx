@@ -6,8 +6,11 @@ import DataGrid from '../../components/DataGrid.jsx';
 import Pager from '../../components/Pager.jsx';
 import { Field } from '../../components/Field.jsx';
 import { Empty, ErrorBox, Loading } from '../../components/States.jsx';
+import StudentAccountButton from '../../components/StudentAccountButton.jsx';
 
 const COLUMNS = [
+  { colId: 'account', headerName: 'Öğrenci hesabı', minWidth: 160, pinned: 'left', sortable: false, filter: false,
+    cellRenderer: ({ data }) => <StudentAccountButton account={data} /> },
   { field: 'username', headerName: 'Kullanıcı adı', minWidth: 150 },
   { field: 'email', headerName: 'E-posta', minWidth: 220 },
   { colId: 'status', headerName: 'Durum', minWidth: 125,

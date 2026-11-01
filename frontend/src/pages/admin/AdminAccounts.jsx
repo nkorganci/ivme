@@ -9,6 +9,7 @@ import Modal from '../../components/Modal.jsx';
 import { Field } from '../../components/Field.jsx';
 import { Alert, Empty, ErrorBox, Loading } from '../../components/States.jsx';
 import RegistrationNotifications from './RegistrationNotifications.jsx';
+import StudentAccountButton from '../../components/StudentAccountButton.jsx';
 
 const ROLES = [
   ['USER', 'Öğrenci', 'öğrenci'], ['TEACHER', 'Öğretmen', 'öğretmen'],
@@ -46,6 +47,8 @@ export default function AdminAccounts() {
   const columns = useMemo(() => [
     { colId: 'number', headerName: 'No', width: 42, minWidth: 42, maxWidth: 48, sortable: false, filter: false,
       valueGetter: ({ node }) => page * 100 + node.rowIndex + 1 },
+    { colId: 'studentAccount', headerName: 'Öğrenci hesabı', minWidth: 150, maxWidth: 165, pinned: 'left', sortable: false, filter: false,
+      cellRenderer: ({ data: account }) => <StudentAccountButton account={account} /> },
     { field: 'username', headerName: 'Kullanıcı adı', minWidth: 105, maxWidth: 175, tooltipField: 'email' },
     { field: 'email', headerName: 'E-posta', minWidth: 120, maxWidth: 190 },
     { field: 'role', headerName: 'Rol', minWidth: 82, maxWidth: 125, valueFormatter: ({ value }) => roleName(value) },

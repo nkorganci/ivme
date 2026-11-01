@@ -26,3 +26,20 @@
   --lr-due-soft: #ffedd5;
   --lr-gold: #b45309;
 }
+/* Keep the acting account and the return action visible on desktop and mobile. */
+.student-account-banner {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--table-accent);
+  border-radius: 8px;
+}

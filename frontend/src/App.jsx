@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
+import StudentAccountBanner from './components/StudentAccountBanner.jsx';
 import DevAccountSwitcher from './components/DevAccountSwitcher.jsx';
 import RequireAuth from './components/RequireAuth.jsx';
 import Login from './pages/Login.jsx';
@@ -93,7 +94,7 @@ export default function App() {
       <Route element={<RequireAuth />}>
         {/* Sınav ekranı kendi üst çubuğunu kullanır, sol menüsü yoktur. */}
         <Route element={<RequireAuth student />}>
-          <Route path="/sinav/:id" element={<Exam />} />
+          <Route path="/sinav/:id" element={<><StudentAccountBanner /><Exam /></>} />
         </Route>
 
         <Route element={<Layout />}>

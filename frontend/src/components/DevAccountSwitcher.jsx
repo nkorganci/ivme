@@ -13,19 +13,19 @@ export default function DevAccountSwitcher() {
   const [error, setError] = useState('');
   const toolbar = useRef(null);
   useEffect(() => {
-    if (!accounts.length) return;
+    if (!accounts.length || user?.impersonating) return;
     const update = () => document.documentElement.style.setProperty('--dev-toolbar-height', `${toolbar.current.offsetHeight}px`);
     const observer = new ResizeObserver(update);
     observer.observe(toolbar.current); update();
     return () => { observer.disconnect(); document.documentElement.style.removeProperty('--dev-toolbar-height'); };
-  }, [accounts.length]);
+  }, [accounts.length, user?.impersonating]);
   useEffect(() => {
     if (!['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) return;
     let active = true;
     api.get('/api/auth/dev-accounts').then(value => { if (active && Array.isArray(value)) setAccounts(value); }).catch(() => {});
     return () => { active = false; };
   }, [user?.id]);
-  if (!accounts.length) return null;
+  if (!accounts.length || user?.impersonating) return null;
   const select = async role => {
     setBusy(true); setError('');
     try {

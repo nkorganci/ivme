@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { api, setUnauthorizedHandler } from './api.js';
+import { api, setApiAccountIdentity, setUnauthorizedHandler } from './api.js';
 
 const AuthContext = createContext(null);
 
@@ -47,6 +47,7 @@ export function AuthProvider({ children }) {
   const [devAutoLogin, setDevAutoLogin] = useState(false);
   const [activityError, setActivityError] = useState('');
   const initialized = useRef(false);
+  const switchingStudent = useRef(false);
 
   const refreshUser = useCallback(async () => {
     let current;
@@ -62,6 +63,7 @@ export function AuthProvider({ children }) {
         throw error;
       }
     }
+    setApiAccountIdentity(current.id);
     setUser(current);
     return current;
   }, []);
@@ -70,7 +72,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
-    setUnauthorizedHandler(() => setUser(null));
+    setUnauthorizedHandler(() => { setApiAccountIdentity(null); setUser(null); });
     refreshUser()
       .catch(() => setUser(null))
       .finally(() => setLoading(false));
@@ -81,6 +83,7 @@ export function AuthProvider({ children }) {
     sessionStorage.removeItem('ivme.signed-out');
     setDevAutoLogin(false);
     setActivityError('');
+    setApiAccountIdentity(u.id);
     setUser(u);
     return u;
   }, []);
@@ -98,8 +101,27 @@ export function AuthProvider({ children }) {
     sessionStorage.removeItem('ivme.signed-out');
     setDevAutoLogin(true);
     setActivityError('');
+    setApiAccountIdentity(current.id);
     setUser(current);
     return current;
+  }, []);
+
+  const impersonateStudent = useCallback(async studentId => {
+    if (switchingStudent.current) return;
+    switchingStudent.current = true;
+    try {
+      await api.post(`/api/admin/accounts/${studentId}/impersonate`);
+      window.location.assign('/');
+    } catch (error) { switchingStudent.current = false; throw error; }
+  }, []);
+
+  const returnToAdmin = useCallback(async () => {
+    if (switchingStudent.current) return;
+    switchingStudent.current = true;
+    try {
+      await api.post('/api/auth/impersonation/stop');
+      window.location.assign('/yonetim');
+    } catch (error) { switchingStudent.current = false; throw error; }
   }, []);
 
   const logout = useCallback(async () => {
@@ -108,11 +130,12 @@ export function AuthProvider({ children }) {
     catch { /* Sunucudaki çıkış tamamlandı; tarayıcı depolaması zorunlu değil. */ }
     setDevAutoLogin(false);
     setActivityError('');
+    setApiAccountIdentity(null);
     setUser(null);
   }, []);
 
-  const value = useMemo(() => ({ user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount }),
-    [user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount]);
+  const value = useMemo(() => ({ user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount, impersonateStudent, returnToAdmin }),
+    [user, loading, devAutoLogin, activityError, login, register, logout, refreshUser, switchAccount, impersonateStudent, returnToAdmin]);
   return <AuthContext.Provider value={value}>{children}{user && <ActiveTimeRecorder key={user.id} userId={user.id} onError={setActivityError} />}</AuthContext.Provider>;
 }
 

@@ -130,6 +130,8 @@ public class AuthController {
             throw new ApiException(HttpStatus.FORBIDDEN, "Geçici yetkili hesabı yalnız yerel bilgisayarda kullanılabilir.");
         }
         loginPerUser.clear(userKey);
+        // A regular login always discards any previous manager return identity.
+        StudentImpersonation.clearManager(request.getSession(false));
         if (request.getSession(false) != null) {
             request.changeSessionId();                       // oturum sabitlemeye karşı
         }
@@ -144,7 +146,8 @@ public class AuthController {
     @PostMapping("/activity")
     public ResponseEntity<Void> recordActivity(@AuthenticationPrincipal AppUserDetails me,
             @Valid @RequestBody ActivityRequest activity, HttpServletRequest request) {
-        loginActivity.active(me.id(), request.getSession(false), activity.activeSeconds());
+        if (StudentImpersonation.managerId(request.getSession(false)) == null)
+            loginActivity.active(me.id(), request.getSession(false), activity.activeSeconds());
         return ResponseEntity.noContent().build();
     }
 
@@ -192,7 +195,8 @@ public class AuthController {
     public ResponseEntity<Void> logout(@AuthenticationPrincipal AppUserDetails me, HttpServletRequest request) {
         var session = request.getSession(false);
         if (session != null) {
-            loginActivity.logout(me.id(), session);
+            Long manager = StudentImpersonation.managerId(session);
+            loginActivity.logout(manager == null ? me.id() : manager, session);
             session.invalidate();
         }
         SecurityContextHolder.clearContext();
@@ -200,8 +204,9 @@ public class AuthController {
     }
 
     @GetMapping("/me")
-    public UserDto me(@AuthenticationPrincipal AppUserDetails me) {
+    public UserDto me(@AuthenticationPrincipal AppUserDetails me, HttpServletRequest request) {
         return UserDto.of(users.findById(me.id())
-                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı.")));
+                .orElseThrow(() -> ApiException.notFound("Kullanıcı bulunamadı.")),
+                StudentImpersonation.managerId(request.getSession(false)) != null);
     }
 }

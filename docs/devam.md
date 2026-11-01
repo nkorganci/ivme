@@ -14,20 +14,24 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
 | TAS-02 / 12.06 | Dış makinede webhook/zamanlayıcı kurulumu ve gerçek kesinti/iyileşme bildirimi açık; [işletim tarifi](islemler/saglik-ve-izleme.md). |
 
-## Son kapanan iş: DENEME-02
+## Son kapanan iş: ADMIN-01
 
-Kullanıcının açık talebiyle bir öğrencinin dört TYT ve bir sayısal AYT denemesi
-gerçek hesaba kaydedildi. Başlangıçta iki çizelge de yoktu; hesap eşlemesi ve
-boşluk koşuluyla tek işlemde eklendi. İki hedef alan SAY. Ders netleri aynen
-korundu; kaynakta bir basılı toplam tutarsızlığı kullanıcıya açıklandı.
-Kayıt sonrası iki çizelge yeniden okunup uygulamanın doğrulama/toplama
-işlevleriyle bütün payload, ders sınırları, tarihler ve toplamlar kontrol edildi.
+Yönetim tablosundaki **Hesabına gir**, seçilen etkin/onaylı öğrencinin gerçek
+principal ve yetkileriyle oturumu açar. Yöneticiye dönüş, hesap bandı (sınav
+ekranı dahil), denetim izi ve eski sekmeden yanlış hesaba yazma koruması eklendi.
+Mevcut öğrenci verilerine müdahale edilmedi; yeni göç yok.
 
-Önceki/sonraki durum, girdi ve doğrulama `veri/deneme-giris/` altında Git dışında;
-öğrenci adı ve netler sürümlü belgelere taşınmadı. Uygulama kodu değişmedi,
-yeniden derleme gerekmedi. Bu kapsamda kalan iş yok; aynı girdiyi yeniden yazma.
-Yeni talepte ilk komut `git status --short`, ardından yalnız hedef hesabın güncel
-çizelgelerini oku. [Deneme sözleşmesi](mimari/deneme.md) veri giriş sınırını tanımlar.
+Geçici DB'de `StudentImpersonationTest,AuthTest,SecurityHardeningTest` 28/28 PASS.
+`node testler/admin-student-account-ui.mjs --live`: API bellekte masaüstü/mobil
+iki öğrenciye geçiş, program yazma, yenileme, hesap/sınav yolunda bant ve dönüş,
+başarısız geçiş/dönüşten kurtarma geçti. Rapor ve ekran görüntüleri:
+`veri/ui-denetim/admin-ogrenci/`. Gerçek öğrenci DB'sine test kaydı yazılmadı.
+İzleyici son paketi sundu; Windows PowerShell kaynak/paket parmak izi ve
+HTTP/yerel sürüm + asset eşleşti (`surum.json`); plan ve commit kontrolü geçti.
+
+Bu kapsamda kalan iş yok. Yeni talepte ilk komut `git status --short`;
+geçerli testleri yalnız ilgili kod/girdi değiştiğinde yeniden çalıştır.
+Sözleşme: [yönetici öğrenci oturumu](sozlesmeler/api.md#yönetici-adına-öğrenci-oturumu).
 
 ## TAS-12 devam noktası
 

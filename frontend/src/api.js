@@ -13,6 +13,8 @@ export class ApiError extends Error {
 const csrfCookieName = import.meta.env?.VITE_CSRF_COOKIE_NAME || 'XSRF-TOKEN';
 
 let onUnauthorized = null;
+let accountIdentity = null;
+export function setApiAccountIdentity(id) { accountIdentity = id; }
 /** Oturum düştüğünde (401) çağrılacak işlevi kaydeder. */
 export function setUnauthorizedHandler(fn) {
   onUnauthorized = fn;
@@ -33,6 +35,7 @@ const DEFAULT_MESSAGES = {
 
 async function request(method, path, body) {
   const headers = { Accept: 'application/json' };
+  if (accountIdentity != null) headers['X-Ivme-User-Id'] = String(accountIdentity);
   const init = { method, credentials: 'same-origin', headers };
 
   if (method !== 'GET') {
@@ -71,6 +74,10 @@ async function request(method, path, body) {
     }
   }
   if (!res.ok) {
+    if (res.headers.get('X-Ivme-Account-Changed') === 'true') {
+      window.location.reload();
+      throw new ApiError(409, 'Hesap değişti. Sayfa yenileniyor.');
+    }
     if (res.status === 401 && onUnauthorized && !path.startsWith('/api/auth/')) {
       // Oturum gerçekten düştüyse (me de 401 dönüyorsa) kullanıcıyı çıkış durumuna al.
       fetch('/api/auth/me', { credentials: 'same-origin' })

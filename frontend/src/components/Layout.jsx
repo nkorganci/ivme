@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth.jsx';
+import StudentAccountBanner from './StudentAccountBanner.jsx';
 import { APP_NAME, STUDY_LABEL, STATISTICS_LABEL } from '../config.js';
 import { displayName } from '../format.js';
 import Icon from './Icons.jsx';
@@ -70,7 +71,7 @@ export default function Layout() {
     api.get('/api/auth/dev-review-available').then(available => { if (active) setLocalReviewerAvailable(available === true); }).catch(() => {});
     return () => { active = false; };
   }, []);
-  const localReviewSwitch = localReviewerAvailable && ['localhost', '127.0.0.1'].includes(location.hostname);
+  const localReviewSwitch = !user.impersonating && localReviewerAvailable && ['localhost', '127.0.0.1'].includes(location.hostname);
   const [reviewBranches,setReviewBranches]=useState([]);
   useEffect(()=>{
     if(!localReviewSwitch && user.role!=='OPERATOR')return;
@@ -282,6 +283,7 @@ export default function Layout() {
           </Link>
         </header>
         <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
+          <StudentAccountBanner />
           {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
           {activityError && <p className="field-error" role="alert">{activityError}</p>}
           {trackError && <p className="field-error" role="alert">{trackError}</p>}

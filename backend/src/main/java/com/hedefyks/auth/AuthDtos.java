@@ -70,10 +70,15 @@ public final class AuthDtos {
 
     public record UserDto(Long id, String username, String email, Role role,
                           boolean contactComplete, boolean passwordChangeRequired,
-                          com.hedefyks.user.AccountCategory category, boolean siteManager, boolean approved) {
+                          com.hedefyks.user.AccountCategory category, boolean siteManager, boolean approved,
+                          boolean impersonating) {
         public static UserDto of(User u) {
+            return of(u, false);
+        }
+
+        public static UserDto of(User u, boolean impersonating) {
             return new UserDto(u.getId(), u.getUsername(), u.getEmail(), u.getRole(),
-                    u.getPhone() != null && !u.getPhone().isBlank(), u.isPasswordChangeRequired(),u.getCategory(),u.isSiteManager(),u.isApproved());
+                    u.getPhone() != null && !u.getPhone().isBlank(), u.isPasswordChangeRequired(),u.getCategory(),u.isSiteManager(),u.isApproved(),impersonating);
         }
 
         @Override public String toString() {

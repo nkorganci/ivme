@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/admin/students")
 public class StudentDirectoryController {
-    public record Student(Long id, String username, String email, boolean enabled,
+    public record Student(Long id, String username, String email, boolean enabled, boolean approved,
                           Instant archivedAt, Instant createdAt) {
         static Student of(User user) {
-            return new Student(user.getId(), user.getUsername(), user.getEmail(), user.isEnabled(),
+            return new Student(user.getId(), user.getUsername(), user.getEmail(), user.isEnabled(), user.isApproved(),
                     user.getArchivedAt(), user.getCreatedAt());
         }
     }
