@@ -89,12 +89,12 @@ adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel 
 
 ## Laboratuvar kapsamı ve devam sırası
 
-**Yeni lab kabulüne göre:** TYT **14/32 teknik hazır**, AYT **0/24 teknik hazır**.
-Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`, `uslu-ifadeler`, `koklu-ifadeler`, `carpanlara-ayirma`, `oran-oranti`, `sayi-kesir-problemleri`, `yas-isci-problemleri`; kalan 42 konuda standarda göre kabulü
+**Yeni lab kabulüne göre:** TYT **15/32 teknik hazır**, AYT **0/24 teknik hazır**.
+Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`, `uslu-ifadeler`, `koklu-ifadeler`, `carpanlara-ayirma`, `oran-oranti`, `sayi-kesir-problemleri`, `yas-isci-problemleri`, `yuzde-karisim`; kalan 41 konuda standarda göre kabulü
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `yuzde-karisim` labı; sonra `kar-zarar` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+**Sıradaki çalışma:** `kar-zarar` labı; sonra `hareket-problemleri` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
 yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
 manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
 konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
@@ -129,7 +129,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `oran-oranti` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/oran-oranti.json`; öğretmen/öğrenci kabulü yok | Oranı koruma (sınırlayıcı bileşen), doğru/ters orantı ve doğrusal ≠ orantılı, paylaştırma (doğru/ters), bileşik orantı (birim iş); 6 doğrulanmış ÖSYM sorusu. Bileşik hedefinde uygun soru derste çözülmüş |
 | `sayi-kesir-problemleri` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/sayi-kesir-problemleri.json`; öğretmen/öğrenci kabulü yok | Sıra ve sayım (iki kez sayılan), kalanın kesri, hepsini ucuz say (adet–tutar), sondan başa; 7 doğrulanmış ÖSYM sorusu (problem kategorisindeki komşu bankalardan). Sondan başa hedefinde eşleşen soru yok |
 | `yas-isci-problemleri` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/yas-isci-problemleri.json`; öğretmen/öğrenci kabulü yok | Yaş farkı (sabit fark, değişen oran), yaş toplamı (kişi × yıl), birlikte çalışma (hızlar toplanır), farklı verim (çırak-saat); 2 doğrulanmış ÖSYM sorusu. İşçi/verim hedeflerinde derste çözülmemiş uygun soru yok |
-| `yuzde-karisim` | ⬜ LAB YOK | Bütün, yüzde tabanı ve saf madde korunumu; değişen payda/yoğunluğu açıkla |
+| `yuzde-karisim` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/yuzde-karisim.json`; öğretmen/öğrenci kabulü yok | Ardışık yüzde (çarpanlar), bütün değişince yüzde, karışımda madde korunumu, ağırlıklı ortalama; 10 doğrulanmış ÖSYM sorusu |
 | `kar-zarar` | ⬜ LAB YOK | Maliyet/satış referansı ve ardışık fiyat değişimi; yüzde tabanını seç |
 | `hareket-problemleri` | ⬜ LAB YOK | Konum–zaman ve kapanan mesafe; yön, bağıl hız ve mola koşullarını modele bağla |
 | `grafik-rutin-olmayan` | ⬜ LAB YOK | Tablo/grafikten kısıt çıkarma ve strateji seçimi; gereksiz bilgiyi ele |

@@ -1,0 +1,94 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "yuzde-karisim",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "taban",
+      "label": "Ardışık yüzde",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0654",
+        "TYT-0686",
+        "TYT-0697"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "parca-butun",
+      "label": "Bütün değişince",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0709",
+        "TYT-0719",
+        "TYT-0675",
+        "TYT-0728",
+        "TYT-0688"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "karisim",
+      "label": "Karışım",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0739"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ortalama",
+      "label": "Ağırlıklı ortalama",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0716"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/yuzde-karisim.js": "9dd4afb27b159efab855ef55591d2d5b4f65fc6c28c3529cc9c24f496420e1eb",
+    "frontend/src/learn/lab/cizim/yuzde-karisim.jsx": "259104237253b3c8e139d0b56d86143bf2e543a55984beb8835b39f13c0179dc",
+    "testler/lab-yuzde-karisim.test.mjs": "f09f920755d3a36ebffaf80e796a889dd33d6a57df8233ee807a578eb50d8825",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-yuzde-karisim-rapor.json": "e2e9f402954520c36bce8cbe676f397142f0c30c5333f1af519cb9ffac249a19",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-karisim-deney.png": "ef259f200ad5314f6182e9bf4dee040e5b7b1412eceb0a740228e5616c7061fb",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-karisim-tamam.png": "cf70619b634fca66d088643b97873670d21863a133d2690218b263ca3a36d7f9",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-ortalama-deney.png": "86d6ea9f71d86c42a5c376d9ebf416a0a0ffe9c423b3b3b7972752ede66eb337",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-ortalama-tamam.png": "2509ed36e6ceb50676382d2fd54bb4c5bc85b19dcad70c90f6760ec98bc7dd9b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-parca-butun-deney.png": "425a16173dc10e6d33facb3a3a199e3e1f91e93bcf517b7c4429365cc9620e65",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-parca-butun-tamam.png": "c8520be6bde63f0a0af50548448ef5c494492ad059b58557d3e1a4fd00eef757",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-taban-deney.png": "7db5694b4137dfad3f7dfac12ddd24b17b88d20aec27053471c6a66dfe917c70",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yuzde-karisim-taban-tamam.png": "c810acecbb738ddcd36ac3fcc3ddebd481f1aa038dca7d55ab7502f67fd49f6d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-karisim-deney.png": "dea74ac17e0f9412d8188511defb7c887c92594586537b321d1190a88127134d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-karisim-tamam.png": "0fe9f5a55190c448ad9f6592d5d754a85d2b8c7faccfc6c6b163001a20df05b1",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-ortalama-deney.png": "a79f5a2dc841111ab7b4ed15799bbde2780a3f231293760343f43840e9f7bef7",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-ortalama-tamam.png": "173435e24ac614845056e1c7f5f954d8355d248e7fdde5ab0c6019f7b963b288",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-parca-butun-deney.png": "1efc44ab19ce0b1fb4614c869b0e744c993f00b1526d179ec6ccd7023ef55f15",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-parca-butun-tamam.png": "95990c70c23ec2d02dfbb96f5fd8b8cb0f91574094c6f035842acc9bcb547815",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-taban-deney.png": "9ea6c77a608c574c6885b535fa5849fc7b161b96472ba0fdf9a12dfe73d87e30",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yuzde-karisim-taban-tamam.png": "fcf5e9af87b498e1e07891d3945879ec12bfc1f3c28d8633d90e6d4a87e8b58b"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}
