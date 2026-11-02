@@ -13,6 +13,7 @@ export const LAB_LOADERS = {
   'sayi-basamaklari': () => Promise.all([import('./sayi-basamaklari.js'), import('../cizim/sayi-basamaklari.jsx')]),
   'bolme-bolunebilme': () => Promise.all([import('./bolme-bolunebilme.js'), import('../cizim/bolme-bolunebilme.jsx')]),
   'ebob-ekok': () => Promise.all([import('./ebob-ekok.js'), import('../cizim/ebob-ekok.jsx')]),
+  'rasyonel-sayilar': () => Promise.all([import('./rasyonel-sayilar.js'), import('../cizim/rasyonel-sayilar.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -28,4 +29,7 @@ export const LAB_KESIF = {
   'bolme-bilesik': ['bolme-bolunebilme', 'bilesik'], 'bolme-dongu': ['bolme-bolunebilme', 'kalan-islem'],
   'ebob-ekok': ['ebob-ekok', 'asal-carpan'], 'ebob-bolen': ['ebob-ekok', 'asal-carpan'], 'ebob-venn': ['ebob-ekok', 'ebob-ekok-hesap'],
   'ebob-kare': ['ebob-ekok', 'problem-secim'], 'ekok-zil': ['ebob-ekok', 'periyodik'], 'ebob-takvim': ['ebob-ekok', 'periyodik'],
+  'rasyonel-sayilar': ['rasyonel-sayilar', 'kesir-islem'], 'rasyonel-ortakpayda': ['rasyonel-sayilar', 'kesir-islem'],
+  'rasyonel-bolme': ['rasyonel-sayilar', 'kesir-islem'], 'rasyonel-virgul': ['rasyonel-sayilar', 'olcek'],
+  'rasyonel-devirli': ['rasyonel-sayilar', 'devirli'], 'rasyonel-sayidogrusu': ['rasyonel-sayilar', 'siralama'],
 };

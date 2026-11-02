@@ -1,0 +1,89 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "rasyonel-sayilar",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "kesir-islem",
+      "label": "Ortak bölme",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0568",
+        "TYT-0580"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "olcek",
+      "label": "Ölçek okuma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0587",
+        "TYT-0569"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "devirli",
+      "label": "Devirli ondalık",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "siralama",
+      "label": "Sıralama ve ara kesir",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0586",
+        "TYT-0564"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/rasyonel-sayilar.js": "b22c73da293ade995ae68bec2419d25f775f038eaaa59a87d67a44b0b410c118",
+    "frontend/src/learn/lab/cizim/rasyonel-sayilar.jsx": "851f4b78fe7bca93743357eaa571d5c82a82c6b7a78411bd468b63858c323b60",
+    "testler/lab-rasyonel-sayilar.test.mjs": "a738f66dac11808386f445da21250e3865a2fc94fb821f65c6e3acee15f6c9c9",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "13e701aeb555b2319901ce50d6b682cb0a81142abaf1aa9e26d555bf2b81821e",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-rasyonel-sayilar-rapor.json": "a47ca5cd6895c3955fb55a80a9afa6bb2ee677e66e9be811e7956b8a5a300a00",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-devirli-deney.png": "a29de3702422a68a23f2c50a5517228feddd428528cce72ee94e8f4ac268d9e9",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-devirli-tamam.png": "30a69ac7b17d85a61159c02331d40a16028d53bcfc8997c6e93cda134366dda6",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-kesir-islem-deney.png": "8f888392702e554df48ca5e3295e18d14d0b30f8663cb0c912391d48672a6288",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-kesir-islem-tamam.png": "ad07ddb1abcb677eb64b4a7e08dd2df153cb3b40e03847ef8fa84287fd95d505",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-olcek-deney.png": "71023e256246c1f1d887d131d9a55005fec90778044e406f8d8245c13266cf7e",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-olcek-tamam.png": "78765142498e7360e3b79d51faa32c4e2b428801df9362b163e129b4d27eb240",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-siralama-deney.png": "7f54c0200548d9a476260163a66a282c4ab8d8f223fe84383a190dd6a44e6e3b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-rasyonel-sayilar-siralama-tamam.png": "9d4b095391debd911246bb77e970abcc2351cf34517b91abb74cb667b5bb3944",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-devirli-deney.png": "23c3a3669d5b0222f9571fc69bd4545a124381d2dd07d99734877d30c53af5bb",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-devirli-tamam.png": "36183cf34fa274913012a8c2694bac7bb2399f8766c087869382237fcf214136",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-kesir-islem-deney.png": "7f1a251e507ea597c442bc877c61dea15cfb7b86878e1378897957342c0a1272",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-kesir-islem-tamam.png": "f8f2ceb08222db0d254e68e85cece7586c99068b7756e142ac97454d1f853773",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-olcek-deney.png": "47723275097ab383a886870b1f8cb601129704472a6bec0cd8117d25ff4babf6",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-olcek-tamam.png": "b3b2c75579917d22fafa8dcd525c89db4741519b8650eb1de59dbca3abea60dc",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-siralama-deney.png": "1b6723c0978369d525ccbaf2ee37371797d5dab97cb563a48a9ea7b4d547f629",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-rasyonel-sayilar-siralama-tamam.png": "38a4564f3887f67b44eed0776ffa88e57b1e1ccdde26af47658e165a08abfa05"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}
