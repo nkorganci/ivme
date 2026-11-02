@@ -1,6 +1,18 @@
 {
   "schemaVersion": 1,
   "checks": {
+    "laboratuvar-node": {
+      "kind": "node",
+      "args": ["--test-reporter=tap", "testler/matematik-laboratuvari.test.mjs"],
+      "inputs": [
+        "frontend/src/learn/lab/**/*",
+        "frontend/src/learn/LearnSection.jsx",
+        "frontend/src/learn/pages/ConceptPage.jsx",
+        "frontend/src/learn/lesson/Exploration.jsx",
+        "testler/matematik-laboratuvari*.mjs",
+        "testler/konu-ogrenme-ui.mjs"
+      ]
+    },
     "kayit-node": {
       "kind": "node",
       "args": [
@@ -236,6 +248,15 @@
     }
   },
   "profiles": {
+    "MAT-LAB-01": {
+      "checks": ["laboratuvar-node"],
+      "remainingAcceptance": [
+        "Masaüstü/mobil dört senaryo ve aktarım UI",
+        "Yerel sunulan kaynak/paket sürümü",
+        "Öğretmen incelemesi ve gerçek öğrenciyle gecikmeli aktarım gözlemi"
+      ],
+      "nextAction": "docs/icerik/matematik-laboratuvari.md içindeki pilot kabulünü izle."
+    },
     "TAS-01": {
       "checks": [
         "kayit-node",

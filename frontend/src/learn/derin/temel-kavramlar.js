@@ -67,7 +67,7 @@ export const explorations = {
       ['Simetriyi kullan', '$7\\cdot5$ ile $5\\cdot7$ aynıdır; ortayı geçince çarpım yeniden küçülür. En büyük değer 36.'],
     ],
     tip: 'Toplamı sabit iki pozitif sayının çarpımı, sayılar birbirine en yakınken en büyüktür. “Farklı olsun” koşulu varsa ortaya en yakın farklı ikiliyi seç: $5\\cdot7=35$.',
-    trap: 'Bu kural toplam sabitken ve sayılar pozitifken geçerlidir. Negatif sayılar serbestse sonuç değişir: $x+y=12$ iken $x=-2$, $y=14$ çarpımı $-28$ yapar.',
+    trap: 'Toplam sabitken en büyük çarpım kuralı gerçek sayılarda da geçerlidir: $xy=36-(x-6)^2\\leq36$. Negatif sayılar serbest bırakılırsa değişen, en küçük değerdir; çarpım aşağı yönde sınırsız azalabilir. “Farklı tam sayılar” koşulunda ise $6,6$ seçilemez; en büyük çarpım $5\\cdot7=35$ olur.',
     transfer: ['$x+y=15$ ve $x$, $y$ pozitif tam sayılar. $x\\cdot y$ en çok kaçtır?', '56', '54', '15 tek olduğu için iki eşit tam sayıya bölünemez; birbirine en yakın tam sayılar 7 ve 8: $7\\cdot8=56$.'],
     expert: 'Cebirle: $x(12-x)=36-(x-6)^2$. Kare negatif olamaz; çarpım ancak $x=6$ iken 36 olur ve $x$, 6’dan uzaklaştıkça $(x-6)^2$ kadar azalır. Aynı fikir, çevresi sabit dikdörtgenlerden alanı en büyük olanın kare olduğunu gösterir.',
   },

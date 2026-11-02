@@ -104,7 +104,7 @@ class QualityTest(unittest.TestCase):
 
     def test_all_task_profiles_reference_existing_scripts_and_scoped_inputs(self):
         config = json.loads((q.APP / q.CONFIG).read_text(encoding='utf-8'))
-        self.assertEqual({f'TAS-{n:02}' for n in range(1, 13)}, set(config['profiles']))
+        self.assertEqual({f'TAS-{n:02}' for n in range(1, 13)} | {'MAT-LAB-01'}, set(config['profiles']))
         for task in config['profiles']:
             profile, checks = q.load_profile(q.APP, task)
             self.assertTrue(profile['nextAction'])
@@ -112,6 +112,8 @@ class QualityTest(unittest.TestCase):
                 self.assertTrue(check['inputs'])
                 if check['kind'] != 'backend':
                     for arg in check['args']:
+                        if check['kind'] == 'node' and arg == '--test-reporter=tap':
+                            continue
                         self.assertTrue((q.APP / arg).is_file(), arg)
 
 

@@ -13,12 +13,14 @@ import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { EVIDENCE } from '../frontend/src/learn/content/kanit/index.js';
 import { examScope } from '../frontend/src/learn/content/evidence.js';
+import { runLaboratory } from './matematik-laboratuvari-ui.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(ROOT, 'frontend/dist');
 const out = join(ROOT, 'veri/ui-denetim/konu-ogrenme');
 mkdirSync(out, { recursive: true });
 const live = process.argv.includes('--live');
+const laboratoryOnly = process.argv.includes('--laboratuvar');
 const protipsOnly = process.argv.includes('--protip');
 const discoveryOnly = process.argv.includes('--kesif');
 const guidedOnly = process.argv.includes('--gercek-ornek');
@@ -529,7 +531,7 @@ async function runLevels(mobile) {
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await (protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
+    report.runs.push(await (laboratoryOnly ? runLaboratory({ browser: await tarayiciAc({ mobile }), mobile, out, eventCount: () => db.events.length }) : protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();
@@ -542,4 +544,5 @@ const problems = report.runs.flatMap((r) => [
 ]);
 console.log(JSON.stringify({ ...report, problems, screenshots: out }, null, 2));
 if (protipsOnly) writeFileSync(join(out, 'protip-rapor.json'), JSON.stringify({ ...report, problems }, null, 2) + '\n');
+if (laboratoryOnly) writeFileSync(join(out, 'laboratuvar-rapor.json'), JSON.stringify({ ...report, problems }, null, 2) + '\n');
 process.exitCode = problems.length ? 1 : 0;

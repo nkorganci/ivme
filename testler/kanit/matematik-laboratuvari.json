@@ -1,0 +1,42 @@
+{
+  "task": "MAT-LAB-01",
+  "automaticAcceptance": "PASS",
+  "studentTransferObserved": false,
+  "teacherApproved": false,
+  "testedSource": "Working tree; pre-existing changes excluded from this task commit",
+  "inputs": {
+    "frontend/src/learn/lab/LabEntry.jsx": "34120ea7875dd4cb98a9d68af1503f6a62951165bc2ff0faf68af237de4b7008",
+    "frontend/src/learn/lab/parity-lab.css": "d65baaa2f4bdb499a6e42ac2f13637a8dd5e7cfb76ab2573afd15c111d129bd4",
+    "frontend/src/learn/lab/parity.js": "8ce437506170270659f261f68c901417c6ddd96f64da873660bcdc3ee44459cd",
+    "frontend/src/learn/lab/ParityLab.jsx": "8dab35af9f989073bf238462627fac19091d68f1f4f853dd28590b08799f61a2",
+    "testler/matematik-laboratuvari-ui.mjs": "7d090da1c77e3f1fe1abc4997f098fc0e664000ea772a235f7c05720d67605ad",
+    "testler/matematik-laboratuvari.test.mjs": "e19a39758a914eef6ae95fe2ae5687cbf38f137be99d23bfc1f85ecb4b9d662b"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-rapor.json": "49b32e1a0dfd72a88fdc8da43f5d6081e75e89c04f1e4abe5424f0c0f77a8c1c",
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-canli.json": "9e43f47243ad5a198f6e8f8e68deec7fb65a437ac7f00c5ab5c967f369417c56",
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-surum.json": "cedc640444b05afa7f29f49aa40cf979960be1bf16221952643ff93ee1d3a12c",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-baslangic.png": "7d195c635b04c265e0f3cb7303aa0adb6d863e81894dfeeba2118741858224cd",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-canli.png": "d6916548805fe34c97223e244f6ee444cb8f84a12f2617d571bbc0cdb13ad82c",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-deney-1.png": "fc5cdab504cc5807519c84d0787476ca5a09344b194cac9bbbd90bc155ccd636",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-deney-2.png": "54fb46a5a638ff14a4c9fa442c6ef1ae1f5aecc0ae8af44a5c0d4338e14631eb",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-deney-3.png": "00541ff567e2774dc042fdc17ebbd52e1b2ba6e0d78d766686ddd7b54c41f87b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-deney-4.png": "9aa59a3e177eefdfeb467a11cdfe9e083b6a5d20e649af34824d9805d8af6ad9",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-tamamlandi.png": "9039bf4491556379b083e51760b75aee80e997d48b2766c25f5cbc1c8d510c69",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-baslangic.png": "4f48d135f955ca4ab22c38ee8d9978986deadae98be6f4f4874cded905362b43",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-canli.png": "4cbcc761b470fc342c203c6d9112332b0f0435b6eede042bdce22ecc400d54c1",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-deney-1.png": "7d3fd71b0946603ae2bb3bd2770d2cf1877cf76fafffb9acf58552830df1a0a9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-deney-2.png": "36442048fd67623bec288ff330dd5f8d149551571d8a052defe3555012c7d15d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-deney-3.png": "79412b026d539f25777915af0ef3829ac6d37a911a2d5ff4c1ca3c40b07ec7be",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-deney-4.png": "65c65e8cbbd5081b9cdadf646dc959704dc6b207110c79535ffcf2f506f28a97",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-tamamlandi.png": "fbdf13d52c6911b1e1f2578d65da56f67f465deea95669eb4aecedd25f8e571f"
+  },
+  "ui": {
+    "runs": 2,
+    "checksPerRun": [
+      13,
+      13
+    ],
+    "problems": []
+  }
+}

@@ -6,6 +6,7 @@ import './learning-experience.css';
 import FigureZoom from './FigureZoom.jsx';
 import DivisionDiagram from './DivisionDiagram.jsx';
 import { DEEP_DIAGRAMS } from '../derin/cizimler.jsx';
+import LabEntry from '../lab/LabEntry.jsx';
 
 const letters = 'ABCDE';
 const times = (n, fn) => Array.from({ length: n }, (_, i) => fn(i));
@@ -240,6 +241,7 @@ export default function Exploration({ conceptId, level = 'L1' }) {
   const correct = choice === data.transfer[1];
   return <section className="lm-exploration" aria-labelledby={titleId}>
     <header className="lm-heading"><div><p className="lm-eyebrow">Mantığını keşfet</p><h3 id={titleId}>{data.title}</h3></div><span className="lm-badge">Günlük hayattan soruya</span></header>
+    {conceptId === 'temel-tekcift' && <LabEntry compact />}
     <nav className="lm-phases" aria-label="Keşif adımları">
       {['Görerek anla', 'Birlikte çözelim', 'Sen dene · püf noktaları'].map((label, i) => <button key={label} type="button" aria-pressed={phase === i} onClick={() => setPhase(i)}><span>{i + 1}</span>{label}</button>)}
     </nav>

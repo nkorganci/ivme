@@ -69,6 +69,10 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 
 ## 12.02 — Eksik ders notu ve gerçek kaynaklı ipucu kapsamını genişlet
 
+**MAT-LAB-01:** Kullanıcı onaylı tek–çift etkileşim pilotu
+[Matematik Laboratuvarı sözleşmesinde](../icerik/matematik-laboratuvari.md) izlenir.
+Koşul değiştirme ve bağımsız soruya aktarım denenir; öğretim etkisi öğrenci gözlemiyle ölçülür.
+
 **Konuyu Öğrenelim öğretim standardı:** Yeni dersler ve mevcut derslerin yeni bölümleri
 [ortak öğretim sözleşmesine](../icerik/konuyu-ogrenelim.md) uyar: günlük bağlam, temelden
 kavram açıklaması, etkileşimli model, gerekçeli örnek, örnekten sonra koşullu hızlı yol,
