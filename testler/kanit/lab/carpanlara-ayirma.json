@@ -1,0 +1,86 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "carpanlara-ayirma",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "gruplama",
+      "label": "Gruplama",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0793"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "iki-kare",
+      "label": "İki kare farkı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0086"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "uc-terimli",
+      "label": "Üç terimli",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0094"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "sadelestirme",
+      "label": "Sadeleştirme",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/carpanlara-ayirma.js": "d4146b73a30678663669d7cae971512afb066ed16117ca20b2d94f78d5bb53cd",
+    "frontend/src/learn/lab/cizim/carpanlara-ayirma.jsx": "5254de202f19b33ce2aa4cf61edef59ecbd3a0607c69688cd46a2cfa13d1ec62",
+    "testler/lab-carpanlara-ayirma.test.mjs": "52e06c49199de4155020b621b7d8d0219d7e7b8e7bdc67c364977b4dbf601f1c",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-carpanlara-ayirma-rapor.json": "2f835136b5d4e51404d12e56dd76c0519ce9cb352cdc4daec65c2dd1360b0627",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-gruplama-deney.png": "60f47034c26fdfec9eaa70c7cc85ef148e5c5e55e6278725453853c5345ef7f3",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-gruplama-tamam.png": "a34509164632bca74ee5cb478838f733c9ea61bfe80198f65e19f0b0cd24ee46",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-iki-kare-deney.png": "8850808d1e424a3b044f63f640d8ebaec0d7562e0c2b76d6f77b6c3b0de347a1",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-iki-kare-tamam.png": "c6c8f9e204783c2399a35106158266cec61b1fb911a1c317d9b4248d167e4b52",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-sadelestirme-deney.png": "368c23d10f8815530588a641faf505ec86529e43b8669abcfd35e16a234aa9c2",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-sadelestirme-tamam.png": "70c802c7e1629f7281e0dbfa9c4276876a9ff2da3da34e179956f39033fdba13",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-uc-terimli-deney.png": "64ea303ebe18894b7bc872553566fd4e3821fa56394f93ec0f391309bfed19b2",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-carpanlara-ayirma-uc-terimli-tamam.png": "39142d40bffaa03d01598433d0d6ff6173df6d57ff105f51f6a421dd5ed9e018",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-gruplama-deney.png": "e7bf965dc39380e5447b54c571f5900566dc7d20c2f337c7a1d9c7fa378d2746",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-gruplama-tamam.png": "1cc668ccde762d3534e24ef505d5d6709d4d51123ebb4c432003abf59b20fedd",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-iki-kare-deney.png": "20a7c7a5171f28aff22c18229b2aa879b6360a027648b954357f340511de1258",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-iki-kare-tamam.png": "16d77d828ec91619599c8ae4bca605e92c8418ec35fcafd40685a6ee4df85f03",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-sadelestirme-deney.png": "230deccfc83e3e9c7cc4a70d8cb93e61e0f67ddb8cfc865ec2bd2bc28b49443a",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-sadelestirme-tamam.png": "efcdf58cc8f3e81ae9d7a129a3b5eb3147be411e0de35b021d549e8cc3526dc5",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-uc-terimli-deney.png": "77d91fa83aa5c6e44b50587d8adf11aff66c60c12e2ed23945c403c27e0a0c96",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-carpanlara-ayirma-uc-terimli-tamam.png": "0d505951f96c3f536e419b41a8f419c894e0627acd579f46f536bab46d0cf9a7"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

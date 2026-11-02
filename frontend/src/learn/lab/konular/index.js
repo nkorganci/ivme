@@ -19,6 +19,7 @@ export const LAB_LOADERS = {
   'mutlak-deger': () => Promise.all([import('./mutlak-deger.js'), import('../cizim/mutlak-deger.jsx')]),
   'uslu-ifadeler': () => Promise.all([import('./uslu-ifadeler.js'), import('../cizim/uslu-ifadeler.jsx')]),
   'koklu-ifadeler': () => Promise.all([import('./koklu-ifadeler.js'), import('../cizim/koklu-ifadeler.jsx')]),
+  'carpanlara-ayirma': () => Promise.all([import('./carpanlara-ayirma.js'), import('../cizim/carpanlara-ayirma.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -48,4 +49,6 @@ export const LAB_KESIF = {
   'uslu-ortak': ['uslu-ifadeler', 'ortak-paranteze'], 'uslu-buyume': ['uslu-ifadeler', 'siralama'],
   'koklu-ifadeler': ['koklu-ifadeler', 'kok-disi'], 'kok-carpan': ['koklu-ifadeler', 'kok-disi'],
   'kok-eslenik': ['koklu-ifadeler', 'eslenik'], 'kok-denklem': ['koklu-ifadeler', 'denklem'],
+  'carpanlara-ayirma': ['carpanlara-ayirma', 'gruplama'], 'carpan-ortak': ['carpanlara-ayirma', 'gruplama'],
+  'carpan-alan': ['carpanlara-ayirma', 'iki-kare'], 'carpan-capraz': ['carpanlara-ayirma', 'uc-terimli'],
 };
