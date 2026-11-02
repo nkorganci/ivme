@@ -1,0 +1,84 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "yas-isci-problemleri",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "yas-fark",
+      "label": "Yaş farkı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0714"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "grup-toplam",
+      "label": "Yaş toplamı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0699"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "is-hiz",
+      "label": "Birlikte çalışma",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "verim",
+      "label": "Farklı verim",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/yas-isci-problemleri.js": "3261d40ff9b259be9a928af57ff610e86ee4af116c886b43d8e2ee44bf6c2d0f",
+    "frontend/src/learn/lab/cizim/yas-isci-problemleri.jsx": "7003e08c753dd913c77c1656644e79d13b792710aaf31e7782e6d32fbd65409d",
+    "testler/lab-yas-isci-problemleri.test.mjs": "c0c55761210e0a0cfb486e4f898bca5593f749f25631fe2aee100a1205c2516e",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-yas-isci-problemleri-rapor.json": "db6df346d9ad016b336eafcc9d2543952eeb110b6d46d9097090a0099163d1d5",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-grup-toplam-deney.png": "0aa21c4d7a3a202a90fd66d5eccbaf9145afcfa316833acdefccfc7fca756efd",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-grup-toplam-tamam.png": "28f37e960dcb24a2f94e39084dc55026386735c0dd8213881ab93566f49c8720",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-is-hiz-deney.png": "5b3486c56f1e3d2919c64300140d7f05bee4f6bbe4d0cb61c8bf863669707a71",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-is-hiz-tamam.png": "4e1625b86ba89ab14e68a044d52e830a0b8577cb3d06d101cd8ba874be0ad099",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-verim-deney.png": "ccf8af7af4968a687f21a33968effae976b3cfcb1000851a4dbe8280333bd0f5",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-verim-tamam.png": "e943ae3b574c83817774936b7be8a316657fb665e245c056f92ae62ee732831e",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-yas-fark-deney.png": "744e971998a91acf5b54f2150acd3824c168823f7b4120c72f450655109536cd",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-yas-isci-problemleri-yas-fark-tamam.png": "cf6ca100f7126c58f06fde83afde23c5e62ddb96803b05c12daf8de73b8d1c1d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-grup-toplam-deney.png": "013bfb7e8b4e0283e278c808234c7593defaa64adcc3c513959e827c5c5abae2",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-grup-toplam-tamam.png": "b7da4a3bf2a8bb8115ba2cbd9c0a5cc17b2454f92703475d4a50ee75378ce648",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-is-hiz-deney.png": "58442533fe0fee8f3deb94c1fb7b28c502a70f3ac0e1e21ba7e76b016e7b7ab1",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-is-hiz-tamam.png": "2b3272feed6e2c835bd30080d45b913696bc2f95501e6122cc10f180f083732a",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-verim-deney.png": "7b0166a58e7f4e79d628b4a37c7fd0bacd3cc44432da10c323bc308bda8d27c8",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-verim-tamam.png": "4cd8cd59ac4e503c8b7869687539dbf7f6bcab465e9dc4d66c0a04ec442b9436",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-yas-fark-deney.png": "8b3db532d1ccaf150685fd9667533c3532c9ac198a4da1f95220fe81401b0992",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-yas-isci-problemleri-yas-fark-tamam.png": "f21ff4a7f91c8818dbaa30423564c8279138bdf95c428655f7db75de3dd3e376"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

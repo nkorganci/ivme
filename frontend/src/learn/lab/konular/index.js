@@ -22,6 +22,7 @@ export const LAB_LOADERS = {
   'carpanlara-ayirma': () => Promise.all([import('./carpanlara-ayirma.js'), import('../cizim/carpanlara-ayirma.jsx')]),
   'oran-oranti': () => Promise.all([import('./oran-oranti.js'), import('../cizim/oran-oranti.jsx')]),
   'sayi-kesir-problemleri': () => Promise.all([import('./sayi-kesir-problemleri.js'), import('../cizim/sayi-kesir-problemleri.jsx')]),
+  'yas-isci-problemleri': () => Promise.all([import('./yas-isci-problemleri.js'), import('../cizim/yas-isci-problemleri.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -57,4 +58,6 @@ export const LAB_KESIF = {
   'oran-bilesik': ['oran-oranti', 'bilesik'],
   'sayi-kesir-problemleri': ['sayi-kesir-problemleri', 'denklem-kurma'], 'sk-sira': ['sayi-kesir-problemleri', 'denklem-kurma'],
   'sk-kalan': ['sayi-kesir-problemleri', 'kalanin-kesri'], 'sk-adet': ['sayi-kesir-problemleri', 'adet-tutar'],
+  'yas-isci-problemleri': ['yas-isci-problemleri', 'yas-fark'], 'yi-zaman': ['yas-isci-problemleri', 'yas-fark'],
+  'yi-grup': ['yas-isci-problemleri', 'grup-toplam'], 'yi-is': ['yas-isci-problemleri', 'is-hiz'],
 };
