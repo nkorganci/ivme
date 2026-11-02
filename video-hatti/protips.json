@@ -507,6 +507,27 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "fonksiyon-kavrami-video",
+      "conceptId": "fonksiyon-kavrami",
+      "hints": [
+        {
+          "id": "fonksiyon-sayisi-us",
+          "title": "Fonksiyon sayısı: s(B) üzeri s(A)",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        },
+        {
+          "id": "parantezi-istenene-esitle",
+          "title": "Parantezin içini istenen değere eşitle",
+          "sectionIds": [
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

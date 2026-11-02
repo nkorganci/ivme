@@ -14,6 +14,7 @@ import { ONERME_EXAMS } from './worked-onermeler.js';
 import { KOSULLU_EXAMS } from './worked-kosullu.js';
 import { KUMELER_EXAMS } from './worked-kumeler.js';
 import { KUME_ISLEM_EXAMS } from './worked-kume-islemleri.js';
+import { FONKSIYON_EXAMS } from './worked-fonksiyon.js';
 export const WORKED_EXAMS = {
   ...KAR_ZARAR_EXAMS,
   ...HAREKET_EXAMS,
@@ -24,6 +25,7 @@ export const WORKED_EXAMS = {
   ...KOSULLU_EXAMS,
   ...KUMELER_EXAMS,
   ...KUME_ISLEM_EXAMS,
+  ...FONKSIYON_EXAMS,
   ...YUZDE_KARISIM_EXAMS,
   ...YAS_ISCI_EXAMS,
   ...MATH_CONTINUATION_EXAMS,

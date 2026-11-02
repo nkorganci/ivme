@@ -25,5 +25,6 @@ import { diagrams as onermeler } from './onermeler-cizim.jsx';
 import { diagrams as kosullu } from './kosullu-onerme-cizim.jsx';
 import { diagrams as kumeler } from './kumeler-temel-cizim.jsx';
 import { diagrams as kumeIslem } from './kume-islemleri-cizim.jsx';
+import { diagrams as fonksiyon } from './fonksiyon-kavrami-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu, ...kumeler, ...kumeIslem };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu, ...kumeler, ...kumeIslem, ...fonksiyon };

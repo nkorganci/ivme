@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "a66632369713b4149e3bb6ab603fd59f48c4cd890ab259618bc38152b7937a1f",
+  "inputsHash": "137763c855a6eb838a1afe7d604c1bc84bec301ed4346320dbc2704359eb18e4",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1147,6 +1147,53 @@
       },
       "evidenceHash": "f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705",
       "contentHash": "731967a84cfcab9a9b6cdcafa6632acf2d24f6a00884a1764da09e0d1df0d965",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "fonksiyon-kavrami-video:fonksiyon-sayisi-us",
+      "conceptId": "fonksiyon-kavrami",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "Fonksiyon sayısı: s(B) üzeri s(A)",
+      "rule": "A'dan B'ye tanımlı fonksiyon sayısı s(B)^s(A)'dır: tanım kümesindeki her eleman, değer kümesinden bir görüntü seçer. Fonksiyon sayısı verilirse bu bir üslü denklemdir.",
+      "condition": "Tanım ve değer kümesi doğru belirlenmeli: üsse tanım kümesinin, tabana değer kümesinin eleman sayısı yazılır. Bazı elemanların görüntüsü sabitlenmişse onlar seçim yapmaz.",
+      "example": "s(A) = x − 2 ve s(B) = 3 için A'dan B'ye 81 fonksiyon varsa 3^(x−2) = 3^4, x = 6. A = {1, 2, 3, 4} kümesinde f(2) = 2 koşullu f: A → A fonksiyonları 4^3 = 64.",
+      "counterexample": "s(A)^s(B) yazmak (çocuklar anne seçer, anneler çocuk seçmez): s(A) = 2, s(B) = 3 için 3^2 = 9 fonksiyon vardır, 2^3 = 8 değil.",
+      "rationale": "Her eleman için seçenek sayısı s(B)'dir ve seçimler birbirinden bağımsızdır; çarpma ilkesiyle s(B) · s(B) · … = s(B)^s(A).",
+      "source": {
+        "providerId": "youtube:1DApaH26NFs",
+        "startSeconds": 1859,
+        "endSeconds": 1997
+      },
+      "evidenceHash": "5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8",
+      "contentHash": "1a464f178f49bb88e1fd40087f5141383f3da4a5476328db8d0725b5c71c327e",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "fonksiyon-kavrami-video:parantezi-istenene-esitle",
+      "conceptId": "fonksiyon-kavrami",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s2b"
+      ],
+      "title": "Parantezin içini istenen değere eşitle",
+      "rule": "f(ax + b) biçimindeki eşitliklerde istenen değeri elde etmek için parantezin içini o değere eşitle ve bulduğun x'i eşitliğin her iki yanına birden yaz.",
+      "condition": "Aynı x her iki tarafta aynı anda kullanılmalı. Birden çok fonksiyon zincirleniyorsa her adımda yalnız bilinen bir kurala ulaşana kadar devam et.",
+      "example": "f(x + 2) = g(x − 1) ve f(x − 3) = 2x + 1 ise g(4) için x − 1 = 4, x = 5: g(4) = f(7). f(7) için x − 3 = 7, x = 10: f(7) = 21. Yani g(4) = 21.",
+      "counterexample": "Yalnız bir tarafa x değerini yazmak eşitliği bozar; g(4) = f(4) gibi parantezleri doğrudan eşlemek de yanlıştır.",
+      "rationale": "Eşitlik her x için doğrudur; belirli bir x seçmek iki tarafın o noktadaki değerlerini eşler. Parantez içini istenen değere eşitlemek doğru x'i bulmanın yoludur.",
+      "source": {
+        "providerId": "youtube:bAisadeAerA",
+        "startSeconds": 3513,
+        "endSeconds": 3640
+      },
+      "evidenceHash": "5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8",
+      "contentHash": "aab8c53e60c8c302ff942c2e0e7f6a9be5f92c8ed6fc5a4b0f1f7e312e6edb15",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

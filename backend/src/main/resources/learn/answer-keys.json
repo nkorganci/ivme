@@ -1491,6 +1491,19 @@
    ],
    "version": "1472983ce40becda"
   },
+  "fonksiyon-kavrami:c1b": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
   "fonksiyon-kavrami:c2": {
    "conceptId": "fonksiyon-kavrami",
    "type": "choice",
@@ -1504,7 +1517,33 @@
    ],
    "version": "a7ece0af5749bb7c"
   },
+  "fonksiyon-kavrami:c2b": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "fonksiyon-kavrami:c3": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-kavrami:c3b": {
    "conceptId": "fonksiyon-kavrami",
    "type": "choice",
    "answer": "C",
@@ -1529,6 +1568,19 @@
     "E"
    ],
    "version": "fef49cc14d12ec09"
+  },
+  "fonksiyon-kavrami:c4b": {
+   "conceptId": "fonksiyon-kavrami",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "fonksiyon-kavrami:h1": {
    "conceptId": "fonksiyon-kavrami",

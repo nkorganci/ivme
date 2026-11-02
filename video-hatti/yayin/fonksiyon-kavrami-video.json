@@ -1,0 +1,137 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "fonksiyon-kavrami-video",
+  "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8",
+  "taskHash": "a61cf4ff0d3309546447b2eb97f31229e651346d4c6f3be396ee708129008aff",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\fonksiyon-kavrami-video",
+  "artifacts": {
+    "asamalar\\youtube-bAisadeAerA-metin\\a8af2ff9f38aa5aadc65a96874af669a67460a6e5ecfadcda518737c5ec8d8f7.json": "5ea2c9c7f59529ba6daac2dd5f3b51a7d6f0f0f70bd423523b0edcb6fdc48aec",
+    "asamalar\\youtube-bAisadeAerA-kareler\\d8343ad559e30b828c2643e46b1c91edd4f2e70b1b65bbd386461518cee62acc.json": "6c39a34b58021ac7b4c2070188e1d47d89091c9f897e530a9b55072a4d3bf05e",
+    "kareler\\c176774e1b482d7bf2d52c7e6c9b04384b340567c205b59d62b18320b81285de.png": "b9d19c014d4cd731b57b17044bc7c9d6751d4e26a0302fbe01d256620b5f8a1e",
+    "kareler\\ef5b42288f8ecaa8f55ddb5d683758c9740f21167ab397d72ebda14bc43d1d83.png": "926a664e556efd869653844363e6528397848cca582020cdcb2646721f616022",
+    "asamalar\\youtube-1DApaH26NFs-metin\\6de6086cf8f930fda51b78cb8ce466f34a29f1b71d25a190243cb872d3263791.json": "e224f1b03566118916b1099d998dc46bbc8cb455775aa9090dd4957d2fa71c09",
+    "asamalar\\youtube-1DApaH26NFs-kareler\\a377a1e7fc1d51b576418692973568fe4b227d054f3a06b3d63a9ef9440005cf.json": "e270ee7305324fece9e2610a7a0ff6401d1206ef51b7498897254ab7d059a1f3",
+    "kareler\\3f9e1f4b067d1ed18ba85dbd3a450377c5e5ebbcdb3318350217d067f6ee6643.png": "92ed8623b129440adfe5ac6e415fca3d17c25908a8009f4535f6e0d03597f318",
+    "kareler\\821714eafea7e5b9bebc269fe45e09479e9e9da27719b89f20bb26f89966bc08.png": "24616fb023156d0fe04562efbcd45c699801ddff35256dc9e84eec2d53960d84",
+    "asamalar\\matematik-denetimi\\f6dbe4fd44d46897de41c29efa4e152047b0f74d88bb90fd8d0123f07516f428.json": "f0bcf0ba9c39dc60b9c69ac3a03f58353b200725a86daa36f0eb503ee0e79347",
+    "surumler\\5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8.json": "37fbc5e82428ec2898f1caa2b7e2ae922f7153274586b916a1d098668552d05d",
+    "surumler\\5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8.oneriler.md": "4b746fac598e1d871d1d358363f6e83a661e0ac88d54abbc20b8538ba2e7edfa"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-fonksiyon-kavrami-test.py",
+        "sha256": "2a66afdfbb586616c8a51b27818225f0a913e1f18515f2f1d7b7e3360a1a7673",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "fonksiyon-kavrami-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 5,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.254
+    },
+    "videos": [
+      {
+        "providerId": "youtube:bAisadeAerA",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:1DApaH26NFs",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:bAisadeAerA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1857,
+      "normalization": {
+        "captionControlEvents": 1844,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 3540,
+          "file": "kareler\\ef5b42288f8ecaa8f55ddb5d683758c9740f21167ab397d72ebda14bc43d1d83.png",
+          "sha256": "926a664e556efd869653844363e6528397848cca582020cdcb2646721f616022",
+          "pixelHash": "ef5b42288f8ecaa8f55ddb5d683758c9740f21167ab397d72ebda14bc43d1d83",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 3620,
+          "file": "kareler\\c176774e1b482d7bf2d52c7e6c9b04384b340567c205b59d62b18320b81285de.png",
+          "sha256": "b9d19c014d4cd731b57b17044bc7c9d6751d4e26a0302fbe01d256620b5f8a1e",
+          "pixelHash": "c176774e1b482d7bf2d52c7e6c9b04384b340567c205b59d62b18320b81285de",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:1DApaH26NFs",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1187,
+      "normalization": {
+        "captionControlEvents": 1184,
+        "endClippedCues": 0,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1900,
+          "file": "kareler\\3f9e1f4b067d1ed18ba85dbd3a450377c5e5ebbcdb3318350217d067f6ee6643.png",
+          "sha256": "92ed8623b129440adfe5ac6e415fca3d17c25908a8009f4535f6e0d03597f318",
+          "pixelHash": "3f9e1f4b067d1ed18ba85dbd3a450377c5e5ebbcdb3318350217d067f6ee6643",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1980,
+          "file": "kareler\\821714eafea7e5b9bebc269fe45e09479e9e9da27719b89f20bb26f89966bc08.png",
+          "sha256": "24616fb023156d0fe04562efbcd45c699801ddff35256dc9e84eec2d53960d84",
+          "pixelHash": "821714eafea7e5b9bebc269fe45e09479e9e9da27719b89f20bb26f89966bc08",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "fonksiyon-sayisi-us",
+      "contentHash": "1a464f178f49bb88e1fd40087f5141383f3da4a5476328db8d0725b5c71c327e",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "parantezi-istenene-esitle",
+      "contentHash": "aab8c53e60c8c302ff942c2e0e7f6a9be5f92c8ed6fc5a4b0f1f7e312e6edb15",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 24,
-  "nextTopicId": "fonksiyon-kavrami",
+  "completed": 25,
+  "nextTopicId": "fonksiyon-grafikleri",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -299,13 +299,8 @@
         "AYT"
       ],
       "grade": 10,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "fonksiyon-grafikleri",

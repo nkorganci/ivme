@@ -46,8 +46,10 @@ deger-bulma 2 1-3
 fonksiyon-cesit 2 1-3
 parcali-islem 1 1-3
 
-@oturum Fonksiyon ve değer bulma | s1 s2
-@oturum Fonksiyon çeşitleri ve işlemler | s3 s4
+@oturum Fonksiyon ve sayımı | s1 s1b
+@oturum Değer bulma ve işlem eşitlikleri | s2 s2b
+@oturum Fonksiyon çeşitleri | s3 s3b
+@oturum Parçalı fonksiyon ve dört işlem | s4 s4b
 
 @ontest
 ::soru o1 tip=tanim-goruntu zorluk=1
@@ -157,6 +159,65 @@ E) 6 || Fazla.
 kontrol: 3
 cozum: $f(\pm 2) = 5$, $f(\pm 1) = 2$, $f(0) = 1$. Görüntü kümesi $\{1, 2, 5\}$: 3 eleman.
 
+@bolum s1b 10 | Kaç fonksiyon yazılabilir?
+::kesfet fk-sayi
+
+::fikir
+$A$'dan $B$'ye bir fonksiyon, A'nın **her elemanına B'den bir eleman** seçmektir. Her eleman için $s(B)$ seçenek olduğundan **fonksiyon sayısı $s(B)^{s(A)}$**'dır. **Bire bir** fonksiyonlarda seçilen görüntüler farklı olmalı: $s(B)\cdot(s(B)-1)\cdots$ (A'nın eleman sayısı kadar çarpan). Bağıntı sayısı ise $2^{s(A)\cdot s(B)}$'dir; fonksiyonlar bağıntıların küçük bir kısmıdır.
+
+::duzey
+L1: $A=\{1, 2\}$, $B=\{a, b, c\}$ ise 1 için 3, 2 için 3 seçenek vardır: $3\cdot3=9$ fonksiyon. Her seçim bir fonksiyon verir; çünkü her eleman tam bir görüntü alır.
+L2: Bire bir fonksiyonda 1 için 3, 2 için kalan 2 seçenek: $3\cdot2=6$. A'nın eleman sayısı B'ninkinden büyükse bire bir fonksiyon yazılamaz.
+L3: Koşullu sayımda koşulu sağlayan elemanları ayrı say: "$f(1)=a$ olan fonksiyonlar" için 1'in seçimi sabit, diğerleri serbest: $3^{s(A)-1}$. "Sabit olmayan fonksiyonlar" = tüm fonksiyonlar − sabit fonksiyonlar ($s(B)$ tane).
+
+::ornek baslik="Bütün ve bire bir fonksiyonlar"
+soru: $A=\{1, 2, 3\}$, $B=\{a, b, c, d\}$ ise A'dan B'ye kaç fonksiyon, kaç bire bir fonksiyon yazılabilir?
+1. Her eleman için 4 seçenek: $4^3=64$ fonksiyon. || Seçimler bağımsız.
+2. Bire bir: $4\cdot3\cdot2=24$. || Görüntüler farklı olmalı.
+3. Bire bir olmayan $64-24=40$. || Tümleyenle sayım.
+cevap: 64 ve 24
+
+::ornek baslik="Koşullu fonksiyon sayısı"
+soru: $A=\{1, 2, 3, 4\}$, $B=\{0, 1, 2\}$ ise $f(1)=0$ koşulunu sağlayan kaç fonksiyon vardır? Sabit olmayan kaç fonksiyon vardır?
+1. $f(1)$ belli; 2, 3, 4 için 3'er seçenek: $3^3=27$. || Sabitlenen eleman seçim yapmaz.
+2. Bütün fonksiyonlar $3^4=81$; sabit fonksiyonlar 3 tane (hepsi 0, hepsi 1, hepsi 2). || Her biri bir değer.
+3. Sabit olmayan $81-3=78$. || Tümleyen.
+cevap: 27 ve 78
+
+::ornek baslik="Fonksiyon sayısından eleman sayısı"
+soru: A'dan B'ye 64 fonksiyon, B'den A'ya 81 fonksiyon yazılabiliyor. $s(A)+s(B)$ kaçtır?
+1. $s(B)^{s(A)}=64$, $s(A)^{s(B)}=81$. || İki denklem.
+2. $64=4^3=8^2=2^6$; $81=3^4=9^2$. $s(A)=3$, $s(B)=4$ ikisini de sağlar. || $4^3=64$, $3^4=81$.
+3. $s(A)+s(B)=7$. || Diğer ayrışımlar ikinci denklemi sağlamaz.
+cevap: 7
+
+::sorgula s1b-dolap baslik="Ceketleri askılara asmak"
+durum: 3 ceket, 5 askıya asılacak. Her ceket bir askıya gider; bir askıya birden çok ceket asılabilir.
+soru: Kaç farklı asma biçimi vardır?
+A) 15 || Seçenekleri topladın gibi çarptın; her ceket için 5 seçenek bağımsız.
++B) 125 || Her ceket için 5 askı: $5^3$.
+C) 243 || Askıların ceket seçtiğini sandın: $3^5$.
+kontrol: 5^3
+neden: Ceketlerden askılara bir fonksiyon kuruyoruz: tanım kümesi ceketler (3), değer kümesi askılar (5). Fonksiyon sayısı $5^3=125$.
+sinav: "Her … bir … ile eşlenir" sorularında tanım kümesini (her elemanı bir kez seçen taraf) belirle; sayı $s(\text{değer})^{s(\text{tanım})}$.
+dusun: Her askıya en çok bir ceket asılırsa kaç biçim vardır?
+yanit: Bire bir: $5\cdot4\cdot3=60$.
+
+::yanilgi m1b tip=tanim-goruntu
+yanlis: 3 elemanlı A'dan 5 elemanlı B'ye $3^5$ fonksiyon yazılır.
+neden: Seçimi yapan tanım kümesinin elemanlarıdır; her biri 5 seçenekten birini alır.
+dogru: $5^3=125$ fonksiyon.
+
+::soru c1b tip=tanim-goruntu zorluk=2
+$A=\{a, b, c\}$, $B=\{1, 2, 3, 4, 5\}$ ise A'dan B'ye tanımlı bire bir fonksiyonlardan kaç tanesinde $f(a)=1$'dir?
+A) 6 || Hesabı kontrol et: $4\cdot3$.
++B) 12 || Doğru: b için 4, c için 3 seçenek.
+C) 20 || $f(a)$'yı serbest bıraktın gibi saydın.
+D) 25 || Bire bir koşulunu unuttun.
+E) 60 || Bütün bire bir fonksiyonları saydın.
+kontrol: 4*3
+cozum: $f(a)=1$ sabit. b için 1 dışında 4, c için kalan 3 seçenek: $4\cdot3=12$.
+
 @bolum s2 10 | $f(ax + b)$ ile değer ve kural
 ::fikir
 $f(ax + b)$ biçimindeki kurallarda **parantezin içini istenen değere eşitle**, bulduğun $x$'i kuralın diğer tarafına yaz. Kuralı bulmak için $ax + b = t$ dönüşümü yap.
@@ -211,6 +272,74 @@ D) 20 || Hesabı yeniden yap.
 E) 39 || 7'yi $x$ yerine yazdın; 7, $3x + 1$'in değeridir.
 kontrol: 2^2-2*2+4
 cozum: $3x + 1 = 7 \Rightarrow x = 2$. $f(7) = 2^2 - 2 \cdot 2 + 4 = 4$.
+
+@bolum s2b 12 | Parametreli kurallar ve işlem eşitlikleri
+::fikir
+$(f+g)(x)=f(x)+g(x)$, $(f\cdot g)(x)=f(x)\cdot g(x)$: işlem **aynı noktadaki değerlerle** yapılır. "$(f+g)(1)=f(1)$" gibi bir eşitlik bir değeri doğrudan verir ($g(1)=0$). Parametreli kurallarda her eşitlik **parametreler için bir denklem**dir; iki eşitlik iki parametreyi belirler.
+
+::duzey
+L1: $(f+g)(1)=f(1)$ ise $f(1)+g(1)=f(1)$, yani $g(1)=0$. Eşitliği açıp sadeleştirmek çoğu zaman tek bir değeri bırakır.
+L2: $f(x)=ax-b$ ise $f(2)=2a-b$: önce kurala sayıyı yaz, sonra eşitliği kur. İki ayrı eşitlik iki bilinmeyen için bir denklem sistemi verir.
+L3: $(f\cdot g)(1)=(f+g)(2)$ gibi eşitliklerde ikinci dereceden denklem çıkabilir. $a+1$ gibi ortak çarpanlar varsa iki tarafı bölmeden önce sıfır olup olamayacağına bak: $(a+1)^2=3(a+1)$ ise $a=-1$ ya da $a=2$; koşul ($a>0$) birini eler.
+
+::cikmis TYT-0782 tip=parcali-islem
+
+::ornek baslik="Benzer: iki eşitlik, iki parametre"
+soru: $f(x)=ax+b$, $g(x)=bx-3$ olmak üzere $(f-g)(1)=f(1)$ ve $(f+g)(3)=g(3)$ ise $a\cdot b$ kaçtır?
+1. $(f-g)(1)=f(1)$ ise $g(1)=0$: $b-3=0$, $b=3$. || Eşitliği aç.
+2. $(f+g)(3)=g(3)$ ise $f(3)=0$: $3a+3=0$, $a=-1$. || İkinci eşitlik.
+3. $a\cdot b=-3$. || Kontrol: $f(x)=-x+3$, $f(3)=0$ ✓
+cevap: −3
+
+::cikmis TYT-0788 tip=parcali-islem
+
+::ornek baslik="Benzer: çarpım ve toplam eşit"
+soru: $a>0$ olmak üzere $f(x)=x+a$, $g(x)=ax+3$ ve $(f\cdot g)(1)=(f+g)(2)$ ise $g(5)$ kaçtır?
+1. $(f\cdot g)(1)=(1+a)(a+3)$. || İki değeri çarp.
+2. $(f+g)(2)=(2+a)+(2a+3)=3a+5$. || İki değeri topla.
+3. $a^2+4a+3=3a+5$, $a^2+a-2=0$, $a=1$ ($a>0$). $g(5)=5+3=8$. || $a=-2$ elenir.
+cevap: 8
+
+::ornek baslik="Bir noktada fark sıfır"
+soru: $f(x)=2x+k$, $g(x)=x^2-1$ olmak üzere $(f-g)(3)=0$ ise $(f\cdot g)(1)$ kaçtır?
+1. $(f-g)(3)=0$ ise $f(3)=g(3)$: $6+k=8$, $k=2$. || Fark sıfır = değerler eşit.
+2. $f(1)=4$, $g(1)=0$. || Kurala yaz.
+3. $(f\cdot g)(1)=4\cdot0=0$. || Çarpanlardan biri sıfır.
+cevap: 0
+
+::tamamla baslik="Toplamdan kural"
+soru: $f(x)=ax+2$, $g(x)=3x+b$ ve $(f+g)(x)=5x+7$ ise $f(1)\cdot g(1)$ kaçtır?
+1. $(f+g)(x)=(a+3)x+(2+b)$. || Kuralları topla.
+?2. $a+3=5$, $2+b=7$: $a=2$, $b=5$. || Katsayıları eşitle.
+?3. $f(1)=4$, $g(1)=8$: çarpım 32. || Değerleri hesapla.
+cevap: 32
+
+::sorgula s2b-iki-dukkan baslik="İki dükkânın gelirleri"
+durum: Bir kırtasiyenin x adet defter satışından geliri $f(x)=12x$, bir kitapçının geliri $g(x)=9x+30$ lira. $(f-g)(x)$ iki dükkânın aynı adet satıştaki gelir farkını veriyor.
+soru: $(f-g)(x)=0$ olan x ne anlama gelir ve kaçtır?
+A) Kırtasiyenin geliri sıfır; $x=0$ || $(f-g)(x)=0$ değerlerin eşit olduğu yerdir, birinin sıfır olduğu yer değil.
++B) İki gelir eşit; $x=10$ || $12x=9x+30$, $x=10$.
+C) Kitapçının geliri sıfır; $x=-\frac{10}{3}$ || $g(x)=0$ çözüldü; soru farkın sıfır olduğunu soruyor.
+kontrol: 30/3
+neden: $(f-g)(x)=f(x)-g(x)=3x-30$. Sıfır olduğu yerde iki gelir eşittir: $x=10$ adette ikisi de 120 lira.
+sinav: $(f-g)(x)=0$ iki fonksiyonun eşit olduğu x'tir; grafiklerin kesiştiği yer.
+dusun: 15 adet satışta hangi dükkân kaç lira fazla kazanır?
+yanit: $(f-g)(15)=15$: kırtasiye 15 lira fazla.
+
+::yanilgi m2b tip=parcali-islem
+yanlis: $(f\cdot g)(x)$, $f(g(x))$ demektir.
+neden: Çarpım aynı noktadaki değerlerin çarpımıdır; bileşke ayrı bir işlemdir.
+dogru: $(f\cdot g)(x)=f(x)\cdot g(x)$.
+
+::soru c2b tip=parcali-islem zorluk=2
+$f(x)=mx+1$, $g(x)=x+m$ olmak üzere $(f+g)(2)=(f\cdot g)(0)+11$ ise $m$ kaçtır?
+A) 2 || Hesabı kontrol et.
+B) 3 || Hesabı yeniden yap.
++C) 4 || Doğru: $3m+3=m+11$.
+D) 5 || $(f\cdot g)(0)$'ı $m^2$ aldın.
+E) 8 || Hesabı kontrol et: $2m=8$.
+kontrol: 4
+cozum: $(f+g)(2)=(2m+1)+(2+m)=3m+3$; $(f\cdot g)(0)=1\cdot m=m$. $3m+3=m+11$, $m=4$.
 
 @bolum s3 9 | Fonksiyon çeşitleri
 ::fikir
@@ -274,6 +403,71 @@ E) 4 || Hesabı yeniden yap.
 kontrol: 2+0
 cozum: Tek fonksiyonda çift dereceli terimler yoktur: $b - 2 = 0$ ve sabit terim $c = 0$. $b + c = 2$.
 
+@bolum s3b 10 | Çeşit koşullarından parametre bulmak
+::kesfet fk-cesit
+
+::fikir
+Fonksiyon çeşitleri **kuralın katsayılarına koşul** koyar. $f(x)=ax+b$ için: **sabit** ise $a=0$; **birim** ise $a=1$, $b=0$; **tek** ise $f(-x)=-f(x)$, yani $b=0$; **bire bir** ise $a\neq0$. Polinomlarda **çift** fonksiyonun yalnız çift kuvvetleri, **tek** fonksiyonun yalnız tek kuvvetleri vardır.
+
+::duzey
+L1: $f(x)=(a-2)x+5$ sabit fonksiyonsa x'in katsayısı 0'dır: $a=2$ ve $f(x)=5$. Her girdi aynı çıktıyı verir.
+L2: $f(x)=(m-1)x^2+(n+2)x+k$ birim fonksiyonsa $f(x)=x$ olmalı: $m-1=0$, $n+2=1$, $k=0$. Katsayıları tek tek eşitle.
+L3: $f(x)=x^3+(a-1)x^2+bx+c$ tek fonksiyonsa çift kuvvetlerin katsayıları ve sabit terim sıfırdır: $a=1$, $c=0$; $b$ serbesttir. Çift fonksiyonda tek kuvvetler ve doğrusal terim sıfırlanır. Tek fonksiyon 0'da tanımlıysa $f(0)=0$'dır.
+
+::ornek baslik="Birim fonksiyondan değerler"
+soru: $f(x)=(m-1)x^2+(n+2)x+k$ birim fonksiyon ise $m+n+k$ kaçtır?
+1. Birim: $f(x)=x$. || Her x kendisine gider.
+2. $m-1=0$, $n+2=1$, $k=0$: $m=1$, $n=-1$, $k=0$. || Katsayıları eşitle.
+3. $m+n+k=0$. || Kontrol: $f(x)=x$ ✓
+cevap: 0
+
+::ornek baslik="Tek fonksiyon koşulu"
+soru: $f(x)=x^3+(a-1)x^2+bx+c+2$ tek fonksiyon ve $f(1)=5$ ise $a+b+c$ kaçtır?
+1. Çift kuvvet ve sabit sıfır: $a-1=0$, $c+2=0$; $a=1$, $c=-2$. || Tek fonksiyonda yalnız tek kuvvetler.
+2. $f(x)=x^3+bx$; $f(1)=1+b=5$, $b=4$. || Kalan bilgi.
+3. $a+b+c=1+4-2=3$. || Kontrol: $f(-1)=-5=-f(1)$ ✓
+cevap: 3
+
+::ornek baslik="Çift fonksiyonda simetri"
+soru: Çift bir f fonksiyonu için $f(-3)+f(3)=14$ ve $f(2)=5$ ise $f(3)+f(-2)$ kaçtır?
+1. Çift: $f(-x)=f(x)$; $f(-3)=f(3)$. || y eksenine simetri.
+2. $2f(3)=14$, $f(3)=7$; $f(-2)=f(2)=5$. || Simetrik değerler eşit.
+3. $7+5=12$. || Toplam.
+cevap: 12
+
+::tamamla baslik="Sabit fonksiyonun değeri"
+soru: $f(x)=(2a-6)x+a+1$ sabit fonksiyon ise $f(10)$ kaçtır?
+1. Sabit fonksiyonda x'in katsayısı 0'dır. || Çıktı girdiye bağlı değil.
+?2. $2a-6=0$, $a=3$. || Katsayıyı sıfırla.
+?3. $f(x)=3+1=4$; $f(10)=4$. || Her girdi için aynı değer.
+cevap: 4
+
+::sorgula s3b-sabit baslik="Sabit tarifeli otopark"
+durum: Bir otoparkın ücreti saate göre $f(x)=(a-3)x+40$ lira olarak yazılmış. Otopark "kaç saat kalırsanız kalın aynı ücret" diye ilan ediyor.
+soru: $a$ kaçtır ve 5 saatlik ücret kaç liradır?
+A) $a=0$; 25 lira || Bu durumda $f(x)=-3x+40$ olur; ücret saate bağlı değişir.
++B) $a=3$; 40 lira || Sabit fonksiyon: x'in katsayısı 0; $f(x)=40$.
+C) $a=3$; 200 lira || Sabit ücreti saatle çarptın.
+neden: "Hep aynı ücret" sabit fonksiyon demektir: $a-3=0$, $a=3$. O zaman $f(x)=40$ ve $f(5)=40$ lira.
+sinav: Sabit fonksiyonda değişkenin katsayısı 0'dır; çıktı girdiden bağımsızdır.
+dusun: $a=4$ olsaydı 5 saatlik ücret?
+yanit: $f(x)=x+40$: 45 lira.
+
+::yanilgi m3b tip=fonksiyon-cesit
+yanlis: $f(x)=x^2+x$ çift fonksiyondur, çünkü $x^2$ çifttir.
+neden: Bir fonksiyonun çift olması için bütün terimler çift olmalı; $x$ terimi tektir.
+dogru: $f(-x)=x^2-x\neq f(x)$: ne tek ne çift.
+
+::soru c3b tip=fonksiyon-cesit zorluk=2
+$f(x)=(a+2)x^2+(b-3)x+c-1$ fonksiyonu tek fonksiyon ve $f(2)=6$ ise $a+b+c$ kaçtır?
+A) 2 || Hesabı kontrol et.
+B) 3 || Hesabı yeniden yap.
++C) 5 || Doğru: $a=-2$, $c=1$, $b=6$.
+D) 6 || $c$'yi 0 aldın.
+E) 7 || $a$'yı 0 aldın.
+kontrol: -2+6+1
+cozum: Tek fonksiyon: $a+2=0$, $c-1=0$; $a=-2$, $c=1$. $f(x)=(b-3)x$; $f(2)=2(b-3)=6$, $b=6$. Toplam $-2+6+1=5$.
+
 @bolum s4 8 | Parçalı fonksiyon ve dört işlem
 ::fikir
 Parçalı fonksiyonda önce **değerin hangi aralığa düştüğüne** bak, sonra o aralığın kuralını kullan. Dört işlemde tanım kümesi **ortak kısımdır**; bölümde paydayı sıfır yapan değerler çıkarılır.
@@ -326,6 +520,67 @@ D) 8 || Birinci kuralı kullandın; $5 > 1$.
 +E) 9 || Doğru: $f(3) = 5$, $f(5) = 9$.
 kontrol: 2*5-1
 cozum: $3 > 1$: $f(3) = 2 \cdot 3 - 1 = 5$. $5 > 1$: $f(5) = 2 \cdot 5 - 1 = 9$.
+
+@bolum s4b 10 | Toplam ve farktan fonksiyonları geri bulmak
+::kesfet fk-toplam
+
+::fikir
+Bir noktada $(f+g)$ ve $(f-g)$ değerleri biliniyorsa **iki denklemle** $f$ ve $g$ bulunur: $f=\frac{(f+g)+(f-g)}{2}$, $g=\frac{(f+g)-(f-g)}{2}$. Çarpım için kısa yol: $(f\cdot g)=\frac{(f+g)^2-(f-g)^2}{4}$. Grafik verildiyse önce değerleri **eksenlerden oku**.
+
+::duzey
+L1: $(f+g)(2)=10$ ve $(f-g)(2)=4$ ise topla: $2f(2)=14$, $f(2)=7$; çıkar: $2g(2)=6$, $g(2)=3$.
+L2: Çarpım istenirse f ve g'yi ayrı bulup çarpabilirsin ya da $\frac{(f+g)^2-(f-g)^2}{4}$ kullanırsın: $\frac{100-16}{4}=21$. Bu, iki kare farkı özdeşliğidir.
+L3: Grafik sorularında $(f+g)$ ve $(f-g)$ doğrularının aynı x'teki değerleri okunur; bilinmeyen bir değer (b) ve çarpım bilgisi verilirse kısa yol $b^2$ için doğrudan bir denklem verir. Negatif kökü grafikteki konuma göre ele.
+
+::cikmis TYT-0786 tip=parcali-islem
+
+::ornek baslik="Benzer: toplam, fark ve çarpım"
+soru: Bir $a$ noktasında $(f+g)(a)=b$, $(f-g)(a)=4$ ve $(f\cdot g)(a)=21$'dir. $b>0$ ise $b$ kaçtır?
+1. $(f\cdot g)(a)=\frac{b^2-4^2}{4}$. || İki kare farkı.
+2. $\frac{b^2-16}{4}=21$, $b^2=100$. || Denklem.
+3. $b=10$ ($b>0$). || Kontrol: $f(a)=7$, $g(a)=3$, $7\cdot3=21$ ✓
+cevap: 10
+
+::ornek baslik="İki değerden ikisini de bul"
+soru: $(f+g)(3)=11$ ve $(f-g)(3)=-5$ ise $f(3)$ ve $g(3)$ kaçtır?
+1. Topla: $2f(3)=6$, $f(3)=3$. || g'ler sadeleşir.
+2. Çıkar: $2g(3)=16$, $g(3)=8$. || f'ler sadeleşir.
+3. Kontrol: $3+8=11$, $3-8=-5$ ✓ || İki eşitlik de sağlanıyor.
+cevap: $f(3)=3$, $g(3)=8$
+
+::ornek baslik="Kurallar toplamı ve farkından"
+soru: $(f+g)(x)=5x+1$ ve $(f-g)(x)=x-3$ ise $f(x)$ ve $(f\cdot g)(2)$ nedir?
+1. $f(x)=\frac{(5x+1)+(x-3)}{2}=3x-1$. || Kurallarla da aynı yol.
+2. $g(x)=\frac{(5x+1)-(x-3)}{2}=2x+2$. || Fark.
+3. $(f\cdot g)(2)=5\cdot6=30$. || Kontrol: $\frac{11^2-(-1)^2}{4}=30$ ✓
+cevap: $f(x)=3x-1$; 30
+
+::sorgula s4b-maas baslik="İki maaşın toplamı ve farkı"
+durum: İki kardeşin aylık gelirlerinin toplamı 50 bin, farkı 10 bin liradır.
+soru: Gelirlerinin çarpımı (bin lira kare) kaçtır?
+A) 500 || Toplamla farkı çarptın.
++B) 600 || $\frac{50^2-10^2}{4}=600$: gelirler 30 ve 20.
+C) 625 || Gelirleri eşit (25'er) aldın.
+kontrol: (50^2-10^2)/4
+neden: Toplam ve fark birlikte iki sayıyı belirler: $\frac{50+10}{2}=30$, $\frac{50-10}{2}=20$; çarpım 600. Kısa yol $\frac{(t)^2-(f)^2}{4}$ aynı sonucu verir.
+sinav: Toplam ve fark verildiğinde iki sayıyı (ya da iki fonksiyon değerini) toplayıp çıkararak bul; çarpım için iki kare farkını kullan.
+dusun: Fark 0 olsaydı çarpım ne olurdu?
+yanit: $\frac{2500}{4}=625$: toplamı sabit iki sayının çarpımı eşitken en büyüktür.
+
+::yanilgi m4b tip=parcali-islem
+yanlis: $(f+g)(a)=b$ ve $(f-g)(a)=2$ ise $(f\cdot g)(a)=2b$'dir.
+neden: Toplam ile farkın çarpımı $f^2-g^2$'dir, $f\cdot g$ değil.
+dogru: $(f\cdot g)(a)=\frac{b^2-4}{4}$.
+
+::soru c4b tip=parcali-islem zorluk=2
+$(f+g)(1)=9$ ve $(f-g)(1)=3$ ise $\left(\frac{f}{g}\right)(1)+(f\cdot g)(1)$ kaçtır?
+A) 18 || Bölümü eklemeyi unuttun.
+B) 19 || Hesabı kontrol et: $\frac{6}{3}=2$.
++C) 20 || Doğru: $f(1)=6$, $g(1)=3$; $2+18$.
+D) 21 || Hesabı yeniden yap.
+E) 27 || Toplamla farkı çarptın.
+kontrol: 6/3+6*3
+cozum: $f(1)=\frac{9+3}{2}=6$, $g(1)=\frac{9-3}{2}=3$. $\frac{6}{3}+18=20$.
 
 ::ozet
 - Fonksiyon: tanım kümesinin her elemanı tek görüntü; değer kümesinde açık eleman olabilir; $n^m$ fonksiyon.
