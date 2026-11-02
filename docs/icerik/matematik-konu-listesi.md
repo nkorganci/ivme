@@ -89,12 +89,12 @@ adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel 
 
 ## Laboratuvar kapsamı ve devam sırası
 
-**Yeni lab kabulüne göre:** TYT **8/32 teknik hazır**, AYT **0/24 teknik hazır**.
-Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`; kalan 48 konuda standarda göre kabulü
+**Yeni lab kabulüne göre:** TYT **9/32 teknik hazır**, AYT **0/24 teknik hazır**.
+Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`, `uslu-ifadeler`; kalan 47 konuda standarda göre kabulü
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `uslu-ifadeler` labı; sonra `koklu-ifadeler` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+**Sıradaki çalışma:** `koklu-ifadeler` labı; sonra `carpanlara-ayirma` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
 yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
 manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
 konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
@@ -123,7 +123,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `birinci-derece-denklemler` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/birinci-derece-denklemler.json`; öğretmen/öğrenci kabulü yok | Denk işlem (terazi, tek kefeye işlem tuzağı), çözüm yok/sonsuz (iki doğru), denklem sistemi (kesişim), istenen ifade (denklemin katı); 6 doğrulanmış ÖSYM sorusu (aynı kategorideki eşitsizlik bankasından). Özel durum hedefinde eşleşen soru derste çözülmüş |
 | `esitsizlikler` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/esitsizlikler.json`; öğretmen/öğrenci kabulü yok | Aralık ve tam sayılar (açık/kapalı uç), yön değişimi (kx+c eşlemesi), ifadenin aralığı (farkta çapraz uç, karede 0), iki bilinmeyenli tam sayı bölgesi; 5 doğrulanmış ÖSYM sorusu. İfade aralığı hedefinde uygun soru derste çözülmüş |
 | `mutlak-deger` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/mutlak-deger.json`; öğretmen/öğrenci kabulü yok | Uzaklık (\|x−a\|=r iki nokta), işarete göre açma (parçalı ifade, kritik noktalar), bant (merkez ± yarıçap), uzaklıklar toplamı (ortanca); 7 doğrulanmış ÖSYM sorusu |
-| `uslu-ifadeler` | ⬜ LAB YOK | Çarpan yapısı ve büyüme; üs kurallarının nedenini, taban/parantez koşulunu kur |
+| `uslu-ifadeler` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/uslu-ifadeler.json`; öğretmen/öğrenci kabulü yok | Negatif taban ve parantez, kuvvet kuralları (çarpma/üssün üssü), ortak paranteze alma ve büyüme, ortak üsle sıralama; 5 doğrulanmış ÖSYM sorusu. Negatif taban ve sıralama hedeflerinde eşleşen soru yok/derste çözülmüş |
 | `koklu-ifadeler` | ⬜ LAB YOK | Alan–kenar, çarpan çıkarma ve eşlenik; tanım koşulu ve sahte kökü denetle |
 | `carpanlara-ayirma` | ⬜ LAB YOK | Alan/parçalama ve çözüm karşılaştırma; yapıyı tanı, sadeleştirmede yasak değeri koru |
 | `oran-oranti` | ⬜ LAB YOK | Eş ölçekli çubuklar ve birim oran; doğru/ters orantıyı ve korunan miktarı ayır |

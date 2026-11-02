@@ -17,6 +17,7 @@ export const LAB_LOADERS = {
   'birinci-derece-denklemler': () => Promise.all([import('./birinci-derece-denklemler.js'), import('../cizim/birinci-derece-denklemler.jsx')]),
   'esitsizlikler': () => Promise.all([import('./esitsizlikler.js'), import('../cizim/esitsizlikler.jsx')]),
   'mutlak-deger': () => Promise.all([import('./mutlak-deger.js'), import('../cizim/mutlak-deger.jsx')]),
+  'uslu-ifadeler': () => Promise.all([import('./uslu-ifadeler.js'), import('../cizim/uslu-ifadeler.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -42,4 +43,6 @@ export const LAB_KESIF = {
   'esitsizlik-ifade': ['esitsizlikler', 'aralik-ifade'], 'esitsizlik-bolge': ['esitsizlikler', 'bolge'],
   'mutlak-deger': ['mutlak-deger', 'uzaklik'], 'mutlak-parcali': ['mutlak-deger', 'tanim-acma'], 'mutlak-denklem': ['mutlak-deger', 'uzaklik'],
   'mutlak-bant': ['mutlak-deger', 'bant'], 'mutlak-ortanca': ['mutlak-deger', 'minimum'],
+  'uslu-ifadeler': ['uslu-ifadeler', 'negatif-taban'], 'uslu-parantez': ['uslu-ifadeler', 'negatif-taban'],
+  'uslu-ortak': ['uslu-ifadeler', 'ortak-paranteze'], 'uslu-buyume': ['uslu-ifadeler', 'siralama'],
 };

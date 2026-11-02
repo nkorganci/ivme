@@ -1,0 +1,87 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "uslu-ifadeler",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "negatif-taban",
+      "label": "Negatif taban",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "kurallar",
+      "label": "Kuvvet kuralları",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0640",
+        "TYT-0636",
+        "TYT-0638"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ortak-paranteze",
+      "label": "Ortak paranteze alma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0642",
+        "TYT-0646"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "siralama",
+      "label": "Üslüleri sıralama",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/uslu-ifadeler.js": "c4166b586bbed277c446a4959d3d5a2af143ebe23caf1386058364f1aef2efba",
+    "frontend/src/learn/lab/cizim/uslu-ifadeler.jsx": "349e19e7b32028c8fadb52ef1677cea116ef18304c4cbda5a00c5ccb859cee32",
+    "testler/lab-uslu-ifadeler.test.mjs": "01c9801486c87660ae04a5a82674eb60809a6728d61c826bccb67da5be2382b6",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-uslu-ifadeler-rapor.json": "c60a16ad9f142e5484baf5263f5a1f41ff27a808e726796723876b6ead865ebf",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-kurallar-deney.png": "7f5b69bb49e86970a5865cf20af08df7167eecd89b156103500bc5b0f69bbb70",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-kurallar-tamam.png": "bfea54985d1a99f908a9061b8688e216bbfea60122dfdab317f984932979b1e4",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-negatif-taban-deney.png": "9070191748f419786fc3b992dd5eb61acadec1a9e009eab705355220e9fe774b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-negatif-taban-tamam.png": "cb039b31722b97efdd42ce003b6c84505b284e69708898fc4747cc91cbb1a0ae",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-ortak-paranteze-deney.png": "de115dd4c0e5ce6c46b949efab90e5313f8123dd370c684a6620f02168479c8f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-ortak-paranteze-tamam.png": "58d749dcd82434b22758e498a6b2c6951f5a6587a8ceff714bab4dba410fa0f6",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-siralama-deney.png": "b24707e348df621a36fb1b9aa2d1b22f9ff3c647584a4247a52faedc1d253be7",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-uslu-ifadeler-siralama-tamam.png": "1b860ff7140ea7615c623ee81fce4d89839a82bc54428856f5e3aea8cbf3013d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-kurallar-deney.png": "ecd57ab67cebdd59a53782e2d7fde50498bd0e81fada445e6370603aae6a5752",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-kurallar-tamam.png": "3af14d336d8d0cc30aa415f734dec6d9dd57420d85c2264b786bc4d65ea7f91b",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-negatif-taban-deney.png": "5758413c4004315e290631773d80fc3b82c566cafe28a302b44aed60bfc55269",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-negatif-taban-tamam.png": "df344e759754c3c89b4e2c5f1309d9f3e85d70e4b1b466a1e6db3bfeb224e9f9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-ortak-paranteze-deney.png": "7f89c4fbc2f45bafdaf4d44435fe1c224dff84a53acf318616e05929ea24a0cc",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-ortak-paranteze-tamam.png": "314e087fad04493c44187ce7b2d6302346a3f80b374d487b3cc7f39a99befa9f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-siralama-deney.png": "4be404896dcb1abf794670f172f90c813c660489394ee71a0a02bd67219bede9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-uslu-ifadeler-siralama-tamam.png": "0d78cf8dfa4d30a59388197f8957e6a401aa1839c1b872330e4bd194e842702c"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

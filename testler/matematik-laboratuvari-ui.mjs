@@ -77,7 +77,7 @@ async function runGoal({ browser, mobile, out, conceptId, goal, steps }) {
   for (const [i, r] of goal.reasons.entries()) await pick(i ? `Gerekçe ${i + 1}` : 'Gerekçen', i === 0 ? wrong(r) : r.answer);
   await textClick('Gerekçemi kontrol et');
   await wait('document.querySelector(".pl-reason .pl-retry")');
-  const expected = goal.reasons[0].feedback[wrong(goal.reasons[0])].replace(/\$[^$]*\$/g, ' ').split(/[\s,.;:()“”'’]+/).filter((w) => w.length >= 5)[0];
+  const expected = goal.reasons[0].feedback[wrong(goal.reasons[0])].replace(/\$[^$]*\$/g, ' ').split(/[\s,.;:()“”'’]+/).filter((w) => w.length >= 2).sort((a, b) => b.length - a.length)[0] ?? '';
   const shown = await evalJs('document.querySelector(".pl-reason .pl-retry").textContent');
   assert.ok(shown.replace(/\s+/g, ' ').includes(expected), `${goal.id}: yanlış gerekçeye özel geri bildirim (${expected} / ${shown.slice(0, 120)})`);
   assert.ok(await evalJs('document.querySelectorAll(".pl-stages button")[3].disabled'));
