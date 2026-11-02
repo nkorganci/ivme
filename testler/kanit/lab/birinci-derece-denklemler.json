@@ -57,7 +57,7 @@
     "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
     "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
     "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
-    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
   },
   "artifacts": {
     "veri/ui-denetim/konu-ogrenme/laboratuvar-birinci-derece-denklemler-rapor.json": "d2db169eb5571c1da3380636eebcd81a469f9da2bf1527d2adb0862f29a86811",

@@ -1,0 +1,87 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "koklu-ifadeler",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "kok-disi",
+      "label": "Kök dışına çıkarma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0635",
+        "TYT-0639",
+        "TYT-0645"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "tahmin",
+      "label": "Kökü yerleştir",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0631",
+        "TYT-0647"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "eslenik",
+      "label": "Eşlenik",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "denklem",
+      "label": "Köklü denklem",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/koklu-ifadeler.js": "aee6b0afd09a194e162fc1cd82d61c89b1518170df92d5842292b3644094b34a",
+    "frontend/src/learn/lab/cizim/koklu-ifadeler.jsx": "5afd3fc6b771a9d16991e1ac2c471f2c46e14e320d41bd2b2eccdcf0c0d1282b",
+    "testler/lab-koklu-ifadeler.test.mjs": "58635dea0f2da56ec6533bb0550efcae4637280e0f1176b36a928a44d9035511",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-koklu-ifadeler-rapor.json": "de8d69cc0c3583714892391523ba2e4c098fb2b40b91b49bded2679b1ac65af7",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-denklem-deney.png": "5ebdb28b5940565748ac9ee60ab36668d95634dc7d65b4bc7721440c19f622d0",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-denklem-tamam.png": "905b78232c3f18e648829ff065c5e77df6085721fcc15f0faff10ff70b3979cf",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-eslenik-deney.png": "f144ae7a61ce3b68042266b4cae3ffc756b5cff20dedbb4ff98aca76d36ebed9",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-eslenik-tamam.png": "3f3432657225eb3d97708dfe3cb4ce83f3a6052e420923e051b6566e26b655a3",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-kok-disi-deney.png": "fe4933d94039faf14a1d7c080bc6475b5dd582889b75c5624955a3f6bc80ac1a",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-kok-disi-tamam.png": "20711ac9c3e7234bf611554df0815aa6b94b0df027b610e382fa3d2d5645a649",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-tahmin-deney.png": "939761ea171175011e681e0f9093ef0e470ad3a3e87c3911f0a96c57f9c33a44",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-koklu-ifadeler-tahmin-tamam.png": "e4c19f4510fa7b2c70ab5819f206e8f808116657168e30751da8e4eb356a32d8",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-denklem-deney.png": "b3407efdef255b7a765f2b4a32baf86071abb6490b4946dbd557b4e764339665",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-denklem-tamam.png": "e0282565e3b92ef27cbe988d936171ed5ef0adba348be7b1924a136e9d4eea3e",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-eslenik-deney.png": "fe52581325500cafda5fe48dd2cb57e51657f2d6d0e71c886e983f83c553dd19",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-eslenik-tamam.png": "00d633a2e7ed0ec2ede55f4fd6d03590a361ab3afa11163c46b4469f30e82435",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-kok-disi-deney.png": "d955875c4dd0f7769b491b0b2b0cdcd90e7a5c445acc97f48e55248ce4dc1b7d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-kok-disi-tamam.png": "902312c6d2aefd6defd1b5ff7de9fe67fbba487e2147dbcc46c40718f9ccfde9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-tahmin-deney.png": "aaa12e391ed0525f0552174f28bdaf37ac3d703aeb789306a479e5a9dcfc0798",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-koklu-ifadeler-tahmin-tamam.png": "fe23cfe588bdb0e6bc78f443e00f29b678be857353238193fcc12108c0576482"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

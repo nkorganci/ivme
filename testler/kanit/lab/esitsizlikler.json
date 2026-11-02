@@ -56,7 +56,7 @@
     "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
     "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
     "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
-    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
   },
   "artifacts": {
     "veri/ui-denetim/konu-ogrenme/laboratuvar-esitsizlikler-rapor.json": "04505091dc4c0e192a21a17421caca6eb7b6a94271318d22d7f897468b8a3165",
@@ -65,11 +65,11 @@
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-ifade-tamam.png": "66601212350a8cf525b3a48d8c7a50e6b032a5119e23c78b9c1ce124cd606607",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-tamam.png": "90a955793f228ba9babd1395df38b4b3e7590f823d9588eef15dcf046e059f33",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-bolge-deney.png": "23ae96ea0e0afdfd2cf97f4c86d045d1d06e0becdda75541c5d0554717e427ec",
-    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-bolge-tamam.png": "b4d12a431910ca05794b0665e9c9033222890a34fc07b0f983b983d5a224b634",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-bolge-tamam.png": "b373913768872246dbf27a64a197b3acb3f59b975f28f788453f6b46e5bc633a",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-yon-deney.png": "373c1099aea63affaf76f4849dbd28435763b259b74f6b4bd01ce405c2f20ff8",
-    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-yon-tamam.png": "08d52d70f49ebc0d0c38c54da62ad443aeabb6f638f1ce8eddee4c21824a155d",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-yon-tamam.png": "74ac2c3be01e6851b466e7151d58a215d6046a345296038688e12351567fdacc",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-deney.png": "232aed172e2cc406261bbe5ec59fa62ae2f620f55b8af1f7eea792af9ebb96e0",
-    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-ifade-deney.png": "fef425fb56b310b9b5515c7d0d9d151477b180754ad09181cc126a2db89e1555",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-ifade-deney.png": "9d3dc61209551ead85ad39c3aa839bc774a7b614b2b57e8a4d5f9ec21434ed60",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-ifade-tamam.png": "5660965dd9b259a868ccb2d6fe73b3eae806269c6c288914a2ed788b051070ba",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-tamam.png": "1d87e242c4eaff5801074deaef7f2c665ba13050821aa4915d8751cacf92ec02",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-bolge-deney.png": "48dd5ca47d4190a946aa2c951b9f0836427d16e35a1cd6312057c14eb3aae80d",

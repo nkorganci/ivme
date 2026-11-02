@@ -58,16 +58,16 @@
     "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
     "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
     "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
-    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
   },
   "artifacts": {
     "veri/ui-denetim/konu-ogrenme/laboratuvar-sayi-basamaklari-rapor.json": "308fa0d494c5c2126611f9d9f0cf240b216400967c2d0bdab4980fb008e83261",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-basamak-sayisi-deney.png": "7565f8a5a14b27c3282d591059098e8a5e784321c00d6e41c2e94325206278ba",
-    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-basamak-sayisi-tamam.png": "9bf63a49806311d1f3f8b90023918f6c78ef023bd69023fd714d0e824d8cea4f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-basamak-sayisi-tamam.png": "bbc4a7d9e8abfabc41bf8522feeb93401b04961900b2ad765444d34c44f5a89e",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-cozumleme-deney.png": "f509d0f776c19e233fc1420f9da6da2f489ec4117452b4b768b75ef8796506e0",
-    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-cozumleme-tamam.png": "a88b928977a3ccbaf9172a27cab8f27ad423547f46d54d83297f2724b79d66d3",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-cozumleme-tamam.png": "5d7d601444c82359f7b6518bc10ef127e8d25302d3070c51bf1151450f2cb3cc",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-rakam-kosul-deney.png": "8226ce493c1cfb3c717310ddde5dcd5a83c6c05f98e5223feee0d3759bc8fa4d",
-    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-rakam-kosul-tamam.png": "dd4f843403fbbc56fec3cc9e64c5a6645e5af8cfe5e8f988efd1d679a3e5807c",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-rakam-kosul-tamam.png": "8aa9d5cd234af582cb0c02fd2623f33f63f3841a570e333e3d7dd11775fd9f41",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-yer-degisim-deney.png": "b3e7880de19e99c04d70d98f114cef74b43645b6724352458cd1bcd08a8ac396",
     "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-basamaklari-yer-degisim-tamam.png": "5bafc13827f7a43b78551ebca3115b8286a90861dfe766474afa37e2080f8d9b",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-basamak-sayisi-deney.png": "4532b99682d13622240b0d69045d9da2824ae87ae76d468d12d6491dd52b4d9b",
@@ -76,7 +76,7 @@
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-cozumleme-tamam.png": "e1672f6535df63489813e6066c894253224886a22a8d7d996a0f869e897806ff",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-rakam-kosul-deney.png": "e9550c92babe2364b40c7905a0470001e009b75f64ac875b8006fa1f57da6dc6",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-rakam-kosul-tamam.png": "69962b153ac601270d3341dd582a667f1a92bac62af124ee899ee3caf76c87d8",
-    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-yer-degisim-deney.png": "59e858e249ceda30d01847039ea81f457dd08e935c452b669db01cbc81e3f7a9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-yer-degisim-deney.png": "cb80ae774dba936f1355b4e8b094f599584db9a9753ba4c9a6830afe3ed6b4d5",
     "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-basamaklari-yer-degisim-tamam.png": "27aa38c6c374d31c359641d12e94687374ffe6b72e019eba91957add2d607e1f"
   },
   "ui": {

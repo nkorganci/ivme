@@ -18,6 +18,7 @@ export const LAB_LOADERS = {
   'esitsizlikler': () => Promise.all([import('./esitsizlikler.js'), import('../cizim/esitsizlikler.jsx')]),
   'mutlak-deger': () => Promise.all([import('./mutlak-deger.js'), import('../cizim/mutlak-deger.jsx')]),
   'uslu-ifadeler': () => Promise.all([import('./uslu-ifadeler.js'), import('../cizim/uslu-ifadeler.jsx')]),
+  'koklu-ifadeler': () => Promise.all([import('./koklu-ifadeler.js'), import('../cizim/koklu-ifadeler.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -45,4 +46,6 @@ export const LAB_KESIF = {
   'mutlak-bant': ['mutlak-deger', 'bant'], 'mutlak-ortanca': ['mutlak-deger', 'minimum'],
   'uslu-ifadeler': ['uslu-ifadeler', 'negatif-taban'], 'uslu-parantez': ['uslu-ifadeler', 'negatif-taban'],
   'uslu-ortak': ['uslu-ifadeler', 'ortak-paranteze'], 'uslu-buyume': ['uslu-ifadeler', 'siralama'],
+  'koklu-ifadeler': ['koklu-ifadeler', 'kok-disi'], 'kok-carpan': ['koklu-ifadeler', 'kok-disi'],
+  'kok-eslenik': ['koklu-ifadeler', 'eslenik'], 'kok-denklem': ['koklu-ifadeler', 'denklem'],
 };
