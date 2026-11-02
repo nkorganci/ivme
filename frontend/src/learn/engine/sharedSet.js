@@ -73,8 +73,10 @@ export function pickSharedSet({ type, meta, bank, state, seed, archetype = null,
 /** Adresteki kod sırasıyla seçilen sorular; kitapçık ikizi olarak tekilleştirilmiş kod da kabul edilir. */
 export function pickCodes({ bank, state = {}, codes }) {
   const pool = visible(bank, state);
+  // Başka konunun bankasından gelen sorunun soru tipi o konuya aittir; bu konunun tip ustalığına yazılmaz.
+  const home = bank[0]?.conceptId;
   return codes.map((code) => pool.find((q) => q.code === code || q.twins?.includes(code))).filter(Boolean)
-    .map((q) => ({ type: 'bank', question: q, archetype: q.archetype }));
+    .map((q) => ({ type: 'bank', question: q, archetype: q.conceptId === home ? q.archetype : null }));
 }
 
 /** Sunucu isteğindeki soru listesi (kimlik, tip, zorluk); sunucu her soruyu yeniden doğrular. */

@@ -12,6 +12,7 @@ export const LAB_LOADERS = {
   'temel-kavramlar': () => Promise.all([import('./temel-kavramlar.js'), import('../cizim/temel-kavramlar.jsx')]),
   'sayi-basamaklari': () => Promise.all([import('./sayi-basamaklari.js'), import('../cizim/sayi-basamaklari.jsx')]),
   'bolme-bolunebilme': () => Promise.all([import('./bolme-bolunebilme.js'), import('../cizim/bolme-bolunebilme.jsx')]),
+  'ebob-ekok': () => Promise.all([import('./ebob-ekok.js'), import('../cizim/ebob-ekok.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -25,4 +26,6 @@ export const LAB_KESIF = {
   'basamak-sifir': ['sayi-basamaklari', 'basamak-sayisi'], 'basamak-sonrakam': ['sayi-basamaklari', 'basamak-sayisi'],
   'bolme-bolunebilme': ['bolme-bolunebilme', 'bolme-algoritmasi'], 'bolme-basamak': ['bolme-bolunebilme', 'kural'],
   'bolme-bilesik': ['bolme-bolunebilme', 'bilesik'], 'bolme-dongu': ['bolme-bolunebilme', 'kalan-islem'],
+  'ebob-ekok': ['ebob-ekok', 'asal-carpan'], 'ebob-bolen': ['ebob-ekok', 'asal-carpan'], 'ebob-venn': ['ebob-ekok', 'ebob-ekok-hesap'],
+  'ebob-kare': ['ebob-ekok', 'problem-secim'], 'ekok-zil': ['ebob-ekok', 'periyodik'], 'ebob-takvim': ['ebob-ekok', 'periyodik'],
 };

@@ -1,0 +1,91 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "ebob-ekok",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "asal-carpan",
+      "label": "Asal çarpan ve bölen",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0017",
+        "AYT_Sayisal-0010",
+        "AYT_Sayisal-0016"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ebob-ekok-hesap",
+      "label": "EBOB · EKOK",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0021"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "problem-secim",
+      "label": "EBOB mu, EKOK mu?",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0713"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "periyodik",
+      "label": "Periyodik olaylar",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0003",
+        "TYT-0596"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/ebob-ekok.js": "a065a97ea3321061c2c6da72dd6f038ffaaddb27f53e413d04be05ae3c350900",
+    "frontend/src/learn/lab/cizim/ebob-ekok.jsx": "2b34745ffe26d7ca86d257452d3d6843e3ede7fccc85fb7aa31d5c0a5435752c",
+    "testler/lab-ebob-ekok.test.mjs": "3742bcc9db3c0c2ec00ad9b8342864c7035cf9ef9ad1768b114eb4907941d25d",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "13e701aeb555b2319901ce50d6b682cb0a81142abaf1aa9e26d555bf2b81821e",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-ebob-ekok-rapor.json": "7a78ae20cfaa3d9acaed1c0b790a4b5a266371bbb416ade8f597738c60cfb8aa",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-asal-carpan-deney.png": "f7092506e20baac7148a0376b405703a507c4bbaac70dde8887040544b1daa2f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-asal-carpan-tamam.png": "a6e85795636be599d3e28e86f82e91a8c056bf88025eb92e6c3803dcc25cf0ba",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-ebob-ekok-hesap-deney.png": "8b532fb5fa45996e9f8dc31314052d6418c90903e8e88c1fd09f3e4ad0de23af",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-ebob-ekok-hesap-tamam.png": "e3ebdcb288ab9bfa1a17a7a0b532cde120740973fce8d52d1a6b0b55bcc69454",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-periyodik-deney.png": "b7b27ba6919c3097a1eef6d8cc9de003e45afc3a4ea5d3dceb159ad317bccc82",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-periyodik-tamam.png": "59a078519a2cdb215e2b087fb61909b550c37569ee93bf15ba4cfba5237a26b3",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-problem-secim-deney.png": "8fcda33efda98b6d8b92e557a3592a06d9aefceaa2cdf6b41ca494eab54d8eb1",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-ebob-ekok-problem-secim-tamam.png": "d8043468222a1ccd48720fcef2955d9098ab93ec64ca8bc6cdb6cf11cd5f7b10",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-asal-carpan-deney.png": "1041a1041cb2c25fa377da07c966033401b6e413c58608f6f74ca241bb5df63f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-asal-carpan-tamam.png": "d0365a95fea1782c360d3fb4407640327512fdfd4652bcb489e1f50246d6a57c",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-ebob-ekok-hesap-deney.png": "0428671943ccb1fd018f89e9b0d5bf0e61bfb3878c6fb6babd75e46da85acc50",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-ebob-ekok-hesap-tamam.png": "1b7658b7cc38a9f3bd8f33e8b2955983819b55f376b1e4aa710ddcd7bd743084",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-periyodik-deney.png": "163697d57453a7fce3c7fa1e1d08289ab2a141f733e657559422fb6ac72ed10e",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-periyodik-tamam.png": "d6f865aece9ebcdad9122570cb0890701959c05efc33930625815d7cf2f923eb",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-problem-secim-deney.png": "d87a45e57e60dcea3bc708a7d91113e304388246efa75e9edc04effd913df7f0",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-ebob-ekok-problem-secim-tamam.png": "61b4221ef5ce31102030b9e46f544fc9c834dd438387c1c1636579e498194ba1"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

@@ -13,16 +13,17 @@ export function SharedExamNote({ exams }) {
 }
 
 /** Ortak PRATIK seti başlatma adresi (TAS-05): tur = test | cikmis | practice | lab. GET yalnız sayfayı açar; oturum POST ile kurulur. */
-export function sharedSetPath({ type, conceptId, archetype = null, codes = null }) {
+export function sharedSetPath({ type, conceptId, archetype = null, codes = null, sources = null }) {
   const query = new URLSearchParams({ tur: type, konu: conceptId });
   if (archetype) query.set('tip', archetype);
   if (codes?.length) query.set('kod', codes.join(','));
+  if (sources?.length) query.set('kaynak', sources.join(','));
   return `${BASE}/pratik?${query}`;
 }
 
 /** Seti yeni sekmede açar (ders sekmesi yerinde kalır); sekme açılamazsa aynı adrese normal bağlantı olarak gider. */
-export function SharedSetLink({ type, conceptId, archetype = null, codes = null, className, children }) {
-  return <Link className={className} to={sharedSetPath({ type, conceptId, archetype, codes })} target="_blank" rel="noopener noreferrer">
+export function SharedSetLink({ type, conceptId, archetype = null, codes = null, sources = null, className, children }) {
+  return <Link className={className} to={sharedSetPath({ type, conceptId, archetype, codes, sources })} target="_blank" rel="noopener noreferrer">
     {children}<span className="sr-only"> (yeni sekmede açılır)</span></Link>;
 }
 

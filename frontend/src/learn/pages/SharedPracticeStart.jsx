@@ -21,6 +21,8 @@ export default function SharedPracticeStart() {
   const conceptId = params.get('konu');
   const archetype = params.get('tip');
   const codes = (params.get('kod') ?? '').split(',').filter(Boolean);
+  // Lab gerçek soruları başka konunun bankasında olabilir (kategori bu konunun kataloğunda; sunucu yeniden denetler).
+  const sources = (params.get('kaynak') ?? '').split(',').filter((id) => id && id !== conceptId && learn.index.byId[id]);
   const meta = conceptId ? learn.index.byId[conceptId] : null;
   const valid = SHARED_TYPES.includes(type) && !!meta && (type !== 'practice' || !!archetype) && (type !== 'lab' || (!!archetype && codes.length > 0));
   const requestId = useRef(params.get('istek') ?? uuid());
@@ -41,7 +43,8 @@ export default function SharedPracticeStart() {
     }
     (async () => {
       const { state, today } = learnRef.current;
-      const bank = await loadBank(conceptId);
+      const bank = type === 'lab' && sources.length
+        ? [...await loadBank(conceptId), ...(await Promise.all(sources.map(loadBank))).flat()] : await loadBank(conceptId);
       const items = pickSharedSet({ type, meta, bank, state, seed: `${type}:${conceptId}:${archetype ?? ''}:${today}:${state.eventCount}`, archetype, codes });
       if (!active) return;
       if (!items.length) {
@@ -62,7 +65,7 @@ export default function SharedPracticeStart() {
       navigate(`/soru/${encodeURIComponent(target.code)}${qs({ sessionId: session.id, bank: target.bank, devam: resumed ? 1 : '' })}`, { replace: true });
     })().catch((error) => { if (active) setProblem(error.message || 'Set kurulamadı.'); });
     return () => { active = false; };
-  }, [valid, type, conceptId, archetype, codes.join(','), attempt]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [valid, type, conceptId, archetype, codes.join(','), sources.join(','), attempt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!valid) return <Navigate to={conceptId && meta ? `${BASE}/konu/${conceptId}` : `${BASE}/harita`} replace />;
   return <div className="lr-page">

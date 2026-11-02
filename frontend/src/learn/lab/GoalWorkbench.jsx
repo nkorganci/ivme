@@ -123,7 +123,7 @@ function Transfer({ goal, conceptId, state, patch }) {
         <h3>Görseli okunmuş, bu hedefle eşleşmiş ÖSYM soruları</h3>
         <ul className="tl-real">{goal.real.map((r) => <li key={r.code}><strong>{r.code.replace('_', ' ')}</strong> <MathText text={r.why} /></li>)}</ul>
         <div className="pl-actions">
-          <SharedSetLink className="btn btn-primary" type="lab" conceptId={conceptId} archetype={`lab-${goal.id}`} codes={goal.real.map((r) => r.code)}>Bu {goal.real.length} gerçek soruyu çöz</SharedSetLink>
+          <SharedSetLink className="btn btn-primary" type="lab" conceptId={conceptId} archetype={`lab-${goal.id}`} codes={goal.real.map((r) => r.code)} sources={[...new Set(goal.real.map((r) => r.from).filter(Boolean))]}>Bu {goal.real.length} gerçek soruyu çöz</SharedSetLink>
         </div>
         <p className="pl-note">Sorular yeni sekmede ortak pratik ekranında açılır; oradaki cevapların normal çalışma kaydına girer. Laboratuvar denemeleri girmez.</p>
       </> : <p className="pl-note"><MathText text={goal.realNote ?? 'Bu hedefe görseli okunarak eşlenmiş gerçek soru henüz yok.'} /></p>}

@@ -13,6 +13,7 @@ const head = csv[0].split(',');
 const ANSWERS = Object.fromEntries(csv.slice(1).map((line) => { const c = line.split(','); return [c[0], c[head.indexOf('correct_answer')]]; }));
 const files = readdirSync(DIR).filter((f) => f.endsWith('.js') && f !== 'index.js');
 const registry = readFileSync(join(DIR, 'index.js'), 'utf8');
+const KEYS = JSON.parse(readFileSync(join(ROOT, 'backend/src/main/resources/learn/answer-keys.json'), 'utf8'));
 
 export const labs = await Promise.all(files.map(async (f) => (await import(pathToFileURL(join(DIR, f)).href)).default));
 // Konuya özgü matematik testleri (testler/lab-<kimlik>.test.mjs) aynı çalıştırmada kaydolur; her lab dosyasının testi olmalı.
@@ -51,7 +52,13 @@ for (const lab of labs) {
       if (!goal.real?.length) assert.ok(goal.realNote?.length > 40, 'gerçek soru yoksa nedeni yazılı');
       for (const r of goal.real ?? []) {
         assert.equal(ANSWERS[r.code], r.answer, `${r.code} cevabı CSV ile aynı`);
-        assert.ok(bank.has(r.code), `${r.code} konu bankasında (ortak pratik ekranında açılabilir)`);
+        if (r.from) {
+          // Başka konunun bankası: o konunun kategorileri bu konunun kataloğunda olmalı (sunucu setini kabul etsin).
+          const own = new Set(KEYS.concepts[lab.conceptId].categoryIds);
+          assert.ok(KEYS.concepts[r.from].categoryIds.every((c) => own.has(c)), `${r.code}: ${r.from} kategorileri ${lab.conceptId} kataloğunda`);
+          assert.ok(bankCodes(r.from).has(r.code), `${r.code} ${r.from} bankasında`);
+          assert.ok(!workedIn(r.from).has(r.code), `${r.code} ${r.from} dersinde çözümü gösterilmiş`);
+        } else assert.ok(bank.has(r.code), `${r.code} konu bankasında (ortak pratik ekranında açılabilir)`);
         assert.ok(!worked.has(r.code), `${r.code} derste çözümü gösterilmiş; bağımsız aktarıma girmez`);
         assert.ok(r.why.length > 20);
       }
