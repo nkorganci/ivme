@@ -1,0 +1,86 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "kar-zarar",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "maliyet-tabani",
+      "label": "Kâr yüzdesi",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0649"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "kampanya",
+      "label": "Kampanya ve indirim",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0672",
+        "TYT-0710",
+        "TYT-0658"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "fark",
+      "label": "Kâr–zarar farkı",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "fire",
+      "label": "Fire ve birim fiyat",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/kar-zarar.js": "33e50e1ffd6a871066039c3591ea44a5f9de7b6efcae7dad959e6fd240f431b2",
+    "frontend/src/learn/lab/cizim/kar-zarar.jsx": "4b79c1ab58f307104f48607cb389e0b9c3dab7e151584da891c8c134ff10a7b9",
+    "testler/lab-kar-zarar.test.mjs": "b6fad4ece16256fee85407cc9e874ebe523817bba5d120075ab037b963c7d2f1",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "ca441b34b29dfae1005653b74e778eb24e477672bf62b909159fd5af8f40fd64",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-kar-zarar-rapor.json": "545ef247a70d7dc6d8b24dd161d21320953dc6aa524b3de21c2cbbd8a015afaf",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-fark-deney.png": "44b9ecbe12b0df30ae14bb61eac08d34b129c4bafb787450cea762e8c0867e31",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-fark-tamam.png": "5e85877b72b8dd77324781660d4d9e9f19eee67da3f4cde0abe3d557f43a81f5",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-fire-deney.png": "3a05df442b824f36e25ba9095309e093de0beb72589a9fda738d3c85412286e0",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-fire-tamam.png": "158dd97acb729c567df4b7f49996d56214788dae27e2a3568172ed68814ecde8",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-kampanya-deney.png": "10b308c3c2f700d1f9cc89ebcfbe391082abf6c6e89cd811b1bdce5ff9dbef12",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-kampanya-tamam.png": "f4685b3b5bf100ba4892b119cddf9c40582b12b55a87148d29b35ab3349e19e4",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-maliyet-tabani-deney.png": "dc23edca8d6739a7f876690a55ee4cb590333c98cbb7f34572d7c0575ddc0f9b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-kar-zarar-maliyet-tabani-tamam.png": "8ef0a5c142f60d5c3662993d3ebbaaf57606e69722e3d63bf167a9138d7691e8",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-fark-deney.png": "0740481cba586a039b08272e4635bdcaa8f5b5e19af2a4403527823b20cc8f15",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-fark-tamam.png": "7f71f84a01cceca5c354e5ae4bd7c71d9cf784f58fa70d7f135b1c3f9b8bcd46",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-fire-deney.png": "3b20e0d0011e90e6e79c6f9de7bfb71a6dba0d1b56424cef90a603fe8e9ea683",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-fire-tamam.png": "a4d44fd14412dc58723d9cddb1abf9cc381ec3311a51460d40d05b4f158feaff",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-kampanya-deney.png": "381f7572988d0418d8022a2a2133582feab02758854554c36da3161530c98f2f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-kampanya-tamam.png": "beb470652cffa54f8bc7c39f2ccfcc12d0afb9a121658a73d19327877b6e2012",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-maliyet-tabani-deney.png": "84c944d5716c8f5d9750d32ca99eeda2ba85550e6dc8e4f479ed150ee30fe3ae",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-kar-zarar-maliyet-tabani-tamam.png": "14bf247f902ab7ce7a63e18999008bf1ce399c1eb65e22e34640c1f8821a977a"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

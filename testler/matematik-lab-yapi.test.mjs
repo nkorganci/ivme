@@ -77,6 +77,10 @@ for (const lab of labs) {
         if (c.options) assert.ok(c.options.some(([o]) => o === v), `${c.key} seçeneği`);
         else assert.ok(v >= c.min && v <= c.max, `${c.key} aralıkta`);
       }
+      for (const c of ex.controls.filter((x) => !x.options)) for (const v of [ex.initial[c.key], values[c.key]]) {
+        const k = (v - c.min) / (c.step ?? 1);
+        assert.ok(Math.abs(k - Math.round(k)) < 1e-9, `${c.key}=${v} kaydırıcı adımında (tarayıcı başka değere yuvarlar)`);
+      }
       assert.ok(ex.readout(values, ex.compute(values)).length >= 2);
       assert.ok(goal.reasons.length >= 1);
       goal.reasons.forEach((r, i) => choiceOk(r, `${label} gerekçe ${i + 1}`));

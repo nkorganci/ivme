@@ -24,6 +24,7 @@ export const LAB_LOADERS = {
   'sayi-kesir-problemleri': () => Promise.all([import('./sayi-kesir-problemleri.js'), import('../cizim/sayi-kesir-problemleri.jsx')]),
   'yas-isci-problemleri': () => Promise.all([import('./yas-isci-problemleri.js'), import('../cizim/yas-isci-problemleri.jsx')]),
   'yuzde-karisim': () => Promise.all([import('./yuzde-karisim.js'), import('../cizim/yuzde-karisim.jsx')]),
+  'kar-zarar': () => Promise.all([import('./kar-zarar.js'), import('../cizim/kar-zarar.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -63,4 +64,5 @@ export const LAB_KESIF = {
   'yi-grup': ['yas-isci-problemleri', 'grup-toplam'], 'yi-is': ['yas-isci-problemleri', 'is-hiz'],
   'yuzde-karisim': ['yuzde-karisim', 'taban'], 'yk-taban': ['yuzde-karisim', 'parca-butun'],
   'yk-agirlik': ['yuzde-karisim', 'ortalama'], 'yk-islem': ['yuzde-karisim', 'karisim'],
+  'kar-zarar': ['kar-zarar', 'maliyet-tabani'],
 };
