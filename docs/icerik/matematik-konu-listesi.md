@@ -140,7 +140,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `merkezi-egilim` | ⬜ LAB YOK | Veri noktalarını değiştir; ortalama/ortanca/yayılım ve aykırı değerin etkisini ayır. Gerçek soru adayları TYT-0795, 0797, 0800, 0802, 0804, 0806, 0808 (0799, 0801, 0810 derste çözüldü) |
 | `onermeler` | ⬜ LAB YOK | Doğruluk durumları kurma ve yanlış çıkarımı onarma; bağlaçların anlamını ayır. Gerçek soru adayları AYT_Sayisal-0043…0051 (0748, 0749, 0751 derste çözüldü; ⇒ içeren 0750, 0752, 0753 koşullu önerme dersinde çözüldü) |
 | `kosullu-onerme` | ⬜ LAB YOK | Koşul, karşı durum ve niceleyici; bir örnek, karşı örnek ve genel iddiayı ayır. TYT çıkmışlarının tamamı (0750, 0752, 0753) derste çözüldü; lab gerçek sorusu AYT setinden seçilecek |
-| `kumeler-temel` | ⬜ LAB YOK | Eleman/alt küme kurma; üyelik, kapsama ve boş küme durumlarını ayır |
+| `kumeler-temel` | ⬜ LAB YOK | Eleman/alt küme kurma; üyelik, kapsama ve boş küme durumlarını ayır. Gerçek soru adayları TYT-0754, 0755, 0762 ve AYT_Sayisal-0052…0061 (0756, 0758, 0759 derste çözüldü) |
 | `kume-islemleri` | ⬜ LAB YOK | Bölge seçimi ve ortak eleman sayımı; kesişim/birleşim/tümleyeni soruya çevir |
 | `fonksiyon-kavrami` | ⬜ LAB YOK | Girdi–çıktı eşleme; fonksiyon olma, tanım/görüntü ve bire birlik koşullarını sına |
 | `fonksiyon-grafikleri` | ⬜ LAB YOK | Bağlı tablo–grafik–cebir; eğim, kesişim ve temsil değişiminde aynı ilişkiyi tanı |
@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **22/32 bitti**. Sıradaki TYT konusu: `kumeler-temel`.
+TYT: **23/32 bitti**. Sıradaki TYT konusu: `kume-islemleri`.
 
 ### TYT (şu anki aşama)
 
@@ -211,7 +211,7 @@ TYT: **22/32 bitti**. Sıradaki TYT konusu: `kumeler-temel`.
 | 20 | ✅ BİTTİ | `merkezi-egilim` | Merkezi Eğilim ve Yayılım Ölçüleri | 9 | TYT | 8/20/3/4 | 3 / 17 (Veri) | 2 · PL1 1, PL2 1 | 2/2 | — |
 | 21 | ✅ BİTTİ | `onermeler` | Önermeler ve Bileşik Önermeler | 9 | TYT + AYT | 8/20/3/4 | 3 / 6 (Önermeler ve Bileşik Önermeler) | 2 · PL1 2, PL2 1 | 2/2 | — |
 | 22 | ✅ BİTTİ | `kosullu-onerme` | Koşullu Önerme ve Niceleyiciler | 9 | TYT + AYT | 8/20/3/4 | 3 / 6 (Önermeler ve Bileşik Önermeler) | 2 · PL1 2, PL2 1 | 1/1 | — |
-| 23 | 🟡 EKSİK | `kumeler-temel` | Kümelerde Temel Kavramlar ve Alt Küme | 9 | TYT + AYT | 4/8/1/1 | 0 / 9 (Kümeler) | 0 · PL1 2, PL2 1 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 23 | ✅ BİTTİ | `kumeler-temel` | Kümelerde Temel Kavramlar ve Alt Küme | 9 | TYT + AYT | 8/20/3/4 | 3 / 9 (Kümeler) | 2 · PL1 2, PL2 1 | 3/3 | — |
 | 24 | 🟡 EKSİK | `kume-islemleri` | Kümelerde İşlemler ve Küme Problemleri | 9 | TYT + AYT | 4/8/2/1 | 0 / 9 (Kümeler) | 0 · PL1 4, PL2 2 | 0/5 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 25 | 🟡 EKSİK | `fonksiyon-kavrami` | Fonksiyon Kavramı ve Fonksiyon Çeşitleri | 10 | TYT + AYT | 4/8/1/1 | 0 / 11 (Fonksiyonlar) | 0 · PL1 4, PL2 4 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 26 | 🟡 EKSİK | `fonksiyon-grafikleri` | Fonksiyon Grafikleri ve Doğrusal Modeller | 10 | TYT + AYT | 4/8/1/1 | 0 / 11 (Fonksiyonlar) | 0 · PL1 2, PL2 2 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

@@ -3260,6 +3260,19 @@
    ],
    "version": "a7ece0af5749bb7c"
   },
+  "kumeler-temel:c1b": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kumeler-temel:c2": {
    "conceptId": "kumeler-temel",
    "type": "choice",
@@ -3272,6 +3285,19 @@
     "E"
    ],
    "version": "a7ece0af5749bb7c"
+  },
+  "kumeler-temel:c2b": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "kumeler-temel:c3": {
    "conceptId": "kumeler-temel",
@@ -3286,6 +3312,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "kumeler-temel:c3b": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kumeler-temel:c4": {
    "conceptId": "kumeler-temel",
    "type": "choice",
@@ -3298,6 +3337,19 @@
     "E"
    ],
    "version": "fef49cc14d12ec09"
+  },
+  "kumeler-temel:c4b": {
+   "conceptId": "kumeler-temel",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "kumeler-temel:h1": {
    "conceptId": "kumeler-temel",

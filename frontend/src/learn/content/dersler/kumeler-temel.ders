@@ -45,8 +45,10 @@ alt-kume-sayi 2 1-3
 kosullu-alt-kume 2 1-3
 esitlik 1 1-2
 
-@oturum Küme ve alt küme sayısı | s1 s2
-@oturum Koşullu alt kümeler ve eşitlik | s3 s4
+@oturum Küme ve gösterim | s1 s1b
+@oturum Alt küme sayısı | s2 s2b
+@oturum Koşullu alt kümeler ve toplamlar | s3 s3b
+@oturum Eşitlik ve dönüştürülmüş kümeler | s4 s4b
 
 @ontest
 ::soru o1 tip=gosterim zorluk=1
@@ -136,6 +138,69 @@ E) 9 || Bu $B$'nin en büyük elemanıdır.
 kontrol: 4
 cozum: $A = \{-1, 0, 1, 2, 3\}$; kareler $1, 0, 1, 4, 9$; $B = \{0, 1, 4, 9\}$: $s(B) = 4$.
 
+@bolum s1b 12 | Harfler ve rakamlar: elemanlar tekrar etmez
+::kesfet ku-harf
+
+::fikir
+Bir kelimenin harflerinden ya da bir numaranın rakamlarından küme oluşturulunca **her eleman bir kez yazılır**; tekrarlar düşer. Bu yüzden "s(A) = 9" gibi bir bilgi, bilinmeyen yerlerde **kaç farklı yeni eleman** olduğunu söyler. Kesişim bilgisi bir elemanın **iki kümede de olduğunu**, kesişimde olmaması **en fazla birinde** olduğunu gösterir.
+
+::duzey
+L1: ANKARA kelimesinin harflerinden oluşan küme $\{A, N, K, R\}$'dir: 6 harf ama 4 eleman. Sıra ve tekrar kümeyi değiştirmez.
+L2: Bir telefon numarasında bazı rakamlar gizliyse önce görünen rakamlardan bilinen elemanları yaz. Eleman sayısı verildiyse gizli rakamların getirdiği **yeni** eleman sayısı = verilen sayı − bilinenler. Kesişim kümesi, iki kümede de olması gereken elemanları gösterir.
+L3: İsim ya da kelime seçme sorularında aday kelimeyi iki kurala göre ele: kesişimde olması gereken harfleri içermeli, kesişimde olmaması gereken ama öbür kümede bulunan harfleri içermemeli. Türkçede I ile İ, C ile Ç farklı harflerdir; farklı eleman sayılır.
+
+::cikmis TYT-0759 tip=gosterim
+
+::ornek baslik="Benzer: üçüncü isim hangisi?"
+soru: DERYA ve SELMA'nın isimlerindeki harflerden oluşan küme X; OKAN, EMRE ve bir erkeğin daha isimlerindeki harflerden oluşan küme Y'dir. $X\cap Y=\{A, D, E, M, R, S\}$ olduğuna göre üçüncü isim DURSUN, SELİM, DOĞAN'dan hangisi olabilir?
+1. $X=\{D, E, R, Y, A, S, L, M\}$; OKAN ve EMRE'den $X$ ile ortak harfler: A, E, M, R. || Bilinenleri yaz.
+2. Üçüncü isim D ve S'yi içermeli; Y ve L'yi içermemeli. || Kesişimde olan ve olmayan harfler.
+3. SELİM'de L var ✗; DOĞAN'da S yok ✗; DURSUN: D, U, R, S, N ✓. || Kuralları uygula.
+cevap: DURSUN
+
+::cikmis TYT-0756 tip=gosterim
+
+::ornek baslik="Benzer: iki numaranın rakamları"
+soru: Ece'nin numarası 0 5 * * * * * 6 2 9 5, Can'ın numarası 0 5 * * * * * 7 3 8 5 biçimindedir. Ece'nin rakamlarından A, Can'ın rakamlarından B kümesi oluşuyor. $s(A)=8$, $s(B)=6$ ve $A\cap B=\{0, 3, 5, 9\}$ ise $A\setminus B$ kümesinin elemanları toplamı kaçtır?
+1. $B\supseteq\{0, 5, 7, 3, 8\}$ ve $9\in B$: 6 eleman, $B=\{0, 3, 5, 7, 8, 9\}$. || $s(B)=6$ doldu.
+2. $A\supseteq\{0, 5, 6, 2, 9, 3\}$: 6 eleman; 2 eleman daha, B'de olmayan rakamlardan: 1 ve 4. || Kalan rakamlar.
+3. $A\setminus B=\{1, 2, 4, 6\}$, toplam 13. || A'da olup B'de olmayanlar.
+cevap: 13
+
+::ornek baslik="Kelimenin harf kümesi"
+soru: MATEMATİK kelimesinin harflerinden oluşan kümenin eleman sayısı ve alt küme sayısı kaçtır?
+1. Harfler M, A, T, E, M, A, T, İ, K. || 9 harf.
+2. Farklı olanlar: M, A, T, E, İ, K: 6 eleman. || Tekrarlar bir kez yazılır.
+3. Alt küme sayısı $2^6=64$. || Eleman sayısıyla hesap.
+cevap: 6 eleman, 64 alt küme
+
+::sorgula s1b-plaka baslik="Plakadaki rakamlar"
+durum: Bir aracın plakasındaki rakamlar 34 ve 1223'tür. Bu rakamlardan bir küme oluşturuluyor.
+soru: Kümenin eleman sayısı kaçtır?
+A) 6 || Rakam sayısını saydın; tekrar eden 3 ve 2 bir kez yazılır.
++B) 4 || $\{1, 2, 3, 4\}$.
+C) 5 || Yalnız 2'nin tekrarını düşürdün; 3 de iki kez geçiyor.
+kontrol: 4
+neden: Rakamlar 3, 4, 1, 2, 2, 3. Kümede her eleman bir kez yazılır: $\{1, 2, 3, 4\}$, 4 eleman.
+sinav: Kelime ve numaralardan oluşan kümelerde önce tekrarları ayıkla; eleman sayısı farklı elemanların sayısıdır.
+dusun: Plakaya hangi rakam eklenirse eleman sayısı değişmez?
+yanit: 1, 2, 3 ya da 4: zaten kümede olan herhangi bir rakam.
+
+::yanilgi m1b tip=gosterim
+yanlis: ANKARA kelimesinin harflerinden oluşan küme 6 elemanlıdır.
+neden: Kümede aynı eleman bir kez yazılır; A üç kez geçse de bir elemandır.
+dogru: $\{A, N, K, R\}$: 4 eleman.
+
+::soru c1b tip=gosterim zorluk=2
+KALEMLİK kelimesinin harflerinden oluşan kümenin kaç tane alt kümesi vardır?
+A) 16 || 4 eleman saydın; L, E, M, İ de eleman.
+B) 32 || Hesabı kontrol et: 6 farklı harf.
++C) 64 || Doğru: $\{K, A, L, E, M, İ\}$, $2^6$.
+D) 128 || 7 eleman saydın; K iki kez geçiyor.
+E) 256 || Harf sayısıyla hesapladın; tekrarlar düşer.
+kontrol: 2^6
+cozum: K, A, L, E, M, L, İ, K: farklı harfler K, A, L, E, M, İ. 6 eleman, alt küme sayısı $2^6=64$.
+
 @bolum s2 10 | Alt küme sayısı: her eleman için iki seçenek
 ::fikir
 $n$ elemanlı bir kümenin **alt küme sayısı $2^n$**, **öz alt küme sayısı $2^n - 1$**'dir. Her eleman için iki seçenek vardır: alt kümede **var** ya da **yok**.
@@ -192,6 +257,72 @@ D) 8 || Fazla.
 E) 16 || Bu $2^n$'dir; $n$'yi bul.
 kontrol: 4
 cozum: $2^{n+2} - 2^n = 3 \cdot 2^n = 48 \Rightarrow 2^n = 16 \Rightarrow n = 4$.
+
+@bolum s2b 10 | Alt küme sayısını tersinden kullanmak
+::kesfet ku-ekle
+
+::fikir
+Bir kümeye **1 eleman eklenince alt küme sayısı iki katına** çıkar; $k$ eleman eklenince $2^k$ katına. Bu yüzden "alt küme sayısı … arttı" bilgisi bir **2'nin kuvvetleri denklemi** verir: $2^n(2^k-1)$ = artış. İki kümenin alt küme sayıları toplamı verilirse toplamı **iki 2 kuvvetine** ayır.
+
+::duzey
+L1: 3 elemanlı kümenin 8 alt kümesi vardır. Bir eleman eklenince eski 8 alt küme olduğu gibi kalır, her birine yeni eleman eklenerek 8 alt küme daha oluşur: 16.
+L2: Eleman sayısı 2 artınca alt küme sayısı 4 katına çıkar; artış eski sayının 3 katıdır. "96 arttı" bilgisi $3\cdot2^n=96$, $2^n=32$, $n=5$ demektir.
+L3: $2^a+2^b=68$ gibi toplamlarda 68'i iki kuvvete ayır: $64+4$; yani $a=6$, $b=2$. Böyle bir ayrışım çoğu zaman tektir (ikilik tabanda iki tane 1). Öz alt küme ($2^n-1$) bilgisi verilirse önce 1 ekleyip 2'nin kuvvetine çevir.
+
+::ornek baslik="İki eleman eklenince 96 artış"
+soru: Bir kümeye 2 eleman eklenince alt küme sayısı 96 artıyor. Kümenin başlangıçtaki eleman sayısı kaçtır?
+1. Önce $2^n$, sonra $2^{n+2}=4\cdot2^n$. || Her eleman iki katına çıkarır.
+2. Artış $4\cdot2^n-2^n=3\cdot2^n=96$, $2^n=32$. || Fark denklemi.
+3. $n=5$. || Kontrol: $32\to128$, artış 96 ✓
+cevap: 5
+
+::ornek baslik="Toplamdan iki eleman sayısı"
+soru: İki kümenin alt küme sayıları toplamı 68'dir. Bu kümelerin eleman sayıları toplamı kaçtır?
+1. $2^a+2^b=68$. || Alt küme sayıları 2'nin kuvvetleri.
+2. 68'den küçük kuvvetler: 64, 32, 16, 8, 4, 2, 1. $64+4=68$. || Tek ayrışım.
+3. $a=6$, $b=2$: toplam 8. || Kontrol: $32+32=64\neq68$.
+cevap: 8
+
+::tamamla baslik="Öz alt kümeden eleman sayısı"
+soru: A kümesinin alt küme sayısı 32, B kümesinin öz alt küme sayısı 63'tür. İki kümenin eleman sayıları toplamı kaçtır?
+1. $2^{s(A)}=32$: $s(A)=5$. || Alt küme sayısı.
+?2. $2^{s(B)}-1=63$: $2^{s(B)}=64$, $s(B)=6$. || Öz alt kümeye 1 ekle.
+?3. Toplam $5+6=11$. || İki eleman sayısı.
+cevap: 11
+
+::ornek baslik="Eleman çıkarılınca"
+soru: Bir kümeden 1 eleman çıkarılınca alt küme sayısı 16 azalıyor. Kümenin başlangıçta kaç alt kümesi vardı?
+1. Başta $2^n$, sonra $2^{n-1}$: azalış $2^{n-1}=16$. || Bir eleman çıkınca yarıya iner.
+2. $2^{n-1}=16$ ise $2^n=32$. || Azalış, kalan sayıya eşit.
+3. Başta 32 alt küme (5 eleman). || Kontrol: $32-16=16$ ✓
+cevap: 32
+
+::sorgula s2b-menu baslik="Menüye yeni malzeme"
+durum: Bir dürümcü müşterinin istediği malzemeleri seçebildiği 5 malzeme sunuyor (hiç malzeme seçmemek de mümkün). Menüye 2 yeni malzeme ekleniyor.
+soru: Seçilebilecek farklı malzeme kombinasyonu sayısı kaç artar?
+A) 2 || Her yeni malzeme bütün eski seçimleri ikiye katlar.
+B) 64 || Bu yeni toplamın yarısı; artış $128-32$.
++C) 96 || $2^7-2^5=128-32=96$.
+kontrol: 96
+neden: Malzeme seçimleri kümenin alt kümeleridir: önce $2^5=32$, sonra $2^7=128$. Artış 96; yani eski sayının 3 katı.
+sinav: $k$ eleman eklenince alt küme sayısı $2^k$ katına çıkar; artış $(2^k-1)$ kat eski sayıdır.
+dusun: Yalnız bir malzeme eklenseydi artış ne olurdu?
+yanit: $64-32=32$: eski sayı kadar.
+
+::yanilgi m2b tip=alt-kume-sayi
+yanlis: Bir kümeye 2 eleman eklenince alt küme sayısı 2 artar.
+neden: Her eleman bütün eski alt kümelerle birleşerek yeni alt kümeler üretir.
+dogru: 2 eleman eklenince alt küme sayısı 4 katına çıkar.
+
+::soru c2b tip=alt-kume-sayi zorluk=2
+Bir kümeye 3 eleman eklenince alt küme sayısı 448 artıyor. Kümenin başlangıçtaki eleman sayısı kaçtır?
+A) 4 || Hesabı kontrol et: $7\cdot2^n=448$.
+B) 5 || Hesabı yeniden yap.
++C) 6 || Doğru: $7\cdot64=448$.
+D) 7 || Artış katsayısını eleman sayısı sandın.
+E) 9 || Bu, eklenmiş hâlin eleman sayısıdır.
+kontrol: 6
+cozum: $2^{n+3}-2^n=7\cdot2^n=448$, $2^n=64$, $n=6$.
 
 @bolum s3 10 | Belirli elemanları içeren alt kümeler
 ::fikir
@@ -257,6 +388,65 @@ E) 32 || Bu tüm alt kümelerdir.
 kontrol: 2^5-2^3
 cozum: Tüm alt kümeler $2^5 = 32$; 1 de 5 de bulunmayanlar $2^3 = 8$; $32 - 8 = 24$.
 
+@bolum s3b 10 | Her eleman kaç alt kümede? Toplamlar ve çarpımlar
+::kesfet ku-toplam
+
+::fikir
+$n$ elemanlı bir kümede **her eleman, alt kümelerin tam yarısında** ($2^{n-1}$ tanesinde) bulunur: o elemanı kenara ayır, kalan $n-1$ elemanla kurulan her alt kümeye ekle. Bu yüzden **bütün alt kümelerin eleman toplamlarının toplamı** $2^{n-1}\cdot(\text{elemanlar toplamı})$'dır. İşaret ve çarpım sorularında elemanları **gruplara ayırıp** her gruptan seçimleri say.
+
+::duzey
+L1: $\{1, 2, 3\}$'ün 8 alt kümesinden 1'i içerenler $\{1\}$, $\{1,2\}$, $\{1,3\}$, $\{1,2,3\}$: tam 4 tane, yani yarısı.
+L2: $A=\{1, 2, 3, 4\}$ için her sayı 8 alt kümede bulunur; bütün alt kümelerdeki sayıların toplamı $8\cdot(1+2+3+4)=80$. Tek tek 16 alt kümeyi yazmaya gerek yok.
+L3: "Elemanlar çarpımı negatif olan alt küme" sorusunda 0'ı içeren alt kümelerin çarpımı 0'dır: 0'ı dışarıda bırak. Negatif çarpım için tek sayıda negatif eleman seçilir; pozitifler serbesttir. Seçim sayıları çarpılır.
+
+::ornek baslik="Bütün alt kümelerin toplamı"
+soru: $A=\{1, 2, 3, 4\}$ kümesinin bütün alt kümelerindeki elemanların değerleri toplamı kaçtır?
+1. Her eleman $2^{4-1}=8$ alt kümede bulunur. || Elemanı ayır, kalan 3 elemanla $2^3$.
+2. Elemanların toplamı $1+2+3+4=10$. || Tek bir kez.
+3. Toplam $8\cdot10=80$. || Boş küme katkı vermez.
+cevap: 80
+
+::ornek baslik="Çarpımı negatif olan alt kümeler"
+soru: $A=\{-5, -3, 0, 1, 2, 3, 6\}$ kümesinin kaç alt kümesinde elemanların çarpımı negatiftir?
+1. 0 bulunmamalı; negatifler $\{-5, -3\}$, pozitifler $\{1, 2, 3, 6\}$. || 0 çarpımı 0 yapar.
+2. Tek sayıda negatif: yalnız $-5$ ya da yalnız $-3$: 2 seçim. || İki negatif çarpımı pozitif yapar.
+3. Pozitifler serbest: $2^4=16$; toplam $2\cdot16=32$. || Seçimler çarpılır.
+cevap: 32
+
+::ornek baslik="İki elemanlı alt kümelerin toplamları"
+soru: $A=\{-3, -2, -1, 0, 1, 2, 3\}$ kümesinin 2 elemanlı alt kümelerindeki elemanlar toplanarak bir B kümesi oluşturuluyor. B kaç elemanlıdır?
+1. En küçük toplam $-3+(-2)=-5$, en büyük $2+3=5$. || Uç toplamlar.
+2. Arada her tam sayı elde edilebilir: $-5, -4, \dots, 5$. || Ör. $0=-1+1$, $4=1+3$.
+3. B 11 elemanlıdır. || Aynı toplam bir kez yazılır.
+cevap: 11
+
+::sorgula s3b-1icin baslik="1'i içeren alt kümeler"
+durum: $A=\{1, 2, 3, 4, 5, 6, 7\}$ kümesinin alt kümeleri listelenecek. Bir öğrenci 1'i içeren alt kümeleri tek tek yazmaya başlıyor.
+soru: 1'i içeren kaç alt küme vardır?
+A) 127 || Bu, öz alt küme sayısıdır.
++B) 64 || 1'i ayır, kalan 6 elemanın her alt kümesine 1 ekle: $2^6$.
+C) 7 || 1'i içeren tek elemanlı alt küme yalnız $\{1\}$'dir; diğerleri de sayılmalı.
+kontrol: 2^6
+neden: Kalan 6 elemanla kurulan $2^6=64$ alt kümenin her birine 1 eklenince 1'i içeren bütün alt kümeler bir kez çıkar. 1'i içermeyenler de 64 tanedir: toplam 128.
+sinav: Belirli elemanları içeren alt küme sayısı için o elemanları kenara ayır, kalan elemanlarla $2^k$ hesapla.
+dusun: 1'i içerip 5'i içermeyen kaç alt küme vardır?
+yanit: 1 ve 5 kenara: $2^5=32$.
+
+::yanilgi m3b tip=kosullu-alt-kume
+yanlis: Bütün alt kümelerin eleman toplamı, elemanlar toplamının alt küme sayısıyla çarpımıdır.
+neden: Her eleman bütün alt kümelerde değil, yalnız yarısında bulunur.
+dogru: Toplam $2^{n-1}\cdot(\text{elemanlar toplamı})$.
+
+::soru c3b tip=kosullu-alt-kume zorluk=2
+$A=\{2, 4, 6, 8, 10\}$ kümesinin bütün alt kümelerindeki elemanların değerleri toplamı kaçtır?
+A) 30 || Elemanları yalnız bir kez topladın.
+B) 240 || Hesabı kontrol et: $2^4$.
++C) 480 || Doğru: $2^4\cdot30$.
+D) 960 || Her elemanı bütün alt kümelerde saydın.
+E) 1024 || Hesabı yeniden yap.
+kontrol: 16*30
+cozum: Her eleman $2^4=16$ alt kümede; elemanlar toplamı 30: $16\cdot30=480$.
+
 @bolum s4 7 | Kümelerin eşitliği
 ::fikir
 $A = B$ **ancak ve ancak** $A \subseteq B$ ve $B \subseteq A$. Eşit kümelerde elemanlar aynıdır; **sıra ve tekrar önemli değildir**.
@@ -300,6 +490,71 @@ D) 20 || Hesabı yeniden yap.
 +E) 25 || Doğru: $b - 1 = 4$, $a + 2 = 7$; $a = b = 5$.
 kontrol: 5*5
 cozum: 4 sağ kümede olmalı ve $4 \neq 7$: $b - 1 = 4 \Rightarrow b = 5$. Kalan: $a + 2 = 7 \Rightarrow a = 5$. $a \cdot b = 25$.
+
+@bolum s4b 10 | Dönüştürülmüş kümeler ve bilinmeyenli elemanlar
+::fikir
+Bir kümenin her elemanı bir işlemle değiştirilince (2 ile çarpma, 1 ekleme) yeni bir küme oluşur. Eski ve yeni kümenin **ortak elemanlarını** sorarken önce bilinen elemanlarla kesişimi yaz, sonra **bilinmeyen elemanın** hangi değerlerde kesişimi büyüttüğünü tek tek dene. Her durumda **elemanların farklı olma** koşulunu kontrol et.
+
+::duzey
+L1: $B=\{2, 4, 8\}$ ve her eleman 2 ile çarpılırsa $\{4, 8, 16\}$ olur; ortak elemanlar 4 ve 8. Bir eleman kümenin her iki hâlinde de varsa ortaktır.
+L2: Bilinmeyen eleman $a$ kesişimi iki yoldan büyütebilir: $a$ yeni kümede zaten var olan bir değere eşit olabilir ($a=16$) ya da $2a$ eski kümede bulunabilir ($2a=2$). Ayrıca $a=2a$ durumu ($a=0$) ikisini birden sağlar.
+L3: Her aday $a$ için iki kümeyi tam yaz; $a$ eski elemanlardan birine eşitse küme 4 elemanlı olmaz ve aday elenir. Bulunan değerleri soruya göre topla ya da say.
+
+::cikmis TYT-0758 tip=esitlik
+
+::ornek baslik="Benzer: 3 ile çarpılan küme"
+soru: $a$ bir tam sayı ve $B=\{1, 3, 9, a\}$ dört elemanlıdır. Her eleman 3 ile çarpılarak dört elemanlı yeni bir küme elde ediliyor. İki kümenin kesişimi 3 elemanlı ise $a$'nın alabileceği değerler toplamı kaçtır?
+1. $a$'sız kesişim: $\{1, 3, 9\}\cap\{3, 9, 27\}=\{3, 9\}$. || Bilinenler.
+2. Üçüncü ortak eleman: $a=27$ ya da $3a\in\{1, 3, 9\}$ ya da $a=3a$. $3a=1$ tam değil; $3a=3$ ve $3a=9$ ise $a$ zaten kümede; $a=0$ ✓. || Durumları dene.
+3. $a\in\{0, 27\}$: toplam 27. || Kontrol: $a=0$ için kesişim $\{0, 3, 9\}$.
+cevap: 27
+
+::ornek baslik="Eşit kümelerden bilinmeyen"
+soru: $\{2, a+1, 7\}=\{b-1, 4, 2\}$ kümeleri eşit ve $a\neq b$ ise $a+b$ kaçtır?
+1. Eşit kümelerde elemanlar aynıdır: sol tarafta 7, sağ tarafta 4 var. || Karşılıkları bul.
+2. $a+1=4$, $a=3$; $b-1=7$, $b=8$. || Sıra önemli değil.
+3. $a+b=11$. || Kontrol: iki küme de $\{2, 4, 7\}$.
+cevap: 11
+
+::tamamla baslik="Bir ekleyince ortak elemanlar"
+soru: $A=\{1, 2, 5, k\}$ dört elemanlı bir tam sayı kümesidir. Her elemana 1 eklenerek yeni bir küme elde ediliyor. İki kümenin kesişimi 2 elemanlı ise $k$'nin alabileceği değerler toplamı kaçtır?
+1. $k$'sız: $\{1, 2, 5\}\cap\{2, 3, 6\}=\{2\}$. || Bilinenlerin ortağı tek.
+?2. $k\in\{2, 3, 6\}$ ise $k=3$ ya da $k=6$; $k+1\in\{1, 2, 5\}$ ise $k=0$ ya da $k=4$ (2 ve 1 zaten kümede). || Her aday bir ortak eleman ekler.
+?3. Değerler 0, 3, 4, 6: toplam 13. || Kontrol: $k=0$ için ortaklar $\{1, 2\}$.
+cevap: 13
+
+::ornek baslik="Tanımla verilen dönüşüm"
+soru: $A=\{x\in\mathbb N \mid x<5\}$ ve $B=\{2x \mid x\in A\}$ kümeleri veriliyor. $A\cap B$ kaç elemanlıdır?
+1. $A=\{0, 1, 2, 3, 4\}$. || Doğal sayılar 0'dan başlar.
+2. $B=\{0, 2, 4, 6, 8\}$. || Her elemanın 2 katı.
+3. $A\cap B=\{0, 2, 4\}$: 3 eleman. || İki listede ortak olanlar.
+cevap: 3
+
+::sorgula s4b-ayni baslik="Aynı küme mi?"
+durum: $A=\{x \mid x$ tek rakam$\}$ ve $B=\{1, 9, 3, 7, 5, 3\}$ kümeleri veriliyor.
+soru: $A$ ile $B$ eşit midir?
++A) Evet || İkisi de $\{1, 3, 5, 7, 9\}$; tekrar ve sıra önemsiz.
+B) Hayır, B'de 6 eleman yazılmış || 3 iki kez yazılmış; küme 5 elemanlıdır.
+C) Hayır, sıraları farklı || Kümelerde sıra önemli değildir.
+neden: Kümede bir eleman ne kadar tekrar yazılırsa yazılsın bir kez sayılır ve sıra önemli değildir. İki küme de $\{1, 3, 5, 7, 9\}$'dur.
+sinav: Eşitlik sorularında iki kümeyi tekrarsız ve sıralı yaz, sonra karşılaştır.
+dusun: $s(B)$ kaçtır?
+yanit: 5.
+
+::yanilgi m4b tip=esitlik
+yanlis: $B=\{2, 4, 8, a\}$ kümesinde $a$ her tam sayı olabilir.
+neden: Kümenin 4 elemanlı olması için $a$ diğer elemanlardan farklı olmalıdır.
+dogru: $a\notin\{2, 4, 8\}$; adaylar bu koşulla elenir.
+
+::soru c4b tip=esitlik zorluk=2
+$a$ bir tam sayı ve $K=\{1, 2, 4, a\}$ dört elemanlıdır. K'nin her elemanı 2 ile çarpılarak dört elemanlı yeni bir küme elde ediliyor. İki kümenin kesişimi 3 elemanlı ise $a$'nın alabileceği değerler toplamı kaçtır?
+A) 0 || Yalnız $a=0$'ı buldun; $a=8$ de uyar.
+B) 6 || Hesabı kontrol et.
++C) 8 || Doğru: $a\in\{0, 8\}$.
+D) 10 || $a=2$ zaten kümede.
+E) 16 || $a=16$ için kesişim 2 elemanlı.
+kontrol: 0+8
+cozum: $a$'sız ortaklar $\{2, 4\}$. $a=8$ ise $2K$'da 8 var: ✓. $2a\in\{1,2,4\}$: $a=1$ ya da $a=2$ kümede zaten var ✗. $a=0$: $0$ iki kümede ✓. Toplam 8.
 
 ::ozet
 - Küme elemanları tek tek sayılır; iç içe küme ve $\varnothing$ birer elemandır, tekrar sayılmaz.

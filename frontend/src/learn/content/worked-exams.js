@@ -12,6 +12,7 @@ import { VERI_EXAMS } from './worked-veri.js';
 import { MERKEZI_EXAMS } from './worked-merkezi.js';
 import { ONERME_EXAMS } from './worked-onermeler.js';
 import { KOSULLU_EXAMS } from './worked-kosullu.js';
+import { KUMELER_EXAMS } from './worked-kumeler.js';
 export const WORKED_EXAMS = {
   ...KAR_ZARAR_EXAMS,
   ...HAREKET_EXAMS,
@@ -20,6 +21,7 @@ export const WORKED_EXAMS = {
   ...MERKEZI_EXAMS,
   ...ONERME_EXAMS,
   ...KOSULLU_EXAMS,
+  ...KUMELER_EXAMS,
   ...YUZDE_KARISIM_EXAMS,
   ...YAS_ISCI_EXAMS,
   ...MATH_CONTINUATION_EXAMS,

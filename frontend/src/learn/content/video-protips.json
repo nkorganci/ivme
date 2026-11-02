@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "59852f4437f183594ce548b969fade6a8332131c8fbb5ca898097408c00e1e20",
+  "inputsHash": "b4a79117547da5da3b0a4ba8e7fdcff44d8525f5e22c66036c54b4e9a88e330c",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1051,6 +1051,54 @@
       },
       "evidenceHash": "d089bd42310169fac826ce50522d84c98265dce7fbb709bf2280288b7fb42834",
       "contentHash": "89f16bef1d3aab64884e01b2915f66391feae8bf7c5b9c4eb9190e7f2957e6f1",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kumeler-temel-video:elemani-ayir-sonra-ekle",
+      "conceptId": "kumeler-temel",
+      "topicId": "tyt.matematik.kumeler",
+      "sectionIds": [
+        "s3",
+        "s3b"
+      ],
+      "title": "Elemanı ayır, kalanlarla kur, sonra ekle",
+      "rule": "Belirli bir elemanın bulunduğu alt kümeleri saymak için o elemanı kenara ayır, kalan elemanlarla bütün alt kümeleri kur ve her birine o elemanı ekle: n elemanlı kümede 2^(n−1) alt küme. Bulunmaması istenen elemanlar da kenara ayrılır.",
+      "condition": "İstenen ve istenmeyen elemanlar belirli olmalı. “En az biri bulunur” gibi koşullarda tümleyenden saymak (hepsi − hiçbiri) daha hızlıdır.",
+      "example": "{a, b, c, d, e} kümesinin alt kümelerinden a'yı içerip d'yi içermeyenler: a ve d kenara, kalan 3 elemanla 2^3 = 8 alt küme.",
+      "counterexample": "Alt kümeleri tek tek yazıp saymak 5 elemanda 32, 7 elemanda 128 satır demektir; hem uzun hem hata yapmaya açıktır.",
+      "rationale": "Kalan elemanlarla kurulan her alt küme, istenen eleman eklenince tek bir istenen alt küme verir ve her istenen alt küme bu yolla bir kez elde edilir: birebir eşleme.",
+      "source": {
+        "providerId": "youtube:I-rpBtyZkUw",
+        "startSeconds": 2739,
+        "endSeconds": 3000
+      },
+      "evidenceHash": "3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708",
+      "contentHash": "6599779068839cfa99b9922eb7c97b6a894620a59bc104221850a9055cc3c045",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kumeler-temel-video:kume-icindeki-kume-tek-eleman",
+      "conceptId": "kumeler-temel",
+      "topicId": "tyt.matematik.kumeler",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "Küme içindeki küme tek eleman",
+      "rule": "Bir kümenin içinde yazılmış küme, içinde kaç eleman olursa olsun tek bir elemandır. Elemanlık (∈) dış kümeye göre sorulur: {4, 5} ∈ A doğru olabilir ama 5 ∈ A yanlış olabilir.",
+      "condition": "Parantezlere dikkat: { } içindeki her virgülle ayrılan parça bir elemandır. Boş küme ∅ ile {∅} farklıdır: ikincisi bir elemanlıdır.",
+      "example": "K = {a, {b}, {c, d}, ∅} kümesinde s(K) = 4; {b} ∈ K doğru, b ∈ K yanlış, d ∈ K yanlış.",
+      "counterexample": "İç kümeleri açıp K'yi {a, b, c, d} gibi saymak eleman sayısını yanlış (5 ya da 4 yerine farklı) verir ve ∈ sorularında hata yaptırır.",
+      "rationale": "Eleman, kümenin içine doğrudan yazılan nesnedir. İç küme bir nesne olarak yazıldığı için, kendi elemanları dış kümenin elemanı sayılmaz.",
+      "source": {
+        "providerId": "youtube:OnGgW4VrrdE",
+        "startSeconds": 479,
+        "endSeconds": 605
+      },
+      "evidenceHash": "3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708",
+      "contentHash": "2841d51e9b275ec03ac76f3854107ee5b50322589684fa79d7d0b2ffab2775f0",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

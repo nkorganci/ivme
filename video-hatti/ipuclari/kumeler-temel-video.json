@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "elemani-ayir-sonra-ekle",
+    "providerId": "youtube:I-rpBtyZkUw",
+    "startSeconds": 2739,
+    "endSeconds": 3000,
+    "quote": "Tek tek alt kümelerini 1 yokken oluşturacağım",
+    "frameSeconds": [
+      2800,
+      2950
+    ],
+    "rule": "Belirli bir elemanın bulunduğu alt kümeleri saymak için o elemanı kenara ayır, kalan elemanlarla bütün alt kümeleri kur ve her birine o elemanı ekle: n elemanlı kümede 2^(n−1) alt küme. Bulunmaması istenen elemanlar da kenara ayrılır.",
+    "condition": "İstenen ve istenmeyen elemanlar belirli olmalı. “En az biri bulunur” gibi koşullarda tümleyenden saymak (hepsi − hiçbiri) daha hızlıdır.",
+    "example": "{a, b, c, d, e} kümesinin alt kümelerinden a'yı içerip d'yi içermeyenler: a ve d kenara, kalan 3 elemanla 2^3 = 8 alt küme.",
+    "counterexample": "Alt kümeleri tek tek yazıp saymak 5 elemanda 32, 7 elemanda 128 satır demektir; hem uzun hem hata yapmaya açıktır.",
+    "rationale": "Kalan elemanlarla kurulan her alt küme, istenen eleman eklenince tek bir istenen alt küme verir ve her istenen alt küme bu yolla bir kez elde edilir: birebir eşleme.",
+    "agentSourceReview": "Claude 2800 ve 2950. saniye karelerinde Soru 15'in tam metnini (A = {1, …, 7}; 1 bulunur, 3 bulunmaz, 1 bulunur 5 bulunmaz, 1 ve 4 bulunur) ve tahtadaki 2^6 = 64 hesaplarını okudu; altyazı 45:39'da 1 yokken alt küme kurup sonra 1 ekleme fikrini anlatıyor. Kartın a–e örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "kume-icindeki-kume-tek-eleman",
+    "providerId": "youtube:OnGgW4VrrdE",
+    "startSeconds": 479,
+    "endSeconds": 605,
+    "quote": "o zaman A'nın eleman sayısı 4",
+    "frameSeconds": [
+      500,
+      560
+    ],
+    "rule": "Bir kümenin içinde yazılmış küme, içinde kaç eleman olursa olsun tek bir elemandır. Elemanlık (∈) dış kümeye göre sorulur: {4, 5} ∈ A doğru olabilir ama 5 ∈ A yanlış olabilir.",
+    "condition": "Parantezlere dikkat: { } içindeki her virgülle ayrılan parça bir elemandır. Boş küme ∅ ile {∅} farklıdır: ikincisi bir elemanlıdır.",
+    "example": "K = {a, {b}, {c, d}, ∅} kümesinde s(K) = 4; {b} ∈ K doğru, b ∈ K yanlış, d ∈ K yanlış.",
+    "counterexample": "İç kümeleri açıp K'yi {a, b, c, d} gibi saymak eleman sayısını yanlış (5 ya da 4 yerine farklı) verir ve ∈ sorularında hata yaptırır.",
+    "rationale": "Eleman, kümenin içine doğrudan yazılan nesnedir. İç küme bir nesne olarak yazıldığı için, kendi elemanları dış kümenin elemanı sayılmaz.",
+    "agentSourceReview": "Claude 500 ve 560. saniye karelerinde Örnek 5'i (A = {1, {2}, 3, {4, 5}}; I. s(A) = 5, II. {2} ∈ A, III. 5 ∈ A) ve tahtadaki “B = {4, 5}, 5 ∈ B” notunu okudu; altyazı 07:59'da A'nın eleman sayısının 4 olduğunu açıklıyor. Kartın K kümesi özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

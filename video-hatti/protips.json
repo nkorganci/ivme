@@ -463,6 +463,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "kumeler-temel-video",
+      "conceptId": "kumeler-temel",
+      "hints": [
+        {
+          "id": "elemani-ayir-sonra-ekle",
+          "title": "Elemanı ayır, kalanlarla kur, sonra ekle",
+          "sectionIds": [
+            "s3",
+            "s3b"
+          ]
+        },
+        {
+          "id": "kume-icindeki-kume-tek-eleman",
+          "title": "Küme içindeki küme tek eleman",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        }
+      ]
     }
   ]
 }

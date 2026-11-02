@@ -23,5 +23,6 @@ import { diagrams as veriGrafik } from './veri-grafikleri-cizim.jsx';
 import { diagrams as merkezi } from './merkezi-egilim-cizim.jsx';
 import { diagrams as onermeler } from './onermeler-cizim.jsx';
 import { diagrams as kosullu } from './kosullu-onerme-cizim.jsx';
+import { diagrams as kumeler } from './kumeler-temel-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu, ...kumeler };

@@ -1,0 +1,137 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "kumeler-temel-video",
+  "topicId": "tyt.matematik.kumeler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708",
+  "taskHash": "72a35837478c3685efb1e70e04592a161d87bc48b066d9fc8ce5df113fd600ed",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\kumeler-temel-video",
+  "artifacts": {
+    "asamalar\\youtube-OnGgW4VrrdE-metin\\9998aaa028705659c306ee10907624fc79c2338d24dc9a969df728c57473aa2a.json": "3150e825c2cd3ec46bed69edaff465aab9e8c1c6bfd99afde08ef18175dd95a8",
+    "asamalar\\youtube-OnGgW4VrrdE-kareler\\ddd0705edaa43bfabba079d0e79a48b883659eca57d38b8f713e309f8cc6ea84.json": "2d4f49cc63c04df4571bda75a1035a8f6f9c1b55c8ebd6423d0c76ac6fbd5487",
+    "kareler\\a477327b7bb74e92a77e5bef504feac341c60e11a99ab30f09e1d34a7b2b6cce.png": "6c553b69e7e0989cf320044a4b3ee56ef4dd0993b6f6aea0448783f0a5971eee",
+    "kareler\\ce22d397b2e1443d309f3c5e21f5ddce924e32e68c3a7017c27f7528af81909d.png": "fc12a131a90dfb26816d23eac6a00a0ccbff003b05ef3df8fd2f8d3a6327353a",
+    "asamalar\\youtube-I-rpBtyZkUw-metin\\ce560b30786386f58c895ad76ecb69dcdd8665037f6bc6de898eee4832bb529a.json": "060be1092f307b61a9ff0902f6ae78d198b7666b6079771d6533529aa5f13198",
+    "asamalar\\youtube-I-rpBtyZkUw-kareler\\dd63c44a3b267ababaf197416a101df64cc9dff0ebe2dcba0c1650d980ed0cb2.json": "9e43328aeb74f8b9aaf45c3134c2782606647162d33238d25ff4a172bb966bc0",
+    "kareler\\a5c32c610bdf258482ca85f0684079222df43752150d0f26510502e312c954f8.png": "1ca6f414a9839e8d317be838f56e4d59f0a6bcfa059475adff4a9e18dd7346fd",
+    "kareler\\ee19839e5b71638bc94dafba8483968964a4faca10b8ae324e4827fd960a3383.png": "d7837698bba3cd4b9a56a5fc257ef4f19b8afbe426c7928787a7a8b195645c1d",
+    "asamalar\\matematik-denetimi\\fa4e8f036ff6b0f51f8522df3c48a647b63e57b82a2262204bf7ed1f6acd0b3e.json": "f02494dc4655723c6c3b0b2924cecb55d9a56ffb3531a35fc3b885f01b09c4bc",
+    "surumler\\3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708.json": "5952d3b8973748533e48bfb16dc278f79244afade893fdb120dbf7959b0929d4",
+    "surumler\\3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708.oneriler.md": "a037558541bd3e532d0b906056c5f24163ee1217815c3e154b3ef9ea6cfcc951"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-kumeler-temel-test.py",
+        "sha256": "d5e84640d9adc93f783411f5f690f26f15b4bd2fba66e1349cb3640e5aca3f8d",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "kumeler-temel-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 4,
+      "stagesBuilt": 5,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 2.791
+    },
+    "videos": [
+      {
+        "providerId": "youtube:OnGgW4VrrdE",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:I-rpBtyZkUw",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:OnGgW4VrrdE",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 697,
+      "normalization": {
+        "captionControlEvents": 693,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 500,
+          "file": "kareler\\ce22d397b2e1443d309f3c5e21f5ddce924e32e68c3a7017c27f7528af81909d.png",
+          "sha256": "fc12a131a90dfb26816d23eac6a00a0ccbff003b05ef3df8fd2f8d3a6327353a",
+          "pixelHash": "ce22d397b2e1443d309f3c5e21f5ddce924e32e68c3a7017c27f7528af81909d",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 560,
+          "file": "kareler\\a477327b7bb74e92a77e5bef504feac341c60e11a99ab30f09e1d34a7b2b6cce.png",
+          "sha256": "6c553b69e7e0989cf320044a4b3ee56ef4dd0993b6f6aea0448783f0a5971eee",
+          "pixelHash": "a477327b7bb74e92a77e5bef504feac341c60e11a99ab30f09e1d34a7b2b6cce",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:I-rpBtyZkUw",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 2828,
+      "normalization": {
+        "captionControlEvents": 2819,
+        "endClippedCues": 0,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2800,
+          "file": "kareler\\ee19839e5b71638bc94dafba8483968964a4faca10b8ae324e4827fd960a3383.png",
+          "sha256": "d7837698bba3cd4b9a56a5fc257ef4f19b8afbe426c7928787a7a8b195645c1d",
+          "pixelHash": "ee19839e5b71638bc94dafba8483968964a4faca10b8ae324e4827fd960a3383",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2950,
+          "file": "kareler\\a5c32c610bdf258482ca85f0684079222df43752150d0f26510502e312c954f8.png",
+          "sha256": "1ca6f414a9839e8d317be838f56e4d59f0a6bcfa059475adff4a9e18dd7346fd",
+          "pixelHash": "a5c32c610bdf258482ca85f0684079222df43752150d0f26510502e312c954f8",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "elemani-ayir-sonra-ekle",
+      "contentHash": "6599779068839cfa99b9922eb7c97b6a894620a59bc104221850a9055cc3c045",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "kume-icindeki-kume-tek-eleman",
+      "contentHash": "2841d51e9b275ec03ac76f3854107ee5b50322589684fa79d7d0b2ffab2775f0",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
