@@ -179,6 +179,14 @@ async function run(mobile) {
     assert.equal(labBody.archetypeId, 'lab-tek-cift');
     assert.deepEqual(labBody.items.map((i) => codeOf.get(i.questionId)), ['TYT-0545', 'TYT-0565', 'TYT-0576', 'TYT-0572']);
     assert.match(labBody.title, /Laboratuvardan gerçek sorular/);
+    // Komşu konu bankasından soru: kaynak bankası yüklenir, soru tipi bu konunun ustalığına yazılmaz.
+    server.posts.length = 0;
+    await goto(`/konuyu-ogrenelim/pratik?tur=lab&konu=ebob-ekok&tip=lab-periyodik&kod=AYT_Sayisal-0003,TYT-0596&kaynak=temel-kavramlar,bolme-bolunebilme`);
+    await wait('location.pathname.startsWith("/soru/")', 30000);
+    const crossBody = server.posts[0];
+    assert.equal(crossBody.conceptId, 'ebob-ekok');
+    assert.equal(crossBody.items.length, 2);
+    assert.ok(crossBody.items.every((i) => i.archetypeId === null), 'komşu bankanın soru tipi taşınmaz');
     await goto(`/konuyu-ogrenelim/pratik?tur=lab&konu=${CONCEPT}&kod=TYT-0545`);
     await wait(`location.pathname === "/konuyu-ogrenelim/konu/${CONCEPT}"`, 30000);
     steps.push({ step: 'lab-gercek-soru', items: labBody.items.length });
