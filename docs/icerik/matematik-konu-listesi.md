@@ -1,14 +1,27 @@
 # Matematik konu listesi (9–12. sınıf, TYT → AYT)
 
 Bu belge Konuyu Öğrenelim matematiğinin **tek takip listesidir**. Claude, Codex/ChatGPT ve
-diğer agent'lar matematik içerik işine başlamadan önce yalnız bu listeyi okur;
-**✅ BİTTİ satırına yeniden bakmaz**, ilk 🟡/⬜ satırdan devam eder. Girdisi değişmemiş
-bitmiş dersi yeniden yazmak, baştan taramak veya testlerini sebepsiz tekrarlamak yasaktır.
+diğer agent'lar matematik içerik işine başlamadan önce bu listeyi okur. Kullanıcı
+**mevcut ve yeni her konuya, konuya uygun laboratuvar eklenmesini** istedi.
+Önce aşağıdaki lab kapsamına bak; ilk TYT lab eksiğinden konu sırasıyla baştan ilerle.
+Lablar tamamlandıktan sonra ilk 🟡/⬜ içerik eksiğine geç. Eski ✅ içerik labı eksikse
+yalnız eksik lab/hedef/aktarım kapsamı için yeniden açılır. Girdisi değişmemiş
+bitmiş anlatımı, kaynağı veya soruları yeniden üretme; testleri sebepsiz tekrarlama.
 
 **Etkin aşama: TYT.** AYT satırlarına TYT listesinin hepsi ✅ olana kadar başlanmaz
 (kullanıcı kararı). Yeni ders yazılmaz; yalnız TYT kapsamındaki mevcut dersler tamamlanır.
 
-## “Bitti” nasıl belirlenir
+## İçerik “bitti” işareti ve laboratuvar kabulü
+
+**İki kabul birlikte gerekir:** aşağıdaki otomatik dört içerik ölçütü + konu
+hedeflerini karşılayan labın teknik kabulü. Otomatik tablo ve uygulamanın
+`İçerik durumu` ekranı şu anda yalnız dört içerik ölçütünü hesaplar; lab durumunu
+henüz hesaplamaz. Bu yüzden aşağıdaki ✅ ve bitti sayısı **içerik hazırlığıdır**;
+genel konu hazırlığı tamamlandı diye yorumlanmaz. Lab durumu aynı belgedeki ayrı
+tabloda elle, kapsam/kanıt/kalan işle tutulur; üretilen bölüme elle sütun eklenmez.
+
+Bu doküman güncellemesi lab sayacını veya uygulama ekranını değiştirmez. Lab kabulünü
+otomatik ölçüme bağlamak, gerçek lab kabul kayıtlarıyla yapılacak sonraki teknik iştir.
 
 Durum sütunu elle yazılmaz. `node scripts/konu-ogrenme-kapsam.mjs --liste` ders dosyalarını
 ölçer ve aşağıdaki tabloyu yeniden yazar; `--liste --kontrol` belge ölçümle uyuşmazsa
@@ -31,11 +44,19 @@ yalnız dört ölçütün hepsi sağlanınca ✅ olur:
    `scripts/matematik-konu-listesi.json` → `pdfOkundu` alanına yazılır (örn.
    `"TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/28 - SAYI PROBLEMLERI.pdf s.1-17"`).
 
-Bu ölçütler teknik/yapısal kabuldür; öğretmen onayı veya öğrencide ölçülmüş öğrenme değildir.
+Bu dört ölçüt teknik/yapısal içerik kabulüdür. Lab için ayrıca
+[öğretim ve anlamlı doğrulama standardı](matematik-laboratuvari.md) uygulanır:
+konuya uygun model, amaçlı öğrenci eylemi, neden/koşul, hataya özel geri bildirim,
+bağımsız aktarım ve doğrulanmış gerçek soru eşlemesi gerekir. Dosya veya kaydırıcı
+varlığı lab kabulü değildir. İçerik + lab teknik kabulü, öğretmen onayı veya
+öğrencide ölçülmüş öğrenme anlamına gelmez; bu kabuller ayrıca raporlanır.
 
 ## Bir konuyu bitirme sırası
 
-1. `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` → sıradaki konu.
+1. Önce lab tablosundaki ilk eksik TYT konusunu seç. Mevcut içerik durumunu
+   `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile denetle; komutun
+   “sıradaki konu” çıktısı yalnız içerik ölçümüdür, lab ekleme sırasının yerine geçmez.
+   İçerik zaten ✅ ise doğrudan 6. adıma geç.
 2. `pdfAnlatim` dosyalarını oku (metin + gerekli sayfa görselleri); konunun alt başlıklarını,
    tanımlarını ve çözümlü örnek türlerini çıkar. Okunanı `pdfOkundu`'ya yaz.
 3. `videolar` içinden konu anlatım videolarının altyazısını al, püf noktası adaylarını
@@ -44,14 +65,113 @@ Bu ölçütler teknik/yapısal kabuldür; öğretmen onayı veya öğrencide öl
    kanıt satırı ekle ([öğretim sözleşmesi](konuyu-ogrenelim.md#pilot-derinliğindeki-dersler)).
 5. `.ders` dosyasını 8 bölüme genişlet (eski kimlikler korunur; yeni bölümler `s1b`…),
    `frontend/src/learn/derin/<ders>.js` + `-cizim.jsx` keşiflerini yaz, `DERIN` listesine ekle.
-6. Denetimler: `node --test testler/konu-ogrenme-*.test.mjs`, `node scripts/cevap-anahtari.mjs`,
+6. Lab hedeflerini ve tipik yanılgıları seç; mevcut keşfi değerlendir, en uygun
+   modeli kur/geliştir. Öğrenci eylemi → gerekçe → azalan yardım → yeni soruya
+   aktarım akışını ve hedefe özgü gerçek soru bağını tamamla. Aynı pilotu kopyalama.
+   Bitmiş içerikte 2–5. adımları baştan yapma; yalnız labın gerektirdiği boşlukları kapat.
+7. Labı bağımsız matematik hesabı, sınır/koşul, yanlış cevap, ipucu, yeniden deneme,
+   masaüstü/mobil ve klavye yollarıyla doğrula; kapsam/kanıt/kalanı lab satırına yaz.
+   Görülmemiş soruda yardımsız çözüm ve gecikmeli aktarım için insan kabulünü ayrı tut.
+8. İçerik değiştiyse ilgili denetimler: `node --test testler/konu-ogrenme-*.test.mjs`, `node scripts/cevap-anahtari.mjs`,
    banka (`node scripts/konu-ogrenme-banka.mjs`, `node scripts/ortak-set-tani.mjs --yaz`),
    `--kesif <ders>` UI testi; sonra `--liste`, `python scripts/ivme.py kontrol`, yerel commit.
 
-Konu tamamlanınca bu listeyi aynı commit'te yeniden üret; devir notuna yalnız yarım kalan
-konunun konumunu yaz.
+İçerik ölçümü değişince bu listenin üretilen bölümünü aynı commit'te yeniden üret.
+Lab kabulü/kapsamı değişince lab satırını, görev durumunu ve devirdeki sonraki somut
+adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel olarak kapatma.
 
-## Liste
+## Laboratuvar kapsamı ve devam sırası
+
+**Yeni lab kabulüne göre:** TYT **0/32 teknik hazır**, AYT **0/24 teknik hazır**.
+`temel-kavramlar` tek–çift pilotuyla **KISMİ**; kalan 55 konuda standarda göre kabulü
+kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
+anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
+
+**Sıradaki çalışma:** `temel-kavramlar` için lab hedef haritasını tamamla; mevcut
+tek–çift pilotunu yeniden yazmadan sayı kümeleri/işlemler, işaret, ardışık sayılar
+ve uç değer hedeflerini değerlendir. Sonra `sayi-basamaklari`, `bolme-bolunebilme`
+ve aşağıdaki TYT sırası. Yeni konu hazırlanırken lab aynı konu paketi içinde yapılır.
+TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
+
+`LAB YOK`: bu standarda göre kabul kaydı yok. `KISMİ`: lab var, hedef/kanıt eksiği
+var. `TEKNİK HAZIR`: kritik hedefler, bağımsız aktarım ve teknik/UI kabulü tamam;
+öğretmen ve öğrenci değerlendirmesi ayrıca belirtilir. Her kabul değişiminde durum,
+kapsanan/açık hedefler, kanıt bağlantısı ve üstteki sayım güncellenir. Yeni konu
+kimliği eklenirse lab tablosuna da aynı kimlikle satır eklenir. Teknik kabulden önce insan
+ölçümü yapılması şart değildir; ölçülmemiş etki başarı diye sunulmaz.
+
+Aşağıdaki model önerileri **adaydır**. Gerçek sorudaki öğrenme ihtiyacına göre daha
+etkili temsil veya etkileşim seçilebilir; aynı ekran veya etkinlik bütün konulara
+zorlanmaz. Ortak model birden çok satıra hizmet edebilir; her satırın hedef ve
+aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-laboratuvari.md).
+
+### TYT ve ortak konuların labları
+
+| Konu kimliği | Lab durumu / kabul kanıtı | İlk hedef ve uygun model adayı |
+|---|---|---|
+| `temel-kavramlar` | 🟡 KISMİ — [tek–çift pilotu](matematik-laboratuvari.md#mat-lab-01-tekçift-pilotu); tam konu kapsamı ve hedefe özgü gerçek soru kabulü açık | Sayı kümesi/işlem koşulu, tek–çift, işaret, ardışık ve uç değer için gerekli modelleri eşleştir; mevcut pilotu geliştir |
+| `sayi-basamaklari` | ⬜ LAB YOK | Basamak blokları, rakam yer değiştirme ve denklem; rakam/sayı/başta sıfır koşulunu ayır |
+| `bolme-bolunebilme` | ⬜ LAB YOK | Bölüm–kalan, basamak katkısı ve aday eleme; birden çok koşulu birlikte sağla |
+| `ebob-ekok` | ⬜ LAB YOK | Parçalama–birleştirme ve ortak döngü; EBOB/EKOK seçiminin nedenini kur |
+| `rasyonel-sayilar` | ⬜ LAB YOK | Birim kesir, sayı doğrusu ve eşdeğer temsil; büyüklük ile pay/paydayı ayır |
+| `birinci-derece-denklemler` | ⬜ LAB YOK | Denge ve bağlı miktarlar; sözel koşulu denkleme çevir, çözüm türlerini denetle |
+| `esitsizlikler` | ⬜ LAB YOK | Sayı doğrusunda aralık ve işaret; negatifle çarpma, uç ve tam sayı koşulları |
+| `mutlak-deger` | ⬜ LAB YOK | Uzaklık ve hareketli nokta; mutlak değeri parçalı durumlara ve çözüme çevir |
+| `uslu-ifadeler` | ⬜ LAB YOK | Çarpan yapısı ve büyüme; üs kurallarının nedenini, taban/parantez koşulunu kur |
+| `koklu-ifadeler` | ⬜ LAB YOK | Alan–kenar, çarpan çıkarma ve eşlenik; tanım koşulu ve sahte kökü denetle |
+| `carpanlara-ayirma` | ⬜ LAB YOK | Alan/parçalama ve çözüm karşılaştırma; yapıyı tanı, sadeleştirmede yasak değeri koru |
+| `oran-oranti` | ⬜ LAB YOK | Eş ölçekli çubuklar ve birim oran; doğru/ters orantıyı ve korunan miktarı ayır |
+| `sayi-kesir-problemleri` | ⬜ LAB YOK | Parça–bütün ve miktar kurma; bütünün kesri ile kalanın kesrini ayır |
+| `yas-isci-problemleri` | ⬜ LAB YOK | Yaş zaman çizgisi ve iş/hız birikimi; değişmeyen yaş farkını, toplam hızı ve birimleri kur |
+| `yuzde-karisim` | ⬜ LAB YOK | Bütün, yüzde tabanı ve saf madde korunumu; değişen payda/yoğunluğu açıkla |
+| `kar-zarar` | ⬜ LAB YOK | Maliyet/satış referansı ve ardışık fiyat değişimi; yüzde tabanını seç |
+| `hareket-problemleri` | ⬜ LAB YOK | Konum–zaman ve kapanan mesafe; yön, bağıl hız ve mola koşullarını modele bağla |
+| `grafik-rutin-olmayan` | ⬜ LAB YOK | Tablo/grafikten kısıt çıkarma ve strateji seçimi; gereksiz bilgiyi ele |
+| `veri-grafikleri` | ⬜ LAB YOK | Aynı verinin farklı grafikleri; ölçek ve sunum değişince değişmeyen bilgiyi oku |
+| `merkezi-egilim` | ⬜ LAB YOK | Veri noktalarını değiştir; ortalama/ortanca/yayılım ve aykırı değerin etkisini ayır |
+| `onermeler` | ⬜ LAB YOK | Doğruluk durumları kurma ve yanlış çıkarımı onarma; bağlaçların anlamını ayır |
+| `kosullu-onerme` | ⬜ LAB YOK | Koşul, karşı durum ve niceleyici; bir örnek, karşı örnek ve genel iddiayı ayır |
+| `kumeler-temel` | ⬜ LAB YOK | Eleman/alt küme kurma; üyelik, kapsama ve boş küme durumlarını ayır |
+| `kume-islemleri` | ⬜ LAB YOK | Bölge seçimi ve ortak eleman sayımı; kesişim/birleşim/tümleyeni soruya çevir |
+| `fonksiyon-kavrami` | ⬜ LAB YOK | Girdi–çıktı eşleme; fonksiyon olma, tanım/görüntü ve bire birlik koşullarını sına |
+| `fonksiyon-grafikleri` | ⬜ LAB YOK | Bağlı tablo–grafik–cebir; eğim, kesişim ve temsil değişiminde aynı ilişkiyi tanı |
+| `bileske-ters` | ⬜ LAB YOK | İşlem makineleri ve ters adımlar; sıra ile tanım/görüntü koşullarını koru |
+| `polinom-islemleri` | ⬜ LAB YOK | Katsayı/terim yapısı, bölme ve yerine koyma; hangi stratejinin neden işe yaradığını seç |
+| `ikinci-derece-denklemler` | ⬜ LAB YOK | Alan/parabol ve çarpanlar; kök, diskriminant ve çözüm yöntemi seçimini ilişkilendir |
+| `sayma-permutasyon` | ⬜ LAB YOK | Küçük örnek uzay ve sistematik listeleme; sıra, koşul ve tekrar saymayı denetle |
+| `kombinasyon` | ⬜ LAB YOK | Seçim ile sıralamayı karşılaştır; aynı grubu tekrar saymayı görünür kıl |
+| `olasilik` | ⬜ LAB YOK | Eş olasılıklı örnek uzay kurma; deneysel sıklık ile teorik olasılığı ayır |
+
+### AYT konularının labları (TYT sonrasında)
+
+| Konu kimliği | Lab durumu | İlk hedef ve uygun model adayı |
+|---|---|---|
+| `binom` | ⬜ LAB YOK | Seçim yolları ve açılım katsayıları; terim seçimiyle kombinasyon bağını kur |
+| `kosullu-olasilik` | ⬜ LAB YOK | Koşulla daralan örnek uzay; bağımsızlık ve değişen paydayı ayır |
+| `ispat-yontemleri` | ⬜ LAB YOK | İspat adımı kurma/hata bulma; örnek, karşı örnek ve genel ispatı ayır |
+| `karmasik-sayilar` | ⬜ LAB YOK | Karmaşık düzlemde işlemler; cebirsel sonuçla geometrik temsili ilişkilendir |
+| `ikinci-derece-esitsizlikler` | ⬜ LAB YOK | İşaret çizelgesi ve aralık; kök, katlı kök ve tanımsız noktayı ayır |
+| `denklem-esitsizlik-sistemleri` | ⬜ LAB YOK | Eğri/bölge kesişimleri; ortak çözümü cebir ve grafikle kontrol et |
+| `fonksiyon-donusumleri` | ⬜ LAB YOK | Grafik dönüşümleri; değişkenin içindeki/dışındaki işlemleri karşılaştır |
+| `parabol` | ⬜ LAB YOK | Katsayı, kök ve tepe noktası; cebirsel biçimi amaca göre seç |
+| `trigonometri-acilar` | ⬜ LAB YOK | Birim çemberde açı ve yay; derece/radyan, yön ve bölgeyi ilişkilendir |
+| `trigonometrik-fonksiyonlar` | ⬜ LAB YOK | Çember–grafik geçişi; işaret, periyot ve tanım koşullarını çıkar |
+| `sinus-kosinus-teoremleri` | ⬜ LAB YOK | Üçgeni değiştir; verilenlere göre teorem seç, mümkün üçgen koşulunu denetle |
+| `ters-trigonometrik-fonksiyonlar` | ⬜ LAB YOK | Kısıtlı aralıkta ters eşleme; esas değer ve tanım/görüntü koşullarını koru |
+| `toplam-fark-iki-kat` | ⬜ LAB YOK | Açı bileşimi ve özdeşlik yapısı; uygun dönüşümü seç, sayısal denemeyi ispat sayma |
+| `trigonometrik-denklemler` | ⬜ LAB YOK | Çemberde kök ve periyot; aralık kısıtını ve kaybolan/fazladan çözümleri denetle |
+| `ustel-fonksiyon` | ⬜ LAB YOK | Tekrarlı çarpan ve grafik; tabana göre artış/azalışı ve sınırları ilişkilendir |
+| `logaritma` | ⬜ LAB YOK | Üstel ilişkiyi tersine çevir; taban/iç koşulları ve işlem kurallarını gerekçelendir |
+| `diziler` | ⬜ LAB YOK | Terim–indis ve fark/oran; örüntü tahmini ile genel terimin gerekçesini ayır |
+| `limit` | ⬜ LAB YOK | İki yandan yaklaşma ve tablo/grafik; fonksiyon değeriyle limiti ayır |
+| `sureklilik` | ⬜ LAB YOK | Nokta değeri ve iki yan limit; üç koşulu birlikte denetle |
+| `turev` | ⬜ LAB YOK | Sekant–teğet ve değişim oranı; geometrik sezgiyi limit ve sembolik işleme bağla |
+| `turev-uygulamalari` | ⬜ LAB YOK | İşaret, artış/azalış ve optimizasyon; kritik nokta ile gerçek uç değeri ayır |
+| `belirsiz-integral` | ⬜ LAB YOK | Ters türev ve fonksiyon ailesi; sabitin rolünü türevle sağla |
+| `belirli-integral` | ⬜ LAB YOK | Bölümlere ayırma ve birikim; işaretli integral ile geometrik alanı ayır |
+| `integral-uygulamalari` | ⬜ LAB YOK | Bölgeyi parçalama ve uygun sınır seçimi; alan/hacmi problemdeki niceliğe bağla |
+
+## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
 TYT: **13/32 bitti**. Sıradaki TYT konusu: `yas-isci-problemleri`.

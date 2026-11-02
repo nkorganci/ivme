@@ -69,9 +69,16 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 
 ## 12.02 — Eksik ders notu ve gerçek kaynaklı ipucu kapsamını genişlet
 
-**MAT-LAB-01:** Kullanıcı onaylı tek–çift etkileşim pilotu
-[Matematik Laboratuvarı sözleşmesinde](../icerik/matematik-laboratuvari.md) izlenir.
-Koşul değiştirme ve bağımsız soruya aktarım denenir; öğretim etkisi öğrenci gözlemiyle ölçülür.
+**MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu teknik olarak hazırdır; kullanıcı
+mevcut ve yeni bütün matematik konularına laboratuvar eklenmesini istedi.
+[Laboratuvar öğretim/kabul standardı](../icerik/matematik-laboratuvari.md) ve
+[tek konu/lab takip listesi](../icerik/matematik-konu-listesi.md) kullanılır.
+Pilotun kopyası zorunlu değildir; hedefe göre en uygun etkileşim seçilir. Mevcut
+keşifler değerlendirilerek geliştirilir; konu bazlı hedef, yanılgı, koşul/sınır,
+gerekçe, bağımsız aktarım ve doğrulanmış gerçek soru bağıyla kabul edilir.
+Her konunun labı aynı konu paketi içindedir; ortak model farklı görevlerle birden
+çok konuyu kapsayabilir. Otomatik içerik ✅ işareti lab kabulünü henüz ölçmez.
+Lab kabul kayıtlarının otomatik ölçüme/ekrana bağlanması teknik açık iştir.
 
 **Konuyu Öğrenelim öğretim standardı:** Yeni dersler ve mevcut derslerin yeni bölümleri
 [ortak öğretim sözleşmesine](../icerik/konuyu-ogrenelim.md) uyar: günlük bağlam, temelden
@@ -85,12 +92,14 @@ ilk bölümdeki keşif, tüm alt konuların uzman incelemesi yerine geçmez.
 **Etkin içerik sınırı:** Kullanıcı yalnız matematikte bütün TYT ve AYT konularının
 bölme pilotuna göre tamamlanmasını istedi. Mevcut derslerin derinleştirilmesi ve
 hiç bulunmayan derslerin eklenmesi aynı görevin kapsamındadır. Başka branşa geçilmez.
-Güncel sayım: **node scripts/konu-ogrenme-kapsam.mjs --write**.
-34 mevcut dersin 12'si pilot yapısında, 22'si derinleştirilecek; ayrıca 22 eksik alt
-kapsam vardır. Geniş katalog kategorisi bağını bütün alt konuların tamlığı sayma.
+Güncel içerik sayımı: **node scripts/konu-ogrenme-kapsam.mjs --write**; içerik ve
+lab durumları konu listesinden okunur. Geniş katalog kategorisi bağını bütün alt
+konuların tamlığı, keşif sayısını da lab kabulü sayma.
 
-- Sıradaki mevcut ders sayi-kesir-problemleri; sonra yüzde-karışım, kâr-zarar,
-  hareket, yaş-işçi ve ders sırasındaki kalan matematik dersleri.
+- Sıradaki iş `temel-kavramlar` lab kapsamını tamamlama; ardından konu listesindeki
+  TYT lab sırasıdır. İçerik bakımından ✅ konular da lab eksiği için yeniden açılır;
+  bitmiş anlatım, kaynak/PDF/video ve sorular yeniden üretilmez. Yeni konuda içerik
+  ve lab birlikte tamamlanır; TYT açıkları bitince AYT'ye geçilir.
 - Eksik kapsam: ispat yöntemleri; karmaşık sayılar; ikinci derece/rasyonel
   eşitsizlikler ve sistemler; fonksiyon dönüşümleri; parabol; yönlü açılar ve
   trigonometrik fonksiyonlar; sinüs/kosinüs teoremleri ve ters trigonometrik fonksiyonlar;
@@ -100,6 +109,11 @@ kapsam vardır. Geniş katalog kategorisi bağını bütün alt konuların taml�
 - Her derste özgün soru görseli, koşullu kısa yol, konuya uygun etkileşimli model,
   gerekçeli örnek ve bağımsız aktarım korunur. Soru eşlemesi veya test geçişi öğretmen
   onayı olarak sunulmaz. Ayrıntılar [öğretim sözleşmesinde](../icerik/konuyu-ogrenelim.md).
+- Lab matematiği bağımsız hesap, korunan ilişki ve sınır/koşullarla; etkileşim yanlış
+  yol, ipucu, yeniden deneme, klavye ve mobil akışla sınanır. Öğrenme etkisi başlangıç
+  düzeyi dikkate alınarak görülmemiş soruda yardımsız çözüm, gerekçe, ipucu ihtiyacı
+  ve gecikmeli aktarımla ayrıca ölçülür. İşe yaramayan etkileşim değiştirilir;
+  yalnız görünüm/tıklama veya otomatik testle eğitim başarısı yazılmaz.
 
 Durum: `KISMI_KAYNAKLI_ICERIK`. Yayımlanmış rehberler `frontend/public/kaynakli-notlar.json`
 içindedir; hepsi öğretmen onayı bekler. Notu olmayan kontrollü konuların kimlik bazlı tek

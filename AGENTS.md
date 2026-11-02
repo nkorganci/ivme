@@ -37,8 +37,12 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
 
 - **Matematik işine başlamadan önce** [matematik konu listesini](docs/icerik/matematik-konu-listesi.md)
   oku (`node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` sıradaki konuyu verir).
-  ✅ BİTTİ satırlarına tekrar bakma; ilk eksik satırdan devam et. Durum elle değil ölçütlerden
-  üretilir; konu bitince listeyi aynı commit'te `--liste` ile yenile. Etkin aşama TYT; AYT bekler.
+  Önce aynı belgedeki **laboratuvar kapsamı ve devam sırasına** bak: kullanıcı mevcut ve
+  yeni bütün konulara lab istedi. TYT'de ilk lab eksiğinden, konu sırasıyla baştan ilerle;
+  lab da tamamsa ilk içerik eksiğine geç. Eski otomatik ✅ yalnız dört içerik ölçütüdür,
+  lab kabulünü ölçmez. Lab eksikse ✅ konuyu yalnız lab/aktarım kapsamı için yeniden aç;
+  bitmiş anlatım, kaynak ve soruları gerekçesiz baştan üretme. İçerik durumu ölçütlerden
+  üretilir; değiştiyse listeyi aynı commit'te `--liste` ile yenile. Etkin aşama TYT; AYT bekler.
 - Amaç öğrencinin **mantığı kavraması ve gerçek soruyu kendi başına çözebilmesi**.
   Kısa özetleri uzun metne çevirmek yeterli değildir. Hiç bilmeyen için terimleri ve
   sembolleri açıklayarak başla; temel → bağlantılar → ileri gerekçe/özel durum sırasını koru.
@@ -50,6 +54,18 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
   gösterir. Öğrenci değeri değiştirebilmeli; şekil, sayısal sonuç ve açıklama tutarlı
   güncellenmeli. Günlük kullanım, merak uyandıran bağlantı ve püf noktası konuya özgü
   olmalı. Olgusal ilginç bilgiyi uydurma; matematiksel bir ilişkiyi keşfettirmek uygundur.
+- **Her matematik konusu için hedefe uygun laboratuvar gerekir.**
+  [Lab öğretim/kabul standardını](docs/icerik/matematik-laboratuvari.md) uygula;
+  tek–çift pilotunun arayüzünü veya görev sayısını her konuya kopyalama. Önce hedef,
+  yanılgı ve gerçek soru becerisini belirle; uygun model/etkileşimi seç. Tahmin veya
+  karar, amaçlı eylem, neden/koşul, hataya özel geri bildirim ve bağımsız aktarım gerekir.
+  Uygunsa mevcut keşfi geliştir; yalnız kaydırıcı/animasyon/soru sayısıyla lab tamamlanmaz.
+  Ortak bileşen birden çok konuya bağlanabilir; her konu için hedef/kabul bağı ayrı tutulur.
+  Matematik ve etkileşim doğruluğunu anlamlı testlerle; eğitim etkisini görülmemiş soruda
+  yardımsız çözüm, gerekçe, ipucu ihtiyacı ve gecikmeli aktarımla değerlendir. Teknik
+  kabulü öğretmen onayı veya öğrenme etkisi diye sunma. Konu listesindeki lab durumunu,
+  hedef kapsamını, kanıtı ve kalan işi güncelle; içerik + lab teknik kabulü olmadan
+  konunun yeni standarda göre tamamlandığını yazma.
 - Önce örnek çöz; her adımda **ne / neden / nasıl kontrol ederim** göster. Yeni başlayan
   için gerekçeyi gizleme. “Temelden” başlangıçtır; bilgili öğrenci daha ileri anlatımı
   seçebilir. Gereksiz jargon, küçük yazı, yoğun tek ekran ve acele ettiren dil kullanma.

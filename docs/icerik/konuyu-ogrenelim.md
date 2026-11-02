@@ -35,6 +35,29 @@ ve mevcut React/Spring/PostgreSQL mimarisinin yerine geçmez; yeniden IndexedDB 
 
 ## İçerik sırası ve yeni ders ekleme
 
+### Her konuda hedefe uygun laboratuvar
+
+Mevcut ve yeni bütün matematik konuları
+[laboratuvar öğretim ve kabul standardına](matematik-laboratuvari.md) uyar.
+Tek–çift pilotu örnektir; model, görev sayısı ve ekran düzeni konuya göre seçilir.
+Mevcut keşif, öğretim hedeflerini karşılıyorsa geliştirilerek lab olarak kullanılabilir.
+Ortak arayüz bileşenleri paylaşılır; aynı laboratuvarın farklı konu görevleri ayrı
+hedef/aktarım kabulüne bağlanır. Lab sayısı yerine kritik hedeflerin kapsamı izlenir.
+
+Öğrencinin kararı/tahmini, amaçlı eylemi, koşul değişimi veya hata incelemesi,
+gerekçesi ve azalan yardımla bağımsız soruya aktarımı bulunur. Gerçek sınav sorusuna
+bağlantı hedefe özgü doğrulanır; genel konu setine bağlantı tek başına yeterli değildir.
+Yeni konu paketi labı olmadan tamamlanmaz. Önceden ✅ içerik de lab bakımından
+eksik olabilir; tek takip listesi [konu ve lab kapsamıdır](matematik-konu-listesi.md).
+Kullanıcı baştan lab ekleyerek ilerlenmesini istedi: ilk TYT lab eksiği önceliklidir;
+bitmiş anlatımı, PDF/video kanıtını veya soru bankasını baştan üretme.
+
+Her görevde kısa hedef–model–yanılgı–aktarım eşlemesi ve kabul kaydı tutulur.
+Matematikte bağımsız hesap/sınır/korunan ilişki, UI'da yanlış yol/ipuçları/mobil
+kontrol edilir. Öğretim etkisi görülmemiş soruda yardımsız çözüm, gerekçe, ipucu
+ihtiyacı ve gecikmeli aktarımla ayrıca değerlendirilir. Otomatik test, keşifteki
+puan veya beğeni pedagojik başarı değildir; ayrıntılar lab sözleşmesindedir.
+
 ### Videodan protip: ürün kararı ve yaygınlaştırma
 
 Kaynaklı video ipuçları konu sayfasında ve ilgili ders bölümünde **protip** olarak
@@ -94,7 +117,11 @@ kullanır. Dersin ana anlatımı/ustalık seti ayrıca mevcut içerik sözleşme
 6. Gerçek soruyu kaynak görüntüsünden incele. Çözümü yazılmış örneği `::cikmis KOD tip=...`
    ile doğru bölümde bağla; `WORKED_EXAMS` kayıtları banka üretiminde elle incelenmiş
    eşleme olarak önceliklidir. `practiceIds` otomatik oluşur ve ustalık seçiminden çıkarılır.
-7. Yeni içeriği aşağıdaki denetimlerden geçir. Bir dosyanın varlığı pedagojik doğrulama
+7. Hedefe uygun laboratuvarı kur veya mevcut keşfi lab standardına genişlet; hedef,
+   koşul/sınır, yanlış düşünce geri bildirimi ve bağımsız aktarım kabulünü kaydet.
+   Konu listesindeki lab durumunu ve kalan kapsamı güncelle; aynı işi ayrı bir
+   müfredat veya ikinci soru bankası olarak çoğaltma.
+8. Yeni içeriği aşağıdaki denetimlerden geçir. Bir dosyanın varlığı pedagojik doğrulama
    veya öğretmen onayı değildir; kimlik/biçim/hesap testleri bu sınırla raporlanır.
 
 Varsayılan anlatım **L1 / Temelden**. L2 **Bağlantıları kur**, L3 **Derinleş**. Öğrencinin
