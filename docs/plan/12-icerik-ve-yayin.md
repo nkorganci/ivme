@@ -69,8 +69,9 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 
 ## 12.02 — Eksik ders notu ve gerçek kaynaklı ipucu kapsamını genişlet
 
-**MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu teknik olarak hazırdır; kullanıcı
-mevcut ve yeni bütün matematik konularına laboratuvar eklenmesini istedi.
+**MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu ve ortak lab motoru hazırdır; ilk tam
+konu `temel-kavramlar` teknik kabulü geçti. Kullanıcı mevcut ve yeni bütün matematik
+konularına laboratuvar eklenmesini istedi.
 [Laboratuvar öğretim/kabul standardı](../icerik/matematik-laboratuvari.md) ve
 [tek konu/lab takip listesi](../icerik/matematik-konu-listesi.md) kullanılır.
 Pilotun kopyası zorunlu değildir; hedefe göre en uygun etkileşim seçilir. Mevcut

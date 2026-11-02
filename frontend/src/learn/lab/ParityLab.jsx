@@ -1,8 +1,6 @@
 import { useId, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { usePageTitle } from '../../hooks.js';
 import { MathText } from '../math.jsx';
-import { BASE, SharedSetLink } from '../ui.jsx';
+import { SharedSetLink } from '../ui.jsx';
 import { SCENARIOS, TRANSFER, VERDICTS, numberText, trial } from './parity.js';
 import './parity-lab.css';
 
@@ -29,7 +27,7 @@ function PairDrawing({ value }) {
   </div>;
 }
 
-function TransferPractice() {
+function TransferPractice({ real }) {
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [finished, setFinished] = useState(false);
@@ -45,11 +43,13 @@ function TransferPractice() {
       <h2>Koşulu oku. İlişkiyi kur. Sonucu denetle.</h2>
       <p>Üç özgün alıştırmayı tamamladın. İlk kontrolde, ipucusuz {first}/3 doğru; {hints} soruda ipucu açtın. Bu kısa çalışma, konu ustalığı ölçümü değildir.</p>
       <ol className="pl-takeaways"><li>Tek çarpım → bütün çarpanlar tek.</li><li>Çift çarpım → en az bir çarpan çift; ikisi de çift olabilir.</li><li>Karşı örnek → koşulu sağlar, iddiayı bozar.</li></ol>
+      <h3>Görseli okunmuş, tek–çift çıkarımı isteyen ÖSYM soruları</h3>
+      <ul className="tl-real">{real.map((r) => <li key={r.code}><strong>{r.code.replace('_', ' ')}</strong> <MathText text={r.why} /></li>)}</ul>
       <div className="pl-actions">
-        <SharedSetLink className="btn btn-primary" type="practice" conceptId="temel-kavramlar" archetype="tek-cift">Tek–çift soruları çöz</SharedSetLink>
-        <SharedSetLink className="btn btn-secondary" type="cikmis" conceptId="temel-kavramlar">Konunun çıkmış sorularını aç</SharedSetLink>
+        <SharedSetLink className="btn btn-primary" type="lab" conceptId="temel-kavramlar" archetype="lab-tek-cift" codes={real.map((r) => r.code)}>Bu {real.length} gerçek soruyu çöz</SharedSetLink>
+        <SharedSetLink className="btn btn-secondary" type="practice" conceptId="temel-kavramlar" archetype="tek-cift">Daha çok tek–çift sorusu</SharedSetLink>
       </div>
-      <p className="pl-note">Sorular ortak pratik ekranında açılır. Çıkmış soru seti bu konunun diğer soru tiplerini de içerir.</p>
+      <p className="pl-note">Sorular yeni sekmede ortak pratik ekranında açılır; oradaki cevapların normal çalışma kaydına girer. “Daha çok” setindeki eşlemeler otomatiktir, tek tek görsel olarak doğrulanmadı.</p>
       <button className="pl-text-button" type="button" onClick={() => { setFinished(false); setIndex(0); }}>Alıştırmalarımı incele</button>
     </div>;
   }
@@ -72,8 +72,8 @@ function TransferPractice() {
   </div>;
 }
 
-export default function ParityLab() {
-  usePageTitle('Tek–çift laboratuvarı · Konuyu Öğrenelim');
+// Tek–çift pilotu (MAT-LAB-01): Temel Kavramlar laboratuvarının ilk hedefi olarak TopicLab içinde açılır.
+export default function ParityWorkbench({ real = [] }) {
   const [scenarioIndex, setScenarioIndex] = useState(0);
   const [states, setStates] = useState(() => Object.fromEntries(SCENARIOS.map((s) => [s.id, fresh()])));
   const heading = useRef(null);
@@ -87,13 +87,7 @@ export default function ParityLab() {
   const completed = SCENARIOS.filter((s) => states[s.id].maxPhase === 3).length;
   const equation = `a + ${scenario.coefficient}b = ${scenario.total}`;
   const record = () => patch({ trials: [...state.trials.filter((t) => t.b !== state.b), result].slice(-4) });
-  return <div className="lr-page pl-page">
-    <nav className="lr-crumbs small" aria-label="Konum"><Link to={`${BASE}/konu/temel-kavramlar`}>Sayı Kümeleri ve Temel Kavramlar</Link><span> / Matematik Laboratuvarı</span></nav>
-    <header className="pl-hero">
-      <div><span className="pl-eyebrow">01 / Tek–çift · Koşuldan sonuca</span><h1>Kesin mi,<br />mümkün mü?</h1>
-        <p>Bir iddia, dört farklı koşul.<br />Dene, açığını ara, mantığını keşfet.</p></div>
-      <div className="pl-hero-art" aria-hidden="true"><span>a + 2b</span><strong>?</strong><span>Her zaman mı?</span></div>
-    </header>
+  return <>
     <div className="pl-scenario-heading"><h2>Ya şöyle olsaydı?</h2><span>{completed}/4 gerekçe kuruldu</span></div>
     <nav className="pl-scenarios" aria-label="Deney koşulları">
       {SCENARIOS.map((s, i) => <button key={s.id} type="button" aria-pressed={scenarioIndex === i}
@@ -161,9 +155,8 @@ export default function ParityLab() {
             {!proven && <button type="button" className="pl-text-button" onClick={() => go(1)}>Deneye dön</button>}
           </div>}
         </div>}
-        <div hidden={state.phase !== 3}><TransferPractice /></div>
+        <div hidden={state.phase !== 3}><TransferPractice real={real} /></div>
       </div>
     </section>
-    <footer className="pl-footer"><Link to={`${BASE}/konu/temel-kavramlar`}>← Konuya dön</Link><span>Denemeler bu sayfada tutulur; yenileyince sıfırlanır. Ustalık puanını değiştirmez.</span></footer>
-  </div>;
+  </>;
 }

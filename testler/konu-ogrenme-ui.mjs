@@ -568,7 +568,7 @@ async function runContentStatus(mobile) {
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await (laboratoryOnly ? runLaboratory({ browser: await tarayiciAc({ mobile }), mobile, out, eventCount: () => db.events.length }) : contentStatusOnly ? runContentStatus(mobile) : protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
+    report.runs.push(await (laboratoryOnly ? runLaboratory({ browser: await tarayiciAc({ mobile }), mobile, out, eventCount: () => db.events.length, conceptId: requestedConcept ?? 'temel-kavramlar' }) : contentStatusOnly ? runContentStatus(mobile) : protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();
@@ -581,5 +581,5 @@ const problems = report.runs.flatMap((r) => [
 ]);
 console.log(JSON.stringify({ ...report, problems, screenshots: out }, null, 2));
 if (protipsOnly) writeFileSync(join(out, 'protip-rapor.json'), JSON.stringify({ ...report, problems }, null, 2) + '\n');
-if (laboratoryOnly) writeFileSync(join(out, 'laboratuvar-rapor.json'), JSON.stringify({ ...report, problems }, null, 2) + '\n');
+if (laboratoryOnly) writeFileSync(join(out, `laboratuvar-${requestedConcept ?? 'temel-kavramlar'}-rapor.json`), JSON.stringify({ ...report, problems }, null, 2) + '\n');
 process.exitCode = problems.length ? 1 : 0;

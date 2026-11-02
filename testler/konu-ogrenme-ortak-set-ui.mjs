@@ -170,6 +170,19 @@ async function run(mobile) {
     assert.equal(server.sessions.size, first, 'aynı istek kimliği ikinci oturum açmaz');
     steps.push({ step: 'konu-testi', items: testBody.items.length });
 
+    // 4b) Laboratuvar gerçek soru seti: adresteki kodlar sırasıyla, ayrı lab kimliğiyle (tip seti ile karışmaz).
+    server.posts.length = 0;
+    await goto(`/konuyu-ogrenelim/pratik?tur=lab&konu=${CONCEPT}&tip=lab-tek-cift&kod=TYT-0545,TYT-0565,TYT-0576,TYT-0572`);
+    await wait('location.pathname.startsWith("/soru/")', 30000);
+    const labBody = server.posts[0];
+    assert.equal(labBody.kind, 'ARCHETYPE');
+    assert.equal(labBody.archetypeId, 'lab-tek-cift');
+    assert.deepEqual(labBody.items.map((i) => codeOf.get(i.questionId)), ['TYT-0545', 'TYT-0565', 'TYT-0576', 'TYT-0572']);
+    assert.match(labBody.title, /Laboratuvardan gerçek sorular/);
+    await goto(`/konuyu-ogrenelim/pratik?tur=lab&konu=${CONCEPT}&kod=TYT-0545`);
+    await wait(`location.pathname === "/konuyu-ogrenelim/konu/${CONCEPT}"`, 30000);
+    steps.push({ step: 'lab-gercek-soru', items: labBody.items.length });
+
     // Açık setler ders sayfasında "devam" olarak görünür ve ilerleme sayısını taşır.
     await goto(`/konuyu-ogrenelim/konu/${CONCEPT}`);
     await wait('[...document.querySelectorAll(".lr-actions a")].some((a) => a.textContent.includes("Çıkmış sorular: devam (0/51)"))', 30000);

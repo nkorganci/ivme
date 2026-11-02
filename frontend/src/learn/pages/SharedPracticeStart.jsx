@@ -20,8 +20,9 @@ export default function SharedPracticeStart() {
   const type = params.get('tur');
   const conceptId = params.get('konu');
   const archetype = params.get('tip');
+  const codes = (params.get('kod') ?? '').split(',').filter(Boolean);
   const meta = conceptId ? learn.index.byId[conceptId] : null;
-  const valid = SHARED_TYPES.includes(type) && !!meta && (type !== 'practice' || !!archetype);
+  const valid = SHARED_TYPES.includes(type) && !!meta && (type !== 'practice' || !!archetype) && (type !== 'lab' || (!!archetype && codes.length > 0));
   const requestId = useRef(params.get('istek') ?? uuid());
   const learnRef = useRef(learn);
   learnRef.current = learn;
@@ -41,17 +42,18 @@ export default function SharedPracticeStart() {
     (async () => {
       const { state, today } = learnRef.current;
       const bank = await loadBank(conceptId);
-      const items = pickSharedSet({ type, meta, bank, state, seed: `${type}:${conceptId}:${archetype ?? ''}:${today}:${state.eventCount}`, archetype });
+      const items = pickSharedSet({ type, meta, bank, state, seed: `${type}:${conceptId}:${archetype ?? ''}:${today}:${state.eventCount}`, archetype, codes });
       if (!active) return;
       if (!items.length) {
         // Banka bu tipi karşılamıyorsa ders içi alıştırma havuzuna düşülür; diğer setlerde gerçek durum söylenir.
         if (type === 'practice') navigate(`${BASE}/calis?tur=practice&konu=${conceptId}&tip=${archetype}&yerel=1`, { replace: true });
-        else setProblem(type === 'cikmis' ? 'Bu konuya eşlenmiş çıkmış soru yok.' : 'Bu konuya eşlenmiş banka sorusu yok.');
+        else setProblem(type === 'cikmis' ? 'Bu konuya eşlenmiş çıkmış soru yok.' : type === 'lab' ? 'Bu laboratuvar sorularının hepsini “Tekrar gösterme” ile gizlemişsin ya da sorular bankada yok.' : 'Bu konuya eşlenmiş banka sorusu yok.');
         return;
       }
       const title = `${SET_TITLES[type]} · ${meta.title}${type === 'practice' ? ` · ${meta.archetypes.find((a) => a.id === archetype)?.title ?? archetype}` : ''}`;
+      const scoped = type === 'practice' || type === 'lab';
       const result = await api.post('/api/konu-ogrenme/practice-sets', {
-        clientRequestId: requestId.current, conceptId, kind: SET_KINDS[type], archetypeId: type === 'practice' ? archetype : null,
+        clientRequestId: requestId.current, conceptId, kind: SET_KINDS[type], archetypeId: scoped ? archetype : null,
         title, resume: true, items: requestItems(items), expectedUserId: learnRef.current.userId,
       });
       if (!active) return;
@@ -60,7 +62,7 @@ export default function SharedPracticeStart() {
       navigate(`/soru/${encodeURIComponent(target.code)}${qs({ sessionId: session.id, bank: target.bank, devam: resumed ? 1 : '' })}`, { replace: true });
     })().catch((error) => { if (active) setProblem(error.message || 'Set kurulamadı.'); });
     return () => { active = false; };
-  }, [valid, type, conceptId, archetype, attempt]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [valid, type, conceptId, archetype, codes.join(','), attempt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!valid) return <Navigate to={conceptId && meta ? `${BASE}/konu/${conceptId}` : `${BASE}/harita`} replace />;
   return <div className="lr-page">

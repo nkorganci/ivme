@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import LabEntry from '../lab/LabEntry.jsx';
+import { hasLab } from '../lab/konular/index.js';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { usePageTitle } from '../../hooks.js';
 import { useLearn } from '../LearnContext.jsx';
@@ -100,7 +101,7 @@ export default function ConceptPage() {
     {bank && (concept.lessonOpenedAt || concept.firstMasteredAt || concept.testOut) && (sizeNote('test', bank, null, state) || hiddenCount > 0) && <p className="small muted lr-set-note">
       {hiddenCount > 0 ? `“Tekrar gösterme” dediğin ${hiddenCount} soru setlerden çıkarıldı (Soru Çöz & Pratik'te Gizlediklerim bölümünden geri alabilirsin). ` : ''}{sizeNote('test', bank, null, state)}</p>}
 
-    {conceptId === 'temel-kavramlar' && <LabEntry />}
+    {hasLab(conceptId) && <LabEntry conceptId={conceptId} />}
     <div className="lr-concept-grid">
       <section className="card">
         <h2>Soru tipleri</h2>

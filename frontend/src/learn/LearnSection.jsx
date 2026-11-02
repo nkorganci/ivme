@@ -13,7 +13,7 @@ const MapPage = lazy(() => import('./pages/MapPage.jsx'));
 const ContentStatusPage = lazy(() => import('./pages/ContentStatusPage.jsx'));
 const ConceptPage = lazy(() => import('./pages/ConceptPage.jsx'));
 const LessonPage = lazy(() => import('./pages/LessonPage.jsx'));
-const ParityLab = lazy(() => import('./lab/ParityLab.jsx'));
+const TopicLab = lazy(() => import('./lab/TopicLab.jsx'));
 const PracticePage = lazy(() => import('./pages/PracticePage.jsx'));
 const MistakesPage = lazy(() => import('./pages/MistakesPage.jsx'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage.jsx'));
@@ -60,7 +60,7 @@ function Shell() {
         <Route path="icerik-durumu" element={<ContentStatusPage />} />
         <Route path="konu/:conceptId" element={<ConceptPage />} />
         <Route path="ders/:conceptId" element={<LessonPage />} />
-        <Route path="laboratuvar/temel-kavramlar" element={<ParityLab />} />
+        <Route path="laboratuvar/:conceptId" element={<TopicLab />} />
         <Route path="calis" element={<PracticePage key={location.search} />} />
         <Route path="pratik" element={<SharedPracticeStart />} />
         <Route path="seviye/:track" element={<PlacementPage />} />

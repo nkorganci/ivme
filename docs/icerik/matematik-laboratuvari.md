@@ -158,35 +158,46 @@ yalnız açık sayfada tutulur; sayfa yenilenince sıfırlanır. Öğretmen onay
 ## Uygulama ve kabul
 
 Uygulandı: dört koşul sekmesi, tahmin kapısı, eşitliği koruyan kaydırıcı, son dört
-örnek, gerekçe kontrolü, üç özgün aktarım sorusu ve mevcut ortak pratiğe bağlantılar.
+örnek, gerekçe kontrolü, üç özgün aktarım sorusu ve görseli okunmuş dört ÖSYM sorusuna
+(TYT-0545, 0565, 0576, 0572) geçiş. Pilot artık Temel Kavramlar laboratuvarının ilk
+hedefidir (aşağıdaki ortak motor); tek–çift ders bölümündeki görsel anlatım korunur.
+Pilotun matematik testi `python scripts/ivme.py kalite calistir MAT-LAB-01`; UI akışı
+konu labının UI testinde aynen sürülür.
 
-Adres: `/konuyu-ogrenelim/laboratuvar/temel-kavramlar`. Tek–çift bölümündeki mevcut
-görsel anlatım korunur; bu alana ayrıca geçilir. Farklı derslerde ortak aşamalar
-korunabilir; matematiksel model konuya göre seçilmelidir. İlk pilot yalnız tek–çifttir.
+## Ortak lab motoru (MAT-LAB-02)
 
-Teknik kabul tamamlandı:
+Adres `/konuyu-ogrenelim/laboratuvar/<konu>`; `?hedef=<id>` doğrudan bir hedefi açar.
+Konu sayfası ve ilgili ders keşfi (`LAB_KESIF`) bu adrese bağlanır. Hedef sekmeleri
+arasında durum korunur; sayfa yenilenince sıfırlanır, ustalık olayı yazılmaz.
 
-- `python scripts/ivme.py kalite calistir MAT-LAB-01`: 5 matematik testi geçti.
-- `node --test testler/konu-ogrenme-derin.test.mjs`: 30 mevcut ders kontrolü geçti.
-- `npm run build`: başarılı. UI için ayrı çıktı `veri/ui-denetim/laboratuvar-dist`.
-- `IVME_TEST_DIST` bu dizini gösterirken
-  `node testler/konu-ogrenme-ui.mjs --laboratuvar temel-kavramlar`: masaüstü/mobil
-  dört senaryo, yanlış gerekçe, negatif değer, klavye kaydırıcısı, koşula uyan karşı
-  örnek, sekmeler arası durum, üç aktarım sorusu, ipucu özeti ve yenileme geçti.
-  Laboratuvar öğrenci ilerleme olayı üretmedi; konsol/istek hatası ve yatay taşma yok.
-- Yerel izleyici son sürümü sundu. Windows PowerShell kaynak/paket parmak izi,
-  HTTP `app-version.txt` ve derleme sürümü eşleşti; canlı masaüstü/mobil görünüm geçti.
-- `python scripts/ivme.py plan`, `python scripts/ivme.py kontrol` ve Git boşluk
-  kontrolü geçti. Kalite profilinin TAP raporu ve profil kayıt testi güncellendi.
+| Dosya | Görev |
+|---|---|
+| `frontend/src/learn/lab/konular/<konu>.js` | Saf veri + matematik modeli: hedefler, tahmin, deney (`compute`, `target`, `diagnose`), gerekçe, kısa yol/koşul/tuzak, aktarım, gerçek sorular. Biçim `konular/index.js` başındadır |
+| `frontend/src/learn/lab/cizim/<konu>.jsx` | Aynı modelin SVG çizimleri (`experiment.view` anahtarı) |
+| `lab/TopicLab.jsx`, `lab/GoalWorkbench.jsx`, `lab/topic-lab.css` | Ortak akış: tahmin → deney (hedef durum bulunmadan gerekçeye geçilmez) → gerekçe → üç basamaklı ipucuyla aktarım → gerçek soru seti |
+| `engine/sharedSet.js` `lab` türü | `pratik?tur=lab&konu=…&tip=lab-<hedef>&kod=A,B` adresteki kodlarla ortak pratik seti kurar (sunucuda tip alıştırması türü, ayrı `lab-` kimliği) |
+| `testler/matematik-lab-yapi.test.mjs` | Her lab için yapı/kabul bağı: başlangıç hedef değil, örnek hedefi sağlar, yanlış seçeneklere özel geri bildirim, üç ipucu, gerçek soru cevabı CSV ile aynı, konu bankasında, derste çözümü gösterilmemiş. `testler/lab-<konu>.test.mjs` dosyasını da yükler |
+| `testler/lab-<konu>.test.mjs` | Modelin ve bütün cevapların bağımsız hesapla (tam tarama/kayan nokta) sınanması |
+| `testler/matematik-laboratuvari-ui.mjs` | `node testler/konu-ogrenme-ui.mjs --laboratuvar <konu>`: masaüstü/mobil her hedefte tahmin kapısı, hedef dışı kayıt, klavye, yanlış gerekçe, ipucu basamakları, aktarım özeti, gerçek soru bağlantısı, taşma, olay yazmama, yenilemede sıfırlama |
+| `scripts/lab-kanit.py <konu> [--kontrol]` | UI raporu ve girdi hash'lerinden `testler/kanit/lab/<konu>.json` kabul manifesti |
 
-Yerel kanıtlar `veri/ui-denetim/konu-ogrenme/laboratuvar-rapor.json`,
-`laboratuvar-canli.json`, `laboratuvar-surum.json` ve aynı dizindeki
-`*-laboratuvar-*.png` görüntüleridir. Dosya hash'leri
-[kabul manifestinde](../../testler/kanit/matematik-laboratuvari.json) tutulur.
-Kaynak ağacında önceden bulunan diğer değişiklikler bu görevin commit'ine alınmaz.
+Yeni konu: `konular/<konu>.js` + `cizim/<konu>.jsx` + `testler/lab-<konu>.test.mjs`
+yaz, `LAB_LOADERS`/`LAB_KESIF`'e ekle. Gerçek soruları `veri/sorular-tum.csv`
+kategorisinden görselini okuyarak seç (otomatik `tip` etiketi eşleme kanıtı değildir).
+Doğrulama sırası: `python scripts/ivme.py kalite calistir MAT-LAB-02`;
+`npx vite build --outDir ../veri/ui-denetim/laboratuvar-dist` (frontend dizininde);
+`IVME_TEST_DIST=veri/ui-denetim/laboratuvar-dist node testler/konu-ogrenme-ui.mjs --laboratuvar <konu>`;
+`python scripts/lab-kanit.py <konu>`; canlı sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/laboratuvar/<konu>" --bekle Hedefler [--mobil]`.
 
-İlgili içerik düzeltmesi: sabit toplamda maksimum çarpım kuralı negatif gerçek
-sayılar serbest bırakılınca da geçerlidir; aşağı yönde sınırsızlaşan minimumdur.
+## Konu kabul kayıtları
+
+Hedef/yanılgı, model, deney koşulları, geri bildirim, aktarım ve gerçek soru kayıtları
+konunun `konular/<konu>.js` dosyasındadır; teknik kanıt `testler/kanit/lab/<konu>.json`.
+Öğretmen onayı ve öğrenci aktarım gözlemi hiçbir konuda yapılmadı.
+
+| Konu | Hedefler (model) | Gerçek soru eşlemesi | Açık kalan |
+|---|---|---|---|
+| `temel-kavramlar` | Tek–çift (pilot); sayı kümeleri ($p+q\sqrt2$ işlem kapalılığı, iki irrasyonelden rasyonel karşı örnek); işaret/sıralama (sayı doğrusunda $x,x^2,x^3,1/x$, $-1/0/1$ sınırları); ardışık sayılar (terim çubukları, toplam = terim sayısı × orta); uç değer (sabit toplamda dikdörtgen + çarpım eğrisi, “farklı” koşulu) | Tek–çift TYT-0545, 0565, 0576, 0572; işaret AYT-0037, AYT-0008, TYT-0542; ardışık AYT-0020; uç değer AYT-0024, AYT-0033. Sayı kümeleri: 2018–26 havuzunda eşleşen soru yok (özgün aktarım) | İşlem önceliği labda yok (ders keşfi + rehberli TYT-0588). Otomatik banka `tip` etiketlerinden TYT-0570, 0563, 0580, 0564 görselde başka beceri çıktı; banka düzeltmesi ayrı iş |
 
 ## Pilotun sonraki kabulü
 
@@ -195,7 +206,6 @@ Kullanıcı görsel akışı dener; öğretmen görevleri ve geri bildirimleri i
 sonra görülmemiş soruyla aktarım ölçülür. Yardımsız doğruluk, gerekçe ve ipucu
 ihtiyacı değerlendirilmeden öğrenme etkisi kanıtlandı denmez. Bütün konulara lab
 ekleme kullanıcı tarafından istendi; bu talimat pilotun etkisinin kanıtlandığı
-anlamına gelmez. Tek–çift pilotu bütün Temel Kavramlar konusunun labını tamamlamaz;
-diğer hedefler konu listesindeki `KISMİ` kaydından sürdürülür.
-Mevcut pilot kanıtını yeniden çalıştırmadan denetlemek için:
-`python scripts/ivme.py kalite durum MAT-LAB-01`.
+anlamına gelmez. Temel Kavramlar'ın diğer hedefleri ortak motorla tamamlandı (yukarıdaki
+kabul kaydı). Kanıtı yeniden çalıştırmadan denetlemek için:
+`python scripts/ivme.py kalite durum MAT-LAB-01` ve `python scripts/lab-kanit.py temel-kavramlar --kontrol`.

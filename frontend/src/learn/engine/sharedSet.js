@@ -10,10 +10,12 @@ const testPool = (bank) => bank.filter((q) => !evidenceFor(q.conceptId) || evide
 
 export const TEST_SIZE = 12;
 export const PRACTICE_SIZE = 6;
-export const SET_KINDS = { test: 'TOPIC_TEST', cikmis: 'PAST_EXAM', practice: 'ARCHETYPE' };
+// `lab`: laboratuvar hedefine görseli okunarak eşlenmiş gerçek sorular (kodlar adreste). Sunucuda tip alıştırması
+// türüyle, `lab-<hedef>` kimliğiyle ayrı tutulur; böylece konu tipinin açık setiyle karışmaz.
+export const SET_KINDS = { test: 'TOPIC_TEST', cikmis: 'PAST_EXAM', practice: 'ARCHETYPE', lab: 'ARCHETYPE' };
 export const SHARED_TYPES = Object.keys(SET_KINDS);
 
-export const SET_TITLES = { test: 'Konu testi', cikmis: 'Çıkmış sorular', practice: 'Soru tipi alıştırması' };
+export const SET_TITLES = { test: 'Konu testi', cikmis: 'Çıkmış sorular', practice: 'Soru tipi alıştırması', lab: 'Laboratuvardan gerçek sorular' };
 
 /**
  * Bu bankadan kurulabilecek tekil soru sayısı (bank, ikizleri tekilleştirilmiş loadBank çıktısıdır). state verilirse
@@ -43,7 +45,7 @@ export function sizeNote(type, bank, archetype = null, state = {}) {
  * Seçim: konu testi tip payına göre 12 soru (eksik kalırsa bankanın geri kalanından tamamlanır), çıkmış sorular bankadaki
  * bütün ÖSYM soruları yıl sırasıyla, tip alıştırması seçilen tipten 6 soru. Her öğe `{ type: 'bank', question, archetype }`.
  */
-export function pickSharedSet({ type, meta, bank, state, seed, archetype = null }) {
+export function pickSharedSet({ type, meta, bank, state, seed, archetype = null, codes = [] }) {
   let items;
   switch (type) {
     case 'test': {
@@ -58,11 +60,21 @@ export function pickSharedSet({ type, meta, bank, state, seed, archetype = null 
     case 'practice':
       items = pickPractice({ bank, state, archetype, count: PRACTICE_SIZE, seed });
       break;
+    case 'lab':
+      items = pickCodes({ bank, state, codes });
+      break;
     default:
       items = [];
   }
   const seen = new Set();
   return items.filter((item) => item.type === 'bank' && !seen.has(item.question.code) && seen.add(item.question.code));
+}
+
+/** Adresteki kod sırasıyla seçilen sorular; kitapçık ikizi olarak tekilleştirilmiş kod da kabul edilir. */
+export function pickCodes({ bank, state = {}, codes }) {
+  const pool = visible(bank, state);
+  return codes.map((code) => pool.find((q) => q.code === code || q.twins?.includes(code))).filter(Boolean)
+    .map((q) => ({ type: 'bank', question: q, archetype: q.archetype }));
 }
 
 /** Sunucu isteğindeki soru listesi (kimlik, tip, zorluk); sunucu her soruyu yeniden doğrular. */

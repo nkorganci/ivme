@@ -89,19 +89,19 @@ adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel 
 
 ## Laboratuvar kapsamı ve devam sırası
 
-**Yeni lab kabulüne göre:** TYT **0/32 teknik hazır**, AYT **0/24 teknik hazır**.
-`temel-kavramlar` tek–çift pilotuyla **KISMİ**; kalan 55 konuda standarda göre kabulü
+**Yeni lab kabulüne göre:** TYT **1/32 teknik hazır**, AYT **0/24 teknik hazır**.
+`temel-kavramlar` beş hedefle **TEKNİK HAZIR**; kalan 55 konuda standarda göre kabulü
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `temel-kavramlar` için lab hedef haritasını tamamla; mevcut
-tek–çift pilotunu yeniden yazmadan sayı kümeleri/işlemler, işaret, ardışık sayılar
-ve uç değer hedeflerini değerlendir. Sonra `sayi-basamaklari`, `bolme-bolunebilme`
-ve aşağıdaki TYT sırası. Yeni konu hazırlanırken lab aynı konu paketi içinde yapılır.
-TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
+**Sıradaki çalışma:** `sayi-basamaklari` labı; sonra `bolme-bolunebilme` ve aşağıdaki
+TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
+manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
+konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
 
 `LAB YOK`: bu standarda göre kabul kaydı yok. `KISMİ`: lab var, hedef/kanıt eksiği
-var. `TEKNİK HAZIR`: kritik hedefler, bağımsız aktarım ve teknik/UI kabulü tamam;
+var. `TEKNİK HAZIR` (✅): kritik hedefler, bağımsız aktarım ve teknik/UI kabulü tamam;
 öğretmen ve öğrenci değerlendirmesi ayrıca belirtilir. Her kabul değişiminde durum,
 kapsanan/açık hedefler, kanıt bağlantısı ve üstteki sayım güncellenir. Yeni konu
 kimliği eklenirse lab tablosuna da aynı kimlikle satır eklenir. Teknik kabulden önce insan
@@ -116,7 +116,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 
 | Konu kimliği | Lab durumu / kabul kanıtı | İlk hedef ve uygun model adayı |
 |---|---|---|
-| `temel-kavramlar` | 🟡 KISMİ — [tek–çift pilotu](matematik-laboratuvari.md#mat-lab-01-tekçift-pilotu); tam konu kapsamı ve hedefe özgü gerçek soru kabulü açık | Sayı kümesi/işlem koşulu, tek–çift, işaret, ardışık ve uç değer için gerekli modelleri eşleştir; mevcut pilotu geliştir |
+| `temel-kavramlar` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/temel-kavramlar.json`; öğretmen/öğrenci kabulü yok | Tek–çift pilotu + sayı kümeleri, işaret/sıralama, ardışık, uç değer hedefleri; 10 doğrulanmış ÖSYM sorusu. Açık: işlem önceliği labda yok (ders keşfi) |
 | `sayi-basamaklari` | ⬜ LAB YOK | Basamak blokları, rakam yer değiştirme ve denklem; rakam/sayı/başta sıfır koşulunu ayır |
 | `bolme-bolunebilme` | ⬜ LAB YOK | Bölüm–kalan, basamak katkısı ve aday eleme; birden çok koşulu birlikte sağla |
 | `ebob-ekok` | ⬜ LAB YOK | Parçalama–birleştirme ve ortak döngü; EBOB/EKOK seçiminin nedenini kur |

@@ -3,7 +3,10 @@
   "checks": {
     "laboratuvar-node": {
       "kind": "node",
-      "args": ["--test-reporter=tap", "testler/matematik-laboratuvari.test.mjs"],
+      "args": [
+        "--test-reporter=tap",
+        "testler/matematik-laboratuvari.test.mjs"
+      ],
       "inputs": [
         "frontend/src/learn/lab/**/*",
         "frontend/src/learn/LearnSection.jsx",
@@ -245,11 +248,28 @@
         "README.md",
         "backend/src/main/resources/content-taxonomy.json"
       ]
+    },
+    "laboratuvar-konu-node": {
+      "kind": "node",
+      "args": [
+        "--test-reporter=tap",
+        "testler/matematik-lab-yapi.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/lab/**/*",
+        "frontend/src/learn/bank/*.json",
+        "frontend/src/learn/content/dersler/*.ders",
+        "veri/sorular-tum.csv",
+        "testler/matematik-lab-yapi.test.mjs",
+        "testler/lab-*.test.mjs"
+      ]
     }
   },
   "profiles": {
     "MAT-LAB-01": {
-      "checks": ["laboratuvar-node"],
+      "checks": [
+        "laboratuvar-node"
+      ],
       "remainingAcceptance": [
         "Masaüstü/mobil dört senaryo ve aktarım UI",
         "Yerel sunulan kaynak/paket sürümü",
@@ -380,6 +400,18 @@
         "Görev tablosu, gerçek kanıt ve tek sonraki adımın agent tarafından güncellenmesi"
       ],
       "nextAction": "Raporu görev tablosuna bağla; sonraki değişiklikte ilgili TAS profilini seç."
+    },
+    "MAT-LAB-02": {
+      "checks": [
+        "laboratuvar-node",
+        "laboratuvar-konu-node"
+      ],
+      "remainingAcceptance": [
+        "Konu başına masaüstü/mobil UI akışı: node testler/konu-ogrenme-ui.mjs --laboratuvar <konu>",
+        "Yerel sunulan kaynak/paket sürümü",
+        "Öğretmen incelemesi ve gerçek öğrenciyle gecikmeli aktarım gözlemi"
+      ],
+      "nextAction": "docs/icerik/matematik-konu-listesi.md lab tablosundaki ilk LAB YOK/KISMİ satırı."
     }
   }
 }
