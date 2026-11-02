@@ -46,8 +46,10 @@ karsit-ters 1 1-2
 iki-yonlu 1 1-3
 niceleyici 2 1-3
 
-@oturum Koşullu önerme ve denkleri | s1 s2
-@oturum İki yönlü önerme ve niceleyiciler | s3 s4
+@oturum Koşullu önerme ve gerçek hayat | s1 s1b
+@oturum Karşıt, ters ve dizilim soruları | s2 s2b
+@oturum İki yönlü önerme ve sadeleştirme | s3 s3b
+@oturum Niceleyiciler | s4 s4b
 
 @ontest
 ::soru o1 tip=ise-deger zorluk=1
@@ -134,6 +136,67 @@ C) $p \vee q$ || Dağılma sonrası $\wedge$ kalır.
 E) $1$ || $p \equiv 0$ iken ifade 0'dır.
 cozum: $(p' \vee q) \wedge p \equiv (p' \wedge p) \vee (q \wedge p) \equiv 0 \vee (p \wedge q) \equiv p \wedge q$.
 
+@bolum s1b 12 | Koşullu önermeli gerçek hayat soruları
+::kesfet ko-ise
+
+::fikir
+Koşullu önerme **yanlışsa** iki değer birden kesinleşir: $p\Rightarrow q\equiv0$ ise $p\equiv1$, $q\equiv0$. Bu yüzden "… önermesi **yanlış** olduğuna göre" diye başlayan sorularda dış bağlaçtan içe doğru ilerle. Önce kartta, tabloda ya da metinde **değeri zaten belli olan** önermeyi bul.
+
+::duzey
+L1: "Sınavı kazanırsan bisiklet alacağım" sözü yalnız sınav kazanıldığı hâlde bisiklet alınmazsa tutulmamış olur. $p\Rightarrow q$ yalnız $1\Rightarrow0$ durumunda yanlıştır.
+L2: $(p\Rightarrow q)\Rightarrow(r\Rightarrow q)\equiv0$ ise dıştaki ise yanlış: sol taraf 1, sağ taraf 0. Sağ taraf $r\Rightarrow q\equiv0$ olduğu için $r\equiv1$, $q\equiv0$; sol taraf $p\Rightarrow0\equiv1$ olduğu için $p\equiv0$.
+L3: Önermelerden biri verilen bilgiyle hemen değerlendirilebilir (53 yaşında birinin "yaşı 55–65 aralığında" önermesi 0). Önce o değeri yerleştir; kalan bileşik önerme genellikle tek bir kesin duruma iner. Sonra her değeri cümleye geri çevirip seçenekleri ele.
+
+::cikmis TYT-0750 tip=ise-deger
+
+::ornek baslik="Benzer: kartta yaş 40"
+soru: Bir kartta Yaş: 40 yazıyor; boy ve kilo yazılmamış. p: "Kilosu 70 kg'dan azdır.", q: "Boyu 170 cm ile 180 cm aralığındadır.", r: "Yaşı 45 ile 55 aralığındadır." $(p\Rightarrow q')\wedge r'$ önermesi yanlış olduğuna göre boy ve kilo aşağıdakilerden hangisi olabilir: 165 cm–68 kg, 175 cm–65 kg, 175 cm–72 kg?
+1. Yaş 40: $r\equiv0$, $r'\equiv1$. || Kartta bilinen değer.
+2. $(p\Rightarrow q')\wedge1\equiv0$ ise $p\Rightarrow q'\equiv0$: $p\equiv1$, $q'\equiv0$ yani $q\equiv1$. || İse yalnız $1\Rightarrow0$'da yanlış.
+3. Kilo 70'ten az, boy 170–180: yalnız 175 cm–65 kg uyar. || 165 cm boy dışında, 72 kg kilo fazla.
+cevap: 175 cm – 65 kg
+
+::cikmis TYT-0752 tip=ise-deger
+
+::ornek baslik="Benzer: Ayşe'nin doğum günü"
+soru: Ayşe ile ilgili p: "Ayın 15'inde doğdu.", q: "Mart ayında doğdu.", r: "2010 yılında doğdu." önermeleri veriliyor. $(q\Rightarrow p)\Rightarrow(r\Rightarrow p)$ yanlış olduğuna göre Ayşe'nin doğum tarihi hangisi olabilir: 15 Mart 2010, 3 Nisan 2010, 3 Mart 2010, 3 Nisan 2011?
+1. Dıştaki ise yanlış: $q\Rightarrow p\equiv1$ ve $r\Rightarrow p\equiv0$. || $1\Rightarrow0$.
+2. $r\Rightarrow p\equiv0$: $r\equiv1$, $p\equiv0$. $q\Rightarrow0\equiv1$ için $q\equiv0$. || İçten değerleri çıkar.
+3. 2010'da, 15'inde değil, mart dışında: 3 Nisan 2010. || Cümleye çevir.
+cevap: 3 Nisan 2010
+
+::ornek baslik="Sözünü tutmadı mı?"
+soru: Bir kulüp başkanı "Üye sayısı 100'ü geçerse ya da bağış gelirse yeni salon açacağız." diyor. Sözün tutulmadığı kesin olarak hangi durumdur?
+1. p: üye 100'ü geçti, q: bağış geldi, r: salon açıldı. Söz: $(p\vee q)\Rightarrow r$. || Cümleyi sembole çevir.
+2. Yanlış olması için $p\vee q\equiv1$ ve $r\equiv0$. || İse'nin tek yanlış durumu.
+3. Üye 100'ü geçti ya da bağış geldi (en az biri) ama salon açılmadı. || Koşul gerçekleşti, sonuç gelmedi.
+cevap: Koşullardan en az biri gerçekleşti ama salon açılmadı.
+
+::sorgula s1b-garanti baslik="Garanti belgesi"
+durum: Bir garanti belgesinde "Cihaz ilk iki yılda arızalanırsa ücretsiz onarılır." yazıyor. Cihaz üçüncü yılda arızalanıyor ve ücretli onarılıyor.
+soru: Garanti sözü çiğnenmiş mi?
+A) Evet, cihaz ücretsiz onarılmadı. || Koşul (ilk iki yılda arıza) gerçekleşmedi; söz bu durum için bir şey söylemiyor.
++B) Hayır, koşul gerçekleşmedi. || $p\equiv0$ iken $p\Rightarrow q\equiv1$.
+C) Karar verilemez. || Koşullu önermenin doğruluk değeri bellidir: $0\Rightarrow0\equiv1$.
+neden: $p$: ilk iki yılda arızalandı ($0$), $q$: ücretsiz onarıldı ($0$). $0\Rightarrow0\equiv1$; söz doğru kaldı. Söz yalnız ilk iki yılda arızalanıp ücretli onarılırsa çiğnenir.
+sinav: Koşul yanlışken koşullu önerme her zaman doğrudur; "yanlış" bilgisi verilen sorularda koşulun doğru, sonucun yanlış olduğunu yaz.
+dusun: Cihaz ilk yıl arızalanıp ücretsiz onarılsaydı?
+yanit: $1\Rightarrow1\equiv1$: söz tutuldu.
+
+::yanilgi m1b tip=ise-deger
+yanlis: $p\Rightarrow q$ önermesi $p$ yanlışken de yanlış olabilir.
+neden: Koşul gerçekleşmezse söz denenmemiştir; koşullu önerme doğru sayılır.
+dogru: $p\Rightarrow q$ yalnız $p\equiv1$, $q\equiv0$ iken yanlıştır.
+
+::soru c1b tip=ise-deger zorluk=2
+$(p\wedge q)\Rightarrow(q\Rightarrow r)$ önermesi yanlış olduğuna göre $p$, $q$, $r$'nin doğruluk değerleri sırasıyla nedir?
+A) 1, 0, 0 || Sol taraf $p\wedge q\equiv1$ olmalı; $q\equiv1$.
+B) 0, 1, 0 || Sol taraf için $p\equiv1$ gerekir.
++C) 1, 1, 0 || Doğru: sol 1, sağ $1\Rightarrow0\equiv0$.
+D) 1, 1, 1 || O zaman sağ taraf 1 olur.
+E) 0, 0, 0 || Sol taraf 0 olursa önerme doğrudur.
+cozum: Dış ise yanlış: $p\wedge q\equiv1$ ($p\equiv q\equiv1$) ve $q\Rightarrow r\equiv0$ ($q\equiv1$, $r\equiv0$). Sonuç 1, 1, 0.
+
 @bolum s2 8 | Karşıt, ters, karşıt ters
 ::fikir
 $p \Rightarrow q$ için **karşıt** $q \Rightarrow p$, **ters** $p' \Rightarrow q'$, **karşıt ters** $q' \Rightarrow p'$. **Yalnız karşıt ters** asıl önermeye denktir.
@@ -188,6 +251,63 @@ C) "$x \neq 2$ ise $x^2 \neq 4$"; yanlış || Bu terstir, karşıt değil.
 D) "$x^2 \neq 4$ ise $x \neq 2$"; doğru || Bu karşıt terstir.
 E) "$x \neq 2$ ise $x^2 \neq 4$"; doğru || Bu terstir ve $x = -2$ için yanlıştır.
 cozum: Karşıt $q \Rightarrow p$: "$x^2 = 4$ ise $x = 2$". $x = -2$ için hipotez doğru, hüküm yanlış: önerme yanlıştır.
+
+@bolum s2b 10 | Dizilim sorularında koşullu önerme
+::fikir
+Dizilim sorularında önce mantık kısmını çöz: bileşik önermeden **hangi koşulun doğru, hangisinin yanlış** olduğunu bul. Sonra yalnız doğru koşulları yerleştir, yanlış olanları **eleme kuralı** olarak kullan ("A ile B arasında tam bir araba yok"). Kalan bütün dizilimlerde ortak olan bilgi cevaptır.
+
+::duzey
+L1: "C ile D arasında tam 3 araba var" bilgisi 5 kişilik sırada C ile D'yi iki uca (1. ve 5. yer) yerleştirir. En çok kısıtlayan koşulla başlamak dallanmayı azaltır.
+L2: Yanlış önerme de bilgidir: "A ile B arasında tam 1 araba vardır" yanlışsa A ile B arasında 0, 2 ya da 3 araba vardır; yani konum farkları 2 olamaz. Bunu en son, kalan adayları elemek için kullan.
+L3: Simetrik dizilimler (soldan ve sağdan okuma) çoğu zaman aynı cevabı verir; iki durumu da yazmadan cevaplama. "Kesinlikle" sorusunda bütün durumlarda ortak olanı, "olabilir" sorusunda en az bir durumda geçerli olanı seç.
+
+::cikmis TYT-0753 tip=ise-deger
+
+::ornek baslik="Benzer: raftaki dört kitap"
+soru: Bir rafa A, B, C, D kitapları yan yana diziliyor. p: "A ile B arasında tam 1 kitap var.", q: "B ile C yan yana.", r: "C ile D arasında tam 2 kitap var." $(q\vee p)\Rightarrow(r\Rightarrow p)$ önermesi yanlış olduğuna göre hangisi kesinlikle doğrudur?
+1. Dış ise yanlış: $q\vee p\equiv1$, $r\Rightarrow p\equiv0$; yani $r\equiv1$, $p\equiv0$, dolayısıyla $q\equiv1$. || Önce mantık.
+2. $r$: C ve D iki uçta. $q$: B, C'nin yanında. Dizilimler: C B _ D ya da D _ B C; boş yere A. || Doğru koşulları yerleştir.
+3. C B A D ve D A B C: ikisinde de A ile B yan yana; arada kitap yok, $p\equiv0$ ✓. || Yanlış koşulla kontrol.
+cevap: A ile B yan yanadır.
+
+::ornek baslik="Yanlış koşulun söylediği"
+soru: 5 kişilik bir sırada p: "Ali ile Can arasında tam 2 kişi var." önermesi yanlıştır. Ali 1. sıradaysa Can hangi sıralarda olabilir?
+1. Ali 1. sırada; $p$ doğru olsaydı Can 4. sırada olurdu. || Arada 2 kişi: konum farkı 3.
+2. $p\equiv0$: Can 4. sırada değil. || Değilin anlamı.
+3. Can 2., 3. ya da 5. sırada. || Kalan yerler.
+cevap: 2., 3. ya da 5.
+
+::tamamla baslik="Önce mantık, sonra yerleştirme"
+soru: Üç arkadaş K, L, M bir sıraya diziliyor. p: "K en başta.", q: "L ortada." $p'\Rightarrow q'\equiv0$ ise dizilim nedir?
+1. İse yanlış: $p'\equiv1$, $q'\equiv0$; K en başta değil, L ortada. || $1\Rightarrow0$.
+?2. L ortada ve K başta olamadığına göre K sonda. || Kalan iki yer: baş ve son.
+?3. M başta: M, L, K. || Son kalan kişi.
+cevap: M, L, K
+
+::sorgula s2b-park baslik="Park yerleri"
+durum: Üç araba yan yana park etmiş. "Kırmızı araba ortadaysa mavi araba en solda." önermesinin yanlış olduğu biliniyor.
+soru: Ne kesindir?
+A) Kırmızı araba ortada değil. || İse yanlışken koşul doğrudur: kırmızı ortada.
++B) Kırmızı ortada, mavi en solda değil. || $p\equiv1$, $q\equiv0$.
+C) Mavi araba ortada. || Ortada kırmızı var.
+neden: Koşullu önerme yanlışsa koşul doğru, sonuç yanlıştır: kırmızı ortada, mavi solda değil; mavi sağda, üçüncü araba solda.
+sinav: Dizilim sorularında "… ise …" yanlışsa koşul gerçekleşir ve sonuç gerçekleşmez; bu iki bilgiyle yerleştirmeye başla.
+dusun: Önerme doğru olsaydı dizilim kesin olur muydu?
+yanit: Hayır: kırmızı ortada değilse önerme zaten doğrudur; birden çok dizilim olur.
+
+::yanilgi m2b tip=ise-deger
+yanlis: Bir dizilim koşulu yanlışsa o koşulun tam tersi doğrudur ("tam 1 kişi yok" → "tam 2 kişi var").
+neden: "Tam 1 kişi var" yanlışsa 0, 2, 3 … kişi olabilir; tek bir karşıt durum yoktur.
+dogru: Yanlış koşulu "şu durum olamaz" diye eleme kuralı olarak kullan.
+
+::soru c2b tip=ise-deger zorluk=2
+A, B, C, D dört kişi bir sıraya diziliyor. p: "A en başta.", q: "B ile C yan yana.", r: "D en sonda." $p\Rightarrow(q\wedge r)'$ önermesi yanlış olduğuna göre 2. sırada kim olabilir?
+A) Yalnız A || A en başta, 2. sırada olamaz.
++B) B ya da C || Doğru: A _ _ D, ortada B ve C yan yana.
+C) Yalnız D || D en sonda.
+D) A ya da D || İkisi de uçlarda.
+E) Yalnız B || C de olabilir.
+cozum: İse yanlış: $p\equiv1$ ve $(q\wedge r)'\equiv0$, yani $q\equiv r\equiv1$. A başta, D sonda, B ile C ortada yan yana: A B C D ya da A C B D. 2. sırada B ya da C.
 
 @bolum s3 8 | İki yönlü koşullu önerme
 ::fikir
@@ -250,6 +370,77 @@ C) $p \Leftrightarrow r$ || $0 \Leftrightarrow 1 \equiv 0$.
 E) $(q \Leftrightarrow r)'$ || $q \Leftrightarrow r \equiv 1$, değili 0.
 cozum: $p' \equiv 1$ ve $r \equiv 1$; değerler aynı olduğu için $p' \Leftrightarrow r \equiv 1$.
 
+@bolum s3b 10 | Sadeleştirme ve zincirleme çıkarım
+::kesfet ko-denk
+
+::fikir
+Koşullu önermeyi sadeleştirmenin anahtarı $p\Rightarrow q\equiv p'\vee q$ dönüşümüdür; sonra De Morgan ve diğer özellikler kullanılır. **Zincir kuralı:** $p\Rightarrow q$ ve $q\Rightarrow r$ doğruysa $p\Rightarrow r$ de doğrudur. Bir önermenin denklerinden yalnız **karşıt tersi** ($q'\Rightarrow p'$) asılla aynıdır.
+
+::duzey
+L1: "Yağmur yağarsa yol ıslanır" ve "Yol ıslanırsa kaygan olur" doğruysa "Yağmur yağarsa yol kaygan olur" da doğrudur. Bu, zincir (kıyas) kuralıdır.
+L2: $(p\Rightarrow q)'\equiv(p'\vee q)'\equiv p\wedge q'$: koşullu önermenin değili "koşul var, sonuç yok" demektir. $p\Rightarrow(q\Rightarrow r)\equiv(p\wedge q)\Rightarrow r$ dönüşümü de çok önermeli koşulları tek koşula indirir.
+L3: Bir önermenin karşıtı ($q\Rightarrow p$) ve tersi ($p'\Rightarrow q'$) birbirine denktir ama asıl önermeye denk değildir. Denkliği sınamak için önermenin yanlış olduğu tek satırı karşılaştırmak yeter: $p\Rightarrow q$ yalnız $(1,0)$'da, karşıt ters $q'\Rightarrow p'$ de yalnız $(1,0)$'da yanlıştır.
+
+::ornek baslik="İse'yi veya'ya çevirerek sadeleştir"
+soru: $(p\Rightarrow q)\wedge p$ önermesinin en sade biçimi nedir?
+1. $p\Rightarrow q\equiv p'\vee q$: $(p'\vee q)\wedge p$. || Temel dönüşüm.
+2. Dağılma: $(p'\wedge p)\vee(q\wedge p)\equiv0\vee(p\wedge q)$. || $p\wedge p'\equiv0$.
+3. $p\wedge q$. || Kontrol: yalnız $p\equiv q\equiv1$ satırında doğru.
+cevap: $p\wedge q$
+
+::ornek baslik="Koşullu önermenin değili"
+soru: "Hava güneşliyse pikniğe gideriz." önermesinin değili hangi cümledir?
+1. $p\Rightarrow q$'nun değili $(p'\vee q)'\equiv p\wedge q'$. || De Morgan.
+2. $p\wedge q'$: "Hava güneşli ve pikniğe gitmeyiz." || Koşul var, sonuç yok.
+3. "Hava güneşli değilse pikniğe gitmeyiz" değil, terstir; asılla da değille de denk değil. || Sık hata.
+cevap: Hava güneşli ve pikniğe gitmeyiz.
+
+::ornek baslik="Zincirden yeni önerme"
+soru: "Bir sayı 6'ya bölünürse 3'e bölünür." ve "Bir sayı 3'e bölünürse rakamları toplamı 3'ün katıdır." doğru olduğuna göre hangi önerme kesin doğrudur?
+1. $p$: 6'ya bölünür, $q$: 3'e bölünür, $r$: rakamları toplamı 3'ün katı. $p\Rightarrow q$, $q\Rightarrow r$. || Sembolleştir.
+2. Zincir kuralı: $p\Rightarrow r$. || $(p\Rightarrow q)\wedge(q\Rightarrow r)\Rightarrow(p\Rightarrow r)$ totolojidir.
+3. "Bir sayı 6'ya bölünürse rakamları toplamı 3'ün katıdır." || Karşıtı ($r\Rightarrow p$) kesin değil: 9.
+cevap: 6'ya bölünen sayının rakamları toplamı 3'ün katıdır.
+
+::ornek baslik="İç içe koşulu tek koşula indir"
+soru: $p\Rightarrow(q\Rightarrow r)$ önermesinin $(p\wedge q)\Rightarrow r$ önermesine denk olduğunu göster.
+1. $p\Rightarrow(q\Rightarrow r)\equiv p'\vee(q'\vee r)$. || İki kez $a\Rightarrow b\equiv a'\vee b$.
+2. Birleşme: $(p'\vee q')\vee r\equiv(p\wedge q)'\vee r$. || De Morgan.
+3. $(p\wedge q)'\vee r\equiv(p\wedge q)\Rightarrow r$. || Dönüşüm geri.
+cevap: İkisi de yalnız $p\equiv q\equiv1$, $r\equiv0$ satırında yanlış; denk.
+
+::tamamla baslik="Karşıt tersi bul"
+soru: "Bir üçgen eşkenarsa ikizkenardır." önermesinin karşıt tersini yaz ve doğruluk değerini bul.
+1. $p$: eşkenar, $q$: ikizkenar. Asıl $p\Rightarrow q$ doğru. || Her eşkenar üçgen ikizkenardır.
+?2. Karşıt ters $q'\Rightarrow p'$: "Bir üçgen ikizkenar değilse eşkenar değildir." || Değilleri alıp yerlerini değiştir.
+?3. Karşıt ters asılla denktir: doğru. || Karşıtı "ikizkenarsa eşkenardır" yanlış olabilir.
+cevap: "İkizkenar değilse eşkenar değildir"; doğru.
+
+::sorgula s3b-kart baslik="Kartları çevirmek"
+durum: Masada dört kart var: her kartın bir yüzünde harf, öbür yüzünde sayı yazılı. Görünen yüzler: A, K, 4, 7. Kural: "Bir kartın bir yüzünde sesli harf varsa öbür yüzünde çift sayı vardır."
+soru: Kuralı denetlemek için en az hangi kartları çevirmek gerekir?
+A) A ve 4 || 4'ün arkası ünsüz olsa da kural bozulmaz; kural yalnız sesli harften söz eder.
++B) A ve 7 || A'nın arkası tek olabilir; 7'nin arkası sesli olabilir: kuralı bozabilecek kartlar bunlar.
+C) Yalnız A || 7'nin arkasında sesli harf varsa kural bozulur.
+neden: $p\Rightarrow q$ yalnız $p\equiv1$, $q\equiv0$ iken yanlış. $p\equiv1$ olabilecek kart A (arkası tek mi?), $q\equiv0$ olan kart 7 (arkası sesli mi?). Karşıt ters $q'\Rightarrow p'$ denetimi 7 kartıdır.
+sinav: Bir koşullu kuralı denetlemek için koşulu sağlayanlara ve sonucu sağlamayanlara bak (karşıt ters).
+dusun: K kartını çevirmek neden gereksiz?
+yanit: K ünsüz: $p\equiv0$; arkasında ne yazarsa yazsın $0\Rightarrow q\equiv1$.
+
+::yanilgi m3b tip=karsit-ters
+yanlis: "Güneşliyse pikniğe gideriz" önermesinin değili "Güneşli değilse pikniğe gitmeyiz"dir.
+neden: Bu cümle önermenin tersidir; değili koşulun gerçekleşip sonucun gerçekleşmemesidir.
+dogru: Değili: "Güneşli ve pikniğe gitmeyiz" ($p\wedge q'$).
+
+::soru c3b tip=karsit-ters zorluk=2
+$(p\Rightarrow q)'\vee q$ önermesi aşağıdakilerden hangisine denktir?
+A) $p$ || $q\equiv1$ iken $p$'den bağımsız olarak doğru.
+B) $q$ || $p\equiv1$, $q\equiv0$ satırında da doğru.
++C) $p\vee q$ || Doğru: $(p\wedge q')\vee q\equiv p\vee q$.
+D) $p\wedge q$ || Hesabı kontrol et.
+E) $1$ || $p\equiv q\equiv0$ satırında yanlış.
+cozum: $(p\Rightarrow q)'\equiv p\wedge q'$. $(p\wedge q')\vee q\equiv(p\vee q)\wedge(q'\vee q)\equiv(p\vee q)\wedge1\equiv p\vee q$.
+
 @bolum s4 9 | Niceleyiciler ve teorem dili
 ::fikir
 **Her** ($\forall$) tümü, **bazı** ($\exists$) en az biri demektir. Değil alınırken **$\forall \leftrightarrow \exists$** yer değiştirir ve içteki önermenin değili alınır: $(\forall x, p(x))' \equiv \exists x, p'(x)$.
@@ -302,6 +493,63 @@ C) $\forall x \in \mathbb{N}, x + 1 > x$ || Her doğal sayı için doğrudur: 1.
 D) $\exists x \in \mathbb{Z}, x^2 = 4$ || $x = 2$ ya da $-2$: 1.
 E) $\exists x \in \mathbb{N}, x < 1$ || $x = 0$ sağlar: 1.
 cozum: Gerçek sayıların karesi negatif olamaz; "bazı $x$ için $x^2 < 0$" önermesi yanlıştır.
+
+@bolum s4b 10 | Niceleyiciler: karşı örnek ve tanık
+::kesfet ko-nicel
+
+::fikir
+"**Her** $x$ için $p(x)$" önermesini **çürütmek** için tek bir karşı örnek yeter; **doğrulamak** için bütün elemanlar kontrol edilmelidir. "**Bazı** (en az bir) $x$ için $p(x)$" önermesini **doğrulamak** için tek bir tanık yeter; çürütmek için bütün elemanlar kontrol edilir. Önce **evrensel kümeyi** oku: aynı açık önerme doğal sayılarda doğru, tam sayılarda yanlış olabilir.
+
+::duzey
+L1: "Her tam sayının karesinin 1 eksiği 0'dan büyük ya da eşittir" yanlıştır; $x=0$ karşı örnektir: $0^2-1=-1$. Tek bir karşı örnek "her"i çürütür.
+L2: "Bazı gerçek sayılar için $x^2=5$" doğrudur; $x=\sqrt5$ tanıktır. Aynı önerme rasyonel sayılarda yanlıştır: hiçbir rasyonel sayının karesi 5 değildir. Evrensel küme cevabı değiştirir.
+L3: Değil alırken niceleyici ve önerme birlikte değişir: $(\forall x,\ p(x))'\equiv\exists x,\ p'(x)$. "Her öğrenci gözlüklüdür" değil → "Gözlüksüz en az bir öğrenci var"; bu da bir tanığın varlığıdır.
+
+::ornek baslik="Karşı örnekle çürütme"
+soru: "$\forall x\in\mathbb Z$ için $x^2-1\ge0$" önermesinin doğruluk değeri nedir?
+1. "Her" önermesi: bir karşı örnek arayalım. || Küçük değerleri dene.
+2. $x=0$: $0-1=-1<0$. || Karşı örnek bulundu.
+3. Önerme yanlış ($\equiv0$). || $\mathbb N^+$'da doğru olurdu.
+cevap: 0 (yanlış)
+
+::ornek baslik="Tanıkla doğrulama"
+soru: "$\exists x\in\mathbb R$, $x^2-5=0$" ve "$\exists x\in\mathbb Q$, $x^2-5=0$" önermelerinin doğruluk değerleri nedir?
+1. $\mathbb R$'de $x=\sqrt5$ tanıktır: ilki doğru. || Bir tanık yeter.
+2. $\mathbb Q$'da $x^2=5$ olan sayı yok: $\sqrt5$ irrasyonel. || Bütün elemanlar için yanlış.
+3. İlki 1, ikincisi 0. || Evrensel küme değişince değer değişti.
+cevap: 1 ve 0
+
+::ornek baslik="Sonlu kümede her ve bazı"
+soru: $A=\{1,2,3,4,5\}$ kümesinde p: "$\forall x\in A$, $x+3<9$" ve q: "$\exists x\in A$, $2x=x+4$" önermelerinin değerleri nedir?
+1. p: en büyük eleman 5, $5+3=8<9$: bütün elemanlar sağlar. || "Her" için en kötü elemanı kontrol et.
+2. q: $2x=x+4\Rightarrow x=4\in A$: tanık var. || "Bazı" için bir eleman yeter.
+3. $p\equiv1$, $q\equiv1$. || İkisi de doğru.
+cevap: $p\equiv1$, $q\equiv1$
+
+::sorgula s4b-tahmin baslik="Bütün asal sayılar tek mi?"
+durum: Bir öğrenci 3, 5, 7, 11, 13, 17, 19 sayılarını deneyip "Bütün asal sayılar tektir." diyor.
+soru: Öğrencinin iddiası hakkında ne söylenir?
+A) Doğru; denenen bütün asallar tek. || Örnek sayısı ne kadar çok olursa olsun "her" önermesini kanıtlamaz.
++B) Yanlış; 2 çift asal sayıdır. || Tek bir karşı örnek "her" önermesini çürütür.
+C) Karar verilemez; sonsuz asal var. || Bir karşı örnek bulunduğu için karar verilebilir.
+neden: "Her asal tektir" önermesine $x=2$ karşı örnektir. Yedi örnek "her"i kanıtlamaz; bir karşı örnek çürütür.
+sinav: "Her" önermelerinde karşı örnek ara; "bazı" önermelerinde tanık ara. Örnek çokluğu ispat değildir.
+dusun: "2'den büyük bütün asal sayılar tektir" doğru mu?
+yanit: Evet: 2'den büyük çift sayılar 2'ye bölünür, asal olamaz.
+
+::yanilgi m4b tip=niceleyici
+yanlis: Birkaç örnekte doğru çıkan "her" önermesi doğrudur.
+neden: "Her" önermesi bütün elemanlar için iddiadır; tek karşı örnek onu çürütür.
+dogru: "Her" önermesi ya ispatla doğrulanır ya da karşı örnekle çürütülür.
+
+::soru c4b tip=niceleyici zorluk=2
+I. $\forall x\in\mathbb N$, $x^2\ge x$ — II. $\exists x\in\mathbb Z$, $x^2<x$ — III. $\forall x\in\mathbb R$, $x^2>0$. Bu önermelerden hangileri doğrudur?
++A) Yalnız I || Doğru: doğal sayılarda $x^2\ge x$; II'de tam sayı tanığı yok; III'te $x=0$ karşı örnek.
+B) Yalnız II || $x^2<x$ yalnız $0<x<1$ için; bu aralıkta tam sayı yok.
+C) I ve II || II yanlış.
+D) I ve III || $x=0$ için $0>0$ yanlış.
+E) I, II ve III || II ve III yanlış.
+cozum: I: $x\in\{0,1\}$ için eşit, $x\ge2$ için büyük: doğru. II: $x^2<x\iff0<x<1$; tam sayı yok: yanlış. III: $x=0$ karşı örnek: yanlış.
 
 ::ozet
 - $p \Rightarrow q$ yalnız $1 \Rightarrow 0$ iken yanlış; $p \Rightarrow q \equiv p' \vee q$.

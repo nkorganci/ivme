@@ -2922,7 +2922,33 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "kosullu-onerme:c1b": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kosullu-onerme:c2": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:c2b": {
    "conceptId": "kosullu-onerme",
    "type": "choice",
    "answer": "B",
@@ -2948,6 +2974,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "kosullu-onerme:c3b": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kosullu-onerme:c4": {
    "conceptId": "kosullu-onerme",
    "type": "choice",
@@ -2960,6 +2999,19 @@
     "E"
    ],
    "version": "1472983ce40becda"
+  },
+  "kosullu-onerme:c4b": {
+   "conceptId": "kosullu-onerme",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
   },
   "kosullu-onerme:h1": {
    "conceptId": "kosullu-onerme",

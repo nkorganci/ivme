@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 21,
-  "nextTopicId": "kosullu-onerme",
+  "completed": 22,
+  "nextTopicId": "kumeler-temel",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -263,13 +263,8 @@
         "AYT"
       ],
       "grade": 9,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "kumeler-temel",

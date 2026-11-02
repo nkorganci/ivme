@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": "ise-yanlissa-iki-deger",
+    "providerId": "youtube:eKNHKxkb8sU",
+    "startSeconds": 1620,
+    "endSeconds": 1714,
+    "quote": "bu önermenin 1 bu önermenin 0 olması lazım",
+    "frameSeconds": [
+      1650,
+      1700
+    ],
+    "rule": "Koşullu önerme yanlışsa (≡ 0) koşul doğru, sonuç yanlıştır. Koşul ya da sonuç bileşikse bu bilgi içteki bütün önermelerin değerini kesinleştirebilir; sonra istenen ifadeler tek tek hesaplanır.",
+    "condition": "Bilgi “… ⇒ … ≡ 0” biçiminde olmalı. “≡ 1” verilirse üç durum vardır ve değerler kesinleşmez.",
+    "example": "(p ∨ q) ⇒ r' ≡ 0 ise p ∨ q ≡ 1 ve r' ≡ 0: r ≡ 1; p ile q'dan en az biri doğru. (q ∧ r) ⇒ p ≡ 0 bilgisi de eklenirse q ≡ 1, r ≡ 1, p ≡ 0 kesinleşir.",
+    "counterexample": "(p ∧ r) ⇒ q' ≡ 1 bilgisinden p, q, r için kesin bir sonuç çıkmaz; yalnız “p, r, q üçü birden 1 olamaz” denebilir.",
+    "rationale": "p ⇒ q ≡ p' ∨ q; bu yalnız p' ≡ 0 ve q ≡ 0, yani p ≡ 1, q ≡ 0 iken yanlıştır. Koşulda “ve” varsa koşulun doğruluğu iki değeri birden 1 yapar.",
+    "agentSourceReview": "Claude 1650 ve 1700. saniye karelerinde Örnek 18'i ((p ∧ r) ⇒ q' ≡ 0; I. p ⇔ q, II. (p ∨ r') ⇔ q, III. (q ⇒ r') ⇔ p) ve tahtadaki p ∧ r ≡ 1, q' ≡ 0, “Hepsi” sonucunu okudu; altyazı 27:00'de ise bağlacının istisnasını anlatıyor. Kartın örnekleri özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "her-icin-karsi-ornek",
+    "providerId": "youtube:eKNHKxkb8sU",
+    "startSeconds": 2182,
+    "endSeconds": 2274,
+    "quote": "0 tam sayısını aldığınız zaman",
+    "frameSeconds": [
+      2230
+    ],
+    "rule": "“Her x için p(x)” önermesini çürütmek için tek bir karşı örnek yeter; “en az bir x için p(x)” önermesini doğrulamak için tek bir tanık yeter. Niceleyicili önermeler bir bileşik önermenin içindeyse önce her birinin değerini bul.",
+    "condition": "Evrensel kümeye dikkat: karşı örnek ya da tanık o kümeden seçilmelidir (tam sayılarda 0, doğal sayılarda 1 gibi).",
+    "example": "(∃x ∈ ℤ, x² > 0) ⇒ (∀x ∈ ℤ, x² − 1 ≥ 0): sol taraf 1 (x = 1 tanık), sağ taraf 0 (x = 0 karşı örnek); 1 ⇒ 0 ≡ 0.",
+    "counterexample": "Aynı sağ taraf sayma sayılarında (1, 2, 3, …) doğrudur; orada karşı örnek yoktur ve bileşik önerme 1 ⇒ 1 ≡ 1 olur.",
+    "rationale": "“Her” bütün elemanlar için bir “ve” zinciri, “en az bir” bir “veya” zinciri gibidir: “ve” zincirini tek 0, “veya” zincirini tek 1 belirler.",
+    "agentSourceReview": "Claude 2230. saniye karesinde Örnek 21'i ([(∃x ∈ ℤ, x² > 0) ⇒ (∀x ∈ ℤ, x² − 1 ≥ 0)] doğruluk değeri ve değili) ve tahtadaki 1 ⇒ 0 ≡ 0 notunu okudu; altyazı 36:22'de 0 tam sayısının karşı örnek olduğunu açıklıyor. Kartın sayma sayıları karşılaştırması özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

@@ -87,7 +87,7 @@ Bu tablodaki `TAS-*` kimlikleri **tasarım önerisi referanslarıdır**; tek ba�
 | 9 — TAS-09 | P2 — Sol 6.1 `high` (Claude: Opus 5.5 `high`) | Tamamlandı (12.13; iki konu öğretmen incelemesinde) | Tek komutla, kaldığı yerden devam eden içerik üretimi | TAS-08 | Pilot kalitesi korunarak ikinci konu üretilebilir; kesinti sonrası yalnız eksik aşama çalışır |
 | 10 — TAS-10 | P2 — Sol 6.1 `high` (Claude: Sonnet 5.5 `high`) | Kısmi (12.14; uygulandı, gerçek gönderim kabulü bekliyor) | Yöneticiye yeni kayıt bildirimi | TAS-02; Brevo gönderen/API yapılandırması | Kayıt kalıcı, bildirim işi kalıcı; gönderim hatası tekrar denenir ve görünür |
 | 11 — TAS-11 | P2 — Terra `high` (kod: Sol/Sonnet `high`) | Teknik pilot tamamlandı (12.15); öğretmen incelemesi ayrı | YouTube transkript/çerçeve/ipucu pilotu | TAS-07, erişilebilir kaynak | Zamanlı kaynak, seçilmiş kare, doğrulanmış ipucu, tekrar üretmeyen önbellek |
-| 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Teknik temel tamamlandı (12.16); her değişiklikte sürer | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
+| 12 — TAS-12 | Sürekli — Astra `high` (Claude: Opus 5.5 `high`) | Kısmen (kural ve TAS-01 regresyonları var; sürekli iş) | Test/izleme ve Claude–Codex devir disiplini | Her aşamayla birlikte | Görev, çıktı, doğrulama ve sıradaki adım tek yerde; yalnız değişen kapsam yeniden incelenir |
 
 Öncelik sütunundaki model, §19.3’teki ana seçimdir; parantez içi alternatiftir. P0 içerik genişletmesinden önce ele alınmalıdır. P1 bağımlılıkları kapatıldığında pilot ve üretim işi ilerler. Tahmini gün veya maliyet yazılmadı; donanım, kaynak kalitesi ve insan inceleme kapasitesi ölçülmeden güvenilir süre çıkarılamaz.
 
@@ -508,10 +508,7 @@ Pilot standardı ve kaynak kanıtıyla yalnız eksik aşamayı tamamla.
 iki tek–çift videosunda çalıştı: zamanlı otomatik altyazı, seçilmiş kare, koşul ve
 karşı örneği olan iki ipucu, dar kapsamlı matematik denetimi ve sürümlü ders
 değişiklik önerisi. Negatif erişim önbelleği korunur; ikinci geçiş çıkarım/model/ağ
-çağrısı yapmaz. Kullanıcı talimatıyla ipuçları konu ve ilgili ders bölümünde protip
-olarak görünür; “Öğretmen kontrolü bekliyor” etiketi incelemeyi ayrı gösterir.
-Uzun vadeli hedef tüm uygun video/konu içerikleridir; iki video başlangıçtır.
-[İşlem tarifi](../islemler/video-kanit-hatti.md)
+çağrısı yapmaz. İpuçları öğretmen onayı bekler. [İşlem tarifi](../islemler/video-kanit-hatti.md)
 ve [sürümlü küçük manifest](../../video-hatti/yayin/mert-hoca-tek-cift.json) gerçek kapsamı taşır.
 Model atama tablosu öneridir; pilot Codex tarafından yapıldı, o tablodaki farklı
 modeller çalıştırılmış gibi raporlanmadı. Aşağıdaki sıra tasarım gerekçesidir.
@@ -593,13 +590,6 @@ Mevcut hesap onayı korunarak **kayıt + kalıcı bildirim işi** aynı transact
 **Kabul:** bir gerçek kayıt işlemi bir bildirim işi oluşturur; transaction geri alınırsa gönderilmez; sağlayıcı kesintisinde iş kaybolmaz; yeniden başlatma sonrası devam eder; örnek bildirim doğru alıcıya ulaşır. Sağlayıcı/alıcı ayarı gerektiğinde uygulama aşamasında alınır; bu plan için bilgi istemek gerekmez.
 
 ## 16. Test stratejisi: var olanı tamamla
-
-**Uygulama (TAS-12 / 12.16):** `ivme.py kalite plan|calistir|durum TAS-XX` mevcut
-testleri görev bazında seçer; komut, kaynak/log hash’i, gerçek sonuç ve ayrı kabul
-ölçütlerini raporlar. Backend sonucu güncel Surefire XML ve geçici DB temizliğiyle
-doğrulanır; sıfır/eski/bozuk rapor başarı değildir. Teknik temel ve 26 araç regresyonu
-tamamlandı; her yeni değişiklikte test/devir disiplini sürer. [Tarif ve kanıt](../islemler/test-ve-devir.md).
-Dış alarm, gerçek alıcı ve öğretmen/öğrenci kabulü ilgili görevlerinde kalır.
 
 68 backend test dosyasının bulunması ve önceki devirdeki test sonucu güncel bütün davranışların doğrulandığı anlamına gelmez. Bu incelemede uygulama testleri yeniden çalıştırılmadı. Mevcut [doğrulama tarifi](../islemler/dogrulama.md) ve `python scripts/ivme.py test` üzerinden **geçici `ivme_test`** sınırı korunmalıdır.
 

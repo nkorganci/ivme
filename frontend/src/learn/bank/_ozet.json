@@ -228,13 +228,13 @@
    "untyped": 8
   },
   "kosullu-onerme": {
-   "total": 44,
+   "total": 47,
    "cikmis": {
-    "TYT": 0,
+    "TYT": 3,
     "AYT": 0
    },
    "archetypes": {
-    "ise-deger": 6,
+    "ise-deger": 9,
     "karsit-ters": 8,
     "iki-yonlu": 0,
     "niceleyici": 22
@@ -312,18 +312,18 @@
    "untyped": 121
   },
   "onermeler": {
-   "total": 283,
+   "total": 280,
    "cikmis": {
-    "TYT": 6,
+    "TYT": 3,
     "AYT": 9
    },
    "archetypes": {
     "onerme-deger": 14,
-    "baglac-tablo": 177,
+    "baglac-tablo": 175,
     "de-morgan": 2,
     "deger-cikarim": 8
    },
-   "untyped": 82
+   "untyped": 81
   },
   "oran-oranti": {
    "total": 189,

@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "71fcad91b83040c11ecb8577c14fcaa63c67514c538366943c9715b0e1e0d39d",
+  "inputsHash": "59852f4437f183594ce548b969fade6a8332131c8fbb5ca898097408c00e1e20",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1003,6 +1003,54 @@
       },
       "evidenceHash": "1969d1dc9412ec05a309057d7b3e4632140968eba6ca61c4c8969decedba70fb",
       "contentHash": "4b36f1f2bf65a8851cc27037b0f1c3877205aebf19117aad5af46c47362aa74d",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kosullu-onerme-video:ise-yanlissa-iki-deger",
+      "conceptId": "kosullu-onerme",
+      "topicId": "tyt.matematik.mantik",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "İse yanlışsa: koşul 1, sonuç 0",
+      "rule": "Koşullu önerme yanlışsa (≡ 0) koşul doğru, sonuç yanlıştır. Koşul ya da sonuç bileşikse bu bilgi içteki bütün önermelerin değerini kesinleştirebilir; sonra istenen ifadeler tek tek hesaplanır.",
+      "condition": "Bilgi “… ⇒ … ≡ 0” biçiminde olmalı. “≡ 1” verilirse üç durum vardır ve değerler kesinleşmez.",
+      "example": "(p ∨ q) ⇒ r' ≡ 0 ise p ∨ q ≡ 1 ve r' ≡ 0: r ≡ 1; p ile q'dan en az biri doğru. (q ∧ r) ⇒ p ≡ 0 bilgisi de eklenirse q ≡ 1, r ≡ 1, p ≡ 0 kesinleşir.",
+      "counterexample": "(p ∧ r) ⇒ q' ≡ 1 bilgisinden p, q, r için kesin bir sonuç çıkmaz; yalnız “p, r, q üçü birden 1 olamaz” denebilir.",
+      "rationale": "p ⇒ q ≡ p' ∨ q; bu yalnız p' ≡ 0 ve q ≡ 0, yani p ≡ 1, q ≡ 0 iken yanlıştır. Koşulda “ve” varsa koşulun doğruluğu iki değeri birden 1 yapar.",
+      "source": {
+        "providerId": "youtube:eKNHKxkb8sU",
+        "startSeconds": 1620,
+        "endSeconds": 1714
+      },
+      "evidenceHash": "d089bd42310169fac826ce50522d84c98265dce7fbb709bf2280288b7fb42834",
+      "contentHash": "f18ed6920fb7957462b48fbbc2f8ebdb78190dfd654e056648ffe05c526b340e",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kosullu-onerme-video:her-icin-karsi-ornek",
+      "conceptId": "kosullu-onerme",
+      "topicId": "tyt.matematik.mantik",
+      "sectionIds": [
+        "s4",
+        "s4b"
+      ],
+      "title": "Her için karşı örnek, bazı için tanık",
+      "rule": "“Her x için p(x)” önermesini çürütmek için tek bir karşı örnek yeter; “en az bir x için p(x)” önermesini doğrulamak için tek bir tanık yeter. Niceleyicili önermeler bir bileşik önermenin içindeyse önce her birinin değerini bul.",
+      "condition": "Evrensel kümeye dikkat: karşı örnek ya da tanık o kümeden seçilmelidir (tam sayılarda 0, doğal sayılarda 1 gibi).",
+      "example": "(∃x ∈ ℤ, x² > 0) ⇒ (∀x ∈ ℤ, x² − 1 ≥ 0): sol taraf 1 (x = 1 tanık), sağ taraf 0 (x = 0 karşı örnek); 1 ⇒ 0 ≡ 0.",
+      "counterexample": "Aynı sağ taraf sayma sayılarında (1, 2, 3, …) doğrudur; orada karşı örnek yoktur ve bileşik önerme 1 ⇒ 1 ≡ 1 olur.",
+      "rationale": "“Her” bütün elemanlar için bir “ve” zinciri, “en az bir” bir “veya” zinciri gibidir: “ve” zincirini tek 0, “veya” zincirini tek 1 belirler.",
+      "source": {
+        "providerId": "youtube:eKNHKxkb8sU",
+        "startSeconds": 2182,
+        "endSeconds": 2274
+      },
+      "evidenceHash": "d089bd42310169fac826ce50522d84c98265dce7fbb709bf2280288b7fb42834",
+      "contentHash": "89f16bef1d3aab64884e01b2915f66391feae8bf7c5b9c4eb9190e7f2957e6f1",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

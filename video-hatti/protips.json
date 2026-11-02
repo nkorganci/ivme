@@ -441,6 +441,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "kosullu-onerme-video",
+      "conceptId": "kosullu-onerme",
+      "hints": [
+        {
+          "id": "ise-yanlissa-iki-deger",
+          "title": "İse yanlışsa: koşul 1, sonuç 0",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        },
+        {
+          "id": "her-icin-karsi-ornek",
+          "title": "Her için karşı örnek, bazı için tanık",
+          "sectionIds": [
+            "s4",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }
