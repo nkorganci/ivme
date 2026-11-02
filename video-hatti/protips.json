@@ -354,6 +354,27 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "grafik-rutin-olmayan-video",
+      "conceptId": "grafik-rutin-olmayan",
+      "hints": [
+        {
+          "id": "dogrusal-grafikte-degisimler-orantili",
+          "title": "Doğrusal grafikte değişimler orantılı",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        },
+        {
+          "id": "toplam-grafiginde-egim-gunluk-miktar",
+          "title": "Toplam grafiğinin eğimi günlük miktar",
+          "sectionIds": [
+            "s1"
+          ]
+        }
+      ]
     }
   ]
 }

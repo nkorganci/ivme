@@ -134,12 +134,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "grafik-okuma": 6,
+    "grafik-okuma": 7,
     "tablo-sema": 88,
     "en-az-en-cok": 54,
-    "oruntu-strateji": 31
+    "oruntu-strateji": 32
    },
-   "untyped": 48
+   "untyped": 46
   },
   "hareket-problemleri": {
    "total": 211,

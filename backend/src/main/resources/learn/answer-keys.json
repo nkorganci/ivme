@@ -1652,6 +1652,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "grafik-rutin-olmayan:c1b": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "grafik-rutin-olmayan:c2": {
    "conceptId": "grafik-rutin-olmayan",
    "type": "choice",
@@ -1664,6 +1677,19 @@
     "E"
    ],
    "version": "1472983ce40becda"
+  },
+  "grafik-rutin-olmayan:c2b": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "grafik-rutin-olmayan:c3": {
    "conceptId": "grafik-rutin-olmayan",
@@ -1678,6 +1704,19 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "grafik-rutin-olmayan:c3b": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
   "grafik-rutin-olmayan:c4": {
    "conceptId": "grafik-rutin-olmayan",
    "type": "choice",
@@ -1690,6 +1729,19 @@
     "E"
    ],
    "version": "1472983ce40becda"
+  },
+  "grafik-rutin-olmayan:c4b": {
+   "conceptId": "grafik-rutin-olmayan",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "grafik-rutin-olmayan:h1": {
    "conceptId": "grafik-rutin-olmayan",

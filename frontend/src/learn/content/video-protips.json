@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "047f6154a8f201d52855dfd09bc5c1c88560a2776bbb83e36b7dbd1aaa9a48c8",
+  "inputsHash": "758663d8d05ab586f9151ac71306faae79f775f38dcf3886319d99f9fb005574",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -812,6 +812,53 @@
       },
       "evidenceHash": "ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c",
       "contentHash": "40e4cb15d65c3f3f40c41916701aa40ee5b43c3fa85ae482c39f1e5a81b8669b",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "grafik-rutin-olmayan-video:dogrusal-grafikte-degisimler-orantili",
+      "conceptId": "grafik-rutin-olmayan",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "Doğrusal grafikte değişimler orantılı",
+      "rule": "Doğrusal (tek doğru parçası) bir grafikte y'deki değişim, x'teki değişimle orantılıdır: iki aralığın y değişimlerinin oranı, x değişimlerinin oranına eşittir.",
+      "condition": "İki aralık aynı doğru parçası üzerinde olmalı. Grafik kırılıyorsa (parçalı) her parça için ayrı oran kurulur.",
+      "example": "Doğrusal grafikte x = 10 için y = a, x = 25 için y = b, x = 70 için y = c ve c − a = 36 ise (c − b)/(c − a) = (70 − 25)/(70 − 10) = 3/4; c − b = 27.",
+      "counterexample": "Grafik 25'te kırılıyorsa ilk parçanın eğimi ikinci parçaya taşınamaz; oran yalnız aynı parçanın içinde geçerlidir.",
+      "rationale": "Doğrunun eğimi her yerde aynıdır: Δy = eğim · Δx. İki Δy'nin oranında eğim sadeleşir ve yalnız Δx'lerin oranı kalır.",
+      "source": {
+        "providerId": "youtube:65pM6ofAgi8",
+        "startSeconds": 470,
+        "endSeconds": 640
+      },
+      "evidenceHash": "99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff",
+      "contentHash": "3c529319f46f38f6eeb0f3fb32d7742d7217a8add4f28c477d26039c51c72a07",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "grafik-rutin-olmayan-video:toplam-grafiginde-egim-gunluk-miktar",
+      "conceptId": "grafik-rutin-olmayan",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s1"
+      ],
+      "title": "Toplam grafiğinin eğimi günlük miktar",
+      "rule": "Her gün eşit miktar eklenen bir toplamın zaman grafiği başlangıçtan geçen bir doğrudur; eğimi günlük miktardır ve grafiğin herhangi bir noktası (gün, toplam) bu miktarı verir.",
+      "condition": "Her gün aynı miktar eklenmeli ve sayım sıfırdan başlamalı. Başlangıçta bir miktar varsa doğru orijinden geçmez; o zaman iki noktanın farkı kullanılır.",
+      "example": "Toplam su tüketimi grafiği (6. gün, 30 L) noktasından geçiyor: günde 5 L. 95 L'ye 19. günde ulaşılır; 4 gün sonra toplam 115 L olur.",
+      "counterexample": "Kumbarada başta 40 TL varsa ve 5. gün toplam 90 TL ise günlük miktar 90 ÷ 5 = 18 değil, (90 − 40) ÷ 5 = 10 TL'dir.",
+      "rationale": "Toplam = günlük miktar × gün sayısı: y = kx biçiminde, orijinden geçen doğrudur. Bir noktadan k bulunur, diğer bütün değerler orantıyla gelir.",
+      "source": {
+        "providerId": "youtube:65pM6ofAgi8",
+        "startSeconds": 1270,
+        "endSeconds": 1345
+      },
+      "evidenceHash": "99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff",
+      "contentHash": "b56ee4afb4a1d69d74dd094e170c34ded4cb3df505bf8ecaaf3f586f7647786a",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

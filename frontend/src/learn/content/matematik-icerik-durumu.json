@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 17,
-  "nextTopicId": "grafik-rutin-olmayan",
+  "completed": 18,
+  "nextTopicId": "veri-grafikleri",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -217,13 +217,8 @@
         "AYT"
       ],
       "grade": 9,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "veri-grafikleri",

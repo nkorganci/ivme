@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "dogrusal-grafikte-degisimler-orantili",
+    "providerId": "youtube:65pM6ofAgi8",
+    "startSeconds": 470,
+    "endSeconds": 640,
+    "quote": "buradaki oranlar birbirlerine eşit olmak zorunda",
+    "frameSeconds": [
+      520
+    ],
+    "rule": "Doğrusal (tek doğru parçası) bir grafikte y'deki değişim, x'teki değişimle orantılıdır: iki aralığın y değişimlerinin oranı, x değişimlerinin oranına eşittir.",
+    "condition": "İki aralık aynı doğru parçası üzerinde olmalı. Grafik kırılıyorsa (parçalı) her parça için ayrı oran kurulur.",
+    "example": "Doğrusal grafikte x = 10 için y = a, x = 25 için y = b, x = 70 için y = c ve c − a = 36 ise (c − b)/(c − a) = (70 − 25)/(70 − 10) = 3/4; c − b = 27.",
+    "counterexample": "Grafik 25'te kırılıyorsa ilk parçanın eğimi ikinci parçaya taşınamaz; oran yalnız aynı parçanın içinde geçerlidir.",
+    "rationale": "Doğrunun eğimi her yerde aynıdır: Δy = eğim · Δx. İki Δy'nin oranında eğim sadeleşir ve yalnız Δx'lerin oranı kalır.",
+    "agentSourceReview": "Claude 520. saniye karesinde Örnek 2'nin tam metnini (birim 5, 20, 50; fiyatlar c, b, a; c − a = 24) ve tahtadaki (c − b)/(c − a) = 15/45 = 1/3 oranını okudu. Kartın 10/25/70 ve 36 sayıları özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "toplam-grafiginde-egim-gunluk-miktar",
+    "providerId": "youtube:65pM6ofAgi8",
+    "startSeconds": 1270,
+    "endSeconds": 1345,
+    "quote": "doğrusal gitmesi yani oranı sağlaması",
+    "frameSeconds": [
+      1300
+    ],
+    "rule": "Her gün eşit miktar eklenen bir toplamın zaman grafiği başlangıçtan geçen bir doğrudur; eğimi günlük miktardır ve grafiğin herhangi bir noktası (gün, toplam) bu miktarı verir.",
+    "condition": "Her gün aynı miktar eklenmeli ve sayım sıfırdan başlamalı. Başlangıçta bir miktar varsa doğru orijinden geçmez; o zaman iki noktanın farkı kullanılır.",
+    "example": "Toplam su tüketimi grafiği (6. gün, 30 L) noktasından geçiyor: günde 5 L. 95 L'ye 19. günde ulaşılır; 4 gün sonra toplam 115 L olur.",
+    "counterexample": "Kumbarada başta 40 TL varsa ve 5. gün toplam 90 TL ise günlük miktar 90 ÷ 5 = 18 değil, (90 − 40) ÷ 5 = 10 TL'dir.",
+    "rationale": "Toplam = günlük miktar × gün sayısı: y = kx biçiminde, orijinden geçen doğrudur. Bir noktadan k bulunur, diğer bütün değerler orantıyla gelir.",
+    "agentSourceReview": "Claude 1300. saniye karesinde Soru 2'nin tam metnini ve grafiği (5. gün 20, x. gün 76 paylaşım; seçenekler 72–112) okudu; altyazı 21:43'te günde 4 paylaşım, x = 19 ve 24 günde 96 sonucunu veriyor. Kartın su ve kumbara sayıları özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

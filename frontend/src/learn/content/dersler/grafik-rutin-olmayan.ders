@@ -47,8 +47,10 @@ tablo-sema 1 1-2
 en-az-en-cok 1 1-3
 oruntu-strateji 2 1-3
 
-@oturum Grafik ve tablo okuma | s1 s2
-@oturum Strateji: uç değer ve örüntü | s3 s4
+@oturum Grafik okuma | s1 s1b
+@oturum Tablo, tarife ve aralıklar | s2 s2b
+@oturum En az, en çok ve tam sayı çözümleri | s3 s3b
+@oturum Örüntü ve takvim döngüleri | s4 s4b
 
 @ontest
 ::soru o1 tip=grafik-okuma zorluk=1
@@ -144,6 +146,83 @@ E) 270 || $t = 3$'te B'nin hızıyla tüm süreyi çarptın.
 kontrol: 60*3
 cozum: A'nın hızı $\frac{120}{2} = 60$, B'nin hızı $\frac{90}{1} = 90$ km/sa. $60t = 90(t - 1) \Rightarrow t = 3$; yetişme $60 \cdot 3 = 180$ km'de.
 
+@bolum s1b 12 | Parçalı grafik, kaydırma ve f(x) = k
+::fikir
+Parçalı grafikte **her doğru parçasının kendi kuralı** vardır; soru hangi parçayı işaret ediyorsa o kuralı yaz. **Yatay $y=k$ doğrusu** grafiği kaç noktada keserse $f(x)=k$ denkleminin o kadar çözümü vardır; x eksenini kestiği yerler **sıfırlardır**. "Bir saat önce", "2 birim sağda" gibi ifadeler grafiği **kaydırır**.
+
+::grafik alt="f'nin grafiği (−3, 0), (−1, 4), (2, 4), (5, −2) ve (7, 2) noktalarını sırayla birleştiren doğru parçalarından oluşuyor." aciklama="Tanım kümesi $[-3, 7]$, görüntü kümesi $[-2, 4]$. $y=2$ doğrusu grafiği üç noktada keser."
+x: -4 8
+y: -3 5
+parca: -3 0 -1 4 | navy
+parca: -1 4 2 4 | navy
+parca: 2 4 5 -2 | navy
+parca: 5 -2 7 2 | navy
+nokta: -3 0 | (−3, 0) | red
+nokta: 7 2 | (7, 2) | red
+xetiket: x
+yetiket: y
+
+::duzey
+L1: Grafiğin en solundaki ve en sağındaki noktalar tanım kümesinin uçlarını, en alttaki ve en üstteki noktalar görüntü kümesinin uçlarını verir. Yukarıdaki grafik $x=-3$'ten $x=7$'ye uzanır; $y$ değerleri $-2$ ile $4$ arasında kalır.
+L2: $f(x)=2$'nin çözümlerini saymak için $y=2$ yatay doğrusunu çiz ve kesişimleri say. Bir parça yatay doğruyla çakışıyorsa (burada $y=4$) o parçadaki her $x$ çözümdür: sonsuz çözüm. Bir parçada kesişimin $x$ değeri için o parçanın kuralını yaz.
+L3: $f(x-2)=0$ denkleminde $x-2$, $f$'nin bir sıfırı olmalıdır: $x-2=a$ ise $x=a+2$. Kökler 2 birim **sağa** kayar. Zaman grafiklerinde "bir saat önce çıksaydı" demek, $t$ yerine $t-60$ koymaktır; iki parçadaki değerleri eşitleyen denklem kurulur.
+
+::cikmis TYT-0692 tip=grafik-okuma
+
+::ornek baslik="Benzer: bir saat önce çıksa da aynı süre"
+soru: Bir öğrencinin evden çıkış saatine göre okula varış süresi doğrusal parçalarla veriliyor: 07.00'de çıkarsa 20 dakika, 08.00'de çıkarsa 32 dakika, 09.00'da çıkarsa 26 dakika. 08.00–09.00 arasında çıkan öğrenci tam bir saat önce çıksaydı yolculuk süresi değişmeyecekti. Öğrenci okula saat kaçta varmıştır?
+1. 08.00'den $u$ dakika sonra çıksın: süre $32-\frac{6u}{60}=32-\frac{u}{10}$. || İkinci parça 60 dakikada 6 dakika azalıyor.
+2. Bir saat önce (07.00'den $u$ dakika sonra): süre $20+\frac{12u}{60}=20+\frac{u}{5}$. || Birinci parça 60 dakikada 12 dakika artıyor.
+3. $20+\frac{u}{5}=32-\frac{u}{10}$, $\frac{3u}{10}=12$, $u=40$: 08.40'ta çıktı, süre $32-4=28$ dakika. || Varış 09.08.
+cevap: 09.08
+
+::ornek baslik="Yatay doğruyla çözüm saymak"
+soru: Yukarıdaki grafiğe göre $f(x)=2$ denkleminin kaç çözümü vardır? Çözümler nelerdir?
+1. $y=2$ doğrusu birinci parçayı ($-3$'ten $-1$'e, 0'dan 4'e çıkan) $x=-2$'de keser. || Bu parça 2 birimde 4 artıyor: $x=-3+1$.
+2. Üçüncü parça $(2,4)$'ten $(5,-2)$'ye, birimde 2 azalır: $4-2(x-2)=2$, $x=3$. || Parçanın kuralı.
+3. Son parça $(5,-2)$'den $(7,2)$'ye birimde 2 artar: $-2+2(x-5)=2$, $x=7$. || Uç nokta da grafiğe dahil.
+cevap: 3 çözüm: −2, 3 ve 7
+
+::ornek baslik="Sıfırlar ve kaydırılmış denklem"
+soru: Yukarıdaki grafiğe göre $f(x)=0$ ve $f(x-2)=0$ denklemlerinin çözüm kümeleri nedir?
+1. Grafik x eksenini $x=-3$'te, üçüncü parçada $4-2(x-2)=0\Rightarrow x=4$'te, son parçada $-2+2(x-5)=0\Rightarrow x=6$'da keser. || Sıfırlar: $\{-3, 4, 6\}$.
+2. $f(x-2)=0$ için $x-2\in\{-3,4,6\}$. || İçteki ifade bir sıfır olmalı.
+3. $x\in\{-1, 6, 8\}$. || Her kök 2 sağa kaydı.
+cevap: $\{-3, 4, 6\}$ ve $\{-1, 6, 8\}$
+
+::tamamla baslik="Grafikten tanım ve görüntü kümesi"
+soru: Yukarıdaki grafikteki $f$ fonksiyonunun tanım ve görüntü kümelerini yaz.
+1. Grafik en solda $x=-3$, en sağda $x=7$'dedir; arada kopukluk yok. || Uç noktalar dolu.
+?2. Tanım kümesi $[-3, 7]$. || x eksenine dik iz düşüm.
+?3. En alçak nokta $y=-2$, en yüksek $y=4$: görüntü kümesi $[-2, 4]$. || y eksenine yatay iz düşüm.
+cevap: Tanım $[-3, 7]$, görüntü $[-2, 4]$
+
+::sorgula s1b-cember baslik="Çember bir fonksiyon grafiği mi?"
+durum: Bir öğrenci koordinat düzleminde merkezi orijinde, yarıçapı 3 olan bir çember çiziyor ve "bu, bir fonksiyonun grafiğidir" diyor.
+soru: Öğrenci haklı mı?
+A) Evet, çünkü çember kapalı ve düzgün bir eğridir. || Düzgün ya da kapalı olmak yetmez; her $x$'e tek $y$ düşmeli.
++B) Hayır; örneğin $x=0$ dikey doğrusu çemberi iki noktada keser. || $x=0$ için hem $y=3$ hem $y=-3$ var.
+C) Evet, çünkü x eksenini iki noktada keser. || Sıfır sayısı fonksiyon olup olmamayı belirlemez.
+neden: Dikey doğru testi: her dikey doğru grafiği en çok bir noktada kesmelidir. Çemberde $-3<x<3$ için iki kesişim vardır; bir $x$'e iki $y$ düştüğü için fonksiyon değildir.
+sinav: Grafikten fonksiyon olup olmadığını dikey doğru, $f(x)=k$ çözüm sayısını yatay doğru belirler.
+dusun: Çemberin yalnız üst yarısı fonksiyon grafiği olur mu?
+yanit: Olur: her $x\in[-3,3]$ için tek bir $y\ge0$ vardır.
+
+::yanilgi m1b tip=grafik-okuma
+yanlis: $f(x)=0$'ın kökleri $-3, 4, 6$ ise $f(x-2)=0$'ın kökleri $-5, 2, 4$'tür.
+neden: $x-2$'nin bir kök olması gerekir: $x-2=-3$ ise $x=-1$; kökler sola değil sağa kayar.
+dogru: $f(x-2)=0$'ın kökleri $-1, 6, 8$.
+
+::soru c1b tip=grafik-okuma zorluk=2
+$f$ fonksiyonunun grafiği $(0,1)$, $(2,5)$, $(4,1)$ ve $(6,5)$ noktalarını sırayla birleştiren doğru parçalarından oluşuyor. $f(x)=3$ denkleminin kaç çözümü vardır?
+A) 1 || Yalnız ilk parçaya baktın.
+B) 2 || Son parçayı unuttun.
++C) 3 || Doğru: her parça 1 ile 5 arasında; $y=3$ üçünü de keser.
+D) 4 || Hesabı kontrol et: üç parça var.
+E) Sonsuz || Yatay bir parça yok.
+kontrol: 3
+cozum: Üç parçanın her biri 1 ile 5 arasında değişir; $y=3$ doğrusu her birini bir kez keser: $x=1$, $x=3$, $x=5$.
+
 @bolum s2 9 | Tablo, tarife ve kampanya
 ::fikir
 Uzun metinli soruda **her bilgiyi bir satıra** yaz. "İlk …, sonraki her …" yapısında önce sabit kısmı, sonra aşan kısmı hesapla. **"Başlamış saat"** yukarı yuvarlama demektir.
@@ -202,6 +281,67 @@ E) 97 || Hesabı kontrol et.
 kontrol: 6*12+2*5
 cozum: 6 defter $= 72$ TL ve 2 kalem hediye. Ödenecek kalem $4 - 2 = 2$: $10$ TL. Toplam $82$ TL.
 
+@bolum s2b 10 | Aralık bilgisi: kesinlikle mi, olabilir mi?
+::kesfet gr-aralik
+
+::fikir
+Bir gösterge, ikon ya da not sistemi sayıyı tam söylemez, **hangi aralıkta olduğunu** söyler. Her bilgiyi bilinmeyen için bir eşitsizliğe çevir, aralıkları **kesiştir** ve tam sayı koşulunu uygula. "**Kesinlikle**" bütün olası değerlerde doğru olanı, "**olabilir**" en az bir değerde doğru olanı sorar.
+
+::duzey
+L1: Ses simgesi 66–100 arasında üç çizgi gösteriyor. Ses 17 artınca üç çizgi görünüyorsa yeni değer en az 66'dır: başlangıç en az 49. Her cümle bir sınır verir.
+L2: Sınır kelimelerini oku: "en az 33" 33'ü içerir, "33'ten fazla" içermez. İki koşulun ortak kısmı alınır; tam sayı istenirse uçları dikkatle kontrol et. Ortak kısım boşsa bilgiler çelişiyordur.
+L3: "Kesinlikle doğru" seçeneği, aralığın her elemanı için sağlanmalıdır; tek bir karşı örnek onu eler. "Olabilir" seçeneği için tek bir uygun değer yeter. Yuvarlanmış göstergelerde (en yakın 10'a yuvarlayan terazi) gerçek değer gösterilenin ±5'i içindedir.
+
+::cikmis TYT-0670 tip=en-az-en-cok
+
+::ornek baslik="Benzer: pil göstergesi"
+soru: Bir telefonun pil göstergesi şarj 1–25 arasında bir çizgi, 26–60 arasında iki çizgi, 61–100 arasında üç çizgi gösteriyor. Şarj 11 birim artsa üç çizgi, 26 birim azalsa bir çizgi görünecek. Şarjın alabileceği tam sayı değerlerin toplamı kaçtır?
+1. Üç çizgi: $L+11\ge61$, $L\ge50$. || Artışlı değer üçüncü aralıkta.
+2. Bir çizgi: $1\le L-26\le25$, yani $27\le L\le51$. || Azalışlı değer birinci aralıkta.
+3. Ortak kısım $50\le L\le51$: toplam $50+51=101$. || Kontrol: $L=52$ için $52-26=26$ iki çizgi olur.
+cevap: 101
+
+::ornek baslik="Kesinlikle doğru olan"
+soru: Bir otoparkta 3 saate kadar 40 TL, 3 saatten fazla 6 saate kadar 70 TL ödeniyor. Ayşe 40 TL ödedi; 2 saat daha kalsaydı 70 TL ödeyecekti. Ayşe'nin otoparkta kaldığı süre için hangisi kesinlikle doğrudur? (I. 1 saatten fazla, II. 2 saatten fazla, III. en çok 3 saat)
+1. 40 TL: $0<t\le3$. || Birinci tarife aralığı.
+2. 2 saat daha: $3<t+2\le6$, yani $1<t\le4$. || İkinci tarife aralığı.
+3. Ortak kısım $1<t\le3$. I ve III her değerde doğru; II, $t=1{,}5$ için yanlış. || Kesinlik için karşı örnek ara.
+cevap: I ve III
+
+::ornek baslik="Yuvarlayan terazi"
+soru: Bir terazi ağırlığı en yakın 10 grama yuvarlayarak gösteriyor. Elma 250 g, armut 130 g görünüyor. İkisi birlikte tartılsa gösterge hangi değerleri gösterebilir?
+1. Elma $[245, 255)$, armut $[125, 135)$ aralığında. || Yuvarlama ±5.
+2. Toplam $[370, 390)$ aralığında. || Alt sınırlar ve üst sınırlar toplanır.
+3. $[370,375)$ → 370, $[375,385)$ → 380, $[385,390)$ → 390 görünür. || Toplam 390'a ulaşmasa da 385'i geçerse 390'a yuvarlanır.
+cevap: 370, 380 ya da 390
+
+::sorgula s2b-not baslik="Karne notu sınırları"
+durum: Bir okulda 85–100 puan "5", 70–84 puan "4" sayılıyor. Elif'in puanı tam sayı. 6 puan fazla alsaydı notu 5, 10 puan az alsaydı yine 4 olacaktı.
+soru: Elif'in puanı en az kaçtır?
+A) 79 || Yalnız ilk bilgiyi kullandın; 79'dan 10 çıkarsan 69 olur ve not 4 olmaz.
++B) 80 || $p+6\ge85$ ve $p-10\ge70$: $p\ge80$.
+C) 85 || O zaman Elif'in notu zaten 5 olurdu; puanı 84'ü geçemez.
+kontrol: 80
+neden: İki koşul: $p\ge79$ ve $p\ge80$; ayrıca bugünkü not 4 olduğundan $p\le84$. Ortak kısım $80\le p\le84$; en az 80.
+sinav: Aralık bilgilerinin her birini eşitsizliğe çevir ve hepsini birlikte sağla; bir koşulu atlamak yanlış uç değer verir.
+dusun: Elif'in puanının alabileceği kaç tam sayı değer var?
+yanit: 80, 81, 82, 83, 84: 5 değer.
+
+::yanilgi m2b tip=en-az-en-cok
+yanlis: Aralık bilgilerinden birini sağlayan değer cevaptır.
+neden: Bilgilerin hepsi aynı anda doğrudur; değer bütün aralıkların ortak kısmında olmalı.
+dogru: Her bilgiyi eşitsizlik yap, ortak kısmı al, tam sayı koşulunu uygula.
+
+::soru c2b tip=en-az-en-cok zorluk=2
+Bir sınavda 50 ve üstü "geçti" sayılıyor. Can'ın puanı 8 puan az olsaydı kalacaktı, 5 puan az olsaydı yine geçecekti. Can'ın puanının alabileceği tam sayı değerlerin toplamı kaçtır?
+A) 55 || Yalnız bir değer buldun.
+B) 110 || Hesabı kontrol et: aralık $55\le p\le57$.
++C) 168 || Doğru: $55+56+57$.
+D) 171 || 58'i de saydın; $58-8=50$ geçer.
+E) 225 || Hesabı yeniden yap.
+kontrol: 55+56+57
+cozum: $p-8<50\Rightarrow p\le57$; $p-5\ge50\Rightarrow p\ge55$. Değerler 55, 56, 57; toplam 168.
+
 @bolum s3 10 | En az, en çok ve en kötü durum
 ::fikir
 **En çok / en az** sorusunda bilinmeyenleri ve **tam sayı koşulunu** yaz; isteneni büyütmek için diğerlerini **uç değere** götür ve koşulu kontrol et. **"Emin olmak için"** sorularında en kötü durumu kur, **1 ekle**.
@@ -258,6 +398,72 @@ E) 44 || Bu, en büyüğün alabileceği en büyük değerdir.
 kontrol: (50+6)/4
 cozum: En büyük $M$ ise toplam en çok $M + (M - 1) + (M - 2) + (M - 3) = 4M - 6$. $4M - 6 \geq 50 \Rightarrow M \geq 14$; $14 + 13 + 12 + 11 = 50$ ✓
 
+@bolum s3b 10 | Tam sayı çözümlerini listeleyerek seçmek
+::kesfet gr-pul
+
+::fikir
+$ax+by=T$ biçimindeki adet denklemlerinde $x$ ve $y$ **doğal sayıdır**; çoğu zaman birkaç çözüm vardır. Bir değişkeni küçükten büyüğe dene, **bütün çözümleri listele**, sonra soruya göre en az ya da en çok olanı seç. Ardışık çözümlerde $x$ hep $b$'nin, $y$ hep $a$'nın bir katı kadar değişir.
+
+::duzey
+L1: 3 ve 5 kiloluk torbalarla 47 kg un: $y=1$ için $3x=42$, $x=14$. $y=4$ için $3x=27$, $x=9$. $y=7$ için $x=4$. Başka çözüm yok: $y$, 3'er 3'er artıyor.
+L2: Kalan bakışı listeyi kısaltır: $3x+5y=47$'de $3x$, 3'ün katı olduğu için $5y$ ile 47'nin 3'e bölümünden kalan aynı olmalı: $y$, 3'e bölününce 1 kalanını verir. Böylece yalnız $y=1, 4, 7$ denenir.
+L3: Toplam adet $x+y$, büyük birimden (5 kg) ne kadar çok kullanılırsa o kadar küçülür. En az adet için büyük birimi en çoğa, en çok adet için en aza götür; ama her zaman denklemin tam sayı çözümü olup olmadığını kontrol et.
+
+::tamamla baslik="Torbaları listele"
+soru: 3 ve 5 kiloluk torbalarla tam 47 kg un paketlenecek; torbalar tam dolu olacak. En az ve en çok kaç torba kullanılır?
+1. $3x+5y=47$; $y=1$ için $x=14$. || İlk çözüm.
+?2. $y$ 3 artınca $x$ 5 azalır: $(9,4)$ ve $(4,7)$. || Ardışık çözümler.
+?3. Torba sayıları 15, 13, 11: en çok 15, en az 11. || $x+y$ her adımda 2 azalır.
+cevap: En az 11, en çok 15
+
+::ornek baslik="Gruplara bölmek: tek yol"
+soru: 31 öğrenci 4 ve 5 kişilik gruplara ayrılacak; her grup tam dolu olacak. Kaç 4 kişilik ve kaç 5 kişilik grup kurulur?
+1. $4x+5y=31$. $5y$'nin 31'den 4'e bölümünden kalanı aynı olmalı: 31'in kalanı 3. || $4x$ 4'ün katı.
+2. $y=3$ ($5\cdot3=15$, kalan 3) uygun; $y=7$ için $35>31$. || $y$ 4'er 4'er artardı.
+3. $4x=16$, $x=4$. || Tek çözüm.
+cevap: 4 tane 4'lü, 3 tane 5'li grup
+
+::ornek baslik="En az bölümle kitap okumak"
+soru: Ayşe bir kitabı 7 ve 4 sayfalık bölümler hâlinde okuyor ve 100 sayfanın tamamını bölümlere ayırıyor. En az kaç bölüm vardır?
+1. $7x+4y=100$. $7x$ 4'ün katı olmalı: $x$ 4'ün katı. || $4y$ ve 100 4'e bölünür.
+2. Çözümler $(0,25)$, $(4,18)$, $(8,11)$, $(12,4)$. || $x$ 4 artınca $y$ 7 azalır.
+3. Bölüm sayıları 25, 22, 19, 16: en az 16. || Büyük bölüm en çok.
+cevap: 16
+
+::ornek baslik="Kutularla kurabiye"
+soru: Bir fırın 6'lı ve 9'lu kutular kullanıyor. 75 kurabiye kutulara tam olarak doldurulacak. En az kaç kutu gerekir?
+1. $6x+9y=75$, sadeleştir: $2x+3y=25$. || Ortak çarpan 3.
+2. $y$ tek olmalı: $(11,1)$, $(8,3)$, $(5,5)$, $(2,7)$. || $25-3y$ çift olmalı.
+3. Kutu sayıları 12, 11, 10, 9: en az 9. || 9'lu kutuyu en çoğa götürdük.
+cevap: 9 kutu
+
+::sorgula s3b-bozuk baslik="Bozuk paralar"
+durum: Cüzdanında yalnız 50 kuruşluk ve 1 TL'lik bozuk paralar var. Toplam 10 bozuk para ve 7,5 TL ediyor.
+soru: Kaç tane 1 TL'lik bozuk para var?
+A) 7 || $7+0{,}5\cdot3=8{,}5$ TL eder; 7,5 değil.
++B) 5 || $5\cdot1+5\cdot0{,}5=7{,}5$ ve $5+5=10$.
+C) 3 || $3+0{,}5\cdot7=6{,}5$ TL eder.
+kontrol: 5
+neden: $y$ tane 1 TL ve $10-y$ tane 50 kuruş: $y+0{,}5(10-y)=7{,}5$, $0{,}5y=2{,}5$, $y=5$. İki bilgi verilince çözüm tektir; listeleme yerine denklem kurulur.
+sinav: Adet toplamı da verildiyse iki denklem kur; yalnız tutar verildiyse çözümleri listele.
+dusun: Adet verilmeseydi 7,5 TL kaç farklı şekilde ödenebilirdi?
+yanit: 1 TL'lik sayısı 0'dan 7'ye kadar olabilir: 8 farklı şekilde.
+
+::yanilgi m3b tip=en-az-en-cok
+yanlis: $3x+5y=47$'nin ilk bulunan çözümü $(14,1)$ tek çözümdür.
+neden: $y$ 3 artınca $x$ 5 azalır ve denklem yine sağlanır.
+dogru: Çözümler $(14,1)$, $(9,4)$, $(4,7)$; soru en az ya da en çok adedi sorabilir.
+
+::soru c3b tip=en-az-en-cok zorluk=2
+5 ve 8 litrelik bidonlarla 71 litre zeytinyağı, bidonlar tam dolu olacak biçimde paylaştırılıyor. En çok kaç bidon kullanılır?
+A) 10 || Hesabı kontrol et: bu en az bidon sayısıdır.
+B) 11 || Hesabı yeniden yap.
+C) 12 || Hesabı kontrol et.
++D) 13 || Doğru: $5\cdot11+8\cdot2=71$.
+E) 14 || 14 bidonla 71 litre tam doldurulamaz.
+kontrol: 11+2
+cozum: $5x+8y=71$; $8y$'nin 5'e bölümünden kalanı 1 olmalı: $y=2$ ($x=11$) ya da $y=7$ ($x=3$). Bidon sayıları 13 ve 10; en çok 13.
+
 @bolum s4 9 | Örüntü, liste ve döngü
 ::fikir
 Tekrarlayan durumlarda **ilk 4–5 adımı tabloya yaz**, artışı ya da tekrar periyodunu bul, **genel kuralı yaz** ve küçük bir adımla doğrula. Zaman sorularında süreleri saniyeye ya da dakikaya çevir.
@@ -311,6 +517,72 @@ D) 79 || Bu 26 kare için gereken sayıdır.
 E) 100 || Kareler kenar paylaşır; her kare 4 çöp istemez.
 kontrol: 3*25+1
 cozum: Her yeni kare 3 çöp ekler: kural $3n + 1$. $n = 25$ için $76$.
+
+@bolum s4b 10 | Takvim ve haftalık döngüler
+::kesfet gr-kumbara
+
+::fikir
+Haftalık tekrar eden durumlarda **bir tam haftanın toplamını** bul; tam haftaları hızla geç, **kalan birkaç günü tek tek say**. Gün sorularında $n$ gün sonrası için $n$'nin **7'ye bölümünden kalanı** kullan. Hedefe "ilk ulaşılan gün" sorulduysa bir önceki günün hedefin altında kaldığını kontrol et.
+
+::duzey
+L1: Bugün çarşamba ise 7, 14, 21 gün sonra yine çarşambadır. 100 gün sonra: $100=7\cdot14+2$; 14 tam hafta geçer, 2 gün kalır: cuma.
+L2: Kumbara sorusunda hafta içi 20, hafta sonu 25 TL atılıyorsa bir hafta $5\cdot20+2\cdot25=150$ TL eder. 3 hafta 450 TL; 500'e ulaşmak için birkaç gün daha gerekir. Bu günlerin hangileri olduğu başlangıç gününe bağlıdır; bu yüzden olası başlangıç günlerini tek tek dene.
+L3: İki döngü birlikte varsa (her 3 günde bir nöbet ve haftanın günleri) ikisinin aynı anda başa dönmesi EKOK kadar sürer: $\text{EKOK}(3,7)=21$ gün. Ay sorularında ayların gün sayılarını (30, 31, şubat 28/29) ayrı ayrı topla.
+
+::cikmis TYT-0704 tip=oruntu-strateji
+
+::ornek baslik="Benzer: pazar günü hedefe ulaşan kumbara"
+soru: Deniz boş kumbarasına bir günden başlayarak her gün para atıyor: hafta içi 15 TL, hafta sonu 30 TL. Kumbarada ilk kez en az 400 TL biriktiği gün pazardır. Deniz para atmaya hangi gün başlamıştır?
+1. Bir hafta $5\cdot15+2\cdot30=135$ TL; 2 hafta 270, 3 hafta 405 TL. || 400'e üçüncü hafta içinde ulaşılır.
+2. Pazartesi başlarsa 3. haftanın cumartesi akşamı $405-30=375$, pazar akşamı 405: ilk kez pazar. || Bir önceki gün hedefin altında.
+3. Diğer başlangıçlar: salı başlarsa 400'ü pazar 390, pazartesi 405 ile geçer; pazar başlarsa cumartesi 405'e ulaşır. Yalnız pazartesi uyar. || Komşu başlangıçları denedik.
+cevap: Pazartesi
+
+::ornek baslik="Nöbet ve hafta"
+soru: Ali her 3 günde bir nöbet tutuyor; ilk nöbeti pazartesi. Ali'nin nöbeti ilk kez yeniden pazartesiye kaç gün sonra denk gelir?
+1. Nöbet günleri: 0, 3, 6, 9, … gün sonra. || 3'ün katları.
+2. Pazartesi: 7'nin katı olan günler. || Haftalık döngü.
+3. İkisi birden: $\text{EKOK}(3,7)=21$ gün sonra. || 21. gün hem nöbet hem pazartesi.
+cevap: 21 gün sonra
+
+::ornek baslik="Ay atlayan tarih"
+soru: 15 Mart cuma ise aynı yılın 15 Mayıs'ı hangi gündür?
+1. 15 Mart'tan 15 Nisan'a 31 gün (mart 31 gün). || $31=4\cdot7+3$: 3 gün ileri, pazartesi.
+2. 15 Nisan'dan 15 Mayıs'a 30 gün (nisan 30 gün). || $30=4\cdot7+2$: 2 gün ileri.
+3. Pazartesi + 2 = çarşamba. || Toplam $61=8\cdot7+5$ ile de cuma + 5 = çarşamba.
+cevap: Çarşamba
+
+::tamamla baslik="100 gün sonra"
+soru: Bugün çarşamba. 100 gün sonra hangi gün olur?
+1. $100=7\cdot14+2$. || Tam haftalar günü değiştirmez.
+?2. Yalnız kalan 2 gün sayılır. || 14 hafta sonra yine çarşamba.
+?3. Çarşamba + 2 = cuma. || Kalanı haftanın günlerinde ilerlet.
+cevap: Cuma
+
+::sorgula s4b-ilac baslik="İlaç saatleri"
+durum: Bir ilaç 8 saatte bir alınıyor. İlk doz pazartesi 07.00'de alındı.
+soru: 10. doz hangi gün ve saatte alınır?
+A) Perşembe 15.00 || 10 doz için $10\cdot8=80$ saat saydın; 1. dozdan 10. doza 9 aralık var.
++B) Perşembe 07.00 || 9 aralık: $9\cdot8=72$ saat $=3$ gün.
+C) Çarşamba 23.00 || 8 aralık saydın; 9. doz bu saattir.
+neden: Dozlar arasında 8'er saat var; 1. dozdan 10. doza $10-1=9$ aralık geçer: 72 saat, tam 3 gün. Pazartesi 07.00 + 3 gün = perşembe 07.00.
+sinav: Sıra numarası verilen olaylarda aralık sayısı, olay sayısından 1 eksiktir (çit direği hatası).
+dusun: Günde 3 doz alan biri 30 dozluk kutuyu kaç günde bitirir?
+yanit: 10 günde; son doz 10. günün akşamıdır.
+
+::yanilgi m4b tip=oruntu-strateji
+yanlis: Bugün çarşamba ise 100 gün sonra, $100:7$'nin bölümü 14 olduğu için 14 gün ileri sayılır.
+neden: Tam haftalar günü değiştirmez; yalnız kalan önemlidir.
+dogru: Kalan 2: çarşamba + 2 = cuma.
+
+::soru c4b tip=oruntu-strateji zorluk=2
+Bugün perşembe. 45 gün sonra hangi gün olur?
+A) Cuma || Hesabı kontrol et: kalan 3.
+B) Cumartesi || Hesabı yeniden yap.
++C) Pazar || Doğru: $45=6\cdot7+3$; perşembe + 3.
+D) Pazartesi || Bir gün fazla saydın.
+E) Perşembe || 45, 7'nin katı değil.
+cozum: $45=7\cdot6+3$; 6 tam hafta sonra yine perşembe, 3 gün sonra pazar.
 
 ::ozet
 - Grafikte eğim değişim hızı, yatay parça durma, kesişim eşitliktir.

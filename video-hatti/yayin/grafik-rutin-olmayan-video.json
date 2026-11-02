@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "grafik-rutin-olmayan-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff",
+  "taskHash": "ba1951b097b4494b438d9e153c63002262d73fffb800b4db4ef0900d41ce790c",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\grafik-rutin-olmayan-video",
+  "artifacts": {
+    "asamalar\\youtube-65pM6ofAgi8-metin\\ef1465fad4b4906465e1e15215ea509378200f08db441ce923d145fc10c77568.json": "1532554bec093ddf55e5d5fdfa33e2ced5ae1532ac0fbfb63403e945a0b41f0a",
+    "asamalar\\youtube-65pM6ofAgi8-kareler\\aeeb014a9bb599c1f0a224e18d51c03b3d56a7b05311303985fdc54515af297b.json": "efe74a6dd0918b3d5872988b79dd8a676ff514a3062e9b2c1389d455f9644b80",
+    "kareler\\5320651a370fa31de9cd96462e53cae56b0afb78040d78fe34228eb98fc993ee.png": "b005a28ad45a9edd71e106c206fec4ee503464d308f6deb2c4e95f44ca24519b",
+    "kareler\\a0b535e90e0407812d40b490ce175045aafe53612a4efcb47c7233de4ecad719.png": "ec99d82126d5afbde36a7bca8ac6c816ad34eb56ae5c94ba61e9620691684161",
+    "asamalar\\matematik-denetimi\\ae3ec802fffb4a4e6797ea86113e272774c7a1ed747f60a2534703cfcadb1282.json": "30261facdf15d296b025da0811894911a89000b7d82e1ab9997d74e3e01e3459",
+    "surumler\\99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff.json": "b8dd4b783a6cdbec1af996a232f7603ce7e9f295ca6fec594ef266ea8d214802",
+    "surumler\\99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff.oneriler.md": "5582b8c38bdde6c86bdcf9ffd662a7f59a786217f63b3b3fba39faf33846195c"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-grafik-rutin-olmayan-test.py",
+        "sha256": "c1ced54665bbda244b036871703fadfab815b16f3f05fcbdead74be57375af34",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "grafik-rutin-olmayan-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 2.992
+    },
+    "videos": [
+      {
+        "providerId": "youtube:65pM6ofAgi8",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:65pM6ofAgi8",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 589,
+      "normalization": {
+        "captionControlEvents": 585,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 520,
+          "file": "kareler\\a0b535e90e0407812d40b490ce175045aafe53612a4efcb47c7233de4ecad719.png",
+          "sha256": "ec99d82126d5afbde36a7bca8ac6c816ad34eb56ae5c94ba61e9620691684161",
+          "pixelHash": "a0b535e90e0407812d40b490ce175045aafe53612a4efcb47c7233de4ecad719",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1300,
+          "file": "kareler\\5320651a370fa31de9cd96462e53cae56b0afb78040d78fe34228eb98fc993ee.png",
+          "sha256": "b005a28ad45a9edd71e106c206fec4ee503464d308f6deb2c4e95f44ca24519b",
+          "pixelHash": "5320651a370fa31de9cd96462e53cae56b0afb78040d78fe34228eb98fc993ee",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "dogrusal-grafikte-degisimler-orantili",
+      "contentHash": "3c529319f46f38f6eeb0f3fb32d7742d7217a8add4f28c477d26039c51c72a07",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "toplam-grafiginde-egim-gunluk-miktar",
+      "contentHash": "b56ee4afb4a1d69d74dd094e170c34ded4cb3df505bf8ecaaf3f586f7647786a",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
