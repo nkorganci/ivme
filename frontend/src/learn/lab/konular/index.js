@@ -11,6 +11,7 @@
 export const LAB_LOADERS = {
   'temel-kavramlar': () => Promise.all([import('./temel-kavramlar.js'), import('../cizim/temel-kavramlar.jsx')]),
   'sayi-basamaklari': () => Promise.all([import('./sayi-basamaklari.js'), import('../cizim/sayi-basamaklari.jsx')]),
+  'bolme-bolunebilme': () => Promise.all([import('./bolme-bolunebilme.js'), import('../cizim/bolme-bolunebilme.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -22,4 +23,6 @@ export const LAB_KESIF = {
   'sayi-basamaklari': ['sayi-basamaklari', 'cozumleme'], 'basamak-ters': ['sayi-basamaklari', 'cozumleme'],
   'basamak-ekle': ['sayi-basamaklari', 'yer-degisim'], 'basamak-rakam': ['sayi-basamaklari', 'rakam-kosul'],
   'basamak-sifir': ['sayi-basamaklari', 'basamak-sayisi'], 'basamak-sonrakam': ['sayi-basamaklari', 'basamak-sayisi'],
+  'bolme-bolunebilme': ['bolme-bolunebilme', 'bolme-algoritmasi'], 'bolme-basamak': ['bolme-bolunebilme', 'kural'],
+  'bolme-bilesik': ['bolme-bolunebilme', 'bilesik'], 'bolme-dongu': ['bolme-bolunebilme', 'kalan-islem'],
 };

@@ -1,0 +1,94 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "bolme-bolunebilme",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "bolme-algoritmasi",
+      "label": "Bölme algoritması",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0600",
+        "TYT-0548",
+        "TYT-0601",
+        "AYT_Sayisal-0030"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "kural",
+      "label": "Kuralla aday",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0597",
+        "AYT_Sayisal-0005"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "bilesik",
+      "label": "Bileşik kural",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0595",
+        "AYT_Sayisal-0027",
+        "AYT_Sayisal-0041"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "kalan-islem",
+      "label": "Kalan ve döngü",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0596"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/bolme-bolunebilme.js": "626a6e9c80fa67c4c992ef53a3bd79bf8e4a9d33579796ad8eb6a46ea3f058be",
+    "frontend/src/learn/lab/cizim/bolme-bolunebilme.jsx": "69b18682364c8c82a13da6a5f8a01789ac0df2e6f96fb866fd4ce99280b261f8",
+    "testler/lab-bolme-bolunebilme.test.mjs": "21c85d5cf93da94119a4465da4e5e0e399d4c60e569591af728c6b3254ecee29",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "7847df42eea507e1bab81bb1e16e735b76cc5c4651d621a8047df2b4c766e783",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "290cdd933a03d6dc7da5f71f92824c6293fab434c14d99371624f9473b0acdeb",
+    "testler/matematik-lab-yapi.test.mjs": "e3a702a0154014ace545514fe0a63f7032aac708b799e642e1db3079a2b74006",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-bolme-bolunebilme-rapor.json": "8f22e0d7771624c47ee58748647191b46c193273dbb3a78855dfaee14f537e8d",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-bilesik-deney.png": "54ebf248fa127e7838b2299925d4d97485e3f4ce3e9cba0c893a934261f7f59b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-bilesik-tamam.png": "9487abc700cd220081b3616d5369f87e8996f8e1c02673f0eea4dece5d8eac14",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-bolme-algoritmasi-deney.png": "7f526f5480e1b72f402cfaaab455b457a371ef59929bf698b3a0941bfdd94b87",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-bolme-algoritmasi-tamam.png": "466f70ccd308c6ae65df50ee405ca770993b2d33ed40ff81858d0e3c390e7294",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-kalan-islem-deney.png": "ff417c462088f11e7693bc5f5d41f36cda63ab1cd0806499b9dac9a73dc3c7d0",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-kalan-islem-tamam.png": "0a45eed567e101cd4afd352f40106742c49f5666a160abc23284af7d8f2e6e8e",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-kural-deney.png": "e637f7b35e2ec695185435821912c5f14cd42bea37c1b0a706b6836b19ac41ac",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-bolme-bolunebilme-kural-tamam.png": "5dbda7ba281c3929e1d083b564d9b187ca0299c89189309452b008bd73f7eb52",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-bilesik-deney.png": "dd4a56416286a3973af26a3ad43578a668b71c36d9f6e7d84b24160dd6c85764",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-bilesik-tamam.png": "1f0da1bc68a8410bd2267f2dc6dc71281a1a1148a8a0d04e2cb2a4eed0793259",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-bolme-algoritmasi-deney.png": "d21c3c7e9f06c2ec99c7a7b227ff27878745542fc44589bc8958c77ee8fbcb44",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-bolme-algoritmasi-tamam.png": "58e9602ced7cb3b8e93539417e7b37c2d5a79383fabda24e74545ee7773627a9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-kalan-islem-deney.png": "e060950fd89e4abe6c670110173cd2aa5e6abed78d8519ff1c24c40c86e43685",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-kalan-islem-tamam.png": "f1ee3a181a854ca18f1169e17d57c2b236a02c44bc2359230dd93efa248325a8",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-kural-deney.png": "0592e962f4a6d3cba602ad8fc63ccb88721182b2768cb008d7c988027f9b93cf",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-bolme-bolunebilme-kural-tamam.png": "6012e0e16b4fd5b84923ff765d78324bc9eb1f42e2f79d4473e97adfc290b20a"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

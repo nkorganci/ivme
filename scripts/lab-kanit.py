@@ -16,7 +16,7 @@ from pathlib import Path
 APP = Path(__file__).resolve().parents[1]
 UI = APP / 'veri/ui-denetim/konu-ogrenme'
 ENGINE = ['frontend/src/learn/lab/GoalWorkbench.jsx', 'frontend/src/learn/lab/TopicLab.jsx', 'frontend/src/learn/lab/topic-lab.css',
-          'frontend/src/learn/lab/sayi.js', 'frontend/src/learn/lab/konular/index.js', 'frontend/src/learn/engine/sharedSet.js',
+          'frontend/src/learn/lab/sayi.js', 'frontend/src/learn/engine/sharedSet.js',
           'testler/matematik-lab-yapi.test.mjs', 'testler/matematik-laboratuvari-ui.mjs']
 PILOT = ['frontend/src/learn/lab/ParityLab.jsx', 'frontend/src/learn/lab/parity.js', 'frontend/src/learn/lab/parity-lab.css',
          'testler/matematik-laboratuvari.test.mjs']
