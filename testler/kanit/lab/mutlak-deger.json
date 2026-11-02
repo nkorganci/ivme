@@ -1,0 +1,91 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "mutlak-deger",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "uzaklik",
+      "label": "Uzaklık",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0619",
+        "AYT_Sayisal-0034"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "tanim-acma",
+      "label": "İşarete göre açma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0628",
+        "AYT_Sayisal-0040"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "bant",
+      "label": "Mutlak değer bandı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0615",
+        "TYT-0622"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "minimum",
+      "label": "Uzaklıklar toplamı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0013"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/mutlak-deger.js": "e61eb2cc504535f753f8b8037f595b81a875fcceebe271747e7af1d7c812b25f",
+    "frontend/src/learn/lab/cizim/mutlak-deger.jsx": "a4df6a0703dbd553a3570b45da2636ece5d0d48563d7a55e1ebf3dc5670aa9b8",
+    "testler/lab-mutlak-deger.test.mjs": "9714642ca7a9a4f2fc19a2d95d89940c9d28bf69fc1ad78762070b0a4e737c13",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-mutlak-deger-rapor.json": "face9c5b6f3a122e48de00a77e6fa1eb2d0640b9d76da8a24a061cbe8fe1cf54",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-bant-deney.png": "fa9f97060340bcd7b4d3fdc1900d66ea1d3e205d7a8ac2c776fe9664687c5c45",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-bant-tamam.png": "5dda4eec2e47242b3b9b188adea2a9ac867efbf8c97ed5d0ab16f7f25a58417f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-minimum-deney.png": "1c3672f3892c958d8e6ab0998762155ea80c2bf6712d90018500465208414cc7",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-minimum-tamam.png": "6b5f4ed290d4a595981f838b55ed8757ed8a5adc376cb61f780e77ea7a28a219",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-tanim-acma-deney.png": "30f9287763941c0789f068d036372f35ac7eb6e899190eef6a146d83e106e704",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-tanim-acma-tamam.png": "03bcd43929a06901a605a7a5fd50e0eb272cbab761b9605d46b8775c08c7ea18",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-uzaklik-deney.png": "539c04e29496d7b4b3f8ea2c3e8b70b184c7723aba877f786864f8b9b31f54fc",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-mutlak-deger-uzaklik-tamam.png": "0be7f29820977097141152aafa912a6c8e3ad027f863dee3615985def6d9b0b7",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-bant-deney.png": "ca175546304ff609a266e1504f62d08d329fd66a94d8003fa3f0811f12a4c621",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-bant-tamam.png": "45b6edbe33a3eb796d61abf7a1c878c7606246bb883f635e05f9c784da31fd43",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-minimum-deney.png": "040793a452ee08176cac3f63907584468b9a46f403bacc83101ff6045b6231fe",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-minimum-tamam.png": "63ce6310945fc8da39a92e7581e52dc27b3a5b3728d77678c59fec8802ddbad0",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-tanim-acma-deney.png": "481d85104fe39458dc88dfb57992281538c1f83caa6e5fe998c30fe61ed05e6f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-tanim-acma-tamam.png": "13c431c622ea75903c86de38824421dbe544e2a576df053df9e6d716cf2ca5cc",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-uzaklik-deney.png": "1560603cdfb115fb8c1fbd706dc799af8950b75820969b93ca1d19742fce4afc",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-mutlak-deger-uzaklik-tamam.png": "bf1c36dc21e093b98d596e878142d115d8f8ae5a24e61aecb5f15fac8d5894e9"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

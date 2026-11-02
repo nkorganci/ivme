@@ -16,6 +16,7 @@ export const LAB_LOADERS = {
   'rasyonel-sayilar': () => Promise.all([import('./rasyonel-sayilar.js'), import('../cizim/rasyonel-sayilar.jsx')]),
   'birinci-derece-denklemler': () => Promise.all([import('./birinci-derece-denklemler.js'), import('../cizim/birinci-derece-denklemler.jsx')]),
   'esitsizlikler': () => Promise.all([import('./esitsizlikler.js'), import('../cizim/esitsizlikler.jsx')]),
+  'mutlak-deger': () => Promise.all([import('./mutlak-deger.js'), import('../cizim/mutlak-deger.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -39,4 +40,6 @@ export const LAB_KESIF = {
   'denklem-jeton': ['birinci-derece-denklemler', 'sistem'],
   'esitsizlikler': ['esitsizlikler', 'aralik'], 'esitsizlik-aralik': ['esitsizlikler', 'aralik'], 'esitsizlik-ayna': ['esitsizlikler', 'yon'],
   'esitsizlik-ifade': ['esitsizlikler', 'aralik-ifade'], 'esitsizlik-bolge': ['esitsizlikler', 'bolge'],
+  'mutlak-deger': ['mutlak-deger', 'uzaklik'], 'mutlak-parcali': ['mutlak-deger', 'tanim-acma'], 'mutlak-denklem': ['mutlak-deger', 'uzaklik'],
+  'mutlak-bant': ['mutlak-deger', 'bant'], 'mutlak-ortanca': ['mutlak-deger', 'minimum'],
 };
