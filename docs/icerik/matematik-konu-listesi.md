@@ -3,10 +3,13 @@
 Bu belge Konuyu Öğrenelim matematiğinin **tek takip listesidir**. Claude, Codex/ChatGPT ve
 diğer agent'lar matematik içerik işine başlamadan önce bu listeyi okur. Kullanıcı
 **mevcut ve yeni her konuya, konuya uygun laboratuvar eklenmesini** istedi.
-Önce aşağıdaki lab kapsamına bak; ilk TYT lab eksiğinden konu sırasıyla baştan ilerle.
-Lablar tamamlandıktan sonra ilk 🟡/⬜ içerik eksiğine geç. Eski ✅ içerik labı eksikse
-yalnız eksik lab/hedef/aktarım kapsamı için yeniden açılır. Girdisi değişmemiş
-bitmiş anlatımı, kaynağı veya soruları yeniden üretme; testleri sebepsiz tekrarlama.
+
+**Çalışma sırası (kullanıcı kararı):** önce TYT matematiğinin **konu içerikleri** bitirilir:
+aşağıdaki otomatik listede ilk 🟡/⬜ TYT satırından (`--liste --kontrol` “sıradaki konu”)
+başlayıp sırayla ilerle. **Lablar en son yapılır:** bütün TYT içerik satırları ✅ olunca
+lab tablosundaki ilk `LAB YOK` TYT satırına dön. İçerik derinleştirilirken lab yazılmaz;
+var olan lab bozulmamalı (ilgili `testler/lab-<konu>.test.mjs` geçmeli). Girdisi
+değişmemiş bitmiş anlatımı, kaynağı veya soruları yeniden üretme; testleri sebepsiz tekrarlama.
 
 **Öncelikli liste: TYT ve ortak konular.** Sınav kapsamı `TYT + AYT` olan konu tek
 derstir; temel anlatım iki sınava hitap eder. AYT aşamasında aynı konuyu yeniden baştan
@@ -60,10 +63,10 @@ varlığı lab kabulü değildir. İçerik + lab teknik kabulü, öğretmen onay
 
 ## Bir konuyu bitirme sırası
 
-1. Önce lab tablosundaki ilk eksik TYT konusunu seç. Mevcut içerik durumunu
-   `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile denetle; komutun
-   “sıradaki konu” çıktısı yalnız içerik ölçümüdür, lab ekleme sırasının yerine geçmez.
-   İçerik zaten ✅ ise doğrudan 6. adıma geç.
+1. TYT içerikleri bitene kadar `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol`
+   çıktısındaki “sıradaki konu” ile başla ve 2–5. ile 8. adımları uygula (lab adımı 6–7
+   TYT içerikleri bitince yapılır). İçerikler bitince lab tablosundaki ilk eksik TYT
+   konusunu seç; içerik zaten ✅ olduğu için doğrudan 6. adıma geç.
 2. `pdfAnlatim` dosyalarını oku (metin + gerekli sayfa görselleri); konunun alt başlıklarını,
    tanımlarını ve çözümlü örnek türlerini çıkar. Okunanı `pdfOkundu`'ya yaz.
 3. `videolar` içinden konu anlatım videolarının altyazısını al, püf noktası adaylarını
@@ -94,7 +97,7 @@ Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `hareket-problemleri` labı; sonra `grafik-rutin-olmayan` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+**Sıradaki lab (TYT içerikleri bitince):** `hareket-problemleri` labı; sonra `grafik-rutin-olmayan` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
 yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
 manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
 konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.

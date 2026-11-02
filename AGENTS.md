@@ -37,10 +37,11 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
 
 - **Matematik işine başlamadan önce** [matematik konu listesini](docs/icerik/matematik-konu-listesi.md)
   oku (`node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` sıradaki konuyu verir).
-  Önce aynı belgedeki **laboratuvar kapsamı ve devam sırasına** bak: kullanıcı mevcut ve
-  yeni bütün konulara lab istedi. TYT'de ilk lab eksiğinden, konu sırasıyla baştan ilerle;
-  lab da tamamsa ilk içerik eksiğine geç. Eski otomatik ✅ yalnız dört içerik ölçütüdür,
-  lab kabulünü ölçmez. Lab eksikse ✅ konuyu yalnız lab/aktarım kapsamı için yeniden aç;
+  **Sıra (kullanıcı kararı): önce TYT konu içerikleri, lablar en son.** İlk 🟡/⬜ TYT içerik
+  satırından sırayla ilerle; bütün TYT içerikleri ✅ olunca aynı belgedeki **laboratuvar
+  kapsamı ve devam sırasına** dön (kullanıcı mevcut ve yeni bütün konulara lab istedi).
+  Eski otomatik ✅ yalnız dört içerik ölçütüdür, lab kabulünü ölçmez. Lab eksikse ✅ konuyu
+  o aşamada yalnız lab/aktarım kapsamı için yeniden aç;
   bitmiş anlatım, kaynak ve soruları gerekçesiz baştan üretme. İçerik durumu ölçütlerden
   üretilir; değiştiyse listeyi aynı commit'te `--liste` ile yenile. Etkin aşama TYT; AYT bekler.
 - **TYT–AYT ortak konular tek derstir.** Sınav kapsamını takip listesinde ve uygulamada
