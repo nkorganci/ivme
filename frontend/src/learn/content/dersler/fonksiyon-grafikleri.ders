@@ -46,8 +46,10 @@ isaret-aralik 1 1-3
 dogru-testi 1 1-2
 dogrusal-model 2 1-3
 
-@oturum Grafik okuma ve işaret | s1 s2
-@oturum Doğru testleri ve doğrusal modeller | s3 s4
+@oturum Grafik okuma ve karşılaştırma | s1 s1b
+@oturum İşaret ve yatay doğru | s2 s2b
+@oturum Doğru testleri ve çarpım işareti | s3 s3b
+@oturum Doğrusal modeller | s4 s4b
 
 @ontest
 ::soru o1 tip=grafik-okuma zorluk=1
@@ -143,6 +145,67 @@ E) 5 || Fazla.
 kontrol: 3
 cozum: $y = -1$ doğrusu birinci parçayı ($x = -3{,}5$), üçüncü parçayı ($x = 2{,}5$) ve dördüncü parçayı ($x = 4$) keser: 3 kök.
 
+@bolum s1b 12 | Birden çok grafiği karşılaştırmak
+::kesfet fg-sira
+
+::fikir
+Aynı eksende birden çok grafik varsa bir $x$ noktasında **dikey doğru çiz**: o doğru üzerindeki noktaların yüksekliği fonksiyon değerlerinin sırasını verir. **Kesişim noktasında** iki değer eşittir; kesişimin iki yanında sıralama **yer değiştirir**. "$(f-g)(1)\cdot(f-h)(1)<0$" gibi bilgiler, hangi grafiğin hangi fonksiyon olduğunu bulmak için kullanılır.
+
+::duzey
+L1: $x=1$'de kırmızı grafik en üstte, siyah ortada, mavi en altta ise o noktada kırmızının değeri en büyüktür. Dikey doğrunun grafiklerle kesiştiği noktaları yukarıdan aşağı oku.
+L2: $(f-g)(1)$ ile $(f-h)(1)$'in çarpımı negatifse iki fark ters işaretlidir: $f(1)$, $g(1)$ ile $h(1)$'in **arasındadır**. Çarpım pozitifse $g(2)$, diğer ikisinin ya üstünde ya altındadır: **en büyük ya da en küçük**.
+L3: Doğrusal fonksiyonlarda kesişim noktasını hesaplayabilirsin: iki kuralı eşitle. Kesişimin solunda eğimi küçük olan doğru üstte, sağında eğimi büyük olan doğru üsttedir. $f(a)=g(b)$ gibi eşitliklerde bir doğrunun değerini öbürünün grafiğinde arayarak $a$ ile $b$'yi karşılaştır.
+
+::cikmis TYT-0790 tip=grafik-okuma
+
+::ornek baslik="Benzer: kurallarla aynı karşılaştırma"
+soru: $[0, 1]$'de $f(x)=0{,}4+0{,}6x$, $g(x)=x$, $h(x)=0{,}25+0{,}5x$ doğrusal fonksiyonları ve $f(a)=g(b)=h(b)$ veriliyor. $a$, $b$ ve $f(a)$, $g(a)$, $h(a)$ sıralaması nedir?
+1. $g(b)=h(b)$: $b=0{,}25+0{,}5b$, $b=0{,}5$; ortak değer $0{,}5$. || g ile h'nin kesişimi.
+2. $f(a)=0{,}5$: $0{,}4+0{,}6a=0{,}5$, $a=\frac{1}{6}$. || $a<b$.
+3. $a=\frac16$'da $g=\frac16\approx0{,}17$, $h\approx0{,}33$, $f=0{,}5$: $g(a)<h(a)<f(a)$. || Kesişimin solunda h, g'nin üstünde.
+cevap: $a=\frac16$, $b=\frac12$; $g(a)<h(a)<f(a)$
+
+::cikmis TYT-0789 tip=grafik-okuma
+
+::ornek baslik="Benzer: tablodan fonksiyonları eşle"
+soru: Kırmızı, siyah ve mavi üç grafiğin değerleri: $x=1$'de 5, 3, 1; $x=2$'de 4, 2, 2; $x=3$'te 1, 4, 3. $(f-g)(1)\cdot(f-h)(1)<0$ ve $(g-h)(2)\cdot(g-f)(2)>0$ ise $f(3)$, $g(3)$, $h(3)$ nasıl sıralanır?
+1. $x=1$'de f ortada olmalı: siyah (3). || Fark çarpımı negatif.
+2. $x=2$'de g en büyük ya da en küçük: siyah ile mavi 2'de eşit, kırmızı 4: g kırmızı, h mavi. || Fark çarpımı pozitif.
+3. $x=3$: $f=4$, $g=1$, $h=3$: $g(3)<h(3)<f(3)$. || Değerleri yerleştir.
+cevap: $g(3)<h(3)<f(3)$
+
+::ornek baslik="Kesişimin iki yanı"
+soru: $f(x)=2x+1$ ve $g(x)=x+4$ doğrularının kesişim noktası nedir? $x=1$ ve $x=5$'te hangisi büyüktür?
+1. $2x+1=x+4$, $x=3$; nokta $(3, 7)$. || Kuralları eşitle.
+2. $x=1$: $f=3$, $g=5$; g büyük. || Kesişimin solunda eğimi küçük olan üstte.
+3. $x=5$: $f=11$, $g=9$; f büyük. || Kesişimin sağında eğimi büyük olan üstte.
+cevap: $(3, 7)$; $x=1$'de g, $x=5$'te f
+
+::sorgula s1b-hiz baslik="İki koşucunun yol grafikleri"
+durum: İki koşucunun yol–zaman grafikleri 4. dakikada kesişiyor. 4. dakikadan önce Ali'nin grafiği Can'ınkinin üstünde, sonra altında.
+soru: Hangisi doğrudur?
+A) Ali hep daha hızlıdır. || Ali önde başlamış; sonra Can öne geçtiğine göre Can'ın eğimi (hızı) daha büyük.
++B) 4. dakikada aynı yerdeler; sonra Can önde. || Kesişim = eşit konum; sonra sıralama değişir.
+C) 4. dakikada ikisi de durmuştur. || Kesişim durmak demek değildir, eşit değer demektir.
+neden: Yol–zaman grafiklerinin kesişimi iki koşucunun aynı anda aynı yerde olduğunu gösterir. Kesişimden sonra Can'ın grafiği üstte: Can önde. Can daha hızlıdır.
+sinav: Kesişim noktasında değerler eşittir; kesişimin iki yanında sıralama ters döner.
+dusun: Grafikler hiç kesişmeseydi ne söylenebilirdi?
+yanit: Biri baştan sona hep önde olurdu.
+
+::yanilgi m1b tip=grafik-okuma
+yanlis: Bir noktada üstte olan grafik her yerde üsttedir.
+neden: Grafikler kesişebilir; kesişimden sonra sıralama değişir.
+dogru: Sıralama, aynı x için dikey doğruyla ve kesişim noktalarına göre ayrı ayrı okunur.
+
+::soru c1b tip=grafik-okuma zorluk=2
+$f(x)=3x-2$, $g(x)=x+2$ ve $h(x)=4$ fonksiyonları için $x=1$'deki değerlerin sıralaması hangisidir?
++A) $f(1)<g(1)<h(1)$ || Doğru: $1<3<4$.
+B) $g(1)<f(1)<h(1)$ || Hesabı kontrol et: $f(1)=1$.
+C) $h(1)<g(1)<f(1)$ || Hesabı yeniden yap.
+D) $f(1)<h(1)<g(1)$ || $g(1)=3<4$.
+E) $g(1)<h(1)<f(1)$ || $f(1)=1$ en küçük.
+cozum: $f(1)=1$, $g(1)=3$, $h(1)=4$: $f(1)<g(1)<h(1)$.
+
 @bolum s2 8 | Fonksiyonun işareti
 ::fikir
 Grafik **x ekseninin üstündeyse** $f(x) > 0$, **altındaysa** $f(x) < 0$; x eksenini kestiği noktalar **köklerdir** ($f(x) = 0$).
@@ -187,6 +250,66 @@ D) 5 || Köklerden birini dahil ettin; $f(-3) = f(2) = 0$.
 E) 6 || İki kökü de dahil ettin; $f(x) > 0$ kökleri içermez.
 kontrol: 4
 cozum: $f(x) > 0$ aralığı $(-3, 2)$; tam sayılar $-2, -1, 0, 1$: 4 tane.
+
+@bolum s2b 10 | Yatay doğru: aynı değeri alan noktalar
+::kesfet fg-yatay
+
+::fikir
+$f(a)=f(b)=f(c)$ bilgisi, **$y=k$ yatay doğrusunun** grafiği $a$, $b$, $c$ noktalarında kestiği anlamına gelir. Önce bu noktaların **grafikteki yerini** (artan parça, azalan parça) bul, sonra soruda geçen ikinci fonksiyonun bu noktalardaki değerlerini **kendi grafiğinden** oku. Kurallar verilmişse denklemi çöz.
+
+::duzey
+L1: $f$ önce artıp sonra azalıp yeniden artıyorsa, iki tepe arasındaki bir $k$ değeri için $f(x)=k$ üç çözüm verir: biri ilk artan kısımda, biri azalan kısımda, biri son artan kısımda.
+L2: İkinci fonksiyonun bu üç noktadaki sırası onun kendi davranışına bağlıdır: g bir noktaya kadar azalıp sonra artıyorsa, en küçük değer en dibe yakın noktadadır. Kesikli çizgiler genellikle bu karşılaştırmayı yapmak için çizilir.
+L3: Kural verilirse $f(x)=k$ denklemini çöz. Üçüncü dereceden bir denklemde bir kök tahmin edilirse ($x=2$ gibi) çarpanlara ayırarak diğer kökler bulunur: $x^3-6x^2+9x-2=(x-2)(x^2-4x+1)$.
+
+::cikmis TYT-0787 tip=grafik-okuma
+
+::ornek baslik="Benzer: kurallarla üç nokta"
+soru: $f(x)=x^3-6x^2+9x$ ve $g(x)=(x-2)^2$ olmak üzere $0<a<b<c<4$ ve $f(a)=f(b)=f(c)=2$ ise $g(a)$, $g(b)$, $g(c)$ nasıl sıralanır?
+1. $x^3-6x^2+9x-2=0$; $x=2$ kök: $(x-2)(x^2-4x+1)=0$. || Bir kökü dene.
+2. Kökler $2-\sqrt3$, $2$, $2+\sqrt3$: $a=2-\sqrt3$, $b=2$, $c=2+\sqrt3$. || Sırala.
+3. $g(a)=3$, $g(b)=0$, $g(c)=3$: $g(b)<g(a)=g(c)$. || g, 2'ye uzaklığın karesi.
+cevap: $g(b)<g(a)=g(c)$
+
+::ornek baslik="Çözüm sayısı k'ye göre"
+soru: $f(x)=x^3-6x^2+9x$ fonksiyonunun $[0, 4]$ aralığında yerel en büyük değeri $f(1)=4$, yerel en küçük değeri $f(3)=0$'dır ve $f(4)=4$'tür. $f(x)=k$ denklemi $k=0$, $k=2$, $k=4$ için kaç çözüm verir?
+1. $k=0$: $x=0$ ve $x=3$; 2 çözüm. || Dipte değme.
+2. $k=2$: üç parçada birer: 3 çözüm. || 0 ile 4 arasında.
+3. $k=4$: $x=1$ (tepe) ve $x=4$ (uç); 2 çözüm. || Tepede değme.
+cevap: 2, 3, 2
+
+::ornek baslik="Grafikten eşit değerli noktalar"
+soru: Bir f fonksiyonunun grafiği $(0, 1)$'den $(2, 5)$'e doğrusal çıkıp $(5, -1)$'e doğrusal iniyor. $f(a)=f(b)=3$ ve $a<b$ ise $a+b$ kaçtır?
+1. Çıkan parça birimde 2 artar: $1+2a=3$, $a=1$. || İlk parçanın kuralı.
+2. İnen parça birimde 2 azalır: $5-2(b-2)=3$, $b=3$. || İkinci parçanın kuralı.
+3. $a+b=4$. || Kontrol: $f(1)=f(3)=3$.
+cevap: 4
+
+::sorgula s2b-sicaklik baslik="Aynı sıcaklık üç kez"
+durum: Bir günde sıcaklık önce yükseliyor, öğleden sonra düşüyor, gece yeniden biraz yükseliyor. Sıcaklık gün içinde üç farklı saatte tam 15 °C oluyor.
+soru: Bu üç saat için hangisi kesindir?
+A) İkisi aynı saatte || Aynı değeri alan noktalar farklı x'lerdir.
++B) Biri yükselişte, biri düşüşte, biri gece yükselişinde || $y=15$ doğrusu üç parçayı birer kez keser.
+C) Üçü de öğleden sonra || İlk kesişim sabah yükselişindedir.
+neden: Sıcaklık–zaman grafiğinde $y=15$ yatay doğrusu her monoton parçayı en çok bir kez keser. Üç kesişim varsa üç parçanın her birinde birer tane vardır.
+sinav: $f(a)=f(b)=f(c)$ bilgisinde noktaları monoton parçalara dağıt; her parçada bir nokta bulunur.
+dusun: 15 °C yerine günün en yüksek sıcaklığı alınsaydı kaç kesişim olurdu?
+yanit: Genellikle tek: tepe noktasında değer.
+
+::yanilgi m2b tip=grafik-okuma
+yanlis: $f(a)=f(b)$ ise $a=b$'dir.
+neden: Bu yalnız bire bir fonksiyonlarda doğrudur; çoğu grafik aynı değeri birden çok noktada alır.
+dogru: $f(a)=f(b)$, $y=f(a)$ yatay doğrusunun grafiği iki noktada kestiğini gösterir.
+
+::soru c2b tip=grafik-okuma zorluk=2
+$f(x)=x^2-6x+10$ ve $f(a)=f(b)=5$, $a<b$ ise $b-a$ kaçtır?
+A) 2 || Hesabı kontrol et: kökler 1 ve 5.
+B) 3 || Hesabı yeniden yap.
++C) 4 || Doğru: $x^2-6x+5=0$, $x=1$ ya da $x=5$.
+D) 5 || Bu, $b$'nin değeridir.
+E) 6 || Kökler toplamını aldın.
+kontrol: 5-1
+cozum: $x^2-6x+10=5$, $x^2-6x+5=0$, $(x-1)(x-5)=0$: $a=1$, $b=5$; fark 4.
 
 @bolum s3 7 | Dikey ve yatay doğru testleri
 ::fikir
@@ -235,6 +358,71 @@ C) $f(x) = 5$ || Sabit fonksiyon bire bir değildir.
 +D) $f(x) = 3x - 2$ || Doğru: eğimi sıfırdan farklı doğrusal fonksiyon her yatay doğruyu bir kez keser.
 E) $f(x) = x^4$ || $y = 1$ doğrusu iki noktada keser.
 cozum: Yatay doğru testi: yalnız $3x - 2$'nin grafiğini her yatay doğru tam bir noktada keser.
+
+@bolum s3b 10 | Grafikten çarpım ve bölüm işareti
+::kesfet fg-isaret
+
+::fikir
+$f(x)\cdot g(x)$'in işareti, **iki grafiğin aynı x'teki işaretlerinin çarpımıdır**: ikisi de eksenin aynı tarafındaysa pozitif, farklı taraflardaysa negatiftir. **Köklerle** sayı doğrusunu aralıklara ayır, her aralıkta iki işareti yaz ve çarp. Bölümde paydanın kökleri **tanım dışıdır**.
+
+::duzey
+L1: $x=2$'de f grafiği x ekseninin üstünde (+), g altında (−) ise $f(2)\cdot g(2)<0$. Değerin büyüklüğü değil, yalnız eksene göre konumu önemlidir.
+L2: f'nin kökleri $-1$ ve 3, g'nin kökü 1 ise sayı doğrusu dört aralığa ayrılır. Her aralıkta işaretleri tablo yap; çarpımın işareti satırların çarpımıdır.
+L3: $\frac{f(x)}{g(x)}\ge0$ eşitsizliğinde f'nin kökleri dahil, g'nin kökleri hariçtir (payda sıfır olamaz). "Kaç tam sayı" sorularında aralık uçlarını bu kurala göre dahil et ya da çıkar.
+
+::ornek baslik="İşaret tablosundan çarpım"
+soru: $f(x)=x-3$ ve $g(x)=x+1$ ise $f(x)\cdot g(x)<0$ eşitsizliğini sağlayan tam sayılar hangileridir?
+1. Kökler $x=3$ ve $x=-1$. || Her doğru bir kez sıfırlanır.
+2. $-1<x<3$ aralığında $f<0$, $g>0$: çarpım negatif. || Ortadaki aralık.
+3. Tam sayılar 0, 1, 2. || Uçlar dahil değil.
+cevap: 0, 1, 2
+
+::ornek baslik="Bölümde payda hariç"
+soru: $\frac{x+2}{x-4}\le0$ eşitsizliğini sağlayan kaç tam sayı vardır?
+1. Pay kökü $-2$ (dahil), payda kökü 4 (hariç). || Payda sıfır olamaz.
+2. $-2\le x<4$ aralığında pay ≥ 0, payda < 0: bölüm ≤ 0. || İşaret tablosu.
+3. Tam sayılar $-2, -1, 0, 1, 2, 3$: 6 tane. || 4 hariç.
+cevap: 6
+
+::tamamla baslik="Grafikten işaret"
+soru: f'nin grafiği x eksenini $-2$ ve 2'de kesiyor ve aralarında eksenin altında; g doğrusu x eksenini 0'da kesiyor ve artan. $f(x)\cdot g(x)>0$ olan aralıklar nelerdir?
+1. f: $(-\infty,-2)$'de +, $(-2, 2)$'de −, $(2, \infty)$'da +. g: 0'ın solunda −, sağında +. || İşaretleri yaz.
+?2. Aralıklar: $(-\infty,-2)$: + · − = −; $(-2, 0)$: − · − = +; $(0, 2)$: − · + = −; $(2,\infty)$: + · + = +. || Çarp.
+?3. Pozitif olanlar $(-2, 0)$ ve $(2, \infty)$. || Kökler hariç.
+cevap: $(-2, 0)\cup(2, \infty)$
+
+::ornek baslik="Çift kök işaret değiştirmez"
+soru: $f(x)=(x-1)^2(x-4)$ fonksiyonu hangi aralıkta negatiftir?
+1. Kökler 1 (çift katlı) ve 4. || $(x-1)^2\ge0$.
+2. $(x-1)^2$ yalnız $x=1$'de 0, başka yerde pozitif: işaret $(x-4)$'e bağlı. || Çift kök işaret değiştirmez.
+3. $x<4$ ve $x\neq1$ iken negatif. || $x=1$'de değer 0.
+cevap: $(-\infty, 1)\cup(1, 4)$
+
+::sorgula s3b-isletme baslik="Gelir ve gider grafikleri"
+durum: Bir atölyenin aylık kârı $K(x)$ ve üretim sayısı farkı $D(x)$ grafiklerle veriliyor. Bir ayda $K$ negatif, $D$ pozitif.
+soru: O ay $K\cdot D$ çarpımının işareti nedir?
+A) Pozitif || İşaretleri farklı iki sayının çarpımı negatiftir.
++B) Negatif || $(-)\cdot(+)=(-)$.
+C) Sıfır || Ancak biri sıfırsa çarpım sıfırdır.
+neden: Çarpımın işareti büyüklüklere değil, işaretlere bağlıdır: negatif çarpı pozitif negatiftir.
+sinav: Grafiklerden çarpım işareti sorulunca her grafiğin o noktada eksenin hangi tarafında olduğunu oku ve çarp.
+dusun: Hangi durumda $K\cdot D>0$ olurdu?
+yanit: İkisi de pozitif ya da ikisi de negatif olunca.
+
+::yanilgi m3b tip=isaret-aralik
+yanlis: $\frac{x+2}{x-4}\le0$ eşitsizliğinde $x=4$ de çözümdür.
+neden: $x=4$'te payda sıfır olur; ifade tanımsızdır.
+dogru: Paydanın kökü her zaman çözüm kümesinden çıkarılır.
+
+::soru c3b tip=isaret-aralik zorluk=2
+$(x+3)(x-2)<0$ eşitsizliğini sağlayan tam sayıların toplamı kaçtır?
+A) −3 || Uçları dahil ettin.
++B) −2 || Doğru: $-2+(-1)+0+1=-2$.
+C) −1 || Hesabı kontrol et.
+D) 0 || Hesabı yeniden yap.
+E) 2 || Aralığı yanlış yöne aldın.
+kontrol: -2-1+0+1
+cozum: Kökler $-3$ ve 2; çarpım aralarında negatif: $-3<x<2$. Tam sayılar $-2, -1, 0, 1$; toplam $-2$.
 
 @bolum s4 10 | Doğrusal fonksiyon ve modelleme
 ::fikir
@@ -298,6 +486,69 @@ D) 6 || Hesabı yeniden yap.
 E) 12 || Açılış ücretleri farkını kilometre ücretiyle karıştırdın.
 kontrol: (30-18)/(15-12)
 cozum: $12x + 30 = 15x + 18 \Rightarrow 3x = 12 \Rightarrow x = 4$ km; ikisi de 78 TL alır.
+
+@bolum s4b 10 | Doğrusal modellerde başabaş ve karşılaştırma
+::fikir
+İki doğrusal model ($f(x)=m_1x+n_1$, $g(x)=m_2x+n_2$) **kesiştikleri noktada eşittir**: başabaş noktası $m_1x+n_1=m_2x+n_2$ denklemiyle bulunur. Kesişimden sonra **eğimi büyük olan** model öndedir. İki ölçümden kural kurulur: eğim $=\frac{\Delta y}{\Delta x}$, başlangıç değeri $f(0)$.
+
+::duzey
+L1: A şirketi 200 lira sabit + km başına 3 lira, B şirketi 50 lira sabit + km başına 5 lira alıyorsa $200+3x=50+5x$, $x=75$ km'de ücretler eşittir.
+L2: 75 km'den kısa yolda sabiti küçük olan B, uzun yolda km ücreti küçük olan A ucuzdur. Grafikte A daha yüksekten başlar ama daha yavaş artar.
+L3: Azalan modellerde (boşalan depo, eriyen mum) sıfır noktası "bitiş anı"dır: $f(x)=0$. İki ölçüm $(3, 840)$ ve $(7, 520)$ ise eğim $-80$, başlangıç $840+3\cdot80=1080$; depo $1080:80=13{,}5$ saatte boşalır.
+
+::ornek baslik="İki tarifenin başabaşı"
+soru: A şirketi 200 lira sabit ve km başına 3 lira, B şirketi 50 lira sabit ve km başına 5 lira alıyor. Kaç km'de ücretler eşittir? 100 km'lik yol için hangisi ucuzdur?
+1. $200+3x=50+5x$, $x=75$ km. || Kuralları eşitle.
+2. 100 km: A $500$, B $550$ lira. || Kurallara yaz.
+3. 75 km'den sonra eğimi küçük olan A ucuzdur. || Kesişimin sağı.
+cevap: 75 km; A
+
+::ornek baslik="İki ölçümden boşalma zamanı"
+soru: Bir depodaki su sabit hızla azalıyor. 3. saatte 840 litre, 7. saatte 520 litre su var. Depo başlangıçta kaç litreydi ve kaçıncı saatte boşalır?
+1. Eğim $\frac{520-840}{7-3}=-80$ L/sa. || Değişim ÷ süre.
+2. Başlangıç $840+3\cdot80=1080$ L. || 3 saat geri git.
+3. $1080-80t=0$, $t=13{,}5$ saat. || Sıfır noktası.
+cevap: 1080 L; 13,5. saatte
+
+::tamamla baslik="Yükseldikçe soğuyan hava"
+soru: Deniz seviyesinde 24 °C olan hava her 100 m yükselişte 0,6 °C soğuyor. 1500 m yükseklikte sıcaklık kaç °C'dir? Kaç metrede 0 °C olur?
+1. Kural: $T(h)=24-0{,}006h$ (h metre). || Eğim 100 m'de −0,6.
+?2. $T(1500)=24-9=15$ °C. || Kurala yaz.
+?3. $24-0{,}006h=0$, $h=4000$ m. || Sıfır noktası.
+cevap: 15 °C; 4000 m
+
+::ornek baslik="Üç modelden en ucuzu"
+soru: Bir spor salonu üç üyelik sunuyor: A aylık 300 lira (sınırsız), B 100 lira + giriş başına 20 lira, C giriş başına 40 lira. Ayda kaç girişte A en ucuz olur?
+1. B ile A eşit: $100+20x=300$, $x=10$; C ile A eşit: $40x=300$, $x=7{,}5$. || Başabaş noktaları.
+2. B ile C eşit: $100+20x=40x$, $x=5$. || İkinci başabaş.
+3. 10 girişten fazlasında A en ucuz (B ve C daha pahalı). || 10'da A ile B eşit.
+cevap: 11 ve daha fazla girişte
+
+::sorgula s4b-telefon baslik="Hangi hat daha ucuz?"
+durum: Hat 1: aylık 120 lira, 10 GB dahil; Hat 2: aylık 60 lira + GB başına 8 lira. Ayda yaklaşık 9 GB kullanıyorsun.
+soru: Hangi hat daha ucuz?
++A) Hat 1 || Hat 2: $60+72=132$ lira; Hat 1: 120 lira.
+B) Hat 2 || 9 GB için $60+8\cdot9=132$ lira; Hat 1'den pahalı.
+C) Eşit || Eşitlik $60+8x=120$, $x=7{,}5$ GB'ta.
+neden: Başabaş $60+8x=120$, $x=7{,}5$ GB. Kullanım 7,5 GB'tan fazla olduğu için sabit ücretli Hat 1 ucuz.
+sinav: İki doğrusal tarifeyi karşılaştırırken başabaş noktasını bul ve kullanımın hangi tarafta kaldığına bak.
+dusun: Ayda 5 GB kullansaydın?
+yanit: Hat 2: $60+40=100$ lira; Hat 2 ucuz.
+
+::yanilgi m4b tip=dogrusal-model
+yanlis: Sabit ücreti küçük olan tarife her zaman daha ucuzdur.
+neden: Birim ücreti büyükse kullanım arttıkça daha hızlı pahalanır; başabaştan sonra pahalı olur.
+dogru: Başabaş noktasından önce sabiti küçük, sonra birim ücreti küçük olan ucuzdur.
+
+::soru c4b tip=dogrusal-model zorluk=2
+Bir taksi firması açılışta 30 lira ve km başına 12 lira, diğeri açılışta 60 lira ve km başına 9 lira alıyor. Kaç km'den uzun yolculuklarda ikinci firma daha ucuzdur?
+A) 5 || Hesabı kontrol et: fark 30, eğim farkı 3.
+B) 8 || Hesabı yeniden yap.
++C) 10 || Doğru: $30+12x=60+9x$, $x=10$.
+D) 12 || Hesabı kontrol et.
+E) 30 || Sabit farkını cevap aldın.
+kontrol: 30/3
+cozum: Başabaş $30+12x=60+9x$, $x=10$ km. Daha uzun yolda km ücreti küçük olan ikinci firma ucuz.
 
 ::ozet
 - $(a, b)$ grafikte ise $f(a) = b$; tanım kümesi x'e, görüntü kümesi y'ye izdüşüm.

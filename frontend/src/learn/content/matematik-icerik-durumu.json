@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 25,
-  "nextTopicId": "fonksiyon-grafikleri",
+  "completed": 26,
+  "nextTopicId": "bileske-ters",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -311,13 +311,8 @@
         "AYT"
       ],
       "grade": 10,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "bileske-ters",

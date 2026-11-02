@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "137763c855a6eb838a1afe7d604c1bc84bec301ed4346320dbc2704359eb18e4",
+  "inputsHash": "a318b2884c3101f816f819d77d013a24d11c654d40ec33e6df1b2c35d590d9ce",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1194,6 +1194,53 @@
       },
       "evidenceHash": "5581b1cce2083c4b75a68af7a2ef8e7c623e8a22cc4b95179e7985869847d0f8",
       "contentHash": "aab8c53e60c8c302ff942c2e0e7f6a9be5f92c8ed6fc5a4b0f1f7e312e6edb15",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "fonksiyon-grafikleri-video:tek-cift-kuvvetlere-bak",
+      "conceptId": "fonksiyon-grafikleri",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "Tek mi çift mi: kuvvetlere bak",
+      "rule": "Polinom fonksiyonda bütün terimlerin x kuvvetleri çiftse (sabit terim dahil) fonksiyon çifttir ve grafiği y eksenine göre simetriktir; bütün kuvvetler tekse fonksiyon tektir ve grafiği orijine göre simetriktir. Karışıksa ne tek ne çifttir.",
+      "condition": "Önce çarpım ve toplamları açıp sadeleştir; tek–çift kararı sadeleşmiş hâle göre verilir. Sabit terim x⁰, yani çift kuvvettir.",
+      "example": "f(x) = 2x² + 1 ve g(x) = x için f·g = 2x³ + x tek (orijine simetrik), f + g = 2x² + x + 1 ne tek ne çift, f − 1 = 2x² çifttir.",
+      "counterexample": "“Tek fonksiyon çarpı çift fonksiyon” her zaman tek olsa da, tek terimli bir fonksiyon ile karışık bir fonksiyonun çarpımı (x · (x² + x)) karışık kalır.",
+      "rationale": "x yerine −x yazılınca çift kuvvetli terimler değişmez, tek kuvvetli terimler işaret değiştirir. Hepsi aynı türdeyse f(−x) ya f(x)'e ya −f(x)'e eşit çıkar.",
+      "source": {
+        "providerId": "youtube:Dbn2eYpmAI8",
+        "startSeconds": 693,
+        "endSeconds": 760
+      },
+      "evidenceHash": "4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495",
+      "contentHash": "d75a50465dd7e5d5c3a65bdfcc276ab4129dcc6eccb545711f6c86f605035faa",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "fonksiyon-grafikleri-video:paydanin-koku-disarida",
+      "conceptId": "fonksiyon-grafikleri",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s3b"
+      ],
+      "title": "Paydanın kökü tanım dışında",
+      "rule": "f/g fonksiyonunun tanım kümesi, f ile g'nin ortak tanım kümesinden g'yi sıfır yapan noktaların çıkarılmasıyla bulunur. Grafikte bu noktalarda boş daire ya da kopukluk olur; eşitsizliklerde bu noktalar çözüme alınmaz.",
+      "condition": "Yalnız paydanın kökleri çıkarılır; payın kökleri tanım kümesindedir (değer 0 olur). Pay ile payda ortak kökte sadeleşse bile o nokta tanım dışıdır.",
+      "example": "f(x) = x² − 4, g(x) = 2x − 6 için f/g'nin tanım kümesi R − {3}. (x + 2)/(x − 4) ≤ 0 eşitsizliğinde x = −2 çözümdür, x = 4 değildir.",
+      "counterexample": "(x² − 9)/(x − 3) ifadesi sadeleşince x + 3 olur ama x = 3'te yine tanımsızdır; grafik x + 3 doğrusudur, (3, 6) noktası boştur.",
+      "rationale": "Sıfıra bölme tanımlı değildir; bölümün o noktada bir değeri yoktur. Bu yüzden fonksiyonun tanım kümesi o noktayı içeremez.",
+      "source": {
+        "providerId": "youtube:Dbn2eYpmAI8",
+        "startSeconds": 800,
+        "endSeconds": 886
+      },
+      "evidenceHash": "4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495",
+      "contentHash": "a18425c4c7c3d5a249857956c42c92863deb963c773dbc98cbf8ebf583ce09c1",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

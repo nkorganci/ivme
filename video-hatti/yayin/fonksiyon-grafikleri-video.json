@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "fonksiyon-grafikleri-video",
+  "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495",
+  "taskHash": "b6b7b0a629ad6e3d87420c355c62285783c186ae00ceeddf0d047df03d769cfb",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\fonksiyon-grafikleri-video",
+  "artifacts": {
+    "asamalar\\youtube-Dbn2eYpmAI8-metin\\ef5ed1f47613e16e547c4b2e5b9c3f304ae5059b02a2221c7bc7e5cf4ee1dea0.json": "f83e8d528372576400acc5c719b482d87e663a4110b59e6099352b47cbe62d27",
+    "asamalar\\youtube-Dbn2eYpmAI8-kareler\\7e578824253c81998cc1f7ef37754590c0edfabc1400f47fae1582cebee308fb.json": "aafa439a04939dee7b820301142a8ab442c4ec177d7667a0689419847b05c1fd",
+    "kareler\\11bfa428da44cdf63c2498e0fc5309a1239b21cf4c06526b8e80db4e20f66ace.png": "8a0b362d53701ef28d8d090c0b0072b8096ce9c31d724d8ee1929dca512dfada",
+    "kareler\\688c4b795e565fa3a7bc83200cc893fbecaf71c4ef178f1ccdc8c7036710ab6b.png": "c086bc7184d55f8763b87139235c912434fe452ae57f6cb3e1e932763b666978",
+    "asamalar\\matematik-denetimi\\ae367a1218cdd7111faf265fc9c5931a0a91e92c224329d133e2eefbccf4eb07.json": "5a78740513b0eea4fea1aef25be8bbff1e17114b89c1b6a430b1dea71deeb0af",
+    "surumler\\4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495.json": "e8b41b889c25a4cfdc4f806fc2871927ddba475a67de6887858f94b7c4192426",
+    "surumler\\4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495.oneriler.md": "dfb381ffef65cccc9f7e4971c12228b2c38200bde8cc67020dafbb3859c9c6c2"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-fonksiyon-grafikleri-test.py",
+        "sha256": "2245380652be6fdcd0024d9d7eaf23f7cec2bbc44ff4f6a2af2598914568efb2",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "fonksiyon-grafikleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 2,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.006
+    },
+    "videos": [
+      {
+        "providerId": "youtube:Dbn2eYpmAI8",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:Dbn2eYpmAI8",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1296,
+      "normalization": {
+        "captionControlEvents": 1291,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 740,
+          "file": "kareler\\11bfa428da44cdf63c2498e0fc5309a1239b21cf4c06526b8e80db4e20f66ace.png",
+          "sha256": "8a0b362d53701ef28d8d090c0b0072b8096ce9c31d724d8ee1929dca512dfada",
+          "pixelHash": "11bfa428da44cdf63c2498e0fc5309a1239b21cf4c06526b8e80db4e20f66ace",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 830,
+          "file": "kareler\\688c4b795e565fa3a7bc83200cc893fbecaf71c4ef178f1ccdc8c7036710ab6b.png",
+          "sha256": "c086bc7184d55f8763b87139235c912434fe452ae57f6cb3e1e932763b666978",
+          "pixelHash": "688c4b795e565fa3a7bc83200cc893fbecaf71c4ef178f1ccdc8c7036710ab6b",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "tek-cift-kuvvetlere-bak",
+      "contentHash": "d75a50465dd7e5d5c3a65bdfcc276ab4129dcc6eccb545711f6c86f605035faa",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "paydanin-koku-disarida",
+      "contentHash": "a18425c4c7c3d5a249857956c42c92863deb963c773dbc98cbf8ebf583ce09c1",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

@@ -1348,7 +1348,33 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "fonksiyon-grafikleri:c1b": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
   "fonksiyon-grafikleri:c2": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-grafikleri:c2b": {
    "conceptId": "fonksiyon-grafikleri",
    "type": "choice",
    "answer": "C",
@@ -1374,7 +1400,33 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "fonksiyon-grafikleri:c3b": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
   "fonksiyon-grafikleri:c4": {
+   "conceptId": "fonksiyon-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "fonksiyon-grafikleri:c4b": {
    "conceptId": "fonksiyon-grafikleri",
    "type": "choice",
    "answer": "C",

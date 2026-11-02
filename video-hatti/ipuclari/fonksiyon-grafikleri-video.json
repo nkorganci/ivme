@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "tek-cift-kuvvetlere-bak",
+    "providerId": "youtube:Dbn2eYpmAI8",
+    "startSeconds": 693,
+    "endSeconds": 760,
+    "quote": "İkisi de olmayabilir",
+    "frameSeconds": [
+      740
+    ],
+    "rule": "Polinom fonksiyonda bütün terimlerin x kuvvetleri çiftse (sabit terim dahil) fonksiyon çifttir ve grafiği y eksenine göre simetriktir; bütün kuvvetler tekse fonksiyon tektir ve grafiği orijine göre simetriktir. Karışıksa ne tek ne çifttir.",
+    "condition": "Önce çarpım ve toplamları açıp sadeleştir; tek–çift kararı sadeleşmiş hâle göre verilir. Sabit terim x⁰, yani çift kuvvettir.",
+    "example": "f(x) = 2x² + 1 ve g(x) = x için f·g = 2x³ + x tek (orijine simetrik), f + g = 2x² + x + 1 ne tek ne çift, f − 1 = 2x² çifttir.",
+    "counterexample": "“Tek fonksiyon çarpı çift fonksiyon” her zaman tek olsa da, tek terimli bir fonksiyon ile karışık bir fonksiyonun çarpımı (x · (x² + x)) karışık kalır.",
+    "rationale": "x yerine −x yazılınca çift kuvvetli terimler değişmez, tek kuvvetli terimler işaret değiştirir. Hepsi aynı türdeyse f(−x) ya f(x)'e ya −f(x)'e eşit çıkar.",
+    "agentSourceReview": "Claude 740. saniye karesinde Soru 4'ün fonksiyonlarını ve öncüllerini (f(x) = 3x² − 2x, g(x) = 5x + 3; I. f·g tek, II. (5f + 2g) çift, III. f/g'nin tanım kümesi R − {−3/5}) ve tahtadaki 15x³ − x² − 6x “ne tek ne çift”, 5f + 2g hesabını okudu; altyazı 11:33'te karışık kuvvetlerde fonksiyonun ne tek ne çift olabileceğini söylüyor. Kartın örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "paydanin-koku-disarida",
+    "providerId": "youtube:Dbn2eYpmAI8",
+    "startSeconds": 800,
+    "endSeconds": 886,
+    "quote": "paydayı 0 yapan noktayı da çıkarmam lazım",
+    "frameSeconds": [
+      830
+    ],
+    "rule": "f/g fonksiyonunun tanım kümesi, f ile g'nin ortak tanım kümesinden g'yi sıfır yapan noktaların çıkarılmasıyla bulunur. Grafikte bu noktalarda boş daire ya da kopukluk olur; eşitsizliklerde bu noktalar çözüme alınmaz.",
+    "condition": "Yalnız paydanın kökleri çıkarılır; payın kökleri tanım kümesindedir (değer 0 olur). Pay ile payda ortak kökte sadeleşse bile o nokta tanım dışıdır.",
+    "example": "f(x) = x² − 4, g(x) = 2x − 6 için f/g'nin tanım kümesi R − {3}. (x + 2)/(x − 4) ≤ 0 eşitsizliğinde x = −2 çözümdür, x = 4 değildir.",
+    "counterexample": "(x² − 9)/(x − 3) ifadesi sadeleşince x + 3 olur ama x = 3'te yine tanımsızdır; grafik x + 3 doğrusudur, (3, 6) noktası boştur.",
+    "rationale": "Sıfıra bölme tanımlı değildir; bölümün o noktada bir değeri yoktur. Bu yüzden fonksiyonun tanım kümesi o noktayı içeremez.",
+    "agentSourceReview": "Claude 830. saniye karesinde Soru 4'ün III. öncülünü ve tahtadaki 5x + 3 ≠ 0, x ≠ −3/5, R − {−3/5} çözümünü okudu; altyazı 13:20'de paydayı sıfır yapan noktanın çıkarılması gerektiğini söylüyor. Kartın örnekleri özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

@@ -100,23 +100,23 @@
    "untyped": 260
   },
   "fonksiyon-grafikleri": {
-   "total": 64,
+   "total": 66,
    "cikmis": {
-    "TYT": 2,
+    "TYT": 4,
     "AYT": 0
    },
    "archetypes": {
-    "grafik-okuma": 6,
+    "grafik-okuma": 9,
     "isaret-aralik": 6,
     "dogru-testi": 0,
-    "dogrusal-model": 20
+    "dogrusal-model": 19
    },
    "untyped": 32
   },
   "fonksiyon-kavrami": {
-   "total": 605,
+   "total": 603,
    "cikmis": {
-    "TYT": 9,
+    "TYT": 7,
     "AYT": 0
    },
    "archetypes": {
@@ -125,7 +125,7 @@
     "fonksiyon-cesit": 91,
     "parcali-islem": 24
    },
-   "untyped": 400
+   "untyped": 398
   },
   "grafik-rutin-olmayan": {
    "total": 227,

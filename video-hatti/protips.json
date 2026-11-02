@@ -528,6 +528,27 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "fonksiyon-grafikleri-video",
+      "conceptId": "fonksiyon-grafikleri",
+      "hints": [
+        {
+          "id": "tek-cift-kuvvetlere-bak",
+          "title": "Tek mi çift mi: kuvvetlere bak",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        },
+        {
+          "id": "paydanin-koku-disarida",
+          "title": "Paydanın kökü tanım dışında",
+          "sectionIds": [
+            "s3b"
+          ]
+        }
+      ]
     }
   ]
 }

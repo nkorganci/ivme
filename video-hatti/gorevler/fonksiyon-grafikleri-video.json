@@ -9,18 +9,6 @@
   },
   "sources": [
     {
-      "providerId": "youtube:mHmETeWXEe0",
-      "usage": {
-        "status": "PROCESSING_ALLOWED",
-        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
-      },
-      "media": "veri/video-hatti/medya/mHmETeWXEe0.mp4",
-      "transcript": "veri/video-hatti/medya/mHmETeWXEe0.tr.json3",
-      "frameSeconds": [],
-      "durationSeconds": 1895,
-      "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
-    },
-    {
       "providerId": "youtube:Dbn2eYpmAI8",
       "usage": {
         "status": "PROCESSING_ALLOWED",
@@ -28,7 +16,10 @@
       },
       "media": "veri/video-hatti/medya/Dbn2eYpmAI8.mp4",
       "transcript": "veri/video-hatti/medya/Dbn2eYpmAI8.tr.json3",
-      "frameSeconds": [],
+      "frameSeconds": [
+        740,
+        830
+      ],
       "durationSeconds": 3254,
       "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
     }
