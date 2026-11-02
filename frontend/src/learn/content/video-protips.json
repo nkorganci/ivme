@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "3780fba909fdc76e83a2f18268381fca7edb0fa25e4198648ea893c0a12005f3",
+  "inputsHash": "f81664cdc41e038347fc71b875a0e3e72bdf99318c94462323b3c6043ab35765",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -907,6 +907,54 @@
       },
       "evidenceHash": "093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100",
       "contentHash": "3c0a1a56ec8a2473e530558a57e2a890c05e7d5168d5184c9480a2101286a2b7",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "merkezi-egilim-video:cikanlarin-ortalamasi-karsilastir",
+      "conceptId": "merkezi-egilim",
+      "topicId": "tyt.matematik.veri-ve-istatistik",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "Çıkanların ortalamasını grup ortalamasıyla karşılaştır",
+      "rule": "Bir gruptan veriler çıkarılınca kalanların ortalaması, çıkanların ortalaması grup ortalamasından büyükse azalır, küçükse artar, eşitse değişmez. En büyük ve en küçük veri birlikte çıkarsa ortanca değişmez.",
+      "condition": "Çıkarılan verilerin ortalaması grup ortalamasıyla karşılaştırılır; tek tek verilere bakılmaz. Ortancanın korunması için uçlardan eşit sayıda veri çıkmalıdır.",
+      "example": "Ağırlık ortalaması 50 kg olan takımdan 70 ve 34 kg'lık sporcular ayrılıyor: çıkanların ortalaması 52 > 50, kalanların ortalaması düşer; ortanca aynı kalır.",
+      "counterexample": "Yalnız en büyük veri (70) çıkarılsaydı ortanca da bir yarım konum aşağı kayabilirdi; uçlardan biri tek başına çıkınca ortanca korunmayabilir.",
+      "rationale": "Kalanların ortalaması x̄ + k(x̄ − ȳ)/(n − k) biçimindedir (ȳ çıkanların ortalaması); işaret x̄ − ȳ farkıyla belirlenir. Sıralı listenin iki ucundan birer veri gidince ortadaki konum aynı veride kalır.",
+      "source": {
+        "providerId": "youtube:L_8OZ-66HHg",
+        "startSeconds": 1700,
+        "endSeconds": 1930
+      },
+      "evidenceHash": "0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a",
+      "contentHash": "689f40bf16ec667733c6e50e00434a61d95e50f9988f500f59b90007c4166a1a",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "merkezi-egilim-video:mod-korunarak-silme",
+      "conceptId": "merkezi-egilim",
+      "topicId": "tyt.matematik.veri-ve-istatistik",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Mod korunsun: tekrar sayılarını tabloya yaz",
+      "rule": "Veri silinirken tepe değerin (veya tepe değerlerin) korunması için en çok tekrar eden değerlerin tekrar sayısı diğerlerinin altına düşmemeli; birden çok tepe değer varsa onlardan eşit sayıda silinir ya da hiç silinmez.",
+      "condition": "Önce her değerin tekrar sayısını tablo yap. “Toplam en çok/en az” isteniyorsa tepe değeri bozmayan silmeler arasından büyük/küçük değerler seçilir.",
+      "example": "2, 2, 2, 3, 3, 4, 4, 4, 6, 6 grubunda tepe değerler 2 ve 4. İki 6 silinirse tepe değerler değişmez; bir 2 ve bir 4 birlikte silinirse de değişmez, yalnız bir 4 silinirse tepe değer yalnız 2 olur.",
+      "counterexample": "Tek tepe değerli bir gruba dönüştürmek isteniyorsa kural tersine döner: tepe değerlerden birinin tekrar sayısı bilerek azaltılır.",
+      "rationale": "Tepe değer, tekrar sayılarının en büyüğüne bakar. Silme yalnız tekrar sayılarını azaltır; en büyük tekrar sayısına sahip değerler kümesi değişmedikçe tepe değer korunur.",
+      "source": {
+        "providerId": "youtube:DFaJHs-F7lI",
+        "startSeconds": 1337,
+        "endSeconds": 1450
+      },
+      "evidenceHash": "0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a",
+      "contentHash": "d457a1df2cbda9abaa34c8fbda387e296ae68c22c9e1067270be253d67f2ae01",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

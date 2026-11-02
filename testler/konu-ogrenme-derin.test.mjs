@@ -8,7 +8,7 @@ import { parseLesson } from '../frontend/src/learn/content/parser.js';
 import { WORKED_EXAMS } from '../frontend/src/learn/content/worked-exams.js';
 import { calculateModel, initialValues } from '../frontend/src/learn/lesson/models.js';
 
-export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler', 'carpanlara-ayirma', 'sayi-kesir-problemleri', 'yas-isci-problemleri', 'yuzde-karisim', 'kar-zarar', 'hareket-problemleri', 'grafik-rutin-olmayan', 'veri-grafikleri'];
+export const DERIN = ['bolme-bolunebilme', 'temel-kavramlar', 'sayi-basamaklari', 'ebob-ekok', 'rasyonel-sayilar', 'birinci-derece-denklemler', 'esitsizlikler', 'mutlak-deger', 'uslu-ifadeler', 'koklu-ifadeler', 'oran-oranti', 'ikinci-derece-denklemler', 'carpanlara-ayirma', 'sayi-kesir-problemleri', 'yas-isci-problemleri', 'yuzde-karisim', 'kar-zarar', 'hareket-problemleri', 'grafik-rutin-olmayan', 'veri-grafikleri', 'merkezi-egilim'];
 
 const load = (id) => parseLesson(readFileSync(new URL(`../frontend/src/learn/content/dersler/${id}.ders`, import.meta.url), 'utf8'), id);
 const model = (id, v = {}) => calculateModel(id, { ...initialValues(id), ...v });

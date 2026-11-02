@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "cikanlarin-ortalamasi-karsilastir",
+    "providerId": "youtube:L_8OZ-66HHg",
+    "startSeconds": 1700,
+    "endSeconds": 1930,
+    "quote": "40 ile 18'in aritmetik ortalaması 29 yapıyor",
+    "frameSeconds": [
+      1740
+    ],
+    "rule": "Bir gruptan veriler çıkarılınca kalanların ortalaması, çıkanların ortalaması grup ortalamasından büyükse azalır, küçükse artar, eşitse değişmez. En büyük ve en küçük veri birlikte çıkarsa ortanca değişmez.",
+    "condition": "Çıkarılan verilerin ortalaması grup ortalamasıyla karşılaştırılır; tek tek verilere bakılmaz. Ortancanın korunması için uçlardan eşit sayıda veri çıkmalıdır.",
+    "example": "Ağırlık ortalaması 50 kg olan takımdan 70 ve 34 kg'lık sporcular ayrılıyor: çıkanların ortalaması 52 > 50, kalanların ortalaması düşer; ortanca aynı kalır.",
+    "counterexample": "Yalnız en büyük veri (70) çıkarılsaydı ortanca da bir yarım konum aşağı kayabilirdi; uçlardan biri tek başına çıkınca ortanca korunmayabilir.",
+    "rationale": "Kalanların ortalaması x̄ + k(x̄ − ȳ)/(n − k) biçimindedir (ȳ çıkanların ortalaması); işaret x̄ − ȳ farkıyla belirlenir. Sıralı listenin iki ucundan birer veri gidince ortadaki konum aynı veride kalır.",
+    "agentSourceReview": "Claude 1740. saniye karesinde “Tıpkı ÖSYM 10” sorusunun tam metnini (ortalama 30 milyon, Enes 40, Mert 18 milyon; seçenekler artar/azalır/değişmez) okudu; altyazı 28:23'te ortancanın değişmediğini, 30:22'de 40 ile 18'in ortalamasının 29 olduğunu ve ortalamanın arttığını söylüyor. Kartın 50 kg örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "mod-korunarak-silme",
+    "providerId": "youtube:DFaJHs-F7lI",
+    "startSeconds": 1337,
+    "endSeconds": 1450,
+    "quote": "modun 1 ve 4 olmasını istiyorum",
+    "frameSeconds": [
+      1380
+    ],
+    "rule": "Veri silinirken tepe değerin (veya tepe değerlerin) korunması için en çok tekrar eden değerlerin tekrar sayısı diğerlerinin altına düşmemeli; birden çok tepe değer varsa onlardan eşit sayıda silinir ya da hiç silinmez.",
+    "condition": "Önce her değerin tekrar sayısını tablo yap. “Toplam en çok/en az” isteniyorsa tepe değeri bozmayan silmeler arasından büyük/küçük değerler seçilir.",
+    "example": "2, 2, 2, 3, 3, 4, 4, 4, 6, 6 grubunda tepe değerler 2 ve 4. İki 6 silinirse tepe değerler değişmez; bir 2 ve bir 4 birlikte silinirse de değişmez, yalnız bir 4 silinirse tepe değer yalnız 2 olur.",
+    "counterexample": "Tek tepe değerli bir gruba dönüştürmek isteniyorsa kural tersine döner: tepe değerlerden birinin tekrar sayısı bilerek azaltılır.",
+    "rationale": "Tepe değer, tekrar sayılarının en büyüğüne bakar. Silme yalnız tekrar sayılarını azaltır; en büyük tekrar sayısına sahip değerler kümesi değişmedikçe tepe değer korunur.",
+    "agentSourceReview": "Claude 1380. saniye karesinde Örnek 9'un tam metnini (1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 5; beş sayı silinince mod değişmiyor; silinenlerin toplamı en çok?) ve tahtadaki “1 ve 4” notunu okudu; altyazı 22:50–24:01'de iki silme planı ve en çok toplamın 18 olduğunu veriyor. Kartın 2–6 örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

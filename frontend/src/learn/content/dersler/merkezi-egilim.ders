@@ -45,8 +45,10 @@ medyan-mod 1 1-3
 yayilim 2 1-3
 olcu-donusum 1 1-3
 
-@oturum Ortalama, ortanca, tepe değer | s1 s2
-@oturum Yayılım ve dönüşümler | s3 s4
+@oturum Aritmetik ortalama | s1 s1b
+@oturum Ortanca ve tepe değer | s2 s2b
+@oturum Yayılım ve bilinmeyenli veriler | s3 s3b
+@oturum Dönüşümler ve birleşik ortalama | s4 s4b
 
 @ontest
 ::soru o1 tip=ortalama zorluk=1
@@ -129,6 +131,66 @@ E) 70 || Fazla.
 kontrol: (12*65-43)/11
 cozum: Toplam $12 \cdot 65 = 780$; yeni toplam $780 - 43 = 737$; $737 : 11 = 67$.
 
+@bolum s1b 10 | Veri çıkarınca ya da eklenince ortalama
+::kesfet me-cikar
+
+::fikir
+**Toplam = ortalama × veri sayısı** bağıntısı her değişiklikten önce ve sonra yazılır. Ortalamadan **büyük** bir veri çıkarılınca ortalama **azalır**, **küçük** bir veri çıkarılınca **artar**, ortalamaya eşit veri çıkarılınca değişmez. İki farklı çıkarma iki denklem verir.
+
+::duzey
+L1: Ortalaması 40 olan 10 sayının toplamı 400'dür. Bu sayılardan 60 çıkarılırsa kalan 9 sayının toplamı 340, ortalaması yaklaşık 37,8 olur: 60 ortalamadan büyük olduğu için ortalama düştü.
+L2: Birden çok veri çıkarılırsa önemli olan çıkarılanların ortalamasıdır. Ortalaması 30 olan bir gruptan 40 ve 18 çıkarılırsa çıkanların ortalaması 29'dur; 30'dan küçük olduğu için kalanların ortalaması artar.
+L3: "En küçük çıkarılınca ortalama 45, en büyük çıkarılınca 38" gibi bilgilerde iki toplamı yaz: $T-1=45(n-1)$ ve $T-92=38(n-1)$. Çıkarınca $T$ yok olur: $91=7(n-1)$. Uç değerler ortalamayı çok etkiler; ortanca ve tepe değer daha az etkilenir.
+
+::cikmis TYT-0799 tip=ortalama
+
+::ornek baslik="Benzer: en genç ve en yaşlı çıkınca"
+soru: Farklı yaşlardaki kişilerden oluşan bir grupta en küçük 5, en büyük 75 yaşındadır. En küçük çıkarılınca kalanların yaş ortalaması 40, en büyük çıkarılınca 35 oluyor. Grupta kaç kişi vardır?
+1. Kişi sayısı $n$, yaş toplamı $T$: $T-5=40(n-1)$ ve $T-75=35(n-1)$. || Her çıkarmada kalan kişi sayısı $n-1$.
+2. Taraf tarafa çıkar: $70=5(n-1)$, $n-1=14$. || $T$ sadeleşti.
+3. $n=15$. || Kontrol: $T=565$; $565-75=490=35\cdot14$ ✓
+cevap: 15
+
+::ornek baslik="Çıkan sayıyı bulmak"
+soru: Ortalaması 30 olan 8 sayıdan biri çıkarılınca kalanların ortalaması 28 oluyor. Çıkarılan sayı kaçtır?
+1. İlk toplam $8\cdot30=240$. || Toplam = ortalama × adet.
+2. Yeni toplam $7\cdot28=196$. || Bir sayı eksildi.
+3. Çıkan $240-196=44$. || 44 > 30 olduğu için ortalama düştü ✓
+cevap: 44
+
+::ornek baslik="Uç değer ortalamayı çeker"
+soru: Beş çalışanın aylık kazançları (bin TL) 3, 3, 4, 4 ve 30'dur. Ortalama ve ortanca nedir? Hangisi "tipik" kazancı daha iyi anlatır?
+1. Ortalama $\frac{44}{5}=8{,}8$. || Toplam ÷ adet.
+2. Ortanca (3. veri) 4. || Sıralı listede ortadaki.
+3. Beş kişiden dördü 4 veya altında kazanıyor; ortanca daha temsilî. || 30 uç değeri ortalamayı yukarı çekti.
+cevap: Ortalama 8,8; ortanca 4 (ortanca daha temsilî)
+
+::sorgula s1b-takim baslik="En ağır ve en hafif ayrılınca"
+durum: Bir güreş takımındaki sporcuların ağırlık ortalaması 50 kg. Takımın en ağırı (70 kg) ve en hafifi (34 kg) takımdan ayrılıyor.
+soru: Kalan sporcuların ağırlık ortalaması ve ortancası nasıl değişir?
+A) Ortalama artar, ortanca azalır || Uçtaki iki veri gidince ortadaki veri yerinde kalır; ortanca değişmez.
++B) Ortalama azalır, ortanca değişmez || Çıkanların ortalaması $\frac{70+34}{2}=52>50$.
+C) İkisi de değişmez || Çıkanların ortalaması 50 değil, 52.
+neden: Ayrılanların ortalaması 52, grup ortalamasından büyük; kalanların ortalaması 50'nin altına iner. En büyük ve en küçük veri birlikte çıkınca sıralı listenin ortası değişmez; ortanca aynı kalır.
+sinav: Birden çok veri çıkarılınca çıkanların ortalamasını grup ortalamasıyla karşılaştır; uçlardan eşit sayıda veri çıkarsa ortanca değişmez.
+dusun: Ayrılanlar 70 ve 30 kg olsaydı ortalama nasıl değişirdi?
+yanit: Çıkanların ortalaması 50; kalanların ortalaması da 50 kalırdı.
+
+::yanilgi m1b tip=ortalama
+yanlis: Bir gruptan ortalamadan büyük bir sayı çıkarılınca ortalama artar.
+neden: Büyük sayı toplamdan payından fazlasını götürür; kalanların ortalaması düşer.
+dogru: Ortalamadan büyük veri çıkarılınca ortalama azalır, küçük veri çıkarılınca artar.
+
+::soru c1b tip=ortalama zorluk=2
+Ortalaması 24 olan 10 sayıdan iki sayı çıkarılınca kalanların ortalaması 25 oluyor. Çıkarılan iki sayının toplamı kaçtır?
+A) 20 || Hesabı kontrol et: $240-200$.
++B) 40 || Doğru: $10\cdot24-8\cdot25=40$.
+C) 48 || Ortalamanın iki katını aldın.
+D) 50 || Yeni ortalamanın iki katını aldın.
+E) 60 || Hesabı yeniden yap.
+kontrol: 10*24-8*25
+cozum: İlk toplam 240, kalan 8 sayının toplamı 200; çıkanlar $240-200=40$ (ortalamaları 20 < 24, bu yüzden ortalama arttı).
+
 @bolum s2 9 | Ortanca ve tepe değer
 ::fikir
 **Ortanca** (medyan), veriler sıralandığında tam ortadaki değerdir: $n$ tekse $\frac{n+1}{2}$. terim, $n$ çiftse $\frac{n}{2}$. ve $\left(\frac{n}{2} + 1\right)$. terimlerin ortalaması. **Tepe değer** (mod) en çok tekrar eden veridir; birden fazla olabilir.
@@ -184,6 +246,74 @@ C) 6 || Kontrol: $\frac{6 + 9}{2} = 7{,}5$.
 E) 8 || Kontrol: $\frac{8 + 9}{2} = 8{,}5$.
 kontrol: 7
 cozum: 6 veri; ortanca 3. ve 4. terimin ortalaması. $6 \leq x \leq 9$ ise sıralı $4, 6, x, 9, 10, 12$ ve $\frac{x + 9}{2} = 8 \Rightarrow x = 7$. Diğer durumlarda ortanca 8 olmaz.
+
+@bolum s2b 12 | Ortanca ve tepe değer değişmesin
+::kesfet me-ortanca
+
+::fikir
+Ortanca, sıralı listede **iki yanında eşit sayıda veri** bulunan yerdir. Bir veri silinince ortanca, silinen verinin **karşı tarafına** yarım adım kayar; ortanca değeri tekrar ediyorsa bu kayma değeri değiştirmeyebilir. Tepe değerin korunması için **en çok tekrar eden değerlerin tekrar sayısı** en büyük kalmalıdır.
+
+::duzey
+L1: 3, 5, 5, 6, **8**, 8, 9, 11, 12 listesinin ortancası 8'dir. 3'ü silersek kalan 8 verinin ortadaki ikisi 8 ve 8 olur: ortanca yine 8. 12'yi silersek ortadaki ikisi 6 ve 8: ortanca 7'ye iner.
+L2: Ortanca değeri birden çok kez geçiyorsa (8, 8) silinen veri bu kopyaların **öbür tarafında** olmalıdır: ikinci 8 ortanca konumunun sağındaysa silinen veri sol taraftan seçilir. İki değişkenli sorularda (yaş ve boy) her değişken için ayrı liste yap; ikisini birden sağlayan kişi cevaptır.
+L3: Mod sorusunda tekrar sayılarını tablo yap: 1 üç kez, 4 üç kez ise mod {1, 4}. Silme sonrası modun aynı kalması için ya ikisinden de eşit sayıda silinir ya da hiç dokunulmaz; diğer değerlerin tekrar sayısı bunların üstüne çıkmamalıdır.
+
+::cikmis TYT-0801 tip=medyan-mod
+
+::ornek baslik="Benzer: yaş ve boy ortancası korunuyor"
+soru: 7 kişilik bir ekibin (yaş; boy) verileri boya göre sıralı: (15; 160), (17; 163), (16; 167), (16; 170), (18; 170), (16; 174), (17; 178). Ekipten biri ayrılıyor; kalanların yaş ortancası da boy ortancası da değişmiyor. Ayrılan kimdir?
+1. Boylar: ortanca 170 (4. ve 5. veri 170). 6 kişide ortanca 3. ve 4. verinin ortalaması; ikisi de 170 kalmalı: ayrılan 160, 163 ya da 167. || Silinen, 170'lerin sol tarafında.
+2. Yaşlar sıralı 15, 16, 16, 16, 17, 17, 18; ortanca 16. Kalanlarda 3. ve 4. veri 16 olmalı: ayrılan 17 ya da 18 yaşında. || Silinen, 16'ların sağ tarafında.
+3. İki koşulu sağlayan tek kişi (17; 163). || Kontrol: kalan boylar 160, 167, 170, 170, … ortanca 170; yaşlar 15, 16, 16, 16, 17, 18 ortanca 16.
+cevap: (17; 163)
+
+::ornek baslik="Tepe değeri bilinmeyenle bulmak"
+soru: Tam sayılardan oluşan 3, 8, $x$, $x+2$, 12, $y$, $2y-4$ veri grubunun aritmetik ortalaması 10, tepe değeri 8'dir. Grubun ortancası kaçtır?
+1. Toplam $21+2x+3y=70$, yani $2x+3y=49$. || Ortalama × 7.
+2. Mod 8 ise bir veri daha 8 olmalı: $x=8$ için $y=11$ ✓; $y=8$, $x+2=8$, $2y-4=8$ denenince tam sayı çıkmaz. || Durumları tek tek dene.
+3. Veriler 3, 8, 8, 10, 11, 12, 18: ortanca 10. || Sıralayıp ortadakini al.
+cevap: 10
+
+::ornek baslik="Tepe değeri teke indirmek"
+soru: 2, 2, 2, 3, 3, 4, 4, 4, 6, 6 veri grubundan iki sayı silinince tepe değer yalnız 4 oluyor. Silinen sayıların toplamı en az kaçtır?
+1. Şimdi 2 ve 4 üçer kez geçiyor: iki tepe değer var. || Tekrar sayılarını say.
+2. Tepe değerin yalnız 4 kalması için en az bir 2 silinmeli; 4'lere dokunulmamalı. || 2'nin tekrar sayısı 4'ün altına inmeli.
+3. Toplamı en az yapmak için iki 2 sil: toplam 4. || 2 ile 3 silinse toplam 5 olurdu.
+cevap: 4
+
+::tamamla baslik="Ortanca değişmesin"
+soru: 3, 5, 5, 6, 8, 8, 9, 11, 12 verilerinden biri silinecek ve ortanca değişmeyecek. Silinen sayı hangileri olabilir?
+1. Ortanca 5. veri: 8. Silindikten sonra 8 veri kalır; ortanca 4. ve 5. verinin ortalaması. || Çift sayıda veri.
+?2. 3, 5 ya da 6 silinirse 4. ve 5. veri 8 ve 8: ortanca 8 ✓. || İki 8 ortaya kayar.
+?3. 8 ya da daha büyük bir sayı silinirse 4. ve 5. veri 6 ve 8: ortanca 7 ✗. || Kayma ters yönde.
+cevap: 3, 5 ya da 6
+
+::sorgula s2b-uc baslik="En büyük sayı 100 katına çıkarsa"
+durum: 7 öğrencinin kitap sayıları sıralı olarak 2, 3, 5, 6, 8, 9, 12. Bir veri giriş hatasıyla en büyük değer 12 yerine 1200 yazılıyor.
+soru: Hata ortancayı ve ortalamayı nasıl etkiler?
+A) İkisi de büyür || Ortanca sıradaki yere bakar; en büyük verinin büyüklüğü sırayı değiştirmez.
++B) Ortanca 6 kalır, ortalama çok büyür || Ortadaki veri değişmedi; toplam 1188 arttı.
+C) İkisi de değişmez || Toplam değiştiği için ortalama değişir.
+kontrol: 6
+neden: Sıralama aynı kalır, 4. veri 6'dır. Ortalama $\frac{45}{7}\approx6{,}4$'ten $\frac{1233}{7}\approx176$'ya çıkar. Ortanca uç değerlere dayanıklıdır.
+sinav: Uç değer sorularında ortanca ve tepe değer genellikle değişmez, ortalama ve açıklık değişir.
+dusun: Açıklık nasıl değişir?
+yanit: $12-2=10$'dan $1200-2=1198$'e çıkar.
+
+::yanilgi m2b tip=medyan-mod
+yanlis: 3, 5, 5, 6, 8, 8, 9, 11, 12'den bir 8 silinirse ortanca yine 8 olur; çünkü listede hâlâ bir 8 var.
+neden: 8 veride ortanca 4. ve 5. verinin ortalamasıdır: 6 ve 8 → 7.
+dogru: Ortancanın korunması için silinen veri, kalan 8'in karşı tarafında olmalıdır (3, 5 ya da 6).
+
+::soru c2b tip=medyan-mod zorluk=2
+2, 4, 4, 7, 9, 9, 9, 12, 15 veri grubundan bir sayı silindiğinde ortanca değişmiyor. Silinen sayı aşağıdakilerden hangisi olabilir?
++A) 7 || Doğru: kalan 4. ve 5. veri 9 ve 9.
+B) 9 || Kalan 4. ve 5. veri 7 ve 9; ortanca 8 olur.
+C) 12 || Kalan 4. ve 5. veri 7 ve 9.
+D) 15 || Kalan 4. ve 5. veri 7 ve 9.
+E) Hiçbiri || 2, 4 ya da 7 silinebilir.
+kontrol: 7
+cozum: Ortanca 9. 8 veri kalınca 4. ve 5. verinin 9 olması gerekir; bu, silinen 9'un solundan (2, 4, 7) seçilirse olur.
 
 @bolum s3 9 | Açıklık ve standart sapma
 ::fikir
@@ -243,6 +373,67 @@ E) 8 || Bu açıklıktır.
 kontrol: sqrt(10)
 cozum: Ortalama 6; farklar $-4, -2, 0, 2, 4$; kareler toplamı 40; $\frac{40}{5 - 1} = 10$; $S = \sqrt{10}$.
 
+@bolum s3b 10 | Bilinmeyenli veriler: ortalama, ortanca ve açıklık birlikte
+::kesfet me-en-buyuk
+
+::fikir
+Verileri harflerle **sıralı** yaz: $a\le b\le c\le d\le e$. Ortanca $c$, toplam $5\cdot$ortalama, açıklık $e-a$'dır. "Üç tanesi eşit" gibi bilgileri **konumlara yerleştirip durumları dene**; sıralamayı bozan durum elenir. "En çok / en az" sorularında diğer verileri uç değerlere götür.
+
+::duzey
+L1: Beş puanın ortancası 84 ise sıralı listede tam ortadaki puan 84'tür: iki puan 84'ün altında ya da eşit, ikisi üstünde ya da eşittir.
+L2: Üç eşit puan ortancayı içermek zorundadır (sıralı listede üç ardışık konum ortayı kapsar). Olası yerleşimler $(a,b,c)$, $(b,c,d)$, $(c,d,e)$; her birinde toplam ve açıklık denklemleri kurulur, sıralamaya uymayan elenir.
+L3: Farklı pozitif tam sayılarda en büyük sayıyı en çok yapmak için diğerlerini olabildiğince küçük seç: $a=1$, $b=2$, $d=c+1$. En az yapmak için diğerlerini olabildiğince büyük seç: $a=c-2$, $b=c-1$, $d=e-1$. Toplam koşulu tam sayıyı zorlarsa bir adım kaydır.
+
+::cikmis TYT-0810 tip=ortalama
+
+::ornek baslik="Benzer: üç puan eşit, açıklık 20"
+soru: Beş arkadaşın puanlarının ortalaması 70, ortancası 72, açıklığı 20'dir ve puanlardan tam üçü eşittir. En yüksek puan kaçtır?
+1. Üç eşit puan ortancayı içerir: 72. Toplam $350$; üç 72'nin toplamı 216, kalan iki puanın toplamı 134. || Ortalama × 5.
+2. $(b,c,d)=72$: $a+e=134$, $e-a=20$ → $e=77$, $a=57$ ✓. || Sıralama 57 ≤ 72 ≤ 77 uygun.
+3. $(a,b,c)=72$ olursa $e=92$, $d=42<72$ ✗; $(c,d,e)=72$ olursa $a=52$, $b=82>72$ ✗. || Diğer yerleşimler sıralamayı bozar.
+cevap: 77
+
+::ornek baslik="En büyük sayı en çok kaç?"
+soru: Birbirinden farklı beş pozitif tam sayının ortalaması 20, ortancası 18'dir. En büyük sayı en çok kaç olabilir?
+1. Toplam $100$; sıralı $a<b<18<d<e$. || Ortanca 3. sayı.
+2. $e$'yi büyütmek için diğerleri en küçük: $a=1$, $b=2$, $d=19$. || Farklı olma koşulu.
+3. $e=100-1-2-18-19=60$. || Kontrol: 1, 2, 18, 19, 60 ✓
+cevap: 60
+
+::ornek baslik="Ortalama ortancaya eşit"
+soru: Küçükten büyüğe sıralı 2, 6, $x$, 12, $y$ veri grubunun açıklığı 14, ortalaması ortancasına eşittir. $x$ kaçtır?
+1. Açıklık $y-2=14$, $y=16$. || En büyük − en küçük.
+2. Ortanca $x$; ortalama $\frac{2+6+x+12+16}{5}=\frac{36+x}{5}$. || Toplam ÷ 5.
+3. $\frac{36+x}{5}=x$, $4x=36$, $x=9$. || Kontrol: $6\le9\le12$ ✓
+cevap: 9
+
+::sorgula s3b-ortanca80 baslik="Ortancası 80 olan beş not"
+durum: Bir öğrencinin beş sınav notunun ortancası 80'dir.
+soru: Notlardan en az kaç tanesi 80 ya da üzeridir?
+A) 2 || Ortadaki not da 80'dir; o da sayılır.
++B) 3 || Sıralı listede ortadaki ve sağındaki iki not 80 veya üzeri.
+C) 5 || Soldaki iki not 80'in altında olabilir.
+kontrol: 3
+neden: $a\le b\le c=80\le d\le e$: $c$, $d$, $e$ en az 80'dir; $a$ ve $b$ daha küçük olabilir. Kesin olarak en az 3 not.
+sinav: Ortanca bilgisi, sıralı listenin iki yarısı hakkında "en az" bilgisi verir; ortalamadan bağımsızdır.
+dusun: Notların ortalaması 60 olabilir mi?
+yanit: Olur: 20, 20, 80, 80, 100 notlarının ortalaması 60, ortancası 80.
+
+::yanilgi m3b tip=ortalama
+yanlis: Puanlardan üçü eşitse bu üç puan en küçük üç puandır.
+neden: Eşit puanlar sıralı listenin herhangi üç ardışık yerinde olabilir; her durum denenir.
+dogru: Üç eşit puan ortancayı içerir; $(a,b,c)$, $(b,c,d)$, $(c,d,e)$ yerleşimleri tek tek kontrol edilir.
+
+::soru c3b tip=ortalama zorluk=2
+Birbirinden farklı beş pozitif tam sayının ortalaması 12, ortancası 10'dur. Bu sayıların en büyüğü en çok kaçtır?
+A) 24 || Hesabı kontrol et.
+B) 30 || Hesabı yeniden yap.
++C) 36 || Doğru: $60-1-2-10-11=36$.
+D) 38 || $a=0$, $b=1$ aldın; sayılar pozitif olmalı.
+E) 47 || Hesabı kontrol et: $a+b+c+d$ en az $1+2+10+11$.
+kontrol: 60-1-2-10-11
+cozum: Toplam 60. En büyük sayıyı büyütmek için $a=1$, $b=2$, $d=11$: $e=60-24=36$.
+
 @bolum s4 8 | Verilere işlem yapınca ölçüler
 ::fikir
 Her veriye **$k$ eklenirse** ortalama, ortanca ve tepe değer $k$ artar; **açıklık ve standart sapma değişmez**. Her veri **$k$ ile çarpılırsa** bütün ölçüler $k$ katına çıkar (sapma $|k|$ katı).
@@ -291,6 +482,69 @@ D) 46 || Hesabı kontrol et.
 +E) 48 || Doğru: açıklık 36, sapma 12.
 kontrol: 3*12+3*4
 cozum: Çarpma açıklığı ve sapmayı 3 katına çıkarır: 36 ve 12. 2 çıkarmak bunları değiştirmez. Toplam 48.
+
+@bolum s4b 10 | Grupları birleştirmek ve yanlış girilen veri
+::fikir
+Grupları birleştirirken **ortalamalar değil toplamlar toplanır**: $\frac{n_1\bar x_1+n_2\bar x_2}{n_1+n_2}$. Bu bir **ağırlıklı ortalamadır**; sonuç kalabalık grubun ortalamasına yakındır. Yanlış girilen bir veri düzeltilince toplam **fark kadar**, ortalama **fark ÷ veri sayısı** kadar değişir.
+
+::duzey
+L1: 20 kişilik sınıfın ortalaması 70, 30 kişilik sınıfın ortalaması 80 ise toplamlar 1400 ve 2400'dür. 50 kişinin ortalaması $\frac{3800}{50}=76$; 75 değil, çünkü 80 alan sınıf daha kalabalık.
+L2: Ders saati (katsayı) farklı notlarda da aynı kural: 4 saatlik derste 80, 2 saatlik derslerde 70 ve 90 için ortalama $\frac{4\cdot80+2\cdot70+2\cdot90}{8}=80$. Katsayı, o notun kaç kez sayıldığıdır.
+L3: Bir alt grubun ortalaması biliniyorsa kalanların ortalaması toplamdan çıkarılarak bulunur: $\frac{n\bar x-n_1\bar x_1}{n-n_1}$. Yanlış veri sorularında yalnız doğru ile yanlış değerin farkı önemlidir; diğer verilerin bilinmesi gerekmez.
+
+::ornek baslik="İki sınıfın birleşik ortalaması"
+soru: 20 kişilik bir sınıfın sınav ortalaması 70, 30 kişilik bir sınıfın ortalaması 80'dir. İki sınıfın birlikte ortalaması kaçtır?
+1. Toplamlar $20\cdot70=1400$ ve $30\cdot80=2400$. || Ortalama × adet.
+2. Birleşik toplam 3800, kişi sayısı 50. || Toplamlar toplanır.
+3. Ortalama $3800:50=76$. || 75 (ortalamaların ortalaması) yanlış olurdu.
+cevap: 76
+
+::ornek baslik="Yanlış girilen not"
+soru: 25 öğrencinin not ortalaması 62 hesaplandı. Sonra bir öğrencinin 86 olan notunun 36 olarak girildiği fark edildi. Doğru ortalama kaçtır?
+1. Toplam $86-36=50$ eksik hesaplanmış. || Yalnız fark önemli.
+2. Ortalama $50:25=2$ eksik. || Fark ÷ veri sayısı.
+3. Doğru ortalama $62+2=64$. || Kontrol: $25\cdot64=1600=1550+50$.
+cevap: 64
+
+::ornek baslik="Ders saatine göre ortalama"
+soru: Bir öğrencinin karnesinde haftada 4 saat olan matematikten 80, 2 saatlik fizikten 70, 2 saatlik kimyadan 90 notu var. Ders saatiyle ağırlıklandırılmış not ortalaması kaçtır?
+1. Ağırlıklı toplam $4\cdot80+2\cdot70+2\cdot90=640$. || Her not saati kadar sayılır.
+2. Toplam ağırlık $4+2+2=8$. || Payda katsayıların toplamı.
+3. Ortalama $640:8=80$. || Basit ortalama da 80; bu örnekte tesadüfen eşit.
+cevap: 80
+
+::tamamla baslik="Kalanların ortalaması"
+soru: 30 kişilik bir sınıfın ortalaması 72'dir. Sınıftaki 10 kişilik bir grubun ortalaması 81 ise kalan 20 kişinin ortalaması kaçtır?
+1. Sınıf toplamı $30\cdot72=2160$. || Toplam = ortalama × adet.
+?2. Grubun toplamı $10\cdot81=810$; kalanların toplamı $1350$. || Toplamdan çıkar.
+?3. Kalanların ortalaması $1350:20=67{,}5$. || Kontrol: $\frac{810+1350}{30}=72$.
+cevap: 67,5
+
+::sorgula s4b-karne baslik="Hangi not ortalamayı daha çok etkiler?"
+durum: Karnede 5 saatlik matematik ve 1 saatlik müzik dersi var; not ortalaması ders saatiyle ağırlıklı hesaplanıyor. Öğrenci notunu 10 puan yükseltmek için bir ders seçecek.
+soru: Hangi dersin notunu 10 puan yükseltmek ortalamayı daha çok artırır?
++A) Matematik || Matematik 5 kez sayılır: ortalamaya katkısı müziğin 5 katı.
+B) Müzik || Müzik yalnız 1 kez sayılır.
+C) İkisi aynı etki yapar || Ağırlıklar farklı olduğu için etkiler farklıdır.
+neden: Ağırlıklı ortalamada bir notun 10 puan artışı ortalamayı $\frac{10\cdot\text{ağırlık}}{\text{toplam ağırlık}}$ kadar artırır. Toplam ağırlık 6 ise matematik $\frac{50}{6}\approx8{,}3$, müzik $\frac{10}{6}\approx1{,}7$ puan artırır.
+sinav: Ağırlıklı ortalamada büyük ağırlıklı veri sonucu daha çok etkiler; birleşik ortalama kalabalık gruba yakındır.
+dusun: Ağırlıklar eşit olsaydı ne olurdu?
+yanit: İkisi de ortalamayı $\frac{10}{2}=5$ puan artırırdı.
+
+::yanilgi m4b tip=ortalama
+yanlis: Ortalaması 70 olan sınıfla ortalaması 80 olan sınıfın birleşik ortalaması 75'tir.
+neden: Sınıfların kişi sayıları farklıysa toplamlar eşit ağırlıkta değildir.
+dogru: Birleşik ortalama $\frac{n_1\cdot70+n_2\cdot80}{n_1+n_2}$; kalabalık sınıfın ortalamasına yakındır.
+
+::soru c4b tip=ortalama zorluk=2
+12 kişilik bir grubun yaş ortalaması 60, 8 kişilik başka bir grubun yaş ortalaması 75'tir. İki grup birleşince yaş ortalaması kaç olur?
+A) 64 || Hesabı kontrol et: $720+600$.
++B) 66 || Doğru: $\frac{720+600}{20}=66$.
+C) 67,5 || Ortalamaların ortalamasını aldın.
+D) 69 || Ağırlıkları ters kullandın.
+E) 70 || Hesabı yeniden yap.
+kontrol: (12*60+8*75)/20
+cozum: Toplamlar 720 ve 600; birleşik toplam 1320, kişi sayısı 20: ortalama 66.
 
 ::ozet
 - Toplam = ortalama × veri sayısı; iki grubun ortalaması ağırlıklıdır.

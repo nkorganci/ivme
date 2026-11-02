@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 19,
-  "nextTopicId": "merkezi-egilim",
+  "completed": 20,
+  "nextTopicId": "onermeler",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -239,13 +239,8 @@
         "TYT"
       ],
       "grade": 9,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "onermeler",

@@ -9,11 +9,13 @@ import { KAR_ZARAR_EXAMS } from './worked-kar-zarar.js';
 import { HAREKET_EXAMS } from './worked-hareket.js';
 import { GRAFIK_EXAMS } from './worked-grafik.js';
 import { VERI_EXAMS } from './worked-veri.js';
+import { MERKEZI_EXAMS } from './worked-merkezi.js';
 export const WORKED_EXAMS = {
   ...KAR_ZARAR_EXAMS,
   ...HAREKET_EXAMS,
   ...GRAFIK_EXAMS,
   ...VERI_EXAMS,
+  ...MERKEZI_EXAMS,
   ...YUZDE_KARISIM_EXAMS,
   ...YAS_ISCI_EXAMS,
   ...MATH_CONTINUATION_EXAMS,

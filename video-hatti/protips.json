@@ -397,6 +397,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "merkezi-egilim-video",
+      "conceptId": "merkezi-egilim",
+      "hints": [
+        {
+          "id": "cikanlarin-ortalamasi-karsilastir",
+          "title": "Çıkanların ortalamasını grup ortalamasıyla karşılaştır",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        },
+        {
+          "id": "mod-korunarak-silme",
+          "title": "Mod korunsun: tekrar sayılarını tabloya yaz",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

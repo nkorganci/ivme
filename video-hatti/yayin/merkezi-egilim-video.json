@@ -1,0 +1,121 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "merkezi-egilim-video",
+  "topicId": "tyt.matematik.veri-ve-istatistik",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a",
+  "taskHash": "e07db3fe3968d30ac0696e49cf92c42603746d6cc8199a1c4aeab6e52c5b0677",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\merkezi-egilim-video",
+  "artifacts": {
+    "asamalar\\youtube-DFaJHs-F7lI-metin\\8b25626356c3e3578492243c213b629a94710daf0cf1a442513da6751fabe2d8.json": "c31a1b4e7e2a73b53de68e871b11e5df2fb4829c93ed5deff9a9fca105a7b77e",
+    "asamalar\\youtube-DFaJHs-F7lI-kareler\\30a13fc643956b58f111521ef8075473cfbd0eadc560f3620cd80c883b79c5ff.json": "936adba5059a7451bb0c75d626fd72eb6ce769842815283ef666e9358f138314",
+    "kareler\\4eb109a6502b769497acad33dd767e179baf0ab07c0b6d3eb4fd338225cc52a8.png": "c71b75bd5aecaf473e8a4eae6b2518c0e48a96b7842bec59ebd232c0597cf511",
+    "asamalar\\youtube-L_8OZ-66HHg-metin\\31d866fab3c7d7d309060cfb651a7aefc43efe88df0592763f6cab5afb5acd2b.json": "8cf667d0d7705d86cbdf129970396e6ffc19ab6e0856d4fc434214928aa023dd",
+    "asamalar\\youtube-L_8OZ-66HHg-kareler\\8c214e661e115d7e2806b78e4c7e7d470bf619f40254f72d3b40209772730be5.json": "95628e363b17007106713616fc24629ecea5fc2936f12e6339ae584776c85432",
+    "kareler\\78b9197e11988fda97ac6179403d18ab1dac6d94c88c85292b21ef7928be2853.png": "588bad6dd935fdcdd9f0f8653ef0f4047e506f38e4432d5ad2209e1e0834dfa7",
+    "asamalar\\matematik-denetimi\\b32c4c38ba8b0c6ca9ce173244517e4ddc856220f7fa36dfc65bf557c0051132.json": "527534d1fca8996560f45ccc2f14d7063f37a2f7dfa253abb6332f1f74abc8ee",
+    "surumler\\0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a.json": "56797070470bbbfd9d981ad1cc02cd536826bf97077d4999daee2bf217188e58",
+    "surumler\\0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a.oneriler.md": "aece54fab74627c6c0a7b2b20c7a4dd03123b8992216c7dc0584a17aebef1b2e"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-merkezi-egilim-test.py",
+        "sha256": "7616a300bd682ec4fc3b630f2f9258c6e4d56a9f7a42e70310e6fe31b718208b",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.032s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "merkezi-egilim-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 1,
+      "stagesReused": 4,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.054
+    },
+    "videos": [
+      {
+        "providerId": "youtube:DFaJHs-F7lI",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:L_8OZ-66HHg",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:DFaJHs-F7lI",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 957,
+      "normalization": {
+        "captionControlEvents": 953,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1380,
+          "file": "kareler\\4eb109a6502b769497acad33dd767e179baf0ab07c0b6d3eb4fd338225cc52a8.png",
+          "sha256": "c71b75bd5aecaf473e8a4eae6b2518c0e48a96b7842bec59ebd232c0597cf511",
+          "pixelHash": "4eb109a6502b769497acad33dd767e179baf0ab07c0b6d3eb4fd338225cc52a8",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:L_8OZ-66HHg",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1440,
+      "normalization": {
+        "captionControlEvents": 1437,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1740,
+          "file": "kareler\\78b9197e11988fda97ac6179403d18ab1dac6d94c88c85292b21ef7928be2853.png",
+          "sha256": "588bad6dd935fdcdd9f0f8653ef0f4047e506f38e4432d5ad2209e1e0834dfa7",
+          "pixelHash": "78b9197e11988fda97ac6179403d18ab1dac6d94c88c85292b21ef7928be2853",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "cikanlarin-ortalamasi-karsilastir",
+      "contentHash": "689f40bf16ec667733c6e50e00434a61d95e50f9988f500f59b90007c4166a1a",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "mod-korunarak-silme",
+      "contentHash": "d457a1df2cbda9abaa34c8fbda387e296ae68c22c9e1067270be253d67f2ae01",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}
