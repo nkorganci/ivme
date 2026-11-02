@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "yuzde-tasmasi-kesisim",
+    "providerId": "youtube:U9NTTbV6aaE",
+    "startSeconds": 2093,
+    "endSeconds": 2238,
+    "quote": "%130 yapıyor",
+    "frameSeconds": [
+      2150,
+      2230
+    ],
+    "rule": "Herkes iki gruptan en az birindeyse iki grubun yüzdeleri toplamının 100'ü aşan kısmı, iki gruba birden giren kesişimin yüzdesidir.",
+    "condition": "“Herkes en az birinde” bilgisi olmalı. Hiçbirinde olmayanlar varsa taşma, 100 yerine bunların dışındaki yüzdeyle karşılaştırılır (ör. %10 hiçbiri → %90).",
+    "example": "Bir sınıfta herkes yüzme ya da tenisten en az birini yapıyor; %70'i yüzme, %45'i tenis. Taşma %15: iki sporu da yapanlar %15. Bunlar 9 kişiyse sınıf 60 kişidir.",
+    "counterexample": "Sınıfın %10'u hiçbir spor yapmıyorsa kesişim %15 değil, 70 + 45 − 90 = %25 olur.",
+    "rationale": "s(A ∪ B) = s(A) + s(B) − s(A ∩ B) yüzdelerle de geçerlidir. Birleşim %100 olunca kesişim, toplamın 100'ü aşan kısmına eşittir.",
+    "agentSourceReview": "Claude 2150 ve 2230. saniye karelerinde Soru 13'ün tam metnini (çalışanların %50'si ücretsiz, %80'i ücretli izin; her ikisini kullanan 12 kişi) ve tahtadaki %130 − %100 = %30, x = 40 hesabını okudu. Kartın yüzme–tenis örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "en-az-iki-uclu-dahil",
+    "providerId": "youtube:U9NTTbV6aaE",
+    "startSeconds": 2443,
+    "endSeconds": 2562,
+    "quote": "En az 2 demek iki veya daha fazlasısı demektir",
+    "frameSeconds": [
+      2470,
+      2540
+    ],
+    "rule": "Üç kümeli sorularda “en az ikisinde” = yalnız iki kümede olanlar + üçünde olanlar. Kümelerin eleman sayıları toplanınca yalnız iki kümedekiler 2, üçündekiler 3 kez sayılır; yalnız birinde olanlar bu toplamdan bulunur.",
+    "condition": "Her kümenin eleman sayısı ve en az ikisinde olanların sayısı bilinmeli. “Tam iki” ile “en az iki” karıştırılmamalı.",
+    "example": "Üç kulübün her birinde 20 üye var; 4 kişi üçünde, 15 kişi en az ikisinde. Yalnız iki kulüpte 11 kişi; 60 = yalnız bir + 2·11 + 3·4 → yalnız bir kulüpte 26 kişi.",
+    "counterexample": "“En az ikisinde 15” bilgisini “tam ikisinde 15” sanmak üçlü bölgeyi iki kez saydırır ve yalnız bir kulüpte olanları 18 bulur.",
+    "rationale": "Bir elemanın kümelerin eleman sayıları toplamındaki katkısı, bulunduğu küme sayısıdır. Bölgeler bu ağırlıklarla toplandığında küme toplamını verir.",
+    "agentSourceReview": "Claude 2470 ve 2540. saniye karelerinde Soru 15'in tam metnini (her geziye 36 kişi, 12 kişi üçüne, 39 kişi en az ikisine) ve Venn şeması üzerindeki m + n + t + 12 = 39 ile x + y + z + 2(m + n + t) + 36 = 108 denklemlerini okudu. Kartın kulüp örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

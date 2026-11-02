@@ -1,0 +1,115 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "kume-islemleri-video",
+  "topicId": "tyt.matematik.kumeler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705",
+  "taskHash": "d502e33f66bf88c3d9c474448b09c41252dcfbe36183c5d04de48bdddbfcb869",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\kume-islemleri-video",
+  "artifacts": {
+    "asamalar\\youtube-U9NTTbV6aaE-metin\\9887d0a585fecf516e560e2fc57358e722115646529f39c6bbb95affd19599d4.json": "48a3d4f837a2291fdaea6616f3a49d29346e7c7115fbf6d9b9fbeff81c95db30",
+    "asamalar\\youtube-U9NTTbV6aaE-kareler\\68344d90726a9269077d861cfc093148933f00e50e3908a0ddecd30ffa3572e7.json": "2562fd23709c8f4dbae3d03b5365ee04b7999f48656fdb8f1fad4046fc4cca4f",
+    "kareler\\2550ce1e86dba25395ccc1324660d76c94f952a21e94f9bfcc941ececa722b2f.png": "fac93c3554fae799ecacb5ae7a65464b181bd58bca4103bce816a06f6fa37697",
+    "kareler\\a4b45429f8d5f2951544bf99fa1caa7aeefc1ace191cdf3c38d38fd98e0ad6b8.png": "cd40598361ab458cc65977f47dede25840122d843457aa605db2c5ce5dbc5fbd",
+    "kareler\\a6709a2e8465a106d8c36a54970b01eccadcd3e275a4c90a7e68f6699d981889.png": "29143e3462bcca14033989118f7eca8b81ab9ab8c8916677ae7f021c392c58cc",
+    "kareler\\cb0007cee012fa8655bf7191507a15572d2ee5e8805cb751f420667de362fe9e.png": "09be617943dac242e6eea51737bb2f89952215da00ffc9e4f6054439efa2e6b3",
+    "asamalar\\matematik-denetimi\\b1381832269cfe11f3456a6d455976d3daada718ec5c41b27bf681be077c7a27.json": "5b7878a67db63cbd64657b7bc64f2d2dfdad52a9d442e458162cc4668b939dd2",
+    "surumler\\f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705.json": "aab64ddbc0de68f7f510f2d96f20fa46b695632e6309a67f43a003d3d957fe3c",
+    "surumler\\f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705.oneriler.md": "44b3beb1843deb0809a52c9c78a85a183e6c53d2d100c6ff35f6137bd37153ca"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-kume-islemleri-test.py",
+        "sha256": "1ab939088e159b47690013308bf39a5dff9a2b6a141bca59980214ed6ab636f1",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "kume-islemleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 4,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.493
+    },
+    "videos": [
+      {
+        "providerId": "youtube:U9NTTbV6aaE",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:U9NTTbV6aaE",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1597,
+      "normalization": {
+        "captionControlEvents": 1596,
+        "endClippedCues": 0,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2150,
+          "file": "kareler\\2550ce1e86dba25395ccc1324660d76c94f952a21e94f9bfcc941ececa722b2f.png",
+          "sha256": "fac93c3554fae799ecacb5ae7a65464b181bd58bca4103bce816a06f6fa37697",
+          "pixelHash": "2550ce1e86dba25395ccc1324660d76c94f952a21e94f9bfcc941ececa722b2f",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2230,
+          "file": "kareler\\a6709a2e8465a106d8c36a54970b01eccadcd3e275a4c90a7e68f6699d981889.png",
+          "sha256": "29143e3462bcca14033989118f7eca8b81ab9ab8c8916677ae7f021c392c58cc",
+          "pixelHash": "a6709a2e8465a106d8c36a54970b01eccadcd3e275a4c90a7e68f6699d981889",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2470,
+          "file": "kareler\\a4b45429f8d5f2951544bf99fa1caa7aeefc1ace191cdf3c38d38fd98e0ad6b8.png",
+          "sha256": "cd40598361ab458cc65977f47dede25840122d843457aa605db2c5ce5dbc5fbd",
+          "pixelHash": "a4b45429f8d5f2951544bf99fa1caa7aeefc1ace191cdf3c38d38fd98e0ad6b8",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2540,
+          "file": "kareler\\cb0007cee012fa8655bf7191507a15572d2ee5e8805cb751f420667de362fe9e.png",
+          "sha256": "09be617943dac242e6eea51737bb2f89952215da00ffc9e4f6054439efa2e6b3",
+          "pixelHash": "cb0007cee012fa8655bf7191507a15572d2ee5e8805cb751f420667de362fe9e",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "yuzde-tasmasi-kesisim",
+      "contentHash": "60a9ad27c2e49832258c377229c0ef7208e16ad7b2d7f3f8af1902ec841b157c",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "en-az-iki-uclu-dahil",
+      "contentHash": "731967a84cfcab9a9b6cdcafa6632acf2d24f6a00884a1764da09e0d1df0d965",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

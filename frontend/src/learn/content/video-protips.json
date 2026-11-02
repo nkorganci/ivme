@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "b4a79117547da5da3b0a4ba8e7fdcff44d8525f5e22c66036c54b4e9a88e330c",
+  "inputsHash": "a66632369713b4149e3bb6ab603fd59f48c4cd890ab259618bc38152b7937a1f",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1099,6 +1099,54 @@
       },
       "evidenceHash": "3c66007217abda10ce1c2f0ffdd99a41e0a64238b6c180e36641cf84fc15d708",
       "contentHash": "2841d51e9b275ec03ac76f3854107ee5b50322589684fa79d7d0b2ffab2775f0",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kume-islemleri-video:yuzde-tasmasi-kesisim",
+      "conceptId": "kume-islemleri",
+      "topicId": "tyt.matematik.kumeler",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Yüzdeler 100'ü aşarsa taşma kesişimdir",
+      "rule": "Herkes iki gruptan en az birindeyse iki grubun yüzdeleri toplamının 100'ü aşan kısmı, iki gruba birden giren kesişimin yüzdesidir.",
+      "condition": "“Herkes en az birinde” bilgisi olmalı. Hiçbirinde olmayanlar varsa taşma, 100 yerine bunların dışındaki yüzdeyle karşılaştırılır (ör. %10 hiçbiri → %90).",
+      "example": "Bir sınıfta herkes yüzme ya da tenisten en az birini yapıyor; %70'i yüzme, %45'i tenis. Taşma %15: iki sporu da yapanlar %15. Bunlar 9 kişiyse sınıf 60 kişidir.",
+      "counterexample": "Sınıfın %10'u hiçbir spor yapmıyorsa kesişim %15 değil, 70 + 45 − 90 = %25 olur.",
+      "rationale": "s(A ∪ B) = s(A) + s(B) − s(A ∩ B) yüzdelerle de geçerlidir. Birleşim %100 olunca kesişim, toplamın 100'ü aşan kısmına eşittir.",
+      "source": {
+        "providerId": "youtube:U9NTTbV6aaE",
+        "startSeconds": 2093,
+        "endSeconds": 2238
+      },
+      "evidenceHash": "f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705",
+      "contentHash": "60a9ad27c2e49832258c377229c0ef7208e16ad7b2d7f3f8af1902ec841b157c",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kume-islemleri-video:en-az-iki-uclu-dahil",
+      "conceptId": "kume-islemleri",
+      "topicId": "tyt.matematik.kumeler",
+      "sectionIds": [
+        "s3",
+        "s2b"
+      ],
+      "title": "En az iki: üçlü bölge de sayılır",
+      "rule": "Üç kümeli sorularda “en az ikisinde” = yalnız iki kümede olanlar + üçünde olanlar. Kümelerin eleman sayıları toplanınca yalnız iki kümedekiler 2, üçündekiler 3 kez sayılır; yalnız birinde olanlar bu toplamdan bulunur.",
+      "condition": "Her kümenin eleman sayısı ve en az ikisinde olanların sayısı bilinmeli. “Tam iki” ile “en az iki” karıştırılmamalı.",
+      "example": "Üç kulübün her birinde 20 üye var; 4 kişi üçünde, 15 kişi en az ikisinde. Yalnız iki kulüpte 11 kişi; 60 = yalnız bir + 2·11 + 3·4 → yalnız bir kulüpte 26 kişi.",
+      "counterexample": "“En az ikisinde 15” bilgisini “tam ikisinde 15” sanmak üçlü bölgeyi iki kez saydırır ve yalnız bir kulüpte olanları 18 bulur.",
+      "rationale": "Bir elemanın kümelerin eleman sayıları toplamındaki katkısı, bulunduğu küme sayısıdır. Bölgeler bu ağırlıklarla toplandığında küme toplamını verir.",
+      "source": {
+        "providerId": "youtube:U9NTTbV6aaE",
+        "startSeconds": 2443,
+        "endSeconds": 2562
+      },
+      "evidenceHash": "f3a83b0bdf94aae4555831a46af4523c377b143930b9eb77a006f567ab221705",
+      "contentHash": "731967a84cfcab9a9b6cdcafa6632acf2d24f6a00884a1764da09e0d1df0d965",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

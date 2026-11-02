@@ -485,6 +485,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "kume-islemleri-video",
+      "conceptId": "kume-islemleri",
+      "hints": [
+        {
+          "id": "yuzde-tasmasi-kesisim",
+          "title": "Yüzdeler 100'ü aşarsa taşma kesişimdir",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        },
+        {
+          "id": "en-az-iki-uclu-dahil",
+          "title": "En az iki: üçlü bölge de sayılır",
+          "sectionIds": [
+            "s3",
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

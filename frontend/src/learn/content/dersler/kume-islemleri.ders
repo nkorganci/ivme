@@ -46,8 +46,10 @@ eleman-sayisi 2 1-3
 kume-problemi 2 1-3
 kartezyen 1 1-2
 
-@oturum İşlemler ve eleman sayısı | s1 s2
-@oturum Küme problemleri ve kartezyen çarpım | s3 s4
+@oturum Küme işlemleri ve üyelik | s1 s1b
+@oturum Eleman sayısı ve Venn bölgeleri | s2 s2b
+@oturum Küme problemleri ve sınırlar | s3 s3b
+@oturum Kartezyen çarpım | s4 s4b
 
 @ontest
 ::soru o1 tip=islem-venn zorluk=1
@@ -153,6 +155,65 @@ E) 10 || Bu evrensel kümenin eleman sayısıdır.
 kontrol: 10-2
 cozum: $A \cap B = \{2, 4\}$. Tümleyeni $E$'nin geri kalanı: $10 - 2 = 8$ eleman.
 
+@bolum s1b 12 | Eleman bilgilerinden kümeleri sınırlamak
+::fikir
+"$x\in A\cap B$" bilgisi $x$'in **iki kümede de** olduğunu, "$x\in A\setminus B$" **A'da olup B'de olmadığını**, "$x\in A\cup B$" yalnız **en az birinde** olduğunu söyler. Her bilgiyi bir kümeye **kesin girmesi** ya da **kesin girmemesi** gereken elemana çevir; aday kümeleri bu listeyle ele.
+
+::duzey
+L1: $8\in A\cap B$ ise $8\in B$ kesindir. $10\in A\setminus B$ ise $10\notin B$ kesindir. $9\in A\cup B$ ise 9'un B'de olup olmadığı belli değildir.
+L2: Kelimelerden harf kümesi sorularında "bu kelime $A\cap B$'nin harfleriyle yazılabilir" demek kelimenin bütün harflerinin iki kümede de olduğunu söyler; bu harfler A'nın en az ne içerdiğini verir. Kalan eleman sayısı, A'ya eklenebilecek en çok harf sayısıdır.
+L3: "Kesinlikle yazılamaz" sorusunda bir kelimeyi yazmak için A'ya eklenmesi gereken harf sayısını say; bu sayı A'daki boş yer sayısından fazlaysa kelime kesinlikle yazılamaz. Az ya da eşitse yazılabilir olma ihtimali vardır.
+
+::cikmis TYT-0761 tip=islem-venn
+
+::ornek baslik="Benzer: A kümesi ne olabilir?"
+soru: $5\in A\cap B$, $7\in A\cup B$, $12\in B\setminus A$ olduğu biliniyor. A kümesi I. tek sayılar, II. 10'dan küçük doğal sayılar, III. 3'ün katları kümelerinden hangileri olabilir?
+1. A'da kesin olan: 5; A'da kesin olmayan: 12. 7 hakkında bilgi yok. || Bilgileri listeye çevir.
+2. I: 5 tek ✓, 12 tek değil ✓. II: $5<10$ ✓, $12\geq10$ ✓. || İki koşul da sağlanıyor.
+3. III: 5, 3'ün katı değil ✗. || Kesin eleman eksik.
+cevap: I ve II
+
+::cikmis TYT-0757 tip=islem-venn
+
+::ornek baslik="Benzer: hangi kelime kesinlikle yazılamaz?"
+soru: Harflerden oluşan ve eleman sayıları 8 olan A ve B kümeleri için "kalem" ve "masa" kelimeleri $A\cap B$'nin, "deniz" kelimesi $A\cup B$'nin harfleriyle yazılabiliyor. salam, sele, kitap, kalemlik kelimelerinden hangisi A'nın harfleriyle kesinlikle yazılamaz?
+1. $A\cap B\supseteq\{k, a, l, e, m, s\}$: A'da 6 harf kesin, 2 boş yer var. || Kesişimdeki harfler iki kümede.
+2. salam ve sele yalnız bu harfleri kullanır ✓; kalemlik için yalnız i gerekir (1 harf). || Yazılabilir.
+3. kitap için i, t, p gerekir: 3 harf > 2 boş yer. || Kesinlikle yazılamaz.
+cevap: kitap
+
+::ornek baslik="Tümleyenle elemanı yerleştir"
+soru: Evrensel küme $E=\{1, 2, \dots, 8\}$. $A'=\{1, 2, 7, 8\}$, $B'=\{2, 3, 4, 8\}$ ise $A\cap B$ ve $A\setminus B$ nedir?
+1. $A=\{3, 4, 5, 6\}$, $B=\{1, 5, 6, 7\}$. || Tümleyenin tümleyeni.
+2. $A\cap B=\{5, 6\}$. || İki kümede ortak.
+3. $A\setminus B=\{3, 4\}$. || Kontrol: $(A\cup B)'=A'\cap B'=\{2, 8\}$.
+cevap: $\{5, 6\}$ ve $\{3, 4\}$
+
+::sorgula s1b-uye baslik="Üyelik bilgisinden çıkarım"
+durum: Bir okulun satranç (S) ve münazara (M) kulüpleri var. Ece'nin $\text{Ece}\in S\cup M$, Can'ın $\text{Can}\in S\setminus M$ olduğu biliniyor.
+soru: Hangisi kesinlikle doğrudur?
+A) Ece satranç kulübünde. || $S\cup M$ yalnız en az birinde olduğunu söyler; Ece yalnız münazarada olabilir.
++B) Can münazara kulübünde değil. || $S\setminus M$: S'de olup M'de olmayan.
+C) Ece iki kulüpte de. || Birleşim, kesişimi gerektirmez.
+neden: Fark bilgisi iki kesin sonuç verir: Can satrançta ve münazarada değil. Birleşim bilgisi yalnız "en az biri" der; Ece'nin hangi kulüpte olduğu kesin değildir.
+sinav: $\cap$ ve $\setminus$ bilgileri kesin üyelik verir; $\cup$ bilgisi tek başına bir kümeyi belirlemez.
+dusun: Ece için $\text{Ece}\in S\cup M$ ve $\text{Ece}\notin S$ bilinseydi?
+yanit: Ece kesinlikle münazara kulübündedir.
+
+::yanilgi m1b tip=islem-venn
+yanlis: $9\in A\cup B$ ise 9 hem A'da hem B'dedir.
+neden: Birleşim "en az birinde" demektir; kesişim gerekmez.
+dogru: $9\in A\cup B$ ise 9, A'da ya da B'de (ya da ikisinde) bulunur.
+
+::soru c1b tip=islem-venn zorluk=2
+$3\in A\cap B$, $6\in A\setminus B$ ve $9\in B\setminus A$ ise A kümesi I. 3'ün katı olan doğal sayılar, II. 10'dan küçük çift sayılar, III. $\{1, 2, 3, 4, 5, 6\}$ kümelerinden hangileri olabilir?
+A) Yalnız I || I'de 9 var; $9\notin A$ olmalı.
+B) Yalnız II || II'de 3 yok.
++C) Yalnız III || Doğru: 3 ve 6 var, 9 yok.
+D) I ve III || I, 9'u içerir.
+E) II ve III || II, 3'ü içermez.
+cozum: A'da kesin: 3 ve 6; A'da kesin değil: 9. I'de 9 var ✗; II'de 3 yok ✗; III uygun.
+
 @bolum s2 9 | Eleman sayısı bağıntıları
 ::fikir
 $s(A \cup B) = s(A) + s(B) - s(A \cap B)$: kesişimdeki elemanlar iki kez sayıldığı için bir kez çıkarılır. $s(A \setminus B) = s(A) - s(A \cap B)$.
@@ -209,6 +270,74 @@ C) 12 || Hesabı kontrol et.
 E) 15 || Hesabı yeniden yap.
 kontrol: 2*5+4
 cozum: Yalnız $B$ = $x$, yalnız $A$ = $2x$: $2x + x + 4 = 19 \Rightarrow x = 5$. $s(A) = 2x + 4 = 14$.
+
+@bolum s2b 12 | Venn bölgeleri ve üç küme
+::kesfet ki-uc
+
+::fikir
+İki küme evrensel kümeyi **dört bölgeye** ($A\setminus B$, $A\cap B$, $B\setminus A$, dış), üç küme **sekiz bölgeye** ayırır. Soruyu **bölgelere** çevir: her eleman tek bir bölgede bulunur. Üç kümede eleman sayısı: $s(A\cup B\cup C)=s(A)+s(B)+s(C)-s(A\cap B)-s(A\cap C)-s(B\cap C)+s(A\cap B\cap C)$.
+
+::duzey
+L1: Venn şemasında en içteki bölgeden (üçünün kesişimi) başla, sonra ikili kesişimlerin geri kalanını, en son "yalnız" bölgeleri doldur. Böylece hiçbir eleman iki kez sayılmaz.
+L2: "Yalnız A" bölgesi $s(A)$'dan A'nın içindeki bütün kesişim bölgelerinin çıkarılmasıyla bulunur. "En az ikisinde" demek iki ve üç kümede bulunan bölgelerin toplamıdır.
+L3: Eleman toplamı ya da çarpımı veren sorularda (TYT-0760) bölgelere eleman yerleştirme denemesi yapılır: en çok kısıtlanan bölgeyle başla (farkı 8 olan iki sayı yalnız 1 ve 9), sonra toplam eşitliği gibi küresel koşulla geri kalanları belirle.
+
+::cikmis TYT-0760 tip=islem-venn
+
+::ornek baslik="Benzer: bölgelere sayı yerleştirme"
+soru: $A\cup B=\{1, 2, \dots, 8\}$; $A\setminus B$'nin iki elemanının toplamı 7, $A\cap B$'nin iki elemanının farkı 6, $B\setminus A$'nın iki elemanının çarpımı 6'dır. A'nın elemanları toplamı B'ninkine eşitse $A\cap B$'nin elemanları toplamı kaçtır?
+1. Toplamlar eşitse $A\setminus B$ ile $B\setminus A$'nın toplamları eşittir. || Ortak kısım iki tarafta da var.
+2. Farkı 6 olan çiftler $(1,7)$, $(2,8)$; çarpımı 6 olanlar $(1,6)$, $(2,3)$; toplamı 7 olanlar $(1,6)$, $(2,5)$, $(3,4)$. Bütün koşulları sağlayan tek yerleşim: $A\setminus B=\{3, 4\}$, $B\setminus A=\{1, 6\}$, $A\cap B=\{2, 5, 7, 8\}$. || Toplamlar $7=7$.
+3. $A\cap B$ toplamı $2+5+7+8=22$. || Kontrol: $8-2=6$ ✓
+cevap: 22
+
+::ornek baslik="Üç kümeli sayım"
+soru: 40 kişilik bir sınıfta 18 kişi futbol, 15 kişi basketbol, 12 kişi voleybol oynuyor. 6'sı futbol ve basketbol, 5'i futbol ve voleybol, 4'ü basketbol ve voleybol, 2'si üçünü de oynuyor. Hiçbirini oynamayan kaç kişi var?
+1. En az birini oynayan $18+15+12-6-5-4+2=32$. || Üç kümeli formül.
+2. Hiçbiri $40-32=8$. || Dış bölge.
+3. Kontrol: yalnız futbol $18-6-5+2=9$. || Bölgeler negatif değil.
+cevap: 8
+
+::tamamla baslik="En az iki sporu yapanlar"
+soru: Yukarıdaki sınıfta en az iki spor yapan kaç kişi vardır?
+1. Üçünü de yapan 2 kişi. || En iç bölge.
+?2. Yalnız iki sporu yapanlar: $(6-2)+(5-2)+(4-2)=9$. || İkili kesişimlerden üçlüyü çıkar.
+?3. En az iki: $9+2=11$. || İkili ve üçlü bölgeler.
+cevap: 11
+
+::ornek baslik="Yalnız birini yapanlar"
+soru: Aynı sınıfta yalnız bir spor yapan kaç kişi vardır?
+1. Yalnız futbol $18-6-5+2=9$, yalnız basketbol $15-6-4+2=7$, yalnız voleybol $12-5-4+2=5$. || Her kümeden içindeki kesişimleri çıkar.
+2. Toplam $9+7+5=21$. || Yalnız bölgeler.
+3. Kontrol: $21+11=32$ en az bir spor. || Bölgelerin toplamı birleşim.
+cevap: 21
+
+::sorgula s2b-iki baslik="İki kez sayılanlar"
+durum: Bir ankette 25 kişi çay, 20 kişi kahve içtiğini söylüyor; ankete 35 kişi katılmış ve hepsi en az birini içiyor.
+soru: Hem çay hem kahve içen kaç kişidir?
+A) 45 || Bu, iki sayının toplamıdır; kesişimdekiler iki kez sayıldı.
++B) 10 || $25+20-35=10$.
+C) 5 || Hesabı kontrol et.
+kontrol: 25+20-35
+neden: $s(C\cup K)=s(C)+s(K)-s(C\cap K)$ (C: çay, K: kahve): $35=45-x$, $x=10$. Fazladan sayılan 10 kişi, iki gruba da yazılanlardır.
+sinav: İki toplam bütünü aşıyorsa aşan miktar kesişimi verir (herkes en az birindeyse).
+dusun: 5 kişi hiçbirini içmeseydi kesişim kaç olurdu?
+yanit: Birleşim 30: $45-30=15$.
+
+::yanilgi m2b tip=kume-problemi
+yanlis: Üç kümede birleşim $s(A)+s(B)+s(C)-s(A\cap B\cap C)$'dir.
+neden: İkili kesişimler iki kez sayılır; çıkarılmaları gerekir. Üçlü kesişim ise bu çıkarmalarda fazla düşer.
+dogru: İkili kesişimleri çıkar, üçlü kesişimi ekle.
+
+::soru c2b tip=kume-problemi zorluk=2
+Bir grupta 20 kişi İngilizce, 14 kişi Almanca, 10 kişi Fransızca biliyor. 6'sı İngilizce ve Almanca, 4'ü İngilizce ve Fransızca, 3'ü Almanca ve Fransızca, 2'si üç dili de biliyor. En az bir dil bilen kaç kişidir?
+A) 29 || Hesabı kontrol et.
+B) 31 || Üçlü kesişimi eklemeyi unuttun.
++C) 33 || Doğru: $44-13+2=33$.
+D) 35 || İkili kesişimlerden birini unuttun.
+E) 44 || Kesişimleri hiç çıkarmadın.
+kontrol: 20+14+10-6-4-3+2
+cozum: $20+14+10-6-4-3+2=33$.
 
 @bolum s3 11 | Küme problemleri: Venn ve tablo
 ::fikir
@@ -277,6 +406,64 @@ E) 42 || Bu en az bir spor yapanların sayısıdır.
 kontrol: 42-8
 cozum: En az biri $50 - 8 = 42$. İkisi de $28 + 22 - 42 = 8$. Yalnız biri $42 - 8 = 34$.
 
+@bolum s3b 10 | En az, en çok: kesişim ve birleşimin sınırları
+::kesfet ki-sinir
+
+::fikir
+Yalnız $s(A)$, $s(B)$ ve evrensel küme biliniyorsa kesişim tek bir sayı değildir, **bir aralıktadır**: $\max\{0,\ s(A)+s(B)-s(E)\}\le s(A\cap B)\le\min\{s(A), s(B)\}$. Birleşim de buna bağlı olarak $s(A)+s(B)-s(A\cap B)$ ile hesaplanır: **kesişim büyüdükçe birleşim küçülür**.
+
+::duzey
+L1: 12 elemanlı A ile 8 elemanlı B'nin kesişimi en çok 8'dir: B'nin hepsi A'nın içinde olabilir. Evrensel küme büyükse kesişim 0 bile olabilir.
+L2: Evrensel küme 15 elemanlıysa $12+8=20$ eleman 15 yere sığmaz; en az $20-15=5$ eleman iki kümede ortak olmalıdır. Bu, güvercin yuvası fikrinin kümelerdeki karşılığıdır.
+L3: "En az kaç kişi iki dili de bilir" sorusu kesişimin alt sınırını, "en çok kaç kişi hiçbirini bilmez" sorusu birleşimin alt sınırını ister. Her zaman sınır değerinde bir örnek kurarak sınırın gerçekten ulaşılabildiğini kontrol et.
+
+::ornek baslik="Kesişimin aralığı"
+soru: 15 elemanlı bir evrensel kümede $s(A)=12$, $s(B)=8$'dir. $s(A\cap B)$ en az ve en çok kaçtır?
+1. En çok: $\min\{12, 8\}=8$; B tamamen A'nın içinde. || Küçük küme büyüğün içine.
+2. En az: $12+8-15=5$; iki küme evreni olabildiğince kaplar. || Sığmayan elemanlar ortak.
+3. $5\le s(A\cap B)\le8$. || İki uç da kurulabilir.
+cevap: En az 5, en çok 8
+
+::ornek baslik="Hiçbirini bilmeyenler en çok kaç?"
+soru: 40 kişilik bir sınıfta 25 kişi İngilizce, 18 kişi Almanca biliyor. Hiçbir dili bilmeyen en çok kaç kişi olabilir?
+1. G: İngilizce, L: Almanca bilenler. Hiçbiri $=40-s(G\cup L)$; birleşim en az olunca hiçbiri en çok. || Ters orantı.
+2. Birleşim en az: Almanca bilenlerin hepsi İngilizce de biliyor: $s(G\cup L)=25$. || Kesişim en çok 18.
+3. Hiçbiri en çok $40-25=15$. || Kontrol: 18 iki dil, 7 yalnız İngilizce.
+cevap: 15
+
+::ornek baslik="İki dili de bilen en az kaç?"
+soru: Aynı sınıfta herkes en az bir dil biliyorsa iki dili de bilen en az kaç kişidir? İngilizce bilenler 25, Almanca bilenler 18.
+1. Birleşim 40 olmak zorunda. || Herkes en az birinde.
+2. $s(G\cap L)=25+18-40=3$. || Formül tek değer verir.
+3. Bu durumda kesişim tam 3'tür. || "En az" sorulsa da değer kesinleşti.
+cevap: 3
+
+::sorgula s3b-anket baslik="Anket sonuçlarından kesin bilgi"
+durum: 50 kişilik bir ankette 35 kişi "kitap okurum", 30 kişi "film izlerim" diyor.
+soru: Hangisi kesinlikle doğrudur?
+A) 15 kişi ikisini de yapar. || Kesişim 15 ile 30 arasında herhangi bir değer olabilir.
++B) En az 15 kişi ikisini de yapar. || $35+30-50=15$: alt sınır.
+C) En çok 15 kişi ikisini de yapar. || Kesişim 30'a kadar çıkabilir.
+neden: İki grup 50 kişiye sığmak için en az 15 kişide örtüşür. Film izleyenlerin hepsi kitap da okuyabilir; o zaman kesişim 30 olur. Kesin olan yalnız alt sınırdır.
+sinav: Yalnız toplamlar verildiyse kesişim için kesin bilgi bir aralıktır: alt sınır $s(A)+s(B)-s(E)$, üst sınır küçük küme.
+dusun: Ankete katılanlardan 5'inin ikisini de yapmadığı bilinseydi kesişim kaç olurdu?
+yanit: Birleşim 45: $35+30-45=20$.
+
+::yanilgi m3b tip=eleman-sayisi
+yanlis: $s(A)=12$, $s(B)=8$ ise $s(A\cap B)$ kesin olarak $12+8-s(E)$'dir.
+neden: Bu yalnız alt sınırdır; birleşim evrensel kümeden küçükse kesişim daha büyük olur.
+dogru: $\max\{0, s(A)+s(B)-s(E)\}\le s(A\cap B)\le\min\{s(A), s(B)\}$.
+
+::soru c3b tip=eleman-sayisi zorluk=2
+30 kişilik bir sınıfta 22 kişi matematik, 17 kişi fizik kursuna gidiyor. Her iki kursa da giden öğrenci sayısının alabileceği en küçük ve en büyük değerlerin toplamı kaçtır?
+A) 17 || Yalnız en büyük değeri aldın.
+B) 22 || Hesabı kontrol et: $9+17$.
+C) 24 || Hesabı yeniden yap.
++D) 26 || Doğru: en az $22+17-30=9$, en çok 17.
+E) 39 || İki kurs sayısını topladın.
+kontrol: (22+17-30)+17
+cozum: En az $39-30=9$ (herkes en az bir kursa gider), en çok 17 (fizikçilerin hepsi matematikte). Toplam 26.
+
 @bolum s4 7 | Kartezyen çarpım
 ::fikir
 $A \times B = \{(a, b) \mid a \in A, b \in B\}$ ve $s(A \times B) = s(A) \cdot s(B)$. Sıralı ikilide **sıra önemlidir**: $(1, 2) \neq (2, 1)$; bu yüzden genellikle $A \times B \neq B \times A$.
@@ -321,6 +508,72 @@ D) 4 || $s(B) > 1$ olduğundan $15 \cdot 1$ olamaz.
 E) 12 || $s(B) = 1$ alınamaz.
 kontrol: 5-3
 cozum: $15 = 15 \cdot 1 = 5 \cdot 3$; $s(B) > 1$ olduğundan $s(A) = 5$, $s(B) = 3$: fark 2.
+
+@bolum s4b 10 | Kartezyen çarpımda koşullu sayım
+::kesfet ki-kartezyen
+
+::fikir
+$A\times B$'nin elemanları bir **tablo** gibidir: satırlar A'nın, sütunlar B'nin elemanları; toplam $s(A)\cdot s(B)$ hücre. Koşullu sorularda ("$a<b$", "$a+b$ çift") tabloyu **satır satır say**. $(A\times B)\cap(B\times A)=(A\cap B)\times(A\cap B)$ olduğu için ortak sıralı ikililer yalnız kesişimden gelir.
+
+::duzey
+L1: $A=\{1, 2, 3\}$, $B=\{a, b\}$ ise $A\times B$'de 6 sıralı ikili vardır: her satırda 2 hücre, 3 satır. Sıra önemlidir: $(1, a)\in A\times B$ ama $(a, 1)\notin A\times B$.
+L2: "$a+b$ çift olan ikililer" için A ve B'nin tek ve çift elemanlarını say: tek–tek ve çift–çift eşleşmeleri çarp, topla. Satır satır saymak da aynı sonucu verir.
+L3: $s(A\times B)=12$ ve $s(A)+s(B)=7$ ise $s(A)$ ve $s(B)$ çarpımı 12, toplamı 7 olan iki sayıdır: 3 ve 4. Kartezyen çarpım ile kesişim, birleşim ve fark işlemleri dağılır: $A\times(B\cup C)=(A\times B)\cup(A\times C)$.
+
+::ornek baslik="Koşullu ikililer"
+soru: $A=\{1, 2, 3, 4\}$, $B=\{2, 3, 5\}$ ise $A\times B$'nin $a<b$ koşulunu sağlayan kaç elemanı vardır?
+1. $a=1$: $b\in\{2, 3, 5\}$: 3. $a=2$: $\{3, 5\}$: 2. || Satır satır.
+2. $a=3$: $\{5\}$: 1. $a=4$: $\{5\}$: 1. || Her satırda B'den büyükleri say.
+3. Toplam $3+2+1+1=7$. || 12 hücreden 7'si.
+cevap: 7
+
+::ornek baslik="Toplamı çift olan ikililer"
+soru: $A=\{1, 2, 3, 4, 5\}$, $B=\{1, 2, 3\}$ ise $A\times B$'nin kaç elemanında bileşenler toplamı çifttir?
+1. A'da 3 tek, 2 çift; B'de 2 tek, 1 çift. || Eşlik say.
+2. Tek–tek $3\cdot2=6$, çift–çift $2\cdot1=2$. || Toplam çift olan eşleşmeler.
+3. $6+2=8$. || 15 ikiliden 8'i.
+cevap: 8
+
+::ornek baslik="Kartezyen çarpım birleşime dağılır"
+soru: $A=\{1, 2\}$, $B=\{3\}$, $C=\{3, 4\}$ ise $s(A\times(B\cup C))$ kaçtır? Sonucu $s(A\times B)$ ve $s(A\times C)$ ile de bul.
+1. $B\cup C=\{3, 4\}$: $s(A\times(B\cup C))=2\cdot2=4$. || Önce birleşim.
+2. $s(A\times B)=2$, $s(A\times C)=4$; ortak ikililer $A\times(B\cap C)=A\times\{3\}$: 2. || Dağılma.
+3. $2+4-2=4$. || Birleşimin eleman sayısı formülü.
+cevap: 4
+
+::tamamla baslik="Ortak sıralı ikililer"
+soru: $A=\{1, 2, 3\}$, $B=\{2, 3, 4, 5\}$ ise $(A\times B)\cap(B\times A)$ kaç elemanlıdır?
+1. Bir ikili iki kümede de olmalı: $(x, y)$ için $x\in A\cap B$ ve $y\in A\cap B$. || Her bileşen iki kümede.
+?2. $A\cap B=\{2, 3\}$. || Ortak elemanlar.
+?3. $(A\cap B)\times(A\cap B)$: $2\cdot2=4$ eleman. || $(2,2), (2,3), (3,2), (3,3)$.
+cevap: 4
+
+::sorgula s4b-oyun baslik="Zar ve yazı–tura"
+durum: Bir zar ($\{1, \dots, 6\}$) ile bir para ($\{Y, T\}$) birlikte atılıyor. Sonuçlar $Z\times P$ kümesiyle gösteriliyor.
+soru: Zarın 4'ten büyük ve paranın yazı geldiği kaç sonuç vardır?
+A) 4 || Zarın 4'ten büyük değerleri 5 ve 6; yalnız yazı sayılır.
++B) 2 || $\{5, 6\}\times\{Y\}$: $(5, Y)$, $(6, Y)$.
+C) 6 || Bu, yazı gelen bütün sonuçlardır.
+kontrol: 2
+neden: Koşullu kartezyen çarpım, koşulu sağlayan alt kümelerin çarpımıdır: $\{5, 6\}\times\{Y\}$, $2\cdot1=2$ sonuç.
+sinav: İki bağımsız koşulu olan sayım sorularında her bileşen için ayrı say, sonra çarp.
+dusun: Toplam kaç sonuç vardır?
+yanit: $6\cdot2=12$.
+
+::yanilgi m4b tip=kartezyen
+yanlis: $A\times B$ ile $B\times A$ aynı kümedir.
+neden: Sıralı ikilide sıra önemlidir; $(1, a)$ ile $(a, 1)$ farklıdır.
+dogru: Genellikle $A\times B\neq B\times A$; yalnız eleman sayıları eşittir.
+
+::soru c4b tip=kartezyen zorluk=2
+$s(A\times B)=12$ ve $s(A)+s(B)=7$'dir. $s(A)>s(B)$ ise $s(A\times A)$ kaçtır?
+A) 9 || Bu, $s(B\times B)$'dir.
+B) 12 || Bu, $s(A\times B)$'dir.
++C) 16 || Doğru: $s(A)=4$, $4^2=16$.
+D) 49 || Toplamın karesini aldın.
+E) 144 || $12^2$ aldın.
+kontrol: 4^2
+cozum: Çarpımı 12, toplamı 7 olan sayılar 3 ve 4; $s(A)=4$. $s(A\times A)=16$.
 
 ::ozet
 - Kesişim ortak, birleşim hepsi, $A \setminus B$ yalnız $A$, $A'$ evrensel kümenin geri kalanı.

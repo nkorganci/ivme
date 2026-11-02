@@ -25,8 +25,9 @@ import * as merkezi from './merkezi-egilim.js';
 import * as onermeler from './onermeler.js';
 import * as kosullu from './kosullu-onerme.js';
 import * as kumeler from './kumeler-temel.js';
+import * as kumeIslem from './kume-islemleri.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi, onermeler, kosullu, kumeler];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi, onermeler, kosullu, kumeler, kumeIslem];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

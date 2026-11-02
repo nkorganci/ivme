@@ -3117,6 +3117,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "kume-islemleri:c1b": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kume-islemleri:c2": {
    "conceptId": "kume-islemleri",
    "type": "choice",
@@ -3129,6 +3142,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "kume-islemleri:c2b": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "kume-islemleri:c3": {
    "conceptId": "kume-islemleri",
@@ -3143,6 +3169,19 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "kume-islemleri:c3b": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
   "kume-islemleri:c4": {
    "conceptId": "kume-islemleri",
    "type": "choice",
@@ -3155,6 +3194,19 @@
     "E"
    ],
    "version": "1472983ce40becda"
+  },
+  "kume-islemleri:c4b": {
+   "conceptId": "kume-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "kume-islemleri:h1": {
    "conceptId": "kume-islemleri",
