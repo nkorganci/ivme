@@ -1807,6 +1807,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "hareket-problemleri:c1b": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "hareket-problemleri:c2": {
    "conceptId": "hareket-problemleri",
    "type": "choice",
@@ -1819,6 +1832,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "hareket-problemleri:c2b": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
   },
   "hareket-problemleri:c3": {
    "conceptId": "hareket-problemleri",
@@ -1833,6 +1859,19 @@
    ],
    "version": "a7ece0af5749bb7c"
   },
+  "hareket-problemleri:c3b": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "hareket-problemleri:c4": {
    "conceptId": "hareket-problemleri",
    "type": "choice",
@@ -1845,6 +1884,19 @@
     "E"
    ],
    "version": "1472983ce40becda"
+  },
+  "hareket-problemleri:c4b": {
+   "conceptId": "hareket-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "hareket-problemleri:h1": {
    "conceptId": "hareket-problemleri",

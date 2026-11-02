@@ -148,12 +148,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "yol-hiz-zaman": 114,
-    "karsilasma": 21,
+    "yol-hiz-zaman": 113,
+    "karsilasma": 22,
     "ortalama-hiz": 9,
-    "akinti-pist": 5
+    "akinti-pist": 6
    },
-   "untyped": 62
+   "untyped": 61
   },
   "ikinci-derece-denklemler": {
    "total": 473,

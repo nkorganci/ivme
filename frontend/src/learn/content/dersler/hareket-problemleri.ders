@@ -47,8 +47,10 @@ karsilasma 2 1-3
 ortalama-hiz 1 1-3
 akinti-pist 2 1-3
 
-@oturum Hız, yol, zaman ve karşılaşma | s1 s2
-@oturum Ortalama hız ve özel durumlar | s3 s4
+@oturum Yol, hız, zaman ve oranlar | s1 s1b
+@oturum Karşılaşma ve yetişme | s2 s2b
+@oturum Ortalama hız ve grafikler | s3 s3b
+@oturum Pist, akıntı ve tren | s4 s4b
 
 @ontest
 ::soru o1 tip=yol-hiz-zaman zorluk=1
@@ -140,6 +142,70 @@ E) 9000 || Bu 30 dakikalık yoldur.
 kontrol: 18000/60*25
 cozum: 18 km/sa $= \frac{18000}{60} = 300$ m/dk; $300 \cdot 25 = 7500$ m.
 
+@bolum s1b 10 | Aynı yol, farklı hız: oranla düşün
+::fikir
+**Yol sabitse hız ile süre ters orantılıdır**: hız $k$ katına çıkarsa süre $\frac{1}{k}$ katına iner. **Süre sabitse yol ile hız doğru orantılıdır**: aynı sürede iki kat hızlı olan iki kat yol alır. Sayı verilmeyen hareket sorularında önce bu oranı yaz.
+
+::duzey
+L1: 120 km'lik yolu 60 km/sa ile 2 saatte, 40 km/sa ile 3 saatte gidersin. Hızlar $3:2$, süreler $2:3$. Aynı yolda hızlı olan daha az süre harcar; oran ters döner.
+L2: Hız %25 artarsa yeni hız eski hızın $\frac{5}{4}$'üdür; süre $\frac{4}{5}$'ine, yani %20 azalır. Hızdaki yüzde artışı süredeki yüzde azalışa eşit değildir. Varış 1 saat erkene kaydıysa bu 1 saat eski sürenin $\frac{1}{5}$'idir: eski süre 5 saat.
+L3: Yol parçalara bölünüp her parçada farklı hız kullanılıyorsa her parçanın süresini aynı birimle yaz. Yolun $\frac{1}{4}$'ü $v$ hızla $T$ saat sürüyorsa kalan $\frac{3}{4}$ aynı hızla $3T$, yarı hızla $6T$ saat sürer. Aynı süreyi koşan iki sporcunun pist uzunlukları hızlarıyla orantılıdır.
+
+::ornek baslik="Hız artınca süre ne kadar azalır?"
+soru: Bir araç hızını %25 artırınca bir yolu her zamankinden 1 saat erken bitiriyor. Araç bu yolu normal hızıyla kaç saatte gider?
+1. Yeni hız $\frac{5}{4}v$; yol sabit olduğu için yeni süre $\frac{4}{5}t$. || Yol sabitken hız ve süre ters orantılı.
+2. Kazanılan süre $t-\frac{4}{5}t=\frac{t}{5}=1$. || Fark eski sürenin beşte biri.
+3. $t=5$ saat. || Kontrol: yeni süre 4 saat; hız oranı $5:4$, süre oranı $4:5$.
+cevap: 5 saat
+
+::ornek baslik="Yolun bir kısmı yarı hızla"
+soru: Bir kamyon bir yolun $\frac{1}{4}$'ünü boş kasayla $v$ hızıyla gidiyor. Sonra yük aldığı için kalan yolu $\frac{v}{2}$ hızıyla gidiyor ve yolun tamamı 21 saat sürüyor. Kamyon yolun tamamını $v$ hızıyla gitseydi kaç saat sürerdi?
+1. İlk çeyrek $T$ saat sürsün. Kalan $\frac{3}{4}$ yol $v$ ile $3T$, $\frac{v}{2}$ ile $6T$ saat sürer. || Yol üç katı, hız yarısı: süre $3\cdot2=6$ katı.
+2. $T+6T=7T=21$, $T=3$. || Toplam süre parçaların toplamı.
+3. Tamamı $v$ ile: $4T=12$ saat. || Dört çeyreğin her biri $T$ saat.
+cevap: 12 saat
+
+::ornek baslik="İç içe dikdörtgen pistler"
+soru: İç içe iki dikdörtgen pistin kenarları arasında her yerde 4 m mesafe var. Dış pistte $7V$, iç pistte $5V$ hızla koşan iki sporcu turlarını aynı anda tamamlıyor. Dış pistin uzunluğu kaç metredir?
+1. İç pistin çevresi $P$ ise dış pistin çevresi $P+8\cdot4=P+32$. || Her kenar iki yandan 4'er m uzar: dört kenarda toplam $4\cdot8=32$ m.
+2. Aynı sürede yollar hızlarla orantılı: $\frac{P+32}{P}=\frac{7}{5}$. || Süre sabitken yol ve hız doğru orantılı.
+3. $5P+160=7P$, $P=80$; dış pist $112$ m. || Kontrol: $112:80=7:5$.
+cevap: 112 m
+
+::tamamla baslik="Daha kısa sürede varmak için hız"
+soru: Bir araç bir yolu saatte 60 km hızla 6 saatte gidiyor. Aynı yolu 4 saatte gidebilmesi için hızını saatte kaç km artırmalıdır?
+1. Yol $60\cdot6=360$ km. || Önce değişmeyen büyüklüğü bulduk.
+?2. Gereken hız $360:4=90$ km/sa. || Hız = yol ÷ süre.
+?3. Artış $90-60=30$ km/sa. || Soru yeni hızı değil, artışı istiyor.
+cevap: Saatte 30 km
+
+::sorgula s1b-servis baslik="Trafik açılınca servis"
+durum: Okul servisi her sabah aynı yolu saatte 30 km ortalama hızla 24 dakikada gidiyor. Bayram sabahı yollar boş ve servis saatte 40 km ortalama hızla gidiyor.
+soru: Servis yolu bu sabah kaç dakikada gider?
+A) 32 dakika || Hız arttı; aynı yolda süre artmaz, azalır.
++B) 18 dakika || Hız $\frac{4}{3}$ katına çıktı, süre $\frac{3}{4}$'üne iner: $24\cdot\frac{3}{4}=18$.
+C) 14 dakika || Hız 10 km/sa arttı diye 10 dakika çıkardın; oranla düşünmelisin.
+kontrol: 24*30/40
+neden: Yol değişmiyor: $30\cdot24=40\cdot t$, $t=18$ dakika. Hız ile süre ters orantılı olduğu için oranlar ters döner.
+sinav: "Aynı yolu" gördüğünde hız oranını ters çevirip süreyle çarp; yolu hesaplamaya gerek kalmaz.
+dusun: Servisin bu yolu 20 dakikada gitmesi için ortalama hızı ne olmalı?
+yanit: $30\cdot24=v\cdot20$, $v=36$ km/sa.
+
+::yanilgi m1b tip=yol-hiz-zaman
+yanlis: Hız %25 artarsa aynı yolun süresi %25 azalır.
+neden: Süre hızla ters orantılıdır; hız $\frac{5}{4}$ katına çıkınca süre $\frac{4}{5}$ katına iner.
+dogru: Hız %25 artarsa süre %20 azalır.
+
+::soru c1b tip=yol-hiz-zaman zorluk=2
+Bir araç hızını %20 artırınca bir yolu her zamankinden 1 saat erken bitiriyor. Araç bu yolu normal hızıyla kaç saatte gider?
+A) 4 || Hesabı kontrol et: yeni süre eski sürenin $\frac{5}{6}$'sı.
+B) 5 || Hızdaki %20'yi süreye aynen aktardın.
++C) 6 || Doğru: süre $\frac{5}{6}$'ya iner, fark $\frac{t}{6}=1$.
+D) 7 || Hesabı yeniden yap.
+E) 12 || Hesabı kontrol et.
+kontrol: 1/(1-1/1.2)
+cozum: Hız $\frac{6}{5}$ katı, süre $\frac{5}{6}$ katı: $t-\frac{5t}{6}=\frac{t}{6}=1$, $t=6$ saat.
+
 @bolum s2 10 | Karşılaşma ve yetişme
 ::fikir
 **Zıt yönde** (birbirine doğru) aradaki mesafe saatte $V_1 + V_2$ kadar, **aynı yönde** $V_1 - V_2$ kadar kapanır. Süre $=$ aradaki mesafe ÷ yaklaşma hızı.
@@ -204,6 +270,74 @@ E) 9 || Hesabı kontrol et: $180 : 30$.
 kontrol: 60*3/(90-60)
 cozum: 3 saatte birinci araç $180$ km öndedir. Yaklaşma hızı $90 - 60 = 30$ km/sa: $180 : 30 = 6$ saat.
 
+@bolum s2b 12 | Karşılaşmadan sonra: süreler ve hız oranı
+::kesfet hp-karsilasma
+
+::fikir
+Karşılaşma noktası yolu iki parçaya böler. **Bir aracın karşılaşmadan sonra gideceği yol, öbür aracın karşılaşmadan önce gittiği yoldur.** Karşılaşmaya kadar $t$, sonrasında $t_A$ ve $t_B$ geçiyorsa $V_A\cdot t_A=V_B\cdot t$ ve $V_B\cdot t_B=V_A\cdot t$; çarpınca $t^2=t_A\cdot t_B$.
+
+::duzey
+L1: A ile B arasında birbirine doğru giden iki araç C'de karşılaşsın. A'nın C'den sonra gideceği CB parçasını, B karşılaşmadan önce zaten gitmiştir. Bu yüzden "karşılaştıktan sonra" verilen süreler, "karşılaşmadan önce" giden yollarla eşleşir.
+L2: Hızlar oranı verildiyse yolları $k$ cinsinden yaz: hızlar $3:1$ ise aynı sürede yollar $3k$ ve $k$'dır. Aynı yönde giden araçlarda hızlar $4:3$ ise hızlı olan yavaş olandan her saat $k$ fazla gider; aradaki 60 km, $k\cdot t=60$ demektir.
+L3: $V_A t_A=V_B t$ ile $V_B t_B=V_A t$ eşitliklerini taraf tarafa çarp: $V_AV_B\,t_At_B=V_AV_B\,t^2$, yani $t=\sqrt{t_A t_B}$. Bölersen hız oranı çıkar: $\frac{V_A}{V_B}=\sqrt{\frac{t_B}{t_A}}$. Karşılaşma süresi kalan sürelerin aritmetik ortalaması değil, geometrik ortalamasıdır.
+
+::cikmis TYT-0673 tip=karsilasma
+
+::ornek baslik="Benzer: karşılaştıktan sonra 90 ve 40 dakika"
+soru: Birbirine doğru aynı anda yola çıkan iki bisikletliden biri karşılaşmalarından 90 dakika sonra, diğeri 40 dakika sonra öbürünün çıktığı yere varıyor. Bisikletliler yola çıktıktan kaç dakika sonra karşılaşmıştır?
+1. Karşılaşma süresi $t$: $t^2=90\cdot40=3600$. || Birinin sonraki yolu öbürünün önceki yolu.
+2. $t=60$ dakika. || Süre pozitif.
+3. Kontrol: hızlar oranı $\sqrt{\frac{90}{40}}=\frac{3}{2}$. Hızlının 60 dakikada gittiği yolu yavaş olan $\frac{3}{2}$ katı sürede, 90 dakikada gider. || Hız oranı ve süreler uyumlu.
+cevap: 60 dakika
+
+::ornek baslik="Hız oranıyla karşılaşma"
+soru: A ve B kentlerinden aynı anda birbirine doğru yola çıkan iki araçtan A'dan çıkanın hızı, B'den çıkanın hızının 3 katıdır. Araçlar 4 saat sonra C'de karşılaşıyor. Hızlı araç karşılaşmadan kaç dakika sonra B'ye varır?
+1. Yavaş aracın hızı $v$ ise $AC=3v\cdot4=12v$, $CB=v\cdot4=4v$. || 4 saatte iki aracın aldığı yollar.
+2. Hızlı araç $CB=4v$ yolunu $3v$ hızla gider: $\frac{4v}{3v}=\frac{4}{3}$ saat. || $v$'ler sadeleşir; sayısal hız gerekmez.
+3. $\frac{4}{3}$ saat $=80$ dakika. || Kontrol: yavaş olanın kalan süresi $12v:v=12$ saat ve $\frac{4}{3}\cdot12=16=4^2$.
+cevap: 80 dakika
+
+::ornek baslik="Hız oranıyla yetişme"
+soru: A ve B noktalarından aynı anda aynı yöne (A'dan B'ye doğru) yola çıkan iki araçtan A'dakinin hızının B'dekinin hızına oranı $\frac{4}{3}$'tür. $|AB|=60$ km olduğuna göre hızlı araç yavaş olana B'den kaç km uzakta yetişir?
+1. Hızlar $4k$ ve $3k$; $t$ sürede yollar $4kt$ ve $3kt$. || Oranı katsayıyla yazdık.
+2. Yetişmede fark 60 km: $4kt-3kt=kt=60$. || Hızlı olan aradaki 60 km'yi kapatır.
+3. Yavaşın aldığı yol $3kt=180$ km; yetişme B'den 180 km ötede. || Kontrol: hızlı olan $240=60+180$ km gitti.
+cevap: 180 km
+
+::ornek baslik="Molalı dönüşte karşılaşma"
+soru: Saatteki hızları 40 km ve 60 km olan iki araç A'dan B'ye aynı anda yola çıkıyor. Hızlı araç B'de yarım saat mola verip aynı hızla geri dönüyor ve yavaş araçla B'den 60 km uzakta karşılaşıyor. A ile B arası kaç km'dir?
+1. Karşılaşma $t$ saatte. Yavaş: $40t=d-60$. || Yavaş araç B'ye 60 km kala karşılaşıyor.
+2. Hızlı araç yarım saat durduğu için $t-\frac{1}{2}$ saat hareket eder: $60\left(t-\frac{1}{2}\right)=d+60$. || Gidiş $d$, dönüş 60 km; moladaki süre yola katılmaz.
+3. Çıkar: $20t-30=120$, $t=7{,}5$; $d=40\cdot7{,}5+60=360$ km. || Kontrol: hızlı $60\cdot7=420=360+60$.
+cevap: 360 km
+
+::sorgula s2b-bisiklet baslik="Parkta iki bisikletli"
+durum: İki bisikletli bir parkurun iki ucundan aynı anda birbirine doğru çıkıyor. Karşılaştıktan sonra biri 9 dakikada, diğeri 16 dakikada öbürünün çıktığı uca varıyor.
+soru: Kaç dakika sonra karşılaşmışlardı?
+A) 12,5 dakika || 9 ile 16'nın aritmetik ortalamasını aldın.
++B) 12 dakika || $t^2=9\cdot16=144$, $t=12$.
+C) 25 dakika || Süreleri topladın; bu toplam yol için bir süre değil.
+kontrol: sqrt(9*16)
+neden: Birinin karşılaşmadan sonraki yolu, öbürünün karşılaşmadan önceki yoludur: $V_1\cdot9=V_2\cdot t$ ve $V_2\cdot16=V_1\cdot t$. Çarpınca $t^2=144$, $t=12$ dakika. Hızlar oranı $\frac{V_1}{V_2}=\frac{t}{9}=\frac{4}{3}$.
+sinav: "Karşılaştıktan sonra … dakikada varıyor" kalıbında karşılaşma süresi $\sqrt{t_1t_2}$'dir.
+dusun: Hızlı bisikletli parkurun tamamını kaç dakikada gider?
+yanit: Hızlı olan karşılaşmadan sonra 9 dakika gider; toplam $12+9=21$ dakika.
+
+::yanilgi m2b tip=karsilasma
+yanlis: Karşılaştıktan sonra 9 ve 16 dakikada varan araçlar $\frac{9+16}{2}=12{,}5$ dakikada karşılaşmıştır.
+neden: Kalan süreler hız oranıyla birlikte değişir; eşitlikler çarpılınca süre karesi çıkar.
+dogru: $t=\sqrt{9\cdot16}=12$ dakika.
+
+::soru c2b tip=karsilasma zorluk=2
+Birbirine doğru aynı anda yola çıkan iki araçtan biri karşılaşmadan 4 saat, diğeri 9 saat sonra öbürünün çıktığı kente varıyor. Araçlar kaç saat sonra karşılaşmıştır?
+A) 5 || Hesabı kontrol et.
++B) 6 || Doğru: $\sqrt{4\cdot9}=6$.
+C) $6{,}5$ || Aritmetik ortalamayı aldın.
+D) 13 || Süreleri topladın.
+E) 36 || Kökünü almayı unuttun.
+kontrol: sqrt(4*9)
+cozum: $V_1\cdot4=V_2\cdot t$ ve $V_2\cdot9=V_1\cdot t$; çarpınca $t^2=36$, $t=6$ saat.
+
 @bolum s3 8 | Ortalama hız
 ::fikir
 **Ortalama hız $= \frac{\text{toplam yol}}{\text{toplam zaman}}$.** Hızların aritmetik ortalaması değildir. Eşit yollarda $\frac{2 V_1 V_2}{V_1 + V_2}$, eşit sürelerde $\frac{V_1 + V_2}{2}$.
@@ -256,6 +390,80 @@ cozum: Yol 24 km olsun: ilk yarı $12 : 12 = 1$ sa, ikinci yarı $12 : 6 = 2$ sa
 
 ::cikmis TYT-0666 tip=yol-hiz-zaman
 
+@bolum s3b 10 | Grafikten hareket okumak
+::kesfet hp-aralik
+
+::fikir
+**Konum–zaman grafiğinde eğim hızdır**; yatay parça mola, kesişim karşılaşma ya da yetişmedir. **Aradaki uzaklık–zaman grafiğinde eğim, uzaklığın değişme hızıdır**: zıt yönde $V_1+V_2$, aynı yönde $V_1-V_2$. Grafiğin kırıldığı an, araçlardan birinin durduğu ya da vardığı andır.
+
+::duzey
+L1: Bir grafikte yatay eksen zaman, dikey eksen yol ise doğrunun dikliği hızı gösterir: 2 saatte 120 km çıkan doğru 60 km/sa'tir. Grafik yatay kalıyorsa zaman geçiyor ama yol artmıyor: araç duruyor.
+L2: Aynı noktadan zıt yönlere çıkan iki kişinin arasındaki uzaklık, ikisi de yürürken $V_1+V_2$ hızıyla artar. Biri okuluna varıp durunca uzaklık yalnız öbürünün hızıyla artar; eğim bu anda azalır. Kırılmadan önceki ve sonraki eğimler iki denklem verir.
+L3: Aynı yönde, arada mesafe varken başlayan iki aracın arasındaki uzaklık önce $V_1-V_2$ hızıyla azalır, yetişme anında sıfır olur, sonra aynı hızla artar: grafik V biçimindedir. Bu yüzden "aralarında 40 km olur" sorusunun genellikle iki cevabı vardır: yetişmeden önce ve sonra.
+
+::cikmis TYT-0700 tip=karsilasma
+
+::ornek baslik="Benzer: kırılan uzaklık grafiği"
+soru: Aynı evden aynı anda zıt yönlere, okullarına doğru sabit hızlarla yürüyen iki kardeşin arasındaki uzaklık ilk 5 dakikada 0'dan 1500 metreye, sonraki 3 dakikada 1500'den 2100 metreye doğrusal olarak artıyor. Okulu eve yakın olan kardeşin okulu evden kaç metre uzaktadır?
+1. İlk 5 dakikada ikisi de yürür: $V_1+V_2=1500:5=300$ m/dk. || Zıt yönde uzaklık hızların toplamıyla artar.
+2. 5. dakikada yakın okula varan durur; sonra uzaklık yalnız öbürünün hızıyla artar: $600:3=200$ m/dk. || Kırılma noktası birinin vardığı an.
+3. Yakın okula giden $300-200=100$ m/dk ile 5 dakika yürüdü: $500$ m. || Kontrol: öbürü $200\cdot8=1600$ m; $500+1600=2100$.
+cevap: 500 m
+
+::grafik alt="Hızlı aracın konumu 40t doğrusu, yavaş aracın konumu 60 + 20t doğrusu; doğrular t = 3 saatte 120 km'de kesişiyor." aciklama="Kesişimden önce hızlı araç geride, sonra önde. Aradaki uzaklık iki doğru arasındaki dikey mesafedir."
+x: 0 6
+y: 0 240
+f: 40*x | navy | hızlı araç: $x = 40t$ | 0 6
+f: 60+20*x | red | yavaş araç: $x = 60 + 20t$ | 0 6
+nokta: 3 120 | yetişme (3, 120) | black
+
+::ornek baslik="Önce ve sonra: aradaki 40 km"
+soru: Saatte 40 km hızla giden bir araç, kendisinden 60 km önde ve aynı yönde saatte 20 km hızla giden bir aracı izliyor. Konum–zaman grafiği yukarıdadır. Hareketten kaç saat sonra aralarında 40 km olur?
+1. Aradaki uzaklık saatte $40-20=20$ km değişir. || Aynı yönde hız farkı.
+2. Yetişmeden önce: $60-20t=40$, $t=1$. || Uzaklık 60'tan azalıyor.
+3. Yetişmeden sonra: $20t-60=40$, $t=5$. || 3. saatte yetişti; sonra hızlı araç öne geçip uzaklaşıyor.
+cevap: 1. ve 5. saatlerde
+
+::ornek baslik="Molalı yolculuğun grafiği"
+soru: Bir aracın konum–zaman grafiği şöyledir: ilk 2 saatte 0'dan 120 km'ye doğrusal çıkıyor, sonraki 1 saat yatay kalıyor, son 2 saatte 120'den 200 km'ye doğrusal çıkıyor. Aracın hareket hızları ve bütün yolculuktaki ortalama hızı nedir?
+1. İlk parça $120:2=60$ km/sa, son parça $80:2=40$ km/sa. || Eğim = yol ÷ süre.
+2. Yatay parçada yol artmıyor: 1 saat mola. || Hız sıfır.
+3. Ortalama hız $200:5=40$ km/sa. || Mola süresi toplam zamana katılır.
+cevap: 60 ve 40 km/sa; ortalama 40 km/sa
+
+::ornek baslik="Aynı yönde V biçimli uzaklık"
+soru: Aynı yönde giden iki aracın arasındaki uzaklık başlangıçta 120 km'dir ve 4 saat sonra 0 olur. Yavaş aracın hızı saatte 50 km ise hızlı aracın hızı kaçtır ve 6. saatin sonunda aralarındaki uzaklık kaç km olur?
+1. Uzaklık saatte $120:4=30$ km azalıyor: $V_1-V_2=30$. || Aynı yönde uzaklık hız farkıyla değişir.
+2. Hızlı araç $50+30=80$ km/sa. || Yavaşın hızına farkı ekle.
+3. Yetişmeden 2 saat sonra uzaklık $30\cdot2=60$ km. || Yetiştikten sonra hızlı araç aynı farkla uzaklaşır.
+cevap: 80 km/sa; 60 km
+
+::sorgula s3b-mola baslik="Grafikteki yatay çizgi"
+durum: Bir otobüsün konum–zaman grafiğinde 10.00–10.30 arası çizgi yatay, sonra yeniden yukarı doğru gidiyor.
+soru: 10.00–10.30 arasında otobüs ne yapmıştır?
++A) Durmuş, mola vermiştir. || Zaman geçiyor ama konum değişmiyor: hız 0.
+B) Sabit hızla yoluna devam etmiştir. || Sabit hız eğik bir doğrudur; yatay çizgi hız sıfır demektir.
+C) Geri dönmüştür. || Geri dönüşte konum azalır; çizgi aşağı iner.
+neden: Konum–zaman grafiğinde eğim hızdır. Yatay parçanın eğimi 0'dır; otobüs yarım saat aynı yerde kalmıştır.
+sinav: Grafik sorularında önce eksenleri oku: konum mu, aradaki uzaklık mı, hız mı? Eğimin anlamı eksenlere göre değişir.
+dusun: Aynı otobüs için aradaki uzaklık grafiği çizilseydi yatay parça ne anlama gelirdi?
+yanit: İki araç arasındaki uzaklık değişmiyor demek olurdu: ikisi de duruyordur ya da aynı yönde aynı hızla gidiyordur.
+
+::yanilgi m3b tip=karsilasma
+yanlis: Aradaki uzaklık–zaman grafiğinin eğimi araçlardan birinin hızıdır.
+neden: İki araç da hareket ederken uzaklık ikisinin birlikte etkisiyle değişir.
+dogru: Eğim zıt yönde $V_1+V_2$, aynı yönde $V_1-V_2$; yalnız biri hareket ederken o aracın hızıdır.
+
+::soru c3b tip=karsilasma zorluk=2
+Aynı noktadan aynı anda zıt yönlere sabit hızlarla yürümeye başlayan iki kişiden biri bir süre sonra varacağı yere ulaşıp duruyor. Aralarındaki uzaklık ilk 3 dakikada 0'dan 900 metreye, sonraki 2 dakikada 900'den 1100 metreye doğrusal olarak artıyor. Önce duran kişi kaç metre yürümüştür?
+A) 200 || Bu, ikinci kişinin hızıdır (m/dk).
+B) 500 || Hesabı kontrol et: önce duranın hızı $300-100$.
++C) 600 || Doğru: hızı $200$ m/dk, 3 dakika.
+D) 900 || Bu, iki kişinin toplam yoludur.
+E) 1100 || Bu, son uzaklıktır.
+kontrol: (900/3-200/2)*3
+cozum: İlk 3 dakikada hızlar toplamı $900:3=300$ m/dk. Sonra yalnız öbürü yürür: $200:2=100$ m/dk. Önce duranın hızı $200$ m/dk, yolu $200\cdot3=600$ m.
+
 @bolum s4 9 | Akıntı, dairesel pist, tren ve tünel
 ::fikir
 **Akıntı:** akıntı yönünde $V + a$, karşı $V - a$. **Dairesel pist:** zıt yönde ilk karşılaşma $\frac{\text{çevre}}{V_1 + V_2}$, aynı yönde ilk yetişme $\frac{\text{çevre}}{V_1 - V_2}$. **Tren–tünel:** tamamen geçiş yolu = tünel + tren boyu.
@@ -306,6 +514,88 @@ D) 10 || Hızların ortalamasını kullandın.
 E) 30 || Hızları çıkardın; zıt yönde hızlar toplanır.
 kontrol: 600/(70+50)
 cozum: Zıt yönde ilk karşılaşmada toplam yol bir tur: $600 : (70 + 50) = 5$ dakika.
+
+@bolum s4b 12 | Pistte tekrar eden karşılaşmalar, akıntıda gidiş–dönüş
+::kesfet hp-pist
+
+::fikir
+Dairesel pistte **ilk karşılaşmaya kadar kapanan yol başlangıçtaki aradır; sonraki her karşılaşma arasında tam bir tur kapanır.** Aynı noktadan çıkanlarda ara bir tur, çapın iki ucundan çıkanlarda yarım turdur. Bir noktadan tekrar tekrar geçen tek araçta ardışık geçişler arası bir tur süresidir.
+
+::duzey
+L1: 400 m'lik pistte aynı noktadan zıt yönlere dakikada 60 ve 40 m koşanlar, her dakika aralarındaki yolu 100 m kapatır. İlk karşılaşmada bir tur (400 m) kapanır: 4 dakika. Karşılaştıktan sonra yine bir tur kapanınca tekrar karşılaşırlar: 8, 12, 16. dakikalar.
+L2: Çapın iki ucundan zıt yönde çıkanlar ilk karşılaşmada yalnız yarım turu kapatır; sonraki her karşılaşma için bir tam tur gerekir. İlk karşılaşma 20 dakikaysa sonrakiler 40 dakika arayla gelir: $n$. karşılaşma $20+40(n-1)$ dakikada.
+L3: Bir noktadan $k$. ve $m$. geçişler arasında $m-k$ tur vardır: süre farkını $m-k$'ya bölünce tur süresi çıkar. Akıntılı gidiş–dönüşte yol iki yönde aynıdır ama hızlar $V+a$ ve $V-a$ olduğu için süreler farklıdır; dönüş süresini yolu yeni hıza bölerek bul.
+
+::cikmis TYT-0685 tip=akinti-pist
+
+::ornek baslik="Benzer: B'den 2. ve 6. geçiş"
+soru: Dairesel bir parkurda hep aynı yönde sabit hızla giden bir araç A noktasından çıktıktan 200 saniye sonra B noktasından 2. kez, 680 saniye sonra 6. kez geçiyor. Araç B'den ilk kez kaçıncı saniyede geçmiştir?
+1. 2. ve 6. geçiş arasında 4 tur var: $680-200=480$ sn, bir tur $120$ sn. || Ardışık geçişler arası bir tur.
+2. 1. geçiş 2. geçişten bir tur önce: $200-120=80$ sn. || Geriye doğru tur süresi çıkar.
+3. Kontrol: $80<120$; ilk geçiş ilk turun içinde. 6. geçiş $80+5\cdot120=680$ ✓ || İlk geçiş tur süresinden kısa olmalı.
+cevap: 80. saniyede
+
+::ornek baslik="Çapın iki ucundan, 5. karşılaşma"
+soru: Dairesel bir pistin bir çapının iki ucundan aynı anda zıt yönlere sabit hızlarla koşmaya başlayan iki sporcu ilk kez 20 dakika sonra karşılaşıyor. Sporcular kaçıncı dakikada 5. kez karşılaşır?
+1. İlk karşılaşmada yarım tur kapandı: 20 dakika. || Başlangıçtaki ara yarım tur.
+2. Sonraki her karşılaşma bir tam tur: $40$ dakika. || Tam tur yarım turun iki katı; hızlar toplamı aynı.
+3. 5. karşılaşma $20+4\cdot40=180$ dakika. || İlk karşılaşmadan sonra 4 karşılaşma daha.
+cevap: 180. dakikada (3 saat)
+
+::ornek baslik="Karşılaşma noktaları pisti üçe böler"
+soru: Uzunluğu 720 m olan dairesel bir pistin A noktasından aynı anda zıt yönlere dakikada 24 m ve 48 m hızla iki koşucu çıkıyor. Koşucular kaçıncı karşılaşmalarında ilk kez A noktasında karşılaşır?
+1. Her karşılaşma arası bir tur: $720:(24+48)=10$ dakika. || Aynı noktadan zıt yön.
+2. Yavaş koşucu her karşılaşmada $24\cdot10=240$ m, yani turun $\frac{1}{3}$'ünü ilerler. || Karşılaşma noktaları pisti üç eşit yaya böler.
+3. 3. karşılaşmada yavaş koşucu $3\cdot240=720$ m, tam bir tur koşmuştur: A'dadır. || Kontrol: hızlı olan $3\cdot480=1440$ m, iki tur.
+cevap: 3. karşılaşmada
+
+::ornek baslik="Akıntıyla gidip akıntıya karşı dönmek"
+soru: Akıntı hızı saatte 4 km olan bir nehirde durgun sudaki hızı saatte 20 km olan bir tekne, A'dan akıntı yönünde 3 saat giderek B'ye ulaşıyor. Tekne B'den A'ya kaç saatte döner?
+1. Akıntı yönünde hız $20+4=24$ km/sa: $AB=24\cdot3=72$ km. || Akıntı tekneyi iter.
+2. Dönüşte hız $20-4=16$ km/sa. || Akıntıya karşı akıntı hızı çıkarılır.
+3. $72:16=4{,}5$ saat. || Yol aynı, hız farklı.
+cevap: 4,5 saat
+
+::ornek baslik="Dalgalara karşı açılan yüzücü"
+soru: Dalgalara karşı dakikada 30 m, dalgalarla aynı yönde dakikada 70 m hızla yüzebilen bir yüzücü kıyıdan denize açılıp durmadan geri dönüyor. Toplam 10 dakika suda kaldığına göre kıyıdan kaç metre açılmıştır?
+1. Açıldığı uzaklık $d$: gidiş $\frac{d}{30}$, dönüş $\frac{d}{70}$ dakika. || Gidiş dalgalara karşı, dönüş dalgalarla.
+2. $\frac{d}{30}+\frac{d}{70}=10$; payda 210: $\frac{7d+3d}{210}=10$. || Süreler toplanır.
+3. $d=210$ m. || Kontrol: gidiş 7, dönüş 3 dakika.
+cevap: 210 m
+
+::ornek baslik="Kamyon treni geçiyor"
+soru: Boyu 170 m olan bir tren saatte 52 km, boyu 10 m olan bir kamyon saatte 70 km hızla paralel yollarda aynı yönde gidiyor. Kamyonun ön ucu trenin arka ucu hizasındayken kamyonun treni tamamen geçmesi kaç saniye sürer?
+1. Kamyon trene göre saatte $70-52=18$ km, yani saniyede $18:3{,}6=5$ m hızla ilerler. || Aynı yönde hız farkı; uzunluklar metre olduğu için m/sn.
+2. Tamamen geçmesi için kamyonun arka ucu trenin ön ucunu geçmeli: $170+10=180$ m. || Tren boyu + kamyon boyu.
+3. $180:5=36$ sn. || Süre = göreli yol ÷ göreli hız.
+cevap: 36 saniye
+
+::sorgula s4b-tur baslik="Pistte tur bindirmek"
+durum: 400 m'lik bir atletizm pistinde iki koşucu aynı noktadan aynı yöne saniyede 5 m ve 3 m hızla koşmaya başlıyor.
+soru: Hızlı koşucu yavaş olana kaç saniyede bir tur bindirir?
++A) 200 saniyede || Aynı yönde aradaki yol saniyede $5-3=2$ m kapanır; bir tur 400 m: $400:2=200$.
+B) 50 saniyede || Hızları topladın; aynı yönde hız farkı kullanılır.
+C) 80 saniyede || Bu, hızlı koşucunun kendi tur süresidir.
+kontrol: 400/(5-3)
+neden: Tur bindirmek, hızlının yavaştan bir tur fazla koşmasıdır: $(5-3)t=400$, $t=200$ saniye. Bu sürede hızlı 1000 m (2,5 tur), yavaş 600 m (1,5 tur) koşar.
+sinav: Dairesel pistte aynı yönde yetişme için çevre ÷ hız farkı, zıt yönde karşılaşma için çevre ÷ hız toplamı.
+dusun: Aynı koşucular zıt yönlere koşsaydı kaç saniyede bir karşılaşırlardı?
+yanit: $400:(5+3)=50$ saniyede bir.
+
+::yanilgi m4b tip=akinti-pist
+yanlis: Çapın iki ucundan zıt yönde çıkanlar ilk kez 20 dakikada karşılaşıyorsa her 20 dakikada bir karşılaşır.
+neden: İlk karşılaşmada yalnız yarım tur kapanır; sonraki karşılaşmalar için tam tur kapanmalıdır.
+dogru: İlk karşılaşma 20. dakikada, sonrakiler 40 dakika arayla.
+
+::soru c4b tip=akinti-pist zorluk=2
+Dairesel bir pistin bir çapının iki ucundan aynı anda zıt yönlere sabit hızlarla koşan iki sporcu ilk kez 15 dakika sonra karşılaşıyor. Sporcular kaçıncı dakikada 4. kez karşılaşır?
+A) 60 || Her karşılaşmayı 15 dakika saydın; sonrakiler tam tur.
+B) 90 || Hesabı kontrol et: $15+3\cdot30$.
++C) 105 || Doğru: $15+3\cdot30=105$.
+D) 120 || İlk karşılaşmayı da tam tur saydın.
+E) 135 || Bir karşılaşma fazla saydın.
+kontrol: 15+3*30
+cozum: İlk karşılaşmada yarım tur kapanır (15 dk); her yeni karşılaşma bir tam tur, 30 dk. 4. karşılaşma $15+3\cdot30=105$. dakikada.
 
 ::ozet
 - $x = V \cdot t$; birimleri eşle (dakika → saat, km/sa → m/sn için ÷ 3,6).

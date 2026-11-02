@@ -1,0 +1,129 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "hareket-problemleri-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c",
+  "taskHash": "89f8d03b198dc52eb4a8332833c37edb44770a3b5890ed182466c05a403df4b1",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\hareket-problemleri-video",
+  "artifacts": {
+    "asamalar\\youtube-0Atl6uSc90g-metin\\8b9bbda719fa7aa5fa447c632e1f0547d200c2c3f6ebe3ca2e2d0b48e3805497.json": "f46c41f400131c18a8ec826825ad4eb7f22a2f64b15284b9b6cc6569094feec0",
+    "asamalar\\youtube-0Atl6uSc90g-kareler\\d6c0c31b0e91f3c1bee95a1e605e2bd550eef83328a1e9606a184411bc41c0bd.json": "9b3847945f6a319485a8855a7daf99f3d73fd12c6e19b7e0f103c4bae852e966",
+    "kareler\\6df3b64761d2b5b49d789b2b2deef08653b3f21a54c3d57af8988755abd6307b.png": "306931108d1061b40709369a4fbddea29e2fb831c82a739a245d55c55728bd00",
+    "asamalar\\youtube-SGW09mdmzGQ-metin\\23c6bb57309a8eec8dd2c024984507330eb9d56bf8b94eb11a0743712b05d97a.json": "3b6ed294d609e821c0fdbb3c993fb9506f51d57abc4153202eeb6110e14a3cae",
+    "asamalar\\youtube-SGW09mdmzGQ-kareler\\d1adfb1a634c51f4b16f135e5688eee8171f183595090eaa2662527b9d63dd49.json": "a5a281547a668c27f240a962d6402643e2671e279e15c9e7c8131a25becb3203",
+    "kareler\\0c116a05cf41e8c65fe66eab96e3635a165463c2f9de29504c2b7ae1645c0012.png": "a3d563d6f84bea61cc1c9eae4bcc8b74a8cb6ebb6634a7b17cbd66798b88753c",
+    "kareler\\0fd6796f66be9623c04a82c2df83c9878d093e4e9cd6c6fb71fc86963c3dbe34.png": "b264fa546a03c7f516460fa4479a02e16aecd60a93b87be097c8472187424d51",
+    "asamalar\\matematik-denetimi\\b4a6c846b4da8564efd94ae556a676ef8fa5486d5415daa71626d2b109d41b59.json": "21c86f21f7afc5575cb8c49d397a7e685ffe7554966f43de1c874bc93b0e7055",
+    "surumler\\ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c.json": "1713d816cbe429337e88e05ff6dac7e51b3ace9fddea9775a840ea491edd619c",
+    "surumler\\ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c.oneriler.md": "d97a9156199daf06c5f6a744d5d550404bf9490804f361165fc50786fb6c711b"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-hareket-problemleri-test.py",
+        "sha256": "bd34543210666bd67993343b5ebfefe40f8d065ded2c23bfef87d29a19d459fc",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.028s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "hareket-problemleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 3,
+      "stagesBuilt": 5,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.979
+    },
+    "videos": [
+      {
+        "providerId": "youtube:0Atl6uSc90g",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:SGW09mdmzGQ",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:0Atl6uSc90g",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1082,
+      "normalization": {
+        "captionControlEvents": 1075,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2800,
+          "file": "kareler\\6df3b64761d2b5b49d789b2b2deef08653b3f21a54c3d57af8988755abd6307b.png",
+          "sha256": "306931108d1061b40709369a4fbddea29e2fb831c82a739a245d55c55728bd00",
+          "pixelHash": "6df3b64761d2b5b49d789b2b2deef08653b3f21a54c3d57af8988755abd6307b",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:SGW09mdmzGQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1132,
+      "normalization": {
+        "captionControlEvents": 1126,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1900,
+          "file": "kareler\\0fd6796f66be9623c04a82c2df83c9878d093e4e9cd6c6fb71fc86963c3dbe34.png",
+          "sha256": "b264fa546a03c7f516460fa4479a02e16aecd60a93b87be097c8472187424d51",
+          "pixelHash": "0fd6796f66be9623c04a82c2df83c9878d093e4e9cd6c6fb71fc86963c3dbe34",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2030,
+          "file": "kareler\\0c116a05cf41e8c65fe66eab96e3635a165463c2f9de29504c2b7ae1645c0012.png",
+          "sha256": "a3d563d6f84bea61cc1c9eae4bcc8b74a8cb6ebb6634a7b17cbd66798b88753c",
+          "pixelHash": "0c116a05cf41e8c65fe66eab96e3635a165463c2f9de29504c2b7ae1645c0012",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "karsilasma-sonrasi-kok",
+      "contentHash": "4883f33cc69c08b4048fe45567d19923915e55eaee767d048a30e4ad18df0f5d",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "pistte-sonraki-karsilasma-tam-tur",
+      "contentHash": "40e4cb15d65c3f3f40c41916701aa40ee5b43c3fa85ae482c39f1e5a81b8669b",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

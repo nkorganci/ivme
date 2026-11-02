@@ -332,6 +332,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "hareket-problemleri-video",
+      "conceptId": "hareket-problemleri",
+      "hints": [
+        {
+          "id": "karsilasma-sonrasi-kok",
+          "title": "Karşılaştıktan sonra: t² = t₁·t₂",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        },
+        {
+          "id": "pistte-sonraki-karsilasma-tam-tur",
+          "title": "İlk karşılaşmadan sonra her biri bir tur",
+          "sectionIds": [
+            "s4",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

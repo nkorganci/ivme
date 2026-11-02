@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": "karsilasma-sonrasi-kok",
+    "providerId": "youtube:SGW09mdmzGQ",
+    "startSeconds": 1900,
+    "endSeconds": 2060,
+    "quote": "180 dakika sonra bu iki aracın karşılaştıklarını",
+    "frameSeconds": [
+      1900,
+      2030
+    ],
+    "rule": "Birbirine doğru aynı anda çıkan iki araç karşılaştıktan sonra t₁ ve t₂ sürelerinde öbürünün çıktığı yere varıyorsa karşılaşma süresi t = √(t₁·t₂)'dir.",
+    "condition": "İki araç aynı anda ve sabit hızlarla çıkmalı, karşılaşmadan sonra mola vermeden aynı hızla devam etmeli. Biri geç çıkıyor ya da mola veriyorsa bağıntı doğrudan kullanılamaz.",
+    "example": "Karşılaştıktan sonra biri 90, diğeri 40 dakikada varıyor: t² = 90·40 = 3600, t = 60 dakika.",
+    "counterexample": "Kalan sürelerin aritmetik ortalaması (65 dakika) karşılaşma süresi değildir; 9 ve 16 dakikada varanlar 12,5 değil 12. dakikada karşılaşmıştır.",
+    "rationale": "Birinin karşılaşmadan sonraki yolu, öbürünün karşılaşmadan önceki yoludur: V₁·t₁ = V₂·t ve V₂·t₂ = V₁·t. Eşitlikler çarpılınca hızlar sadeleşir ve t² = t₁·t₂ kalır.",
+    "agentSourceReview": "Claude 1900. saniye karesinde “Tıpkı ÖSYM 13” sorusunun tam metnini (270 ve 120 dakika, seçenekler 90–270) ve A–C–B şemasını, 2030. saniye karesinde V_B·t = V_A·270, V_A·t = V_B·120 eşitliklerinden hız oranı 3/2 ve t = 180 dk sonucunu okudu. Kartın 90/40 ve 9/16 sayıları özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "pistte-sonraki-karsilasma-tam-tur",
+    "providerId": "youtube:0Atl6uSc90g",
+    "startSeconds": 2700,
+    "endSeconds": 2832,
+    "quote": "bütün Çemberi düşünürsek",
+    "frameSeconds": [
+      2800
+    ],
+    "rule": "Dairesel pistte zıt yönde koşan iki kişi için ilk karşılaşmaya kadar başlangıçtaki ara kapanır; ondan sonraki her karşılaşma arasında tam bir tur kapanır.",
+    "condition": "Hızlar sabit ve yönler değişmemeli. Başlangıç arası pist üzerindeki yay olarak ölçülmeli (aynı noktadan bir tur, çapın uçlarından yarım tur).",
+    "example": "Çapın iki ucundan zıt yönlere çıkanlar ilk kez 20. dakikada karşılaşıyor: yarım tur 20 dakika, tam tur 40 dakika. 5. karşılaşma 20 + 4·40 = 180. dakikada.",
+    "counterexample": "Her karşılaşmayı ilk karşılaşma kadar arayla saymak (5·20 = 100) yanlıştır; ilk aralık yarım tur, sonrakiler tam turdur.",
+    "rationale": "Zıt yönde aradaki yay her dakika V₁ + V₂ kadar kapanır. Karşılaştıkları anda ara sıfırdır ve yeniden karşılaşmak için birlikte tam bir tur koşmaları gerekir.",
+    "agentSourceReview": "Claude 2800. saniye karesinde Örnek 17'nin tam metnini, 60°'lik merkez açılı A ve B noktalarını ve tahtadaki 60° → 5 dk, 360° notunu okudu; altyazı 46:18'de sonraki karşılaşmaların 30 dakika arayla geldiğini ve 4. karşılaşmanın 95. dakikada olduğunu söylüyor. Kartın çap ve 20 dakika örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

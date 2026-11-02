@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "74ff2c3fac873b53d513d13c752aee541edda85f5c6dfda4e31b1c51108f7706",
+  "inputsHash": "047f6154a8f201d52855dfd09bc5c1c88560a2776bbb83e36b7dbd1aaa9a48c8",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -764,6 +764,54 @@
       },
       "evidenceHash": "d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034",
       "contentHash": "ff17ed543500fc11010cffb73e4f516a143c66ef9308fc4a437c4ec53806ebd3",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "hareket-problemleri-video:karsilasma-sonrasi-kok",
+      "conceptId": "hareket-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Karşılaştıktan sonra: t² = t₁·t₂",
+      "rule": "Birbirine doğru aynı anda çıkan iki araç karşılaştıktan sonra t₁ ve t₂ sürelerinde öbürünün çıktığı yere varıyorsa karşılaşma süresi t = √(t₁·t₂)'dir.",
+      "condition": "İki araç aynı anda ve sabit hızlarla çıkmalı, karşılaşmadan sonra mola vermeden aynı hızla devam etmeli. Biri geç çıkıyor ya da mola veriyorsa bağıntı doğrudan kullanılamaz.",
+      "example": "Karşılaştıktan sonra biri 90, diğeri 40 dakikada varıyor: t² = 90·40 = 3600, t = 60 dakika.",
+      "counterexample": "Kalan sürelerin aritmetik ortalaması (65 dakika) karşılaşma süresi değildir; 9 ve 16 dakikada varanlar 12,5 değil 12. dakikada karşılaşmıştır.",
+      "rationale": "Birinin karşılaşmadan sonraki yolu, öbürünün karşılaşmadan önceki yoludur: V₁·t₁ = V₂·t ve V₂·t₂ = V₁·t. Eşitlikler çarpılınca hızlar sadeleşir ve t² = t₁·t₂ kalır.",
+      "source": {
+        "providerId": "youtube:SGW09mdmzGQ",
+        "startSeconds": 1900,
+        "endSeconds": 2060
+      },
+      "evidenceHash": "ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c",
+      "contentHash": "4883f33cc69c08b4048fe45567d19923915e55eaee767d048a30e4ad18df0f5d",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "hareket-problemleri-video:pistte-sonraki-karsilasma-tam-tur",
+      "conceptId": "hareket-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s4",
+        "s4b"
+      ],
+      "title": "İlk karşılaşmadan sonra her biri bir tur",
+      "rule": "Dairesel pistte zıt yönde koşan iki kişi için ilk karşılaşmaya kadar başlangıçtaki ara kapanır; ondan sonraki her karşılaşma arasında tam bir tur kapanır.",
+      "condition": "Hızlar sabit ve yönler değişmemeli. Başlangıç arası pist üzerindeki yay olarak ölçülmeli (aynı noktadan bir tur, çapın uçlarından yarım tur).",
+      "example": "Çapın iki ucundan zıt yönlere çıkanlar ilk kez 20. dakikada karşılaşıyor: yarım tur 20 dakika, tam tur 40 dakika. 5. karşılaşma 20 + 4·40 = 180. dakikada.",
+      "counterexample": "Her karşılaşmayı ilk karşılaşma kadar arayla saymak (5·20 = 100) yanlıştır; ilk aralık yarım tur, sonrakiler tam turdur.",
+      "rationale": "Zıt yönde aradaki yay her dakika V₁ + V₂ kadar kapanır. Karşılaştıkları anda ara sıfırdır ve yeniden karşılaşmak için birlikte tam bir tur koşmaları gerekir.",
+      "source": {
+        "providerId": "youtube:0Atl6uSc90g",
+        "startSeconds": 2700,
+        "endSeconds": 2832
+      },
+      "evidenceHash": "ca9eeeff0cbb7ead564cba4d1389f0383de9fc3837d62e7fa567d3197da1ca3c",
+      "contentHash": "40e4cb15d65c3f3f40c41916701aa40ee5b43c3fa85ae482c39f1e5a81b8669b",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }
