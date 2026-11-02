@@ -287,6 +287,13 @@ soru: $-2x^2+3x+4=0$ kaç farklı gerçek kök taşır?
 3. Köklerin değerlerini hesaplamaya gerek yok. || Sorulan yalnız adettir.
 cevap: 2 farklı gerçek kök.
 
+::ornek baslik="Topun yere düşme anı"
+soru: Bir top yerden 2 m yükseklikten atılıyor; t saniye sonra yüksekliği $h(t)=-t^2+3t+2$ metredir. Top yere kaçıncı saniyede düşer?
+1. Yere düşünce $h(t)=0$: $t^2-3t-2=0$. || Yükseklik sıfır.
+2. $\Delta=9+8=17$; $t=\frac{3\pm\sqrt{17}}{2}$. || Kök formülü.
+3. Süre negatif olamaz: $t=\frac{3+\sqrt{17}}{2}\approx3{,}56$ s. || Bağlam negatif kökü eler.
+cevap: $\frac{3+\sqrt{17}}{2}$ saniyede (yaklaşık 3,56 s)
+
 ::sorgula s2b-ates baslik="Eğri hedef çizgisine ulaşıyor mu?"
 durum: Bir modelde yükseklik farkı f(x)=(x−2)²+1. Hedef çizgisi f(x)=0 ile gösteriliyor.
 soru: Grafik hedef çizgisini kaç noktada keser?
@@ -463,6 +470,13 @@ neden: 3r+3s=3S=12; (3r)(3s)=9P=27.
 sinav: Kök dönüşümünde toplam ile çarpım aynı biçimde ölçeklenmez.
 dusun: Yeni denklemin baş katsayısı 1 ise biçimi nedir?
 yanit: y²−12y+27=0.
+
+::ornek baslik="İrrasyonel kökün eşleniği"
+soru: Katsayıları rasyonel olan ikinci dereceden bir denklemin bir kökü $2+\sqrt3$ ise baş katsayısı 1 olan bu denklem nedir?
+1. Katsayılar rasyonelse irrasyonel kök eşleniğiyle gelir: diğer kök $2-\sqrt3$. || $\sqrt3$'lü kısım ancak sadeleşirse katsayılar rasyonel olur.
+2. Toplam $4$, çarpım $4-3=1$. || $(a+\sqrt b)(a-\sqrt b)=a^2-b$.
+3. $x^2-4x+1=0$. || Kontrol: $(2+\sqrt3)^2-4(2+\sqrt3)+1=7+4\sqrt3-8-4\sqrt3+1=0$ ✓
+cevap: $x^2-4x+1=0$
 
 ::tamamla baslik="Ters köklerin denkleminde koşul"
 soru: $x^2-6x+2=0$ köklerinin terslerini kök kabul eden denklemi kur.

@@ -489,3 +489,10 @@ test('sayi-kesir-problemleri: keşif modelleri sayılarla aynı şeyi söyler', 
     assert.equal((m.total - 3 * N) / d, xe);
   }
 });
+
+test('ikinci derece: kaynaklardan eklenen örnekler', () => {
+  const t = (3 + Math.sqrt(17)) / 2;
+  assert.ok(Math.abs(-t * t + 3 * t + 2) < 1e-9 && t > 0 && (3 - Math.sqrt(17)) / 2 < 0);
+  const r = 2 + Math.sqrt(3), s = 2 - Math.sqrt(3);
+  assert.ok(Math.abs(r + s - 4) < 1e-12 && Math.abs(r * s - 1) < 1e-12 && Math.abs(r * r - 4 * r + 1) < 1e-9);
+});

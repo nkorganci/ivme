@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **28/32 bitti**. Sıradaki TYT konusu: `ikinci-derece-denklemler`.
+TYT: **29/32 bitti**. Sıradaki TYT konusu: `sayma-permutasyon`.
 
 ### TYT (şu anki aşama)
 
@@ -217,7 +217,7 @@ TYT: **28/32 bitti**. Sıradaki TYT konusu: `ikinci-derece-denklemler`.
 | 26 | ✅ BİTTİ | `fonksiyon-grafikleri` | Fonksiyon Grafikleri ve Doğrusal Modeller | 10 | TYT + AYT | 8/20/3/4 | 3 / 11 (Fonksiyonlar) | 2 · PL1 2, PL2 2 | 3/3 | — |
 | 27 | ✅ BİTTİ | `bileske-ters` | Bileşke Fonksiyon ve Ters Fonksiyon | 10 | TYT + AYT | 8/20/4/4 | 3 / 11 (Fonksiyonlar) | 2 · PL1 2, PL2 2 | 4/4 | — |
 | 28 | ✅ BİTTİ | `polinom-islemleri` | Polinom Kavramı, İşlemler ve Bölme | 10 | TYT + AYT | 8/22/4/4 | 3 / 3 (Polinomlar) | 2 · PL1 0, PL2 2 | 4/4 | — |
-| 29 | 🟡 EKSİK | `ikinci-derece-denklemler` | İkinci Dereceden Denklemler ve Kök-Katsayı İlişkileri | 10 | TYT + AYT | 8/24/3/4 | 3 / 3 (Polinomlar) | video yok | 0/3 | ders anlatım PDF okunmadı · İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz. |
+| 29 | ✅ BİTTİ | `ikinci-derece-denklemler` | İkinci Dereceden Denklemler ve Kök-Katsayı İlişkileri | 10 | TYT + AYT | 8/26/3/4 | 3 / 3 (Polinomlar) | video yok | 3/3 | — · İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz. Kaynaklar dersle karşılaştırıldı; eklenen: rasyonel katsayılı denklemde eşlenik irrasyonel kök, topun yere düşme anı (bağlamın negatif kökü elemesi). |
 | 30 | 🟡 EKSİK | `sayma-permutasyon` | Saymanın Temel İlkesi ve Permütasyon | 10 | TYT + AYT | 4/8/2/1 | 0 / 9 (Sıralama ve Seçme) | 0 · PL1 2, PL2 2 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 31 | 🟡 EKSİK | `kombinasyon` | Kombinasyon ve Seçme Problemleri | 10 | TYT + AYT | 4/8/1/1 | 0 / 9 (Sıralama ve Seçme) | 0 · PL1 2, PL2 2 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 32 | 🟡 EKSİK | `olasilik` | Olasılık: Basit Olayların Olasılıkları | 10 | TYT + AYT | 4/8/2/1 | 0 / 9 (Basit Olayların Olasılıkları) | 0 · PL1 2, PL2 2 | 0/4 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

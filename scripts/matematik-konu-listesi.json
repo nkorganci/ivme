@@ -809,12 +809,16 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/29 - IKINCI DERECEDEN BIR BILINMEYENLI DENKLEMLERIN COZUM KUMESI.pdf",
         "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/31 - IKINCI DERECEDEN BIR BILINMEYENLI DEKLEMLERIN KOKLERI VE KATSAYILARI ARASINDAKI ILISKI.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/28 - IKINCI DERECEDEN BIR BILINMEYENLI DENKLEMLER.pdf s.1-22",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/29 - IKINCI DERECEDEN BIR BILINMEYENLI DENKLEMLERIN COZUM KUMESI.pdf s.1-21",
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 10. Sinif/31 - IKINCI DERECEDEN BIR BILINMEYENLI DEKLEMLERIN KOKLERI VE KATSAYILARI ARASINDAKI ILISKI.pdf s.1-24"
+      ],
       "videolar": {
         "PL1": [],
         "PL2": []
       },
-      "not": "İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz."
+      "not": "İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz. Kaynaklar dersle karşılaştırıldı; eklenen: rasyonel katsayılı denklemde eşlenik irrasyonel kök, topun yere düşme anı (bağlamın negatif kökü elemesi)."
     },
     {
       "id": "sayma-permutasyon",
