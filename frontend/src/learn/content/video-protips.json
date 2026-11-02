@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "758663d8d05ab586f9151ac71306faae79f775f38dcf3886319d99f9fb005574",
+  "inputsHash": "3780fba909fdc76e83a2f18268381fca7edb0fa25e4198648ea893c0a12005f3",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -859,6 +859,54 @@
       },
       "evidenceHash": "99a04710cc0859aedd6ee8f2851b460c810b02c750281f6aa5a34aebc8f0c9ff",
       "contentHash": "b56ee4afb4a1d69d74dd094e170c34ded4cb3df505bf8ecaaf3f586f7647786a",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "veri-grafikleri-video:sutun-grafiginden-medyan",
+      "conceptId": "veri-grafikleri",
+      "topicId": "tyt.matematik.veri-ve-istatistik",
+      "sectionIds": [
+        "s2",
+        "s3b"
+      ],
+      "title": "Sütun grafiğinden medyan: frekansları biriktir",
+      "rule": "Değer–frekans sütun grafiğinde mod en uzun sütunun değeridir; medyan için frekansları soldan biriktir ve n/2, n/2 + 1. (tekse (n + 1)/2.) sıradaki verinin hangi sütunda olduğuna bak.",
+      "condition": "Yatay eksen veri değerlerini küçükten büyüğe sıralı göstermeli ve sütun boyu o değerin kaç kez tekrarlandığını vermeli. Gruplanmış veride (histogram) medyanın yalnız grubu bulunur.",
+      "example": "Notlar 50, 60, 70, 80 için frekanslar 3, 6, 4, 5 (18 öğrenci): mod 60. Biriken frekanslar 3, 9, 13, 18; 9. veri 60, 10. veri 70: medyan 65.",
+      "counterexample": "Sütunların ortasındaki değeri (60 ile 70 arası) ya da en uzun sütunu medyan sanmak yanlıştır; frekanslar değişince ortanca sıra başka sütuna kayar.",
+      "rationale": "Sütun grafiği sıralı veri listesinin kısaltılmış yazımıdır: her değer frekansı kadar tekrarlanır. Biriken frekans, o değere kadar listede kaç veri olduğunu söyler.",
+      "source": {
+        "providerId": "youtube:L_8OZ-66HHg",
+        "startSeconds": 1548,
+        "endSeconds": 1780
+      },
+      "evidenceHash": "093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100",
+      "contentHash": "d9646621443ee2c9fbce8d3414337478775e97e189cccaeb6c71db7934097099",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "veri-grafikleri-video:esit-sutun-esit-frekans",
+      "conceptId": "veri-grafikleri",
+      "topicId": "tyt.matematik.veri-ve-istatistik",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Eşit sütun eşit frekans; toplamlarla eksikleri bul",
+      "rule": "Ölçeği eksik bir sütun grafiğinde aynı yükseklikteki sütunlar aynı frekanstır. Bilinmeyen sütunları bu eşitliklerle ve verilen toplam bilgileriyle (toplam kişi, bir eşiğin üstü) denkleme çevir.",
+      "condition": "Sütunlar aynı eksende ve aynı ölçekle çizilmiş olmalı; eşitlik ancak kesikli çizgilerle ya da sorunun bilgisiyle kesinleşir. Görünüşe göre tahmin yerine verilen eşitlikleri kullan.",
+      "example": "40 öğrencilik grafikte 60 ve 90 puan sütunları eşit ve en uzun, ikisinde toplam 22 öğrenci var: her biri 11. 70 ve üstü 24 öğrenci ise 70 ve 80 sütunlarında 24 − 11 = 13 öğrenci; 50 puan sütununda 40 − 11 − 13 − 11 = 5 öğrenci.",
+      "counterexample": "Sütun boylarını cetvelle ölçüp oranlamak, ölçek verilmediğinde güvenilmez; yalnız eşit görünen ve bilgiyle desteklenen sütunlar eşit alınır.",
+      "rationale": "Sütun yüksekliği frekansı gösterir; aynı çizgiye ulaşan sütunlar aynı sayıdır. Her ek bilgi bir denklem verir ve bilinmeyen sütunlar sırayla bulunur.",
+      "source": {
+        "providerId": "youtube:L_8OZ-66HHg",
+        "startSeconds": 2395,
+        "endSeconds": 2510
+      },
+      "evidenceHash": "093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100",
+      "contentHash": "3c0a1a56ec8a2473e530558a57e2a890c05e7d5168d5184c9480a2101286a2b7",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

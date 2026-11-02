@@ -1,0 +1,107 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "veri-grafikleri-video",
+  "topicId": "tyt.matematik.veri-ve-istatistik",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100",
+  "taskHash": "492dfd438907a401469a142f8dcf7dc8a34fa687c34fefd22b83343ddf47cffb",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\veri-grafikleri-video",
+  "artifacts": {
+    "asamalar\\youtube-L_8OZ-66HHg-metin\\31d866fab3c7d7d309060cfb651a7aefc43efe88df0592763f6cab5afb5acd2b.json": "8cf667d0d7705d86cbdf129970396e6ffc19ab6e0856d4fc434214928aa023dd",
+    "asamalar\\youtube-L_8OZ-66HHg-kareler\\7e720b7a0570b90ad27eef4f36c5d4c42ebbe43c09b315d3c29b9bd06156a902.json": "eb4e449314f068d60909f2d213556849c22bd3f3cc4c85785dd511f2a82a19ea",
+    "kareler\\0e8033aaef1481202bebb1ef3982af728574454506afaa31191096e3abfe38a8.png": "68fecba638562eb3175b8d38a9d8e1c68f2f8fed9566aaab0b2e0e35240621e4",
+    "kareler\\6fdc2ada9628829944e70ca95ca493fbe958cd5fae911c9b5d11c06245f06d13.png": "5204aa83cf3f488ede439f485fefee19d8511341b23cc79eec70e7222237692f",
+    "kareler\\94f695d7534209e34e26953dfa575bfd9fb1e2287a7535ac09247531493a4361.png": "1592f6cfa931b0a81ec2d787ae39d13c6266a29a5a2335c451c47bc5bc08fb6c",
+    "asamalar\\matematik-denetimi\\7c50ec8027672031bd3461a9a49cf8255d2e9573563f0557eff9b3efeba766db.json": "5fffcadffb685275ab0cd20fa9fedf2c240952c43047c937fff94304cccba15f",
+    "surumler\\093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100.json": "15bac49e387968126bed69ef0962eca0e32860dca148319b122d0cd8d5027460",
+    "surumler\\093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100.oneriler.md": "da9e4067c6b1cdc4c61ec64565b999252805701ce94f0bd0a8094609994e3157"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-veri-grafikleri-test.py",
+        "sha256": "daace5e0c9e55bfe6ae6fd87ce98ca7d8c98ae33b2977e0d04e750d79b3b701f",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "veri-grafikleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "093be9ef7207807b346cdfacef640e1cfb2ff85191edf0f08d0ce030d090c100",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 3,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.189
+    },
+    "videos": [
+      {
+        "providerId": "youtube:L_8OZ-66HHg",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:L_8OZ-66HHg",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1440,
+      "normalization": {
+        "captionControlEvents": 1437,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1600,
+          "file": "kareler\\6fdc2ada9628829944e70ca95ca493fbe958cd5fae911c9b5d11c06245f06d13.png",
+          "sha256": "5204aa83cf3f488ede439f485fefee19d8511341b23cc79eec70e7222237692f",
+          "pixelHash": "6fdc2ada9628829944e70ca95ca493fbe958cd5fae911c9b5d11c06245f06d13",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2420,
+          "file": "kareler\\0e8033aaef1481202bebb1ef3982af728574454506afaa31191096e3abfe38a8.png",
+          "sha256": "68fecba638562eb3175b8d38a9d8e1c68f2f8fed9566aaab0b2e0e35240621e4",
+          "pixelHash": "0e8033aaef1481202bebb1ef3982af728574454506afaa31191096e3abfe38a8",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2480,
+          "file": "kareler\\94f695d7534209e34e26953dfa575bfd9fb1e2287a7535ac09247531493a4361.png",
+          "sha256": "1592f6cfa931b0a81ec2d787ae39d13c6266a29a5a2335c451c47bc5bc08fb6c",
+          "pixelHash": "94f695d7534209e34e26953dfa575bfd9fb1e2287a7535ac09247531493a4361",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "sutun-grafiginden-medyan",
+      "contentHash": "d9646621443ee2c9fbce8d3414337478775e97e189cccaeb6c71db7934097099",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "esit-sutun-esit-frekans",
+      "contentHash": "3c0a1a56ec8a2473e530558a57e2a890c05e7d5168d5184c9480a2101286a2b7",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

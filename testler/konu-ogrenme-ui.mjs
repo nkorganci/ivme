@@ -418,25 +418,28 @@ async function runGuided(mobile) {
       if (requestedConcept && guide.conceptId !== requestedConcept) continue;
       const lesson = parseLesson(readFileSync(join(lessonsDir, `${guide.conceptId}.ders`), 'utf8'), guide.conceptId);
       const section = lesson.sections.findIndex((s) => s.blocks.some((b) => b.code === code));
+      // Bir bölümde birden çok çıkmış soru olabilir; sınanan soru bölümdeki sırasıyla seçilir.
+      const nth = lesson.sections[section].blocks.filter((b) => b.type === 'past_question').findIndex((b) => b.code === code);
+      const EX = `document.querySelectorAll(".lr-guided-exam")[${nth}]`;
       db.events = [{ id: `open-${code}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'open', conceptId: guide.conceptId }];
       for (let i = 0; i < section; i++) db.events.push({ id: `${code}-${i}`, seq: ++db.seq, at: new Date().toISOString(), kind: 'lesson', action: 'section', conceptId: guide.conceptId, sectionId: lesson.sections[i].id, nextSectionId: lesson.sections[i + 1].id, ms: 1 });
       await goto(`/konuyu-ogrenelim/ders/${guide.conceptId}`);
-      await wait('document.querySelector(".lr-guided-exam .image-btn img")?.naturalWidth > 0');
+      await wait(`${EX}?.querySelector(".image-btn img")?.naturalWidth > 0`);
       const before = db.events.length;
       assert.equal(await evalJs('Boolean(document.querySelector(".lm-exam-conclusion"))'), false, 'cevap başlangıçta görünmemeli');
-      await evalJs('document.querySelector(".lr-guided-exam").scrollIntoView({block:"start"})');
-      const width = await evalJs('document.querySelector(".lr-guided-exam .image-btn img").getBoundingClientRect().width');
+      await evalJs(`${EX}.scrollIntoView({block:"start"})`);
+      const width = await evalJs(`${EX}.querySelector(".image-btn img").getBoundingClientRect().width`);
       assert.ok(width > (mobile ? 200 : 400), `${code}: özgün soru çok küçük (${width})`);
       for (let i = 0; i < guide.steps.length; i++) {
-        assert.ok(await evalJs(click('.lr-guided-exam .btn-primary')));
+        assert.ok(await evalJs(`(() => { const b = ${EX}.querySelector(".btn-primary"); if (!b) return false; b.click(); return true; })()`));
         await pause(40);
       }
-      await wait('document.querySelector(".lm-exam-conclusion")');
-      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion').textContent.includes(${JSON.stringify(guide.result)})`));
-      assert.ok(await evalJs(`document.querySelector('.lm-exam-conclusion a.btn-secondary').href.includes('tip=${guide.archetype}')`));
+      await wait(`${EX}.querySelector(".lm-exam-conclusion")`);
+      assert.ok(await evalJs(`${EX}.querySelector('.lm-exam-conclusion').textContent.includes(${JSON.stringify(guide.result)})`), `${code}: sonuç metni`);
+      assert.ok(await evalJs(`${EX}.querySelector('.lm-exam-conclusion a.btn-secondary').href.includes('tip=${guide.archetype}')`), `${code}: benzer soru bağlantısı`);
       assert.ok(!(await evalJs('Boolean(document.querySelector(".katex-error"))')));
       assert.equal(db.events.length, before, 'rehberli çözüm puan/deneme olayı üretmemeli');
-      await evalJs('document.querySelector(".lm-exam-conclusion").scrollIntoView({block:"center"})');
+      await evalJs(`${EX}.querySelector(".lm-exam-conclusion").scrollIntoView({block:"center"})`);
       await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-gercek-${code}.png`));
       steps.push({ step: code, width, overflow: await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2') });
     }

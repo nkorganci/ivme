@@ -46,8 +46,10 @@ sutun-cizgi 2 1-3
 histogram 1 1-2
 grafik-secim 1 1-3
 
-@oturum Daire, sütun ve çizgi grafikleri | s1 s2
-@oturum Histogram ve grafik seçimi | s3 s4
+@oturum Daire grafikleri | s1 s1b
+@oturum Sütun, çizgi ve birleşik grafikler | s2 s2b
+@oturum Histogram | s3 s3b
+@oturum Grafik seçimi ve değişen veri | s4 s4b
 
 @ontest
 ::soru o1 tip=daire-grafik zorluk=1
@@ -150,6 +152,68 @@ E) 150 || Açıyı öğrenci sayısı sandın.
 kontrol: 240*150/360
 cozum: $\frac{150}{360} = \frac{5}{12}$; $240 \cdot \frac{5}{12} = 100$ öğrenci.
 
+@bolum s1b 12 | İki daire grafiği: adet ve miktar
+::kesfet vg-iki-daire
+
+::fikir
+Aynı kategoriler için iki daire grafiği verilebilir: biri **adetleri**, diğeri **toplam miktarı** (ağırlık, top sayısı, para) gösterir. Bir birimin miktarı $\propto\frac{\text{miktar açısı}}{\text{adet açısı}}$'dır. İki grafiğin **bütünleri farklıdır**; aynı açı iki grafikte aynı sayı demek değildir.
+
+::duzey
+L1: A marka toplar sayıca dairenin $\frac{1}{3}$'ü (120°), ağırlıkça yarısı (180°) ise A topları kendi sayılarına göre fazla ağırlık taşır: bir A topu ortalamadan ağırdır. Oran $\frac{180}{120}=1{,}5$ büyüdükçe birim daha ağırdır.
+L2: Kategorilerin birim miktarı biliniyorsa (paket başına 1, 2, 3 top) iki grafik bir denklem verir: paket sayılarını $x, y, z$ ile yaz, top sayılarını $x, 2y, 3z$ ile yaz ve verilen açıları oranlara çevir.
+L3: Birim miktarlar karşılaştırılırken iki bütünün oranı her kategoride aynı çarpandır; sıralama için yalnız $\frac{\text{miktar açısı}}{\text{adet açısı}}$ oranlarını karşılaştırmak yeter. Gerçek değer istenirse bütünlerden birinin sayısı gerekir.
+
+::cikmis TYT-0796 tip=daire-grafik
+
+::ornek baslik="Benzer: adet ve ağırlık grafiğinden sıralama"
+soru: Bir depodaki A, B, C kolilerinin sayıca dağılımında merkez açılar A 90°, B 150°, C 120°; toplam ağırlıklarının dağılımında A 60°, B 180°, C 120°'dir. Aynı türdeki koliler eşit ağırlıklıdır. Bir kolinin ağırlıkları $K_A$, $K_B$, $K_C$ nasıl sıralanır?
+1. Birim ağırlık $\propto\frac{\text{ağırlık açısı}}{\text{adet açısı}}$. || İki grafiğin bütünleri ortak çarpan olarak sadeleşir.
+2. A: $\frac{60}{90}=\frac{2}{3}$, B: $\frac{180}{150}=\frac{6}{5}$, C: $\frac{120}{120}=1$. || Her kategori için oran.
+3. $\frac{2}{3}<1<\frac{6}{5}$. || Sıralama.
+cevap: $K_A<K_C<K_B$
+
+::cikmis TYT-0809 tip=daire-grafik
+
+::ornek baslik="Benzer: paket ve top grafikleri"
+soru: Toplar içinde ya 1 sarı ya 2 mavi ya da 3 kırmızı top bulunan paketlere konuyor. Paketlerin dağılımında sarı paket dilimi 60°, topların renk dağılımında sarı top dilimi 30°'dir. Topların yüzde kaçı kırmızıdır?
+1. Sarı paket $y$ tane: paketler $\frac{360}{60}y=6y$, mavi ve kırmızı paketler $b+r=5y$. || Paket grafiği.
+2. Sarı top $y$ tane: toplar $\frac{360}{30}y=12y$, yani $2b+3r=11y$. || Top grafiği; her sarı pakette 1 top.
+3. $2(b+r)+r=10y+r=11y$: $r=y$; kırmızı top $3y$, oran $\frac{3y}{12y}=$ %25. || İki denklemden $r$.
+cevap: %25
+
+::ornek baslik="Açı farkından toplam"
+soru: Bir daire grafiğinde iki dilimin merkez açıları arasındaki fark 40°, bu dilimlerin gösterdiği kişi sayıları arasındaki fark 30'dur. Grafikteki toplam kişi sayısı kaçtır?
+1. 40° → 30 kişi: 1° $\frac{3}{4}$ kişi. || Açı ile sayı orantılı.
+2. 360° → $360\cdot\frac{3}{4}=270$ kişi. || Bütün.
+3. Kontrol: 40°, bütünün $\frac{1}{9}$'u; $270:9=30$ ✓ || Oranla doğrula.
+cevap: 270
+
+::sorgula s1b-gozluk baslik="Aynı açı, aynı sayı mı?"
+durum: 36 kişilik 9-A ile 24 kişilik 9-B sınıflarının daire grafiklerinde gözlüklü öğrencileri gösteren dilimlerin ikisi de 90°'dir.
+soru: Hangi sınıfta gözlüklü öğrenci daha çok?
+A) İkisi eşit, açılar aynı || Açılar aynı oranı gösterir; bütünler farklı olduğu için sayılar farklıdır.
++B) 9-A: 9 kişi, 9-B: 6 kişi || $36\cdot\frac{1}{4}=9$ ve $24\cdot\frac{1}{4}=6$.
+C) 9-B, sınıf küçük olduğu için || Oran aynı; büyük sınıfta sayı daha büyüktür.
+neden: Merkez açı, bütünün içindeki payı gösterir. 90° iki sınıfta da $\frac{1}{4}$'tür; sayı, payın bütünle çarpımıdır.
+sinav: İki daire grafiğini karşılaştırırken önce iki bütünü öğren; açılar ancak aynı bütünde sayı karşılaştırır.
+dusun: İki sınıf tek bir daire grafiğinde gösterilseydi gözlüklü dilimi kaç derece olurdu?
+yanit: 60 öğrenciden 15'i: $360\cdot\frac{15}{60}=90°$.
+
+::yanilgi m1b tip=daire-grafik
+yanlis: İki farklı daire grafiğinde aynı açılı dilimler aynı sayıyı gösterir.
+neden: Her grafiğin bütünü farklı olabilir; açı yalnız oranı verir.
+dogru: Sayı = bütün × $\frac{\text{açı}}{360°}$; bütünler farklıysa sayılar farklıdır.
+
+::soru c1b tip=daire-grafik zorluk=2
+Bir kırtasiyede satılan kalemlerin sayıca dağılımında kurşun kalemler 120°, satıştan elde edilen gelirin dağılımında kurşun kalemler 60°'dir. Kalemlerin bir tanesinin ortalama fiyatı 30 TL ise bir kurşun kalemin fiyatı kaç TL'dir?
+A) 10 || Hesabı kontrol et: oran $\frac{60}{120}$.
++B) 15 || Doğru: $30\cdot\frac{60}{120}=15$.
+C) 20 || Hesabı yeniden yap.
+D) 45 || Oranı ters kurdun.
+E) 60 || Açıyı fiyat sandın.
+kontrol: 30*60/120
+cozum: Kurşun kalemler adetin $\frac{1}{3}$'ü, gelirin $\frac{1}{6}$'sı. Birim fiyat ortalamanın $\frac{1/6}{1/3}=\frac{1}{2}$'si: $15$ TL.
+
 @bolum s2 9 | Sütun ve çizgi grafikleri
 ::fikir
 **Sütun grafiği** kesikli verileri karşılaştırır; **çizgi grafiği** zamana bağlı değişimi gösterir. Okurken önce eksen birimlerini ve ölçeği kontrol et.
@@ -213,6 +277,74 @@ D) 40 || Hesabı kontrol et.
 +E) 50 || Doğru: 2024'te $\frac{200}{400} = $ %50.
 kontrol: 200/400*100
 cozum: Artışlar: 2022'de $\frac{100}{400} = $ %25, 2024'te $\frac{200}{400} = $ %50 (2023'te azalış). En büyük %50.
+
+@bolum s2b 12 | Daire ve sütun birlikte: yüzdenin yüzdesi
+::kesfet vg-iade
+
+::fikir
+Daire grafiği her kategorinin **bütündeki payını**, yanındaki sütun grafiği çoğu zaman **kategori içindeki bir yüzdeyi** (iade, ihracat, başarı) verir. İstenen sayı $=\text{bütün}\times\text{pay}\times\text{yüzde}$. Bütünün genel yüzdesi, kategori yüzdelerinin **paylarla ağırlıklı ortalamasıdır**; yüzdeler toplanmaz.
+
+::duzey
+L1: Satışların yarısı A ise ve A'ların %10'u iade edildiyse, bütün satışların %5'i A iadesidir. Önce payı, sonra kategori içindeki yüzdeyi uygula.
+L2: Bir kategoride hem sayı hem yüzde verilmişse o kategorinin adedi bulunur ($168$ iade %14 ise 1200 satış); daire grafiğindeki açılar bu adetle bütünü bağlar.
+L3: Genel oran $=\frac{\sum \text{pay}_i\cdot\text{yüzde}_i}{100}$. Yüzdesi en büyük kategori payı küçükse genel oranı az etkiler. Bu, karışım ve karma kâr sorularındaki ağırlıklı ortalamanın aynısıdır.
+
+::cikmis TYT-0798 tip=sutun-cizgi
+
+::ornek baslik="Benzer: iade edilen ürünler"
+soru: Bir firmanın sattığı A, B, C ürünlerinin sayıca dağılımında C'nin dilimi 120°'dir. İade yüzdeleri A %5, B %10, C %8'dir. A'dan 400 tane satılmış, B'den 60 tanesi iade edilmiştir. A ve C'den toplam kaç tanesi iade edilmiştir?
+1. B: $60:0{,}10=600$ satış. || Yüzdeden kategori adedi.
+2. A + B $=1000$, bütünün $\frac{240}{360}=\frac{2}{3}$'ü: toplam 1500, C 500. || Açıdan bütün.
+3. İadeler: A $400\cdot0{,}05=20$, C $500\cdot0{,}08=40$; toplam 60. || Her kategoride ayrı yüzde.
+cevap: 60
+
+::ornek baslik="Genel iade oranı"
+soru: Yukarıdaki firmada satılan bütün ürünlerin yüzde kaçı iade edilmiştir?
+1. İadeler $20+60+40=120$. || Kategori kategori topla.
+2. Oran $\frac{120}{1500}=$ %8. || Bütüne böl.
+3. Ağırlıklı ortalamayla: $\frac{400\cdot5+600\cdot10+500\cdot8}{1500}=8$. || $\frac{5+10+8}{3}\approx7{,}7$ yanlış olurdu.
+cevap: %8
+
+::ornek baslik="Açıdan sütuna geçiş"
+soru: Bir kitapçıdaki kitapların türlere göre dağılımında romanlar 160°, fasiküller 80°, test kitapları kalan dilimdedir. 96 roman olduğuna göre sütun grafiğinde fasikül ve test kitabı sütunları kaç birim yükseklikte olmalıdır?
+1. 160° → 96: 1° → $0{,}6$ kitap. || Açı–sayı orantısı.
+2. Fasikül $80\cdot0{,}6=48$. || Yarı açı, yarı sayı.
+3. Test kitapları $360-240=120°$: $120\cdot0{,}6=72$. || Kalan dilim.
+cevap: Fasikül 48, test 72
+
+::tamamla baslik="Gözlüklü öğrenciler"
+soru: 720 öğrencili bir okulda kızlar daire grafiğinde 150°'lik dilimdedir. Kızların %40'ı, erkeklerin %30'u gözlüklüdür. Okulda kaç gözlüklü öğrenci vardır?
+1. Kızlar $720\cdot\frac{150}{360}=300$, erkekler 420. || Açıdan sayıya.
+?2. Gözlüklü kız $300\cdot0{,}4=120$, gözlüklü erkek $420\cdot0{,}3=126$. || Her grupta kendi yüzdesi.
+?3. Toplam $120+126=246$. || Genel oran $\frac{246}{720}\approx$ %34.
+cevap: 246
+
+::sorgula s2b-ihracat baslik="İhracat yüzdelerini toplamak"
+durum: Bir kentteki fabrikaların yarısı gıda, yarısı tekstil üretiyor. Gıda fabrikalarının %20'si, tekstil fabrikalarının %60'ı ihracat yapıyor.
+soru: Kentteki fabrikaların yüzde kaçı ihracat yapıyor?
+A) %80 || Kategori yüzdeleri toplanmaz; her biri kendi kategorisinin yüzdesidir.
++B) %40 || Paylar eşit: $\frac{20+60}{2}=40$.
+C) %60 || Yalnız tekstilin yüzdesini aldın.
+kontrol: (20+60)/2
+neden: 100 fabrika düşün: 50 gıdanın 10'u, 50 tekstilin 30'u ihracat yapar; 40 fabrika, %40. Paylar eşit olduğu için basit ortalama; paylar farklıysa ağırlıklı ortalama alınır.
+sinav: Daire + sütun sorularında sütundaki yüzdeleri payla çarparak topla; yüzdeleri doğrudan toplama.
+dusun: Fabrikaların dörtte üçü gıda olsaydı oran ne olurdu?
+yanit: $0{,}75\cdot20+0{,}25\cdot60=30$: %30.
+
+::yanilgi m2b tip=sutun-cizgi
+yanlis: A'ların %10'u, B'lerin %20'si iade edildiyse ürünlerin %30'u iade edilmiştir.
+neden: Yüzdeler farklı bütünlere (A'lar ve B'ler) aittir; toplanamaz.
+dogru: Genel oran payla ağırlıklı ortalamadır ve %10 ile %20 arasındadır.
+
+::soru c2b tip=sutun-cizgi zorluk=2
+Bir okuldaki öğrencilerin daire grafiğinde 9. sınıflar 120°, 10. sınıflar 240°'lik dilimdedir. 9. sınıfların %30'u, 10. sınıfların %15'i yüzme kursuna gidiyor. Okuldaki öğrencilerin yüzde kaçı yüzme kursuna gidiyor?
+A) 15 || Yalnız 10. sınıfların yüzdesini aldın.
++B) 20 || Doğru: $\frac{1}{3}\cdot30+\frac{2}{3}\cdot15=20$.
+C) 22,5 || Basit ortalama aldın; paylar eşit değil.
+D) 30 || Yalnız 9. sınıfların yüzdesini aldın.
+E) 45 || Yüzdeleri topladın.
+kontrol: 30/3+15*2/3
+cozum: Paylar $\frac{1}{3}$ ve $\frac{2}{3}$: $10+10=20$; öğrencilerin %20'si.
 
 @bolum s3 8 | Histogram
 ::fikir
@@ -285,6 +417,68 @@ E) 38 || Bu açıklıktır.
 kontrol: 8
 cozum: Açıklık $59 - 21 = 38$; $38 : 5 = 7{,}6$; grup genişliği 8.
 
+@bolum s3b 10 | Histogramdan çıkarım: açıklık ve ortalamanın sınırları
+::kesfet vg-histogram
+
+::fikir
+Histogram tek tek verileri değil, yalnız **her grupta kaç veri olduğunu** gösterir. Bu yüzden açıklık, ortalama gibi değerler çoğu zaman **tam bulunamaz, sınırlanır**: en büyük değer için her veriyi grubunun üst ucuna, en küçük değer için alt ucuna yerleştir.
+
+::duzey
+L1: 24–42 puan grubunda 4 öğrenci varsa bu dört öğrencinin puanı 24 de olabilir, 42 de. Histogramdan "en az" ve "en çok" bilgisi çıkar; tam değer çıkmaz.
+L2: Açıklık en çok: son grubun üst ucu − ilk grubun alt ucu. En az: son grubun alt ucu − ilk grubun üst ucu (iki grup arasında boş grup olsa da aynı kural). Bir eşiğin üstündeki veri yüzdesi, eşik bir grup sınırıysa tam bulunur.
+L3: Ortalamanın en küçük değeri $\frac{\sum f_i\cdot\text{alt}_i}{\sum f_i}$, en büyük değeri $\frac{\sum f_i\cdot\text{üst}_i}{\sum f_i}$'dir. Medyanın hangi grupta olduğu frekanslar biriktirilerek bulunur; grubun içindeki yeri bilinmez.
+
+::tablo baslik="Bir sınıfın matematik puanları (histogram verisi)"
+| Puan grubu | 24–42 | 43–61 | 62–80 | 81–99 |
+| Öğrenci sayısı | 4 | 6 | 7 | 3 |
+
+::ornek baslik="Histogramdan açıklık ve yüzde"
+soru: Tablodaki histogram verisine göre puanların açıklığı en çok kaç olabilir? 62 ve üzeri puan alanlar sınıfın yüzde kaçıdır?
+1. En küçük puan en az 24, en büyük puan en çok 99: açıklık en çok $99-24=75$. || Uçlara yerleştir.
+2. 62 ve üzeri: $7+3=10$ öğrenci. || 62 bir grup sınırı; tam sayılır.
+3. Toplam 20: $\frac{10}{20}=$ %50. || Frekansların toplamı sınıf mevcudu.
+cevap: 75; %50
+
+::ornek baslik="Ortalamanın sınırları"
+soru: Bir histogramda 10–19 grubunda 4, 20–29 grubunda 5, 30–39 grubunda 1 veri vardır (veriler tam sayı). Verilerin aritmetik ortalaması hangi değerler arasındadır?
+1. En küçük ortalama: herkes alt uçta. $\frac{4\cdot10+5\cdot20+1\cdot30}{10}=17$. || Alt sınır.
+2. En büyük ortalama: herkes üst uçta. $\frac{4\cdot19+5\cdot29+1\cdot39}{10}=26$. || Üst sınır.
+3. Ortalama 17 ile 26 arasındadır (uçlar dahil). || Tam değer histogramdan bulunamaz.
+cevap: $17\le\bar x\le26$
+
+::ornek baslik="Açıklık en az kaç?"
+soru: Yukarıdaki histogramda (10–19: 4, 20–29: 5, 30–39: 1) verilerin açıklığı en az kaç olabilir?
+1. En büyük veri 30–39 grubunda: en az 30. || Son dolu grup.
+2. En küçük veri 10–19 grubunda: en çok 19. || İlk dolu grup.
+3. Açıklık en az $30-19=11$. || Örnek: dört veri 19, son veri 30.
+cevap: 11
+
+::sorgula s3b-medyan baslik="Medyan hangi grupta?"
+durum: 20 öğrencinin puan histogramı: 24–42 grubunda 4, 43–61 grubunda 7, 62–80 grubunda 6, 81–99 grubunda 3 öğrenci.
+soru: Puanların medyanı hangi gruptadır?
+A) 62–80 || En yüksek sütun değil, sıra numarası medyanı belirler.
++B) 43–61 || 10. ve 11. sıradaki puanlar: biriken frekanslar 4, 11; ikisi de 43–61 grubunda.
+C) Bulunamaz || Grubun içindeki yeri bilinmez ama grubu bulunur.
+neden: 20 veride medyan 10. ve 11. verinin ortalamasıdır. Biriken frekanslar 4, 11, 17, 20: 5. ile 11. veriler 43–61 grubundadır; medyan da bu gruptadır.
+sinav: Histogramda medyan için frekansları biriktir ve $\frac{n}{2}$, $\frac{n}{2}+1$. sıradaki verilerin grubunu bul.
+dusun: 62–80 grubunda 3 öğrenci daha olsaydı (23 öğrenci) medyan hangi grupta olurdu?
+yanit: 12. veri: biriken 11'den sonra gelir, 62–80 grubunda.
+
+::yanilgi m3b tip=histogram
+yanlis: Histogramdan verilerin aritmetik ortalaması tam olarak bulunur.
+neden: Histogram yalnız grupları gösterir; grubun içindeki değerler bilinmez.
+dogru: Ortalama, alt uçlarla ve üst uçlarla hesaplanan iki değer arasında sınırlanır.
+
+::soru c3b tip=histogram zorluk=2
+Bir histogramda veriler 5–9, 10–14, 15–19 gruplarındadır ve frekanslar sırasıyla 2, 3, 5'tir (veriler tam sayı). Verilerin aritmetik ortalamasının alabileceği en büyük değer kaçtır?
+A) 11,5 || Bu, en küçük ortalamadır (alt uçlar).
+B) 13,5 || Grup ortalarını kullandın; en büyük değer için üst uçlar alınır.
++C) 15,5 || Doğru: $\frac{2\cdot9+3\cdot14+5\cdot19}{10}=15{,}5$.
+D) 17 || Hesabı kontrol et.
+E) 19 || Bütün veriler son grupta değil.
+kontrol: (2*9+3*14+5*19)/10
+cozum: Her veri grubunun üst ucunda olursa ortalama en büyüktür: $\frac{18+42+95}{10}=15{,}5$.
+
 @bolum s4 8 | Uygun grafik ve dönüşüm
 ::fikir
 **Zamana bağlı değişim** → çizgi; **kategorileri karşılaştırma** → sütun; **bütünün parçaları** → daire; **gruplandırılmış sürekli veri** → histogram. Tablodan grafiğe geçerken toplamı ve ölçeği koru.
@@ -333,6 +527,70 @@ D) 7500 || Hesabı yeniden yap.
 E) 8400 || Bu %35'tir; $105°$ bütünün yaklaşık %29'udur.
 kontrol: 24000*105/360
 cozum: $\frac{105}{360} = \frac{7}{24}$; $24000 \cdot \frac{7}{24} = 7000$ TL.
+
+@bolum s4b 10 | Veri değişince grafik ne olur?
+::fikir
+Daire grafiği **oranları** gösterir: bir dilime ekleme ya da çıkarma yapılınca bütün değişir ve **bütün dilimlerin açısı** yeniden hesaplanır. "Dağılım aynı kaldı" bilgisi, her kategorinin **aynı oranda** değiştiğini söyler. Sütun grafiğinde dikey eksen sıfırdan başlamıyorsa sütun boylarının oranı yanıltıcıdır.
+
+::duzey
+L1: 36 kişilik sınıfta 12 kişi futbolu seçmişse futbol dilimi 120°'dir. 4 yeni öğrenci gelip hepsi futbolu seçerse futbol 16/40 olur: 144°. Diğer dilimlerin kişi sayısı aynı kalsa da açıları küçülür.
+L2: Dağılımın aynı kalması için çıkarılan (ya da eklenen) miktarlar başlangıçtaki oranla aynı olmalıdır: 15, 10, 5 (oran 3 : 2 : 1) kategorilerinden üçüncüden 1 çıkarılırsa diğerlerinden 3 ve 2 çıkarılmalıdır.
+L3: Sütun grafiğinde eksen 96'dan başlıyorsa 98 ve 102'lik sütunlar 2 ve 6 birim görünür; görsel oran 3 kat, gerçek artış $\frac{4}{98}\approx$ %4'tür. Grafiği okurken eksenin başlangıcını ve birimini mutlaka kontrol et.
+
+::ornek baslik="Yeni öğrenciler dilimleri değiştirir"
+soru: 36 kişilik bir sınıfın spor tercihi grafiğinde futbol dilimi 120°'dir. Sınıfa 4 öğrenci daha katılıyor ve hepsi futbolu seçiyor. Yeni grafikte futbol dilimi ve futbol dışındaki dilimlerin toplam açısı kaç derecedir?
+1. Futbol $36\cdot\frac{120}{360}=12$ kişi; yeni durumda 16 kişi, toplam 40. || Önce sayılar.
+2. Futbol $360\cdot\frac{16}{40}=144°$. || Yeni bütünle.
+3. Diğerleri $360-144=216°$ (eskiden 240°). || Kişi sayıları aynı, açıları küçüldü.
+cevap: 144° ve 216°
+
+::ornek baslik="Dağılım aynı kalsın"
+soru: Bir dolaptaki gömlek, pantolon ve ceketlerin sayıları 15, 10 ve 5'tir. Bir ceket kuru temizlemeye verilince dolaptaki dağılımın aynı kalması için kaç gömlek ve kaç pantolon da verilmelidir? Dolapta kaç kıyafet kalır?
+1. Oran $15:10:5=3:2:1$. || Dağılım = oran.
+2. Ceket 4'e iner; oran korunursa gömlek $3\cdot4=12$, pantolon $2\cdot4=8$. || Her kategori aynı oranda.
+3. Verilenler: 3 gömlek, 2 pantolon; kalan $12+8+4=24$. || Kontrol: $24\cdot\frac{1}{6}=4$ ceket.
+cevap: 3 gömlek, 2 pantolon; 24 kıyafet kalır
+
+::ornek baslik="Eksen sıfırdan başlamazsa"
+soru: Bir haberde iki yılın satışları sütun grafiğiyle veriliyor; dikey eksen 96'dan başlıyor. Sütunlar 98 ve 102 bin adeti gösteriyor ve ikinci sütun birincinin 3 katı uzunlukta görünüyor. Satışlar gerçekte yüzde kaç arttı?
+1. Görünen boylar $98-96=2$ ve $102-96=6$: 3 kat. || Eksen 96'dan başlıyor.
+2. Gerçek artış $102-98=4$ bin. || Değerler eksenden okunur.
+3. Oran $\frac{4}{98}\approx0{,}041$: yaklaşık %4. || Görsel 3 kat, gerçek %4.
+cevap: Yaklaşık %4
+
+::tamamla baslik="Tablodan daire grafiğine"
+soru: 1200 oy kullanılan bir seçimde adayların oyları: Ata 150, Gizem 400, Sude 300, Cenk 200, Berfin 150. Gizem'in ve Sude'nin dilimleri kaç derecedir?
+1. 1 oy $\frac{360}{1200}=0{,}3°$. || Bütün 1200 oy.
+?2. Gizem $400\cdot0{,}3=120°$. || Oy × birim açı.
+?3. Sude $300\cdot0{,}3=90°$. || Kontrol: $45+120+90+60+45=360$.
+cevap: Gizem 120°, Sude 90°
+
+::sorgula s4b-ekleme baslik="Bir dilime ekleme"
+durum: Bir sınıfın beslediği evcil hayvan grafiğinde kedi 180°, köpek 120°, kuş 60°'dir (toplam 30 öğrenci). Sınıfa kuş besleyen 6 öğrenci katılıyor.
+soru: Yeni grafikte kedi dilimi kaç derecedir?
+A) 180° || Kedi besleyen sayısı değişmedi ama bütün büyüdü; açı küçülür.
++B) 150° || Kedi 15 kişi, yeni toplam 36: $360\cdot\frac{15}{36}=150°$.
+C) 162° || Hesabı kontrol et: kedi 15 kişi, toplam 36.
+kontrol: 360*15/36
+neden: Kedi $30\cdot\frac{180}{360}=15$ kişi. Toplam 36 olunca açı $\frac{15}{36}\cdot360=150°$. Kuş dilimi $\frac{11}{36}\cdot360=110°$ olur.
+sinav: Daire grafiğinde bir kategori değişince önce sayıları bul, sonra her açıyı yeni bütünle yeniden hesapla.
+dusun: Kuş besleyenler kaç kişi olsaydı kuş dilimi kedi dilimine eşit olurdu?
+yanit: Kediyle aynı sayıda, 15 kişi: 10 kuşçu daha gelmesi gerekirdi.
+
+::yanilgi m4b tip=grafik-secim
+yanlis: Bir dilime eleman eklenince yalnız o dilimin açısı değişir.
+neden: Açı payı gösterir; bütün büyüyünce diğer dilimlerin payı küçülür.
+dogru: Bütün dilimlerin açısı yeni toplamla yeniden hesaplanır.
+
+::soru c4b tip=grafik-secim zorluk=2
+Bir kütüphanedeki 60 kitabın daire grafiğinde romanlar 150°'dir. Kütüphaneye 12 roman daha geliyor. Yeni grafikte roman dilimi kaç derece olur?
+A) 150 || Bütün değişti; açı yeniden hesaplanmalı.
+B) 162 || Hesabı kontrol et: 37 roman, 72 kitap.
+C) 180 || Hesabı yeniden yap.
++D) 185 || Doğru: $360\cdot\frac{37}{72}=185$.
+E) 222 || Toplamı 60 aldın.
+kontrol: 360*37/72
+cozum: Romanlar $60\cdot\frac{150}{360}=25$; yeni 37 roman, 72 kitap: $360\cdot\frac{37}{72}=185°$.
 
 ::ozet
 - Daire grafiğinde açı $= 360° \cdot \frac{\text{pay}}{\text{bütün}}$; açıdan sayıya birim açıyla geç.

@@ -375,6 +375,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "veri-grafikleri-video",
+      "conceptId": "veri-grafikleri",
+      "hints": [
+        {
+          "id": "sutun-grafiginden-medyan",
+          "title": "Sütun grafiğinden medyan: frekansları biriktir",
+          "sectionIds": [
+            "s2",
+            "s3b"
+          ]
+        },
+        {
+          "id": "esit-sutun-esit-frekans",
+          "title": "Eşit sütun eşit frekans; toplamlarla eksikleri bul",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        }
+      ]
     }
   ]
 }

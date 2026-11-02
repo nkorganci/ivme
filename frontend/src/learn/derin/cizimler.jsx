@@ -19,5 +19,6 @@ import { diagrams as yuzdeKarisim } from './yuzde-karisim-cizim.jsx';
 import { diagrams as karZarar } from './kar-zarar-cizim.jsx';
 import { diagrams as hareket } from './hareket-problemleri-cizim.jsx';
 import { diagrams as grafik } from './grafik-rutin-olmayan-cizim.jsx';
+import { diagrams as veriGrafik } from './veri-grafikleri-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik };

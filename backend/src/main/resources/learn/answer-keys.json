@@ -5628,6 +5628,19 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "veri-grafikleri:c1b": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
   "veri-grafikleri:c2": {
    "conceptId": "veri-grafikleri",
    "type": "choice",
@@ -5640,6 +5653,19 @@
     "E"
    ],
    "version": "fef49cc14d12ec09"
+  },
+  "veri-grafikleri:c2b": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
   },
   "veri-grafikleri:c3": {
    "conceptId": "veri-grafikleri",
@@ -5654,6 +5680,19 @@
    ],
    "version": "1472983ce40becda"
   },
+  "veri-grafikleri:c3b": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "veri-grafikleri:c4": {
    "conceptId": "veri-grafikleri",
    "type": "choice",
@@ -5666,6 +5705,19 @@
     "E"
    ],
    "version": "85a2427e9a1b3f53"
+  },
+  "veri-grafikleri:c4b": {
+   "conceptId": "veri-grafikleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
   },
   "veri-grafikleri:g1": {
    "conceptId": "veri-grafikleri",

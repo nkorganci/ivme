@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "id": "sutun-grafiginden-medyan",
+    "providerId": "youtube:L_8OZ-66HHg",
+    "startSeconds": 1548,
+    "endSeconds": 1780,
+    "quote": "60 alan 5 öğrenci, 70 alan 3 öğrenci gibi",
+    "frameSeconds": [
+      1600
+    ],
+    "rule": "Değer–frekans sütun grafiğinde mod en uzun sütunun değeridir; medyan için frekansları soldan biriktir ve n/2, n/2 + 1. (tekse (n + 1)/2.) sıradaki verinin hangi sütunda olduğuna bak.",
+    "condition": "Yatay eksen veri değerlerini küçükten büyüğe sıralı göstermeli ve sütun boyu o değerin kaç kez tekrarlandığını vermeli. Gruplanmış veride (histogram) medyanın yalnız grubu bulunur.",
+    "example": "Notlar 50, 60, 70, 80 için frekanslar 3, 6, 4, 5 (18 öğrenci): mod 60. Biriken frekanslar 3, 9, 13, 18; 9. veri 60, 10. veri 70: medyan 65.",
+    "counterexample": "Sütunların ortasındaki değeri (60 ile 70 arası) ya da en uzun sütunu medyan sanmak yanlıştır; frekanslar değişince ortanca sıra başka sütuna kayar.",
+    "rationale": "Sütun grafiği sıralı veri listesinin kısaltılmış yazımıdır: her değer frekansı kadar tekrarlanır. Biriken frekans, o değere kadar listede kaç veri olduğunu söyler.",
+    "agentSourceReview": "Claude 1600. saniye karesinde Soru 9'un sütun grafiğini (60: 5, 70: 3, 80: 4, 90: 5, 100: 3) ve tahtaya frekans kadar yazılmış sıralı listeyi okudu; altyazı 26:42'de 20 veride 10. ve 11. terimlerin 80 olduğunu ve medyanın 80 çıktığını söylüyor. Kartın 50–80 örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "esit-sutun-esit-frekans",
+    "providerId": "youtube:L_8OZ-66HHg",
+    "startSeconds": 2395,
+    "endSeconds": 2510,
+    "quote": "70 alanla 80 alan şuradaki sayı değerine eşit",
+    "frameSeconds": [
+      2420,
+      2480
+    ],
+    "rule": "Ölçeği eksik bir sütun grafiğinde aynı yükseklikteki sütunlar aynı frekanstır. Bilinmeyen sütunları bu eşitliklerle ve verilen toplam bilgileriyle (toplam kişi, bir eşiğin üstü) denkleme çevir.",
+    "condition": "Sütunlar aynı eksende ve aynı ölçekle çizilmiş olmalı; eşitlik ancak kesikli çizgilerle ya da sorunun bilgisiyle kesinleşir. Görünüşe göre tahmin yerine verilen eşitlikleri kullan.",
+    "example": "40 öğrencilik grafikte 60 ve 90 puan sütunları eşit ve en uzun, ikisinde toplam 22 öğrenci var: her biri 11. 70 ve üstü 24 öğrenci ise 70 ve 80 sütunlarında 24 − 11 = 13 öğrenci; 50 puan sütununda 40 − 11 − 13 − 11 = 5 öğrenci.",
+    "counterexample": "Sütun boylarını cetvelle ölçüp oranlamak, ölçek verilmediğinde güvenilmez; yalnız eşit görünen ve bilgiyle desteklenen sütunlar eşit alınır.",
+    "rationale": "Sütun yüksekliği frekansı gösterir; aynı çizgiye ulaşan sütunlar aynı sayıdır. Her ek bilgi bir denklem verir ve bilinmeyen sütunlar sırayla bulunur.",
+    "agentSourceReview": "Claude 2420 ve 2480. saniye karelerinde Soru 14'ün tam metnini ve grafiğini, tahtadaki 2x = 28, x = 14, 70 üstü 26 → 12 ve 65 puan için kalan hesabını okudu. Kartın 40 öğrencilik örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

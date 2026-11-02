@@ -446,12 +446,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "daire-grafik": 38,
-    "sutun-cizgi": 17,
+    "daire-grafik": 39,
+    "sutun-cizgi": 18,
     "histogram": 14,
     "grafik-secim": 27
    },
-   "untyped": 57
+   "untyped": 55
   },
   "yas-isci-problemleri": {
    "total": 188,

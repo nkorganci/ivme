@@ -136,7 +136,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `kar-zarar` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/kar-zarar.json`; öğretmen/öğrenci kabulü yok | Kâr yüzdesi (maliyet tabanı), kampanya ve ardışık indirim (gerçek oran), kâr–zarar farkından maliyet, fire ve birim fiyat; gerçek soru TYT-0710 (0649, 0658, 0672 derste çözüldü). İçerik ✅ |
 | `hareket-problemleri` | ⬜ LAB YOK | Konum–zaman ve kapanan mesafe; yön, bağıl hız ve mola koşullarını modele bağla. Gerçek soru adayları TYT-0695, 0711, 0731, 0742, 0743 (0666, 0673, 0685, 0700 derste çözüldü) |
 | `grafik-rutin-olmayan` | ⬜ LAB YOK | Tablo/grafikten kısıt çıkarma ve strateji seçimi; gereksiz bilgiyi ele. Gerçek soru adayları TYT-0664, 0708, 0722, 0725, 0727 (0670, 0692, 0704 derste çözüldü) |
-| `veri-grafikleri` | ⬜ LAB YOK | Aynı verinin farklı grafikleri; ölçek ve sunum değişince değişmeyen bilgiyi oku |
+| `veri-grafikleri` | ⬜ LAB YOK | Aynı verinin farklı grafikleri; ölçek ve sunum değişince değişmeyen bilgiyi oku. Gerçek soru adayları TYT-0803, 0805, 0807, 0811 (0796, 0798, 0809 derste çözüldü) |
 | `merkezi-egilim` | ⬜ LAB YOK | Veri noktalarını değiştir; ortalama/ortanca/yayılım ve aykırı değerin etkisini ayır |
 | `onermeler` | ⬜ LAB YOK | Doğruluk durumları kurma ve yanlış çıkarımı onarma; bağlaçların anlamını ayır |
 | `kosullu-onerme` | ⬜ LAB YOK | Koşul, karşı durum ve niceleyici; bir örnek, karşı örnek ve genel iddiayı ayır |
@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **18/32 bitti**. Sıradaki TYT konusu: `veri-grafikleri`.
+TYT: **19/32 bitti**. Sıradaki TYT konusu: `merkezi-egilim`.
 
 ### TYT (şu anki aşama)
 
@@ -207,7 +207,7 @@ TYT: **18/32 bitti**. Sıradaki TYT konusu: `veri-grafikleri`.
 | 16 | ✅ BİTTİ | `kar-zarar` | Kâr–Zarar ve İndirim Problemleri | 9 | TYT + AYT | 8/26/3/4 | 3 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 2, PL2 1 | 2/2 | — |
 | 17 | ✅ BİTTİ | `hareket-problemleri` | Hareket Problemleri | 9 | TYT + AYT | 8/25/3/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 2, PL2 2 | 2/2 | — |
 | 18 | ✅ BİTTİ | `grafik-rutin-olmayan` | Rutin Olmayan Problemler: Grafik, Tablo ve Strateji | 9 | TYT + AYT | 8/20/4/4 | 3 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 1, PL2 2 | 2/2 | — |
-| 19 | 🟡 EKSİK | `veri-grafikleri` | Verilerin Grafikle Gösterilmesi | 9 | TYT | 4/8/1/1 | 0 / 17 (Veri) | 0 · PL1 1, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 19 | ✅ BİTTİ | `veri-grafikleri` | Verilerin Grafikle Gösterilmesi | 9 | TYT | 8/20/3/4 | 3 / 17 (Veri) | 2 · PL1 1, PL2 1 | 2/2 | — |
 | 20 | 🟡 EKSİK | `merkezi-egilim` | Merkezi Eğilim ve Yayılım Ölçüleri | 9 | TYT | 4/8/1/1 | 0 / 17 (Veri) | 0 · PL1 1, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 21 | 🟡 EKSİK | `onermeler` | Önermeler ve Bileşik Önermeler | 9 | TYT + AYT | 4/8/2/1 | 0 / 6 (Önermeler ve Bileşik Önermeler) | 0 · PL1 2, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 22 | 🟡 EKSİK | `kosullu-onerme` | Koşullu Önerme ve Niceleyiciler | 9 | TYT + AYT | 4/8/1/1 | 0 / 6 (Önermeler ve Bileşik Önermeler) | 0 · PL1 2, PL2 1 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
