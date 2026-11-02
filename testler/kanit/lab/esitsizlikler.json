@@ -1,0 +1,88 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "esitsizlikler",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "aralik",
+      "label": "Aralık ve tam sayılar",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0625",
+        "AYT_Sayisal-0007"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "yon",
+      "label": "Yön değişimi",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0622"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "aralik-ifade",
+      "label": "İfadenin aralığı",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "bolge",
+      "label": "İki bilinmeyen",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "AYT_Sayisal-0042",
+        "AYT_Sayisal-0033"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/esitsizlikler.js": "0f18d9546bfe5049954bdc7aeac6a43b0be4ba7bb6e51a77563bb61222b744c7",
+    "frontend/src/learn/lab/cizim/esitsizlikler.jsx": "26329f4033642d85d7564cef42601f977a3ef88fc0830fbf83b975d9cb21bd55",
+    "testler/lab-esitsizlikler.test.mjs": "5189b10d401d40da0e14f83552ae78e694ae90cc1de670af218daa5763d2b053",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-esitsizlikler-rapor.json": "04505091dc4c0e192a21a17421caca6eb7b6a94271318d22d7f897468b8a3165",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-deney.png": "d6395f5da709a1b54674dfd6b6d05e79d773fb6cffce336501c82a4d2060e6cc",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-ifade-deney.png": "8f831dfd21ab8e1856b607f959e313497164af4219dd6925a6fa656c135c554d",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-ifade-tamam.png": "66601212350a8cf525b3a48d8c7a50e6b032a5119e23c78b9c1ce124cd606607",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-aralik-tamam.png": "90a955793f228ba9babd1395df38b4b3e7590f823d9588eef15dcf046e059f33",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-bolge-deney.png": "23ae96ea0e0afdfd2cf97f4c86d045d1d06e0becdda75541c5d0554717e427ec",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-bolge-tamam.png": "b4d12a431910ca05794b0665e9c9033222890a34fc07b0f983b983d5a224b634",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-yon-deney.png": "373c1099aea63affaf76f4849dbd28435763b259b74f6b4bd01ce405c2f20ff8",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-esitsizlikler-yon-tamam.png": "08d52d70f49ebc0d0c38c54da62ad443aeabb6f638f1ce8eddee4c21824a155d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-deney.png": "232aed172e2cc406261bbe5ec59fa62ae2f620f55b8af1f7eea792af9ebb96e0",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-ifade-deney.png": "fef425fb56b310b9b5515c7d0d9d151477b180754ad09181cc126a2db89e1555",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-ifade-tamam.png": "5660965dd9b259a868ccb2d6fe73b3eae806269c6c288914a2ed788b051070ba",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-aralik-tamam.png": "1d87e242c4eaff5801074deaef7f2c665ba13050821aa4915d8751cacf92ec02",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-bolge-deney.png": "48dd5ca47d4190a946aa2c951b9f0836427d16e35a1cd6312057c14eb3aae80d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-bolge-tamam.png": "27fcbd6e2d2807a790c363091e0c9d7afdfdfd1abed7fd02a8982ad7aead4167",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-yon-deney.png": "daa37cf9cb6bf6788992ce9f57e2da4b2c00157b87bbf4936a6c137eceb2523d",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-esitsizlikler-yon-tamam.png": "f1c1e12e01b06bcfd8603071a25ce98f4d8b56102097684aa8dc4a7becf1731e"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

@@ -15,6 +15,7 @@ export const LAB_LOADERS = {
   'ebob-ekok': () => Promise.all([import('./ebob-ekok.js'), import('../cizim/ebob-ekok.jsx')]),
   'rasyonel-sayilar': () => Promise.all([import('./rasyonel-sayilar.js'), import('../cizim/rasyonel-sayilar.jsx')]),
   'birinci-derece-denklemler': () => Promise.all([import('./birinci-derece-denklemler.js'), import('../cizim/birinci-derece-denklemler.jsx')]),
+  'esitsizlikler': () => Promise.all([import('./esitsizlikler.js'), import('../cizim/esitsizlikler.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -36,4 +37,6 @@ export const LAB_KESIF = {
   'birinci-derece-denklemler': ['birinci-derece-denklemler', 'denge'], 'denklem-terazi': ['birinci-derece-denklemler', 'denge'],
   'denklem-ozel': ['birinci-derece-denklemler', 'ozel-durum'], 'denklem-sistem': ['birinci-derece-denklemler', 'sistem'],
   'denklem-jeton': ['birinci-derece-denklemler', 'sistem'],
+  'esitsizlikler': ['esitsizlikler', 'aralik'], 'esitsizlik-aralik': ['esitsizlikler', 'aralik'], 'esitsizlik-ayna': ['esitsizlikler', 'yon'],
+  'esitsizlik-ifade': ['esitsizlikler', 'aralik-ifade'], 'esitsizlik-bolge': ['esitsizlikler', 'bolge'],
 };

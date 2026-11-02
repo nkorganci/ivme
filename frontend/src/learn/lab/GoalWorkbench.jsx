@@ -22,7 +22,7 @@ export function Choices({ label, options, value, onChange, disabled = false }) {
 function Control({ control, value, onChange }) {
   const id = useId();
   if (control.options) {
-    return <div className="tl-control"><span className="tl-control-label" id={id}>{control.label}</span>
+    return <div className="tl-control"><span className="tl-control-label" id={id}><MathText text={control.label} /></span>
       <div className="pl-presets" role="group" aria-labelledby={id}>{control.options.map(([v, label]) => <button key={String(v)} type="button"
         aria-pressed={value === v} onClick={() => onChange(v)}><MathText text={label} /></button>)}</div></div>;
   }
