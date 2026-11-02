@@ -1,0 +1,115 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "bileske-ters-video",
+  "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a",
+  "taskHash": "c25e68f2da7d2ec623a0d23a6b2bffdad31454239bb8ecccccf4cdd090197ea2",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\bileske-ters-video",
+  "artifacts": {
+    "asamalar\\youtube-aXrfeTqT9-Q-metin\\dbba29b2e5b58f39592301aa97e8daa4e842844196f504d1e5c794417c63938f.json": "075ea0f229dad3bdbf1b6c7af8ac7537cdda6043f1d140ea2a039c2813ce7d9b",
+    "asamalar\\youtube-aXrfeTqT9-Q-kareler\\5f66bb24a1bf30d0e64fce5147a802520d48e1b41d3a9d750d5bbb5e60e754d1.json": "157221f6939cf2245ed5f34c88a4639cc12fb611248a6ad86920451459e20d52",
+    "kareler\\2089061877aeb67b3b0a800544e5a6077a171281f5b413a9bb671e3fa99ff8d5.png": "763756cd3f19a15d2f19d8d34ccef68e36c3aebbe1f3fbc7e64b7b3d8a2f94c5",
+    "kareler\\7ed2c2db5d48449cb7d41a2a56d4fbf2bc9689a05c89298b3bd14230e3ac0601.png": "b5922b5fe2c32fefac0685890e77feab73dbadc2fe3cb5881b467e37a0e34f3d",
+    "kareler\\9e5d6d2ae07632b5291c281678ec6a867cf652fe424e8e8d595bb6ca5e8e06cb.png": "d0e22b36f4ea44d1d97eeba6c17256cedc170a4d5f84d61de52a3c073e8ea9a0",
+    "kareler\\e6be01298eea352f2b16f1b088336c08b05e57f47081fddb87a5b3a58089305b.png": "8521e5b78766e477a5e722b743c74e9faf8f0443d53b82a93c285de6c5328d2c",
+    "asamalar\\matematik-denetimi\\c4d1ffe35c588acf8e7ef0bf98c76d6dda10fd282d864faa3ad7918ba4438dba.json": "6f74d6b3678640807776da1a71447a2e1c31293e14982cf8a0defe2013e89f52",
+    "surumler\\832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a.json": "7c0ffee064b7516a3dff473eff54e62e6688025d24c817e90d811cb92c4cac3a",
+    "surumler\\832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a.oneriler.md": "88b72819ec412f1e9b93fa7f57fb7affc823974a00b797f6d1b6a4257a106903"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-bileske-ters-test.py",
+        "sha256": "70a0780d6b416afae5b4316230f4387bac5252ab06c3c7e1d9e2e1a6fd9c8011",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "bileske-ters-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 4,
+      "stagesBuilt": 3,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.583
+    },
+    "videos": [
+      {
+        "providerId": "youtube:aXrfeTqT9-Q",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:aXrfeTqT9-Q",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 605,
+      "normalization": {
+        "captionControlEvents": 601,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 310,
+          "file": "kareler\\2089061877aeb67b3b0a800544e5a6077a171281f5b413a9bb671e3fa99ff8d5.png",
+          "sha256": "763756cd3f19a15d2f19d8d34ccef68e36c3aebbe1f3fbc7e64b7b3d8a2f94c5",
+          "pixelHash": "2089061877aeb67b3b0a800544e5a6077a171281f5b413a9bb671e3fa99ff8d5",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 340,
+          "file": "kareler\\7ed2c2db5d48449cb7d41a2a56d4fbf2bc9689a05c89298b3bd14230e3ac0601.png",
+          "sha256": "b5922b5fe2c32fefac0685890e77feab73dbadc2fe3cb5881b467e37a0e34f3d",
+          "pixelHash": "7ed2c2db5d48449cb7d41a2a56d4fbf2bc9689a05c89298b3bd14230e3ac0601",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1590,
+          "file": "kareler\\e6be01298eea352f2b16f1b088336c08b05e57f47081fddb87a5b3a58089305b.png",
+          "sha256": "8521e5b78766e477a5e722b743c74e9faf8f0443d53b82a93c285de6c5328d2c",
+          "pixelHash": "e6be01298eea352f2b16f1b088336c08b05e57f47081fddb87a5b3a58089305b",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1630,
+          "file": "kareler\\9e5d6d2ae07632b5291c281678ec6a867cf652fe424e8e8d595bb6ca5e8e06cb.png",
+          "sha256": "d0e22b36f4ea44d1d97eeba6c17256cedc170a4d5f84d61de52a3c073e8ea9a0",
+          "pixelHash": "9e5d6d2ae07632b5291c281678ec6a867cf652fe424e8e8d595bb6ca5e8e06cb",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "tersi-y-ekseninden-oku",
+      "contentHash": "bc3a8c2d1d7ef015949caa71a68fd4651305ed1a756ba4ee32131367c120f19f",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "icten-cozmek-icin-distan-bak",
+      "contentHash": "32ffeec4051c52e03b3495bedcd57b66773986338d5948ec9edc9bf4de0c7f6d",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

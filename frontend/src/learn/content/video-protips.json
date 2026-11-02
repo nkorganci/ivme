@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "a318b2884c3101f816f819d77d013a24d11c654d40ec33e6df1b2c35d590d9ce",
+  "inputsHash": "65607471a31867cd48df143685e18ae1a3a525ff0cd560a45953f3156bec4ef7",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1241,6 +1241,54 @@
       },
       "evidenceHash": "4678dfddcb38289a0f3d6a80a32f37e757b47774566d8d9e4ad90db953ee2495",
       "contentHash": "a18425c4c7c3d5a249857956c42c92863deb963c773dbc98cbf8ebf583ce09c1",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "bileske-ters-video:tersi-y-ekseninden-oku",
+      "conceptId": "bileske-ters",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s3",
+        "s3b"
+      ],
+      "title": "Tersi grafikten: y ekseninden başla",
+      "rule": "Grafikten f(a) okumak için x ekseninde a'dan başla, dikey git, grafiğe değince yataydan y'yi oku. f⁻¹(b) okumak için tersine y ekseninde b'den başla, yatay git, grafiğe değince dikeyden x'i oku.",
+      "condition": "Fonksiyon tanımlı aralıkta bire bir olmalı; yatay doğru grafiği tek noktada kesmelidir. Birden çok kesişim varsa f⁻¹ tanımlı değildir.",
+      "example": "Grafik (−1, 4), (0, 2), (2, −1) noktalarından geçen azalan bir eğriyse f⁻¹(2) = 0, f⁻¹(−1) = 2, f⁻¹(4) = −1.",
+      "counterexample": "f⁻¹(2) için x ekseninde 2'den başlayıp f(2)'yi okumak yanlış bir sayı verir (bu örnekte −1).",
+      "rationale": "f(a) = b ile f⁻¹(b) = a aynı noktayı, (a, b)'yi anlatır; yalnız hangi koordinatın bilindiği değişir.",
+      "source": {
+        "providerId": "youtube:aXrfeTqT9-Q",
+        "startSeconds": 290,
+        "endSeconds": 345
+      },
+      "evidenceHash": "832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a",
+      "contentHash": "bc3a8c2d1d7ef015949caa71a68fd4651305ed1a756ba4ee32131367c120f19f",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "bileske-ters-video:icten-cozmek-icin-distan-bak",
+      "conceptId": "bileske-ters",
+      "topicId": "excel.tyt.matematik.cfb36ba99fce84b745aa",
+      "sectionIds": [
+        "s1",
+        "s1b"
+      ],
+      "title": "İç içe denklem: dıştan içe çöz",
+      "rule": "f(f(x − 4)) = −2 gibi iç içe denklemleri dıştan içe çöz: içteki ifadeye bir harf ver (u = f(x − 4)), önce f(u) = −2 denklemini grafikten çöz, sonra her u değeri için f(x − 4) = u denklemini çöz.",
+      "condition": "Her adımda grafikteki yatay doğrunun kaç noktada kestiğine bak; birden çok u çıkabilir ve her biri ayrı çözüm verir. Farklı x değerleri istenirse tekrarları bir kez say.",
+      "example": "f'nin en küçük değeri f(1) = −3 olsun ve f(x) = 0'ın kökleri −2 ile 4 olsun. f(f(x)) = −3 ise f(x) = 1; bu denklem grafikte kaç noktada sağlanıyorsa o kadar çözüm vardır.",
+      "counterexample": "Dıştaki f'yi görmezden gelip f(x − 4) = −2 çözmek, denklemi tek katmanlı sanmaktır ve yanlış kökler verir.",
+      "rationale": "Bileşke dıştan içe açılır: dış fonksiyonun hangi girdide −2 verdiğini bilmeden içteki ifadenin değeri bilinemez.",
+      "source": {
+        "providerId": "youtube:aXrfeTqT9-Q",
+        "startSeconds": 1562,
+        "endSeconds": 1638
+      },
+      "evidenceHash": "832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a",
+      "contentHash": "32ffeec4051c52e03b3495bedcd57b66773986338d5948ec9edc9bf4de0c7f6d",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

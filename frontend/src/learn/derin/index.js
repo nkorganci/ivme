@@ -28,8 +28,9 @@ import * as kumeler from './kumeler-temel.js';
 import * as kumeIslem from './kume-islemleri.js';
 import * as fonksiyon from './fonksiyon-kavrami.js';
 import * as fonksiyonGrafik from './fonksiyon-grafikleri.js';
+import * as bileske from './bileske-ters.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi, onermeler, kosullu, kumeler, kumeIslem, fonksiyon, fonksiyonGrafik];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi, onermeler, kosullu, kumeler, kumeIslem, fonksiyon, fonksiyonGrafik, bileske];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

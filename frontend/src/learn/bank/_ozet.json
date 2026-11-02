@@ -1,14 +1,14 @@
 {
  "concepts": {
   "bileske-ters": {
-   "total": 132,
+   "total": 135,
    "cikmis": {
-    "TYT": 0,
+    "TYT": 3,
     "AYT": 0
    },
    "archetypes": {
-    "bileske-deger": 8,
-    "bileske-kural": 9,
+    "bileske-deger": 10,
+    "bileske-kural": 10,
     "ters-bulma": 61,
     "ters-ozellik": 0
    },
@@ -100,32 +100,32 @@
    "untyped": 260
   },
   "fonksiyon-grafikleri": {
-   "total": 66,
+   "total": 65,
    "cikmis": {
-    "TYT": 4,
+    "TYT": 3,
     "AYT": 0
    },
    "archetypes": {
     "grafik-okuma": 9,
     "isaret-aralik": 6,
     "dogru-testi": 0,
-    "dogrusal-model": 19
+    "dogrusal-model": 18
    },
    "untyped": 32
   },
   "fonksiyon-kavrami": {
-   "total": 603,
+   "total": 601,
    "cikmis": {
-    "TYT": 7,
+    "TYT": 5,
     "AYT": 0
    },
    "archetypes": {
     "tanim-goruntu": 41,
-    "deger-bulma": 49,
+    "deger-bulma": 48,
     "fonksiyon-cesit": 91,
     "parcali-islem": 24
    },
-   "untyped": 398
+   "untyped": 397
   },
   "grafik-rutin-olmayan": {
    "total": 227,

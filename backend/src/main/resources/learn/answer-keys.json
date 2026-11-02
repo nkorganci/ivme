@@ -14,6 +14,19 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "bileske-ters:c1b": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
   "bileske-ters:c2": {
    "conceptId": "bileske-ters",
    "type": "choice",
@@ -27,7 +40,33 @@
    ],
    "version": "1472983ce40becda"
   },
+  "bileske-ters:c2b": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
   "bileske-ters:c3": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
+  "bileske-ters:c3b": {
    "conceptId": "bileske-ters",
    "type": "choice",
    "answer": "C",
@@ -52,6 +91,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "bileske-ters:c4b": {
+   "conceptId": "bileske-ters",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
   },
   "bileske-ters:h1": {
    "conceptId": "bileske-ters",

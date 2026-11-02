@@ -549,6 +549,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "bileske-ters-video",
+      "conceptId": "bileske-ters",
+      "hints": [
+        {
+          "id": "tersi-y-ekseninden-oku",
+          "title": "Tersi grafikten: y ekseninden başla",
+          "sectionIds": [
+            "s3",
+            "s3b"
+          ]
+        },
+        {
+          "id": "icten-cozmek-icin-distan-bak",
+          "title": "İç içe denklem: dıştan içe çöz",
+          "sectionIds": [
+            "s1",
+            "s1b"
+          ]
+        }
+      ]
     }
   ]
 }
