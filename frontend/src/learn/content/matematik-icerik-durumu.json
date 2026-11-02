@@ -1,8 +1,8 @@
 {
   "phase": "TYT",
   "total": 32,
-  "completed": 15,
-  "nextTopicId": "kar-zarar",
+  "completed": 16,
+  "nextTopicId": "hareket-problemleri",
   "topics": [
     {
       "id": "temel-kavramlar",
@@ -193,13 +193,8 @@
         "AYT"
       ],
       "grade": 9,
-      "status": "incomplete",
-      "remaining": [
-        "Ayrıntılı anlatım ve alıştırmalar",
-        "Çözümlü çıkmış sorular",
-        "Kaynaklı pratik ipuçları",
-        "Ayrıntılı kaynak incelemesi"
-      ]
+      "status": "complete",
+      "remaining": []
     },
     {
       "id": "hareket-problemleri",

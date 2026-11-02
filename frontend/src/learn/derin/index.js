@@ -17,8 +17,9 @@ import * as sayiKesir from './sayi-kesir-problemleri.js';
 import * as yasIsci from './yas-isci-problemleri.js';
 
 import * as yuzdeKarisim from './yuzde-karisim.js';
+import * as karZarar from './kar-zarar.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

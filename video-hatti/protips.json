@@ -310,6 +310,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "kar-zarar-video",
+      "conceptId": "kar-zarar",
+      "hints": [
+        {
+          "id": "zamlar-toplanmaz",
+          "title": "Zamlar toplanmaz; çarpanlar çarpılır",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        },
+        {
+          "id": "maliyete-100-adete-10",
+          "title": "TL yoksa maliyete 100 de",
+          "sectionIds": [
+            "s4",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

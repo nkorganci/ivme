@@ -47,8 +47,10 @@ indirim-zam 1 1-2
 kar-indirim 2 1-3
 adet-maliyet 1 1-3
 
-@oturum Kâr–zarar ve indirim | s1 s2
-@oturum Zincir ve adet soruları | s3 s4
+@oturum Kâr ve zararın tabanı | s1 s1b
+@oturum İndirim, zam ve kampanya | s2 s2b
+@oturum Etiket zinciri | s3 s3b
+@oturum Adet ve karma satış | s4 s4b
 
 @ontest
 ::soru o1 tip=kar-yuzde zorluk=1
@@ -140,6 +142,72 @@ D) 391 || Satışa %15 ekledin; taban alış olmalı.
 kontrol: 340/0.85
 cozum: %15 zararla satış $0{,}85x$: $0{,}85x = 340 \Rightarrow x = 400$ TL.
 
+@bolum s1b 10 | İki satış, aynı maliyet: farktan maliyete
+::kesfet kz-fark
+
+::fikir
+Aynı ürün iki farklı fiyatla satılırsa iki fiyat arasındaki **TL farkı**, iki kâr–zarar yüzdesinin **farkı kadar maliyete** karşılık gelir. Kârı artı, zararı eksi yaz: %20 kâr ile %5 zarar arasındaki fark maliyetin %25'idir.
+
+::duzey
+L1: Bir bisikleti %20 kârla satarsan maliyetin 1,2 katını, %5 zararla satarsan 0,95 katını alırsın. İki fiyat arasındaki fark maliyetin $1{,}2-0{,}95=0{,}25$ katıdır. Bu fark 30 lira ise maliyet $30:0{,}25=120$ liradır.
+L2: Kâr yüzdelerini artı, zarar yüzdelerini eksi yaz ve farkını al: $20-(-5)=25$. İki satış arasındaki TL farkını bu orana böl. İndirim tutarı “kâr, maliyetin %12'si kadar azaldı” gibi verilirse aynı yöntem çalışır: 30 liralık indirim maliyetin %12'siyse maliyet $30:0{,}12=250$ liradır.
+L3: Alış ile satış arasında doğrusal bir bağıntı verilebilir ($y=4x-660$ gibi). Zarar etmemek $y\ge x$ demektir: $4x-660\ge x$, yani $x\ge220$. %25 kâr için $y=1{,}25x$ yazılır: $4x-660=1{,}25x$, $x=240$, $y=300$. Bağıntı ne olursa olsun kâr koşulu yine alışa göre kurulur.
+
+::ornek baslik="Kârdan zarara geçiş"
+soru: Bir ürün %20 kârla satılıyor. Aynı ürün 30 lira daha ucuza satılsaydı %5 zarar edilecekti. Ürünün maliyeti kaç liradır?
+1. Kârlı satış $1{,}2M$, zararlı satış $0{,}95M$. || İki satışın tabanı aynı maliyettir.
+2. Fark $1{,}2M-0{,}95M=0{,}25M=30$. || 30 lira, iki çarpanın farkı kadar maliyete karşılık gelir.
+3. $M=30:0{,}25=120$ lira. || Kontrol: $144-114=30$.
+cevap: 120 lira
+
+::ornek baslik="İndirim kârı ne kadar azaltır?"
+soru: Bir ürün 450 liraya satılıyor. Satıcı 30 lira indirim yapınca kârı, maliyetinin %12'si kadar azalıyor. Ürünün maliyeti kaç liradır?
+1. İndirim tutarı, kârdaki azalmanın ta kendisidir: 30 lira. || Maliyet değişmez; yalnız satış fiyatı düştü.
+2. 30 lira maliyetin %12'si: $0{,}12M=30$. || “Maliyetin yüzde kaçı” dendiği için taban maliyettir.
+3. $M=250$ lira. || Kontrol: kâr önce $\frac{200}{250}=$ %80, sonra $\frac{170}{250}=$ %68; azalma 12 puan.
+cevap: 250 lira
+
+::ornek baslik="Bağıntıdan kâr koşuluna"
+soru: Bir malın alış fiyatı $x$ ile satış fiyatı $y$ arasında $y=4x-660$ bağıntısı vardır. Zarar edilmemesi için alış fiyatı en az kaç olmalıdır? %25 kâr için satış kaç lira olmalıdır?
+1. Zarar etmemek: $y\ge x$, $4x-660\ge x$. || Zararsızlık satışın alıştan küçük olmamasıdır.
+2. $3x\ge660$, $x\ge220$. || Eşitlik durumunda ne kâr ne zarar vardır.
+3. %25 kâr: $4x-660=1{,}25x$, $x=240$, $y=300$. || Kâr yüzdesi yine alışa göre: $\frac{60}{240}=$ %25.
+cevap: Alış en az 220 lira; %25 kâr için satış 300 lira.
+
+::ornek baslik="Bir satıştan diğer kâr yüzdesine"
+soru: Bir satıcı bir ürünü 540 liraya satınca %35 kâr ediyor. Aynı ürünü 480 liraya satsaydı kâr yüzde kaç olurdu?
+1. Maliyet: $1{,}35M=540$, $M=400$ lira. || Önce iki satışın ortak tabanını bul.
+2. 480 liralık satışta kâr $480-400=80$ lira. || Kâr miktarını maliyetle karşılaştır.
+3. $\frac{80}{400}=$ %20. || Kısa yol: 60 liralık fark maliyetin %15'i; $35-15=20$.
+cevap: %20
+
+::sorgula s1b-ikinci-el baslik="İkinci el bilgisayar"
+durum: Bir dükkân ikinci el bir bilgisayarı 1800 liraya satarsa %20 kâr, 1350 liraya satarsa %10 zarar edecek.
+soru: Dükkân bu bilgisayarı kaç liraya almıştır?
++A) 1500 lira || İki fiyat farkı 450 lira; bu, maliyetin $20+10=30$ yüzdesidir.
+B) 4500 lira || 450'yi %10'a böldün; zarar da farka katılır, toplam %30.
+C) 1350 lira || 1350 zararlı satış fiyatıdır; maliyet bundan büyük olmalı.
+kontrol: 450/0.3
+neden: $1{,}2M-0{,}9M=0{,}3M=450$, $M=1500$. Kontrol: $1500\cdot1{,}2=1800$, $1500\cdot0{,}9=1350$.
+sinav: İki satış fiyatı ve iki yüzde verildiğinde fiyat farkını yüzde farkına böl; kârı artı, zararı eksi say.
+dusun: Dükkân bilgisayarı 1650 liraya satarsa kâr yüzde kaç olur?
+yanit: $\frac{150}{1500}=$ %10 kâr.
+
+::yanilgi m1b tip=kar-yuzde
+yanlis: %20 kâr ile %5 zarar arasındaki fark %15'tir; 30 liralık fark maliyetin %15'idir.
+neden: Zarar, kârın eksi yöndeki karşılığıdır; iki satış arasındaki fark $20-(-5)=25$ puandır.
+dogru: 30 lira maliyetin %25'idir; maliyet 120 lira.
+
+::soru c1b tip=kar-yuzde zorluk=2
+Bir ürün %30 kârla satılıyor. Ürün 36 lira daha ucuza satılsaydı %15 kâr edilecekti. Ürünün maliyeti kaç liradır?
+A) 120 || 36'yı %30'a böldün; fark iki kâr yüzdesinin farkıdır.
+B) 180 || Hesabı kontrol et: $0{,}15M=36$.
++C) 240 || Doğru: $1{,}3M-1{,}15M=0{,}15M=36$.
+D) 270 || Hesabı yeniden yap.
+E) 360 || 36'yı %10'a böldün.
+kontrol: 36/0.15
+cozum: İki satışın farkı maliyetin $30-15=15$ yüzdesi: $0{,}15M=36$, $M=240$ lira.
+
 @bolum s2 9 | İndirim ve zam: taban o anki fiyattır
 ::fikir
 İndirim ve zam **o anki (etiket) fiyat** üzerinden yapılır. Her birini çarpana çevir ve ardışık olanları **çarp**: önce %25, sonra %10 indirim $= 0{,}75 \cdot 0{,}9 = 0{,}675$ (toplam %32,5 indirim).
@@ -194,6 +262,83 @@ D) 32 || Hesabı kontrol et.
 E) 35 || Fazla.
 kontrol: (1-0.8*0.9)*100
 cozum: $0{,}8 \cdot 0{,}9 = 0{,}72$; fiyatın %72'si kalır, toplam indirim %28.
+
+@bolum s2b 12 | Kampanya, vergi ve gecikme zammı
+::kesfet kz-kampanya
+
+::fikir
+Kampanyanın gerçek indirimi, **ödenen toplamın etiket toplamına oranıyla** bulunur. Vergi (KDV) ve gecikme zammı da yüzde artışıdır: KDV vergisiz fiyata, gecikme zammı fatura tutarına eklenir. Her yüzdenin **tabanını** oku.
+
+::duzey
+L1: “İkincisi %50 indirimli” kampanyada iki ürün alan, ikinci ürünün yarısını öder: 100 liralık iki üründe 150 lira öder. Bütün alışverişte indirim $\frac{50}{200}=$ %25'tir, %50 değil. Tek ürün alırsa hiç indirim almaz.
+L2: Vergi dahil fiyattan vergiyi bulmak için çarpana böl: %10 KDV dahil 88 liralık ürünün vergisiz fiyatı $88:1{,}1=80$ lira, KDV 8 liradır; 88'in %10'u (8,8) değildir. Gecikme zammı da ödenmeyen faturanın üzerine eklenir: 150 liralık faturaya %8 gecikme zammı $150\cdot1{,}08=162$ lira eder.
+L3: Kampanyaları karşılaştırırken aynı adet için toplam ödemeyi yaz. Eşik kampanyalarında (50 lira ve üzeri) önce eşiğin aşılıp aşılmadığını kontrol et, sonra indirimi yalnız uygulandığı ürünlerden düş. Sabit tutarlı zam ile yüzde zammı karşılaştırırken eşitlik noktasını bul: 400 liralık sabit zam ile %25 zam, maaş 1600 lirayken eşittir.
+
+::cikmis TYT-0672 tip=indirim-zam
+
+::ornek baslik="Benzer: iki kampanya, ödeme farkı"
+soru: Bir mağazada etiket fiyatları aynı olan sarı ve yeşil tişörtler satılıyor. Sarılarda bir alana ikincisi %60 indirimli, yeşillerde hepsine %25 indirim var. 2 sarı ve 2 yeşil tişört alan birinin yeşillere ödediği, sarılara ödediğinden 6 lira fazladır. Bir tişörtün etiket fiyatı kaç liradır?
+1. Sarılar: $f+0{,}4f=1{,}4f$. || İkinci tişörtte %60 indirim: fiyatının %40'ı ödenir.
+2. Yeşiller: $2\cdot0{,}75f=1{,}5f$. || Her yeşilde %25 indirim.
+3. $1{,}5f-1{,}4f=0{,}1f=6$, $f=60$ lira. || Kontrol: sarılar 84, yeşiller 90 lira.
+cevap: 60 lira
+
+::cikmis TYT-0658 tip=indirim-zam
+
+::ornek baslik="Benzer: eşiği aşan son ürün"
+soru: Bir kasada 72 liralık alışverişe, 80 lira ve üzeri alışverişlerde her ürüne 1 lira indirim uygulanacağı söyleniyor. Bir ürün daha alan Ece'nin sepetindeki 9 ürünün hepsine indirim uygulanıyor ve 75 lira ödüyor. Ece'nin son aldığı ürün kaç liradır?
+1. Son ürün $p$: indirimsiz toplam $72+p$. || Eşik kontrolü bu toplamla yapılır.
+2. 9 ürüne 1'er lira: $72+p-9=75$. || İndirim yalnız ürün sayısı kadar.
+3. $p=12$; $72+12=84\ge80$ ✓ || Eşik aşıldığı için indirim geçerli.
+cevap: 12 lira
+
+::ornek baslik="Vergi dahil fiyattan vergiye"
+soru: %10 KDV dahil 88 liraya alınan bir üründe ödenen KDV kaç liradır?
+1. Vergisiz fiyat $x$: $1{,}1x=88$. || KDV vergisiz fiyatın %10'udur.
+2. $x=80$ lira. || Vergi dahil fiyattan geri dönmek için çarpana böl.
+3. KDV $88-80=8$ lira. || $88\cdot0{,}1=8{,}8$ yanlış olurdu; taban 88 değil.
+cevap: 8 lira
+
+::ornek baslik="Gecikme zammıyla iki fatura"
+soru: Bir elektrik şirketi zamanında ödenmeyen faturalara aylık %8 gecikme zammı uyguluyor. Ocakta 150 liralık faturasını ödemeyen Betül Hanım şubatta gelen 135 liralık faturayla birlikte iki faturayı ödüyor. Toplam kaç lira öder?
+1. Ocak faturası zamlı: $150\cdot1{,}08=162$ lira. || Zam ödenmeyen faturaya uygulanır.
+2. Şubat faturası zamanında: 135 lira. || Gecikme yalnız ocak faturası için.
+3. Toplam $162+135=297$ lira. || İki farklı tabana ayrı davranıldı.
+cevap: 297 lira
+
+::ornek baslik="Sabit zam mı, yüzde zam mı?"
+soru: Bir iş yerinde maaş zammı için iki seçenek var: net 400 lira zam ya da maaşın %25'i kadar zam. Hangi maaşlar için yüzde zam daha avantajlıdır?
+1. Yüzde zam $0{,}25x$, sabit zam 400. || İki zammı aynı maaş için karşılaştır.
+2. $0{,}25x>400\Leftrightarrow x>1600$. || Eşitlik noktası 1600 lira.
+3. 1600'ün üstünde yüzde, altında sabit zam avantajlı. || Kontrol: 2000'de $500>400$; 1200'de $300<400$.
+cevap: Maaş 1600 liradan fazlaysa yüzde zam.
+
+::sorgula s2b-kdv baslik="Fişteki vergi"
+durum: Bir fişte ürünün %18 KDV dahil fiyatı 236 lira yazıyor.
+soru: Bu üründe ödenen KDV kaç liradır?
++A) 36 lira || Vergisiz fiyat $236:1{,}18=200$; KDV $236-200=36$.
+B) 42,48 lira || 236'nın %18'ini aldın; KDV vergisiz fiyatın yüzdesidir.
+C) 18 lira || Yüzde oranını lira sandın.
+kontrol: 236-236/1.18
+neden: Vergi dahil fiyat, vergisiz fiyatın 1,18 katıdır: $1{,}18x=236$, $x=200$. KDV $0{,}18\cdot200=36$ lira.
+sinav: Bir artış dahil edilmiş fiyattan geriye dönerken çarpana böl; dahil fiyatın yüzdesini almak tabanı değiştirir.
+dusun: Aynı ürün %8 KDV ile satılsaydı fişte kaç lira yazardı?
+yanit: $200\cdot1{,}08=216$ lira.
+
+::yanilgi m2b tip=indirim-zam
+yanlis: %10 KDV dahil 88 liralık üründe KDV $88\cdot0{,}1=8{,}8$ liradır.
+neden: KDV vergisiz fiyatın %10'udur; 88 vergi dahil fiyattır.
+dogru: Vergisiz fiyat $88:1{,}1=80$, KDV 8 liradır.
+
+::soru c2b tip=indirim-zam zorluk=2
+Ocakta 200 liralık faturasını ödemeyen biri şubatta bu faturayı %5 gecikme zammıyla, şubatın 180 liralık faturasıyla birlikte ödüyor. Toplam kaç lira öder?
+A) 380 || Gecikme zammını unuttun.
++B) 390 || Doğru: $200\cdot1{,}05+180=390$.
+C) 399 || Zammı iki faturaya da uyguladın; şubat faturası zamanında.
+D) 400 || Hesabı kontrol et.
+E) 410 || %10 zam uyguladın.
+kontrol: 200*1.05+180
+cozum: Gecikmeli fatura $200\cdot1{,}05=210$ lira; toplam $210+180=390$ lira.
 
 @bolum s3 10 | Zincir: alış → etiket → satış
 ::fikir
@@ -269,6 +414,77 @@ E) 60 || Bu etiket payıdır; indirimi unuttun.
 kontrol: (400*0.7-250)/250*100
 cozum: Satış $400 \cdot 0{,}7 = 280$ TL; kâr $280 - 250 = 30$ TL; $\frac{30}{250} \cdot 100 = $ %12.
 
+@bolum s3b 10 | Etiket üzerinden alış ve satış
+::fikir
+Bazı sorularda hem alış hem satış **etiket fiyatına göre** verilir: “etiketin %30 indirimiyle aldı, %16 indirimiyle sattı”. Etikete 100 de; alışı ve satışı ayrı bul. Kâr yine **alışa** bölünür, etikete değil.
+
+::duzey
+L1: Bir kitapçı kitabı etiket fiyatının %40 eksiğine (60 liraya) alıp %25 eksiğine (75 liraya) satıyor. Kârı 15 lira; bu 60 liralık alışın %25'idir. Yüzdeleri çıkarıp %15 demek yanlıştır, çünkü kâr etikete değil alışa göre ölçülür.
+L2: Ardışık zam ve indirimlerle kâr birlikte verilirse bütün çarpanları alışa bağla: %30 kârla satılan bir ürüne %10 zam, sonra %20 indirim yapılırsa satış $1{,}3\cdot1{,}1\cdot0{,}8=1{,}144$ katı olur; kâr %14,4.
+L3: Fiyat ile satış adedi birlikte değişirse gelir iki çarpanın çarpımıyla değişir: fiyat %25 iner, satılan adet %40 artarsa gelir $0{,}75\cdot1{,}4=1{,}05$ katı olur, %5 artar. Gelirin değişmemesi için adet artışı fiyat düşüşünden daha büyük oranda olmalıdır.
+
+::ornek baslik="Etiketin eksiğine alıp eksiğine satmak"
+soru: Etiket fiyatının %50 eksiğine alınıp etiket fiyatının %10 eksiğine satılan bir maldan yüzde kaç kâr elde edilir?
+1. Etiket 100: alış 50, satış 90. || İki fiyat da etikete göre verildi.
+2. Kâr $90-50=40$ lira. || Kâr TL olarak iki fiyatın farkı.
+3. $\frac{40}{50}=$ %80. || Taban alış; $50-10=40$ yüzdesi değil.
+cevap: %80
+
+::ornek baslik="Mağaza da indirimle alıyor"
+soru: Bir mağaza sahibi bir ürünü etiket fiyatı üzerinden %30 indirimle alıyor, müşteriye etiket fiyatı üzerinden %16 indirimle satıyor. Mağazanın kâr yüzdesi kaçtır?
+1. Etiket 100: alış 70, satış 84. || Etikete 100 demek iki yüzdeyi aynı tabana bağlar.
+2. Kâr $84-70=14$. || Kâr satış ile alışın farkıdır.
+3. $\frac{14}{70}=$ %20. || Kâr alışa bölünür.
+cevap: %20
+
+::ornek baslik="Kâr, zam ve indirim zinciri"
+soru: %30 kârla satılan bir ürüne önce satış fiyatı üzerinden %10 zam, sonra son satış fiyatı üzerinden %20 indirim yapılıyor. Son durumda kâr yüzde kaçtır?
+1. Alış 100: satış 130. || Kâr alışa göre.
+2. Zam: $130\cdot1{,}1=143$; indirim: $143\cdot0{,}8=114{,}4$. || Her yüzde o anki fiyata uygulanır.
+3. Kâr %14,4. || Çarpanlar: $1{,}3\cdot1{,}1\cdot0{,}8=1{,}144$.
+cevap: %14,4
+
+::ornek baslik="Fiyat düşer, satış artar"
+soru: Bir lastikçi lastik fiyatında %25 indirim yapınca günlük satış adedi %40 artıyor. Günlük satış geliri yüzde kaç değişir?
+1. Gelir = fiyat × adet. || İki çarpan birlikte değişiyor.
+2. $0{,}75\cdot1{,}4=1{,}05$. || Fiyat çarpanı 0,75, adet çarpanı 1,4.
+3. Gelir %5 artar. || Kontrol: 10 lastik × 100 = 1000; 14 × 75 = 1050.
+cevap: %5 artar.
+
+::tamamla baslik="Etiketin eksiğinden kâra"
+soru: Bir ürün etiket fiyatının %20 eksiğine alınıp etiket fiyatının %10 eksiğine satılıyor. Kâr yüzde kaçtır?
+1. Etiket 100: alış 80, satış 90. || İki fiyatı aynı etiket tabanına göre yaz.
+?2. Kâr $90-80=10$ lira. || Kâr, satış ile alışın farkıdır.
+?3. $\frac{10}{80}=$ %12,5. || Kâr yüzdesinin tabanı etiket değil alıştır.
+cevap: %12,5
+
+::sorgula s3b-kitapci baslik="Yayınevinden kitapçıya"
+durum: Bir kitapçı kitapları yayınevinden etiket fiyatının %40 eksiğine alıyor, öğrencilere etiket fiyatının %25 eksiğine satıyor.
+soru: Kitapçının kâr yüzdesi kaçtır?
++A) %25 || Etiket 100: alış 60, satış 75; $\frac{15}{60}=$ %25.
+B) %15 || Yüzdeleri çıkardın; iki indirim aynı etikete ama kâr alışa göre.
+C) %20 || 15'i satışa (75) böldün; taban alış.
+kontrol: (75-60)/60*100
+neden: Etikete 100 de: alış $100\cdot0{,}6=60$, satış $100\cdot0{,}75=75$. Kâr 15 lira, alışın %25'i.
+sinav: Alış ve satış etikete göre verilmişse etikete 100 de, iki fiyatı bul, kârı alışa böl.
+dusun: Kitapçı %25 kâr yerine %50 kâr etmek isteseydi etiketin yüzde kaç eksiğine satmalıydı?
+yanit: Satış $60\cdot1{,}5=90$: etiketin %10 eksiğine.
+
+::yanilgi m3b tip=kar-indirim
+yanlis: Etiketin %40 eksiğine alıp %25 eksiğine satan %15 kâr eder.
+neden: Yüzdeler etikete göre; kâr ise alışa göre ölçülür. Alış 60, satış 75.
+dogru: Kâr $\frac{15}{60}=$ %25'tir.
+
+::soru c3b tip=kar-indirim zorluk=2
+Etiket fiyatının %20 eksiğine alınan bir ürün etiket fiyatına satılırsa kâr yüzde kaç olur?
+A) 16 || Hesabı kontrol et.
+B) 20 || Etiketin %20'si kâr değil; kârı alışa böl.
++C) 25 || Doğru: alış 80, satış 100; $\frac{20}{80}=$ %25.
+D) 30 || Hesabı yeniden yap.
+E) 40 || Hesabı kontrol et.
+kontrol: (100-80)/80*100
+cozum: Etiket 100: alış 80, satış 100. Kâr 20, alışın %25'i.
+
 @bolum s4 8 | Adet ve birim fiyat
 ::fikir
 **Maliyet = adet × birim alış**, **gelir = her grubun adet × birim satışı**, **kâr = gelir − maliyet**. Kırılan, bozulan ya da hediye edilen ürünler maliyete girer ama gelir getirmez.
@@ -319,6 +535,81 @@ C) 110 || Hesabı yeniden yap.
 E) 160 || Yalnız 80 kalemin kârını aldın; 40 kalemde zarar var.
 kontrol: 80*6+40*3-120*4
 cozum: Maliyet $120 \cdot 4 = 480$; gelir $80 \cdot 6 + 40 \cdot 3 = 600$; kâr $120$ TL.
+
+@bolum s4b 12 | Karma satış: malın parçaları farklı oranlarda
+::kesfet kz-karma
+
+::fikir
+Malın parçaları farklı yüzdelerle satılıyorsa toplam kâr, parçaların **maliyetleriyle ağırlıklandırılmış** ortalamadır. TL bilgisi verilmeyip yalnız yüzde soruluyorsa **maliyete 100, adede 10** de: bulduğun kâr miktarı doğrudan yüzde olur.
+
+::duzey
+L1: Bir manav aldığı elmaların yarısını %30 kârla, yarısını %10 zararla satıyor. 100 liralık elmanın 50 lirası 65'e, 50 lirası 45'e satılır: toplam 110 lira, kâr %10. Yüzdeleri doğrudan toplayıp ($30-10$) %20 demek yanlıştır.
+L2: Parçalar eşit değilse adetleri ya da maliyet paylarını ağırlık olarak kullan: malın %20'si %30 kârla, %40'ı %20 kârla, kalanı %20 zararla satılırsa 10 ürün ve 10 liralık birim maliyetle $2\cdot13+4\cdot12+4\cdot8=106$; kâr %6.
+L3: Satış fiyatları eşit verilip yüzdeler farklıysa maliyetler eşit değildir: %20 kârla ve %20 zararla aynı 120 liraya satılan iki ürünün maliyetleri 100 ve 150 liradır. Toplam maliyet 250, gelir 240: %4 zarar. Eşit satış, kâr ve zararı birbirini götürmez.
+
+::cikmis TYT-0649 tip=adet-maliyet
+
+::ornek baslik="Benzer: iki aşamalı alım–satım"
+soru: Bir çiftçi kilogramı 20 liradan aldığı 600 kg buğdayı kilogramı 25 liradan satıyor. Bu satıştan elde ettiği paranın tamamıyla tanesi 750 lira olan fidanlardan alıp tanesini 900 liradan satıyor. Fidan satışından elde ettiği kâr kaç liradır?
+1. Buğday satışı: $600\cdot25=15\,000$ lira. || İkinci alımın parası birinci satıştan gelir.
+2. Fidan sayısı: $15\,000:750=20$; satış $20\cdot900=18\,000$ lira. || Birim alış ve satış fiyatlarını ayrı kullan.
+3. Fidan kârı $18\,000-15\,000=3000$ lira. || Kâr yalnız fidan satışında soruluyor.
+cevap: 3000 lira
+
+::ornek baslik="Üç parça, üç oran"
+soru: Bir malın %20'si %30 kârla, %40'ı %20 kârla, kalanı %20 zararla satılıyor. Bu satıştan elde edilen kâr yüzde kaçtır?
+1. Birim maliyet 10, adet 10: toplam maliyet 100. || TL verilmediği için 100'e tamamladık.
+2. Gelir $2\cdot13+4\cdot12+4\cdot8=106$. || Her parçanın birim satışı ayrı.
+3. Kâr 6 lira: %6. || Maliyet 100 olduğu için kâr miktarı yüzdeye eşit.
+cevap: %6
+
+::ornek baslik="Eşit satış, farklı maliyet"
+soru: Bir satıcı A ürününün satışından %20 kâr, B ürününün satışından %20 zarar ediyor. İki ürünün satış fiyatları eşittir. Toplam kâr–zarar durumu nedir?
+1. Satış 120 olsun: A'nın maliyeti $120:1{,}2=100$, B'nin $120:0{,}8=150$. || Eşit olan satıştır, maliyet değil.
+2. Toplam maliyet 250, toplam satış 240. || Gelir ve maliyeti ayrı topla.
+3. Zarar 10 lira: $\frac{10}{250}=$ %4 zarar. || Eşit yüzdeli kâr ve zarar birbirini götürmedi.
+cevap: %4 zarar
+
+::ornek baslik="Kalan kısım için gereken kâr"
+soru: Bir malın $\frac25$'i %40 kârla satılıyor. Kalanı yüzde kaç kârla satılırsa tüm satıştan %28 kâr edilir?
+1. Birim maliyet 10, adet 10: maliyet 100, hedef gelir 128. || Toplam kâr hedefini gelire çevirdik.
+2. 4 ürün $4\cdot14=56$; kalan 6 üründen $128-56=72$. || Bilinen parçanın gelirini çıkar.
+3. Birim satış $72:6=12$: %20 kâr. || Kalanın birim kârı 2 lira, maliyeti 10.
+cevap: %20
+
+::ornek baslik="Kâr hedefine kaç ürün?"
+soru: Bir kırtasiyeci 6 tanesini 9 liraya aldığı kalemlerin 4 tanesini 7 liraya satıyor. 100 lira kâr etmesi için kaç kalem satmalıdır?
+1. Birim alış $9:6=1{,}5$, birim satış $7:4=1{,}75$ lira. || Farklı paketleri birime indir.
+2. Kalem başına kâr $0{,}25$ lira. || Kâr birimden birime aynı.
+3. $100:0{,}25=400$ kalem. || Kontrol: 400 kalem 600'e alınır, 700'e satılır.
+cevap: 400 kalem
+
+::sorgula s4b-manav baslik="Yarısı kârlı, yarısı zararlı"
+durum: Bir manav aldığı elmaların yarısını %30 kârla, kalan yarısını %10 zararla satıyor.
+soru: Manavın toplam kârı yüzde kaçtır?
++A) %10 || Maliyet 100: gelir $50\cdot1{,}3+50\cdot0{,}9=110$.
+B) %20 || $30-10$ yaptın; iki yarı aynı maliyetli olduğu için ortalama alınmalı.
+C) %40 || Kâr ve zararı topladın.
+kontrol: (30-10)/2
+neden: İki yarının maliyeti eşit (50 ve 50) olduğu için toplam kâr yüzdelerin ortalamasıdır: $\frac{30+(-10)}{2}=10$.
+sinav: Parçaların maliyetleri eşitse yüzdelerin ortalaması; değilse maliyet ağırlıklı ortalama alınır.
+dusun: Manav elmaların $\frac34$'ünü %30 kârla, kalanını %10 zararla satsaydı toplam kâr ne olurdu?
+yanit: $0{,}75\cdot30+0{,}25\cdot(-10)=20$: %20 kâr.
+
+::yanilgi m4b tip=adet-maliyet
+yanlis: Yarısı %30 kârla, yarısı %10 zararla satılan maldan %20 kâr edilir.
+neden: Kâr ve zarar yüzdeleri aynı yarının değil farklı yarıların; eşit maliyetli iki yarının ortalaması alınır.
+dogru: Toplam kâr %10'dur.
+
+::soru c4b tip=adet-maliyet zorluk=2
+Bir malın $\frac14$'ü %40 kârla, kalanı %20 kârla satılıyor. Toplam kâr yüzde kaçtır?
+A) 20 || Kalanın oranı daha büyük ama ilk parçayı da hesaba kat.
++B) 25 || Doğru: $0{,}25\cdot40+0{,}75\cdot20=25$.
+C) 30 || Yüzdelerin basit ortalamasını aldın; parçalar eşit değil.
+D) 35 || Hesabı kontrol et.
+E) 60 || Yüzdeleri topladın.
+kontrol: 0.25*40+0.75*20
+cozum: Maliyet 100: gelir $25\cdot1{,}4+75\cdot1{,}2=35+90=125$; kâr %25.
 
 ::ozet
 - Kâr–zarar yüzdesi alış üzerinden; alışa 100 de.

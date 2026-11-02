@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "kar-zarar-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034",
+  "taskHash": "86bf6e781f9a830e0fbe5f5e2ca28f6c6d16597918954360ed5795e7ff99cdb9",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\kar-zarar-video",
+  "artifacts": {
+    "asamalar\\youtube-tVSR09d3Jts-metin\\73e9f35aa19f0202bd8830edf16df1a396a59ea2cfbad7dfb0f94b339fbec09b.json": "b1aca68be1dba30ba615933be9c53927f4dcef1f64a134bb3e5605669a9ea1f5",
+    "asamalar\\youtube-tVSR09d3Jts-kareler\\96d4219d85a800ba6ab9ffdf89834aab4c43c1267f95c3120cb7d91167dad97d.json": "9eed1ca6ea687386012da5ba3a292be25a415eeada01f70345bea29dc202e95b",
+    "kareler\\1d279c2fa21a5a00f98fce9f9a658611ee60375c5e7f9ac21c3f7aa1c18756a2.png": "f3db8a1cab507faabc54c06ed5da9f7b36fb1eb1f31b87858079daed36b49a82",
+    "kareler\\91277aebf6a033287b1a092302466303bf1e722762695bdb74f63dfa472dfbcd.png": "ef84eb8ccd2cc94a420c22e91daafebec803421d4c44f427080aafda289d9712",
+    "asamalar\\matematik-denetimi\\b336afb309183f1cbebf8853ab674a3b655b28eddc1fa8143f9119329f645cf6.json": "cbe37c720a5249a32746d2b1bf60eda0709093bb55fa1044c908ba7962dff74d",
+    "surumler\\d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034.json": "271aa7abf4c6b3fc88f818491b782eb9c07a1c36bdf9a233f7d8883d882a2cba",
+    "surumler\\d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034.oneriler.md": "81fff8d5c49c495e3692a23035abad00a2ca631ad767cecab5fcd9cd3254327f"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-kar-zarar-test.py",
+        "sha256": "c55f215ee57bb11b51dbb74d739e3ec3d4b19efac727e058e646b4c00ab69150",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "kar-zarar-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.389
+    },
+    "videos": [
+      {
+        "providerId": "youtube:tVSR09d3Jts",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:tVSR09d3Jts",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 854,
+      "normalization": {
+        "captionControlEvents": 843,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 640,
+          "file": "kareler\\1d279c2fa21a5a00f98fce9f9a658611ee60375c5e7f9ac21c3f7aa1c18756a2.png",
+          "sha256": "f3db8a1cab507faabc54c06ed5da9f7b36fb1eb1f31b87858079daed36b49a82",
+          "pixelHash": "1d279c2fa21a5a00f98fce9f9a658611ee60375c5e7f9ac21c3f7aa1c18756a2",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1450,
+          "file": "kareler\\91277aebf6a033287b1a092302466303bf1e722762695bdb74f63dfa472dfbcd.png",
+          "sha256": "ef84eb8ccd2cc94a420c22e91daafebec803421d4c44f427080aafda289d9712",
+          "pixelHash": "91277aebf6a033287b1a092302466303bf1e722762695bdb74f63dfa472dfbcd",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "zamlar-toplanmaz",
+      "contentHash": "24f87cbcc581a65f9ac9d66eacc9946ea1168a401b52ad12d35d764460ed38b3",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "maliyete-100-adete-10",
+      "contentHash": "ff17ed543500fc11010cffb73e4f516a143c66ef9308fc4a437c4ec53806ebd3",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

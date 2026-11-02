@@ -81,9 +81,7 @@ export default {
           feedback: ['Miktar oranı değiştirmez.', '$10/50$: satış tabanı.', '10 TL kâr yüzde değil.'],
         },
       ],
-      real: [
-        { code: 'TYT-0649', answer: 'D', why: 'Evin metrekaresi, arsanın dönümü: alış–satış zinciri; arsa kârını maliyet farkıyla bul.' },
-      ],
+      realNote: 'Bu hedefe uyan görseli okunmuş ÖSYM sorusu (TYT-0649) ders içinde rehberli çözüldüğü için bağımsız aktarıma alınmadı; aktarım özgün alıştırmalarla yapılır.',
     },
     {
       id: 'kampanya', label: 'Kampanya ve indirim', short: 'Gerçek indirim oranı',
@@ -149,9 +147,7 @@ export default {
         },
       ],
       real: [
-        { code: 'TYT-0672', answer: 'A', why: 'Kırmızıda 2 kalem: $1+0{,}5$; mavide 2 kalem: $2\\cdot0{,}7$. Fark $0{,}1f=4{,}5$.' },
         { code: 'TYT-0710', answer: 'D', from: 'grafik-rutin-olmayan', why: 'A: çanta alana kalem yarı fiyat; B: aynı türden ikinciye %40. İki sepetin tutarını ayrı hesapla.' },
-        { code: 'TYT-0658', answer: 'D', why: '50 TL eşiği: son ürünle toplam 50’yi geçince beş üründe 2’şer TL indirim.' },
       ],
     },
     {

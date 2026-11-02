@@ -177,12 +177,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "kar-yuzde": 31,
-    "indirim-zam": 7,
+    "kar-yuzde": 30,
+    "indirim-zam": 9,
     "kar-indirim": 15,
-    "adet-maliyet": 6
+    "adet-maliyet": 7
    },
-   "untyped": 77
+   "untyped": 75
   },
   "koklu-ifadeler": {
    "total": 186,

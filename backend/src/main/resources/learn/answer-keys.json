@@ -2126,7 +2126,33 @@
    ],
    "version": "fef49cc14d12ec09"
   },
+  "kar-zarar:c1b": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kar-zarar:c2": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "kar-zarar:c2b": {
    "conceptId": "kar-zarar",
    "type": "choice",
    "answer": "B",
@@ -2152,6 +2178,19 @@
    ],
    "version": "1472983ce40becda"
   },
+  "kar-zarar:c3b": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "kar-zarar:c4": {
    "conceptId": "kar-zarar",
    "type": "choice",
@@ -2164,6 +2203,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "kar-zarar:c4b": {
+   "conceptId": "kar-zarar",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
   },
   "kar-zarar:h1": {
    "conceptId": "kar-zarar",

@@ -133,7 +133,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `sayi-kesir-problemleri` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/sayi-kesir-problemleri.json`; öğretmen/öğrenci kabulü yok | Sıra ve sayım (iki kez sayılan), kalanın kesri, hepsini ucuz say (adet–tutar), sondan başa; 7 doğrulanmış ÖSYM sorusu (problem kategorisindeki komşu bankalardan). Sondan başa hedefinde eşleşen soru yok |
 | `yas-isci-problemleri` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/yas-isci-problemleri.json`; öğretmen/öğrenci kabulü yok | Yaş farkı (sabit fark, değişen oran), yaş toplamı (kişi × yıl), birlikte çalışma (hızlar toplanır), farklı verim (çırak-saat); 2 doğrulanmış ÖSYM sorusu. İşçi/verim hedeflerinde derste çözülmemiş uygun soru yok |
 | `yuzde-karisim` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/yuzde-karisim.json`; öğretmen/öğrenci kabulü yok | Ardışık yüzde (çarpanlar), bütün değişince yüzde, karışımda madde korunumu, ağırlıklı ortalama; 10 doğrulanmış ÖSYM sorusu |
-| `kar-zarar` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/kar-zarar.json`; öğretmen/öğrenci kabulü yok | Kâr yüzdesi (maliyet tabanı), kampanya ve ardışık indirim (gerçek oran), kâr–zarar farkından maliyet, fire ve birim fiyat; 4 doğrulanmış ÖSYM sorusu. İçerik derinleştirmesi (8 bölüm) hâlâ açık |
+| `kar-zarar` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/kar-zarar.json`; öğretmen/öğrenci kabulü yok | Kâr yüzdesi (maliyet tabanı), kampanya ve ardışık indirim (gerçek oran), kâr–zarar farkından maliyet, fire ve birim fiyat; gerçek soru TYT-0710 (0649, 0658, 0672 derste çözüldü). İçerik ✅ |
 | `hareket-problemleri` | ⬜ LAB YOK | Konum–zaman ve kapanan mesafe; yön, bağıl hız ve mola koşullarını modele bağla |
 | `grafik-rutin-olmayan` | ⬜ LAB YOK | Tablo/grafikten kısıt çıkarma ve strateji seçimi; gereksiz bilgiyi ele |
 | `veri-grafikleri` | ⬜ LAB YOK | Aynı verinin farklı grafikleri; ölçek ve sunum değişince değişmeyen bilgiyi oku |
@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **15/32 bitti**. Sıradaki TYT konusu: `kar-zarar`.
+TYT: **16/32 bitti**. Sıradaki TYT konusu: `hareket-problemleri`.
 
 ### TYT (şu anki aşama)
 
@@ -204,7 +204,7 @@ TYT: **15/32 bitti**. Sıradaki TYT konusu: `kar-zarar`.
 | 13 | ✅ BİTTİ | `sayi-kesir-problemleri` | Sayı ve Kesir Problemleri | 9 | TYT + AYT | 8/23/3/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 6, PL2 3 | 3/3 | — · 8 bölüme derinleştirildi (keşif: kuyrukta en çok/en az, kalanın kesri / bütünün kesri, hepsini ucuz say). Çıkmış: TYT-0651, 0655, 0659, 0660. Kaynaklardan: kuyruk, kutu dağıtımı, katlanan sayfa, zıplayan top, dolu/kısmen dolu kap, mum, tel orta noktası. |
 | 14 | ✅ BİTTİ | `yas-isci-problemleri` | Yaş, İşçi ve Havuz Problemleri | 9 | TYT + AYT | 8/28/4/4 | 4 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 4, PL2 2 | 2/2 | — · Doğum yılı, değişen grup, kişi-saat-verim, ikili ekip hızları, kısmi/dönüşümlü iş ve havuz sınırları eklendi. Son committeki üç keşif bağlandı. Görseli okunan TYT-0650, 0681, 0683, 0741 ve özgün benzerleri; PDF sayfa kanıtı kayıtlı. |
 | 15 | ✅ BİTTİ | `yuzde-karisim` | Yüzde ve Karışım Problemleri | 9 | TYT + AYT | 8/24/3/4 | 3 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 4, PL2 2 | 2/2 | — · Alt grup yüzdesi, yüzde puanı, ters değişim, ağırlıklı ortalama, çapraz farkın gerekçesi, tekrarlı dökme, saf madde ve buharlaşma sınırları. Tuz örnekleri kütle birimiyle düzeltildi; altyazıdaki %120 hatası kareden %20 doğrulandı. |
-| 16 | 🟡 EKSİK | `kar-zarar` | Kâr–Zarar ve İndirim Problemleri | 9 | TYT + AYT | 4/8/2/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 2, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 16 | ✅ BİTTİ | `kar-zarar` | Kâr–Zarar ve İndirim Problemleri | 9 | TYT + AYT | 8/26/3/4 | 3 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 2, PL2 1 | 2/2 | — |
 | 17 | 🟡 EKSİK | `hareket-problemleri` | Hareket Problemleri | 9 | TYT + AYT | 4/8/2/1 | 1 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 2, PL2 2 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 1/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 18 | 🟡 EKSİK | `grafik-rutin-olmayan` | Rutin Olmayan Problemler: Grafik, Tablo ve Strateji | 9 | TYT + AYT | 4/8/1/1 | 0 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 0 · PL1 1, PL2 2 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 19 | 🟡 EKSİK | `veri-grafikleri` | Verilerin Grafikle Gösterilmesi | 9 | TYT | 4/8/1/1 | 0 / 17 (Veri) | 0 · PL1 1, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

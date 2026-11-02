@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "08bf097d764801ce11ebbd259d06570d586bf024b108ce522f6e572398e3a6e2",
+  "inputsHash": "74ff2c3fac873b53d513d13c752aee541edda85f5c6dfda4e31b1c51108f7706",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -716,6 +716,54 @@
       },
       "evidenceHash": "bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720",
       "contentHash": "03a046830a6c4c863d603f759290a5fbf42fc285205d900dee94e98307fa7c4b",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kar-zarar-video:zamlar-toplanmaz",
+      "conceptId": "kar-zarar",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Zamlar toplanmaz; çarpanlar çarpılır",
+      "rule": "Art arda yapılan yüzde zam ve indirimler toplanmaz; her biri o anki fiyata uygulandığı için çarpanlar çarpılır: %a zam çarpanı 1 + a/100, %b indirim çarpanı 1 − b/100.",
+      "condition": "İkinci işlem birincinin sonucundaki fiyata uygulanmalı. İki indirim aynı etiket fiyatı üzerinden ayrı ayrı yapılıyorsa (taban değişmiyorsa) yüzdeler toplanabilir.",
+      "example": "100 liralık ürüne %20 sonra %30 zam: 100·1,2 = 120, 120·1,3 = 156. Toplam zam %56; %50 değil.",
+      "counterexample": "%20 zam ve ardından %20 indirim fiyatı eski haline getirmez: 1,2·0,8 = 0,96, yani %4 ucuzlar.",
+      "rationale": "İkinci yüzde yeni fiyatın yüzdesidir; ilk zammın üzerine de zam gelir. 1,2·1,3 = 1 + 0,2 + 0,3 + 0,2·0,3; fazlalık 0,06 zammın zammıdır.",
+      "source": {
+        "providerId": "youtube:tVSR09d3Jts",
+        "startSeconds": 540,
+        "endSeconds": 650
+      },
+      "evidenceHash": "d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034",
+      "contentHash": "24f87cbcc581a65f9ac9d66eacc9946ea1168a401b52ad12d35d764460ed38b3",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "kar-zarar-video:maliyete-100-adete-10",
+      "conceptId": "kar-zarar",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s4",
+        "s4b"
+      ],
+      "title": "TL yoksa maliyete 100 de",
+      "rule": "Soruda hiç TL ya da adet verilmeyip yalnız kâr–zarar oranları verilmiş ve oran soruluyorsa, maliyete ve adede uygun sayılar ver (adet 10, birim maliyet 10, toplam 100); sonuç oran olduğu için seçimden bağımsızdır.",
+      "condition": "Sorudaki bütün bilgiler oran olmalı. Bir tutar (örneğin “30 lira fazla kazanılırdı”) verildiyse maliyet bilinmeyendir; keyfi sayı verilemez.",
+      "example": "Malın %20’si %30 kârla, %40’ı %20 kârla, kalanı %20 zararla satılıyor. 10 adet, tanesi 10 lira: 2·13 + 4·12 + 4·8 = 106; 100 liralık maldan 6 lira kâr, %6.",
+      "counterexample": "Yüzdeleri doğrudan toplamak (30 + 20 − 20 = 30) payları yok sayar; sonuç %6’dır.",
+      "rationale": "Kâr yüzdesi kâr ÷ maliyet oranıdır; maliyeti ve adedi k katına çıkarmak payı ve paydayı aynı oranda büyütür, oran değişmez.",
+      "source": {
+        "providerId": "youtube:tVSR09d3Jts",
+        "startSeconds": 1330,
+        "endSeconds": 1480
+      },
+      "evidenceHash": "d43bbfb8a2b98e43347f9954bd592430e4860ec92e6e2d838d2e114b80bd8034",
+      "contentHash": "ff17ed543500fc11010cffb73e4f516a143c66ef9308fc4a437c4ec53806ebd3",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

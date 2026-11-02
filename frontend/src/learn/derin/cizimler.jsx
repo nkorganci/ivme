@@ -16,5 +16,6 @@ import { diagrams as sayiKesir } from './sayi-kesir-problemleri-cizim.jsx';
 import { diagrams as yasIsci } from './yas-isci-problemleri-cizim.jsx';
 
 import { diagrams as yuzdeKarisim } from './yuzde-karisim-cizim.jsx';
+import { diagrams as karZarar } from './kar-zarar-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar };
