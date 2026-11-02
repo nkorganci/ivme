@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "yas-farki-zamanla-degismez",
+    "providerId": "youtube:Ny4I-1pcmgY",
+    "startSeconds": 1263,
+    "endSeconds": 1365,
+    "quote": "yaş farkı hiçbir zaman değişmez",
+    "frameSeconds": [
+      1300
+    ],
+    "rule": "Bir grubun yaş toplamı kişi sayısı kadar artarken iki kişinin yaş farkı zamanla değişmez. Denklemde “fark” ile “toplam”ı ayır.",
+    "condition": "Aynı iki kişinin yaşları aynı tarihlerde karşılaştırılmalı; yaşların farkı istenmeli.",
+    "example": "Anne çocuklarının yaş farkının 6 katı; 4 yıl sonra aynı farkın 7 katının 1 eksiği: 6d + 4 = 7d − 1; d = 5, anne 30.",
+    "counterexample": "İki çocuğun toplamı dört yılda 8 artar; farkı 8 artırmak yanlıştır. 12 ve 7 yaşın farkı 5, dört yıl sonra 16 ve 11’in farkı yine 5.",
+    "rationale": "(a+t)−(b+t)=a−b; aynı t iki taraftan çıkar. Toplamda ise t+t=2t kalır.",
+    "agentSourceReview": "Codex 1300. saniye karesini açtı: Örnek 8, anne 6x ve dört yıl sonra 6x+4, çocukların farkı her iki satırda x. Sorunun 7 katının 1 eksiği koşulu görünür; çözüm bağımsız hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "ekipten-kisi-hizina-gec",
+    "providerId": "youtube:HJNleId31GA",
+    "startSeconds": 1875,
+    "endSeconds": 2041,
+    "quote": "bir usta",
+    "frameSeconds": [
+      1950
+    ],
+    "rule": "Ekip süresini kişi başına hıza çevir: n eşit işçi T günde bitiriyorsa bir işçi nT günde bitirir. Farklı ekipleri günlük işleri üzerinden birleştir.",
+    "condition": "Ekip içindeki işçiler eşit ve sabit verimde çalışmalı; iş aynı ve bölünebilir olmalı.",
+    "example": "2 usta 12 günde, 3 çırak 16 günde bitirir: tek usta 24, tek çırak 48 günde. İş 48 parça: 3 usta + 2 çırak günde 8 parça; süre 6 gün.",
+    "counterexample": "2 usta 12 günde yaparken 1 ustanın 6 günde yapacağını söylemek çalışan azalınca hızın arttığını varsayar; doğru süre 24 gündür.",
+    "rationale": "Toplam iş n × kişi hızı × süre olduğundan tek kişinin hızı 1/(nT) iş/gündür. Yeni ekipte kişi hızları toplanır.",
+    "agentSourceReview": "Codex 1950. saniye karesini açtı: Örnek 8’in 2 usta/12 gün, 3 çırak/16 gün ve istenen 3 usta/2 çırak verileri; tek usta 24, tek çırak 48, iş 48x ve günlük 2x satırları okunuyor. Sonuç ayrıca hesaplandı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

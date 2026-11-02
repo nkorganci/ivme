@@ -460,12 +460,12 @@
     "AYT": 0
    },
    "archetypes": {
-    "yas-fark": 29,
-    "yas-toplam": 35,
+    "yas-fark": 30,
+    "yas-toplam": 36,
     "isci-birlikte": 62,
     "isci-asamali": 6
    },
-   "untyped": 56
+   "untyped": 54
   },
   "yuzde-karisim": {
    "total": 133,
@@ -474,9 +474,9 @@
     "AYT": 0
    },
    "archetypes": {
-    "yuzde-hesap": 50,
+    "yuzde-hesap": 51,
     "yuzde-degisim": 11,
-    "karisim-derisim": 25,
+    "karisim-derisim": 24,
     "karisim-degisim": 6
    },
    "untyped": 41

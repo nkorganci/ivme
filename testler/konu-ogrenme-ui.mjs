@@ -25,6 +25,7 @@ const protipsOnly = process.argv.includes('--protip');
 const discoveryOnly = process.argv.includes('--kesif');
 const guidedOnly = process.argv.includes('--gercek-ornek');
 const levelsOnly = process.argv.includes('--duzey');
+const contentStatusOnly = process.argv.includes('--icerik-durumu');
 const lessonsDir = join(ROOT, 'frontend/src/learn/content/dersler');
 const requestedConcept = process.argv.slice(2).find((a) => !a.startsWith('--'));
 const conceptId = requestedConcept ?? readdirSync(lessonsDir).filter((n) => n.endsWith('.ders')).sort()[0].replace(/\.ders$/, '');
@@ -528,10 +529,46 @@ async function runLevels(mobile) {
   } finally { browser.close(); }
 }
 
+async function runContentStatus(mobile) {
+  assert.ok(!live, 'içerik durumu denetimi sahte API kullanır');
+  const browser = await tarayiciAc({ mobile });
+  const { goto, wait, evalJs, screenshot, errors, failedRequests } = browser;
+  const steps = [];
+  const content = JSON.parse(readFileSync(join(ROOT, 'frontend/src/learn/content/matematik-icerik-durumu.json'), 'utf8'));
+  try {
+    await goto('/konuyu-ogrenelim/harita?sinav=TYT');
+    await wait('document.querySelector(\'a[href="/konuyu-ogrenelim/icerik-durumu"]\')');
+    await evalJs('document.querySelector(\'a[href="/konuyu-ogrenelim/icerik-durumu"]\').click()');
+    await wait('document.querySelector(".lr-content-readiness .ag-row")');
+    assert.equal(await evalJs('document.querySelector(".lr-content-count strong").textContent'), `${content.completed}/${content.total}`);
+    assert.ok(await evalJs('document.querySelector(".lr-content-summary").textContent.includes("ortak anlatımı tek derste")'));
+    for (const label of ['Eksik', 'Bitti', 'Tümü']) {
+      await evalJs(`[...document.querySelectorAll('.lr-content-readiness .study-tabs button')].find(b=>b.textContent.startsWith(${JSON.stringify(label)})).click()`);
+      await wait('document.querySelector(".lr-content-readiness .ag-row")');
+      await pause(80);
+      const statuses = JSON.parse(await evalJs('JSON.stringify([...document.querySelectorAll(".lr-content-status")].map(e=>e.textContent))'));
+      assert.ok(statuses.length);
+      if(label!=='Tümü') assert.ok(statuses.every(s=>s.includes(label)), label);
+    }
+    assert.ok(await evalJs('document.querySelector(".lr-content-readiness").textContent.includes("Ortak")'));
+    assert.equal(db.events.length, 0, 'içerik listesi öğrenci ilerlemesi yazmamalı');
+    steps.push({ step:'liste-ve-filtreler', overflow:await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth+2') });
+    await screenshot(join(out, `${mobile?'mobil':'masaustu'}-icerik-durumu.png`));
+    await goto('/konuyu-ogrenelim/konu/yas-isci-problemleri');
+    await wait('document.querySelector(".lr-shared-exam-note")');
+    assert.ok(await evalJs('document.querySelector(".lr-shared-exam-note").textContent.includes("bir kez")'));
+    steps.push({ step:'ortak-konu', overflow:await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth+2') });
+    return { mobile, steps, errors:[...errors], failedRequests:[...failedRequests].filter(f=>!f.url?.includes('favicon')) };
+  } catch(error) {
+    await screenshot(join(out, `${mobile?'mobil':'masaustu'}-icerik-durumu-hata.png`));
+    return { mobile, steps, failure:error.message, errors:[...errors], failedRequests:[...failedRequests] };
+  } finally { browser.close(); }
+}
+
 try {
   for (const mobile of [false, true]) {
     db.events = []; db.profile = null; db.seq = 0;
-    report.runs.push(await (laboratoryOnly ? runLaboratory({ browser: await tarayiciAc({ mobile }), mobile, out, eventCount: () => db.events.length }) : protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
+    report.runs.push(await (laboratoryOnly ? runLaboratory({ browser: await tarayiciAc({ mobile }), mobile, out, eventCount: () => db.events.length }) : contentStatusOnly ? runContentStatus(mobile) : protipsOnly ? runProtips(mobile) : levelsOnly ? runLevels(mobile) : guidedOnly ? runGuided(mobile) : discoveryOnly ? runDiscoveries(mobile) : run(mobile)));
   }
 } finally {
   server?.close();

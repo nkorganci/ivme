@@ -3,7 +3,7 @@
   "taskId": "sayi-kesir-problemleri-video",
   "topicId": "tyt.matematik.problemler",
   "status": "REVIEW_REQUIRED",
-  "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+  "evidenceHash": "c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798",
   "taskHash": "ee536723a907bad82ca1e84fa634554152ddf7338fa21e70170786044356e350",
   "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
   "evidenceDirectory": "veri\\video-hatti\\sayi-kesir-problemleri-video",
@@ -13,8 +13,8 @@
     "kareler\\10f7f7fb1ace1558315fdc29d09f07e71bfa1a84962480d7dfd002396a014f96.png": "abdad006fb0b52371dac96b9d0582c6888f1ce45a703c2afdce76695268eab8d",
     "kareler\\5f4dcb8521c37a61c12ea08c2bf16637169eed72da1d1ea0da5026e8a1b55243.png": "b011ea712907dc653ea90ce00e92c155ff63c3b423fcd09a14e1ba6378dce2e6",
     "asamalar\\matematik-denetimi\\d7e4298fbf7dd46fec1d06555c7b15fab96f01e2a9ba49cfd08ff8106c3b05c8.json": "f19b1e2c0424e5f8e9b78143bfd040312ffb047e45b1a541e8ef71cb65e20efb",
-    "surumler\\18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf.json": "3507a9b1101690630481fa3b3ea9cbbccd914b5bbf8b8622fcc7326371b0d68b",
-    "surumler\\18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf.oneriler.md": "1cafe83cbb1fb68c89aed6bfc739fe642d07f035a77356877cfa4255e8efe97a"
+    "surumler\\c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798.json": "b8081ba432049565c984fd8dff917b044cbd0cc2cc1ad643617648a264f9f92d",
+    "surumler\\c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798.oneriler.md": "2c7921e65c68ef3497c83852db0ff867ac8b6fca44968e44be950115471ed31d"
   },
   "verification": {
     "status": "SCRIPT_CHECKED",
@@ -33,15 +33,15 @@
   "lastRun": {
     "taskId": "sayi-kesir-problemleri-video",
     "status": "REVIEW_REQUIRED",
-    "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+    "evidenceHash": "c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798",
     "metrics": {
       "networkRequests": 0,
       "asrCalls": 0,
-      "frameDecodes": 2,
-      "stagesBuilt": 3,
-      "stagesReused": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
       "modelCalls": 0,
-      "elapsedSeconds": 0.813
+      "elapsedSeconds": 0.462
     },
     "videos": [
       {

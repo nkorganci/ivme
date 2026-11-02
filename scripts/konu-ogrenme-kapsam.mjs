@@ -69,6 +69,7 @@ function topicList() {
   const extra=existing.filter((l)=>!known.has(l.id)).map((l)=>l.id);
   if(extra.length) { console.error('Listede olmayan ders: '+extra.join(', ')+' (scripts/matematik-konu-listesi.json)'); return 1; }
   const rows=[];
+  const appTopics=[];
   const row=(k,n)=>{
     const l=byId[k.id],c=l?.counts;
     const protips=tips.filter((t)=>t.conceptId===k.id).length;
@@ -83,19 +84,32 @@ function topicList() {
       if(!k.pdfOkundu?.length) missingParts.push('ders anlatım PDF okunmadı');
     }
     const status=!l?'⬜ DERS YOK':missingParts.length?'🟡 EKSİK':'✅ BİTTİ';
+    const remaining=[];
+    if(!l) remaining.push('Ders hazırlanacak');
+    else {
+      if(l.structure!=='PILOT_YAPISI') remaining.push('Ayrıntılı anlatım ve alıştırmalar');
+      if(c.guided<3) remaining.push('Çözümlü çıkmış sorular');
+      if(hasVideo&&protips<2) remaining.push('Kaynaklı pratik ipuçları');
+      if(!k.pdfOkundu?.length) remaining.push('Ayrıntılı kaynak incelemesi');
+    }
+    appTopics.push({id:k.id,title:l?.title??k.baslik??k.id,exam:k.asama,exams:l?.exams??[k.asama],grade:l?.grade??k.sinif??null,
+      status:missingParts.length?'incomplete':'complete',remaining});
     const structure=l?`${c.sections}/${c.worked}/${c.faded}/${c.explorations}`:'—';
     const exams=l?`${c.guided}`+(cat?` / ${cat.tyt2018_2026} (${cat.ad})`:''):'—';
     const video=hasVideo?`${protips} · PL1 ${k.videolar.PL1.length}, PL2 ${k.videolar.PL2.length}`:'video yok';
-    rows.push(`| ${n} | ${status} | \`${k.id}\` | ${l?.title??k.baslik??k.id} | ${l?.grade??k.sinif??''} | ${k.asama} | ${structure} | ${exams} | ${video} | ${k.pdfOkundu?.length??0}/${k.pdfAnlatim?.length??0} | ${missingParts.join('; ')||'—'}${k.not?' · '+k.not:''} |`);
+    rows.push(`| ${n} | ${status} | \`${k.id}\` | ${l?.title??k.baslik??k.id} | ${l?.grade??k.sinif??''} | ${l?.exams.join(' + ')??k.asama} | ${structure} | ${exams} | ${video} | ${k.pdfOkundu?.length??0}/${k.pdfAnlatim?.length??0} | ${missingParts.join('; ')||'—'}${k.not?' · '+k.not:''} |`);
     return status;
   };
-  const head='| # | Durum | Kimlik | Konu | Sınıf | Aşama | Bölüm/örnek/tamamla/keşif | Rehberli çıkmış / TYT 2018–26 | Video protip · liste | PDF okundu | Kalan iş |\n|---|---|---|---|---|---|---|---|---|---|---|';
+  const head='| # | Durum | Kimlik | Konu | Sınıf | Sınav kapsamı | Bölüm/örnek/tamamla/keşif | Rehberli çıkmış / TYT 2018–26 | Video protip · liste | PDF okundu | Kalan iş |\n|---|---|---|---|---|---|---|---|---|---|---|';
   const tyt=spec.konular.filter((k)=>k.asama==='TYT'),ayt=spec.konular.filter((k)=>k.asama==='AYT');
   const tytStatus=tyt.map((k,i)=>row(k,i+1)),tytRows=rows.splice(0);
   ayt.forEach((k,i)=>row(k,i+1));
   missing.forEach((m,i)=>rows.push(`| ${ayt.length+i+1} | ⬜ DERS YOK | \`${m.id}\` | ${m.title} | ${m.grade} | AYT | — | — | — | 0/0 | ders yok |`));
   const done=tytStatus.filter((s)=>s.startsWith('✅')).length;
   const next=tyt.find((k,i)=>!tytStatus[i].startsWith('✅'));
+  const appPath=join(root,'frontend/src/learn/content/matematik-icerik-durumu.json');
+  const appContent=JSON.stringify({phase:spec.asama,total:tyt.length,completed:done,nextTopicId:next?.id??null,
+    topics:appTopics.filter((t)=>t.exam==='TYT')},null,2)+'\n';
   const body=[`TYT: **${done}/${tyt.length} bitti**. Sıradaki TYT konusu: ${next?'`'+next.id+'`':'yok — TYT tamam; AYT aşamasına geç'}.`,
     '','### TYT (şu anki aşama)','',head,...tytRows,'','### AYT (TYT bitince)','',head,...rows].join('\n');
   const start='<!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->',end='<!-- liste:bitis -->';
@@ -105,10 +119,13 @@ function topicList() {
   const next_doc=doc.slice(0,a+start.length)+'\n'+body+'\n'+doc.slice(b);
   if(process.argv.includes('--kontrol')) {
     if(next_doc!==doc) { console.error('Matematik konu listesi güncel değil: node scripts/konu-ogrenme-kapsam.mjs --liste'); return 1; }
+    let currentApp='';try{currentApp=readFileSync(appPath,'utf8');}catch{}
+    if(currentApp!==appContent) { console.error('Uygulamanın içerik durumu güncel değil: node scripts/konu-ogrenme-kapsam.mjs --liste'); return 1; }
     console.log(`Matematik konu listesi güncel. TYT ${done}/${tyt.length} bitti; sıradaki ${next?.id??'yok'}.`);
     return 0;
   }
   writeFileSync(docPath,next_doc);
+  writeFileSync(appPath,appContent);
   console.log(`TYT ${done}/${tyt.length} bitti; sıradaki ${next?.id??'yok'}.`);
   return 0;
 }

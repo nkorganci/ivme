@@ -1,14 +1,14 @@
 @ders yas-isci-problemleri
 baslik: Yaş, İşçi ve Havuz Problemleri
 kisa: Yaş–işçi problemleri
-sinav: TYT
+sinav: TYT AYT
 unite: problemler
 sinif: 9
 sira: 420
 onkosul: sayi-kesir-problemleri
-kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75 excel.ayt.matematik.c0b32de8d9a8ffca3f75
 hedef: Yaş farkının hiç değişmediğini kullanarak zaman çizelgesi kurmak; toplam yaş sorularında kişi sayısını hesaba katmak; işçi ve havuz problemlerini birim zamanda yapılan iş üzerinden çözmek; aşamalı çalışma ve boşaltan musluk durumlarını yönetmek.
-neden: Yaş ve işçi–havuz problemleri TYT problemlerinin düzenli konuklarıdır. İkisinin de tek bir anahtar fikri vardır (yaş farkı sabittir; birim zamanda yapılan işler toplanır); bu fikir bir kez oturunca soru başına 40–60 saniye yeter.
+neden: Yaş ve işçi–havuz problemleri TYT problemlerinin düzenli konuklarıdır. İkisinin de tek bir anahtar fikri vardır (yaş farkı sabittir; birim zamanda yapılan işler toplanır); zaman çizelgesi ve iş tablosu, hangi işlemin neden yapıldığını görmeyi sağlar.
 kaynak: MEBİ TYT Konu Özeti — Yaş Problemleri, İşçi Problemleri | OGM 9. Sınıf Konu Özetleri 33 | OGM Ders Anlatım Sunuları 9. Sınıf — Yaş ve İşçi Problemleri
 tekrar: 12
 ustalik-dk: 15
@@ -47,8 +47,10 @@ yas-toplam 1 1-3
 isci-birlikte 2 1-3
 isci-asamali 1 1-3
 
-@oturum Yaş problemleri | s1 s2
-@oturum İşçi ve havuz problemleri | s3 s4
+@oturum Yaş ve takvim | s1 s1b
+@oturum Grup ve ortalama | s2 s2b
+@oturum İş ve verim | s3 s3b
+@oturum Aşama ve havuz | s4 s4b
 
 @ontest
 ::soru o1 tip=yas-fark zorluk=1
@@ -84,6 +86,8 @@ cozum: Üç kişinin her biri 5 yaş küçüktü: $36 - 3 \cdot 5 = 21$.
 @bolum s1 17 | Yaş farkı hiç değişmez
 ::kesfet yas-isci-problemleri
 
+::kesfet yi-zaman
+
 ::fikir
 İki kişinin **yaş farkı sabittir**. Herkesin yaşı aynı hızla (yılda 1) artar; bu yüzden "biri diğerinin yaşına geldiğinde" geçen süre **yaş farkı kadardır**.
 
@@ -99,7 +103,7 @@ L2: Soruyu bir zaman çizelgesine dök: şimdiki yaşlar $x$ ve $y$; geçmiş ya
 L3: Klasik kısa yol: büyük $x$, küçük $y$ iken küçük, büyüğün yaşına geldiğinde büyük $2x - y$ yaşında olur; büyük, küçüğün yaşındayken küçük $2y - x$ yaşındaydı. Bu iki ifade "farkı ekle/çıkar" fikrinin sonucudur.
 
 ::ornek baslik="MEBİ örneği: Efe ve kardeşi"
-soru: Kardeşi doğduğunda Efe 8 yaşındadır. Kardeşi Efe'nin yaşına geldiğinde ikisinin yaşları toplamı annelerinin yaşının yarısı olacaktır. Efe doğduğunda annesi kaç yaşındadır?
+soru: Kardeşi doğduğunda Efe 8 yaşındadır. Kardeşi 8 yaşına geldiğinde ikisinin yaşları toplamı annelerinin yaşının yarısı olacaktır. Efe doğduğunda annesi kaç yaşındadır?
 1. Yaş farkı 8; kardeş 8 yaşına geldiğinde 8 yıl geçmiştir ve Efe 16 yaşındadır. || "Yaşına gelince" geçen süre = fark.
 2. Toplam $8 + 16 = 24$; anne $2 \cdot 24 = 48$ yaşında. || O andaki yaşlar.
 3. Efe doğduğunda anne $48 - 16 = 32$ yaşındaydı. || Efe'nin yaşı kadar geri git.
@@ -139,14 +143,92 @@ E) 24 || Bu, ablanın o günkü yaşıdır.
 kontrol: (42-6)/2
 cozum: Fark 6. Abla bugün $a$ ise Ayşe $a$ yaşına geldiğinde 6 yıl geçer ve abla $a + 6$ olur: $a + (a + 6) = 42 \Rightarrow a = 18$.
 
-@bolum s2 8 | Toplam yaş ve kişi sayısı
+::cikmis TYT-0741 tip=yas-fark
+
+::ornek baslik="Benzer soru · iki eski fotoğraf"
+soru: 2024'te anne ile çocuğun konuşmasında, 2014'te yaşları toplamı annenin bugünkü yaşına eşitmiş. Anne 2000 yılında çocuğun bugünkü yaşındaymış. Bugünkü toplamları kaçtır?
+1. Bugün anne $A$, çocuk $C$: $(A-10)+(C-10)=A$, buradan $C=20$. || 2014 her ikisi için 10 yıl öncedir.
+2. $A-24=C=20$, dolayısıyla $A=44$. || İkinci cümlede yalnız annenin geçmiş yaşı var.
+3. Toplam $44+20=64$. || İstenen iki bugünkü yaşın toplamı.
+cevap: 64; 2014'te 34 ve 10 toplamı 44, 2000'de anne 20 yaşında.
+
+@bolum s1b 22 | Yaş ile doğum yılını ayır: aynı tarih üzerinde düşün
+::fikir
+Bir fotoğrafın çekildiği yıl bir **tarih**, o fotoğraftaki kişinin yaşı bir **süre**dir. Yıl düzeyindeki sorularda yaş = incelenen yıl − doğum yılıdır. Doğum günü bilgisi verilen gerçek takvim sorularında gün ve ay da kontrol edilir. Önce herkes için aynı yılın sütununu seç; iki farklı tarihteki yaşları yanlışlıkla toplama.
+
+::duzey
+L1: 2010 doğumlu biri 2025 yılında, yıl farkıyla 15 yaşındadır. 2030 için yaşına 5 ekleriz; doğum yılına eklemeyiz. Doğum yılı sabit kalır.
+L2: “Altı yıl sonra doğsaydı” kişinin bugün altı yaş küçük olacağı anlamına gelir. “Altı yıl önce doğsaydı” ise altı yaş büyük olurdu. Doğum yılını ve yaşı ayrı satıra yazmak işaret karışıklığını önler.
+L3: Aynı yıl için iki kişinin yaş toplamı $2Y-(d_1+d_2)$, yaş farkı doğum yıllarının ters sıradaki farkıdır. Bir cismin yapım yılı da aynı zaman çizgisiyle bulunur; cismin bulunduğu yıl ile yapıldığı yılı eşitleme.
+
+::ornek baslik="Farklı tarihlerde iki kat ilişkisi"
+soru: 2010 yılında Deniz'in yaşı Ece'nin 4 katıdır. 2018 yılında 2 katı oluyor. Deniz 2025 yılında kaç yaşındadır?
+1. 2010'da yaşları $4x$ ve $x$ yaz: 2018'de $4x+8$ ve $x+8$. || Sekiz yıl herkes için aynı geçer.
+2. $4x+8=2(x+8)$; $2x=8$, $x=4$. || Kat ilişkisi 2018 sütununda kurulmalı.
+3. Deniz 2010'da 16, 2025'te $16+15=31$ yaşındadır. || İstenen tarihe ilk tarihten 15 yıl ilerledik.
+cevap: 31. Kontrol: 2018'de 24 ve 12, oran 2; yaş farkı hep 12.
+
+::ornek baslik="Doğum yılları değişseydi"
+soru: İki kardeşin doğum yılları toplamı 4010'dur. Büyük 4 yıl sonra, küçük 6 yıl önce doğsaydı aynı yıl doğmuş olacaklardı. Küçük 2025 yılında kaç yaşında olur?
+1. Büyük $d$, küçük $e$ yılında doğsun: $d+e=4010$ ve $d+4=e-6$. || Daha erken doğan büyüktür; yıl değişimini doğum yılına uyguladık.
+2. $e-d=10$, $2e=4020$, $e=2010$, $d=2000$. || Toplam ve fark iki doğum yılını belirler.
+3. Küçük $2025-2010=15$ yaşındadır. || Soru gerçek doğum yılını kullanır, varsayımsal 2004 yılını değil.
+cevap: 15; varsayımsal doğum yılları $2000+4=2010-6=2004$ ile kontrol edilir.
+
+::cikmis TYT-0683 tip=yas-fark
+
+::ornek baslik="Benzer soru · müzedeki eserin iki tarihi"
+soru: 2024 yılında bir ziyaretçinin doğduğu yıl bulunan heykel, bulunduğunda 144 yaşındaydı. Heykelin yapım yılı ziyaretçinin bugünkü yaşının 39 katıdır. Ziyaretçi kaç yaşındadır?
+1. Yaşı $x$ ise doğum ve bulunma yılı $2024-x$. || İki olayın yılı aynı verilmiş.
+2. Yapım yılı $2024-x-144=1880-x$. Bunu $39x$'e eşitle. || Heykel bulunduğunda zaten 144 yıllık.
+3. $1880-x=39x$, $40x=1880$, $x=47$. || Bilinmeyen ziyaretçinin yaşıdır.
+cevap: 47. Doğum/bulunma 1977, yapım 1833; $39\cdot47=1833$ ve $1977-1833=144$.
+
+::ornek baslik="Rakamları ters dönen yaş"
+soru: İki basamaklı $AB$ yaşı 27 yıl sonra $BA$ oluyor. B'nin en küçük değeri nedir?
+1. $10A+B+27=10B+A$, yani $9(B-A)=27$. || Yaşlar rakam değil iki basamaklı sayıdır.
+2. $B-A=3$; $A$ en az 1 olduğundan $B$ en az 4. || Her iki sayının onlar basamağı sıfır olamaz.
+3. $A=1$, $B=4$ seç: $14+27=41$. || Alt sınırın gerçekten gerçekleştiğini gördük.
+cevap: 4; 27 yıllık artış, rakam farkının 9 katıdır.
+
+::tamamla baslik="Yaşı değil doğum yılını değiştir"
+soru: 2008 doğumlu bir öğrenci 3 yıl önce doğmuş olsaydı 2025'te yıl farkıyla kaç yaşında olurdu?
+1. Varsayımsal doğum yılı $2008-3=2005$. || “Önce” daha küçük takvim yılıdır.
+?2. Yaş $2025-2005=20$. || Erken doğmak daha büyük olmak demektir.
+?3. Gerçek yaş 17; varsayımsal yaş 3 fazla. || Sonucu diğer yönden kontrol ettik.
+cevap: 20.
+
+::sorgula s1b-fotograf baslik="Eski fotoğrafın tarihi"
+durum: 2025'te 18 yaşındasın; bir fotoğrafta 7 yaşındasın.
+soru: Fotoğraf hangi yılda çekilmişti?
++A) 2014 || $2025-(18-7)=2014$; aradan 11 yıl geçmiş.
+B) 2018 || Bugünkü yaştan farkı değil, 7'yi çıkardın.
+C) 2007 || Bu doğum yılın; fotoğraf çekildiğinde 7 yaşındaydın.
+kontrol: 2025-(18-7)
+neden: Fotoğraf ile bugün arasındaki süre, iki yaşın farkıdır. Takvim yılından bu süreyi çıkarmalıyız.
+sinav: Aynı kişinin iki farklı tarihteki yaş farkı, tarihler arasındaki süredir.
+dusun: Fotoğrafta senden 4 yaş büyük biri de varsa bugün kaç yaşındadır?
+yanit: 22; iki kişi de 11 yıl yaşlandı ve fark yine 4.
+
+::soru c1b tip=yas-fark zorluk=2
+Bir öğrencinin doğum yılı ile ablasının doğum yılı toplamı 4012, yaş farkları 8'dir. Küçük kardeş 2025'te yıl farkıyla kaç yaşındadır?
+A) 11 || Küçüğün doğum yılı 2010; 2025'ten çıkar.
++B) 15 || Doğum yılları 2002 ve 2010; küçük 15 yaşında.
+C) 19 || İki doğum yılının ortalamasını kullandın; küçük daha sonra doğdu.
+D) 23 || Bu ablanın yaşıdır.
+E) 27 || Doğum yılı ile yaşın ters yönünü kontrol et.
+kontrol: 2025-(4012+8)/2
+cozum: Küçük daha geç doğar: $(4012+8)/2=2010$. Yaşı $2025-2010=15$; abla 2002 doğumlu, fark 8.
+
+@bolum s2 18 | Toplam yaş ve kişi sayısı
+::kesfet yi-grup
 ::fikir
 $n$ kişinin yaşları toplamı her yıl **$n$ artar**: $t$ yıl sonra $+n \cdot t$, $t$ yıl önce $-n \cdot t$. O tarihte doğmamış biri varsa ona yaş çıkarılmaz.
 
 ::duzey
 L1: Üç kardeşin toplam yaşı 36 ise bir yıl sonra her biri bir yaş büyür; toplam 3 artar. 4 yıl sonra toplam $36 + 12 = 48$ olur.
 L2: Toplam yaş sorularında kişi sayısını yaz ve her zaman kaydırmada $n \cdot t$ kadar değiştir. Anne ile çocukların toplamı gibi grup karşılaştırmalarında her grubun kişi sayısını ayrı say: 6 yıl önce iki çocuğun toplamı $12$ azalır, annenin yaşı $6$ azalır.
-L3: "5 yıl önce toplam 21 eksik" gibi beklenmedik bir azalma (ör. 3 kişi için 15 değil de 12 azalma) birinin o tarihte doğmamış olduğunu gösterir. ÖSYM bu tuzağı küçük kardeşle kurar; toplamdaki farkı kişi sayısına bölerek kimin henüz doğmadığını bulursun.
+L3: Bugün üç kardeşin toplamı 30, beş yıl önce doğmuş olanların toplamı 18 ise azalma 12’dir. İki büyükten 5’er yıl çıkarınca 10 azalır; kalan 2, bugün 2 yaşındaki küçük kardeşin payıdır. Bu sonuç için diğer iki kardeşin o tarihte doğmuş olduğu bilinmelidir; eksik toplamı kişi sayısına bölmek tek başına doğum zamanını vermez.
 
 ::ornek baslik="Anne ve çocuklar"
 soru: Bir anne ile iki çocuğunun yaşları toplamı 58'dir. 6 yıl önce annenin yaşı, çocuklarının yaşları toplamının 4 katıydı. Anne bugün kaç yaşındadır?
@@ -189,7 +271,85 @@ E) 48 || Fazla.
 kontrol: 2*32-20
 cozum: $b + s = 76$ ve $b - 4 = 2(s - 12)$. $b = 2s - 20$, $3s = 96$, $s = 32$, $b = 44$.
 
-@bolum s3 10 | İşçi ve havuz: birim zamanda iş
+::cikmis TYT-0650 tip=yas-toplam
+
+::ornek baslik="Çocukların farkı sabitken anne büyür"
+soru: Annenin yaşı iki çocuğunun yaş farkının 6 katı. 4 yıl sonra annenin yaşı çocukların farkının 7 katının 1 eksiği olacak. Anne bugün kaç yaşında?
+1. Çocukların farkına $d$ de; anne $6d$. || Çocukların ayrı yaşları istenmediğinden farkı tek bilinmeyen seçtik.
+2. Dört yıl sonra $6d+4=7d-1$. || Çocukların farkı $d$ olarak kalır, $d+8$ olmaz.
+3. $d=5$; anne $6\cdot5=30$. || Sonra 34 yaş; $7\cdot5-1=34$.
+cevap: 30; kısa yol ancak söylenen büyüklük toplam değil fark olduğunda geçerlidir.
+
+@bolum s2b 22 | Grup değişince toplamı yeniden kur
+::fikir
+Ortalama tek bir kişiyi temsil etmez; **toplamı kişi sayısına bölerek** elde edilir. Gruba biri katıldığında hem toplam hem kişi sayısı değişir. Bir ağacın yaşı ile öğrencilerin yaşları toplamını karşılaştırırken ağaç yılda 1, aynı $n$ öğrencinin toplamı yılda $n$ büyür.
+
+::duzey
+L1: 4 kişinin yaş ortalaması 20 ise toplam 80'dir. 30 yaşında biri katılınca toplam 110, kişi sayısı 5, ortalama 22 olur. 20 ile 30'un ortalamasını almak kişi sayısını yok sayar.
+L2: Anne ile üç çocuğun toplamını karşılaştırırken anneye $t$, çocukların toplamına $3t$ ekle. Sabit grup aynı süre boyunca birlikte yaşlanırsa ortalama $t$ artar; yeni doğan ya da ayrılan üyede yeniden toplam gerekir.
+L3: Ebeveyn ve çocuk çiftlerinin yaş farkları toplamı $D$ ise ebeveynlerin toplamı çocukların toplamından $D$ fazladır. Her iki grubun birleşik toplamı $S$ olduğunda ebeveyn toplamı $(S+D)/2$ olur. Bu sonuç her çifti ayrı yaşlandırmadan çözüm verir.
+
+::ornek baslik="Benzer soru · arkadaşlar çocuklarıyla buluşuyor"
+soru: Üç arkadaş tanıştığında yaş ortalamaları 22'dir. Yıllar sonra birer çocuğuyla buluşunca altı kişinin ortalaması 25 olur. Çocuklarıyla yaş farkları 28, 30 ve 32 ise kaç yıl geçmiştir?
+1. İlk ebeveyn toplamı $3\cdot22=66$; son birleşik toplam $6\cdot25=150$. || Ortalama önce toplama çevrildi.
+2. Farklar toplamı 90; ebeveyn toplamı $(150+90)/2=120$. || Çocuk toplamı 30; iki toplamın farkı 90.
+3. Ebeveyn toplamı 54 artmış, üç kişide geçen süre $54/3=18$. || Üç kişi her yıl toplam 3 yaş büyür.
+cevap: 18 yıl. $66+3\cdot18=120$; çocukların toplamı $120-90=30$; birleşik ortalama 25.
+
+::cikmis TYT-0681 tip=yas-toplam
+
+::ornek baslik="Benzer soru · aynı ağaç, farklı gruplar"
+soru: 2016'da her biri 8 yaşındaki bir grup ile 2020'de her biri 10 yaşındaki başka bir grup aynı ağacı geziyor. Her ziyarette ağacın yaşı o grubun toplam yaşına eşit. İlk grupta 8 kişi fazla olduğuna göre ağaç 2020'de kaç yaşındadır?
+1. İkinci gruba $n$, ilkine $n+8$ kişi de: ilk ağaç yaşı $8(n+8)$. || “8 kişi fazla” kişi sayısına eklenir, yaşa değil.
+2. Dört yılda ağaç 4 yaş büyür: $8(n+8)+4=10n$. || İki ziyaret farklı gruplarla yapılır; öğrencileri 4 yıl büyütmüyoruz.
+3. $68=2n$, $n=34$; ağacın yaşı $10\cdot34=340$. || Soru ikinci ziyaret yılını istiyor.
+cevap: 340; ilk grupta 42 kişi, $42\cdot8=336$; dört yıl sonra 340.
+
+::ornek baslik="Aileye yeni bebek katılıyor"
+soru: Üç kişinin yaş toplamı bugün 78. İki yıl sonra doğan bebekle birlikte aile dört kişi oluyor. Bugünden beş yıl sonra yaş ortalaması kaç olur?
+1. Bugünkü üç kişi beş yılda $3\cdot5=15$ büyür; toplamları 93. || Aynı üç kişiyi ileri taşıdık.
+2. İki yıl sonra doğan bebek son tarihte $5-2=3$ yaşında. || Bebek beş yıl boyunca yaşamış değil.
+3. Yeni toplam $93+3=96$; dört kişide ortalama $96/4=24$. || Pay ve payda yeni aileyi temsil eder.
+cevap: 24. Bugünkü toplama $4\cdot5$ eklemek bebeği doğmadan yaşlandırır.
+
+::ornek baslik="Üç çocuk ile babanın yaşı ne zaman eşitlenir?"
+soru: Baba 48, üç çocuğunun yaş toplamı 18. Kaç yıl sonra çocukların toplamı babanın yaşına eşit olur?
+1. $t$ yıl sonra baba $48+t$, çocuklar toplamı $18+3t$. || Aynı süre, farklı kişi sayıları.
+2. $48+t=18+3t$, $30=2t$. || Aradaki 30 fark her yıl 2 azalır.
+3. $t=15$. || O yıl baba 63, çocukların toplamı 63.
+cevap: 15 yıl; toplamın artış hızı ile tek kişinin artış hızını ayır.
+
+::tamamla baslik="Ortalamadan ayrılan kişiyi bul"
+soru: 5 kişinin ortalama yaşı 24 iken bir kişi ayrılınca kalan 4 kişinin ortalaması 22 oluyor. Ayrılan kaç yaşındadır?
+1. İlk toplam $5\cdot24=120$. || Ortalama, toplam değildir.
+?2. Kalanların toplamı $4\cdot22=88$. || Payda artık 4.
+?3. Ayrılanın yaşı $120-88=32$. || Aynı tarihte toplamdan toplam çıkarılır.
+cevap: 32; zaman geçmediği için kimseye yıl eklemedik.
+
+::sorgula s2b-ucret baslik="Gruba katılan kişi"
+durum: Dört arkadaşın yaş ortalaması 20. 30 yaşında bir arkadaşınız size katılıyor.
+soru: Yeni ortalama kaçtır?
+A) 25 || 20 ve 30'u eşit ağırlıklı aldın; 20 dört kişiyi temsil ediyor.
++B) 22 || $(4\cdot20+30)/5=22$.
+C) 50 || Ortalama değerlerini toplamak yeni ortalamayı vermez.
+kontrol: (4*20+30)/5
+neden: Önce 80 olan toplam 110'a, kişi sayısı 4'ten 5'e çıkar. Bölünce 22 bulunur.
+sinav: Grup değiştiğinde ortalama yerine toplam üzerinden denklem kur.
+dusun: Katılan kişi 20 yaşında olsaydı ortalama ne olurdu?
+yanit: 20 kalırdı; eklenen kişi eski ortalama ile aynı yaşta.
+
+::soru c2b tip=yas-toplam zorluk=2
+Dört kişinin yaş toplamı 92. Üç yıl sonra doğan bebek bu gruba katılıyor. Bugünden beş yıl sonra beş kişinin toplam yaşı kaç olur?
+A) 112 || İlk dört kişinin toplamı; bebek 2 yaşında olacak.
+B) 117 || Bebeği bugünden itibaren 5 yaşlandırdın.
++C) 114 || $92+4\cdot5+(5-3)=114$.
+D) 99 || Kişi başına geçen yılları saymalısın.
+E) 94 || Dört kişinin yaşlanmasını atladın.
+kontrol: 92+4*5+(5-3)
+cozum: İlk grup beş yılda 20 yaş artar. Üç yıl sonra doğan bebek son tarihte 2 yaşında: toplam 114.
+
+@bolum s3 18 | İşçi ve havuz: birim zamanda iş
+::kesfet yi-is
 ::fikir
 Bir işi $a$ günde bitiren biri **günde işin $\frac{1}{a}$'sını** yapar. Birlikte çalışınca günlük işler toplanır: $\frac{1}{a} + \frac{1}{b} = \frac{1}{t}$. **Boşaltan musluk** eksi katkıdır.
 
@@ -245,6 +405,77 @@ D) 12 || Birlikte, en hızlıdan (12 gün) daha kısa sürede bitirmeliler.
 E) $\frac{62}{3}$ || Sürelerin ortalaması alınmaz; günlük işler toplanır.
 kontrol: 1/(1/12+1/20+1/30)
 cozum: İş $60k$; günlük işler $5k$, $3k$, $2k$; toplam $10k$. $60k : 10k = 6$ gün.
+
+@bolum s3b 24 | İşçi sayısı, saat ve verim: birimleri görünür yap
+::fikir
+Bir günde 6 saat çalışan 4 kişi toplam **24 kişi-saat** çalışır. Aynı üretkenlikte 8 kişi 3 saatte aynı işi yapabilir. Bu model işin bölünebildiğini ve çalışanların birbirini engellemediğini varsayar. Farklı verimlerde kişi sayısı değil, kişilerin saatlik üretimleri toplanır.
+
+::duzey
+L1: Bir usta saatte 3, bir çırak saatte 1 parça üretiyorsa birlikte 4 parça üretirler. İki kişi olmaları eşit katkı verdikleri anlamına gelmez; birim zamandaki işi yazmalıyız.
+L2: Toplam iş = kişi sayısı × günlük saat × gün × bir kişinin saatlik verimi. Bunlardan biri değişince diğerleri sabitse iş aynı çarpanla değişir. Birbirinden farklı ekipler için her ekibin katkısını ayrı hesaplayıp topla.
+L3: A+B, A+C, B+C ekiplerinin hızları verilmişse üçünü toplayınca her kişi iki kez sayılır. Toplamı ikiye bölmek A+B+C hızını verir. Süreleri toplayıp ikiye bölmek bu ilişkiyi sağlamaz; önce sürelerin tersini al.
+
+::ornek baslik="Usta ve çırakların birlikte üretimi"
+soru: 2 usta bir işi 12 günde, 3 çırak aynı işi 16 günde yapıyor. 3 usta ile 2 çırak birlikte kaç günde yapar?
+1. Tek usta 24, tek çırak 48 günde yapar; işi 48 parça seç. || Çalışan sayısı azalınca süre uzar; kişi başına hız gerekir.
+2. Usta günde 2, çırak 1 parça üretir. Yeni ekip günde $3\cdot2+2\cdot1=8$ parça. || Ekip katkıları toplanır.
+3. $48/8=6$ gün. || Toplam işi günlük üretime böldük.
+cevap: 6; 3 ustanın katkısı 36, 2 çırağın katkısı 12 parçadır, toplam 48.
+
+::ornek baslik="Günlük saatleri farklı iki çalışan"
+soru: Ali işin üçte birini günde 3 saatle 12 günde, Bora üçte ikisini günde 9 saatle 4 günde yapıyor. Birlikte günde 4 saat çalışınca bütün işi kaç günde yaparlar?
+1. Her biri verilen parçayı $36$ saatte yapıyor. İş 108 parça olsun; Ali 36, Bora 72 parçayı 36 saatte yapmış. || Gün değil gerçek çalışma saatlerini karşılaştırıyoruz.
+2. Saatlik hızlar 1 ve 2; birlikte günde $4(1+2)=12$ parça. || Saatlik hız günlük saate çevrildi.
+3. $108/12=9$ gün. || Toplam iş 108 parça, 36 ya da 72 değil.
+cevap: 9; toplam 36 saatte birlikte 108 parça üretirler.
+
+::ornek baslik="Üretimde üç ayrı artış"
+soru: 8 işçi, günde 6 saat çalışınca günde 16 ürün yapıyor. İşçi sayısı %75, saatlik verim ve günlük süre ayrı ayrı %50 artarsa 4 günde kaç ürün yapılır?
+1. İşçi sayısı çarpanı $1{,}75$, verim ve saat çarpanları $1{,}5$ ve $1{,}5$. || Üç farklı etken üretimi çarpar.
+2. Yeni günlük üretim $16\cdot1{,}75\cdot1{,}5\cdot1{,}5=63$. || Yüzdeleri toplamak etkileşimi atlar.
+3. Dört günde $4\cdot63=252$. || Günlük üretim ile toplam üretimi ayırdık.
+cevap: 252; kişi 14, süre 9 saat; eski verim $16/48=1/3$, yeni verim $1/2$ ürün/kişi-saat: $14\cdot9\cdot4/2=252$.
+
+::ornek baslik="İkişerli ekiplerden üçlü ekibe"
+soru: A ile B 10, A ile C 12, B ile C 15 günde bitiriyor. Üçü birlikte kaç günde bitirir?
+1. Günlük hızlara $a,b,c$ de: $a+b=1/10$, $a+c=1/12$, $b+c=1/15$. || İşin tamamını 1 seçtik.
+2. Toplam $2(a+b+c)=6/60+5/60+4/60=1/4$. || Her kişi iki kez sayılmıştır.
+3. $a+b+c=1/8$; bütün iş 8 günde biter. || Hızdan süreye geçerken tersini alırız.
+cevap: 8 gün. Kontrol: hızlar sırasıyla $7/120$, $5/120$, $3/120$; toplam $15/120=1/8$.
+
+::ornek baslik="Birlikte süre verilince diğer işçiyi bul"
+soru: Bir işi Ece 36 günde, Ece ve Naz birlikte 12 günde yapıyor. Naz tek başına kaç günde yapar?
+1. İş 36 parça; Ece günde 1, birlikte günde 3 parça yapar. || Aynı iş için hızları karşılaştırıyoruz.
+2. Naz'ın hızı $3-1=2$ parça/gün. || Birlikte hızdan Ece'nin katkısını çıkardık.
+3. $36/2=18$ gün. || $36-12$ süre farkı değildir.
+cevap: 18; birlikte $1+2=3$ parça/gün, $36/3=12$ gün.
+
+::sorgula s3b-atolye baslik="Atölyede kişi ve saat"
+durum: Aynı verimde 4 kişi, günde 6 saatle 5 günde bir işi yapıyor. Yeni ekipte 6 kişi günde 4 saat çalışacak.
+soru: Aynı iş kaç günde biter?
++A) 5 || Günlük kişi-saat iki ekipte de 24; süre aynı kalır.
+B) 3 || Yalnız kişi artışını düşündün; günlük saat azaldı.
+C) 10 || Günlük üretim yarıya inmedi; çarpım yine aynı.
+kontrol: (4*6*5)/(6*4)
+neden: İş 120 kişi-saat gerektirir. Yeni ekip günde 24 kişi-saat sağladığı için 5 gün gerekir.
+sinav: Çok değişkenli işte önce birimlerin eşit olduğundan emin ol: gün ile saati doğrudan toplama.
+dusun: Yeni ekipte herkes yarı verimle çalışsaydı süre ne olurdu?
+yanit: 10 gün; günlük üretim yarılanınca süre iki katına çıkar.
+
+::yanilgi m3b tip=isci-birlikte
+yanlis: 2 usta 12 günde yapıyorsa 1 usta 6 günde yapar.
+neden: İşçi azaldığında günlük üretim azalır; aynı iş daha uzun sürer.
+dogru: Eşit verimde tek usta 24 günde yapar; kişi sayısı ile süre ters orantılıdır.
+
+::soru c3b tip=isci-birlikte zorluk=2
+3 eşit işçi bir işi günde 8 saatle 10 günde yapıyor. Aynı verimde 5 işçi günde 6 saatle kaç günde yapar?
+A) 6 || İşçi sayısına ek olarak günlük saat de değişti.
+B) 10 || Günlük kişi-saat 24'ten 30'a arttı.
+C) 12 || Yeni ekip daha çok üretir; süre azalmalı.
++D) 8 || İş 240 kişi-saat, yeni ekip günde 30 kişi-saat.
+E) 15 || Hız ve süre ters orantılıdır.
+kontrol: 3*8*10/(5*6)
+cozum: Toplam iş $3\cdot8\cdot10=240$ kişi-saat. Yeni günlük üretim $5\cdot6=30$ kişi-saat: $240/30=8$ gün.
 
 @bolum s4 8 | Aşamalı çalışma
 ::fikir
@@ -303,6 +534,79 @@ cozum: İş $30k$; Deniz günde $3k$, Ece $2k$; birlikte 3 günde $15k$. Kalan $
 - $n$ kişinin toplam yaşı $t$ yılda $nt$ değişir; doğmamışları sayma.
 - İşçi/havuz: günlük işler toplanır; boşaltan eksi; işi EKOK birimiyle yaz.
 - Aşamalı işlerde zaman çizgisi kur, yapılanı düş, kalanı böl.
+
+@bolum s4b 24 | Havuzda sınırlar ve dönüşümlü çalışma
+::fikir
+Bir depoya giren suya artı, çıkan suya eksi işareti ver. **Doluluk 0 ile kapasite arasında** kalmalıdır. Net hız sıfırsa seviye değişmez; negatifse boş havuz dolamaz. Musluk belli yükseklikteyse o yüksekliğin altında boşaltma yapamaz; farklı evreleri ayrı çöz.
+
+::duzey
+L1: 60 L'lik depoya saatte 10 L girip 4 L çıkıyorsa doluluk saatte 6 L artar. Başta 24 L varsa gereken su 36 L ve süre 6 saattir. Baştaki suyu yeniden doldurmaya çalışmayız.
+L2: Dönüşümlü çalışanlarda her tam turun işini hesapla, son turu saat saat incele. İş günün ortasında bitebilir; tur süresine yuvarlamak gereksiz çalışma ekler. “Kalan süre” ile başlangıçtan itibaren toplam süreyi ayrı yaz.
+L3: Prizmatik havuzda yarı yükseklik yarı hacimdir; şekil bilinmiyorsa bu eşitlik kullanılamaz. Sabit debi modeliyle önce çıkışın etkin olmadığı bölgeyi, sonra net debili bölgeyi hesapla. Gerçek akışın basınca bağlı değişmesi bu ideal modelin dışında kalır.
+
+::ornek baslik="Başta dolu havuz ve boşaltan musluk"
+soru: Bir musluk havuzu 6 saatte dolduruyor, dipteki gider dolu havuzu 9 saatte boşaltıyor. Havuz başlangıçta üçte bir doluyken ikisi açılıyor. Kaç saatte dolar?
+1. Havuz 18 parça; giriş 3, çıkış 2 parça/saat. || Debileri ortak birime çevirdik.
+2. Başta 6 parça var; kalan $18-6=12$. Net hız $3-2=1$. || Sadece eksik hacim doldurulacak.
+3. $12/1=12$ saat. || Tamamını net hıza bölmek 18 saat verir ve başlangıç suyunu yok sayar.
+cevap: 12 saat; giriş 36, çıkış 24, net eklenen 12 parça, baştaki 6 ile 18.
+
+::ornek baslik="Net hız sıfır veya negatifse"
+soru: 120 L depoda 30 L su var. Giriş 8 L/saat, çıkış 10 L/saat. Depo ne zaman dolar; ne zaman boşalır?
+1. Net değişim $8-10=-2$ L/saat. || Çıkış girişten büyük; doluluk azalır.
+2. $30/2=15$ saatte boşalır. || Negatif doluluk fiziksel değildir; model 0'da durur.
+3. Bu koşullarda dolmaz. Giriş de 10 olsaydı net hız 0 olur, 30 L sabit kalırdı. || Sıfıra bölerek dolma süresi bulunamaz.
+cevap: Dolmaz; 15 saatte boşalır. Boşaldıktan sonra eksi litre su birikmez.
+
+::ornek baslik="Yarı yükseklikteki gider"
+soru: Prizmatik bir havuzun giriş musluğu tek başına 6 saatte dolduruyor. Yarı yükseklikteki giderin etkin debisi saatte havuzun 1/12'si. Boş havuzda ikisi de açıkken dolma süresi kaç saattir?
+1. İlk yarıda gider suya ulaşmaz. Yarım havuz $\frac12:\frac16=3$ saatte dolar. || Prizmatik biçim yarı yüksekliği yarı hacim yapar.
+2. Üst yarıda net hız $1/6-1/12=1/12$. || Gider ancak bu evrede çalışır.
+3. Üst yarı $\frac12:\frac1{12}=6$ saatte; toplam $3+6=9$. || Evre süreleri toplandı.
+cevap: 9 saat; net hızı baştan uygulamak 12 saat verirdi ve gideri su yokken çalıştırırdı.
+
+::ornek baslik="Dönüşümlü işte son tur"
+soru: Ali 6, Bora 12 günde bitiriyor. Ali başlayarak birer gün dönüşümlü çalışıyorlar. İş kaç günde biter?
+1. İş 12 parça; Ali günde 2, Bora 1 parça. Her iki günlük turda 3 parça biter. || Aynı anda değil sırayla çalışıyorlar.
+2. Üç turda 6 gün ve 9 parça; kalan 3. Ali 7. gün 2 parça yapar, 1 parça kalır. || Son tur ayrıntılı incelenir.
+3. Bora 8. gün kalan 1 parçayı bitirir. || Tam gün gerekir; birlikte çalışma formülü kullanılamaz.
+cevap: 8 gün. Bora başlasaydı da bu örnekte 8; fakat iş 11 parça olsaydı Ali başlarken 7. günde biterdi. Sıra genel olarak sonucu değiştirir.
+
+::ornek baslik="Verimi değişen makine"
+soru: Bir makine işi 12 saatte bitiriyor. Normal hızla 3 saat çalıştıktan sonra hızı %50 artırılıyor. İş başlangıçtan kaç saat sonra biter?
+1. İş 12 parça; ilk hız 1 parça/saat. İlk evrede 3 parça, kalan 9. || Yapılmış iş tekrar yapılmaz.
+2. Yeni hız $1\cdot1{,}5=1{,}5$; kalan süre $9/1{,}5=6$. || %50 hız artışı süreyi %50 azaltmaz.
+3. Toplam $3+6=9$ saat. || 6 yalnız ikinci evrenin süresidir.
+cevap: 9; kontrol $3\cdot1+6\cdot1{,}5=12$ parça.
+
+::tamamla baslik="Son tur tamamlanmadan iş biter"
+soru: 11 parçalık işte Ali günde 2, Bora günde 1 parça üretiyor. Bora başlayarak birer gün dönüşümlü çalışırlarsa kaç günde biter?
+1. Üç turda 6 gün, 9 parça. || Turda 3 parça biter.
+?2. 7. gün Bora 1 parça yapar; kalan 1. || Sıra Bora'da.
+?3. Ali 1 parçayı yarım günde yapar; toplam $7+0{,}5=7{,}5$. || Son günü tam güne yuvarlamayız.
+cevap: 7,5 gün; iş bittiğinde çalışma durur.
+
+::sorgula s4b-depo baslik="Depoyu doldurmak mümkün mü?"
+durum: 100 L depoda 40 L var. Dakikada 5 L giriyor, 5 L çıkıyor.
+soru: 6 dakika sonra depoda kaç litre vardır?
+A) 70 || Yalnız girişi saydın; aynı miktar çıkıyor.
++B) 40 || Net hız 0; başlangıç miktarı değişmez.
+C) 10 || Yalnız çıkışı saydın; aynı miktar giriyor.
+kontrol: 40+6*(5-5)
+neden: Altı dakikada giren 30 L ve çıkan 30 L birbirini dengeler. Su hareket etse de seviye sabittir.
+sinav: Dolma süresi formülünden önce net hızın pozitif olduğunu kontrol et.
+dusun: Giriş 7 L/dakika olsaydı dolma süresi kaç dakika olurdu?
+yanit: Kalan 60 L, net hız 2 L/dakika; 30 dakika.
+
+::soru c4b tip=isci-asamali zorluk=2
+90 L'lik deponun üçte biri dolu. Dakikada 8 L dolduran ve 3 L boşaltan musluk birlikte açık. Depo kaç dakikada dolar?
+A) 18 || Başlangıçtaki suyu yok saydın.
+B) 6 || Eksik su 30 değil 60 L.
+C) 20 || Yalnız giderin hızına böldün.
+D) 10 || Net hız 5 L/dakika.
++E) 12 || Eksik 60 L, net hız $8-3=5$; süre 12.
+kontrol: (90-90/3)/(8-3)
+cozum: Başta 30 L var; doldurulacak 60 L. Net hız 5 L/dakika ve süre 12 dakika. $30+12(8-3)=90$.
 
 @pratik
 - Çalışma sırası: yaş sorularında her seferinde üç satırlık zaman çizelgesi (önce–şimdi–sonra) çiz; işçi sorularında ilk iş, işe sürelerin EKOK'u kadar birim vermek.

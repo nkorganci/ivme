@@ -43,6 +43,13 @@ ayrı bir `agent.md` veya kopya kural dosyası oluşturma. Devam noktası için 
   lab kabulünü ölçmez. Lab eksikse ✅ konuyu yalnız lab/aktarım kapsamı için yeniden aç;
   bitmiş anlatım, kaynak ve soruları gerekçesiz baştan üretme. İçerik durumu ölçütlerden
   üretilir; değiştiyse listeyi aynı commit'te `--liste` ile yenile. Etkin aşama TYT; AYT bekler.
+- **TYT–AYT ortak konular tek derstir.** Sınav kapsamını takip listesinde ve uygulamada
+  `TYT + AYT` olarak göster; çalışma sırasındaki “TYT aşaması”nı “yalnız TYT kapsamı” sanma.
+  Aynı konu/katalog satırı için ikinci AYT dersi veya kopya anlatım oluşturma. Ortak anlatım,
+  gerekçeli örnek ve sorular iki sınava hitap eder; varsa AYT'ye özgü ek bölümler aynı dersin
+  içinde ayrıca etiketlenir. AYT aşamasında ortak tamamlanmış anlatımı yeniden yazma; yalnız
+  eksik AYT uzantısını tamamla. Geniş kategori tek başına alt konunun iki sınava girdiğinin
+  kanıtı değildir; yalnız etiket eklemek AYT uzantısını tamamlanmış saydırmaz.
 - Amaç öğrencinin **mantığı kavraması ve gerçek soruyu kendi başına çözebilmesi**.
   Kısa özetleri uzun metne çevirmek yeterli değildir. Hiç bilmeyen için terimleri ve
   sembolleri açıklayarak başla; temel → bağlantılar → ileri gerekçe/özel durum sırasını koru.

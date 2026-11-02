@@ -55,7 +55,7 @@ class HintMathTest(unittest.TestCase):
     def test_sources_are_explicit_and_not_teacher_approval(self):
         for hint in HINTS.values():
             self.assertLess(hint['startSeconds'], hint['endSeconds'])
-            self.assertTrue(hint['agentSourceReview'].startswith('Claude'))
+            self.assertTrue(hint['agentSourceReview'].startswith(('Claude', 'Codex')))
             self.assertFalse(hint.get('teacherApproved', False))
             for t in hint['frameSeconds']:
                 self.assertTrue(hint['startSeconds'] <= t < hint['endSeconds'])

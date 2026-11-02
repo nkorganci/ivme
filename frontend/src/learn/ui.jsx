@@ -7,6 +7,11 @@ import { formatDay, relativeDay } from './engine/dates.js';
 
 export const BASE = '/konuyu-ogrenelim';
 
+export function SharedExamNote({ exams }) {
+  if (!exams.includes('TYT') || !exams.includes('AYT')) return null;
+  return <p className="small muted lr-shared-exam-note">TYT ve AYT ortak konusu. Ortak anlatımı bir kez çalışırsın; iki sınavdaki çalışmaların aynı konu üzerinden ilerler. Varsa yalnız AYT’ye özgü ek bölümler ayrıca etiketlenir.</p>;
+}
+
 /** Ortak PRATIK seti başlatma adresi (TAS-05): tur = test | cikmis | practice. GET yalnız sayfayı açar; oturum POST ile kurulur. */
 export function sharedSetPath({ type, conceptId, archetype = null }) {
   const query = new URLSearchParams({ tur: type, konu: conceptId });

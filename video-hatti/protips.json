@@ -267,6 +267,49 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "yas-isci-problemleri-video",
+      "conceptId": "yas-isci-problemleri",
+      "hints": [
+        {
+          "id": "yas-farki-zamanla-degismez",
+          "title": "Fark sabit, toplam değişir",
+          "sectionIds": [
+            "s1",
+            "s2"
+          ]
+        },
+        {
+          "id": "ekipten-kisi-hizina-gec",
+          "title": "Önce bir kişinin günlük işini bul",
+          "sectionIds": [
+            "s3b"
+          ]
+        }
+      ]
+    },
+    {
+      "taskId": "yuzde-karisim-video",
+      "conceptId": "yuzde-karisim",
+      "hints": [
+        {
+          "id": "karisim-aralik-agirlik",
+          "title": "Son oran iki kaynağın arasında kalır",
+          "sectionIds": [
+            "s3",
+            "s3b"
+          ]
+        },
+        {
+          "id": "su-ile-orani-yarilama",
+          "title": "Saf su eklerken şekeri sabit tut",
+          "sectionIds": [
+            "s4",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -3,7 +3,11 @@
 import { MATH_CONTINUATION_EXAMS } from './worked-math-continuation.js';
 import { DIVISION_TRANSFER_EXAMS } from './bolme-transfer-exams.js';
 import { EBOB_TRANSFER_EXAMS } from './ebob-transfer-exams.js';
+import { YAS_ISCI_EXAMS } from './worked-yas-isci.js';
+import { YUZDE_KARISIM_EXAMS } from './worked-yuzde-karisim.js';
 export const WORKED_EXAMS = {
+  ...YUZDE_KARISIM_EXAMS,
+  ...YAS_ISCI_EXAMS,
   ...MATH_CONTINUATION_EXAMS,
   ...DIVISION_TRANSFER_EXAMS,
   ...EBOB_TRANSFER_EXAMS,

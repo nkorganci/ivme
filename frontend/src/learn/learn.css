@@ -317,3 +317,11 @@
 }
 
 .lr-save-boundary { border: 0; padding: 0; margin: 0; min-width: 0; }
+.lr-content-summary { margin-bottom: 1rem; }
+.lr-content-count strong { color: var(--ink); font-size: 1.5rem; }
+.lr-content-summary progress { width: 100%; accent-color: var(--table-accent); }
+.lr-content-status { font-weight: 600; }
+.lr-content-status-complete { color: var(--good, var(--ink)); }
+.lr-content-grid .ag-cell { text-align: center; }
+.lr-content-grid .ag-header-cell-label { justify-content: center; }
+.lr-content-readiness .study-tabs button { cursor: pointer; }

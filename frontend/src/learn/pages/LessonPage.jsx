@@ -8,7 +8,7 @@ import { makeEvent } from '../api.js';
 import { Block, CHECK_BLOCKS, checkId } from '../lesson/Blocks.jsx';
 import { LessonQuestion } from '../items.jsx';
 import { MathText, Markdown } from '../math.jsx';
-import { BASE, CatalogTopics, ExamBadges, LEVELS, ProgressBar, SharedSetLink, minutesText, useLearnCatalog } from '../ui.jsx';
+import { BASE, SharedExamNote, CatalogTopics, ExamBadges, LEVELS, ProgressBar, SharedSetLink, minutesText, useLearnCatalog } from '../ui.jsx';
 import { ENGINE } from '../engine/config.js';
 import { loadBank } from '../bank.js';
 import { EXPLORATIONS } from '../content/explorations.js';
@@ -151,6 +151,7 @@ export default function LessonPage() {
     <nav className="lr-crumbs small" aria-label="Konum"><Link to={BASE}>Konuyu Öğrenelim</Link> › <Link to={`${BASE}/harita`}>Konu haritası</Link> › <Link to={`${BASE}/konu/${conceptId}`}>{lesson.title}</Link></nav>
     <div className="lr-lesson-title"><h1>{lesson.title}</h1><ExamBadges exams={lesson.exams} /></div>
     <CatalogTopics catalog={catalog} categories={lesson.categories} />
+    <SharedExamNote exams={lesson.exams} />
     {lesson.otherExamSections?.length > 0 && <p className="small muted">Hedef sınavına girmeyen {lesson.otherExamSections.length} bölüm ({[...new Set(lesson.otherExamSections.flatMap((s) => s.exams))].join(', ')}) bu ders yolunda gösterilmiyor; hedeflerini Ayarlar'dan değiştirebilirsin.</p>}
     <p className="lr-goal"><strong>Hedef:</strong> <MathText text={lesson.goal} /></p>
     <div className="lr-lesson-meter">

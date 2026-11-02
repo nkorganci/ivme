@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "b3f197927f3c5c6ecffbbc58d57b9b316a12bdb5bf939027ecb3ed86a5057b4c",
+  "inputsHash": "08bf097d764801ce11ebbd259d06570d586bf024b108ce522f6e572398e3a6e2",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -550,7 +550,7 @@
         "startSeconds": 1647,
         "endSeconds": 1980
       },
-      "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+      "evidenceHash": "bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777",
       "contentHash": "2cefe6f6f4e2f9d3416fbe04752d619bfd800c31963271f4aaaed2b9ac9fccb8",
       "reviewStatus": "PENDING",
       "teacherApproved": false
@@ -573,7 +573,7 @@
         "startSeconds": 2880,
         "endSeconds": 3060
       },
-      "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+      "evidenceHash": "bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777",
       "contentHash": "156f6a58229741ae187687f018af134318ac5fadff72f2b11be8e848b658a282",
       "reviewStatus": "PENDING",
       "teacherApproved": false
@@ -596,7 +596,7 @@
         "startSeconds": 591,
         "endSeconds": 744
       },
-      "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+      "evidenceHash": "c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798",
       "contentHash": "f5f0b73db23103fc920cc211a1b8e1a80969ea20a87c5111ac77e50cc052604c",
       "reviewStatus": "PENDING",
       "teacherApproved": false
@@ -619,8 +619,103 @@
         "startSeconds": 1646,
         "endSeconds": 1741
       },
-      "evidenceHash": "18ee5d7bc067285e4ca82d17608e8b277951e7e501357ecb6e9f1bff5a17d6cf",
+      "evidenceHash": "c2c59384f9dd25ad3c21fc66b4b7e39819a8f28d2eb5f64917e1003b00718798",
       "contentHash": "85ca85425c19b64a2a3245e1f6e04b9bb0ee1338b305835d7e41532db21608a9",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "yas-isci-problemleri-video:yas-farki-zamanla-degismez",
+      "conceptId": "yas-isci-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s1",
+        "s2"
+      ],
+      "title": "Fark sabit, toplam değişir",
+      "rule": "Bir grubun yaş toplamı kişi sayısı kadar artarken iki kişinin yaş farkı zamanla değişmez. Denklemde “fark” ile “toplam”ı ayır.",
+      "condition": "Aynı iki kişinin yaşları aynı tarihlerde karşılaştırılmalı; yaşların farkı istenmeli.",
+      "example": "Anne çocuklarının yaş farkının 6 katı; 4 yıl sonra aynı farkın 7 katının 1 eksiği: 6d + 4 = 7d − 1; d = 5, anne 30.",
+      "counterexample": "İki çocuğun toplamı dört yılda 8 artar; farkı 8 artırmak yanlıştır. 12 ve 7 yaşın farkı 5, dört yıl sonra 16 ve 11’in farkı yine 5.",
+      "rationale": "(a+t)−(b+t)=a−b; aynı t iki taraftan çıkar. Toplamda ise t+t=2t kalır.",
+      "source": {
+        "providerId": "youtube:Ny4I-1pcmgY",
+        "startSeconds": 1263,
+        "endSeconds": 1365
+      },
+      "evidenceHash": "92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d",
+      "contentHash": "51a07429d36f1260033a991a59f7c484ee82ba96f122bbb871472a26223afe2f",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "yas-isci-problemleri-video:ekipten-kisi-hizina-gec",
+      "conceptId": "yas-isci-problemleri",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s3b"
+      ],
+      "title": "Önce bir kişinin günlük işini bul",
+      "rule": "Ekip süresini kişi başına hıza çevir: n eşit işçi T günde bitiriyorsa bir işçi nT günde bitirir. Farklı ekipleri günlük işleri üzerinden birleştir.",
+      "condition": "Ekip içindeki işçiler eşit ve sabit verimde çalışmalı; iş aynı ve bölünebilir olmalı.",
+      "example": "2 usta 12 günde, 3 çırak 16 günde bitirir: tek usta 24, tek çırak 48 günde. İş 48 parça: 3 usta + 2 çırak günde 8 parça; süre 6 gün.",
+      "counterexample": "2 usta 12 günde yaparken 1 ustanın 6 günde yapacağını söylemek çalışan azalınca hızın arttığını varsayar; doğru süre 24 gündür.",
+      "rationale": "Toplam iş n × kişi hızı × süre olduğundan tek kişinin hızı 1/(nT) iş/gündür. Yeni ekipte kişi hızları toplanır.",
+      "source": {
+        "providerId": "youtube:HJNleId31GA",
+        "startSeconds": 1875,
+        "endSeconds": 2041
+      },
+      "evidenceHash": "92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d",
+      "contentHash": "f38c9b0e4d2671dabd4ae2e9c91d1f7198e24f07cea6f90ce57ea0689447b8b9",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "yuzde-karisim-video:karisim-aralik-agirlik",
+      "conceptId": "yuzde-karisim",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s3",
+        "s3b"
+      ],
+      "title": "Son oran iki kaynağın arasında kalır",
+      "rule": "İki farklı derişimdeki karışım, pozitif miktarlarda birleştirildiğinde son derişim iki kaynak oranının arasındadır; miktarı büyük olanın oranına daha yakındır.",
+      "condition": "Aynı maddeye ait aynı tür yüzdeler kullanılmalı; karıştırmada madde kaybı, tepkime veya eklenen üçüncü bileşen olmamalı.",
+      "example": "100 g %40 ve 25 g %80 şekerli karışım: 40+20=60 g şeker, toplam 125 g; oran %48. 40 ile 80 arasında ve miktarı fazla olan %40’a yakın.",
+      "counterexample": "Bu iki karışımla %90 elde edilemez. %60 aritmetik ortalaması ise ancak iki miktar eşitse doğrudur.",
+      "rationale": "Son oran (m1·p1+m2·p2)/(m1+m2) bir ağırlıklı ortalamadır; iki pozitif ağırlığın toplam içindeki payları 1 eder.",
+      "source": {
+        "providerId": "youtube:YDcFBZRqTFQ",
+        "startSeconds": 306,
+        "endSeconds": 385
+      },
+      "evidenceHash": "bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720",
+      "contentHash": "a278fb7c282ad967145af2e3f9071856026317cd124d4cdaf00e07b0dc9ac402",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "yuzde-karisim-video:su-ile-orani-yarilama",
+      "conceptId": "yuzde-karisim",
+      "topicId": "tyt.matematik.problemler",
+      "sectionIds": [
+        "s4",
+        "s4b"
+      ],
+      "title": "Saf su eklerken şekeri sabit tut",
+      "rule": "Yalnız saf su eklenerek şeker oranı yarıya indirilecekse toplam kütle iki katına çıkmalıdır; başlangıç karışımı kadar su eklenir.",
+      "condition": "Şeker miktarı korunmalı ve su eklenmeli. Döküp yerine koyma, şeker kaybı veya buharlaşma aynı işlem değildir.",
+      "example": "200 g %40 şekerli karışımda 80 g şeker var. %20 için toplam 400 g olmalı: 200 g saf su eklenir.",
+      "counterexample": "Karışımın yarısını döküp suyla tamamlamak da oranı yarılar ama şeker 40 g’a iner ve toplam 200 g kalır. İşlemlerin koruduğu büyüklükler farklıdır.",
+      "rationale": "p=S/M ve S sabit; p yarıya iniyorsa M ikiye katlanır. Eklenen miktar yeni toplamdan başlangıç toplamını çıkararak bulunur.",
+      "source": {
+        "providerId": "youtube:YDcFBZRqTFQ",
+        "startSeconds": 1925,
+        "endSeconds": 2043
+      },
+      "evidenceHash": "bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720",
+      "contentHash": "03a046830a6c4c863d603f759290a5fbf42fc285205d900dee94e98307fa7c4b",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

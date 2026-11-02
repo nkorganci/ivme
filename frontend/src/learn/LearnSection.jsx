@@ -10,6 +10,7 @@ import TodayPage from './pages/TodayPage.jsx';
 import './learn.css';
 
 const MapPage = lazy(() => import('./pages/MapPage.jsx'));
+const ContentStatusPage = lazy(() => import('./pages/ContentStatusPage.jsx'));
 const ConceptPage = lazy(() => import('./pages/ConceptPage.jsx'));
 const LessonPage = lazy(() => import('./pages/LessonPage.jsx'));
 const ParityLab = lazy(() => import('./lab/ParityLab.jsx'));
@@ -23,6 +24,7 @@ const SharedPracticeStart = lazy(() => import('./pages/SharedPracticeStart.jsx')
 export const LEARN_TABS = [
   ['', 'Bugün'],
   ['/harita', 'Konu haritası'],
+  ['/icerik-durumu', 'İçerik durumu'],
   ['/hatalarim', 'Hatalarım'],
   ['/ilerleme', 'İlerleme'],
   ['/ayarlar', 'Ayarlar'],
@@ -55,6 +57,7 @@ function Shell() {
       <Routes>
         <Route index element={<TodayPage />} />
         <Route path="harita" element={<MapPage />} />
+        <Route path="icerik-durumu" element={<ContentStatusPage />} />
         <Route path="konu/:conceptId" element={<ConceptPage />} />
         <Route path="ders/:conceptId" element={<LessonPage />} />
         <Route path="laboratuvar/temel-kavramlar" element={<ParityLab />} />

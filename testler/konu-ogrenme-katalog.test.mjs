@@ -20,6 +20,16 @@ const lessons = readdirSync(DIR).filter((n) => n.endsWith('.ders')).sort()
 const snapshot = JSON.parse(readFileSync(join(ROOT, 'frontend/src/data/curriculumIdentities.json'), 'utf8')).canonicalUnits;
 const index = buildIndex(lessons, UNITS);
 
+test('ortak problem dersleri tek kimlikle iki sınava bağlı; AYT alt kapsamı otomatik genişletilmez', () => {
+  const byId = catalogById(snapshot);
+  for (const id of ['oran-oranti', 'sayi-kesir-problemleri', 'yas-isci-problemleri', 'yuzde-karisim', 'kar-zarar', 'hareket-problemleri', 'grafik-rutin-olmayan']) {
+    assert.deepEqual(index.byId[id].exams, ['TYT', 'AYT'], id);
+    assert.deepEqual(lessonScope(index.byId[id].categories, byId).exams, ['TYT', 'AYT'], id);
+    assert.equal(index.concepts.filter((c) => c.id === id).length, 1, 'ortak ders çoğaltılmaz');
+  }
+  assert.deepEqual(index.byId['kosullu-olasilik'].exams, ['AYT'], 'geniş katalog kategorisi alt konunun TYT kanıtı değildir');
+});
+
 const BOLME = 'c15cc6aeffd9ec9ece58';
 const VERI = 'd8fb8edba6e86247de33';
 

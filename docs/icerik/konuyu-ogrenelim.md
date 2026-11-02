@@ -350,3 +350,35 @@ kaydı oluşmadığını masaüstü/mobilde sınar.
 parametresi, gerçek örnek denetimini de aynı derse sınırlar. Pilot testleri sayısal
 modellerin bütün girişlerini, rakam örneklerinin tüm adaylarını, gerçek soruların
 cevaplarını ve ustalık dışlama bağlarını kontrol eder. UI testi sahte API ile çalışır.
+
+## Yaş, işçi ve havuz dersinin kaynak kabulü
+
+OGM 9. sınıf ders anlatım sunusu 30’un s.1–18 metni ve s.2–18 görselleri;
+TYT video notu 04’ün s.9–15 metni okundu. Doğum yılları, değişen grup, kişi-saat,
+ikili ekipler, aşamalı/dönüşümlü iş ve havuzda sıfır/negatif net debi işlendi.
+Son committeki üç keşif uygulamaya bağlandı; grup çizimi ortalama temsili olarak açıklandı.
+Öğrenci geçmişindeki bölüm/soru kimlikleri korundu. Yeni gerçek soruların cevapları
+arşiv CSV anahtarıyla karşılaştırıldı; öğretmen onayı verilmedi.
+
+| Kod | Ders / çözüm fikri | Sonuç | Görsel SHA-256 |
+|---|---|---|---|
+| TYT-0650 | Yaş–işçi / 2018 TYT · ebeveyn ve çocuk toplamlarını ayır | A · 15 yıl | `9eac90f6a077e22f13dddfb495f58067abeb0eca3ca60d7cc3aef9d2bd5dcb6d` |
+| TYT-0681 | Yaş–işçi / 2020 TYT · iki ayrı ziyaret, tek ağaç | D · 250 | `2bd71ad006136a10e4ebb3254e97abc5ce14b6803dda0ec8f0f91a954c9bc067` |
+| TYT-0683 | Yaş–işçi / 2021 TYT · yapım, bulunma ve doğum yılı | C · 43 | `f52c4c639adefe28ee944551db70b51e68ba86c8abaa44f0db0bfee40a5d2366` |
+| TYT-0741 | Yaş–işçi / 2026 TYT · iki resmin yılıyla iki zaman denklemi | E · 74 | `c2d65ec9aa4e0cadca5ba0467e3a30c58166db798109ef2d467f499e1dbd9006` |
+
+
+## Yüzde ve karışım dersinin kaynak kabulü
+
+OGM 9. sınıf ders anlatım sunusu 31’in s.2–20 görselleri ve TYT video notu 04’ün
+s.22–23, 27–29 metni okundu. Yüzde tabanı, iç içe yüzde, ters değişim, yüzde puanı,
+ağırlıklı ortalama/çapraz fark, tekrarlı dökme ve buharlaşma sınırları eklendi.
+Tuz örnekleri kütle yüzdesi ve kg ile açıklaştırıldı. Videonun otomatik altyazısındaki
+%120 hatası 2000. saniye karesinden %20 olarak doğrulandı; metin körlemesine aktarılmadı.
+TYT-0674 menü değişimi sorusudur; yüzde çözümü olarak kullanılmadı. Aşağıdaki cevaplar
+arşiv anahtarıyla eşleşti. Daha önceki TYT-0662 çözümü korundu.
+
+| Kod | Çözüm fikri | Sonuç | Görsel SHA-256 |
+|---|---|---|---|
+| TYT-0661 | 2019 TYT · tarifte yüzde tabanı badem yağı | D · 7 yumurta | `aa5ea81a431efb717ab751171e2991a21082ab752c72ca451e3818f507805866` |
+| TYT-0698 | 2022 TYT · yüzdeyi dakikaya, dakikayı saate çevir | A · 13.39 | `cb6a231133b968381265c641518f20305511669ca6f96399b510ee46425b7209` |

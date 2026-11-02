@@ -3,7 +3,7 @@
   "taskId": "oran-oranti-video",
   "topicId": "tyt.matematik.oran-ve-oranti",
   "status": "REVIEW_REQUIRED",
-  "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+  "evidenceHash": "bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777",
   "taskHash": "7d37f795d7aef2366d9c0ddad34af1714d801e464464763c3de2b69f67572dc6",
   "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
   "evidenceDirectory": "veri\\video-hatti\\oran-oranti-video",
@@ -13,8 +13,8 @@
     "kareler\\116eb8ac8dd69f0d9c5e977e77fbed0e211299c6d8d71a98a76387bd5a9fc3a3.png": "a66e8dcd509cad4aea7733355850c116762b19f621ea76a5a9483bac8c95d861",
     "kareler\\d809706e5df601c5e0b1a0b0d0f5c6ef689f0468fa2484220c5887419d1287e8.png": "57be8e5389f4c626abc0601519881fc0085c5eae28a08c934b41c2b585246bb0",
     "asamalar\\matematik-denetimi\\22cbe199f50890586a6f11a99875939a131bb2bfe9a7775d65230fd7e6689b50.json": "4a47916d9af4093e470e43799ead1c1f41e5f900782252cdca7b2afa9e3cb9db",
-    "surumler\\0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549.json": "e130e7e0b7b7be3156bc1d2cb4276e0b2ab44fd753a4c514d387b6101c7daf21",
-    "surumler\\0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549.oneriler.md": "8c89e1e278dde4b4f028a19cf352c2b62f27cf1ff92bd2c6a60bdaebcee50655"
+    "surumler\\bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777.json": "1b0857795b5c93c8468965055931f66d68533ea2da9be04f546751cc267d5918",
+    "surumler\\bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777.oneriler.md": "80412617d0e918e0c9f6b06a5a2362fb0c2d09acd0984c75a48ca53b04753507"
   },
   "verification": {
     "status": "SCRIPT_CHECKED",
@@ -33,15 +33,15 @@
   "lastRun": {
     "taskId": "oran-oranti-video",
     "status": "REVIEW_REQUIRED",
-    "evidenceHash": "0a8e49959cb5d76b0e25b152b237ce1766b8ad65b2d49d7e1aa1413aa6333549",
+    "evidenceHash": "bf1351cd6c9066b1abf532f149f8ca8cd5b82cd62446709902af32e9e4bfc777",
     "metrics": {
       "networkRequests": 0,
       "asrCalls": 0,
-      "frameDecodes": 2,
-      "stagesBuilt": 3,
-      "stagesReused": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
       "modelCalls": 0,
-      "elapsedSeconds": 0.986
+      "elapsedSeconds": 0.484
     },
     "videos": [
       {

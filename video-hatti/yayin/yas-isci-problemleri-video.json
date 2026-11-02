@@ -1,0 +1,121 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "yas-isci-problemleri-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d",
+  "taskHash": "6181b0a8566a2358d3488b2b9dd321a8fbcd0507811c00a33adcfeb69d8127b4",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\yas-isci-problemleri-video",
+  "artifacts": {
+    "asamalar\\youtube-Ny4I-1pcmgY-metin\\7b1d39b3eebd690c671c9ca1c46fdf12185bed060a814caf18c22e675d747e11.json": "3953a103cc0360948c20e0109d7cffb2634f6e7c042921407aa8edd1ddc0adc2",
+    "asamalar\\youtube-Ny4I-1pcmgY-kareler\\d7be018a59e06b60028fcfa08749ed4346d044d4dd1b2e0ec56b710d67620088.json": "9cd6fec349bf6616c5d765299f121642cc88f2e50d1244a139e98de9fea38bba",
+    "kareler\\677c42445b7ae8b5fdade2bad5e8cc2b6425a5fe34245c2f946c3b9985dc8d89.png": "7ac1ab43e0a07ec1368af4b487d3fc2973220529e6f3eff7fb6c8a19ae663e0e",
+    "asamalar\\youtube-HJNleId31GA-metin\\245a33aa85cb4a966df03c4719f450f75819e0941e841739b3a6d01dbec30243.json": "4f9eb8e19509cd69758b699efb2e0e2285a1ea605a67050cc4b50a8da7dd8f51",
+    "asamalar\\youtube-HJNleId31GA-kareler\\f9a4e0190c4edfa2697a0485b4e802e87ee36d1dd60c2f04bfbb3f2dd6ec01ad.json": "66d5e7a76f026c9741f5911f914a099b39c0935488ea46ae36b7b608549aaced",
+    "kareler\\660c6dc6a95cd9e3d49a107e3cf5c7c9b9fe43435df0f8741b599818441a8f8a.png": "e797c203c31cf71297c05ae9402b7e0acbd129b58f05de4024a77c63f534d75c",
+    "asamalar\\matematik-denetimi\\b569e0f2fb5b0fe9cb1bb7715c2f7ef69aa6787ac5b7ff900aebdf8ac812ca7e.json": "5ec7560039ae1ce2c859536261536b18371d4992cb21cc975a1ca0c8a5c115d2",
+    "surumler\\92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d.json": "49be583e6f7fc891621a54abd5c147f4de6428d6c84c12b538019efcf743457f",
+    "surumler\\92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d.oneriler.md": "dd7c1c136e0f8097ab0b33aef9a52eaecf9e553a8b9e5e3d6ae31834e530e1b5"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-yas-isci-problemleri-test.py",
+        "sha256": "82fdbfcccd3964e9f624ccf89a4ce154a5a527aa2fdc6bb3578bc67c7392c353",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.006s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "yas-isci-problemleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "92f7d764376ca1a8242c1f37e0b929c2ad3c857355f1b2393dc579dce9fd475d",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 5,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.097
+    },
+    "videos": [
+      {
+        "providerId": "youtube:Ny4I-1pcmgY",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:HJNleId31GA",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:Ny4I-1pcmgY",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1356,
+      "normalization": {
+        "captionControlEvents": 1341,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1300,
+          "file": "kareler\\677c42445b7ae8b5fdade2bad5e8cc2b6425a5fe34245c2f946c3b9985dc8d89.png",
+          "sha256": "7ac1ab43e0a07ec1368af4b487d3fc2973220529e6f3eff7fb6c8a19ae663e0e",
+          "pixelHash": "677c42445b7ae8b5fdade2bad5e8cc2b6425a5fe34245c2f946c3b9985dc8d89",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:HJNleId31GA",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1082,
+      "normalization": {
+        "captionControlEvents": 1071,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1950,
+          "file": "kareler\\660c6dc6a95cd9e3d49a107e3cf5c7c9b9fe43435df0f8741b599818441a8f8a.png",
+          "sha256": "e797c203c31cf71297c05ae9402b7e0acbd129b58f05de4024a77c63f534d75c",
+          "pixelHash": "660c6dc6a95cd9e3d49a107e3cf5c7c9b9fe43435df0f8741b599818441a8f8a",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "yas-farki-zamanla-degismez",
+      "contentHash": "51a07429d36f1260033a991a59f7c484ee82ba96f122bbb871472a26223afe2f",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "ekipten-kisi-hizina-gec",
+      "contentHash": "f38c9b0e4d2671dabd4ae2e9c91d1f7198e24f07cea6f90ce57ea0689447b8b9",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

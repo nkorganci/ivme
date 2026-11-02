@@ -5628,6 +5628,19 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "yas-isci-problemleri:c1b": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
   "yas-isci-problemleri:c2": {
    "conceptId": "yas-isci-problemleri",
    "type": "choice",
@@ -5640,6 +5653,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "yas-isci-problemleri:c2b": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "yas-isci-problemleri:c3": {
    "conceptId": "yas-isci-problemleri",
@@ -5654,6 +5680,19 @@
    ],
    "version": "1472983ce40becda"
   },
+  "yas-isci-problemleri:c3b": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
   "yas-isci-problemleri:c4": {
    "conceptId": "yas-isci-problemleri",
    "type": "choice",
@@ -5666,6 +5705,19 @@
     "E"
    ],
    "version": "a7ece0af5749bb7c"
+  },
+  "yas-isci-problemleri:c4b": {
+   "conceptId": "yas-isci-problemleri",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
   },
   "yas-isci-problemleri:h1": {
    "conceptId": "yas-isci-problemleri",
@@ -5771,7 +5823,33 @@
    ],
    "version": "a7ece0af5749bb7c"
   },
+  "yuzde-karisim:c1b": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "yuzde-karisim:c2": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "E",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "fef49cc14d12ec09"
+  },
+  "yuzde-karisim:c2b": {
    "conceptId": "yuzde-karisim",
    "type": "choice",
    "answer": "E",
@@ -5797,6 +5875,19 @@
    ],
    "version": "a7ece0af5749bb7c"
   },
+  "yuzde-karisim:c3b": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
+  },
   "yuzde-karisim:c4": {
    "conceptId": "yuzde-karisim",
    "type": "choice",
@@ -5809,6 +5900,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "yuzde-karisim:c4b": {
+   "conceptId": "yuzde-karisim",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
   },
   "yuzde-karisim:e1": {
    "conceptId": "yuzde-karisim",
@@ -6085,6 +6189,7 @@
   },
   "grafik-rutin-olmayan": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6099,6 +6204,7 @@
   },
   "hareket-problemleri": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6130,6 +6236,7 @@
   },
   "kar-zarar": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6306,6 +6413,7 @@
    "categoryIds": [
     "excel.ayt.matematik.3f49cb99b638ac0c1ce2",
     "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
+    "excel.tyt.matematik.3f49cb99b638ac0c1ce2",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6375,6 +6483,7 @@
   },
   "sayi-kesir-problemleri": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6460,6 +6569,7 @@
   },
   "yas-isci-problemleri": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [
@@ -6474,6 +6584,7 @@
   },
   "yuzde-karisim": {
    "categoryIds": [
+    "excel.ayt.matematik.c0b32de8d9a8ffca3f75",
     "excel.tyt.matematik.c0b32de8d9a8ffca3f75"
    ],
    "flashcards": [

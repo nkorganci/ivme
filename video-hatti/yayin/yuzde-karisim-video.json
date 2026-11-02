@@ -1,0 +1,99 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "yuzde-karisim-video",
+  "topicId": "tyt.matematik.problemler",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720",
+  "taskHash": "6c4310ea61a6bcc7d6e6b5c80cf9e2a7adab6c800d81da8d2ee35cfac2a892de",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\yuzde-karisim-video",
+  "artifacts": {
+    "asamalar\\youtube-YDcFBZRqTFQ-metin\\01a7869ba0adccc489a409057574acf5a96abf2af7bcedde541a05696f3809f9.json": "6d6fccc997e8ac7f2747826005111bf066cf88c979c450a80ecc15e311eb6a1b",
+    "asamalar\\youtube-YDcFBZRqTFQ-kareler\\011bbd3fae0c4f282182d9fcfa8f5450b755af6853779c1585cfe11d80be8ee7.json": "7d2ecd059060c7fdd5fd92f1f29e105d6c85b8594efa700036da20059a4f52c7",
+    "kareler\\26a789ce837d4d92aeecdf2f37682728af96271dba9bf28b4416f08e2fc45499.png": "736806f6889404fdbdfb7df7bed81cdbe0699927ac4c027026e06d74cb50cc17",
+    "kareler\\61ad6c07acc1961f14fedbbb4f869e8bc0cc3ba2174efab96deaba498c689086.png": "1238f5952a4f0bac983ad5d20aa27036697cba61df9cc8cb371b09e299c59b1c",
+    "asamalar\\matematik-denetimi\\ffd77828c8bfe26fc78e23420db3269fdb38e4db6aa2d81baad1aba25415e62c.json": "d4a1c90b6a37d9d40d2217e922ccee44e217497f2996b16cf3de8225c5235c0d",
+    "surumler\\bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720.json": "5dd44450b0f38a6b66a879859cd6e8ee86e76df163e8fe78006c0c2426ca48df",
+    "surumler\\bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720.oneriler.md": "5488fdd34137bb9b55b97341c312ee73713bf846ec57cb12b396f6057191bd4d"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-yuzde-karisim-test.py",
+        "sha256": "c3d31d5642ab5d81a11455b91c897ba9da269403404e3bcc94b7f9673e8e1aab",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.057s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "yuzde-karisim-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "bc5aa184334e3418a5efc862cf0c0faa08a2941cb4e84489e53289afdba2a720",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 0,
+      "stagesBuilt": 0,
+      "stagesReused": 3,
+      "modelCalls": 0,
+      "elapsedSeconds": 0.509
+    },
+    "videos": [
+      {
+        "providerId": "youtube:YDcFBZRqTFQ",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:YDcFBZRqTFQ",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 932,
+      "normalization": {
+        "captionControlEvents": 919,
+        "endClippedCues": 2,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 340,
+          "file": "kareler\\61ad6c07acc1961f14fedbbb4f869e8bc0cc3ba2174efab96deaba498c689086.png",
+          "sha256": "1238f5952a4f0bac983ad5d20aa27036697cba61df9cc8cb371b09e299c59b1c",
+          "pixelHash": "61ad6c07acc1961f14fedbbb4f869e8bc0cc3ba2174efab96deaba498c689086",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2000,
+          "file": "kareler\\26a789ce837d4d92aeecdf2f37682728af96271dba9bf28b4416f08e2fc45499.png",
+          "sha256": "736806f6889404fdbdfb7df7bed81cdbe0699927ac4c027026e06d74cb50cc17",
+          "pixelHash": "26a789ce837d4d92aeecdf2f37682728af96271dba9bf28b4416f08e2fc45499",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "karisim-aralik-agirlik",
+      "contentHash": "a278fb7c282ad967145af2e3f9071856026317cd124d4cdaf00e07b0dc9ac402",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "su-ile-orani-yarilama",
+      "contentHash": "03a046830a6c4c863d603f759290a5fbf42fc285205d900dee94e98307fa7c4b",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import { scopeToTracks } from '../content/parser.js';
 import { dayKey, formatDay } from '../engine/dates.js';
 import { lessonProgress } from '../engine/plan.js';
 import { MathText, Markdown } from '../math.jsx';
-import { ArchetypeBars, BASE, CatalogTopics, DueText, ExamBadges, MasteryRing, SharedSetLink, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
+import { ArchetypeBars, BASE, SharedExamNote, CatalogTopics, DueText, ExamBadges, MasteryRing, SharedSetLink, StatusBadge, catalogCrumb, minutesText, useLearnCatalog } from '../ui.jsx';
 import { bankCount, loadBank, pastCount } from '../bank.js';
 import { plannedSize, sizeNote } from '../engine/sharedSet.js';
 import VideoProtips from '../lesson/VideoProtips.jsx';
@@ -88,6 +88,7 @@ export default function ConceptPage() {
       <div>
         <div className="lr-lesson-title"><h1>{meta.title}</h1><ExamBadges exams={meta.exams} /></div>
         <CatalogTopics catalog={catalog} categories={meta.categories} />
+        <SharedExamNote exams={meta.exams} />
         <StatusBadge status={concept.status} />
         <p className="lr-goal"><MathText text={meta.goal} /></p>
         <div className="lr-actions">{actions}</div>

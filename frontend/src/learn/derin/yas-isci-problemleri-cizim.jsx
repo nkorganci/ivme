@@ -7,10 +7,10 @@ function Timeline({model:m}) {const s=4;
   <T x={240} y={200}>{'Toplam '+m.sum+' · '+(m.t>=0?m.t+' yıl sonra':(-m.t)+' yıl önce')}</T>
   <T x={240} y={262} style={{fontSize:13}}>Turuncu parça her yıl aynı boyda kalır</T></>;}
 function Group({model:m}) {const w=Math.min(48,400/m.n);
-  return <><T x={240} y={24}>{m.n+' kişinin yaşları (her biri '+m.t+' yıl büyüdü)'}</T>
+  return <><T x={240} y={24}>{m.n+' kişi: ortalama yüksekliği '+m.m+' → '+m.avg}</T>
   {times(m.n,(i)=><g key={i}><R x={40+i*(w+6)} y={220-m.m*3} w={w} h={m.m*3} tone="primary-soft" rx={3}/><R x={40+i*(w+6)} y={220-(m.m+m.t)*3} w={w} h={m.t*3} tone="good-soft" rx={3}/></g>)}
   <L x1={30} y1={220} x2={450} y2={220} tone="line"/>
-  <T x={240} y={250}>{'Toplam '+m.S+' → '+m.total+' (+'+(m.n*m.t)+')'}</T><T x={240} y={276} style={{fontSize:13}}>Yeşil parçalar: her kişinin kazandığı yıllar</T></>;}
+  <T x={240} y={250}>{'Toplam '+m.S+' → '+m.total+' (+'+(m.n*m.t)+')'}</T><T x={240} y={276} style={{fontSize:13}}>Mavi: ortalama · yeşil: kişi başına geçen yıl</T></>;}
 function Work({model:m}) {const W=400,u=W/m.L,days=Math.max(m.t,0);
   return <><T x={240} y={24}>{'İş '+m.L+' parça: Ayşe '+m.ra+', Mert '+m.rb+' parça/gün'}</T>
   <R x={40} y={70} w={W} h={46} tone="soft" rx={4}/>

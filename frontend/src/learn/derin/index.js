@@ -14,8 +14,11 @@ import * as oranOranti from './oran-oranti.js';
 import * as ikinciDerece from './ikinci-derece-denklemler.js';
 import * as carpanlaraAyirma from './carpanlara-ayirma.js';
 import * as sayiKesir from './sayi-kesir-problemleri.js';
+import * as yasIsci from './yas-isci-problemleri.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir];
+import * as yuzdeKarisim from './yuzde-karisim.js';
+
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

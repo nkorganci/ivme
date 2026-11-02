@@ -1,12 +1,12 @@
 @ders hareket-problemleri
 baslik: Hareket Problemleri
 kisa: Hareket problemleri
-sinav: TYT
+sinav: TYT AYT
 unite: problemler
 sinif: 9
 sira: 450
 onkosul: oran-oranti
-kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75
+kategori: excel.tyt.matematik.c0b32de8d9a8ffca3f75 excel.ayt.matematik.c0b32de8d9a8ffca3f75
 hedef: $\text{yol} = \text{hız} \cdot \text{zaman}$ bağıntısını birimleri eşleyerek kullanmak; karşılaşma ve yetişme sorularında yaklaşma hızını ($V_1 + V_2$ ya da $V_1 - V_2$) seçmek; ortalama hızı toplam yol ÷ toplam zaman olarak hesaplamak; akıntı, dairesel pist ve tren–tünel durumlarına uyarlamak.
 neden: 2018–2026 TYT problem sorularının yaklaşık yedide biri hız, yol ve zaman içerir; yeni nesil sorularda hareket çoğu zaman yol–zaman grafiğiyle verilir. AYT'de türevin "anlık hız" yorumu da bu derste kurduğun sezgiye dayanır.
 kaynak: MEBİ TYT Konu Özeti — Hareket Problemleri | OGM 9. Sınıf Konu Özetleri 35 | 3 Adım TYT Matematik — Kar-Zarar, Yüzde, Karışım, Hareket Problemleri

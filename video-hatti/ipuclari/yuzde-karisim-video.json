@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "karisim-aralik-agirlik",
+    "providerId": "youtube:YDcFBZRqTFQ",
+    "startSeconds": 306,
+    "endSeconds": 385,
+    "quote": "madde yüzdesi",
+    "frameSeconds": [
+      340
+    ],
+    "rule": "İki farklı derişimdeki karışım, pozitif miktarlarda birleştirildiğinde son derişim iki kaynak oranının arasındadır; miktarı büyük olanın oranına daha yakındır.",
+    "condition": "Aynı maddeye ait aynı tür yüzdeler kullanılmalı; karıştırmada madde kaybı, tepkime veya eklenen üçüncü bileşen olmamalı.",
+    "example": "100 g %40 ve 25 g %80 şekerli karışım: 40+20=60 g şeker, toplam 125 g; oran %48. 40 ile 80 arasında ve miktarı fazla olan %40’a yakın.",
+    "counterexample": "Bu iki karışımla %90 elde edilemez. %60 aritmetik ortalaması ise ancak iki miktar eşitse doğrudur.",
+    "rationale": "Son oran (m1·p1+m2·p2)/(m1+m2) bir ağırlıklı ortalamadır; iki pozitif ağırlığın toplam içindeki payları 1 eder.",
+    "agentSourceReview": "Codex 340. saniye karesini açtı: DİKKAT kutusunda son madde yüzdesinin kaynak yüzdeleri arasında olduğu yazılı; %40 ve %30 kapları görünür. Kartın %40/%80 sayısal örneği özgündür, kaynak sorusu olarak sunulmaz.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "su-ile-orani-yarilama",
+    "providerId": "youtube:YDcFBZRqTFQ",
+    "startSeconds": 1925,
+    "endSeconds": 2043,
+    "quote": "şeker oranını yarıya düşürmek",
+    "frameSeconds": [
+      2000
+    ],
+    "rule": "Yalnız saf su eklenerek şeker oranı yarıya indirilecekse toplam kütle iki katına çıkmalıdır; başlangıç karışımı kadar su eklenir.",
+    "condition": "Şeker miktarı korunmalı ve su eklenmeli. Döküp yerine koyma, şeker kaybı veya buharlaşma aynı işlem değildir.",
+    "example": "200 g %40 şekerli karışımda 80 g şeker var. %20 için toplam 400 g olmalı: 200 g saf su eklenir.",
+    "counterexample": "Karışımın yarısını döküp suyla tamamlamak da oranı yarılar ama şeker 40 g’a iner ve toplam 200 g kalır. İşlemlerin koruduğu büyüklükler farklıdır.",
+    "rationale": "p=S/M ve S sabit; p yarıya iniyorsa M ikiye katlanır. Eklenen miktar yeni toplamdan başlangıç toplamını çıkararak bulunur.",
+    "agentSourceReview": "Codex 2000. saniye karesinde Örnek 12’nin 200 g %40 karışıma su ekleyip %20 elde etme sorusunu, %0 su kutusunu ve 8000=20(x+200) denklemini okudu. Otomatik altyazı %120 diyor; tahta %20 olduğu için kartta %20 kullanıldı.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]

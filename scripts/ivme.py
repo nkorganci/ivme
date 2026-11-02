@@ -287,7 +287,7 @@ def cmd_kontrol(args):
     # Matematik konu listesi ölçülen durumdan üretilir; ders/çıkmış/protip değişince belge de güncellenmeli.
     if "--hepsi" in args or any(n.startswith("frontend/src/learn/content/dersler/") or n in (
             "scripts/matematik-konu-listesi.json", "scripts/konu-ogrenme-kapsam.mjs", "docs/icerik/matematik-konu-listesi.md",
-            "frontend/src/learn/content/video-protips.json") or (n.startswith("frontend/src/learn/content/worked") and n.endswith(".js"))
+            "frontend/src/learn/content/video-protips.json", "frontend/src/learn/content/matematik-icerik-durumu.json") or (n.startswith("frontend/src/learn/content/worked") and n.endswith(".js"))
             for n in files):
         result = run(["node", "scripts/konu-ogrenme-kapsam.mjs", "--liste", "--kontrol"], capture_output=True)
         if result.returncode:

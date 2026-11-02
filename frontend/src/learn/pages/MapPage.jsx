@@ -28,6 +28,7 @@ export default function MapPage() {
       {FILTERS.map(([value, label]) => <a key={label} href={`?sinav=${value}`} className={filter === value ? 'active' : ''} aria-current={filter === value ? 'page' : undefined}
         onClick={(e) => { e.preventDefault(); setParams(value ? { sinav: value } : {}, { replace: true }); }}>{label}</a>)}
     </nav>
+    <p className="small muted">Derslerin hazırlanma durumunu <Link to={`${BASE}/icerik-durumu`}>TYT matematik içerik listesinde</Link> görebilirsin. Aşağıdaki rozetler senin çalışma ilerlemeni gösterir.</p>
     <ul className="lr-legend-list" aria-label="Durumlar">
       {Object.entries(STATUS).map(([key]) => <li key={key}><StatusBadge status={key} /> <span className="small muted">{counts[key]}</span></li>)}
     </ul>

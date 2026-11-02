@@ -1,0 +1,472 @@
+{
+  "phase": "TYT",
+  "total": 32,
+  "completed": 15,
+  "nextTopicId": "kar-zarar",
+  "topics": [
+    {
+      "id": "temel-kavramlar",
+      "title": "Sayı Kümeleri ve Temel Kavramlar",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "sayi-basamaklari",
+      "title": "Sayı Basamakları",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "bolme-bolunebilme",
+      "title": "Bölme ve Bölünebilme Kuralları",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "ebob-ekok",
+      "title": "Asal Çarpanlar, EBOB–EKOK ve Periyodik Problemler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "rasyonel-sayilar",
+      "title": "Rasyonel Sayılar ve Ondalık Sayılar",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "birinci-derece-denklemler",
+      "title": "Birinci Dereceden Denklemler ve Denklem Sistemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "esitsizlikler",
+      "title": "Aralıklar ve Birinci Dereceden Eşitsizlikler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "mutlak-deger",
+      "title": "Mutlak Değer",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "uslu-ifadeler",
+      "title": "Üslü İfadeler ve Üslü Denklemler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "koklu-ifadeler",
+      "title": "Köklü İfadeler ve Köklü Denklemler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "carpanlara-ayirma",
+      "title": "Çarpanlara Ayırma ve Rasyonel İfadeler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "oran-oranti",
+      "title": "Oran ve Orantı",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "sayi-kesir-problemleri",
+      "title": "Sayı ve Kesir Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "yas-isci-problemleri",
+      "title": "Yaş, İşçi ve Havuz Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "yuzde-karisim",
+      "title": "Yüzde ve Karışım Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "complete",
+      "remaining": []
+    },
+    {
+      "id": "kar-zarar",
+      "title": "Kâr–Zarar ve İndirim Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "hareket-problemleri",
+      "title": "Hareket Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "grafik-rutin-olmayan",
+      "title": "Rutin Olmayan Problemler: Grafik, Tablo ve Strateji",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "veri-grafikleri",
+      "title": "Verilerin Grafikle Gösterilmesi",
+      "exam": "TYT",
+      "exams": [
+        "TYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "merkezi-egilim",
+      "title": "Merkezi Eğilim ve Yayılım Ölçüleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "onermeler",
+      "title": "Önermeler ve Bileşik Önermeler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "kosullu-onerme",
+      "title": "Koşullu Önerme ve Niceleyiciler",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "kumeler-temel",
+      "title": "Kümelerde Temel Kavramlar ve Alt Küme",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "kume-islemleri",
+      "title": "Kümelerde İşlemler ve Küme Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 9,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "fonksiyon-kavrami",
+      "title": "Fonksiyon Kavramı ve Fonksiyon Çeşitleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "fonksiyon-grafikleri",
+      "title": "Fonksiyon Grafikleri ve Doğrusal Modeller",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "bileske-ters",
+      "title": "Bileşke Fonksiyon ve Ters Fonksiyon",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "polinom-islemleri",
+      "title": "Polinom Kavramı, İşlemler ve Bölme",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "ikinci-derece-denklemler",
+      "title": "İkinci Dereceden Denklemler ve Kök-Katsayı İlişkileri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "sayma-permutasyon",
+      "title": "Saymanın Temel İlkesi ve Permütasyon",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "kombinasyon",
+      "title": "Kombinasyon ve Seçme Problemleri",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    },
+    {
+      "id": "olasilik",
+      "title": "Olasılık: Basit Olayların Olasılıkları",
+      "exam": "TYT",
+      "exams": [
+        "TYT",
+        "AYT"
+      ],
+      "grade": 10,
+      "status": "incomplete",
+      "remaining": [
+        "Ayrıntılı anlatım ve alıştırmalar",
+        "Çözümlü çıkmış sorular",
+        "Kaynaklı pratik ipuçları",
+        "Ayrıntılı kaynak incelemesi"
+      ]
+    }
+  ]
+}

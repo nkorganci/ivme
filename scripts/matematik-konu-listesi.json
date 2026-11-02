@@ -445,7 +445,10 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/30 - YAS VE ISCI PROBLEMLERI.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/30 - YAS VE ISCI PROBLEMLERI.pdf s.1-18 (metin + s.2-18 görselleri)",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf s.9-15 (metin)"
+      ],
       "videolar": {
         "PL1": [
           "Ny4I-1pcmgY",
@@ -457,7 +460,8 @@
           "e_Xttdc49ZA",
           "SyQzKS7jWZc"
         ]
-      }
+      },
+      "not": "Doğum yılı, değişen grup, kişi-saat-verim, ikili ekip hızları, kısmi/dönüşümlü iş ve havuz sınırları eklendi. Son committeki üç keşif bağlandı. Görseli okunan TYT-0650, 0681, 0683, 0741 ve özgün benzerleri; PDF sayfa kanıtı kayıtlı."
     },
     {
       "id": "yuzde-karisim",
@@ -467,7 +471,10 @@
         "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/31 - YUZDE VE KARISIM PROBLEMLERI.pdf",
         "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf"
       ],
-      "pdfOkundu": [],
+      "pdfOkundu": [
+        "TYT-AYT Ortak/Ders Anlatim Sunulari 9. Sinif/31 - YUZDE VE KARISIM PROBLEMLERI.pdf s.2-20 (görseller)",
+        "TYT/Konu Anlatimi (Video Notlari)/04 - PROBLEMLER.pdf s.22-23, 27-29 (metin)"
+      ],
       "videolar": {
         "PL1": [
           "tC_hmX97EPw",
@@ -479,7 +486,8 @@
           "XW8bdPPnJV4",
           "sjp5E0Nf-Ds"
         ]
-      }
+      },
+      "not": "Alt grup yüzdesi, yüzde puanı, ters değişim, ağırlıklı ortalama, çapraz farkın gerekçesi, tekrarlı dökme, saf madde ve buharlaşma sınırları. Tuz örnekleri kütle birimiyle düzeltildi; altyazıdaki %120 hatası kareden %20 doğrulandı."
     },
     {
       "id": "kar-zarar",
