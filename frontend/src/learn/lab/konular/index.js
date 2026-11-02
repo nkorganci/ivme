@@ -10,6 +10,7 @@
 // `custom` verilen hedef kendi çalışma alanını kullanır (tek–çift pilotu).
 export const LAB_LOADERS = {
   'temel-kavramlar': () => Promise.all([import('./temel-kavramlar.js'), import('../cizim/temel-kavramlar.jsx')]),
+  'sayi-basamaklari': () => Promise.all([import('./sayi-basamaklari.js'), import('../cizim/sayi-basamaklari.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -18,4 +19,7 @@ export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
 export const LAB_KESIF = {
   'temel-kavramlar': ['temel-kavramlar', 'sayi-kumeleri'], 'temel-tekcift': ['temel-kavramlar', 'tek-cift'],
   'temel-isaret': ['temel-kavramlar', 'isaret'], 'temel-ardisik': ['temel-kavramlar', 'ardisik'], 'temel-ucdeger': ['temel-kavramlar', 'uc-deger'],
+  'sayi-basamaklari': ['sayi-basamaklari', 'cozumleme'], 'basamak-ters': ['sayi-basamaklari', 'cozumleme'],
+  'basamak-ekle': ['sayi-basamaklari', 'yer-degisim'], 'basamak-rakam': ['sayi-basamaklari', 'rakam-kosul'],
+  'basamak-sifir': ['sayi-basamaklari', 'basamak-sayisi'], 'basamak-sonrakam': ['sayi-basamaklari', 'basamak-sayisi'],
 };

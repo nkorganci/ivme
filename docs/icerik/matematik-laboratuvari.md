@@ -198,6 +198,7 @@ konunun `konular/<konu>.js` dosyasındadır; teknik kanıt `testler/kanit/lab/<k
 | Konu | Hedefler (model) | Gerçek soru eşlemesi | Açık kalan |
 |---|---|---|---|
 | `temel-kavramlar` | Tek–çift (pilot); sayı kümeleri ($p+q\sqrt2$ işlem kapalılığı, iki irrasyonelden rasyonel karşı örnek); işaret/sıralama (sayı doğrusunda $x,x^2,x^3,1/x$, $-1/0/1$ sınırları); ardışık sayılar (terim çubukları, toplam = terim sayısı × orta); uç değer (sabit toplamda dikdörtgen + çarpım eğrisi, “farklı” koşulu) | Tek–çift TYT-0545, 0565, 0576, 0572; işaret AYT-0037, AYT-0008, TYT-0542; ardışık AYT-0020; uç değer AYT-0024, AYT-0033. Sayı kümeleri: 2018–26 havuzunda eşleşen soru yok (özgün aktarım) | İşlem önceliği labda yok (ders keşfi + rehberli TYT-0588). Otomatik banka `tip` etiketlerinden TYT-0570, 0563, 0580, 0564 görselde başka beceri çıktı; banka düzeltmesi ayrı iş |
+| `sayi-basamaklari` | Çözümleme (onluk çubuk–birlik, $AB-BA=9(A-B)$, $B=0$ tuzağı); yer değişimi (rakam kartları, fark = basamak değeri farkı × rakam farkı, ondalık ve elde); rakam koşulu (koşul denetimli kartlarla en büyük sayıyı basamak basamak kurma); basamak sayısı (2·5 çiftleri, $2^a5^b3^c$) | Çözümleme TYT-0555, 0590; yer değişimi TYT-0581, AYT-0038; rakam koşulu TYT-0567, 0579, AYT-0028. Basamak sayısı: bankadaki 20 sorunun görselinde eşleşen yok (özgün aktarım) | Son rakam döngüsü (ders keşfi `basamak-sonrakam`) labda ayrı hedef değil; üslü ifadeler labına bırakıldı |
 
 ## Pilotun sonraki kabulü
 
