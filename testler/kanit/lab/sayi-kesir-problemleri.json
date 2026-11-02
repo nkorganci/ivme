@@ -1,0 +1,90 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "sayi-kesir-problemleri",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "denklem-kurma",
+      "label": "Sıra ve sayım",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0737",
+        "TYT-0676",
+        "TYT-0694",
+        "TYT-0682"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "kalanin-kesri",
+      "label": "Kalanın kesri",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0712",
+        "TYT-0677"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "adet-tutar",
+      "label": "Hepsini ucuz say",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0674"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ters-islem",
+      "label": "Sondan başa",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/sayi-kesir-problemleri.js": "5f19c7b9898e3578541797997e1c934a70b6d12b97a068636aaf2bd42461ac7b",
+    "frontend/src/learn/lab/cizim/sayi-kesir-problemleri.jsx": "a17539cfe2559d74df6a245c1c005405f250000f30bc3da8a247c97da2afd569",
+    "testler/lab-sayi-kesir-problemleri.test.mjs": "7e882b5be7b7281511cf65f32f993323f505be6d842da3a3e6d3fe6e23a3aedd",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-sayi-kesir-problemleri-rapor.json": "8169da7255486330c955661a20f45139eed28a05277c5767f6f437fde133a0f1",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-adet-tutar-deney.png": "50676eb8f982d00f1d215d928b61c08fc94d026db2d2711605e87f6d8e9f7875",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-adet-tutar-tamam.png": "4eed784d10b5aa9ed2e0093adb325e114b48a0b2f69842612ebbc4dd89a7629e",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-denklem-kurma-deney.png": "699de15a910497bb21ba0014b550bee9b5b76be204bffb6281f41089f9a246b6",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-denklem-kurma-tamam.png": "df87ce528c156ca2c5a77553f4d06c9126778653b0fcf2cf45139c4bdc76796f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-kalanin-kesri-deney.png": "0baa3ed0c548350ce10d6e38b70df42920bf3d36cd3b0a452fbe31af9b6c7e96",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-kalanin-kesri-tamam.png": "6a4bd22234f436b454cc5f6df67245f1442956b69d12410898b2a2f5a5bde2d2",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-ters-islem-deney.png": "20c1a520bdd061b603de653a5f7ca3f8a83f30b5ff290c5d5d5482df5c957035",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-sayi-kesir-problemleri-ters-islem-tamam.png": "93dd979088a20bc820fcc4d2da33f6971477ff59822011ad7927fb63ad576266",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-adet-tutar-deney.png": "d68673da0874d56e06fbf23a04f41ebd449d4de0a8fc45e9afdb8797afbb6a4c",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-adet-tutar-tamam.png": "55a91a3c16292c72de5f88e59208aff31ab37bc5a9aaac2cf239945e38a3a7e2",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-denklem-kurma-deney.png": "c45cd6fb22b0030e7608f596858599860e3ab8f6548dcbc694f2e1a63e1523d9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-denklem-kurma-tamam.png": "4807f5f423e6af73b60e37b0486d2537822c3e649ac58ec1e1825ef6e5b6409f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-kalanin-kesri-deney.png": "e0017d86a5631a0b0676ceae9be8578b6cca3281bce96da48147144526fa54d5",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-kalanin-kesri-tamam.png": "796ec6216b3c20af626d09ba26db36f71e1b01232389bedb4e5946847ba0537c",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-ters-islem-deney.png": "fccf0306f44df25b39919c2af1eb8a1880ffc0b69801978592d04f75ded3437f",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-sayi-kesir-problemleri-ters-islem-tamam.png": "ff86d01c85735d9381876f4f0ddfa3f89117740ef6294f25aff322b5956ff28c"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

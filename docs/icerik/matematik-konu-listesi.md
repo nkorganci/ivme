@@ -89,12 +89,12 @@ adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel 
 
 ## Laboratuvar kapsamı ve devam sırası
 
-**Yeni lab kabulüne göre:** TYT **12/32 teknik hazır**, AYT **0/24 teknik hazır**.
-Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`, `uslu-ifadeler`, `koklu-ifadeler`, `carpanlara-ayirma`, `oran-oranti`; kalan 44 konuda standarda göre kabulü
+**Yeni lab kabulüne göre:** TYT **13/32 teknik hazır**, AYT **0/24 teknik hazır**.
+Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`, `esitsizlikler`, `mutlak-deger`, `uslu-ifadeler`, `koklu-ifadeler`, `carpanlara-ayirma`, `oran-oranti`, `sayi-kesir-problemleri`; kalan 43 konuda standarda göre kabulü
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `sayi-kesir-problemleri` labı; sonra `yas-isci-problemleri` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+**Sıradaki çalışma:** `yas-isci-problemleri` labı; sonra `yuzde-karisim` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
 yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
 manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
 konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
@@ -127,7 +127,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `koklu-ifadeler` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/koklu-ifadeler.json`; öğretmen/öğrenci kabulü yok | Kök dışına çıkarma (en büyük kare çarpan), kökü yerleştirme ve sıralama, eşlenik, köklü denklemde sahte kök; 5 doğrulanmış ÖSYM sorusu (üslü ifadeler bankasından, aynı katalog). Eşlenik ve denklem hedeflerinde uygun sorular derste çözülmüş |
 | `carpanlara-ayirma` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/carpanlara-ayirma.json`; öğretmen/öğrenci kabulü yok | Gruplama (ortak parantez), iki kare farkı (L → dikdörtgen), üç terimli (çarpım c, toplam b), sadeleştirme ve yasak değer; 3 doğrulanmış ÖSYM sorusu (polinom bankasından). Sadeleştirme hedefinde uygun soru derste çözülmüş |
 | `oran-oranti` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/oran-oranti.json`; öğretmen/öğrenci kabulü yok | Oranı koruma (sınırlayıcı bileşen), doğru/ters orantı ve doğrusal ≠ orantılı, paylaştırma (doğru/ters), bileşik orantı (birim iş); 6 doğrulanmış ÖSYM sorusu. Bileşik hedefinde uygun soru derste çözülmüş |
-| `sayi-kesir-problemleri` | ⬜ LAB YOK | Parça–bütün ve miktar kurma; bütünün kesri ile kalanın kesrini ayır |
+| `sayi-kesir-problemleri` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/sayi-kesir-problemleri.json`; öğretmen/öğrenci kabulü yok | Sıra ve sayım (iki kez sayılan), kalanın kesri, hepsini ucuz say (adet–tutar), sondan başa; 7 doğrulanmış ÖSYM sorusu (problem kategorisindeki komşu bankalardan). Sondan başa hedefinde eşleşen soru yok |
 | `yas-isci-problemleri` | ⬜ LAB YOK | Yaş zaman çizgisi ve iş/hız birikimi; değişmeyen yaş farkını, toplam hızı ve birimleri kur |
 | `yuzde-karisim` | ⬜ LAB YOK | Bütün, yüzde tabanı ve saf madde korunumu; değişen payda/yoğunluğu açıkla |
 | `kar-zarar` | ⬜ LAB YOK | Maliyet/satış referansı ve ardışık fiyat değişimi; yüzde tabanını seç |

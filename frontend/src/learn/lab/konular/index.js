@@ -21,6 +21,7 @@ export const LAB_LOADERS = {
   'koklu-ifadeler': () => Promise.all([import('./koklu-ifadeler.js'), import('../cizim/koklu-ifadeler.jsx')]),
   'carpanlara-ayirma': () => Promise.all([import('./carpanlara-ayirma.js'), import('../cizim/carpanlara-ayirma.jsx')]),
   'oran-oranti': () => Promise.all([import('./oran-oranti.js'), import('../cizim/oran-oranti.jsx')]),
+  'sayi-kesir-problemleri': () => Promise.all([import('./sayi-kesir-problemleri.js'), import('../cizim/sayi-kesir-problemleri.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -54,4 +55,6 @@ export const LAB_KESIF = {
   'carpan-alan': ['carpanlara-ayirma', 'iki-kare'], 'carpan-capraz': ['carpanlara-ayirma', 'uc-terimli'],
   'oran-oranti': ['oran-oranti', 'oran-koru'], 'oran-tur': ['oran-oranti', 'dogru-ters'], 'oran-pay': ['oran-oranti', 'paylastirma'],
   'oran-bilesik': ['oran-oranti', 'bilesik'],
+  'sayi-kesir-problemleri': ['sayi-kesir-problemleri', 'denklem-kurma'], 'sk-sira': ['sayi-kesir-problemleri', 'denklem-kurma'],
+  'sk-kalan': ['sayi-kesir-problemleri', 'kalanin-kesri'], 'sk-adet': ['sayi-kesir-problemleri', 'adet-tutar'],
 };
