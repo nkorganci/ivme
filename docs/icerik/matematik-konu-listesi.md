@@ -145,7 +145,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `fonksiyon-kavrami` | ⬜ LAB YOK | Girdi–çıktı eşleme; fonksiyon olma, tanım/görüntü ve bire birlik koşullarını sına. Gerçek soru adayları TYT-0781, 0784 (grafik) — 0782, 0786, 0788 derste çözüldü; 0787, 0789 fonksiyon grafikleri, 0783, 0785 bileşke dersinde |
 | `fonksiyon-grafikleri` | ⬜ LAB YOK | Bağlı tablo–grafik–cebir; eğim, kesişim ve temsil değişiminde aynı ilişkiyi tanı. Gerçek soru adayları TYT-0781, 0784 (0787, 0789, 0790 derste çözüldü; 0791 bileşke dersinde) |
 | `bileske-ters` | ⬜ LAB YOK | İşlem makineleri ve ters adımlar; sıra ile tanım/görüntü koşullarını koru. TYT bileşke çıkmışları (0783, 0785, 0791) derste çözüldü; lab gerçek sorusu AYT setinden seçilecek |
-| `polinom-islemleri` | ⬜ LAB YOK | Katsayı/terim yapısı, bölme ve yerine koyma; hangi stratejinin neden işe yaradığını seç |
+| `polinom-islemleri` | ⬜ LAB YOK | Katsayı/terim yapısı, bölme ve yerine koyma; hangi stratejinin neden işe yaradığını seç. Gerçek soru adayları TYT-0793 ve AYT_Sayisal-0088, 0089, 0092, 0093, 0096 (0087, 0090, 0091 derste çözüldü; 0086 ve 0094 çarpanlara ayırma labında) |
 | `ikinci-derece-denklemler` | ⬜ LAB YOK | Alan/parabol ve çarpanlar; kök, diskriminant ve çözüm yöntemi seçimini ilişkilendir |
 | `sayma-permutasyon` | ⬜ LAB YOK | Küçük örnek uzay ve sistematik listeleme; sıra, koşul ve tekrar saymayı denetle |
 | `kombinasyon` | ⬜ LAB YOK | Seçim ile sıralamayı karşılaştır; aynı grubu tekrar saymayı görünür kıl |
@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **27/32 bitti**. Sıradaki TYT konusu: `polinom-islemleri`.
+TYT: **28/32 bitti**. Sıradaki TYT konusu: `ikinci-derece-denklemler`.
 
 ### TYT (şu anki aşama)
 
@@ -216,7 +216,7 @@ TYT: **27/32 bitti**. Sıradaki TYT konusu: `polinom-islemleri`.
 | 25 | ✅ BİTTİ | `fonksiyon-kavrami` | Fonksiyon Kavramı ve Fonksiyon Çeşitleri | 10 | TYT + AYT | 8/20/3/4 | 3 / 11 (Fonksiyonlar) | 2 · PL1 4, PL2 4 | 3/3 | — |
 | 26 | ✅ BİTTİ | `fonksiyon-grafikleri` | Fonksiyon Grafikleri ve Doğrusal Modeller | 10 | TYT + AYT | 8/20/3/4 | 3 / 11 (Fonksiyonlar) | 2 · PL1 2, PL2 2 | 3/3 | — |
 | 27 | ✅ BİTTİ | `bileske-ters` | Bileşke Fonksiyon ve Ters Fonksiyon | 10 | TYT + AYT | 8/20/4/4 | 3 / 11 (Fonksiyonlar) | 2 · PL1 2, PL2 2 | 4/4 | — |
-| 28 | 🟡 EKSİK | `polinom-islemleri` | Polinom Kavramı, İşlemler ve Bölme | 10 | TYT + AYT | 4/8/1/1 | 0 / 3 (Polinomlar) | 0 · PL1 0, PL2 2 | 0/4 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 28 | ✅ BİTTİ | `polinom-islemleri` | Polinom Kavramı, İşlemler ve Bölme | 10 | TYT + AYT | 8/22/4/4 | 3 / 3 (Polinomlar) | 2 · PL1 0, PL2 2 | 4/4 | — |
 | 29 | 🟡 EKSİK | `ikinci-derece-denklemler` | İkinci Dereceden Denklemler ve Kök-Katsayı İlişkileri | 10 | TYT + AYT | 8/24/3/4 | 3 / 3 (Polinomlar) | video yok | 0/3 | ders anlatım PDF okunmadı · İki TYT kampı listesinde ikinci derece denklem videosu yok; video ölçütü başka kaynak bulunana kadar uygulanamaz. |
 | 30 | 🟡 EKSİK | `sayma-permutasyon` | Saymanın Temel İlkesi ve Permütasyon | 10 | TYT + AYT | 4/8/2/1 | 0 / 9 (Sıralama ve Seçme) | 0 · PL1 2, PL2 2 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 31 | 🟡 EKSİK | `kombinasyon` | Kombinasyon ve Seçme Problemleri | 10 | TYT + AYT | 4/8/1/1 | 0 / 9 (Sıralama ve Seçme) | 0 · PL1 2, PL2 2 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

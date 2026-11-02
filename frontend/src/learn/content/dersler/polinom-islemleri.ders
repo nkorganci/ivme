@@ -46,8 +46,10 @@ polinom-islem 1 1-2
 polinom-bolme 2 1-3
 kalan-bulma 2 1-3
 
-@oturum Polinom kavramı ve işlemler | s1 s2
-@oturum Bölme ve kalan | s3 s4
+@oturum Polinom kavramı ve kökler | s1 s1b
+@oturum İşlemler ve fark polinomu | s2 s2b
+@oturum Bölme eşitliği | s3 s3b
+@oturum Kalan ve özel değerler | s4 s4b
 
 @ontest
 ::soru o1 tip=polinom-kavram zorluk=1
@@ -138,6 +140,84 @@ E) 22 || Hesabı yeniden yap.
 kontrol: -1+4+7
 cozum: $P(x)$'in katsayılar toplamı $P(1)$'dir. $x + 2 = 1 \Rightarrow x = -1$: $(-1)^3 - 4(-1) + 7 = 10$.
 
+@bolum s1b 12 | Köklerden polinom kurmak
+::kesfet po-kok
+
+::fikir
+$a$, $P(x)$'in kökü ise $(x-a)$ bir **çarpandır**. Baş katsayısı 1 olan ve kökleri $r_1, r_2, \dots, r_n$ olan polinom $P(x)=(x-r_1)(x-r_2)\cdots(x-r_n)$'dir. **Simetri bilgisi** ($P(x)=P(-x)$) kökleri **çiftler** hâlinde verir: 2 kök ise $-2$ de köktür.
+
+::duzey
+L1: Kökleri 1 ve 3 olan, baş katsayısı 1 ikinci dereceden polinom $(x-1)(x-3)=x^2-4x+3$'tür. Köklere bakarak polinomu çarpanlarıyla yazmak, açmaktan hızlıdır.
+L2: $P(x)=P(-x)$ ise P çift fonksiyondur: yalnız çift kuvvetler var. Kökler simetriktir; 4. dereceden P için $P(2)=P(3)=0$ bilgisi $\pm2$, $\pm3$ köklerini verir: $P(x)=(x^2-4)(x^2-9)$.
+L3: $R(x)=P(P(x))$ gibi bileşke polinomlarda kök bulmak için içteki ifadeye harf ver: $P(u)=0$ çözümleri $u$ değerleridir; sonra $P(x)=u$ denklemlerini çöz. Bir sayının kök olup olmadığını denemek için doğrudan yerine koymak da yeter.
+
+::cikmis AYT_Sayisal-0091 tip=polinom-kavram
+
+::ornek baslik="Benzer: eşitsizlikten çift kökler"
+soru: Dördüncü dereceden bir P(x) polinomu her x için $P(x)\ge2x+1$ eşitsizliğini sağlıyor; $P(0)=1$, $P(2)=5$, $P(1)=6$'dır. $P(3)$ kaçtır?
+1. $Q(x)=P(x)-(2x+1)\ge0$ ve $Q(0)=Q(2)=0$: 0 ve 2, Q'nun çift katlı kökleri. || Negatif olmayan polinom sıfıra değip geri döner.
+2. $Q(x)=a\,x^2(x-2)^2$; $Q(1)=6-3=3=a$. || Derece 4.
+3. $P(3)=7+3\cdot9\cdot1=34$. || $P=Q+2x+1$.
+cevap: 34
+
+
+::ornek baslik="Çift polinomun değeri"
+soru: Baş katsayısı 1 olan 4. dereceden bir $P(x)$ polinomu her x için $P(x)=P(-x)$ eşitliğini sağlıyor ve $P(1)=P(4)=0$'dır. $P(2)$ kaçtır?
+1. Çift polinom: kökler $\pm1$, $\pm4$. || Simetri.
+2. $P(x)=(x^2-1)(x^2-16)$. || Baş katsayı 1, derece 4.
+3. $P(2)=3\cdot(-12)=-36$. || Yerine koy.
+cevap: −36
+
+::cikmis AYT_Sayisal-0087 tip=polinom-kavram
+
+::ornek baslik="Benzer: üçüncü dereceden, iki kök ve sabit terim"
+soru: Baş katsayısı 1 olan üçüncü dereceden bir P(x) polinomunun kökleri tam sayıdır. Grafik x eksenini en solda $-2$'de, en sağda 3'te kesiyor ve $P(0)=6$'dır. $P(2)$ kaçtır?
+1. Üçüncü kök r: $P(x)=(x+2)(x-r)(x-3)$, $P(0)=(2)(-r)(-3)=6r$. || Sabit terim köklerden.
+2. $6r=6$, $r=1$; $-2<1<3$ ✓. || En sol ve en sağ kökler arasında.
+3. $P(2)=4\cdot1\cdot(-1)=-4$. || Yerine koy.
+cevap: −4
+
+
+::ornek baslik="Bileşke polinomun kökleri"
+soru: $P(x)=x^2-4$ ve $R(x)=P(P(x))$ ise I. 0, II. 2, III. $\sqrt2$ sayılarından hangileri R'nin köküdür?
+1. $R(x)=0\iff P(P(x))=0\iff P(x)=\pm2$. || İçteki ifadeye harf ver.
+2. $x^2-4=2$: $x=\pm\sqrt6$; $x^2-4=-2$: $x=\pm\sqrt2$. || İki denklem.
+3. Kökler $\pm\sqrt6$, $\pm\sqrt2$: yalnız III. || Kontrol: $R(0)=P(-4)=12$.
+cevap: Yalnız III
+
+::ornek baslik="Kökler ve sabit terim"
+soru: Baş katsayısı 2 olan üçüncü dereceden bir polinomun kökleri $-1$, 2 ve 3 ise sabit terimi ve katsayılar toplamı kaçtır?
+1. $P(x)=2(x+1)(x-2)(x-3)$. || Baş katsayıyı unutma.
+2. Sabit terim $P(0)=2\cdot1\cdot(-2)\cdot(-3)=12$. || x = 0.
+3. Katsayılar toplamı $P(1)=2\cdot2\cdot(-1)\cdot(-2)=8$. || x = 1.
+cevap: 12 ve 8
+
+::sorgula s1b-kok baslik="Kök mü değil mi?"
+durum: Bir öğrenci $P(x)=x^3-6x^2+11x-6$ polinomunun köklerini bulmak için önce sabit terimin bölenlerini (±1, ±2, ±3, ±6) deniyor.
+soru: Hangisi doğrudur?
++A) 1, 2 ve 3 köktür; $P(x)=(x-1)(x-2)(x-3)$ || $P(1)=P(2)=P(3)=0$.
+B) Yalnız 1 köktür || $P(2)=8-24+22-6=0$; 2 de köktür.
+C) 6 köktür, çünkü sabit terim 6 || $P(6)=216-216+66-6=60\neq0$.
+neden: Tam sayı kökler sabit terimin bölenleri arasındadır (baş katsayı 1). Denemeyle $P(1)=0$, $P(2)=0$, $P(3)=0$; üçüncü dereceden olduğu için başka kök yok.
+sinav: Baş katsayısı 1 olan tam katsayılı polinomda tam sayı kökleri sabit terimin bölenlerinde ara; bulduğun her kök bir çarpan verir.
+dusun: Köklerin toplamı ve çarpımı kaçtır?
+yanit: Toplam 6 (= −(−6)), çarpım 6 (= −(−6)).
+
+::yanilgi m1b tip=polinom-kavram
+yanlis: $P(x)=P(-x)$ ve $P(2)=0$ ise 2, P'nin tek köküdür.
+neden: Çift polinomda $P(-2)=P(2)=0$; kökler simetrik çiftler hâlindedir.
+dogru: 2 kök ise $-2$ de köktür.
+
+::soru c1b tip=polinom-kavram zorluk=2
+Baş katsayısı 1 olan üçüncü dereceden $P(x)$ polinomunun kökleri 1, 2 ve $-3$ ise $P(0)+P(-1)$ kaçtır?
+A) 6 || $P(-1)$'i unuttun.
+B) 8 || Hesabı kontrol et.
+C) 10 || Hesabı yeniden yap.
++D) 18 || Doğru: $P(0)=6$, $P(-1)=12$.
+E) 24 || Hesabı kontrol et: $(-2)(-3)(2)$.
+kontrol: 6+12
+cozum: $P(x)=(x-1)(x-2)(x+3)$. $P(0)=(-1)(-2)(3)=6$; $P(-1)=(-2)(-3)(2)=12$. Toplam 18.
+
 @bolum s2 8 | İşlemler ve derece
 ::fikir
 Toplama–çıkarmada **aynı dereceli terimler** toplanır; çarpmada her terim her terimle çarpılır. $\text{der}(P \cdot Q) = \text{der}(P) + \text{der}(Q)$, $\text{der}(P^k) = k \cdot \text{der}(P)$, $\text{der}(P(x^k)) = k \cdot \text{der}(P)$.
@@ -195,6 +275,71 @@ E) 24 || Dereceler çarpılmaz; çarpımda toplanır.
 kontrol: 2*4+3
 cozum: $\text{der}[P(x^2)] = 2 \cdot 4 = 8$; çarpımda toplanır: $8 + 3 = 11$.
 
+@bolum s2b 10 | Ortak kökler ve iki polinomun farkı
+::fikir
+Baş katsayıları ve dereceleri **aynı** iki polinomun farkında baş terimler **sadeleşir**: fark daha düşük dereceli bir polinomdur. İki polinomun ortak kökleri farkın da köküdür: $P(a)=R(a)=0$ ise $(P-R)(a)=0$. Bu iki bilgi farkı **çarpanlarıyla** yazmayı sağlar: $(P-R)(x)=k(x-a)(x-b)$.
+
+::duzey
+L1: $P(x)=x^3+\dots$ ve $R(x)=x^3+\dots$ ise $P-R$'de $x^3$ yok olur: fark en çok ikinci derecedendir.
+L2: 2 ve 6 ortak kökse $(P-R)(2)=(P-R)(6)=0$: $(P-R)(x)=k(x-2)(x-6)$. Bir başka değer ($(P-R)(1)=10$) k'yi verir.
+L3: İstenen $P(0)-R(0)$ ise bu $(P-R)(0)$'dır: farkın sabit terimi. P ve R'yi ayrı ayrı bulmak gerekmez; fark polinomu yeter. Kalan teoremi burada da geçerlidir: $(P-R)$'nin $x-1$ ile bölümünden kalan $(P-R)(1)$'dir.
+
+::cikmis AYT_Sayisal-0090 tip=kalan-bulma
+
+::ornek baslik="Benzer: ortak kökler 1 ve 4"
+soru: Baş katsayıları 1 olan üçüncü dereceden P ve R polinomlarının 1 ve 4 ortak kökleridir. $(P-R)(2)=-6$ ise $P(0)-R(0)$ kaçtır?
+1. Fark en çok 2. derece ve kökleri 1, 4: $(P-R)(x)=k(x-1)(x-4)$. || Baş terimler sadeleşir.
+2. $k\cdot1\cdot(-2)=-6$, $k=3$. || Verilen değer.
+3. $(P-R)(0)=3\cdot(-1)(-4)=12$. || Sabit terim.
+cevap: 12
+
+::ornek baslik="Aynı derece, farklı baş katsayı"
+soru: $P(x)=2x^2+3x-1$ ve $Q(x)=2x^2-x+7$ ise $(P-Q)(x)$ polinomunun derecesi ve kökü nedir?
+1. $(P-Q)(x)=4x-8$. || $2x^2$ terimleri sadeleşti.
+2. Derece 1. || Baş katsayılar eşit.
+3. Kök: $4x-8=0$, $x=2$. || Kontrol: $P(2)=Q(2)=13$.
+cevap: Derece 1; kök 2
+
+::ornek baslik="Farktan değer"
+soru: P ve R baş katsayıları 1 olan ikinci dereceden polinomlardır; $P(3)=R(3)$ ve $P(5)-R(5)=8$ ise $P(0)-R(0)$ kaçtır?
+1. Fark en çok 1. derece, kökü 3: $(P-R)(x)=k(x-3)$. || Ortak değer kök verir.
+2. $k\cdot2=8$, $k=4$. || Verilen fark.
+3. $(P-R)(0)=4\cdot(-3)=-12$. || Sabit terim.
+cevap: −12
+
+::tamamla baslik="Ortak kökten çarpan"
+soru: $P(x)=x^3+ax^2-4x+4$ ve $x-2$, P'nin bir çarpanı ise $a$ kaçtır?
+1. Çarpan $x-2$ ise $P(2)=0$. || Kalan teoremi.
+?2. $8+4a-8+4=0$, $4a=-4$. || Yerine koy.
+?3. $a=-1$. || Kontrol: $P(x)=(x-2)(x^2+x-2)$.
+cevap: −1
+
+::sorgula s2b-fark baslik="Farkın derecesi"
+durum: Bir öğrenci baş katsayıları 1 olan iki 5. dereceden polinomun farkının da 5. dereceden olduğunu söylüyor.
+soru: Öğrenci haklı mı?
+A) Evet, iki 5. dereceden polinomun farkı 5. derecedendir. || Baş katsayılar eşitse $x^5$ terimleri sadeleşir.
++B) Hayır, fark en çok 4. derecedendir. || $x^5-x^5=0$.
+C) Hayır, fark sıfır polinomdur. || Yalnız bütün katsayılar eşitse sıfır olur.
+neden: Baş katsayıları eşit polinomların farkında en yüksek dereceli terimler birbirini götürür; fark daha düşük derecelidir (polinomlar aynıysa sıfır polinom).
+sinav: Farkın derecesi sorulunca önce baş terimlerin sadeleşip sadeleşmediğine bak.
+dusun: Baş katsayıları 1 ve 3 olsaydı fark kaçıncı derecedendir?
+yanit: $-2x^5$ kalır: 5. derece.
+
+::yanilgi m2b tip=kalan-bulma
+yanlis: $P(a)=R(a)$ ise $P$ ile $R$ aynı polinomdur.
+neden: Yalnız $a$ noktasında eşittirler; fark polinomunun bir kökü vardır.
+dogru: $P(a)=R(a)$ ise $(P-R)(a)=0$: $x-a$, $P-R$'nin çarpanıdır.
+
+::soru c2b tip=kalan-bulma zorluk=2
+Baş katsayıları 1 olan üçüncü dereceden P ve R polinomları için $P(1)=R(1)$, $P(2)=R(2)$ ve $(P-R)(0)=6$ ise $(P-R)(3)$ kaçtır?
+A) 3 || Hesabı kontrol et: $k=3$.
+B) 4 || Hesabı yeniden yap.
++C) 6 || Doğru: $(P-R)(x)=3(x-1)(x-2)$.
+D) 9 || Hesabı kontrol et.
+E) 12 || $(3-1)(3-2)$'yi 2 ile değil 6 ile çarptın.
+kontrol: 3*2*1
+cozum: $(P-R)(x)=k(x-1)(x-2)$; $(P-R)(0)=2k=6$, $k=3$. $(P-R)(3)=3\cdot2\cdot1=6$.
+
 @bolum s3 9 | Bölme eşitliği
 ::fikir
 $P(x) = Q(x) \cdot B(x) + K(x)$ ve $\text{der}(K) < \text{der}(Q)$. Bölümün derecesi $\text{der}(P) - \text{der}(Q)$'dur.
@@ -251,6 +396,70 @@ E) 11 || Hesabı yeniden yap.
 kontrol: 2*4+1
 cozum: $P(x) = (x^2 + 1)(x + 3) + 2x - 1$. $P(1) = 2 \cdot 4 + 1 = 9$.
 
+@bolum s3b 10 | Bölme eşitliğiyle kalan ve bölüm
+::kesfet po-bolme
+
+::fikir
+$P(x)=(x-a)\cdot B(x)+K$ eşitliğinde **x yerine a yazınca** bölüm sıfırla çarpılır: $K=P(a)$. Bölümün katsayıları **Horner tablosuyla** hızlıca bulunur: baş katsayıyı indir, $a$ ile çarp, bir sonraki katsayıya ekle. İkinci dereceden bölende kalan **en çok birinci derecedendir**: $K(x)=mx+n$; iki kök iki denklem verir.
+
+::duzey
+L1: $P(x)=x^3-2x+5$'in $x-2$ ile bölümünden kalan $P(2)=8-4+5=9$'dur. Bölme işlemi yapmadan kalan bulunur.
+L2: Horner: katsayılar $1, 0, -2, 5$ ve $a=2$: $1$; $1\cdot2+0=2$; $2\cdot2-2=2$; $2\cdot2+5=9$. Bölüm $x^2+2x+2$, kalan 9.
+L3: $P(x)$'in $(x-1)(x-3)$ ile bölümünden kalan $K(x)=mx+n$ ise $P(1)=m+n$ ve $P(3)=3m+n$. İki değer biliniyorsa kalan polinom bulunur. $P(x)$'in $x-1$ ile bölümünden kalan 4, $x-3$ ile bölümünden kalan 10 ise $K(x)=3x+1$.
+
+::ornek baslik="Horner ile bölüm ve kalan"
+soru: $P(x)=2x^3-3x^2+x-4$ polinomunun $x-2$ ile bölümünden elde edilen bölüm ve kalan nedir?
+1. Katsayılar 2, −3, 1, −4; $a=2$. || Eksik derece olsaydı 0 yazılırdı.
+2. 2; $2\cdot2-3=1$; $1\cdot2+1=3$; $3\cdot2-4=2$. || Çarp ve ekle.
+3. Bölüm $2x^2+x+3$, kalan 2. || Kontrol: $P(2)=16-12+2-4=2$ ✓
+cevap: Bölüm $2x^2+x+3$, kalan 2
+
+::ornek baslik="İkinci dereceden bölende kalan"
+soru: $P(x)$'in $x-1$ ile bölümünden kalan 4, $x-3$ ile bölümünden kalan 10'dur. $P(x)$'in $(x-1)(x-3)$ ile bölümünden kalan nedir?
+1. Kalan $K(x)=mx+n$ (derece < 2). || Bölen ikinci derecede.
+2. $P(1)=m+n=4$, $P(3)=3m+n=10$. || Bölenin kökleri.
+3. $m=3$, $n=1$: $K(x)=3x+1$. || Denklem sistemi.
+cevap: $3x+1$
+
+::tamamla baslik="Kalandan katsayı"
+soru: $P(x)=x^3+ax^2-x+2$ polinomunun $x+1$ ile bölümünden kalan 6 ise $a$ kaçtır?
+1. $x+1=0$ için $x=-1$: kalan $P(-1)$. || Kalan teoremi.
+?2. $-1+a+1+2=6$. || Yerine koy.
+?3. $a=4$. || Kontrol: $P(-1)=-1+4+1+2=6$ ✓
+cevap: 4
+
+::ornek baslik="Bölme eşitliğinden değer"
+soru: $P(x)=(x^2+1)\cdot B(x)+2x-3$ ve $B(2)=4$ ise $P(2)$ kaçtır?
+1. $x=2$ yaz: $P(2)=5\cdot B(2)+4-3$. || Bölme eşitliği her x için doğru.
+2. $P(2)=5\cdot4+1=21$. || Değerleri yerleştir.
+3. Bölüm biliniyorsa her değer bu eşitlikten çıkar. || Kalan da x'e bağlı.
+cevap: 21
+
+::sorgula s3b-ikinci baslik="İki kalandan yeni kalan"
+durum: Bir polinomun $x-2$ ile bölümünden kalan 5, $x+1$ ile bölümünden kalan $-1$'dir.
+soru: $(x-2)(x+1)$ ile bölümünden kalan nedir?
+A) 4 || Kalanları topladın; kalan bir polinomdur ($mx+n$).
++B) $2x+1$ || $2m+n=5$ ve $-m+n=-1$: $m=2$, $n=1$.
+C) $5x-1$ || Kalanları katsayı yaptın; sistem kurulmalı.
+neden: Bölen ikinci dereceden olduğu için kalan $mx+n$ biçimindedir. $P(2)=5$, $P(-1)=-1$ iki denklem verir: $m=2$, $n=1$.
+sinav: Bölen ikinci derecedense kalanı $mx+n$ al ve bölenin iki kökünü yaz.
+dusun: Kalanın $x=0$'daki değeri nedir?
+yanit: $K(0)=1$; yani $P(0)$ da $(0-2)(0+1)B(0)+1$ biçimindedir.
+
+::yanilgi m3b tip=polinom-bolme
+yanlis: $x+1$ ile bölümden kalan $P(1)$'dir.
+neden: Bölenin kökü $-1$'dir; kalan bölenin kökünde hesaplanır.
+dogru: $x+1$ ile bölümden kalan $P(-1)$.
+
+::soru c3b tip=polinom-bolme zorluk=2
+$P(x)$'in $x-1$ ile bölümünden kalan 3, $x-2$ ile bölümünden kalan 7'dir. $P(x)$'in $x^2-3x+2$ ile bölümünden kalan nedir?
++A) $4x-1$ || Doğru: $m+n=3$, $2m+n=7$.
+B) $4x+1$ || Hesabı kontrol et: n = −1.
+C) $3x+4$ || Kalanları katsayı yaptın.
+D) 10 || Kalanları topladın.
+E) $7x-3$ || Hesabı yeniden yap.
+cozum: $x^2-3x+2=(x-1)(x-2)$; kalan $mx+n$: $m+n=3$, $2m+n=7$; $m=4$, $n=-1$.
+
 @bolum s4 9 | Bölme yapmadan kalan
 ::fikir
 **$P(x)$'in $x - a$ ile bölümünden kalan $P(a)$'dır.** $P(a) = 0$ ise $x - a$, $P(x)$'in bir **çarpanıdır** ($a$ bir köktür). $ax - b$ ile bölümde kalan $P\left(\frac{b}{a}\right)$'dır.
@@ -294,6 +503,71 @@ D) 7 || $-3 + 2$'yi hesaba kat.
 E) 9 || Hesabı yeniden yap.
 kontrol: 5
 cozum: Kalan $P(1) = 1 + a - 3 + 2 = a$. $a = 5$.
+
+@bolum s4b 10 | Katsayılar toplamı ve özel değerler
+::kesfet po-katsayi
+
+::fikir
+Polinomu açmadan özel değerlerle bilgi çıkar: **$P(1)$ katsayılar toplamı**, **$P(0)$ sabit terim**, **$\frac{P(1)+P(-1)}{2}$ çift dereceli terimlerin katsayıları toplamı**, **$\frac{P(1)-P(-1)}{2}$ tek dereceli terimlerin katsayıları toplamı**. $P(ax+b)$ verilmişse x'i, parantezi 1 ya da 0 yapacak biçimde seç.
+
+::duzey
+L1: $P(x)=(2x-1)^3$ açılmadan katsayılar toplamı $P(1)=1$, sabit terim $P(0)=-1$'dir.
+L2: $P(-1)$ çift kuvvetleri değiştirmez, tek kuvvetlerin işaretini değiştirir. $P(1)+P(-1)$'de tek terimler sadeleşir, çift terimler iki kez sayılır: yarısı çift dereceli katsayılar toplamıdır.
+L3: $P(2x-3)=x^2+x+1$ ise P'nin katsayılar toplamı $P(1)$'dir: $2x-3=1$ için $x=2$, $P(1)=7$. Sabit terim $P(0)$ için $2x-3=0$, $x=\frac32$: $P(0)=\frac{19}{4}$.
+
+::ornek baslik="Açmadan katsayı bilgileri"
+soru: $P(x)=(x^2-x+2)^3$ polinomunun katsayılar toplamı, sabit terimi ve çift dereceli terimlerin katsayıları toplamı kaçtır?
+1. $P(1)=2^3=8$; $P(0)=2^3=8$. || x = 1 ve x = 0.
+2. $P(-1)=(1+1+2)^3=64$. || x = −1.
+3. Çift dereceliler $\frac{8+64}{2}=36$. || Yarısı.
+cevap: 8, 8, 36
+
+::ornek baslik="Parantezli tanımdan P(1)"
+soru: $P(2x-3)=x^2+x+1$ ise P'nin katsayılar toplamı kaçtır?
+1. Katsayılar toplamı $P(1)$. || Tanım.
+2. $2x-3=1$ için $x=2$. || Parantezi 1 yap.
+3. $P(1)=4+2+1=7$. || Sağ tarafa yaz.
+cevap: 7
+
+::ornek baslik="Tek dereceli terimler"
+soru: $P(x)=x^4-3x^3+2x^2+5x-1$ polinomunun tek dereceli terimlerinin katsayıları toplamını $P(1)$ ve $P(-1)$ ile bul.
+1. $P(1)=1-3+2+5-1=4$. || Hepsinin toplamı.
+2. $P(-1)=1+3+2-5-1=0$. || Tek terimlerin işareti döner.
+3. $\frac{4-0}{2}=2$: $-3+5=2$ ✓. || Doğrudan kontrol.
+cevap: 2
+
+::tamamla baslik="Sabit terim ve katsayılar"
+soru: $P(x+1)=x^2+5x+3$ ise $P(x)$'in sabit terimi kaçtır?
+1. Sabit terim $P(0)$. || Tanım.
+?2. $x+1=0$ için $x=-1$. || Parantezi 0 yap.
+?3. $P(0)=1-5+3=-1$. || Yerine koy.
+cevap: −1
+
+::sorgula s4b-acmadan baslik="Açmadan mı, açarak mı?"
+durum: Bir öğrenci $(3x-2)^5$'in katsayılar toplamını bulmak için ifadeyi binom açılımıyla tamamen açmaya başlıyor.
+soru: Daha kısa yol nedir ve sonuç kaçtır?
+A) Katsayılar toplamı 3 + (−2) = 1'dir. || İç kısmın katsayılarını topladın; beşinci kuvvet unutuldu (sonuç yine 1 ama yöntem yanlış).
++B) x = 1 yaz: $(3-2)^5=1$ || $P(1)$ katsayılar toplamıdır.
+C) x = 0 yaz: $(-2)^5=-32$ || Bu sabit terimdir.
+neden: Katsayılar toplamı, x = 1 yazılınca elde edilir; açmaya gerek yoktur. Sabit terim ise x = 0 ile bulunur.
+sinav: Katsayılar toplamı ⇒ P(1), sabit terim ⇒ P(0); parantezli tanımlarda parantezi 1 ya da 0 yapan x'i seç.
+dusun: $(3x-2)^5$'in çift dereceli terimlerinin katsayıları toplamı kaçtır?
+yanit: $\frac{P(1)+P(-1)}{2}=\frac{1+(-5)^5}{2}=\frac{1-3125}{2}=-1562$.
+
+::yanilgi m4b tip=polinom-kavram
+yanlis: $P(x+1)$'in katsayılar toplamı $P(1)$'dir.
+neden: $P(x+1)$'in katsayılar toplamı, x = 1 yazınca $P(2)$'dir.
+dogru: Bir ifadenin katsayılar toplamı o ifadeye x = 1 yazılarak bulunur.
+
+::soru c4b tip=polinom-kavram zorluk=2
+$P(x)=(x^2+x-1)^4$ polinomunun çift dereceli terimlerinin katsayıları toplamı kaçtır?
+A) 0 || Hesabı kontrol et: $P(-1)=1$.
++B) 1 || Doğru: $P(1)=1$, $P(-1)=1$.
+C) 2 || Yarısını almayı unuttun.
+D) 8 || Hesabı yeniden yap.
+E) 16 || Hesabı kontrol et.
+kontrol: (1+1)/2
+cozum: $P(1)=(1+1-1)^4=1$; $P(-1)=(1-1-1)^4=1$. Çift dereceliler $\frac{1+1}{2}=1$.
 
 ::ozet
 - Polinomda üsler doğal sayı; katsayılar toplamı $P(1)$, sabit terim $P(0)$.

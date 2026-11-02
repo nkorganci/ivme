@@ -571,6 +571,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "polinom-islemleri-video",
+      "conceptId": "polinom-islemleri",
+      "hints": [
+        {
+          "id": "esit-degerler-kok-gibi",
+          "title": "Eşit değerler: P(x) − c'nin kökleri",
+          "sectionIds": [
+            "s2",
+            "s2b"
+          ]
+        },
+        {
+          "id": "cift-tek-katsayi-toplami",
+          "title": "Çift ve tek dereceli katsayı toplamları",
+          "sectionIds": [
+            "s4",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

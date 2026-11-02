@@ -1,0 +1,137 @@
+{
+  "schema": "video-evidence-v1",
+  "taskId": "polinom-islemleri-video",
+  "topicId": "tyt.matematik.polinomlar",
+  "status": "REVIEW_REQUIRED",
+  "evidenceHash": "86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022",
+  "taskHash": "d660e2603b026fc4f34d90e8d85d1e0d6538da8c245df1e76f471ba365744365",
+  "codeHash": "9d94a18cd57434d8587571be52543ac32acec92e9b87de201682466423649667",
+  "evidenceDirectory": "veri\\video-hatti\\polinom-islemleri-video",
+  "artifacts": {
+    "asamalar\\youtube-t_TS_bnc_Y4-metin\\7b9ba684c5a335c0a61e610abba82eb314c7983d4ea16bf4f84fafb25f1cb401.json": "63daffb698179b286fbdf9f502a1440a1b2b912bc40ae230fcb90a1f66505d2c",
+    "asamalar\\youtube-t_TS_bnc_Y4-kareler\\7d194e26d716ffbcc46d3430d84429fac4aeeb71e508c6893e79b5e1adfec325.json": "41e77b51ccb5047e3ab4ace45d6aec6ad785bd8e5a41cba3ae83a48e7f62dde9",
+    "kareler\\3c6b6b10e31791b682aed48ed4987575918dccab9dd495ef8d9beb9e63d1a4a9.png": "4a7f06348670bb4757f2ec2f1688d60e0e0f085dc930fb6a3aff60181736d760",
+    "kareler\\62c2b7389ce1d6f4b7df271ba3ab148729b1e010b24ffdd8daf2da5cd3c4d099.png": "63ee87ff7194b330db0f51e8713fd29f883674f52f42b2385d5f19f81d7bd488",
+    "asamalar\\youtube-2RwwzsBVF0U-metin\\9a42bed1d566bc4641cfe60dc873b8c932223d6d5bfd46c49d8772412cacf3ac.json": "ffdf791bb2e955b530df01fc5305734b0d6b9d096c78266bc741f53525b3721e",
+    "asamalar\\youtube-2RwwzsBVF0U-kareler\\36e71ca42158a11e3d85946759a7179766f987c340a64d128a2c5a8281342966.json": "8b383ed50180d01574130298ef6eca12722fcf4027d24835b888907670df83f0",
+    "kareler\\3edb3c43c2676815251e5ce880b31111483d26524450e3ce28e6d0d75f4635ac.png": "7294b6d8c5db1ea5332d9f7bc3b8eed1a936b2dc70a37a6c7ed0c55e86b713ef",
+    "kareler\\f55ca2ba72267266dd00caafcc5f4ab01389b61c3cb776ffc17357d17941c331.png": "2eea3a0b1335fdb04bd06924ece7b0bd386802f90a9d81f5a0d9dbe4c0a0c7d0",
+    "asamalar\\matematik-denetimi\\c66e55fa99c2e921857d645e28b1ae795cb826717709958cabc599e66d64d7a0.json": "7db67c132c81d0a6ee738a4a330fbc7067981c46a1f421281592c77e5331547d",
+    "surumler\\86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022.json": "5f135e1f798698c3da6087be35c708272af8bf6903ee32d5d912840751174b6e",
+    "surumler\\86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022.oneriler.md": "db809c3167ec7c37b2993f9c93fc3495dde42f470fb4ef36b4bd62e0b887e182"
+  },
+  "verification": {
+    "status": "SCRIPT_CHECKED",
+    "results": [
+      {
+        "script": "testler/video-ipucu-polinom-islemleri-test.py",
+        "sha256": "12f69506cc3e166788338676b1c640a7c0c79b3385527a05db9a0eda2029e772",
+        "exitCode": 0,
+        "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "teacherApproved": false,
+    "scope": "Yalnız test betiğinin açık iddiaları; bütün otomatik altyazı veya öğretmen onayı değildir."
+  },
+  "teacherApproved": false,
+  "lastRun": {
+    "taskId": "polinom-islemleri-video",
+    "status": "REVIEW_REQUIRED",
+    "evidenceHash": "86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022",
+    "metrics": {
+      "networkRequests": 0,
+      "asrCalls": 0,
+      "frameDecodes": 4,
+      "stagesBuilt": 5,
+      "stagesReused": 0,
+      "modelCalls": 0,
+      "elapsedSeconds": 1.715
+    },
+    "videos": [
+      {
+        "providerId": "youtube:t_TS_bnc_Y4",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      },
+      {
+        "providerId": "youtube:2RwwzsBVF0U",
+        "text": "TIMED_TEXT_READY",
+        "frames": "FRAMES_READY"
+      }
+    ],
+    "hints": 2,
+    "teacherApproved": false
+  },
+  "sources": [
+    {
+      "providerId": "youtube:t_TS_bnc_Y4",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1269,
+      "normalization": {
+        "captionControlEvents": 1266,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 2440,
+          "file": "kareler\\3c6b6b10e31791b682aed48ed4987575918dccab9dd495ef8d9beb9e63d1a4a9.png",
+          "sha256": "4a7f06348670bb4757f2ec2f1688d60e0e0f085dc930fb6a3aff60181736d760",
+          "pixelHash": "3c6b6b10e31791b682aed48ed4987575918dccab9dd495ef8d9beb9e63d1a4a9",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 2520,
+          "file": "kareler\\62c2b7389ce1d6f4b7df271ba3ab148729b1e010b24ffdd8daf2da5cd3c4d099.png",
+          "sha256": "63ee87ff7194b330db0f51e8713fd29f883674f52f42b2385d5f19f81d7bd488",
+          "pixelHash": "62c2b7389ce1d6f4b7df271ba3ab148729b1e010b24ffdd8daf2da5cd3c4d099",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    },
+    {
+      "providerId": "youtube:2RwwzsBVF0U",
+      "usage": {
+        "status": "PROCESSING_ALLOWED",
+        "note": "Kullanıcının seçtiği herkese açık TYT kampı oynatma listesinden yerel eğitim/içerik inceleme. Lisans devri veya yeniden yayın izni iddiası değildir; medya Git dışında kalır."
+      },
+      "segments": 1024,
+      "normalization": {
+        "captionControlEvents": 1019,
+        "endClippedCues": 1,
+        "policy": "JSON3_CONTROL_EVENTS_AND_FINAL_OVERRUN_MAX_3_SECONDS"
+      },
+      "frames": [
+        {
+          "seconds": 1540,
+          "file": "kareler\\3edb3c43c2676815251e5ce880b31111483d26524450e3ce28e6d0d75f4635ac.png",
+          "sha256": "7294b6d8c5db1ea5332d9f7bc3b8eed1a936b2dc70a37a6c7ed0c55e86b713ef",
+          "pixelHash": "3edb3c43c2676815251e5ce880b31111483d26524450e3ce28e6d0d75f4635ac",
+          "questionCompleteness": "UNREVIEWED"
+        },
+        {
+          "seconds": 1590,
+          "file": "kareler\\f55ca2ba72267266dd00caafcc5f4ab01389b61c3cb776ffc17357d17941c331.png",
+          "sha256": "2eea3a0b1335fdb04bd06924ece7b0bd386802f90a9d81f5a0d9dbe4c0a0c7d0",
+          "pixelHash": "f55ca2ba72267266dd00caafcc5f4ab01389b61c3cb776ffc17357d17941c331",
+          "questionCompleteness": "UNREVIEWED"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "esit-degerler-kok-gibi",
+      "contentHash": "16825f33a076d858371cece198eee098deefeb89de73331f3a9d274909cb0151",
+      "reviewStatus": "PENDING"
+    },
+    {
+      "id": "cift-tek-katsayi-toplami",
+      "contentHash": "a88387a7e48d029d201c99e4b56111bf6783a4e810ea0d88f9d74547b463cca1",
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

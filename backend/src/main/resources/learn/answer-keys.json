@@ -4607,6 +4607,19 @@
    ],
    "version": "85a2427e9a1b3f53"
   },
+  "polinom-islemleri:c1b": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "D",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "6fa13d7ce57a4877"
+  },
   "polinom-islemleri:c2": {
    "conceptId": "polinom-islemleri",
    "type": "choice",
@@ -4619,6 +4632,19 @@
     "E"
    ],
    "version": "6fa13d7ce57a4877"
+  },
+  "polinom-islemleri:c2b": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "C",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "85a2427e9a1b3f53"
   },
   "polinom-islemleri:c3": {
    "conceptId": "polinom-islemleri",
@@ -4633,7 +4659,33 @@
    ],
    "version": "6fa13d7ce57a4877"
   },
+  "polinom-islemleri:c3b": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "A",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "a7ece0af5749bb7c"
+  },
   "polinom-islemleri:c4": {
+   "conceptId": "polinom-islemleri",
+   "type": "choice",
+   "answer": "B",
+   "choices": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "version": "1472983ce40becda"
+  },
+  "polinom-islemleri:c4b": {
    "conceptId": "polinom-islemleri",
    "type": "choice",
    "answer": "B",

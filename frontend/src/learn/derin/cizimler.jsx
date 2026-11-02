@@ -28,5 +28,6 @@ import { diagrams as kumeIslem } from './kume-islemleri-cizim.jsx';
 import { diagrams as fonksiyon } from './fonksiyon-kavrami-cizim.jsx';
 import { diagrams as fonksiyonGrafik } from './fonksiyon-grafikleri-cizim.jsx';
 import { diagrams as bileske } from './bileske-ters-cizim.jsx';
+import { diagrams as polinom } from './polinom-islemleri-cizim.jsx';
 
-export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu, ...kumeler, ...kumeIslem, ...fonksiyon, ...fonksiyonGrafik, ...bileske };
+export const DEEP_DIAGRAMS = { ...temelKavramlar, ...sayiBasamaklari, ...ebobEkok, ...rasyonelSayilar, ...denklemler, ...esitsizlikler, ...mutlakDeger, ...usluIfadeler, ...kokluIfadeler, ...oranOranti, ...ikinciDerece, ...carpanlaraAyirma, ...sayiKesir, ...yasIsci, ...yuzdeKarisim, ...karZarar, ...hareket, ...grafik, ...veriGrafik, ...merkezi, ...onermeler, ...kosullu, ...kumeler, ...kumeIslem, ...fonksiyon, ...fonksiyonGrafik, ...bileske, ...polinom };

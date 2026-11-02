@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "65607471a31867cd48df143685e18ae1a3a525ff0cd560a45953f3156bec4ef7",
+  "inputsHash": "e9fbee61dc56b30735e72194684b705429e43b20aa44bfd7fc456b6817f73133",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -1289,6 +1289,54 @@
       },
       "evidenceHash": "832a4aa59053effe20ea388a6b9df91e09a62c293419194f3828e74edcf5430a",
       "contentHash": "32ffeec4051c52e03b3495bedcd57b66773986338d5948ec9edc9bf4de0c7f6d",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "polinom-islemleri-video:esit-degerler-kok-gibi",
+      "conceptId": "polinom-islemleri",
+      "topicId": "tyt.matematik.polinomlar",
+      "sectionIds": [
+        "s2",
+        "s2b"
+      ],
+      "title": "Eşit değerler: P(x) − c'nin kökleri",
+      "rule": "Bir polinom birkaç noktada aynı c değerini alıyorsa P(x) − c bu noktaların hepsinde sıfırdır: P(x) − c = a(x − x₁)(x − x₂)…; derece ve baş katsayı a'yı belirler.",
+      "condition": "Nokta sayısı polinomun derecesine eşit olmalı (ya da baş katsayı ile birlikte polinomu belirleyecek kadar bilgi bulunmalı). Eşit değerler aynı c olmalı.",
+      "example": "Baş katsayısı 1 olan üçüncü dereceden P için P(0) = P(1) = P(2) = 5 ise P(x) = x(x − 1)(x − 2) + 5; P(3) = 6 + 5 = 11.",
+      "counterexample": "Değerler farklıysa (P(1) = 2, P(2) = 3) bu kısa yol çalışmaz; bölme eşitliği ya da sistem kurulur.",
+      "rationale": "P(x) − c polinomu verilen noktaların her birinde 0 olduğu için bu noktalar onun kökleridir; kökleri bilinen polinom çarpanlarıyla yazılır.",
+      "source": {
+        "providerId": "youtube:2RwwzsBVF0U",
+        "startSeconds": 1523,
+        "endSeconds": 1597
+      },
+      "evidenceHash": "86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022",
+      "contentHash": "16825f33a076d858371cece198eee098deefeb89de73331f3a9d274909cb0151",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "polinom-islemleri-video:cift-tek-katsayi-toplami",
+      "conceptId": "polinom-islemleri",
+      "topicId": "tyt.matematik.polinomlar",
+      "sectionIds": [
+        "s4",
+        "s4b"
+      ],
+      "title": "Çift ve tek dereceli katsayı toplamları",
+      "rule": "Çift dereceli terimlerin katsayıları toplamı (P(1) + P(−1))/2, tek dereceli terimlerin katsayıları toplamı (P(1) − P(−1))/2'dir. Sabit terim x⁰ olduğu için çift dereceli sayılır.",
+      "condition": "Polinom açılmış olmasa da geçerlidir; yalnız P(1) ve P(−1) hesaplanır.",
+      "example": "P(x) = (x − 2)³ + 4x² + 5 için P(1) = 8, P(−1) = −18: çift dereceliler toplamı −5, tek dereceliler toplamı 13.",
+      "counterexample": "Sabit terimi çift dereceli toplama katmamak, (P(1) + P(−1))/2 sonucunu açılımla karşılaştırırken yanlış fark bulmaya yol açar.",
+      "rationale": "x = −1 yazınca çift kuvvetler değişmez, tek kuvvetler işaret değiştirir. P(1) + P(−1)'de tek terimler birbirini götürür, çift terimler iki kez sayılır.",
+      "source": {
+        "providerId": "youtube:t_TS_bnc_Y4",
+        "startSeconds": 2424,
+        "endSeconds": 2530
+      },
+      "evidenceHash": "86eea2fd9e8452192ac48c2009d31cdf10db235f96f8a46f8a831425e9d41022",
+      "contentHash": "a88387a7e48d029d201c99e4b56111bf6783a4e810ea0d88f9d74547b463cca1",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

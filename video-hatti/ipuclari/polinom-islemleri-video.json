@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "esit-degerler-kok-gibi",
+    "providerId": "youtube:2RwwzsBVF0U",
+    "startSeconds": 1523,
+    "endSeconds": 1597,
+    "quote": "bu 3 olmasaydı da hocam 0 olsaydı",
+    "frameSeconds": [
+      1540,
+      1590
+    ],
+    "rule": "Bir polinom birkaç noktada aynı c değerini alıyorsa P(x) − c bu noktaların hepsinde sıfırdır: P(x) − c = a(x − x₁)(x − x₂)…; derece ve baş katsayı a'yı belirler.",
+    "condition": "Nokta sayısı polinomun derecesine eşit olmalı (ya da baş katsayı ile birlikte polinomu belirleyecek kadar bilgi bulunmalı). Eşit değerler aynı c olmalı.",
+    "example": "Baş katsayısı 1 olan üçüncü dereceden P için P(0) = P(1) = P(2) = 5 ise P(x) = x(x − 1)(x − 2) + 5; P(3) = 6 + 5 = 11.",
+    "counterexample": "Değerler farklıysa (P(1) = 2, P(2) = 3) bu kısa yol çalışmaz; bölme eşitliği ya da sistem kurulur.",
+    "rationale": "P(x) − c polinomu verilen noktaların her birinde 0 olduğu için bu noktalar onun kökleridir; kökleri bilinen polinom çarpanlarıyla yazılır.",
+    "agentSourceReview": "Claude 1540 ve 1590. saniye karelerinde Soru 29'u (baş katsayısı 1, dördüncü derece; P(−2) = P(−1) = P(2) = P(3) = 3; x + 3 ile bölümden kalan) ve tahtadaki P(x) = (x + 2)(x + 1)(x − 2)(x − 3) + 3 yazımını okudu. Kartın örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "cift-tek-katsayi-toplami",
+    "providerId": "youtube:t_TS_bnc_Y4",
+    "startSeconds": 2424,
+    "endSeconds": 2530,
+    "quote": "Sabit terimin hepsi çift derecelidir",
+    "frameSeconds": [
+      2440,
+      2520
+    ],
+    "rule": "Çift dereceli terimlerin katsayıları toplamı (P(1) + P(−1))/2, tek dereceli terimlerin katsayıları toplamı (P(1) − P(−1))/2'dir. Sabit terim x⁰ olduğu için çift dereceli sayılır.",
+    "condition": "Polinom açılmış olmasa da geçerlidir; yalnız P(1) ve P(−1) hesaplanır.",
+    "example": "P(x) = (x − 2)³ + 4x² + 5 için P(1) = 8, P(−1) = −18: çift dereceliler toplamı −5, tek dereceliler toplamı 13.",
+    "counterexample": "Sabit terimi çift dereceli toplama katmamak, (P(1) + P(−1))/2 sonucunu açılımla karşılaştırırken yanlış fark bulmaya yol açar.",
+    "rationale": "x = −1 yazınca çift kuvvetler değişmez, tek kuvvetler işaret değiştirir. P(1) + P(−1)'de tek terimler birbirini götürür, çift terimler iki kez sayılır.",
+    "agentSourceReview": "Claude 2440 ve 2520. saniye karelerinde P(x) = ax⁴ + bx³ + cx² + dx + e yazımını, çift dereceli terimlerin işaretlenmesini ve DİKKAT kutusundaki (P(1) ± P(−1))/2 formüllerini okudu; altyazı 40:24'te sabit terimin çift dereceli sayıldığını söylüyor. Kartın örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]
