@@ -89,12 +89,12 @@ adımı güncelle. İçerik ve lab teknik kabulü birlikte olmadan konuyu genel 
 
 ## Laboratuvar kapsamı ve devam sırası
 
-**Yeni lab kabulüne göre:** TYT **5/32 teknik hazır**, AYT **0/24 teknik hazır**.
-Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`; kalan 51 konuda standarda göre kabulü
+**Yeni lab kabulüne göre:** TYT **6/32 teknik hazır**, AYT **0/24 teknik hazır**.
+Teknik hazır: `temel-kavramlar`, `sayi-basamaklari`, `bolme-bolunebilme`, `ebob-ekok`, `rasyonel-sayilar`, `birinci-derece-denklemler`; kalan 50 konuda standarda göre kabulü
 kayıtlı lab yok. Mevcut etkileşimli keşiflerin bulunması bu kabulün yapıldığı
 anlamına gelmez; önce kullanılabilirlikleri değerlendirilir.
 
-**Sıradaki çalışma:** `birinci-derece-denklemler` labı; sonra `esitsizlikler` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
+**Sıradaki çalışma:** `esitsizlikler` labı; sonra `mutlak-deger` ve aşağıdaki TYT sırası. Her konu [ortak lab motoruyla](matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)
 yazılır: `konular/<konu>.js` + çizim + bağımsız matematik testi + UI akışı + kabul
 manifesti; gerçek sorular görseli okunarak seçilir. Yeni konu hazırlanırken lab aynı
 konu paketi içinde yapılır. TYT içerik ve lab açıkları tamamlanınca AYT sırasına geçilir.
@@ -120,7 +120,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `bolme-bolunebilme` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/bolme-bolunebilme.json`; öğretmen/öğrenci kabulü yok | Bölme algoritması (kalan < bölen), kuralla aday üretme (3/4/9/11), bileşik kural (3·4 vs 2·6 karşı örneği), kalan ve döngü (iki döngü, EKOK); 10 doğrulanmış ÖSYM sorusu |
 | `ebob-ekok` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/ebob-ekok.json`; öğretmen/öğrenci kabulü yok | Asal çarpan ve bölen sayısı, EBOB·EKOK = a·b, EBOB mu EKOK mu (bölme/kurma), periyodik olaylar; 8 doğrulanmış ÖSYM sorusu (5’i Sayı Kümeleri kataloğundaki komşu bankalardan) |
 | `rasyonel-sayilar` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/rasyonel-sayilar.json`; öğretmen/öğrenci kabulü yok | Ortak bölme (EKOK ızgarası), ölçek okuma (eş aralık, ondalık), devirli ondalık → kesir, sıralama ve ara kesir; 6 doğrulanmış ÖSYM sorusu. Devirli hedefinde bankada eşleşen soru yok |
-| `birinci-derece-denklemler` | ⬜ LAB YOK | Denge ve bağlı miktarlar; sözel koşulu denkleme çevir, çözüm türlerini denetle |
+| `birinci-derece-denklemler` | ✅ TEKNİK HAZIR — [kabul kaydı](matematik-laboratuvari.md#konu-kabul-kayıtları), `testler/kanit/lab/birinci-derece-denklemler.json`; öğretmen/öğrenci kabulü yok | Denk işlem (terazi, tek kefeye işlem tuzağı), çözüm yok/sonsuz (iki doğru), denklem sistemi (kesişim), istenen ifade (denklemin katı); 6 doğrulanmış ÖSYM sorusu (aynı kategorideki eşitsizlik bankasından). Özel durum hedefinde eşleşen soru derste çözülmüş |
 | `esitsizlikler` | ⬜ LAB YOK | Sayı doğrusunda aralık ve işaret; negatifle çarpma, uç ve tam sayı koşulları |
 | `mutlak-deger` | ⬜ LAB YOK | Uzaklık ve hareketli nokta; mutlak değeri parçalı durumlara ve çözüme çevir |
 | `uslu-ifadeler` | ⬜ LAB YOK | Çarpan yapısı ve büyüme; üs kurallarının nedenini, taban/parantez koşulunu kur |

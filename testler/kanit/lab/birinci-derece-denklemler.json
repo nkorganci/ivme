@@ -1,0 +1,89 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "birinci-derece-denklemler",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "denge",
+      "label": "Denk işlem",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0603",
+        "TYT-0624"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ozel-durum",
+      "label": "Çözüm yok / sonsuz",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    },
+    {
+      "id": "sistem",
+      "label": "Denklem sistemi",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0617",
+        "TYT-0626",
+        "TYT-0609"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "ifade-degeri",
+      "label": "İstenen ifade",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0629"
+      ],
+      "realNote": false
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/birinci-derece-denklemler.js": "15a6259582ec47de3a20f2b884bfc4fe7d5a43d66344faf0509e02ca754be333",
+    "frontend/src/learn/lab/cizim/birinci-derece-denklemler.jsx": "ae505aca63cde0787b642f3d181475f0a532d6aa22095dfb77861481aa54c704",
+    "testler/lab-birinci-derece-denklemler.test.mjs": "9dc49df4084402c461551543f94be0c5da4703d7c627409b4acbd12d13a021e8",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "13e701aeb555b2319901ce50d6b682cb0a81142abaf1aa9e26d555bf2b81821e",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "a78f41c79c8440416bbb3d72c6c092d224113e429b6fba5ce0b2f48543ccf59d"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-birinci-derece-denklemler-rapor.json": "d2db169eb5571c1da3380636eebcd81a469f9da2bf1527d2adb0862f29a86811",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-denge-deney.png": "aad3e896bea9d1f35c7faad87564bd7b18ee0ece4272af1dc995d6f973d54175",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-denge-tamam.png": "7dc150d57f10491f8191f3d7b6e9b2061b1ac6e4f65843ba85f4bcbc66b28d46",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-ifade-degeri-deney.png": "da43019d5d27161d2a99a028ff649341d17262fa3c669ace5d4488ab47298f2b",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-ifade-degeri-tamam.png": "f66d8ba8517d0ecb957610d8ba184d01cbdb7272780dd9c021bcfa5772aa4258",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-ozel-durum-deney.png": "7ceca1d7424198df192e4be93e351e8629953d629e58f8de42a231897ea5b8f4",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-ozel-durum-tamam.png": "50af00eecfb4ba8c30df4e3ea7388f69cd9a1af7d10c769d8ab5f550967c9f9f",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-sistem-deney.png": "18d09c17e10f191b45272ccb1cb16baa86b682e5bab461357a32ea34bba6913a",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-birinci-derece-denklemler-sistem-tamam.png": "efdd0bdf6fcd1435e88cb915ca4ec2a10c276dcab1cecf0d4eb04a8c89918fe5",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-denge-deney.png": "ee587c20cc7406161d27c6207a7a116d74a261ee5eb9087da1e4fa85ef367f32",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-denge-tamam.png": "ba236610f1fa511459433ba0164e0c8a2359f2ba6a2bac46416b62a9096bd9e0",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-ifade-degeri-deney.png": "2ba58c965e7ec505ba721532a99f624628f7db32df7549b8921d9ca9c685d0b9",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-ifade-degeri-tamam.png": "86633a96e41e50170393fa3425d4bbde9468be6ecd0b2c2c5bfb2b537ef6afc7",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-ozel-durum-deney.png": "7c347b72991da8c011c496c6fdb822fd12f3d53b58b581bdf1905dfda1d1e0ec",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-ozel-durum-tamam.png": "2b9410226533c7f6a3afd01a7d89913d3726d83178b57db98190956f2b846b74",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-sistem-deney.png": "cad2d398d50152fc8b9bebe98c53ed76d4247f5a114824d3a6022d3b2c7fe8e4",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-birinci-derece-denklemler-sistem-tamam.png": "dc6110dcec676a95c2f3611ffb71e0155691c2224699552aef13cce7ed955a14"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}
