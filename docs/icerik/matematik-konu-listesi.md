@@ -138,7 +138,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 | `grafik-rutin-olmayan` | ⬜ LAB YOK | Tablo/grafikten kısıt çıkarma ve strateji seçimi; gereksiz bilgiyi ele. Gerçek soru adayları TYT-0664, 0708, 0722, 0725, 0727 (0670, 0692, 0704 derste çözüldü) |
 | `veri-grafikleri` | ⬜ LAB YOK | Aynı verinin farklı grafikleri; ölçek ve sunum değişince değişmeyen bilgiyi oku. Gerçek soru adayları TYT-0803, 0805, 0807, 0811 (0796, 0798, 0809 derste çözüldü) |
 | `merkezi-egilim` | ⬜ LAB YOK | Veri noktalarını değiştir; ortalama/ortanca/yayılım ve aykırı değerin etkisini ayır. Gerçek soru adayları TYT-0795, 0797, 0800, 0802, 0804, 0806, 0808 (0799, 0801, 0810 derste çözüldü) |
-| `onermeler` | ⬜ LAB YOK | Doğruluk durumları kurma ve yanlış çıkarımı onarma; bağlaçların anlamını ayır |
+| `onermeler` | ⬜ LAB YOK | Doğruluk durumları kurma ve yanlış çıkarımı onarma; bağlaçların anlamını ayır. Gerçek soru adayları AYT_Sayisal-0043…0051 (0748, 0749, 0751 derste çözüldü; ⇒ içeren 0750, 0752, 0753 koşullu önerme dersine uygun) |
 | `kosullu-onerme` | ⬜ LAB YOK | Koşul, karşı durum ve niceleyici; bir örnek, karşı örnek ve genel iddiayı ayır |
 | `kumeler-temel` | ⬜ LAB YOK | Eleman/alt küme kurma; üyelik, kapsama ve boş küme durumlarını ayır |
 | `kume-islemleri` | ⬜ LAB YOK | Bölge seçimi ve ortak eleman sayımı; kesişim/birleşim/tümleyeni soruya çevir |
@@ -183,7 +183,7 @@ aktarım kabulü ayrı tamamlanır. Kurallar [lab sözleşmesindedir](matematik-
 ## Otomatik içerik listesi
 
 <!-- liste:basla (node scripts/konu-ogrenme-kapsam.mjs --liste üretir; elle düzenleme) -->
-TYT: **20/32 bitti**. Sıradaki TYT konusu: `onermeler`.
+TYT: **21/32 bitti**. Sıradaki TYT konusu: `kosullu-onerme`.
 
 ### TYT (şu anki aşama)
 
@@ -209,7 +209,7 @@ TYT: **20/32 bitti**. Sıradaki TYT konusu: `onermeler`.
 | 18 | ✅ BİTTİ | `grafik-rutin-olmayan` | Rutin Olmayan Problemler: Grafik, Tablo ve Strateji | 9 | TYT + AYT | 8/20/4/4 | 3 / 100 (Denklemler ve Eşitsizlikler ile İlgili Uygulamalar) | 2 · PL1 1, PL2 2 | 2/2 | — |
 | 19 | ✅ BİTTİ | `veri-grafikleri` | Verilerin Grafikle Gösterilmesi | 9 | TYT | 8/20/3/4 | 3 / 17 (Veri) | 2 · PL1 1, PL2 1 | 2/2 | — |
 | 20 | ✅ BİTTİ | `merkezi-egilim` | Merkezi Eğilim ve Yayılım Ölçüleri | 9 | TYT | 8/20/3/4 | 3 / 17 (Veri) | 2 · PL1 1, PL2 1 | 2/2 | — |
-| 21 | 🟡 EKSİK | `onermeler` | Önermeler ve Bileşik Önermeler | 9 | TYT + AYT | 4/8/2/1 | 0 / 6 (Önermeler ve Bileşik Önermeler) | 0 · PL1 2, PL2 1 | 0/2 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
+| 21 | ✅ BİTTİ | `onermeler` | Önermeler ve Bileşik Önermeler | 9 | TYT + AYT | 8/20/3/4 | 3 / 6 (Önermeler ve Bileşik Önermeler) | 2 · PL1 2, PL2 1 | 2/2 | — |
 | 22 | 🟡 EKSİK | `kosullu-onerme` | Koşullu Önerme ve Niceleyiciler | 9 | TYT + AYT | 4/8/1/1 | 0 / 6 (Önermeler ve Bileşik Önermeler) | 0 · PL1 2, PL2 1 | 0/1 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 23 | 🟡 EKSİK | `kumeler-temel` | Kümelerde Temel Kavramlar ve Alt Küme | 9 | TYT + AYT | 4/8/1/1 | 0 / 9 (Kümeler) | 0 · PL1 2, PL2 1 | 0/3 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 1/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |
 | 24 | 🟡 EKSİK | `kume-islemleri` | Kümelerde İşlemler ve Küme Problemleri | 9 | TYT + AYT | 4/8/2/1 | 0 / 9 (Kümeler) | 0 · PL1 4, PL2 2 | 0/5 | derinleştir (bölüm 4/8, örnek 8/20, tamamla 2/3, keşif 1/4); çıkmış soru 0/3; video protip 0/2; ders anlatım PDF okunmadı |

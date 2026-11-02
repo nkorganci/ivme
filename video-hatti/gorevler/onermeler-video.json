@@ -16,7 +16,9 @@
       },
       "media": "veri/video-hatti/medya/pdVMfd_lFUQ.mp4",
       "transcript": "veri/video-hatti/medya/pdVMfd_lFUQ.tr.json3",
-      "frameSeconds": [],
+      "frameSeconds": [
+        1440
+      ],
       "durationSeconds": 2724,
       "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
     },
@@ -28,7 +30,9 @@
       },
       "media": "veri/video-hatti/medya/Qqd3-PtGcdk.mp4",
       "transcript": "veri/video-hatti/medya/Qqd3-PtGcdk.tr.json3",
-      "frameSeconds": [],
+      "frameSeconds": [
+        2250
+      ],
       "durationSeconds": 3406,
       "transcriptOrigin": "PUBLIC_AUTO_CAPTIONS"
     }

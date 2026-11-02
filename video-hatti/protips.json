@@ -419,6 +419,28 @@
           ]
         }
       ]
+    },
+    {
+      "taskId": "onermeler-video",
+      "conceptId": "onermeler",
+      "hints": [
+        {
+          "id": "tabloyu-istisnadan-kur",
+          "title": "Tabloyu istisnadan kur: ve → 1-1, veya → 0-0",
+          "sectionIds": [
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "id": "ya-da-bir-ile-degil",
+          "title": "Ya da: 1 ile değil, 0 ile aynı",
+          "sectionIds": [
+            "s2",
+            "s4b"
+          ]
+        }
+      ]
     }
   ]
 }

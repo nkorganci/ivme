@@ -45,8 +45,10 @@ baglac-tablo 2 1-3
 de-morgan 2 1-3
 deger-cikarim 1 1-3
 
-@oturum Önerme ve bağlaçlar | s1 s2
-@oturum De Morgan ve çıkarım | s3 s4
+@oturum Önerme ve günlük cümleler | s1 s1b
+@oturum Bağlaçlar ve doğruluk tablosu | s2 s2b
+@oturum De Morgan ve “her” önermeleri | s3 s3b
+@oturum Çıkarım ve ya da zinciri | s4 s4b
 
 @ontest
 ::soru o1 tip=onerme-deger zorluk=1
@@ -136,6 +138,67 @@ E) 5 || IV kişisel beğenidir; II soru cümlesidir.
 kontrol: 4
 cozum: I ($\equiv 0$), III ($\equiv 1$), V ($\equiv 1$), VI ($\equiv 0$) önermedir. II soru, IV kişisel beğeni olduğu için önerme değildir: 4 önerme.
 
+@bolum s1b 12 | Günlük cümlelerden önermeler ve çıkarım
+::kesfet on-bul
+
+::fikir
+Yeni nesil mantık sorularında önermeler **günlük cümlelerdir**. Üç adımda çöz: (1) bileşik önermenin değerinden **kesin bilgi veren bağlaçla** başla ($\wedge\equiv1$ ya da $\vee\equiv0$), (2) her önermenin 1 ya da 0 olduğunu bul, (3) değeri **cümleye geri çevir**: $p\equiv0$ ise $p'$ doğrudur.
+
+::duzey
+L1: "p: İlk ayrımda soldaki yoldan gitti" yanlışsa ($p\equiv0$) sağdaki yoldan gitmiştir. Her önermenin değilini bir cümle olarak yazmak çözümü kolaylaştırır.
+L2: $p'\wedge(q\wedge r)\equiv1$ ise üç parça da doğrudur: $p'\equiv1$, $q\equiv1$, $r\equiv1$. Bir bağlaç tek başına kesin sonuç vermiyorsa (ör. $\vee\equiv1$) önce diğer parçalardan bilinen değerleri yerleştir.
+L3: Bazen birden çok değer üçlüsü bileşik önermeyi sağlar; o zaman soru "hangisi olabilir" diye sorar ve seçenekleri tek tek denersin. "Hangisi kesinlikle doğrudur" sorusunda bütün olası üçlülerde ortak olan bilgi aranır.
+
+::cikmis TYT-0749 tip=deger-cikarim
+
+::ornek baslik="Benzer: yol ayrımlarıyla arkadaş bulmak"
+soru: Bir parkta ilk ayrımda sol yol Ahmet'e ya da Banu'ya (ikinci ayrımda sol Ahmet, sağ Banu), sağ yol Cem'e ya da üçüncü bir ayrıma (ikinci ayrımda sol Cem, sağ üçüncü ayrım) gidiyor; üçüncü ayrımda sol Derya, sağ Elif. p: "İlk ayrımda sağa gitti", q: "İkinci ayrımda sola gitti", r: "Üçüncü ayrımda sola gitti". $p\wedge(q\vee r)'\equiv1$ ise kime gitmiştir?
+1. $\wedge\equiv1$: $p\equiv1$ ve $(q\vee r)'\equiv1$. || İki taraf da doğru.
+2. $(q\vee r)'\equiv1$ ise $q\vee r\equiv0$: $q\equiv0$, $r\equiv0$. || Veya yalnız iki taraf 0 iken 0.
+3. Sağ, sağ, sağ: Elif. || Değerleri cümleye çevir.
+cevap: Elif
+
+::cikmis TYT-0751 tip=deger-cikarim
+
+::ornek baslik="Benzer: sipariş seçenekleri"
+soru: Bir sipariş için p: "Kargo ücreti ödedi.", q: "İndirim kodu kullanmadı.", r: "Hediye paketi istedi." önermeleri veriliyor. $(p'\wedge q)\wedge(r\vee p)\equiv1$ olduğuna göre sipariş nasıl verilmiştir?
+1. $p'\equiv1$ ve $q\equiv1$: kargo ücreti ödemedi, indirim kodu kullanmadı. || İlk $\wedge$ bloğu.
+2. $r\vee p\equiv1$ ve $p\equiv0$ ise $r\equiv1$. || Bilinen değeri yerleştir.
+3. Hediye paketi istedi. || Cümleye çevir.
+cevap: Ücretsiz kargo, indirim kodu yok, hediye paketi var
+
+::ornek baslik="Tek çözüm çıkmazsa"
+soru: $(p\wedge q')\vee r\equiv0$ olduğuna göre $(p, q, r)$ üçlüsü kaç farklı biçimde olabilir?
+1. $\vee\equiv0$: $r\equiv0$ ve $p\wedge q'\equiv0$. || İki taraf da 0.
+2. $p\wedge q'\equiv0$ için $(p,q)$: $(1,1)$, $(0,1)$, $(0,0)$; yalnız $(1,0)$ olmaz. || $p\wedge q'$ yalnız $p=1$, $q=0$'da 1.
+3. 3 farklı üçlü. || Kesin olan tek bilgi: $r\equiv0$.
+cevap: 3
+
+::sorgula s1b-yemek baslik="Ali yalan söylediyse"
+durum: Ali "Çorbayı da tatlıyı da yedim." diyor ama bu sözün yanlış olduğu anlaşılıyor.
+soru: Kesin olarak ne söylenebilir?
+A) İkisini de yemedi || $(p\wedge q)\equiv0$ için ikisinin de 0 olması gerekmez.
++B) En az birini yemedi || $(p\wedge q)'\equiv p'\vee q'$: en az biri yanlış.
+C) Çorbayı yemedi || Belki çorbayı yedi, tatlıyı yemedi.
+neden: $p\wedge q\equiv0$ üç durumda olur: $(1,0)$, $(0,1)$, $(0,0)$. Hepsinde ortak olan "en az biri yanlış"tır; bu da De Morgan'la $p'\vee q'$'dür.
+sinav: "Ve" bileşiği yanlışsa yalnız "en az biri yanlış" kesindir; "veya" bileşiği yanlışsa ikisi de yanlıştır.
+dusun: Ali "Çorbayı ya da tatlıyı yedim (veya)" deseydi ve bu yanlış olsaydı?
+yanit: $p\vee q\equiv0$: ikisini de yemedi.
+
+::yanilgi m1b tip=deger-cikarim
+yanlis: $p\wedge q\equiv0$ ise $p\equiv0$ ve $q\equiv0$'dır.
+neden: "Ve" bileşiği bir tarafı 0 olunca da 0'dır.
+dogru: $p\wedge q\equiv0$ ise en az biri 0'dır; kesin olan $p'\vee q'\equiv1$'dir.
+
+::soru c1b tip=deger-cikarim zorluk=2
+$(p'\vee q)'\wedge r\equiv1$ olduğuna göre $p$, $q$, $r$ önermelerinin doğruluk değerleri sırasıyla nedir?
+A) 0, 0, 1 || $(p'\vee q)'\equiv1$ ise $p'\equiv0$, yani $p\equiv1$.
+B) 0, 1, 1 || Hesabı kontrol et.
++C) 1, 0, 1 || Doğru: $p'\vee q\equiv0$; $p\equiv1$, $q\equiv0$, $r\equiv1$.
+D) 1, 1, 1 || $q\equiv1$ olursa $p'\vee q\equiv1$ olur.
+E) 1, 0, 0 || $\wedge\equiv1$ için $r\equiv1$ olmalı.
+cozum: $\wedge\equiv1$: $r\equiv1$ ve $(p'\vee q)'\equiv1$, yani $p'\vee q\equiv0$: $p'\equiv0$, $q\equiv0$. Sonuç $p\equiv1$, $q\equiv0$, $r\equiv1$.
+
 @bolum s2 10 | Ve, veya, ya da
 ::fikir
 **$\wedge$ (ve)** yalnız iki taraf da doğruysa doğru; **$\vee$ (veya)** en az biri doğruysa doğru; **$\veebar$ (ya da)** yalnız biri doğruysa doğrudur.
@@ -197,6 +260,72 @@ C) $p' \veebar r$ || $1 \veebar 0 \equiv 1$.
 +D) $q \veebar r'$ || Doğru: $1 \veebar 1 \equiv 0$.
 E) $(p \wedge r)'$ || $p \wedge r \equiv 0$, değili 1.
 cozum: $r' \equiv 1$ olduğundan $q \veebar r' \equiv 1 \veebar 1 \equiv 0$. Diğer seçeneklerin hepsi 1'dir.
+
+@bolum s2b 10 | Doğruluk tablosu kurmak ve satır saymak
+::kesfet on-tablo
+
+::fikir
+Birbirinden bağımsız $n$ önermenin **$2^n$ farklı doğruluk durumu** (satırı) vardır. Tabloyu içten dışa sütun sütun doldur. İki bileşik önerme **bütün satırlarda aynı değeri** alıyorsa denktir. "Kaç satırda doğru" sorusu çoğu zaman tablo kurmadan, kesin bağlaçtan sayılır.
+
+::duzey
+L1: 2 önermede 4, 3 önermede 8 satır vardır. Her yeni önerme satır sayısını ikiye katlar: önceki tablo bir kez "1", bir kez "0" ile tekrar yazılır.
+L2: $(p\vee q)\wedge r'$ kaç satırda doğru? $r'\equiv1$ için $r\equiv0$: 4 satır. Bunların içinde $p\vee q\equiv1$ olanlar, $(0,0)$ dışındaki 3 satır: cevap 3. Kesin bağlacı (burada $\wedge$) kullanarak sayım hızlanır.
+L3: Denklik için tablo yerine özellikler kullanılabilir (dağılma, De Morgan). Ama şüpheli bir denklikte tek bir satırın farklı çıkması denkliği bozar; o satırı bulmak, tabloyu tamamen kurmaktan hızlıdır.
+
+::ornek baslik="Satır sayısından önerme sayısı"
+soru: $n$ tane birbirinden bağımsız önermenin birlikte 64 farklı doğruluk durumu vardır. $n$ kaçtır?
+1. Satır sayısı $2^n$. || Her önerme 1 ya da 0.
+2. $2^n=64=2^6$. || Üslü denklem.
+3. $n=6$. || Kontrol: 5 önerme 32, 6 önerme 64 satır.
+cevap: 6
+
+::ornek baslik="Kaç satırda doğru?"
+soru: $(p\vee q)\wedge r'$ bileşik önermesi doğruluk tablosunun kaç satırında doğrudur?
+1. 3 önerme: 8 satır. || $2^3$.
+2. $\wedge\equiv1$ için $r\equiv0$: 4 satır kalır. || $r'\equiv1$.
+3. Bu 4 satırdan $p\vee q\equiv1$ olanlar: $(1,1)$, $(1,0)$, $(0,1)$; 3 satır. || $(0,0)$ dışarıda.
+cevap: 3
+
+::ornek baslik="Tabloyla dağılma"
+soru: $p\wedge(q\vee r)$ ile $(p\wedge q)\vee(p\wedge r)$ önermelerinin denk olduğunu tabloyla nasıl gösterirsin?
+1. $p\equiv0$ olan 4 satırda iki taraf da 0. || $\wedge$'nin bir tarafı 0.
+2. $p\equiv1$ olan 4 satırda sol taraf $q\vee r$, sağ taraf $q\vee r$. || $1\wedge x\equiv x$.
+3. 8 satırın hepsinde aynı değer: denktir. || Denklik = bütün satırlarda eşitlik.
+cevap: Bütün satırlarda değerler aynı; dağılma özelliği.
+
+::tamamla baslik="Tabloyla sadeleştirme"
+soru: $(p\veebar q)\wedge p$ önermesinin en sade biçimi nedir?
+1. $p\equiv0$ ise $\wedge$ nedeniyle sonuç 0. || $p$'nin 0 olduğu iki satır.
+?2. $p\equiv1$ ise $1\veebar q\equiv q'$, sonuç $q'$. || $1\veebar q$ yalnız $q\equiv0$'da 1.
+?3. Sonuç yalnız $p\equiv1$, $q\equiv0$ satırında 1: $p\wedge q'$. || Tek doğru satır.
+cevap: $p\wedge q'$
+
+::sorgula s2b-satir baslik="Dört önermenin tablosu"
+durum: Bir öğrenci $p$, $q$, $r$, $s$ önermeleri için doğruluk tablosu kuruyor ve satırları $2\cdot4=8$ diye hesaplıyor.
+soru: Tablo kaç satırdır?
+A) 8 || Her önerme durum sayısını ikiye katlar; ikiyle çarpmak değil, 2'nin kuvveti.
++B) 16 || $2^4=16$.
+C) 4 || Bu, önerme sayısıdır.
+kontrol: 2^4
+neden: İlk önerme 2, ikinci 4, üçüncü 8, dördüncü 16 durum verir: her önerme bir öncekini 1 ve 0 için ikiye kopyalar. Satır sayısı $2^n$'dir.
+sinav: $n$ önermenin doğruluk tablosu $2^n$ satırdır; satır sayısından $n$'yi bulmak için 2'nin kuvvetine bak.
+dusun: 5 önermede kaç satırda bütün önermeler doğrudur?
+yanit: Yalnız 1 satırda (32 satırdan biri).
+
+::yanilgi m2b tip=baglac-tablo
+yanlis: 4 önermenin doğruluk tablosunda $2\cdot4=8$ satır vardır.
+neden: Her yeni önerme satır sayısını ikiye katlar; çarpım değil kuvvettir.
+dogru: $2^4=16$ satır.
+
+::soru c2b tip=baglac-tablo zorluk=2
+$(p\wedge q)\vee r$ bileşik önermesi doğruluk tablosunun kaç satırında doğrudur?
+A) 3 || $r\equiv1$ olan satırları unuttun.
+B) 4 || Yalnız $r\equiv1$ satırlarını saydın.
++C) 5 || Doğru: $r\equiv1$ 4 satır, $r\equiv0$ iken $p=q=1$ 1 satır.
+D) 6 || Hesabı kontrol et.
+E) 7 || Bu, $(p\vee q)\vee r$ için olurdu.
+kontrol: 5
+cozum: $r\equiv1$ olan 4 satırın hepsinde doğru. $r\equiv0$ olan 4 satırda $p\wedge q\equiv1$ yalnız bir satır. Toplam 5.
 
 @bolum s3 9 | De Morgan ve sadeleştirme
 ::fikir
@@ -262,6 +391,63 @@ D) $q$ || $p \wedge q$ ifadesindeki $p$'yi atamazsın.
 E) $0$ || $p \wedge q$ her zaman 0 değildir.
 cozum: $(p' \wedge q)' \equiv p \vee q'$. $(p \vee q') \wedge q \equiv (p \wedge q) \vee (q' \wedge q) \equiv (p \wedge q) \vee 0 \equiv p \wedge q$.
 
+@bolum s3b 10 | "Her" ve "en az bir": cümlenin değilini almak
+::fikir
+"**Her** ... dır" önermesinin değili "**en az bir** ... değildir"; "**en az bir** ... dır" önermesinin değili "**hiçbiri** ... değildir" önermesidir. Bileşik cümlelerde De Morgan ile birleştir: $(p\vee q)'\equiv p'\wedge q'$, yani "ne $p$ ne $q$".
+
+::duzey
+L1: "Sınıftaki her öğrenci gözlüklüdür" yanlışsa hepsinin gözlüksüz olduğu söylenemez; yalnız en az bir öğrencinin gözlüksüz olduğu kesindir.
+L2: "Her tablo ters asılmıştır" önermesi yanlışsa en az bir tablo düz asılmıştır. Görsel seçenekli sorularda her önermenin değilini bir kontrol kuralına çevir: "en az biri düz", "en az birinde kişi yok" gibi; sonra seçenekleri bu kurallarla ele.
+L3: $(p\vee q)'\wedge r$ gibi bir bileşik önerme doğruysa $p'$, $q'$ ve $r$ aynı anda doğrudur. "Her" içeren önermelerin değilleri "en az bir" olduğu için seçenek kontrolü varlık aramaya döner: kuralı sağlayan tek bir örnek yeter.
+
+::cikmis TYT-0748 tip=de-morgan
+
+::ornek baslik="Benzer: kutuların görünümü"
+soru: Üç kutu için p: "Her kutu kırmızıdır.", q: "Her kutuda en az bir top vardır.", r: "Her kutunun kapağı kapalıdır." önermeleri veriliyor. $(p\vee r)'\wedge q\equiv1$ ise aşağıdaki dizilimlerden hangisi olabilir? I. Üç kırmızı kutu, hepsinde top var, biri açık. II. Biri mavi, hepsinde top var, ikisi açık. III. Biri mavi, birinde top yok, biri açık.
+1. $(p\vee r)'\equiv1$: $p\equiv0$ ve $r\equiv0$: en az bir kutu kırmızı değil, en az bir kutu açık. || De Morgan.
+2. $q\equiv1$: her kutuda top var. || "Her" önermesi doğru.
+3. I'de bütün kutular kırmızı ($p\equiv1$) ✗; III'te topsuz kutu var ($q\equiv0$) ✗; II uygun. || Kuralları tek tek uygula.
+cevap: Yalnız II
+
+::ornek baslik="Her'in değili"
+soru: p: "Sınıftaki her öğrenci sınavı geçti." önermesinin değili nedir?
+1. "Her" önermesi tek bir istisnayla yanlış olur. || Bir karşı örnek yeter.
+2. $p'$: "Sınıfta sınavı geçemeyen en az bir öğrenci vardır." || "Her ... dır" → "en az bir ... değildir".
+3. "Hiçbir öğrenci sınavı geçemedi" $p'$ değildir; çok daha güçlü bir iddiadır. || Sık yapılan hata.
+cevap: En az bir öğrenci sınavı geçemedi.
+
+::ornek baslik="Ne ... ne ... cümlesi"
+soru: p: "Ali çay içti.", q: "Ali kahve içti." "Ali ne çay ne kahve içti." cümlesini sembollerle yaz ve en sade değil biçimini bul.
+1. "Ne çay ne kahve": $p'\wedge q'$. || İkisi de içilmedi.
+2. De Morgan: $p'\wedge q'\equiv(p\vee q)'$. || "Çay veya kahve içti" yanlış.
+3. Değili: $p\vee q$: "Ali çay ya da kahveden en az birini içti." || Değilin değili.
+cevap: $p'\wedge q'\equiv(p\vee q)'$; değili $p\vee q$
+
+::sorgula s3b-sinav baslik="Her soru doğru mu?"
+durum: Öğretmen "Bu sınavda her soruyu doğru cevapladın." cümlesinin yanlış olduğunu söylüyor.
+soru: Hangisi kesinlikle doğrudur?
+A) Hiçbir soruyu doğru cevaplamadın. || "Her"in değili "hiçbiri" değil, "en az biri değil"dir.
++B) Yanlış cevapladığın en az bir soru var. || $p'$: en az bir soru doğru değil.
+C) Soruların yarısını yanlış cevapladın. || Sayı hakkında bilgi yok; bir yanlış yeter.
+neden: "Her soru doğru" önermesi tek bir yanlış soruyla bozulur. Bu yüzden kesin bilgi yalnız "en az bir yanlış var"dır.
+sinav: Niceleyicili önermelerin değilinde "her" ↔ "en az bir", "hiçbiri" ↔ "en az biri" yer değiştirir; yüklem de değillenir.
+dusun: "Bu sınavda en az bir soruyu doğru cevapladın." yanlışsa ne olur?
+yanit: Hiçbir soruyu doğru cevaplamamışsın.
+
+::yanilgi m3b tip=de-morgan
+yanlis: "Her öğrenci gözlüklüdür" önermesinin değili "Hiçbir öğrenci gözlüklü değildir"dir.
+neden: Değil, önermeyi yanlış yapan en zayıf durumu söylemelidir: tek bir gözlüksüz öğrenci yeter.
+dogru: Değili: "En az bir öğrenci gözlüklü değildir."
+
+::soru c3b tip=de-morgan zorluk=2
+p: "Bütün kapılar kilitli." ve q: "En az bir pencere açık." önermeleri için $(p\vee q)'$ önermesinin anlamı hangisidir?
+A) Bütün kapılar açık ve bütün pencereler kapalı. || "Bütün kapılar kilitli"nin değili "bütün kapılar açık" değildir.
++B) En az bir kapı kilitsiz ve bütün pencereler kapalı. || Doğru: $p'\wedge q'$.
+C) En az bir kapı kilitsiz veya bütün pencereler kapalı. || De Morgan'da $\vee$, $\wedge$'ye döner.
+D) Hiçbir kapı kilitli değil ve en az bir pencere kapalı. || Değilleri ters aldın.
+E) Bütün kapılar kilitli ve en az bir pencere açık. || Bu, değil değil, $p\wedge q$.
+cozum: $(p\vee q)'\equiv p'\wedge q'$. $p'$: en az bir kapı kilitli değil; $q'$: hiçbir pencere açık değil (bütün pencereler kapalı).
+
 @bolum s4 8 | Doğruluk değerinden bileşenlere
 ::fikir
 Kesin bilgi veren bağlaçla başla: **$\wedge \equiv 1$** ise iki taraf da 1; **$\vee \equiv 0$** ise iki taraf da 0. $\veebar \equiv 1$ ise taraflar farklı, $\veebar \equiv 0$ ise aynıdır.
@@ -319,6 +505,64 @@ C) 1, 1, 0 || $q \equiv 0$ ve $r \equiv 1$ olmalı.
 D) 0, 0, 1 || $p' \vee q \equiv 0$ için $p' \equiv 0$ gerekir.
 E) 1, 0, 0 || $s \equiv 0$ iken $r \vee s \equiv 1$ için $r \equiv 1$ olmalı.
 cozum: $\wedge \equiv 1$: $(p' \vee q)' \equiv 1$ ve $r \vee s \equiv 1$. İlkinden $p' \vee q \equiv 0$: $p \equiv 1$, $q \equiv 0$. İkincisinden $s \equiv 0$ olduğu için $r \equiv 1$.
+
+@bolum s4b 10 | Ya da zinciri: doğruları say, tek mi çift mi?
+::kesfet on-xor
+
+::fikir
+$\veebar$ (ya da) **farklılık** bağlacıdır: $p\veebar q\equiv1$ ancak $p$ ile $q$ farklıysa. Zincirde $p\veebar q\veebar r\veebar\dots\equiv1$ ancak **doğru olanların sayısı tekse**. Kısa yollar: $p\veebar0\equiv p$, $p\veebar1\equiv p'$, $p\veebar p\equiv0$, $p\veebar p'\equiv1$.
+
+::duzey
+L1: $1\veebar1\equiv0$, $1\veebar0\equiv1$: iki taraf aynıysa 0, farklıysa 1. Günlük dilde "ya da" ikisinin birden olmayacağını söyler: "Tatlı ya da içecek hediye" kampanyasında ikisi birden verilmez.
+L2: Zinciri soldan sağa hesaplarken her 1, sonucu tersine çevirir; 0 değiştirmez. Bu yüzden sonuç yalnız 1'lerin sayısının tek ya da çift olmasına bağlıdır: $1\veebar0\veebar1\veebar1\equiv1$ (üç tane 1).
+L3: $p\veebar q\equiv1$ ve $q\veebar r\equiv1$ ise $p$ ile $q$ farklı, $q$ ile $r$ farklı: $p$ ile $r$ aynıdır, $p\veebar r\equiv0$. Değişme ve birleşme özellikleri olduğu için parantezler istenen yere taşınabilir; $(p\veebar q)'\equiv p'\veebar q\equiv p\veebar q'$.
+
+::ornek baslik="Zinciri saymakla hesapla"
+soru: $1\veebar0\veebar1\veebar1\veebar0$ ifadesinin doğruluk değeri nedir?
+1. 1'lerin sayısı 3. || 0'lar sonucu değiştirmez.
+2. Tek sayıda 1: sonuç 1. || Her 1 sonucu tersine çevirir.
+3. Kontrol: $1\veebar0=1$, $1\veebar1=0$, $0\veebar1=1$, $1\veebar0=1$. || Soldan sağa.
+cevap: 1
+
+::ornek baslik="Farklıdan farklı aynıdır"
+soru: $p\veebar q\equiv1$ ve $q\veebar r\equiv1$ olduğuna göre $p\veebar r$ ve $p\veebar q\veebar r$ neye denktir?
+1. $p\ne q$ ve $q\ne r$: $p=r$. || İki değer arasında yalnız iki seçenek var.
+2. $p\veebar r\equiv0$. || Aynı değerler.
+3. $p\veebar q\veebar r\equiv1\veebar r\equiv r'$. || $p\veebar q\equiv1$ yerleştirildi.
+cevap: $p\veebar r\equiv0$; $p\veebar q\veebar r\equiv r'$
+
+::ornek baslik="Önce değerleri bul"
+soru: $q\equiv1$ ve $p\veebar q\equiv1$ olduğuna göre $(p\vee q)\veebar(p'\wedge q')$ önermesinin değeri nedir?
+1. $p\veebar1\equiv p'\equiv1$: $p\equiv0$. || $1$ ile ya da, değil verir.
+2. $p\vee q\equiv0\vee1\equiv1$; $p'\wedge q'\equiv1\wedge0\equiv0$. || Parçaları hesapla.
+3. $1\veebar0\equiv1$. || Farklı: 1.
+cevap: 1
+
+::sorgula s4b-kampanya baslik="Tatlı ya da içecek hediye"
+durum: Bir restoran "Ana yemek alana tatlı ya da içecek hediye" kampanyası yapıyor. Garson bir müşteriye hem tatlı hem içecek hediye ediyor.
+soru: Kampanyanın sözü, "ya da" anlamıyla, tutulmuş mu?
+A) Evet, müşteri en az birini aldı. || Bu "veya" anlamıdır; "ya da" ikisinin birden olmamasını ister.
++B) Hayır, ikisi birden verildi. || $1\veebar1\equiv0$: "ya da" önermesi yanlış.
+C) Hayır, çünkü hiçbirini almadı. || Müşteri ikisini de aldı.
+neden: "Ya da" yalnız bir tarafın doğru olduğu durumda doğrudur. İkisi birden verildiğinde ($1\veebar1$) de, hiçbiri verilmediğinde ($0\veebar0$) de söz tutulmamış olur.
+sinav: Soruda "ya da" geçiyorsa $\veebar$, "veya" geçiyorsa $\vee$ kullan; ikisinin farkı yalnız iki tarafın birden doğru olduğu satırdadır.
+dusun: Müşteri yalnız içecek aldıysa söz tutulmuş mu?
+yanit: Evet: $0\veebar1\equiv1$.
+
+::yanilgi m4b tip=baglac-tablo
+yanlis: $p\veebar1\equiv1$'dir; çünkü bir tarafı doğru.
+neden: "Ya da" iki taraf da doğruysa yanlıştır; $p\equiv1$ iken $1\veebar1\equiv0$ olur.
+dogru: $p\veebar1\equiv p'$, $p\veebar0\equiv p$.
+
+::soru c4b tip=baglac-tablo zorluk=2
+$p$, $q$, $r$ önermelerinin doğruluk tablosundaki 8 satırın kaçında $p\veebar q\veebar r\equiv1$ olur?
+A) 1 || Yalnız üçünün doğru olduğu satırı saydın.
+B) 3 || Tam bir tanesinin doğru olduğu satırları saydın; üçü doğru olan satırı unuttun.
++C) 4 || Doğru: tek sayıda 1 olan satırlar: 3 tane tek 1'li, 1 tane üç 1'li.
+D) 6 || Hesabı kontrol et.
+E) 7 || Bu, $p\vee q\vee r$ için olurdu.
+kontrol: 4
+cozum: Sonuç, doğru olanların sayısı tekse 1'dir. Tam bir doğru: 3 satır; üç doğru: 1 satır. Toplam 4 (satırların yarısı).
 
 ::ozet
 - Önerme kesin hüküm bildirir; yanlış hüküm de önermedir.

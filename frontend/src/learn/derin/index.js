@@ -22,8 +22,9 @@ import * as hareket from './hareket-problemleri.js';
 import * as grafik from './grafik-rutin-olmayan.js';
 import * as veriGrafik from './veri-grafikleri.js';
 import * as merkezi from './merkezi-egilim.js';
+import * as onermeler from './onermeler.js';
 
-const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi];
+const MODULES = [temelKavramlar, sayiBasamaklari, ebobEkok, rasyonelSayilar, denklemler, esitsizlikler, mutlakDeger, usluIfadeler, kokluIfadeler, oranOranti, ikinciDerece, carpanlaraAyirma, sayiKesir, yasIsci, yuzdeKarisim, karZarar, hareket, grafik, veriGrafik, merkezi, onermeler];
 
 export const DEEP_EXPLORATIONS = Object.assign({}, ...MODULES.map((m) => m.explorations));
 export const DEEP_CONTROLS = Object.assign({}, ...MODULES.map((m) => m.controls));

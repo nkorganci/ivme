@@ -1,7 +1,7 @@
 {
   "schema": "video-protips-v1",
   "generatedBy": "scripts/video-protips.py",
-  "inputsHash": "f81664cdc41e038347fc71b875a0e3e72bdf99318c94462323b3c6043ab35765",
+  "inputsHash": "71fcad91b83040c11ecb8577c14fcaa63c67514c538366943c9715b0e1e0d39d",
   "tips": [
     {
       "id": "mert-hoca-tek-cift:sifir-ve-negatiflerde-ciftlik",
@@ -955,6 +955,54 @@
       },
       "evidenceHash": "0bc0f9fc33f001b8e81a9aebbf6cf2e81b5cfe5b116a80ba65ed2a2d9bc80e3a",
       "contentHash": "d457a1df2cbda9abaa34c8fbda387e296ae68c22c9e1067270be253d67f2ae01",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "onermeler-video:tabloyu-istisnadan-kur",
+      "conceptId": "onermeler",
+      "topicId": "tyt.matematik.mantik",
+      "sectionIds": [
+        "s2",
+        "s4"
+      ],
+      "title": "Tabloyu istisnadan kur: ve → 1-1, veya → 0-0",
+      "rule": "Ve ile veya tablolarını ezberlemek yerine istisnayı bil: “ve” yalnız iki taraf da 1 iken 1, “veya” yalnız iki taraf da 0 iken 0'dır; tablonun geri kalanı kendiliğinden dolar.",
+      "condition": "Yalnız ve (∧) ile veya (∨) için geçerlidir. Ya da (⊻), ise (⇒) ve ancak ve ancak (⇔) bağlaçlarının kendi istisnaları ayrıca öğrenilmelidir.",
+      "example": "p ∧ q ≡ 1 bilgisi istisnaya denk gelir: p ≡ 1 ve q ≡ 1 kesin. p ∨ q ≡ 0 bilgisi de istisnadır: p ≡ 0 ve q ≡ 0 kesin.",
+      "counterexample": "p ∧ q ≡ 0 ya da p ∨ q ≡ 1 istisna değildir; üç farklı satırda gerçekleşir, tek başına bileşenleri belirlemez.",
+      "rationale": "İki önermenin dört satırından yalnız biri istisnadır; ve bağlacında bu (1, 1) satırı, veya bağlacında (0, 0) satırıdır. Bileşik önermeden değer çıkarırken kesin bilgi yalnız istisna satırından gelir.",
+      "source": {
+        "providerId": "youtube:pdVMfd_lFUQ",
+        "startSeconds": 1420,
+        "endSeconds": 1470
+      },
+      "evidenceHash": "1969d1dc9412ec05a309057d7b3e4632140968eba6ca61c4c8969decedba70fb",
+      "contentHash": "7a1feaf3871cb294ee72116109839304d3c1a72bd4e70669dd694573d024995b",
+      "reviewStatus": "PENDING",
+      "teacherApproved": false
+    },
+    {
+      "id": "onermeler-video:ya-da-bir-ile-degil",
+      "conceptId": "onermeler",
+      "topicId": "tyt.matematik.mantik",
+      "sectionIds": [
+        "s2",
+        "s4b"
+      ],
+      "title": "Ya da: 1 ile değil, 0 ile aynı",
+      "rule": "Ya da bağlacında 1 ile bağlamak değil alır, 0 ile bağlamak değiştirmez: p ⊻ 1 ≡ p', p ⊻ 0 ≡ p; ayrıca p ⊻ p ≡ 0 ve p ⊻ p' ≡ 1.",
+      "condition": "Yalnız ya da (⊻) bağlacı için. Veya bağlacında p ∨ 1 ≡ 1 ve p ∨ 0 ≡ p'dir; iki bağlacı karıştırma.",
+      "example": "1 ⊻ 0 ⊻ 1 ⊻ 1 zinciri: her 1 sonucu tersine çevirir, üç tane 1 olduğu için sonuç 1. q ≡ 1 ve p ⊻ q ≡ 1 ise p ⊻ 1 ≡ p' ≡ 1, yani p ≡ 0.",
+      "counterexample": "p ⊻ 1 ≡ 1 yazmak veya bağlacının kuralını ya da'ya taşımaktır; p ≡ 1 iken 1 ⊻ 1 ≡ 0 olur.",
+      "rationale": "Ya da, iki taraf farklıyken 1'dir. 1 ile karşılaştırılan p, ancak 0 iken farklıdır; bu yüzden sonuç p'nin değilidir. 0 ile karşılaştırılan p ise ancak 1 iken farklıdır; sonuç p'nin kendisidir.",
+      "source": {
+        "providerId": "youtube:Qqd3-PtGcdk",
+        "startSeconds": 2200,
+        "endSeconds": 2330
+      },
+      "evidenceHash": "1969d1dc9412ec05a309057d7b3e4632140968eba6ca61c4c8969decedba70fb",
+      "contentHash": "4b36f1f2bf65a8851cc27037b0f1c3877205aebf19117aad5af46c47362aa74d",
       "reviewStatus": "PENDING",
       "teacherApproved": false
     }

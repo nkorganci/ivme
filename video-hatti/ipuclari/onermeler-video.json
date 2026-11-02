@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "tabloyu-istisnadan-kur",
+    "providerId": "youtube:pdVMfd_lFUQ",
+    "startSeconds": 1420,
+    "endSeconds": 1470,
+    "quote": "veya bağlacında istisna 0 ikisi 0 olunca 0 oluyor",
+    "frameSeconds": [
+      1440
+    ],
+    "rule": "Ve ile veya tablolarını ezberlemek yerine istisnayı bil: “ve” yalnız iki taraf da 1 iken 1, “veya” yalnız iki taraf da 0 iken 0'dır; tablonun geri kalanı kendiliğinden dolar.",
+    "condition": "Yalnız ve (∧) ile veya (∨) için geçerlidir. Ya da (⊻), ise (⇒) ve ancak ve ancak (⇔) bağlaçlarının kendi istisnaları ayrıca öğrenilmelidir.",
+    "example": "p ∧ q ≡ 1 bilgisi istisnaya denk gelir: p ≡ 1 ve q ≡ 1 kesin. p ∨ q ≡ 0 bilgisi de istisnadır: p ≡ 0 ve q ≡ 0 kesin.",
+    "counterexample": "p ∧ q ≡ 0 ya da p ∨ q ≡ 1 istisna değildir; üç farklı satırda gerçekleşir, tek başına bileşenleri belirlemez.",
+    "rationale": "İki önermenin dört satırından yalnız biri istisnadır; ve bağlacında bu (1, 1) satırı, veya bağlacında (0, 0) satırıdır. Bileşik önermeden değer çıkarırken kesin bilgi yalnız istisna satırından gelir.",
+    "agentSourceReview": "Claude 1440. saniye karesinde “ve” ve “veya” tablolarını, altlarındaki “istisna → 1” ve “istisna → 0” notlarını ve özellik kutusunu (p ∨ q ≡ 0 ise p ≡ 0, q ≡ 0; p ∧ q ≡ 1 ise p ≡ 1, q ≡ 1) okudu; altyazı 23:48'de iki istisnayı açıklıyor.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  },
+  {
+    "id": "ya-da-bir-ile-degil",
+    "providerId": "youtube:Qqd3-PtGcdk",
+    "startSeconds": 2200,
+    "endSeconds": 2330,
+    "quote": "Demek ki burası P'nin her zaman değiline eşittir",
+    "frameSeconds": [
+      2250
+    ],
+    "rule": "Ya da bağlacında 1 ile bağlamak değil alır, 0 ile bağlamak değiştirmez: p ⊻ 1 ≡ p', p ⊻ 0 ≡ p; ayrıca p ⊻ p ≡ 0 ve p ⊻ p' ≡ 1.",
+    "condition": "Yalnız ya da (⊻) bağlacı için. Veya bağlacında p ∨ 1 ≡ 1 ve p ∨ 0 ≡ p'dir; iki bağlacı karıştırma.",
+    "example": "1 ⊻ 0 ⊻ 1 ⊻ 1 zinciri: her 1 sonucu tersine çevirir, üç tane 1 olduğu için sonuç 1. q ≡ 1 ve p ⊻ q ≡ 1 ise p ⊻ 1 ≡ p' ≡ 1, yani p ≡ 0.",
+    "counterexample": "p ⊻ 1 ≡ 1 yazmak veya bağlacının kuralını ya da'ya taşımaktır; p ≡ 1 iken 1 ⊻ 1 ≡ 0 olur.",
+    "rationale": "Ya da, iki taraf farklıyken 1'dir. 1 ile karşılaştırılan p, ancak 0 iken farklıdır; bu yüzden sonuç p'nin değilidir. 0 ile karşılaştırılan p ise ancak 1 iken farklıdır; sonuç p'nin kendisidir.",
+    "agentSourceReview": "Claude 2250. saniye karesinde “Ya da bağlacı” tablosunu ve yanına yazılmış p ⊻ p ≡ 0, p ⊻ 1 ≡ p', p ⊻ 0 ≡ p, p ⊻ p' ≡ 1 notlarını okudu; altyazı 36:42–37:15'te her birini 1 ve 0 deneyerek gerekçelendiriyor. Kartın zincir örneği özgündür.",
+    "questionCompleteness": "COMPLETE_IN_REVIEWED_FRAME"
+  }
+]
