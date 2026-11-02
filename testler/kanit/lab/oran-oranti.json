@@ -1,0 +1,88 @@
+{
+  "task": "MAT-LAB-02",
+  "concept": "oran-oranti",
+  "automaticAcceptance": "PASS",
+  "teacherApproved": false,
+  "studentTransferObserved": false,
+  "goals": [
+    {
+      "id": "oran-koru",
+      "label": "Oranı koruma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0702",
+        "TYT-0726"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "dogru-ters",
+      "label": "Doğru / ters orantı",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0652",
+        "TYT-0715"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "paylastirma",
+      "label": "Paylaştırma",
+      "custom": null,
+      "transfer": 3,
+      "real": [
+        "TYT-0707"
+      ],
+      "realNote": false
+    },
+    {
+      "id": "bilesik",
+      "label": "Bileşik orantı",
+      "custom": null,
+      "transfer": 3,
+      "real": [],
+      "realNote": true
+    }
+  ],
+  "inputs": {
+    "frontend/src/learn/lab/konular/oran-oranti.js": "283059fa015d4ec630ae9340efa6b6725febd00723022e63d8c29117c9ad4fc5",
+    "frontend/src/learn/lab/cizim/oran-oranti.jsx": "4552840cf8d7a1cf32c8916160973c4c8053f3a68f9d6828b4d4cf29637abbee",
+    "testler/lab-oran-oranti.test.mjs": "3309c64a73142cb2e7bb69d127278bc002bfbac8b5f65facc381939d69795b74",
+    "frontend/src/learn/lab/GoalWorkbench.jsx": "9bf750421b707400de65bd197e2373b819dbc17317c021d6fce00fab908bc0ae",
+    "frontend/src/learn/lab/TopicLab.jsx": "78ad87dd504fdfe7bacfb6f3dd3f2d84c2e0dfeb4083979bee92025103fef0f8",
+    "frontend/src/learn/lab/topic-lab.css": "f1971030711f781442b7d668b057aaf9cb3c7f1e08ed5292f845f065e4383e4f",
+    "frontend/src/learn/lab/sayi.js": "b8f7a4bc3ac4e834c4b90ab94bd0b730368e8aa84029fd83ec3f4418912d86ee",
+    "frontend/src/learn/engine/sharedSet.js": "9402037c0c4dbf8791f75ece803941446c2523543663841917e68a523c975e8f",
+    "testler/matematik-lab-yapi.test.mjs": "e672815645689aedcdde709c8206216bf1916f27b7ebad683ec854b087c110a9",
+    "testler/matematik-laboratuvari-ui.mjs": "8e7bd927cd3bb4a799913ec4ce4cebe439098f55f145e2e9b0497ca572d3af90"
+  },
+  "artifacts": {
+    "veri/ui-denetim/konu-ogrenme/laboratuvar-oran-oranti-rapor.json": "b869a5eff8f2962dc07225aee319b45fe758bcef3b93e41411703400636b39b2",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-bilesik-deney.png": "1cbcd9289843469aa0d6143c6bba4c8b6fa1b4b786ff7c676e73a2ffe797a5b6",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-bilesik-tamam.png": "71e84c1e9b1dc450f6495cc8802c5eb2e30139c4e5d6613ab502bcb5ad4f56b4",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-dogru-ters-deney.png": "b4b764ef16578cedd0d26915c37abb38ae5acc53d4898350f7b29c9c3a40585e",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-dogru-ters-tamam.png": "21f8937f2d0d7af71e9a7f53793d8d26bcb9568332b099cfcb2ecb977be6c239",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-oran-koru-deney.png": "37854196de0f1f51e957aeba230d9007f2dc4cde9aa70caf50ea4aa22b2abd8c",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-oran-koru-tamam.png": "f04f54fbd2a4fe8048160a609da15431b68f8ca17c390bef130f55bb2b286d16",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-paylastirma-deney.png": "4cb258bc2cf410626cb8c5469276faed46cac02c5ce42da390b740170735223c",
+    "veri/ui-denetim/konu-ogrenme/masaustu-laboratuvar-oran-oranti-paylastirma-tamam.png": "93ce99cd288a0d90e67b0f21e17324027ffbbe9dc9bcde9ebc9dd879b59425a5",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-bilesik-deney.png": "2539475698ee47697ce8b18c66671845323d3353c38bc89fc405564686b981cc",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-bilesik-tamam.png": "adf7bc6d23ba946e7e8f6d6b9586727810d15c6a36aa3467e675710174f24a30",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-dogru-ters-deney.png": "54c1944fef041556e99214f8431f858739204105550bcb8a120e846a6c199e51",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-dogru-ters-tamam.png": "e1c732db3456057d0778ff735f21b0dc93fe9b85277344487ef7c32392a36c99",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-oran-koru-deney.png": "3e6bfa9447afccf05a2aaea04244373b65f1e8ff752a2199434859e285a070b0",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-oran-koru-tamam.png": "3886e64bf6202734c6ef92ef1963f8ccba3d9054bd3ff100c632cb5df5515b29",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-paylastirma-deney.png": "4c75e65338333a7553004742530f2e22d6482f51c5a202d5d518311cc9d115ae",
+    "veri/ui-denetim/konu-ogrenme/mobil-laboratuvar-oran-oranti-paylastirma-tamam.png": "7f1ccd494b52baf9f1d2f1bccb503b7a46dee35d734384ba2c5837872b9e0a37"
+  },
+  "ui": {
+    "runs": 2,
+    "stepsPerRun": [
+      28,
+      28
+    ],
+    "problems": []
+  }
+}

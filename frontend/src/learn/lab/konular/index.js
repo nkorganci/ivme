@@ -20,6 +20,7 @@ export const LAB_LOADERS = {
   'uslu-ifadeler': () => Promise.all([import('./uslu-ifadeler.js'), import('../cizim/uslu-ifadeler.jsx')]),
   'koklu-ifadeler': () => Promise.all([import('./koklu-ifadeler.js'), import('../cizim/koklu-ifadeler.jsx')]),
   'carpanlara-ayirma': () => Promise.all([import('./carpanlara-ayirma.js'), import('../cizim/carpanlara-ayirma.jsx')]),
+  'oran-oranti': () => Promise.all([import('./oran-oranti.js'), import('../cizim/oran-oranti.jsx')]),
 };
 
 export const hasLab = (conceptId) => Object.hasOwn(LAB_LOADERS, conceptId);
@@ -51,4 +52,6 @@ export const LAB_KESIF = {
   'kok-eslenik': ['koklu-ifadeler', 'eslenik'], 'kok-denklem': ['koklu-ifadeler', 'denklem'],
   'carpanlara-ayirma': ['carpanlara-ayirma', 'gruplama'], 'carpan-ortak': ['carpanlara-ayirma', 'gruplama'],
   'carpan-alan': ['carpanlara-ayirma', 'iki-kare'], 'carpan-capraz': ['carpanlara-ayirma', 'uc-terimli'],
+  'oran-oranti': ['oran-oranti', 'oran-koru'], 'oran-tur': ['oran-oranti', 'dogru-ters'], 'oran-pay': ['oran-oranti', 'paylastirma'],
+  'oran-bilesik': ['oran-oranti', 'bilesik'],
 };
