@@ -15,7 +15,7 @@ export const TRACK_STATUS = {
   PLANNED: { label: 'Henüz hazır değil', badge: 'muted' },
 };
 
-export const FAMILY_LABELS = { YKS: 'YKS', KPSS: 'KPSS' };
+export const FAMILY_LABELS = { YKS: 'YKS', KPSS: 'KPSS', YURT_DISI: 'Yurt Dışı' };
 
 export function ExamTrackProvider({ children }) {
   const { user } = useAuth();
@@ -54,7 +54,7 @@ export function ExamTrackProvider({ children }) {
       kpss: track?.family === 'KPSS', exams, questionSources: questionSourcesFor(track, exams),
       examLabel: id => names.get(id) || id || '',
       // "AYT-TYT Çıkmış Sorular" yalnız YKS'te; KPSS'te sınavın adı kullanılır.
-      bankName: bank => track?.family === 'KPSS' && bank === 'CIKMIS' ? `${track.name} Çıkmış Sorular` : bankLabel(bank),
+      bankName: bank => track?.family !== 'YKS' && bank === 'CIKMIS' ? `${track.name} Çıkmış Sorular` : bankLabel(bank),
       featureReady: feature => featureReady(track, feature) };
   }, [state, loading, saving, error, select]);
 

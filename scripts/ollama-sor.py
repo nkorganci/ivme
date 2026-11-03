@@ -59,16 +59,18 @@ def ensure_server():
     raise SystemExit("Ollama sunucusu başlatılamadı (ollama serve).")
 
 
-def ask(prompt, image=None, schema=None, as_json=False, model=MODEL):
+def ask(prompt, image=None, schema=None, as_json=False, model=MODEL, max_output_tokens=None):
     image_bytes = Path(image).read_bytes() if image else b""
-    key_source = json.dumps([model, prompt, hashlib.sha256(image_bytes).hexdigest(), schema, as_json],
+    key_source = json.dumps([model, prompt, hashlib.sha256(image_bytes).hexdigest(), schema, as_json, max_output_tokens],
                             ensure_ascii=False, sort_keys=True)
     key = hashlib.sha256(key_source.encode("utf-8")).hexdigest()
     target = CACHE / key[:2] / f"{key}.json"
     if target.exists():
         return json.loads(target.read_text(encoding="utf-8"))["response"], True
-    payload = {"model": model, "prompt": prompt, "stream": False, "think": False,
-               "options": {"temperature": 0}}
+    options = {"temperature": 0}
+    if max_output_tokens is not None:
+        options["num_predict"] = int(max_output_tokens)
+    payload = {"model": model, "prompt": prompt, "stream": False, "think": False, "options": options}
     if image:
         payload["images"] = [base64.b64encode(image_bytes).decode("ascii")]
     if schema is not None:

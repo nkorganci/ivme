@@ -30,7 +30,10 @@ public class SharedQuestionLabels {
         if(filter.teacherDifficulty()!=null && !Set.of("KOLAY","ORTA","ZOR").contains(filter.teacherDifficulty()))throw ApiException.badRequest("Öğretmen zorluk etiketi geçersiz.");
         var categoryIds=filter.categoryId();
         boolean kpss=com.hedefyks.examtrack.ExamTrackService.kpss(filter);
-        java.util.function.Function<String,String> subjectIdOf=name->kpss?vocabulary.kpssSubjectId(filter.examType(),name):vocabulary.subjectId(name);
+        boolean yurtDisi=filter.examType()!=null ? filter.examType().name().equals("YURT_DISI_MY")
+                : !filter.source().isEmpty() && filter.source().stream().allMatch(s->s.examType().name().equals("YURT_DISI_MY"));
+        java.util.function.Function<String,String> subjectIdOf=name->kpss?vocabulary.kpssSubjectId(filter.examType(),name):
+                yurtDisi?vocabulary.yurtDisiSubjectId(name):vocabulary.subjectId(name);
         boolean namedPhysicsTopic=false;
         if(categoryIds.isEmpty() && filter.topic()!=null) {
             categoryIds=vocabulary.categories().stream().filter(c->Boolean.TRUE.equals(c.get("canonicalTopic"))

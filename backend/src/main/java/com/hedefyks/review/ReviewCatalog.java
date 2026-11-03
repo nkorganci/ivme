@@ -76,6 +76,13 @@ public class ReviewCatalog {
                         && (label.equals(c.get("subject")) || label.equals(c.get("subjectId"))))
                 .map(c -> c.get("subjectId").toString()).findFirst().orElse("unmapped");
     }
+    public String yurtDisiSubjectId(String label) {
+        if (label == null || label.isBlank()) return "unmapped";
+        return learningLabels.categories().stream()
+                .filter(c -> c.get("subjectId") != null && "YURT_DISI_MY".equals(c.get("exam"))
+                        && (label.equals(c.get("subject")) || label.equals(c.get("subjectId"))))
+                .map(c -> c.get("subjectId").toString()).findFirst().orElse("unmapped");
+    }
     public List<Map<String, Object>> branches() {
         var branches=new LinkedHashMap<String,Map<String,Object>>();
         for(var category:learningLabels.categories()) {

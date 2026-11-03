@@ -8,7 +8,7 @@ export const QUESTION_SOURCES = [
 
 /** Seçili sınavın kaynakları: YKS'de dört kaynak; KPSS'de her testin çıkmış soruları (soru bankası henüz yok). */
 export function questionSourcesFor(track, exams = []) {
-  if (!track || track.family !== 'KPSS') return QUESTION_SOURCES;
+  if (!track || track.family === 'YKS') return QUESTION_SOURCES;
   return exams.map(exam => ({ id: `CIKMIS_${exam.id}`, field: exam.id.toLowerCase(), headerName: exam.name,
     label: `${exam.name} Çıkmış Sorular`, bank: 'CIKMIS', examType: exam.id }));
 }
