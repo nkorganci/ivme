@@ -53,12 +53,17 @@ def lines(page):
 def key_answers(doc):
     answers = {}
     for page_no, page in enumerate(doc):
+        if len([t for _,t in lines(page) if ANSWER.fullmatch(t)]) < 20:
+            continue
         for _, text in lines(page):
             m = ANSWER.fullmatch(text)
             if m:
                 key = m.group(1) or m.group(2)
                 value = m.group(3).upper()
-                answers[key] = None if value.startswith('İPT') else value
+                answer = None if value.startswith('İPT') else value
+                if key in answers and answers[key] != answer:
+                    raise ValueError(f'Çelişkili PDF anahtarı: {key}')
+                answers[key] = answer
     return answers
 
 
@@ -66,7 +71,8 @@ def question_pages(doc):
     pages = []
     for page_no, page in enumerate(doc):
         upper = page.get_text().upper()
-        if 'CEVAP ANAHTARI' in upper or 'ADAYLARIN DİKKATİNE' in upper:
+        # Soru metnindeki "cevap anahtarı" ifadesi bir soru sayfasını elemez.
+        if page_no == 0 or sum(bool(ANSWER.fullmatch(t)) for _,t in lines(page)) >= 20:
             continue
         found = []
         for bbox, text in lines(page):
@@ -79,6 +85,11 @@ def question_pages(doc):
         if found:
             # Multi-column booklets: order anchors by reading column, then vertical position.
             width = page.rect.width
+            if all(n<100000 for n,_ in found):
+                # Printed numbers start at the column margin; "12. yüzyılda" inside
+                # a stem must never replace the real question 12 further down.
+                margins={side:min((b[0] for _,b in found if (b[0]<width/2)==side),default=0) for side in (True,False)}
+                found=[(n,b) for n,b in found if b[0]<=margins[b[0]<width/2]+10]
             found.sort(key=lambda item: (0 if item[1][0] < width * .50 else 1, item[1][1]))
             unique = []
             seen = set()
@@ -113,12 +124,6 @@ def extract_file(pdf):
     anchors = [(page_no, n, bbox) for page_no, values in pages for n, bbox in values]
     modern = any(n >= 100000 for _, n, _ in anchors)
     # Modern e-exam IDs are randomized identifiers. The answer-key ID order maps to booklet order.
-    if modern:
-        ids = sorted({n for _, n, _ in anchors})
-        keys = sorted(answers, key=lambda x: int(x))
-        answer_by_question = {i + 1: answers.get(key) for i, key in enumerate(keys)}
-    else:
-        answer_by_question = {int(key): value for key, value in answers.items()}
     results = []
     booklet_number = 0
     for page_no, values in pages:
@@ -134,9 +139,7 @@ def extract_file(pdf):
             booklet_number += 1
             code_no = number if not modern else booklet_number
             key = str(number)
-            answer = answer_by_question.get(code_no)
-            if answer is None and key in answers:
-                answer = answers[key]
+            answer = answers.get(key)  # e-sınavda doğrudan özgün altı haneli kimlikle eşleştir.
             source_id = hashlib.sha256(pdf.name.encode('utf-8')).hexdigest()[:8].upper()
             code = f'{PREFIX}_{source_id}_{code_no:03d}'
             pix = page.get_pixmap(matrix=pymupdf.Matrix(2, 2), clip=rect, alpha=False)
@@ -144,11 +147,13 @@ def extract_file(pdf):
             (OUT / 'gorsel').mkdir(parents=True, exist_ok=True)
             pix.save(OUT / 'gorsel' / image)
             text = page.get_text(clip=rect).strip()
+            choices=set(re.findall(r'(?<!\w)([A-E])\)',text))
             results.append({'code': code, 'examType': EXAM, 'exam': pdf.stem[:4],
                 'booklet': 'A' if re.search(r'[_-]A(?:_|\.)', pdf.stem) else ('B' if re.search(r'[_-]B(?:_|\.)', pdf.stem) else 'ESINAV'),
                 'number': code_no, 'pdfNumber': number, 'answer': answer, 'subjectId': '', 'subject': '', 'topicId': '',
                 'topic': '', 'confidence': 'UNREVIEWED', 'source': pdf.name, 'page': page_no + 1,
-                'image': image, 'text': text, 'sourceSha256': sha(pdf.read_bytes()),
+                'image': image, 'text': text, 'choiceCount':5 if 'E' in choices else 4,
+                'renderSha256':sha((OUT/'gorsel'/image).read_bytes()),'sourceSha256': sha(pdf.read_bytes()),
                 'active': answer is not None and answer in 'ABCDE' and bool(text)})
     return results, len(answers), len(anchors)
 
@@ -180,6 +185,8 @@ def classify():
         count = file_counts.get(q['source'], 100)
         if count >= 90:
             bounds = [25, 50, 75, count]
+        elif count==80:
+            bounds = [30,60,60,80] # 2018 ek kitapçık: 30 Türkçe + 30 sosyal + 10 mevzuat + 10 genel kültür.
         else:
             bounds = [round(count * .30), round(count * .60), round(count * .80), count]
         index = next((i for i, edge in enumerate(bounds) if q['number'] <= edge), 3)
@@ -255,6 +262,15 @@ def publish(database):
     from kaynakli_arastirma_db import db_connection, query
 
     payload = json.loads((OUT / 'sorular.json').read_text(encoding='utf-8'))
+    for file in payload['files']:
+        source=SOURCE/file['file']
+        rows=[q for q in payload['questions'] if q['source']==file['file']]
+        if sha(source.read_bytes())!=file['sha256'] or file.get('missingQuestionNumbers'):
+            raise ValueError(f"Kaynak değişmiş veya soru eksik: {file['file']}; çıkarım ve anahtar denetimi gerekli.")
+        if len(rows)!=file['answers'] or any(q['answer'] and ord(q['answer'])-64>q.get('choiceCount',4) for q in rows):
+            raise ValueError(f"Soru/anahtar/seçenek sayısı tutmuyor: {file['file']}")
+    if not payload['questions']:
+        raise ValueError('Boş soru aktarımı yayımlanamaz.')
     if any(not q['topicId'] for q in payload['questions']):
         raise ValueError('Önce siniflandir çalıştırılmalı; her soru resmî kapsamdaki bir konuya bağlanmalı.')
     valid = [q for q in payload['questions'] if q['answer'] and q['answer'] in 'ABCDE']
@@ -272,7 +288,7 @@ def publish(database):
             shutil.copyfile(source, target)
     qrows = [dict(code=q['code'], exam_type=EXAM, subject=q['subject'], topic=q['topic'], exam_year=int(q['exam']),
                   source=f"Yurt Dışı Öğretmenlik {q['exam']} {q['booklet']} · {q['source']}",
-                  image=f"yurt-disi/{q['image']}", correct_answer=q['answer'], choice_count=4, active=q['active']) for q in valid]
+                  image=f"yurt-disi/{q['image']}", correct_answer=q['answer'], choice_count=q.get('choiceCount',4), active=q['active']) for q in valid]
     quoted = lambda value: "'" + str(value).replace("'", "''") + "'"
     sql = f"""
 BEGIN;
@@ -306,7 +322,7 @@ CREATE TEMP TABLE yd_meta ON COMMIT DROP AS SELECT json_build_object('current',(
     item_json = []
     for q in valid:
         cat = category_by_id[q['topicId']]
-        source_version = sha(json.dumps([q['code'], q['sourceSha256'], q['page'], q['answer'], q['topicId'], q['topic']], ensure_ascii=False).encode())
+        source_version = sha(json.dumps([q['code'], q['sourceSha256'], q['page'], q['answer'], q['topicId'], q['topic'],q.get('renderSha256')], ensure_ascii=False).encode())
         assignment = {'review': {'status': 'PENDING', 'reviewer': None, 'reviewedAt': None,
                     'sourceVersion': source_version, 'categoryFingerprint': sha(json.dumps(cat,ensure_ascii=False).encode())},
             'evidence': [{'type':'CONTENT_READ','text':q['topic'],'method':'LOCAL_OLLAMA_CANDIDATE',
@@ -343,12 +359,13 @@ INSERT INTO learning_catalog.runs(run_key,method,summary)
  SELECT run_key,'YURT_DISI_INCREMENTAL',jsonb_build_object('track','YURT_DISI_OGRETMEN','questions',{len(valid)},'source',
  'PyMuPDF + MEB resmî kapsam/bölüm sırası; öğretmen onayı değildir.') FROM yd_run ON CONFLICT DO NOTHING;
 INSERT INTO learning_catalog.categories SELECT (SELECT run_key FROM yd_run),category_id,definition
- FROM learning_catalog.current_categories ON CONFLICT DO NOTHING;
+ FROM learning_catalog.current_categories WHERE definition->>'exam'<>'YURT_DISI_MY' ON CONFLICT DO NOTHING;
 INSERT INTO learning_catalog.items(run_key,item_key,kind,exam,subject_id,student_visible,data,category_ids,subject_ids,exam_ids)
  SELECT (SELECT run_key FROM yd_run),item_key,kind,exam,subject_id,student_visible,data,category_ids,subject_ids,exam_ids
- FROM learning_catalog.current_items ON CONFLICT DO NOTHING;
+ FROM learning_catalog.current_items WHERE exam<>'YURT_DISI_MY' ON CONFLICT DO NOTHING;
 INSERT INTO learning_catalog.assignments SELECT (SELECT run_key FROM yd_run),item_key,category_id,relation
- FROM learning_catalog.current_assignments ON CONFLICT DO NOTHING;
+ FROM learning_catalog.current_assignments a WHERE NOT EXISTS(SELECT 1 FROM learning_catalog.current_items i
+ WHERE i.run_key=a.run_key AND i.item_key=a.item_key AND i.exam='YURT_DISI_MY') ON CONFLICT DO NOTHING;
 INSERT INTO learning_catalog.categories(run_key,category_id,definition)
  SELECT (SELECT run_key FROM yd_run),c->>'id',c FROM yd_payload CROSS JOIN LATERAL jsonb_array_elements(categories) c ON CONFLICT DO NOTHING;
 CREATE TEMP TABLE yd_items ON COMMIT DROP AS
@@ -373,6 +390,98 @@ SELECT json_build_object('track','YURT_DISI_OGRETMEN','inserted',(SELECT count(*
 COMMIT;
 """
     print(query(connection, sql).splitlines()[-1])
+
+
+def booklets(database):
+    from kaynakli_arastirma_db import db_connection, query
+    payload=json.loads((OUT/'sorular.json').read_text(encoding='utf-8'))
+    records=[]
+    positions=[]
+    for source in payload['files']:
+        pdf=SOURCE/source['file']
+        with pymupdf.open(pdf) as doc:
+            keys=key_answers(doc)
+            cover=doc[0].get_text()
+        rows=[q for q in payload['questions'] if q['source']==pdf.name]
+        source_id=sha(pdf.name.encode())[:8].upper()
+        ident=f'YD_MY_{source_id}'
+        date=pdf.name[:10]
+        booklet=re.search(r'_([AB])_Sorular',pdf.name)
+        session=re.search(r'_(\d{4})-Oturumu',pdf.name)
+        label=f'{date} · '+(f'{booklet[1]} kitapçığı' if booklet else f'{session[1][:2]}.{session[1][2:]} oturumu' if session else 'e-Sınav')
+        minutes=75
+        if 'SÜRESİ (DAKİKA)' in cover:
+            nums=re.findall(r'(?m)^\s*(\d{1,3})\s*$',cover.split('SÜRESİ (DAKİKA)',1)[1])
+            if len(nums)>=3:minutes=int(nums[2])
+        cancelled=[q['number'] for q in rows if str(q['pdfNumber']) in keys and keys[str(q['pdfNumber'])] is None]
+        records.append(dict(id=ident,exam_year=int(date[:4]),label=label,source_path=pdf.name,
+            source_sha256=sha(pdf.read_bytes()),expected_count=len(keys),minutes=minutes,cancelled=cancelled))
+        positions.extend(dict(booklet_id=ident,code=q['code'],position=q['number']) for q in rows if q['active'])
+    quoted=lambda value:"'"+json.dumps(value,ensure_ascii=False).replace("'","''")+"'"
+    connection=db_connection(database)
+    query(connection,f"""BEGIN;
+        INSERT INTO official_exam_booklets(id,track_id,exam_type,exam_year,label,source_path,source_sha256,expected_count,time_limit_minutes,cancelled_numbers)
+        SELECT id,'YURT_DISI_OGRETMEN','YURT_DISI_MY',exam_year,label,source_path,source_sha256,expected_count,minutes,cancelled
+        FROM jsonb_to_recordset({quoted(records)}::jsonb) AS x(id text,exam_year int,label text,source_path text,source_sha256 text,expected_count int,minutes int,cancelled int[])
+        ON CONFLICT(id) DO UPDATE SET label=excluded.label,source_sha256=excluded.source_sha256,expected_count=excluded.expected_count,
+            time_limit_minutes=excluded.time_limit_minutes,cancelled_numbers=excluded.cancelled_numbers;
+        INSERT INTO official_exam_booklet_questions(booklet_id,question_code,position)
+        SELECT x.booklet_id,x.code,x.position FROM jsonb_to_recordset({quoted(positions)}::jsonb) AS x(booklet_id text,code text,position int)
+        JOIN questions q ON q.code=x.code AND q.exam_type='YURT_DISI_MY' AND q.active
+        ON CONFLICT(booklet_id,position) DO UPDATE SET question_code=excluded.question_code;
+        COMMIT;""")
+    print(json.dumps({'booklets':len(records),'positions':len(positions),'database':database},ensure_ascii=False))
+
+
+def verify_answers(database):
+    """Two extractions: PDF text lines vs positioned words; compare manifest and live DB."""
+    from kaynakli_arastirma_db import db_connection, query
+    payload=json.loads((OUT/'sorular.json').read_text(encoding='utf-8'))
+    db=json.loads(query(db_connection(database),"SELECT coalesce(json_agg(json_build_object('code',code,'answer',correct_answer,'active',active,'choiceCount',choice_count)),'[]') FROM questions WHERE exam_type='YURT_DISI_MY'"))
+    by_code={q['code']:q for q in db}
+    report={'database':database,'files':[],'errors':[],'checked':0,'cancelled':0,'missingInDb':[],'answerDifferences':[]}
+    for pdf in sorted(SOURCE.glob('*.pdf')):
+        with pymupdf.open(pdf) as doc:
+            text_keys={}
+            word_keys={}
+            key_pages=[]
+            for page_no,page in enumerate(doc):
+                raw=page.get_text('text').splitlines()
+                matches=[ANSWER.fullmatch(line) for line in raw]
+                matches=[m for m in matches if m]
+                if len(matches)<20:continue
+                key_pages.append(page_no+1)
+                for m in matches:text_keys[m[1] or m[2]]=None if m[3].upper().startswith('İPT') else m[3].upper()
+                grouped={}
+                for x0,y0,x1,y1,text,block,line,word in page.get_text('words'):
+                    grouped.setdefault((block,line),[]).append((word,text))
+                for values in grouped.values():
+                    m=ANSWER.fullmatch(' '.join(text for _,text in sorted(values)))
+                    if m:word_keys[m[1] or m[2]]=None if m[3].upper().startswith('İPT') else m[3].upper()
+            source_sha=sha(pdf.read_bytes())
+            if not text_keys or text_keys!=word_keys:report['errors'].append({'file':pdf.name,'error':'Independent answer extractions differ'})
+            rows=[q for q in payload['questions'] if q['source']==pdf.name]
+            for q in rows:
+                key=str(q['pdfNumber'])
+                if q['sourceSha256']!=source_sha or key not in text_keys or q['answer']!=text_keys[key]:
+                    report['errors'].append({'code':q['code'],'error':'Source identity or manifest answer differs'})
+                saved=by_code.get(q['code'])
+                if text_keys.get(key) is None:
+                    report['cancelled']+=1
+                    if saved and saved['active']:report['errors'].append({'code':q['code'],'error':'Cancelled question is active'})
+                elif not saved:report['missingInDb'].append(q['code'])
+                elif saved['answer']!=text_keys[key]:report['answerDifferences'].append({'code':q['code'],'db':saved['answer'],'pdf':text_keys[key]})
+                if saved and saved['choiceCount']!=q.get('choiceCount',4):
+                    report['errors'].append({'code':q['code'],'error':'Choice count differs','expected':q.get('choiceCount',4),'db':saved['choiceCount']})
+                report['checked']+=1
+            report['files'].append({'file':pdf.name,'sha256':source_sha,'keyPages':key_pages,'answers':len(text_keys),
+                'extractionsAgree':text_keys==word_keys,'questionRows':len(rows)})
+    expected={q['code'] for q in payload['questions'] if q['active']}
+    report['extraActiveCodes']=sorted(q['code'] for q in db if q['active'] and q['code'] not in expected)
+    report['status']='PASS' if not report['errors'] and not report['answerDifferences'] and not report['missingInDb'] and not report['extraActiveCodes'] else 'FAIL'
+    (OUT/'cevap-denetimi.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps({k:v for k,v in report.items() if k!='files'},ensure_ascii=False))
+    if report['status']!='PASS':raise SystemExit(1)
 
 
 def inventory(database):
@@ -423,16 +532,88 @@ def inventory(database):
     print(json.dumps({k:v for k,v in report.items() if k!='documents'}, ensure_ascii=False))
 
 
+def crop_images():
+    """Render only source question regions, then trim white edges. Never modify source PDFs."""
+    import numpy as np
+    from PIL import Image
+    payload=json.loads((OUT/'sorular.json').read_text(encoding='utf-8'))
+    target_root=APP/'veri/resimler-pilot/kirpilmis/yurt-disi'
+    target_root.mkdir(parents=True,exist_ok=True)
+    report={'extractor':'yurt-disi-source-crop-v2','images':[],'failures':[]}
+    prior_file=OUT/'kirpim-raporu.json'
+    prior=json.loads(prior_file.read_text(encoding='utf-8')) if prior_file.exists() else {}
+    previous={r['code']:r for r in prior.get('images',[])} if prior.get('extractor')==report['extractor'] else {}
+    for filename in sorted({q['source'] for q in payload['questions']}):
+        pdf=SOURCE/filename
+        with pymupdf.open(pdf) as doc:
+            pages=dict(question_pages(doc))
+            shared={}
+            for page_no,page in enumerate(doc):
+                for bounds,text in lines(page):
+                    heading=re.search(r'^(\d+(?:\s*[,–-]\s*\d+)*\s+ve\s+\d+)\.\s*sorular',text,re.I)
+                    if not heading:continue
+                    nums=list(map(int,re.findall(r'\d+',heading[1])))
+                    below=[b[1] for n,b in pages.get(page_no,[]) if n==min(nums)]
+                    if below:
+                        center=page.rect.width/2
+                        common=pymupdf.Rect(bounds[0]-3,bounds[1]-1,center-3 if bounds[0]<center else page.rect.width-27,min(below)-3)
+                        for n in nums:shared[n]=(page_no,common)
+            for q in (q for q in payload['questions'] if q['source']==filename and q['active']):
+                page=doc[q['page']-1]
+                anchors=pages.get(q['page']-1,[])
+                anchor=next((b for n,b in anchors if n==q['pdfNumber']),None)
+                if anchor is None:
+                    report['failures'].append({'code':q['code'],'reason':'anchor not found'});continue
+                center=page.rect.width/2
+                left=anchor[0]<center
+                next_y=min([b[1] for n,b in anchors if b[1]>anchor[1]+1 and (b[0]<center)==left] or [page.rect.height-61])
+                rect=pymupdf.Rect(anchor[0]-3,anchor[1]-1,center-3 if left else page.rect.width-27,min(next_y-3,page.rect.height-64))
+                cached=previous.get(q['code'])
+                target=target_root/q['image']
+                if cached and cached['sourceSha256']==q['sourceSha256'] and cached['clip']==list(rect) and target.is_file() and cached['sha256']==sha(target.read_bytes()) and (q['pdfNumber'] not in shared or cached.get('sharedStem')):
+                    report['images'].append(cached);continue
+                pix=page.get_pixmap(matrix=pymupdf.Matrix(3,3),clip=rect,alpha=False)
+                image=Image.frombytes('RGB',(pix.width,pix.height),pix.samples)
+                mask=np.min(np.asarray(image),axis=2)<235
+                ys,xs=np.where(mask)
+                if not len(xs):
+                    report['failures'].append({'code':q['code'],'reason':'blank crop'});continue
+                pad=5
+                box=(max(0,int(xs.min())-pad),max(0,int(ys.min())-pad),min(pix.width,int(xs.max())+pad+1),min(pix.height,int(ys.max())+pad+1))
+                cropped=image.crop(box)
+                if q['pdfNumber'] in shared:
+                    shared_page,shared_rect=shared[q['pdfNumber']]
+                    common_pix=doc[shared_page].get_pixmap(matrix=pymupdf.Matrix(3,3),clip=shared_rect,alpha=False)
+                    common_img=Image.frombytes('RGB',(common_pix.width,common_pix.height),common_pix.samples)
+                    cy,cx=np.where(np.min(np.asarray(common_img),axis=2)<235)
+                    common_img=common_img.crop((max(0,int(cx.min())-pad),max(0,int(cy.min())-pad),min(common_pix.width,int(cx.max())+pad+1),min(common_pix.height,int(cy.max())+pad+1)))
+                    combined=Image.new('RGB',(max(common_img.width,cropped.width),common_img.height+cropped.height+12),'white')
+                    combined.paste(common_img,(0,0));combined.paste(cropped,(0,common_img.height+12));cropped=combined
+                temporary=target.with_suffix('.tmp.png')
+                cropped.save(temporary,format='PNG',compress_level=4)
+                temporary.replace(target)
+                report['images'].append({'code':q['code'],'pdf':filename,'page':q['page'],'pdfNumber':q['pdfNumber'],
+                    'sourceSha256':q['sourceSha256'],'clip':list(rect),'trim':box,'size':cropped.size,'sharedStem':q['pdfNumber'] in shared,
+                    'sha256':sha((target_root/q['image']).read_bytes())})
+    report['status']='PASS' if not report['failures'] else 'FAIL'
+    (OUT/'kirpim-raporu.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps({'status':report['status'],'images':len(report['images']),'failures':report['failures']},ensure_ascii=False))
+    if report['failures']:raise SystemExit(1)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('cikarim')
     sub.add_parser('siniflandir', help='MEB bölüm/soru sırası ile hızlı ve tokensız kategorileme')
     sub.add_parser('siniflandir-ollama', help='Yerel Ollama ile içerik bazlı konu önerisi')
+    sub.add_parser('kirp',help='PDF kaynağından sayfa kenarsız ortak soru görsellerini üret')
     publish_parser = sub.add_parser('yayinla')
     publish_parser.add_argument('--database', choices=['ivme', 'ivme_test'], required=True)
     inventory_parser = sub.add_parser('envanter', help='Yurt dışı PDF envanterini DB’ye kaydet; soruları yeniden üretmez')
     inventory_parser.add_argument('--database', choices=['ivme', 'ivme_test'], required=True)
+    for name in ['kitapciklar','cevap-denetle']:
+        sub.add_parser(name).add_argument('--database',choices=['ivme','ivme_test'],required=True)
     args = parser.parse_args()
     if args.command == 'cikarim':
         extract()
@@ -442,6 +623,12 @@ def main():
         classify_ollama()
     elif args.command == 'envanter':
         inventory(args.database)
+    elif args.command == 'kitapciklar':
+        booklets(args.database)
+    elif args.command == 'cevap-denetle':
+        verify_answers(args.database)
+    elif args.command == 'kirp':
+        crop_images()
     else:
         publish(args.database)
 

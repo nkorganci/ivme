@@ -39,9 +39,15 @@ anahtarları, manifesti ve DB'yi karşılaştırır. E-sınavda altı haneli öz
 kullanılır, sayısal sıralama cevap eşlemesi değildir. İptal sorular etkinleşemez.
 Rapor `veri/yurt-disi/cevap-denetimi.json` içindedir; kaynak hash'i ve farklar
 saklanır. Bu, resmî anahtara uygunluk kontrolüdür; soruları yeniden çözme değildir.
+Seçenek sayısı soru metninden okunur: 2013 kitapçığının 100 sorusunda beş seçenek
+vardır. Gövde içindeki yıl/yüzyıl numarası sütun kenarında olmadığı için soru
+başlangıcı sayılmaz. Yayın, eksik soru veya seçenek dışında cevap varsa durur.
 
 `kirp`, PDF kaynağından soru bölgesini tekrar çizer; başlık/numara/ayırıcı çizgiyi
 dışlar ve beyaz kenarları kırpar. Kopyalar ortak görsel deposundaki
 `kirpilmis/yurt-disi/` yolunda sunulur; kaynak PDF ve ilk PNG korunur. Kaynak,
 koordinat ve çıktı hash'i eşleşen görsel yeniden üretilmez. Aynı QuestionImage ve
 ekran yüksekliği ölçümü YKS/KPSS/yurt dışı soru ve deneme ekranlarında kullanılır.
+Ortak metne bağlı soruların her birine ilgili metin eklenir; 2013'teki 4–6. şiir
+soruları bu şekilde korunur. Üçgen/harita gibi içerik çizgileri kırpılmaz; yalnız
+sayfa ayırıcıları soru alanı dışında bırakılır.
