@@ -907,7 +907,16 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .qdock { flex: none; }
 .question-personal { padding: 4px 8px; border-top: 1px solid var(--line); max-height: 24vh; overflow: auto; }
 .question-personal .question-prefs > p { margin: 3px 0; }
-.question-personal .segmented { flex-wrap: wrap; }
+.question-prefs-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: 8px; align-items: end; }
+.question-prefs-group { min-width: 0; }
+.question-prefs-group > p { margin: 2px 0 4px; font-size: 11px; }
+.question-prefs-controls .segmented { display: flex; flex-wrap: nowrap; gap: 1px; padding: 2px; margin: 0; }
+.question-prefs-controls .seg { flex: 1 0 auto; min-width: 0; }
+.question-prefs-controls .seg span { justify-content: center; min-height: 32px; padding: 3px 4px; font-size: 12px; white-space: nowrap; }
+@media (max-width: 699px) {
+  .question-prefs-controls { gap: 5px; }
+  .question-prefs-controls .seg span { padding: 3px 1px; font-size: 10px; }
+}
 .qmain > .image-card .image-wrap, .exam-main > .image-card .image-wrap { justify-content: flex-start; }
 .qmain > .image-card .image-btn, .exam-main > .image-card .image-btn { margin: 0 auto; }
 .qbar { flex-wrap: nowrap; justify-content: space-between; overflow-x: auto; padding: 6px; gap: 4px; }

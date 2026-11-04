@@ -121,6 +121,8 @@ async function run(mobile) {
     await wait('document.querySelector(".qside")', 30000);
     await wait('document.querySelector(".qdock .question-prefs")', 30000);
     assert.ok(await evalJs('(() => { const r = document.querySelector(".question-prefs").getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight && !document.querySelector(".question-prefs").closest("details"); })()'), 'tercihler kapalı bölüme girmeden yanıtların yanında görünür');
+    assert.ok(await evalJs('(() => { const [a,b] = [...document.querySelectorAll(".question-prefs-controls [role=radiogroup]")].map(e => e.getBoundingClientRect()); return Math.abs(a.top-b.top)<2 && a.right<=b.left; })()'), 'zorluk ve tekrar seçimleri aynı satırda');
+    assert.equal(await evalJs('[...document.querySelectorAll(".question-prefs-controls .seg span")].some(e => e.scrollWidth > e.clientWidth + 1)'), false, 'seçenek metinleri taşmaz');
     assert.ok(await pick('.question-prefs .seg', 'Zor'));
     await wait('document.querySelector(".question-prefs").innerText.includes("Zorluk etiketin: Zor")', 30000);
     assert.ok(await pick('.question-prefs .seg', 'Tekrar gösterme'));

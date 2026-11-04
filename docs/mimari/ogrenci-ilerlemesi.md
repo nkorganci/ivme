@@ -141,7 +141,9 @@ Kanıt: `LearnPracticeSetTest` (geçici DB), `node --test testler/konu-ogrenme-o
   zorluk etiketleri) döndürür; motor `state.hidden/again` ile bütün seçicilerde (ustalık, tekrar, karma, konu testi, çıkmış,
   alıştırma) gizlileri çıkarır, bekleyenleri öne alır; ders sayfasındaki 12 / 52 sayıları gizlileri de düşer ve not düşer.
   Banka sorusunda zorluk ve tekrar kontrolleri cevap öncesinde de açık görünür. Ortak soru ekranında aynı bileşen
-  yanıt düğmelerinin hemen altındadır; yan panelde kapalı bir bölüme gizlenmez. YKS ve Yurt Dışı Öğretmenlik aynı
+  yanıt düğmelerinin hemen altındadır; zorluk ve tekrar grupları masaüstü/mobilde aynı satırda kompakt
+  kontrollerle görünür. Kişisel zorluğun öğretmen etiketinden ayrı olduğu başlık ipucunda ve ekran okuyucu
+  metninde belirtilir; yan panelde kapalı bir bölüme gizlenmez. YKS ve Yurt Dışı Öğretmenlik aynı
   soru kimliğine bağlı öğrenci tercihi API’sini kullanır. Zor dediklerim / Tekrar istediklerim ile hedefli pratik seçilir.
 - **Önerilerin örnek sorusu:** HIDE ise seçilmez; tümü gizliyse örnek gösterilmez. Tip istatistiği geçmişten aynen hesaplanır.
 - **PDF kaynaklı pratik:** kişisel zorluk/işaret seçimi hem uygun soru sayısı sorgusuna hem oturum kurma isteğine taşınır.

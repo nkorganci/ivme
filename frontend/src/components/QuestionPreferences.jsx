@@ -52,12 +52,18 @@ export default function QuestionPreferences({ questionId, initial = null, onChan
 
   if (!state) return error ? <p className="field-error" role="alert">{error}</p> : <p className="muted small" role="status">Kişisel işaretlerin yükleniyor…</p>;
   return <div className="question-prefs">
-    <p className="small"><strong>Benim zorluk etiketim</strong> <span className="muted">(yalnız sana ait; öğretmen zorluğundan ayrı)</span></p>
+    <div className="question-prefs-controls">
+    <div className="question-prefs-group">
+    <p title="Yalnız sana ait; öğretmen zorluğundan ayrı"><strong>Benim zorluk etiketim</strong><span className="sr-only"> (yalnız sana ait; öğretmen zorluğundan ayrı)</span></p>
     <Segmented label="Benim zorluk etiketim" options={DIFFICULTY_OPTIONS} value={state.difficulty ?? 'NONE'} disabled={busy}
       onChange={(value) => save({ difficulty: value }, value === 'NONE' ? 'Zorluk etiketin kaldırıldı.' : `Zorluk etiketin: ${difficultyLabel(value)}.`)} />
-    <p className="small"><strong>Tekrar tercihim</strong></p>
+    </div>
+    <div className="question-prefs-group">
+    <p><strong>Tekrar tercihim</strong></p>
     <Segmented label="Tekrar tercihim" options={REPEAT_OPTIONS} value={state.repeat ?? 'DEFAULT'} disabled={busy}
       onChange={(value) => save({ repeat: value }, `Tekrar tercihin: ${REPEAT_OPTIONS.find((o) => o.value === value).label}.`)} />
+    </div>
+    </div>
     <p className="muted small">{REPEAT_HINT[state.repeat ?? 'DEFAULT']}</p>
     {error && <p className="field-error" role="alert">{error}</p>}
     {saved && <p className="small" role="status">{saved}</p>}
