@@ -81,7 +81,7 @@ function PracticeForm() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState({});
-  const availabilityQuery = !hasSource ? null : qs(scoped ? { topicPdfId, practice: true } : { bank, source, history, ...filter, ...commonSelection, ...personal, practice: true });
+  const availabilityQuery = !hasSource ? null : qs(scoped ? { topicPdfId, ...personal, practice: true } : { bank, source, history, ...filter, ...commonSelection, ...personal, practice: true });
   const wholePool = !scoped && !hasHistory && source.length === questionSources.length
     && !bank && !filter.examType && !filter.subject && !filter.topic && !hasCategories
     && !commonSelection.questionTypeId && !commonSelection.teacherDifficulty
@@ -131,7 +131,7 @@ function PracticeForm() {
       .then(data => { if (current) setAvailabilityState({ key: availabilityQuery, data, loading: false }); })
       .catch(e => { if (current) setAvailabilityState({ key: availabilityQuery, error: e.message, loading: false }); });
     return () => { current = false; };
-  }, [availabilityQuery, wholePool, marksLoaded]);
+  }, [availabilityQuery, wholePool, marksLoaded, marks]);
 
   const n = Number(count);
   const validCount = count.trim() !== '' && Number.isInteger(n) && n >= 1 && n <= 120;
@@ -176,7 +176,7 @@ function PracticeForm() {
       questionCount: n,
       topicPdfId: scoped ? Number(topicPdfId) : undefined,
       ...(!scoped?commonSelection:{}),
-      ...(!scoped ? { myDifficulty: personal.myDifficulty || undefined, mark: personal.mark || undefined } : {}),
+      myDifficulty: personal.myDifficulty || undefined, mark: personal.mark || undefined,
     };
     try {
       const session = await api.post('/api/study-sessions', {
@@ -217,8 +217,8 @@ function PracticeForm() {
           questionScope={{bank,source,examType:filter.examType,includeCandidates:commonSelection.includeCandidates,questionTypeId:commonSelection.questionTypeId,teacherDifficulty:commonSelection.teacherDifficulty}}
           disabled={!hasSource}/>
         {!hasSource && <p className="field-hint" role="status">Devam etmek için en az bir kaynak seç.</p>}
-        {hasSource && <PersonalMarks value={personal} onChange={changePersonal} summary={marks} onSummary={setMarks} disabled={busy} />}
       </>}
+      {hasSource && <PersonalMarks value={personal} onChange={changePersonal} summary={marks} onSummary={setMarks} disabled={busy} />}
 
       {!hasHistory && <label className="checkbox practice-include-solved">
         <input type="checkbox" checked={includeSolved} disabled={busy} onChange={event => changeIncludeSolved(event.target.checked)} />

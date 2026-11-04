@@ -12,7 +12,7 @@ const REPEAT_OPTIONS = [
 const REPEAT_HINT = {
   DEFAULT: 'Soru seçimi değişmez.',
   AGAIN: 'Sonraki otomatik pratikte bu soru öne alınır; bir kez çözünce sıra biter, işaret kalır.',
-  HIDE: 'Otomatik pratik, öneri ve konu setlerinden çıkar. Sorunun, cevaplarının ve istatistiklerinin kaydı silinmez; denemeler değişmez.',
+  HIDE: 'Otomatik pratik, öneri ve konu setlerinden çıkar; soru bankası listesinde ve önceki/sonraki gezintisinde gösterilmez. Gizlediklerim filtresinden geri alabilirsin. Cevap geçmişin ve sabit deneme kitapçıkları korunur.',
 };
 
 /**

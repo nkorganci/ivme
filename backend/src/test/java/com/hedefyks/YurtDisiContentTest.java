@@ -55,6 +55,28 @@ class YurtDisiContentTest extends TestBase {
     private void choose(MockHttpSession session,String track) throws Exception {
         send(session,put("/api/exam-tracks/current"),json.writeValueAsString(Map.of("trackId",track))).andExpect(status().isOk());
     }
+    @Test void personalMarksFollowBankQuestionsAcrossTracksAndPractice() throws Exception {
+        user("yd_marks",Role.USER);var session=login("yd_marks","Sifre1234");
+        user("yd_marks_other",Role.USER);var other=login("yd_marks_other","Sifre1234");
+        catalogQuestion("yd_next","YURT_DISI_MY","Eğitim Bilimleri","yd");
+        for(String[] track:List.of(new String[]{"YKS","tyt"},new String[]{"YURT_DISI_OGRETMEN","yd"})) {
+            choose(session,track[0]);choose(other,track[0]);
+            long qid=jdbc.queryForObject("SELECT id FROM questions WHERE code=?",Long.class,"TEST-"+track[1]);
+            String pref="/api/question-preferences/questions/"+qid;
+            send(session,put(pref),"{\"difficulty\":\"ZOR\",\"repeat\":\"HIDE\"}").andExpect(status().isOk());
+            var list=read(send(session,get("/api/questions"),null));
+            for(var q:list.path("content"))assertThat(q.path("id").asLong()).isNotEqualTo(qid);
+            long own=list.path("totalElements").asLong();
+            assertThat(read(send(other,get("/api/questions"),null)).path("totalElements").asLong()).isEqualTo(own+1);
+            assertThat(read(send(session,get("/api/questions/availability").param("practice","true"),null)).path("total").asLong()).isEqualTo(own);
+            var hidden=read(send(session,post("/api/study-sessions"),json.writeValueAsString(Map.of("questionCount",1,"mark","HIDE","myDifficulty","ZOR","clientRequestId",UUID.randomUUID().toString()))).andExpect(status().isCreated()));
+            assertThat(hidden.path("questions").get(0).path("questionId").asLong()).isEqualTo(qid);
+            assertThat(read(send(session,get(pref),null)).path("difficulty").asText()).isEqualTo("ZOR");
+            send(session,put(pref),"{\"repeat\":\"DEFAULT\"}").andExpect(status().isOk());
+            assertThat(read(send(session,get("/api/questions"),null)).path("totalElements").asLong()).isEqualTo(own+1);
+            assertThat(read(send(session,get(pref),null)).path("difficulty").asText()).isEqualTo("ZOR");
+        }
+    }
     @Test void allLessonSectionsUseOnlyCurrentTrackContent() throws Exception {
         user("yd_content",Role.USER);var session=login("yd_content","Sifre1234");
         choose(session,"YURT_DISI_OGRETMEN");

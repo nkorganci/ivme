@@ -130,25 +130,33 @@ Kanıt: `LearnPracticeSetTest` (geçici DB), `node --test testler/konu-ogrenme-o
   /api/questions/availability?practice=true` aynı süzgeci uygular, bu yüzden gösterilen sayı = kurulan set. Gizlenen
   sorular çıkar; açık süzgeç `mark=HIDE` (Gizlediklerim), `mark=AGAIN` (Tekrar istediklerim), `mark=UNMARKED`
   (İşaretlemediklerim: tekrar tercihi ve zorluk etiketi yok) ve `myDifficulty=KOLAY|ORTA|ZOR|NONE` (Öğrenci zorluk etiketi)
-  bu varsayılanı geçer. Çıkmış/Soru Bankası listesi, soru ekranına doğrudan erişim, denemeler (sabit kitapçık dâhil) ve
-  `pool-summary` tablosu değişmez; cevaplar, istatistikler ve geçmiş silinmez veya yeniden hesaplanmaz.
+  bu varsayılanı geçer. Çıkmış/Soru Bankası listesi ve önceki/sonraki gezintisi de HIDE sorularını yalnız ilgili
+  öğrenci için çıkarır; liste sayısı ve sayfalama gizlemeden sonra hesaplanır. Gizlediklerim pratik süzgeci ve doğrudan
+  soru bağlantısı tercihi geri almak için kullanılabilir. Mevcut oturumlar, denemeler (sabit kitapçık dâhil) ve
+  `pool-summary` kapsam tablosu değişmez; cevaplar, istatistikler ve geçmiş silinmez veya yeniden hesaplanmaz.
 - **AGAIN sırası:** işaretten sonra henüz cevaplanmamış (`question_attempts` ANSWER yok) AGAIN soruları otomatik seçimde
   önce gelir; soru bir kez cevaplanınca bekleyen sırası biter, işaret kalır (“Tekrar istediklerim”de görünür). Aynı sette
   soru zaten bir kez bulunur; yeniden işaretlemek sırayı yeniden kurar.
 - **Konuyu Öğrenelim:** `GET /api/konu-ogrenme` yalnız kendi `questionPreferences` bilgisini (gizli, bekleyen tekrar,
   zorluk etiketleri) döndürür; motor `state.hidden/again` ile bütün seçicilerde (ustalık, tekrar, karma, konu testi, çıkmış,
   alıştırma) gizlileri çıkarır, bekleyenleri öne alır; ders sayfasındaki 12 / 52 sayıları gizlileri de düşer ve not düşer.
-  Banka sorusundan sonra “Kişisel işaretlerim” açılır; ortak soru ekranında aynı bileşen vardır.
+  Banka sorusunda zorluk ve tekrar kontrolleri cevap öncesinde de açık görünür. Ortak soru ekranında aynı bileşen
+  yanıt düğmelerinin hemen altındadır; yan panelde kapalı bir bölüme gizlenmez. YKS ve Yurt Dışı Öğretmenlik aynı
+  soru kimliğine bağlı öğrenci tercihi API’sini kullanır. Zor dediklerim / Tekrar istediklerim ile hedefli pratik seçilir.
 - **Önerilerin örnek sorusu:** HIDE ise seçilmez; tümü gizliyse örnek gösterilmez. Tip istatistiği geçmişten aynen hesaplanır.
+- **PDF kaynaklı pratik:** kişisel zorluk/işaret seçimi hem uygun soru sayısı sorgusuna hem oturum kurma isteğine taşınır.
 - **Sıfırlama:** `REPEAT` yalnız tekrar tercihlerini, `DIFFICULTY` yalnız zorluk etiketlerini (topluluk sayımından da çıkar),
   `ALL` ikisini siler; yalnız çağıran öğrencinin satırları. Soru Çöz & Pratik'teki “Kişisel işaretlerim” bölümü onay ister.
+  Sıfırlama yanıtı geldiğinde etkin kaynak/konu ne olursa olsun uygun soru sayısı yeniden okunur.
 - **Hesap:** dışa aktarma `questionPreferences` ve `feedback.difficulty_vote` alanlarını içerir; hesap silinince tercih
   satırları açıkça silinir; her değişiklik `user_record_audit` iz kaydı bırakır (içerik tekrarlanmaz).
 - **Sınır:** kişisel işaret bu adımda banka sorusuna (`questions`) uygulanır. Ders içi mini soru ve not alıştırmasının
   kararlı kimliği (`konu:öğe`, `note:…`) mevcuttur; bunlara kişisel etiket gerekirse tablo `item_key` ile genelleştirilir.
 
 Kanıt: `QuestionPreferenceTest` (geçici DB: izolasyon, 8 eşzamanlı yazma, süzgeçler, sıfırlama, dışa aktarma/silme),
-`node --test testler/konu-ogrenme-ortak-set.test.mjs` ve `node testler/kisisel-tercih-ui.mjs`.
+`YurtDisiContentTest` (iki sınav hedefinde liste/sayfalama, gizli pratik, geri alma ve hesap izolasyonu),
+`node --test testler/konu-ogrenme-ortak-set.test.mjs` ve `node testler/kisisel-tercih-ui.mjs`
+(YKS/yurt dışı × masaüstü/mobil: açık kontrol, kayıt/yenileme, sıfırlama sonrası sayı ve PDF filtresi).
 
 Öğrencinin `/gecmis` ekranı “Çalışma İstatistiklerim” adıyla deneme ve pratik
 tablolarını sunar. Deneme/pratik filtreleri yalnız görünen API

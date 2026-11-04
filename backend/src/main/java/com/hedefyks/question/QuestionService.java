@@ -66,11 +66,11 @@ public class QuestionService {
                 .toList();
     }
 
-    public PageResponse<QuestionListItem> list(QuestionFilter filter, int page, int size) {
+    public PageResponse<QuestionListItem> list(QuestionFilter filter, int page, int size, Long userId) {
         var pageable = PageRequest.of(Math.max(page, 0), Math.min(Math.max(size, 1), 100), Sort.by("id"));
-        var selected=sharedLabels.questionPage(filter,pageable.getPageSize(),pageable.getOffset());
+        var selected=sharedLabels.questionPage(filter,pageable.getPageSize(),pageable.getOffset(),userId);
         org.springframework.data.domain.Page<Question> result;
-        if(selected==null)result=questions.findAll(QuestionSpecs.filter(filter,true),pageable);
+        if(selected==null)result=questions.findAll(QuestionSpecs.filter(filter,true).and(QuestionSpecs.excluding(preferences.hiddenIds(userId))),pageable);
         else {
             var rows=selected.ids().isEmpty()?List.<Question>of():questions.findAllById(selected.ids()).stream()
                 .sorted(Comparator.comparing(Question::getId)).toList();
@@ -95,7 +95,8 @@ public class QuestionService {
 
     /** Aynı filtreye göre sıradaki/önceki soru; yoksa boş döner (204). */
     public Optional<QuestionDetail> neighbor(Long id, boolean next, QuestionFilter filter, Long userId) {
-        var spec = QuestionSpecs.filter(filter, true,sharedLabels.questionIds(filter)).and(QuestionSpecs.idAfter(id, next));
+        var spec = QuestionSpecs.filter(filter, true,sharedLabels.questionIds(filter)).and(QuestionSpecs.idAfter(id, next))
+                .and(QuestionSpecs.excluding(preferences.hiddenIds(userId)));
         Sort sort = next ? Sort.by("id").ascending() : Sort.by("id").descending();
         return questions.findBy(spec, q -> q.sortBy(sort).first()).map(q -> toDetail(q, userId));
     }

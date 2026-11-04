@@ -9,6 +9,15 @@ public final class QuestionSpecs {
 
     private QuestionSpecs() {}
 
+    public static Specification<Question> excluding(List<Long> ids) {
+        return (root, query, cb) -> {
+            if (ids.isEmpty()) return cb.conjunction();
+            var excluded = cb.<Long>in(root.get("id"));
+            ids.forEach(id -> excluded.value(cb.literal(id)));
+            return cb.not(excluded);
+        };
+    }
+
     public static Specification<Question> filter(QuestionFilter f, Boolean active) {
         return filter(f,active,null);
     }

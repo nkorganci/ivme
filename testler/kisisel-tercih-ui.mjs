@@ -16,6 +16,7 @@ const svg = (text) => `<svg xmlns="http://www.w3.org/2000/svg" width="720" heigh
 const categories = [{ id: 'tyt.matematik.sayilar', exam: 'TYT', subject: 'Matematik', subjectId: 'matematik', topic: 'Sayılar', origin: 'SOURCE' }];
 const POOL = 100;
 const mock = { hidden: 3, again: 2, easy: 0, medium: 1, hard: 1, availability: [], sessions: [], puts: [], resets: [], question: { difficulty: null, repeat: 'DEFAULT' } };
+let yurtDisi = false;
 const summary = () => ({ again: mock.again, hidden: mock.hidden, easy: mock.easy, medium: mock.medium, hard: mock.hard });
 
 const http = createServer(async (req, res) => {
@@ -25,7 +26,7 @@ const http = createServer(async (req, res) => {
   const p = url.pathname;
   if (p === '/api/auth/me') return json({ id: 7, username: 'student', role: 'USER', contactComplete: true, approved: true });
   if (p === '/api/auth/activity') { res.writeHead(204); return res.end(); }
-  if (p === '/api/exam-tracks') return json({ currentId: 'yks', tracks: [{ id: 'yks', name: 'YKS', family: 'YKS', status: 'ACTIVE', sections: [], readyFeatures: [] }] });
+  if (p === '/api/exam-tracks') return json({ currentId: 'test-track', tracks: [{ id: 'test-track', name: yurtDisi ? 'Yurt Dışı Öğretmenlik' : 'YKS', family: yurtDisi ? 'YURT_DISI' : 'YKS', status: 'ACTIVE', sections: yurtDisi ? [{ examId: 'YURT_DISI_MY', name: 'Mesleki Yeterlilik' }] : [], readyFeatures: [] }] });
   if (p.startsWith('/api/preferences/')) return json({ value: req.method === 'PUT' ? body?.value : p.endsWith('question-image-fit') });
   if (p === '/api/learning-resources/metadata') return json({ categories });
   if (p === '/api/questions/filters') return json([]);
@@ -61,9 +62,10 @@ const http = createServer(async (req, res) => {
     return json({ questionId: Number(questionPref[1]), difficulty: mock.question.difficulty, repeat: mock.question.repeat });
   }
   const byCode = p.match(/^\/api\/questions\/code\/(.+)$/);
-  if (byCode) return json({ id: 1, code: decodeURIComponent(byCode[1]), bank: 'OGM', examType: 'TYT', subject: 'Matematik', topic: 'Sayılar', choiceCount: 5, hasSolutionImage: false,
+  if (byCode) return json({ id: 1, code: decodeURIComponent(byCode[1]), bank: yurtDisi ? 'CIKMIS' : 'OGM', examType: yurtDisi ? 'YURT_DISI_MY' : 'TYT', subject: 'Matematik', topic: 'Sayılar', choiceCount: 5, hasSolutionImage: false,
     hasApprovedHint: false, difficultyVotes: {}, myEvaluation: mock.question.difficulty ? { difficultyVote: mock.question.difficulty, rating: null } : null, approvedLabels: [], myRepeat: mock.question.repeat });
   if (/^\/api\/questions\/\d+\/practice$/.test(p) && req.method === 'GET') return json({ attempts: [], canAnswer: true, canReveal: false, roundComplete: false, round: 1, remainingAttempts: 2 });
+  if (/^\/api\/questions\/\d+\/board$/.test(p)) return json({ version: 0, strokes: [] });
   if (/^\/api\/questions\/\d+\/(image|solution-image)$/.test(p)) { res.writeHead(200, { 'Content-Type': 'image/svg+xml' }); return res.end(svg('Soru')); }
   if (p.startsWith('/api/')) return json(null);
   const path = resolve(dist, `.${decodeURIComponent(p)}`);
@@ -80,7 +82,7 @@ async function run(mobile) {
   Object.assign(mock, { hidden: 3, again: 2, easy: 0, medium: 1, hard: 1, availability: [], sessions: [], puts: [], resets: [], question: { difficulty: null, repeat: 'DEFAULT' } });
   const browser = await tarayiciAc({ mobile });
   const { evalJs, wait, goto, screenshot, errors } = browser;
-  const label = mobile ? 'mobil' : 'masaustu';
+  const label = (yurtDisi ? 'yurt-disi-' : 'yks-') + (mobile ? 'mobil' : 'masaustu');
   const overflow = () => evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2');
   const pick = (selector, text) => evalJs(`(() => { const el = [...document.querySelectorAll(${JSON.stringify(selector)})].find((e) => e.textContent.includes(${JSON.stringify(text)})); el?.click(); return !!el; })()`);
   const choose = (selectLabel, optionText) => evalJs(`(() => { const field = [...document.querySelectorAll('.personal-marks .field')].find((f) => f.querySelector('label')?.textContent.includes(${JSON.stringify(selectLabel)}));
@@ -117,19 +119,17 @@ async function run(mobile) {
 
     // 3) Soru ekranı: kişisel zorluk etiketi ve tekrar tercihi anında kaydedilir; yenilemede korunur.
     await wait('document.querySelector(".qside")', 30000);
-    await evalJs('document.querySelectorAll(".qside details").forEach((d) => { d.open = true; })');
-    await wait('document.querySelector(".question-prefs")', 30000);
+    await wait('document.querySelector(".qdock .question-prefs")', 30000);
+    assert.ok(await evalJs('(() => { const r = document.querySelector(".question-prefs").getBoundingClientRect(); return r.top >= 0 && r.top < innerHeight && !document.querySelector(".question-prefs").closest("details"); })()'), 'tercihler kapalı bölüme girmeden yanıtların yanında görünür');
     assert.ok(await pick('.question-prefs .seg', 'Zor'));
     await wait('document.querySelector(".question-prefs").innerText.includes("Zorluk etiketin: Zor")', 30000);
     assert.ok(await pick('.question-prefs .seg', 'Tekrar gösterme'));
     await wait('document.querySelector(".question-prefs").innerText.includes("Tekrar tercihin: Tekrar gösterme")', 30000);
     assert.match(await evalJs('document.querySelector(".question-prefs").innerText'), /Otomatik pratik, öneri ve konu setlerinden çıkar/);
     assert.deepEqual(mock.puts, [{ difficulty: 'ZOR' }, { repeat: 'HIDE' }]);
-    assert.ok(await evalJs('document.querySelector(".qside").innerText.includes("öğretmen zorluğu değildir") || true'));
     await screenshot(join(out, `${label}-soru-kisisel.png`));
     await goto('/soru/Q-1');
     await wait('document.querySelector(".qside")', 30000);
-    await evalJs('document.querySelectorAll(".qside details").forEach((d) => { d.open = true; })');
     await wait('document.querySelector(".question-prefs input:checked")', 30000);
     const checked = await evalJs('[...document.querySelectorAll(".question-prefs input:checked")].map((i) => i.parentElement.textContent.trim())');
     assert.deepEqual(checked, ['Zor', 'Tekrar gösterme']);
@@ -154,9 +154,24 @@ async function run(mobile) {
     await screenshot(join(out, `${label}-sifirlama.png`));
     steps.push({ step: 'sifirlama', resets: mock.resets });
 
+    // PDF'den açılan pratikte de kişisel seçim sayı ve oluşturma isteğine aynen taşınır.
+    mock.hard = 10;
+    await goto('/calisma/yeni?topicPdfId=42');
+    await wait('document.querySelector(".personal-marks")', 30000);
+    await choose('Öğrenci zorluk etiketi', 'Zor dediklerim');
+    await wait('document.body.innerText.includes("Bu seçimde 10 uygun soru var")', 30000);
+    assert.equal(mock.availability.at(-1).topicPdfId, '42');
+    assert.equal(mock.availability.at(-1).myDifficulty, 'ZOR');
+    await wait('[...document.querySelectorAll("button[type=submit]")].find((b) => /başlat/i.test(b.textContent))?.disabled === false', 30000);
+    assert.ok(await pick('button[type=submit]', 'başlat'));
+    await wait('location.pathname.startsWith("/soru/")', 30000);
+    assert.equal(mock.sessions.at(-1).topicPdfId, 42);
+    assert.equal(mock.sessions.at(-1).myDifficulty, 'ZOR');
+    steps.push({ step: 'pdf-kisisel-filtre', difficulty: 'ZOR' });
+
     const relevant = errors.filter((e) => !/favicon|Failed to load resource/.test(e));
     assert.deepEqual(relevant, [], `konsol hatası: ${relevant.join(' | ')}`);
-    return { mobile, steps };
+    return { track: yurtDisi ? 'YURT_DISI' : 'YKS', mobile, steps };
   } catch (error) {
     const page = await evalJs('location.href + " | " + (document.querySelector("main")?.innerText ?? "").slice(0, 900)').catch(() => '?');
     console.error('SAYFA:', page.slice(0, 300), '| HATALAR:', errors.slice(0, 5), '| OTURUM İSTEKLERİ:', JSON.stringify(mock.sessions), '| SON SORGU:', JSON.stringify(mock.availability.at(-1)));
@@ -171,7 +186,7 @@ async function run(mobile) {
 
 const report = [];
 try {
-  for (const mobile of [false, true]) report.push(await run(mobile));
+  for (const yd of [false, true]) { yurtDisi = yd; for (const mobile of [false, true]) report.push(await run(mobile)); }
   console.log(JSON.stringify(report, null, 1));
 } finally {
   http.close();

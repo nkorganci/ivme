@@ -3,7 +3,6 @@ import { StarValue } from './Stars.jsx';
 import QuestionBoard from './QuestionBoard.jsx';
 import ScientificCalculator from './ScientificCalculator.jsx';
 import RatingForm from './RatingForm.jsx';
-import QuestionPreferences from './QuestionPreferences.jsx';
 import ReportForm from './ReportForm.jsx';
 import QrCard from './QrCard.jsx';
 import { api } from '../api.js';
@@ -121,13 +120,6 @@ export default function QuestionSide({ q, onRated, canVote, boardAction }) {
             <button type="button" className="btn btn-secondary btn-sm" aria-pressed={help.mine === false} disabled={helpBusy} onClick={() => voteHelp(false)}>Faydalı değil</button>
           </div> : <p className="muted small">Oy vermek için önce soruyu çöz.</p>}
           {helpError && <p role="alert">{helpError}</p>}
-        </div>
-      </details>
-
-      <details className="fold">
-        <summary>Kişisel işaretlerim</summary>
-        <div className="fold-body">
-          <QuestionPreferences questionId={q.id} initial={{ difficulty: q.myEvaluation?.difficultyVote ?? null, repeat: q.myRepeat ?? 'DEFAULT' }} />
         </div>
       </details>
 

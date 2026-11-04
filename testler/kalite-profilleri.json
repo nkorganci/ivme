@@ -117,7 +117,7 @@
     "tercih-db": {
       "kind": "backend",
       "args": [
-        "QuestionPreferenceTest"
+        "QuestionPreferenceTest,YurtDisiContentTest"
       ],
       "inputs": [
         "backend/pom.xml"

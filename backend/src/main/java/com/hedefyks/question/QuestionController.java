@@ -98,7 +98,7 @@ public class QuestionController {
                                                @RequestParam(defaultValue = "0") int page,
                                                @RequestParam(defaultValue = "20") int size,
                                                @AuthenticationPrincipal AppUserDetails me) {
-        return service.list(tracks.scope(filter, me.id()), page, size);
+        return service.list(tracks.scope(filter, me.id()), page, size, me.id());
     }
 
     @GetMapping("/{id}")

@@ -905,6 +905,9 @@ code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: .93
 .qmain > .image-card .image-wrap, .exam-main > .image-card .image-wrap { height: 100%; min-height: 0; }
 .qmain > .image-card .image-loading, .exam-main > .image-card .image-loading { min-height: 0; height: 100%; }
 .qdock { flex: none; }
+.question-personal { padding: 4px 8px; border-top: 1px solid var(--line); max-height: 24vh; overflow: auto; }
+.question-personal .question-prefs > p { margin: 3px 0; }
+.question-personal .segmented { flex-wrap: wrap; }
 .qmain > .image-card .image-wrap, .exam-main > .image-card .image-wrap { justify-content: flex-start; }
 .qmain > .image-card .image-btn, .exam-main > .image-card .image-btn { margin: 0 auto; }
 .qbar { flex-wrap: nowrap; justify-content: space-between; overflow-x: auto; padding: 6px; gap: 4px; }

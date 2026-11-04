@@ -90,6 +90,11 @@ public class QuestionPreferenceService {
         return new State(questionId, difficulty, repeat);
     }
 
+    public List<Long> hiddenIds(long userId) {
+        return jdbc.sql("SELECT question_id FROM student_question_preferences WHERE user_id = :userId AND repeat_preference = 'HIDE'")
+                .param("userId", userId).query(Long.class).list();
+    }
+
     private void clearDifficulty(long userId, long questionId) {
         jdbc.sql("""
                 UPDATE feedback SET difficulty_vote = NULL, updated_at = now()

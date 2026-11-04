@@ -146,8 +146,8 @@ export function BankQuestion({ question, conceptId, context, setId, archetypeId,
       {result.hasSolution && <button type="button" className="btn btn-secondary btn-sm" onClick={() => setSolution((v) => !v)}>{solution ? 'Çözümü gizle' : 'Çözümü gör'}</button>}
       {solution && <div className="lr-bank-image"><QuestionImage id={question.id} solution alt={`Soru ${question.code} çözümü`} /></div>}
     </div>}
-    {result && <details className="lr-prefs"><summary>Kişisel işaretlerim: zorluk ve tekrar</summary>
-      <QuestionPreferences questionId={question.id} onChanged={reload} /></details>}
+    <section className="lr-prefs" aria-label="Kişisel soru tercihlerim">
+      <QuestionPreferences key={question.id} questionId={question.id} onChanged={reload} /></section>
     {result && approach && <aside className="lr-approach">
       <span className="lr-check-label">Çözüm yaklaşımı{approach.title ? `: ${approach.title}` : ''}</span>
       {approach.cue && <p className="small"><strong>Bunu görünce:</strong> <MathText text={approach.cue} /></p>}

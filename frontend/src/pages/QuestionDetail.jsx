@@ -5,6 +5,7 @@ import { ignoreHotkey, useAsync, usePageTitle } from '../hooks.js';
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import QuestionImage from '../components/QuestionImage.jsx';
 import QuestionSide from '../components/QuestionSide.jsx';
+import QuestionPreferences from '../components/QuestionPreferences.jsx';
 import Strip from '../components/Strip.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import { bankPath } from '../format.js';
@@ -265,6 +266,9 @@ function QuestionView({ q, filters, session, reload }) {
                 : <button type="button" className="btn btn-secondary" disabled={moving || practice.busy} onClick={() => go('next')} title="Sonraki soru (→)">Sonraki ›</button>}
             </div>
             {practice.busy && <p className="small answer-saving" role="status">Kaydediliyor…</p>}
+            <section className="question-personal" aria-label="Kişisel soru tercihlerim">
+              <QuestionPreferences questionId={q.id} initial={{ difficulty: q.myEvaluation?.difficultyVote ?? null, repeat: q.myRepeat ?? 'DEFAULT' }} />
+            </section>
           </div>
           {q.hasApprovedHint && <section className="card hint-card" aria-label="Kaynaklı öğrenme desteği">
             {!state?.correctAnswer && !hint && <button type="button" className="btn btn-secondary"

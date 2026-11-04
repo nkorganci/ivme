@@ -80,10 +80,16 @@ public class SharedQuestionLabels {
 
     /** Keep large allowed pools in PostgreSQL; return only the requested page to JPA. */
     public QuestionPage questionPage(QuestionFilter filter,int size,long offset) {
+        return questionPage(filter,size,offset,null);
+    }
+
+    public QuestionPage questionPage(QuestionFilter filter,int size,long offset,Long userId) {
         String request=selection(filter);
         if(request==null)return null;
         return jdbc.queryForObject("""
-            WITH allowed AS MATERIALIZED (SELECT id FROM learning_catalog.question_ids_for_labels(?))
+            WITH allowed AS MATERIALIZED (SELECT q.id FROM learning_catalog.question_ids_for_labels(?) q
+                WHERE NOT EXISTS (SELECT 1 FROM student_question_preferences sp
+                    WHERE sp.user_id = ? AND sp.question_id = q.id AND sp.repeat_preference = 'HIDE'))
             SELECT count(*) AS total,ARRAY(SELECT id FROM allowed ORDER BY id LIMIT ? OFFSET ?) AS ids
             FROM allowed
             """,(rs,n)->{
@@ -92,7 +98,7 @@ public class SharedQuestionLabels {
                     var ids=Arrays.stream((Object[])array.getArray()).map(id->((Number)id).longValue()).toList();
                     return new QuestionPage(ids,rs.getLong("total"));
                 } finally { array.free(); }
-            },request,size,offset);
+            },request,userId,size,offset);
     }
     @SuppressWarnings("unchecked")
     public Map<Long,String> topicNames(Map<Long,String> snapshots) {

@@ -149,6 +149,14 @@ class QuestionPreferenceTest extends TestBase {
         assertThat(picked).doesNotContain("H-1", "H-2").hasSize(4);
         assertThat(codes(m, session(m, 6, ""))).contains("H-1", "H-2");
 
+        // Banka listesi ve gezinti de aynı öğrenci tercihini kullanır; sayfalama gizlilerden sonra yapılır.
+        var bank = read(send(a, get("/api/questions").param("subject", "Türkçe").param("size", "2"), null));
+        assertThat(bank.path("totalElements").asInt()).isEqualTo(4);
+        assertThat(bank.path("content")).hasSize(2);
+        assertThat(bank.path("content").get(0).path("code").asText()).isEqualTo("H-3");
+        assertThat(read(send(m, get("/api/questions").param("subject", "Türkçe"), null)).path("totalElements").asInt()).isEqualTo(6);
+        assertThat(read(send(a, get("/api/questions/" + all.get(0).getId() + "/neighbor").param("subject", "Türkçe"), null)).path("code").asText()).isEqualTo("H-3");
+
         // Kişisel süzgeçler: Gizlediklerim, Tekrar istediklerim, zorluk etiketi, işaretlemediklerim.
         assertThat(codes(a, session(a, 2, ",\"mark\":\"HIDE\""))).containsExactlyInAnyOrder("H-1", "H-2");
         assertThat(codes(a, session(a, 1, ",\"mark\":\"AGAIN\""))).containsExactly("H-3");
