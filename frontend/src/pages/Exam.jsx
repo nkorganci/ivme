@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, imageUrl } from '../api.js';
+import { useQuestionViewport } from '../useQuestionViewport.js';
 import { ignoreHotkey, useAsync, useCountdown, usePageTitle } from '../hooks.js';
 import ChoiceButtons from '../components/ChoiceButtons.jsx';
 import ExamNavigator from '../components/ExamNavigator.jsx';
@@ -43,6 +44,7 @@ export default function Exam() {
 }
 
 function ExamRunner({ exam }) {
+  const viewport = useQuestionViewport();
   const navigate = useNavigate();
   const questions = useMemo(() => [...exam.questions].sort((a, b) => a.position - b.position), [exam]);
   const [answers, setAnswers] = useState(() => Object.fromEntries(questions.map((q) => [q.questionId, q.selectedAnswer || null])));
@@ -200,7 +202,7 @@ function ExamRunner({ exam }) {
         </div>
       </header>
 
-      <div className="container wide qpage">
+      <div className="container wide qpage" ref={viewport}>
         <PageInk key={qid} type="QUESTION" id={qid} onBoardAction={setBoardAction} />
         <div className="exam-layout">
           <div className="exam-main">

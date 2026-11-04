@@ -64,7 +64,7 @@ export default function QuestionImage({ id, version, alt = 'Soru görseli', solu
   const fitWidth = useMemo(() => {
     if (readingWidth && natural && box.w) return Math.max(1, Math.min(natural.w, box.w - 4));
     if (!fit || !natural || !box.w) return undefined;
-    return Math.max(1, Math.floor(Math.min(natural.w, box.w - 4, natural.w * (box.h - 4) / natural.h)));
+    return Math.max(1, Math.floor(Math.min(box.w - 4, natural.w * (box.h - 4) / natural.h)));
   }, [fit, natural, box, readingWidth]);
 
   useEffect(() => {

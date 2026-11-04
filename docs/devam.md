@@ -8,7 +8,6 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|
-| YD-01 / 15.01 | Kısmi: V96 ile yurt dışı sınav seçimi, 2.541 cevaplı soru ve dört MEB kategorisi `ivme` DB'de; katalog filtresi 2.541/2.541 döndürüyor. `scripts/yurt-disi-sorular.py` tekrar çalıştırma tarifidir. Sonraki somut iş: uygulamada öğrenci oturumuyla seçimi/soru/pratiği gözden geçir; 2015 PDF'lerinde eksik 13 kitapçık sorusunu görsel kaynaktan tamamla. |
 | MAT-TYT / 12.02 | **Etkin iş (kullanıcı kararı 2026-11-02): önce TYT konu içerikleri, lablar en son.** Takip: [matematik konu listesi](icerik/matematik-konu-listesi.md); TYT 29/32 bitti (son: `ikinci-derece-denklemler`); sıradaki konu `sayma-permutasyon` — `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ilk 🟡 TYT satırını söyler. 4 bölümlük dersler önceki örneklerdeki gibi derinleştirilir: 8 bölüm (eski kimlikler korunur, yeni `s1b`…), her bölümde `::duzey` ve `::sorgula`, ≥20 gerekçeli örnek, 3 `::tamamla`, `derin/<ders>.js` + `-cizim.jsx` ile 4 keşif ve `DERIN` listesi, ≥3 görseli okunmuş çıkmış (`WORKED_EXAMS`) + özgün benzer soru, `pdfAnlatim` sayfaları okunup `pdfOkundu`’ya yazılır, iki kaynaklı video protipi (`scripts/video-altyazi.py puf/kare/alinti`, `python scripts/video-protip-ekle.py <tanım>`). Problem kategorisinin (TYT-0648–0747) görsel sınıflaması `veri/gecici/lab/problemler.md`’de (Git dışı); derste çözülen soru lab gerçek soru setinden çıkarılır, ilgili `testler/lab-<konu>.test.mjs` geçmeli. |
 | MAT-LAB-02 / 12.02 | **Beklemede (TYT içerikleri bitince).** Ortak lab motoru hazır ([standart §Ortak lab motoru](icerik/matematik-laboratuvari.md#ortak-lab-motoru-mat-lab-02)); TYT 16/32 TEKNİK HAZIR: `temel-kavramlar` … `kar-zarar` (konu listesindeki ilk 16 TYT satırı). Kalan ilk lab `hareket-problemleri`; yöntem lab standardında, kanıt `testler/kanit/lab/`. Kontrol: `python scripts/ivme.py kalite calistir MAT-LAB-02`. |
 | MAT-LAB-01 / 12.02 | Tek–çift pilotu teknik olarak hazır; artık Temel Kavramlar labının ilk hedefi (`/konuyu-ogrenelim/laboratuvar/temel-kavramlar`), tamamlanınca görseli okunmuş dört tek–çift ÖSYM sorusuna geçer. Öğretmen/öğrenci aktarım gözlemi ayrıdır. Kanıt: `python scripts/ivme.py kalite durum MAT-LAB-01`. |
@@ -18,7 +17,19 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 | TAS-08 / 12.12 | Kaynaklı pilotun otomatik kabulü geçti; öğretmen sekiz bölüm/dört soru inceleme kararını kaydetmeli, ardından gerçek öğrenciyle bağımsız aktarım gözlemi yapılmalı. Kabul biçimi [pilot kaydında](icerik/tas08-pilot-kabul.md#kalan-kabul). |
 | TAS-02 / 12.06 | Dış makinede webhook/zamanlayıcı kurulumu ve gerçek kesinti/iyileşme bildirimi açık; [işletim tarifi](islemler/saglik-ve-izleme.md). |
 
-## Son kapanan iş: DENEME-02
+## Son kapanan iş: YD-01–05
+
+Yurt dışı soruları, Dersler'in üç bölümü ve istatistikler, yıl/kitapçık/oturum
+seçimi, MEB oranlı deneme/pratik ve ortak soru ekranı tamamlandı. 28 kitapçık,
+2.554 etkin soru, 6 iptal; iki PDF okumasıyla cevap/seçenek farkı sıfır. 36 cevap
+eşlemesi ve 100 sorunun beş seçeneği düzeltildi; kaynaklar ve öğrenci kayıtları korundu.
+Tekrar işlem [tarifindedir](islemler/yurt-disi-sorular.md). Python 3/3, Node 17/17,
+geçici DB arşiv/pratik 21/21, puanlama 4/4 ve son kişisel tercih regresyonu
+14/14; UI 24 kabul geçti.
+`veri/yurt-disi/` ve `veri/ui-denetim/yurt-disi/` raporları kanıttır.
+Bu kapsamda açık iş yok. Yeni istekte ilk komut `git status --short`.
+
+## Önceki kapanan iş: DENEME-02
 
 TYT ve AYT net hücrelerinde sayısal değeri eşit kalan `3` → `3,` gibi ara
 girişler artık metni eski değere döndürmez. Yeni deneme ekleyip `3,25` ve

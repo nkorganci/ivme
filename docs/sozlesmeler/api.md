@@ -71,7 +71,7 @@ Yönetici erişimi öğrencinin son giriş/aktif süre istatistiğini artırmaz.
 | `POST /api/study-sessions/{id}/finish` | Kendi açık pratiğini kapatır; tekrarda aynı bitiş/sonuç. Başka kullanıcıya 404, iptal edilmiş oturuma 409 |
 | `POST /api/study-sessions/{id}/cancel` | Kendi açık pratiğini `ABANDONED` yapar ve bitiş zamanını kaydeder; yanıtlar korunur ve hesaplara girmez. Tekrar 204, başkasının kaydı 404, tamamlanmış pratik 409 |
 | `GET /api/exams/plan?bank&examType&track&includeSolved&selectionMode&questionCount` | Genel denemenin branş hedeflerini, uygun soru sayılarını ve `ready` durumunu döndürür. `questionCount` verilmediğinde tam deneme planıdır; `includeSolved=false` yalnız yeni soruları kullanır, varsayılan `true` |
-| `POST /api/exams/full` `{bank?,examType,track?,includeSolved?,year?}` | TYT 120 / AYT alanına göre 80 soru ve sabit süre/branş kotalarıyla deneme oluşturur. Genel denemede `includeSolved=false` yalnız yeni soruları kullanır. `year` varsa o yılın çıkmış sorularının tamamı özgün sırayla seçilir; `bank=OGM` veya `includeSolved=false` kabul edilmez. Eksik havuzda 400; eski konu/sayı/geçmiş parametreleri devralınmaz |
+| `POST /api/exams/full` `{bank?,examType,track?,includeSolved?,year?,bookletId?}` | Seçili sınavın tam denemesini oluşturur. TYT 120 / AYT 80; `YURT_DISI_MY` 60 soru, 75 dakika, 18/18/12/12. `year` için çıkmış sorular özgün sırayla seçilir; `bank=OGM` veya `includeSolved=false` kabul edilmez. Yurt dışında aynı yıldaki farklı tarih/oturum/kitapçık `bookletId` ile ayrılır; birden fazla seçenek varsa bu kimlik zorunludur. Eksik kitapçık başka soruyla doldurulmaz; iptaller dışlanır. Eksik havuzda 400 |
 | `GET /api/exams/archive?examType&track` | Kayıtlı yılların `year,examType,track,questionCount,timeLimitMinutes,ready,subjects:[{subject,target,available}]` bilgileri. Eksik/birleşik/inceleme bekleyen soru varsa `ready=false`; başka yıldan soru eklenmez |
 | `POST /api/exams` `{bank,examType,subject,topic,questionCount,selectionMode,timeLimitMinutes,track?}` | `track=SAYISAL|SOZEL|ESIT_AGIRLIK` genel denemede dengeli branş planını uygular; eksik havuzda 400 |
 | `GET /api/exams?page&size` | Yalnız kendi teslim edilmiş denemeleri; toplam sonuçlara ek olarak `examType` ve `bySubject:[{subject,total,correct,wrong,blank}]` döner. Branşlar sayfadaki deneme kimlikleri için tek toplu sorguyla, korunmuş `exam_questions` alan/yanıt/sonuçlarından okunur; soru veya cevap anahtarı taşınmaz |
@@ -79,6 +79,12 @@ Yönetici erişimi öğrencinin son giriş/aktif süre istatistiğini artırmaz.
 | `POST /api/exams/{id}/cancel` | Kendi açık denemesini `CANCELLED` yapar; sonuç/puan üretmez, kaydı ve yanıtları korur. Tekrar 204, başkasının kaydı 404, teslim edilmiş deneme 409; iptal sonrası cevap/teslim/devam 409 |
 | `GET /api/exams?page&size`, `GET /api/exams/summary` | Sahibine ait geçmiş ve özet |
 | `POST /api/feedback` | `RATING`, `QUESTION_ISSUE` veya `GENERAL` geri bildirimi |
+
+Yurt dışı arşiv yanıtında ayrıca `bookletId`, `bookletLabel`,
+`excludedQuestionCount` bulunur; aynı yıl birden çok satırdır. Süre kitapçık kapağından
+gelir. Puan `doğru/toplam × 100` biçimindedir; yanlış cezası uygulanmaz. Filtresiz
+yurt dışı pratiği 30/30/20/20 oranını soru sayısına uyarlar; öğrencinin gizlediği
+sorular seçilmez.
 
 `CIKMIS` ve `OGM` koleksiyonları `questions.bank` ile ayrılır. `questions.solution_image` varsa ve erişim izni oluştuysa çözüm görseli soru ekranında gösterilir. Soru görseli ve çözüm görseli veritabanında dosya değil, `YKS_RESIM_KLASORU` altındaki göreli yoldur; gerçek dosya yolu kökün dışına çıkamaz. QR üretimde sabit `YKS_SITE_ADRESI/soru/{code}` adresini kullanır. Karalama `strokes` alanı 0–1 arası koordinatlardan oluşan çizgi/nokta dizileridir; en çok 100 çizgi, çizgi başına 250 nokta ve 64 KiB JSON kabul edilir. Serbest pratikte iki yanıt hakkından sonra öğrenci cevap gösterir veya soruyu atlar; sonraki çalışma yeni turdur. `question_attempts.correct_answer` olay anında kopyalanır, aktif saniye görünür/odaklı sekmede yaklaşık ölçülür. Eski stateless `/api/questions/{id}/check` kaldırıldı. Sınav oturumu cevap anahtarını teslimden önce döndürmez. `exam_questions.correct_answer` teslimde kopyalanır; sonraki soru düzenlemesi eski sonucu değiştirmez.
 

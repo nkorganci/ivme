@@ -18,6 +18,7 @@ import { useExamTrack } from '../examTrack.jsx';
 import { WORKED_EXAMS } from '../learn/content/worked-exams.js';
 import { evidenceForQuestion } from '../learn/content/evidence.js';
 import GuidedExam from '../learn/lesson/GuidedExam.jsx';
+import { useQuestionViewport } from '../useQuestionViewport.js';
 
 const FILTER_KEYS = ['bank', 'examType', 'subject', 'topic', 'page'];
 const LEARN_PATH = '/konuyu-ogrenelim';
@@ -69,6 +70,7 @@ export default function QuestionDetail() {
 }
 
 function QuestionView({ q, filters, session, reload }) {
+  const viewport = useQuestionViewport();
   const { bankName, examLabel } = useExamTrack();
   const navigate = useNavigate();
   const sessionId = session?.id;
@@ -203,7 +205,7 @@ function QuestionView({ q, filters, session, reload }) {
       : '';
 
   return (
-    <div className="qpage">
+    <div className="qpage" ref={viewport}>
       <PageInk key={q.id} type="QUESTION" id={q.id} onBoardAction={setBoardAction} />
       <h1 className="sr-only">Soru {q.code}</h1>
       <div className="qlayout">

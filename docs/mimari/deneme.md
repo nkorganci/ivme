@@ -74,6 +74,13 @@ test verisi eklemek veya geçmiş olay/kuyrukları yeniden oynatmak değildir.
 
 ## Deneme ve sınav arşivi
 
+Yurt dışı öğretmenlikte `exam_tracks.sections` MEB yazılı sınav kapsamını taşır:
+60 soru/75 dakika ve 18/18/12/12 dağılımı. Filtresiz genel pratik de aynı orandadır.
+Yıllık sınavda `official_exam_booklets` tarih, A/B kitapçığı veya e-sınav oturumunu
+ayrı kimlikle saklar; `official_exam_booklet_questions` özgün sırayı korur. Süre
+eski kitapçığın kapağından okunur; iptal sorular çıkarılır, eksik kitapçık başka
+sorularla tamamlanmaz. Kaynak/cevap/görsel denetimi [yurt dışı tarifindedir](../islemler/yurt-disi-sorular.md).
+
 Deneme formunda kaynak adları seçilen sınava göre “TYT Çıkmış Sorular” /
 “TYT Soru Bankası” veya AYT karşılıklarıyla gösterilir. Sınav değişince adlar ve
 soru havuzu birlikte değişir. Sayım (`/api/exams/plan`) ve oluşturma

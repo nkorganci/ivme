@@ -117,7 +117,7 @@ class YurtDisiContentTest extends TestBase {
             String key="mix"+group+"_"+n;
             catalogQuestion(key,"YURT_DISI_MY",subjects[group],group==2?"yd":"mix"+group);
         }
-        user("yd_mixed",Role.USER);var session=login("yd_mixed","Sifre1234");choose(session,"YURT_DISI_OGRETMEN");
+        var learner=user("yd_mixed",Role.USER);var session=login("yd_mixed","Sifre1234");choose(session,"YURT_DISI_OGRETMEN");
         var plan=read(send(session,get("/api/exams/plan").param("examType","YURT_DISI_MY"),null).andExpect(status().isOk()));
         assertThat(plan.path("questionCount").asInt()).isEqualTo(60);
         assertThat(plan.path("timeLimitMinutes").asInt()).isEqualTo(75);
@@ -129,7 +129,13 @@ class YurtDisiContentTest extends TestBase {
             long count=0;for(var question:exam.path("questions"))if(question.path("subject").asText().equals(subjects[i]))count++;
             assertThat(count).isEqualTo(target[i]);
         }
+        var hiddenIds=jdbc.queryForList("SELECT id FROM questions WHERE code LIKE 'TEST-mix0_%' ORDER BY id LIMIT 16",Long.class);
+        for(long hidden:hiddenIds)jdbc.update("INSERT INTO student_question_preferences(user_id,question_id,repeat_preference) VALUES(?,?,'HIDE')",learner.getId(),hidden);
+        // Only two Turkish questions remain; a 10-question practice needs three.
+        send(session,post("/api/study-sessions"),json.writeValueAsString(Map.of("questionCount",10,"clientRequestId",UUID.randomUUID().toString()))).andExpect(status().isBadRequest());
+        jdbc.update("DELETE FROM student_question_preferences WHERE user_id=? AND question_id=?",learner.getId(),hiddenIds.getFirst());
         var practice=read(send(session,post("/api/study-sessions"),json.writeValueAsString(Map.of("questionCount",10,"clientRequestId",UUID.randomUUID().toString()))).andExpect(status().isCreated()));
+        for(var question:practice.path("questions"))assertThat(hiddenIds.subList(1,hiddenIds.size())).doesNotContain(question.path("questionId").asLong());
         int[] practiceTarget={3,3,2,2};
         for(int i=0;i<4;i++) {
             long count=0;for(var question:practice.path("questions"))if(question.path("subject").asText().equals(subjects[i]))count++;

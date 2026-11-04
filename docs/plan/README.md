@@ -7,6 +7,5 @@ Açık uygulama işlerinin ayrıntıları yalnız numaralı adım dosyalarında 
 | 7 | [Etiket kalitesi ve insan incelemesi](07-etiket-kalitesi.md); 07.02 alan uzmanı/öğretmen kararı bekler |
 | 12 | [Kalan içerik ve yayın](12-icerik-ve-yayin.md); içerik kararları 7. adıma bağlıdır |
 | 14 | [KPSS sınavları](14-kpss.md); 14.02 Ön Lisans sıradadır |
-| 15 | [Yurt dışı öğretmenlik soruları](15-yurt-disi.md); 15.01 PDF çıkarımı ve sınav izolasyonu |
 
 [Kullanıcı rolleri ve yönetimi](../tasarim/kullanici-yonetimi.md) ayrı uygulama talimatı bekleyen tasarım önerisidir; açık uygulama adımı değildir.

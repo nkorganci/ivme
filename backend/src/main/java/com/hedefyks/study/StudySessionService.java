@@ -20,6 +20,7 @@ import com.hedefyks.study.StudySessionDtos.UnfinishedItem;
 import com.hedefyks.common.PageResponse;
 import java.time.Instant;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Service;
@@ -68,9 +69,7 @@ public class StudySessionService {
                 && Boolean.TRUE.equals(filter.includeCandidates())
                 && req.topicPdfId()==null && history.isEmpty() && filter.myDifficulty()==null && filter.mark()==null
                 && filter.teacherDifficulty()==null && filter.questionTypeId()==null && filter.bank()!=com.hedefyks.question.QuestionBank.OGM;
-        List<Long> ids = officialMix ? examPlans.select(userId,com.hedefyks.question.QuestionBank.CIKMIS,selection,
-                examPlans.plan(userId,com.hedefyks.question.QuestionBank.CIKMIS,ExamType.YURT_DISI_MY,
-                    com.hedefyks.exam.ExamTrack.SAYISAL,selection,req.questionCount()))
+        List<Long> ids = officialMix ? officialPracticeIds(userId,selection,req.questionCount())
                 : availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId(), history);
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
 
@@ -97,6 +96,19 @@ public class StudySessionService {
                     .param("sessionId", sessionId).param("questionId", ids.get(i)).param("position", i + 1).update();
         }
         return get(userId, sessionId);
+    }
+
+    private List<Long> officialPracticeIds(Long userId,QuestionSelectionMode selection,int count) {
+        var plan=examPlans.plan(userId,com.hedefyks.question.QuestionBank.CIKMIS,ExamType.YURT_DISI_MY,
+            com.hedefyks.exam.ExamTrack.SAYISAL,selection,count);
+        var ids=new ArrayList<Long>();
+        for(var quota:plan.subjects()) {
+            var filter=new QuestionFilter(com.hedefyks.question.QuestionBank.CIKMIS,ExamType.YURT_DISI_MY,quota.subject(),null).forPractice();
+            var selected=availability.balancedExamIds(userId,filter,selection,quota.target(),null);
+            if(selected.size()!=quota.target())throw ApiException.badRequest(quota.subject()+": bu dağılım için "+quota.target()+" uygun soru gerekiyor. Kişisel tercihlerini veya soru sayısını değiştirebilirsin.");
+            ids.addAll(selected);
+        }
+        return ids;
     }
 
     @Transactional

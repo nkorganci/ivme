@@ -115,6 +115,6 @@ export const api = {
   upload: (path, formData) => request('POST', path, formData),
 };
 
-export const imageUrl = (id, version) => `/api/questions/${id}/image?v=${encodeURIComponent(`kirp-2-${version ?? ''}`)}`;
+export const imageUrl = (id, version) => `/api/questions/${id}/image?v=${encodeURIComponent(`kirp-3-${version ?? ''}`)}`;
 export const solutionImageUrl = (id) => `/api/questions/${id}/solution-image`;
 export const qrUrl = (id, size = 200) => `/api/questions/${id}/qr?size=${size}`;
