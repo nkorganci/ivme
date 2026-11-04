@@ -11,6 +11,7 @@ kalır. Bir komut değişince tarif aynı commit'te güncellenir.
 | Değişikliği doğrulama: izleyici, backend testi, ekran denetimi | [dogrulama.md](dogrulama.md) |
 | TAS-01–12 test seçimi, kaynak hash'li kanıt ve ortak devir | [test-ve-devir.md](test-ve-devir.md) |
 | Yerel uygulama, paket, HTTPS tüneli ve yedek | [uygulama-calistirma-ve-yayin.md](uygulama-calistirma-ve-yayin.md) |
+| Windows PostgreSQL 18 için pgvector kurulumu ve doğrulama | [pgvector.md](pgvector.md) |
 | Sağlık uçları, kayıt metrikleri ve dış uyarı | [saglik-ve-izleme.md](saglik-ve-izleme.md) |
 | Yeni kayıt e-postası, Brevo kurulumu ve kalıcı bildirim/retry | [kayit-bildirimleri.md](kayit-bildirimleri.md) |
 | Soru CSV/JSON içe aktarma ve görsel kırpma | [soru-ice-aktarma.md](soru-ice-aktarma.md) |
