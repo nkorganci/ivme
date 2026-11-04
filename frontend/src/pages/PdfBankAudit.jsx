@@ -5,6 +5,8 @@ import { useAsync, usePageTitle } from '../hooks.js';
 import DataGrid from '../components/DataGrid.jsx';
 import { ErrorBox, Loading } from '../components/States.jsx';
 import './PdfBankAudit.css';
+import { useExamTrack } from '../examTrack.jsx';
+import ExamPdfInventory from '../components/ExamPdfInventory.jsx';
 
 const number = value => Number(value || 0).toLocaleString('tr-TR');
 const describeRow = row => {
@@ -41,6 +43,11 @@ const codeGridOptions = { rowHeight: 34, getRowId: ({ data }) => `${data.code}:$
   onGridSizeChanged: auditGridOptions.onGridSizeChanged };
 
 export default function PdfBankAudit() {
+  const { yurtDisi } = useExamTrack();
+  return yurtDisi ? <ExamPdfInventory /> : <YksPdfBankAudit />;
+}
+
+function YksPdfBankAudit() {
   usePageTitle('PDF envanteri');
   const audit = useAsync(() => api.get('/api/pdf-bank-audit'), []);
   const [selected, setSelected] = useState(null);

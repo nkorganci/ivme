@@ -37,7 +37,7 @@ public class LearningResourceController {
     @GetMapping("/items") public Map<String,Map<String,Object>> items(@RequestParam List<String> key){return resources.items(key);}
     @GetMapping("/progress") public Map<String,Object> progress(
         @org.springframework.security.core.annotation.AuthenticationPrincipal com.hedefyks.user.AppUserDetails me,
-        @RequestParam(defaultValue="CURRENT") String classification){return resources.progress(me.id(),classification);}
+        @RequestParam(defaultValue="CURRENT") String classification){return resources.progress(me.id(),classification,tracks.examTypes(me.id()));}
     @GetMapping("/pdf/{id}") public ResponseEntity<Resource> pdf(@PathVariable int id) {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_PDF)
             .header(HttpHeaders.CONTENT_DISPOSITION,ContentDisposition.inline().filename(reviews.pdfFilename(id)).build().toString())

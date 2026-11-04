@@ -29,7 +29,7 @@ const RESULT_COLUMNS = [
 ].map(column => ({ cellDataType: 'number', valueFormatter: ({ value }) => value == null ? '—' : value.toLocaleString('tr-TR'), ...column }));
 const shortDate = value => value == null ? '—' : new Date(value).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit' });
 const compactColumn = (column, width) => ({ filter: false, ...column, width, minWidth: width, flex: width });
-const examColumns = branches => [
+const examColumns = (branches, scoreOnly = false) => [
   compactColumn({ field: 'number', headerName: 'N', cellDataType: 'number' }, 30),
   compactColumn({ field: 'title', headerName: 'Deneme', filter: true, maxWidth: 64, tooltipField: 'title', cellRenderer: ({ data }) => data &&
     <Link to={`/sinav/${data.id}/sonuc`} title={data.title}>{data.title.replace(/ denemesi$/i, '').replace('Sayısal', 'Say.').replace('Eşit Ağırlık', 'EA').replace('Sözel', 'Söz.')}</Link> }, 64),
@@ -44,13 +44,16 @@ const examColumns = branches => [
       </span>; },
     tooltipValueGetter: ({ data }) => {
       const entries = data?.bySubject.filter(item => branch.subjects.includes(item.subject)) ?? [];
-      return entries.length ? entries.map(item => `${item.subject}: ${item.total} soru, ${item.correct} doğru, ${item.wrong} yanlış, ${item.blank} boş, ${formatNet(item.net)} net`).join(' · ') : 'Bu denemede bu branştan soru yok.';
+      return entries.length ? entries.map(item => `${item.subject}: ${item.total} soru, ${item.correct} doğru, ${item.wrong} yanlış, ${item.blank} boş${scoreOnly ? '' : `, ${formatNet(item.net)} net`}`).join(' · ') : 'Bu denemede bu branştan soru yok.';
     },
     ...(branch.key === 'religion' ? { maxWidth: 40 } : {}),
-  }, branch.key === 'religion' ? 40 : 51)),
+    wrapHeaderText: true, autoHeaderHeight: true,
+  }, branch.label.length > 8 ? 160 : branch.key === 'religion' ? 40 : 51)),
   ...[['questionCount', 'S', 'Soru'], ['correct', 'D', 'Doğru'], ['wrong', 'Y', 'Yanlış']].map(([field, headerName, headerTooltip]) =>
     compactColumn({ field, headerName, headerTooltip, cellDataType: 'number', cellClass: field === 'correct' ? 'statistics-correct' : field === 'wrong' ? 'statistics-wrong' : undefined }, 32)),
-  compactColumn({ field: 'net', headerName: 'Net', cellDataType: 'number', valueFormatter: ({ value }) => formatNet(value) }, 48),
+  compactColumn(scoreOnly ? { field: 'percent', headerName: 'Başarı', cellDataType: 'number', valueFormatter: ({ value }) => formatPercent(value),
+    headerTooltip: 'Doğru / toplam soru × 100' }
+    : { field: 'net', headerName: 'Net', cellDataType: 'number', valueFormatter: ({ value }) => formatNet(value) }, scoreOnly ? 80 : 48),
 ];
 const PRACTICE_COLUMNS = [
   { field: 'title', headerName: 'Pratik', minWidth: 110, cellRenderer: ({ data }) => data &&
@@ -76,13 +79,14 @@ const examSummaryColumns = examLabel => [
   { field: 'examType', headerName: 'Tür', minWidth: 65, valueFormatter: ({ value }) => examLabel(value) }, ...SUMMARY_COLUMNS,
 ];
 export default function History() {
+  const { track } = useExamTrack();
   const [params] = useSearchParams();
   const tab = params.get('tab') === 'practice' ? 'practice' : 'exams';
   usePageTitle(STATISTICS_LABEL);
   if (params.get('tab') === 'progress') return <Navigate to="/dersler-ve-konular?tab=konular" replace />;
   return <div className="study-statistics">
     <h1>{STATISTICS_LABEL}</h1>
-    <p className="muted">Deneme sonuçlarını ve pratiklerini tek yerden takip et.</p>
+    <p className="muted">{track?.name}: Bu sınavdaki deneme sonuçlarını ve pratiklerini takip et.</p>
     <nav className="history-tabs" aria-label="Çalışma istatistikleri bölümleri">
       {[['exams', 'Denemeler'], ['practice', 'Pratikler']].map(([value, label]) =>
         <Link key={value} to={value === 'exams' ? '/gecmis' : `/gecmis?tab=${value}`}
@@ -94,12 +98,12 @@ export default function History() {
 
 function HistoryTable({ practice }) {
   const path = practice ? '/api/study-sessions' : '/api/exams';
-  const { exams, examLabel, kpss } = useExamTrack();
-  const branches = useMemo(() => examBranchesFor(exams, kpss), [exams, kpss]);
+  const { exams, examLabel, nonYks, yurtDisi } = useExamTrack();
   const { data, loading, error, retry } = useAsync(async () => {
-    const [items, metadata] = await Promise.all([loadStudyHistory(path), practice ? loadSharedCatalog() : Promise.resolve(null)]);
+    const [items, metadata] = await Promise.all([loadStudyHistory(path), loadSharedCatalog()]);
     return { items, categories: metadata?.categories || [] };
   }, [path]);
+  const branches = useMemo(() => examBranchesFor(exams, nonYks, data?.categories || []), [exams, nonYks, data?.categories]);
   const [visibleRows, setVisibleRows] = useState([]);
   const rows = useMemo(() => practice ? (data?.items ?? []).map(item => ({
     ...item, title: `${item.questionCount} soruluk pratik`, date: Date.parse(item.startedAt),
@@ -110,7 +114,7 @@ function HistoryTable({ practice }) {
     percent: item.result && item.questionCount ? item.result.correct * 100 / item.questionCount : null,
     durationSeconds: practiceDurationSeconds(item),
   })) : prepareExamHistory(data?.items ?? [], branches), [data, practice, branches]);
-  const columns = useMemo(() => practice ? PRACTICE_COLUMNS : examColumns(branches), [rows, practice, branches]);
+  const columns = useMemo(() => practice ? PRACTICE_COLUMNS : examColumns(branches, yurtDisi), [practice, branches, yurtDisi]);
   const summary = useMemo(() => summarizeExamRows(visibleRows, exams.map(e => e.id)), [visibleRows, exams]);
 
   return <section aria-label={practice ? 'Pratik istatistikleri' : 'Deneme istatistikleri'}>

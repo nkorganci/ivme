@@ -52,9 +52,10 @@ export function ExamTrackProvider({ children }) {
       // İçerik yalnız ACTIVE sınavda hazırdır; diğerlerinde sayfalar "hazırlanıyor" ekranı gösterir.
       contentReady: !track || track.status === 'ACTIVE',
       kpss: track?.family === 'KPSS', exams, questionSources: questionSourcesFor(track, exams),
+      yurtDisi: track?.family === 'YURT_DISI', nonYks: Boolean(track && track.family !== 'YKS'),
       examLabel: id => names.get(id) || id || '',
       // "AYT-TYT Çıkmış Sorular" yalnız YKS'te; KPSS'te sınavın adı kullanılır.
-      bankName: bank => track?.family !== 'YKS' && bank === 'CIKMIS' ? `${track.name} Çıkmış Sorular` : bankLabel(bank),
+      bankName: bank => track && track.family !== 'YKS' && bank === 'CIKMIS' ? `${track.name} Çıkmış Sorular` : bankLabel(bank),
       featureReady: feature => featureReady(track, feature) };
   }, [state, loading, saving, error, select]);
 

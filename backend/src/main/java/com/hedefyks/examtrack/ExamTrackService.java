@@ -88,8 +88,9 @@ public class ExamTrackService {
     /** Kategori/ders kaydının seçili sınava ait olup olmadığı (katalog tanımındaki sınav kimliği). */
     public boolean includesCategoryExam(Object exam, List<ExamType> types) {
         String value = exam == null ? "" : exam.toString();
-        boolean kpssTrack = types.stream().anyMatch(ExamType::kpss);
-        return kpssTrack ? types.stream().anyMatch(t -> t.name().equals(value)) : !value.startsWith("KPSS_");
+        boolean yks = types.stream().anyMatch(t -> t == ExamType.TYT || t == ExamType.AYT);
+        return yks ? !value.startsWith("KPSS_") && !value.startsWith("YURT_DISI_")
+                : types.stream().anyMatch(t -> t.name().equals(value));
     }
 
     public static boolean kpss(QuestionFilter filter) {

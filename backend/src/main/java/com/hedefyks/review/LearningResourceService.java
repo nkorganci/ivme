@@ -49,7 +49,8 @@ public class LearningResourceService {
     /** Counts identities and the union of verified ranges; opening a source is never a completion. */
     public Map<String,Object> coverage(String exam,String subject) {
         boolean kpss=java.util.Arrays.stream(com.hedefyks.question.ExamType.values()).anyMatch(t->t.kpss()&&t.name().equals(exam)) && subject.startsWith("kpss-");
-        if(!kpss && (!Set.of("TYT","AYT").contains(exam) || !ReviewCatalog.ALIASES.containsKey(subject)))
+        boolean scoped=vocabulary.categories().stream().anyMatch(c->exam.equals(c.get("exam")) && subject.equals(c.get("subjectId")));
+        if(!kpss && !scoped && (!Set.of("TYT","AYT").contains(exam) || !ReviewCatalog.ALIASES.containsKey(subject)))
             throw ApiException.badRequest("Kaynak kapsamı için sınav ve ders seçin.");
         String overrides;
         try{overrides=json.writeValueAsString(reviews.studentOverrides());}catch(Exception e){throw new IllegalStateException(e);}
@@ -92,6 +93,11 @@ public class LearningResourceService {
      * Kart öz değerlendirmesi "tekrar"dır, doğru cevap sayılmaz. Genel toplamlar tekildir; konu alt toplamları örtüşebilir.
      */
     public Map<String,Object> progress(Long userId,String classification) {
+        return progress(userId,classification,null);
+    }
+    public Map<String,Object> progress(Long userId,String classification,List<com.hedefyks.question.ExamType> exams) {
+        String examScope=exams==null?"":exams.stream().map(e->"'"+e.name()+"'").collect(java.util.stream.Collectors.joining(","));
+        String questionScope=exams==null?"":" AND q.exam_type IN ("+(examScope.isEmpty()?"NULL":examScope)+")";
         if(!Set.of("CURRENT","HISTORICAL").contains(classification))throw ApiException.badRequest("İlerleme sınıflaması geçersiz.");
         boolean historical="HISTORICAL".equals(classification);
         String overrides=overridesJson();
@@ -117,7 +123,7 @@ public class LearningResourceService {
             FROM ranked f JOIN ranked l ON l.question_id=f.question_id AND l.last_rn=1
               JOIN questions q ON q.id=f.question_id
               LEFT JOIN effective i ON i.question_code=q.code WHERE f.rn=1
-            """;
+            """+questionScope;
         jdbc.query(sql,rs->{
             Boolean correct=(Boolean)rs.getObject("is_correct"),last=(Boolean)rs.getObject("last_correct");
             long repeats=rs.getLong("attempts")-1,seconds=rs.getLong("active_seconds"),answers=rs.getLong("answers");
@@ -133,14 +139,15 @@ public class LearningResourceService {
               CASE WHEN ?='HISTORICAL' THEN a.learning_label_snapshot->'labels'->'assignments' ELSE i.labels->'assignments' END::text AS assignments
             FROM question_attempts a JOIN study_sessions s ON s.id=a.session_id AND s.user_id=a.user_id
               JOIN questions q ON q.id=a.question_id LEFT JOIN effective i ON i.question_code=q.code
-            WHERE a.user_id=? AND s.status='IN_PROGRESS' AND a.event_type='ANSWER' ORDER BY a.question_id,a.id
-            """,rs->{
+            WHERE a.user_id=? AND s.status='IN_PROGRESS' AND a.event_type='ANSWER'
+            """+questionScope+" ORDER BY a.question_id,a.id",rs->{
             if(counted.contains(rs.getLong("question_id")))return;
             inProgress[0]++;
             for(String id:topicIds(rs.getString("assignments")))openByCategory.merge(id,1L,Long::sum);
         },overrides,classification,userId);
-        var exercise=exercise(userId,historical,overrides);
-        var review=review(userId,historical);
+        boolean lessons=exams==null || exams.stream().anyMatch(e->e==com.hedefyks.question.ExamType.TYT || e==com.hedefyks.question.ExamType.AYT);
+        var exercise=lessons?exercise(userId,historical,overrides):new Breakdown<>(new ExerciseCount(),Map.<String,ExerciseCount>of());
+        var review=lessons?review(userId,historical):new Breakdown<>(new ReviewCount(),Map.<String,ReviewCount>of());
         var ids=new LinkedHashSet<String>(categories.keySet());ids.addAll(openByCategory.keySet());
         ids.addAll(exercise.byCategory().keySet());ids.addAll(review.byCategory().keySet());
         var rows=new ArrayList<Map<String,Object>>();

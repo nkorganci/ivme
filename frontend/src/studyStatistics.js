@@ -16,11 +16,14 @@ export const EXAM_BRANCHES = [
 ];
 
 /** KPSS'de ders kolonları sınav tanımındaki derslerdir (ör. Türkçe, Matematik, Tarih...). */
-export function examBranchesFor(exams = [], kpss = false) {
-  if (!kpss) return EXAM_BRANCHES;
-  const names = [...new Set(exams.flatMap(exam => (exam.subjects || []).map(subject => subject.name)))];
+export function examBranchesFor(exams = [], nonYks = false, categories = []) {
+  if (!nonYks) return EXAM_BRANCHES;
+  const examIds = new Set(exams.map(exam => exam.id));
+  const names = [...new Set([...exams.flatMap(exam => (exam.subjects || []).map(subject => subject.name)),
+    ...categories.filter(c => c.selectable !== false && examIds.has(c.exam)).map(c => c.subject)])];
+  const fullNames = examIds.has('YURT_DISI_MY');
   return names.map(name => ({ key: name.toLocaleLowerCase('tr-TR').replace(/[^a-z0-9çğıöşü]+/g, '-'),
-    label: name.slice(0, 3), subjects: [name] }));
+    label: fullNames ? name : name.slice(0, 3), subjects: [name] }));
 }
 
 export function groupExamBranches(subjects, branches = EXAM_BRANCHES) {

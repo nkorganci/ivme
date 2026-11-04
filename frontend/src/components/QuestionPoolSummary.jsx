@@ -10,7 +10,7 @@ import { useExamTrack } from '../examTrack.jsx';
 
 export default function QuestionPoolSummary() {
   const [, setParams] = useSearchParams();
-  const { questionSources: SOURCES, kpss, exams } = useExamTrack();
+  const { questionSources: SOURCES, exams } = useExamTrack();
   const { data, loading, error, retry, reload } = useAsync(async () => {
     const summary = await api.get('/api/questions/pool-summary');
     return [{ ...summary, ...Object.fromEntries(SOURCES.map(source => [source.field, summary.sources[source.id] || 0])) }];
@@ -46,7 +46,7 @@ export default function QuestionPoolSummary() {
   return <section className="card table-card form-card study-pool-summary" aria-label="Soru havuzu ve çözüm özeti">
     {loading ? <Loading text="Soru özeti yükleniyor…" /> : error ? <ErrorBox error={error} onRetry={retry} />
       : <DataGrid mode="summary" dense columnDefs={columns} rowData={data} />}
-    <p className="muted small statistics-table-note">{kpss ? exams.map(e => e.name).join(' ve ') : 'AYT ve TYT'}: çıkmış sorular. Kaynak sayısına tıklayarak filtrele.
+    <p className="muted small statistics-table-note">{exams.map(e => e.name).join(' ve ')}: çıkmış sorular. Kaynak sayısına tıklayarak filtrele.
       {' '}Çözülen ve doğru sayıları ilk yanıtına göre hesaplanır; tekrarlar sayıyı artırmaz.</p>
   </section>;
 }

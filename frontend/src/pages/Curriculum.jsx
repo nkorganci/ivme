@@ -61,7 +61,7 @@ function kpssDistributionColumns(rows) {
 
 export default function Curriculum() {
   usePageTitle('Dersler');
-  const { exams, kpss, track, examLabel } = useExamTrack();
+  const { exams, kpss, yurtDisi, nonYks, track, examLabel } = useExamTrack();
   const [params, setParams] = useSearchParams();
   const tab = params.get('tab') === 'dagilim' ? 'dagilim' : 'konular';
   const exam = tab === 'dagilim' ? '' : exams.some(e => e.id === params.get('sinav')) ? params.get('sinav') : exams[0].id;
@@ -69,6 +69,7 @@ export default function Curriculum() {
   const [pending, setPending] = useState({});
   const [saveError, setSaveError] = useState(null);
   const metadata = useAsync(() => api.get('/api/learning-resources/metadata'), []);
+  const examContent = useAsync(() => yurtDisi ? api.get('/api/exam-content') : Promise.resolve(null), [yurtDisi]);
   const completion = useAsync(() => api.get('/api/curriculum/progress'), []);
   const progress = useAsync(() => api.get('/api/learning-resources/progress?classification=CURRENT'), []);
   const categories = useMemo(() => referenceTopics(metadata.data?.categories || []), [metadata.data]);
@@ -102,8 +103,9 @@ export default function Curriculum() {
       answers: count?.answers || 0, lastCorrect: count?.lastCorrect || 0, lastWrong: count?.lastWrong || 0, inProgress: count?.inProgress || 0,
       exerciseItems: exercise?.items || 0, exercise, reviews: review?.reviews || 0, review };
   });
-  const distribution = useMemo(() => distributionRows(categories).filter(row => (!selectedSubject || row.subjectId === selectedSubject)
-    && (!exam || kpss || row[exam.toLowerCase()])), [categories, selectedSubject, exam, kpss]);
+  const distribution = useMemo(() => (yurtDisi ? examContent.data?.distribution || [] : distributionRows(categories))
+    .filter(row => (!selectedSubject || row.subjectId === selectedSubject)
+    && (!exam || nonYks || row[exam.toLowerCase()])), [categories, selectedSubject, exam, nonYks, yurtDisi, examContent.data]);
   const rows = tab === 'dagilim' ? distribution : topicRows;
   const subjectColumn = { field: 'subject', headerName: 'Ders', suppressSizeToFit: true, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell',
     sortable: false, filter: false, headerComponent: SubjectHeader,
@@ -113,19 +115,19 @@ export default function Curriculum() {
     { field: 'unit', headerName: 'Ünite', minWidth: 160, flex: 1, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell' },
     { field: 'topic', headerName: 'Konu', minWidth: 260, flex: 2, wrapText: true, autoHeight: true, cellClass: 'curriculum-text-cell' },
     // KPSS konuları sınıf düzeyi taşımaz.
-    ...(kpss ? [] : [{ field: 'gradeLabel', headerName: 'Sınıf', minWidth: 85, maxWidth: 100 }]),
+    ...(nonYks ? [] : [{ field: 'gradeLabel', headerName: 'Sınıf', minWidth: 85, maxWidth: 100 }]),
   ];
   const bankLink = (row, bank, count) => <Link to={(bank === 'OGM' ? '/soru-bankasi' : '/cikmis-sorular') + qs({ examType: exam, categoryId: [row.id] })}
     aria-label={`${number(count)} soru`}>{number(count)}</Link>;
   const topicColumns = [
     subjectColumn,
-    { field: 'exam', headerName: 'Sınav', minWidth: 85, maxWidth: kpss ? 140 : 100, sortable: false, filter: false,
+    { field: 'exam', headerName: 'Sınav', minWidth: 85, maxWidth: nonYks ? 180 : 100, sortable: false, filter: false,
       valueFormatter: ({ value }) => examLabel(value),
       headerComponent: ExamHeader, headerComponentParams: { exam, exams, onChange: sinav => change({ sinav }) } },
     // Topic tracking gives the topic 20% less room than the distribution table; long names wrap.
     ...baseColumns.map(column => column.field === 'topic' ? { ...column, minWidth: 208, flex: 1.6 } : column),
     // KPSS'de soru bankası henüz yok; yalnız ÖSYM çıkmış soruları sayılır.
-    ...(kpss ? [] : [numeric('ogm', 'Soru bankası', { minWidth: 105, cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) })]),
+    ...(nonYks ? [] : [numeric('ogm', 'Soru bankası', { minWidth: 105, cellRenderer: ({ data }) => data && bankLink(data, 'OGM', data.ogm) })]),
     numeric('cikmis', 'Çıkmış soru', { cellRenderer: ({ data }) => data && bankLink(data, 'CIKMIS', data.cikmis) }),
     numeric('solved', 'Çözdüğüm', { minWidth: 105, headerTooltip: 'Bitirilen pratik ve denemelerde tekil soru; doğru/yanlış ilk yanıttır.' }),
     numeric('correct', 'Doğru'), numeric('wrong', 'Yanlış'),
@@ -134,7 +136,7 @@ export default function Curriculum() {
       headerTooltip: 'Her sorunun en son cevabı: doğru / yanlış.', valueGetter: ({ data }) => data && pair(data.lastCorrect, data.lastWrong) },
     numeric('inProgress', 'Devam eden', { minWidth: 105, headerTooltip: 'Henüz bitirilmemiş pratikte cevapladığın, yukarıdaki sayıma girmemiş sorular.' }),
     // Konuyu Öğrenelim ve kaynaklı notlar yalnız YKS'dedir.
-    ...(kpss ? [] : [numeric('exerciseItems', 'Ders alıştırması', { minWidth: 120,
+    ...(nonYks ? [] : [numeric('exerciseItems', 'Ders alıştırması', { minWidth: 120,
       headerTooltip: 'Konuyu Öğrenelim ders soruları ve not alıştırmaları; soru bankasından ayrı sayılır.',
       valueFormatter: ({ data }) => data && (data.exerciseItems ? `${number(data.exerciseItems)} · ${pair(data.exercise.firstCorrect, data.exercise.firstWrong)}` : '0'),
       tooltipValueGetter: ({ data }) => data?.exerciseItems ? `${number(data.exerciseItems)} alıştırma · ilk sonuç ${pair(data.exercise.firstCorrect, data.exercise.firstWrong)} doğru/yanlış`
@@ -145,7 +147,7 @@ export default function Curriculum() {
     { colId: 'actions', headerName: 'Çalış', minWidth: 215, filter: false, sortable: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <div className="curriculum-cell-links">
         <Link to={'/calisma/yeni' + qs({ examType: exam, categoryId: [data.id] })}>Pratik yap</Link>
-        {!kpss && <Link to={'/konular-ve-kaynaklar' + qs({ exam, subject: selectedSubject, categoryId: [data.id] })}>PDF · video · not</Link>}
+        {!nonYks && <Link to={'/konular-ve-kaynaklar' + qs({ exam, subject: selectedSubject, categoryId: [data.id] })}>PDF · video · not</Link>}
       </div> },
     { field: 'done', headerName: 'Durum', minWidth: 140, maxWidth: 160, filter: false, autoHeight: true,
       cellRenderer: ({ data }) => data && <button type="button" className={`curriculum-done${data.done ? ' done' : ''}`}
@@ -156,16 +158,20 @@ export default function Curriculum() {
   const distributionColumns = [
     subjectColumn,
     ...baseColumns.map(column => ({ ...column, minWidth: column.field === 'topic' ? 220 : column.field === 'unit' ? 135 : 85 })),
-    ...(kpss ? kpssDistributionColumns(distribution) : [
+    ...(yurtDisi ? [
+      ...(examContent.data?.years || []).map(year => numeric(`y${year}`, String(year), {
+        minWidth: 78, valueGetter: ({ data }) => data?.yearCounts?.[year] || 0 })),
+      numeric('total', 'Toplam çıkmış soru', { minWidth: 145 }),
+    ] : kpss ? kpssDistributionColumns(distribution) : [
       numeric('tytTotal', 'TYT 2018–2026', { minWidth: 110 }), numeric('aytTotal', 'AYT 2018–2026', { minWidth: 110 }),
       numeric('recent', 'Son 3 yıl 2024–2026', { minWidth: 125 })]),
   ];
   // Run özeti YKS Excel kaynağını taşır; KPSS kaynağı kendi kategorilerindedir.
-  const source = kpss ? categories[0]?.curriculumReference : metadata.data?.summary.curriculumReference || categories[0]?.curriculumReference;
+  const source = nonYks ? categories[0]?.curriculumReference : metadata.data?.summary.curriculumReference || categories[0]?.curriculumReference;
   if (metadata.loading) return <Loading text="Ders, ünite ve konular yükleniyor…" />;
   if (metadata.error) return <ErrorBox error={metadata.error} onRetry={metadata.retry} />;
   return <div className="curriculum-page curriculum-reference-page">
-    <div className="page-head"><h1>Dersler</h1></div>
+    <div className="page-head"><h1>Dersler</h1>{yurtDisi && <span className="badge badge-primary">{track.name}</span>}</div>
     <p className="muted lead">Dersini tablodan seç; konularını takip et ve soru dağılımını incele.</p>
     <nav className="history-tabs" aria-label="Dersler bölümleri">
       <button className={tab === 'konular' ? 'selected' : ''} type="button" aria-pressed={tab === 'konular'} onClick={() => change({ tab: 'konular' })}>Konu takibi</button>
@@ -173,6 +179,8 @@ export default function Curriculum() {
     </nav>
     {saveError && <ErrorBox error={saveError} />}
     {completion.error && <ErrorBox error={completion.error} onRetry={completion.retry} />}
+    {tab === 'dagilim' && examContent.loading && <Loading text="Sınavın soru dağılımı yükleniyor…" />}
+    {tab === 'dagilim' && examContent.error && <ErrorBox error={examContent.error} onRetry={examContent.retry} />}
     {tab === 'konular' && <>
       {coverage.loading && <p role="status" className="muted small">Soru bankası sayıları yükleniyor…</p>}
       {coverage.error && <ErrorBox error={coverage.error} onRetry={coverage.retry} />}
@@ -186,10 +194,13 @@ export default function Curriculum() {
         gridOptions={{ headerHeight: 85, rowHeight: 38, getRowId: ({ data }) => data.id }} />
     </section> : <Empty title="Bu seçimde konu bulunamadı." />}
     <p className="muted small">{tab === 'dagilim'
-      ? '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
+      ? yurtDisi ? 'Sayılar arşivden aktarılan, cevap anahtarlı ve etkin sorulardır. A/B kitapçıkları ve farklı oturumlar ayrı kayıtlar olarak sayılır; sınavın resmî konu ağırlığı değildir.'
+        : '— Kaynakta boş; 0 kapsamda olup soru çıkmamış. Başlıklara tıklayarak sıralayabilir, uzun listeleri tablonun içinde aşağı kaydırabilirsin.'
+      : yurtDisi ? 'Konu bağları MEB kapsamı ve kitapçık sırasından üretilmiştir; öğretmen incelemesi bekler. Çözdüğüm, bu sınavın bitirilen pratik ve denemelerinde ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'
       : kpss ? 'Çıkmış soru sayısı ÖSYM kitapçıklarındaki her sorunun tek tek okunarak bağlandığı konudur; sınırı tartışmalı sorular öğretmen onayı bekler. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; Bitti işareti ayrı kaydedilir.'
       : 'Soru sayıları bankadaki tekil sorulardır. Kaynak başlığından yapılan eşleşmeler tahminidir; konu alt toplamları örtüşebilir. Çözdüğüm, bitirilen pratik ve denemelerde ilk yanıtlanan soruları sayar; tekrar çözümler Toplam cevap ve Son sonuçta görünür. Ders alıştırması ve kart tekrarı soru bankasından ayrı sayılır. Bitti işareti ayrı kaydedilir.'}</p>
-    {kpss ? <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop()} · {track.name} ders, ünite ve konuları
+    {yurtDisi ? <p className="curriculum-sources muted small">Kapsam kaynağı: {source?.file?.split('/').pop()} · MEB Mesleki Yeterlilik Yazılı Sınavı konuları, PDF sayfa 10. Dersler, Çıkmış Sorular ve Soru Çöz aynı kapsam kayıtlarını kullanır.</p>
+    : kpss ? <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop()} · {track.name} ders, ünite ve konuları
       ÖSYM başvuru kılavuzu Tablo-1 (testlerin kapsamı) ve güvenilir konu listeleriyle doğrulandı.
       Dersler, Çıkmış Sorular ve Soru Çöz aynı ders, ünite ve konu kayıtlarını kullanır.</p>
     : <p className="curriculum-sources muted small">Tek müfredat kaynağı: {source?.file?.split('/').pop() || 'YKS_TYT_AYT_Konu_Soru_Dagilimi_2018-2026.xlsx'} · yalnız ilk sayfa ({source?.sheet || 'KONULAR'}).

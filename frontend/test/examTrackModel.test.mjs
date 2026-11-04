@@ -57,3 +57,19 @@ test('KPSS statistics use the exam subjects and tests', () => {
     ['KPSS_OO_GY', 'KPSS_OO_GK']);
   assert.deepEqual(summary.map(s => [s.examType, s.sessions, s.correct]), [['KPSS_OO_GY', 1, 40], ['KPSS_OO_GK', 0, 0]]);
 });
+test('yurt dışı statistics use its published courses without TYT/AYT branches', () => {
+  const track = { family: 'YURT_DISI', status: 'ACTIVE', readyFeatures: ['curriculum','pdf-inventory','statistics','study'],
+    sections: [{ examId: 'YURT_DISI_MY', name: 'Mesleki Yeterlilik', subjects: [] }] };
+  const exams = trackExams(track);
+  const branches = examBranchesFor(exams, true, [
+    { exam:'YURT_DISI_MY', subject:'Eğitim Bilimleri' },
+    { exam:'YURT_DISI_MY', subject:'Mevzuat ve Genel Kültür' },
+    { exam:'TYT', subject:'Matematik' },
+  ]);
+  assert.deepEqual(branches.map(b => b.label), ['Eğitim Bilimleri','Mevzuat ve Genel Kültür']);
+  assert.equal(featureReady(track, 'pdf-inventory'), true);
+  assert.equal(featureReady(track, 'statistics'), true);
+  assert.deepEqual(questionSourcesFor(track,exams).map(s=>s.id), ['CIKMIS_YURT_DISI_MY']);
+  assert.deepEqual(Object.values(groupExamBranches([{subject:'Eğitim Bilimleri',total:10,correct:7,wrong:2,blank:1}], branches)).filter(Boolean),
+    [{total:10,correct:7,wrong:2,blank:1}]);
+});

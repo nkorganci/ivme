@@ -3,6 +3,7 @@
   python scripts/yurt-disi-sorular.py cikarim
   python scripts/yurt-disi-sorular.py siniflandir
   python scripts/yurt-disi-sorular.py yayinla --database ivme_test
+  python scripts/yurt-disi-sorular.py envanter --database ivme
 
 Kaynak arşivi salt okunurdur. PDF cevabı anahtardan alınır; model yalnız bölüm/konu adayı verir.
 """
@@ -374,6 +375,54 @@ COMMIT;
     print(query(connection, sql).splitlines()[-1])
 
 
+def inventory(database):
+    """Read-only PDF archive scan; write only this track's inventory rows."""
+    from kaynakli_arastirma_db import db_connection, query
+    connection = db_connection(database)
+    payload = json.loads((OUT / 'sorular.json').read_text(encoding='utf-8'))
+    active = set(json.loads(query(connection,
+        "SELECT coalesce(json_agg(code),'[]') FROM questions WHERE exam_type='YURT_DISI_MY' AND active")))
+    files = {f['file']: f for f in payload['files']}
+    folder = ROOT / 'Kaynaklar/yurt-disi'
+    documents = []
+    for pdf in sorted(folder.rglob('*.pdf')):
+        relative = pdf.relative_to(folder).as_posix()
+        record = files.get(pdf.name) if relative.startswith('cikmis-sorular/') else None
+        rows = [q for q in payload['questions'] if record and q['source'] == pdf.name]
+        with pymupdf.open(pdf) as doc:
+            pages = len(doc)
+        expected = record['answers'] if record else None
+        missing = record.get('missingQuestionNumbers', []) if record else []
+        unanswered = record.get('unanswered', []) if record else []
+        published = sum(q['code'] in active for q in rows)
+        note = (f'{len(rows)} soru çıkarıldı; {published} cevaplı soru pratikte.'
+                + (f' {len(missing)} soru numarası çıkarımda bulunamadı.' if missing else '')
+                + (f' {len(unanswered)} iptal veya geçerli cevabı okunamayan soru yayımlanmadı.' if unanswered else '')) if record else (
+                'Resmî yazılı sınav kapsamı referansı; soru kitabı değildir.' if '00_Resmi_Kapsam/' in relative
+                else 'Konu / yardımcı kaynak. Bu dosyadan henüz soru aktarılmadı.')
+        documents.append(dict(path=relative, sha256=sha(pdf.read_bytes()), role='SORU_KITAPCIGI' if record else 'YARDIMCI',
+            status='ISLENDI' if record or '00_Resmi_Kapsam/' in relative else 'ISLENMEDI',
+            exam_years=[int(pdf.name[:4])] if record else [], question_count=len(rows), active_count=published,
+            page_count=pages, expected_count=expected, missing_numbers=missing, unanswered_numbers=unanswered, note=note))
+    literal = "'" + json.dumps(documents, ensure_ascii=False).replace("'", "''") + "'"
+    query(connection, f"""BEGIN;
+        INSERT INTO exam_source_documents(track_id,path,sha256,role,status,exam_years,question_count,active_count,
+            page_count,expected_count,missing_numbers,unanswered_numbers,note,catalog_run_key)
+        SELECT 'YURT_DISI_OGRETMEN',path,sha256,role,status,exam_years,question_count,active_count,
+            page_count,expected_count,missing_numbers,unanswered_numbers,note,(SELECT run_key FROM learning_catalog.current_run)
+        FROM jsonb_to_recordset({literal}::jsonb) AS x(path text,sha256 text,role text,status text,exam_years int[],
+            question_count int,active_count int,page_count int,expected_count int,missing_numbers int[],unanswered_numbers int[],note text)
+        ON CONFLICT(track_id,path) DO UPDATE SET sha256=excluded.sha256,role=excluded.role,status=excluded.status,
+            exam_years=excluded.exam_years,question_count=excluded.question_count,active_count=excluded.active_count,
+            page_count=excluded.page_count,expected_count=excluded.expected_count,missing_numbers=excluded.missing_numbers,
+            unanswered_numbers=excluded.unanswered_numbers,note=excluded.note,catalog_run_key=excluded.catalog_run_key;
+        COMMIT;""")
+    report = dict(database=database, pdfs=len(documents), questionPdfs=sum(d['role']=='SORU_KITAPCIGI' for d in documents),
+                  active=sum(d['active_count'] for d in documents), documents=documents)
+    (OUT / 'envanter-raporu.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    print(json.dumps({k:v for k,v in report.items() if k!='documents'}, ensure_ascii=False))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
@@ -382,6 +431,8 @@ def main():
     sub.add_parser('siniflandir-ollama', help='Yerel Ollama ile içerik bazlı konu önerisi')
     publish_parser = sub.add_parser('yayinla')
     publish_parser.add_argument('--database', choices=['ivme', 'ivme_test'], required=True)
+    inventory_parser = sub.add_parser('envanter', help='Yurt dışı PDF envanterini DB’ye kaydet; soruları yeniden üretmez')
+    inventory_parser.add_argument('--database', choices=['ivme', 'ivme_test'], required=True)
     args = parser.parse_args()
     if args.command == 'cikarim':
         extract()
@@ -389,6 +440,8 @@ def main():
         classify()
     elif args.command == 'siniflandir-ollama':
         classify_ollama()
+    elif args.command == 'envanter':
+        inventory(args.database)
     else:
         publish(args.database)
 

@@ -14,6 +14,12 @@ resmî dört bölüm ve kitapçık sırasına dayanır. İsteğe bağlı Ollama 
 ..\.venv\Scripts\python.exe -X utf8 scripts/yurt-disi-sorular.py cikarim
 ..\.venv\Scripts\python.exe -X utf8 scripts/yurt-disi-sorular.py siniflandir
 ..\.venv\Scripts\python.exe -X utf8 scripts/yurt-disi-sorular.py yayinla --database ivme
+..\.venv\Scripts\python.exe -X utf8 scripts/yurt-disi-sorular.py envanter --database ivme
 # İsteğe bağlı: metin içeriğine göre yerel model önerisi
 ..\.venv\Scripts\python.exe -X utf8 scripts/yurt-disi-sorular.py siniflandir-ollama
 ```
+
+Dersler'in konu takibi ve yıllık dağılımı DB kataloğundan; PDF envanteri
+`exam_source_documents` kayıtlarından gelir. Çalışma istatistikleri geçmişteki
+`track_id` seçimini, konu sayımları soru sınav kimliğini kullanır. Görsel kaynaklar
+yalnız seçili yurt dışı sınavında ve envantere kayıtlı güvenli yollarla açılır.

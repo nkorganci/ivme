@@ -25,7 +25,7 @@ class ExamTrackFlowTest extends TestBase {
         var ids = new ArrayList<String>();
         initial.path("tracks").forEach(t -> ids.add(t.path("id").asText()));
         assertThat(ids).containsExactly("YKS", "KPSS_ORTAOGRETIM", "KPSS_ONLISANS", "KPSS_LISANS",
-                "KPSS_A_GRUBU", "KPSS_OABT", "KPSS_DHBT");
+                "KPSS_A_GRUBU", "KPSS_OABT", "KPSS_DHBT", "YURT_DISI_OGRETMEN");
         var kpss = initial.path("tracks").get(1);
         assertThat(kpss.path("status").asText()).isEqualTo("ACTIVE");
         assertThat(kpss.path("sections").size()).isEqualTo(2);

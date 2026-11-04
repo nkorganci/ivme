@@ -21,3 +21,12 @@ Uygulandı: V96, ortak sınav seçimi ve soru kaynağı; 28 PDF'den 2.541 cevapl
 soru görseli ve dört kapsam kategorisi `ivme` DB'ye eklendi. Katalog fonksiyonu
 2.541/2.541 soruyu bu sınav kaynağından seçiyor. 13 soru numarası 2015 PDF'lerinde
 metin çıkarımında bulunamadı; otomatik tamamlama yapılmadı.
+
+## 15.02 — Dersler ve çalışma istatistikleri
+
+Yurt dışı sınavında Konu takibi, Konu ve soru dağılımı, PDF envanteri ve Çalışma
+istatistikleri açılır. Katalog sınav kimliğiyle süzülür; ders görünümünde YKS
+sütunları kullanılmaz. Soru dağılımı DB'deki aktif kayıtların yıllara göre sayımıdır;
+PDF envanteri yalnız yurt dışı klasöründen beslenir. Deneme ve pratik geçmişi seçili
+sınavın `track_id` kayıtlarıyla, konu ilerlemesi ilgili sınav türleriyle sınırlanır.
+Mevcut öğrenci kayıtları değiştirilmez.
