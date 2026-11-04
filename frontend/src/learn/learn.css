@@ -75,6 +75,33 @@
 }
 
 /* Harita */
+.lr-map-layout { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 16px; align-items: start; min-width: 0; }
+.lr-map-sidebar { position: sticky; top: 16px; padding: 14px; display: grid; gap: 12px; margin: 0; min-width: 0; max-height: calc(100dvh - 32px); overflow-y: auto; }
+.lr-map-sidebar h2 { margin: 0; font-size: 1rem; }
+.lr-map-subjects { display: grid; gap: 4px; max-height: 42dvh; overflow-y: auto; }
+.lr-map-subject { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 9px 10px; border: 1px solid transparent; border-radius: 8px; color: var(--ink); text-decoration: none; line-height: 1.35; min-width: 0; }
+.lr-map-subject:hover { background: var(--tint); border-color: var(--line); }
+.lr-map-subject.active { background: var(--navy); color: var(--surface); font-weight: 700; }
+.lr-map-subject:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.lr-map-subject-count { font-size: .8rem; font-variant-numeric: tabular-nums; opacity: .85; }
+.lr-map-filters { display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
+.lr-map-filters label { font-size: .8rem; font-weight: 600; margin-top: 6px; }
+.lr-map-filters input, .lr-map-filters select { width: 100%; min-width: 0; }
+.lr-map-content { display: grid; gap: 14px; min-width: 0; }
+.lr-map-content .study-tabs { margin: 0; }
+.lr-reference-topic { display: grid; gap: 10px; padding: 12px; align-content: start; height: 100%; }
+.lr-reference-topic .lr-status { justify-self: start; }
+.lr-map-other-topics { display: grid; min-width: 0; }
+.lr-map-other-topics summary { cursor: pointer; font-weight: 600; color: var(--navy); padding: 12px 0; }
+.lr-map-other-topics .lr-unit { margin-top: 12px; }
+@media (max-width: 760px) {
+  .lr-map-layout { grid-template-columns: minmax(0, 1fr); }
+  .lr-map-sidebar { position: static; max-height: none; overflow: visible; }
+  .lr-map-subjects { display: flex; max-height: none; overflow-x: auto; padding-bottom: 4px; }
+  .lr-map-subject { flex: 0 0 auto; }
+  .lr-map-filters { grid-template-columns: minmax(90px, .7fr) minmax(0, 1.3fr); align-items: center; }
+  .lr-map-filters > button { grid-column: 1 / -1; }
+}
 .lr-legend-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 0; padding: 0; }
 .lr-legend-list li { display: inline-flex; gap: 4px; align-items: center; }
 .lr-unit { margin: 0; }

@@ -59,14 +59,18 @@
     "katalog-node": {
       "kind": "node",
       "args": [
+        "--test-reporter=tap",
         "testler/konu-ogrenme-katalog.test.mjs",
+        "testler/konu-haritasi-dersler.test.mjs",
         "testler/konu-ogrenme-icerik.test.mjs"
       ],
       "inputs": [
         "frontend/src/learn/**/*",
         "frontend/package*.json",
         "testler/*.test.mjs",
-        "scripts/*.mjs"
+        "scripts/*.mjs",
+        "frontend/src/data/curriculumIdentities.json",
+        "testler/konu-haritasi-dersler-ui.mjs"
       ]
     },
     "cevap-node": {

@@ -62,11 +62,12 @@ export function lessonScope(categoryIds, byId) {
  * Konu haritası: kavramlar katalog ünitesine göre gruplanır (dersin ilk bağlı konusu yerini belirler).
  * Ünite sırası katalogdaki konu sırasıdır; ünite içinde dersler kendi öğretim sırasını (`sira`) korur.
  */
-export function catalogUnits(concepts, byId) {
+export function catalogUnits(concepts, byId, { subjectId } = {}) {
   const groups = new Map();
   const unplaced = [];
   for (const meta of concepts) {
-    const scope = lessonScope(meta.categories, byId);
+    const fullScope = lessonScope(meta.categories, byId);
+    const scope = subjectId ? { ...fullScope, topics: fullScope.topics.filter(topic => topic.subjectId === subjectId) } : fullScope;
     const primary = scope.topics[0];
     if (!primary?.unitId) { unplaced.push({ meta, scope }); continue; }
     const group = groups.get(primary.unitId) ?? {

@@ -368,6 +368,26 @@ arşiv CSV anahtarıyla karşılaştırıldı; öğretmen onayı verilmedi.
 | TYT-0741 | Yaş–işçi / 2026 TYT · iki resmin yılıyla iki zaman denklemi | E · 74 | `c2d65ec9aa4e0cadca5ba0467e3a30c58166db798109ef2d467f499e1dbd9006` |
 
 
+## Dersler arasında konu haritası gezinmesi
+
+`/konuyu-ogrenelim/harita` sol panelinde yayımlanmış TYT/AYT kataloğundaki
+bütün dersler yer alır; ilk seçim Matematik'tir. Matematikte mevcut 34 kavramın
+kimliği ve öğrenme ilerlemesi korunur. Diğer dersler kendi katalog ünite/konu
+kartlarını gösterir. Öğrenme dersi bulunmayan konu “Anlatım hazırlanıyor” olarak
+işaretlenir ve bütün katalog kimlikleriyle Konular ve Kaynaklar ekranına bağlanır;
+bu kartlar için ustalık veya hazırlanmış anlatım uydurulmaz.
+
+Sol sayaç müfredat konularını, üstteki sayaç mevcut öğrenme kavramlarını veya
+seçili dersin filtrelenmiş müfredat konularını sayar; bu iki sayı aynı ölçü değildir.
+Aynı Excel satırının TYT/AYT kimlikleri tek konu kartında korunur. Matematikte
+henüz öğrenme kavramına bağlanmayan müfredat konuları ayrı açılır bölümde bulunur.
+Filtreler URL'de `ders`, `sinav`, `unite`, `ara`, `durum` olarak saklanır.
+Ders değişince sınav korunur, önceki dersin ünite/arama/durum filtreleri temizlenir.
+Mobilde dersler yatay kayar; seçili ders görünür alana alınır. Gezinme öğrenci
+durumunu değiştirmez. Saf test: `node --test testler/konu-haritasi-dersler.test.mjs`;
+yalıtılmış masaüstü/mobil kabul: `node testler/konu-haritasi-dersler-ui.mjs`.
+Görseller ve rapor `veri/ui-denetim/konu-haritasi-dersler/` altında tutulur.
+
 ## Yüzde ve karışım dersinin kaynak kabulü
 
 OGM 9. sınıf ders anlatım sunusu 31’in s.2–20 görselleri ve TYT video notu 04’ün
