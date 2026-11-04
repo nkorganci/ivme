@@ -126,7 +126,8 @@ public class SharedQuestionLabels {
         String request = selection(new QuestionFilter(bank, exam, null, null));
         return new SubjectSelection(request, write(subjects.stream().distinct().flatMap(subject -> {
             // Official test quotas group these controlled branches under one test.
-            var ids = exam != null && exam.kpss() ? List.of(vocabulary.kpssSubjectId(exam, subject)) : switch (subject) {
+            var ids = exam == com.hedefyks.question.ExamType.YURT_DISI_MY ? List.of(vocabulary.yurtDisiSubjectId(subject))
+                : exam != null && exam.kpss() ? List.of(vocabulary.kpssSubjectId(exam, subject)) : switch (subject) {
                 case "Matematik" -> List.of("matematik", "geometri");
                 case "Türk Dili ve Edebiyatı", "Edebiyat" -> List.of("edebiyat", "turkce");
                 case "Felsefe Grubu" -> List.of("felsefe", "psikoloji", "sosyoloji", "mantik");

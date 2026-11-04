@@ -31,13 +31,15 @@ public class StudySessionService {
     private final QuestionAvailabilityService availability;
     private final com.hedefyks.review.SharedQuestionLabels sharedLabels;
     private final com.hedefyks.examtrack.ExamTrackService tracks;
+    private final com.hedefyks.exam.ExamPlanService examPlans;
 
     public StudySessionService(JdbcClient jdbc, QuestionAvailabilityService availability,com.hedefyks.review.SharedQuestionLabels sharedLabels,
-                               com.hedefyks.examtrack.ExamTrackService tracks) {
+                               com.hedefyks.examtrack.ExamTrackService tracks,com.hedefyks.exam.ExamPlanService examPlans) {
         this.jdbc = jdbc;
         this.availability = availability;
         this.sharedLabels=sharedLabels;
         this.tracks = tracks;
+        this.examPlans = examPlans;
     }
 
     @Transactional
@@ -61,7 +63,15 @@ public class StudySessionService {
         if (candidates < req.questionCount()) {
             throw ApiException.badRequest("Bu seçimde yalnızca " + candidates + " soru var. Soru sayısını azalt veya seçimi değiştir.");
         }
-        List<Long> ids = availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId(), history);
+        boolean officialMix=tracks.examTypes(userId).equals(List.of(ExamType.YURT_DISI_MY))
+                && filter.subject()==null && filter.topic()==null && !filter.hasSharedSelection()
+                && Boolean.TRUE.equals(filter.includeCandidates())
+                && req.topicPdfId()==null && history.isEmpty() && filter.myDifficulty()==null && filter.mark()==null
+                && filter.teacherDifficulty()==null && filter.questionTypeId()==null && filter.bank()!=com.hedefyks.question.QuestionBank.OGM;
+        List<Long> ids = officialMix ? examPlans.select(userId,com.hedefyks.question.QuestionBank.CIKMIS,selection,
+                examPlans.plan(userId,com.hedefyks.question.QuestionBank.CIKMIS,ExamType.YURT_DISI_MY,
+                    com.hedefyks.exam.ExamTrack.SAYISAL,selection,req.questionCount()))
+                : availability.randomIds(userId, filter, selection, req.questionCount(), req.topicPdfId(), history);
         if (ids.size() != req.questionCount()) throw ApiException.conflict("Soru havuzu değişti. Yeniden dene.");
 
         Integer seconds = req.durationMinutes() == null ? null : req.durationMinutes() * 60;

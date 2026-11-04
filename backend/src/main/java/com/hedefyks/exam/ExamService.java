@@ -75,16 +75,19 @@ public class ExamService {
             lockLearner(userId);
             if (req.bank() == QuestionBank.OGM || Boolean.FALSE.equals(req.includeSolved()))
                 throw ApiException.badRequest("Yıla ait tam sınav çıkmış soruların tamamını içerir; kaynak veya çözülmüş soru filtresi kullanılamaz.");
-            var selected = archive.select(req.examType(), track, req.year());
+            var selected = archive.select(req.examType(), track, req.year(),req.bookletId());
+            var archivePlan=archive.list(req.examType(),track).stream().filter(p->p.year()==req.year()
+                && (req.bookletId()==null||req.bookletId().equals(p.bookletId()))).findFirst().orElseThrow();
             var subjects = new HashMap<Long,String>();
             selected.forEach(q -> subjects.put(q.id(),q.subject()));
             var provisionalIds = selected.stream().filter(ExamArchiveService.ArchiveQuestion::provisional)
                     .map(ExamArchiveService.ArchiveQuestion::id).collect(java.util.stream.Collectors.toSet());
             String title = req.year() + " " + req.examType().label() + (req.examType() == ExamType.AYT ? " " + trackName(track) : "") + " tam sınavı";
+            if(archivePlan.bookletLabel()!=null)title=archivePlan.bookletLabel()+" tam sınavı";
             if (!provisionalIds.isEmpty()) title += " (tahmini sorularla tamamlandı)";
             return saveExam(userId, new QuestionFilter(QuestionBank.CIKMIS,req.examType(),null,null),
                     QuestionSelectionMode.MIXED, selected.stream().map(ExamArchiveService.ArchiveQuestion::id).toList(),
-                    subjects, title, plans.timeLimitMinutes(req.examType()), provisionalIds);
+                    subjects, title, archivePlan.timeLimitMinutes(), provisionalIds);
         }
         return create(userId, new CreateExamRequest(req.bank(), req.examType(), null, null,
                 plans.fullQuestionCount(req.examType(), track), req.selectionMode(),
@@ -280,7 +283,7 @@ public class ExamService {
         exam.setPercent(total == 0 ? BigDecimal.ZERO.setScale(2)
                 : BigDecimal.valueOf(correct).multiply(BigDecimal.valueOf(100))
                         .divide(BigDecimal.valueOf(total), 2, RoundingMode.HALF_UP));
-        exam.setNet(BigDecimal.valueOf(correct)
+        exam.setNet(exam.getExamType()==ExamType.YURT_DISI_MY ? BigDecimal.valueOf(correct).setScale(2) : BigDecimal.valueOf(correct)
                 .subtract(BigDecimal.valueOf(wrong).divide(BigDecimal.valueOf(4), 2, RoundingMode.HALF_UP))
                 .setScale(2, RoundingMode.HALF_UP));
         return toResult(exam, rows);

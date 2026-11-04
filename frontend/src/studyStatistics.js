@@ -111,7 +111,7 @@ export function prepareExamHistory(items, branches = EXAM_BRANCHES) {
   return items.map(item => ({
     ...item, number: numbers.get(item.id), date: Date.parse(item.submittedAt), status: 'COMPLETED',
     correct: item.correctCount, wrong: item.wrongCount, blank: item.blankCount,
-    bySubject: (item.bySubject ?? []).map(subject => ({ ...subject, net: subject.correct - subject.wrong / 4 })),
+    bySubject: (item.bySubject ?? []).map(subject => ({ ...subject, net: item.examType === 'YURT_DISI_MY' ? subject.correct : subject.correct - subject.wrong / 4 })),
     branches: groupExamBranches(item.bySubject ?? [], branches),
     latestTytId: item.examType === 'AYT' ? latestTyt?.id ?? null : null,
     latestTytNumber: item.examType === 'AYT' && latestTyt ? numbers.get(latestTyt.id) : null,

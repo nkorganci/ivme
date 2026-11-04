@@ -72,8 +72,8 @@ function ResultView({ r }) {
             <p className="stat-label">— Boş</p>
           </div>
           <div className="stat">
-            <p className="stat-value">{formatNet(r.net)}</p>
-            <p className="stat-label">Net</p>
+            <p className="stat-value">{formatNet(r.examType === 'YURT_DISI_MY' ? r.percent : r.net)}</p>
+            <p className="stat-label">{r.examType === 'YURT_DISI_MY' ? 'Puan (100)' : 'Net'}</p>
           </div>
           <div className="stat">
             <p className="stat-value">{formatDuration(r.durationSeconds)}</p>

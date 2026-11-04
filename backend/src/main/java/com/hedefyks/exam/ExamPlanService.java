@@ -64,7 +64,7 @@ public class ExamPlanService {
 
     public int timeLimitMinutes(ExamType examType) {
         // KPSS testlerinin süresi sınav tanımındadır (ör. Ortaöğretim GY ve GK: 65'er dakika).
-        if (examType != null && examType.kpss()) return tracks.section(examType).minutes();
+        if (examType != null && examType != ExamType.TYT && examType != ExamType.AYT) return tracks.section(examType).minutes();
         return examType == ExamType.TYT ? 165 : 180;
     }
 
@@ -79,7 +79,7 @@ public class ExamPlanService {
             throw ApiException.badRequest("Dengeli deneme için sınav, alan ve 1–120 arası soru sayısı seç.");
         }
         var weights = weights(examType, track);
-        if (questionCount < weights.size()) {
+        if (questionCount < weights.size() && examType != ExamType.YURT_DISI_MY) {
             throw ApiException.badRequest("Bu dengeli deneme için en az " + weights.size() + " soru seç.");
         }
         var targets = allocate(weights, questionCount);
@@ -125,7 +125,7 @@ public class ExamPlanService {
     private List<Weight> weights(ExamType examType, ExamTrack track) {
         if (examType == ExamType.TYT) return TYT; // TYT tüm puan türlerinde ortak testtir.
         // KPSS ders dağılımı ÖSYM kılavuzundan exam_tracks.sections içine kaydedilmiştir.
-        if (examType.kpss()) return tracks.section(examType).subjects().stream()
+        if (examType != ExamType.AYT) return tracks.section(examType).subjects().stream()
                 .map(s -> new Weight(s.name(), s.questions())).toList();
         return switch (track) {
             case SAYISAL -> AYT_SAYISAL;

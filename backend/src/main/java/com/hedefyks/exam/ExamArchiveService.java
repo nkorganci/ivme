@@ -15,7 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class ExamArchiveService {
     public record ArchivePlan(int year, ExamType examType, ExamTrack track, int questionCount,
                               int timeLimitMinutes, boolean ready, int estimatedQuestionCount,
-                              List<ExamPlanService.SubjectQuota> subjects) {}
+                              List<ExamPlanService.SubjectQuota> subjects,
+                              String bookletId,String bookletLabel,int excludedQuestionCount) {}
     public record ArchiveQuestion(Long id, int year, String subject, int position, boolean provisional) {}
     private final JdbcClient jdbc;
     private final SharedQuestionLabels labels;
@@ -28,6 +29,7 @@ public class ExamArchiveService {
     }
 
     public List<ArchivePlan> list(ExamType exam, ExamTrack track) {
+        if(exam==ExamType.YURT_DISI_MY) return booklets(exam);
         if (exam == null) throw ApiException.badRequest("TYT veya AYT seçmelisin.");
         var selectedTrack = exam == ExamType.TYT || track == null ? ExamTrack.SAYISAL : track;
         var quotas = plans.fullQuotas(exam, selectedTrack);
@@ -41,17 +43,61 @@ public class ExamArchiveService {
             var selected = complete(year, subjects, rows, replacements);
             return new ArchivePlan(year, exam, selectedTrack, plans.fullQuestionCount(exam, selectedTrack),
                     plans.timeLimitMinutes(exam), selected.size() == plans.fullQuestionCount(exam, selectedTrack),
-                    subjects.stream().mapToInt(q -> Math.max(0, q.target() - (int) q.available())).sum(), subjects);
+                    subjects.stream().mapToInt(q -> Math.max(0, q.target() - (int) q.available())).sum(), subjects,null,null,0);
         }).toList();
     }
 
     public List<ArchiveQuestion> select(ExamType exam, ExamTrack track, int year) {
+        return select(exam,track,year,null);
+    }
+    public List<ArchiveQuestion> select(ExamType exam, ExamTrack track, int year,String bookletId) {
+        if(exam==ExamType.YURT_DISI_MY) {
+            var matching=booklets(exam).stream().filter(p->p.year()==year && (bookletId==null||bookletId.equals(p.bookletId()))).toList();
+            if(matching.size()!=1) throw ApiException.badRequest("Bu yıl için sınav tarihini ve kitapçık/oturumu seçmelisin.");
+            var selected=matching.getFirst();
+            if(!selected.ready()) throw ApiException.badRequest("Bu kitapçığın bazı soruları henüz kullanılabilir değil. Başka bir oturum seç.");
+            return bookletQuestions(exam,selected.bookletId());
+        }
         var plan = list(exam, track).stream().filter(p -> p.year() == year).findFirst()
                 .orElseThrow(() -> ApiException.badRequest("Bu yıl için kayıtlı sınav yok."));
         if (!plan.ready()) throw ApiException.badRequest("Eksik soruları tahmini sorularla tamamlamak için aynı sınav ve ders havuzunda yeterli soru yok.");
         var selected = complete(year, plan.subjects(), questions(exam, year), replacements(exam, plan.subjects()));
         if (selected.size() != plan.questionCount()) throw ApiException.conflict("Sınav arşivi değişti. Yeniden dene.");
         return selected;
+    }
+
+    private List<ArchiveQuestion> bookletQuestions(ExamType exam,String bookletId) {
+        return bookletRows(exam,bookletId).getOrDefault(bookletId,List.of());
+    }
+    private Map<String,List<ArchiveQuestion>> bookletRows(ExamType exam,String bookletId) {
+        String selection=labels.selection(new QuestionFilter(QuestionBank.CIKMIS,exam,null,null));
+        var sql=new StringBuilder(selection==null?"":"WITH allowed AS MATERIALIZED (SELECT id FROM learning_catalog.question_ids_for_labels(:selection)) ").append("""
+            SELECT b.id AS booklet,q.id,q.exam_year,q.subject,bq.position FROM official_exam_booklet_questions bq
+            JOIN official_exam_booklets b ON b.id=bq.booklet_id JOIN questions q ON q.code=bq.question_code
+            WHERE b.exam_type=:exam AND q.exam_type=b.exam_type AND q.active AND q.bank='CIKMIS'
+            """);
+        var params=new HashMap<String,Object>();params.put("exam",exam.name());
+        if(bookletId!=null){sql.append(" AND b.id=:booklet");params.put("booklet",bookletId);}
+        if(selection!=null){sql.append(" AND q.id IN (SELECT id FROM allowed)");params.put("selection",selection);}
+        sql.append(" ORDER BY bq.position");
+        var result=new HashMap<String,List<ArchiveQuestion>>();
+        jdbc.sql(sql.toString()).params(params).query((rs,n)->{
+            result.computeIfAbsent(rs.getString(1),ignored->new ArrayList<>()).add(new ArchiveQuestion(rs.getLong(2),rs.getInt(3),rs.getString(4),rs.getInt(5),false));
+            return 0;
+        }).list();
+        return result;
+    }
+    private List<ArchivePlan> booklets(ExamType exam) {
+        var questions=bookletRows(exam,null);
+        return jdbc.sql("SELECT id,exam_year,label,expected_count,time_limit_minutes,cardinality(cancelled_numbers) AS excluded FROM official_exam_booklets WHERE exam_type=:exam ORDER BY exam_year DESC,label")
+            .param("exam",exam.name()).query((rs,n)->{
+                var rows=questions.getOrDefault(rs.getString("id"),List.of());
+                int count=rs.getInt("expected_count")-rs.getInt("excluded");
+                var subjects=new LinkedHashMap<String,Long>();rows.forEach(q->subjects.merge(q.subject(),1L,Long::sum));
+                return new ArchivePlan(rs.getInt("exam_year"),exam,ExamTrack.SAYISAL,count,rs.getInt("time_limit_minutes"),
+                    rows.size()==count,0,subjects.entrySet().stream().map(e->new ExamPlanService.SubjectQuota(e.getKey(),e.getValue().intValue(),e.getValue())).toList(),
+                    rs.getString("id"),rs.getString("label"),rs.getInt("excluded"));
+            }).list();
     }
 
     private List<QuestionAvailabilityService.SubjectCandidate> replacements(ExamType exam,

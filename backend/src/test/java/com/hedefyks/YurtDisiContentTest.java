@@ -3,6 +3,7 @@ package com.hedefyks;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.hedefyks.question.ExamType;
@@ -22,6 +23,8 @@ class YurtDisiContentTest extends TestBase {
         catalogQuestion("tyt","TYT","Türkçe");catalogQuestion("yd","YURT_DISI_MY","Eğitim Bilimleri");
     }
     @AfterEach void cleanup() {
+        jdbc.update("DELETE FROM official_exam_booklet_questions WHERE booklet_id LIKE 'test-yd-%'");
+        jdbc.update("DELETE FROM official_exam_booklets WHERE id LIKE 'test-yd-%'");
         jdbc.update("DELETE FROM exam_source_documents WHERE path='test-yd.pdf'");
         jdbc.update("DELETE FROM learning_catalog.current_run WHERE run_key=?",RUN);
         jdbc.update("DELETE FROM learning_catalog.assignments WHERE run_key=?",RUN);
@@ -35,16 +38,19 @@ class YurtDisiContentTest extends TestBase {
             "canonicalUnit",true,"selectable",true,"origin","CURRICULUM","order",1)));
     }
     private void catalogQuestion(String id,String exam,String subject) throws Exception {
+        catalogQuestion(id,exam,subject,id);
+    }
+    private void catalogQuestion(String id,String exam,String subject,String category) throws Exception {
         var q=question("TEST-"+id,subject,"A");q.setBank(QuestionBank.CIKMIS);q.setExamType(ExamType.valueOf(exam));q.setYear(2026);
         questions.saveAndFlush(q);
         var data=new LinkedHashMap<String,Object>();
         data.put("key","question:"+q.getCode());data.put("questionCode",q.getCode());data.put("exam",exam);
-        data.put("bank","CIKMIS");data.put("subjectId",id);data.put("subject",subject);data.put("studentVisible",true);
+        data.put("bank","CIKMIS");data.put("subjectId",category);data.put("subject",subject);data.put("studentVisible",true);
         data.put("sourceUpdatedAt",jdbc.queryForObject("SELECT extract(epoch from updated_at)::text FROM questions WHERE id=?",String.class,q.getId()));
-        data.put("automaticLabels",Map.of("assignments",List.of(Map.of("categoryId",id,"relation","PRIMARY","scopeStatus","CANDIDATE"))));
+        data.put("automaticLabels",Map.of("assignments",List.of(Map.of("categoryId",category,"relation","PRIMARY","scopeStatus","CANDIDATE"))));
         jdbc.update("INSERT INTO learning_catalog.items(run_key,item_key,kind,exam,subject_id,student_visible,data,category_ids,subject_ids,exam_ids) VALUES(?,?,'QUESTION',?,?,true,?::jsonb,ARRAY[?],ARRAY[?],ARRAY[?])",
-            RUN,"question:"+q.getCode(),exam,id,json.writeValueAsString(data),id,id,exam);
-        jdbc.update("INSERT INTO learning_catalog.assignments VALUES(?,?,?,'PRIMARY')",RUN,"question:"+q.getCode(),id);
+            RUN,"question:"+q.getCode(),exam,category,json.writeValueAsString(data),category,category,exam);
+        jdbc.update("INSERT INTO learning_catalog.assignments VALUES(?,?,?,'PRIMARY')",RUN,"question:"+q.getCode(),category);
     }
     private void choose(MockHttpSession session,String track) throws Exception {
         send(session,put("/api/exam-tracks/current"),json.writeValueAsString(Map.of("trackId",track))).andExpect(status().isOk());
@@ -101,5 +107,58 @@ class YurtDisiContentTest extends TestBase {
         jdbc.update("INSERT INTO question_attempts(user_id,question_id,session_id,client_event_id,event_type,selected_answer,correct_answer,is_correct) VALUES(?,?,?,?,'ANSWER','A','A',true)",uid,qid,sid,UUID.randomUUID());
         long eid=jdbc.queryForObject("INSERT INTO exams(user_id,title,exam_type,status,question_count,submitted_at,duration_seconds,correct_count,wrong_count,blank_count,percent,net,track_id) VALUES(?, ?,?,'SUBMITTED',1,now(),10,1,0,0,100,1,?) RETURNING id",Long.class,uid,exam,exam,track);
         jdbc.update("INSERT INTO exam_questions(exam_id,question_id,question_order,question_code,subject,selected_answer,correct_answer,is_correct) VALUES(?,?,1,?,?,'A','A',true)",eid,qid,"TEST-"+id,subject);
+    }
+
+    @Test void generalExamAndUnfilteredPracticeFollowMebWeights() throws Exception {
+        String[] subjects={"Türkçe ve Türk Kültürü","Tarih ve Coğrafya","Eğitim Bilimleri","Mevzuat ve Genel Kültür"};
+        int[] target={18,18,12,12};
+        for(int group=0;group<4;group++)if(group!=2)category("mix"+group,"YURT_DISI_MY",subjects[group]);
+        for(int group=0;group<4;group++)for(int n=0;n<target[group];n++) {
+            String key="mix"+group+"_"+n;
+            catalogQuestion(key,"YURT_DISI_MY",subjects[group],group==2?"yd":"mix"+group);
+        }
+        user("yd_mixed",Role.USER);var session=login("yd_mixed","Sifre1234");choose(session,"YURT_DISI_OGRETMEN");
+        var plan=read(send(session,get("/api/exams/plan").param("examType","YURT_DISI_MY"),null).andExpect(status().isOk()));
+        assertThat(plan.path("questionCount").asInt()).isEqualTo(60);
+        assertThat(plan.path("timeLimitMinutes").asInt()).isEqualTo(75);
+        assertThat(plan.path("ready").asBoolean()).isTrue();
+        for(int i=0;i<4;i++)assertThat(plan.path("subjects").get(i).path("target").asInt()).isEqualTo(target[i]);
+        var exam=read(send(session,post("/api/exams/full"),"{\"examType\":\"YURT_DISI_MY\",\"includeSolved\":true}").andExpect(status().isCreated()));
+        assertThat(exam.path("questionCount").asInt()).isEqualTo(60);
+        for(int i=0;i<4;i++) {
+            long count=0;for(var question:exam.path("questions"))if(question.path("subject").asText().equals(subjects[i]))count++;
+            assertThat(count).isEqualTo(target[i]);
+        }
+        var practice=read(send(session,post("/api/study-sessions"),json.writeValueAsString(Map.of("questionCount",10,"clientRequestId",UUID.randomUUID().toString()))).andExpect(status().isCreated()));
+        int[] practiceTarget={3,3,2,2};
+        for(int i=0;i<4;i++) {
+            long count=0;for(var question:practice.path("questions"))if(question.path("subject").asText().equals(subjects[i]))count++;
+            assertThat(count).isEqualTo(practiceTarget[i]);
+        }
+    }
+
+    @Test void yearBookletsKeepTheirOrderAndRejectWrongOrMissingSessions() throws Exception {
+        user("yd_booklet",Role.USER);var session=login("yd_booklet","Sifre1234");choose(session,"YURT_DISI_OGRETMEN");
+        category("yd_second","YURT_DISI_MY","Türkçe ve Türk Kültürü");catalogQuestion("yd_second","YURT_DISI_MY","Türkçe ve Türk Kültürü");
+        for(String id:List.of("test-yd-A","test-yd-B")) {
+            jdbc.update("INSERT INTO official_exam_booklets(id,track_id,exam_type,exam_year,label,source_path,source_sha256,expected_count,time_limit_minutes,cancelled_numbers) VALUES(?,'YURT_DISI_OGRETMEN','YURT_DISI_MY',2025,?,'test.pdf',?,3,75,ARRAY[3])",id,id,"a".repeat(64));
+            jdbc.update("INSERT INTO official_exam_booklet_questions VALUES(?, 'TEST-yd',?)",id,id.endsWith("A")?1:2);
+            jdbc.update("INSERT INTO official_exam_booklet_questions VALUES(?, 'TEST-yd_second',?)",id,id.endsWith("A")?2:1);
+        }
+        var plans=read(send(session,get("/api/exams/archive").param("examType","YURT_DISI_MY"),null).andExpect(status().isOk()));
+        assertThat(plans.size()).isEqualTo(2);
+        assertThat(plans.get(0).path("excludedQuestionCount").asInt()).isEqualTo(1);
+        assertThat(plans.get(0).path("ready").asBoolean()).isTrue();
+        send(session,post("/api/exams/full"),"{\"examType\":\"YURT_DISI_MY\",\"year\":2025}").andExpect(status().isBadRequest());
+        var exam=read(send(session,post("/api/exams/full"),"{\"examType\":\"YURT_DISI_MY\",\"year\":2025,\"bookletId\":\"test-yd-B\"}").andExpect(status().isCreated()));
+        assertThat(exam.path("questionCount").asInt()).isEqualTo(2);
+        assertThat(exam.path("questions").get(0).path("code").asText()).isEqualTo("TEST-yd_second");
+        send(session,post("/api/exams/full"),"{\"examType\":\"YURT_DISI_MY\",\"year\":2015,\"bookletId\":\"test-yd-B\"}").andExpect(status().isBadRequest());
+        var result=read(send(session,post("/api/exams/"+exam.path("id").asLong()+"/submit"),
+            json.writeValueAsString(Map.of("answers",Map.of(
+                exam.path("questions").get(0).path("questionId").asText(),"B",
+                exam.path("questions").get(1).path("questionId").asText(),"A")))).andExpect(status().isOk()));
+        assertThat(result.path("percent").asDouble()).isEqualTo(50);
+        assertThat(result.path("net").asDouble()).isEqualTo(1);
     }
 }
