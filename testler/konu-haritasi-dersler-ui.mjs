@@ -68,7 +68,7 @@ try {
       await evalJs("document.querySelector('.lr-map-content [role=status] button').click()");
       await wait("document.querySelector('.lr-reference-topic')");
       assert.ok(await evalJs(active('fizik')));
-      const source = await evalJs("document.querySelector('.lr-reference-topic a').getAttribute('href')");
+      const source = await evalJs("document.querySelector('.lr-reference-topic a[href^=\"/konular-ve-kaynaklar\"]').getAttribute('href')");
       assert.ok(new URL(source, 'http://local').searchParams.getAll('categoryId').every(id => categories.some(c => c.id === id && c.subjectId === 'fizik')));
       assert.equal(await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2'), false);
       if (mobile) assert.ok(await evalJs("(()=>{const a=document.querySelector('.lr-map-subject.active').getBoundingClientRect();const n=document.querySelector('.lr-map-subjects').getBoundingClientRect();return a.left>=n.left-2&&a.right<=n.right+2;})()"), 'Selected mobile subject stays visible');

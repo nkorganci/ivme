@@ -370,6 +370,11 @@ arşiv CSV anahtarıyla karşılaştırıldı; öğretmen onayı verilmedi.
 
 ## Dersler arasında konu haritası gezinmesi
 
+Fizik → Hareket ve Kuvvet kartında tek bir [görsel deneme dersi](fizik-hareket-kuvvet-pilot.md)
+bulunur: `/konuyu-ogrenelim/fizik/hareket-kuvvet`. Kart “Görsel deneme dersi”
+etiketiyle açılır. Sekiz durak, kaynak sayfaları ve puanlanmayan alıştırmalar
+Matematik ustalık olaylarından ayrı bir pilot yüzeyde denenir; öğretmen kabulü bekler.
+
 `/konuyu-ogrenelim/harita` sol panelinde yayımlanmış TYT/AYT kataloğundaki
 bütün dersler yer alır; ilk seçim Matematik'tir. Matematikte mevcut 34 kavramın
 kimliği ve öğrenme ilerlemesi korunur. Diğer dersler kendi katalog ünite/konu

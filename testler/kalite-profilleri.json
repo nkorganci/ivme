@@ -1,6 +1,16 @@
 {
   "schemaVersion": 1,
   "checks": {
+    "fizik-pilot-node": {
+      "kind": "node",
+      "args": ["--test-reporter=tap", "testler/fizik-pilot.test.mjs"],
+      "inputs": ["frontend/src/learn/physics/**/*", "frontend/public/ogren/fizik/**/*", "frontend/src/data/curriculumIdentities.json", "testler/fizik-pilot.test.mjs", "scripts/fizik-pilot-ollama.py"]
+    },
+    "fizik-pilot-ui": {
+      "kind": "node",
+      "args": ["--test-reporter=tap", "testler/fizik-pilot-ui.mjs"],
+      "inputs": ["frontend/src/learn/**/*", "frontend/src/theme.css", "frontend/public/ogren/fizik/**/*", "testler/fizik-pilot-ui.mjs", "testler/lib/*.mjs"]
+    },
     "laboratuvar-node": {
       "kind": "node",
       "args": [
@@ -270,6 +280,11 @@
     }
   },
   "profiles": {
+    "PHYS-PILOT-01": {
+      "checks": ["fizik-pilot-node", "fizik-pilot-ui"],
+      "remainingAcceptance": ["Fizik öğretmeni incelemesi", "Öğrenciyle yardımsız ve gecikmeli aktarım gözlemi"],
+      "nextAction": "docs/icerik/fizik-hareket-kuvvet-pilot.md kapsamındaki tek pilotu kullanıcıyla değerlendir; başka ders üretme."
+    },
     "MAT-LAB-01": {
       "checks": [
         "laboratuvar-node"

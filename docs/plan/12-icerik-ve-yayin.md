@@ -69,6 +69,12 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 
 ## 12.02 — Eksik ders notu ve gerçek kaynaklı ipucu kapsamını genişlet
 
+**PHYS-PILOT-01:** Kullanıcının tek konu denemesi: Fizik → Hareket ve Kuvvet.
+Yerel Ollama adayları, kaynak incelemesi ve teknik düzeltme ile hazırlanır;
+sekiz görsel deney durağı ve bağımsız alıştırmalar içerir. Kapsam ve kabul
+[pilot sözleşmesindedir](../icerik/fizik-hareket-kuvvet-pilot.md).
+Bu deneme diğer fizik konularını veya toplu içerik üretimini başlatmaz.
+
 **MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu ve ortak lab motoru hazırdır; ilk tam
 konu `temel-kavramlar` teknik kabulü geçti. Kullanıcı mevcut ve yeni bütün matematik
 konularına laboratuvar eklenmesini istedi.

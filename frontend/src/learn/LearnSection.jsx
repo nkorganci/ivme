@@ -10,6 +10,7 @@ import TodayPage from './pages/TodayPage.jsx';
 import './learn.css';
 
 const MapPage = lazy(() => import('./pages/MapPage.jsx'));
+const PhysicsLessonPage = lazy(() => import('./physics/PhysicsLessonPage.jsx'));
 const ContentStatusPage = lazy(() => import('./pages/ContentStatusPage.jsx'));
 const ConceptPage = lazy(() => import('./pages/ConceptPage.jsx'));
 const LessonPage = lazy(() => import('./pages/LessonPage.jsx'));
@@ -57,6 +58,7 @@ function Shell() {
       <Routes>
         <Route index element={<TodayPage />} />
         <Route path="harita" element={<MapPage />} />
+        <Route path="fizik/hareket-kuvvet" element={<PhysicsLessonPage />} />
         <Route path="icerik-durumu" element={<ContentStatusPage />} />
         <Route path="konu/:conceptId" element={<ConceptPage />} />
         <Route path="ders/:conceptId" element={<LessonPage />} />

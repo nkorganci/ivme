@@ -1,0 +1,27 @@
+// Original pilot checks, independently calculated; not past examination questions.
+export const CHECKS = {
+  referans: { prompt: 'Sabit hızla giden trende oturan yolcu için hangisi doğru?', options: ['Her gözlemciye göre durgundur.', 'Trene göre durgun, perona göre hareketlidir.', 'Yalnız hızlanırken hareketlidir.'], correct: 1,
+    feedback: ['Hareket seçilen referansa bağlı. Perondaki gözlemci yolcunun konumunun değiştiğini görür.', 'Doğru: aynı yolcu, iki farklı referansa göre iki farklı hızla tanımlanır.', 'Sabit hız da harekettir; ivme bulunması gerekmez.'] },
+  yol: { prompt: 'Sağa 6 m, sonra sola 4 m gidince toplam yol ve yer değiştirme nedir?', options: ['2 m yol, +2 m yer değiştirme', '10 m yol, +10 m yer değiştirme', '10 m yol, +2 m yer değiştirme'], correct: 2,
+    feedback: ['Geri dönüş, gidilmiş yolu silmez: 6 + 4 = 10 m.', 'Yol 10 m; son konum başlangıçtan yalnız 2 m sağdadır.', 'Doğru: yol 6 + 4 = 10 m, yer değiştirme +6 − 4 = +2 m.'] },
+  hiz: { prompt: 'Bir turu 20 saniyede tamamlayıp başladığın yere döndün. Ortalama hızın sıfır mı?', options: ['Evet, fakat ortalama sürat sıfır değil.', 'Hayır, çünkü hareket ettin.', 'Evet, hem ortalama hız hem sürat sıfır.'], correct: 0,
+    feedback: ['Doğru: yer değiştirme sıfır, alınan yol pozitiftir. İki ortalamada pay farklıdır.', 'Ortalama hız yer değiştirmeye bakar. Tur sonunda yer değiştirme sıfırdır.', 'Yol sıfırlanmadı; ortalama sürat alınan yol / süre olduğundan pozitiftir.'] },
+  grafik: { prompt: 'Konum-zaman grafiğinde aşağı eğimli düz bir çizgi ne anlatır?', options: ['Cisim mutlaka yavaşlıyor.', 'Cisim negatif yönde sabit hızla gidiyor.', 'Cisim yokuş aşağı gidiyor.'], correct: 1,
+    feedback: ['Yavaşlama için eğimin büyüklüğünün azalması gerekir. Düz çizginin eğimi sabittir.', 'Doğru: eğim negatif ve sabit. Grafik yolun geometrik şekli değildir.', 'Düşey eksen konum, yatay eksen zaman. Grafik bir yokuş resmi değil.'] },
+  ivme: { prompt: 'Hız −4 m/s, ivme +2 m/s². İlk iki saniyede ne olur?', options: ['Sola giderken yavaşlar.', 'Sağa giderken hızlanır.', 'Sola giderken hızlanır.'], correct: 0,
+    feedback: ['Doğru: hızlar −4, −2, 0 olur; sürat 4, 2, 0. İvme sürerse sonra sağa yönelir.', 'Pozitif olan hız değil ivme. İlk anda hız negatif, yani hareket sola.', 'Hız ve ivme ters yönlü. Sürat ilk iki saniyede azalır.'] },
+  'net-kuvvet': { prompt: 'Sürtünmesiz yatay yolda +2 m/s hızla giden kutunun net kuvveti sıfır olursa?', options: ['Hemen durur.', 'Aynı hızla devam eder.', 'Hızı sürekli artar.'], correct: 1,
+    feedback: ['Durmak da hız değişimidir ve net kuvvet gerektirir.', 'Doğru: net kuvvet sıfır → ivme sıfır → mevcut hız korunur.', 'Hızın değişmesi için sıfırdan farklı net kuvvet gerekir.'] },
+  surtunme: { prompt: 'Durgun kutuda statik sürtünmenin üst sınırı 8 N. Sağa 5 N çekersen sürtünme kaç N?', options: ['8 N', '0 N', '5 N'], correct: 2,
+    feedback: ['8 N, üst sınırdır. Bu durumda 5 N dengelemeye yeterlidir.', 'Temas ve kayma eğilimi var: statik sürtünme çekişi dengeler.', 'Doğru: gerçek statik sürtünme ihtiyaca uyarlanır; burada sola 5 N.'] },
+  'etki-tepki': { prompt: 'İki patenci birbirini eşit kuvvetle ittiğinde neden ivmeleri farklı olabilir?', options: ['Ağır olan daha çok kuvvet uygular.', 'Kuvvetler birbirini yok eder.', 'Kütleler farklıysa eşit kuvvet farklı ivme üretir.'], correct: 2,
+    feedback: ['Etkileşim kuvvetleri eşit büyüklükte. Fark kütleden kaynaklanabilir.', 'Kuvvetler farklı cisimlere etki eder; tek bir cismin kuvvet toplamında birbirini yok etmez.', 'Doğru: her patenci için ayrı ayrı a = Fnet / m uygulanır.'] },
+};
+export const TRANSFER = [
+ { id: 'tur', prompt: 'Bir öğrenci 12 saniyede sağa 9 m, sola 3 m gidiyor. Ortalama sürat ve ortalama hız sırasıyla nedir?', options: ['1 m/s ve +0,5 m/s', '0,5 m/s ve +1 m/s', '1 m/s ve +1 m/s'], correct: 0, explanation: 'Toplam yol 12 m, yer değiştirme +6 m. Her ikisini de 12 s’ye böl: 1 m/s ve +0,5 m/s.' },
+ { id: 'slope', prompt: 'Konumu 2 saniyede +8 m’den +2 m’ye değişen cismin bu aralıktaki ortalama hızı?', options: ['+3 m/s', '−3 m/s', '−5 m/s'], correct: 1, explanation: 'Δx = 2 − 8 = −6 m; 2 saniyeye bölünce −3 m/s. Son konum pozitif olsa da hız negatif olabilir.' },
+ { id: 'acceleration', prompt: 'Cismin hızı 3 saniyede −6 m/s’den −3 m/s’ye geliyor. Ortalama ivme ve sürat değişimi?', options: ['−1 m/s², sürat artar', '+1 m/s², sürat artar', '+1 m/s², sürat azalır'], correct: 2, explanation: 'Δv = −3 − (−6) = +3 m/s; aort = +1 m/s². Sürat 6’dan 3 m/s’ye iner.' },
+ { id: 'force', prompt: '4 kg kutuya sağa 10 N, sola 6 N etki ediyor. İvme?', options: ['+1 m/s²', '+4 m/s²', '+2,5 m/s²'], correct: 0, explanation: 'Önce aynı cisme etki eden yatay kuvvetleri işaretleriyle topla: 10 − 6 = +4 N. 4 kg’ye böl: +1 m/s².' },
+ { id: 'friction', prompt: 'Başlangıçta durgun 3 kg kutu: μs = 0,4, μk = 0,3, g = 10 m/s². Sağa 15 N çekilirse ivme?', options: ['+1 m/s²', '+2 m/s²', '0'], correct: 1, explanation: 'N = 30 N, statik üst sınır 12 N. 15 N sınırı aşar, kayma başlar. Kinetik sürtünme 9 N, net 6 N; a = 6/3 = +2 m/s².' },
+ { id: 'reaction', prompt: 'Yatay sürtünmesiz zeminde 30 ve 60 kg patenciler birbirine 60 N uygular. İvme büyüklükleri?', options: ['İkisi de 2 m/s²', 'İkisi de 1 m/s²', '2 ve 1 m/s²'], correct: 2, explanation: 'Her cismi ayrı incele: 60/30 = 2 ve 60/60 = 1 m/s². Kuvvetler eşit büyüklükte, yönleri zıt; ivme büyüklükleri kütleye göre farklı.' },
+];

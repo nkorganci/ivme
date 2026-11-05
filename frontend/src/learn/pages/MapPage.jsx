@@ -6,6 +6,7 @@ import { BASE, CatalogError, DueText, ExamBadges, STATUS, StatusBadge, useLearnC
 import { pastCount } from '../bank.js';
 import { catalogUnits } from '../catalog.js';
 import { topicMapCatalog, selectTopicMap, topicMapParams, referenceMapUnits, topicSourcesPath } from '../mapNavigation.js';
+import { pilotForTopic } from '../physics/registry.js';
 
 const FILTERS = [['', 'Hepsi'], ['TYT', 'TYT'], ['AYT', 'AYT']];
 
@@ -39,14 +40,15 @@ export default function MapPage() {
   const referenceUnits = referenceMapUnits(selection.topics);
   const renderReferenceUnits = () => referenceUnits.map(unit => <section key={unit.id} className="card lr-unit lr-reference-unit">
     <header className="lr-section-head"><h2><span className="muted">{subject} ›</span> {unit.name}</h2></header>
-    <ul className="lr-concepts">{unit.topics.map(topic => <li key={topic.key} className="lr-concept lr-concept-pending">
+    <ul className="lr-concepts">{unit.topics.map(topic => { const pilot = pilotForTopic(topic); return <li key={topic.key} className="lr-concept lr-concept-pending">
       <div className="lr-reference-topic">
         <span className="lr-concept-title">{topic.name}</span>
         <span className="small muted"><ExamBadges exams={topic.exams} /> {topic.grades.join(', ')}{topic.grades.length > 0 && '. sınıf'}</span>
-        <span className="lr-status lr-status-locked">Anlatım hazırlanıyor</span>
+        <span className={'lr-status ' + (pilot ? 'lr-status-ready' : 'lr-status-locked')}>{pilot ? 'Görsel deneme dersi' : 'Anlatım hazırlanıyor'}</span>
+        {pilot && <Link to={pilot.path}>Deneme dersini aç →</Link>}
         <Link to={topicSourcesPath(topic)}>Konu kaynaklarını incele →</Link>
       </div>
-    </li>)}</ul>
+    </li>; })}</ul>
   </section>);
   return <div className="lr-page lr-map">
     <div className="page-head"><h1>Konu haritası</h1><span className="muted" aria-live="polite">{subject} · {selection.lessonCount ? `${concepts.length} kavram` : `${selection.topics.length} müfredat konusu`}</span></div>

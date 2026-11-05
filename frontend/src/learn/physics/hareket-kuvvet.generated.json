@@ -1,0 +1,358 @@
+{
+  "id": "hareket-kuvvet",
+  "categoryId": "excel.tyt.fizik.e8dba464c6b583c83c4c",
+  "title": "Hareket ve Kuvvet",
+  "sections": [
+    {
+      "id": "referans",
+      "title": "Hareketi kime göre anlatıyoruz?",
+      "sourceNotes": [
+        7
+      ],
+      "story": "Trende koltuğunda oturuyorsun. Yan koltuktaki arkadaşın seni yerinde görüyor; peronda bekleyen kişi ise seni trenle birlikte uzaklaşırken görüyor. İkisi farklı bir şeyi mi izliyor, yoksa aynı hareketi farklı yerlerden mi anlatıyor?",
+      "intuition": "Hareketi anlamak için önce bir adres sistemi seçeriz: neresi sıfır, hangi yön pozitif? Bu sisteme göre cismin yeri konumdur. Konum zamanla değişiyorsa cisim o referansa göre hareketlidir. Trende oturan yolcunun koltuğuna göre konumu değişmez; perona göre konumu değişir. Hareketli veya durgun derken her zaman kime göre olduğunu söyleriz.",
+      "connection": "Sabit hızlı trenle birlikte giden gözlemci ile perondaki gözlemci aynı yolcuya farklı hızlar verebilir. Bu bir çelişki değildir: ölçümleri farklı koordinat sistemlerine aittir. Bu derste önce peronu referans alıp sağı pozitif seçeceğiz. Gözlemci düğmesini değiştirince yolcunun kendisi değişmeyecek, hareketin anlatımı değişecek.",
+      "deeper": "Doğrusal, sabit hızlı tren ve peron bu deneyde eylemsiz referanslar olarak kabul edilir. Tren hızlanırsa aynı basit kuvvet yorumunu tren içindeki gözlemciye doğrudan taşımayız. Ötelemede cismin yönelimi değişmeden konumu değişir; dönmede bir eksen etrafında yönelimi değişir; titreşimde denge konumu çevresinde gidip gelir. Yolda yuvarlanan tekerlek öteleme ile dönmeyi birlikte yapabilir.",
+      "workedQuestion": "Tren perona göre sağa 4 m/s hızla gidiyor. Koltuğunda oturan yolcunun trene ve perona göre hızları nedir?",
+      "workedSolution": "1. Önce referansları ayır: tren ve peron. 2. Yolcunun tren içindeki adresi değişmiyor; trene göre hızı 0 m/s. 3. Perondan bakınca yolcu trenle aynı uzaklığı aynı sürede alıyor; perona göre hızı +4 m/s. 4. Kontrol: 2 saniyede perondan bakınca tren de yolcu da 8 m sağa gitmeli.",
+      "workedQuestion2": "Aynı trende yolcu, trene göre sağa 1 m/s ile yürümeye başlıyor. Tren hâlâ perona göre +4 m/s. Yolcunun perona göre hızı ne olur?",
+      "workedSolution2": "1. Bir saniyede tren perona göre 4 m ilerler. 2. Yolcu bu sırada trenin içinde ayrıca 1 m sağa yürür. 3. Perondaki gözlemci toplam 5 m konum değişimi görür: hız +5 m/s. 4. Bu toplama aynı doğrultuda, işaretler korunarak yapılır; yolcu trene göre sola 1 m/s yürüseydi sonuç +3 m/s olurdu.",
+      "shortcut": "Bir hareket sorusunda ilk işin referansı, sıfır konumunu ve pozitif yönü yazmak olsun. Aynı doğrultudaki düşük hızlı hareketlerde hızları işaretleriyle toplayabilirsin; farklı referanslara ait sayıları referanslarını belirtmeden karşılaştırma.",
+      "trap": "Yolcu oturduğu için her gözlemciye göre durgundur demek yanlıştır. Oturmak, koltuğa göre konumunun değişmediğini söyler; perona göre konumunun değişmediğini söylemez. Referans, yalnız gözlemcinin bulunduğu nokta değil, kullandığı koordinat sistemidir.",
+      "inquiry": "Yan yana iki tren dururken diğeri hareket ettiğinde bazen kendi trenin gidiyormuş gibi hissedersin. Hangi ek gözlem, perona göre hangi trenin hareket ettiğini ayırt etmene yardım eder?",
+      "inquiryAnswer": "Perondaki sabit bir levhayı izleyebilirsin. Kendi pencerenin levhaya göre konumu değişmiyorsa kendi trenin perona göre durgundur. Yalnız diğer trene bakmak, hangi trenin perona göre hareket ettiğini tek başına belirlemeye yetmez."
+    },
+    {
+      "id": "yol",
+      "title": "Geri dönünce yol silinir mi?",
+      "sourceNotes": [
+        7
+      ],
+      "story": "Telefonunu evde unuttun: kapıdan çıkıp 6 m ilerledin, sonra 4 m geri geldin. Adım sayarın 10 m gösterirken evden yalnız 2 m uzaktasın. İki ölçümün farklı olması, birinin yanlış olduğu anlamına gelir mi?",
+      "intuition": "Alınan yol, yürüdüğün bütün parçaların uzunluklarının toplamıdır. Geri dönmek önceki adımlarını silmez. Yer değiştirme ise başlangıç konumundan son konuma çizilen yönlü oktur. Bir doğru üzerinde sağı pozitif seçersek son konumdan ilk konumu çıkarırız. Yol yön taşımaz; yer değiştirme yön taşır.",
+      "connection": "0 m'den +6 m'ye gidiş 6 m, +6 m'den +2 m'ye dönüş 4 m uzunluğundadır. Yol 6 + 4 = 10 m; yer değiştirme +2 − 0 = +2 m olur. Geri dönüşü artırırken deneyde yolun arttığını, yer değiştirmenin azaldığını izle. Başlangıca dönersen yer değiştirme sıfırdır; yürüdüğün yol yine vardır.",
+      "deeper": "Yol her zaman yer değiştirme büyüklüğüne eşit veya ondan büyüktür. Eşitlik, doğrusal ve yön değiştirmeyen harekette sağlanır. Yer değiştirme negatif olabilir; yol negatif olamaz, hiç hareket yoksa sıfırdır. Eğri bir yolda yer değiştirme, yolun kıvrımlarını değil iki uç arasındaki yönlü farkı anlatır.",
+      "workedQuestion": "Bir cisim aynı doğru üzerinde 0 m konumundan +6 m'ye, oradan +2 m'ye geliyor. Yol ve yer değiştirme nedir?",
+      "workedSolution": "1. Her parçanın uzunluğunu ayrı bul: gidiş 6 m, dönüş 4 m. 2. Yolu toplarken uzunlukları kullan: 6 + 4 = 10 m. 3. Yer değiştirmede yalnız uçları kullan: son konum 2, ilk konum 0; fark +2 m. 4. Sonuç mantıklı: cisim başlangıcın 2 m sağında, ama bu noktaya 10 m yürüyerek geldi.",
+      "workedQuestion2": "Bir bisikletçi −3 m'den +5 m'ye gidip −1 m'ye dönüyor. Toplam yol ve yer değiştirme kaç metredir?",
+      "workedSolution2": "1. İlk parça +5 − (−3) = 8 m uzunluğunda. 2. İkinci parça +5'ten −1'e 6 m uzunluğunda. 3. Toplam yol 8 + 6 = 14 m. 4. Yer değiştirme son eksi ilk: −1 − (−3) = +2 m. Negatif bir son konuma ulaşmak, yer değiştirmenin mutlaka negatif olacağı anlamına gelmez.",
+      "shortcut": "Doğru üzerindeki konum listesinde yol için ardışık konum farklarının mutlak değerlerini topla. Yer değiştirme için yalnız son eksi ilk konumu al. Bu ikinci işlem aradaki yolu bilmeni gerektirmez.",
+      "trap": "Geri döndü, o hâlde yer değiştirmesi sıfır demek eksiktir. Sıfır olması için tam başlangıç noktasına dönmesi gerekir. Biraz geri gelip başka bir yerde durursa yer değiştirme sıfır olmak zorunda değildir.",
+      "inquiry": "Koşu pistinde bir tam tur atan arkadaşın başlangıç çizgisine geliyor. Antrenman uygulaması neden mesafe yazarken başlangıca olan yer değiştirmesi sıfırdır?",
+      "inquiryAnswer": "Uygulama pist boyunca alınan yolu sayar. Yer değiştirme ise yalnız başlangıç ve bitiş konumlarını karşılaştırır; bunlar aynı olduğu için sıfırdır. Bir tam tur atmak ile hiç koşmamak aynı yer değiştirmeye, farklı alınan yollara sahip olabilir."
+    },
+    {
+      "id": "hiz",
+      "title": "Aynı yol, farklı hız: hangisini ölçüyoruz?",
+      "sourceNotes": [
+        7,
+        10
+      ],
+      "story": "Bir koşucu başlangıç çizgisine dönünce yorulmuş olabilir ama ortalama hızı sıfır çıkar. Bu, hiç koşmadığını mı söyler? Hız ile süratin payına hangi mesafeyi koyduğumuz bu soruyu çözer.",
+      "intuition": "Ortalama sürat, alınan toplam yolun geçen toplam süreye oranıdır. Ortalama hız ise yer değiştirmenin aynı toplam süreye oranıdır. Sürat yön söylemez; hız yön söyler. Bu derste m/s, bir saniyede kaç metre değişim olduğunu anlatır. Birini hesaplayıp diğerinin adını yazmak aynı ölçümü yapmak değildir.",
+      "connection": "Deneyde 5 saniyede 10 m yol alıp başlangıcın 2 m sağında bitiriyoruz. Ortalama sürat 10/5 = 2 m/s, ortalama hız +2/5 = +0,4 m/s. İkisinin paydası aynı, payı farklıdır. Yolculuk sırasında durulan süreler varsa bunları da toplam süreye dahil ederiz.",
+      "deeper": "Anlık sürat anlık hızın büyüklüğüdür; fakat ortalama sürat genel olarak ortalama hızın büyüklüğü değildir. Doğrusal ve yön değiştirmeyen harekette iki ortalamanın büyüklükleri eşittir. Yön değişince genellikle ayrılırlar. Durgun bir cismin hem hızı hem sürati sıfır olabilir; sürat için doğru sınır negatif olmamaktır.",
+      "workedQuestion": "0 m'den +6 m'ye gidip +2 m'ye dönen cisim bu yolculuğu toplam 5 saniyede yapıyor. İki ortalamayı hesapla.",
+      "workedSolution": "1. Önce yol 10 m, yer değiştirme +2 m olarak ayrı bulunur. 2. Ortalama sürat için 10 m'yi 5 s'ye böl: 2 m/s. 3. Ortalama hız için +2 m'yi 5 s'ye böl: +0,4 m/s. 4. Kontrol: 2 m/s × 5 s alınan 10 m yolu; +0,4 m/s × 5 s ise +2 m yer değiştirmeyi geri vermeli.",
+      "workedQuestion2": "Bir bisikletçi 4 saniyede doğuya 10 m, sonra 6 saniyede batıya 8 m gidiyor. Doğuyu pozitif al. Ortalama sürat ve hız nedir?",
+      "workedSolution2": "1. Toplam süre 4 + 6 = 10 s. 2. Yol 10 + 8 = 18 m; ortalama sürat 18/10 = 1,8 m/s. 3. Yer değiştirme +10 − 8 = +2 m; ortalama hız +2/10 = +0,2 m/s. 4. Son konum başlangıcın doğusunda olduğundan ortalama hızın işareti pozitiftir.",
+      "shortcut": "Önce ayrı iki satıra toplam yol ve yer değiştirmeyi yaz, sonra ikisini de aynı toplam süreye böl. Yön değişmemişse yalnız ortalama hızın büyüklüğü ile sürati eşitle; hareket sola ise ortalama hız negatif, sürat pozitif olabilir.",
+      "trap": "Hız negatifse sürat de negatiftir demek yanlıştır. −3 m/s hız, sola doğru saniyede 3 m hareket demektir; sürat 3 m/s'dir. Ortalama sorusunda yön değişimlerini yok sayarak bütün mesafeleri hızın payına toplama.",
+      "inquiry": "Evin kapısına dönerek bitirdiğin yürüyüşte telefonun sıfırdan büyük ortalama sürat gösteriyor. Ortalama hızın ne olmalı? Aynı yürüyüşü daha yavaş tamamlarsan hangileri değişir?",
+      "inquiryAnswer": "Başlangıç ve bitiş aynıysa yer değiştirme ve ortalama hız sıfırdır. Alınan yol pozitif olduğundan ortalama sürat pozitiftir. Aynı yolu daha uzun sürede yürürsen ortalama sürat azalır; başlangıca döndüğün sürece ortalama hız yine sıfır kalır."
+    },
+    {
+      "id": "grafik",
+      "title": "Grafik bir yol resmi değildir",
+      "sourceNotes": [
+        8,
+        10
+      ],
+      "story": "Bir konum-zaman çizgisi aşağı eğiliyor. Bu, yolun yokuş aşağı olduğunu mu gösterir? Eksenleri okumadan şekle anlam verirsek düz bir yoldaki geri dönüşü bile yanlış anlayabiliriz.",
+      "intuition": "Yatay eksen zaman, düşey eksen konumdur. Çizginin eğimi, konumun zamana göre ne kadar değiştiğini, yani hızı verir. Yukarı eğimli doğru pozitif sabit hız; aşağı eğimli doğru negatif sabit hızdır. Yatay çizgi konumun değişmediğini, cismin o aralıkta durduğunu gösterir. Grafiğin yüksekliği ise hız değil konumdur.",
+      "connection": "Aynı hareketi hız-zaman grafiğinde başka türlü görürüz: düşey değer bu kez hızdır. Pozitif hız alanı pozitif, negatif hız alanı negatif yer değiştirme üretir. İşaretli alanların toplamı yer değiştirme; alan büyüklüklerinin toplamı alınan yoldur. Konum-zaman grafiğinin alanı için bu yorum yapılmaz; birimleri de m·s olur, metre değil.",
+      "deeper": "Bir konum-zaman eğrisinde iki nokta arasındaki eğim o aralığın ortalama hızıdır; teğetin eğimi anlık hızdır. Düz bir parçada bunlar eşittir. Negatif eğimin −4'ten −2'ye yükselmesi süratin azalmasıdır; yalnız eğim artıyor diye hızlanma diyemeyiz. Deneydeki keskin köşe ideal bir ani yön değişimidir; köşe anında sonlu ivme hesabı yapmıyoruz.",
+      "workedQuestion": "Cisim 0, 3 ve 5. saniyelerde sırasıyla 0, +6 ve +2 m konumlarında. Aradaki iki konum-zaman parçası doğru. Her parçanın hızı ve toplam yer değiştirme nedir?",
+      "workedSolution": "1. İlk parçanın eğimi (6 − 0)/(3 − 0) = +2 m/s. 2. İkinci eğim (2 − 6)/(5 − 3) = −2 m/s; yön değişir ama sürat büyüklüğü yine 2 m/s. 3. Hız-zaman alanlarını topla: (+2)×3 + (−2)×2 = +2 m. 4. Bunu son eksi ilk konumla kontrol et: 2 − 0 = +2 m. Yol ise 6 + 4 = 10 m.",
+      "workedQuestion2": "Hız-zaman grafiğinde ilk 2 saniye +3 m/s, sonraki 4 saniye −1 m/s var. Bu 6 saniyedeki yol ve yer değiştirme nedir?",
+      "workedSolution2": "1. İlk dikdörtgenin işaretli alanı +3×2 = +6 m. 2. İkinci alan −1×4 = −4 m. 3. Yer değiştirme +6 − 4 = +2 m. 4. Yol için alan büyüklüklerini topla: 6 + 4 = 10 m. İki alanı doğrudan pozitif toplamak yer değiştirmeyi değil yolu verir.",
+      "shortcut": "Her soruda önce eksen adlarını yaz. Konum-zamanda eğim → hız; hız-zamanda eğim → ivme, işaretli alan → yer değiştirme. Sabit hızlı parçada alan dikdörtgendir; değişen hızda şekle göre üçgen/trapez veya uygun toplam gerekir.",
+      "trap": "Negatif eğimli konum-zaman doğrusu yavaşlama demek değildir: eğim sabitse hız da sabittir. Konum-zaman grafiğinin altındaki alanı yol diye hesaplama. Hız-zaman grafiğinin yüksekliği hızdır; bu iki grafiğin düşey büyüklüklerini karıştırma.",
+      "inquiry": "Bir arkadaşın aşağı eğimli düz konum-zaman grafiğini gösterip araba yavaşlıyor diyor. Onu ikna etmek için eşit zaman aralıklarında hangi konum farklarını karşılaştırırsın?",
+      "inquiryAnswer": "Doğru üzerinde eşit zaman aralıklarında eşit negatif konum farkları bulunur. Her aralıkta aynı mesafe aynı sürede alındığı için sürat değişmez. Cisim negatif yönde sabit hızla gidiyordur; yavaşlamada eğimin büyüklüğünün giderek küçülmesini bekleriz."
+    },
+    {
+      "id": "ivme",
+      "title": "Sola giderken sağa ivmelenmek",
+      "sourceNotes": [
+        11
+      ],
+      "story": "Oyuncak araba sola doğru kayıyor; onu bir ip yardımıyla sürekli sağa çekiyorsun. Araba önce hâlâ sola giderken yavaşlıyor. Sağ yönlü etki ile sol yönlü hareketin birlikte bulunması nasıl mümkün?",
+      "intuition": "Hız cismin şu anda nasıl hareket ettiğini, ivme ise hızının nasıl değiştiğini anlatır. Sağı pozitif seçersek −4 m/s sola harekettir. +2 m/s² ivme, hızın her saniyede +2 m/s değişmesi demektir. Hızlar −4, −2, 0, +2 diye ilerler. İlk iki saniyede sürat azalır; sonra hareket yönü değişir ve sürat artar.",
+      "connection": "Hız ve ivme ters yönlüyse cisim o anda yavaşlar; aynı yönlüyse süratlenir. İvme sıfırsa hız sabittir. Bir anda hızın sıfır olması ivmenin de sıfır olduğunu söylemez. İpi aynı yönde çekmeye devam ettiğin deneyde durma anı geçicidir; sağa ivme sürdüğü için cisim sağa hareket etmeye başlar.",
+      "deeper": "Bu deneyde ivme sabittir; genel hareketlerde ivmenin büyüklüğü ve yönü değişebilir. Sabit ivmede hız-zaman çizgisinin eğimi ivmedir. İlk hızla ivme ters yönlüyse v = v0 + at eşitliğinde v = 0 yazarak durma anını buluruz. Aynı yöndelerse pozitif zamanda durma beklemeyiz. Modeldeki sağ/sol yorumları seçtiğimiz eksene bağlıdır.",
+      "workedQuestion": "İlk hızı −4 m/s ve sabit ivmesi +2 m/s² olan cisim ne zaman bir an durur? Bu anda nerede ve 3. saniyede hangi yöne gidiyor?",
+      "workedSolution": "1. Hızdaki her saniyelik +2 değişimi düşün: −4, −2, 0; durma anı 2 s. 2. Sabit ivme eşitliğiyle kontrol et: 0 = −4 + 2t. 3. İlk 2 saniyede ortalama hız (−4 + 0)/2 = −2 m/s; yer değiştirme −2×2 = −4 m. 4. Üçüncü saniyede hız −4 + 2×3 = +2 m/s; artık sağa gidiyor.",
+      "workedQuestion2": "İlk hızı −6 m/s, sabit ivmesi +3 m/s² olan cismin 1 ve 3. saniyedeki hızlarını bul. Hangi anda yavaşlıyor?",
+      "workedSolution2": "1. Birinci saniyede v = −6 + 3×1 = −3 m/s. Hız sola, ivme sağa; sürat ilk 6 m/s değerinden 3 m/s'ye inmiştir. 2. Durma anı 2 s'dir. 3. Üçüncü saniyede v = −6 + 3×3 = +3 m/s; hız ile ivme sağa, sürat artmaktadır. 4. Aynı +3 ivmenin iki farklı hareket etkisi, başlangıçtaki hız yönünden doğar.",
+      "shortcut": "Önce hız ve ivmenin işaretlerini karşılaştır. Sabit ivme, v0·a < 0 ve bu ivme durma anına kadar sürüyorsa durma süresi t = −v0/a'dır. İvme değişiyorsa veya ilk hızla aynı yönlüyse bu kısa yolu koşulsuz uygulama.",
+      "trap": "Pozitif ivme demek sağa hareket veya her zaman süratlenme demek değildir. İvme hızın değişiminin yönünü söyler. Negatif hızla pozitif ivmede cisim önce sola giderken yavaşlar; yönü ancak hızı sıfırdan geçtikten sonra değişebilir.",
+      "inquiry": "Yukarı atılan bir top en yüksek noktada bir an durur. O anda yerçekiminin etkisinin bittiğini söyleyebilir miyiz? Hız ile ivmeyi ayırarak düşün.",
+      "inquiryAnswer": "Hayır. Hava direncini ihmal edersek topun ivmesi her an aşağı yönlü yerçekimi ivmesidir. En yüksek noktada yalnız hızı bir an sıfırdır. Aşağı ivme sürdüğü için hemen ardından aşağı yönlü hız kazanır. Bu, deneydeki geçici durma ile aynı hız–ivme ayrımını gösterir."
+    },
+    {
+      "id": "net-kuvvet",
+      "title": "Kuvvet hareketi mi, hareketin değişimini mi belirler?",
+      "sourceNotes": [
+        12,
+        13,
+        14
+      ],
+      "story": "Oyuncak arabayı itip bıraktığında gerçek masada duruyor. Ama sürtünmeyi kaldırabilseydik durması gerekir miydi? Kuvvetin görevinin hareketi sürdürmek mi, hareketi değiştirmek mi olduğunu deneyerek ayıralım.",
+      "intuition": "Kuvvet bir itme veya çekmedir; yönü ve büyüklüğü vardır. Aynı cisme etki eden kuvvetleri yönlerini gözeterek topladığımızda net kuvveti buluruz. Net kuvvet sıfırsa ivme sıfırdır, yani hız değişmez. Cisim zaten hareketliyse aynı hızla gider; durgunsa durgun kalır. Kuvvet hareketin varlığını değil, hızın değişimini belirler.",
+      "connection": "Net kuvvet ile ivme arasındaki bağ Fnet = ma'dır. Aynı kütlede net kuvvet büyürse ivme büyür. Aynı net kuvvette kütle büyürse ivme küçülür. Deneyde kuvvetleri eşitle: kutu başlangıçtaki +2 m/s hızını korur. Sonra yalnız kütleyi değiştirerek aynı net kuvvetin farklı etkisini karşılaştır.",
+      "deeper": "Bu yatay düzlem modelinde düşey ivme yoktur ve yatay kuvvetlerin düşey bileşeni bulunmaz; bu yüzden normal N ile ağırlık mg dengelenir. Yatayda sağ kuvvetlerden sol kuvvetleri çıkarırız. Fnet = ma sabit kütle ve eylemsiz referans için kullanılır. Net kuvvetin yönü ivmenin yönüdür; cismin o andaki hız yönü olmak zorunda değildir.",
+      "workedQuestion": "Sürtünmesiz yatay zeminde 2 kg kutuya sağa 6 N, sola 2 N kuvvet etki ediyor. Yatay ivmesi nedir?",
+      "workedSolution": "1. Yalnız kutuya etki eden yatay kuvvetleri seç. 2. Sağı pozitif al: Fnet = 6 − 2 = +4 N. 3. Kütleye böl: a = 4/2 = +2 m/s². 4. Bu, hızın her saniyede sağ yönlü 2 m/s değiştiğini söyler; başlangıç hızı verilmeden kutu kesin sağa gidiyor diyemeyiz.",
+      "workedQuestion2": "Sürtünmesiz yatay zeminde sağa 4 m/s ile giden 3 kg kutuya sağa 4 N, sola 10 N uygulanıyor. İvme ve ilk saniyedeki hareketi nedir?",
+      "workedSolution2": "1. Net kuvvet 4 − 10 = −6 N. 2. İvme −6/3 = −2 m/s², yani sola. 3. Bir saniye sonra hız +4 − 2×1 = +2 m/s; kutu hâlâ sağa gidiyor fakat yavaşlıyor. 4. Kuvvet yönü ile hareket yönünü aynı saymak bu örnekte yanlış sonuç verirdi.",
+      "shortcut": "Önce inceleyeceğin cismi seç, sonra ona etki eden kuvvetleri çiz. Aynı doğrultudaki kuvvetleri işaretleriyle topla; yalnız bundan sonra kütleye böl. Hız veya alınan yol sorulursa başlangıç koşulları ve zaman da gerekir.",
+      "trap": "Cisim hareket ediyor, öyleyse net kuvvet hareket yönündedir demek yanlıştır. Sabit hızlı cisimde net kuvvet sıfırdır. Gerçek masadaki araba bırakılınca yavaşlıyorsa nedeni kuvvetin bitmesi değil, sürtünme ve direnç gibi net dış kuvvetlerdir.",
+      "inquiry": "Sürtünmesiz zeminde sağa giden kutuya iki kişi eşit büyüklükte, zıt yönlü yatay kuvvet uyguluyor. Kuvvetler eşitlendiği anda kutu neden birden durmaz?",
+      "inquiryAnswer": "İki kuvvetin toplamı sıfır olduğu için hızın değişim hızı, yani ivme sıfırdır. Bu mevcut hızı silmez; kutu sağa aynı hızla devam eder. Durdurmak için bir süre sola yönlü net kuvvet ve buna bağlı hız değişimi gerekir."
+    },
+    {
+      "id": "surtunme",
+      "title": "Kutu neden bazen kıpırdamaz?",
+      "sourceNotes": [
+        16
+      ],
+      "story": "Ağır bir kutuyu hafifçe çekiyorsun, kıpırdamıyor. Biraz daha çekince yine duruyor; yeterince artırınca kayıyor. İlk iki durumda kuvvetin gerçekten boşa mı gitti, yoksa ona uyum sağlayan başka bir kuvvet mi vardı?",
+      "intuition": "Temas eden yüzeylerin birbirine göre kaymasına veya kayma eğilimine karşı sürtünme oluşabilir. Kutu dururken statik sürtünme, yatay çekişi dengeleyecek kadar olur; her zaman en büyük değerinde değildir. Çekiş statik üst sınırı aşarsa kayma başlar. Kayarken kinetik sürtünme, kutunun zemine göre kayma yönüne karşı etki eder. Yüzeyler kayarken de temas hâlindedir.",
+      "connection": "Yatay çekiş ve düşey dengede N = mg. Bu basit modelde statik üst sınır μsN, kinetik büyüklük μkN'dir. Deneyde m = 2 kg ve g = 10 m/s² olduğunda N = 20 N; üst sınır 8 N, kinetik sürtünme 6 N. Başlangıç durgunken 5 N çekişi 5 N statik sürtünme dengeler; 10 N çekişte kayma ve +2 m/s² ivme oluşur.",
+      "deeper": "Başlangıçta durgun kutuda F = μsN eşitliği, statik dengenin sınırıdır; tek başına zorunlu kayma demek değildir. Başlangıçta zaten kayan kutu için ise aynı çekişte kinetik sürtünme kullanılır. Model kuru, yatay yüzey ve sabit katsayılarla sınırlıdır. Yürüyüşte ayağa etki eden statik sürtünme ileri yönlü olabilir; sürtünme her zaman cismin genel hareketine karşıdır diye genelleme yapma.",
+      "workedQuestion": "Durgun 2 kg kutuda μs = 0,4, μk = 0,3 ve g = 10 m/s². Ayrı deneylerde sağa 5 N ve 10 N çekiş uygulanıyor. Sürtünme ve ivme nedir?",
+      "workedSolution": "1. N = mg = 20 N; statik üst sınır 0,4×20 = 8 N. 2. İlk deneyde 5 < 8: sola 5 N statik sürtünme, net sıfır, ivme sıfır. 3. İkinci deneyde 10 > 8: kayma başlar; kinetik sürtünme sola 0,3×20 = 6 N. 4. Net sağa 10 − 6 = 4 N; ivme +4/2 = +2 m/s².",
+      "workedQuestion2": "Başlangıçta durgun 3 kg kutuda μs = 0,5, μk = 0,2 ve g = 10 m/s². Sağa tam 15 N çekildiğinde mutlaka kayar mı? Zaten sağa kayıyor olsaydı ivmesi ne olurdu?",
+      "workedSolution2": "1. N = 30 N; statik üst sınır 0,5×30 = 15 N. 2. Durgun kutuda tam 15 N çekişi, sınırdaki 15 N statik sürtünme dengeleyebilir; zorunlu kayma sonucu çıkarılamaz. 3. Kutu zaten sağa kayıyorsa kinetik sürtünme 0,2×30 = 6 N olur. 4. Bu farklı başlangıç durumunda net sağa 9 N, ivme +9/3 = +3 m/s² olur.",
+      "shortcut": "Önce kutu duruyor mu kayıyor mu sorusunu cevapla. Durgunsa gerekli statik sürtünmeyi üst sınırla karşılaştır; üst sınırı otomatik olarak gerçek sürtünme diye yazma. Kayma varsa, belirtilen basit modelde μkN kullan ve yönünü bağıl kaymaya zıt seç.",
+      "trap": "F = μsN bulunduğunda kutu kesin hızlanmaya başladı demek yanlıştır; bu statik dengenin sınırı olabilir. Ayrıca kayarken çekişi kaldırmak sürtünmeyi kaldırmaz. Deneyde başlangıçta kayıyor seçeneğini açıp çekişi sıfırla: kutu yavaşlayıp durur, sürtünme onu kendiliğinden geriye hızlandırmaz.",
+      "inquiry": "Kutu sağa kayarken ipi bıraktın. Temas sürerken ne zaman kinetik, ne zaman statik sürtünme modelini kullanırsın? Kutu durduktan sonra neden sola gitmeye başlamaz?",
+      "inquiryAnswer": "Sağa kayma sürdüğü sürece kinetik sürtünme sola etki eder ve sürati azaltır. Durunca kayma sona erer; statik duruma geçilir. Başka yatay çekiş kalmadıysa gerekli statik sürtünme de sıfır olur. Kinetik formülü durma sonrasına körlemesine uzatmak, fiziksel olmayan geriye hızlanma üretir."
+    },
+    {
+      "id": "etki-tepki",
+      "title": "Eşit kuvvet varsa neden hareket var?",
+      "sourceNotes": [
+        15
+      ],
+      "story": "Buz üzerinde iki patenci birbirini itiyor. Birinin kütlesi diğerinin iki katı; hafif olan daha belirgin hızlanıyor. Bu, ağır patencinin daha güçlü ittiği anlamına mı gelir? Kuvvetlerin hangi cisimde olduğunu ayırarak bakalım.",
+      "intuition": "Bir cisim diğerine kuvvet uyguladığında, diğeri de ona aynı anda eşit büyüklükte ve zıt yönlü kuvvet uygular. Bu iki kuvvet aynı cisimde değildir. A'nın B'ye uyguladığı kuvvet B üzerindedir; B'nin A'ya uyguladığı kuvvet A üzerindedir. Bir patencinin net kuvvetini hesaplarken yalnız o patenciye etki eden kuvvetleri toplarız.",
+      "connection": "İki kuvvetin eşit olması iki ivmenin eşit olmasını gerektirmez. Her cisim için ayrı ayrı a = Fnet/m kullanırız. Yatay sürtünme yoksa, aynı büyüklükteki yatay etkileşim kuvveti küçük kütlede daha büyük ivme oluşturur. Deneyde B'nin kütlesini artır; kuvvet etiketleri aynı kalırken B'nin ivmesinin küçüldüğünü izle.",
+      "deeper": "İki patenciyi tek sistem olarak seçersen aralarındaki kuvvetler iç kuvvettir ve sistemin net iç kuvvet toplamında birbirini götürür. Bu, her patencinin ayrı ayrı ivmelenmesini engellemez. Yatay dış kuvvet yokken toplam momentum değişmez. Yalnız kutuya çizilen normal ve ağırlık ise aynı cisme etki ettikleri için etki–tepki çifti değildir; eşit olmaları bu sınıflamayı değiştirmez.",
+      "workedQuestion": "Sürtünmesiz yatay buzda 40 kg A ile 80 kg B birbirlerine 80 N uygular. A sola, B sağa itiliyor. Yatay ivmelerini bul.",
+      "workedSolution": "1. İki cismi ayrı çiz. A'nın üzerinde B'nin sola 80 N kuvveti, B'nin üzerinde A'nın sağa 80 N kuvveti var. 2. A için aA = −80/40 = −2 m/s². 3. B için aB = +80/80 = +1 m/s². 4. Kontrol: 40×(−2) + 80×(+1) = 0; sistemin yatay momentum değişimi sıfırla uyumludur.",
+      "workedQuestion2": "Bir öğrenci duvarı sağa doğru 50 N ile itiyor. Duvarın öğrenciye kuvveti nedir? Öğrencinin duvarla birlikte durması bu kuvveti sıfır yapar mı?",
+      "workedSolution2": "1. Etkileşimin taraflarını değiştir: öğrenci → duvar kuvveti sağa 50 N ise duvar → öğrenci kuvveti sola 50 N'dir. 2. Durgunluk bu kuvvetleri sıfır yapmaz. 3. Öğrenci duruyorsa, öğrenci üzerindeki diğer yatay kuvvetler, örneğin zeminle statik sürtünme, sola 50 N kuvveti dengelemelidir. 4. Duvar üzerindeki kuvveti öğrencinin net kuvvet toplamına ekleme.",
+      "shortcut": "Her kuvvete uygulayan → etkilenen etiketi koy. Etki–tepki ararken bu iki etiketi yer değiştir: A→B ve B→A. Büyüklükler eşit, yönler zıt, cisimler farklı olmalı. Yalnız eşit ve zıt iki ok görmek yeterli değildir.",
+      "trap": "Etki ve tepki eşit olduğundan hiçbir şey hareket edemez demek yanlıştır. İki kuvvet farklı cisimlerin kuvvet toplamlarına girer. Normal ile ağırlığı da sırf eşit ve zıt diye etki–tepki sayma; ikisi de kutuya etki eder.",
+      "inquiry": "Yürürken ayağın zemini geriye iter. Seni ileri hızlandıran kuvveti kim, hangi cisme uygular? Etki–tepki çiftini adlarıyla söyle.",
+      "inquiryAnswer": "Ayak zemini geriye iter; zemin ayağa ileri yönlü statik sürtünme uygular. İleri kuvvet ayağa, geri kuvvet zemine etki eder. Çift bu iki kuvvettir. Kişinin ağırlığı ile zeminin normalini eşleştirmek, uygulayan ve etkilenen tarafları doğru değiştirmez."
+    }
+  ],
+  "provenance": {
+    "promptVersion": "physics-pilot-v3-qwen-chatml",
+    "models": [
+      "gpt-oss:20b",
+      "qwen3.5:9b"
+    ],
+    "roles": {
+      "gpt-oss:20b": "Plan candidate; not accepted as physics evidence",
+      "qwen3.5:9b": "Section drafts; source-grounded technical corrections applied"
+    },
+    "teacherApproved": false,
+    "editoriallyCorrected": true,
+    "reviewType": "Source-grounded technical correction of local model drafts; not teacher approval",
+    "reviewedSourceNotes": [
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "summarySha256": "73663edd9906a7e9d16e350b37078fb29152dfffc333479b4d612c1f17e0992d",
+    "editorialSha256": "fcce6831ea337c604d53c36793bd001e06167d033fc20347b4400d4be1df8df7",
+    "draftEvidence": [
+      {
+        "id": "referans",
+        "model": "qwen3.5:9b",
+        "inputSha256": "2797df88d53bfe9c01fd455a59d7549af2d95ab8e3205fa0f26791697ca7db82",
+        "draftSha256": "aecc0fb1fa2a755da18c5cd655cd7264debd7982eb3d28a03353d6d30a73ba95",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "yol",
+        "model": "qwen3.5:9b",
+        "inputSha256": "424332cfe88768281957e8fd7b99d13b19a744d36102003dc029c2bb3d20d14d",
+        "draftSha256": "c3d34a458f6fc92f9ed33e722b2e8c76282b4b7f823a4e4c9b952b8e23b5ce17",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "hiz",
+        "model": "qwen3.5:9b",
+        "inputSha256": "7a3bb0abaa57d6555d05fb45c2768119e63cc8c4310b25fd7f8fcac0749ebf3e",
+        "draftSha256": "a50dc49101007be3ef67c95cbbb2e9b45ecb00c3f2a4354c3d724e75b3d7a9ae",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "grafik",
+        "model": "qwen3.5:9b",
+        "inputSha256": "7ea86a1d192af1ec50ac939922d96dcb7e8dec3d47123b6e1e39658e71a9ba4a",
+        "draftSha256": "e2c53f92718a9e19d79bf75c0aa894d994bd2678973e75115ab4bdd564996629",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "ivme",
+        "model": "qwen3.5:9b",
+        "inputSha256": "5a0cc1e31634060bff76d49d4b017374619a77ee756fb055d12c3c26a72937f5",
+        "draftSha256": "a9f7c2e8c72d34d2edf9a42dbe2b59f07807d2fa63deb3110b015398ae81d9d6",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "net-kuvvet",
+        "model": "qwen3.5:9b",
+        "inputSha256": "b4c00ac964ca16ebda3dce69e0ae3f275f05872df1b45c7c73cd7483c45d14bf",
+        "draftSha256": "12d11ec4bed850489d037858648eec813349f6cf46d6ca6d76127673184fb9fc",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "surtunme",
+        "model": "qwen3.5:9b",
+        "inputSha256": "ae7b90edba1fde3fbf40b2c9e1c1c7f285984e17cda5ed0c9b5bf37ca696e46a",
+        "draftSha256": "d8afa8aff0c7e6e66881cb17fb7f574d07ca451b07a69988636a24a22d1a2e2f",
+        "editoriallyCorrected": true
+      },
+      {
+        "id": "etki-tepki",
+        "model": "qwen3.5:9b",
+        "inputSha256": "710bd6a01842281777a4a0ee57a73e49f50f0f2da78618e2c3c9360f93de3471",
+        "draftSha256": "7dbdbdd8312364b53cf2b36843b634d93049addd0bbd5103f1fb1c9a68f61ddd",
+        "editoriallyCorrected": true
+      }
+    ]
+  },
+  "sources": [
+    {
+      "note": 7,
+      "filename": "07 - HAREKETLE ILGILI TEMEL KAVRAMLAR.pdf",
+      "sha256": "66d6cd9275fd931a59bd1b03718f7623ba183c90c35d7508ff995804c42babe7",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-07-1.webp",
+          "imageSha256": "2c352f9a7df515b4fce4d20813dc7d23fc63ead7dd87dd5161d6e434c8fcdc7c"
+        }
+      ]
+    },
+    {
+      "note": 8,
+      "filename": "08 - DUZGUN DOGRUSAL HAREKET - I.pdf",
+      "sha256": "ef6257a197c08c7a65836cfa5f706592171fa275addf5a17bd02656068a5b97f",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-08-1.webp",
+          "imageSha256": "d61c1446337c09f877302b0f2611eb15c61e6c3aacac4cef5ab4fa779e41869c"
+        }
+      ]
+    },
+    {
+      "note": 10,
+      "filename": "10 - DUZGUN DOGRUSAL HAREKET - II.pdf",
+      "sha256": "e707d7a0c8ee42f44ed179105c294fbdb70a8425b3dbb37484371ee1d78b232a",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-10-1.webp",
+          "imageSha256": "7f7c4ac1c321251e5c225341b2aaf33ae79547c0c9735ae052972fdb1b7cc160"
+        }
+      ]
+    },
+    {
+      "note": 11,
+      "filename": "11 - IVMELI HAREKET.pdf",
+      "sha256": "54f67ec3bb520c7da32cb5fd65b291382ce9a79ce8fc97fa8e2c8867bc386145",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-11-1.webp",
+          "imageSha256": "bff37c2d3066751faaa9912c90b48d0ef42b063e5b04d571c480826221ca11c1"
+        }
+      ]
+    },
+    {
+      "note": 12,
+      "filename": "12 - KUVVET.pdf",
+      "sha256": "c890c4f491db1247742b4bdf240aac7e862bb6ecacf441c8832bc8e2e19afedf",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-12-1.webp",
+          "imageSha256": "a3b48caf5fe8782d899ff224cfc74e5dc74c64dfc18edf16115bf17e213f3842"
+        }
+      ]
+    },
+    {
+      "note": 13,
+      "filename": "13 - DENGELENMIS VE DENGELENMEMIS KUVVETLERIN ETKISINDE HAREKET - NEWTONIN HAREKET KANUNLARI.pdf",
+      "sha256": "9f1f3665decb632ea32911e70aba00841d7f2b20114ded6d9f547a2751253bf9",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-13-1.webp",
+          "imageSha256": "8d3ac81f05f992470ba85e861d46fe34d6c2462758f6238c34c77c6aa51177f2"
+        }
+      ]
+    },
+    {
+      "note": 14,
+      "filename": "14 - NEWTONIN HAREKET KANUNLARI - II.pdf",
+      "sha256": "7d46c7125ab25a07ba4345127ba327a80334bd6d506a1103a9a6aa08b1e7c729",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-14-1.webp",
+          "imageSha256": "e030ad8a9d51e2a0a57d3e835d7276ed410e79181b85e9157cc1cb190257a91f"
+        }
+      ]
+    },
+    {
+      "note": 15,
+      "filename": "15 - NEWTONIN HAREKET KANUNLARI - III.pdf",
+      "sha256": "a0d3a22efb141c0b698fa523e4251d150d607492acdc99ddbd466c6830278687",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-15-1.webp",
+          "imageSha256": "4acba52c2931c8e5b182cfe456174eabde2db5711bbd1828108370cb40577f6a"
+        }
+      ]
+    },
+    {
+      "note": 16,
+      "filename": "16 - SURTUNME KUVVETI.pdf",
+      "sha256": "5409cc99f25181630604c517f657e4b48f384f577967dffa3ba5f677d11b8903",
+      "pages": [
+        {
+          "page": 1,
+          "image": "/ogren/fizik/hareket-kuvvet/kaynak-16-1.webp",
+          "imageSha256": "6269c869fc9dffa4cc576dda19753f124be435cc47b17cb82d70bb4d7a3efcba"
+        }
+      ]
+    }
+  ]
+}
