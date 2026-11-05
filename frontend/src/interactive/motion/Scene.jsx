@@ -25,6 +25,18 @@ function Ball({ x, y, color, label, r = 13 }) {
   </g>;
 }
 
+/** Optional lesson objects; existing car/ball scenarios keep their original rendering. */
+function LessonObject({ shape, x, y, color, label, dir }) {
+  return <g data-object={shape}>
+    <g transform={`translate(${x},${y})`}>
+      {shape === 'crate' && <><rect x="-21" y="-25" width="42" height="34" rx="3" fill={color} stroke="var(--ink)" /><path d="M-18-22L18 6M18-22L-18 6" stroke="var(--surface)" opacity=".35" /><text y="0" textAnchor="middle" className="ml-car-label">{label}</text></>}
+      {shape === 'train' && <><g transform={`scale(${dir},1)`}><rect x="-39" y="-27" width="78" height="35" rx="8" fill={color} stroke="var(--ink)" /><path d="M-36 2H36" stroke="var(--surface)" opacity=".6" /><rect x="-29" y="-22" width="18" height="15" rx="3" fill="var(--surface)" /><rect x="-5" y="-22" width="18" height="15" rx="3" fill="var(--surface)" /><circle cx="4" cy="-17" r="3" fill="var(--ink)" /><path d="M0-8V-12Q4-16 8-12V-8" fill="var(--ink)" /><circle cx="-25" cy="10" r="5" fill="var(--ink)" /><circle cx="25" cy="10" r="5" fill="var(--ink)" /></g><text x="25" y="-11" textAnchor="middle" className="ml-car-label">{label}</text></>}
+      {shape === 'landmark' && <><path d="M0 10V-25M-15 10H15" stroke="var(--ink)" strokeWidth="3" /><rect x="-18" y="-32" width="36" height="23" rx="4" fill={color} /><text y="-16" textAnchor="middle" className="ml-car-label">{label}</text></>}
+      {shape === 'skater' && <><circle cx="0" cy="-24" r="7" fill={color} stroke="var(--ink)" /><path d="M0-16V0L-12 10M0 0L12 10M-14-8H14M-17 13H-6M7 13H18" fill="none" stroke={color} strokeWidth="4" strokeLinecap="round" /><text x="22" y="-18" fill={color} className="ml-tick">{label}</text></>}
+    </g>
+  </g>;
+}
+
 /** Eşit zaman aralıklı iz noktaları: aralık sabitse hız sabit, açılıyorsa hızlanma. */
 function strobeTimes(T, step, t) {
   const out = [];
@@ -44,56 +56,63 @@ function scaleFactors(motions, size = 1) {
 
 function Horizontal({ scenario, motions, t, layers, narrow }) {
   const W = narrow ? 600 : 1000;
+  const shift = scenario.lessonLayout ? 18 : 0;
+  const laneHeight = LANE + shift;
   const units = unitsOf(scenario);
   const n = scenario.bodies.length;
-  const H = TOP + n * LANE + RULER;
+  const H = TOP + n * laneHeight + RULER;
   const range = niceRange(positionExtent(motions, scenario.T, scenario.bodies.map((b) => b.x0 ?? 0)), { pad: 0.06, count: narrow ? 6 : 10 });
   const sx = linear(range.min, range.max, 46, W - 46);
   const { kv, ka } = scaleFactors(motions, W / 1000);
   const strobeStep = scenario.strobe ?? 1;
-  const yRuler = TOP + n * LANE + 8;
+  const yRuler = TOP + n * laneHeight + 8;
   return <svg viewBox={`0 0 ${W} ${H}`} className="ml-svg" role="img"
     aria-label={`Yol sahnesi: ${scenario.bodies.map((b, i) => `${b.label} ${fmt(motions[i].x(t))} ${units.x}`).join(', ')}`}>
     {scenario.bodies.map((body, i) => {
       const motion = motions[i];
-      const y0 = TOP + i * LANE;
-      const cy = y0 + 46;
+      const y0 = TOP + i * laneHeight;
+      const cy = y0 + 46 + shift;
       const color = toneOf(body);
       const x = motion.x(t);
       const v = motion.v(t);
       const a = motion.a(t);
       const px = sx(x);
-      let lastLabel = -Infinity;
+      const vxEnd = Math.max(34, Math.min(W - 34, px + v * kv));
+      const axEnd = Math.max(34, Math.min(W - 34, px + a * ka));
+      const labelPosition = (end, value) => end > W - 120 ? { x: W - 28, anchor: 'end' }
+        : end < 120 ? { x: 28, anchor: 'start' } : { x: end + (value > 0 ? 6 : -6), anchor: value > 0 ? 'start' : 'end' };
+      const vl = labelPosition(vxEnd, v), al = labelPosition(axEnd, a);
+      const labelledPositions = [];
       return <g key={body.id}>
-        <rect x="20" y={y0 + 24} width={W - 40} height="42" rx="8" fill="var(--tint)" stroke="var(--line)" />
-        <line x1="26" x2={W - 26} y1={y0 + 45} y2={y0 + 45} stroke="var(--line)" strokeDasharray="10 8" />
+        <rect x="20" y={y0 + 24 + shift} width={W - 40} height="42" rx="8" fill="var(--tint)" stroke="var(--line)" />
+        <line x1="26" x2={W - 26} y1={y0 + 45 + shift} y2={y0 + 45 + shift} stroke="var(--line)" strokeDasharray="10 8" />
         <text x="24" y={y0 + 18} className="ml-lane-label" fill={color}>{body.name ?? body.label}</text>
         <g>
-          <line x1={sx(motion.x0)} x2={sx(motion.x0)} y1={y0 + 22} y2={y0 + 68} stroke="var(--ink)" strokeDasharray="3 3" />
-          <path d={`M${sx(motion.x0)},${y0 + 22} l9,4 l-9,4 z`} fill="var(--ink)" />
+          <line x1={sx(motion.x0)} x2={sx(motion.x0)} y1={y0 + 22 + shift} y2={y0 + 68 + shift} stroke="var(--ink)" strokeDasharray="3 3" />
+          <path d={`M${sx(motion.x0)},${y0 + 22 + shift} l9,4 l-9,4 z`} fill="var(--ink)" />
         </g>
         {layers.strobe && strobeTimes(scenario.T, strobeStep, t).map((time) => {
           const p = sx(motion.x(time));
-          const showLabel = Math.abs(p - lastLabel) > 40;
-          if (showLabel) lastLabel = p;
+          const showLabel = labelledPositions.every(previous => Math.abs(p - previous) > 50);
+          if (showLabel) labelledPositions.push(p);
           return <g key={time}>
             <circle cx={p} cy={cy} r="4" fill={color} opacity=".45" />
-            {showLabel && <text x={p} y={y0 + 76} textAnchor="middle" className="ml-strobe-label">{fmt(time, 2)} {units.t}</text>}
+            {showLabel && <text x={p} y={y0 + 76 + shift} textAnchor="middle" className="ml-strobe-label">{fmt(time, 2)} {units.t}</text>}
           </g>;
         })}
         {layers.disp && Math.abs(x - motion.x0) > 1e-6 && <g>
-          <path d={arrowPath(sx(motion.x0), y0 + 62, px, y0 + 62, 9)} stroke={color} fill={color} strokeWidth="2.5" />
-          <text x={(sx(motion.x0) + px) / 2} y={y0 + 60} textAnchor="middle" className="ml-arrow-label">Δx = {fmt(x - motion.x0)} {units.x}</text>
+          <path d={arrowPath(sx(motion.x0), y0 + 62 + shift, px, y0 + 62 + shift, 9)} stroke={color} fill={color} strokeWidth="2.5" />
+          <text x={(sx(motion.x0) + px) / 2} y={y0 + 60 + shift} textAnchor="middle" className="ml-arrow-label">Δx = {fmt(x - motion.x0)} {units.x}</text>
         </g>}
-        {body.shape === 'ball' ? <Ball x={px} y={cy} color={color} label={body.label} />
+        {['crate', 'train', 'landmark', 'skater'].includes(body.shape) ? <LessonObject shape={body.shape} x={px} y={cy} dir={v < -1e-6 ? -1 : 1} color={color} label={body.label} /> : body.shape === 'ball' ? <Ball x={px} y={cy} color={color} label={body.label} />
           : <Car x={px} y={cy} dir={v < -1e-6 ? -1 : 1} color={color} label={body.label} />}
         {layers.arrows && Math.abs(v) > 1e-6 && <g>
-          <path d={arrowPath(px, y0 + 12, px + v * kv, y0 + 12, 9)} stroke={color} fill={color} strokeWidth="3" />
-          <text x={px + v * kv + (v > 0 ? 6 : -6)} y={y0 + 16} textAnchor={v > 0 ? 'start' : 'end'} className="ml-arrow-label">v = {fmt(v)} {units.v}</text>
+          <path d={arrowPath(px, y0 + 12 + shift, vxEnd, y0 + 12 + shift, 9)} stroke={color} fill={color} strokeWidth="3" />
+          <text x={vl.x} y={y0 + 16 + shift} textAnchor={vl.anchor} className="ml-arrow-label">v = {fmt(v)} {units.v}</text>
         </g>}
         {layers.arrows && Math.abs(a) > 1e-6 && <g>
-          <path d={arrowPath(px, cy, px + a * ka, cy, 7)} stroke="var(--warn)" fill="var(--warn)" strokeWidth="2.5" strokeDasharray="5 3" />
-          <text x={px + a * ka + (a > 0 ? 6 : -6)} y={cy - 6} textAnchor={a > 0 ? 'start' : 'end'} className="ml-accel-label">a = {fmt(a, 2)}</text>
+          <path d={arrowPath(px, cy, axEnd, cy, 7)} stroke="var(--warn)" fill="var(--warn)" strokeWidth="2.5" strokeDasharray="5 3" />
+          <text x={al.x} y={cy - 6} textAnchor={al.anchor} className="ml-accel-label">a = {fmt(a, 2)}</text>
         </g>}
       </g>;
     })}

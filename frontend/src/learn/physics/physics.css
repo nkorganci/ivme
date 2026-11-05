@@ -8,15 +8,16 @@
 .ph-hero svg { width: 100%; fill: none; stroke: currentColor; stroke-width: 2; }
 .ph-hero svg text { fill: currentColor; stroke: none; font: 13px var(--font); }
 .ph-hero-trail { stroke-dasharray: 5 7; opacity: .65; }
-.ph-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); align-items: start; gap: 20px; }
-.ph-path { position: sticky; top: 16px; display: grid; gap: 10px; margin: 0; }
+.ph-layout { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 20px; }
+.ph-path { display: grid; gap: 10px; margin: 0; min-width: 0; }
 .ph-path h2 { margin: 0; font-size: 1.05rem; }
-.ph-path nav { display: grid; gap: 6px; }
-.ph-path nav button { display: flex; align-items: start; gap: 9px; text-align: left; padding: 10px 8px; background: transparent; color: var(--ink); border: 1px solid transparent; border-radius: 10px; line-height: 1.5; cursor: pointer; }
+.ph-path nav { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+.ph-path nav button { flex: 0 0 190px; display: flex; align-items: start; gap: 9px; text-align: left; padding: 10px 8px; background: transparent; color: var(--ink); border: 1px solid transparent; border-radius: 10px; line-height: 1.5; cursor: pointer; }
+.ph-path > .btn { justify-self: start; }
 .ph-path nav button span { display: grid; place-items: center; min-width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); font-size: .75rem; }
 .ph-path nav button[aria-current] { background: var(--tint); border-color: var(--line); font-weight: 700; }
 .ph-main { min-width: 0; }
-.ph-content { display: grid; gap: 26px; margin: 0; padding: clamp(18px, 3vw, 32px); min-width: 0; line-height: 1.75; }
+.ph-content { display: grid; gap: 26px; margin: 0; padding: clamp(14px, 2vw, 24px); min-width: 0; line-height: 1.75; }
 .ph-content h2 { margin: 0; font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1.4; }
 .ph-content h3 { margin: 0 0 10px; font-size: 1.05rem; }
 .ph-content p { margin-top: 0; }
@@ -32,39 +33,33 @@
 .ph-retry { border-left-color: var(--warn); }
 .ph-reason { display: grid; gap: 6px; font-size: .9rem; }
 .ph-reason textarea { width: 100%; resize: vertical; }
-.ph-experiment { padding: clamp(12px, 2vw, 22px); border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 18px; background: var(--surface); }
+.ph-experiment { padding: clamp(10px, 1.5vw, 18px); border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 16px; background: var(--tint); min-width: 0; }
 .ph-experiment header h3 { margin: 6px 0 0; }
-.ph-drawing { background: var(--tint); border-radius: 12px; padding: 8px; overflow-x: auto; }
-.ph-experiment svg { width: 100%; height: auto; min-width: 300px; display: block; font: 13px var(--font); color: var(--ink); }
-.ph-experiment svg text { fill: var(--ink); }
-.ph-axis { stroke: var(--ink); stroke-width: 2; fill: none; }
-.ph-grid { stroke: var(--line); stroke-dasharray: 3 4; }
-.ph-body { fill: var(--navy); }
-.ph-person, .ph-now { fill: var(--warn); }
-.ph-experiment svg .ph-on-body { fill: var(--surface); }
-.ph-position { stroke: var(--navy); stroke-width: 3; fill: none; }
-.ph-arrow line, .ph-arrow path { stroke: var(--navy); stroke-width: 3; fill: none; }
-.ph-arrow text { stroke: none; }
-.ph-graphs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.ph-experiment .ph-graphs svg { min-width: 0; }
-.ph-graphs > p { grid-column: 1 / -1; text-align: center; margin: 0; }
-.ph-friction line, .ph-friction path { stroke: var(--warn); }
-.ph-time-marker { stroke: var(--warn); stroke-width: 2; stroke-dasharray: 3 3; }
-.ph-area-positive { fill: var(--navy); fill-opacity: .12; stroke: var(--line); }
-.ph-area-negative { fill: var(--warn); fill-opacity: .15; stroke: var(--line); }
 .ph-controls { display: grid; gap: 16px; }
+.ph-lab-parameters { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.ph-lab-parameters:empty { display: none; }
+.ph-presets, .ph-milestones { display: flex; flex-wrap: wrap; gap: 8px; }
+.ph-presets .btn { white-space: normal; }
+.ph-edit-toggle { justify-self: start; }
+.ph-studio-head p { margin: 8px 0 0; max-width: 85ch; font-size: .9rem; }
+.ph-force-panel { padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.ph-force-panel h4 { margin: 0 0 8px; font-size: .9rem; line-height: 1.5; }
+.ph-force-panel > svg { width: 100%; display: block; height: auto; font: 13px var(--font); color: var(--ink); }
+.ph-force-panel p { margin: 10px 0 0; font-size: .8rem; line-height: 1.6; }
+.ph-force-result { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; padding: 10px; background: var(--tint); border-radius: 8px; font-size: .85rem; }
+.ph-friction-facts { margin: 12px 0 0; font-size: .8rem; }
+.ph-friction-facts > div { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line); }
+.ph-friction-facts dd { margin: 0; text-align: right; font-weight: 650; }
+.ph-live-explanation { padding: 14px 16px; border-left: 4px solid var(--navy); border-radius: 8px; background: var(--surface); margin: 0; font-size: .9rem; }
+.ph-live-explanation strong { display: block; margin-bottom: 4px; }
+.ph-studio .ml-readout dl { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+.ph-studio .ml-readout dd { overflow-wrap: anywhere; }
+.ph-studio .ml-readout-name[aria-pressed=true] { background: transparent; color: var(--ink); }
 .ph-slider { display: grid; gap: 6px; min-width: 0; width: 100%; }
 .ph-slider > span { display: flex; justify-content: space-between; gap: 8px; font-size: .85rem; }
 .ph-slider output { font-weight: 750; color: var(--navy); font-variant-numeric: tabular-nums; }
 .ph-slider input { width: 100%; min-width: 0; accent-color: var(--navy); min-height: 32px; }
-.ph-playback { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-.ph-playback .ph-slider { flex: 1 1 160px; }
 .ph-checkbox { display: flex; gap: 10px; align-items: center; }
-.ph-readings { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 0; }
-.ph-readings > div { border: 1px solid var(--line); padding: 12px; border-radius: 10px; }
-.ph-readings dt { font-size: .75rem; color: var(--text-muted); }
-.ph-readings dd { margin: 4px 0 0; font-weight: 750; color: var(--navy); font-size: .95rem; }
-.ph-model-note { margin: 0; font-size: .85rem; line-height: 1.7; }
 .ph-explain { display: grid; gap: 14px; }
 .ph-worked { display: grid; gap: 12px; }
 .ph-content details { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
@@ -80,4 +75,4 @@
 .ph-sources figcaption { font-size: .75rem; color: var(--text-muted); }
 .ph-section-actions { justify-content: space-between; border-top: 1px solid var(--line); padding-top: 20px; }
 @media(max-width: 1000px) { .ph-layout { grid-template-columns: minmax(0, 1fr); } .ph-path { position: static; } .ph-path nav { display: flex; overflow-x: auto; padding-bottom: 8px; } .ph-path nav button { flex: 0 0 190px; } .ph-hero { grid-template-columns: 1fr 190px; } }
-@media(max-width: 600px) { .ph-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; } .ph-hero > svg { display: none; } .ph-insights { grid-template-columns: minmax(0, 1fr); } .ph-content { gap: 22px; } .ph-experiment svg { min-width: 280px; } .ph-graphs { grid-template-columns: minmax(0, 1fr); } .ph-readings { grid-template-columns: 1fr 1fr; } .ph-choices { flex-direction: column; } }
+@media(max-width: 600px) { .ph-hero { grid-template-columns: minmax(0, 1fr); padding: 22px; } .ph-hero > svg { display: none; } .ph-insights { grid-template-columns: minmax(0, 1fr); } .ph-content { gap: 22px; } .ph-choices { flex-direction: column; } .ph-studio .ml-controls { display: grid; grid-template-columns: minmax(0, 1fr) repeat(3, auto); gap: 6px; } .ph-studio .ml-play { min-width: 0; white-space: normal; font-size: .8rem; } .ph-studio .ml-time, .ph-studio .ml-speed { grid-column: 1 / -1; } .ph-studio .ml-speed { justify-content: space-between; } .ph-studio .ml-layers { display: grid; grid-template-columns: 1fr 1fr; } .ph-studio .ml-layer { font-size: .75rem; padding: 5px 7px; line-height: 1.4; } .ph-studio .ml-layer input { flex: 0 0 16px; } .ph-studio .ml-focus { grid-column: 1 / -1; flex-wrap: wrap; } }

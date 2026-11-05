@@ -74,6 +74,10 @@ Yerel Ollama adayları, kaynak incelemesi ve teknik düzeltme ile hazırlanır;
 sekiz görsel deney durağı ve bağımsız alıştırmalar içerir. Kapsam ve kabul
 [pilot sözleşmesindedir](../icerik/fizik-hareket-kuvvet-pilot.md).
 Bu deneme diğer fizik konularını veya toplu içerik üretimini başlatmaz.
+**PHYS-INTERACTIVE-02:** İlk çizimlerin kullanıcı tarafından yetersiz bulunması
+üzerine sekiz deney, İnteraktif Öğrenme'nin ortak hareket laboratuvarına taşındı.
+Senaryo hazırları, grafik düzenleme, kuvvet/rejim paneli ve eşzamanlı sahne/grafik
+ilişkisi aynı pilot sözleşmesinde tanımlıdır; görsel kaliteyi kullanıcı değerlendirecek.
 
 **MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu ve ortak lab motoru hazırdır; ilk tam
 konu `temel-kavramlar` teknik kabulü geçti. Kullanıcı mevcut ve yeni bütün matematik

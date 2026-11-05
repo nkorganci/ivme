@@ -27,7 +27,7 @@ try {
       assert.equal(await evalJs("document.querySelectorAll('.ph-path nav button').length"), 8);
       if (live) {
         await goto('/konuyu-ogrenelim/fizik/hareket-kuvvet?bolum=grafik&duzey=connection');
-        await wait("document.querySelectorAll('.ph-graphs svg').length===2");
+        await wait("document.querySelectorAll('.ph-studio .ml-graphs svg').length===2");
         await evalJs("document.querySelector('.ph-sources details summary').click()");
         await wait("document.querySelector('.ph-sources figure > img')?.naturalWidth>0");
         assert.equal(await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2'), false);
@@ -50,17 +50,55 @@ try {
           await wait(`document.querySelectorAll('.ph-levels button')[${i}].getAttribute('aria-pressed')==='true'`);
           assert.ok(await evalJs("document.querySelector('.ph-explain').textContent.length > 150"));
         }
-        if (id !== 'etki-tepki') {
-          await evalJs("document.querySelector('.ph-playback .btn-primary').click()");
+        {
+          await evalJs("document.querySelector('.ph-studio .ml-play').click()");
           await pause(250);
-          assert.ok(await evalJs("Number(document.querySelector('.ph-playback input').value)>0"));
-          await evalJs("document.querySelector('.ph-playback .btn-secondary').click()");
-          assert.equal(await evalJs("Number(document.querySelector('.ph-playback input').value)"), 0);
+          assert.ok(await evalJs("Number(document.querySelector('.ph-studio input[aria-label=Zaman]').value)>0"));
+          await evalJs("document.querySelector('.ph-studio button[aria-label=\"Başa dön\"]').click()");
+          assert.equal(await evalJs("Number(document.querySelector('.ph-studio input[aria-label=Zaman]').value)"), 0);
         }
+        const seekEnd = "(()=>{const el=document.querySelector('.ph-studio input[aria-label=Zaman]');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(el,el.max);el.dispatchEvent(new Event('input',{bubbles:true}));})()";
+        await evalJs(seekEnd);
         // Exercise an actual React range control through its native value setter.
-        const before = await evalJs("document.querySelector('.ph-readings').textContent");
+        const before = await evalJs("document.querySelector('.ml-readouts').textContent");
         await evalJs("(()=>{const el=document.querySelector('.ph-controls input[type=range]');if(!el)return;Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(el,el.max);el.dispatchEvent(new Event('input',{bubbles:true}));})()");
-        if (id !== 'referans') assert.notEqual(await evalJs("document.querySelector('.ph-readings').textContent"), before);
+        await evalJs(seekEnd);
+        if (id !== 'referans') assert.notEqual(await evalJs("document.querySelector('.ml-readouts').textContent"), before);
+        assert.equal(await evalJs("document.querySelectorAll('.ml-graph').length"), ['referans','yol','hiz','grafik'].includes(id) ? 2 : 3);
+        await evalJs("document.querySelector('.ml-layers input').click()");
+        await evalJs("document.querySelector('.ml-layers input').click()");
+        if (['grafik','ivme'].includes(id)) {
+          await evalJs("document.querySelector('.ph-edit-toggle').click()");
+          await wait("document.querySelector('.ml-node[role=slider]')");
+          assert.equal(await evalJs("document.querySelectorAll('.ph-presets button[aria-pressed=true]').length"), 0);
+          const value = await evalJs("Number(document.querySelector('.ml-node[role=slider]').getAttribute('aria-valuenow'))");
+          await evalJs("document.querySelector('.ml-node[role=slider]').focus()");
+          await b.cdp('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowUp', code: 'ArrowUp', windowsVirtualKeyCode: 38 });
+          await b.cdp('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowUp', code: 'ArrowUp', windowsVirtualKeyCode: 38 });
+          await wait(`Number(document.querySelector('.ml-node[role=slider]').getAttribute('aria-valuenow'))!==${value}`);
+          assert.equal(await evalJs("document.querySelectorAll('.ph-controls input[type=range]').length"), 0, 'canonical parameters must not show stale values while editing');
+          await evalJs("document.querySelector('.ph-edit-toggle').click()");
+          await wait("!document.querySelector('.ml-node[role=slider]')");
+        }
+        if (id === 'surtunme') {
+          await evalJs("[...document.querySelectorAll('.ph-presets button')].find(b=>b.textContent==='Kayarken ipi bırak').click()");
+          await evalJs(seekEnd);
+          assert.ok(await evalJs("document.querySelector('.ph-force-panel').textContent.includes('Durdu · statik denge')"));
+          await evalJs("[...document.querySelectorAll('.ph-presets button')].find(b=>b.textContent==='Eşikte').click()");
+          await evalJs(seekEnd);
+          assert.ok(await evalJs("document.querySelector('.ph-force-panel').textContent.includes('Statik · kutu duruyor')"));
+          await evalJs("[...document.querySelectorAll('.ph-presets button')].find(b=>b.textContent==='Kayma başlıyor').click()");
+          await evalJs(seekEnd);
+          assert.ok(await evalJs("document.querySelector('.ph-force-panel').textContent.includes('Kinetik · kutu kayıyor')"));
+        }
+        if (id === 'etki-tepki') {
+          await evalJs("document.querySelectorAll('.ph-milestones button')[0].click()");
+          assert.ok(await evalJs("document.querySelector('.ph-force-panel').textContent.includes('İtme sürüyor')"));
+          await evalJs("document.querySelectorAll('.ph-milestones button')[1].click()");
+          assert.ok(await evalJs("document.querySelector('.ph-force-panel').textContent.includes('Temas bitti')"));
+          assert.equal(await evalJs("document.querySelectorAll('[data-object=skater]').length"), 2);
+        }
+        assert.deepEqual(await evalJs("[...document.querySelectorAll('.ml-stage svg text')].filter(el=>{const b=el.getBoundingClientRect(),v=el.ownerSVGElement.getBoundingClientRect();return b.left<v.left-2||b.right>v.right+2}).map(el=>el.textContent)"), [], id + ': scene labels must remain inside view');
         await evalJs("document.querySelector('.ph-sources details summary').click()");
         await wait("document.querySelector('.ph-sources figure > img')?.complete && document.querySelector('.ph-sources figure > img')?.naturalWidth>0");
         await evalJs("document.querySelector('.ph-sources .lm-zoom-button').click()");
@@ -71,7 +109,8 @@ try {
         assert.equal(await evalJs('document.documentElement.scrollWidth > document.documentElement.clientWidth + 2'), false, id + ': page overflow');
         assert.equal(await evalJs("document.querySelectorAll('.katex-error').length"), 0, id + ': formula parsing');
         if (['grafik', 'surtunme'].includes(id)) {
-          await evalJs("document.querySelector('.ph-experiment').scrollIntoView({block:'start'})");
+          await evalJs(seekEnd);
+          await evalJs("document.querySelector('.ph-studio .ml').scrollIntoView({block:'start'})");
           await screenshot(join(out, `${mobile ? 'mobil' : 'masaustu'}-${id}.png`));
         }
       }

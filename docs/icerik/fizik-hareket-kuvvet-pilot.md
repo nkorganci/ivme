@@ -6,6 +6,34 @@ Pilot `/konuyu-ogrenelim/fizik/hareket-kuvvet` üzerinden, Fizik konu haritasın
 aynı katalog kartından açılır. Bu ilk denemede bölüm seçimi URL'dedir;
 alıştırmalar puanlanmaz ve ustalık olaylarına yazılmaz. Öğretmen kabulü beklenir.
 
+## Etkileşimli deneylerin ikinci tasarımı
+
+Kullanıcı ilk pilotun basit çizimlerini yeterli bulmadı; referans olarak
+İnteraktif Öğrenme → Hareket: konum, hız ve ivme laboratuvarını seçti.
+Sekiz bölüm artık aynı `MotionLab`, `Scene`, `Graphs` ve `useLab` bileşenlerini
+kullanır. Ders yolunun yatay yerleşimi laboratuvara tam içerik genişliğini verir.
+Kaynaklı metin/örnekler yeniden üretilmez.
+
+`physics/labScenarios.js` bölüm parametrelerini ortak motorun hız-zaman
+düğümlerine çevirir. Sahne, grafik, iz, eğim/alan, yer değiştirme ve okumalar
+aynı hareketten hesaplanır. Oynat/durdur, başa dön, adım, hız seçimi, grafikten
+zaman seçme ve önemli an düğmeleri ortak kontrollerdir. Grafik ve ivme
+bölümlerinde grafik sürüklenerek veya ok tuşlarıyla düzenlenebilir; bu modda
+eski parametre değerleri gösterilmez, bölüm deneyine dönüş ayrı düğmedir.
+
+Kuvvetlerde kutu; referansta tren/yolcu ve peron; etki–tepkide patenci şekilleri
+kullanılır. Kuvvet diyagramı yalnız ilgili cismin yatay kuvvetlerini karşılaştırır;
+düşey denge ayrı etiketlenir. Sürtünmenin rejimi durma anında değişir. Patenciler
+ilk 1 s boyunca 80 N ile etkileşir, sonra yatay kuvvet sıfır olur ve hızları korunur.
+Bu temas süresi ilk pilotun sürekli kuvvet kabulünden farklı ve ekranda belirtilidir.
+Keskin gidiş–dönüş modeli yalnız x–t ve v–t gösterir; dönme anında ivme yorumlanmaz.
+Başlangıçta geçen süre sıfırken ortalamalar sayı yerine çizgiyle gösterilir;
+net kuvvet okuması işaretini korur. Ortak sahnede iz etiketleri üst üste çizilmez.
+
+Denetim, bütün hazır senaryolarda ders modeli ile ortak motorun konum/hız
+eşitliğini, temas sonrası momentum ve sabit hız ilişkisini içerir. UI denetimi
+grafik düğümünü klavyeyle değiştirmeyi ve bütün deneylerin oynatılmasını da sınar.
+
 ## Kanıt ve model sınırı
 
 Pipeline `taxonomy_v4` içindeki 333 numaralı Hareket ve Kuvvet özeti başlangıç
@@ -63,7 +91,8 @@ sorular ve öğrenci yazımı olmamasını masaüstü/mobilde kontrol eder.
 Rapor ve ekran görüntüleri `veri/ui-denetim/fizik-pilot/` altındadır.
 Öğrenme etkisi ve öğretmen kabulü ayrıca insan incelemesi gerektirir.
 
-Teknik kabul: sayısal/kaynak bağı 10/10; iki ekranda sekiz bölüm, 24 düzey,
+Güncel teknik kabul: ders adaptörü/kaynak bağı 12/12 ve ortak hareket motoru
+8/8 (toplam 20/20); iki ekranda sekiz bölüm, 24 düzey,
 sekiz kaynak penceresi ve altı aktarım sorusu geçti. Dersler arası gezinme
 masaüstü/mobil ve 16 katalog regresyon kontrolünden geçti. Son metinde
 96 model alanı açık kaynak düzeltmesinden geçmiştir; ham taslak doğrudan sunulmaz.

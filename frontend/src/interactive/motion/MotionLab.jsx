@@ -83,9 +83,9 @@ function Readouts({ lab }) {
           <dt>İvme</dt><dd>{fmt(s.a, 2)} {units.a}</dd>
           <dt>Yer değiştirme</dt><dd>{fmt(s.disp, 2)} {units.x}</dd>
           <dt>Alınan yol</dt><dd>{fmt(s.path, 2)} {units.x}</dd>
-          <dt>Ortalama hız</dt><dd>{fmt(s.avgVelocity, 2)} {units.v}</dd>
-          <dt>Ortalama sürat</dt><dd>{fmt(s.avgSpeed, 2)} {units.v}</dd>
-          {body.mass != null && <><dt>Net kuvvet (m·a)</dt><dd>{fmt(Math.abs(body.mass * s.a), 3)} N</dd></>}
+          <dt>Ortalama hız</dt><dd>{t > 1e-6 ? `${fmt(s.avgVelocity, 2)} ${units.v}` : '— (süre başlamadı)'}</dd>
+          <dt>Ortalama sürat</dt><dd>{t > 1e-6 ? `${fmt(s.avgSpeed, 2)} ${units.v}` : '— (süre başlamadı)'}</dd>
+          {body.mass != null && <><dt>Net kuvvet (m·a)</dt><dd>{fmt(body.mass * s.a, 3)} N</dd></>}
         </dl>
       </section>;
     })}

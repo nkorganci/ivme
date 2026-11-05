@@ -3,13 +3,13 @@
   "checks": {
     "fizik-pilot-node": {
       "kind": "node",
-      "args": ["--test-reporter=tap", "testler/fizik-pilot.test.mjs"],
-      "inputs": ["frontend/src/learn/physics/**/*", "frontend/public/ogren/fizik/**/*", "frontend/src/data/curriculumIdentities.json", "testler/fizik-pilot.test.mjs", "scripts/fizik-pilot-ollama.py"]
+      "args": ["--test-reporter=tap", "testler/fizik-pilot.test.mjs", "testler/interaktif-hareket.test.mjs"],
+      "inputs": ["frontend/src/learn/physics/**/*", "frontend/src/interactive/motion/**/*", "frontend/public/ogren/fizik/**/*", "frontend/src/data/curriculumIdentities.json", "testler/fizik-pilot.test.mjs", "testler/interaktif-hareket.test.mjs", "scripts/fizik-pilot-ollama.py"]
     },
     "fizik-pilot-ui": {
       "kind": "node",
       "args": ["--test-reporter=tap", "testler/fizik-pilot-ui.mjs"],
-      "inputs": ["frontend/src/learn/**/*", "frontend/src/theme.css", "frontend/public/ogren/fizik/**/*", "testler/fizik-pilot-ui.mjs", "testler/lib/*.mjs"]
+      "inputs": ["frontend/src/learn/**/*", "frontend/src/interactive/**/*", "frontend/src/theme.css", "frontend/public/ogren/fizik/**/*", "testler/fizik-pilot-ui.mjs", "testler/lib/*.mjs"]
     },
     "laboratuvar-node": {
       "kind": "node",

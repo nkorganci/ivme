@@ -5,7 +5,37 @@ import { createHash } from 'node:crypto';
 import { journey, motion, dynamics, friction, reaction } from '../frontend/src/learn/physics/models.js';
 import { CHECKS, TRANSFER } from '../frontend/src/learn/physics/questions.js';
 import { PHYSICS_PILOT, pilotForTopic } from '../frontend/src/learn/physics/registry.js';
+import { experimentScenario, EXPERIMENT_PRESETS, DEFAULT_EXPERIMENT } from '../frontend/src/learn/physics/labScenarios.js';
+import { motionOf, statsAt } from '../frontend/src/interactive/motion/model.js';
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} != ${expected}`);
+test('ortak laboratuvar senaryoları dersin fizik hesaplarıyla aynı hareketi üretir', () => {
+  for (const id of ['yol', 'hiz', 'grafik', 'ivme', 'net-kuvvet', 'surtunme']) {
+    for (const [, patch] of EXPERIMENT_PRESETS[id]) {
+      const p = { ...DEFAULT_EXPERIMENT, ...patch }, scenario = experimentScenario(id, p);
+      const lab = motionOf(scenario.bodies[0], scenario.T);
+      for (const time of [0, .5, 1, 2, 3, 4, 5]) {
+        const expected = ['yol', 'hiz', 'grafik'].includes(id) ? journey({ back: p.back, time })
+          : id === 'ivme' ? motion({ initialVelocity: p.initialVelocity, acceleration: p.acceleration, time })
+          : id === 'net-kuvvet' ? dynamics({ ...p, initialVelocity: 2, time })
+          : friction({ mass: p.mass, applied: p.applied, initialVelocity: p.moving ? 3 : 0, time });
+        near(lab.x(time), expected.x); near(lab.v(time), expected.velocity);
+        if (id !== 'surtunme' && !['yol', 'hiz', 'grafik'].includes(id)) near(lab.a(time), expected.acceleration);
+      }
+    }
+  }
+});
+test('referans dönüşümü ve bir saniyelik etki-tepki sonrası serbest hareket tutarlı', () => {
+  for (const frame of ['peron', 'tren']) {
+    const s = experimentScenario('referans', { frame }); const [train, platform] = s.bodies.map(b => motionOf(b, 5));
+    near(train.v(2) - platform.v(2), 4); near(train.v(2), frame === 'peron' ? 4 : 0);
+  }
+  for (const massB of [40, 80, 120]) {
+    const s = experimentScenario('etki-tepki', { massB }); const [a, b] = s.bodies.map(body => motionOf(body, 5));
+    for (const t of [.5, 1, 2, 5]) near(40 * a.v(t) + massB * b.v(t), 0);
+    near(a.a(.5), -2); near(a.a(2), 0); near(a.v(1), a.v(5)); near(b.v(1), b.v(5));
+    near(statsAt(a, 5).path, 9);
+  }
+});
 test('geri dönmek alınan yolu silmez; sıfır ve negatif yer değiştirme', () => {
   assert.equal(journey().distance, 10); assert.equal(journey().displacement, 2);
   assert.equal(journey({ back: 6 }).displacement, 0); assert.equal(journey({ back: 6 }).distance, 12);
