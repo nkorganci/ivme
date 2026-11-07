@@ -1,4 +1,4 @@
-# YKS-04 — MEBİ konu ağacı ve mevcut kimlik eşlemesi
+# YKS-04 — MEBİ konu ağacı ve mevcut kimlik eşlemesi — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
@@ -66,11 +66,14 @@ varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 ## Mevcut araçlardan devam
 
 `ivme.py yks adim YKS-04 --resume` güncel katalog snapshot'ı ve MEBİ ağaç adayı
-üretir. Runtime VERIFIED, aday/kimlik koruma kapsamıdır; rapordaki
-`readyForPublication=false` kaldırılmadan tam anlamsal kabul değildir. Branşın
+üretir. Kabul edilen politika bütün eski tanım/kimlikleri aynen korur; belirsiz
+kapsamı yeni bir konuya eşdeğer saymaz. `readyForPublication=false`, bu adımın
+canlı yayın yapmadığını ve YKS-05–10 bağımlı kabulünü beklediğini belirtir. Branşın
 kaynak ünite kuralı `scripts/yks_taxonomy.py` içindedir; bilinmeyen yeni üniteyi
 zorla sınıflandırma. Eski geniş kapsamdan bütün alt başlıklara ustalık yayma.
-Güncel aday ve kalan kapsam sayısı görev tablosu/etki raporundan okunur.
+Güncel aday ve korunan/inceleme kapsamları görev tablosu/etki raporundan okunur.
+Eski onay parmak izlerini bozan salt sıra/görünüm değişikliğini kategori tanımına
+yazma; ayrı MEBİ gezinme paketi ve aynı ortak DB yayın sürümü kullanılır.
 
 ## Durum, BITTI ve devam kaydı
 

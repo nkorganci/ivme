@@ -2,7 +2,7 @@
 import { createServer } from 'node:http';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, resolve, extname, sep } from 'node:path';
-export async function startLearnMock(root) {
+export async function startLearnMock(root, options={}) {
   const dist = process.env.IVME_TEST_DIST ? resolve(process.env.IVME_TEST_DIST) : join(root, 'frontend/dist');
   const categories = JSON.parse(readFileSync(join(root, 'frontend/src/data/curriculumIdentities.json'), 'utf8')).canonicalUnits;
   const writes = [];
@@ -14,7 +14,7 @@ export async function startLearnMock(root) {
     if (p === '/api/exam-tracks') return json({ currentId: 'yks', tracks: [{ id: 'yks', name: 'YKS', family: 'YKS', status: 'ACTIVE', sections: [], readyFeatures: [] }] });
     if (p.startsWith('/api/preferences/')) return json({ value: p.endsWith('question-image-fit') });
     if (p === '/api/konu-ogrenme') return json({ profile: null, events: [], serverNow: new Date().toISOString() });
-    if (p === '/api/learning-resources/metadata') return json({ summary: {}, branches: [], categories });
+    if (p === '/api/learning-resources/metadata') return json(options.metadata || { summary: {}, branches: [], categories });
     if (p.startsWith('/api/')) return json(null);
     const path = resolve(dist, `.${decodeURIComponent(p)}`);
     const file = path.startsWith(dist + sep) && extname(path) && existsSync(path) ? path : join(dist, 'index.html');

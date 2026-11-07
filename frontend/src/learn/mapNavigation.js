@@ -14,10 +14,11 @@ export function topicMapCatalog(concepts, byId) {
     if (!category.canonicalUnit || category.selectable === false || !EXAMS.includes(category.exam)) continue;
     const subject = subjects.get(category.subjectId) ?? { id: category.subjectId, name: category.subject, topics: 0, lessons: 0 };
     subjects.set(subject.id, subject);
-    const key = `${subject.id}:${category.excelRowId ?? category.id.split('.').pop()}`;
+    const key = `${subject.id}:${category.contentKey ?? category.excelRowId ?? category.id.split('.').pop()}`;
     const topic = topics.get(key) ?? { key, name: category.topic, subjectId: subject.id, subject: subject.name,
       unitId: category.unitId ?? `missing:${subject.id}`, unit: category.unit || 'Ünite bilgisi eksik',
       order: category.order ?? 0, exams: [], ids: [], grades: [] };
+    topic.unitLegacyScopeIds = [...new Set([...(topic.unitLegacyScopeIds || []), ...(category.navigationUnitLegacyScopeIds || [])])];
     if (!topic.ids.includes(category.id)) topic.ids.push(category.id);
     if (!topic.exams.includes(category.exam)) topic.exams.push(category.exam);
     if (category.gradeLabel && !topic.grades.includes(category.gradeLabel)) topic.grades.push(category.gradeLabel);
@@ -40,6 +41,13 @@ export function selectTopicMap(catalog, concepts, state, filters = {}) {
   const subjectLessons = concepts.filter(meta => catalog.scopes.get(meta.id).topics.some(topic => topic.subjectId === subject.id));
   const inScope = catalog.topics.filter(topic => topic.subjectId === subject.id && (!exam || topic.exams.includes(exam)));
   const unitMap = new Map(inScope.map(topic => [topic.unitId, { id: topic.unitId, name: topic.unit }]));
+  // Existing lessons can span a legacy scope wider than a new source leaf.
+  // Keep their own unit filter without pretending all new leaves are completed.
+  for (const meta of subjectLessons) for (const topic of catalog.scopes.get(meta.id).topics) {
+    if (topic.subjectId !== subject.id || !topic.unitId || unitMap.has(topic.unitId)) continue;
+    const sameName = [...unitMap.values()].some(unit => unit.name === topic.unit);
+    unitMap.set(topic.unitId, { id: topic.unitId, name: sameName ? `${topic.unit} · Derslerim` : topic.unit });
+  }
   const unit = unitMap.has(filters.unit) ? filters.unit : '';
   const readyIds = new Set(subjectLessons.flatMap(meta => catalog.scopes.get(meta.id).topics.flatMap(topic => topic.ids)));
   const selectedConcepts = subjectLessons.filter(meta => {
@@ -67,7 +75,8 @@ export function topicMapParams(current, changes) {
 export function referenceMapUnits(topics) {
   const units = new Map();
   for (const topic of topics) {
-    const unit = units.get(topic.unitId) ?? { id: topic.unitId, name: topic.unit, topics: [] };
+    const unit = units.get(topic.unitId) ?? { id: topic.unitId, name: topic.unit, topics: [], legacyScopeIds: [] };
+    unit.legacyScopeIds = [...new Set([...unit.legacyScopeIds, ...(topic.unitLegacyScopeIds || [])])];
     unit.topics.push(topic); units.set(unit.id, unit);
   }
   return [...units.values()];

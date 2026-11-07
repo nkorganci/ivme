@@ -73,3 +73,20 @@ On iki soruluk pilotta basılı anahtar, kaynak kırpımı ve güncel tam banka 
 karşılaştırması birlikte gerekir. `exact-reuse-report.json` yalnız eski soruyu
 kullanma kanıtıdır; yeni soru aktarma veya öğretmen onayı vermez. Üretim bankasına
 hiçbir pilot aracı yazmaz. Mevcut kabul edilmiş PDF paketleri ve soru kodları korunur.
+
+YKS-04 kabulü sonrasında bakım ve arayüz projeksiyonu canlı dosyaları değiştirmeden
+hazırlanır:
+
+```powershell
+node scripts/yks-curriculum-import.mjs
+node --test testler/yks-navigation.test.mjs testler/yks-maintenance.test.mjs
+C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe -X utf8 testler/yks-pipeline-navigation-test.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_konu_adaylari.py
+```
+
+`yol-uyumluluk/maintenance-candidate.json` bütün eski tanımları ve kapsam dışı
+kimlikleri korur; `curriculum-identities-candidate.json` gezinme görünümüdür.
+Excel dağılım verisi olarak kalır; MEBİ ana kaynak etkinse Excel üreticisi bu
+ağacı değiştiremez. BGE yalnız belirsiz eski kapsamlar için eşleme önerisi verir;
+skorlar onay veya otomatik kimlik birleştirmesi değildir. Geçerli vektörler
+model digest ve tam girdi metniyle yeniden kullanılır.

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /** Çalışma oturumu kurucusu ve soru listesi için gerçek kullanıcı kapsamı. */
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = true, isolation = org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
 public class QuestionAvailabilityService {
     public record Availability(long total, long solved, long remaining, long everWrong, long correct) {}
     public record PoolSummary(long total, long solved, long remaining, long everWrong, long correct,
@@ -244,6 +244,7 @@ public class QuestionAvailabilityService {
         params.put("topicUserId", userId);
         params.put("topicLimit", limit);
         params.put("topicExam", exam == null ? "" : exam.name());
+        if(catalog)params.put("navigationTopicIds",sharedLabels.navigationTopicIdsJson());
         String sql = query.sql() + (catalog ? """
             , topic_overrides AS (
               SELECT o.* FROM jsonb_to_recordset(CAST(:catalogSelection AS jsonb)->'overrides')
@@ -266,13 +267,16 @@ public class QuestionAvailabilityService {
               WHERE e.user_id=:topicUserId AND e.status<>'CANCELLED'
             ), units AS MATERIALIZED (
               SELECT category_id,definition FROM learning_catalog.current_categories
+            ), navigation_ids AS (
+              SELECT jsonb_array_elements_text(CAST(:navigationTopicIds AS jsonb)) AS id
             ), unit_map AS MATERIALIZED (
               SELECT source.category_id AS source_category,target.category_id,
                 target.definition->>'exam' AS exam,target.definition->>'subjectId' AS subject_id
               FROM units source CROSS JOIN LATERAL jsonb_array_elements_text(coalesce(
-                source.definition->'canonicalTopicIds',jsonb_build_array(source.category_id))) canonical(id)
+                CASE WHEN source.category_id IN (SELECT id FROM navigation_ids) THEN jsonb_build_array(source.category_id)
+                  ELSE source.definition->'canonicalTopicIds' END,jsonb_build_array(source.category_id))) canonical(id)
               JOIN units target ON target.category_id=canonical.id
-              WHERE target.definition->>'canonicalUnit'='true'
+              WHERE target.definition->>'canonicalUnit'='true' OR target.category_id IN (SELECT id FROM navigation_ids)
             ), resolved AS (
               SELECT DISTINCT p.id,p.subject,p.exam_id,p.candidate,u.category_id
               FROM labelled p CROSS JOIN LATERAL jsonb_array_elements(p.labels->'assignments') a

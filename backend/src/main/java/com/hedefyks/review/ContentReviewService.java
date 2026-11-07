@@ -265,11 +265,12 @@ public class ContentReviewService {
         var item=(Map<String,Object>)current.get("item");
         var categories=categoryMap();
         var grades=new TreeSet<Integer>();
+        var navigationIds=vocabulary.navigationTopicIds();
         if(request.assignments().isEmpty() || request.assignments().stream().noneMatch(a->"PRIMARY".equals(a.relation())))
             throw ApiException.badRequest("En az bir doğrudan ünite seçin.");
         for(var assignment:request.assignments()) {
             var c=categories.get(assignment.categoryId());
-            if(c==null || !Boolean.TRUE.equals(c.get("canonicalTopic")))
+            if(c==null || !Boolean.TRUE.equals(c.get("canonicalTopic")) && !navigationIds.contains(assignment.categoryId()))
                 throw ApiException.badRequest("Ortak referans ünitelerinden seçim yapın.");
             if("QUESTION".equals(item.get("kind")) && !Objects.equals(c.get("exam"),item.get("exam")))
                 throw ApiException.badRequest("Sorunun TYT/AYT kapsamındaki konuyu seçin.");

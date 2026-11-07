@@ -76,5 +76,23 @@ class ResolverTest(unittest.TestCase):
         names={p.relative_to(resources).as_posix() for p in iter_resource_paths(resources,'*.pdf')}
         self.assertEqual(names,{'ogm-materyal/original.pdf','mufredat/guide.pdf'})
 
+    def test_only_exact_active_managed_root_can_be_scanned(self):
+        resources=self.root/'Kaynaklar';resources.mkdir()
+        archive=resources/'YKS';(archive/'Katalog/EskiYollar/ogm').mkdir(parents=True)
+        dest=archive/'Katalog/EskiYollar/ogm';(dest/'book.pdf').write_bytes(b'same source')
+        link=resources/'ogm-materyal'
+        if os.name=='nt':
+            env=os.environ.copy();env.update(IVME_TEST_LINK=str(link),IVME_TEST_DEST=str(dest))
+            subprocess.run(['powershell','-NoProfile','-Command','New-Item -ItemType Junction -Path $env:IVME_TEST_LINK -Target $env:IVME_TEST_DEST | Out-Null'],env=env,capture_output=True,check=True,timeout=20)
+        else:link.symlink_to(dest,target_is_directory=True)
+        manifest=archive/'Katalog/etkin-yollar.json'
+        value={'status':'PREPARED','legacyRoots':[{'originalRoot':str(link),'target':'Katalog/EskiYollar/ogm'}]}
+        write_json(manifest,value)
+        self.assertEqual(list(iter_resource_paths(resources,'*.pdf',manifest)),[])
+        value['status']='ACTIVE';write_json(manifest,value)
+        self.assertEqual([p.relative_to(resources).as_posix() for p in iter_resource_paths(resources,'*.pdf',manifest)],['ogm-materyal/book.pdf'])
+        value['legacyRoots'][0]['target']='../outside';write_json(manifest,value)
+        with self.assertRaises(ValueError):list(iter_resource_paths(resources,'*.pdf',manifest))
+
 
 if __name__=='__main__':unittest.main(verbosity=2)

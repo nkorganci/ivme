@@ -36,8 +36,10 @@ public class SharedQuestionLabels {
                 yurtDisi?vocabulary.yurtDisiSubjectId(name):vocabulary.subjectId(name);
         boolean namedPhysicsTopic=false;
         if(categoryIds.isEmpty() && filter.topic()!=null) {
-            categoryIds=vocabulary.categories().stream().filter(c->Boolean.TRUE.equals(c.get("canonicalTopic"))
-                && (filter.subject()==null || subjectIdOf.apply(filter.subject()).equals(c.get("subjectId")))
+            var navigationIds=vocabulary.navigationTopicIds();
+            var presentation=vocabulary.displayCategories();
+            categoryIds=presentation.stream().filter(c->Boolean.TRUE.equals(c.get("canonicalTopic")) || navigationIds.contains(c.get("id")))
+                .filter(c->(filter.subject()==null || subjectIdOf.apply(filter.subject()).equals(c.get("subjectId")))
                 && filter.topic().equalsIgnoreCase(c.get("topic").toString())
                 && (filter.examType()==null || filter.examType().name().equals(c.get("exam"))))
                 .map(c->c.get("id").toString()).toList();
@@ -104,7 +106,7 @@ public class SharedQuestionLabels {
     public Map<Long,String> topicNames(Map<Long,String> snapshots) {
         if(snapshots.isEmpty())return Map.of();
         var definitions=new HashMap<String,Map<String,Object>>();
-        vocabulary.categories().forEach(c->definitions.put(c.get("id").toString(),c));
+        vocabulary.displayCategories().forEach(c->definitions.put(c.get("id").toString(),c));
         var result=new HashMap<Long,String>();
         snapshots.forEach((id,snapshot)->{
             var labels=(Map<String,Object>)parse(snapshot).getOrDefault("labels",Map.of());
@@ -125,6 +127,7 @@ public class SharedQuestionLabels {
     }
 
     public record SubjectSelection(String request, String subjects) {}
+    public String navigationTopicIdsJson() { return write(vocabulary.navigationTopicIds()); }
 
     /** One current catalogue/override read for all exam quotas. */
     public SubjectSelection subjectSelection(com.hedefyks.question.QuestionBank bank,
@@ -186,9 +189,14 @@ public class SharedQuestionLabels {
             , names AS (
               SELECT definition->>'subjectId' AS id,min(definition->>'subject') AS name
               FROM learning_catalog.current_categories GROUP BY definition->>'subjectId'
+            ), navigation_names AS (
+              SELECT * FROM jsonb_to_recordset(?::jsonb) AS n(id text,exam text,subject_id text,topic text)
             ), physics_topic_definitions AS MATERIALIZED (
-              SELECT category_id,definition->>'exam' AS exam,definition->>'subjectId' AS subject_id,definition->>'topic' AS topic
-              FROM learning_catalog.current_categories WHERE definition->>'canonicalTopic'='true'
+              SELECT c.category_id,coalesce(n.exam,c.definition->>'exam') AS exam,
+                coalesce(n.subject_id,c.definition->>'subjectId') AS subject_id,
+                coalesce(n.topic,c.definition->>'topic') AS topic
+              FROM learning_catalog.current_categories c LEFT JOIN navigation_names n ON n.id=c.category_id
+              WHERE c.definition->>'canonicalTopic'='true' OR n.id IS NOT NULL
             ), physics_topic_names AS MATERIALIZED (
               SELECT DISTINCT s.id,c.exam,c.subject_id,c.topic
               FROM selected s CROSS JOIN LATERAL unnest(s.categories) a(category_id)
@@ -222,7 +230,9 @@ public class SharedQuestionLabels {
             """.replace("%EXAMS%",EXAM_IDS),(rs,n)->new com.hedefyks.question.QuestionDtos.FilterRow(
                 com.hedefyks.question.ExamType.valueOf(rs.getString("exam")),rs.getString("subject"),rs.getString("topic"),rs.getLong("count"),
                 rs.getLong("total_count"),rs.getLong("exam_count"),rs.getLong("subject_count"),
-                rs.getLong("subject_total_count"),rs.getLong("topic_total_count")),request);
+                rs.getLong("subject_total_count"),rs.getLong("topic_total_count")),request,
+                write(vocabulary.displayCategories().stream().filter(c->Boolean.TRUE.equals(c.get("navigationSelected")))
+                    .map(c->Map.of("id",c.get("id"),"exam",c.get("exam"),"subject_id",c.get("subjectId"),"topic",c.get("topic"))).toList()));
     }
 
     /** Counts belong to the selected bank/exam/lesson, not to PDF/video-only categories. */

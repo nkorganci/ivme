@@ -1,5 +1,6 @@
 // fetch sarmalayıcı: JSON, CSRF başlığı, ApiError ve 204 desteği.
 import { createReadCache } from './readCache.js';
+import { applyCurriculumMetadata } from './curriculumNavigation.js';
 
 export class ApiError extends Error {
   constructor(status, message, fields) {
@@ -87,7 +88,7 @@ async function request(method, path, body) {
     const message = data?.hata || DEFAULT_MESSAGES[res.status] || 'Beklenmeyen bir hata oluştu.';
     throw new ApiError(res.status, message, data?.alanlar);
   }
-  return data;
+  return applyCurriculumMetadata(data);
 }
 
 /** Boş değerleri atlayarak sorgu dizesi üretir: {a:1,b:''} -> "?a=1" */

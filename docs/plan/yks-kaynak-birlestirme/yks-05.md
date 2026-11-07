@@ -1,4 +1,4 @@
-# YKS-05 — Eski/yeni yollar ve katalog üreticilerinin uyumu
+# YKS-05 — Eski/yeni yollar ve katalog üreticilerinin uyumu — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
@@ -66,12 +66,18 @@ varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 ## Mevcut araçlardan devam
 
 `python scripts/yks_bagimlilik_haritasi.py` okuyucu/yazıcı bağımlılıklarını
-`yol-uyumluluk/dependency-map.json` içine hash ve satırlarıyla yazar. REQUIRED
-satırlarını tamamlanmış sayma. Ortak Python çözümleyici `scripts/yks_kaynak.py`,
+`yol-uyumluluk/dependency-map.json` içine hash ve satırlarıyla yazar.
+`preparedAcceptance` hazırlık kabulünü, `writerCheckpointAtCutover` YKS-11
+yazıcı kontrolünü ayrı gösterir. 55 dosyanın hazırlık gereksinimi kapandı;
+44 eski yol tüketicisi hazırlanmış birebir düzenle çalışır, canlı cutover açık kalır. Ortak Python çözümleyici `scripts/yks_kaynak.py`,
 backend çözümleyici `SourceFileResolver` sınıfıdır. Aktif konum projeksiyonu
 verilmedikçe özgün dosya erişimi sürer. Eski tam-kök taramalarında YKS hazırlığı
 ikinci kaynak olarak alınmaz. `kalite calistir YKS-05` otomatik güvenlik/servis
-regresyonudur; Excel ana kaynak koruması ve kalan üretici uyumu ayrıca gerekir.
+regresyonudur. Tam kabul `yks-05/full/attempt-0002/consumer-compatibility-report.json`
+içindedir: 44 backend, 8 Node, 16 Python denetimi; 7.594 eski dosya,
+4.879 HTML bağlantısı, sıfır kırık bağlantı ve masaüstü/mobil gezinme.
+`yks_yol_matrisi.py` hazırlığı özgünleri değiştirmez. Gezinme/öğretmen/ilerleme
+kimlikleri korunur; değişmeyen kaynaklar snapshot yenilemesinde yeniden çıkarılmaz.
 
 ## Durum, BITTI ve devam kaydı
 

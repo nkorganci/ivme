@@ -49,9 +49,13 @@ def provider_nodes(pages):
     by_url = {p['url']: p for p in pages}
     order = {}
     for page in pages:
-        links = [c['url'] for c in page.get('children', []) if '/subject-details/' in c['url']]
+        links = [c['url'] for c in page.get('children', []) if c.get('url')]
         for index, link in enumerate(links):
             order.setdefault(link, index)
+    unit_order={tuple(p['path']):order.get(p['url']) for p in pages if len(p.get('path',[]))==3}
+    course_order={tuple(p['path']):order.get(p['url']) for p in pages if len(p.get('path',[]))==2}
+    unit_ids={tuple(p['path']):p['url'].rsplit('/',1)[-1] for p in pages if len(p.get('path',[]))==3}
+    course_ids={tuple(p['path']):p['url'].rsplit('/',1)[-1] for p in pages if len(p.get('path',[]))==2}
     for page in pages:
         if '/student/section/subject-details/' not in page['url']:
             continue
@@ -65,9 +69,15 @@ def provider_nodes(pages):
         result.append({'providerNodeId': node_id, 'exam': path[0], 'course': path[1], 'unit': path[2],
                        'title': page.get('title') or path[3], 'sourceUrl': page['url'],
                        'sourcePath': path, 'orderInUnit': order.get(page['url']),
+                       'orderOfUnit':unit_order.get(tuple(path[:3])),
+                       'orderOfCourse':course_order.get(tuple(path[:2])),
+                       'providerUnitId':unit_ids.get(tuple(path[:3])),
+                       'providerCourseId':course_ids.get(tuple(path[:2])),
                        'courseSuggestsBothExams': '(TYT/AYT)' in path[1],
                        'assets': deepcopy(page.get('assets', []))})
-    return sorted(result, key=lambda n: (n['exam'], n['course'], n['unit'], n['orderInUnit'] if n['orderInUnit'] is not None else 9999, n['title']))
+    return sorted(result, key=lambda n: (n['exam'], n['orderOfCourse'] if n['orderOfCourse'] is not None else 9999,
+        n['course'],n['orderOfUnit'] if n['orderOfUnit'] is not None else 9999,n['unit'],
+        n['orderInUnit'] if n['orderInUnit'] is not None else 9999,n['title']))
 
 
 def crosswalk(pages, previous):
@@ -75,11 +85,21 @@ def crosswalk(pages, previous):
         raise ValueError('Previous category identity is not unique')
     nodes = provider_nodes(pages)
     canonical = [c for c in previous if c.get('canonicalUnit') and c.get('selectable') is not False and c.get('exam') in ('TYT', 'AYT')]
+    legacy_curriculum = [c for c in previous if c.get('origin') == 'CURRICULUM'
+                         and c.get('exam') in ('TYT', 'AYT') and not c.get('subtopic')
+                         and c not in canonical]
     reused = defaultdict(list)
     results, issues = [], []
     for node in nodes:
         subjects = subject_options(node['course'], node['unit'], canonical)
         candidates = [c for c in canonical if c.get('exam') == node['exam'] and c.get('subjectId') in subjects and normalise(node['title']) in terms(c)]
+        legacy_fallback = False
+        if not candidates:
+            # An old, hidden curriculum identity can still own lessons/reviews.
+            # Source/PDF heading identities are not interchangeable with topics.
+            candidates = [c for c in legacy_curriculum if c.get('exam') == node['exam']
+                          and c.get('subjectId') in subjects and normalise(node['title']) in terms(c)]
+            legacy_fallback = bool(candidates)
         if len(candidates) > 1:
             narrowed = [c for c in candidates if normalise(c.get('unit')) == normalise(node['unit'])]
             if narrowed:
@@ -87,7 +107,10 @@ def crosswalk(pages, previous):
         record = {**node, 'subjectCandidates': subjects, 'teacherApproved': False}
         if len(candidates) == 1:
             old = candidates[0]
-            record.update(legacyCategoryId=old['id'], proposedCategoryId=old['id'], action='REUSE_EXACT_NAME_CANDIDATE', subjectId=old['subjectId'])
+            record.update(legacyCategoryId=old['id'], proposedCategoryId=old['id'],
+                          action='REUSE_LEGACY_CURRICULUM_NAME_CANDIDATE' if legacy_fallback else 'REUSE_EXACT_NAME_CANDIDATE',
+                          subjectId=old['subjectId'], existingDefinitionPreserved=True,
+                          existingSelectable=old.get('selectable') is not False)
             reused[old['id']].append(node['providerNodeId'])
             # Only an explicit existing counterpart row supports shared scope.
             counterpart = [c for c in canonical if c.get('exam') != old['exam'] and

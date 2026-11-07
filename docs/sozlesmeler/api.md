@@ -123,6 +123,17 @@ Pratikte `selectionMode` yoksa `MIXED` seçilir; aday sayıları sınavla aynı 
 | `GET /api/learning-resources/progress?classification=CURRENT\|HISTORICAL` | Oturumdaki öğrencinin tekil ilk karşılaşma, yanlış/boş, tekrar ve kaydedilmiş aktif süre sayıları; güncel etiket veya olay anındaki anlık kayıtla sınıflama |
 | `GET /api/learning-resources/coverage?exam&subject` | Tekil kaynak, fiziksel varlık, konu referansı ve doğrulanmış sayfa/süre birleşimi; okuma/izleme ilerlemesi değildir |
 
+MEBİ gezinmesi yayımlandığında metadata ayrıca `curriculumNavigation` (sürüm 1,
+otorite `MEBI_PROVIDER`, ders → ünite → konu kimlikleri) ve
+`curriculumCategories` (tercih edilen ad/sıra/ünite görünümü) döndürür. İkisi de
+`categories` ile aynı ortak DB yayınından okunur. `categories` eski tanımları ve
+kimlikleri aynen korur; bu alanlara bakarak kaydedilmiş öğretmen kararının
+parmak izi değiştirilmez. İstemci konu seçimini tercih edilen görünümden yapar;
+geniş eski kapsam, ayrıntılı yeni konuya otomatik ilerleme veya soru dağıtmaz.
+Gezinme bulunmazsa önceki davranış sürer. Gezinme alanları yerel kaynak yollarını
+ve çıkarım kanıtlarını yayımlamaz. Konu filtresi ve deneme seçimi gezinmede
+seçilen ayrıntılı kimliği kendi soru kümesiyle kullanır.
+
 Ortak soru seçimi `questionTypeId=taxonomy:<id>` ve
 `teacherDifficulty=KOLAY|ORTA|ZOR` alanlarını kaynak listesi, soru bankası,
 uygunluk, pratik ve rastgele deneme oluşturma isteklerinde destekler. Soru tipi

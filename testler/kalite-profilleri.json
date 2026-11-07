@@ -307,7 +307,6 @@
       ],
       "inputs": [
         "scripts/yks_birlestirme.py",
-        "scripts/yks_stages/*.py",
         "scripts/ivme.py",
         "testler/yks-birlestirme-test.py"
       ]
@@ -443,6 +442,69 @@
         "scripts/yks_soru_pilotu.py",
         "scripts/yks_anahtar_pilotu.py",
         "testler/yks-exact-reuse-test.py"
+      ]
+    },
+    "yks-navigation-candidate": {
+      "kind": "python",
+      "args": [
+        "testler/yks-navigation-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_konu_agaci.py",
+        "scripts/yks-konu-agaci-kontrol.mjs",
+        "testler/yks-navigation-test.py"
+      ]
+    },
+    "yks-navigation-ui-node": {
+      "kind": "node",
+      "args": [
+        "--test-reporter=tap",
+        "testler/yks-navigation.test.mjs",
+        "testler/yks-maintenance.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/curriculumNavigation.js",
+        "frontend/src/curriculum.js",
+        "frontend/src/learn/mapNavigation.js",
+        "frontend/src/learn/pages/MapPage.jsx",
+        "frontend/src/learn/catalog.js",
+        "scripts/curriculum-projection.mjs",
+        "scripts/yks-curriculum-import.mjs",
+        "scripts/excel-curriculum-import.mjs",
+        "testler/yks-navigation*.mjs",
+        "testler/yks-maintenance.test.mjs"
+      ]
+    },
+    "yks-navigation-db": {
+      "kind": "backend",
+      "args": [
+        "CurriculumNavigationTest,CurriculumProgressFlowTest,ReviewCatalogSubjectTest,LearningResourcesFlowTest,QuestionAvailabilityTest"
+      ],
+      "inputs": [
+        "backend/pom.xml"
+      ]
+    },
+    "yks-maintenance-safety": {
+      "kind": "python",
+      "args": [
+        "testler/yks-maintenance-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_katalog_kontrol.py",
+        "scripts/content-label-refresh.py",
+        "scripts/yks_pipeline_uyum.py",
+        "scripts/pipeline-adapters/*",
+        "testler/yks-maintenance-test.py"
+      ]
+    },
+    "yks-pipeline-navigation": {
+      "kind": "python",
+      "args": [
+        "testler/yks-pipeline-navigation-test.py"
+      ],
+      "inputs": [
+        "scripts/pipeline-adapters/*",
+        "testler/yks-pipeline-navigation-test.py"
       ]
     }
   },
@@ -647,18 +709,23 @@
     },
     "YKS-04": {
       "checks": [
-        "yks-taxonomy-crosswalk"
+        "yks-taxonomy-crosswalk",
+        "yks-navigation-candidate"
       ],
       "remainingAcceptance": [
-        "Gerçek MEBİ ağacı ve güncel katalog kimlik eşlemesi/etki raporu.",
-        "Anlamsal belirsizlikleri açıklayıp yayın kapısını koru; aday üretimi canlı yayın değildir."
+        "Gerçek MEBİ sıra/branş/ağaç ve kontrollü şema kanıtı.",
+        "Eski tanımların tamamı aynı kalır; belirsiz kapsam eşdeğer sayılmaz, geçmiş taşınmaz. Canlı yayın YKS-11."
       ],
-      "nextAction": "YKS-02 kabulünden sonra aday konu ağacını üret; YKS-05 uyumluluğa devam et."
+      "nextAction": "Doğrulanmış kimlik koruma ve MEBİ ağaç paketini YKS-05 üretici/okuyucu uyumuna bağla."
     },
     "YKS-05": {
       "checks": [
         "yks-source-resolver",
-        "yks-pdf-resolver-db"
+        "yks-pdf-resolver-db",
+        "yks-navigation-ui-node",
+        "yks-navigation-db",
+        "yks-maintenance-safety",
+        "yks-pipeline-navigation"
       ],
       "remainingAcceptance": [
         "Gerçek okuyucu/yazıcı bağımlılık haritası ve üretici/kimlik uyumu.",

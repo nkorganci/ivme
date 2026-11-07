@@ -38,8 +38,11 @@ export default function MapPage() {
   const subject = selection.subject?.name ?? 'Dersler yükleniyor';
   const change = (values, replace = false) => setParams(topicMapParams(params, values), { replace });
   const referenceUnits = referenceMapUnits(selection.topics);
-  const renderReferenceUnits = () => referenceUnits.map(unit => <section key={unit.id} className="card lr-unit lr-reference-unit">
-    <header className="lr-section-head"><h2><span className="muted">{subject} ›</span> {unit.name}</h2></header>
+  const renderReferenceUnits = () => referenceUnits.map(unit => {
+    const unitPilot = unit.topics.some(topic => pilotForTopic(topic)) ? null : pilotForTopic({ ids: unit.legacyScopeIds || [] });
+    return <section key={unit.id} className="card lr-unit lr-reference-unit">
+    <header className="lr-section-head"><h2><span className="muted">{subject} ›</span> {unit.name}</h2>
+      {unitPilot && <Link to={unitPilot.path}>Görsel deneme dersini aç →</Link>}</header>
     <ul className="lr-concepts">{unit.topics.map(topic => { const pilot = pilotForTopic(topic); return <li key={topic.key} className="lr-concept lr-concept-pending">
       <div className="lr-reference-topic">
         <span className="lr-concept-title">{topic.name}</span>
@@ -49,7 +52,7 @@ export default function MapPage() {
         <Link to={topicSourcesPath(topic)}>Konu kaynaklarını incele →</Link>
       </div>
     </li>; })}</ul>
-  </section>);
+  </section>; });
   return <div className="lr-page lr-map">
     <div className="page-head"><h1>Konu haritası</h1><span className="muted" aria-live="polite">{subject} · {selection.lessonCount ? `${concepts.length} kavram` : `${selection.topics.length} müfredat konusu`}</span></div>
     <div className="lr-map-layout">

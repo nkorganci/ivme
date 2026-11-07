@@ -1,4 +1,5 @@
 import identityCatalog from './data/curriculumIdentities.json' with { type: 'json' };
+import { preferredCurriculumCategories } from './curriculumNavigation.js';
 
 // OGM Materyal MEBİ TYT/AYT konu özetleri ve YKS konu anlatımları temel alınarak
 // çalışma için küçük, işaretlenebilir parçalara ayrılmıştır. Kimlikler kalıcıdır:
@@ -121,7 +122,22 @@ for (const [exam, subjects] of Object.entries(SOURCE_CURRICULUM)) for (const ent
   for (const unit of entry.units) unit.topics = unit.topics.map(title => entry.id === 'fizik' ? title :
     identityCatalog.titles[topicId(exam, entry.id, title)] || title);
 
-export function curriculumFromCategories(categories) {
+export function curriculumFromCategories(categories, navigation = null) {
+  if (navigation?.courses) {
+    const preferred = preferredCurriculumCategories(navigation, categories);
+    return Object.fromEntries(['TYT', 'AYT'].map(exam => [exam,
+      [...new Set(preferred.filter(c => c.exam === exam).map(c => c.subjectId))].map(id => {
+        const topics = preferred.filter(c => c.exam === exam && c.subjectId === id).sort((a, b) => a.order - b.order);
+        const groups = new Map();
+        for (const topic of topics) {
+          if (!groups.has(topic.unitId)) groups.set(topic.unitId, { id: topic.unitId, name: topic.unit, topics: [] });
+          groups.get(topic.unitId).topics.push(topic.topic);
+        }
+        const old = SOURCE_CURRICULUM[exam].find(s => s.id === id);
+        return { id, name: topics[0].subject, area: old?.area || 'Sosyal Bilimler', navigationPrimary: true,
+          topicIds: Object.fromEntries(topics.map(c => [c.topic, c.id])), units: [...groups.values()] };
+      })]));
+  }
   return Object.fromEntries(['TYT','AYT'].map(exam=>[exam,
     [...new Set(categories.filter(c=>c.canonicalUnit&&c.exam===exam).map(c=>c.subjectId))].map(id=>{
       const topics=categories.filter(c=>c.canonicalUnit&&c.exam===exam&&c.subjectId===id).sort((a,b)=>a.order-b.order);
@@ -130,7 +146,8 @@ export function curriculumFromCategories(categories) {
         topicIds:Object.fromEntries(topics.map(c=>[c.topic,c.id])),units:[{name:'Üniteler',topics:topics.map(c=>c.topic)}]};
     })]));
 }
-export const CURRICULUM = identityCatalog.canonicalUnits?.length?curriculumFromCategories(identityCatalog.canonicalUnits):SOURCE_CURRICULUM;
+export const CURRICULUM = identityCatalog.canonicalUnits?.length
+  ?curriculumFromCategories(identityCatalog.canonicalUnits,identityCatalog.curriculumNavigation):SOURCE_CURRICULUM;
 
 export const allTopics = Object.entries(CURRICULUM).flatMap(([exam, subjects]) => subjects.flatMap((entry) =>
-  entry.units.flatMap((unit) => unit.topics.map((title) => ({ id: topicId(exam, entry.id, title), exam, subject: entry.id, title })))));
+  entry.units.flatMap((unit) => unit.topics.map((title) => ({ id: entry.navigationPrimary?entry.topicIds[title]:topicId(exam, entry.id, title), exam, subject: entry.id, title })))));

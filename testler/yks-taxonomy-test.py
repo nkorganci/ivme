@@ -76,5 +76,29 @@ class TaxonomyCrosswalkTest(unittest.TestCase):
         self.assertTrue(value['identityPreservationVerified'])
         self.assertFalse(value['readyForPublication'])
 
+    def test_hidden_curriculum_identity_is_reused_before_creating_new_category(self):
+        legacy=self.old(id='legacy-fine-topic',origin='CURRICULUM',canonicalUnit=False,selectable=False)
+        value=crosswalk([self.page()],[legacy])
+        node=value['providerNodes'][0]
+        self.assertEqual(node['proposedCategoryId'],'legacy-fine-topic')
+        self.assertEqual(node['action'],'REUSE_LEGACY_CURRICULUM_NAME_CANDIDATE')
+        self.assertTrue(node['existingDefinitionPreserved'])
+        self.assertFalse(node['existingSelectable'])
+
+    def test_source_heading_identity_cannot_replace_a_curriculum_topic(self):
+        heading=self.old(id='source-heading',origin='PDF_HEADING',canonicalUnit=False,selectable=False)
+        node=crosswalk([self.page()],[heading])['providerNodes'][0]
+        self.assertNotEqual(node.get('proposedCategoryId'),'source-heading')
+
+    def test_provider_course_unit_and_leaf_order_are_preserved(self):
+        a=self.page(title='A konusu',unit='A ünitesi',node='a')
+        b=self.page(title='B konusu',unit='B ünitesi',node='b')
+        course={'url':'/course','path':['TYT','Biyoloji (TYT)'],
+                'children':[{'url':'/unit-b'},{'url':'/unit-a'}]}
+        units=[{'url':'/unit-a','path':a['path'][:3],'children':[{'url':a['url']}]},
+               {'url':'/unit-b','path':b['path'][:3],'children':[{'url':b['url']}]}]
+        value=crosswalk([a,b,course,*units],[])
+        self.assertEqual([n['providerNodeId'] for n in value['providerNodes']],['b','a'])
+
 
 if __name__=='__main__':unittest.main(verbosity=2)

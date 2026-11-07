@@ -79,6 +79,30 @@ class LearningResourcesFlowTest extends TestBase {
         b.putArray("assignments").addObject().put("categoryId",category).put("relation","PRIMARY");return b;
     }
 
+    @Test void preferredLeafKeepsItsExactQuestionPoolAndPublishedDisplayName() throws Exception {
+        fixture();user("mebi_leaf_pool",Role.USER);var session=login("mebi_leaf_pool","Sifre1234");
+        jdbc.update("UPDATE learning_catalog.categories SET definition=definition||'{\"canonicalTopic\":false,\"selectable\":false,\"canonicalTopicIds\":[\"learning-main\"]}'::jsonb WHERE run_key=? AND category_id='learning-sub'",RUN);
+        jdbc.update("UPDATE learning_catalog.categories SET definition=definition||'{\"canonicalUnit\":true,\"canonicalTopic\":true}'::jsonb WHERE run_key=? AND category_id='learning-main'",RUN);
+        String before=jdbc.queryForObject("SELECT definition::text FROM learning_catalog.categories WHERE run_key=? AND category_id='learning-sub'",String.class,RUN);
+        var topic=Map.of("categoryId","learning-sub","sourceExam","TYT","title","MEBİ ayrıntılı konu","contentKey","leaf-content",
+            "examCategoryIds",Map.of("TYT",List.of("learning-sub")));
+        var nav=Map.of("version",1,"authority","MEBI_PROVIDER","courses",List.of(Map.of("id","course","subjectId","fizik",
+            "exam","TYT","title","Fizik","units",List.of(Map.of("id","unit","title","Ünite","topics",List.of(topic))))));
+        jdbc.update("UPDATE learning_catalog.runs SET summary=jsonb_set(summary,'{curriculumNavigation}',?::jsonb) WHERE run_key=?",json.writeValueAsString(nav),RUN);
+        var metadata=read(send(session,get(API+"/metadata"),null).andExpect(status().isOk()));
+        assertThat(metadata.path("curriculumCategories").get(0).path("id").asText()).isEqualTo("learning-sub");
+        for(var query:List.of(get("/api/questions/availability").param("categoryId","learning-sub"),
+                get("/api/questions/availability").param("topic","MEBİ ayrıntılı konu").param("subject","Fizik")))
+            assertThat(read(send(session,query,null).andExpect(status().isOk())).path("total").asInt()).isEqualTo(1);
+        var facets=read(send(session,get("/api/questions/filters"),null).andExpect(status().isOk()));
+        assertThat(facets.findValuesAsText("topic")).contains("MEBİ ayrıntılı konu");
+        var request=json.createObjectNode().put("questionCount",1).put("subject","Fizik").put("examType","TYT");
+        request.putArray("categoryId").add("learning-sub");
+        var exam=read(send(session,post("/api/exams"),request.toString()).andExpect(status().isCreated()));
+        assertThat(jdbc.queryForList("SELECT q.code FROM exam_questions e JOIN questions q ON q.id=e.question_id WHERE e.exam_id=?",String.class,exam.path("id").asLong())).containsExactly("LEARNING-A");
+        assertThat(jdbc.queryForObject("SELECT definition::text FROM learning_catalog.categories WHERE run_key=? AND category_id='learning-sub'",String.class,RUN)).isEqualTo(before);
+    }
+
     @Test void publishedCategoriesAreAuthoritativeAndNewSourceHeadingsCannotCreateRuntimeIdentities() throws Exception {
         fixture();user("catalog_reader",Role.USER);user("catalog_teacher",Role.OPERATOR);
         category("tyt.fizik.basinc","fizik","DB'de güncel basınç adı","");

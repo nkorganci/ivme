@@ -124,17 +124,36 @@ public class ReviewCatalog {
     }
     @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public Map<String, Object> metadata() {
-        return Map.of("version", 2, "branches", branches(), "categories", categories(),
-                "labels", LABELS);
+        var definitions=categories();
+        var result=new LinkedHashMap<String,Object>(Map.of("version",2,"branches",branches(),"categories",definitions,"labels",LABELS));
+        var navigation=learningLabels.curriculumNavigation();
+        if(!navigation.isEmpty()) {
+            result.put("curriculumNavigation",CurriculumNavigation.publicView(navigation));
+            result.put("curriculumCategories",CurriculumNavigation.selections(navigation,definitions));
+        }
+        return result;
+    }
+    public Set<String> navigationTopicIds() { return learningLabels.navigationTopicIds(); }
+    public Map<String,Object> curriculumNavigation() { return learningLabels.curriculumNavigation(); }
+
+    public List<Map<String,Object>> displayCategories() {
+        var definitions=categories();var navigation=curriculumNavigation();
+        if(navigation.isEmpty())return definitions;
+        var selected=new LinkedHashMap<String,Map<String,Object>>();
+        definitions.forEach(c->selected.put(c.get("id").toString(),c));
+        CurriculumNavigation.selections(navigation,definitions).forEach(c->selected.put(c.get("id").toString(),c));
+        return List.copyOf(selected.values());
     }
 
     @SuppressWarnings("unchecked")
     public List<List<String>> categoryGroups(List<String> ids) {
         var definitions=new HashMap<String,Map<String,Object>>();
         categories().forEach(c->definitions.put(c.get("id").toString(),c));
+        var navigationIds=navigationTopicIds();
         return ids.stream().map(id->{
             var c=definitions.get(id);
             if(c==null) throw com.hedefyks.common.ApiException.badRequest("Konu etiketi artık kullanılmıyor.");
+            if(navigationIds.contains(id))return List.of(id);
             if(!c.containsKey("canonicalTopicIds")) return List.of(id);
             var targets=(List<String>)c.get("canonicalTopicIds");
             return targets.isEmpty()?List.of(c.get("id").toString().startsWith("system.")?id:

@@ -19,18 +19,43 @@ def path_key(value):
     return text.casefold() if os.name == 'nt' else text
 
 
-def iter_resource_paths(root, pattern='*'):
+def managed_legacy_roots(manifest=None):
+    """Only explicitly activated old root junctions may re-enter a legacy scan."""
+    archive=Path(__file__).resolve().parents[2]/'Kaynaklar/YKS'
+    if manifest is None:
+        manifest=archive/'Katalog/etkin-yollar.json'
+        if not manifest.is_file():return {}
+    else:
+        manifest=Path(manifest);archive=manifest.parent.parent
+    value=json.loads(manifest.read_text(encoding='utf-8'))
+    if value.get('status')!='ACTIVE':return {}
+    allowed={}
+    base=(archive/'Katalog/EskiYollar').resolve()
+    for row in value.get('legacyRoots',[]):
+        original=Path(row['originalRoot']).absolute()
+        target=archive/relative_part(row['target'])
+        if not target.resolve().is_relative_to(base) or target.resolve()==base or not target.is_dir():
+            raise ValueError('Unsafe managed legacy root')
+        if path_key(original) in allowed:raise ValueError('Duplicate managed legacy root')
+        allowed[path_key(original)]=target.resolve()
+    return allowed
+
+
+def iter_resource_paths(root, pattern='*', manifest=None):
     """Legacy source enumeration excludes the inactive YKS preparation tree.
 
     Explicit archive workflows use their verified location projection. An archive
     never becomes a second source merely by appearing under Kaynaklar.
     """
     root=Path(root)
-    for current, directories, names in os.walk(root,followlinks=False):
+    managed=managed_legacy_roots(manifest)
+    for current, directories, names in os.walk(root,followlinks=True):
         for name in list(directories):
             path=Path(current)/name
             staging=(Path(current)==root and root.name.casefold()=='kaynaklar' and name.casefold()=='yks')
-            if staging or path.is_symlink() or getattr(path,'is_junction',lambda:False)():
+            linked=path.is_symlink() or getattr(path,'is_junction',lambda:False)()
+            permitted=linked and managed.get(path_key(path))==path.resolve()
+            if staging or linked and not permitted:
                 directories.remove(name)
         for name in names:
             path=Path(current)/name

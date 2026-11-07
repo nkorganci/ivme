@@ -47,6 +47,13 @@ def stages(node, args):
     py = sys.executable
     def step(name, command, inputs=(), outputs=(), always=False):
         return dict(name=name, command=list(command), inputs=list(inputs), outputs=list(outputs), always=always)
+    maintenance=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf-8'))
+    if maintenance.get('curriculumAuthority')=='MEBI_PROVIDER':
+        # Current sources/decisions are already published atomically. Never replay
+        # legacy Excel/heading generators over them. Unchanged versions reuse the
+        # snapshot; changed inputs produce an explicit intake/reconciliation error.
+        return [step('mebi-projection',[node,'scripts/content-taxonomy-check.mjs','--check','--project']),
+                step('mebi-published-snapshot',[py,'scripts/yks_katalog_kontrol.py','--database',args.database],always=True)]
     if args.check:
         return [step('taxonomy', [node,'scripts/content-taxonomy-check.mjs','--check']),
             step('structure', [node,'scripts/content-review-catalog.mjs','--check']),

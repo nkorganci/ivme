@@ -2,14 +2,19 @@ import {createHash} from 'node:crypto';
 import {taxonomy,normaliseTerm} from './content-taxonomy.mjs';
 import {displayResourceTitle} from '../frontend/src/resourceMetadata.js';
 import {createExcelMatcher,excelBranch} from './excel-curriculum.mjs';
+import {preferredCurriculumCategories} from '../frontend/src/curriculumNavigation.js';
 const hash=value=>createHash('sha256').update(typeof value==='string'?value:JSON.stringify(value)).digest('hex');
-export const canonicalUnits=taxonomy.categories.filter(c=>c.canonicalUnit).sort((a,b)=>a.order-b.order);
+export const canonicalUnits=(taxonomy.curriculumNavigation?preferredCurriculumCategories(taxonomy.curriculumNavigation,taxonomy.categories):taxonomy.categories.filter(c=>c.canonicalUnit)).sort((a,b)=>a.order-b.order);
+const navigationIds=new Set(taxonomy.curriculumNavigation?canonicalUnits.filter(c=>c.navigationSelected).map(c=>c.id):[]);
 const excelMatch=createExcelMatcher(canonicalUnits);
 const fingerprints=new Map(taxonomy.categories.map(c=>[c.id,hash(c)]));
 export function unitTargets(category) {
+  if(navigationIds.has(category.id))return [category.id];
   return category.canonicalTopicIds || [];
 }
 export function suggestUnits(texts,exam,subjectId) {
+  if(taxonomy.curriculumAuthority==='MEBI_PROVIDER')return canonicalUnits.filter(c=>c.exam===exam&&c.subjectId===subjectId
+    && texts.some(t=>normaliseTerm(t)===normaliseTerm(c.topic))).map(c=>c.id);
   if(taxonomy.unitReference?.type==='EXCEL_FIRST_SHEET')return excelMatch(texts,exam,subjectId,{broad:true});
   const candidates=canonicalUnits.filter(c=>c.exam===exam&&c.subjectId===subjectId);
   if(candidates.length===1)return [candidates[0].id];
@@ -25,6 +30,15 @@ const distinct=values=>[...new Map(values.map(v=>[JSON.stringify(v),v])).values(
 
 /** Collapse old source relationships after locators have been attached to their original identities. */
 export function canonicalizeUnits(item,categories) {
+  if(taxonomy.curriculumAuthority==='MEBI_PROVIDER') {
+    // Source-backed leaf assignments and legacy broad relationships retain their
+    // identities. A navigation change never redistributes them automatically.
+    for(const assignment of item.automaticLabels.assignments) {
+      const category=categories.get(assignment.categoryId);
+      if(!category || item.kind==='QUESTION' && category.exam!==item.exam)throw Error('MEBI/legacy source identity or exam differs');
+    }
+    return item;
+  }
   if(!canonicalUnits.length)return item;
   if(taxonomy.unitReference?.type==='EXCEL_FIRST_SHEET')return canonicalizeExcel(item,categories);
   const labels=item.automaticLabels;

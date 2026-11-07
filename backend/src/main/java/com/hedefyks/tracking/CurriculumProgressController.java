@@ -28,14 +28,17 @@ public class CurriculumProgressController {
     }
 
     @GetMapping
+    @org.springframework.transaction.annotation.Transactional(readOnly=true,isolation=org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public List<TopicProgress> list(@AuthenticationPrincipal AppUserDetails me) {
         var saved = jdbc.query("SELECT topic_id, completed_at FROM curriculum_topic_progress WHERE user_id = ? ORDER BY topic_id",
                 (rs, row) -> new TopicProgress(rs.getString(1), rs.getTimestamp(2).toInstant()), me.id());
         var definitions = new java.util.HashMap<String,java.util.Map<String,Object>>();
         vocabulary.categories().forEach(c -> definitions.put(c.get("id").toString(), c));
         var result = new java.util.LinkedHashMap<String,TopicProgress>();
+        var navigationIds=vocabulary.navigationTopicIds();
         for(var row:saved) {
             result.putIfAbsent(row.topicId(),row);
+            if(navigationIds.contains(row.topicId()))continue;
             var category=definitions.get(row.topicId());
             if(category==null || !(category.get("canonicalTopicIds") instanceof List<?> targets) || targets.size()!=1)continue;
             String target=targets.get(0).toString();
@@ -46,20 +49,22 @@ public class CurriculumProgressController {
     }
 
     @PutMapping("/{topicId}")
-    @org.springframework.transaction.annotation.Transactional
+    @org.springframework.transaction.annotation.Transactional(isolation=org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public TopicProgress change(@AuthenticationPrincipal AppUserDetails me,
                                 @PathVariable String topicId, @RequestBody Change input) {
+        var navigationIds=vocabulary.navigationTopicIds();
         if (topicId == null || topicId.length() > 160 || !topicId.matches("[a-zA-Z0-9:._-]+")
                 || input == null || input.completed() == null
-                || Boolean.TRUE.equals(input.completed()) && vocabulary.categories().stream().noneMatch(c->topicId.equals(c.get("id")) && "CURRICULUM".equals(c.get("origin")) && !Boolean.FALSE.equals(c.get("selectable")))) {
+                || Boolean.TRUE.equals(input.completed()) && vocabulary.categories().stream().noneMatch(c->topicId.equals(c.get("id")) && "CURRICULUM".equals(c.get("origin")) && (!Boolean.FALSE.equals(c.get("selectable")) || navigationIds.contains(topicId)))) {
             throw ApiException.badRequest("Konu bilgisi geçersiz.");
         }
         if (!input.completed()) {
             jdbc.update("""
                 DELETE FROM curriculum_topic_progress WHERE user_id = ? AND (topic_id = ? OR topic_id IN (
                   SELECT category_id FROM learning_catalog.current_categories
-                  WHERE definition->'canonicalTopicIds'=jsonb_build_array(?::text)))
-                """, me.id(), topicId, topicId);
+                  WHERE definition->'canonicalTopicIds'=jsonb_build_array(?::text)
+                    AND NOT (category_id=ANY(?::text[]))))
+                """, me.id(), topicId, topicId, navigationIds.toArray(String[]::new));
             return new TopicProgress(topicId, null);
         }
         return jdbc.queryForObject("""

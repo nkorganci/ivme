@@ -44,7 +44,16 @@ public class LearningResourceService {
         var known=vocabulary.branches().stream().map(b->b.get("id")).collect(java.util.stream.Collectors.toSet());
         var ordered=new ArrayList<Map<String,Object>>(vocabulary.branches().stream().filter(b->branches.containsKey(b.get("id").toString())).toList());
         branches.values().stream().filter(b->!known.contains(b.get("id"))).forEach(ordered::add);
-        return Map.of("summary",summary,"branches",ordered,"categories",categories,"labels",ReviewCatalog.LABELS,"pdfKinds",pdfs.filters().kinds(),"questionTypes",types);
+        var result=new LinkedHashMap<String,Object>(Map.of("summary",summary,"branches",ordered,"categories",categories,"labels",ReviewCatalog.LABELS,"pdfKinds",pdfs.filters().kinds(),"questionTypes",types));
+        var navigation=CurriculumNavigation.object(summary.get("curriculumNavigation"));
+        if(!navigation.isEmpty()) {
+            var publicNavigation=CurriculumNavigation.publicView(navigation);
+            var publicSummary=new LinkedHashMap<String,Object>(summary);publicSummary.put("curriculumNavigation",publicNavigation);
+            result.put("summary",publicSummary);result.put("curriculumNavigation",publicNavigation);
+            result.put("curriculumCategories",CurriculumNavigation.selections(navigation,vocabulary.categories()).stream()
+                    .filter(c->examFilter.test(c.get("exam"))).toList());
+        }
+        return result;
     }
     /** Counts identities and the union of verified ranges; opening a source is never a completion. */
     public Map<String,Object> coverage(String exam,String subject) {

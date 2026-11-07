@@ -21,7 +21,7 @@ function resolve(id, byId, seen = new Set()) {
 }
 
 // Aynı Excel satırı iki sınavda iki kimlikle yayımlanır; konu bir kez, sınavlarıyla birlikte gösterilir.
-const rowKey = (category) => category.excelRowId ?? category.id.split('.').pop();
+const rowKey = (category) => category.contentKey ?? category.excelRowId ?? category.id.split('.').pop();
 
 /** Dersin bağlı olduğu katalog konuları: ders, ünite, konu adı ve her konunun kendi sınav kapsamı. */
 export function lessonScope(categoryIds, byId) {

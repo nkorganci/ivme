@@ -27,4 +27,15 @@ public class LearningLabelStore {
         return jdbc.query("SELECT definition::text FROM learning_catalog.current_categories ORDER BY category_id",
             (rs,n)->parse(rs.getString(1)));
     }
+    public Map<String,Object> curriculumNavigation() {
+        return jdbc.query("SELECT coalesce(r.summary->'curriculumNavigation','{}'::jsonb)::text FROM learning_catalog.runs r JOIN learning_catalog.current_run c USING(run_key)",
+                (rs,n)->parse(rs.getString(1))).stream().findFirst().orElse(Map.of());
+    }
+    public Set<String> navigationTopicIds() {
+        var navigation=curriculumNavigation();
+        if(navigation.isEmpty())return Set.of();
+        return CurriculumNavigation.selections(navigation,categories()).stream()
+                .filter(c->Set.of("TYT","AYT").contains(c.get("exam")))
+                .map(c->c.get("id").toString()).collect(java.util.stream.Collectors.toSet());
+    }
 }

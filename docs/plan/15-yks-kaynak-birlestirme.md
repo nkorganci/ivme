@@ -255,12 +255,12 @@ kökenleri ve içerik kimlikleriyle kapsanır; hedefe kendini yeniden taratma en
 [Adım görevini aç](yks-kaynak-birlestirme/yks-03.md). Kesin kopya, benzer belge,
 aynı soru ve kısmi aktarım ayrı kararlardır. Henüz dosya silinmez.
 
-## 15.04 — YKS-04: MEBİ konu ağacı ve eski kimlikler
+## 15.04 — YKS-04: MEBİ konu ağacı ve eski kimlikler — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-04.md). MEBİ tercih edilen konu düzeni
 olur; mevcut kimlikler, ortak kapsam ve diğer sınav katalogları korunur.
 
-## 15.05 — YKS-05: eski ve yeni referansları çözme
+## 15.05 — YKS-05: eski ve yeni referansları çözme — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-05.md). Tüm okuyucu/üreticiler,
 güvenli kaynak çözümleme ve katalog projeksiyonları geçişe hazırlanır.

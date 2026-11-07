@@ -7,6 +7,12 @@ const source = JSON.parse(fs.readFileSync(0, 'utf8'));
 const file = process.argv.find(arg=>arg.startsWith('--taxonomy='))?.slice('--taxonomy='.length)
   || new URL('../backend/src/main/resources/content-taxonomy.json', import.meta.url);
 const taxonomy = JSON.parse(fs.readFileSync(file, 'utf8'));
+if(taxonomy.curriculumAuthority==='MEBI_PROVIDER') {
+  if(!process.argv.includes('--check'))throw Error('MEBİ is the primary curriculum. Excel cannot replace it; use the YKS maintenance adapter.');
+  assert.equal(source.sha256,taxonomy.legacyUnitReference?.sha256,'Excel distribution reference changed; reconcile it without replacing MEBİ identities');
+  console.log(JSON.stringify({status:'PASS',scope:'EXCEL_DISTRIBUTION_REFERENCE_ONLY',primary:'MEBI_PROVIDER'}));
+  process.exit(0);
+}
 const branches = { 'Türkçe / Edebiyat': 'turkce', 'Matematik + Geometri': 'matematik', Fizik: 'fizik', Kimya: 'kimya',
   Biyoloji: 'biyoloji', Tarih: 'tarih', Coğrafya: 'cografya', Felsefe: 'felsefe', Psikoloji: 'psikoloji',
   Sosyoloji: 'sosyoloji', Mantık: 'mantik', 'Din Kültürü (DKAB)': 'din' };

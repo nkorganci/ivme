@@ -39,7 +39,8 @@ public class ExamContentController {
     @Transactional(readOnly=true,isolation=org.springframework.transaction.annotation.Isolation.REPEATABLE_READ)
     public Map<String,Object> content(@AuthenticationPrincipal AppUserDetails me) throws com.fasterxml.jackson.core.JsonProcessingException {
         var track=tracks.current(me.id());
-        var categories=labels.categories().stream().filter(c->tracks.includesCategoryExam(c.get("exam"),track.examTypes()))
+        var categories=com.hedefyks.review.CurriculumNavigation.selections(labels.curriculumNavigation(),labels.categories())
+            .stream().filter(c->tracks.includesCategoryExam(c.get("exam"),track.examTypes()))
             .filter(c->Boolean.TRUE.equals(c.get("canonicalUnit")) && !Boolean.FALSE.equals(c.get("selectable")))
             .sorted(Comparator.comparingInt(c->((Number)c.getOrDefault("order",0)).intValue())).toList();
         var counts=new HashMap<String,Map<Integer,Long>>();
