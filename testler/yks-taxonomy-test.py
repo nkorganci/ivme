@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from yks_taxonomy import crosswalk, normalise, subject_options
+from yks_taxonomy import crosswalk, normalise, subject_options, scope_candidates
 from yks_stages.stage_04 import assess
 
 
@@ -49,6 +49,16 @@ class TaxonomyCrosswalkTest(unittest.TestCase):
     def test_math_geometry_scope_requires_evidence(self):
         self.assertEqual(subject_options('Matematik (TYT)','Üçgenler',[self.old(subjectId='geometri',unit='Üçgenler')]),['geometri'])
         self.assertEqual(subject_options('Matematik (TYT)','Bilinmeyen',[]),['matematik','geometri'])
+        self.assertEqual(subject_options('Matematik (TYT)','Üçgenin Alanı',[]),['geometri'])
+        self.assertEqual(subject_options('Matematik (AYT)','Trigonometrik Fonksiyonlar',[]),['matematik'])
+
+    def test_unit_scope_is_retained_without_copying_mastery_to_all_leaves(self):
+        page=self.page(title='Hücre Zarı',unit='Hücre')
+        value=assess([page],[self.old()])
+        row=value['legacyIdentities'][0]
+        self.assertEqual(row['mappingStatus'],'WIDER_OR_COUNTERPART_SCOPE_CANDIDATE')
+        self.assertEqual(row['providerScopeCandidates'][0]['reason'],'EXACT_UNIT_TITLE_LEGACY_WIDER_THAN_LEAF')
+        self.assertFalse(row['providerScopeCandidates'][0]['progressTransferAllowed'])
 
     def test_numbers_are_preserved_and_unknown_old_ids_are_not_deleted(self):
         self.assertNotEqual(normalise('1. Dereceden'),normalise('2. Dereceden'))

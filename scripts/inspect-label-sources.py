@@ -2,6 +2,7 @@
 import json
 from collections import Counter
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 import pymupdf
 
 APP = Path(__file__).resolve().parents[1]
@@ -22,7 +23,7 @@ def main():
         data = json.loads(path.read_text(encoding='utf8'))
         raw_codes.update(str(r['id']) for r in (data if isinstance(data,list) else data.get('kayitlar',data.get('sorular',[]))) if r.get('id'))
     print('RAW_ONLY', len(raw_codes-known), sorted(raw_codes-known)[:20])
-    for path in sorted((ROOT / 'Kaynaklar').rglob('*.pdf')):
+    for path in sorted(iter_resource_paths(ROOT / 'Kaynaklar', '*.pdf')):
         if 'ogm-materyal' in path.parts:
             continue
         with pymupdf.open(path) as doc:

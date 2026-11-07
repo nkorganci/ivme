@@ -11,6 +11,12 @@ SUBJECTS = {'biyoloji': ['biyoloji'], 'cografya': ['cografya'], 'fizik': ['fizik
             'din kulturu ve ahlak bilgisi': ['din'], 'felsefe': ['felsefe'],
             'mantik': ['mantik'], 'psikoloji': ['psikoloji'], 'sosyoloji': ['sosyoloji']}
 
+# Reviewed provider UNIT names, not an arbitrary title classifier. Unknown future
+# units still require review. Trigonometric functions in AYT remain mathematics;
+# the TYT right-triangle unit belongs to geometry.
+GEOMETRY_UNITS = '''Analitik Düzlemde Temel Dönüşümler|Dairenin Çevresi ve Alanı|Doğrunun Analitik İncelenmesi|Katı Cisimler|Çemberde Açılar|Çemberde Teğet|Çemberin Analitik İncelenmesi|Çemberin Temel Elemanları|Dik Üçgen ve Trigonometri|Dörtgenler ve Özellikleri|Çokgenler|Özel Dörtgenler|Üçgenin Alanı|Üçgenin Yardımcı Elemanları|Üçgenlerde Eşlik ve Benzerlik|Üçgenlerde Temel Kavramlar'''.split('|')
+MATHEMATICS_UNITS = '''Anlık Değişim Oranı ve Türev|Belirli İntegral ve Uygulamaları|Belirsiz İntegral|Deneysel ve Teorik Olasılık|Fonksiyon Dönüşümleri|Fonksiyonlar ile İlgili Uygulamalar|Gerçek Sayı Dizileri|Koşullu Olasılık|Limit ve Süreklilik|Logaritma Fonksiyonu|Toplam-Fark ve İki Kat Açı Formülleri|Trigonometrik Denklemler|Trigonometrik Fonksiyonlar|Türevin Uygulamaları|Yönlü Açılar|Üstel Fonksiyon|Üstel, Logaritmik Denklemler ve Eşitsizlikler|İkinci Dereceden Bir Bilinmeyenli Eşitsizlik Sistemleri|İkinci Dereceden Bir Bilinmeyenli Eşitsizlikler|İkinci Dereceden Fonksiyon ve Grafikleri|İkinci Dereceden İki Bilinmeyenli Denklem Sistemleri|Basit Olayların Olasılıkları|Birinci Dereceden Denklemler ve Eşitsizlikler|Bölünebilme Kuralları|Denklemler ve Eşitsizlikler ile İlgili Uygulamalar|Fonksiyon Kavramı ve Gösterimi|Kümelerde Temel Kavramlar|Kümelerde İşlemler|Merkezi Eğilim ve Yayılım Ölçüleri|Polinom Kavramı ve Polinomlarda İşlemler|Polinomların Çarpanlara Ayrılması|Sayı Kümeleri|Sıralama ve Seçme|Verilerin Grafikle Gösterilmesi|Önermeler ve Bileşik Önermeler|Üslü İfadeler ve Denklemler|İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi|İkinci Dereceden Bir Bilinmeyenli Denklemler'''.split('|')
+
 
 def normalise(value):
     value = str(value or '').lower().replace('ı', 'i')
@@ -26,6 +32,10 @@ def subject_options(course, unit, previous):
     title = re.sub(r'\s*\((?:TYT|AYT|TYT/AYT)\)\s*$', '', course).strip()
     choices = SUBJECTS.get(normalise(title), [])
     if len(choices) > 1:
+        if normalise(unit) in {normalise(u) for u in GEOMETRY_UNITS}:
+            return ['geometri']
+        if normalise(unit) in {normalise(u) for u in MATHEMATICS_UNITS}:
+            return ['matematik']
         exact = {c['subjectId'] for c in previous if c.get('subjectId') in choices and
                  normalise(unit) in terms(c) | {normalise(c.get('unit'))}}
         if len(exact) == 1:
@@ -108,3 +118,30 @@ def crosswalk(pages, previous):
             'readyForPublication': False, 'reviewEvidenceRequired': True,
             'published': False, 'questionsRelabeled': 0, 'studentProgressChanged': 0,
             'note': 'An exact name is a proposal, not semantic/teacher approval. Provider source and legacy identity remain separate.'}
+
+
+def scope_candidates(category, nodes, previous):
+    """Explain a legacy broad/composite scope without spreading saved mastery."""
+    exam=category.get('exam');subject=category.get('subjectId')
+    exams={exam}
+    if category.get('excelRowId'):
+        exams.update(c['exam'] for c in previous if c.get('excelRowId')==category['excelRowId']
+                     and c.get('subjectId')==subject and c.get('canonicalUnit'))
+    original=str(category.get('topic') or '')
+    clean=re.sub(r'\([^)]*\)','',original).strip()
+    fragments={normalise(t) for t in [clean,*clean.split('/'),*category.get('aliases',[])] if t.strip()}
+    candidates=[]
+    for node in nodes:
+        if node.get('subjectId')!=subject or node['exam'] not in exams:
+            continue
+        title,unit=normalise(node['title']),normalise(node['unit'])
+        reason=None
+        if title in fragments:
+            reason='EXACT_LEAF_TITLE' if node['exam']==exam else 'EXPLICIT_EXISTING_COUNTERPART_LEAF'
+        elif unit in fragments:
+            reason='EXACT_UNIT_TITLE_LEGACY_WIDER_THAN_LEAF'
+        if reason:
+            candidates.append({'providerNodeId':node['providerNodeId'],'sourceUrl':node['sourceUrl'],
+                               'reason':reason,'exam':node['exam'],'unit':node['unit'],'title':node['title'],
+                               'progressTransferAllowed':False})
+    return candidates

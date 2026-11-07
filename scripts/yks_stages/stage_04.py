@@ -5,7 +5,7 @@ from pathlib import Path
 
 from yks_birlestirme import digest, signature, read_json, write_json
 from yks_stages.database import Snapshot, connection
-from yks_taxonomy import crosswalk
+from yks_taxonomy import crosswalk, scope_candidates
 
 
 def catalog_snapshot(app):
@@ -33,10 +33,13 @@ def assess(pages, categories):
     for identity in result['legacyIdentities']:
         previous = by_id[identity['id']]
         in_scope = previous.get('exam') in ('TYT', 'AYT')
+        scopes = scope_candidates(previous, result['providerNodes'], categories) if previous.get('canonicalUnit') else []
         identity.update(exam=previous.get('exam'), subjectId=previous.get('subjectId'),
                         displayName=previous.get('topic') or previous.get('unit'),
                         definitionSha256=signature(previous),
+                        providerScopeCandidates=scopes,
                         mappingStatus=('EXACT_NAME_CANDIDATE' if identity['newProviderNodes'] else
+                                       'WIDER_OR_COUNTERPART_SCOPE_CANDIDATE' if scopes else
                                        'RETAIN_LEGACY_SCOPE_FOR_REVIEW' if in_scope else 'OUT_OF_SCOPE_UNCHANGED'),
                         explanation=('Existing identity and all saved references remain valid; '
                                      'provider order/name proposals do not redistribute saved progress.'))
@@ -69,6 +72,8 @@ def operation(app, store, state):
                   'providerActions': dict(Counter(n['action'] for n in candidate['providerNodes'])),
                   'legacyMappings': dict(Counter(n['mappingStatus'] for n in candidate['legacyIdentities'])),
                   'reviewIssues': len(candidate['issues']), 'unmatchedLegacySelectable': len(candidate['unmatchedSelectableLegacyIds']),
+                  'legacySelectableWithoutScopeCandidate': sum(r['currentlySelectable'] and r['exam'] in ('TYT','AYT')
+                       and not r['newProviderNodes'] and not r['providerScopeCandidates'] for r in candidate['legacyIdentities']),
                   'published': False, 'readyForPublication': False, 'studentRowsWritten': 0,
                   'newMaintenanceSource': 'MEBI provider node hierarchy plus explicit legacy crosswalk; Excel distributions retained',
                   'nextAction': 'YKS-05 path/resolver/generator compatibility; semantic review remains a publication gate'}

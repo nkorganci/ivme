@@ -5,9 +5,10 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from yks_birlestirme import Store, dependencies, process_lock, write_json, digest
+from yks_birlestirme import Store, dependencies, process_lock, write_json, digest, read_json
 
 
 class ConsolidationControlTest(unittest.TestCase):
@@ -156,6 +157,27 @@ class ConsolidationControlTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'during execution'):
             self.store.execute('YKS-00', 'full', inputs, mutate)
         self.assertEqual(self.store.current()['stages']['YKS-00:full']['status'], 'FAILED')
+
+    def test_atomic_temporary_basename_does_not_extend_long_hash_filename(self):
+        folder=self.root/('nested-'+'a'*100)
+        path=folder/('b'*64+'.json')
+        write_json(path,{'source':'original'})
+        self.assertEqual(read_json(path),{'source':'original'})
+        self.assertFalse(list(folder.glob('*.tmp')))
+
+    def test_atomic_replace_retries_brief_windows_reader_lock(self):
+        import yks_birlestirme as runtime
+        path=self.root/'locked.json'
+        original=runtime.os.replace
+        attempts=[]
+        def replace(source,target):
+            attempts.append(1)
+            if len(attempts)<3:raise PermissionError('brief external reader')
+            return original(source,target)
+        with patch.object(runtime.os,'replace',side_effect=replace),patch.object(runtime.time,'sleep'):
+            write_json(path,{'after':'complete'})
+        self.assertEqual(read_json(path),{'after':'complete'})
+        self.assertEqual(len(attempts),3)
 
 
 if __name__ == '__main__':

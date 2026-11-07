@@ -15,6 +15,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 import subprocess
 import tempfile
 from urllib.error import HTTPError, URLError
@@ -220,7 +221,7 @@ def pdf_snapshot(rows, source_root):
             file_changes.append({'path': path.relative_to(source_root.parent).as_posix(), 'keys': record['keys'],
                                  'expectedSha256': sorted(h for h in expected if h), 'actualSha256': actual})
     added_pdfs = sorted(p.resolve().relative_to(source_root.parent).as_posix()
-                        for p in source_root.rglob('*.pdf') if p.resolve() not in physical)
+                        for p in iter_resource_paths(source_root, '*.pdf') if p.resolve() not in physical)
     return {'hashedUniqueFiles': hashed, 'changedOrRemoved': file_changes, 'added': added_pdfs}, unavailable
 
 

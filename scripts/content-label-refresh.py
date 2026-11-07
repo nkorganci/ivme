@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 
 APP = Path(__file__).resolve().parents[1]
 STATE = APP / 'veri/content-labels'
@@ -31,7 +32,7 @@ def input_signature(root, paths):
         path = root / name
         if path.is_dir():
             values.append([name, [[p.relative_to(path).as_posix(), p.stat().st_size, p.stat().st_mtime_ns]
-                                  for p in sorted(path.rglob('*')) if p.is_file()]])
+                                  for p in sorted(iter_resource_paths(path)) if p.is_file()]])
         else:
             values.append([name, file_hash(path)])
     return hashlib.sha256(json.dumps(values, separators=(',', ':')).encode()).hexdigest()

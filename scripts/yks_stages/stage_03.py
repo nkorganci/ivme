@@ -76,7 +76,7 @@ def database_evidence(app):
            'contentFormat',s.content_format,'coverageState',s.coverage_state,
            'expectedQuestions',s.expected_questions,'linkedQuestions',coalesce(o.linked,0),
            'pendingOccurrences',coalesce(o.pending,0),'extractorVersion',s.extractor_version,
-           'coverageEvidence',s.coverage_evidence)) ORDER BY s.source_sha256),'[]')
+           'coverageEvidence',s.coverage_evidence) ORDER BY s.source_sha256),'[]')
           FROM learning_catalog.pdf_sources s LEFT JOIN o USING(source_sha256);""")
     return {'bankStamp': stamp, 'sources': json.loads(rows), 'sourceReadOnly': True}
 

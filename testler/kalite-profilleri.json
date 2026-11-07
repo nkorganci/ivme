@@ -365,6 +365,85 @@
       "args": [
         "testler/yks-taxonomy-test.py"
       ]
+    },
+    "yks-source-resolver": {
+      "kind": "python",
+      "args": [
+        "testler/yks-source-resolver-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_kaynak.py",
+        "scripts/yks_birlestirme.py",
+        "testler/yks-source-resolver-test.py",
+        "scripts/content-label-audit.py",
+        "scripts/content-label-reconcile.py",
+        "scripts/content-label-refresh.py",
+        "scripts/inspect-label-sources.py",
+        "scripts/pdf-bank-audit.py",
+        "scripts/pdf-source-copy.py",
+        "scripts/supplemental-pdf-inventory.py"
+      ]
+    },
+    "yks-pdf-resolver-db": {
+      "kind": "backend",
+      "args": [
+        "SourceFileResolverTest,TopicPdfServiceTest,PdfReviewLabelsTest"
+      ],
+      "inputs": [
+        "backend/pom.xml",
+        "backend/src/main/java/com/hedefyks/topicpdf/SourceFileResolver.java",
+        "backend/src/main/java/com/hedefyks/topicpdf/TopicPdfService.java",
+        "backend/src/main/java/com/hedefyks/review/PdfReviewLabels.java",
+        "backend/src/test/java/com/hedefyks/topicpdf/SourceFileResolverTest.java"
+      ]
+    },
+    "yks-archive-preparation": {
+      "kind": "python",
+      "args": [
+        "testler/yks-archive-preparation-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_arsiv_hazirla.py",
+        "scripts/yks_kaynak.py",
+        "scripts/yks_birlestirme.py",
+        "testler/yks-archive-preparation-test.py"
+      ]
+    },
+    "yks-answer-observations": {
+      "kind": "python",
+      "args": [
+        "testler/yks-answer-observations-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_cevap_on_tarama.py",
+        "scripts/yks_pdf_on_tarama.py",
+        "testler/yks-answer-observations-test.py",
+        "scripts/yks_ocr_on_tarama.py",
+        "scripts/pdf_ocr_cache.py"
+      ]
+    },
+    "yks-key-pilot": {
+      "kind": "python",
+      "args": [
+        "testler/yks-key-pilot-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_anahtar_pilotu.py",
+        "scripts/yks_cevap_on_tarama.py",
+        "testler/yks-key-pilot-test.py"
+      ]
+    },
+    "yks-exact-reuse": {
+      "kind": "python",
+      "args": [
+        "testler/yks-exact-reuse-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_pilot_tekrar_kabul.py",
+        "scripts/yks_soru_pilotu.py",
+        "scripts/yks_anahtar_pilotu.py",
+        "testler/yks-exact-reuse-test.py"
+      ]
     }
   },
   "profiles": {
@@ -575,6 +654,48 @@
         "Anlamsal belirsizlikleri açıklayıp yayın kapısını koru; aday üretimi canlı yayın değildir."
       ],
       "nextAction": "YKS-02 kabulünden sonra aday konu ağacını üret; YKS-05 uyumluluğa devam et."
+    },
+    "YKS-05": {
+      "checks": [
+        "yks-source-resolver",
+        "yks-pdf-resolver-db"
+      ],
+      "remainingAcceptance": [
+        "Gerçek okuyucu/yazıcı bağımlılık haritası ve üretici/kimlik uyumu.",
+        "Tüm kaynak köklerinde eski URL/kimlik ile yeni konum eşdeğerliği; canlı geçiş YKS-11."
+      ],
+      "nextAction": "Üretici bağımlılıklarını ve merkezi konum projeksiyonunu tamamla; mevcut canlı kökü koru."
+    },
+    "YKS-06": {
+      "checks": [
+        "yks-archive-preparation"
+      ],
+      "remainingAcceptance": [
+        "Gerçek arşiv hazırlığı, tüm hash ve özgün yol kapsamı.",
+        "YKS-04/05 kabulü ve yayın yapılmadan eski/yeni yol pilotu."
+      ],
+      "nextAction": "PREPARED hedefi ve kökenleri doğrula; pilot öncesi ACTIVE yapma."
+    },
+    "YKS-07": {
+      "checks": [
+        "yks-answer-observations",
+        "yks-key-pilot"
+      ],
+      "remainingAcceptance": [
+        "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
+        "Tek anahtar pilotu tam arşiv veya soru çıkarım kabulü değildir."
+      ],
+      "nextAction": "Basılı anahtarı iki yöntemle doğrula; sonra soru kırpımı/tekrar karşılaştırması."
+    },
+    "YKS-08": {
+      "checks": [
+        "yks-exact-reuse"
+      ],
+      "remainingAcceptance": [
+        "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
+        "Tek on iki soruluk pilot bütün tekrar taramasını bitirmez."
+      ],
+      "nextAction": "Mevcut kanonik soruları yeniden ekleme; tam çıkarım için kaynak/cevap/konu kanıtlarını tamamla."
     }
   }
 }

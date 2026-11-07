@@ -63,6 +63,15 @@ Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açıl
 Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
 varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 
+## Mevcut araçlardan devam
+
+`ivme.py yks adim YKS-04 --resume` güncel katalog snapshot'ı ve MEBİ ağaç adayı
+üretir. Runtime VERIFIED, aday/kimlik koruma kapsamıdır; rapordaki
+`readyForPublication=false` kaldırılmadan tam anlamsal kabul değildir. Branşın
+kaynak ünite kuralı `scripts/yks_taxonomy.py` içindedir; bilinmeyen yeni üniteyi
+zorla sınıflandırma. Eski geniş kapsamdan bütün alt başlıklara ustalık yayma.
+Güncel aday ve kalan kapsam sayısı görev tablosu/etki raporundan okunur.
+
 ## Durum, BITTI ve devam kaydı
 
 - Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,

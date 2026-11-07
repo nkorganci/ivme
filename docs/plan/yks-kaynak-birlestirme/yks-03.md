@@ -1,4 +1,4 @@
-# YKS-03 — Kesin PDF kopyası ve aktarım kapsamı
+# YKS-03 — Kesin PDF kopyası ve aktarım kapsamı — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)

@@ -63,6 +63,15 @@ Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açıl
 Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
 varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 
+## Mevcut araçlardan devam
+
+`python scripts/yks_arsiv_hazirla.py` doğrulanmış fiziksel envanterden bağımsız,
+geri alınabilir hazırlık yapar. `arsiv-hazirlik/archive-preparation-report.json`
+ve YKS/Katalog/hazirlanan-yollar.json kontrol edilir. PREPARED, canlı geçiş
+anlamına gelmez. Başarılı hazırlığı yalnız değişen kaynak/algoritma veya hash
+hatasıyla yeniden çalıştır. Hardlink yedek değildir; kaynak verisine yerinde
+mutasyon yapılmaz. YKS-04/05 ve pilot kabulü açıkken başlığı BITTI yapma.
+
 ## Durum, BITTI ve devam kaydı
 
 - Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,

@@ -63,6 +63,15 @@ Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açıl
 Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
 varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 
+## Mevcut araçlardan devam
+
+`yks_soru_pilotu.py` kaynak cevap kanıtlı 12 sorunun kırpımını ve güncel bütün
+YKS bankasına metin/görsel karşılaştırmasını hazırlar. `yks_pilot_tekrar_kabul.py`
+tam içerik, seçenek, sayı, güncel kayıt sürümü, görsel hash'i ve iki basılı cevap
+okuması eşleşmeden eski kanonik soruyu kullanmaz. `soru-pilotu/` raporlarını oku;
+eski soruya yeni kodla INSERT üretme. `exact-reuse-report.json` üretim bankasına
+hiçbir yazım yapmaz ve diğer PDF'lerin taramasını tamamlamış sayılmaz.
+
 ## Durum, BITTI ve devam kaydı
 
 - Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,

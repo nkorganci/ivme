@@ -240,17 +240,17 @@ imleç, hash doğrulaması, bağımsız pilot/tam kapıları ve eski girdiye dev
 kuruldu. 14/14 araç testi, gerçek run, ikinci geçişte reuse ve hash doğrulaması geçti.
 Kanıt: `veri/yks-birlestirme/current.json` ve `veri/kalite/YKS-00/`.
 
-## 15.01 — YKS-01: baseline, yedek ve geri dönüş
+## 15.01 — YKS-01: baseline, yedek ve geri dönüş — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-01.md). Güncel sistemin korunacak
 kimlikleri ve geri yükleme kanıtı alınır; bu aşama kaynak temizliği değildir.
 
-## 15.02 — YKS-02: dört kaynak envanteri
+## 15.02 — YKS-02: dört kaynak envanteri — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-02.md). Tüm dosyalar ve ZIP üyeleri,
 kökenleri ve içerik kimlikleriyle kapsanır; hedefe kendini yeniden taratma engellenir.
 
-## 15.03 — YKS-03: dosya tekrarı ve işlenme ayrımı
+## 15.03 — YKS-03: dosya tekrarı ve işlenme ayrımı — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-03.md). Kesin kopya, benzer belge,
 aynı soru ve kısmi aktarım ayrı kararlardır. Henüz dosya silinmez.

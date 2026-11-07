@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
 import uuid
 
 APP = Path(__file__).resolve().parents[1]
@@ -41,14 +42,23 @@ def signature(value):
 def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
+    # Keep the temporary basename bounded on Windows, even when the final name
+    # is a full content hash in a nested evidence folder.
+    temporary = path.with_name('.yks-' + uuid.uuid4().hex + '.tmp')
     try:
         with temporary.open('w', encoding='utf-8', newline='\n') as output:
             json.dump(value, output, ensure_ascii=False, indent=2)
             output.write('\n')
             output.flush()
             os.fsync(output.fileno())
-        os.replace(temporary, path)
+        for attempt in range(12):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError:
+                if attempt == 11:
+                    raise
+                time.sleep(min(0.05 * 2**attempt, 0.5))
     finally:
         if temporary.exists():
             temporary.unlink()

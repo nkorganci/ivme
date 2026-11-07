@@ -8,10 +8,7 @@ import com.hedefyks.review.PdfReviewLabels;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,6 +45,10 @@ public class TopicPdfService {
     private final List<ReviewedLink> curriculumLinks;
     private PdfArchiveRegistry archive;
     private PdfReviewLabels labels;
+    private SourceFileResolver sourceFiles = new SourceFileResolver();
+
+    @Autowired
+    public void setSourceFiles(SourceFileResolver resolver) { this.sourceFiles = resolver; }
 
     @Autowired(required = false)
     public void setArchive(PdfArchiveRegistry archive) { this.archive = archive; }
@@ -319,37 +320,7 @@ public class TopicPdfService {
         if (entry == null || archived(entry) || !"available".equals(entry.item().status()) || sourceRoot == null) {
             throw ApiException.notFound("PDF bulunamadı.");
         }
-        String relative = entry.relativePath().replace('\\', '/');
-        Path pathValue = Path.of(relative);
-        if (pathValue.isAbsolute() || relative.contains("..") || !relative.toLowerCase(Locale.ROOT).endsWith(".pdf")) {
-            throw ApiException.notFound("PDF bulunamadı.");
-        }
-        try {
-            Path root = sourceRoot.toRealPath();
-            Path file = root.resolve(pathValue).normalize();
-            if (!file.startsWith(root) || !Files.isRegularFile(file, LinkOption.NOFOLLOW_LINKS)
-                    || !file.toRealPath().startsWith(root)
-                    || !entry.sha256().matches("[0-9a-f]{64}")) {
-                throw ApiException.notFound("PDF bulunamadı.");
-            }
-            if (!sha256(file).equals(entry.sha256())) throw new PdfChangedException();
-            return new PathResource(file);
-        } catch (IOException ex) {
-            throw ApiException.notFound("PDF bulunamadı.");
-        }
+        return new PathResource(sourceFiles.resolve(sourceRoot, entry.relativePath(), entry.sha256()));
     }
 
-    private String sha256(Path file) throws IOException {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            try (InputStream in = Files.newInputStream(file)) {
-                byte[] buffer = new byte[1024 * 1024];
-                int count;
-                while ((count = in.read(buffer)) != -1) digest.update(buffer, 0, count);
-            }
-            return java.util.HexFormat.of().formatHex(digest.digest());
-        } catch (NoSuchAlgorithmException ex) {
-            throw new IllegalStateException(ex);
-        }
-    }
 }

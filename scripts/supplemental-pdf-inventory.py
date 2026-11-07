@@ -7,6 +7,7 @@ curriculum approval. No answer keys become labels.
 import hashlib
 import json
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 import pymupdf
 
 APP = Path(__file__).resolve().parents[1]
@@ -37,7 +38,7 @@ def main():
     old_path = OUT / 'supplemental-pdf-inventory.json'
     old = {r['relativePath']: r for r in json.loads(old_path.read_text(encoding='utf8'))['sources']} if old_path.exists() else {}
     sources = []
-    for p in sorted(ROOT.rglob('*.pdf')):
+    for p in sorted(iter_resource_paths(ROOT, '*.pdf')):
         if 'ogm-materyal' in p.relative_to(ROOT).parts:
             continue
         relative = p.relative_to(ROOT).as_posix()

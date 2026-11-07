@@ -1,4 +1,4 @@
-# YKS-02 — Dört kaynak ve ZIP üyelerinin envanteri
+# YKS-02 — Dört kaynak ve ZIP üyelerinin envanteri — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)

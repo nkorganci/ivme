@@ -63,6 +63,15 @@ Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açıl
 Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
 varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 
+## Mevcut araçlardan devam
+
+`yks_pdf_on_tarama.py`, `yks_ocr_on_tarama.py` ve `yks_cevap_on_tarama.py
+--with-ocr` mevcut içerik/sayfa/model önbelleğini kullanır. Çıktılar
+`pdf-on-tarama/` altındadır; kaynakta yazım yoktur. Metinde anahtar bulunmaması,
+anahtarın yokluğu değildir. `yks_anahtar_pilotu.py` yalnız bir basılı anahtar
+kırpımını yerel Qwen'e okutmuş kanıtı kullanır; model digest/istem/kırpım hash'i
+uyuşuyorsa yeniden model çağırma. Tek kaynak pilotunu tam YKS-07 kabulü sayma.
+
 ## Durum, BITTI ve devam kaydı
 
 - Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,

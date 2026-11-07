@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 import shutil
 
 APP = Path(__file__).resolve().parents[1]
@@ -32,7 +33,7 @@ def known_files():
             yield path, item.get('sourceSha256', '')
     for root in (ARCHIVE, INTAKE):
         if root.exists():
-            for path in root.rglob('*.pdf'):
+            for path in iter_resource_paths(root, '*.pdf'):
                 if path.is_file():
                     yield path, ''
 

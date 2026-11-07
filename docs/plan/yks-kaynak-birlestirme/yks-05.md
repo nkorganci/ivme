@@ -63,6 +63,16 @@ Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açıl
 Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
 varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
 
+## Mevcut araçlardan devam
+
+`python scripts/yks_bagimlilik_haritasi.py` okuyucu/yazıcı bağımlılıklarını
+`yol-uyumluluk/dependency-map.json` içine hash ve satırlarıyla yazar. REQUIRED
+satırlarını tamamlanmış sayma. Ortak Python çözümleyici `scripts/yks_kaynak.py`,
+backend çözümleyici `SourceFileResolver` sınıfıdır. Aktif konum projeksiyonu
+verilmedikçe özgün dosya erişimi sürer. Eski tam-kök taramalarında YKS hazırlığı
+ikinci kaynak olarak alınmaz. `kalite calistir YKS-05` otomatik güvenlik/servis
+regresyonudur; Excel ana kaynak koruması ve kalan üretici uyumu ayrıca gerekir.
+
 ## Durum, BITTI ve devam kaydı
 
 - Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,

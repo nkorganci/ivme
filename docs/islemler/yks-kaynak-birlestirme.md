@@ -30,3 +30,46 @@ Başka bir görev dosyasının bulunması yürütücüsünün mevcut olduğu anl
 Kabul geçince görev ve plan başlığında **BITTI**, durum tablosunda
 **TAMAMLANDI — BITTI** tutulur. Pilot kabulü bütün adımı bitirmez. Kalan gerçek
 iş ve tek sonraki komut devirde güncellenir.
+
+
+## Bağımsız, geri alınabilir hazırlık
+
+YKS-02/03 doğrulanınca özgün kaynaklara yalnız okuma yapan araçlar aşağıdadır.
+Bunların PASS sonucu YKS-04–10 anlamsal/pilot kabulünün yerine geçmez.
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pdf_on_tarama.py --workers 3
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_cevap_on_tarama.py
+python scripts/yks_arsiv_hazirla.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_anahtar_pilotu.py --prepare-only
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_anahtar_pilotu.py
+```
+
+Ön tarama, mevcut PDF gözlem önbelleğini içerik hash/sürümüyle kullanır. Hiçbir
+metin anahtarı bulunmayan belgeyi anahtarsız ilan etmez; OCR/görsel inceleme
+bekler. Qwen pilotu yalnız basılı anahtar kırpımını okur, soruları çözmez; model
+digest, kırpım, istem ve seçeneklerle önbelleklenir, pipeline model kilidini paylaşır.
+
+Arşiv hazırlığı büyük immutable kaynakları aynı diskte hardlink ile yerleştirir;
+bu yedek değildir. Operasyonel metadata kopyalanır. Katalog/hazirlanan-yollar.json
+PREPARED kalır; çalışan kaynak kökü, soru bankası ve öğrenci kayıtları değişmez.
+Eski tam-kök taramaları hazırlanan YKS ağacını ortak gezerle dışlar. Java ve Python
+çözümleyiciler aktif projeksiyon verilmediğinde özgün dosya erişimini korur.
+Bir hedef/hash hatası, başka dosyaya sessiz dönüşe izin vermez. Gerçek etkinleştirme
+ve özgün yolların tasfiyesi yalnız YKS-11/YKS-13 kabulünden sonra yapılır.
+
+
+Eksik OCR ve soru/tekrar pilotu da bağımsız kanıt üretir:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_ocr_on_tarama.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_cevap_on_tarama.py --with-ocr
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_soru_pilotu.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_tekrar_kabul.py
+```
+
+OCR, geçerli kaynak/sayfa/model önbelleğini kullanır; yalnız eksik sayfayı okur.
+On iki soruluk pilotta basılı anahtar, kaynak kırpımı ve güncel tam banka metin/görsel
+karşılaştırması birlikte gerekir. `exact-reuse-report.json` yalnız eski soruyu
+kullanma kanıtıdır; yeni soru aktarma veya öğretmen onayı vermez. Üretim bankasına
+hiçbir pilot aracı yazmaz. Mevcut kabul edilmiş PDF paketleri ve soru kodları korunur.

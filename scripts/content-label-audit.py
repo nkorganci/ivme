@@ -11,6 +11,7 @@ import re
 import zipfile
 from collections import Counter
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 
 APP = Path(__file__).resolve().parents[1]
 ROOT = APP.parent
@@ -48,7 +49,7 @@ def main():
             pdf_paths.setdefault(p.resolve(),[]).append(item['key'])
         elif item['availability'] == 'available':
             failures.append({'key':item['key'],'reason':'PDF_DISAPPEARED'})
-    physical_pdfs = set(p.resolve() for p in (ROOT / 'Kaynaklar').rglob('*.pdf'))
+    physical_pdfs = set(p.resolve() for p in iter_resource_paths(ROOT / 'Kaynaklar', '*.pdf'))
     for p in sorted(physical_pdfs-set(pdf_paths)):
         failures.append({'source':str(p.relative_to(ROOT)),'reason':'PDF_NOT_LABELLED'})
     raw_codes = set()
@@ -92,7 +93,7 @@ def main():
     html_branches = {'biyoloji':['biyoloji'],'cografya':['cografya'],'din kulturu':['din'],
         'felsefe':['felsefe'],'fizik':['fizik'],'kimya':['kimya'],'matematik':['matematik','geometri'],
         'tarih':['tarih'],'inkilap':['tarih'],'turk dili':['edebiyat','turkce']}
-    for p in sorted((ROOT / 'Kaynaklar').rglob('*.html')):
+    for p in sorted(iter_resource_paths(ROOT / 'Kaynaklar', '*.html')):
         branches = next((ids for stem,ids in html_branches.items() if stem in p.stem.lower()),None)
         if p.name != 'index.html' and not branches:
             failures.append({'source':str(p),'reason':'SOLUTION_INDEX_SCOPE_MISSING'})
@@ -104,7 +105,7 @@ def main():
             'grades':[int(grade[1])] if grade else [],'contentFormat':'CALISMA_REHBERI','teacherApproved':False})
     archives = []
     pdf_hashes = {i['sourceSha256']:i['key'] for i in pdf['items'] if i.get('sourceSha256')}
-    for p in sorted((ROOT / 'Kaynaklar').rglob('*.zip')):
+    for p in sorted(iter_resource_paths(ROOT / 'Kaynaklar', '*.zip')):
         members = []
         with zipfile.ZipFile(p) as archive:
             for member in archive.infolist():
@@ -120,12 +121,12 @@ def main():
     exclusions = [{'source':p.relative_to(ROOT).as_posix(),'reason':'PERSONAL_PHOTOGRAPH_NOT_EDUCATIONAL_CONTENT'}
         for p in sorted((ROOT / 'Kaynaklar/resimler').glob('*.jpeg'))]
     exclusions.extend({'source':p.relative_to(ROOT).as_posix(),'reason':'REPOSITORY_DOCUMENTATION'}
-        for p in sorted((ROOT / 'Kaynaklar').rglob('README.md')))
-    for p in sorted((ROOT / 'Kaynaklar').rglob('ICINDEKILER.md')):
+        for p in sorted(iter_resource_paths(ROOT / 'Kaynaklar', 'README.md')))
+    for p in sorted(iter_resource_paths(ROOT / 'Kaynaklar', 'ICINDEKILER.md')):
         references.append({'source':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
             'kind':'SOURCE_INDEX','categoryIds':[c['id'] for c in cats.values() if c.get('origin')=='CURRICULUM' and not c.get('subtopic')],
             'basis':'EXPLICIT_SOURCE_INDEX_SCOPE','contentFormat':'CALISMA_REHBERI','teacherApproved':False})
-    all_files = {p.relative_to(ROOT).as_posix() for p in (ROOT / 'Kaynaklar').rglob('*') if p.is_file()}
+    all_files = {p.relative_to(ROOT).as_posix() for p in iter_resource_paths(ROOT / 'Kaynaklar') if p.is_file()}
     accounted = {p.relative_to(ROOT).as_posix() for p in pdf_paths}
     accounted.update(r['source'] for r in references+archives+exclusions)
     for p in sorted(all_files-accounted):

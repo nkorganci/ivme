@@ -1,4 +1,4 @@
-# YKS-01 — Başlangıç kaydı, yedek ve geri dönüş
+# YKS-01 — Başlangıç kaydı, yedek ve geri dönüş — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)

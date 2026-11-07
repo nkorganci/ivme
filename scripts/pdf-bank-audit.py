@@ -12,6 +12,7 @@ import io
 import json
 import os
 from pathlib import Path
+from yks_kaynak import iter_resource_paths
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,7 +118,7 @@ def main():
                                 else 'Soru bağı yok'),
                      'sha256': item.get('sourceSha256', ''), 'relativePath': path, 'sourceScope': scope})
 
-    physical_paths = {path.relative_to(ARCHIVE).as_posix().casefold() for path in ARCHIVE.rglob('*.pdf')}
+    physical_paths = {path.relative_to(ARCHIVE).as_posix().casefold() for path in iter_resource_paths(ARCHIVE, '*.pdf')}
     unlisted = physical_paths - catalog_paths
     if unlisted:
         raise RuntimeError(f'{len(unlisted)} physical PDFs are missing from the catalog: {sorted(unlisted)[:5]}')
