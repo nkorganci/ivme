@@ -1,4 +1,4 @@
-# YKS-00 — Devam ve çalışma altyapısı
+# YKS-00 — Devam ve çalışma altyapısı — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
@@ -19,6 +19,12 @@ adıma devam et; tek adım istenmişse o adımın dışına çıkma.
 **İlgili mevcut tarif:** [Test/devir tarifi](../../islemler/test-ve-devir.md).
 
 ## Girdiler
+
+Gerçek kabul: `python scripts/ivme.py kalite calistir YKS-00` 14/14 PASS;
+`yks baslat`, `yks adim YKS-00 --resume` ve `yks dogrula YKS-00` başarılı.
+İkinci adım çalıştırması `reused=true`; kaynak yazımı/model çağrısı sıfır.
+Runtime `veri/yks-birlestirme/current.json` üzerinden bulunur. Aşağıdaki maddeler
+tamamlanan işin kabul sözleşmesidir; aynı girdide yeniden geliştirme yapma.
 
 - Ana plan, görev tablosu, devir ve kullanıcı kapsamı.
 - Mevcut ivme.py, kalite profilleri ve pipeline iş/kilit sözleşmeleri.

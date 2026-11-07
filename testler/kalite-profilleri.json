@@ -3,13 +3,35 @@
   "checks": {
     "fizik-pilot-node": {
       "kind": "node",
-      "args": ["--test-reporter=tap", "testler/fizik-pilot.test.mjs", "testler/interaktif-hareket.test.mjs"],
-      "inputs": ["frontend/src/learn/physics/**/*", "frontend/src/interactive/motion/**/*", "frontend/public/ogren/fizik/**/*", "frontend/src/data/curriculumIdentities.json", "testler/fizik-pilot.test.mjs", "testler/interaktif-hareket.test.mjs", "scripts/fizik-pilot-ollama.py"]
+      "args": [
+        "--test-reporter=tap",
+        "testler/fizik-pilot.test.mjs",
+        "testler/interaktif-hareket.test.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/physics/**/*",
+        "frontend/src/interactive/motion/**/*",
+        "frontend/public/ogren/fizik/**/*",
+        "frontend/src/data/curriculumIdentities.json",
+        "testler/fizik-pilot.test.mjs",
+        "testler/interaktif-hareket.test.mjs",
+        "scripts/fizik-pilot-ollama.py"
+      ]
     },
     "fizik-pilot-ui": {
       "kind": "node",
-      "args": ["--test-reporter=tap", "testler/fizik-pilot-ui.mjs"],
-      "inputs": ["frontend/src/learn/**/*", "frontend/src/interactive/**/*", "frontend/src/theme.css", "frontend/public/ogren/fizik/**/*", "testler/fizik-pilot-ui.mjs", "testler/lib/*.mjs"]
+      "args": [
+        "--test-reporter=tap",
+        "testler/fizik-pilot-ui.mjs"
+      ],
+      "inputs": [
+        "frontend/src/learn/**/*",
+        "frontend/src/interactive/**/*",
+        "frontend/src/theme.css",
+        "frontend/public/ogren/fizik/**/*",
+        "testler/fizik-pilot-ui.mjs",
+        "testler/lib/*.mjs"
+      ]
     },
     "laboratuvar-node": {
       "kind": "node",
@@ -277,12 +299,30 @@
         "testler/matematik-lab-yapi.test.mjs",
         "testler/lab-*.test.mjs"
       ]
+    },
+    "yks-birlestirme-runtime": {
+      "kind": "python",
+      "args": [
+        "testler/yks-birlestirme-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_birlestirme.py",
+        "scripts/yks_stages/*.py",
+        "scripts/ivme.py",
+        "testler/yks-birlestirme-test.py"
+      ]
     }
   },
   "profiles": {
     "PHYS-PILOT-01": {
-      "checks": ["fizik-pilot-node", "fizik-pilot-ui"],
-      "remainingAcceptance": ["Fizik öğretmeni incelemesi", "Öğrenciyle yardımsız ve gecikmeli aktarım gözlemi"],
+      "checks": [
+        "fizik-pilot-node",
+        "fizik-pilot-ui"
+      ],
+      "remainingAcceptance": [
+        "Fizik öğretmeni incelemesi",
+        "Öğrenciyle yardımsız ve gecikmeli aktarım gözlemi"
+      ],
       "nextAction": "docs/icerik/fizik-hareket-kuvvet-pilot.md kapsamındaki tek pilotu kullanıcıyla değerlendir; başka ders üretme."
     },
     "MAT-LAB-01": {
@@ -431,6 +471,17 @@
         "Öğretmen incelemesi ve gerçek öğrenciyle gecikmeli aktarım gözlemi"
       ],
       "nextAction": "docs/icerik/matematik-konu-listesi.md lab tablosundaki ilk LAB YOK/KISMİ satırı."
+    },
+    "YKS-00": {
+      "title": "YKS birlestirme devam ve kontrol altyapisi",
+      "checks": [
+        "yks-birlestirme-runtime"
+      ],
+      "remainingAcceptance": [
+        "YKS-01 yedek ve geri yukleme bu profilin kabulune dahil degildir.",
+        "Kaynak tasima, katalog yayini veya soru aktarimi bu asamada yapilmaz."
+      ],
+      "nextAction": "Gercek run ve ikinci gecis/reuse kanitini gorev tablosuna yaz; YKS-01 baseline ve yedeklere devam et."
     }
   }
 }

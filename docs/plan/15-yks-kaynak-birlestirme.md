@@ -30,7 +30,8 @@ tek başına yeni işlem isteği değildir.
 6. Sonraki ajana tek somut işlem bırak: kapsam + çıktı/kanıt + gerçek doğrulama +
    kalan iş + sonraki komut veya açık doğal dil görev talimatı.
 7. Yalnız belgeler kaydedilmişken aşamayı, runner'ı, DB geçişini veya modeli çalışmış
-   gibi gösterme. Bu belgeler çalışma sözleşmesidir; otomatik yürütücü henüz yoktur.
+   gibi gösterme. Hangi yürütücünün gerçekten mevcut olduğu `ivme.py yks plan`
+   çıktısından doğrulanır; görev dosyasının bulunması yürütücünün varlığı değildir.
 8. Bütün kabul koşulları geçen adımın bu plandaki ve görev dosyasındaki başlığına
    **— BITTI** ekle; görev tablosuna **TAMAMLANDI — BITTI** ve kanıtı yaz.
    Biten görev/başlık silinmez. Kısmi veya yalnız pilot işi bitmiş sayma.
@@ -226,14 +227,18 @@ Seçilen adım için gereken önceki alt parti eksikse ajan bunu açıkça kayde
 Tüm zincir talimatında önce gerekli alt partiyi tamamlar; tek adım talimatında
 diğer aşamayı kendiliğinden çalıştırmaz.
 
-**Önerilen `ivme.py yks ...` arayüzü henüz uygulanmamıştır.** Bu adları mevcut
-komut gibi çalıştırma. Adımlar bugün görev dosyalarıyla ajan tarafından seçilir;
-YKS-00 araç geliştirmesinde gerçek komut/yardım/testler eklenirse bu belge güncellenir.
+**Mevcut giriş:** `python scripts/ivme.py yks plan|durum|baslat|adim|dogrula`.
+`plan`/`durum` iş başlatmaz; `baslat` kontrol kaydı oluşturur. `adim YKS-00 --resume`
+araç testlerini kanıtlar; `dogrula YKS-00` hash'leri denetler. Diğer aşamalar için
+`yks plan` çıktısındaki `implemented` alanını kontrol et; olmayan yürütücü reddedilir.
+[Gerçek komut tarifi](../islemler/yks-kaynak-birlestirme.md).
 
-## 15.00 — YKS-00: devam altyapısı
+## 15.00 — YKS-00: devam altyapısı — BITTI
 
-[Adım görevini aç](yks-kaynak-birlestirme/yks-00.md). Plan ve mevcut durum kaydı
-önce kullanılır; devam imleci/runner/test profili geliştirmesi henüz yapılmış değildir.
+[Adım görevini aç](yks-kaynak-birlestirme/yks-00.md). Kontrol kaydı, OS kilidi,
+imleç, hash doğrulaması, bağımsız pilot/tam kapıları ve eski girdiye devam engeli
+kuruldu. 14/14 araç testi, gerçek run, ikinci geçişte reuse ve hash doğrulaması geçti.
+Kanıt: `veri/yks-birlestirme/current.json` ve `veri/kalite/YKS-00/`.
 
 ## 15.01 — YKS-01: baseline, yedek ve geri dönüş
 

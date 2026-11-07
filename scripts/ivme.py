@@ -17,6 +17,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py ogretim dogrula|aktar Akıllı Öğretmen içerikleri (scripts/ogretim-icerigi.py)
   python scripts/ivme.py icerik durum|calistir|kontrol <kavram>   TAS-09 kaynaklı konu içerik hattı (scripts/icerik_hatti.py)
   python scripts/ivme.py video durum|calistir|kontrol <gorev>    TAS-11 zamanlı metin/kare/ipucu paketi (scripts/video_hatti.py)
+  python scripts/ivme.py yks plan|durum|baslat|adim|dogrula ...  kontrollü YKS birleştirme ve kanıtlı devam
 """
 
 import json
@@ -405,6 +406,10 @@ def cmd_kalite(args):
     return run([python_for_tools(), "-X", "utf8", "scripts/kalite.py", *args]).returncode
 
 
+def cmd_yks(args):
+    return run([sys.executable, "-X", "utf8", "scripts/yks_birlestirme.py", *(args or ["durum"])]).returncode
+
+
 def cmd_devir_kontrol(args):
     """Claude Code Stop kancası: kod/belge değişmiş ama devir dosyası güncellenmemişse bir kez hatırlatır."""
     try:
@@ -427,7 +432,7 @@ def cmd_devir_kontrol(args):
 
 COMMANDS = {"devir-kontrol": cmd_devir_kontrol, "durum": cmd_durum, "bekle": cmd_bekle, "test": cmd_test, "kontrol": cmd_kontrol, "ui": cmd_ui,
             "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim,
-            "icerik": cmd_icerik, "video": cmd_video, "kalite": cmd_kalite}
+            "icerik": cmd_icerik, "video": cmd_video, "kalite": cmd_kalite, "yks": cmd_yks}
 
 
 def main(argv=None):
