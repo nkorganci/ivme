@@ -7,5 +7,10 @@ Açık uygulama işlerinin ayrıntıları yalnız numaralı adım dosyalarında 
 | 7 | [Etiket kalitesi ve insan incelemesi](07-etiket-kalitesi.md); 07.02 alan uzmanı/öğretmen kararı bekler |
 | 12 | [Kalan içerik ve yayın](12-icerik-ve-yayin.md); içerik kararları 7. adıma bağlıdır |
 | 14 | [KPSS sınavları](14-kpss.md); 14.02 Ön Lisans sıradadır |
+| 15 | [YKS kaynaklarını MEBİ düzeninde birleştirme](15-yks-kaynak-birlestirme.md); YKS-00–13 görev dosyaları, kanıtlı devam ve eski referansların korunması |
 
 [Kullanıcı rolleri ve yönetimi](../tasarim/kullanici-yonetimi.md) ayrı uygulama talimatı bekleyen tasarım önerisidir; açık uygulama adımı değildir.
+
+15. adımda kullanıcının özel talimatı geçerlidir: tamamlanan adımın başlığı ve görev
+dosyası **BITTI** işaretiyle korunur; kapanan adımlar silinmez. Görev tablosu tek
+güncel durum kaydıdır; başlıklardaki BITTI aynı durumun görünümüdür.

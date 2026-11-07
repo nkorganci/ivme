@@ -1,0 +1,79 @@
+# YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
+
+[Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
+[Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
+
+## Ajanın başlangıç talimatı
+
+Seçilen görev **YKS-07 / 15.07**. Önce `git status --short`,
+[AGENTS.md](../../../AGENTS.md), ana planın ortak sözleşmesi ve görev tablosundaki
+bu kimlik okunur. Geçerli tamamlanma kanıtını yeniden üretme. Bu dosyanın açılması
+tek başına işlem yetkisi değildir; kullanıcının son uygulama kapsamını esas al.
+Tüm zincir yetkilendirilmişse bağımlılıklar ve doğrulama kapıları geçtikçe sıradaki
+adıma devam et; tek adım istenmişse o adımın dışına çıkma.
+
+**Ön koşul:** YKS-02/03 envanter ve kapsam; pilot için YKS-06 hazırlık erişimi. Tam arşiv için ayrıca YKS-10.pilot kabulü.
+
+**Araç/model:** Önce mevcut önbellek/PyMuPDF/OCR; gereken kırpımda Qwen; Gemma yalnız pilot yarar gösterirse.
+
+**İlgili mevcut tarif:** [PDF kanıt hattı](../../islemler/pdf-kanit-hatti.md), [PDF/model sırası](../../islemler/pdf-ve-yerel-model.md).
+
+## Girdiler
+
+- Her benzersiz PDF ve ZIP PDF üyesi, önceki sayfa/çıkarım önbellekleri.
+- Test/bölüm/kitapçık kimlikleri, açık cevap tablosu ve ayrı resmî anahtar ilişkileri.
+
+## Yapılacaklar
+
+1. Önce temsilî pilot alt partisini seç; bütün ders/biçim risklerini örnekle. Ana görevi KISMI tut.
+2. Geçerli önbelleği kullan; metin katmanı ve sayfadaki raster/vektör soru panellerini değerlendir. Gerekli sayfa/bölgede OCR yap.
+3. Soru, test sınırı, ortak öncül, yeniden başlayan numara, anahtar ve basılı/fiziksel sayfayı ayrı kaydet.
+4. Aynı PDF veya aynı test/kitapçıkla doğrulanmış ayrı resmî anahtarı bağla. AI çözümü/video tek başına anahtar sayılmaz.
+5. Okunamayan/belirsiz sayfayı soru yok diye kapatma; kaynaksız cevabı yeni soru adayı yapma. Anlatım/özet PDF'sini koru.
+6. YKS-10.pilot geçince seçilen tam çalışma kapsamında aynı işlerden devam et; geçerli pilot işini tekrar yapma.
+
+## Üretilecek kanıt ve çıktı
+
+- Sayfa kapsam/okunabilirlik raporu, kaynaklı soru ve anahtar gözlemleri.
+- Pilot veya tam kapsam ayrı imleçleri; eksik/anahtarsız/belirsiz listeleri.
+
+Çıktıları `uygulama/veri/yks-birlestirme/<run-id>/yks-07/` altında
+manifest ve gerçek hash/sürüm kimlikleriyle kaydet. Mevcut kaynak/pipeline kanıtını
+kopya doğruluk deposuna dönüştürme; ona referans ver.
+
+## Kabul ve çift kontrol
+
+- Pilot çıktısı tam arşiv sonucu diye sunulmuyor.
+- Tam kapsamda her benzersiz PDF ve fiziksel sayfa gerekçeli durumda.
+- Anahtar var/yok/belirsiz ayrımı ve soru–test–cevap konumu kanıtlı.
+
+Otomatik çıktı/şema kontrolünü ilgili özgün kaynak ve uygulama davranışıyla
+karşılaştır. Modelin güven puanı, sahte test veya eski rapor tek başına kabul değildir.
+Pilot/tam arşiv kapsamı farklıysa ikisini ayrı yaz; pilot bütün görevi bitirmez.
+
+## Bu adımın sınırı
+
+Bankaya yayın yok; bütün PDF görsellerini gereksiz bulut modeline verme.
+
+## Başarısızlık ve geri dönüş
+
+Kaynak baytları korunur; yalnız yeni gözlem sürümü kullanılmaz. Eski geçerli OCR tutulur.
+
+Girdi/rapor eskimişse gerekçeyi kaydet; yalnız etkilenmiş iş yeniden açılır.
+Ön koşul veya kabul geçmeden tehlikeli sonraki iş yapılmaz. Güvenli bağımsız iş
+varsa son kullanıcı talimatının kapsamında sürdür; somut engeli gizleme.
+
+## Durum, BITTI ve devam kaydı
+
+- Başlangıçta görev tablosundaki gerçek durumu güncelle; runtime varsa bu adım,
+  kapsam ve son imleçle devam et. Runtime henüz yoksa yapılmış gibi kayıt uydurma.
+- Her önemli alt parti/engel/doğrulamada tabloya tamamlanan kapsam, kanıt ve kalan
+  tek işi yaz; oturum sonunu bekleme. Ana planın ilgili açık işini de güncelle.
+- **Bütün kabul ölçütleri geçince** bu dosyanın başlığına ve ana plandaki
+  **15.07 / YKS-07** başlığına `— BITTI` ekle. Görev tablosunda
+  `TAMAMLANDI — BITTI` ve gerçek kanıtı yaz. Bu işaret aynı durumun görünümüdür;
+  ayrı bir tamamlanma tablosu oluşturma. Biten görev dosyasını silme.
+- Kısmi/pilot veya doğrulama bekleyen işe BITTI yazma. Yeniden açılırsa BITTI
+  işaretini kaldır ve değişen girdi/hata nedenini `YENIDEN_ACILDI` kaydına ekle.
+- Sonraki somut işlem, ilgili adım, gerçek doğrulama sonucu ve kanıt yolu devirde
+  bulunmalı. Tüm zincir yetkilendirilmişse uygun sonraki adıma devam et.

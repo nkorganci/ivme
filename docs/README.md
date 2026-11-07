@@ -6,6 +6,7 @@ Görev için yalnız ilgili bölümü aç. `devam.md` oturum geçişini; klasör
 |---|---|
 | Etkin/yarım iş ve açık işler | [Devir](devam.md), [yol haritası](plan/README.md) |
 | Yapılan/kalan önemli işler, tamamlanma kanıtı ve tekrar çalışmayı önleme | [Güncel görev durum tablosu](gorev-durumu.md) |
+| MEBİ/OGM/müfredat/çıkmış kaynaklarını tek YKS arşivine birleştirme; seçilebilir adım görevleri | [15. adım ve YKS-00–13 görev dosyaları](plan/15-yks-kaynak-birlestirme.md) |
 | Sistem akışı ve veri sahipliği | [Mimari](mimari/README.md), [veri kaynakları](mimari/veri-kaynaklari.md) |
 | Yeni öğrenme kayıtlarının güvenilirliği ve referans DB kuralı | [Kayıt sözleşmesi](mimari/ogrenme-kayit-guvenilirligi.md) |
 | API, veri modeli, roller | [API ve mimari](sozlesmeler/api.md), [öğretmen doğrulaması](sozlesmeler/ogretmen-dogrulamasi.md) |
