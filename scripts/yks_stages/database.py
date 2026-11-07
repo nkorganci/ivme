@@ -1,5 +1,6 @@
 """Local PostgreSQL snapshot/backup helpers. Credentials stay in child environments."""
 import json
+from collections import deque
 import os
 from pathlib import Path
 import queue
@@ -61,10 +62,11 @@ class Snapshot:
     def __init__(self, cmd, env):
         self.cmd, self.env = cmd, env
         self.lines = queue.Queue()
+        self.errors = deque(maxlen=20)
 
     def __enter__(self):
         self.process = subprocess.Popen([*self.cmd, '-Atq'], env=self.env, stdin=subprocess.PIPE,
-                                        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         text=True, encoding='utf-8', errors='replace', bufsize=1)
         def read():
             for line in self.process.stdout:
@@ -72,7 +74,17 @@ class Snapshot:
             self.lines.put(None)
         self.reader = threading.Thread(target=read, daemon=True)
         self.reader.start()
-        self.execute("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY; SET LOCAL timezone='UTC';")
+        def read_errors():
+            for line in self.process.stderr:
+                secret = self.env.get('PGPASSWORD', '')
+                self.errors.append(line.replace(secret, '[REDACTED]') if secret else line)
+        self.error_reader = threading.Thread(target=read_errors, daemon=True)
+        self.error_reader.start()
+        try:
+            self.execute("BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY; SET LOCAL timezone='UTC';")
+        except BaseException:
+            self.__exit__(None, None, None)
+            raise
         return self
 
     def execute(self, sql, timeout=900):
@@ -88,7 +100,8 @@ class Snapshot:
             except queue.Empty:
                 raise TimeoutError('PostgreSQL snapshot query timed out') from None
             if line is None:
-                raise RuntimeError('PostgreSQL snapshot session closed unexpectedly')
+                self.error_reader.join(timeout=2)
+                raise RuntimeError('PostgreSQL snapshot session closed unexpectedly: ' + ''.join(self.errors)[-1500:])
             if line == marker:
                 return '\n'.join(result)
             result.append(line)
@@ -103,7 +116,8 @@ class Snapshot:
                 self.process.kill()
                 self.process.wait()
         self.reader.join(timeout=2)
-        for stream in (self.process.stdin, self.process.stdout):
+        self.error_reader.join(timeout=2)
+        for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
             try:
                 stream.close()
             except OSError:
@@ -174,15 +188,19 @@ def run_logged(arguments, env, log, timeout=3600):
                     process.wait()
 
 
-def backup_and_restore(app, database, folder, checkpoint):
+def backup_and_restore(app, database, folder, checkpoint, restore_connection=None, reuse_folder=None):
     from yks_birlestirme import digest, read_json, write_json
     cmd, env = connection(app, database)
-    admin = for_database(cmd, 'postgres')
+    restore_cmd, restore_env = restore_connection or (cmd, env)
+    admin = for_database(restore_cmd, 'postgres')
     bin_dir = Path(cmd[0]).parent
     arguments = []
     for flag in ('--host', '--port', '--username'):
         arguments.extend([flag, cmd[cmd.index(flag) + 1]])
-    existing = query(admin, env, "SELECT EXISTS(SELECT 1 FROM pg_database WHERE datname='ivme_test')")
+    restore_arguments = []
+    for flag in ('--host', '--port', '--username'):
+        restore_arguments.extend([flag, restore_cmd[restore_cmd.index(flag) + 1]])
+    existing = query(admin, restore_env, "SELECT EXISTS(SELECT 1 FROM pg_database WHERE datname='ivme_test')")
     if existing != 'f':
         raise RuntimeError('Existing ivme_test is protected; do not replace it')
     report_path = folder / (database + '-restore.json')
@@ -191,8 +209,42 @@ def backup_and_restore(app, database, folder, checkpoint):
         previous = read_json(report_path)
         if previous.get('status') == 'PASS' and dump.is_file() and digest(dump) == previous['dumpSha256']:
             return previous
-    print('Baseline: snapshot/fingerprints for ' + database, flush=True)
-    with Snapshot(cmd, env) as source:
+    reusable = None
+    if reuse_folder:
+        prior = Path(reuse_folder)
+        snapshot_file = prior / (database + '-snapshot.json')
+        old_dump = prior / (database + '.dump')
+        if snapshot_file.is_file() and old_dump.is_file():
+            candidate = read_json(snapshot_file)
+            proof_path = prior / (database + '-restore.json')
+            proof = read_json(proof_path) if proof_path.is_file() else {}
+            ready_path = prior / (database + '-dump-ready.json')
+            ready = read_json(ready_path) if ready_path.is_file() else {}
+            verified = (proof.get('status') == 'PASS' and proof.get('sourceDatabase') == database
+                        and proof.get('restoredRowsAndDigestsEqual') is True
+                        and proof.get('testDatabaseRemoved') is True
+                        and proof.get('tablesVerified') == len(candidate.get('tables', [])))
+            expected_hash = proof.get('dumpSha256') if verified else ready.get('dumpSha256')
+            if (candidate['database'] == database and candidate.get('tables') and expected_hash
+                    and digest(old_dump) == expected_hash
+                    and (verified or ready.get('snapshotSha256') == digest(snapshot_file))):
+                reusable = candidate
+                os.link(old_dump, dump)
+                write_json(folder / snapshot_file.name, candidate)
+                if verified:
+                    report = {**proof, 'dumpPath': str(dump), 'reusedVerificationFrom': str(proof_path)}
+                    write_json(report_path, report)
+                    checkpoint({'database': database, 'phase': 'restore-verified'})
+                    print('Baseline: reusing hash-verified restore proof for ' + database, flush=True)
+                    return report
+    if reusable:
+        tables, snapshot_id = reusable['tables'], reusable['snapshot']
+        source_size = reusable.get('databaseBytes', dump.stat().st_size * 10)
+        print('Baseline: reusing completed ' + database + ' dump; restore will verify every table', flush=True)
+    else:
+        print('Baseline: snapshot/fingerprints for ' + database, flush=True)
+    if not reusable:
+      with Snapshot(cmd, env) as source:
         source_size = int(source.execute('SELECT pg_database_size(current_database());'))
         if shutil.disk_usage(folder).free < RESERVE + source_size * 1.2:
             raise RuntimeError('Not enough backup disk headroom for ' + database)
@@ -201,24 +253,26 @@ def backup_and_restore(app, database, folder, checkpoint):
         snapshot_id = source.execute('SELECT pg_export_snapshot();')
         tables = table_fingerprints(source)
         snapshot_path = folder / (database + '-snapshot.json')
-        write_json(snapshot_path, {'database': database, 'snapshot': snapshot_id, 'tables': tables})
+        write_json(snapshot_path, {'database': database, 'snapshot': snapshot_id, 'databaseBytes': source_size, 'tables': tables})
         checkpoint({'database': database, 'phase': 'snapshot-complete'})
         print('Baseline: dumping ' + database, flush=True)
         run_logged([str(bin_dir / 'pg_dump.exe'), '--no-password', '--format=custom', '--compress=3',
                     *arguments, '--dbname', database, '--snapshot', snapshot_id, '--file', str(dump)],
                    env, folder / (database + '-dump.log'))
+        write_json(folder / (database + '-dump-ready.json'), {'database': database,
+                   'dumpSha256': digest(dump), 'snapshotSha256': digest(snapshot_path)})
     checkpoint({'database': database, 'phase': 'dump-complete'})
     print('Baseline: restoring ' + database + ' into isolated ivme_test', flush=True)
     created_oid = None
     try:
         # CREATE fails if another test process won the race; no existing DB is dropped.
-        query(admin, env, 'CREATE DATABASE ivme_test')
-        created_oid = query(admin, env, "SELECT oid FROM pg_database WHERE datname='ivme_test'")
+        query(admin, restore_env, 'CREATE DATABASE ivme_test')
+        created_oid = query(admin, restore_env, "SELECT oid FROM pg_database WHERE datname='ivme_test'")
         write_json(folder / (database + '-restore-owner.json'), {'database': 'ivme_test', 'oid': created_oid, 'source': database})
         run_logged([str(bin_dir / 'pg_restore.exe'), '--no-password', '--no-owner', '--no-privileges',
-                    '--exit-on-error', '--jobs=4', *arguments, '--dbname', 'ivme_test', str(dump)],
-                   env, folder / (database + '-restore.log'))
-        with Snapshot(for_database(cmd, 'ivme_test'), env) as restored:
+                    '--exit-on-error', '--jobs=4', *restore_arguments, '--dbname', 'ivme_test', str(dump)],
+                   restore_env, folder / (database + '-restore.log'))
+        with Snapshot(for_database(restore_cmd, 'ivme_test'), restore_env) as restored:
             after = table_fingerprints(restored)
         if tables != after:
             write_json(folder / (database + '-restore-difference.json'), {'expected': tables, 'actual': after})
@@ -229,10 +283,10 @@ def backup_and_restore(app, database, folder, checkpoint):
                   'sourceReadOnly': True, 'testDatabase': 'ivme_test', 'testDatabaseRemoved': False}
     finally:
         if created_oid:
-            actual = query(admin, env, "SELECT oid FROM pg_database WHERE datname='ivme_test'")
+            actual = query(admin, restore_env, "SELECT oid FROM pg_database WHERE datname='ivme_test'")
             if actual != created_oid:
                 raise RuntimeError('Restore DB identity changed; cleanup refused')
-            query(admin, env, 'DROP DATABASE ivme_test')
+            query(admin, restore_env, 'DROP DATABASE ivme_test')
     report['testDatabaseRemoved'] = True
     write_json(report_path, report)
     checkpoint({'database': database, 'phase': 'restore-verified'})

@@ -8,13 +8,14 @@ import zipfile
 import time
 
 from yks_birlestirme import digest, write_json
-from yks_stages.database import backup_and_restore, RESERVE
+from yks_stages.database import backup_and_restore, RESERVE, connection
 from yks_stages.evidence import backup_files
+from yks_stages.restore_cluster import PrivateRestoreCluster
 
 
 def inputs(app, store, state):
     files = ['scripts/yks_stages/stage_01.py', 'scripts/yks_stages/database.py',
-             'scripts/yks_stages/evidence.py',
+             'scripts/yks_stages/evidence.py', 'scripts/yks_stages/restore_cluster.py',
              'backend/src/main/resources/application-dev.yml']
     return {'version': 1, 'fileBase': str(app), 'files': {p: digest(app / p) for p in files},
             'pipelineConfigSha256': digest(app.parent / 'pipeline/.env'), 'runId': state['runId']}
@@ -59,8 +60,18 @@ def operation(app, store, state):
                 raise ValueError('Evidence archive CRC failed')
         write_json(folder / 'decision-evidence-manifest.json', metadata)
         databases = []
-        for database in ('ivme', 'ogm_ders'):
-            databases.append(backup_and_restore(app, database, folder, checkpoint))
+        old = state['stages'].get('YKS-01:full', {})
+        old_inputs = old.get('inputs', {})
+        yaml_path = 'backend/src/main/resources/application-dev.yml'
+        same_sources = old_inputs.get('files', {}).get(yaml_path) == digest(app / yaml_path) and old_inputs.get('pipelineConfigSha256') == digest(app.parent / 'pipeline/.env')
+        prior_folders = sorted((p for p in folder.parent.glob('attempt-*') if p != folder), reverse=True) if same_sources else []
+        source_cmd, _ = connection(app)
+        with PrivateRestoreCluster(Path(source_cmd[0]).parent, folder) as restore:
+            for database in ('ivme', 'ogm_ders'):
+                reuse_folder = next((p for p in prior_folders if (p / (database + '-restore.json')).is_file()
+                                     or (p / (database + '-dump-ready.json')).is_file()), None)
+                databases.append(backup_and_restore(app, database, folder, checkpoint,
+                                                   restore_connection=restore.connection, reuse_folder=reuse_folder))
         # A concurrently started image backup writes only .part until verified.
         # Reuse its immutable result instead of re-reading hundreds of thousands
         # of already captured image paths.

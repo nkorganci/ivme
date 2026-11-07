@@ -321,7 +321,8 @@
         "scripts/yks_stages/database.py",
         "scripts/yks_stages/evidence.py",
         "scripts/yks_stages/stage_01.py",
-        "testler/yks-baseline-test.py"
+        "testler/yks-baseline-test.py",
+        "scripts/yks_stages/restore_cluster.py"
       ]
     },
     "yks-inventory-safety": {
@@ -342,6 +343,27 @@
       "inputs": [
         "scripts/yks_stages/stage_03.py",
         "testler/yks-source-groups-test.py"
+      ]
+    },
+    "yks-private-restore": {
+      "kind": "python",
+      "args": [
+        "testler/yks-restore-cluster-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_stages/restore_cluster.py",
+        "testler/yks-restore-cluster-test.py"
+      ]
+    },
+    "yks-taxonomy-crosswalk": {
+      "inputs": [
+        "scripts/yks_taxonomy.py",
+        "scripts/yks_stages/stage_04.py",
+        "testler/yks-taxonomy-test.py"
+      ],
+      "kind": "python",
+      "args": [
+        "testler/yks-taxonomy-test.py"
       ]
     }
   },
@@ -517,7 +539,8 @@
     },
     "YKS-01": {
       "checks": [
-        "yks-baseline-safety"
+        "yks-baseline-safety",
+        "yks-private-restore"
       ],
       "remainingAcceptance": [
         "Gercek ivme ve ogm_ders dump/ivme_test restore/tam tablo karsilastirma raporlari.",
@@ -542,6 +565,16 @@
         "Gercek YKS-02 envanteri ile guncel DB kapsam kaydinin uzlastirilmasi; kaynak silinmemesi."
       ],
       "nextAction": "YKS-02 dogrulaninca kesin ayni-bayt PDF gruplari ve onceki kapsam adaylarini cikart."
+    },
+    "YKS-04": {
+      "checks": [
+        "yks-taxonomy-crosswalk"
+      ],
+      "remainingAcceptance": [
+        "Gerçek MEBİ ağacı ve güncel katalog kimlik eşlemesi/etki raporu.",
+        "Anlamsal belirsizlikleri açıklayıp yayın kapısını koru; aday üretimi canlı yayın değildir."
+      ],
+      "nextAction": "YKS-02 kabulünden sonra aday konu ağacını üret; YKS-05 uyumluluğa devam et."
     }
   }
 }

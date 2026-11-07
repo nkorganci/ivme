@@ -9,7 +9,7 @@ import zipfile
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from yks_stages import database as db
 from yks_stages.evidence import backup_files
-from yks_birlestirme import read_json
+from yks_birlestirme import read_json, write_json, digest
 
 
 class BaselineSafetyTest(unittest.TestCase):
@@ -110,6 +110,31 @@ class BaselineSafetyTest(unittest.TestCase):
         for value in ['', 'bad\x00name']:
             with self.assertRaises(ValueError):db.identifier(value)
         self.assertEqual(db.identifier('a"b'), '"a""b"')
+
+    def test_verified_restore_proof_is_reused_without_redump_or_restore(self):
+        prior = self.root / 'prior'
+        prior.mkdir()
+        dump = prior / 'ivme.dump'
+        dump.write_bytes(b'completed dump')
+        write_json(prior / 'ivme-snapshot.json', {'database': 'ivme', 'snapshot': 'old', 'tables': [{'rows': 2}]})
+        write_json(prior / 'ivme-restore.json', {'status': 'PASS', 'sourceDatabase': 'ivme',
+                   'restoredRowsAndDigestsEqual': True, 'testDatabaseRemoved': True,
+                   'tablesVerified': 1, 'dumpSha256': digest(dump)})
+        with patch.object(db, 'connection', return_value=(self.cmd, {})), patch.object(db, 'query', return_value='f'), patch.object(db, 'run_logged') as run:
+            result = db.backup_and_restore(self.root, 'ivme', self.folder, lambda _: None, reuse_folder=prior)
+        run.assert_not_called()
+        self.assertEqual(digest(self.folder / 'ivme.dump'), digest(dump))
+        self.assertIn('reusedVerificationFrom', result)
+
+    def test_unproven_dump_is_never_reused(self):
+        prior = self.root / 'prior'
+        prior.mkdir()
+        (prior / 'ivme.dump').write_bytes(b'partial dump')
+        write_json(prior / 'ivme-snapshot.json', {'database': 'ivme', 'snapshot': 'old', 'tables': [{'rows': 2}]})
+        with patch.object(db, 'connection', return_value=(self.cmd, {})), patch.object(db, 'query', return_value='f'), patch.object(db, 'Snapshot', side_effect=RuntimeError('new snapshot required')):
+            with self.assertRaisesRegex(RuntimeError, 'new snapshot required'):
+                db.backup_and_restore(self.root, 'ivme', self.folder, lambda _: None, reuse_folder=prior)
+        self.assertFalse((self.folder / 'ivme.dump').exists())
 
     def test_record_hash_preserves_values_without_expanding_jsonb_and_casts_external_types(self):
         class Snapshot:
