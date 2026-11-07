@@ -407,7 +407,7 @@ def cmd_kalite(args):
 
 
 def cmd_yks(args):
-    return run([sys.executable, "-X", "utf8", "scripts/yks_birlestirme.py", *(args or ["durum"])]).returncode
+    return run([python_for_tools(), "-X", "utf8", "scripts/yks_birlestirme.py", *(args or ["durum"])]).returncode
 
 
 def cmd_devir_kontrol(args):

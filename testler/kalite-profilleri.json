@@ -311,6 +311,38 @@
         "scripts/ivme.py",
         "testler/yks-birlestirme-test.py"
       ]
+    },
+    "yks-baseline-safety": {
+      "kind": "python",
+      "args": [
+        "testler/yks-baseline-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_stages/database.py",
+        "scripts/yks_stages/evidence.py",
+        "scripts/yks_stages/stage_01.py",
+        "testler/yks-baseline-test.py"
+      ]
+    },
+    "yks-inventory-safety": {
+      "kind": "python",
+      "args": [
+        "testler/yks-inventory-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_stages/stage_02.py",
+        "testler/yks-inventory-test.py"
+      ]
+    },
+    "yks-source-groups": {
+      "kind": "python",
+      "args": [
+        "testler/yks-source-groups-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_stages/stage_03.py",
+        "testler/yks-source-groups-test.py"
+      ]
     }
   },
   "profiles": {
@@ -482,6 +514,34 @@
         "Kaynak tasima, katalog yayini veya soru aktarimi bu asamada yapilmaz."
       ],
       "nextAction": "Gercek run ve ikinci gecis/reuse kanitini gorev tablosuna yaz; YKS-01 baseline ve yedeklere devam et."
+    },
+    "YKS-01": {
+      "checks": [
+        "yks-baseline-safety"
+      ],
+      "remainingAcceptance": [
+        "Gercek ivme ve ogm_ders dump/ivme_test restore/tam tablo karsilastirma raporlari.",
+        "Soru gorselleri/icerik yedegi nesne hash kontrolu."
+      ],
+      "nextAction": "Gercek baseline ve restore isini izle; tum kanitlar gecince BITTI ve YKS-02."
+    },
+    "YKS-02": {
+      "checks": [
+        "yks-inventory-safety"
+      ],
+      "remainingAcceptance": [
+        "Gercek dort kokun ve ZIP PDF uyelerinin tam ve degismemis fiziksel envanteri."
+      ],
+      "nextAction": "YKS-01 kabulunden sonra gercek envanteri calistir; sonra YKS-03."
+    },
+    "YKS-03": {
+      "checks": [
+        "yks-source-groups"
+      ],
+      "remainingAcceptance": [
+        "Gercek YKS-02 envanteri ile guncel DB kapsam kaydinin uzlastirilmasi; kaynak silinmemesi."
+      ],
+      "nextAction": "YKS-02 dogrulaninca kesin ayni-bayt PDF gruplari ve onceki kapsam adaylarini cikart."
     }
   }
 }
