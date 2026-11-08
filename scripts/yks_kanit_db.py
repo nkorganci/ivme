@@ -32,6 +32,7 @@ RECORD_REPORTS={
  'raster-key':('pdf-on-tarama/full-key-scan/raster-keys/report.json','results','sourceSha256'),
  'repeat-raster':('full-question-raster-comparison/controlled-repeat-review.json','results','sourceCode'),
  'mock-decoding':('pdf-on-tarama/mock-decoding/report.json','results','sourceSha256'),
+ 'reviewed-existing-transfer':('reviewed-transfer-reuse/report.json','results','sourceSha256'),
 }
 
 
@@ -132,6 +133,16 @@ def capture(root,staging):
         if path.is_file():add(path,'archive-verification/'+name,'ARCHIVE_DATABASE_TEST_AND_READBACK_EVIDENCE')
     for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
+    prior_review=data_cache.get('run/reviewed-transfer-reuse/report.json')
+    if prior_review:
+        allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',
+            APP.parent/'veri-hatti/ogm-sorular/kayit',APP.parent/'icerik/data/ogm/img']
+        for name,sha in json.loads(prior_review).get('externalEvidenceFiles',{}).items():
+            path=Path(name).resolve()
+            if not any(path.is_relative_to(parent.resolve()) for parent in allowed) or path.suffix.lower() not in {'.json','.webp','.png'}:
+                raise ValueError('Unregistered reviewed source evidence path')
+            if digest(path)!=sha:raise ValueError('Frozen external source-review evidence changed')
+            add(path,'prior-reviewed-evidence/'+sha+'/'+path.name,'EXACT_PRIOR_SOURCE_REVIEW_PACKAGE_AND_IMAGE')
     rows.sort(key=lambda r:r['logicalPath'])
     manifest={'version':1,'runId':root.name,'files':rows,'originalSourcesStoredAs':'SHA_IDENTITIES_AND_LOCATORS_NOT_DUPLICATED_PDF_BINARIES',
         'protectedLiveDataWritten':False,'filesystemSnapshot':'EACH_FILE_FROZEN_WITH_HASH_RUNNING_REPORTS_REMAIN_RUNNING'}

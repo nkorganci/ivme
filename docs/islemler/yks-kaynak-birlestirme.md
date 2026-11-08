@@ -331,3 +331,10 @@ Geçerli 4.846 eski karşılaştırmayı yineleme. Raster çıktısı 16 mevcut 
 20 içerik/görsel incelemesi ve cevapları aynı olan 4 Edebiyat–Türkçe branş
 farkıdır. Toplam 4.886 sorunun kanıtı ve deneme çözümleme uyarıları yeni
 `yks_tam_kapsam.py` kapsamına ve sonraki DB checkpoint'ine dahil edilir.
+
+Eski kabulün farklı görsel yolu/numarasız slide sözleşmesi için ayrı ek kontrol:
+`..\.venv\Scripts\python.exe -X utf8 scripts/yks_incelenmis_aktarim_kontrol.py`.
+`reviewed-transfer-reuse/report.json` 95 ek bağlantıyı doğruladı; iki kaynak
+tamamıyla eklenerek toplam 192 kaynak/10.724 bağlantıya çıktı, 25 kaynak açık.
+Kısmi belgelerdeki ek doğrulama tam kaynak kabulü sayılmaz. Özgün paket,
+görsel ve inceleme dosyaları hash'leriyle DB arşivine dahil edilir.

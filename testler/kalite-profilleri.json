@@ -701,6 +701,11 @@
       "args": ["testler/yks-mock-decoding-test.py"],
       "inputs": ["scripts/yks_deneme_render_kontrol.py", "testler/yks-mock-decoding-test.py"]
     },
+    "yks-reviewed-existing-transfer": {
+      "kind": "python",
+      "args": ["testler/yks-reviewed-transfer-test.py"],
+      "inputs": ["scripts/yks_incelenmis_aktarim_kontrol.py", "scripts/pdf_slide_compare.py", "scripts/pdf_question_accept.py", "scripts/pdf_slide_questions.py", "testler/yks-reviewed-transfer-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -985,7 +990,8 @@
         "yks-novelty-content",
         "yks-full-visual-candidates",
         "yks-answer-editions",
-        "yks-existing-source-transfer"
+        "yks-existing-source-transfer",
+        "yks-reviewed-existing-transfer"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

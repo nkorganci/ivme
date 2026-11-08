@@ -99,6 +99,17 @@ def main():
     if reuse:
         if reuse['status']!='PASS' or reuse['sourceGroupsSha256']!=digest(file):raise ValueError('Existing-transfer scope is incomplete or belongs to other sources')
         bank_snapshots.add(reuse['bankSnapshotSha256']);inputs.append(existing)
+    reviewed=root/'reviewed-transfer-reuse/report.json';reviewed_report=read_json(reviewed) if reviewed.is_file() else {}
+    if reviewed_report:
+        if not reuse or reviewed_report['baseCurrentReuseReportSha256']!=digest(existing):raise ValueError('Reviewed existing-transfer result belongs to another base proof')
+        bank_snapshots.add(reviewed_report['bankSnapshotSha256']);inputs.append(reviewed)
+        previous={row['sourceSha256']:row for row in reuse['results']}
+        for row in reviewed_report['results']:
+            if row['status']!='CURRENT_REVIEWED_TRANSFER_EVIDENCE_REVALIDATED':continue
+            original=previous[row['sourceSha256']]
+            previous[row['sourceSha256']]={**original,'status':'CURRENT_EXISTING_TRANSFER_EVIDENCE_REVALIDATED',
+                'issues':[],'checks':row['checks'],'methodOfSupplement':'FROZEN_ORIGINAL_REVIEW_CONTRACT_REVALIDATED'}
+        reuse={**reuse,'results':list(previous.values()),'states':dict(Counter(r['status'] for r in previous.values()))}
     if len(bank_snapshots)>1:raise ValueError('Compared source and existing-transfer bank snapshots differ')
     if body_report:inputs.append(body)
     raster=root/'pdf-on-tarama/full-key-scan/raster-keys/report.json';key_rows=read_json(key)['results']
@@ -152,6 +163,7 @@ def main():
         report['mockSourcesPendingSnapshot']=mock_report.get('pending')
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
+        report['reviewedTransferNewlyRevalidatedLinks']=reviewed_report.get('newlyRevalidatedLinks',0)
         report['newRegionDiscoverySnapshot']={k:discovery_report.get(k) for k in ['status','documents','completed','pending','candidateRegions','sourceAnswersApproved']}
         write_json(folder/'report.json',report)
     print(json.dumps(report,ensure_ascii=False))

@@ -206,3 +206,16 @@ cevap nüshası çatışması değildir; mevcut branş otomatik ezilmez.
 Dört karşılaştırma toplamı **4.886 soru / 2.926 mevcut aday / 1.883 içerik
 incelemesi / 77 fark**: 68 Matematik–Geometri, 4 Edebiyat–Türkçe kapsamı,
 önceden doğrulanmış 5 basılı cevap nüshası. Yeni veya kesin tekrar kabulü yok.
+
+`yks_incelenmis_aktarim_kontrol.py` önceki 27 inceleme kaynağını kendi eski
+kanıt sözleşmesiyle tekrar denetledi. Eski raw görsel yolu yerine kayıtlı
+slide paketi, dosya hash'i, dondurulmuş içerik incelemesi, soru sürümü ve
+güncel gerçek görsel kullanılır. Numarasız slayta soru numarası uydurulmaz;
+kaynak hash'i + fiziksel sayfa + özgün kart kimliği kanıttır. Renkli cevapta
+vektör rengi ve render pikselleri tekrar uyuşmalıdır.
+
+95 ek bağlantı doğrulandı; iki belgenin 62 bağlantısı tamamen kapandı.
+Tam belge bazında toplam **192 kaynak / 10.724 mevcut bağlantı**, kalan
+**25 kaynak** eksik eski inceleme veya desteklenmeyen kanıt nedeniyle açık.
+Diğer 33 ek doğrulanmış bağlantı kısmi belgeler içinde ayrıca saklıdır;
+bu belgeler tamamen bitmiş sayılmaz. Yeni model/soru/öğretmen kararı yok.
