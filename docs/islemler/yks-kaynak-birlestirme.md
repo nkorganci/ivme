@@ -223,3 +223,32 @@ ilgili `progress.json` içindedir.
 incelemesi ve 73 fark (68 Matematik–Geometri kapsamı, 5 cevap nüshası).
 YKS-07/08/09/10 kalite profilleri sırasıyla 43/21/14/18 test PASS; gerçek
 yalıtılmış aktarımın daha önce geçen dört backend senaryosu yeniden çalıştırılmadı.
+
+Bütün kaynaklarda kalan işi ve Denemeler genişlemesini takip et:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_deneme_anahtar.py --visual
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_govde_istisna_incele.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kapsam.py
+```
+
+İlk komut uzun çalışabilir; aynı okuyucu çalışıyorsa ikinci süreç başlatma.
+`full-mock-keys/progress.json` belge imlecidir; kesintide aynı komut geçerli ham
+OCR/model kanıtlarını yeniden kullanır. Anahtar uyuşması tek tek soru/branş/dar
+konu veya aktarım kabulü değildir. Son komut `full-source-coverage/` altında
+4.086 kaynak ve 67.277 sayfanın kalan işini JSONL ve okunabilir CSV olarak yazar.
+Deneme okuyucusu çalışırken alınan rapor tamamlanan belge kapsamının anlık
+görüntüsüdür; girdi yazım sırasında değişirse rapor reddedilir ve yeniden alınır.
+Altı gövde istisnasındaki 94 sorunun bağımsız anahtar ve piksel/konu incelemesi açık.
+
+Eski tamamlanmış aktarımın güncel kanıtı için (yalnız gerçek girdi değişince):
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_mevcut_aktarim_kontrol.py
+```
+
+`existing-transfer-reuse/report.json` 190 belgede 10.662 mevcut bağlantıyı
+doğruladı; 27 belge incelemede. Eski/yeni görsel yollarını metin değiştirerek
+eşitlemez: gerçek dosyaların hash'lerini karşılaştırır. Sağlayıcı kaydında
+basılı cevap, fiziksel sayfa/numara ve güncel resmî API cevabı tekrar okunur.
+Mevcut soru ID/cevap/geçmiş değiştirilmez; geçerli denetimi baştan çalıştırma.

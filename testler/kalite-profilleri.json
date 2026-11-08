@@ -651,6 +651,26 @@
       "args": ["testler/yks-shared-figure-test.py"],
       "inputs": ["scripts/yks_ortak_sekil_kirpim.py", "testler/yks-shared-figure-test.py"]
     },
+    "yks-full-mock-keys": {
+      "kind": "python",
+      "args": ["testler/yks-full-mock-test.py"],
+      "inputs": ["scripts/yks_tam_deneme_anahtar.py", "scripts/yks_deneme_anahtar_pilotu.py", "scripts/yks_anahtar_gorsel.py", "testler/yks-full-mock-test.py"]
+    },
+    "yks-full-source-coverage": {
+      "kind": "python",
+      "args": ["testler/yks-full-scope-test.py"],
+      "inputs": ["scripts/yks_tam_kapsam.py", "testler/yks-full-scope-test.py"]
+    },
+    "yks-body-exceptions": {
+      "kind": "python",
+      "args": ["testler/yks-body-exception-test.py"],
+      "inputs": ["scripts/yks_govde_istisna_incele.py", "scripts/yks_kirpim_istisna.py", "scripts/yks_pilot_sorular.py", "testler/yks-body-exception-test.py"]
+    },
+    "yks-existing-source-transfer": {
+      "kind": "python",
+      "args": ["testler/yks-existing-transfer-test.py"],
+      "inputs": ["scripts/yks_mevcut_aktarim_kontrol.py", "scripts/pdf_sb_evidence.py", "scripts/pdf_source_scan.py", "testler/yks-existing-transfer-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -910,7 +930,10 @@
         "yks-full-source-key-proofs",
         "yks-separate-full-book",
         "yks-crop-layout-repair",
-        "yks-shared-figure-source"
+        "yks-shared-figure-source",
+        "yks-full-mock-keys",
+        "yks-full-source-coverage",
+        "yks-body-exceptions"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -925,7 +948,8 @@
         "yks-option-permutation",
         "yks-novelty-content",
         "yks-full-visual-candidates",
-        "yks-answer-editions"
+        "yks-answer-editions",
+        "yks-existing-source-transfer"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

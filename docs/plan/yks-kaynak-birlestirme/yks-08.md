@@ -177,3 +177,22 @@ eski anahtara yeni soru numarasıyla bakılmaz. Basılı numara özgün kayıt
 kanıtından alınır. Nüsha uyuşmazlığında banka cevabı/geçmiş değiştirilmez,
 eski soru yeni kodla eklenmez ve otomatik tekrar birleştirmesi yapılmaz.
 Kanıt: `full-question-comparison/answer-edition-conflicts.json`.
+
+## Önceden tamamlanmış kaynakların güncel tekrar kullanımı
+
+`yks_mevcut_aktarim_kontrol.py` 217 eski tamamlanmış kaynağın özgün PDF hash'ini,
+10.833 kayıtlı bağlantıyı, etkin YKS soru sürümünü ve gerçek görselleri kontrol
+etti. Eski `data/ogm/img` referansı yeni sunum yolu ile metin olarak eşit
+değildir; bu fark ancak **iki gerçek görsel dosyasının bayt hash'i eşitse**
+geçilir. Dosya adının benzemesi yeterli değildir.
+
+OGM sağlayıcı sorularında yeni bir AI cevabı üretilmez: özgün PDF'nin basılı
+numarası/fiziksel sayfası/anahtarı taze okunur; saklanan ve güncel resmî API
+cevabı ile mevcut banka cevabı aynı olmalıdır. Aynı sağlayıcı kimliği için
+çelişen iki API cevabından keyfî seçim yapılmaz. Raw paketlerde iki kayıtlı
+okuma ve güncel cevap korunur. Öğretmen veya yeni anlamsal kabul yazılmaz.
+
+`existing-transfer-reuse/report.json`: **190 belge / 10.662 mevcut bağlantı**
+bu denetimden geçti; **27 belge** eksik/farklı kanıt yüzünden incelemede kaldı.
+Bu kaynakların mevcut soru kimlikleri korunur ve yeniden içe aktarılmaz.
+Raporun banka snapshot'ı üç yeni kaynak karşılaştırmasıyla aynıdır.

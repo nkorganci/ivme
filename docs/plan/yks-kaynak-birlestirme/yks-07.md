@@ -216,3 +216,34 @@ soru bölgesi yalnız özgün pikseller ve beyaz aralıkla tek görselde yer al�
 piksel düzeyinde doğrulandı; iki sonuç gerçek kaynaktan ayrıca görsel okundu.
 Bu belgenin 29 sorusu `full-question-shared-context/` paketinde teknik olarak
 hazırdır. Teknik onay, dar konu/cevap nüshası kabulü veya öğretmen onayı değildir.
+
+## Bütün PDF kapsamı ve Denemeler genişlemesi
+
+`yks_tam_kapsam.py` mevcut 4.086 PDF / 67.277 sayfa gözlemini tekrar OCR/render
+yapmadan birleştirir. `full-source-coverage/sources.jsonl`, `sources.csv` ve
+`report.json` her belgenin anahtar/soru/önceki aktarım kanıtını ve kalan işini
+gösterir. Eski VERIFIED aktarım kaydı yeni soru kabulü sayılmaz; native metinde
+anahtar sinyali olmaması da anahtar yokluğu değildir. Çalışan deneme okuyucusunun
+tamamlanan belgeleri zaman damgalı bir kapsam görüntüsüdür, tam faz kabulü değil.
+
+`yks_tam_deneme_anahtar.py --visual` Denemeler sidebarındaki **46 tekil PDF**
+için devam eder. Deneme numarası dosya adından atanmaz: basılı gövde/anahtar ve
+sınav kimliği uyuşmalı; dört bölümde yeniden başlayan numaralar ayrı kimliktir.
+TYT 25 Sosyal / AYT 46 Sosyal-2 basılı alternatif soruları içerir; 120/160'a
+zorlanmaz. Bağımsız TUR OCR uyuşmazlığında yalnız anahtar kırpımı Qwen'e gider;
+beklenen cevaplar isteme eklenmez. Pilotun gerçek ham okumaları tekrar kullanılır.
+Her belge atomik önbelleğe ve `full-mock-keys/progress.json` imlecine yazılır.
+Gövde/branş/dar konu ve tek tek soru kabulü bu anahtar çalışmasından ayrıdır.
+
+`yks_govde_istisna_incele.py` altı tarama belgesindeki 94 sorunun gövde dizisi
+ve istisnalarını kaynakla hazırladı. Biyoloji AYT11 soru15'in E seçeneği ve
+Matematik AYT5 soru1'in D/E seçenekleri sağ sütunun başında devam eder; ayrı
+özgün bölgeler kaydedilir. Matematik gövdesindeki `S(B)`/`EKOK(A,B)` ve Din
+eşleştirme tablosundaki A/B/C/D etiketleri gerçek seçeneklerle karıştırılmaz.
+İstisna yalnız kaynağı açıkça okunmuş soru kimlikleri için geçerlidir; anahtar,
+tam görsel ve içerik kabulü hâlâ gerekir. Çıktı `diagnostic-body-exceptions/`.
+
+Ek kaynak okumasında Edebiyat AYT1 ve AYT14'ün anahtarı raster görüntüdedir;
+boş native metin boş sayfa değildir. Türkçe TYT5 anahtarında 33 gerçekten iki
+kez basılmış, 34 yoktur; 34'ün cevabı tahminle atanmaz. Fizik TYT4 son sayfası
+yedi farklı testin anahtarını içerir; bütün sayfa tek testin anahtarı sayılmaz.
