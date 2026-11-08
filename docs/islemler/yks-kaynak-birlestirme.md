@@ -176,3 +176,25 @@ Pilot geçtikten sonra tam arşivin tek tarama anahtarı düzeni
 `yks_tam_anahtar_gorsel.py [--limit N | --cached-only]` ile devam eder. Sağlam
 pilot/OCR/görsel okumalarını yeniden üretme; test kimliği çelişkisini veya
 eksik gövdeyi modelin aynı cevabı okumasıyla geçerli sayma.
+
+Tam kaynak anahtarı/kırpım/tekrar hattında eksik aşamayı seç:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_ayri_anahtar.py --subject kimya
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_ayri_anahtar.py --subject tarih
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_ayri_anahtar_gorsel.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_buyuk_anahtar_incele.py --visual
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kaynak_kontrol.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_soru_kirpim.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py
+```
+
+Geçerli anahtarları/görselleri yeniden okutma: 191 doğrudan ve 14 ayrı anahtarın
+ikinci geçişinde yeni model çağrısı 0; ayrı kitap ikinci geçişinde OCR 0;
+kırpım ikinci geçişinde 259 belge tekrar kullanıldı ve render 0. Toplam
+259 kaynakta 4.846 cevap, 251 teknik sağlam kaynakta 4.667 soru vardır.
+Sekiz sorunlu belgenin 179 sorusu aktarım dışında; diğer kaynak düzenleri açık.
+Salt sayaçların değişmesi kaynak paketinin değişmesi sayılmaz. Gerçek PDF,
+anahtar, soru/görsel hash'i veya mevcut banka sürümü değişirse ilgili kanıt
+yeniden doğrulanır. Hiçbir komut tam görevi BITTI yapmaz veya canlıya soru yazmaz.

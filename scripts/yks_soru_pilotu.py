@@ -93,7 +93,7 @@ def live_bank(app):
     return questions,{r['question_code']:r['text'] for r in ocr}
 
 
-def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None):
+def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None,visual_matcher_factory=None):
     questions,ocr=live_bank(APP);stamp=signature(questions)
     cached=read_json(OUT/'bank-image-fingerprints.json')
     if cached['version']!=IMAGE_VERSION:raise ValueError('Unknown bank image fingerprint version')
@@ -136,17 +136,20 @@ def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None):
         write_json(own_stamp,{'bankTextSha256':key,'files':{name:digest(folder/name) for name in ['bank-vectorizer.joblib','bank-text.npz']}})
     similarities=(vectorizer.transform(c['text'] for c in cards)@matrix.T).tocsr()
     visuals=[visual_by_code[q['code']] for q in questions];results=[]
+    matcher=visual_matcher_factory(visuals) if visual_matcher_factory else None
     for index,card in enumerate(cards):
         row=similarities.getrow(index);top=np.argsort(row.data)[-8:][::-1]
         text_matches=[{'code':bank[row.indices[n]][0],'similarity':round(float(row.data[n]),6)} for n in top if row.data[n]>.2]
         fp=fingerprint((card['code'],str(folder/card['image']),source_sha or card['sourceSha256']))
         if fp.get('error'):raise ValueError('Pilot crop visual fingerprint failed')
-        phash=int(fp['phash'],16);matches=[]
-        for visual in visuals:
-            distance=(phash^int(visual['phash'],16)).bit_count()
-            exact=fp['fileSha256']==visual['fileSha256'] or fp['normalizedSha256']==visual['normalizedSha256']
-            if exact or distance<=12:matches.append({'code':visual['code'],'distance':distance,'exactImage':exact})
-        matches.sort(key=lambda m:(not m['exactImage'],m['distance'],m['code']))
+        if matcher:matches=matcher(fp)
+        else:
+            phash=int(fp['phash'],16);matches=[]
+            for visual in visuals:
+                distance=(phash^int(visual['phash'],16)).bit_count()
+                exact=fp['fileSha256']==visual['fileSha256'] or fp['normalizedSha256']==visual['normalizedSha256']
+                if exact or distance<=12:matches.append({'code':visual['code'],'distance':distance,'exactImage':exact})
+            matches.sort(key=lambda m:(not m['exactImage'],m['distance'],m['code']))
         results.append({'sourceCode':card['code'],'textMatches':text_matches,'visualMatches':matches[:20],
                         'visualMatchCount':len(matches),'decision':'REVIEW_REQUIRED','fingerprint':fp})
     after,_=live_bank(APP)

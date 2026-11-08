@@ -174,3 +174,28 @@ anahtarı 8 basılıdır. Anahtar sayfası native ve bağımsız OCR'da aynı fa
 kimliği taşıyor. Bunların cevapları aktarım dışında tutulur; kaynak hatası
 sessizce düzeltilmez veya doğru test olduğu varsayılmaz. Ayrı resmî anahtar
 ancak tam soru gövdesi metin/piksel eşitliğiyle bağlanabilir.
+
+## 259 kaynakta 4.846 cevabın ve kırpımların hazırlanması
+
+191 görsel anahtarın tamamı native basılı metinle uyuştu. Kimya ve Tarih
+resmî toplu kitaplarında kaynak sorularının **bütün sayfaları** metin ve RGB
+piksel eşitliğiyle karşılaştırıldı. Kimya'da 71 kaynaktan sekizinin gövdesi tam
+eşit; 63'ünde metin veya yerleşim farkı açık tutuldu. Metin aynı olsa bile
+soru işaretlerinin/formüllerin konumu ve şekil farklılığı varsayılmadı.
+Tarih'teki 17 gövdenin tamamı eşit. OCR uyuşmazlığı olan 14 ayrı anahtar
+Qwen'e yalnız gerçek kırpımıyla okutuldu ve metinle uyuştu; ikinci geçiş yeni
+model çağrısı yapmadı. Büyük 61 cevaplı Fizik testi için 60 kayıt sınırı
+genişletildi; yinelenen/eksik/basılı sırası bozuk numara düzeltilmeden reddedilir.
+
+`yks_tam_kaynak_kontrol.py` bütün geçerli cevapları güncel kaynak PDF ve ham
+bağımsız okuma dosyalarından tekrar doğrular: **259 belge, 4.846 basılı cevap**.
+Girdi ve model önerisini doğruluk deposu sanmaz; anahtar değişmişse aktarım durur.
+
+`yks_tam_soru_kirpim.py` bu 259 kaynağı 1.259 gövde sayfasında inceledi.
+4.846 görsel özgün PDF bbox render'ıyla RGB eşittir; önceki 387 pilot kırpımı
+yeniden üretilmedi. **251 belgede 4.667 soru** teknik kapsamı geçti; sekiz
+belgede 179 soruya ait satır/şekil kapsamı incelemesi açık. 714 soruda grafik
+veya özel glyph kaydı vardır; teknik piksel eşitliği içerik/konu onayı sayılmaz.
+İkinci geçiş 259 dokümanı, sıfır yeni kırpım/piksel render'ıyla yeniden kullandı.
+Kırpım raporu `full-question-crops/progress.json` içindedir. Bütün arşivin
+tamamlandığı veya bu soruların bankaya eklendiği anlamına gelmez.

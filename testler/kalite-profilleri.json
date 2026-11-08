@@ -621,6 +621,21 @@
       "args": ["testler/yks-full-key-test.py"],
       "inputs": ["scripts/yks_tam_anahtar_taramasi.py", "scripts/yks_tam_anahtar_gorsel.py", "scripts/yks_anahtar_cohort.py", "scripts/yks_anahtar_gorsel.py", "scripts/yks_pilot_kaynaklari.py", "scripts/yks_pilot_sorular.py", "testler/yks-full-key-test.py"]
     },
+    "yks-full-source-key-proofs": {
+      "kind": "python",
+      "args": ["testler/yks-full-source-key-test.py"],
+      "inputs": ["scripts/yks_tam_ayri_anahtar.py", "scripts/yks_tam_ayri_anahtar_gorsel.py", "scripts/yks_tam_kaynak_kontrol.py", "scripts/yks_buyuk_anahtar_incele.py", "scripts/yks_tam_soru_kirpim.py", "testler/yks-full-source-key-test.py"]
+    },
+    "yks-separate-full-book": {
+      "kind": "python",
+      "args": ["testler/yks-separate-book-full-test.py"],
+      "inputs": ["scripts/yks_tam_ayri_anahtar.py", "scripts/yks_buyuk_anahtar_incele.py", "scripts/yks_ayri_anahtar.py", "testler/yks-separate-book-full-test.py"]
+    },
+    "yks-full-visual-candidates": {
+      "kind": "python",
+      "args": ["testler/yks-visual-candidates-test.py"],
+      "inputs": ["scripts/yks_gorsel_aday.py", "scripts/yks_tam_tekrar_tara.py", "scripts/yks_tam_tekrar_incele.py", "scripts/yks_soru_pilotu.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-visual-candidates-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -876,7 +891,9 @@
         "yks-separate-source-key",
         "yks-crop-integrity",
         "yks-mock-key-sections",
-        "yks-full-key-reader"
+        "yks-full-key-reader",
+        "yks-full-source-key-proofs",
+        "yks-separate-full-book"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -889,7 +906,8 @@
         "yks-exact-reuse",
         "yks-controlled-repeat",
         "yks-option-permutation",
-        "yks-novelty-content"
+        "yks-novelty-content",
+        "yks-full-visual-candidates"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

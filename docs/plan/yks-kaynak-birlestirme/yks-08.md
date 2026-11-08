@@ -142,3 +142,19 @@ Kaynak/PDF alıntısının varlığı anlamsal doğruluk sayılmaz. Qwen'in Rifa
 sorusunu Din–Bilim İlişkisi'ne bağlayan önerisi yanlış bulundu; kaynaklar
 değiştirilmeden açık incelemede kaldı. `yks_konu_anlam_kontrol.py` yerel
 GPT-OSS ile bu ilişkiyi bağımsız sorgular. Eksik/uyuşmayan kanıt yayına girmez.
+
+## Tam tarama sorularının tekrar ön incelemesi
+
+`yks_tam_tekrar_tara.py` tam anahtar fazından gelen teknik kapsamı sağlam
+4.667 kaynak sorusunu güncel bütün YKS banka metni/görseliyle karşılaştırır.
+Sekiz sorunlu belgenin 179 sorusu kabul dışında kalır. Önceki banka metin
+vektörü yeniden kullanılır; görsel pHash aday taraması NumPy ile yapılır.
+Tam bayt/normalize görüntü eşitliği, 64 bit Hamming uzaklığı, 12 bit eşiği ve
+aday sırası önceki tek tek döngüyle regresyonda aynıdır. Aynı pHash tek başına
+aynı soru sayılmaz. Yeni model/OCR/embedding veya soru yazımı yapılmaz.
+
+`full-question-comparison/comparison-report.json` tamamlandıktan sonra
+`yks_tam_tekrar_incele.py` mevcut kayıt sürümü, basılı kaynak cevabı ve
+kontrollü `subject_ids/exam_ids` kapsamını denetler. Kaynak paket/cevap
+değişikliği eski karşılaştırmayı geçersiz kılar; salt çalışma sayacı değişikliği
+tekrar OCR/kırpım yapılmasına neden olmaz. Tam konu/görsel kabulü ayrıca gerekir.
