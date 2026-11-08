@@ -125,3 +125,18 @@ PDF'nin aynı bbox render'ıyla birebir eşit. Bu teknik bütünlüktür; dar ko
 onayı veya grafik anlamı kabulü değildir. 55 grafik ve 7 özel glyph kaydı
 inceleme bekler. Deneme/ortak paragraf/taranmış/ZIP/permutasyon pilot kapsamı
 açıkken tam YKS-07 BITTI değildir.
+
+## Temsilî pilot kapısı — VERIFIED
+
+`python scripts/ivme.py yks adim YKS-07 --scope pilot --resume` yalnız temsilî
+pilot yürütücüsüdür. `yks-07/pilot/attempt-0002/source-key-pilot-acceptance.json`
+19 taramada 387, iki denemede ayrı sekiz sütunda 291 basılı cevabı ve on gerçek
+risk sınıfını doğrular. Deneme basılı test sayıları alternatif sorular dahil
+TYT 125 ve AYT 166'dır; soru numaraları sütunlar arasında karıştırılmaz.
+YKS-07 tam arşiv yürütücüsü kabul edilmedi; pilotun VERIFIED olması tam
+YKS-07/08/09 veya YKS-10/canlı geçiş kabulü değildir.
+
+Ortak paragraf kanıtı, taranmış sorunun mevcut OCR ile bulunması, gerçek
+seçenek permütasyonunda E→B harf değişimi ve ZIP üyesinin aynı bağımsız PDF
+hash'i ayrı kayıtlardır. Anahtarsız/tanımlanamayan taranmış soru kabul edilmez.
+Sonraki işlem YKS-08/09 pilotunda soru/görsel/dar konu kabulüdür.

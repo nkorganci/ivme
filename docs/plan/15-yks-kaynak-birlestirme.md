@@ -275,6 +275,10 @@ hazırlanır; canlı okuyucuların kökü değiştirilmez.
 [Adım görevini aç](yks-kaynak-birlestirme/yks-07.md). Önce pilot, YKS-10 pilot
 kabulünden sonra tam arşiv incelenir. Cevapsız sorular bankaya aday olmaz.
 
+YKS-07 temsilî pilot kapısı VERIFIED; tam arşiv açık kalır. Pilot, 19 tarama
+belgesi ve iki denemenin kaynak anahtarlarıyla on gerçek risk sınıfını kapsar.
+Tamamı soru/konu yayını kabulü değildir.
+
 ## 15.08 — YKS-08: güncel bankada soru tekrarı
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve

@@ -97,3 +97,9 @@ Eski görünen `questions.subject=Felsefe` alanı psikoloji/sosyoloji/mantık
 kimliklerinin yerine geçmez. `controlled-repeat-review.json` 268 kaynak
 eşleşme adayı ve 119 içerik/görsel incelemesi tutar. Bunlar yeni soru kabulü
 veya öğretmen kararı değildir; kategori/görsel kabulü ayrıca tamamlanır.
+
+Dar konu incelemesinin ön adayı için `yks_soru_konu_adaylari.py --subject din`
+yalnız kayıtlı MEBİ yapraklarını kaynak metniyle sıralar. 33 Din sorusu için
+86 önceki konu embedding'i tekrar kullanıldı, 33 yeni soru vektörü hesaplandı.
+`question-topics/din/topic-candidates.json` skorları karar/onay değildir; soru
+kökü ve seçenek bağlamı okunmadan kategori ataması yapılmaz.

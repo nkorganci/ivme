@@ -575,6 +575,29 @@
         "scripts/pdf_source_reconcile.py",
         "testler/yks-controlled-repeat-test.py"
       ]
+    },
+    "yks-mock-key-sections": {
+      "kind": "python",
+      "args": [
+        "testler/yks-mock-key-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_deneme_anahtar_pilotu.py",
+        "scripts/yks_ortak_paragraf_pilotu.py",
+        "scripts/yks_taranmis_zip_pilotu.py",
+        "scripts/yks_pilot_riskleri.py",
+        "testler/yks-mock-key-test.py"
+      ]
+    },
+    "yks-option-permutation": {
+      "kind": "python",
+      "args": [
+        "testler/yks-option-permutation-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_secenek_degisimi.py",
+        "testler/yks-option-permutation-test.py"
+      ]
     }
   },
   "profiles": {
@@ -819,7 +842,8 @@
         "yks-key-transcription",
         "yks-diagnostic-boundaries",
         "yks-separate-source-key",
-        "yks-crop-integrity"
+        "yks-crop-integrity",
+        "yks-mock-key-sections"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -830,7 +854,8 @@
     "YKS-08": {
       "checks": [
         "yks-exact-reuse",
-        "yks-controlled-repeat"
+        "yks-controlled-repeat",
+        "yks-option-permutation"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

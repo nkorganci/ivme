@@ -115,3 +115,22 @@ metni ve çizim pikselleri aynı olmalıdır. Sürüm farkı dışarıda tutulur
 Kırpım kontrolü kaynak RGB piksellerini ve gövde satırı kapsamını doğrular;
 formül/üs taşması veya değiştirilmiş görsel reddedilir. Tekrar ön incelemesi
 tam banka kapsamında çalışır; aday benzerlik yeni soru/öğretmen onayı değildir.
+
+Temsilî ek riskler ve pilot kapısı:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_deneme_anahtar_pilotu.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_ortak_paragraf_pilotu.py
+python scripts/yks_secenek_degisimi.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_taranmis_zip_pilotu.py
+python scripts/yks_pilot_riskleri.py
+python scripts/ivme.py kalite calistir YKS-07
+python scripts/ivme.py kalite calistir YKS-08
+python scripts/ivme.py yks adim YKS-07 --scope pilot --resume
+```
+
+Geçerli çıktıları tekrar üretme; komutları yalnız eksik/değişen kanıt için seç.
+Deneme sütunlarının her birinde numara yeniden başlayabilir. Alternatif din ve
+felsefe soruları özgün sayıda tutulur. Tek anahtar listesine düzleştirilmez.
+YKS-07 yürütücüsü şimdilik yalnız `--scope pilot` kabulünü uygular; tam arşiv,
+dar konu/görsel kabulü ve üretim yayını ayrı kapılarda kalır.
