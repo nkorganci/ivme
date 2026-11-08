@@ -1,5 +1,31 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Eski bekleyen işlemlerle karşılaştırma — BITTI:** 5.303 eski pending
+locator'ın 5.301'inde özgün ham kart/keşif metni hash'i yeniden doğrulandı;
+iki provider kaydı kendi sözleşmesi için açık. Tam kök/beş seçenek ayrışan
+4.428 metin, yeni 11.510 kaynak sorusuyla karşılaştırıldı. Yeni matematik
+`mebi-mock-594b7ed3f474-s3-q4`, eski EA `md-ayt-esit-agirlik-22-04` ve
+Sayısal `md-ayt-sayisal-21-04` bekleyen işlerine bağlandı. Eski EA cevabı C,
+yeni/Sayısal A; bu cevap farkı yeni alım dışında tutulur. Üç gerçek görüntü
+okundu: önermeler, koşullu önerme, x²−4x kökü ve beş sayı seçeneği aynıdır;
+eski EA kırpımı sonraki soru5 başlangıcını da içerir. Kanıt
+`pending-source-reuse/`; eski kuyruğa ikinci NEW kimliği eklenmez.
+İki eski kaynak aynı SHA'lı kırpımı kullanır; görsel kirliliği her ikisinde
+vardır. Üç okumanın sabit hash kanıtı `actual-pending-image-review.json`;
+gelecekte alım öncesi temiz özgün kırpım gerekir, eski dosya üzerine yazılmaz.
+
+**36 çiftin gerçek görsel/permütasyon incelemesi — BITTI:** 72 özgün soru
+görselinin tamamı okundu; 12 inceleme görselinin hash'leri sabitlendi.
+`cross-source-candidates/actual-image-pair-review.json` 35 çiftin aynı soru
+olduğunu doğrular; beş çiftte seçenek sırası değişmiştir. Harfler seçenek
+içeriğiyle eşlendi, anahtarlar bu eşleme üzerinden karşılaştırıldı. Pilot
+`mebi-05ed1fe27201-q4` kaynak kodu kendi çiftinde tercih edilen kimliktir.
+Her doğrulanmış çift en fazla tek kanonik soru oluşturabilir; bütün kaynak
+nüshaları ve cevap kökenleri korunur. AYT Din Yi King/Taoizm çiftinde aynı
+kök ve seçeneklere rağmen C/D basılı anahtar çelişkisi vardır; her iki nüsha
+yeni alım dışında kalır. Bu inceleme tek başına NEW, dar konu veya öğretmen
+onayı vermez. Yerel model/OCR çağrısı ve canlı yazım 0.
+
 **Bütün eski kaynak kayıtlarının uzlaştırılması — BITTI (soru yayını değildir):**
 `all-prior-occurrences/` 1.179 kaynakta 86.912 kayıt inceler: 81.608 eski bağ,
 5.233 aday, 70 inceleme ve bir eski dışlama. Eski iş yalnız tam kaynakların
@@ -73,6 +99,19 @@ nüsha kararı verilmedi. Mevcut cevaplar ve öğrenci geçmişi değiştirilmez
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
+
+## Mevcut banka ve kısmi eski kabul ek kanıtları
+
+`yks_mevcut_gorsel_incele.py` altı kaynak/mevcut banka çiftinin 12 gerçek
+görselini, tam kök/seçenek içeriğini ve basılı cevabını bağlar. Altı eski
+`sb-*` kodu yeniden kullanılır; AYT kaynak/TYT banka farklılığı ikinci soru
+yaratmaz. Sınav ilişkisi ayrıca incelenir, mevcut etiket değiştirilmez.
+
+`yks_kismi_incelenmis_aktarim.py` 155 eski kısmi kaynak kabulünden 28'ini
+özgün dondurulmuş kabul sözleşmesiyle doğruladı. 127 eksik eski inceleme
+kanıtı bekler. Kitapçık ekleriyle toplam 81.155 eski bağ kanıtlı, 430 inceleme,
+23 pasif/kapsam dışıdır. Bunlar benzersiz soru sayısı değildir. Ekler özgün
+kaynak hash'i + locator ile bir kez sayılır; kapsam raporu çift sayımı reddeder.
 
 ## Ajanın başlangıç talimatı
 

@@ -53,8 +53,22 @@ RECORD_REPORTS={
  '3adim-page-equivalence':('source-page-equivalence/3adim-turkce/progress.json','results','newPhysicalPage'),
  '3adim-incremental-reuse':('source-page-equivalence/3adim-turkce/incremental-reuse.json','results','sourceCode'),
  'cross-source-repeat':('cross-source-candidates/source-question-index.json','results','sourceCode'),
+ 'cross-source-actual-image-review':('cross-source-candidates/actual-image-pair-review.json','results','clusterId'),
+ 'actual-existing-question-images':('full-question-topics/din/exact-bank-image-review/report.json','results','sourceCode'),
+ 'actual-din-source-exceptions':('din-question-amendments/report.json','results','sourceCode'),
+ 'amended-din-repeat':('din-amendment-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'missing-bank-image-text-comparison':('full-question-topics/din/bank-image-text-supplement.json','results','sourceCode'),
+ 'actual-topic-support-challenges':('full-question-topics/din/actual-topic-support-challenges.json','results','sourceCode'),
+ 'pending-source-reuse':('pending-source-reuse/report.json','results','sourceCode'),
+ 'pending-original-observation':('pending-source-reuse/pending-source-observations.json','results','sourceLocator'),
+ 'chemistry-question-edition':('pdf-on-tarama/chemistry-question-editions/report.json','results','sourceSha256'),
+ 'chemistry-partial-key':('partial-chemistry-preparation/progress.json','sourceKeyReadings','sourceSha256'),
+ 'chemistry-partial-body':('partial-chemistry-preparation/progress.json','results','sourceSha256'),
+ 'chemistry-partial-repeat':('partial-chemistry-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'cross-source-expanded-repeat':('cross-source-candidates/expanded-with-chemistry/source-question-index.json','results','sourceCode'),
  'prior-source-summary':('all-prior-occurrences/report.json','results','sourceSha256'),
  'prior-booklet-contract':('booklet-prior-reuse/report.json','results','sourceLocator'),
+ 'partial-frozen-admission-reuse':('partial-reviewed-transfer-reuse/report.json','results','sourceLocator'),
 }
 
 
@@ -169,7 +183,8 @@ def capture(root,staging):
     for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
     for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
-            'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json']:
+            'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json','run/pending-source-reuse/report.json',
+            'run/partial-reviewed-transfer-reuse/report.json']:
         prior_review=data_cache.get(report_name)
         if not prior_review:continue
         allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',
@@ -214,7 +229,7 @@ def records(manifest,cache,staging):
         if kind=='answer-edition-conflict':items=report.get('results',report.get('conflicts',[]))
         for index,item in enumerate(items):
             record_key=item.get(idkey,item.get('bankCode',index))
-            if kind=='prior-booklet-contract':record_key=item['sourceSha256']+':'+str(record_key)
+            if kind in ['prior-booklet-contract','pending-original-observation','partial-frozen-admission-reuse']:record_key=item['sourceSha256']+':'+str(record_key)
             add(kind,record_key,item,by_path[logical]['sha256'])
     # Native question cards, context and exact source regions remain queryable.
     for logical,data in cache.items():

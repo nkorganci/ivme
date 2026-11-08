@@ -5,9 +5,28 @@ import pymupdf
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from yks_birlestirme import Store,read_json,digest
 from yks_istisna_kirpim import verify_image
+from yks_din_kitap_govde import physical_column_edges
 
 
 class DinBookBodiesTest(unittest.TestCase):
+    def test_swapped_right_numbers_do_not_attach_question_26_to_left_question_24(self):
+        regions=[{'column':0,'number':24,'bboxPt':[34,440,275,730]},
+            {'column':1,'number':26,'bboxPt':[285,75,538,445]},
+            {'column':1,'number':25,'bboxPt':[285,446,538,730]}]
+        a,b=physical_column_edges(regions)
+        self.assertEqual((a['number'],b['number']),(24,26));self.assertNotEqual(b['number'],a['number']+1)
+
+    def test_q24_amendment_has_one_full_source_body_and_invalidates_the_old_topic_reading(self):
+        proof=read_json(self.root/'din-question-amendments/report.json')
+        self.assertEqual(proof['questionsRead'],5);self.assertEqual(proof['excludedAmbiguousPrintedQuestions'],1)
+        cards=read_json(proof['amendedPackage'])['cards'];self.assertEqual(len(cards),4)
+        card=next(c for c in cards if c['code'].endswith('-t1-q24'))
+        self.assertEqual(len(card['sourceRegions']),1);self.assertEqual(card['optionCounts'],dict.fromkeys('ABCDE',1))
+        self.assertNotIn('26.',card['text']);self.assertEqual(card['answer'],'E')
+        row=next(r for r in proof['results'] if r['sourceCode']==card['code'])
+        self.assertTrue(row['sourceTopicReadingInvalidated']);self.assertNotEqual(row['oldSourceImageSha256'],card['imageSha256'])
+        with pymupdf.open(card['sourcePath']) as doc:verify_image(doc,card['sourceRegions'],card['image'])
+
     @classmethod
     def setUpClass(cls):
         s=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');cls.root=s.child(s.current()['runId'])

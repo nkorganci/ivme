@@ -27,6 +27,20 @@ def comparison_states(counters,identities):
     return dict(sum((counters[sha] for sha in identities if sha in counters),Counter()))
 
 
+def supplement_counts(base,supplements):
+    """One replacement per original source/locator, never an extra question."""
+    counts=Counter(base);seen=set()
+    for rows,accepted in supplements:
+        for row in rows:
+            if row['status']!=accepted:continue
+            key=(row['sourceSha256'],row['sourceLocator'])
+            if key in seen:raise ValueError('Same original source link counted twice in prior supplements')
+            seen.add(key);counts[row['previousProofStatus']]-=1;counts[accepted]+=1
+    if any(n<0 for n in counts.values()) or sum(counts.values())!=sum(base.values()):
+        raise ValueError('Prior supplement changed the original number of source links')
+    return dict(counts)
+
+
 def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None,decoding=None,document_reviews=None,book_sections=None):
     existing=existing or {};body=body or {};discoveries=discoveries or {};decoding=decoding or {};document_reviews=document_reviews or {}
     book_sections=book_sections or {}
@@ -102,7 +116,7 @@ def main():
     mock=root/'pdf-on-tarama/full-mock-keys/progress.json'
     inputs=[file,page,obs,key,diagnostic];inputs+=[mock] if mock.is_file() else []
     counters={};bank_snapshots=set()
-    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison','new-book-comparison/din']:
+    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison','new-book-comparison/din','partial-chemistry-comparison']:
         proof=root/name/'controlled-repeat-review.json'
         if not proof.is_file():continue
         inputs.append(proof)
@@ -234,6 +248,40 @@ def main():
                 or prior_booklets['bankSnapshotSha256']!=prior_occurrences['bankSnapshotSha256']):
             raise ValueError('Booklet supplement belongs to another source occurrence proof')
         inputs.append(prior_booklets_path)
+    partial_review_path=root/'partial-reviewed-transfer-reuse/report.json';partial_review={}
+    if partial_review_path.is_file():
+        partial_review=read_json(partial_review_path)
+        if (not prior_occurrences or partial_review['status']!='PASS'
+                or partial_review['basePriorReportSha256']!=digest(prior_occurrence_path)
+                or partial_review['bankSnapshotSha256']!=prior_occurrences['bankSnapshotSha256']):
+            raise ValueError('Partial-source admission supplement belongs to another current source proof')
+        originals={}
+        for row in partial_review['results']:
+            if row['status']!='ORIGINAL_FROZEN_PARTIAL_SOURCE_ADMISSION_REVALIDATED_KEEP_ID':continue
+            sha=row['sourceSha256']
+            if sha not in originals:
+                source=prior_by_source[sha];path=Path(source['evidencePath'])
+                if digest(path)!=source['evidenceSha256']:raise ValueError('Original prior-link source report changed')
+                originals[sha]={q['sourceLocator']:q for q in read_json(path)['results']}
+            original=originals[sha][row['sourceLocator']]
+            if original['status']!=row['previousProofStatus'] or original['canonicalCode']!=row['canonicalCode']:
+                raise ValueError('Partial admission supplement changed original locator, code or status')
+        inputs.append(partial_review_path)
+    partial_path=root/'partial-chemistry-preparation/progress.json';partial_proof_path=partial_path.parent/'current-source-verification.json';partial_sources={};partial={}
+    if partial_path.is_file() and partial_proof_path.is_file():
+        partial=read_json(partial_path);proof=read_json(partial_proof_path)
+        if partial['status']!='COMPLETE' or proof['status']!='PASS' or proof['sourcePreparationSha256']!=digest(partial_path):
+            raise ValueError('Complete current individual source/key proof required before partial preparation is counted')
+        partial_sources={r['sourceSha256']:r for r in partial['results'] if r['status']=='PREPARED'}
+        if sum(r['questions'] for r in partial_sources.values())!=proof['questions']:raise ValueError('Partial original question count differs')
+        inputs.extend([partial_path,partial_proof_path])
+    amendment_path=root/'din-question-amendments/report.json';amendments={}
+    if amendment_path.is_file():
+        amendments=read_json(amendment_path)
+        if amendments['status']!='PASS' or digest(amendments['amendedPackage'])!=amendments['amendedPackageSha256']:
+            raise ValueError('Actually read source question amendments changed')
+        if amendments['bankSnapshotSha256'] not in bank_snapshots:raise ValueError('Source question amendment bank snapshot differs')
+        inputs.append(amendment_path)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -248,9 +296,15 @@ def main():
             unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'),document_reviews,book_sections)
         prepared_bodies={r['sourceSha256']:r for r in body_scope.get('results',[])}
         for row in rows:
+            specific=[a for a in amendments.get('results',[]) if a['sourceSha256']==row['sourceSha256']]
+            if specific:row['actualSourceQuestionAmendments']=specific
             result=prepared_bodies.get(row['sourceSha256'])
             if result:row['mockBodyPreparation']={k:result.get(k) for k in ['status','questionsPrepared','expectedQuestions','package','packageSha256','issues','administrativePagesContentAccepted']}
             if row['sourceSha256'] in page_equivalence:row['sourceEditionPageEquivalence']=page_equivalence[row['sourceSha256']]
+            if row['sourceSha256'] in partial_sources:
+                prepared=partial_sources[row['sourceSha256']]
+                row['individuallyIdenticalPartialQuestionPreparation']={k:prepared[k] for k in ['status','questions','package','packageSha256','fullTestAccepted']}
+                row['individuallyIdenticalPartialQuestionPreparation']['answerMethod']='EXACT_NATIVE_AND_TWO_DPI_QUESTION_PIXELS_PLUS_NATIVE_AND_INDEPENDENT_RENDERED_OFFICIAL_KEY'
             if row['sourceSha256'] in prior_by_source:
                 original=prior_by_source[row['sourceSha256']]
                 row['allPriorOccurrenceReconciliation']={k:original.get(k) for k in ['status','occurrences','sourceOccurrenceStates','proofStates','intakeActions','evidencePath','evidenceSha256','sourceFullyAccepted']}
@@ -278,17 +332,19 @@ def main():
         report['diagnosticQuestionComparisonStates']=comparison_states(counters,key_shas)
         report['mockQuestionComparisonStates']=comparison_states(counters,{r['sourceSha256'] for r in mock_report.get('results',[])})
         report['dinBookQuestionComparisonStates']=comparison_states(counters,set(book_sections))
+        report['partialChemistryQuestionComparisonStates']=comparison_states(counters,set(partial_sources))
+        report['individuallyPreparedChemistryQuestions']=partial.get('questionsPrepared',0)
+        report['actualDinSourceQuestionAmendments']={k:amendments.get(k) for k in ['status','questionsRead','amendedQuestions','excludedAmbiguousPrintedQuestions','additionalActuallyReadDuplicateGroups']}
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         if prior_occurrences:
-            counts=Counter(prior_occurrences['proofStates'])
-            for question in prior_booklets.get('results',[]):
-                if question['status']=='CURRENT_ORIGINAL_BOOKLET_IMAGE_OFFICIAL_RECORD_AND_PRINTED_KEY_AGREE':
-                    counts[question['previousProofStatus']]-=1;counts['CURRENT_ORIGINAL_BOOKLET_IMAGE_OFFICIAL_RECORD_AND_PRINTED_KEY_AGREE']+=1
-            if any(n<0 for n in counts.values()):raise ValueError('Booklet supplement over-counted prior proof states')
+            counts=supplement_counts(prior_occurrences['proofStates'],[
+                (prior_booklets.get('results',[]),'CURRENT_ORIGINAL_BOOKLET_IMAGE_OFFICIAL_RECORD_AND_PRINTED_KEY_AGREE'),
+                (partial_review.get('results',[]),'ORIGINAL_FROZEN_PARTIAL_SOURCE_ADMISSION_REVALIDATED_KEEP_ID')])
             report['allPriorOccurrenceSnapshot']={k:prior_occurrences[k] for k in ['sourceDocuments','completed','pending','occurrences','sourceOccurrenceStates','intakeActions']}
             report['allPriorOccurrenceSnapshot']['effectiveProofStates']=dict(counts)
             report['priorBookletContractSnapshot']={k:prior_booklets.get(k) for k in ['status','documents','questions','states']}
+            report['partialSourceFrozenAdmissionSnapshot']={k:partial_review.get(k) for k in ['status','sourceLinks','states']}
         report['reviewedTransferNewlyRevalidatedLinks']=reviewed_report.get('newlyRevalidatedLinks',0)
         report['newRegionDiscoverySnapshot']={k:discovery_report.get(k) for k in ['status','documents','completed','pending','candidateRegions','sourceAnswersApproved']}
         write_json(folder/'report.json',report)

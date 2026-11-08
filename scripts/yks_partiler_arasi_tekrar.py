@@ -5,6 +5,7 @@ same question. This queue binds all prepared packages, printed answers and
 source bytes; text equality remains a candidate when original graphics differ.
 """
 from collections import Counter,defaultdict
+import argparse
 import hashlib
 from pathlib import Path
 import re
@@ -49,10 +50,13 @@ def cluster(members):
 
 
 def main():
-    store=Store(APP/'veri/yks-birlestirme');root=store.child(store.current()['runId']);out=root/'cross-source-candidates';out.mkdir(exist_ok=True)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--chemistry-parts',action='store_true');args=parser.parse_args()
+    store=Store(APP/'veri/yks-birlestirme');root=store.child(store.current()['runId']);out=root/'cross-source-candidates'
+    if args.chemistry_parts:out=out/'expanded-with-chemistry'
+    out.mkdir(parents=True,exist_ok=True)
     packages={};inputs={};bank_shas=set();cards={};memberships=defaultdict(list)
     with process_lock(out/'.writer.lock'):
-        for name in COHORTS:
+        for name in COHORTS+(['partial-chemistry-comparison'] if args.chemistry_parts else []):
             file=root/name/'comparison-report.json';report=read_json(file)
             if report['status']!='PASS':raise ValueError('Complete all-cohort comparison required: '+name)
             inputs[str(file)]=digest(file);bank_shas.add(report['bankSnapshotSha256'])

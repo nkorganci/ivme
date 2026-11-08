@@ -42,10 +42,13 @@ def validate(value,question_lines,topic_lines):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din')
-    parser.add_argument('--limit',type=int);parser.add_argument('--code',action='append');parser.add_argument('--scope',choices=['pilot','full'],default='pilot');args=parser.parse_args()
+    parser.add_argument('--limit',type=int);parser.add_argument('--code',action='append');parser.add_argument('--scope',choices=['pilot','full'],default='pilot')
+    parser.add_argument('--from-reviewed-images',action='store_true');args=parser.parse_args()
     if args.limit is not None and args.limit<1:parser.error('Positive limit required')
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId']);folder=root/('full-question-topics' if args.scope=='full' else 'question-topics')/args.subject
     source=folder/'content-topic-review.json';report=read_json(source);retrieval=read_json(folder/'topic-candidates.json')
+    source_sha=digest(source)
+    if args.scope=='full' and report['status']!='COMPLETE':raise ValueError('Finish the primary full-scope source review before the independent semantic pass')
     if report['retrievalSha256']!=digest(folder/'topic-candidates.json'):raise ValueError('Topic retrieval changed')
     tree_path=next(root/a['path'] for a in state['stages']['YKS-04:full']['artifacts'] if a['path'].endswith('navigation-candidate.json'))
     if digest(tree_path)!=retrieval['providerTreeSha256']:raise ValueError('MEBI registered topic tree changed')
@@ -53,12 +56,23 @@ def main():
     from yks_konu_girdileri import load_bound_cards
     cards=load_bound_cards(retrieval)
     model=next(m for m in api('/api/tags')['models'] if m['name']==MODEL)
-    selected=[r for r in report['results'] if not args.code or r['sourceCode'] in args.code]
+    selection_evidence={};selected_codes=set(args.code or [])
+    if args.from_reviewed_images:
+        if args.scope!='full' or args.code:raise ValueError('Reviewed-image selection requires full scope without a second code selector')
+        pair_path=root/'cross-source-candidates/actual-image-pair-review.json';pairs=read_json(pair_path)
+        if pairs['status']!='PASS':raise ValueError('Actual source image-pair readings required')
+        selected_codes={r['preferredSourceLocator'] for r in pairs['results'] if r['printedCorrectOptionAgrees']}
+        selected_codes.update(['mebi-05ed1fe27201-q1','mebi-05ed1fe27201-q2','mebi-05ed1fe27201-q4'])
+        selection_evidence[str(pair_path)]=digest(pair_path)
+    if selected_codes-set(r['sourceCode'] for r in report['results']):raise ValueError('Selected semantic source question is missing from the primary review')
+    selected=[r for r in report['results'] if not selected_codes or r['sourceCode'] in selected_codes]
     cache=folder/'semantic-readings';cache.mkdir(exist_ok=True);results=[];calls=0
     sys.path.insert(0,str(APP.parent/'pipeline'));from model_runtime import ModelLease
     def save(status):
         write_json(folder/'semantic-topic-review.json',{'status':status,'scope':'INDEPENDENT_LOCAL_TOPIC_CONTENT_CHALLENGE',
-            'model':MODEL,'modelDigest':model['digest'],'inputReviewSha256':digest(source),'toolSha256':digest(Path(__file__)),
+            'model':MODEL,'modelDigest':model['digest'],'inputReviewSha256':source_sha,'toolSha256':digest(Path(__file__)),
+            'inputQuestions':len(report['results']),'selectedQuestions':len(selected),'selectionEvidence':selection_evidence,
+            'selectedSourceCodes':sorted(r['sourceCode'] for r in selected),'entireInputSelected':len(selected)==len(report['results']),
             'newModelCallsThisPass':calls,'pendingQuestions':len(selected)-len(results),
             'states':dict(Counter(r['status'] for r in results)),'results':results,
             'questionBankWrites':0,'categoryAssignmentsWritten':0,'teacherApproved':False})
@@ -84,6 +98,9 @@ def main():
                 identity={'modelDigest':model['digest'],'prompt':prompt,'schema':SCHEMA,'options':OPTIONS,'think':'low',
                     'sourceTextSha256':card['textSha256'],'topicPdfSha256':proof['sourceSha256'],'topicQuoteSha256':signature(proof['quote'])}
                 path=cache/(signature(identity)+'.json')
+                if not path.is_file() and args.scope=='full':
+                    prior=root/'question-topics'/args.subject/'semantic-readings'/path.name
+                    if prior.is_file():path=prior
                 if path.is_file():
                     evidence=read_json(path)
                     if evidence['identity']!=identity:raise ValueError('Semantic cache identity differs')
@@ -104,6 +121,7 @@ def main():
                 results.append({'sourceCode':code,'categoryId':suggestion['categoryId'],'status':status,'reading':value,
                     'validationError':error,'evidencePath':str(path),'evidenceSha256':digest(path),'cacheHit':hit,'teacherApproved':False})
                 save('RUNNING');print(f'Independent topic check: {len(results)}/{len(selected)} {code}: {status}',flush=True)
+            if digest(source)!=source_sha or any(digest(p)!=sha for p,sha in selection_evidence.items()):raise ValueError('Primary source review or actual-image selection changed during independent verification')
             save('COMPLETE' if len(results)==len(selected) else 'PARTIAL')
         except BaseException:save('INTERRUPTED');raise
         finally:api('/api/generate',{'model':MODEL,'keep_alive':0})

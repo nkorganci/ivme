@@ -22,7 +22,7 @@ def full_inputs(root,subject=None):
     printed_path=root/'full-mock-comparison/printed-section-scopes.json';printed=read_json(printed_path);printed_sha=digest(printed_path)
     if printed['status'] not in ['PASS','COMPLETE_WITH_EXPLICIT_EXCEPTIONS']:raise ValueError('Printed section discipline scopes required')
     scopes={r['sourceCode']:r for r in printed['sourceCardScopes']};cards={};proofs={};bindings={};deferred=[];inputs={str(printed_path):printed_sha}
-    for cohort in COHORTS:
+    for cohort in COHORTS+(['partial-chemistry-comparison'] if (root/'partial-chemistry-comparison/comparison-report.json').is_file() else []):
         file=root/cohort/'comparison-report.json';report=read_json(file)
         if report['status']!='PASS':raise ValueError('Complete source cohort bank comparison required')
         inputs[str(file)]=digest(file)

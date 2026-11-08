@@ -441,3 +441,32 @@ ve model/text kimliği doğrulanmış 1.024 boyutlu BGE önbelleklerini de içer
 Çalışan yerel modelin raporu RUNNING kalır; rapordaki tamamlanmış satırların
 immutable ham cevap cache'leri aynı snapshot'a ayrıca alınır. Tamamlanmamış
 iş tamamlanmışa çevrilmez, yayın/öğretmen kararı oluşturulmaz.
+
+## Tamamlanan ek partiler ve sürüm düzeltmeleri
+
+Aşağıdaki çıktılar varsa ve girdi hash'leri değişmemişse tekrar çalıştırılmaz:
+
+- `yks_partiler_gorsel_incele.py`: 36 çiftin gerçek 72 görseli, 35 tekrar ve bir cevap çelişkisi.
+- `yks_bekleyen_tekrar_kontrol.py` + `yks_bekleyen_gorsel_incele.py`: 5.303 eski pending kimliği ve C/A farklı matematik nüshaları.
+- `yks_kimya_soru_nushasi.py`: 63 Kimya kaynağında soru düzeyinde 180/330 DPI kontrolü.
+- `yks_kimya_kismi_anahtar.py` + `yks_kimya_kismi_dogrula.py`: 18 native/OCR tam uyumlu anahtardan yalnız 150 eş soru.
+- `yks_tam_tekrar_tara.py --chemistry-parts` + `yks_tam_tekrar_incele.py --chemistry-parts`: yalnız bu 150 sorunun banka karşılaştırması.
+- `yks_partiler_arasi_tekrar.py --chemistry-parts`: geniş sonuç `expanded-with-chemistry/` içinde; okunmuş eski 36 çift raporu ezilmez.
+- `yks_kismi_incelenmis_aktarim.py`: 28 eski kabul kanıtı daha; eksik tek eski rapor hash'ine bağlı 127 bağ bekler.
+- `yks_mevcut_gorsel_incele.py`: altı kaynak/banka görsel eşleşmesi; farklı TYT/AYT ilişkisi ayrı tutulur.
+- `yks_din_istisna_incele.py`: beş istisna, dört ayrı düzeltilmiş sürüm ve kaynakta aynı D/E seçeneği bulunan bir dışlama.
+- `yks_tam_tekrar_tara.py --din-amendments` + `yks_tam_tekrar_incele.py --din-amendments`: yalnız bu dört yeni sürümün karşılaştırması.
+- `yks_banka_metin_eki.py`: metinsiz tek banka sorusunun gerçek görselinden karşılaştırma eki; eski 80 bin karşılaştırmayı yinelemez.
+- `yks_konu_destek_istisna.py`: iki model desteklese de üç konu önerisini kaynak incelemesinde tutar, bir gerçek PDF alıntısı ekler.
+
+Geniş Qwen 1.099 soruda tamamdır. Bağımsız GPT-OSS'un `--scope full
+--from-reviewed-images` çalışması yalnız seçilmiş 37 sorudadır ve tamamlandı;
+yeniden model çağırma. `entireInputSelected=false` bütün kapsamın bittiği
+iddiasını engeller. Düzeltilen q24'ün eski konu okuması geçersizdir; aynı
+koda sahip sürümler birbiri yerine sessizce kullanılmaz.
+
+Yeni anlamlı parti sonrası yalnız kapsam birleştirmesi ve değişen kalite
+profili çalışır. Sonra pilot kanıt referansları yenilenir; dört gerçek DB testi
+değişmediyse tekrarlanmaz. `yks_hazirlik_checkpoint.py` güncel imleci yazar,
+pipeline Python ile `yks_kanit_db.py save` ham baytları ve kayıtları DB'ye
+sürümleyip geri okur. Tam adımların açık kabulü sürerken BITTI yazılmaz.

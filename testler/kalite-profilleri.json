@@ -604,7 +604,7 @@
     "yks-topic-semantic": {
       "kind": "python",
       "args": ["testler/yks-topic-semantic-test.py"],
-      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
+      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_destek_istisna.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
     },
     "yks-pilot-package": {
       "kind": "node",
@@ -749,7 +749,7 @@
     "yks-din-book-bodies": {
       "kind": "python",
       "args": ["testler/yks-din-book-bodies-test.py"],
-      "inputs": ["scripts/yks_din_kitap_govde.py", "scripts/yks_deneme_govde.py", "testler/yks-din-book-bodies-test.py"]
+      "inputs": ["scripts/yks_din_kitap_govde.py", "scripts/yks_din_istisna_incele.py", "scripts/yks_deneme_govde.py", "testler/yks-din-book-bodies-test.py"]
     },
     "yks-source-edition-pages": {
       "kind": "python",
@@ -765,6 +765,26 @@
       "kind": "python",
       "args": ["testler/yks-cross-source-test.py"],
       "inputs": ["scripts/yks_partiler_arasi_tekrar.py", "scripts/yks_secenek_degisimi.py", "testler/yks-cross-source-test.py"]
+    },
+    "yks-cross-source-actual-images": {
+      "kind": "python",
+      "args": ["testler/yks-cross-source-visual-test.py"],
+      "inputs": ["scripts/yks_partiler_gorsel_incele.py", "scripts/yks_mevcut_gorsel_incele.py", "scripts/yks_banka_metin_eki.py", "scripts/yks_soru_yenilik_kontrol.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-cross-source-visual-test.py"]
+    },
+    "yks-pending-source-reuse": {
+      "kind": "python",
+      "args": ["testler/yks-pending-source-reuse-test.py"],
+      "inputs": ["scripts/yks_bekleyen_tekrar_kontrol.py", "scripts/yks_bekleyen_gorsel_incele.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-pending-source-reuse-test.py"]
+    },
+    "yks-chemistry-question-editions": {
+      "kind": "python",
+      "args": ["testler/yks-chemistry-question-editions-test.py"],
+      "inputs": ["scripts/yks_kimya_soru_nushasi.py", "scripts/yks_pilot_sorular.py", "testler/yks-chemistry-question-editions-test.py"]
+    },
+    "yks-partial-chemistry-key": {
+      "kind": "python",
+      "args": ["testler/yks-partial-chemistry-key-test.py"],
+      "inputs": ["scripts/yks_kimya_kismi_anahtar.py", "scripts/yks_kimya_kismi_dogrula.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-partial-chemistry-key-test.py"]
     },
     "yks-prior-occurrences": {
       "kind": "python",
@@ -784,7 +804,7 @@
     "yks-reviewed-existing-transfer": {
       "kind": "python",
       "args": ["testler/yks-reviewed-transfer-test.py"],
-      "inputs": ["scripts/yks_incelenmis_aktarim_kontrol.py", "scripts/pdf_slide_compare.py", "scripts/pdf_question_accept.py", "scripts/pdf_slide_questions.py", "testler/yks-reviewed-transfer-test.py"]
+      "inputs": ["scripts/yks_incelenmis_aktarim_kontrol.py", "scripts/yks_kismi_incelenmis_aktarim.py", "scripts/pdf_slide_compare.py", "scripts/pdf_question_accept.py", "scripts/pdf_slide_questions.py", "testler/yks-reviewed-transfer-test.py"]
     },
     "yks-option-permutation": {
       "kind": "python",
@@ -1063,7 +1083,9 @@
         "yks-unkeyed-summary",
         "yks-din-book-keys",
         "yks-din-book-bodies",
-        "yks-source-edition-pages"
+        "yks-source-edition-pages",
+        "yks-chemistry-question-editions",
+        "yks-partial-chemistry-key"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -1085,6 +1107,8 @@
         "yks-mock-answer-editions",
         "yks-turkce-edition-reuse",
         "yks-cross-source-candidates",
+        "yks-cross-source-actual-images",
+        "yks-pending-source-reuse",
         "yks-prior-occurrences",
         "yks-booklet-prior-reuse"
       ],

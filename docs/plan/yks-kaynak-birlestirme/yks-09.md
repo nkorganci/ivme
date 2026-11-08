@@ -12,15 +12,38 @@ sorusunun branşı yalnız basılı tek ders aralığından alınır; birleşik
 Matematik/Geometri, Felsefe grubu ve yanlış basılı AYT Fen aralıkları otomatik
 alt derse dönüşmez. Sayı uyuşmazlığı bulunan iki Din testi kuyrukta yoktur.
 
-Yerel Qwen `yks_konu_icerik_incele.py --subject din --scope full` ile çalışır;
+Yerel Qwen kaynak okuması 1.099/1.099 tamamlandı: 245 kaynak satırına bağlı,
+710 açık kaynak incelemeli öneri, 128 yanıt incelemesi ve 16 uygun konu yok.
+`yks_konu_icerik_incele.py --subject din --scope full` tekrar çalıştırılmaz;
 önceden biten 33 pilot okuması aynen yeniden kullanılır. Her yeni sonuçta
 soru kökü satırı ve gerçek konu PDF alıntısı bağlanır; geçersiz satır/alıntı,
 yetersiz kapsam ve açık kaynak incelemesi ayrı kalır. Model çıktısı soru
 kabulü değildir. Ham cache ve RUNNING imleci dosya/DB snapshot'ında korunur;
 aynı girdi yeniden modele verilmez. Sonraki bağımsız kontrol GPT-OSS ile
-`yks_konu_anlam_kontrol.py --subject din --scope full` olur; model lease
+`yks_konu_anlam_kontrol.py --subject din --scope full --from-reviewed-images`
+ile yalnız görselleri gerçekten okunmuş 37 kaynak kodunda tamamlandı: 20 destek,
+9 konu önerisi yok/geçersiz, 5 yetersiz alıntı, 3 geçersiz bağımsız yanıt.
+25 yeni GPT-OSS çağrısı yapıldı, üç pilot cache tekrar kullanıldı. Bu seçimin
+tamamlanması bütün 1.099 sorunun semantik kabulü değildir; `inputQuestions`,
+`selectedQuestions` ve `entireInputSelected` alanları ayrımı korur. Model lease
 nedeniyle Qwen bitmeden ikinci ağır modeli başlatma. Pilot 3 soru/12 eski ID
 ve dört gerçek DB testi değişmedi; onları yeniden üretme.
+
+## İki modelin destek kararının son kaynak kontrolü
+
+`actual-topic-support-challenges.json` dört açık kaynak incelemesi içerir.
+İbn Sina/el-Kanun sorusunu güncel sağlık hükümlerine bağlayan öneri kapsam
+çelişkisidir; cömertlik sorusunun genel Kur’an-kavramları alıntısı ve mülkiyet
+sorusunun çalışma/infak alıntısı doğrudan dayanak olarak yeterli değildir.
+Bu üç model-destekli öneri incelemede kalır. Ahiretin ebedîliği sorusu için
+aynı gerçek MEBİ PDF'nin ilk paragrafı ek kanıt olarak doğrulandı. Ham model
+kararları değiştirilmedi; iki modelin anlaşması otomatik kategori kabulü değildir.
+
+`bank-image-text-supplement.json` metni eksik tek banka sorusunun (`sb-83612`)
+gerçek görselinden okunmuş karşılaştırma ekidir. Yalnız bu soru önceki 1.094
+Din sorusuyla karşılaştırıldı, ek kesin eşleşme yok. İlk toplu raporun beş
+kaynak istisnası tarihsel olarak korunur; onların güncel sürümü
+`din-question-amendments/` altındadır. Banka metni/cevabı değiştirilmez.
 
 ## Ajanın başlangıç talimatı
 

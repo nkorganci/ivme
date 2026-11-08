@@ -72,6 +72,13 @@ def source_pages(document,exam,first_key_page):
     return pages,other
 
 
+def physical_column_edges(regions):
+    """Printed numbers can be out of order; continuation follows geometry."""
+    left=[r for r in regions if r['column']==0];right=[r for r in regions if r['column']==1]
+    if not left or not right:return None
+    return max(left,key=lambda r:r['bboxPt'][1]),min(right,key=lambda r:r['bboxPt'][1])
+
+
 def prepare_section(document,key,pages,out):
     validate_section(key);sha=key['sourceSha256'];answers={a['number']:a['answer'] for a in key['nativePrintedAnswers']}
     cards=[];actual=[];coverage=[];issues=[];active={};heads=[]
@@ -91,9 +98,9 @@ def prepare_section(document,key,pages,out):
             for n in context['dependentPrintedNumbers']:
                 if n in active:raise ValueError('Ambiguous repeated book source context')
                 active[n]=context
-        continuations={};left=[r for r in regions if r['column']==0];right=[r for r in regions if r['column']==1]
-        if left and right:
-            a=max(left,key=lambda r:r['number']);b=min(right,key=lambda r:r['number'])
+        continuations={};edges=physical_column_edges(regions)
+        if edges:
+            a,b=edges
             prefix=[l for l in lines if l['bbox'][0]>page.rect.width/2 and page.rect.height*.1<l['bbox'][1]<b['bboxPt'][1]
                 and not any(pymupdf.Rect(c['bboxPt']).intersects(pymupdf.Rect(l['bbox'])) for c in shared)]
             if prefix and b['number']==a['number']+1:

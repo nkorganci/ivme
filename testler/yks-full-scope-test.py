@@ -5,10 +5,16 @@ import unittest
 from collections import Counter
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from yks_tam_kapsam import reconcile,unique,comparison_states
+from yks_tam_kapsam import reconcile,unique,comparison_states,supplement_counts
 
 
 class FullScopeTest(unittest.TestCase):
+    def test_prior_supplements_replace_one_original_source_link_and_reject_overlap(self):
+        row={'sourceSha256':'source','sourceLocator':'raw:old','previousProofStatus':'REVIEW','status':'PROVEN'}
+        self.assertEqual(supplement_counts({'REVIEW':2},[([row],'PROVEN')]),{'REVIEW':1,'PROVEN':1})
+        with self.assertRaises(ValueError):supplement_counts({'REVIEW':2},[([row],'PROVEN'),([row],'PROVEN')])
+        with self.assertRaises(ValueError):supplement_counts({'REVIEW':0},[([row],'PROVEN')])
+
     def setUp(self):
         self.groups=[{'sha256':'a','canonicalCandidate':{'root':'X','path':'a.pdf'},'occurrences':[],
             'previousEvidence':{'coverageState':'FULLY_LINKED','linkedQuestions':10},'processingCandidate':'REUSE'}]

@@ -7,10 +7,18 @@ import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from yks_incelenmis_aktarim_kontrol import source_path,validate_saved_decision
-from yks_birlestirme import digest
+from yks_birlestirme import digest,Store,read_json
 
 
 class ReviewedTransferTest(unittest.TestCase):
+    def test_actual_partial_source_review_reuses_only_28_existing_admissions(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'partial-reviewed-transfer-reuse/report.json');self.assertEqual(report['sourceLinks'],155)
+        valid=[r for r in report['results'] if r['status']=='ORIGINAL_FROZEN_PARTIAL_SOURCE_ADMISSION_REVALIDATED_KEEP_ID']
+        self.assertEqual(len(valid),28);self.assertEqual(report['questionBankWrites'],0)
+        for row in valid:
+            self.assertFalse(row['newQuestionOrTeacherApprovalWritten']);self.assertIsNone(row['issue'])
+            self.assertEqual(digest(row['proof']['frozenReviewPath']),row['proof']['frozenReviewSha256'])
     def test_registered_paths_cannot_escape_evidence_roots(self):
         for name in ['veri/../../secret.json','C:/secret.json','unknown/package.json','veri-hatti/../../secret.json']:
             with self.subTest(name=name):

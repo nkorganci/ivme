@@ -43,22 +43,29 @@ def same_content(left,right):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din');parser.add_argument('--scope',choices=['pilot','full'],default='pilot');args=parser.parse_args()
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId'])
-    folder=root/'question-topics'/args.subject;retrieval=read_json(folder/'topic-candidates.json');cards=[]
-    for path,sha in retrieval['questionPackages'].items():
-        if digest(path)!=sha:raise ValueError('Source question package changed')
-        cards.extend(c for c in read_json(path)['cards'] if c['subjectId']==args.subject)
+    folder=root/('full-question-topics' if args.scope=='full' else 'question-topics')/args.subject;retrieval=read_json(folder/'topic-candidates.json')
+    from yks_konu_girdileri import load_bound_cards
+    source_cards=load_bound_cards(retrieval)
+    selected={r['sourceCode'] for r in retrieval['results']};cards=[c for c in source_cards.values() if c['code'] in selected and c['subjectId']==args.subject]
+    deferred=[]
     bank,ocr=live_bank(APP);bank_sha=signature(bank)
     inventory=APP/'veri/content-labels/source-inventory.json';original={q['code']:q for q in read_json(inventory)['questions']}
-    source_features=[];inverse=defaultdict(set)
-    for i,card in enumerate(cards):
+    source_features=[];inverse=defaultdict(set);complete=[]
+    for card in cards:
         if digest(card['image'])!=card['imageSha256']:raise ValueError('Source crop changed')
         stem,options=parts(card['text'])
-        if not options:raise ValueError('Five complete source options required')
+        if not options:
+            if args.scope=='pilot':raise ValueError('Five complete source options required')
+            deferred.append({'sourceCode':card['code'],'sourceSha256':card['sourceSha256'],'reason':'COMPLETE_SOURCE_OPTIONS_REVIEW_REQUIRED'});continue
+        i=len(complete);complete.append(card)
         words,pairs=features(stem);source_features.append((stem,options,words,pairs))
         for pair in pairs:inverse[pair].add(i)
+    cards=complete
     matches=[[] for c in cards];exact=[[] for c in cards];missing=[];text_hashes=[]
+    exact_index=defaultdict(list)
+    for i,(stem,options,*_) in enumerate(source_features):exact_index[signature([stem,sorted(options.values())])].append(i)
     for index,q in enumerate(bank):
         evidence=original.get(q['code'],{})
         if evidence.get('updated_at')!=q['stamp'] or evidence.get('image')!=q['image']:
@@ -71,8 +78,9 @@ def main():
             stem,options=parts(text);words,pairs=features(stem);overlaps=Counter()
             for pair in pairs:
                 for i in inverse.get(pair,()):overlaps[i]+=1
-            for i,(source_stem,source_options,source_words,source_pairs) in enumerate(source_features):
-                if stem==source_stem and options and sorted(options.values())==sorted(source_options.values()):
+            for i in exact_index.get(signature([stem,sorted(options.values())]),[]) if options else []:
+                source_stem,source_options,source_words,source_pairs=source_features[i]
+                if stem==source_stem and sorted(options.values())==sorted(source_options.values()):
                     exact[i].append({'code':q['code'],'version':q['stamp'],'answer':q['correct_answer'],
                         **same_content(cards[i]['text'],text)})
             for i,count in overlaps.items():
@@ -86,6 +94,13 @@ def main():
                     'bankTextMethod':'ORIGINAL_NATIVE' if text==native else 'EXISTING_CURRENT_OCR',
                     'sameStem':stem==source_stem,'allOptionsSameContent':bool(options and sorted(options.values())==sorted(source_options.values()))}
                 matches[i].append(row)
+                # Retrieval needs only the strongest candidates per source;
+                # keep deterministic top results without accumulating tens of
+                # millions of copies of long canonical question texts.
+                if len(matches[i])>=30:
+                    by_code={}
+                    for m in sorted(matches[i],key=lambda m:(-m['score'],m['code'])):by_code.setdefault(m['code'],m)
+                    matches[i]=list(by_code.values())[:10]
         if (index+1)%20000==0:print(f'Secondary stem comparison: {index+1}/{len(bank)}',flush=True)
     results=[];lines=['# Din soruları: ikinci bağımsız banka karşılaştırması','',
         'Skor karar değildir. Kaynak ve banka kök/seçenekleri okunmalıdır.','']
@@ -101,6 +116,7 @@ def main():
     if signature(after)!=bank_sha:raise ValueError('Live bank changed during secondary comparison')
     report={'status':'PARTIAL' if missing else 'PASS','scope':'WHOLE_BANK_INDEPENDENT_PROSE_STEM_AND_OPTION_RETRIEVAL',
         'questions':len(cards),'bankQuestions':len(bank),'bankSnapshotSha256':bank_sha,
+        'inputScope':args.scope,'deferredSourceQuestions':deferred,
         'sourceInventorySha256':digest(inventory),'bankTextEvidenceSha256':signature(text_hashes),
         'sourcePackages':retrieval['questionPackages'],'newEmbeddings':0,'modelCalls':0,'newOcrCalls':0,
         'questionsWithoutUsableText':missing,'bankQuestionsWithUsableText':len(bank)-len(missing),
