@@ -4,9 +4,27 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from yks_konu_icerik_incele import validate_choice,validate_line_choice,stem_lines,validate_document_choice
 from yks_soru_konu_adaylari import retrieve_registered
+from yks_gorsel_konu_pilotu import validate as validate_image_topic
+from yks_birlestirme import Store,read_json
 
 
 class SourceTopicContentTest(unittest.TestCase):
+    def test_image_topic_model_must_not_turn_a_generated_answer_into_a_classification_proof(self):
+        contexts=[{'categoryId':'topic','sourceSnippets':[{'id':1,'quote':'Gerçek PDF'}]}]
+        value={'categoryId':'topic','topicEvidenceSnippetId':1,'reason':'Doğru cevap E seçeneğidir.','needsReview':False}
+        with self.assertRaises(ValueError):validate_image_topic(value,contexts)
+        value['reason']='Soru laboratuvar aracının adlandırılmasını ölçer.'
+        self.assertEqual(validate_image_topic(value,contexts)['topicEvidence']['quote'],'Gerçek PDF')
+        with self.assertRaises(ValueError):validate_image_topic({**value,'categoryId':'unknown'},contexts)
+
+    def test_three_question_image_diagnostic_does_not_claim_general_subject_reliability(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'kimya-topic-vision-pilot/report.json')
+        self.assertEqual(report['status'],'COMPLETE');self.assertEqual(report['questions'],3)
+        self.assertEqual(report['agreesWithActualSourceReview'],1)
+        self.assertTrue(any(r['validationError'] for r in report['results']))
+        self.assertEqual(report['categoryAssignmentsWritten'],0);self.assertFalse(report['teacherApproved'])
+
     def setUp(self):
         self.card={'text':'1. Tasavvuf tarihi üç dönemde gelişmiştir. A) Tasavvuf B) Madde C) Madde D) Madde E) Madde',
             'exam':'AYT','subjectId':'din','containsGraphics':False,'reviewConcerns':[]}

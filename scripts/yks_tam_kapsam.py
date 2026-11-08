@@ -291,6 +291,18 @@ def main():
             raise ValueError('Actually read source question amendments changed')
         if amendments['bankSnapshotSha256'] not in bank_snapshots:raise ValueError('Source question amendment bank snapshot differs')
         inputs.append(amendment_path)
+    intake_path=root/'source-intake-queue/report.json';intake={};intake_by_source={}
+    if intake_path.is_file():
+        intake=read_json(intake_path)
+        if intake['status']!='PASS' or intake['bankSnapshotSha256'] not in bank_snapshots:
+            raise ValueError('Prepared source intake queue must use the same current bank snapshot')
+        if len(intake['results'])!=intake['questions'] or len({r['sourceCode'] for r in intake['results']})!=intake['questions']:
+            raise ValueError('Every prepared current source question must occur once in the intake queue')
+        for row in intake['results']:
+            if row['productionImportAllowed'] is not False or row['teacherApproved'] is not False:
+                raise ValueError('Source preparation cannot contain production or invented teacher approval')
+            intake_by_source.setdefault(row['sourceSha256'],Counter())[row['status']]+=1
+        inputs.append(intake_path)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -305,6 +317,8 @@ def main():
             unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'),document_reviews,book_sections)
         prepared_bodies={r['sourceSha256']:r for r in body_scope.get('results',[])}
         for row in rows:
+            if row['sourceSha256'] in intake_by_source:
+                row['preparedQuestionIntakeStates']=dict(intake_by_source[row['sourceSha256']])
             specific=[a for a in amendments.get('results',[]) if a['sourceSha256']==row['sourceSha256']]
             if specific:row['actualSourceQuestionAmendments']=specific
             result=prepared_bodies.get(row['sourceSha256'])
@@ -344,6 +358,7 @@ def main():
         report['partialChemistryQuestionComparisonStates']=comparison_states(counters,set(partial_sources))
         report['individuallyPreparedChemistryQuestions']=sum(r['questions'] for r in partial_sources.values())
         report['actualDinSourceQuestionAmendments']={k:amendments.get(k) for k in ['status','questionsRead','amendedQuestions','excludedAmbiguousPrintedQuestions','additionalActuallyReadDuplicateGroups']}
+        report['preparedQuestionIntakeSnapshot']={k:intake.get(k) for k in ['status','questions','sourceDocuments','states','provenExistingCanonicalIds']}
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         if prior_occurrences:

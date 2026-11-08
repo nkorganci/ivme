@@ -61,8 +61,12 @@ ayırma teknikleri ve homojen-heterojen karışımlar şeklindeki model seçimle
 uygun değildir; 7. soruda bağımsız modelin desteği de bunu değiştirmez.
 Doğru MEBİ yaprağına üç yayımlanmamış düzeltme adayı kaydedildi; cevap,
 soru veya kategori yazılmadı. Eski model çıktıları korunur. Toplu metin okumasına
-geçmeden bu üç gerçek örnekte görsel okuma değerlendirilmelidir; kalan 166
-Kimya içerik incelemesinin hiçbiri kendiliğinden yeni soru sayılmaz.
+geçmeden üç gerçek örnekte görsel okuma değerlendirildi: Qwen 1/3 doğru
+konu üretti; iki yanıt uygunsuzdu ve cevap üreten yanıt ayrıca reddedildi.
+`kimya-topic-vision-pilot/` ham cevapları korur; bu sonuç bütün Kimya için
+güvenilirlik kanıtı değildir ve toplu sınıflandırmaya genişletilmez.
+Kalan 166 Kimya kaydı da özgün resmî kitap locator’ından eski ID’ye bağlandı;
+yeni soru değildir.
 
 ## Ajanın başlangıç talimatı
 

@@ -599,7 +599,7 @@
     "yks-topic-content": {
       "kind": "python",
       "args": ["testler/yks-topic-content-test.py"],
-      "inputs": ["scripts/yks_konu_icerik_incele.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-topic-content-test.py"]
+      "inputs": ["scripts/yks_konu_icerik_incele.py", "scripts/yks_gorsel_konu_pilotu.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-topic-content-test.py"]
     },
     "yks-topic-semantic": {
       "kind": "python",
@@ -775,6 +775,21 @@
       "kind": "python",
       "args": ["testler/yks-pending-source-reuse-test.py"],
       "inputs": ["scripts/yks_bekleyen_tekrar_kontrol.py", "scripts/yks_bekleyen_gorsel_incele.py", "scripts/yks_ek_bekleyen_tekrar.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-pending-source-reuse-test.py"]
+    },
+    "yks-intake-queue": {
+      "kind": "python",
+      "args": ["testler/yks-intake-queue-test.py"],
+      "inputs": ["scripts/yks_soru_kabul_kuyrugu.py", "testler/yks-intake-queue-test.py"]
+    },
+    "yks-mock-source-identity": {
+      "kind": "python",
+      "args": ["testler/yks-mock-source-identity-test.py"],
+      "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_deneme_govde.py", "scripts/yks_deneme_ders_gorsel_incele.py", "testler/yks-mock-source-identity-test.py"]
+    },
+    "yks-diagnostic-source-identity": {
+      "kind": "python",
+      "args": ["testler/yks-diagnostic-source-identity-test.py"],
+      "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-diagnostic-source-identity-test.py"]
     },
     "yks-crop-geometry": {
       "kind": "python",
@@ -1128,7 +1143,10 @@
         "yks-pending-source-reuse",
         "yks-prior-occurrences",
         "yks-booklet-prior-reuse",
-        "yks-chemistry-canonical-reuse"
+        "yks-chemistry-canonical-reuse",
+        "yks-intake-queue",
+        "yks-diagnostic-source-identity",
+        "yks-mock-source-identity"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

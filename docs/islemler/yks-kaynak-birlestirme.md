@@ -493,3 +493,36 @@ Bu çıktılar tamamsa komutları yineleme. Kimya konu sırası ayrı
 `yks_konu_icerik_incele.py --subject kimya --scope full --limit 12` ilk kontrollü
 kaynak okumasıdır. Önce çalışan süreci ve ham cache'i kontrol et; şekil/formül
 anlamı eksik metin veya model anlaşması yeni soru/konu kabulü sayılmaz.
+
+## Metnin kaçırdığı kimlikler ve bütün hazırlık kuyruğu
+
+`yks_kimya_eski_kimlik.py --by-official-locator` ilk 376 kanıtı ezmeden kalan
+166 soruyu aynı resmî kitap/fiziksel sayfa/basılı numaradan ve güncel kontrollü
+kimya/sınav kapsamından eski ID'ye bağladı. Toplam 542/542; bu işi yineleme.
+
+`yks_tarama_eski_kimlik.py` 3.036 tarama adayında tamam: 1.779 kesin resmî
+native+180/330 DPI/önceki kanonik bağ, 1.257 kaynak farkı incelemesi. Kutu,
+piksel, test başlığı, basılı numara veya eski cevap farkında kabul verilmez.
+İlk kesintideki 191 ham sonuç tekrar kullanıldı; ikinci tam geçiş 3.036 cache,
+0 yeni karşılaştırmadır. Per-soru ham kanıt hash'leri rapora bağlıdır. Değişen
+girdi yoksa tekrar çalıştırma.
+
+`yks_soru_kabul_kuyrugu.py` 12.052 güncel sürümü tek kaynak/ID/engel görünümüne
+birleştirir. Bu çıktı kalıcı banka yazımı veya tam adım kabulü değildir.
+Kimya üç gerçek görsel için `yks_gorsel_konu_pilotu.py` aynı aday listesi ve
+PDF alıntılarıyla 1/3 konu eşleşmesi verdi; ikinci çağrı ham cache'i kullandı,
+0 yeni model. Yanlış konu/cevap üreten çıktı reddedilir; bütün Kimya'ya yayma.
+Eski kategori/cevap ve öğretmen durumuna yazım yapılmadı.
+
+Tamamlanan deneme kimlik alt işleri aynı betiğin ayrı klasörleridir:
+`yks_tarama_eski_kimlik.py --mocks` (1.458), `--mocks --combined` (447),
+`--mocks --source-exceptions` (103). Bunları değişmeyen girdide tekrar
+render etme. 389 çoklu eski ID vakasında bütün kaynak ve öğrenci geçmişi
+korunur; fiziki soru eşitliği mevcut iki ID'yi silme/birleştirme izni vermez.
+
+`yks_deneme_ders_gorsel_incele.py` yanlış TYT aralığı altındaki 40 özgün
+sorunun gerçek görsel okumasını sabit hash'lere bağladı. 39 ders açık,
+nanoteknoloji13 iki kayıtlı ders PDF'siyle ortak kapsam incelemesinde. Yeni
+konu modeli veya cevap üretimi yapılmadı. `yks_soru_kabul_kuyrugu.py` güncel
+kimlikleri ve bu ders incelemesini birleştirir; `yks_tam_kapsam.py` her PDF'ye
+yalnız ilgili soru durumlarını ekler. Tam adım kabulü/publikasyon vermez.

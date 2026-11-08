@@ -6,9 +6,20 @@ from collections import Counter
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from yks_tam_kapsam import reconcile,unique,comparison_states,supplement_counts
+from yks_birlestirme import Store,read_json
+import json
 
 
 class FullScopeTest(unittest.TestCase):
+    def test_actual_full_source_view_joins_current_intake_states_without_accepting_the_full_archive(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'full-source-coverage/report.json');queue=report['preparedQuestionIntakeSnapshot']
+        self.assertEqual(queue['questions'],12052);self.assertEqual(queue['provenExistingCanonicalIds'],4372)
+        rows=[json.loads(line) for line in (root/'full-source-coverage/sources.jsonl').read_text('utf-8').splitlines()]
+        self.assertEqual(sum(sum(r.get('preparedQuestionIntakeStates',{}).values()) for r in rows),12052)
+        self.assertEqual(sum('preparedQuestionIntakeStates' in r for r in rows),373)
+        self.assertFalse(report['fullYks07Accepted']);self.assertEqual(report['questionBankWrites'],0)
+
     def test_prior_supplements_replace_one_original_source_link_and_reject_overlap(self):
         row={'sourceSha256':'source','sourceLocator':'raw:old','previousProofStatus':'REVIEW','status':'PROVEN'}
         self.assertEqual(supplement_counts({'REVIEW':2},[([row],'PROVEN')]),{'REVIEW':1,'PROVEN':1})

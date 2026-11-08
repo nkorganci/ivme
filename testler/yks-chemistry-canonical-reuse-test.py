@@ -42,5 +42,18 @@ class ChemistryCanonicalIdentityTest(unittest.TestCase):
         self.assertTrue(all(not r['newQuestionAdmissionAccepted'] and not r['fineTopicAccepted'] for r in proof['results']))
         self.assertEqual(proof['questionBankWrites'],0);self.assertFalse(proof['teacherApproved'])
 
+    def test_remaining_166_are_resolved_by_exact_book_locator_and_current_controlled_scope(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        first=read_json(root/'partial-chemistry-canonical-reuse/report.json')
+        extra=read_json(root/'partial-chemistry-locator-reuse/report.json')
+        initial={r['sourceCode'] for r in first['results'] if r['canonicalCode']}
+        self.assertEqual(extra['questions'],166);self.assertEqual(extra['existingCanonicalIdsReused'],166)
+        self.assertFalse(initial&{r['sourceCode'] for r in extra['results']})
+        for row in extra['results']:
+            self.assertIn('kimya',row['currentControlledScope']['subject_ids'])
+            self.assertEqual(row['canonicalCode'],row['sourceIdentityProofs'][0]['currentCanonicalCode'])
+            self.assertEqual(row['currentControlledScope']['source_stamp'],row['sourceIdentityProofs'][0]['currentCanonicalVersion'])
+            self.assertFalse(row['fineTopicAccepted']);self.assertFalse(row['newQuestionAdmissionAccepted'])
+
 
 if __name__=='__main__':unittest.main()

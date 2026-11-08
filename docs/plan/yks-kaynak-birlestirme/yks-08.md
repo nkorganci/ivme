@@ -1,5 +1,50 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Deneme adaylarında resmî kaynak kimliği — BITTI (yayın değildir):**
+1.458 düzenli adayda 996 tek eski kimlik, 255 çoklu eski kimlik ve 207 kaynak
+farkı; 447 birleşik ders adayında 271 tek kimlik, 88 çoklu kimlik, 88 fark;
+103 kaynak/kapsam istisnasında 46 çoklu kimlik ve 57 açık kaynak vardır.
+Aynı yürütücünün
+`--mocks` seçeneği, dört basılı bölümün bağımsız anahtar kanıtını ve her soru
+için yeni/eski gerçek bölüm başlığını kullanır. Yerel model/OCR çağırmaz.
+Tek bölgedeki tam native soru, iki DPI RGB, aynı eski fiziksel sayfa/basılı
+numara ve kanıtlı güncel banka görseli/cevabı gerekir. Ortak paragraf/çoklu
+bölge ve farklı piksel/dikdörtgenler ayrı incelemede kalır.
+Bir kaynak soru eski Sözel ve Eşit Ağırlık kitaplarında iki kanonik ID'ye
+bağlanabiliyorsa iki ID de kanıtıyla korunur; birleştirme veya silme yapılmaz.
+Ham kanıtlar `mock-official-canonical-reuse/`, `mock-combined-canonical-reuse/`
+ve `mock-source-exception-identities/` altındadır. Bu fiziksel soru kimliği
+kanıtı, birleşik bölümün alt dersini veya dar konuyu otomatik onaylamaz.
+
+**Yanlış TYT yönergesindeki 40 görsel — BITTI (ders incelemesi):** AYT kaynağı
+`333642091490…` bölüm4'ün bütün kırpımları 10 sabit hash'li görselde okundu.
+39 soru açık: 13 Fizik, 13 Kimya, 13 Biyoloji. q13 nanoteknoloji uygulaması
+hem kayıtlı Fizik hem Kimya PDF'sinde yer aldığından tek derse zorlanmadı.
+Yalnız sıradaki konumundan “ilk14 Fizik” varsayılmadı. q28'deki radyoaktif
+karbonun işaretleyici olduğu, ölçülenin kan dolaşımı olduğu ayrıca kaydedildi.
+Özgün yanlış yönerge ve 40 basılı cevap korunur; öğretmen/kategori/yayın
+onayı yok. Kanıt `mock-actual-subject-review/333642091490/report.json`.
+
+**3.036 tarama adayının resmî kaynak kimliği — BITTI (yayın değildir):**
+`diagnostic-official-canonical-reuse/` 1.779 soruda tam native gövde,
+180/330 DPI RGB, aynı resmî kitap/fiziksel sayfa/basılı numara/test başlığı,
+özgün iki cevap okuması ve güncel banka sürümü/görseli üzerinden eski ID'yi
+doğruladı. 1.257 farklı kutu/piksel/başlık/eski kaynak konumu incelemede.
+Hiçbir fark bulanık eşlemeyle kabul edilmedi. Ayrı yeniden bağlanmış
+Edebiyat/raster/çoklu-test/istisna anahtarları kendi kanıt sürümüyle okundu.
+İkinci deneme 3.036 ham kanıtın cache'ini kullanır, yeni render/model/OCR yok.
+
+**Hazırlanan soruların tek devam kuyruğu — BITTI (kabul değildir):**
+`source-intake-queue/report.json` bütün 12.052 güncel sürümü kapsar. 3.594
+kaynak kaydı tek eski ID'ye, 389'u birden çok eski ID'ye bağlanır; toplam
+4.372 farklı eski kanonik ID korunur. 1.646 banka adayı ve 6.380 içerik/konu
+incelemesi açık; 511 kaynak ders/kapsam incelemesi ayrıca işaretlidir.
+36 tekrar kaynak konumu tercih edilen aynı soru grubuna döner; dört kaynak
+cevap/aynı D-E/pending çelişkisi engellidir. Üç soru yalnız yalıtılmış pilotta
+kullanılır. Kalan banka adayları ve içerik incelemeleri NEW değildir.
+Hatalı eski q24 sürümü güncel kırpımın yerine kullanılamaz. Farklı TYT/AYT
+ilişkisi ayrı incelemededir; bütün satırlarda üretim aktarımı kapalıdır.
+
 **Eski bekleyen işlemlerle karşılaştırma — BITTI:** 5.303 eski pending
 locator'ın 5.301'inde özgün ham kart/keşif metni hash'i yeniden doğrulandı;
 iki provider kaydı kendi sözleşmesi için açık. Tam kök/beş seçenek ayrışan
@@ -121,7 +166,10 @@ sorusuna native+180/330 DPI eşittir; o kitabın aynı fiziksel sayfa/basılı
 numaradaki eski kaynak bağı zaten doğrulanmıştır. Güncel soru sürümü,
 banka/özgün eski görsel hash'i, iki eski cevap okuması ve yeni basılı cevap
 uyuşur. Farklı kitap, sayfa, numara, piksel veya sürüm bağlantıyı reddeder.
-Eski ID/cevap/geçmiş korunur, dar konu kabulü verilmez. 166 aday incelemede.
+Eski ID/cevap/geçmiş korunur, dar konu kabulü verilmez. Metin karşılaştırmasının kaçırdığı 166 kayıt da ayrı
+`partial-chemistry-locator-reuse/report.json` ile aynı resmî kitap/fiziksel
+sayfa/basılı numaradan bulundu. Eski kanonik görsel ve iki cevap okuması,
+gövde eşitliği ve güncel kimya/sınav kapsamı aynı: toplam 542/542 eski ID.
 
 Ek 542 Kimya ve dört düzeltilmiş Din sürümü, DB'de geri okunarak doğrulanmış
 5.303 eski pending kaydıyla yeniden kaynak çıkarmadan karşılaştırıldı:

@@ -34,6 +34,7 @@ REPORTS={
     'chemistryVisualKeyQuestionPreparation':'partial-chemistry-visual-preparation/progress.json',
     'chemistryVisualKeyQuestionComparison':'partial-chemistry-visual-comparison/controlled-repeat-review.json',
     'chemistryCanonicalSourceReuse':'partial-chemistry-canonical-reuse/report.json',
+    'chemistryOfficialLocatorReuse':'partial-chemistry-locator-reuse/report.json',
     'chemistryPartialComparison':'partial-chemistry-comparison/controlled-repeat-review.json',
     'allPriorOccurrences':'all-prior-occurrences/report.json',
     'priorBookletContract':'booklet-prior-reuse/report.json',
@@ -52,6 +53,13 @@ REPORTS={
     'fullChemistrySourceTopicReview':'full-question-topics/kimya/content-topic-review.json',
     'fullChemistryIndependentTopicReview':'full-question-topics/kimya/semantic-topic-review.json',
     'chemistryActualTopicCorrections':'kimya-topic-pilot-actual/report.json',
+    'chemistryImageTopicDiagnostic':'kimya-topic-vision-pilot/report.json',
+    'preparedSourceIntakeQueue':'source-intake-queue/report.json',
+    'diagnosticOfficialCanonicalReuse':'diagnostic-official-canonical-reuse/report.json',
+    'mockOfficialCanonicalReuse':'mock-official-canonical-reuse/report.json',
+    'mockCombinedSourceCanonicalReuse':'mock-combined-canonical-reuse/report.json',
+    'mockSourceExceptionIdentities':'mock-source-exception-identities/report.json',
+    'mockActualSubjectReview':'mock-actual-subject-review/333642091490/report.json',
 }
 
 
@@ -87,7 +95,15 @@ def main():
             'do not regenerate this completed all-prior or booklet work. '
             'Full Din topic retrieval and Qwen reading of 1099 bound questions are complete; do not rerun models or embeddings. '
             'Read full-question-topics/din/semantic-topic-review.json and check the worker before resuming GPT-OSS. '
-            'The --from-reviewed-images selection is 37 source codes, not full 1099-question semantic acceptance; old pilot caches are reused. Chemistry retrieval1030, text-reading12 and independent-prefix12 are complete; do not expand the unreliable text-only chemistry pass. Three actual laboratory images and the registered PDF pages6/7 prove different topic candidates. Next evaluate source-image topic reading on these three before considering only the166 unaccepted chemistry source identities. '
+            'The --from-reviewed-images selection is 37 source codes, not full 1099-question semantic acceptance; old pilot caches are reused. '
+            'Chemistry retrieval1030, text-reading12, independent-prefix12 and image-pilot3 are complete. '
+            'The image model agrees on only1/3 and generates unwanted answers; do not scale this unreliable topic method. '
+            'Three actual laboratory images and registered PDF pages6/7 prove different unpublished topic candidates. '
+            'All542 partial Chemistry sources reuse old IDs: first376 and an additional166 resolved through exact official book/page/printed-number locators and current controlled scope. '
+            'The3036 diagnostic existing candidates are fully checked:1779 exact native/two-DPI/current-source links,1257 original source exceptions. '
+            'The second diagnostic identity pass reused3036 raw caches with zero new comparisons/renders; do not repeat it. '
+            'source-intake-queue/report.json contains12052 current versions:3594 single-ID source records,389 multiple-ID records,1646 unresolved bank candidates,6380 content/topic reviews,36 secondary source locators,4 blocks and3 isolated-pilot-only records. It preserves4372 distinct existing canonical IDs. '
+            'Mock identity passes are complete:1458 regular candidates (996 single/255 multi/207 held),447 combined-subject candidates (271 single/88 multi/88 held),103 source/scope exceptions (46 multi/57 held). Do not rerender those unchanged inputs. '
             '35 cross-source duplicate pairs and one printed C/D conflict have been actually read. '
             'Six source/bank exact question image pairs preserve old IDs; cross-exam associations remain separate review. '
             'The pending mathematics source matches two old pending locators with C/A keys and a contaminated old crop; no new intake. '
@@ -98,8 +114,8 @@ def main():
             'Independent GPT-OSS selected37 is complete: 20 supported, 9 missing, 5 insufficient, 3 invalid; models alone accept nothing. '
             'actual-topic-support-challenges.json additionally holds 3 model-supported suggestions and adds one actual same-PDF quote. '
             'Eight old mock key links have already been read; seven support the old bank, md-ayt-sozel-21-39 old/new C conflicts with bank D. '
-            'Resolve the explicit AYT mock 333642091490 page41 copied TYT discipline header (40 questions unassigned), '
-            'combined Mathematics/Geometry and Philosophy Group subjects and cross-pending-source duplicate/topic decisions. '
+            'All40 images under the copied TYT instruction in AYT mock333642091490 have actually been read:39 clear preparation subjects (13 Physics/13 Chemistry/13 Biology), question13 remains shared Physics/Chemistry nanotechnology review with two actual registered PDF sources. Preserve the wrong printed instruction and source keys. '
+            'Continue the511 remaining source subject/scope reviews, existing-candidate identity exceptions and truly new complete content/fine-topic reviews from the unified queue; no row allows production import. '
             '66 diagnostic key exceptions include known source-version differences and remain unapproved. '
             'Full stages 07-10 and live 11-13 are not accepted; retain original sources, all bank IDs, student history and model caches. '
             'Append the next meaningful batch with yks_kanit_db.py save; checkpoint only after actual evidence.')
