@@ -16,6 +16,14 @@ REPORTS={
     'fullMockBodies':'full-mock-bodies/progress.json',
     'fullMockComparison':'full-mock-comparison/controlled-repeat-review.json',
     'fullMockPrintedScopes':'full-mock-comparison/printed-section-scopes.json',
+    'oldMockAnswerEditions':'full-mock-comparison/old-printed-key-review/report.json',
+    'explicitSummaryReading':'new-source-discovery/explicit-document-review.json',
+    'dinBookKeys':'new-book-keys/din/progress.json',
+    'dinBookBodies':'new-book-bodies/din/progress.json',
+    'dinBookComparison':'new-book-comparison/din/controlled-repeat-review.json',
+    'turkcePageEquivalence':'source-page-equivalence/3adim-turkce/progress.json',
+    'turkceIncrementalReuse':'source-page-equivalence/3adim-turkce/incremental-reuse.json',
+    'crossSourceRepeat':'cross-source-candidates/report.json',
 }
 
 
@@ -38,8 +46,15 @@ def main():
         state['sessionStatus']='ACTIVE';state['resumeAt']='YKS-07:full'
         state['nextAction']=('Continue full YKS-07/08/09 source acceptance from full-source-coverage/report.json. '
             '270 diagnostics/5061 keys and crops, 41 mock bodies/5863 section-keyed crops already prepared and all-bank compared; do not regenerate them. '
+            'Two Din books have 647 printed key cells, 643 present bodies and 586 bound questions in 20 prepared sections; '
+            'exclude both entire mismatched sections (57 present bodies), not just their four orphan answer cells. '
+            'All 586 bound Din questions have been bank-compared; do not re-render or re-run those comparisons. '
+            'The 3 Adim Turkce editions have 281/283 exactly equal native and 180/330 DPI pages; '
+            'reuse old completed and pending IDs on equivalent pages, review body page30 and key page280 incrementally. '
+            'The changed key is Yazim Kurallari-1, 3. Adim, Q1 (old E/new D), not 2. Adim. '
+            'Eight old mock key links have already been read; seven support the old bank, md-ayt-sozel-21-39 old/new C conflicts with bank D. '
             'Resolve the explicit AYT mock 333642091490 page41 copied TYT discipline header (40 questions unassigned), '
-            'combined Mathematics/Geometry and Philosophy Group subjects, source-answer conflicts, and the four new books/summary with 2069 regions. '
+            'combined Mathematics/Geometry and Philosophy Group subjects and cross-pending-source duplicate/topic decisions. '
             '66 diagnostic key exceptions include known source-version differences and remain unapproved. '
             'Full stages 07-10 and live 11-13 are not accepted; retain original sources, all bank IDs, student history and model caches. '
             'Append the next meaningful batch with yks_kanit_db.py save; checkpoint only after actual evidence.')

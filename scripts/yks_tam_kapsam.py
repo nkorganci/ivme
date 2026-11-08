@@ -21,8 +21,15 @@ def unique(rows,key):
     return index
 
 
-def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None,decoding=None):
-    existing=existing or {};body=body or {};discoveries=discoveries or {};decoding=decoding or {}
+def comparison_states(counters,identities):
+    # A source outside the diagnostic set is not automatically a mock: books
+    # and future source cohorts have their own scope.
+    return dict(sum((counters[sha] for sha in identities if sha in counters),Counter()))
+
+
+def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None,decoding=None,document_reviews=None,book_sections=None):
+    existing=existing or {};body=body or {};discoveries=discoveries or {};decoding=decoding or {};document_reviews=document_reviews or {}
+    book_sections=book_sections or {}
     groups=unique(groups,'sha256');observations=unique(observations,'sourceSha256');pages=unique(pages,'sha256')
     if set(groups)!=set(observations) or set(groups)!=set(pages):raise ValueError('All unique PDFs must have complete page observations')
     if not set(keys)<=set(groups) or not set(diagnostics)<=set(groups) or not set(mocks)<=set(groups):raise ValueError('Unknown source in key scope')
@@ -37,6 +44,8 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
         sidebar_mock=any(Path(p['root']).name=='mebi-yks' and p['path'].startswith('Deneme-Tarama/Denemeler/') for p in group['occurrences'])
         if discoveries.get(sha,{}).get('status')=='EXCLUDED_PRINTED_YDT_FROM_TYT_AYT_QUESTION_QUEUE':
             state='PRINTED_YDT_EXCLUDED_FROM_TYT_AYT_QUESTION_SCOPE';remaining='KEEP_SOURCE_ARCHIVE_FIX_PROVIDER_COMMON_CATALOG_SCOPE_BEFORE_CUTOVER'
+        elif document_reviews.get(sha,{}).get('status')=='WHOLE_SUMMARY_READ_QUESTION_HAS_NO_EXPLICIT_PRINTED_ANSWER_IN_THIS_PDF':
+            state='EXPLICITLY_READ_UNKEYED_QUESTION_IN_SUMMARY_EXCLUDED_NEW_QUESTION_INTAKE';remaining='KEEP_SUMMARY_AND_OLD_QUESTION_REFERENCES_NO_NEW_INTAKE_WITHOUT_SOURCE_KEY'
         elif key:
             state='DIAGNOSTIC_KEY_VERIFIED_QUESTION_CONTENT_REVIEW_REQUIRED'
             remaining='SOURCE_QUESTION_GRAPHICS_FINE_TOPIC_AND_DUPLICATE_ACCEPTANCE'
@@ -50,6 +59,9 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
         elif diagnostic:
             state='DIAGNOSTIC_KEY_OR_BODY_EXCEPTION_REVIEW_REQUIRED'
             remaining=diagnostic['status']
+        elif sha in book_sections:
+            state='BOOK_SECTION_KEYS_AND_PRESENT_BODIES_PREPARED_WITH_EXCLUDED_SECTIONS'
+            remaining='KEEP_BODY_KEY_COUNT_MISMATCHED_SECTIONS_EXCLUDED_ACCEPT_ONLY_SOURCE_BOUND_QUESTIONS_AFTER_TOPIC_AND_DUPLICATE_REVIEW'
         elif mock:
             state='MOCK_IDENTITY_OR_KEY_EXCEPTION_REVIEW_REQUIRED';remaining=mock['status']
         elif sidebar_mock:
@@ -61,6 +73,7 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
         else:
             state='OTHER_LAYOUT_SOURCE_VISUAL_OR_PRINTED_KEY_REVIEW_REQUIRED';remaining='NO_KEY_ABSENCE_CLAIM_VERIFY_SOURCE_VISUALLY'
         answers=len(key['sourceAnswers']) if key else sum(len(s['answers']) for s in mock.get('sections',[]) if s['status']=='TWO_PRINTED_SOURCE_READINGS_AGREE') if mock else 0
+        if sha in book_sections:answers+=book_sections[sha]['independentlyReadPrintedAnswers']
         results.append({'sourceSha256':sha,'canonicalSource':group['canonicalCandidate'],'sourceAliases':group['occurrences'],
             'pageCount':count,'observedPages':observed['observedPages'],'state':state,'nextAction':remaining,
             'answerCandidatePhysicalPages':observed['candidatePages'],'questionSignalPhysicalPages':observed['questionSignalPages'],
@@ -70,6 +83,8 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
             'currentExistingTransferRevalidation':None if sha not in existing else {k:existing[sha].get(k) for k in ['status','expectedQuestions','currentDistinctLinkedQuestions','issues','reuseAction','freshSemanticApproval']},
             'bodyExceptionPreparation':None if sha not in body else {k:body[sha].get(k) for k in ['status','questions','sourceKeysApproved','pixelsAndContentAccepted']},
             'newQuestionRegionDiscovery':discoveries.get(sha),
+            'explicitWholeDocumentReview':document_reviews.get(sha),
+            'bookSectionPreparation':book_sections.get(sha),
             'sourceDecodingCheck':None if sha not in decoding else {k:decoding[sha].get(k) for k in ['status','pageCount','issues','bodyContentAccepted','tagGlyphReview']},
             'mockKeyCheck':None if not mock else {k:mock.get(k) for k in ['status','printedMockNumber','sourceKeyPage','issue','branchAndTopicAssignmentsAccepted']},
             'priorImportEvidence':{'coverageState':legacy.get('coverageState'),'expectedQuestions':legacy.get('expectedQuestions'),
@@ -87,7 +102,7 @@ def main():
     mock=root/'pdf-on-tarama/full-mock-keys/progress.json'
     inputs=[file,page,obs,key,diagnostic];inputs+=[mock] if mock.is_file() else []
     counters={};bank_snapshots=set()
-    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison']:
+    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison','new-book-comparison/din']:
         proof=root/name/'controlled-repeat-review.json'
         if not proof.is_file():continue
         inputs.append(proof)
@@ -169,6 +184,42 @@ def main():
     if discovery_report:
         if discovery_report['sourceGroupsSha256']!=digest(file):raise ValueError('New region discovery belongs to other source inventory')
         inputs.append(discovery)
+    explicit_review=root/'new-source-discovery/explicit-document-review.json';document_reviews={}
+    if explicit_review.is_file():
+        from yks_ozet_belge_incele import review
+        fresh=review(root);recorded=read_json(explicit_review)
+        if recorded['status']!='PASS' or recorded['results']!=[fresh]:raise ValueError('Actually viewed complete document review changed')
+        document_reviews=unique(recorded['results'],'sourceSha256');inputs.append(explicit_review)
+    book_keys=root/'new-book-keys/din/progress.json';book_bodies=root/'new-book-bodies/din/progress.json';book_sections={}
+    if book_keys.is_file() and book_bodies.is_file():
+        from yks_din_kitap_anahtar import validate_section
+        observations=read_json(book_keys);prepared=read_json(book_bodies)
+        if observations['status']!='COMPLETE' or prepared['status']!='COMPLETE' or prepared['sourceKeyReportSha256']!=digest(book_keys):
+            raise ValueError('Wait for complete book section readings/body pass')
+        for item in observations['results']:
+            if item['status']=='PRINTED_SECTION_KEY_READINGS_VERIFIED_BODY_BINDING_REQUIRED':validate_section(item)
+            summary=book_sections.setdefault(item['sourceSha256'],{'independentlyReadPrintedAnswers':0,'preparedQuestionBindings':0,
+                'presentBodies':0,'excludedSectionQuestions':0,'unboundPrintedAnswerNumbers':[],'excludedSections':[],
+                'questionContentFineTopicsAccepted':False,'teacherApproved':False})
+            if item['status']=='PRINTED_SECTION_KEY_READINGS_VERIFIED_BODY_BINDING_REQUIRED':summary['independentlyReadPrintedAnswers']+=len(item['nativePrintedAnswers'])
+        for item in prepared['results']:
+            summary=book_sections[item['sourceSha256']];summary['presentBodies']+=item.get('questions',0)
+            if item['status']=='PREPARED':summary['preparedQuestionBindings']+=item['questions']
+            else:
+                summary['excludedSectionQuestions']+=item.get('questions',0);summary['excludedSections'].append({'sectionId':item['sectionId'],'status':item['status'],'issues':item.get('issues',[])})
+            summary['unboundPrintedAnswerNumbers']+=[{'sectionId':item['sectionId'],'printedNumber':n} for n in item.get('unboundPrintedAnswerNumbers',[])]
+        inputs.extend([book_keys,book_bodies])
+    equivalence=root/'source-page-equivalence/3adim-turkce/progress.json';page_equivalence={}
+    if equivalence.is_file():
+        edition=read_json(equivalence)
+        if edition['status']!='COMPLETE':raise ValueError('Wait for complete source edition page comparison')
+        for role in ['old','new']:
+            if digest(edition[role+'SourcePath'])!=edition['identity'][role+'SourceSha256']:raise ValueError('Page-equivalent source edition changed')
+            page_equivalence[edition['identity'][role+'SourceSha256']]={'evidencePath':str(equivalence),'evidenceSha256':digest(equivalence),
+                'equivalentPages':[r['newPhysicalPage'] for r in edition['results'] if r['status']=='FULL_PAGE_NATIVE_AND_PIXELS_IDENTICAL'],
+                'differentPages':[r['newPhysicalPage'] for r in edition['results'] if r['status']!='FULL_PAGE_NATIVE_AND_PIXELS_IDENTICAL'],
+                'questionOrAnswerReuseAutomaticallyAccepted':False}
+        inputs.append(equivalence)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -180,11 +231,12 @@ def main():
             unique(key_rows,'sourceSha256'),unique(read_json(diagnostic)['results'],'sourceSha256'),
             unique(mock_report.get('results',[]),'sourceSha256'),counters,
             unique(reuse.get('results',[]),'sourceSha256'),unique(body_report.get('results',[]),'sourceSha256'),
-            unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'))
+            unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'),document_reviews,book_sections)
         prepared_bodies={r['sourceSha256']:r for r in body_scope.get('results',[])}
         for row in rows:
             result=prepared_bodies.get(row['sourceSha256'])
             if result:row['mockBodyPreparation']={k:result.get(k) for k in ['status','questionsPrepared','expectedQuestions','package','packageSha256','issues','administrativePagesContentAccepted']}
+            if row['sourceSha256'] in page_equivalence:row['sourceEditionPageEquivalence']=page_equivalence[row['sourceSha256']]
         output=folder/'sources.jsonl';temporary=output.with_suffix('.jsonl.part')
         with temporary.open('w',encoding='utf-8') as stream:
             for row in rows:stream.write(json.dumps(row,ensure_ascii=False)+'\n')
@@ -206,8 +258,9 @@ def main():
         report['mockSourcesPendingSnapshot']=mock_report.get('pending')
         report['mockBodyPreparationSnapshot']={k:body_scope.get(k) for k in ['status','documents','completed','pending','questionsPrepared','states']}
         key_shas={r['sourceSha256'] for r in key_rows}
-        report['diagnosticQuestionComparisonStates']=dict(sum((value for sha,value in counters.items() if sha in key_shas),Counter()))
-        report['mockQuestionComparisonStates']=dict(sum((value for sha,value in counters.items() if sha not in key_shas),Counter()))
+        report['diagnosticQuestionComparisonStates']=comparison_states(counters,key_shas)
+        report['mockQuestionComparisonStates']=comparison_states(counters,{r['sourceSha256'] for r in mock_report.get('results',[])})
+        report['dinBookQuestionComparisonStates']=comparison_states(counters,set(book_sections))
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         report['reviewedTransferNewlyRevalidatedLinks']=reviewed_report.get('newlyRevalidatedLinks',0)

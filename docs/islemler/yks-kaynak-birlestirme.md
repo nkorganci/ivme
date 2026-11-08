@@ -385,3 +385,30 @@ Eski kabulün farklı görsel yolu/numarasız slide sözleşmesi için ayrı ek 
 tamamıyla eklenerek toplam 192 kaynak/10.724 bağlantıya çıktı, 25 kaynak açık.
 Kısmi belgelerdeki ek doğrulama tam kaynak kabulü sayılmaz. Özgün paket,
 görsel ve inceleme dosyaları hash'leriyle DB arşivine dahil edilir.
+
+İki yeni Din kitabının tamamlanan alt hattı:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_din_kitap_anahtar.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_din_kitap_govde.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --din-books
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py --din-books
+```
+
+647 anahtar hücresi 647 soru değildir: 643 gövde, 586 bağlı soru, tamamı
+dışarıda tutulan iki testte 57 gövde vardır. Başarılı anahtar/model/kırpım ve
+banka karşılaştırmasını tekrar yapma. Kaynak, paket veya girdi hash'i değişirse
+yalnız ilgili işi yeniden aç.
+
+3 Adım Türkçe nüshaları için `yks_sayfa_esitligi.py` 281 eşit sayfanın önbelleğini
+kullanır; `yks_turkce_nusha.py` yalnız değişen iki sayfayı kontrol eder, eski
+tamamlanan/pending kimlikleri ve özgün inceleme sözleşmelerini korur. Yeni
+nüsha anahtarını eski soru cevabının üzerine yazmaz. Özetteki tek cevapsız
+sorunun tam belge incelemesi `yks_ozet_belge_incele.py`; eski denemelerin sekiz
+basılı anahtar farkı `yks_deneme_cevap_nusha.py` ile kayıtlıdır.
+
+Yeni partiler eklendiğinde `yks_partiler_arasi_tekrar.py` kaynaklar arası
+adayları günceller; düşük benzerlik NEW, eşit metin de grafik eşitliği sayılmaz.
+Sonra `yks_tam_kapsam.py`, ilgili kalite profilleri, `yks_hazirlik_checkpoint.py`
+ve pipeline Python ile `yks_kanit_db.py save` çalışır. Tam adım kabulü olmayan
+hazırlığa BITTI yazma; tamamlanan alt işleri ayrıca belirt.

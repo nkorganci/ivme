@@ -2,9 +2,10 @@ import copy
 from pathlib import Path
 import sys
 import unittest
+from collections import Counter
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from yks_tam_kapsam import reconcile,unique
+from yks_tam_kapsam import reconcile,unique,comparison_states
 
 
 class FullScopeTest(unittest.TestCase):
@@ -16,7 +17,20 @@ class FullScopeTest(unittest.TestCase):
         self.pages=[{'sha256':'a','pageCount':2,'error':None}]
 
     def run_scope(self,**kwargs):
-        return reconcile(self.groups,self.observed,self.pages,kwargs.get('keys',{}),kwargs.get('diagnostics',{}),kwargs.get('mocks',{}),{},decoding=kwargs.get('decoding',{}))[0]
+        return reconcile(self.groups,self.observed,self.pages,kwargs.get('keys',{}),kwargs.get('diagnostics',{}),kwargs.get('mocks',{}),{},decoding=kwargs.get('decoding',{}),book_sections=kwargs.get('book_sections',{}))[0]
+
+    def test_book_results_are_never_counted_as_mock_questions(self):
+        counters={'diagnostic':Counter(OLD=3),'mock':Counter(REVIEW=7),'book':Counter(REVIEW=11),'future':Counter(REVIEW=100)}
+        self.assertEqual(comparison_states(counters,{'mock'}),{'REVIEW':7})
+        self.assertEqual(comparison_states(counters,{'book'}),{'REVIEW':11})
+        self.assertEqual(comparison_states(counters,{'missing'}),{})
+
+    def test_book_printed_cells_do_not_accept_unbound_bodies(self):
+        row=self.run_scope(book_sections={'a':{'independentlyReadPrintedAnswers':27,'presentBodies':25,
+            'preparedQuestionBindings':0,'excludedSectionQuestions':25}})
+        self.assertEqual(row['verifiedPrintedAnswers'],27)
+        self.assertEqual(row['bookSectionPreparation']['preparedQuestionBindings'],0)
+        self.assertIn('EXCLUDED_SECTIONS',row['state']);self.assertEqual(row['newQuestionsAccepted'],0)
 
     def test_missing_key_signal_never_proves_absence_or_accepts_legacy_import(self):
         row=self.run_scope();self.assertFalse(row['absenceClaimed']);self.assertEqual(row['newQuestionsAccepted'],0)

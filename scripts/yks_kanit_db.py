@@ -44,6 +44,14 @@ RECORD_REPORTS={
  'repeat-mock':('full-mock-comparison/controlled-repeat-review.json','results','sourceCode'),
  'mock-printed-discipline':('full-mock-comparison/printed-section-scopes.json','sourceCardScopes','sourceCode'),
  'mock-answer-conflict':('full-mock-comparison/answer-conflict-queue.json','results','sourceCode'),
+ 'old-mock-answer-edition':('full-mock-comparison/old-printed-key-review/report.json','results','sourceCode'),
+ 'explicit-whole-document-review':('new-source-discovery/explicit-document-review.json','results','sourceSha256'),
+ 'din-book-key':('new-book-keys/din/progress.json','results','sectionId'),
+ 'din-book-body':('new-book-bodies/din/progress.json','results','sectionId'),
+ 'din-book-repeat':('new-book-comparison/din/controlled-repeat-review.json','results','sourceCode'),
+ '3adim-page-equivalence':('source-page-equivalence/3adim-turkce/progress.json','results','newPhysicalPage'),
+ '3adim-incremental-reuse':('source-page-equivalence/3adim-turkce/incremental-reuse.json','results','sourceCode'),
+ 'cross-source-repeat':('cross-source-candidates/source-question-index.json','results','sourceCode'),
 }
 
 
@@ -144,8 +152,9 @@ def capture(root,staging):
         if path.is_file():add(path,'archive-verification/'+name,'ARCHIVE_DATABASE_TEST_AND_READBACK_EVIDENCE')
     for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
-    prior_review=data_cache.get('run/reviewed-transfer-reuse/report.json')
-    if prior_review:
+    for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json']:
+        prior_review=data_cache.get(report_name)
+        if not prior_review:continue
         allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',
             APP.parent/'veri-hatti/ogm-sorular/kayit',APP.parent/'icerik/data/ogm/img']
         for name,sha in json.loads(prior_review).get('externalEvidenceFiles',{}).items():

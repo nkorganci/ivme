@@ -1,11 +1,41 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
+**Tam belge okuması — BITTI:** `e33b5672c0fb…` Edebiyata Giriş özetinin
+iki sayfası bütünüyle görsel okundu. Tek soru panelinde kaynak cevabı/çözüm
+veya işaretli seçenek yoktur; beş seçeneğin kaynak rengi de aynıdır. Soru yeni
+alıma uygun değildir, özet belge korunur. Bu sonuç yalnız bu iki hash bağlı
+PDF sayfasına aittir; başka kaynaktaki anahtarın yokluğu veya sorunun bankada
+bulunmadığı söylenmez. Kaynak klasörünün genel konusu soruya otomatik taşınmaz.
+Kanıt `new-source-discovery/explicit-document-review.json`.
+
+**Din kitabı anahtar/gövde alt işi — BITTI (teknik hazırlık):** 22 bölümün
+647 basılı cevap hücresi native/Qwen ile bağımsız doğrulandı. Kaynakta 643
+soru gövdesi var; 20 bölümde 586 soru-cevap bağı ve özgün RGB kırpımı tamdır.
+AYT test5 gövde25/anahtar27 ve TYT test10 gövde32/anahtar34 uyuşmazlıkları
+nedeniyle bu iki testteki **57 gövdenin tamamı** aktarım dışında; ilk cevaplar
+bile onaylanmadı. Dört fazla hücre için soru üretilmedi. TYT test1'de basılı
+26/25 yer değişimi görsel okundu; cevaplar fiziksel sıra yerine basılı numaraya
+bağlandı. Çıkmış soru konu şeritleri özgün görsele dahil, soru metninden ayrı
+kanıttır; dar konu onayı sayılmaz. `new-book-keys/din/`, `new-book-bodies/din/`
+ve `new-book-comparison/din/`: 586 soru bütün güncel bankayla karşılaştırıldı;
+henüz yeni soru kabulü yok. Yeni OCR çağrısı 0.
+
+**3 Adım Türkçe sayfa eşitliği — BITTI; soru sürüm incelemesi sürüyor:** İki
+283 sayfalık nüshanın 281 sayfasında tam native metin ve 180/330 DPI RGB
+pikselleri birebir aynıdır. Yalnız sayfa30 soru7 gövdesi ve sayfa280'deki
+Yazım Kuralları-1 / **3. Adım / soru1** cevap hücresi değişmiştir (eski E,
+yeni D); iki gerçek görsel okunmuştur. 2. Adım satırına yanlış bağlanmaz.
+`source-page-equivalence/3adim-turkce/` kanıtı eski tamamlanan/pending işlemleri
+sayfa bazında tekrar kullanmak içindir; iki PDF'nin eşitliği veya cevapların
+toplu kabulü değildir. Eski kaynak/ID/cevap korunur, değişen iki bölge ayrı
+incelenir. Önceki 1.397 ham kartın hepsi canlı bankada sayılmaz.
+
 **Kalıcı parti kaydı — BITTI:** PostgreSQL `ogm_ders.yks_evidence` checkpoint
-`940e9bddbe76c84987094f794e16b4ef75fad142c354c34d6a5513aee5a109a8`
-4.086 kaynak, 96.841 sorgulanabilir kayıt, 59.077 dosya konumu ve 58.494
-farklı ham dosya içerir. 1.282.211.188 baytın tamamı geri okunup SHA-256
+`6084695b4da78125ba7de5a5cfbb5da2e18ad121ef24b53b53b4c305a1975776`
+4.086 kaynak, 99.873 sorgulanabilir kayıt, 62.219 dosya konumu ve 61.599
+farklı ham dosya içerir. 1.405.472.490 baytın tamamı geri okunup SHA-256
 eşitliği doğrulandı; aynı checkpoint ikinci yazımında yeni INSERT 0.
-Kalite 91/34/14/18 = 157 test PASS. Yalnız pilot 07–10 tekrar VERIFIED;
+Kalite 103/45/14/18 = 180 test PASS. Yalnız pilot 07–10 tekrar VERIFIED;
 tam aşamaların veya canlı geçişin kabulü verilmedi.
 
 **Deneme gövdesi alt işi — BITTI (teknik hazırlık):** `yks_deneme_govde.py`

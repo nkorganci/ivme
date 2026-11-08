@@ -731,6 +731,41 @@
       "args": ["testler/yks-mock-discipline-test.py"],
       "inputs": ["scripts/yks_deneme_kapsam.py", "scripts/yks_deneme_govde.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-mock-discipline-test.py"]
     },
+    "yks-mock-answer-editions": {
+      "kind": "python",
+      "args": ["testler/yks-mock-answer-version-test.py"],
+      "inputs": ["scripts/yks_deneme_cevap_nusha.py", "scripts/yks_deneme_cevap_farki.py", "testler/yks-mock-answer-version-test.py"]
+    },
+    "yks-unkeyed-summary": {
+      "kind": "python",
+      "args": ["testler/yks-summary-document-test.py"],
+      "inputs": ["scripts/yks_ozet_belge_incele.py", "testler/yks-summary-document-test.py"]
+    },
+    "yks-din-book-keys": {
+      "kind": "python",
+      "args": ["testler/yks-din-book-keys-test.py"],
+      "inputs": ["scripts/yks_din_kitap_anahtar.py", "testler/yks-din-book-keys-test.py"]
+    },
+    "yks-din-book-bodies": {
+      "kind": "python",
+      "args": ["testler/yks-din-book-bodies-test.py"],
+      "inputs": ["scripts/yks_din_kitap_govde.py", "scripts/yks_deneme_govde.py", "testler/yks-din-book-bodies-test.py"]
+    },
+    "yks-source-edition-pages": {
+      "kind": "python",
+      "args": ["testler/yks-source-page-equivalence-test.py"],
+      "inputs": ["scripts/yks_sayfa_esitligi.py", "testler/yks-source-page-equivalence-test.py"]
+    },
+    "yks-turkce-edition-reuse": {
+      "kind": "python",
+      "args": ["testler/yks-turkce-edition-reuse-test.py"],
+      "inputs": ["scripts/yks_turkce_nusha.py", "scripts/pdf_slide_compare.py", "testler/yks-turkce-edition-reuse-test.py"]
+    },
+    "yks-cross-source-candidates": {
+      "kind": "python",
+      "args": ["testler/yks-cross-source-test.py"],
+      "inputs": ["scripts/yks_partiler_arasi_tekrar.py", "scripts/yks_secenek_degisimi.py", "testler/yks-cross-source-test.py"]
+    },
     "yks-reviewed-existing-transfer": {
       "kind": "python",
       "args": ["testler/yks-reviewed-transfer-test.py"],
@@ -1009,7 +1044,11 @@
         "yks-multikey-source",
         "yks-mock-tag-layout",
         "yks-mock-body-layout",
-        "yks-rebound-literature"
+        "yks-rebound-literature",
+        "yks-unkeyed-summary",
+        "yks-din-book-keys",
+        "yks-din-book-bodies",
+        "yks-source-edition-pages"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -1027,7 +1066,10 @@
         "yks-answer-editions",
         "yks-existing-source-transfer",
         "yks-reviewed-existing-transfer",
-        "yks-mock-printed-discipline"
+        "yks-mock-printed-discipline",
+        "yks-mock-answer-editions",
+        "yks-turkce-edition-reuse",
+        "yks-cross-source-candidates"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

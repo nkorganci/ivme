@@ -1,5 +1,38 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**3 Adım Türkçe sürüm tekrar işi — BITTI (kabul değildir):** 1.397 ham
+kartın mevcut DB'de 1.309 bağlantı, 86 aday ve iki inceleme kaydı var. 1.227
+aynı görsel/cevap/sürüm bağı ve 80 eski inceleme sözleşmesi doğrulandı; iki
+eski bağ ek inceleme ister. 88 bekleyen iş aynı eski kimlikle sürer; ikinci
+soru kuyruğu oluşturulmadı. Yeni nüshadaki değişen gövde `3a-tyt-turkce-09-07`
+ve anahtar `3a-tyt-turkce-81-01` ayrı kaldı. Sonuncunun bankadaki E cevabı
+korunur; eski E/yeni D satırları native, konum sırası ve bağımsız Qwen ile
+okundu. 180/330 DPI tam sayfa farkının yalnız bu iki beyan edilen bölgeye
+düştüğü de doğrulandı. Kanıt `source-page-equivalence/3adim-turkce/incremental-reuse.json`.
+
+**Partiler arası karşılaştırma — BITTI (aday taraması):** 313 PDF'nin 11.510
+hazır sorusu bir arada karşılaştırıldı. 11.412 soruda beş seçenek ayrıştı;
+98 biçim istisnası onaylanmadı. Tam kök/seçenek içeriği eşleşen 36 çiftin
+35'i görsel inceleme, biri basılı doğru seçenek içeriği çelişkisi ister.
+Harfler seçenek permütasyonundan ayrı tutulur; matematikte büyük/küçük harf,
+işlem, sayı ve olumsuzluk silinmez. `cross-source-candidates/` sonuçları
+benzerlikten otomatik tekrar/yeni soru kabulü üretmez.
+
+**Sekiz eski deneme anahtarı incelemesi — BITTI:**
+`yks_deneme_cevap_nusha.py` altı kaynak/banka soru görseli çiftini gerçek
+görüntülerden okunan sabit hash'lerle bağlar. Eski kitabın gövdesindeki gerçek
+deneme numarası kullanılır; örneğin düzleştirilmiş test sırası 11, basılı
+6. deneme yerine geçmez. Sekiz eski soru gövdesi güncel PDF'de ham kaynak
+metniyle tam eşit, sekiz anahtar native/Qwen okumasında uyuşur.
+
+Yedi bağda eski anahtar bankadaki cevabı destekler; yeni basılı nüsha farklıdır.
+`md-ayt-sozel-21-39` için eski Sözel kitabı ve yeni deneme **C**, banka **D**;
+aynı görünen Eşit Ağırlık kitabı ise **D** basar. Bu gerçek kaynak çelişkisi
+ve banka–kendi kaynağı farkıdır; bütün eski cevap/ID/geçmiş korunur. Yeni soru
+oluşturulmaz veya öğretmen kararı uydurulmaz. Kanıt:
+`full-mock-comparison/old-printed-key-review/report.json`. Teknik incelemenin
+bitmesi cevap düzeltme/yayın kabulü değildir.
+
 **Yeni tam banka karşılaştırma alt işi — BITTI:** 270 taramanın 5.061 sorusu
 ve 41 denemenin 5.863 sorusu, güncel 80.230 etkin YKS sorusunun tüm görsel ve
 metinleriyle karşılaştırıldı. Taramalarda 3.036 mevcut aday/1.948 içerik
