@@ -681,6 +681,16 @@
       "args": ["testler/yks-new-source-exam-test.py"],
       "inputs": ["scripts/yks_yeni_pdf_sinav_kapsami.py", "scripts/pdf_source_scan.py", "testler/yks-new-source-exam-test.py"]
     },
+    "yks-evidence-archive": {
+      "kind": "python",
+      "args": ["testler/yks-evidence-archive-test.py"],
+      "inputs": ["scripts/yks_kanit_db.py", "scripts/yks-evidence-schema.sql", "testler/yks-evidence-archive-test.py"]
+    },
+    "yks-evidence-db-proof": {
+      "kind": "python",
+      "args": ["testler/yks-evidence-db-proof-test.py"],
+      "inputs": ["scripts/yks_kanit_db_prova.py", "scripts/yks-evidence-schema.sql", "scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java", "testler/yks-evidence-db-proof-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -945,7 +955,9 @@
         "yks-full-source-coverage",
         "yks-body-exceptions",
         "yks-new-source-discovery",
-        "yks-new-source-exam-scope"
+        "yks-new-source-exam-scope",
+        "yks-evidence-archive",
+        "yks-evidence-db-proof"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",

@@ -267,3 +267,23 @@ raporu filtrelenmiş TYT/AYT kuyruğu sayılmaz. Dört kaynakta **2.069 aday** k
 iki Din tarama kitabı (302/339), 3 Adım TYT Türkçe (1.427) ve Edebiyata Giriş
 özeti (1). Bunlar kaynaklı cevap/gövde/tekrar/dar konu kabulünü bekler; keşif
 soru kabulü veya yeni soru sayısı değildir. YKS-07 tam faz BITTI değildir.
+
+## Kalıcı işlem kanıtı arşivi
+
+**Alt iş — BITTI (ilk checkpoint):** Kullanıcının açık DB kayıt talebiyle
+`ogm_ders.yks_evidence` ayrı işlem arşivi kuruldu. 46.089 dosya referansı,
+45.656 farklı ham dosya / 737.137.348 bayt; 4.086 kaynak durumu ve 78.696
+sorgulanabilir işlem kaydı saklandı. Bütün farklı ham dosyalar DB'den geri
+okundu, SHA-256 eşitliği PASS; aynı checkpoint ikinci yazımında 0 yeni ekleme.
+JSON, GZip sayfa, WEBP kaynak kırpımı ve NPZ dosyası gerçekten yeni dizine
+geri yüklendi, hash'leri eşit. Kaynaklar, soru bankası ve öğretmen kararları
+değiştirilmedi. Bu ilk checkpoint çalışan denemelerin ara durumunu saklar;
+deneme işi bittiğinde kapsam yenilenir ve yeni checkpoint eklenir.
+
+Veri kaybı olmadan NUL/bozuk model yanıtı/özel formül glyph'i ham `bytea`
+olarak korunur; sorgu JSONB'sindeki karakter uyarlaması ham kanıtın yerine
+geçmez. Hatalı hash/FK, aynı kayıt tekrar denemesi ve yarım transaction geri
+alma geçici ivme_test içinde üç gerçek testten geçti. İlk toplu geri okumada
+Windows socket tampon sınırı görüldü; tek dosya/binary okuma düzeltildi ve
+bütün arşivin geri okuması geçti. Veritabanı arşivi soru kabulü değildir.
+Devam ve geri alma komutları [işlem tarifinde](../../islemler/yks-kaynak-birlestirme.md).

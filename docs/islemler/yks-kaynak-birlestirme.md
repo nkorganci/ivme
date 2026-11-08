@@ -277,3 +277,38 @@ onayı vermez. PaddleOCR ayrı ortamda zor örneklerle karşılaştırılacak bi
 seçenektir; henüz kurulmadı ve mevcut OCR hattının yerine geçirilmedi.
 Formül/şekil özgün kırpım olarak kalır; OCR ile yeniden çizilmez. Değişmeyen
 başarılı kanıt tekrar işlenmez, belirsiz sonuç otomatik aktarılmaz.
+
+**Güncel kullanıcı önceliği:** doğruluk, kalite ve kontroller maliyetten önce
+gelir. Güvenilirliği azaltacak araç/model değişimi veya kontrol azaltımı yoktur.
+
+İşlem kanıtı veritabanı arşivi — ayrı `ogm_ders.yks_evidence` şeması:
+
+```powershell
+C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe -X utf8 scripts/yks_kanit_db.py status
+C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe -X utf8 scripts/yks_kanit_db.py save
+C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe -X utf8 scripts/yks_kanit_db.py verify
+C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe -X utf8 scripts/yks_kanit_db.py roundtrip
+```
+
+`save` her batch sonunda bütün işlem dosyalarının ve 4.086 kaynağa ait native
+sayfa/OCR önbelleğinin ham baytlarını hash adresli saklar. Aynı hash bir kez
+yazılır; değişen dosya yeni sürümdür. Manifest, kaynak durumu ve sorgulanabilir
+sayfa/anahtar/soru kartı/tekrar/nüsha/aday kayıtları tek transaction'da eklenir.
+Eksik/çelişkili okuma da özgün durumuyla saklanır; onaya dönüştürülmez.
+Kaynak PDF'ler ve büyük eski DB/medya yedekleri tekrar DB içine kopyalanmaz;
+özgün konum/hash ve doğrulanmış yedek referansları korunur. Özel yerel ayarlar
+ve kaynak checkout'ları arşive alınmaz. Uygulama `ivme` soru/öğrenci/katalog
+tablolarına bu komutlarla yazılmaz.
+
+`verify` arşivdeki her farklı dosyanın ham baytlarını geri okuyup hash ve kayıt
+sayılarını denetler; Windows bağlantı tamponunu aşmamak için bir dosyayı ikili
+biçimde getirir. Aynı checkpoint ikinci kez kaydedildiğinde yeni ekleme 0'dır.
+`roundtrip` JSON, sıkıştırılmış sayfa, özgün soru görseli ve vektör dosyasını
+`veri/yks-restored/` içinde yeni dosyalara geri yükler ve hash karşılaştırır.
+Mevcut dosya veya özgün arşiv üzerine yazılmaz. Tek dosya geri alma:
+`yks_kanit_db.py restore --checkpoint <sha> --path <manifest-yolu> --destination <veri/yks-restored/yeni-dosya>`.
+
+SQL değişirse `yks_kanit_db_prova.py` önce geçici `ivme_test` içinde üç gerçek
+SQL senaryosunu `ivme.py test YksEvidenceArchiveTest` üzerinden çalıştırır.
+Geçerli üç test ve eski dört aktarım testinin ham XML/log kanıtları ayrı
+korunur; salt kayıt/geri okuma için eski DB provasını tekrarlama.
