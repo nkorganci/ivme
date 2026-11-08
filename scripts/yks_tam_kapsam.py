@@ -321,6 +321,15 @@ def main():
         if summary_keys['status']!='COMPLETE' or summary_keys['sourceQuestionAnswersBound'] or summary_keys['wholeSourceKeyCompletenessAccepted']:
             raise ValueError('Printed-region preparation cannot accept unenumerated question bodies')
         summary_key_by_source=unique(summary_keys['results'],'sourceSha256');inputs.append(summary_keys_path)
+    summary_bank_path=root/'physics-summary-discovery/actual-bank-image-review.json';summary_bank={}
+    summary_topic_path=root/'physics-summary-topic-review/report.json';summary_topic={}
+    for target,destination in [(summary_bank_path,summary_bank),(summary_topic_path,summary_topic)]:
+        if target.is_file():
+            destination.update(read_json(target))
+            if destination['status']!='PASS' or destination['newQuestionAdmissionAccepted']:
+                raise ValueError('Bounded actual image/topic proof cannot grant question admission')
+            if destination.get('sourcePackageSha256')!=summary.get('packageSha256'):raise ValueError('Actual summary proof uses a different source package')
+            inputs.append(target)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -346,6 +355,10 @@ def main():
                 row['verifiedPrintedAnswers']=len(summary['printedAnswers'])
                 row['state']='SUMMARY_THREE_ORIGINAL_BODIES_KEYED_DUPLICATE_TOPIC_REVIEW_REQUIRED'
                 row['nextAction']='REVIEW_BANK_IMAGE_CANDIDATES_AND_FINE_TOPIC_BEFORE_JOINING_MAIN_QUESTION_COHORT'
+                if summary_bank and summary_topic:
+                    row['separateBoundedSummaryCandidateImagesActuallyRead']=summary_bank['sourceCandidateRelationsActuallyRead']
+                    row['separateBoundedSummaryFineTopicsSupportedForPreparation']=summary_topic['questions']
+                    row['nextAction']='COMPARE_OTHER_PREPARED_AND_ORIGINAL_PENDING_QUEUES_BEFORE_NOVELTY_AND_MAIN_INTAKE'
             if row['sourceSha256'] in intake_by_source:
                 row['preparedQuestionIntakeStates']=dict(intake_by_source[row['sourceSha256']])
             specific=[a for a in amendments.get('results',[]) if a['sourceSha256']==row['sourceSha256']]
@@ -391,6 +404,8 @@ def main():
         report['savedPrintedKeySignalSnapshot']={k:saved_keys.get(k) for k in ['status','documents','completed','observedPages','states','unassessedHeadingSourcesWithoutPreviousRegions','sourceAnswersApproved','absenceClaimed']}
         report['separateBoundedSummaryPilotSnapshot']={k:summary.get(k) for k in ['status','sourceSha256','questions','newQuestionAdmissionAccepted','questionBankWrites']}
         report['additionalSummaryPrintedRegionSnapshot']={k:summary_keys.get(k) for k in ['status','documents','completed','states','readPrintedRegionCells','readContiguousRegionCells','sourceQuestionAnswersBound','wholeSourceKeyCompletenessAccepted']}
+        report['separateSummaryActualBankImageSnapshot']={k:summary_bank.get(k) for k in ['status','sourceQuestions','sourceCandidateRelationsActuallyRead','distinctCanonicalImagesActuallyRead','newQuestionAdmissionAccepted']}
+        report['separateSummaryActualTopicSnapshot']={k:summary_topic.get(k) for k in ['status','questions','actualTopicPdfPagesRead','categoryPublished','newQuestionAdmissionAccepted']}
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         if prior_occurrences:

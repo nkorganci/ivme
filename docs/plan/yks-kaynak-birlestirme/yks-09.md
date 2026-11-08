@@ -4,9 +4,13 @@ Ek sınırlı hazırlık `physics-summary-discovery/` içindedir: gerçek bütü
 sayfası okunmuş `04c593815b31…` kaynağında üç küresel ayna sorusu, D/D/E
 basılı anahtar, iki eski OCR kanıtı ve kaynak RGB'siyle eşit kayıpsız görseller.
 PDF'nin bozuk ToUnicode metni yerine gerçek görüntüden okunmuş metin ayrı
-saklanır. 80.230 soruluk banka adayları hazırdır; gerçek banka aday görselleri
-ve dar MEBİ yaprağı onaylanmadı. Üç soru ana 12.052 soruluk kümenin dışında
-açık pilot olarak kaydedilir; NEW veya canlı alım değildir.
+saklanır. 80.230 soruluk banka adaylarından 24 ilişki/23 ayrı görsel gerçekten
+okundu; aynı soru yok. Dar MEBİ özellikler/özel ışınlar yaprağının dört PDF
+sayfası gerçekten okundu; üç görev ve basılı D/D/E için kaynaklı konu ve
+fizik tutarlılığı hazırlıkta desteklenir. Kaynak başlığına göre görüntü oluşumu
+yaprağına atanmadı. Üç soru ana 12.052 soruluk kümenin dışında açık pilot;
+diğer hazırlanmış/eski pending kaynak karşılaştırması ve NEW kapısı açık,
+canlı alım yok. Kanıt `physics-summary-topic-review/report.json`.
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)

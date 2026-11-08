@@ -69,6 +69,8 @@ REPORTS={
     'physicsSummaryEffectiveKeyRegions':'physics-summary-effective-key-regions/report.json',
     'physicsSummaryBoundedPreparation':'physics-summary-discovery/report.json',
     'physicsSummaryBankCandidates':'physics-summary-discovery/comparison-report.json',
+    'physicsSummaryActualBankImages':'physics-summary-discovery/actual-bank-image-review.json',
+    'physicsSummaryActualTopicSupport':'physics-summary-topic-review/report.json',
 }
 
 
@@ -115,7 +117,7 @@ def main():
             'The isolated complete-region union pass resolved103/450 diagnostic boundary exceptions;347 remain held (298 neighboring-question intersections,46 pixel changes,3 incomplete option sets). All74 regular mock union candidates remain held. These immutable proofs do not approve prepared crop content or fine topics; do not repeat their renders. '
             'All4086 PDFs/67277 pages have a saved native/OCR key-signal index. Its85 heading candidates include75 physics summaries,3 history summaries,2 separate answer documents and5 already-known mock/Turkce exceptions. Do not interpret missing signals as absence or redo those known exceptions. '
             'Physics summary key regions75/75 are reconciled:74 contiguous sources/214 printed cells; source e707d7a0c8ee literally prints1,2,4 and stays held without renumbering. All44 held key strips and2 whole source pages have actually been read; original model/OCR outputs remain frozen. Do not rerun that key-reading work. '
-            'physics-summary-discovery contains3 actually viewed mirror questions with D/D/E printed keys and original lossless pixels, compared to all80230 bank questions. This is a separate bounded pilot outside the original12052 main cohort; current bank image candidates, complete body-scope/fine-topic review and main-queue joining remain open. '
+            'physics-summary-discovery contains3 actually viewed mirror questions with D/D/E printed keys and original lossless pixels, compared to all80230 bank questions. All24 retrieved relations/23 distinct bank images were actually read and differ; this is not a novelty proof. The exact unpublished MEBI special-rays leaf e02f14b7 has4 actually read PDF pages and supports all3 tasks and printed-answer consistency. Do not redo those image/topic readings. This separate pilot remains outside the original12052 main cohort; compare its questions against the other prepared and original pending source queues before novelty/main-queue admission. '
             'Mock identity passes are complete:1458 regular candidates (996 single/255 multi/207 held),447 combined-subject candidates (271 single/88 multi/88 held),103 source/scope exceptions (46 multi/57 held). Do not rerender those unchanged inputs. '
             '35 cross-source duplicate pairs and one printed C/D conflict have been actually read. '
             'Six source/bank exact question image pairs preserve old IDs; cross-exam associations remain separate review. '

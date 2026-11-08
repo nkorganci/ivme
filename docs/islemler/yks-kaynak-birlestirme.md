@@ -563,3 +563,12 @@ değildir. Native başlık istisnası yalnız `--native-heading-retry` ile ayrı
 `yks_fizik_ozet_anahtar_uzlastir.py` yalnız kanıtları birleştirir. Sonraki iş
 74 kaynakta bütün soru gövdelerini sayıp basılı numaralarla birebir bağlamak,
 kusurlu kaynağı bekletmek ve banka/görsel/konu kontrollerini tamamlamaktır.
+
+Üç ayna sorusunun ek okumaları da tamamdır: `yks_fizik_ozet_banka_incele.py`
+24 aday ilişkisi/23 gerçek görselin farklı olduğunu saklar; düşük benzerlik
+ve bu sınırlı ret listesi NEW değildir. Arşiv bu 23 banka görselini de özgün
+hash'leriyle alır. `yks_fizik_ozet_konu_incele.py` MEBİ özellikler/özel ışınlar
+yaprağının dört gerçekten okunmuş sayfasını ve basılı cevap tutarlılığını
+korur. Hazırlık konu desteği vardır, öğretmen/yayın/alım yoktur. Bu okumaları
+yineleme; üç soruyu diğer 12.052 hazırlanmış ve 5.303 eski pending kayıtla
+ayrı ek partide karşılaştır. Ana eski raporları veya mevcut kimlikleri ezme.

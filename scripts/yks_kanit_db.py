@@ -86,6 +86,8 @@ RECORD_REPORTS={
  'physics-summary-effective-key-regions':('physics-summary-effective-key-regions/report.json','results','sourceSha256'),
  'physics-summary-bounded-question':('physics-summary-discovery/candidates.json','cards','code'),
  'physics-summary-bank-candidates':('physics-summary-discovery/comparison-report.json','results','sourceCode'),
+ 'physics-summary-actual-bank-images':('physics-summary-discovery/actual-bank-image-review.json','results','sourceRelationId'),
+ 'physics-summary-actual-topic-support':('physics-summary-topic-review/report.json','results','sourceCode'),
  'cross-source-visual-chemistry-repeat':('cross-source-candidates/expanded-with-visual-chemistry/source-question-index.json','results','sourceCode'),
  'chemistry-partial-body':('partial-chemistry-preparation/progress.json','results','sourceSha256'),
  'chemistry-partial-repeat':('partial-chemistry-comparison/controlled-repeat-review.json','results','sourceCode'),
@@ -208,12 +210,12 @@ def capture(root,staging):
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
     for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
             'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json','run/pending-source-reuse/report.json',
-            'run/partial-reviewed-transfer-reuse/report.json']:
+            'run/partial-reviewed-transfer-reuse/report.json','run/physics-summary-discovery/actual-bank-image-review.json']:
         prior_review=data_cache.get(report_name)
         if not prior_review:continue
         allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',
             APP.parent/'veri-hatti/ogm-sorular/kayit',APP.parent/'icerik/data/ogm/img',
-            APP.parent/'veri-hatti/ogm-yks-cikmis/ham',APP.parent/'veri-hatti/ogm-indirme/sb_yapi.json']
+            APP.parent/'veri-hatti/ogm-yks-cikmis/ham',APP.parent/'veri-hatti/ogm-indirme/sb_yapi.json',APP/'veri/resimler-pilot']
         for name,sha in json.loads(prior_review).get('externalEvidenceFiles',{}).items():
             path=Path(name).resolve()
             if not any(path.is_relative_to(parent.resolve()) for parent in allowed) or path.suffix.lower() not in {'.json','.webp','.png'}:

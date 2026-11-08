@@ -9,6 +9,28 @@ from yks_fizik_ozet_anahtar_incele import actual_rows
 
 
 class SavedKeySignalTest(unittest.TestCase):
+    def test_all_retrieved_bank_images_are_actually_distinguished_without_inventing_novelty(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'physics-summary-discovery/actual-bank-image-review.json')
+        self.assertEqual(report['sourceCandidateRelationsActuallyRead'],24);self.assertEqual(report['distinctCanonicalImagesActuallyRead'],23)
+        self.assertEqual(len({r['sourceRelationId'] for r in report['results']}),24)
+        self.assertEqual(len(report['externalEvidenceFiles']),23)
+        for row in report['results']:
+            self.assertEqual(digest(row['viewedBankImagePath']),row['viewedBankImageSha256'])
+            self.assertTrue(row['actualSourceAndCandidateImagesRead']);self.assertFalse(row['sameQuestionAccepted'])
+            self.assertFalse(row['noveltyAccepted']);self.assertFalse(row['newQuestionAdmissionAccepted'])
+
+    def test_actual_mirror_tasks_have_exact_same_leaf_pdf_support_but_no_publication(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'physics-summary-topic-review/report.json')
+        self.assertEqual(report['questions'],3);self.assertEqual(report['actualTopicPdfPagesRead'],4)
+        self.assertFalse(report['categoryPublished']);self.assertFalse(report['newQuestionAdmissionAccepted'])
+        self.assertEqual([r['sourcePrintedAnswer'] for r in report['results']],list('DDE'))
+        for row in report['results']:
+            self.assertEqual(row['categoryId'],'mebi.tyt.fizik.e02f14b7-83e9-4f55-9d23-08dc086eb842')
+            self.assertTrue(row['fineTopicAcceptedForPreparation']);self.assertTrue(row['independentPhysicsConsistencyChecked'])
+            self.assertFalse(row['productionCategoryAssociationWritten']);self.assertFalse(row['noveltyAccepted']);self.assertFalse(row['teacherApproved'])
+
     def test_all_seventy_five_effective_key_regions_keep_the_gap_and_do_not_bind_bodies(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         report=read_json(root/'physics-summary-effective-key-regions/report.json')

@@ -794,7 +794,7 @@
     "yks-saved-key-signals": {
       "kind": "python",
       "args": ["testler/yks-saved-key-signal-test.py"],
-      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "testler/yks-saved-key-signal-test.py"]
+      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "scripts/yks_fizik_ozet_banka_incele.py", "scripts/yks_fizik_ozet_konu_incele.py", "testler/yks-saved-key-signal-test.py"]
     },
     "yks-crop-geometry": {
       "kind": "python",

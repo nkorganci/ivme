@@ -28,7 +28,20 @@ kırpımlara girmez. Basılı D/D/E anahtarı gerçek görüntü ve iki eski OCR
 sürümünde aynı; yanlış PDF ToUnicode metni kullanılmaz. Bütün 80.230 banka
 sorusuyla aday karşılaştırması kaydedildi. Düşük skor veya eşleşmeyen görsel
 NEW kanıtı değildir. Bu üç soru ana 12.052 kümesinden ayrı pilotta tutulur;
-banka görselleri/dar konu ve ana kuyruğa katılma henüz açık.
+banka adayları ayrıca gerçek görüntüden incelendi; ana kuyruğa katılma açık.
+
+**Üç sorunun banka görselleri ve dar konusu — BITTI (sınırlı inceleme):**
+24 aday ilişkisinde 23 farklı banka görseli gerçekten okundu; aynı soru
+kanıtlanmadı. Sayı/seçenek/Roma rakamı benzerliği nedeniyle gelen Kimya,
+Matematik ve farklı ayna düzenekleri ayrıldı. Bu sonuç NEW kanıtı değildir.
+MEBİ `e02f14b7…` yaprağının dört gerçek PDF sayfası okundu; görevler nesne
+görüntüsü yerine aynanın özellikleri/özel ışınlar yaprağına uygundur.
+Basılı D/D/E için fizik tutarlılığı ayrıca kontrol edildi: 24−9=15 cm,
+ikinci soruda II/III, üçüncü soruda f1+2f2. Kanıt
+`physics-summary-discovery/actual-bank-image-review.json` ve
+`physics-summary-topic-review/report.json`. Kategori yalnız hazırlıkta
+desteklenir; öğretmen/yayın/NEW yok. Kalan iş diğer 12.052 hazırlanmış ve
+5.303 eski bekleyen kaynakla karşılaştırma, ardından alım kapılarıdır.
 
 **75 Fizik özetinde basılı anahtar bölgesi okuması — BITTI:** İlk yerel
 geçiş 28 uyum, 44 okuma farkı ve üç geometri istisnası verdi. Bekleyen 44
