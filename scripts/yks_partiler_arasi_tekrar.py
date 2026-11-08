@@ -50,13 +50,15 @@ def cluster(members):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--chemistry-parts',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);choice=parser.add_mutually_exclusive_group()
+    choice.add_argument('--chemistry-parts',action='store_true');choice.add_argument('--chemistry-visual',action='store_true');args=parser.parse_args()
     store=Store(APP/'veri/yks-birlestirme');root=store.child(store.current()['runId']);out=root/'cross-source-candidates'
-    if args.chemistry_parts:out=out/'expanded-with-chemistry'
+    if args.chemistry_visual:out=out/'expanded-with-visual-chemistry'
+    elif args.chemistry_parts:out=out/'expanded-with-chemistry'
     out.mkdir(parents=True,exist_ok=True)
     packages={};inputs={};bank_shas=set();cards={};memberships=defaultdict(list)
     with process_lock(out/'.writer.lock'):
-        for name in COHORTS+(['partial-chemistry-comparison'] if args.chemistry_parts else []):
+        for name in COHORTS+(['partial-chemistry-comparison'] if args.chemistry_parts or args.chemistry_visual else [])+(['partial-chemistry-visual-comparison'] if args.chemistry_visual else []):
             file=root/name/'comparison-report.json';report=read_json(file)
             if report['status']!='PASS':raise ValueError('Complete all-cohort comparison required: '+name)
             inputs[str(file)]=digest(file);bank_shas.add(report['bankSnapshotSha256'])

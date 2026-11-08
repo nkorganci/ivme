@@ -1,27 +1,35 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
-**Kimya bireysel soru nüshası alt işi — BITTI (kısmi hazırlık):** Önceden
-tam test gövdesi farklı olduğu için dışarıda kalan 63 kaynakta 800 soru
-konumu ayrıca sınandı: 542'sinin tam native metni ve aynı özgün dikdörtgende
-180/330 DPI RGB pikselleri aynıdır; 129 metin, 9 piksel ve 120 sınır farkı
-onaylanmadı. İki numara/seçenek ve bir anahtar kimliği istisnasında kısmi
-bağ da kurulmadı. Tam testin anahtarı hiçbir zaman topluca aktarılmadı.
+**Kimya bireysel soru nüshası alt işi — BITTI (kısmi hazırlık):** Tam test
+gövdesi farklı olan 63 kaynakta 800 konum ayrıca sınandı. 542 sorunun tam
+native metni ve aynı özgün dikdörtgendeki 180/330 DPI RGB pikselleri eşit;
+129 metin, 9 piksel ve 120 sınır farkı onaylanmadı. İki numara/seçenek ve bir
+anahtar kimliği istisnası korunur. Tam test anahtarı topluca aktarılmadı.
 
-60 basılı bölüm anahtarı bağımsız Türkçe OCR ile okundu: 18 bölümde tam
-native/OCR eşitliği var, 42 uyuşmazlık beklemede. Yalnız bu 18 kaynakta
-**150 birebir aynı soru** özgün kayıpsız kırpım ve açık cevap kanıtıyla hazır;
-542'nin tamamı cevaplı sayılmadı. Grafik/dar konu/tekrar kabulü ayrıdır.
-`pdf-on-tarama/chemistry-question-editions/` ve `partial-chemistry-preparation/`
-kanıttır. Tesseract 60 yeni yerel OCR, bulut/yerel LLM çağrısı 0; eski
-5.061 tarama ve 5.863 deneme kırpımı yeniden üretilmedi.
+60 basılı bölümün 18'i native/Türkçe OCR ile uyuştu ve ilk 150 soruyu sağladı.
+Diğer 42 bölümün gerçek aynı kırpımı yerel Qwen ile bağımsız okundu; 42/42
+native listeyle tam uyuştu. Beklenen cevaplar modele verilmedi, önceki OCR
+kanıtları değiştirilmedi. Böylece **392 ek, toplam 542 birebir aynı soru**
+cevap kanıtı ve kayıpsız kırpımla hazır. İki ayrı hazırlık grubunun güncel
+kaynak/anahtar/görsel kanıtı doğrulandı; aynı kaynak iki kez sayılmadı.
 
-Yeni 150 sorunun güncel 80.230 YKS sorusuyla metin/görsel karşılaştırması
-tamamlandı: 96 mevcut soru adayı, 54 içerik/görsel incelemesi. Benzerlik
-NEW kararı vermedi. `partial-chemistry-comparison/` ayrı tutulur; önceki
-11.510 sorunun karşılaştırması tekrarlanmadı. Genişletilmiş partiler arası
-tarama `cross-source-candidates/expanded-with-chemistry/` altında 11.660
-soru/331 PDF'yi kapsar; önceki 36 çiftin görsel kanıtı korunur, yeni eşleşen
-çift eklenmedi. Asıl tam test istisnaları kapanmış sayılmaz.
+542 sorunun güncel bankayla karşılaştırması tamamdır. **376 mevcut soru ID'si**,
+aynı resmî kitap/fiziksel sayfa/basılı numaradaki eski kanıtlı bağlantı ve iki
+DPI gövde eşitliği üzerinden yeniden kullanılabilir. 166 içerik/görsel
+incelemesi bekler; hiçbiri yeni soru olarak kabul edilmedi. Eski kaynak,
+anahtar, cevap ve soru geçmişi korunur. Grafik/dar konu kabulü ayrıdır.
+
+Kanıtlar `chemistry-question-editions/`, `partial-chemistry-preparation/`,
+`partial-chemistry-visual-keys/`, `partial-chemistry-visual-preparation/`, iki
+karşılaştırma grubu ve `partial-chemistry-canonical-reuse/` altındadır. Geçerli
+OCR/model/kırpım veya banka karşılaştırmasını yeniden yapma.
+
+Partiler arası geniş rapor 12.052 soru/373 PDF'dir; önceki 36 çift değişmedi.
+`source-crop-geometry/report.json` hazırlanan bu soru bölgelerinde başka bir
+soru gövdesini bütünüyle içine alma hatasını sınar: eski q24→q26 hatası
+bulunur, dört güncel sürüm uygulandığında açık aynı tip hata 0'dır. Paylaşılan
+şekil/paragraf yanlışlıkla ikinci soru sayılmaz. Bu kontrol görsel içerik veya
+tam arşiv kabulü değildir; 66 tam test istisnası açık kalır.
 
 **Tam belge okuması — BITTI:** `e33b5672c0fb…` Edebiyata Giriş özetinin
 iki sayfası bütünüyle görsel okundu. Tek soru panelinde kaynak cevabı/çözüm

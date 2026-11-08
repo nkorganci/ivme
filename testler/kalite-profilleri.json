@@ -604,7 +604,7 @@
     "yks-topic-semantic": {
       "kind": "python",
       "args": ["testler/yks-topic-semantic-test.py"],
-      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_destek_istisna.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
+      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_destek_istisna.py", "scripts/yks_kimya_konu_pilot_incele.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
     },
     "yks-pilot-package": {
       "kind": "node",
@@ -774,7 +774,22 @@
     "yks-pending-source-reuse": {
       "kind": "python",
       "args": ["testler/yks-pending-source-reuse-test.py"],
-      "inputs": ["scripts/yks_bekleyen_tekrar_kontrol.py", "scripts/yks_bekleyen_gorsel_incele.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-pending-source-reuse-test.py"]
+      "inputs": ["scripts/yks_bekleyen_tekrar_kontrol.py", "scripts/yks_bekleyen_gorsel_incele.py", "scripts/yks_ek_bekleyen_tekrar.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-pending-source-reuse-test.py"]
+    },
+    "yks-crop-geometry": {
+      "kind": "python",
+      "args": ["testler/yks-crop-geometry-test.py"],
+      "inputs": ["scripts/yks_kirpim_geometri_kontrol.py", "scripts/yks_din_istisna_incele.py", "testler/yks-crop-geometry-test.py"]
+    },
+    "yks-chemistry-canonical-reuse": {
+      "kind": "python",
+      "args": ["testler/yks-chemistry-canonical-reuse-test.py"],
+      "inputs": ["scripts/yks_kimya_eski_kimlik.py", "testler/yks-chemistry-canonical-reuse-test.py"]
+    },
+    "yks-chemistry-visual-key": {
+      "kind": "python",
+      "args": ["testler/yks-chemistry-visual-key-test.py"],
+      "inputs": ["scripts/yks_kimya_gorsel_anahtar.py", "scripts/yks_kimya_gorsel_soru.py", "scripts/yks_anahtar_gorsel.py", "testler/yks-chemistry-visual-key-test.py"]
     },
     "yks-chemistry-question-editions": {
       "kind": "python",
@@ -1085,6 +1100,8 @@
         "yks-din-book-bodies",
         "yks-source-edition-pages",
         "yks-chemistry-question-editions",
+        "yks-chemistry-visual-key",
+        "yks-crop-geometry",
         "yks-partial-chemistry-key"
       ],
       "remainingAcceptance": [
@@ -1110,7 +1127,8 @@
         "yks-cross-source-actual-images",
         "yks-pending-source-reuse",
         "yks-prior-occurrences",
-        "yks-booklet-prior-reuse"
+        "yks-booklet-prior-reuse",
+        "yks-chemistry-canonical-reuse"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

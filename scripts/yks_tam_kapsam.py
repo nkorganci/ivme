@@ -116,7 +116,7 @@ def main():
     mock=root/'pdf-on-tarama/full-mock-keys/progress.json'
     inputs=[file,page,obs,key,diagnostic];inputs+=[mock] if mock.is_file() else []
     counters={};bank_snapshots=set()
-    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison','new-book-comparison/din','partial-chemistry-comparison']:
+    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison','new-book-comparison/din','partial-chemistry-comparison','partial-chemistry-visual-comparison']:
         proof=root/name/'controlled-repeat-review.json'
         if not proof.is_file():continue
         inputs.append(proof)
@@ -275,6 +275,15 @@ def main():
         partial_sources={r['sourceSha256']:r for r in partial['results'] if r['status']=='PREPARED'}
         if sum(r['questions'] for r in partial_sources.values())!=proof['questions']:raise ValueError('Partial original question count differs')
         inputs.extend([partial_path,partial_proof_path])
+    visual_path=root/'partial-chemistry-visual-preparation/progress.json';visual_proof_path=visual_path.parent/'current-source-verification.json'
+    if visual_path.is_file() and visual_proof_path.is_file():
+        visual=read_json(visual_path);proof=read_json(visual_proof_path)
+        if visual['status']!='COMPLETE' or proof['status']!='PASS' or proof['sourcePreparationSha256']!=digest(visual_path):
+            raise ValueError('Complete current independent visual-key source verification required')
+        additions={r['sourceSha256']:r for r in visual['results'] if r['status']=='PREPARED'}
+        if set(additions)&set(partial_sources):raise ValueError('A chemistry source was already counted in the native/OCR cohort')
+        if sum(r['questions'] for r in additions.values())!=proof['questions']:raise ValueError('Visual-key question count differs from current source proof')
+        partial_sources.update(additions);inputs.extend([visual_path,visual_proof_path])
     amendment_path=root/'din-question-amendments/report.json';amendments={}
     if amendment_path.is_file():
         amendments=read_json(amendment_path)
@@ -333,7 +342,7 @@ def main():
         report['mockQuestionComparisonStates']=comparison_states(counters,{r['sourceSha256'] for r in mock_report.get('results',[])})
         report['dinBookQuestionComparisonStates']=comparison_states(counters,set(book_sections))
         report['partialChemistryQuestionComparisonStates']=comparison_states(counters,set(partial_sources))
-        report['individuallyPreparedChemistryQuestions']=partial.get('questionsPrepared',0)
+        report['individuallyPreparedChemistryQuestions']=sum(r['questions'] for r in partial_sources.values())
         report['actualDinSourceQuestionAmendments']={k:amendments.get(k) for k in ['status','questionsRead','amendedQuestions','excludedAmbiguousPrintedQuestions','additionalActuallyReadDuplicateGroups']}
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})

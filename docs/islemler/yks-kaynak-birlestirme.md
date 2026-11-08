@@ -470,3 +470,26 @@ profili çalışır. Sonra pilot kanıt referansları yenilenir; dört gerçek D
 değişmediyse tekrarlanmaz. `yks_hazirlik_checkpoint.py` güncel imleci yazar,
 pipeline Python ile `yks_kanit_db.py save` ham baytları ve kayıtları DB'ye
 sürümleyip geri okur. Tam adımların açık kabulü sürerken BITTI yazılmaz.
+
+## Kimya OCR istisnalarının tamamlanan ek hattı
+
+`yks_kimya_gorsel_anahtar.py` 42/42 anahtarı aynı özgün 330 DPI kırpımda
+Qwen ile tamamladı. `yks_kimya_gorsel_soru.py` yalnız iki DPI gövdesi eşit
+392 ek soruyu hazırladı; `--verify-only` güncel PDF/ham cevap/görsel kanıtını
+OCR/model tekrarı olmadan doğruladı. `yks_tam_tekrar_tara.py --chemistry-visual`
+ve `yks_tam_tekrar_incele.py --chemistry-visual` yalnız ek 392 soruyu bankayla
+karşılaştırdı. `yks_kimya_eski_kimlik.py` bütün 542'de 376 eski kanonik ID'yi
+aynı resmî kitap/sayfa/numara ve iki DPI eşitlik zinciriyle doğruladı; 166 bekler.
+
+`yks_partiler_arasi_tekrar.py --chemistry-visual` ayrı
+`expanded-with-visual-chemistry/` raporunda 12.052 soruyu birleştirir.
+`yks_kirpim_geometri_kontrol.py` aynı rapordaki bölgeleri güncel dört sürümle
+sınar; ortak şekiller korunur, eski q24 hatası yakalanıp güncelde temizdir.
+`yks_ek_bekleyen_tekrar.py` yalnız ek 546 sürümü arşivlenmiş eski 5.303 pending
+kaydıyla karşılaştırır; ilk 11.510 kaynağı veya eski PDF metinlerini yinelemez.
+
+Bu çıktılar tamamsa komutları yineleme. Kimya konu sırası ayrı
+`full-question-topics/kimya/` altındadır. 1.030 soruda BGE sıralaması tamam;
+`yks_konu_icerik_incele.py --subject kimya --scope full --limit 12` ilk kontrollü
+kaynak okumasıdır. Önce çalışan süreci ve ham cache'i kontrol et; şekil/formül
+anlamı eksik metin veya model anlaşması yeni soru/konu kabulü sayılmaz.

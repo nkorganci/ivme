@@ -113,6 +113,22 @@ kanıtı bekler. Kitapçık ekleriyle toplam 81.155 eski bağ kanıtlı, 430 inc
 23 pasif/kapsam dışıdır. Bunlar benzersiz soru sayısı değildir. Ekler özgün
 kaynak hash'i + locator ile bir kez sayılır; kapsam raporu çift sayımı reddeder.
 
+## Kimya'da kesin eski kimlik bağı
+
+`partial-chemistry-canonical-reuse/report.json` 542 sorunun 376'sını eski
+kimliğe bağlar. Yalnız aday skoruyla yapılmaz: yeni gövde aynı resmî kitabın
+sorusuna native+180/330 DPI eşittir; o kitabın aynı fiziksel sayfa/basılı
+numaradaki eski kaynak bağı zaten doğrulanmıştır. Güncel soru sürümü,
+banka/özgün eski görsel hash'i, iki eski cevap okuması ve yeni basılı cevap
+uyuşur. Farklı kitap, sayfa, numara, piksel veya sürüm bağlantıyı reddeder.
+Eski ID/cevap/geçmiş korunur, dar konu kabulü verilmez. 166 aday incelemede.
+
+Ek 542 Kimya ve dört düzeltilmiş Din sürümü, DB'de geri okunarak doğrulanmış
+5.303 eski pending kaydıyla yeniden kaynak çıkarmadan karşılaştırıldı:
+546 ek sürüm, yeni kesin pending eşleşmesi yok. Bu sonuç NEW kararı değildir.
+`pending-source-reuse/additional-keyed-sources/report.json` dondurulmuş eski
+manifest hash'ini ve kullanılan kaynak sürümlerini kaydeder.
+
 ## Ajanın başlangıç talimatı
 
 Seçilen görev **YKS-08 / 15.08**. Önce `git status --short`,

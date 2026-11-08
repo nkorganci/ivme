@@ -26,9 +26,14 @@ REPORTS={
     'crossSourceRepeat':'cross-source-candidates/report.json',
     'crossSourceActualImageReview':'cross-source-candidates/actual-image-pair-review.json',
     'pendingSourceReuse':'pending-source-reuse/report.json',
+    'additionalKeyedSourcePendingReuse':'pending-source-reuse/additional-keyed-sources/report.json',
     'pendingSourceImageReview':'pending-source-reuse/actual-pending-image-review.json',
     'chemistryIndividualEditions':'pdf-on-tarama/chemistry-question-editions/report.json',
     'chemistryPartialPreparation':'partial-chemistry-preparation/progress.json',
+    'chemistryVisualKeyExceptions':'partial-chemistry-visual-keys/progress.json',
+    'chemistryVisualKeyQuestionPreparation':'partial-chemistry-visual-preparation/progress.json',
+    'chemistryVisualKeyQuestionComparison':'partial-chemistry-visual-comparison/controlled-repeat-review.json',
+    'chemistryCanonicalSourceReuse':'partial-chemistry-canonical-reuse/report.json',
     'chemistryPartialComparison':'partial-chemistry-comparison/controlled-repeat-review.json',
     'allPriorOccurrences':'all-prior-occurrences/report.json',
     'priorBookletContract':'booklet-prior-reuse/report.json',
@@ -39,9 +44,14 @@ REPORTS={
     'fullDinSecondaryBankComparison':'full-question-topics/din/secondary-bank-comparison.json',
     'fullDinExistingQuestionImageReview':'full-question-topics/din/exact-bank-image-review/report.json',
     'dinActualSourceExceptions':'din-question-amendments/report.json',
+    'sourceCropGeometry':'source-crop-geometry/report.json',
     'dinAmendedQuestionComparison':'din-amendment-comparison/controlled-repeat-review.json',
     'bankMissingTextImageSupplement':'full-question-topics/din/bank-image-text-supplement.json',
     'actualTopicSupportChallenges':'full-question-topics/din/actual-topic-support-challenges.json',
+    'fullChemistryTopicRetrieval':'full-question-topics/kimya/topic-candidates.json',
+    'fullChemistrySourceTopicReview':'full-question-topics/kimya/content-topic-review.json',
+    'fullChemistryIndependentTopicReview':'full-question-topics/kimya/semantic-topic-review.json',
+    'chemistryActualTopicCorrections':'kimya-topic-pilot-actual/report.json',
 }
 
 
@@ -77,11 +87,11 @@ def main():
             'do not regenerate this completed all-prior or booklet work. '
             'Full Din topic retrieval and Qwen reading of 1099 bound questions are complete; do not rerun models or embeddings. '
             'Read full-question-topics/din/semantic-topic-review.json and check the worker before resuming GPT-OSS. '
-            'The --from-reviewed-images selection is 37 source codes, not full 1099-question semantic acceptance; old pilot caches are reused. '
+            'The --from-reviewed-images selection is 37 source codes, not full 1099-question semantic acceptance; old pilot caches are reused. Chemistry retrieval1030, text-reading12 and independent-prefix12 are complete; do not expand the unreliable text-only chemistry pass. Three actual laboratory images and the registered PDF pages6/7 prove different topic candidates. Next evaluate source-image topic reading on these three before considering only the166 unaccepted chemistry source identities. '
             '35 cross-source duplicate pairs and one printed C/D conflict have been actually read. '
             'Six source/bank exact question image pairs preserve old IDs; cross-exam associations remain separate review. '
             'The pending mathematics source matches two old pending locators with C/A keys and a contaminated old crop; no new intake. '
-            'Only 150 individual Chemistry questions from 18 native/OCR agreeing keys are prepared; 96 old candidates/54 content reviews, no new admission. '
+            'Chemistry has 150 original native/OCR-backed plus 392 additional native/Qwen-backed individually identical questions; all 42 visual key exceptions are complete. Read the two separate comparison reports and do not regenerate either cohort. '
             'din-question-amendments/report.json supersedes four source versions: table ordering/embedded labels and the contaminated TYT book Test1 Q24 crop. '
             'Q24 has a separate corrected original-PDF crop; never reuse its old 2-question image or old topic suggestion. '
             'The source mock fd0fdf7c0577 S2 Q19 really prints identical D/E options; it is excluded from new intake. '

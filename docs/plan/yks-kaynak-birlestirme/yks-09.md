@@ -45,6 +45,25 @@ Din sorusuyla karşılaştırıldı, ek kesin eşleşme yok. İlk toplu raporun 
 kaynak istisnası tarihsel olarak korunur; onların güncel sürümü
 `din-question-amendments/` altındadır. Banka metni/cevabı değiştirilmez.
 
+## Kimya kontrollü konu pilotunun gerçek sonucu
+
+BGE ile 1.030 soru için aynı sınav/ders yaprak sırası tamamdır (73 cache,
+1.030 yeni yerel vektör). İlk 12 Qwen metin okuması: 6 kaynak alıntısına
+bağlı öneri, 4 açık incelemeli öneri, 2 uygun konu yok. Bütün 1.030 okundu
+sayılmaz. `--allow-partial-primary` ile yalnız bu 12'sinin bağımsız denetimi
+3 destek, 7 geçersiz/yetersiz yanıt ve 2 öneri yok sonucu verdi. `inputQuestions=1030`,
+`availablePrimaryQuestions=12`, `selectedQuestions=12`, `entireInputSelected=false`.
+
+`kimya-topic-pilot-actual/report.json` 6, 7, 8. soruların gerçek görsellerini ve
+kayıtlı İş Sağlığı ve Güvenliği PDF'sinin 6/7. sayfalarını bağlar. Sorular araç
+kullanımı, araç adlandırma ve gerekli araç seçimini ölçer. Çevre kimyası,
+ayırma teknikleri ve homojen-heterojen karışımlar şeklindeki model seçimleri
+uygun değildir; 7. soruda bağımsız modelin desteği de bunu değiştirmez.
+Doğru MEBİ yaprağına üç yayımlanmamış düzeltme adayı kaydedildi; cevap,
+soru veya kategori yazılmadı. Eski model çıktıları korunur. Toplu metin okumasına
+geçmeden bu üç gerçek örnekte görsel okuma değerlendirilmelidir; kalan 166
+Kimya içerik incelemesinin hiçbiri kendiliğinden yeni soru sayılmaz.
+
 ## Ajanın başlangıç talimatı
 
 Seçilen görev **YKS-09 / 15.09**. Önce `git status --short`,

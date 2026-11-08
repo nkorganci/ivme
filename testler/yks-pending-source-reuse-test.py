@@ -7,6 +7,15 @@ from yks_birlestirme import Store,read_json,digest
 
 
 class PendingSourceReuseTest(unittest.TestCase):
+    def test_546_additional_versions_reuse_the_frozen_pending_evidence_without_reextracting_it(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        proof=read_json(root/'pending-source-reuse/additional-keyed-sources/report.json')
+        self.assertEqual(proof['status'],'PASS');self.assertEqual(proof['preparedQuestionsCompared'],546)
+        self.assertEqual(proof['originalPendingOccurrencesReused'],5303)
+        self.assertEqual(proof['originalPendingSourceExtractionsRepeated'],0)
+        self.assertEqual(len({r['sourceCode'] for r in proof['results']}),546)
+        self.assertTrue(all(r['newQuestionAccepted'] is False and r['teacherApproved'] is False for r in proof['results']))
+
     def test_actual_old_pending_math_answer_conflict_and_contaminated_crop_stay_excluded(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         result=read_json(root/'pending-source-reuse/actual-pending-image-review.json')

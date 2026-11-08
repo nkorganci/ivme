@@ -40,15 +40,26 @@ def validate(value,question_lines,topic_lines):
         'topicEvidence':topic_lines[value['topicLineId']-1] if value['topicLineId'] else None}
 
 
+def primary_scope_size(report,retrieval,scope,allow_partial):
+    total=len(retrieval['results'])
+    if scope=='full' and report['status']!='COMPLETE':
+        if not allow_partial or report['status']!='PARTIAL' or not report['results']:
+            raise ValueError('Finish the primary full-scope source review or explicitly select a bounded available prefix')
+    if report['status']=='COMPLETE' and len(report['results'])!=total:
+        raise ValueError('A completed primary report must contain the entire retrieval cohort')
+    if allow_partial and scope!='full':raise ValueError('Available-prefix review requires an explicit full cohort')
+    return total
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din')
     parser.add_argument('--limit',type=int);parser.add_argument('--code',action='append');parser.add_argument('--scope',choices=['pilot','full'],default='pilot')
-    parser.add_argument('--from-reviewed-images',action='store_true');args=parser.parse_args()
+    parser.add_argument('--from-reviewed-images',action='store_true');parser.add_argument('--allow-partial-primary',action='store_true');args=parser.parse_args()
     if args.limit is not None and args.limit<1:parser.error('Positive limit required')
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId']);folder=root/('full-question-topics' if args.scope=='full' else 'question-topics')/args.subject
     source=folder/'content-topic-review.json';report=read_json(source);retrieval=read_json(folder/'topic-candidates.json')
     source_sha=digest(source)
-    if args.scope=='full' and report['status']!='COMPLETE':raise ValueError('Finish the primary full-scope source review before the independent semantic pass')
+    total_questions=primary_scope_size(report,retrieval,args.scope,args.allow_partial_primary)
     if report['retrievalSha256']!=digest(folder/'topic-candidates.json'):raise ValueError('Topic retrieval changed')
     tree_path=next(root/a['path'] for a in state['stages']['YKS-04:full']['artifacts'] if a['path'].endswith('navigation-candidate.json'))
     if digest(tree_path)!=retrieval['providerTreeSha256']:raise ValueError('MEBI registered topic tree changed')
@@ -71,8 +82,9 @@ def main():
     def save(status):
         write_json(folder/'semantic-topic-review.json',{'status':status,'scope':'INDEPENDENT_LOCAL_TOPIC_CONTENT_CHALLENGE',
             'model':MODEL,'modelDigest':model['digest'],'inputReviewSha256':source_sha,'toolSha256':digest(Path(__file__)),
-            'inputQuestions':len(report['results']),'selectedQuestions':len(selected),'selectionEvidence':selection_evidence,
-            'selectedSourceCodes':sorted(r['sourceCode'] for r in selected),'entireInputSelected':len(selected)==len(report['results']),
+            'inputQuestions':total_questions,'availablePrimaryQuestions':len(report['results']),
+            'primaryReportStatus':report['status'],'selectedQuestions':len(selected),'selectionEvidence':selection_evidence,
+            'selectedSourceCodes':sorted(r['sourceCode'] for r in selected),'entireInputSelected':len(selected)==total_questions,
             'newModelCallsThisPass':calls,'pendingQuestions':len(selected)-len(results),
             'states':dict(Counter(r['status'] for r in results)),'results':results,
             'questionBankWrites':0,'categoryAssignmentsWritten':0,'teacherApproved':False})

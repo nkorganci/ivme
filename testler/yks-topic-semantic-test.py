@@ -2,12 +2,29 @@ from pathlib import Path
 import sys
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from yks_konu_anlam_kontrol import validate
+from yks_konu_anlam_kontrol import validate,primary_scope_size
 from yks_konu_icerik_incele import document_schema
 from yks_birlestirme import Store,read_json
 
 
 class SemanticEvidenceTest(unittest.TestCase):
+    def test_actual_laboratory_images_override_incorrect_model_topic_candidates_without_publishing(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        proof=read_json(root/'kimya-topic-pilot-actual/report.json')
+        self.assertEqual(proof['status'],'PASS');self.assertEqual(proof['questions'],3)
+        for row in proof['results']:
+            self.assertTrue(row['actualOriginalQuestionImageRead'])
+            self.assertEqual(row['proposedCategoryId'],'excel.tyt.kimya.7e163b7eea7aa9e1bb22')
+            self.assertNotEqual(row['originalModelCategoryId'],row['proposedCategoryId'])
+            self.assertEqual([p['page'] for p in row['sourceTopicEvidence']],[6,7])
+            self.assertFalse(row['categoryAssignmentWritten']);self.assertFalse(row['newQuestionAdmissionAccepted'])
+            self.assertFalse(row['teacherApproved'])
+
+    def test_partial_primary_prefix_requires_explicit_scope_and_retains_the_full_cohort_size(self):
+        report={'status':'PARTIAL','results':[{'sourceCode':'one'}]};retrieval={'results':[{},{}]}
+        with self.assertRaises(ValueError):primary_scope_size(report,retrieval,'full',False)
+        self.assertEqual(primary_scope_size(report,retrieval,'full',True),2)
+        with self.assertRaises(ValueError):primary_scope_size({**report,'status':'COMPLETE'},retrieval,'full',True)
     def test_model_agreement_does_not_override_actual_topic_conflicts_or_missing_quotes(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         proof=read_json(root/'full-question-topics/din/actual-topic-support-challenges.json')
