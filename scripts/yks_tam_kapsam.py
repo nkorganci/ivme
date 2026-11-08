@@ -70,7 +70,7 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
             'currentExistingTransferRevalidation':None if sha not in existing else {k:existing[sha].get(k) for k in ['status','expectedQuestions','currentDistinctLinkedQuestions','issues','reuseAction','freshSemanticApproval']},
             'bodyExceptionPreparation':None if sha not in body else {k:body[sha].get(k) for k in ['status','questions','sourceKeysApproved','pixelsAndContentAccepted']},
             'newQuestionRegionDiscovery':discoveries.get(sha),
-            'sourceDecodingCheck':None if sha not in decoding else {k:decoding[sha].get(k) for k in ['status','pageCount','issues','bodyContentAccepted']},
+            'sourceDecodingCheck':None if sha not in decoding else {k:decoding[sha].get(k) for k in ['status','pageCount','issues','bodyContentAccepted','tagGlyphReview']},
             'mockKeyCheck':None if not mock else {k:mock.get(k) for k in ['status','printedMockNumber','sourceKeyPage','issue','branchAndTopicAssignmentsAccepted']},
             'priorImportEvidence':{'coverageState':legacy.get('coverageState'),'expectedQuestions':legacy.get('expectedQuestions'),
                 'linkedQuestions':legacy.get('linkedQuestions'),'processingCandidate':group.get('processingCandidate'),
@@ -87,7 +87,7 @@ def main():
     mock=root/'pdf-on-tarama/full-mock-keys/progress.json'
     inputs=[file,page,obs,key,diagnostic];inputs+=[mock] if mock.is_file() else []
     counters={};bank_snapshots=set()
-    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison']:
+    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison','full-question-exception-comparison','full-question-multikey-comparison','full-question-rebound-comparison','full-mock-comparison']:
         proof=root/name/'controlled-repeat-review.json'
         if not proof.is_file():continue
         inputs.append(proof)
@@ -120,10 +120,49 @@ def main():
         additional=[validate_key(row) for row in raster_report['results'] if row['status']=='SOURCE_KEY_VERIFIED']
         if {r['sourceSha256'] for r in key_rows}&{r['sourceSha256'] for r in additional}:raise ValueError('Raster key extension overlaps existing native-key source set')
         key_rows+=additional;inputs.append(raster)
+    exceptions=root/'pdf-on-tarama/full-key-scan/body-exception-keys/report.json'
+    if exceptions.is_file():
+        from yks_istisna_anahtar import validate_key
+        exception_report=read_json(exceptions)
+        if exception_report['status']!='COMPLETE':raise ValueError('Wait for complete body-exception key readings')
+        additional=[validate_key(row) for row in exception_report['results'] if row['status']=='SOURCE_KEY_VERIFIED']
+        if {r['sourceSha256'] for r in key_rows}&{r['sourceSha256'] for r in additional}:raise ValueError('Body-exception keys overlap prior accepted source set')
+        key_rows+=additional;inputs.append(exceptions)
+    multikey=root/'pdf-on-tarama/full-key-scan/multi-test-key/report.json'
+    if multikey.is_file():
+        from yks_coklu_test_anahtar import validate_key
+        multi_report=read_json(multikey)
+        if multi_report['status']!='COMPLETE':raise ValueError('Wait for complete multi-test section key')
+        additional=[validate_key(row) for row in multi_report['results'] if row['status']=='SOURCE_KEY_VERIFIED']
+        if {r['sourceSha256'] for r in key_rows}&{r['sourceSha256'] for r in additional}:raise ValueError('Multi-test key overlaps prior accepted source set')
+        key_rows+=additional;inputs.append(multikey)
+    rebound=root/'pdf-on-tarama/full-key-scan/rebound-literature-keys/report.json'
+    if rebound.is_file():
+        from yks_edebiyat_ayri_anahtar import validate_key
+        rebound_report=read_json(rebound)
+        if rebound_report['status']!='COMPLETE':raise ValueError('Wait for complete rebound official source key readings')
+        additional=[validate_key(row) for row in rebound_report['results'] if row['status']=='SOURCE_KEY_VERIFIED']
+        if {r['sourceSha256'] for r in key_rows}&{r['sourceSha256'] for r in additional}:raise ValueError('Rebound keys overlap prior accepted source set')
+        key_rows+=additional;inputs.append(rebound)
     decoding=root/'pdf-on-tarama/mock-decoding/report.json';decoded=read_json(decoding) if decoding.is_file() else {}
     if decoded:
         if decoded['status']!='COMPLETE':raise ValueError('Wait for complete source decoding check')
         inputs.append(decoding)
+    tags=root/'pdf-on-tarama/mock-tag-review/report.json';tag_report=read_json(tags) if tags.is_file() else {}
+    if tag_report:
+        if tag_report['status']!='COMPLETE' or tag_report['originalDecodeReportSha256']!=digest(decoding):raise ValueError('Tag source review is stale/incomplete')
+        inputs.append(tags)
+        decoded=dict(decoded);decoded['results']=[dict(r) for r in decoded['results']]
+        mitigations={r['sourceSha256']:r for r in tag_report['results']}
+        for row in decoded['results']:
+            mitigation=mitigations.get(row['sourceSha256'])
+            if mitigation:
+                if digest(mitigation['evidencePath'])!=mitigation['evidenceSha256']:raise ValueError('Tag/glyph source evidence changed')
+                row['tagGlyphReview']={k:mitigation.get(k) for k in ['status','affectedPages','evidencePath','evidenceSha256','semanticTextAccepted','bodyContentAccepted']}
+    mock_bodies=root/'full-mock-bodies/progress.json';body_scope=read_json(mock_bodies) if mock_bodies.is_file() else {}
+    if body_scope:
+        if body_scope['status']!='COMPLETE':raise ValueError('Wait for complete supported mock body preparation')
+        inputs.append(mock_bodies)
     discovery=root/'new-source-discovery/scoped-report.json'
     if not discovery.is_file():discovery=root/'new-source-discovery/progress.json'
     discovery_report=read_json(discovery) if discovery.is_file() else {}
@@ -142,6 +181,10 @@ def main():
             unique(mock_report.get('results',[]),'sourceSha256'),counters,
             unique(reuse.get('results',[]),'sourceSha256'),unique(body_report.get('results',[]),'sourceSha256'),
             unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'))
+        prepared_bodies={r['sourceSha256']:r for r in body_scope.get('results',[])}
+        for row in rows:
+            result=prepared_bodies.get(row['sourceSha256'])
+            if result:row['mockBodyPreparation']={k:result.get(k) for k in ['status','questionsPrepared','expectedQuestions','package','packageSha256','issues','administrativePagesContentAccepted']}
         output=folder/'sources.jsonl';temporary=output.with_suffix('.jsonl.part')
         with temporary.open('w',encoding='utf-8') as stream:
             for row in rows:stream.write(json.dumps(row,ensure_ascii=False)+'\n')
@@ -161,6 +204,10 @@ def main():
         report['mockPassStatusSnapshot']=mock_report.get('status','NOT_STARTED')
         report['mockSourcesCompletedSnapshot']=mock_report.get('completed',0)
         report['mockSourcesPendingSnapshot']=mock_report.get('pending')
+        report['mockBodyPreparationSnapshot']={k:body_scope.get(k) for k in ['status','documents','completed','pending','questionsPrepared','states']}
+        key_shas={r['sourceSha256'] for r in key_rows}
+        report['diagnosticQuestionComparisonStates']=dict(sum((value for sha,value in counters.items() if sha in key_shas),Counter()))
+        report['mockQuestionComparisonStates']=dict(sum((value for sha,value in counters.items() if sha not in key_shas),Counter()))
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         report['reviewedTransferNewlyRevalidatedLinks']=reviewed_report.get('newlyRevalidatedLinks',0)

@@ -701,6 +701,36 @@
       "args": ["testler/yks-mock-decoding-test.py"],
       "inputs": ["scripts/yks_deneme_render_kontrol.py", "testler/yks-mock-decoding-test.py"]
     },
+    "yks-body-exception-keys": {
+      "kind": "python",
+      "args": ["testler/yks-body-key-test.py"],
+      "inputs": ["scripts/yks_istisna_anahtar.py", "scripts/yks_istisna_kirpim.py", "scripts/yks_govde_istisna_incele.py", "scripts/yks_ortak_sekil_kirpim.py", "testler/yks-body-key-test.py"]
+    },
+    "yks-multikey-source": {
+      "kind": "python",
+      "args": ["testler/yks-multikey-source-test.py"],
+      "inputs": ["scripts/yks_coklu_test_anahtar.py", "scripts/yks_coklu_test_kirpim.py", "scripts/yks_ayri_anahtar.py", "testler/yks-multikey-source-test.py"]
+    },
+    "yks-mock-tag-layout": {
+      "kind": "python",
+      "args": ["testler/yks-mock-tag-test.py"],
+      "inputs": ["scripts/yks_deneme_etiket_kontrol.py", "testler/yks-mock-tag-test.py"]
+    },
+    "yks-mock-body-layout": {
+      "kind": "python",
+      "args": ["testler/yks-mock-body-test.py"],
+      "inputs": ["scripts/yks_deneme_govde.py", "scripts/yks_pilot_sorular.py", "scripts/yks_istisna_kirpim.py", "testler/yks-mock-body-test.py"]
+    },
+    "yks-rebound-literature": {
+      "kind": "python",
+      "args": ["testler/yks-rebound-literature-test.py"],
+      "inputs": ["scripts/yks_edebiyat_ayri_anahtar.py", "scripts/yks_coklu_test_kirpim.py", "testler/yks-rebound-literature-test.py"]
+    },
+    "yks-mock-printed-discipline": {
+      "kind": "python",
+      "args": ["testler/yks-mock-discipline-test.py"],
+      "inputs": ["scripts/yks_deneme_kapsam.py", "scripts/yks_deneme_govde.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-mock-discipline-test.py"]
+    },
     "yks-reviewed-existing-transfer": {
       "kind": "python",
       "args": ["testler/yks-reviewed-transfer-test.py"],
@@ -974,7 +1004,12 @@
         "yks-evidence-archive",
         "yks-evidence-db-proof",
         "yks-raster-source-keys",
-        "yks-mock-source-decoding"
+        "yks-mock-source-decoding",
+        "yks-body-exception-keys",
+        "yks-multikey-source",
+        "yks-mock-tag-layout",
+        "yks-mock-body-layout",
+        "yks-rebound-literature"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -991,7 +1026,8 @@
         "yks-full-visual-candidates",
         "yks-answer-editions",
         "yks-existing-source-transfer",
-        "yks-reviewed-existing-transfer"
+        "yks-reviewed-existing-transfer",
+        "yks-mock-printed-discipline"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

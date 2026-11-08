@@ -279,6 +279,17 @@ YKS-07 temsilî pilot kapısı VERIFIED; tam arşiv açık kalır. Pilot, 19 tar
 belgesi ve iki denemenin kaynak anahtarlarıyla on gerçek risk sınıfını kapsar.
 Tamamı soru/konu yayını kabulü değildir.
 
+Son alt iş BITTI: altı yerleşim istisnasında 94 bağımsız kaynak cevabı ve tam
+özgün kırpım doğrulandı; toplam 267 tarama / 4.980 cevap. Yeni 94 soruda güncel
+banka karşılaştırması 50 mevcut aday ve 44 içerik incelemesi verdi. Tam arşiv
+kabulü, deneme gövdeleri ve diğer kaynak düzenleri tamamlanınca kapatılır.
+
+Yeni alt işler BITTI: Fizik çoklu anahtarında 41 ve iki Edebiyat ayrı resmî
+anahtarında 40 cevap daha; toplam 270 tarama/5.061 cevap. 41 sağlam denemenin
+5.863 soru gövdesi bölüm/sıra/özgün piksel bakımından hazır. Dört deneme
+anahtar/kimlik sorunu ve bir bozuk PDF dışarıda; dar ders/konu/tekrar ve
+diğer kaynak düzenlerinin kabulü sürdüğü için ana adım açık kalır.
+
 ## 15.08 — YKS-08: güncel bankada soru tekrarı
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve

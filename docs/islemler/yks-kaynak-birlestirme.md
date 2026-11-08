@@ -1,5 +1,52 @@
 # YKS birleştirme kontrolü
 
+## Tam PDF hazırlığındaki yeni partilerden devam
+
+Önce run içindeki `full-source-coverage/report.json`, `session-checkpoint.json`
+ve adımın kendi raporu okunur. COMPLETE/PASS olan aynı girdi için model,
+OCR veya bütün banka karşılaştırması yeniden çalıştırılmaz. Kaynak/araç/girdi
+değişikliği varsa yalnız etkilenen parti açılır. Bunlar tam aşama kabulünden
+önceki hazırlık komutlarıdır:
+
+```powershell
+# Altı açık gövde yerleşimi: anahtar → özgün kırpım → banka karşılaştırması.
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_istisna_anahtar.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_istisna_kirpim.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --exceptions
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py --exceptions
+
+# Tek sayfadaki yedi anahtardan yalnız Fizik TYT-4.
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_coklu_test_anahtar.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_coklu_test_kirpim.py
+# Karşılaştırıcılar için --multikey kullanılır.
+
+# Yanlış etiketli iki Edebiyat anahtarı: resmî tam gövde eşitliği zorunlu.
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_edebiyat_ayri_anahtar.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_coklu_test_kirpim.py --rebound
+# Karşılaştırıcılar için --rebound kullanılır.
+
+# Deneme kaynakları: özgün metin etiketi ve görünür glyph ayrı kalır.
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_deneme_etiket_kontrol.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_deneme_govde.py --workers 3
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --mock
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_deneme_kapsam.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_deneme_cevap_farki.py
+
+# Tamamlanan anlamlı partinin kapsamını, imlecini ve DB arşivini kaydet.
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kapsam.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_hazirlik_checkpoint.py
+& 'C:\Users\nkorg\.venvs\ogm-pipeline\Scripts\python.exe' -X utf8 scripts/yks_kanit_db.py save
+```
+
+Arşiv bağlantısı 55432'deki **mevcut ayrı pipeline instance** üzerindedir.
+Kapalıysa `pipeline` dizininden pipeline Python ile yalnız
+`-c "from setup_database import start_instance; start_instance()"` çağrılır;
+`bootstrap`, `repair_bootstrap` veya `initdb` çalıştırılmaz. Bu yöntem yeni
+cluster/kimlik bilgisi oluşturmaz. Ardından kayıt yeniden denenir. Başarılı
+`save`, bütün farklı ham dosyaları DB'den geri okuyup hash'lerini sınar ve aynı
+checkpoint'in ikinci yazımında 0 INSERT olduğunu doğrular. Eski arşiv sürümleri
+korunur; sorgulanabilir hazırlık durumu öğretmen onayı veya soru yayını değildir.
+
 [Plan ve görev dosyaları](../plan/15-yks-kaynak-birlestirme.md) gerçek iş kapsamını,
 [görev tablosu](../gorev-durumu.md) tamamlanma kanıtını belirler.
 

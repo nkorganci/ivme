@@ -33,6 +33,17 @@ RECORD_REPORTS={
  'repeat-raster':('full-question-raster-comparison/controlled-repeat-review.json','results','sourceCode'),
  'mock-decoding':('pdf-on-tarama/mock-decoding/report.json','results','sourceSha256'),
  'reviewed-existing-transfer':('reviewed-transfer-reuse/report.json','results','sourceSha256'),
+ 'body-exception-key':('pdf-on-tarama/full-key-scan/body-exception-keys/report.json','results','sourceSha256'),
+ 'repeat-body-exception':('full-question-exception-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'multi-test-key':('pdf-on-tarama/full-key-scan/multi-test-key/report.json','results','sourceSha256'),
+ 'repeat-multi-test-key':('full-question-multikey-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'mock-tag-glyph-review':('pdf-on-tarama/mock-tag-review/report.json','results','sourceSha256'),
+ 'rebound-literature-key':('pdf-on-tarama/full-key-scan/rebound-literature-keys/report.json','results','sourceSha256'),
+ 'repeat-rebound-literature':('full-question-rebound-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'mock-body':('full-mock-bodies/progress.json','results','sourceSha256'),
+ 'repeat-mock':('full-mock-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'mock-printed-discipline':('full-mock-comparison/printed-section-scopes.json','sourceCardScopes','sourceCode'),
+ 'mock-answer-conflict':('full-mock-comparison/answer-conflict-queue.json','results','sourceCode'),
 }
 
 

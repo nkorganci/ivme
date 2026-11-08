@@ -1,5 +1,23 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Yeni tam banka karşılaştırma alt işi — BITTI:** 270 taramanın 5.061 sorusu
+ve 41 denemenin 5.863 sorusu, güncel 80.230 etkin YKS sorusunun tüm görsel ve
+metinleriyle karşılaştırıldı. Taramalarda 3.036 mevcut aday/1.948 içerik
+incelemesi/77 fark; denemelerde 1.458 mevcut aday/3.855 içerik incelemesi/
+447 ortak bölüm alt ders incelemesi/63 kapsam-cevap farkı/40 basılı aralık
+istisnası var. Bunlar aktarım kabulü değildir; bütün eski ID/cevaplar korunur.
+
+`yks_deneme_kapsam.py` branşları her kitapçığın gerçek basılı soru aralıklarına
+bağlar. Matematik/Geometri ve AYT Felsefe Grubu tek başına dar ders kabulü
+vermez. 333642091490… AYT Fen'in sayfa41 yönergesinde TYT 20 soru aralıkları
+basılıdır; 40 soru için sınav dağılımından varsayımsal aralık üretilmedi.
+
+`yks_deneme_cevap_farki.py`, altı kaynak sorusu/sekiz mevcut banka bağındaki
+cevap farkını kaynak/anahtar/görsel/banka damgalarıyla ayrı kaydetti.
+`full-mock-comparison/answer-conflict-queue.json` eski basılı anahtar ve iki
+görselin gerçek incelemesini bekler; bu aşamada banka hatası veya farklı basılı
+nüsha kararı verilmedi. Mevcut cevaplar ve öğrenci geçmişi değiştirilmez.
+
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
 

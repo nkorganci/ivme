@@ -1,5 +1,65 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
+**Kalıcı parti kaydı — BITTI:** PostgreSQL `ogm_ders.yks_evidence` checkpoint
+`940e9bddbe76c84987094f794e16b4ef75fad142c354c34d6a5513aee5a109a8`
+4.086 kaynak, 96.841 sorgulanabilir kayıt, 59.077 dosya konumu ve 58.494
+farklı ham dosya içerir. 1.282.211.188 baytın tamamı geri okunup SHA-256
+eşitliği doğrulandı; aynı checkpoint ikinci yazımında yeni INSERT 0.
+Kalite 91/34/14/18 = 157 test PASS. Yalnız pilot 07–10 tekrar VERIFIED;
+tam aşamaların veya canlı geçişin kabulü verilmedi.
+
+**Deneme gövdesi alt işi — BITTI (teknik hazırlık):** `yks_deneme_govde.py`
+46 kaynağın tamamını kaydetti. Dört kimlik/anahtar istisnası ve zlib bozukluğu
+olan bir PDF dışarıda; 41 sağlam denemenin **5.863 sorusu** dört ayrı basılı
+bölüm kimliğiyle, eksiksiz numara sırası ve özgün RGB piksel kanıtıyla hazır.
+Konu/branş, görsel anlam ve tekrar kabulü bu sonuçtan ayrıdır. Kapak/yönergeler
+ayrı gözlem olarak korunur; bunlara soru yokluğu veya içerik onayı yazılmaz.
+
+Sayfa aşan 35–36 ortak paragrafı iki soruya aynı özgün bölgeden bağlanır.
+Sütun başında devam eden satır/şekiller önceki sol soruya eklenir. İki kimya
+formülünde `CH3` ve karbonil `O` doğru sonraki sorunun üst bölgesine alındı;
+bu parçalar önceki sorunun görselinden çıkarıldı. Alternatif Din/Felsefe
+yönergesi ayrı kaynak bölgesi olarak ilgili sorulara bağlanır. Altı sorunlu
+bölgenin özgün görüntüleri ajan tarafından okundu; bir boş bölüm sayfası ve
+başlıksız bir geometri sayfası kaynak hash'iyle açık kanıta bağlandı. Çıktı
+`full-mock-bodies/`; üç yerel PDF süreci, yeni OCR/model 0, canlı soru yazımı 0.
+
+**Edebiyat ayrı anahtar alt işi — BITTI:** AYT-3 ve AYT-12'nin yanlış
+numaralı özgün anahtarları korundu. Resmî kitaptaki doğru testin bütün gövde
+sayfaları native metin ve hem 180 hem 330 DPI RGB olarak birebir eşit;
+kitabın doğru anahtarında 40 cevap bağımsız Qwen okumalarıyla uyuştu.
+Test-3'te yalnız görsel olarak okunmuş yayın başlığı şeridi dışarıdadır;
+hiçbir native soru satırı atılmaz. Test-12'nin önceki 144 DPI karşılaştırmasındaki
+66 kenar pikseli farkı eski kanıtta kalır; iki yeni çözünürlükte tam eşitlik
+ayrıca kanıtlandı. Çıktılar `rebound-literature-keys/` ve
+`full-question-rebound-crops/`. Toplam **270 tarama / 5.061 cevap**, 66 açık
+tarama istisnası. Yeni 40 sorunun banka kontrolü 39 mevcut aday/1 inceleme;
+genel tarama karşılaştırması 3.036 mevcut aday/1.948 içerik incelemesi/77 fark.
+
+**Çoklu anahtar alt işi — BITTI:** Fizik TYT-4'ün yedi test içeren son
+sayfasında yalnız basılı test-4 bölgesi seçildi. 41 cevap native/Qwen okumasında
+eşit; gövdede 1–41 tam sıra, beş seçenek, özgün kırpım pikselleri ve sıfır açık
+satır PASS. `full-key-scan/multi-test-key/` ve `full-question-multikey-crops/`
+kanıttır. Toplam 268 tarama kaynağı / 5.021 cevap; 68 tarama istisnası kalır.
+
+**Etiket incelemesi alt işi — BITTI:** 21 uyarılı denemeden 20'sinin 30
+sayfasında yalnız ActualText/parent-tree etiket uyarısı var. Görünen glyph
+konumları `TEXT_IGNORE_ACTUALTEXT` ile ayrı kaydedildi; önceki alternatif
+metin korunur, özgün 150 DPI render hash'i birebir eşittir. Kaynak PDF
+onarılmadı; semantik metin/gövde kabulü verilmedi. `mock-tag-review/` çıktısı
+gövde çıkarıcısına gerekli bayrağı gösterir. f8bbb5b413ae… sayfa29 zlib
+bozulması açık kalır; görüntünün okunur görünmesi veri tamlığı kanıtı değildir.
+
+**Yeni tamamlanan alt iş — BITTI:** Altı açık gövde istisnasının 94 basılı
+cevabı native kaynak ile bağımsız Qwen anahtar kırpımı okumasında tam uyuştu.
+`yks_istisna_anahtar.py` kaynak hash'i, basılı sınav/test/branş ve açıkça
+incelenmiş gövde istisnasını yeniden bağlar. `yks_istisna_kirpim.py` 94 soruda
+özgün RGB piksel eşitliği ve sıfır açık gövde satırı sağladı. İki sütun devamı
+yalnız özgün bölgeler ve beyaz aralıkla birleştirilir; yan sorunun gövdesi alınmaz.
+Çıktılar `full-key-scan/body-exception-keys/` ve `full-question-exception-crops/`;
+toplam 267 tarama kaynağı / 4.980 cevap. Banka karşılaştırması ve içerik/dar konu
+kabulü ayrıdır; tam YKS-07 henüz BITTI değildir.
+
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
 
