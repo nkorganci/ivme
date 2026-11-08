@@ -95,3 +95,23 @@ Arşiv gezinmesi için `python scripts/yks_arsiv_gezinti.py`, ardından
 `node testler/yks-archive-navigation-ui.mjs` ve
 `python scripts/ivme.py yks adim YKS-06 --resume` kullanılır.
 Bu kabul fiziksel hazırlık/gezinme içindir; soru ve canlı yayın kapılarını kapatmaz.
+
+Genişletilmiş anahtar/soru pilotu:
+
+```powershell
+python scripts/yks_anahtar_gorsel.py --limit 2
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_ayri_anahtar.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_kaynaklari.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_sorular.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_kirpim_kontrol.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_tekrar_tara.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_tekrar_incele.py
+```
+
+`--limit` yalnız yeni yerel görsel model çağrısını sınırlar; mevcut geçerli
+transkripsiyonlar tekrar kullanılır. İstem beklenen cevapları içermez. Ayrı
+anahtar, yalnız aynı test numarasına bakılarak bağlanmaz: bütün soru gövdesi
+metni ve çizim pikselleri aynı olmalıdır. Sürüm farkı dışarıda tutulur.
+Kırpım kontrolü kaynak RGB piksellerini ve gövde satırı kapsamını doğrular;
+formül/üs taşması veya değiştirilmiş görsel reddedilir. Tekrar ön incelemesi
+tam banka kapsamında çalışır; aday benzerlik yeni soru/öğretmen onayı değildir.

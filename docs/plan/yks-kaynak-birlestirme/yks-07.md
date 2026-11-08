@@ -97,3 +97,31 @@ kırpım OCR'ı ile karşılaştırdı; mevcut Qwen Tarih kanıtı tekrar kullan
 Üç belgede 52 cevap eşleşti; 15 OCR uyuşmazlığı ve iki desteklenmeyen düzen
 açık. Bunlar tahminle onaylanmaz veya anahtarsız sayılmaz. Kaynak kırpımı ve
 ham OCR önbelleği aynı klasörde tutulur. Pilot ve 07 yürütücüsü henüz tamamlanmadı.
+
+## Bağımsız görsel anahtar çözümlemesi
+
+Kullanıcı devam talebiyle çalışma yeniden açıldı. `yks_anahtar_gorsel.py` yalnız
+basılı anahtar kırpımını yerel Qwen'e verir; beklenen cevaplar isteme girmez.
+Numara tekrarı, eksik okuma, kesilmiş çıktı ve kaynak/metin uyuşmazlığı kabul
+edilmez. Sonuçlar model digest/istem/şema/seçenek/kırpım hash'iyle önbelleklenir.
+İlk iki kaynakta tam eşleşme var; kalan kayıtların sonucu ayrı rapordadır.
+Kimya örneklerinde son sayfa soruyla bittiği için doğrulanmış ek anahtar
+bulunmadan sorular aktarım dışındadır; bu, tüm arşivde anahtar yokluğu değildir.
+
+## Genişletilmiş pilot kanıtı
+
+20 ders/sınav örneğinden 19 belgede 387 basılı cevap iki okumayla doğrulandı.
+TYT Kimya tekil PDF'si anahtarsız biter; arşivdeki resmî toplu kitabın ilgili
+testine ait iki soru sayfasının **tam gövde metni ve render pikselleri aynı**
+olduğu için yalnız o testin ayrı anahtarı bağlandı. AYT Kimya'da aynı başlık
+ve test numarası başka soru sürümü içerdiğinden anahtar aktarılmadı.
+`yks_ayri_anahtar.py` bu farkı kayıt altında tutar; anahtarsızlık genellenmez.
+
+`yks_pilot_sorular.py` v3 kesir/üs yüksekliğini soru numarası baseline'ından
+ayırır; önceki soruya formül parçası taşımaz. Kaynak nüshalarından kırpılan
+387 görsel, `yks_pilot_kirpim_kontrol.py` ile 97 gövde sayfasında sınandı:
+açık metin satırı sıfır ve her görselin decode edilmiş RGB pikselleri özgün
+PDF'nin aynı bbox render'ıyla birebir eşit. Bu teknik bütünlüktür; dar konu
+onayı veya grafik anlamı kabulü değildir. 55 grafik ve 7 özel glyph kaydı
+inceleme bekler. Deneme/ortak paragraf/taranmış/ZIP/permutasyon pilot kapsamı
+açıkken tam YKS-07 BITTI değildir.

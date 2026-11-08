@@ -86,3 +86,14 @@ hiçbir yazım yapmaz ve diğer PDF'lerin taramasını tamamlamış sayılmaz.
   işaretini kaldır ve değişen girdi/hata nedenini `YENIDEN_ACILDI` kaydına ekle.
 - Sonraki somut işlem, ilgili adım, gerçek doğrulama sonucu ve kanıt yolu devirde
   bulunmalı. Tüm zincir yetkilendirilmişse uygun sonraki adıma devam et.
+
+## 387 soruluk karşılaştırmadan devam
+
+`yks_pilot_tekrar_tara.py` bütün 80.230 güncel banka metin/görselini kullanır;
+önceki vektör önbelleği hash ile doğrulanıp tekrar kullanılır.
+`yks_pilot_tekrar_incele.py` tam metin adayında cevap, özgün kayıt sürümü ve
+ortak DB'nin kontrollü `subject_ids/exam_ids` kapsamını karşılaştırır.
+Eski görünen `questions.subject=Felsefe` alanı psikoloji/sosyoloji/mantık
+kimliklerinin yerine geçmez. `controlled-repeat-review.json` 268 kaynak
+eşleşme adayı ve 119 içerik/görsel incelemesi tutar. Bunlar yeni soru kabulü
+veya öğretmen kararı değildir; kategori/görsel kabulü ayrıca tamamlanır.

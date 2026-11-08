@@ -518,6 +518,63 @@
         "testler/yks-archive-navigation-ui.mjs",
         "testler/lib/tarayici.mjs"
       ]
+    },
+    "yks-key-transcription": {
+      "kind": "python",
+      "args": [
+        "testler/yks-key-transcription-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_anahtar_gorsel.py",
+        "scripts/yks_anahtar_cohort.py",
+        "testler/yks-key-transcription-test.py"
+      ]
+    },
+    "yks-diagnostic-boundaries": {
+      "kind": "python",
+      "args": [
+        "testler/yks-diagnostic-boundaries-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_pilot_sorular.py",
+        "scripts/yks_pilot_kaynaklari.py",
+        "testler/yks-diagnostic-boundaries-test.py"
+      ]
+    },
+    "yks-separate-source-key": {
+      "kind": "python",
+      "args": [
+        "testler/yks-separate-key-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_ayri_anahtar.py",
+        "scripts/yks_pilot_kaynaklari.py",
+        "testler/yks-separate-key-test.py"
+      ]
+    },
+    "yks-crop-integrity": {
+      "kind": "python",
+      "args": [
+        "testler/yks-crop-integrity-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_pilot_kirpim_kontrol.py",
+        "scripts/yks_pilot_sorular.py",
+        "testler/yks-crop-integrity-test.py"
+      ]
+    },
+    "yks-controlled-repeat": {
+      "kind": "python",
+      "args": [
+        "testler/yks-controlled-repeat-test.py"
+      ],
+      "inputs": [
+        "scripts/yks_pilot_tekrar_incele.py",
+        "scripts/yks_pilot_tekrar_tara.py",
+        "scripts/yks_soru_pilotu.py",
+        "scripts/pdf_source_reconcile.py",
+        "testler/yks-controlled-repeat-test.py"
+      ]
     }
   },
   "profiles": {
@@ -758,7 +815,11 @@
     "YKS-07": {
       "checks": [
         "yks-answer-observations",
-        "yks-key-pilot"
+        "yks-key-pilot",
+        "yks-key-transcription",
+        "yks-diagnostic-boundaries",
+        "yks-separate-source-key",
+        "yks-crop-integrity"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -768,7 +829,8 @@
     },
     "YKS-08": {
       "checks": [
-        "yks-exact-reuse"
+        "yks-exact-reuse",
+        "yks-controlled-repeat"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",

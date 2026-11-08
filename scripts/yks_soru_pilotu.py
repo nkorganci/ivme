@@ -87,7 +87,7 @@ def live_bank(app):
     return questions,{r['question_code']:r['text'] for r in ocr}
 
 
-def compare(cards,folder):
+def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None):
     questions,ocr=live_bank(APP);stamp=signature(questions)
     cached=read_json(OUT/'bank-image-fingerprints.json')
     if cached['version']!=IMAGE_VERSION:raise ValueError('Unknown bank image fingerprint version')
@@ -116,6 +116,12 @@ def compare(cards,folder):
         vectorizer=joblib.load(folder/'bank-vectorizer.joblib');matrix=sparse.load_npz(folder/'bank-text.npz');cache_hit=True
     elif cache_stamp.is_file() and cache_stamp.read_text()==key:
         vectorizer=joblib.load(cache/'vectorizer.joblib');matrix=sparse.load_npz(cache/'bank.npz');cache_hit=True
+    elif shared_cache_folder is not None and (Path(shared_cache_folder)/'bank-text-stamp.json').is_file():
+        shared=Path(shared_cache_folder);proof=read_json(shared/'bank-text-stamp.json')
+        if proof.get('bankTextSha256')!=key or len(proof.get('files',{}))!=2 or any(
+            not (shared/name).is_file() or digest(shared/name)!=sha for name,sha in proof['files'].items()):
+            raise ValueError('Shared bank text cache is stale or incomplete')
+        vectorizer=joblib.load(shared/'bank-vectorizer.joblib');matrix=sparse.load_npz(shared/'bank-text.npz');cache_hit=True
     else:
         vectorizer=TfidfVectorizer(ngram_range=(1,2),max_features=250000,sublinear_tf=True,dtype=np.float32)
         matrix=vectorizer.fit_transform(text for code,text in bank).tocsr();cache_hit=False
@@ -127,7 +133,7 @@ def compare(cards,folder):
     for index,card in enumerate(cards):
         row=similarities.getrow(index);top=np.argsort(row.data)[-8:][::-1]
         text_matches=[{'code':bank[row.indices[n]][0],'similarity':round(float(row.data[n]),6)} for n in top if row.data[n]>.2]
-        fp=fingerprint((card['code'],str(folder/card['image']),SOURCE))
+        fp=fingerprint((card['code'],str(folder/card['image']),source_sha or card['sourceSha256']))
         if fp.get('error'):raise ValueError('Pilot crop visual fingerprint failed')
         phash=int(fp['phash'],16);matches=[]
         for visual in visuals:
@@ -139,7 +145,7 @@ def compare(cards,folder):
                         'visualMatchCount':len(matches),'decision':'REVIEW_REQUIRED','fingerprint':fp})
     after,_=live_bank(APP)
     if signature(after)!=stamp:raise ValueError('Bank changed during pilot comparison')
-    report={'status':'PASS','scope':'DUPLICATE_CANDIDATES_ONLY','sourceSha256':SOURCE,
+    report={'status':'PASS','scope':'DUPLICATE_CANDIDATES_ONLY','sourceSha256':source_sha,
             'bankSnapshotSha256':stamp,'bankQuestions':len(questions),'bankImagesCompared':len(visuals),
             'bankTextsCompared':len(bank),'bankQuestionsWithoutComparableText':no_text,
             'bankTextCacheHit':cache_hit,'bankTextSha256':key,'candidates':results,'newDecisions':0,'questionsInserted':0,
