@@ -129,7 +129,7 @@ açıkken tam YKS-07 BITTI değildir.
 ## Temsilî pilot kapısı — VERIFIED
 
 `python scripts/ivme.py yks adim YKS-07 --scope pilot --resume` yalnız temsilî
-pilot yürütücüsüdür. `yks-07/pilot/attempt-0005/source-key-pilot-acceptance.json`
+pilot yürütücüsüdür. `yks-07/pilot/attempt-0007/source-key-pilot-acceptance.json`
 19 taramada 387, iki denemede ayrı sekiz sütunda 291 basılı cevabı ve on gerçek
 risk sınıfını doğrular. Deneme basılı test sayıları alternatif sorular dahil
 TYT 125 ve AYT 166'dır; soru numaraları sütunlar arasında karıştırılmaz.
@@ -140,3 +140,37 @@ Ortak paragraf kanıtı, taranmış sorunun mevcut OCR ile bulunması, gerçek
 seçenek permütasyonunda E→B harf değişimi ve ZIP üyesinin aynı bağımsız PDF
 hash'i ayrı kayıtlardır. Anahtarsız/tanımlanamayan taranmış soru kabul edilmez.
 Sonraki işlem YKS-08/09 pilotunda soru/görsel/dar konu kabulüdür.
+
+## Tam arşivin ilk anahtar fazından devam
+
+YKS-10/pilot gerçek DB provasını geçti. Tam 07 yürütücüsü henüz kabul edilmez;
+önce aşağıdaki kanıt hazırlayıcıları kullanılır:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_anahtar_taramasi.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_anahtar_gorsel.py
+```
+
+İlk araç bütün 4.086 PDF envanterinden, MEBİ tarama konumundaki 336 tekil
+PDF'yi seçer; aynı PDF'nin OGM kanonik yolunu ve MEBİ alias'ını ikinci kaynak
+saymaz. 19 pilot kaynak okuması korunur. Native/OCR fazı tamamlandı:
+42 belgede 778 cevap doğrulandı; 197 OCR uyuşmazlığı, 93 desteklenmeyen/ayrı
+anahtar düzeni, üç test kimliği çelişkisi ve önceden bilinen bir farklı Kimya
+sürümü açık. Diğer **3.750 PDF düzeni** bu okuyucunun dışında ve açık kalır.
+
+İkinci araç yalnız soru numarası ve beş seçeneği tam, test/branş kimliği sağlam
+191 anahtar kırpımını Qwen'e okutur. Beklenen cevaplar isteme girmez. İlk beş
+okuma kaynakla tam uyuştu; kalan imleç
+`pdf-on-tarama/full-key-scan/visual-resolution-report.json`, birleşik kaynak
+kanıtı `resolved-key-scope-report.json` içindedir. `--limit` yalnız yeni çağrıyı
+sınırlar; `--cached-only` yeni model çağrısı yapmaz. Native faz ikinci geçişi
+336 önbellek/0 yeni OCR; görsel ikinci geçişi 0 yeni model ile doğrulandı.
+İstatistik/imleç değişikliği sağlam kaynak kanıtını eskitemez; basılı cevap
+veya gövde kanıtı değişirse önceki okuma yeniden kullanılmaz.
+
+**Somut kaynak çelişkileri:** Edebiyat AYT 12'nin soru sayfaları 12, anahtarı
+11; Edebiyat AYT 3'ün soruları 3, anahtarı 2; Din TYT 9'un soruları 9,
+anahtarı 8 basılıdır. Anahtar sayfası native ve bağımsız OCR'da aynı farklı
+kimliği taşıyor. Bunların cevapları aktarım dışında tutulur; kaynak hatası
+sessizce düzeltilmez veya doğru test olduğu varsayılmaz. Ayrı resmî anahtar
+ancak tam soru gövdesi metin/piksel eşitliğiyle bağlanabilir.

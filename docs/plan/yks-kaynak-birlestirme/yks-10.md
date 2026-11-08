@@ -55,6 +55,29 @@ Pilot/tam arşiv kapsamı farklıysa ikisini ayrı yaz; pilot bütün görevi bi
 
 Pilot geçmeden pahalı tam yayılım; tam kabul geçmeden canlı cutover yok.
 
+## Gerçek yalıtılmış pilot kabulü — VERIFIED
+
+`yks_izole_prova.py` sürümlü uygulama kaynağını Git arşivinden ayrı bir yerel
+kopyaya çıkarır; aday MEBİ bakım sözlüğünü yalnız bu kopyaya koyar. Mevcut
+`ivme.py test` ve `backend-test.ps1` geçici `ivme_test` oluşturur, mevcut bir
+test DB'sinin üzerine yazmaz ve iş sonunda geçici DB'yi kaldırır. Canlı uygulama
+başlatıcısı çalıştırılmaz. Test şablonu `scripts/yks-pilot-fixtures/` içindedir;
+normal backend paketine yerel arşive bağımlı koşullu test eklenmez.
+
+Gerçek dört test geçti: üç sorunun ön izlemesi/yazımı/ikinci yazımda sıfır yeni
+soru; mevcut 12 kimlik/cevap ve öğrenci cevap/ilerleme satırlarının korunması;
+hatalı cevapta bütün partinin reddi ve soru+etiket kuyruğunun geri alınması;
+aday kataloğun gerçek API'sinde iki dar konu için 2/1 soru ve öğrenci kaynak
+yanıtında cevapların bulunmaması. `isolated-pilot/isolated-import-report.json`
+ve `yks-10/pilot/attempt-0001/isolated-pilot-acceptance.json` kanıttır.
+
+`yks_izole_kanit.py` XML'i, DB temizliği işaretini, günlükleri, özgün ve yalıtılmış
+uygulama kodunu, gerçek test şablonunu, kaynak paketini ve aday sözlüğü yeniden
+kontrol eder. Satır sonu LF/CRLF dışında kod farkını görmezden gelmez. Geçerli
+prova tekrar çalıştırılmadı; YKS-10 kalite profili 16 runtime + iki kanıt testiyle
+bu bağı kontrol eder. Pilot kapısı yalnız tam kaynak incelemesini açar;
+YKS-10'un tamamına BITTI veya canlı geçiş izni vermez.
+
 ## Başarısızlık ve geri dönüş
 
 Geçici ortam tarife göre kapatılır; pilot başarısızsa neden düzeltilir, canlı sistem korunur.

@@ -163,3 +163,16 @@ sorunun kayıpsız özgün görselini, basılı kaynak cevaplarını, CSV'yi ve 
 sözleşmeli konu ilişkilerini sürümlü pilot dizinine hazırlar. Öğretmen durumu
 PENDING kalır; canlı katalog/DB/görsel köküne yazmaz. Tam arşiv veya canlı
 INSERT_ONLY kapıları ayrı işlerdir.
+
+Yalıtılmış prova yalnız eksik/değişen gerçek kanıt için
+`..\.venv\Scripts\python.exe -X utf8 scripts/yks_izole_prova.py` ile çalışır.
+Geçerli prova için `yks_izole_kanit.py` ve `ivme.py kalite calistir YKS-10`
+yeniden DB kurmadan kanıtı doğrular. Formal pilot kapısı:
+`python scripts/ivme.py yks adim YKS-10 --scope pilot --resume`.
+
+Pilot geçtikten sonra tam arşivin tek tarama anahtarı düzeni
+`yks_tam_anahtar_taramasi.py` ile işlenir. Çıktı `full-key-scan/progress.json`;
+336 belge tamam, diğer 3.750 PDF düzeni açık. Görsel uyuşmazlık partisi
+`yks_tam_anahtar_gorsel.py [--limit N | --cached-only]` ile devam eder. Sağlam
+pilot/OCR/görsel okumalarını yeniden üretme; test kimliği çelişkisini veya
+eksik gövdeyi modelin aynı cevabı okumasıyla geçerli sayma.

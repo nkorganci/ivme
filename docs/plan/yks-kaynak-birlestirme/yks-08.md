@@ -127,7 +127,7 @@ adaylardır; kategori yayını, yeni soru kabulü veya öğretmen onayı değild
 yalnız yalıtılmış provaya seçer. Önceki 12 Tarih sorusu mevcut kimlikleriyle
 yeniden kullanılır. `python scripts/ivme.py yks adim YKS-08 --scope pilot --resume`
 bu **15 soruluk kapsamı** doğrular; diğer 372 aday açıkça ertelenir.
-`yks-08/pilot/attempt-0003/bounded-duplicate-pilot-acceptance.json` kanıttır.
+`yks-08/pilot/attempt-0005/bounded-duplicate-pilot-acceptance.json` kanıttır.
 Tam arşiv yürütücüsü kabul edilmedi; bu aşamanın tamamına BITTI yazılmaz.
 
 İkinci bağımsız kök/seçenek karşılaştırması 80.230 bankayı taradı, 80.229

@@ -611,6 +611,16 @@
       "args": ["--test-reporter=tap", "testler/yks-pilot-package.test.mjs"],
       "inputs": ["scripts/yks-pilot-package.mjs", "scripts/yks_stages/stage_09.py", "scripts/yks_pilot_kabul_secimi.py", "scripts/learning-resource-contract.mjs", "testler/yks-pilot-package.test.mjs"]
     },
+    "yks-isolated-pilot-proof": {
+      "kind": "python",
+      "args": ["testler/yks-isolated-proof-test.py"],
+      "inputs": ["scripts/yks_izole_prova.py", "scripts/yks_izole_kanit.py", "scripts/yks_stages/stage_10.py", "scripts/yks-pilot-fixtures/YksSourcePilotTest.java", "testler/yks-isolated-proof-test.py", "backend/src/main/**/*", "backend/src/test/**/*", "backend/pom.xml", "scripts/resource-intake.mjs", "scripts/content-taxonomy.mjs", "scripts/learning-resource-contract.mjs", "frontend/src/resourceMetadata.js", "testler/backend-test.ps1", "yerel-ortam.ps1"]
+    },
+    "yks-full-key-reader": {
+      "kind": "python",
+      "args": ["testler/yks-full-key-test.py"],
+      "inputs": ["scripts/yks_tam_anahtar_taramasi.py", "scripts/yks_tam_anahtar_gorsel.py", "scripts/yks_anahtar_cohort.py", "scripts/yks_anahtar_gorsel.py", "scripts/yks_pilot_kaynaklari.py", "scripts/yks_pilot_sorular.py", "testler/yks-full-key-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -865,7 +875,8 @@
         "yks-diagnostic-boundaries",
         "yks-separate-source-key",
         "yks-crop-integrity",
-        "yks-mock-key-sections"
+        "yks-mock-key-sections",
+        "yks-full-key-reader"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -893,6 +904,11 @@
         "Model önerisi öğretmen kararı veya canlı yayın kabulü değildir."
       ],
       "nextAction": "Kaynak soru kökü ve aynı MEBİ yaprağının PDF içeriğini karşılaştır; belirsiz adayı yayınlama."
+    },
+    "YKS-10": {
+      "checks": ["yks-birlestirme-runtime", "yks-isolated-pilot-proof"],
+      "remainingAcceptance": ["Bu profil yalnız temsilî yalıtılmış pilotu doğrular; tam arşiv ve canlı cutover kabulü değildir."],
+      "nextAction": "Geçerli gerçek DB provasını yeniden çalıştırma; tam PDF/anahtar ve soru uzlaştırmasına geç."
     }
   }
 }
