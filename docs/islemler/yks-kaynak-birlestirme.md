@@ -252,3 +252,28 @@ doğruladı; 27 belge incelemede. Eski/yeni görsel yollarını metin değiştir
 eşitlemez: gerçek dosyaların hash'lerini karşılaştırır. Sağlayıcı kaydında
 basılı cevap, fiziksel sayfa/numara ve güncel resmî API cevabı tekrar okunur.
 Mevcut soru ID/cevap/geçmiş değiştirilmez; geçerli denetimi baştan çalıştırma.
+
+Yeni konu özeti/kitap PDF'leri için geçerli keşfi yeniden çıkarma. Yeni girdi
+veya eksik kanıt varsa sıra:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_yeni_pdf_soru_kesfi.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_yeni_pdf_sinav_kapsami.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kapsam.py
+```
+
+1.012 PDF'nin ikinci geçişi tamamen önbellektir. **Daima `scoped-report.json`**
+çıktısını kullan: Ortak klasöründeki 14 YDT PDF'nin 1.118 bölgesi TYT/AYT
+kuyruğundan ayrıldı; kalan dört belgede 2.069 aday cevap/tekrar/konu kanıtı bekler.
+Gövde ve anahtarın basılı sınav başlıkları birlikte kanıttır; yalnız klasör adı
+veya soruda geçen YDT sözcüğüyle kapsam atanmaz. Arşivden dosya silinmez.
+
+Kullanıcının maliyet tercihi: toplu PDF işi yerel Python/PyMuPDF ve önbellekli
+OCR ile yürür; yerel Ollama yalnız kural/OCR uyuşmazlığı ve konu adayı için
+kullanılır. API ajanının rolü gerekli kod düzeltmesi ve kısa istisna incelemesidir;
+belge başına sohbet/ajan döngüsü veya uzun ham çıktı yüklemesi yapılmaz.
+OpenCV yalnız sınır/yerleşim adayına yardımcıdır; cevap veya soru bütünlüğü
+onayı vermez. PaddleOCR ayrı ortamda zor örneklerle karşılaştırılacak bir
+seçenektir; henüz kurulmadı ve mevcut OCR hattının yerine geçirilmedi.
+Formül/şekil özgün kırpım olarak kalır; OCR ile yeniden çizilmez. Değişmeyen
+başarılı kanıt tekrar işlenmez, belirsiz sonuç otomatik aktarılmaz.

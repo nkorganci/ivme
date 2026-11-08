@@ -21,8 +21,8 @@ def unique(rows,key):
     return index
 
 
-def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None):
-    existing=existing or {};body=body or {}
+def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None):
+    existing=existing or {};body=body or {};discoveries=discoveries or {}
     groups=unique(groups,'sha256');observations=unique(observations,'sourceSha256');pages=unique(pages,'sha256')
     if set(groups)!=set(observations) or set(groups)!=set(pages):raise ValueError('All unique PDFs must have complete page observations')
     if not set(keys)<=set(groups) or not set(diagnostics)<=set(groups) or not set(mocks)<=set(groups):raise ValueError('Unknown source in key scope')
@@ -35,7 +35,9 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
             if any(type(n) is not int or not 1<=n<=count for n in observed[name]):raise ValueError('Invalid source physical page number')
         key=keys.get(sha);mock=mocks.get(sha);diagnostic=diagnostics.get(sha);legacy=group.get('previousEvidence') or {}
         sidebar_mock=any(Path(p['root']).name=='mebi-yks' and p['path'].startswith('Deneme-Tarama/Denemeler/') for p in group['occurrences'])
-        if key:
+        if discoveries.get(sha,{}).get('status')=='EXCLUDED_PRINTED_YDT_FROM_TYT_AYT_QUESTION_QUEUE':
+            state='PRINTED_YDT_EXCLUDED_FROM_TYT_AYT_QUESTION_SCOPE';remaining='KEEP_SOURCE_ARCHIVE_FIX_PROVIDER_COMMON_CATALOG_SCOPE_BEFORE_CUTOVER'
+        elif key:
             state='DIAGNOSTIC_KEY_VERIFIED_QUESTION_CONTENT_REVIEW_REQUIRED'
             remaining='SOURCE_QUESTION_GRAPHICS_FINE_TOPIC_AND_DUPLICATE_ACCEPTANCE'
         elif mock and mock['status']=='SOURCE_MOCK_KEY_VERIFIED':
@@ -63,6 +65,7 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
             'controlledRepeatStates':dict(comparisons.get(sha,{})),
             'currentExistingTransferRevalidation':None if sha not in existing else {k:existing[sha].get(k) for k in ['status','expectedQuestions','currentDistinctLinkedQuestions','issues','reuseAction','freshSemanticApproval']},
             'bodyExceptionPreparation':None if sha not in body else {k:body[sha].get(k) for k in ['status','questions','sourceKeysApproved','pixelsAndContentAccepted']},
+            'newQuestionRegionDiscovery':discoveries.get(sha),
             'priorImportEvidence':{'coverageState':legacy.get('coverageState'),'expectedQuestions':legacy.get('expectedQuestions'),
                 'linkedQuestions':legacy.get('linkedQuestions'),'processingCandidate':group.get('processingCandidate'),
                 'requiresCurrentBankAndSourceRevalidation':True},
@@ -92,6 +95,12 @@ def main():
         bank_snapshots.add(reuse['bankSnapshotSha256']);inputs.append(existing)
     if len(bank_snapshots)>1:raise ValueError('Compared source and existing-transfer bank snapshots differ')
     if body_report:inputs.append(body)
+    discovery=root/'new-source-discovery/scoped-report.json'
+    if not discovery.is_file():discovery=root/'new-source-discovery/progress.json'
+    discovery_report=read_json(discovery) if discovery.is_file() else {}
+    if discovery_report:
+        if discovery_report['sourceGroupsSha256']!=digest(file):raise ValueError('New region discovery belongs to other source inventory')
+        inputs.append(discovery)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -102,7 +111,8 @@ def main():
             [json.loads(l) for l in obs.read_text(encoding='utf-8').splitlines()],preflight['documents'],
             unique(read_json(key)['results'],'sourceSha256'),unique(read_json(diagnostic)['results'],'sourceSha256'),
             unique(mock_report.get('results',[]),'sourceSha256'),counters,
-            unique(reuse.get('results',[]),'sourceSha256'),unique(body_report.get('results',[]),'sourceSha256'))
+            unique(reuse.get('results',[]),'sourceSha256'),unique(body_report.get('results',[]),'sourceSha256'),
+            unique(discovery_report.get('results',[]),'sourceSha256'))
         output=folder/'sources.jsonl';temporary=output.with_suffix('.jsonl.part')
         with temporary.open('w',encoding='utf-8') as stream:
             for row in rows:stream.write(json.dumps(row,ensure_ascii=False)+'\n')
@@ -124,6 +134,7 @@ def main():
         report['mockSourcesPendingSnapshot']=mock_report.get('pending')
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
+        report['newRegionDiscoverySnapshot']={k:discovery_report.get(k) for k in ['status','documents','completed','pending','candidateRegions','sourceAnswersApproved']}
         write_json(folder/'report.json',report)
     print(json.dumps(report,ensure_ascii=False))
 

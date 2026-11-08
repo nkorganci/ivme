@@ -247,3 +247,23 @@ Ek kaynak okumasında Edebiyat AYT1 ve AYT14'ün anahtarı raster görüntüdedi
 boş native metin boş sayfa değildir. Türkçe TYT5 anahtarında 33 gerçekten iki
 kez basılmış, 34 yoktur; 34'ün cevabı tahminle atanmaz. Fizik TYT4 son sayfası
 yedi farklı testin anahtarını içerir; bütün sayfa tek testin anahtarı sayılmaz.
+
+## Yeni kaynakların soru bölgesi keşfi ve basılı sınav kapsamı
+
+**Alt iş — BITTI:** Daha önce incelenmemiş, Deneme/Tarama dışında kalan 1.012
+PDF için `yks_yeni_pdf_soru_kesfi.py` soru bölgelerini taradı. İlk geçişte
+3.187 aday bölge; ikinci geçişte 1.012 önbellek, sıfır yeni çıkarım/OCR/model/render.
+19 sayfa görsel/okunabilirlik incelemesinde kalır. 994 belgede bölge bulunmaması
+anahtarsızlık veya hiç soru yokluğu diye onaylanmaz.
+
+**Alt iş — BITTI:** `yks_yeni_pdf_sinav_kapsami.py` gerçek gövde başlığı ve
+basılı anahtar başlığını birlikte kontrol etti. Sağlayıcının `Ortak / MEBİ YKS
+Denemeleri` dizinindeki 14 PDF aslında YDT İngilizcedir. 1.118 aday bölge TYT/AYT
+kuyruğundan ayrıldı; özgün arşiv ve bağlantılar korundu. Canlı geçişten önce bu
+dosyaların katalogdaki Ortak kapsamı da düzeltilmelidir; soru bankasına alınmaz.
+
+Kullanılacak çıktı `new-source-discovery/scoped-report.json` olur; ham keşif
+raporu filtrelenmiş TYT/AYT kuyruğu sayılmaz. Dört kaynakta **2.069 aday** kaldı:
+iki Din tarama kitabı (302/339), 3 Adım TYT Türkçe (1.427) ve Edebiyata Giriş
+özeti (1). Bunlar kaynaklı cevap/gövde/tekrar/dar konu kabulünü bekler; keşif
+soru kabulü veya yeni soru sayısı değildir. YKS-07 tam faz BITTI değildir.
