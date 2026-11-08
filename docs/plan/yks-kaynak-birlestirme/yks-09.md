@@ -3,6 +3,25 @@
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
 
+## Geniş kaynak kuyruğunda süren inceleme
+
+`full-question-topics/din/` 1.099 Din sorusunu gerçek MEBİ yapraklarının PDF
+içeriğine göre sıralar. 1.185 embedding tekrar kullanım denemesinde yeni çağrı
+0; ilk genişlemede eksik 1.066 vektör yerel BGE ile bir kez üretildi. Deneme
+sorusunun branşı yalnız basılı tek ders aralığından alınır; birleşik
+Matematik/Geometri, Felsefe grubu ve yanlış basılı AYT Fen aralıkları otomatik
+alt derse dönüşmez. Sayı uyuşmazlığı bulunan iki Din testi kuyrukta yoktur.
+
+Yerel Qwen `yks_konu_icerik_incele.py --subject din --scope full` ile çalışır;
+önceden biten 33 pilot okuması aynen yeniden kullanılır. Her yeni sonuçta
+soru kökü satırı ve gerçek konu PDF alıntısı bağlanır; geçersiz satır/alıntı,
+yetersiz kapsam ve açık kaynak incelemesi ayrı kalır. Model çıktısı soru
+kabulü değildir. Ham cache ve RUNNING imleci dosya/DB snapshot'ında korunur;
+aynı girdi yeniden modele verilmez. Sonraki bağımsız kontrol GPT-OSS ile
+`yks_konu_anlam_kontrol.py --subject din --scope full` olur; model lease
+nedeniyle Qwen bitmeden ikinci ağır modeli başlatma. Pilot 3 soru/12 eski ID
+ve dört gerçek DB testi değişmedi; onları yeniden üretme.
+
 ## Ajanın başlangıç talimatı
 
 Seçilen görev **YKS-09 / 15.09**. Önce `git status --short`,

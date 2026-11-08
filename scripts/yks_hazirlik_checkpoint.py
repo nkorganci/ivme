@@ -24,6 +24,10 @@ REPORTS={
     'turkcePageEquivalence':'source-page-equivalence/3adim-turkce/progress.json',
     'turkceIncrementalReuse':'source-page-equivalence/3adim-turkce/incremental-reuse.json',
     'crossSourceRepeat':'cross-source-candidates/report.json',
+    'allPriorOccurrences':'all-prior-occurrences/report.json',
+    'priorBookletContract':'booklet-prior-reuse/report.json',
+    'fullDinTopicRetrieval':'full-question-topics/din/topic-candidates.json',
+    'fullDinTopicSourceReview':'full-question-topics/din/content-topic-review.json',
 }
 
 
@@ -35,7 +39,8 @@ def main():
             file=root/path
             if not file.is_file():continue
             report=read_json(file);saved[name]={'path':path,'sha256':digest(file),'status':report['status']}
-            for key in ['documents','questions','questionsPrepared','verifiedAnswers','states','pending','completed']:
+            for key in ['documents','sourceDocuments','questions','questionsPrepared','verifiedAnswers','states','pending','completed',
+                    'occurrences','sourceOccurrenceStates','proofStates','intakeActions','pendingQuestions','newModelCallsThisPass']:
                 if key in report:saved[name][key]=report[key]
         archive=root/'database-archive/archive-report.json'
         if archive.is_file():
@@ -52,6 +57,13 @@ def main():
             'The 3 Adim Turkce editions have 281/283 exactly equal native and 180/330 DPI pages; '
             'reuse old completed and pending IDs on equivalent pages, review body page30 and key page280 incrementally. '
             'The changed key is Yazim Kurallari-1, 3. Adim, Q1 (old E/new D), not 2. Adim. '
+            'All 1179 prior sources/86912 occurrences are reconciled: 81127 prior links have current proofs, '
+            '458 links remain review-only, 23 inactive/outside-active-YKS links and 5303 pending locators preserve their original identities. '
+            'The booklet supplement validates 3231/3248 prior links with original ham/img, official answer records and actual printed keys; '
+            'do not regenerate this completed all-prior or booklet work. '
+            'Full Din topic retrieval covers 1099 bound questions; the local Qwen document review is resumable and may still be running. '
+            'Read full-question-topics/din/content-topic-review.json and check the actual worker before launching another model. '
+            'After Qwen completes, run the independent GPT-OSS full-scope semantic check; do not rerun the 33 old pilot readings. '
             'Eight old mock key links have already been read; seven support the old bank, md-ayt-sozel-21-39 old/new C conflicts with bank D. '
             'Resolve the explicit AYT mock 333642091490 page41 copied TYT discipline header (40 questions unassigned), '
             'combined Mathematics/Geometry and Philosophy Group subjects and cross-pending-source duplicate/topic decisions. '

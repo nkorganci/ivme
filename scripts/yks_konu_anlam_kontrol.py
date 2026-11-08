@@ -42,18 +42,16 @@ def validate(value,question_lines,topic_lines):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din')
-    parser.add_argument('--limit',type=int);parser.add_argument('--code',action='append');args=parser.parse_args()
+    parser.add_argument('--limit',type=int);parser.add_argument('--code',action='append');parser.add_argument('--scope',choices=['pilot','full'],default='pilot');args=parser.parse_args()
     if args.limit is not None and args.limit<1:parser.error('Positive limit required')
-    store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId']);folder=root/'question-topics'/args.subject
+    store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId']);folder=root/('full-question-topics' if args.scope=='full' else 'question-topics')/args.subject
     source=folder/'content-topic-review.json';report=read_json(source);retrieval=read_json(folder/'topic-candidates.json')
     if report['retrievalSha256']!=digest(folder/'topic-candidates.json'):raise ValueError('Topic retrieval changed')
     tree_path=next(root/a['path'] for a in state['stages']['YKS-04:full']['artifacts'] if a['path'].endswith('navigation-candidate.json'))
     if digest(tree_path)!=retrieval['providerTreeSha256']:raise ValueError('MEBI registered topic tree changed')
     topics={t['categoryId']:t for c in read_json(tree_path)['navigation'] for u in c['units'] for t in u['topics']}
-    cards={}
-    for path,sha in retrieval['questionPackages'].items():
-        if digest(path)!=sha:raise ValueError('Source question package changed')
-        cards.update({c['code']:c for c in read_json(path)['cards']})
+    from yks_konu_girdileri import load_bound_cards
+    cards=load_bound_cards(retrieval)
     model=next(m for m in api('/api/tags')['models'] if m['name']==MODEL)
     selected=[r for r in report['results'] if not args.code or r['sourceCode'] in args.code]
     cache=folder/'semantic-readings';cache.mkdir(exist_ok=True);results=[];calls=0

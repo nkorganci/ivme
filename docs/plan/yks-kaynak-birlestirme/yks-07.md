@@ -31,11 +31,11 @@ toplu kabulü değildir. Eski kaynak/ID/cevap korunur, değişen iki bölge ayr�
 incelenir. Önceki 1.397 ham kartın hepsi canlı bankada sayılmaz.
 
 **Kalıcı parti kaydı — BITTI:** PostgreSQL `ogm_ders.yks_evidence` checkpoint
-`6084695b4da78125ba7de5a5cfbb5da2e18ad121ef24b53b53b4c305a1975776`
-4.086 kaynak, 99.873 sorgulanabilir kayıt, 62.219 dosya konumu ve 61.599
-farklı ham dosya içerir. 1.405.472.490 baytın tamamı geri okunup SHA-256
+`e531f3e7ca39ae556768f520a0e4dd7bf4430d3c38d3bfa66f25d3b9eb43f7d4`
+4.086 kaynak, 192.461 sorgulanabilir kayıt, 66.385 dosya konumu ve 65.746
+farklı ham dosya içerir. 1.730.284.557 baytın tamamı geri okunup SHA-256
 eşitliği doğrulandı; aynı checkpoint ikinci yazımında yeni INSERT 0.
-Kalite 103/45/14/18 = 180 test PASS. Yalnız pilot 07–10 tekrar VERIFIED;
+Kalite 105/52/17/18 = 192 test PASS. Yalnız pilot 07–10 tekrar VERIFIED;
 tam aşamaların veya canlı geçişin kabulü verilmedi.
 
 **Deneme gövdesi alt işi — BITTI (teknik hazırlık):** `yks_deneme_govde.py`

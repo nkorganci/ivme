@@ -412,3 +412,32 @@ adayları günceller; düşük benzerlik NEW, eşit metin de grafik eşitliği s
 Sonra `yks_tam_kapsam.py`, ilgili kalite profilleri, `yks_hazirlik_checkpoint.py`
 ve pipeline Python ile `yks_kanit_db.py save` çalışır. Tam adım kabulü olmayan
 hazırlığa BITTI yazma; tamamlanan alt işleri ayrıca belirt.
+
+Eski işin tamamını kapsayan uzlaştırma ve geniş konu sırası:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_kismi_kaynak_aktarimlari.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_cikmis_aktarim_kaniti.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_soru_konu_adaylari.py --subject din --scope full
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_konu_icerik_incele.py --subject din --scope full
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_konu_anlam_kontrol.py --subject din --scope full
+```
+
+İlk iki iş tamamlandıysa yeniden başlatma; `all-prior-occurrences/report.json`
+ve `booklet-prior-reuse/report.json` geçerli kanıtı verir. İlk araç yalnız tam
+kitapları değil, bütün 1.179 eski kaynağın bağlantı/adayı/incelemesini korur.
+Özgün kayıt başına kanıt ve imleç saklanır; semantik `VERSION` değişmediğinde
+yalnız çıktı/izinli kanıt yolu düzeltmesi tamamlanan 80 bin görseli tekrar
+hash'lemez. Kaynak/öğrenci/soru sürümü değişirse ilgili önbellek reddedilir.
+
+`--scope full` ayrı `full-question-topics/` altında çalışır; biten pilotu
+ezmez. Kaynak kökü ve gerçek konu PDF alıntısı olan eski Qwen cache'leri yeniden
+kullanılır. Büyük model lease'i Qwen ve GPT-OSS'u sıraya koyar. Soru-cevap
+çıkarımı veya dar konu kararını embedding benzerliği vermez. Devam komutundan
+önce çalışan aynı işi kontrol et; ikinci ağır modelle yarışma.
+
+DB arşivi artık özgün ham kaynak paketlerini, bütün eski locator kayıtlarını
+ve model/text kimliği doğrulanmış 1.024 boyutlu BGE önbelleklerini de içerir.
+Çalışan yerel modelin raporu RUNNING kalır; rapordaki tamamlanmış satırların
+immutable ham cevap cache'leri aynı snapshot'a ayrıca alınır. Tamamlanmamış
+iş tamamlanmışa çevrilmez, yayın/öğretmen kararı oluşturulmaz.

@@ -766,6 +766,21 @@
       "args": ["testler/yks-cross-source-test.py"],
       "inputs": ["scripts/yks_partiler_arasi_tekrar.py", "scripts/yks_secenek_degisimi.py", "testler/yks-cross-source-test.py"]
     },
+    "yks-prior-occurrences": {
+      "kind": "python",
+      "args": ["testler/yks-prior-occurrences-test.py"],
+      "inputs": ["scripts/yks_kismi_kaynak_aktarimlari.py", "scripts/yks_mevcut_aktarim_kontrol.py", "testler/yks-prior-occurrences-test.py"]
+    },
+    "yks-booklet-prior-reuse": {
+      "kind": "python",
+      "args": ["testler/yks-booklet-prior-reuse-test.py"],
+      "inputs": ["scripts/yks_cikmis_aktarim_kaniti.py", "testler/yks-booklet-prior-reuse-test.py"]
+    },
+    "yks-full-topic-inputs": {
+      "kind": "python",
+      "args": ["testler/yks-full-topic-inputs-test.py"],
+      "inputs": ["scripts/yks_konu_girdileri.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-full-topic-inputs-test.py"]
+    },
     "yks-reviewed-existing-transfer": {
       "kind": "python",
       "args": ["testler/yks-reviewed-transfer-test.py"],
@@ -1069,7 +1084,9 @@
         "yks-mock-printed-discipline",
         "yks-mock-answer-editions",
         "yks-turkce-edition-reuse",
-        "yks-cross-source-candidates"
+        "yks-cross-source-candidates",
+        "yks-prior-occurrences",
+        "yks-booklet-prior-reuse"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
@@ -1078,7 +1095,7 @@
       "nextAction": "Mevcut kanonik soruları yeniden ekleme; tam çıkarım için kaynak/cevap/konu kanıtlarını tamamla."
     },
     "YKS-09": {
-      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package"],
+      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs"],
       "remainingAcceptance": [
         "Gerçek kaynak kırpımı, basılı cevap, güncel tekrar ve dar konu kanıtlarıyla kabul paketi.",
         "Model önerisi öğretmen kararı veya canlı yayın kabulü değildir."

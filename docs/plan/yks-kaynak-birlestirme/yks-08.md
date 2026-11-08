@@ -1,5 +1,25 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Bütün eski kaynak kayıtlarının uzlaştırılması — BITTI (soru yayını değildir):**
+`all-prior-occurrences/` 1.179 kaynakta 86.912 kayıt inceler: 81.608 eski bağ,
+5.233 aday, 70 inceleme ve bir eski dışlama. Eski iş yalnız tam kaynakların
+217 kaydıyla sınırlanmadı. 81.585 etkin kanonik bağ yeniden aktarım dışında;
+23 pasif/kapsam dışı bağ geçmişiyle korunur. 5.303 bekleyen kayıt kendi eski
+locator/kimliğiyle sürer. Görseller gerçek dosya hash'leriyle kontrol edildi;
+geçerli 1.087 kaynak kontrolü kesinti sonrasında tekrar yapılmadan kullanıldı.
+Bu alt işte yeni model/OCR/render 0, uygulama yazımı 0.
+
+Altı çıkmış soru kitapçığının özgün `ham/img` ve cevap sözleşmesi ayrıca
+`booklet-prior-reuse/` ile doğrulandı: 3.248 bağdan 3.231'inde mevcut görüntü,
+özgün cevap kaydı ve güncel native basılı anahtar aynı; 17 kaynak istisnası
+korunur. Özgün kitapçık, başka kitaptan korunmuş kanonik soru kodundan değil,
+hash'i aynı eski PDF alias'ından belirlenir. Dotted/dotless Türkçe başlık
+farkları aynı basılı derse bağlanır; boş/iptal anahtar hücresi cevap kaydırmaz.
+Birleşik sonuç 81.127 kanıtlı eski **bağ**, 458 ek inceleme ve 23 pasif/kapsam
+dışı bağdır; bunlar tekil soru sayısı değildir. Eski cevaplar düzeltilmedi,
+öğretmen onayı üretilmedi. Kısmi kaynakların kalan sayfaları/yeni soru kabulü
+ayrı işlerdir; tam YKS-07/08 kapanmadı.
+
 **3 Adım Türkçe sürüm tekrar işi — BITTI (kabul değildir):** 1.397 ham
 kartın mevcut DB'de 1.309 bağlantı, 86 aday ve iki inceleme kaydı var. 1.227
 aynı görsel/cevap/sürüm bağı ve 80 eski inceleme sözleşmesi doğrulandı; iki

@@ -7,6 +7,7 @@ import argparse
 import gzip
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -52,10 +53,21 @@ RECORD_REPORTS={
  '3adim-page-equivalence':('source-page-equivalence/3adim-turkce/progress.json','results','newPhysicalPage'),
  '3adim-incremental-reuse':('source-page-equivalence/3adim-turkce/incremental-reuse.json','results','sourceCode'),
  'cross-source-repeat':('cross-source-candidates/source-question-index.json','results','sourceCode'),
+ 'prior-source-summary':('all-prior-occurrences/report.json','results','sourceSha256'),
+ 'prior-booklet-contract':('booklet-prior-reuse/report.json','results','sourceLocator'),
 }
 
 
 def raw_sha(data):return hashlib.sha256(data).hexdigest()
+
+
+def validate_topic_embedding(path,record):
+    expected=signature([record.get('method'),record.get('modelDigest'),record.get('text')])
+    values=record.get('vector',[])
+    if (record.get('method')!='yks-source-title-context-v1' or record.get('key')!=expected
+            or path.stem!=expected[:32] or path.parent.name!=record['modelDigest'][:16]
+            or len(values)!=1024 or not all(type(v) in [int,float] and math.isfinite(v) for v in values)):
+        raise ValueError('Unregistered or invalid source topic embedding cache')
 
 
 def safe_json(value):
@@ -134,6 +146,10 @@ def capture(root,staging):
         data=stable_read(path);record=json.loads(data)
         if record.get('sourceSha256') not in shas:continue
         add(path,'ocr-cache/'+path.relative_to(ocr_root).as_posix(),'SOURCE_OCR_OBSERVATION')
+    embedding_root=APP/'veri/yks-birlestirme/embedding-cache'
+    for path in sorted(embedding_root.glob('*/*.json')):
+        data=stable_read(path);record=json.loads(data);validate_topic_embedding(path,record)
+        add(path,'topic-embedding-cache/'+path.relative_to(embedding_root).as_posix(),'REGISTERED_SOURCE_TOPIC_EMBEDDING')
     # Isolated test result files are referenced from reports and not read by
     # recursively copying the checkout (which contains private local settings).
     for name in ['isolated-pilot/isolated-import-report.json']:
@@ -152,17 +168,32 @@ def capture(root,staging):
         if path.is_file():add(path,'archive-verification/'+name,'ARCHIVE_DATABASE_TEST_AND_READBACK_EVIDENCE')
     for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
-    for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json']:
+    for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
+            'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json']:
         prior_review=data_cache.get(report_name)
         if not prior_review:continue
         allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',
-            APP.parent/'veri-hatti/ogm-sorular/kayit',APP.parent/'icerik/data/ogm/img']
+            APP.parent/'veri-hatti/ogm-sorular/kayit',APP.parent/'icerik/data/ogm/img',
+            APP.parent/'veri-hatti/ogm-yks-cikmis/ham',APP.parent/'veri-hatti/ogm-indirme/sb_yapi.json']
         for name,sha in json.loads(prior_review).get('externalEvidenceFiles',{}).items():
             path=Path(name).resolve()
             if not any(path.is_relative_to(parent.resolve()) for parent in allowed) or path.suffix.lower() not in {'.json','.webp','.png'}:
                 raise ValueError('Unregistered reviewed source evidence path')
             if digest(path)!=sha:raise ValueError('Frozen external source-review evidence changed')
             add(path,'prior-reviewed-evidence/'+sha+'/'+path.name,'EXACT_PRIOR_SOURCE_REVIEW_PACKAGE_AND_IMAGE')
+    # A running local model may finish a cache after rglob's initial file list.
+    # Freeze the report as RUNNING and also capture every immutable raw cache
+    # that its completed rows reference. Do not wait for or terminate the job.
+    for logical,data in list(data_cache.items()):
+        if not logical.endswith(('/content-topic-review.json','/semantic-topic-review.json')):continue
+        for item in json.loads(data).get('results',[]):
+            name=item.get('modelEvidencePath',item.get('evidencePath'))
+            sha=item.get('modelEvidenceSha256',item.get('evidenceSha256'))
+            if not name:continue
+            path=Path(name).resolve()
+            if not path.is_relative_to(root.resolve()) or path.suffix!='.json':raise ValueError('Topic raw evidence escapes its run')
+            if digest(path)!=sha:raise ValueError('Completed topic raw evidence changed')
+            add(path,'run/'+path.relative_to(root.resolve()).as_posix(),'RUN_PREPARATION_EVIDENCE')
     rows.sort(key=lambda r:r['logicalPath'])
     manifest={'version':1,'runId':root.name,'files':rows,'originalSourcesStoredAs':'SHA_IDENTITIES_AND_LOCATORS_NOT_DUPLICATED_PDF_BINARIES',
         'protectedLiveDataWritten':False,'filesystemSnapshot':'EACH_FILE_FROZEN_WITH_HASH_RUNNING_REPORTS_REMAIN_RUNNING'}
@@ -181,9 +212,24 @@ def records(manifest,cache,staging):
         report=json.loads(cache[logical]);items=report.get(key,[])
         # Edition reports use a named conflicts list, depending on producer.
         if kind=='answer-edition-conflict':items=report.get('results',report.get('conflicts',[]))
-        for index,item in enumerate(items):add(kind,item.get(idkey,item.get('bankCode',index)),item,by_path[logical]['sha256'])
+        for index,item in enumerate(items):
+            record_key=item.get(idkey,item.get('bankCode',index))
+            if kind=='prior-booklet-contract':record_key=item['sourceSha256']+':'+str(record_key)
+            add(kind,record_key,item,by_path[logical]['sha256'])
     # Native question cards, context and exact source regions remain queryable.
     for logical,data in cache.items():
+        if logical.startswith('run/full-question-topics/'):
+            kinds={'topic-candidates.json':'full-topic-candidate','content-topic-review.json':'full-topic-source-review',
+                'semantic-topic-review.json':'full-topic-independent-review'}
+            kind=kinds.get(Path(logical).name)
+            if kind:
+                report=json.loads(data)
+                for item in report.get('results',[]):
+                    add(kind,Path(logical).parent.name+':'+item['sourceCode'],item,by_path[logical]['sha256'])
+        if logical.startswith('run/all-prior-occurrences/') and len(Path(logical).stem)==64:
+            report=json.loads(data)
+            for item in report.get('results',[]):
+                add('prior-occurrence',item['sourceSha256']+':'+item['sourceLocator'],item,by_path[logical]['sha256'])
         if not logical.endswith('/candidates.json'):continue
         report=json.loads(data)
         for card in report.get('cards',[]):

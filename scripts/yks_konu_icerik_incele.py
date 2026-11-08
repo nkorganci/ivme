@@ -113,7 +113,8 @@ def validate_document_choice(value,card,allowed,lines,contexts):
 
 def reusable_document_reading(cache,model_digest,card,allowed,lines,contexts):
     """A larger retrieval list does not invalidate an already source-bound reading."""
-    for path in sorted(cache.glob('*.json')):
+    paths=cache.glob('*.json') if isinstance(cache,Path) else cache
+    for path in sorted(paths):
         record=read_json(path);identity=record.get('identity',{})
         schema=json.loads(json.dumps(identity.get('schema',{})))
         if 'categoryId' in schema.get('properties',{}):schema['properties']['categoryId'].pop('enum',None)
@@ -178,18 +179,24 @@ def validate_line_choice(value,card,allowed,lines):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din');parser.add_argument('--limit',type=int)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--subject',default='din');parser.add_argument('--limit',type=int);parser.add_argument('--scope',choices=['pilot','full'],default='pilot')
     args=parser.parse_args()
     if args.limit is not None and args.limit<1:parser.error('Positive limit required')
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId'])
-    folder=root/'question-topics'/args.subject;file=folder/'topic-candidates.json';retrieval=read_json(file)
+    folder=root/('full-question-topics' if args.scope=='full' else 'question-topics')/args.subject;file=folder/'topic-candidates.json';retrieval=read_json(file)
     if retrieval['subject']!=args.subject:raise ValueError('Source retrieval scope differs')
-    cards={}
-    for name,sha in retrieval['questionPackages'].items():
-        if digest(name)!=sha:raise ValueError('Source topic question package changed')
-        cards.update({c['code']:c for c in read_json(name)['cards']})
+    from yks_konu_girdileri import load_bound_cards
+    cards=load_bound_cards(retrieval)
     model=next(m for m in api('/api/tags')['models'] if m['name']==MODEL)
     cache=folder/'content-readings';cache.mkdir(exist_ok=True);results=[];calls=0
+    from collections import defaultdict
+    cache_index=defaultdict(list)
+    cache_roots=[cache]
+    if args.scope=='full':cache_roots.append(root/'question-topics'/args.subject/'content-readings')
+    for directory in cache_roots:
+        for cached_file in directory.glob('*.json'):
+            identity=read_json(cached_file).get('identity',{})
+            cache_index[identity.get('sourceTextSha256'),identity.get('sourceImageSha256')].append(cached_file)
     tree=state['stages']['YKS-04:full']
     tree_file=next(root/a['path'] for a in tree['artifacts'] if a['path'].endswith('navigation-candidate.json'))
     if digest(tree_file)!=retrieval['providerTreeSha256']:raise ValueError('Registered MEBI tree changed')
@@ -222,7 +229,8 @@ def main():
                 identity={'modelDigest':model['digest'],'prompt':prompt,'schema':schema,'options':OPTIONS,
                     'sourceTextSha256':card['textSha256'],'sourceImageSha256':card['imageSha256'],'topicContextsSha256':signature(contexts)}
                 evidence_file=cache/(signature(identity)+'.json')
-                reused=reusable_document_reading(cache,model['digest'],card,allowed,lines,contexts)
+                reusable=cache_index[card['textSha256'],card['imageSha256']]
+                reused=reusable_document_reading(reusable,model['digest'],card,allowed,lines,contexts)
                 if reused is not None:
                     evidence_file,status,value=reused;response=read_json(evidence_file)['response'];hit=True
                 elif evidence_file.is_file():
@@ -237,6 +245,7 @@ def main():
                         'stream':False,'think':False,'keep_alive':'5m','options':OPTIONS},timeout=900)
                     evidence={'identity':identity,'topicContexts':contexts,'response':response,'seconds':round(time.monotonic()-started,2)}
                     write_json(evidence_file,evidence);hit=False;calls+=1
+                    reusable.append(evidence_file)
                 if reused is None:value=None
                 try:
                     if response.get('done') is not True or response.get('done_reason')=='length':raise ValueError('Source topic response incomplete')

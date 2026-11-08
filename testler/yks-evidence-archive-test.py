@@ -7,10 +7,29 @@ import unittest
 from unittest.mock import patch,MagicMock
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from yks_kanit_db import safe_json,selected_run_file,stable_read,restore_destination,records,raw_sha,archive_connection,verify_checkpoint
+from yks_kanit_db import safe_json,selected_run_file,stable_read,restore_destination,records,raw_sha,archive_connection,verify_checkpoint,validate_topic_embedding,signature
 
 
 class EvidenceArchiveTest(unittest.TestCase):
+    def test_topic_vectors_keep_their_original_text_model_and_finite_dimensions(self):
+        model='a'*64;value={'method':'yks-source-title-context-v1','modelDigest':model,'text':'registered source topic','vector':[0.1]*1024}
+        value['key']=signature([value['method'],model,value['text']]);path=Path(model[:16])/(value['key'][:32]+'.json')
+        validate_topic_embedding(path,value)
+        value['vector'][0]=float('nan')
+        with self.assertRaises(ValueError):validate_topic_embedding(path,value)
+        value['vector'][0]=0.1;value['text']='different source question'
+        with self.assertRaises(ValueError):validate_topic_embedding(path,value)
+
+    def test_same_raw_locator_in_two_sources_does_not_collide_and_pending_is_preserved(self):
+        cache={};files=[]
+        for source in ['a'*64,'b'*64]:
+            name='run/all-prior-occurrences/'+source+'.json'
+            data=json.dumps({'results':[{'sourceSha256':source,'sourceLocator':'raw:same-code','status':'ORIGINAL_PENDING_OCCURRENCE_PRESERVED_NOT_ADMITTED'}]}).encode()
+            cache[name]=data;files.append({'logicalPath':name,'sha256':raw_sha(data),'role':'RUN_PREPARATION_EVIDENCE'})
+        with tempfile.TemporaryDirectory() as tmp:found=records({'files':files},cache,Path(tmp))
+        self.assertEqual(len(found),2);self.assertNotEqual(found[0][1],found[1][1])
+        self.assertTrue(all(r[4]=='ORIGINAL_PENDING_OCCURRENCE_PRESERVED_NOT_ADMITTED' for r in found))
+
     def test_raw_bytes_keep_nul_formula_and_invalid_model_response(self):
         data=b'{"text":"a\\u0000b \xe2\x88\x9a","response":"incomplete ["}'
         readable=safe_json(json.loads(data));self.assertEqual(readable['text'],'a\ufffdb √')

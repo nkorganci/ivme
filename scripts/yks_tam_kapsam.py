@@ -220,6 +220,20 @@ def main():
                 'differentPages':[r['newPhysicalPage'] for r in edition['results'] if r['status']!='FULL_PAGE_NATIVE_AND_PIXELS_IDENTICAL'],
                 'questionOrAnswerReuseAutomaticallyAccepted':False}
         inputs.append(equivalence)
+    prior_occurrence_path=root/'all-prior-occurrences/report.json';prior_occurrences={};prior_by_source={}
+    if prior_occurrence_path.is_file():
+        prior_occurrences=read_json(prior_occurrence_path)
+        if prior_occurrences['status']!='COMPLETE' or prior_occurrences['sourceGroupsSha256']!=digest(file):
+            raise ValueError('Wait for complete current prior-occurrence reconciliation')
+        if prior_occurrences['bankSnapshotSha256'] not in bank_snapshots:raise ValueError('Prior source occurrence bank snapshot differs')
+        prior_by_source=unique(prior_occurrences['results'],'sourceSha256');inputs.append(prior_occurrence_path)
+    prior_booklets_path=root/'booklet-prior-reuse/report.json';prior_booklets={}
+    if prior_booklets_path.is_file():
+        prior_booklets=read_json(prior_booklets_path)
+        if (not prior_occurrences or prior_booklets['status']!='PASS' or prior_booklets['basePriorReportSha256']!=digest(prior_occurrence_path)
+                or prior_booklets['bankSnapshotSha256']!=prior_occurrences['bankSnapshotSha256']):
+            raise ValueError('Booklet supplement belongs to another source occurrence proof')
+        inputs.append(prior_booklets_path)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -237,6 +251,9 @@ def main():
             result=prepared_bodies.get(row['sourceSha256'])
             if result:row['mockBodyPreparation']={k:result.get(k) for k in ['status','questionsPrepared','expectedQuestions','package','packageSha256','issues','administrativePagesContentAccepted']}
             if row['sourceSha256'] in page_equivalence:row['sourceEditionPageEquivalence']=page_equivalence[row['sourceSha256']]
+            if row['sourceSha256'] in prior_by_source:
+                original=prior_by_source[row['sourceSha256']]
+                row['allPriorOccurrenceReconciliation']={k:original.get(k) for k in ['status','occurrences','sourceOccurrenceStates','proofStates','intakeActions','evidencePath','evidenceSha256','sourceFullyAccepted']}
         output=folder/'sources.jsonl';temporary=output.with_suffix('.jsonl.part')
         with temporary.open('w',encoding='utf-8') as stream:
             for row in rows:stream.write(json.dumps(row,ensure_ascii=False)+'\n')
@@ -263,6 +280,15 @@ def main():
         report['dinBookQuestionComparisonStates']=comparison_states(counters,set(book_sections))
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
+        if prior_occurrences:
+            counts=Counter(prior_occurrences['proofStates'])
+            for question in prior_booklets.get('results',[]):
+                if question['status']=='CURRENT_ORIGINAL_BOOKLET_IMAGE_OFFICIAL_RECORD_AND_PRINTED_KEY_AGREE':
+                    counts[question['previousProofStatus']]-=1;counts['CURRENT_ORIGINAL_BOOKLET_IMAGE_OFFICIAL_RECORD_AND_PRINTED_KEY_AGREE']+=1
+            if any(n<0 for n in counts.values()):raise ValueError('Booklet supplement over-counted prior proof states')
+            report['allPriorOccurrenceSnapshot']={k:prior_occurrences[k] for k in ['sourceDocuments','completed','pending','occurrences','sourceOccurrenceStates','intakeActions']}
+            report['allPriorOccurrenceSnapshot']['effectiveProofStates']=dict(counts)
+            report['priorBookletContractSnapshot']={k:prior_booklets.get(k) for k in ['status','documents','questions','states']}
         report['reviewedTransferNewlyRevalidatedLinks']=reviewed_report.get('newlyRevalidatedLinks',0)
         report['newRegionDiscoverySnapshot']={k:discovery_report.get(k) for k in ['status','documents','completed','pending','candidateRegions','sourceAnswersApproved']}
         write_json(folder/'report.json',report)
