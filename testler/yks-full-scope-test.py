@@ -14,7 +14,7 @@ class FullScopeTest(unittest.TestCase):
     def test_actual_full_source_view_joins_current_intake_states_without_accepting_the_full_archive(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         report=read_json(root/'full-source-coverage/report.json');queue=report['preparedQuestionIntakeSnapshot']
-        self.assertEqual(queue['questions'],12052);self.assertEqual(queue['provenExistingCanonicalIds'],4372)
+        self.assertEqual(queue['questions'],12052);self.assertEqual(queue['provenExistingCanonicalIds'],4475)
         rows=[json.loads(line) for line in (root/'full-source-coverage/sources.jsonl').read_text('utf-8').splitlines()]
         self.assertEqual(sum(sum(r.get('preparedQuestionIntakeStates',{}).values()) for r in rows),12052)
         self.assertEqual(sum('preparedQuestionIntakeStates' in r for r in rows),373)

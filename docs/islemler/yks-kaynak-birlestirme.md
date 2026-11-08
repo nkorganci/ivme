@@ -526,3 +526,40 @@ nanoteknoloji13 iki kayıtlı ders PDF'siyle ortak kapsam incelemesinde. Yeni
 konu modeli veya cevap üretimi yapılmadı. `yks_soru_kabul_kuyrugu.py` güncel
 kimlikleri ve bu ders incelemesini birleştirir; `yks_tam_kapsam.py` her PDF'ye
 yalnız ilgili soru durumlarını ekler. Tam adım kabulü/publikasyon vermez.
+
+Tamamlanan ayrı sınır incelemeleri `yks_tarama_eski_kimlik.py --region-union`
+ve `--mocks --region-union` ile üretildi. 450 tarama adayının 103'ü iki özgün
+tam kutuyu kapsayan, komşu soru içermeyen bölgede native+180/330 DPI tam
+eşitlik gösterir; 347 tarama ve 74 deneme istisnası bekler. İlk ana raporlar
+korunur; ham cache algoritmanın kendi hash'ine de bağlıdır. Aynı girdide bu
+işleri yeniden render etme. Bu kanıt hazırlanmış eski kırpımı veya konuyu
+onaylamaz; birleşik kuyrukta yalnız eski ID'yi tekrar eklememe kararıdır.
+
+`yks_kayitli_anahtar_kesfi.py` tüm 4.086 PDF'nin mevcut native/OCR okumalarını
+karşılaştırdı; tekrar OCR/model çalıştırmaz. `saved-key-signal-discovery/`
+85 açık başlık ve 775 satır içi cevap sinyalini eski ID/pending/hazır soru
+kapsamından ayırır. Başlık bulunmaması cevap yoktur kanıtı değildir. 85'in
+içindeki dört açık deneme istisnası ve Türkçe sürümü önceki kanıtlarıyla sürer.
+
+`yks_fizik_ozet_anahtar.py` yalnız 75 Fizik özetinin özgün anahtar bölgelerini
+yerel Tesseract/Qwen ile okur. Önce çalışan süreci ve `report.json` imlecini
+kontrol et; aynı ağır modeli iki kez başlatma. Eski dar tablo bölgesi silinmez,
+düzeltilen bölge kendi bbox/hash'iyle ayrı kayıttır. Soruları çözmez, beklenen
+harfleri model istemine koymaz. Uyuşan bölge listesi bütün soru gövdelerine
+bağlanmış cevap sayılmaz; eksik/çelişkili okumalar incelemede kalır.
+
+`yks_fizik_ozet_pilotu.py --compare-bank` üç gerçek görseli okunmuş ayna
+sorusunu hazırladı ve bütün bankayla karşılaştırdı. Geçerli paket/karşılaştırma
+yeniden üretilmez. `physics-summary-discovery/` ana 12.052 kümesinden ayrı
+açık pilottur; özgün banka görselleri ve dar konu incelenmeden ana kuyruğa
+veya canlı bankaya katma. Kaynak PDF ve eski soru/öğrenci verisi değişmez.
+
+75 anahtar bölgesinin son kanıtı `physics-summary-effective-key-regions/`
+altındadır: 74 sıralı bölge/214 hücre; bir **1,2,4** basılı numara kusuru.
+`yks_fizik_ozet_anahtar_incele.py --record`, gerçekten okunan sekiz görüntü
+(44 kırpım) ve iki bütün sayfanın sabit hash'lerine bağlıdır; öğretmen kaydı
+değildir. Native başlık istisnası yalnız `--native-heading-retry` ile ayrı
+üç kaynakta çalıştı; asıl 75 sonuç ezilmedi. Bunları tekrar modele okutma.
+`yks_fizik_ozet_anahtar_uzlastir.py` yalnız kanıtları birleştirir. Sonraki iş
+74 kaynakta bütün soru gövdelerini sayıp basılı numaralarla birebir bağlamak,
+kusurlu kaynağı bekletmek ve banka/görsel/konu kontrollerini tamamlamaktır.

@@ -1,5 +1,48 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
+**Bütün kayıtlı native/OCR anahtar sinyalleri — BITTI (alım kabulü değildir):**
+`saved-key-signal-discovery/report.json` 4.086 PDF/67.277 sayfanın bütün mevcut
+native ve OCR sürümlerini inceler; yeni OCR/model/render çağrısı yoktur.
+85 kaynakta, mevcut 12.052 soruluk ana hazırlık kuyruğu ve eski locator
+kayıtları dışında açık anahtar başlığı vardır; 84'ü önceki yeni-bölge taramasına
+girmemiştir. Bunlar 75 Fizik özeti, üç Tarih özeti, iki ayrı cevap PDF'si,
+zaten açık dört deneme istisnası ve değişen Türkçe sürümünü içerir. Son beş
+kaynak için önceki istisna/sayfa kanıtını yeniden üretme. 775 satır içi cevap
+sinyali ayrıca incelenir; sinyal bulamayan 1.660 PDF için anahtar yoktur denmez.
+Kök/beş seçenek OCR'ı bozuk olsa da gerçek basılı anahtar ayrı iş olur.
+
+**Fizik özetlerinde yerel anahtar pilotu ve devam:** İlk 12 yerel Qwen
+çağrısında dört OCR/görsel liste uyuştu; kalanlar kabul edilmedi. Gerçek bir
+tablonun cevap satırının dar kırpımda kesildiği görüldü; alt sınır genişletildi,
+eski dar kırpım/model cache'i silinmedi. Tam paneldeki sayılar ve harflerin
+bütün token'ları denetlenir; kısmi liste, ek okunamayan metin, çift numara veya
+model `incomplete=true` ise kabul yok. 75 kaynağın düzeltme sonrası yerel
+okuması `physics-summary-key-readings/report.json` içindedir. Liste uyuşması
+yalnız o özgün bölgeye aittir; bütün PDF anahtarının veya soru sayısının
+tamlığını onaylamaz. Tam gövde/numara/anahtar bağı ve dar konu ayrıca gerekir.
+
+**Gerçek görüntüsü okunmuş üç Fizik sorusu — BITTI (sınırlı hazırlık):**
+`04c593815b31…` Küresel Aynalarda Yansıma sayfası bütünüyle görüldü.
+Üç tam soru özgün RGB'den kayıpsız alındı; şekiller korunur, cevap bölgesi
+kırpımlara girmez. Basılı D/D/E anahtarı gerçek görüntü ve iki eski OCR
+sürümünde aynı; yanlış PDF ToUnicode metni kullanılmaz. Bütün 80.230 banka
+sorusuyla aday karşılaştırması kaydedildi. Düşük skor veya eşleşmeyen görsel
+NEW kanıtı değildir. Bu üç soru ana 12.052 kümesinden ayrı pilotta tutulur;
+banka görselleri/dar konu ve ana kuyruğa katılma henüz açık.
+
+**75 Fizik özetinde basılı anahtar bölgesi okuması — BITTI:** İlk yerel
+geçiş 28 uyum, 44 okuma farkı ve üç geometri istisnası verdi. Bekleyen 44
+bölge sekiz sabit hash'li görüntüde doğrudan okundu; üç native başlık
+istisnasının biri ayrı OCR/Qwen ile, ikisi gerçek bütün sayfa görüntüsüyle
+okundu. Sonuç `physics-summary-effective-key-regions/report.json`:
+74 kaynakta sıralı 214 basılı hücre; bir kaynakta üç hücreyle **1, 2, 4**
+yazıyor (`e707d7a0c8ee…`). Eksik 3 için cevap uydurulmadı; 4→3 yapılmadı.
+Bu kaynağın bütün soru-cevap bağı bekler. Toplam okunan hücre 217'dir,
+217 yeni soru değildir. Kaynak `68c90e176b02…` üzerindeki vurgular ayrıca
+gövde incelemesinde tutulur. Bütün ham model/OCR çıktıları, eski dar ve yeni
+geniş kırpımlar korunur. 75/75 bölge tamam olsa da tam soru sayısı/gövdesi,
+ders/konu, tekrar ve alım kapıları kapanmaz. Değişmeyen okumaları tekrarlama.
+
 **Kimya bireysel soru nüshası alt işi — BITTI (kısmi hazırlık):** Tam test
 gövdesi farklı olan 63 kaynakta 800 konum ayrıca sınandı. 542 sorunun tam
 native metni ve aynı özgün dikdörtgendeki 180/330 DPI RGB pikselleri eşit;

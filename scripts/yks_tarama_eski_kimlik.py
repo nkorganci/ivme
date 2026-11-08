@@ -8,6 +8,8 @@ bank version/image. Unsupported/shared layouts remain unapproved.
 from collections import Counter,defaultdict,OrderedDict
 from pathlib import Path
 import argparse
+import inspect
+import math
 
 import pymupdf
 from yks_birlestirme import Store,read_json,write_json,digest,signature,process_lock
@@ -33,12 +35,28 @@ def prove_original_link(card,current,old):
     if old['originalSourceImageSha256']!=old['currentImageSha256']:raise ValueError('Original canonical image provenance differs')
 
 
+def isolated_union_region(card_box,left_regions,right_regions,number):
+    first=[r['bboxPt'] for r in left_regions if r['number']==number]
+    second=[r['bboxPt'] for r in right_regions if r['number']==number]
+    if len(first)!=1 or len(second)!=1:raise ValueError('One complete same-number question region required in both originals')
+    boxes=[card_box,first[0],second[0]]
+    if any(len(b)!=4 or not all(math.isfinite(v) for v in b) or pymupdf.Rect(b).is_empty for b in boxes):
+        raise ValueError('Finite nonempty original question rectangles required')
+    rect=pymupdf.Rect(min(b[0] for b in boxes),min(b[1] for b in boxes),max(b[2] for b in boxes),max(b[3] for b in boxes))
+    if rect.is_empty or rect.is_infinite:raise ValueError('Finite complete source union required')
+    for regions in [left_regions,right_regions]:
+        for other in regions:
+            if other['number']!=number and rect.intersects(pymupdf.Rect(other['bboxPt'])):
+                raise ValueError('A second original question intersects the proposed union; no fuzzy alignment')
+    return list(rect)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--limit',type=int);parser.add_argument('--mocks',action='store_true')
-    choice=parser.add_mutually_exclusive_group();choice.add_argument('--combined',action='store_true');choice.add_argument('--source-exceptions',action='store_true');args=parser.parse_args()
+    choice=parser.add_mutually_exclusive_group();choice.add_argument('--combined',action='store_true');choice.add_argument('--source-exceptions',action='store_true');choice.add_argument('--region-union',action='store_true');args=parser.parse_args()
     if args.limit is not None and args.limit<1:parser.error('Positive source limit required')
     if (args.combined or args.source_exceptions) and not args.mocks:parser.error('Combined printed subjects/source exceptions require the mock source cohort')
-    store=Store(APP/'veri/yks-birlestirme');root=store.child(store.current()['runId']);folder=root/('mock-source-exception-identities' if args.source_exceptions else 'mock-combined-canonical-reuse' if args.combined else 'mock-official-canonical-reuse' if args.mocks else 'diagnostic-official-canonical-reuse');folder.mkdir(exist_ok=True)
+    store=Store(APP/'veri/yks-birlestirme');root=store.child(store.current()['runId']);folder=root/(('mock-union-canonical-reuse' if args.mocks else 'diagnostic-union-canonical-reuse') if args.region_union else 'mock-source-exception-identities' if args.source_exceptions else 'mock-combined-canonical-reuse' if args.combined else 'mock-official-canonical-reuse' if args.mocks else 'diagnostic-official-canonical-reuse');folder.mkdir(exist_ok=True)
     wanted_statuses={'SOURCE_OR_CONTROLLED_SCOPE_CONFLICT_REVIEW','PRINTED_DISCIPLINE_RANGE_REVIEW_REQUIRED'} if args.source_exceptions else {'EXACT_TEXT_WITHIN_COMBINED_SECTION_SUBJECT_REVIEW_REQUIRED' if args.combined else 'EXISTING_SOURCE_MATCH_CANDIDATE'}
     match_status='EXACT_TEXT_AND_ANSWER_WITHIN_COMBINED_SECTION_REQUIRES_SUBJECT_CONTENT_REVIEW' if args.combined else 'EXACT_TEXT_SOURCE_ANSWER_AND_CONTROLLED_SCOPE_AGREE'
     inputs={};packages={};wanted={};cards={};bank_shas=set();catalog_runs=set()
@@ -56,6 +74,11 @@ def main():
             for card in package['cards']:
                 card=dict(card);card.setdefault('sourcePath',package.get('sourcePath'))
                 cards[card['code']]=card
+    if args.region_union:
+        parent_path=root/('mock-official-canonical-reuse/report.json' if args.mocks else 'diagnostic-official-canonical-reuse/report.json');parent=read_json(parent_path);inputs[str(parent_path)]=digest(parent_path)
+        if parent['status']!='COMPLETE':raise ValueError('Complete unchanged original identity proof required')
+        selected={r['sourceCode'] for r in parent['results'] if not r['sourceIdentityProofs'] and 'Exact original question bounding boxes differ' in r['issues']}
+        wanted={code:row for code,row in wanted.items() if code in selected}
     keys={}
     for relative in ['verified-source-keys.json','rebound-literature-keys/report.json','raster-keys/report.json','body-exception-keys/report.json','multi-test-key/report.json']:
         key_path=root/'pdf-on-tarama/full-key-scan'/relative;key_report=read_json(key_path);inputs[str(key_path)]=digest(key_path)
@@ -142,6 +165,7 @@ def main():
                     'sourceKeyEvidenceSha256':card['keyEvidenceSha256'],'sourceQuestion':code,'readers':readers,
                     'originalLocators':[(s['sourceSha256'],o['sourceLocator'],o['currentQuestionStamp'],o['currentImageSha256']) for m,s,o in candidates],
                     'rendererVersion':pymupdf.VersionBind}
+                if args.region_union:identity['isolatedUnionRegionAlgorithmSha256']=signature(inspect.getsource(isolated_union_region))
                 cache=folder/(signature(identity)+'.json')
                 cache=previous.get(cache_identity(identity),cache)
                 if cache.is_file():
@@ -171,9 +195,12 @@ def main():
                         a,coverage_a=page_geometry(left,source_sha);b,coverage_b=page_geometry(right,source['sourceSha256'])
                         first=[r for r in a if r['number']==card['printedNumber']];second=[r for r in b if r['number']==card['printedNumber']]
                         if coverage_a or coverage_b or len(first)!=1 or len(second)!=1:raise ValueError('Complete original page/body boundary proof required')
-                        if first[0]['bboxPt']!=card['bboxPt'] or second[0]['bboxPt']!=card['bboxPt']:
+                        if args.region_union:box=isolated_union_region(card['bboxPt'],a,b,card['printedNumber'])
+                        elif first[0]['bboxPt']!=card['bboxPt'] or second[0]['bboxPt']!=card['bboxPt']:
                             raise ValueError('Exact original question bounding boxes differ')
-                        proof=compare_question(left,right,card['bboxPt'])
+                        else:box=card['bboxPt']
+                        proof=compare_question(left,right,box)
+                        if args.region_union:proof['comparisonRegionMethod']='ISOLATED_UNION_CONTAINS_BOTH_COMPLETE_ORIGINAL_BODIES_AND_NO_OTHER_QUESTION'
                         if proof['status']!='INDIVIDUAL_ORIGINAL_NATIVE_AND_TWO_DPI_PIXELS_IDENTICAL':raise ValueError(proof['status'])
                         members.append({'canonicalCode':current['code'],'canonicalVersion':current['stamp'],
                             'canonicalImageSha256':old['currentImageSha256'],'officialBookSha256':source['sourceSha256'],
@@ -190,6 +217,7 @@ def main():
                     'fineTopicAccepted':False,'newQuestionAdmissionAccepted':False,'teacherApproved':False}
                 if args.mocks:
                     result['canonicalCodes']=sorted(canonical);result['sourceSubjectReviewRequired']=bool(args.combined or args.source_exceptions)
+                if args.region_union:result['originalPreparedCropContentAccepted']=False
                 write_json(cache,{'identity':identity,'result':result})
                 results.append({**result,'evidencePath':str(cache),'evidenceSha256':digest(cache)});new+=1
                 if len(results)%100==0:save('RUNNING');print('Diagnostic official source identities',len(results),'/',len(wanted),dict(Counter(r['status'] for r in results)),flush=True)

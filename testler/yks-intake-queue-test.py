@@ -24,6 +24,13 @@ class IntakeQueueTest(unittest.TestCase):
         report=read_json(root/'source-intake-queue/report.json');self.assertEqual(report['status'],'PASS')
         self.assertEqual(report['questions'],12052);rows={r['sourceCode']:r for r in report['results']}
         self.assertEqual(len(rows),12052);self.assertGreaterEqual(report['states']['KEEP_EXISTING_CANONICAL_ID_DO_NOT_REIMPORT'],2327)
+        unions=read_json(root/'diagnostic-union-canonical-reuse/report.json')
+        proven=[r for r in unions['results'] if r['canonicalCode']]
+        self.assertEqual(len(proven),103)
+        for row in proven:
+            queued=rows[row['sourceCode']]
+            self.assertEqual(queued['existingCanonicalCodes'],[row['canonicalCode']])
+            self.assertIn('diagnostic-union-canonical-reuse/report.json',queued['existingIdentityEvidence'])
         self.assertGreater(report['states']['MULTIPLE_CANONICAL_IDENTITIES_REVIEW_REQUIRED'],0)
         self.assertEqual(report['provenExistingCanonicalIds'],len({c for r in rows.values() for c in r['existingCanonicalCodes']}))
         for row in rows.values():

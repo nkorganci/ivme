@@ -35,15 +35,32 @@ Edebiyat/raster/çoklu-test/istisna anahtarları kendi kanıt sürümüyle okund
 İkinci deneme 3.036 ham kanıtın cache'ini kullanır, yeni render/model/OCR yok.
 
 **Hazırlanan soruların tek devam kuyruğu — BITTI (kabul değildir):**
-`source-intake-queue/report.json` bütün 12.052 güncel sürümü kapsar. 3.594
+`source-intake-queue/report.json` bütün 12.052 güncel sürümü kapsar. 3.697
 kaynak kaydı tek eski ID'ye, 389'u birden çok eski ID'ye bağlanır; toplam
-4.372 farklı eski kanonik ID korunur. 1.646 banka adayı ve 6.380 içerik/konu
+4.475 farklı eski kanonik ID korunur. 1.543 banka adayı ve 6.380 içerik/konu
 incelemesi açık; 511 kaynak ders/kapsam incelemesi ayrıca işaretlidir.
 36 tekrar kaynak konumu tercih edilen aynı soru grubuna döner; dört kaynak
 cevap/aynı D-E/pending çelişkisi engellidir. Üç soru yalnız yalıtılmış pilotta
 kullanılır. Kalan banka adayları ve içerik incelemeleri NEW değildir.
 Hatalı eski q24 sürümü güncel kırpımın yerine kullanılamaz. Farklı TYT/AYT
 ilişkisi ayrı incelemededir; bütün satırlarda üretim aktarımı kapalıdır.
+
+**Farklı kırpım sınırlarında tam bölge birleşimi — BITTI (kimlik kanıtı):**
+Önceki 1.779 tarama kanıtı değiştirilmeden, yalnız kutu farkından bekleyen
+450 aday iki özgün tam soru kutusunu kapsayan bölgede karşılaştırıldı.
+Bölge iki PDF'nin hiçbir başka sorusuna değemez. Tam native kök/beş seçenek
+ve 180/330 DPI RGB birebir eşitse eski kimlik korunur: 103 ek kanıt;
+298 komşu soru kesişimi, 46 piksel farkı ve üç eksik seçenek kanıtı bekler.
+Denemedeki 74 benzer istisnanın hiçbiri geçmedi; benzerliğe dayalı kabul yok.
+`diagnostic-union-canonical-reuse/` ve `mock-union-canonical-reuse/` ham
+kanıtı, algoritma sürümünü ve değişmeyen ana rapor hash'ini tutar. Kimlik
+eşitliği eski hazırlanmış kırpımın tamamlığını veya dar konuyu onaylamaz.
+Model/OCR/banka yazımı sıfır; 1.543 kalan banka adayı incelemesi sürer.
+
+Yeni sınır kanıtları YKS-08 testlerini geçti. YKS-07'nin Windows rapor
+dosyası atomik değişimindeki `WinError 5` kesintisi sonraki başarılı profil
+çalışmasıyla kapandı; PDF/OCR/model hazırlığı tekrarlanmadı. Sonraki kayıtlı
+anahtar/özet kapsamı yeni kalite girdisidir; ilgili profiller yenilenir.
 
 **Eski bekleyen işlemlerle karşılaştırma — BITTI:** 5.303 eski pending
 locator'ın 5.301'inde özgün ham kart/keşif metni hash'i yeniden doğrulandı;

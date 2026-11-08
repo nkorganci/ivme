@@ -1,5 +1,13 @@
 # YKS-09 — Özgün kırpım ve kaynaklı soru kabul paketi
 
+Ek sınırlı hazırlık `physics-summary-discovery/` içindedir: gerçek bütün
+sayfası okunmuş `04c593815b31…` kaynağında üç küresel ayna sorusu, D/D/E
+basılı anahtar, iki eski OCR kanıtı ve kaynak RGB'siyle eşit kayıpsız görseller.
+PDF'nin bozuk ToUnicode metni yerine gerçek görüntüden okunmuş metin ayrı
+saklanır. 80.230 soruluk banka adayları hazırdır; gerçek banka aday görselleri
+ve dar MEBİ yaprağı onaylanmadı. Üç soru ana 12.052 soruluk kümenin dışında
+açık pilot olarak kaydedilir; NEW veya canlı alım değildir.
+
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
 

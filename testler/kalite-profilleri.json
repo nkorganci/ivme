@@ -791,6 +791,11 @@
       "args": ["testler/yks-diagnostic-source-identity-test.py"],
       "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-diagnostic-source-identity-test.py"]
     },
+    "yks-saved-key-signals": {
+      "kind": "python",
+      "args": ["testler/yks-saved-key-signal-test.py"],
+      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "testler/yks-saved-key-signal-test.py"]
+    },
     "yks-crop-geometry": {
       "kind": "python",
       "args": ["testler/yks-crop-geometry-test.py"],
@@ -1117,7 +1122,8 @@
         "yks-chemistry-question-editions",
         "yks-chemistry-visual-key",
         "yks-crop-geometry",
-        "yks-partial-chemistry-key"
+        "yks-partial-chemistry-key",
+        "yks-saved-key-signals"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",

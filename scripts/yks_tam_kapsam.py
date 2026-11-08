@@ -303,6 +303,24 @@ def main():
                 raise ValueError('Source preparation cannot contain production or invented teacher approval')
             intake_by_source.setdefault(row['sourceSha256'],Counter())[row['status']]+=1
         inputs.append(intake_path)
+    saved_key_path=root/'saved-key-signal-discovery/report.json';saved_keys={};saved_key_by_source={}
+    if saved_key_path.is_file():
+        saved_keys=read_json(saved_key_path)
+        if saved_keys['status']!='COMPLETE' or saved_keys['documents']!=len(saved_keys['results']):raise ValueError('Complete saved native/OCR key signal index required')
+        saved_key_by_source=unique(saved_keys['results'],'sourceSha256');inputs.append(saved_key_path)
+    summary_path=root/'physics-summary-discovery/report.json';summary={}
+    if summary_path.is_file():
+        summary=read_json(summary_path)
+        if summary['status']!='COMPLETE' or summary['newQuestionAdmissionAccepted'] or digest(summary['package'])!=summary['packageSha256']:
+            raise ValueError('Original bounded summary preparation changed')
+        inputs.extend([summary_path,Path(summary['package']),Path(summary['keyEvidencePath'])])
+        if digest(summary['keyEvidencePath'])!=summary['keyEvidenceSha256']:raise ValueError('Actually read summary key changed')
+    summary_keys_path=root/'physics-summary-effective-key-regions/report.json';summary_keys={};summary_key_by_source={}
+    if summary_keys_path.is_file():
+        summary_keys=read_json(summary_keys_path)
+        if summary_keys['status']!='COMPLETE' or summary_keys['sourceQuestionAnswersBound'] or summary_keys['wholeSourceKeyCompletenessAccepted']:
+            raise ValueError('Printed-region preparation cannot accept unenumerated question bodies')
+        summary_key_by_source=unique(summary_keys['results'],'sourceSha256');inputs.append(summary_keys_path)
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -317,6 +335,17 @@ def main():
             unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'),document_reviews,book_sections)
         prepared_bodies={r['sourceSha256']:r for r in body_scope.get('results',[])}
         for row in rows:
+            if saved_key_by_source:
+                saved=saved_key_by_source[row['sourceSha256']]
+                row['savedPrintedKeySignalReview']={k:saved[k] for k in ['status','keySignalPhysicalPages','priorOccurrenceCount','previousDiscoveredRegions','evidencePath','evidenceSha256']}
+            if row['sourceSha256'] in summary_key_by_source:
+                row['additionalSummaryPrintedRegionReview']=summary_key_by_source[row['sourceSha256']]
+            if summary and row['sourceSha256']==summary['sourceSha256']:
+                if row['sourceSha256'] in intake_by_source:raise ValueError('Separate bounded summary pilot already belongs to the main intake queue')
+                row['separateBoundedSummaryPreparation']={k:summary[k] for k in ['questions','package','packageSha256','keyEvidencePath','keyEvidenceSha256','newQuestionAdmissionAccepted']}
+                row['verifiedPrintedAnswers']=len(summary['printedAnswers'])
+                row['state']='SUMMARY_THREE_ORIGINAL_BODIES_KEYED_DUPLICATE_TOPIC_REVIEW_REQUIRED'
+                row['nextAction']='REVIEW_BANK_IMAGE_CANDIDATES_AND_FINE_TOPIC_BEFORE_JOINING_MAIN_QUESTION_COHORT'
             if row['sourceSha256'] in intake_by_source:
                 row['preparedQuestionIntakeStates']=dict(intake_by_source[row['sourceSha256']])
             specific=[a for a in amendments.get('results',[]) if a['sourceSha256']==row['sourceSha256']]
@@ -359,6 +388,9 @@ def main():
         report['individuallyPreparedChemistryQuestions']=sum(r['questions'] for r in partial_sources.values())
         report['actualDinSourceQuestionAmendments']={k:amendments.get(k) for k in ['status','questionsRead','amendedQuestions','excludedAmbiguousPrintedQuestions','additionalActuallyReadDuplicateGroups']}
         report['preparedQuestionIntakeSnapshot']={k:intake.get(k) for k in ['status','questions','sourceDocuments','states','provenExistingCanonicalIds']}
+        report['savedPrintedKeySignalSnapshot']={k:saved_keys.get(k) for k in ['status','documents','completed','observedPages','states','unassessedHeadingSourcesWithoutPreviousRegions','sourceAnswersApproved','absenceClaimed']}
+        report['separateBoundedSummaryPilotSnapshot']={k:summary.get(k) for k in ['status','sourceSha256','questions','newQuestionAdmissionAccepted','questionBankWrites']}
+        report['additionalSummaryPrintedRegionSnapshot']={k:summary_keys.get(k) for k in ['status','documents','completed','states','readPrintedRegionCells','readContiguousRegionCells','sourceQuestionAnswersBound','wholeSourceKeyCompletenessAccepted']}
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         if prior_occurrences:

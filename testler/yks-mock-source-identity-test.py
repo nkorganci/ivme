@@ -6,6 +6,16 @@ from yks_birlestirme import Store,read_json,digest
 
 
 class MockSourceIdentityTest(unittest.TestCase):
+    def test_different_mock_boundaries_are_not_accepted_when_union_intersects_other_content(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'mock-union-canonical-reuse/report.json')
+        self.assertEqual(report['status'],'COMPLETE');self.assertEqual(report['sourceQuestions'],74)
+        self.assertTrue(all(not r['canonicalCodes'] for r in report['results']))
+        for row in report['results']:
+            self.assertEqual(digest(row['evidencePath']),row['evidenceSha256'])
+            self.assertFalse(row['originalPreparedCropContentAccepted']);self.assertFalse(row['newQuestionAdmissionAccepted'])
+        self.assertEqual(report['newModelCalls'],0);self.assertEqual(report['newOcrCalls'],0)
+
     def test_all_forty_actual_images_override_a_wrong_header_without_guessing_a_cross_subject_question(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         report=read_json(root/'mock-actual-subject-review/333642091490/report.json')

@@ -64,6 +64,16 @@ def main():
         if digest(row['evidencePath'])!=row['evidenceSha256']:raise ValueError('Immutable diagnostic source identity proof changed')
         if row['canonicalCode']:
             existing[row['sourceCode']].add(row['canonicalCode']);references[row['sourceCode']].append('diagnostic-official-canonical-reuse/report.json')
+    unions=load('diagnostic-union-canonical-reuse/report.json')
+    if unions['status']!='COMPLETE' or unions['bankSnapshotSha256']!=index['bankSnapshotSha256']:
+        raise ValueError('Complete current isolated diagnostic union proof required')
+    if unions['inputs'][str(root/'diagnostic-official-canonical-reuse/report.json')]!=inputs[str(root/'diagnostic-official-canonical-reuse/report.json')]:
+        raise ValueError('Isolated union proof belongs to a different original diagnostic identity pass')
+    for row in unions['results']:
+        if digest(row['evidencePath'])!=row['evidenceSha256']:raise ValueError('Immutable isolated union source identity proof changed')
+        if row['originalPreparedCropContentAccepted'] is not False:raise ValueError('Identity proof cannot accept a prepared crop')
+        if row['canonicalCode']:
+            existing[row['sourceCode']].add(row['canonicalCode']);references[row['sourceCode']].append('diagnostic-union-canonical-reuse/report.json')
     mocks=load('mock-official-canonical-reuse/report.json')
     if mocks['status']!='COMPLETE' or mocks['bankSnapshotSha256']!=index['bankSnapshotSha256']:
         raise ValueError('Finish the current official mock source identity pass before updating the unified queue')
@@ -71,6 +81,16 @@ def main():
         if digest(row['evidencePath'])!=row['evidenceSha256']:raise ValueError('Immutable mock source identity proof changed')
         if row['canonicalCodes']:
             existing[row['sourceCode']].update(row['canonicalCodes']);references[row['sourceCode']].append('mock-official-canonical-reuse/report.json')
+    mock_unions=load('mock-union-canonical-reuse/report.json')
+    if mock_unions['status']!='COMPLETE' or mock_unions['bankSnapshotSha256']!=index['bankSnapshotSha256']:
+        raise ValueError('Complete current isolated mock union proof required')
+    parent_path=str(root/'mock-official-canonical-reuse/report.json')
+    if mock_unions['inputs'][parent_path]!=inputs[parent_path]:raise ValueError('Isolated mock union proof belongs to an old parent pass')
+    for row in mock_unions['results']:
+        if digest(row['evidencePath'])!=row['evidenceSha256']:raise ValueError('Immutable isolated mock union proof changed')
+        if row['originalPreparedCropContentAccepted'] is not False:raise ValueError('Identity proof cannot accept a prepared mock crop')
+        if row['canonicalCodes']:
+            existing[row['sourceCode']].update(row['canonicalCodes']);references[row['sourceCode']].append('mock-union-canonical-reuse/report.json')
     combined=load('mock-combined-canonical-reuse/report.json')
     if combined['status']!='COMPLETE' or combined['bankSnapshotSha256']!=index['bankSnapshotSha256']:
         raise ValueError('Finish the combined printed-subject source identity pass first')

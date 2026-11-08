@@ -56,10 +56,19 @@ REPORTS={
     'chemistryImageTopicDiagnostic':'kimya-topic-vision-pilot/report.json',
     'preparedSourceIntakeQueue':'source-intake-queue/report.json',
     'diagnosticOfficialCanonicalReuse':'diagnostic-official-canonical-reuse/report.json',
+    'diagnosticIsolatedUnionCanonicalReuse':'diagnostic-union-canonical-reuse/report.json',
     'mockOfficialCanonicalReuse':'mock-official-canonical-reuse/report.json',
+    'mockIsolatedUnionCanonicalReuse':'mock-union-canonical-reuse/report.json',
     'mockCombinedSourceCanonicalReuse':'mock-combined-canonical-reuse/report.json',
     'mockSourceExceptionIdentities':'mock-source-exception-identities/report.json',
     'mockActualSubjectReview':'mock-actual-subject-review/333642091490/report.json',
+    'savedPrintedKeySignals':'saved-key-signal-discovery/report.json',
+    'physicsSummaryKeyRegions':'physics-summary-key-readings/report.json',
+    'physicsSummaryActualKeyRegions':'physics-summary-key-actual-review/report.json',
+    'physicsSummaryNativeKeyRetry':'physics-summary-native-key-readings/report.json',
+    'physicsSummaryEffectiveKeyRegions':'physics-summary-effective-key-regions/report.json',
+    'physicsSummaryBoundedPreparation':'physics-summary-discovery/report.json',
+    'physicsSummaryBankCandidates':'physics-summary-discovery/comparison-report.json',
 }
 
 
@@ -102,7 +111,11 @@ def main():
             'All542 partial Chemistry sources reuse old IDs: first376 and an additional166 resolved through exact official book/page/printed-number locators and current controlled scope. '
             'The3036 diagnostic existing candidates are fully checked:1779 exact native/two-DPI/current-source links,1257 original source exceptions. '
             'The second diagnostic identity pass reused3036 raw caches with zero new comparisons/renders; do not repeat it. '
-            'source-intake-queue/report.json contains12052 current versions:3594 single-ID source records,389 multiple-ID records,1646 unresolved bank candidates,6380 content/topic reviews,36 secondary source locators,4 blocks and3 isolated-pilot-only records. It preserves4372 distinct existing canonical IDs. '
+            'source-intake-queue/report.json contains12052 current versions:3697 single-ID source records,389 multiple-ID records,1543 unresolved bank candidates,6380 content/topic reviews,36 secondary source locators,4 blocks and3 isolated-pilot-only records. It preserves4475 distinct existing canonical IDs. '
+            'The isolated complete-region union pass resolved103/450 diagnostic boundary exceptions;347 remain held (298 neighboring-question intersections,46 pixel changes,3 incomplete option sets). All74 regular mock union candidates remain held. These immutable proofs do not approve prepared crop content or fine topics; do not repeat their renders. '
+            'All4086 PDFs/67277 pages have a saved native/OCR key-signal index. Its85 heading candidates include75 physics summaries,3 history summaries,2 separate answer documents and5 already-known mock/Turkce exceptions. Do not interpret missing signals as absence or redo those known exceptions. '
+            'Physics summary key regions75/75 are reconciled:74 contiguous sources/214 printed cells; source e707d7a0c8ee literally prints1,2,4 and stays held without renumbering. All44 held key strips and2 whole source pages have actually been read; original model/OCR outputs remain frozen. Do not rerun that key-reading work. '
+            'physics-summary-discovery contains3 actually viewed mirror questions with D/D/E printed keys and original lossless pixels, compared to all80230 bank questions. This is a separate bounded pilot outside the original12052 main cohort; current bank image candidates, complete body-scope/fine-topic review and main-queue joining remain open. '
             'Mock identity passes are complete:1458 regular candidates (996 single/255 multi/207 held),447 combined-subject candidates (271 single/88 multi/88 held),103 source/scope exceptions (46 multi/57 held). Do not rerender those unchanged inputs. '
             '35 cross-source duplicate pairs and one printed C/D conflict have been actually read. '
             'Six source/bank exact question image pairs preserve old IDs; cross-exam associations remain separate review. '
