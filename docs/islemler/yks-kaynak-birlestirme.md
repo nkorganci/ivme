@@ -90,3 +90,8 @@ Excel dağılım verisi olarak kalır; MEBİ ana kaynak etkinse Excel üreticisi
 ağacı değiştiremez. BGE yalnız belirsiz eski kapsamlar için eşleme önerisi verir;
 skorlar onay veya otomatik kimlik birleştirmesi değildir. Geçerli vektörler
 model digest ve tam girdi metniyle yeniden kullanılır.
+
+Arşiv gezinmesi için `python scripts/yks_arsiv_gezinti.py`, ardından
+`node testler/yks-archive-navigation-ui.mjs` ve
+`python scripts/ivme.py yks adim YKS-06 --resume` kullanılır.
+Bu kabul fiziksel hazırlık/gezinme içindir; soru ve canlı yayın kapılarını kapatmaz.

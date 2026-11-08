@@ -1,4 +1,4 @@
-# YKS-06 — Tek düzenli YKS arşivini hazırlamak
+# YKS-06 — Tek düzenli YKS arşivini hazırlamak — BITTI
 
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
@@ -70,7 +70,9 @@ geri alınabilir hazırlık yapar. `arsiv-hazirlik/archive-preparation-report.js
 ve YKS/Katalog/hazirlanan-yollar.json kontrol edilir. PREPARED, canlı geçiş
 anlamına gelmez. Başarılı hazırlığı yalnız değişen kaynak/algoritma veya hash
 hatasıyla yeniden çalıştır. Hardlink yedek değildir; kaynak verisine yerinde
-mutasyon yapılmaz. YKS-04/05 ve pilot kabulü açıkken başlığı BITTI yapma.
+mutasyon yapılmaz. YKS-04/05 ve arşiv gezinme kabulü geçmeden BITTI yapma. Soru/anahtar
+pilotu YKS-07–10 içinde bu adımdan sonra yapılır; YKS-06 yalnız PREPARED
+arşiv hazırlığının kabulüdür. Canlı geçiş YKS-11 kapılarına bağlı kalır.
 
 ## Durum, BITTI ve devam kaydı
 
@@ -86,3 +88,12 @@ mutasyon yapılmaz. YKS-04/05 ve pilot kabulü açıkken başlığı BITTI yapma
   işaretini kaldır ve değişen girdi/hata nedenini `YENIDEN_ACILDI` kaydına ekle.
 - Sonraki somut işlem, ilgili adım, gerçek doğrulama sonucu ve kanıt yolu devirde
   bulunmalı. Tüm zincir yetkilendirilmişse uygun sonraki adıma devam et.
+
+## Kabul edilmiş arşiv gezinmesi
+
+`python scripts/yks_arsiv_gezinti.py` yalnız üretilmiş YKS görünümünü yeniler;
+özgün kaynaklara yazmaz. `YKS/index.html` 22 ders/sınav grubu, 303 ünite ve
+1.047 konu içerir. 1.037 ortak içerik görünümü tekil fiziksel dosyalara bağlanır.
+11.455 yerel bağlantı, masaüstü/mobil arama ve PDF/video/ses erişim yolu geçti.
+Formal kabul: `yks-06/full/attempt-0001/archive-acceptance-report.json`;
+`python scripts/ivme.py yks dogrula YKS-06` geçerli kaynak/çıktıyı denetler.

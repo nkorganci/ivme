@@ -265,7 +265,7 @@ olur; mevcut kimlikler, ortak kapsam ve diğer sınav katalogları korunur.
 [Adım görevini aç](yks-kaynak-birlestirme/yks-05.md). Tüm okuyucu/üreticiler,
 güvenli kaynak çözümleme ve katalog projeksiyonları geçişe hazırlanır.
 
-## 15.06 — YKS-06: birleşik arşivi hazırlama
+## 15.06 — YKS-06: birleşik arşivi hazırlama — BITTI
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-06.md). Hedef düzen ve manifest
 hazırlanır; canlı okuyucuların kökü değiştirilmez.

@@ -86,3 +86,14 @@ uyuşuyorsa yeniden model çağırma. Tek kaynak pilotunu tam YKS-07 kabulü say
   işaretini kaldır ve değişen girdi/hata nedenini `YENIDEN_ACILDI` kaydına ekle.
 - Sonraki somut işlem, ilgili adım, gerçek doğrulama sonucu ve kanıt yolu devirde
   bulunmalı. Tüm zincir yetkilendirilmişse uygun sonraki adıma devam et.
+
+## Kaydedilmiş devam noktası
+
+Kullanıcı commit edip durulmasını istedi. Yeniden devam talebinde önce
+`veri/yks-birlestirme/current.json`, run içindeki `session-checkpoint.json` ve
+`pdf-on-tarama/key-cohort/cohort-report.json` okunur.
+`yks_anahtar_cohort.py` 20 ders/sınav belgesinde kaynak metnini bağımsız
+kırpım OCR'ı ile karşılaştırdı; mevcut Qwen Tarih kanıtı tekrar kullanıldı.
+Üç belgede 52 cevap eşleşti; 15 OCR uyuşmazlığı ve iki desteklenmeyen düzen
+açık. Bunlar tahminle onaylanmaz veya anahtarsız sayılmaz. Kaynak kırpımı ve
+ham OCR önbelleği aynı klasörde tutulur. Pilot ve 07 yürütücüsü henüz tamamlanmadı.

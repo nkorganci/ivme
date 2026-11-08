@@ -506,6 +506,18 @@
         "scripts/pipeline-adapters/*",
         "testler/yks-pipeline-navigation-test.py"
       ]
+    },
+    "yks-archive-navigation": {
+      "kind": "node",
+      "args": [
+        "testler/yks-archive-navigation-ui.mjs"
+      ],
+      "inputs": [
+        "scripts/yks_arsiv_gezinti.py",
+        "scripts/yks_stages/stage_06.py",
+        "testler/yks-archive-navigation-ui.mjs",
+        "testler/lib/tarayici.mjs"
+      ]
     }
   },
   "profiles": {
@@ -735,11 +747,11 @@
     },
     "YKS-06": {
       "checks": [
-        "yks-archive-preparation"
+        "yks-archive-preparation",
+        "yks-archive-navigation"
       ],
       "remainingAcceptance": [
-        "Gerçek arşiv hazırlığı, tüm hash ve özgün yol kapsamı.",
-        "YKS-04/05 kabulü ve yayın yapılmadan eski/yeni yol pilotu."
+        "Tam kaynak/kimlik ve gerçek arşiv gezinmesi kabulü; soru kabulü YKS-07–10, canlı geçiş YKS-11."
       ],
       "nextAction": "PREPARED hedefi ve kökenleri doğrula; pilot öncesi ACTIVE yapma."
     },
