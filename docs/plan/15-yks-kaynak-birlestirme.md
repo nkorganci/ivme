@@ -290,6 +290,18 @@ anahtarında 40 cevap daha; toplam 270 tarama/5.061 cevap. 41 sağlam denemenin
 anahtar/kimlik sorunu ve bir bozuk PDF dışarıda; dar ders/konu/tekrar ve
 diğer kaynak düzenlerinin kabulü sürdüğü için ana adım açık kalır.
 
+Beş yeni gövde E/C/E/E/D basılı anahtarıyla ve düzeltilmiş v2 özgün
+kırpımlarla teknik hazırlığa alındı; beş görsel gerçekten okundu, satır
+kesilmesi sıfır. Ana kuyruk, konu/tekrar/alım kabulü değişmedi.
+
+Yeni yerleşim alt işi BITTI (alım değildir): 75 Fizik özetinin görünür
+geometrisi ve özgün sayfa görüntüleri hazır; 13 pano ve dört bütün sayfa
+okundu. 39 numara dizisi yalnız aday; 35 yerleşim ve bir basılı numara hatası
+bekler. Aynı PDF’de Fizik/Tarih karışımı, anahtar numaralarının gövde sanılması
+ve başlığın üstüne taşan şekil ayrı risklerdir. Üç ayna sorusunun 12.052 güncel
+hazırlanmış/5.303 eski pending karşılaştırması sıfır kesin metin/locator bağı
+verdi; ayrışmayan metinlerde NEW kararı yok. Kanıtlar görev dosyasındadır.
+
 ## 15.08 — YKS-08: güncel bankada soru tekrarı
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve

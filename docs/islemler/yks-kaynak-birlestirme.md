@@ -572,3 +572,38 @@ yaprağının dört gerçekten okunmuş sayfasını ve basılı cevap tutarlıl�
 korur. Hazırlık konu desteği vardır, öğretmen/yayın/alım yoktur. Bu okumaları
 yineleme; üç soruyu diğer 12.052 hazırlanmış ve 5.303 eski pending kayıtla
 ayrı ek partide karşılaştır. Ana eski raporları veya mevcut kimlikleri ezme.
+
+
+## Fizik özetlerinin gövde yerleşiminden devam
+
+`physics-summary-body-discovery/report.json` 75 özgün sayfa ve kayıtlı OCR'la
+native geometriyi; `physics-summary-layout-actual-review/report.json` 13
+panonun ve dört bütün sayfanın gerçek yerleşim okumasını saklar. Bu kayıtlar
+soru içeriği veya alım onayı değildir. Kaynak/girdi değişmedikçe görüntüleri
+yeniden üretme. Yerleşim keşfi tekrarında 75 cache hit ve sıfır render/OCR/model
+beklenir. Farklı ders panelleri aynı fiziksel sayfada bulunabilir (`17cc07…`).
+
+`yks_fizik_ozet_bes_govde.py` yalnız `66d6cd9275fd…` kaynağının gerçekten
+okunmuş beş gövdesini v2 tam kırpım/anahtar bağına hazırlar. Satır bbox'ının
+ortasından geçen kesme sınırı reddedilir; native satır kapsamı ve özgün RGB
+eşitliği birlikte kontrol edilir. Eski `physics-summary-five-body-preparation/`
+kesik sürümdür; kullanma, kanıt olarak koru. Güncel v2 beş görselin de hash'i
+gerçek görsel okumasına bağlıdır. Q4 ifade/Roma işaretleri ayrıca incelenir.
+Bu görseller için native bozuk metinden transkript uydurulmadı.
+
+Sıradaki iş diğer 72 sıralı özet/206 basılı hücre için tam gövde, numara ve
+kırpım bağıdır. Başlığın üstüne taşan şekiller, çok sütunlu panel ve kaynak
+vurguları korunmalı; 1–2–4 hatalı anahtarda yeniden numaralandırma yapılmamalı.
+Yeni geometri regresyonu: `python testler/yks-summary-body-geometry-test.py`.
+
+
+Bu partide gerçek görsel okuması **sistem Python / PyMuPDF 2.0** ile yapıldı.
+Önceki arşiv kabul araçları proje `.venv` / PyMuPDF 1.28.2 kullanır. Sürüm
+farkı piksel/yerleşim hash'ini değiştirebilir; önceki kanıtı yanlış sürümle
+yeniden üretme. Yeni geometri keşfi kayıtlı renderer değişirse yazmadan durur;
+beş gerçek kırpımın yeniden doğrulanması 2.0 gerektirir. Yeni keşif/görsel
+araçları için `python scripts/yks_fizik_ozet_govde_kesfi.py`,
+`python scripts/yks_fizik_ozet_yerlesim_incele.py` ve
+`python scripts/yks_fizik_ozet_bes_govde.py`; mevcut tam kapsam raporu için
+`..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kapsam.py` kullanılır.
+Bu ayrım yeni ortam veya model kurulumu gerektirmez.

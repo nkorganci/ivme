@@ -1,5 +1,47 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
+
+**Güncel parti kaydı ve doğrulama:** `database-archive/archive-report.json`
+checkpoint `df6e3c66d564848b…`: 237.533 sorgulanabilir kayıt, 79.971 farklı
+dosya/2.077.584.744 baytın tam hash geri okuması PASS; aynı kayıt ikinci
+geçişte 0 yeni INSERT. Yeni geometri, 13 pano, gerçek yerleşim ve beş v2
+kırpım bu snapshot'tadır. Arşivleyici görüntü odaklı `sourceCode` kartlarını
+özgün kimlikle saklar; kimliksiz/çelişen kartları reddeder. YKS-07 kalite
+`veri/kalite/YKS-07/20261108T194638-aa4badd1/rapor.json`: 144 test/36 kontrol
+PASS. Önceki tam kapsam komutu sistem Python'da renderer farkıyla reddedildi;
+kayıtlı proje `.venv` ile tekrarında PASS; eski anahtar/gövde kanıtı değiştirilmedi.
+Tam aşama kabulü ve üretim yazımı yoktur.
+
+**Beş yeni tam gövde — BITTI (sınırlı teknik hazırlık):**
+`66d6cd9275fd…` kaynağındaki 1–5 gövdeler E/C/E/E/D basılı anahtarına
+bağlandı. İlk kırpımlarda son metin/seçenek satırları bbox sınırında kesildi;
+eski dosyalar korunup `physics-summary-five-body-preparation-v2/` üretildi.
+Yeni sürümde bütün native gövde/seçenek satırları tam içerilir, beş RGB
+kırpımı kaynakla birebir eşittir ve beşi ayrı ayrı gerçekten açıldı.
+Q4'te ifadelerin Roma numaraları ayrıca kaynak incelemesi ister; metin
+uydurulmadı. Bu beş görsel ana 12.052'ye katılmadı; dar konu/tekrar/alım
+kapıları açıktır. Diğer 72 sıralı özet/206 basılı hücre için gövde bağı sürer.
+
+**75 Fizik özetinin görünür yerleşim keşfi — BITTI (gövde kabulü değildir):**
+`physics-summary-body-discovery/report.json` önceki anahtar/OCR kanıtını kullanır;
+75 native geometri kaydı ve 75 özgün sayfa görüntüsü hazır. Numara dizisi 39
+kaynakta yalnız aday olarak uyuşur; 35 yerleşim ve bir basılı 1/2/4 istisnası
+bekler. 13 yerleşim panosu ve dört ayrı bütün sayfa gerçekten açıldı.
+`physics-summary-layout-actual-review/report.json` 75 yerleşimi hash'le korur.
+`17cc07ec3ed7…` aynı fiziksel sayfada iki Fizik ve üç Tarih sorusu içerir;
+alt Tarih bölümü üstteki Fizik anahtarını/dersini devralamaz. `66d6cd9275fd…`
+gövdesinde beş soru vardır; anahtar tablosunun 1–5 satırı beş ek soru değildir.
+`f7abb44afd32…` soru1 şekli başlıktan yukarı taşar; dar kırpım bunu kaybedemez.
+Görünür vurgular özgün kaynaktan korunur. 4 yeni geometri ve 13 mevcut anahtar
+regresyonu geçti. Gövde/cevap bağı, dar konu, tekrar ve alım hâlâ ayrı kapılardır.
+Yeni OCR/model çağrısı ve soru bankası yazımı yoktur.
+
+Üç ayrı ayna sorusunun ek kaynak/pending karşılaştırması da mevcut kanıttan
+korundu: 12.052 güncel hazırlanmış ve 5.303 eski bekleyen kayıt, sıfır tam
+metin/locator bağı. Yalnız 11.950/4.428 metinde beş seçenek tam ayrışmıştır;
+ayrışmayan 102/875 kayıt için yokluk veya NEW kararı verilemez. Kanıt
+`physics-summary-additional-source-review/report.json`.
+
 **Bütün kayıtlı native/OCR anahtar sinyalleri — BITTI (alım kabulü değildir):**
 `saved-key-signal-discovery/report.json` 4.086 PDF/67.277 sayfanın bütün mevcut
 native ve OCR sürümlerini inceler; yeni OCR/model/render çağrısı yoktur.

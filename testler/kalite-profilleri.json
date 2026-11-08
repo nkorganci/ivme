@@ -791,10 +791,15 @@
       "args": ["testler/yks-diagnostic-source-identity-test.py"],
       "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-diagnostic-source-identity-test.py"]
     },
+    "yks-summary-body-geometry": {
+      "kind": "python",
+      "args": ["testler/yks-summary-body-geometry-test.py"],
+      "inputs": ["scripts/yks_fizik_ozet_govde_kesfi.py", "scripts/yks_fizik_ozet_yerlesim_incele.py", "scripts/yks_fizik_ozet_bes_govde.py", "testler/yks-summary-body-geometry-test.py"]
+    },
     "yks-saved-key-signals": {
       "kind": "python",
       "args": ["testler/yks-saved-key-signal-test.py"],
-      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "scripts/yks_fizik_ozet_banka_incele.py", "scripts/yks_fizik_ozet_konu_incele.py", "testler/yks-saved-key-signal-test.py"]
+      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "scripts/yks_fizik_ozet_banka_incele.py", "scripts/yks_fizik_ozet_konu_incele.py", "scripts/yks_fizik_ozet_ek_kaynak_kontrol.py", "testler/yks-saved-key-signal-test.py"]
     },
     "yks-crop-geometry": {
       "kind": "python",
@@ -1123,7 +1128,8 @@
         "yks-chemistry-visual-key",
         "yks-crop-geometry",
         "yks-partial-chemistry-key",
-        "yks-saved-key-signals"
+        "yks-saved-key-signals",
+        "yks-summary-body-geometry"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",

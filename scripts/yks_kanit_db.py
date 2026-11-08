@@ -88,6 +88,10 @@ RECORD_REPORTS={
  'physics-summary-bank-candidates':('physics-summary-discovery/comparison-report.json','results','sourceCode'),
  'physics-summary-actual-bank-images':('physics-summary-discovery/actual-bank-image-review.json','results','sourceRelationId'),
  'physics-summary-actual-topic-support':('physics-summary-topic-review/report.json','results','sourceCode'),
+ 'physics-summary-prepared-pending-check':('physics-summary-additional-source-review/report.json','results','sourceCode'),
+ 'physics-summary-visible-body-geometry':('physics-summary-body-discovery/report.json','results','sourceSha256'),
+ 'physics-summary-actual-layout-review':('physics-summary-layout-actual-review/report.json','results','sourceSha256'),
+ 'physics-summary-five-body-preparation':('physics-summary-five-body-preparation-v2/candidates.json','cards','sourceCode'),
  'cross-source-visual-chemistry-repeat':('cross-source-candidates/expanded-with-visual-chemistry/source-question-index.json','results','sourceCode'),
  'chemistry-partial-body':('partial-chemistry-preparation/progress.json','results','sourceSha256'),
  'chemistry-partial-repeat':('partial-chemistry-comparison/controlled-repeat-review.json','results','sourceCode'),
@@ -274,7 +278,11 @@ def records(manifest,cache,staging):
         if not logical.endswith('/candidates.json'):continue
         report=json.loads(data)
         for card in report.get('cards',[]):
-            add('question-card',logical+'#'+str(card['code']),card,by_path[logical]['sha256'])
+            code=card.get('code',card.get('sourceCode'))
+            if not isinstance(code,str) or not code.strip():raise ValueError('Archived source card must retain an explicit source identity')
+            if card.get('code') and card.get('sourceCode') and card['code']!=card['sourceCode']:
+                raise ValueError('Conflicting archived source card identities')
+            add('question-card',logical+'#'+code,card,by_path[logical]['sha256'])
     # Page summaries point to compressed raw artifact bytes; original complete
     # native text remains inside that artifact, including unsupported symbols.
     for file in manifest['files']:

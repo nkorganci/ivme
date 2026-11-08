@@ -11,6 +11,22 @@ from yks_kanit_db import safe_json,selected_run_file,stable_read,restore_destina
 
 
 class EvidenceArchiveTest(unittest.TestCase):
+    def test_image_only_source_cards_keep_identity_and_are_not_admitted(self):
+        name='run/physics-summary-five-body-preparation-v2/candidates.json'
+        card={'sourceCode':'physics-source-q1','sourceSha256':'a'*64,
+              'newQuestionAdmissionAccepted':False,'teacherApproved':False}
+        def collect(value):
+            data=json.dumps({'cards':[value]}).encode()
+            with tempfile.TemporaryDirectory() as tmp:
+                return records({'files':[{'logicalPath':name,'sha256':raw_sha(data),'role':'RUN_PREPARATION_EVIDENCE'}]},
+                               {name:data},Path(tmp))
+        rows=[r for r in collect(card) if r[0]=='question-card']
+        self.assertEqual(rows[0][1],name+'#physics-source-q1')
+        self.assertEqual(rows[0][3],'physics-source-q1')
+        self.assertFalse(rows[0][-1]['newQuestionAdmissionAccepted'])
+        with self.assertRaises(ValueError):collect({**card,'code':'different-source'})
+        with self.assertRaises(ValueError):collect({'newQuestionAdmissionAccepted':False})
+
     def test_topic_vectors_keep_their_original_text_model_and_finite_dimensions(self):
         model='a'*64;value={'method':'yks-source-title-context-v1','modelDigest':model,'text':'registered source topic','vector':[0.1]*1024}
         value['key']=signature([value['method'],model,value['text']]);path=Path(model[:16])/(value['key'][:32]+'.json')

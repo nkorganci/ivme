@@ -9,6 +9,17 @@ from yks_fizik_ozet_anahtar_incele import actual_rows
 
 
 class SavedKeySignalTest(unittest.TestCase):
+    def test_incremental_source_and_pending_no_match_does_not_accept_unparsed_sources_as_absent(self):
+        store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
+        report=read_json(root/'physics-summary-additional-source-review/report.json')
+        self.assertEqual(report['summaryQuestionsCompared'],3);self.assertEqual(report['mainPreparedSourcesCompared'],12052)
+        self.assertEqual(report['originalPendingOccurrencesReused'],5303);self.assertEqual(report['originalPendingBodiesWithCompleteFiveOptions'],4428)
+        self.assertEqual(report['mainPreparedBodiesWithCompleteFiveOptions'],11950);self.assertEqual(len(report['mainPreparedUnparsedSourceCodes']),102)
+        self.assertEqual(report['preparedExactBodyRelations']+report['originalPendingRelations'],0)
+        self.assertEqual(report['oldSourceExtractionsRepeated']+report['newModelCalls']+report['newOcrCalls']+report['newRenders'],0)
+        self.assertFalse(report['noveltyAccepted']);self.assertFalse(report['newQuestionAdmissionAccepted'])
+        self.assertTrue(all(not r['newQuestionAdmissionAccepted'] for r in report['results']))
+
     def test_all_retrieved_bank_images_are_actually_distinguished_without_inventing_novelty(self):
         store=Store(Path(__file__).resolve().parents[1]/'veri/yks-birlestirme');root=store.child(store.current()['runId'])
         report=read_json(root/'physics-summary-discovery/actual-bank-image-review.json')

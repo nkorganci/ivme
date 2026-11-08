@@ -330,6 +330,29 @@ def main():
                 raise ValueError('Bounded actual image/topic proof cannot grant question admission')
             if destination.get('sourcePackageSha256')!=summary.get('packageSha256'):raise ValueError('Actual summary proof uses a different source package')
             inputs.append(target)
+    summary_additional_path=root/'physics-summary-additional-source-review/report.json';summary_additional={}
+    if summary_additional_path.is_file():
+        summary_additional=read_json(summary_additional_path)
+        if summary_additional['status']!='PASS' or summary_additional['noveltyAccepted'] or summary_additional['newQuestionAdmissionAccepted']:
+            raise ValueError('Incremental exact-body comparison is not novelty acceptance')
+        if summary_additional['bankSnapshotSha256'] not in bank_snapshots:raise ValueError('Additional summary source comparison uses a different bank')
+        inputs.append(summary_additional_path)
+    summary_body_preparations={}
+    for name,relative in [('visibleGeometry','physics-summary-body-discovery/report.json'),
+            ('actualLayouts','physics-summary-layout-actual-review/report.json'),
+            ('fiveBodies','physics-summary-five-body-preparation-v2/report.json')]:
+        target=root/relative
+        if not target.is_file():continue
+        report=read_json(target)
+        if report['status'] not in {'PASS','COMPLETE'} or report.get('questionBankWrites') or report.get('newQuestionAdmissionAccepted'):
+            raise ValueError('Summary geometry/body preparation cannot grant production admission')
+        if name=='fiveBodies' and (digest(report['package'])!=report['packageSha256'] or not report['cropImagesActuallyRead']):
+            raise ValueError('Five actual corrected source crops must remain hash-bound')
+        if name=='actualLayouts' and digest(report['sourceReport'])!=report['sourceReportSha256']:
+            raise ValueError('Actual layout review belongs to an earlier source geometry report')
+        inputs.append(target)
+        summary_body_preparations[name]={k:report[k] for k in ['status','documents','questions','states','actualLayoutBoardsRead',
+            'actualIndividualPagesOpened','sourceStatementMarkerReviewQuestions','questionBankWrites'] if k in report}
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -359,6 +382,9 @@ def main():
                     row['separateBoundedSummaryCandidateImagesActuallyRead']=summary_bank['sourceCandidateRelationsActuallyRead']
                     row['separateBoundedSummaryFineTopicsSupportedForPreparation']=summary_topic['questions']
                     row['nextAction']='COMPARE_OTHER_PREPARED_AND_ORIGINAL_PENDING_QUEUES_BEFORE_NOVELTY_AND_MAIN_INTAKE'
+                    if summary_additional:
+                        row['separateBoundedSummaryPreparedPendingComparisonComplete']=True
+                        row['nextAction']='UNPARSED_SOURCE_AND_NOVELTY_REVIEW_REQUIRED_NO_AUTOMATIC_MAIN_INTAKE'
             if row['sourceSha256'] in intake_by_source:
                 row['preparedQuestionIntakeStates']=dict(intake_by_source[row['sourceSha256']])
             specific=[a for a in amendments.get('results',[]) if a['sourceSha256']==row['sourceSha256']]
@@ -406,6 +432,8 @@ def main():
         report['additionalSummaryPrintedRegionSnapshot']={k:summary_keys.get(k) for k in ['status','documents','completed','states','readPrintedRegionCells','readContiguousRegionCells','sourceQuestionAnswersBound','wholeSourceKeyCompletenessAccepted']}
         report['separateSummaryActualBankImageSnapshot']={k:summary_bank.get(k) for k in ['status','sourceQuestions','sourceCandidateRelationsActuallyRead','distinctCanonicalImagesActuallyRead','newQuestionAdmissionAccepted']}
         report['separateSummaryActualTopicSnapshot']={k:summary_topic.get(k) for k in ['status','questions','actualTopicPdfPagesRead','categoryPublished','newQuestionAdmissionAccepted']}
+        report['separateSummaryAdditionalSourceSnapshot']={k:summary_additional.get(k) for k in ['status','summaryQuestionsCompared','mainPreparedSourcesCompared','mainPreparedBodiesWithCompleteFiveOptions','originalPendingOccurrencesReused','originalPendingBodiesWithCompleteFiveOptions','preparedExactBodyRelations','originalPendingRelations','noveltyAccepted','newQuestionAdmissionAccepted']}
+        report['separateSummaryBodyPreparationSnapshots']=summary_body_preparations
         report['bankSnapshotSha256']=next(iter(bank_snapshots),None)
         report['existingTransferStates']=reuse.get('states',{})
         if prior_occurrences:
