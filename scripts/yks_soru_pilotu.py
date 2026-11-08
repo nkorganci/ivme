@@ -29,6 +29,12 @@ APP=Path(__file__).resolve().parents[1]
 OUT=APP/'veri/pdf-source-registry'
 
 
+def comparable_bank_text(native,ocr):
+    text=native or ''
+    if sum(c.isalpha() for c in ocr or '')>sum(c.isalpha() for c in text):text=ocr
+    return text if len(text.strip())>30 else None
+
+
 def crop_cards(source,folder,answer_report,answers):
     if answer_report['status']!='PASS' or answer_report['sourceSha256']!=SOURCE or answer_report['answers']!=12:
         raise ValueError('Independent printed-key readings must agree first')
@@ -103,9 +109,8 @@ def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None):
     original={q['code']:q.get('original',{}).get('text','') for q in original['questions']}
     bank=[];no_text=[]
     for question in questions:
-        code=question['code'];text=original.get(code,'') or ''
-        if sum(c.isalpha() for c in ocr.get(code,'') or '')>sum(c.isalpha() for c in text):text=ocr[code]
-        if len(text)>30:bank.append((code,text))
+        code=question['code'];text=comparable_bank_text(original.get(code,''),ocr.get(code,''))
+        if text is not None:bank.append((code,text))
         else:no_text.append(code)
     cache=OUT/'text-comparison';cache.mkdir(exist_ok=True)
     key=hashlib.sha256(json.dumps(bank,ensure_ascii=False).encode()).hexdigest()
@@ -118,11 +123,12 @@ def compare(cards,folder,source_sha=SOURCE,shared_cache_folder=None):
         vectorizer=joblib.load(cache/'vectorizer.joblib');matrix=sparse.load_npz(cache/'bank.npz');cache_hit=True
     elif shared_cache_folder is not None and (Path(shared_cache_folder)/'bank-text-stamp.json').is_file():
         shared=Path(shared_cache_folder);proof=read_json(shared/'bank-text-stamp.json')
-        if proof.get('bankTextSha256')!=key or len(proof.get('files',{}))!=2 or any(
+        if proof.get('bankTextSha256')==key and len(proof.get('files',{}))==2 and not any(
             not (shared/name).is_file() or digest(shared/name)!=sha for name,sha in proof['files'].items()):
-            raise ValueError('Shared bank text cache is stale or incomplete')
-        vectorizer=joblib.load(shared/'bank-vectorizer.joblib');matrix=sparse.load_npz(shared/'bank-text.npz');cache_hit=True
-    else:
+            vectorizer=joblib.load(shared/'bank-vectorizer.joblib');matrix=sparse.load_npz(shared/'bank-text.npz');cache_hit=True
+        else:cache_hit=False
+    else:cache_hit=False
+    if not cache_hit:
         vectorizer=TfidfVectorizer(ngram_range=(1,2),max_features=250000,sublinear_tf=True,dtype=np.float32)
         matrix=vectorizer.fit_transform(text for code,text in bank).tocsr();cache_hit=False
         # Keep this new bank snapshot separate from the existing accepted batch cache.

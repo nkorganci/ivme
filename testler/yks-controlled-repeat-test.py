@@ -4,6 +4,7 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from yks_pilot_tekrar_incele import classify_exact
 from pdf_source_reconcile import text_fingerprint
+from yks_soru_pilotu import comparable_bank_text
 
 
 class ControlledRepeatTest(unittest.TestCase):
@@ -31,6 +32,12 @@ class ControlledRepeatTest(unittest.TestCase):
     def test_resembling_text_is_not_an_exact_match(self):
         modified={**self.original,'original':{'text':self.original['original']['text'].replace('doğrudur','yanlıştır')}}
         self.assertIsNone(classify_exact(self.card,self.question,modified,self.scope))
+
+    def test_whitespace_does_not_make_a_short_unreadable_bank_text_comparable(self):
+        self.assertIsNone(comparable_bank_text('','aş yl ha e Aa\nyanan\nargan gar?\n'))
+        self.assertIsNone(comparable_bank_text(' '*50,''))
+        readable='Özgün soru metninde beş seçenek ve tam bir soru kökü bulunmaktadır.'
+        self.assertEqual(comparable_bank_text('',readable),readable)
 
 
 if __name__=='__main__':unittest.main()

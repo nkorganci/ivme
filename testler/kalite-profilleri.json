@@ -573,6 +573,8 @@
         "scripts/yks_pilot_tekrar_tara.py",
         "scripts/yks_soru_pilotu.py",
         "scripts/pdf_source_reconcile.py",
+        "scripts/yks_pilot_kabul_secimi.py",
+        "scripts/yks_stages/stage_08.py",
         "testler/yks-controlled-repeat-test.py"
       ]
     },
@@ -588,6 +590,26 @@
         "scripts/yks_pilot_riskleri.py",
         "testler/yks-mock-key-test.py"
       ]
+    },
+    "yks-novelty-content": {
+      "kind": "python",
+      "args": ["testler/yks-novelty-test.py"],
+      "inputs": ["scripts/yks_soru_yenilik_kontrol.py", "scripts/yks_secenek_degisimi.py", "testler/yks-novelty-test.py"]
+    },
+    "yks-topic-content": {
+      "kind": "python",
+      "args": ["testler/yks-topic-content-test.py"],
+      "inputs": ["scripts/yks_konu_icerik_incele.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-topic-content-test.py"]
+    },
+    "yks-topic-semantic": {
+      "kind": "python",
+      "args": ["testler/yks-topic-semantic-test.py"],
+      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
+    },
+    "yks-pilot-package": {
+      "kind": "node",
+      "args": ["--test-reporter=tap", "testler/yks-pilot-package.test.mjs"],
+      "inputs": ["scripts/yks-pilot-package.mjs", "scripts/yks_stages/stage_09.py", "scripts/yks_pilot_kabul_secimi.py", "scripts/learning-resource-contract.mjs", "testler/yks-pilot-package.test.mjs"]
     },
     "yks-option-permutation": {
       "kind": "python",
@@ -855,13 +877,22 @@
       "checks": [
         "yks-exact-reuse",
         "yks-controlled-repeat",
-        "yks-option-permutation"
+        "yks-option-permutation",
+        "yks-novelty-content"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
         "Tek on iki soruluk pilot bütün tekrar taramasını bitirmez."
       ],
       "nextAction": "Mevcut kanonik soruları yeniden ekleme; tam çıkarım için kaynak/cevap/konu kanıtlarını tamamla."
+    },
+    "YKS-09": {
+      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package"],
+      "remainingAcceptance": [
+        "Gerçek kaynak kırpımı, basılı cevap, güncel tekrar ve dar konu kanıtlarıyla kabul paketi.",
+        "Model önerisi öğretmen kararı veya canlı yayın kabulü değildir."
+      ],
+      "nextAction": "Kaynak soru kökü ve aynı MEBİ yaprağının PDF içeriğini karşılaştır; belirsiz adayı yayınlama."
     }
   }
 }

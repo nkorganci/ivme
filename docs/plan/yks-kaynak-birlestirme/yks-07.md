@@ -129,7 +129,7 @@ açıkken tam YKS-07 BITTI değildir.
 ## Temsilî pilot kapısı — VERIFIED
 
 `python scripts/ivme.py yks adim YKS-07 --scope pilot --resume` yalnız temsilî
-pilot yürütücüsüdür. `yks-07/pilot/attempt-0002/source-key-pilot-acceptance.json`
+pilot yürütücüsüdür. `yks-07/pilot/attempt-0005/source-key-pilot-acceptance.json`
 19 taramada 387, iki denemede ayrı sekiz sütunda 291 basılı cevabı ve on gerçek
 risk sınıfını doğrular. Deneme basılı test sayıları alternatif sorular dahil
 TYT 125 ve AYT 166'dır; soru numaraları sütunlar arasında karıştırılmaz.

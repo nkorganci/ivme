@@ -103,3 +103,42 @@ yalnız kayıtlı MEBİ yapraklarını kaynak metniyle sıralar. 33 Din sorusu i
 86 önceki konu embedding'i tekrar kullanıldı, 33 yeni soru vektörü hesaplandı.
 `question-topics/din/topic-candidates.json` skorları karar/onay değildir; soru
 kökü ve seçenek bağlamı okunmadan kategori ataması yapılmaz.
+
+İlk içerik denemesinde yalnız başlıklarla getirilen ilk sekiz adayın Kadirilik ve
+Alevilik-Bektaşilik için doğru yaprağı dışarıda bıraktığı görüldü. Bu nedenle
+`yks_soru_konu_adaylari.py` artık aynı sınav/branş içindeki ilk sekiz BGE adayına,
+gerçek konu PDF metni ile **yalnız soru kökü** üzerinden bulunan ilk dört adayı
+ekler. Bu genişletmede 119 geçerli embedding yeniden kullanıldı, yeni embedding
+hesaplanmadı. Seçeneklerdeki çeldiriciler PDF aday aramasına girmez.
+
+`yks_konu_icerik_incele.py --subject din` yerel Qwen'e yalnız izinli kimlikleri,
+özgün soru kökü satırlarını ve kısa gerçek MEBİ PDF alıntılarını verir. Sonuçta
+bir soru satırı ve seçilen konunun kendi PDF alıntısı zorunludur. Sınav/branş
+dışı kimlik, var olmayan satır veya başka konuya ait PDF alıntısı reddedilir.
+Önceki geçerli kaynak/PDF bağlı okumalar aday listesi genişlese de, kaynakları
+değişmemişse tekrar kullanılır. İlk sekiz okuma bu şekilde korundu; kalan parti
+`question-topics/din/content-topic-review.json` imlecinden ilerler. Bunlar otomatik
+adaylardır; kategori yayını, yeni soru kabulü veya öğretmen onayı değildir.
+
+## Sınırlı pilot kapısı — VERIFIED
+
+`yks_pilot_kabul_secimi.py` gerçek kırpımları okunan AYT Din tarama 8'in
+1, 2 ve 4. sorularını iki modelin konu desteği ve özgün basılı anahtarıyla
+yalnız yalıtılmış provaya seçer. Önceki 12 Tarih sorusu mevcut kimlikleriyle
+yeniden kullanılır. `python scripts/ivme.py yks adim YKS-08 --scope pilot --resume`
+bu **15 soruluk kapsamı** doğrular; diğer 372 aday açıkça ertelenir.
+`yks-08/pilot/attempt-0003/bounded-duplicate-pilot-acceptance.json` kanıttır.
+Tam arşiv yürütücüsü kabul edilmedi; bu aşamanın tamamına BITTI yazılmaz.
+
+İkinci bağımsız kök/seçenek karşılaştırması 80.230 bankayı taradı, 80.229
+kullanılabilir metin ve bir bozuk OCR (`sb-83612`) buldu. Eski karşılaştırmada
+sondaki boşluk kısa OCR'ı 30 karakter eşiğinden geçiriyordu; `.strip()`
+kontrolü ve regresyon testi düzeltildi. Banka yeniden karşılaştırıldı,
+önbellek yalnız bu değişiklik için yenilendi. Fizik sorusunun gerçek görseli
+elektroskop kapsamındadır ve yalnız üç yeni Tasavvuf sorusundan farklı diye
+okunmuştur; bu, genel banka metni onarımı veya diğer adayların kabulü değildir.
+
+Kaynak/PDF alıntısının varlığı anlamsal doğruluk sayılmaz. Qwen'in Rifailik
+sorusunu Din–Bilim İlişkisi'ne bağlayan önerisi yanlış bulundu; kaynaklar
+değiştirilmeden açık incelemede kaldı. `yks_konu_anlam_kontrol.py` yerel
+GPT-OSS ile bu ilişkiyi bağımsız sorgular. Eksik/uyuşmayan kanıt yayına girmez.

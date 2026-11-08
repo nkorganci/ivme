@@ -55,6 +55,26 @@ Pilot/tam arşiv kapsamı farklıysa ikisini ayrı yaz; pilot bütün görevi bi
 
 Canlı yayın yok; yeni cevap/şık/görsel uydurma yok.
 
+## Sınırlı üç soru paketinin yürütücüsü
+
+`python scripts/ivme.py yks adim YKS-09 --scope pilot --resume` yalnız
+YKS-08'in 12 eski + üç yeni soruluk kabulünü kullanır. Yeni pakette AYT Din
+tarama 8'in 1, 2 ve 4. soruları vardır. İlk iki soru **Tasavvufi Düşüncenin
+Oluşumu**, dördüncü **Tasavvufi Düşüncenin Ahlaki Boyutu** yaprağına bağlanır.
+Sonuncusu MEBİ'nin yeni konu kimliklerinden biridir; eski bir geniş konuya
+otomatik yayılmaz. Önceki 12 Tarih kimliği CSV'ye yeni soru olarak girmez.
+
+`yks-pilot-package.mjs` mevcut `learning-resource-contract.mjs` doğrulayıcısını
+kullanır. Kaynak cevap/iki okuma/anahtar konumu, görsel hash'i, beş tam seçenek,
+kayıtlı sınav/branş, bağımsız konu desteği ve gerçek soru/PDF alıntısı zorunludur.
+CSV ve v2 ilişkiler sürümlü `yks-09/pilot/attempt-NNNN/` dizinine yazılır.
+Özgün görsel baytları aynen kopyalanır; öğretmen durumu PENDING, güven LOW,
+kapsam CANDIDATE kalır. Bunlar yalıtılmış prova girdisidir; üretim yayını değildir.
+
+Kalan somut iş: YKS-10'da gerçek INSERT_ONLY ön izleme/aktarım/ikinci çalıştırma,
+eski soru ve geçmiş koruması, dar kategori kimlikleri, kaynak açılması ve geri
+alma kontrolü. Diğer 372 pilot adayı ile tam arşiv bu kabulün dışında kalır.
+
 ## Başarısızlık ve geri dönüş
 
 Yalnız aday paket sürümü kullanılmaz; kaynaklar ve banka aynı kalır.

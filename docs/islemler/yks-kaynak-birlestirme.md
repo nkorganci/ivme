@@ -134,3 +134,32 @@ Deneme sütunlarının her birinde numara yeniden başlayabilir. Alternatif din 
 felsefe soruları özgün sayıda tutulur. Tek anahtar listesine düzleştirilmez.
 YKS-07 yürütücüsü şimdilik yalnız `--scope pilot` kabulünü uygular; tam arşiv,
 dar konu/görsel kabulü ve üretim yayını ayrı kapılarda kalır.
+
+Sınırlı yeni soru paketi ve konu denetimi:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_soru_konu_adaylari.py --subject din
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_konu_icerik_incele.py --subject din
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_soru_yenilik_kontrol.py --subject din
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_konu_anlam_kontrol.py --subject din
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_pilot_kabul_secimi.py
+python scripts/ivme.py kalite calistir YKS-09
+python scripts/ivme.py yks adim YKS-08 --scope pilot --resume
+python scripts/ivme.py yks adim YKS-09 --scope pilot --resume
+```
+
+Her komut yalnız eksik/değişen kanıt için seçilir; çalışan yerel model işini ikinci
+kez başlatma. Qwen kaynak kökü satırı ve gerçek konu PDF alıntısıyla öneri yapar;
+ayrı GPT-OSS önerinin gerçek alıntıyla desteklenip desteklenmediğini sorgular.
+Bu makinede GPT-OSS'nin ilk GPU denemesi HTTP 500 verdi; geçerli deneme
+`num_gpu=0`, 4.096 bağlamla CPU üzerinde yapılır. Başarısız deneme kabul değildir.
+Her iki modelde digest/istem/şema/seçenek/kaynak hash'i önbelleğe girer.
+
+`bounded-pilot-selection.json` yalnız gerçek görseli okunan AYT Din tarama 8'in
+1, 2 ve 4. sorularını, 12 eski Tarih kimliğinin yeniden kullanımıyla birleştirir.
+3. sorunun seçilmiş kısa PDF alıntısı bağımsız okumaya yetersiz geldi; otomatik
+olarak pakete alınmaz. 372 diğer aday ertelenir. `stage_09.py` yalnız üç yeni
+sorunun kayıpsız özgün görselini, basılı kaynak cevaplarını, CSV'yi ve ortak v2
+sözleşmeli konu ilişkilerini sürümlü pilot dizinine hazırlar. Öğretmen durumu
+PENDING kalır; canlı katalog/DB/görsel köküne yazmaz. Tam arşiv veya canlı
+INSERT_ONLY kapıları ayrı işlerdir.
