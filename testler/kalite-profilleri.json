@@ -691,6 +691,16 @@
       "args": ["testler/yks-evidence-db-proof-test.py"],
       "inputs": ["scripts/yks_kanit_db_prova.py", "scripts/yks-evidence-schema.sql", "scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java", "testler/yks-evidence-db-proof-test.py"]
     },
+    "yks-raster-source-keys": {
+      "kind": "python",
+      "args": ["testler/yks-raster-key-test.py"],
+      "inputs": ["scripts/yks_raster_anahtar_incele.py", "scripts/yks_raster_soru_kirpim.py", "testler/yks-raster-key-test.py"]
+    },
+    "yks-mock-source-decoding": {
+      "kind": "python",
+      "args": ["testler/yks-mock-decoding-test.py"],
+      "inputs": ["scripts/yks_deneme_render_kontrol.py", "testler/yks-mock-decoding-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -957,7 +967,9 @@
         "yks-new-source-discovery",
         "yks-new-source-exam-scope",
         "yks-evidence-archive",
-        "yks-evidence-db-proof"
+        "yks-evidence-db-proof",
+        "yks-raster-source-keys",
+        "yks-mock-source-decoding"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",

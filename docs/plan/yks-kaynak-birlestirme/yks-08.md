@@ -196,3 +196,13 @@ okuma ve güncel cevap korunur. Öğretmen veya yeni anlamsal kabul yazılmaz.
 bu denetimden geçti; **27 belge** eksik/farklı kanıt yüzünden incelemede kaldı.
 Bu kaynakların mevcut soru kimlikleri korunur ve yeniden içe aktarılmaz.
 Raporun banka snapshot'ı üç yeni kaynak karşılaştırmasıyla aynıdır.
+
+Raster anahtar genişlemesinin 40 sorusu ayrıca bütün 80.230 bankaya karşı
+karşılaştırıldı: 16 mevcut metin/cevap/kapsam adayı, 20 içerik/görsel incelemesi,
+4 branş farkı. Dördünün de **cevabı aynı**; Edebiyat başlıklı kaynak içindeki
+soruların mevcut kontrollü kategorisi Türkçe/Sözcükte Anlam'dır. Bu farklar
+cevap nüshası çatışması değildir; mevcut branş otomatik ezilmez.
+
+Dört karşılaştırma toplamı **4.886 soru / 2.926 mevcut aday / 1.883 içerik
+incelemesi / 77 fark**: 68 Matematik–Geometri, 4 Edebiyat–Türkçe kapsamı,
+önceden doğrulanmış 5 basılı cevap nüshası. Yeni veya kesin tekrar kabulü yok.

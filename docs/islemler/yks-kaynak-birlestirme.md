@@ -312,3 +312,22 @@ SQL değişirse `yks_kanit_db_prova.py` önce geçici `ivme_test` içinde üç g
 SQL senaryosunu `ivme.py test YksEvidenceArchiveTest` üzerinden çalıştırır.
 Geçerli üç test ve eski dört aktarım testinin ham XML/log kanıtları ayrı
 korunur; salt kayıt/geri okuma için eski DB provasını tekrarlama.
+
+Denemelerin tam anahtar taraması tamamlandı: 46 belge, 42 kaynak/5.988 cevap;
+ikinci geçiş 0 OCR/model. 21 belgede native/render uyarıları için
+`pdf-on-tarama/mock-decoding/report.json` okunur. Yeniden render yalnız ilgili
+PDF/renderer/girdi değişince: `yks_deneme_render_kontrol.py` (2.327 sayfa).
+
+İki raster Edebiyat anahtarı ve 40 sorunun ayrı hattı da tamamlandı:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_raster_anahtar_incele.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_raster_soru_kirpim.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --raster
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py --raster
+```
+
+Geçerli 4.846 eski karşılaştırmayı yineleme. Raster çıktısı 16 mevcut aday,
+20 içerik/görsel incelemesi ve cevapları aynı olan 4 Edebiyat–Türkçe branş
+farkıdır. Toplam 4.886 sorunun kanıtı ve deneme çözümleme uyarıları yeni
+`yks_tam_kapsam.py` kapsamına ve sonraki DB checkpoint'ine dahil edilir.

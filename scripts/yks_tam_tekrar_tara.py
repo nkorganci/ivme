@@ -19,9 +19,9 @@ def crop_scope(report):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);choice=parser.add_mutually_exclusive_group()
-    choice.add_argument('--repairs',action='store_true');choice.add_argument('--shared',action='store_true');args=parser.parse_args()
+    choice.add_argument('--repairs',action='store_true');choice.add_argument('--shared',action='store_true');choice.add_argument('--raster',action='store_true');args=parser.parse_args()
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId'])
-    source=root/('full-question-shared-context/progress.json' if args.shared else 'full-question-crop-repairs/progress.json' if args.repairs else 'full-question-crops/progress.json');crops=read_json(source)
+    source=root/('full-question-raster-crops/progress.json' if args.raster else 'full-question-shared-context/progress.json' if args.shared else 'full-question-crop-repairs/progress.json' if args.repairs else 'full-question-crops/progress.json');crops=read_json(source)
     expected='COMPLETE' if args.repairs or args.shared else 'SUPPORTED_KEYED_DIAGNOSTIC_CROP_PASS_COMPLETE'
     accepted='REPAIRED_TECHNICAL_PREPARATION' if args.repairs or args.shared else 'PREPARED'
     if crops['status']!=expected:raise ValueError('Complete supported source crop pass first')
@@ -37,7 +37,7 @@ def main():
             if digest(card['image'])!=card['imageSha256']:raise ValueError('Source question crop changed')
             cards.append(card)
     if len({c['code'] for c in cards})!=len(cards):raise ValueError('Repeated source code in full comparison input')
-    folder=root/('full-question-shared-comparison' if args.shared else 'full-question-repair-comparison' if args.repairs else 'full-question-comparison');folder.mkdir(exist_ok=True)
+    folder=root/('full-question-raster-comparison' if args.raster else 'full-question-shared-comparison' if args.shared else 'full-question-repair-comparison' if args.repairs else 'full-question-comparison');folder.mkdir(exist_ok=True)
     input_sha=digest(source);input_scope=crop_scope(crops)
     with process_lock(folder/'.writer.lock'):
         write_json(folder/'progress.json',{'status':'RUNNING','scope':'ALL_TECHNICALLY_COMPLETE_DIAGNOSTIC_QUESTION_CANDIDATES',

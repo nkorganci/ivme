@@ -287,3 +287,28 @@ alma geçici ivme_test içinde üç gerçek testten geçti. İlk toplu geri okum
 Windows socket tampon sınırı görüldü; tek dosya/binary okuma düzeltildi ve
 bütün arşivin geri okuması geçti. Veritabanı arşivi soru kabulü değildir.
 Devam ve geri alma komutları [işlem tarifinde](../../islemler/yks-kaynak-birlestirme.md).
+
+## Tam deneme anahtarı ve raster anahtar genişlemesi
+
+**Alt iş — BITTI:** 46 denemenin anahtar düzeni incelendi; 42 belgede toplam
+5.988 basılı cevap iki okumayla uyuştu. Üç AYT gövdesinde iki farklı deneme
+numarası basılı; bir AYT PDF son anahtar sayfası yerine soru ile bitiyor.
+Dört kaynak aktarım dışında kalır. İkinci geçiş 46 belgeyi yeniden kullandı,
+yeni OCR/model çağrısı 0; eski pilot çıktıları değişmedi.
+
+**Alt iş — BITTI (çözümleme taraması):** `yks_deneme_render_kontrol.py` 46
+PDF'nin 2.327 sayfasını native ve 150 DPI RGB render ile taradı. 25 belge
+uyarısız, 20 belgede ActualText konumlandırma/etiket ağacı uyarısı, bir
+belgede gerçek zlib akış hatası var: `f8bbb5b413ae…`, 2026-09-21 TYT Deneme1,
+fiziksel sayfa29. Uyarılar soru kabulünden önce çözülmelidir; sağlam anahtar
+gövdeyi onaylamaz. 21 uyarılı belge dört anahtar istisnasını da içerir;
+bu kümeler toplanıp 25 sorunlu belge diye sayılmaz.
+
+**Alt iş — BITTI:** Edebiyat AYT1/14 raster anahtarları, gerçekten açılmış
+kaynak görüntüsü ve bağımsız yerel Qwen okumasıyla 20+20 cevapta uyuştu.
+`yks_raster_anahtar_incele.py` beklenen cevapları yerel model istemine vermez.
+Basılı gövde sınav/test/ders kimliği ve 1–20/beş seçenek dizisi ayrıca kontrol
+edilir. `yks_raster_soru_kirpim.py` yalnız bu iki kaynağın 40 yeni kırpımını
+hazırladı: satır açığı 0, kaynak RGB eşitliği PASS. İlk 4.846 soru yeniden
+çıkarılmadı. Toplam tarama anahtarı **261 belge/4.886 cevap**, açık istisna 75.
+Yeni karşılaştırma `full-question-raster-comparison/` içindedir.

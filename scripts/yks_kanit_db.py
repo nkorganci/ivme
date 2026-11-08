@@ -29,6 +29,9 @@ RECORD_REPORTS={
  'answer-edition-conflict':('full-question-comparison/answer-edition-conflicts.json','results','sourceCode'),
  'new-discovery':('new-source-discovery/scoped-report.json','results','sourceSha256'),
  'body-exception':('pdf-on-tarama/diagnostic-body-exceptions/report.json','results','sourceSha256'),
+ 'raster-key':('pdf-on-tarama/full-key-scan/raster-keys/report.json','results','sourceSha256'),
+ 'repeat-raster':('full-question-raster-comparison/controlled-repeat-review.json','results','sourceCode'),
+ 'mock-decoding':('pdf-on-tarama/mock-decoding/report.json','results','sourceSha256'),
 }
 
 

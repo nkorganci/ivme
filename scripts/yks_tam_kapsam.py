@@ -21,8 +21,8 @@ def unique(rows,key):
     return index
 
 
-def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None):
-    existing=existing or {};body=body or {};discoveries=discoveries or {}
+def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,existing=None,body=None,discoveries=None,decoding=None):
+    existing=existing or {};body=body or {};discoveries=discoveries or {};decoding=decoding or {}
     groups=unique(groups,'sha256');observations=unique(observations,'sourceSha256');pages=unique(pages,'sha256')
     if set(groups)!=set(observations) or set(groups)!=set(pages):raise ValueError('All unique PDFs must have complete page observations')
     if not set(keys)<=set(groups) or not set(diagnostics)<=set(groups) or not set(mocks)<=set(groups):raise ValueError('Unknown source in key scope')
@@ -40,6 +40,10 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
         elif key:
             state='DIAGNOSTIC_KEY_VERIFIED_QUESTION_CONTENT_REVIEW_REQUIRED'
             remaining='SOURCE_QUESTION_GRAPHICS_FINE_TOPIC_AND_DUPLICATE_ACCEPTANCE'
+        elif mock and mock['status']!='SOURCE_MOCK_KEY_VERIFIED':
+            state='MOCK_IDENTITY_OR_KEY_EXCEPTION_REVIEW_REQUIRED';remaining=mock['status']
+        elif mock and decoding.get(sha,{}).get('status')=='SOURCE_DECODING_REVIEW_REQUIRED':
+            state='MOCK_DECODING_WARNING_SOURCE_BODY_REVIEW_REQUIRED';remaining='RESOLVE_NATIVE_OR_RASTER_DECODING_WARNINGS_BEFORE_QUESTION_ACCEPTANCE'
         elif mock and mock['status']=='SOURCE_MOCK_KEY_VERIFIED':
             state='MOCK_SECTION_KEYS_VERIFIED_QUESTION_BODY_BRANCH_REVIEW_REQUIRED'
             remaining='SECTION_BODY_NUMBER_SHARED_CONTEXT_AND_BRANCH_BINDING'
@@ -66,6 +70,8 @@ def reconcile(groups,observations,pages,keys,diagnostics,mocks,comparisons,exist
             'currentExistingTransferRevalidation':None if sha not in existing else {k:existing[sha].get(k) for k in ['status','expectedQuestions','currentDistinctLinkedQuestions','issues','reuseAction','freshSemanticApproval']},
             'bodyExceptionPreparation':None if sha not in body else {k:body[sha].get(k) for k in ['status','questions','sourceKeysApproved','pixelsAndContentAccepted']},
             'newQuestionRegionDiscovery':discoveries.get(sha),
+            'sourceDecodingCheck':None if sha not in decoding else {k:decoding[sha].get(k) for k in ['status','pageCount','issues','bodyContentAccepted']},
+            'mockKeyCheck':None if not mock else {k:mock.get(k) for k in ['status','printedMockNumber','sourceKeyPage','issue','branchAndTopicAssignmentsAccepted']},
             'priorImportEvidence':{'coverageState':legacy.get('coverageState'),'expectedQuestions':legacy.get('expectedQuestions'),
                 'linkedQuestions':legacy.get('linkedQuestions'),'processingCandidate':group.get('processingCandidate'),
                 'requiresCurrentBankAndSourceRevalidation':True},
@@ -81,7 +87,7 @@ def main():
     mock=root/'pdf-on-tarama/full-mock-keys/progress.json'
     inputs=[file,page,obs,key,diagnostic];inputs+=[mock] if mock.is_file() else []
     counters={};bank_snapshots=set()
-    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison']:
+    for name in ['full-question-comparison','full-question-repair-comparison','full-question-shared-comparison','full-question-raster-comparison']:
         proof=root/name/'controlled-repeat-review.json'
         if not proof.is_file():continue
         inputs.append(proof)
@@ -95,6 +101,18 @@ def main():
         bank_snapshots.add(reuse['bankSnapshotSha256']);inputs.append(existing)
     if len(bank_snapshots)>1:raise ValueError('Compared source and existing-transfer bank snapshots differ')
     if body_report:inputs.append(body)
+    raster=root/'pdf-on-tarama/full-key-scan/raster-keys/report.json';key_rows=read_json(key)['results']
+    if raster.is_file():
+        from yks_raster_anahtar_incele import validate_key
+        raster_report=read_json(raster)
+        if raster_report['status']!='COMPLETE':raise ValueError('Wait for complete raster key source readings')
+        additional=[validate_key(row) for row in raster_report['results'] if row['status']=='SOURCE_KEY_VERIFIED']
+        if {r['sourceSha256'] for r in key_rows}&{r['sourceSha256'] for r in additional}:raise ValueError('Raster key extension overlaps existing native-key source set')
+        key_rows+=additional;inputs.append(raster)
+    decoding=root/'pdf-on-tarama/mock-decoding/report.json';decoded=read_json(decoding) if decoding.is_file() else {}
+    if decoded:
+        if decoded['status']!='COMPLETE':raise ValueError('Wait for complete source decoding check')
+        inputs.append(decoding)
     discovery=root/'new-source-discovery/scoped-report.json'
     if not discovery.is_file():discovery=root/'new-source-discovery/progress.json'
     discovery_report=read_json(discovery) if discovery.is_file() else {}
@@ -109,10 +127,10 @@ def main():
     with process_lock(folder/'.writer.lock'):
         rows=reconcile([json.loads(l) for l in file.read_text(encoding='utf-8').splitlines()],
             [json.loads(l) for l in obs.read_text(encoding='utf-8').splitlines()],preflight['documents'],
-            unique(read_json(key)['results'],'sourceSha256'),unique(read_json(diagnostic)['results'],'sourceSha256'),
+            unique(key_rows,'sourceSha256'),unique(read_json(diagnostic)['results'],'sourceSha256'),
             unique(mock_report.get('results',[]),'sourceSha256'),counters,
             unique(reuse.get('results',[]),'sourceSha256'),unique(body_report.get('results',[]),'sourceSha256'),
-            unique(discovery_report.get('results',[]),'sourceSha256'))
+            unique(discovery_report.get('results',[]),'sourceSha256'),unique(decoded.get('results',[]),'sourceSha256'))
         output=folder/'sources.jsonl';temporary=output.with_suffix('.jsonl.part')
         with temporary.open('w',encoding='utf-8') as stream:
             for row in rows:stream.write(json.dumps(row,ensure_ascii=False)+'\n')
