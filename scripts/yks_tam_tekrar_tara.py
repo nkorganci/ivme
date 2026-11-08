@@ -1,5 +1,6 @@
 """Compare all technically complete keyed diagnostic crops against the whole bank."""
 from collections import Counter
+import argparse
 from pathlib import Path
 
 from yks_birlestirme import Store,digest,signature,read_json,write_json,process_lock
@@ -11,16 +12,22 @@ from pdf_source_reconcile import text_fingerprint
 def crop_scope(report):
     # Rechecking unchanged source/pixel proofs changes execution counters only.
     # Bind the comparison to the actual question packages and proofs instead.
-    return signature({'sourceKeyIdentity':report['sourceKeyIdentity'],'results':report['results']})
+    identity={'sourceKeyIdentity':report.get('sourceKeyIdentity'),'results':report['results']}
+    if 'originalSourceCropReportSha256' in report:identity['originalSourceCropReportSha256']=report['originalSourceCropReportSha256']
+    return signature(identity)
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__);choice=parser.add_mutually_exclusive_group()
+    choice.add_argument('--repairs',action='store_true');choice.add_argument('--shared',action='store_true');args=parser.parse_args()
     store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId'])
-    source=root/'full-question-crops/progress.json';crops=read_json(source)
-    if crops['status']!='SUPPORTED_KEYED_DIAGNOSTIC_CROP_PASS_COMPLETE':raise ValueError('Complete supported source crop pass first')
+    source=root/('full-question-shared-context/progress.json' if args.shared else 'full-question-crop-repairs/progress.json' if args.repairs else 'full-question-crops/progress.json');crops=read_json(source)
+    expected='COMPLETE' if args.repairs or args.shared else 'SUPPORTED_KEYED_DIAGNOSTIC_CROP_PASS_COMPLETE'
+    accepted='REPAIRED_TECHNICAL_PREPARATION' if args.repairs or args.shared else 'PREPARED'
+    if crops['status']!=expected:raise ValueError('Complete supported source crop pass first')
     cards=[];packages={};deferred=[]
     for row in crops['results']:
-        if row['status']!='PREPARED':deferred.append({'sourceSha256':row['sourceSha256'],'status':row['status']});continue
+        if row['status']!=accepted:deferred.append({'sourceSha256':row['sourceSha256'],'status':row['status']});continue
         path=Path(row['package'])
         if digest(path)!=row['packageSha256']:raise ValueError('Technically checked source package changed')
         package=read_json(path);packages[str(path)]=row['packageSha256']
@@ -30,7 +37,7 @@ def main():
             if digest(card['image'])!=card['imageSha256']:raise ValueError('Source question crop changed')
             cards.append(card)
     if len({c['code'] for c in cards})!=len(cards):raise ValueError('Repeated source code in full comparison input')
-    folder=root/'full-question-comparison';folder.mkdir(exist_ok=True)
+    folder=root/('full-question-shared-comparison' if args.shared else 'full-question-repair-comparison' if args.repairs else 'full-question-comparison');folder.mkdir(exist_ok=True)
     input_sha=digest(source);input_scope=crop_scope(crops)
     with process_lock(folder/'.writer.lock'):
         write_json(folder/'progress.json',{'status':'RUNNING','scope':'ALL_TECHNICALLY_COMPLETE_DIAGNOSTIC_QUESTION_CANDIDATES',

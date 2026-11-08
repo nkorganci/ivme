@@ -1,5 +1,6 @@
 """Classify full-source repeat candidates with current answers and controlled scopes."""
 from collections import Counter
+import argparse
 import json
 from pathlib import Path
 
@@ -10,7 +11,10 @@ from yks_pilot_tekrar_incele import classify_exact
 
 
 def main():
-    store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId']);folder=root/'full-question-comparison'
+    parser=argparse.ArgumentParser(description=__doc__);choice=parser.add_mutually_exclusive_group()
+    choice.add_argument('--repairs',action='store_true');choice.add_argument('--shared',action='store_true');args=parser.parse_args()
+    store=Store(APP/'veri/yks-birlestirme');state=store.current();root=store.child(state['runId'])
+    folder=root/('full-question-shared-comparison' if args.shared else 'full-question-repair-comparison' if args.repairs else 'full-question-comparison')
     proof=read_json(folder/'comparison-report.json');comparison=read_json(folder/'bank-comparison.json')
     if proof['bankComparisonSha256']!=digest(folder/'bank-comparison.json'):raise ValueError('Full bank comparison changed')
     bank,_=live_bank(APP)

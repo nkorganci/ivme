@@ -193,8 +193,33 @@ Tam kaynak anahtarı/kırpım/tekrar hattında eksik aşamayı seç:
 Geçerli anahtarları/görselleri yeniden okutma: 191 doğrudan ve 14 ayrı anahtarın
 ikinci geçişinde yeni model çağrısı 0; ayrı kitap ikinci geçişinde OCR 0;
 kırpım ikinci geçişinde 259 belge tekrar kullanıldı ve render 0. Toplam
-259 kaynakta 4.846 cevap, 251 teknik sağlam kaynakta 4.667 soru vardır.
-Sekiz sorunlu belgenin 179 sorusu aktarım dışında; diğer kaynak düzenleri açık.
+259 kaynakta 4.846 cevap ve ilk pakette 4.667 teknik sağlam soru vardır.
+Sekiz sorunlu belgenin 179 sorusu aşağıdaki ayrı düzeltme hattında hazırlandı;
+diğer kaynak düzenleri ve içerik/konu/tekrar kabulü açık.
 Salt sayaçların değişmesi kaynak paketinin değişmesi sayılmaz. Gerçek PDF,
 anahtar, soru/görsel hash'i veya mevcut banka sürümü değişirse ilgili kanıt
 yeniden doğrulanır. Hiçbir komut tam görevi BITTI yapmaz veya canlıya soru yazmaz.
+
+Sekiz yerleşim istisnasında eski çıktıları koruyan ek hazırlık:
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_kirpim_istisna.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --repairs
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py --repairs
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_ortak_sekil_kirpim.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_tara.py --shared
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_tekrar_incele.py --shared
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_cevap_nusha_incele.py
+```
+
+`--repairs` yedi belge/150 soruyu, `--shared` tek belge/29 soruyu ayrı
+klasörlerde karşılaştırır; ilk 4.667 soruluk geçerli işi yinelemez. Ortak
+şeklin iki soruda da kaynak pikselleri korunur; komşu soru içeriği eklenmez.
+Beş basılı cevap nüshası farkı mevcut bankayı otomatik düzeltmez; eski ve yeni
+basılı soru numaraları ayrı tutulur. Her adımın çalışma sayacı ve kalan işi
+ilgili `progress.json` içindedir.
+
+Üç karşılaştırma tamamlandı: 4.846 soruda 2.910 mevcut aday, 1.863 içerik/görsel
+incelemesi ve 73 fark (68 Matematik–Geometri kapsamı, 5 cevap nüshası).
+YKS-07/08/09/10 kalite profilleri sırasıyla 43/21/14/18 test PASS; gerçek
+yalıtılmış aktarımın daha önce geçen dört backend senaryosu yeniden çalıştırılmadı.

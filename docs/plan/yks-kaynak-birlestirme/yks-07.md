@@ -199,3 +199,20 @@ veya özel glyph kaydı vardır; teknik piksel eşitliği içerik/konu onayı sa
 İkinci geçiş 259 dokümanı, sıfır yeni kırpım/piksel render'ıyla yeniden kullandı.
 Kırpım raporu `full-question-crops/progress.json` içindedir. Bütün arşivin
 tamamlandığı veya bu soruların bankaya eklendiği anlamına gelmez.
+
+## Sekiz yerleşim istisnasının ayrı düzeltilmesi
+
+`yks_kirpim_istisna.py` eski paketleri değiştirmeden yedi belge/150 soruyu
+ayrı kırpımlara hazırladı. Sütunu aşan tablo kenarları, tam genişlikte tabloyu
+izleyen iki soru sütunu ve formülün büyük font kutusu ele alındı. Gerçek soru
+numaralarının tam sırası, beş seçenek, satır kapsamı ve kaynak RGB pikselleri
+yeniden kontrol edilir. Başlık genişliği tek başına tam sayfa sorusu sayılmaz.
+
+Kalan Coğrafya testinin 4 ve 5. soruları aynı 1985/2023 nüfus piramitlerini
+kullanıyor. `yks_ortak_sekil_kirpim.py` ortak bölgeyi kaynak PDF'den bir kez
+aldı ve iki soruya aynı `contextId` ile bağladı. Her soru için şekil + kendi
+soru bölgesi yalnız özgün pikseller ve beyaz aralıkla tek görselde yer alır;
+5. soruya 4. sorunun metni/seçenekleri eklenmez. Her parça ve birleşik görsel
+piksel düzeyinde doğrulandı; iki sonuç gerçek kaynaktan ayrıca görsel okundu.
+Bu belgenin 29 sorusu `full-question-shared-context/` paketinde teknik olarak
+hazırdır. Teknik onay, dar konu/cevap nüshası kabulü veya öğretmen onayı değildir.

@@ -158,3 +158,22 @@ aynı soru sayılmaz. Yeni model/OCR/embedding veya soru yazımı yapılmaz.
 kontrollü `subject_ids/exam_ids` kapsamını denetler. Kaynak paket/cevap
 değişikliği eski karşılaştırmayı geçersiz kılar; salt çalışma sayacı değişikliği
 tekrar OCR/kırpım yapılmasına neden olmaz. Tam konu/görsel kabulü ayrıca gerekir.
+
+Tam ilk partide 2.823 mevcut tam metin/cevap/kontrollü kapsam adayı, 1.772
+içerik/görsel incelemesi ve 72 farklılık bulundu. 68'i genel Matematik kaynak
+başlığı ile mevcut Geometri alt branşıdır; bunlar bankanın yanlış etiketli
+olduğunu kanıtlamaz. Dört cevap farkında eski kitapların basılı anahtarları
+bankadaki harfi, yeni ayrı testler başka harfi destekler. Düzeltilen 150 soru
+ayrıca `--repairs` ile karşılaştırıldı: 63 mevcut aday, 86 içerik/görsel
+incelemesi ve bir ek cevap nüshası farkı. Ortak şekilli 29 soru `--shared` ile
+ayrı karşılaştırıldı: 24 mevcut aday, 5 içerik/görsel incelemesi. Üç partinin
+toplamı 4.846 soru: **2.910 mevcut aday, 1.863 içerik/görsel incelemesi,
+73 kapsam/cevap farkı** (68 Matematik–Geometri, 5 basılı cevap nüshası).
+Geçerli karşılaştırmalar tekrarlanmaz; bu sonuç kesin tekrar/yeni soru kabulü değildir.
+
+`yks_cevap_nusha_incele.py` görseli gerçekten okunmuş beş soru çiftini ve iki
+basılı anahtar sürümünü kaydeder. Eski Fizik soru 27, yeni nüshada 30'dur;
+eski anahtara yeni soru numarasıyla bakılmaz. Basılı numara özgün kayıt
+kanıtından alınır. Nüsha uyuşmazlığında banka cevabı/geçmiş değiştirilmez,
+eski soru yeni kodla eklenmez ve otomatik tekrar birleştirmesi yapılmaz.
+Kanıt: `full-question-comparison/answer-edition-conflicts.json`.

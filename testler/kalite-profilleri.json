@@ -636,6 +636,21 @@
       "args": ["testler/yks-visual-candidates-test.py"],
       "inputs": ["scripts/yks_gorsel_aday.py", "scripts/yks_tam_tekrar_tara.py", "scripts/yks_tam_tekrar_incele.py", "scripts/yks_soru_pilotu.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-visual-candidates-test.py"]
     },
+    "yks-crop-layout-repair": {
+      "kind": "python",
+      "args": ["testler/yks-crop-layout-repair-test.py"],
+      "inputs": ["scripts/yks_kirpim_istisna.py", "scripts/yks_pilot_sorular.py", "scripts/yks_pilot_kirpim_kontrol.py", "testler/yks-crop-layout-repair-test.py"]
+    },
+    "yks-answer-editions": {
+      "kind": "python",
+      "args": ["testler/yks-answer-edition-test.py"],
+      "inputs": ["scripts/yks_cevap_nusha_incele.py", "scripts/yks_tam_tekrar_incele.py", "testler/yks-answer-edition-test.py"]
+    },
+    "yks-shared-figure-source": {
+      "kind": "python",
+      "args": ["testler/yks-shared-figure-test.py"],
+      "inputs": ["scripts/yks_ortak_sekil_kirpim.py", "testler/yks-shared-figure-test.py"]
+    },
     "yks-option-permutation": {
       "kind": "python",
       "args": [
@@ -893,7 +908,9 @@
         "yks-mock-key-sections",
         "yks-full-key-reader",
         "yks-full-source-key-proofs",
-        "yks-separate-full-book"
+        "yks-separate-full-book",
+        "yks-crop-layout-repair",
+        "yks-shared-figure-source"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -907,7 +924,8 @@
         "yks-controlled-repeat",
         "yks-option-permutation",
         "yks-novelty-content",
-        "yks-full-visual-candidates"
+        "yks-full-visual-candidates",
+        "yks-answer-editions"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
