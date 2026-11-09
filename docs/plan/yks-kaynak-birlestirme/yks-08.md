@@ -1,5 +1,20 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Beş Fizik özeti sorusunun ek karşılaştırması — BITTI (tam aşama değil):**
+`physics-summary-five-body-comparison/` önceki beş v2 kırpımı gerçek görüntüden
+okunmuş karşılaştırma metniyle, 80.230 banka sorusu ve 12.052 güncel hazırlanmış /
+5.303 eski bekleyen kaynakla karşılaştırdı. Eski Qwen anahtar görüntü okuması
+E/C/E/E/D ile gerçek kaynak okuması eşit; yeni model/OCR çağrısı yok.
+34 aday ilişkisi/24 farklı banka görseli dört panoda gerçekten okundu.
+Q5 için `sb-88250` ve `3d-tyt-08-02` 50m/25s, yeni kaynak 80m/40s kullanır;
+seçenek sırası ve basılı doğru harfi de B/D farklıdır. Bunlar sayı/seçenek
+varyantıdır; mevcut iki ID korunur, birleştirme veya yeniden aktarım yapılmaz.
+Diğer 32 ilişki farklı kök/şekildir; bu beş sorunun NEW kabulü değildir.
+Tam beş seçenek ayrışmayan 102 hazırlanmış ve 875 pending kayıt yok sayılmadı.
+Q4'ün kaynak ifade/Roma işareti incelemesi açıktır. Ana 12.052 kuyruğu değişmedi.
+Kanıt `actual-bank-image-review.json`; beş yeni regresyon PASS.
+
+
 **Deneme adaylarında resmî kaynak kimliği — BITTI (yayın değildir):**
 1.458 düzenli adayda 996 tek eski kimlik, 255 çoklu eski kimlik ve 207 kaynak
 farkı; 447 birleşik ders adayında 271 tek kimlik, 88 çoklu kimlik, 88 fark;

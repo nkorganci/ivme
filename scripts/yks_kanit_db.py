@@ -92,6 +92,11 @@ RECORD_REPORTS={
  'physics-summary-visible-body-geometry':('physics-summary-body-discovery/report.json','results','sourceSha256'),
  'physics-summary-actual-layout-review':('physics-summary-layout-actual-review/report.json','results','sourceSha256'),
  'physics-summary-five-body-preparation':('physics-summary-five-body-preparation-v2/candidates.json','cards','sourceCode'),
+ 'physics-summary-five-body-comparison':('physics-summary-five-body-comparison/report.json','results','sourceCode'),
+ 'physics-summary-five-actual-bank-review':('physics-summary-five-body-comparison/actual-bank-image-review.json','results','sourceRelationId'),
+ 'physics-summary-five-topic-support':('physics-summary-five-topic-review/report.json','results','sourceCode'),
+ 'physics-summary-bound-source-bodies':('physics-summary-bound-bodies/report.json','results','sourceSha256'),
+ 'physics-summary-bound-crop-review':('physics-summary-bound-bodies/actual-crop-review.json','results','sourceCode'),
  'cross-source-visual-chemistry-repeat':('cross-source-candidates/expanded-with-visual-chemistry/source-question-index.json','results','sourceCode'),
  'chemistry-partial-body':('partial-chemistry-preparation/progress.json','results','sourceSha256'),
  'chemistry-partial-repeat':('partial-chemistry-comparison/controlled-repeat-review.json','results','sourceCode'),
@@ -214,7 +219,8 @@ def capture(root,staging):
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
     for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
             'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json','run/pending-source-reuse/report.json',
-            'run/partial-reviewed-transfer-reuse/report.json','run/physics-summary-discovery/actual-bank-image-review.json']:
+            'run/partial-reviewed-transfer-reuse/report.json','run/physics-summary-discovery/actual-bank-image-review.json',
+            'run/physics-summary-five-body-comparison/actual-bank-image-review.json']:
         prior_review=data_cache.get(report_name)
         if not prior_review:continue
         allowed=[APP/'veri/pdf-source-registry',APP/'veri/content-labels/pdf-extraction',

@@ -1,5 +1,18 @@
 # YKS-09 — Özgün kırpım ve kaynaklı soru kabul paketi
 
+**Beş Fizik gövdesinin dar konu desteği — BITTI (yayın/alım değil):**
+`physics-summary-five-topic-review/report.json` beş görevi kayıtlı MEBİ TYT
+Fizik `62ac11b7…` Hareket Kavramları yaprağındaki gerçek PDF alıntılarıyla bağlar.
+Altı sayfalık PDF'nin ilgili dört sayfası gerçekten açıldı; referans noktası,
+birden fazla hareket türü, yörünge/yer değiştirme ve ortalama sürat/hız kapsamı
+aynı kaynakta doğrulandı. Q4'te eksik ifade numaraları metne eklenmedi; kaynak
+incelemesi sürer. Q5'in iki eski banka varyantı ayrı ID'lerle korunur.
+Önceki başarısız OCR'ı değiştirmeden, aynı anahtar kırpımına ait eski Qwen
+okuması gerçek okuma ile E/C/E/E/D eşitliği üzerinden yeniden kullanıldı.
+Banka, kaynak ve pending karşılaştırması yalnız aday üretir; beş soruda da
+NEW/öğretmen/yayın/alım kapıları kapalıdır. Ana 12.052'ye ekleme yapılmadı.
+
+
 Ek sınırlı hazırlık `physics-summary-discovery/` içindedir: gerçek bütün
 sayfası okunmuş `04c593815b31…` kaynağında üç küresel ayna sorusu, D/D/E
 basılı anahtar, iki eski OCR kanıtı ve kaynak RGB'siyle eşit kayıpsız görseller.

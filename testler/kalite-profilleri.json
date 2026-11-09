@@ -855,6 +855,16 @@
         "scripts/yks_secenek_degisimi.py",
         "testler/yks-option-permutation-test.py"
       ]
+    },
+    "yks-five-summary-comparison": {
+      "kind": "python",
+      "args": ["testler/yks-five-summary-comparison-test.py"],
+      "inputs": ["scripts/yks_fizik_bes_soru_tekrar.py", "scripts/yks_fizik_bes_soru_gorsel_incele.py", "scripts/yks_fizik_bes_soru_konu.py", "testler/yks-five-summary-comparison-test.py"]
+    },
+    "yks-summary-bound-bodies": {
+      "kind": "python",
+      "args": ["testler/yks-summary-bound-body-test.py"],
+      "inputs": ["scripts/yks_fizik_ozet_govde_bagla.py", "scripts/yks_fizik_ozet_kirpim_incele.py", "testler/yks-summary-bound-body-test.py"]
     }
   },
   "profiles": {
@@ -1129,7 +1139,8 @@
         "yks-crop-geometry",
         "yks-partial-chemistry-key",
         "yks-saved-key-signals",
-        "yks-summary-body-geometry"
+        "yks-summary-body-geometry",
+        "yks-summary-bound-bodies"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -1158,7 +1169,8 @@
         "yks-chemistry-canonical-reuse",
         "yks-intake-queue",
         "yks-diagnostic-source-identity",
-        "yks-mock-source-identity"
+        "yks-mock-source-identity",
+        "yks-five-summary-comparison"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
@@ -1167,7 +1179,7 @@
       "nextAction": "Mevcut kanonik soruları yeniden ekleme; tam çıkarım için kaynak/cevap/konu kanıtlarını tamamla."
     },
     "YKS-09": {
-      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs"],
+      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs", "yks-five-summary-comparison"],
       "remainingAcceptance": [
         "Gerçek kaynak kırpımı, basılı cevap, güncel tekrar ve dar konu kanıtlarıyla kabul paketi.",
         "Model önerisi öğretmen kararı veya canlı yayın kabulü değildir."

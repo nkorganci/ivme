@@ -338,18 +338,35 @@ def main():
         if summary_additional['bankSnapshotSha256'] not in bank_snapshots:raise ValueError('Additional summary source comparison uses a different bank')
         inputs.append(summary_additional_path)
     summary_body_preparations={}
+    actual_summary_bodies=Counter()
     for name,relative in [('visibleGeometry','physics-summary-body-discovery/report.json'),
             ('actualLayouts','physics-summary-layout-actual-review/report.json'),
-            ('fiveBodies','physics-summary-five-body-preparation-v2/report.json')]:
+            ('fiveBodies','physics-summary-five-body-preparation-v2/report.json'),
+            ('fiveBodyComparison','physics-summary-five-body-comparison/report.json'),
+            ('fiveBodyActualBankReview','physics-summary-five-body-comparison/actual-bank-image-review.json'),
+            ('fiveBodyTopicSupport','physics-summary-five-topic-review/report.json'),
+            ('boundBodies','physics-summary-bound-bodies/report.json'),
+            ('actualBoundCrops','physics-summary-bound-bodies/actual-crop-review.json')]:
         target=root/relative
         if not target.is_file():continue
         report=read_json(target)
         if report['status'] not in {'PASS','COMPLETE'} or report.get('questionBankWrites') or report.get('newQuestionAdmissionAccepted'):
             raise ValueError('Summary geometry/body preparation cannot grant production admission')
+        if report.get('noveltyAccepted') or report.get('categoryPublished') or report.get('oldIdsMerged'):
+            raise ValueError('Bounded summary review cannot grant publication or merge old identities')
+        if report.get('bankSnapshotSha256') and report['bankSnapshotSha256'] not in bank_snapshots:
+            raise ValueError('Bounded summary comparison uses another canonical bank')
         if name=='fiveBodies' and (digest(report['package'])!=report['packageSha256'] or not report['cropImagesActuallyRead']):
             raise ValueError('Five actual corrected source crops must remain hash-bound')
         if name=='actualLayouts' and digest(report['sourceReport'])!=report['sourceReportSha256']:
             raise ValueError('Actual layout review belongs to an earlier source geometry report')
+        if name=='actualBoundCrops':
+            for p,sha in report['inputs'].items():
+                if digest(p)!=sha:raise ValueError('Actual summary crop review uses changed preparation')
+            for card in report['results']:
+                if not card['preparedCropActuallyRead'] or card['visibleBodyOptionCuts'] or digest(card['image'])!=card['imageSha256']:
+                    raise ValueError('Actual complete summary source crop required')
+                actual_summary_bodies[card['sourceSha256']]+=1
         inputs.append(target)
         summary_body_preparations[name]={k:report[k] for k in ['status','documents','questions','states','actualLayoutBoardsRead',
             'actualIndividualPagesOpened','sourceStatementMarkerReviewQuestions','questionBankWrites'] if k in report}
@@ -372,6 +389,11 @@ def main():
                 row['savedPrintedKeySignalReview']={k:saved[k] for k in ['status','keySignalPhysicalPages','priorOccurrenceCount','previousDiscoveredRegions','evidencePath','evidenceSha256']}
             if row['sourceSha256'] in summary_key_by_source:
                 row['additionalSummaryPrintedRegionReview']=summary_key_by_source[row['sourceSha256']]
+            if row['sourceSha256'] in actual_summary_bodies:
+                row['actuallyReadSeparateSummaryBodyKeyBindings']={
+                    'questions':actual_summary_bodies[row['sourceSha256']],
+                    'evidence':'physics-summary-bound-bodies/actual-crop-review.json',
+                    'wholeMixedSubjectSourceAccepted':False,'mainQueueAdmissionAccepted':False}
             if summary and row['sourceSha256']==summary['sourceSha256']:
                 if row['sourceSha256'] in intake_by_source:raise ValueError('Separate bounded summary pilot already belongs to the main intake queue')
                 row['separateBoundedSummaryPreparation']={k:summary[k] for k in ['questions','package','packageSha256','keyEvidencePath','keyEvidenceSha256','newQuestionAdmissionAccepted']}

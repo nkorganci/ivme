@@ -1,7 +1,40 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
 
-**Güncel parti kaydı ve doğrulama:** `database-archive/archive-report.json`
+**Güncel kalıcı kanıt:** `a8c78812105629fd…` checkpoint, `ogm_ders.yks_evidence`
+237.686 kayıt / 80.098 farklı dosya / 2.111.400.466 bayt. Bütün dosyalar
+DB’den geri okundu; hash eşitliği ve aynı checkpoint ikinci kayıt 0 INSERT
+PASS. 44 yeni kırpımın gerçek okuması ve 16 kaynak bağı bu snapshot’tadır.
+Üretim soru bankası ve öğrenci DB’sine yazım 0.
+
+**Doğrulama:** YKS-07 `veri/kalite/YKS-07/20261109T003535-b5c000b1/rapor.json`
+37 kontrol / 150 test PASS. Altı yeni test, sütun devamını, karma ders
+sınırını, seçenek kesilmesini, sabit gerçek görsel kümesini ve açık kaynak
+kusurlarının yanlışlıkla kapanmamasını denetler.
+
+**16 yeni özet / 44 gövde — BITTI (YKS-07 alt partisi; tam arşiv açık):**
+`yks_fizik_ozet_govde_bagla.py` gerçek bütün sayfa okumasındaki bölgeleri
+basılı anahtara bağlar. `physics-summary-bound-bodies/` paketindeki 44 görsel,
+15 pano ve üç düzeltilmiş bireysel görüntü üzerinden gerçekten okundu;
+özgün RGB pikselleri eşit, görünür gövde/seçenek kesilmesi 0. Üç sorunun
+sütun devamları birleştirildi; üstteki şekiller ve renkli kaynak işaretleri
+korundu. Kaldırma Kuvveti'nde altı native kutu kesişimi gerçek piksellerde
+kesilme değildir; özel hash'li geometri istisnası olarak saklanır ve başka
+satıra uygulanmaz. Eski kırpımlar silinmez; yeni bölge yeni dosya kimliğidir.
+Karma Fizik/Tarih sayfasında yalnız iki Fizik gövdesi C/E'ye bağlandı; üç
+Tarih sorusu o anahtarı devralmadı. İki sığa sorusu ve iki harmonik hareket
+sorusundaki kaynak sembolü/örtüşme kaygısı alım için açık kalır. İlk girişim
+sorusu dosya başlığına rağmen tek yarık kırınımı sorar; başlıktan dar konu
+kabul edilmez. Ana 12.052 kuyruk ve üretim DB değişmedi.
+
+Önceki 3+5 gövdeyle birlikte bu grupta **18 kaynak / 52 soru** hazırlanmıştır.
+Sıradaki YKS-07 işi `physics-summary-bound-bodies/remaining-sources.json`:
+**56 sıralı anahtar kaynağı / 162 basılı hücre**. Basılı 1/2/4 kusurlu kaynak
+ayrı bekler; numara düzeltilmez. Bu sayılar bütün YKS arşivinin kalan kapsamı
+değildir; diğer PDF düzenleri ve ana YKS-07 istisnaları da açıktır. Kullanıcı
+önceliği: YKS-07 tam kanıt kabulü bitmeden sonraki aşamalara geçme.
+
+**Önceki parti kaydı ve doğrulama:** `database-archive/archive-report.json`
 checkpoint `df6e3c66d564848b…`: 237.533 sorgulanabilir kayıt, 79.971 farklı
 dosya/2.077.584.744 baytın tam hash geri okuması PASS; aynı kayıt ikinci
 geçişte 0 yeni INSERT. Yeni geometri, 13 pano, gerçek yerleşim ve beş v2

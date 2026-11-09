@@ -272,6 +272,8 @@ hazırlanır; canlı okuyucuların kökü değiştirilmez.
 
 ## 15.07 — YKS-07: PDF, sayfa ve cevap kanıtı
 
+**Durum: KISMI. Aşağıdaki BITTI ifadeleri alt işlere aittir; tam arşiv kabulü açık.**
+
 [Adım görevini aç](yks-kaynak-birlestirme/yks-07.md). Önce pilot, YKS-10 pilot
 kabulünden sonra tam arşiv incelenir. Cevapsız sorular bankaya aday olmaz.
 
@@ -302,15 +304,33 @@ ve başlığın üstüne taşan şekil ayrı risklerdir. Üç ayna sorusunun 12.
 hazırlanmış/5.303 eski pending karşılaştırması sıfır kesin metin/locator bağı
 verdi; ayrışmayan metinlerde NEW kararı yok. Kanıtlar görev dosyasındadır.
 
+Yeni YKS-07 alt partisi BITTI: 16 özetin 44 sorusu basılı anahtar ve tam
+özgün kırpımla bağlandı; 15 pano/üç bireysel kırpım gerçekten okundu.
+Görünür kesilme sıfır; altı native kutu kesişimi özel kanıtla korunur.
+Karma Fizik/Tarih anahtarları ayrıldı, dört kaynak içerik kusuru incelemede.
+Özet grubunda toplam 18 kaynak/52 gövde hazır; sıradaki 56 kaynak/162 basılı
+hücre `physics-summary-bound-bodies/remaining-sources.json` içindedir.
+**Kullanıcı önceliği: YKS-07 bitmeden diğer aşamalara geçilmez.** Tam arşiv
+ve diğer PDF yerleşim istisnaları açık; bu parti tam kabul değildir.
+
 ## 15.08 — YKS-08: güncel bankada soru tekrarı
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve
 belirsiz sorular ayrılır; eski soru kimlikleri birleştirilip silinmez.
 
+Beş ek Fizik gövdesi için 80.230 banka, 12.052 hazırlanmış ve 5.303 eski
+bekleyen kayıt karşılaştırması tamamlandı. 34 aday ilişkisi/24 banka görseli
+okundu; Q5'in iki kaydı sayı/seçenek varyantı olarak ayrı tutuldu. Eski ID'ler
+birleştirilmedi; NEW kabulü yok. Bu alt iş YKS-08 tam kabulü değildir.
+
 ## 15.09 — YKS-09: kaynaklı soru kabul paketi
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-09.md). Özgün kırpım, iki cevap okuması,
 kontrollü etiket ve güncel banka karşılaştırmasıyla paket hazırlanır; yayın yapılmaz.
+
+Beş ek Fizik sorusunun kayıtlı Hareket Kavramları yaprağına kaynak desteği,
+altı sayfalık MEBİ PDF'nin dört gerçekten okunmuş sayfasıyla hazır. Q4 kaynak
+ifade işaretleri ve bütün NEW/alım kontrolleri açık; kategori yayını yapılmadı.
 
 ## 15.10 — YKS-10: pilot ve geçiş kabulü
 

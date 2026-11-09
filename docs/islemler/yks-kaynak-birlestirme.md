@@ -607,3 +607,42 @@ araçları için `python scripts/yks_fizik_ozet_govde_kesfi.py`,
 `python scripts/yks_fizik_ozet_bes_govde.py`; mevcut tam kapsam raporu için
 `..\.venv\Scripts\python.exe -X utf8 scripts/yks_tam_kapsam.py` kullanılır.
 Bu ayrım yeni ortam veya model kurulumu gerektirmez.
+
+
+## Beş Fizik gövdesinin tekrar ve konu incelemesi
+
+`yks_fizik_bes_soru_tekrar.py` proje `.venv` ile çalışır; yeni metinler gerçek
+v2 görüntüden okunmuş karşılaştırma ekidir. Kaynaktaki eksik Roma işaretleri
+düzeltilmez. `--compare-bank` yalnız bu beş yeni gövdeyi bütün güncel bankaya
+karşı tarar; eski 12.052 sorunun banka taraması tekrarlanmaz. Bayraksız komut
+kaydedilmiş banka adaylarını ve vektör önbelleğini kullanır. Önceki pending
+kanıtları doğrulanmış arşivin dondurulmuş baseline kopyasına bağlıdır; yeni
+arşiv kaydı yapılması bu eski kaynak kökenini geçersiz kılmaz.
+
+`yks_fizik_bes_soru_gorsel_incele.py` gerçekten açılmış dört panoda 34 ilişki /
+24 banka görüntüsünü hash'le doğrular. Sayısal varyantta aynı fizik sonucu veya
+farklı doğru harfi soru kimliği eşitliği değildir. `yks_fizik_bes_soru_konu.py`
+Hareket Kavramları yaprağını gerçek MEBİ PDF'nin ilgili dört sayfasına bağlar;
+yalnız konu desteğidir, öğretmen/kategori/NEW/alım kabulü değildir.
+
+Üç komutun tamamında proje `.venv` Python'u kullanılır. Beş yeni regresyon:
+`..\.venv\Scripts\python.exe -X utf8 testler/yks-five-summary-comparison-test.py`.
+
+### YKS-07 özgün özet gövdeleri
+
+Kayıtlı 16 gerçek sayfanın bölge/numara okumalarını hazırlamak için proje
+renderer'ı kullanılır (PyMuPDF 1.28.2):
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_fizik_ozet_govde_bagla.py
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_fizik_ozet_kirpim_incele.py
+python scripts/ivme.py kalite calistir YKS-07
+```
+
+44 gövde `physics-summary-bound-bodies/` altında ana 12.052'den ayrı tutulur.
+İkinci komut yalnız gerçekten okunmuş sabit görüntü hash kümesini kabul eder;
+yeni kaynak görüntüsünü otomatik okunmuş saymaz. Altı native geometri
+kesişimi açık ve soru bazlı hash ile sınırlıdır. Yeni sınır eski kırpımı
+üzerine yazmaz. Kaynak kusurları, karma dersler ve numara boşluğu korunur;
+PDF metninden eksik sembol tamamlanmaz. `remaining-sources.json` kalan
+56 sıralı özet/162 basılı hücreyi listeler; diğer arşiv düzenlerini kapatmaz.
