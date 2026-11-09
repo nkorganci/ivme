@@ -1,5 +1,27 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Seçili tam kapsam karşılaştırma geçişi — BITTI (ana08 tam kabulü ayrı):**
+YKS-07 seçili tam kapsamı runtime VERIFIED oldu. Ardından canlı80.230 banka
+kaydının snapshot'ı ve80.230 görsel dosyasının sürüm/zaman/boyut damgası
+önceki tam karşılaştırma kanıtıyla aynı bulundu.4.383 kaynak adayından
+4.354'ünün geçerli banka karşılaştırması yeniden kullanıldı;29 özet sorusunda
+tam karşılaştırma kanıtı yok, doğrudan dışlandı. Karşılaştırması bulunanlarda
+de kaynak içeriği/yeniliğe ilişkin olumlu kabul olmadığından **4.383 adayın
+tamamı yeni soru alımında EXCLUDE_NO_RETRY**; bu karar sorunun yanlış olduğunu
+veya bankada kesin bulunduğunu iddia etmez. Düşük benzerlik NEW sayılmadı.
+3.697 eski kimlik,36 ikincil locator ve üç yalıtılmış pilot olmak üzere3.736
+korunmuş gözlem ayrı saklandı. Eski ID/cevap/öğrenci geçmişi değişmedi.
+
+Doğrulama: YKS-08 `20261109T035055-6130b9cd`22 kontrol/92 test PASS.
+
+Kanıt `selected-yks08-comparison/report.json`, `protected-identities.json`;
+yeni model/OCR/görsel embedding ve soru yazımı0. Bu yeni kapsamda önerilen
+NEW sayısı0; eksik/belirsiz sorular yeniden incelenmez. Sıradaki iş, bu
+kararlarla mevcut/varyant/belirsiz ayrımı ve üç yalıtılmış pilot sınırını tam
+YKS-08 kabul kaydında dondurmak; ardından yalnız gerçekten uygun09 paketi.
+Kaynak-gövde-anahtar07 kabulü bu sonraki alım dışlamalarını geçersiz kılamaz.
+
+
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR
 yapma. Elenenler öğrenci ekranına ve aktarım paketine girmez. Eski açık

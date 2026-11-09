@@ -82,7 +82,10 @@ REPORTS={
     'physicsSummaryActualCrops':'physics-summary-bound-bodies/actual-crop-review.json',
     'physicsSummarySecondBodyBatch':'physics-summary-bound-bodies-02/report.json',
     'physicsSummarySecondActualCrops':'physics-summary-bound-bodies-02/actual-crop-review.json',
+    'physicsSummaryFinalOnePass':'physics-summary-final-one-pass/report.json',
     'verifiableOnlySourceSelection':'verified-source-selection/report.json',
+    'selectedYks07FullScope':'selected-yks07-acceptance/report.json',
+    'selectedYks08Comparison':'selected-yks08-comparison/report.json',
 }
 
 
@@ -113,23 +116,57 @@ def main():
             'no source repair, missing-key/figure search, repeat OCR/model or exception retries. '
             'Exclusion is a completed disposition, never verified question acceptance; excluded candidates cannot be learner-visible or imported. '
             'The authoritative active view is verified-source-selection/report.json and source-evidence-candidates.json. '
-            '39 summary sources/115 bodies have actual source readings;100 source-evidence candidates remain,15 defective candidates are excluded. '
+            'All75 summary sources now have final dispositions:74 clear-numbered sources/214 bodies assessed;159 source-evidence candidates remain,55 candidates excluded. '
             'The original main12052 queue is an immutable observation index. Its policy view excludes1936 unresolved records without retries; '
             '3697 proven existing source identities preserve old IDs,36 secondary locators are not reimported,3 remain isolated pilot proof. '
             '6380 as-yet-unread source/content records may receive one pass only; skip any failure instead of repairing. '
-            'Next: verified-source-selection/remaining-sources.json lists35 previously unread clear-key summaries/99 printed cells; '
-            'start84a720abf787 Special Relativity and Quantum Physics. The printed1/2/4 gap source is excluded, not waiting for repair. '
+            'The summary group is complete with zero remaining sources/cells; do not reopen it. '
+            'The printed1/2/4 gap source is excluded, not waiting for repair. '
+            'Next: record a bounded YKS-07 full selected-source disposition using existing PDF/body/key proofs; '
+            'exclude unverified items without rescue, and keep later topic/duplicate/import gates separate. '
             'Earlier native/OCR/key/model/all-bank comparisons and real isolated DB pilot proofs remain frozen; do not repeat unchanged work. '
             'Other known66 diagnostic, mock identity/key/decoding and book mismatch exceptions are exclusions, not blockers requiring rescue. '
             'Keep original bank IDs, student history and provenance. Only source-complete/current-duplicate/controlled-topic proof can advance. '
             'Do not mark full07 accepted until the remaining selected one-pass source dispositions are recorded. '
             'The summary evidence does not publish topics or questions; full08-10 acceptance and live11-13 remain separate.')
-        store.save(state,{'event':'FULL_PREPARATION_CURSOR_SAVED','stage':'YKS-07:full',
+        if state['stages'].get('YKS-07:full',{}).get('status')=='VERIFIED':
+            selected_scope=read_json(root/'selected-yks07-acceptance/report.json')
+            state['resumeAt']='YKS-08:full'
+            state['activeSourceEvidence']='selected-yks07-acceptance/source-candidates.json'
+            state['nextAction']=(
+                'YKS-07 full selected scope VERIFIED:4086 PDF/67277 physical page dispositions; '
+                f"{selected_scope['selectedSourceEvidenceQuestions']} pixel-and-two-printed-key-reading evidence candidates;3697 existing IDs and36 secondary locators preserved; "
+                f"{selected_scope['questionActions']['EXCLUDE_NO_RETRY']} question observations excluded without retries and3 isolated pilot proofs preserved. "
+                'The authoritative input is selected-yks07-acceptance/source-candidates.json; '
+                'verified-source-selection remains the earlier summary/body observation view, not the final stage gate. '
+                'Next YKS-08: reuse frozen full-bank comparisons where source image and canonical bank snapshots match; '
+                'classify existing/new/variant/ambiguous separately and exclude any unprovable identity immediately. '
+                'Do not re-open source exclusions, repair sources, rerun OCR/model or reimport existing IDs. '
+                'YKS-09 actual content/fine topic and YKS-10 full transition acceptance remain separate; '
+                'no question publication or live11-13 is implied by source-stage acceptance.')
+            if (root/'selected-yks08-comparison/report.json').is_file():
+                state['activeQuestionDecisions']='selected-yks08-comparison/report.json'
+                state['nextAction']=(
+                    'YKS-07 selected full scope VERIFIED; do not re-open source exclusions. '
+                    'YKS-08 selected comparison pass is saved at selected-yks08-comparison/report.json: '
+                    'current80230 bank metadata and image stamps checked;4354 frozen comparisons reused; '
+                    '29 candidates have no full comparison proof. All4383 incoming source candidates remain '
+                    'EXCLUDE_NO_RETRY for question admission because content/novelty is not positively proven. '
+                    'No new questions accepted, no source/model/OCR/embedding retries. '
+                    '3736 protected observations retain3697 old identities,36 secondary locators and3 isolated pilot proofs. '
+                    'Next: record full YKS-08 acceptance with explicit existing/variant/ambiguous dispositions '
+                    'and the isolated three-question pilot boundary, then build only actually eligible YKS-09 packages. '
+                    'Do not reactivate excluded candidates just to create a nonempty intake. '
+                    'YKS-09/10 full acceptance and live11-13 remain separate; production question writes stay zero.')
+        full07=state['stages'].get('YKS-07:full',{}).get('status')=='VERIFIED'
+        store.save(state,{'event':'FULL_PREPARATION_CURSOR_SAVED','stage':state['resumeAt'],
             'fullStageAccepted':False,'questionBankWrites':0,'reports':list(REPORTS)})
         write_json(root/'session-checkpoint.json',{'runId':state['runId'],'revision':state['revision'],
             'sessionStatus':state['sessionStatus'],'resumeAt':state['resumeAt'],'nextAction':state['nextAction'],
-            'preparations':saved,'sourceWrites':0,'questionBankWrites':0,'fullStageAccepted':False})
-    print({'status':'SAVED','revision':state['revision'],'resumeAt':state['resumeAt'],'fullStageAccepted':False})
+            'preparations':saved,'sourceWrites':0,'questionBankWrites':0,'fullStageAccepted':False,
+            'fullYks07Accepted':full07})
+    print({'status':'SAVED','revision':state['revision'],'resumeAt':state['resumeAt'],
+        'fullYks07Accepted':full07,'activeNextStageAccepted':False})
 
 
 if __name__=='__main__':main()

@@ -50,11 +50,11 @@ class VerifiableOnlyTest(unittest.TestCase):
         self.assertEqual(queue_action({'status': 'KEEP_EXISTING_CANONICAL_ID_DO_NOT_REIMPORT'}),
                          'PRESERVE_EXISTING_ID_NO_NEW_QUESTION')
 
-    def test_current_selected_set_omits_all_known_fifteen_summary_problems(self):
+    def test_current_selected_set_omits_every_final_summary_exclusion(self):
         report = read_json(self.root / 'verified-source-selection/report.json')
         selected = read_json(report['selectedPackage'])['cards']
         excluded = read_json(report['exclusions'])['results']
-        self.assertEqual((report['sourceBodiesAssessed'], len(selected), len(excluded)), (115, 100, 15))
+        self.assertEqual((report['sourceBodiesAssessed'], len(selected), len(excluded)), (214, 159, 55))
         selected_codes = {c['sourceCode'] for c in selected}
         self.assertFalse(selected_codes & {c['sourceCode'] for c in excluded})
         for bad in ['physics-summary-41a5cdf4bf0d-q2', 'physics-summary-4e6ccddfb9c0-q1',
@@ -75,8 +75,10 @@ class VerifiableOnlyTest(unittest.TestCase):
         for row in decisions:
             self.assertEqual(row['existingCanonicalCodes'], by_code[row['sourceCode']]['existingCanonicalCodes'])
             self.assertFalse(row['productionImportAllowed'])
-        self.assertEqual(report['remainingContiguousSummaryDocuments'], 35)
-        self.assertEqual(report['remainingPrintedKeyCells'], 99)
+        self.assertEqual(report['remainingContiguousSummaryDocuments'], 0)
+        self.assertEqual(report['remainingPrintedKeyCells'], 0)
+        self.assertTrue(report['summarySourceDispositionComplete'])
+        self.assertEqual(report['summarySourceDocumentsDisposed'], 75)
         self.assertFalse(read_json(POLICY_PATH)['retryKnownSourceExceptions'])
 
     def test_new_batch_keeps_column_context_and_original_source_key(self):
@@ -93,6 +95,42 @@ class VerifiableOnlyTest(unittest.TestCase):
         for card in cards.values():
             self.assertTrue(card['preparedCropActuallyRead'])
             self.assertEqual(digest(card['image']), card['imageSha256'])
+
+    def test_final_single_pass_covers_each_cell_once_and_never_requeues_failures(self):
+        report = read_json(self.root / 'physics-summary-final-one-pass/report.json')
+        prepared = read_json(self.root / 'physics-summary-final-one-pass/prepared.json')
+        self.assertEqual((report['documents'], report['questions']), (35, 99))
+        self.assertEqual((report['actualCropImagesRead'], report['actualCropBoardsRead']), (61, 21))
+        self.assertEqual(len({c['sourceCode'] for c in report['results']}), 99)
+        self.assertEqual(len({c['sourceSha256'] for c in report['results']}), 35)
+        source_keys = read_json(self.root / 'physics-summary-effective-key-regions/report.json')
+        keys = {c['sourceSha256']: c['printedRegionAnswers'] for c in source_keys['results']}
+        selected = read_json(self.root / 'verified-source-selection/source-evidence-candidates.json')['cards']
+        selected_codes = {c['sourceCode'] for c in selected}
+        for c in report['results']:
+            self.assertIn({'number': c['printedNumber'], 'answer': c['printedAnswer']}, keys[c['sourceSha256']])
+            if c['sourceConcerns']:
+                self.assertEqual(c['action'], 'EXCLUDE_NO_RETRY')
+                self.assertNotIn(c['sourceCode'], selected_codes)
+                self.assertFalse(c['preparedCropActuallyRead'])
+            else:
+                self.assertTrue(c['preparedCropActuallyRead'])
+                self.assertTrue(c['originalSourcePixelsEqual'])
+                self.assertEqual(c['visibleBodyOptionCuts'], 0)
+                self.assertIn(c['sourceCode'], selected_codes)
+        self.assertEqual((prepared['cropsPrepared'], prepared['excludedWithoutRetry']), (61, 38))
+        self.assertEqual((report['sourceEvidenceCandidates'], report['excludedWithoutRetry']), (59, 40))
+        self.assertEqual(report['sourceRepairAttempts'] + report['newOcrCalls'] + report['newModelCalls'], 0)
+
+    def test_preparation_refuses_an_existing_attempt_before_reading_any_source(self):
+        import tempfile
+        from yks_fizik_ozet_son_gecis import prepare
+        with tempfile.TemporaryDirectory() as temporary:
+            folder = Path(temporary)
+            (folder / 'attempt-started.json').write_text('{}', encoding='utf-8')
+            # An absent root would fail differently if the source were reopened.
+            with self.assertRaisesRegex(ValueError, 'already been attempted'):
+                prepare(folder / 'nonexistent-source-root', folder)
 
 
 if __name__ == '__main__':

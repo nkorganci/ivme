@@ -285,50 +285,34 @@ güvenli kaynak çözümleme ve katalog projeksiyonları geçişe hazırlanır.
 [Adım görevini aç](yks-kaynak-birlestirme/yks-06.md). Hedef düzen ve manifest
 hazırlanır; canlı okuyucuların kökü değiştirilmez.
 
-## 15.07 — YKS-07: PDF, sayfa ve cevap kanıtı
+## 15.07 — YKS-07: PDF, sayfa ve cevap kanıtı — BITTI
 
-**Durum: KISMI. Aşağıdaki BITTI ifadeleri alt işlere aittir; tam arşiv kabulü açık.**
+**Durum: TAMAMLANDI — BITTI; yalnız doğrulanabilir seçili kapsam.**
+Runtime `YKS-07:full` VERIFIED:4.086 PDF/67.277 sayfa gerekçeli son durumda.
+12.266 gözlemden4.383 adayda özgün piksel ve iki basılı cevap okuması bağlı;
+3.697 mevcut kimlik,36 ikincil konum ve üç pilot korunur;4.147 aday dışarıda,
+yeniden deneme yok. Kanıt `selected-yks07-acceptance/` ve
+`yks-07/full/attempt-0002/selected-full-source-acceptance.json`.
+YKS-07 kalite39 kontrol/163 test PASS (`20261109T033804-47678fc9`).
+75 Fizik özeti de tamamlandı; kalan0 kaynak/0 hücre. Kaynaklar/öğrenci geçmişi
+korundu. Sıradaki YKS-08; soru içeriği/konu/yeni alım ve yayın kabulü ayrıdır.
+Aşağıdaki eski parti sayıları tarihsel kanıttır; açık onarım işi değildir.
 
-[Adım görevini aç](yks-kaynak-birlestirme/yks-07.md). Önce pilot, YKS-10 pilot
-kabulünden sonra tam arşiv incelenir. Cevapsız sorular bankaya aday olmaz.
-
-YKS-07 temsilî pilot kapısı VERIFIED; tam arşiv açık kalır. Pilot, 19 tarama
-belgesi ve iki denemenin kaynak anahtarlarıyla on gerçek risk sınıfını kapsar.
-Tamamı soru/konu yayını kabulü değildir.
-
-Son alt iş BITTI: altı yerleşim istisnasında 94 bağımsız kaynak cevabı ve tam
-özgün kırpım doğrulandı; toplam 267 tarama / 4.980 cevap. Yeni 94 soruda güncel
-banka karşılaştırması 50 mevcut aday ve 44 içerik incelemesi verdi. Tam arşiv
-kabulü, deneme gövdeleri ve diğer kaynak düzenleri tamamlanınca kapatılır.
-
-Yeni alt işler BITTI: Fizik çoklu anahtarında 41 ve iki Edebiyat ayrı resmî
-anahtarında 40 cevap daha; toplam 270 tarama/5.061 cevap. 41 sağlam denemenin
-5.863 soru gövdesi bölüm/sıra/özgün piksel bakımından hazır. Dört deneme
-anahtar/kimlik sorunu ve bir bozuk PDF dışarıda; dar ders/konu/tekrar ve
-diğer kaynak düzenlerinin kabulü sürdüğü için ana adım açık kalır.
-
-Beş yeni gövde E/C/E/E/D basılı anahtarıyla ve düzeltilmiş v2 özgün
-kırpımlarla teknik hazırlığa alındı; beş görsel gerçekten okundu, satır
-kesilmesi sıfır. Ana kuyruk, konu/tekrar/alım kabulü değişmedi.
-
-Yeni yerleşim alt işi BITTI (alım değildir): 75 Fizik özetinin görünür
-geometrisi ve özgün sayfa görüntüleri hazır; 13 pano ve dört bütün sayfa
-okundu. 39 numara dizisi yalnız aday; 35 yerleşim ve bir basılı numara hatası
-bekler. Aynı PDF’de Fizik/Tarih karışımı, anahtar numaralarının gövde sanılması
-ve başlığın üstüne taşan şekil ayrı risklerdir. Üç ayna sorusunun 12.052 güncel
-hazırlanmış/5.303 eski pending karşılaştırması sıfır kesin metin/locator bağı
-verdi; ayrışmayan metinlerde NEW kararı yok. Kanıtlar görev dosyasındadır.
-
-Yeni YKS-07 alt partisi BITTI: 16 özetin 44 sorusu basılı anahtar ve tam
-özgün kırpımla bağlandı; 15 pano/üç bireysel kırpım gerçekten okundu.
-Görünür kesilme sıfır; altı native kutu kesişimi özel kanıtla korunur.
-Karma Fizik/Tarih anahtarları ayrıldı, dört kaynak içerik kusuru incelemede.
-Özet grubunda toplam 18 kaynak/52 gövde hazır; sıradaki 56 kaynak/162 basılı
-hücre `physics-summary-bound-bodies/remaining-sources.json` içindedir.
-**Kullanıcı önceliği: YKS-07 bitmeden diğer aşamalara geçilmez.** Tam arşiv
-ve diğer PDF yerleşim istisnaları açık; bu parti tam kabul değildir.
+[Adım görevi ve ayrıntılı kanıtlar](yks-kaynak-birlestirme/yks-07.md).
+Önceki270 tarama/5.061 cevap,41 deneme/5.863 gövde,75 Fizik özeti ve pilot
+kanıtları korunur. Önceki alt parti notlarındaki açık istisnalar, kullanıcının
+güncel kararıyla gerekçeli dışlamaya dönüştürüldü; artık onarım kuyruğu değildir.
+Özgün arşiv ve mevcut soru kimlikleri silinmedi.07 kabulü yalnız PDF/sayfa/
+gövde/basılı cevap aşamasıdır; sonraki içerik/konu/tekrar/yayın kabullerini vermez.
 
 ## 15.08 — YKS-08: güncel bankada soru tekrarı
+
+Yeni seçili kapsam geçişi tamam: canlı80.230 kayıt ve görsel damgası değişmedi;
+4.354 karşılaştırma yeniden kullanıldı,29 soruda tam karşılaştırma kanıtı yok.
+4.383 adayda olumlu içerik/yenilik kabulü olmadığından yeni alım dışlaması
+kaydedildi; yeniden deneme yok, NEW0.3.736 eski kimlik/ikincil kaynak/pilot
+gözlemi korunur. Kanıt `selected-yks08-comparison/report.json`.
+Ana08 için tam kabul kaydı ayrı;07 kaynak kabulü soru yayını anlamına gelmez.
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve
 belirsiz sorular ayrılır; eski soru kimlikleri birleştirilip silinmez.

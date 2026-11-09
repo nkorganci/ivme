@@ -94,6 +94,14 @@ def main():
     mirrors = load('physics-summary-discovery/candidates.json')
     for c in mirrors['cards']:
         cards.append({**c, 'sourceCode': c['code'], 'printedAnswer': c['answer']})
+    final = load('physics-summary-final-one-pass/report.json')
+    if final['status'] != 'PASS' or final['sourceRepairAttempts']:
+        raise ValueError('Single-pass final summary dispositions required')
+    for c in final['results']:
+        if not source_exclusion_reasons(c) and (not c['preparedCropActuallyRead']
+                or not c['originalSourcePixelsEqual'] or c.get('visibleBodyOptionCuts')):
+            raise ValueError('Selected final summary crop must actually be read and complete')
+        cards.append(c)
     selected, excluded = partition_source_cards(cards)
     # Do not re-read or rerender excluded images. Selected image proof must
     # still refer to exactly the saved original pixels.
@@ -134,6 +142,8 @@ def main():
         'sourceBodiesAssessed': len(cards), 'sourceEvidenceCandidates': len(valid),
         'sourceQuestionsExcludedNoRetry': len(excluded),
         'summarySourceDocumentsAssessed': len(known),
+        'summarySourceDispositionComplete': len(known | set(gaps)) == len(keys['results']) and not remaining,
+        'summarySourceDocumentsDisposed': len(known | set(gaps)),
         'remainingContiguousSummaryDocuments': len(remaining),
         'remainingPrintedKeyCells': sum(len(r['printedRegionAnswers']) for r in remaining),
         'knownNumberGapSourcesExcludedNoRetry': gaps,

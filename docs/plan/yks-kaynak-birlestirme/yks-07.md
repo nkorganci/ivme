@@ -1,4 +1,4 @@
-# YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
+# YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı — BITTI
 
 **Güncel kapsam — kullanıcı kararı:** Hatalı/eksik/uyuşmayan/bulunamayan
 kaynak ve sorular **ELENDİ / yeniden deneme yok** durumuna alınır.
@@ -7,6 +7,45 @@ kapanış için onarılacak iş değildir. Doğru kaynakla bir geçişte doğrul
 adaylar ilerler; elenenler öğrenci ekranına ve aktarım paketine girmez.
 Tam adım, seçilen kaynakların kanıtı ve dışlamaları tamamlanınca kapatılır;
 bütün arşiv sorularının kurtarılması şart değildir.
+
+**TAMAMLANDI — BITTI (kullanıcının yalnız doğrulanabilir seçili kapsamı).**
+Runtime `YKS-07:full` VERIFIED; `yks-07/full/attempt-0002/selected-full-source-acceptance.json`.
+4.086 benzersiz PDF ve67.277 fiziksel sayfanın her biri gerekçeli son duruma
+bağlandı; kapsam dışı/yetersiz kanıtlı içerik için yokluk iddiası kurulmadı.
+12.266 soru gözleminde **4.383 özgün piksel + iki bağımsız basılı cevap
+okuması kanıtlı aday**,3.697 korunmuş mevcut kimlik,36 ikincil kaynak konumu,
+üç yalnız pilot kanıtı ve4.147 yeniden denemesiz dışlama vardır.
+Son kapıda basılı ders aralığı belirsiz39 kayıt da dışlandı; onarım yapılmadı.
+57 kaynakta yalnız kanıtlı soru bölgeleri seçildi;192 eski kaynakta mevcut
+kimlikler korunur;3.837 kaynaktan doğrulanmamış yeni soru çıkarımı dışlandı.
+Özgün kaynak dosyaları ve eski banka/öğrenci kayıtları silinmedi.
+
+Etkin sonraki-aşama girdisi `selected-yks07-acceptance/source-candidates.json`;
+`source-dispositions.json`, `question-dispositions.json` ve
+`page-dispositions.jsonl` bütün kararları saklar. Bu, **soru içeriği/dar konu,
+tekrar/yeni soru veya yayın kabulü değildir**; bunlar YKS-08/09/10 kapılarıdır.
+Kaynak/anahtar kanıtı eksik adaylar yeniden açılmaz. Yeni model/OCR/render,
+onarım, üretim soru yazımı ve eski ID birleştirme0.
+
+**Doğrulama:** YKS-07 `20261109T033804-47678fc9`39 kontrol/163 test PASS.
+Gerçek sayfa kapsamı, çift anahtar, piksel kanıtı, görünürlük ve eski kimlik
+korumaları denetlendi. Kalıcı DB checkpoint `3c14dc2f96f0eec7…`:
+279.087 işlem kaydı,81.262 mantıksal dosya ve80.328 farklı dosyanın
+2.242.518.174 baytı `ogm_ders.yks_evidence` üzerinden tamamen geri okundu;
+hash eşitliği ve aynı checkpoint ikinci kayıt0 INSERT PASS. Kanıt
+`database-archive/archive-report.json`. Ham eski REVIEW gözlemleri tarihsel
+kanıttır; güncel seçili07/08 kararları onarım kuyruğu yerine kullanılır.
+**Sıradaki iş YKS-08:** yalnız bu4.383 aday ve korunmuş kimlikler için güncel
+banka sürümüne bağlı mevcut karşılaştırmaları kullan; belirsizi dışla.
+
+**Fizik özet grubu — BITTI:**75 kaynağın tamamı karara bağlandı.74 sıralı
+kaynak/214 gövdenin ilk kaynak-gövde-cevap gözleminde159 aday/55 dışlama;
+bir numaralandırması bozuk kaynak bütünüyle dışarıda. Son35 kaynak/99 hücre
+tek geçişte59 aday/40 dışlama verdi;35 bütün sayfa ve21 panodaki61 görsel
+okundu. Özetlerde kalan0/0. Bu159 ilk gözlem, çift bağımsız anahtar dahil
+bütün07 kapılarından geçmiş4.383 aday sayısıyla aynı kabul düzeyi değildir.
+
+**Önceki partilerin kanıtı (aktif kalan iş listesi değildir):**
 
 **Kalıcı kayıt:** `1b55ac7771f3605f…` checkpoint; 250.000 işlem kaydı,
 80.223 farklı dosya / 2.126.651.853 baytın tam DB hash geri okuması PASS;

@@ -349,6 +349,7 @@ def main():
             ('actualBoundCrops','physics-summary-bound-bodies/actual-crop-review.json'),
             ('secondBoundBodies','physics-summary-bound-bodies-02/report.json'),
             ('secondActualBoundCrops','physics-summary-bound-bodies-02/actual-crop-review.json'),
+            ('finalSummaryOnePass','physics-summary-final-one-pass/report.json'),
             ('currentUserSourceSelection','verified-source-selection/report.json')]:
         target=root/relative
         if not target.is_file():continue
@@ -363,10 +364,14 @@ def main():
             raise ValueError('Five actual corrected source crops must remain hash-bound')
         if name=='actualLayouts' and digest(report['sourceReport'])!=report['sourceReportSha256']:
             raise ValueError('Actual layout review belongs to an earlier source geometry report')
-        if name in {'actualBoundCrops','secondActualBoundCrops'}:
+        if name in {'actualBoundCrops','secondActualBoundCrops','finalSummaryOnePass'}:
             for p,sha in report['inputs'].items():
                 if digest(p)!=sha:raise ValueError('Actual summary crop review uses changed preparation')
             for card in report['results']:
+                if name=='finalSummaryOnePass' and card['action']=='EXCLUDE_NO_RETRY':
+                    if card.get('learnerVisible') or card.get('productionImportAllowed'):
+                        raise ValueError('Excluded final summary cannot enter learner/import output')
+                    continue
                 if not card['preparedCropActuallyRead'] or card['visibleBodyOptionCuts'] or digest(card['image'])!=card['imageSha256']:
                     raise ValueError('Actual complete summary source crop required')
                 actual_summary_bodies[card['sourceSha256']]+=1
@@ -380,7 +385,9 @@ def main():
         summary_body_preparations[name]={k:report[k] for k in ['status','documents','questions','states','actualLayoutBoardsRead',
             'actualIndividualPagesOpened','sourceStatementMarkerReviewQuestions','questionBankWrites',
             'policyId','sourceBodiesAssessed','sourceEvidenceCandidates','sourceQuestionsExcludedNoRetry',
-            'remainingContiguousSummaryDocuments','remainingPrintedKeyCells','mainQueueActions'] if k in report}
+            'remainingContiguousSummaryDocuments','remainingPrintedKeyCells','mainQueueActions',
+            'excludedWithoutRetry','actualCropImagesRead','actualCropBoardsRead',
+            'summarySourceDispositionComplete','summarySourceDocumentsDisposed'] if k in report}
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}
@@ -403,7 +410,7 @@ def main():
             if row['sourceSha256'] in actual_summary_bodies:
                 row['actuallyReadSeparateSummaryBodyKeyBindings']={
                     'questions':actual_summary_bodies[row['sourceSha256']],
-                    'evidence':'physics-summary-bound-bodies/actual-crop-review.json',
+                    'evidence':'verified-source-selection/report.json',
                     'wholeMixedSubjectSourceAccepted':False,'mainQueueAdmissionAccepted':False}
             if summary and row['sourceSha256']==summary['sourceSha256']:
                 if row['sourceSha256'] in intake_by_source:raise ValueError('Separate bounded summary pilot already belongs to the main intake queue')

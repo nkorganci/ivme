@@ -866,6 +866,16 @@
       "args": ["testler/yks-summary-bound-body-test.py"],
       "inputs": ["scripts/yks_fizik_ozet_govde_bagla.py", "scripts/yks_fizik_ozet_kirpim_incele.py", "testler/yks-summary-bound-body-test.py"]
     },
+    "yks08-selected-comparison": {
+      "kind": "python",
+      "args": ["testler/yks08-selected-comparison-test.py"],
+      "inputs": ["scripts/yks08_secili_karsilastirma.py", "testler/yks08-selected-comparison-test.py"]
+    },
+    "yks07-selected-scope": {
+      "kind": "python",
+      "args": ["testler/yks07-selected-scope-test.py"],
+      "inputs": ["scripts/yks07_secili_kapsam.py", "testler/yks07-selected-scope-test.py", "scripts/yks-secim-politikasi.json"]
+    },
     "yks-verifiable-only": {
       "kind": "python",
       "args": [
@@ -875,6 +885,7 @@
         "scripts/yks-secim-politikasi.json",
         "scripts/yks_dogrulanabilir_secim.py",
         "scripts/yks_fizik_ozet_ikinci_parti.py",
+        "scripts/yks_fizik_ozet_son_gecis.py",
         "scripts/yks_soru_kabul_kuyrugu.py",
         "testler/yks-verifiable-only-test.py"
       ]
@@ -1154,7 +1165,8 @@
         "yks-saved-key-signals",
         "yks-summary-body-geometry",
         "yks-summary-bound-bodies",
-        "yks-verifiable-only"
+        "yks-verifiable-only",
+        "yks07-selected-scope"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
@@ -1184,7 +1196,8 @@
         "yks-intake-queue",
         "yks-diagnostic-source-identity",
         "yks-mock-source-identity",
-        "yks-five-summary-comparison"
+        "yks-five-summary-comparison",
+        "yks08-selected-comparison"
       ],
       "remainingAcceptance": [
         "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
