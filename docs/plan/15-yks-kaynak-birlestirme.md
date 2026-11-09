@@ -46,6 +46,21 @@ tek başına yeni işlem isteği değildir.
 
 ## Kapsam ve korunacaklar
 
+**Güncel kullanıcı kararı — yalnız doğrulanabilir içerik:** Hatalı, eksik,
+uyuşmayan veya bulunamayan soru/cevap/konu için onarım ve tekrar inceleme
+yapılmaz. Aday `EXCLUDE_NO_RETRY` ile seçili kümeden çıkarılır; öğrenci
+ekranına, yayın kataloğuna veya aktarım paketine konmaz. Bunları düzeltmek
+YKS-07–13 kapanış koşulu değildir: kapsam, kanıtlı kabul + gerekçeli dışlama
+ile kapatılır. Yeni açık kaynak bir kez incelenir; kanıt tamamlanamıyorsa
+sonraki kaynağa geçilir. Daha önce kayıtlı banka kimlikleri/öğrenci geçmişi
+korunur; eski gözlem dosyası kabul kuyruğu değildir. Bütün kaynaklardaki
+bütün soruları kurtarmaya çalışma. Eski metinlerdeki “istisna bekler/onar”
+yönlendirmeleri bu kullanıcı kararıyla yeniden deneme işi olmaktan çıkar.
+
+Çalışma kuralı `scripts/yks-secim-politikasi.json`; güncel filtrelenmiş çıktı
+`verified-source-selection/` olur. Kaynak/gövde/cevap kanıtı tek başına yeni
+soru veya konu kabulü değildir; tekrar ve kontrollü konu kapıları sürer.
+
 Kaynaklar:
 
 - `D:\workspace\mebi-yks`

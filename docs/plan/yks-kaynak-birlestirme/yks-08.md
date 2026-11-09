@@ -1,5 +1,12 @@
 # YKS-08 — Bankadaki ve yeni partideki soru tekrarları
 
+**Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
+`EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR
+yapma. Elenenler öğrenci ekranına ve aktarım paketine girmez. Eski açık
+istisnalar düzeltilecek bekleyen iş değildir; yalnız kanıtlı seçili küme ve
+gerekçeli dışlamalarla ilerle. Güncel seçim `verified-source-selection/`;
+önce YKS-07 tamamlanır, diğer aşamalar sonra yürütülür.
+
 **Beş Fizik özeti sorusunun ek karşılaştırması — BITTI (tam aşama değil):**
 `physics-summary-five-body-comparison/` önceki beş v2 kırpımı gerçek görüntüden
 okunmuş karşılaştırma metniyle, 80.230 banka sorusu ve 12.052 güncel hazırlanmış /

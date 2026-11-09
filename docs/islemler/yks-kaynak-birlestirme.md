@@ -646,3 +646,28 @@ kesişimi açık ve soru bazlı hash ile sınırlıdır. Yeni sınır eski kırp
 üzerine yazmaz. Kaynak kusurları, karma dersler ve numara boşluğu korunur;
 PDF metninden eksik sembol tamamlanmaz. `remaining-sources.json` kalan
 56 sıralı özet/162 basılı hücreyi listeler; diğer arşiv düzenlerini kapatmaz.
+
+### Kullanıcı kararı: yalnız doğrulanabilir aday, yeniden deneme yok
+
+`scripts/yks-secim-politikasi.json` bütün YKS kabul adımlarını yönetir.
+Hatalı, eksik, çelişkili, bulunamayan ve doğrulanamayan aday seçili paketten
+çıkarılır; eksik anahtar/şekil aranmaz, onarım/tekrar OCR/model yapılmaz.
+Bu dışlamalar kapanışı engelleyen bekleyen işler değildir. Bilinen hatalı
+kaynağı yeniden açma; ilk kez incelenen açık kaynakta da hata çıkarsa geç.
+
+```powershell
+..\.venv\Scripts\python.exe -X utf8 scripts/yks_dogrulanabilir_secim.py
+```
+
+Aktif küme `verified-source-selection/source-evidence-candidates.json`;
+elenecekler `exclusions.json`, eski ana kuyruğun yeni iş kararları
+`main-queue-policy.json`, sıradaki açık kaynaklar `remaining-sources.json`.
+Ham eski gözlemler kabul kuyruğu değildir. Seçili kaynak-gövde-cevap kanıtı
+konu/tekrar veya üretim kabulü vermez. Öğrenci ekranına yalnız bütün gereken
+kanıtları tamamlanan kayıtlar geçebilir. Mevcut banka ID/geçmişi korunur.
+
+Tamamlanan ikinci özet partisi için `yks_fizik_ozet_ikinci_parti.py` yalnız
+kaydedilmiş63 görüntünün gerçek okuma hash kümesini kontrol eder; PDF
+render/OCR/model veya onarım yapmaz. Özgün hazırlayıcı sürümü kanıt dizininde
+`physics-summary-bound-bodies-02/preparation-tool.py` olarak donmuştur;
+çalıştırma. Kaynak kusurlarının bulunduğu dosyaları tekrar inceleme.

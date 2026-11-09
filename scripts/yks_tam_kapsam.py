@@ -346,7 +346,10 @@ def main():
             ('fiveBodyActualBankReview','physics-summary-five-body-comparison/actual-bank-image-review.json'),
             ('fiveBodyTopicSupport','physics-summary-five-topic-review/report.json'),
             ('boundBodies','physics-summary-bound-bodies/report.json'),
-            ('actualBoundCrops','physics-summary-bound-bodies/actual-crop-review.json')]:
+            ('actualBoundCrops','physics-summary-bound-bodies/actual-crop-review.json'),
+            ('secondBoundBodies','physics-summary-bound-bodies-02/report.json'),
+            ('secondActualBoundCrops','physics-summary-bound-bodies-02/actual-crop-review.json'),
+            ('currentUserSourceSelection','verified-source-selection/report.json')]:
         target=root/relative
         if not target.is_file():continue
         report=read_json(target)
@@ -360,16 +363,24 @@ def main():
             raise ValueError('Five actual corrected source crops must remain hash-bound')
         if name=='actualLayouts' and digest(report['sourceReport'])!=report['sourceReportSha256']:
             raise ValueError('Actual layout review belongs to an earlier source geometry report')
-        if name=='actualBoundCrops':
+        if name in {'actualBoundCrops','secondActualBoundCrops'}:
             for p,sha in report['inputs'].items():
                 if digest(p)!=sha:raise ValueError('Actual summary crop review uses changed preparation')
             for card in report['results']:
                 if not card['preparedCropActuallyRead'] or card['visibleBodyOptionCuts'] or digest(card['image'])!=card['imageSha256']:
                     raise ValueError('Actual complete summary source crop required')
                 actual_summary_bodies[card['sourceSha256']]+=1
+        if name=='currentUserSourceSelection':
+            for path,sha in report['inputs'].items():
+                if digest(path)!=sha:raise ValueError('User policy selection inputs changed')
+            for file_key in ['selectedPackage','exclusions','queuePolicy','remainingSources']:
+                if digest(report[file_key])!=report[file_key+'Sha256']:
+                    raise ValueError('Current filtered policy package changed')
         inputs.append(target)
         summary_body_preparations[name]={k:report[k] for k in ['status','documents','questions','states','actualLayoutBoardsRead',
-            'actualIndividualPagesOpened','sourceStatementMarkerReviewQuestions','questionBankWrites'] if k in report}
+            'actualIndividualPagesOpened','sourceStatementMarkerReviewQuestions','questionBankWrites',
+            'policyId','sourceBodiesAssessed','sourceEvidenceCandidates','sourceQuestionsExcludedNoRetry',
+            'remainingContiguousSummaryDocuments','remainingPrintedKeyCells','mainQueueActions'] if k in report}
     before={str(p):digest(p) for p in inputs};preflight=read_json(page)
     if preflight['status']!='PASS' or preflight['errors']:raise ValueError('Full page preflight required')
     mock_report=read_json(mock) if mock.is_file() else {}

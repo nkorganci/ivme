@@ -97,6 +97,11 @@ RECORD_REPORTS={
  'physics-summary-five-topic-support':('physics-summary-five-topic-review/report.json','results','sourceCode'),
  'physics-summary-bound-source-bodies':('physics-summary-bound-bodies/report.json','results','sourceSha256'),
  'physics-summary-bound-crop-review':('physics-summary-bound-bodies/actual-crop-review.json','results','sourceCode'),
+ 'physics-summary-second-bound-bodies':('physics-summary-bound-bodies-02/report.json','results','sourceSha256'),
+ 'physics-summary-second-actual-crops':('physics-summary-bound-bodies-02/actual-crop-review.json','results','sourceCode'),
+ 'verifiable-only-summary-candidates':('verified-source-selection/source-evidence-candidates.json','cards','sourceCode'),
+ 'verifiable-only-exclusions':('verified-source-selection/exclusions.json','results','sourceCode'),
+ 'verifiable-only-main-queue-policy':('verified-source-selection/main-queue-policy.json','results','sourceCode'),
  'cross-source-visual-chemistry-repeat':('cross-source-candidates/expanded-with-visual-chemistry/source-question-index.json','results','sourceCode'),
  'chemistry-partial-body':('partial-chemistry-preparation/progress.json','results','sourceSha256'),
  'chemistry-partial-repeat':('partial-chemistry-comparison/controlled-repeat-review.json','results','sourceCode'),
@@ -215,7 +220,9 @@ def capture(root,staging):
         'TEST-com.hedefyks.YksEvidenceArchiveTest.xml','archive-report.json','restore-report.json']:
         path=root/'database-archive'/name
         if path.is_file():add(path,'archive-verification/'+name,'ARCHIVE_DATABASE_TEST_AND_READBACK_EVIDENCE')
-    for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java']:
+    for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java',
+            APP/'scripts/yks-secim-politikasi.json',APP/'scripts/yks_dogrulanabilir_secim.py',
+            APP/'scripts/yks_fizik_ozet_ikinci_parti.py']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
     for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
             'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json','run/pending-source-reuse/report.json',

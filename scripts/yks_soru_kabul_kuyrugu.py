@@ -8,6 +8,7 @@ from pathlib import Path
 from yks_birlestirme import Store,read_json,write_json,digest,signature
 from yks_soru_pilotu import APP,live_bank
 from yks_partiler_arasi_tekrar import COHORTS
+from yks_dogrulanabilir_secim import queue_action, POLICY_PATH
 
 
 def disposition(blocks,existing,group,pilot,has_candidates):
@@ -159,13 +160,19 @@ def main():
             'productionImportAllowed':False,'teacherApproved':False})
     after,_=live_bank(APP)
     if signature(after)!=bank_sha or any(digest(p)!=sha for p,sha in {**inputs,**packages}.items()):raise ValueError('Queue inputs or canonical bank changed during preparation')
-    priority=[r['sourceCode'] for r in results if r['status']=='EXISTING_BANK_CANDIDATE_REVIEW_BEFORE_ANY_NEW_INTAKE']
+    # Preserve original identity/answer observations, but never requeue known
+    # unresolved candidates under the user's explicit no-repair policy.
+    for row in results:
+        row['workAction']=queue_action(row)
+        row['retryKnownExceptionAllowed']=False
+    priority=[r['sourceCode'] for r in results if r['workAction']=='ONE_PASS_SOURCE_CONTENT_AND_TOPIC_CHECK_ONLY_SKIP_IF_NOT_PROVABLE']
     output={'status':'PASS','scope':'ALL_CURRENT_PREPARED_QUESTION_IDENTITIES_AND_BLOCKS_ONLY_NOT_FULL_ARCHIVE_ACCEPTANCE',
         'questions':len(results),'sourceDocuments':len({r['sourceSha256'] for r in results}),'states':dict(Counter(r['status'] for r in results)),
         'provenExistingCanonicalIds':len({c for r in results for c in r['existingCanonicalCodes']}),
         'bankSnapshotSha256':bank_sha,'sourcePackages':packages,'inputs':inputs,'results':results,
-        'nextIndependentSourceReview':{'scope':'REMAINING_BANK_CANDIDATES_PRESERVE_ORIGINAL_OFFICIAL_SOURCE_LOCATORS','sourceCodes':priority,
-            'instruction':'Read actual source images and printed keys; preserve any bank candidate or old pending locator; do not infer NEW or use model topic agreement as admission.'},
+        'selectionPolicy':{'path':str(POLICY_PATH),'sha256':digest(POLICY_PATH),'unresolvedAction':'EXCLUDE_NO_RETRY'},
+        'nextIndependentSourceReview':{'scope':'ONLY_ONE_PASS_OF_NOT_YET_READ_CLEAR_SOURCE_CONTENT','sourceCodes':priority,
+            'instruction':'Use verified-source-selection/report.json as the active policy view. Known missing, inconsistent or ambiguous candidates are excluded, not repaired or retried; skip any new unprovable source immediately. No automatic NEW or teacher acceptance.'},
         'fullYks07Accepted':False,'fullYks08Accepted':False,'fullYks09Accepted':False,'productionQuestionWrites':0,
         'teacherApproved':False,'toolSha256':digest(Path(__file__))}
     write_json(root/'source-intake-queue/report.json',output);print({k:v for k,v in output.items() if k not in ['sourcePackages','inputs','results','nextIndependentSourceReview']})

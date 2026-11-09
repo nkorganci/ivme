@@ -80,6 +80,9 @@ REPORTS={
     'physicsSummaryFiveTopicSupport':'physics-summary-five-topic-review/report.json',
     'physicsSummaryBoundBodies':'physics-summary-bound-bodies/report.json',
     'physicsSummaryActualCrops':'physics-summary-bound-bodies/actual-crop-review.json',
+    'physicsSummarySecondBodyBatch':'physics-summary-bound-bodies-02/report.json',
+    'physicsSummarySecondActualCrops':'physics-summary-bound-bodies-02/actual-crop-review.json',
+    'verifiableOnlySourceSelection':'verified-source-selection/report.json',
 }
 
 
@@ -101,48 +104,26 @@ def main():
             saved['postgresArchive']={'checkpoint':proof['checkpoint'],'status':'VERIFIED_READBACK_AND_IDEMPOTENT',
                 'database':'ogm_ders','schema':'yks_evidence','proofPath':'database-archive/archive-report.json','proofSha256':digest(archive)}
         state['sessionStatus']='ACTIVE';state['resumeAt']='YKS-07:full'
-        state['nextAction']=('User priority: finish full YKS-07 PDF/page/key evidence first; only then continue YKS-08/09. Use full-source-coverage/report.json. '
-            '270 diagnostics/5061 keys and crops, 41 mock bodies/5863 section-keyed crops already prepared and all-bank compared; do not regenerate them. '
-            'Two Din books have 647 printed key cells, 643 present bodies and 586 bound questions in 20 prepared sections; '
-            'exclude both entire mismatched sections (57 present bodies), not just their four orphan answer cells. '
-            'All 586 bound Din questions have been bank-compared; do not re-render or re-run those comparisons. '
-            'The 3 Adim Turkce editions have 281/283 exactly equal native and 180/330 DPI pages; '
-            'reuse old completed and pending IDs on equivalent pages, review body page30 and key page280 incrementally. '
-            'The changed key is Yazim Kurallari-1, 3. Adim, Q1 (old E/new D), not 2. Adim. '
-            'All 1179 prior sources/86912 occurrences are reconciled; use effectiveProofStates in full-source-coverage/report.json for the latest proven link counts. '
-            '23 inactive/outside-active-YKS links and 5303 pending locators preserve their original identities. '
-            'The booklet supplement validates 3231/3248 prior links with original ham/img, official answer records and actual printed keys; '
-            'do not regenerate this completed all-prior or booklet work. '
-            'Full Din topic retrieval and Qwen reading of 1099 bound questions are complete; do not rerun models or embeddings. '
-            'Read full-question-topics/din/semantic-topic-review.json and check the worker before resuming GPT-OSS. '
-            'The --from-reviewed-images selection is 37 source codes, not full 1099-question semantic acceptance; old pilot caches are reused. '
-            'Chemistry retrieval1030, text-reading12, independent-prefix12 and image-pilot3 are complete. '
-            'The image model agrees on only1/3 and generates unwanted answers; do not scale this unreliable topic method. '
-            'Three actual laboratory images and registered PDF pages6/7 prove different unpublished topic candidates. '
-            'All542 partial Chemistry sources reuse old IDs: first376 and an additional166 resolved through exact official book/page/printed-number locators and current controlled scope. '
-            'The3036 diagnostic existing candidates are fully checked:1779 exact native/two-DPI/current-source links,1257 original source exceptions. '
-            'The second diagnostic identity pass reused3036 raw caches with zero new comparisons/renders; do not repeat it. '
-            'source-intake-queue/report.json contains12052 current versions:3697 single-ID source records,389 multiple-ID records,1543 unresolved bank candidates,6380 content/topic reviews,36 secondary source locators,4 blocks and3 isolated-pilot-only records. It preserves4475 distinct existing canonical IDs. '
-            'The isolated complete-region union pass resolved103/450 diagnostic boundary exceptions;347 remain held (298 neighboring-question intersections,46 pixel changes,3 incomplete option sets). All74 regular mock union candidates remain held. These immutable proofs do not approve prepared crop content or fine topics; do not repeat their renders. '
-            'All4086 PDFs/67277 pages have a saved native/OCR key-signal index. Its85 heading candidates include75 physics summaries,3 history summaries,2 separate answer documents and5 already-known mock/Turkce exceptions. Do not interpret missing signals as absence or redo those known exceptions. '
-            'Physics summary key regions75/75 are reconciled:74 contiguous sources/214 printed cells; source e707d7a0c8ee literally prints1,2,4 and stays held without renumbering. All44 held key strips and2 whole source pages have actually been read; original model/OCR outputs remain frozen. Do not rerun that key-reading work. '
-            'physics-summary-discovery contains3 actually viewed mirror questions with D/D/E printed keys and original lossless pixels, compared to all80230 bank questions. All24 retrieved relations/23 distinct bank images were actually read and differ; this is not a novelty proof. The exact unpublished MEBI special-rays leaf e02f14b7 has4 actually read PDF pages and supports all3 tasks and printed-answer consistency. Their incremental comparison against12052 current prepared and5303 original pending locators is complete with0 exact body/locator relations. Only11950 prepared and4428 pending bodies have complete literal five-option parsing; unparsed cases still forbid automatic novelty. Do not redo these bank/topic/pending readings or source extraction. This separate pilot remains outside the original12052 main cohort. All75 summary layouts now have native geometry/saved OCR and13 actually viewed boards;39 sequence candidates remain unaccepted,35 layout cases and the1/2/4 key gap held. Source17cc07ec3ed7 contains Physics and History panels on the same page; never carry the Physics C/E strip into the three History inline answers. Five actually read 66d6cd9275fd bodies now have corrected v2 lossless crops and E/C/E/E/D source bindings; old cropped bottom lines remain superseded. The five retrieval transcripts and fine-topic PDF support are recorded; 34 bank relations/24 actual images include two Q5 numeric/option variants whose old IDs stay separate. Question4 statement markers and novelty remain held. A separate source f7abb44afd32 has a q1 figure above the heading. The next16 source pages now bind44 further questions to original full crops and printed keys; all44 crops were actually read on15 boards and3 individual corrected images. Preserve6 explicit native geometry intersections and4 source-content defect holds; visible option cuts0. Including the earlier3/5 bodies,18 sources/52 printed-key bodies are prepared outside main12052. Continue full YKS-07 first: physics-summary-bound-bodies/remaining-sources.json lists56 contiguous-key summaries/162 printed cells. Preserve mixed subjects and source annotations; cells alone are not question counts. Keep the e707d7a0c8ee printed1,2,4 gap held; no automatic NEW or main-queue admission. '
-            'Mock identity passes are complete:1458 regular candidates (996 single/255 multi/207 held),447 combined-subject candidates (271 single/88 multi/88 held),103 source/scope exceptions (46 multi/57 held). Do not rerender those unchanged inputs. '
-            '35 cross-source duplicate pairs and one printed C/D conflict have been actually read. '
-            'Six source/bank exact question image pairs preserve old IDs; cross-exam associations remain separate review. '
-            'The pending mathematics source matches two old pending locators with C/A keys and a contaminated old crop; no new intake. '
-            'Chemistry has 150 original native/OCR-backed plus 392 additional native/Qwen-backed individually identical questions; all 42 visual key exceptions are complete. Read the two separate comparison reports and do not regenerate either cohort. '
-            'din-question-amendments/report.json supersedes four source versions: table ordering/embedded labels and the contaminated TYT book Test1 Q24 crop. '
-            'Q24 has a separate corrected original-PDF crop; never reuse its old 2-question image or old topic suggestion. '
-            'The source mock fd0fdf7c0577 S2 Q19 really prints identical D/E options; it is excluded from new intake. '
-            'Independent GPT-OSS selected37 is complete: 20 supported, 9 missing, 5 insufficient, 3 invalid; models alone accept nothing. '
-            'actual-topic-support-challenges.json additionally holds 3 model-supported suggestions and adds one actual same-PDF quote. '
-            'Eight old mock key links have already been read; seven support the old bank, md-ayt-sozel-21-39 old/new C conflicts with bank D. '
-            'All40 images under the copied TYT instruction in AYT mock333642091490 have actually been read:39 clear preparation subjects (13 Physics/13 Chemistry/13 Biology), question13 remains shared Physics/Chemistry nanotechnology review with two actual registered PDF sources. Preserve the wrong printed instruction and source keys. '
-            'Continue the511 remaining source subject/scope reviews, existing-candidate identity exceptions and truly new complete content/fine-topic reviews from the unified queue; no row allows production import. '
-            '66 diagnostic key exceptions include known source-version differences and remain unapproved. '
-            'Full stages 07-10 and live 11-13 are not accepted; retain original sources, all bank IDs, student history and model caches. '
-            'Append the next meaningful batch with yks_kanit_db.py save; checkpoint only after actual evidence.')
+        policy_path=APP/'scripts/yks-secim-politikasi.json'
+        state['selectionPolicy']={'path':str(policy_path),'sha256':digest(policy_path),
+            'unresolvedAction':'EXCLUDE_NO_RETRY','sourceRepairAttempts':0}
+        state['nextAction']=(
+            'USER PRIORITY: finish YKS-07 using only verifiable content, then continue other stages. '
+            'Apply scripts/yks-secim-politikasi.json: exclude missing, inconsistent, ambiguous or failed candidates immediately; '
+            'no source repair, missing-key/figure search, repeat OCR/model or exception retries. '
+            'Exclusion is a completed disposition, never verified question acceptance; excluded candidates cannot be learner-visible or imported. '
+            'The authoritative active view is verified-source-selection/report.json and source-evidence-candidates.json. '
+            '39 summary sources/115 bodies have actual source readings;100 source-evidence candidates remain,15 defective candidates are excluded. '
+            'The original main12052 queue is an immutable observation index. Its policy view excludes1936 unresolved records without retries; '
+            '3697 proven existing source identities preserve old IDs,36 secondary locators are not reimported,3 remain isolated pilot proof. '
+            '6380 as-yet-unread source/content records may receive one pass only; skip any failure instead of repairing. '
+            'Next: verified-source-selection/remaining-sources.json lists35 previously unread clear-key summaries/99 printed cells; '
+            'start84a720abf787 Special Relativity and Quantum Physics. The printed1/2/4 gap source is excluded, not waiting for repair. '
+            'Earlier native/OCR/key/model/all-bank comparisons and real isolated DB pilot proofs remain frozen; do not repeat unchanged work. '
+            'Other known66 diagnostic, mock identity/key/decoding and book mismatch exceptions are exclusions, not blockers requiring rescue. '
+            'Keep original bank IDs, student history and provenance. Only source-complete/current-duplicate/controlled-topic proof can advance. '
+            'Do not mark full07 accepted until the remaining selected one-pass source dispositions are recorded. '
+            'The summary evidence does not publish topics or questions; full08-10 acceptance and live11-13 remain separate.')
         store.save(state,{'event':'FULL_PREPARATION_CURSOR_SAVED','stage':'YKS-07:full',
             'fullStageAccepted':False,'questionBankWrites':0,'reports':list(REPORTS)})
         write_json(root/'session-checkpoint.json',{'runId':state['runId'],'revision':state['revision'],

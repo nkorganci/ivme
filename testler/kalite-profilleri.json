@@ -865,6 +865,19 @@
       "kind": "python",
       "args": ["testler/yks-summary-bound-body-test.py"],
       "inputs": ["scripts/yks_fizik_ozet_govde_bagla.py", "scripts/yks_fizik_ozet_kirpim_incele.py", "testler/yks-summary-bound-body-test.py"]
+    },
+    "yks-verifiable-only": {
+      "kind": "python",
+      "args": [
+        "testler/yks-verifiable-only-test.py"
+      ],
+      "inputs": [
+        "scripts/yks-secim-politikasi.json",
+        "scripts/yks_dogrulanabilir_secim.py",
+        "scripts/yks_fizik_ozet_ikinci_parti.py",
+        "scripts/yks_soru_kabul_kuyrugu.py",
+        "testler/yks-verifiable-only-test.py"
+      ]
     }
   },
   "profiles": {
@@ -1140,7 +1153,8 @@
         "yks-partial-chemistry-key",
         "yks-saved-key-signals",
         "yks-summary-body-geometry",
-        "yks-summary-bound-bodies"
+        "yks-summary-bound-bodies",
+        "yks-verifiable-only"
       ],
       "remainingAcceptance": [
         "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",

@@ -1,5 +1,12 @@
 # YKS-09 — Özgün kırpım ve kaynaklı soru kabul paketi
 
+**Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
+`EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR
+yapma. Elenenler öğrenci ekranına ve aktarım paketine girmez. Eski açık
+istisnalar düzeltilecek bekleyen iş değildir; yalnız kanıtlı seçili küme ve
+gerekçeli dışlamalarla ilerle. Güncel seçim `verified-source-selection/`;
+önce YKS-07 tamamlanır, diğer aşamalar sonra yürütülür.
+
 **Beş Fizik gövdesinin dar konu desteği — BITTI (yayın/alım değil):**
 `physics-summary-five-topic-review/report.json` beş görevi kayıtlı MEBİ TYT
 Fizik `62ac11b7…` Hareket Kavramları yaprağındaki gerçek PDF alıntılarıyla bağlar.

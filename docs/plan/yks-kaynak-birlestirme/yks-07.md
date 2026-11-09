@@ -1,5 +1,40 @@
 # YKS-07 — PDF/sayfa incelemesi ve cevap anahtarı
 
+**Güncel kapsam — kullanıcı kararı:** Hatalı/eksik/uyuşmayan/bulunamayan
+kaynak ve sorular **ELENDİ / yeniden deneme yok** durumuna alınır.
+Eksik şekil/cevap aranmaz; OCR/model/onarım denenmez. Eski açık istisnalar
+kapanış için onarılacak iş değildir. Doğru kaynakla bir geçişte doğrulanan
+adaylar ilerler; elenenler öğrenci ekranına ve aktarım paketine girmez.
+Tam adım, seçilen kaynakların kanıtı ve dışlamaları tamamlanınca kapatılır;
+bütün arşiv sorularının kurtarılması şart değildir.
+
+**Kalıcı kayıt:** `1b55ac7771f3605f…` checkpoint; 250.000 işlem kaydı,
+80.223 farklı dosya / 2.126.651.853 baytın tam DB hash geri okuması PASS;
+aynı checkpoint ikinci kayıt 0 INSERT. Kullanıcı seçim politikası, yeni
+63 gövde gözlemi, 100 seçili aday ve dışlamalar kayıtlıdır. Ham eski
+gözlemdeki REVIEW durumları yeni onarım işi değildir; aktif seçim politikası
+üstündür. Üretim soru yazımı 0.
+
+**Güncel doğrulama:** YKS-07 `20261109T012329-a28d5a48` 38 kontrol /
+156 test PASS; mevcut kimlik kuyruğu 4 ek test PASS. Politika, kaynak
+kusurunu elediğinde yeni soru/öğretmen onayı uydurmaz ve eski ID’yi silmez.
+
+**Yeni parti:** 21 kaynakta 63 özgün gövde/anahtar gözlemi tamamlandı;
+21 pano ve dört düzeltilmiş bireysel kırpım gerçekten okundu. Önceki
+gözlemlerle 39 kaynak/115 gövdeye ulaşıldı. Yeni politikayla **100 soru
+kaynak-gövde-cevap hazırlığında kalır, 15 aday elenir**. Bunlar konu/tekrar
+veya üretim alımı onayı değildir. `verified-source-selection/report.json`
+35 yeni açık kaynak/99 basılı hücreyi tek geçiş için listeler; basılı
+1/2/4 hatalı kaynak yeniden incelenmeden elendi. İlk partinin ham
+gözlemleri değiştirilmez; güncel seçili çıktı bu filtrelenmiş pakettir.
+
+Ana 12.052 kuyruğun politika görünümünde 1.936 engelli/belirsiz aday
+yeniden denemeden dışarıda; 3.697 mevcut kimlik korunur, 36 ikincil
+locator tekrar eklenmez, üç kayıt yalnız yalıtılmış pilot kanıtıdır.
+Henüz kaynak/konu okuması yapılmamış 6.380 adayda yalnız bir geçiş yapılır;
+doğrulanamayan hemen elenir. Bu sayı yeni veya yayınlanabilir soru sayısı
+değildir. Yeni model/OCR çağrısı ve üretim soru yazımı 0.
+
 
 **Güncel kalıcı kanıt:** `a8c78812105629fd…` checkpoint, `ogm_ders.yks_evidence`
 237.686 kayıt / 80.098 farklı dosya / 2.111.400.466 bayt. Bütün dosyalar

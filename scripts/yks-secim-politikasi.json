@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "policyId": "YKS_VERIFIABLE_ONLY_SKIP_UNRESOLVED_V1",
+  "authority": "USER_EXPLICIT_INSTRUCTION",
+  "instruction": "Yalniz dogrulanabilir soru, cevap ve konularla ilerle. Hatali, eksik, uyusmayan veya bulunamayan adaylari ele; onarma, yeniden okuma veya tekrar model cagrisi yapma. Elenenleri ogrenci ekranina ve aktarim paketine koyma.",
+  "unresolvedAction": "EXCLUDE_NO_RETRY",
+  "sourceRepairAttempts": 0,
+  "retryKnownSourceExceptions": false,
+  "searchForMissingAnswerOrFigure": false,
+  "excludedLearnerVisible": false,
+  "excludedProductionImportAllowed": false,
+  "existingCanonicalIdAction": "PRESERVE_HISTORY_AND_REUSE_ONLY_WITH_CURRENT_PROOF",
+  "newQuestionRequirements": [
+    "ORIGINAL_COMPLETE_SOURCE_BODY_AND_OPTIONS",
+    "PRINTED_SOURCE_ANSWER_PROOF",
+    "CURRENT_UNAMBIGUOUS_DUPLICATE_DISPOSITION",
+    "CONTROLLED_SOURCE_SUPPORTED_TOPIC"
+  ],
+  "exclusionCountsAsProcessedForEvidenceScope": true,
+  "exclusionCountsAsVerifiedQuestion": false
+}

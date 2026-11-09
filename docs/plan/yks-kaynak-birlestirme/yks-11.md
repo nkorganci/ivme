@@ -1,5 +1,12 @@
 # YKS-11 — Dosya düzeni ve ortak katalog geçişi
 
+**Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
+`EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR
+yapma. Elenenler öğrenci ekranına ve aktarım paketine girmez. Eski açık
+istisnalar düzeltilecek bekleyen iş değildir; yalnız kanıtlı seçili küme ve
+gerekçeli dışlamalarla ilerle. Güncel seçim `verified-source-selection/`;
+önce YKS-07 tamamlanır, diğer aşamalar sonra yürütülür.
+
 [Ana plan ve ortak kurallar](../15-yks-kaynak-birlestirme.md) ·
 [Görev durumu](../../gorev-durumu.md) · [Devir](../../devam.md)
 
