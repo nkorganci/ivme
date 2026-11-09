@@ -871,6 +871,21 @@
       "args": ["testler/yks08-selected-comparison-test.py"],
       "inputs": ["scripts/yks08_secili_karsilastirma.py", "testler/yks08-selected-comparison-test.py"]
     },
+    "yks08-full-acceptance": {
+      "kind": "python",
+      "args": ["testler/yks08-full-acceptance-test.py"],
+      "inputs": ["scripts/yks08_tam_kabul.py", "testler/yks08-full-acceptance-test.py"]
+    },
+    "yks09-empty-package": {
+      "kind": "python",
+      "args": ["testler/yks09-empty-package-test.py"],
+      "inputs": ["scripts/yks09_bos_kabul_paketi.py", "testler/yks09-empty-package-test.py"]
+    },
+    "yks10-zero-transfer": {
+      "kind": "python",
+      "args": ["testler/yks10-zero-transfer-test.py"],
+      "inputs": ["scripts/yks10_sifir_aktarim_kabulu.py", "testler/yks10-zero-transfer-test.py"]
+    },
     "yks07-selected-scope": {
       "kind": "python",
       "args": ["testler/yks07-selected-scope-test.py"],
@@ -1197,26 +1212,27 @@
         "yks-diagnostic-source-identity",
         "yks-mock-source-identity",
         "yks-five-summary-comparison",
-        "yks08-selected-comparison"
+        "yks08-selected-comparison",
+        "yks08-full-acceptance"
       ],
       "remainingAcceptance": [
-        "Tam arşiv sorularının güncel banka metin/görsel/sürüm karşılaştırması.",
-        "Tek on iki soruluk pilot bütün tekrar taramasını bitirmez."
+        "Seçili tam arşiv karar defteri korunur: doğrulanmamış yeni soru adayları dışarıdadır.",
+        "YKS-09 yalnız gerçekten kabul edilebilir yeni soru varsa kaynaklı paket oluşturabilir."
       ],
-      "nextAction": "Mevcut kanonik soruları yeniden ekleme; tam çıkarım için kaynak/cevap/konu kanıtlarını tamamla."
+      "nextAction": "YKS-09 için boş, yayımlanmayan kabul paketini kaydet; dışlanan adayı yeniden açma."
     },
     "YKS-09": {
-      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs", "yks-five-summary-comparison"],
+      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs", "yks-five-summary-comparison", "yks09-empty-package"],
       "remainingAcceptance": [
-        "Gerçek kaynak kırpımı, basılı cevap, güncel tekrar ve dar konu kanıtlarıyla kabul paketi.",
-        "Model önerisi öğretmen kararı veya canlı yayın kabulü değildir."
+        "Seçili tam kapsamda kabul edilebilir yeni soru yoktur; paket boş ve yayımlanmamıştır.",
+        "Sınırlı üç soruluk yalıtılmış pilot, tam kapsamda yayın/alım kararı değildir."
       ],
-      "nextAction": "Kaynak soru kökü ve aynı MEBİ yaprağının PDF içeriğini karşılaştır; belirsiz adayı yayınlama."
+      "nextAction": "YKS-10’da sıfır aktarımlı tam geçiş kabulünü öğrenci DB’sine yazmadan yap."
     },
     "YKS-10": {
-      "checks": ["yks-birlestirme-runtime", "yks-isolated-pilot-proof"],
-      "remainingAcceptance": ["Bu profil yalnız temsilî yalıtılmış pilotu doğrular; tam arşiv ve canlı cutover kabulü değildir."],
-      "nextAction": "Geçerli gerçek DB provasını yeniden çalıştırma; tam PDF/anahtar ve soru uzlaştırmasına geç."
+      "checks": ["yks-birlestirme-runtime", "yks-isolated-pilot-proof", "yks10-zero-transfer"],
+      "remainingAcceptance": ["Seçili tam paket boştur; bu kabul canlı cutover değil, sıfır aktarım güvenlik kararını doğrular."],
+      "nextAction": "YKS-11 katalog/kaynak geçişini soru aktarımından bağımsız ve kontrollü hazırla."
     }
   }
 }

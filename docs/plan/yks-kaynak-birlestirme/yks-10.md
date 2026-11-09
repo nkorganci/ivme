@@ -1,4 +1,12 @@
-# YKS-10 — Temsilî pilot ve tam geçiş kabulü
+# YKS-10 — Temsilî pilot ve tam geçiş kabulü — BITTI
+
+**Tam kabul — BITTI (sıfır aktarım):** Boş YKS-09 paketi canlıya geçirilmedi.
+80.230 banka kaydı salt-okunur doğrulandı; üretim soru/katalog ve öğrenci DB
+yazımı, öğrenci geçmişi değişikliği, ID birleşmesi ve cutover sıfırdır. Dört
+testlik yalıtılmış `ivme_test` pilotu ikinci aktarımda sıfır INSERT ve geri alma
+kanıtını korur. Runtime `YKS-10:full` VERIFIED,
+`yks-10/full/attempt-0001/zero-transfer-acceptance.json`; kalite üç kontrol
+PASS (`20261109T043736-6baf5948`).
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR

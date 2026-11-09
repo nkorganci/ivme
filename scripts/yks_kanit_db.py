@@ -68,6 +68,9 @@ RECORD_REPORTS={
  'chemistry-visual-key-source':('partial-chemistry-visual-preparation/progress.json','results','sourceSha256'),
  'chemistry-visual-key-repeat':('partial-chemistry-visual-comparison/controlled-repeat-review.json','results','sourceCode'),
  'chemistry-canonical-source-reuse':('partial-chemistry-canonical-reuse/report.json','results','sourceCode'),
+ 'yks08-final-disposition':('selected-yks08-full-acceptance/final-dispositions.json','results','sourceCode'),
+ 'yks09-empty-package':('selected-yks09-empty-package/report.json','results','sourceCode'),
+ 'yks10-zero-transfer':('selected-yks10-zero-transfer/report.json','results','sourceCode'),
  'chemistry-locator-source-reuse':('partial-chemistry-locator-reuse/report.json','results','sourceCode'),
  'chemistry-actual-topic-correction':('kimya-topic-pilot-actual/report.json','results','sourceCode'),
  'chemistry-image-topic-diagnostic':('kimya-topic-vision-pilot/report.json','results','sourceCode'),
@@ -230,7 +233,8 @@ def capture(root,staging):
     for path in [DDL,Path(__file__),APP/'scripts/yks_kanit_db_prova.py',APP/'scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java',
             APP/'scripts/yks-secim-politikasi.json',APP/'scripts/yks_dogrulanabilir_secim.py',
             APP/'scripts/yks_fizik_ozet_ikinci_parti.py',APP/'scripts/yks_fizik_ozet_son_gecis.py',
-            APP/'scripts/yks07_secili_kapsam.py',APP/'scripts/yks08_secili_karsilastirma.py']:
+            APP/'scripts/yks07_secili_kapsam.py',APP/'scripts/yks08_secili_karsilastirma.py',APP/'scripts/yks08_tam_kabul.py',
+            APP/'scripts/yks09_bos_kabul_paketi.py',APP/'scripts/yks10_sifir_aktarim_kabulu.py']:
         add(path,'archive-tools/'+path.name,'EXACT_ARCHIVE_TOOL_VERSION')
     for report_name in ['run/reviewed-transfer-reuse/report.json','run/source-page-equivalence/3adim-turkce/incremental-reuse.json',
             'run/all-prior-occurrences/report.json','run/booklet-prior-reuse/report.json','run/pending-source-reuse/report.json',

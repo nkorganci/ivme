@@ -305,14 +305,26 @@ güncel kararıyla gerekçeli dışlamaya dönüştürüldü; artık onarım kuy
 Özgün arşiv ve mevcut soru kimlikleri silinmedi.07 kabulü yalnız PDF/sayfa/
 gövde/basılı cevap aşamasıdır; sonraki içerik/konu/tekrar/yayın kabullerini vermez.
 
-## 15.08 — YKS-08: güncel bankada soru tekrarı
+## 15.08 — YKS-08: güncel bankada soru tekrarı — BITTI
+
+**Durum: TAMAMLANDI — BITTI; seçili doğrulanabilir kapsam.** Tam karar
+defteri 12.266 gözlemi tek kez sonlandırır: 3.697 mevcut kimlik, 36 ikincil
+konum ve üç yalıtılmış pilot kanıtı aynen korunur; 8.530 gözlem tekrar
+denenmeden dışarıdadır. 4.383 kaynak gövdesi adayının hiçbirinde olumlu yeni
+içerik/yenilik kabulü yoktur; `NEW=0`, soru bankası yazımı, eski ID birleşmesi,
+model/OCR/görsel embedding çağrısı ve öğrenci görünürlüğü sıfırdır. Kanıt
+`selected-yks08-full-acceptance/` ve `yks-08/full/attempt-0001/` altındadır;
+YKS-08 kalite 23 kontrol PASS (`20261109T043139-674c5e0a`). Bu sonuç adayların
+yanlış veya bankada kesin var olduğunu değil, yeni kabul için yeterli kanıt
+bulunmadığını gösterir.
 
 Yeni seçili kapsam geçişi tamam: canlı80.230 kayıt ve görsel damgası değişmedi;
 4.354 karşılaştırma yeniden kullanıldı,29 soruda tam karşılaştırma kanıtı yok.
 4.383 adayda olumlu içerik/yenilik kabulü olmadığından yeni alım dışlaması
 kaydedildi; yeniden deneme yok, NEW0.3.736 eski kimlik/ikincil kaynak/pilot
 gözlemi korunur. Kanıt `selected-yks08-comparison/report.json`.
-Ana08 için tam kabul kaydı ayrı;07 kaynak kabulü soru yayını anlamına gelmez.
+Tam08 kabul kaydı artık `selected-yks08-full-acceptance/` altında VERIFIED'dir;
+07 kaynak kabulü tek başına soru yayını anlamına gelmez.
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-08.md). Mevcut, yeni, varyant ve
 belirsiz sorular ayrılır; eski soru kimlikleri birleştirilip silinmez.
@@ -322,7 +334,15 @@ bekleyen kayıt karşılaştırması tamamlandı. 34 aday ilişkisi/24 banka gö
 okundu; Q5'in iki kaydı sayı/seçenek varyantı olarak ayrı tutuldu. Eski ID'ler
 birleştirilmedi; NEW kabulü yok. Bu alt iş YKS-08 tam kabulü değildir.
 
-## 15.09 — YKS-09: kaynaklı soru kabul paketi
+## 15.09 — YKS-09: kaynaklı soru kabul paketi — BITTI
+
+**Durum: TAMAMLANDI — BITTI; boş ve yayımlanmayan tam paket.** YKS-08'in
+sıfır uygun yeni soru kararı, kaynak kartı/cevap/kategori uydurmadan sürümlü
+pakete dönüştürüldü. Tam pakette kaynak, kırpım, cevap okuması, etiket, yayın,
+öğretmen onayı ve banka yazımı sıfırdır; 8.530 dışlama defterine yalnız referans
+verir. Eski üç soruluk yalıtılmış pilot korunur fakat tam kapsam yayını değildir.
+Kanıt `selected-yks09-empty-package/`, `yks-09/full/attempt-0001/`; YKS-09
+kalite altı kontrol PASS (`20261109T043422-2bb1e297`).
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-09.md). Özgün kırpım, iki cevap okuması,
 kontrollü etiket ve güncel banka karşılaştırmasıyla paket hazırlanır; yayın yapılmaz.
@@ -331,7 +351,15 @@ Beş ek Fizik sorusunun kayıtlı Hareket Kavramları yaprağına kaynak desteğ
 altı sayfalık MEBİ PDF'nin dört gerçekten okunmuş sayfasıyla hazır. Q4 kaynak
 ifade işaretleri ve bütün NEW/alım kontrolleri açık; kategori yayını yapılmadı.
 
-## 15.10 — YKS-10: pilot ve geçiş kabulü
+## 15.10 — YKS-10: pilot ve geçiş kabulü — BITTI
+
+**Durum: TAMAMLANDI — BITTI; sıfır aktarımlı tam kabul.** Boş YKS-09 paketi
+canlıya zorla geçirilmedi: 80.230 banka kaydı salt-okunur doğrulandı, üretim
+soru/katalog ve öğrenci DB yazımı, ID birleşmesi ve canlı cutover sıfırdır.
+Dört testlik `ivme_test` yalıtılmış pilotunun ikinci aktarımda sıfır INSERT ve
+geri alma kanıtı güncel kaldı. Kanıt `selected-yks10-zero-transfer/`,
+`yks-10/full/attempt-0001/`; YKS-10 kalite üç kontrol PASS
+(`20261109T043736-6baf5948`).
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-10.md). Önce küçük temsilî pilot,
 sonra tam arşiv geçiş kabulü; gerçek öğrenci DB'sine test yazılmaz.

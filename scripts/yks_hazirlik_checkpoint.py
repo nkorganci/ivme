@@ -86,6 +86,9 @@ REPORTS={
     'verifiableOnlySourceSelection':'verified-source-selection/report.json',
     'selectedYks07FullScope':'selected-yks07-acceptance/report.json',
     'selectedYks08Comparison':'selected-yks08-comparison/report.json',
+    'selectedYks08FullAcceptance':'selected-yks08-full-acceptance/report.json',
+    'selectedYks09EmptyPackage':'selected-yks09-empty-package/report.json',
+    'selectedYks10ZeroTransfer':'selected-yks10-zero-transfer/report.json',
 }
 
 
@@ -158,6 +161,30 @@ def main():
                     'and the isolated three-question pilot boundary, then build only actually eligible YKS-09 packages. '
                     'Do not reactivate excluded candidates just to create a nonempty intake. '
                     'YKS-09/10 full acceptance and live11-13 remain separate; production question writes stay zero.')
+            if state['stages'].get('YKS-08:full',{}).get('status')=='VERIFIED':
+                accepted=read_json(root/'selected-yks08-full-acceptance/report.json')
+                state['resumeAt']='YKS-09:full'
+                state['activeQuestionDecisions']='selected-yks08-full-acceptance/final-dispositions.json'
+                state['nextAction']=(
+                    'YKS-08 full is VERIFIED: all12266 source dispositions have one final action. '
+                    f"{accepted['actions']['EXCLUDE_NO_RETRY']} are excluded without retry; "
+                    '3697 established IDs,36 preferred locators and3 isolated pilot proofs remain unchanged. '
+                    'There are zero proven new questions and zero question-bank writes. '
+                    'Next YKS-09: create only the empty, unpublished package closure; do not manufacture a package or reopen exclusions.')
+            if state['stages'].get('YKS-09:full',{}).get('status')=='VERIFIED':
+                state['resumeAt']='YKS-10:full'
+                state['activeQuestionDecisions']='selected-yks09-empty-package/unpublished-package.json'
+                state['nextAction']=(
+                    'YKS-09 full is VERIFIED with an empty, unpublished package: zero new questions, crops, answers, labels, '
+                    'bank writes or learner-visible resources. The bounded three-question pilot remains isolated proof only. '
+                    'Next YKS-10: accept zero transfer with the verified temporary-DB pilot boundary; do not write to a student database.')
+            if state['stages'].get('YKS-10:full',{}).get('status')=='VERIFIED':
+                state['resumeAt']='YKS-11:full'
+                state['activeQuestionDecisions']='selected-yks10-zero-transfer/report.json'
+                state['nextAction']=(
+                    'YKS-10 full is VERIFIED as a zero-transfer decision: the empty YKS-09 package did not open a student '
+                    'database, write questions/catalog records, merge IDs or cut over production. The four-test isolated pilot '
+                    'remains the rollback/idempotency evidence. Next YKS-11: prepare catalog/source transition separately.')
         full07=state['stages'].get('YKS-07:full',{}).get('status')=='VERIFIED'
         store.save(state,{'event':'FULL_PREPARATION_CURSOR_SAVED','stage':state['resumeAt'],
             'fullStageAccepted':False,'questionBankWrites':0,'reports':list(REPORTS)})

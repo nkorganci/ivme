@@ -1,4 +1,12 @@
-# YKS-09 — Özgün kırpım ve kaynaklı soru kabul paketi
+# YKS-09 — Özgün kırpım ve kaynaklı soru kabul paketi — BITTI
+
+**Tam kabul — BITTI (boş, yayımlanmayan paket):** Seçili YKS-08 kararında
+uygun yeni soru olmadığı için `selected-yks09-empty-package/` altında kaynak
+kartı, kırpım, cevap, kontrollü etiket ve yayın sıfır olan sürümlü paket
+kapatıldı. 8.530 gerekçeli dışlama referans olarak kaldı; eski üç soruluk
+yalıtılmış pilot tam kapsam yayını değildir. Runtime `YKS-09:full` VERIFIED,
+`yks-09/full/attempt-0001/empty-package-acceptance.json`; kalite altı kontrol
+PASS (`20261109T043422-2bb1e297`).
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR

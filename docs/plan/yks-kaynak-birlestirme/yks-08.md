@@ -1,4 +1,14 @@
-# YKS-08 — Bankadaki ve yeni partideki soru tekrarları
+# YKS-08 — Bankadaki ve yeni partideki soru tekrarları — BITTI
+
+**Tam kabul — BITTI (seçili doğrulanabilir kapsam):**
+`selected-yks08-full-acceptance/` 12.266 kaynak gözlemini tek karar defterinde
+sonlandırdı. 3.697 mevcut kimlik, 36 ikincil konum ve üç yalıtılmış pilot kanıtı
+korundu; 8.530 gözlem `EXCLUDE_NO_RETRY` oldu. 4.383 kaynak gövdesi adayının
+yeniliği olumlu kanıtlanmadığından `NEW=0`; banka/öğrenci yazımı, ID birleşmesi,
+model/OCR/görsel embedding ve öğrenci yayını sıfırdır. Bu, adayların yanlış veya
+bankada kesin bulunduğu iddiası değildir. Runtime `YKS-08:full` VERIFIED,
+`yks-08/full/attempt-0001/full-duplicate-decision-acceptance.json`; kalite
+23 kontrol PASS (`20261109T043139-674c5e0a`).
 
 **Seçili tam kapsam karşılaştırma geçişi — BITTI (ana08 tam kabulü ayrı):**
 YKS-07 seçili tam kapsamı runtime VERIFIED oldu. Ardından canlı80.230 banka
@@ -12,14 +22,15 @@ veya bankada kesin bulunduğunu iddia etmez. Düşük benzerlik NEW sayılmadı.
 3.697 eski kimlik,36 ikincil locator ve üç yalıtılmış pilot olmak üzere3.736
 korunmuş gözlem ayrı saklandı. Eski ID/cevap/öğrenci geçmişi değişmedi.
 
-Doğrulama: YKS-08 `20261109T035055-6130b9cd`22 kontrol/92 test PASS.
+Önceki seçili karşılaştırma kanıtı: YKS-08 `20261109T035055-6130b9cd`22
+kontrol/92 test PASS; tam kabulün güncel kalite kanıtı üstteki 23 kontrol
+raporudur.
 
 Kanıt `selected-yks08-comparison/report.json`, `protected-identities.json`;
 yeni model/OCR/görsel embedding ve soru yazımı0. Bu yeni kapsamda önerilen
-NEW sayısı0; eksik/belirsiz sorular yeniden incelenmez. Sıradaki iş, bu
-kararlarla mevcut/varyant/belirsiz ayrımı ve üç yalıtılmış pilot sınırını tam
-YKS-08 kabul kaydında dondurmak; ardından yalnız gerçekten uygun09 paketi.
-Kaynak-gövde-anahtar07 kabulü bu sonraki alım dışlamalarını geçersiz kılamaz.
+NEW sayısı0; eksik/belirsiz sorular yeniden incelenmez. Bu tarihsel seçili
+karar, üstteki tam YKS-08 kabulünde dondurulmuştur. Kaynak-gövde-anahtar07
+kabulü sonraki alım dışlamalarını geçersiz kılamaz.
 
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
