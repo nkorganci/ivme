@@ -14,6 +14,22 @@ import org.junit.jupiter.api.Test;
 class PracticeSourceSelectionTest extends TestBase {
     private static final String RUN = "practice-source-test";
 
+    @Test
+    void mebiSecondBankIsExplicitAndDoesNotChangeExistingPracticePool() throws Exception {
+        fixture(false);
+        user("mebi_isolation", Role.USER);
+        var session = login("mebi_isolation", "Sifre1234");
+        var legacy = read(send(session,get("/api/questions/availability"),null).andExpect(status().isOk()));
+        assertThat(legacy.path("total").asInt()).isEqualTo(4);
+        var mebi = read(send(session,get("/api/questions/availability").param("bank","MEBI_PRACTICE_2"),null)
+                .andExpect(status().isOk()));
+        assertThat(mebi.path("total").asInt()).isEqualTo(2);
+        var mebiTyt = read(send(session,get("/api/questions").param("bank","MEBI_PRACTICE_2").param("examType","TYT"),null)
+                .andExpect(status().isOk()));
+        assertThat(mebiTyt.path("totalElements").asInt()).isEqualTo(1);
+        assertThat(mebiTyt.path("content").get(0).path("bank").asText()).isEqualTo("MEBI_PRACTICE_2");
+    }
+
     @AfterEach void clearCatalog() {
         jdbc.update("DELETE FROM learning_catalog.current_run WHERE run_key=?", RUN);
         jdbc.update("DELETE FROM learning_catalog.items WHERE run_key=?", RUN);

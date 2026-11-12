@@ -29,8 +29,14 @@ for (const topic of videos.topics) {
   const parent = topicId(topic.exam, 'fizik', topic.topic);
   if (!items.some(i => i.topicId === parent)) throw new Error(`Unknown physics topic: ${parent}`);
   for (const lesson of topic.lessons) {
-    const lessonKey = `${parent}:${topicId(topic.exam, 'fizik', lesson.title)}`;
-    categories.push(controlledCategory({ id: `subtopic:${lessonKey}`, parentId: parent, exam: topic.exam, subjectId: 'fizik', subject: 'Fizik', topic: topic.topic, subtopic: lesson.title, origin: 'CURRICULUM' }));
+    // The parent projection may now prefer a canonical curriculum identity.
+    // Existing video/subtopic keys must still resolve to their saved identity.
+    const registered = taxonomy.categories.filter(c => c.exam === topic.exam && c.subjectId === 'fizik'
+      && aliasTerm(c.topic) === aliasTerm(topic.topic) && aliasTerm(c.subtopic) === aliasTerm(lesson.title));
+    if (registered.length !== 1 || !registered[0].id.startsWith('subtopic:'))
+      throw new Error(`Ambiguous registered video subtopic: ${topic.exam}/${topic.topic}/${lesson.title}`);
+    const lessonKey = registered[0].id.slice('subtopic:'.length);
+    categories.push(controlledCategory(registered[0]));
     items.push({ key: `subtopic:${lessonKey}`, kind: 'TOPIC', exam: topic.exam, subject: 'Fizik',
       subjectId: 'fizik', topic: topic.topic, subtopic: lesson.title, title: lesson.title, source: 'Video alt konu ağacı', topicId: parent, categoryId: `subtopic:${lessonKey}` });
     for (const video of lesson.videos) {

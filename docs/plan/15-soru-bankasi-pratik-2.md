@@ -151,6 +151,26 @@ UPSERT yoktur.
 
 ### 15.05 — Temsilî pilot ve arayüz
 
+**Durum: KISMI / yalıtılmış pilot doğrulaması.** `MEBI_PRACTICE_2` banka
+kimliği, `/pratik-2` yan menü rotası ve mevcut soru listesi/pratik bileşeni
+eklendi. Varsayılan eski havuz yeni bankayı ancak açık seçimde içerir.
+Ön yüz derlemesi PASS; `PracticeSourceSelectionTest,ExamTrackFlowTest` 7/7
+PASS. Gerçek 21 soru görseli/cevabını kullanan `MebiPractice2PilotTest`
+INSERT_ONLY/ikinci çalışma/geri alma/API denetimini yalnız geçici DB'de yapar.
+Pilot sırasında yeni banka kaynak kodunun ortak SQL seçiminde çözülmediği
+bulundu; `V101` eski SQL korumalarını tutarak MEBI2 kaynak eşlemesini ekler.
+Tam 15.05 kabulü bu testin ve masaüstü/mobil görünümün geçmesine bağlıdır.
+
+Yalıtılmış pilot alt kabulü **BITTI**: gerçek 21 sorunun INSERT_ONLY ilk
+aktarımı/ikinci aktarım0/bozuk cevapta tüm parti reddi/transaction geri alma/
+kategori API'si/eski havuz ayrımı birlikte sınandı; 9 backend testi PASS.
+Masaüstü ve mobil UI PASS (`pilot-ui-report.json`). Ön yüz derlemesi PASS.
+Canlı sürüm yerel izleyici tarafından yayımlandı; ana banka soruları henüz
+aktarılmadı. Canlı aktarımın mevcut API'si yalnız OPERATOR rolünü kabul eder;
+yerel `ivmeoperator` hesabı bulunamadığından HTTP404 verdi. Kullanıcıya mevcut
+operatörle giriş veya yeni yerel operatör hesabı seçimi soruldu; rol/hesap
+kendiliğinden oluşturulmaz. Diğer kaynakların incelemesi bu karardan bağımsızdır.
+
 1. Her TYT/AYT ders türünden küçük kanıtlı parti seç.
 2. `Soru Çöz & Pratik 2` filtresini mevcut Pratik akışıyla aynı soru, cevap
 kontrolü, konu filtresi ve görsel görünümüyle aç.

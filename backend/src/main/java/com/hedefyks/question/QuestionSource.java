@@ -10,7 +10,9 @@ public enum QuestionSource {
     CIKMIS_KPSS_OO_GK(QuestionBank.CIKMIS, ExamType.KPSS_OO_GK),
     CIKMIS_KPSS_LS_GY(QuestionBank.CIKMIS, ExamType.KPSS_LS_GY),
     CIKMIS_KPSS_LS_GK(QuestionBank.CIKMIS, ExamType.KPSS_LS_GK),
-    CIKMIS_YURT_DISI_MY(QuestionBank.CIKMIS, ExamType.YURT_DISI_MY);
+    CIKMIS_YURT_DISI_MY(QuestionBank.CIKMIS, ExamType.YURT_DISI_MY),
+    MEBI2_AYT(QuestionBank.MEBI_PRACTICE_2, ExamType.AYT),
+    MEBI2_TYT(QuestionBank.MEBI_PRACTICE_2, ExamType.TYT);
 
     private final QuestionBank bank;
     private final ExamType examType;

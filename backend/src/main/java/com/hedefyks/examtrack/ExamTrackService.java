@@ -62,13 +62,17 @@ public class ExamTrackService {
 
     public List<QuestionSource> sources(Long userId) {
         var types = examTypes(userId);
-        return Arrays.stream(QuestionSource.values()).filter(s -> types.contains(s.examType())).toList();
+        return Arrays.stream(QuestionSource.values()).filter(s -> types.contains(s.examType()))
+                .filter(s -> s.bank() != com.hedefyks.question.QuestionBank.MEBI_PRACTICE_2).toList();
     }
 
     /** Seçili sınavın dışındaki test ve kaynakları süzgeçten çıkarır; boş seçim sınavın bütün kaynaklarıdır. */
     public QuestionFilter scope(QuestionFilter filter, Long userId) {
         var types = examTypes(userId);
-        var allowed = Arrays.stream(QuestionSource.values()).filter(s -> types.contains(s.examType())).toList();
+        var allowed = Arrays.stream(QuestionSource.values()).filter(s -> types.contains(s.examType()))
+                .filter(s -> s.bank() != com.hedefyks.question.QuestionBank.MEBI_PRACTICE_2
+                        || filter.bank() == com.hedefyks.question.QuestionBank.MEBI_PRACTICE_2
+                        || filter.source().contains(s)).toList();
         ExamType exam = filter.examType() != null && types.contains(filter.examType()) ? filter.examType() : null;
         var requested = filter.source().stream().filter(allowed::contains)
                 .filter(s -> exam == null || s.examType() == exam).toList();

@@ -69,7 +69,8 @@ export default function QuestionCollection({ bank }) {
     () => api.get('/api/questions' + qs({ bank, ...filter,...commonSelection, page, size: PAGE_SIZE })),
     [bank, filter.examType, filter.subject, filter.topic, page,commonKey],
   );
-  const last = bank === 'OGM' ? 'Kaynak' : 'Yıl';
+  const sourceBank = bank !== 'CIKMIS';
+  const last = sourceBank ? 'Kaynak' : 'Yıl';
   const availableCount = Number(progress?.total ?? data?.totalElements ?? 0);
   const requestedCount = Number(questionCount);
   const validCount = Number.isInteger(requestedCount) && requestedCount >= 1
@@ -114,20 +115,20 @@ export default function QuestionCollection({ bank }) {
       cellRenderer: ({ value, data: question }) => question && <span
         title={question.resource?.displayTitle || value}>{value}</span> },
     {colId:'review',headerName:'Etiket durumu',minWidth:160,valueGetter:({data:q})=>q.resource?.reviewStatus==='APPROVE'?'Öğretmen doğruladı':q.resource?.manualReview?.label || 'Otomatik eşleme'},
-    { field: bank === 'OGM' ? 'source' : 'year', headerName: last,
-      width: bank === 'OGM' ? undefined : 75, minWidth: bank === 'OGM' ? 140 : 75,
-      flex: bank === 'OGM' ? 1 : 0,
+    { field: sourceBank ? 'source' : 'year', headerName: last,
+      width: sourceBank ? undefined : 75, minWidth: sourceBank ? 140 : 75,
+      flex: sourceBank ? 1 : 0,
       valueFormatter: ({ value }) => value ?? '—' },
     { colId: 'open', headerName: 'Soru', width: 145, minWidth: 145, maxWidth: 145, flex: 0,
       cellRenderer: ({ data: question }) => question && <Link className="btn btn-secondary btn-sm"
         to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`}
         onClick={(event) => event.stopPropagation()}>Soruyu aç</Link> },
-  ], [bank, detailQuery, last, kpss, track?.id]);
+  ], [bank, detailQuery, last, kpss, track?.id, sourceBank]);
 
   return <div className="question-collection-page">
     <StudyNavigation bank={bank} filter={filter} />
     <div className="page-head">
-      <div><h2>{label}</h2><p className="muted">{bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : kpss ? `ÖSYM ${track.name} sınavlarında sorulmuş sorular.` : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
+      <div><h2>{label}</h2><p className="muted">{bank === 'MEBI_PRACTICE_2' ? 'MEBİ kaynaklarından cevap anahtarı doğrulanmış sorular.' : bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : kpss ? `ÖSYM ${track.name} sınavlarında sorulmuş sorular.` : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
     </div>
       <section className="card"><SharedCategorySelect questionFilters branchFirst showDropdown={false} branchIds={branchIds} subject={filter.subject}
         questionScope={{ bank, examType:filter.examType, includeCandidates:commonSelection.includeCandidates, questionTypeId:commonSelection.questionTypeId, teacherDifficulty:commonSelection.teacherDifficulty }}
@@ -199,11 +200,11 @@ export default function QuestionCollection({ bank }) {
             {data.content.map((question) => <li key={question.id}>
               <Link to={`/soru/${encodeURIComponent(question.code)}${detailQuery}`} className="qcard">
                 <span className="qcard-top"><strong className="qcard-code">{question.code}</strong>
-                  <span className="muted small">{bank === 'OGM' ? examLabel(question.examType) : [question.year, kpss && examLabel(question.examType)].filter(Boolean).join(' · ') || examLabel(question.examType)}</span></span>
+                  <span className="muted small">{sourceBank ? examLabel(question.examType) : [question.year, kpss && examLabel(question.examType)].filter(Boolean).join(' · ') || examLabel(question.examType)}</span></span>
                 <span className="qcard-mid"><span className="badge badge-muted">{question.resource?.subject || question.subject}</span>{' '}
                   {question.resource?.displayTitle || question.topic || 'Konu belirtilmemiş'}</span>
                 {question.resource && <span className="muted small">{question.resource.reviewStatus==='APPROVE'?'Öğretmen doğruladı':question.resource.manualReview?.label || 'Otomatik eşleme'}</span>}
-                {bank === 'OGM' && question.source && <span className="qcard-src">{question.source}</span>}
+                {sourceBank && question.source && <span className="qcard-src">{question.source}</span>}
                 <span className="qcard-open">Soruyu aç →</span>
               </Link>
             </li>)}

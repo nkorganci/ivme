@@ -9,6 +9,7 @@ export async function startLearnMock(root, options={}) {
   const server = createServer((req, res) => {
     const p = new URL(req.url, 'http://localhost').pathname;
     const json = value => { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(value)); };
+    if (options.handle?.(req, res, json)) return;
     if (p.startsWith('/api/konu-ogrenme') && req.method !== 'GET') writes.push({ path: p, method: req.method });
     if (p === '/api/auth/me') return json({ id: 7, username: 'student', role: 'USER', contactComplete: true, approved: true });
     if (p === '/api/exam-tracks') return json({ currentId: 'yks', tracks: [{ id: 'yks', name: 'YKS', family: 'YKS', status: 'ACTIVE', sections: [], readyFeatures: [] }] });

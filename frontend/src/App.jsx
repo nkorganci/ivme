@@ -109,6 +109,7 @@ export default function App() {
               <Route path="/dersler-ve-konular/pdf-envanteri" element={<Suspense fallback={<Loading text="PDF envanteri yükleniyor…" />}><PdfBankAudit /></Suspense>} />
               <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
               <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
+              <Route path="/pratik-2" element={<QuestionCollection key="MEBI_PRACTICE_2" bank="MEBI_PRACTICE_2" />} />
               <Route path="/calisma/yeni" element={<StudyNew />} />
               <Route path="/calisma/yarim-kalan" element={<UnfinishedStudies />} />
               <Route path="/gecmis" element={<History />} />

@@ -65,6 +65,7 @@ export const statusLabel = (s) => STATUS[s] || s;
 export const BANKS = {
   CIKMIS: { label: 'AYT-TYT Çıkmış Sorular', short: 'Çıkmış', path: '/cikmis-sorular' },
   OGM: { label: 'Soru Bankası', short: 'Soru Bankası', path: '/soru-bankasi' },
+  MEBI_PRACTICE_2: { label: 'Soru Çöz & Pratik 2', short: 'MEBİ Pratik 2', path: '/pratik-2' },
 };
 export const bankLabel = (b) => BANKS[b]?.label || '—';
 export const bankShort = (b) => BANKS[b]?.short || '—';
