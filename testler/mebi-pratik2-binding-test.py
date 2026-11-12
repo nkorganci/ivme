@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from mebi_pratik2_tek_test import bind
+from mebi_pratik2_kirpim_geometri import check
 
 
 def page(number,*texts):
@@ -10,6 +11,15 @@ def page(number,*texts):
 
 
 class BindingTest(unittest.TestCase):
+    def test_border_cut_is_not_passed_by_option_count(self):
+        lines=[{'text':letter+') option','bbox':[2,idx*10+2,90,idx*10+8]} for idx,letter in enumerate('ABCDE')]
+        lines.append({'text':'continued diagram caption','bbox':[2,50,110,60]})
+        self.assertIn('NATIVE_LINE_INTERSECTS_CROP_BORDER',check(lines,[0,0,100,100])['reasons'])
+
+    def test_missing_option_requires_review(self):
+        lines=[{'text':letter+') option','bbox':[2,idx*10+2,90,idx*10+8]} for idx,letter in enumerate('ABCD')]
+        self.assertIn('FIVE_UNIQUE_OPTIONS_NOT_PROVEN',check(lines,[0,0,100,100])['reasons'])
+
     def test_same_document_single_test_binds(self):
         result,error=bind({'pages':[page(1,'AYT TARAMA TESTİ-7','1. Gövde'),page(2,'1. C')]})
         self.assertIsNone(error)
