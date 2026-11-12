@@ -4,6 +4,16 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Başlangıç ve devir
 
+- **Kesintisiz yetkili plan yürütme:** Kullanıcı bir planın tamamını bitirmeyi
+  istediğinde her alt parti sonunda final yanıtla durup tekrar “devam et”
+  isteme. Yetkili kapsamda bağımlılıklar ve doğrulamalar geçtikçe sonraki
+  adıma aynı çalışma içinde geç; ara sonuçları commentary ve kanıt dosyalarına
+  kaydet. Yalnız gerçek kullanıcı kararı/yeni yetki gerektiren somut engelde
+  veya kullanıcı durdurduğunda dur. Tamamlanmayan işi BITTI gösterme; çalışan
+  arka plan işlemini tüm zincir kendiliğinden sürecekmiş gibi sunma. Her adımın
+  kabulü geçince planı/görev tablosunu BITTI güncelle, plan bütünü geçince ana
+  başlığı da BITTI yap. Bu kural güvenlik ve veri koruma sınırlarını kaldırmaz.
+
 - Önce `git status --short` ile kullanıcı değişikliklerini koru. Devam isteniyorsa [devir notunu](docs/devam.md), yalnız ilgili açık işi ve gerekli rehber bölümünü oku. Yeni kullanıcı talimatı, devirdeki sıradaki görevin önüne geçer.
 - İşe başlamadan [görev durum tablosundaki](docs/gorev-durumu.md) ilgili kimliği kontrol et. Her önemli görev/alt adım tamamlandığında veya kısmi ilerleme, engel, başarısız doğrulama olduğunda tabloyu ve ilgili plan/teknik belgeyi **aynı çalışma içinde, oturum sonunu beklemeden** güncelle: tamamlanan kapsam, çıktı/kanıt, doğrulama ve kalan tek somut adım. Tamamlanan satırı silme; ayrıntılı geçmişi kopyalama. Kanıtı/girdisi değişmeyen tamamlanmış işi tekrar yapma; yeniden açılacaksa değişen girdi veya hata nedenini kaydet. Bu kural hem Claude hem Codex için geçerlidir.
 - Öğrenme, PDF üretimi, ortak pratik, kayıt güvenilirliği veya izleme işleri için [bulgular ve yaklaşım incelemesine](docs/tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md) bak. Göreve göre model/düşünme düzeyi ve alternatifler §19'dadır; mevcut modeli farklı bir modelmiş gibi sunma. Belge öneridir; yalnız inceleme talebini uygulama yetkisi sayma, ilgili bölümü oku.
