@@ -17,8 +17,11 @@ from yks_birlestirme import write_json
 def literal(value):return "'"+str(value).replace("'","''")+"'"
 
 
-def run(apply=False,batch=False):
-    folder=BASE/('verified-source-batch-001' if batch else 'publication-preparation')
+def run(apply=False,batch=False,batch_dir=None):
+    if batch_dir:
+        if Path(batch_dir).name!=batch_dir or not batch_dir.startswith('verified-source-batch-'):raise ValueError('Unsafe batch directory')
+        batch=True
+    folder=BASE/(batch_dir or ('verified-source-batch-001' if batch else 'publication-preparation'))
     before=json.loads((folder/'report.json').read_text(encoding='utf8'))
     imported=json.loads((folder/'import-result.json').read_text(encoding='utf8'))
     count=before['sourceRows'] if batch else 21
@@ -108,4 +111,4 @@ COMMIT;
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--apply',action='store_true');parser.add_argument('--batch',action='store_true')
-    args=parser.parse_args();run(args.apply,args.batch)
+    parser.add_argument('--batch-dir');args=parser.parse_args();run(args.apply,args.batch,args.batch_dir)

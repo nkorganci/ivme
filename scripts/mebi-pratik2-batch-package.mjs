@@ -2,7 +2,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {resourceDraft} from './resource-intake.mjs';
-const folder=path.resolve('veri/mebi-pratik-2/20261111-source-inventory/verified-source-batch-001');
+const batch=process.argv.find(a=>a.startsWith('--batch-dir='))?.slice('--batch-dir='.length)||'verified-source-batch-001';
+if(path.basename(batch)!==batch||!batch.startsWith('verified-source-batch-'))throw Error('Unsafe batch directory');
+const folder=path.resolve('veri/mebi-pratik-2/20261111-source-inventory',batch);
 const report=JSON.parse(fs.readFileSync(path.join(folder,'report.json'),'utf8'));
 const inputs=JSON.parse(fs.readFileSync(path.join(folder,'resource-inputs.json'),'utf8'));
 if(inputs.length!==report.sourceRows||new Set(inputs.map(x=>x.code)).size!==inputs.length)throw Error('Source batch count mismatch');

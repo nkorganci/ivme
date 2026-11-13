@@ -9,6 +9,7 @@ import hashlib
 import http.cookiejar
 import io
 import json
+from pathlib import Path
 import time
 import urllib.error
 import urllib.parse
@@ -19,10 +20,13 @@ from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 
 
-def run(apply=False,repeat_check=False,batch=False):
+def run(apply=False,repeat_check=False,batch=False,batch_dir=None):
     started=time.monotonic()
     if apply and repeat_check:raise ValueError('Repeat check is a read-only import preview')
-    folder=BASE/('verified-source-batch-001' if batch else 'publication-preparation')
+    if batch_dir:
+        if batch_dir!=Path(batch_dir).name or not batch_dir.startswith('verified-source-batch-'):raise ValueError('Unsafe batch directory')
+        batch=True
+    folder=BASE/(batch_dir or ('verified-source-batch-001' if batch else 'publication-preparation'))
     prepared=json.loads((folder/'report.json').read_text(encoding='utf8'))
     count=prepared['sourceRows'] if batch else 21
     data=(folder/'insert-only.csv').read_bytes()
@@ -83,4 +87,4 @@ def run(apply=False,repeat_check=False,batch=False):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--apply',action='store_true');parser.add_argument('--repeat-check',action='store_true');parser.add_argument('--batch',action='store_true')
-    args=parser.parse_args();run(args.apply,args.repeat_check,args.batch)
+    parser.add_argument('--batch-dir');args=parser.parse_args();run(args.apply,args.repeat_check,args.batch,args.batch_dir)

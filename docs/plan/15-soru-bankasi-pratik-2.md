@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2
 
-**Durum: KISMI / doğrulanmış557 sorunun canlı aktarımı BITTI; tam arşiv açık.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
+**Durum: KISMI / doğrulanmış1.103 soru yayında; tam arşiv çalışması sürüyor.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
 kaynaklardan ikinci, bağımsız soru bankasını üretir. Dosyanın yazılması aktarım
 yetkisi veya tamamlanma anlamına gelmez.
 
@@ -15,6 +15,38 @@ verilir. Bir arka plan işleminin çalışması, sonraki aşamaların otomatik
 yapıldığı anlamına gelmez. Her adım gerçek kabulü geçince başlığı/durumu
 `— BITTI`, 15.01–15.07 bütünü geçince bu planın ana başlığı da `— BITTI`
 olarak güncellenir. Pilot veya yalnız teknik keşif tam kabul sayılmaz.
+
+**Tam arşiv uygulama kuralı:**557 kabul edilmiş soruda durulmaz. Henüz
+çıkarıcısı uygulanmamış PDF düzenleri için bölüm/test/adım bağlamını koruyan
+ayrı çıkarıcı hazırlanır; yalnız ilk anahtar sözcük eşleşmesinin başarısızlığı
+kaynağın tamamını hatalı saydırmaz. Gerçek gövde/cevap/konu kusurları gerekçeli
+inceleme kuyruğunda kalır. Tamamlanmış kanıt tekrar üretilmez; yeni düzen veya
+yeni konu eşleştirme aşaması kendi sürümlü makbuzunu taşır.
+
+**İkinci aktarım BITTI:** `expanded-chapter-evidence/chapter-packages.json`,34
+basılı kaynak başlığını ana tablodaki mevcut konulara bağladı;546 ek sorunun
+gövde/piksel/iki cevap/konu kontrolü tamamlandı. Geometri41 adayda incelemeye
+ayrıldı; bunlar yeni546'nın dışındadır. Yerel görsel modelin gerçek E seçeneği
+çıkarılmış6 negatif kontrolü6/6 PASS (`negative-calibration-v2/report.json`).
+546 INSERT/0 UPDATE/0 hata, tekrar0 INSERT; katalog
+`labels-v1-85fe6e011ef60045831b9c54`. `verified-source-batch-002/bank-acceptance.json`
+PASS; önceki86.592 soru aynı. Toplam1.103/602TYT/501AYT, canlı masaüstü/mobil
+sayaç ve9 örnek ders/görsel hash'i PASS. Öğretmen kararı üretilmedi.
+`mebi_pratik2_arsiv_partisi.py` sonraki kabul manifestlerinde hazırlık→ön
+izleme→atomik INSERT_ONLY→tekrar0→katalog→canlı kabulü sırayla yürütür.
+
+**3 Adım düzeni:**16 kitapta konu×adım×A/B varyantı×soru kimliği korunan
+11.969 native bağlama adayı (`three-step-discovery-v3/`) bulundu. Ana konu
+eşlemesi ve ilk geometri kapılarıyla3.102 özgün gövde hazırlandı;741'inde
+beş tekil seçenek/tam native satırlar/ortak bağlam ve grafik yokluğu mekanik
+olarak kanıtlıdır. Diğerlerinde yerel görsel inceleme gerekir. Her iki yol da
+ayrı basılı cevap satırının bağımsız görsel okumasını bekler; yayın değildir.
+`three-step-crops/native-proof-v3.json`, `three-step-acceptance/` kanıtlarıdır.
+Adım A/B ayrımı, eksik gövde ve grafik/altçizgi ayrımı4 regresyon testi PASS.
+`mebi_pratik2_uc_adim_kabul.py`317 cevap grubunu bağımsız okur;12 grupluk
+pilot11 uyuşma/1 inceleme verdi. Uyuşmayan grup yeniden çağrılmaz.3.102 gövde
+için kaynak kabulü çalışıyor; `verified-source-batch-003` yürütücüsü sonucu
+bekliyor ve ikinci parti kabulüne bağlı.1.103'te durulmaz.
 
 ## Amaç ve sınır
 

@@ -11,6 +11,27 @@ mevcut operatör yoksa bu iş için oluşturulmasını yetkilendirdi;
 `ivmeoperator` yalnız OPERATOR rolüyle oluşturuldu. Pilot21 INSERT/0 UPDATE;
 tekrar0 INSERT/21 SKIP. Eski soru kimlikleri ve öğrenci geçmişi korunur.
 
+**Güncel çalışma:** tam arşiv işi sürüyor; alt parti sonunda durulmaz.
+34 kaynakta546 ek soru kabul edildi/yayımlandı, toplam1.103/602TYT/501AYT.
+`verified-source-batch-002/bank-acceptance.json` PASS; işlemi tekrarlama.
+`expanded-chapter-evidence/source-pixel-acceptance.json`546 kaynak kanıtıdır.
+Negatif kontrol
+v2 gerçek E seçeneklerini çıkartır ve6/6 PASS; v1'in ilk örneği yalnız boşluk
+kestiğinden geçerli negatif değildi, model bunu doğru biçimde tam gördü.
+3 Adım16 kitapta11.969 native bağlama adayı keşfedildi;
+`three-step-discovery-v3/`. `three-step-crops/native-proof-v3.json`:3.102
+konu/geometri uygun kırpım,741 mekanik tam-native gövde; diğerleri görsel
+inceleme ister. `mebi_pratik2_uc_adim_kabul.py` çalışıyor;317 grubun bağımsız
+anahtar okuması ve gövde kabulü.12 grup pilotu11 uyum/1 inceleme, tekrar yok.
+`three-step-acceptance/progress-current.json` imleci kullanılır.
+`mebi_pratik2_arsiv_partisi.py --acceptance three-step-acceptance/source-pixel-acceptance.json --batch-dir verified-source-batch-003 --after-batch verified-source-batch-002`
+manifesti bekliyor; sonra hazırlık/alım/tekrar/yayın/canlı kabulünü sıralar.
+İkinci aynı iş başlatma. Sonraki bağımsız kapsam41 denemenin mevcut5.863
+gövde/anahtar kanıtını güncel MEBİ köküyle uzlaştırmak ve açık Türkçe soru
+kökü kanıtlarından dar ana konu bağını kurmaktır; yenilik şartı yoktur.
+`teacher-review-export/current/report.json` güncel soru kuyruğudur;
+eski2.748 sayısı tarihsel,546 kabul sonrası kalan eski aday2.202'dir.
+
 Pilot katalog yayını BITTI; canlı masaüstü/mobil PASS. Ek536 kayıt6 atomik
 partide7,89sn alındı; tekrar0 INSERT/536 SKIP. Toplam557 INSERT/0 UPDATE;
 katalog yayını BITTI, `labels-v1-f7955944c50013201fc387f0` etkin.
@@ -31,7 +52,7 @@ Uygulama hizmeti durdurulmadı. İkinci eşzamanlı yayın başlatma.
 `verified-source-batch-001/bank-acceptance.json` PASS:557 kaynak/cevap/
 görsel/kategori eşitliği ve eski86.035 soru fingerprint'i korundu.
 Tamamlanan hazırlık/INSERT_ONLY/yayın/canlı kabulü tekrar çalıştırma.
-Çalışan aktarım/model işi yok. Sıradaki açık kapsam1.399 PDF'nin çoklu
+Önceki557 soru alt işi kapalıdır. Açık kapsam1.399 PDF'nin çoklu
 test/tekrarlanan numara/anahtar düzenleri ve belirsiz konulardır; mevcut
 EXCLUDE_NO_RETRY adaylarını onarmadan ayrı karar kuyruğunda tut.
 Önceki canlı/veri makbuzları `*-before-facet-fix.json` adıyla korundu;
@@ -54,7 +75,6 @@ indeksledi; bunlar tekil soru sayısı değildir. SQLite `native_signals` katman
 aratılabilir; tüm arşiv soru sayısı hâlâ bilinmiyor.
 3.305 anahtar okuması ve557 gövde model incelemesi tamam; çalışan model yok.
 Tam yedek `publication-preparation/report.json` ile doğrulandı.
-
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|

@@ -1,22 +1,27 @@
 """Prepare only new source/pixel-verified questions; leave established IDs intact."""
+import argparse
 import csv
 import hashlib
 import json
 import shutil
+from pathlib import Path
 from mebi_pratik2_tam_pdf_tarama import APP,BASE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 
 
-def run():
+def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='verified-source-batch-001'):
     publication=json.loads((BASE/'publication-preparation/publication-result.json').read_text(encoding='utf8'))
     if publication['status']!='PUBLISHED':raise ValueError('Pilot catalog publication must finish before next batch')
-    proof=BASE/'single-test-crops/source-pixel-acceptance.json'
+    proof=(BASE/acceptance).resolve()
+    if not proof.is_relative_to(BASE.resolve()):raise ValueError('Admission proof leaves source evidence directory')
+    if Path(batch_dir).name!=batch_dir or not batch_dir.startswith('verified-source-batch-'):raise ValueError('Unsafe batch directory')
     accepted=json.loads(proof.read_text(encoding='utf8'))['accepted']
     cmd,env,_=db_connection('ivme');conn=(cmd,env,None)
     existing=set(json.loads(query(conn,"SELECT coalesce(json_agg(code),'[]') FROM questions WHERE bank='MEBI_PRACTICE_2'")))
     new=[row for row in accepted if row['code'] not in existing]
-    folder=BASE/'verified-source-batch-001';folder.mkdir(exist_ok=True)
+    folder=BASE/batch_dir;folder.mkdir(exist_ok=True)
+    if (folder/'report.json').exists():raise ValueError('Prepared batch is immutable; resume existing receipts')
     metadata=[];images=[];rows=[]
     for row in new:
         if not row['productionImportAllowed'] or row['status']!='SOURCE_VERIFIED_READY_FOR_INSERT_ONLY':raise ValueError('Source admission missing')
@@ -46,9 +51,13 @@ def run():
     report={'status':'VERIFIED_SOURCE_BATCH_PREPARED','sourceRows':len(new),'images':images,
         'csvSha256':hashlib.sha256(csv_path.read_bytes()).hexdigest(),'before':before,
         'databaseBackup':backup['databaseBackup'],'sourceAcceptanceSha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
-        'alreadyImportedSourceCodes':len(accepted)-len(new),'questionWrites':0}
+        'alreadyImportedSourceCodes':len(accepted)-len(new),'questionWrites':0,
+        'acceptance':str(proof.relative_to(BASE.resolve())),
+        'beforeBankByExam':json.loads(query(conn,"SELECT coalesce(json_object_agg(exam_type,n),'{}') FROM (SELECT exam_type,count(*) n FROM questions WHERE bank='MEBI_PRACTICE_2' GROUP BY exam_type) s"))}
     write_json(folder/'report.json',report)
     print(json.dumps({k:v for k,v in report.items() if k not in ('images','databaseBackup')}))
 
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--acceptance',default='single-test-crops/source-pixel-acceptance.json');parser.add_argument('--batch-dir',default='verified-source-batch-001')
+    args=parser.parse_args();run(args.acceptance,args.batch_dir)
