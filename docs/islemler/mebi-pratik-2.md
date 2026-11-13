@@ -453,3 +453,9 @@ PNG üretimi ve DB yazımı0. `mebi_pratik2_kaynak_etiket_paketi.py --package-di
 source-curriculum-scope-expansion` yalnız önceden rezerve edilmemiş kanıtlı
 adayları dondurur; son kapsamda yeni aday0, yayın başlatılmaz.062:51 kabul,
 1 içerik incelemesi;15 kapsam/kimlik/kırpım sınırı testi PASS.
+
+063 Coğrafya:140 özgün metin ve6 mevcut harita PNG'si incelendi;
+Türkiye/dünya haritaları ayrılarak137 soru kabul edildi. Sadece yer haritası
+var diye Harita Okuryazarlığı etiketi verilmez; ölçülen kaynak/ekonomi,
+su/toprak/bitki, doğa-insan veya bölge kavramına göre ana kimlik seçilir.
+Üç ekonomi politikası sorusu mevcut başlığa zorlanmadan ayrı bırakıldı.

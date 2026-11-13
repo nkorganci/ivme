@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.261 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.398 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -105,6 +105,15 @@ PNG/model/öğretmen onayı0. `reviewed-native-question-11-expansion/`,
 `verified-source-batch-062/bank-acceptance.json`, `scripts/mebi-pratik2-curriculum-scope.json`.
 Ek kaynak-kapsam paketinde yeni, rezerve edilmemiş kanıtlı aday0 çıktı;
 aynı sorular tekrar aktarılmadı. Sonraki140 Coğrafya metni incelemede.
+
+**063 — BITTI:** 140 Coğrafya metni incelendi;91 TYT/46 AYT toplam137
+soru doğru mevcut konuya bağlandı. Altı mevcut harita PNG'si gerçekten okundu;
+Türkiye enerji kaynakları ve dünya kaynak haritaları ayrıldı. Üç Türkiye ekonomi
+politikası/tarih sorusu ayrı incelemede.137 INSERT/0 UPDATE, tekrar0 INSERT,
+katalog/masaüstü/mobil PASS; toplam10.398 (5.599 TYT/4.799 AYT).
+Yeni PNG/model/öğretmen onayı0. `reviewed-native-geography-expansion/`,
+`verified-source-batch-063/bank-acceptance.json`. Sonraki261 Tarih metni hazır;
+ilk70 okunmuş, kalan191 henüz konu incelemesi bekler. Ana arşiv açık.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

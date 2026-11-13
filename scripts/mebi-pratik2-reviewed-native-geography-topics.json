@@ -1,0 +1,1383 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q001",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "062a91ed9c7dc182f0918feb62f838bb7524b7f4464cb836d73ef339c3c5aee5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. I. Yoğun kar yağışı ve çığ nedeniyle ulaşımın aksaması II. Düşük sıcaklığa bağlı olarak zirai don olayının yaşanması III. Volkanik patlama sonucunda yerleşim alanlarının boşaltılması Yukarıdakilerden hangileri",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q002",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "ffcccc9753cd47307f63772dcec4eb5ea143b2d0eaa3e7cfd2524daa91558605",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Rüzgâr, çevreyi kirletmeyen temiz ve yenilenebilir bir enerji kaynağıdır. III V II I IV Haritada numaralandırılan alanların hangisinde bu enerji kaynağının potansiyeli daha yüksektir? A) I B)",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q003",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "1986690f40af4552919aec317df5f0a7b21fb8424de19c94d5c61661d23cf75a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Türkiye’de Bursa, İzmir, İstanbul, Kocaeli ve Sakarya'da otomobil ve yük taşıtları üreten fabrikalar bulunmaktadır. Bu fabrikaların belirtilen illerde kurulmasında aşağıdaki faktörlerden hangisi daha etkili olmuştur? A) Elverişli",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q004",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "fe46d7a8e57fa0e7260aaaf34e328600eb2690c15f6bc3a85d31611ad2037da3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Kısa sürede bozulan tarım ürünlerini işleyen tesisler, bu ürünlerin yetiştiği alanlara yakın yerlerde kurulmuştur. Buna göre I. çay, II. mısır, III. pamuk, IV. şeker pancarı ürünlerinden hangilerini",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q005",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "b248ed768072baab0fcc6600ef33513b0c60e0e9460ca08572ca861a7cf9ca4a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Aşağıdaki şemada üretim, dağıtım ve tüketimi etkileyen doğal unsurlar gösterilmiştir. Üretim, Bitki İklim dağıtım ve Örtüsü tüketimi etkileyen doğal unsurlar Yeryüzü Toprak Şekilleri Bu şemada boş bırakılan",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q006",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "a683494f106931f5c712433c7f3459a4cdc16acb0c0a73bdcbd120d8ef4eb751",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıdaki haritada bazı enerji kaynaklarının potansiyelinin yüksek olduğu alanlar gösterilirken hata yapılmıştır. Güneş Rüzgâr Petrol Jeotermal Taş kömürü Bu hatanın düzeltilmesi için yer değiştirmesi gereken enerji kaynakları",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q007",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "3040fbf620f8f3e69138b017cd8c09640415c9be6c4894ae2ba8d1afa85e6bc0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Türkiye’deki doğal kaynaklar hakkında öğrenciler arasında şu konuşmalar gerçekleşmiştir: Ahmet: Jeotermal kaynaklar ile ısıtılan seralarda topraksız tarım yapılabilmektedir. Derya: Linyit genellikle termik santrallerde elektrik üretiminde kullanılmaktadır. Mehmet:",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q008",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "c96493c321b120af4322a57cfe2a35aa74cb658370934d2627117a423fb38e38",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aşağıdaki grafikte Türkiye’nin 2024 yılına ait elektrik enerjisi üretiminin kaynaklara göre oransal dağılışı gösterilmiştir. %21,5 Kömür Doğal gaz %18,9 Hidroelektrik %10,5 Rüzgâr Güneş %7,5 %35,2 Jeotermal %3,2",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q009",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "2660442992b2c72f4085d8dd82c7e5f51a85c0a2fd81a3169630cd9429921f5d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Rüzgâr, güneş, dalga ve su; yenilenebilir doğal kaynaklardır. Bu kaynaklarla ilgili I. Doğada sınırlı miktarda bulunur. II. Sürdürülebilir potansiyele sahiptir. III. Belirli koşullarda kendilerini yeniler. ifadelerinden hangileri",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q010",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "cdf52b0443e789b4b6e5d3e3a529bddfb1c53e453c892a6844bd59d214e38460",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Volkanik arazilerde ve fay hattının geçtiği bölgelerde jeotermal enerji potansiyeli yüksektir. III V II I IV Buna göre haritada numaralandırılan alanların hangisinde bu enerji potansiyeli daha yüksektir?",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q011",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "10269c008fd93f9e91773b7a46569a29129c33900307dbb53f77edc63fd7ec59",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Bazı ülkeler, doğal kaynak bakımından yoksun olmasına rağmen ihtiyaçları olan kaynakları diğer ülkelerden temin edip yüksek teknolojiyle işleyerek ekonomik kazanç sağlar. Bu duruma I. Güney Kore, II.",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q012",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "7d46ba2a417f5b657ac4ab6aff5469ab2c1904996a8aab4db8ac1c5050ae38e0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. I. Kömür II. Orman III. Doğal gaz IV. Jeotermal Yukarıdakilerden hangileri yenilenebilen doğal kaynaklar arasında yer alır? A) I ve II B) I ve III C) II",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q013",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "02abff2cabf05cd4e2ca30f2f16d92cb062b4f026acba84a60fa56fb87dae004",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Aşağıda beş yerin numaralandırılarak gösterildiği bir harita ve bu yerlerin dördüne ait doğal kaynak özellikleriyle ilgili bazı bilgiler verilmiştir. I III IV II V • Doğal gaz",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q014",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "bfdbbeec73971ec04f1a7b5c66ba15f1f9c7f68af73d786b343412140944cef9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Günümüzde doğal kaynakların kullanımı yaygınlaşmış ve doğal kaynaklara erişim daha kolay hâle gelmiştir. Bu durum üzerinde aşağıdaki faktörlerden hangisinin etkisi daha fazla olmuştur? A) Nüfusun hızlı bir",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q015",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "d5e91af42a0155b2ffddbe59de2a7a0bdd2c5de46468da1687b5e4880fabb001",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Sanayi tesisleri, genellikle nüfusun yoğun olduğu ve satın alma gücünün yüksek olduğu alanlarda yoğunlaşmıştır. Haritada numaralandırılan alanlardan hangisi bu duruma örnek gösterilebilir? A) I B) II C)",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q016",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "beb824595b146188148dffaa532d02ee88d899ec7c8448c6547fa7d2169592e7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Ticari değeri olan bir ürünün üretim ve tüketiminin her aşamasında kullanılan su miktarına sanal su denir. Aşağıdaki ürünlerden hangisinin üretiminde kullanılan bu su miktarının daha fazla olması",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q017",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "c56e10c13d9ace0c681bc86df6165a277a59b82da2584de08f6d04d941d2ff98",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Türkiye’nin sahip olduğu doğal kaynaklar bazı şehirlerin gelişmesinde önemli bir etken olmuştur. Buna göre şehirlerin gelişmesine yönelik olarak aşağıda verilen şehir ve doğal kaynak eşleştirmelerinden hangisi yanlıştır?",
+      "rationale": "Türkiye otomotiv sanayisi ve şehir-doğal kaynak ilişkileri ile Türkiyenin rüzgar/enerji potansiyeli ölçülür; ülke haritası olan2 ve6 mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q018",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "472dbe732e9eb88928a41567e03fef503250145e2d549c06cfca28677ada6dc8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Ulaşım sistemlerindeki gelişmeler sayesinde ürünlerin özel olarak yapılmış araçlarla sağlıklı bir şekilde tüketiciye ulaştırılması pazarlama süreçlerini kolaylaştırmıştır. Bu duruma I. süt ve süt ürünlerinin soğutmalı kamyonlarla marketlere",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-34d7100ee1ca29d8-Q019",
+      "categoryId": "excel.ayt.cografya.30ea666545b23c3dd725",
+      "imageSha256": "f37acf4cbde76d56aeb04589d69de4dd425e3232c416ecec159ce78446ecedd2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. V II I IV III Bu alanların hangisinde olumsuz iklim koşulları üretim faaliyetlerini sınırlandırmaktadır? A) I B) II C) III D)",
+      "rationale": "Üretim-dağıtım-tüketimi etkileyen doğal/beşeri etmenler, kaynak türleri ve dünyada kaynak-ekonomi ilişkisi ölçülür;10/13/15/19daki dünya haritaları mevcut PNGden gerçekten okundu.",
+      "teacherApproved": false,
+      "actualExistingImageRead": true
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q003",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "ae21e08f4101f20776c0ea00e496cc07f3539b05ceccb43aa48183a890c71b4d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Türkiye'de teknoparklar, 2001 yılında çıkarılan Teknoloji Geliştirme Bölgeleri Kanunu ile yasal bir zemine oturtulmuş ve o tarihten bu yana sayıları önemli ölçüde artmıştır. Aşağıdakilerden hangisi bu uygulamanın",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q005",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "aab2ec0b3add08bc030ab232ebd6da3f223d026bb0f031e079a9121f4d1f0257",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Yer şekillerinin engebeli olduğu arazilerde tarım ürünü yetiştirmek zor ve kısıtlıdır. Bu tür arazilerin geniş alan kapladığı illerde daha çok ormancılık, arıcılık gibi faaliyetlerin geliştiği görülmektedir. Bu",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q006",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "bdb5b82d4b679819bd1b8d98b7a84a6d35bd9e09ef39884ddfb97d63733e9268",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Türkiye’de kurak ve yarı kurak iklim koşullarının yaygın olması, tarımsal faaliyetleri sınırlayan önemli bir etkendir. Bu nedenle sulama olanaklarının geliştirilmesi yönünde çalışmalar yapılmaktadır. Bu çalışmalar sonucunda aşağıdakilerden",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q007",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "4d607a4ebbcb191c3de7537676c3952de5910fcf0e7d53a5cd345ca903167ea1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Türkiye’de tarımda birim alandan elde edilen verimi artırmak için I. sulanabilen tarım alanını artırma, II. tarım arazilerinin alanını genişletme, III. yüksek verimli tohum türlerini kullanma, IV. geleneksel",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q008",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "306049d2b6e2dfe40fa5686ba905e3e5d450ef32a78ce936023dcf4ac20dd696",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aşağıda bir tarım ürününe ait bazı özellikler verilmiştir. • Çok yıllık endüstriyel ürünlerdendir. • İklim seçiciliği fazla olduğu için yetişme alanı dardır. • Her mevsimin yağışlı ve",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q009",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "c7620e27f78e81e0f577fb63425aaea52aa766599d7aea21ef2ec79016cd8424",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıdaki haritada Türkiye’de bir tarım ürününün üretim miktarına göre dağılışı gösterilmiştir. Bu tarım ürünü aşağıdakilerden hangisidir? A) Çay B) Fındık C) Ayçiçeği D) Zeytin E) Kayısı",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q010",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "cc530734629594f735df32ab37cdfc7e04a566165002ad965f7c713fc584a8ec",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Türkiye'deki tarımsal etkinliklerle ilgili aşağıdakilerden hangisi yanlıştır? A) Son yıllarda organik tarım yöntemleriyle yapılan tarımsal faaliyetler artmıştır. B) Karasal iklimin görüldüğü bölgelerde genellikle çeltik tarımı yapılmaktadır. C)",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q011",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "1dc6e90faa288f1c2832cb56eed2059d6a01647f3dd0354056a45c0ea4adec77",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Bir coğrafya öğretmeni, sanayi faaliyetlerinin dağılışını etkileyen faktörleri anlatırken Türkiye’de pamuklu dokuma ve pamuk ipliği üreten sanayi tesislerinin genellikle ham madde üretim alanlarına yakın yerlerde kurulduğunu belirtmiştir.",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q012",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "137c97f1880e91fd6d42c9d680ce7207bc8cb5c2851bdeb0f716d60b350e7a8d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Kıl keçisi yetiştiriciliği dağlık ve engebeli arazilerle maki bitki örtüsünün görüldüğü alanlarda yaygın olarak yapılır. I IV V II III Bu hayvancılık faaliyeti haritada numaralandırılan alanların hangisinde",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q013",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "79aef693209a14855391984446ecf91ea0f591a4bcf54fde7c3ec3dc5db0a7cb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Bir tarım ürününün ülke içindeki üretimiyle gıda, hayvancılık ve sanayi gibi alanlardaki ulusal ihtiyaçları karşılama oranına tarımsal yeterlilik denir. Türkiye’de bu oran I. fındık, II. incir, III.",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q014",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "517a8ebfd958e4cdc868e4c7eca9b00de1d181cc36ca035df5378cd7700d22ad",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Türkiye, büyükbaş hayvan sayısı bakımından dünyada önemli bir konumda yer almasına rağmen hayvan başına düşen et ve süt verimi istenilen düzeyde değildir. Bu durumun temel nedenleri arasında",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q015",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "1755d7fb675329161fa5d2fb6e96dfe392e02eb55c6f64185d27d04f5985678b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. V IV II III I Bu alanların kırsal bölgelerinde yaygın olarak yapılan ekonomik faaliyet eşleştirmelerinden hangisi yanlıştır? A) I - Arıcılık",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q016",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "17b068a084dd0985ed6bffd41089f984b5508dc1a43e42aa525ec86255315c94",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Aşağıda bazı kavramların tanımları numaralandırılarak verilmiştir. I. Yer kabuğunun derinliklerinde bulunan, işletildiğinde ekonomik değer taşıyan minerallerdir. II. Maden yatağından çıkarılan mineral maddenin taş ve topraktan ayrıldıktan sonra",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q017",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "59af3d6094007f414c20840e2d0fc1247b3d9e8805046acf1c9d4a2449d6a226",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Gayrisafi yurt içi hasıla (GSYİH) içinde madencilik sektörünün payı; dünya genelinde %2, gelişmiş ülkelerde %4, Türkiye'de ise yaklaşık %1,08’dir. Türkiye’de madencilik sektörünün GSYİH içindeki payını artırmak için",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q018",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "a720827b5c373b25c40dd0d64c69e37c8bd67e1163039c92f4b8c71d6ccc0fc9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Madenlerin ekonomik olarak işletmeye açılabilmesi için bazı koşulların sağlanması gerekir. Aşağıdakilerden hangisi bu koşullardan biri değildir? A) Gerekli teknik donanımın sağlanması B) Yeterli düzeyde rezerv bulunması C)",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q019",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "da7959ce39d7157d2cd12da6149fd08417b0c7bea109715dd3913ad73f6a1253",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Aşağıda bir madene ait bazı özellikler verilmiştir. • Sertlik derecesi yüksektir. • Paslanmaz çelik yapımında kullanılır. • Bilinen başlıca yatakları Guleman (Elâzığ), Fethiye, Köyceğiz (Muğla), Sivas ve",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q020",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "1f6738ebb27da7059d0170358b16b1e5a9733e93caf0d15eb1f7645ec73be6d7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. Bu alanlardaki maden ve enerji kaynaklarıyla ilgili aşağıdakilerden hangisi söylenemez? A) I numaralı alan bor çıkarım sahalarından biridir. B) II numaralı",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q021",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "82f689fc08f18f3f1a1d86a0941c1a859f3a8572dd77ae1abf3b84949fa296c7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Aşağıda Türkiye’deki bazı sanayi kollarının gelişim gösterdiği yerlerle ilgili bilgiler verilmiştir. I. Un ve unlu gıda sanayi tesisleri özellikle Orta Anadolu’da yoğunlaşmıştır. II. Bazı demir-çelik fabrikalarının kuruluş",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q022",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "4a879f00a8700a94751c3d25b8fdc9d87dd6b858b5d4086cc9969db62e147632",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Aşağıdaki haritada Türkiye’deki taş kömürü, linyit, petrol ve doğal gaz yatakları gösterilmiştir. Taş kömürü Linyit Petrol Doğal gaz Haritadaki bilgiler dikkate alındığında aşağıdakilerden hangisine ulaşılamaz? A) Batman,",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q023",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "2acfc83f29ead88206e99fc362a6fe3c36af73033292c5cea38384397b6dfab4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. Bu alanların hangilerinde güneş enerjisi potansiyeli daha yüksektir? A) I ve II B) I ve III C) II ve III D)",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q024",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "aa81734205caa3b890a3b3cf75928edabb68ba42507a0ed1adfa718f9a885f86",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Aşağıdaki grafikte 2024 yılında Türkiye'de elektrik üretiminde kullanılan kaynakların oransal dağılımı gösterilmiştir. % 40 Kömür 30 Hidroelektrik Doğal Gaz 20 Rüzgâr Güneş 10 Jeotermal Diğer 0 Grafikteki",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q025",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "d7fe19bb1e8c8c594004d3c747f6ef5c6b9a3fb25ee64d9c72ccf89abac97859",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Türkiye jeolojik yapısı nedeniyle jeotermal enerji potansiyeli yüksek bir ülkedir. Bu enerji kaynağı seraların ısıtılmasında kullanılarak örtü altı tarım faaliyetlerinin yapılmasına olanak sağlamaktadır. Haritada numaralandırılan alanların hangisinde",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q026",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "9fbb412d4dc37614d5b602be77ad81aff0bbc6d504c2c046f4bad04ffaff2156",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Tarımsal faaliyetler, sahip oldukları özelliklere bağlı olarak farklı doğal ve beşerî çevre koşullarına ihtiyaç duyabilir. Bu nedenle Türkiye’de bazı tarımsal faaliyetlerin aynı bölge içinde birlikte sürdürülmesi oldukça",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q027",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "531fd94607b4fe0734b5050209a1c43b5c51a38d0571c09079c53a657ca4a28f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Türkiye’nin yer altı kaynakları çeşitliliği bakımından zengin olmasında I. farklı özelliklerdeki jeolojik yapının bulunması, II. kısa mesafelerde iklim özelliklerinin değişmesi, III. farklı koşullar altında oluşmuş toprakların bulunması",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q028",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "7e71e4ab3a3513975154ebdf01d38b7589120f7cbf0a01246f70d89ef196bf51",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Türkiye’de Cumhuriyet tarihi boyunca sürdürülen sanayileşme çabaları ülkenin ekonomik ve toplumsal gelişimine önemli katkılarda bulunmuştur. Bu katkılara I. ihracatta sanayi ürünlerinin payını artırarak ülkeye döviz girdisi sağlaması,",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q029",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "57deb9c3ab493e776776c510b455915dc2f8e88db81ed4d4183fce6c5a6ad044",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. Türkiye’deki sanayi faaliyetleriyle ilgili olarak aşağıdakilerden hangisi söylenemez? A) İhracatta otomotiv sanayisi ürünleri önemli bir yer tutmaktadır. B) Deri işleme sanayisi, İstanbul ve çevresinde daha fazla gelişmiştir.",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa507a9eb68cdc50-Q030",
+      "categoryId": "excel.ayt.cografya.95e33e47cb396fd01be3",
+      "imageSha256": "aa4d2f92a979967fcd983ca01283702429f93d034bce005e03cf72a3e26a15dd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "30. Aşağıdaki haritada beş yer numaralandırılarak gösterilmiş ve bu yerlerdeki hayvancılık faaliyetleriyle ilgili bazı bilgiler verilmiştir. • Çayır bitki örtüsünün yaygın olması nedeniyle büyükbaş hayvancılık faaliyetinin yoğun yapıldığı",
+      "rationale": "Basılı Türkiye’de Ekonomi başlığı altında tarım/hayvancılık, sanayi/teknopark, madencilik kavramları ve enerji dağılışı incelenir. Ekonomi politikası/tarih soruları bu başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q001",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "ed9977841f15c1618ed3319b8cb15562fe070d57d7e3eb956129d103eef20c57",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Yeryüzündeki su kaynaklarının yaklaşık olarak %97’si okyanus ve denizlerden oluşmaktadır. Bu su kaynaklarının doğal ve beşerî çevre için birçok faydası bulunmaktadır. Aşağıdakilerden hangisi bu faydalardan değildir? A)",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q002",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "3e6c026962da266ca2a8264d106ee3cbdec452799b5531b47da0f78db521b2d9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Aşağıdaki grafiklerde yeryüzündeki tatlı suyun ve tatlı yüzey sularının dağılımı yaklaşık olarak gösterilmiştir. Yalnızca grafiklerdeki bilgiler dikkate alındığında I. Yeryüzündeki tatlı su kaynaklarının en önemli kısmını buzullar",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q003",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "c531d3e487a4bbb6039620c9f09b288e83afdfb367ecf7cf935c35e9ec7a7f57",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Aşağıdaki haritada yeryüzündeki bazı su kaynakları numaralandırılarak gösterilmiştir. Bu su kaynaklarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır? A) I numaralı su kaynağı en büyük iç deniz olma özelliğine",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q004",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "bef9c1f3250feeb4d7da7c76c11038971734dc5616e176cd17ecf72d7b836bb0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Türkiye'de coğrafi konum özellikleri nedeniyle bazı toprak türleri görülmez. Bu türlere I. çöl, II. tundra, III. çernezyom topraklarından hangileri örnek gösterilebilir? A) Yalnız I B) Yalnız II",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q005",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "671ad3d07bc39b32105a49e616aca7f78ca7b5766793e53577296814300d17e5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Göller oluşum şekillerine göre sınıflandırılabilir. Bunlardan bazıları; tektonik göller, baraj gölleri, buzul gölleri ve lagün gölleridir. Bu göllerin özellikleriyle ilgili aşağıdakilerden hangisi yanlıştır? A) Tektonik göller, kırıklı",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q006",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "ec6c4576edf8bda2783a022c56a6f64756ccc25928d7f441ac6d6092c6bd98d7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Kıtaların kenarlarında bulunan denizlere kenar deniz, içlerinde bulunan denizlere ise iç deniz adı verilir. Aşağıdakilerden hangisi bu su kütleleriyle ilgili doğru bir ifade değildir? A) İç denizlerde",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q007",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "6bd4248e49b9eee8c12c9baab0e37ee8f335e45b8b2f8d58352a48b739bca3b0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Aşağıda bir su kaynağına ait görsel verilmiştir. Görseldeki bilgiler dikkate alındığında I. K olarak adlandırılan yer, yüzeyden sızan suların toplandığı akifer alanıdır. II. L olarak adlandırılan yer,",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q008",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "3222d4a5ff1853c1fd126d310f3f85c1c32430e440708ef4b96576245efb2013",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Tektonik göller, tektonik hareketler sırasında kıvrılarak veya kırılarak çöken çanakların sular tarafından doldurulmasıyla oluşmuş göllerdir. Yeryüzündeki büyük göllerin çoğunluğu tektonik kökenlidir. Aşağıdakilerden hangisi Türkiye’de bu göllerin sayıca",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q009",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "227973769b69faec3843c93344a01cebb3f5a181ccc3184722ce0aa9e99c1e5d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıdaki şekilde geçirimlilik durumları farklı olan bazı materyaller gösterilmiştir. Bu materyallerin suyu yer altına sızdırmasıyla ilgili I. Materyallerin boyutlarıyla yüzey sularını sızdırmaları arasında ters orantı vardır. II.",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q010",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "5594c097c6d118d35070bae1f709ffd9128ec2f2d9c1db1bef9b52b2ca21955b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Kireç taşlarındaki çatlaklardan sızan suların yer altı boşluklarında birikmesi ve vadi tabanıyla yamaçlarından bol debili akarak yüzeye çıkması sonucunda karstik kaynaklar oluşur. Haritada numaralandırılan alanların hangilerinde bu",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q011",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "de712b77057d84d461bbe0ca7527d710375b762b87a429f97d30eb1799489e60",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Birden fazla faktörün etkisiyle meydana gelen göllere karma oluşumlu göller denir. Bunların oluşumunda tektonik olayların yanında volkanik, karstik olayların ya da kütle hareketlerinin etkisi vardır. Aşağıdakilerden hangisi",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q012",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "530d93188e391113c3fa2124861d6ea8083b4c8fa4f6116de51df135027297c0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Türkiye’deki akarsulardan bir kısmı aşağıdaki özelliklerin tamamına sahip olacak şekilde gruplandırılmıştır. • Karma rejime sahiptir. • Açık havza özelliği gösterir. • Kaynağını Türkiye’den almaktadır. • Sularını Türkiye",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q013",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "b69d681fd96e4028c1d556de8d97a34c0ef66ab0276f5d3313960645cf0ee634",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Türkiye’nin su varlığıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır? A) Yarımada özelliği nedeniyle akarsuların boyları fazla uzun değildir. B) Mutlak konumuna bağlı olarak buzul göllerine rastlanmaz. C) Jeolojik",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q014",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "efbb32a44fd924ff061928ed993f29104060f3790b51dc505f7109facb4a8a12",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Aşağıdaki haritada Türkiye’nin havzaları gösterilmiştir. Haritadaki bilgiler dikkate alındığında aşağıdakilerden hangisi söylenemez? A) Alanı en geniş olan Karadeniz Havzası'dır. B) Kapalı havzalar genellikle iç bölgelerde toplanmıştır. C)",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q015",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "5e100d8638ccbcdfce5cfb8d616e9b5bd8e864c1d2dd93e2c02651ddec263407",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Kurak bölgelerde ve nüfusun kalabalık olduğu alanlarda kişi başına düşen tatlı su miktarı azalmaktadır. Bu tür alanlarda su kaynaklarının kullanımında daha bilinçli hareket edilmesi gerekmektedir. Haritada numaralandırılan",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q016",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "1322a7d8309a156e497219294b81e7155b1f5cd69c735543e6930597799b110b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Kayaçların gece ile gündüz, yaz ile kış arasındaki sıcaklık farkı nedeniyle genleşmesi ve büzüşmesi sonucunda çatlayıp ufalanmasına fiziksel ayrışma denir. Haritada numaralandırılan alanların hangisinde bu ayrışma türü",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q017",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "ba51d46edc47ccea3f2c5c9a01c7578d93ed32c70498912e716bef85b80e2f5e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Yer kabuğundaki kayaçlar, atmosfer ile dış kuvvetlerin etkisiyle parçalanarak ufalanır ve ayrışır. Bu ayrışma süreçleri toprak oluşumu açısından oldukça önemlidir. Bu süreçlerle ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q018",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "ce9607eb95ec26c0dc9d4df99e2215ece0c7fa2e08903e3896f226a4cfbebdd1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Toprak oluşum sürecinde ve toprağın belirli özelliklerinin ortaya çıkmasında bazı temel faktörler etkilidir. Aşağıdakilerden hangisi bu faktörlerden değildir? A) Yer şekilleri B) İklim özellikleri C) Ana kayanın",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q019",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "1b390fdfb1067ad6bdeb83ef691e9904f448df532c8a048ae01f268830c715b1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Yer şekillerinin toprak oluşumuna etkisiyle ilgili I. Yükselti, sıcaklık ve yağış özelliklerini etkilediğinden yamaç boyunca yükseldikçe farklı özellikte toprak oluşumu görülür. II. Eğimli arazilerde kayaçların hızlı çözünmesi",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q020",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "563dd4339c63a064092c878517815b18ba0fbe9a76af30d8ad537766878f2115",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Topraklarla ilgili verilen aşağıdaki bilgilerden hangisi yanlıştır? A) Nemli bölgelerde kimyasal çözünme etkili olduğundan toprak oluşumu hızlıdır. B) Dış kuvvetlerin taşıdığı malzemelerin birikmesiyle oluşan topraklarda katmanlaşma belirgindir.",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q021",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "8db9365970be714590b0f4f58e56d841fabbb6fa9ecbbc103f77a3989442eb9d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Aşağıda oluşumunu tamamlamış bir toprak kesitinde yüzeyden derine doğru farklı özelliklere sahip horizonlar gösterilmiştir. Bu katmanlarla ilgili I. A horizonu yıkanma, B horizonu ise genel olarak birikim",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q022",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "223ae151379fd2d2d228e39c147fd3de67e6c14c18c12015b7403e5aa0a13393",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Aşağıdaki iklim tipi-toprak türü eşleştirmelerinden hangisi yanlıştır? A) Tundra iklimi / Tundra toprakları B) Ekvatoral iklim / Laterit topraklar C) Muson iklimi / Kolüvyal topraklar D) Akdeniz",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q023",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "7601cad2aa4981296b57b888f3468086c273d3d472f35af97a0cb49fc18f521d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Aşağıda bir bölgeye ait aylık ortalama sıcaklık ve yağış grafiği verilmiştir. Bu bölgede gelişen zonal toprak grubuyla ilgili aşağıdakilerden hangisi söylenebilir? A) Topraktaki kireç oranı yüksektir. B)",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q024",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "e598dc965c8f291f88c8db265e0fcc67a034c17b06f7595926f951ed4164732a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Azonal topraklar, çeşitli dış kuvvetler tarafından taşınan malzemelerin birikmesi sonucunda oluşur. Bu topraklarla ilgili I. Olgun bir toprak profili görülmez. II. Mineral madde yönünden zengindir. III. Oluşumlarında",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q025",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "2a54780ea4070aa9a020941bca0bd477da905e923a441763b03fe0e31d1f75a5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Aşağıdaki şekilde Akdeniz iklim kuşağındaki bir bölgede farklı ana kayalar üzerinde gelişen bazı toprak türleri gösterilmiştir. Buna göre aşağıdakilerden hangisi söylenemez? A) Bölgede azonal topraklara rastlanmamaktadır. B)",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q026",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "f9789f176a8a32fcb18e5a21c1c5f57a4c1db496e81d6430dc5a1d3d5978c808",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Aşağıdaki şekilde Türkiye’de belirli bir doğrultuda görülen toprak türlerinin değişimi gösterilmiştir. Bu bilgiler dikkate alındığında aşağıdaki çıkarımlardan hangisi yapılamaz? A) Yer şekillerinin eğimi yamaçtaki toprak örtüsünün kalınlığını",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q027",
+      "categoryId": "excel.tyt.cografya.ef5bbc26ce286071f72b",
+      "imageSha256": "39b7a40afee34d5a493e71e8b28e338d40a75646a1c7c52d2fea3b64cc6727d4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Su çevrimiyle ilgili I. Temel itici gücünü Güneş’ten yeryüzüne ulaşan enerji oluşturur. II. Buharlaşma hareketleri yüzey sularının atmosfere geçişini sağlar. III. Yağışlarla yüzeye inen suların tamamı kısa",
+      "rationale": "Deniz, göl, akarsu, yeraltı kaynağı/akifer, su bütçesi ve su döngüsü doğrudan ölçülür; geçirgenlik sorusu yeraltı sularının beslenmesine ilişkindir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q028",
+      "categoryId": "excel.tyt.cografya.d1e4f2e7071bcb7fd9cd",
+      "imageSha256": "c515fabbd7c67fbcd281ef57f63a2bb1798bbb34a87ff0cebaceb0be7bdad6ac",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Aşağıda, üzerinde numaralandırılan alanların bulunduğu bir harita ile bu alanların birinde gelişen toprak türüne ait bazı özellikler verilmiştir. • Uzun boylu çayırların altında oluşmuştur. • Organik madde",
+      "rationale": "Toprak oluşumu, kayaç ayrışması, horizonlar, toprak tipleri ve dağılışı doğrudan ölçülür; su kaynakları ve bitki formasyonları ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q029",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "1432482efd975bccf471b6b22c5ad4dada3dc3b3df2ac848d16ebadf113cc1d8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. Aşağıdaki şekilde Ekvator’dan kutuplara doğru bitki örtüsünün oluşturduğu kuşaklar gösterilmiştir. Aşağıdaki faktörlerden hangisinde yaşanan değişim bu kuşakların ortaya çıkmasının temel nedenidir? A) Bakı durumu B) Toprak türleri",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q030",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "282cd179d04e8b3405a31deb51ac45f8dbc200497b7e3668a5ca58c1f15a3cb2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "30. Jeolojik süreçler içinde iklimi değişen bölgelerin bitki toplu­lukları da tamamen değişmiştir. Ortadan kalkan bitki topluluğun­dan bazı türler küçük alanlarda az miktarda da olsa varlığını sürdürmüştür. Bu şekilde",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q031",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "f24728103d049daf93b2dc2b8329b41ce6713941add0732da5c01e9b1a084c23",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "31. Bitkiler, kökleriyle toprağa tutunup topraktaki sudan besinlerini aldıklarından toprağın yapısı bitki türünü önemli ölçüde etkilemektedir. Örneğin kumlu topraklarda sular çok derinlere kadar sızdığından bu topraklardaki bitkilerin kökleri",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q032",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "962d5e210371d27f19328ebf5eeb671ceb50f380b955823d8eb2e593274fdb8b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "32. Tahrip edilen ormanlık alanlarda iklim şartları ve toprak özelliklerinin etkisiyle gelişen kısa boylu ağaççıkların oluşturduğu bitki topluluklarına çalı formasyonu denir. Bu formasyonda I. maki, II. savan, III.",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q033",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "516c89b4fd6a97b1fe8504ee29223c7df069627e87a2dde0eed4375ccef4ab81",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "33. Aşağıda kuzey yarım kürenin belirli bir bölgesinden batı-doğu yönünde alınan kesit üzerinde doğal bitki topluluklarının dağılışı gösterilmiştir. Buna göre aşağıdaki yargılardan hangisine kesin olarak ulaşılamaz? A) Bitki",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q034",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "bb5976740d3e924ae93391612f7954ebc0893cb1a07897f83bf2cb94addbbd6d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "34. Aşağıdaki iklim bölgeleri haritasında bazı yerler numaralandırılarak gösterilmiştir. Bu bölgelerde dağılış gösteren bitki türleri ve bu bitki türlerinin ait oldukları formasyonlarla ilgili aşağıdaki eşleştirmelerden hangisi yanlıştır? A)",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q035",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "fd46689eaf015865c1ae5c3d72cf75ee291ecd20576a0f0d0021f235e795f59c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "35. Alpin çayırlar, yaz aylarının serin ve yağışlı geçtiği çok yüksek alanlarda mevsim boyunca yeşil kalan ve orman üst sınırından hemen sonra başlayan ot topluluğudur. Bu bitki topluluğu",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q036",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "e6d447998202a0ebc57a42277f7b28e12d706fc4a0498aaee053396fab620ef5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "36. Türkiye, bitki örtüsü çeşitliliği yönünden dünyanın en zengin ülkelerinden biri olup Avrupa kıtasının tamamından daha fazla bitki türüne sahiptir. Aşağıdakilerden hangisi bu durumun ortaya çıkmasıyla daha az",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q037",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "3246426edc2aa854eb67bd3109bbe3100b0060b3bd75f65d8cd396ee78a913ed",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "37. Aşağıdaki haritada Türkiye’deki bitki topluluklarının dağılışı gösterilmiştir. Haritadaki bilgiler dikkate alındığında aşağıdakilerden hangisi söylenemez? A) Türkiye'de birbirinden farklı bitki toplulukları dağılış göstermektedir. B) Ormanların büyük çoğunluğu kıyı",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q038",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "958da43909354d8729baa1e600b8132db360d49e0d4976ff85bbe4673926b019",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "38. Bir bölgenin kuzeyinden güneyine gidildikçe kaktüs ve dikenli çalılar, step, ılıman bölge ormanları, maki türleri, tundra bitki türlerine rastlanmaktadır. Bu bölgeyle ilgili I. Sıcaklık ve yağış istekleri",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q039",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "40ae3a478f9cc4724290b761b3b8e0a26f46aa12e2410b42f453b9d6a27fdbb8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "39. Aşağıdaki şekilde Türkiye'de bulunan bir yerdeki yer şekilleri profili üzerinde bitki topluluklarının değişimi gösterilmiştir. Bitki topluluklarının bu şekilde değişim gösterdiği yerin aşağıdaki şehirlerin hangisinde olması beklenir? A)",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e2782e4eafe5ca28-Q040",
+      "categoryId": "excel.tyt.cografya.bb5723e0db99f01245f4",
+      "imageSha256": "f007343ac498ac77a5bed7f5ec1aa10d6d7a2c8509f5637c0b70bd407af044a4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "40. Endemik bitkiler bir dağ, bir ada, bir yarımada, dağlar arasındaki derin bir vadi veya çukur alanlarda yayılış gösterebilmektedir. Bu tür alanlar çevresinden daha farklı iklim özellikleri gösterir",
+      "rationale": "Bitki formasyonları, iklim-toprakla ilişkileri, relikt/endemik türler ve doğal bitki örtüsünün dağılışı doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q001",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "369b6e673d0f2780554444883deece1f6ecf71c8162a0dfe5b735ba6b31a4d15",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. İnsanlar; bilgi, beceri ve doğayla mücadele yeteneklerini kullanarak yaşadıkları çevreyi ihtiyaçları doğrultusunda şekillendirebilmektedir. Aşağıdakilerden hangisi bu duruma örnek gösterilebilir? A) Kurak alanlarda tarımsal faaliyetler için su kaynaklarının",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q002",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "97ebed8a5e49558caee53b765936e36727a8adb436c065857211062de5a622b4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Nüfusun ve sanayi faaliyetlerinin yoğun olduğu alanlarda insanın doğaya artan müdahaleleri; hava, su ve toprak kirliliği gibi çevre sorunlarının yaygınlaşmasına yol açar. Buna göre haritada numaralandırılan alanların",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q003",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "049faafb8a32ff2df13a36294356d5fb6b24e6c51214846d855a0bfcf3c2acf3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Doğal çevredeki mevcut kaynakların potansiyeli, insanların yürüttükleri ekonomik faaliyetler üzerinde belirleyici bir etkiye sahiptir. Aşağıdaki faaliyetlerden hangisi bu duruma örnek gösterilemez? A) Yer şekillerinin düz olduğu bölgelerde",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q004",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "ec9e573e68e7f162b824e35f003f3920cd67124c69fdec88013b0a0b0742a7dd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Geçmiş dönemlerde haritalar arazide dikkatli bir şekilde yapılan incelemeler sonucu oluşturulmaktaydı. Günümüzde ise hava fotoğrafları ve uydulardan alınan görüntülerin bilgisayarlara aktarılmasıyla modern haritalar oluşturulabilmekte ancak Dünya’nın küresel",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q005",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "94ab62e9ca1ce283c38627bd474ac112475407818912fb0eb2c1598970951ea8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. I. Uluslararası ticarette önemli olan deniz yolu ulaşımının daha avantajlı hâle gelmesi için Panama ve Süveyş gibi kanalların açılması II. Kanada’nın kuzeyinde yaşayan insanların yağlı ve protein",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q006",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "5ea55ae29c49dab8bf1586729ba39d7d7f527905a265b69fe6c8d61e211a5c37",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıda Kapadokya yöresiyle ilgili bazı bilgiler verilmiştir. • Kalkolitik Dönem'den beri yerleşim alanı olmuştur. Yörenin kuzeyinde yer alan Kızılırmak vadisinde iklim değişiklikleri ve bölgesel tektonik yükselmeler sonucu",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q007",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "a91ffe119ba4f7a2a1d4ac5cf8ae181bf6d59fb3bceeb38d37ea26abe430704a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Coğrafyanın insanın doğal sistemler içindeki çeşitli faaliyetlerini inceleyen bölümüne beşerî coğrafya denir. Aşağıdakilerden hangisi bu bölümün inceleme konuları arasında yer alır? A) İstanbul; deniz, kara, hava ve",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q008",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "aed52ca760073e63a0847ba16a250cae85156609972cd598fb971e3c8a074568",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. İnsanlar, faaliyetlerini etkileyen ve engelleyen doğal çevre koşullarına karşı bilgi birikimini artırmış; teknolojik gelişmeler sayesinde elverişsiz ve dezavantajlı koşullarda bile yaşamlarını kolaylaştıracak pek çok faaliyet gerçekleştirmiştir. Aşağıdakilerden",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q009",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "eaed2caedd44f3e25a11954b9b2871d05f0caf208a615c59e2296a5f02fb5088",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. I. Kar yağışının fazla olduğu bölgelerde ilkbahar mevsiminde bazı göllerin su seviyesinin artması II. Günlük sıcaklık farklarının fazla olduğu karasal ortamlarda kayaçların fiziksel yollarla ayrışmaya uğraması III.",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q010",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "36973a2f250b821ee87f78dc5b31370f64579f61edf24b3ee3984d0a226cd5ee",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Biyosferin bir unsuru olan insan, yaşadığı doğal ortamda birtakım yaşamsal faaliyetlerde bulunur. İnsanın ihtiyaçlarını karşılamak için doğal ortamda yapmış olduğu bu faaliyetlerin tümüne beşerî olay denir. Aşağıdakilerden",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q011",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "17860b64dfbf1e10adc18dada667d9467eaf1cb020073e99da281955cd757dc1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. İn­sanlar, çeşitlenen ve artan ihtiyaçlarını karşılayabilmek için do­ğaya birtakım müdahalelerde bulunmuştur. Bu müdahaleler, ba­zen doğanın işleyişiyle uyumluyken bazen de bu işleyişe zarar vermiştir. Aşağıdakilerden hangisinin bu işleyişe",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q012",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "f04926c5a050d83e8f9b352c895e9e9c009dd97745394cf469bf2c49dc7a212a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Yakın Çağ coğrafyacıları, farklı zaman ve mekânlardan elde ettikleri bilgileri çok iyi sentezlemiş ve tüm insanlığın aydınlanma sürecine ve bilimsel gelişimine öncülük etmişlerdir. Coğrafyanın bilimsel bir karakter",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q013",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "52c7181574092fec050972dea41ce2e1c3e032e66d6e53ad5f338996bb742bc0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Yeryüzündeki olay ve süreçleri bütüncül bir yaklaşımla inceleyen coğrafya, bunu yaparken çeşitli bilim dallarından elde edilen bilgilerden de yararlanmaktadır. Buna göre fiziki coğrafyanın alt dalı olan klimatoloji",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q014",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "0cc0e005ce50843e06f9189333be1491f785773823adf5091121177c10a4d7f9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Coğrafya bilgisine sahip insanlar; doğal ortamdaki unsurları, doğa olaylarını ve bunların insan faaliyetleriyle etkileşimini bütünsel bir şekilde görebilir. Buna coğrafi bakış açısı denir. Aşağıdakilerden hangisinin bu bakış",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q015",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "9563a6307cfb7a62e2178d41583497890bd2b012d10da65fe3bf9d7f20b4b63d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Teknolojik gelişmeler, doğal koşulların insan faaliyetleri üzerindeki kısıtlayıcı etkilerini azaltmış olsa da yeryüzünün bazı bölgelerinde bu etkiler hâlâ belirgin olarak görülmektedir. Haritada numaralandırılan alanların hangilerinde doğal koşulların",
+      "rationale": "Doğal ortamları oluşturan sistemler, doğal koşulların insana etkisi ve insanların doğal çevreyi dönüştürmesi karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd624278d61f978a-Q016",
+      "categoryId": "excel.tyt.cografya.b50b0e0832eaffd986e4",
+      "imageSha256": "d4c1c7cd01f5fabfb40069eaf05e76525396b0165dce2be316265420eb9f35e3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Suda kolay çözünen kayaçların bulunduğu arazilerde çözünme sonucunda çeşitli büyüklüklerde çanaklar oluşmaktadır. Obruk, dolin, uvala ve polye gibi türleri olan bu çanakların zamanla sularla dolması sonucunda göller",
+      "rationale": "Coğrafyanın alt dalları, bilimlerle ilişkisi, gelişimi ve coğrafi bakış açısı ölçülür; örnekteki tek yer şekline göre etiket verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q001",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "92044f6a74d2315eebcc388f89422c3e2965e3ffcdfdcde62c2ec62b190f67e8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Şekilsel bölge olarak tanımlanan alan, ölçülebilir ya da somut olan özellikleriyle diğer bölgelerden ayrılır ve kendine has özellikler gösterir. Ayrıca doğal ve beşerî olmak üzere iki farklı",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q002",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "300f50c8f26e167137d25c4b6873e54682e1f16c50244c36272cebee37b23933",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. I. Yer şekilleri II. Su kaynakları III. Tarımsal özellikler IV. Yerleşme özellikleri Yukarıda verilenlerden hangileri beşerî şekilsel bölgelerin oluşturulmasında dikkate alınan ölçütlerdendir? A) I ve II B)",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q003",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "228aaf0ebfa836e614c7a09890898d4d4ec752e2e1885da3dd537e682ca0f34b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. İşlevsel bölgeleri diğerlerinden ayıran en önemli fark, sınırlarının bir amaca göre belirlenebilmesi ve bir yönetim merkezinin olmasıdır. Buna göre I. Çatalca - Kocaeli Sanayi Bölgesi, II. Konya",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q004",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "62be1edb1efae46e2d76da2eb43d7e0e6098ba95d6c70401169be2929c9e4ccc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. I. Muson iklimi bölgesi II. Kültür turizmi bölgesi III. Karışık ormanlar bölgesi IV. Batı Avrupa kültür bölgesi Türkiye'de yukarıdaki bölge türlerinden hangilerini temsil edecek alanlar bulunmaktadır? A)",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q005",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "0f48424302e7e9def79c19104be96344ed65fc950dfc66806f0b45932c84de72",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Nüfusun yeryüzüne dağılışı ölçüt alınarak seyrek nüfuslu bölge sınırları belirlenmektedir. I III IV V II Haritada numaralandırılan alanlardan hangisi bu bölge sınırları içinde yer almaktadır? A) I",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q006",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "be9fb2e5b19581b0ea8cbefb915d215af44ee7833caa82a807cc75c7c0075f46",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Çeşitli amaçlarla oluşturulan bölgelerden bazılarının amaçlarının değişmesi ya da bu bölgelere yeni alanların eklenmesi nedeniyle sınırlarında daha kısa süre içinde ve sıklıkla değişim yaşanabilmektedir. Aşağıdaki bölgelerin hangisinde",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q007",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "2acf8c7355c2ea5b67a34cb43c9ff8541758bc455f53733d75bd0f4b0816422c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Aşağıdaki haritada Akdeniz ikliminin karakteristik özelliklerinin görüldüğü bölgeler kırmızı renkle gösterilmiştir. Bu iklim bölgesinin sınırları içinde I. Şili, II. Arjantin, III. Avustralya, IV. Almanya ülkelerinden hangilerine ait",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q008",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "e9dedb3c1ecd0aba418d271e9f085984b7c2f2979d6e1c67b04d839d760fafef",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Şekilsel bölgelerin sınırlarını kesin hatlar ile belirlemek genellikle güçtür. Buna göre I. iklim, II. orman, III. hizmet, IV. istatistik bölgelerinden hangilerinin sınırları belirlenirken böyle bir güçlükle karşılaşılabilir?",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q009",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "056cd657013aeb638ccfa199b15195e021a1ada758bd8dc01e5dccdf4b7a674f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıda, bir şehrin gelişim süreciyle ilgili bazı bilgiler verilmiştir. Ilıman karasal iklimin etkisi altındaki şehirde bitki örtüsü genellikle bozkırlardan, yer şekilleri ise verimli tarım arazilerinin bulunduğu ovalardan",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q010",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "c3f41c7a492438e2a730fc340ddc2afbaba4de7292747d446437598cf2eac0b9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Doğal özelliklerine göre oluşturulan bazı şekilsel bölgelerin sınırları birbiriyle genel olarak örtüşebilmektedir. Aşağıdaki bölge eşleştirmelerinden hangisi bu duruma daha uygun bir örnek oluşturur? A) Ulaşım bölgesi -",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q011",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "f777a62c6bcea7e9d60948a963040bc0177cdf09e48588450291a8eed23bf331",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Doğal ve beşerî yönlerden benzer özellikler gösteren ülkeler, aynı bölge sınıflandırması içinde yer alabilir. Buna göre I. Deprem bölgesi: Şili - Endonezya, II. Sanayi bölgesi: Almanya -",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q012",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "67eaff19a4352d3fd96b0db87bd8cc95c2a22dc67c59605adf66f3cbf6bf166f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. II V III I IV Bu alanların içinde yer aldıkları bölge türleriyle ilgili aşağıdakilerden hangisi yanlıştır? A) I numaralı alan maki",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q013",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "c2057dcb1a4af5589ddef09e0a023bc1bcf2999296640f841d0198f48211de65",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Sahip oldukları çeşitli özellikler nedeniyle dünyanın diğer alanlarından ayrılan ve kendi içinde benzerlikler taşıyan bölgelere şekilsel bölge denir. Şekilsel bölgeler, doğal ve beşerî bölgeler olarak gruplandırılmaktadır. Buna",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q014",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "c37e4a746d80c1e60aa18538aa02128454761d7cb84e638feaf5c56e0396126f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Aşağıdaki haritada bazı alanlar numaralandırılarak gösterilmiştir. Bu alanların dahil olabilecekleri bölgelerle ilgili aşağıdakilerden hangisi doğrudur? A) I numaralı alan deprem bölgesindedir. B) II numaralı alan sert karasal",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q015",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "4fd5585d8bd3decf422b1946406a2978d076b1892ae8e02c9f3fa5d73da1f9c2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Aşağıdaki tabloda bazı bölge örnekleri numaralandırılarak verilmiş ve bu bölgelerin sınırlarının değişme süreleri işaretlenirken hata yapılmıştır. Sınırların Değişme Bölge Süresi Kısa Uzun I Avrupa Birliği Bölgesi ",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q016",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "decf7d7a909248e2b31cf4489a3cafe09050d8b4be95d1cab81e90a6ca6521d3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Aşağıda NATO Bölgesi hakkında bazı bilgiler verilmiştir. NATO, 4 Nisan 1949'da Avrupa ve Kuzey Amerika'da yer alan 12 ülke tarafından kuruldu. Kuruluşundan bugüne 20 ülke daha NATO'ya",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q017",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "7ac1ad32197ec84b70783f3ac807f1c0a67414caaa339351d9c059e4e05bdb09",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Aşağıdaki şemada belirli ölçütlere göre oluşturulan numaralandırılmış bölgeler ve bu bölgelere örnek olabilecek ülkeler gösterilmiştir. Buna göre şemada numaralandırılmış yerlere getirilmesi gereken bölge türleri aşağıdakilerin hangisinde doğru",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-590d1701741f5f43-Q018",
+      "categoryId": "excel.tyt.cografya.ea21997a9de394c73b72",
+      "imageSha256": "a8150d1f341a296533ffcab13e21ca898acf099788a58c2f053eb0341906762b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. I. çöl bölgesi II. karasal iklim bölgesi III. Karadeniz Ekonomik İşbirliği bölgesi Yukarıdakilerden hangileri Türkiye, İran, Suriye ve Irak'ın dâhil olduğu ortak şekilsel bölgelerdendir? A) Yalnız I",
+      "rationale": "Doğal/beşeri şekilsel ve işlevsel bölgelerin ölçütleri, sınırları ve değişebilirliği sorgulanır; NATO/iklim örnekleri TYT bölge sınıflandırma bağlamında kullanılır, AYT örgüt etiketi taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q001",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "b3eabd143cd7b65a58d2726cd00c62341c00d3fd31afcd700058cfb4158b5695",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. İnsanlarla diğer canlıların sürekli etkileşim içinde bulunduğu doğal ve beşerî yaşam alanına çevre denir. Bu yaşam alanıyla ilgili aşağıdakilerden hangisi söylenemez? A) Çevre doğal unsurlardan oluşan ve",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q002",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "ffde6f1e72fd60abe1c01b1073bd56efb24e32e78c0c6c8a6d6516c2d5b661d6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. İnsanlar, yaşamsal faaliyetlerini sürdürebilmek için bitkisel ve hayvansal gıdalara ihtiyaç duyarlar. Buna bağlı olarak insanlar, Neolitik Çağ’dan itibaren iklimin elverişli olduğu verimli topraklarda tarım; mera ve çayırlarda",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q003",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "3ebff39f5da5be2ae10cded9c009d2ec7b5e60325da22a241eb25cad62dceac7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. I. Çevresel bilincin etkisi, daha çok insanların yakın çevresiyle sınırlıdır. II. Canlı türlerinin yok olmasında hem insan etkisi hem de doğanın kendi işleyişi belirleyicidir. III. Biyosferdeki canlı",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q004",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "ca383eeec67de8e6e6f7d754216bf8d6e02235dca4fd5646963a351547961ebf",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Anadolu’da kızılçam ormanlarının tahrip edildiği Akdeniz iklim bölgesinde maki topluluklarının, meşe ormanlarının tahrip edildiği iç kesimlerde ise antropojen bozkırların yayıldığı görülmektedir. Bu durum insanın I. biyosfer, II.",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q005",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "e1c8743dff4e22c4a54a6dec30c339ecbff04c59ea1e88adc142a444a06dbdd7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. I. Tarımsal üretimde kimyasal gübrelerin yoğun şekilde kullanılması II. Sanayi atıklarının arıtma işleminden geçirilmesi III. Denizin doldurularak yerleşme alanlarının genişletilmesi IV. Yenilenebilir kaynaklardan enerji üretiminin artırılması Yukarıdakilerden",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q006",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "14d50473e9d3d673fb7137ddc05d33802d4d27096bcdeeb1b644d4a6e85349a7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıda insanın doğayla etkileşimi sonucunda çevre üzerinde bıraktığı olumsuz etkilerden bazıları verilmiştir. I. Sanayi tesislerinden çıkan zararlı gazların havayı kirletmesi II. Akarsu kaynaklarına atık suların bırakılması III.",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q007",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "f30c235c76909ae4d53566909072724bf52b13b1b5bb29e892f1968d99ac8571",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. İnsanlar, içme ve sulama gibi amaçlarla hidrosferi yoğun biçimde kullanmakta; bu durum ise tatlı su kaynaklarında bazı olumsuz etkilere yol açmaktadır. Bu etkilere I. kurak bölgelerde yaşanan",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q008",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "a9a0f5164f627936695b4872955f28e2fe0a74faab94b8972776fe1012358a63",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Doğal çevre; yerleşim alanları oluşturma, ulaşım yolları yapma ve tarımsal üretim faaliyetleri gerçekleştirme gibi çeşitli amaçlarla insanlar tarafından sürekli değiştirilmektedir. Bu değişikliklerin haritada numaralandırılan alanların hangisinde daha",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q009",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "f3f073cd736a050ec9d26738a59c706c3b25da0d2769510cdc707ad964541fc3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıda insan ve çevre etkileşimiyle ilgili bazı örnekler verilmiştir.  Kış mevsiminin sert ve kar yağışlı geçtiği kuzey enlemlerindeki ülkelerde evlerin çatıları genellikle dik eğimli olarak inşa",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q010",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "6743a75e440d670d9bcb7a2dac821063c2b9644a1f9a71eb616ba130aeeae293",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Nüfusun, sanayileşmenin ve motorlu taşıt sayısının fazla olduğu yerleşim alanlarında hava kirliliği artmakta; bu durum atmosferi olumsuz etkilemektedir. Bu durum haritada numaralandırılan alanların hangisinde daha fazla görülür?",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q011",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "ddbcabc8cf5b71b36c9d4993fccf91a7633fec6c0a938bada73fcb0792131a94",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Doğal çevre ile insan arasındaki ilişki incelendiğinde iki temel etkileşim biçimi ortaya çıkmaktadır. İlkinde insanlar yaşamlarını doğal çevreye bağımlı olarak ve onun koşullarına uyum sağlayarak sürdürmüşlerdir. İkinci",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q012",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "cc17d8879a0abb52050ea73a2f757c3b2d6d83368cefa099f0566674aac50f94",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Şehirleşmenin yoğun olduğu alanlarda insanın doğal çevre üzerindeki şekillendirici etkisi daha fazladır. Bu durum haritada numaralandırılan alanların hangilerinde daha fazla görülür? A) I ve II B) I",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q013",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "283c00f354f10bc9fa9209641fd4745611344eb4ce5c2c43737e7c42108ce388",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Bir zamanlar dünyanın en büyük göllerinden biri olan Aral Gölü, zamanla çeşitli nedenlerle küçülmüştür. Bu küçülmede, gölü besleyen nehir sularının büyük oranda tarımsal sulamada kullanılması etkili olmuştur.",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q014",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "20ce6335baaf6bb9988e2d451380ef332650ff57fb40178d1729e60eb0bf03e8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. İnsanların yürüttüğü bazı faaliyetler, doğrudan ya da dolaylı olarak atmosferin binlerce yılda oluşmuş doğal dengesini bozmaktadır. Bu dengenin bozulmasında aşağıdakilerden hangisinin etkisi daha fazladır? A) Enerji üretiminde",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q015",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "a79b2e738595b1a9ef8317f888a170c4ae1499ea794a7f419f002641968d5ed9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Doğal ortamı oluşturan atmosfer, hidrosfer, biyosfer ve litosfer insanların doğal çevrede meydana getirdiği değişimlerden çoğu zaman olumsuz şekilde etkilenmektedir. Aşağıdaki faaliyetlerden hangisinin bu yönde bir etkiye neden",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q016",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "1abb532011bf72eefb4d677ae1caefcaba930e68b239944dcda6ed9e281eeb9c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. İnsanlar, ihtiyaçları doğrultusunda toprağı işleyerek tarımsal faaliyetlerde bulunmakta; barajlar, sulama kanalları ve yerleşim alanları inşa etmekte; ayrıca kayaçlardan farklı alanlarda faydalanmaktadır. Bu faaliyetler I. litosfer, II. biyosfer,",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9544843c7c12b550-Q017",
+      "categoryId": "excel.tyt.cografya.5c279dc6130acf9e7656",
+      "imageSha256": "16f810720f7a771f36d9b467581975d3d1f387e4c75d5d4b367b88a7dc4350fa",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Yol açma, konut yapma gibi çeşitli inşaat faaliyetleri yer şekillerinin genel görünümünde küçük çaplı da olsa değişikliklere neden olarak litosfer unsurlarını etkilemektedir. Haritada numaralandırılan alanların hangilerinde bu",
+      "rationale": "İnsanların atmosfer, hidrosfer, biyosfer ve litosfer üzerindeki etkileri ile doğal koşullara uyumları ölçülür; tek çevre bileşeninin adı nedeniyle başka ders/konuya geçilmedi.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}

@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.261 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.398 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -54,18 +54,18 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |058|`reviewed-native-question-8-expansion`|38, BITTI|
 |059|`source-heading-profile-expansion`|28, BITTI|
 
-**Son alt adımlar060–062 BITTI:**89 Din Kültürü+87 felsefe grubu+51 Biyoloji;
-10.261 canlı kabul (5.508 TYT/4.753 AYT). INSERT_ONLY/tekrar0 INSERT,
-katalog/masaüstü/mobil PASS; eski sorular korundu.060da77,061de19,062de1
-inceleme kayıtları paketlerde `remaining-topic-review.json`; aynı yöntemle tekrar okuma.
-İki ek içerik şüphesiyle `mebi-pratik2-native-content-holds.json` toplam8 kayıt.
-Sonraki140 Coğrafya metni `reviewed-native-geography-expansion/input-review.json`;
-şu an ilk102 metin gerçekten okundu, kalan38 metin okunmalı.63 yayın partisi
-boşta. `source-curriculum-scope-expansion` donmuş aday0, yayın başlatma.
-Kaynak etiket dizini449 yol/316 kod; eski dizinler SHA history ile korunur.
-MEB2018 Biyoloji PDF'si sadece etiket kapsamı referansıdır; iki kapsam kuralı
-SHA bağlıdır.15 sınır testi PASS. Yeni kırpım/model/öğretmen onayı üretilmedi.
-Çalışan deneme işçisini kesmeden Coğrafya konu kabulünü063 ile hazırla.
+**Son alt adımlar060–063 BITTI:**89 Din Kültürü+87 felsefe grubu+51 Biyoloji+
+137 Coğrafya=364 yeni soru.10.398 canlı kabul (5.599 TYT/4.799 AYT).
+INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS; eski sorular korundu.
+Kalan incelemeler paketlerin `remaining-topic-review.json` dosyalarında;
+aynı yöntemle tekrar okuma. İçerik bekletme kuralı toplam8 kod.
+Sonraki261 Tarih metni `reviewed-native-history-expansion/input-review.json`;
+ilk70 metin gerçekten okundu, kararları064 için dondur; kalan191 henüz
+okunmadı. Bu kaynak ihracı tam arşiv sorusu/konu kabulü değildir.
+Kaynak dizini449 yol/316 kod; eski dizinler SHA history ile korunur.
+`source-curriculum-scope-expansion` aday0, yayın yok. MEB2018 PDF'si sadece
+etiket kapsamı referansıdır;15 sınır testi PASS. Yeni kırpım/model/öğretmen
+onayı üretilmedi. Deneme işçisi aynı imleçte çalışıyor; durdurma.
 Her kabul sonrası BITTI güncelle, yalnız kendi değişikliğini commit et ve devam et.
 
 **Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut
