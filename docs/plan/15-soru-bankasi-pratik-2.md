@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.006 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.034 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -37,6 +37,35 @@ BITTI;23ü aktarıldı,16 konu+1 içerik incelemesi açık. Okunup konuya bağla
 056/057/058 kayıtları paketlerin `remaining-topic-review.json` dosyalarındadır.
 Altı kaynak içerik şüphesi `KAYNAK_ICERIK_TUTARLILIGI` ihracında gerekçelidir.
 Altı yardımcı kanıt işi çalışır; tam arşiv kapanışı hâlâ açık.
+
+**Hızlı geçiş tasarımı — pilot ve iki hızlı tarama BITTI; istisna/konu kabulü SURUYOR:** mevcut kırpımlar
+tekrar üretilmez; anahtarı olan bütün sorular çıkarım listesinde tutulur.
+MEBİ klasörü/kataloğu ders–ünite–konu için ilk kaynaktır. Karma denemelerde
+basılı ders aralıkları kullanılır; ana tabloya kesin bağ yoksa ayrı etiket
+kuyruğu korunur. 1.573 PDF yolu için kaynak hiyerarşisi dizini hazır;
+442 yol mevcut ana konu kimliğine kontrollü bağlandı (soru sayısı değildir).
+
+Eski Pratik kitap profilleriyle, PDF clipping sınırlarına uyan özgün görünür
+nesne kontrolü devreye alındı. 2×/2,5× ölçek farkı mevcut PNG'ler korunarak
+hesaba katılır. 16 PDF/128 aday pilotunda108 profil+9 native geçti,11 görsel
+istisna kaldı;322,16sn, yeni kırpım/model/DB yazımı0. Beş özgün görsel gerçekten
+okundu;12 sınır testi PASS. İlk tam tek-test hızlı geçişi1.886 adayı19,2sn'de
+sınıflandırdı:782 önceki görsel+627 native+356 yeni profil kanıtı hazır,
+121 istisna ayrı. Tek-test istisna geçişi de BITTI:1.886/1.886 cevap/gövde kanıtı hazır (903 mevcut/yeni görsel,627 native,356 profil); konu kabulü ayrıdır.
+Deneme hızlı geçişi5.482 adayı1.148,4sn içinde tamamladı:3.635 profil+491 native+719 eski görsel=4.845 kanıtlı gövde;634 yeni görsel istisna ve3 korunmuş eski inceleme açık.
+7.368 mevcut PNG hash/mtime ve iki paket manifesti değişmedi.
+Kaynak etiket geçişi8.571 kayıt kodunda263 kesin ana tablo eşleme adayı,8.308 açık etiket incelemesi üretti; bunlar yeni soru toplamı değildir.
+MEBİ tam kaynak adları ve ana tablo ders/ünite/konu kimlikleri ayrı saklanır; TYT/AYT kapsamı değişirse önbellek etiketi kabul edilmez.
+Bu gövde/etiket sayıları yayın değildir; ana görev açık.
+Kanıt: `fast-profile-transition/`, `source-folder-labels/index.json`,
+`single-test-pending-evidence/fast-pass-result.json`.
+
+**059 — BITTI:** MEBİ basılı tek-test başlıklarından8 TYT Matematik ve20 AYT
+Edebiyat sorusu mevcut ana tablo ders–ünite–konu kimliklerine bağlandı.
+28 INSERT/0 UPDATE, tekrar0 INSERT, katalog ve masaüstü/mobil canlı okuma PASS;
+toplam10.034 (5.458 TYT/4.576 AYT). Yeni kırpım/model çağrısı/öğretmen onayı0.
+Kanıt: `source-heading-profile-expansion/`, `verified-source-batch-059/bank-acceptance.json`.
+Bu parti tam arşiv/konu kabulünü kapatmaz.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

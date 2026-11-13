@@ -39,6 +39,8 @@ def validate_review(decision,row,category,text,subject):
 
 def verified_body(body,row,allow_visual=False):
     if body.get('imageSha256')!=row['imageSha256']:return False
+    from mebi_pratik2_hizli_yol import STATUS,valid_receipt
+    if body.get('status')==STATUS:return valid_receipt(body,row)
     if body.get('status')=='DETERMINISTIC_NATIVE_BODY_PROVED':return True
     if not allow_visual or body.get('status')!='MODEL_NO_VISIBLE_ISSUE':return False
     reading=body.get('reading',{})

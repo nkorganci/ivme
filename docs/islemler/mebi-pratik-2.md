@@ -370,3 +370,58 @@ yazımı0. `--offset`, `--source-prefix`, `--limit`, `--catalog` ile küçük
 pencereler seçilebilir. 053–055in okunup bağlanamayan9/9/13 native kaydı da
 kendi `remaining-topic-review.json` dosyalarına kondu; aynı başarısız konu
 kararı tekrarlanmaz. Tarih AYT tek-kayıt gerçek kaynak okuma kontrolü PASS.
+
+
+## Profil önce, mevcut kırpımı koruyan hızlı yol
+
+Kullanıcının son talimatı: yeniden kırpma yok; anahtarı bulunan soru çıkarım
+listesinde kalır, ders–ünite–konu eşlemesi zorunlu takip edilir. Açık kaynak
+hiyerarşisi `python scripts/mebi_pratik2_klasor_etiketleri.py` ile
+`source-folder-labels/index.json` içine bağlanır. Tam MEBİ adları ile mevcut
+ana tablo kimlikleri ayrı tutulur; belirsiz/mixed kaynak tek konuya zorlanmaz.
+
+`mebi_pratik2_hizli_profil.py` eski `veri-hatti/ogm-sorular` kitap motorunu
+sadece metin/çapa/bölge çözümlemek için çağırır; eski `kirp` fonksiyonu
+çağrılmaz. PDF'nin extended drawing clip/scissor seviyeleri hesaba katılır:
+görünmez çizim komutları kesilmiş soru şekli sayılmaz. Görünen metin, resim
+ve çizimler bağımsız profilde ve mevcut kırpımda tam kalmalı; paylaşımlı grup,
+zayıf/düzeltilmiş numara ve kesilmiş nesne istisnaya ayrılır. Bilinen2×/2,5×
+ölçek, mevcut görüntü ile RAM'de taze özgün piksel karşılaştırmasında kullanılır.
+Kaynak/kırpım değişiminde kapı kapanır; görsel yeniden üretilmez.
+
+`fast-profile-transition/enabled.json` kod hash'iyle doğrulanmış pilotu bağlar.
+Kod değişirse hızlı yol sessizce onay vermeyi bırakır; yeni pilot gerekir.
+Native/profil yöntemi öğretmen veya konu onayı değildir. Aynı PNG'ye ait
+mevcut başarılı/başarısız gerçek model okumaları korunur, yeniden sorulmaz.
+
+Bekleyen işçinin varsayılanı `--phase fast-then-exceptions`:
+önce tüm kaynaklarda `--phase fast` çalışır (model çağrısı yasak), sonra
+`--phase exceptions` yalnız açıkça ertelenmiş vakaları işler. İlk geçiş
+`fast-pass-result.json` üretir; bu tam kaynak/öğrenci yayını kabulü değildir.
+Gerçek başarısız eski okumalar tekrar denenmez. Her%10/5dk ölçülen ilerleme
+ve kullanılan kanıt yöntemleri kaydedilir. İki işçi kontrollü şekilde eski
+imleçlerinden yenilendi; uygulama/Ollama servisi ve eski makbuzlar korundu.
+Yeni loglar `chain-supervisor/*-profile-v2.log`, metadata gözetmeni
+`supervisor-v9.log`. Önceki durum `fast-profile-transition/before-worker-transition.json`.
+
+Pilot 16 PDF/128 aday;117 hızlı/11 istisna,322,16sn, imageWrites/modelCalls0.
+Beş özgün soru görüntüsü gerçekten açıldı; öğretmen onayı üretilmedi.
+Tek-test ilk geçiş1.886 aday19,2sn;356 yeni model gerektirmeyen profil kanıtı,
+121 görsel istisna. 782 görsel ve627 native önceki makbuz da kullanıldı.
+Sayılar yeni yayımlanmış soru sayısı veya tam arşiv yüzdesi değildir.
+
+Kaynak etiketlerini mevcut kırpımlara bağlama:
+`python scripts/mebi_pratik2_soru_kaynak_etiketleri.py`.
+Bu geçiş kaynak SHA/PNG SHA ve TYT/AYT kapsamını bağlar; basılı test numarası
+ve tek konu başlıkları aynı ana tablo kategorisinde birleşmelidir. Kaynak
+ünite/konu adları ile ana tablonun farklı kapsamlı adları birlikte korunur.
+Sonuç `question-source-labels/index.json`; belirsiz etiket öğrenci yayını olmaz.
+Donmuş `source-heading-profile-expansion` yalnız mevcut cevap/gövde makbuzlarını
+ve PNG'leri kullanır. Hazırlama `mebi_pratik2_kaynak_etiket_paketi.py`, kontrollü
+aktarımı `mebi_pratik2_arsiv_kabul.py --package-dir source-heading-profile-expansion
+--first-batch 59 --chunk-size 200 --publish` ile sürdür; yeniden hazırlama yok.
+
+İki hızlı tarama tamamlandı: tek-test1.886 aday19,2sn; deneme5.482 aday1.148,4sn.
+Tek-test istisna geçişi de1.886/1.886 cevap/gövdeyle kapandı. Denemede4.845 hazır,
+634 yeni görsel istisna+3 korunmuş eski inceleme var; ana konu kabulü ayrıdır.
+Sonraki hash kontrolünde7.368 PNG ve iki manifest değişmedi.12 sınır testi PASS.

@@ -32,11 +32,11 @@ def resolve_body_subject(row,categories):
         'fineTopicClaimed':False,'teacherApproved':False}
 
 
-def prove(page,row,path):
+def prove(page,row,path,scale=2):
     if row['subject'] not in ALLOWED:return None
     raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=row['imageSha256']:raise ValueError('Native proof body bytes changed')
-    clip=pymupdf.Rect(row['bodyClip']);pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=clip,alpha=False)
+    clip=pymupdf.Rect(row['bodyClip']);pix=page.get_pixmap(matrix=pymupdf.Matrix(scale,scale),clip=clip,alpha=False)
     saved=pymupdf.Pixmap(str(path))
     if (pix.width,pix.height,pix.n,pix.samples)!=(saved.width,saved.height,saved.n,saved.samples):return None
     words=[w for w in page.get_text('words') if clip.x0<=(w[0]+w[2])/2<=clip.x1 and clip.y0<=(w[1]+w[3])/2<=clip.y1]
@@ -67,7 +67,7 @@ def prove(page,row,path):
     return {'status':'DETERMINISTIC_NATIVE_BODY_PROVED','imageSha256':row['imageSha256'],
         'method':'FRESH_ORIGINAL_PIXELS_ALL_NATIVE_LINES_AND_WORDS_CONTAINED_FIVE_CHOICES_NO_GRAPHICS_OR_EXTERNAL_CONTEXT_V2',
         'sourceSha256':row['sourceSha256'],'sourcePage':row['bodyPage'],'sourceClip':row['bodyClip'],
-        'nativeWords':len(words),'uniqueChoiceCounts':dict(counts),'modelCalls':0,'teacherApproved':False,
+        'nativeWords':len(words),'uniqueChoiceCounts':dict(counts),'modelCalls':0,'teacherApproved':False,'renderScale':scale,
         'sourcePixelSha256':hashlib.sha256(pix.samples).hexdigest()}
 
 

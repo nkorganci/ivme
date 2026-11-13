@@ -22,6 +22,20 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
+- **Pratik 2 hızlı çıkarım ve etiket önceliği (son kullanıcı talimatı):** mevcut
+  soru kırpımı varsa yeniden üretme veya yeniden yazma. Yalnız henüz sorusu
+  çıkarılmamış kaynak/konumda yeni kırpım oluştur. Kaynak kabul listesine alma
+  koşulu basılı cevap anahtarının bulunmasıdır; gövde veya etiket belirsizliği
+  soruyu kaybettirmez, gerekçeli ayrı kuyruğa taşır. Soru–cevap numarası ve
+  doğru ders–ünite–konu kimliği öğrenci yayını öncesinde tamamlanır. Etiket için
+  önce MEBİ klasörü, `katalog.json`/`envanter.jsonl` içindeki tam hiyerarşi ve
+  basılı bölüm kullanılır; kaynak adlarıyla ana tablo kimlikleri ayrı korunur.
+  Karma denemeye tek konu etiketi basılmaz. Önce bütün mevcut kırpımlarda hızlı
+  metin/kitap profili geçişi, ardından yalnız kalan istisnalarda model çalışır.
+  Piksel doğrulaması bellekte yapılabilir; bu, kırpım dosyasını yeniden üretme
+  izni değildir. Etkinleştirme kanıtı `fast-profile-transition/enabled.json`;
+  PDF'nin gerçek clipping sınırları ve özgün render ölçeği hesaba katılır.
+
 - **Pratik 2 PDF tekrarı — güncel kullanıcı önceliği:** soru metni/görseli/
   embedding'i üzerinden tek tek banka karşılaştırması yapma. Önce PDF'leri
   karşılaştır: dosya kimliği hızlı ilk kapıdır; hash farklıysa sayfa sayısı ve

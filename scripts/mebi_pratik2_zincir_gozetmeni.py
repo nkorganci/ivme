@@ -15,6 +15,11 @@ from mebi_pratik2_tam_pdf_tarama import APP,BASE
 from yks_birlestirme import write_json,process_lock
 
 ROOT=BASE/'chain-supervisor'
+FAST_PACKAGES={'full-mock-pending-evidence','single-test-pending-evidence'}
+
+
+def worker_log(name):
+    return ROOT/(name+('-profile-v2.log' if name in FAST_PACKAGES else '.log'))
 PACKAGES=[
     ('word-boundary-expansion',19,200,'curated-chapter-expansion'),
     ('four-square-expansion',25,500,'word-boundary-expansion'),
@@ -37,6 +42,7 @@ PACKAGES=[
     ('reviewed-native-question-6-expansion',56,200,'reviewed-native-question-5-expansion'),
     ('reviewed-native-question-7-expansion',57,200,'reviewed-native-question-6-expansion'),
     ('reviewed-native-question-8-expansion',58,200,'reviewed-native-question-7-expansion'),
+    ('source-heading-profile-expansion',59,200,'reviewed-native-question-8-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}
@@ -123,7 +129,7 @@ def run(watch):
                         if not package.exists():status='FROZEN_PACKAGE_MISSING_REQUIRES_REVIEW'
                         elif now-saved['lastStartEpoch']<60:status='BOUNDED_RESTART_BACKOFF'
                         elif watch:
-                            log=ROOT/(name+'.log');stream=log.open('a',encoding='utf8')
+                            log=worker_log(name);stream=log.open('a',encoding='utf8')
                             flags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0
                             process=subprocess.Popen([sys.executable,'-u',*job['args']],cwd=APP,
                                 stdout=stream,stderr=subprocess.STDOUT,creationflags=flags)
@@ -131,7 +137,7 @@ def run(watch):
                             saved.update(starts=saved['starts']+1,lastStartEpoch=now,pid=process.pid)
                             status='RESUMED_FROM_EXISTING_RECEIPTS'
                     rows.append({'package':name,'status':status,'resumeStarts':saved['starts'],'dependencyAccepted':dependency,
-                                 'dependency':job['dependency'],'workerLog':str((ROOT/(name+'.log')).relative_to(BASE))})
+                                 'dependency':job['dependency'],'workerLog':str(worker_log(name).relative_to(BASE))})
                 except (ValueError,json.JSONDecodeError) as error:
                     rows.append({'package':name,'status':'INVALID_CHECKPOINT_REQUIRES_REVIEW','reason':str(error)})
             data={'atUtc':datetime.now(timezone.utc).isoformat(),'supervisorPid':os.getpid(),'status':'KNOWN_PACKAGE_CHAIN_SUPERVISED_NOT_FULL_ARCHIVE_ACCEPTANCE',

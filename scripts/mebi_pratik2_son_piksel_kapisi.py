@@ -24,6 +24,10 @@ def validate_legacy_shortcut(row,pdf,folder):
     admit only the replacement proof. This gate runs in each fresh batch child.
     """
     previous=row.get('bodyModelReview') or {}
+    from mebi_pratik2_hizli_yol import STATUS,valid_receipt
+    if previous.get('status')==STATUS:
+        if not valid_receipt(previous,row):raise ValueError('Final gate: profile receipt binding differs')
+        return row,[]
     if previous.get('status')!='DETERMINISTIC_NATIVE_BODY_PROVED' or (previous.get('basis') or {}).get('status')!='LOCAL_VISUAL_BODY_REVIEW_REQUIRED':
         return row,[]
     from mebi_pratik2_native_govde import prove

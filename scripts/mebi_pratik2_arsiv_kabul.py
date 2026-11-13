@@ -110,21 +110,30 @@ def compiled_key(group,pdf,discovery,module):
     write_json(target,result);return result
 
 
-def body_read(row,pdf,module):
+def body_read(row,pdf,module,allow_model=True,group=None):
     path=BASE/row['image'];sha=hashlib.sha256(path.read_bytes()).hexdigest()
     if sha!=row['imageSha256']:raise ValueError('New chapter body image changed')
     if row.get('nativeBodyProof',{}).get('status')=='FULL_NATIVE_TEXT_NO_SHARED_CONTEXT_OR_GRAPHICS' and row['subject'] in TEXT_SUBJECTS and not page_graphics(pdf[row['bodyPage']-1]):
         return {'status':'DETERMINISTIC_NATIVE_BODY_PROVED','imageSha256':sha,
             'basis':row['nativeBodyProof'],'pageGraphics':False,'sourcePixelsChanged':False}
-    for folder in [BASE/'single-test-crops/body-model-review',BASE/'expanded-chapter-evidence/body-readings',
-                   BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',BASE/'all-source-evidence/body-readings',OUT/'body-readings']:
+    for folder in [OUT/'body-readings',BASE/'single-test-crops/body-model-review',BASE/'expanded-chapter-evidence/body-readings',
+                   BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',BASE/'all-source-evidence/body-readings']:
         receipt=folder/(row['code']+'.json')
         if receipt.exists():
             value=json.loads(receipt.read_text(encoding='utf8'))
             if value.get('imageSha256')!=sha:
                 if row.get('newLayoutEvidence'):continue
                 raise ValueError('Previous body receipt differs; explicit new evidence needed')
+            from mebi_pratik2_hizli_yol import STATUS,valid_receipt
+            if value.get('status')==STATUS and not valid_receipt(value,row):raise ValueError('Cached profile body proof differs')
             return value
+    from mebi_pratik2_hizli_yol import prove as fast_prove,STATUS,valid_receipt
+    result=fast_prove(pdf,row,path,group=group)
+    if result:
+        if result['status']==STATUS and not valid_receipt(result,row):raise ValueError('Invalid independent profile proof')
+        folder=OUT/'body-readings';folder.mkdir(exist_ok=True)
+        write_json(folder/(row['code']+'.json'),result);return result
+    if not allow_model:return {'status':'PROFILE_EXCEPTION_REQUIRES_VISUAL_REVIEW','imageSha256':sha,'deferredByFastPhase':True}
     folder=OUT/'body-readings';folder.mkdir(exist_ok=True)
     try:
         reading,hit=module.ask(PROMPT,image=path,as_json=True,model='qwen3.5:9b',max_output_tokens=256)
@@ -184,8 +193,9 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                     if key['status']!='AGREES':reasons.append('INDEPENDENT_SOURCE_KEY_READING_UNRESOLVED')
                     elif row['answer']!=groups[group_id]['answers'].get(str(row['printedNumber'])):raise ValueError('Printed number does not bind to the answer')
                     else:
-                        body=body_read(row,opened[sha],module)
-                        if body['status'] not in ('MODEL_NO_VISIBLE_ISSUE','DETERMINISTIC_NATIVE_BODY_PROVED','NATIVE_BODY_COMPLETENESS_PROVED'):reasons.append('BODY_COMPLETENESS_NOT_CONFIRMED')
+                        body=body_read(row,opened[sha],module,group=groups[group_id])
+                        from mebi_pratik2_hizli_yol import COMPLETE_STATUSES
+                        if body['status'] not in COMPLETE_STATUSES:reasons.append('BODY_COMPLETENESS_NOT_CONFIRMED')
                     evidence={**row,'keySecondReading':key,'bodyModelReview':body,'teacherApproved':False}
                     if reasons:review.append({**evidence,'status':'REVIEW_REQUIRED','reasons':reasons,'studentVisible':False})
                     else:

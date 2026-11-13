@@ -22,6 +22,16 @@ DIRECTORIES=['three-step-all-bodies-v2','compiled-tarama-crops','four-square-cro
              'word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops']
 
 
+class NoModelCalls:
+    def ask(self,*args,**kwargs):raise RuntimeError('Fast triage cannot call a model')
+
+
+def reuse_evidence(previous,fast):
+    # Actual completed/failed readings survive. Only an explicit fast-phase
+    # deferral is eligible for the later model pass.
+    return bool(previous) and (fast or not previous.get('deferredByFastPhase'))
+
+
 def select_rows(rows,reserved):
     # The caller orders source layouts from earlier to corrected evidence.
     # Stable question codes survive; this is never a merge of question IDs.
@@ -53,17 +63,21 @@ def prepare():
     write_json(target,result);return result
 
 
-def run():
+def run(phase='exceptions'):
     package=prepare();rows=package['items'];groups={g['groupId']:g for g in package['keyGroups']}
-    admission.OUT=OUT;module=vision();opened={};discoveries={};keys={};counts=Counter();start=time.monotonic();last=start;bucket=-1
+    admission.OUT=OUT;module=NoModelCalls() if phase=='fast' else vision();opened={};discoveries={};keys={};counts=Counter();start=time.monotonic();last=start;bucket=-1
     pdf_decisions=load_decisions();source_skips=0
     results=OUT/'candidate-evidence';results.mkdir(exist_ok=True)
+    from mebi_pratik2_hizli_yol import COMPLETE_STATUSES
+    from mebi_pratik2_klasor_etiketleri import lookup as source_labels
+    fast=phase=='fast';methods=Counter()
     try:
         for index,row in enumerate(rows,1):
             if skip_pdf(row['sourceSha256'],pdf_decisions):
                 source_skips+=1;continue
             target=results/(row['code']+'.json');sha=row['sourceSha256']
-            if target.exists():
+            previous=json.loads(target.read_text(encoding='utf8')) if target.exists() else None
+            if reuse_evidence(previous,fast):
                 result=json.loads(target.read_text(encoding='utf8'))
                 if result['imageSha256']!=row['imageSha256']:raise ValueError('Evidence queue input changed')
             else:
@@ -78,7 +92,10 @@ def run():
                     path=(BASE/row[field]).resolve()
                     if not path.is_relative_to(BASE.resolve()) or hashlib.sha256(path.read_bytes()).hexdigest()!=row[hash_field]:
                         raise ValueError('Frozen evidence image changed')
-                if group['groupId'] in keys:key=keys[group['groupId']]
+                key_receipt=OUT/'independent-keys'/(group['groupId']+'.json')
+                if fast and not key_receipt.exists():
+                    key={'status':'KEY_READING_DEFERRED_TO_EXCEPTION_PASS','imageSha256':row['keyImageSha256']}
+                elif group['groupId'] in keys:key=keys[group['groupId']]
                 else:
                     if group.get('keyIdentityType'):key=read_key(group,opened[sha],module,OUT)
                     else:
@@ -92,30 +109,38 @@ def run():
                 elif row['answer']!=group['answers'].get(str(row['printedNumber'])):
                     reasons.append('PRINTED_QUESTION_NUMBER_ANSWER_MISMATCH')
                 else:
-                    body=admission.body_read(row,opened[sha],module)
-                    if body['status'] not in ('MODEL_NO_VISIBLE_ISSUE','DETERMINISTIC_NATIVE_BODY_PROVED','NATIVE_BODY_COMPLETENESS_PROVED'):
+                    body=admission.body_read(row,opened[sha],module,allow_model=not fast,group=group)
+                    if body['status'] not in COMPLETE_STATUSES:
                         reasons.append('BODY_COMPLETENESS_NOT_CONFIRMED')
                 status='ANSWER_BODY_VERIFIED_FINE_TOPIC_REVIEW_REQUIRED' if not reasons else 'SOURCE_EVIDENCE_REVIEW_REQUIRED'
                 result={'code':row['code'],'sourceSha256':sha,'imageSha256':row['imageSha256'],'keyImageSha256':row['keyImageSha256'],
                         'status':status,'reasons':reasons+['FINE_TOPIC_NOT_YET_VERIFIED'],
                         'keySecondReading':key,'bodyReview':body,'teacherApproved':False,'studentVisible':False,
-                        'productionImportAllowed':False,'questionWrites':0}
+                        'productionImportAllowed':False,'questionWrites':0,
+                        'sourceLabelEvidence':source_labels(row,opened[sha],group),
+                        'deferredByFastPhase':fast and (key['status']=='KEY_READING_DEFERRED_TO_EXCEPTION_PASS'
+                            or bool(body and body.get('deferredByFastPhase')))}
                 write_json(target,result)
-            counts[result['status']]+=1;now=time.monotonic();current=10*index//max(1,len(rows))
+            counts[result['status']]+=1
+            if result.get('bodyReview'):methods[result['bodyReview']['status']]+=1
+            now=time.monotonic();current=10*index//max(1,len(rows))
             if current>bucket or now-last>=300 or index==len(rows):
-                progress={'stage':'TOPIC_PENDING_ANSWER_BODY_EVIDENCE','completed':index,'total':len(rows),
+                progress={'stage':'EXISTING_CROP_FAST_TRIAGE' if fast else 'VISUAL_EXCEPTIONS_AFTER_FAST_TRIAGE','completed':index,'total':len(rows),
                           'percent':round(100*index/len(rows),2),'counts':dict(counts),'elapsedSeconds':round(now-start,1),
-                          'estimatedRemainingSeconds':None,'questionWrites':0,'allPrintedQuestionsExtracted':False}
+                          'estimatedRemainingSeconds':None,'questionWrites':0,'allPrintedQuestionsExtracted':False,
+                          'phase':phase,'bodyProofMethods':dict(methods),'imageWrites':0}
                 write_json(OUT/'progress-current.json',progress)
                 with (OUT/'progress.jsonl').open('a',encoding='utf8') as stream:stream.write(json.dumps(progress)+'\n')
                 print(json.dumps(progress),flush=True);last=now;bucket=current
-        write_json(OUT/'pass-result.json',{'status':'PREPARED_TOPIC_PENDING_EVIDENCE_PASS_COMPLETE_NOT_ARCHIVE_ACCEPTANCE',
+        write_json(OUT/('fast-pass-result.json' if fast else 'pass-result.json'),{'status':'EXISTING_CROP_FAST_TRIAGE_COMPLETE_NOT_ARCHIVE_ACCEPTANCE' if fast else 'PREPARED_TOPIC_PENDING_EVIDENCE_PASS_COMPLETE_NOT_ARCHIVE_ACCEPTANCE',
             'counts':dict(counts),'candidateBodies':len(rows),'questionWrites':0,'allPrintedQuestionsExtracted':False,
             'sourcePdfSkippedCandidates':source_skips,'questionComparisons':0,
-            'publishedThroughExistingGuardedPipeline':False})
-        write_json(OUT/'progress-current.json',{'stage':'TOPIC_PENDING_SOURCE_PDF_POLICY_PASS_COMPLETE','completed':len(rows),'total':len(rows),
+            'bodyProofMethods':dict(methods),'phase':phase,'imageWrites':0,
+            'elapsedSeconds':round(time.monotonic()-start,1),'publishedThroughExistingGuardedPipeline':False})
+        write_json(OUT/'progress-current.json',{'stage':'EXISTING_CROP_FAST_TRIAGE_COMPLETE' if fast else 'TOPIC_PENDING_SOURCE_PDF_POLICY_PASS_COMPLETE','completed':len(rows),'total':len(rows),
             'percent':100.0,'counts':dict(counts),'sourcePdfSkippedCandidates':source_skips,'questionComparisons':0,
-            'elapsedSeconds':round(time.monotonic()-start,1),'questionWrites':0,'allPrintedQuestionsExtracted':False})
+            'elapsedSeconds':round(time.monotonic()-start,1),'questionWrites':0,'allPrintedQuestionsExtracted':False,
+            'bodyProofMethods':dict(methods),'phase':phase,'imageWrites':0})
     finally:
         for document in opened.values():document.close()
 
@@ -123,7 +148,8 @@ def run():
 if __name__=='__main__':
     from pathlib import Path
     p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--wait-for')
-    p.add_argument('--package-dir',default=OUT.name);a=p.parse_args()
+    p.add_argument('--package-dir',default=OUT.name)
+    p.add_argument('--phase',choices=['fast','exceptions','fast-then-exceptions'],default='fast-then-exceptions');a=p.parse_args()
     if Path(a.package_dir).name!=a.package_dir:raise ValueError('Unsafe evidence package path')
     OUT=BASE/a.package_dir
     with process_lock(BASE/'.jobs'/(OUT.name+'.lock')):
@@ -141,4 +167,7 @@ if __name__=='__main__':
                     time.sleep(5)
                 if not json.loads(dependency.read_text(encoding='utf8')).get('publishedThroughExistingGuardedPipeline'):
                     raise ValueError('Publisher dependency has not passed')
-            run()
+            if a.phase=='fast-then-exceptions':
+                if not (OUT/'fast-pass-result.json').exists():run('fast')
+                run('exceptions')
+            else:run(a.phase)

@@ -112,6 +112,7 @@ def run():
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],
             'sourceEvidenceReview':str(path.relative_to(BASE)),
             'sourceEvidenceReviewSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'studentVisible':False}
+        if evidence.get('sourceLabelEvidence'):decisions[code]['sourceLabelEvidence']=evidence['sourceLabelEvidence']
     hold_path=APP/'scripts/mebi-pratik2-native-content-holds.json'
     apply_content_holds(decisions,accepted,published,[hold_path] if hold_path.exists() else [])
     aliases={};excluded={}
@@ -154,6 +155,19 @@ def run():
         'skippedPreparedCandidates':len(skipped_codes),'skippedSourceGroupReviewRecords':skipped_groups,
         'comparisonUnit':'PDF_DOCUMENT_ONLY','questionComparisons':0})
     for row in pending:
+        from mebi_pratik2_klasor_etiketleri import lookup as source_labels
+        label=source_labels(row) if row.get('relativePath') and row.get('sourceSha256') else {}
+        previous_label=row.get('sourceLabelEvidence') or {}
+        if not label.get('categoryId'):
+            for field in ['sourceSubjectCandidate','printedCourseEvidence']:
+                if previous_label.get(field):label={**label,field:previous_label[field]}
+        row['sourceLabelEvidence']=label
+        row['sourceLabelStatus']=label.get('status','SOURCE_FOLDER_LABEL_REVIEW_REQUIRED')
+        contexts=label.get('resolvedSourceLabels',[])
+        if len(contexts)==1:
+            row['sourceSubject']=contexts[0]['sourceSubject'];row['sourceUnit']=contexts[0]['sourceUnit'];row['sourceTopic']=contexts[0]['sourceTopic']
+        elif label.get('sourceSubjectCandidate'):row['sourceSubject']=label['sourceSubjectCandidate']
+        row['canonicalCategoryCandidateId']=label.get('categoryId')
         row['reviewCategory']=review_category(row.get('reasons',[]))
         row['sourcePdf']=str(SOURCE/row['relativePath']) if row.get('relativePath') else row.get('sourcePath','')
         row['questionImage']=str(BASE/row['image']) if row.get('image') else ''
@@ -161,7 +175,7 @@ def run():
         row['answerKeyPage']=row.get('keyPage',row.get('sourceKeyPage'))
     write_json(out/'question-candidates.json',{'records':pending,'recordCount':len(pending),'studentVisible':False})
     write_json(out/'source-group-reviews.json',{'records':group_reviews,'recordCount':len(group_reviews),'recordType':'SOURCE_GROUP_NOT_DISTINCT_QUESTION_COUNT','studentVisible':False})
-    columns=['code','status','reviewCategory','reasons','sourceContentReview','relativePath','sourcePdf','bodyPage','printedNumber','answer','categoryId','questionImage','answerImage','answerKeyPage','image','keyImage']
+    columns=['code','status','reviewCategory','reasons','sourceContentReview','sourceLabelStatus','sourceSubject','sourceUnit','sourceTopic','canonicalCategoryCandidateId','relativePath','sourcePdf','bodyPage','printedNumber','answer','categoryId','questionImage','answerImage','answerKeyPage','image','keyImage']
     with (out/'question-candidates.csv').open('w',encoding='utf-8-sig',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader()
         for row in pending:

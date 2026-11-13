@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.006 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.034 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -28,10 +28,10 @@ arşiv kabulü açıkken otomatik kapatılmaz.
 
 **Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID `current.json/supervisorPid`;
 son durum `BASE/chain-supervisor/current.json`, loglar `*.log`/`*.err.log`.
-044–058 canlı kabul PASS; güncel kabul10.006 (5.450 TYT/4.556 AYT). 046–058 toplam895 INSERT/0 UPDATE.
+044–059 canlı kabul PASS; güncel kabul10.034 (5.458 TYT/4.576 AYT). 046–058 toplam895 INSERT/0 UPDATE.
 Güncel çalışan paketi `current.json` ve canlı tablodan izle; statik imleçle eski
 paketi baştan çalıştırma.
-Gözetmen058 dahil yayınları ve kanıt işlerini kapsar. PID50696; log supervisor-v8.log/.err.log. Yalnız metadata observer yenilendi; içerik/model/uygulama işçileri korunur. Eski observer yenilenirken
+Gözetmen058 dahil yayınları ve kanıt işlerini kapsar. PID27912; log supervisor-v9.log/.err.log. Yalnız metadata observer yenilendi; içerik/model/uygulama işçileri korunur. Eski observer yenilenirken
 uygulama/model/yayın işçileri durmadı. Tamamlanmış makbuzlar korunur; durmuş
 paket en fazla3 kez sürer. OS başlangıç görevi yok; oturum/OS kapanırsa aynı
 komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otomatik.
@@ -52,6 +52,26 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |056|`reviewed-native-question-6-expansion`|23, BITTI|
 |057|`reviewed-native-question-7-expansion`|29, BITTI|
 |058|`reviewed-native-question-8-expansion`|38, BITTI|
+|059|`source-heading-profile-expansion`|28, BITTI|
+
+**Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut
+kırpımı koru, önce cevap anahtarı, doğru ders–ünite–konu. Pratik1 kitap profili,
+gerçek PDF clip/scissor ve2×/2,5× özgün piksel kapısı kullanılır; model sadece
+istisnalara ayrıldı. Tek-test1.886/1.886 cevap/gövde tamamlandı; deneme hızlı
+geçişinde4.845/5.482 hazır,634 yeni görsel istisna+3 eski inceleme kaldı.
+7.368 mevcut PNG hash/mtime ve iki manifest değişmedi; kanıt
+`BASE/fast-profile-transition/crop-reuse-acceptance.json`. Deneme istisna işçisi
+aynı imleçten çalışıyor; yeni log `full-mock-pending-evidence-profile-v2.log`.
+Kaynak etiket dizinleri `source-folder-labels/index.json` ve
+`question-source-labels/index.json`:8.571 kayıt kodunda263 ana tablo eşleme
+adayı;8.308 etiket incelemesi. Kaynak klasör adları ve ana tablo kimlikleri
+ayrı saklanır; karma denemeye tek konu atanmaz. TYT/AYT önbellek kapsamı
+12 sınır testinde korunur. Bu sayılar yeni yayımlanan soru sayısı değildir.
+059 `source-heading-profile-expansion` BITTI:28 INSERT/0 UPDATE(8 Matematik/20 Edebiyat),
+tekrar0 INSERT, katalog/masaüstü/mobil PASS. Canlı toplam10.034(5.458 TYT/4.576 AYT).
+Yeni kırpım/model0. Kanıt `verified-source-batch-059/bank-acceptance.json`. Mevcut v9 gözetmeni
+058'e kadar kayıtlıdır, kod sonraki açılışta059'u da kapsar. Canlı worker'ı
+sırf metadata yenilemek için durdurma. Güncel inceleme ihracı BITTI:10.034 kabul/yayın,8.234 bekleyen kod;8.026 konu-ders,180 gövde,6 içerik,22 belge kimliği. Sonraki adım çözülmemiş kaynak etiketlerini işle.
 
 **Kaynak kabulü önce:** yardımcı kanıt işlerinin tamamı050 sonrasına alınmıştır;
 9B model kuyruğunda hazır yayın partileri önceliklidir. Eski bekleyen/yardımcı
