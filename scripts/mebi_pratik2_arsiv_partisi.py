@@ -39,6 +39,16 @@ def run(acceptance,batch_dir,after_batch=None):
             time.sleep(5)
         if json.loads(previous.read_text(encoding='utf8'))['status']!='PASS':raise ValueError('Previous batch is not accepted')
     admitted=json.loads(proof.read_text(encoding='utf8'))['accepted']
+    completed=folder/'bank-acceptance.json'
+    if completed.exists():
+        previous=json.loads(completed.read_text(encoding='utf8'))
+        if previous.get('status')!='PASS':raise ValueError('Existing batch checkpoint is not accepted')
+        expected=previous.get('sourceAcceptanceSha256')
+        if expected and expected!=hashlib.sha256(proof.read_bytes()).hexdigest():raise ValueError('Accepted source manifest changed')
+        if not expected and previous.get('scope') not in ('REVIEW_ONLY_SOURCE_BATCH','EMPTY_VERIFIED_SOURCE_DELTA'):
+            raise ValueError('Accepted batch lacks source identity')
+        log('BATCH_ALREADY_ACCEPTED_CHECKPOINT',batch=batch_dir)
+        return
     if not admitted:
         write_json(folder/'bank-acceptance.json',{'status':'PASS','scope':'REVIEW_ONLY_SOURCE_BATCH',
             'newQuestions':0,'questionWrites':0,'previousQuestionsUnchanged':True,'teacherApprovalsCreated':0});return

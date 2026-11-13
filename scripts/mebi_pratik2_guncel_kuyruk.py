@@ -59,18 +59,21 @@ def run():
         if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
     # A new word-level crop is explicit changed evidence, not a repetition of
     # the same failed crop. Preserve the earlier reason as history.
-    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops']:
+    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops','full-mock-source-crops']:
         word_report=BASE/directory/'report.json'
         if not word_report.exists():continue
         for source in json.loads(word_report.read_text(encoding='utf8'))['sources']:
-            data=json.loads((BASE/directory/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
+            source_view=BASE/directory/(source['sourceSha256']+'.json')
+            if not source_view.exists():continue  # producer is still sealing per-source views
+            data=json.loads(source_view.read_text(encoding='utf8'))
             for row in data['items']:
                 if row['code'] in accepted:continue
                 prior=decisions.get(row['code'],{})
                 decisions[row['code']]={**prior,**row,'status':'REVIEW_REQUIRED',
                     'priorReviewReasons':prior.get('reasons',[]),
                     'reasons':['INDEPENDENT_KEY_BODY_REVIEW_REQUIRED' if row.get('categoryId') else 'CONTROLLED_TOPIC_REVIEW_REQUIRED'],'studentVisible':False}
-    for path in (BASE/'all-source-evidence/candidate-evidence').glob('*.json'):
+    for path in [* (BASE/'all-source-evidence/candidate-evidence').glob('*.json'),
+                 * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json')]:
         evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
         if code not in decisions or code in accepted:continue
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],

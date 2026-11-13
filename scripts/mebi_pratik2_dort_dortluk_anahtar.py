@@ -55,6 +55,9 @@ def read_key(group,pdf,module,root):
     if group['keyIdentityType']=='THREE_STEP_MOCK_NUMBER_MATRIX':
         from mebi_pratik2_uc_adim_deneme_anahtar import read_key as read_mock
         return read_mock(group,pdf,module,root)
+    if group['keyIdentityType']=='PREVERIFIED_MOCK_SECTION':
+        from mebi_pratik2_deneme_kanit_uyarlama import reuse_key
+        return reuse_key(group,pdf,root)
     if group['keyIdentityType']=='SINGLE_TEST_PRINTED_NUMBER':
         if SINGLE_KEYS is None:
             data=json.loads((BASE/'single-test-crops/second-reading/report.json').read_text(encoding='utf8'))

@@ -1,12 +1,34 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 7.492 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 7.676 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
 olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
+
+**13 Kasım sabahı süreç devri:**önceki Python süreçleri durmuştu; kabul edilmiş
+019–021 korunup022 kaynak kabulünden devam edildi. Güncel worker60838;
+34740(Four025),60174(kurtarma035),40622(konu036),88539(deneme041),
+66878(başlık042) sıralı bağımlılıklarla yeniden çalıştırıldı.95160 konu-bekleyen
+kanıt işini043 sonrasında bekler.İzleyiciler58959/39394 çalışır. Eski süreç
+kimlikleri aşağıda tarihçedir; yeniden aynı writer başlatmadan OS kilidini kontrol et.
+`mebi_pratik2_arsiv_partisi.py` kabul edilmiş değişmez paketin kaynağı hashle
+aynıysa eski banka sayısını daha sonraki partilere karşı tekrar denetlemez;
+BATCH_ALREADY_ACCEPTED_CHECKPOINT ile korunmuş kabul makbuzundan devam eder.
+
+**Yeni full-mock adapter:**41 kaynakta5.651 mevcut özgün kırpım yeniden
+kullanıldı;169 açık dil-komutu konu bağlı aday `full-mock-expansion`,5.482
+ince konu bekleyen aday `full-mock-pending-evidence`. Yeni model çağrısı0.
+Bir özgün gövde/piksel uyuşmazlığı ayrı tutuldu; aynı hatalı kaynak denenmedi.
+Eski tam deneme anahtarlarının gerçek bağımsız metni,220dpi özgün pikseli ve
+basılı deneme/bölüm kimliği `--audit-keys` ile yeniden bağlanıyor:19476.
+Audit PASS olmadan044 alımını başlatma. Sonraki komutlar:full-mock-expansion
+first-batch44 wait-for four-square-header-expansion/pass-result.json publish;
+full-mock-pending-evidence kanıt worker'ı full-mock-expansion/pass-result.json
+sonrasında (yayın değildir).169 paket tek500'lük partidir. Kaynak protokolü
+scripts/mebi_pratik2_deneme_kanit_uyarlama.py;4 gerçek-transkript testi PASS.
 
 **MEBI-PRACTICE-2 TAM ARŞİV SURUYOR; kullanıcı tekrar hatırlatmayacak.**
 Çalışma/context/token sınırına kadar sürdür; yeni bağlamda aynı imleçten

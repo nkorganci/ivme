@@ -113,8 +113,12 @@ def run():
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--wait-for');a=p.parse_args()
-    with process_lock(BASE/'.jobs/all-source-evidence.lock'):
+    from pathlib import Path
+    p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--wait-for')
+    p.add_argument('--package-dir',default=OUT.name);a=p.parse_args()
+    if Path(a.package_dir).name!=a.package_dir:raise ValueError('Unsafe evidence package path')
+    OUT=BASE/a.package_dir
+    with process_lock(BASE/'.jobs'/(OUT.name+'.lock')):
         if a.prepare:
             result=prepare();print(json.dumps({k:result[k] for k in ['status','candidateBodies','excludedReservedOrAlreadyAdmittedCodes','questionWrites']}))
         else:
