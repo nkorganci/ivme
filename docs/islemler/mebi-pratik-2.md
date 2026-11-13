@@ -268,3 +268,44 @@ makbuzları değiştirmez. `individual-tarama-word-expansion`048, belirsizleri
 basılı başlıkları okur; `single-test-heading-expansion`049'u hazırlar. Aynı
 kaynak/görsel/hash için mevcut başarılı veya başarısız gövde okumaları korunur;
 yeni öğretmen onayı üretilmez. Doğrudan anahtarı doğrulanmış soru sayılmaz.
+
+
+Karma konular için `mebi_pratik2_konu_model_pilotu.py` yalnız24'e kadar
+kaynak/anahtar/native gövdesi doğrulanmış soruda yerel öneri denemesidir.
+Model önerisi, geçerli kategori ve birebir kaynak alıntısı olsa da kabul veya
+öğretmen onayı değildir. Mevcut `controlled-topic-model-pilot` kalibrasyonu
+başarısız; komut aynı istemi tekrar model çağırmadan atlar. Bu sonuçtan toplu
+kategorileme/yayın başlatma. Başarısızlığın kaynak metinli gerçek örnekleri
+`agent-calibration-review.json` içindedir; anahtar cevapları değiştirilmedi.
+
+
+Kalan numara bağlama hatalarında bir sınırlı alternatif:
+`python scripts/mebi_pratik2_kalin_numara.py`. Yalnız özgün PDF'deki kalın
+basılı numara span'ları soru başlangıcı olur; normal numaralı örnek ve anahtar
+hücresi soru sayılmaz. Tekrarlanan kalın numara/uyuşmayan anahtar yine ayrılır.
+`bold-number-expansion`050 ve `bold-number-pending-evidence` ayrıdır; kaynak
+ve eski kırpımlar değişmez. Yeniden komut yalnız donmuş paketin güncel özetini
+üretir. Native gövde için ders aliası/dizini kaynak kanıtı olarak kullanılabilir;
+`sourceSubjectEvidence` ince konu/öğretmen onayı değildir.
+
+PDF tekrar kapısı hash/native metin dışındaki taramalar için de aynı sayfa
+sayısı+ilk üç bütün sayfanın küçük görüntülerini kullanır. Saf boş örnek
+sayfalar eşleşme oluşturmaz. Önbellek `sampled-page-previews.json` dosyasında;
+kararlar bütün geçiş sonunda atomik yenilenir. Bu hâlâ belge düzeyindeki hızlı
+kuraldır, bütün sonraki sayfaların aynılığı veya soru bazında karşılaştırma değildir.
+
+
+Görsel-inceleme işaretli sayfalar için `python scripts/mebi_pratik2_bos_sayfa_kaniti.py`
+yalnız native metin/görsel/çizim/not yokken ve özgün2x görüntü tamamen beyazken
+boşluk kanıtı verir. Gerçek agent okumaları `empty-original-pages/agent-page-review.json`
+üzerinden, görüntü hash'i doğrulanarak ayrı görünür; bütün PDF'de soru yokluğu
+iddiası yoktur. Taranmış iki Edebiyat anahtarı:
+`python scripts/mebi_pratik2_taranmis_edebiyat_anahtar.py`. Anahtarın agent okuması
+önbellek Tesseract numara/harf ve test kimliğiyle tam uyuşmalıdır; bir eksik hücre
+ve bir başlık için kaydedilmiş sınırlı bölge okuması kullanılabilir.40 soru
+`scanned-literature-pending-evidence` altında ince konu/bağımsız gövde bekler.
+Yeni öğretmen onayı veya otomatik konu yayını yoktur. Kaynak/kırpım değişmez.
+
+Gözetmen bütün yardımcı kanıt işlerini en son donmuş yayın paketinin (050)
+sonrasına koyar. Böylece model kaynağında hazır yayınlar önceliklidir. Yeni yayın
+paketi eklenirse bağımlılık testini çalıştır; tamamlanmış makbuzları koru.

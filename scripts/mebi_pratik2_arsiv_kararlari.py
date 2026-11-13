@@ -26,6 +26,13 @@ def review_category(reasons):
 def run():
     from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
     pdf_decisions=load_decisions()
+    scope_path=BASE/'remaining-positive-layout-cues/report.json'
+    scope_data=json.loads(scope_path.read_text(encoding='utf8')) if scope_path.exists() else {}
+    scope_exclusions={r['sourceSha256']:r for r in scope_data.get('sourceExamScopeExclusions',[])
+                      if r['status']=='YDT_ENGLISH_OUTSIDE_REQUESTED_TYT_AYT_BANK'}
+    page_proof_path=BASE/'empty-original-pages/report.json'
+    page_proofs={(r['sourceSha256'],r['physicalPage']):r for r in
+        (json.loads(page_proof_path.read_text(encoding='utf8')).get('pages',[]) if page_proof_path.exists() else [])}
     inventory=json.loads((BASE/'inventory.json').read_text(encoding='utf8'))['items']
     pdfs={r['relativePath']:r for r in json.loads((BASE/'full-pdf-coverage.json').read_text(encoding='utf8'))['documents']}
     containers={r['relativePath']:r for r in json.loads((BASE/'package-content-report.json').read_text(encoding='utf8'))['containers']}
@@ -59,7 +66,12 @@ def run():
                 for page in cache['pages']:
                     key=(sha,page['physicalPage']);known=by_page[key];signals=native.get(key,{})
                     visible=[r['code'] for r in known if r['status']=='PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED']
+                    page_proof=page_proofs.get(key,{})
+                    empty_page=page_proof.get('status') in ('PROVED_EMPTY_ORIGINAL_PAGE','AGENT_VIEWED_EMPTY_SOURCE_PAGE')
                     if sha in pdf_decisions and skip_pdf(sha,pdf_decisions):state='AYNI_PDF_MEVCUT_PRAKTIKTE_YENIDEN_KARSILASTIRILMADI'
+                    elif sha in scope_exclusions:state='KAPSAM_DISI_YDT_INGILIZCE_TYT_AYT_DEGIL'
+                    elif empty_page:state='DOGRULANMIS_BOS_KAYNAK_SAYFASI'
+                    elif page_proof.get('status')=='AGENT_READ_PRINTED_ANSWER_KEY':state='BASILI_CEVAP_ANAHTARI_GORSEL_OKUNDU'
                     elif page['readingStatus']=='VISUAL_REVIEW_REQUIRED':state='INCELEME_GORSEL_METIN_OKUNAMADI'
                     elif signals.get('NUMBERED_BODY_SIGNAL') or signals.get('PRINTED_KEY_CELL_SIGNAL') or known:
                         state='AKTARILAN_SORULAR_VE_KALAN_ADAY_INCELEMESI' if visible else 'INCELEME_SORU_CEVAP_KONU_BAGI'
@@ -67,7 +79,8 @@ def run():
                     page_row={'relativePath':relative,'sourceSha256':sha,'physicalPage':page['physicalPage'],
                         'status':state,'publishedCodes':visible,'candidateCodes':[r['code'] for r in known],
                         'rawNativeSignalsNotQuestionCounts':signals,'nativeCache':pdf['cache'],
-                        'fullVisualQuestionAbsenceProved':False,'studentVisible':False}
+                        'sourcePageDispositionEvidence':str(page_proof_path.relative_to(BASE)) if page_proof else None,
+                        'fullVisualQuestionAbsenceProved':empty_page,'studentVisible':False}
                     page_stream.write(json.dumps(page_row,ensure_ascii=False)+'\n');page_states[state]+=1;page_count+=1
                 row.update(status='ISLENDI_AKTARIM_VE_GEREKCELI_INCELEME' if published else 'INCELEME_PDF_SORU_CEVAP_KONU_DUZENI',
                     firstPassProcessed=True,pageCount=pdf['pageCount'],reviewReason='NUMARALI_ISARET_TEK_BASINA_SORU_VEYA_CEVAP_KABULU_DEGIL')
@@ -83,6 +96,9 @@ def run():
             else:row.update(status='KAPSAM_DISI_DESTEK_VEYA_METADATA',firstPassProcessed=True,reviewReason=source.get('reason'))
             if sha in pdf_decisions and skip_pdf(sha,pdf_decisions):
                 row.update(status='ATLANDI_MEVCUT_PRAKTIK_PDF',reviewReason='KULLANICI_PDF_DUZEYI_TEKRAR_KURALI',existingPracticePdfDecision=pdf_decisions[sha])
+            elif sha in scope_exclusions:
+                row.update(status='KAPSAM_DISI_YDT_INGILIZCE',reviewReason='BASILI_YDT_INGILIZCE_KIMLIGI_TYT_AYT_DEGIL',
+                    sourceExamScopeEvidence=scope_exclusions[sha])
             sources.append(row)
             if row['status'].startswith('INCELEME') or pending:review_paths.append(row)
     expected_pages=sum(r['pageCount'] for r in pdfs.values())

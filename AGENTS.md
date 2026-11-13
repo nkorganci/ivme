@@ -26,7 +26,9 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
   embedding'i üzerinden tek tek banka karşılaştırması yapma. Önce PDF'leri
   karşılaştır: dosya kimliği hızlı ilk kapıdır; hash farklıysa sayfa sayısı ve
   ilk üç sayfanın bilgisi/küçük önizlemesiyle kullanıcı tarafından istenen hızlı
-  eşdeğerliği denetle. Mevcut Soru Çöz & Pratik bankasına bağlı aynı PDF'nin
+  eşdeğerliği denetle. Taranmış PDF'de native metin şartı koyma; ilk üç bütün
+  sayfanın küçük özgün raster önizlemesini karşılaştır. Boş sayfalar tek başına
+  eşdeğerlik oluşturmaz. Mevcut Soru Çöz & Pratik bankasına bağlı aynı PDF'nin
   tamamını atla; kısmi aktarım notunu sakla, soru bazında eksik arama başlatma.
   Kullanıcı YKS çıkmış sorularının zaten mevcut olduğunu belirtti; yeniden
   aktarılmaz. Varsayılan kural `scripts/mebi-pratik2-pdf-policy.json`, kaynak

@@ -30,7 +30,7 @@ def run():
         data=json.loads(package.read_text(encoding='utf8'))
         for r in data.get('items',[]):prepared[r['sourceSha256']].add(r['bodyPage'])
     for directory in ['single-test-crops','three-step-all-bodies-v2','compiled-tarama-crops','word-boundary-crops',
-                      'four-square-crops','four-square-header-crops','three-step-mock-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-crops','individual-tarama-word-crops']:
+                      'four-square-crops','four-square-header-crops','three-step-mock-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-crops','individual-tarama-word-crops','bold-number-crops','bold-number-word-crops','scanned-literature-crops','scanned-literature-word-crops']:
         for file in (BASE/directory).glob('*.json'):
             data=json.loads(file.read_text(encoding='utf8'))
             if not isinstance(data,dict):continue
@@ -42,12 +42,21 @@ def run():
     if mock.exists():
         excluded={r['sourceSha256'] for r in json.loads(mock.read_text(encoding='utf8'))['sources'] if r['status']=='EXCLUDE_NO_RETRY'}
     docs=json.loads((BASE/'full-pdf-coverage.json').read_text(encoding='utf8'))['documents'];unique={r['sourceSha256']:r for r in docs}
-    sources=[];states=Counter();pdf_decisions=load_decisions()
+    sources=[];scope_exclusions=[];states=Counter();pdf_decisions=load_decisions()
     for index,(sha,source) in enumerate(unique.items(),1):
         if skip_pdf(sha,pdf_decisions):states['EXISTING_PRACTICE_PDF_SKIPPED_BEFORE_QUESTION_CUES']+=1;continue
         if sha in excluded:states['KNOWN_FAILED_SOURCE_NOT_RETRIED']+=1;continue
         path=BASE/source['cache'];native=json.loads(path.read_text(encoding='utf8'))
         if native['status']!='SCANNED':states['KNOWN_UNREADABLE_SOURCE_NOT_RETRIED']+=1;continue
+        exam_lines=[{'page':p['physicalPage'],**line} for p in native['pages'][:3] for line in p['lines']
+                    if re.fullmatch(r'YDT\s*[•·-]\s*İNGİLİZCE',line['text'].strip(),re.I)]
+        has_requested_exam=bool(exam_lines) and any(re.match(r'^(?:TYT|AYT)\s*[•·-]',line['text'].strip(),re.I)
+                    for p in native['pages'] for line in p['lines'])
+        if exam_lines and not has_requested_exam:
+            scope_exclusions.append({'sourceSha256':sha,'relativePath':source['relativePath'],
+                'status':'YDT_ENGLISH_OUTSIDE_REQUESTED_TYT_AYT_BANK','printedExamEvidence':exam_lines,
+                'questionComparisons':0,'studentVisible':False})
+            states['EXPLICIT_PRINTED_YDT_ENGLISH_SCOPE_NOT_TYT_AYT']+=1;continue
         key_pages=[]
         for page in native['pages']:
             text='\n'.join(l['text'] for l in page['lines'])
@@ -67,11 +76,13 @@ def run():
             'status':'POSITIVE_CUES_REQUIRE_SOURCE_LAYOUT_BINDING_NOT_QUESTION_ADMISSION','studentVisible':False})
         if index%100==0:print(json.dumps({'sourcesVisited':index,'totalUniqueSources':len(unique),'positiveSources':len(sources),'elapsedSeconds':round(time.monotonic()-started,1)}),flush=True)
     result={'status':'POSITIVE_REMAINING_LAYOUT_CUES_NOT_QUESTION_COUNTS','sources':sources,'states':dict(states),
+            'sourceExamScopeExclusions':scope_exclusions,
+            'sourceExamScopeExclusionCount':len(scope_exclusions),
             'positiveSources':len(sources),'positivePages':sum(len(s['unpreparedPositivePages']) for s in sources),
             'previouslyUnpreparedSources':sum(not s['sourceHasAnyPreparedBodies'] for s in sources),
             'questionWrites':0,'modelCalls':0,'allPrintedQuestionsExtracted':False}
     write_json(OUT/'report.json',result)
-    print(json.dumps({k:v for k,v in result.items() if k!='sources'}),flush=True)
+    print(json.dumps({k:v for k,v in result.items() if k not in ('sources','sourceExamScopeExclusions')}),flush=True)
 
 
 if __name__=='__main__':

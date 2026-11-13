@@ -17,7 +17,7 @@ CELL=re.compile(r'^\s*(\d{1,3})\s*[.):-]+\s*([ABCDE])\s*$')
 BODY=re.compile(r'^\s*(\d{1,3})\s*[.)]\s*')
 
 
-def discover(native,exam):
+def discover(native,exam,body_anchors=None):
     groups={};issues=[]
     for page in native['pages']:
         lines=page['lines'];height=page['rect'][3];width=page['rect'][2];headers=[];pairs=[];anchors=[]
@@ -28,6 +28,7 @@ def discover(native,exam):
             elif (body:=BODY.match(line['text'])) and 65<line['bbox'][1]<height-40 and (
                     25<=line['bbox'][0]<=50 or width/2-5<=line['bbox'][0]<=width/2+38):
                 anchors.append({'printedNumber':int(body[1]),'page':page['physicalPage'],'bbox':line['bbox'],'text':line['text']})
+        if body_anchors is not None:anchors=body_anchors.get(page['physicalPage'],[])
         if len(pairs)>=6 and not anchors:
             for cell in pairs:
                 before=[h for h in headers if h['bbox'][1]<=cell['bbox'][1]+2]

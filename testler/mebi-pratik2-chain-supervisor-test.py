@@ -10,6 +10,17 @@ import mebi_pratik2_zincir_gozetmeni as supervisor
 
 
 class ChainSupervisor(unittest.TestCase):
+    def test_auxiliary_evidence_waits_while_later_ready_publishers_are_pending(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base=Path(tmp);earlier=base/'full-mock-expansion';earlier.mkdir()
+            (earlier/'pass-result.json').write_text(json.dumps({'publishedThroughExistingGuardedPipeline':True}),encoding='utf8')
+            with patch.object(supervisor,'BASE',base):
+                self.assertTrue(supervisor.checkpoint('full-mock-expansion'))
+                for job in supervisor.JOBS:
+                    if job['kind']=='evidence':
+                        ready=supervisor.checkpoint(job['dependency'])
+                        self.assertEqual(supervisor.decide(False,False,ready,0),'WAITING_FOR_DEPENDENCY',job['name'])
+
     def test_existing_writer_is_never_restarted_even_after_three_attempts(self):
         self.assertEqual(supervisor.decide(False,True,True,3),'EXISTING_WRITER_RUNNING')
 

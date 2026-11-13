@@ -24,7 +24,7 @@ def choose_topic(group,exam,subjects,categories,reviewed_headers):
     return exact[0] if len(exact)==1 else None
 
 
-def run(sources=None):
+def run(sources=None,discovery_dir='compiled-tarama-discovery'):
     OUT.mkdir(exist_ok=True);cats=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories'];by_id={c['id']:c for c in cats}
     previous=json.loads((BASE/'expanded-chapter-evidence/chapter-packages.json').read_text(encoding='utf8'))['chapters'];headers={}
     for row in previous:
@@ -39,7 +39,7 @@ def run(sources=None):
         target=OUT/(source['sourceSha256']+'.json')
         if target.exists():report=json.loads(target.read_text(encoding='utf8'))
         else:
-            data=json.loads((BASE/'compiled-tarama-discovery'/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
+            data=json.loads((BASE/discovery_dir/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
             cache=json.loads((BASE/source['cache']).read_text(encoding='utf8'));pages={p['physicalPage']:p for p in cache['pages']}
             classification_source={**source,'relativePath':source['exam']+'\\'+source['relativePath'].split('\\')[-1]} if source.get('exam') else source
             exam,subjects=scope(classification_source,cats)
@@ -54,7 +54,7 @@ def run(sources=None):
                 for anchor in group['bodies']:all_anchors.setdefault(anchor['page'],[]).append(anchor)
             with pymupdf.open(path) as pdf:
                 for group in data['groups']:
-                    if group['status']!='NATIVE_PRINTED_TEST_BINDING_CANDIDATE':
+                    if group['status'] not in ('NATIVE_PRINTED_TEST_BINDING_CANDIDATE','SCANNED_KEY_AND_NATIVE_BODY_BINDING_CANDIDATE'):
                         review.append({'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],**group});continue
                     category=choose_topic(group,exam,subjects,cats,headers)
                     test=group['testNumber'];group_id=source['sourceSha256'][:16]+'-T'+str(test)
@@ -71,7 +71,8 @@ def run(sources=None):
                     key_sha=hashlib.sha256((BASE/key_image).read_bytes()).hexdigest()
                     key_groups.append({'groupId':group_id,'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],'exam':exam,
                         'testNumber':test,'keyPage':physical,'keyClip':key_clip,'keyImage':key_image,'keyImageSha256':key_sha,
-                        'answers':{str(q['printedNumber']):q['answer'] for q in group['questions']}})
+                        'answers':{str(q['printedNumber']):q['answer'] for q in group['questions']},
+                        **({'keyIdentityType':group['keyIdentityType']} if group.get('keyIdentityType') else {})})
                     for question in group['questions']:
                         number=question['printedNumber'];anchor=question['body'];physical=anchor['page'];page=pdf[physical-1];native=pages[physical]
                         column=int(anchor['bbox'][0]>page.rect.width/2)

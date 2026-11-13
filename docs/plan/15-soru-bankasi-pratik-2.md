@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 8.802 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.971 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -26,10 +26,10 @@ işler için bu talimatla sınırlandı. Mevcut kimlikler ve tamamlanan aktarım
 geçmişi korunur; önceden kullanılan PDF'de soru soru eksik arama yapılmaz.
 Kısmi eski aktarım notu kaynak kararıyla saklanır.
 
-PDF kapısı BITTI:1.473 benzersiz PDF/510 mevcut banka PDF referansı;
-61 aynı PDF atlandı.1.412 eşleşmeyen PDF,1.412 soru kitabı veya yeni soru
+PDF kapısı BITTI:1.473 benzersiz PDF/509 mevcut banka PDF referansı;
+62 aynı PDF atlandı.1.411 eşleşmeyen PDF,1.412 soru kitabı veya yeni soru
 iddiası değildir. `pdf-reuse-check/decisions.json`, kalıcı varsayılan
-`scripts/mebi-pratik2-pdf-policy.json`;11 PDF kapısı testi PASS.
+`scripts/mebi-pratik2-pdf-policy.json`;13 PDF kapısı testi PASS.
 YKS çıkmış sorularını kullanıcı zaten mevcut bildirdi; bunlar tekrar alınmaz.
 Yeni büyük deneme kitaplarının da mevcut banka PDF kayıtları eşleşti;
 önceki ham keşiflerinden yeni kırpım/aktarım başlatılmaz.
@@ -56,6 +56,56 @@ paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kab
 Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
+
+- Native-görsel sayfa ayrımı **BITTI (alt iş)**:421 sayfanın361'i eski-PDF
+  nedeniyle yeniden işlenmez; kalan60 sayfanın54'ü özgün2x tam beyaz piksel ve
+  boş nesne kontrolüyle,4'ü gerçek görsel okumayla boş. Diğer2 sayfa Edebiyat
+  basılı anahtarıdır.58 boş sayfa soru/anahtar yokluğu için yalnız kendi sayfası
+  kapsamında kanıtlı; bütün PDF için yokluk iddiası yok. `empty-original-pages/`;
+ 2 güvenlik testi PASS.
+- İki taranmış Edebiyat anahtarında40 cevap/40 özgün gövde **BITTI (hazırlık)**:
+  gerçek agent okuması+önbellekte bağımsız Tesseract; ilk tabloda5.E ve test-1
+  başlığı birer sınırlı5x bölgeyle kurtarıldı.17 satır ve23 kelime kutusu kırpımı;
+  12 native/28 görsel,40 ince konu bekler. Yayın0, öğretmen onayı0; yeni soru
+  toplamı iddiası yok. `scanned-literature-pending-evidence/`;3 anahtar testi PASS.
+-044 kabulü **BITTI**:169 INSERT/0 UPDATE, kaynak/katalog/canlı PASS; toplam
+ 8971.045→050 yayın işleri sürer. Kaynak kanıtı yardımcılarının tamamı050
+  sonrasına alınarak hazır aktarım partilerine model önceliği verildi; kaydedilmiş
+  soru/anahtar makbuzları korunur. Beş gözetmen testi PASS.
+
+- Kalın numara yerleşimi **BITTI (hazırlık)**:kalan27 kaynağa tek sınırlı
+  alternatif;17 kaynakta339 basılı numara/anahtar bağı.301 özgün gövde
+  (137 satır/164 kelime kutusu),40 kontrollü konu adayı050 ve261 konu
+  incelemesi.38 geometri adayı ve10 bağlanamayan kaynak gerekçeli ayrı;
+  aynı başarısız kaynağı döngüde onarma yok. Native gövde9/40 ve27/261;
+ 2 numara/anahtar sınırı testi PASS.050,049'u bekleyen gerçek worker;
+  ayrı kanıt worker'ı050 sonrasını bekler. `bold-number-expansion/`.
+- Kaynak ders dizini ve açık ders adı karşılıkları, ince konu iddiası olmadan
+  gövde doğrulamasında kullanıldı. Donmuş paket değiştirilmedi; eski547
+  makbuz korundu,80 ek tek-test native gövdesi model çağrısı0 ile doğrulandı;
+ 1.259 görsel yolda.8 native güvenlik testi PASS. `sourceSubjectEvidence`
+  yalnız ders kanıtıdır; konu/yayın/öğretmen onayı değildir.
+- PDF hızlı kapısına metinsiz tarama desteği eklendi: hash/native metin
+  farklı veya boşken sayfa sayısı ve ilk üç bütün sayfanın küçük görüntüsü
+  karşılaştırılır. Boş ilk sayfalar eşdeğerlik oluşturmaz.13 kapı testi PASS;
+  ek gerçek arşiv önizleme geçişi **BITTI**:820 PDF önizlemesi,61 dosya
+  kimliği ve bir farklı-hashli tarama eşleşmesi; toplam62 atlama.283 sayfalık
+  TYT Türkçe3 Adım kitabı ilk3 özgün sayfasıyla yakalandı. Önbellek
+  `pdf-reuse-check/sampled-page-previews.json`, son karar `decisions.json`.
+-14 ortak PDF'nin basılı `YDT • İNGİLİZCE` kimliği belgelendi; TYT/AYT
+  bankasına zorlanmaz. Karma TYT/AYT başlığı bulunan PDF bu kararla atlanmaz.
+  Güncel olumlu yerleşim ipuçları42 kaynak/250 sayfa; bu soru toplamı veya
+  diğer sayfalarda soru yokluğu kanıtı değildir.
+
+- Karma konuda yerel model denemesi **BITTI (başarısız pilot; toplu kabul yok)**:
+  12 temsil adayı seçildi,8 okuma oluştu; altısı gerçekten incelendi. Model
+  üç açık yanlış ana konu, bir komşu-konu belirsizliği ve bir gereksiz ret
+  üretti; bu örnekler toplu konu onayına yeterli değildir. Doğru metin alıntısı
+  tek başına doğru konu kanıtı sayılmadı. Yeni soru/öğretmen onayı/yayın0.
+  Yalnız pilot worker durduruldu; ana arşiv/model/uygulama süreçleri korundu.
+  Aynı istem tekrar çalışmaz. `controlled-topic-model-pilot/report.json`,
+  `agent-calibration-review.json`;3 mekanik öneri sınırı testi PASS.
+  Kaynak başlığıyla kanıtlı aktarım sürer; karma sorular incelemede kalır.
 
 - Tekil tarama yerleşimi hazırlığı **BITTI (alt iş, aktarım değildir)**:
   PDF kapısından geçen 71 kaynakta mevcut basılı-test okuyucusu denendi;
@@ -92,16 +142,16 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
   Dört Dörtlük,035'te49,036–040'da2.257,041'de172 ve042–043'te867
   eski-PDF adayı yeniden işlenmeden atlandı.036–040'ın221 yeni-PDF sorusu
   canlı kabulden geçti; banka8.802 oldu. Yeni karşılaştırmalar soru düzeyinde0.
--044'te169 konu bağlı yeni-PDF adayı kaynak/anahtar/gövde kabulünde.
+-044'ün169 konu bağlı yeni-PDF adayı kaynak/anahtar/gövde ve canlı kabulden geçti.
   Ardından045'te80 kaynak sorusuna ait140 TYT/AYT kapsam adayı var.
-- Kaynak kanıtı işleri044 sonrası: `all-source-evidence`23.879 girişinin
-  23.461'i eski-PDF nedeniyle atlanır;418'i yeni-PDF kanıtında. Ayrıca
+- Kaynak kanıtı işleri050 sonrası: `all-source-evidence`23.879 girişinin
+  23.463'ü eski-PDF nedeniyle atlanır;416'sı yeni-PDF kanıtında. Ayrıca
   `full-mock-pending-evidence`5.482 ve `single-test-pending-evidence`1.886
   donmuş aday içerir. Bunlar fine-topic/yayın kabulü değildir. Sonraki konu
   paketleri aynı kaynak kodlarını kullanır; aritmetik toplam tekil soru vermez.
 - Sürekli gözetmen çalışan işleri kesmez; durmuş donmuş paketi en fazla3
   kez makbuzdan sürdürür.046–049 ve iki yeni kanıt işi ayrı başlatılmıştır;
-  çalışan eski gözetmen yeni kayıtları yeniden yüklendiğinde gözetir.
+  güncel gözetmen bütün kayıtları ve050 sonrası kanıt sırasını izler.
 - Native metni olmayan421 sayfa ve78 ZIP/12.249 sayfa karşılığı için önceki
   okuma kanıtları korunur. Okunamayan sayfa “soru yok” sayılmaz. Hazırlanmamış
   kaynak düzenleri ve ince konu eşlemesi açık; ana plan **SURUYOR**.

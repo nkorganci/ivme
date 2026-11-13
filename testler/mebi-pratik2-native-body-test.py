@@ -8,10 +8,22 @@ from pathlib import Path
 import pymupdf
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from mebi_pratik2_native_govde import prove
+from mebi_pratik2_native_govde import prove,resolve_body_subject
 
 
 class NativeBodyTests(unittest.TestCase):
+    def test_source_course_alias_does_not_change_frozen_row_or_claim_topic(self):
+        row={'subject':'Türk Dili ve Edebiyatı','exam':'AYT','relativePath':'AYT\\Türk Dili ve Edebiyatı (AYT)\\x.pdf'}
+        category={'id':'excel.existing','exam':'AYT','subject':'Edebiyat','selectable':True}
+        projected,evidence=resolve_body_subject(row,[category])
+        self.assertEqual(projected['subject'],'Edebiyat');self.assertEqual(row['subject'],'Türk Dili ve Edebiyatı')
+        self.assertFalse(evidence['fineTopicClaimed']);self.assertFalse(evidence['teacherApproved'])
+
+    def test_existing_course_or_unresolved_source_is_not_guessed(self):
+        for row in [{'subject':'Fizik'},{'subject':None,'exam':'AYT','relativePath':'opaque.pdf'}]:
+            projected,evidence=resolve_body_subject(row,[])
+            self.assertIs(projected,row);self.assertIsNone(evidence)
+
     def fixture(self,folder,stem='1. Select one complete statement.',drawing=False):
         pdf=pymupdf.open();page=pdf.new_page(width=600,height=800)
         page.insert_text((30,80),stem)

@@ -66,12 +66,54 @@ def current_decisions(shas):
     return decisions
 
 
-def preview(document):
-    result=[]
+def preview_sample(document):
+    result=[];informative=False
     for index in range(min(3,len(document))):
         pix=document[index].get_pixmap(matrix=pymupdf.Matrix(.5,.5),alpha=False)
         result.append([pix.width,pix.height,pix.n,hashlib.sha256(pix.samples).hexdigest()])
-    return result
+        pixels=pix.samples[::31]
+        if pixels and max(pixels)-min(pixels)>=32 and sum(v<240 for v in pixels)>=16:informative=True
+    return {'pages':result,'informative':informative}
+
+
+def preview(document):
+    return preview_sample(document)['pages']
+
+
+def extend_raster_matches(decisions,references,sources,current_paths):
+    """Also compare scans with empty or reordered text, using whole pages only."""
+    cache_path=OUT/'sampled-page-previews.json'
+    cache=json.loads(cache_path.read_text(encoding='utf8')) if cache_path.exists() else {}
+    needed={sources[sha]['pageCount'] for sha,row in decisions.items() if row['decision']=='NEW_PDF_DOCUMENT_NOT_SEEN'}
+    by_preview=defaultdict(list);available_counts=set();compared=0
+    def sample(sha,path):
+        stat=path.stat();record=cache.get(sha)
+        if not record or record.get('bytes')!=stat.st_size or record.get('mtimeNs')!=stat.st_mtime_ns:
+            with pymupdf.open(path) as document:value=preview_sample(document)
+            record={**value,'bytes':stat.st_size,'mtimeNs':stat.st_mtime_ns};cache[sha]=record
+        return record
+    def key(count,value):return json.dumps([count,value['pages']],sort_keys=True)
+    for sha,ref in references.items():
+        count=ref.get('pageCount')
+        if count not in needed:continue
+        paths=[APP.parent/'Kaynaklar'/p for p in ref.get('paths') or []]
+        if sha in current_paths:paths.append(current_paths[sha])
+        actual=next((p for p in paths if p.is_file()),None)
+        if actual is None:continue
+        value=sample(sha,actual);available_counts.add(count)
+        if value['informative']:by_preview[key(count,value)].append(ref)
+    for sha,row in decisions.items():
+        if row['decision']!='NEW_PDF_DOCUMENT_NOT_SEEN' or sources[sha]['pageCount'] not in available_counts:continue
+        value=sample(sha,current_paths[sha]);compared+=1
+        matches=by_preview.get(key(sources[sha]['pageCount'],value),[]) if value['informative'] else []
+        if matches:
+            ref=matches[0];row.update(decision='SKIP_PDF_ALREADY_IN_EXISTING_PRACTICE',
+                method='USER_FAST_RULE_SAME_PAGE_COUNT_AND_FIRST_THREE_RASTER_PREVIEWS',
+                existingSourceSha256=ref['sha256'],existingSourcePaths=ref.get('paths'),
+                existingCoverageState=ref.get('coverageState'),sampledPages=len(value['pages']),nativeTextRequired=False)
+        if compared%100==0:print(json.dumps({'stage':'FIRST_THREE_WHOLE_PAGE_PREVIEWS','pdfsCompared':compared,'questionComparisons':0,'modelCalls':0}),flush=True)
+    write_json(cache_path,cache)
+    return compared
 
 
 def run():
@@ -138,7 +180,10 @@ def run():
                                     referenceUnavailable=unavailable,candidateSourceSha256=[r['sha256'] for r in matches])
         counts[decision['decision']]+=1;decisions[sha]=decision
         if index%100==0 or index==len(unique):print(json.dumps({'pdfsCompared':index,'totalUniquePdfs':len(unique),'counts':dict(counts),'questionComparisons':0}),flush=True)
+    raster_compared=extend_raster_matches(decisions,references,unique,current_paths)
+    counts=Counter(row['decision'] for row in decisions.values())
     result={'bySha256':decisions,'counts':dict(counts),'existingPdfSources':len(references),'localUniquePdfs':len(unique),
+            'additionalWholePdfRasterComparisons':raster_compared,
             'questionComparisons':0,'modelCalls':0,'questionWrites':0,'fullContentEqualityClaimedFromSampling':False,
             'fastEquivalenceRule':'USER_REQUESTED_PAGE_COUNT_AND_FIRST_THREE_PAGES'}
     write_json(OUT/'decisions.json',result)

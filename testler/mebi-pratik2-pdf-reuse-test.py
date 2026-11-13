@@ -10,9 +10,38 @@ import pymupdf
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from mebi_pratik2_pdf_tekrar_kapisi import signature,skip_pdf,preview,load_policy
 import mebi_pratik2_kesin_piksel_tekrari as pixel
+import mebi_pratik2_pdf_tekrar_kapisi as pdf_gate
 
 
 class PdfReuse(unittest.TestCase):
+    def test_scanned_pdf_without_native_text_matches_by_first_pages(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);archive=root/'Kaynaklar';archive.mkdir();out=root/'out';out.mkdir()
+            with pymupdf.open() as drawing:
+                page=drawing.new_page(width=300,height=400);page.insert_text((30,50),'Printed scan, same source.')
+                page.draw_rect((30,90,160,160),fill=(.2,.3,.4));pix=page.get_pixmap()
+                with pymupdf.open() as scan:
+                    for _ in range(3):scan.new_page(width=300,height=400).insert_image(pymupdf.Rect(0,0,300,400),pixmap=pix)
+                    old=archive/'old.pdf';new=root/'renamed.pdf';scan.save(old);scan.set_metadata({'title':'Changed packaging'});scan.save(new)
+            with pymupdf.open(new) as doc:self.assertEqual(doc[0].get_text(),'')
+            decisions={'new':{'decision':'NEW_PDF_DOCUMENT_NOT_SEEN'}}
+            with patch.multiple(pdf_gate,OUT=out,APP=root/'app'):
+                pdf_gate.extend_raster_matches(decisions,{'old':{'sha256':'old','pageCount':3,'paths':['old.pdf']}},
+                    {'new':{'pageCount':3}},{'new':new})
+            self.assertEqual(decisions['new']['decision'],'SKIP_PDF_ALREADY_IN_EXISTING_PRACTICE')
+            self.assertFalse(decisions['new']['nativeTextRequired'])
+
+    def test_blank_first_pages_do_not_create_a_raster_match(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);archive=root/'Kaynaklar';archive.mkdir();out=root/'out';out.mkdir()
+            with pymupdf.open() as blank:
+                blank.new_page();blank.new_page();blank.new_page();blank.save(archive/'old.pdf');blank.save(root/'new.pdf')
+            decisions={'new':{'decision':'NEW_PDF_DOCUMENT_NOT_SEEN'}}
+            with patch.multiple(pdf_gate,OUT=out,APP=root/'app'):
+                pdf_gate.extend_raster_matches(decisions,{'old':{'sha256':'old','pageCount':3,'paths':['old.pdf']}},
+                    {'new':{'pageCount':3}},{'new':root/'new.pdf'})
+            self.assertEqual(decisions['new']['decision'],'NEW_PDF_DOCUMENT_NOT_SEEN')
+
     def test_already_imported_pdf_is_skipped_before_any_image_or_model_read(self):
         import mebi_pratik2_arsiv_kabul as admission
         with tempfile.TemporaryDirectory() as tmp:

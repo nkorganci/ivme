@@ -13,13 +13,23 @@ import os
 import unicodedata
 from collections import Counter
 import pymupdf
-from mebi_pratik2_tam_pdf_tarama import BASE,SOURCE
+from mebi_pratik2_tam_pdf_tarama import APP,BASE,SOURCE
 from mebi_pratik2_konu_basligi import normalize
 from mebi_pratik2_uc_adim_kirpim import TEXT_SUBJECTS,OPTION
 from yks_birlestirme import write_json,process_lock
 
 ALLOWED=TEXT_SUBJECTS|{'Matematik','Kimya','Biyoloji'}
 EXTERNAL=re.compile(r'\b(sekil\w*|grafik\w*|tablo\w*|harita\w*|gorsel\w*|resim\w*|duzenek\w*|devre\w*|bu parca\w*|yukarida\w*)\b')
+
+
+def resolve_body_subject(row,categories):
+    if row.get('subject') is not None and row['subject'] not in {'Türk Dili ve Edebiyatı','Din Kültürü ve Ahlak Bilgisi'}:return row,None
+    from mebi_pratik2_tek_tarama_konu import source_subject
+    subject=source_subject(row['relativePath'],categories,row['exam'])
+    if subject not in ALLOWED:return row,None
+    return {**row,'subject':subject},{'basis':'EXACT_SOURCE_SUBJECT_DIRECTORY_OR_EXPLICIT_COURSE_ALIAS',
+        'originalSubject':row.get('subject'),'resolvedSubject':subject,'sourcePath':row['relativePath'],
+        'fineTopicClaimed':False,'teacherApproved':False}
 
 
 def prove(page,row,path):
@@ -66,13 +76,17 @@ def run(name,skip_first=0):
     pdf_decisions=load_decisions()
     folder=BASE/name;package=json.loads((folder/'chapter-packages.json').read_text(encoding='utf8'))
     out=folder/'native-body-proofs';out.mkdir(exist_ok=True);receipts=folder/'body-readings';receipts.mkdir(exist_ok=True)
-    started=time.monotonic();counts=Counter();opened={};last=started;bucket=-1;rows=package['items'][skip_first:]
+    started=time.monotonic();counts=Counter();opened={};last=started;bucket=-1;rows=package['items'][skip_first:];categories=None
     try:
         for index,row in enumerate(rows,1):
             if skip_pdf(row['sourceSha256'],pdf_decisions):counts['existingPracticePdfSkipped']+=1;continue
             receipt=receipts/(row['code']+'.json')
             if receipt.exists():counts['existingReceiptsPreserved']+=1;continue
-            if row['subject'] not in ALLOWED:counts['visualRoute']+=1;continue
+            proof_row=row;subject_evidence=None
+            if row['subject'] not in ALLOWED:
+                if categories is None:categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories']
+                proof_row,subject_evidence=resolve_body_subject(row,categories)
+            if proof_row['subject'] not in ALLOWED:counts['visualRoute']+=1;continue
             sha=row['sourceSha256']
             if sha not in opened:
                 if len(opened)>=8:
@@ -82,8 +96,9 @@ def run(name,skip_first=0):
                 with original.open('rb') as stream:
                     if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Original native source changed')
                 opened[sha]=pymupdf.open(original)
-            proof=prove(opened[sha][row['bodyPage']-1],row,BASE/row['image'])
+            proof=prove(opened[sha][row['bodyPage']-1],proof_row,BASE/row['image'])
             if proof:
+                if subject_evidence:proof['sourceSubjectEvidence']=subject_evidence
                 immutable=out/(row['code']+'.json');write_json(immutable,proof)
                 # Exclusive creation preserves every successful/failed visual
                 # receipt. The immutable separate proof remains auditable.
