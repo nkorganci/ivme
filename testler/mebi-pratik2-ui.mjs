@@ -15,7 +15,7 @@ const mock=await startLearnMock(root,{metadata:{summary:{},branches:[{id:'biyolo
   if(!['/api/questions','/api/questions/filters','/api/questions/availability'].includes(u.pathname))return false;
   requests.push({path:u.pathname,bank:u.searchParams.get('bank')});
   assert.equal(u.searchParams.get('bank'),'MEBI_PRACTICE_2');
-  if(u.pathname.endsWith('/filters'))json([{examType:'AYT',subject:'Biyoloji',topic:'Solunum Sistemi',totalCount:21}]);
+  if(u.pathname.endsWith('/filters'))json([{examType:'AYT',subject:'Biyoloji',topic:'Solunum Sistemi',count:21,totalCount:21,examCount:21,subjectCount:21,subjectTotalCount:21,topicTotalCount:21}]);
   else if(u.pathname.endsWith('/availability'))json({total:21,remaining:21,solved:0,everWrong:0});
   else json({content:pack.items.slice(0,20).map((q,i)=>({id:i+1,code:q.code,bank:q.bank,examType:q.exam,
     subject:'Biyoloji',topic:q.topic,source:'MEBİ AYT Tarama7',resource:{unit:q.unit,subject:'Biyoloji',topics:[q.topic]}})),

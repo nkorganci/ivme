@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2
 
-**Durum: SURUYOR / 15.02 yeniden açıldı.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
+**Durum: KISMI / doğrulanmış557 sorunun canlı aktarımı BITTI; tam arşiv açık.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
 kaynaklardan ikinci, bağımsız soru bankasını üretir. Dosyanın yazılması aktarım
 yetkisi veya tamamlanma anlamına gelmez.
 
@@ -46,7 +46,7 @@ kanıt, ikinci bir AI incelemesi veya öğretmen kararıyla yeniden değerlendir
 
 ### 15.01 — Salt-okunur kaynak envanteri
 
-**Durum: BITTI.** 4.816 kaynak tam SHA-256 ile doğrulandı; 631 soru adayı,
+**Durum: BITTI.** 4.816 kaynak tam SHA-256 ile doğrulandı; 631 soru dosyası adayı,
 14 cevap anahtarı adayı ve 2.068 öğrenciye kapalı karar kuyruğu kaydı üretildi.
 Kanıt: `veri/mebi-pratik-2/20261111-source-inventory/`.
 
@@ -63,7 +63,7 @@ hiçbir dosya taşınmamış/silinmemiştir.
 
 ### 15.02 — Sayfa ve cevap kapsama matrisi
 
-**Durum: YENIDEN_ACILDI.** Önceki 546 PDF taraması toplam 1.573 PDF'nin
+**Durum: KISMI.** Önceki 546 PDF taraması toplam 1.573 PDF'nin
 1.027'sini kapsamıyordu. 14.688 bağlama adayı ve 122.081 kuyruk gözlemi ham
 işaretlerdir; soru sayısı veya doğrulanmış cevap çelişkisi sayılmaz. Belge
 benzerliği ile eşlenen anahtarlar ve farklı testlerde tekrarlanan numaralar
@@ -78,6 +78,12 @@ bağlantısı soru gövdesi yerelde bulunmadığı için ayrı karar kaydı ald�
 Kanıt `full-pdf-coverage.json`, `package-content-report.json`,
 `package-content/`. Bu kayıtlar soru veya cevap kabulü değildir; sıradaki
 iş test/bölüm kimliğiyle anahtar eşleme ve tekil gövde sınırıdır.
+
+Güncel tam keşif: `all-pdf-native-observations/report.json` bütün1.573 PDF/
+27.614 sayfayı indeksledi;102.185 numaralı gövde işareti ve49.567 olası anahtar
+hücresi ham gözlemdir, gerçek/tekil soru sayısı değildir. SQLite tekilleştirilmiş
+`native_signals` katmanı bunları kaynak/sayfa/konumla aratır.1399 PDF'nin
+numara/test/anahtar bağı çözümlenmediği için bu adım tam kabul değildir.
 
 Tek-test bağlama alt işi: `single-test-bindings.json` içinde aynı kaynakta
 tek test kimliği, kesintisiz ve tekil gövde/anahtar numaraları eşleşen
@@ -97,14 +103,9 @@ soru numarasıyla bağlıdır.
 
 ### 15.03 — Özgün soru ve cevap kırpımları
 
-**Durum: KISMI / 15.02 kabulü bekleniyor.** 5.485 özgün sayfa görüntüsü
+**Durum: KISMI / 557 soru kırpımının kabulü BITTI, tam arşiv açık.** 5.485 özgün sayfa görüntüsü
 üretildi; bunlar tekil soru kırpımı veya doğrulanmış cevap kanıtı sayılmaz.
 Test/bölüm eşlemesi ve kırpım bütünlüğü doğrulanmadan kabul yoktur.
-
-İlk tek-test pilotunda 21 özgün soru/anahtar PNG çifti hazır:
-`single-test-crop-pilot/manifest.json`. Biyoloji AYT Tarama-7 soru1 ve
-basılı 1.C anahtarı doğrudan görsel okundu; bu yalnız iki görüntünün
-kontrolüdür, diğer 20 soru veya 3.305 aday için toplu kabul değildir.
 
 Son pilot görsel incelemesi tamam: 21 gövde ve 21 basılı anahtar kırpımı
 doğrudan okundu; görünür kesilme yok. Bağımsız ajan anahtar dizisi
@@ -120,8 +121,9 @@ denetimi 3.210 adayda kesilen native satır bulmadı ve beş tekil seçenek gör
 95 aday incelemede. Bu geometrik kontrol şekil/konu kabulü değildir.
 30 belge için basılı ilk sayfa başlığı kontrollü konu adıyla tam eşleşti;
 144 belge konu incelemesinde (`topic-candidates.json`). Bağımsız yerel anahtar
-okuması `mebi_pratik2_pilot_ikinci_okuma.py --full` ile sürer; 5 dakika veya
-%10 ilerlemede `single-test-crops/second-reading/progress.jsonl` güncellenir.
+okuması3.305/3.305 tamamlandı;557 gövdenin yerel görsel kontrolü de tamam.
+Özgün PDF'den yeniden render edilen557 gövde/anahtar çifti kayıtlı pikselle
+aynı; bu557 kabul edildi ve yayımlandı. Öğretmen onayı oluşturulmadı.
 
 Önceki YKS kaynak kanıtları yeniden üretim yerine uzlaştırıldı:
 `prior-source-proof-reuse.json` içinde güncel MEBİ gövde/anahtar dosyaları ve
@@ -139,6 +141,11 @@ geliyor; bütün başarısız gövdeler dışlanıyor.
 
 ### 15.04 — Konu kimliği ve paketleme
 
+**Durum: KISMI / 557 kanıtlı paket BITTI.**557 soru30 kontrollü konuya ve
+9 TYT/AYT-ders grubuna bağlandı.2.748 güncel adayın belirsizlik nedenleri ve
+kanıtları `teacher-review-export/question-candidates.csv/json` içinde;
+önceki4.354 kaynak kanıtı ayrı, bunlar tekil soru toplamı diye birleştirilmez.
+
 1. Önce MEBİ katalog/klasör/PDF başlıklarını kullanarak TYT/AYT, ders, ünite
    ve konu kimliğini bağla.
 2. Başlık yetmezse yerel görsel model yalnız aday konu önersin; kaynak kanıtı
@@ -149,9 +156,9 @@ anahtar görseli, cevap, ders/ünite/konu, kanıtlar ve `MEBI_PRACTICE_2` bankı
 **Kabul:** boş/uydurulmuş konu yok; eski Pratik kimlikleriyle birleşme veya
 UPSERT yoktur.
 
-### 15.05 — Temsilî pilot ve arayüz
+### 15.05 — Temsilî pilot ve arayüz — BITTI
 
-**Durum: KISMI / yalıtılmış pilot doğrulaması.** `MEBI_PRACTICE_2` banka
+**Durum: BITTI / yalıtılmış pilot ve canlı kabul.** `MEBI_PRACTICE_2` banka
 kimliği, `/pratik-2` yan menü rotası ve mevcut soru listesi/pratik bileşeni
 eklendi. Varsayılan eski havuz yeni bankayı ancak açık seçimde içerir.
 Ön yüz derlemesi PASS; `PracticeSourceSelectionTest,ExamTrackFlowTest` 7/7
@@ -159,7 +166,7 @@ PASS. Gerçek 21 soru görseli/cevabını kullanan `MebiPractice2PilotTest`
 INSERT_ONLY/ikinci çalışma/geri alma/API denetimini yalnız geçici DB'de yapar.
 Pilot sırasında yeni banka kaynak kodunun ortak SQL seçiminde çözülmediği
 bulundu; `V101` eski SQL korumalarını tutarak MEBI2 kaynak eşlemesini ekler.
-Tam 15.05 kabulü bu testin ve masaüstü/mobil görünümün geçmesine bağlıdır.
+Geçici DB'de pilot testleri ve masaüstü/mobil görünüm geçti.
 
 Yalıtılmış pilot alt kabulü **BITTI**: gerçek 21 sorunun INSERT_ONLY ilk
 aktarımı/ikinci aktarım0/bozuk cevapta tüm parti reddi/transaction geri alma/
@@ -170,8 +177,8 @@ Kullanıcı yetkisiyle OPERATOR oluşturuldu; 21 pilot soru alındı ve katalog
 kontrollü konu bağını döndürüyor. Canlı UI kabulü doğrudan `/pratik-2`
 açılışında sunucu SPA yönlendirmesinin eksik olduğunu yakaladı; yönlendirme
 eklendi. `MebiPractice2PilotTest` yeni doğrudan açılış testi dahil4/4 PASS
-(yalnız geçici DB). Yeni yerel sürüm ve canlı UI tekrarı geçmeden536 soruluk
-sonraki parti başlatılmaz.
+(yalnız geçici DB). Yerel izleyici19:28:11'de yayımladı; canlı masaüstü/mobil
+pilot **BITTI / PASS**, cevap sızıntısı0/taşma0 (`pilot-live-read-report.json`).
 
 1. Her TYT/AYT ders türünden küçük kanıtlı parti seç.
 2. `Soru Çöz & Pratik 2` filtresini mevcut Pratik akışıyla aynı soru, cevap
@@ -184,6 +191,21 @@ ifşa edilmez.
 
 ### 15.06 — Kademeli tam aktarım
 
+**Doğrulanmış557 soru alt aktarımı BITTI; arşiv geneli KISMI.** İlk21'e
+ek536 soru6 atomik partide (en çok100 satır) 7,89 saniyede alındı:
+536 INSERT/0 UPDATE/0 hata; ikinci ön izleme0 INSERT/536 SKIP.
+Kanıt `verified-source-batch-001/import-result.json`,
+`import-progress.jsonl`, `repeat-check-result.json`. Son536 katalog yayını
+**BITTI**: `labels-v1-f7955944c50013201fc387f0`. 557 cevap/görsel/konu
+eşleşti; eski86.035 soru fingerprint'i aynı. İlk canlı denetim30 kategori ve
+9 ders/sınav grubunun HTTP görsel hash'lerini doğruladı. Ekran görüntüsünde
+TYT/AYT kutularının0 göstermesi ayrıca yakalandı: ortak facet SQL'i
+`MEBI_PRACTICE_2_AYT` yerine gerçek kaynak kodu `MEBI2_AYT` kullanacak şekilde
+düzeltildi. Görünen557/261TYT/296AYT sayaçları için canlı kabul tekrarlandı;
+önceki makbuzlar `*-before-facet-fix.json` adıyla korunur. Son canlı tekrar
+**PASS / BITTI**:557 toplam/261TYT/296AYT masaüstü ve mobilde doğru.
+`verified-source-batch-001/live-bank-read-report.json`, `bank-acceptance.json`.
+
 1. Güncel banka snapshot’ı al; parti içi ve Pratik 2 içi tekrarları engelle.
 2. Yalnız 15.04 kanıt paketlerini küçük atomik INSERT_ONLY partilerle aktar.
 3. Her partide beklenen/gerçek soru, cevap, görsel ve konu ilişkisi deltalarını
@@ -192,6 +214,13 @@ karşılaştır; başarısız partiyi geri al.
 **Kabul:** tekrar çalıştırma sıfır yeni kayıt üretir; dışlanan kayıtlar görünmez.
 
 ### 15.07 — Tam kapsama kapanışı
+
+**Durum: KISMI.**4.816 dosyanın durumu `source-decision-matrix.json` ve
+`review-index.sqlite3/source_decisions` içinde kayıtlı; sınıfsız dosya0.
+Bu, tüm soruların çıkarıldığı anlamına gelmez:1.399 PDF düzen/anahtar bağı,
+421 görsel inceleme sayfası ve diğer belirsiz kaynaklar açık inceleme
+kuyruğundadır. Bilinen557 kabulün aktarımı/yayını %100; arşivin gerçek soru
+toplamı ve genel tamamlanma yüzdesi henüz bilinmiyor. Tahmini süre yoktur.
 
 1. Kaynak envanterindeki her dosyayı `aktarılmış`, `cevapsız`, `belirsiz`,
 `bozuk` veya `kapsam dışı` sonucu ile kapat.
@@ -212,21 +241,18 @@ oluşturuldu; mevcut kullanıcı rolleri değişmedi. Rastgele parola yayımlanm
 ve düz metin saklanmadı; yerel giriş uygulamanın dev loopback yolunu kullanır.
 `local-operator-created.json` ve kullanıcı kayıt denetimi oluşturma kanıtıdır.
 
-Canlı 21 soruluk pilot INSERT_ONLY aktarımı **BITTI**:21 INSERT/0 UPDATE;
-ikinci ön izleme0 INSERT/0 UPDATE/21 SKIP. Kanıtlar
-`publication-preparation/import-result.json`, `repeat-check-result.json`.
-Bu soruların sürümlü katalog yayını **BITTI**; eski kayıtların içerik
-özetleri aynı kaldı (`publication-preparation/publication-result.json`).
-Canlı görünüm kontrolü geçmeden canlı pilot kabulü BITTI sayılmaz.
-557 teknik adayın tamamı henüz yayımlanmadı.
+Canlı doğrulanmış557 soru INSERT_ONLY aktarımı/yayını **BITTI**:
+261TYT/296AYT,0 UPDATE/0 hata; tekrar0 INSERT.21 pilot ve536 ek soru
+makbuzları `publication-preparation/`, `verified-source-batch-001/` içinde.
+Canlı masaüstü/mobil, görünen sınav sayaçları ve557 veri eşitliği PASS;
+eski86.035 sorunun fingerprint'i aynı. Tam arşiv kabulü açık kalır.
 
 Bağımsız inceleme alt işi **BITTI**: 557 gövde model okuması tamamlandı;
 `single-test-crops/technical-packages.json` 557 teknik kanıt paketini ve
 2.748 kalan inceleme adayını içerir. Bu kayıtlar öğretmen onayı veya canlı
 aktarım değildir. Tam DB yedeği de doğrulandı: 1.239.025.903 bayt / 558
-restore-list girdisi (`publication-preparation/report.json`). Canlı soru
-aktarımı önceki ölçümde0 idi; güncel ölçüm yukarıdaki 21 INSERT'tir. Bütün
-plan hâlâ KISMI.
+restore-list girdisi (`publication-preparation/report.json`). Teknik paket
+hazırlığı ve canlı kabul ayrı makbuzlardır; bütün plan hâlâ KISMI.
 
 Özgün kaynak kabulü alt işi **BITTI**: 557 gövde ve 557 cevap kırpımı güncel
 PDF'den yeniden render edilip kayıtlı görüntülerle piksel piksel eşleşti.
@@ -234,7 +260,7 @@ Basılı sınav/ders başlığı ve kontrollü konu kimliği de doğrulandı;
 `single-test-crops/source-pixel-acceptance.json`:557 kabul/0 yeni hata.
 Bu kabul öğretmen onayı değildir. 3.305 adayın diğer 2.748'i açık nedenlerle
 `review-index.sqlite3/candidate_decisions` içinde tutulur; öğrenciye açılmaz.
-Pilot21 katalog yayını tamamlanınca kalan536 aynı INSERT_ONLY hattına girer.
+557 kabulün tamamı aynı INSERT_ONLY hattıyla yayımlandı.
 
 Yayın performans bulgusu: yeni snapshot henüz istatistik taşımadığından
 EXISTS denetimi yaklaşık90bin×90bin iç içe karşılaştırma seçti. İki

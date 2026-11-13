@@ -209,7 +209,8 @@ public class SharedQuestionLabels {
               LEFT JOIN physics_topic_names t ON b.subject_id=t.subject_id AND t.id=s.id AND t.exam=e.exam
               CROSS JOIN request r
               WHERE e.exam IN (%EXAMS%)
-                AND (jsonb_array_length(r.value->'sources')=0 OR jsonb_exists(r.value->'sources',s.source_bank||'_'||e.exam))
+                AND (jsonb_array_length(r.value->'sources')=0 OR jsonb_exists(r.value->'sources',
+                  (CASE WHEN s.source_bank='MEBI_PRACTICE_2' THEN 'MEBI2' ELSE s.source_bank END)||'_'||e.exam))
             ), exam_counts AS (
               SELECT exam,count(DISTINCT id) AS total FROM expanded GROUP BY exam
             ), subject_counts AS (

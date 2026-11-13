@@ -6,6 +6,56 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
+**MEBI-PRACTICE-2 etkin; kesintisiz yürütme talimatı geçerli.** Kullanıcı,
+mevcut operatör yoksa bu iş için oluşturulmasını yetkilendirdi;
+`ivmeoperator` yalnız OPERATOR rolüyle oluşturuldu. Pilot21 INSERT/0 UPDATE;
+tekrar0 INSERT/21 SKIP. Eski soru kimlikleri ve öğrenci geçmişi korunur.
+
+Pilot katalog yayını BITTI; canlı masaüstü/mobil PASS. Ek536 kayıt6 atomik
+partide7,89sn alındı; tekrar0 INSERT/536 SKIP. Toplam557 INSERT/0 UPDATE;
+katalog yayını BITTI, `labels-v1-f7955944c50013201fc387f0` etkin.
+Yürütücü son kabulü geçti ve bitti. Ekran görüntüsünde yakalanan TYT/AYT
+facet0 hatası SharedQuestionLabels kaynak kodu eşlemesiyle düzeltildi;
+izleyici19:38:02'de yayımladı. Masaüstü/mobil557/261TYT/296AYT sayaçları PASS.
+`verified-source-batch-001/continuation-progress.jsonl` güncel aşamayı taşır.
+
+Yayın performans düzeltmesi: ilk
+geniş JSON karşılaştırması 18 dakika geçici disk/CPU kullandığı için yalnız
+o tamamlanmamış transaction geri alındı; canlı eski katalog ve soru21
+korundu. Dar özetlere rağmen EXISTS satır hedefi iç içe tarama seçti;
+`nested-loop-retry.json` gerçek EXPLAIN bulgusunu kaydeder. Güncel yayın,
+indeksli/ANALYZE edilmiş geçici SHA-256 tabloları ve COUNT kontrolü kullanır;
+`work_mem128MB` yalnız bu transaction'a aittir.
+Uygulama hizmeti durdurulmadı. İkinci eşzamanlı yayın başlatma.
+
+`verified-source-batch-001/bank-acceptance.json` PASS:557 kaynak/cevap/
+görsel/kategori eşitliği ve eski86.035 soru fingerprint'i korundu.
+Tamamlanan hazırlık/INSERT_ONLY/yayın/canlı kabulü tekrar çalıştırma.
+Çalışan aktarım/model işi yok. Sıradaki açık kapsam1.399 PDF'nin çoklu
+test/tekrarlanan numara/anahtar düzenleri ve belirsiz konulardır; mevcut
+EXCLUDE_NO_RETRY adaylarını onarmadan ayrı karar kuyruğunda tut.
+Önceki canlı/veri makbuzları `*-before-facet-fix.json` adıyla korundu;
+güncel UI testi557/261TYT/296AYT görünen sayaçlarını da zorunlu kontrol eder.
+
+557 soru özgün PDF pikseli/basılı kapsam/kontrollü konu/iki anahtar okuması ve
+yerel gövde incelemesiyle kabul edildi; öğretmen onayı değildir.
+`source-pixel-acceptance.json` kanıtı `single-test-crops/` içinde.
+2.748 güncel aday `teacher-review-export/question-candidates.csv/json`
+paketinde; 4.354 önceki kaynak kanıtı ayrı dosyada, sayılar tekil soru diye
+toplanmaz. `source-decision-summary.json`:4.816 dosya sınıflı/0 sınıfsız;
+1.399 PDF'nin düzen/anahtar bağı hâlâ inceleme ister. Arşivin toplam soru
+sayısı ve genel tamamlanma yüzdesi bilinmiyor; plan KISMI.
+
+Geçerli testler: geçici DB9/9, yalıtılmış masaüstü/mobil UI ve frontend build
+PASS; son rota/facet regresyonu4/4 PASS.1.573 PDF/27.614 sayfa ile
+HTML1.048/ZIP78 keşfi tamam; tekrarlama. `all-pdf-native-observations/`
+bütün PDF sayfalarının ham numara/anahtar işaretlerini kaynak/sayfa/kutu ile
+indeksledi; bunlar tekil soru sayısı değildir. SQLite `native_signals` katmanı
+aratılabilir; tüm arşiv soru sayısı hâlâ bilinmiyor.
+3.305 anahtar okuması ve557 gövde model incelemesi tamam; çalışan model yok.
+Tam yedek `publication-preparation/report.json` ile doğrulandı.
+
+
 | Görev | Durum ve sıradaki somut adım |
 |---|---|
 | YKS-08.full → YKS-10.full | **YKS-08, YKS-09 ve YKS-10 TAMAMLANDI — BITTI / seçili sıfır-yeni-soru zinciri.** `selected-yks08-full-acceptance/` 12.266 kaynağı tek son kararda kapattı: 3.697 eski kimlik,36 locator ve üç pilot korunur;8.530 dışlama;4.383 gövde adayında olumlu yenilik kabulü yok,NEW0. `selected-yks09-empty-package/` boş/yayımlanmamış pakettir. `selected-yks10-zero-transfer/` 80.230 banka kaydını salt-okunur doğruladı; üretim soru/katalog/öğrenci DB yazımı, ID birleşmesi ve cutover0; yalıtılmış `ivme_test` pilotunun dört testi ve ikinci INSERT0 kanıtı geçerli. Runtime full08/full09/full10 VERIFIED; kalite raporları sırasıyla `20261109T043139-674c5e0a`, `20261109T043422-2bb1e297`, `20261109T043736-6baf5948`. **Sıradaki:** YKS-11 yalnız katalog/kaynak geçişidir ve soru sayısını artırmaz. 100 bin yeni soru hedefi isteniyorsa önce farklı, geniş kaynak edinimi + çıkarım kapsamı kararlaştırılmalı; dışlanan adayları tekrar açma. |

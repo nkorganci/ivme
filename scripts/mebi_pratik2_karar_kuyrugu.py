@@ -24,6 +24,8 @@ def run():
     db.execute('PRAGMA journal_mode=WAL')
     db.execute('CREATE TABLE IF NOT EXISTS observations (id TEXT PRIMARY KEY, report TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL, student_visible INTEGER NOT NULL DEFAULT 0 CHECK(student_visible=0))')
     db.execute('CREATE TABLE IF NOT EXISTS candidate_decisions (code TEXT PRIMARY KEY, status TEXT NOT NULL, payload TEXT NOT NULL, student_visible INTEGER NOT NULL DEFAULT 0 CHECK(student_visible=0))')
+    db.execute('CREATE TABLE IF NOT EXISTS native_signals (id TEXT PRIMARY KEY,source_sha TEXT NOT NULL,page INTEGER NOT NULL,kind TEXT NOT NULL,payload TEXT NOT NULL,student_visible INTEGER NOT NULL DEFAULT 0 CHECK(student_visible=0))')
+    db.execute('CREATE INDEX IF NOT EXISTS native_signals_source_page ON native_signals(source_sha,page)')
     reports={};written=0
     with db:
         def record(report,status,payload):
@@ -40,6 +42,13 @@ def run():
             for row in data.get(field,[]):
                 record(filename,'UNVALIDATED_LEGACY_SIGNAL' if filename in
                     {'printed-answer-readings.json','body-key-binding-candidates.json'} else row.get('reviewStatus','SOURCE_REVIEW_REQUIRED'),row)
+        native=BASE/'all-pdf-native-observations/observations.jsonl'
+        if native.exists():
+            with native.open(encoding='utf8') as stream:
+                for raw in stream:
+                    row=json.loads(raw)
+                    db.execute('INSERT OR IGNORE INTO native_signals(id,source_sha,page,kind,payload) VALUES(?,?,?,?,?)',
+                        (row['observationId'],row['sourceSha256'],row['physicalPage'],row['kind'],raw.strip()))
         coverage=json.loads((BASE/'full-pdf-coverage.json').read_text(encoding='utf8'))
         for doc in coverage['documents']:
             cached=json.loads((BASE/doc['cache']).read_text(encoding='utf8'))
@@ -69,6 +78,7 @@ def run():
     counts=dict(db.execute('SELECT status,count(*) FROM observations GROUP BY status').fetchall())
     result={'status':'LOCAL_REVIEW_INDEX_UPDATED','observations':sum(counts.values()),'counts':counts,
             'candidateDecisions':dict(db.execute('SELECT status,count(*) FROM candidate_decisions GROUP BY status').fetchall()),
+            'rawNativeSignalsNotQuestionCounts':dict(db.execute('SELECT kind,count(*) FROM native_signals GROUP BY kind').fetchall()),
             'sourceReports':reports,'studentVisible':False,'applicationDatabaseWrites':0,
             'meaning':'OBSERVATIONS_ARE_NOT_DISTINCT_QUESTIONS; LEGACY_CONFLICT_LABELS_ARE_UNVERIFIED'}
     write_json(BASE/'review-index-report.json',result)

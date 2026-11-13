@@ -89,6 +89,10 @@ class MebiPractice2PilotTest extends TestBase {
             .param("categoryId","excel.ayt.biyoloji.03fef08f029e99373ac8"),null).andExpect(status().isOk()));
         assertThat(list.path("totalElements").asInt()).isEqualTo(21);
         assertThat(list.toString()).doesNotContain("correctAnswer","correct_answer");
+        var facets=read(send(session,get("/api/questions/filters").param("bank","MEBI_PRACTICE_2"),null).andExpect(status().isOk()));
+        assertThat(facets.size()).isPositive();
+        assertThat(facets.get(0).path("totalCount").asInt()).isEqualTo(21);
+        assertThat(facets.get(0).path("examCount").asInt()).isEqualTo(21);
         var oldPool=read(send(session,get("/api/questions/availability"),null).andExpect(status().isOk()));
         assertThat(oldPool.path("total").asInt()).isZero();
     }

@@ -44,7 +44,9 @@ def run():
     command('IMPORT_ATOMIC_BATCHES',[sys.executable,'-u','scripts/mebi_pratik2_pilot_import.py','--batch','--apply'],folder/'import-result.json')
     command('REPEAT_ZERO_DELTA',[sys.executable,'scripts/mebi_pratik2_pilot_import.py','--batch','--repeat-check'],folder/'repeat-check-result.json')
     command('PUBLISH_VERIFIED_BATCH',[sys.executable,'-u','scripts/mebi_pratik2_pilot_yayin.py','--batch','--apply'],folder/'publication-result.json')
-    command('LIVE_VERIFIED_BANK_READ',['node','testler/mebi-pratik2-live-bank.mjs'],folder/'live-bank-read-report.json')
+    ui_args=['node','testler/mebi-pratik2-live-bank.mjs']
+    if (folder/'live-bank-read-before-facet-fix.json').exists():ui_args.append('--facets-only')
+    command('LIVE_VERIFIED_BANK_READ',ui_args,folder/'live-bank-read-report.json')
     admitted=json.loads((BASE/'single-test-crops/source-pixel-acceptance.json').read_text(encoding='utf8'))['accepted']
     cmd,env,_=db_connection('ivme');conn=(cmd,env,None)
     current=json.loads(query(conn,"""SELECT json_agg(json_build_object('code',q.code,'answer',q.correct_answer,
