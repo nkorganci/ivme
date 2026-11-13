@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.034 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.123 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -74,6 +74,15 @@ Edebiyat sorusu mevcut ana tablo ders–ünite–konu kimliklerine bağlandı.
 toplam10.034 (5.458 TYT/4.576 AYT). Yeni kırpım/model çağrısı/öğretmen onayı0.
 Kanıt: `source-heading-profile-expansion/`, `verified-source-batch-059/bank-acceptance.json`.
 Bu parti tam arşiv/konu kabulünü kapatmaz.
+
+**060 — BITTI:** 166 Din Kültürü kaynak metni incelendi;89 soru aynı sınavın
+mevcut ders–ünite–konu kimliğiyle kabul edildi (45 TYT/44 AYT).77 kayıt gerekçeli
+konu incelemesinde; farklı sınavın etiketi veya belirsiz tek konu zorlanmadı.
+89 INSERT/0 UPDATE, tekrar0 INSERT, katalog/masaüstü/mobil PASS; toplam10.123.
+Yeni PNG/model/öğretmen onayı0. `reviewed-native-question-9-expansion/`,
+`scripts/mebi-pratik2-reviewed-native-topics-9.json`, `verified-source-batch-060/bank-acceptance.json`.
+Sonraki106 Mantık/Psikoloji/Sosyoloji kaydı özgün metin incelemesine hazır;
+bu sayılar tam arşiv kabulü değildir.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

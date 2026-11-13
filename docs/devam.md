@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.034 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.123 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -53,6 +53,15 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |057|`reviewed-native-question-7-expansion`|29, BITTI|
 |058|`reviewed-native-question-8-expansion`|38, BITTI|
 |059|`source-heading-profile-expansion`|28, BITTI|
+
+**Son alt adım060 BITTI:**89 Din Kültürü kabulü (45 TYT/44 AYT), toplam10.123;
+tekrar0 INSERT, katalog/canlı PASS. `reviewed-native-question-9-expansion/`
+77 konu incelemesi açık; bunları aynı yöntemle tekrar okuma. Sonraki106
+Mantık/Psikoloji/Sosyoloji özgün metin ihracı
+`reviewed-native-question-10-expansion/input-review.json`; gövde/iki cevap
+makbuzları hazır, yerel model/yeni kırpım gerekmez. Mevcut gözetmeni/işçiyi
+kesmeden, bir sonraki kaynak konu kabulünü061 ile hazırla. Her kabul sonrası
+BITTI güncelle, yalnız kendi değişikliğini commit et, sıradaki işe geç.
 
 **Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut
 kırpımı koru, önce cevap anahtarı, doğru ders–ünite–konu. Pratik1 kitap profili,

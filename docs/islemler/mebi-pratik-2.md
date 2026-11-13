@@ -425,3 +425,10 @@ aktarımı `mebi_pratik2_arsiv_kabul.py --package-dir source-heading-profile-exp
 Tek-test istisna geçişi de1.886/1.886 cevap/gövdeyle kapandı. Denemede4.845 hazır,
 634 yeni görsel istisna+3 korunmuş eski inceleme var; ana konu kabulü ayrıdır.
 Sonraki hash kontrolünde7.368 PNG ve iki manifest değişmedi.12 sınır testi PASS.
+
+Bireysel konu kabulü: `mebi_pratik2_incelenen_konu_paketi.py` ile özgün metinde
+bulunan alıntıyı ve kaynak kırpım kimliğini kontrol et. Aynı sınavın mevcut
+seçilebilir kategori kimliği zorunludur.060 Din Kültürü89 soru/166 okuma
+kabulü PASS;77 kalan inceleme yeniden aynı yöntemle döndürülmez. Her alt
+partide katalog ve canlı kabul makbuzu PASS olduktan sonra plan/görev tablosunu
+BITTI güncelle, yerel commit oluştur ve sıradaki açık gruba aynı turda geç.
