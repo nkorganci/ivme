@@ -2,6 +2,14 @@
 
 **Güncel canlı kabul:** 10.034 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
+**Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
+aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
+commit et ve sıradaki açık adıma geç. Tekrar “devam et” komutu bekleme.
+Adımlar tamamlanana veya mevcut bağlam/token/çalışma sınırına ulaşana kadar
+yetkili işi sürdür. Sınırda ana görevi BITTI yapma; gerçek imleci, çalışan
+süreçleri ve sıradaki bağımlılığı devirde koru. Arka plan zinciri yalnız
+uygulanmış/çalışan kapsamı kadar otomatik kabul edilir.
+
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
 ayrı inceleme kategorilerine ayrılması. Kullanıcının son talimatı gereği

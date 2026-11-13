@@ -10,7 +10,12 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
   adıma aynı çalışma içinde geç; ara sonuçları commentary ve kanıt dosyalarına
   kaydet. Yalnız gerçek kullanıcı kararı/yeni yetki gerektiren somut engelde
   veya kullanıcı durdurduğunda dur. Tamamlanmayan işi BITTI gösterme; çalışan
-  arka plan işlemini tüm zincir kendiliğinden sürecekmiş gibi sunma. Her adımın
+  arka plan işlemini tüm zincir kendiliğinden sürecekmiş gibi sunma.
+  Her doğrulanmış alt adımı belgeledikten sonra yalnız o işe ait değişiklikleri
+  yerel `main` dalına commit et ve aynı çalışma içinde sıradaki adıma geç.
+  Kullanıcıdan yeniden başlatma/devam komutu bekleme; yetkili planı adımlar
+  tamamlanana veya mevcut bağlam/token/çalışma sınırına ulaşana kadar sürdür.
+  Her adımın
   kabulü geçince planı/görev tablosunu BITTI güncelle, plan bütünü geçince ana
   başlığı da BITTI yap. Bu kural güvenlik ve veri koruma sınırlarını kaldırmaz.
 
