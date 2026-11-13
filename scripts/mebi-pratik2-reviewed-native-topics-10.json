@@ -1,0 +1,877 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q001",
+      "categoryId": "excel.ayt.mantik.640307d16722a25a9290",
+      "imageSha256": "bc2c148051342a65f29c4f42a6357bc6c8a8da066ac9445f7e6740f32fa74646",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Mantık, doğru düşünme biçimleri üzerine çalışan bir disiplindir. Bu bakımdan farklı bilgi alanları tarafından araç olarak kullanılır. Mantık bir bilim hâline gelmeden önce de doğru düşünmenin var",
+      "rationale": "Mantığın tanımı, bilgi doğrusu, akıl yürütmenin geçerliliği ve öncül temel kavramları ölçülür; sembolik doğruluk çizelgesi sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q003",
+      "categoryId": "excel.ayt.mantik.640307d16722a25a9290",
+      "imageSha256": "394c3a5a291449a47ae4b6e7f54d01545209dba6182ac005f92baf4aea8d74c8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Önermeler belirli doğruluk değerlerine sahiptir. Bir önermenin ifade ettiği durum gerçekle örtüştüğünde “doğru”, örtüşmediğinde ise “yanlış” olarak değerlendirilir. Böylece önermeler ya doğru ya da yanlış olarak nitelendirilir.",
+      "rationale": "Mantığın tanımı, bilgi doğrusu, akıl yürütmenin geçerliliği ve öncül temel kavramları ölçülür; sembolik doğruluk çizelgesi sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q005",
+      "categoryId": "excel.ayt.mantik.640307d16722a25a9290",
+      "imageSha256": "18cb57a5cc3446830f4d179341bcfb6fdcf2a261c4deac31928d506392cca902",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Bir akıl yürütmede sonuç, öncül veya öncüllerden zorunlu (kesin) olarak çıkıyorsa akıl yürütme geçerli; çıkmıyorsa geçersizdir. Geçerlilik ve geçersizlik, akıl yürütmedeki önermelerin içerik bakımından doğruluk veya yanlışlıklarıyla",
+      "rationale": "Mantığın tanımı, bilgi doğrusu, akıl yürütmenin geçerliliği ve öncül temel kavramları ölçülür; sembolik doğruluk çizelgesi sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q019",
+      "categoryId": "excel.ayt.mantik.640307d16722a25a9290",
+      "imageSha256": "4f6eb9738db8e8d1436226e8af025e6ae60bae71992570dc7c0eb4a130571804",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Bütün insanlar ölümlüdür. Sokrates insandır. O hâlde Sokrates ölümlüdür. Verilen akıl yürütmede sonuca kaynaklık eden ifadeler aşağıdakilerden hangisi ile adlandırılır? A) Mantık doğrusu B) Tutarlılık C) Geçerlilik",
+      "rationale": "Mantığın tanımı, bilgi doğrusu, akıl yürütmenin geçerliliği ve öncül temel kavramları ölçülür; sembolik doğruluk çizelgesi sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q002",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "imageSha256": "d4bc0e44952f9fe60a9bb40c6275e84400ce55c9a612e19285d48058a7fb94cd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Retrodüksiyon; gözlenen bir olgunun, gözlem dışında kalan neden, süreç ya da kavramlarla açıklanmaya çalışıldığı bir çıkarım biçimidir. Buluş mantığı olarak da adlandırılan bu yöntemde gözlemlenen sonuçtan hareketle,",
+      "rationale": "Retrodüksiyon, analoji ve tam tümevarım doğrudan akıl yürütme yöntemleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q012",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "imageSha256": "e5c1913d099390d8476e9601a4ada74cda49f0f5c4014af5d1938d7f17725aa9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Analoji; iki farklı olay, nesne veya durum arasındaki benzerlikten yola çıkarak yapılan bir akıl yürütme biçimidir. Analojiyle, bilinmeyen bir durumu bilinen bir duruma benzetip açıklamak mümkündür. Metinden",
+      "rationale": "Retrodüksiyon, analoji ve tam tümevarım doğrudan akıl yürütme yöntemleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q015",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "imageSha256": "d26b8be4d0660f7b54f9d603c01b196159f1a84b381129884e3f87b54a9924b9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. “A, B, C ve D harfleri bir alfabenin tüm harfleridir. Bu harflerin hepsinde sesli olma özelliği bulunur. O hâlde bu alfabenin tüm harfleri seslidir.” Yukarıdaki akıl yürütme",
+      "rationale": "Retrodüksiyon, analoji ve tam tümevarım doğrudan akıl yürütme yöntemleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q004",
+      "categoryId": "excel.ayt.mantik.d8d25b3b6d70e0397a74",
+      "imageSha256": "a90d86ee96b6cfdaeaa66e9ae77e3af4f6cf9edd07b36563ab57b2b7c5f4498b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Günlük yaşamda kullandığımız akıllı cihazlar, cep telefonları ve bilgisayarlar insan hayatında devrim yaratmıştır. Bu cihazların gelişiminde mantık biliminin önemli bir rolü bulunmaktadır. Özellikle bulanık mantık, bu ürünlerin",
+      "rationale": "Mantığın teknik cihazlar ve günlük karar/tartışma süreçlerinde kullanılması ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q017",
+      "categoryId": "excel.ayt.mantik.d8d25b3b6d70e0397a74",
+      "imageSha256": "bb254bd67fdca8c4b75c48f48cb62f166c11b6d800d6241750837e0995ffabfb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. İnsan yaşamı, sürekli olarak kararlar almak ve sorunlarla başa çıkmak zorunda olunan bir süreçtir. Karar verirken ya da bir problemi çözerken sadece bilgi sahibi olmak yetmez; bilgiyi",
+      "rationale": "Mantığın teknik cihazlar ve günlük karar/tartışma süreçlerinde kullanılması ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q001",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "imageSha256": "9f409cc136ace2362003f9d119fc896754512369d06c4149b378d81b818999fa",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Dil iletişimin en önemli aracıdır. Dil vasıtasıyla insan düşüncelerini, duygularını, isteklerini vb. başka insanlara aktarmaktadır. Bu aktarım sayesinde insanlara bir şeyler öğretebilir, onları etkileyebilir veya yönlendirebilir. Dilin",
+      "rationale": "Bildirme, belirtme, yaptırma ve törensel görevlerin örnekleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q004",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "imageSha256": "03e1a1bf78ee129ce289a4afeaf952f5fd82b933d9b52070a5505269bbdf0cfb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Dilin yaptırma görevi ile ilgili aşağıdakilerden hangisi doğrudur? A) İnsanlar arası iletişimi kolaylaştırır, ilişkileri düzenler. B) Bir tavır veya duygunun iletilmesini sağlar. C) İnsan davranışlarını etkilemeye ve",
+      "rationale": "Bildirme, belirtme, yaptırma ve törensel görevlerin örnekleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q005",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "imageSha256": "5e898a2aa252763fa8bf76ffdfe2584aac2940ca39f2bed46576b99538dc6304",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Dilin törensel görevi “Merhaba.”, “Kolay gelsin.”, “Hoşça kal.” gibi ifadeler yoluyla insan ilişkilerini başlatma, sürdürme ve sonlandırma gibi amaçları gerçekleştirmektir. Böylece insan ilişkilerini güçlendirir ve düzenler. Buna",
+      "rationale": "Bildirme, belirtme, yaptırma ve törensel görevlerin örnekleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q006",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "imageSha256": "693d5983a9dd2755561271629be56f49a42043241f9a1f138d4084fb3bd256a1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Günlük dilde belirsizliğin önüne geçmek neredeyse imkânsızdır. Bu durum yanlış anlaşılma ya da anlaşılmama gibi sonuçlar doğurabilir. Ancak bilimde belirsizliğin olması bilimin gelişmemesi gibi çok daha ciddi",
+      "rationale": "Anlam belirsizliği, bilimsel dilin açıklığı, anlama ve tanımlama incelenir; klasik mantıkta tanım kuralları sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q009",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "imageSha256": "2e149a5c0f15377173fd91559c7126238bf8b8c291b3e33df05b6f2cabf6efa2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Dilin günlük hayattaki kullanımında bilim dillerine kıyasla daha fazla belirsizlik görülür. Bilim dilleri arasında da belirsizlik düzeyi farklılık gösterebilir. Özellikle toplum ve insan davranışları gibi değişken ve",
+      "rationale": "Anlam belirsizliği, bilimsel dilin açıklığı, anlama ve tanımlama incelenir; klasik mantıkta tanım kuralları sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q016",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "imageSha256": "d0b3638a8c4166ff149e04414eb89cb456d0c321331456a17dbbb8c1eec7a955",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Tanımlama, bir kavramın ne olduğunu başkalarına açıklamak amacıyla, ayırt edici özellikleriyle ortaya konup anlamının belirlenmesidir. Anlama ise bu tanımın ya da kavramın, kişi tarafından doğru şekilde kavranması,",
+      "rationale": "Anlam belirsizliği, bilimsel dilin açıklığı, anlama ve tanımlama incelenir; klasik mantıkta tanım kuralları sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q020",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "imageSha256": "1d3a7dc62601d695fa2843cba99cd03c4ad776fcccfd70967f0952ce2525e129",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Bir şeyi anlamak, onun ne olduğunu fark etmekle başlar. Ancak bu fark ediş başkalarına anlatılmadıkça paylaşılabilir hâle gelmez. Bu durumda kişi, söz konusu şeyi başkalarının da kavrayabileceği",
+      "rationale": "Anlam belirsizliği, bilimsel dilin açıklığı, anlama ve tanımlama incelenir; klasik mantıkta tanım kuralları sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q002",
+      "categoryId": "excel.ayt.mantik.04e7c30dda5d4ae4ebdb",
+      "imageSha256": "9dd63b17d405ff75a50a0c1595f4b45187b94b4f3667ae17e527189daef5c727",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Klasik Sembolik Mantık Mantık Basit Bileşik Basit Bileşik Kalem mavidir. (p) X X Kalem canlı değildir.( ~p) X X Kalem yeni ve sağlamdır. X X (p Л",
+      "rationale": "Basit-bileşik önerme yapısı ve ana eklem ölçülür; doğruluk değeri hesaplatılmaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q005",
+      "categoryId": "excel.ayt.mantik.04e7c30dda5d4ae4ebdb",
+      "imageSha256": "1428513493b87fe290b8470060db87b47dc4b4dafbe978069c8603ca3391348e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. “Pelin zekidir veya tembel değildir.” önermesi sembolleştirildiğinde önermenin ana eklemi aşağıdakilerden hangisi olur? A) Koşul (¡) B) Değilleme (~) C) Tikel evetleme (v) D) Karşılıklı koşul E)",
+      "rationale": "Basit-bileşik önerme yapısı ve ana eklem ölçülür; doğruluk değeri hesaplatılmaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q004",
+      "categoryId": "excel.ayt.mantik.19c0a8e2251aeaf7ead6",
+      "imageSha256": "cb1a3f71c1b5882e22661028d693922e73e89f613bea1516f1660ca7813dbd16",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. “Bir vatandaş haklarını bilir veya sorumluluklarını yerine getirirse takdir edilir.” önermesinin sembolik mantıktaki karşılığı aşağıdakilerden hangisidir? A) (p v q) ¡ r B) (p ¡ q) v",
+      "rationale": "Günlük dil önermesinin ve çıkarımın önerme/eklem sembolleriyle gösterilmesi istenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q006",
+      "categoryId": "excel.ayt.mantik.19c0a8e2251aeaf7ead6",
+      "imageSha256": "2e35527da27b44781dcf7c5d5d386fb54a014cbe67072c9684672b304f48958f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Ürün taze ise lezzetlidir. (p ¡ q) Ürün taze değildir. ~p O hâlde ürün lezzetli değildir. ~q Bu çıkarımın sembolik ifadesi (p ¡ q), ~p ~q şeklinde",
+      "rationale": "Günlük dil önermesinin ve çıkarımın önerme/eklem sembolleriyle gösterilmesi istenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q008",
+      "categoryId": "excel.ayt.mantik.2208c955aafe6b039c09",
+      "imageSha256": "a5f0d60b90794fccb9db6fdc64185594db1227bedd8d1ff71ccc992b75adc680",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Sembolik mantıkta iki farklı doğruluk değeri alabilen sembolleştirilmiş önermelere doğru ya da yanlış değer verilmesine yorumlama denir. Bileşik önermelerin doğruluk değerini gösteren çizelgeler doğruluk çizelgesi ya da",
+      "rationale": "Yorumlama satırları ve önerme eklemlerinin doğruluk çizelgesindeki değerleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q009",
+      "categoryId": "excel.ayt.mantik.2208c955aafe6b039c09",
+      "imageSha256": "63c750d8f23392c310caf1f70c445cc42f115cb96eb1391ee5ce04b6757e29b5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Değilleme eklemleri önüne geldiği önermenin doğruluk değerini değiştirir. Aşağıdaki tabloda p ve q önermelerinin alabileceği doğruluk değerleri gösterilmiştir. Bu önermelerin önüne değilleme eklemi geldiği durumda alacakları doğruluk",
+      "rationale": "Yorumlama satırları ve önerme eklemlerinin doğruluk çizelgesindeki değerleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q010",
+      "categoryId": "excel.ayt.mantik.2208c955aafe6b039c09",
+      "imageSha256": "441f631241f9d8a1e3f45b0d2861258d2f5b6d654bc3e8af62632301012e8e74",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. (p Л q) şeklinde sembolleştirilebilecek “Ders eğlenceli ve öğreticidir.” bileşik önermesinin doğruluk çizelgesinde yorumlanırken doğru (D) değer alması için bileşik önermeyi oluşturan basit önermelerin ikisinin de aynı",
+      "rationale": "Yorumlama satırları ve önerme eklemlerinin doğruluk çizelgesindeki değerleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q011",
+      "categoryId": "excel.ayt.mantik.2208c955aafe6b039c09",
+      "imageSha256": "08005ec3dd643bb1d068b278e2911cf21448a5838450d732186fe5fde425dbef",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. p q ? ? D D D D D Y D Y Y D D Y Y Y Y D Verilen doğruluk çizelgesinde soru işareti (?) ile",
+      "rationale": "Yorumlama satırları ve önerme eklemlerinin doğruluk çizelgesindeki değerleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q012",
+      "categoryId": "excel.ayt.mantik.0e95e87c0abac2d84deb",
+      "imageSha256": "4f5188d46549f34925d557e32849f06cbdfb0c736ddf7b23f4a5f8287daabf69",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Bir bileşik önermenin tutarlılığının doğruluk çizelgesinde denetlenmesi ile ilgili aşağıdakilerden hangisi doğru değildir? A) Önermenin bileşenleri belirlenir. B) Bileşen sayısına göre doğruluk çizelgesinin satır sayısı belirlenir. C)",
+      "rationale": "Doğruluk çizelgesinde tutarlılık ve önerme çiftlerinin eşdeğerlik denetimi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q013",
+      "categoryId": "excel.ayt.mantik.0e95e87c0abac2d84deb",
+      "imageSha256": "12921f48be610945cccecb3372eced4210c77bce0fa6996d6fe2f61bdfc39220",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. p q ~p ~q (p ¡ q) (p Л ~q) (~p q) (q v ~p) D D Y Y D Y Y ⇔ D D Y Y",
+      "rationale": "Doğruluk çizelgesinde tutarlılık ve önerme çiftlerinin eşdeğerlik denetimi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q014",
+      "categoryId": "excel.ayt.mantik.9c87ad0fe5097f20deb1",
+      "imageSha256": "a73b241fd0738d5beaf8703bb0a559cc5f6160e1e68864e86eeb22af51d12e1a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Aşağıdaki önermelerden hangisinde çözümleyici çizelge ile işlem yapılırken yalnızca çengele gitme kuralı uygulanır? A) (p v q) B) (p Л q) C) (p ¡ q) D) ~",
+      "rationale": "Çengele gitme ve çözümleyici çizelge yönteminin denetim kuralları açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q017",
+      "categoryId": "excel.ayt.mantik.9c87ad0fe5097f20deb1",
+      "imageSha256": "1d6fdf8f2d6d4fb8c78fd3a96e46c32ebb6e5284224863214fbc4970e4a465ce",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. (p ¡ q) ve (q v ~p) önermelerinin eşdeğerliğini çözümleyici çizelgede denetlemek için aşağıdakilerden hangisini yapmak gerekir? A) Önermeler alt alta yazılır, çengele gitme kuralı uygulanarak çözümlenir,",
+      "rationale": "Çengele gitme ve çözümleyici çizelge yönteminin denetim kuralları açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q018",
+      "categoryId": "excel.ayt.mantik.fcdced7b1a76c4ae1cb1",
+      "imageSha256": "6c3f7885ccfdc61b60a2f39de1ee934a9c2afd8730163461e2853a1397bdf952",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. “Bütün maddeler yer kaplayandır.” şeklinde bir tümel önerme de “Bazı hayvanlar sürüngendir.” biçiminde tikel bir önerme de önermeler mantığında “p” gibi bir küçük harf ile sembolleştirilir. Ancak",
+      "rationale": "Tümel-tikel niceleyiciler ve ad-yüklem sembolleştirmesi niceleme mantığıdır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q019",
+      "categoryId": "excel.ayt.mantik.15b9e8e012adcdd94ade",
+      "imageSha256": "d319c6901ccc72dfdb6ad9cb6b4acb6445f250bc9fdaf4698c47dec334e0710c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Bu mantık sisteminde “0” ile “1” arasında yer alan değerler önermelere yüklenir. Bu da önermelerin doğruluk değerleri ile ilgili sınırlılığın ortadan kalkması demektir. Bu mantık sistemi özellikle",
+      "rationale": "İki değer dışında sürekli doğruluk dereceleri kullanan bulanık mantık mevcut çok değerli mantık kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q001",
+      "categoryId": "excel.ayt.psikoloji.4b47a1dcbfcc19bb0333",
+      "imageSha256": "4af478d29a00b64b02077bbdd6108a19ce09f3ec5baf01d06da84657542313f7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Felsefenin ruh ile ilgilenen bir dalı olarak ortaya çıkan psikoloji 19. yüzyılda ayrı bir bilim dalı hâline gelmiştir. Psikoloji günümüzde, insan ve hayvanların gözlenebilen ya da ölçülebilen",
+      "rationale": "Psikolojinin gözlenebilir/ölçülebilir davranış ve zihinsel süreçleri inceleyen bilim olarak konu alanı sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q003",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "600865597c13a511457a3e29dc81c0e7e4d36556be646df98e1ebfbd91b10620",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Yapısalcı yaklaşımı benimseyen bir grup psikolog, zihinsel süreçleri anlamak için bireylerin iç dünyasını dikkatlice incelemeye çalışmaktadır. Onlara göre bilinç karmaşık bir yapıya sahiptir ve bu yapının çözülebilmesi",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q004",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "38b2d6f5ab0610ef1ccafb827f488745d3bcdee28ed54b7158f6a0b7140bdba4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Bir psikolog, gençlerin dijital oyunlara olan ilgisini şöyle değerlendiriyor: “Gençler, sosyal ortamda karşılaştıkları baskı ve kaygıları, oyun oynayarak hafifletiyorlar. Özellikle strateji ve takım oyunları, onlara hem zihinsel",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q005",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "83219e120cfd6d972d3f9ef9f420e0d429ed49f84385655186b2ade9d6ff04af",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Sosyokültürel yaklaşım, bireylerin davranışlarını ve düşünce süreçlerini içinde bulundukları kültürel ve toplumsal bağlamla ilişkilendirir. Bu yaklaşım, insanın sadece biyolojik ve zihinsel değil aynı zamanda sosyal ve kültürel",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q007",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "232aa18b16adc8c3df79d678bbfdace78414bdc2398eb025a9dff87357ec3e55",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Psikanalitik yaklaşım; bireyin davranışlarını ve ruhsal süreçlerini bilinç dışı dürtüler, bilinçaltına itilmiş çatışmalar ve geçmiş yaşam deneyimleriyle açıklayan bir kuramdır. Buna göre psikanalitik yaklaşım insan davranışlarını açıklarken",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q008",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "afe18a5a599dea378d69962968ff8e3968faea2bcb80a5cf369202e8581c4e1f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Sabah uyandığında önemli bir sınavı olduğunu hatırlayan Elif, kaygılanmaya başlar. Bu duygunun nedeni yalnızca sınav değil; sınav hakkında zihninden geçen “Ya başarısız olursam?”, “Yeterince çalışmadım.” gibi düşüncelerdir.",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q009",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "28a6821af8cfc6feeb115fc203b24006b0986b6634010e12173162e6483b4f21",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Serkan; insanın kendini gerçekleştirme potansiyeline inanan, içten duygulara ve bireysel seçimlere büyük önem veren biridir. Ona göre her birey, doğuştan değerli ve anlamlı bir varlıktır. İnsanların koşulsuz",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q010",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "e9c5065c7eb34d3f3f8870a125c8cae98462ae97ff23970eef1c38919982be58",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Hayatının anlamını sorgulamak, serbestçe seçim yapma sorumluluğunu üstlenmek, var olmanın getirdiği kaygıyla başa çıkmak, acıyı ve ölümü kabullenmek… Varoluşçu psikoloji, insanın bu temel deneyimlerine odaklanır. Bu yaklaşıma",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q011",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "8667c4389e5feedc810b99a16a6a2c1c9ab9b78b076302fdda44129a9cc37928",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Bir öğretmen, öğrencilerine gökyüzünde gördükleri bulutları hangi şekillere benzettiklerini sorduğunda, öğrenciler şu yanıtları verir: “Fil gibi!”, “Bir kalp var!”, “Köpek görüyorum!” Öğretmen bu cevaplardan sonra öğrencilerine şu",
+      "rationale": "Yapısalcı, işlevselci, sosyokültürel, psikanalitik, bilişsel, hümanistik, varoluşçu ve Gestalt yaklaşımlarının açıklama biçimleri ölçülür; algı ilkesi örneği yaklaşımı tanımak için kullanılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q016",
+      "categoryId": "excel.ayt.psikoloji.73bf86f9e5fbbdb2f98a",
+      "imageSha256": "3517ab18399f02d3adb81a372fb043281f65e58ff222a0ad2fd0f51394db3510",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Gözlem, bireyin doğal ya da düzenlenmiş bir ortamda davranışlarının izlenmesi ve kaydedilmesi esasına dayanan bir veri toplama yöntemidir. Gözlem sırasında bireyin davranışları sistemli bir şekilde takip edilir",
+      "rationale": "Araştırmada gözlemin işleyişi ve gözlemci öznelliği sınırlılığı sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q001",
+      "categoryId": "excel.ayt.psikoloji.b5f84739d2f9638e7b5d",
+      "imageSha256": "4955635a98f7af098cae5295bf61c42018d8004a75b5048dfc6120f9a5c5ca16",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. “Farklı uyarıcılar aynı organizmada aynı tepkiyi oluşturabilir.” Aşağıdakilerden hangisi davranışın oluşum sürecine ilişkin bu ifadeye örnek oluşturur? A) İnsanlar yüksek seste irkilir, köpekler havlar, kuşlar korkup uçarak",
+      "rationale": "Uyarıcı-organizma-tepki ilişkisinde farklı uyaranların aynı tepkiyi oluşturması ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q003",
+      "categoryId": "excel.ayt.psikoloji.e15ef9b731db447765b4",
+      "imageSha256": "91fe3b75721809ef5f133dad97fa9a448df07c44f3fec8566905fbb511b57495",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Yedi yaşındaki bir çocuktan yürüyebiliyor, konuşabiliyor, sayı sayabiliyor olmasını bekleriz. Çünkü sağlıklı bir birey bu yaşta hem fiziksel hem de bilişsel olarak bunları yapabilmeye uygun hâle gelmiş",
+      "rationale": "Yaşa bağlı gelişim, büyüme, olgunlaşma ve yaşam boyu gelişim karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q013",
+      "categoryId": "excel.ayt.psikoloji.a751d96e7791914f05ef",
+      "imageSha256": "d2eab12383fb42eb6a07bbd3608c860d9fb49cb7e563637eee5c07c1cdeb5884",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Ezgi, ders arasında yakın arkadaşının sırasına bıraktığı notu buldu. Ancak belli ki not, mürekkebi azalmış bir kalemle yazılmıştı ve bazı harfler silik ya da eksikti. Notta yer",
+      "rationale": "Eksik harflerin zihinde tamamlanması algıda örgütlenmenin tamamlama ilkesidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q014",
+      "categoryId": "excel.ayt.psikoloji.e47653f34b76074a2aaf",
+      "imageSha256": "e9a098a8010e81647b1d4fede7ce2533e66108b66b70f60c7c5148ea2946cc22",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Sinem, yaklaşan sınavları için motivasyonu yüksek bir şekilde ders çalışıyordu. Başarılı olma isteği, onun hem zihinsel hem de fiziksel olarak daha çok çaba göstermesine neden oluyordu. Özellikle",
+      "rationale": "İçsel/dışsal güdüler ve Maslowun ihtiyaçlar hiyerarşisi güdülenmenin kaynaklarını açıklar.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q015",
+      "categoryId": "excel.ayt.psikoloji.e47653f34b76074a2aaf",
+      "imageSha256": "2e6b0798c1e8a0220a3d260fc2ac59545f4f427819fd4a9c22fd21387ca7f734",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Mert, son zamanlarda sanatsal etkinliklere karşı ilgisini kaybetmiştir. Eskiden resim yapmaktan, sergilere gitmekten büyük keyif alırken artık bu tür etkinliklere zaman ayırmak istememektedir. Bu değişikliği fark eden",
+      "rationale": "İçsel/dışsal güdüler ve Maslowun ihtiyaçlar hiyerarşisi güdülenmenin kaynaklarını açıklar.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q017",
+      "categoryId": "excel.ayt.psikoloji.afdfbfabf7b749c6248c",
+      "imageSha256": "f000ecddef975609e4445f9eef0f06dd9aa893e4a9be01262365a7dc20aba57d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Psikolojide dikkat, bireyin çevresindeki uyaranlar arasından bazılarına zihinsel kaynaklarını yöneltme sürecidir. Bu süreç iki farklı biçimde gerçekleşir: Aktif dikkat ve pasif dikkat. Pasif dikkat; bireyin iradesi dışında,",
+      "rationale": "Aktif ve pasif dikkatin uyaran/irade bakımından ayırt edilmesi açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q019",
+      "categoryId": "excel.ayt.psikoloji.c8525c3c8d4dbed6004c",
+      "imageSha256": "43978ae7d822e260cb94a970100355e7bccd4978af39e25bcf538d7d7eea5eeb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Sosyoloji; toplumsal yapıları, kurumları, grupları ve bu unsurlar arasındaki ilişkileri inceleyen bir bilim dalıdır. Toplumların nasıl şekillendiğini ve toplumsal kurumların nasıl işlediğini anlamaya çalışır. Sosyal psikoloji ise",
+      "rationale": "Grup baskısı altındaki birey davranışı sosyal psikolojinin ilgi alanıdır; sosyolojiyle sınır karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q001",
+      "categoryId": "excel.ayt.psikoloji.ec9fd5493a0ac14b70c1",
+      "imageSha256": "647208dd7441b05d59ead1bfca66c6bd055649e9cd6528f23ccf5ec626c319a9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Öğrenme, tekrar ve yaşantı sonucunda davranışta meydana gelen kalıcı değişikliklerdir. Öğrenme ile bireyin davranışlarında iyi ya da kötü yönde değişim meydana gelebilir. Örneğin, bir öğrenci düzenli çalışmayı",
+      "rationale": "Öğrenmenin yaşantıyla kalıcı davranış değişimi olması ve edimsel koşullanmada pekiştirme ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q003",
+      "categoryId": "excel.ayt.psikoloji.ec9fd5493a0ac14b70c1",
+      "imageSha256": "6521905bc0d616484b017a5edd89ea58f6d3044a7ede8167e15b4e6354a4e3f3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Yiğit, gitar çalmayı kendi başına öğrenmeye karar verdi. Ancak her çalışmasında kısa sürede pes ediyor ve gitarı uzun süre bir kenara bırakıyordu. Bir gün, internetten ilgisini çeken",
+      "rationale": "Öğrenmenin yaşantıyla kalıcı davranış değişimi olması ve edimsel koşullanmada pekiştirme ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q004",
+      "categoryId": "excel.ayt.psikoloji.3f909e293f0ce02cda86",
+      "imageSha256": "50760adf7e863eea52b3e753e3fdc76f403ef744241188cb1766ab8849ce267c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Tahir, okuduğu metinlerden kısa özetler çıkarır, öğrendiği kavramları kendi cümleleriyle tekrar yazar ve bazı konular için kavram haritaları çizer. Bu sayede konular arasındaki ilişkileri görür, konuları eski",
+      "rationale": "Anlamlandırma stratejisi ile kaygının öğrenilen bilgiyi kullanmaya etkisi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q008",
+      "categoryId": "excel.ayt.psikoloji.3f909e293f0ce02cda86",
+      "imageSha256": "eee411fe5f2163fdb2e35f6b7e62da8724e15481134157c4464a801ef9362923",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Üniversite öğrencisi Funda, yıl boyunca derslerini dikkatle takip etmiş ve düzenli çalışmıştır. Final sınavının olduğu günün sabahı, sınav salonuna girdiğinde kalbinin hızla çarptığını ve ellerinin titrediğini fark",
+      "rationale": "Anlamlandırma stratejisi ile kaygının öğrenilen bilgiyi kullanmaya etkisi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q005",
+      "categoryId": "excel.ayt.psikoloji.bbb73f0becbc7f06457e",
+      "imageSha256": "5689aff3f743478c59aff8241ad9d54c214e03a1715bed7a54765efcdc90d98e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Bilişsel öğrenme, bireyin zihinsel süreçlerini kullanarak edindiği öğrenme türüdür. Bu süreçte birey; algılama, anlama, düşünme, hatırlama ve problem çözme gibi zihinsel etkinliklerle yeni bilgi ve beceriler kazanır.",
+      "rationale": "İçgörü, gözlem ve zihinsel problem çözme ile dış pekiştirmeye dayalı öğrenme ayrılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q014",
+      "categoryId": "excel.ayt.psikoloji.3f054043a97cf63d72c2",
+      "imageSha256": "eb2c8c768c00d47bb2433ac5902be63ab605390c2dfc8ffc26b76ac623433265",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Tarih dersinden geçmekte zorlanan bir öğrenci sözel ve soyut bilgileri aklında tutamadığından yakınmaktadır. Rehber öğretmeni ile bu sorununu paylaşıp ne yapabileceğini sorduğunda öğretmeni şöyle cevap verir: “Soyut",
+      "rationale": "Hatırlamayı geliştirmek için görselleri ilişkilendiren bellek haritası tekniği doğrudan bellek işlemidir; transfer belirsizi ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q016",
+      "categoryId": "excel.ayt.psikoloji.05cc92cdf96bfb019e9a",
+      "imageSha256": "34d9dbc09af0c7beb5ef5d5860f708743c2856f5b0bf02f8b15adaf00db7feb1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Düşünmenin yapı taşları, insanların dünyayı anlamalarını ve düşüncelerini organize etmelerini sağlayan temel zihinsel unsurlardır. Bu yapı taşlarını şöyle sıralayabiliriz: İmge, sembol, kavram ve kategori. İmge, duyusal algılarımıza",
+      "rationale": "İmge-sembol-kavram-kategori ve dilin düşünmeyi düzenleme işlevi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q017",
+      "categoryId": "excel.ayt.psikoloji.05cc92cdf96bfb019e9a",
+      "imageSha256": "77ffcd1aa7b2fda00e43ef1e580f52fba74da19876438d1d400312eaab91d578",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Dil, düşünme süreçlerinin temel bir aracıdır. İnsanlar çevresindeki dünyayı anlamak ve düşüncelerini organize etmek için dili kullanır. Dil; insanların duygu, düşünce ve isteklerini söz, yazı ve çeşitli",
+      "rationale": "İmge-sembol-kavram-kategori ve dilin düşünmeyi düzenleme işlevi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q018",
+      "categoryId": "excel.ayt.psikoloji.b8450bd0eb2a726ad273",
+      "imageSha256": "fabcb29c560620807e686c2f384ce76b5f0cbbe504dafaa3caf5141c441070db",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Mehmet, okulda gösterdiği üstün başarılarıyla öğretmenlerinin dikkatini çekmiştir. Matematik problemlerini hızlı ve doğru şekilde çözmekte, yeni bilgileri çabucak öğrenmektedir. Ailesi onun bu yönünü desteklerken Mehmet’in başarılarının sadece",
+      "rationale": "Zekanın kalıtımla ilişkisi ve Thorndikenin mekanik zeka türü açıkça sorulur; yaratıcılık ayrımı ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q019",
+      "categoryId": "excel.ayt.psikoloji.b8450bd0eb2a726ad273",
+      "imageSha256": "ca56509cbad4cb52c80c358289d59ad4e0166eebb9db2270bdb9c89196004a68",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Thorndike, çok yönlü bir yetenek olarak değerlendirdiği zekâyı; soyut, sosyal ve mekanik zekâ olarak sınıflandırır. Mekanik zekâ makinelerin ve teknik araçların yapımı ve kullanımı ile ilgilidir. Bu",
+      "rationale": "Zekanın kalıtımla ilişkisi ve Thorndikenin mekanik zeka türü açıkça sorulur; yaratıcılık ayrımı ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q001",
+      "categoryId": "excel.ayt.psikoloji.6efcda49b23cedd55219",
+      "imageSha256": "120b852216421e60a32bfd80685660eb82d55d25c9cbde3763eaa74c1ad40e27",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Bir okulda rehber öğretmen, öğrencilerin meslek seçimlerinde doğuştan gelen ve kolay kolay değişmeyen bazı bireysel özelliklerin dikkate alınması gerektiğini belirtir. Duygusallık, sakinlik, heyecanlı olma, soğukkanlılık gibi özelliklerin",
+      "rationale": "Mizaç, Adler ve Freudun id-ego-süperego kişilik açıklamaları doğrudan kişilik ve kuramları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q002",
+      "categoryId": "excel.ayt.psikoloji.6efcda49b23cedd55219",
+      "imageSha256": "b4b8b852b4b6e49ea0cfb214fec22e43c4a50e46eb5aa6a46aa3e30180d74f02",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Kişilik, bireyin genetik yapısından, sosyal çevresinden ve bilişsel süreçlerinden etkilenerek şekillenir. Aynı çevrede büyüyen bireyler arasında bile kişilik farklılıkları gözlenebilir. A. Adler, doğum sırasının bile bireyin aile",
+      "rationale": "Mizaç, Adler ve Freudun id-ego-süperego kişilik açıklamaları doğrudan kişilik ve kuramları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q003",
+      "categoryId": "excel.ayt.psikoloji.6efcda49b23cedd55219",
+      "imageSha256": "bc0868e71359557ad0635e96a1120e0841d50d7325ea57a9f150d87f545019f5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. S. Freud’a göre kişiliğin üç temel katmanı vardır: İd, bireyin ilkel istek ve arzularını temsil eder, haz ilkesine göre çalışır ve dürtüseldir. Ego, kişiliğin gerçeklik ilkesini temele",
+      "rationale": "Mizaç, Adler ve Freudun id-ego-süperego kişilik açıklamaları doğrudan kişilik ve kuramları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q006",
+      "categoryId": "excel.ayt.psikoloji.206dfb48a918107269f9",
+      "imageSha256": "703a296eb1159df10d5ec5cc7776e91c1d8e4e082bd8250d02d2c244e80f2aba",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Bir psikolog, danışanın hayal gücünü harekete geçirmesini sağlayacak şekilde kapalı ve sembolik resimler göstererek bireyden bu resimlerde gördüğü olay ya da nesnelerle ilgili hikâyeler anlatmasını ister. Anlatılan",
+      "rationale": "Öykü anlatılan resimlerden kişilik ölçen tematik algı testi ölçüm tekniği sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q012",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "imageSha256": "b12b68e594abcda236e179eaed7375c9656ddd4c7cce84f1935c5ace26da12f7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Ruhsal açıdan sağlıklı bireyler kendisi ve çevresi ile sürekli bir uyum içindedir. Biliş, duygu ve eylemlerde tutarsızlık, aşırılık ve uyumsuzluk durumunun ortaya çıkması ruh sağlığının bozulduğunu gösterir.",
+      "rationale": "Ruh sağlığında uyum, süreklilik ve günlük işlevlerle ruh sağlığını koruma doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q013",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "imageSha256": "4683e596b34f6e52060973a0360adb2d877f8f7a935573e151c8f12b3eee6b33",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Susuz kaldığımızda ya da uzun süre korumasız şekilde soğuk havaya maruz kaldığımızda vücudumuz bu durumdan olumsuz etkilenir ve varlığını sürdürmek için birtakım tepkiler verir. Beden sağlığı ile",
+      "rationale": "Ruh sağlığında uyum, süreklilik ve günlük işlevlerle ruh sağlığını koruma doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q017",
+      "categoryId": "excel.ayt.psikoloji.fe8b0ff9370128d9c956",
+      "imageSha256": "55e1b418b75b4ae59993c995b67e2b69218b92bb7db22e00a9216f868c7194c1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Yoğun bir iş gününe hazırlanan bir psikolog, üç farklı danışanla görüşecektir. İlk danışanı; mükemmeliyetçi yapısı nedeniyle günlük işlerinde aşırı titiz davranan, kurallara sıkı sıkıya bağlı, takıntılı ve",
+      "rationale": "Danışanların kalıcı kişilik örüntülerinden kişilik bozukluklarını ayırt etme istenir; şizofreni sorusu bu etikete alınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q019",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "imageSha256": "5a6394596e0b82a09cb2dde20baea3168110cefbdbfd8340e3ea50c12c42a7f2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Psikanalitik yaklaşıma göre; bireyin sergilediği pek çok davranış, geçmiş yaşantılarının izlerini taşır. Özellikle çocukluk döneminde yaşanan olaylar, bireyin kişilik gelişiminde ve başkalarıyla kurduğu ilişkilerde derin etkiler bırakabilir.",
+      "rationale": "Soru psikanalitik yaklaşımda bilinçaltı kavramının bastırılmış duygu ve istekler anlamını doğrudan sorgular.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q001",
+      "categoryId": "excel.ayt.sosyoloji.56bae79fb73848a65321",
+      "imageSha256": "ced9ff5441564c484dc55e8321929005eb27394ac291e19dccaca491e4c515bc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Toplumsal kurumlar; belli toplumsal ihtiyaçları karşılamak üzere ortaya çıkmış, bireylerin davranışlarını yönlendiren yapılardır. Aile, eğitim, din, ekonomi ve siyaset temel toplumsal kurumlardandır. Bu kurumlar; toplumsallaşmayı sağlama, norm",
+      "rationale": "Toplumsal ihtiyaçları karşılayan kurumların genel işlevleri doğrudan sorgulanır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q003",
+      "categoryId": "excel.ayt.sosyoloji.3be94e5a68b8c763566f",
+      "imageSha256": "013d85a3d2e59e31fc7e469273ff767dcf5903939fdd1cf7a084c4a112ede622",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Bir ebeveyn evlilik çağına gelen kızına şunları söyler: “Mutlu bir evlilik yapmanı isterim. Bu nedenle dikkat etmeni istediğim şeyler var. Mesela evlendiğin kişiyle birbirinize sadık kalacağınıza emin",
+      "rationale": "Monogami, neolokal yerleşim ve aile içi otoriteye göre evlilik türleri sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q007",
+      "categoryId": "excel.ayt.sosyoloji.f06796384c43fbfaf054",
+      "imageSha256": "1a76f4d341567923c8be37f1827f578a8629a61761fa2cfe05ce07a7da81e05e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Ali’nin öğretmeni o hafta okulda fen bilgisi dersi için etkinlik yapmaya karar vermiş ve deney düzenekleri hazırlamıştı. Öğretmen bireysel etkinlik yaptırmak yerine, bu sefer öğrencileri gruplara ayırmış",
+      "rationale": "Okul etkinliğinin sosyalleştirme, işbirliği ve sorumluluk kazandırması eğitim kurumunun işlevleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q011",
+      "categoryId": "excel.ayt.sosyoloji.ae8db95eb31afba58757",
+      "imageSha256": "4ccb06b4653dc6a8d8c4c41e44bc676ff3541a9d8e1ba01fbba478d13ebe58ca",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Bir yönetim biçimi olarak demokrasi insanlara, insan onuruna yaraşır bir hayat sunmanın yegâne yoludur. Çünkü yaşamın her alanında olabileceği gibi devlet yönetiminde de iyi niyetli olmayan, görevini",
+      "rationale": "Demokraside kuvvetler ayrılığı ile monarşi/oligarşi/aristokrasi/teokrasi ve demokrasi biçimleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q018",
+      "categoryId": "excel.ayt.sosyoloji.ae8db95eb31afba58757",
+      "imageSha256": "b7478653846f786c7c3d8576418c5f242ed4c1265c3a04eb10a17478954c97f3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Siyasal yönetimin farklı çeşitleri vardır. Örneğin monarşide devlet başkanları soya dayalı olarak belirlenir. Oligarşide güç, bu gücünü askerî, ekonomik vb. konumlarından alan seçkin bir grubun elindedir. Bu",
+      "rationale": "Demokraside kuvvetler ayrılığı ile monarşi/oligarşi/aristokrasi/teokrasi ve demokrasi biçimleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q019",
+      "categoryId": "excel.ayt.sosyoloji.ae8db95eb31afba58757",
+      "imageSha256": "40639bbbbfc88378f86f8af2ec7dfff7a36e043f79533de19c27aa7a967afab5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Bir yönetim biçimi olarak demokrasinin doğrudan, temsilî ve katılımcı demokrasi olmak üzere üç temel biçimi vardır. Doğrudan demokraside yönetimle ilgili tüm kararların halk tarafından alınması ve uygulanması",
+      "rationale": "Demokraside kuvvetler ayrılığı ile monarşi/oligarşi/aristokrasi/teokrasi ve demokrasi biçimleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q012",
+      "categoryId": "excel.ayt.sosyoloji.a7fd6eb29057b9989fe5",
+      "imageSha256": "e548a66737a11d4a0d61ac84947001af1b43a6a975bc7222fd4b05c2ddebe9b6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. İnsan yaşamında alışkanlıklar önemlidir. Bu alışkanlıklar yeme içme biçimlerini, giyinmeyi, barınma alanlarını düzenlemeyi, yaşamı kolaylaştıran araç-gereçlerin seçimini biçimlendirir. Alışkanlıklar ve seçimler ihtiyaçlar doğrultusunda, farkındalıkla şekillenirse hem kişiyi",
+      "rationale": "Bilinçsiz tüketimin birey/toplum ekonomisine etkisi ve arz-talep dengesinden talep enflasyonu ekonomi kurumu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q020",
+      "categoryId": "excel.ayt.sosyoloji.a7fd6eb29057b9989fe5",
+      "imageSha256": "05034e8cc92479004d35c69ad406c09243a7e8dd10cc0c725441f3eebed6cfba",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Yeni bir akıllı telefon modeli piyasaya sürüldü. Özellikleri harikaydı ve fiyatı benzer modellere göre uygundu. İnsanlar, sabahın erken saatlerinde mağazaların önünde sıraya girmeye başladı. Telefon almak isteyenlerin",
+      "rationale": "Bilinçsiz tüketimin birey/toplum ekonomisine etkisi ve arz-talep dengesinden talep enflasyonu ekonomi kurumu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q001",
+      "categoryId": "excel.ayt.sosyoloji.215d18f6d89d2b7cd2d6",
+      "imageSha256": "961e0a99d93be96f2d29438ed7b91a360d185cbeba027a7269b11a444c6100a9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Miray ebeveynlerinin üzerine titrediğinin farkındaydı. Bu nedenle ilk çocukluk yıllarında her şeyi yapmaya, istemeye, söylemeye hakkı olduğunu zannetti. Ancak okula başladığında sahip olduğu bazı şeyleri başka insanlarla",
+      "rationale": "Toplumsal kuralların öğrenilmesi ve çevreyle uyumlu birey haline gelme sosyalleşmedir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q003",
+      "categoryId": "excel.ayt.sosyoloji.371a2205b4889d27a328",
+      "imageSha256": "73892b6c1ec7e16faee66c1e633c2b001b5688eae6a63a4e0a1085c5cb85d42e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Küçük yaşlarda iş hayatına atılmak zorunda kalan ve emekli olana kadar da çalışmaya devam eden Hasan, son günlerde derin bir boşluk hissetmeye başlamıştı. Çalışmaya başlamadan önce ailesi,",
+      "rationale": "Çocukluk, çalışma ve emeklilik dönemlerinde değişen çevrelerle sosyalleşmenin yaşam boyu sürmesi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q011",
+      "categoryId": "excel.ayt.sosyoloji.71e11534b01710bb2a3b",
+      "imageSha256": "74c9dd5c5b926844f33fc7b4e248d4b6876bf2ab007e7c355a6b4ca0a1fa8b17",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Toplumsal normlar, bir toplumda insanların nasıl davranmaları gerektiğini belirleyen ortak kurallardır. Bu kurallar, yazılı ve yazısız olarak iki şekilde karşımıza çıkar. İnsanlar, normlara uyarak toplumsal düzeni korur",
+      "rationale": "Yazılı/yazısız normlar, uyum ve yaptırım ilişkisi açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q017",
+      "categoryId": "excel.ayt.sosyoloji.441e241c78e0e7e8b092",
+      "imageSha256": "ce20ff9033d3ed2d315209f302981e7bb80106327ca23db3ab69b01760ec1100",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Herkesin yüksek sesle konuştuğu, rahatsız edici davranışlar karşısında saldırganlaştığı, kendi çıkarı için başkalarını zor durumda bırakmanın normal karşılandığı bir ülkede doğan ve büyüyen biri çalışmak için gittiği",
+      "rationale": "Davranışın farklı toplumların normlarına göre sapma kabul edilmesi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q003",
+      "categoryId": "excel.ayt.sosyoloji.56bae79fb73848a65321",
+      "imageSha256": "c79c563aab25888f29964664f2b7d5d8162be723ced3903117bf08b2facda8ff",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Temel geçim kaynağı tarım ve hayvancılık olan ülkelerde birkaç kuşağın aynı evde birlikte yaşadığı aileler olurdu. Üretim faaliyetlerine aile üyelerinin çoğu katkıda bulunurdu. Ancak teknolojinin gelişmesiyle tarım",
+      "rationale": "Ekonomi, teknoloji ve aile yapısı arasındaki değişim kurumsal etkileşimi ölçer; yalnız aile türü sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q009",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "imageSha256": "ddca5b82fac2264ab820eae32bfb68cda9ee5f874174fc38d4170fc0c28c300f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Toplumsal yapı; bir toplumun temelini oluşturan kurumlar, roller, ilişkiler ve değerler bütünüdür. Bu yapının en önemli unsurlarından biri de millet kavramıdır. Millet, yalnızca aynı topraklarda yaşayan insan",
+      "rationale": "Milletin ortak tarih, dil, değer ve aidiyet bilinciyle toplumsal yapının bir ögesi olması açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q013",
+      "categoryId": "excel.ayt.sosyoloji.74b111da600315bb1072",
+      "imageSha256": "c8201f7cf06c3bca64527f7a87879aae19e8556d4115e3984d095a98bc707c54",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Sınıfının futbol takımındaki Kemal takımın en iyi oyuncularındandı ve okul turnuvasında takımları finale kalmıştı. Okul yönetimi şampiyon takımın oyuncularını bir kutlama yemeğine götüreceklerini ilan etmişti. Maç günü",
+      "rationale": "Rekabet, mübadele, uyarlama ve işbirliği gibi etkileşim tipleri olayla eşleştirilir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q001",
+      "categoryId": "excel.ayt.sosyoloji.d8a9d4c3ba96616ac6ca",
+      "imageSha256": "9891d2e75e7603cbb7c1a370593184efc4d08f007caf79f189b310463397ce4e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Toplumsal değişme, bir toplumun yapısında ve bu yapının işleyişinde zamanla ortaya çıkan farklılaşmalardır. Bu değişimler; insanların davranışlarında, değerlerinde, inançlarında, günlük alışkanlıklarında ve en önemlisi aile, eğitim, din,",
+      "rationale": "Toplumsal değişmenin örnekleri, zamana yayılması ve ekonomik/demografik/teknolojik/çevresel faktörleri sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q002",
+      "categoryId": "excel.ayt.sosyoloji.d8a9d4c3ba96616ac6ca",
+      "imageSha256": "50f5ff16ca64508f49fa285b6b2573668019afee73481e709eed8df0013ea0d9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Cumhuriyetin ilanıyla birlikte Mustafa Kemal Atatürk’ün önderliğinde gerçekleştirilen devrimler, sadece siyasi yapıyı değil toplumun günlük yaşamını ve temel kurumlarını da etkiledi. Eğitimden hukuka, kılık kıyafetten takvime kadar",
+      "rationale": "Toplumsal değişmenin örnekleri, zamana yayılması ve ekonomik/demografik/teknolojik/çevresel faktörleri sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q003",
+      "categoryId": "excel.ayt.sosyoloji.d8a9d4c3ba96616ac6ca",
+      "imageSha256": "ce47791d95b45ab38072fc02df850b1952fdb92508f3ddd0874166f07745b819",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. 1970’li yıllarda Anadolu’nun küçük bir köyünde yaşayan kadınlar genellikle ev işleriyle ilgileniyor, tarlada çalışıyor ama kendileri ya da aileleri ile ilgili meselelerde karar alma süreçlerine pek dâhil",
+      "rationale": "Toplumsal değişmenin örnekleri, zamana yayılması ve ekonomik/demografik/teknolojik/çevresel faktörleri sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q004",
+      "categoryId": "excel.ayt.sosyoloji.d8a9d4c3ba96616ac6ca",
+      "imageSha256": "f1e1e2d675aaba426fd78ac9e346508a16924e6678a01002cab8c5e00360aff2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Küçük bir kasabada son yıllarda dikkat çekici değişiklikler yaşanmaktadır. Uzun süredir devam eden yanlış tarım uygulamaları toprağın verimliliğini düşürmüş, üretimi olumsuz etkilemiş ve bazı çiftçiler geçim kaynaklarını",
+      "rationale": "Toplumsal değişmenin örnekleri, zamana yayılması ve ekonomik/demografik/teknolojik/çevresel faktörleri sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q009",
+      "categoryId": "excel.ayt.sosyoloji.57bbe08cdeb3e46e9428",
+      "imageSha256": "e9d2fc1c44fb8f3b201d8ba71a023a8931f227f65a57c0bb44cb31b6b0f71d03",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Modernleşmeyle birlikte tarıma dayalı üretimin yerini sanayileşme almaya başlamış ve neredeyse tüm dünya açık pazar hâline gelmiştir. Kentleşmenin etkisiyle hem mimari yapılarda değişim yaşanmış hem de yüz",
+      "rationale": "Sanayileşme, kentleşme ve açık pazar üzerinden modernleşmenin etkileri doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q017",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "imageSha256": "73c15bb554d8f76d6b0090456e41dc7c825fc28e4c0bf25bef13ffb7ad560f1b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Toplum ailenin büyük hâli gibidir. Örneğin ailede çocuklar ders çalışır, geçimi ebeveynler sağlar. Yani herkesin üzerine düşen görev belli ve farklıdır. Aile bireylerinin birinin sorunu diğerlerini de",
+      "rationale": "İşbölümü, ortak norm ve değerlerle toplumsal bütünleşmenin gelişmeye katkısı sorgulanır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q019",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "imageSha256": "8f1b8de385bc68fa97365ce241a0e237bd3c57de80b065ff280515f99dd27c12",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Toplumsal bütünleşme farklı şekillerde gerçekleşebilir. Örneğin ortak normların kabulü, farklı ihtiyaçların farklı bireyler tarafından karşılanması ya da ortak değerlerin benimsenmesi yoluyla toplumsal bütünleşme sağlanabilir. Buna göre toplumsal",
+      "rationale": "İşbölümü, ortak norm ve değerlerle toplumsal bütünleşmenin gelişmeye katkısı sorgulanır.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}

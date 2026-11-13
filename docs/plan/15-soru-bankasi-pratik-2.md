@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.123 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.210 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -83,6 +83,15 @@ Yeni PNG/model/öğretmen onayı0. `reviewed-native-question-9-expansion/`,
 `scripts/mebi-pratik2-reviewed-native-topics-9.json`, `verified-source-batch-060/bank-acceptance.json`.
 Sonraki106 Mantık/Psikoloji/Sosyoloji kaydı özgün metin incelemesine hazır;
 bu sayılar tam arşiv kabulü değildir.
+
+**061 — BITTI:** 106 Mantık/Psikoloji/Sosyoloji özgün metni incelendi;
+30 Mantık+35 Psikoloji+22 Sosyoloji=87 AYT soru doğru mevcut konuya bağlandı.
+19 kayıt gerekçeli incelemede; şizofreni kişilik bozukluğu etiketiyle yayımlanmadı,
+transfer/bellek ve karma kavramlar zorlanmadı.87 INSERT/0 UPDATE, tekrar0 INSERT,
+katalog/masaüstü/mobil PASS; toplam10.210 (5.503 TYT/4.707 AYT).
+Yeni PNG/model/öğretmen onayı0. Kanıt `reviewed-native-question-10-expansion/`,
+`verified-source-batch-061/bank-acceptance.json`. Sonraki52 Biyoloji özgün
+kaynak metni ve mevcut cevap/gövde makbuzuyla incelemeye hazır; ana plan açık.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

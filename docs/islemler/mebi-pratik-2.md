@@ -432,3 +432,12 @@ seçilebilir kategori kimliği zorunludur.060 Din Kültürü89 soru/166 okuma
 kabulü PASS;77 kalan inceleme yeniden aynı yöntemle döndürülmez. Her alt
 partide katalog ve canlı kabul makbuzu PASS olduktan sonra plan/görev tablosunu
 BITTI güncelle, yerel commit oluştur ve sıradaki açık gruba aynı turda geç.
+
+Tekrar kullanılabilir salt-okunur metin ihracı:
+`python scripts/mebi_pratik2_inceleme_metinleri.py --subjects Biyoloji
+--output-package reviewed-native-question-11-expansion`.
+`--evidence-package` varsayılanı `single-test-pending-evidence`; dosya
+kimliği/PDF tekrar kapısı, kaynak SHA ve mevcut doğrulanmış gövde makbuzu
+zorunludur. Donmuş `input-review.json` yeniden yazılmaz. Araç model, PNG,
+DB veya konu kararı üretmez; yalnız özgün metni incelemeye çıkarır.
+061:106 metin,87 AYT kabul/19 inceleme; bütün yayın kapıları PASS.
