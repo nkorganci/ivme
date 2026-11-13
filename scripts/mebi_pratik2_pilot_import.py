@@ -58,23 +58,33 @@ def run(apply=False,repeat_check=False,batch=False,batch_dir=None):
         body=(f'--{boundary}\r\nContent-Disposition: form-data; name="file"; filename="mebi2-source.csv"\r\nContent-Type: text/csv\r\n\r\n'.encode()+payload+f'\r\n--{boundary}--\r\n'.encode())
         return request('/api/operator/import?mode=INSERT_ONLY&dryRun='+('false' if live else 'true'),
             body,'multipart/form-data; boundary='+boundary)
-    if batch and apply:
-        preview=submit(data,False)
-        if preview.get('errorCount') or preview.get('inserted')!=count or preview.get('updated'):
-            raise ValueError('Whole-batch preflight rejected; no writes performed')
-        parsed=list(csv.reader(io.StringIO(data.decode('utf8'))));parts=[]
+    if batch:
+        parsed=list(csv.reader(io.StringIO(data.decode('utf8'))));payloads=[];previews=[]
         for offset in range(1,len(parsed),100):
             stream=io.StringIO(newline='');writer=csv.writer(stream);writer.writerow(parsed[0]);writer.writerows(parsed[offset:offset+100])
-            part=submit(stream.getvalue().encode('utf8'),True);parts.append(part)
-            write_json(folder/f'import-part-{len(parts):03d}.json',part)
-            if part.get('errorCount') or part.get('inserted')!=len(parsed[offset:offset+100]) or part.get('updated'):
-                raise ValueError('Atomic sub-batch delta differs; later sub-batches were not attempted')
-            completed=sum(x['inserted'] for x in parts)
-            progress={'completed':completed,'total':count,'percent':round(100*completed/count,2),
-                'atomicBatch':len(parts),'elapsedSeconds':round(time.monotonic()-started,2),'estimatedRemainingSeconds':None}
-            with (folder/'import-progress.jsonl').open('a',encoding='utf8') as stream:stream.write(json.dumps(progress)+'\n')
-            print(json.dumps(progress),flush=True)
-        result={'inserted':sum(x['inserted'] for x in parts),'updated':0,'errorCount':0,
+            payloads.append((stream.getvalue().encode('utf8'),len(parsed[offset:offset+100])))
+        for index,(payload,size) in enumerate(payloads,1):
+            preview=submit(payload,False);previews.append(preview)
+            write_json(folder/f'preview-part-{index:03d}.json',preview)
+            expected=0 if repeat_check else size
+            if preview.get('errorCount') or preview.get('inserted')!=expected or preview.get('updated'):
+                write_json(folder/'failed-preflight.json',{'status':'FAILED_NO_WRITES','part':index,'result':preview,'questionWrites':0})
+                raise ValueError('Bounded preflight rejected; no writes performed')
+        if apply:
+            parts=[]
+            for index,(payload,size) in enumerate(payloads,1):
+                part=submit(payload,True);parts.append(part)
+                write_json(folder/f'import-part-{index:03d}.json',part)
+                if part.get('errorCount') or part.get('inserted')!=size or part.get('updated'):
+                    raise ValueError('Atomic sub-batch delta differs; later sub-batches were not attempted')
+                completed=sum(x['inserted'] for x in parts)
+                progress={'completed':completed,'total':count,'percent':round(100*completed/count,2),
+                    'atomicBatch':index,'elapsedSeconds':round(time.monotonic()-started,2),'estimatedRemainingSeconds':None}
+                with (folder/'import-progress.jsonl').open('a',encoding='utf8') as stream:stream.write(json.dumps(progress)+'\n')
+                print(json.dumps(progress),flush=True)
+        else:parts=previews
+        result={'dryRun':not apply,'mode':'INSERT_ONLY','applied':apply,'totalRows':count,
+            'inserted':sum(x['inserted'] for x in parts),'updated':0,'errorCount':0,
             'skipped':sum(x.get('skipped',0) for x in parts),'atomicBatches':len(parts),'maxBatchRows':100,
             'elapsedSeconds':round(time.monotonic()-started,2)}
     else:result=submit(data,apply)

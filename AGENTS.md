@@ -22,6 +22,16 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
+- **Pratik 2 cevap kurtarma (son kullanıcı talimatı):** ilk okumada cevap
+  bulunamaması tek başına vazgeçme nedeni değildir. Aynı basılı test/bölüm/adım
+  kimliğiyle başka anahtar konumunu ve mevcut kaynak kanıtını kontrol et;
+  gerekirse farklı bir yerel okuma yöntemiyle bir sınırlı kurtarma geçişi yap.
+  Aynı başarısız istemi döngüde tekrarlama. Gerçek uyuşmazlık/eksik gövde/konu
+  belirsizliği giderilemezse gerekçeli inceleme kategorisine ayır; cevap tahmini
+  ve sahte öğretmen onayı yoktur. Bu güncel talimat, Pratik2 için önceki ilk
+  başarısızlıkta EXCLUDE_NO_RETRY yaklaşımının önüne geçer; eski YKS projesinin
+  kapalı kararlarını veya öğrenci kayıtlarını değiştirmez.
+
 - Kalıcı DB `ivme` içindeki öğrenci kayıtlarını ve içerik karar geçmişini koru. Testleri yalnız geçici `ivme_test` üzerinde `python scripts/ivme.py test` ile çalıştır. Özgün `../Kaynaklar/` arşivi yalnız okunur.
 - **YKS kaynak kabulünde kullanıcı önceliği:** yalnız doğrulanabilir soru, basılı cevap ve kaynakla destekli konularla ilerle. Hatalı, eksik, uyuşmayan, bulunamayan veya mevcut denemede doğrulanamayan adayları `EXCLUDE_NO_RETRY` ile çalışma/aktarım kümesinden çıkar; kaynak onarma, eksik anahtar/şekil arama, tekrar OCR/model veya yeniden inceleme yapma. Elenen aday öğrenci ekranına/yayına girmez; görevi bitirmek için bu istisnaların düzelmesi beklenmez. Sadece yeni ve açıkça incelenebilir kaynaklarda bir geçiş yap; yine doğrulanamıyorsa hemen sonrakine geç. Mevcut banka kimlikleri ve öğrenci geçmişi korunur. Kural: `scripts/yks-secim-politikasi.json`; 07 tam kabulü: `selected-yks07-acceptance/`; soru alımı için daha yeni `selected-yks08-comparison/` dışlamaları üstündür. `verified-source-selection/` önceki özet gözlemidir, üretim alımı değildir.
 - TAS-01–12 için referans günü **2026-10-31**: mevcut DB'de kaydedilmiş bütün veriler

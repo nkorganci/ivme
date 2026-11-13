@@ -16,7 +16,7 @@ from yks_birlestirme import write_json
 
 def run():
     batches=[]
-    for name in ['publication-preparation',*[f'verified-source-batch-{n:03}' for n in range(1,6)]]:
+    for name in ['publication-preparation',*[f'verified-source-batch-{n:03}' for n in range(1,7)]]:
         folder=BASE/name
         if name=='publication-preparation':receipt=folder/'publication-result.json'
         else:receipt=folder/'bank-acceptance.json'
@@ -63,7 +63,7 @@ if __name__=='__main__':
     if args.wait:
         started=time.monotonic();last=0
         while True:
-            pending=[f'verified-source-batch-{n:03}' for n in range(1,6) if not (BASE/f'verified-source-batch-{n:03}'/'bank-acceptance.json').exists()]
+            pending=[f'verified-source-batch-{n:03}' for n in range(1,7) if not (BASE/f'verified-source-batch-{n:03}'/'bank-acceptance.json').exists()]
             if not pending:break
             now=time.monotonic()
             if not last or now-last>=300:

@@ -42,7 +42,12 @@ def run(acceptance,batch_dir,after_batch=None):
     if not admitted:
         write_json(folder/'bank-acceptance.json',{'status':'NO_VERIFIED_NEW_QUESTIONS','questionWrites':0});return
     def command(stage,args,receipt):
-        if receipt.exists():log(stage+'_RECEIPT_EXISTS');return
+        if receipt.exists():
+            existing=json.loads(receipt.read_text(encoding='utf8'))
+            if existing.get('errorCount',0):
+                receipt.rename(receipt.with_name(receipt.stem+'.failed-'+str(time.time_ns())+receipt.suffix))
+                log(stage+'_FAILED_RECEIPT_RETAINED')
+            else:log(stage+'_RECEIPT_EXISTS');return
         log(stage+'_START')
         result=subprocess.run(args,cwd=APP)
         if result.returncode:

@@ -40,7 +40,11 @@ Kanıt kökü `veri/mebi-pratik-2/20261111-source-inventory/`.
 
 Kategoriler: **cevap anahtarı doğrulaması**, **soru gövdesi bütünlüğü**,
 **konu/ders eşleştirmesi**, **kaynak/görsel kanıtı**, **belge düzeni ve soru
-kimliği**. İnceleme, mevcut geçişte yeniden deneme yapılmadan saklanır.
+kimliği**. İlk okumada cevap bulunamaması doğrudan vazgeçme nedeni değildir.
+Aynı basılı test/bölüm/adım kimliğiyle kaynak içi diğer anahtar konumu ve
+mevcut kanıt kontrol edilir; bir farklı yerel OCR yöntemiyle sınırlı kurtarma
+geçişi yapılır. Aynı başarısız istem döngüde tekrarlanmaz. Yine doğrulanamayan
+incelemeye ayrılır; açıkça çelişen cevap tahminle seçilmez.
 Bu kayıtlar öğrenci listesine ve otomatik pratik havuzuna girmez. Öğretmen
 kararı ancak gerçekten verilirse ayrıca kaydedilir.
 

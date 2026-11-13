@@ -35,8 +35,9 @@ def verify(rows,folder):
                 # Read raw text: normalizing punctuation before this check
                 # would erase the dash joining a shared-question range.
                 if not row.get('priorSourcePixelProof'):
-                    for match in SHARED.finditer(pdf[row['bodyPage']-1].get_text()):
-                        if int(match[1])<=row['printedNumber']<=int(match[2]):reasons.append('SHARED_CONTEXT_REQUIRES_EXPLICIT_SOURCE_REGIONS')
+                    for page_index in range(max(0,row['bodyPage']-2),min(len(pdf),row['bodyPage']+1)):
+                        for match in SHARED.finditer(pdf[page_index].get_text()):
+                            if int(match[1])<=row['printedNumber']<=int(match[2]):reasons.append('SHARED_CONTEXT_REQUIRES_EXPLICIT_SOURCE_REGIONS')
                 if not reasons:
                     if row.get('priorSourcePixelProof'):
                         try:verify_image(pdf,row['sourceRegions'],body)

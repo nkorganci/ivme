@@ -4,7 +4,7 @@ import hashlib
 import json
 import sqlite3
 from collections import Counter
-from mebi_pratik2_tam_pdf_tarama import BASE
+from mebi_pratik2_tam_pdf_tarama import BASE,SOURCE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 from mebi_pratik2_arsiv_kararlari import review_category
@@ -14,7 +14,7 @@ def run():
     accepted={};proofs={}
     admission_paths=['single-test-crops/source-pixel-acceptance.json','expanded-chapter-evidence/source-pixel-acceptance.json',
         'three-step-acceptance/source-pixel-acceptance.json','mock-language-intent/source-pixel-acceptance.json',
-        'compiled-tarama-acceptance/source-pixel-acceptance.json']
+        'compiled-tarama-acceptance/source-pixel-acceptance.json','bounded-answer-recovery/source-pixel-acceptance.json']
     admission_reviews=[]
     for relative in admission_paths:
         path=BASE/relative
@@ -80,10 +80,15 @@ def run():
                 (code,row['status'],json.dumps(row,ensure_ascii=False,sort_keys=True)))
     db.close()
     out=BASE/'teacher-review-export/current';out.mkdir(exist_ok=True)
-    for row in pending:row['reviewCategory']=review_category(row.get('reasons',[]))
+    for row in pending:
+        row['reviewCategory']=review_category(row.get('reasons',[]))
+        row['sourcePdf']=str(SOURCE/row['relativePath']) if row.get('relativePath') else row.get('sourcePath','')
+        row['questionImage']=str(BASE/row['image']) if row.get('image') else ''
+        row['answerImage']=str(BASE/row['keyImage']) if row.get('keyImage') else ''
+        row['answerKeyPage']=row.get('keyPage',row.get('sourceKeyPage'))
     write_json(out/'question-candidates.json',{'records':pending,'recordCount':len(pending),'studentVisible':False})
     write_json(out/'source-group-reviews.json',{'records':group_reviews,'recordCount':len(group_reviews),'recordType':'SOURCE_GROUP_NOT_DISTINCT_QUESTION_COUNT','studentVisible':False})
-    columns=['code','status','reviewCategory','reasons','relativePath','bodyPage','printedNumber','answer','categoryId','image','keyImage']
+    columns=['code','status','reviewCategory','reasons','relativePath','sourcePdf','bodyPage','printedNumber','answer','categoryId','questionImage','answerImage','answerKeyPage','image','keyImage']
     with (out/'question-candidates.csv').open('w',encoding='utf-8-sig',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader()
         for row in pending:

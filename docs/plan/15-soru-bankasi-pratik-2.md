@@ -1,10 +1,26 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2
 
-**Durum: KISMI / doğrulanmış1.103 soru yayında; tam arşiv çalışması sürüyor.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
+**Durum: KISMI / doğrulanmış3.955 soru yayında; sınırlı cevap kurtarma ve kapanış sürüyor.** Bu plan, yalnız `D:\workspace\mebi-yks` içindeki
 kaynaklardan ikinci, bağımsız soru bankasını üretir. Dosyanın yazılması aktarım
 yetkisi veya tamamlanma anlamına gelmez.
 
+**Güncel parti kabulü:**001–005 ve pilot canlı kabulü geçti; toplam3.955
+soru (2.420 TYT/1.535 AYT). Son005:497 INSERT/0 UPDATE ve21 kesin
+piksel/cevap eşit ek kaynak konumu. `verified-source-batch-005/bank-acceptance.json`
+PASS. İlk uyuşmayan90 anahtar grubu alternatif yerel OCR ile kurtarıldı;
+836 gövdenin ilk incelemesi ve006/kapanış sürüyor. Aşağıdaki önceki parti
+notları tarihsel kanıttır; güncel imleç `bounded-answer-recovery/progress-current.json`.
+
 ## Genel yürütme kuralı — tamamlanana kadar devam
+
+**Güncel kullanıcı değişikliği:** cevap ilk okumada bulunamazsa hemen
+vazgeçilmez. Aynı basılı test/bölüm/adım kimliğiyle farklı anahtar konumları ve
+önceden doğrulanmış kaynak kanıtları kontrol edilir; ardından bir farklı yerel
+OCR/okuma yöntemiyle sınırlı kurtarma geçişi yapılır. Döngüsel model denemesi,
+cevap tahmini veya uyuşmayan cevabı zorla kabul yoktur. Başarısızsa açık
+gerekçeyle incelemeye ayrılır. Bu kural aşağıdaki eski “tekrar yok” ifadelerinden
+üstündür; çalışan kabul edilmiş partiler aynı sırada tamamlanır. Cevap
+kurtarma çıktısı ayrı altıncı parti ve kapanış ön koşuludur.
 
 Kullanıcı bu planın 15.01–15.07 zincirini uygulamayı yetkilendirdi. Her alt
 parti sonunda tekrar “devam et” talimatı beklenmez; kabul kapıları geçtikçe
@@ -56,8 +72,10 @@ ayrı basılı cevap satırının bağımsız görsel okumasını bekler; yayın
 Adım A/B ayrımı, eksik gövde ve grafik/altçizgi ayrımı4 regresyon testi PASS.
 `mebi_pratik2_uc_adim_kabul.py`317 cevap grubunu bağımsız okur;12 grupluk
 pilot11 uyuşma/1 inceleme verdi. Uyuşmayan grup yeniden çağrılmaz.3.102 gövde
-için kaynak kabulü çalışıyor; `verified-source-batch-003` yürütücüsü sonucu
-bekliyor ve ikinci parti kabulüne bağlı.1.103'te durulmaz.
+için kaynak kabulü **BITTI**:2.264 kaynak kabulü,838 soru adayı inceleme.
+Son özgün piksel/bağlam kapısı74 ortak-paragraf gerektiren kaydı ayrıca
+ayırdı;2.190 aday kaldı. Kesin Pratik2 RGB/cevap tekrarı0; üçüncü parti alımı/katalog/canlı kabulü BITTI; toplam3.293 soruya ulaşıldı. Kurtarma altıncı partide
+sürüyor (`verified-source-batch-003/`).74 kayıtta tekrar OCR/model/onarım yok.
 
 **Gerekçeli inceleme ve son kaynak kapısı:** her dosya/sayfa için durum kaydı
 `archive-disposition/` altında:4.816/4.816 dosya,27.614/27.614 PDF sayfası;

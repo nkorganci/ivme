@@ -21,7 +21,7 @@ def snapshot():
     progress_path = BASE/'full-pdf-progress.json'
     progress = json.loads(progress_path.read_text(encoding='utf-8')) if progress_path.exists() else {}
     accepted_codes=set();stages={}
-    for name in ('single-test-crops','expanded-chapter-evidence','three-step-acceptance','mock-language-intent','compiled-tarama-acceptance'):
+    for name in ('single-test-crops','expanded-chapter-evidence','three-step-acceptance','mock-language-intent','compiled-tarama-acceptance','bounded-answer-recovery'):
         acceptance=BASE/name/'source-pixel-acceptance.json'
         if acceptance.exists():accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
         progress_file=BASE/name/'progress-current.json'
@@ -49,14 +49,15 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--watch',action='store_true');args=parser.parse_args()
     last=0;bucket=-1
     while True:
-        data=snapshot();now=time.monotonic();current=int(data['pdfPercent']//10)
-        if not last or now-last>=300 or current>bucket:
+        data=snapshot();now=time.monotonic()
+        current=(int(data['pdfPercent']//10),tuple((name,int(value.get('percent',0)//10)) for name,value in data['activeStageCheckpoints'].items()),data['catalogPublishedQuestionCount'])
+        if not last or now-last>=300 or current!=bucket:
             with (BASE/'progress-events.jsonl').open('a',encoding='utf-8') as stream:
                 stream.write(json.dumps(data,ensure_ascii=False)+'\n')
             write_json(BASE/'progress-current.json',data)
             print(json.dumps(data,ensure_ascii=False),flush=True)
             last=now;bucket=current
-        if not args.watch or (BASE/'full-pdf-coverage.json').exists():break
+        if not args.watch or (BASE/'archive-closeout.json').exists():break
         time.sleep(10)
 
 
