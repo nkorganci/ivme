@@ -20,10 +20,21 @@ def snapshot():
     completed = sum((cache/(r['sha256']+'.json')).is_file() for r in pdfs)
     progress_path = BASE/'full-pdf-progress.json'
     progress = json.loads(progress_path.read_text(encoding='utf-8')) if progress_path.exists() else {}
+    acceptance=BASE/'single-test-crops/source-pixel-acceptance.json'
+    accepted=json.loads(acceptance.read_text(encoding='utf8'))['acceptedCount'] if acceptance.exists() else 0
+    imported=0;published=0
+    for name in ('publication-preparation','verified-source-batch-001'):
+        folder=BASE/name
+        result=folder/'import-result.json'
+        if result.exists():imported+=json.loads(result.read_text(encoding='utf8')).get('inserted',0)
+        result=folder/'publication-result.json'
+        if result.exists():published+=json.loads(result.read_text(encoding='utf8')).get('questionsAppended',0)
     return {'atUtc':datetime.now(timezone.utc).isoformat(), 'totalFiles':len(items),
         'totalPdfs':len(pdfs), 'completedPdfPaths':completed,
         'remainingPdfPaths':len(pdfs)-completed, 'pdfPercent':round(100*completed/len(pdfs),2),
-        'lastScannerCheckpoint':progress, 'acceptedQuestionCount':0,
+        'lastScannerCheckpoint':progress, 'acceptedQuestionCount':accepted,
+        'importedQuestionCount':imported,'catalogPublishedQuestionCount':published,
+        'verifiedSubsetImportPercent':round(100*imported/accepted,2) if accepted else None,
         'totalQuestionCount':None, 'overallProjectPercent':None, 'remainingSecondsEstimate':None,
         'estimateReason':'No representative timed throughput or final question denominator yet',
         'cacheLastChangedUtc':max((datetime.fromtimestamp(p.stat().st_mtime,timezone.utc).isoformat()

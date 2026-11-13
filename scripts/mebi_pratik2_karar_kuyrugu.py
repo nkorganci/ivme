@@ -23,6 +23,7 @@ def run():
     db=sqlite3.connect(BASE/'review-index.sqlite3')
     db.execute('PRAGMA journal_mode=WAL')
     db.execute('CREATE TABLE IF NOT EXISTS observations (id TEXT PRIMARY KEY, report TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL, student_visible INTEGER NOT NULL DEFAULT 0 CHECK(student_visible=0))')
+    db.execute('CREATE TABLE IF NOT EXISTS candidate_decisions (code TEXT PRIMARY KEY, status TEXT NOT NULL, payload TEXT NOT NULL, student_visible INTEGER NOT NULL DEFAULT 0 CHECK(student_visible=0))')
     reports={};written=0
     with db:
         def record(report,status,payload):
@@ -53,8 +54,21 @@ def run():
             if path.exists():
                 for row in json.loads(path.read_text(encoding='utf8'))[field]:
                     if row['status'] in ('REVIEW_REQUIRED','KONU_BELIRSIZ'):record(filename,status,row)
+        technical=BASE/'single-test-crops/technical-packages.json'
+        accepted_path=BASE/'single-test-crops/source-pixel-acceptance.json'
+        if technical.exists() and accepted_path.exists():
+            package=json.loads(technical.read_text(encoding='utf8'))
+            admitted=json.loads(accepted_path.read_text(encoding='utf8'))
+            verified={r['code']:r for r in admitted['accepted']}
+            pending={r['code']:r for r in package['reviewQueueAdditions']}
+            pending.update({r['code']:r for r in admitted['reviewQueueAdditions']})
+            for code,row in {**pending,**verified}.items():
+                status='SOURCE_VERIFIED_NOT_TEACHER_APPROVED' if code in verified else 'REVIEW_REQUIRED'
+                db.execute('INSERT INTO candidate_decisions(code,status,payload) VALUES(?,?,?) ON CONFLICT(code) DO UPDATE SET status=excluded.status,payload=excluded.payload',
+                    (code,status,json.dumps(row,ensure_ascii=False,sort_keys=True)))
     counts=dict(db.execute('SELECT status,count(*) FROM observations GROUP BY status').fetchall())
     result={'status':'LOCAL_REVIEW_INDEX_UPDATED','observations':sum(counts.values()),'counts':counts,
+            'candidateDecisions':dict(db.execute('SELECT status,count(*) FROM candidate_decisions GROUP BY status').fetchall()),
             'sourceReports':reports,'studentVisible':False,'applicationDatabaseWrites':0,
             'meaning':'OBSERVATIONS_ARE_NOT_DISTINCT_QUESTIONS; LEGACY_CONFLICT_LABELS_ARE_UNVERIFIED'}
     write_json(BASE/'review-index-report.json',result)

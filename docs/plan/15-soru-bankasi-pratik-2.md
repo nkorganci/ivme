@@ -165,11 +165,13 @@ Yalıtılmış pilot alt kabulü **BITTI**: gerçek 21 sorunun INSERT_ONLY ilk
 aktarımı/ikinci aktarım0/bozuk cevapta tüm parti reddi/transaction geri alma/
 kategori API'si/eski havuz ayrımı birlikte sınandı; 9 backend testi PASS.
 Masaüstü ve mobil UI PASS (`pilot-ui-report.json`). Ön yüz derlemesi PASS.
-Canlı sürüm yerel izleyici tarafından yayımlandı; ana banka soruları henüz
-aktarılmadı. Canlı aktarımın mevcut API'si yalnız OPERATOR rolünü kabul eder;
-yerel `ivmeoperator` hesabı bulunamadığından HTTP404 verdi. Kullanıcıya mevcut
-operatörle giriş veya yeni yerel operatör hesabı seçimi soruldu; rol/hesap
-kendiliğinden oluşturulmaz. Diğer kaynakların incelemesi bu karardan bağımsızdır.
+Kullanıcı yetkisiyle OPERATOR oluşturuldu; 21 pilot soru alındı ve katalog
+`labels-v1-405c39f335571c60f5750250` sürümünde yayımlandı. API21 soruyu ve
+kontrollü konu bağını döndürüyor. Canlı UI kabulü doğrudan `/pratik-2`
+açılışında sunucu SPA yönlendirmesinin eksik olduğunu yakaladı; yönlendirme
+eklendi. `MebiPractice2PilotTest` yeni doğrudan açılış testi dahil4/4 PASS
+(yalnız geçici DB). Yeni yerel sürüm ve canlı UI tekrarı geçmeden536 soruluk
+sonraki parti başlatılmaz.
 
 1. Her TYT/AYT ders türünden küçük kanıtlı parti seç.
 2. `Soru Çöz & Pratik 2` filtresini mevcut Pratik akışıyla aynı soru, cevap
@@ -204,17 +206,42 @@ görünür biçimde tutulur ama yayımlanmaz.
 
 ## Model ve maliyet politikası
 
-Güncel erişim kararı: kullanıcı **mevcut operatörle giriş yapmayı** seçti;
-yeni hesap açma veya rol değiştirme yetkisi verilmedi. Bağlı yerel DB'de etkin
-OPERATOR sayısı0 olduğundan giriş yapılacak mevcut hesabın yalnız kullanıcı
-adı soruldu. Şifre istenmez; yetki kapısı farklı yolla aşılmaz.
+Güncel erişim kararı: kullanıcı, mevcut hesap yoksa bu iş için operatör
+oluşturulmasını açıkça yetkilendirdi. `ivmeoperator` yalnız OPERATOR rolüyle
+oluşturuldu; mevcut kullanıcı rolleri değişmedi. Rastgele parola yayımlanmadı
+ve düz metin saklanmadı; yerel giriş uygulamanın dev loopback yolunu kullanır.
+`local-operator-created.json` ve kullanıcı kayıt denetimi oluşturma kanıtıdır.
+
+Canlı 21 soruluk pilot INSERT_ONLY aktarımı **BITTI**:21 INSERT/0 UPDATE;
+ikinci ön izleme0 INSERT/0 UPDATE/21 SKIP. Kanıtlar
+`publication-preparation/import-result.json`, `repeat-check-result.json`.
+Bu soruların sürümlü katalog yayını **BITTI**; eski kayıtların içerik
+özetleri aynı kaldı (`publication-preparation/publication-result.json`).
+Canlı görünüm kontrolü geçmeden canlı pilot kabulü BITTI sayılmaz.
+557 teknik adayın tamamı henüz yayımlanmadı.
 
 Bağımsız inceleme alt işi **BITTI**: 557 gövde model okuması tamamlandı;
 `single-test-crops/technical-packages.json` 557 teknik kanıt paketini ve
 2.748 kalan inceleme adayını içerir. Bu kayıtlar öğretmen onayı veya canlı
 aktarım değildir. Tam DB yedeği de doğrulandı: 1.239.025.903 bayt / 558
 restore-list girdisi (`publication-preparation/report.json`). Canlı soru
-aktarımı0; bütün plan hâlâ KISMI.
+aktarımı önceki ölçümde0 idi; güncel ölçüm yukarıdaki 21 INSERT'tir. Bütün
+plan hâlâ KISMI.
+
+Özgün kaynak kabulü alt işi **BITTI**: 557 gövde ve 557 cevap kırpımı güncel
+PDF'den yeniden render edilip kayıtlı görüntülerle piksel piksel eşleşti.
+Basılı sınav/ders başlığı ve kontrollü konu kimliği de doğrulandı;
+`single-test-crops/source-pixel-acceptance.json`:557 kabul/0 yeni hata.
+Bu kabul öğretmen onayı değildir. 3.305 adayın diğer 2.748'i açık nedenlerle
+`review-index.sqlite3/candidate_decisions` içinde tutulur; öğrenciye açılmaz.
+Pilot21 katalog yayını tamamlanınca kalan536 aynı INSERT_ONLY hattına girer.
+
+Yayın performans bulgusu: yeni snapshot henüz istatistik taşımadığından
+EXISTS denetimi yaklaşık90bin×90bin iç içe karşılaştırma seçti. İki
+tamamlanmamış transaction geri alındı; eski canlı pointer ve21 soru korundu.
+Güncel yayın, indeksli/ANALYZE edilmiş geçici içerik özetlerini COUNT ile
+karşılaştırır; kanıt `publication-preparation/nested-loop-retry.json`.
+Bu işlem uygulama hizmetinin durdurulması veya soru silinmesi değildir.
 
 | İş | Araç/model | Kural |
 |---|---|---|

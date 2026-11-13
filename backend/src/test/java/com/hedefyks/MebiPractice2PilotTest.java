@@ -3,6 +3,7 @@ package com.hedefyks;
 import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import com.hedefyks.importer.ImportMode;
 import com.hedefyks.importer.QuestionImportService;
@@ -23,6 +24,10 @@ class MebiPractice2PilotTest extends TestBase {
     @Autowired QuestionImportService importer;
     @Autowired TransactionTemplate transaction;
     @Override protected boolean catalogFixtureRequired(){return true;}
+
+    @Test void directPracticeTwoPageLoadForwardsToReact() throws Exception {
+        mvc.perform(get("/pratik-2")).andExpect(status().isOk()).andExpect(forwardedUrl("/index.html"));
+    }
 
     private byte[] csv() throws Exception {
         assertThat(jdbc.queryForObject("select current_database()",String.class)).isEqualTo("ivme_test");
