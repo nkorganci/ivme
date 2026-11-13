@@ -162,3 +162,28 @@ varsa makbuzları değiştirmeden görsel inceleme gerektiren raporla durur.
 -041:`three-step-mock-expansion`172 aday;042–043:`four-square-header-expansion`867
   aday. `mebi_pratik2_arsiv_kabul.py --package-dir <ad> --first-batch <ilk> --wait-for <önceki>/pass-result.json --chunk-size 500 --publish`.
   Bunlar mevcut kabul kapılarını geçmeden soru aktarılmış sayılmaz.
+
+### Konu beklerken cevap/gövdeyi eksik bırakmama
+
+`python scripts/mebi_pratik2_konu_bekleyen_kanit.py --prepare` henüz
+sıraya alınmamış hazırlanmış gövdeleri ve düzeltilmiş son kanıtı sabit
+`all-source-evidence/chapter-packages.json` paketine alır. Mevcut kabul/publisher
+kodları tekrar edilmez. `python scripts/mebi_pratik2_native_govde.py --package-dir all-source-evidence`
+yalnız tam özgün piksel/satır/sözcük/grafiksiz bağımsız native alt kanıtı
+çıkarır. `python scripts/mebi_pratik2_konu_bekleyen_kanit.py --wait-for four-square-header-expansion/pass-result.json`
+yayın sırasının ardından anahtar/gövde kanıtını işler. Her adayın son kaydı
+`candidate-evidence/`; konu açıkken öğrenciye/yayına gitmez. Makbuzlar
+sonraki konu kabulünde tekrar OCR/model harcamamak için aynı hashle kullanılır.
+
+Eski yüklenmiş worker görsel-inceleme işaretini native kanıt sanarsa taze
+`mebi_pratik2_son_piksel_kapisi.validate_legacy_shortcut` yalnız bu adayı
+V2/ilk gerçek görsel okuma ile değerlendirir; eski makbuz tarihsel kalır.
+Bilinmeyen/başarısız gövde yayına girmez. `legacy-body-review/` önceki
+başarısız modeli tekrar etmez, aynı kaynak hashini tekrar kullanır.
+
+`python scripts/mebi_pratik2_cevrimdisi_sayfalar.py --output-dir offline-page-correspondence-v2`
+çevrimdışı kitapların literal metin sayfalarını PDF sayfalarına bağlar.
+JavaScript yalnız JSON string-array olarak okunur, çalıştırılmaz. Tam metin
+ve sözcük-frekans eşliği farklı durumlardır; ikisi de özgün soru pikseli veya
+tam soru kapsamı kanıtı değildir. Boş/kısa/tekrarlanan/eşleşmeyen sayfa açık
+inceleme kaydıdır; ZIP sırf metni eşleşti diye elenmez.

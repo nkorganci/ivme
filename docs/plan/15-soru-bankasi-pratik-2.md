@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 7.094 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 7.492 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -54,6 +54,10 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
   çözümlü gövdeyi bağladı;3.470 ek kırpım/867 konu bağlı aday042–043 için hazır.
 - Native V2 denetimi BITTI:907 kanıtın577'si tam satır sınırını geçti,330'u
   gerçek görsel yola döndü. Yayımlanmış başarısız kayıt0; ana plan kapanmadı.
+- İnce konusu açık23.879 hazırlanmış adayın anahtar/gövde kanıtı,042–043
+  sonrası ayrı işte tamamlanacak. Bu kanıt işi konu veya yayın onayı üretmez.
+-78 ZIP/12.249 sayfanın metin karşılık keşfi tamamlandı; eşleşen metin sayfası
+  piksel/soru kabulü değildir. Eksik/ambiguous sayfalar ayrı kayıttadır.
 - Dört3 Adım deneme kitabı, kalan konu/gövde düzenleri ve paket kaynakları
   bütün arşiv kapsamı içinde; bu alt işler bitince ana görev kapanmaz.
 

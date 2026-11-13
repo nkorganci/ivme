@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 7.094 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 7.492 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -61,6 +61,30 @@ konu bağlı aday `four-square-header-crops/` üretti; eski/yayımlanmış/sıra
 tekrarlanmaz, önceki fiziksel aday kodu korunur. 7401,867 adayın042–043 kabulünü041 sonrasına bağladı.35190 native V2
 alt kanıtı çıkarıyor; model/aktarım işlerini durdurma. Altı gerçek kırpım
 contact görselinde okundu, tamamı için model/gövde ve anahtar kapısı korunur.
+
+
+**Son güvenlik düzeltmesi:** `nativeBodyProof.status=LOCAL_VISUAL_BODY_REVIEW_REQUIRED`
+tek başına native kabul değildir. Yeni worker yalnız FULL_NATIVE_TEXT statüsünü
+kullanır; önceden yüklenmiş worker'lar için taze son piksel kapısı gerçek
+V2/ilk görsel okuma yapar.020 partisinde6 gerçek inceleme eklendi; geçmiş son
+kaynak makbuzlarında zayıf kısayol0 (`legacy-native-shortcut-audit.json`).
+Çalışan kaynak/model süreçleri durdurulmadı.3 güvenlik testi PASS.
+
+**Sonraki kanıt zinciri de çalışır durumda:**59469,042–043 yayın kabulünden
+sonra `all-source-evidence/`23.879 hazırlanmış/henüz konu eşlenmemiş adayın
+bağımsız anahtar ve gövde kanıtını tamamlar. Bu iş yayın YAPMAZ; sonuç
+`candidate-evidence/`, ince konu ve gerçek kusur ayrı gerekçelerle saklanır.
+Güncel kuyruk bu kanıtın dosya/hash bağını taşır.5965 yalnız CPU native V2
+alt kümesini önceden çıkarır; model çıktısı veya öğretmen onayı değildir.
+Sıraya alınmış16.314 kod bu yeni işte tekrarlanmaz. Paketler immutable;
+`--prepare` mevcut manifesti yeniden yazmaz. Dört kaynak-fixture testi PASS.
+
+**Çevrimdışı sayfa keşfi BITTI (soru kabulü değil):**78 ZIP/12.249 sayfa;
+223 tam metin,6.940 tam sözcük-frekans eşliği,70 tekrarlanan sözcük kümesi,
+492 kimliklendirmek için kısa metin ve4.524 kaynak yerleşimi incelemesi.
+`offline-page-correspondence-v2/report.json`; metin/sözcük eşliği piksel veya
+soru kapsamı değildir, bu yüzden ZIP veya soru dışlanmadı.4 parser/kimlik
+testi PASS; JavaScript çalıştırılmaz, ZIP çıkartılmaz.41,1sn/0 model çağrısı.
 
 **Bekleyen kullanıcı tercihi (çalışmayı durdurmaz):** cevap/gövde kanıtlı,
 ince konusu kesinleşmeyenleri öğrenci Pratik2’de ders altında “Konusu

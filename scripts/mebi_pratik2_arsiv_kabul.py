@@ -112,11 +112,11 @@ def compiled_key(group,pdf,discovery,module):
 def body_read(row,pdf,module):
     path=BASE/row['image'];sha=hashlib.sha256(path.read_bytes()).hexdigest()
     if sha!=row['imageSha256']:raise ValueError('New chapter body image changed')
-    if row.get('nativeBodyProof') and row['subject'] in TEXT_SUBJECTS and not page_graphics(pdf[row['bodyPage']-1]):
+    if row.get('nativeBodyProof',{}).get('status')=='FULL_NATIVE_TEXT_NO_SHARED_CONTEXT_OR_GRAPHICS' and row['subject'] in TEXT_SUBJECTS and not page_graphics(pdf[row['bodyPage']-1]):
         return {'status':'DETERMINISTIC_NATIVE_BODY_PROVED','imageSha256':sha,
             'basis':row['nativeBodyProof'],'pageGraphics':False,'sourcePixelsChanged':False}
     for folder in [BASE/'single-test-crops/body-model-review',BASE/'expanded-chapter-evidence/body-readings',
-                   BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',OUT/'body-readings']:
+                   BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',BASE/'all-source-evidence/body-readings',OUT/'body-readings']:
         receipt=folder/(row['code']+'.json')
         if receipt.exists():
             value=json.loads(receipt.read_text(encoding='utf8'))

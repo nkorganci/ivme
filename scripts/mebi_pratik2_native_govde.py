@@ -72,6 +72,8 @@ def run(name,skip_first=0):
             if row['subject'] not in ALLOWED:counts['visualRoute']+=1;continue
             sha=row['sourceSha256']
             if sha not in opened:
+                if len(opened)>=8:
+                    oldest=next(iter(opened));opened.pop(oldest).close()
                 original=(SOURCE/row['relativePath']).resolve()
                 if not original.is_relative_to(SOURCE):raise ValueError('Native proof leaves original root')
                 with original.open('rb') as stream:
@@ -94,6 +96,8 @@ def run(name,skip_first=0):
             if current>bucket or now-last>=300 or index==len(rows):
                 p={'stage':'REGION_NATIVE_BODY_PROOF','completed':index,'total':len(rows),'counts':dict(counts),'elapsedSeconds':round(now-started,1)}
                 write_json(folder/'native-body-progress.json',p);print(json.dumps(p),flush=True);last=now;bucket=current
+        write_json(folder/'native-body-progress.json',{'stage':'REGION_NATIVE_BODY_PROOF','completed':len(rows),'total':len(rows),
+            'percent':100.0,'counts':dict(counts),'elapsedSeconds':round(time.monotonic()-started,1)})
         write_json(folder/'native-body-proof-report.json',{'status':'NATIVE_SUBSET_PROVED_VISUAL_ROUTE_RETAINED','counts':dict(counts),'scopeCandidates':len(rows),
             'skippedInitialCandidates':skip_first,'questionWrites':0,'modelCalls':0,'teacherApprovalsCreated':0})
     finally:

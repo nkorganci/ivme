@@ -70,6 +70,12 @@ def run():
                 decisions[row['code']]={**prior,**row,'status':'REVIEW_REQUIRED',
                     'priorReviewReasons':prior.get('reasons',[]),
                     'reasons':['INDEPENDENT_KEY_BODY_REVIEW_REQUIRED' if row.get('categoryId') else 'CONTROLLED_TOPIC_REVIEW_REQUIRED'],'studentVisible':False}
+    for path in (BASE/'all-source-evidence/candidate-evidence').glob('*.json'):
+        evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
+        if code not in decisions or code in accepted:continue
+        decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],
+            'sourceEvidenceReview':str(path.relative_to(BASE)),
+            'sourceEvidenceReviewSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'studentVisible':False}
     aliases={};excluded={}
     for batch in sorted(BASE.glob('verified-source-batch-*')):
         final=batch/'final-source-acceptance.json'
