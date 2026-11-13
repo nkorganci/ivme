@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "evidencePackage": "scanned-literature-pending-evidence",
+  "decisions": [
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q001",
+      "imageSha256": "b9f88cc4163ef7dcb0449ca6f8854643309de39310cb6d699d3928a2472b4eea",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Divan edebiyatında nazım nesre göre",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q002",
+      "imageSha256": "b9360e939b4953e563f4fcd6a881c0f7d048514bd468b1b8e1821d455681e8e5",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Divan edebiyatında düzyazı (nesir) türünde eser",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q003",
+      "imageSha256": "1060779e26f2faa9f4226f59592bcb0acbc070a8d94c82beee0c76a5c012b335",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Divan edebiyatından alınan nazım ve nesir",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q004",
+      "imageSha256": "2242926d5136a03fe84f68952192e6ee5b7cbdbc7aac6a51f0752305fc34cd0b",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "kraldan hediye gelecektir",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q005",
+      "imageSha256": "111e110329ce9bde141969c2b139fda8b0f62dd79760e846676bd1350d7862f6",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "türlerden hangisi divan edebiyatı nesrine",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q006",
+      "imageSha256": "c191f558c3eed4bedd8ba202cb53a37c68da261fcfa7df45111bdecf6e849bb3",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Parçada anlatılan divan edebiyatı nesir türünün",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q007",
+      "imageSha256": "524fd261832582eb9433f4e83fe808d81ea3189d67cc38395f8245a6a7fc7bcd",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Bu parça divan edebiyatı nesir türlerinden",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q009",
+      "imageSha256": "bcad47a9009a11b9f755ce215443f73ea8442df140dd4292a3725a76f408879d",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "padişah çocuklarının doğum ve sünnet törenleriyle",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q010",
+      "imageSha256": "da96b0c511f6cecda777c12f1e4baea1b47a416819d0a5e18276cb6e09b90f7f",
+      "categoryId": "excel.ayt.turkce.5952cb01d2a3b7aa54a3",
+      "quote": "Divan edebiyatı nesir türlerinden olan tezkirelerde",
+      "rationale": "Divan nesrinin sanat anlayışı, sanatçı adı veya tezkire/sefaretname/surname türü doğrudan sorulur. Modern öğretici metinler ayrı konuya alındı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q011",
+      "imageSha256": "1713052ae3fe66317042967ef7aac2ebcdf84aba706ee28cd7c9737c401c2a26",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu parçada aşağıdaki edebî türlerden hangisine",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q012",
+      "imageSha256": "68c5baaf032493f351c33ec30a0865578b3ef0bdfbaae3383e8d04a94b59fb7d",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu parçada aşağıdaki edebî türlerden hangisine",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q013",
+      "imageSha256": "2d40bf6c6646ac56524a47cebed17422d9eccf95918a72e8eb8ffff5b295be0a",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Sohbet türü ile ilgili numaralanmış ifadelerden",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q014",
+      "imageSha256": "560f83e7ba3e0115cb4290d6e164785debb3fd9a73a95fd5e60c82fd7ae4929e",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu parçada yazarın bahsettiği yazı türü",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q015",
+      "imageSha256": "ccc2b74b8d93ae5704a4aafcd744d022d5ec95f5d0a47a77e10084892161acea",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu parçada yazarın bahsettiği yazı türü",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q016",
+      "imageSha256": "0a458dbe0a32ec377598c59589c7593243b372dee61cb7933b15c9f038b4cb1d",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu metin aşağıdaki hangi edebî türden alınmıştır",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q017",
+      "imageSha256": "6d74cca54630bbc7895c5e409c775c29ae5437f288caf3c8662413b771c8ab1b",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Bu metinde aşağıda verilen gezi yazısı",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q018",
+      "imageSha256": "f685eab74ba696802cc3637b48404bac1d9b2636d1710d2fea1a74262f2a173f",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Türk edebiyatında deneme türünün",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q019",
+      "imageSha256": "4579f59950ed93a1cfa40348bef20021b45bd3a7c594d37a6eed5bd57fe13dbd",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "açıklamalardan hangisi parantez ( ) içinde verilen terimle",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q020",
+      "imageSha256": "41f3cc15731a5ab0ee4ca5df8aad478d54303840241fbbfdef4c80d2c4fdd7a0",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Biyografi, bir kişinin hayat hikâyesinin başkası tarafından yazılmasıdır",
+      "rationale": "Anı/makale/sohbet/fıkra/deneme/gezi/biyografi gibi öğretici nesir türünün özellikleri, örneği veya türdeki eserleri karşılaştırılır; Divan dönemi başlığına zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-239208318a66-T1-Q006",
+      "imageSha256": "b7f19d80c322a219d138560149febdd543c042f84db21f407894878f0057953e",
+      "categoryId": "excel.ayt.turkce.a1391eb013052d9eab49",
+      "quote": "İslamiyet Öncesi Türk Edebiyatı ile ilgili",
+      "rationale": "Kök İslamiyet öncesi yazılı/sözlü eser veya Karahanlı geçiş dönemi eseri ayrımını açıkça sorar; genel edebiyata giriş soruları bu döneme zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-239208318a66-T1-Q008",
+      "imageSha256": "aaecfb3bc90a2ba57aebd6747fd924635200446449c82d105222dd802e3cddb2",
+      "categoryId": "excel.ayt.turkce.a1391eb013052d9eab49",
+      "quote": "İslamiyet Öncesi Türk Edebiyatı Dönemi’nin yazılı eserlerinden",
+      "rationale": "Kök İslamiyet öncesi yazılı/sözlü eser veya Karahanlı geçiş dönemi eseri ayrımını açıkça sorar; genel edebiyata giriş soruları bu döneme zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-239208318a66-T1-Q018",
+      "imageSha256": "732e1d314130229ee3973017712145aa93913abdbeacfb0bbaa5984b954c5b84",
+      "categoryId": "excel.ayt.turkce.a1391eb013052d9eab49",
+      "quote": "eserlerden hangisi Karahanlı Türkçesi ile yazılmamıştır",
+      "rationale": "Kök İslamiyet öncesi yazılı/sözlü eser veya Karahanlı geçiş dönemi eseri ayrımını açıkça sorar; genel edebiyata giriş soruları bu döneme zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-239208318a66-T1-Q005",
+      "imageSha256": "586865921a7c426c15e16c481de42fce882ed3b258a5eadf032517cda8259652",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "hangisi tarihî bir romandan alınmış olabilir",
+      "rationale": "Tarihî romanda kurgusal anlatımı, tarihî bilgi bildiren açıklamalardan ayırt ettirir; genel nesir/roman türü mevcut kimliğine bağlandı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

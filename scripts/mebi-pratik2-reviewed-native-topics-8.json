@@ -1,0 +1,386 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q002",
+      "imageSha256": "6e4c4d69362c4711a356b66eb8b1743e93103a1db1e7b0da801b518bab2a1de7",
+      "categoryId": "excel.ayt.sosyoloji.215d18f6d89d2b7cd2d6",
+      "quote": "bireyin sosyalleşme sürecini etkileyen hangi temel unsur",
+      "rationale": "Sosyalleşmenin aile etkenini sorar; aile kurumunun işleviyle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q004",
+      "imageSha256": "07ff7731d5d9119c9b7724c45310b7ec42d04cf062f1b326ab4b6805e05fdc95",
+      "categoryId": "excel.ayt.sosyoloji.371a2205b4889d27a328",
+      "quote": "toplumsal ilişkiler üzerinde etkili olan sosyalleşme",
+      "rationale": "Sosyalleşmenin toplumsal etkisi veya yaşam evresi açıkça sorulur; genel aile etiketine daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q005",
+      "imageSha256": "7b13dd97485a9754d28de6af37843bfb4a27a9c2e6fbd2c015740cafad810660",
+      "categoryId": "excel.ayt.sosyoloji.371a2205b4889d27a328",
+      "quote": "genç yetişkinlik dönemindeki sosyalleşmeyle ilgili",
+      "rationale": "Sosyalleşmenin toplumsal etkisi veya yaşam evresi açıkça sorulur; genel aile etiketine daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q006",
+      "imageSha256": "ba7a60bf497c46ee063c6b6013cf24b92eeb0ee011bc09b3dac303bd1af06b3b",
+      "categoryId": "excel.ayt.sosyoloji.49ffe45bd96b4de55e76",
+      "quote": "Esra hemşirenin yaşadığı bu durum",
+      "rationale": "Rol pekişmesi/çatışması, verilmiş statü, saygınlık veya statü aktarımı kökün hedefidir; kişilik/sosyalleşme sorusu gibi sunulmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q007",
+      "imageSha256": "2a2eb5f211fe354321e9d9828eb78299532f1efeb61d643612db0b130ec69b4f",
+      "categoryId": "excel.ayt.sosyoloji.49ffe45bd96b4de55e76",
+      "quote": "Verilmiş statü bireyin çaba göstermeden",
+      "rationale": "Rol pekişmesi/çatışması, verilmiş statü, saygınlık veya statü aktarımı kökün hedefidir; kişilik/sosyalleşme sorusu gibi sunulmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q008",
+      "imageSha256": "7620eb4e52aeea6e9ff42026317e037ca5de24212440fa1d556eddb634bce13a",
+      "categoryId": "excel.ayt.sosyoloji.49ffe45bd96b4de55e76",
+      "quote": "Seçimi kaybettiğinde statüye dayalı saygınlığını",
+      "rationale": "Rol pekişmesi/çatışması, verilmiş statü, saygınlık veya statü aktarımı kökün hedefidir; kişilik/sosyalleşme sorusu gibi sunulmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q009",
+      "imageSha256": "c8c4e23f229eeaae294e714e31e92a46254ea81989ec22ab9a0accb99438f46c",
+      "categoryId": "excel.ayt.sosyoloji.49ffe45bd96b4de55e76",
+      "quote": "Kuzeninin gördüğü ilgi statü aktarımına örnektir",
+      "rationale": "Rol pekişmesi/çatışması, verilmiş statü, saygınlık veya statü aktarımı kökün hedefidir; kişilik/sosyalleşme sorusu gibi sunulmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q010",
+      "imageSha256": "bc398a9309af63d1a0e8d200c39f0c4ed7ca886017d7da077ebb2a346d8ef54b",
+      "categoryId": "excel.ayt.sosyoloji.49ffe45bd96b4de55e76",
+      "quote": "anne gibi mi rehber öğretmen gibi mi",
+      "rationale": "Rol pekişmesi/çatışması, verilmiş statü, saygınlık veya statü aktarımı kökün hedefidir; kişilik/sosyalleşme sorusu gibi sunulmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q013",
+      "imageSha256": "30c07cb0b356bea67f35cd4d4e4cdfe3bd74e02aa1f279e91d393ebc56cbb8ad",
+      "categoryId": "excel.ayt.sosyoloji.71e11534b01710bb2a3b",
+      "quote": "Metne göre toplumsal kontrolle ilgili",
+      "rationale": "Toplumsal değer, norm veya kontrolün işlevini açıkça sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q014",
+      "imageSha256": "49305d2c363a445b79d984d8accd084b2ca7b5a2e74fc220f5e0d2f0fd69ee94",
+      "categoryId": "excel.ayt.sosyoloji.71e11534b01710bb2a3b",
+      "quote": "temelinde evrensel değer bulunur",
+      "rationale": "Toplumsal değer, norm veya kontrolün işlevini açıkça sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q015",
+      "imageSha256": "e2f20065c553ef0720e49e6ee4a51cd60fc45803d791e4fc25d2846edd942e86",
+      "categoryId": "excel.ayt.sosyoloji.71e11534b01710bb2a3b",
+      "quote": "Toplumsal değerler ve normlar",
+      "rationale": "Toplumsal değer, norm veya kontrolün işlevini açıkça sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q016",
+      "imageSha256": "341e7782614eeecf0dffc8e1b9976d6d79c1301fc3f5fc23075daa1c53d49854",
+      "categoryId": "excel.ayt.sosyoloji.441e241c78e0e7e8b092",
+      "quote": "hangisi olumlu sapmaya örnektir",
+      "rationale": "Toplumsal sapmanın olumlu örneği veya işlevi doğrudan sorulur; Durkheim adı kurucular konusunu hedeflemez.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q018",
+      "imageSha256": "bfaff480a63cc1d409a2e9d76f1d87f2b62ab38eb83cb229557a46a9845d3249",
+      "categoryId": "excel.ayt.sosyoloji.441e241c78e0e7e8b092",
+      "quote": "toplumsal sapma davranışı ile ilgili",
+      "rationale": "Toplumsal sapmanın olumlu örneği veya işlevi doğrudan sorulur; Durkheim adı kurucular konusunu hedeflemez.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q002",
+      "imageSha256": "ee4486734add8eeee0213ecd966edc9f6da43b43568a201abcd039ae14ebfa72",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "Toplumsal yapıyı etkileyen birden çok faktör",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q004",
+      "imageSha256": "3d13373430102f2fd27119165a97bd03bd03be204da35bd09ae1c8cb0de19dc5",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "toplumsal yapıyı etkileyen",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q005",
+      "imageSha256": "a88dc1604119bf7d744023e7b36e8017730311a286f8657cdc9e7644fd609b2c",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "toplumsal yapıya etki eden",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q007",
+      "imageSha256": "0b706d2fcc9d57dbfa5f9897ee4f1dfb55011fb99d2a7cf254dc7e6de7d51929",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "hem metropol hem de kozmopolit olması",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q008",
+      "imageSha256": "8e7e6b0f819a4039da0f501c4ff8fc667f6d5e200d3265864a906b2da2e21b4a",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "kentleri kırsal yerleşimlerden ayıran",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q010",
+      "imageSha256": "b576457ebf5e7cb2695a1437a57c950d7069f4ef02bbad78436d7ebefdb31f2d",
+      "categoryId": "excel.ayt.sosyoloji.620cdc1fcdc17b066985",
+      "quote": "özellikleri verilen yerleşim modeli",
+      "rationale": "Demografik/coğrafi/kurumsal etkenler veya toplumsal yapının kır-kent/metropol yerleşim unsurunu sorgular; salt kent kültürüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q011",
+      "imageSha256": "729d932f0d7cecb8ac527d223672041969ef220f6980542b2abb0699acb01ee5",
+      "categoryId": "excel.ayt.sosyoloji.74b111da600315bb1072",
+      "quote": "toplumsal etkileşim tiplerinden hangisi",
+      "rationale": "Kök iş birliği, rekabet ve mübadele gibi etkileşim biçimlerini doğrudan sorar; kurucu adı nedeniyle sosyoloji tarihi etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q015",
+      "imageSha256": "d4d88ff17a4f3623ccebae4c66215a72e9d6291fed3b2794cf6f3c410ab3a717",
+      "categoryId": "excel.ayt.sosyoloji.74b111da600315bb1072",
+      "quote": "merkeze aldığı toplumsal etkileşim biçimi",
+      "rationale": "Kök iş birliği, rekabet ve mübadele gibi etkileşim biçimlerini doğrudan sorar; kurucu adı nedeniyle sosyoloji tarihi etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q017",
+      "imageSha256": "fbffa16894d632b12720fae3466a99e8184914e841b7a8c83a45c679418b8536",
+      "categoryId": "excel.ayt.sosyoloji.74b111da600315bb1072",
+      "quote": "toplumsal etkileşim tipleri ile ilgili",
+      "rationale": "Kök iş birliği, rekabet ve mübadele gibi etkileşim biçimlerini doğrudan sorar; kurucu adı nedeniyle sosyoloji tarihi etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q014",
+      "imageSha256": "9594ed9cb873cae2583370a86507e056f44d23a6497f706ca91392e998a76562",
+      "categoryId": "excel.ayt.sosyoloji.75bf25a8d62dbd535198",
+      "quote": "Küresel tabakalaşma",
+      "rationale": "Tabakalar arası ekonomik eşitsizlik veya dikey toplumsal hareketlilik doğrudan hedeflenir; yalnız ekonomik kurum etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q016",
+      "imageSha256": "6a13221d91ed3853ae812bd6128ec138ab9f60ed059f555d04b8c16ef4afae0c",
+      "categoryId": "excel.ayt.sosyoloji.75bf25a8d62dbd535198",
+      "quote": "farklı toplumsal tabakalarda bulunmaktadır",
+      "rationale": "Tabakalar arası ekonomik eşitsizlik veya dikey toplumsal hareketlilik doğrudan hedeflenir; yalnız ekonomik kurum etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q020",
+      "imageSha256": "e19a09c8196775b77a8416690cc98fb31bb85051666ad4c3d736f188b947e914",
+      "categoryId": "excel.ayt.sosyoloji.75bf25a8d62dbd535198",
+      "quote": "onun dikey hareketlilik yaşadığını",
+      "rationale": "Tabakalar arası ekonomik eşitsizlik veya dikey toplumsal hareketlilik doğrudan hedeflenir; yalnız ekonomik kurum etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q005",
+      "imageSha256": "9d7f1eaf46c30c82897bd3aa47e490815d224c78f1eb874e68f187a135a1c6f2",
+      "categoryId": "excel.ayt.sosyoloji.d8a9d4c3ba96616ac6ca",
+      "quote": "Teknolojik gelişmelerin toplumsal değişim üzerinde",
+      "rationale": "Teknolojinin toplumsal değişmedeki olumlu/olumsuz etkilerini sorar; kültürel gecikme gibi belirli kavrama zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q006",
+      "imageSha256": "a06c2385dcda0fb46fd8655f4e2c6e278c017db16ff4d325eff909f34274de21",
+      "categoryId": "excel.ayt.sosyoloji.6b84a4f45b4575542843",
+      "quote": "Maddi kültür ögelerindeki değişim, manevi kültür",
+      "rationale": "Maddi/manevi kültürün değişim hızı veya birbirine etkisi sorulur; yalnız kültür tanımı değildir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q007",
+      "imageSha256": "8bbf672ab590530b1ac34cb9d92fbfa27968d4170c7dcd34f656bb22e474f85b",
+      "categoryId": "excel.ayt.sosyoloji.6b84a4f45b4575542843",
+      "quote": "maddi kültür ögelerindeki değişimin manevi kültür üzerindeki",
+      "rationale": "Maddi/manevi kültürün değişim hızı veya birbirine etkisi sorulur; yalnız kültür tanımı değildir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q008",
+      "imageSha256": "a23419f5e87eedbe4189d280586c4f810f8980f35566772fb8e44d90ae7b9193",
+      "categoryId": "excel.ayt.sosyoloji.24477a405c571c4bb589",
+      "quote": "Kültürel farklılıklara hoşgörüyle bakılması",
+      "rationale": "Farklı yöre kültürlerinin karşılıklı öğrenme ve hoşgörüyle etkileşimi hedeflenir; öğretmen sözcüğünden eğitim kurumuna zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q010",
+      "imageSha256": "167bb6696cd6e9513d19b836f095ea1509a8fac9a533195fd1fa61708118ca07",
+      "categoryId": "excel.ayt.sosyoloji.842d8272da3dd4224bae",
+      "quote": "Kültürel yozlaşma",
+      "rationale": "Gönüllü özenti kaynaklı kültürel yozlaşmayı kültür emperyalizmi/gecikme/etkileşimden ayırt ettirir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q011",
+      "imageSha256": "84f8072f1ec19e956ba2100d2d59bd69fcc84252b538043809ccbaa0e9431f95",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "hangisi toplumsal gelişmeyle örtüşmeyen",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q012",
+      "imageSha256": "5e35334a183de53e887ae0c0d9aac0ba3cfea4257d735dddad582d5d3ced9bf9",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "toplumsal gelişmenin temel ögelerinden",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q013",
+      "imageSha256": "149cdc2d1aa0fabcdc33f20c2679c0b6e94ff68f073c1195f3dab2d85604fc80",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "Toplumsal çözülme",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q014",
+      "imageSha256": "61f0cffedaf4c2b3a5eb85131315bf4c61295c767872d810453162890959ea1a",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "kentteki toplumsal çözülmenin nedeni",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q015",
+      "imageSha256": "fc91dceac90532b0c6dd6a1cd2bee2f9bc76da268d0025342d6936f2c44a2af4",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "toplumsal çözülmenin önlenmesindeki etkisine",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q016",
+      "imageSha256": "a7c7199f2b760c546da59f0e4e0d8d211055328d693528ddff5725a92821e41a",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "Toplumsal bütünleşmenin önemli unsurlarından biri dildir",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q018",
+      "imageSha256": "04af9fe7401a8dcb90b2a6ef564ed4fa818ebe2649414fa9827d053cd82301da",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "bireyler ya benzerliklerinden ya da farklılıklarından dolayı bütünleşir",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1ff581bf37b328c7-Q020",
+      "imageSha256": "69980ebdae7deda9fe99ec03c5ae442624e4b169545a7082fad052ee783e5d15",
+      "categoryId": "excel.ayt.sosyoloji.00bec782dde78203a0ae",
+      "quote": "kurallara uyum göstermesiyle bütünleşme oluşur",
+      "rationale": "Gelişme, çözülme veya mekanik/organik/normatif bütünleşme kökün açık hedefidir; kültür tanımı ya da kurucu adıyla başka konuya kaydırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

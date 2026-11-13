@@ -339,3 +339,34 @@ yayın kararı değildir. V2 tam satır/seçenek/özgün piksel/şekil kontrolü
 İçerik şüphesi `scripts/mebi-pratik2-native-content-holds.json` içindeki özgün görsel SHA ve açık gerekçeyle güncel inceleme ihracına bağlanır. `KAYNAK_ICERIK_TUTARLILIGI` ayrı kategoridir; CSV `sourceContentReview` sütununu taşır. Kabul edilmiş/canlı soruya sessizce inceleme durumu uygulanamaz. Üç içerik sınırı testi PASS.
 
 Deneme native kısayolu ilk ders-aralığı geçişinde0 ek kanıt verdi (5.482 kapsam,23 eski,5.459 görsel;238,6sn). Bu sonuç gövdenin hatalı olduğunu kanıtlamaz; V2 kısayolunun yetmediğini gösterir. Aynı girdiyle geçiş tekrarlanmaz, görsel hat sürer.
+
+
+Taranmış Edebiyat gibi farklı bir mevcut kanıt paketi için aynı hazırlayıcı
+`--evidence-package scanned-literature-pending-evidence
+--allow-verified-visual-body` ile kullanılabilir. Varsayılan native gövde
+koşulu korunur. Görsel yol açıkça seçildiğinde yalnız aynı görsel SHA'sında
+MODEL_NO_VISIBLE_ISSUE, tek soru/beş seçenek true ve kesilme/eksik bağlam/
+belirsizlik false kayıtları yeniden kullanılır. Eksik veya ters bayrakta
+paket hazırlanmaz; iki ek sınır testiyle toplam6 konu inceleme testi PASS.
+Bu izin konu kararı üretmez: özgün native metin yine tek tek okunmalı,
+mevcut kategori ve gerçek kaynak alıntısı doğrulanmalıdır. Yeni model veya
+öğretmen onayı oluşturulmaz. 056'da23 gövde makbuzu yeniden kullanıldı.
+
+056–058de aktarılmayan fakat metni gerçekten okunmuş ince konu kararları
+paketlerin `remaining-topic-review.json` dosyalarındadır. 056:16 giriş konusu;
+057:4 Psikoloji komşu/eksik konu;058:1 hak-sorumluluk konusu. İçerik şüphelileri
+ayrı `KAYNAK_ICERIK_TUTARLILIGI` ihracındadır; bu sayılar bütün arşivin kalan
+tekil soruları veya öğretmen kabulü değildir.
+
+
+Tek tek inceleme için tekrar elle liste kurmak yerine
+`python -X utf8 scripts/mebi_pratik2_incelenecek_metinler.py --subject Tarih
+--exam AYT --limit 12 --catalog` kullan. Araç yalnız PDF kapısından geçen,
+özgün gövde/anahtar makbuzlu, henüz donmuş yayın paketine ayrılmamış metinleri
+özgün PDF hash'i ve görsel hash'i kontrolüyle okur. Birden fazla PDF'yi ayrı
+açar; önceki PDF'nin metnini sonraki kaynağa karıştırmaz. İçerik ve açık konu
+bekleme kayıtları atlanır. Listelemek inceleme/onay/yayın değildir; model/DB
+yazımı0. `--offset`, `--source-prefix`, `--limit`, `--catalog` ile küçük
+pencereler seçilebilir. 053–055in okunup bağlanamayan9/9/13 native kaydı da
+kendi `remaining-topic-review.json` dosyalarına kondu; aynı başarısız konu
+kararı tekrarlanmaz. Tarih AYT tek-kayıt gerçek kaynak okuma kontrolü PASS.

@@ -2,10 +2,26 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from mebi_pratik2_incelenen_konu_paketi import validate_review,REVIEWER
+from mebi_pratik2_incelenen_konu_paketi import validate_review,verified_body,REVIEWER
 
 
 class ReviewedTopics(unittest.TestCase):
+    def test_visual_body_requires_explicit_route_and_all_cached_completeness_flags(self):
+        row={'imageSha256':'original'}
+        body={'status':'MODEL_NO_VISIBLE_ISSUE','imageSha256':'original','reading':{
+            'one_question':True,'all_five_choices_visible':True,'visible_truncation':False,
+            'missing_context':False,'uncertainty':False}}
+        self.assertFalse(verified_body(body,row))
+        self.assertTrue(verified_body(body,row,True))
+        for flag in body['reading']:
+            wrong={**body,'reading':{**body['reading'],flag:not body['reading'][flag]}}
+            self.assertFalse(verified_body(wrong,row,True))
+        self.assertFalse(verified_body({**body,'imageSha256':'changed'},row,True))
+
+    def test_native_proof_is_reused_without_inventing_visual_or_teacher_review(self):
+        self.assertTrue(verified_body({'status':'DETERMINISTIC_NATIVE_BODY_PROVED','imageSha256':'original'},
+                                      {'imageSha256':'original'}))
+
     def fixture(self):
         row={'imageSha256':'original','exam':'AYT'}
         category={'id':'excel.ayt.tarih.test','exam':'AYT','subject':'Tarih','selectable':True}

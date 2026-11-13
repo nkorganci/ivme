@@ -24,14 +24,17 @@ ilgili paketin kabulüdür; bütün arşivin veya öğretmen incelemesinin kapan
 | `reviewed-native-question-2-expansion` | **BITTI** | `reviewed-native-question-expansion` |
 | `reviewed-native-question-3-expansion` | **BITTI** | `reviewed-native-question-2-expansion` |
 | `reviewed-native-question-4-expansion` | **BITTI** | `reviewed-native-question-3-expansion` |
-| `reviewed-native-question-5-expansion` | **SURUYOR** | `reviewed-native-question-4-expansion` |
+| `reviewed-native-question-5-expansion` | **BITTI** | `reviewed-native-question-4-expansion` |
+| `reviewed-native-question-6-expansion` | **BITTI** | `reviewed-native-question-5-expansion` |
+| `reviewed-native-question-7-expansion` | **BITTI** | `reviewed-native-question-6-expansion` |
+| `reviewed-native-question-8-expansion` | **BITTI** | `reviewed-native-question-7-expansion` |
 | `all-source-evidence` | **SURUYOR** | `bold-number-expansion` |
 | `full-mock-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
 | `single-test-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
 | `individual-tarama-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
 | `individual-tarama-word-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
 | `bold-number-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
-| `scanned-literature-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
+| `scanned-literature-pending-evidence` | **BITTI** | `bold-number-expansion` |
 
 **Bilinen paket zinciri:** SURUYOR.
 **Bütün arşiv soru kabulü: AÇIK.** Kaynak/cevap/gövde, ince konu ve canlı yayın

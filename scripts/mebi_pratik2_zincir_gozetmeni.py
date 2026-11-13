@@ -34,11 +34,14 @@ PACKAGES=[
     ('reviewed-native-question-3-expansion',53,200,'reviewed-native-question-2-expansion'),
     ('reviewed-native-question-4-expansion',54,200,'reviewed-native-question-3-expansion'),
     ('reviewed-native-question-5-expansion',55,200,'reviewed-native-question-4-expansion'),
+    ('reviewed-native-question-6-expansion',56,200,'reviewed-native-question-5-expansion'),
+    ('reviewed-native-question-7-expansion',57,200,'reviewed-native-question-6-expansion'),
+    ('reviewed-native-question-8-expansion',58,200,'reviewed-native-question-7-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}
       for name,first,size,dep in PACKAGES]
-# 051–055 reuse already-proved native bodies/keys and require no model calls;
+# 051–058 reuse already-proved native/visual bodies and printed keys, with no new model calls;
 # auxiliary model evidence may continue after the last visual publisher, 050.
 JOBS += [{'name':name,'dependency':'bold-number-expansion','kind':'evidence','args':['scripts/mebi_pratik2_konu_bekleyen_kanit.py','--package-dir',name]}
          for name in ['all-source-evidence','full-mock-pending-evidence','single-test-pending-evidence',

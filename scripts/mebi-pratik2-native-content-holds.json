@@ -15,6 +15,34 @@
       "reason": "SOURCE_CONTENT_MULTIPLE_POTENTIALLY_FALSE_OPTIONS",
       "note": "Masal/fabl bilgi sorusunda I, II ve IV maddeleri birlikte sorunlu görünür; seçenekler bu birleşimi içermiyor. Basılı tek cevap içerik belirsizliğini çözmez; öğrenciye aktarılmadı, öğretmen incelemesinde.",
       "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c42a33c105ce-T14-Q008",
+      "imageSha256": "31b6bd8c338e5c45c110cf836ceadd7e70c073fb5a2f062d12b116252dd4247e",
+      "reason": "SOURCE_CONTENT_MULTIPLE_POTENTIALLY_CORRECT_OPTIONS",
+      "note": "Divan nesri olmayan tür sorusunda tegazzül ve şehrengiz birlikte uygun yanıt olabilir. Basılı tek cevap bu içerik belirsizliğini çözmez; öğretmen incelemesi gerekir, öğrenciye aktarılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7c3220596a6b5474-Q012",
+      "imageSha256": "7959ce073404f874254f42feff13e79dd5e6ddadcf624d842db096f0dc4993ce",
+      "reason": "SOURCE_CONTENT_ANSWER_CHOICE_AMBIGUITY",
+      "note": "Yazılı norm ihlalini ayırt eden soruda kırmızı ışık ile sokakta yüksek sesli müzik seçeneklerinin bağlamı yeterince ayrıştırılmıyor. Tek doğru yanıtın anlamsal sınırı için öğretmen incelemesi gerekir; aktarılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-03bb61bf7161e613-Q018",
+      "imageSha256": "131d9f027b239f62c0f386bd8f4b3b37ba862d017156b26ec5c69810ab5e43c6",
+      "reason": "SOURCE_CONTENT_ANSWER_CHOICE_AMBIGUITY",
+      "note": "Toplumsal hareketlilik sorusunda A seçeneğindeki belirli ölçüde hareketlilik ve B seçeneğindeki kendi çabasıyla sınıf değiştirme aynı örnekten çıkarılabilir görünüyor. Tek basılı cevap seçenek belirsizliğini çözmez; öğretmen incelemesinde, aktarılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q012",
+      "imageSha256": "986ca3ed418e9c8f8785a9a943dfe97fa6e577a1e8ca1d6181b1b18a823f9eff",
+      "reason": "SOURCE_CONTENT_REFERENCED_STATEMENT_NUMBER_AMBIGUITY",
+      "note": "Özgün native metinde I-IV öncülleri varken E seçeneğinde V öncülü geçiyor. Bu, kesin görsel kaynak kusuru veya öğretmen kararı olarak sunulmaz; soru numarası/seçenek içeriği doğrulanana kadar aktarılmadı. Aynı native okumayı tekrar etme.",
+      "teacherApproved": false
     }
   ]
 }

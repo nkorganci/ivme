@@ -1,0 +1,296 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q002",
+      "imageSha256": "b52efb57fa7858ffb03382f946b67b3ae3e50590757ecdf4786e31bedd0254b1",
+      "categoryId": "excel.ayt.psikoloji.b5f84739d2f9638e7b5d",
+      "quote": "Davranışsal eğilimlerin bazıları kalıtsal olabilir",
+      "rationale": "Kök davranış eğilimlerinin kalıtımla ilişkisini sorar; örnekteki kaygıdan hareketle kişilik bozukluğu etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q004",
+      "imageSha256": "ee0fe2cc62086d6b45d617b474290db591718b9b7c6ce1604af9efe72cd72eeb",
+      "categoryId": "excel.ayt.psikoloji.e15ef9b731db447765b4",
+      "quote": "aşağıdaki gelişim dönemlerinden hangisinde bulunmaktadır",
+      "rationale": "Ergenlik dönemi, kimlik gelişimi veya Kohlberg ahlaki gelişim evresi kökte doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q005",
+      "imageSha256": "6b578b76cb5309e8427ec1137cf2f9fe1b6ab63ddd6f9ba4bf3adfc1d9612d54",
+      "categoryId": "excel.ayt.psikoloji.e15ef9b731db447765b4",
+      "quote": "L. Kohlberg’in hangi ahlaki gelişim evresindedir",
+      "rationale": "Ergenlik dönemi, kimlik gelişimi veya Kohlberg ahlaki gelişim evresi kökte doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q006",
+      "imageSha256": "a39836f0d313d8dfa08546d38260fa2e037871e03a1543ed2aa8c841f84a0658",
+      "categoryId": "excel.ayt.psikoloji.e15ef9b731db447765b4",
+      "quote": "Sedef’in yaşadıkları ve soruları ergenlik dönemine",
+      "rationale": "Ergenlik dönemi, kimlik gelişimi veya Kohlberg ahlaki gelişim evresi kökte doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q007",
+      "imageSha256": "3501c7ef8b0a335c7af90dcd0bf4cbbec5bcc571c9247c9b7c783d33dd6223d2",
+      "categoryId": "excel.ayt.psikoloji.11ddf2a3bd23b4f1dfe3",
+      "quote": "Buna göre aşağıdakilerden hangisi duyusal eşik",
+      "rationale": "Duyusal eşik veya duyumu sağlayan iç/dış uyaran farkı açıkça sorulur; algısal yorumdan ayrılır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q008",
+      "imageSha256": "c77a2d35e865dded1d754c69a40220626286311c53c0a6348af74093abee8b35",
+      "categoryId": "excel.ayt.psikoloji.11ddf2a3bd23b4f1dfe3",
+      "quote": "Buna göre duyumun gerçekleşmesini sağlayan",
+      "rationale": "Duyusal eşik veya duyumu sağlayan iç/dış uyaran farkı açıkça sorulur; algısal yorumdan ayrılır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q009",
+      "imageSha256": "4f64f7686214ae3cb5c19694de3adc8f017abfaaad6ae3d2481160b399ca24fd",
+      "categoryId": "excel.ayt.psikoloji.a425cbfe14ee784a8384",
+      "quote": "Duyarsızlaşma uyarıcıya gösterilen duygusal tepkinin azalmasıdır",
+      "rationale": "Kök alışma ile duyarsızlaşmayı karşılaştırır; salt duyum/algı başlığı verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q011",
+      "imageSha256": "213739aa144ebf6694a74c54a26f21548a9a9a272cb82686de8381d9cbe286e1",
+      "categoryId": "excel.ayt.psikoloji.a751d96e7791914f05ef",
+      "quote": "Algısal değişmezlik",
+      "rationale": "Kök algısal değişmezliği veya illüzyon/halüsinasyon ayrımını örnekle sorgular; seçenek alıntısı özgün kökün hedef kavramını açıklar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q012",
+      "imageSha256": "c948d412c8365ed25dde04d6180dc561c431fab334d65f6ba9b132f356f8205c",
+      "categoryId": "excel.ayt.psikoloji.a751d96e7791914f05ef",
+      "quote": "Psikolojik illüzyon - Halüsinasyon",
+      "rationale": "Kök algısal değişmezliği veya illüzyon/halüsinasyon ayrımını örnekle sorgular; seçenek alıntısı özgün kökün hedef kavramını açıklar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q016",
+      "imageSha256": "156af5726542f30c37108247834521e5c7fa974ae2e3462906c4b20b133ad5e2",
+      "categoryId": "excel.ayt.psikoloji.4139b9b7bbff33b9c580",
+      "quote": "Metne göre Elif’in yaşadığı duygu",
+      "rationale": "Kaygı/korku gibi duygunun türünü ayırt ettirir; klinik tanı sorusu değildir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q018",
+      "imageSha256": "e214c36881e61fd59a3eba0f9a8f01646e4b77d58526e901ff77e333f9fb5f94",
+      "categoryId": "excel.ayt.psikoloji.5c880e2c3bc0a4c8fc44",
+      "quote": "Ayşe’nin bu davranışları, aşağıdaki kavramlardan",
+      "rationale": "Meditasyon, hipnoz/rüya/bilinçaltı karşılaştırmasıyla bilinçlilik durumunu ayırt ettirir; tedavi kabulü üretilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-a2b34479f77e150f-Q020",
+      "imageSha256": "1ce142926c1540d7e6692ba563af0170521f38681cb27403c298219dba332b96",
+      "categoryId": "excel.ayt.psikoloji.c8525c3c8d4dbed6004c",
+      "quote": "Buna göre yükleme içsel ve dışsal olmak üzere",
+      "rationale": "Sosyal bilişte davranışın içsel/dışsal nedenlere yüklenmesini açıkça sorar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q002",
+      "imageSha256": "98a2bdfb12ff8e4ffb95d6880027f8f9328ff7f23bb4c9101a9155a186a2d782",
+      "categoryId": "excel.ayt.psikoloji.ec9fd5493a0ac14b70c1",
+      "quote": "öğrenme türlerinden hangisiyle ilgilidir",
+      "rationale": "Klasik koşullanma veya farklı öğrenme türlerinin örneklerini doğrudan karşılaştırır; tek bilişsel öğrenme türüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q006",
+      "imageSha256": "8cea9cfb6d44e0a30f36b0670368d50c26627374bb7f2609e523ff94dcdbe851",
+      "categoryId": "excel.ayt.psikoloji.ec9fd5493a0ac14b70c1",
+      "quote": "Verilen örnekler sırasıyla aşağıdaki öğrenme türlerinden",
+      "rationale": "Klasik koşullanma veya farklı öğrenme türlerinin örneklerini doğrudan karşılaştırır; tek bilişsel öğrenme türüne daraltılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q007",
+      "imageSha256": "b3183023e42ee48afe4833be864892d729c014e839eb1bcac5dfbf7512f683f0",
+      "categoryId": "excel.ayt.psikoloji.3f909e293f0ce02cda86",
+      "quote": "türe özgü hazır olmayla açıklanır",
+      "rationale": "Kök öğrenmeye etki eden hazır olma/uyarılmışlık koşulunu örnekten ayırt ettirir; duygu türü veya yalnız temel duyum sorusu değildir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q009",
+      "imageSha256": "961a031345d8bc01e1814c570bb0757ef4b7bddeb2af1dd5a7bb71ae649b3c8c",
+      "categoryId": "excel.ayt.psikoloji.3f909e293f0ce02cda86",
+      "quote": "Genel uyarılmışlık düzeyi yeterli değildir",
+      "rationale": "Kök öğrenmeye etki eden hazır olma/uyarılmışlık koşulunu örnekten ayırt ettirir; duygu türü veya yalnız temel duyum sorusu değildir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q011",
+      "imageSha256": "3741edb35acde687b75f539f6bef116eb2fea0a7a512fd779e97eb343ad3e9a4",
+      "categoryId": "excel.ayt.psikoloji.3f054043a97cf63d72c2",
+      "quote": "Beren’in yaşadığı sorun",
+      "rationale": "Kısa süreli bellekte saklama ya da unutmanın tekrar/organik nedenlerini doğrudan sorgular; yeni öğrenme transferi belirsizi bu partiye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q012",
+      "imageSha256": "d086af5737ffa1c7eae5ac2d7b7c72e3f557c97cfbb362931aa2fa277b3661e5",
+      "categoryId": "excel.ayt.psikoloji.3f054043a97cf63d72c2",
+      "quote": "sonrasında hatırlayamaması aşağıdakilerden hangisi",
+      "rationale": "Kısa süreli bellekte saklama ya da unutmanın tekrar/organik nedenlerini doğrudan sorgular; yeni öğrenme transferi belirsizi bu partiye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4082baa8dea36a04-Q015",
+      "imageSha256": "9e82988593cc0e9148e4217bcc31ef570c4c1ab7a913437488e4fcf637600e92",
+      "categoryId": "excel.ayt.psikoloji.3f054043a97cf63d72c2",
+      "quote": "Parçada söz edilen durum aşağıdakilerden hangisiyle açıklanır",
+      "rationale": "Kısa süreli bellekte saklama ya da unutmanın tekrar/organik nedenlerini doğrudan sorgular; yeni öğrenme transferi belirsizi bu partiye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q004",
+      "imageSha256": "c78468528d607f166fd3a8067cdadebca5d09a11aa2f2ca26cc6ca15590e9eb2",
+      "categoryId": "excel.ayt.psikoloji.495e77a7e3dae5301137",
+      "quote": "strese neden olan psikolojik faktörlerden biridir",
+      "rationale": "Kök stres kaynağı, başa çıkma stratejisi veya savunma mekanizmasını açıkça hedefler.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q008",
+      "imageSha256": "f6aa68148109440a849fca258c0eb51d710fe6056e052533b6343beb0497e4ad",
+      "categoryId": "excel.ayt.psikoloji.495e77a7e3dae5301137",
+      "quote": "savunma mekanizmalarından hangisini",
+      "rationale": "Kök stres kaynağı, başa çıkma stratejisi veya savunma mekanizmasını açıkça hedefler.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q009",
+      "imageSha256": "a3ec67ffbfde35a9f0dac5d521cade9662b9d58aa4acdb31ab19d8c620242487",
+      "categoryId": "excel.ayt.psikoloji.495e77a7e3dae5301137",
+      "quote": "Mehmet stresle başa çıkmak için",
+      "rationale": "Kök stres kaynağı, başa çıkma stratejisi veya savunma mekanizmasını açıkça hedefler.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q010",
+      "imageSha256": "299753ede776c5ab012a795e29e0fd738de4ae3e0c436444d20e5e866de68bd2",
+      "categoryId": "excel.ayt.psikoloji.495e77a7e3dae5301137",
+      "quote": "başvurduğu savunma mekanizmasının kullanımı",
+      "rationale": "Kök stres kaynağı, başa çıkma stratejisi veya savunma mekanizmasını açıkça hedefler.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q005",
+      "imageSha256": "244839b9fcdaf09302191f426a870daf30f0511d11d291cdf41958ed6dab2d9a",
+      "categoryId": "excel.ayt.psikoloji.6efcda49b23cedd55219",
+      "quote": "Fenomenolojik kişilik kuramına göre benlik kavramı",
+      "rationale": "Fenomenolojik kişilik kuramında gerçek/ideal benlik ve benlik saygısı açıkça sorulur; psikoloji tarihiyle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q011",
+      "imageSha256": "aaffa4434e69d5f08c0395e5d243a7c9baf88dba4a86bfcf710f60c9d9e8ac96",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "quote": "Ruhsal açıdan sağlıklı olduğu bilinen Ahmet’in",
+      "rationale": "Ruh sağlığının korunması veya normal davranışın ölçütlerini sorgular; örnekten klinik tanı/kişilik bozukluğu çıkarılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q014",
+      "imageSha256": "54204baab7b877d12a3533e8b0b48435701a5865759915f4b79ae51c1f67817c",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "quote": "Ruh sağlığını korumada empati ve hobiler önemlidir",
+      "rationale": "Ruh sağlığının korunması veya normal davranışın ölçütlerini sorgular; örnekten klinik tanı/kişilik bozukluğu çıkarılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q015",
+      "imageSha256": "56a14947353bec10b1cfc79aff5627bde0e7ac7aa2ae11359b9890cff7051155",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "quote": "Buna göre bir davranış aşağıdaki hangi durumda normal kabul edilir",
+      "rationale": "Ruh sağlığının korunması veya normal davranışın ölçütlerini sorgular; örnekten klinik tanı/kişilik bozukluğu çıkarılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q016",
+      "imageSha256": "e598977393d7883a2b41235e721dbf92dce0bc0dc5fd385522fdfa73c7eeed19",
+      "categoryId": "excel.ayt.psikoloji.d75f5c8b6caeb28c9226",
+      "quote": "Buna göre normal dışı davranışlarla ilgili",
+      "rationale": "Ruh sağlığının korunması veya normal davranışın ölçütlerini sorgular; örnekten klinik tanı/kişilik bozukluğu çıkarılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c79b94abef0e369-Q020",
+      "imageSha256": "54d7f841716056ea0074e744c402437ccf2c6404c0bd91046bcac9d7230f46bb",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "quote": "davranışsal yaklaşımı benimseyen bir uzmanın",
+      "rationale": "Kök açıkça davranışsal yaklaşımın uygulama ilkesini ayırt ettirir; klinik tanıyı kişilik bozukluğu kategorisine zorlamaz.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 9.890 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.006 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -25,7 +25,18 @@ Psikoloji ve Sosyoloji konuları kaynak alıntısı ve gerekçeyle bağlandı. M
 `reviewed-native-question-expansion/`, `reviewed-native-question-2-expansion/`.
 Bu alt partiler tam arşiv kapanışı değildir.
 
-**053 — BITTI:** 22 TYT Biyoloji ve26 AYT Mantık sorusu özgün metinden mevcut konuya bağlandı;48 INSERT/0 UPDATE, tekrar0 INSERT ve katalog/canlı PASS. 054 — BITTI:37 Edebiyat INSERT/0 UPDATE, tekrar0 INSERT, katalog/canlı PASS; toplam9.890. 055 için26 AYT Biyoloji kabul hattındadır. Kaynak içerik şüphelileri `KAYNAK_ICERIK_TUTARLILIGI` altında gerekçe ve özgün görselle ayrıca teslim edilir; öğrenciye aktarılmaz.
+**053 — BITTI:** 22 TYT Biyoloji ve26 AYT Mantık sorusu özgün metinden mevcut konuya bağlandı;48 INSERT/0 UPDATE, tekrar0 INSERT ve katalog/canlı PASS. 054 — BITTI:37 Edebiyat INSERT/0 UPDATE, tekrar0 INSERT, katalog/canlı PASS; toplam9.890. 055 — BITTI:26 AYT Biyoloji INSERT/0 UPDATE, tekrar0 INSERT, katalog/canlı PASS; toplam9.916. 051–055 toplam164 kaynak metni incelemeli soru; yeni model çağrısı0. Kaynak içerik şüphelileri `KAYNAK_ICERIK_TUTARLILIGI` altında gerekçe ve özgün görselle ayrıca teslim edilir; öğrenciye aktarılmaz.
+
+**056–058 — BITTI:** 23 Edebiyat +29 Psikoloji +38 Sosyoloji =90 yeni
+soru; her partide INSERT_ONLY/0 UPDATE, tekrar0 INSERT, katalog ve canlı
+masaüstü/mobil PASS. Son toplam10.006 (5.450 TYT/4.556 AYT).
+051–058de toplam254 özgün metin konu incelemesi kabul edildi. 056da7 native
+ve16 mevcut başarılı görsel gövde makbuzu yeniden kullanıldı; yeni model
+çağrısı/öğretmen onayı0. Taranmış iki Edebiyat kaynağının40/40 cevap-gövde işi
+BITTI;23ü aktarıldı,16 konu+1 içerik incelemesi açık. Okunup konuya bağlanamayan
+056/057/058 kayıtları paketlerin `remaining-topic-review.json` dosyalarındadır.
+Altı kaynak içerik şüphesi `KAYNAK_ICERIK_TUTARLILIGI` ihracında gerekçelidir.
+Altı yardımcı kanıt işi çalışır; tam arşiv kapanışı hâlâ açık.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 
