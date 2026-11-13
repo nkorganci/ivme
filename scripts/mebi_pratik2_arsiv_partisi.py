@@ -45,12 +45,14 @@ def run(acceptance,batch_dir,after_batch=None):
         if previous.get('status')!='PASS':raise ValueError('Existing batch checkpoint is not accepted')
         expected=previous.get('sourceAcceptanceSha256')
         if expected and expected!=hashlib.sha256(proof.read_bytes()).hexdigest():raise ValueError('Accepted source manifest changed')
-        if not expected and previous.get('scope') not in ('REVIEW_ONLY_SOURCE_BATCH','EMPTY_VERIFIED_SOURCE_DELTA'):
+        if not expected and previous.get('scope') not in ('REVIEW_ONLY_SOURCE_BATCH','EMPTY_VERIFIED_SOURCE_DELTA','SKIPPED_EXISTING_PDF_SOURCE_BATCH'):
             raise ValueError('Accepted batch lacks source identity')
         log('BATCH_ALREADY_ACCEPTED_CHECKPOINT',batch=batch_dir)
         return
     if not admitted:
-        write_json(folder/'bank-acceptance.json',{'status':'PASS','scope':'REVIEW_ONLY_SOURCE_BATCH',
+        skipped=json.loads(proof.read_text(encoding='utf8')).get('sourcePdfSkipCandidateCount',0)
+        write_json(folder/'bank-acceptance.json',{'status':'PASS','scope':'SKIPPED_EXISTING_PDF_SOURCE_BATCH' if skipped else 'REVIEW_ONLY_SOURCE_BATCH',
+            'sourcePdfSkippedCandidates':skipped,'sourceAcceptanceSha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
             'newQuestions':0,'questionWrites':0,'previousQuestionsUnchanged':True,'teacherApprovalsCreated':0});return
     def command(stage,args,receipt):
         if receipt.exists():

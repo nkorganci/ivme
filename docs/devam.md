@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 8.081 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.581 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -8,78 +8,69 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**Aktif iş: MEBI-PRACTICE-2 TAM ARŞİV — SURUYOR.** Kullanıcı tekrar “devam et”
-demek istemiyor. Kaynak yalnız `D:\workspace\mebi-yks`; kaynak dosyaları,
-eski banka/öğrenci kayıtları korunur. Alt parti veya inceleme kuyruğu ana planın
-kapanışı değildir. Çalışma/context/token sınırına kadar sürdür; ana planı ancak
-tam arşiv kapsamı gerçekten kanıtlanınca BITTI yap. İlk geçiş kapanışı tarihsel.
+**ÖNCE GÜNCEL PDF KURALI:** soru metni/görseli/embedding'i ile banka tekrarı
+karşılaştırması YAPMA. Kullanıcı sayfa sayısı ve ilk sayfalar aynıysa PDF'yi
+tekrar almamamızı istedi. Dosya kimliği hızlı ilk kapı; hash farklıysa ilk üç
+sayfanın tam metin/boyut ve küçük özgün önizlemesiyle hızlı eşdeğerlik.
+Mevcut Soru Çöz & Pratik'te kullanılan PDF'nin tamamını atla; kısmi aktarım
+notu olsa da soru bazında eksik arama başlatma. YKS çıkmışlar kullanıcıya göre
+zaten mevcut, tekrar alınmaz. Önceki “iki bankada aynı soru olabilir” izni yeni
+işler için bu kuralın gerisindedir; eski kimlik/kayıt silme veya birleştirme yok.
 
-**Asıl imleç:** `veri/mebi-pratik-2/20261111-source-inventory`.
-`archive-continuation-progress.json` kabul edilmiş canlı sayı;
-`progress-events.jsonl` beş dakika/%10 ölçümü; `*/progress-current.json`
-yalnız o aday geçişinin yüzdesidir. Bütün arşiv soru paydası/ETA bilinmiyor.
-Plan `docs/plan/15-soru-bankasi-pratik-2.md`; komutlar
-`docs/islemler/mebi-pratik-2.md`. Yeni içeriklerde OPERATOR ile mevcut
-INSERT_ONLY/atomik100/katalog/canlı okuma kapıları geçilir; test DB yazımı yok.
+**Kalıcı varsayılan:** `scripts/mebi-pratik2-pdf-policy.json`.
+`mebi_pratik2_pdf_tekrar_kapisi.py`:1.473 PDF/510 eski banka PDF referansı;
+61 eşleşen belge atlandı,1.412 eşleşmeyen belge yeni soru sayısı değildir.
+`pdf-reuse-check/decisions.json` her PDF'nin kararı; kararsız PDF'den yeni iş
+başlamaz. Kapı11 test PASS (farklı metadata/aynı önizleme, farklı şekil,
+sayfa sayısı, matematik sembolü, boş kapak, kaynak atlanınca model açılmaması).
+Aktif tekrarsızlık kontrolü yalnız belge düzeyinde; soru görüntüsü parmak izi
+karşılaştırması da kapalıdır. Yeni PDF'deki cevap/kırpım doğrulaması korunur.
 
-**Tamamlanan son alt geçiş:**019–024 sözcük sınırı paketi BITTI;
-1.005 aday/989 kaynak kabulü/16 inceleme.987 yeni yayın+2 aynı kapsam kesin
-piksel kaynak bağı; sonunda8.081 soru yayında.007–018 ve ilk geçiş eski
-makbuzları korunur. `word-boundary-expansion/pass-result.json` publication=true.
-`mebi_pratik2_arsiv_partisi.py` değişmez PASS kabulünü kaynak hashle doğrulayıp
-eski partiyi yeniden yazmadan sürdürür;2 kabulden-devam testi PASS.
+**Aktif iş MEBI-PRACTICE-2 tam kaynak kapsamı SURUYOR.** Kullanıcı tekrar
+“devam et” beklemiyor. Alt parti/inceleme teslimi ana planın kapanışı değildir.
+`veri/mebi-pratik-2/20261111-source-inventory` asıl kök; canlı kabul imleci
+`archive-continuation-progress.json`; aday geçişi `*/progress-current.json`.
+Bütün arşiv soru paydası ve kesin ETA bilinmiyor. Kaynak `D:\workspace\mebi-yks`
+salt okunur; eski banka/öğrenci kayıtları korunur. Test üretim DB'sine yazmaz.
 
-**Çalışan sıra (ikinci aynı writer başlatma):**
-- `four-square-expansion`:4.516 aday;025–034 aktif.
-- `source-identity-recovery`:49 aday;035, önceki sonrası.
-- `reviewed-topic-expansion`:2.478 aday;036–040.
-- `three-step-mock-expansion`:172 aday;041.
-- `four-square-header-expansion`:867 aday;042–043.
-- `full-mock-expansion`:169 aday;044.41 deneme/5.651 özgün gövde,
-  188 grubun gerçek bağımsız transkripti/220dpi kaynak/basılı kimliği PASS;
-  `full-mock-source-crops/key-reuse-audit.json`; yeni model çağrısı0.
-- `dual-exam-philosophy-expansion`:140 kapsam adayı/80 kaynak sorusu;045.
-  Basılı FELSEFE + TYT/AYT + tam bölüm başlığıyla mevcut main-row bağı;
-  konu tahmini yok.30 native V2 kanıtı, kalanında gerçek görsel kapı.
+**Yeni kural sonrası durum:**025'in500 sorusu talimat değişmeden önce
+katalog/canlı kabulü geçti; mevcut8.581 kayıt korunur. Dört Dörtlük kalan
+4.016 adayın PDF'leri atlandı ve026–034 boş-source PASS; kurtarma49 adayı035'te
+atlandı. Yeni büyük deneme/çıkmış kitaplarının eski bankadaki aynı PDF'leri
+doğrulandı; bunlar için yeni kırpım/işlem başlatma.
+`remaining-positive-layout-cues/report.json` ve eski generic-book keşfi
+PDF kapısından ÖNCEKİ ham ipuçlarıdır; yeni kaynak kabulü değildir.
 
-**Konu beklerken cevap/gövdeyi bırakmayan ayrı işler (yayın değildir):**
-`all-source-evidence`23.879; `full-mock-pending-evidence`5.482;
-`single-test-pending-evidence`1.886 aday. Hepsi sabit manifest, öğrenciye
-kapalı; teacherApproved=false. `candidate-evidence/` sonuçları güncel
-SQLite/JSON/CSV inceleme kuyruğuna dosya/hash ile bağlanır. Tek-test önbellek
-indeksleme BITTI:1.886/1.886 basılı numara/harf/hash bağımsız makbuzu AGREES;
-yeni model çağrısı0.Önceki gövde model makbuzu0; bu1.886 gövde gerçekten
-kontrol edilecek, yalnız cevap hazır diye yayın yok.Native V2 CPU alt kanıtı
-`single-test-pending-evidence` için de başlatıldı.
-Native CPU `all-source-evidence` işi8.116 önceki imleci atlayarak kalan15.763
-adayı işler; mevcut progress bu kalan kısmındır. Başarı makbuzları korunur.
+**Devam eden hazırlanmış zincir, önce PDF filtresi:**
+- `reviewed-topic-expansion`:2.478 içinden2.257 eski-PDF atlandı;221 yeni-PDF
+  adayı036–040 kapılarında. Kabul edilmiş makbuzlar tekrar yazılmaz.
+- `three-step-mock-expansion`172 ve `four-square-header-expansion`867 adayın
+  PDF'leri mevcut;041–043 boş-source kabulüyle atlanacak, tekrar model yok.
+- `full-mock-expansion`169 yeni-PDF adayı044;188 gerçek çift anahtar grubu/
+  220dpi kaynak/basılı kimlik PASS. `dual-exam-philosophy-expansion`140 kapsam
+  adayı/80 soru045; basılı FELSEFE/TYT-AYT/tam bölüm başlığı,30 native V2.
+- `all-source-evidence`23.879 içinden23.461 eski-PDF atlanır;418 yeni-PDF
+  adayının cevap/gövde kanıtı kalır. `full-mock-pending-evidence`5.482 ve
+  `single-test-pending-evidence`1.886 yeni-PDF adayı ayrı kanıt/kategorileme
+  işinde. Bunlar yayın değildir; ince konu/gövde/cevap belirsizi ayrı kalır.
+- Tek-test1.886/1.886 aynı numara/harf/hash bağımsız makbuzu AGREES; yeni model0.
+  547 native V2 gövde kanıtı hazır; kalan1.339 gerçek görsel yolunda.
 
-**Sürekli gözetim:** `mebi_pratik2_zincir_gozetmeni.py --watch` gizli ayrı
-süreç; PID/durum `chain-supervisor/current.json`. Mevcut writer kilidine
-dokunmaz; durmuş, bağımlılığı kabul edilmiş işi en fazla3 kez makbuzdan
-sürdürür. `.log` hata ayrıntısı; events.jsonl beş dakika/değişimde.
-OS/oturum kapanırsa gözetmen de yeniden açılmalıdır; Windows başlangıç görevi
-yok. Supervisor'a045 eklendi ve yalnız metadata gözetmeni yenilendi; güncel PID
-current.json içindedir.Model/içerik worker'larını durdurma.
-Genel metadata izleyiciler: `mebi_pratik2_arsiv_izle.py --watch` ve
-`mebi_pratik2_ilerleme.py --watch`; hâlen çalışıyorlar.
+**Sürekli gözetmen:** `mebi_pratik2_zincir_gozetmeni.py --watch` yeniden
+PDF kurallı sürümle başlatıldı; PID/durum `chain-supervisor/current.json`.
+İşçi logları `.log`, beş dakikada/değişimde events.jsonl. Çalışan writer'ı
+kesmez; durmuş işi kabul edilmiş bağımlılıktan en fazla3 kez sürdürür.
+User'ın yeni kuralına uymayan eski kuyruk worker'ları politika yenilenirken
+kapatıldı; uygulama/model servisleri durdurulmadı, tamamlanan025 korunmuştur.
+OS/oturum kapanırsa gözetmeni yeniden başlat; Windows başlangıç görevi yok.
 
-**Kapsam/kalite notları:**
-- Native V2:907 eski kanıtta577 sağlam/330 gerçek görsel yola dönüş;
-  yayımlanmış başarısız0. LOCAL_VISUAL_BODY_REVIEW_REQUIRED native kabul
-  değildir; eski yüklü worker için taze son kapı gerçek V2/ilk görsel okur.
-- `Felsefe (TYT-AYT)` eski parser'da derssizdi.220 soru için basılı ders/
-  sınav kapsamı `dual-exam-philosophy-expansion/subject-review-overlay.json`;
-  tümü konu onaylı değildir.140 kapsam adayında mevcut tam başlık bağı var.
--78 ZIP/12.249 sayfa metin karşılık keşfi BITTI;223 tam metin/6.940 sözcük
-  kümesi eşliği piksel veya soru kabulü değildir. Diğer sayfalar ayrı inceleme;
-  ZIP metni eşleşti diye elenmez (`offline-page-correspondence-v2/`).
--311 OCR boş sonuç soru yokluğu değildir; tekrar başarısız istem döngüsü yok.
-- İnce konu açıkken öğrenciye ders altında gösterme tercihi yanıtlanmadı;
-  mevcut sıkı konu kapısı korunur. Diğer işleri durdurma veya tekrar aynı
-  soruyu sorma. Bozuk/uyuşmayan gerçek içerik gerekçeli ayrı tutulur.
-- Hazırlanmış bütün bu paketlerin bitmesi hâlâ bütün yerel kaynak düzenlerinin
-  kabulü değildir; kalan kaynak/konu biçimleri ana planda açık kalır.
+**Sonraki somut iş:** yeni PDF adaylarının kapılarını izle; hazırlanmamış
+kaynak araştırmasına başlamadan PDF kararını uygula. Sıradaki kategorileme,
+cevap/gövde doğrulanmış yeni kaynaklarda mevcut ana konu satırına dayanır.
+İnce konu açıkken öğrenciye ders altında gösterme tercihi yanıtlanmadı;
+sıkı konu kapısı korunur. Bozuk/belirsiz gerçek içerik gerekçeli ayrı tutulur,
+aynı başarısız istem döngüsü yok. Önceki source/key/pixel ve model makbuzlarını
+aynı hashte kullan; öğretmen onayı veya sorunun bankada olmadığı kararı uydurma.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|

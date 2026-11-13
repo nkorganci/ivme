@@ -10,6 +10,7 @@ from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 from mebi_pratik2_son_piksel_kapisi import verify
 from mebi_pratik2_kesin_piksel_tekrari import select_new
+from mebi_pratik2_pdf_tekrar_kapisi import current_decisions,skip_pdf
 
 
 def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='verified-source-batch-001'):
@@ -25,6 +26,12 @@ def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='v
     folder=BASE/batch_dir;folder.mkdir(exist_ok=True)
     if (folder/'report.json').exists():raise ValueError('Prepared batch is immutable; resume existing receipts')
     already_imported=len(accepted)-len(new);eligible_before_pixels=len(new)
+    pdf_decisions=current_decisions({r['sourceSha256'] for r in new})
+    skipped=[r for r in new if skip_pdf(r['sourceSha256'],pdf_decisions)]
+    new=[r for r in new if not skip_pdf(r['sourceSha256'],pdf_decisions)]
+    write_json(folder/'pdf-reuse-exclusions.json',{'skippedSourcePdfs':sorted({r['sourceSha256'] for r in skipped}),
+        'skippedCandidates':len(skipped),'questionComparisons':0})
+    eligible_before_pixels=len(new)
     new=verify(new,folder)
     pixel_excluded=eligible_before_pixels-len(new)
     new=select_new(new,folder)

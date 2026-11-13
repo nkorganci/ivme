@@ -11,6 +11,7 @@ from PIL import Image,ImageChops
 from mebi_pratik2_tam_pdf_tarama import APP,BASE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
+from mebi_pratik2_pdf_tekrar_kapisi import load_policy
 
 
 def fingerprint(path):
@@ -23,6 +24,11 @@ def fingerprint(path):
 
 
 def select_new(rows,folder):
+    if load_policy(BASE).get('mode')=='PDF_LEVEL_ONLY':
+        write_json(folder/'exact-duplicate-evidence.json',{'status':'QUESTION_COMPARISON_DISABLED_BY_USER_PDF_LEVEL_POLICY',
+            'newSourceQuestions':len(rows),'additionalSourceOccurrences':[],'additionalSourceOccurrenceCount':0,
+            'reviewQueueAdditions':[],'reviewCount':0,'questionComparisons':0,'existingIdMerges':0,'existingIdDeletes':0,'questionWrites':0})
+        return rows
     cmd,env,_=db_connection('ivme')
     existing=json.loads(query((cmd,env,None),"SELECT coalesce(json_agg(s),'[]') FROM (SELECT code,correct_answer answer,image,exam_type::text exam,subject FROM questions WHERE bank='MEBI_PRACTICE_2' ORDER BY id) s"))
     index={};by_pixels={};missing=[]

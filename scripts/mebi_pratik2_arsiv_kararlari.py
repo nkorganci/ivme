@@ -24,6 +24,8 @@ def review_category(reasons):
 
 
 def run():
+    from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
+    pdf_decisions=load_decisions()
     inventory=json.loads((BASE/'inventory.json').read_text(encoding='utf8'))['items']
     pdfs={r['relativePath']:r for r in json.loads((BASE/'full-pdf-coverage.json').read_text(encoding='utf8'))['documents']}
     containers={r['relativePath']:r for r in json.loads((BASE/'package-content-report.json').read_text(encoding='utf8'))['containers']}
@@ -46,7 +48,7 @@ def run():
             relative=source['relativePath'];sha=source['sha256'];candidates=by_source[sha]
             published=[r['code'] for r in candidates if r['status']=='PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED']
             aliases=[r['code'] for r in candidates if r['status']=='EXACT_DUPLICATE_SOURCE_OCCURRENCE']
-            pending=[r for r in candidates if r['status'] not in ('PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED','EXACT_DUPLICATE_SOURCE_OCCURRENCE')]
+            pending=[r for r in candidates if r['status'] not in ('PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED','EXACT_DUPLICATE_SOURCE_OCCURRENCE','SOURCE_PDF_ALREADY_IN_EXISTING_PRACTICE')]
             row={'relativePath':relative,'sourceSha256':sha,'extension':source['extension'],
                 'publishedSourceQuestionCodes':published,'additionalSourceOccurrenceCodes':aliases,
                 'reviewQuestionCandidates':len(pending),'reviewCategories':dict(Counter(r['reviewCategory'] for r in pending)),
@@ -57,7 +59,8 @@ def run():
                 for page in cache['pages']:
                     key=(sha,page['physicalPage']);known=by_page[key];signals=native.get(key,{})
                     visible=[r['code'] for r in known if r['status']=='PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED']
-                    if page['readingStatus']=='VISUAL_REVIEW_REQUIRED':state='INCELEME_GORSEL_METIN_OKUNAMADI'
+                    if sha in pdf_decisions and skip_pdf(sha,pdf_decisions):state='AYNI_PDF_MEVCUT_PRAKTIKTE_YENIDEN_KARSILASTIRILMADI'
+                    elif page['readingStatus']=='VISUAL_REVIEW_REQUIRED':state='INCELEME_GORSEL_METIN_OKUNAMADI'
                     elif signals.get('NUMBERED_BODY_SIGNAL') or signals.get('PRINTED_KEY_CELL_SIGNAL') or known:
                         state='AKTARILAN_SORULAR_VE_KALAN_ADAY_INCELEMESI' if visible else 'INCELEME_SORU_CEVAP_KONU_BAGI'
                     else:state='NATIVE_SAYFA_TARANDI_NUMARALI_ADAY_BULUNAMADI'
@@ -78,6 +81,8 @@ def run():
                 row.update(status='INCELEME_BAGIMSIZ_GORSEL_CEVAP_KIMLIGI',firstPassProcessed=True,
                     reviewReason='BAGIMSIZ_GORSEL_ICIN_BASILMIS_SORU_CEVAP_KONU_BAGI_BELIRSIZ')
             else:row.update(status='KAPSAM_DISI_DESTEK_VEYA_METADATA',firstPassProcessed=True,reviewReason=source.get('reason'))
+            if sha in pdf_decisions and skip_pdf(sha,pdf_decisions):
+                row.update(status='ATLANDI_MEVCUT_PRAKTIK_PDF',reviewReason='KULLANICI_PDF_DUZEYI_TEKRAR_KURALI',existingPracticePdfDecision=pdf_decisions[sha])
             sources.append(row)
             if row['status'].startswith('INCELEME') or pending:review_paths.append(row)
     expected_pages=sum(r['pageCount'] for r in pdfs.values())

@@ -218,3 +218,28 @@ ortak sınav kimliğini düzeltir; konu onayı veya öğrenci yayını üretmez.
 `python scripts/mebi_pratik2_tek_test_bekleyen.py --prime-keys`1.886 hazır
 tek-test adayında aynı hash/numara/cevabın önceki bağımsız makbuzunu indeksler.
 Kaynak veya model yeniden üretilmez; cevap uyuşmazlığı ayrı kalır.
+
+### Kullanıcının PDF düzeyinde hızlı tekrar kuralı (güncel)
+
+`python scripts/mebi_pratik2_pdf_tekrar_kapisi.py` mevcut Pratik bankasının
+PDF kayıtlarını okur; soruların metnini/görselini karşılaştırmaz. Dosya kimliği
+ilk kapıdır; hash farklıysa sayfa sayısı ve ilk üç sayfanın tam bilgisi/boyutu,
+metin nesnesi sırası farklı olabilen adaylarda sözcük çokluğu ve küçük özgün
+sayfa önizlemeleri birlikte kullanılır. Boş/genel kapak tek başına kaynak
+kimliği değildir. Sonraki sayfaların aynı olduğu byte ispatı iddia edilmez;
+bu kullanıcı tarafından seçilmiş hızlı belge eşdeğerliğidir.
+
+`pdf-reuse-check/existing-practice-pdf-index.json` salt-okunur banka kaynak
+anlık kaydı; `decisions.json` kaynak kararı. Kalıcı varsayılan
+`scripts/mebi-pratik2-pdf-policy.json`; session override olmasa da PDF kapısı
+etkindir. Kullanıcı YKS çıkmışları zaten mevcut bildirdiği için yeniden alım
+yapılmaz. Eski bankada aynı PDF kullanılmışsa kaynak bütünü atlanır; eski
+kapsam durumu INCOMPLETE ise not korunur, soru bazında eksik arama yapılmaz.
+Yeni kaynak hazırlığı ayrıca güncel PDF kayıtlarını ucuz toplu sorguyla kontrol
+eder. Kaynak kararı yoksa yeni iş başlamaz.
+
+Kural altında `mebi_pratik2_kesin_piksel_tekrari.select_new` soru karşılaştırması
+çalıştırmaz; yalnız kapalı olduğuna dair0-karşılaştırma makbuzu yazar. Normal
+INSERT_ONLY kimlik koruması ve yeni kaynağın cevap/özgün piksel kabulü devam
+eder. Önceden kabul edilen paketler değişmez; yeni boş kaynak partisi
+SKIPPED_EXISTING_PDF_SOURCE_BATCH ile kapanır, yayın sayısı0 olur.

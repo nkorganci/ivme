@@ -62,11 +62,14 @@ def prove(page,row,path):
 
 
 def run(name,skip_first=0):
+    from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
+    pdf_decisions=load_decisions()
     folder=BASE/name;package=json.loads((folder/'chapter-packages.json').read_text(encoding='utf8'))
     out=folder/'native-body-proofs';out.mkdir(exist_ok=True);receipts=folder/'body-readings';receipts.mkdir(exist_ok=True)
     started=time.monotonic();counts=Counter();opened={};last=started;bucket=-1;rows=package['items'][skip_first:]
     try:
         for index,row in enumerate(rows,1):
+            if skip_pdf(row['sourceSha256'],pdf_decisions):counts['existingPracticePdfSkipped']+=1;continue
             receipt=receipts/(row['code']+'.json')
             if receipt.exists():counts['existingReceiptsPreserved']+=1;continue
             if row['subject'] not in ALLOWED:counts['visualRoute']+=1;continue

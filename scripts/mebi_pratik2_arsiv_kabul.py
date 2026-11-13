@@ -22,6 +22,7 @@ from mebi_pratik2_konu_basligi import normalize
 from mebi_pratik2_uc_adim_kirpim import TEXT_SUBJECTS,page_graphics
 import mebi_pratik2_uc_adim_kabul as key_reader
 from yks_birlestirme import write_json,process_lock
+from mebi_pratik2_pdf_tekrar_kapisi import current_decisions,skip_pdf
 
 OUT=BASE/'curated-chapter-expansion'
 
@@ -139,6 +140,11 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
     if calibration['status']!='PASS':raise ValueError('Body completeness calibration must pass')
     module=vision();groups={g['groupId']:g for g in package['keyGroups']}
     rows=package['items'][:limit] if limit else package['items'];started=time.monotonic();done=0;last=started;bucket=-1
+    source_shas={r['sourceSha256'] for r in rows}
+    pdf_decisions=current_decisions(source_shas);skipped_total=0
+    eligible_scope=sum(not skip_pdf(r['sourceSha256'],pdf_decisions) for r in rows);eligible_done=0
+    write_json(OUT/'pdf-source-decisions.json',{'sources':[pdf_decisions[s] for s in sorted(source_shas)] if pdf_decisions else [],
+        'comparisonUnit':'PDF_DOCUMENT_ONLY','questionComparisons':0})
     keys={};opened={};discoveries={};accepted_total=review_total=0
     try:
         for chunk_index,offset in enumerate(range(0,len(rows),chunk_size),1):
@@ -148,9 +154,13 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                 report=json.loads(manifest.read_text(encoding='utf8'))
                 if report.get('inputCodes')!=[r['code'] for r in chunk]:raise ValueError('Existing chunk identity differs')
                 accepted_total+=report['acceptedCount'];review_total+=report['reviewCount'];done+=len(chunk)
+                skipped_total+=report.get('sourcePdfSkipCandidateCount',0)
+                eligible_done+=sum(not skip_pdf(r['sourceSha256'],pdf_decisions) for r in chunk)
             else:
-                accepted=[];review=[]
-                for row in chunk:
+                accepted=[];review=[];eligible=[r for r in chunk if not skip_pdf(r['sourceSha256'],pdf_decisions)]
+                skipped_sources=sorted({r['sourceSha256'] for r in chunk if skip_pdf(r['sourceSha256'],pdf_decisions)})
+                skipped_count=len(chunk)-len(eligible);done+=skipped_count;skipped_total+=skipped_count
+                for row in eligible:
                     sha=row['sourceSha256']
                     if sha not in opened:
                         source=(SOURCE/row['relativePath']).resolve()
@@ -182,15 +192,18 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                         if evidence.get('reasons'):evidence['priorReviewReasons']=evidence.pop('reasons')
                         accepted.append({**evidence,'status':'SOURCE_VERIFIED_READY_FOR_INSERT_ONLY','productionImportAllowed':True,
                             'acceptanceBasis':'REVIEWED_CONTROLLED_CHAPTER_IDENTITY_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY'})
-                    done+=1;now=time.monotonic();current=10*done//max(1,len(rows))
+                    done+=1;eligible_done+=1;now=time.monotonic();current=10*done//max(1,len(rows))
                     if current>bucket or now-last>=300 or done==len(rows):
                         progress={'stage':'FULL_ARCHIVE_NEW_CHAPTER_ACCEPTANCE','completed':done,'total':len(rows),'percent':round(100*done/len(rows),2),
-                            'accepted':accepted_total+len(accepted),'review':review_total+len(review),'elapsedSeconds':round(now-started,1),'estimatedRemainingSeconds':None}
+                            'accepted':accepted_total+len(accepted),'review':review_total+len(review),
+                            'sourcePdfSkippedCandidates':skipped_total,'sourcePdfEligibleCandidates':eligible_scope,'sourcePdfEligibleCompleted':eligible_done,
+                            'elapsedSeconds':round(now-started,1),'estimatedRemainingSeconds':None}
                         write_json(OUT/'progress-current.json',progress)
                         with (OUT/'progress.jsonl').open('a',encoding='utf8') as stream:stream.write(json.dumps(progress)+'\n')
                         print(json.dumps(progress),flush=True);last=now;bucket=current
                 report={'status':'NEW_ARCHIVE_CHAPTER_SOURCE_ACCEPTANCE_COMPLETE','accepted':accepted,'reviewQueueAdditions':review,
                     'acceptedCount':len(accepted),'reviewCount':len(review),'inputCodes':[r['code'] for r in chunk],
+                    'sourcePdfSkipCandidateCount':skipped_count,'skippedExistingSourcePdfs':skipped_sources,'questionComparisons':0,
                     'packageSha256':hashlib.sha256(package_path.read_bytes()).hexdigest(),'questionWrites':0,'teacherApprovalsCreated':0}
                 write_json(manifest,report);accepted_total+=len(accepted);review_total+=len(review)
             if publish:
@@ -199,7 +212,12 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                     '--batch-dir',f'verified-source-batch-{batch:03}','--after-batch',f'verified-source-batch-{batch-1:03}'],cwd=APP,check=True)
         write_json(OUT/'pass-result.json',{'status':'CURATED_CHAPTER_PASS_COMPLETE_NOT_FULL_ARCHIVE','candidateBodies':len(rows),
             'acceptedSourceCandidates':accepted_total,'reviewCandidates':review_total,'allPrintedQuestionsExtracted':False,
+            'sourcePdfSkippedCandidates':skipped_total,'questionComparisons':0,
+            'questionComparisonScope':'CURRENT_PDF_POLICY_RUN_ONLY','previousAcceptedReceiptsPreserved':True,
             'elapsedSeconds':round(time.monotonic()-started,1),'publishedThroughExistingGuardedPipeline':publish})
+        write_json(OUT/'progress-current.json',{'stage':'SOURCE_PDF_POLICY_PASS_COMPLETE','completed':len(rows),'total':len(rows),'percent':100.0,
+            'accepted':accepted_total,'review':review_total,'sourcePdfSkippedCandidates':skipped_total,
+            'elapsedSeconds':round(time.monotonic()-started,1),'estimatedRemainingSeconds':None})
     finally:
         for pdf in opened.values():pdf.close()
 

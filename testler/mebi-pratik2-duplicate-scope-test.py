@@ -15,6 +15,9 @@ class DuplicateScopes(unittest.TestCase):
         with tempfile.TemporaryDirectory() as name:
             root=Path(name);assets=root/'veri/resimler-pilot';assets.mkdir(parents=True)
             base=root/'evidence';base.mkdir();folder=base/'batch';folder.mkdir()
+            # Historical behavior is retained only as an explicit test fixture;
+            # production defaults to the user's PDF-only rule.
+            (base/'pdf-reuse-policy.json').write_text(json.dumps({'enabled':False,'mode':'LEGACY_EXACT_RGB'}),encoding='utf8')
             image=Image.new('RGB',(60,50),'white');ImageDraw.Draw(image).rectangle((10,10,40,40),fill='black')
             image.save(assets/'old.png');image.save(base/'new.png')
             existing=[{'code':'old','image':'old.png','exam':'TYT','subject':'Matematik','answer':'A'}]

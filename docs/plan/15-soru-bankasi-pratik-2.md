@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 8.081 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.581 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -15,6 +15,25 @@ ayrı aday kodu incelemede. Bu sayılar tüm arşivin tekil soru toplamı değil
 İnceleme kuyruğu bu geçişin ayrı teslimidir; öğretmen tarafından çözülmüş sayılmaz.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
+
+**Güncel PDF tekrar kuralı:** mevcut Soru Çöz & Pratik'te
+kullanılmış aynı PDF yeniden aktarılmaz. Önce dosya kimliği, farklı hashlerde
+sayfa sayısı ve ilk üç sayfanın bilgisi/küçük özgün önizlemesi karşılaştırılır.
+Bu, kullanıcının istediği hızlı belge eşdeğerliği kuralıdır; tüm sonraki
+sayfaların byte eşitliği iddia edilmez. Soru metni/görseli/embedding'i üzerinden
+banka karşılaştırması kapalıdır. Eski “aynı soru iki bankada olabilir” izni yeni
+işler için bu talimatla sınırlandı. Mevcut kimlikler ve tamamlanan aktarım
+geçmişi korunur; önceden kullanılan PDF'de soru soru eksik arama yapılmaz.
+Kısmi eski aktarım notu kaynak kararıyla saklanır.
+
+PDF kapısı BITTI:1.473 benzersiz PDF/510 mevcut banka PDF referansı;
+61 aynı PDF atlandı.1.412 eşleşmeyen PDF,1.412 soru kitabı veya yeni soru
+iddiası değildir. `pdf-reuse-check/decisions.json`, kalıcı varsayılan
+`scripts/mebi-pratik2-pdf-policy.json`;11 PDF kapısı testi PASS.
+YKS çıkmış sorularını kullanıcı zaten mevcut bildirdi; bunlar tekrar alınmaz.
+Yeni büyük deneme kitaplarının da mevcut banka PDF kayıtları eşleşti;
+önceki ham keşiflerinden yeni kırpım/aktarım başlatılmaz.
+
 
 **Kalıcı yürütme talimatı:** tekrar “devam et” bekleme. Kullanıcı bütün
 cevaplı arşivi Pratik2’ye aktarmayı istiyor; çalışma/context/token sınırına
@@ -38,6 +57,10 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
 
+- PDF kapısı önce uygulanır: Dört Dörtlük kalan4.016 adayın ait olduğu
+  PDF'ler zaten mevcut; yeniden model/kırpım/aktarım yapılmadan atlandı.
+  Kurtarma49, ek konu grubunda2.257, yeni denemelerde172, başlık grubunda867
+  eski-PDF adayı da bu kurala tabidir; atlama yeni soru yayını değildir.
 - Sürekli gözetmen çalışan işleri korur; durmuş hazırlanmış paket işini en
   fazla3 kez makbuzdan sürdürür. Kabul edilmiş paket yeniden yazılmaz.
 - Basılı FELSEFE/TYT-AYT ve tam bölüm başlığıyla80 kaynak sorusunda140

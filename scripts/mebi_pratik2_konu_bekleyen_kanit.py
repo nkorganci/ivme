@@ -15,6 +15,7 @@ from mebi_pratik2_genisletilmis_kabul import vision
 from mebi_pratik2_dort_dortluk_anahtar import read_key
 import mebi_pratik2_arsiv_kabul as admission
 from yks_birlestirme import write_json,process_lock
+from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
 
 OUT=BASE/'all-source-evidence'
 DIRECTORIES=['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops',
@@ -55,9 +56,12 @@ def prepare():
 def run():
     package=prepare();rows=package['items'];groups={g['groupId']:g for g in package['keyGroups']}
     admission.OUT=OUT;module=vision();opened={};discoveries={};keys={};counts=Counter();start=time.monotonic();last=start;bucket=-1
+    pdf_decisions=load_decisions();source_skips=0
     results=OUT/'candidate-evidence';results.mkdir(exist_ok=True)
     try:
         for index,row in enumerate(rows,1):
+            if skip_pdf(row['sourceSha256'],pdf_decisions):
+                source_skips+=1;continue
             target=results/(row['code']+'.json');sha=row['sourceSha256']
             if target.exists():
                 result=json.loads(target.read_text(encoding='utf8'))
@@ -107,7 +111,11 @@ def run():
                 print(json.dumps(progress),flush=True);last=now;bucket=current
         write_json(OUT/'pass-result.json',{'status':'PREPARED_TOPIC_PENDING_EVIDENCE_PASS_COMPLETE_NOT_ARCHIVE_ACCEPTANCE',
             'counts':dict(counts),'candidateBodies':len(rows),'questionWrites':0,'allPrintedQuestionsExtracted':False,
+            'sourcePdfSkippedCandidates':source_skips,'questionComparisons':0,
             'publishedThroughExistingGuardedPipeline':False})
+        write_json(OUT/'progress-current.json',{'stage':'TOPIC_PENDING_SOURCE_PDF_POLICY_PASS_COMPLETE','completed':len(rows),'total':len(rows),
+            'percent':100.0,'counts':dict(counts),'sourcePdfSkippedCandidates':source_skips,'questionComparisons':0,
+            'elapsedSeconds':round(time.monotonic()-start,1),'questionWrites':0,'allPrintedQuestionsExtracted':False})
     finally:
         for document in opened.values():document.close()
 

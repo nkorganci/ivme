@@ -26,6 +26,7 @@ class PendingEvidence(unittest.TestCase):
             out=base/'evidence';out.mkdir();module=MagicMock()
             with patch.object(worker,'BASE',base),patch.object(worker,'SOURCE',base),patch.object(worker,'OUT',out),\
                  patch.object(worker,'prepare',return_value=package),patch.object(worker,'vision',return_value=module),\
+                 patch.object(worker,'load_decisions',return_value={}),\
                  patch.object(worker,'read_key',return_value={'status':'AGREES'}) as key,\
                  patch.object(worker.admission,'OUT',out),\
                  patch.object(worker.admission,'body_read',side_effect=[{'status':'MODEL_NO_VISIBLE_ISSUE'},{'status':'REVIEW_REQUIRED'}]):

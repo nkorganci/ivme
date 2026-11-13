@@ -8,6 +8,7 @@ from mebi_pratik2_tam_pdf_tarama import BASE,SOURCE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 from mebi_pratik2_arsiv_kararlari import review_category
+from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
 
 
 def run():
@@ -102,7 +103,15 @@ def run():
     for code,row in accepted.items():
         state='PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED' if code in published else 'EXACT_DUPLICATE_SOURCE_OCCURRENCE' if code in aliases else 'SOURCE_VERIFIED_PENDING_PUBLICATION'
         decisions[code]={**row,'status':state,'existingQuestionCode':aliases.get(code,{}).get('existingQuestionCode'),'studentVisible':False}
-    pending=[r for code,r in decisions.items() if code not in accepted]
+    pdf_decisions=load_decisions();skipped_codes=set()
+    for code,row in decisions.items():
+        sha=row.get('sourceSha256')
+        if code in published or not sha or sha not in pdf_decisions:continue
+        if skip_pdf(sha,pdf_decisions):
+            accepted.pop(code,None);skipped_codes.add(code)
+            row.update(status='SOURCE_PDF_ALREADY_IN_EXISTING_PRACTICE',reasons=['PDF_DOCUMENT_ALREADY_USED_NO_QUESTION_COMPARISON'],
+                       existingPracticePdfDecision=pdf_decisions[sha],studentVisible=False)
+    pending=[r for code,r in decisions.items() if code not in accepted and code not in skipped_codes]
     if any(r['code'] in published for r in pending):raise ValueError('Published question remained unresolved in current queue')
     db=sqlite3.connect(BASE/'review-index.sqlite3')
     with db:
@@ -111,6 +120,8 @@ def run():
                 (code,row['status'],json.dumps(row,ensure_ascii=False,sort_keys=True)))
     db.close()
     out=BASE/'teacher-review-export/current';out.mkdir(exist_ok=True)
+    write_json(out/'already-existing-practice-pdfs.json',{'sources':[r for r in pdf_decisions.values() if r['decision']!='NEW_PDF_DOCUMENT_NOT_SEEN'],
+        'skippedPreparedCandidates':len(skipped_codes),'comparisonUnit':'PDF_DOCUMENT_ONLY','questionComparisons':0})
     for row in pending:
         row['reviewCategory']=review_category(row.get('reasons',[]))
         row['sourcePdf']=str(SOURCE/row['relativePath']) if row.get('relativePath') else row.get('sourcePath','')

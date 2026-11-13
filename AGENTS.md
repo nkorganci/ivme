@@ -22,6 +22,20 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
+- **Pratik 2 PDF tekrarı — güncel kullanıcı önceliği:** soru metni/görseli/
+  embedding'i üzerinden tek tek banka karşılaştırması yapma. Önce PDF'leri
+  karşılaştır: dosya kimliği hızlı ilk kapıdır; hash farklıysa sayfa sayısı ve
+  ilk üç sayfanın bilgisi/küçük önizlemesiyle kullanıcı tarafından istenen hızlı
+  eşdeğerliği denetle. Mevcut Soru Çöz & Pratik bankasına bağlı aynı PDF'nin
+  tamamını atla; kısmi aktarım notunu sakla, soru bazında eksik arama başlatma.
+  Kullanıcı YKS çıkmış sorularının zaten mevcut olduğunu belirtti; yeniden
+  aktarılmaz. Varsayılan kural `scripts/mebi-pratik2-pdf-policy.json`, kaynak
+  kararları `pdf-reuse-check/decisions.json`. Kararı olmayan PDF'den yeni iş
+  başlamaz. Bu talimat, önceki “Pratik 2'de eski bankayla tekrar olabilir”
+  izninin yeni işler için önüne geçer. Önceden eklenmiş kimlikler/öğrenci
+  kayıtları silinmez. Yeni PDF'nin soru/cevap/kırpım doğrulaması devam eder;
+  bu doğrulama banka ile soru tekrarı karşılaştırması değildir.
+
 - **Pratik 2 tam arşiv talimatı:** kullanıcı bütün arşivdeki cevaplı soruların
   aktarılmasını istiyor. İlk geçiş, envanter veya inceleme kuyruğuna ayırma,
   ana planın tamamlanması sayılmaz. Henüz uygulanmamış kaynak düzenlerini ve

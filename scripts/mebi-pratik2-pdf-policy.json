@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "enabled": true,
+  "mode": "PDF_LEVEL_ONLY",
+  "skipPreviouslyImportedPdfs": true,
+  "fastMatch": "PAGE_COUNT_AND_FIRST_THREE_PAGES",
+  "pastExamBooksUserConfirmedAlreadyPresent": true,
+  "requirePdfDecisionBeforeNewWork": true,
+  "individualQuestionDuplicateComparisons": false
+}
