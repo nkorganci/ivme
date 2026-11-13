@@ -73,40 +73,38 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
   kanıtı 046'da9/77, 047'de44/139; diğerleri görsel kapıda kalır.
   Beş tekil-tarama entegrasyon/konu sınırı testi PASS.
 
-- PDF kapısı önce uygulanır: Dört Dörtlük kalan4.016 adayın ait olduğu
-  PDF'ler zaten mevcut; yeniden model/kırpım/aktarım yapılmadan atlandı.
-  Kurtarma49, ek konu grubunda2.257, yeni denemelerde172, başlık grubunda867
-  eski-PDF adayı da bu kurala tabidir; atlama yeni soru yayını değildir.
-- Sürekli gözetmen çalışan işleri korur; durmuş hazırlanmış paket işini en
-  fazla3 kez makbuzdan sürdürür. Kabul edilmiş paket yeniden yazılmaz.
-- Basılı FELSEFE/TYT-AYT ve tam bölüm başlığıyla80 kaynak sorusunda140
-  sınav kapsamı adayı045 için hazır; konu veya cevap tahmini yapılmadı.
--1.886 ek tek-test adayı `single-test-pending-evidence/` kuyruğunda;044 sonrası
-  kaynak kanıtı işi hazır. Bu sayı doğrulanmış/yayımlanmış soru sayısı değildir.
-
-- Başlık bağlı2.390 adayın kaynak kabulü BITTI:2.313 kabul/77 inceleme;007–018
-  canlı kapıları geçti. Bu tamamlanan alt geçiş sonunda canlı banka7.094 oldu.
-- Sözcük sınırlarıyla3.114 yeni gövde;1.005 aday019–024 alt geçişi BITTI:989 kaynak kabulü/16 inceleme;
-  987 yeni yayın ve2 kesin aynı-kapsam kaynak bağı.
-- Dört Dörtlük15 kitapta matris ve açık Cevap: bağlaması yapıldı;13.843 kırpım,
-  konu bağı hazır4.516 aday025–034 zincirinde sırada. Diğerleri aktif konu/yerleşim işi.
-- Beş Fizik tablosundaki14 anahtar grubu ayrıca agent görsel okumasıyla doğrulandı;
-  gerçek anahtar-inceleme adayları035’te gövde/alım kapısından geçecek.
-- Native metni olmayan421 sayfanın özgün görüntü OCR’ı tamamlandı;110 sayfada
-  metin okundu,311 sonuç “soru yok” kabulü değildir. Sonraki yerleşim işi açık.
-- Ek kontrollü alt başlık eşlemeleriyle2.478 aday036–040 zincirinde sırada.
-- Dört3 Adım denemede4.917 özgün kırpım/172 konu bağlı aday041 için hazır;
-  ek girintili sütun geçişinde87 yeni kırpım incelemede. Bunlar alım değildir.
-- Üstte başlayan soru/bölüm başlığı ayrımı V4 ile12.919 matris ve5.422 açık
-  çözümlü gövdeyi bağladı;3.470 ek kırpım/867 konu bağlı aday042–043 için hazır.
-- Native V2 denetimi BITTI:907 kanıtın577'si tam satır sınırını geçti,330'u
-  gerçek görsel yola döndü. Yayımlanmış başarısız kayıt0; ana plan kapanmadı.
-- İnce konusu açık23.879 hazırlanmış adayın anahtar/gövde kanıtı,042–043
-  sonrası ayrı işte tamamlanacak. Bu kanıt işi konu veya yayın onayı üretmez.
--78 ZIP/12.249 sayfanın metin karşılık keşfi tamamlandı; eşleşen metin sayfası
-  piksel/soru kabulü değildir. Eksik/ambiguous sayfalar ayrı kayıttadır.
-- Dört3 Adım deneme kitabı, kalan konu/gövde düzenleri ve paket kaynakları
-  bütün arşiv kapsamı içinde; bu alt işler bitince ana görev kapanmaz.
+- Sözcük kutulu tek ek geometri geçişi **BITTI (hazırlık)**: ilk 539
+  kayıt içinden474 yeni özgün kırpım;289 kontrollü konu adayı048,
+  185 konu incelemesi.59 soru geometri/bağlam incelemesinde, altı kayıt grup
+  düzeyindedir. Böylece44 kaynağın911 native adayında852 gövde hazır;
+  bunların505'i konu bağlı,347'si ince konu incelemesindedir. Bu bir aktarım
+  sayısı değildir. Üç yeni kırpım gerçekten görüntülendi; gövde/seçenek kaybı
+  görülmedi, sayfa altı dekor kenara dokunur. `individual-tarama-word-crops/`,
+  `individual-tarama-word-expansion/agent-visual-spot-check.json`.
+- Tek-test hazır kaynaklarında8 kaynağın96 adayı mevcut ana konuya yalnız
+  soru başlangıcından ÖNCE basılı başlıklarla bağlandı;049 sırada.38 aynı
+  gövde okuması tekrar model çağrısı yapılmadan korunur. Karma başlıklar
+  tek konuya zorlanmaz. `single-test-heading-expansion/preparation-report.json`.
+- 046→047→048→049 yayın işleri gerçekten başlatıldı; bağımlı kabulü bekler.
+  301 ve185 konu-bekleyen kanıt işi ayrı başlatıldı; örtüşen kaynak kodları
+  toplanıp tekil soru sayısı üretilmez. Yeni sekiz sınır/entegrasyon testi PASS.
+- PDF kapısı BITTI:025'in talimat öncesi500 yayını korunur; kalan4.016
+  Dört Dörtlük,035'te49,036–040'da2.257,041'de172 ve042–043'te867
+  eski-PDF adayı yeniden işlenmeden atlandı.036–040'ın221 yeni-PDF sorusu
+  canlı kabulden geçti; banka8.802 oldu. Yeni karşılaştırmalar soru düzeyinde0.
+-044'te169 konu bağlı yeni-PDF adayı kaynak/anahtar/gövde kabulünde.
+  Ardından045'te80 kaynak sorusuna ait140 TYT/AYT kapsam adayı var.
+- Kaynak kanıtı işleri044 sonrası: `all-source-evidence`23.879 girişinin
+  23.461'i eski-PDF nedeniyle atlanır;418'i yeni-PDF kanıtında. Ayrıca
+  `full-mock-pending-evidence`5.482 ve `single-test-pending-evidence`1.886
+  donmuş aday içerir. Bunlar fine-topic/yayın kabulü değildir. Sonraki konu
+  paketleri aynı kaynak kodlarını kullanır; aritmetik toplam tekil soru vermez.
+- Sürekli gözetmen çalışan işleri kesmez; durmuş donmuş paketi en fazla3
+  kez makbuzdan sürdürür.046–049 ve iki yeni kanıt işi ayrı başlatılmıştır;
+  çalışan eski gözetmen yeni kayıtları yeniden yüklendiğinde gözetir.
+- Native metni olmayan421 sayfa ve78 ZIP/12.249 sayfa karşılığı için önceki
+  okuma kanıtları korunur. Okunamayan sayfa “soru yok” sayılmaz. Hazırlanmamış
+  kaynak düzenleri ve ince konu eşlemesi açık; ana plan **SURUYOR**.
 
 Kabul edilen güncel sayılar `archive-continuation-progress.json`;
 ölçüm `progress-events.jsonl` /`archive-continuation-events.jsonl`;

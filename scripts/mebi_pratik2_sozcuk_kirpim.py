@@ -67,12 +67,16 @@ def heading_category(row,group,exam,subjects,categories):
     return next(iter(unique.values())) if len(unique)==1 else None
 
 
-def run():
+def run(directories=None,prepare=True):
     OUT.mkdir(exist_ok=True);categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories']
+    from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
+    pdf_decisions=load_decisions()
     sources=[];total=controlled=reviewed=0
-    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops']:
+    for directory in directories if directories is not None else ['three-step-all-bodies-v2','compiled-tarama-crops']:
         for path in sorted((BASE/directory).glob('*.json')):
             data=json.loads(path.read_text(encoding='utf8'))
+            if not isinstance(data,dict) or not data.get('sourceSha256'):continue
+            if skip_pdf(data['sourceSha256'],pdf_decisions):continue
             candidates=[r for r in data.get('reviewQueueAdditions',[]) if r.get('code') and r.get('bodyClip') and r.get('keyImage')]
             if not candidates:continue
             sha=data['sourceSha256'];target=OUT/(sha+'.json')
@@ -82,7 +86,13 @@ def run():
                 if not original.is_relative_to(SOURCE):raise ValueError('Word adapter leaves source root')
                 with original.open('rb') as stream:
                     if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Original PDF changed')
-                exam,subjects=scope(data,categories);groups={g['groupId']:g for g in data['keyGroups']};items=[];review=[]
+                exam,subjects=scope(data,categories)
+                individual='Deneme-Tarama' in data['relativePath']
+                if individual:
+                    from mebi_pratik2_tek_tarama_konu import source_subject,heading_category as individual_category
+                    exam=next((p for p in data['relativePath'].split('\\') if p in ('TYT','AYT')),None)
+                    subject=source_subject(data['relativePath'],categories,exam);subjects={subject} if subject else set()
+                groups={g['groupId']:g for g in data['keyGroups']};items=[];review=[]
                 with pymupdf.open(original) as pdf:
                     for row in candidates:
                         page=pdf[row['bodyPage']-1]
@@ -92,8 +102,8 @@ def run():
                                 if int(match[1])<=row['printedNumber']<=int(match[2]):reasons.append('SHARED_CONTEXT_REQUIRES_EXPLICIT_REGIONS')
                         key_group=groups[row['groupId']]
                         # A Tarama key group has no chapter; its visible body headings are separate.
-                        category=heading_category(row,key_group,exam,subjects,categories)
-                        new={**row,'bodyClip':clip,'priorLayoutReviewReasons':row.get('reasons',[]),'wordBodyProof':proof,
+                        category=individual_category(row.get('printedSourceHeadings',[]),exam,subject,categories) if individual else heading_category(row,key_group,exam,subjects,categories)
+                        new={**row,'exam':exam,'bodyClip':clip,'priorLayoutReviewReasons':row.get('reasons',[]),'wordBodyProof':proof,
                             'newLayoutEvidence':True,'productionImportAllowed':False,'studentVisible':False}
                         if category:new.update(categoryId=category['id'],subject=category['subject'],subjectId=category['subjectId'],
                             topic=category['topic'],unit=category.get('unit'),topicDecision='CONTROLLED_PRINTED_SOURCE_HEADING_BOUND')
@@ -115,7 +125,7 @@ def run():
     result={'status':'WORD_BOUNDARY_SOURCE_CAPTURE_COMPLETE_NOT_ADMISSION','sources':sources,'preparedBodies':total,
         'controlledTopicBodies':controlled,'remainingLayoutReview':reviewed,'questionWrites':0}
     write_json(OUT/'report.json',result);print(json.dumps({k:v for k,v in result.items() if k!='sources'}))
-    prepare_packages()
+    if prepare:prepare_packages()
 
 
 if __name__=='__main__':run()

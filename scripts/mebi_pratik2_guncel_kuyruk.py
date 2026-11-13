@@ -60,7 +60,7 @@ def run():
         if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
     # A new word-level crop is explicit changed evidence, not a repetition of
     # the same failed crop. Preserve the earlier reason as history.
-    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops','full-mock-source-crops']:
+    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-word-crops']:
         word_report=BASE/directory/'report.json'
         if not word_report.exists():continue
         for source in json.loads(word_report.read_text(encoding='utf8'))['sources']:
@@ -83,7 +83,8 @@ def run():
     for path in [* (BASE/'all-source-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'single-test-pending-evidence/candidate-evidence').glob('*.json'),
-                 * (BASE/'individual-tarama-pending-evidence/candidate-evidence').glob('*.json')]:
+                 * (BASE/'individual-tarama-pending-evidence/candidate-evidence').glob('*.json'),
+                 * (BASE/'individual-tarama-word-pending-evidence/candidate-evidence').glob('*.json')]:
         evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
         if code not in decisions or code in accepted:continue
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],
@@ -105,6 +106,10 @@ def run():
         state='PUBLISHED_SOURCE_VERIFIED_NOT_TEACHER_APPROVED' if code in published else 'EXACT_DUPLICATE_SOURCE_OCCURRENCE' if code in aliases else 'SOURCE_VERIFIED_PENDING_PUBLICATION'
         decisions[code]={**row,'status':state,'existingQuestionCode':aliases.get(code,{}).get('existingQuestionCode'),'studentVisible':False}
     pdf_decisions=load_decisions();skipped_codes=set()
+    prior_group_count=len(group_reviews)
+    group_reviews=[row for row in group_reviews if row.get('sourceSha256') not in pdf_decisions
+                   or not skip_pdf(row['sourceSha256'],pdf_decisions)]
+    skipped_groups=prior_group_count-len(group_reviews)
     for code,row in decisions.items():
         sha=row.get('sourceSha256')
         if code in published or not sha or sha not in pdf_decisions:continue
@@ -122,7 +127,8 @@ def run():
     db.close()
     out=BASE/'teacher-review-export/current';out.mkdir(exist_ok=True)
     write_json(out/'already-existing-practice-pdfs.json',{'sources':[r for r in pdf_decisions.values() if r['decision']!='NEW_PDF_DOCUMENT_NOT_SEEN'],
-        'skippedPreparedCandidates':len(skipped_codes),'comparisonUnit':'PDF_DOCUMENT_ONLY','questionComparisons':0})
+        'skippedPreparedCandidates':len(skipped_codes),'skippedSourceGroupReviewRecords':skipped_groups,
+        'comparisonUnit':'PDF_DOCUMENT_ONLY','questionComparisons':0})
     for row in pending:
         row['reviewCategory']=review_category(row.get('reasons',[]))
         row['sourcePdf']=str(SOURCE/row['relativePath']) if row.get('relativePath') else row.get('sourcePath','')
@@ -146,6 +152,7 @@ def run():
     report={'status':'CURRENT_REVIEW_QUEUE_RECONCILED','acceptedSourceCodes':len(accepted),'publishedBankCodes':len(published),
         'pendingQuestionCandidateCodes':len(pending),'additionalSourceOccurrences':len(aliases),
         'finalPixelOrAnswerExclusions':len(excluded),'sourceGroupReviewRecordsNotQuestionCount':len(group_reviews),
+        'existingPdfSourceGroupsSkipped':skipped_groups,
         'decisionStates':dict(Counter(r['status'] for r in decisions.values())),
         'pendingReviewCategories':dict(Counter(r['reviewCategory'] for r in pending)),
         'sourceAdmissionProofs':proofs,'totalArchiveQuestions':None,'applicationDatabaseWrites':0}

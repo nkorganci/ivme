@@ -7,9 +7,24 @@ from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import mebi_pratik2_tek_tarama_ek as adapter
 from mebi_pratik2_tek_tarama_konu import heading_category,source_subject
+from mebi_pratik2_tek_test_baslik import printed_headings
+import mebi_pratik2_sozcuk_kirpim as word_reader
 
 
 class IndividualTarama(unittest.TestCase):
+    def test_word_adapter_skips_existing_pdf_before_opening_original(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);source=root/'input';source.mkdir();out=root/'out'
+            taxonomy=root/'backend/src/main/resources/content-taxonomy.json';taxonomy.parent.mkdir(parents=True)
+            taxonomy.write_text('{"categories":[]}',encoding='utf8')
+            (source/'old.json').write_text(json.dumps({'sourceSha256':'old','relativePath':'missing.pdf',
+                'reviewQueueAdditions':[{'code':'q','bodyClip':[0,0,10,10],'keyImage':'missing.png'}]}),encoding='utf8')
+            with patch.multiple(word_reader,APP=root,BASE=root,OUT=out),\
+                 patch('mebi_pratik2_pdf_tekrar_kapisi.load_decisions',return_value={'old':{'decision':'SKIP_PDF_ALREADY_IN_EXISTING_PRACTICE'}}),\
+                 patch.object(word_reader.pymupdf,'open') as opening:
+                word_reader.run(directories=['input'],prepare=False);opening.assert_not_called()
+            self.assertEqual(json.loads((out/'report.json').read_text())['preparedBodies'],0)
+
     def category(self,topic,subject='Matematik',exam='AYT'):
         return {'id':'excel.'+topic,'topic':topic,'subject':subject,'exam':exam,'selectable':True}
 
@@ -26,6 +41,16 @@ class IndividualTarama(unittest.TestCase):
         cats=[self.category('Dolaşım Sistemleri','Biyoloji')]
         self.assertEqual(source_subject('Deneme-Tarama\\Taramalar\\AYT\\Biyoloji (AYT)\\PDF\\opaque.pdf',cats,'AYT'),'Biyoloji')
         self.assertIsNone(source_subject('Deneme-Tarama\\Biyoloji (AYT)\\PDF\\opaque.pdf',cats,'TYT'))
+
+    def test_stem_and_line_cut_at_first_question_cannot_label_the_topic(self):
+        header={'text':'> Edebî Akımlar','bbox':[30,40,150,52]}
+        native={'pages':[{'lines':[header,{'text':'> A misleading stem','bbox':[30,100,150,112]},
+                                         {'text':'> A boundary fragment','bbox':[30,70,150,82]}]}]}
+        self.assertEqual(printed_headings(native,[{'bodyPage':1,'bodyClip':[0,78,290,400]}]),[header])
+
+    def test_explicit_subject_alias_keeps_existing_edebiyat_identity(self):
+        category=self.category('Edebî Akımlar','Edebiyat')
+        self.assertEqual(source_subject('AYT\\Türk Dili ve Edebiyatı (AYT)\\opaque.pdf',[category],'AYT'),'Edebiyat')
 
     def test_skip_old_pdf_before_cache_and_keep_ambiguous_topic_separate(self):
         with tempfile.TemporaryDirectory() as temporary:

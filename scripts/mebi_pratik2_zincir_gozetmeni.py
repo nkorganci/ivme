@@ -26,6 +26,8 @@ PACKAGES=[
     ('dual-exam-philosophy-expansion',45,500,'full-mock-expansion'),
     ('individual-tarama-expansion',46,500,'dual-exam-philosophy-expansion'),
     ('individual-tarama-topic-expansion',47,500,'individual-tarama-expansion'),
+    ('individual-tarama-word-expansion',48,500,'individual-tarama-topic-expansion'),
+    ('single-test-heading-expansion',49,500,'individual-tarama-word-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}
@@ -33,7 +35,8 @@ JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pra
 JOBS += [{'name':name,'dependency':dep,'kind':'evidence','args':['scripts/mebi_pratik2_konu_bekleyen_kanit.py','--package-dir',name]}
          for name,dep in [('all-source-evidence','full-mock-expansion'),('full-mock-pending-evidence','full-mock-expansion'),
                           ('single-test-pending-evidence','full-mock-expansion'),
-                          ('individual-tarama-pending-evidence','individual-tarama-expansion')]]
+                          ('individual-tarama-pending-evidence','individual-tarama-expansion'),
+                          ('individual-tarama-word-pending-evidence','individual-tarama-word-expansion')]]
 
 
 def checkpoint(name,kind='publisher'):

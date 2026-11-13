@@ -75,6 +75,23 @@ katılmadığı için yeni `individual-tarama-crops` bundan sonraki census'ta sa
   `python scripts/mebi_pratik2_tek_tarama_konu.py` mevcut donmuş paketleri korur.
   Yeni çıktılar öğretmen onayı veya yeni soru kabulü değildir.
 
+**Ek geometri ve kaynak başlığı zinciri:**
+- `individual-tarama-word-expansion`048:474 yeni kırpımın289'u konu bağlı;
+  185 ayrı `individual-tarama-word-pending-evidence` kuyruğu.59 geometri
+  adayı ve altı grup kaydı ayrı. İlk44 kaynakta852 gövde/505 konu bağlı aday
+  hazır; 347 ince konu açık. Bunlar henüz yeni yayın sayısı değildir.
+-048 PID26188,185 kanıt PID42668;047→048 bağımlılığı var. Yeni gövde
+  kanıtı4/289 native,285 görsel; üç kırpım gerçekten okundu, makbuzu
+  `individual-tarama-word-expansion/agent-visual-spot-check.json`.
+- `single-test-heading-expansion`049:8 kaynak/96 konu bağlı aday; soru
+  başlangıcından önceki basılı başlıklar esas.38 aynı gövde makbuzu korunur,
+  diğer58 görsel yolda. PID33824,048'i bekler. Yeni sekiz test PASS.
+- Çalışan41468 gözetmen046–049'u henüz koddan yüklemiyor; bu işler ayrı
+  başlamıştır. Gözetmen yeniden başlarsa yeni donmuş kayıtları da kapsar;
+  çalışan uygulama/model/worker süreçlerini durdurma.
+- Eski PDF'lere bağlı kaynak-grup kayıtları da güncel inceleme listesinden
+  belge düzeyinde çıkarılır; tarihsel makbuzları ve kimlikler silinmez.
+
 **Sürekli gözetmen:** `mebi_pratik2_zincir_gozetmeni.py --watch` yeniden
 PDF kurallı sürümle başlatıldı; PID/durum `chain-supervisor/current.json`.
 İşçi logları `.log`, beş dakikada/değişimde events.jsonl. Çalışan writer'ı

@@ -30,7 +30,7 @@ def run():
         data=json.loads(package.read_text(encoding='utf8'))
         for r in data.get('items',[]):prepared[r['sourceSha256']].add(r['bodyPage'])
     for directory in ['single-test-crops','three-step-all-bodies-v2','compiled-tarama-crops','word-boundary-crops',
-                      'four-square-crops','four-square-header-crops','three-step-mock-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-crops']:
+                      'four-square-crops','four-square-header-crops','three-step-mock-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-crops','individual-tarama-word-crops']:
         for file in (BASE/directory).glob('*.json'):
             data=json.loads(file.read_text(encoding='utf8'))
             if not isinstance(data,dict):continue

@@ -258,3 +258,13 @@ Donmuş ilk paketler değiştirilmez; ek konu paketi ayrı makbuzdur.
 046 ve047 için mevcut arşiv kabul komutlarını sırasıyla045 ve046 bağımlılığıyla
 kullan; hazırlık raporunu aktarım kabulü sayma. Gerekçeli sorular ve grup
 istisnaları güncel inceleme dışa aktarımına katılır.
+
+
+Satır kutusunun sütunları birleştirdiği adaylara yalnız bir ek geometri geçişi:
+`python scripts/mebi_pratik2_tek_tarama_sozcuk.py`. Yeni kırpımlar eski PNG ve
+makbuzları değiştirmez. `individual-tarama-word-expansion`048, belirsizleri
+`individual-tarama-word-pending-evidence` altındadır. Başka kaynak/konu için
+`python scripts/mebi_pratik2_tek_test_baslik.py` soru başlangıcından önceki
+basılı başlıkları okur; `single-test-heading-expansion`049'u hazırlar. Aynı
+kaynak/görsel/hash için mevcut başarılı veya başarısız gövde okumaları korunur;
+yeni öğretmen onayı üretilmez. Doğrudan anahtarı doğrulanmış soru sayılmaz.

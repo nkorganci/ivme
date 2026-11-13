@@ -15,6 +15,8 @@ from yks_birlestirme import write_json,process_lock
 OUT=BASE/'individual-tarama-topic-expansion'
 RULES={
  'Biyoloji':{
+  'Canlıların Ortak Özellikleri':'Biyoloji ve Canlıların Ortak Özellikleri',
+  'Güncel Çevre Sorunları':'Güncel Çevre Sorunları ve İnsan',
   'Duyu Organları':'Denetleyici ve Düzenleyici Sistem, Duyu Organları',
   'Nükleik Asitler':'Nükleik Asitlerin Keşfi ve Önemi',
   'Hücresel Yapılar ve Görevleri':'Hücre',
@@ -23,6 +25,13 @@ RULES={
   'Eş Baskınlık, Çok Alellilik, Kan Gruplarının Kalıtımı':'Kalıtım ve Biyolojik Çeşitlilik',
  },
  'Matematik':{
+  **dict.fromkeys(['İkinci Dereceden Bir Değişkenli Fonksiyonun Grafiğinin Çizimi',
+                  'Parabolün Tepe Noktası, Simetri Ekseni ve Görüntü Kümesi ile İlgili Uygulamalar','Parabolün Grafik Çizimi',
+                  'Bazı Elemanları Verilen Parabol Denklemini Yazma','Bir Parabol ile Bir Doğrunun Birbirlerine Göre Durumları',
+                  'İkinci Dereceden Fonksiyonlarla Modellenebilen Problemler'],
+                 'İkinci Dereceden Fonksiyon ve Grafikleri (parabol)'),
+  **dict.fromkeys(['sinx = a , cosx = a ,tanx = a ve cotx = a Denklemlerinin Çözüm Kümesi',
+                  'Lineer ve Homojen Denklemlerin Çözüm Kümesi'],'Trigonometrik Denklemler'),
   **dict.fromkeys(['Üstel ve Logaritmik Denklemler','Üstel ve Logaritmik Eşitsizlikler',
                   'Gerçek Hayat Durumları ile İlgili Üstel ve Logaritmik Fonksiyon Problemleri'],
                  'Üstel Fonksiyon, Logaritma Fonksiyonu (logaritma)'),
@@ -39,12 +48,13 @@ RULES={
                  'Belirsiz İntegral, Belirli İntegral ve Uygulamaları'),
  },
  'Fizik':{
+  **dict.fromkeys(['Düzgün Elektrik Alan','Sığa Kavramı ve Sığaçlar'],'Paralel Levhalar ve Sığa'),
   **dict.fromkeys(['Su Dalgalarında Kırınım ve Girişim','Işığın Çift Yarıkta Girişimi','Işığın Tek Yarıkta Kırınımı',
                   'Işığın Dalga Doğası ve Doppler Olayı','Elektromanyetik Dalgalar'],'Dalga Mekaniği ve Elektromanyetik Dalgalar'),
   **dict.fromkeys(['Isı ve Sıcaklık Kavramları, Termometreler','Isı Alışverişi','Hâl Değişimi','Isıl Denge',
                   'Enerji İletim Yolları','Genleşme'],'Isı, Sıcaklık ve Genleşme'),
  },
- 'Edebiyat':{'Divan Şiiri':'Divan Edebiyatı'},
+ 'Edebiyat':{'Divan Şiiri':'Divan Edebiyatı','Cumhuriyet Dönemi Türk Şiiri':'Cumhuriyet Dönemi Türk Edebiyatı'},
 }
 
 
@@ -52,6 +62,8 @@ def source_subject(path,categories,exam):
     pieces=path.split('\\')
     labels=[p.split(' (')[0] for p in pieces if p.endswith('(TYT)') or p.endswith('(AYT)') or p.endswith('(TYT-AYT)')]
     candidates={c['subject'] for c in categories if c.get('selectable') and c.get('exam')==exam and c['id'].startswith('excel.')}
+    aliases={'din kulturu ve ahlak bilgisi':'Din Kültürü (DKAB)','turk dili ve edebiyati':'Edebiyat'}
+    labels=[aliases.get(normalize(label),label) for label in labels]
     found={s for s in candidates for label in labels if normalize(s)==normalize(label)}
     return next(iter(found)) if len(found)==1 else None
 
