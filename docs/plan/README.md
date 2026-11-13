@@ -16,5 +16,5 @@ dosyası **BITTI** işaretiyle korunur; kapanan adımlar silinmez. Görev tablos
 güncel durum kaydıdır; başlıklardaki BITTI aynı durumun görünümüdür.
 - [15. Adım — MEBİ Soru Çöz & Pratik 2](15-soru-bankasi-pratik-2.md): yalnız
   `D:\workspace\mebi-yks` kaynaklarından, cevap kanıtlı bağımsız ikinci soru bankası.
-  **BITTI (doğrulanabilir aktarım ve gerekçeli ayırma geçişi):**4.791 soru
-  yayında;21.353 aday ayrı incelemede. Bütün basılı soruların çıkarımı kanıtlanmadı.
+  **SURUYOR (tam arşiv):**4.791 soru
+  yayında;21.353 aday ve kalan kaynak düzenleri aktif çalışma kapsamında.

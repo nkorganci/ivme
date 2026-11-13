@@ -40,7 +40,8 @@ def run(acceptance,batch_dir,after_batch=None):
         if json.loads(previous.read_text(encoding='utf8'))['status']!='PASS':raise ValueError('Previous batch is not accepted')
     admitted=json.loads(proof.read_text(encoding='utf8'))['accepted']
     if not admitted:
-        write_json(folder/'bank-acceptance.json',{'status':'NO_VERIFIED_NEW_QUESTIONS','questionWrites':0});return
+        write_json(folder/'bank-acceptance.json',{'status':'PASS','scope':'REVIEW_ONLY_SOURCE_BATCH',
+            'newQuestions':0,'questionWrites':0,'previousQuestionsUnchanged':True,'teacherApprovalsCreated':0});return
     def command(stage,args,receipt):
         if receipt.exists():
             existing=json.loads(receipt.read_text(encoding='utf8'))

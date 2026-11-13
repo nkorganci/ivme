@@ -22,6 +22,19 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
+- **Pratik 2 tam arşiv talimatı:** kullanıcı bütün arşivdeki cevaplı soruların
+  aktarılmasını istiyor. İlk geçiş, envanter veya inceleme kuyruğuna ayırma,
+  ana planın tamamlanması sayılmaz. Henüz uygulanmamış kaynak düzenlerini ve
+  çözülmemiş konu eşlemelerini işle; yalnız gerçek çözülemeyen kusurları ayrı
+  tut. Tam arşiv soru kapsamı kanıtlanmadan planın ana başlığını BITTI yapma.
+  Önceki dar kapsamlı kapanış tarihsel bir alt geçiştir, tam kabul değildir.
+  Kullanıcının tekrar hatırlatması beklenmez: mevcut çalışma/context/token
+  sınırına kadar yetkili işi sürdür; yalnız alt parti tamamlandı diye final
+  verip durma. Bağlam yenilenince bu aktif görevi devral ve aynı kanıt/imleçten
+  devam et. Sınır gelirse tamamlanmamış işi BITTI yapma; son imleci, çalışan
+  süreçleri ve sonraki bağımlılığı devirde koru. Arka plan işi yalnız gerçekten
+  uygulanmış ve çalışan bağımlılık zinciri ölçüsünde otomatik diye bildirilir.
+
 - **Pratik 2 cevap kurtarma (son kullanıcı talimatı):** ilk okumada cevap
   bulunamaması tek başına vazgeçme nedeni değildir. Aynı basılı test/bölüm/adım
   kimliğiyle başka anahtar konumunu ve mevcut kaynak kanıtını kontrol et;

@@ -53,6 +53,28 @@ Dosya/sayfa/ham gözlem/test grubu/adayı/aktarılmış soruyu birbirine ekleyip
 
 ## Devam ve güncelleme
 
+Tam arşiv görevi, inceleme listesi hazırlanarak kapatılamaz. Önceki
+`archive-closeout.json` yalnız ilk geçiş kanıtıdır; plan üreticisi bu
+makbuzdan ana BITTI çıkarmayı reddeder. Kullanıcı tekrar “devam et” demeden
+çalışma/context/token sınırına kadar yürüt; yeni bağlamda imleçten sürdür.
+
+Tam arşiv genişleme sırası (aynı çalışan işi tekrar başlatma):
+
+```powershell
+python scripts/mebi_pratik2_arsiv_basliklari.py
+python scripts/mebi_pratik2_arsiv_kabul.py --chunk-size 200 --publish
+python scripts/mebi_pratik2_sozcuk_kirpim.py
+python scripts/mebi_pratik2_arsiv_kabul.py --package-dir word-boundary-expansion --first-batch 19 --wait-for curated-chapter-expansion/pass-result.json --chunk-size 200 --publish
+python scripts/mebi_pratik2_arsiv_izle.py --watch
+```
+
+Başlık paketi oluşturulunca değişmez; tekrar hazırlama yerine kabul
+worker'ını mevcut makbuzlardan devam ettir. İlk genişleme007–018; sözcük
+yerleşimi019+partileridir. Sözcük yerleşimi yeni özgün piksel kanıtıdır;
+önceki başarısız kırpım/okuma korunur. Bunların tamamı tam arşivin alt
+işidir. Model/konu önerisi tek başına kabul edilmez; kontrollü kaynak başlığı,
+bağımsız basılı anahtar, tam gövde, son piksel ve canlı kapılar zorunludur.
+
 Çalışan modeli veya aktarımı yeniden başlatma; ilgili
 `progress-current.json` ve `continuation-progress.jsonl` üzerinden izle.
 Bekleyen aktarım ve kabul sırası `docs/devam.md` içinde gösterilir.

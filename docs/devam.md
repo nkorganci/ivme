@@ -1,39 +1,39 @@
 # İvme devir notu
 
+**Güncel canlı kabul:** 4.455 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
 olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**MEBI-PRACTICE-2 doğrulanabilir aktarım ve gerekçeli ayırma geçişi BITTI.**
-Plan: `docs/plan/15-soru-bankasi-pratik-2.md`;15.01–15.07 kabul kapsamıyla
-BITTI güncellendi. Canlı 4,791 soru:2.972 TYT/1.819 AYT; son katalog
-`labels-v1-b5fca4abb818b9467a4a6582`. Pilot ve001–006 kabul edildi;
-aynı aktarımları veya tamamlanmış model okumalarını tekrar başlatma.
-Son006:836 INSERT/0 UPDATE/0 hata; tekrar0 INSERT/836 SKIP;9 atomik parti.
-90/90 cevap grubu farklı OCR ile kurtarıldı,836 gövde ve son piksel PASS.
+**MEBI-PRACTICE-2 TAM ARŞİV SURUYOR; kullanıcı tekrar hatırlatmayacak.**
+Çalışma/context/token sınırına kadar sürdür; yeni bağlamda aynı imleçten
+devam et. Alt parti bitmesi durma nedeni değildir.
 
-**Kapanış kanıtı:** `archive-closeout.json`;
-`FIRST_PASS_COMPLETE_WITH_EXPLICIT_DEFERRED_REVIEW`. Eski86.035 soru ve
-4.816 kaynak/82.845.852.415 bayt korunur. Kaynak yazımı/silme0;
-öğrenci test cevabı/sahte öğretmen onayı0. Masaüstü/mobil canlı kabul PASS;
-24 ilgili Python testi PASS. Aktif aktarım/model incelemesi kalmadı;
-uygulama ve yerel model servisi durdurulmadı.
+**Çalışan süreç17861:**2.390 yeni başlık-bağlı adayın kaynak kabulü ve
+200 adaylık gruplarla007–018 INSERT_ONLY/katalog/canlı kabul zinciri.
+`curated-chapter-expansion/progress-current.json`, `part-*/` ve ilgili
+`verified-source-batch-*/continuation-progress.jsonl` asıl imleçtir.
+CPU sözcük-kırpım işi tamam:3.114 yeni gövde;1.005 konu bağlı aday
+`word-boundary-expansion/chapter-packages.json`. Bunlar aktarılmış sayılmaz.
+Bekleyen süreç77599 bu paketi önceki genişleme bitince019+ zincirinde işler.
+İzleyici62631 kabul edilen sayıları ve görev/plan başlığını otomatik günceller.
+ Kullanıcı ilk geçişte durmayı reddetti;
+4.791 yayın ve gerekçeli ayırma ana görev kapanışı değildir. Önceki BITTI
+kararı geri alındı. Plan15.02–04/06–07 yeniden açık;15.01 envanter ve15.05
+arayüz kabulü korunur. Mevcut kaynakları/bankayı/model okumalarını baştan
+üretme. Ana plan yalnız tam soru kapsamı kanıtlandığında BITTI olabilir.
 
-**Ayrı teslim:** 21,353 aday kodu (17.508 konu/ders;3.823 gövde;22 düzen/
-kimlik) ve1.313 soru sayısı bilinmeyen grup incelemesi.
-`teacher-review-export/current/question-candidates.csv/json`,
-`by-reason/*.csv`, `source-group-reviews.json`, `archive-disposition/`.
-Bütün adayların kaynak PDF yolu var; mevcut17.689 soru/15.655 anahtar
-görseli bağlantısı mevcut. `local-link-audit.json`:kırık yol0.
-
-Bütün basılı sorular çıkarılmış/aktarılmış sayılmaz; toplam arşiv soru
-sayısı ve genel soru ilerleme yüzdesi bilinmiyor. BITTI yalnız doğrulanabilir
-aktarımı ve gerekçeli ayırmayı kapsar. İnceleme adayları öğrenci havuzunda
-veya öğretmen onaylı değildir; gerekçeli kanıtı koruyarak sonradan gerçek
-öğretmen veya ayrıca hedeflenmiş AI incelemesi yapılabilir. Aynı başarısız
-istem tekrarları, cevap tahmini ve önceki bankada ID silme/birleştirme yok.
+Aktif sıra:21.353 adaydan17.508 konu/ders eşlemesi;3 Adım ve derleme
+kitaplarının basılı bölüm başlıklarını ana tablodaki kategorilere bağlayıp
+henüz yapılmamış bağımsız anahtar/gövde okumasına geç. Ardından5.652 deneme
+sorusunda basılı alt ders ve soru konusu; kalan PDF/paket düzenleri.
+Gerçek hatalar ayrı, uygulanmamış çıkarıcı veya dar eşleme eksikliği hata
+sayılmaz. Her yeni kabul ayrı007+partiyle INSERT_ONLY/canlı kabul edilir.
+İlk geçiş `archive-closeout.json` ve001–006 makbuzları tarihsel korunur.
+`mebi_pratik2_plan_sonuc.py` ilk geçişten tam BITTI üretmeyi reddeder.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|

@@ -15,6 +15,8 @@ def run():
     admission_paths=['single-test-crops/source-pixel-acceptance.json','expanded-chapter-evidence/source-pixel-acceptance.json',
         'three-step-acceptance/source-pixel-acceptance.json','mock-language-intent/source-pixel-acceptance.json',
         'compiled-tarama-acceptance/source-pixel-acceptance.json','bounded-answer-recovery/source-pixel-acceptance.json']
+    admission_paths.extend(str(p.relative_to(BASE)) for p in sorted((BASE/'curated-chapter-expansion').glob('part-*/source-pixel-acceptance.json')))
+    admission_paths.extend(str(p.relative_to(BASE)) for p in sorted((BASE/'word-boundary-expansion').glob('part-*/source-pixel-acceptance.json')))
     admission_reviews=[]
     for relative in admission_paths:
         path=BASE/relative
@@ -56,6 +58,18 @@ def run():
                 'image':source['image'],'status':'REVIEW_REQUIRED','studentVisible':False}
     for row in admission_reviews:
         if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
+    # A new word-level crop is explicit changed evidence, not a repetition of
+    # the same failed crop. Preserve the earlier reason as history.
+    word_report=BASE/'word-boundary-crops/report.json'
+    if word_report.exists():
+        for source in json.loads(word_report.read_text(encoding='utf8'))['sources']:
+            data=json.loads((BASE/'word-boundary-crops'/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
+            for row in data['items']:
+                if row['code'] in accepted:continue
+                prior=decisions.get(row['code'],{})
+                decisions[row['code']]={**prior,**row,'status':'REVIEW_REQUIRED',
+                    'priorReviewReasons':prior.get('reasons',[]),
+                    'reasons':['INDEPENDENT_KEY_BODY_REVIEW_REQUIRED' if row.get('categoryId') else 'CONTROLLED_TOPIC_REVIEW_REQUIRED'],'studentVisible':False}
     aliases={};excluded={}
     for batch in sorted(BASE.glob('verified-source-batch-*')):
         final=batch/'final-source-acceptance.json'

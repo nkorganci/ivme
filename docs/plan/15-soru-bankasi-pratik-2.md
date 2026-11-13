@@ -1,6 +1,8 @@
-# 15. Adım — MEBİ Soru Çöz & Pratik 2 — BITTI (doğrulanabilir aktarım ve gerekçeli ayırma geçişi)
+# 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Tamamlanan kapsam:** yalnız `D:\workspace\mebi-yks` kaynaklarında
+**Güncel canlı kabul:** 4.455 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+
+**Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
 ayrı inceleme kategorilerine ayrılması. Kullanıcının son talimatı gereği
 uyuşmayan içerikte aynı başarısız model çağrısı tekrarlanmadı. İlk okumada
@@ -11,6 +13,28 @@ kurtarma geçişi uygulandı; cevap tahmini yapılmadı.
 kanıtlanmadı. `4.791` soru yayında; `21.353`
 ayrı aday kodu incelemede. Bu sayılar tüm arşivin tekil soru toplamı değildir.
 İnceleme kuyruğu bu geçişin ayrı teslimidir; öğretmen tarafından çözülmüş sayılmaz.
+
+## Güncel kullanıcı talimatı ve açık kapsam
+
+**Kalıcı yürütme talimatı:** tekrar “devam et” bekleme. Kullanıcı bütün
+cevaplı arşivi Pratik2’ye aktarmayı istiyor; çalışma/context/token sınırına
+kadar sürdür. Bağlam yenilenince aynı kanıt/imleçten devam et. Alt parti,
+envanter veya incelemeye ayırma ana görevin kapanışı değildir. Gerçek
+çözülemeyen kusurları ayrı tut; diğer kaynak/soruların aktarımını bırakma.
+Sınır gelirse çalışan süreçler ve sonraki komut devirde kalır; BITTI yok.
+
+
+Bütün arşivdeki cevaplı sorular işlenip aktarılmadan ana plan kapanmaz.
+Önceki BITTI kararı erken kapanıştı; yalnız ilk geçişin kanıtları korunur.
+İnceleme listesine konmak, bir soru veya kaynak düzeninin işlenmiş olduğu
+anlamına gelmez.17.508 konu/ders adayı,3.823 gövde ve22 kimlik/düzen adayı
+ile henüz soru sınırları çıkarılmamış kaynaklar aktif çalışma kapsamındadır.
+Gerçek çözülemeyen kusurlar gerekçeli ayrılır; cevap ve konu tahmini yapılmaz.
+
+Sıra: basılı kitap bölümlerini mevcut konu tablosuna bağla →henüz okunmamış
+anahtar/gövde kabulü →deneme alt ders/konu eşlemesi →kalan PDF düzenleri ve
+paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kabulü.
+Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Sonuç
 
@@ -49,8 +73,8 @@ Yetkilendirilmiş planın bir alt partisi bitince final yanıtla durup tekrar
 geç. Çalışan servisi/incelemeyi gereksiz yere durdurma. Ara ilerlemeyi beş
 dakikada veya her%10'da kanıt dosyasına yaz; gerçek ölçüm yoksa kesin süre
 veya genel ilerleme yüzdesi verme. Yalnız gerçek kullanıcı kararı gerektiren
-engelde dur. BITTI, aşağıdaki kabul kapsamını ifade eder; öğretmen incelemesi
-veya kanıtlanmamış tam soru çıkarımı değildir.
+engelde dur. Ana BITTI için bütün cevaplı arşivin soru kapsamı ve
+aktarımı kabul edilmelidir; yalnız ilk geçiş veya inceleme teslimi yetmez.
 
 ## Adımlar ve kabul kanıtları
 
@@ -59,7 +83,7 @@ veya kanıtlanmamış tam soru çıkarımı değildir.
 4.816 kaynak tam SHA-256 ile envantere alındı. Kaynak dışına çıkılmadı;
 özgün arşiv taşınmadı/silinmedi. `inventory.json`, `final-source-integrity.json`.
 
-### 15.02 — Sayfa ve cevap kapsama matrisi — BITTI (ilk geçiş ve incelemeye ayırma)
+### 15.02 — Sayfa ve cevap kapsama matrisi — SURUYOR (tam arşiv)
 
 1.573 PDF/27.614 sayfa native metin/koordinat taraması;1.048 HTML/78 ZIP
 içerik keşfi tamamlandı. Her dosya/sayfa için sonuç veya inceleme nedeni var.
@@ -68,7 +92,7 @@ Yerel gövdesi bulunmayan quiz bağlantıları, görsel okuma sayfaları ve karm
 test/bölüm düzenleri kabul edilmeden ayrı kaydedildi.
 `full-pdf-coverage.json`, `package-content-report.json`, `archive-disposition/`.
 
-### 15.03 — Özgün soru ve cevap kırpımları — BITTI (kabul edilenler ve gerekçeli ayırma)
+### 15.03 — Özgün soru ve cevap kırpımları — SURUYOR (tam arşiv)
 
 Tek-test taramalarında3.305,3 Adım kitaplarında11.011, derleme taramada2.322
 gövde kırpımı hazırlandı;41 denemenin5.863 önceki gövde/anahtar kanıtı güncel
@@ -79,7 +103,7 @@ Her yeni aktarım öncesi özgün PDF'den yeniden piksel karşılaştırması ya
 `three-step-all-bodies-v2/`, `compiled-tarama-crops/`,
 `full-mock-source-reuse/report.json`, `verified-source-batch-*/final-source-acceptance.json`.
 
-### 15.04 — Konu kimliği ve paketleme — BITTI (kanıtlı eşleme ve belirsizleri ayırma)
+### 15.04 — Konu kimliği ve paketleme — SURUYOR (tam arşiv)
 
 Yalnız ana tablodaki mevcut TYT/AYT-ders-ünite-konu kimlikleri kullanıldı.
 Basılı bölüm başlığı veya açık soru kökü kanıtı olmayan genel konu uydurulmadı.
@@ -96,7 +120,7 @@ Altı gerçek eksik-seçenek negatif kontrolü PASS. Öğretmen onayı çıkarsa
 `pilot-ui-report.json`, `pilot-live-read-report.json`,
 `verified-source-batch-*/live-bank-read-report.json`.
 
-### 15.06 — Kademeli aktarım — BITTI (bu geçişte kabul edilen kapsam)
+### 15.06 — Kademeli aktarım — SURUYOR (tam arşiv)
 
 Tam DB yedeği doğrulandı. En fazla100 satırlık atomik INSERT_ONLY partileri,
 ikinci ön izlemede0 INSERT/0 UPDATE, mevcut soru fingerprint'i ve sürümlü
@@ -105,7 +129,7 @@ katalog bütünlüğüyle kabul edildi. Sıra:ilk21 pilot,536 ek pilot dışı s
 ile sınırlı cevap kurtarma. Belirsizler
 bu aktarımın parçası değildir. `verified-source-batch-*/bank-acceptance.json`.
 
-### 15.07 — Kapanış ve inceleme teslimi — BITTI (bu geçiş)
+### 15.07 — Kapanış ve inceleme teslimi — SURUYOR (tam arşiv)
 
 Her yerel dosya ve PDF sayfasının durumu kayıtlıdır. Kabul edilen bütün
 partilerin canlı kabulü geçti. Çözümlenmeyenler kaynaksız arka plan kaydı

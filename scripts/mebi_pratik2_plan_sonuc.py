@@ -5,7 +5,9 @@ from mebi_pratik2_tam_pdf_tarama import APP,BASE
 
 def run():
     result=json.loads((BASE/'archive-closeout.json').read_text(encoding='utf8'))
-    if result['status']!='FIRST_PASS_COMPLETE_WITH_EXPLICIT_DEFERRED_REVIEW':raise ValueError('Required closeout evidence not present')
+    if not result.get('allPrintedQuestionsExtracted'):
+        raise ValueError('First-pass disposition cannot close the full-archive task; continue extraction and admission')
+    if result['status']!='FULL_ARCHIVE_ACCEPTED':raise ValueError('Full archive acceptance evidence required')
     queue=result['reviewQueue'];live=result['live'];bank=result['publishedQuestions']
     bank_label=format(bank,',').replace(',','.')
     pending_label=format(queue['pendingQuestionCandidateCodes'],',').replace(',','.')
