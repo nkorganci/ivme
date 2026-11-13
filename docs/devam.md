@@ -1,12 +1,29 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 7.676 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.076 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
 olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
+
+**Aktif sürekli gözetim:** `scripts/mebi_pratik2_zincir_gozetmeni.py --watch`
+çalışan publisher/kanıt worker'larını durdurmaz; durmuş işi kilit ve tamamlanmış
+bağımlılık kontrolünden sonra mevcut makbuzlardan en fazla3 kez sürdürür.
+`chain-supervisor/current.json` PID/durum;events.jsonl beş dakikada/değişimde,
+paket .log dosyaları hata ayrıntısı. Bu yalnız hazırlanmış paket zinciridir,
+tam arşiv bitti iddiası değildir.4 gözetmen/2 kabulden-devam testi PASS.
+Supervisor Windows'ta gizli ayrı süreç olarak başlatıldı; oturum/OS durursa
+kendiliğinden yeniden açılacağı taahhüdü yok. Yeniden açarken tek gözetmen kilidi
+korunur. Metadata gözetmeni yeni tek-test kuyruğu için yenilendi; hiçbir
+model/içerik worker'ı durdurulmadı.
+
+**Tek-test kapsam açığı kapatıldı (yayın değil):**1.886 henüz kabul/sıraya
+alınmamış, native-geometri geçen soru `single-test-pending-evidence/` paketine
+bağlandı.12168 worker'ı044 yayınından sonra bağımsız tek-test anahtar makbuzu,
+mevcut görsel okumayı yeniden kullanır. Gözetmen bu işi de izler. Konu açıkken
+öğrenciye gitmez. Kalan tek-test görüntü kusurları eski gerekçeleriyle korunur.
 
 **13 Kasım sabahı süreç devri:**önceki Python süreçleri durmuştu; kabul edilmiş
 019–021 korunup022 kaynak kabulünden devam edildi. Güncel worker60838;
@@ -24,7 +41,11 @@ ince konu bekleyen aday `full-mock-pending-evidence`. Yeni model çağrısı0.
 Bir özgün gövde/piksel uyuşmazlığı ayrı tutuldu; aynı hatalı kaynak denenmedi.
 Eski tam deneme anahtarlarının gerçek bağımsız metni,220dpi özgün pikseli ve
 basılı deneme/bölüm kimliği `--audit-keys` ile yeniden bağlanıyor:19476.
-Audit PASS olmadan044 alımını başlatma. Sonraki komutlar:full-mock-expansion
+Audit PASS:188 grup; gerçek bağımsız transkript/220dpi kaynak/basılı kimlik
+kontrol edildi.90132 zinciri044 kabulünü043 sonrasına bağladı;044 bitince
+5.482 pending-evidence işini otomatik başlatır.67850 native CPU işi8.116
+imlecinden kalan15.763 adaya devam eder; önceki pozitif makbuzlar korunur.
+Tekrar komut kurarken çalışan writer başlatma. Komutlar:full-mock-expansion
 first-batch44 wait-for four-square-header-expansion/pass-result.json publish;
 full-mock-pending-evidence kanıt worker'ı full-mock-expansion/pass-result.json
 sonrasında (yayın değildir).169 paket tek500'lük partidir. Kaynak protokolü

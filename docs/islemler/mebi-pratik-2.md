@@ -187,3 +187,19 @@ JavaScript yalnız JSON string-array olarak okunur, çalıştırılmaz. Tam meti
 ve sözcük-frekans eşliği farklı durumlardır; ikisi de özgün soru pikseli veya
 tam soru kapsamı kanıtı değildir. Boş/kısa/tekrarlanan/eşleşmeyen sayfa açık
 inceleme kaydıdır; ZIP sırf metni eşleşti diye elenmez.
+
+### Süreç kesilince kullanıcıdan tekrar devam beklememe
+
+`python scripts/mebi_pratik2_zincir_gozetmeni.py` yalnız mevcut zincir durumunu
+okur. `--watch` çalışan işlerin OS kilidine dokunmadan durmuş, bağımlılığı kabul
+edilmiş işi makbuzdan sürdürür; en fazla3 başlangıç ve60sn geri çekilme vardır.
+Gözetmen uygulama/model worker'ını sonlandırmaz. Gizli ayrı süreçle çalıştırma
+tercih edilir; durum/log `chain-supervisor/`. OS/oturum kapanırsa gözetmenin de
+başlatılması gerekir; işletim sistemi başlangıç görevi kurulmadı.
+
+`python scripts/mebi_pratik2_tek_test_bekleyen.py` tekil testlerin kabul edilmiş
+veya sıraya alınmış kodlarını dışarıda tutup kalan sağlam geometrili adayları
+sabit `single-test-pending-evidence` paketine bağlar. Cevap/gövde kanıt işi
+`mebi_pratik2_konu_bekleyen_kanit.py --package-dir single-test-pending-evidence --wait-for full-mock-expansion/pass-result.json`.
+Konu belirsizliği kaynak/cevap başarısızlığı ile aynı karar değildir; ikisi de
+ayrı gerekçeli saklanır ve kesin kabul olmadan yayın yapılmaz.

@@ -73,7 +73,8 @@ def run():
                     'priorReviewReasons':prior.get('reasons',[]),
                     'reasons':['INDEPENDENT_KEY_BODY_REVIEW_REQUIRED' if row.get('categoryId') else 'CONTROLLED_TOPIC_REVIEW_REQUIRED'],'studentVisible':False}
     for path in [* (BASE/'all-source-evidence/candidate-evidence').glob('*.json'),
-                 * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json')]:
+                 * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json'),
+                 * (BASE/'single-test-pending-evidence/candidate-evidence').glob('*.json')]:
         evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
         if code not in decisions or code in accepted:continue
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],
