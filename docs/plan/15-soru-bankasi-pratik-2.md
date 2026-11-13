@@ -204,6 +204,18 @@ görünür biçimde tutulur ama yayımlanmaz.
 
 ## Model ve maliyet politikası
 
+Güncel erişim kararı: kullanıcı **mevcut operatörle giriş yapmayı** seçti;
+yeni hesap açma veya rol değiştirme yetkisi verilmedi. Bağlı yerel DB'de etkin
+OPERATOR sayısı0 olduğundan giriş yapılacak mevcut hesabın yalnız kullanıcı
+adı soruldu. Şifre istenmez; yetki kapısı farklı yolla aşılmaz.
+
+Bağımsız inceleme alt işi **BITTI**: 557 gövde model okuması tamamlandı;
+`single-test-crops/technical-packages.json` 557 teknik kanıt paketini ve
+2.748 kalan inceleme adayını içerir. Bu kayıtlar öğretmen onayı veya canlı
+aktarım değildir. Tam DB yedeği de doğrulandı: 1.239.025.903 bayt / 558
+restore-list girdisi (`publication-preparation/report.json`). Canlı soru
+aktarımı0; bütün plan hâlâ KISMI.
+
 | İş | Araç/model | Kural |
 |---|---|---|
 | Envanter, hash, sayfa sayımı, MEBİ yol başlığı | Python; model yok | Deterministik ve tekrar çalıştırılabilir |
