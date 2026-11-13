@@ -441,3 +441,15 @@ kimliği/PDF tekrar kapısı, kaynak SHA ve mevcut doğrulanmış gövde makbuzu
 zorunludur. Donmuş `input-review.json` yeniden yazılmaz. Araç model, PNG,
 DB veya konu kararı üretmez; yalnız özgün metni incelemeye çıkarır.
 061:106 metin,87 AYT kabul/19 inceleme; bütün yayın kapıları PASS.
+
+Resmî etiket kapsamı kuralları `scripts/mebi-pratik2-curriculum-scope.json`.
+PDF yalnız kategori kapsamı referansıdır; soru kaynağı MEBİ kalır. Yerel
+referans dosyası yoksa veya SHA değişirse yeni kapsam kuralı uygulanmaz.
+Bitki/genetik alt başlıkları mevcut ana konu kimliklerine bu kanıtla bağlanır;
+karışık başlıklar farklı kategoriye çıkarsa tek konu kabul edilmez.
+`source-folder-labels/history/<sha>.json` ve `question-source-labels/history/`
+eski dizin kanıtlarını korur. Yeni eşleme sonrası iki etiket betiğini çalıştır;
+PNG üretimi ve DB yazımı0. `mebi_pratik2_kaynak_etiket_paketi.py --package-dir
+source-curriculum-scope-expansion` yalnız önceden rezerve edilmemiş kanıtlı
+adayları dondurur; son kapsamda yeni aday0, yayın başlatılmaz.062:51 kabul,
+1 içerik incelemesi;15 kapsam/kimlik/kırpım sınırı testi PASS.

@@ -43,6 +43,20 @@
       "reason": "SOURCE_CONTENT_REFERENCED_STATEMENT_NUMBER_AMBIGUITY",
       "note": "Özgün native metinde I-IV öncülleri varken E seçeneğinde V öncülü geçiyor. Bu, kesin görsel kaynak kusuru veya öğretmen kararı olarak sunulmaz; soru numarası/seçenek içeriği doğrulanana kadar aktarılmadı. Aynı native okumayı tekrar etme.",
       "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q009",
+      "reason": "SOURCE_CONTENT_CONTRADICTION_EXPLANATION_AMBIGUITY",
+      "note": "Native çelişmezlik açıklaması ile örneklerin kapsamı kesin ayrışmadı. İçerik doğruluğu için ayrı inceleme; tekrar aynı metin okuması/model döngüsü yok, aktarılmadı.",
+      "teacherApproved": false,
+      "imageSha256": "be5ecc697187a7894f93501eedcd638f602e738d2f8cc383c9c118746aa68018"
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q019",
+      "reason": "SOURCE_CONTENT_CODON_TABLE_INCONSISTENCY",
+      "note": "Mevcut özgün PNG gerçekten açıldı. Tabloda Arjinin için GUG yazımı görülüyor; kodon-aminoasit eşlemesi içerik incelemesine ayrıldı. Görsel yeniden üretilmedi, cevap tahmini/düzeltmesi yapılmadı; aynı kontrol tekrarlanmaz.",
+      "teacherApproved": false,
+      "imageSha256": "d8dbc6a069244bb29c622bd3ef7def41024bbf9167475e9c82a7fe88703cacba"
     }
   ]
 }

@@ -1,4 +1,5 @@
 """Freeze source-heading-labelled candidates using saved crops and receipts."""
+import argparse
 import hashlib
 import json
 from collections import Counter
@@ -64,4 +65,9 @@ def run():
 
 
 if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--package-dir',default=NAME)
+    args=parser.parse_args()
+    if Path(args.package_dir).name!=args.package_dir or not args.package_dir.endswith('-expansion'):
+        raise ValueError('Unsafe frozen source-label package name')
+    NAME=args.package_dir
     with process_lock(BASE/'.jobs'/(NAME+'-preparation.lock')):run()

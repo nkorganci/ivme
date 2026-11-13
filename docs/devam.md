@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.210 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.261 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -54,15 +54,18 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |058|`reviewed-native-question-8-expansion`|38, BITTI|
 |059|`source-heading-profile-expansion`|28, BITTI|
 
-**Son alt adımlar060–061 BITTI:**89 Din Kültürü+87 Mantık/Psikoloji/Sosyoloji;
-10.210 canlı kabul (5.503 TYT/4.707 AYT). Her partide INSERT_ONLY/tekrar0 INSERT,
-katalog/masaüstü/mobil PASS; eski sorular korundu.060da77,061de19 gerekçeli
-inceleme `remaining-topic-review.json` dosyalarında; aynı yöntemle tekrar döndürme.
-Sonraki52 Biyoloji metni `reviewed-native-question-11-expansion/input-review.json`.
-MEB2018 Biyoloji programı `curriculum-scope/biology-2018.pdf` sadece konu kapsamı
-referansıdır, soru kaynağı değildir. Bitkilerin Yapısı kapsamında hormon/hareket
-ve fotoperiyodizm doğrulandı; ana tablo kimlikleri değiştirilmez.062 kaynağa
-bağlı bireysel konu kabulünü hazırla; eski PNG/iki cevap makbuzlarını koru.
+**Son alt adımlar060–062 BITTI:**89 Din Kültürü+87 felsefe grubu+51 Biyoloji;
+10.261 canlı kabul (5.508 TYT/4.753 AYT). INSERT_ONLY/tekrar0 INSERT,
+katalog/masaüstü/mobil PASS; eski sorular korundu.060da77,061de19,062de1
+inceleme kayıtları paketlerde `remaining-topic-review.json`; aynı yöntemle tekrar okuma.
+İki ek içerik şüphesiyle `mebi-pratik2-native-content-holds.json` toplam8 kayıt.
+Sonraki140 Coğrafya metni `reviewed-native-geography-expansion/input-review.json`;
+şu an ilk102 metin gerçekten okundu, kalan38 metin okunmalı.63 yayın partisi
+boşta. `source-curriculum-scope-expansion` donmuş aday0, yayın başlatma.
+Kaynak etiket dizini449 yol/316 kod; eski dizinler SHA history ile korunur.
+MEB2018 Biyoloji PDF'si sadece etiket kapsamı referansıdır; iki kapsam kuralı
+SHA bağlıdır.15 sınır testi PASS. Yeni kırpım/model/öğretmen onayı üretilmedi.
+Çalışan deneme işçisini kesmeden Coğrafya konu kabulünü063 ile hazırla.
 Her kabul sonrası BITTI güncelle, yalnız kendi değişikliğini commit et ve devam et.
 
 **Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut

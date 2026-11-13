@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.210 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.261 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -92,6 +92,19 @@ katalog/masaüstü/mobil PASS; toplam10.210 (5.503 TYT/4.707 AYT).
 Yeni PNG/model/öğretmen onayı0. Kanıt `reviewed-native-question-10-expansion/`,
 `verified-source-batch-061/bank-acceptance.json`. Sonraki52 Biyoloji özgün
 kaynak metni ve mevcut cevap/gövde makbuzuyla incelemeye hazır; ana plan açık.
+
+**062 — BITTI:** 52 Biyoloji metni incelendi;5 TYT/46 AYT toplam51 soru
+kabul edildi. Kodon tablosu içerik şüphelisi mevcut PNG açılarak ayrı tutuldu.
+51 INSERT/0 UPDATE, tekrar0 INSERT, katalog/masaüstü/mobil PASS; toplam10.261.
+MEB2018 programının12.1.2/12.3.1 kapsamı SHA bağlı PDF ile doğrulandı; yalnız
+etiket referansıdır, yeni soru kaynağı değildir. MEBİ biyoteknoloji/hormon/hareket
+alt adları ana tabloya kontrollü bağlandı. Kaynak dizini449/1.573 yol,
+soru etiket dizini316/8.571 kodda kesin kategori adayı; yeni yayın sayısı değildir.
+Eski dizinler SHA adıyla history altında korunur.15 sınır testi PASS; yeni
+PNG/model/öğretmen onayı0. `reviewed-native-question-11-expansion/`,
+`verified-source-batch-062/bank-acceptance.json`, `scripts/mebi-pratik2-curriculum-scope.json`.
+Ek kaynak-kapsam paketinde yeni, rezerve edilmemiş kanıtlı aday0 çıktı;
+aynı sorular tekrar aktarılmadı. Sonraki140 Coğrafya metni incelemede.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

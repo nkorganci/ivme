@@ -45,6 +45,7 @@ PACKAGES=[
     ('source-heading-profile-expansion',59,200,'reviewed-native-question-8-expansion'),
     ('reviewed-native-question-9-expansion',60,200,'source-heading-profile-expansion'),
     ('reviewed-native-question-10-expansion',61,200,'reviewed-native-question-9-expansion'),
+    ('reviewed-native-question-11-expansion',62,200,'reviewed-native-question-10-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}

@@ -16,6 +16,7 @@ from mebi_pratik2_arsiv_basliklari import controlled_match
 from yks_birlestirme import write_json
 
 ROOT=BASE/'source-folder-labels';_index=None;_categories=None;_question_index=None
+_scope_rules=None
 UNIT_CONTAINMENT={
  ('AYT','Biyoloji','Sinir Sistemi'):'Denetleyici ve Düzenleyici Sistem, Duyu Organları',
  ('AYT','Biyoloji','Endokrin Sistem'):'Denetleyici ve Düzenleyici Sistem, Duyu Organları',
@@ -38,6 +39,32 @@ UNIT_CONTAINMENT={
 def path_key(value):return str(value).replace('\\','/').strip('/').casefold()
 
 
+def scope_rules():
+    global _scope_rules
+    if _scope_rules is None:
+        _scope_rules={}
+        path=APP/'scripts/mebi-pratik2-curriculum-scope.json'
+        if not path.exists():return _scope_rules
+        for reference in json.loads(path.read_text(encoding='utf8'))['references']:
+            local=(BASE/reference['sourceLocalPath']).resolve()
+            if not local.is_relative_to(BASE) or not local.exists():continue
+            if hashlib.sha256(local.read_bytes()).hexdigest()!=reference['sourceSha256']:continue
+            if reference.get('referencePurpose')!='CATEGORY_SCOPE_ONLY_NOT_A_QUESTION_SOURCE':continue
+            for label in reference['sourceUnits']:
+                key=(reference['canonicalExam'],reference['canonicalSubject'],label)
+                if key in _scope_rules:raise ValueError('Ambiguous curriculum scope rule')
+                _scope_rules[key]=reference
+    return _scope_rules
+
+
+def write_versioned_index(path,value):
+    if path.exists():
+        old=path.read_bytes();history=path.parent/'history';history.mkdir(exist_ok=True)
+        snapshot=history/(hashlib.sha256(old).hexdigest()+'.json')
+        if not snapshot.exists():snapshot.write_bytes(old)
+    write_json(path,value)
+
+
 def printed_category(headings,exam,subject,categories):
     found=heading_category(headings,exam,subject,categories)
     if found:return found
@@ -46,12 +73,16 @@ def printed_category(headings,exam,subject,categories):
     choices={}
     for part in parts:
         part=re.sub(r'\s+\d+(?:\s*[-–]\s*\d+)?$','',part)
-        target=UNIT_CONTAINMENT.get((exam,subject,part))
-        if not target:return None
-        matches=[c for c in categories if c.get('selectable') and c['id'].startswith('excel.')
-                 and c['exam']==exam and c['subject']==subject and c['topic']==target]
-        if len(matches)!=1:return None
-        choices[matches[0]['id']]=matches[0]
+        category=heading_category([{'text':'> '+part}],exam,subject,categories)
+        if category is None:
+            reference=scope_rules().get((exam,subject,part))
+            target=reference['canonicalTopic'] if reference else UNIT_CONTAINMENT.get((exam,subject,part))
+            if not target:return None
+            matches=[c for c in categories if c.get('selectable') and c['id'].startswith('excel.')
+                     and c['exam']==exam and c['subject']==subject and c['topic']==target]
+            if len(matches)!=1:return None
+            category=matches[0]
+        choices[category['id']]=category
     return next(iter(choices.values())) if len(choices)==1 else None
 
 
@@ -68,8 +99,10 @@ def resolve(hierarchy,exam,categories,unit_fallbacks=None):
         # never by a broad parent whose children have different main topics.
         category=(unit_fallbacks.get((exam,subject,unit)) if unit_fallbacks is not None
                   else controlled_match(unit,exam,[subject],categories))
+    reference=scope_rules().get((exam,subject,unit))
     return {'sourceExam':exam,'sourceSubject':hierarchy[1],'sourceUnit':unit,'sourceTopic':topic,
-            'subjectCandidate':subject,'category':category}
+            'subjectCandidate':subject,'category':category,
+            'curriculumScopeReference':reference if reference and category and reference['canonicalTopic']==category['topic'] else None}
 
 
 def build():
@@ -102,7 +135,8 @@ def build():
                 if subject:units[(h[0],subject,h[2])].append(h)
     unit_fallbacks={}
     for (exam,subject,unit),paths in units.items():
-        target=UNIT_CONTAINMENT.get((exam,subject,unit),unit)
+        reference=scope_rules().get((exam,subject,unit))
+        target=reference['canonicalTopic'] if reference else UNIT_CONTAINMENT.get((exam,subject,unit),unit)
         choices=[c for c in categories if c.get('selectable') and c['id'].startswith('excel.') and c['exam']==exam
                  and c['subject']==subject and normalize(c['topic'])==normalize(target)]
         category=choices[0] if len(choices)==1 else controlled_match(unit,exam,[subject],categories)
@@ -132,7 +166,7 @@ def build():
                 'basis':'OFFICIAL_MEBI_FOLDER_CATALOG_WITH_EXACT_OR_REVIEWED_MAIN_TOPIC_CONTAINMENT',
                 'teacherApproved':False,'questionWrites':0,'imageWrites':0}
         records[path_key(relative)]=record;counts[record['status']]+=1
-    write_json(ROOT/'index.json',{'records':records,'inputSha256':inputs,'counts':dict(counts),
+    write_versioned_index(ROOT/'index.json',{'records':records,'inputSha256':inputs,'counts':dict(counts),
         'taxonomySha256':hashlib.sha256((APP/'backend/src/main/resources/content-taxonomy.json').read_bytes()).hexdigest(),
         'questionWrites':0,'imageWrites':0,'modelCalls':0})
     print(json.dumps({'sourcePdfPaths':len(records),'counts':dict(counts),'imageWrites':0,'modelCalls':0}),flush=True)
@@ -181,6 +215,8 @@ def lookup(row,pdf=None,group=None):
                     found.update(status='SOURCE_MAIN_LABEL_BOUND',categoryId=category['id'],canonicalSubject=category['subject'],
                         canonicalUnit=category.get('unit'),canonicalTopic=category['topic'],canonicalExam=category['exam'],
                         printedHeadingEvidence={'sourceSha256':row['sourceSha256'],'sourcePage':1,'testNumber':row['testNumber'],'headings':headings},
+                        curriculumScopeReferences=list({json.dumps(ref,sort_keys=True):ref for key,ref in scope_rules().items()
+                            if key[:2]==(exam,subject) and ref['canonicalTopic']==category['topic']}.values()),
                         basis='PRINTED_SINGLE_TEST_HEADINGS_WITH_REVIEWED_WHOLE_TOPIC_CONTAINMENT')
         elif pdf is not None and group:
             from mebi_pratik2_deneme_ders_kaniti import resolve_mock_course

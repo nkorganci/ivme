@@ -1,6 +1,7 @@
 """Saved-crop fast path must reject cuts/context, not weaken acceptance."""
 import copy
 import hashlib
+import json
 import sys
 import tempfile
 import unittest
@@ -17,6 +18,41 @@ from mebi_pratik2_konu_bekleyen_kanit import reuse_evidence,NoModelCalls
 
 
 class FastProfileTests(unittest.TestCase):
+    def test_curriculum_scope_needs_unchanged_reference_pdf(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);(root/'scripts').mkdir();reference=root/'scope.pdf'
+            entry={'referencePurpose':'CATEGORY_SCOPE_ONLY_NOT_A_QUESTION_SOURCE',
+                   'sourceLocalPath':'scope.pdf','sourceSha256':hashlib.sha256(b'official').hexdigest(),
+                   'canonicalExam':'AYT','canonicalSubject':'Biyoloji','canonicalTopic':'Bitkilerin Yapısı',
+                   'sourceUnits':['Bitki Hormonları']}
+            (root/'scripts/mebi-pratik2-curriculum-scope.json').write_text(json.dumps({'references':[entry]}),encoding='utf8')
+            with patch.object(source_labels,'APP',root),patch.object(source_labels,'BASE',root):
+                with patch.object(source_labels,'_scope_rules',None):self.assertEqual(source_labels.scope_rules(),{})
+                reference.write_bytes(b'official')
+                with patch.object(source_labels,'_scope_rules',None):
+                    self.assertEqual(source_labels.scope_rules()[('AYT','Biyoloji','Bitki Hormonları')]['canonicalTopic'],'Bitkilerin Yapısı')
+                reference.write_bytes(b'changed')
+                with patch.object(source_labels,'_scope_rules',None):self.assertEqual(source_labels.scope_rules(),{})
+
+    def test_official_scope_does_not_merge_different_topics_or_exams(self):
+        plant={**self.category(),'topic':'Bitkilerin Yapısı'}
+        transport={**plant,'id':'excel.transport','topic':'Bitkilerde Madde Taşınması'}
+        rules={('AYT','Biyoloji','Bitki Hormonları'):{'canonicalTopic':'Bitkilerin Yapısı'}}
+        with patch.object(source_labels,'scope_rules',return_value=rules):
+            self.assertEqual(source_labels.printed_category([{'text':'> Bitki Hormonları > Bitkilerin Yapısı'}],
+                'AYT','Biyoloji',[plant,transport])['id'],plant['id'])
+            self.assertIsNone(source_labels.printed_category([{'text':'> Bitki Hormonları > Bitkilerde Madde Taşınması'}],
+                'AYT','Biyoloji',[plant,transport]))
+            self.assertIsNone(source_labels.printed_category([{'text':'> Bitki Hormonları'}],'TYT','Biyoloji',[plant]))
+
+    def test_old_label_index_bytes_survive_a_new_mapping(self):
+        with tempfile.TemporaryDirectory() as name:
+            path=Path(name)/'index.json';old=b'{"old":"binding"}\n';path.write_bytes(old)
+            source_labels.write_versioned_index(path,{'new':'binding'})
+            snapshot=path.parent/'history'/(hashlib.sha256(old).hexdigest()+'.json')
+            self.assertEqual(snapshot.read_bytes(),old)
+            self.assertEqual(json.loads(path.read_text(encoding='utf8')),{'new':'binding'})
+
     def test_same_saved_question_cannot_inherit_other_exam_overlay(self):
         row={'code':'saved','sourceSha256':'pdf','imageSha256':'image','exam':'TYT'}
         evidence={'canonicalExam':'AYT','categoryId':'excel.ayt.existing','status':'SOURCE_MAIN_LABEL_BOUND'}

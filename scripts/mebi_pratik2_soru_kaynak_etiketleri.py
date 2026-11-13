@@ -5,7 +5,7 @@ import time
 from collections import Counter
 import pymupdf
 from mebi_pratik2_tam_pdf_tarama import BASE,SOURCE
-from mebi_pratik2_klasor_etiketleri import lookup
+from mebi_pratik2_klasor_etiketleri import lookup,write_versioned_index
 from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
 from yks_birlestirme import write_json,process_lock
 
@@ -41,7 +41,7 @@ def run():
                 p={'stage':'SAVED_QUESTION_SOURCE_LABELS','completed':index,'total':len(ordered),'counts':dict(counts),
                    'elapsedSeconds':round(now-started,1),'modelCalls':0,'imageWrites':0,'questionWrites':0}
                 write_json(root/'progress.json',p);print(json.dumps(p),flush=True);last=now;bucket=current
-        write_json(root/'index.json',{'status':'SOURCE_LABEL_CANDIDATES_NOT_PUBLISHED','records':records,'counts':dict(counts),
+        write_versioned_index(root/'index.json',{'status':'SOURCE_LABEL_CANDIDATES_NOT_PUBLISHED','records':records,'counts':dict(counts),
                                     'modelCalls':0,'imageWrites':0,'questionWrites':0,'elapsedSeconds':round(time.monotonic()-started,1)})
     finally:
         if pdf:pdf.close()
