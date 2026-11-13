@@ -51,6 +51,10 @@ def run(acceptance,batch_dir,after_batch=None):
         if not receipt.exists():raise RuntimeError('Required receipt missing: '+stage)
         log(stage+'_COMPLETE')
     command('PREPARE',[sys.executable,'scripts/mebi_pratik2_dogrulanmis_parti.py','--acceptance',acceptance,'--batch-dir',batch_dir],folder/'report.json')
+    prepared=json.loads((folder/'report.json').read_text(encoding='utf8'))
+    if prepared['sourceRows']==0:
+        result={'status':'PASS','scope':'EMPTY_VERIFIED_SOURCE_DELTA','newQuestions':0,'questionWrites':0,'teacherApprovalsCreated':0}
+        write_json(folder/'bank-acceptance.json',result);log('NO_NEW_VERIFIED_ROWS',**result);return
     command('SHARED_CONTRACT',['node','scripts/mebi-pratik2-batch-package.mjs','--batch-dir='+batch_dir],folder/'batch-resources.json')
     command('PREVIEW',[sys.executable,'scripts/mebi_pratik2_pilot_import.py','--batch-dir',batch_dir],folder/'dry-run-result.json')
     command('IMPORT',[sys.executable,'-u','scripts/mebi_pratik2_pilot_import.py','--batch-dir',batch_dir,'--apply'],folder/'import-result.json')
@@ -70,7 +74,9 @@ def run(acceptance,batch_dir,after_batch=None):
     old=json.loads(query(conn,"SELECT json_build_object('questions',count(*),'fingerprint',md5(string_agg(code||':'||extract(epoch from updated_at)::text,'|' ORDER BY code))) FROM questions WHERE code NOT IN ("+codes+")"))
     if old!={k:prepared['before'][k] for k in ('questions','fingerprint')}:raise ValueError('Previously established questions changed')
     command('LIVE_READ',['node','testler/mebi-pratik2-live-batch.mjs','--batch-dir='+batch_dir],folder/'live-bank-read-report.json')
+    duplicates=json.loads((folder/'exact-duplicate-evidence.json').read_text(encoding='utf8')) if (folder/'exact-duplicate-evidence.json').exists() else {}
     result={'status':'PASS','scope':'NEW_SOURCE_VERIFIED_ARCHIVE_BATCH','newQuestions':len(live),
+        'additionalSourceOccurrences':duplicates.get('additionalSourceOccurrenceCount',0),
         'previousQuestionsUnchanged':True,'previousQuestions':old['questions'],
         'sourceAcceptanceSha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
         'runKey':query(conn,'SELECT run_key FROM learning_catalog.current_run'),'teacherApprovalsCreated':0,'answerWritesByCheck':0}

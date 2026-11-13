@@ -5,13 +5,17 @@ from pathlib import Path
 import pymupdf
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from mebi_pratik2_uc_adim import discover
-from mebi_pratik2_uc_adim_kirpim import page_graphics
+from mebi_pratik2_uc_adim_kirpim import page_graphics,SHARED
 
 
 def line(text,x,y,width=80,height=12):return {'text':text,'bbox':[x,y,x+width,y+height]}
 
 
 class ThreeStepTests(unittest.TestCase):
+    def test_shared_question_dash_and_turkish_ve_ranges_are_detected(self):
+        for text in ['31-32. soruları aşağıdaki parçaya göre cevaplayınız.','3 ve 4. sorular','1–3 sorular']:
+            self.assertIsNotNone(SHARED.search(text),text)
+
     def fixture(self):
         pages=[]
         for physical,variant in [(1,'A'),(2,'B')]:

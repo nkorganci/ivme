@@ -48,6 +48,22 @@ pilot11 uyuşma/1 inceleme verdi. Uyuşmayan grup yeniden çağrılmaz.3.102 gö
 için kaynak kabulü çalışıyor; `verified-source-batch-003` yürütücüsü sonucu
 bekliyor ve ikinci parti kabulüne bağlı.1.103'te durulmaz.
 
+**Gerekçeli inceleme ve son kaynak kapısı:** her dosya/sayfa için durum kaydı
+`archive-disposition/` altında:4.816/4.816 dosya,27.614/27.614 PDF sayfası;
+hiçbir kaynak kayıtsız bırakılmadı. Bu kayıt bütün soruların kabulü değildir.
+Konu belirsizleri dahil3 Adım11.011, derleme tarama2.322 özgün kırpım hazır;
+41 denemenin5.863 gövde/anahtar kanıtı güncel arşivle uzlaştırıldı. Denemelerden
+açık dil-sorusu köküyle165 aday kabul edildi; dördüncü parti üçüncüye bağlı
+bekler. Derleme tarama519 konu bağlı aday tek geçişte inceleniyor; beşinci
+parti dördüncüye bağlıdır. Uyuşmayanlar yeniden model çağrısı almadan kuyruğa.
+
+Her yeni üretim partisinde `mebi_pratik2_son_piksel_kapisi.py` özgün PDF'yi
+yeniden render eder; eski makbuz tek başına yeterli sayılmaz. Yalnız boş beyaz
+kenarları çıkarınca RGB pikselleri ve basılı cevabı tamamen aynı olan Pratik2
+kopyaları ek kaynak konumu olarak korunur (`exact-duplicate-evidence.json`);
+eski banka karşılaştırılmaz/kimlik silinmez. Konu/gövde/tekrar sınırları11
+regresyon testiyle doğrulandı. İşletim: [Pratik2 tarifi](../islemler/mebi-pratik-2.md).
+
 ## Amaç ve sınır
 
 Hedef, yan menüde mevcut **Soru Çöz & Pratik** yanında görünen **Soru Çöz &

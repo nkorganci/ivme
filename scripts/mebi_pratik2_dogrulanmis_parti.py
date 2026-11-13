@@ -8,6 +8,8 @@ from pathlib import Path
 from mebi_pratik2_tam_pdf_tarama import APP,BASE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
+from mebi_pratik2_son_piksel_kapisi import verify
+from mebi_pratik2_kesin_piksel_tekrari import select_new
 
 
 def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='verified-source-batch-001'):
@@ -22,6 +24,10 @@ def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='v
     new=[row for row in accepted if row['code'] not in existing]
     folder=BASE/batch_dir;folder.mkdir(exist_ok=True)
     if (folder/'report.json').exists():raise ValueError('Prepared batch is immutable; resume existing receipts')
+    already_imported=len(accepted)-len(new);eligible_before_pixels=len(new)
+    new=verify(new,folder)
+    pixel_excluded=eligible_before_pixels-len(new)
+    new=select_new(new,folder)
     metadata=[];images=[];rows=[]
     for row in new:
         if not row['productionImportAllowed'] or row['status']!='SOURCE_VERIFIED_READY_FOR_INSERT_ONLY':raise ValueError('Source admission missing')
@@ -51,7 +57,8 @@ def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='v
     report={'status':'VERIFIED_SOURCE_BATCH_PREPARED','sourceRows':len(new),'images':images,
         'csvSha256':hashlib.sha256(csv_path.read_bytes()).hexdigest(),'before':before,
         'databaseBackup':backup['databaseBackup'],'sourceAcceptanceSha256':hashlib.sha256(proof.read_bytes()).hexdigest(),
-        'alreadyImportedSourceCodes':len(accepted)-len(new),'questionWrites':0,
+        'alreadyImportedSourceCodes':already_imported,'preimportPixelExcluded':pixel_excluded,
+        'exactDuplicateEvidence':'exact-duplicate-evidence.json','questionWrites':0,
         'acceptance':str(proof.relative_to(BASE.resolve())),
         'beforeBankByExam':json.loads(query(conn,"SELECT coalesce(json_object_agg(exam_type,n),'{}') FROM (SELECT exam_type,count(*) n FROM questions WHERE bank='MEBI_PRACTICE_2' GROUP BY exam_type) s"))}
     write_json(folder/'report.json',report)

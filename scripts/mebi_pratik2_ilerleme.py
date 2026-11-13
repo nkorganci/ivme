@@ -20,11 +20,15 @@ def snapshot():
     completed = sum((cache/(r['sha256']+'.json')).is_file() for r in pdfs)
     progress_path = BASE/'full-pdf-progress.json'
     progress = json.loads(progress_path.read_text(encoding='utf-8')) if progress_path.exists() else {}
-    acceptance=BASE/'single-test-crops/source-pixel-acceptance.json'
-    accepted=json.loads(acceptance.read_text(encoding='utf8'))['acceptedCount'] if acceptance.exists() else 0
+    accepted_codes=set();stages={}
+    for name in ('single-test-crops','expanded-chapter-evidence','three-step-acceptance','mock-language-intent','compiled-tarama-acceptance'):
+        acceptance=BASE/name/'source-pixel-acceptance.json'
+        if acceptance.exists():accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
+        progress_file=BASE/name/'progress-current.json'
+        if progress_file.exists():stages[name]=json.loads(progress_file.read_text(encoding='utf8'))
+    accepted=len(accepted_codes)
     imported=0;published=0
-    for name in ('publication-preparation','verified-source-batch-001'):
-        folder=BASE/name
+    for folder in [BASE/'publication-preparation',*sorted(BASE.glob('verified-source-batch-*'))]:
         result=folder/'import-result.json'
         if result.exists():imported+=json.loads(result.read_text(encoding='utf8')).get('inserted',0)
         result=folder/'publication-result.json'
@@ -33,7 +37,7 @@ def snapshot():
         'totalPdfs':len(pdfs), 'completedPdfPaths':completed,
         'remainingPdfPaths':len(pdfs)-completed, 'pdfPercent':round(100*completed/len(pdfs),2),
         'lastScannerCheckpoint':progress, 'acceptedQuestionCount':accepted,
-        'importedQuestionCount':imported,'catalogPublishedQuestionCount':published,
+        'importedQuestionCount':imported,'catalogPublishedQuestionCount':published,'activeStageCheckpoints':stages,
         'verifiedSubsetImportPercent':round(100*imported/accepted,2) if accepted else None,
         'totalQuestionCount':None, 'overallProjectPercent':None, 'remainingSecondsEstimate':None,
         'estimateReason':'No representative timed throughput or final question denominator yet',

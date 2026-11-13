@@ -4,6 +4,7 @@ Fully native text, five complete options and absence of shared context or
 graphics are proved mechanically. Other intact crops require local visual
 review. Neither path bypasses the independent printed-key reading gate.
 """
+import argparse
 import hashlib
 import json
 import re
@@ -68,12 +69,14 @@ def page_graphics(page):
     return False
 
 
-def run():
-    OUT.mkdir(exist_ok=True);categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories']
+def run(include_topic_review=False):
+    out=BASE/('three-step-all-bodies-v2' if include_topic_review else 'three-step-crops')
+    out.mkdir(exist_ok=True);(BASE/'three-step-crops').mkdir(exist_ok=True)
+    categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories']
     sources=json.loads((BASE/'three-step-discovery-v3/report.json').read_text(encoding='utf8'))['sources']
     results=[];started=time.monotonic()
     for index,source in enumerate(sources,1):
-        target=OUT/(source['sourceSha256']+'.json')
+        target=out/(source['sourceSha256']+'.json')
         if target.exists():report=json.loads(target.read_text(encoding='utf8'))
         else:
             discovery=json.loads((BASE/'three-step-discovery-v3'/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
@@ -91,7 +94,7 @@ def run():
                     category=topic(group,exam,subjects,categories)
                     identity=hashlib.sha256((group['chapterKey']+'|'+group['stepToken']).encode()).hexdigest()[:10]
                     group_id=source['sourceSha256'][:16]+'-'+identity
-                    if group['status']!='NATIVE_CHAPTER_STEP_BINDING_CANDIDATE' or not category:
+                    if group['status']!='NATIVE_CHAPTER_STEP_BINDING_CANDIDATE' or (not category and not include_topic_review):
                         review.append({'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],'groupId':group_id,
                             'chapter':group['chapter'],'stepToken':group['stepToken'],'keys':group['keys'],'bodies':group['bodies'],
                             'reasons':group['reasons']+([] if category else ['CONTROLLED_TOPIC_NOT_UNIQUE']),
@@ -101,10 +104,10 @@ def run():
                     page_number=group['keys'][0]['page'];key_page=pdf[page_number-1]
                     row=group['keyRows'][0];key_clip=[max(0,row['chapterBBox'][0]-8),max(0,row['chapterBBox'][1]-5),
                         key_page.rect.width-30,max(r['bbox'][3] for r in group['keys'])+5]
-                    key_relative='three-step-crops/'+group_id+'-key.png';key_pix=key_page.get_pixmap(matrix=pymupdf.Matrix(3,3),clip=pymupdf.Rect(key_clip),alpha=False)
+                    key_relative=out.name+'/'+group_id+'-key.png';key_pix=key_page.get_pixmap(matrix=pymupdf.Matrix(3,3),clip=pymupdf.Rect(key_clip),alpha=False)
                     key_pix.save(BASE/key_relative);key_sha=hashlib.sha256((BASE/key_relative).read_bytes()).hexdigest()
                     groups.append({'groupId':group_id,'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],
-                        'chapter':group['chapter'],'stepToken':group['stepToken'],'categoryId':category['id'],
+                        'chapter':group['chapter'],'stepToken':group['stepToken'],'categoryId':category['id'] if category else None,
                         'keyPage':page_number,'keyClip':key_clip,'keyImage':key_relative,'keyImageSha256':key_sha,
                         'answers':{str(r['printedNumber']):r['answer'] for r in group['keys']}})
                     keys={r['printedNumber']:r for r in group['keys']}
@@ -117,7 +120,7 @@ def run():
                             page.rect.width if column else page.rect.width/2-1,min(following)-4 if following else page.rect.height-35)
                         reasons=[]
                         for line in cache['lines']:
-                            for match in SHARED.finditer(normalize(line['text'])):
+                            for match in SHARED.finditer(line['text']):
                                 if int(match[1])<=number<=int(match[2]):reasons.append('SHARED_CONTEXT_REQUIRES_SEPARATE_REGIONS')
                         selected=[]
                         for line in cache['lines']:
@@ -128,19 +131,21 @@ def run():
                             selected.append(line)
                         choices=Counter(letter for line in selected for letter in OPTION.findall(line['text']))
                         if any(choices[c]!=1 for c in 'ABCDE'):reasons.append('FIVE_UNIQUE_NATIVE_CHOICES_NOT_PROVED')
+                        subject=category['subject'] if category else next(iter(subjects)) if len(subjects)==1 else None
                         base={'code':code,'groupId':group_id,'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],
                             'printedNumber':number,'testNumber':group['chapter']+' / '+group['stepToken'],'exam':exam,
-                            'subject':category['subject'],'subjectId':category['subjectId'],'categoryId':category['id'],
-                            'unit':category.get('unit'),'topic':category['topic'],'bodyPage':physical,'bodyClip':list(clip),
+                            'subject':subject,'subjectCandidates':sorted(subjects),'subjectId':category['subjectId'] if category else None,'categoryId':category['id'] if category else None,
+                            'unit':category.get('unit') if category else group['chapter'],'topic':category['topic'] if category else group['chapter'],
+                            'topicDecision':'CONTROLLED_TOPIC_BOUND' if category else 'CONTROLLED_TOPIC_REVIEW_PENDING','bodyPage':physical,'bodyClip':list(clip),
                             'keyPage':page_number,'keyClip':key_clip,'keyCellBBox':keys[number]['bbox'],'answer':keys[number]['answer'],
                             'keyImage':key_relative,'keyImageSha256':key_sha,'bank':'MEBI_PRACTICE_2','teacherApproved':False,'studentVisible':False}
                         if reasons:
                             review.append({**base,'reasons':sorted(set(reasons)),'status':'REVIEW_REQUIRED'});continue
-                        relative='three-step-crops/'+code+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=clip,alpha=False);pix.save(BASE/relative)
+                        relative=out.name+'/'+code+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=clip,alpha=False);pix.save(BASE/relative)
                         saved=pymupdf.Pixmap(str(BASE/relative))
                         if saved.samples!=pix.samples:raise ValueError('Original rendered pixels differ after encoding')
                         if physical not in graphics:graphics[physical]=page_graphics(page)
-                        native_proof=category['subject'] in TEXT_SUBJECTS and not graphics[physical]
+                        native_proof=subject in TEXT_SUBJECTS and not graphics[physical]
                         items.append({**base,'image':relative,'imageSha256':hashlib.sha256((BASE/relative).read_bytes()).hexdigest(),
                             'originalBodyPixelSha256':hashlib.sha256(pix.samples).hexdigest(),
                             'nativeBodyProof':{'uniqueChoiceCounts':dict(choices),'wholeNativeLineCount':len(selected),'pageGraphics':graphics[physical],
@@ -155,7 +160,8 @@ def run():
             'nativeBodyProofs':report['nativeBodyProofs'],'elapsedSeconds':round(time.monotonic()-started,2)}),flush=True)
     summary={'status':'THREE_STEP_CROPS_PREPARED_NOT_PUBLISHED','sources':results,
         'preparedBodies':sum(r['preparedBodies'] for r in results),'nativeBodyProofs':sum(r['nativeBodyProofs'] for r in results),'questionWrites':0}
-    write_json(OUT/'report.json',summary);print(json.dumps({k:v for k,v in summary.items() if k!='sources'}))
+    write_json(out/'report.json',summary);print(json.dumps({k:v for k,v in summary.items() if k!='sources'}))
 
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--include-topic-review',action='store_true');run(parser.parse_args().include_topic_review)

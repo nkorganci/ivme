@@ -12,6 +12,16 @@ mevcut operatör yoksa bu iş için oluşturulmasını yetkilendirdi;
 tekrar0 INSERT/21 SKIP. Eski soru kimlikleri ve öğrenci geçmişi korunur.
 
 **Güncel çalışma:** tam arşiv işi sürüyor; alt parti sonunda durulmaz.
+Üçüncü aktarım `2251` yürütücüsü üç-adım kabul manifestini bekler;
+yerel görsel worker `35605`3.102 gövdeyi işler. Derleme tarama worker `59123`
+519 konu bağlı gövdeyi işler. Dördüncü aktarım `35816`165 deneme dil-sorusu
+adayını üçüncüden sonra; beşinci `63822` derleme taramayı dördüncüden sonra
+aktarır. Aynı işleri yeniden başlatma. Oturum ID'leri aynı araç oturumuna
+aittir; asıl devam kanıtı ilgili `progress-current.json`/makbuzlardır.
+Yeni tüm partiler son özgün piksel kapısı ve Pratik2 içi kesin RGB/cevap
+tekrar denetiminden geçer. Eksikler ayrıca kategorize edilir, yeniden model
+çağrısı yok. Son kaynak hash taraması `mebi_pratik2_kaynak_son_kontrol.py`
+çalışıyor. Öğrenci DB'sine test veya sahte öğretmen kararı yazılmaz.
 34 kaynakta546 ek soru kabul edildi/yayımlandı, toplam1.103/602TYT/501AYT.
 `verified-source-batch-002/bank-acceptance.json` PASS; işlemi tekrarlama.
 `expanded-chapter-evidence/source-pixel-acceptance.json`546 kaynak kanıtıdır.
@@ -26,9 +36,10 @@ anahtar okuması ve gövde kabulü.12 grup pilotu11 uyum/1 inceleme, tekrar yok.
 `three-step-acceptance/progress-current.json` imleci kullanılır.
 `mebi_pratik2_arsiv_partisi.py --acceptance three-step-acceptance/source-pixel-acceptance.json --batch-dir verified-source-batch-003 --after-batch verified-source-batch-002`
 manifesti bekliyor; sonra hazırlık/alım/tekrar/yayın/canlı kabulünü sıralar.
-İkinci aynı iş başlatma. Sonraki bağımsız kapsam41 denemenin mevcut5.863
-gövde/anahtar kanıtını güncel MEBİ köküyle uzlaştırmak ve açık Türkçe soru
-kökü kanıtlarından dar ana konu bağını kurmaktır; yenilik şartı yoktur.
+İkinci aynı iş başlatma.41 denemenin mevcut5.863 gövde/anahtar kaydı güncel
+MEBİ köküyle uzlaştırıldı;165 açık Türkçe soru kökü kanıtıyla kabul edildi.
+3 Adım11.011 ve derleme tarama2.322 kırpımın kalan konu belirsizleri ayrı
+karar kuyruğunda; yalnız kayıt sayısını artırmak için genel konu uydurulmaz.
 `teacher-review-export/current/report.json` güncel soru kuyruğudur;
 eski2.748 sayısı tarihsel,546 kabul sonrası kalan eski aday2.202'dir.
 
