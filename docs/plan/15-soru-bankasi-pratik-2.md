@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.451 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.501 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -123,6 +123,17 @@ Yeni PNG/model/öğretmen onayı0. `reviewed-native-history-expansion/`,
 sonraki191 kaydın35 metni okundu,156 henüz okunmadı; konu kararları açık.
 Bir ek dönem adlandırması şüphesiyle içerik bekletme kuralında9 kayıt var.
 Sıradaki matematik basılı başlık eşlemesi çalışıyor; önceki kırpımlar korunur.
+
+**065 — BITTI:** 44 Geometri+6 Matematik=50 soru basılı tek-konu başlıklarıyla
+ana tablonun doğru dersine aktarıldı (5 TYT/45 AYT). MEBİ Matematik klasörü ile
+ana tablodaki Geometri ayrımı ancak bütün başlıklar aynı konuya bağlanırsa
+uygulanır; karma test reddedilir.50 INSERT/0 UPDATE, tekrar0 INSERT, katalog/
+masaüstü/mobil PASS; toplam10.501 (5.604 TYT/4.897 AYT). Yeni PNG/model0.
+Dokuz konu-kapsam testi PASS. Etiket dizini366 bağlı kod; yeni soru toplamı değildir.
+Kanıt `source-math-heading-2-expansion/`, `verified-source-batch-065/bank-acceptance.json`.
+İlk boş `source-math-heading-expansion` makbuzu korunur; yeni başlık eşleme
+girdisiyle ayrı v2 paket kullanıldı, tamamlanan sorular tekrar aktarılmadı.
+066 ikinci Tarih53 adayın yayın kapıları sürer; ana plan açık.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

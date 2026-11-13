@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.451 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.501 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -8,138 +8,65 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**Etkin görev: Pratik 2 tam arşiv SURUYOR.** Kullanıcı tekrar “devam et”
-beklemiyor. Alt parti bitince durma, ana planı erken BITTI yapma. Kaynak
-`D:\workspace\mebi-yks` yalnız okunur; kanıt kökü
-`veri/mebi-pratik-2/20261111-source-inventory` (aşağıda BASE). Eski soru
-kimlikleri/öğrenci kayıtları korunur. Testler öğrenci DB'sine yazmaz.
+**Etkin iş: Pratik 2 tam arşiv SURUYOR.** Yeniden “devam et” bekleme.
+Her kabul edilen alt adımı BITTI güncelle, yalnız kendi değişikliğini yerel
+`main`e commit et ve sıradaki işe aynı çalışma içinde geç. Ana görevi erken
+BITTI yapma. Tam arşivin tekil soru sayısı/yüzdesi henüz bilinmiyor.
 
-**Önce PDF; soru bazında banka karşılaştırması YAPMA.** Kalıcı kural
-`scripts/mebi-pratik2-pdf-policy.json`, karar `BASE/pdf-reuse-check/decisions.json`.
-1473 yerel benzersiz PDF/509 mevcut banka PDF referansı:62 atlama (61 ham SHA,
-1 farklı-hashli283 sayfalık TYT Türkçe3 Adım).820 ek ilk3 bütün sayfa önizlemesi
-BITTI; metinsiz tarama da karşılaştırılır. Boş sayfa eşleşme oluşturmaz;
-1411 eşleşmeyen PDF yeni soru sayısı değildir. Kısmi eski aktarım notu saklanır,
-aynı PDF'de eksik soru arama yok. Daha önce yayınlananlar silinmez.13 kapı testi PASS.
+Kaynak `D:\workspace\mebi-yks` yalnız okunur. Kanıt kökü
+`veri/mebi-pratik-2/20261111-source-inventory` (BASE). Mevcut PNG varsa yeniden
+üretme/yazma. Soru bazında banka benzerlik karşılaştırması yapma. Önce PDF
+kapısı: `scripts/mebi-pratik2-pdf-policy.json`, `BASE/pdf-reuse-check/decisions.json`.
+62 eş PDF atlandı; eski bankadaki aynı PDF tümüyle atlanır. Kısmi aktarımda
+soru soru eksik arama yok. Eski banka/öğrenci geçmişi korunur.
 
-**Canlı adım takibi:** `docs/plan/soru-bankasi-pratik-2/aktif-paketler.md`
-gözetmen tarafından makbuzdan BITTI/BEKLIYOR/SURUYOR güncellenir; ana plan
-arşiv kabulü açıkken otomatik kapatılmaz.
+**Son kabul065 PASS:**10.501(5.604 TYT/4.897 AYT).060–065 toplam467 yeni soru;
+her partide INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS. Geçmiş
+ayrıntı plan ve `verified-source-batch-*/bank-acceptance.json` makbuzlarında.
+Kaynak kabulü için basılı anahtar; öğrenci yayını öncesi gövde/iki cevap ve
+mevcut ana tablonun doğru ders–ünite–konu kimliği zorunlu. Belirsizler
+`remaining-topic-review.json` dosyalarında; aynı başarısız okuma tekrarlanmaz.
+İçerik bekletme `scripts/mebi-pratik2-native-content-holds.json`:9 kod.
 
-**Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID `current.json/supervisorPid`;
-son durum `BASE/chain-supervisor/current.json`, loglar `*.log`/`*.err.log`.
-044–059 canlı kabul PASS; güncel kabul10.034 (5.458 TYT/4.576 AYT). 046–058 toplam895 INSERT/0 UPDATE.
-Güncel çalışan paketi `current.json` ve canlı tablodan izle; statik imleçle eski
-paketi baştan çalıştırma.
-Gözetmen058 dahil yayınları ve kanıt işlerini kapsar. PID27912; log supervisor-v9.log/.err.log. Yalnız metadata observer yenilendi; içerik/model/uygulama işçileri korunur. Eski observer yenilenirken
-uygulama/model/yayın işçileri durmadı. Tamamlanmış makbuzlar korunur; durmuş
-paket en fazla3 kez sürer. OS başlangıç görevi yok; oturum/OS kapanırsa aynı
-komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otomatik.
+**Şimdi066:** `reviewed-native-history-2-expansion`,53 AYT aday. İşçi yayında;
+`verified-source-batch-066/bank-acceptance.json` PASS olmadan BITTI deme.
+Devam komutu gerekirse `python -X utf8 -u scripts/mebi_pratik2_arsiv_kabul.py
+--package-dir reviewed-native-history-2-expansion --first-batch 66 --chunk-size 200
+--publish`; mevcut writer varsa ikinci kez başlatma. Kaynak metninden konu
+kararları `scripts/mebi-pratik2-reviewed-native-history-2-topics.json`.
 
-| Yayın partisi | Donmuş paket | Aday kapsamı |
-|---|---|---:|
-|045|`dual-exam-philosophy-expansion`|140 sınav kapsamı /80 kaynak sorusu|
-|046|`individual-tarama-expansion`|77|
-|047|`individual-tarama-topic-expansion`|139|
-|048|`individual-tarama-word-expansion`|289|
-|049|`single-test-heading-expansion`|96|
-|050|`bold-number-expansion`|40|
-|051|`reviewed-native-question-expansion`|35, BITTI|
-|052|`reviewed-native-question-2-expansion`|18, BITTI|
-|053|`reviewed-native-question-3-expansion`|48, BITTI|
-|054|`reviewed-native-question-4-expansion`|37, BITTI|
-|055|`reviewed-native-question-5-expansion`|26, BITTI|
-|056|`reviewed-native-question-6-expansion`|23, BITTI|
-|057|`reviewed-native-question-7-expansion`|29, BITTI|
-|058|`reviewed-native-question-8-expansion`|38, BITTI|
-|059|`source-heading-profile-expansion`|28, BITTI|
+**Sonraki Tarih:**261 kayıtlık donmuş metin ihracının ilk70i064 ile kapandı.
+70:140 aralığı066da(53 aday/17 inceleme). Son121 kayıt
+`reviewed-native-history-2-expansion/next-topic-review.json`; bunların ilk35i
+okundu, karar dondurulmadı;86 henüz okunmadı. Kaynak sıra imlecini koru.
+Kronoloji/siyasi dönem veya ana konu karşılığı belirsizi zorlamadan ayır.
+Kimya tek-test grubunda rezerve edilmemiş kanıtlı aday0; aynı taramayı tekrarlama.
 
-**Son alt adımlar060–064 BITTI:**417 yeni soru;10.451 canlı kabul
-(5.599 TYT/4.852 AYT). INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS.
-Kalan incelemeler paketlerde; aynı yöntemi tekrar döndürme. İçerik bekletme9 kod.
-Tarih261 metninin ilk70'i064 ile kapandı(53 kabul/17 inceleme). Sonraki191 kayıt
-`reviewed-native-history-expansion/next-topic-review.json`; bunların ilk35'i
-okundu fakat henüz karar dondurulmadı, kalan156 okunmadı. Asıl sıra korunur.
-Matematikte üç basılı başlık grubu mevcut ana konuya açıkça bağlandı:
-ikinci derece eşitsizlikler, çember, silindir/küre. Etiket dizini geçişi çalışıyor;
-yeni adayları `source-math-heading-expansion` ile dondur,065 boşta. Karma
-trigonometri veya nokta/doğru analitiği başlıklarını tek konuya zorlama.
-Eski PNG/cevaplar korunur; soru bazında banka karşılaştırması kapalı.
-Deneme işçisi aynı imleçte sürüyor. Her kabul sonrası BITTI/commit ve sıradaki iş.
+**Çalışan deneme zinciri:**metadata PID27912, `supervisor-v9.log/.err.log`.
+Gerçek durum `BASE/chain-supervisor/current.json`; yeni kayıtlar gözetmenin
+sonraki doğal açılışında okunur, metadata için worker durdurma. Aktif deneme
+PID39504, `full-mock-pending-evidence-profile-v2.log`; tamamlanmış kanıt
+makbuzları korunur. Gözetmen OS görevi değildir; sadece çalışan bilinen
+paketleri sürdürür, bütün kaynak/konu kabulünü kendi başına tamamlamaz.
 
-**Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut
-kırpımı koru, önce cevap anahtarı, doğru ders–ünite–konu. Pratik1 kitap profili,
-gerçek PDF clip/scissor ve2×/2,5× özgün piksel kapısı kullanılır; model sadece
-istisnalara ayrıldı. Tek-test1.886/1.886 cevap/gövde tamamlandı; deneme hızlı
-geçişinde4.845/5.482 hazır,634 yeni görsel istisna+3 eski inceleme kaldı.
-7.368 mevcut PNG hash/mtime ve iki manifest değişmedi; kanıt
-`BASE/fast-profile-transition/crop-reuse-acceptance.json`. Deneme istisna işçisi
-aynı imleçten çalışıyor; yeni log `full-mock-pending-evidence-profile-v2.log`.
-Kaynak etiket dizinleri `source-folder-labels/index.json` ve
-`question-source-labels/index.json`:8.571 kayıt kodunda263 ana tablo eşleme
-adayı;8.308 etiket incelemesi. Kaynak klasör adları ve ana tablo kimlikleri
-ayrı saklanır; karma denemeye tek konu atanmaz. TYT/AYT önbellek kapsamı
-12 sınır testinde korunur. Bu sayılar yeni yayımlanan soru sayısı değildir.
-059 `source-heading-profile-expansion` BITTI:28 INSERT/0 UPDATE(8 Matematik/20 Edebiyat),
-tekrar0 INSERT, katalog/masaüstü/mobil PASS. Canlı toplam10.034(5.458 TYT/4.576 AYT).
-Yeni kırpım/model0. Kanıt `verified-source-batch-059/bank-acceptance.json`. Mevcut v9 gözetmeni
-058'e kadar kayıtlıdır, kod sonraki açılışta059'u da kapsar. Canlı worker'ı
-sırf metadata yenilemek için durdurma. Güncel inceleme ihracı BITTI:10.034 kabul/yayın,8.234 bekleyen kod;8.026 konu-ders,180 gövde,6 içerik,22 belge kimliği. Sonraki adım çözülmemiş kaynak etiketlerini işle.
+**Hızlı yol:** `fast-profile-transition/enabled.json` kod SHA kapısı. Eski
+Pratik1/PyMuPDF profili, gerçek PDF clipping, özgün2×/2,5× RAM piksel kontrolü;
+yeni kırpım yok. Tek-test1.886/1.886 cevap/gövde işi BITTI. Deneme hızlı
+geçişi5.482 tamam,4.845 kanıt/634 yeni görsel istisna+3 eski inceleme. Şimdi
+sadece istisna geçişi çalışır; imleç logdan izlenir.7.368 PNG SHA/mtime ve
+iki manifest değişmedi (`fast-profile-transition/crop-reuse-acceptance.json`).
 
-**Kaynak kabulü önce:** yardımcı kanıt işlerinin tamamı050 sonrasına alınmıştır;
-9B model kuyruğunda hazır yayın partileri önceliklidir. Eski bekleyen/yardımcı
-worker'lar tamamlanan soru makbuzları korunarak ertelendi; veri silinmedi.
-Beş gözetmen testi PASS. `current.json` depoları/gerçek process lock'u esas alır.
+**Konu kaynakları:** MEBİ klasörü/katalog/basılı başlık adları ile ana tablo
+kimlikleri ayrı korunur. Kaynak dizini449 yol, soru etiketi366/8.571 kodda
+bağlı; bunlar yayın/tekil arşiv sayısı değildir. MEB2018 Biyoloji PDF'si sadece
+etiket kapsamı referansı, SHA bağlı iki kural; soru kaynağı değildir. Eski
+dizinler `history/<sha>.json` içinde korunur. Matematik klasöründen Geometriye
+geçiş sadece bütün basılı başlıklar aynı konuya uygunsa; karma test reddedilir.
+15 kaynak/kimlik/kırpım ve9 başlık-kapsam sınır testi PASS.
 
-050 sonrası kanıt paketleri (yayın/konu onayı değildir; kodlar örtüşebilir):
-- `all-source-evidence`:23879 giriş/23463 eski-PDF atlaması/416 yeni-PDF adayı.
-- `full-mock-pending-evidence`:5482; `single-test-pending-evidence`:1886.
-  Tek-test547 eski gövde makbuzu+80 ek native;1259 görsel yolda.
-- `individual-tarama-pending-evidence`:301 (6 eski+51 ek native,244 görsel).
- 139'u047'de de temsil edilir; tekil soru diye toplama.
-- `individual-tarama-word-pending-evidence`:185; `bold-number-pending-evidence`:261
-  (27 eski+5 ek native,229 görsel).
-- `scanned-literature-pending-evidence`:iki Edebiyat taraması/40 bağımsız
-  cevap ve40 tam gövde (17 satır+23 kelime);12 native/28 görsel. Anahtarlar
-  agent tarafından gerçekten okundu, önbellek Tesseract'la karşılaştırıldı;
-  ilk tabloda yalnız5.E ve basılı test kimliği birer5x bölge OCR'ıyla kurtarıldı.
-  40/40 kaynak-gövde kanıtı BITTI;23 soru056da canlı kabul PASS,16 konu ve1 içerik şüphesi ayrı. Bu yardımcı iş tamamlandı, diğer altı iş çalışır.
-
-**Kalan kaynağı zorlamama:** kalın numara alt geçişi17 kaynakta339 adaydan301
-kırpım verdi;38 geometri adayı ve10 bağlanamayan kaynak ayrı. İki numara/anahtar
-sınırı testi PASS. Aynı başarısız kaynak/istem döngüsü yok.14 basılı YDT/İngilizce
-PDF'si TYT/AYT dış kapsam; karma TYT/AYT kitapları bu nedenle atlanmaz.
-Güncel kaynak/sayfa kararları `archive-disposition/`, soru/grup listeleri
-`teacher-review-export/current/`. Yerleşim census'u soru toplamı/eksiksizlik değildir.
-
-**Görsel sayfa alt işi BITTI:**421 native-görsel sayfanın361'i eski-PDF'de;
-kalan60 =54 özgün2x piksel+nesne kontrolüyle boş,4 gerçekten görüntülenmiş
-boş sayfa ve2 gerçekten okunmuş Edebiyat anahtarı. `empty-original-pages/`
-raporu ve `agent-page-review.json`; bütün kitapta soru yokluğu iddia edilmez.
-İki boş sayfa testi/üç taranmış anahtar testi PASS. Kaynaklı ders aliası yalnız
-gövde kontrolü içindir (`sourceSubjectEvidence`);8 native testi PASS, fine-topic
-ve öğretmen onayı değildir. Donmuş paket/başarısız görsel makbuzu değiştirilmez.
-
-**Karma konu pilotunu tekrar çalıştırma:** `controlled-topic-model-pilot`
-12 seçim/8 qwen3.5:9b okuma;6 gerçek metin incelemesinde3 yanlış ana konu,
-1 komşu konu belirsizliği ve1 yanlış ret. `agent-calibration-review.json`
-FAIL_FOR_UNATTENDED_TOPIC_ACCEPTANCE; otomatik konu/yayın0. Betik aynı
-başarısız istemi0 model çağrısıyla atlar. Kaynak başlığı bağlı geçerli soruları
-aktar; karma/eksik katalog konuları ayrı incelemede kalsın. Yanıtsız ders altında
-gösterme tercihi onaylanmadı; sıkı konu kapısı sürer. Native karakter sınırı
-tek denemesi de0 ek kanıt verdi;V2 korunur (`native-character-boundary-trial/`).
-
-**051–058 konu incelemesi BITTI:** toplam254 özgün
-native metni tek tek okundu; mevcut kategori, kaynak alıntısı ve gerekçe
-`scripts/mebi-pratik2-reviewed-native-topics*.json` içinde. Qwen önerisi veya
-öğretmen onayı değildir. Hazırlama betiği `mebi_pratik2_incelenen_konu_paketi.py`;
-6 konu/3 içerik sınırı testi PASS. 056 için `--evidence-package scanned-literature-pending-evidence --allow-verified-visual-body` ile7 native/16 mevcut başarılı görsel makbuz yeniden kullanıldı. Donmuş paketler/iki basılı cevap/özgün gövde kanıtı korunur.
-
-**Sıradaki somut iş:** altı çalışan kanıt işini ve henüz incelenmemiş kaynak metin/konularını sürdür. 056–058 tekrar hazırlanmaz/yayımlanmaz. Taranmış Edebiyat40/40 cevap-gövde kanıtı BITTI;23 yayın/16 konu/1 içerik incelemesi. 056–058 `remaining-topic-review.json`16+4+1 gerçek okunmuş fakat kesin ince konu bağı kurulamamış kayıt taşır; aynı etiketleme denemesini tekrarlama. Altı içerik şüphesi mevcut ihracın `KAYNAK_ICERIK_TUTARLILIGI` kategorisinde; öğrenciye aktarılmadı. Kalan tek-test native metinlerde Tarih ve Felsefe başta olmak üzere henüz tek tek okunmamış adaylar var. Sonraki komut: `python -X utf8 scripts/mebi_pratik2_incelenecek_metinler.py --subject Tarih --exam AYT --limit 12 --catalog`. Liste yalnız metni gösterir, inceleme/konu kararı yaratmaz; görüntü/PDF hash'i ve mevcut makbuzları kontrol eder. Daha önce okunup ince konuya bağlanamayan053–058 kayıtları (9/9/13/16/4/1) kendi `remaining-topic-review.json` dosyalarıyla yeniden listelemeden ayrılır. Listeyi başka PDF açmadan elle karıştırma; her kaynak ayrı açılır. Geçmiş belge listesini yeniden tarama. deneme kaynaklarında
-basılı bölüm/ders-numara aralığıyla native kontrol BITTI:5.482 kapsam/23 eski makbuz/0 yeni native kanıt/5.459 görsel yol (238,6sn). Yeni kaynak değişimi yoksa bu başarısız kısayolu tekrar çalıştırma; V2 satır/geometri koşulu gevşetilmez. `full-mock-pending-evidence/native-body-proof-report.json`. Dört basılı ders başlığı sınırı testi PASS.
-Makbuzu olanı tekrar üretme. Kaynak/cevap/gövde kabulü ile ince konu ve
-yayın kabulünü karıştırma. Toplam basılı soru paydası/genel yüzde/kesin ETA
-bilinmiyor. Bütün arşiv kapsamı kanıtlanmadan ana plan **BITTI** değildir.
+**Boş paketleri tekrar çalıştırma:** `source-curriculum-scope-expansion` ve
+ilk `source-math-heading-expansion` aday0.065 ayrı v2 paketle tamamlandı.
+Yeni girdi/kanıt değişmedikçe hazır/bitmiş kaynak işini tekrar yapma.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|

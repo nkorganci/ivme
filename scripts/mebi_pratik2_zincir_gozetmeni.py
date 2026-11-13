@@ -48,6 +48,7 @@ PACKAGES=[
     ('reviewed-native-question-11-expansion',62,200,'reviewed-native-question-10-expansion'),
     ('reviewed-native-geography-expansion',63,200,'reviewed-native-question-11-expansion'),
     ('reviewed-native-history-expansion',64,200,'reviewed-native-geography-expansion'),
+    ('source-math-heading-2-expansion',65,200,'reviewed-native-history-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}

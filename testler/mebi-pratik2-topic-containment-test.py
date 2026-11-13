@@ -8,6 +8,8 @@ from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from mebi_pratik2_konu_ayrintisi import match_title,match_headings
+from mebi_pratik2_tek_tarama_konu import heading_category
+from mebi_pratik2_klasor_etiketleri import printed_main_category
 import mebi_pratik2_dort_dortluk_anahtar as keys
 
 POLY='Polinom Kavramı ve Polinomlarda İşlemler/ Polinomların Çarpanlara Ayrılması'
@@ -19,6 +21,27 @@ def category(topic,exam='TYT',code='one'):
 
 
 class ContainmentTests(unittest.TestCase):
+    def test_math_folder_geometry_split_requires_every_heading_to_fit(self):
+        geometry={**category('Katı Cisimler',exam='AYT'),'subject':'Geometri'}
+        math=category('İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri',exam='AYT',code='equation')
+        solid={'text':'> Dik Dairesel Silindirde Uzunluk, Alan ve Hacim > Kürede Uzunluk, Alan ve Hacim'}
+        equation={'text':'> İkinci Dereceden Bir Bilinmeyenli Eşitsizlik Sistemleri'}
+        self.assertEqual(printed_main_category([solid],'AYT','Matematik',[geometry,math]),geometry)
+        self.assertIsNone(printed_main_category([solid,equation],'AYT','Matematik',[geometry,math]))
+        self.assertIsNone(printed_main_category([solid],'AYT','Fizik',[geometry,math]))
+
+    def test_cylinder_and_sphere_stay_inside_solid_geometry(self):
+        c=category('Katı Cisimler',exam='AYT')
+        heads=[{'text':'> Dik Dairesel Silindirde Uzunluk, Alan ve Hacim > Kürede Uzunluk, Alan ve Hacim'}]
+        self.assertEqual(heading_category(heads,'AYT','Matematik',[c]),c)
+        self.assertIsNone(heading_category(heads,'TYT','Matematik',[c]))
+
+    def test_new_math_aliases_cannot_swallow_a_different_topic(self):
+        cs=[category('Katı Cisimler',exam='AYT'),category('Çember ve Daire',exam='AYT',code='circle')]
+        self.assertIsNone(heading_category([{'text':'> Çevrel Çember > Kürede Uzunluk, Alan ve Hacim'}],
+                                         'AYT','Matematik',cs))
+        self.assertIsNone(heading_category([{'text':'> Çevrel Çember ve Türev'}],'AYT','Matematik',cs))
+
     def test_exact_subchapter_is_contained_in_the_named_main_row(self):
         c=category(POLY)
         self.assertEqual(match_title('Polinomların Çarpanlara Ayrılması','TYT',['Matematik'],[c]),c)

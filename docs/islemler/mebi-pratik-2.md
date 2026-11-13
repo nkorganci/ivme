@@ -465,3 +465,11 @@ su/toprak/bitki, doğa-insan veya bölge kavramına göre ana kimlik seçilir.
 metinlere konu kararı yazılır. Saray, yönetici sınıf, veraset, klasik toprak ve
 millet sistemi birbirine karıştırılmaz. Osmanlı ve Cumhuriyet sağlık/iktisat
 başlıkları yalnız kelime benzerliğiyle birleştirilmez.
+
+065: MEBİ Matematik klasörünün geometrik alt başlıkları, aynı sınavın ana
+tablo Geometri kimliklerine sadece bütün basılı başlıkların tek konuya
+bağlanmasıyla aktarılır. Kaynak dersi ile hedef dersi `subjectProjectionEvidence`
+içinde ayrı tutulur; diğer derslere genelleştirilmez. Silindir/küre ve çember
+alt başlıkları ile ikinci derece eşitsizliklerin açık kapsam kuralları
+`mebi_pratik2_tek_tarama_konu.py` içinde. Karma veya bilinmeyen ek başlık
+reddedilir;9 sınır testi PASS.50 soru katalog/canlı kabulden geçti.

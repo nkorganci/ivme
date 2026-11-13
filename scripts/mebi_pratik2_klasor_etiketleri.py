@@ -86,6 +86,15 @@ def printed_category(headings,exam,subject,categories):
     return next(iter(choices.values())) if len(choices)==1 else None
 
 
+def printed_main_category(headings,exam,subject,categories):
+    category=printed_category(headings,exam,subject,categories)
+    # Official MEBI mathematics folders include geometry. Only a complete
+    # single-topic printed heading permits the main table's subject split.
+    if category is None and subject=='Matematik':
+        category=printed_category(headings,exam,'Geometri',categories)
+    return category
+
+
 def resolve(hierarchy,exam,categories,unit_fallbacks=None):
     if len(hierarchy)<4 or hierarchy[0]!=exam:return None
     subject=source_subject('\\'.join(hierarchy),categories,exam)
@@ -208,7 +217,7 @@ def lookup(row,pdf=None,group=None):
                         for block in page.get_text('dict')['blocks'] for line in block.get('lines',[]) if line['bbox'][1]<125]
                     number=re.search(r'tarama testi\s+(\d+)\b',normalize(' '.join(x['text'] for x in lines)))
                     headings=[x for x in lines if x['text'].lstrip().startswith('>')]
-                    category=printed_category(headings,exam,subject,_categories) if number and number[1]==str(row['testNumber']) else None
+                    category=printed_main_category(headings,exam,subject,_categories) if number and number[1]==str(row['testNumber']) else None
                     cache[identity]=(category,headings)
                 category,headings=cache[identity]
                 if category:
@@ -218,6 +227,9 @@ def lookup(row,pdf=None,group=None):
                         curriculumScopeReferences=list({json.dumps(ref,sort_keys=True):ref for key,ref in scope_rules().items()
                             if key[:2]==(exam,subject) and ref['canonicalTopic']==category['topic']}.values()),
                         basis='PRINTED_SINGLE_TEST_HEADINGS_WITH_REVIEWED_WHOLE_TOPIC_CONTAINMENT')
+                    if category['subject']!=subject:
+                        found['subjectProjectionEvidence']={'basis':'OFFICIAL_MATH_FOLDER_SINGLE_TOPIC_GEOMETRY_MAIN_SUBJECT',
+                            'sourceSubject':subject,'canonicalSubject':category['subject'],'sourceSha256':row['sourceSha256']}
         elif pdf is not None and group:
             from mebi_pratik2_deneme_ders_kaniti import resolve_mock_course
             cache=getattr(pdf,'_mebi_course_cache',None)

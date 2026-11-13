@@ -13,6 +13,11 @@ from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
 from yks_birlestirme import write_json,process_lock
 
 OUT=BASE/'individual-tarama-topic-expansion'
+GEOMETRY_HEADINGS={
+ **dict.fromkeys(['Dik Dairesel Silindirde Uzunluk, Alan ve Hacim','Kürede Uzunluk, Alan ve Hacim'],'Katı Cisimler'),
+ **dict.fromkeys(['Çemberde Teğet, Kiriş, Çap, Yay Kesen ve Özellikleri','Çevrel Çember',
+                 'Üçgenin İç Teğet ve Dış Teğet Çemberi ve Özellikleri'],'Çember ve Daire'),
+}
 RULES={
  'Biyoloji':{
   'Canlıların Ortak Özellikleri':'Biyoloji ve Canlıların Ortak Özellikleri',
@@ -25,6 +30,11 @@ RULES={
   'Eş Baskınlık, Çok Alellilik, Kan Gruplarının Kalıtımı':'Kalıtım ve Biyolojik Çeşitlilik',
  },
  'Matematik':{
+  **GEOMETRY_HEADINGS,
+  **dict.fromkeys(['İkinci Dereceden Bir Bilinmeyenli Eşitsizliklerin Çözüm Kümesi',
+                  'İki İfadenin Çarpımı ve Bölümü Şeklinde Verilen Eşitsizliklerin Çözüm Kümesi',
+                  'İkinci Dereceden Bir Bilinmeyenli Eşitsizlik Sistemleri'],
+                 'İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri'),
   **dict.fromkeys(['İkinci Dereceden Bir Değişkenli Fonksiyonun Grafiğinin Çizimi',
                   'Parabolün Tepe Noktası, Simetri Ekseni ve Görüntü Kümesi ile İlgili Uygulamalar','Parabolün Grafik Çizimi',
                   'Bazı Elemanları Verilen Parabol Denklemini Yazma','Bir Parabol ile Bir Doğrunun Birbirlerine Göre Durumları',
@@ -55,6 +65,7 @@ RULES={
                   'Enerji İletim Yolları','Genleşme'],'Isı, Sıcaklık ve Genleşme'),
  },
  'Edebiyat':{'Divan Şiiri':'Divan Edebiyatı','Cumhuriyet Dönemi Türk Şiiri':'Cumhuriyet Dönemi Türk Edebiyatı'},
+ 'Geometri':GEOMETRY_HEADINGS,
 }
 
 
