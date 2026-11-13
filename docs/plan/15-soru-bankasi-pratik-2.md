@@ -57,6 +57,9 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
 
+-045 **BITTI**:140 sınav kapsamı kaydı INSERT/0 UPDATE; kaynak, tekrar0,
+  katalog ve canlı masaüstü/mobil PASS. Toplam9111;46 ve sonrası canlı tabloda.
+
 [Canlı paket ve BITTI tablosu](soru-bankasi-pratik-2/aktif-paketler.md)
 gözetmen tarafından kabul makbuzlarıyla otomatik güncellenir. Kullanıcının
 tekrar “devam et” demesi beklenmez. Bilinen paket zincirinin kapanışı,

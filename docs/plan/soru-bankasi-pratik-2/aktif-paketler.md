@@ -16,16 +16,16 @@ ilgili paketin kabulüdür; bütün arşivin veya öğretmen incelemesinin kapan
 | `full-mock-expansion` | **BITTI** | `four-square-header-expansion` |
 | `dual-exam-philosophy-expansion` | **BITTI** | `full-mock-expansion` |
 | `individual-tarama-expansion` | **SURUYOR** | `dual-exam-philosophy-expansion` |
-| `individual-tarama-topic-expansion` | **SURUYOR** | `individual-tarama-expansion` |
-| `individual-tarama-word-expansion` | **SURUYOR** | `individual-tarama-topic-expansion` |
-| `single-test-heading-expansion` | **SURUYOR** | `individual-tarama-word-expansion` |
-| `bold-number-expansion` | **SURUYOR** | `single-test-heading-expansion` |
+| `individual-tarama-topic-expansion` | **BEKLIYOR** | `individual-tarama-expansion` |
+| `individual-tarama-word-expansion` | **BEKLIYOR** | `individual-tarama-topic-expansion` |
+| `single-test-heading-expansion` | **BEKLIYOR** | `individual-tarama-word-expansion` |
+| `bold-number-expansion` | **BEKLIYOR** | `single-test-heading-expansion` |
 | `all-source-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 | `full-mock-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 | `single-test-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 | `individual-tarama-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 | `individual-tarama-word-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
-| `bold-number-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
+| `bold-number-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 | `scanned-literature-pending-evidence` | **BEKLIYOR** | `bold-number-expansion` |
 
 **Bilinen paket zinciri:** SURUYOR.

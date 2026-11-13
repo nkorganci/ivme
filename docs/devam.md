@@ -26,9 +26,11 @@ aynı PDF'de eksik soru arama yok. Daha önce yayınlananlar silinmez.13 kapı t
 gözetmen tarafından makbuzdan BITTI/BEKLIYOR/SURUYOR güncellenir; ana plan
 arşiv kabulü açıkken otomatik kapatılmaz.
 
-**Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID36976;
+**Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID `current.json/supervisorPid`;
 son durum `BASE/chain-supervisor/current.json`, loglar `*.log`/`*.err.log`.
-044,169 INSERT/0 UPDATE ve canlı kabul PASS; banka8971. Şimdi045 devam ediyor.
+044,169 ve045,140 INSERT/0 UPDATE ve canlı kabul PASS; son kabul9111.
+Güncel çalışan paketi `current.json` ve canlı tablodan izle; statik imleçle eski
+paketi baştan çalıştırma.
 Güncel gözetmen046–050 ve yedi kanıt işini de kapsar. Eski observer yenilenirken
 uygulama/model/yayın işçileri durmadı. Tamamlanmış makbuzlar korunur; durmuş
 paket en fazla3 kez sürer. OS başlangıç görevi yok; oturum/OS kapanırsa aynı
