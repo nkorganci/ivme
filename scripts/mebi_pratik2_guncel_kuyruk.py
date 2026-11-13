@@ -55,7 +55,7 @@ def run():
             decisions[row['code']]={**source,**row,'bodyPage':source['pdfPage'],'answer':source['answer'],
                 'image':source['image'],'status':'REVIEW_REQUIRED','studentVisible':False}
     for row in admission_reviews:
-        if row.get('code'):decisions[row['code']]={**row,'status':'REVIEW_REQUIRED','studentVisible':False}
+        if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
     aliases={};excluded={}
     for batch in sorted(BASE.glob('verified-source-batch-*')):
         final=batch/'final-source-acceptance.json'

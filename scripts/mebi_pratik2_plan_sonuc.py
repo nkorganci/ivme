@@ -7,7 +7,9 @@ def run():
     result=json.loads((BASE/'archive-closeout.json').read_text(encoding='utf8'))
     if result['status']!='FIRST_PASS_COMPLETE_WITH_EXPLICIT_DEFERRED_REVIEW':raise ValueError('Required closeout evidence not present')
     queue=result['reviewQueue'];live=result['live'];bank=result['publishedQuestions']
-    batch_rows='\n'.join(f"| `{r['batch']}` | {r['questionsAppended']:,} |" for r in result['batchAcceptances'])
+    bank_label=format(bank,',').replace(',','.')
+    pending_label=format(queue['pendingQuestionCandidateCodes'],',').replace(',','.')
+    batch_rows='\n'.join(f"| `{r['batch']}` | {format(r['questionsAppended'],',').replace(',','.')} |" for r in result['batchAcceptances'])
     recovery=json.loads((BASE/'bounded-answer-recovery/source-pixel-acceptance.json').read_text(encoding='utf8'))
     text=f'''# 15. Adım — MEBİ Soru Çöz & Pratik 2 — BITTI (doğrulanabilir aktarım ve gerekçeli ayırma geçişi)
 
@@ -19,13 +21,13 @@ bulunamayan cevaplar için farklı yerel OCR ve kaynak kimliğiyle sınırlı
 kurtarma geçişi uygulandı; cevap tahmini yapılmadı.
 
 **Sınır:** bütün arşivdeki basılı soruların tamamının çıkarıldığı veya aktarıldığı
-kanıtlanmadı. `{bank:,}` soru yayında; `{queue['pendingQuestionCandidateCodes']:,}`
+kanıtlanmadı. `{bank_label}` soru yayında; `{pending_label}`
 ayrı aday kodu incelemede. Bu sayılar tüm arşivin tekil soru toplamı değildir.
 İnceleme kuyruğu bu geçişin ayrı teslimidir; öğretmen tarafından çözülmüş sayılmaz.
 
 ## Sonuç
 
-- Canlı banka: **{bank:,} soru**, `MEBI_PRACTICE_2`, yan menü **Soru Çöz & Pratik 2**.
+- Canlı banka: **{bank_label} soru**, `MEBI_PRACTICE_2`, yan menü **Soru Çöz & Pratik 2**.
 - Etkin katalog: `{live['catalogRun']}`.
 - Eksik cevap, boş kategori veya katalogda görünmeyen kabul edilmiş soru: **0**.
 - Önceki86.035 soru kimliği/cevabı/güncelleme fingerprint'i aynı.

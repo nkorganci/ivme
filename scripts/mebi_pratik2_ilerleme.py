@@ -26,7 +26,16 @@ def snapshot():
         if acceptance.exists():accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
         progress_file=BASE/name/'progress-current.json'
         if progress_file.exists():stages[name]=json.loads(progress_file.read_text(encoding='utf8'))
-    accepted=len(accepted_codes)
+    raw_accepted=len(accepted_codes);excluded_codes=set();alias_codes=set()
+    for folder in BASE.glob('verified-source-batch-*'):
+        final=folder/'final-source-acceptance.json'
+        if final.exists():excluded_codes.update(r['code'] for r in json.loads(final.read_text(encoding='utf8')).get('reviewQueueAdditions',[]))
+        duplicates=folder/'exact-duplicate-evidence.json'
+        if duplicates.exists():
+            evidence=json.loads(duplicates.read_text(encoding='utf8'))
+            excluded_codes.update(r['code'] for r in evidence.get('reviewQueueAdditions',[]))
+            alias_codes.update(r['sourceQuestion']['code'] for r in evidence.get('additionalSourceOccurrences',[]))
+    accepted=len(accepted_codes-excluded_codes-alias_codes)
     imported=0;published=0
     for folder in [BASE/'publication-preparation',*sorted(BASE.glob('verified-source-batch-*'))]:
         result=folder/'import-result.json'
@@ -37,6 +46,8 @@ def snapshot():
         'totalPdfs':len(pdfs), 'completedPdfPaths':completed,
         'remainingPdfPaths':len(pdfs)-completed, 'pdfPercent':round(100*completed/len(pdfs),2),
         'lastScannerCheckpoint':progress, 'acceptedQuestionCount':accepted,
+        'rawSourceAcceptedCount':raw_accepted,'finalPreimportExcludedCount':len(excluded_codes),
+        'additionalSourceOccurrences':len(alias_codes),
         'importedQuestionCount':imported,'catalogPublishedQuestionCount':published,'activeStageCheckpoints':stages,
         'verifiedSubsetImportPercent':round(100*imported/accepted,2) if accepted else None,
         'totalQuestionCount':None, 'overallProjectPercent':None, 'remainingSecondsEstimate':None,

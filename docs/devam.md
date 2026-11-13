@@ -6,38 +6,34 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**MEBI-PRACTICE-2 etkin; sonuna kadar yetkili yürütme sürüyor.**
-Plan: `docs/plan/15-soru-bankasi-pratik-2.md`. Canlı **3.955 soru**;
-pilot21 ve001–005 partileri kabul edildi. Son005:497 yeni soru ve21 kesin
-piksel/cevap eşit ek kaynak konumu; eski ID silme/birleştirme yok.
-`verified-source-batch-005/bank-acceptance.json` PASS, katalog
-`labels-v1-ee66ec8bbc50320da92089bc`. Eski86.035 soru korunur.
+**MEBI-PRACTICE-2 doğrulanabilir aktarım ve gerekçeli ayırma geçişi BITTI.**
+Plan: `docs/plan/15-soru-bankasi-pratik-2.md`;15.01–15.07 kabul kapsamıyla
+BITTI güncellendi. Canlı 4,791 soru:2.972 TYT/1.819 AYT; son katalog
+`labels-v1-b5fca4abb818b9467a4a6582`. Pilot ve001–006 kabul edildi;
+aynı aktarımları veya tamamlanmış model okumalarını tekrar başlatma.
+Son006:836 INSERT/0 UPDATE/0 hata; tekrar0 INSERT/836 SKIP;9 atomik parti.
+90/90 cevap grubu farklı OCR ile kurtarıldı,836 gövde ve son piksel PASS.
 
-**Çalışan iş:** `15306` sınırlı cevap kurtarma worker'ı. İlk bağımsız okumada
-başlığı/anahtar satırı uyuşmayan90 grubun tamamı farklı yerel Tesseract
-`tur+eng` OCR ve aynı basılı bölüm/adım kimliğiyle doğrulandı.836 gövdenin ilk
-incelemesi sürüyor; güncel imleç `bounded-answer-recovery/progress-current.json`.
-Aynı başarısız model istemi tekrarlanmaz, cevap tahmini yapılmaz. Gerçek
-uyuşmazlıklar öğretmen/AI incelemesine gerekçeli ayrılır. Bu son kullanıcı
-kuralı eski ilk hatada EXCLUDE_NO_RETRY yaklaşımının önüne geçer.
+**Kapanış kanıtı:** `archive-closeout.json`;
+`FIRST_PASS_COMPLETE_WITH_EXPLICIT_DEFERRED_REVIEW`. Eski86.035 soru ve
+4.816 kaynak/82.845.852.415 bayt korunur. Kaynak yazımı/silme0;
+öğrenci test cevabı/sahte öğretmen onayı0. Masaüstü/mobil canlı kabul PASS;
+24 ilgili Python testi PASS. Aktif aktarım/model incelemesi kalmadı;
+uygulama ve yerel model servisi durdurulmadı.
 
-`45468` altıncı aktarım yürütücüsü kurtarma manifestini bekliyor;
-`95474` kapanış worker'ı001–006 canlı kabulünü bekler. Yeni worker başlatma,
-çalışan model/servisi durdurma. Oturum ID'leri araç oturumuna aittir; kalıcı
-kanıt dosyaları asıl devam kaydıdır. Altıncı kabul sonrası kapanış worker'ı
-güncel kuyruk/dosya-sayfa kararlarını ve DB bütünlüğünü denetler. Ardından
-`python scripts/mebi_pratik2_plan_sonuc.py` yalnız başarılı
-`archive-closeout.json` üzerinden planı kapsam sınırıyla günceller.
+**Ayrı teslim:** 21,353 aday kodu (17.508 konu/ders;3.823 gövde;22 düzen/
+kimlik) ve1.313 soru sayısı bilinmeyen grup incelemesi.
+`teacher-review-export/current/question-candidates.csv/json`,
+`by-reason/*.csv`, `source-group-reviews.json`, `archive-disposition/`.
+Bütün adayların kaynak PDF yolu var; mevcut17.689 soru/15.655 anahtar
+görseli bağlantısı mevcut. `local-link-audit.json`:kırık yol0.
 
-Kaynak tam SHA-256 kontrolü PASS:4.816 dosya/82.845.852.415 bayt; kaynak
-silme/yazma0.1.573 PDF/27.614 sayfa ve1.048 HTML/78 ZIP ilk keşfi tamam.
-Toplam basılı soru sayısı bilinmiyor; bütün arşivin soruları aktarılmış
-sayılmaz. Kalanlar `teacher-review-export/current/` ve `archive-disposition/`
-altında ayrı teslimdir. Öğretmen onayı uydurulmaz, öğrenci DB'sine test yok.
-
-Sıradaki:836 gövde incelemesi →006 son özgün piksel/konu/cevap kapısı →
-100'lük atomik INSERT_ONLY/tekrar0 →katalog/canlı kabul →kapanış ve scoped
-BITTI →belgeler/ilgili testler →yalnız bu işe ait yerel commit. Push yok.
+Bütün basılı sorular çıkarılmış/aktarılmış sayılmaz; toplam arşiv soru
+sayısı ve genel soru ilerleme yüzdesi bilinmiyor. BITTI yalnız doğrulanabilir
+aktarımı ve gerekçeli ayırmayı kapsar. İnceleme adayları öğrenci havuzunda
+veya öğretmen onaylı değildir; gerekçeli kanıtı koruyarak sonradan gerçek
+öğretmen veya ayrıca hedeflenmiş AI incelemesi yapılabilir. Aynı başarısız
+istem tekrarları, cevap tahmini ve önceki bankada ID silme/birleştirme yok.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|
