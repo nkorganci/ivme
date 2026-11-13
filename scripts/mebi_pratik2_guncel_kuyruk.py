@@ -7,6 +7,7 @@ from collections import Counter
 from mebi_pratik2_tam_pdf_tarama import BASE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
+from mebi_pratik2_arsiv_kararlari import review_category
 
 
 def run():
@@ -79,17 +80,26 @@ def run():
                 (code,row['status'],json.dumps(row,ensure_ascii=False,sort_keys=True)))
     db.close()
     out=BASE/'teacher-review-export/current';out.mkdir(exist_ok=True)
+    for row in pending:row['reviewCategory']=review_category(row.get('reasons',[]))
     write_json(out/'question-candidates.json',{'records':pending,'recordCount':len(pending),'studentVisible':False})
     write_json(out/'source-group-reviews.json',{'records':group_reviews,'recordCount':len(group_reviews),'recordType':'SOURCE_GROUP_NOT_DISTINCT_QUESTION_COUNT','studentVisible':False})
-    columns=['code','status','reasons','relativePath','bodyPage','printedNumber','answer','categoryId','image','keyImage']
+    columns=['code','status','reviewCategory','reasons','relativePath','bodyPage','printedNumber','answer','categoryId','image','keyImage']
     with (out/'question-candidates.csv').open('w',encoding='utf-8-sig',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader()
         for row in pending:
             writer.writerow({k:json.dumps(row[k],ensure_ascii=False) if isinstance(row.get(k),(list,dict)) else row.get(k,'') for k in columns})
+    reason_folder=out/'by-reason';reason_folder.mkdir(exist_ok=True)
+    categories=sorted({row['reviewCategory'] for row in pending})
+    for category in categories:
+        with (reason_folder/(category+'.csv')).open('w',encoding='utf-8-sig',newline='') as stream:
+            writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader()
+            for row in pending:
+                if row['reviewCategory']==category:writer.writerow({k:json.dumps(row[k],ensure_ascii=False) if isinstance(row.get(k),(list,dict)) else row.get(k,'') for k in columns})
     report={'status':'CURRENT_REVIEW_QUEUE_RECONCILED','acceptedSourceCodes':len(accepted),'publishedBankCodes':len(published),
         'pendingQuestionCandidateCodes':len(pending),'additionalSourceOccurrences':len(aliases),
         'finalPixelOrAnswerExclusions':len(excluded),'sourceGroupReviewRecordsNotQuestionCount':len(group_reviews),
         'decisionStates':dict(Counter(r['status'] for r in decisions.values())),
+        'pendingReviewCategories':dict(Counter(r['reviewCategory'] for r in pending)),
         'sourceAdmissionProofs':proofs,'totalArchiveQuestions':None,'applicationDatabaseWrites':0}
     write_json(out/'report.json',report);print(json.dumps({k:v for k,v in report.items() if k!='sourceAdmissionProofs'}))
 

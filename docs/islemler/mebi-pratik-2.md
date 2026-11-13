@@ -28,6 +28,7 @@ Kanıt kökü `veri/mebi-pratik-2/20261111-source-inventory/`.
 | Dosya/katman | Anlamı |
 |---|---|
 | `teacher-review-export/current/question-candidates.csv` | Soru bazında kalan karar; kaynak, sayfa, görsel, cevap ve neden |
+| `teacher-review-export/current/by-reason/*.csv` | Aynı adayların gerekçelerine göre ayrılmış öğretmen listeleri |
 | `teacher-review-export/current/source-group-reviews.json` | Soru sayısı bilinmeyen test/bölüm grubu |
 | `archive-disposition/source-review.csv` | Bütün dosyaların gerekçeli inceleme yolu |
 | `archive-disposition/pdf-page-decisions.jsonl` | Her PDF sayfasının sonucu ve ham işaretleri |

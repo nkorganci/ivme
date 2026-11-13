@@ -16,6 +16,17 @@ yapıldığı anlamına gelmez. Her adım gerçek kabulü geçince başlığı/d
 `— BITTI`, 15.01–15.07 bütünü geçince bu planın ana başlığı da `— BITTI`
 olarak güncellenir. Pilot veya yalnız teknik keşif tam kabul sayılmaz.
 
+**Son kullanıcı talimatına göre kapanış kapsamı:** doğrulanabilenler alınıp
+bulunamayan/uyuşmayan/konusu belirsiz olanlar fazla zaman harcanmadan ayrı
+gerekçeli kategoriye konur. Bu geçişin kapanışı, bütün yerel dosya ve PDF
+sayfalarının durumunun kaydedilmesi, kabul edilmiş partilerin canlı doğrulanması
+ve kalanların kaynak kanıtlarıyla ayrı inceleme teslimine bağlanmasıdır.
+Belirsizlerin öğretmen tarafından çözülmesi beklenmez; onlar aktarılmış veya
+tamamen çıkarılmış sayılmaz. `archive-closeout.json` bu sınırı
+`allPrintedQuestionsExtracted:false` ile açık tutar. BITTI yazılırsa yalnız
+bu doğrulanmış aktarım + gerekçeli ayırma geçişini ifade eder; bütün basılı
+soruların bankaya alındığı iddiası değildir.
+
 **Tam arşiv uygulama kuralı:**557 kabul edilmiş soruda durulmaz. Henüz
 çıkarıcısı uygulanmamış PDF düzenleri için bölüm/test/adım bağlamını koruyan
 ayrı çıkarıcı hazırlanır; yalnız ilk anahtar sözcük eşleşmesinin başarısızlığı
@@ -61,8 +72,9 @@ Her yeni üretim partisinde `mebi_pratik2_son_piksel_kapisi.py` özgün PDF'yi
 yeniden render eder; eski makbuz tek başına yeterli sayılmaz. Yalnız boş beyaz
 kenarları çıkarınca RGB pikselleri ve basılı cevabı tamamen aynı olan Pratik2
 kopyaları ek kaynak konumu olarak korunur (`exact-duplicate-evidence.json`);
-eski banka karşılaştırılmaz/kimlik silinmez. Konu/gövde/tekrar sınırları11
-regresyon testiyle doğrulandı. İşletim: [Pratik2 tarifi](../islemler/mebi-pratik-2.md).
+eski banka karşılaştırılmaz/kimlik silinmez. Konu/gövde/tekrar/son piksel
+ve aynı numaralı farklı test sınırları17 regresyon testiyle doğrulandı.
+İşletim: [Pratik2 tarifi](../islemler/mebi-pratik-2.md).
 
 ## Amaç ve sınır
 
