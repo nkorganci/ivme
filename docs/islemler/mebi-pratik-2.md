@@ -243,3 +243,18 @@ Kural altında `mebi_pratik2_kesin_piksel_tekrari.select_new` soru karşılaşt�
 INSERT_ONLY kimlik koruması ve yeni kaynağın cevap/özgün piksel kabulü devam
 eder. Önceden kabul edilen paketler değişmez; yeni boş kaynak partisi
 SKIPPED_EXISTING_PDF_SOURCE_BATCH ile kapanır, yayın sayısı0 olur.
+
+
+## Tekil taramalarda ortak basılı-test okuyucusu
+
+PDF kapısı tamamlandıktan sonra `python scripts/mebi_pratik2_tek_tarama_ek.py`
+komutuyla kalan tekil kaynakları aynı test/numara/anahtar okuyucusundan geçir.
+Kırpımlar `individual-tarama-crops`, ilk kontrollü konu paketi
+`individual-tarama-expansion`, belirsizler `individual-tarama-pending-evidence`
+altındadır. `python scripts/mebi_pratik2_tek_tarama_konu.py` basılı tek-konu
+başlıklarını mevcut ana konu satırlarına açık içerme kurallarıyla bağlar;
+karma başlığa tek konu atamaz. Kaynak dersini opak dosya adından çıkarmaz.
+Donmuş ilk paketler değiştirilmez; ek konu paketi ayrı makbuzdur.
+046 ve047 için mevcut arşiv kabul komutlarını sırasıyla045 ve046 bağımlılığıyla
+kullan; hazırlık raporunu aktarım kabulü sayma. Gerekçeli sorular ve grup
+istisnaları güncel inceleme dışa aktarımına katılır.

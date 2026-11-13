@@ -37,7 +37,7 @@ def run():
         data=json.loads(book.read_text(encoding='utf8'));group_reviews=data['reviewQueueAdditions']
         for row in data['items']:
             decisions[row['code']]={**row,'status':'INDEPENDENT_KEY_OR_VISUAL_BODY_REVIEW_PENDING','reasons':['SOURCE_ADMISSION_NOT_COMPLETE'],'studentVisible':False}
-    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops']:
+    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops','individual-tarama-crops']:
         manifest=BASE/directory/'report.json'
         if not manifest.exists():continue
         for source in json.loads(manifest.read_text(encoding='utf8'))['sources']:
@@ -82,7 +82,8 @@ def run():
                 sourcePrintedExamScopes=correction['printedExamScopes'],subjectEvidence=correction['evidence'])
     for path in [* (BASE/'all-source-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json'),
-                 * (BASE/'single-test-pending-evidence/candidate-evidence').glob('*.json')]:
+                 * (BASE/'single-test-pending-evidence/candidate-evidence').glob('*.json'),
+                 * (BASE/'individual-tarama-pending-evidence/candidate-evidence').glob('*.json')]:
         evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
         if code not in decisions or code in accepted:continue
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],

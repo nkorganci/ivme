@@ -24,13 +24,16 @@ PACKAGES=[
     ('four-square-header-expansion',42,500,'three-step-mock-expansion'),
     ('full-mock-expansion',44,500,'four-square-header-expansion'),
     ('dual-exam-philosophy-expansion',45,500,'full-mock-expansion'),
+    ('individual-tarama-expansion',46,500,'dual-exam-philosophy-expansion'),
+    ('individual-tarama-topic-expansion',47,500,'individual-tarama-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}
       for name,first,size,dep in PACKAGES]
 JOBS += [{'name':name,'dependency':dep,'kind':'evidence','args':['scripts/mebi_pratik2_konu_bekleyen_kanit.py','--package-dir',name]}
          for name,dep in [('all-source-evidence','full-mock-expansion'),('full-mock-pending-evidence','full-mock-expansion'),
-                          ('single-test-pending-evidence','full-mock-expansion')]]
+                          ('single-test-pending-evidence','full-mock-expansion'),
+                          ('individual-tarama-pending-evidence','individual-tarama-expansion')]]
 
 
 def checkpoint(name,kind='publisher'):

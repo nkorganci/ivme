@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 8.581 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.802 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -56,6 +56,22 @@ paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kab
 Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
+
+- Tekil tarama yerleşimi hazırlığı **BITTI (alt iş, aktarım değildir)**:
+  PDF kapısından geçen 71 kaynakta mevcut basılı-test okuyucusu denendi;
+  44 kaynakta 911 native numara/anahtar adayı bulundu. 378 özgün kırpım
+  hazır; 539 geometri/bağlam kaydı gerekçeli ayrı incelemede. 77 doğrudan
+  kontrollü konu, 139 ek basılı başlık içerme eşlemesi; kalan 162 ince konu
+  incelemesindedir. Yeni soru/tekrar iddiası yok, soru banka karşılaştırması0.
+  Kanıtlar `individual-tarama-expansion/preparation-report.json`,
+  `individual-tarama-topic-expansion/topic-evidence.json`.
+- Yeni 046 (77 aday) ve 047 (139 aday) partileri **SURUYOR / sırada**;
+  bağımlılıklar 045→046→047. Tam özgün kırpım, bağımsız basılı anahtar,
+  INSERT_ONLY, katalog ve canlı kabul geçmeden BITTI olmaz. 301 ilk konu
+  bekleyenin 139'u ek konu paketinde de kaynak kimliğiyle temsil edilir;
+  bu sayılar toplanarak tekil soru sayısı üretilmez. Yerel native gövde
+  kanıtı 046'da9/77, 047'de44/139; diğerleri görsel kapıda kalır.
+  Beş tekil-tarama entegrasyon/konu sınırı testi PASS.
 
 - PDF kapısı önce uygulanır: Dört Dörtlük kalan4.016 adayın ait olduğu
   PDF'ler zaten mevcut; yeniden model/kırpım/aktarım yapılmadan atlandı.

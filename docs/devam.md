@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 8.581 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.802 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -38,8 +38,11 @@ katalog/canlı kabulü geçti; mevcut8.581 kayıt korunur. Dört Dörtlük kalan
 4.016 adayın PDF'leri atlandı ve026–034 boş-source PASS; kurtarma49 adayı035'te
 atlandı. Yeni büyük deneme/çıkmış kitaplarının eski bankadaki aynı PDF'leri
 doğrulandı; bunlar için yeni kırpım/işlem başlatma.
-`remaining-positive-layout-cues/report.json` ve eski generic-book keşfi
-PDF kapısından ÖNCEKİ ham ipuçlarıdır; yeni kaynak kabulü değildir.
+`remaining-positive-layout-cues/report.json` PDF kapısından SONRA güncellendi:
+100 kaynak/851 hazırlanmadığı sanılan sayfa. 14 ortak PDF'nin ilk üç sayfası
+YDT etiketli; TYT/AYT'ye zorla eşleme. Eski generic-book keşfindeki beş kitap
+mevcut bankayla aynı PDF; tekrar hazırlama. Tekil crop kaynağı önce bu census'a
+katılmadığı için yeni `individual-tarama-crops` bundan sonraki census'ta sayılır.
 
 **Devam eden hazırlanmış zincir, önce PDF filtresi:**
 - `reviewed-topic-expansion`:2.478 içinden2.257 eski-PDF atlandı;221 yeni-PDF
@@ -55,6 +58,22 @@ PDF kapısından ÖNCEKİ ham ipuçlarıdır; yeni kaynak kabulü değildir.
   işinde. Bunlar yayın değildir; ince konu/gövde/cevap belirsizi ayrı kalır.
 - Tek-test1.886/1.886 aynı numara/harf/hash bağımsız makbuzu AGREES; yeni model0.
   547 native V2 gövde kanıtı hazır; kalan1.339 gerçek görsel yolunda.
+
+**Yeni tekil tarama zinciri (hazırlık BITTI, aktarım açık):**
+- `individual-tarama-expansion`:44 kaynak/911 native adaydan378 kırpım;
+  77 kontrollü konu adayı046; 539 geometri/bağlam kaydı ayrı incelemede.
+- `individual-tarama-topic-expansion`:basılı başlıkların açık içerme kuralları
+  ve kaynak ders klasörüyle139 ek konu adayı047; kalan162 konu incelemesi.
+  301 ilk inceleme adayı139'la örtüşür; sayıları tekil soru diye toplama.
+- 046 native9/77,047 native44/139; beş entegrasyon/konu sınırı testi PASS.
+- 046 publisher PID44528,047 PID14088 ve301 evidence PID38412 gerçekten
+  başlatıldı; loglar `chain-supervisor/individual-tarama*.log`/`.err.log`.
+  046,045'i;047 ve evidence046'yı bekler. Çalışan41468 gözetmeni yeni kodu
+  henüz yüklememiştir; bu üç iş ayrı başlatıldı. Yeniden başlatılan gözetmen
+  yeni kayıtları da kapsar, çalışanları kesmez. Uygulama/model servisi durmadı.
+- Komutlar: `python scripts/mebi_pratik2_tek_tarama_ek.py` ve
+  `python scripts/mebi_pratik2_tek_tarama_konu.py` mevcut donmuş paketleri korur.
+  Yeni çıktılar öğretmen onayı veya yeni soru kabulü değildir.
 
 **Sürekli gözetmen:** `mebi_pratik2_zincir_gozetmeni.py --watch` yeniden
 PDF kurallı sürümle başlatıldı; PID/durum `chain-supervisor/current.json`.

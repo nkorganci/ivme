@@ -24,20 +24,25 @@ def choose_topic(group,exam,subjects,categories,reviewed_headers):
     return exact[0] if len(exact)==1 else None
 
 
-def run():
+def run(sources=None):
     OUT.mkdir(exist_ok=True);cats=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories'];by_id={c['id']:c for c in cats}
     previous=json.loads((BASE/'expanded-chapter-evidence/chapter-packages.json').read_text(encoding='utf8'))['chapters'];headers={}
     for row in previous:
         texts=[normalize(l['text']) for l in row['printedHeaderLines'] if l['text'].lstrip().startswith(('>','•'))]
         headers[(row['exam'],' '.join(texts))]=by_id[row['categoryId']]
-    sources=json.loads((BASE/'compiled-tarama-discovery/report.json').read_text(encoding='utf8'))['sources'];results=[];started=time.monotonic()
+    if sources is None:sources=json.loads((BASE/'compiled-tarama-discovery/report.json').read_text(encoding='utf8'))['sources']
+    results=[];started=time.monotonic()
+    from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
+    pdf_decisions=load_decisions()
     for index,source in enumerate(sources,1):
+        if skip_pdf(source['sourceSha256'],pdf_decisions):continue
         target=OUT/(source['sourceSha256']+'.json')
         if target.exists():report=json.loads(target.read_text(encoding='utf8'))
         else:
             data=json.loads((BASE/'compiled-tarama-discovery'/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
             cache=json.loads((BASE/source['cache']).read_text(encoding='utf8'));pages={p['physicalPage']:p for p in cache['pages']}
-            exam,subjects=scope(source,cats)
+            classification_source={**source,'relativePath':source['exam']+'\\'+source['relativePath'].split('\\')[-1]} if source.get('exam') else source
+            exam,subjects=scope(classification_source,cats)
             if 'din kulturu' in normalize(source['relativePath']):subjects.update(c['subject'] for c in cats if c['subjectId']=='din' and c['exam']==exam)
             path=(SOURCE/source['relativePath']).resolve()
             if not path.is_relative_to(SOURCE):raise ValueError('Compiled source outside MEBI scope')
