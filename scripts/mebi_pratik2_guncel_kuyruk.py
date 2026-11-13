@@ -72,6 +72,13 @@ def run():
                 decisions[row['code']]={**prior,**row,'status':'REVIEW_REQUIRED',
                     'priorReviewReasons':prior.get('reasons',[]),
                     'reasons':['INDEPENDENT_KEY_BODY_REVIEW_REQUIRED' if row.get('categoryId') else 'CONTROLLED_TOPIC_REVIEW_REQUIRED'],'studentVisible':False}
+    subject_overlay=BASE/'dual-exam-philosophy-expansion/subject-review-overlay.json'
+    if subject_overlay.exists():
+        for correction in json.loads(subject_overlay.read_text(encoding='utf8'))['rows']:
+            code=correction['code']
+            if code in accepted or code not in decisions:continue
+            decisions[code].update(subject=correction['subject'],subjectId=correction['subjectId'],
+                sourcePrintedExamScopes=correction['printedExamScopes'],subjectEvidence=correction['evidence'])
     for path in [* (BASE/'all-source-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'full-mock-pending-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'single-test-pending-evidence/candidate-evidence').glob('*.json')]:

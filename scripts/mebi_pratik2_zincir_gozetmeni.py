@@ -23,6 +23,7 @@ PACKAGES=[
     ('three-step-mock-expansion',41,500,'reviewed-topic-expansion'),
     ('four-square-header-expansion',42,500,'three-step-mock-expansion'),
     ('full-mock-expansion',44,500,'four-square-header-expansion'),
+    ('dual-exam-philosophy-expansion',45,500,'full-mock-expansion'),
 ]
 JOBS=[{'name':name,'dependency':dep,'kind':'publisher','args':['scripts/mebi_pratik2_arsiv_kabul.py',
        '--package-dir',name,'--first-batch',str(first),'--chunk-size',str(size),'--publish']}

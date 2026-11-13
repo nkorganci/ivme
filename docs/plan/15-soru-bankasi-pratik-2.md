@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 8.076 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 8.081 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -40,12 +40,15 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 - Sürekli gözetmen çalışan işleri korur; durmuş hazırlanmış paket işini en
   fazla3 kez makbuzdan sürdürür. Kabul edilmiş paket yeniden yazılmaz.
+- Basılı FELSEFE/TYT-AYT ve tam bölüm başlığıyla80 kaynak sorusunda140
+  sınav kapsamı adayı045 için hazır; konu veya cevap tahmini yapılmadı.
 -1.886 ek tek-test adayı `single-test-pending-evidence/` kuyruğunda;044 sonrası
   kaynak kanıtı işi hazır. Bu sayı doğrulanmış/yayımlanmış soru sayısı değildir.
 
 - Başlık bağlı2.390 adayın kaynak kabulü BITTI:2.313 kabul/77 inceleme;007–018
   canlı kapıları geçti. Bu tamamlanan alt geçiş sonunda canlı banka7.094 oldu.
-- Sözcük sınırlarıyla3.114 yeni gövde;1.005 konu bağlı aday019–024 zincirinde işleniyor.
+- Sözcük sınırlarıyla3.114 yeni gövde;1.005 aday019–024 alt geçişi BITTI:989 kaynak kabulü/16 inceleme;
+  987 yeni yayın ve2 kesin aynı-kapsam kaynak bağı.
 - Dört Dörtlük15 kitapta matris ve açık Cevap: bağlaması yapıldı;13.843 kırpım,
   konu bağı hazır4.516 aday025–034 zincirinde sırada. Diğerleri aktif konu/yerleşim işi.
 - Beş Fizik tablosundaki14 anahtar grubu ayrıca agent görsel okumasıyla doğrulandı;

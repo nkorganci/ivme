@@ -203,3 +203,18 @@ sabit `single-test-pending-evidence` paketine bağlar. Cevap/gövde kanıt işi
 `mebi_pratik2_konu_bekleyen_kanit.py --package-dir single-test-pending-evidence --wait-for full-mock-expansion/pass-result.json`.
 Konu belirsizliği kaynak/cevap başarısızlığı ile aynı karar değildir; ikisi de
 ayrı gerekçeli saklanır ve kesin kabul olmadan yayın yapılmaz.
+
+### Basılı ortak sınav kapsamı ve tek-test makbuzu
+
+`python scripts/mebi_pratik2_ortak_felsefe.py` yalnız basılı FELSEFE,
+TYT/AYT TARAMA ve açık bölüm başlığını mevcut tam konu satırına bağlar.
+Din/siyaset/sanat alanı ve AYT bilim felsefesi dışında başlık tahmini yoktur.
+Soru kodu TYT için korunur; aynı basılı kapsamın AYT karşılığı -AYT koduyla,
+aynı kaynak/key/piksel kanıtıyla ayrı mevcut AYT satırına gider.045 partisi
+044 sonrası; mevcut INSERT_ONLY/katalog/canlı kapıları geçmeden yayın yok.
+`--subject-overlay` sadece220 derssiz inceleme adayında basılı FELSEFE ve
+ortak sınav kimliğini düzeltir; konu onayı veya öğrenci yayını üretmez.
+
+`python scripts/mebi_pratik2_tek_test_bekleyen.py --prime-keys`1.886 hazır
+tek-test adayında aynı hash/numara/cevabın önceki bağımsız makbuzunu indeksler.
+Kaynak veya model yeniden üretilmez; cevap uyuşmazlığı ayrı kalır.
