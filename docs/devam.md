@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 6.906 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 7.094 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -12,13 +12,15 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 Çalışma/context/token sınırına kadar sürdür; yeni bağlamda aynı imleçten
 devam et. Alt parti bitmesi durma nedeni değildir.
 
-**Çalışan süreç17861:**2.390 yeni başlık-bağlı adayın kaynak kabulü ve
-200 adaylık gruplarla007–018 INSERT_ONLY/katalog/canlı kabul zinciri.
+**17861 alt partisi BITTI:**2.390 adayın2.313 kaynak kabulü/77 inceleme;
+007–018 INSERT_ONLY/katalog/canlı kapıları geçti. Net canlı banka7.094 oldu;
+kesin piksel tekrarları ayrıca korundu. Ana arşiv hâlâ açık.
 `curated-chapter-expansion/progress-current.json`, `part-*/` ve ilgili
 `verified-source-batch-*/continuation-progress.jsonl` asıl imleçtir.
 CPU sözcük-kırpım işi tamam:3.114 yeni gövde;1.005 konu bağlı aday
 `word-boundary-expansion/chapter-packages.json`. Bunlar aktarılmış sayılmaz.
-Bekleyen süreç77599 bu paketi önceki genişleme bitince019+ zincirinde işler.
+Çalışan77599 bu paketi019–024 zincirinde işler;019 kaynak kabulü tamam,
+atomik aktarımı sürüyor.
 İzleyici66165 kabul edilen sayıları ve görev/plan başlığını otomatik günceller;
 67108 `progress-events.jsonl` dosyasına beş dakikada/her%10’da ölçüm yazar.
  Kullanıcı ilk geçişte durmayı reddetti;
@@ -40,17 +42,25 @@ Yeni CPU işleri BITTI (aktarımı değildir):421 native-metin boş sayfanın OC
 `visual-page-discovery/report.json`,110 ek sözcük geometrisi. Dört Dörtlük15
 kitapta native matris ve açık Cevap satırı bağlaması `four-square-discovery-v3/`;
 13.843 özgün gövde/4.516 konu bağı `four-square-crops/report.json`.
-Native gövde hızlandırması V2 denetiminde: yalnız sözcüklerin değil tüm
-kesişen native satırların kırpımda kalması da şart. Önceki V1 sayıları nihai
-kabul değildir. Çalışan1033, `native-body-v2-audit.json` üretir; başarısız
-yalnız türetilmiş makbuzları görsel okuma yoluna geri alır, yayımlanmış soru
-varsa önce gerçek görsel inceleme ister. Soru/öğrenci DB'sine yazmaz.
+Native V2 denetimi BITTI:907 türetilmiş gövde kanıtı kontrol edildi;
+577 tam satır/sözcük/saf piksel sınırını geçti,330 yalnız türetilmiş makbuz
+arşivlenerek gerçek görsel okumaya döndü. Yayımlanmış başarısız kayıt0;
+`native-body-v2-audit.json`. Eski V1 sayıları güncel kabul değildir.
 10857, ek2.478 kontrollü alt başlık adayını036–040 partilerinde035 sonrası
 kabul eder;221 tek-test anahtarında aynı kaynak/hash bağımsız okuma korundu.
-Yeni `three-step-mock-discovery/report.json`: dört3 Adım deneme kitabında
-5.424 gövde/basılı cevap adım-deneme-bölüm kimliğiyle bağlandı; bu çıkarım
-alım değildir.5 bağlama testi PASS. Sıradaki iş özgün kırpım, bağımsız anahtar
-ve soru-komutundan kesin konu etiketli küçük pilot; kalanlar açık inceleme.
+Dört3 Adım denemede5.424 gövde/cevap ilk bağlaması;4.917 özgün kırpım ve
+172 açık soru-komutuyla konu bağlı aday hazır.88176 bunları041'de036–040
+sonrası kabul eder. İlk anahtar OCR+bağımsız Qwen okuması AGREES,21 gövde
+native V2; gerisi gerçek görsel okuma. İnce konusu bilinmeyenler ayrı.
+V2 yerleşim `three-step-mock-discovery-v2/`:5.505 bağ; sağ sütundaki girintili
+Fen soru numaraları da yakalandı.87 ek kırpım henüz konu incelemesinde,
+bunlar aynı kaynak/kimlikteki önceki sağlam görüntüleri tekrar üretmez.
+`four-square-discovery-v4/`:üstte başlayan soruyu başlıktan ayırıp12.919
+matris ve5.422 çözümlü gövde bağladı.65392 alt işi BITTI:yalnız yeni/düzeltilmiş başlıklara3.470 ek kırpım/867
+konu bağlı aday `four-square-header-crops/` üretti; eski/yayımlanmış/sıraya alınmış kodlar
+tekrarlanmaz, önceki fiziksel aday kodu korunur. 7401,867 adayın042–043 kabulünü041 sonrasına bağladı.35190 native V2
+alt kanıtı çıkarıyor; model/aktarım işlerini durdurma. Altı gerçek kırpım
+contact görselinde okundu, tamamı için model/gövde ve anahtar kapısı korunur.
 
 **Bekleyen kullanıcı tercihi (çalışmayı durdurmaz):** cevap/gövde kanıtlı,
 ince konusu kesinleşmeyenleri öğrenci Pratik2’de ders altında “Konusu

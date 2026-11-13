@@ -37,6 +37,24 @@ def read_key(group,pdf,module,root):
         receipt=json.loads(target.read_text(encoding='utf8'))
         if receipt['imageSha256']!=sha:raise ValueError('Four-square cached key differs')
         return receipt
+    prior_attempts=[]
+    for previous in sorted(BASE.glob('*/independent-keys/'+group['groupId']+'.json')):
+        if previous==target:continue
+        prior=json.loads(previous.read_text(encoding='utf8'))
+        if prior.get('imageSha256')!=sha:continue
+        if prior.get('status')=='AGREES':
+            receipt={'status':'AGREES','imageSha256':sha,'method':'IDENTICAL_SOURCE_KEY_INDEPENDENT_READING_REUSED',
+                'priorEvidence':str(previous.relative_to(BASE)),'priorEvidenceSha256':hashlib.sha256(previous.read_bytes()).hexdigest(),
+                'teacherApproved':False}
+            write_json(target,receipt);return receipt
+        prior_attempts.append(previous)
+    if prior_attempts:
+        receipt={'status':'REVIEW_REQUIRED','imageSha256':sha,'method':'IDENTICAL_SOURCE_KEY_PRIOR_BOUNDED_READING_UNRESOLVED',
+            'priorEvidence':[str(p.relative_to(BASE)) for p in prior_attempts],'teacherApproved':False}
+        write_json(target,receipt);return receipt
+    if group['keyIdentityType']=='THREE_STEP_MOCK_NUMBER_MATRIX':
+        from mebi_pratik2_uc_adim_deneme_anahtar import read_key as read_mock
+        return read_mock(group,pdf,module,root)
     if group['keyIdentityType']=='SINGLE_TEST_PRINTED_NUMBER':
         if SINGLE_KEYS is None:
             data=json.loads((BASE/'single-test-crops/second-reading/report.json').read_text(encoding='utf8'))

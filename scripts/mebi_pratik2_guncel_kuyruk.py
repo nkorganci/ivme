@@ -36,7 +36,7 @@ def run():
         data=json.loads(book.read_text(encoding='utf8'));group_reviews=data['reviewQueueAdditions']
         for row in data['items']:
             decisions[row['code']]={**row,'status':'INDEPENDENT_KEY_OR_VISUAL_BODY_REVIEW_PENDING','reasons':['SOURCE_ADMISSION_NOT_COMPLETE'],'studentVisible':False}
-    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops']:
+    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops']:
         manifest=BASE/directory/'report.json'
         if not manifest.exists():continue
         for source in json.loads(manifest.read_text(encoding='utf8'))['sources']:
@@ -59,10 +59,11 @@ def run():
         if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
     # A new word-level crop is explicit changed evidence, not a repetition of
     # the same failed crop. Preserve the earlier reason as history.
-    word_report=BASE/'word-boundary-crops/report.json'
-    if word_report.exists():
+    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops']:
+        word_report=BASE/directory/'report.json'
+        if not word_report.exists():continue
         for source in json.loads(word_report.read_text(encoding='utf8'))['sources']:
-            data=json.loads((BASE/'word-boundary-crops'/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
+            data=json.loads((BASE/directory/(source['sourceSha256']+'.json')).read_text(encoding='utf8'))
             for row in data['items']:
                 if row['code'] in accepted:continue
                 prior=decisions.get(row['code'],{})

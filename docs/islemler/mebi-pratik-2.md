@@ -143,3 +143,22 @@ gövde makbuzlarını tam native satır/sözcük sınırını da isteyen V2 ile
 denetler. Zayıf türetilmiş makbuz arşivlenir ve gerçek görsel okuma yolu
 korunur; özgün kaynak ve soru kaydı silinmez. Yayımlanmış başarısız kanıt
 varsa makbuzları değiştirmeden görsel inceleme gerektiren raporla durur.
+
+### Devam eden yeni deneme ve üst başlık geçişleri
+
+- `python scripts/mebi_pratik2_uc_adim_deneme_kirpim.py`:özgün soru görüntüsü,
+  adım/deneme/bölüm kimlikli anahtar kırpımı ve yalnız açık soru-komutu konu bağı.
+  İnce konusu bilinmeyenler `three-step-mock-crops/` içinde ayrı gerekçeli kalır.
+- `python scripts/mebi_pratik2_uc_adim_deneme.py --output-dir three-step-mock-discovery-v2`
+  ve `python scripts/mebi_pratik2_uc_adim_deneme_kirpim.py --discovery-dir three-step-mock-discovery-v2 --output-dir three-step-mock-additional-crops --package-dir three-step-mock-additional-expansion --additional-only`
+  girintili sağ Fen sütunu kanıtını ayrı sürümde çıkarır; sıradaki/önceki sağlam
+  soru kodları veya görüntüleri yeniden yazılmaz.
+- `python scripts/mebi_pratik2_dort_dortluk.py --output-dir four-square-discovery-v4`
+  üstte başlayan soru metnini kitap bölüm başlığından ayırır.
+  `python scripts/mebi_pratik2_dort_dortluk_kirpim.py --discovery-dir four-square-discovery-v4 --output-dir four-square-header-crops --package-dir four-square-header-expansion --additional-only`
+  yalnız yeni/düzeltilmiş fiziksel gövdeleri ayrı üretir; önceki aday kodu
+  korunur, sıraya alınmış kod tekrar kabul edilmez. Aynı grup ve aynı görsel
+  hashindeki bağımsız anahtar makbuzu tekrar OCR/model çağrısı olmadan kullanılır.
+-041:`three-step-mock-expansion`172 aday;042–043:`four-square-header-expansion`867
+  aday. `mebi_pratik2_arsiv_kabul.py --package-dir <ad> --first-batch <ilk> --wait-for <önceki>/pass-result.json --chunk-size 500 --publish`.
+  Bunlar mevcut kabul kapılarını geçmeden soru aktarılmış sayılmaz.

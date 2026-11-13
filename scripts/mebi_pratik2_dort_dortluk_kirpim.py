@@ -19,10 +19,12 @@ from yks_birlestirme import write_json
 
 OUT=BASE/'four-square-crops'
 ROOT=BASE/'four-square-discovery-v3'
+PACKAGE='four-square-expansion'
+ADDITIONAL=False
 
 
 def prepare_packages():
-    folder=BASE/'four-square-expansion';folder.mkdir(exist_ok=True);target=folder/'chapter-packages.json'
+    folder=BASE/PACKAGE;folder.mkdir(exist_ok=True);target=folder/'chapter-packages.json'
     if target.exists():return
     items=[];groups={}
     for path in sorted(OUT.glob('*.json')):
@@ -57,6 +59,10 @@ def category_for(chapter,exam,subjects,categories):
 def run():
     OUT.mkdir(exist_ok=True);sources=json.loads((ROOT/'report.json').read_text(encoding='utf8'))['sources']
     categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories'];reports=[];started=time.monotonic()
+    reserved=set()
+    if ADDITIONAL:
+        for package in BASE.glob('*/chapter-packages.json'):
+            reserved.update(r['code'] for r in json.loads(package.read_text(encoding='utf8')).get('items',[]))
     for source in sources:
         sha=source['sourceSha256'];target=OUT/(sha+'.json')
         if target.exists():report=json.loads(target.read_text(encoding='utf8'))
@@ -70,6 +76,13 @@ def run():
             with original.open('rb') as stream:
                 if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Original source changed')
             items=[];review=[];key_groups=[];seen_solved=Counter((r['chapterKey'],r['printedNumber']) for r in data['solvedQuestions'])
+            prior_locations=defaultdict(list)
+            if ADDITIONAL:
+                old=json.loads((BASE/'four-square-crops'/(sha+'.json')).read_text(encoding='utf8'))
+                for previous in old['items']+old['reviewQueueAdditions']:
+                    if not previous.get('code') or not previous.get('bodyClip'):continue
+                    column=int(previous['bodyClip'][0]>100)
+                    prior_locations[(previous['bodyPage'],column,previous['printedNumber'],previous['sourceQuestionType'])].append(previous)
             candidates=[]
             with pymupdf.open(original) as pdf:
                 for group in data['groups']:
@@ -101,7 +114,19 @@ def run():
                     key_groups.append(g);candidates.append((question,question,g,identity))
                 for body,answer,group,identity in candidates:
                     page=pdf[body['page']-1];number=body['printedNumber'];code=f'MEBI2-{sha[:12]}-{identity}-Q{number:03}'
+                    previous=None
+                    if ADDITIONAL:
+                        prior=prior_locations.get((body['page'],body['column'],number,body['testToken']),[])
+                        if len(prior)>1:
+                            review.append({'sourceSha256':sha,'page':body['page'],'printedNumber':number,'reasons':['PRIOR_PHYSICAL_BODY_IDENTITY_NOT_UNIQUE']});continue
+                        if prior:
+                            previous=prior[0];code=previous['code']
+                            if normalize(previous['printedChapter'])==normalize(body['chapter']):continue
+                        if code in reserved:continue
                     category=category_for(body['chapter'],exam,subjects,categories)
+                    if ADDITIONAL and category is None:
+                        from mebi_pratik2_konu_ayrintisi import match_title
+                        category=match_title(body['chapter'],exam,subjects,categories)
                     top=body['bbox'][1]-4;end=body['solutionStartBBox'][1]-3 if body['testToken']=='SOLVED' else body['columnEndY']
                     clip=[page.rect.width/2+1 if body['column'] else 0,top,page.rect.width if body['column'] else page.rect.width/2-1,end]
                     clip,proof,reasons=word_region(page,clip,number)
@@ -117,6 +142,10 @@ def run():
                         'answer':answer['answer'],'nativeBodyProof':{'status':'LOCAL_VISUAL_BODY_REVIEW_REQUIRED','uniqueChoiceCounts':proof['uniqueChoiceCounts']},
                         'wordBodyProof':proof,'printedChapter':body['chapter'],'sourceQuestionType':body['testToken'],
                         'teacherApproved':False,'studentVisible':False,'productionImportAllowed':False}
+                    if ADDITIONAL:
+                        row.update(newLayoutEvidence=True,printedHeaderCorrectionEvidence={'discovery':ROOT.name,
+                            'previousChapter':previous['printedChapter'] if previous else None,'currentChapter':body['chapter'],
+                            'existingQuestionCodePreserved':bool(previous)})
                     if reasons:review.append({**row,'status':'REVIEW_REQUIRED','reasons':sorted(set(reasons))});continue
                     image=OUT.name+'/'+code+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=pymupdf.Rect(clip),alpha=False);pix.save(BASE/image)
                     if pix.samples!=pymupdf.Pixmap(str(BASE/image)).samples:raise ValueError('Four-square body PNG pixels differ')
@@ -133,4 +162,12 @@ def run():
     prepare_packages()
 
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    import argparse
+    from pathlib import Path
+    p=argparse.ArgumentParser();p.add_argument('--discovery-dir',default=ROOT.name);p.add_argument('--output-dir',default=OUT.name)
+    p.add_argument('--package-dir',default=PACKAGE);p.add_argument('--additional-only',action='store_true');a=p.parse_args()
+    if any(Path(n).name!=n for n in (a.discovery_dir,a.output_dir,a.package_dir)):raise ValueError('Unsafe source package path')
+    if a.additional_only and a.output_dir=='four-square-crops':raise ValueError('Additional layout must preserve original crop evidence')
+    ROOT=BASE/a.discovery_dir;OUT=BASE/a.output_dir;PACKAGE=a.package_dir;ADDITIONAL=a.additional_only
+    run()

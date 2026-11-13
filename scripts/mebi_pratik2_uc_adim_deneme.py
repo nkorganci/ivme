@@ -128,7 +128,7 @@ def discover(native, bars_by_page):
                                   'lines': [l for l in page['lines'] if 76 < l['bbox'][1] < 120]})
         for line in page['lines']:
             match = BODY.match(line['text']); x, y = line['bbox'][:2]
-            if match and 80 < y < height-60 and (48 < x < 56 or width/2+3 < x < width/2+12):
+            if match and 75 < y < height-60 and (48 < x < 56 or width/2+3 < x < width/2+30):
                 anchors.append({'printedNumber': int(match[1]), 'bbox': line['bbox'], 'text': line['text'],
                                 'page': page['physicalPage'], 'column': int(x > width/2)})
         for anchor in anchors:
@@ -183,4 +183,9 @@ def run():
 
 
 if __name__ == '__main__':
-    with process_lock(BASE/'.jobs/three-step-mock-discovery.lock'): run()
+    import argparse
+    from pathlib import Path
+    parser=argparse.ArgumentParser();parser.add_argument('--output-dir',default=OUT.name);args=parser.parse_args()
+    if Path(args.output_dir).name!=args.output_dir:raise ValueError('Unsafe discovery path')
+    OUT=BASE/args.output_dir
+    with process_lock(BASE/'.jobs'/(args.output_dir+'.lock')): run()

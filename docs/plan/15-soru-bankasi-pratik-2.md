@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 6.906 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 7.094 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -38,8 +38,9 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
 
-- Başlık karşılığı tamamlanan2.390 yeni adayın kaynak kabulü ve007–018 zinciri çalışıyor.
-- Sözcük sınırlarıyla3.114 yeni gövde;1.005 konu bağlı aday019–024 zincirinde sırada.
+- Başlık bağlı2.390 adayın kaynak kabulü BITTI:2.313 kabul/77 inceleme;007–018
+  canlı kapıları geçti. Bu tamamlanan alt geçiş sonunda canlı banka7.094 oldu.
+- Sözcük sınırlarıyla3.114 yeni gövde;1.005 konu bağlı aday019–024 zincirinde işleniyor.
 - Dört Dörtlük15 kitapta matris ve açık Cevap: bağlaması yapıldı;13.843 kırpım,
   konu bağı hazır4.516 aday025–034 zincirinde sırada. Diğerleri aktif konu/yerleşim işi.
 - Beş Fizik tablosundaki14 anahtar grubu ayrıca agent görsel okumasıyla doğrulandı;
@@ -47,7 +48,12 @@ Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 - Native metni olmayan421 sayfanın özgün görüntü OCR’ı tamamlandı;110 sayfada
   metin okundu,311 sonuç “soru yok” kabulü değildir. Sonraki yerleşim işi açık.
 - Ek kontrollü alt başlık eşlemeleriyle2.478 aday036–040 zincirinde sırada.
-- Dört3 Adım deneme kitabında5.424 gövde/basılı cevap kimlik bağı hazır; henüz alım değildir.
+- Dört3 Adım denemede4.917 özgün kırpım/172 konu bağlı aday041 için hazır;
+  ek girintili sütun geçişinde87 yeni kırpım incelemede. Bunlar alım değildir.
+- Üstte başlayan soru/bölüm başlığı ayrımı V4 ile12.919 matris ve5.422 açık
+  çözümlü gövdeyi bağladı;3.470 ek kırpım/867 konu bağlı aday042–043 için hazır.
+- Native V2 denetimi BITTI:907 kanıtın577'si tam satır sınırını geçti,330'u
+  gerçek görsel yola döndü. Yayımlanmış başarısız kayıt0; ana plan kapanmadı.
 - Dört3 Adım deneme kitabı, kalan konu/gövde düzenleri ve paket kaynakları
   bütün arşiv kapsamı içinde; bu alt işler bitince ana görev kapanmaz.
 

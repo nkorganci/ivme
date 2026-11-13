@@ -112,7 +112,10 @@ def answer_matrices(page):
 
 def body_header(page):
     width=page['rect'][2];top=[l for l in page['lines'] if l['bbox'][1]<65 and l['text'].strip()]
+    first_body=min((l['bbox'][1] for l in top if BODY.match(l['text']) and l['bbox'][1]>34
+        and (28<=l['bbox'][0]<=54 or width/2+4<=l['bbox'][0]<=width/2+38)),default=100)
     titles={normalize(l['text']):l for l in top if 15<l['bbox'][1]<56
+        and l['bbox'][3]<first_body-1
         and width*.25<(l['bbox'][0]+l['bbox'][2])/2<width*.75
         and not re.fullmatch(r'\d+',l['text'].strip()) and len(normalize(l['text']))>2
         and 'test' not in normalize(l['text']) and 'sorular' not in normalize(l['text'])}
@@ -151,7 +154,7 @@ def discover(native):
         for line in page['lines']:
             match=BODY.match(line['text'])
             x,y=line['bbox'][:2]
-            if match and 60<y<height-40 and (28<=x<=54 or width/2+4<=x<=width/2+38):
+            if match and 34<y<height-40 and (28<=x<=54 or width/2+4<=x<=width/2+38):
                 anchors.append({'printedNumber':int(match[1]),'page':page['physicalPage'],'bbox':line['bbox'],'text':line['text']})
         for anchor in anchors:
             column=anchor['bbox'][0]>width/2;nexts=[a['bbox'][1] for a in anchors if (a['bbox'][0]>width/2)==column and a['bbox'][1]>anchor['bbox'][1]+1]
@@ -213,4 +216,10 @@ def run():
     write_json(OUT/'report.json',report)
 
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    import argparse
+    from pathlib import Path
+    parser=argparse.ArgumentParser();parser.add_argument('--output-dir',default=OUT.name);args=parser.parse_args()
+    if Path(args.output_dir).name!=args.output_dir:raise ValueError('Unsafe discovery directory')
+    OUT=BASE/args.output_dir
+    run()
