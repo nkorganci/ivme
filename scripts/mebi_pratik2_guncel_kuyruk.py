@@ -15,8 +15,7 @@ def run():
     admission_paths=['single-test-crops/source-pixel-acceptance.json','expanded-chapter-evidence/source-pixel-acceptance.json',
         'three-step-acceptance/source-pixel-acceptance.json','mock-language-intent/source-pixel-acceptance.json',
         'compiled-tarama-acceptance/source-pixel-acceptance.json','bounded-answer-recovery/source-pixel-acceptance.json']
-    admission_paths.extend(str(p.relative_to(BASE)) for p in sorted((BASE/'curated-chapter-expansion').glob('part-*/source-pixel-acceptance.json')))
-    admission_paths.extend(str(p.relative_to(BASE)) for p in sorted((BASE/'word-boundary-expansion').glob('part-*/source-pixel-acceptance.json')))
+    admission_paths.extend(str(p.relative_to(BASE)) for p in sorted(BASE.glob('*/part-*/source-pixel-acceptance.json')))
     admission_reviews=[]
     for relative in admission_paths:
         path=BASE/relative
@@ -37,7 +36,7 @@ def run():
         data=json.loads(book.read_text(encoding='utf8'));group_reviews=data['reviewQueueAdditions']
         for row in data['items']:
             decisions[row['code']]={**row,'status':'INDEPENDENT_KEY_OR_VISUAL_BODY_REVIEW_PENDING','reasons':['SOURCE_ADMISSION_NOT_COMPLETE'],'studentVisible':False}
-    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops']:
+    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops']:
         manifest=BASE/directory/'report.json'
         if not manifest.exists():continue
         for source in json.loads(manifest.read_text(encoding='utf8'))['sources']:

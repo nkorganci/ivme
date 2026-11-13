@@ -17,13 +17,17 @@ def accepted_snapshot():
         if not receipt.exists():continue
         value=json.loads(receipt.read_text(encoding='utf8'))
         if value['status']!='PASS':continue
-        count+=value.get('newQuestions',0);accepted.append(folder.name)
+        publication=folder/'publication-result.json'
+        delta=json.loads(publication.read_text(encoding='utf8'))['questionsAppended'] if publication.exists() else value.get('newQuestions',0)
+        count+=delta;accepted.append(folder.name)
         ui=folder/'live-bank-read-report.json'
         if ui.exists():latest=json.loads(ui.read_text(encoding='utf8'))
     scopes={}
-    for name in ['curated-chapter-expansion','word-boundary-expansion']:
-        path=BASE/name/'progress-current.json'
-        if path.exists():scopes[name]=json.loads(path.read_text(encoding='utf8'))
+    for package in BASE.glob('*/chapter-packages.json'):
+        path=package.parent/'progress-current.json'
+        if path.exists():scopes[package.parent.name]=json.loads(path.read_text(encoding='utf8'))
+    if latest and latest['checks'][0]['counts']['Tümü']!=count:
+        raise ValueError('Accepted publication deltas differ from live UI acceptance count')
     return {'atUtc':datetime.now(timezone.utc).isoformat(),'status':'FULL_ARCHIVE_IN_PROGRESS',
         'acceptedPublishedQuestions':count,'acceptedBatches':accepted,'activeSourcePasses':scopes,
         'liveCounts':latest['checks'][0]['counts'] if latest else None,

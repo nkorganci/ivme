@@ -98,3 +98,48 @@ python scripts/mebi_pratik2_arsiv_kararlari.py
 Tam arşivde gerekçeli karar kaydı tamamlanması, bütün basılı soruların
 çıkarıldığı veya öğretmen tarafından onaylandığı anlamına gelmez. Kapanış
 raporu aktarılan kapsamı ve ertelenen incelemeyi ayrı gösterir.
+
+## Matrisler, çözümlü sorular ve native metin boşlukları
+
+```powershell
+python scripts/mebi_pratik2_gorsel_sayfa_ocr.py
+python scripts/mebi_pratik2_gorsel_sayfa_ocr.py --enrich-words
+python scripts/mebi_pratik2_dort_dortluk.py
+python scripts/mebi_pratik2_dort_dortluk_kirpim.py
+python scripts/mebi_pratik2_arsiv_kabul.py --package-dir four-square-expansion --first-batch 25 --wait-for word-boundary-expansion/pass-result.json --chunk-size 500 --publish
+python scripts/mebi_pratik2_anahtar_kimlik_kurtarma.py --wait-and-publish
+```
+
+Mevcut çalışanları tekrar başlatma. Matrisler sütun numarası, basılı test ve
+A/B varyantıyla bağlanır; boş hücre harfleri kaydırmaz. Çözümlü sorunun
+öğrenci görseli Çözüm’den önce kesilir, basılı Cevap: ayrı kanıttır.
+İlk okuma OCR ise ikinci bağımsız yöntem görsel modeldir. Başlık/adım
+hatasında kaynaktan yapılan agent görsel okuması ayrı yöntem olarak yazılır;
+insan öğretmen onayı üretilmez, eski başarısız makbuz silinmez.
+
+Görselsiz bazı gövdelerin yerel kaynak kanıtı:
+
+```powershell
+python scripts/mebi_pratik2_native_govde.py --package-dir <paket-dizini>
+```
+
+Bu kısayol kaydedilmiş başarılı/başarısız görsel okumayı değiştirmez.
+Özgün piksel eşitliği, bütün native sözcük kutuları, doğru soru numarası,
+beş seçenek, grafik/şekil ve dış bağlam yokluğu birlikte aranır. Kanıt
+makbuzuna model çağrısı0 yazılır; kalanlar normal görsel incelemeye gider.
+
+### 3 Adım deneme kaynak kimliği keşfi
+
+`python scripts/mebi_pratik2_uc_adim_deneme.py` dört deneme kitabında basılı
+adım/deneme/test bölümü/soru numarasını eşler. Döndürülmüş adım başlığının
+metin kutusu ilk/son cevap satırını kapsamaz; özgün PDF vektöründeki dikey
+tablo şeridi sınır olarak kullanılır. Boş cevap hücresi sonraki harfleri
+kaydırmaz. Çıktı `three-step-mock-discovery/`; keşif aktarım kabulü değildir.
+`python testler/mebi-pratik2-three-step-mock-test.py` kimlik/boş hücre
+ve eksik vektör şeridi sınırlarını denetler.
+
+`python scripts/mebi_pratik2_native_govde.py --audit-existing` eski CPU
+gövde makbuzlarını tam native satır/sözcük sınırını da isteyen V2 ile
+denetler. Zayıf türetilmiş makbuz arşivlenir ve gerçek görsel okuma yolu
+korunur; özgün kaynak ve soru kaydı silinmez. Yayımlanmış başarısız kanıt
+varsa makbuzları değiştirmeden görsel inceleme gerektiren raporla durur.

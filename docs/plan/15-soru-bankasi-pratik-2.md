@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 4.455 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 6.906 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -10,7 +10,7 @@ bulunamayan cevaplar için farklı yerel OCR ve kaynak kimliğiyle sınırlı
 kurtarma geçişi uygulandı; cevap tahmini yapılmadı.
 
 **Sınır:** bütün arşivdeki basılı soruların tamamının çıkarıldığı veya aktarıldığı
-kanıtlanmadı. `4.791` soru yayında; `21.353`
+kanıtlanmadı. İlk geçiş sonunda `4.791` soru yayımlandı; `21.353`
 ayrı aday kodu incelemede. Bu sayılar tüm arşivin tekil soru toplamı değildir.
 İnceleme kuyruğu bu geçişin ayrı teslimidir; öğretmen tarafından çözülmüş sayılmaz.
 
@@ -36,7 +36,26 @@ anahtar/gövde kabulü →deneme alt ders/konu eşlemesi →kalan PDF düzenleri
 paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kabulü.
 Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
-## Sonuç
+## Aktif tam arşiv işleri
+
+- Başlık karşılığı tamamlanan2.390 yeni adayın kaynak kabulü ve007–018 zinciri çalışıyor.
+- Sözcük sınırlarıyla3.114 yeni gövde;1.005 konu bağlı aday019–024 zincirinde sırada.
+- Dört Dörtlük15 kitapta matris ve açık Cevap: bağlaması yapıldı;13.843 kırpım,
+  konu bağı hazır4.516 aday025–034 zincirinde sırada. Diğerleri aktif konu/yerleşim işi.
+- Beş Fizik tablosundaki14 anahtar grubu ayrıca agent görsel okumasıyla doğrulandı;
+  gerçek anahtar-inceleme adayları035’te gövde/alım kapısından geçecek.
+- Native metni olmayan421 sayfanın özgün görüntü OCR’ı tamamlandı;110 sayfada
+  metin okundu,311 sonuç “soru yok” kabulü değildir. Sonraki yerleşim işi açık.
+- Ek kontrollü alt başlık eşlemeleriyle2.478 aday036–040 zincirinde sırada.
+- Dört3 Adım deneme kitabında5.424 gövde/basılı cevap kimlik bağı hazır; henüz alım değildir.
+- Dört3 Adım deneme kitabı, kalan konu/gövde düzenleri ve paket kaynakları
+  bütün arşiv kapsamı içinde; bu alt işler bitince ana görev kapanmaz.
+
+Kabul edilen güncel sayılar `archive-continuation-progress.json`;
+ölçüm `progress-events.jsonl` /`archive-continuation-events.jsonl`;
+uygulama komutları [işletim tarifinde](../islemler/mebi-pratik-2.md).
+
+## İlk geçişin korunan sonucu
 
 - Canlı banka: **4.791 soru**, `MEBI_PRACTICE_2`, yan menü **Soru Çöz & Pratik 2**.
 - Etkin katalog: `labels-v1-b5fca4abb818b9467a4a6582`.

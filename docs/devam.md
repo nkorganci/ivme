@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 4.455 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 6.906 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -19,12 +19,46 @@ devam et. Alt parti bitmesi durma nedeni değildir.
 CPU sözcük-kırpım işi tamam:3.114 yeni gövde;1.005 konu bağlı aday
 `word-boundary-expansion/chapter-packages.json`. Bunlar aktarılmış sayılmaz.
 Bekleyen süreç77599 bu paketi önceki genişleme bitince019+ zincirinde işler.
-İzleyici62631 kabul edilen sayıları ve görev/plan başlığını otomatik günceller.
+İzleyici66165 kabul edilen sayıları ve görev/plan başlığını otomatik günceller;
+67108 `progress-events.jsonl` dosyasına beş dakikada/her%10’da ölçüm yazar.
  Kullanıcı ilk geçişte durmayı reddetti;
 4.791 yayın ve gerekçeli ayırma ana görev kapanışı değildir. Önceki BITTI
 kararı geri alındı. Plan15.02–04/06–07 yeniden açık;15.01 envanter ve15.05
 arayüz kabulü korunur. Mevcut kaynakları/bankayı/model okumalarını baştan
 üretme. Ana plan yalnız tam soru kapsamı kanıtlandığında BITTI olabilir.
+
+**Ek zincirler:**82258, `four-square-expansion`4.516 adayı500’lük
+kabul gruplarıyla025–034 partilerinde işler; önce77599/019–024 tamamlanır.
+7261, anahtar başlığı/adımını yerel okuyucunun kaçırdığı beş Fizik tablosundaki
+14 bağımsız agent görsel okumasını sakladı;17861 tamamlanınca yalnız gerçek
+anahtar-inceleme adaylarını seçer,034 sonrası035’te gövde/alım kabulü yapar.
+Bu görsel okuma insan öğretmen onayı değildir. Hiçbir çalışan model/aktarım
+servisini durdurma; makbuzlardan izle, ikinci aynı writer başlatma.
+
+Yeni CPU işleri BITTI (aktarımı değildir):421 native-metin boş sayfanın OCR’ı
+135,2sn;110 metin/311 OCR metni yok, ikincisi soru yokluğu kanıtı sayılmaz.
+`visual-page-discovery/report.json`,110 ek sözcük geometrisi. Dört Dörtlük15
+kitapta native matris ve açık Cevap satırı bağlaması `four-square-discovery-v3/`;
+13.843 özgün gövde/4.516 konu bağı `four-square-crops/report.json`.
+Native gövde hızlandırması V2 denetiminde: yalnız sözcüklerin değil tüm
+kesişen native satırların kırpımda kalması da şart. Önceki V1 sayıları nihai
+kabul değildir. Çalışan1033, `native-body-v2-audit.json` üretir; başarısız
+yalnız türetilmiş makbuzları görsel okuma yoluna geri alır, yayımlanmış soru
+varsa önce gerçek görsel inceleme ister. Soru/öğrenci DB'sine yazmaz.
+10857, ek2.478 kontrollü alt başlık adayını036–040 partilerinde035 sonrası
+kabul eder;221 tek-test anahtarında aynı kaynak/hash bağımsız okuma korundu.
+Yeni `three-step-mock-discovery/report.json`: dört3 Adım deneme kitabında
+5.424 gövde/basılı cevap adım-deneme-bölüm kimliğiyle bağlandı; bu çıkarım
+alım değildir.5 bağlama testi PASS. Sıradaki iş özgün kırpım, bağımsız anahtar
+ve soru-komutundan kesin konu etiketli küçük pilot; kalanlar açık inceleme.
+
+**Bekleyen kullanıcı tercihi (çalışmayı durdurmaz):** cevap/gövde kanıtlı,
+ince konusu kesinleşmeyenleri öğrenci Pratik2’de ders altında “Konusu
+incelemede” gösterme mi, konu da doğrulanana kadar ayrı tutma mı? Async soru
+henüz yanıtlanmadı; şu anki aktarımlar sıkı konu kapısını korur. İlk seçeneği
+kendiliğinden onaylanmış sayma. Kaynak-etiketleri sözleşmesinde mevcut
+`<exam>.<subject>.dersin-genel-kapsami` kategorileri var; uydurma konu/öğretmen
+onayı üretme. Asıl kapsam bütün cevaplı arşiv, dar geçiş kapanışı yok.
 
 Aktif sıra:21.353 adaydan17.508 konu/ders eşlemesi;3 Adım ve derleme
 kitaplarının basılı bölüm başlıklarını ana tablodaki kategorilere bağlayıp

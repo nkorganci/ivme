@@ -26,11 +26,11 @@ def snapshot():
         if acceptance.exists():accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
         progress_file=BASE/name/'progress-current.json'
         if progress_file.exists():stages[name]=json.loads(progress_file.read_text(encoding='utf8'))
-    for name in ['curated-chapter-expansion','word-boundary-expansion']:
-        for acceptance in sorted((BASE/name).glob('part-*/source-pixel-acceptance.json')):
-            accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
-        checkpoint=BASE/name/'progress-current.json'
-        if checkpoint.exists():stages[name]=json.loads(checkpoint.read_text(encoding='utf8'))
+    for acceptance in sorted(BASE.glob('*/part-*/source-pixel-acceptance.json')):
+        accepted_codes.update(r['code'] for r in json.loads(acceptance.read_text(encoding='utf8'))['accepted'])
+    for package in BASE.glob('*/chapter-packages.json'):
+        checkpoint=package.parent/'progress-current.json'
+        if checkpoint.exists():stages[package.parent.name]=json.loads(checkpoint.read_text(encoding='utf8'))
     raw_accepted=len(accepted_codes);excluded_codes=set();alias_codes=set()
     for folder in BASE.glob('verified-source-batch-*'):
         final=folder/'final-source-acceptance.json'

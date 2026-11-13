@@ -12,6 +12,7 @@ from mebi_pratik2_arsiv_basliklari import controlled_match,chapter_key
 import mebi_pratik2_arsiv_kabul as admission
 import mebi_pratik2_plan_sonuc as closeout
 from mebi_pratik2_sozcuk_kirpim import word_region,heading_category
+import mebi_pratik2_arsiv_izle as tracker
 
 
 class ArchiveBoundaries(unittest.TestCase):
@@ -85,6 +86,16 @@ class ArchiveBoundaries(unittest.TestCase):
         c=self.category()
         row={'printedSourceHeadings':[{'text':'> Göç'},{'text':'• Example explanation is not a chapter.'}]}
         self.assertEqual(heading_category(row,{},'TYT',{'Coğrafya'},[c]),c)
+
+    def test_legacy_acceptance_total_is_not_mistaken_for_a_batch_delta(self):
+        with tempfile.TemporaryDirectory() as name:
+            root=Path(name);pilot=root/'publication-preparation';pilot.mkdir()
+            (pilot/'publication-result.json').write_text(json.dumps({'questionsAppended':21}),encoding='utf8')
+            batch=root/'verified-source-batch-001';batch.mkdir()
+            (batch/'bank-acceptance.json').write_text(json.dumps({'status':'PASS','acceptedQuestions':557}),encoding='utf8')
+            (batch/'publication-result.json').write_text(json.dumps({'questionsAppended':536}),encoding='utf8')
+            (batch/'live-bank-read-report.json').write_text(json.dumps({'checks':[{'counts':{'Tümü':557}}]}),encoding='utf8')
+            with patch.object(tracker,'BASE',root):self.assertEqual(tracker.accepted_snapshot()['acceptedPublishedQuestions'],557)
 
 
 if __name__=='__main__':unittest.main()

@@ -29,6 +29,7 @@ def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='v
     pixel_excluded=eligible_before_pixels-len(new)
     new=select_new(new,folder)
     metadata=[];images=[];rows=[]
+    page_counts={r['sourceSha256']:r['pageCount'] for r in json.loads((BASE/'full-pdf-coverage.json').read_text(encoding='utf8'))['documents']}
     for row in new:
         if not row['productionImportAllowed'] or row['status']!='SOURCE_VERIFIED_READY_FOR_INSERT_ONLY':raise ValueError('Source admission missing')
         relative=f'mebi-pratik-2/{row["sourceSha256"][:20]}/{row["code"]}.png'
@@ -45,7 +46,7 @@ def run(acceptance='single-test-crops/source-pixel-acceptance.json',batch_dir='v
             'topic':row['topic'],'categoryIds':[row['categoryId']],'bank':'MEBI_PRACTICE_2','active':True,
             'available':True,'image':relative,'source':title,'title':title+f' — {row["printedNumber"]}',
             'locations':{row['categoryId']:[{'type':'PDF','sourceKey':'pdf:'+row['sourceSha256'],
-                'pdfPageStart':row['bodyPage'],'pdfPageEnd':row['bodyPage'],'pageCount':row['keyPage']}]}})
+                'pdfPageStart':row['bodyPage'],'pdfPageEnd':row['bodyPage'],'pageCount':page_counts[row['sourceSha256']]}]}})
     csv_path=folder/'insert-only.csv'
     with csv_path.open('w',encoding='utf8',newline='') as stream:
         writer=csv.writer(stream);writer.writerow(['code','exam_type','subject','topic','source','image','correct_answer','choice_count','active','bank']);writer.writerows(rows)

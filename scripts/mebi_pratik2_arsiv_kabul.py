@@ -112,10 +112,11 @@ def compiled_key(group,pdf,discovery,module):
 def body_read(row,pdf,module):
     path=BASE/row['image'];sha=hashlib.sha256(path.read_bytes()).hexdigest()
     if sha!=row['imageSha256']:raise ValueError('New chapter body image changed')
-    if row['subject'] in TEXT_SUBJECTS and not page_graphics(pdf[row['bodyPage']-1]):
+    if row.get('nativeBodyProof') and row['subject'] in TEXT_SUBJECTS and not page_graphics(pdf[row['bodyPage']-1]):
         return {'status':'DETERMINISTIC_NATIVE_BODY_PROVED','imageSha256':sha,
             'basis':row['nativeBodyProof'],'pageGraphics':False,'sourcePixelsChanged':False}
-    for folder in [BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',OUT/'body-readings']:
+    for folder in [BASE/'single-test-crops/body-model-review',BASE/'expanded-chapter-evidence/body-readings',
+                   BASE/'three-step-acceptance/body-readings',BASE/'bounded-answer-recovery/body-readings',OUT/'body-readings']:
         receipt=folder/(row['code']+'.json')
         if receipt.exists():
             value=json.loads(receipt.read_text(encoding='utf8'))
@@ -157,12 +158,18 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                         with source.open('rb') as stream:
                             if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Original source changed')
                         opened[sha]=pymupdf.open(source)
-                        directory='three-step-discovery-v3' if groups[row['groupId']].get('stepToken') else 'compiled-tarama-discovery'
-                        discoveries[sha]=json.loads((BASE/directory/(sha+'.json')).read_text(encoding='utf8'))
+                        if groups[row['groupId']].get('keyIdentityType'):discoveries[sha]={}
+                        else:
+                            directory='three-step-discovery-v3' if groups[row['groupId']].get('stepToken') else 'compiled-tarama-discovery'
+                            discoveries[sha]=json.loads((BASE/directory/(sha+'.json')).read_text(encoding='utf8'))
                     group_id=row['groupId']
                     if group_id not in keys:
-                        reader=source_key if groups[group_id].get('stepToken') else compiled_key
-                        keys[group_id]=reader(groups[group_id],opened[sha],discoveries[sha],module)
+                        if groups[group_id].get('keyIdentityType'):
+                            from mebi_pratik2_dort_dortluk_anahtar import read_key
+                            keys[group_id]=read_key(groups[group_id],opened[sha],module,OUT)
+                        else:
+                            reader=source_key if groups[group_id].get('stepToken') else compiled_key
+                            keys[group_id]=reader(groups[group_id],opened[sha],discoveries[sha],module)
                     key=keys[group_id];reasons=[];body=None
                     if key['status']!='AGREES':reasons.append('INDEPENDENT_SOURCE_KEY_READING_UNRESOLVED')
                     elif row['answer']!=groups[group_id]['answers'].get(str(row['printedNumber'])):raise ValueError('Printed number does not bind to the answer')
@@ -171,8 +178,10 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                         if body['status'] not in ('MODEL_NO_VISIBLE_ISSUE','DETERMINISTIC_NATIVE_BODY_PROVED','NATIVE_BODY_COMPLETENESS_PROVED'):reasons.append('BODY_COMPLETENESS_NOT_CONFIRMED')
                     evidence={**row,'keySecondReading':key,'bodyModelReview':body,'teacherApproved':False}
                     if reasons:review.append({**evidence,'status':'REVIEW_REQUIRED','reasons':reasons,'studentVisible':False})
-                    else:accepted.append({**evidence,'status':'SOURCE_VERIFIED_READY_FOR_INSERT_ONLY','productionImportAllowed':True,
-                        'acceptanceBasis':'REVIEWED_CONTROLLED_CHAPTER_IDENTITY_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY'})
+                    else:
+                        if evidence.get('reasons'):evidence['priorReviewReasons']=evidence.pop('reasons')
+                        accepted.append({**evidence,'status':'SOURCE_VERIFIED_READY_FOR_INSERT_ONLY','productionImportAllowed':True,
+                            'acceptanceBasis':'REVIEWED_CONTROLLED_CHAPTER_IDENTITY_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY'})
                     done+=1;now=time.monotonic();current=10*done//max(1,len(rows))
                     if current>bucket or now-last>=300 or done==len(rows):
                         progress={'stage':'FULL_ARCHIVE_NEW_CHAPTER_ACCEPTANCE','completed':done,'total':len(rows),'percent':round(100*done/len(rows),2),
