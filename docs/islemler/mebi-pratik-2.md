@@ -459,3 +459,9 @@ Türkiye/dünya haritaları ayrılarak137 soru kabul edildi. Sadece yer haritas�
 var diye Harita Okuryazarlığı etiketi verilmez; ölçülen kaynak/ekonomi,
 su/toprak/bitki, doğa-insan veya bölge kavramına göre ana kimlik seçilir.
 Üç ekonomi politikası sorusu mevcut başlığa zorlanmadan ayrı bırakıldı.
+
+064 Tarih ilk70:53 kabul/17 inceleme; yayın kapıları PASS. Devam listesi
+`reviewed-native-history-expansion/next-topic-review.json`; sadece okunan
+metinlere konu kararı yazılır. Saray, yönetici sınıf, veraset, klasik toprak ve
+millet sistemi birbirine karıştırılmaz. Osmanlı ve Cumhuriyet sağlık/iktisat
+başlıkları yalnız kelime benzerliğiyle birleştirilmez.

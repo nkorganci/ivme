@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.398 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.451 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -54,19 +54,18 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |058|`reviewed-native-question-8-expansion`|38, BITTI|
 |059|`source-heading-profile-expansion`|28, BITTI|
 
-**Son alt adımlar060–063 BITTI:**89 Din Kültürü+87 felsefe grubu+51 Biyoloji+
-137 Coğrafya=364 yeni soru.10.398 canlı kabul (5.599 TYT/4.799 AYT).
-INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS; eski sorular korundu.
-Kalan incelemeler paketlerin `remaining-topic-review.json` dosyalarında;
-aynı yöntemle tekrar okuma. İçerik bekletme kuralı toplam8 kod.
-Sonraki261 Tarih metni `reviewed-native-history-expansion/input-review.json`;
-ilk70 metin gerçekten okundu, kararları064 için dondur; kalan191 henüz
-okunmadı. Bu kaynak ihracı tam arşiv sorusu/konu kabulü değildir.
-Kaynak dizini449 yol/316 kod; eski dizinler SHA history ile korunur.
-`source-curriculum-scope-expansion` aday0, yayın yok. MEB2018 PDF'si sadece
-etiket kapsamı referansıdır;15 sınır testi PASS. Yeni kırpım/model/öğretmen
-onayı üretilmedi. Deneme işçisi aynı imleçte çalışıyor; durdurma.
-Her kabul sonrası BITTI güncelle, yalnız kendi değişikliğini commit et ve devam et.
+**Son alt adımlar060–064 BITTI:**417 yeni soru;10.451 canlı kabul
+(5.599 TYT/4.852 AYT). INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS.
+Kalan incelemeler paketlerde; aynı yöntemi tekrar döndürme. İçerik bekletme9 kod.
+Tarih261 metninin ilk70'i064 ile kapandı(53 kabul/17 inceleme). Sonraki191 kayıt
+`reviewed-native-history-expansion/next-topic-review.json`; bunların ilk35'i
+okundu fakat henüz karar dondurulmadı, kalan156 okunmadı. Asıl sıra korunur.
+Matematikte üç basılı başlık grubu mevcut ana konuya açıkça bağlandı:
+ikinci derece eşitsizlikler, çember, silindir/küre. Etiket dizini geçişi çalışıyor;
+yeni adayları `source-math-heading-expansion` ile dondur,065 boşta. Karma
+trigonometri veya nokta/doğru analitiği başlıklarını tek konuya zorlama.
+Eski PNG/cevaplar korunur; soru bazında banka karşılaştırması kapalı.
+Deneme işçisi aynı imleçte sürüyor. Her kabul sonrası BITTI/commit ve sıradaki iş.
 
 **Etkin hızlı yol — pilot ve iki hızlı tarama BITTI:** kullanıcı önceliği mevcut
 kırpımı koru, önce cevap anahtarı, doğru ders–ünite–konu. Pratik1 kitap profili,

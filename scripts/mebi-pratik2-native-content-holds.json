@@ -57,6 +57,13 @@
       "note": "Mevcut özgün PNG gerçekten açıldı. Tabloda Arjinin için GUG yazımı görülüyor; kodon-aminoasit eşlemesi içerik incelemesine ayrıldı. Görsel yeniden üretilmedi, cevap tahmini/düzeltmesi yapılmadı; aynı kontrol tekrarlanmaz.",
       "teacherApproved": false,
       "imageSha256": "d8dbc6a069244bb29c622bd3ef7def41024bbf9167475e9c82a7fe88703cacba"
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q010",
+      "imageSha256": "403f82746c1c86d4937a35e84821843c4566632f723ffcebc975420e115b8b5e",
+      "reason": "SOURCE_CONTENT_PERIOD_LABEL_AMBIGUITY",
+      "note": "Native gövdede XVI. yüzyıl/Prens eseri ile Aydınlanma Çağı adlandırması birlikte geçiyor. Dönem bağlamı içerik incelemesine ayrıldı; görsel kusur kesinliği veya öğretmen kararı üretilmedi, aynı metni tekrar okuma.",
+      "teacherApproved": false
     }
   ]
 }

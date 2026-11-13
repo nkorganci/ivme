@@ -1,0 +1,537 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q001",
+      "categoryId": "excel.ayt.tarih.15cf3d63773a5aa8dea9",
+      "imageSha256": "02f3d70d00a3c07b3168cfbeab6cfc834f5cac9f5b88ebf1846a5564c9a96a21",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. I. Karadeniz ve Boğazlar Osmanlı egemenliği altına girdi. II. Kalelerin ve surların toplarla yıkılabileceği anlaşıldı. III. İstanbul'dan kaçan bilginler İtalya'ya yerleşti. İstanbul’un Fethi'nin yukarıda verilen sonuçlarından hangileri",
+      "rationale": "Fethin toplar, surlar ve Avrupanın siyasal yapısına etkisi doğrudan İstanbulun fethi kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q002",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "imageSha256": "9df9e6644274c74a6f8ed5cf206de7329bdb86762dc9fd1082d270d23c18cb92",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. I. Amasra'nın alınması, II. Sinop ve Trabzon’un alınması, III. Kırım’ın Fethi Fatih Sultan Mehmet Dönemi’ne ait yukarıdaki gelişmelerden hangileri doğrudan Karadeniz hâkimiyetini sağlamaya yöneliktir? A) Yalnız II",
+      "rationale": "Fatih-Kanuni dönemlerinin Karadeniz/Akdeniz hakimiyeti, ticaret yolları ve imparatorluk dış siyaseti karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q003",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "imageSha256": "72c021dadef6e54ba7f83c37efdbe5018328bcebbad37dd86daf94f4b6e72555",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Kırım ve Mısır’ın Osmanlı topraklarına katılmasının aşağıdakilerden hangisine zemin hazırladığı söylenebilir? A) Taht kavgalarının azalmasına B) Şii tehlikesinin tamamen önlenmesine C) Anadolu’da Türk siyasi birliğinin sağlanmasına D)",
+      "rationale": "Fatih-Kanuni dönemlerinin Karadeniz/Akdeniz hakimiyeti, ticaret yolları ve imparatorluk dış siyaseti karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q004",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "imageSha256": "ae429a06d9c93740faffff950b685af237ca33a18d268dd35ea4ef748cfeb64f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Osmanlı Devleti Kanuni Sultan Süleyman Dönemi kronolojik gelişmeleri aşağıdaki gibidir. Yukarıda verilen kronolojik cetvelde boş bırakılan 2 ve 6 numaralı kutucuklara aşağıda verilen gelişmelerden hangisi sırasıyla getirilmelidir?",
+      "rationale": "Fatih-Kanuni dönemlerinin Karadeniz/Akdeniz hakimiyeti, ticaret yolları ve imparatorluk dış siyaseti karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q011",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "imageSha256": "2c94ec2ab76b81219ab991d623e56a49c3ee6cd3c13bdaeeb1bc5dff9b9b8d14",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Aşağıdakilerin hangisinde I ve II. sütun arasında ilişki yoktur? I II Preveze Deniz Akdeniz’in Türk A) Savaşı’nın kazanılması gölü hâline gelmesi Karadeniz’in Türk B) Kırım’ın Fethi gölü",
+      "rationale": "Fatih-Kanuni dönemlerinin Karadeniz/Akdeniz hakimiyeti, ticaret yolları ve imparatorluk dış siyaseti karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q005",
+      "categoryId": "excel.ayt.tarih.d84501c07a75e2a49fc1",
+      "imageSha256": "1602989f85eb28e19aa9cc1c6ab69dfa29a3354b3d0faa0573437d669d98b82f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. I. Çaldıran Muharebesi II. Otlukbeli Muharebesi III. Mercidabık Muharebesi IV. Cem Sultan Olayı V. Ridaniye Muharebesi Yukarıdaki olaylardan hangileri Yavuz Sultan Selim Dönemi'nde gerçekleşmemiştir? A) I ve",
+      "rationale": "Yavuz Sultan Selim döneminin Çaldıran, Mercidabık ve Ridaniye seferleri başka dönem olaylarından ayrılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q001",
+      "categoryId": "excel.ayt.tarih.c7ad07dd982c1b3e4439",
+      "imageSha256": "8e857e4edd6e9b035ec7224db9492dac97bafc48cd65d0c33a6ce8acd8f271b8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Topkapı Sarayı’nda yer alan Birun ile ilgili, I. Bab-ı Hûmayun ile Babüsselâm kapıları arasında yer alan bölümdür. II. Bayram tebrikleri, elçilerin kabulü, ayak divanı gibi toplantı ve",
+      "rationale": "Topkapı/Birun/Enderun saray teşkilatı ve şehirlerin kültürel dokusu doğrudan ölçülür; Divan üyeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q004",
+      "categoryId": "excel.ayt.tarih.c7ad07dd982c1b3e4439",
+      "imageSha256": "097e5354bce9a4bf039040880568506559557ed41d905feccf920ee577b126bb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Verilen eğitim, başta iyilik ve doğruluk ilkelerine dayanırdı. Bunun dışında öğrenciler dinî, ilmî ve siyasi eğitim yanında saray protokollerini öğrenir; daha sonra devlet kademelerinde görev alırlardı. Buradan",
+      "rationale": "Topkapı/Birun/Enderun saray teşkilatı ve şehirlerin kültürel dokusu doğrudan ölçülür; Divan üyeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q010",
+      "categoryId": "excel.ayt.tarih.c7ad07dd982c1b3e4439",
+      "imageSha256": "1d1f3193806845f873b8bd275586da27c4f797343b34359c4c37b9ac06ac6804",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Osmanlı’da şehir kültürünün gelişimi hakkında aşağıda verilen bilgilerden hangisi yanlıştır? A) Osmanlı şehirlerinin kuruluşunda, imarında ve iskânında vakıfların önemli rolü vardır. B) Osmanlı Devleti’nde şehir kültürünün temeli,",
+      "rationale": "Topkapı/Birun/Enderun saray teşkilatı ve şehirlerin kültürel dokusu doğrudan ölçülür; Divan üyeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q012",
+      "categoryId": "excel.ayt.tarih.c7ad07dd982c1b3e4439",
+      "imageSha256": "32553f6e5375cf6df6a5a44f2cb7425bd2ea89983656516f30f69bcb9f02011f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. XV. yüzyıldan XIX. yüzyılın ortalarına kadar Osmanlı padişahlarının resmî ikametgâhları olan ve “Saray-ı Cedit” olarak da bilinen Topkapı Sarayı’nın özellikleri arasında aşağıdakilerden hangisi gösterilemez? A) Üç ana",
+      "rationale": "Topkapı/Birun/Enderun saray teşkilatı ve şehirlerin kültürel dokusu doğrudan ölçülür; Divan üyeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q002",
+      "categoryId": "excel.ayt.tarih.3f179051fff9f6451d9b",
+      "imageSha256": "69d60e44bb545e5ad914c6ea52df3d2cf17e673cc1abdd6a9868b413d1962567",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. • Divana ait yazışmaları yapmak • Padişah fermanlarına tuğra çekmek • Tahrir işlerini yürütmek • Divan kararlarını mühimme defterlerine kaydetmek Yukarıda verilen özellikler hangi devlet görevlisine aittir?",
+      "rationale": "Nişancı, kazasker ve reisülküttabın Divan görevleri yönetici sınıfın işbölümüdür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q009",
+      "categoryId": "excel.ayt.tarih.3f179051fff9f6451d9b",
+      "imageSha256": "1b3c25099cbec57a7fadf6638f7db084c5c140978cac9ef0bcbe8cac6fd539de",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Osmanlı Devleti'nde ulema sınıfının şeyhülislamdan sonraki en yetkili kişisi olup aynı zamanda yargı ve eğitim teşkilatının da başı olan divan görevlisi aşağıdakilerden hangisidir? A) İstanbul kadısı B)",
+      "rationale": "Nişancı, kazasker ve reisülküttabın Divan görevleri yönetici sınıfın işbölümüdür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q011",
+      "categoryId": "excel.ayt.tarih.3f179051fff9f6451d9b",
+      "imageSha256": "5024d2fbfa2dc48359f777d403c1684c6b6a5305762ff6218c2368be55a8aefb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Divan-ı Hümâyun’unda yer alan; I. nişancı, II. reisülküttap, III. kazasker gibi görevlilerden hangilerinin devletler arası ilişkilerin takibi ve geliştirilmesine doğrudan katkısı olmuştur? A) Yalnız I B) Yalnız",
+      "rationale": "Nişancı, kazasker ve reisülküttabın Divan görevleri yönetici sınıfın işbölümüdür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q003",
+      "categoryId": "excel.ayt.tarih.976ce0deb6b5d2af68ef",
+      "imageSha256": "dc5bbd28b9227bbaa65e9e30f3afb6798f2faf1cd008b73706af292350f0bc5d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. • Divân-ı Hümâyun başkanlığının vezir-i âzama devredilmesi, • Harem’den evlenme usulünün getirilmesi, • Padişaha kardeş katline izin verilmesi gibi uygulamaların ortak amacı aşağıdakilerden hangisidir? A) Merkezî otoriteyi",
+      "rationale": "Merkezi otorite, lalalık/sancak eğitimi ve veraset-ekber-erşed uygulamaları hükümdarlık geleneğini ölçer.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q005",
+      "categoryId": "excel.ayt.tarih.976ce0deb6b5d2af68ef",
+      "imageSha256": "9fd7a80321682cac4b3a21cbae82253f78b479db0bca4917d3a6337d2b7ae037",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Aşağıdakilerden hangisi Osmanlı Devleti’nde lalanın başlıca vazifeleri arasında yer almaz? A) Şehzadelerin eğitim ve öğretimine nezaret etmek B) Şehzade adına sancaktaki adli işlere bakmak C) Şehzadenin divanına,",
+      "rationale": "Merkezi otorite, lalalık/sancak eğitimi ve veraset-ekber-erşed uygulamaları hükümdarlık geleneğini ölçer.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q006",
+      "categoryId": "excel.ayt.tarih.976ce0deb6b5d2af68ef",
+      "imageSha256": "6e201c83816304880168768c63f95e5b791e86e7db39a9fd8a1821041e3534d8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Türklerde iktidarın, hanedan mensuplarının müşterek malı olduğu yolunda eski bir siyasi gelenek vardır. Bu gelenek, tarih boyunca menfi neticeler doğurmuş, ülkelerin parçalanmasına ve Türk devletlerinin yıkılmasına sebebiyet",
+      "rationale": "Merkezi otorite, lalalık/sancak eğitimi ve veraset-ekber-erşed uygulamaları hükümdarlık geleneğini ölçer.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-4730c3359fdd4f98-Q008",
+      "categoryId": "excel.ayt.tarih.976ce0deb6b5d2af68ef",
+      "imageSha256": "5f137746ab81ee45900073d8dcaad1b1496d85d850596eff1793204b9f6f2f09",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aşağıdakilerden hangisi sancağa çıkma geleneğinin son temsilcisi olan Osmanlı padişahıdır? A) I. Ahmet B) III. Ahmet C) III. Mehmet D) III. Selim E) IV. Mehmet MEBI TARAMA",
+      "rationale": "Merkezi otorite, lalalık/sancak eğitimi ve veraset-ekber-erşed uygulamaları hükümdarlık geleneğini ölçer.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2cd2cc6d6e0f839a-Q001",
+      "categoryId": "excel.ayt.tarih.e8182b7a9a12cdf480ec",
+      "imageSha256": "a04bcb2f5120ed116a337311ee923138d223ae56c282aeb2ddfa520042d20300",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Osmanlı Devleti’nde millet sistemi ile ilgili, I. Bir bölgenin İslam devletine katılmasından sonra burada yaşayan Yahudi ve Hristiyanların haklarını koruyan bir idari yapıdır. II. Etnik aidiyet ve",
+      "rationale": "Din-mezhep temelli millet sistemi ve gayrimüslimlerin zimmi statüsü açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2cd2cc6d6e0f839a-Q007",
+      "categoryId": "excel.ayt.tarih.e8182b7a9a12cdf480ec",
+      "imageSha256": "6008d601fc8434811959ac743df7f0f3e4365f525e7117b188146c5069151804",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Osmanlı Devleti'nde, semavi bir dine mensup olan ve bu doğrultuda kendi inançları ile hukuk kurallarına göre yaşamalarına izin verilen gayrimüslim topluluklara ne ad verilirdi? A) Reaya B)",
+      "rationale": "Din-mezhep temelli millet sistemi ve gayrimüslimlerin zimmi statüsü açıkça sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2cd2cc6d6e0f839a-Q002",
+      "categoryId": "excel.ayt.tarih.ae970b96d65c006d9e14",
+      "imageSha256": "eeb418a839da06ae5d29e441f58c5060e724eb14f0c6717c2ba53a473e843a7a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Toprağını izinsiz terk eden veya üç yıl üst üste topraklarını ekmeyenlerden ceza olarak “çiftbozan vergisi” alınırdı. Osmanlı Devleti'nde çiftbozan vergisi ile; I. tarımsal üretimi sürekliliğini sağlamak, II.",
+      "rationale": "Çiftbozan yükümlülüğü ve miri arazi gelirlerinin tahsisi toprak mülkiyeti/çifthane kapsamındadır; genel esnaf ve vakıf soruları buraya alınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2cd2cc6d6e0f839a-Q012",
+      "categoryId": "excel.ayt.tarih.ae970b96d65c006d9e14",
+      "imageSha256": "04dff238070947ebd1a9b260c9854623bd234164a8faa2f71de2f482d26913a6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Mülkiyeti devlete ait olan topraklardır. Bu toprakların kullanım hakkı, kira bedeli alındıktan sonra sözleşmeyle reayaya bırakılmıştır. Toprağı işleyen reaya, elde ettiği üründen 1/10 ile 1/2 arasında değişen",
+      "rationale": "Çiftbozan yükümlülüğü ve miri arazi gelirlerinin tahsisi toprak mülkiyeti/çifthane kapsamındadır; genel esnaf ve vakıf soruları buraya alınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q001",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "9209d769564eca7887ce5ccf59f3f9e89f2f5ee5d48b908e13ca612534c59e5d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Sultan IV. Mehmet ve Sadrazam Fazıl Ahmet Paşa’nın 1672 yılında Lehistan üzerine yürüyerek Kamaniçe Kalesi’ni fethetmesiyle Osmanlı Devleti; Boğdan Voyvodalığı ile Kırım Hanlığı üzerindeki kontrolünü artırmış, Kazak",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q003",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "16c340b55fa74d9cc9351fff9e9470433204725e69179021838dce2f91dc8c92",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Patrona Halil İsyanı 1770 1730 Pasarofça 1718 1740 Antlaşması 1739 Kapitülasyonların sürekli hâle 1711 gelmesi Prut Belgrad Antlaşması Antlaşması Görselde verilen tarih çizelgesinde soru işaretinin bulunduğu yere",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q004",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "4ecc169cec56f80a7e03acf05d8aceee018acf6a26c5a43cfc43c6a60e681dde",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Rus ticaret gemileri Boğazları kullanma, Karadeniz ve Akdeniz’de serbestçe faaliyet gösterme hakları elde etmiştir. Osmanlılar diğer devletlere verilen imtiyazlardan Rusların da istifade etmesini ve gerekli yerlerde konsolosluklar",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q005",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "fdb97939efe949e66e503b9a5198715ffb1e88492c2d8f76ffc02d50bd61fb02",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. 1774 yılında Rusya ile imzalanan Küçük Kaynarca Antlaşması'nın bazı hükümleri, Rusya'nın ileride Osmanlı'nın işlerine karışmasına zemin hazırlamıştır. Aşağıdaki olaylardan hangisi verilen yargıyı destekler niteliktedir? A) Müstakil bir",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q006",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "4255ae52b973e09e61aa86b7a281b6c43ab2877bba5a8a5d519637b8a18357a7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Şah Tahmasb’ın 1576’da ölümünden sonra İran'da karışıklıklar baş göstermiştir. Tahta geçen II. Şah İsmail’in, Osmanlı Devleti’ne karşı olumsuz faaliyetlerde bulunması ve Anadolu’da artan Şii politikası üzerine İran’a",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q007",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "d6e9b4a70898692677c34f6ebcdf3c123de227192825224038d4df6b082c4ac3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. 1711 1718 1739 Prut Antlaşması Pasarofça Antlaşması .....II..... .....I..... Venedik/Avusturya Avusturya/Rusya XVIII. yüzyılın ilk yarısına ait gelişmelerin verildiği diyagramda, numaralandırılmış alanların her birine karşılık gelen doğru seçenek",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q008",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "58ed83eb469bb6e47172cbf071c0e8747db9802c2e3233c6fa95ecc630c53394",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Osmanlı Devleti’nin, Akdeniz hâkimiyeti için XVI. yüzyılda mücadele ettiği rakiplerinden olup, bu konumunu XVII. yüzyılda da devam ettiren devlet aşağıdakilerden hangisidir? A) İspanya B) Portekiz C) Avusturya",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q009",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "607b2e4d7a544cb97b3200980f91f1902b296c094a9dcfb4d28338a422dace4a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Osmanlı Devleti’nde XVI. yüzyılın sonlarından itibaren sosyoekonomik sıkıntılar yaşanmış, devlet idaresinde zafiyetler ortaya çıkmıştır. Ancak Avrupa’da 1618-1648 yılları arasında devam eden olaylar nedeniyle Avusturya, Osmanlı Devleti’nin bu",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q010",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "689dbb716fd004607aeb977ac61e2fceec00d2b24aae6d5d6c9010bd11037084",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Osmanlı Devleti ile İran arasında imzalanan antlaşmalar ve özellikleri aşağıdakilerden hangisinde doğru olarak eşleştirilmiştir? A) I-C II-A III-B IV-D B) I-A II-B III-C IV-D C) I-B II-C",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q011",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "2cadc4548bee2fb48ab631cfd9cc7af0324b1da7bfa69b1462f78cd93ca74048",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Osmanlı ordusunun Viyana önlerinde bozguna uğraması, Avrupa’da büyük bir heyecana yol açtı. Osmanlı’yı Avrupa’dan atma zamanının geldiğini düşünen papanın teşvikiyle Avusturya, Lehistan, Rusya, Venedik ve Malta’nın da",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q012",
+      "categoryId": "excel.ayt.tarih.34f33a00db3c53f7a679",
+      "imageSha256": "1513c9852871bab544008eb3389d95e9c41983cf39805ea24a7f1f1eecefaa66",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Osmanlı Devleti’nin XVIII. yüzyılda imzaladığı aşağıdaki antlaşmalardan hangisi olumsuz olarak değerlendirilemez? A) İstanbul B) Pasarofça C) Küçük Kaynarca D) Belgrad E) Yaş MEBI TARAMA TESTLERI AYT TARIH",
+      "rationale": "Osmanlının İran, Rusya, Lehistan ve Avusturya ile rekabeti, antlaşmaları, Kutsal İttifak ve 17-18.yüzyıl diplomatik dengeleri incelenir; veraset sorusu ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-2ef364e1a3dda0b5-Q002",
+      "categoryId": "excel.ayt.tarih.976ce0deb6b5d2af68ef",
+      "imageSha256": "ea687a92b43f8d907c99d911b2b26ffecb5f4887bb9ee2fe9a5cbe83e348ab11",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. “Ekber ve Erşed” sistemi ile Osmanlı Devleti aşağıdakilerden hangisini engellemeyi amaçlamıştır? A) İsyanları B) Taht kavgalarını C) Askerî zafiyetleri D) Merkezî otoriteyi E) Ekonomik kayıpları ORTAÖĞRETIM GENEL",
+      "rationale": "Ekber-erşed sisteminin tahta geçiş kavgalarını önleme amacı hükümdarlık/veraset geleneğidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q001",
+      "categoryId": "excel.ayt.tarih.ced9bea3c6ef55ed9d24",
+      "imageSha256": "80b8027f15bee7ce52be344baf8729cdd64f4a77c05c0b501b133208a7432571",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Aşağıdaki ülkelerden hangisi Coğrafi Keşiflerden olumsuz etkilenmiştir? A) Portekiz B) Venedik C) Hollanda D) İspanya E) İngiltere",
+      "rationale": "Coğrafi keşifler, Rönesans, Reform ve Avrupada ekonomik/siyasi/bilimsel değişimler karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q003",
+      "categoryId": "excel.ayt.tarih.ced9bea3c6ef55ed9d24",
+      "imageSha256": "a19bf2a141f6a3b04e328040591840785bde7e3e38aa7d8e292db5a0132920ed",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. XVI. yüzyılda Avrupa'da meydana gelen Reform hareketlerinin; I. Avrupa'da Cizvit tarikatının güçlenmesi II. skolastik düşüncenin zayıflaması, III. feodal sistemin zayıflaması, IV. kilisenin mallarına el konulması gibi sonuçlarından",
+      "rationale": "Coğrafi keşifler, Rönesans, Reform ve Avrupada ekonomik/siyasi/bilimsel değişimler karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q004",
+      "categoryId": "excel.ayt.tarih.ced9bea3c6ef55ed9d24",
+      "imageSha256": "c8d88d9eaabaf937fcf128ac36b28abb8af17548dcc1a07c9660da798f909def",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Yeni Çağ Avrupası'nda meydana gelen; I. Coğrafi Keşifler, II. Rönesans, III. Reform, IV. Sanayi Devrimi gibi gelişmelerden hangileri sömürgecilik faaliyetlerininin artmasına sebep olmuştur? A) Yalnız I B)",
+      "rationale": "Coğrafi keşifler, Rönesans, Reform ve Avrupada ekonomik/siyasi/bilimsel değişimler karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q008",
+      "categoryId": "excel.ayt.tarih.ced9bea3c6ef55ed9d24",
+      "imageSha256": "b5c1d378bba1047e29861d7c21ed98f979871f2086fc9cb8e1d9297b8d0e224b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Avrupa’da değişim çağında etkili olan gelişmeler ve bu gelişmelere ait örneklerin eşleştirildiği aşağıdaki seçeneklerden hangisi yanlıştır? A) Ekonomik dönüşüm - Baharat Yolu'nun önem kazanmasıyla ticaretin Akdeniz'e kayması",
+      "rationale": "Coğrafi keşifler, Rönesans, Reform ve Avrupada ekonomik/siyasi/bilimsel değişimler karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q002",
+      "categoryId": "excel.ayt.tarih.501386d6b716786a1f18",
+      "imageSha256": "a627e5d439a6a0b07933387b8e5f3494ad6044fba9141d8af15ea9d4f2cc8c04",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Lale Devri yenilikleri arasında yer alan; I. ilk kez çiçek aşısının uygulanması, II. padişah ve devlet ileri gelenlerinin düzenlediği eğlenceler ve fener alayları, III. Said Efendi ve",
+      "rationale": "Celali isyanlarının nedenleri, layiha/nasihatname ile düzeni düzeltme önerileri ve Lale Devri yenileşme tedbirleri Osmanlı düzeni koruma çabaları bağlamındadır; Avrupadaki dönüşüm ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q006",
+      "categoryId": "excel.ayt.tarih.501386d6b716786a1f18",
+      "imageSha256": "ac10577910a6b681d62aa15f857152aa2a0ef3bfdccad6616faf00bd65307a2b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. I. Tımar sisteminin bozulması II. Veraset sistemindeki belirsizlik III. Nüfus artışı ve sürekli kuraklık Yukarıdakilerden hangileri Celali İsyanlarının çıkmasında etkili olmuştur? A) Yalnız I B) I ve",
+      "rationale": "Celali isyanlarının nedenleri, layiha/nasihatname ile düzeni düzeltme önerileri ve Lale Devri yenileşme tedbirleri Osmanlı düzeni koruma çabaları bağlamındadır; Avrupadaki dönüşüm ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q009",
+      "categoryId": "excel.ayt.tarih.501386d6b716786a1f18",
+      "imageSha256": "327c5ef47ba76fe123d438d11372808f23fcce058d1602758c111aae9e7b0e30",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Osmanlı Devleti’nde XVII. yüzyıldan itibaren başlayan devlet yönetimindeki bozulmaların sebeplerini tespit edip tavsiyelerde bulunmak amacıyla bazı aydın ve devlet adamları tarafından hazırlanarak padişahlara sunulan layiha adı da",
+      "rationale": "Celali isyanlarının nedenleri, layiha/nasihatname ile düzeni düzeltme önerileri ve Lale Devri yenileşme tedbirleri Osmanlı düzeni koruma çabaları bağlamındadır; Avrupadaki dönüşüm ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q001",
+      "categoryId": "excel.ayt.tarih.c515cd15faf58b38bfdb",
+      "imageSha256": "842d2c3ff23e09eafb7dadd0f889c39e86c840e2dbb5f7f65ea0fbd282ac6fd4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Avrupa’da işçi ve işveren sınıflarının ortaya çıkmasında; I. Rönesans Hareketleri, II. Sanayi İnkılabı, III. Coğrafi Keşifler, IV. Fransız İhtilali gibi gelişmelerden hangileri etkili olmuştur? A) Yalnız I",
+      "rationale": "Sanayi İnkılabının sınıfsal/sömürgesel sonuçları ve Fransız İhtilalinin fikirleri, aktörleri ve sonuçları ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q002",
+      "categoryId": "excel.ayt.tarih.c515cd15faf58b38bfdb",
+      "imageSha256": "a6b3d5aa8afd5d45d261aab05af4208dbaca9a62da588acab78d25839a3f67d9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Avrupa'da Sanayi İnkılabı'nın gerçekleşmesi ile pazar ve ham maddeye duyulan ihtiyaç artmış, sanayisini tamamlayan devletler sömürge alanlarına yönelmiştir. Avrupa'daki bu gelişmelerin; • Ham maddeye olan ilginin artırması,",
+      "rationale": "Sanayi İnkılabının sınıfsal/sömürgesel sonuçları ve Fransız İhtilalinin fikirleri, aktörleri ve sonuçları ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q004",
+      "categoryId": "excel.ayt.tarih.c515cd15faf58b38bfdb",
+      "imageSha256": "c3874d82ff4e2600cc50669f2bac5b354c2e7e5262480e0dbcd99858b35d383a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Fransız İhtilali ile birlikte dünyaya yayılan milliyetçilik ve millî egemenlik kavramlarıyla birlikte; I. ulus devlet anlayışı, II. toplumsal sınıflanma, III. mutlak monarşi olgularından hangileri ön plana çıkmıştır?",
+      "rationale": "Sanayi İnkılabının sınıfsal/sömürgesel sonuçları ve Fransız İhtilalinin fikirleri, aktörleri ve sonuçları ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q007",
+      "categoryId": "excel.ayt.tarih.c515cd15faf58b38bfdb",
+      "imageSha256": "3e7a7c24d74645c4d9f5da8e0816986f140f079554eb5b4ded6a3a6e99421eb2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Aşağıdaki kavramlardan hangisi ile Fransız İhtilali’nin sonuçları arasında ilişki kurulamaz? A) Milliyetçilik akımı B) Vatandaşlık C) Magna Carta D) Meşrutiyet E) Anayasa",
+      "rationale": "Sanayi İnkılabının sınıfsal/sömürgesel sonuçları ve Fransız İhtilalinin fikirleri, aktörleri ve sonuçları ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q012",
+      "categoryId": "excel.ayt.tarih.c515cd15faf58b38bfdb",
+      "imageSha256": "be7d906d71e0be6ecd5da9ddaf1fe72ad8dae68bb3ebb2927738cc684e8ebd4f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Fransız İhtilali üzerine araştırma yapan bir tarihçinin aşağıdakilerden hangisi ile karşılaşması beklenemez? A) Robespierre B) Denis Diderot C) Jean Jacques Rousseau D) Voltaire E) Machiavelli 3",
+      "rationale": "Sanayi İnkılabının sınıfsal/sömürgesel sonuçları ve Fransız İhtilalinin fikirleri, aktörleri ve sonuçları ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q005",
+      "categoryId": "excel.ayt.tarih.55d7ef25fbdcd3efe5c9",
+      "imageSha256": "3200d5234dd411b59688562aeabdec9b525604f509da5432487a3c018da2b9d1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Osmanlı Devleti'nin XIX. yüzyılda demir yolu yatırımları ile I. iç güvenliğin sağlanmasını, II. tarımsal vergilerin toplanmasını, III. savaş dönemlerinde cepheye asker ve malzeme sevk edilmesini amaçlarından hangilerini",
+      "rationale": "19.yüzyıl demiryolu yatırımlarının üretim, vergi ve lojistik amaçları Osmanlı sanayileşme/altyapı çabalarıdır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q008",
+      "categoryId": "excel.ayt.tarih.82fa6c9edf201c7d293a",
+      "imageSha256": "8c33200efdb2c9d4761379c9ec3631cdc723fab75584303ee2ef353a1cd54255",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. III. Selim'in Fransa ordusunu örnek alarak kurduğu Nizam-ı Cedit, kendi önemlerinin azalacağını düşünen kapıkulu askerlerinin tepkisine neden olmuştur. Islahatları \"kâfirlik\" olarak gören bazı din adamları da onları",
+      "rationale": "Nizamı Cedit ve askeri modernleşme için açılan eğitim kurumları doğrudan modern ordu konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-636fa715f1d9cd34-Q011",
+      "categoryId": "excel.ayt.tarih.82fa6c9edf201c7d293a",
+      "imageSha256": "4bfd74e92b1641ed5a141e81ba17f7d2e4381641ef377c5652d6fc8c9b867134",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Osmanlı Devleti’nde askerî modernizasyon için açılan kurumlar arasında aşağıdakilerden hangisi gösterilemez? A) Hendesehane B) Mühendishane-i Bahr-i Hümâyun C) Darülfünun D) Mekteb-i Harbiye E) Mühendishane-i Berr-i Hümâyun",
+      "rationale": "Nizamı Cedit ve askeri modernleşme için açılan eğitim kurumları doğrudan modern ordu konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q001",
+      "categoryId": "excel.ayt.tarih.bbcd1fb91d912ab0949c",
+      "imageSha256": "9ffc4415357a605be798f26a56298b93cb4c31c417949c0e32893fc1c097a9f7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Kanun-ı Esasi’nin maddeleri arasında, • Osmanlı Devleti’nin mevcut idari bölgeleriyle merkeze bağlı ve imtiyazlı eyaletleri, bölünmez bir bütündür. Ayrılık kabul etmez. • Hutbelerde adı okutulan padişah kutsaldır",
+      "rationale": "Kanunı Esasi, Meşrutiyet partileri ve Tanzimatın hukuk-siyaset yenilikleri anayasal/demokratikleşme sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q002",
+      "categoryId": "excel.ayt.tarih.bbcd1fb91d912ab0949c",
+      "imageSha256": "b59dcdc8ff9374bc647e56730404143830775f7b1c095b3c5ae99c306562b053",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Aşağıdakilerden hangisi II. Meşrutiyet Dönemi’nde kurulan siyasi partilerden birisi değildir? A) İttihat ve Terakki Fırkası B) Ahrar Fırkası C) Mutedil Hürriyetperveran Fırkası D) Hürriyet ve İtilaf Fırkası",
+      "rationale": "Kanunı Esasi, Meşrutiyet partileri ve Tanzimatın hukuk-siyaset yenilikleri anayasal/demokratikleşme sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q004",
+      "categoryId": "excel.ayt.tarih.bbcd1fb91d912ab0949c",
+      "imageSha256": "ff9b46f60bc29f1e33d0de4e7f8b96579eb7593655004e5723f5359222e0e251",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Tanzimat Fermanı ile Osmanlı Devleti’nin, I. Hukukun üstünlüğü kabul edilmiştir. II. Anayasal rejim yolunda atılan ilk adım atılmıştır. III. Modernleşmeyi devlet siyaseti haline getirerek resmîleştirmiştir. IV. Halkın",
+      "rationale": "Kanunı Esasi, Meşrutiyet partileri ve Tanzimatın hukuk-siyaset yenilikleri anayasal/demokratikleşme sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q006",
+      "categoryId": "excel.ayt.tarih.9a5a26b429269d89b745",
+      "imageSha256": "8dbad759778bfce4378db6303b11646fc68cd59fd36ec89af4d9301e4d02b9fd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Türk tarihinde önemli bir kavram olarak Şark Meselesi, Türklerin Anadolu’ya girmesiyle başlamıştır. Bu anlayışa paralel olarak Osmanlı Devleti’nin paylaşılması adına girişimler ve planlar yapılmıştır. Bu açıklamada yer",
+      "rationale": "Şark Meselesi paylaşım planları ve Kavalalı Mehmet Ali Paşa/Mısır krizi Osmanlıya yönelen tehditlerdir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q007",
+      "categoryId": "excel.ayt.tarih.9a5a26b429269d89b745",
+      "imageSha256": "404ecd8a0af97c5ba6c9e3781e584996be0993227d1d4f9f6934730e034b7a33",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Kavalalı Mehmet Ali Paşa’nın güç kazanmasında; I. Vehhabi İsyanı’nı bastırarak Mekke ve Medine’yi Osmanlı yönetimine alması, II. Fransızların Mısır’dan çekilmesi sonrası buradaki başıbozuk birlikleri kontrol altına alması,",
+      "rationale": "Şark Meselesi paylaşım planları ve Kavalalı Mehmet Ali Paşa/Mısır krizi Osmanlıya yönelen tehditlerdir.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}
