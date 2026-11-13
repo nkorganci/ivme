@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q007",
+      "imageSha256": "cdd506a36c09146a9570373df1b50457d4fdace3a444c82b89aa8a7890249fb9",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "Ökaryotik hücrelerde transkripsiyon süreciyle",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q009",
+      "imageSha256": "7113da2d2b4dde898917f0515e4b6df969839140adeb836c1cc6975f233476c6",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "Protein sentezi sürecinde",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q011",
+      "imageSha256": "b7de18c514749b9c8ef59f80f10a31e857331676b960950ea1c98247c1679934",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "olaylarından hangileri sentezlenecek proteinin yapısında",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q015",
+      "imageSha256": "f921dbd8025b4f69f7c08e73f977f866e69d405babd7e3b5af22f59c04890862",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "Protein sentezi sürecinde aşağıda verilen",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q017",
+      "imageSha256": "1aed00d6847394d70063558853a70a30c83b8c21dbd092788dcb17aa4622a639",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "Protein sentezi sırasında gerçekleşen",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q018",
+      "imageSha256": "37907a374c936420ab4cc9bb3cf0dd7750a8bfca87441739891383598278e99f",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "T canlısında üretilecek proteinle ilgili",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-25e5d2de2f228db3-Q021",
+      "imageSha256": "c6e74cdf85ef5b1bd85559c10d3b3137f554918577f5312edc30475d85a26311",
+      "categoryId": "excel.ayt.biyoloji.577d0b0c8ac27de9cdf2",
+      "quote": "Protein sentezi sırasında gerçekleşen",
+      "rationale": "Kök transkripsiyon, translasyon, gen-protein dizisi veya protein sentezinin sırasını doğrudan sorar. Kök hücre/poliploidi/biyoteknoloji uygulamaları bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q004",
+      "imageSha256": "0f0ddffe4b9f9c44cb63173c6aff22b2ac17280c3237372ed09c6752a279979b",
+      "categoryId": "excel.ayt.biyoloji.5d0d033a5af7b04a0e54",
+      "quote": "fotofosforilasyon, II. oksidatif fosforilasyon",
+      "rationale": "ATP sentezinin üç fosforilasyon yolunun aynı hücrede gerçekleşebilmesini karşılaştırır; yalnız fotosentez tepkimesi sorusu diye etiketlenmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q005",
+      "imageSha256": "3bd5e0e769b0b7f4db762eb5daf059f633673fc0a63e4382b0d7429442887679",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "Fotosentez sırasında meydana gelen olaylarla",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q006",
+      "imageSha256": "c608a8df776c9146edd1d6abded8780e09e502bef6840f468bdd825da38863bd",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "Işığın dalga boyunun fotosentez hızına etkisini",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q008",
+      "imageSha256": "f5d2cd4bfbc94712cc60eaee61b239ee6879e05abf95fb427e5fbea97c08d342",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "Kloroplastın yapısal özellikleriyle ilgili",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q009",
+      "imageSha256": "77a625e4a9c38c9613df0990eb9a11a94e7e56058830b11e4aa1921f3ad1f578",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "atomların fotosentez reaksiyonlarında izlediği",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q010",
+      "imageSha256": "4daef3463a25d1a31c7e95a6ae1617691d3191e767ee226cf404358620ef80d2",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "Fotosentez olayı gerçekleşirken",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q012",
+      "imageSha256": "c2868563aee979a54ad9e69da4aad56985ca88ad40f175a4e19f6a4aa5eb42f7",
+      "categoryId": "excel.ayt.biyoloji.1baba0e10ce940b75402",
+      "quote": "Fotosentezin ışıktan bağımsız reaksiyonları",
+      "rationale": "Kloroplast, ışık/Calvin reaksiyonları veya fotosentez araştırması kökte açıkça sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q015",
+      "imageSha256": "6af55454d30426536d64721e1cb0b5406b3ae05d04ba74e29320df38e14ed221",
+      "categoryId": "excel.ayt.biyoloji.d43da0e754736ea24f0c",
+      "quote": "Kemosentez yapan canlılar ile ilgili",
+      "rationale": "Kök kemosentezin enerji kaynağı, ototrof özellikleri veya uygulamasını sorar; fotosentezle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q016",
+      "imageSha256": "9c9b131fbfd7f3aa2923f5a769c31b5f8395d74953a3b8cc30616416c695cd98",
+      "categoryId": "excel.ayt.biyoloji.d43da0e754736ea24f0c",
+      "quote": "Işığa ihtiyaç duymadan, hidrojen kaynağı olarak",
+      "rationale": "Kök kemosentezin enerji kaynağı, ototrof özellikleri veya uygulamasını sorar; fotosentezle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q018",
+      "imageSha256": "aec79f854ad072158e27892316f18b46ebe46da9b0bcc39dd67929294c7e2000",
+      "categoryId": "excel.ayt.biyoloji.d43da0e754736ea24f0c",
+      "quote": "Kemosentez sırasında enerji kaynağı olarak",
+      "rationale": "Kök kemosentezin enerji kaynağı, ototrof özellikleri veya uygulamasını sorar; fotosentezle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7120df469441683e-Q020",
+      "imageSha256": "c23c6d2c20fbe0b67968568e02037e675fdd4f9fb5c710d197742dedcb0c2ebe",
+      "categoryId": "excel.ayt.biyoloji.d43da0e754736ea24f0c",
+      "quote": "Kemosentez yapan canlılar",
+      "rationale": "Kök kemosentezin enerji kaynağı, ototrof özellikleri veya uygulamasını sorar; fotosentezle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q006",
+      "imageSha256": "7289d7a781793d06921a8232be8efbd2140b2ec83ed3d291ea431b25ee4f6a23",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "özelliklerden hangisi parankima hücrelerine",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q007",
+      "imageSha256": "2ed7d87196b2fbb0af2768ae3928d4a21837436c72fcef26fc5df6989d61e354",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "kütikula tabakasıyla ilgili",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q013",
+      "imageSha256": "94be2833cb2a7e72ab3164a31e04d4859122b2e90cbaa7c412f1c3bbc7288b37",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Lentisel ve stoma için",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q023",
+      "imageSha256": "f6ebc3bb0c75ffbc5b1741346d3250c7eec0fe5f3540148186289a06e458932d",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Kaliptra ile ilgili aşağıdakilerden",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q024",
+      "imageSha256": "50ed8887d0d8fb9a599f7db48e3c114a8dd27792c13e3fc80fbd365775ce23ac",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Kollenkima dokusu ile ilgili",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q026",
+      "imageSha256": "0c1b20993ae1e562c10edf7ea49494042d705277e122d9a17037ed8ec75404ca",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Kökün boyuna kesitinde yer alan büyüme",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q027",
+      "imageSha256": "239295ace93c1b6588891a8a69bc667b7841def1d5607eecee03b35e590c586a",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Çift çenekli otsu bir bitkinin gövdesinde bulunan",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-207fa31685811899-Q030",
+      "imageSha256": "141b1a29171e90ea586b9e9dda6d2de645405c3c72e49d7bf6fdbd33e4f73429",
+      "categoryId": "excel.ayt.biyoloji.6f2e6dfe3b43edf6bb08",
+      "quote": "Gelişmiş bitkilerde meristem doku hücreleri",
+      "rationale": "Kök bitkinin dokusu, örtü yapısı, kök büyüme bölgesi veya kök-gövde anatomisini doğrudan sorar; ayrı hormon/hareket başlığı bulunmayan sorular bu konuya zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

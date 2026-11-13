@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 9.111 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 9.890 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -13,6 +13,19 @@ kurtarma geçişi uygulandı; cevap tahmini yapılmadı.
 kanıtlanmadı. İlk geçiş sonunda `4.791` soru yayımlandı; `21.353`
 ayrı aday kodu incelemede. Bu sayılar tüm arşivin tekil soru toplamı değildir.
 İnceleme kuyruğu bu geçişin ayrı teslimidir; öğretmen tarafından çözülmüş sayılmaz.
+
+**046–052 alt partileri — BITTI:** 77+139+289+96+40+35+18 = 694 yeni
+soru kabul edildi; her partide INSERT_ONLY, tekrar0 INSERT, mevcut kimliklerin
+korunması, katalog ve canlı masaüstü/mobil kontrolü PASS. 051–052 için 53
+sorunun özgün native metni tek tek incelendi; ana tablodaki mevcut Tarih,
+Psikoloji ve Sosyoloji konuları kaynak alıntısı ve gerekçeyle bağlandı. Mevcut
+özgün gövde ve iki basılı cevap kanıtı kullanıldı; bu iki pakette yeni model
+çağrısı/öğretmen onayı0. Dört konu inceleme sınırı testi PASS. Kanıtlar:
+`verified-source-batch-046`–`052/bank-acceptance.json`,
+`reviewed-native-question-expansion/`, `reviewed-native-question-2-expansion/`.
+Bu alt partiler tam arşiv kapanışı değildir.
+
+**053 — BITTI:** 22 TYT Biyoloji ve26 AYT Mantık sorusu özgün metinden mevcut konuya bağlandı;48 INSERT/0 UPDATE, tekrar0 INSERT ve katalog/canlı PASS. 054 — BITTI:37 Edebiyat INSERT/0 UPDATE, tekrar0 INSERT, katalog/canlı PASS; toplam9.890. 055 için26 AYT Biyoloji kabul hattındadır. Kaynak içerik şüphelileri `KAYNAK_ICERIK_TUTARLILIGI` altında gerekçe ve özgün görselle ayrıca teslim edilir; öğrenciye aktarılmaz.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 
@@ -27,7 +40,7 @@ geçmişi korunur; önceden kullanılan PDF'de soru soru eksik arama yapılmaz.
 Kısmi eski aktarım notu kaynak kararıyla saklanır.
 
 PDF kapısı BITTI:1.473 benzersiz PDF/509 mevcut banka PDF referansı;
-62 aynı PDF atlandı.1.411 eşleşmeyen PDF,1.412 soru kitabı veya yeni soru
+62 aynı PDF atlandı.1.411 eşleşmeyen PDF,1.411 soru kitabı veya yeni soru
 iddiası değildir. `pdf-reuse-check/decisions.json`, kalıcı varsayılan
 `scripts/mebi-pratik2-pdf-policy.json`;13 PDF kapısı testi PASS.
 YKS çıkmış sorularını kullanıcı zaten mevcut bildirdi; bunlar tekrar alınmaz.

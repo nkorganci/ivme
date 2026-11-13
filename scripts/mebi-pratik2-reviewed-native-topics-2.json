@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q002",
+      "imageSha256": "414b8235589c09ae39d9f409f9aba6fb94c5dcf548121ff8510afa8d347d98fb",
+      "categoryId": "excel.ayt.psikoloji.4b47a1dcbfcc19bb0333",
+      "quote": "daha sonraları gelişecek olan psikoloji bilimine katkıda bulunmuşlardır",
+      "rationale": "Psikoloji bilimine tarihsel katkı sorulur; ruh sözcüğünden hareketle kişilik kuramı etiketi verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q006",
+      "imageSha256": "529ce34e98fff217656fe53c85ac738ba6a32189a742c873bfb2bacae988d57d",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "quote": "hangileri davranışçı yaklaşımın bakış açısını yansıtır",
+      "rationale": "Kök doğrudan psikoloji yaklaşımının bakış açısını ayırt etmeyi ister; öğrenme/kişilik örnekleri alt bağlamdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q012",
+      "imageSha256": "2a70cfc1f59ef6080794917e3b2e0d66c179b71bda65612005e06d85f3193c95",
+      "categoryId": "excel.ayt.psikoloji.82b857afddcc678d175a",
+      "quote": "Psikolojideki yaklaşımlardan birini yansıtan bu görüşü",
+      "rationale": "Kök doğrudan psikoloji yaklaşımının bakış açısını ayırt etmeyi ister; öğrenme/kişilik örnekleri alt bağlamdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q013",
+      "imageSha256": "fddef263b90758d9f0e9c0d375a109d5d2201477a4fd1c079138f573e3370e32",
+      "categoryId": "excel.ayt.psikoloji.a0f066f9549e84b8e403",
+      "quote": "Gözlemlenebilirlik bilginin doğruluğunu belirlemede önemli bir ölçüttür",
+      "rationale": "Bilimsellik ölçütü, bilimin amacı veya araştırma etiği mevcut birleşik ana konunun doğrudan kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q014",
+      "imageSha256": "58ab6888df6a7864d6f2a17e85534c0a60d372d19c42795f0c0a365eb13f6dfc",
+      "categoryId": "excel.ayt.psikoloji.a0f066f9549e84b8e403",
+      "quote": "Psikolojinin amaçlarından biri yordamadır",
+      "rationale": "Bilimsellik ölçütü, bilimin amacı veya araştırma etiği mevcut birleşik ana konunun doğrudan kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q015",
+      "imageSha256": "4a2aee5abd742f2a3eba5c76d2280495c93c9a50df0814c5fb99c9469582074f",
+      "categoryId": "excel.ayt.psikoloji.a0f066f9549e84b8e403",
+      "quote": "psikolojinin aşağıdaki etik ilkelerinden hangisi ihlal edilmiştir",
+      "rationale": "Bilimsellik ölçütü, bilimin amacı veya araştırma etiği mevcut birleşik ana konunun doğrudan kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q017",
+      "imageSha256": "5cca46d466f61df44fa4cdca506f57d67d61028604a99c0e94936ebbad719c4f",
+      "categoryId": "excel.ayt.psikoloji.73bf86f9e5fbbdb2f98a",
+      "quote": "ilişkisel yöntemi kullandığı araştırmasında",
+      "rationale": "Korelasyon/ilişkisel araştırma yönteminin yorumu ölçülür.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q018",
+      "imageSha256": "694aacbafc6d5df7c099562e7002f5f9ddaa6f74a9de5057379f71501d7bc091",
+      "categoryId": "excel.ayt.psikoloji.1c9b35dbe5e475166e71",
+      "quote": "psikoloji alt dalıdır",
+      "rationale": "Alt dal, mesleki iş alanı veya psikolojinin diğer bilimle ilişkisi bu mevcut birleşik ana konudadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q019",
+      "imageSha256": "f97a9932fa4e7c9569d73ce32a495f9859f9a69c87518381eb7fdd674fd09fa0",
+      "categoryId": "excel.ayt.psikoloji.1c9b35dbe5e475166e71",
+      "quote": "psikolojik danışman unvanını alırlar",
+      "rationale": "Alt dal, mesleki iş alanı veya psikolojinin diğer bilimle ilişkisi bu mevcut birleşik ana konudadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-b4d03cbd0aa9933e-Q020",
+      "imageSha256": "ff8fd583d5a62863ca9b95bca1cb304f5770ea9855d0ad9966609d61b7ce8f4c",
+      "categoryId": "excel.ayt.psikoloji.1c9b35dbe5e475166e71",
+      "quote": "aşağıdaki bilimlerden hangisiyle birlikte çalışır",
+      "rationale": "Alt dal, mesleki iş alanı veya psikolojinin diğer bilimle ilişkisi bu mevcut birleşik ana konudadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q002",
+      "imageSha256": "c0412787a1a11a31e43d9a95ad5d18e7a1665d068221f25ae0fe4f3ba709af23",
+      "categoryId": "excel.ayt.sosyoloji.3be94e5a68b8c763566f",
+      "quote": "Parçada ailenin",
+      "rationale": "Ölçülen konu aile kurumunun işlevi/yapısıdır; sosyalleşme aileye ilişkin yalnız bir alt bağlamdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q004",
+      "imageSha256": "88f63a387d32f108e4709bb91f01c8b16e3bf6467f6884ef0dabbeef2b72d050",
+      "categoryId": "excel.ayt.sosyoloji.3be94e5a68b8c763566f",
+      "quote": "Parçadan Türk aile yapısı ile ilgili",
+      "rationale": "Ölçülen konu aile kurumunun işlevi/yapısıdır; sosyalleşme aileye ilişkin yalnız bir alt bağlamdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q006",
+      "imageSha256": "54059ec9725942df3e661899e743c4dfbe2d1cacb5d2510b805a87f7cf559c41",
+      "categoryId": "excel.ayt.sosyoloji.f06796384c43fbfaf054",
+      "quote": "eğitimin taşıması gerektiğini düşündüğü",
+      "rationale": "Eğitim kurumunun nitelikleri ve toplumsal işlevleri doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q008",
+      "imageSha256": "9f0d0d621aa4da37b79fe8bf467f83ebe8b0451d42c81db41f07716eee4ec930",
+      "categoryId": "excel.ayt.sosyoloji.f06796384c43fbfaf054",
+      "quote": "eğitim ile ilgili vurgulanan düşünce",
+      "rationale": "Eğitim kurumunun nitelikleri ve toplumsal işlevleri doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q009",
+      "imageSha256": "5aaac1ab471251b310cd8223acb6d6c9255a1dd63619ad604ffc7ed18ed043c3",
+      "categoryId": "excel.ayt.sosyoloji.08309c1c1c3061569e0f",
+      "quote": "Sosyoloji, dini bu yönleriyle işlevsel bir kurum olarak değerlendirir",
+      "rationale": "Dinin toplumsal etkileri ve kurum olarak işlevi açıkça belirtilir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q013",
+      "imageSha256": "d7cf3480bafa1ac79df5ba18831dd5d4e84905ba91d2c2b17602788abe9e3494",
+      "categoryId": "excel.ayt.sosyoloji.a7fd6eb29057b9989fe5",
+      "quote": "Gonca Hanım - emek",
+      "rationale": "Üretim faktörleri, enflasyon veya ekonomik sistem değerlendirmesi mevcut ekonomi kurumu ana konusu kapsamındadır; tarih veya genel tabakalaşma diye etiketlenmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q014",
+      "imageSha256": "ddf1ca37db2cc801c1edffbdb2131675463176a2191f121ddea31e77365a4fc1",
+      "categoryId": "excel.ayt.sosyoloji.a7fd6eb29057b9989fe5",
+      "quote": "paranın alım gücü tahmin edemeyeceği kadar düştü",
+      "rationale": "Üretim faktörleri, enflasyon veya ekonomik sistem değerlendirmesi mevcut ekonomi kurumu ana konusu kapsamındadır; tarih veya genel tabakalaşma diye etiketlenmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cfe967df20bb06db-Q015",
+      "imageSha256": "8b82cd003da6fec34c71f7264756bada33602cd71b9688d8f5da1a6437f815f7",
+      "categoryId": "excel.ayt.sosyoloji.a7fd6eb29057b9989fe5",
+      "quote": "Atatürk’ün ekonomi anlayışı ile ilgili",
+      "rationale": "Üretim faktörleri, enflasyon veya ekonomik sistem değerlendirmesi mevcut ekonomi kurumu ana konusu kapsamındadır; tarih veya genel tabakalaşma diye etiketlenmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

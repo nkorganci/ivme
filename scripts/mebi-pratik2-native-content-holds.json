@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "sourceReviewDecisionsSha256": "0a61a8ab7cd4ef4a3caee4ff8c4d73a2c3b8c2cf1820c4c301296afd0058e055",
+  "heldReviews": [
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q014",
+      "reason": "SOURCE_CONTENT_MULTIPLE_POTENTIALLY_FALSE_OPTIONS",
+      "note": "Toprak solucanı sorusunda kendi kendine döllenme ve açık dolaşım seçenekleri birlikte yanlış görünür; tek basılı cevap içerik belirsizliğini çözmez. Aktarıma alınmadı; öğretmen incelemesi gerekir.",
+      "teacherApproved": false,
+      "imageSha256": "c74185455a281315d602b9e5519de40d59a62f35ae1cb1d55240c37d7dd194a4"
+    },
+    {
+      "code": "MEBI2-e00e9157b98648e9-Q005",
+      "imageSha256": "5dc796b87c1397d97a90fa34aaeb75fce9399b859628edfe1b481cfc321575d0",
+      "reason": "SOURCE_CONTENT_MULTIPLE_POTENTIALLY_FALSE_OPTIONS",
+      "note": "Masal/fabl bilgi sorusunda I, II ve IV maddeleri birlikte sorunlu görünür; seçenekler bu birleşimi içermiyor. Basılı tek cevap içerik belirsizliğini çözmez; öğrenciye aktarılmadı, öğretmen incelemesinde.",
+      "teacherApproved": false
+    }
+  ]
+}

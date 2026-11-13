@@ -4,11 +4,26 @@ import hashlib
 import json
 import sqlite3
 from collections import Counter
-from mebi_pratik2_tam_pdf_tarama import BASE,SOURCE
+from mebi_pratik2_tam_pdf_tarama import APP,BASE,SOURCE
 from kaynakli_arastirma_db import db_connection,query
 from yks_birlestirme import write_json
 from mebi_pratik2_arsiv_kararlari import review_category
 from mebi_pratik2_pdf_tekrar_kapisi import load_decisions,skip_pdf
+
+
+def apply_content_holds(decisions,accepted,published,paths):
+    for path in paths:
+        data=json.loads(path.read_text(encoding='utf8'))
+        for hold in data.get('heldReviews',[]):
+            code=hold['code'];row=decisions.get(code)
+            if row is None:raise ValueError('Content hold has no original candidate: '+code)
+            if code in accepted or code in published:raise ValueError('Content hold conflicts with accepted question: '+code)
+            if hold.get('teacherApproved') is not False or hold.get('imageSha256')!=row.get('imageSha256'):
+                raise ValueError('Content hold source/approval differs: '+code)
+            decisions[code]={**row,'status':'SOURCE_CONTENT_REVIEW_REQUIRED',
+                'priorReviewReasons':row.get('reasons',[]),'reasons':[hold['reason']],
+                'sourceContentReview':hold['note'],'sourceContentReviewFile':str(path),
+                'teacherApproved':False,'studentVisible':False}
 
 
 def run():
@@ -97,6 +112,8 @@ def run():
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],
             'sourceEvidenceReview':str(path.relative_to(BASE)),
             'sourceEvidenceReviewSha256':hashlib.sha256(path.read_bytes()).hexdigest(),'studentVisible':False}
+    hold_path=APP/'scripts/mebi-pratik2-native-content-holds.json'
+    apply_content_holds(decisions,accepted,published,[hold_path] if hold_path.exists() else [])
     aliases={};excluded={}
     for batch in sorted(BASE.glob('verified-source-batch-*')):
         final=batch/'final-source-acceptance.json'
@@ -144,7 +161,7 @@ def run():
         row['answerKeyPage']=row.get('keyPage',row.get('sourceKeyPage'))
     write_json(out/'question-candidates.json',{'records':pending,'recordCount':len(pending),'studentVisible':False})
     write_json(out/'source-group-reviews.json',{'records':group_reviews,'recordCount':len(group_reviews),'recordType':'SOURCE_GROUP_NOT_DISTINCT_QUESTION_COUNT','studentVisible':False})
-    columns=['code','status','reviewCategory','reasons','relativePath','sourcePdf','bodyPage','printedNumber','answer','categoryId','questionImage','answerImage','answerKeyPage','image','keyImage']
+    columns=['code','status','reviewCategory','reasons','sourceContentReview','relativePath','sourcePdf','bodyPage','printedNumber','answer','categoryId','questionImage','answerImage','answerKeyPage','image','keyImage']
     with (out/'question-candidates.csv').open('w',encoding='utf-8-sig',newline='') as stream:
         writer=csv.DictWriter(stream,fieldnames=columns);writer.writeheader()
         for row in pending:

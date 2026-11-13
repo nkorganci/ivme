@@ -14,9 +14,9 @@ makbuzlarından okunur. Eski Pratik bankası ayrı kalır.
 4. Kaynak başlığı veya açık soru kökü kanıtını ana tablonun mevcut kategori
    kimliğine bağla. Kanıtsız model konu önerisini yayımlama.
 5. Son aktarım kapısında gövde ve anahtarı özgün PDF'den yeniden karşılaştır.
-6. Yalnız Pratik 2 içinde tam RGB/gövde ve aynı cevap eşleşmesini kaynak
-   tekrarı olarak kaydet. Eski banka karşılaştırması veya yenilik şartı yoktur.
-   Eski soru kimlikleri birleştirilmez ve silinmez.
+6. Güncel kullanıcı kuralıyla yalnız PDF düzeyinde tekrar kapısını uygula.
+   Aynı PDF eski bankada varsa tamamını atla; soru metni/RGB/embedding banka
+   karşılaştırması yapma. Eski soru kimlikleri ve geçmişi korunur.
 7. En fazla100 satırlık atomik INSERT_ONLY partileri al, ikinci ön izlemeyi
    sıfır delta ile doğrula, sürümlü katalog yayımla, canlı masaüstü/mobil
    sayaç ve özgün görsel hash'lerini kontrol et.
@@ -315,3 +315,27 @@ Gözetmen durum geçişlerinde ve beş dakikada bir
 `docs/plan/soru-bankasi-pratik-2/aktif-paketler.md` dosyasını kabul makbuzlarına
 göre günceller. BITTI yalnız paket kabulüdür; ana arşiv veya öğretmen incelemesi
 kapanışı değildir. Dosya otomatik üretilir; elle paket durumunu değiştirme.
+
+
+## Özgün native metinden tek tek konu incelemesi
+
+`scripts/mebi_pratik2_incelenen_konu_paketi.py` yalnız gerçek Codex kaynak
+metni incelemesinin açık kararıyla donmuş paket hazırlar. Kararda kaynak
+görsel SHA, mevcut seçilebilir sınav/ders/kategori kimliği, metinde gerçekten
+bulunan alıntı ve konu gerekçesi gerekir. Native gövde ve iki basılı cevap
+makbuzu doğrulanır; qwen önerisi/öğretmen onayı kabul edilmez. Matematik
+işaretleri alıntı normalizasyonunda korunur. 051 için varsayılan karar dosyası;
+052: `--package-dir reviewed-native-question-2-expansion --decisions
+mebi-pratik2-reviewed-native-topics-2.json`. Donmuş hedef yeniden üretilmez.
+051–055 model çağırmadan kabul edildiği için yardımcı kanıt bağımlılığı050
+olarak kalır; kaynak/model işçisini sırf bu paketler için durdurma.
+
+Denemelerde `mebi_pratik2_deneme_ders_kaniti.py` özgün basılı test başlığını,
+“Bu testte” açıklamasını ve açık ders-numara aralıklarını okur. Geleneksel
+aralık varsaymaz; Felsefe Grubu'nu Psikoloji/Mantık/Sosyoloji diye tahmin
+etmez. Bu kanıt yalnız native gövde kontrolünü açar; ince konu veya öğrenci
+yayın kararı değildir. V2 tam satır/seçenek/özgün piksel/şekil kontrolü sürer.
+
+İçerik şüphesi `scripts/mebi-pratik2-native-content-holds.json` içindeki özgün görsel SHA ve açık gerekçeyle güncel inceleme ihracına bağlanır. `KAYNAK_ICERIK_TUTARLILIGI` ayrı kategoridir; CSV `sourceContentReview` sütununu taşır. Kabul edilmiş/canlı soruya sessizce inceleme durumu uygulanamaz. Üç içerik sınırı testi PASS.
+
+Deneme native kısayolu ilk ders-aralığı geçişinde0 ek kanıt verdi (5.482 kapsam,23 eski,5.459 görsel;238,6sn). Bu sonuç gövdenin hatalı olduğunu kanıtlamaz; V2 kısayolunun yetmediğini gösterir. Aynı girdiyle geçiş tekrarlanmaz, görsel hat sürer.

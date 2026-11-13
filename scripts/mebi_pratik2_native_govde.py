@@ -77,6 +77,7 @@ def run(name,skip_first=0):
     folder=BASE/name;package=json.loads((folder/'chapter-packages.json').read_text(encoding='utf8'))
     out=folder/'native-body-proofs';out.mkdir(exist_ok=True);receipts=folder/'body-readings';receipts.mkdir(exist_ok=True)
     started=time.monotonic();counts=Counter();opened={};last=started;bucket=-1;rows=package['items'][skip_first:];categories=None
+    groups={g['groupId']:g for g in package.get('keyGroups',[])};mock_courses={}
     try:
         for index,row in enumerate(rows,1):
             if skip_pdf(row['sourceSha256'],pdf_decisions):counts['existingPracticePdfSkipped']+=1;continue
@@ -86,7 +87,9 @@ def run(name,skip_first=0):
             if row['subject'] not in ALLOWED:
                 if categories is None:categories=json.loads((APP/'backend/src/main/resources/content-taxonomy.json').read_text(encoding='utf8'))['categories']
                 proof_row,subject_evidence=resolve_body_subject(row,categories)
-            if proof_row['subject'] not in ALLOWED:counts['visualRoute']+=1;continue
+            mock_group=groups.get(row['groupId'])
+            is_mock=row.get('subject') is None and mock_group and mock_group.get('keyIdentityType')=='PREVERIFIED_MOCK_SECTION'
+            if proof_row['subject'] not in ALLOWED and not is_mock:counts['visualRoute']+=1;continue
             sha=row['sourceSha256']
             if sha not in opened:
                 if len(opened)>=8:
@@ -96,6 +99,9 @@ def run(name,skip_first=0):
                 with original.open('rb') as stream:
                     if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Original native source changed')
                 opened[sha]=pymupdf.open(original)
+            if proof_row['subject'] not in ALLOWED and is_mock:
+                from mebi_pratik2_deneme_ders_kaniti import resolve_mock_course
+                proof_row,subject_evidence=resolve_mock_course(row,mock_group,opened[sha],mock_courses)
             proof=prove(opened[sha][row['bodyPage']-1],proof_row,BASE/row['image'])
             if proof:
                 if subject_evidence:proof['sourceSubjectEvidence']=subject_evidence

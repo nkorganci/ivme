@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 9.111 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 9.890 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -28,10 +28,10 @@ arşiv kabulü açıkken otomatik kapatılmaz.
 
 **Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID `current.json/supervisorPid`;
 son durum `BASE/chain-supervisor/current.json`, loglar `*.log`/`*.err.log`.
-044,169 ve045,140 INSERT/0 UPDATE ve canlı kabul PASS; son kabul9111.
+044–054 canlı kabul PASS; güncel kabul9.890. 046–054 toplam779 INSERT/0 UPDATE.
 Güncel çalışan paketi `current.json` ve canlı tablodan izle; statik imleçle eski
 paketi baştan çalıştırma.
-Güncel gözetmen046–050 ve yedi kanıt işini de kapsar. Eski observer yenilenirken
+Gözetmen055 dahil yayınları ve yedi kanıt işini kapsar. PID19480; log supervisor-v7.log/.err.log. Yalnız metadata observer yenilendi; içerik/model/uygulama işçileri korunur. Eski observer yenilenirken
 uygulama/model/yayın işçileri durmadı. Tamamlanmış makbuzlar korunur; durmuş
 paket en fazla3 kez sürer. OS başlangıç görevi yok; oturum/OS kapanırsa aynı
 komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otomatik.
@@ -44,6 +44,11 @@ komutla gözetmeni yeniden başlat. Sadece gerçekten çalışan bu zincir otoma
 |048|`individual-tarama-word-expansion`|289|
 |049|`single-test-heading-expansion`|96|
 |050|`bold-number-expansion`|40|
+|051|`reviewed-native-question-expansion`|35, BITTI|
+|052|`reviewed-native-question-2-expansion`|18, BITTI|
+|053|`reviewed-native-question-3-expansion`|48, BITTI|
+|054|`reviewed-native-question-4-expansion`|37, BITTI|
+|055|`reviewed-native-question-5-expansion`|26, aktarım sürüyor|
 
 **Kaynak kabulü önce:** yardımcı kanıt işlerinin tamamı050 sonrasına alınmıştır;
 9B model kuyruğunda hazır yayın partileri önceliklidir. Eski bekleyen/yardımcı
@@ -88,8 +93,15 @@ aktar; karma/eksik katalog konuları ayrı incelemede kalsın. Yanıtsız ders a
 gösterme tercihi onaylanmadı; sıkı konu kapısı sürer. Native karakter sınırı
 tek denemesi de0 ek kanıt verdi;V2 korunur (`native-character-boundary-trial/`).
 
-**Sıradaki somut iş:**045→050 canlı kabulünü ve ardından yedi kanıt işini
-izle; makbuzu olanı tekrar üretme. Kaynak/cevap/gövde kabulü ile ince konu ve
+**051–054 konu incelemesi BITTI:** 35 Tarih +18 Psikoloji/Sosyoloji +48 Biyoloji/Mantık +37 Edebiyat özgün
+native metni tek tek okundu; mevcut kategori, kaynak alıntısı ve gerekçe
+`scripts/mebi-pratik2-reviewed-native-topics*.json` içinde. Qwen önerisi veya
+öğretmen onayı değildir. Hazırlama betiği `mebi_pratik2_incelenen_konu_paketi.py`;
+4 sınır testi PASS. Donmuş paketler/iki basılı cevap/native gövde kanıtı korunur.
+
+**Sıradaki somut iş:**055 canlı kabulünü ve yedi çalışan kanıt işini sürdür; deneme kaynaklarında
+basılı bölüm/ders-numara aralığıyla native kontrol BITTI:5.482 kapsam/23 eski makbuz/0 yeni native kanıt/5.459 görsel yol (238,6sn). Yeni kaynak değişimi yoksa bu başarısız kısayolu tekrar çalıştırma; V2 satır/geometri koşulu gevşetilmez. `full-mock-pending-evidence/native-body-proof-report.json`. Dört basılı ders başlığı sınırı testi PASS.
+Makbuzu olanı tekrar üretme. Kaynak/cevap/gövde kabulü ile ince konu ve
 yayın kabulünü karıştırma. Toplam basılı soru paydası/genel yüzde/kesin ETA
 bilinmiyor. Bütün arşiv kapsamı kanıtlanmadan ana plan **BITTI** değildir.
 

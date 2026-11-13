@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q002",
+      "imageSha256": "b37adcdc45456eef4375acf4ebda080f19a31203d86d93a05b6d13107cc34ab9",
+      "categoryId": "excel.tyt.biyoloji.b8b1f8a2410ec7d7f87f",
+      "quote": "Biyolojik tür kavramına göre iki canlının aynı türe",
+      "rationale": "Tür tanımı ve sınıflandırma ölçütü doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q005",
+      "imageSha256": "cfa69e368615c1edb82f99c10064d67c677fc3b2559e369d37e7bb6d67300f2d",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Aşağıdaki özelliklerden hangisi bakteriler ve arkelerde ortaktır",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q007",
+      "imageSha256": "d91359c20ecc6fc1e9e40c54ecc7dcc0ffb1eb2e7052595d83177267105b7e87",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Protista âleminde incelenen",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q008",
+      "imageSha256": "cb0575fbccf39729dee361453b20b469fe77a888be94d27d6b9e2c7896b2a9b3",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "bitkilerin biyolojik ve ekonomik önemiyle ilgili",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q009",
+      "imageSha256": "e3101e030540663717f8bbdbb9034a4ff1d72e65d5e3707ee3443db8f0a89ab2",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Ökse otu, yarı parazit bir bitkidir.",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q010",
+      "imageSha256": "078e82e310b946a024af7c44954e04e9692918bd39bf6bef9eae7615462c175a",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Bu bitkilerin yapraklarında bol miktarda kloroplast bulunduğu",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q011",
+      "imageSha256": "608a089f283eedea784eb0b3420d12c9c1b05ac1b32247c8c5046cc790873444",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Bitkilerin genel özellikleri ile ilgili",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q012",
+      "imageSha256": "7b32178961c1238f3c05a63187dc3a8cac4c325af9cc4d8bd026cb106cf543e5",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Mantarlarla ilgili aşağıdakilerden hangisi",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q013",
+      "imageSha256": "d795c3b1ee6423f9a95c130a2a976d5b8df73f972289f14f94852c9876c300db",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Mantarlar âlemiyle ilgili aşağıdakilerden hangisi",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q015",
+      "imageSha256": "1955f2082463438e44167e308aace6d97b8bbb88433b144c443914cf3aaaa721",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "tüm omurgasız canlılar için ortak ve tanımlayıcı bir özelliktir",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q016",
+      "imageSha256": "c91ffa152262c95ab5dabeeb0b18aecca492e2563a9b4650ff0a4c004a05ba9e",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Memeliler sınıfına ait aşağıdaki özelliklerden",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q017",
+      "imageSha256": "75a5cad8300b63f60503649076a40c6d11ce6cbbe04af97cd59df37fd9fa9fba",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Aşağıdaki özelliklerden hangisi sadece kuşlara özgüdür",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q018",
+      "imageSha256": "8ff83e366129f83830b0dc5f39641559dc3b30dba1dacbb502398743f19032fb",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Protista âlemindeki canlıların tamamında",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q019",
+      "imageSha256": "3467c3dd2ab488eb11b20a779f2d2869e7717496f17668e69bf4fba3aa01ec0a",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "özelliklerinden hangileri bitkiler ve hayvanlar âleminde görülmez",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q020",
+      "imageSha256": "8338a23f2a18bbda017ccf613ed525c0a81b38ba197d83b16caf5a7ace1b59d2",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "sürüngen, kuş ve memeliler için ortak değildir",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q021",
+      "imageSha256": "fb9d24c2c4ae1b9f3e7381ad6afdcf3c63ddc16c66f09e0ee81e99f5b4267061",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Köpek balıkları ile ilgili aşağıdakilerden hangisi",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q022",
+      "imageSha256": "1a8ed9085fcceb32f87569038a75f95bef9fd7ee9fab6da70f8106e56492f70b",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "İki yaşamlılar (amfibiler) ile ilgili",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q024",
+      "imageSha256": "7ea92ffc21b7c6330cae125bfb154f5a8f8dc62c21579f3bdf66672ba003f604",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "Omurgalı hayvanlarda",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q025",
+      "imageSha256": "bacd9cc1edc358189238cef66d59b6aebaa65c3929d4c8689efacab742dff666",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "açık ve kapalı tohumlu bitkilerde ortak olarak bulunabilir",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q026",
+      "imageSha256": "b031ffa212fb8f87f9130bd5ba5726dc860cb2239933ece691338202433baaf2",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "canlılarından hangileri damarlı ve tohumsuz bitkilere örnektir",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q027",
+      "imageSha256": "8bd993705ff604c1f77c44502810ec48ea240e806542685c43f49ac65aa21284",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "keseli ve plasentalı memelilerle ortak değildir",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q028",
+      "imageSha256": "e521aa3758820a18b77ac33602d80ec175da9b9ddcad854d2e884ecad65ed960",
+      "categoryId": "excel.tyt.biyoloji.5118c66af36fd8bf330f",
+      "quote": "özelliklerinden hangileri kuşlarda yoktur",
+      "rationale": "Kök, belirli canlı âlemi/sınıfının ayırt edici özelliklerini veya bitkilerin biyolojik-ekonomik önemini karşılaştırır; mevcut TYT canlı âlemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q006",
+      "imageSha256": "3cdc8509d13fc8ad6216a49b59ef7744c1f7a22eff74f4b393feb5c9b7b2363d",
+      "categoryId": "excel.ayt.mantik.a1efadcb2507bda5268a",
+      "quote": "ne olduğu, ne olmadığı, ne olamayacağı ve gerekçeleri",
+      "rationale": "Özdeşlik/çelişmezlik veya akıl ilkelerinin bütünlüğü kökte doğrudan açıklanır ve ayırt ettirilir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q007",
+      "imageSha256": "1a71114213863e4d5b8ab5ccf3568a858148c24dc7b107fa4e4556e57c203fc5",
+      "categoryId": "excel.ayt.mantik.a1efadcb2507bda5268a",
+      "quote": "Buna göre aşağıdakilerden hangisi özdeşlik ile ilgili bir ifadedir",
+      "rationale": "Özdeşlik/çelişmezlik veya akıl ilkelerinin bütünlüğü kökte doğrudan açıklanır ve ayırt ettirilir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q008",
+      "imageSha256": "04e44a4fb654807431df3ae2e8d9db469998fc70e0ea20b5c54a380e612ab995",
+      "categoryId": "excel.ayt.mantik.a1efadcb2507bda5268a",
+      "quote": "Buna göre akıl ilkeleri için",
+      "rationale": "Özdeşlik/çelişmezlik veya akıl ilkelerinin bütünlüğü kökte doğrudan açıklanır ve ayırt ettirilir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q010",
+      "imageSha256": "6a875aa8795b6fc36401f4328ddf7134c4aee5ab9ebc4f3d65d3382c8707d2ba",
+      "categoryId": "excel.ayt.mantik.a1efadcb2507bda5268a",
+      "quote": "Bir şey aynı anda hem var hem de yok olamazdı.",
+      "rationale": "Özdeşlik/çelişmezlik veya akıl ilkelerinin bütünlüğü kökte doğrudan açıklanır ve ayırt ettirilir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q011",
+      "imageSha256": "abc2c1e6c8911f662339997ac6173b8b90b46ca2412a5af14f2cd8b56ccfbcaf",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "quote": "Selin bu sonuca ulaşırken aşağıdakilerden hangisini kullanmıştır",
+      "rationale": "Örnekten genelleme, tümdengelim veya varsayımlı tümdengelim yöntemi kökte karşılaştırılır; temel akıl yürütme yöntemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q013",
+      "imageSha256": "1d367feb9c664651e9cd6ce580716dab228bfeb01c18827a8f5210d523aa86ef",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "quote": "Bu metinde sırasıyla hangi akıl yürütme yöntemleri kullanılmıştır",
+      "rationale": "Örnekten genelleme, tümdengelim veya varsayımlı tümdengelim yöntemi kökte karşılaştırılır; temel akıl yürütme yöntemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q014",
+      "imageSha256": "56816f970a639d3cfe149d4f798570cc413bcd1397ed03e99d56c1871fb1a348",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "quote": "Verilen bilgilerle tümdengelim yöntemini kullanan",
+      "rationale": "Örnekten genelleme, tümdengelim veya varsayımlı tümdengelim yöntemi kökte karşılaştırılır; temel akıl yürütme yöntemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q020",
+      "imageSha256": "ffe3822aa99e0cd82573974478bb04efc68f4472f9306bf913f7662e7bdec26b",
+      "categoryId": "excel.ayt.mantik.b8978b437ec4c1228969",
+      "quote": "Buna göre aşağıdakilerden hangisi varsayımlı tümdengelim için",
+      "rationale": "Örnekten genelleme, tümdengelim veya varsayımlı tümdengelim yöntemi kökte karşılaştırılır; temel akıl yürütme yöntemleri konusu kullanıldı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q016",
+      "imageSha256": "4920c16b25c39dea8f35f65d484db9f37f5f3b4da1f724e08c61a295e2be5200",
+      "categoryId": "excel.ayt.mantik.d8d25b3b6d70e0397a74",
+      "quote": "mantığın bilimlerle olan ilişkisi için",
+      "rationale": "Mantığın hukuk, matematik, bilgisayar ve dil bilimlerinde kullanılmasını sorgular; yalnız genel tanımı sorulmaz.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1e35d2c1ae3af093-Q018",
+      "imageSha256": "b6750a6300c2c0746b76078f4d69a8fa84b719b79b9642d7c7b022c95e2b574b",
+      "categoryId": "excel.ayt.mantik.640307d16722a25a9290",
+      "quote": "Verilen ifade aşağıdaki kavramlardan hangisinin tanımıdır",
+      "rationale": "Tutarlılık temel kavramının tanımını sorar; çizelgeyle tutarlılık denetimi işlemi yoktur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q002",
+      "imageSha256": "040589e21ad8b7c0b9c584cf9b1c908a4b5ef12daf0608f43022c05f6ce9ef18",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "quote": "dilin bildirme işlevine",
+      "rationale": "Kök doğrudan dilin bildirme, belirtme veya eylemsel görevini örnekten ayırt ettirir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q003",
+      "imageSha256": "ee142ad44bb836fb57d8728599b543752b9d6d3c4ab2dcf99e0fab75cde19bd1",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "quote": "cümlesinde dil, aşağıdaki amaçlardan",
+      "rationale": "Kök doğrudan dilin bildirme, belirtme veya eylemsel görevini örnekten ayırt ettirir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q011",
+      "imageSha256": "00856e5c1663e8752a2e4280e2e3a7f98d06a1216dfb3bb4135deb08a16f8eef",
+      "categoryId": "excel.ayt.mantik.d5d4f6f5ca28a7b823b7",
+      "quote": "Verilen cümlelerde dilin hangi işlevi",
+      "rationale": "Kök doğrudan dilin bildirme, belirtme veya eylemsel görevini örnekten ayırt ettirir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q007",
+      "imageSha256": "358e84775740f353e757ea2165dd5943d0ca633b865bd7ff87ebbdf9ab9bb01a",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "Metne göre etkili iletişim için",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q008",
+      "imageSha256": "c8409ae9c958f326802de8007b2093653faef87582feaeb174b8715a05b020e1",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "anlam karışıklığına yani semantik çok anlamlılığa",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q010",
+      "imageSha256": "0d36634da06426b481a7656d615614e28e5529a5053d06b93f8333d6d12f1c3f",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "öğretmenin ifadesinde anlaşılmayı aksatan etken",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q012",
+      "imageSha256": "7a0331da1c0082b704b6887d00ba30a362d00c50b5be905379dbd6fd925f5599",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "anlama ve tanımlama ilişkisi için",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q013",
+      "imageSha256": "e6f6a567a356c489f0c6c8d98a8cbe7a093dec12590f49fc308a495450b42c4d",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "olgusal tartışmada söylenecek bir ifadedir",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q014",
+      "imageSha256": "3fb516b395488d292f1ce0e644080b5f6e465d2f57c9c239080ca56a13ee31dc",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "sözel tartışmada söylenebilecek bir ifadedir",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q015",
+      "imageSha256": "a590f8a975e1df65a512f11f5663de4115b80f244f5918b81249a2eec63a06a3",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "olgusal ve sözel tartışmalar ile ilgili",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q017",
+      "imageSha256": "9a8e3c967d2f34c3dc55d76434ab49413722813b2bb3e753751e9d651c7cc7e5",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "Verilen diyalogda bilgi aktarımını aksatan durum",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q018",
+      "imageSha256": "cb23659f804584bfff10371833a15ab872fcbcc3bddba8b7bc388c805cc19421",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "semantik, sentaktik ve pragmatik açıdan anlamanın",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-991e3e6482dbb9a9-Q019",
+      "imageSha256": "710daba883f15b1db7d1743ba5ff2dc2a30176cede1fb8c1043df3056099427c",
+      "categoryId": "excel.ayt.mantik.1962ccb336c721fc91a0",
+      "quote": "tanımlama, anlamanın sonucunda ortaya çıkan bir etkinliktir",
+      "rationale": "İletişimde anlam/bağlam, olgusal-sözel tartışma veya anlama-tanımlama ilişkisi doğrudan sorulur; klasik mantıkta tanım türlerine zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q007",
+      "imageSha256": "5cccf70efe97be4c74c433783612534dc601d48e36efc0d5cc8c39772a2857ca",
+      "categoryId": "excel.ayt.mantik.19c0a8e2251aeaf7ead6",
+      "quote": "önermelerin hangisi sembolleştirildiğinde birden fazla önerme eklemi",
+      "rationale": "Doğal dille yazılmış önermeyi sembolleştirirken gerekli eklem sayısını sorgular; sembolün native glif yorumuna ihtiyaç duyulmaz.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q016",
+      "imageSha256": "4a0889a9d62af7145214fef57c7d6b2c5ef231e0913325fb46fbca5b1641fadd",
+      "categoryId": "excel.ayt.mantik.0e95e87c0abac2d84deb",
+      "quote": "önermenin tutarlı olmasının koşulu",
+      "rationale": "Çizelgede açık yol bulunmasıyla tutarlılık kabul koşulunu doğrudan sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cef48b3783dfc5cd-Q020",
+      "imageSha256": "552f1c3d41e9d4ddd65567eb71954c5d0337fc5b25947c2123868dd36b8cc61b",
+      "categoryId": "excel.ayt.mantik.15b9e8e012adcdd94ade",
+      "quote": "Üç değerli mantık sisteminde önermelerin doğru, yanlış ve belirsiz değerlerini",
+      "rationale": "Kök üç değerli mantığı açıkça tanımlar ve belirsiz doğruluk değeri örneğini sorar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ],
+  "heldReviews": [
+    {
+      "code": "MEBI2-21ad53f83c2ab520-Q014",
+      "reason": "SOURCE_CONTENT_MULTIPLE_POTENTIALLY_FALSE_OPTIONS",
+      "note": "Toprak solucanı sorusunda kendi kendine döllenme ve açık dolaşım seçenekleri birlikte yanlış görünür; tek basılı cevap içerik belirsizliğini çözmez. Aktarıma alınmadı; öğretmen incelemesi gerekir.",
+      "teacherApproved": false
+    }
+  ]
+}

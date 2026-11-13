@@ -1,0 +1,356 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q002",
+      "imageSha256": "fc536360ee5a5b0d90ee3d40e4d37bf4ea742062a4b811b7c80cf9cdf5155df0",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "Tarihte önceki olayın sonuçları, kendinden sonra gelen olayın nedenlerini oluşturur.",
+      "rationale": "Ölçülen beceri tarihsel neden-sonuç ilişkisidir; maddelerdeki olaylar konu etiketi olarak kullanılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q005",
+      "imageSha256": "7c533f0c2a6952074bc0bd19346e20db23109f4ef4a13d509df5d213b1ced9e9",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "tarih biliminin yazılı kaynaklarından",
+      "rationale": "Tarih biliminin kaynak türlerini ayırt etme sorusudur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q007",
+      "imageSha256": "466551f28832831adc52173233b7369e21bdff4081b9404b0280c6ce0fc12381",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "Tarih öğrenmek, toplumda ortak hafızanın oluşmasında",
+      "rationale": "Tarih öğrenmenin ortak hafıza ve millî bilinç işlevini doğrudan sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q008",
+      "imageSha256": "45ca7af73c9235471b7754b9923bd5eed97ed273f49d7a46cef302bf33078912",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "bazı yardımcı bilim dallarından yararlanır.",
+      "rationale": "Tarihçinin kullandığı yardımcı bilimler ölçülür; Osmanlı kuruluşu yalnız bağlamdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q011",
+      "imageSha256": "5d836451d30b3ef9a71ce0bbfe097eaf748530b45da65ca71dc75da737ac3f41",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "Tarih bilimi, insana çok çeşitli beceriler kazandırır.",
+      "rationale": "Tarih öğrenmenin kazandırdığı beceriler ölçülür.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q012",
+      "imageSha256": "6205dc5345c20d46fa8c9156f081cb588eb987af87f1562c11ab1c1a6a426550",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "quote": "Tarihçinin işi salt kaydetmek değil, aynı zamanda değerlendirmektir.",
+      "rationale": "Tarihçinin yöntem ve değerlendirme tutumunu ölçer.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q009",
+      "imageSha256": "c07fe85b036714493773b251382a8a7f287c2180d59b8c95539181b44754ee6c",
+      "categoryId": "excel.ayt.tarih.5adfedf842d3d72ec1f6",
+      "quote": "gerçekleşme zamanı diğerlerine göre daha belirgindir",
+      "rationale": "Tarihsel zamanın gün/ay/yıl kesinliğini karşılaştırır; olay adları kronoloji örnekleridir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q010",
+      "imageSha256": "a32aabba3f3b85064b659942b95483852d2c7fef69820b5076b0d3e40191b320",
+      "categoryId": "excel.ayt.tarih.5adfedf842d3d72ec1f6",
+      "quote": "takvimlerden hangisi güneş yılı esaslı değildir",
+      "rationale": "Takvimlerin yıl esaslarını doğrudan sorar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q006",
+      "imageSha256": "8abd7dc2c4d298b9ec319dcd1a635d759878da11a5511a3b7e7d0f785fdd6534",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "quote": "Kanuni Dönemi'nde gerçekleşen",
+      "rationale": "Kanuni döneminde Osmanlı dış siyaseti, Akdeniz/Hint denizleri ve Avrupa ilişkilerinin aynı mevcut ana konu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q007",
+      "imageSha256": "f600537ee7b860ca3bfb5ab4b5455a50dcd260077a8667f956d859961d577c28",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "quote": "Kanuni Sultan Süleyman Dönemi’nde Hint Okyanusu’ndaki",
+      "rationale": "Kanuni döneminde Osmanlı dış siyaseti, Akdeniz/Hint denizleri ve Avrupa ilişkilerinin aynı mevcut ana konu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q008",
+      "imageSha256": "79340e0688cbeb559caa49e6ff1e8399d00272d375c1d4267ea8c9e48a0a953a",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "quote": "özellikle XVI. yüzyılda Fransa ve İngiltere devletlerine kapitülasyonlar",
+      "rationale": "Kanuni döneminde Osmanlı dış siyaseti, Akdeniz/Hint denizleri ve Avrupa ilişkilerinin aynı mevcut ana konu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q009",
+      "imageSha256": "bb09998c8c33f806520ff21d9a0efd36344ee0f10e0716f8394a0122ba6f88e2",
+      "categoryId": "excel.ayt.tarih.872377ecec5115306dae",
+      "quote": "Kanuni Dönemi'nde mücadele edilen devletler",
+      "rationale": "Kanuni döneminde Osmanlı dış siyaseti, Akdeniz/Hint denizleri ve Avrupa ilişkilerinin aynı mevcut ana konu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-7bc52daffbafdbac-Q010",
+      "imageSha256": "191a0360dece1d26dec498ab40b8308e412aa0f93c5063befeccda9ef776115a",
+      "categoryId": "excel.ayt.tarih.d84501c07a75e2a49fc1",
+      "quote": "Yavuz Sultan Selim Türk-İslam dünyasında Osmanlı etkinliğini artırmak",
+      "rationale": "Yavuz dönemindeki Safevi/Memlûk/Anadolu seferlerinin Türk-İslam siyasi birliği amacı ölçülür.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q005",
+      "imageSha256": "509d5400ee1147a55f9a514ce61f28011b752b2dcc7d719f0452b91159e00fdd",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "quote": "gelişmelerinden hangilerinin tımarlı sipahilerin kendi iç dinamiklerinden",
+      "rationale": "Tımarlı sipahilerin ve dirlik düzeninin bozulma nedenlerini doğrudan sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q007",
+      "imageSha256": "015a80f2958dbec77df86a7b1ee4fe3ce99b37d0bc543358471867cce99b4d22",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "quote": "Yeniçeri Ocağı’nın bozulmasında",
+      "rationale": "Devşirme kayıt şartları ve Yeniçeri Ocağının bozulması aynı mevcut konudadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-008ffec26b7803aa-Q011",
+      "imageSha256": "2890379341a5c823a40faa5815dbcd7f11a9cde996984f7c800e6bf28bca6857",
+      "categoryId": "excel.ayt.tarih.501386d6b716786a1f18",
+      "quote": "Bu isyanlar merkezde Yeniçeri, Anadolu’da Celâli İsyanlarıdır.",
+      "rationale": "Celâli ve Yeniçeri isyanlarının neden ve niteliği ölçülür.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q004",
+      "imageSha256": "aef57f811cd6998c101ee96e97a5e958a3ed93d02984bf5ae08f61a29e762c94",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "quote": "iki uygarlığın farklı geçim kaynaklarını kullanmalarında",
+      "rationale": "İlk Çağ uygarlıklarının coğrafya, geçim, inanç ve kültürel özellikleri mevcut medeniyet havzaları ana konusunda ele alınır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q005",
+      "imageSha256": "08339ee645ed8ec42a98542ea82dd8cd33953622a92d39348425e8beb45464d5",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "quote": "İlk Çağ medeniyetlerinin dinî inanış ve faaliyetleri",
+      "rationale": "İlk Çağ uygarlıklarının coğrafya, geçim, inanç ve kültürel özellikleri mevcut medeniyet havzaları ana konusunda ele alınır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q008",
+      "imageSha256": "3cbf6791aeccc07e88c43a23fcdf78bc2b9cab8889f7a909cc7ee908ca42902b",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "quote": "İlk Çağ medeniyetleri ile ilgili olarak",
+      "rationale": "İlk Çağ uygarlıklarının coğrafya, geçim, inanç ve kültürel özellikleri mevcut medeniyet havzaları ana konusunda ele alınır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q009",
+      "imageSha256": "72da2ab2c42f87f8bbe7ffd668f1c1271910b071a6611052f4739ef6608026f7",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "quote": "İlk Çağ’da Hindistan ve Mezopotamya",
+      "rationale": "İlk Çağ uygarlıklarının coğrafya, geçim, inanç ve kültürel özellikleri mevcut medeniyet havzaları ana konusunda ele alınır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q012",
+      "imageSha256": "90a36a54eca1bac55f50ca339a8c193cd801cdd99b8373a566f8c2811802367a",
+      "categoryId": "excel.ayt.tarih.2705c82f7f1b20d84f11",
+      "quote": "İlk Çağ’daki hukuk sistemleri",
+      "rationale": "Erken hukuk düzenleri ve kanunlar ölçülür; genel uygarlık adıyla etiketlenmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q002",
+      "imageSha256": "18115fa04be9aebd899716b2a5993f010041986ffda4983ad43cc27c19a01957",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "quote": "1923-1938 yılları arasında Türk dış politikası",
+      "rationale": "Dönem açıkça 1923–1938 dış politikasıdır; Lozan sonrası sorunların çözümünü sorar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q004",
+      "imageSha256": "d03eead670e88334db97934996290f0512c7ad6c11a7200d412f1b46695c3805",
+      "categoryId": "excel.ayt.tarih.a7b0524db012d519b716",
+      "quote": "II. Dünya Savaşı’nın nedenlerinden",
+      "rationale": "Savaşın nedenleri doğrudan sorgulanır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q005",
+      "imageSha256": "8690b0fb5ac00bbf026cf52fbb16feae647a6c2d1887a8dba9d9d1b083aae9ea",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "quote": "İkinci Dünya Savaşı sırasında Türkiye’deki siyasi hayat",
+      "rationale": "Dünya savaşı genel askerî safhaları değil, savaş sırasında Türkiye siyasi hayatı sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q007",
+      "imageSha256": "1c9d7b105f7bf9f9ec36328c5927f6ce29357234fa81a03a3ea71e90bb6d01aa",
+      "categoryId": "excel.ayt.tarih.a7b0524db012d519b716",
+      "quote": "II. Dünya Savaşı'na katılmasına neden olmuştur",
+      "rationale": "ABD’nin savaşa katılmasına yol açan gelişme sorulur; savaşın genel seyri kapsamındadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q009",
+      "imageSha256": "c3ee5b235549cc0668db8d9487c03b621edaf73d118e457944b2fbca90e31712",
+      "categoryId": "excel.ayt.tarih.a7b0524db012d519b716",
+      "quote": "İkinci Dünya Savaşı sırasında Almanlar tarafından 1942’nin yazında",
+      "rationale": "Savaşın askerî gelişmelerinden birini ve Avrupa direnişine etkisini sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q012",
+      "imageSha256": "77e4f266f2f4bf9030ce26ebcd886c117eb63c4e265faad754d3765c600ddd1c",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "quote": "Türkiye’nin savaşa katılması amacıyla düzenlenmiştir",
+      "rationale": "Konferansların Türkiye’nin savaşa katılmasıyla ilişkisini sorgular; Türkiye’nin savaş dönemi siyaseti kapsamındadır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q002",
+      "imageSha256": "67594aeea4d4ca6641cf7772f5f7098d36182d21e0a77b87d3aba2e9eeb584f9",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "quote": "II. Dünya Savaşı sonrası Doğu Blokunda SSCB liderliğinde",
+      "rationale": "Soğuk Savaş bloklarının siyasi/ekonomik kuruluşlarını sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q004",
+      "imageSha256": "44dc9bfc3bb417bd7d4966583ce5a54ea5dfdba0e4e290b607ddce7192e2f081",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "quote": "II. Dünya Savaşı’ndan sonra iki kutuplu hâle gelen dünyada",
+      "rationale": "Soğuk Savaş bloklarının siyasi/ekonomik kuruluşlarını sorgular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q011",
+      "imageSha256": "55a101a44b7802b16a82559b6c7fcaac490601bd6e71452dbc4b802959495f1e",
+      "categoryId": "excel.ayt.tarih.c09735a456d047761741",
+      "quote": "Abbasiler Dönemi’nde kurulan Beytü’l-hikme",
+      "rationale": "Abbasi devletinin bilim veya idare kurumları doğrudan belirtilir; mevcut Abbasi ana konusu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q012",
+      "imageSha256": "1f5572cfc99390f4748af8d5519c36279bd85e1f7f5c62d3dcbe551026f2d9e5",
+      "categoryId": "excel.ayt.tarih.c09735a456d047761741",
+      "quote": "makamlardan hangilerinin ilk örneklerine Abbasiler Dönemi’nde",
+      "rationale": "Abbasi devletinin bilim veya idare kurumları doğrudan belirtilir; mevcut Abbasi ana konusu kapsamıdır.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q007",
+      "imageSha256": "4c00953174c9a9f177907cd8991dd634577e69942476c9291e8dd87f93ff61bd",
+      "categoryId": "excel.ayt.tarih.f4e9753cfd52b39fd6b1",
+      "quote": "Büyük Selçuklu Devleti’nde",
+      "rationale": "Büyük Selçuklu Devleti’nin siyasi gelişmeleri, sorunları veya dış ilişkileri sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q009",
+      "imageSha256": "bb5878db2c29c3d219e45f2fb90db523ab8011455200b97d286ea5cdca7bea60",
+      "categoryId": "excel.ayt.tarih.f4e9753cfd52b39fd6b1",
+      "quote": "1055 yılında Büyük Selçuklu hükümdarı Tuğrul Bey’e",
+      "rationale": "Büyük Selçuklu Devleti’nin siyasi gelişmeleri, sorunları veya dış ilişkileri sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q012",
+      "imageSha256": "b48c401e052d44a877aff02f41bf9ff3758f166e4c45fa980af914ef79952528",
+      "categoryId": "excel.ayt.tarih.f4e9753cfd52b39fd6b1",
+      "quote": "Büyük Selçuklu Devleti’nin aşağıda verilen devletlerden",
+      "rationale": "Büyük Selçuklu Devleti’nin siyasi gelişmeleri, sorunları veya dış ilişkileri sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q004",
+      "imageSha256": "8b2c0c47d64f5ab0cb1f7d510ba6f101ab334607a658320d7cfdfd96162b302b",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "quote": "uygulanan tımar sistemi hakkında",
+      "rationale": "Tımarın işleyişi ve nitelikleri doğrudan sorulur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

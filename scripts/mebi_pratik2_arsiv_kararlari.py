@@ -16,6 +16,7 @@ from yks_birlestirme import write_json
 
 def review_category(reasons):
     text=' '.join(map(str,reasons)).upper()
+    if 'SOURCE_CONTENT' in text:return 'KAYNAK_ICERIK_TUTARLILIGI'
     if any(word in text for word in ['PIXEL','CHANGED','BOZUK','UNREADABLE']):return 'KAYNAK_VEYA_GORSEL_KANITI'
     if any(word in text for word in ['TOPIC','KONU','BRANCH','SUBJECT']):return 'KONU_DERS_ESLESTIRMESI'
     if any(word in text for word in ['KEY','ANSWER','CEVAP']):return 'CEVAP_ANAHTARI_DOGRULAMASI'

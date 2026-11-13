@@ -1,0 +1,376 @@
+{
+  "version": 1,
+  "scope": "INDIVIDUALLY_READ_ORIGINAL_NATIVE_QUESTION_STEMS",
+  "decisions": [
+    {
+      "code": "MEBI2-55880f7b424307ce-Q004",
+      "imageSha256": "488adda0656245a7116e44dcca8a13513863687591df28c652526ab15950ee29",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "Peyami Safa'nın romanları ve bu romanların kahramanları",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-55880f7b424307ce-Q010",
+      "imageSha256": "f8c6df859b5d473a313c1af9291fc07febb7f93a81f139da43cb6e5d51fa87de",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "Aşağıda yazar ve eserleriyle ilgili verilen bilgilerden",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-55880f7b424307ce-Q011",
+      "imageSha256": "d30301f53fbdb92a0709ddd06e9abdd6e0b2fa944fa6d6d57e4bfefacba420a2",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "1980 sonrası Türk romanında eser veren",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-55880f7b424307ce-Q012",
+      "imageSha256": "056e6ff277e1aee68dafd18c49c960acde08b4d36c7eb5b813a395bd60f1102e",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "modernizmi esas alan romanın özelliklerindendir",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-55880f7b424307ce-Q013",
+      "imageSha256": "8505737728a1fec61add2a6118fa7406e8d8ccaaddc7e41c9c316dd13ff4b1c5",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "verilenlerden hangisi Selim İleri için",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-55880f7b424307ce-Q014",
+      "imageSha256": "2f650d9629bed09de668687463755b6f6b56d280e087ae1d1864db4ec9dcebe4",
+      "categoryId": "excel.ayt.turkce.367101082c6fb5a0353f",
+      "quote": "Modernizmi esas alan romanda geleneksel olanı",
+      "rationale": "Özgün kök Cumhuriyet romancıları/eserleri veya dönem roman anlayışlarını sorar; ilk sayfadaki Cumhuriyet Dönemi Türk Romanı başlığıyla da uyumludur. Dünya romanı soruları bu gruba zorlanmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f96e12f6dd9fcf84-Q014",
+      "imageSha256": "15627fed17a1cf5df781bc8d620a153ee89e30343d875f47cdfdae4a872cff21",
+      "categoryId": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
+      "quote": "Tek kişilik geleneksel Türk tiyatrosu türüdür",
+      "rationale": "Meddah/Karagözün uygulama, kişi veya ortak özellikleri doğrudan sorulur; modern tiyatro bu kategoriye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f96e12f6dd9fcf84-Q015",
+      "imageSha256": "28168639267442c7d27065ccb6665d104215f10ad695665ccbf79ec18f0df550",
+      "categoryId": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
+      "quote": "Oyunu sahneleyen, oyunun figürlerini hareket ettiren kişidir",
+      "rationale": "Meddah/Karagözün uygulama, kişi veya ortak özellikleri doğrudan sorulur; modern tiyatro bu kategoriye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f96e12f6dd9fcf84-Q017",
+      "imageSha256": "04895964cd05d249731d920e75b5860a2b540cdf0ab4aa1e2a3d5cc5e2de9306",
+      "categoryId": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
+      "quote": "ifadelerden hangileri Karagöz ile meddah türünün ortak özelliğidir",
+      "rationale": "Meddah/Karagözün uygulama, kişi veya ortak özellikleri doğrudan sorulur; modern tiyatro bu kategoriye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f96e12f6dd9fcf84-Q018",
+      "imageSha256": "76b745fc51bd6f5edd35936d1fbe055a9d780defe1d288b5031ea5578f8f052f",
+      "categoryId": "excel.ayt.turkce.8ef82f23506d2dd54ea2",
+      "quote": "Geleneksel Türk tiyatrosunun özellikleriyle ilgili",
+      "rationale": "Meddah/Karagözün uygulama, kişi veya ortak özellikleri doğrudan sorulur; modern tiyatro bu kategoriye alınmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e00e9157b98648e9-Q008",
+      "imageSha256": "705f2d1a3c5cc11a285f15a0ec0c38783411577bb093c4e698ed55af1ae3a9cc",
+      "categoryId": "excel.ayt.turkce.96546d312f4bd15490ea",
+      "quote": "milletlerden hangisi numaralanmış destanlarından biriyle eşleştirilemez",
+      "rationale": "Dünya destanlarını milletleriyle eşleştirir; masal/fabl/destan/halk hikâyesi mevcut ana tablo konusuna bağlandı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e00e9157b98648e9-Q015",
+      "imageSha256": "9f2f986adc273edfdd4a3f120e14d5e63fdb10b1b4e999921b095bb21e8c37f9",
+      "categoryId": "excel.ayt.turkce.a1391eb013052d9eab49",
+      "quote": "hangisi İslamiyet öncesi Türk destanlarından biri değildir",
+      "rationale": "Kök, destanın yalnız türünü değil açıkça İslamiyet öncesi/geçiş dönemi ayrımını sorar.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q002",
+      "imageSha256": "c37a173640d619e8ac1b42632bd9c27424dfc3b7f7be7434eedf46a563ebaf7e",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Şiirin dize sayısına, ölçüsüne ve uyak örgüsüne",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q005",
+      "imageSha256": "7c9d1aaa12f85aca1932b2b7189c5c640f6a2a40eb04e6074d320e537ee947aa",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Bu dörtlükle ilgili aşağıdakilerden hangisi söylenemez",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q006",
+      "imageSha256": "51ceb71ae55113c9432c998d9ba10af9c503f324ac8f54590a42c380242c6300",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Bu dörtlük aşağıdaki şiir türlerinden hangisine",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q007",
+      "imageSha256": "1f3c16ed2d9f7e47c3084c8da1da86d11f61b4e46dd9acd0af5548c702464f7a",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "bu dörtlüklerin ortak özelliklerinden biri değildir",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q011",
+      "imageSha256": "f14ab96c34c51e3945601dc1c0a5077a3ece1ea429fb4102dc725c7247d1dc49",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "sarmal uyak düzeninde anlamlı bir dörtlük",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q012",
+      "imageSha256": "b1eb47b9533ab72eab6687cd2d89e4e4a19b617615708c1c8972939cfd7c6e8e",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Çapraz uyak düzeni kullanılmıştır.",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q014",
+      "imageSha256": "e0ca4e56d6db0960c62a128577d3ed58ba4bb0762eb7f955ecb3506f88425745",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Bu dörtlük, içerik açısından aşağıdaki şiir türlerinden",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q015",
+      "imageSha256": "1770e0c505acad67948ded30bda3cfcbb67b4cff9191c5de45ed8f875e333061",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Bu dizelerle ilgili aşağıdakilerden hangisi söylenemez",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q016",
+      "imageSha256": "99f576c1fc112e3e72f117bcd08f76c490686a62494066819f32431cd67348c4",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "bu şiirin nazım şeklinin",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q020",
+      "imageSha256": "a93fdf76b708714d4b20f50bf218013c02cae6171a06bf5206262976b29fa1b6",
+      "categoryId": "excel.ayt.turkce.11138d1669f64b209379",
+      "quote": "Bu dizelerde aşağıdaki uyak türlerinden",
+      "rationale": "Şiirin tür, nazım şekli, ölçü, uyak veya biçim/içerik özelliklerini sorgular; özgün kaynak Şiir Bilgisi başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q004",
+      "imageSha256": "b164dd4b4acc3eee13498029854107cfb852445a8536c922bb4279200e2a3b34",
+      "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
+      "quote": "Bu beyitte aşağıdaki edebî sanatlardan",
+      "rationale": "Kök telmih/teşbih/hüsnütalil gibi söz sanatını doğrudan ayırt ettirir; yalnız genel şiir konusu verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q008",
+      "imageSha256": "4aff9ce66c35272c903b3ed04da776cabd5c7bf3e58ed266b1f37dacbef2a2db",
+      "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
+      "quote": "Bu beyitte aşağıdaki edebî sanatlardan",
+      "rationale": "Kök telmih/teşbih/hüsnütalil gibi söz sanatını doğrudan ayırt ettirir; yalnız genel şiir konusu verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q010",
+      "imageSha256": "6a9c747a7c3bbd68c427b87b049d9d57e9093e0905f707dbf9cfc8a3127b0e05",
+      "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
+      "quote": "verilen söz sanatı yoktur",
+      "rationale": "Kök telmih/teşbih/hüsnütalil gibi söz sanatını doğrudan ayırt ettirir; yalnız genel şiir konusu verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q018",
+      "imageSha256": "65af9b401bf2a91ff631447e02b3fb5970e4cf8b335a3924cb21871a9ae40182",
+      "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
+      "quote": "güzel bir nedene bağlama söz konusudur",
+      "rationale": "Kök telmih/teşbih/hüsnütalil gibi söz sanatını doğrudan ayırt ettirir; yalnız genel şiir konusu verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0e1769d4ba37542-Q019",
+      "imageSha256": "e936c7432935472c539ef64f1ff8894f771006b44667110e2ca59886bfe1152b",
+      "categoryId": "excel.ayt.turkce.b59ed421910c7df8166e",
+      "quote": "edebî sanatlarından hangilerine başvurulmuştur",
+      "rationale": "Kök telmih/teşbih/hüsnütalil gibi söz sanatını doğrudan ayırt ettirir; yalnız genel şiir konusu verilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3631b8dff779056a-Q003",
+      "imageSha256": "4599ca55f314e14648a557f0230f0c4d0b9d86e1dd0f4e66d7f7b007d0446b54",
+      "categoryId": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
+      "quote": "hangisi Cenap Şahabettin'in şiir anlayışını",
+      "rationale": "Servetifünun şairinin edebî anlayışını sorgular; ilk sayfa Tanzimat/Servetifünun/Fecriati/Millî Edebiyat şiiri başlığı dönem çerçevesini doğrular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3631b8dff779056a-Q008",
+      "imageSha256": "8bda790e4d43cec31cb3dc4451d7391347bd6e525f193d52173b4865e690e648",
+      "categoryId": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
+      "quote": "hangisi Tevfik Fikret için",
+      "rationale": "Servetifünun şairinin edebî anlayışını sorgular; ilk sayfa Tanzimat/Servetifünun/Fecriati/Millî Edebiyat şiiri başlığı dönem çerçevesini doğrular.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3631b8dff779056a-Q005",
+      "imageSha256": "3ac4f00fd1c14659fd0b5cb284bf110418aa3fc8a0becf58b19b75beacfcef26",
+      "categoryId": "excel.ayt.turkce.1162e7145b8ddc7558ba",
+      "quote": "Ata yurdun evlat bulmaz, giderim.",
+      "rationale": "Özgün dönem şiiri başlığı altında Millî Edebiyat anlayışı, Beş Hececiler veya dönem bağımsız şairinin edebî özellikleri incelenir; Cumhuriyet şiiriyle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3631b8dff779056a-Q019",
+      "imageSha256": "1b9aa3db8a30e5d5f9fc62a4a2eb37aa51b4fbced3872cdf22c5b35158fd0a8c",
+      "categoryId": "excel.ayt.turkce.1162e7145b8ddc7558ba",
+      "quote": "Orhan Seyfi Orhon - Tan Sesleri",
+      "rationale": "Özgün dönem şiiri başlığı altında Millî Edebiyat anlayışı, Beş Hececiler veya dönem bağımsız şairinin edebî özellikleri incelenir; Cumhuriyet şiiriyle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3631b8dff779056a-Q020",
+      "imageSha256": "a784ce92dcc74fdea041f82a2ed9f96f261c3987c11d1317d3fdf77c94b51e91",
+      "categoryId": "excel.ayt.turkce.1162e7145b8ddc7558ba",
+      "quote": "hangisi Mehmet Akif Ersoy’un edebî anlayışı",
+      "rationale": "Özgün dönem şiiri başlığı altında Millî Edebiyat anlayışı, Beş Hececiler veya dönem bağımsız şairinin edebî özellikleri incelenir; Cumhuriyet şiiriyle karıştırılmadı.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-690ed2ed4f111abf-Q010",
+      "imageSha256": "13466e60ba37b893aa15e024e1d712b2ee61bccaa679eddd6cb72b9cd7f8a72e",
+      "categoryId": "excel.ayt.turkce.5ede81d2df04bcc63ae5",
+      "quote": "âdeta bir yazı makinesi gibi çalışıp",
+      "rationale": "Tanzimat hikâyesi bağlamında Ahmet Mithatın okuru eğiten sanat anlayışı ve eseri sorulur; kaynak ilk sayfası bu dönem kapsamını açıkça içerir.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-898c042f4abe1936-Q005",
+      "imageSha256": "ea92460e8da86094c3f7518573c1f30bb2f141cf764115b7ae41f485dc962be7",
+      "categoryId": "excel.ayt.turkce.09b21bb3e8ece4ea9e99",
+      "quote": "Numaralanmış roman türleri ile aşağıdaki eserler",
+      "rationale": "Birden fazla dönemden eser, romanın tarihî/otobiyografik/sosyal/macera türlerine göre eşleştirilir; tek edebî döneme zorlanmadı. Basılı Roman Türü ve Yapı Unsurları başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-898c042f4abe1936-Q011",
+      "imageSha256": "c06d04127ab8ed3143f1fd59ec4ff1bdd41a74cfdbb6a9149b647c2c84a0c05e",
+      "categoryId": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
+      "quote": "Servetifünuncularla aynı dönemde olmasına rağmen",
+      "rationale": "Servetifünun dönemi romanı/aynı dönemin bağımsız romancısı sorulur; topluluğa üye olduğu iddiası üretilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-898c042f4abe1936-Q014",
+      "imageSha256": "788a075510686d5f32cf646c6d3c683bc68b7521d729ddaf8cc2abe191943289",
+      "categoryId": "excel.ayt.turkce.cd2d6007cfe76e0003c1",
+      "quote": "Bir anlamda Servetifünun neslinin bir temsilidir.",
+      "rationale": "Servetifünun dönemi romanı/aynı dönemin bağımsız romancısı sorulur; topluluğa üye olduğu iddiası üretilmedi.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-898c042f4abe1936-Q020",
+      "imageSha256": "ffebbb73f328cf475f595328cda43b88d1ca5e6fc75cdf62c01c22b0d9cef59a",
+      "categoryId": "excel.ayt.turkce.1162e7145b8ddc7558ba",
+      "quote": "Yeni Lisan Hareketi",
+      "rationale": "Aka Gündüzün Yeni Lisan/Türkçülük çevresi ve eserleri sorulur; basılı Millî Edebiyat Dönemi Türk Romanı başlığıyla uyumludur.",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "teacherApproved": false
+    }
+  ]
+}

@@ -191,7 +191,9 @@ def run(chunk_size=200,publish=False,limit=None,first_batch=7):
                     else:
                         if evidence.get('reasons'):evidence['priorReviewReasons']=evidence.pop('reasons')
                         accepted.append({**evidence,'status':'SOURCE_VERIFIED_READY_FOR_INSERT_ONLY','productionImportAllowed':True,
-                            'acceptanceBasis':'REVIEWED_CONTROLLED_CHAPTER_IDENTITY_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY'})
+                            'acceptanceBasis':('REVIEWED_ORIGINAL_NATIVE_QUESTION_TOPIC_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY'
+                                if row.get('topicEvidence',{}).get('basis')=='REVIEWED_ORIGINAL_NATIVE_QUESTION_TOPIC'
+                                else 'REVIEWED_CONTROLLED_CHAPTER_IDENTITY_INDEPENDENT_PRINTED_KEY_COMPLETE_ORIGINAL_BODY')})
                     done+=1;eligible_done+=1;now=time.monotonic();current=10*done//max(1,len(rows))
                     if current>bucket or now-last>=300 or done==len(rows):
                         progress={'stage':'FULL_ARCHIVE_NEW_CHAPTER_ACCEPTANCE','completed':done,'total':len(rows),'percent':round(100*done/len(rows),2),
