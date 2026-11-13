@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 8.971 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 9.111 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Tamamlanan ilk geçiş (ana görevin kapanışı değildir):** yalnız `D:\workspace\mebi-yks` kaynaklarında
 doğrulanabilen soru/cevap/konu paketlerinin aktarımı ve kalanların açık nedenlerle
@@ -56,6 +56,11 @@ paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kab
 Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
 
 ## Aktif tam arşiv işleri
+
+[Canlı paket ve BITTI tablosu](soru-bankasi-pratik-2/aktif-paketler.md)
+gözetmen tarafından kabul makbuzlarıyla otomatik güncellenir. Kullanıcının
+tekrar “devam et” demesi beklenmez. Bilinen paket zincirinin kapanışı,
+ana arşiv/ince konu/öğretmen kabulünün kapanışı değildir.
 
 - Native-görsel sayfa ayrımı **BITTI (alt iş)**:421 sayfanın361'i eski-PDF
   nedeniyle yeniden işlenmez; kalan60 sayfanın54'ü özgün2x tam beyaz piksel ve

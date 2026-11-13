@@ -71,6 +71,26 @@ def decide(done,active,dependency_ready,attempts):
     return 'READY_TO_RESUME'
 
 
+def write_step_status(data):
+    target=APP/'docs/plan/soru-bankasi-pratik-2/aktif-paketler.md'
+    target.parent.mkdir(parents=True,exist_ok=True)
+    lines=['# Pratik 2 — canlı paket durumu','',
+        'Gözetmen bu tabloyu kabul makbuzlarından otomatik günceller. **BITTI yalnız',
+        'ilgili paketin kabulüdür; bütün arşivin veya öğretmen incelemesinin kapanışı değildir.**','',
+        '[Ana plan](../15-soru-bankasi-pratik-2.md)','',
+        '| Paket | Durum | Beklediği yayın paketi |','|---|---|---|']
+    for row in data['jobs']:
+        raw=row['status']
+        label='BITTI' if raw=='COMPLETE' else 'BEKLIYOR' if raw in ('WAITING_FOR_DEPENDENCY','BOUNDED_RESTART_BACKOFF') else 'SURUYOR' if raw in ('EXISTING_WRITER_RUNNING','RESUMED_FROM_EXISTING_RECEIPTS','READY_TO_RESUME') else 'INCELEME_GEREKIYOR'
+        if raw=='EXISTING_WRITER_RUNNING' and row.get('dependencyAccepted') is False:label='BEKLIYOR'
+        lines.append('| `'+row['package']+'` | **'+label+'** | `'+row.get('dependency','—')+'` |')
+    lines+=['','**Bilinen paket zinciri:** '+('BITTI' if data['allKnownPackagesComplete'] else 'SURUYOR')+'.',
+        '**Bütün arşiv soru kabulü: AÇIK.** Kaynak/cevap/gövde, ince konu ve canlı yayın',
+        'kabulleri ayrıdır. İnceleme kayıtları tamamlanmış soru veya öğretmen onayı sayılmaz.','']
+    text='\n'.join(lines)
+    if not target.exists() or target.read_text(encoding='utf8')!=text:target.write_text(text,encoding='utf8')
+
+
 def run(watch):
     ROOT.mkdir(exist_ok=True);state_path=ROOT/'restart-state.json'
     persisted=json.loads(state_path.read_text(encoding='utf8')) if state_path.exists() else {}
@@ -100,7 +120,7 @@ def run(watch):
                             children[name]=process;logs[name]=stream
                             saved.update(starts=saved['starts']+1,lastStartEpoch=now,pid=process.pid)
                             status='RESUMED_FROM_EXISTING_RECEIPTS'
-                    rows.append({'package':name,'status':status,'resumeStarts':saved['starts'],
+                    rows.append({'package':name,'status':status,'resumeStarts':saved['starts'],'dependencyAccepted':dependency,
                                  'dependency':job['dependency'],'workerLog':str((ROOT/(name+'.log')).relative_to(BASE))})
                 except (ValueError,json.JSONDecodeError) as error:
                     rows.append({'package':name,'status':'INVALID_CHECKPOINT_REQUIRES_REVIEW','reason':str(error)})
@@ -110,6 +130,7 @@ def run(watch):
             signature=tuple((r['package'],r['status'],r.get('resumeStarts',0)) for r in rows)
             write_json(ROOT/'current.json',data);write_json(state_path,persisted)
             if signature!=previous or time.monotonic()-last_log>=300:
+                write_step_status(data)
                 with (ROOT/'events.jsonl').open('a',encoding='utf8') as stream:stream.write(json.dumps(data)+'\n')
                 print(json.dumps(data),flush=True);last_log=time.monotonic();previous=signature
             if not watch or data['allKnownPackagesComplete']:return

@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 8.971 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 9.111 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -21,6 +21,10 @@ kimlikleri/öğrenci kayıtları korunur. Testler öğrenci DB'sine yazmaz.
 BITTI; metinsiz tarama da karşılaştırılır. Boş sayfa eşleşme oluşturmaz;
 1411 eşleşmeyen PDF yeni soru sayısı değildir. Kısmi eski aktarım notu saklanır,
 aynı PDF'de eksik soru arama yok. Daha önce yayınlananlar silinmez.13 kapı testi PASS.
+
+**Canlı adım takibi:** `docs/plan/soru-bankasi-pratik-2/aktif-paketler.md`
+gözetmen tarafından makbuzdan BITTI/BEKLIYOR/SURUYOR güncellenir; ana plan
+arşiv kabulü açıkken otomatik kapatılmaz.
 
 **Gerçek çalışan zincir:** `mebi_pratik2_zincir_gozetmeni.py --watch`, PID36976;
 son durum `BASE/chain-supervisor/current.json`, loglar `*.log`/`*.err.log`.

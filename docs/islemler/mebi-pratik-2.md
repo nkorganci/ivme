@@ -309,3 +309,9 @@ Yeni öğretmen onayı veya otomatik konu yayını yoktur. Kaynak/kırpım deği
 Gözetmen bütün yardımcı kanıt işlerini en son donmuş yayın paketinin (050)
 sonrasına koyar. Böylece model kaynağında hazır yayınlar önceliklidir. Yeni yayın
 paketi eklenirse bağımlılık testini çalıştır; tamamlanmış makbuzları koru.
+
+
+Gözetmen durum geçişlerinde ve beş dakikada bir
+`docs/plan/soru-bankasi-pratik-2/aktif-paketler.md` dosyasını kabul makbuzlarına
+göre günceller. BITTI yalnız paket kabulüdür; ana arşiv veya öğretmen incelemesi
+kapanışı değildir. Dosya otomatik üretilir; elle paket durumunu değiştirme.
