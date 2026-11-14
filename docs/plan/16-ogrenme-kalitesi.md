@@ -232,10 +232,13 @@ Konu başına yanılgılara dayalı 8–10 maddelik kendi kavram testimiz ön ve
 
 ### Üretim yöntemi (konu başına; 16.07 hattının fizik biçimi)
 
-1. **Kanıt paketi** (betik + Ollama): MEB/OGM sayfaları (`pipeline` eşlemesi), kayıttaki konu anlatımları
-   (fizikte 215 belge), kazanımlar, bankadaki sorular (temas tabakası: `scripts/konu/soru_tabakasi.py`; fizikte
-   10.525 soru, 97 konu), ÖSYM soruları, ön koşul konular.
-2. **Konu haritası** (Fable/Opus): duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formüllerin türetimi ve
+1. **Kanıt paketi** (betik + Ollama): **bütün kaynaklar kullanılabilir; sayı sınırı yoktur, uygun olan kullanılır.**
+   Konuya eşli her belge taranır: MEB/OGM sayfaları (`pipeline` eşlemesi), kayıttaki bütün konu anlatımları (fizikte
+   215 belge), kazanımlar, bankadaki sorular (temas tabakası: `scripts/konu/soru_tabakasi.py`; fizikte 10.525 soru,
+   97 konu), ÖSYM soruları, ön koşul konular. Uygunluk ölçütü: konuyu kapsıyor, doğru, metni okunuyor, kazanıma ve
+   sınav diline uyuyor, başka kaynakta olmayan bir şey (yanılgı, örnek, şekil, soru tipi) katıyor. Paket her ölçütü
+   karşılayan sayfaları taşır; kullanılmayan belgenin nedeni kaynak kaydına yazılır.
+2. **Konu haritası** (Fable 5.2 ilk konular, sonra Opus 5.5): duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formüllerin türetimi ve
    koşulu, soru tipleri ve sıklığı. Yazmaya geçmeden önce kullanıcıya tek tablo olarak gösterilir.
 3. **Paket taslağı** merdivene göre; mevcut parçalar yeniden kullanılır: `interactive/motion/` stüdyosu (bağlı
    grafikler), Akıllı Öğretmen soru içeriği (ipucu, yanılgı, ikiz soru), matematik laboratuvarı kabul ölçütleri.
@@ -294,21 +297,38 @@ tarihçe taşınmaz. Taşınan kuralların listesi commit mesajına yazılır. T
 
 ## Hangi iş hangi modelde
 
-| İş | Model |
-|---|---|
-| Öğretim standardı, şema, bileşen kataloğu, rubrik, altın konular, her dersin ilk konusu | Claude Fable 5.2 |
-| Zor konu, mimari inceleme | Claude Opus 5.5 |
-| Uygulama kodu, betikler, toplu konu paketi, belge sadeleştirme | Claude Sonnet 5.5 veya GPT-6.1 Sol |
-| Bağımsız doğrulama | Yazandan farklı sağlayıcı (GPT-6 Astra ↔ Fable/Opus); önce kendi çözümünü üretir |
-| Ekran ve şekil denetimi | GPT-6.1 Terra veya Claude (ekran görüntüsüyle) |
-| Küçük düzenleme, etiket | Claude Haiku 5.5 veya GPT-6 Luna |
-| Gömme, benzerlik, kaynak–konu eşleme | Ollama `bge-m3` |
-| PDF sınıflama, konu eşleme, kanıt paketi taslağı | Ollama `qwen3.5:9b`; kararsız kalanlar `gpt-oss:20b` |
-| Görselden ön eleme | Ollama `gemma3:4b` (önce 20 sayfalık deneme) |
-| Hash, sayfa sayımı, bağlantı denetimi, silme listesi, test | Betik; model yok |
+Claude modeli oturumda `/model` ile seçilir. Kural: içeriğin doğruluğu ve öğretim kalitesi en güçlü modelde,
+kalıba dönüşmüş iş daha hızlı modelde, ağır tarama hiç bulut modelinde değil (betik + Ollama).
 
-Token kuralları: bulut modeli PDF taramaz, yalnız betik + Ollama'nın hazırladığı **kanıt paketini** (konunun 10–20
-sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir iş; girdisi değişmeyen aşama yeniden
+| Adım | İş | Model | Düşünme |
+|---|---|---|---|
+| 16.03 kalanı | zip, `mebi-yks` birleştirme, PDF taşıma, proje yapısı, tek sabit dosyası | Sonnet 5.5 (betik) | orta |
+| 16.04 / 2 | Hareket konu haritası: duraklar, ön koşul, yanılgı kataloğu, temsil zinciri, formül türetimi | **Fable 5.2** | yüksek |
+| 16.04 / 3 | Araç kutusu mikro derslerinin içeriği (birim, vektör, grafikte eğim/alan) | Fable 5.2 | yüksek |
+| 16.04 / 3–4 | Şema v2, blok bileşenleri, deney bağı, testler, ekran | Sonnet 5.5 | orta |
+| 16.04 / 4 | Hareket v2 içeriği: basamak metinleri, sorular, çeldiriciler, çözümler | **Fable 5.2** | yüksek |
+| 16.04 / 5 | Bağımsız denetim: fizik doğruluğu, cevaplar, rubrik puanı (önce kendi çözümünü üretir) | Opus 5.5, ayrı oturum | yüksek |
+| 16.05 | Newton yasaları: konu haritası ve paket (yöntemin ikinci konuda sınanması) | Fable 5.2 | yüksek |
+| 16.05 | Kalan fizik konuları: konu haritası | Opus 5.5 (modern fizik, indüksiyon gibi zor konular Fable 5.2) | yüksek |
+| 16.05 | Kalan fizik konuları: paket taslağı onaylı haritadan | Sonnet 5.5 | yüksek |
+| 16.05 | Her paketin denetimi; eşik altıysa düzeltme | Opus 5.5; ikinci turda da geçmezse Fable 5.2 | yüksek |
+| 16.06 | Ürün kabuğu, dört ana yer, ustalık motoru bağı | Sonnet 5.5; mimari karar Opus 5.5 | orta / yüksek |
+| 16.07 | Üretim hattı betikleri, skill'ler | Sonnet 5.5 | orta |
+| 16.08 | Ölçüm raporu; rubrik ve plan ağırlığı kararı | Sonnet 5.5; karar Opus 5.5 | orta / yüksek |
+| Her adım | Küçük metin, etiket, belge düzeltmesi, tek dosyalık UI ayarı | Haiku 5.5 (ekran gerekirse Sonnet 5.5) | düşük |
+
+| Model dışı iş | Araç |
+|---|---|
+| Kaynak tarama, gömme, kaynak–konu eşleme | Ollama `bge-m3` |
+| PDF sınıflama, uygunluk ön elemesi, kanıt paketi taslağı | Ollama `qwen3.5:9b`; kararsız kalanlar `gpt-oss:20b` |
+| Görselden ön eleme | Ollama `gemma3:4b` (önce 20 sayfalık deneme) |
+| Hash, sayfa sayımı, bağlantı denetimi, silme listesi, hesap testi | Betik |
+| Farklı sağlayıcıyla doğrulama (varsa) | GPT-6 Astra; yoksa yazan modelden farklı Claude modeli, ayrı oturumda |
+
+Yazan ve denetleyen aynı oturum olmaz; denetleyen yazanın gerekçesini görmeden önce kendi çözümünü yazar.
+
+Token kuralları: bulut modeli PDF taramaz, yalnız betik + Ollama'nın hazırladığı **kanıt paketini** (bütün kaynaklardan
+seçilen uygun sayfalar, görselleri, bağlı soruları; çok büyükse Ollama'nın kaynaklı özetiyle) okur; bir oturum bir konu ya da bir iş; girdisi değişmeyen aşama yeniden
 çalışmaz; güçlü modele yalnız gözlenebilir hatada (şema, hesap, test) geçilir.
 
 ## Görev sırası
@@ -324,17 +344,17 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 - Kaynak kaydını doldur: hash, tür, konu eşleme (klasör ve `katalog.json` → `bge-m3` → `gpt-oss:20b`), bağlı soru sayısı.
 - Video bağlantı tablosu: `katalog.json` + YouTube; bağlantı denetimi; oturum isteyenler MEBİ sayfa adresiyle.
 - Kabul: her dosya kayıtta tek satır ve bir karar taşır; kararsız dosya sayısı raporlu.
-- Sonuç (`python scripts/ivme.py kaynak …`; rapor `veri/kaynak-kayit/`): görünen 386,7 GiB, gerçek disk 148,3 GiB (238 GiB sabit bağlantı tekrarı); Kaynaklar 87,9 GiB, mebi-yks 76,9 GiB (aynı dosyaların büyük kısmı ortak), `uygulama/veri` 49,7 GiB. Kayıt `kaynak_kaydi.dosyalar`: 12.140 fiziksel dosya = 12.140 satır, hepsinde SHA-256; karar: kalır 6.707 (9,2 GiB), silinir önerisi 4.685 (68,7 GiB: 2.094 video/ses, tekrar kopyalar; konuda 4'ten fazla anlatım önerisi sonradan kaldırıldı), **kararsız (bekler) 748** (668 konusu belirlenemeyen konu anlatımı + 78 zip: içinde kayıtta olmayan üye + 2 adressiz zip). Konu eşleme: katalog/klasör 3.259, bge-m3 83, gpt-oss 110 (150 sınırı), belirsiz 2.940 (çoğu YKS dışı değil; eşik sıkı). Video tablosu `kaynak_kaydi.video_baglari`: MEBİ 2.094 adresin tamamı denetimden geçti (boyut eşit), YouTube 195 geçti / 184 ulaşılamadı (liste/oEmbed; 16.03'te elle bakılır). Silinen dosya yok; "silinir" yalnız öneridir.
+- Sonuç (`python scripts/ivme.py kaynak …`; rapor `veri/kaynak-kayit/`): görünen 386,7 GiB, gerçek disk 148,3 GiB (238 GiB sabit bağlantı tekrarı); Kaynaklar 87,9 GiB, mebi-yks 76,9 GiB (aynı dosyaların büyük kısmı ortak), `uygulama/veri` 49,7 GiB. Kayıt `kaynak_kaydi.dosyalar`: 12.140 fiziksel dosya = 12.140 satır, hepsinde SHA-256; karar: kalır 6.707 (9,2 GiB), silinir önerisi 4.685 (68,7 GiB: 2.094 video/ses, tekrar kopyalar; konu anlatımı silinmez), **kararsız (bekler) 748** (668 konusu belirlenemeyen konu anlatımı + 78 zip: içinde kayıtta olmayan üye + 2 adressiz zip). Konu eşleme: katalog/klasör 3.259, bge-m3 83, gpt-oss 110 (150 sınırı), belirsiz 2.940 (çoğu YKS dışı değil; eşik sıkı). Video tablosu `kaynak_kaydi.video_baglari`: MEBİ 2.094 adresin tamamı denetimden geçti (boyut eşit), YouTube 195 geçti / 184 ulaşılamadı (liste/oEmbed; 16.03'te elle bakılır). Silinen dosya yok; "silinir" yalnız öneridir.
 
 ## 16.03 — Sil ve yeniden düzenle (betik; kullanıcı onayıyla)
-- Kategori kategori kuru liste → onay → silme: video/ses, zip, tekrar PDF, önbellekler, eski dökümler (4'ten fazla anlatım kuralı kaldırıldı).
+- Kategori kategori kuru liste → onay → silme: video/ses, zip, tekrar PDF, önbellekler, eski dökümler (konu anlatımında sayı sınırı yok).
 - Soruları sistemde olan PDF'leri `soru-referansi/`'ne, kısmi olanları `soru-bekleyen/`'e, konu anlatımlarını hedef konu klasörlerine taşı.
 - `mebi-yks` dosyalarını `Kaynaklar/`'a taşı, ivme'deki tekrarları sil; `mebi-yks` ve `EskiYollar` kaldırılır.
 - Proje yapısını uygula (yukarıdaki tablo): `pipeline` + `veri-hatti` → `araclar`, `icerik/data` → `uygulama/veri`, betik alt klasörleri; yollar tek sabit dosyasında.
 - Kabul: uygulama, PDF ekranı ve soru görselleri çalışır; öğrenci ve soru sayıları değişmez; boyut önce/sonra raporlu.
 - Yapılanlar (onaylı, `scripts/kaynak/sil.py`, günlük `veri/kaynak-kayit/silme-gunlugu.jsonl`): 2.094 video/ses (66,3 GiB) ve 2.591 tekrar dosya silindi; `video-hatti/medya`, `veri/yedek`, önbellekler, eski dökümler, `main-bank-transfer`, `yks-birlestirme` ve `source-inventory` çalışma çıktıları silindi (yalnız `yks-birlestirme/current.json`+`state.json`+`yol-uyumluluk` ve `single-test-crop-pilot` kaldı: canlı etiket hattı ve MebiPractice2PilotTest okur); kapanmış YKS/Pratik 2'nin 332 betik ve test dosyası `git rm` ile kaldırıldı (geri dönüş git), kalite profilinden 75 ölü kontrol çıkarıldı. D: 454 → 342 GiB. 97.061 soru görselinin tamamı `resimler-pilot`'ta; DB 97.061 soru, 12 kullanıcı. Kalan: zip (80), `Kaynaklar` ↔ `mebi-yks` birleştirme, soru PDF taşıma, proje yapısı, tek sabit dosyası.
 
-## 16.04 — Öğretim standardı ve tasarım sistemi (Fable 5.2)
+## 16.04 — Öğretim standardı ve tasarım sistemi (içerik Fable 5.2, kod Sonnet 5.5, denetim Opus 5.5)
 - Konu paketi şeması, bileşen kataloğu, rubrik, dört ana yerin ve konu sayfasının ekran tasarımı, kişisel plan kuralları.
 - Durum: kullanıcı kararıyla **tek model konu** üzerinden yürür (TYT Fizik – Hareket, `/konuyu-ogrenelim/ogren/fizik-hareket`). Yapıldı: şema, blok kataloğu, konu sayfası, rubrik ve üretim sırası ([standart](../urun/ogretim-standardi.md#konu-paketi-standardı-v1--1604)); 236 banka sorusunun görseli incelenerek 10 soru tipi çıkarıldı; `node --test testler/konu-paketi.test.mjs` 7/7; masaüstü ve mobil ekran denetimi temiz. Kullanıcı değerlendirmesi: arayüz düzeltildi; içerik soru tipinden başlıyor, sıfırdan konu eğitimi eksik → [fizik öğretim yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi).
 - Sıra (her biri kullanıcı onayıyla):
@@ -345,7 +365,7 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
   5. Kabul: kullanıcı sıfırdan başlayan öğrenci gibi baştan sona dener; test, ekran ve rubrik geçer.
 - Kalan: dört ana yerin ekran tasarımı ve kişisel plan kuralları (model konu onayından sonra); ustalık motoru bağı 16.06.
 
-## 16.05 — Fizik dersi (yöntem v2; Fable 5.2 yazar, GPT-6 Astra denetler)
+## 16.05 — Fizik dersi (yöntem v2; modeller tablodaki gibi)
 - İkinci konu Newton'un hareket yasaları (Hareket ve Kuvvet'in kalanı): araç kutusu ve yöntemin yeniden kullanılabildiği burada sınanır; konu başına oturum/token maliyeti ölçülür.
 - Sonra TYT fiziğin kalan üniteleri ön koşul sırası ve sınav ağırlığıyla, ardından AYT. Her konu: konu haritası onayı → paket → denetim.
 - Sözel altın konu (Tarih — Millî Mücadele) fizik yöntemi oturduktan sonra genellemenin ilk sınavıdır (kullanıcı: "şimdilik yalnız fizik").

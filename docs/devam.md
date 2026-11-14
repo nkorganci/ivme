@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04`: [fizik öğretim yöntemi](plan/16-ogrenme-kalitesi.md#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında; onaydan sonra Hareket konu haritası → araç kutusu → Hareket v2. Onaydan önce ikinci konuya geçme |
+| Sıradaki görev | `16.04`: [fizik öğretim yöntemi](plan/16-ogrenme-kalitesi.md#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında; onaydan sonra 2. adım Hareket konu haritası (**Fable 5.2**, `/model fable`) → araç kutusu → Hareket v2. Onaydan önce ikinci konuya geçme |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
@@ -14,7 +14,7 @@
 
 ## Açık kararlar (kullanıcı)
 
-- **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; 4'ten fazla kuralı kaldırıldı, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
+- **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; konu anlatımında sayı sınırı yok, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
 - **16.04 fizik yöntemi:** basamak merdiveni, problem çözme protokolü, araç kutusu, yanılgı kataloğu ve ölçüm onaylanınca Hareket v2 yazılır; 16.05 önce fizik dersi, sözel altın konu (Millî Mücadele) sonra.
 - **Yeni soru edinimi:** 100 bin yeni soru istenirse dışlanan adaylar açılmadan ayrı kaynak edinimi projesi tanımlanır ([kaynak kaydı](tarifler/kaynak-kaydi.md#yks-kaynak-birleştirme-kapalı)).
 
