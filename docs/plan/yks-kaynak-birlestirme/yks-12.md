@@ -1,4 +1,7 @@
-# YKS-12 — Yalnız yeni ve cevaplı soruları yayımlamak
+# YKS-12 — Yalnız yeni ve cevaplı soruları yayımlamak — BITTI
+
+**Tamamlandı:** `yks-12/full/attempt-0001/empty-insert-only-acceptance.json`,
+güncel snapshot’ta uygun yeni soru/parti olmadığını ve INSERT_ONLY delta sıfırını doğrular.
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR

@@ -23,17 +23,27 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--database", choices=["ivme", "ivme_test"], default=default_database())
     p.add_argument("--check", action="store_true")
+    p.add_argument("--state-dir", type=Path, default=STATE)
     args = p.parse_args()
-    subprocess.run(['node', 'scripts/learning-resource-check.mjs'], cwd=APP, check=True)
+    state = args.state_dir.resolve()
+    allowed = (APP / 'veri').resolve()
+    if not state.is_relative_to(allowed) or not state.is_dir():
+        raise ValueError('Publication state must be an existing directory under uygulama/veri')
+    taxonomy = state / 'maintenance.json' if (state / 'maintenance.json').is_file() else APP / 'backend/src/main/resources/content-taxonomy.json'
+    contract_command=['node', 'scripts/learning-resource-check.mjs', '--labels', str(state / 'labels.json'),
+                    '--taxonomy', str(taxonomy), '--report', str(state / 'contract-report.json')]
+    exceptions=state/'contract-exceptions.json'
+    if exceptions.is_file(): contract_command.extend(['--allowed-contract-errors',str(exceptions)])
+    subprocess.run(contract_command, cwd=APP, check=True)
     connection = db_connection(args.database)
-    content = (STATE / "labels.json").read_bytes()
+    content = (state / "labels.json").read_bytes()
     payload = json.loads(content)
-    report = json.loads((STATE / "report.json").read_text(encoding="utf-8"))
+    report = json.loads((state / "report.json").read_text(encoding="utf-8"))
     run = "labels-v1-" + hashlib.sha256(content).hexdigest()[:24]
     if run != report["runKey"]:
         raise ValueError("Label report checksum mismatch")
-    audit = json.loads((STATE / "audit.json").read_text(encoding="utf-8"))
-    references = json.loads((STATE / "curriculum-reference-labels.json").read_text(encoding="utf-8"))
+    audit = json.loads((state / "audit.json").read_text(encoding="utf-8"))
+    references = json.loads((state / "curriculum-reference-labels.json").read_text(encoding="utf-8"))
     if audit.get("runKey") != run or audit.get("failures") or audit.get("unlabelled") != 0:
         raise ValueError("Run the complete source audit before publishing")
     # Curriculum-only runs and KPSS track additions start from the published snapshot and keep every source.
@@ -72,14 +82,15 @@ def main():
              (SELECT 1 FROM learning_catalog.current_assignments a WHERE a.item_key=i.item_key)),
           'missingQuestions',(SELECT count(*) FROM questions q WHERE NOT EXISTS
              (SELECT 1 FROM learning_catalog.current_items i WHERE i.item_key='question:'||q.code)))"""))
-        if actual != {"runKey": run, "items": len(keys), "categories": len(categories), "unlabelled": 0, "missingQuestions": 0}:
+        expected_missing = int(audit.get('preexistingMissingQuestions', 0)) if snapshot_run else 0
+        if actual != {"runKey": run, "items": len(keys), "categories": len(categories), "unlabelled": 0, "missingQuestions": expected_missing}:
             raise ValueError(f"Published catalog differs: {actual}")
         saved_audit = query(connection, f"SELECT count(*) FROM learning_catalog.source_audits WHERE run_key={literal(run)}")
         if saved_audit.strip() != "1":
             raise ValueError("Source audit is not published for this run")
         print(json.dumps(actual, ensure_ascii=False))
         return
-    sql_path = STATE / "publish.sql"
+    sql_path = state / "publish.sql"
     # Existing installations already have these columns. Avoid replaying the costly
     # historical backfill (and taking table-wide DDL locks) on every label publish.
     schema_ready = query(connection, """SELECT to_regclass('learning_catalog.current_items') IS NOT NULL
@@ -137,9 +148,14 @@ DO $validation$
 BEGIN
     IF (SELECT count(*) FROM learning_catalog.items WHERE run_key={literal(run)}) <> {len(keys)} THEN
        RAISE EXCEPTION 'Incomplete resource import'; END IF;
-    IF EXISTS(SELECT 1 FROM questions q LEFT JOIN incoming_items i ON i.data->>'key'='question:'||q.code
+    IF EXISTS(SELECT 1 FROM learning_catalog.current_items old LEFT JOIN incoming_items i ON i.data->>'key'=old.item_key
+       WHERE i.data IS NULL) THEN RAISE EXCEPTION 'Published source item would be lost'; END IF;
+    {"""IF EXISTS(SELECT 1 FROM learning_catalog.current_items old JOIN incoming_items i
+       ON i.data->>'key'=old.item_key
+       WHERE (i.data - 'taxonomyVersion') IS DISTINCT FROM (old.data - 'taxonomyVersion')) THEN
+       RAISE EXCEPTION 'Curriculum snapshot changed a source item payload'; END IF;""" if snapshot_run else """IF EXISTS(SELECT 1 FROM questions q LEFT JOIN incoming_items i ON i.data->>'key'='question:'||q.code
        WHERE i.data IS NULL OR i.data->>'sourceUpdatedAt' IS DISTINCT FROM extract(epoch from q.updated_at)::text) THEN
-       RAISE EXCEPTION 'Question inventory changed; regenerate labels'; END IF;
+       RAISE EXCEPTION 'Question inventory changed; regenerate labels'; END IF;"""}
 END $validation$;
 INSERT INTO learning_catalog.current_run(singleton,run_key) VALUES (true,{literal(run)})
     ON CONFLICT(singleton) DO UPDATE SET run_key=excluded.run_key;

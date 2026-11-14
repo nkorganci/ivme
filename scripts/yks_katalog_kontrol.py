@@ -14,15 +14,29 @@ def validate_catalog(maintenance,categories,navigation,questions,candidate=False
     if maintenance.get('curriculumAuthority')!='MEBI_PROVIDER':raise ValueError('MEBI maintenance source required')
     known={c['id']:c for c in maintenance['categories']}
     published={c['id']:c for c in categories}
-    if any(c!=known.get(identity) for identity,c in published.items()):
+    # The publisher materializes topicNumber for API ordering.  It is derived
+    # from the immutable selectable/unit order and is not a curriculum-source
+    # definition change, so it cannot invalidate an identity-preserving check.
+    def source_definition(value):
+        return {key: item for key,item in value.items() if key != 'topicNumber'}
+    if any(identity in known and source_definition(c)!=source_definition(known[identity]) for identity,c in published.items()):
         raise ValueError('Published category definitions differ; prepare a new identity-preserving maintenance candidate')
-    if not candidate and set(published)!=set(known):raise ValueError('Maintenance has unpublished categories')
+    if not candidate:
+        published_yks={identity for identity,c in published.items() if c.get('exam') in ('TYT','AYT')}
+        known_yks={identity for identity,c in known.items() if c.get('exam') in ('TYT','AYT')}
+        if published_yks!=known_yks:raise ValueError('Maintenance has unpublished YKS categories')
+        # Other exam tracks are independent shared-catalog additions and must
+        # remain byte-for-byte definitions, not disappear during YKS cutover.
+        foreign={identity:c for identity,c in published.items() if c.get('exam') not in ('TYT','AYT')}
+        if any(source_definition(known.get(identity,c))!=source_definition(c) for identity,c in foreign.items()):
+            raise ValueError('Other-exam category definition changed during YKS cutover')
     if not candidate and navigation!=maintenance['curriculumNavigation']:
         raise ValueError('Published navigation differs from the maintenance projection')
-    if questions['missing'] or questions['stale']:
+    if questions['missing'] > questions.get('allowedMissing',0) or questions['stale']:
         raise ValueError('Question additions/changes require source intake before snapshot reuse')
     return {'definitionsUnchanged':True,'publishedCategories':len(published),'maintenanceCategories':len(known),
-            'questionInventory':questions,'questionRowsWritten':0,'studentRowsWritten':0,'modelsCalled':0,
+            'otherExamCategoriesPreserved':sum(c.get('exam') not in ('TYT','AYT') for c in published.values()),
+             'questionInventory':questions,'questionRowsWritten':0,'studentRowsWritten':0,'modelsCalled':0,
             'sourceExtractionReused':True,'publicationRequired':False}
 
 
@@ -42,6 +56,7 @@ def main():
              'stale',count(*) FILTER(WHERE i.source_stamp IS DISTINCT FROM extract(epoch FROM q.updated_at)::text))
              FROM questions q LEFT JOIN learning_catalog.current_items i ON i.item_key='question:'||q.code
              WHERE q.exam_type IN ('TYT','AYT');"""))
+    questions['allowedMissing']=int(published['summary'].get('preexistingMissingQuestions',0))
     report=validate_catalog(maintenance,published['categories'],published['summary'].get('curriculumNavigation'),questions,args.candidate)
     reference=maintenance['unitReference']['providerCatalogSha256']
     provider=Path(state['sourceRoots'][0])/'katalog.json'

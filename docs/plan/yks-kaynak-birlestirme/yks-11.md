@@ -1,4 +1,7 @@
-# YKS-11 — Dosya düzeni ve ortak katalog geçişi
+# YKS-11 — Dosya düzeni ve ortak katalog geçişi — BITTI
+
+**Tamamlandı:** `yks-11/full/attempt-0003/cutover-acceptance.json` etkin katalog,
+geri dönüş yedeği ve değişmeyen öğrenci/soru/geçmiş parmak izini doğrular.
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR

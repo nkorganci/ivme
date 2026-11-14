@@ -33,6 +33,13 @@ class MaintenanceTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'navigation differs'):
             validate_catalog(self.maintenance,[self.old],{},self.questions)
 
+    def test_other_exam_track_survives_yks_maintenance(self):
+        mebi={**self.old,'exam':'TYT'}
+        maintenance={**self.maintenance,'categories':[mebi]}
+        kpss={'id':'kpss-kept','topic':'KPSS kept','exam':'KPSS_LS_GK'}
+        result=validate_catalog(maintenance,[mebi,kpss],self.navigation,self.questions)
+        self.assertEqual(result['otherExamCategoriesPreserved'],1)
+
     def test_active_inventory_deduplicates_assets_and_keeps_prior_pipeline_paths(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);archive=root/'YKS';legacy=root/'ogm-materyal';legacy.mkdir()

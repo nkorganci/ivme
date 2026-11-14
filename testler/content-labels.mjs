@@ -11,7 +11,11 @@ const items=new Map(data.items.map(i=>[i.key,i]));
 const categories=new Map(data.categories.map(c=>[c.id,c]));
 assert.equal(items.size,data.items.length);
 assert.equal(categories.size,data.categories.length);
-assert.equal(data.items.length,source.questions.length+pdf.items.length+catalog.items.length);
+// A shared-catalog snapshot can retain established, non-local-source records.
+// Every locally inventoried resource must still be present; the snapshot may
+// contain additional preserved resources and must never make this lower bound
+// smaller.
+assert.ok(data.items.length>=source.questions.length+pdf.items.length+catalog.items.length);
 for(const s of source.questions)assert.ok(items.has(`question:${s.code}`),s.code);
 for(const s of [...pdf.items,...catalog.items])assert.ok(items.has(s.key),s.key);
 for(const item of items.values()) {

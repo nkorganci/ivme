@@ -8,6 +8,7 @@ Açık uygulama işlerinin ayrıntıları yalnız numaralı adım dosyalarında 
 | 12 | [Kalan içerik ve yayın](12-icerik-ve-yayin.md); içerik kararları 7. adıma bağlıdır |
 | 14 | [KPSS sınavları](14-kpss.md); 14.02 Ön Lisans sıradadır |
 | 15 | [YKS kaynaklarını MEBİ düzeninde birleştirme](15-yks-kaynak-birlestirme.md); YKS-00–13 görev dosyaları, kanıtlı devam ve eski referansların korunması |
+| 16 | [Öğrenme kalitesi, kaynak düzeni ve model kullanımı](16-ogrenme-kalitesi.md); plan onaylı, uygulama başlamadı; 16.01 sıradadır ve 15. adımın ek işini dondurur |
 
 [Kullanıcı rolleri ve yönetimi](../tasarim/kullanici-yonetimi.md) ayrı uygulama talimatı bekleyen tasarım önerisidir; açık uygulama adımı değildir.
 

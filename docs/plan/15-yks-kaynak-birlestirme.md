@@ -364,17 +364,30 @@ geri alma kanıtı güncel kaldı. Kanıt `selected-yks10-zero-transfer/`,
 [Adım görevini aç](yks-kaynak-birlestirme/yks-10.md). Önce küçük temsilî pilot,
 sonra tam arşiv geçiş kabulü; gerçek öğrenci DB'sine test yazılmaz.
 
-## 15.11 — YKS-11: kaynak ve konu kataloğu geçişi
+## 15.11 — YKS-11: kaynak ve konu kataloğu geçişi — BITTI
+
+**Durum: TAMAMLANDI — BITTI.** Sürümlü katalog `labels-v1-297a28c219679f08b8dcbef1`
+ile etkinleştirildi: 89.796 kaynak ve 6.361 kategori, kaynak gövdeleri korunarak
+yayınlandı. Tam 1.212.541.643 bayt geri-dönüş yedeği, eski/yeni işaretçi ve
+öğrenci/soru/geçmiş tablo parmak izi kanıtı geçerli; soru yazımı sıfırdır.
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-11.md). Doğrulanmış fiziksel düzen,
 uyumlu okuyucular ve sürümlü DB kataloğu kontrollü etkinleştirilir.
 
-## 15.12 — YKS-12: yalnız yeni soruların aktarımı
+## 15.12 — YKS-12: yalnız yeni soruların aktarımı — BITTI
+
+**Durum: TAMAMLANDI — BITTI / boş INSERT_ONLY kabulü.** Güncel banka snapshot’ında
+86.035 soru okundu; kanıtlı yeni paket ve planlı parti sıfır olduğu için soru,
+konum, öğrenci ve geçmiş yazımı yapılmadı. Birinci/ikinci çalıştırma deltası sıfırdır.
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-12.md). Küçük atomik partiler,
 güncel tekrar kontrolü ve INSERT_ONLY davranışıyla kabul edilir.
 
-## 15.13 — YKS-13: kesin kopya temizliği ve kapanış
+## 15.13 — YKS-13: kesin kopya temizliği ve kapanış — BITTI
+
+**Durum: TAMAMLANDI — BITTI / kanıtlı silinebilir kopya yok.** Etkin manifest
+7.593 kaynak konumunu 7.355 tekil arşiv hedefiyle doğruladı. Hardlink düzeni ve
+özgün köken bağlantıları korundu; silinen dosya/bayt, soru veya öğrenci yazımı sıfırdır.
 
 [Adım görevini aç](yks-kaynak-birlestirme/yks-13.md). Kanıtlanmış kopyalar en son
 temizlenir; benzersiz özgün kaynaklar ve bütün geçmiş korunur.

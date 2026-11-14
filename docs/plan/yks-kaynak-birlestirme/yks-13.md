@@ -1,4 +1,7 @@
-# YKS-13 — Kesin kopya temizliği ve son kapanış
+# YKS-13 — Kesin kopya temizliği ve son kapanış — BITTI
+
+**Tamamlandı:** `yks-13/full/attempt-0001/no-delete-closeout-acceptance.json`,
+etkin arşiv envanterini ve kanıtlı silinebilir kopya bulunmadığını doğrular; silme sıfırdır.
 
 **Güncel kullanıcı kuralı:** Hatalı/eksik/uyuşmayan/bulunamayan adayları
 `EXCLUDE_NO_RETRY` ile ele; onarım, eksik kanıt arama veya tekrar model/OCR
