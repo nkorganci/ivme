@@ -18,8 +18,8 @@ const postDisabled=()=>b.evalJs(`[...document.querySelectorAll('.kp-yol button')
 async function yargi(oge){await b.evalJs(`(()=>{const li=[...document.querySelectorAll('.kp-yargilar>li')];${JSON.stringify(oge.yargilar.map(y=>y.dogru))}.forEach((v,i)=>[...li[i].querySelectorAll('button')].find(b=>b.textContent===(v?'Doğru':'Yanlış')).click())})()`);await click('Kontrol et');}
 try{
  await b.goto('/');await b.login('student');await open('son');await b.wait(`document.body.innerText.includes('Başlamadan önce')`);
- const u=await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();return r.user||r})()`);key=`ivme:konu-paketi:fizik-hareket:${u.id}:v2:r2`;
- const old=key.replace(':r2','');await b.evalJs(`localStorage.setItem(${JSON.stringify(old)},'{"onceki":"korunacak"}')`);
+ const u=await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();return r.user||r})()`);key=`ivme:konu-paketi:fizik-hareket:${u.id}:v2:r3`;
+ const old=key.replace(':r3','');await b.evalJs(`localStorage.setItem(${JSON.stringify(old)},'{"onceki":"korunacak"}')`);
  assert.equal(await postDisabled(),true);checks.push('URL ile son test kilidi');
  await fixture(base(),'kime-gore');const pred=p.duraklar[0].bloklar[0].tahmin;
  await choose(pred.soru,pred.secenekler.find(s=>!s.dogru).metin);
@@ -42,6 +42,10 @@ try{
  assert.equal(await b.evalJs(`document.querySelector('.kp-v2-gorsel svg').getAttribute('aria-label').startsWith('Hareket haritası')`),true);
  assert.equal(await b.evalJs(`document.querySelector('.kp-v2-gorsel svg').querySelectorAll('polyline').length`),0);checks.push('Gerçek hareket haritası');
  const tipI=mapD.bloklar.findIndex(q=>q.tur==='tipler');await fixture({...base(),xt:Object.fromEntries(mapD.bloklar.slice(0,tipI).map((_,i)=>[i,{ilk:true}]))},'xt');assert.ok((await text()).includes('KOŞUL'));assert.ok((await text()).includes('TUZAK'));checks.push('Tip kartı koşul/tuzak görünür');
+ const numericD=p.duraklar[0], ni=numericD.bloklar.findIndex(q=>q.tur==='nicel-kontrol'), nq=numericD.bloklar[ni].ogeler;
+ await fixture({...base(),[numericD.id]:Object.fromEntries(numericD.bloklar.slice(0,ni).map((_,i)=>[i,{ilk:true}]))},numericD.id);
+ const numericLocked=()=>b.evalJs(`[...document.querySelectorAll('.kp-v2-ana button')].find(b=>b.textContent==='Sonraki →').disabled`);
+ assert.equal(await numericLocked(),true);await choose(nq[0].soru,nq[0].secenekler.find(s=>s.dogru).metin);await open(numericD.id);assert.equal(await numericLocked(),true);await choose(nq[1].soru,nq[1].secenekler.find(s=>s.dogru).metin);assert.equal(await numericLocked(),false);assert.equal((await stored())[numericD.id][ni].ilk,true);checks.push('Nicel kapı: örnekler yetmez; iki ayrı ilk doğru yenilemeyle korunur');
  const first=p.duraklar[0], exitI=first.bloklar.findIndex(q=>q.tur==='sina'), exit=first.bloklar[exitI];
  await fixture({...base(),[first.id]:Object.fromEntries(first.bloklar.slice(0,exitI).map((_,i)=>[i,{ilk:true}]))},first.id);
  await yargi(exit.ogeler[0]);const eq=exit.ogeler[1];await choose(eq.soru,eq.secenekler.find(s=>!s.dogru).metin);await open(first.id);await choose(eq.soru,eq.secenekler.find(s=>s.dogru).metin);

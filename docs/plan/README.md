@@ -9,7 +9,7 @@ Tek güncel durum kaydı bu dosyadır; ayrıntılı gereksinim yalnız açık ad
 | 7 | [Etiket kalitesi ve insan incelemesi](07-etiket-kalitesi.md); 07.02 alan uzmanı/öğretmen kararı bekler |
 | 12 | [Kalan içerik ve yayın](12-icerik-ve-yayin.md); içerik kararları 7. adıma bağlıdır |
 | 14 | [KPSS sınavları](14-kpss.md); 14.02 Ön Lisans sıradadır |
-| 16 | [Öğrenme kalitesi, kaynak düzeni ve model kullanımı](16-ogrenme-kalitesi.md); 16.01–16.02 BITTI, 16.03 silme kısmı bitti; 16.04 Hareket v2 kod pilotu GPT-6.1 Sol ile bağlı; ilk Sol denetimi 19/28; sekiz bulgu düzeltildi, yeniden denetim ve kullanıcı kabulü bekliyor |
+| 16 | [Öğrenme kalitesi, kaynak düzeni ve model kullanımı](16-ogrenme-kalitesi.md); 16.01–16.02 BITTI, 16.03 silme kısmı bitti; 16.04 Hareket v2 kod pilotu GPT-6.1 Sol ile bağlı; ilk19/28 → ara24/28; F04 nicel kapsamı tamamlandı, son denetim ve kullanıcı kabulü bekliyor |
 
 ## Açık görevler (durum → kalan tek adım)
 

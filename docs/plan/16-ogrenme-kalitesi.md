@@ -1,7 +1,7 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
 Durum: plan onaylı; 16.01 ve 16.02 BITTI; 16.03 silme kısmı bitti (taşımalar ertelendi); 16.04 sürüyor: [fizik öğretim
-yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; ilk Sol extra high denetimi 19/28 ile kaldı; F01–F08 düzeltildi, yeniden denetim ve kullanıcı kabulü bekliyor. Kalıcı kurallar
+yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; ilk Sol extra high denetimi 19/28 ile kaldı; ilk düzeltme 24/28, F04 kısmi; her durağa iki nicel soru eklendi, son denetim ve kullanıcı kabulü bekliyor. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef

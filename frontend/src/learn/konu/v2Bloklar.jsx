@@ -98,6 +98,7 @@ export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
     : <HareketV2Deneyi tur={b.kod === 'Y7' ? 'karsilasma' : 'uc-grafik'} />;
   if (b.tur === 'yanilgi') return <TahminDeney soru={y.ortayaCikar} tohum={tohum} deney={<><Markdown text={y.yuzlestir.yonerge} />{model}</>} aciklama={y.aciklama} onDone={onDone} />;
   if (b.tur === 'neden' && b.tahmin) return <><Markdown text={b.metin} /><TahminDeney soru={b.tahmin} tohum={tohum} deney={b.deneyBlok && ['karsilasma', 'uc-grafik'].includes(b.deneyBlok.deney) ? <><p>{b.deneyBlok.gorev}</p><HareketV2Deneyi tur={b.deneyBlok.deney} /></> : <LegacyModel blok={b.deneyBlok} motor={motor} />} onDone={onDone} /></>;
+  if (b.tur === 'nicel-kontrol') return <section><h3>İki bağımsız nicel soru</h3><p>Örnekleri inceledin. Burada iki farklı soruyu yardım almadan çöz; yanlışta gerekçeyi inceleyip açıkça yeni tur başlatabilirsin. Tekrar turu görülmemiş aktarım sayılmaz.</p>{b.ogeler.map((q,i) => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} onDone={ilk => {const next={...done,[i]:ilk};setDone(next);if(b.ogeler.every((_,j)=>next[j]!==undefined))onDone(Object.values(next).every(Boolean));}} />)}</section>;
   if (b.tur === 'sinifla') return <Sinifla b={b} onDone={onDone} />;
   if (b.tur === 'ceviri') {
     if (b.bicim === 'hata') {

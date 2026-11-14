@@ -1,0 +1,500 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "sourceCommit": "0c6b9e02499ec2132363d7863af1eedb1438b331",
+  "sourceCommitShort": "0c6b9e0",
+  "comparisonBase": "468087f7e832559a459b81bd91a1c1cd73387dbd",
+  "reviewType": "Independent correction recheck; audit only",
+  "independence": {
+    "own07ReadBefore06": true,
+    "new24BlindBeforeDeltaKey": true,
+    "clarified8PriorKnowledgeDisclosed": true,
+    "repositoryEditsByReviewer": false,
+    "laterF04WorkingTreeChangesIncluded": false
+  },
+  "newBlindComparison": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "sourceCommit": "0c6b9e0",
+    "total": 32,
+    "newBlind": 24,
+    "clarifiedPriorKnowledgeDeclared": 8,
+    "matched": 32,
+    "mismatched": 0,
+    "unresolved": [],
+    "D006Wording": "Yön değiştirmeden correction resolves the only lexical ambiguity; math/key unchanged.",
+    "rows": [
+      {
+        "id": "D001",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D002",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D003",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D004",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D005",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D006",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D007",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D008",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D009",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D010",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D011",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D012",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D013",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D014",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D015",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D016",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D017",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D018",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D019",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D020",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D021",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D022",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D023",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D024",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "NEW_BLIND"
+      },
+      {
+        "id": "D025",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D026",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D027",
+        "match": true,
+        "mode": "numeric answer manually compared to worked steps",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D028",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D029",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D030",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D031",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      },
+      {
+        "id": "D032",
+        "match": true,
+        "mode": "exact normalized answer",
+        "independence": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+      }
+    ]
+  },
+  "findingStatuses": [
+    {
+      "id": "F01",
+      "status": "CLOSED",
+      "evidence": "sinavGecisi yalnız tanımlı soru kimliklerini sayıyor; %80 ile birlikte her tipte ilk doğru arıyor. 10/12 ve iki eksik tipte son test her iki gerçek tarayıcı regresyonunda kilitli kaldı; 12/12 yeni turda açıldı.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Kurallari.js:14",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:79"
+      ]
+    },
+    {
+      "id": "F02",
+      "status": "CLOSED",
+      "evidence": "SoruDurumu seçim/yanlış/deneme ve tur kapsamını kalıcı tutuyor. Yanlış→yenile→doğru false kaldı; açık yeni tur yenilemede korundu, eski tur sonucu _setGecmisi içinde kaldı. v2 ve r2 anahtarları ayrıldı. Bu, tur içi ilk cevabın korunmasıdır; tekrar turunu görülmemiş aktarım yapmaz.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/SoruDurumu.jsx:12",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:11",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:94"
+      ]
+    },
+    {
+      "id": "F03",
+      "status": "CLOSED",
+      "evidence": "Yanlış tahmin ilk kayıtta gerekçe açmıyor, deneye geçebiliyor. Gözlem düğmesinden sonra ayrı açıklama/gerekçe seçimiyle blok tamamlanıyor. Masaüstü/mobil gerçek yanlış tahminle doğrulandı. Gözlem düğmesi öğrencinin öz beyanıdır; deneyin zihinde anlaşıldığını otomatik kanıtlamaz.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:75",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:79",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:82"
+      ]
+    },
+    {
+      "id": "F04",
+      "status": "PARTIAL",
+      "evidence": "24 yeni kavram sorusu anahtardan bağımsız çözüldü; çıkış soruları kavram havuzundan ayrıldı. Örneğin açılması çalışma olarak etiketleniyor ve tek başına durağı bitirmiyor. Beş aşamalı not alanları ve ayrı çıkış/yeniden tur var. Buna karşın çıkıştaki iki farklı doğru her duraktaki nicel kazanımdan iki doğru olmak zorunda değil: ilk durakta sıfır bağıl hız hesabı, xt çıkışında iki nicel hesap yerine sembolik sürat karşılaştırması/kesişim yorumu, ivmede yalnız bir ortalama ivme hesabı var.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:43",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:50",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:118",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:118",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:133",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:138",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:233",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:378",
+        "D:/workspace/ivme/uygulama/docs/plan/16-ogrenme-kalitesi.md:207"
+      ]
+    },
+    {
+      "id": "F05",
+      "status": "CLOSED",
+      "evidence": "Harita ayrı yatay uzay noktaları ve eşit zaman damgalarıyla çiziliyor, polyline içermiyor. K/L metinleri ve ikinci çizgide kesik biçim var; sayı doğrusu sıfır/pozitif yön/değerleri gösteriyor; grafik birimleri bağlama göre s/dk olarak yazılıyor. Masaüstü/mobil harita denetimi geçti.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:25",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:39",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:57",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:64"
+      ]
+    },
+    {
+      "id": "F06",
+      "status": "CLOSED",
+      "evidence": "D029 düzeltilmiş kökü ve seçenekleri kör aşamada yeniden değerlendirildi; doğru cevap hız eşitliği/konum belirsizliğidir ve anahtar uyuşuyor. Testte aynı hızda eşit/farklı konum karşı örnekleri var. Ortalama ivme ve tren uçları da açık yazılmış.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:307",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:289",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:378",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:379"
+      ]
+    },
+    {
+      "id": "F07",
+      "status": "CLOSED",
+      "evidence": "Tip kartları ilk hamle/kural/koşul/tuzak ve doğrulanmamış sıklık etiketiyle erişilebilir. KarmaOge çözümden önce tip seçtiriyor; tipteki yanlış deneme de ilk-doğru sonucuna katılıyor. İki cihazda çözümün tip seçilmeden açılmadığı doğrulandı. Yeni iki tipte banka kanıtı/soru eşlemesi hâlâ ayrı kabul açığıdır.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:111",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:95",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:152",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:210",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:223"
+      ]
+    },
+    {
+      "id": "F08",
+      "status": "CLOSED",
+      "evidence": "Y4 iki cisimde +v/−v; Y5 eşit iki yol ve ayrı süre sayaçları; Y10 v=100,a=0 ve küçük değişen hız hazır durumları bağlandı. Bağımsız sayı kontrolü 60km parçalar/20-60kmh için süre3+1h, toplam120km ve ortalama30kmh ile uyumlu. Model ve gerçek UI regresyonları geçti.",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:96",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/HareketV2Deneyi.jsx:7",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/HareketV2Deneyi.jsx:23",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2DeneyModeli.js:4",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2DeneyModeli.js:11"
+      ]
+    }
+  ],
+  "counts": {
+    "CLOSED": 7,
+    "PARTIAL": 1,
+    "OPEN": 0
+  },
+  "verdict": "PARTIAL",
+  "boundedVerdict": "F01/F02/F03/F05/F06/F07/F08 kapalı; F04’ün yeniden yükleme/çözüm açma/çıkış havuzu sorunları giderilmiş, her duraktaki nicel kazanımdan iki ayrı doğru kapsamı henüz tamam değil. Teknik regresyonlar PASS; tüm16.04 veya yayın/öğretmen/öğrenci kabulü verilmedi.",
+  "rubric": {
+    "scores": [
+      {
+        "id": 1,
+        "criterion": "Doğruluk",
+        "score": 1,
+        "justification": "32/32 yeni/berraklaştırılmış kör cevap uyuşuyor; önceki 143 kesin cevapla birlikte hesap tutarlılığı güçlü. Geçersiz kesişim yargısı ve ortalama ivme kökleri düzeltildi. Resmî basılı ÖSYM anahtarı yeniden doğrulanmadığı için 2 puanın bütün şartları kapanmadı."
+      },
+      {
+        "id": 2,
+        "criterion": "Kaynak bağı",
+        "score": 1,
+        "justification": "Sekiz durak mevcut OGM sayfalarına bağlı;07 önceki turda,08/10/11 bu turda görsel olarak okundu. Yeni MEBİ sayfaları hâlâ null; bütün hata notları ve kaynak kabulü doğrulanmış değil. Kaynak metnini otomatik doğruluk diye kabul etmedim."
+      },
+      {
+        "id": 3,
+        "criterion": "Soru tipi kanıtı",
+        "score": 1,
+        "justification": "Devralınmış10 tip kanıtı korunuyor; iki yeni tipte doğrulanmış banka sayısı ve gerçek soru bağları hâlâ yok. Bilinmeyen değer artık kullanıcıya açıkça belirtiliyor."
+      },
+      {
+        "id": 4,
+        "criterion": "Sıfırdan anlaşılırlık",
+        "score": 2,
+        "justification": "Yedi ön koşul mikro ders, gündelik bağlam, yön/konum tanımları ve tahmin yanlışken de deneye erişim birlikte başlangıç öğrencisine uygun basamaklar sunuyor. Öğrenci notları semantik doğruluk olarak sunulmuyor."
+      },
+      {
+        "id": 5,
+        "criterion": "Tahmin önce",
+        "score": 2,
+        "justification": "Her durak tahminle açılıyor; yanlış/doğru her seçim kaydedilip deney açılıyor. Açıklama gözlem adımından sonra ve ayrı gerekçe sorusuyla geliyor."
+      },
+      {
+        "id": 6,
+        "criterion": "Görselin işlevi",
+        "score": 2,
+        "justification": "Yanlış harita temsili düzeltildi, çizgi kimlikleri/biçimleri/birimler korundu. Y4/Y5/Y10 hedef durumları artık kurulabilir. Bağlı model sayıları bağımsız bilinen hesaplarla ve gerçek UI senaryolarıyla kontrol edildi."
+      },
+      {
+        "id": 7,
+        "criterion": "Örnek kalitesi",
+        "score": 2,
+        "justification": "Örnekler ne/neden/son kontrol ve azalan yardım içeriyor; ayrıca Anla/Çiz/İlke/Sembolle çöz/Kontrol notları alınıyor. Not alanı doluluğunun doğruluğa eşit olmadığı belge ve ekranda açık. Nicel kapının hedef kapsamı F04’te hâlâ kısmi."
+      },
+      {
+        "id": 8,
+        "criterion": "Püf noktasının koşulu",
+        "score": 2,
+        "justification": "Koşul ve tuzak metinleri artık V2 tip kartlarında da gösteriliyor; kısa yollar eşit yol/süre, ilk hız ve işaretli alan ayrımlarıyla sunuluyor."
+      },
+      {
+        "id": 9,
+        "criterion": "İlk hamle",
+        "score": 2,
+        "justification": "Her tip için tanı sorusu ve erişilebilir ilk hamle kartı var. Karma tur çözümden önce tip/ilke seçtiriyor; tip yanlışları denemeye katılıyor, çözüm baştan açılmıyor."
+      },
+      {
+        "id": 10,
+        "criterion": "Yanlışa özel geri bildirim",
+        "score": 2,
+        "justification": "Yanlış seçenek gerekçeleri korunuyor; ilk yanlış ve seçimin yenilemede kaybolmaması masaüstü/mobil gerçek denemelerle doğrulandı."
+      },
+      {
+        "id": 11,
+        "criterion": "Çok yönlü sınama",
+        "score": 2,
+        "justification": "Seçim, yargı, hata bulma, sınıflama, temsil çevirisi, kavram kapısı ve tip tanıma birlikte mevcut. Geçiş durumları yeniden yüklemede korunuyor."
+      },
+      {
+        "id": 12,
+        "criterion": "Aktarım",
+        "score": 1,
+        "justification": "Üç ÖSYM kodunun dersteki çözümlerden ayrılması sürüyor. Fakat setler daha önce çalışılmış senaryolar, yeni tur aynı maddelerin tekrarı ve yeni iki tipte gerçek soru yok. Görülmemiş yardımsız ve gecikmeli aktarım kabulü sağlanmış değil."
+      },
+      {
+        "id": 13,
+        "criterion": "Geri çağırma",
+        "score": 2,
+        "justification": "Durak çıkışları, karma ve ek gecikmeli maddeler ile13 tekrar kartı mevcut; yanlış/tur geçmişi korunuyor. Otomatik tekrar motoru16.06 ve gerçek gecikmeli öğrenci etkisi ayrı tutuluyor."
+      },
+      {
+        "id": 14,
+        "criterion": "Dil ve yük",
+        "score": 2,
+        "justification": "Düzeltilmiş kökler koşulları açık söylüyor; masaüstü/mobil10’ar regresyonda boş ekran/çalışma hatası yok. Mobil105 fixture ekran taraması da0 taşma/0 boş ekran verdi; fixture kapsam taraması öğrenme kabulü sayılmadı. Uzun setlerin öğrenci yükünü gerçek kullanıcı denemesi ayrıca değerlendirmeli."
+      }
+    ],
+    "total": 24,
+    "maximum": 28,
+    "threshold": 24,
+    "zeroCount": 0,
+    "thresholdMet": true,
+    "calculation": "24/28 >=24/28 ve 0 puanlı ölçüt yok. Bu rubrik eşiği F04 plan kapsamını veya açık insan/kaynak kabulünü kendiliğinden kapatmaz."
+  },
+  "remainingConfirmedFindings": [
+    {
+      "id": "F04-R",
+      "priority": "P2",
+      "status": "PARTIAL",
+      "title": "Nicel ilişki kazanımından iki bağımsız doğru veri düzeyinde her durakta güvence altında değil",
+      "reproduction": [
+        "paketHazirla(raw).duraklar içindeki ilk durağın sina bloklarını aç: yalnız bisiklet yargıları ve skaler/vektör seçimi var; bağıl hız hesabı yok.",
+        "Regresyon betiği ilk durak çıkışında yalnız bu iki öğeyi doğru cevaplayarak çıkış indeksini ilk:true kaydeder. Bu davranış masaüstü ve mobilde yeniden üretildi.",
+        "xt çıkışı sembolik sürat karşılaştırması ve kesişim yorumu; ivme çıkışında yalnız bir ortalama ivme sayısal hesabı var.",
+        "Örnek notlarında 3 karakter doluluğu yalnız çalışma eylemidir. Tek başına yanlış değil; bu alanları fiziksel doğruluk veya bağımsız başarı olarak saymamak gerekir."
+      ],
+      "locations": [
+        "D:/workspace/ivme/uygulama/docs/plan/16-ogrenme-kalitesi.md:207",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:133",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:138",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:233",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:378",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:43",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:118"
+      ],
+      "correctionNeeded": "Her durakta nicel hedefe bağlı, örnek/kavram/çıkışta önceden cevabı gösterilmemiş iki farklı bağımsız soru ve açık geçiş kontrolü. Yeni tur eski görülmüşlüğü silmemeli; tekrar başarıları görülmemiş aktarım diye adlandırılmamalı."
+    }
+  ],
+  "verification": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "sourceCommit": "0c6b9e0",
+    "node": {
+      "command": "node --test testler/konu-paketi.test.mjs testler/konu-paketi-v2.test.mjs testler/konu-denetim-paketi.test.mjs",
+      "status": "PASS",
+      "tests": 19,
+      "failures": 0
+    },
+    "desktop": {
+      "command": "node testler/konu-paketi-v2-regresyon-ui.mjs",
+      "status": "PASS",
+      "scenarios": 10,
+      "runtimeErrors": []
+    },
+    "mobile": {
+      "command": "node testler/konu-paketi-v2-regresyon-ui.mjs --mobil",
+      "status": "PASS",
+      "scenarios": 10,
+      "runtimeErrors": []
+    },
+    "scenarioNames": [
+      "URL ile son test kilidi",
+      "Yanlış tahmin → deney → açıklama/gerekçe",
+      "Yenilemede ilk yanlış korunur",
+      "10/12 doğru, iki eksik tip → son test kilitli",
+      "Açık yeni tur yenilemede korunur; her tip doğruysa geçer",
+      "Karma: tip seçmeden çözüm açılmaz",
+      "Gerçek hareket haritası",
+      "Tip kartı koşul/tuzak görünür",
+      "Durak çıkışı: örnekler yetmez, yanlış/yenileme/yeni tur ve iki doğru",
+      "Y4/Y5/Y10 yönergeye uygun modeller"
+    ],
+    "limitations": "These are rerun results, not inherited reported passes. Both regression runs use prerequisite-completion fixtures but actual answer/reload/retry/model interactions. They do not establish semantic validity of notes, unseen transfer, every learner route, or teacher acceptance."
+  },
+  "additionalSmoke": {
+    "command": "node testler/konu-paketi-v2-ui.mjs --mobil",
+    "rerun": true,
+    "status": "PASS",
+    "checks": 105,
+    "empty": 0,
+    "overflow": 0,
+    "errors": [],
+    "limit": "Bu ek çalışma sırasında parent F04 sonraki düzeltmelerine başladı. Son105 ekran sonucunu0c6b9e0’nun kesin sürüm bağımsız kabulü diye kullanmıyorum; esas kapatma kanıtları önce tamamlanan masaüstü/mobil regresyonlardır."
+  },
+  "pendingAcceptance": [
+    "Resmî ÖSYM basılı anahtar ve kaynak kabulü; mevcut iki soru kırpımının çözülebilmesi resmî anahtar doğrulaması değildir.",
+    "Yeni at-grafik ve yon-degistirme tiplerinin gerçek banka kanıtı ve soru bağları.",
+    "Öğretmen/kullanıcının başlangıç öğrencisi gibi tam akış değerlendirmesi ve öğretim dilinin kabulü.",
+    "Yardımsız görülmemiş eşdeğer soruyla son ölçüm, gerekçe rubriği ve bir hafta sonra gecikmeli gerçek soru aktarımı.",
+    "Pretest100 için normalize kazanç tanımsız; iki seçenekli kavram testinin şans etkisi ve eski görülmüşlük dikkate alınmalı.",
+    "Örnek notları, gözlemledim düğmesi, tamamlandı işareti ve tekrar turu öğrenme etkisi değildir; onay alanı insan girdisi olmadan değişmemeli."
+  ],
+  "scopeBoundary": "Başlangıçta0c6b9e0 temizdi. Son durumda parent yeni F04 nicel dosyası üzerinde çalışıyordu; o kaynağı veya10 anahtarını bu rapor için okumadım. Sonraki düzeltme ayrı kör ve kod denetimine girecek.",
+  "artifacts": [
+    "08-sol-yeniden-denetim.json",
+    "08-sol-yeniden-denetim.md",
+    "08-delta-comparison.json",
+    "08-verification.json"
+  ]
+}

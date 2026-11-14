@@ -62,3 +62,10 @@ test('hız kesişimi konum farkını belirlemez: eşit ve farklı konum karşı 
  const tahmin=p.duraklar.find(d=>d.id==='vt').bloklar.find(b=>b.tur==='neden').tahmin;
  assert.match(tahmin.secenekler.find(s=>s.dogru).metin,/belirlenemez/);
 });
+
+test('her durakta nicel kazanıma ayrılmış iki farklı madde zorunlu',()=>{
+ for(const d of p.duraklar){const n=d.bloklar.find(b=>b.tur==='nicel-kontrol');assert.equal(n.basamak,4);assert.equal(n.ogeler.length,2);assert.equal(new Set(n.ogeler.map(q=>q.id)).size,2);
+ const exposed=d.bloklar.filter(b=>b.tur!=='nicel-kontrol').flatMap(b=>[b.soru,b.tahmin?.soru,...(b.sorular||[]).map(q=>q.soru),...(b.ogeler||[]).map(q=>q.soru)]);assert.ok(n.ogeler.every(q=>!exposed.includes(q.soru)));
+ assert.ok(d.bloklar.indexOf(n)<d.bloklar.findIndex(b=>b.tur==='tipler'));}
+ const noGate={...p,duraklar:p.duraklar.map(d=>({...d,bloklar:d.bloklar.filter(b=>b.tur!=='nicel-kontrol')}))};assert.equal(dogrulaV2(noGate).filter(e=>e.startsWith('nicel:')).length,8);
+});

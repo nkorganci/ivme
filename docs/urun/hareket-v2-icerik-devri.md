@@ -120,3 +120,12 @@ Yanlışlık, seçim, gerekçe aşaması, kısmi sınıflama ve mikro ders aşam
 açıkça yeni tur başlatmak eski tur kanıtını silmez. Öğrenciye önceki kaydın korunduğu bildirilir.
 `testler/konu-paketi-v2-regresyon-ui.mjs [--mobil]` gerçek etkileşimlerle bu regresyonları sınar.
 Yeni 24 kavram sorusu ayrı kör kontrolden geçirildi; öğretmen onayı yerine geçmez.
+
+
+### Her durakta iki nicel doğru
+
+Ara yeniden denetim F04'te nicel kapsam eksiği buldu. `fizik-hareket.nicel.js` her durak
+başına iki ayrı yeni soru (toplam16) içerir. `nicel-kontrol` basamak4 kapısı iki ilk doğru olmadan
+ilerlemez. Örnek notları doğruluk puanı değildir. Kabul anahtarı `:v2:r3` oldu; eski v2/r2
+kayıtları korunur, otomatik kabul taşınmaz. Şema bu havuzu zorunlu tutar; veri ve UI testleri
+kavram/örnek/çıkış sorularından ayrı olduğunu denetler. Yeni16 soru ayrıca kör çözdürülür.

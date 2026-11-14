@@ -10,7 +10,7 @@ Denetçi **GPT-6.1 Sol, extra high**, yazandan ayrı oturum; kullanıcı Opus ye
 | F01 P1 | %80 toplam, eksik tipleri gizliyor | Her tanımlı tipte ilk doğru; yabancı kimlik puana girmez |
 | F02 P1 | Yenileme yanlış denemeyi siler | Kullanıcı/sürüm/soru/tur bazında anlık kayıt; seçim, yanlış, aşama ve tur geçmişi geri yüklenir |
 | F03 P1 | Yanlış tahmin deneyi kilitler; açıklama erken | Her tahmin deneye geçer; gözlemden sonra açıklama ve ayrı gerekçe seçimi |
-| F04 P1 | Çözüm açmak bağımsız doğru sayılır; çıkış önceden görülür | Ayrı24 kavram sorusu; beş aşamalı öğrenci notları; örnek yalnız çalışma, çıkışta iki farklı ilk doğru gerekir |
+| F04 P1 | Çözüm açmak bağımsız doğru sayılır; çıkış önceden görülür | Ayrı24 kavram sorusu; beş aşamalı öğrenci notları; örnek yalnız çalışma, ayrı nicel kapıda iki farklı ilk doğru gerekir |
 | F05 P2 | Hareket haritası x–t olur; K/L kaybolur | Eşit zaman damgalı uzay noktaları; çizgi adı ve kesik çizgi |
 | F06 P1 | Hız kesişiminde tam doğru seçenek yok | Hızlar eşit; konum ilişkisi belirlenemez. Eşit/farklı konum karşı örnek testi |
 | F07 P2 | Tip kartı ve karma tip seçimi eksik | Kural/koşul/tuzak kartları; bilinmeyen sıklık etiketi; çözümden önce tip seçimi |
@@ -24,9 +24,21 @@ Kanıtlar `testler/kanit/konu/16-04-sol-*.json`: ilk kör cevaplar, manifest, il
 yeni kör cevaplar. İlk rapor yalnız hedef468087f'yi puanlar; düzeltmeleri onaylamaz.
 Regresyon: `node testler/konu-paketi-v2-regresyon-ui.mjs [--mobil]` gerçek etkileşim;
 `node testler/konu-paketi-v2-ui.mjs [--mobil]` fixture ekran taramasıdır.
-19/19 test, masaüstü/mobil 10'ar regresyon senaryosu ve105 ekran kontrolü geçti.
+20/20 test, masaüstü/mobil 11'er regresyon senaryosu ve113 ekran kontrolü geçti.
 Bağımsız yeniden denetim bekliyor; ilk19/28 kendiliğinden PASS yapılmaz.
 
 Eski `:v2` kayıtları korunur; yeni kabul `:v2:r2` içindedir. Tekrar turu görülmemiş aktarım değildir.
 Öğretmen kabulü, resmî kaynak/anahtar, yeni iki tipin banka kanıtı ve gecikmeli öğrenci ölçümü açıktır.
 16.04 bütünü BITTI değildir; sonraki adım bağımsız yeniden denetimdir.
+
+
+## Nicel kapsam düzeltmesi
+
+`0c6b9e0` ara denetimi 24/28 verdi: yedi bulgu kapalı, F04 kısmi kaldı.
+Bu ara rapor `testler/kanit/konu/16-04-sol-ara-denetim.json` içindedir.
+Her durağa öğretilen nicel ilişkiden iki yeni madde ve ayrı `nicel-kontrol` kapısı eklendi.
+Örnekleri açmak veya kavram sorularını çözmek bu kapıyı geçirmez; iki soruda ilk doğru gerekir.
+Yeni16 madde anahtar gösterilmeden bağımsız çözdürülür. Kalıcı kabul `:v2:r3` içindedir;
+önceki `:v2` ve `:v2:r2` verileri silinmez. Son bağımsız denetim bu ek kapıları ayrıca inceler.
+
+Yeni16 nicel sorunun bağımsız kör kontrolü16/16 uyumlu; cevap ve karşılaştırma kanıtları aynı klasörde `16-04-sol-nicel-*.json`.

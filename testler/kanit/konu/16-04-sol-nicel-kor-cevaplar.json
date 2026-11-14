@@ -1,0 +1,140 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "phase": "blind-new-quantitative-gate-questions",
+  "input_file": "09-nicel-kor.json",
+  "independence": "Bu yeni16 soru yalnız09 kör dosyasından çözüldü;10 anahtarı, yeni nicel kaynak dosyası ve kapı uygulaması bu cevaplar kaydedilmeden okunmadı.",
+  "answer_count": 16,
+  "ambiguous_ids": [],
+  "source_required_ids": [],
+  "answers": [
+    {
+      "id": "D001",
+      "answer": "B",
+      "reason": "Yere göre hız=tren/yere+yolcu/trene=+12+(−3)=+9 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D002",
+      "answer": "A",
+      "reason": "Konum denklemlerinin eğimleri vK=+2 ve vL=−4 m/s; vL/K=vL−vK=−4−2=−6 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D003",
+      "answer": "C",
+      "reason": "Yol=5+2=7 m; doğu artı olduğundan Δx=−5+2=−3 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D004",
+      "answer": "C",
+      "reason": "Yer değiştirme=−2−(+7)=−9 m. Her yol en az |Δx|=9 m’dir; düz ve geri dönmeden rota bu alt sınırı sağlar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D005",
+      "answer": "B",
+      "reason": "İlk parça+6 m, ikinci−4 m. Net+2 m, yol10 m, süre6 s; ortalama hız+1/3 m/s, sürat5/3 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D006",
+      "answer": "C",
+      "reason": "Süreler12/36=1/3 h ve12/12=1 h; toplam24 km/(4/3 h)=18 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D007",
+      "answer": "A",
+      "reason": "Doğrunun eğimi Δx/Δt=[10−(−6)]/4=+4 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D008",
+      "answer": "B",
+      "reason": "Net yer değiştirme0−8=−8 m, toplam süre8 s: ortalama hız−1 m/s. Konum2–6 s boyunca4 m’de sabit; duruş süresi4 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D009",
+      "answer": "A",
+      "reason": "Doğrusal artışta v–t üçgen alanı3×8/2=12 m. Son konum5+12=+17 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D010",
+      "answer": "C",
+      "reason": "İşaretli alanlar+6×2=+12 m ve−3×4=−12 m. Yol24 m, net yer değiştirme0 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D011",
+      "answer": "C",
+      "reason": "Birbirine yaklaşmada kapanma sürati8+6=14 m/s. t=140/14=10 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D012",
+      "answer": "A",
+      "reason": "Aynı yönde kapanma sürati12−7=5 m/s. t=50/5=10 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D013",
+      "answer": "B",
+      "reason": "Ortalama ivme=(vson−vilk)/Δt=(3−9)/2=−3 m/s².",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D014",
+      "answer": "B",
+      "reason": "v(3)=−1+(−2)×3=−7 m/s. Hız ve ivme hep aynı eksi yönde olduğundan sürat1’den7 m/s’ye artar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D015",
+      "answer": "A",
+      "reason": "İlk2 s’de Δv=+3×2=+6 m/s; son1 s’de değişim0. vson=−5+6=+1 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D016",
+      "answer": "C",
+      "reason": "v(3)=7−1×3=+4 m/s; v(5)=4+2×2=+8 m/s. En küçük hız+4 olduğu için hız sıfıra ulaşmaz ve yön değişmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    }
+  ]
+}

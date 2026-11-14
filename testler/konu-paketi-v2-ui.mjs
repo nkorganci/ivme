@@ -15,7 +15,7 @@ try{
  await b.wait(`!document.querySelectorAll('.kp-yol button')[1].disabled`);
  const state={on:{sonuc:{puan:50,dogru:5,toplam:10}},ak:Object.fromEntries(ak.map(a=>[a.id,true]))};
  for(const d of paketHazirla(p).duraklar)state[d.id]=Object.fromEntries(d.bloklar.map((_,i)=>[i,{ilk:true}]));
- await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();const u=r.user||r;localStorage.setItem('ivme:konu-paketi:fizik-hareket:'+u.id+':v2:r2',${JSON.stringify(JSON.stringify(state))});location.reload()})()`);
+ await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();const u=r.user||r;localStorage.setItem('ivme:konu-paketi:fizik-hareket:'+u.id+':v2:r3',${JSON.stringify(JSON.stringify(state))});location.reload()})()`);
  await b.wait(`document.querySelector('.kp-yol button')`);
  for(const d of paketHazirla(p).duraklar){
  await b.goto('/konuyu-ogrenelim/ogren/fizik-hareket?bolum='+d.id);await b.wait('document.body.innerText.includes('+JSON.stringify(d.baslik)+')');

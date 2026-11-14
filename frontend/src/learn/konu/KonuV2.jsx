@@ -40,7 +40,7 @@ function DurakV2({ d, paket, sorular, motor, durum, yaz, tohum, onGercek }) {
   const b = d.bloklar[step];
   const done = saved[step] !== undefined;
   const finish = first => {
-    if (b.tur === 'sina' && !first) { yaz(`${d.id}:hatalar`, prev => ({ ...prev, [`${step}:${attempt}`]: true })); return; }
+    if (['sina','nicel-kontrol'].includes(b.tur) && !first) { yaz(`${d.id}:hatalar`, prev => ({ ...prev, [`${step}:${attempt}`]: true })); return; }
     yaz(d.id, prev => ({ ...prev, [step]: { ilk: first, zaman: Date.now() } }));
   };
   return <section><h2>{d.baslik}</h2><p>Etkinlik {step + 1}/{d.bloklar.length}{b.basamak !== undefined ? ` · Basamak ${b.basamak}` : ''}</p>
@@ -59,7 +59,7 @@ function Calisma({ sorular, id, durum, yaz, tohum, tani = false }) {
 export default function KonuV2({ paket: raw, sorular, motor }) {
   const { user } = useAuth();
   const paket = paketHazirla(raw);
-  const key = `ivme:konu-paketi:${paket.id}:${user?.id ?? 'anon'}:v2:r2`;
+  const key = `ivme:konu-paketi:${paket.id}:${user?.id ?? 'anon'}:v2:r3`;
   const [durum, setDurum] = useState(() => { try { const v = JSON.parse(localStorage.getItem(key) || '{}'); return v && !Array.isArray(v) && typeof v === 'object' ? v : {}; } catch { return {}; } });
   const [params, setParams] = useSearchParams();
   const [ak, setAk] = useState(0);
@@ -67,7 +67,7 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
   const [uyari, setUyari] = useState('');
   const bolum = params.get('bolum') || 'on';
   const yaz = (id, value) => setDurum(s => { const next = { ...s, [id]: typeof value === 'function' ? value(s[id]) : value }; try { localStorage.setItem(key, JSON.stringify(next)); } catch { setUyari('İlerleme bu tarayıcıda kaydedilemiyor.'); } return next; });
-  const seed = `${user?.id || 'anon'}:${paket.id}:v2:r2`;
+  const seed = `${user?.id || 'anon'}:${paket.id}:v2:r3`;
   useEffect(() => { document.querySelector('.kp-v2-ana')?.scrollIntoView({ block: 'start' }); }, [bolum]);
   const on = Boolean(durum.on?.sonuc);
   const akDone = araclar.every(a => durum.ak?.[a.id]);

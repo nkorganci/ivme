@@ -10,7 +10,8 @@
     "kavramTesti",
     "tipCalismalari",
     "sinavSeti",
-    "kavramKontrolleri"
+    "kavramKontrolleri",
+    "nicelKontrolleri"
   ],
   "properties": {
     "id": {
@@ -170,6 +171,17 @@
       "additionalProperties": {
         "type": "array",
         "minItems": 3,
+        "items": {
+          "$ref": "#/$defs/soru"
+        }
+      }
+    },
+    "nicelKontrolleri": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 2,
         "items": {
           "$ref": "#/$defs/soru"
         }

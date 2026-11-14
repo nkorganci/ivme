@@ -26,6 +26,7 @@
 
 import v1 from './fizik-hareket.js';
 import kavramKontrolleri from './fizik-hareket.kavram.js';
+import nicelKontrolleri from './fizik-hareket.nicel.js';
 import { yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari } from './fizik-hareket.v2.olcme.js';
 
 const durakV1 = (id) => v1.duraklar.find((d) => d.id === id);
@@ -54,7 +55,7 @@ const YENI_TIPLER = [
 export default {
   ...v1,
   surum: 2,
-  yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari, kavramKontrolleri,
+  yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari, kavramKontrolleri, nicelKontrolleri,
   kazanimlar: ['9.3.1.1', '9.3.1.2', '9.3.1.3', '9.3.1.4', '9.3.1.5', '9.3.1.6'],
   sure: 'Yaklaşık 2,5 saat · 8 durak · istediğin yerde bırak, kaldığın yerden sürer',
   giris: 'Sıfırdan başlıyoruz. Her durakta önce **tahmin edeceksin**, sonra deneyip göreceksin; formül en son gelecek ve nereden çıktığını sen bulacaksın.',

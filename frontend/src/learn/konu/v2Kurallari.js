@@ -32,6 +32,9 @@ export function paketHazirla(p) {
     }
     const yer = bloklar.findIndex(b => b.tur === 'ornek');
     if (yer >= 0 && sorular.length >= 3) bloklar.splice(yer, 0, { tur: 'kavram-kontrol', basamak: 2, sorular });
+    const nicel = p.nicelKontrolleri?.[d.id] || [];
+    const tipYeri = bloklar.findIndex(b => b.tur === 'tipler');
+    if (tipYeri >= 0 && nicel.length >= 2) bloklar.splice(tipYeri, 0, { tur: 'nicel-kontrol', basamak: 4, ogeler: nicel });
     return { ...d, bloklar };
   }) };
 }
@@ -45,6 +48,7 @@ export function dogrulaV2(p) {
     if (b?.tur === 'yanilgi' && !ys.has(b.kod)) hatalar.push(`yanilgi:${b.kod}`);
     if (AYRILAN_OSYM.includes(b?.kod)) hatalar.push(`ayrilan:${b.kod}`);
   }
+  for (const d of p.duraklar || []) if (!d.bloklar.some(b => b.tur === 'nicel-kontrol' && b.ogeler.length >= 2)) hatalar.push(`nicel:${d.id}`);
   for (const t of p.tipCalismalari || []) if (!tipler.has(t.tip)) hatalar.push(`tip:${t.tip}`);
   return hatalar;
 }

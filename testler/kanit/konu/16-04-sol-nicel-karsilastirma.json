@@ -1,0 +1,74 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "count": 16,
+  "matched": 16,
+  "mismatches": [],
+  "blindAnswersSavedBeforeKeyRead": true,
+  "rows": [
+    {
+      "id": "D001",
+      "match": true
+    },
+    {
+      "id": "D002",
+      "match": true
+    },
+    {
+      "id": "D003",
+      "match": true
+    },
+    {
+      "id": "D004",
+      "match": true
+    },
+    {
+      "id": "D005",
+      "match": true
+    },
+    {
+      "id": "D006",
+      "match": true
+    },
+    {
+      "id": "D007",
+      "match": true
+    },
+    {
+      "id": "D008",
+      "match": true
+    },
+    {
+      "id": "D009",
+      "match": true
+    },
+    {
+      "id": "D010",
+      "match": true
+    },
+    {
+      "id": "D011",
+      "match": true
+    },
+    {
+      "id": "D012",
+      "match": true
+    },
+    {
+      "id": "D013",
+      "match": true
+    },
+    {
+      "id": "D014",
+      "match": true
+    },
+    {
+      "id": "D015",
+      "match": true
+    },
+    {
+      "id": "D016",
+      "match": true
+    }
+  ]
+}
