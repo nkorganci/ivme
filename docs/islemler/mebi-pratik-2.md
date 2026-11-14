@@ -490,3 +490,27 @@ Kayıt kapsamı, her kaynak/PNG kimliği ve mevcut kategori tanımı aynı olmak
 zorundadır; değişiklikte tam geçiş istenir. Diğer derslerin makbuzları korunur,
 yeni dizin sürümünden önce eski dosya SHA historyye alınır.497 Fizik kaydı
 2,7sn,8.074 diğer kayıt korunmuş;16+11 sınır testi PASS.06866 soru yayını PASS.
+
+
+Kısmi test kurtarma: `python scripts/mebi_pratik2_kismi_test.py --keys --words --combined`.
+Yalnız iki tanımlı Din kitabı/üç çelişkisiz test. Eksik/tekrarlı gövde numarası,
+bütün testin sağlam sorularını düşürmez; gövdesi tekil olan numara seçilir.
+Çelişkili anahtar ve farklı test başlığı kesin durdurur. Bütün özgün numara
+ankorları kırpım sınırında korunur; anahtar tam basılı tablo olarak okunur,
+seçilen gövdelerle daraltılıp yanlış OCR beklentisi üretilmez. `scope-closure.json`
+101 anahtar hücresini94 aday+7 numara incelemesiyle kapatır. Mevcut PNG yeniden
+yazılmaz: aynı piksel ise byte/mtime korunur, farklıysa işlem durur.
+Eski başarısız anahtar makbuzları değişmez. T6 için gerçekten açılan tam anahtar
+okuması `scripts/mebi-pratik2-partial-key-visual-review.json`; buna bağlı birleşik
+paket `partial-test-complete-evidence`tir. Hızlı geçiş:
+`python scripts/mebi_pratik2_konu_bekleyen_kanit.py --package-dir partial-test-complete-evidence --phase fast`.
+92 gövdede90 profil kanıtı/2 istisna. Güncel inceleme ihracı yeni native/word
+kırpımlarını ve7 numara incelemesini içerir; soru yayını ayrıca kabul gerektirir.
+Konu metni ihracı `mebi_pratik2_inceleme_metinleri.py --evidence-package
+partial-test-complete-evidence --subjects "Din Kültürü (DKAB)" --output-package
+partial-test-native-topic-expansion`; donmuş mevcut ihracı yeniden üretme.
+Model seçimi: kesin klasör/basılı başlık bağında Python kuralları; yorum gereken
+sınıflandırma için Luna ancak ölçülmüş örneklem sonrası değerlendirilebilir.
+Bu öneri çalışan Ollama/Python modellerini değiştirmez; karmaşık kod/kanıt
+incelemesi ve belirsiz etiket kararı ayrı tutulur. Luna doğruluğu bu arşivde
+henüz ölçülmedi; eşit kalite veya otomatik model geçişi iddiası yoktur.

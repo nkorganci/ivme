@@ -14,6 +14,7 @@ from mebi_pratik2_uc_adim_kirpim import OPTION,SHARED,scope,topic
 from mebi_pratik2_arsiv_basliklari import controlled_match
 from mebi_pratik2_konu_basligi import normalize
 from yks_birlestirme import write_json
+from mebi_pratik2_tarama_kitap_kirpim import preserve_png
 
 OUT=BASE/'word-boundary-crops'
 
@@ -109,7 +110,7 @@ def run(directories=None,prepare=True):
                             topic=category['topic'],unit=category.get('unit'),topicDecision='CONTROLLED_PRINTED_SOURCE_HEADING_BOUND')
                         if reasons:review.append({**new,'status':'REVIEW_REQUIRED','reasons':sorted(set(reasons))});continue
                         relative=OUT.name+'/'+row['code']+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=pymupdf.Rect(clip),alpha=False)
-                        pix.save(BASE/relative)
+                        preserve_png(pix,BASE/relative)
                         if pix.samples!=pymupdf.Pixmap(str(BASE/relative)).samples:raise ValueError('Word-adapter saved pixels differ')
                         new.update(image=relative,imageSha256=hashlib.sha256((BASE/relative).read_bytes()).hexdigest(),
                             originalBodyPixelSha256=hashlib.sha256(pix.samples).hexdigest(),status='NEW_LAYOUT_INDEPENDENT_KEY_BODY_TOPIC_REVIEW_REQUIRED',

@@ -12,6 +12,26 @@ from yks_birlestirme import write_json
 OUT=BASE/'compiled-tarama-crops'
 
 
+def preserve_png(pix,path):
+    """Resume a capture without rewriting any existing PNG."""
+    if path.exists():
+        previous=pymupdf.Pixmap(str(path))
+        if (previous.width,previous.height,previous.n,previous.samples)!=(pix.width,pix.height,pix.n,pix.samples):
+            raise ValueError('Existing source crop differs; preserve it for review')
+        return
+    with path.open('xb') as stream:stream.write(pix.tobytes('png'))
+
+
+def key_questions(group):
+    rows=group.get('keyEvidenceQuestions',group['questions'])
+    answers={q['printedNumber']:q['answer'] for q in rows}
+    if len(answers)!=len(rows) or any(a not in 'ABCDE' or len(a)!=1 for a in answers.values()):
+        raise ValueError('Ambiguous full printed key')
+    if any(answers.get(q['printedNumber'])!=q['answer'] for q in group['questions']):
+        raise ValueError('Selected body differs from full printed key')
+    return rows
+
+
 def choose_topic(group,exam,subjects,categories,reviewed_headers):
     texts=[]
     for line in group['printedBodyHeadings']:
@@ -58,7 +78,8 @@ def run(sources=None,discovery_dir='compiled-tarama-discovery'):
                         review.append({'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],**group});continue
                     category=choose_topic(group,exam,subjects,cats,headers)
                     test=group['testNumber'];group_id=source['sourceSha256'][:16]+'-T'+str(test)
-                    first_occurrences=[q['keyOccurrences'][0] for q in group['questions']]
+                    evidence_questions=key_questions(group)
+                    first_occurrences=[q['keyOccurrences'][0] for q in evidence_questions]
                     key_pages={o['page'] for o in first_occurrences}
                     if len(key_pages)!=1:
                         review.append({'groupId':group_id,'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],**group,'reasons':['PRINTED_TEST_KEY_SPANS_PAGES_REVIEW']});continue
@@ -67,11 +88,11 @@ def run(sources=None,discovery_dir='compiled-tarama-discovery'):
                     key_clip=[min([o['bbox'][0] for o in first_occurrences]+[r[0] for r in heading_boxes])-5,
                         min(r[1] for r in heading_boxes)-5,max([o['bbox'][2] for o in first_occurrences]+[r[2] for r in heading_boxes])+5,
                         max(o['bbox'][3] for o in first_occurrences)+5]
-                    key_image=OUT.name+'/'+group_id+'-key.png';key_page.get_pixmap(matrix=pymupdf.Matrix(3,3),clip=pymupdf.Rect(key_clip),alpha=False).save(BASE/key_image)
+                    key_image=OUT.name+'/'+group_id+'-key.png';preserve_png(key_page.get_pixmap(matrix=pymupdf.Matrix(3,3),clip=pymupdf.Rect(key_clip),alpha=False),BASE/key_image)
                     key_sha=hashlib.sha256((BASE/key_image).read_bytes()).hexdigest()
                     key_groups.append({'groupId':group_id,'sourceSha256':source['sourceSha256'],'relativePath':source['relativePath'],'exam':exam,
                         'testNumber':test,'keyPage':physical,'keyClip':key_clip,'keyImage':key_image,'keyImageSha256':key_sha,
-                        'answers':{str(q['printedNumber']):q['answer'] for q in group['questions']},
+                        'answers':{str(q['printedNumber']):q['answer'] for q in evidence_questions},
                         **({'keyIdentityType':group['keyIdentityType']} if group.get('keyIdentityType') else {})})
                     for question in group['questions']:
                         number=question['printedNumber'];anchor=question['body'];physical=anchor['page'];page=pdf[physical-1];native=pages[physical]
@@ -100,7 +121,7 @@ def run(sources=None,discovery_dir='compiled-tarama-discovery'):
                             'topicDecision':'CONTROLLED_PRINTED_CHAPTER_BOUND' if category else 'CONTROLLED_TOPIC_REVIEW_PENDING',
                             'bank':'MEBI_PRACTICE_2','teacherApproved':False,'studentVisible':False,'productionImportAllowed':False}
                         if reasons:review.append({**row,'reasons':sorted(set(reasons)),'status':'REVIEW_REQUIRED'});continue
-                        image=OUT.name+'/'+code+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=clip,alpha=False);pix.save(BASE/image)
+                        image=OUT.name+'/'+code+'.png';pix=page.get_pixmap(matrix=pymupdf.Matrix(2,2),clip=clip,alpha=False);preserve_png(pix,BASE/image)
                         if pix.samples!=pymupdf.Pixmap(str(BASE/image)).samples:raise ValueError('Compiled original pixels changed after PNG encoding')
                         items.append({**row,'image':image,'imageSha256':hashlib.sha256((BASE/image).read_bytes()).hexdigest(),
                             'originalBodyPixelSha256':hashlib.sha256(pix.samples).hexdigest(),'nativeChoiceCounts':dict(counts),

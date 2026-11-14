@@ -52,7 +52,7 @@ def run():
         data=json.loads(book.read_text(encoding='utf8'));group_reviews=data['reviewQueueAdditions']
         for row in data['items']:
             decisions[row['code']]={**row,'status':'INDEPENDENT_KEY_OR_VISUAL_BODY_REVIEW_PENDING','reasons':['SOURCE_ADMISSION_NOT_COMPLETE'],'studentVisible':False}
-    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops','individual-tarama-crops','bold-number-crops','scanned-literature-crops']:
+    for directory in ['three-step-all-bodies-v2','compiled-tarama-crops','four-square-crops','three-step-mock-crops','individual-tarama-crops','bold-number-crops','scanned-literature-crops','partial-test-crops']:
         manifest=BASE/directory/'report.json'
         if not manifest.exists():continue
         for source in json.loads(manifest.read_text(encoding='utf8'))['sources']:
@@ -73,6 +73,13 @@ def run():
                 'image':source['image'],'status':'REVIEW_REQUIRED','studentVisible':False}
     for row in admission_reviews:
         if row.get('code'):decisions[row['code']]={**decisions.get(row['code'],{}),**row,'status':'REVIEW_REQUIRED','studentVisible':False}
+    partial_scope=BASE/'partial-test-recovery/scope-closure.json'
+    if partial_scope.exists():
+        for row in json.loads(partial_scope.read_text(encoding='utf8')).get('unselectedNumberReviews',[]):
+            if row['code'] in decisions or row['reason']=='EXISTING_CROP_NOT_REGENERATED':continue
+            decisions[row['code']]={**row,'status':'REVIEW_REQUIRED','teacherApproved':False,
+                'reasons':['SORU_GOVDESI_BUTUNLUGU_UNIQUE_NUMBER_UNRESOLVED'],
+                'partialTestScopeReview':str(partial_scope.relative_to(BASE)),'studentVisible':False}
     # The later bounded geometry pass supersedes the earlier source-layout
     # queue; unresolved PDFs remain explicit source groups, never hidden counts.
     source_layout=BASE/'bold-number-expansion/discovery-report.json'
@@ -80,7 +87,7 @@ def run():
     if source_layout.exists():group_reviews.extend(json.loads(source_layout.read_text(encoding='utf8')).get('reviewQueueAdditions',[]))
     # A new word-level crop is explicit changed evidence, not a repetition of
     # the same failed crop. Preserve the earlier reason as history.
-    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-word-crops','bold-number-word-crops','scanned-literature-word-crops']:
+    for directory in ['word-boundary-crops','four-square-header-crops','three-step-mock-additional-crops','full-mock-source-crops','individual-tarama-word-crops','bold-number-word-crops','scanned-literature-word-crops','partial-test-word-crops']:
         word_report=BASE/directory/'report.json'
         if not word_report.exists():continue
         for source in json.loads(word_report.read_text(encoding='utf8'))['sources']:
@@ -106,7 +113,8 @@ def run():
                  * (BASE/'individual-tarama-pending-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'individual-tarama-word-pending-evidence/candidate-evidence').glob('*.json'),
                  * (BASE/'bold-number-pending-evidence/candidate-evidence').glob('*.json'),
-                 * (BASE/'scanned-literature-pending-evidence/candidate-evidence').glob('*.json')]:
+                 * (BASE/'scanned-literature-pending-evidence/candidate-evidence').glob('*.json'),
+                 * (BASE/'partial-test-complete-evidence/candidate-evidence').glob('*.json')]:
         evidence=json.loads(path.read_text(encoding='utf8'));code=evidence['code']
         if code not in decisions or code in accepted:continue
         decisions[code]={**decisions[code],'status':evidence['status'],'reasons':evidence['reasons'],

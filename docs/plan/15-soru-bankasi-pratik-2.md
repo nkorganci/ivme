@@ -190,6 +190,25 @@ Toplam10.959(5.741 TYT/5.218 AYT). Kanıt:
 Sıradaki iş henüz kırpılmamış cevaplı kaynak/sayfa kapsamıdır; mevcut kırpımlar
 ve PDF tekrar kararları korunur.
 
+**Kısmi test çıkarımı — BITTI (yayın değildir):** İki Din Kültürü kitabındaki
+üç test, testin tamamını elemek yerine tekil numara/gövde ve çelişkisiz tam
+basılı anahtar kapsamında işlendi.101 anahtar hücresi:94 seçilebilir gövde
+adayı+7 eksik/yinelenen numara incelemesi;94 adayın92 özgün kırpımı hazır,
+2 yerleşim incelemesi ayrı. Önceden mevcut kırpımlar yeniden üretilmedi.
+Üç tam anahtar doğrulandı:ikisi native+yerel OCR; üçüncüsü35 hücre OCR ve
+36 hücrenin tamamının gerçekten açılmış özgün görselden Codex okuması.
+OCR'nin11.E→İLE hatası görselde açık11.E ile kaydedildi; öğretmen onayı yok.
+92 gövdenin hızlı geçişi28,6sn:90 profil kanıtı,2 görsel istisna; model çağrısı0,
+DB/soru yayını0. Yedi numara ve iki yerleşim sorunu gerekçeli incelemede;
+test10lardaki çelişkili anahtarlar bu kurtarmaya alınmadı.
+7 güvenlik testi+8 native gövde testi PASS. Kanıt:
+`partial-test-recovery/report.json`, `scope-closure.json`,
+`partial-test-complete-evidence/fast-pass-result.json`,
+`scripts/mebi-pratik2-partial-key-visual-review.json`.
+**Sonraki:**90 kanıtlı gövdeyi kaynak metniyle dar ana tablo konularına bağlamak;
+`partial-test-native-topic-expansion/input-review.json`. Bu alt iş tam arşiv kabulü değildir.
+
+
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

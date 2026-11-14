@@ -42,6 +42,17 @@ okuma; `next-topic-review.json` imleci283 olarak kapatıldı. Diğer kaynakları
 ve bütün Fizik arşivini tamamlanmış sayma. Sonraki iş mevcut kırpımı olmayan
 cevaplı kaynak/sayfaları ayırmak; mevcut PNG'leri yeniden üretme.
 
+**Kısmi Din test çıkarımı BITTI; konu kabulü açık:** `scripts/mebi_pratik2_kismi_test.py`.
+İki kitap/üç test101 basılı cevap:94 seçilen aday+7 numara incelemesi.
+92 yeni özgün gövde kırpımı(47 native/45 word);2 yerleşim incelemesi.
+`partial-test-complete-evidence` hızlı92/92:90 profil kanıtı/2 görsel istisna,
+28,6sn;3 tam anahtar doğrulandı. T6 OCR11.E→İLE, gerçekten açılmış36 hücrelik
+özgün anahtarla ayrı sürümlü görsel okuma; tahmin/öğretmen onayı yok.
+Eski başarısız makbuzlar korunur, yeni birleşik paketi kullan.
+**Şimdi:** `partial-test-native-topic-expansion/input-review.json`90 özgün
+metni oku, mevcut doğru ders–ünite–konuya bağla; sonraki yayın numarası071.
+Henüz bu gruptan canlı kabul yok.7 numara+2 yerleşim ayrı incelemededir.
+
 **Fizik artımlı etiket geçişi BITTI:**497 kayıt2,7sn,8.074 eski kanıt korundu;
 dizinde432 bağlı kod. Kaynak/PNG/kategori tanımı değişirse artımlı geçiş durur.
 16+11 sınır testi PASS. Ana konu eşlemesi yayın/öğretmen onayı değildir.
