@@ -51,36 +51,59 @@ function Sinavda({ paket, sorular, git }) {
   </section>;
 }
 
-function Durak({ paket, durak, sira, sorular, motor, ilerleme, yaz, git }) {
+const ADIM_ADI = { neden: 'Neden önemli?', model: 'Gör ve dene', fikir: 'Temel fikir', ornek: 'Birlikte çöz', puf: 'Püf noktası', cikmis: 'Gerçek soru',
+  tani: 'İlk hamle', tipler: 'Soru tipleri', sina: 'Kendini sına', kaynak: 'Kaynak' };
+
+// Bir durak = sırayla açılan adımlar. Her adımda tek şey görünür; üstte 1 2 3… çubuğu ve geri/ileri okları vardır.
+function Durak({ paket, durak, sira, sorular, motor, ilerleme, yaz, git, adim, adimGit }) {
   const tipler = paket.tipler.filter((t) => durak.tipler.includes(t.id));
   const cevaplanan = Object.keys(ilerleme[durak.id] ?? {}).length;
   const toplam = olculenOgeSayisi(durak);
   let sayac = 0;
+  const adimlar = [...durak.bloklar.map((blok, i) => {
+    const taban = sayac;
+    if (blok.tur === 'neden' && blok.tahmin) sayac += 1;
+    if (blok.tur === 'tani') sayac += 1;
+    if (blok.tur === 'sina') sayac += blok.ogeler.length;
+    return { id: `b${i}`, tur: blok.tur, blok, taban };
+  }), { id: 'kaynak', tur: 'kaynak' }];
+  const son = adimlar.length - 1;
+  const simdi = Math.min(Math.max(adim, 0), son);
+  const sonDurak = sira + 1 >= paket.duraklar.length;
+  const geri = () => (simdi > 0 ? adimGit(simdi - 1) : sira > 0 ? git(paket.duraklar[sira - 1].id, null, 'son') : git('giris'));
+  const ileri = () => (simdi < son ? adimGit(simdi + 1) : git(sonDurak ? 'karma' : paket.duraklar[sira + 1].id));
+  const ileriAd = simdi < son ? `${ADIM_ADI[adimlar[simdi + 1].tur]} →` : sonDurak ? 'Karışık tura geç →' : 'Sonraki durak →';
+  const gezin = (ust) => <div className={ust ? 'kp-adim-gezin kp-adim-ust' : 'kp-adim-gezin'}>
+    <button type="button" className="btn btn-secondary" onClick={geri}>← Geri</button>
+    <span className="kp-adim-sayac" aria-live="polite">Adım {simdi + 1} / {adimlar.length}</span>
+    <button type="button" className="btn btn-primary" onClick={ileri}>{ust ? 'İleri →' : ileriAd}</button>
+  </div>;
   return <section className="card kp-kart" key={durak.id}>
     <p className="kp-etiket">Durak {sira + 1} / {paket.duraklar.length} · {cevaplanan}/{toplam} soru cevaplandı</p>
     <h2 className="kp-durak-baslik" tabIndex={-1}>{durak.baslik}</h2>
-    {durak.bloklar.map((blok, i) => {
-      if (blok.tur === 'tipler') return <section key={i} className="kp-blok kp-tipler">
-        <p className="kp-etiket">Bu fikir sınavda hangi kılıkla gelir?</p>
-        <div className="kp-tip-izgara">{tipler.map((t) => <TipKarti key={t.id} tip={t} sorular={sorular} onGercek={(id) => git('gercek', id)} />)}</div></section>;
-      const Blok = BLOKLAR[blok.tur];
-      if (!Blok) return null;
-      const taban = sayac;
-      if (blok.tur === 'neden' && blok.tahmin) sayac += 1;
-      if (blok.tur === 'tani') sayac += 1;
-      if (blok.tur === 'sina') sayac += blok.ogeler.length;
-      const sonuc = blok.tur === 'sina' ? (j, ilk) => yaz(durak.id, taban + j, ilk) : (ilk) => yaz(durak.id, taban, ilk);
-      return <Blok key={i} blok={blok} sorular={sorular} motor={motor} onSonuc={sonuc} />;
-    })}
-    <details className="kp-kaynak"><summary>Bu durağın kaynağı</summary>
-      {paket.kaynaklar.filter((k) => durak.kaynak.includes(k.id)).map((k) => <figure key={k.id}><figcaption>{k.ad} · PDF s. {k.sayfa}</figcaption>
-        <FigureZoom label="Kaynak sayfasını büyüt"><img src={k.gorsel} alt={`${k.ad}, sayfa ${k.sayfa}`} /></FigureZoom>
-        <img loading="lazy" src={k.gorsel} alt={`${k.ad}, sayfa ${k.sayfa}`} /></figure>)}
-      <p className="small muted">Deneyler, çözümlü örnekler ve kendini sınama soruları bu konu için hazırlanmıştır; öğretmen kontrolü bekliyor.</p></details>
-    <footer className="kp-gezin">
-      <button type="button" className="btn btn-secondary" disabled={sira === 0} onClick={() => git(paket.duraklar[sira - 1].id)}>← Önceki durak</button>
-      <button type="button" className="btn btn-primary" onClick={() => git(paket.duraklar[sira + 1]?.id ?? 'karma')}>{sira + 1 < paket.duraklar.length ? 'Sonraki durak →' : 'Karışık tura geç →'}</button>
-    </footer>
+    <nav className="kp-adim-cubuk" aria-label="Durak adımları">{adimlar.map((a, i) => <button key={a.id} type="button" aria-current={i === simdi ? 'step' : undefined}
+      data-yapildi={i < simdi ? 'evet' : undefined} onClick={() => adimGit(i)} aria-label={`${i + 1}. adım: ${ADIM_ADI[a.tur]}`}>
+      <b>{i < simdi ? '✓' : i + 1}</b><span>{ADIM_ADI[a.tur]}</span></button>)}</nav>
+    {gezin(true)}
+    <div className="kp-adim">
+      {adimlar.map((a, i) => {
+        const gorunur = i === simdi;
+        if (a.tur === 'kaynak') return <section key={a.id} hidden={!gorunur} className="kp-blok kp-kaynak-adim">
+          <p className="kp-etiket">Bu durağın kaynağı</p>
+          {paket.kaynaklar.filter((k) => durak.kaynak.includes(k.id)).map((k) => <figure key={k.id}><figcaption>{k.ad} · PDF s. {k.sayfa}</figcaption>
+            <FigureZoom label="Kaynak sayfasını büyüt"><img src={k.gorsel} alt={`${k.ad}, sayfa ${k.sayfa}`} /></FigureZoom>
+            {gorunur && <img loading="lazy" src={k.gorsel} alt={`${k.ad}, sayfa ${k.sayfa}`} />}</figure>)}
+          <p className="small muted">Deneyler, çözümlü örnekler ve kendini sınama soruları bu konu için hazırlanmıştır; öğretmen kontrolü bekliyor.</p></section>;
+        if (a.tur === 'tipler') return <section key={a.id} hidden={!gorunur} className="kp-blok kp-tipler">
+          <p className="kp-etiket">Bu fikir sınavda hangi kılıkla gelir?</p>
+          <div className="kp-tip-izgara">{tipler.map((t) => <TipKarti key={t.id} tip={t} sorular={sorular} onGercek={(id) => git('gercek', id)} />)}</div></section>;
+        const Blok = BLOKLAR[a.tur];
+        if (!Blok || (a.tur === 'model' && !gorunur)) return null; // laboratuvar yalnız görünürken kurulur (boyut ölçümü)
+        const sonuc = a.tur === 'sina' ? (j, ilk) => yaz(durak.id, a.taban + j, ilk) : (ilk) => yaz(durak.id, a.taban, ilk);
+        return <div key={a.id} hidden={!gorunur}><Blok blok={a.blok} sorular={sorular} motor={motor} onSonuc={sonuc} /></div>;
+      })}
+    </div>
+    {gezin(false)}
   </section>;
 }
 
@@ -139,12 +162,14 @@ export default function KonuSayfasi() {
   usePageTitle(kayit ? `${kayit.baslik} · ${kayit.ders}` : 'Konu');
   useEffect(() => { setVeri(null); kayit?.yukle().then(setVeri, setHata); }, [kayit]);
   const bolum = params.get('bolum') ?? 'giris';
-  useEffect(() => { const baslik = ana.current?.querySelector('.kp-durak-baslik'); if (baslik) { baslik.focus({ preventScroll: true }); ana.current.scrollIntoView({ block: 'start' }); } }, [bolum, veri]);
+  const adimNo = params.get('adim') === 'son' ? 999 : Math.max(0, Number(params.get('adim') ?? 1) - 1);
+  useEffect(() => { const baslik = ana.current?.querySelector('.kp-durak-baslik'); if (baslik) { baslik.focus({ preventScroll: true }); ana.current.scrollIntoView({ block: 'start' }); } }, [bolum, adimNo, veri]);
   if (!kayit) return <Navigate to={`${BASE}/harita`} replace />;
   if (hata) return <div className="card"><p className="field-error" role="alert">Konu yüklenemedi: {hata.message}</p></div>;
   if (!veri) return <Loading text="Konu yükleniyor…" />;
   const { paket, sorular } = veri;
-  const git = (id, tip) => setParams(tip ? { bolum: id, tip } : { bolum: id });
+  const git = (id, tip, adim) => setParams({ bolum: id, ...(tip ? { tip } : {}), ...(adim ? { adim } : {}) });
+  const adimGit = (n) => setParams({ bolum, adim: String(n + 1) }, { replace: true });
   const sira = paket.duraklar.findIndex((d) => d.id === bolum);
   const tamam = (d) => Object.keys(ilerleme[d.id] ?? {}).length >= olculenOgeSayisi(d);
   return <article className="kp-sayfa">
@@ -165,7 +190,7 @@ export default function KonuSayfasi() {
       {bolum === 'karma' ? <Karma paket={paket} ilerleme={ilerleme} yaz={yaz} git={git} />
         : bolum === 'gercek' ? <Gercek paket={paket} sorular={sorular} tip={params.get('tip')} />
         : bolum === 'tekrar' ? <Tekrar paket={paket} />
-        : sira >= 0 ? <Durak key={bolum} paket={paket} durak={paket.duraklar[sira]} sira={sira} sorular={sorular} motor={kayit.motor} ilerleme={ilerleme} yaz={yaz} git={git} />
+        : sira >= 0 ? <Durak key={bolum} paket={paket} durak={paket.duraklar[sira]} sira={sira} sorular={sorular} motor={kayit.motor} ilerleme={ilerleme} yaz={yaz} git={git} adim={adimNo} adimGit={adimGit} />
         : <Sinavda paket={paket} sorular={sorular} git={git} />}
     </div>
     </div>
