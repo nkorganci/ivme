@@ -9,7 +9,8 @@
     "yanilgilar",
     "kavramTesti",
     "tipCalismalari",
-    "sinavSeti"
+    "sinavSeti",
+    "kavramKontrolleri"
   ],
   "properties": {
     "id": {
@@ -160,6 +161,17 @@
               }
             }
           }
+        }
+      }
+    },
+    "kavramKontrolleri": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 3,
+        "items": {
+          "$ref": "#/$defs/soru"
         }
       }
     }

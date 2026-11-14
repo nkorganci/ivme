@@ -265,7 +265,7 @@ export default {
         { tur: 'fikir', baslik: 'Eğim = hız',
           metin: 'Hızın büyüklüğü ve yönü değişmeden yapılan harekete **düzgün doğrusal hareket** denir. Bu harekette eşit sürelerde eşit yer değiştirme olur; o yüzden konum–zaman grafiği düz bir doğrudur.\n\nDoğrunun **eğimi hızdır**: eğim = Δx / Δt. Dik çizgi hızlı, yatık çizgi yavaş, yatay çizgi duran cisim demektir. Yukarı çıkan çizgi + yönde, aşağı inen çizgi − yönde gidişi gösterir. Çizginin **tepe ya da çukur yaptığı an** cisim yön değiştirmiştir. İki çizginin **kesiştiği an** iki cisim aynı konumdadır, yani yan yanadır.',
           derin: 'Çizginin zaman eksenini kesmesi yön değiştirme değildir; yalnız cismin o an referans noktasından (konum = 0) geçtiğini söyler. Yön değiştirme için eğimin işaret değiştirmesi gerekir.' },
-        { tur: 'ornek', soru: 'Bir cisim 0, 3 ve 5. saniyelerde sırasıyla 0 m, +6 m ve +2 m konumlarında. İki aralıktaki hızı, toplam yolu ve yer değiştirmeyi bul.',
+        { tur: 'ornek', soru: 'Bir cisim 0, 3 ve 5. saniyelerde sırasıyla 0 m, +6 m ve +2 m konumlarında. Cisim (0–3) s ve (3–5) s aralıklarının her birinde sabit hızla hareket ediyor. İki aralıktaki hızı, toplam yolu ve yer değiştirmeyi bul.',
           adimlar: [
             { ne: 'İlk aralık: eğim = (6 − 0)/(3 − 0) = +2 m/s.', neden: 'Eğim = konum değişimi / süre. Pozitif çıktı: cisim + yönde gidiyor.' },
             { ne: 'İkinci aralık: eğim = (2 − 6)/(5 − 3) = −2 m/s.', neden: 'Negatif eğim: geri dönüyor. Sürat aynı (2 m/s), hız farklı.' },
@@ -281,12 +281,12 @@ export default {
         { tur: 'puf', kural: 'Grafik sorusunda ilk iş: **eksen adlarını oku**. Konum–zamanda bakacağın tek şey eğimdir.', kosul: 'Karşılaşma: mesafe/(v₁+v₂). Yetişme: mesafe/(v₁−v₂). Yalnız sabit hızlarda.', tuzak: 'Tren "tüneli tamamen geçiyorsa" yol = tünel + tren boyu. Boyu unutmak en sık hata.', sinav: 'Bu tip MEB kitaplarında çok, ÖSYM\'de az. Ama grafik okuma becerisi sonraki durağın anahtarı.' },
         { tur: 'tipler' },
         { tur: 'sina', ogeler: [
-          { tur: 'yargi', kok: 'Konum–zaman grafiğinde K aracı 2x konumundan, L aracı −x konumundan başlıyor; ikisinin çizgisi t anında zaman ekseni üzerinde (konum = 0) birleşiyor. (0–t) aralığı için değerlendir.', yargilar: [
+          { tur: 'yargi', kok: 'Konum–zaman grafiğinde K aracı 2x konumundan, L aracı −x konumundan başlıyor; ikisinin konum–zaman doğrusu t anında zaman ekseni üzerinde (konum = 0) birleşiyor. x > 0 ve t > 0. (0–t) aralığı için değerlendir.', yargilar: [
             { metin: 'K\'nin sürati L\'ninkinden büyüktür.', dogru: true, neden: 'Aynı sürede K 2x, L x kadar yer değiştirdi. Eğimi dik olan daha süratlidir.' },
             { metin: 'Araçlar aynı yönde hareket etmiştir.', dogru: false, neden: 'K\'nin çizgisi iniyor (− yön), L\'ninki çıkıyor (+ yön). Eğimlerin işareti farklı.' },
             { metin: 't anında araçlar aynı konumdadır.', dogru: true, neden: 'Çizgiler aynı noktada: ikisinin de konumu sıfır.' },
           ] },
-          { tur: 'secim', soru: '150 m uzunluğundaki bir tren, 100 m uzunluğundaki tünele sabit hızla giriyor. Trenin tünele tamamen girmesi 15 s sürüyor. Tren tünele girdiği andan kaç saniye sonra tünelden tamamen çıkar?', secenekler: [
+          { tur: 'secim', soru: '150 m uzunluğundaki bir tren, 100 m uzunluğundaki tünele sabit hızla giriyor. Ön ucu girişe ulaştıktan 15 s sonra arka ucu giriş ağzını geçiyor. Ön ucun girişe ulaştığı andan kaç saniye sonra arka uç çıkış ağzını geçer?', secenekler: [
             { metin: '10', neden: '100 m\'yi 10 m/s ile bölersen bu çıkar; ama trenin arka ucu da tünelden çıkmalı.' },
             { metin: '15', neden: 'Bu yalnız tamamen girme süresi.' },
             { metin: '25', dogru: true, neden: 'Tamamen girmek için kendi boyunu (150 m) 15 s\'de gider: hız 10 m/s. Tamamen çıkmak için ön uç tünel + tren boyu = 250 m gitmeli: 250/10 = 25 s.' },
@@ -305,8 +305,8 @@ export default {
       bloklar: [
         { tur: 'neden', metin: 'İki arabanın hız–zaman çizgileri 20. saniyede kesişiyor. Sınıfın yarısı "o anda yan yanalar" diyor. Öyle mi?',
           tahmin: { soru: 'Aynı yerden aynı anda yola çıkan iki aracın hız–zaman çizgilerinin kesiştiği an ne olur?', secenekler: [
-            { metin: 'Araçlar yan yana gelir.', neden: 'Kesişme hızların eşit olduğu andır. O ana kadar daha hızlı olan araç öne geçmiş, yani ara açılmıştır.' },
-            { metin: 'Araçların hızları eşittir; biri hâlâ öndedir.', dogru: true, neden: 'Düşey eksen hız. Kesişme "hızlar eşit" demektir. Yan yana gelmek için alanların (yer değiştirmelerin) eşitlenmesi gerekir.' },
+            { metin: 'Araçlar yan yana gelir.', neden: 'Kesişme hızların eşit olduğu andır. Konumların eşitliği için o ana kadarki işaretli alanları da bilmek gerekir.' },
+            { metin: 'Araçların hızları eşittir; konumlarının eşit olup olmadığı bu bilgiden belirlenemez.', dogru: true, neden: 'Düşey eksen hız. Kesişme "hızlar eşit" demektir. Yan yana gelmek için alanların (yer değiştirmelerin) eşitlenmesi gerekir.' },
             { metin: 'Araçlar durur.', neden: 'Durmak, çizginin zaman eksenine değmesi (hız = 0) demektir.' },
           ] } },
         { tur: 'model', deney: 'grafik', gorev: 'Alan katmanını aç. Zamanı ilerlettikçe boyanan alan ile sahnedeki yer değiştirme oku nasıl birlikte büyüyor? Eksenin altındaki alan neyi gösteriyor?' },
@@ -375,10 +375,10 @@ export default {
             { metin: '(t–2t) aralığında ivme sıfırdır.', dogru: true, neden: 'Çizgi yatay: eğim sıfır, hız değişmiyor.' },
             { metin: '(2t–3t) aralığında cisim hep aynı yönde gitmiştir.', dogru: false, neden: 'Çizgi bu aralıkta zaman eksenini kesiyor: hız +\'dan −\'ye geçti, cisim yön değiştirdi.' },
           ] },
-          { tur: 'secim', soru: 'Doğrusal yolda durgun hâlden harekete başlayan bir araç 5 saniyede hızını 100 m/s\'ye çıkarıyor. İvmesinin büyüklüğü kaç m/s²\'dir?', secenekler: [
+          { tur: 'secim', soru: 'Doğrusal yolda durgun hâlden harekete başlayan bir araç 5 saniyede hızını 100 m/s\'ye çıkarıyor. Ortalama ivmesinin büyüklüğü kaç m/s²\'dir?', secenekler: [
             { metin: '500', neden: 'Çarpmak yerine hız değişimini süreye böl.' },
             { metin: '100', neden: '100 son hız; ivme saniyedeki hız artışıdır.' },
-            { metin: '20', dogru: true, neden: 'a = Δv/Δt = (100 − 0)/5 = 20 m/s². Her saniye hız 20 m/s artıyor.' },
+            { metin: '20', dogru: true, neden: 'a = Δv/Δt = (100 − 0)/5 = 20 m/s². Bu değer 5 saniyelik ortalama ivmedir; anlık ivmenin sabit olduğu verilmemiştir.' },
             { metin: '5', neden: '5 süre; ivme hız değişiminin süreye oranı.' },
           ] },
           { tur: 'yargi', kok: 'Aşağıdaki hareketlerden hangileri ivmelidir?', yargilar: [

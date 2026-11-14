@@ -1,26 +1,52 @@
 import { useMemo, useState } from 'react';
 import { Markdown } from '../math.jsx';
 import DataGrid from '../../components/DataGrid.jsx';
-import { BLOKLAR } from './bloklar.jsx';
-import HareketV2Deneyi from './HareketV2Deneyi.jsx';
+import { BLOKLAR, TipKarti } from './bloklar.jsx';
+import { useSoruDurumu } from './SoruDurumu.jsx';
+import HareketV2Deneyi, { EsitYolDeneyi } from './HareketV2Deneyi.jsx';
 import { secenekSirasi } from './v2Kurallari.js';
 
 export function V2Soru({ oge, tohum, onDone, onAttempt, gizli = false, deger, onChange, gerekce = true }) {
   const opts = useMemo(() => secenekSirasi(oge.secenekler, tohum), [oge.secenekler, tohum]);
-  const [secim, setSecim] = useState(null);
-  const [yanlis, setYanlis] = useState(false);
+  const [secim, setSecim] = useSoruDurumu(`${tohum}:secim`, null);
+  const [yanlis, setYanlis] = useSoruDurumu(`${tohum}:yanlis`, false);
   const secili = gizli ? deger : secim;
   const bitti = !gizli && opts.find(s => s.id === secili)?.dogru;
   return <section className="kp-soru"><div className="kp-kok"><Markdown text={oge.soru} /></div>
     <div className="kp-secenekler" role="group" aria-label="Seçenekler">{opts.map((s, i) => <button type="button" key={s.id} className="kp-secenek" disabled={bitti} aria-pressed={secili === s.id} onClick={() => {
       if (gizli) onChange(s.id); else { setSecim(s.id); onAttempt?.(Boolean(s.dogru)); if (!s.dogru) setYanlis(true); else onDone?.(!yanlis); }
-    }}><span className="kp-harf">{'ABCDE'[i]}</span><span>{s.metin}{s.g && <Gorsel g={s.g} />}</span></button>)}</div>
+    }}><span className="kp-harf">{'ABCDE'[i]}</span><span>{s.metin}{s.g && <Gorsel g={s.g} baglam={oge.soru} />}</span></button>)}</div>
     {!gizli && secim && <p role="status" className="kp-geri">{bitti ? 'Doğru. ' : 'Yeniden düşün. '}{gerekce && opts.find(s => s.id === secim)?.neden}</p>}
   </section>;
 }
 
-export function Gorsel({ g }) {
+export function Gorsel({ g, baglam = '' }) {
   if (!g) return null;
+  if (g.tur === 'sayi-dogrusu') {
+    const points = g.noktalar || [];
+    const lo = g.aralik?.[0] ?? Math.min(-1, ...points.map(p => p.x));
+    const hi = g.aralik?.[1] ?? Math.max(1, ...points.map(p => p.x));
+    const x = value => 45 + 420 * (value-lo) / (hi-lo || 1);
+    const step = Math.max(1, Math.ceil((hi-lo)/12));
+    const ticks = [...new Set([0, ...Array.from({length:Math.floor((hi-lo)/step)+1},(_,i)=>lo+i*step)])].filter(v=>v>=lo&&v<=hi);
+    return <figure className="kp-v2-gorsel"><svg viewBox="0 0 510 155" role="img" aria-label={`Sayı doğrusu: ${points.map(p=>`${p.ad} ${p.x}`).join(', ')}`}>
+      <path d="M25 80H485l-8 -5m8 5l-8 5" fill="none" stroke="var(--ink)" />
+      {ticks.map(v=><g key={v}><path d={`M${x(v)} 75v10`} stroke="var(--ink)"/><text x={x(v)} y="105" textAnchor="middle">{v}</text></g>)}
+      {points.map((p,i)=><g key={i}><circle cx={x(p.x)} cy="80" r="4" fill="var(--pen-blue)"/><text x={x(p.x)} y={35+i%2*18} textAnchor="middle">{p.ad}: {p.x}</text></g>)}
+      <text x="330" y="140">Konum ({g.birimler?.x || 'm'}) · + yön →</text>
+    </svg></figure>;
+  }
+  if (g.tur === 'harita') {
+    const values = g.x || [];
+    const lo = Math.min(0, ...values), hi = Math.max(1, ...values);
+    const x = value => 40 + 430 * (value - lo) / (hi - lo);
+    return <figure className="kp-v2-gorsel"><svg viewBox="0 0 510 170" role="img" aria-label={`Hareket haritası; eşit zaman aralıklarında konumlar: ${values.join(', ')}`}>
+      <text x="20" y="22">Eşit zaman aralıklarındaki konumlar</text>
+      <line x1="30" x2="485" y1="80" y2="80" stroke="var(--ink)" />
+      {values.map((value, i) => <g key={i}><circle cx={x(value)} cy="80" r="5" fill="var(--pen-blue)" /><text x={x(value)} y={100 + i % 3 * 14} textAnchor="middle">t{i}</text><text x={x(value)} y="65" textAnchor="middle">{value}</text></g>)}
+      <text x="285" y="155">Konum (soru birimi)</text>
+    </svg></figure>;
+  }
   if (g.tur === 'tablo') return <DataGrid rowData={g.satirlar.map((r, i) => Object.fromEntries([['id', i], ...r.map((v, j) => [`c${j}`, v])]))} columnDefs={g.basliklar.map((h, j) => ({ field: `c${j}`, headerName: h, flex: 1 }))} fitAllRows />;
   let lines = g.cizgiler ? g.cizgiler.map((c, i) => ({ ad: c.ad || `Çizgi ${i + 1}`, n: c.n || c })) : [{ ad: g.ad || g.tur, n: g.n || g.yol || g.noktalar?.map(p => [p.x, 0]) || g.x?.map((x, i) => [i, x]) || [] }];
   if (g.ok) lines.push({ ad: 'Yer değiştirme', n: g.ok });
@@ -28,48 +54,61 @@ export function Gorsel({ g }) {
   const xmin = Math.min(0, ...pts.map(p => p[0])), xmax = Math.max(1, ...pts.map(p => p[0]));
   const ymin = Math.min(0, ...pts.map(p => p[1])), ymax = Math.max(1, ...pts.map(p => p[1]));
   const x = v => 45 + 420 * (v - xmin) / (xmax - xmin), y = v => 190 - 155 * (v - ymin) / (ymax - ymin);
-  const labels = { xt: ['Zaman (soru birimi)', 'Konum'], vt: ['Zaman (soru birimi)', 'Hız'], at: ['Zaman (soru birimi)', 'İvme'], harita: ['Zaman adımı', 'Konum (m)'], kroki: ['Yatay konum', 'Düşey konum'], 'sayi-dogrusu': ['Konum (m)', ''] };
+  const timeUnit = g.birimler?.t || (/dakika/.test(baglam) ? 'dk' : 's');
+  const distanceUnit = g.birimler?.x || 'm';
+  const labels = { xt: [`Zaman (${timeUnit})`, `Konum (${distanceUnit})`], vt: [`Zaman (${timeUnit})`, `Hız (${distanceUnit}/${timeUnit})`], at: [`Zaman (${timeUnit})`, `İvme (${distanceUnit}/${timeUnit}²)`], kroki: ['Yatay konum', 'Düşey konum'] };
   const [xl, yl] = labels[g.tur] || ['', ''];
   return <figure className="kp-v2-gorsel"><svg viewBox="0 0 510 230" role="img" aria-label={`${g.tur} grafiği: ${lines.map(l => l.n.map(p => p.join(',')).join('; ')).join(' / ')}`}>
     <path d={`M45 20V${y(0)}H480`} fill="none" stroke="var(--ink)" />
     <text x="390" y="225">{xl}</text><text x="5" y="16">{yl}</text>
-    {lines.map((l, i) => <g key={i} style={{ color: i ? 'var(--pen-blue)' : 'var(--pen-red)' }}><polyline points={l.n.map(p => `${x(p[0])},${y(p[1])}`).join(' ')} fill="none" stroke="currentColor" strokeWidth="2" />{l.n.map((p, j) => <g key={j}><circle cx={x(p[0])} cy={y(p[1])} r="3" fill="currentColor" /><text x={x(p[0])} y={y(p[1]) - 9} textAnchor="middle">{g.noktalar?.[j]?.ad || `${p[0]}; ${p[1]}`}</text></g>)}</g>)}
+    {lines.map((l, i) => <g key={i} style={{ color: i ? 'var(--pen-blue)' : 'var(--pen-red)' }}><polyline points={l.n.map(p => `${x(p[0])},${y(p[1])}`).join(' ')} fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray={i ? '6 3' : undefined} />{lines.length > 1 && <text x={60 + i * 160} y="210">{l.ad}</text>}{l.n.map((p, j) => <g key={j}><circle cx={x(p[0])} cy={y(p[1])} r="3" fill="currentColor" /><text x={x(p[0])} y={y(p[1]) - 9} textAnchor="middle">{g.noktalar?.[j]?.ad || `${p[0]}; ${p[1]}`}</text></g>)}</g>)}
   </svg></figure>;
 }
 
 function Sinifla({ b, onDone }) {
-  const [answers, setAnswers] = useState({});
-  const [check, setCheck] = useState(false);
-  const [ilk, setIlk] = useState(true);
+  const [answers, setAnswers] = useSoruDurumu(`sinifla:${b.soru}:answers`, {});
+  const [check, setCheck] = useSoruDurumu(`sinifla:${b.soru}:check`, false);
+  const [ilk, setIlk] = useSoruDurumu(`sinifla:${b.soru}:ilk`, true);
   const correct = (v, o) => JSON.stringify([...(v || [])].sort()) === JSON.stringify([...o.kutular].sort());
   return <section><Markdown text={b.soru} />{b.ogeler.map((o, i) => <fieldset key={i}><legend>{o.metin}</legend>{b.kutular.map(k => <label key={k}><input type="checkbox" checked={answers[i]?.includes(k) || false} onChange={e => { setCheck(false); setAnswers(a => ({ ...a, [i]: e.target.checked ? [...(a[i] || []), k] : a[i].filter(v => v !== k) })); }} />{k} </label>)}{check && <p>{correct(answers[i], o) ? 'Doğru. ' : 'Yeniden düşün. '}{o.neden}</p>}</fieldset>)}<button className="btn btn-primary" onClick={() => { setCheck(true); if (b.ogeler.every((o, i) => correct(answers[i], o))) onDone(ilk); else setIlk(false); }}>Kontrol et</button></section>;
 }
-export function V2Blok({ b, paket, sorular, motor, tohum, onDone }) {
-  const [done, setDone] = useState({});
-  const [phase, setPhase] = useState(0);
+function TahminDeney({ soru, tohum, deney, aciklama, onDone }) {
+  const [phase, setPhase] = useSoruDurumu(`${tohum}:tahmin-phase`, 0);
+  const [prediction, setPrediction] = useSoruDurumu(`${tohum}:tahmin-secim`, null);
+  return <section><h3>Önce tahmin et</h3>
+    {phase === 0 && <><V2Soru oge={soru} tohum={`${tohum}:tahmin`} gizli deger={prediction} onChange={setPrediction} /><button className="btn btn-primary" disabled={prediction === null} onClick={() => setPhase(1)}>Tahminimi kaydet ve deneyi aç</button></>}
+    {phase >= 1 && <><p>Tahminin kaydedildi. Şimdi dene ve gözleminle karşılaştır.</p>{deney}</>}
+    {phase === 1 && <button className="btn btn-primary" onClick={() => setPhase(2)}>Gözlemledim, açıklamayı aç</button>}
+    {phase === 2 && <><Markdown text={aciklama || ''} /><V2Soru oge={{ soru: 'Gözlemine göre doğru açıklama hangisi?', secenekler: soru.secenekler.map(s => ({ metin: s.neden, dogru: Boolean(s.dogru), neden: s.neden })) }} tohum={`${tohum}:gerekce`} onDone={onDone} /></>}
+  </section>;
+}
+
+export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
+  const [done, setDone] = useSoruDurumu(`${tohum}:done`, {});
   const [origin, setOrigin] = useState(0);
-  const [concept, setConcept] = useState({ index: 0, seri: 0 });
+  const [concept, setConcept] = useSoruDurumu(`${tohum}:concept`, { index: 0, seri: 0 });
   if (b.tur === 'kavram-kontrol') return <section><h3>Kavram kontrolü</h3><p>Üst üste üç doğru: {concept.seri}/3</p>{concept.seri < 3 && <V2Soru key={concept.index} oge={b.sorular[concept.index % b.sorular.length]} tohum={`${tohum}:${concept.index}`} onAttempt={ok => { if (!ok) setConcept(c => ({ ...c, seri: 0 })); }} onDone={() => {
     const seri = concept.seri + 1;
     setConcept({ index: concept.index + 1, seri }); if (seri >= 3) onDone(true);
   }} />}</section>;
   const y = paket.yanilgilar.find(y => y.kod === b.kod);
   const LegacyModel = BLOKLAR.model;
-  const model = b.kod === 'Y2' ? <><label>Sıfır noktasını taşı: {origin} m<input type="range" min="-5" max="5" value={origin} onChange={e => setOrigin(Number(e.target.value))} /></label><p>Cisim yerinde; yeni konumu {3-origin} m, aldığı yol 0 m.</p><Gorsel g={{tur:'sayi-dogrusu',noktalar:[{x:-origin,ad:'Eski sıfır'},{x:0,ad:'Yeni sıfır'},{x:3-origin,ad:'Cisim'}]}} /></>
+  const model = b.kod === 'Y4' ? <HareketV2Deneyi tur="esit-surat" /> : b.kod === 'Y5' ? <EsitYolDeneyi /> : b.kod === 'Y10' ? <HareketV2Deneyi tur="sabit-buyuk" /> : b.kod === 'Y2' ? <><label>Sıfır noktasını taşı: {origin} m<input type="range" min="-5" max="5" value={origin} onChange={e => setOrigin(Number(e.target.value))} /></label><p>Cisim yerinde; yeni konumu {3-origin} m, aldığı yol 0 m.</p><Gorsel g={{tur:'sayi-dogrusu',noktalar:[{x:-origin,ad:'Eski sıfır'},{x:0,ad:'Yeni sıfır'},{x:3-origin,ad:'Cisim'}]}} /></>
     : ['Y1','Y3','Y4','Y5','Y6','Y8','Y9'].includes(b.kod) ? <LegacyModel blok={{deney:({Y1:'referans',Y3:'yol',Y4:'hiz',Y5:'hiz',Y6:'grafik',Y8:'ivme',Y9:'yol'})[b.kod],gorev:y?.yuzlestir.yonerge}} motor="hareket-lab" />
     : <HareketV2Deneyi tur={b.kod === 'Y7' ? 'karsilasma' : 'uc-grafik'} />;
-  if (b.tur === 'yanilgi') return <section><h3>Önce karar ver</h3><V2Soru oge={y.ortayaCikar} tohum={tohum} onDone={() => setPhase(1)} />{phase > 0 && <><Markdown text={y.yuzlestir.yonerge} />{model}<Markdown text={y.aciklama} /><button className="btn btn-primary" onClick={() => onDone(true)}>Deneyle karşılaştırdım →</button></>}</section>;
+  if (b.tur === 'yanilgi') return <TahminDeney soru={y.ortayaCikar} tohum={tohum} deney={<><Markdown text={y.yuzlestir.yonerge} />{model}</>} aciklama={y.aciklama} onDone={onDone} />;
+  if (b.tur === 'neden' && b.tahmin) return <><Markdown text={b.metin} /><TahminDeney soru={b.tahmin} tohum={tohum} deney={b.deneyBlok && ['karsilasma', 'uc-grafik'].includes(b.deneyBlok.deney) ? <><p>{b.deneyBlok.gorev}</p><HareketV2Deneyi tur={b.deneyBlok.deney} /></> : <LegacyModel blok={b.deneyBlok} motor={motor} />} onDone={onDone} /></>;
   if (b.tur === 'sinifla') return <Sinifla b={b} onDone={onDone} />;
   if (b.tur === 'ceviri') {
     if (b.bicim === 'hata') {
       const opts = b.cumleler.map(c => ({ metin: c.metin, dogru: !c.dogru, neden: c.neden }));
-      return <><Gorsel g={b.verilen} /><V2Soru oge={{ soru: b.soru, secenekler: opts }} tohum={tohum} onDone={onDone} /></>;
+      return <><Gorsel g={b.verilen} baglam={b.soru} /><V2Soru oge={{ soru: b.soru, secenekler: opts }} tohum={tohum} onDone={onDone} /></>;
     }
-    return <><Gorsel g={b.verilen} /><V2Soru oge={b} tohum={tohum} onDone={onDone} /></>;
+    return <><Gorsel g={b.verilen} baglam={b.soru} /><V2Soru oge={b} tohum={tohum} onDone={onDone} /></>;
   }
   if (b.tur === 'turet') return <section><h3>{b.baslik}</h3>{b.adimlar.map((a, i) => <div key={i}><Markdown text={a.ne} /><p><strong>Neden?</strong> {a.neden}</p></div>)}<Markdown text={b.sonuc} /><p><strong>Koşul:</strong> {b.kosul}</p><p><strong>Birim:</strong> {b.birim}</p>{b.dene ? <V2Soru oge={b.dene} tohum={tohum} onDone={onDone} /> : <button className="btn btn-primary" onClick={() => onDone(true)}>İlişkiyi ve koşulunu inceledim →</button>}</section>;
   if (b.tur === 'model' && ['karsilasma', 'uc-grafik'].includes(b.deney)) return <><p>{b.gorev}</p><HareketV2Deneyi tur={b.deney} /><button className="btn btn-primary" onClick={() => onDone(true)}>Deneyi inceledim →</button></>;
-  if (b.tur === 'tipler') return <p>Tip çalışmalarına sekiz duraktan sonra geçeceksin.</p>;
+  if (b.tur === 'tipler') return <div className="kp-tip-izgara">{paket.tipler.filter(t => b.tipler?.includes(t.id)).map(t => <TipKarti key={t.id} tip={t} sorular={sorular} onGercek={onGercek} />)}</div>;
   const C = BLOKLAR[b.tur];
   if (!C) return <p role="alert">Bu etkinlik yüklenemedi: {b.tur}</p>;
   const assessed = b.tur === 'neden' && b.tahmin || b.tur === 'tani' || b.tur === 'sina' || b.tur === 'ornek';

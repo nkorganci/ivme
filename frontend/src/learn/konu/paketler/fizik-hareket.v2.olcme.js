@@ -55,7 +55,8 @@ export const kavramTesti = {
   son: sonForm,
   puanlama: 'Her madde 10 puan. Normalize kazanç = (son − ön)/(100 − ön). Ön=100 ise tanımsız; ham puanları ve gecikmeli aktarımı raporla. Hedef ≥0,4; bu henüz ölçülmüş başarı değildir.',
 };
-export const karma = yanilgilar.filter(y => testKodlari.includes(y.kod)).map(y => ({ ...y.yenidenSina.soru, yanilgi: y.kod }));
+const karmaTipi = { Y1: 'referans', Y3: 'yol-yer', Y4: 'skaler-vektor', Y5: 'ort-hiz-surat', Y6: 'xt-grafik', Y7: 'xt-grafik', Y8: 'vt-grafik', Y9: 'vt-grafik', Y10: 'ivme', Y12: 'ivme' };
+export const karma = ['Y1','Y3','Y4','Y5','Y6','Y8','Y7','Y12','Y9','Y10'].map(kod => { const y = yanilgilar.find(y => y.kod === kod); return { ...y.yenidenSina.soru, yanilgi: y.kod, tip: karmaTipi[kod] }; });
 export const tekrar = yanilgilar.map(y => ({ id: `${y.kod}-kart`, yanilgi: y.kod, on: y.ortayaCikar.soru, arka: `${y.ortayaCikar.secenekler[0].metin} ${y.aciklama}` }));
 
 // Her tip için çözmeden ilk hamle; aynı senaryo daha sonra bağımsız nicel/kavramsal soruya dönüşür.

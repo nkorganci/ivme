@@ -1,0 +1,586 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "role": "fresh independent reviewer; not author; not Opus",
+  "sourceCommit": "468087f7e832559a459b81bd91a1c1cd73387dbd",
+  "observedMainAtAuditStart": "0343d93",
+  "scope": "16.04 Hareket v2 application, exported content, source links, gate callbacks/storage, teaching sequence, local learner interactions. Audit only; no application/test/document edits. Later corrections are outside this report.",
+  "independence": {
+    "blindAnswersSavedBeforeKeyRead": true,
+    "blindAnswerFile": "03-sol-kor-cevaplar.json",
+    "blindInputSha256": "184e35ab2d290daf2944a09f1fa6c3e24532f01fb70c881a04ee4b28ced4e5f9",
+    "internetUsed": false,
+    "newPdfExtractionOrOcrUsed": false,
+    "baselineCodeChangedByReviewer": false
+  },
+  "blindComparison": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "sourceCommit": "468087f7e832559a459b81bd91a1c1cd73387dbd",
+    "total": 153,
+    "solved": 143,
+    "matched": 143,
+    "mismatched": 0,
+    "ambiguous": [
+      "D002",
+      "D008",
+      "D028",
+      "D029",
+      "D031",
+      "D044",
+      "D051",
+      "D055"
+    ],
+    "source_required_in_blind_phase": [
+      "D012",
+      "D036"
+    ]
+  },
+  "sourceDependentFollowup": [
+    {
+      "id": "D012",
+      "blindStatus": "SOURCE_REQUIRED",
+      "existingImage": "D:/workspace/ivme/uygulama/veri/resimler-pilot/kirpilmis/TYT/fizik/TYT-0911.webp",
+      "viewed": true,
+      "independentlyCalculatedAnswer": "D: II ve III; I kesin değil.",
+      "expectedWorkedExplanationMatches": true,
+      "printedOfficialKeyVerifiedThisAudit": false
+    },
+    {
+      "id": "D036",
+      "blindStatus": "SOURCE_REQUIRED",
+      "existingImage": "D:/workspace/ivme/uygulama/veri/resimler-pilot/kirpilmis/TYT/fizik/TYT-0909.webp",
+      "viewed": true,
+      "independentlyCalculatedAnswer": "C: 5 m/s sabit sürat grafiği olabilir.",
+      "expectedWorkedExplanationMatches": true,
+      "printedOfficialKeyVerifiedThisAudit": false
+    }
+  ],
+  "unresolvedIds": {
+    "blindSourceRequired": [
+      "D012",
+      "D036"
+    ],
+    "blindAmbiguous": [
+      "D002",
+      "D008",
+      "D028",
+      "D029",
+      "D031",
+      "D044",
+      "D051",
+      "D055"
+    ],
+    "stillInvalidChoice": [
+      "D031"
+    ],
+    "printedKeyAcceptanceOpen": [
+      "D012",
+      "D036"
+    ]
+  },
+  "rubric": {
+    "definition": "D:/workspace/ivme/uygulama/docs/urun/ogretim-standardi.md:34",
+    "scores": [
+      {
+        "id": 1,
+        "criterion": "Doğruluk",
+        "score": 1,
+        "justification": "143 SOLVED kör cevap anahtarla uyuştu ve mevcut iki kaynak kırpımı bağımsız çözüldü. Ancak D031’de garantilenmeyen bir yargı doğru sayılıyor; bazı köklerde sabit/ortalama ayrımı eksik. Resmî basılı anahtar doğrulaması ayrıca tamamlanmadı.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:307",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:379"
+        ]
+      },
+      {
+        "id": 2,
+        "criterion": "Kaynak bağı",
+        "score": 1,
+        "justification": "Sekiz durakta mevcut OGM kaynak kimlikleri var; mevcut 07 sayfası ve iki gerçek soru görüntüsü okundu. Yeni MEBİ kaynak görselleri null; bütün yeni kaynakların ve sayfa bağlarının öğretmen doğrulaması tamamlanmış değil.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:487",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:490"
+        ]
+      },
+      {
+        "id": 3,
+        "criterion": "Soru tipi kanıtı",
+        "score": 1,
+        "justification": "Devralınan 10 tipte banka sayısı/ÖSYM kodları var. İki yeni tipin banka sayıları null ve soru listeleri boş; uygun biçimde uydurulmamış ama 12 tip için kanıt tamam değil.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:36",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:44"
+        ]
+      },
+      {
+        "id": 4,
+        "criterion": "Sıfırdan anlaşılırlık",
+        "score": 1,
+        "justification": "Yedi mikro ders, günlük bağlam ve tanımlar yararlı. Buna karşılık doğru cevabı önceden bilmeye dayanan tahmin kapısı ve yanlış temsil görseli başlangıç öğrencisinin kavram kurmasını aksatıyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:22",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:25",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:61"
+        ]
+      },
+      {
+        "id": 5,
+        "criterion": "Tahmin önce",
+        "score": 2,
+        "justification": "Sekiz durağın açılışı anlatımdan önce açık tahmin sorusu içeriyor. Ön testte cevap sonrası açıklama görünmediği ayrıca UI ile doğrulandı. Tahmin–deney sırası kusuru F03’te ayrıca not edildi.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:72",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:404",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:16"
+        ]
+      },
+      {
+        "id": 6,
+        "criterion": "Görselin işlevi",
+        "score": 1,
+        "justification": "MotionLab aynı modelden konum/hız/ivme hesaplıyor; iki cisim uzaklık sayacı formülü doğru. Ancak harita yanlış çiziliyor, K/L adları kayboluyor ve Y4/Y5/Y10 deneyleri yönergelerini gerçekleştirmiyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:25",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:59",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/HareketV2Deneyi.jsx:11"
+        ]
+      },
+      {
+        "id": 7,
+        "criterion": "Örnek kalitesi",
+        "score": 1,
+        "justification": "Çözümlü örneklerde ne/neden, adım açma, öğrenci taslağı ve son kontrol var. Beş adımlı protokol uygulanmış öğrenci eylemi değil; nicel basamak iki bağımsız doğru yerine çözüm açmayla geçiyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:114",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:127",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:72"
+        ]
+      },
+      {
+        "id": 8,
+        "criterion": "Püf noktasının koşulu",
+        "score": 2,
+        "justification": "İçerik kısa yolları koşul ve tuzakla birlikte veriyor; eşit yol/eşit süre, işaretli alan ve ilk hız ayrımları açık. Kartların V2’de görünmemesi F07’de ayrıca ele alındı.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:155",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:328",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:463",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:134"
+        ]
+      },
+      {
+        "id": 9,
+        "criterion": "İlk hamle",
+        "score": 1,
+        "justification": "12 tanı/ilk hamle sorusu mevcut ve sayısal gerekçe tanı turunda gizli. Ancak kartlar gösterilmiyor, karma turda önce ilke seçimi yok ve yüzeyi benzer/ilkesi farklı karşılaştırmalı çiftler uygulanmıyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:91",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:93",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:72"
+        ]
+      },
+      {
+        "id": 10,
+        "criterion": "Yanlışa özel geri bildirim",
+        "score": 2,
+        "justification": "Mevcut seçeneklerin yanlış düşünceye karşılık veren gerekçeleri var; 12 testte tek doğru/gerekçe yapısı doğrulandı ve gerçek yanlış seçimde ilgili açıklama görüldü. Yanlış kaydının kalıcılığı ayrı F02 kusurudur.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:18",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:36",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.olcme.js:4"
+        ]
+      },
+      {
+        "id": 11,
+        "criterion": "Çok yönlü sınama",
+        "score": 2,
+        "justification": "Öğretim içinde seçim, bağımsız yargı değerlendirme, hatalı adım bulma, sınıflama ve ilk hamle soruları mevcut. Temsil/kapı kabulünün bütünlüğü için F04/F05 düzeltmeleri gerekir.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:43",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:69",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:40",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:91"
+        ]
+      },
+      {
+        "id": 12,
+        "criterion": "Aktarım",
+        "score": 1,
+        "justification": "Üç ayrılan ÖSYM kodu öğretim bloklarından filtrelenmiş; gerçek banka sorularına bağlantılar var. Ancak set öğrenilmiş senaryoları tekrar eder, her tipte doğru kapısı çalışmaz; yeni iki tipte gerçek soru yok; görülmemiş aktarım veya öğrenme etkisi kanıtı bulunmuyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Kurallari.js:2",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Kurallari.js:16",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:77",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:43",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:50"
+        ]
+      },
+      {
+        "id": 13,
+        "criterion": "Geri çağırma",
+        "score": 2,
+        "justification": "Durak çıkışı soruları, 10 karma + üç ek gecikmeli madde ve 13 tekrar kartı bulunuyor. 1/3/7 gün önerisi açık; motor bağı 16.06 ve bir haftalık gerçek öğrenci ölçümü yapılmış gibi sunulmuyor.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:93",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:95",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:193",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuSayfasi.jsx:151"
+        ]
+      },
+      {
+        "id": 14,
+        "criterion": "Dil ve yük",
+        "score": 1,
+        "justification": "Dil çoğunlukla kısa ve destekleyici; yerel masaüstü çalışmasında boş ekran/konsol hatası görülmedi. Düzeyli set ve testler çok sayıda soruyu tek uzun sayfada açıyor; grafik içi yazılar küçük. Hedef commit için bağımsız mobil/klavye tam kabulü bu turda çalıştırılmadı.",
+        "locations": [
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:16",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:54",
+          "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:33"
+        ]
+      }
+    ],
+    "total": 19,
+    "maximum": 28,
+    "threshold": 24,
+    "zeroCount": 0,
+    "thresholdMet": false,
+    "calculation": "19/28 < 24/28; hiçbir ölçüt 0 değil. Toplam eşiği sağlanmıyor."
+  },
+  "verdict": "FAIL",
+  "verdictReason": "Doğrulanan ilk-deneme kalıcılığı ve her-tip kapısı kusurları, tahmin-deney sırası, bağımsız nicel geçiş yokluğu ve bir geçersiz fizik sorusu yayın/pedagojik teknik kabulünü engelliyor. Rubrik toplamı da eşik altında.",
+  "findings": [
+    {
+      "id": "F01",
+      "priority": "P1",
+      "status": "CONFIRMED",
+      "title": "%80 toplam puan iki başarısız tipi kapatmış sayıyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:74",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:75",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:76",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:77",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:81",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:92"
+      ],
+      "evidence": [
+        "audit-browser.mjs, set_10_of_12_first_correct_two_types_failed: İlk iki sette yanlış→doğru, diğer 10 maddede ilk doğru UI yoluyla verildi. stored.set-hareket-turu=false ve set-referans=false kaldı; toplam 10/12=%83,33.",
+        "posttest_available_despite_two_unpassed_types: karma ve ek üç gecikmeli soruya UI ile cevap verildiğinde son kavram testi açıldı. Hiçbir set cevabı fixture olarak yazılmadı; yalnız önceki öğretim basamaklarının tamamlanması fixture idi.",
+        "setPass yalnız Object.values(durum.set).filter(Boolean).length/sets.length >= .8 denetliyor; her tipte doğru koşulu yok."
+      ],
+      "impact": "Basamak 6’nın her tipten en az bir bağımsız doğru koşulu ve ekrandaki aynı vaat sağlanmıyor.",
+      "correctionAreas": [
+        "Tip başına bağımsız doğruyu toplam puandan ayrı hesapla; yalnız tanımlı soru kimliklerini puana kat.",
+        "Eksik tipleri göster; gerekli tip sağlanmadan son ölçüme geçiş verme. Karma tamamlanmasını bağımsızlık kanıtı diye yorumlama."
+      ],
+      "verificationNeeded": [
+        "10/12 ve iki eksik tipte son test kilitli kalmalı; farklı maddede eksik tipler de sağlanınca açılmalı. %80 altı ve her tip mevcut ama toplam yetersiz karşı örneklerini de sınayın."
+      ]
+    },
+    {
+      "id": "F02",
+      "priority": "P1",
+      "status": "CONFIRMED",
+      "title": "Yanlış cevap yenilemede siliniyor ve ilk doğru olarak yeniden yazılıyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:10",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:11",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:16",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:52",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:54",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:67",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:92"
+      ],
+      "evidence": [
+        "set_wrong_not_persisted: set-hareket-turu maddesinde yanlış seçildi; geri bildirim göründü fakat durum.set kaydı oluşmadı.",
+        "set_wrong_reload_now_first_correct: sayfa yeniden açılıp doğru seçenek tıklandı; aynı madde stored.set[set-hareket-turu]=true oldu.",
+        "Aynı davranış fixture kullanmadan ilk durağın tahmininde de görüldü: yanlış→yenile→doğru sonrası ilk:true kaydedildi.",
+        "Yeni set turu mevcut set nesnesini {} ile değiştiriyor; önceki tur sonuçları ayrıca korunmuyor."
+      ],
+      "impact": "İlk deneme/yardımsızlık kanıtı tarayıcı yenilemesine veya tur düğmesine dayanıklı değil. Öğrenci başarısı olduğundan fazla görünebilir.",
+      "correctionAreas": [
+        "Her ilk seçim ve yanlış/geri bildirim olayını hemen kalıcı yaz; onAttempt ile üst duruma bildir.",
+        "Aktif tur, geçmiş turlar, ilk seçim, yardım/cevap görme ve nihai doğruyu ayır; yeniden yüklemede soru durumunu geri kur.",
+        "Tamamlanmış Calisma sorularının seçimi ve geri bildirimi depodan geri yüklenmeli; yalnız tamamlandı sayacı dönmemeli."
+      ],
+      "verificationNeeded": [
+        "Yanlış→yenile→doğru, yanlış→başka bölüm→geri→doğru ve yeni tur sonrası ilk/yardım kaydı korunmalı; aynı soruda önceki açılmış gerekçe izlenebilir kalmalı."
+      ]
+    },
+    {
+      "id": "F03",
+      "priority": "P1",
+      "status": "CONFIRMED",
+      "title": "Yanlış tahmin öğrenciyi deneyden önce doğru cevabı bulmaya zorluyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:23",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:26",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:36",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:90",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:61",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:40"
+      ],
+      "evidence": [
+        "wrong_prediction_before_experiment: gerçek başlangıç ve yedi gerçek ön koşul cevabından sonra ilk tahminde yanlış seçenek tıklandı. Açıklama hemen gösterildi; kime-gore[0] tamamlanmadı ve iç Sonraki düğmesi kilitli kaldı.",
+        "Yanılgı bloklarında deney phase>0 koşuluyla gösteriliyor; phase yalnız V2Soru.onDone yani doğru seçimden sonra 1 oluyor.",
+        "wrong-prediction.png açıklamanın deneyden önce açıldığını kaydeder."
+      ],
+      "impact": "Ortaya çıkar→yüzleştir→çöz döngüsü cevap avına dönüşüyor; öğrenci kendi yanlış tahminini deneyle karşılaştıramadan açıklamayı görüyor.",
+      "correctionAreas": [
+        "Tahmin doğruluğundan bağımsız ilk seçimi kaydet ve deneye geçiş ver.",
+        "Açıklamayı gözlemden sonra aç; ardından ayrı bir gerekçe seçimi/açıklama üretimi iste.",
+        "Deneyi inceledim tıklaması tek başına gerekçe veya gözlem kanıtı sayılmamalı."
+      ],
+      "verificationNeeded": [
+        "Yanlış ve doğru tahminlerin ikisinden de deney açılmalı; önceden doğru cevap/gerekçe gösterilmemeli. Gözlem ve gerekçe tamamlanmadan basamak1 geçmemeli."
+      ]
+    },
+    {
+      "id": "F04",
+      "priority": "P1",
+      "status": "CONFIRMED",
+      "title": "Basamak 4 iki bağımsız doğru yerine çözüm açma ile tamamlanıyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:40",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:42",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:72",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:114",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:127",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:75",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:77",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Kurallari.js:18",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Kurallari.js:22"
+      ],
+      "evidence": [
+        "Ornek son adım açıldığında onSonuc(true) çağırıyor; gizli adımda yalnız taslak.trim() doluluğu denetleniyor. Fiziksel veya sayısal doğruluk değerlendirilmiyor.",
+        "Durak tamamlanması bütün blok indekslerinde herhangi kayıt bulunmasıyla belirleniyor. Basamak4 için iki ayrı, yardımsız doğru sayacı ve soru havuzu yok.",
+        "paketHazirla durak çıkışındaki sina seçenek ve yargılarını kavram-kontrol havuzuna kopyalıyor; aynı çıkış maddesi daha önce cevap/gerekçesi görülmüş olabilir."
+      ],
+      "impact": "Bir öğrenci anlamsız metin yazıp çözümü açarak nicel basamağı tamamlayabilir; sonraki çıkış maddesinin bağımsız olduğu da garanti edilmez.",
+      "correctionAreas": [
+        "Çözümlü örneği çalışma olarak tut; nicel geçiş için iki farklı, çözümü gösterilmemiş madde ekle ve bağımsız ilk doğruları say.",
+        "Beş adımı (Anla→Çiz→İlke seç→Sembolle çöz→Kontrol) yalnız ciz metni/asamalar alanı değil, yapılan öğrenci eylemleri olarak uygula.",
+        "Kavram havuzu ile nicel/çıkış ölçme havuzunu kimlik ve cevap-görme kayıtlarıyla ayır."
+      ],
+      "verificationNeeded": [
+        "Örnek adımlarını açmak tek başına basamak4’ü geçirmemeli; iki bağımsız doğru gerekir. Daha önce cevabı açılan madde bağımsız sayılmamalı."
+      ]
+    },
+    {
+      "id": "F05",
+      "priority": "P2",
+      "status": "CONFIRMED",
+      "title": "Hareket haritası x–t grafiği olarak çiziliyor; çizgi kimlikleri kayboluyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:25",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:31",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:34",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:36",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:191",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:303"
+      ],
+      "evidence": [
+        "motion_map_rendering: harita.x=[0,2,4,6,8], [i,x] çiftlerine çevrilip eksenler üzerinde yükselen polyline olarak çizildi. DOM etiketleri Zaman adımı/Konum(m). motion-map.png kaynak hareket haritası yerine cevabın x–t doğrusunu gösteriyor.",
+        "Gorsel cizgiler[].ad değerini hesaplıyor ama SVG içinde yazdırmıyor. İki araçlı çeviri sorusunda K ve L kimlikleri renk dışında ayırt edilemiyor.",
+        "Genel grafiklerde düşey birimler yazılmıyor, yatay eksen genel Zaman(soru birimi); sayı doğrusu aralik alanı ve sıfırın sayısal işaretlemesi korunmuyor."
+      ],
+      "impact": "Ölçülen temsil dönüşümü ortadan kalkıyor; renk tek bilgi taşıyıcısına dönüşüyor ve birim/konum öğretimi zayıflıyor.",
+      "correctionAreas": [
+        "harita için uzayda noktalar ve eşit zaman damgaları olan gerçek hareket haritası çiz.",
+        "Grafik türlerini ayrı renderer/ölçekle ele al; her çizgiyi adıyla etiketle ve sayısal birimleri açık yaz.",
+        "Sayı doğrusunda aralık, sıfır, yön ve nokta değerlerini göster."
+      ],
+      "verificationNeeded": [
+        "Hareket haritası kaynak görseli x–t eğrisi içermemeli; K/L metinle tanımlı olmalı; sıfırın iki yanı ve birimler negatif veride de doğru görünmeli."
+      ]
+    },
+    {
+      "id": "F06",
+      "priority": "P1",
+      "status": "CONFIRMED",
+      "title": "D031 tahmininde tam doğru seçenek yok",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:307",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:243"
+      ],
+      "evidence": [
+        "Kör çözümde anahtar görülmeden işaretlendi. Anahtar A diyor: hızları eşittir; biri hâlâ öndedir. Oysa yalnız hız eşitliği kesindir.",
+        "Aynı başlangıçtan hareket için vL(t)=2 m/s ve vK(t)=2+sin(2πt) m/s alınsın (t saniye). t=1 s’de iki hız da 2 m/s, hız farkının 0–1 s integrali sıfır olduğundan konumlar da eşittir. Hız farkı t=1’in iki yanında işaret değiştirir; çizgiler kesişir. Her iki araç da hep ileri gider.",
+        "Basit genel ilke: xK−xL=∫(vK−vL)dt; vK=vL bu alanın sıfır olup olmadığını belirlemez."
+      ],
+      "impact": "Doğru fiziksel çıkarım yanlış sayılabilir; öğrencide hız eşitliğinin konum ilişkisini belirlediği yeni bir yanılgı oluşabilir.",
+      "correctionAreas": [
+        "Doğru seçeneği Araçların hızları eşittir; konumlarının aynı olup olmadığı bu bilgiden belirlenemez olarak değiştir.",
+        "Alternatif: köke kesişime kadar bir hızın sürekli ötekinden büyük olduğu açık bir grafik ekle."
+      ],
+      "verificationNeeded": [
+        "Eşit hız/eşit konum ile eşit hız/farklı konum karşı örneklerinin ikisinde de anahtar doğru kalmalı."
+      ]
+    },
+    {
+      "id": "F07",
+      "priority": "P2",
+      "status": "CONFIRMED",
+      "title": "V2 tip kartları gösterilmiyor; karışık turda yöntem seçimi kaldırılmış",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:72",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:91",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/KonuV2.jsx:93",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:142",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/bloklar.jsx:202"
+      ],
+      "evidence": [
+        "V2 tipler bloğu yalnız Tip çalışmalarına sekiz duraktan sonra geçeceksin yer tutucusunu çiziyor. Sonraki İlk hamle sayfası ise yalnız tipCalismalari[].tani sorularını çiziyor; kartlardaki gor/ilkHamle/kural/kosul/tuzak/frekans alanları gösterilmiyor.",
+        "karma_has_no_type_selection gerçek UI kaydında tür seçimi yok. V2 karma doğrudan Calisma/V2Soru kullanıyor; mevcut KarmaOge bileşeni kullanılmıyor.",
+        "Yeni at-grafik ve yon-degistirme tiplerinin banka sayıları null, soru bağları boş; sahte sayı üretilmemesi doğru ama bu iki tip için gerçek soru kabulü tamamlanmış değil."
+      ],
+      "impact": "Soruyu ilkesine göre tanıma, yüzeyi benzer ilkeyi farklı vakaları karşılaştırma ve sınav kanıtıyla strateji öğretimi eksik.",
+      "correctionAreas": [
+        "Tip kartlarını ilgili basamakta göster; bilinmeyen banka sıklığını açıkça bilinmiyor olarak yaz.",
+        "Karma turda çözümden önce ilke/tip ve ilk hamle seçimini zorunlu yap; cevap sayısını veya sayısal gerekçeyi bu aşamada açma.",
+        "Yeni tip gerçek soru bağlarını mevcut doğrulanabilir kanıttan tamamla; bulunamayanı insan kabulüne açık bırak."
+      ],
+      "verificationNeeded": [
+        "Her 12 tipin koşul/tuzak kartı erişilebilir olmalı; karma çözüm seçenekleri ilke seçilmeden açılmamalı; tip gerekçesi nicel cevabı önceden vermemeli."
+      ]
+    },
+    {
+      "id": "F08",
+      "priority": "P2",
+      "status": "CONFIRMED",
+      "title": "Bazı yanılgı deney yönergeleri bağlı modelle yapılamıyor",
+      "locations": [
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:59",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/v2Bloklar.jsx:60",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.olcme.js:17",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.olcme.js:18",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/physics/labScenarios.js:12",
+        "D:/workspace/ivme/uygulama/frontend/src/learn/physics/labScenarios.js:37"
+      ],
+      "evidence": [
+        "Y4 yönergesi eşit uzunluklu iki zıt hız oku ister, fakat hiz deneyi tek gidiş–dönüş cismi kullanır; aynı anda iki eşit süratli zıt araç oluşturmaz.",
+        "Y5 yönergesi eşit iki yol parçasında süre sayaçlarını karşılaştırmak ister; hiz modeli tek cismin 3 s ileri/2 s geri parçaları ve yalnız back parametresi ile çalışır. İki yol/süre sayacı veya bağımsız iki sürat kontrolü yok.",
+        "Y10 yönergesi v–t=100 yatay çizgi ister; bağlı uc-grafik deneyinin ilk hız kaydırıcısı −10…10 ile sınırlıdır. Model denklemleri tutarlı olsa da yönerge sayıları uygulanamaz."
+      ],
+      "impact": "Çalışan bir model bulunması, istenen yanılgının deneyle yüzleştirildiğini kanıtlamıyor; öğrencinin istenen gözlemi üretmesi mümkün değil.",
+      "correctionAreas": [
+        "Yanılgı başına gereken cisim, sabit/değişken ve hedef durumu tanımla; doğru senaryo/preset ve sayaçları bağla.",
+        "Yönergenin sayıları ve parametre aralıklarını eşleştir; başka kavramı gösteren genel deneyle ikame etme."
+      ],
+      "verificationNeeded": [
+        "Y4 iki eşit sürat/zıt yön oku; Y5 eşit yol/farklı süre; Y10 büyük sabit hız/sıfır ivme durumları gerçekten kurulup gözlenmeli."
+      ]
+    }
+  ],
+  "ambiguityWordingRecommendations": [
+    {
+      "id": "D002",
+      "disposition": "Kavramsal kapsamı netleştir; anahtarla standart okul sınıflamasında uyumlu.",
+      "suggestion": "Dönme dolabın ana çarkı (kabinler değil) ve salıncağın denge konumu çevresindeki gidip gelmesi ifadelerini kullan. Titreşim ile dönme sınıflarının hangi cisim/parça için istendiğini belirt.",
+      "severity": "clarification"
+    },
+    {
+      "id": "D008",
+      "disposition": "UI checkbox çoklu kutuya izin verdiği için kökteki tek/çoklu seçim belirsizliği uygulamada büyük ölçüde çözülüyor.",
+      "suggestion": "Bir durum birden çok kutuya girebilir; doğru olan bütün ilişkileri işaretle cümlesini ekle.",
+      "severity": "clarification"
+    },
+    {
+      "id": "D028",
+      "disposition": "Kör kökte eksik; uygulamadaki ciz yönergesi verilen noktaları birleştirmeyi istiyor. Yine de kökte hız ve yolun kesinliği belirtilmeli.",
+      "suggestion": "Cisim (0–3)s ve (3–5)s aralıklarının her birinde sabit hızla hareket ediyor cümlesini ekle. Bu koşulda +2,−2 m/s; yol10 m; Δx+2 m kesinleşir.",
+      "location": "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:268"
+    },
+    {
+      "id": "D029",
+      "disposition": "T,F,T yalnız doğrusal grafik parçaları ve x,t>0 koşulunda kesin.",
+      "suggestion": "Konum–zaman doğruları ifadesini kullan veya gerçek grafiği göster; x>0 ve t>0 belirt.",
+      "severity": "clarification"
+    },
+    {
+      "id": "D031",
+      "disposition": "Doğru seçenek eksik; F06.",
+      "suggestion": "Araçların hızları eşittir; konumlarının eşit olup olmadığı bu bilgiden belirlenemez.",
+      "location": "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:307"
+    },
+    {
+      "id": "D044",
+      "disposition": "Standart arka-uç yorumu D25s verir; tamamen tünelin içinde bulunma yorumu 150m>100m nedeniyle olanaksız.",
+      "suggestion": "Trenin ön ucu tünelin girişine ulaştıktan 15s sonra arka ucu giriş ağzını geçiyor. Ön uç girişe ulaştıktan kaç saniye sonra arka uç çıkış ağzını geçer?",
+      "location": "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:289"
+    },
+    {
+      "id": "D051",
+      "disposition": "A=−2 m/s² ortalama ivmedir; sabitlik verilmemiş.",
+      "suggestion": "Ortalama ivmesi kaç m/s²’dir? de veya hızının düzgün değiştiğini ekle.",
+      "location": "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.v2.js:379"
+    },
+    {
+      "id": "D055",
+      "disposition": "B=20 m/s² ortalama ivme büyüklüğüdür; anlık ivme belirlenmez.",
+      "suggestion": "Ortalama ivmesinin büyüklüğü kaç m/s²’dir? de veya düzgün hızlanmayı ekle.",
+      "location": "D:/workspace/ivme/uygulama/frontend/src/learn/konu/paketler/fizik-hareket.js:378"
+    }
+  ],
+  "verification": [
+    {
+      "command": "node --test testler/konu-paketi.test.mjs testler/konu-paketi-v2.test.mjs",
+      "rerun": true,
+      "result": "PASS: 12 tests, 0 failures.",
+      "limit": "Yapı ve saf kurallar; gerçek basamak ustalığını, tüm kapıları ve pedagojik kabulü doğrulamaz."
+    },
+    {
+      "command": "node C:/Users/nkorg/AppData/Local/Temp/ivme-1604-opus-denetim/audit-browser.mjs",
+      "rerun": true,
+      "result": "Completed: 15 evidence checkpoints including browser_finish; actual pretest and seven prerequisite controls, wrong/reload, set/karma/posttest interactions, diagram capture. No runtime console errors; expected pre-login auth401 and favicon404 only.",
+      "limit": "Desktop isolated Chrome. Later-stage teaching completion is explicitly fixture-injected; the 12 set answers, karma answers, posttest answers and wrong/reload actions were actual UI interactions, not injected answers. No human learning claim."
+    },
+    {
+      "command": "git diff --name-only 468087f 0343d93 -- frontend testler/konu-paketi-v2.test.mjs",
+      "rerun": true,
+      "result": "Empty: target app source and rule tests match audit-start main."
+    },
+    {
+      "command": "Existing source images viewed via view_image",
+      "rerun": true,
+      "result": "TYT-0911, TYT-0909 and OGM kaynak-07-1 inspected; no new PDF/OCR operation."
+    },
+    {
+      "command": "npm run build / schema / plan / mobile 105-check fixture smoke",
+      "rerun": false,
+      "result": "Not claimed independently confirmed in this audit. Prior reported passes were not reused as verification. npm build includes projection scripts and was not executed against mutable working files during audit-only work."
+    }
+  ],
+  "positiveControls": [
+    "Fresh locked ?bolum=son falls back to Ön test; only Ön test navigation enabled.",
+    "Before completing either concept test, no selected-answer feedback or solution details were shown; after posttest completion exactly 10 explanation details appeared.",
+    "Stable option IDs and deterministic shuffle retain answer mapping; 143 unambiguous independent answers match expected.",
+    "Three reserved ÖSYM codes are filtered from in-lesson blocks. This prevents current lesson solutions from being presented there; it does not prove a student has never seen the questions.",
+    "v2 storage namespace includes topic/user/version and does not migrate v1 progress; current code emits no mastery/teacher approval events for lesson block completion."
+  ],
+  "uncertaintiesAndUnperformedChecks": [
+    "Full mobile/keyboard interaction, all 105 fixture screens, every source page, official printed answer sheets, and exhaustive parameter boundaries were not independently rerun. They remain acceptance work.",
+    "User-ID changes while KonuV2 remains mounted may retain useState initialized from the previous key (KonuV2:60–61); this cross-user state concern was not reproduced and is not included as a confirmed defect.",
+    "All durak links become accessible after AK controls, and karma is accessible after durakDone before type/set completion (KonuV2:81). This is confirmed code behavior; whether free review is desired or novice sequence must be locked needs an explicit product decision. Final posttest still checks its own gate.",
+    "Pretest does not adaptively skip mastered durak basamakları, although the plan calls for placement skipping. This is a remaining plan capability, not evidence that pretest scores demonstrate mastery.",
+    "Existing model numerical laws appeared consistent and unit tests passed, but individual Y4/Y5/Y10 instruction/model mismatches prevent blanket approval of all 13 confrontations.",
+    "Rubric evaluates target commit only. No claim is made about changes the parent agent began after the findings checkpoint."
+  ],
+  "humanAcceptanceBoundaries": [
+    "Öğretmen/kullanıcı bütün basamakları başlangıç öğrencisi gibi denemeli, kaynak ve Türkçe fizik dilini kabul etmeli; teacherApproved/onay alanı insan girdisi olmadan değişmemeli.",
+    "Ön/son normalize kazanç hedefi ölçülmüş etki değildir. İki seçenekli sorular şans etkisi taşır; görülmemiş yardımsız eşdeğer son ölçüm ve bir hafta gecikmeli gerçek soru gerekir.",
+    "Ön=100 için normalize kazanç hesaplanmaz. Teknik geçiş, tamamlama işareti, fixture, çözüm açma veya tıklama öğrenme kanıtı değildir.",
+    "TYT-0910/0912/0913 güncel öğretimden ayrılmış olsa da önceki görülmüşlük geçmişi ve resmî kaynak/anahtar doğrulaması ayrıca değerlendirilmelidir.",
+    "Ustalık/FSRS motor entegrasyonu 16.06 kapsamındadır; bu audit öğrenci DB kaydı ya da ustalık olayı üretmedi."
+  ],
+  "artifacts": [
+    "03-sol-kor-cevaplar.json",
+    "blind-comparison.json",
+    "04-sol-denetim.json",
+    "04-sol-denetim.md",
+    "audit-browser.mjs",
+    "browser-evidence.json",
+    "browser-summary.json",
+    "wrong-prediction.png",
+    "motion-map.png"
+  ]
+}

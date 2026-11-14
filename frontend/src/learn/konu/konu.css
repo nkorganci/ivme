@@ -227,3 +227,6 @@
 .kp-v2-ana .kp-secenek { text-align:left; }
 .kp-v2-ana input[type=range] { width:100%; }
 .kp-v2-ana .kp-gezin { flex-wrap:wrap; gap:12px; }
+.kp-protokol { display:grid; gap:10px; margin:12px 0; }
+.kp-protokol label { display:grid; gap:5px; }
+.kp-protokol textarea { width:100%; max-width:100%; border:1px solid var(--line); border-radius:6px; padding:8px; }

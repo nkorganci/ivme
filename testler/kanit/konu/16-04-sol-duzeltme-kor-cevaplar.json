@@ -1,0 +1,360 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "phase": "new-blind-correction-check",
+  "input_file": "05-kor-duzeltmeler.json",
+  "independence": "Bu aşamada yalnız05 kör soru dosyası okundu.06 anahtarı ve çalışma ağacındaki düzeltmeler okunmadı. D001–D024 yeni sorular bağımsız çözüldü. D025–D032 önceki incelemeden konusu/anahtarı bilinen sekiz maddenin açıklığa kavuşturulmuş hâlleri olarak şeffaf biçimde yeniden değerlendirildi; bunlar yeni görülmemiş sorular sayılmadı.",
+  "answer_count": 32,
+  "new_blind_count": 24,
+  "clarified_reassessment_count": 8,
+  "source_required_ids": [],
+  "ambiguous_ids": [],
+  "wording_caveat_ids": [
+    "D006",
+    "D025"
+  ],
+  "answers": [
+    {
+      "id": "D001",
+      "answer": "A",
+      "reason": "Konum koordinatı için sıfır/referans, eksenin artı yönü ve uzunluk birimi belirlenir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D002",
+      "answer": "A",
+      "reason": "Kitabın masaya göre konumu değişmez; örneğin Güneş’e bağlı gözlemciye göre Dünya ile birlikte yer değiştirir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D003",
+      "answer": "B",
+      "reason": "Konumun işareti sıfırın hangi tarafında bulunduğunu söyler; hareket yönü için konumun zamanla değişmesi gerekir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D004",
+      "answer": "B",
+      "reason": "Yer değiştirme son konum eksi ilk konumdur; rotanın şekli uç noktalar aynı kaldığında sonucu değiştirmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D005",
+      "answer": "A",
+      "reason": "Alınan yol, rota üzerindeki uzunlukların toplamıdır ve sıfırdan küçük olamaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D006",
+      "answer": "B",
+      "reason": "Tek doğru üzerinde yön değiştirmeden gidilirse yol, başlangıç ile bitiş arasındaki düz uzaklığa eşittir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Dönmeden ifadesi geri dönmeden/yön değiştirmeden olarak okunmuştur. Cismin kendi ekseninde dönmemesi kastedilirse yalnız bu bilgi yeterli olmaz; kökte yön değiştirmeden sözcüğü daha açıktır."
+      ],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D007",
+      "answer": "B",
+      "reason": "Ortalama sürat toplam yol/toplam geçen süredir; seçilen zaman aralığındaki bekleme de paydaya katılır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D008",
+      "answer": "B",
+      "reason": "Ortalama hız büyüklüğü=yer değiştirme büyüklüğü/süre; süre aynıyken payın artması oranı artırır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D009",
+      "answer": "A",
+      "reason": "Ortalama sürat ve hızın büyüklüğü uzunluk/zaman birimi taşır (m/s); ivme ise m/s²’dir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D010",
+      "answer": "A",
+      "reason": "Sekant doğrusunun eğimi Δx/Δt’dir; bu aralıktaki ortalama hıza eşittir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D011",
+      "answer": "B",
+      "reason": "x–t doğrusunun eğimi v’dir; başlangıç konumu doğrunun düşey kesişimini değiştirir, eğimini belirlemez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D012",
+      "answer": "A",
+      "reason": "Hız x–t eğimidir; eğimin işaret değiştirmesi hızın işaretini ve dolayısıyla hareket yönünü değiştirir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D013",
+      "answer": "A",
+      "reason": "Hız–zaman eğimi dv/dt’dir; ivmeyi verir. İki zaman arasındaki sekant eğimi ortalama ivmedir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D014",
+      "answer": "B",
+      "reason": "İşaretli v–t alanı konumu değil Δx’i verir; son konum=xilk+alan olduğundan ilk konum gerekir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D015",
+      "answer": "A",
+      "reason": "Grafik aşağıda ve yataysa hız sabit negatiftir; cisim eksi yönde sabit süratle ilerler.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D016",
+      "answer": "A",
+      "reason": "Aynı yönde eşit büyüklüklü sabit hızların farkı sıfırdır; bağıl konum ve aralık değişmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D017",
+      "answer": "B",
+      "reason": "Trenin tamamı tünelden çıkmış sayılması için son vagonun arka ucu da çıkış ağzını geçmelidir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D018",
+      "answer": "B",
+      "reason": "Yetişme ilişkisinden önce birimlerin uyumu ve vektörlerin yönleri belirlenir; yönsüz toplama genel bir kural değildir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D019",
+      "answer": "B",
+      "reason": "İvme hız vektörünün zamana göre değişimidir; konumun zamana göre değişimi hızdır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D020",
+      "answer": "A",
+      "reason": "v ile a ters yönlüyken hız büyüklüğünün değişimi v·a/|v|<0’dır; henüz durmadan sürat azalır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D021",
+      "answer": "A",
+      "reason": "Sabit süratli çembersel hareket örneğinde hızın yönü değişir; merkezcil ivme vardır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D022",
+      "answer": "B",
+      "reason": "İvme v–t eğimidir; a=0 olduğunda eğim sıfır, grafik yataydır. Hızın değeri sıfır olmak zorunda değildir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D023",
+      "answer": "A",
+      "reason": "d(v1−v2)/dt=a1−a2=0; aynı zaman aralığında eşit ivmeler aynı hız değişimini ekler ve başlangıç hız farkı korunur.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D024",
+      "answer": "B",
+      "reason": "x–t eğimi hızdır; hız cebirsel olarak artarken eğim de artar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "NEW_BLIND"
+    },
+    {
+      "id": "D025",
+      "answer": [
+        [
+          "Öteleme"
+        ],
+        [
+          "Titreşim"
+        ],
+        [
+          "Dönme"
+        ],
+        [
+          "Öteleme",
+          "Dönme"
+        ],
+        [
+          "Titreşim"
+        ],
+        [
+          "Öteleme",
+          "Dönme"
+        ]
+      ],
+      "reason": "Çarkın kabinlerden ayrılması dönme yorumunu netleştirir. Tel ve denge çevresinde gidip gelme titreşim; yerde yuvarlanan tekerlek/top hem ilerleme hem dönme içerir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Salıncak ifadesi bu görevde denge çevresindeki gidip gelmeyi sınıflandırır ve okul düzeyindeki titreşim etiketine uygundur. Bütün parçalarının geometrik hareketi sorulursa eksen etrafında açısal salınım ayrıca tartışılabilir."
+      ],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D026",
+      "answer": [
+        [
+          "Yol = yer değiştirme"
+        ],
+        [
+          "Yol > yer değiştirme",
+          "Yer değiştirme = 0"
+        ],
+        [
+          "Yol > yer değiştirme"
+        ],
+        [
+          "Yol > yer değiştirme",
+          "Yer değiştirme = 0"
+        ],
+        [
+          "Yol = yer değiştirme"
+        ]
+      ],
+      "reason": "Birden fazla kutu yönergesi çakışmayı giderir. Geri dönüş/tam turda Δx=0 ve yol>0; tek yönde doğrusal ilerlemede yol=|Δx|; virajlı yol düz uzaklıktan uzundur.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D027",
+      "answer": {
+        "interval_velocities_mps": [
+          2,
+          -2
+        ],
+        "distance_m": 10,
+        "displacement_m": 2
+      },
+      "reason": "Sabit hız koşuluyla v1=(6−0)/3=+2, v2=(2−6)/2=−2 m/s. Yol=6+4=10 m; Δx=2−0=+2 m. Ek gidip gelmeler sabit hız koşuluyla dışlanmıştır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D028",
+      "answer": [
+        true,
+        false,
+        true
+      ],
+      "reason": "Doğruların eğimleri −2x/t ve +x/t; x,t>0 olduğundan K’nin sürati iki kat, yönler zıt, t anında konumlar sıfırdır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D029",
+      "answer": "B",
+      "reason": "Kesişim anında v1=v2 kesindir; konum farkı geçmişteki hız farkının integralidir ve o anda sıfır da sıfırdan farklı da olabilir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D030",
+      "answer": "C",
+      "reason": "Ön uçtan arka ucun girişe gelmesine kadar tren boyu150 m, süre15 s: v=10 m/s. Arka uç çıkışa gelene kadar ön uç150+100=250 m ilerler; toplam süre25 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D031",
+      "answer": "B",
+      "reason": "Ortalama ivme=(vson−vilk)/Δt=[−6−(+2)]/4=−2 m/s². Ortalama denmesi sabit ivme varsayımını gereksiz kılar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    },
+    {
+      "id": "D032",
+      "answer": "A",
+      "reason": "Durgun başlangıçtan hız değişimi100 m/s, süre5 s: ortalama ivme büyüklüğü100/5=20 m/s².",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": [],
+      "review_mode": "CLARIFIED_REEVALUATION_PRIOR_KEY_KNOWN"
+    }
+  ]
+}

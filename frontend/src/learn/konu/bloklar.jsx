@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import { Markdown } from '../math.jsx';
 import { secenekSirasi } from './v2Kurallari.js';
+import { useSoruDurumu } from './SoruDurumu.jsx';
 
 // Etkileşimli model motorları: paket yalnız motor adını ve parametresini söyler.
 const MOTORLAR = {
@@ -16,8 +17,8 @@ const dogruIndex = (secenekler) => secenekler.findIndex((s) => s.dogru);
 /** Tek doğru cevaplı soru: her şıkkın kendi açıklaması vardır; yanlışta yeniden denenir. */
 export function Secim({ soru, secenekler: source, baslik, onSonuc }) {
   const secenekler = useMemo(() => secenekSirasi(source, soru), [source, soru]);
-  const [secili, setSecili] = useState(null);
-  const [denemeler, setDenemeler] = useState(0);
+  const [secili, setSecili] = useSoruDurumu(`secim:${soru}:secili`, null);
+  const [denemeler, setDenemeler] = useSoruDurumu(`secim:${soru}:denemeler`, 0);
   const dogru = dogruIndex(secenekler);
   const sec = (i) => {
     if (secili === dogru) return;
@@ -41,8 +42,8 @@ export function Secim({ soru, secenekler: source, baslik, onSonuc }) {
 
 /** Öncüllü yargı sorusu (sınavdaki I–II–III biçimi): her yargı ayrı ayrı doğru/yanlış diye işaretlenir. */
 export function Yargi({ kok, yargilar, onSonuc }) {
-  const [isaret, setIsaret] = useState({});
-  const [kontrol, setKontrol] = useState(false);
+  const [isaret, setIsaret] = useSoruDurumu(`yargi:${kok}:isaret`, {});
+  const [kontrol, setKontrol] = useSoruDurumu(`yargi:${kok}:kontrol`, false);
   const hepsi = yargilar.every((_, i) => isaret[i] !== undefined);
   const dogruSayisi = yargilar.filter((y, i) => isaret[i] === y.dogru).length;
   const bitir = () => { setKontrol(true); onSonuc?.(dogruSayisi === yargilar.length); };
@@ -67,8 +68,8 @@ export function Yargi({ kok, yargilar, onSonuc }) {
 
 /** Hatalı çözüm: öğrenci yanlış adımı bulur. Başkasının hatasını görmek kendi hatasını yakalamayı öğretir. */
 export function HataBul({ soru, adimlar, onSonuc }) {
-  const [secili, setSecili] = useState(null);
-  const [denemeler, setDenemeler] = useState(0);
+  const [secili, setSecili] = useSoruDurumu(`hata:${soru}:secili`, null);
+  const [denemeler, setDenemeler] = useSoruDurumu(`hata:${soru}:denemeler`, 0);
   const hatali = adimlar.findIndex((a) => a.hatali);
   const sec = (i) => { if (secili === hatali) return; setSecili(i); setDenemeler((d) => d + 1); if (i === hatali) onSonuc?.(denemeler === 0); };
   return <div className="kp-soru">
@@ -114,17 +115,23 @@ export function Fikir({ blok }) {
 export function Ornek({ blok, onSonuc }) {
   const [acik, setAcik] = useState(0);
   const [taslak, setTaslak] = useState('');
+  const [notlar, setNotlar] = useSoruDurumu(`ornek:${blok.soru}:protokol`, {});
+  const protokol = Boolean(blok.ciz || blok.asamalar);
+  const asamalar = [['anla', 'Anla: verilenler ve aranan'], ['ciz', 'Çiz: kâğıdına çiz, yönünü veya eksenlerini burada belirt'], ['ilke', 'İlke seç: hangi ilişki, hangi koşulda?'], ['coz', 'Sembolle çöz: önce ilişki, sonra sayılar'], ['kontrol', 'Kontrol: birim, işaret ve büyüklük']];
+  const planHazir = !protokol || asamalar.slice(0, 3).every(([k]) => notlar[k]?.trim().length >= 3);
+  const notlarHazir = !protokol || asamalar.every(([k]) => notlar[k]?.trim().length >= 3);
   const toplam = blok.adimlar.length;
   const ogrenciAdimi = acik >= toplam - (blok.gizli ?? 0) && acik < toplam;
   return <section className="kp-blok kp-ornek">
     <p className="kp-etiket">Birlikte çöz</p>
     <div className="kp-kok"><Markdown text={blok.soru} /></div>
+    {protokol && <div className="kp-protokol"><p>Önce verilenleri, çizimini ve ilkeni belirt. Sonra çözümünü ve kontrolünü örnekle karşılaştır; bağımsız doğrular durak çıkışında ölçülür.</p>{asamalar.map(([id, ad]) => <label key={id}>{ad}<textarea rows={2} value={notlar[id] || ''} onChange={e => setNotlar(prev => ({ ...prev, [id]: e.target.value }))} /></label>)}</div>}
     <ol className="kp-adimlar">{blok.adimlar.slice(0, acik).map((a, i) => <li key={a.ne}>
       <span className="kp-adim-no">{i + 1}</span><div><p className="kp-ne">{a.ne}</p><p className="kp-neden-satir"><strong>Neden?</strong> {a.neden}</p></div></li>)}</ol>
     {acik < toplam && <div className="kp-adim-eylem">
       {ogrenciAdimi && <label className="kp-sen">Sıra sende: {acik + 1}. adımı önce kendin yaz.
         <textarea rows={2} value={taslak} onChange={(e) => setTaslak(e.target.value)} placeholder="Bu adımda ne yaparsın ve neden?" /></label>}
-      <button type="button" className="btn btn-primary" disabled={ogrenciAdimi && !taslak.trim()} onClick={() => { setAcik((a) => a + 1); setTaslak(''); if (acik + 1 === toplam) onSonuc?.(true); }}>
+      <button type="button" className="btn btn-primary" disabled={!planHazir || acik + 1 === toplam && !notlarHazir || ogrenciAdimi && !taslak.trim()} onClick={() => { setAcik((a) => a + 1); setTaslak(''); if (acik + 1 === toplam) onSonuc?.(true); }}>
         {acik === 0 ? 'İlk adımı göster' : ogrenciAdimi ? 'Benimkini karşılaştır' : `Sonraki adım (${acik}/${toplam})`}</button>
     </div>}
     {acik === toplam && blok.kontrol && <p className="kp-kontrol"><strong>Nasıl kontrol ederim?</strong> {blok.kontrol}</p>}
@@ -142,7 +149,7 @@ export function Puf({ blok }) {
 export function TipKarti({ tip, sorular, onGercek }) {
   const yillar = tip.osym.map((kod) => sorular[kod]?.yil).filter(Boolean);
   return <article className="kp-tip">
-    <header><h4>{tip.ad}</h4><p className="kp-tip-sayi">Bankada yaklaşık {tip.banka} soru{yillar.length > 0 && <> · ÖSYM TYT: <b>{yillar.join(', ')}</b></>}</p></header>
+    <header><h4>{tip.ad}</h4><p className="kp-tip-sayi">{tip.banka == null ? 'Banka sıklığı henüz doğrulanmadı' : `Bankada yaklaşık ${tip.banka} soru`}{yillar.length > 0 && <> · ÖSYM TYT: <b>{yillar.join(', ')}</b></>}</p></header>
     <dl>
       <dt>Soruda bunu görürsen</dt><dd><ul>{tip.gor.map((g) => <li key={g}>{g}</li>)}</ul></dd>
       <dt>İlk hamlen</dt><dd className="kp-tip-hamle">{tip.ilkHamle}</dd>
@@ -200,7 +207,8 @@ export function Sina({ blok, onSonuc }) {
 
 /** Karışık tur ögesi: önce soru tipini tanı, sonra çöz. Tipler sırasız geldiği için yöntem seçmeyi çalıştırır. */
 export function KarmaOge({ oge, tipler, sira, onSonuc }) {
-  const [tipSecimi, setTipSecimi] = useState(null);
+  const [tipSecimi, setTipSecimi] = useSoruDurumu(`karma:${oge.id || oge.soru}:tip`, null);
+  const [tipDenemeler, setTipDenemeler] = useSoruDurumu(`karma:${oge.id || oge.soru}:tipDenemeler`, 0);
   const adaylar = tipAdaylari(oge.tip, tipler, sira);
   const tipDogru = tipSecimi === oge.tip;
   return <div className="kp-karma-oge">
@@ -208,11 +216,11 @@ export function KarmaOge({ oge, tipler, sira, onSonuc }) {
     <div className="kp-kok"><Markdown text={oge.soru} /></div>
     <div className="kp-tip-sec"><p><strong>Önce karar ver:</strong> bu hangi soru tipi?</p>
       <div className="kp-secenekler">{adaylar.map((t) => <button key={t.id} type="button" className="kp-secenek" aria-pressed={tipSecimi === t.id} disabled={tipDogru}
-        data-durum={tipSecimi === t.id ? (t.id === oge.tip ? 'dogru' : 'yanlis') : undefined} onClick={() => setTipSecimi(t.id)}><span>{t.ad}</span></button>)}</div>
+        data-durum={tipSecimi === t.id ? (t.id === oge.tip ? 'dogru' : 'yanlis') : undefined} onClick={() => { setTipSecimi(t.id); setTipDenemeler(n => n + 1); }}><span>{t.ad}</span></button>)}</div>
       {tipSecimi && !tipDogru && <p className="kp-geri kp-yeniden" role="status">Soruda sorulan büyüklüğe ve verilen biçime (grafik mi, yol mu, iki araç mı) yeniden bak.</p>}
       {tipDogru && <p className="kp-geri kp-dogru" role="status"><strong>Tip doğru. İlk hamle:</strong> {tipler.find((t) => t.id === oge.tip).ilkHamle}</p>}
     </div>
-    {tipDogru && <Secim soru="Şimdi çöz:" secenekler={oge.secenekler} onSonuc={onSonuc} />}
+    {tipDogru && <Secim soru="Şimdi çöz:" secenekler={oge.secenekler} onSonuc={ilk => onSonuc?.(ilk && tipDenemeler === 1)} />}
   </div>;
 }
 

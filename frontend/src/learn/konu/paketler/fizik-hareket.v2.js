@@ -25,6 +25,7 @@
 //   'uc-grafik' (x–t, v–t, a–t alt alta + ilk hız kaydırıcısı).
 
 import v1 from './fizik-hareket.js';
+import kavramKontrolleri from './fizik-hareket.kavram.js';
 import { yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari } from './fizik-hareket.v2.olcme.js';
 
 const durakV1 = (id) => v1.duraklar.find((d) => d.id === id);
@@ -53,7 +54,7 @@ const YENI_TIPLER = [
 export default {
   ...v1,
   surum: 2,
-  yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari,
+  yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari, kavramKontrolleri,
   kazanimlar: ['9.3.1.1', '9.3.1.2', '9.3.1.3', '9.3.1.4', '9.3.1.5', '9.3.1.6'],
   sure: 'Yaklaşık 2,5 saat · 8 durak · istediğin yerde bırak, kaldığın yerden sürer',
   giris: 'Sıfırdan başlıyoruz. Her durakta önce **tahmin edeceksin**, sonra deneyip göreceksin; formül en son gelecek ve nereden çıktığını sen bulacaksın.',
@@ -75,9 +76,9 @@ export default {
         { tur: 'sinifla', basamak: 2, soru: 'Her hareketi uygun kutuya koy. Bazıları iki kutuya birden girer.', kutular: ['Öteleme', 'Dönme', 'Titreşim'], ogeler: [
           { metin: 'Düz rayda ilerleyen tren', kutular: ['Öteleme'], neden: 'Trenin bütün noktaları aynı yöne aynı kadar ilerler.' },
           { metin: 'Çalınan gitar telinin hareketi', kutular: ['Titreşim'], neden: 'Tel iki uç konum arasında gidip gelir.' },
-          { metin: 'Dönme dolabın hareketi', kutular: ['Dönme'], neden: 'Dolap sabit bir eksen etrafında döner; ekseni yer değiştirmez.' },
+          { metin: 'Dönme dolabın ana çarkının hareketi (kabinler değil)', kutular: ['Dönme'], neden: 'Dolap sabit bir eksen etrafında döner; ekseni yer değiştirmez.' },
           { metin: 'Yolda ilerleyen arabanın tekerleği', kutular: ['Öteleme', 'Dönme'], neden: 'Tekerlek kendi ekseni etrafında dönerken arabayla birlikte ilerler.' },
-          { metin: 'Sallanan salıncak', kutular: ['Titreşim'], neden: 'Salıncak iki uç nokta arasında gidip gelir.' },
+          { metin: 'Salıncağın denge konumu çevresinde gidip gelmesi', kutular: ['Titreşim'], neden: 'Salıncak iki uç nokta arasında gidip gelir.' },
           { metin: 'Lobutlara doğru yuvarlanan bovling topu', kutular: ['Öteleme', 'Dönme'], neden: 'Top hem ilerler hem kendi çevresinde döner. "Yalnızca öteleme" demek eksiktir.' },
         ] },
         al('kime-gore', 'fikir'),
@@ -104,7 +105,7 @@ export default {
       bloklar: [
         { ...al('yol-yer', 'neden'), basamak: 1, yanilgi: 'Y3' },
         { ...al('yol-yer', 'model'), basamak: 1 },
-        { tur: 'sinifla', basamak: 2, soru: 'Her durumda alınan yol ile yer değiştirmenin büyüklüğü nasıl ilişkilidir?', kutular: ['Yol = yer değiştirme', 'Yol > yer değiştirme', 'Yer değiştirme = 0'], ogeler: [
+        { tur: 'sinifla', basamak: 2, soru: 'Her durumda alınan yol ile yer değiştirmenin büyüklüğü nasıl ilişkilidir? Bir durum birden çok kutuya girebilir; doğru olan bütün ilişkileri işaretle.', kutular: ['Yol = yer değiştirme', 'Yol > yer değiştirme', 'Yer değiştirme = 0'], ogeler: [
           { metin: 'Düz pistte 100 m koşan atlet', kutular: ['Yol = yer değiştirme'], neden: 'Yol düz ve atlet geri dönmüyor: tek eşitlik durumu.' },
           { metin: 'Havuzun bir ucundan öbürüne yüzüp geri dönen yüzücü', kutular: ['Yol > yer değiştirme', 'Yer değiştirme = 0'], neden: 'Başladığı yere döndü: ok yok. Ama iki havuz boyu yüzdü.' },
           { metin: 'Virajlı yoldan komşu köye giden araba', kutular: ['Yol > yer değiştirme'], neden: 'Eğri yolun uzunluğu, uçlarını birleştiren düz oktan büyüktür.' },
@@ -376,7 +377,7 @@ export default {
             { ne: 'a = Δv / Δt = 3 m/s². Hız–zaman grafiğinde bu, doğrunun eğimidir.', neden: 'Dikey değişim (hız) bölü yatay değişim (süre): eğimin tanımı.' },
           ],
           sonuc: 'a = (v_son − v_ilk) / Δt', kosul: 'Bu ortalama ivmedir. İvme sabitse her an aynıdır ve hız–zaman grafiği düz bir doğrudur.', birim: '(m/s) / s = m/s²: hızın her saniye kaç m/s değiştiği',
-          dene: { soru: 'Bir cismin hızı 4 saniyede +2 m/s\'den −6 m/s\'ye geliyor. İvmesi kaç m/s²\'dir?', secenekler: [
+          dene: { soru: 'Bir cismin hızı 4 saniyede +2 m/s\'den −6 m/s\'ye geliyor. Ortalama ivmesi kaç m/s²\'dir?', secenekler: [
             { metin: '−2', dogru: true, neden: 'Δv = −6 − 2 = −8 m/s. a = −8 / 4 = −2 m/s².' },
             { metin: '−1', neden: 'Değişimi 4 m/s aldın. +2\'den −6\'ya 8 m/s vardır: önce 2 m/s sıfıra, sonra 6 m/s daha.' },
             { metin: '−1,5', neden: 'Son hızı süreye böldün. İvme hızın değil hız değişiminin süreye oranıdır.' },

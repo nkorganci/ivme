@@ -10,14 +10,26 @@ export function testSonucu(sorular, cevaplar) {
   const dogru = sorular.filter(s => s.secenekler.find(c => c.id === cevaplar[s.id])?.dogru).length;
   return { dogru, toplam: sorular.length, puan: 100 * dogru / sorular.length };
 }
+
+export function sinavGecisi(sorular, cevaplar) {
+  const yanitlanan = sorular.filter(q => cevaplar[q.id] !== undefined);
+  const ilkDogru = sorular.filter(q => cevaplar[q.id] === true);
+  const tipler = [...new Set(sorular.map(q => q.tip))];
+  const eksikTipler = tipler.filter(t => !ilkDogru.some(q => q.tip === t));
+  const oran = sorular.length ? ilkDogru.length / sorular.length : 0;
+  return { gecti: sorular.length > 0 && yanitlanan.length === sorular.length && oran >= .8 && !eksikTipler.length, oran, eksikTipler };
+}
+
 export const kazanc = (on, son) => on === 100 ? null : (son - on) / (100 - on);
 export function paketHazirla(p) {
   return { ...p, duraklar: p.duraklar.map(d => {
     const bloklar = d.bloklar.filter(b => !AYRILAN_OSYM.includes(b.kod));
-    const kodlar = new Set(bloklar.flatMap(b => [b.yanilgi, b.tur === 'yanilgi' ? b.kod : null]).filter(Boolean));
-    const havuz = [...p.yanilgilar.filter(y => kodlar.has(y.kod)).flatMap(y => [y.ortayaCikar, y.yenidenSina.soru]),
-      ...bloklar.filter(b => b.tur === 'sina').flatMap(b => b.ogeler).flatMap(o => o.secenekler ? [o] : o.tur === 'yargi' ? o.yargilar.map(y => ({ soru: y.metin, secenekler: [{ metin: 'Doğru', dogru: y.dogru, neden: y.neden }, { metin: 'Yanlış', dogru: !y.dogru, neden: y.neden }] })) : [])];
-    const sorular = [...new Map(havuz.map(q => [q.soru, q])).values()];
+    const sorular = p.kavramKontrolleri?.[d.id] || [];
+    const model = bloklar.find(b => b.tur === 'model');
+    for (let i = 0; i < bloklar.length; i++) {
+      if (bloklar[i].tur === 'neden') bloklar[i] = { ...bloklar[i], deneyBlok: model };
+      if (bloklar[i].tur === 'tipler') bloklar[i] = { ...bloklar[i], tipler: d.tipler };
+    }
     const yer = bloklar.findIndex(b => b.tur === 'ornek');
     if (yer >= 0 && sorular.length >= 3) bloklar.splice(yer, 0, { tur: 'kavram-kontrol', basamak: 2, sorular });
     return { ...d, bloklar };

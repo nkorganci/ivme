@@ -99,3 +99,24 @@ Birinci aşama: yalnız kör dosya → denetçinin cevapları kalıcı dosyaya y
 geçiş/yenileme/yanlış cevap/masaüstü-mobil denetimi. Rapor kaynak commitini ve açık kusurları belirtir;
 24/28 altı veya herhangi bir ölçütte 0, yayın kabulü sayılmaz. Kapsama girmeyen kaynak/insan ölçümü
 ayrı kalır. Redaksiyon denetimi: `node --test testler/konu-denetim-paketi.test.mjs`.
+
+
+## Denetim sonrası düzeltme
+
+İlk bağımsız Sol extra high denetimi `468087f` için **19/28, FAIL** verdi.
+[Rapor ve düzeltme matrisi](../islemler/hareket-v2-denetim.md) F01–F08 bulgularını izler.
+Denetçi 153 kör maddeden 143 kesin çözülebileni anahtarla uyumlu buldu; 8 kökü netleştirme önerdi,
+iki kaynak kırpımını ayrıca çözdü. Resmî anahtar/öğretmen kabulü kapanmadı.
+
+Kullanıcı talimatıyla düzeltmeler: her tipte ilk doğru, kalıcı soru/tur durumu,
+tahmin → deney → açıklama/gerekçe sırası, ayrı kavram/çıkış havuzları, hareket haritası ve çizgi adları,
+tip kartları ve karma tip seçimi, eksik koşullu kökler, Y4/Y5/Y10’a özgü deneyler.
+Örneklerde beş aşamalı öğrenci notları alınır; bunlar anlamsal doğruluk olarak otomatik onaylanmaz.
+Durak çıkışındaki iki farklı sorunun ilk tur doğruları geçişi belirler; çözümü açmak tek başına yetmez.
+
+Önceki `:v2` pilot verisi silinmez. Bozuk ilk-deneme kayıtlarını kabul saymamak için yeni ölçüm
+`:v2:r2` anahtarındadır; her soru ve tur bu kullanıcı anahtarının içindedir.
+Yanlışlık, seçim, gerekçe aşaması, kısmi sınıflama ve mikro ders aşaması yenilemede korunur;
+açıkça yeni tur başlatmak eski tur kanıtını silmez. Öğrenciye önceki kaydın korunduğu bildirilir.
+`testler/konu-paketi-v2-regresyon-ui.mjs [--mobil]` gerçek etkileşimlerle bu regresyonları sınar.
+Yeni 24 kavram sorusu ayrı kör kontrolden geçirildi; öğretmen onayı yerine geçmez.

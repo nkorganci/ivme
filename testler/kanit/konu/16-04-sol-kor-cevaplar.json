@@ -1,0 +1,1466 @@
+{
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "phase": "1-blind-independent-solving",
+  "input_file": "01-kor-sorular.json",
+  "independence": "Yalnız kör soru dosyası ve içindeki talimat okundu. Cevap anahtarı, karşılaştırma dosyası, repository, yazar gerekçeleri, testler, kaynak PDF ve internet kullanılmadı.",
+  "conventions": [
+    "Grafik düğümleri, grafik tipi ve olağan parça parça doğru çizimi ile yorumlandı; verilmiş dikey sıçramalar aralık sınırlarını temsil eder.",
+    "Sınıflama listeleri, verilen öğelerin sırasındadır. Çoklu doğru ilişki varsa birden fazla etiket yazıldı.",
+    "Yargı listelerinde True/False verilen yargının istenen anlamda doğru veya kesin çıkarılabilir olup olmadığını belirtir.",
+    "Hata ve cümle indeksleri hem 1 tabanlı hem 0 tabanlı verildi.",
+    "Cevabı bulunan ama yoruma açık ayrıntılar ambiguities içinde belirtildi. AMBIGUOUS, ifadeyi değiştirebilen veya kesinliği etkileyen temel belirsizliğe işaret eder."
+  ],
+  "answer_count": 153,
+  "source_required_ids": [
+    "D012",
+    "D036"
+  ],
+  "ambiguous_ids": [
+    "D002",
+    "D008",
+    "D028",
+    "D029",
+    "D031",
+    "D044",
+    "D051",
+    "D055"
+  ],
+  "answers": [
+    {
+      "id": "D001",
+      "answer": "C",
+      "reason": "Yolcunun tren içindeki konumu sabittir; perona göre konumu trenle birlikte değişir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D002",
+      "answer": [
+        [
+          "Öteleme"
+        ],
+        [
+          "Titreşim"
+        ],
+        [
+          "Dönme"
+        ],
+        [
+          "Öteleme",
+          "Dönme"
+        ],
+        [
+          "Titreşim"
+        ],
+        [
+          "Öteleme",
+          "Dönme"
+        ]
+      ],
+      "reason": "Tren ilerler; tel ve salıncak denge çevresinde gidip gelir; dönme dolap ekseni çevresinde döner; tekerlek ve top ilerlerken döner.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Dönme dolabın ana çarkı esas alınmıştır; kabinlerinin hareketi farklı sınıflanabilir. Salıncak temel öğretim sınıflamasında titreşimdir; askıya bağlı bir parça olarak eksen çevresinde salınımlı dönme de yapar. Hangi parçanın sınıflandığı açık olmalıdır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D003",
+      "answer": "C",
+      "reason": "Yeni konum xK−xB=3−2=+1 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D004",
+      "answer": {
+        "value": 5,
+        "unit": "m/s",
+        "direction": "sağa"
+      },
+      "reason": "Yolcu/peron hızı = yolcu/tren + tren/peron = +1+4=+5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D005",
+      "answer": [
+        true,
+        false,
+        false
+      ],
+      "reason": "Gövde ilerler; yere göre yuvarlanan tekerlek hem ötelenir hem döner; sürat skalerdir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D006",
+      "answer": "B",
+      "reason": "Yer değiştirme vektöreldir; büyüklük ve birimin yanında yön gerekir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D007",
+      "answer": "A",
+      "reason": "Yol=6+4=10 m; sağ artı seçilirse Δx=6−4=+2 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D008",
+      "answer": [
+        [
+          "Yol = yer değiştirme"
+        ],
+        [
+          "Yol > yer değiştirme",
+          "Yer değiştirme = 0"
+        ],
+        [
+          "Yol > yer değiştirme"
+        ],
+        [
+          "Yol > yer değiştirme",
+          "Yer değiştirme = 0"
+        ],
+        [
+          "Yol = yer değiştirme"
+        ]
+      ],
+      "reason": "Tek yönde doğrusal ilerleyişte yol=|Δx|; geri dönüş ve tam turda Δx=0 fakat yol pozitiftir; virajlı rota düz uzaklıktan uzundur.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Kutular ayrık değildir: yüzücü ile tam tur koşucu hem Yol > yer değiştirme hem Yer değiştirme = 0 kutusuna girer. Tek kutu isteniyorsa sınıflama yönergesi eksiktir. Düz pistteki atletin tek yönde, asansörün duraksasa bile geri dönmeden çıktığı varsayılmıştır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D009",
+      "answer": "B",
+      "reason": "Yol=3+4=7; |Δr|=√(3²+4²)=5 birim.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D010",
+      "answer": "B",
+      "reason": "Δx=−1−(−6)=+5 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D011",
+      "answer": {
+        "distance_m": 14,
+        "displacement_m": 2
+      },
+      "reason": "İlk parça 8 m, dönüş 6 m; toplam 14 m. Son−ilk=−1−(−3)=+2 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D012",
+      "answer": "SOURCE_REQUIRED",
+      "reason": "Soru kökü, seçenekler ve gerekli şekil sunulmadığından çözüm üretilemez.",
+      "status": "SOURCE_REQUIRED",
+      "ambiguities": [],
+      "missing_sources": [
+        "TYT-0911 soru görseli veya eksiksiz metni"
+      ]
+    },
+    {
+      "id": "D013",
+      "answer": "D",
+      "reason": "Yarım çemberde yol=πr=30 m, yer değiştirme büyüklüğü çap=2r=20 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D014",
+      "answer": [
+        false,
+        true,
+        false
+      ],
+      "reason": "Aynı başlangıç ve bitiş aynı yer değiştirmeyi verir; güzergâh uzunlukları ve süreler farklı olabilir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "False değerleri ilgili niceliklerin kesinlikle aynı olduğunun çıkarılamadığını belirtir; kesinlikle farklı oldukları iddiası değildir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D015",
+      "answer": {
+        "step_1_based": 2,
+        "step_0_based": 1,
+        "correct_displacement_magnitude_km": 50
+      },
+      "reason": "Dik iki yer değiştirme vektörel toplanır: √(40²+30²)=50 km. Yol=70 km; büyüklük≤yol kontrolü tek başına hatayı yakalamaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D016",
+      "answer": "C",
+      "reason": "Kapalı turda net yer değiştirme sıfırdır; alınan yol pozitif olduğundan ortalama sürat pozitiftir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D017",
+      "answer": "A",
+      "reason": "Eşit sürelerde ortalama sürat=(60+20)/2=40 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D018",
+      "answer": {
+        "average_speed_kmh": 37.5,
+        "average_velocity_kmh": 0
+      },
+      "reason": "Her bir yönün yolu L ise toplam süre=L/30+L/50; 2L/toplam süre=37,5 km/h. Başlangıca dönüldüğünden ortalama hız sıfır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D019",
+      "answer": {
+        "average_speed_mps": 5,
+        "average_velocity_magnitude_mps": 5
+      },
+      "reason": "Yol=10×5+7×50=400 m; toplam süre=5+25+50=80 s. Yön değişmediği için |Δx|=400 m; iki ortalama da 400/80=5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D020",
+      "answer": "D",
+      "reason": "|Δr|=√(40²+30²)=50 km; yol=70 km. İkiye bölünce ortalama hız büyüklüğü 25, ortalama sürat 35 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D021",
+      "answer": [
+        true,
+        false,
+        false
+      ],
+      "reason": "Göstergeler sürati verir; aynı sürat, yönlerin veya hız vektörlerinin aynı olduğunu göstermez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D022",
+      "answer": "A",
+      "reason": "Eşit yollar için 2v1v2/(v1+v2)=2×60×20/80=30 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D023",
+      "answer": "A",
+      "reason": "Konum–zaman eğimi hızdır; aşağı eğimli doğru sabit negatif eğime, dolayısıyla sabit negatif hıza karşılık gelir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D024",
+      "answer": "C",
+      "reason": "Verilen ardışık örnekler x=2t doğrusu üzerindedir; seçenekler içinde hepsinden geçen grafik C’dir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Fotoğraf örnekleri arasındaki anlık hareket tek başına belirlenmez; sunulan seçenekler içinde C tek uyumludur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D025",
+      "answer": "B",
+      "reason": "t=2 dk’da x=150 m; 2–5 dk boyunca aynı konum; t=6 dk’da evde x=0. Bu düğümler B’dedir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Gidiş ve dönüşteki düz parçalar sabit hız varsayar; metin yalnız uç değerleri ve zamanları kesin verir. Seçenekler içinde B uygundur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D026",
+      "answer": {
+        "sentence_1_based": 2,
+        "sentence_0_based": 1
+      },
+      "reason": "3–5 s’de konum 6 m’de sabit olduğundan v=0’dır ve cisim ilerlemez. Diğer parçalarda hızlar +2 ve −2 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Sıfır hız da sabit hızdır; cümlenin yanlışlığı ilerlemiştir ifadesinden gelir. Sabit hızla ifadesi tek başına yanlış sayılmamalıdır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D027",
+      "answer": "C",
+      "reason": "x=x0+vt=−4+3×5=+11 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D028",
+      "answer": {
+        "interval_average_velocities_mps": [
+          2,
+          -2
+        ],
+        "displacement_m": 2,
+        "distance_lower_bound_m": 10,
+        "distance_if_piecewise_monotonic_m": 10
+      },
+      "reason": "Ortalama hızlar (6−0)/3=+2 ve (2−6)/2=−2 m/s; toplam Δx=+2 m. Ek dönüşler yoksa yol=6+4=10 m.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Üç anda verilen konumlar anlık/sabit hızları ve aralıklardaki ek gidip gelmeleri belirlemez. Kesin bulunanlar aralık ortalama hızları ve net yer değiştirmedir; toplam yol yalnız en az 10 m olarak sınırlandırılır. Parçaların sabit hızlı veya monoton olduğu eklenmelidir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D029",
+      "answer": [
+        true,
+        false,
+        true
+      ],
+      "reason": "Doğrusal grafik parçaları için vK=−2x/t ve vL=+x/t; x,t>0 iken K’nin sürati iki kat, yönler zıt, son konumlar sıfırdır.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Grafik şekli verilmemiş ve çizgilerin doğru olduğu açık söylenmemiştir. Eğriler ve aradaki geri dönüşler serbestse anlık sürat ve hareket yönleri bu uç konumlardan kesinleşmez. Cevap doğrusal parçalar, x>0 ve t>0 varsayımıyladır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D030",
+      "answer": "B",
+      "reason": "x–t kesişimi aynı anda aynı konumu gösterir; daha dik doğru daha büyük mutlak eğim, yani daha büyük sürat verir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Daha hızlı ifadesi sürat büyüklüğü anlamında kullanılmıştır; negatif hızlarda daha dik olmak cebirsel hızın daha büyük olması demek değildir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D031",
+      "answer": {
+        "valid_choice": null,
+        "guaranteed": "Kesişim anında hızları eşittir; konum ilişkisi belirlenmez.",
+        "conditional_choice": "A, ancak o ana kadarki işaretli alanlar farklıysa"
+      },
+      "reason": "Hız eğrilerinin kesişmesi vK=vL demektir. Aynı yerden başlamak konum farkını integral(vK−vL) yapar; bu integral kesişim anında sıfır da olabilir, sıfırdan farklı da.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "A’nın biri hâlâ öndedir kısmı garanti değildir. Örneğin hız farkı önce pozitif sonra negatif eşit alanlar biriktirip yeniden sıfıra gelebilir. B ve C de garanti değildir; tam doğru seçenek yoktur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D032",
+      "answer": "A",
+      "reason": "Her 1 saniyelik aralıkta toplam yol 4 m artar; verilen seçeneklerde bu değerleri sağlayan sabit 4 m/s grafiği A’dır.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Tablodaki örnekler aralardaki anlık süratin kesin sabit olduğunu kanıtlamaz; seçenekler içinde A tek uyumludur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D033",
+      "answer": "A",
+      "reason": "x–t parçalarının eğimleri sırayla 8/2=+4, 0 ve (0−8)/2=−4 m/s’dir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D034",
+      "answer": "A",
+      "reason": "İlk iki saniye Δx=+10 m, sonraki iki saniye −10 m; başlangıç x=10 m olduğundan konumlar 10,20,10 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D035",
+      "answer": {
+        "distance_m": 90,
+        "displacement_m": 10,
+        "displacement_magnitude_m": 10
+      },
+      "reason": "İşaretli alanlar −40,+20,+30 m; yol=40+20+30=90 m, net=+10 m, büyüklük=10 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D036",
+      "answer": "SOURCE_REQUIRED",
+      "reason": "Yalnız kaynak kodu verilmiş; bağımsız çözüm için soru içeriği bulunmuyor.",
+      "status": "SOURCE_REQUIRED",
+      "ambiguities": [],
+      "missing_sources": [
+        "TYT-0909 soru görseli veya eksiksiz metni"
+      ]
+    },
+    {
+      "id": "D037",
+      "answer": "B",
+      "reason": "Δx=20×3+30×3=150 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D038",
+      "answer": [
+        true,
+        false,
+        false
+      ],
+      "reason": "K önce süratlenir sonra durur. K’nin alanı 30×20/2=300 m; L’nin alanı da 30×20/2=300 m. K başlangıca dönmez; 30 s’de yan yanadırlar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D039",
+      "answer": "C",
+      "reason": "İvme v–t eğimi=(6−2)/(2−0)=+2 m/s²; doğru eğimi sabit olduğundan a–t yataydır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D040",
+      "answer": "B",
+      "reason": "Birbirine yaklaşırken uzaklığın kapanma sürati 2+1=3 m/s’dir; her saniye 3 m kısalır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D041",
+      "answer": {
+        "sentence_1_based": 3,
+        "sentence_0_based": 2
+      },
+      "reason": "K’nin hızı 60/10=6 m/s, L’nin hızı (60−40)/10=2 m/s. Konumlarının eşitlenmesi hızlarının eşitliği değildir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D042",
+      "answer": {
+        "time_s": 20
+      },
+      "reason": "Kapanma sürati=10+5=15 m/s; t=300/15=20 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D043",
+      "answer": {
+        "speed_mps": 30
+      },
+      "reason": "Bağıl sürat=300/20=15 m/s. K, L’den 15 m/s hızlıdır: 15+15=30 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D044",
+      "answer": {
+        "conditional_choice": "D",
+        "conditional_time_s": 25
+      },
+      "reason": "Arka ucun giriş ağzını geçmesi 15 s olarak yorumlanırsa v=150/15=10 m/s; tamamen çıkış için ön uç 150+100=250 m ilerler, t=25 s.",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "150 m tren 100 m tünelin içinde bütünüyle bulunamaz. Tünele tamamen girmesi ifadesi fiziksel olarak sorunludur. Arka ucun tünel giriş ağzını geçmesi olarak düzeltilirse D elde edilir; o sırada ön uç zaten tünelden çıkmıştır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D045",
+      "answer": {
+        "first_wrong_step_1_based": 2,
+        "first_wrong_step_0_based": 1,
+        "correct_time_s": 30
+      },
+      "reason": "Aynı yönde kapanma sürati 20−15=5 m/s olmalı; t=150/5=30 s. 3. adım yanlış bağıl süratin devamıdır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D046",
+      "answer": [
+        true,
+        false,
+        true
+      ],
+      "reason": "Bağıl hız 10−6=4 m/s; aralık her saniye 4 m artar, 5 s’de 20 m olur; L’den K aynı bağıl hızla uzaklaşır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D047",
+      "answer": "B",
+      "reason": "v(t)=−4+2t; 0<t<2 s’de hız negatif, büyüklüğü azalır ve t=2 s’de sıfıra ulaşır.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "İvmenin iki saniye boyunca +2 m/s² kaldığı ve artı yönün sağ olduğu varsayılmıştır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D048",
+      "answer": "A",
+      "reason": "Eşit sürelerde pozitif yer değiştirme artışları 1,2,3,4’tür; artı yönde süratlenme gösterir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D049",
+      "answer": [
+        "Süratlenir",
+        "Yavaşlar",
+        "Süratlenir",
+        "Yavaşlar",
+        "Sürati değişmez"
+      ],
+      "reason": "Doğrusal harekette hız ve ivme aynı işaretliyse sürat artar, zıt işaretliyse azalır; ivme sıfırsa hız sabit kalır.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Sınıflama verilen an içindir; zıt işaretli sabit ivme yeterince uzun sürerse durmadan sonra yön değişimi olabilir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D050",
+      "answer": "B",
+      "reason": "Hız −6’dan 0’a yaklaşırken hareket eksi yönde sürer ve sürat 6’dan 0’a düşer.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D051",
+      "answer": "A",
+      "reason": "Ortalama ivme=(−6−2)/4=−2 m/s².",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Verilenler ortalama ivmeyi belirler. Sabit ivme ayrıca söylenmedikçe her andaki ivmenin −2 m/s² olduğu çıkarılamaz; soru ortalama ivme demelidir veya düzgün değişimi belirtmelidir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D052",
+      "answer": {
+        "velocity_at_1s_mps": -3,
+        "velocity_at_3s_mps": 3,
+        "stop_time_s": 2,
+        "slowing_interval_s": [
+          0,
+          2
+        ],
+        "speeding_after_s": 2
+      },
+      "reason": "v=−6+3t: v(1)=−3, v(3)=+3 m/s. t<2’de v<0 ve a>0 olduğundan yavaşlar; t>2’de aynı yönde olduklarından süratlenir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D053",
+      "answer": {
+        "acceleration_mps2": -1,
+        "distance_m": 200
+      },
+      "reason": "İleri yön artı: 72 km/h=20 m/s; a=(0−20)/20=−1 m/s². Düzgün yavaşlamada yol=(20+0)×20/2=200 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D054",
+      "answer": [
+        true,
+        true,
+        false
+      ],
+      "reason": "İlk aralıkta v>0 ve a>0; ikinci aralıkta eğim sıfır; son aralıkta hız +v’den −v’ye geçtiği için 2,5t’de yön değişir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D055",
+      "answer": "B",
+      "reason": "Ortalama ivme büyüklüğü |100−0|/5=20 m/s².",
+      "status": "AMBIGUOUS",
+      "ambiguities": [
+        "Durgunluk ve son hız yalnız ortalama ivmeyi belirler. İvmenin her an 20 m/s² olduğunu söylemek için sabit ivme/düzgün hızlanma gerekir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D056",
+      "answer": [
+        false,
+        true,
+        true
+      ],
+      "reason": "Düz yolda sabit hızda hız vektörü değişmez; yavaşlama büyüklüğü, virajda sabit süratle dönüş yönü değiştirir; son ikisinde ivme vardır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D057",
+      "answer": "B",
+      "reason": "Δv=aΔt=2×3=6 m/s; ilk hızlar 0 ve +10 kabul edilince son hızlar +6 ve +16 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "İkinci aracın yönsüz yazılmış 10 m/s başlangıç hızı +10 m/s kabul edilmiştir; eksi yönde başlarsa son hızı −4 m/s olur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D058",
+      "answer": "A",
+      "reason": "v–t eğimleri: (8−0)/2=+4, (8−8)/3=0, (0−8)/2=−4 m/s².",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D059",
+      "answer": "B",
+      "reason": "a=−2 sabit ve v0=+8 olduğundan v(t)=8−2t; 4 s’de v=0.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D060",
+      "answer": {
+        "sentence_1_based": 2,
+        "sentence_0_based": 1
+      },
+      "reason": "İlk aralıkta Δv=3×2=6 m/s. Sonra a=0 hızın 6 m/s sabit kalması demektir; cisim durmaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D061",
+      "answer": {
+        "velocity_at_3s_mps": 6,
+        "velocity_at_5s_mps": 8,
+        "direction_changed": false
+      },
+      "reason": "v(3)=12−2×3=6 m/s; v(5)=6+1×2=8 m/s. Hız her iki aralıkta da pozitif kalır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D062",
+      "answer": {
+        "distance_in_1st_second_m": 1,
+        "distance_in_2nd_second_m": 3,
+        "distance_in_3rd_second_m": 5
+      },
+      "reason": "Başlangıç durgun: s(t)=at²/2=t². Ardışık farklar 1−0=1,4−1=3,9−4=5 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D063",
+      "answer": [
+        true,
+        true,
+        false
+      ],
+      "reason": "Pozitif ivme, pozitif hızla süratlenme veya negatif hızla yavaşlama yapabilir. Pozitif yönde yavaşlamak negatif ivme gerektirir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D064",
+      "answer": "A",
+      "reason": "Son hız=3+(+4)×2+(−2)×3=3+8−6=5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D065",
+      "answer": {
+        "first_wrong_step_1_based": 2,
+        "first_wrong_step_0_based": 1,
+        "next_2s_distance_m": 12,
+        "first_4s_distance_m": 16
+      },
+      "reason": "Durgun ve sabit ivmeli harekette yol t² ile orantılıdır. s(2)=4 ise a=2 m/s²; s(4)=16, sonraki 2 s’de 16−4=12 m alınır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D066",
+      "answer": "B",
+      "reason": "Bağıl hız v−v=0 olduğundan birbirlerine göre konumları değişmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D067",
+      "answer": "A",
+      "reason": "Gidiş+dönüş=100+100=200 m; son ve ilk konum aynı olduğundan Δx=0.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D068",
+      "answer": "A",
+      "reason": "Çembersel harekette hız vektörünün yönü sürekli değişir; süratin sabitliği hız vektörünü sabit yapmaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D069",
+      "answer": "B",
+      "reason": "Eşit yol için harmonik ortalama: 2×30×60/(30+60)=40 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D070",
+      "answer": "B",
+      "reason": "Yatay x–t parçasında Δx=0 ve eğim v=0’dır; cisim durur.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D071",
+      "answer": "B",
+      "reason": "Paralel x–t doğruları aynı eğim/hız, farklı düşey konumlar ise farklı konum demektir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D072",
+      "answer": "B",
+      "reason": "Hız negatif kalırken sürat |v| 6’dan 2 m/s’ye iner; eksi yönde yavaşlar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D073",
+      "answer": "B",
+      "reason": "Yol=|12|+|−12|=24 m; yer değiştirme=12−12=0.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D074",
+      "answer": "A",
+      "reason": "Hızın büyüklüğü ve yönü sabit olduğundan dv/dt=0; hareketli olmak ivmeli olmayı gerektirmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D075",
+      "answer": "B",
+      "reason": "Bir saniye sonra v=−3+1×1=−2 m/s; sürat 3’ten 2 m/s’ye iner.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D076",
+      "answer": "B",
+      "reason": "Tren perona göre ilerliyorsa onunla birlikte taşınan oturan yolcu da perona göre ilerler.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D077",
+      "answer": "A",
+      "reason": "Tek bir anın konumu hareket geçmişini vermez; bu konuma gelene dek alınan yol belirlenemez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D078",
+      "answer": "B",
+      "reason": "Cisim başlangıçtan beri +8 m konumunda duruyor olabilir; konum ile alınan yol farklı büyüklüklerdir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D079",
+      "answer": "B",
+      "reason": "Bir tam tur sonunda son konum ilk konumdur; yer değiştirme sıfırdır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D080",
+      "answer": "A",
+      "reason": "Süratleri 60 km/h ile eşittir fakat yönleri zıt olduğu için hız vektörleri eşit değildir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D081",
+      "answer": "A",
+      "reason": "Eşit yollar için ortalama=2×20×60/(20+60)=30 km/h; aritmetik ortalama kullanılamaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D082",
+      "answer": "A",
+      "reason": "x–t doğrusunun yükselmesi konumun zamanla arttığını gösterir; güzergâhın eğimiyle ilgili bilgi vermez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D083",
+      "answer": "A",
+      "reason": "x–t kesişiminde aynı t’de x eşittir; farklı eğimler nedeniyle hızlar farklıdır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D084",
+      "answer": "B",
+      "reason": "Hız her iki değerde de pozitiftir; sürat azalır ama yön değişmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D085",
+      "answer": "A",
+      "reason": "Δx=3×2+(−2)×2=+2 m; 10 m mutlak alanların toplamı olan yoldur.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D086",
+      "answer": "B",
+      "reason": "Düz doğrultuda değişmeyen hızın zamana göre değişimi sıfırdır; a=0.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D087",
+      "answer": "A",
+      "reason": "İvme v–t eğimidir; hızın sıfır olması eğimi sıfır yapmaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D088",
+      "answer": "B",
+      "reason": "Düşey yukarı atışta en üst noktada v=0, yerçekimi ivmesi hâlâ aşağı yönlü g’dir.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Yukarı atılan ifadesi düşey atış olarak okunmuştur; eğik atışın tepesinde yalnız düşey hız bileşeni sıfırdır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D089",
+      "answer": "B",
+      "reason": "Negatif hız ve negatif ivme aynı yöndedir; hızın mutlak değeri, yani sürat artar.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D090",
+      "answer": "A",
+      "reason": "a–t alanı son hızı değil hız değişimini verir: vson=v0+6 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D091",
+      "answer": "B",
+      "reason": "vson=v0+Δv=−4+10=+6 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D092",
+      "answer": "A",
+      "reason": "Çanta kabine göre sabit konumdadır; binaya göre asansörle birlikte yükselir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D093",
+      "answer": "B",
+      "reason": "Başlangıca dönüş son−ilk konum farkını sıfırlar; rotanın alınan yolu pozitiftir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D094",
+      "answer": "A",
+      "reason": "Hız vektörlerinin eşitliği için eşit büyüklük yanında aynı yön gerekir; aynı konum gerekmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D095",
+      "answer": "B",
+      "reason": "Pozitif farklı süratler u<v için harmonik ortalama H=2uv/(u+v); H−u=u(v−u)/(u+v), v−H=v(v−u)/(u+v), dolayısıyla H küçüğe daha yakındır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D096",
+      "answer": "A",
+      "reason": "x–t grafiğinin eğimi hızdır; düz koridorda hız değişirse x–t eğrisi eğri olabilir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D097",
+      "answer": "B",
+      "reason": "Aynı anda daha büyük x–t eğimi daha büyük cebirsel hız verir; yüksek konum hızın büyüklüğünü belirlemez.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Burada daha büyük hız cebirsel eğim karşılaştırmasıdır. Sürat soruluyorsa mutlak eğimleri karşılaştırmak gerekir."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D098",
+      "answer": "B",
+      "reason": "Çizgi eksenin altında olduğundan v<0; yukarı eğim a>0 demektir. Sürat azalır ve hareket henüz eksi yöndedir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D099",
+      "answer": "B",
+      "reason": "Pozitif ve negatif alanlar işaretli toplamda sıfırlanır; yol için mutlak alanlar toplanır ve pozitif olur.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D100",
+      "answer": "B",
+      "reason": "Yatay v–t çizgisinin eğimi sıfırdır, dolayısıyla a=0; çizgi aşağıda olduğundan sabit negatif hızla gider.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D101",
+      "answer": "B",
+      "reason": "Pozitif ivme pozitif hızın büyüklüğünü artırır, negatif hızın büyüklüğünü azaltır; hızın yönü de gerekir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D102",
+      "answer": "B",
+      "reason": "Yere göre yuvarlanan tekerleğin merkezi ötelenirken tekerlek merkezi çevresinde döner.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D103",
+      "answer": "A",
+      "reason": "Yürüme yönünü artı seçince vA/B=vA−vB=3−1=+2 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Artı eksen yönü metinde verilmemiştir; + işareti ortak yürüme yönünün artı seçilmesine bağlıdır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D104",
+      "answer": "A",
+      "reason": "Hız ve referans noktasına göre konum vektöreldir; sürat yalnız büyüklüktür.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D105",
+      "answer": "A",
+      "reason": "Yol=6+8=14 m; dik bileşenlerden yer değiştirme büyüklüğü √(36+64)=10 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D106",
+      "answer": "B",
+      "reason": "İleri artı: Δx=40−10=30 m, yol=50 m. 10 s’ye bölünce ortalama hız +3 m/s, ortalama sürat 5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D107",
+      "answer": "A",
+      "reason": "v=Δx/Δt=(−5−10)/(5−0)=−3 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D108",
+      "answer": "B",
+      "reason": "İşaretli yer değiştirmeler +12 ve −4 m; yol=12+4=16 m, net=+8 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D109",
+      "answer": "B",
+      "reason": "x–t eğimi=(10−4)/(3−0)=+2; düz parça boyunca v–t +2 m/s’de yataydır.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Zamanın saniye, konumun metre olduğu seçeneklerin birimlerinden varsayılmıştır."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D110",
+      "answer": "B",
+      "reason": "36 km/h=10 m/s, 18 km/h=5 m/s; kapanma sürati 15 m/s ve süre 180/15=12 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D111",
+      "answer": "A",
+      "reason": "Ortalama ivme=[−8−(−2)]/2=−3 m/s²; sürat 2’den 8 m/s’ye artmıştır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D112",
+      "answer": "B",
+      "reason": "t=2’de hız + taraftan sıfıra dokunup tekrar + olur, yön değişmez. 4–6 s arasında t=5’te +’dan −’ye geçerek bir kez yön değiştirir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D113",
+      "answer": "B",
+      "reason": "vson=−2+(+2)×3+(−1)×2=−2+6−2=+2 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D114",
+      "answer": "A",
+      "reason": "Öteleme ve dönmeyi ayırt etmek için merkezinin ilerleyip ilerlemediği ve cismin kendi çevresinde dönüp dönmediği incelenir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D115",
+      "answer": "B",
+      "reason": "Bağıl hız vA/B=vA−vB olduğundan gözlemci B’nin hız vektörü A’nınkinden çıkarılır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D116",
+      "answer": "A",
+      "reason": "Skaler–vektörel ayrımının ölçütü yön bilgisinin gerekliliğidir; yalnız birimler bu ayrımı yapmaz.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D117",
+      "answer": "B",
+      "reason": "Yol rotanın uzunluğudur; yer değiştirme başlangıçtan bitişe vektördür. Önce bu iki geometrik nesneyi ayırmak gerekir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D118",
+      "answer": "A",
+      "reason": "Ortalama hızın payı net yer değiştirme, ortalama süratin payı toplam yoldur; önce bu iki pay ayrılır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D119",
+      "answer": "A",
+      "reason": "x–t grafiğinde hız Δx/Δt eğimidir; xson/tson başlangıç konumu sıfır değilse yanlıştır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D120",
+      "answer": "A",
+      "reason": "v–t alanı işaretli yer değiştirmedir; yol için parçaların mutlak alanları toplanır. Eğim ivmeyi verir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D121",
+      "answer": "B",
+      "reason": "x–t eğimi v’ye karşılık gelir; her doğru parçasının eğimi ilgili v–t yüksekliği yapılır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D122",
+      "answer": "A",
+      "reason": "Önce km/h ile metre/saniye birimleri uyumlu yapılır; ardından birbirine yaklaşan araçların bağıl sürati hesaplanır.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D123",
+      "answer": "A",
+      "reason": "Ortalama ivme (vson−vilk)/Δt’dir; işaretleri korumak gerekir. Eksi ivme tek başına yavaşlama anlamına gelmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D124",
+      "answer": "B",
+      "reason": "Yön değişimini hız işaretinin değişmesi gösterir; sıfıra dokunmak tek başına yeterli değildir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D125",
+      "answer": "B",
+      "reason": "İşaretli a–t alanı Δv olduğundan son hız için başlangıç hızına eklenir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D126",
+      "answer": "A",
+      "reason": "72 km/h=72/3,6=20 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D127",
+      "answer": "B",
+      "reason": "15 m/s=15×3,6=54 km/h.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D128",
+      "answer": "B",
+      "reason": "90 km/h=25 m/s; yol=25×4=100 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D129",
+      "answer": "C",
+      "reason": "3 dakika=180 s; ortalama sürat=900/180=5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D130",
+      "answer": "C",
+      "reason": "Δx=xson−xilk=3−(−4)=+7 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D131",
+      "answer": "C",
+      "reason": "Δx=−6−(+2)=−8 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D132",
+      "answer": "C",
+      "reason": "Başlangıç noktasına uzaklık |x|’tir: 0,7,9 m arasında en büyük 9 m’dir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D133",
+      "answer": "B",
+      "reason": "Δv=−8−(−3)=−5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D134",
+      "answer": "D",
+      "reason": "Arabanın hızı vektöreldir; kütle, süre ve sıcaklık skalerdir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D135",
+      "answer": "B",
+      "reason": "Koştuğu toplam uzunluğu bildiren 400 m, alınan yoldur; yön ve başlangıç–bitiş ilişkisi verilmez.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D136",
+      "answer": "A",
+      "reason": "Aynı birimi taşımaları aynı nicelik olmalarını gerektirmez; hız vektörel, sürat skalerdir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D137",
+      "answer": "A",
+      "reason": "Doğu artı: Δx=8−3=+5 m, yol=8+3=11 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D138",
+      "answer": "B",
+      "reason": "Eğim=Δx/Δt=20/4=5 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D139",
+      "answer": "C",
+      "reason": "Eğim birimi dikey/yatay=(m/s)/s=m/s²’dir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D140",
+      "answer": "A",
+      "reason": "Eğim=(0−12)/(3−0)=−4 m/s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D141",
+      "answer": "B",
+      "reason": "Diklik daha büyük mutlak eğimdir; düşey niceliğin yatay niceliğe göre değişim büyüklüğü daha fazladır.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Yatay eksenin zaman olduğu söylenmemiştir; B’deki birim zamanda ancak zaman grafiği varsayımıyla doğrudur. Genel grafikte birim yatay değişken başına denmelidir. Daha çok değişir ifadesi mutlak değişim anlamında okunmuştur."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D142",
+      "answer": "C",
+      "reason": "Üçgen alanı=taban×yükseklik/2=4×10/2=20 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D143",
+      "answer": "B",
+      "reason": "İlk dikdörtgen 2×6=12 m; sonraki üçgen 3×6/2=9 m; toplam 21 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D144",
+      "answer": "B",
+      "reason": "İşaretli alan=4×3+(−2)×2=12−4=+8 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D145",
+      "answer": "C",
+      "reason": "a–t alanı=2 m/s²×5 s=10 m/s; hızdaki değişimi verir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D146",
+      "answer": "B",
+      "reason": "Ortalama sürat=yol/süre; aynı yol yarı sürede alınırsa ortalama sürat iki katına çıkar.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Bu sonuç ortalama sürat içindir; yolculuğun her anındaki süratin iki kat olduğu çıkarılamaz."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D147",
+      "answer": "B",
+      "reason": "K’nin yolu v×2t=2vt; L’nin yolu 2v×t=2vt; eşittir.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D148",
+      "answer": "B",
+      "reason": "Süre=yol/sürat=300/20=15 s.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D149",
+      "answer": "A",
+      "reason": "Aynı sürede ortalama süratlerin oranı yolların oranına eşittir: vK/vL=3.",
+      "status": "SOLVED",
+      "ambiguities": [
+        "Süratlerin sabit olduğu veya ortalama süratlerin karşılaştırıldığı varsayılmıştır; yalnız toplam yollar anlık sürat oranını belirlemez."
+      ],
+      "missing_sources": []
+    },
+    {
+      "id": "D150",
+      "answer": "B",
+      "reason": "Doğu ve kuzey dik bileşenlerdir; düz uzaklık √(60²+80²)=100 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D151",
+      "answer": "A",
+      "reason": "Yarım çemberin yayı πr=3×50=150 m; başlangıca düz uzaklık çap 2r=100 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D152",
+      "answer": "A",
+      "reason": "Dik bileşenler 5 ve 12: √(5²+12²)=√169=13 birim.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    },
+    {
+      "id": "D153",
+      "answer": "B",
+      "reason": "Bir tam tur başlangıca getirir; kalan yarım tur karşı noktaya götürür. Başlangıca düz uzaklık çap=2×20=40 m.",
+      "status": "SOLVED",
+      "ambiguities": [],
+      "missing_sources": []
+    }
+  ]
+}
