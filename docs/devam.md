@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04`: [fizik öğretim yöntemi](plan/16-ogrenme-kalitesi.md#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında; onaydan sonra 2. adım Hareket konu haritası (**Fable 5.2**, `/model fable`) → araç kutusu → Hareket v2. Onaydan önce ikinci konuya geçme |
+| Sıradaki görev | `16.04` / 2: [Hareket konu haritası](../frontend/src/learn/konu/paketler/fizik-hareket.harita.md) kullanıcı onayında. Onaydan sonra içerik (araç kutusu + Hareket v2) **Fable 5.2**, kod Sonnet 5.5, denetim Opus 5.5; modeli kullanıcı değiştirir, her model yalnız kendi kısmını yapıp durur |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
