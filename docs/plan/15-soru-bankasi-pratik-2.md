@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.554 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.617 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -143,6 +143,16 @@ sorularına aynı sözcüklü başka dönem etiketi taşınmadı. Yeni PNG/model
 `reviewed-native-history-2-expansion/`, `verified-source-batch-066/bank-acceptance.json`.
 Son121 Tarih metni de gerçekten okundu; konu kararlarını dondurma/aktarım işi
 açık. Bütün arşiv kabulü değildir.
+
+**067 — BITTI (Tarih son121 alt kapsamı):** 63 AYT kaynak sorusu mevcut
+doğru konuya bağlandı;58 kayıt gerekçeli incelemede.63 INSERT/0 UPDATE,
+tekrar0 INSERT, katalog/masaüstü/mobil PASS; toplam10.617 (5.604 TYT/5.013 AYT).
+Bu tek-test Tarih grubunun261/261 özgün metni okundu:169 kabul/92 inceleme;
+gizli okunmamış kayıt kalmadı. Bu, diğer Tarih kaynaklarının/tam arşivin
+kapanışı değildir. TYT’ye AYT etiketi ve Türkiye’ye dünya/siyasi dönem etiketi
+zorlanmadı. Yeni PNG/model/öğretmen onayı0. `reviewed-native-history-3-expansion/`,
+`verified-source-batch-067/bank-acceptance.json`. Sıradaki Fizik tek-konu
+başlıkları ve yalnız değişen dersin etiket geçişi çalışır.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

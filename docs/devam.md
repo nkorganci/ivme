@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.554 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.617 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -20,7 +20,7 @@ kapısı: `scripts/mebi-pratik2-pdf-policy.json`, `BASE/pdf-reuse-check/decision
 62 eş PDF atlandı; eski bankadaki aynı PDF tümüyle atlanır. Kısmi aktarımda
 soru soru eksik arama yok. Eski banka/öğrenci geçmişi korunur.
 
-**Son kabul066 PASS:**10.554(5.604 TYT/4.950 AYT).060–066 toplam520 yeni soru;
+**Son kabul067 PASS:**10.617(5.604 TYT/5.013 AYT).060–067 toplam583 yeni soru;
 her partide INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS. Geçmiş
 ayrıntı plan ve `verified-source-batch-*/bank-acceptance.json` makbuzlarında.
 Kaynak kabulü için basılı anahtar; öğrenci yayını öncesi gövde/iki cevap ve
@@ -28,14 +28,19 @@ mevcut ana tablonun doğru ders–ünite–konu kimliği zorunlu. Belirsizler
 `remaining-topic-review.json` dosyalarında; aynı başarısız okuma tekrarlanmaz.
 İçerik bekletme `scripts/mebi-pratik2-native-content-holds.json`:9 kod.
 
-**066 BITTI:** `reviewed-native-history-2-expansion`,53 AYT kabul;
-`verified-source-batch-066/bank-acceptance.json` PASS. İlk140 Tarih kaydında
-106 kabul/34 inceleme tamam. Son121 kaynak metni de gerçekten okundu;
-`reviewed-native-history-2-expansion/next-topic-review.json` karar bekler.
-067 için `reviewed-native-history-3-expansion` ve özgün metin alıntısıyla
-kararları dondur; uygun ana konu karşılığı olmayan dünya/siyasi dönem
-sorularına başka dönem etiketi verme. Tarih261 grubunun kapanışı bütün arşiv
-kapanışı değildir. Eski metinleri baştan okuma; aynı kaynak/PNG makbuzunu kullan.
+**067 BITTI:** `reviewed-native-history-3-expansion`,63 AYT kabul;
+`verified-source-batch-067/bank-acceptance.json` PASS. Bu tek-test Tarih
+grubundaki261/261 metin okundu;169 kabul/92 gerekçeli inceleme. Aynı grubu
+tekrar okuma. Diğer kaynaklar/Tarih tam arşiv kabulü değildir.
+
+**Şimdi Fizik başlıkları:** AYT Elektrik Alan/Potansiyel ve TYT Elektrostatik
+başlıkları mevcut ana konuya bağlanır; diğer12 karma kaynak aynı konuya
+zorlanmaz. `mebi_pratik2_soru_kaynak_etiketleri.py --subjects Fizik` etiket
+geçişi çalışıyor; dokunulmayan kayıtların kaynak/PNG/kategori bağları
+korunur. Yeni girdi veya kategori tanımı değişmişse artımlı geçiş durur,
+tam geçiş gerekir. Çıktıyı bitmeden paketleme. Sonra yeni donmuş
+`source-physics-heading-expansion` paketini hazırla;068 boşta. Eski kaynak
+kırpımlarını/anahtarları yeniden üretme.16+11 sınır testi PASS.
 
 **Çalışan deneme zinciri:**metadata PID27912, `supervisor-v9.log/.err.log`.
 Gerçek durum `BASE/chain-supervisor/current.json`; yeni kayıtlar gözetmenin

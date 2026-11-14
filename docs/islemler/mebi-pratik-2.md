@@ -479,3 +479,7 @@ Aynı adlı ekonomik, eğitim, sağlık veya siyasi başlıklar farklı dönem/s
 kimliklerine taşınmaz. Donmuş eski metin listesi kullanılabilir; yeni PDF/PNG
 üretmek gerekmez. Tarih261 grubundaki son121 metnin okunması tamamlandı;
 karar/kabul imleci kaynak sıra aralığıyla ayrıca tutulur.
+
+067 Tarih son121:63 kabul/58 inceleme; tek-test grubunda261 metnin tamamı
+okundu,169 kabul ve92 açık inceleme kanıtlıdır. Başka sınav/dönem kimliği
+aktarılmadı; bu sınırlı grubun kapanışı tam arşiv kapanışı değildir.

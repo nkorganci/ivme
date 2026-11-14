@@ -1,0 +1,637 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q011",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "d17bd94c7fd565d28dc1fbdc25b9f93ed4f98397cbc674ec165c0982f3be0651",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Aşağıdaki ülkelerden hangisi Türkiye’nin ilk kez askerî güç gönderdiği ülkedir? A) Libya B) Kıbrıs C) Somali D) Bosna-Hersek E) Kore",
+      "rationale": "Türkiyenin Koreye asker göndermesi ve Doğu Blokunun Varşova Paktı Soğuk Savaş güç dengeleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q012",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "c5894bbe8a9c0474bdcf3d542f595686cf4a6b03fe126542231a27fd6337b99f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Doğu Bloku ülkelerinin kurduğu NATO karşıtı savunma teşkilatı aşağıdakilerden hangisidir? A) Varşova Paktı B) COMECON C) Molotof Planı D) Cominform E) Truman Doktrini 3",
+      "rationale": "Türkiyenin Koreye asker göndermesi ve Doğu Blokunun Varşova Paktı Soğuk Savaş güç dengeleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-90f8fb3ac9afe7b1-Q004",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "8af5290d1e2575e405042855abc2a7b613ffb4c8bc36379b99624ef0342d418b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. 1955 yılında Soğuk Savaş döneminde Doğu ve Batı bloku arasına dahil olmak istemeyenlerin oluşturduğu Bağlantısızlar Hareketi hangi konferansta resmiyet kazanmıştır? A) Bandung B) Yalta C) San Francisco",
+      "rationale": "Bağlantısızlar Hareketi ve 1950lerin Kıbrıs/TMT/Enosis bağlamı savaş sonrası güç dengeleri ve Türkiyeyle ilişkilidir;1958e1960-sonrası etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-90f8fb3ac9afe7b1-Q005",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "a6293cf539ce6012fb8910e9ce41e39a323261bcec2a51995faf2b62cf68636a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. 1958’de Rauf Denktaş ve Dr. Fazıl Küçük önderliğinde Kıbrıs Türklerinin can ve mal güvenliğini sağlamak, Türklere karşı saldırıları püskürtmek ve ana vatana bağlılığı sürdürmek amacıyla kurulmuştur. Metinde",
+      "rationale": "Bağlantısızlar Hareketi ve 1950lerin Kıbrıs/TMT/Enosis bağlamı savaş sonrası güç dengeleri ve Türkiyeyle ilişkilidir;1958e1960-sonrası etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-90f8fb3ac9afe7b1-Q007",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "378e1380dad0690c5e5b535a0c14ac4298952bd0a9204e3a7eeb1ffca1765aed",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. II. Dünya Savaşı sonrasında Kıbrıslı Rumların adayı Yunanistan’a katma düşüncesi aşağıdakilerden hangisidir? A) EOKA B) Pontus Rum C) ENOSİS D) Filik-i Eterya E) Mavr-i Mira",
+      "rationale": "Bağlantısızlar Hareketi ve 1950lerin Kıbrıs/TMT/Enosis bağlamı savaş sonrası güç dengeleri ve Türkiyeyle ilişkilidir;1958e1960-sonrası etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-90f8fb3ac9afe7b1-Q010",
+      "categoryId": "excel.ayt.tarih.d6192916ad5f0d5a59b5",
+      "imageSha256": "a22717404564f922eb595fba968f9970d8dca422dfb582bf8b93afab2ddb114e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. I. 1964 Johnson Mektubu, Türk-Amerikan ilişkilerinde kriz yaratmıştır. II. 1975’te ABD, Türkiye’ye silah ambargosu uygulamıştır. III. Türkiye, ABD’nin Küba’ya uyguladığı ambargoya tam destek vermiştir. 1960’lardan itibaren Türkiye",
+      "rationale": "1964 Johnson Mektubu ve 1975 silah ambargosu açıkça 1960 sonrası Türk-Amerikan dış ilişkileridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c086c32b2b6ba18-Q002",
+      "categoryId": "excel.ayt.tarih.ef2aef89452d9a7f06ad",
+      "imageSha256": "52c9b02919582509ff6d687f3dabcd3a46a1354da7c44c28bc2015dba5f3a54f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Aşağıdakilerden hangisi SSCB’nin dağılmasından sonra kurulan Türk Cumhuriyetleri ile ilişkileri güçlendirmek ve yapılacak çalışmaları organize etmek amacıyla kurulan teşkilatlardan biri değildir? A) Yunus Emre Enstitüsü B) Türk",
+      "rationale": "SSCB sonrası Türk cumhuriyetleriyle ilişkileri geliştiren Türkiye kurumları ve 1990-sonrası AB üyelik zirveleri ölçülür; genel dünya soruları aynı etikete alınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-1c086c32b2b6ba18-Q012",
+      "categoryId": "excel.ayt.tarih.ef2aef89452d9a7f06ad",
+      "imageSha256": "9e08bbfb0649c1c14fc4a1ac60a818ca3a973ea4c2e80ea648182075a49a728d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Aşağıdakilerden hangisi Türkiye’nin Avrupa Birliği üyeliği sürecindeki zirvelerden biri değidir? A) Helsinki B) Kopenhag C) Lüxemburg D) Almatı E) Brüksel 3",
+      "rationale": "SSCB sonrası Türk cumhuriyetleriyle ilişkileri geliştiren Türkiye kurumları ve 1990-sonrası AB üyelik zirveleri ölçülür; genel dünya soruları aynı etikete alınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q001",
+      "categoryId": "excel.ayt.tarih.ac113c2d51816f0d2d0c",
+      "imageSha256": "91b21b1d9c515fae2adf6be768c7ef1be1ec42503554aaadb83c4920013aa7ac",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Tarih öncesi dönemde Anadolu’da insanlığın ilk izlerine ve bazı yerleşim yerlerine rastlanmaktadır. Buna göre, I. Göbeklitepe, II. Çayönü, III. Tuşpa, yerleşim yerlerinden hangileri bahsi geçen örneğe uygun",
+      "rationale": "Tarih öncesi yerleşimler, Çatalhöyük ve yerleşik yaşam/tarım gelişmeleri doğrudan insanlığın ilk izleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q002",
+      "categoryId": "excel.ayt.tarih.ac113c2d51816f0d2d0c",
+      "imageSha256": "2322bd45ff7afaf3317809105dc3d18133b464521ce518326b1709ba278c2695",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Çatalhöyük, yerleşik yaşamın ilk örneklerindendi. Bu yerleşim yeri çok kalabalıktı. Çatalhöyük kentinde evler yan yanaydı ve sokak neredeyse yoktu. Evlerin giriş kapısı evin üstündeki damda yer alıyordu.",
+      "rationale": "Tarih öncesi yerleşimler, Çatalhöyük ve yerleşik yaşam/tarım gelişmeleri doğrudan insanlığın ilk izleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q003",
+      "categoryId": "excel.ayt.tarih.ac113c2d51816f0d2d0c",
+      "imageSha256": "5cf2f1b0fdca4ce3caf953e7cc9ad1228a115d71d53474daaf1d6b9d4973b5c6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Aşağıdakilerden hangisi tarih öncesi dönemde görülen gelişmelerden biri değildir? A) Planlı tarım faaliyetlerinin başlaması B) Hayvanların evcilleştirilmesi C) Megaron tipi ev mimarisinin ortaya çıkması D) Mikrolit adı",
+      "rationale": "Tarih öncesi yerleşimler, Çatalhöyük ve yerleşik yaşam/tarım gelişmeleri doğrudan insanlığın ilk izleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q006",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "imageSha256": "4fd16ee6eb180bbfe36697949ffd8c3f7c4d7013b45fbd468886e28dedb5c84a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıdakilerden hangisi Büyük İskender’in yaptığı Doğu Seferi'nin kültürel sonuçlarından biridir? A) Mısır ve Hindistan’ın ele geçirilmesi B) Hellenistik medeniyetin ortaya çıkması C) İskenderiye ve İskenderun gibi şehirlerin",
+      "rationale": "Hellenistik kültür, Mezopotamya/Bereketli Hilal ve eski medeniyetlerin katkıları İlk Çağ medeniyet havzaları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q007",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "imageSha256": "1320b471a386e321bd48edc9ebb318e40a0b45f83f47871a89338878d0d40e2d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Haritada pembe renkle işaretli bölge; I. Bereketli Hilal, II. Mezopotamya, III. Bitinya, IV. Mâverâünnehir isimlerinden hangileriyle adlandırılmıştır? A) Yalnız I B) Yalnız II C) I ve II",
+      "rationale": "Hellenistik kültür, Mezopotamya/Bereketli Hilal ve eski medeniyetlerin katkıları İlk Çağ medeniyet havzaları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q010",
+      "categoryId": "excel.ayt.tarih.14d5dc9bd697ae6e87cb",
+      "imageSha256": "b75c29423771ffe962ef083c2ba2bea47530de5e5722f4b8ade57c712aa00081",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Medeniyet Özellik I. Hint Ay takviminin hesaplanması Anadolu’da tarihî çağların II. Asur başlaması III. Hitit Pankuş Meclisi’nin açılması IV. Sümer “0”ın ilk defa kullanılması V. Lidya Paranın",
+      "rationale": "Hellenistik kültür, Mezopotamya/Bereketli Hilal ve eski medeniyetlerin katkıları İlk Çağ medeniyet havzaları kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-66c53afbd1919999-Q011",
+      "categoryId": "excel.ayt.tarih.2705c82f7f1b20d84f11",
+      "imageSha256": "d2450a03455ae4ea231ca3bf155711c10bb2f7aa7e06c8f1ec4b0d9478d157c4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Hitit Hukuku’nda, • Hırsızlığa ölüm cezası verilmez, çalınan malın üç katı gümüş ödeme cezası verilir. • Başkasının tarlasını yakan bir kimse yakalanırsa tarlası yanan kişiye köle olarak",
+      "rationale": "Hitit kanunlarının ceza, fidye ve sınıfsal yaptırımları ilk yazılı hukuk kuralları bakımından incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-0fd272c568e80b2d-Q010",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "80b5332d285aff174df73da96cbc59ad5a252014759c62b27f10b6a0ea07d5ea",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. I. İslamiyet II. Hristiyanlık III. Musevilik dinlerinden hangileri Orta Çağ’da ortaya çıkmıştır? A) Yalnız I B) Yalnız II C) Yalnız III D) I ve II E) II",
+      "rationale": "İslamiyetin Orta Çağda doğuşu ve İslam medeniyetinin Endülüs/Sicilya aracılığıyla yayılması ölçülür; diğer Orta Çağ devletleri aynı konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-0fd272c568e80b2d-Q011",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "c4ca3fe1ee697daa48bfa503e860eda648a61a17268bcf3e93f6093c7c69f8de",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Orta Çağ'da; I. Sicilya, II. Irak, III. Endülüs medeniyet havzalarından hangileri İslam ve Avrupa kültürleri arasında köprü görevi görmüştür? A) Yalnız I B) Yalnız II C) Yalnız",
+      "rationale": "İslamiyetin Orta Çağda doğuşu ve İslam medeniyetinin Endülüs/Sicilya aracılığıyla yayılması ölçülür; diğer Orta Çağ devletleri aynı konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q002",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "0ca2d29266fc7d2275d299e022f25ac25a388c22ba019ccb9c97b5eda8f8c0d4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Türk halkının adı sanı yok olmasın diye babam hakanı, annem hatunu yücelten Tanrı, onlara devlet veren Tanrı, Türk halkının adı sanı yok olmasın diye beni o Tanrı",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q003",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "89f79a358f41511a46324dc9a51bed8182737e98003a4e8bad7af6feff0727a3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Aşağıdakilerden hangisi Türklerde tam bir merkeziyetçi yapılanmanın olmadığını ispatlayan uygulamalardandır? A) Kut anlayışı B) İkili teşkilatlanma C) Cihanşümul anlayışı D) Gök Tanrı inancı E) Ordu-millet anlayışı",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q005",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "eda15b73fda68f26eb62419f3fb37be34124c6e54b4dd14f3a7bb9eb8b1b4034",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. İlk Türk devletlerinde Tanrı’nın devleti yönetme yetkisini vermesi anlamına gelen “kut” hanedanın tüm erkek üyelerinde bulunurdu. Buna göre “kut”un tüm hanedan üyelerini kapsaması aşağıdakilerden hangisine yol açmıştır?",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q006",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "ce16371d217fe893148bb2faf6a462137a2274bb9f06cceefc382d127c05604b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Tarihin en eski kavimlerinden biri olan Türkler, İç Asya’da, Avrupa’da ve Afrika’da birçok devlet kurmuştur. Buna göre Türklerin çok geniş bir coğrafyada birçok devlet kurmasında; I. konargöçer",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q007",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "a898c17f62c06e659f264aaa3eab2e69e8b3995bbbb2b0ffd91b897820681ed9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Bilge Kağan, yazıtında “Türk Milleti için gece uyumadım, gündüz oturmadım. Ondan sonra Tanrı irade ettiği ve lütfettiği için talih ve kısmetim olduğu için ölecek milleti diriltip kaldırdım,",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q009",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "bde8dcbbd7dc347bd0481380c3bf2a5d48e5911c38f4eeed79504cfba22b07ca",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. • Avar Hakanlığı, • Uygurlar, • Karluklar Aşağıdakilerden hangisi bu Türk devletlerinin ortak özelliklerinden biridir? A) İstanbul’u kuşatmaları B) Avrupa’ya göç etmeleri C) Eski dinlerini terk etmeleri",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q010",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "9d8bc307d0920023077c51a3d06a3c2451f7c3f316f2eb0f7fedc87b7b7206f8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Aşağıdakilerden hangisi ilk Türk devletlerinde yönetim alanında ortaya çıkmış kavramlardan değildir? A) Kurultay B) Buyruk C) Kurgan D) Ayukı E) Aygucı ORTAÖĞRETIM GENEL MÜDÜRLÜĞÜ",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q011",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "be85dbbe82bacd254cb8ff2988a3812ef45a7f5efc5068f1887dcb6c479b74ed",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. İlk Türk devletlerinde törede değişiklik yapma; I. hükümdar, II. kurultay, III. şaman unsurların hangileri tarafından teklif edilebilirdi? A) Yalnız I B) Yalnız II C) Yalnız III D)",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q012",
+      "categoryId": "excel.ayt.tarih.b7eb88d2198396ab94bd",
+      "imageSha256": "e47383b8f0768eda917d06d6ec74e47adf5712d38168efc576976941560807b5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. I. Asya Hun Devleti'nin yıkılması II. Avrupa Hun Devleti'nin kurulması III. Kuzey Hunlarının batıya göç etmesi IV. I. Köktürk Devleti'nin kurulması V. Uygur Devleti'nin kurulması Yukarıda verilen",
+      "rationale": "İlk Türk devletlerinin siyasi örgütlenmesi, kut/ikili teşkilat/kurultay/töre ve Hun-Köktürk-Uygur devlet süreçleri doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-870839b499f2c69e-Q004",
+      "categoryId": "excel.ayt.tarih.f42770b4e1f50dd9892e",
+      "imageSha256": "f5e30e7b4ec16b645ffff79285fe51dfca80469069f7bb6e8ec9b4a9ff19732c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Aşağıda verilen Türk devletlerinden hangisi yerleşik hayatı benimsemiştir? A) Asya Hun Devleti B) Kök Türk Devleti C) Uygur Devleti D) Avar Devleti E) Avrupa Hun Devleti 1",
+      "rationale": "Konargöçer Türk devletleriyle Uygurların yerleşik yaşama geçişi karşılaştırılır; yönetim kurumları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q003",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "803b7db5e82af1fe068652ab4674391bb0a15e5675821f73fb652b97ad89e689",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. İslam tarihinde devletin kuruluş esaslarını, organlarını ve temel prensiplerini ortaya koyan yazılı bir anayasanın ilk örneğine Hz. Peygamber Dönemi'nde rastlanmaktadır. Hicretten sonra Müslümanların yanı sıra şehirdeki Yahudileri",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q004",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "3322b03031a4df08a6d3c4a5984a2c26c6ab3fa9918dfdca24793deb3fa0b945",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Gelişme Özelliği I. Bedir Savaşı Müslümanlar ve müşrik­ ler arasında yapılan ilk savaştır. II. Hendek Savaşı Müslümanların son savunma savaşıdır. III. Hayber’in Fethi Şam ticaret yolunun güvenliği",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q005",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "78d83c2b5d17230af4f5c0ccaace60ea1dbab5b9b6284424b82effd4a981dee4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Orta Çağ’da pek çok kent İslam devletlerine başkentlik yapmıştır. Buna göre aşağıdaki İslam başkentlerinden hangisi Avrupa kıtasındadır? A) Medine B) Kûfe C) Bağdat D) Kurtuba E) Şam",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q006",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "51fc7ad6f0ac5edfb0240bf0f5eb125434d97598784b6212271e31bfa8e2b228",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Hz. Ebu Bekir Dönemi'nde; • Ridde denilen dinden dönme olaylarının bastırılması, • Yemen’de ortaya çıkan yalancı peygamberler sorununun çözülmesi, • Zekât vermeyenlerin itaat altına alınması görülen faaliyetler",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q009",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "053db9b20e4eee1d26dbc44206f4fffa293bdbb2cfc6ddd5495395719f40af66",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Emeviler Dönemi'nde uygulanan mevali uygulaması, I. ırkçılık, II. ümmetçilik, III. milliyetçilik anlayışlarından hangileri ile çelişir? A) Yalnız I B) Yalnız II C) Yalnız III D) I ve",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-248ba15e2dc82aae-Q010",
+      "categoryId": "excel.ayt.tarih.49c91ac9278e7fe29997",
+      "imageSha256": "b7402c8e7482a73ea806d169e0ff5d0e5c96fcc2e4151f7c32001db57834501f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Aşağıda verilen hangi olaydan sonra Müslümanlar arasındaki ayrılık kesinleşmiştir? A) Hz. Ali’nin öldürülmesi B) Cemel Vakası C) Kerbela Olayı D) Hz. Osman'ın öldürülmesi E) Hicret ORTAÖĞRETIM GENEL",
+      "rationale": "Medine şehir devletinin kuruluşu, Hz.Muhammed dönemi savaşları, Dört Halife/Emeviler ve İslam başkentleri erken İslam devletinin gelişim-yayılım sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q003",
+      "categoryId": "excel.ayt.tarih.aa5e6a56776fbc1e8c7e",
+      "imageSha256": "5742741c4652ff7c412c51c5d79d8ed1979eb49e8559d58d0ab127a84c599d7d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Orta Asya’da kurulan ilk Türk-İslam devleti olarak karşımıza çıkan Karahanlılar Dönemi'nde Yusuf Has Hacip ve Kaşgarlı Mahmut’un yapıtlarında zengin Türk dili ve kültürü dikkat çekmektedir. Bu durum",
+      "rationale": "Türk İslam devletlerinde dil-kültürün korunması, sosyal devlet/eğitim, hutbe, hukuk ve medeniyet kurumları İslamiyetle değişen devlet/toplum yapısı bağlamında incelenir; hanedan kuruluş ayrıntısı ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q005",
+      "categoryId": "excel.ayt.tarih.aa5e6a56776fbc1e8c7e",
+      "imageSha256": "4327b9647071c58e03ef68c66a5ae6f889aeaf6d9da104028324390b01602246",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Karahanlı Devleti’ne ait verilen özelliklerden hangisi sosyal devlet anlayışına örnek gösterilebilir? A) Türkçeyi resmî dil ilan etmeleri B) Devletin kağan tarafından yönetilmesi C) İkili teşkilatlanma sisteminin kullanılması",
+      "rationale": "Türk İslam devletlerinde dil-kültürün korunması, sosyal devlet/eğitim, hutbe, hukuk ve medeniyet kurumları İslamiyetle değişen devlet/toplum yapısı bağlamında incelenir; hanedan kuruluş ayrıntısı ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q006",
+      "categoryId": "excel.ayt.tarih.aa5e6a56776fbc1e8c7e",
+      "imageSha256": "52414046e0402f8bf099db4c5ff8cbf9a5da5e2c4b035618e39d060b6e5ad818",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıdaki uygulamalardan hangisi Türklerin İslamiyet’ten etkilendiğinin bir göstergesidir? A) Hutbe okutmak B) Eğitim kurumları açmak C) Türkçe eserler vermek D) Kuta inanmak E) Para bastırmak 2",
+      "rationale": "Türk İslam devletlerinde dil-kültürün korunması, sosyal devlet/eğitim, hutbe, hukuk ve medeniyet kurumları İslamiyetle değişen devlet/toplum yapısı bağlamında incelenir; hanedan kuruluş ayrıntısı ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q008",
+      "categoryId": "excel.ayt.tarih.aa5e6a56776fbc1e8c7e",
+      "imageSha256": "9a69f19109d6db421d5df915f4ce48e9c3075c2f00f7f450a362b657b12a6f86",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. “Türklerin İslam’a hizmetleri yalnız siyasi, askerî ve idari sahalarda olmamıştır. Türklerin, İslam medeniyetinin gelişmesine önemli katkıları olmuştur.” ifadesini kullanan bir tarihçinin; I. Nizamiye Medreseleri, II. Celâli Takvimi,",
+      "rationale": "Türk İslam devletlerinde dil-kültürün korunması, sosyal devlet/eğitim, hutbe, hukuk ve medeniyet kurumları İslamiyetle değişen devlet/toplum yapısı bağlamında incelenir; hanedan kuruluş ayrıntısı ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q010",
+      "categoryId": "excel.ayt.tarih.aa5e6a56776fbc1e8c7e",
+      "imageSha256": "fcecfac2effaf9cd9e3d02562e816240565890acd2d7e86ef6d17a47d1a7a91b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Türk İslam devletlerinde örfi davalara bakan görevli aşağıdakilerden hangisidir? A) Kadı B) Kadiü’l-kudat C) Hâcibü’l-hüccâb D) Emir-i dad E) Emirü’l-ümera ORTAÖĞRETIM GENEL MÜDÜRLÜĞÜ",
+      "rationale": "Türk İslam devletlerinde dil-kültürün korunması, sosyal devlet/eğitim, hutbe, hukuk ve medeniyet kurumları İslamiyetle değişen devlet/toplum yapısı bağlamında incelenir; hanedan kuruluş ayrıntısı ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-5d6c69f3d20ef57b-Q011",
+      "categoryId": "excel.ayt.tarih.f4e9753cfd52b39fd6b1",
+      "imageSha256": "50d5acf461ad5b4133db5bc4eae95ece55c9ff67bb2f7ca07d17e0e6674772b4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Türk İslam devletlerinde yapılan savaşlardan bazıları devletlerin yıkılışına zemin hazırlamıştır. Buna göre; I. Dandanakan, II. Katvan, III. Malazgirt savaşlarından hangileri bu açıklamaya uygundur? A) Yalnız I B)",
+      "rationale": "Dandanakan, Katvan ve Malazgirt Büyük Selçuklu devlet sürecinin kuruluş/zafer/zayıflama bağlamında karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q002",
+      "categoryId": "excel.ayt.tarih.6524b2d24343c744dca9",
+      "imageSha256": "3fc9098688435690c51dfc4f8c352599d6953222e9a823c9adc6ee0c972185e7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Türkler, 1071 yılındaki Malazgirt Muharebesi’nden sonra Anadolu topraklarına gerçek anlamda yerleşmeye başlamışlar ve kısa bir süre içerisinde bu toprakların büyük bir bölümünü ele geçirmişlerdir. Türkler tarafından bu",
+      "rationale": "Malazgirt sonrası Anadoluya yerleşme koşulları, ilk beyliklerin siyasi dağılışı ve inşa ettikleri eserler doğrudan ilk Türk siyasi teşekkülleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q005",
+      "categoryId": "excel.ayt.tarih.6524b2d24343c744dca9",
+      "imageSha256": "5cdc75aafd8a5b5ca5a0ea550a456525c5055e9b89db49dbb921c44307d58ba6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Oğuzların Anadolu’yu yurt olarak seçmesinde; I. ticaret yolları üzerinde bulunması, II. birçok konargöçer toplumun yaşaması, III. siyasi yapısının çalkantılı olması, IV. topraklarının verimli ve hayvancılığa uygun olması,",
+      "rationale": "Malazgirt sonrası Anadoluya yerleşme koşulları, ilk beyliklerin siyasi dağılışı ve inşa ettikleri eserler doğrudan ilk Türk siyasi teşekkülleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q006",
+      "categoryId": "excel.ayt.tarih.6524b2d24343c744dca9",
+      "imageSha256": "b2fba470268691a62255c3bcb3d174ee39691fed017dd8e991dd0d048178e748",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Verilen harita dikkate alındığında aşağıdakilerden hangisi söylenemez? A) Anadolu'da Türk siyasi birliği yoktur. B) Anadolu'da Bizans İmparatorluğu ve Türkler dışında da siyasi güçler vardır. C) Türkler Anadolu'nun",
+      "rationale": "Malazgirt sonrası Anadoluya yerleşme koşulları, ilk beyliklerin siyasi dağılışı ve inşa ettikleri eserler doğrudan ilk Türk siyasi teşekkülleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q011",
+      "categoryId": "excel.ayt.tarih.6524b2d24343c744dca9",
+      "imageSha256": "c89bdc059fa76f58b293250da4ad138e3d4ee7701d5331258ff11d1dce635887",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Aşağıdakilerden hangisi Malazgirt Savaşı sonrası kurulan beyliklerden biri değildir? A) Karamanoğulları B) Saltuklular C) Artuklular D) Mengücekliler E) Çaka Beyliği",
+      "rationale": "Malazgirt sonrası Anadoluya yerleşme koşulları, ilk beyliklerin siyasi dağılışı ve inşa ettikleri eserler doğrudan ilk Türk siyasi teşekkülleridir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q009",
+      "categoryId": "excel.ayt.tarih.ac8129d92b017e00166c",
+      "imageSha256": "76cf63866fbc31aae9b2e54f7dc49eb45fb90ff2e9f28a69acef967d4c8ef434",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıdakilerden hangisi I. Haçlı Seferi (1096-1099) esnasında Türklerin hâkimiyetinden çıkarak Haçlıların hâkimiyeti altına giren şehirler arasında gösterilemez? A) İznik B) Kudüs C) Antakya D) Urfa E) Eskişehir",
+      "rationale": "Birinci Haçlı Seferinde Türk hakimiyetinden çıkan şehirler Haçlı seferleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-f0ec79c1140f92d5-Q010",
+      "categoryId": "excel.ayt.tarih.f4e9753cfd52b39fd6b1",
+      "imageSha256": "c20f08e001bbd3674e47d9709715f8a51996a1fed542567fe1b257eba70963b7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Türklerin Anadolu’ya girmesi sürecinde yapılan; I. Pasinler, II. Malazgirt, III. Kösedağ savaşlarından hangilerinin bu sürece katkı sağladığı söylenebilir? A) Yalnız I B) Yalnız III C) I ve",
+      "rationale": "Pasinler ve Malazgirtin Anadoluya girişteki rolü Büyük Selçuklu siyasi-askeri sürecidir; Kösedağ farklı dönem karşı örneğidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q002",
+      "categoryId": "excel.ayt.tarih.1485ee7ed965168076e1",
+      "imageSha256": "7e62306340776b9172048bbef5eadd3158b0d91148d8d37d718855d790998dcd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Aşağıdakilerden hangisi Osmanlı Devleti’nin uyguladığı iskân politikasının amaçlarından biri olamaz? A) Bölgeyi Türkleştirmek B) Düzenli asker ihtiyacını karşılamak C) Üretimde sürekliliği sağlamak D) Vergi kontrolünü elinde tutmak",
+      "rationale": "Rumeli iskân/istimâletinin amaçları, yöntemleri ve Fetret döneminde kalıcı hakimiyete katkısı açıkça ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q003",
+      "categoryId": "excel.ayt.tarih.1485ee7ed965168076e1",
+      "imageSha256": "6f47db035701c70f672b57ec609e7a89c86ebf1c3a5dd7cad19735d57d91447f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Osmanlı Devleti’nin kuruluş yıllarında Rumeli’de uyguladığı; I. Çevresindeki devlet ve hanedanlıkları himayesine alması, II. Tekfurlar arasındaki çekişmelere karışmaması, III. Fethedilen topraklara Türkmenleri yerleştirmesi, IV. İslam’ın gayrimüslimler için",
+      "rationale": "Rumeli iskân/istimâletinin amaçları, yöntemleri ve Fetret döneminde kalıcı hakimiyete katkısı açıkça ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q012",
+      "categoryId": "excel.ayt.tarih.1485ee7ed965168076e1",
+      "imageSha256": "cf9f2e1d20a2d81426b4350524c7edb1baeb4e1974d21307832a497e2e6889fd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Fetret Devri'nde Osmanlı Devleti iç karışıklığa sürüklenmiş ve yıkılma tehlikesi geçirmiştir. Osmanlı Devleti bu dönemde Anadolu'da büyük miktarda toprak kaybı yaşarken, Avrupa'da yaşanan kayıplar ise yok denecek",
+      "rationale": "Rumeli iskân/istimâletinin amaçları, yöntemleri ve Fetret döneminde kalıcı hakimiyete katkısı açıkça ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q004",
+      "categoryId": "excel.ayt.tarih.5d23f583fc489a4cb8cf",
+      "imageSha256": "60c15a89533570bafc684f78151e0bb63ed24a5081ab843645a9926ba733ef8c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Ankara Savaşı’ndan sonra aşağıdaki beyliklerden hangisinin tekrar kurulduğu söylenemez? A) Saruhanoğulları B) Karamanoğulları C) Karesioğulları D) Aydınoğulları E) Hamitoğulları 1",
+      "rationale": "Ankara Savaşının siyasi birlik üzerindeki etkisi, yeniden kurulan beylikler ve birliğin yeniden sağlanması sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q006",
+      "categoryId": "excel.ayt.tarih.5d23f583fc489a4cb8cf",
+      "imageSha256": "56d710649db4bf792b2ad53221c43f8143b9e21d3fb4c52a33cf72daac32bb72",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Ankara Savaşı’ndan sonra bozulmuş olan Anadolu Türk siyasi birliğini büyük oranda yeniden sağlayan Osmanlı padişahı aşağıdakilerden hangisidir? A) II. Murat B) I. Mehmet C) I. Bayezid D)",
+      "rationale": "Ankara Savaşının siyasi birlik üzerindeki etkisi, yeniden kurulan beylikler ve birliğin yeniden sağlanması sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q011",
+      "categoryId": "excel.ayt.tarih.5d23f583fc489a4cb8cf",
+      "imageSha256": "5586e164d2ad381a7b3378e4991201ad5e05b54715ddf8feae6605e09c7657b5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Aşağıda verilen savaşlardan hangisi Osmanlı Devleti’ne hem içeride hem de dışarıda zarar veren sonuçlar doğurmuştur? A) Palekanon B) Sırpsındığı C) Niğbolu D) Ankara E) II. Kosova",
+      "rationale": "Ankara Savaşının siyasi birlik üzerindeki etkisi, yeniden kurulan beylikler ve birliğin yeniden sağlanması sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q007",
+      "categoryId": "excel.ayt.tarih.73776e00f5721476403e",
+      "imageSha256": "48f0f7892ce24db17e3fbe97b42f3ee2de3e74e543cfa4cdd095c37acb631912",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. I. Bayezid, tahtta oturduktan sonra daha önce başlatılmış olan Rumeli’deki genişleme siyasetini devam ettirdi. Bu dönemde Osmanlı uç beylerinin, Rumeli bölgesindeki gaza faaliyetlerini aralıksız sürdürmeleriyle Belgrad’ın 1521’deki",
+      "rationale": "Yıldırım Bayezidin İstanbul kuşatması, fetih politikaları ve Bizans merkezine yönelen Osmanlı devletleşmesi ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-53c1a86a939b8f2f-Q008",
+      "categoryId": "excel.ayt.tarih.ae970b96d65c006d9e14",
+      "imageSha256": "537c14c673a2050f8af965700f0e7c40510eb12aa7ca2b56dc60f78706b0e80a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Fethettiği topraklarda \"Toprak ve reaya padişahındır.\" anlayışını benimseyen Osmanlı Devleti'nin; l. toprağı ve köylünün emeğini devlet kontrolüne almak, ll. merkezî otoriteyi tesis etmek, lll. Gayrımüslim nüfusu islamlaştırmak",
+      "rationale": "Toprak ve reaya üzerindeki devlet mülkiyeti/merkezi kontrol doğrudan toprak düzenidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q001",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "imageSha256": "51fbe0b1c422b8be4009cb36112c3cd1d2e0ef12bdee1c326c3c8b87f7520093",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Osmanlı Devleti fethettiği toprakların idaresi ve bu bölgelerde merkezî otoritenin sağlanması için tımar sistemini oluşturmuş, bu sayede merkeze yakın toprakların idaresini ve toprağın işlenmesini sağlamıştır. Buna göre",
+      "rationale": "Dirlik/miri topraklarda hizmet karşılığı gelir tahsisi, tımarlı sipahi ve cebelü yükümlülükleri tımar sistemidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q005",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "imageSha256": "0ffacbe13abdd99f59b0f7e3343efed7ad053f80f7c7aa803c5369a3a020df72",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Dirlik sisteminin uygulandığı topraklar aşağıdakilerden hangisidir? A) Mülk arazi B) Mirî arazi C) Vakıf arazi D) Metruk arazi E) Mevat arazi",
+      "rationale": "Dirlik/miri topraklarda hizmet karşılığı gelir tahsisi, tımarlı sipahi ve cebelü yükümlülükleri tımar sistemidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q007",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "imageSha256": "c65094cb7bda0d46b1d74531ce0b6a733adb2ddd4f7dff93d85352fde0d29035",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Osmanlı Devleti’nde has, zeamet ve tımar şeklinde üç gruba ayrılan tımar sistemi içerisinde hizmet karşılığı gelir elde eden görevliler arasında aşağıdakilerden hangisi gösterilemez? A) Sancak beyi B)",
+      "rationale": "Dirlik/miri topraklarda hizmet karşılığı gelir tahsisi, tımarlı sipahi ve cebelü yükümlülükleri tımar sistemidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q010",
+      "categoryId": "excel.ayt.tarih.d7ff7a8f428e1f49e6c8",
+      "imageSha256": "1f8ba8ac32e75dc54595f6250b0a9a8bc5a850c642f615aa7d3e52c3a8d5400a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Osmanlı idaresi, berat vererek belirli bir bölgedeki vergilerin toplanması hakkını tahsis ettiği sipahiye, bütün masrafları kendisine ait olmak üzere silahları ve adamları ile seferlere katılma sorumluluğu yüklemiştir.",
+      "rationale": "Dirlik/miri topraklarda hizmet karşılığı gelir tahsisi, tımarlı sipahi ve cebelü yükümlülükleri tımar sistemidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q003",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "imageSha256": "190c01ea506992a540cbb5dd96417ba6a223ba19d8cab41746ada1ce7dcbd27f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Osmanlı Devleti’nin düzenli ve maaşlı ordusu olan Kapıkulu ocağı, piyade ve süvari birliklerinden oluşurdu. Ayrıca Kapıkulu ordusunun içerisinde farklı askerî sınıflar da vardı. Buna göre aşağıda verilen",
+      "rationale": "Devşirme şartları, pençik/acemi eğitiminden yeniçeriye geçiş, kapıkulu sınıfları ve yeniçeri sonrasında yaya-müsellemin konumu incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q006",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "imageSha256": "2dcf0843fb0e2ddf217441232bc5cf57ed4c5b5cb52fda53454002e2cea776fc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Osmanlı Devleti’nde asker toplama yöntemlerinden biri olan devşirme sistemi ile ilgili, I. Merkez ordusuna asker temini için uygulanmıştır. II. I. Mehmet Dönemi’nde uygulanmaya başlanmıştır. III. Akıncı birliğine",
+      "rationale": "Devşirme şartları, pençik/acemi eğitiminden yeniçeriye geçiş, kapıkulu sınıfları ve yeniçeri sonrasında yaya-müsellemin konumu incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q008",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "imageSha256": "9b9e4ad5bf53507e070fc41137d79a75fc629de3912b654718df3df9b8108b6e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Orhan Gazi Dönemi'nde Osmanlı Devleti’nin ilk daimî ve esaslı askerî birlikleri olarak kurulan ancak Yeniçeri Ocağı’nın kurulmasından sonra köprü, yol, kale yapımı, hendek kazımı gibi geri hizmet",
+      "rationale": "Devşirme şartları, pençik/acemi eğitiminden yeniçeriye geçiş, kapıkulu sınıfları ve yeniçeri sonrasında yaya-müsellemin konumu incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q009",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "imageSha256": "2b13ed9eccdb3b94404a2a9c2374b8281e61f07becc95b4acf44451d4a7f6e30",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Devşirme sisteminde özellikle 14-18 yaş arasındakiler tercih edilirdi. Devşirme memuru vaftiz defterlerine bakarak şartları elverişli olanları ayırır, en ince teferruatına kadar iki deftere bunların kaydı yapılırdı. Kanuna",
+      "rationale": "Devşirme şartları, pençik/acemi eğitiminden yeniçeriye geçiş, kapıkulu sınıfları ve yeniçeri sonrasında yaya-müsellemin konumu incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q012",
+      "categoryId": "excel.ayt.tarih.fce6bb6c753a11064c39",
+      "imageSha256": "9de5b75f80a18e44b4734702c326936eab4c6da33c3a5ccc71caa2b18154de50",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Osmanlı Devleti’nde savaşçı niteliği kazanmamış olan gayrimüslimlerin yetiştirilmesi ile ilgili olarak Çandarlı Kara Halil Paşa’nın, “Bunları Türk’e verelim hem Müslüman olsunlar hem Türkçe öğrensinler; sonra getirelim yeniçeri",
+      "rationale": "Devşirme şartları, pençik/acemi eğitiminden yeniçeriye geçiş, kapıkulu sınıfları ve yeniçeri sonrasında yaya-müsellemin konumu incelenir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-62ca96faa231aacb-Q011",
+      "categoryId": "excel.ayt.tarih.5d23f583fc489a4cb8cf",
+      "imageSha256": "2e0d77d4f5f3596dec9eeb7226508c98a4a293d07001a03c32a87a9263a7a09f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Karesioğullarının 1345’te Osmanlı’ya dâhil edilmesinin askerî sonuçları arasında; I. Anadolu Türk siyasi birliği yolunda adım atılması, II. Osmanlı donanmasının oluşması, III. devletin sınırlarının genişlemesi durumlarından hangileri gösterilebilir?",
+      "rationale": "Karesi Beyliğinin Osmanlıya katılmasının siyasi birlik ve donanma üzerindeki sonuçları sorulur.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}
