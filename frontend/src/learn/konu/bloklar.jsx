@@ -1,9 +1,10 @@
 // Konu paketi blok kataloğu (v1). Her blok yalnız veriden çizilir; konuya özel JSX buraya yazılmaz.
 // Yeni blok türü ancak en az üç konuda kullanılacaksa eklenir (docs/urun/ogretim-standardi.md).
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import { Markdown } from '../math.jsx';
+import { secenekSirasi } from './v2Kurallari.js';
 
 // Etkileşimli model motorları: paket yalnız motor adını ve parametresini söyler.
 const MOTORLAR = {
@@ -13,7 +14,8 @@ const MOTORLAR = {
 const dogruIndex = (secenekler) => secenekler.findIndex((s) => s.dogru);
 
 /** Tek doğru cevaplı soru: her şıkkın kendi açıklaması vardır; yanlışta yeniden denenir. */
-export function Secim({ soru, secenekler, baslik, onSonuc }) {
+export function Secim({ soru, secenekler: source, baslik, onSonuc }) {
+  const secenekler = useMemo(() => secenekSirasi(source, soru), [source, soru]);
   const [secili, setSecili] = useState(null);
   const [denemeler, setDenemeler] = useState(0);
   const dogru = dogruIndex(secenekler);
@@ -109,7 +111,7 @@ export function Fikir({ blok }) {
 }
 
 /** Çözümlü örnek: adımlar sırayla açılır; son `gizli` adımı öğrenci önce kendi yazar (azalan yardım). */
-export function Ornek({ blok }) {
+export function Ornek({ blok, onSonuc }) {
   const [acik, setAcik] = useState(0);
   const [taslak, setTaslak] = useState('');
   const toplam = blok.adimlar.length;
@@ -122,7 +124,7 @@ export function Ornek({ blok }) {
     {acik < toplam && <div className="kp-adim-eylem">
       {ogrenciAdimi && <label className="kp-sen">Sıra sende: {acik + 1}. adımı önce kendin yaz.
         <textarea rows={2} value={taslak} onChange={(e) => setTaslak(e.target.value)} placeholder="Bu adımda ne yaparsın ve neden?" /></label>}
-      <button type="button" className="btn btn-primary" onClick={() => { setAcik((a) => a + 1); setTaslak(''); }}>
+      <button type="button" className="btn btn-primary" disabled={ogrenciAdimi && !taslak.trim()} onClick={() => { setAcik((a) => a + 1); setTaslak(''); if (acik + 1 === toplam) onSonuc?.(true); }}>
         {acik === 0 ? 'İlk adımı göster' : ogrenciAdimi ? 'Benimkini karşılaştır' : `Sonraki adım (${acik}/${toplam})`}</button>
     </div>}
     {acik === toplam && blok.kontrol && <p className="kp-kontrol"><strong>Nasıl kontrol ederim?</strong> {blok.kontrol}</p>}

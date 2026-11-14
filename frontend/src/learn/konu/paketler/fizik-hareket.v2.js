@@ -1,5 +1,5 @@
-// Konu paketi v2 · TYT Fizik · Hareket (16.04, içerik taslağı). UYGULAMAYA BAĞLI DEĞİLDİR: sayfa hâlâ v1'i
-// (`fizik-hareket.js`) çizer. Yeni blok türlerinin bileşenleri ve testleri yazılınca bu dosya v1'in yerine geçer.
+// Konu paketi v2 · TYT Fizik · Hareket (16.04, öğretmen denetimi bekleyen pilot).
+// KonuV2 ekranına katalog üzerinden bağlıdır; v1 yeniden kullanılan içeriğin kaynağı olarak korunur.
 // Harita: fizik-hareket.harita.md. Yöntem: docs/plan/16-ogrenme-kalitesi.md "Fizik öğretim yöntemi".
 // Öğretmen onayı yoktur.
 //

@@ -1,0 +1,310 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "surum",
+    "onay",
+    "duraklar",
+    "onkosul",
+    "yanilgilar",
+    "kavramTesti",
+    "tipCalismalari",
+    "sinavSeti"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "surum": {
+      "const": 2
+    },
+    "onay": {
+      "enum": [
+        "OGRETMEN_BEKLIYOR",
+        "OGRETMEN_ONAYLI"
+      ]
+    },
+    "onkosul": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "duraklar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "baslik",
+          "bloklar"
+        ],
+        "properties": {
+          "bloklar": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/blok"
+            }
+          }
+        }
+      }
+    },
+    "yanilgilar": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "kod",
+          "ortayaCikar",
+          "yuzlestir",
+          "aciklama",
+          "yenidenSina"
+        ],
+        "properties": {
+          "ortayaCikar": {
+            "$ref": "#/$defs/soru"
+          },
+          "yuzlestir": {
+            "type": "object",
+            "required": [
+              "yonerge"
+            ],
+            "properties": {}
+          },
+          "yenidenSina": {
+            "type": "object",
+            "required": [
+              "zaman",
+              "soru"
+            ],
+            "properties": {
+              "soru": {
+                "$ref": "#/$defs/soru"
+              }
+            }
+          }
+        }
+      }
+    },
+    "kavramTesti": {
+      "type": "object",
+      "required": [
+        "on",
+        "son",
+        "puanlama"
+      ],
+      "properties": {
+        "on": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/soru"
+          }
+        },
+        "son": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/soru"
+          }
+        }
+      }
+    },
+    "tipCalismalari": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "tip",
+          "tani",
+          "bagimsiz"
+        ],
+        "properties": {
+          "tani": {
+            "$ref": "#/$defs/soru"
+          },
+          "bagimsiz": {
+            "$ref": "#/$defs/soru"
+          }
+        }
+      }
+    },
+    "sinavSeti": {
+      "type": "object",
+      "required": [
+        "duzeyler",
+        "gecis"
+      ],
+      "properties": {
+        "duzeyler": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "duzey",
+              "sorular"
+            ],
+            "properties": {
+              "sorular": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/soru"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "konu-paketi-v2",
+  "$defs": {
+    "soru": {
+      "type": "object",
+      "required": [
+        "soru",
+        "secenekler"
+      ],
+      "properties": {
+        "soru": {
+          "type": "string"
+        },
+        "secenekler": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "neden"
+            ],
+            "properties": {
+              "metin": {
+                "type": "string"
+              },
+              "dogru": {
+                "type": "boolean"
+              },
+              "neden": {
+                "type": "string"
+              }
+            }
+          },
+          "contains": {
+            "type": "object",
+            "required": [
+              "dogru"
+            ],
+            "properties": {
+              "dogru": {
+                "const": true
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      }
+    },
+    "blok": {
+      "type": "object",
+      "required": [
+        "tur"
+      ],
+      "properties": {
+        "tur": {
+          "enum": [
+            "neden",
+            "model",
+            "fikir",
+            "ornek",
+            "puf",
+            "cikmis",
+            "tani",
+            "tipler",
+            "sina",
+            "yanilgi",
+            "sinifla",
+            "ceviri",
+            "turet"
+          ]
+        },
+        "basamak": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tur": {
+                "const": "yanilgi"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kod"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tur": {
+                "const": "ceviri"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bicim",
+              "soru"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tur": {
+                "const": "sinifla"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ogeler",
+              "kutular"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tur": {
+                "const": "turet"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "adimlar",
+              "sonuc",
+              "kosul",
+              "birim"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

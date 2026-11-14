@@ -2,7 +2,7 @@
 export const PAKETLER = {
   'fizik-hareket': {
     ders: 'Fizik', baslik: 'Hareket', motor: 'hareket-lab',
-    yukle: () => Promise.all([import('./fizik-hareket.js'), import('./fizik-hareket.sorular.json')]).then(([p, s]) => ({ paket: p.default, sorular: s.default })),
+    yukle: () => Promise.all([import('./fizik-hareket.v2.js'), import('./fizik-hareket.sorular.json')]).then(([p, s]) => ({ paket: p.default, sorular: s.default })),
   },
 };
 

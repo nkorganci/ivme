@@ -2,7 +2,7 @@
 
 İçerik taslağı hazırdır; ürün kabulü değildir. Araç kutusu ve sekiz durak son Claude commitinden
 (`8a59fe6`) korunmuştur. Ölçme içeriğini GPT-6 Astra tamamladı; Fable veya Opus çalıştırıldığı iddia edilmez.
-Kullanıcının durma sınırı: içerik sonunda dur; Sonnet kod aşamasını bu oturumda başlatma.
+İlk oturum içerikte durdu. Kullanıcı sonraki talimatla kod aşamasını GPT-6.1 Sol ile yetkilendirdi.
 
 ## İçerik dosyaları
 
@@ -43,3 +43,39 @@ Sonuç: 8 durak, 7 mikro ders, 13 yanılgı, 12 tip, 10+10 test maddesi, 10 karm
 dahil) tek doğru ve gerekçe yönünden kontrol edildi; örnek sayısal sonuçlar bağımsız aritmetikle
 karşılaştırıldı. `plan` ve altı değişen dosya için `kontrol` geçti. Ekran kabulü yapılmadı;
 uygulama hâlâ v1'i servis eder.
+
+## Kod pilotu
+
+Kullanıcının model tercihi GPT-6.1 Sol (yüksek): katalog artık `KonuV2` ekranını açar.
+Şema `docs/semalar/konu-paketi-v2.schema.json`; saf kurallar `v2Kurallari.js`;
+bloklar `v2Bloklar.jsx`; yeni iki-cisim/üç-grafik deneyleri `HareketV2Deneyi.jsx`.
+V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
+
+- Akış: ön test → AK-1…7 → sekiz durak → ilk hamle → düzeyli alıştırma → karma/gecikmeli sınama → son test.
+- Testlerin cevapları kullanıcı başına v2 yerel anahtarda saklanır; v1 kayıtları taşınmaz. Son test ayrı formdur.
+- Kavram kapısı mevcut içerik sorularından üç ardışık doğru ister; yanlışta seri sıfırlanır.
+  Temsil soruları doğruya ulaşmadan, örnekler bütün adımlar açılmadan ileri geçmez.
+  Durak çıkışındaki sınama ilk turda tamamen doğru değilse yeni tur gerekir; başarısız denemeler saklanır.
+- Set için bütün tiplerin cevaplanması ve ilk denemede en az %80 gerekir; yeniden tur açıkça başlatılır.
+  Bunlar öğretim alıştırmasıdır; aynı senaryonun yeniden çözümü görülmemiş aktarım sayılmaz.
+- Seçenek sırası kalıcı kimlikle karışır. Ön testte geri bildirim yoktur; son testte bütün yanıtlar kaydedilince açılır.
+- Çözümlü/tanıma ÖSYM 0910/0912/0913 blokları savunmalı olarak öğretim akışından ayrılır.
+  Gerçek soru bağlantıları soru sayfasını açar; önce görmüş öğrenci için görülmemişlik garantisi yoktur.
+- Y1 vb. için mevcut fizik deneyleri, Y2 için sıfır noktası kaydırıcısı kullanılır. Yeni deneyler
+  mevcut `MotionLab/useLab` motorunda parametrelerle yeniden hesaplanır. Her yönergenin görsel davranışla
+  pedagojik eşleşmesini bağımsız denetçi ayrıca incelemelidir.
+- Kaynak görseli boş kayıtlara bağlantı üretilmez. Soru tiplerinin boş banka sayıları doldurulmaz.
+
+Doğrulama komutları: `node --test testler/konu-paketi.test.mjs testler/konu-paketi-v2.test.mjs`;
+`node testler/konu-paketi-v2-ui.mjs [--mobil]`; `npm run build` (frontend);
+`python scripts/ivme.py plan`, `python scripts/ivme.py kontrol`.
+UI taraması yalıtılmış Chrome profilinde fixture ilerleme kullanır; gerçek öğrenci ustalığı değildir.
+Teknik testler öğretmen onayı/öğrenme etkisi değildir. 16.04 açık kalır: bağımsız fizik/rubrik denetimi,
+kaynağın öğretmen kabulü, bütün basamak geçişlerinin pedagojik değerlendirmesi ve öğrenci ölçümü bekler.
+
+Teknik sonuç: v1+v2 testleri 12/12; JSON Schema Draft 2020-12 doğrulaması geçti.
+Masaüstü ve mobil taramada 105’er kontrol: boş ekran, yatay taşma, konsol hatası yok;
+ön testte ilk 15 sonraki bölüm kilitli ve cevap sonrası geri bildirim gizli.
+İlk kimlik sorgusunun giriş öncesi 401’i ve favicon 404’ü dışında içerik isteği hatası yok.
+Derleme, plan ve 17 dosyalık depo kontrolü geçti. Yerel izleyici v2 ön yüzünü yayımladı;
+1010 üzerinden `Başlamadan önce` ekranı doğrulandı. Uzak push/dağıtım yapılmadı.

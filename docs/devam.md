@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` Sonnet kod aşaması: [içerik devri](urun/hareket-v2-icerik-devri.md). Araç kutusu + Hareket v2 + ölçme taslağı hazır; şema, bileşen, deney bağı, ekran ve testler bekliyor. Bu oturum içerikte durdu; bağımsız denetim Opus ayrı oturumda. |
+| Sıradaki görev | `16.04` bağımsız Opus denetimi (ayrı oturum), sonra kullanıcı/öğretmen kabulü: [kod pilotu](urun/hareket-v2-icerik-devri.md#kod-pilotu). Kullanıcı tercihiyle GPT-6.1 Sol kodu uygulamaya bağladı. Ustalık motoru 16.06 kapsamındadır. |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 

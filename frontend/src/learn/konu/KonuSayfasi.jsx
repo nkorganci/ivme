@@ -11,6 +11,7 @@ import { BASE } from '../ui.jsx';
 import FigureZoom from '../lesson/FigureZoom.jsx';
 import { BLOKLAR, KarmaOge, TipKarti } from './bloklar.jsx';
 import { PAKETLER } from './paketler/index.js';
+import KonuV2 from './KonuV2.jsx';
 import '../physics/physics.css';
 import '../lesson/learning-experience.css';
 import './konu.css';
@@ -130,7 +131,7 @@ function Karma({ paket, ilerleme, yaz, git }) {
   </section>;
 }
 
-function Gercek({ paket, sorular, tip }) {
+export function Gercek({ paket, sorular, tip }) {
   const cozulmus = new Set(paket.duraklar.flatMap((d) => d.bloklar).filter((b) => b.tur === 'cikmis' || b.tur === 'tani').map((b) => b.kod));
   const gosterilen = tip ? paket.tipler.filter((t) => t.id === tip) : paket.tipler;
   return <section className="card kp-kart">
@@ -147,7 +148,7 @@ function Gercek({ paket, sorular, tip }) {
   </section>;
 }
 
-function Tekrar({ paket }) {
+export function Tekrar({ paket }) {
   return <section className="card kp-kart">
     <p className="kp-etiket">Tekrar</p>
     <h2 className="kp-durak-baslik" tabIndex={-1}>Kapatmadan önce: aklında ne kaldı?</h2>
@@ -157,11 +158,12 @@ function Tekrar({ paket }) {
     <h3>Video</h3>
     <ul className="kp-kod-liste">{paket.videolar.map((v) => <li key={v.adres}><a href={v.adres} target="_blank" rel="noreferrer">{v.ad} ↗</a><span className="small muted"> {v.not}</span></li>)}</ul>
     <h3>Kaynak sayfaları</h3>
-    <ul className="kp-kod-liste">{paket.kaynaklar.map((k) => <li key={k.id}><a href={k.gorsel} target="_blank" rel="noreferrer">{k.ad} · s. {k.sayfa} ↗</a></li>)}</ul>
+    <ul className="kp-kod-liste">{paket.kaynaklar.map((k) => <li key={k.id}>{k.gorsel ? <a href={k.gorsel} target="_blank" rel="noreferrer">{k.ad} · s. {k.sayfa} ↗</a> : <span>{k.ad} · s. {k.sayfa} · Kaynak görseli hazırlanıyor</span>}</li>)}</ul>
   </section>;
 }
 
 export default function KonuSayfasi() {
+  const { user } = useAuth();
   const { paketId } = useParams();
   const kayit = PAKETLER[paketId];
   const [veri, setVeri] = useState(null);
@@ -178,6 +180,7 @@ export default function KonuSayfasi() {
   if (hata) return <div className="card"><p className="field-error" role="alert">Konu yüklenemedi: {hata.message}</p></div>;
   if (!veri) return <Loading text="Konu yükleniyor…" />;
   const { paket, sorular } = veri;
+  if (paket.surum === 2) return <KonuV2 key={`${paket.id}:${user?.id ?? 'anon'}`} paket={paket} sorular={sorular} motor={kayit.motor} />;
   const git = (id, tip, adim) => setParams({ bolum: id, ...(tip ? { tip } : {}), ...(adim ? { adim } : {}) });
   const adimGit = (n) => setParams({ bolum, adim: String(n + 1) }, { replace: true });
   const sira = paket.duraklar.findIndex((d) => d.id === bolum);
