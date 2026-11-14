@@ -1,6 +1,56 @@
 # Öğretim standardı
 
-Konu anlatımı, laboratuvar, soru kalıbı ve ders yazma kuralları. Hedef: hiç bilmeyen öğrencinin mantığı kavraması ve gerçek soruda doğru yöntemi hızlı seçebilmesi. Yeni ürün standardı (konu paketi şeması, bileşen kataloğu, rubrik) 16.04'te bu belgenin üstüne yazılır; o zamana dek aşağıdaki kurallar geçerlidir.
+Konu anlatımı, laboratuvar, soru kalıbı ve ders yazma kuralları. Hedef: hiç bilmeyen öğrencinin mantığı kavraması ve gerçek soruda doğru yöntemi hızlı seçebilmesi. Yeni konular aşağıdaki **konu paketi standardı** ile üretilir; model konu kullanıcı onayı bekler. Mevcut 34 matematik dersi ve eski ekranlar kendi kurallarıyla (alt bölümler) çalışmayı sürdürür.
+
+## Konu paketi standardı (v1 · 16.04)
+
+**Durum:** model konu TYT Fizik – Hareket (`/konuyu-ogrenelim/ogren/fizik-hareket`) kullanıcı değerlendirmesinde; onaylanmadan ikinci konuya geçilmez. Şema [konu-paketi-v1](../semalar/konu-paketi-v1.schema.json); paket `frontend/src/learn/konu/paketler/<kimlik>.js` (saf veri), sayfa `learn/konu/KonuSayfasi.jsx`, bloklar `learn/konu/bloklar.jsx`. Yeni konu veridir: konuya özel JSX yazılmaz; yeni blok türü en az üç konuda kullanılacaksa eklenir.
+
+**Amaç:** öğrenci formülü ezberlemesin; kavramı ayırt etsin, soruyu görünce tipini tanısın ve ilk hamleyi bilsin. Bu yüzden anlatım **soru tiplerinden geriye doğru** kurulur.
+
+**Üretim sırası (bir oturum bir konu):**
+1. **Aday sorular:** konunun banka soruları DB'den çekilir (kazanım kodu ve kaynak adıyla); `python scripts/konu/soru_tabakasi.py` görselleri kod etiketli tabakalara dizer.
+2. **Soru tipi haritası:** görseller tek tek okunur; her soru bir tipe yazılır. Tip = *soruda görülen işaret → ilk hamle → kural → geçerlilik koşulu → tuzak*. Tekrar eden kopyalar (aynı soru, farklı kod) ve yanlış etiketli sorular not edilir. ÖSYM soruları ayrıca sayılır; hangi tipin sınavda fiilen sorulduğu anlatımın ağırlığını belirler.
+3. **Kaynak:** konunun OGM not sayfaları okunur; her durak en az bir kaynak sayfasına bağlanır. Kaynakta olmayan genişletme "özgün türetim"dir, kaynak diye sunulmaz.
+4. **Paket yazımı:** aşağıdaki akış ve bloklarla; sonra `python scripts/konu/soru_bagi.py <kimlik>` (kodları bankada doğrular, kimlik bağını yazar; cevap anahtarı ön yüze yazılmaz).
+5. **Denetim:** `node --test testler/konu-paketi.test.mjs`, ayrı derleme, masaüstü ve mobil ekran denetimi, rubrik.
+
+**Konu sayfası akışı:** *Sınavda nasıl gelir?* (tip tablosu, ÖSYM yılları, soru biçimi) → duraklar → *Karışık tur* → *Gerçek sorular* → *Tekrar, video, kaynak*. Her durak aynı sırayı izler:
+
+| Blok | İşi | Kural |
+|---|---|---|
+| `neden` | Günlük durum + tahmin sorusu | Tahmin, anlatımdan önce gelir; her şıkkın kendi açıklaması var |
+| `model` | Etkileşimli deney (motor adı + deney kimliği + görev) | Görev bir soru sorar; süs değildir. Motor yoksa blok konmaz |
+| `fikir` | Temel fikir, isteğe bağlı "bir adım derine in" | Ekranda tek fikir; terim açıklanarak girer |
+| `ornek` | Çözümlü örnek: her adımda *ne* ve *neden*, sonda *nasıl kontrol ederim* | `gizli`: son adımları öğrenci önce kendi yazar (azalan yardım) |
+| `puf` | Püf noktası, geçerlilik koşulu, yanılttığı yer, sınavda geliş biçimi | Koşulsuz kısa yol yazılmaz |
+| `cikmis` | Gerçek ÖSYM sorusu adım adım: işaret → adımlar → sonuç → alınacak ders | Görsel okunmadan yazılmaz; sonuç DB anahtarıyla aynı olmalı |
+| `tani` | İlk hamle antrenmanı: gerçek soru çözülmez, yalnız nasıl başlanacağına karar verilir | Cevabı açığa çıkarmaz |
+| `tipler` | Durağın soru tipi kartları | Her tip bir durakta öğretilir |
+| `sina` | Kendini sına: `secim`, `yargi` (I–II–III, her yargı ayrı), `hata` (hatalı adımı bul) | En az iki farklı biçim; durak bununla biter |
+
+Karışık turda tipler sırasız gelir ve öğrenci **önce tipi seçer**, sonra çözer. `cikmis`/`tani` ile işlenen soru bağımsız soru listesine girmez. İlerleme şimdilik tarayıcıda tutulur; ustalık motoruna (FSRS, %80, aralıklı tekrar) bağlanması 16.06 işidir, o yüzden bu sayfa puan veya ustalık olayı yazmaz.
+
+**Kalite rubriği (her ölçüt 0–2; yayın eşiği: hiçbir ölçüt 0 değil ve toplam ≥ 24/28):**
+
+| # | Ölçüt | 2 puan |
+|---|---|---|
+| 1 | Doğruluk | Bütün sayısal sonuçlar testte bağımsız hesapla doğrulanmış; ÖSYM çözümleri resmî anahtarla aynı |
+| 2 | Kaynak bağı | Her durak okunmuş bir kaynak sayfasına bağlı; kaynaktaki hata düzeltilip not edilmiş |
+| 3 | Soru tipi kanıtı | Tipler gerçek soru görsellerinden çıkarılmış; sayılar ve ÖSYM yılları yazılı |
+| 4 | Sıfırdan anlaşılırlık | Her terim ilk geçtiği yerde gündelik dille açıklanmış |
+| 5 | Tahmin önce | Her durak anlatımdan önce tahmin ister |
+| 6 | Görselin işlevi | Model bir soruya cevap arar; değişen ve sabit nicelik görünür |
+| 7 | Örnek kalitesi | Her adımda neden; sonuç kontrolü; azalan yardım |
+| 8 | Püf noktasının koşulu | Her kısa yolun geçerlilik koşulu ve yanılttığı yer yazılı |
+| 9 | İlk hamle | Her tipte "soruda ne görürsen → ne yaparsın" açık; en az iki `tani`/`cikmis` |
+| 10 | Yanlışa özel geri bildirim | Her yanlış şık, o şıkkı seçtiren düşünceye cevap verir; moral bozmaz |
+| 11 | Çok yönlü sınama | Seçim + yargı + hata bulma + tip tanıma |
+| 12 | Aktarım | Karışık tur ve bağımsız gerçek sorular; derste çözülen soru ölçüme girmez |
+| 13 | Geri çağırma | Durak sonu sınama ve ders sonu tekrar kartları |
+| 14 | Dil ve yük | Kısa cümle, ekranda tek fikir, mobilde taşma yok |
+
+Rubrik puanı teknik kabuldür; öğretmen onayı ve öğrenci aktarım kanıtı ayrıdır (`onay` alanı insan girdisi olmadan değişmez).
 
 ## Kalıcı öğretim beklentisi (Claude ve Codex)
 

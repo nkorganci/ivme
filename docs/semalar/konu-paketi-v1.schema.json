@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "konu-paketi-v1",
+  "title": "Konu paketi v1",
+  "description": "Bir konunun bütün öğretim içeriği. Sayfa yalnız bu veriden çizilir (frontend/src/learn/konu). Kurallar: docs/urun/ogretim-standardi.md; denetim: testler/konu-paketi.test.mjs.",
+  "type": "object",
+  "required": ["id", "surum", "ders", "sinav", "baslik", "kategoriId", "onay", "giris", "kaynaklar", "sinavda", "tipler", "duraklar", "karma", "tekrar", "videolar"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z-]+$" },
+    "surum": { "type": "integer", "minimum": 1 },
+    "ders": { "type": "string" },
+    "sinav": { "type": "array", "items": { "enum": ["TYT", "AYT"] }, "minItems": 1 },
+    "sinif": { "type": "string" },
+    "baslik": { "type": "string" },
+    "altBaslik": { "type": "string" },
+    "kategoriId": { "type": "string", "description": "learning_catalog.current_categories kimliği; ikinci konu adı listesi tutulmaz" },
+    "kazanimlar": { "type": "array", "items": { "type": "string" } },
+    "sure": { "type": "string" },
+    "onay": { "enum": ["OGRETMEN_BEKLIYOR", "OGRETMEN_ONAYLI"], "description": "İnsan girdisi olmadan OGRETMEN_ONAYLI yazılmaz" },
+    "giris": { "type": "string" },
+    "kaynaklar": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["id", "ad", "sayfa", "gorsel"], "properties": { "id": { "type": "string" }, "ad": { "type": "string" }, "sayfa": { "type": "integer", "minimum": 1 }, "gorsel": { "type": "string" } } } },
+    "sinavda": { "type": "object", "required": ["ozet", "bicim"], "properties": { "ozet": { "type": "string" }, "bicim": { "type": "string" } } },
+    "tipler": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/tip" } },
+    "duraklar": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/durak" } },
+    "karma": { "type": "array", "minItems": 6, "items": { "type": "object", "required": ["tip", "soru", "secenekler"], "properties": { "tip": { "type": "string" }, "soru": { "type": "string" }, "secenekler": { "$ref": "#/$defs/secenekler" } } } },
+    "tekrar": { "type": "array", "minItems": 6, "items": { "type": "object", "required": ["soru", "cevap"], "properties": { "soru": { "type": "string" }, "cevap": { "type": "string" } } } },
+    "videolar": { "type": "array", "items": { "type": "object", "required": ["ad", "adres"], "properties": { "ad": { "type": "string" }, "adres": { "type": "string", "pattern": "^https://" }, "not": { "type": "string" } } } }
+  },
+  "$defs": {
+    "secenekler": { "type": "array", "minItems": 3, "maxItems": 5, "description": "Tam bir doğru; her seçenekte o seçeneğe özel açıklama", "items": { "type": "object", "required": ["metin", "neden"], "properties": { "metin": { "type": "string" }, "dogru": { "const": true }, "neden": { "type": "string", "minLength": 25 } } } },
+    "tip": {
+      "type": "object",
+      "description": "Soru tipi: banka sorularının görselleri incelenerek çıkarılır",
+      "required": ["id", "ad", "banka", "osym", "gor", "ilkHamle", "kural", "kosul", "tuzak", "sorular"],
+      "properties": {
+        "id": { "type": "string" }, "ad": { "type": "string" },
+        "banka": { "type": "integer", "description": "Bankadaki yaklaşık tekil soru sayısı" },
+        "osym": { "type": "array", "items": { "type": "string" }, "description": "Bu tipteki ÖSYM soru kodları" },
+        "gor": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "Soruda görülen tanıma işaretleri" },
+        "ilkHamle": { "type": "string" }, "kural": { "type": "string" }, "kosul": { "type": "string" }, "tuzak": { "type": "string" },
+        "sorular": { "type": "array", "minItems": 4, "items": { "type": "string" }, "description": "Bağımsız çözülecek gerçek soru kodları; derste çözümü gösterilen soru buraya girmez" }
+      }
+    },
+    "durak": {
+      "type": "object",
+      "required": ["id", "baslik", "tipler", "kaynak", "bloklar"],
+      "properties": {
+        "id": { "type": "string" }, "baslik": { "type": "string" },
+        "tipler": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "kaynak": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "bloklar": { "type": "array", "items": { "$ref": "#/$defs/blok" }, "description": "Sıra: neden → model → fikir → ornek → puf → (cikmis, tani) → tipler → sina" }
+      }
+    },
+    "blok": {
+      "type": "object",
+      "required": ["tur"],
+      "oneOf": [
+        { "properties": { "tur": { "const": "neden" }, "metin": { "type": "string" }, "tahmin": { "type": "object", "required": ["soru", "secenekler"], "properties": { "soru": { "type": "string" }, "secenekler": { "$ref": "#/$defs/secenekler" } } } }, "required": ["metin", "tahmin"] },
+        { "properties": { "tur": { "const": "model" }, "deney": { "type": "string" }, "gorev": { "type": "string" } }, "required": ["deney", "gorev"] },
+        { "properties": { "tur": { "const": "fikir" }, "baslik": { "type": "string" }, "metin": { "type": "string" }, "derin": { "type": "string" } }, "required": ["baslik", "metin"] },
+        { "properties": { "tur": { "const": "ornek" }, "soru": { "type": "string" }, "adimlar": { "$ref": "#/$defs/adimlar" }, "gizli": { "type": "integer", "minimum": 0, "description": "Sondan kaç adımı öğrenci önce kendi yazar" }, "kontrol": { "type": "string" } }, "required": ["soru", "adimlar", "kontrol"] },
+        { "properties": { "tur": { "const": "puf" }, "kural": { "type": "string" }, "kosul": { "type": "string" }, "tuzak": { "type": "string" }, "sinav": { "type": "string" } }, "required": ["kural", "kosul", "tuzak", "sinav"] },
+        { "properties": { "tur": { "const": "cikmis" }, "kod": { "type": "string" }, "baslik": { "type": "string" }, "isaret": { "type": "string" }, "adimlar": { "$ref": "#/$defs/adimlar" }, "sonuc": { "type": "string" }, "ders": { "type": "string" } }, "required": ["kod", "baslik", "isaret", "adimlar", "sonuc", "ders"] },
+        { "properties": { "tur": { "const": "tani" }, "kod": { "type": "string" }, "soru": { "type": "string" }, "secenekler": { "$ref": "#/$defs/secenekler" } }, "required": ["kod", "soru", "secenekler"] },
+        { "properties": { "tur": { "const": "tipler" } } },
+        { "properties": { "tur": { "const": "sina" }, "ogeler": { "type": "array", "minItems": 2, "items": { "type": "object", "required": ["tur"], "properties": { "tur": { "enum": ["secim", "yargi", "hata"] } } } } }, "required": ["ogeler"] }
+      ]
+    },
+    "adimlar": { "type": "array", "minItems": 3, "items": { "type": "object", "required": ["ne", "neden"], "properties": { "ne": { "type": "string" }, "neden": { "type": "string", "minLength": 20 } } } }
+  }
+}

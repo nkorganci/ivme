@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` ([16. adım](plan/16-ogrenme-kalitesi.md)); 16.03 BITTI: silme tamam (D: 454 → 342 GiB) |
+| Sıradaki görev | `16.04`: model konu `/konuyu-ogrenelim/ogren/fizik-hareket` kullanıcı değerlendirmesinde; onaydan önce ikinci konuya geçme ([standart](urun/ogretim-standardi.md)) |
 | Son kapanan | `16.01` belge düzeni, `16.02` ölçüm ve kaynak kaydı (12.140 dosya, 748 kararsız) |
 | Sıradaki komut | Kategori kuru listesi: `SELECT tur, karar, count(*), sum(boyut) FROM kaynak_kaydi.dosyalar GROUP BY 1,2` (`ivme.py kaynak` betikleri); silmeden önce DB dökümü |
 

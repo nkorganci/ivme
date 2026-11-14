@@ -11,6 +11,7 @@ import './learn.css';
 
 const MapPage = lazy(() => import('./pages/MapPage.jsx'));
 const PhysicsLessonPage = lazy(() => import('./physics/PhysicsLessonPage.jsx'));
+const KonuSayfasi = lazy(() => import('./konu/KonuSayfasi.jsx'));
 const ContentStatusPage = lazy(() => import('./pages/ContentStatusPage.jsx'));
 const ConceptPage = lazy(() => import('./pages/ConceptPage.jsx'));
 const LessonPage = lazy(() => import('./pages/LessonPage.jsx'));
@@ -59,6 +60,7 @@ function Shell() {
         <Route index element={<TodayPage />} />
         <Route path="harita" element={<MapPage />} />
         <Route path="fizik/hareket-kuvvet" element={<PhysicsLessonPage />} />
+        <Route path="ogren/:paketId" element={<KonuSayfasi />} />
         <Route path="icerik-durumu" element={<ContentStatusPage />} />
         <Route path="konu/:conceptId" element={<ConceptPage />} />
         <Route path="ders/:conceptId" element={<LessonPage />} />
