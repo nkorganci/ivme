@@ -36,17 +36,23 @@ export const olculenOgeSayisi = (durak) => durak.bloklar.reduce((n, b) => n + (b
 
 function Sinavda({ paket, sorular, git }) {
   const enCok = Math.max(...paket.tipler.map((t) => t.banka));
+  const sirali = [...paket.tipler].sort((a, b) => b.banka - a.banka);
+  const durakNo = (t) => paket.duraklar.findIndex((d) => d.tipler.includes(t.id));
   return <section className="card kp-kart kp-sinavda">
     <p className="kp-etiket">Başlamadan: sınavda bu konu nasıl gelir?</p>
     <Markdown text={paket.sinavda.ozet} />
-    <ul className="kp-tip-tablo" aria-label="Soru tiplerinin bankadaki ağırlığı ve ÖSYM'de sorulduğu yıllar">
-      <li className="kp-tip-baslik" aria-hidden="true"><span>Soru tipi</span><span>Bankadaki ağırlığı</span><span>ÖSYM TYT</span></li>
-      {[...paket.tipler].sort((a, b) => b.osym.length - a.osym.length || b.banka - a.banka).map((t) => <li key={t.id}>
-        <strong>{t.ad}</strong>
-        <span><span className="kp-cubuk" style={{ width: `${Math.round((t.banka / enCok) * 100)}%` }} aria-hidden="true" /><span className="kp-cubuk-sayi">yaklaşık {t.banka} soru</span></span>
-        <span>{t.osym.length ? t.osym.map((k) => sorular[k]?.yil).join(', ') : '–'}</span></li>)}</ul>
+    <div className="kp-grafik" role="list" aria-label="Soru tiplerinin bankadaki ağırlığı ve ÖSYM'de sorulduğu yıllar">
+      <div className="kp-grafik-baslik" aria-hidden="true"><span>Soru tipi</span><span>Bankadaki soru sayısı</span><span>ÖSYM TYT</span><span /></div>
+      {sirali.map((t) => { const n = durakNo(t); const yillar = t.osym.map((k) => sorular[k]?.yil).filter(Boolean);
+        return <button key={t.id} type="button" role="listitem" className="kp-grafik-satir" data-osym={yillar.length ? 'evet' : undefined} onClick={() => git(paket.duraklar[n].id)}
+          aria-label={`${t.ad}, yaklaşık ${t.banka} soru${yillar.length ? `, ÖSYM ${yillar.join(', ')}` : ''}; ${n + 1}. durakta öğretilir`}>
+          <strong>{t.ad}</strong>
+          <span className="kp-grafik-cubuk"><span className="kp-cubuk" style={{ width: `${Math.round((t.banka / enCok) * 100)}%` }} aria-hidden="true" /><span className="kp-cubuk-sayi">{t.banka}</span></span>
+          <span className="kp-yil-grup">{yillar.length ? yillar.map((y) => <b key={y} className="kp-yil-rozet">{y}</b>) : <span className="muted">–</span>}</span>
+          <span className="kp-ozet-git">Durak {n + 1} →</span></button>; })}
+    </div>
     <div className="kp-bicim"><strong>Soru biçimi:</strong> <Markdown text={paket.sinavda.bicim} /></div>
-    <p className="small muted">Sayılar bankadaki Hareket sorularının görselleri tek tek incelenerek çıkarıldı; tekrar eden kopyalar ayıklandı. ÖSYM sütunu 2018–2026 TYT sorularıdır.</p>
+    <p className="small muted">Satıra tıklayınca tipin öğretildiği durağa geçersin. Sayılar bankadaki soruların görselleri incelenerek çıkarıldı; tekrar eden kopyalar ayıklandı. ÖSYM: 2018–2026 TYT.</p>
     <button type="button" className="btn btn-primary" onClick={() => git(paket.duraklar[0].id)}>İlk durağa başla →</button>
   </section>;
 }
