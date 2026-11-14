@@ -311,60 +311,6 @@
         "testler/yks-birlestirme-test.py"
       ]
     },
-    "yks-baseline-safety": {
-      "kind": "python",
-      "args": [
-        "testler/yks-baseline-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_stages/database.py",
-        "scripts/yks_stages/evidence.py",
-        "scripts/yks_stages/stage_01.py",
-        "testler/yks-baseline-test.py",
-        "scripts/yks_stages/restore_cluster.py"
-      ]
-    },
-    "yks-inventory-safety": {
-      "kind": "python",
-      "args": [
-        "testler/yks-inventory-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_stages/stage_02.py",
-        "testler/yks-inventory-test.py"
-      ]
-    },
-    "yks-source-groups": {
-      "kind": "python",
-      "args": [
-        "testler/yks-source-groups-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_stages/stage_03.py",
-        "testler/yks-source-groups-test.py"
-      ]
-    },
-    "yks-private-restore": {
-      "kind": "python",
-      "args": [
-        "testler/yks-restore-cluster-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_stages/restore_cluster.py",
-        "testler/yks-restore-cluster-test.py"
-      ]
-    },
-    "yks-taxonomy-crosswalk": {
-      "inputs": [
-        "scripts/yks_taxonomy.py",
-        "scripts/yks_stages/stage_04.py",
-        "testler/yks-taxonomy-test.py"
-      ],
-      "kind": "python",
-      "args": [
-        "testler/yks-taxonomy-test.py"
-      ]
-    },
     "yks-source-resolver": {
       "kind": "python",
       "args": [
@@ -396,70 +342,10 @@
         "backend/src/test/java/com/hedefyks/topicpdf/SourceFileResolverTest.java"
       ]
     },
-    "yks-archive-preparation": {
-      "kind": "python",
-      "args": [
-        "testler/yks-archive-preparation-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_arsiv_hazirla.py",
-        "scripts/yks_kaynak.py",
-        "scripts/yks_birlestirme.py",
-        "testler/yks-archive-preparation-test.py"
-      ]
-    },
-    "yks-answer-observations": {
-      "kind": "python",
-      "args": [
-        "testler/yks-answer-observations-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_cevap_on_tarama.py",
-        "scripts/yks_pdf_on_tarama.py",
-        "testler/yks-answer-observations-test.py",
-        "scripts/yks_ocr_on_tarama.py",
-        "scripts/pdf_ocr_cache.py"
-      ]
-    },
-    "yks-key-pilot": {
-      "kind": "python",
-      "args": [
-        "testler/yks-key-pilot-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_anahtar_pilotu.py",
-        "scripts/yks_cevap_on_tarama.py",
-        "testler/yks-key-pilot-test.py"
-      ]
-    },
-    "yks-exact-reuse": {
-      "kind": "python",
-      "args": [
-        "testler/yks-exact-reuse-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_pilot_tekrar_kabul.py",
-        "scripts/yks_soru_pilotu.py",
-        "scripts/yks_anahtar_pilotu.py",
-        "testler/yks-exact-reuse-test.py"
-      ]
-    },
-    "yks-navigation-candidate": {
-      "kind": "python",
-      "args": [
-        "testler/yks-navigation-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_konu_agaci.py",
-        "scripts/yks-konu-agaci-kontrol.mjs",
-        "testler/yks-navigation-test.py"
-      ]
-    },
     "yks-navigation-ui-node": {
       "kind": "node",
       "args": [
         "--test-reporter=tap",
-        "testler/yks-navigation.test.mjs",
         "testler/yks-maintenance.test.mjs"
       ],
       "inputs": [
@@ -519,390 +405,26 @@
         "testler/lib/tarayici.mjs"
       ]
     },
-    "yks-key-transcription": {
-      "kind": "python",
-      "args": [
-        "testler/yks-key-transcription-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_anahtar_gorsel.py",
-        "scripts/yks_anahtar_cohort.py",
-        "testler/yks-key-transcription-test.py"
-      ]
-    },
-    "yks-diagnostic-boundaries": {
-      "kind": "python",
-      "args": [
-        "testler/yks-diagnostic-boundaries-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_pilot_sorular.py",
-        "scripts/yks_pilot_kaynaklari.py",
-        "testler/yks-diagnostic-boundaries-test.py"
-      ]
-    },
-    "yks-separate-source-key": {
-      "kind": "python",
-      "args": [
-        "testler/yks-separate-key-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_ayri_anahtar.py",
-        "scripts/yks_pilot_kaynaklari.py",
-        "testler/yks-separate-key-test.py"
-      ]
-    },
-    "yks-crop-integrity": {
-      "kind": "python",
-      "args": [
-        "testler/yks-crop-integrity-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_pilot_kirpim_kontrol.py",
-        "scripts/yks_pilot_sorular.py",
-        "testler/yks-crop-integrity-test.py"
-      ]
-    },
-    "yks-controlled-repeat": {
-      "kind": "python",
-      "args": [
-        "testler/yks-controlled-repeat-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_pilot_tekrar_incele.py",
-        "scripts/yks_pilot_tekrar_tara.py",
-        "scripts/yks_soru_pilotu.py",
-        "scripts/pdf_source_reconcile.py",
-        "scripts/yks_pilot_kabul_secimi.py",
-        "scripts/yks_stages/stage_08.py",
-        "testler/yks-controlled-repeat-test.py"
-      ]
-    },
-    "yks-mock-key-sections": {
-      "kind": "python",
-      "args": [
-        "testler/yks-mock-key-test.py"
-      ],
-      "inputs": [
-        "scripts/yks_deneme_anahtar_pilotu.py",
-        "scripts/yks_ortak_paragraf_pilotu.py",
-        "scripts/yks_taranmis_zip_pilotu.py",
-        "scripts/yks_pilot_riskleri.py",
-        "testler/yks-mock-key-test.py"
-      ]
-    },
-    "yks-novelty-content": {
-      "kind": "python",
-      "args": ["testler/yks-novelty-test.py"],
-      "inputs": ["scripts/yks_soru_yenilik_kontrol.py", "scripts/yks_secenek_degisimi.py", "testler/yks-novelty-test.py"]
-    },
-    "yks-topic-content": {
-      "kind": "python",
-      "args": ["testler/yks-topic-content-test.py"],
-      "inputs": ["scripts/yks_konu_icerik_incele.py", "scripts/yks_gorsel_konu_pilotu.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-topic-content-test.py"]
-    },
-    "yks-topic-semantic": {
-      "kind": "python",
-      "args": ["testler/yks-topic-semantic-test.py"],
-      "inputs": ["scripts/yks_konu_anlam_kontrol.py", "scripts/yks_konu_destek_istisna.py", "scripts/yks_kimya_konu_pilot_incele.py", "scripts/yks_konu_icerik_incele.py", "testler/yks-topic-semantic-test.py"]
-    },
-    "yks-pilot-package": {
-      "kind": "node",
-      "args": ["--test-reporter=tap", "testler/yks-pilot-package.test.mjs"],
-      "inputs": ["scripts/yks-pilot-package.mjs", "scripts/yks_stages/stage_09.py", "scripts/yks_pilot_kabul_secimi.py", "scripts/learning-resource-contract.mjs", "testler/yks-pilot-package.test.mjs"]
-    },
     "yks-isolated-pilot-proof": {
       "kind": "python",
-      "args": ["testler/yks-isolated-proof-test.py"],
-      "inputs": ["scripts/yks_izole_prova.py", "scripts/yks_izole_kanit.py", "scripts/yks_stages/stage_10.py", "scripts/yks-pilot-fixtures/YksSourcePilotTest.java", "testler/yks-isolated-proof-test.py", "backend/src/main/**/*", "backend/src/test/**/*", "backend/pom.xml", "scripts/resource-intake.mjs", "scripts/content-taxonomy.mjs", "scripts/learning-resource-contract.mjs", "frontend/src/resourceMetadata.js", "testler/backend-test.ps1", "yerel-ortam.ps1"]
-    },
-    "yks-full-key-reader": {
-      "kind": "python",
-      "args": ["testler/yks-full-key-test.py"],
-      "inputs": ["scripts/yks_tam_anahtar_taramasi.py", "scripts/yks_tam_anahtar_gorsel.py", "scripts/yks_anahtar_cohort.py", "scripts/yks_anahtar_gorsel.py", "scripts/yks_pilot_kaynaklari.py", "scripts/yks_pilot_sorular.py", "testler/yks-full-key-test.py"]
-    },
-    "yks-full-source-key-proofs": {
-      "kind": "python",
-      "args": ["testler/yks-full-source-key-test.py"],
-      "inputs": ["scripts/yks_tam_ayri_anahtar.py", "scripts/yks_tam_ayri_anahtar_gorsel.py", "scripts/yks_tam_kaynak_kontrol.py", "scripts/yks_buyuk_anahtar_incele.py", "scripts/yks_tam_soru_kirpim.py", "testler/yks-full-source-key-test.py"]
-    },
-    "yks-separate-full-book": {
-      "kind": "python",
-      "args": ["testler/yks-separate-book-full-test.py"],
-      "inputs": ["scripts/yks_tam_ayri_anahtar.py", "scripts/yks_buyuk_anahtar_incele.py", "scripts/yks_ayri_anahtar.py", "testler/yks-separate-book-full-test.py"]
-    },
-    "yks-full-visual-candidates": {
-      "kind": "python",
-      "args": ["testler/yks-visual-candidates-test.py"],
-      "inputs": ["scripts/yks_gorsel_aday.py", "scripts/yks_tam_tekrar_tara.py", "scripts/yks_tam_tekrar_incele.py", "scripts/yks_soru_pilotu.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-visual-candidates-test.py"]
-    },
-    "yks-crop-layout-repair": {
-      "kind": "python",
-      "args": ["testler/yks-crop-layout-repair-test.py"],
-      "inputs": ["scripts/yks_kirpim_istisna.py", "scripts/yks_pilot_sorular.py", "scripts/yks_pilot_kirpim_kontrol.py", "testler/yks-crop-layout-repair-test.py"]
-    },
-    "yks-answer-editions": {
-      "kind": "python",
-      "args": ["testler/yks-answer-edition-test.py"],
-      "inputs": ["scripts/yks_cevap_nusha_incele.py", "scripts/yks_tam_tekrar_incele.py", "testler/yks-answer-edition-test.py"]
-    },
-    "yks-shared-figure-source": {
-      "kind": "python",
-      "args": ["testler/yks-shared-figure-test.py"],
-      "inputs": ["scripts/yks_ortak_sekil_kirpim.py", "testler/yks-shared-figure-test.py"]
-    },
-    "yks-full-mock-keys": {
-      "kind": "python",
-      "args": ["testler/yks-full-mock-test.py"],
-      "inputs": ["scripts/yks_tam_deneme_anahtar.py", "scripts/yks_deneme_anahtar_pilotu.py", "scripts/yks_anahtar_gorsel.py", "testler/yks-full-mock-test.py"]
-    },
-    "yks-full-source-coverage": {
-      "kind": "python",
-      "args": ["testler/yks-full-scope-test.py"],
-      "inputs": ["scripts/yks_tam_kapsam.py", "testler/yks-full-scope-test.py"]
-    },
-    "yks-body-exceptions": {
-      "kind": "python",
-      "args": ["testler/yks-body-exception-test.py"],
-      "inputs": ["scripts/yks_govde_istisna_incele.py", "scripts/yks_kirpim_istisna.py", "scripts/yks_pilot_sorular.py", "testler/yks-body-exception-test.py"]
-    },
-    "yks-existing-source-transfer": {
-      "kind": "python",
-      "args": ["testler/yks-existing-transfer-test.py"],
-      "inputs": ["scripts/yks_mevcut_aktarim_kontrol.py", "scripts/pdf_sb_evidence.py", "scripts/pdf_source_scan.py", "testler/yks-existing-transfer-test.py"]
-    },
-    "yks-new-source-discovery": {
-      "kind": "python",
-      "args": ["testler/yks-new-source-discovery-test.py"],
-      "inputs": ["scripts/yks_yeni_pdf_soru_kesfi.py", "scripts/pdf-metin.py", "scripts/pdf_source_scan.py", "testler/yks-new-source-discovery-test.py"]
-    },
-    "yks-new-source-exam-scope": {
-      "kind": "python",
-      "args": ["testler/yks-new-source-exam-test.py"],
-      "inputs": ["scripts/yks_yeni_pdf_sinav_kapsami.py", "scripts/pdf_source_scan.py", "testler/yks-new-source-exam-test.py"]
-    },
-    "yks-evidence-archive": {
-      "kind": "python",
-      "args": ["testler/yks-evidence-archive-test.py"],
-      "inputs": ["scripts/yks_kanit_db.py", "scripts/yks-evidence-schema.sql", "testler/yks-evidence-archive-test.py"]
-    },
-    "yks-evidence-db-proof": {
-      "kind": "python",
-      "args": ["testler/yks-evidence-db-proof-test.py"],
-      "inputs": ["scripts/yks_kanit_db_prova.py", "scripts/yks-evidence-schema.sql", "scripts/yks-pilot-fixtures/YksEvidenceArchiveTest.java", "testler/yks-evidence-db-proof-test.py"]
-    },
-    "yks-raster-source-keys": {
-      "kind": "python",
-      "args": ["testler/yks-raster-key-test.py"],
-      "inputs": ["scripts/yks_raster_anahtar_incele.py", "scripts/yks_raster_soru_kirpim.py", "testler/yks-raster-key-test.py"]
-    },
-    "yks-mock-source-decoding": {
-      "kind": "python",
-      "args": ["testler/yks-mock-decoding-test.py"],
-      "inputs": ["scripts/yks_deneme_render_kontrol.py", "testler/yks-mock-decoding-test.py"]
-    },
-    "yks-body-exception-keys": {
-      "kind": "python",
-      "args": ["testler/yks-body-key-test.py"],
-      "inputs": ["scripts/yks_istisna_anahtar.py", "scripts/yks_istisna_kirpim.py", "scripts/yks_govde_istisna_incele.py", "scripts/yks_ortak_sekil_kirpim.py", "testler/yks-body-key-test.py"]
-    },
-    "yks-multikey-source": {
-      "kind": "python",
-      "args": ["testler/yks-multikey-source-test.py"],
-      "inputs": ["scripts/yks_coklu_test_anahtar.py", "scripts/yks_coklu_test_kirpim.py", "scripts/yks_ayri_anahtar.py", "testler/yks-multikey-source-test.py"]
-    },
-    "yks-mock-tag-layout": {
-      "kind": "python",
-      "args": ["testler/yks-mock-tag-test.py"],
-      "inputs": ["scripts/yks_deneme_etiket_kontrol.py", "testler/yks-mock-tag-test.py"]
-    },
-    "yks-mock-body-layout": {
-      "kind": "python",
-      "args": ["testler/yks-mock-body-test.py"],
-      "inputs": ["scripts/yks_deneme_govde.py", "scripts/yks_pilot_sorular.py", "scripts/yks_istisna_kirpim.py", "testler/yks-mock-body-test.py"]
-    },
-    "yks-rebound-literature": {
-      "kind": "python",
-      "args": ["testler/yks-rebound-literature-test.py"],
-      "inputs": ["scripts/yks_edebiyat_ayri_anahtar.py", "scripts/yks_coklu_test_kirpim.py", "testler/yks-rebound-literature-test.py"]
-    },
-    "yks-mock-printed-discipline": {
-      "kind": "python",
-      "args": ["testler/yks-mock-discipline-test.py"],
-      "inputs": ["scripts/yks_deneme_kapsam.py", "scripts/yks_deneme_govde.py", "scripts/yks_pilot_tekrar_incele.py", "testler/yks-mock-discipline-test.py"]
-    },
-    "yks-mock-answer-editions": {
-      "kind": "python",
-      "args": ["testler/yks-mock-answer-version-test.py"],
-      "inputs": ["scripts/yks_deneme_cevap_nusha.py", "scripts/yks_deneme_cevap_farki.py", "testler/yks-mock-answer-version-test.py"]
-    },
-    "yks-unkeyed-summary": {
-      "kind": "python",
-      "args": ["testler/yks-summary-document-test.py"],
-      "inputs": ["scripts/yks_ozet_belge_incele.py", "testler/yks-summary-document-test.py"]
-    },
-    "yks-din-book-keys": {
-      "kind": "python",
-      "args": ["testler/yks-din-book-keys-test.py"],
-      "inputs": ["scripts/yks_din_kitap_anahtar.py", "testler/yks-din-book-keys-test.py"]
-    },
-    "yks-din-book-bodies": {
-      "kind": "python",
-      "args": ["testler/yks-din-book-bodies-test.py"],
-      "inputs": ["scripts/yks_din_kitap_govde.py", "scripts/yks_din_istisna_incele.py", "scripts/yks_deneme_govde.py", "testler/yks-din-book-bodies-test.py"]
-    },
-    "yks-source-edition-pages": {
-      "kind": "python",
-      "args": ["testler/yks-source-page-equivalence-test.py"],
-      "inputs": ["scripts/yks_sayfa_esitligi.py", "testler/yks-source-page-equivalence-test.py"]
-    },
-    "yks-turkce-edition-reuse": {
-      "kind": "python",
-      "args": ["testler/yks-turkce-edition-reuse-test.py"],
-      "inputs": ["scripts/yks_turkce_nusha.py", "scripts/pdf_slide_compare.py", "testler/yks-turkce-edition-reuse-test.py"]
-    },
-    "yks-cross-source-candidates": {
-      "kind": "python",
-      "args": ["testler/yks-cross-source-test.py"],
-      "inputs": ["scripts/yks_partiler_arasi_tekrar.py", "scripts/yks_secenek_degisimi.py", "testler/yks-cross-source-test.py"]
-    },
-    "yks-cross-source-actual-images": {
-      "kind": "python",
-      "args": ["testler/yks-cross-source-visual-test.py"],
-      "inputs": ["scripts/yks_partiler_gorsel_incele.py", "scripts/yks_mevcut_gorsel_incele.py", "scripts/yks_banka_metin_eki.py", "scripts/yks_soru_yenilik_kontrol.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-cross-source-visual-test.py"]
-    },
-    "yks-pending-source-reuse": {
-      "kind": "python",
-      "args": ["testler/yks-pending-source-reuse-test.py"],
-      "inputs": ["scripts/yks_bekleyen_tekrar_kontrol.py", "scripts/yks_bekleyen_gorsel_incele.py", "scripts/yks_ek_bekleyen_tekrar.py", "scripts/yks_partiler_arasi_tekrar.py", "testler/yks-pending-source-reuse-test.py"]
-    },
-    "yks-intake-queue": {
-      "kind": "python",
-      "args": ["testler/yks-intake-queue-test.py"],
-      "inputs": ["scripts/yks_soru_kabul_kuyrugu.py", "testler/yks-intake-queue-test.py"]
-    },
-    "yks-mock-source-identity": {
-      "kind": "python",
-      "args": ["testler/yks-mock-source-identity-test.py"],
-      "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_deneme_govde.py", "scripts/yks_deneme_ders_gorsel_incele.py", "testler/yks-mock-source-identity-test.py"]
-    },
-    "yks-diagnostic-source-identity": {
-      "kind": "python",
-      "args": ["testler/yks-diagnostic-source-identity-test.py"],
-      "inputs": ["scripts/yks_tarama_eski_kimlik.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-diagnostic-source-identity-test.py"]
-    },
-    "yks-summary-body-geometry": {
-      "kind": "python",
-      "args": ["testler/yks-summary-body-geometry-test.py"],
-      "inputs": ["scripts/yks_fizik_ozet_govde_kesfi.py", "scripts/yks_fizik_ozet_yerlesim_incele.py", "scripts/yks_fizik_ozet_bes_govde.py", "testler/yks-summary-body-geometry-test.py"]
-    },
-    "yks-saved-key-signals": {
-      "kind": "python",
-      "args": ["testler/yks-saved-key-signal-test.py"],
-      "inputs": ["scripts/yks_kayitli_anahtar_kesfi.py", "scripts/yks_fizik_ozet_anahtar.py", "scripts/yks_fizik_ozet_anahtar_incele.py", "scripts/yks_fizik_ozet_anahtar_uzlastir.py", "scripts/yks_fizik_ozet_pilotu.py", "scripts/yks_fizik_ozet_banka_incele.py", "scripts/yks_fizik_ozet_konu_incele.py", "scripts/yks_fizik_ozet_ek_kaynak_kontrol.py", "testler/yks-saved-key-signal-test.py"]
-    },
-    "yks-crop-geometry": {
-      "kind": "python",
-      "args": ["testler/yks-crop-geometry-test.py"],
-      "inputs": ["scripts/yks_kirpim_geometri_kontrol.py", "scripts/yks_din_istisna_incele.py", "testler/yks-crop-geometry-test.py"]
-    },
-    "yks-chemistry-canonical-reuse": {
-      "kind": "python",
-      "args": ["testler/yks-chemistry-canonical-reuse-test.py"],
-      "inputs": ["scripts/yks_kimya_eski_kimlik.py", "testler/yks-chemistry-canonical-reuse-test.py"]
-    },
-    "yks-chemistry-visual-key": {
-      "kind": "python",
-      "args": ["testler/yks-chemistry-visual-key-test.py"],
-      "inputs": ["scripts/yks_kimya_gorsel_anahtar.py", "scripts/yks_kimya_gorsel_soru.py", "scripts/yks_anahtar_gorsel.py", "testler/yks-chemistry-visual-key-test.py"]
-    },
-    "yks-chemistry-question-editions": {
-      "kind": "python",
-      "args": ["testler/yks-chemistry-question-editions-test.py"],
-      "inputs": ["scripts/yks_kimya_soru_nushasi.py", "scripts/yks_pilot_sorular.py", "testler/yks-chemistry-question-editions-test.py"]
-    },
-    "yks-partial-chemistry-key": {
-      "kind": "python",
-      "args": ["testler/yks-partial-chemistry-key-test.py"],
-      "inputs": ["scripts/yks_kimya_kismi_anahtar.py", "scripts/yks_kimya_kismi_dogrula.py", "scripts/yks_kimya_soru_nushasi.py", "testler/yks-partial-chemistry-key-test.py"]
-    },
-    "yks-prior-occurrences": {
-      "kind": "python",
-      "args": ["testler/yks-prior-occurrences-test.py"],
-      "inputs": ["scripts/yks_kismi_kaynak_aktarimlari.py", "scripts/yks_mevcut_aktarim_kontrol.py", "testler/yks-prior-occurrences-test.py"]
-    },
-    "yks-booklet-prior-reuse": {
-      "kind": "python",
-      "args": ["testler/yks-booklet-prior-reuse-test.py"],
-      "inputs": ["scripts/yks_cikmis_aktarim_kaniti.py", "testler/yks-booklet-prior-reuse-test.py"]
-    },
-    "yks-full-topic-inputs": {
-      "kind": "python",
-      "args": ["testler/yks-full-topic-inputs-test.py"],
-      "inputs": ["scripts/yks_konu_girdileri.py", "scripts/yks_soru_konu_adaylari.py", "testler/yks-full-topic-inputs-test.py"]
-    },
-    "yks-reviewed-existing-transfer": {
-      "kind": "python",
-      "args": ["testler/yks-reviewed-transfer-test.py"],
-      "inputs": ["scripts/yks_incelenmis_aktarim_kontrol.py", "scripts/yks_kismi_incelenmis_aktarim.py", "scripts/pdf_slide_compare.py", "scripts/pdf_question_accept.py", "scripts/pdf_slide_questions.py", "testler/yks-reviewed-transfer-test.py"]
-    },
-    "yks-option-permutation": {
-      "kind": "python",
       "args": [
-        "testler/yks-option-permutation-test.py"
+        "testler/yks-isolated-proof-test.py"
       ],
       "inputs": [
-        "scripts/yks_secenek_degisimi.py",
-        "testler/yks-option-permutation-test.py"
-      ]
-    },
-    "yks-five-summary-comparison": {
-      "kind": "python",
-      "args": ["testler/yks-five-summary-comparison-test.py"],
-      "inputs": ["scripts/yks_fizik_bes_soru_tekrar.py", "scripts/yks_fizik_bes_soru_gorsel_incele.py", "scripts/yks_fizik_bes_soru_konu.py", "testler/yks-five-summary-comparison-test.py"]
-    },
-    "yks-summary-bound-bodies": {
-      "kind": "python",
-      "args": ["testler/yks-summary-bound-body-test.py"],
-      "inputs": ["scripts/yks_fizik_ozet_govde_bagla.py", "scripts/yks_fizik_ozet_kirpim_incele.py", "testler/yks-summary-bound-body-test.py"]
-    },
-    "yks08-selected-comparison": {
-      "kind": "python",
-      "args": ["testler/yks08-selected-comparison-test.py"],
-      "inputs": ["scripts/yks08_secili_karsilastirma.py", "testler/yks08-selected-comparison-test.py"]
-    },
-    "yks08-full-acceptance": {
-      "kind": "python",
-      "args": ["testler/yks08-full-acceptance-test.py"],
-      "inputs": ["scripts/yks08_tam_kabul.py", "testler/yks08-full-acceptance-test.py"]
-    },
-    "yks09-empty-package": {
-      "kind": "python",
-      "args": ["testler/yks09-empty-package-test.py"],
-      "inputs": ["scripts/yks09_bos_kabul_paketi.py", "testler/yks09-empty-package-test.py"]
-    },
-    "yks10-zero-transfer": {
-      "kind": "python",
-      "args": ["testler/yks10-zero-transfer-test.py"],
-      "inputs": ["scripts/yks10_sifir_aktarim_kabulu.py", "testler/yks10-zero-transfer-test.py"]
-    },
-    "yks07-selected-scope": {
-      "kind": "python",
-      "args": ["testler/yks07-selected-scope-test.py"],
-      "inputs": ["scripts/yks07_secili_kapsam.py", "testler/yks07-selected-scope-test.py", "scripts/yks-secim-politikasi.json"]
-    },
-    "yks-verifiable-only": {
-      "kind": "python",
-      "args": [
-        "testler/yks-verifiable-only-test.py"
-      ],
-      "inputs": [
-        "scripts/yks-secim-politikasi.json",
-        "scripts/yks_dogrulanabilir_secim.py",
-        "scripts/yks_fizik_ozet_ikinci_parti.py",
-        "scripts/yks_fizik_ozet_son_gecis.py",
-        "scripts/yks_soru_kabul_kuyrugu.py",
-        "testler/yks-verifiable-only-test.py"
+        "scripts/yks_izole_prova.py",
+        "scripts/yks_izole_kanit.py",
+        "scripts/yks_stages/stage_10.py",
+        "scripts/yks-pilot-fixtures/YksSourcePilotTest.java",
+        "testler/yks-isolated-proof-test.py",
+        "backend/src/main/**/*",
+        "backend/src/test/**/*",
+        "backend/pom.xml",
+        "scripts/resource-intake.mjs",
+        "scripts/content-taxonomy.mjs",
+        "scripts/learning-resource-contract.mjs",
+        "frontend/src/resourceMetadata.js",
+        "testler/backend-test.ps1",
+        "yerel-ortam.ps1"
       ]
     }
   },
@@ -1076,46 +598,6 @@
       ],
       "nextAction": "Gercek run ve ikinci gecis/reuse kanitini gorev tablosuna yaz; YKS-01 baseline ve yedeklere devam et."
     },
-    "YKS-01": {
-      "checks": [
-        "yks-baseline-safety",
-        "yks-private-restore"
-      ],
-      "remainingAcceptance": [
-        "Gercek ivme ve ogm_ders dump/ivme_test restore/tam tablo karsilastirma raporlari.",
-        "Soru gorselleri/icerik yedegi nesne hash kontrolu."
-      ],
-      "nextAction": "Gercek baseline ve restore isini izle; tum kanitlar gecince BITTI ve YKS-02."
-    },
-    "YKS-02": {
-      "checks": [
-        "yks-inventory-safety"
-      ],
-      "remainingAcceptance": [
-        "Gercek dort kokun ve ZIP PDF uyelerinin tam ve degismemis fiziksel envanteri."
-      ],
-      "nextAction": "YKS-01 kabulunden sonra gercek envanteri calistir; sonra YKS-03."
-    },
-    "YKS-03": {
-      "checks": [
-        "yks-source-groups"
-      ],
-      "remainingAcceptance": [
-        "Gercek YKS-02 envanteri ile guncel DB kapsam kaydinin uzlastirilmasi; kaynak silinmemesi."
-      ],
-      "nextAction": "YKS-02 dogrulaninca kesin ayni-bayt PDF gruplari ve onceki kapsam adaylarini cikart."
-    },
-    "YKS-04": {
-      "checks": [
-        "yks-taxonomy-crosswalk",
-        "yks-navigation-candidate"
-      ],
-      "remainingAcceptance": [
-        "Gerçek MEBİ sıra/branş/ağaç ve kontrollü şema kanıtı.",
-        "Eski tanımların tamamı aynı kalır; belirsiz kapsam eşdeğer sayılmaz, geçmiş taşınmaz. Canlı yayın YKS-11."
-      ],
-      "nextAction": "Doğrulanmış kimlik koruma ve MEBİ ağaç paketini YKS-05 üretici/okuyucu uyumuna bağla."
-    },
     "YKS-05": {
       "checks": [
         "yks-source-resolver",
@@ -1133,7 +615,6 @@
     },
     "YKS-06": {
       "checks": [
-        "yks-archive-preparation",
         "yks-archive-navigation"
       ],
       "remainingAcceptance": [
@@ -1141,97 +622,14 @@
       ],
       "nextAction": "PREPARED hedefi ve kökenleri doğrula; pilot öncesi ACTIVE yapma."
     },
-    "YKS-07": {
-      "checks": [
-        "yks-answer-observations",
-        "yks-key-pilot",
-        "yks-key-transcription",
-        "yks-diagnostic-boundaries",
-        "yks-separate-source-key",
-        "yks-crop-integrity",
-        "yks-mock-key-sections",
-        "yks-full-key-reader",
-        "yks-full-source-key-proofs",
-        "yks-separate-full-book",
-        "yks-crop-layout-repair",
-        "yks-shared-figure-source",
-        "yks-full-mock-keys",
-        "yks-full-source-coverage",
-        "yks-body-exceptions",
-        "yks-new-source-discovery",
-        "yks-new-source-exam-scope",
-        "yks-evidence-archive",
-        "yks-evidence-db-proof",
-        "yks-raster-source-keys",
-        "yks-mock-source-decoding",
-        "yks-body-exception-keys",
-        "yks-multikey-source",
-        "yks-mock-tag-layout",
-        "yks-mock-body-layout",
-        "yks-rebound-literature",
-        "yks-unkeyed-summary",
-        "yks-din-book-keys",
-        "yks-din-book-bodies",
-        "yks-source-edition-pages",
-        "yks-chemistry-question-editions",
-        "yks-chemistry-visual-key",
-        "yks-crop-geometry",
-        "yks-partial-chemistry-key",
-        "yks-saved-key-signals",
-        "yks-summary-body-geometry",
-        "yks-summary-bound-bodies",
-        "yks-verifiable-only",
-        "yks07-selected-scope"
-      ],
-      "remainingAcceptance": [
-        "Tam PDF gözlemi, görsel/OCR istisnaları ve anahtar-test-soru numarası kanıtı.",
-        "Tek anahtar pilotu tam arşiv veya soru çıkarım kabulü değildir."
-      ],
-      "nextAction": "Basılı anahtarı iki yöntemle doğrula; sonra soru kırpımı/tekrar karşılaştırması."
-    },
-    "YKS-08": {
-      "checks": [
-        "yks-exact-reuse",
-        "yks-controlled-repeat",
-        "yks-option-permutation",
-        "yks-novelty-content",
-        "yks-full-visual-candidates",
-        "yks-answer-editions",
-        "yks-existing-source-transfer",
-        "yks-reviewed-existing-transfer",
-        "yks-mock-printed-discipline",
-        "yks-mock-answer-editions",
-        "yks-turkce-edition-reuse",
-        "yks-cross-source-candidates",
-        "yks-cross-source-actual-images",
-        "yks-pending-source-reuse",
-        "yks-prior-occurrences",
-        "yks-booklet-prior-reuse",
-        "yks-chemistry-canonical-reuse",
-        "yks-intake-queue",
-        "yks-diagnostic-source-identity",
-        "yks-mock-source-identity",
-        "yks-five-summary-comparison",
-        "yks08-selected-comparison",
-        "yks08-full-acceptance"
-      ],
-      "remainingAcceptance": [
-        "Seçili tam arşiv karar defteri korunur: doğrulanmamış yeni soru adayları dışarıdadır.",
-        "YKS-09 yalnız gerçekten kabul edilebilir yeni soru varsa kaynaklı paket oluşturabilir."
-      ],
-      "nextAction": "YKS-09 için boş, yayımlanmayan kabul paketini kaydet; dışlanan adayı yeniden açma."
-    },
-    "YKS-09": {
-      "checks": ["yks-topic-content", "yks-topic-semantic", "yks-pilot-package", "yks-full-topic-inputs", "yks-five-summary-comparison", "yks09-empty-package"],
-      "remainingAcceptance": [
-        "Seçili tam kapsamda kabul edilebilir yeni soru yoktur; paket boş ve yayımlanmamıştır.",
-        "Sınırlı üç soruluk yalıtılmış pilot, tam kapsamda yayın/alım kararı değildir."
-      ],
-      "nextAction": "YKS-10’da sıfır aktarımlı tam geçiş kabulünü öğrenci DB’sine yazmadan yap."
-    },
     "YKS-10": {
-      "checks": ["yks-birlestirme-runtime", "yks-isolated-pilot-proof", "yks10-zero-transfer"],
-      "remainingAcceptance": ["Seçili tam paket boştur; bu kabul canlı cutover değil, sıfır aktarım güvenlik kararını doğrular."],
+      "checks": [
+        "yks-birlestirme-runtime",
+        "yks-isolated-pilot-proof"
+      ],
+      "remainingAcceptance": [
+        "Seçili tam paket boştur; bu kabul canlı cutover değil, sıfır aktarım güvenlik kararını doğrular."
+      ],
       "nextAction": "YKS-11 katalog/kaynak geçişini soru aktarımından bağımsız ve kontrollü hazırla."
     }
   }

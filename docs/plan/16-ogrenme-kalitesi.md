@@ -232,6 +232,7 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 - `mebi-yks` dosyalarını `Kaynaklar/`'a taşı, ivme'deki tekrarları sil; `mebi-yks` ve `EskiYollar` kaldırılır.
 - Proje yapısını uygula (yukarıdaki tablo): `pipeline` + `veri-hatti` → `araclar`, `icerik/data` → `uygulama/veri`, betik alt klasörleri; yollar tek sabit dosyasında.
 - Kabul: uygulama, PDF ekranı ve soru görselleri çalışır; öğrenci ve soru sayıları değişmez; boyut önce/sonra raporlu.
+- Yapılanlar (onaylı, `scripts/kaynak/sil.py`, günlük `veri/kaynak-kayit/silme-gunlugu.jsonl`): 2.094 video/ses (66,3 GiB) ve 2.591 tekrar dosya silindi; `video-hatti/medya`, `veri/yedek`, önbellekler, eski dökümler, `main-bank-transfer`, `yks-birlestirme` ve `source-inventory` çalışma çıktıları silindi (yalnız `yks-birlestirme/current.json`+`state.json`+`yol-uyumluluk` ve `single-test-crop-pilot` kaldı: canlı etiket hattı ve MebiPractice2PilotTest okur); kapanmış YKS/Pratik 2'nin 332 betik ve test dosyası `git rm` ile kaldırıldı (geri dönüş git), kalite profilinden 75 ölü kontrol çıkarıldı. D: 454 → 342 GiB. 97.061 soru görselinin tamamı `resimler-pilot`'ta; DB 97.061 soru, 12 kullanıcı. Kalan: zip (80), `Kaynaklar` ↔ `mebi-yks` birleştirme, soru PDF taşıma, proje yapısı, tek sabit dosyası.
 
 ## 16.04 — Öğretim standardı ve tasarım sistemi (Fable 5.2)
 - Konu paketi şeması, bileşen kataloğu, rubrik, dört ana yerin ve konu sayfasının ekran tasarımı, kişisel plan kuralları.
