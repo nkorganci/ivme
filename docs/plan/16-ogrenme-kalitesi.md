@@ -1,6 +1,6 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
-Durum: plan onaylı; 16.01 BITTI (belge düzeni uygulandı); sıradaki görev 16.02. Kalıcı kurallar
+Durum: plan onaylı; 16.01 BITTI (belge düzeni uygulandı); 16.02 BITTI (ölçüm ve kaynak kaydı); sıradaki görev 16.03 (kullanıcı onayıyla). Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -218,11 +218,12 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 - `AGENTS.md`'deki "Kaynaklar yalnız okunur" kuralını 16.03'ün silme kurallarıyla değiştir.
 - Kabul: `python scripts/ivme.py plan` ve `kontrol` geçer; satır sınırları tutar; kırık bağlantı yok.
 
-## 16.02 — Ölç ve kaynak kaydını kur (betik + Ollama; kod Sonnet 5.5)
+## 16.02 — Ölç ve kaynak kaydını kur (betik + Ollama; kod Sonnet 5.5) — BITTI
 - Sabit bağlantıları hesaba katan gerçek disk raporu; `uygulama/veri` alt klasör boyutları.
 - Kaynak kaydını doldur: hash, tür, konu eşleme (klasör ve `katalog.json` → `bge-m3` → `gpt-oss:20b`), bağlı soru sayısı.
 - Video bağlantı tablosu: `katalog.json` + YouTube; bağlantı denetimi; oturum isteyenler MEBİ sayfa adresiyle.
 - Kabul: her dosya kayıtta tek satır ve bir karar taşır; kararsız dosya sayısı raporlu.
+- Sonuç (`python scripts/ivme.py kaynak …`; rapor `veri/kaynak-kayit/`): görünen 386,7 GiB, gerçek disk 148,3 GiB (238 GiB sabit bağlantı tekrarı); Kaynaklar 87,9 GiB, mebi-yks 76,9 GiB (aynı dosyaların büyük kısmı ortak), `uygulama/veri` 49,7 GiB. Kayıt `kaynak_kaydi.dosyalar`: 12.140 fiziksel dosya = 12.140 satır, hepsinde SHA-256; karar: kalır 6.707 (9,2 GiB), silinir önerisi 4.685 (68,7 GiB: 2.094 video/ses, tekrar kopyalar, konuda 4'ten fazla anlatım), **kararsız (bekler) 748** (668 konusu belirlenemeyen konu anlatımı + 78 zip: içinde kayıtta olmayan üye + 2 adressiz zip). Konu eşleme: katalog/klasör 3.259, bge-m3 83, gpt-oss 110 (150 sınırı), belirsiz 2.940 (çoğu YKS dışı değil; eşik sıkı). Video tablosu `kaynak_kaydi.video_baglari`: MEBİ 2.094 adresin tamamı denetimden geçti (boyut eşit), YouTube 195 geçti / 184 ulaşılamadı (liste/oEmbed; 16.03'te elle bakılır). Silinen dosya yok; "silinir" yalnız öneridir.
 
 ## 16.03 — Sil ve yeniden düzenle (betik; kullanıcı onayıyla)
 - Kategori kategori kuru liste → onay → silme: video/ses, zip, tekrar PDF, önbellekler, eski dökümler, 4'ten fazla konu anlatımı.

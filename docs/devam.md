@@ -4,9 +4,9 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.02` — ölç ve kaynak kaydını kur ([16. adım](plan/16-ogrenme-kalitesi.md)) |
-| Son kapanan | `16.01` — Pratik 2 donduruldu, belgeler yeniden düzenlendi (`ivme.py plan` ve `kontrol` geçti) |
-| Sıradaki komut | `python scripts/kaynak/ölç.py` (16.02 ile oluşur); öncesinde `git status --short` |
+| Sıradaki görev | `16.03` — sil ve yeniden düzenle; her kategori kullanıcı onayı ister ([16. adım](plan/16-ogrenme-kalitesi.md)) |
+| Son kapanan | `16.01` belge düzeni, `16.02` ölçüm ve kaynak kaydı (12.140 dosya, 748 kararsız) |
+| Sıradaki komut | Kategori kuru listesi: `SELECT tur, karar, count(*), sum(boyut) FROM kaynak_kaydi.dosyalar GROUP BY 1,2` (`ivme.py kaynak` betikleri); silmeden önce DB dökümü |
 
 ## Dondurulan iş: Pratik 2
 

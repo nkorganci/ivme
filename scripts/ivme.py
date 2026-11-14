@@ -17,6 +17,7 @@ Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python
   python scripts/ivme.py ogretim dogrula|aktar Akıllı Öğretmen içerikleri (scripts/ogretim-icerigi.py)
   python scripts/ivme.py icerik durum|calistir|kontrol <kavram>   TAS-09 kaynaklı konu içerik hattı (scripts/icerik_hatti.py)
   python scripts/ivme.py video durum|calistir|kontrol <gorev>    TAS-11 zamanlı metin/kare/ipucu paketi (scripts/video_hatti.py)
+  python scripts/ivme.py kaynak disk_raporu|hashle|kayit|video|zip   16.02 kaynak kaydı (ölçüm, hash, karar)
   python scripts/ivme.py yks plan|durum|baslat|adim|dogrula ...  kontrollü YKS birleştirme ve kanıtlı devam
 """
 
@@ -406,6 +407,15 @@ def cmd_kalite(args):
     return run([python_for_tools(), "-X", "utf8", "scripts/kalite.py", *args]).returncode
 
 
+def cmd_kaynak(args):
+    """16.02 kaynak kaydı: disk_raporu | hashle | kayit | video | zip (scripts/kaynak/)."""
+    adlar = ("disk_raporu", "hashle", "kayit", "video", "zip")
+    if not args or args[0] not in adlar:
+        print("Kullanım: ivme.py kaynak " + "|".join(adlar) + " [seçenekler]")
+        return 2
+    return run([python_for_tools(), "-X", "utf8", f"scripts/kaynak/{args[0]}.py", *args[1:]]).returncode
+
+
 def cmd_yks(args):
     return run([python_for_tools(), "-X", "utf8", "scripts/yks_birlestirme.py", *(args or ["durum"])]).returncode
 
@@ -432,7 +442,7 @@ def cmd_devir_kontrol(args):
 
 COMMANDS = {"devir-kontrol": cmd_devir_kontrol, "durum": cmd_durum, "bekle": cmd_bekle, "test": cmd_test, "kontrol": cmd_kontrol, "ui": cmd_ui,
             "sayfa": cmd_sayfa, "plan": cmd_plan, "pdf": cmd_pdf, "ollama": cmd_ollama, "ogretim": cmd_ogretim,
-            "icerik": cmd_icerik, "video": cmd_video, "kalite": cmd_kalite, "yks": cmd_yks}
+            "icerik": cmd_icerik, "video": cmd_video, "kalite": cmd_kalite, "yks": cmd_yks, "kaynak": cmd_kaynak}
 
 
 def main(argv=None):
