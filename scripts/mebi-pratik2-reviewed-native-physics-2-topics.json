@@ -1,0 +1,1807 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q001",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "5e6d62bdac06cbe2a7c34a05086cf40ef6eecb1c0634c81e1f0bfd230b743c25",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Aynı düzlemde bulunan K¶, L¶ ve M¶ vektörleri şekilde verilmiştir. Düşey 1 br 1 br 1 br Yatay 1 br Buna göre K¶ + L¶ + M¶’nin",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q002",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "154059de17659d76ea88950f95309fd15e966043725029cd84a648a5b36287ab",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Aynı düzlem üzerinde bulunan, büyüklükleri eşit ve F kadar olan vektörler şekilde verilmiştir. F F F 60° 60° F Yatay 120° F Buna göre vektörlerin bileşkesinin büyüklüğü",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q003",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "3ba0d02b3c8570e170e127a7b5b082252dc32f44c5a163a5b732da4f45cc07d0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Sürtünmelerin ihmal edildiği eşit bölmeli düzlemde S noktasal cismine Şekil I’deki F¶1 ve F¶2 kuvvetleri uygulanıyor. S Şekil I Şekil II S cismine F¶1 ve F¶2 kuvvetleri",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q004",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "919374162b8eb54b362fb4c56feaf30b1b4a0f138fbebdc6de07b164bd944ab3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Sürtünmelerin ihmal edildiği eşit bölmeli düzlemde Şekil I’deki S noktasal cismine F¶1, F¶2, F¶3 ve F¶4 kuvvetleri uygulandığında cisim d doğrultusunda sabit hızla hareket etmektedir. II III",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q005",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "cb08878bf23c46fee9d249434c7f2657e8fae8b82ec1677f3df24a645d59eb1f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Uygulama noktası aynı olan F¶1 = (1,-1,-2) ile F¶2 = (0,2,3) vektörlerinin bileşkesi hangi seçenekte doğru verilmiştir? (Noktalar arası uzaklıklar eşit ve 1 birimdir.) A) y B)",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q006",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "3b8a218892d6834561ba67c5a178a896def2b21a555389a0c50cc1c855506e60",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Eşit kare bölmeli düzlemde bulunan vektörler şekilde verilmiştir. Buna göre I. K¶ + L¶ = N¶ + P¶ II. N¶ + P¶ = M¶ III. P¶ ñ",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q007",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "722e3a4572e3f0c815218aebb1b573a4cc5624dbed585029d0b84b9f137d0aa3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Eşit kare bölmeli düzlemde bulunan F¶1 ve F¶2 vektörleri şekilde verilmiştir. 1 br y 1 br O x Buna göre F¶1 ve F¶2 vektörlerinin bileşkesi aşağıdakilerden hangisinde",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q008",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "f0d5e8b97708c96f5b1ef287b1dd91275e97adbbd962a641105329642daeb0c9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aynı doğrusal yolda sabit hızlarla hareket etmekte olan K, L ve M araçlarından K ve L araçları arasındaki mesafe zamanla artmaktayken L ve M araçları arasındaki mesafe",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q009",
+      "categoryId": "excel.ayt.fizik.929d1cb087086739332d",
+      "imageSha256": "ad08f7644cd23c5f80d664aebe34787eb01a92bdaba89c4dfca01958ccd1fc1f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Düzgün altıgen üzerine yerleştirilmiş eşit büyüklükteki üç vektör şekilde verilmiştir. Buna göre I. A¶ + B¶ ñ C¶ = 0 II. |A¶ + B¶| = |B¶ ñ",
+      "rationale": "Bileşen/bileşke, vektör eşitliği ve kuvvetlerin vektörel toplamı doğrudan vektör işlemi olarak ölçülür; bağıl hız örnekleri ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q010",
+      "categoryId": "excel.ayt.fizik.aa6eb7917fd68640f3b9",
+      "imageSha256": "bec281869ded88a95799dd16814dc54b4e806e839b7d8fada0a0f46729fe90db",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Eş karelerden oluşan şekildeki sürtünmesi ihmal edilen xy düzlemi üzerinde bir araç, y doğrultusu üzerinde sabit sürat ile hareket etmektedir. Bu araç üzerine sadece A¶ kuvveti etki",
+      "rationale": "Hareketli araca uygulanan net kuvvetin yönü ve ivme/hızlanmaya etkisi Newton yasaları bağlamındadır; saf vektör çizimi sorusu değildir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q011",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "73bf36769bf8f85ec747b21fe545f080ed4af5e5ac25ad1ec9d854085c8984bf",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Akıntı hızının sabit ve v¶A olduğu bir nehirde şekildeki K ve L noktalarından aynı anda suya göre sabit büyüklükteki vX ve vY hızlarıyla akıntıya paralel geçen yüzücüler",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q012",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "a80b37131316a7fefdb754bad61b74c2ea4212a2f1c3cd3372e454e7b769c91a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Şekildeki K ve L araçlarından K aracı sabit hızla kuzeydoğu yönünde ilerlerken L aracı sabit hızla doğu yönünde ilerlemektedir. Kuzey Kuzeydoğu K L Doğu K aracı L",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q013",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "2bf9867f5ee0da13638a692ba53e72abc342a87f8893c5ed60f2bf8e1819fa08",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Aynı yönde sabit hızlarla hareket etmekte olan K, L ve M araçlarının süratleri arasındaki ilişki vK > vL > vM’dir. (0-t) zaman aralığında L aracındaki gözlemci K",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q014",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "de880afe4227cc6d26795b957857fb72534a37e2d74ff45636ead88e879da278",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Kuzey-güney doğrultusunda birbirine paralel raylarda sabit süratlerle hareket eden S, T, R trenlerinden T treni güney yönünde ilerlemektedir. T treninde oturmakta olan bir gözlemci S trenini kuzey",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q015",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "a2df4badf608afddc441975a4c375888b0f68b113a8944dbdc00fa29ad04516c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. O merkezli r ve 2r yarıçaplı çembersel yörüngelerde sabit süratlerle hareket etmekte olan S ve T araçlarından T aracının sürati v kadardır. Araçlar şekildeki konumlarından belirtilen yönlerde",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q016",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "9d963727bf35b2405bc8fd812ca89d4c0630bc352f22ded497a4bbcc845a2dfe",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Akıntı hızının sabit, kıyıya paralel olduğu bir nehirde suya göre hız büyüklükleri eşit olan S, T, R yüzücüleri aynı noktadan şekilde belirtilen yönlerde yüzmeye başlıyorlar. va R",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q017",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "aaad018bf758ce4b66ace25b98f7073c2909a2326596677a4e41faf5c9845e5b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Doğrusal bir yolda t = 0 anında aynı noktadan geçen S ve T araçlarının hız-zaman grafikleri şekilde verilmiştir. Hız 2v S v 0 Zaman t 2t -v",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q018",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "af4a0765214420dac147e3599a82c3f179cc358572a3d8ee0ce3b58796e83cd5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Kuzey-güney doğrultusunda hareket eden T, Y ve S cisimlerinin hız-zaman grafiği şekilde verilmiştir. Hız T Y 0 Zaman S T cismi kuzeye gittiğine göre I. S cismi",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q019",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "a53dfcefc76d4fcd696c007fcf910567244cc9464571b476a5fb971998cde4e6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Aynı düzlemde hareket eden A, B ve C cisimlerinin yere göre hız vektörleri sırasıyla A¶, B¶ ve C¶ olarak özdeş kareler üzerinde gösterilmiştir. A’ya göre C’nin hızının",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q020",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "e95994cc40af661c07698b9aa4180bb0bd06f5fca9060a5bc634ad99de7d5464",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Akıntı hızının sabit v¶A olduğu bir nehirde Y, S ve N yüzücüleri aynı noktadan suya göre sırasıyla v¶Y, v¶S ve v¶N hızlarıyla şekilde gösterildiği gibi yüzmeye başlayıp",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q021",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "34afd44294946a3c9903c666750b3e4061c3c697466b5cd12b7c1704fbc0acf6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Doğuya doğru 10 m/s hızla giden K aracındaki bir gözlemci L aracını 10§2 m/s hızla kuzeybatıya doğru gidiyormuş gibi görüyor. Buna göre L’nin yere göre hızı hangi",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q022",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "5ff7cf522e44fb8990df9d0f65177078312fcffbb18987527b46a947d146d8f5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Konum-zaman grafikleri verilen K ve L araçlarından K aracında bulunan gözlemci L aracını 20 m/s hızla doğu yönünde gidiyor olarak görmektedir. Konum L x K 0 Zaman",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q023",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "7d7d9ce2e4ec3a35f8b5fde0217ee212ea3363f3f1d59fb9e7ad5427d633d497",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. K hareketlisi L’yi kuzeye v hızıyla gidiyormuş gibi görüyor. Buna göre K ve L’nin yere göre hızlarının yönü ve büyüklüğü aşağıdakilerden hangisi olabilir? K’nin hızı L’nin hızı",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q024",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "6313c5b6cdbb0b37c687952250232b4da442c3fc5083a37b61384b7a4308f2bf",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Akıntı hızının sabit 3 m/s olduğu bir nehir üzerinde bir tekne akıntıyla ters yönde suya göre sabit 2 m/s hız büyüklüğü ile şekildeki gibi hareket etmektedir. Tekne",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q025",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "8fa011677847f88281e08ba2238bf1431b9a11595af9680ffd3a36c93f1ae73b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Aynı doğrultuda hareket eden A, B ve C araçlarının süratleri sırasıyla vA, vB ve vC’dir. A ve B aynı yönde giderken, C aracı ise diğer araçlarla zıt",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q026",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "337774499f18920d488358cc364c43b8055cc5cb27ef48969266422c8f8332e4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Sürtünmelerin ihmal edildiği yatay düzlemde, doğrusal bir yörüngede hareket eden X ve Y araçlarına ait konum-zaman grafikleri şekilde verilmiştir. Konum x X 0 Zaman t 2t Y",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q027",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "a4bd650161ab09f6af47825dc6be2083d1a799a3c5efe63451cd8bcca4f3bbab",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Eş karelere bölünmüş yatay düzlem üzerinde X ve Y araçları sabit süratlerle hareket etmektedir. Y aracının hız vektörü ile X aracının Y aracına göre hız vektörü vYX",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-d5f1f92999abd240-Q028",
+      "categoryId": "excel.ayt.fizik.0aae42cf447f096aa7eb",
+      "imageSha256": "5071f532d6998f6f96e9094a8aaa77ed77a37d95036e105ed016cd1953f37b34",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Bir havalimanındaki yürüyen bant yere göre doğu yönünde 2 m/s sabit hızla hareket etmektedir. K kişisi, bant üzerinde banda göre doğu yönünde 3 m/s hızla yürürken L",
+      "rationale": "Gözlemciye göre hız, nehir/akıntı ve yürüyen bantlarda referans sistemi dönüşümleri ölçülür; yalnız iki hızın bulunması konu kararı için kullanılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q001",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "822bd79bf9e1a67ea1c047a11d56aa37f9bac685c3fe51840527879184813d79",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Doğrusal bir yörüngede t süre boyunca sabit ivme ile hızlanmakta olan bir araç daha sonra 2t süre boyunca sabit ivme ile yavaşlayarak duruyor. Buna göre aracın I.",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q002",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "7f3666492d9a44dc429985867bf66d2dfaf079b011ff7d4fb1f3fb498855c141",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. K, L ve M araçlarına ait hız-zaman grafikleri sırasıyla Şekil I, Şekil II ve Şekil III’te verilmiştir. Hız Hız L K Zaman Zaman 0 t 2t 0",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q003",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "3f8f548924c7d197032683165d80ef08f480463fe943ea54e1bddd5bc252c877",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Doğrusal bir yolda hareket eden ve t = 0 anında yan yana olan K ve L araçlarına ait hız-zaman grafikleri şekilde verilmiştir. Hız v K L Zaman",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q004",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "ec5d2c860971e3da0ee6c10a9deea6c7bea60e215f8b71ff78789a302a58c353",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Şekildeki K ve L araçları doğrusal yolda zıt yönlü vK ve vL sabit hızlarla hareket etmektedir. K ve L araç sürücüleri, aralarındaki uzaklık 75 m iken aynı",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q005",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "e9e004d2b85ae166e5464ae9188c69f80830f7cdd773698a1d9af4bc1546ac7e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Doğrusal bir yolda sabit hızlarla hareket eden K ve L araçlarının hız büyüklükleri sırasıyla vK ve vL’dir. K aracının sürücüsü, L aracını aralarında 100 m mesafe varken",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q006",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "d057e24081fe343d782b36848b025acb185a00b8b4daa728e5187b560b5439b6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Hava direncinin ihmal edildiği bir ortamda hK yüksekliğinde bulunan K cismi v büyüklüğündeki hızla düşey doğrultuda aşağı yönde atıldığı anda, L cismi v büyüklüğündeki hızla yerden yukarı",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q008",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "be3580be9a2434db63ba75eacd4165e72b4ea6446da4f169a6d851cf78406a82",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Yer çekimi ivmesinin 10 m/s2 olduğu ve hava direncinin ihmal edildiği bir ortamda aralarında 30 m mesafe olan K ve L cisimleri sırasıyla vK ve 10 m/s",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q009",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "55adc6f23bf53252d53112795c3e2fa0f27c6ff2fa3cf4e084d32d392563b0c2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Yer çekimi ivmesinin 10 m/s2 olduğu ve hava direncinin ihmal edildiği bir ortamda düşey yukarı yönde atılan bir cisme ait hız-zaman grafiği şekilde verilmiştir. Hız (m/s) 0",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q010",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "5cf3a081a7deb00a86969c1cd4232925cdf4b847576b42080c3e3388a14836f2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Yer çekimi ivmesinin 10 m/s2 olduğu ve hava direncinin ihmal edildiği bir ortamda noktasal cisim düşey doğrultuda aşağı yönde şekildeki gibi 4 m/s hızla fırlatılıyor. x genişliğindeki",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q011",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "30661a59ab8a5cf0ca43fee024ded0bae62becbb54c2d84faac4f8db05c2ec76",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Hava direncinin ihmal edildiği bir ortamda düşey doğrultuda v büyüklüğündeki hızla şekildeki gibi yerden yukarıya doğru atılan bir cisim T noktasına kadar çıkabilmektedir. T L K v",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q012",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "cd0455f495edcc3ac4073fa9f9e47961e347718031af6a2579ffccebd11f0b0c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Yer çekimi ivmesinin 10 m/s2 olduğu ve hava direncinin ihmal edildiği bir ortamda 20 m/s’lik sabit hızla alçalmakta olan balondan bir cisim balona göre v büyüklüğündeki hızla",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q013",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "66008da6ce4e95f2c3b86b6e7ea6c366dcc8c798d3ec319061f3c19727e34f01",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Sürtünmelerin ihmal edildiği ortamda şekildeki konumlarından S cismi v hızı ile düşey yukarı atılırken T cismi serbest bırakılıyor. Cisimlerin yere ulaşana kadar izledikleri yörüngeler şekilde verilmiştir. v",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q014",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "2f48a44a80dc9fd46abb34ffb791a06e8a1aaa98df64d1a9c0124d1d07fc18aa",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Doğrusal bir yolda 10 m/s hızla hareket etmekte olan bir araç 5 saniye boyunca 2 m/s2 lik sabit ivmeyle hızlandıktan sonra 10 saniye boyunca sabit ivmeyle yavaşlayarak",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q015",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "bd3ff9374f7e581386f37cc72f748cd81bd892e1d3821f6e35615ddf5458f33e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Hava sürtünmesinin ihmal edildiği bir ortamda, durgun hâlden serbest bırakılan bir cisim hareketinin son üç saniyesinde 105 m yol alarak yere çarpıyor. Buna göre cisim kaç metre",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q016",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "7e8741ff86496dfccee1302fc4672dc586f168d0d321b2fafeb24ce89bd79d8e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Hava sürtünmesinin ihmal edildiği bir ortamda, aynı yükseklikten durgun hâlden serbest bırakılan Y, S ve N cisimlerinin kütleleri sırasıyla m, 2m ve 3m’dir. Cisimlerin yere ulaşma süreleri",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q017",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "4804e96d06cc93ef61374533835cd586e5564609cb700ae44b7c7e8bb1364cd9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Sürtünmelerin ihmal edildiği ortamda şekildeki konumlarından S cismi v1 büyüklüğündeki hız ile düşey yukarı atılırken T cismi serbest bırakılıyor. Cisimlerin yere ulaşana kadar izledikleri yörüngeler şekilde verilmiş",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q018",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "974802aa2dcb968978d8074b04470d37640de1a18465ea18fd9095405d52029e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Sürtünmelerin ihmal edildiği ortamda şekildeki konumundan S cismi v büyüklüğündeki hız ile düşey aşağı atılıyor. Cisim T seviyesinden 2v hızı ile geçip yere 3v hızı ile çarpmaktadır.",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q019",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "fea73991d0a899aa6f69faee2980d73d27bcf26ecd42f3c8f2222e97f0bb1143",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Hava sürtünmesinin ihmal edildiği bir ortamda, durgun hâlden serbest bırakılan Y, S ve N cisimlerinin yere olan yükseklikleri sırasıyla h, 2h ve 3h; yere ulaşma süreleri ise",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q020",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "ae7b04f33b11733c3091331ae26d41703819e2e62c32ffb1695241b68d0a1516",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Hava sürtünmesinin ihmal edildiği bir ortamda, durgun hâlden h1 yüksekliğinden serbest bırakılan Y cismi t sürede yere ulaşırken h2 yüksekliğinden serbest bırakılan S cismi t§3 sürede yere",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q021",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "7d7b269b88b7090f74e06ab9a6806d5b209f1c0b0db0c959f4f93693c2d38c80",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Hava sürtünmesinin ihmal edildiği iki farklı ortamda, durgun hâlden serbest bırakılan Y cisminin ivme-zaman grafiği ile S cisminin ivme-zaman grafiği sırasıyla Şekil I ve Şekil II’de verilmiştir.",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q022",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "67a53118b8591654072e955b5cfa050b9e50ce4026ec0f02479ce2c1ccde5cb7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Aynı hava ortamında durgun hâlden serbest bırakılan aynı maddeden yapılmış r yarıçaplı X küresi ile 2r yarıçaplı Y küresinin limit hız değerleri sırasıyla vX ve vY’dir. v",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q023",
+      "categoryId": "excel.ayt.fizik.600817ca6d74861e2919",
+      "imageSha256": "946ef2ae1241d8b7a484d13368b676431fd68896506c0f64f9bf566d6114e1f2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Hava ortamında serbest bırakılan veya hareket eden bazı cisimler, hava sürtünmesi nedeniyle sürekli hızlanamaz. Sürtünme kuvveti, cismin ağırlığına eşit olduğunda net kuvvet sıfır olur. Cisim bu andaki",
+      "rationale": "Doğrusal sabit ivmeli araç, serbest düşme, düşey hareket ve hava direncinde limit hız tek eksendeki hareketlerdir; yatay/eğik atışlar ayrı konuya alındı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q024",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "29247a843ec4831ac53ecd387e9330f58a431fe9742c1d701c187cf3e83a0e1e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Sürtünmelerin önemsiz olduğu bir ortamda h yüksekliğinden v = g • t yatay sürati ile atılan bir cisim t süre sonra x kadar uzaktaki düşey duvara çarpıp",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q025",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "6fd817671a8964c9fad6720f3e968db47326a302de08870c9e915ce897143683",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Sürtünmelerin ihmal edildiği ortamda yerden belirli bir yükseklikten yatay doğrultuda atılan bir cismin yere ulaşana kadar maksimum hız büyüklüğü, minimum hız büyüklüğünün §2 katı olmaktadır. Buna göre",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q026",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "19873869a61481b9b7a50867fdc3a12feeed22eb43355ea03acb4f6160e37a66",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Sürtünmelerin ihmal edildiği ortamda şekildeki konumlarından S ve T cisimleri sırasıyla v ve 2v hız büyüklükleri ile yatay olarak atılıyorlar. Cisimlerin yere ulaşana kadar izledikleri yörüngeler şekilde",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q027",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "cb2323fa4ee8accb82a7731f69692fe17a04cf85b31e2ceb20bac3dd95825413",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Sürtünmelerin ihmal edildiği ortamda yerden h kadar yükseklikten S cismi v hız büyüklüğü ile atıldığında yatayda h kadar yol alarak yere çarpıyor. v S h h yer",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q028",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "599be4c9c547a6a3e37101cf5608a65d9b8962c344490b26aac2e6d2406498ad",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Yatay sürati 5 m/s olan bir motorsiklet sürücüsü bir banketten yola şekildeki yürüngeyi izleyerek 0,75 saniyede düşüyor. v = 5 m/s Yatay Buna göre 45 I. Banketin",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q029",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "f60185b5ccec3cfb9469a2317e01e7832fbd8c5f5fe70f6f558ffa02d8f57b6c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. Sürtünmelerin önemsiz olduğu bir ortamda h yüksekliğinden v0 = 30 m/s yatay sürat ile atılan bir cisim 3 saniye sonra K noktasından geçerken; atıldıktan 4 saniye sonra",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q030",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "86884c6f988a0c20954280b50358470cbb9b5411f7ab582ba6c8cccefcc00c8a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "30. Sürtünmelerin ihmal edildiği bir ortamda düşey kesiti verilen K noktasındaki bir cisim yatay sürati v olacak sekilde atıldığında kesikli çizgi ile verilen yörüngeyi izleyerek 3 saniyede L",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q031",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "d881649a41d2cfa0c402488a4e4b4fee75fb37043d641ec6615335a11ffb19e9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "31. Sürtünmelerin ihmal edildiği ortamda bir cisim yerden eğik olarak atılıyor. Cismin maksimum yüksekliğe ulaşana kadar geçen sürede yatay ve düşey hızlarının zamana bağlı değişim grafikleri şekilde verilmiştir.",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q032",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "aeb63a7e57798390e22efc873e36cc2a7222a1c665a8787f80b838d1dce15ecd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "32. Sürtünmelerin ihmal edildiği ortamda yerden 25 m yükseklikten bir cisim 20 m/s hızla atıldığında yere 1,2 saniyede ulaşmaktadır. I V II III IV h = 25 m",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q033",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "a0ad11219d9bee95229dbe60997858977e6dbd11d303683315ab727f5fd73161",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "33. Sürtünmelerin ihmal edildiği ortamda bir cisim şekildeki S noktasından eğik olarak atılıyor. R noktası cismin izleyeceği yörüngenin en yüksek noktası olup cismin S noktasından E noktasına gelene",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q034",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "5e7e8590f9a1da043b13a921dc0677cc1f6e678b5b4d0bc70b0b8dbfe3c6ce00",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "34. Sürtünmelerin ihmal edildiği ortamda bir cisim şekildeki S noktasından eğik olarak atılıyor. O noktası cismin izleyeceği yörüngenin en yüksek noktası olup ISRI ve IKNI uzaklıkları 3x, INTI",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q035",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "e8b6daead230877427a58498b21cdc5ef72886114d45f3bba5e62b58f3967b6e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "35. Sürtünmelerin ihmal edildiği ve çekim ivmesinin 2g olduğu ortamda S ve T cisimleri yerden Şekil I’deki hızlarla, sürtünmelerin ihmal edildiği ve çekim ivmesinin g olduğu ortamda R",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q036",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "b884c0445de2e74b450d388829700381c2cc69ddebb2152f271ba06ba7fc5b75",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "36. Sürtünmelerin ihmal edildiği ortamda bir cisim yerden belirli bir yükseklikten atılıyor. Cismin yere ulaşana kadar geçen sürede yatay ve düşey hızlarının zamana bağlı değişim grafikleri Şekil I’de",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q037",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "a88ae65824bc2968fb32478c32e13b74ce87f6e7e3f93d4d7a9c318b84fdee34",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "37. Sürtünmelerin ihmal edildiği ortamda yerden 25 m yükseklikten bir cisim yatayla 45° açı yapacak şekilde 20§2 m/s hızla şekildeki gibi atılıyor. 20 m/s 45o Yatay 25 m",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q038",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "0808c8a0d039f51c11bd0ae8b055e63ee0881802dad75e972b06e62b5acadd75",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "38. Sürtünmelerin ihmal edildiği ortamda bir cisim şekildeki S noktasından v hızı ile eğik olarak atılıyor. Cismin izlediği yörünge boyunca sahip olduğu maksimum hız büyüklüğü, minimum hız büyüklüğünün",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fd1c4c9472384cef-Q039",
+      "categoryId": "excel.ayt.fizik.399b14643ce7fae9e7d9",
+      "imageSha256": "fcdb940aca67bb1efadd4e46bce5ab328a12ad56bd5c9ca844e89f7b7ecd5653",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "39. Sürtünmelerin ihmal edildiği ortamda S ve T cisimleri yerden şekilde gösterilen hızlarla eğik olarak atılıyor. S T Yer Buna göre cisimlerin I. uçuş süresi, II. çıkabileceği maksimum",
+      "rationale": "Yatay ve eğik iki boyutlu atışlarda uçuş süresi, menzil, maksimum yükseklik ve hız bileşenleri doğrudan ölçülür; düşey tek boyutlu grup ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q001",
+      "categoryId": "excel.tyt.fizik.8eb0a742280ebb0a7287",
+      "imageSha256": "daa1aeac08a8a6deec701fdaf51b66ba4098da6f3ddcf34a7c6478b9bc806658",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Evrenin sırlarını anlamak amacıyla kurulan CERN’de “Biz buraya nasıl geldik?” “Büyük patlamadan sonra antimaddeden daha fazla madde nasıl oluştu?” ve “Kütle nasıl oluştu?” gibi sorulara cevap aranıyor.",
+      "rationale": "Fiziğin alt dalları, fiziksel büyüklüklerin temel/türetilmiş-skaler/vektörel ayrımı, birimleri ve ölçümü doğrudan giriş konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q002",
+      "categoryId": "excel.tyt.fizik.8eb0a742280ebb0a7287",
+      "imageSha256": "f936f7a58c8e79fe19e325f1dc92282f7875ecf4e62e96082d8b4478c84b06d0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Ezgi, deniz kenarında yürüyüş yapmaya karar verir. Başlangıçta sabit bir hızla yürüyerek belirli bir mesafe kateder. Ancak deniz kıyısındaki kumluk bölgeye geldiğinde yavaşladığını fark eder. Bu süreçte,",
+      "rationale": "Fiziğin alt dalları, fiziksel büyüklüklerin temel/türetilmiş-skaler/vektörel ayrımı, birimleri ve ölçümü doğrudan giriş konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q003",
+      "categoryId": "excel.tyt.fizik.8eb0a742280ebb0a7287",
+      "imageSha256": "c54c33ce6760ccefb447a0bb245508c5f861128574a2ea379e717f6f35133707",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Aşağıda bazı teknolojik ürünler verilmiştir. Ürün Güneş panelleri Termos Elektrik motoru Bu ürünlerin geliştirilmesinde mekanik, termodinamik, elektromanyetizma, optik, katı hâl fiziği, atom fiziği ve nükleer fizik alt",
+      "rationale": "Fiziğin alt dalları, fiziksel büyüklüklerin temel/türetilmiş-skaler/vektörel ayrımı, birimleri ve ölçümü doğrudan giriş konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q004",
+      "categoryId": "excel.tyt.fizik.8eb0a742280ebb0a7287",
+      "imageSha256": "d24325da730c81ce7c96183e66f4bf5418f6dd1d7ac64db68388d75f119b31d8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Bazı fiziksel niceliklerin sınıflandırılması tabloda verilmiştir. Nicelik Sınıflandırma Kütle Temel – Skaler Kuvvet Türetilmiş – Vektörel Sürat Türetilmiş – Skaler İvme Temel – Vektörel Enerji Türetilmiş –",
+      "rationale": "Fiziğin alt dalları, fiziksel büyüklüklerin temel/türetilmiş-skaler/vektörel ayrımı, birimleri ve ölçümü doğrudan giriş konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q005",
+      "categoryId": "excel.tyt.fizik.8eb0a742280ebb0a7287",
+      "imageSha256": "b7041d227794a250590d618ffd1193a4bdd10a58039178b1f9ed230532dc97f4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Şekildeki eşit kollu terazinin sol kefesine 5 kg kütleli bir cisim, sağ kefeye ise tabloda kütleleri verilen cisimlerden bazıları eklenmektedir. S T 5 kg X Y Z",
+      "rationale": "Fiziğin alt dalları, fiziksel büyüklüklerin temel/türetilmiş-skaler/vektörel ayrımı, birimleri ve ölçümü doğrudan giriş konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q006",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "0f6c094c1707c00bc31462fd6dab141cfcb177eae9e778eb00975940cc34740c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "r 6. Kare prizma şeklindeki X cismi, yarıçapı olan 2 silindir şeklindeki Y cismi ve yarıçapı r olan küre şeklindeki Z cismi şekilde verilmiştir. X Y Z 2r",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q007",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "7bae540f6d428167af8d9f114a19194ecddfedf06746eb5e6989a45a374ae28d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Düşey kesiti şekilde verilen, taşma seviyesi 300 mL olan taşırma kabında 255 mL sıvı bulunmaktadır. Bu sıvıya Şekil II’de verilen yarıçapı 2 cm ve yüksekliği 5 cm",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q008",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "ec64d7f429083c20ecce463d6e6f00b6260ec2db1c1d510ebef67cc8e95f5ad7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Düşey kesiti verilen Şekil I’deki 2A taban alanına sahip kapta 4h yüksekliğinde m kütleli, Şekil II’deki 4A taban alanına sahip kapta 3h yüksekliğinde sıvılar bulunmaktadır. Bu sıvılar",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q009",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "c1cc3cbf95fefc7f5baebf34dd086584924f28a7dadf6094e5e7045b9e729626",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. K cismi Şekil I’deki gibi X sıvısı içinde yüzerken, Şekil II’deki Y sıvısında askıda kalıyor ve Şeki lII’teki Z sıvısında ise dibe batıyor. K Z sıvısı K",
+      "rationale": "Cismin farklı sıvılarda yüzme/askıda kalma/batma dengesinin değişimi doğrudan kaldırma kuvveti bağlamındadır; sırf özkütle sözcüğü nedeniyle Madde etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q010",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "a782d304ff62c8d9f30f0f7d253cb481ddba311156df2bcfdff264ef875a340e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Bir zeytinyağı üreticisinin elinde, özkütlesi 0,9 g/cm3 olan 45 kg zeytinyağı bulunmaktadır. Üretici bu yağı, farklı hacimlerdeki şişelere koyarak satış yapmayı planlamaktadır. Elindeki yağı tamamen şişelemek isteyen",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q012",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "213c261d080db8920df03cbae381b9499deb4a4a89f32f71340b7b81d184b3e0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Bir öğrenci, yapıldığı maddeyi belirlemek için şekli düzgün olmayan K metal parçasının kütlesini 156 g olarak ölçüyor. Daha sonra bu metal parçasını, içinde 50 mL su bulunan",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q013",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "ca55a794e50cab9a8553502a809d28a2619cc8b58a9930ca463027c107548621",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Saf bir cismin özkütle – kütle grafiği verilmiştir. Özkütle II I Kütle Buna göre cismin kütle – hacim grafiği I ve II bölgelerinde nasıl olmalıdır? A) Kütle",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q014",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "9ac9ec2b3633ff40a356f971ba65914bbfbe26958adecaee201203212b7cb1e3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Aşağıdaki tabloda sabit basınç altında K, L ve M sıvılarına ait sıcaklık, kütle ve hacim değerleri verilmiştir. Madde Sıcaklık (°C) Kütle (g) Hacim (cm3) K 15 30",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q015",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "b01f8e51c1bd67c4ec28756592de8f3356c5d19ef0b9f76703d008861f7c20fd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Maddelerin kendi ağırlıklarına ve dışarıdan etki eden başka kuvvetlere karşı şeklinin bozulmadan kalabilmesi için gösterdiği dirence dayanıklılık denir. Bir cismin dayanıklılığı, genellikle iki farklı bağlamda ele alınır",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q016",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "ef8f828fe61a6fcbb31b04b5db82f5a085b643d06136561fe76628c99b6bf9f1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Taban alanı A, yüksekliği h olan dikdörtgenler prizması şeklindeki cisim şekilde verilmiştir. A h Buna göre cismin şekli aynı kalacak şekilde I. cismin yapıldığı maddenin cinsi, II.",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q017",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "9b332ecd6ec6ac2e1aedd31ff18834a42bc2fbaa9eff3a1d4d46db53163eeb6a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Özdeş ve türdeş K, L, M dikdörtgen prizma şeklindeki katı cisimler, aşağıda kesikli çizgiler ile verilen doğrultularda kesilip A, B, C cisimlerine dönüştürülüyor. Düşey Yatay A B",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q018",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "c4fdf8ed538b08c8f56b6505bf3e1334774d50f752e1a11c057747bb45168a6f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Şekilde verilen aynı sıcaklıktaki, içleri dolu, türdeş X, Y, Z dik silindirlerinin kesit alanları sırasıyla A, 2A ve A’dır. Y ve Z silindirlerinin kendi ağırlıklarına karşı dayanıklılıkları",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q019",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "0d786def578b4b4712865a6cbad83f0d7308a1e7d9c6b073f7973a6babc47e34",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Özdeş kılcal borular farklı K, L ve M sıvılarına batırıldığında K sıvısı L sıvısına göre daha fazla yükselirken M sıvısı boru içinde alçalmaktadır. K L M Buna",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q020",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "9fba57f1d87a59b8081e2987a8d7b903719ec5903246f38fa00a98216f150676",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Aynı sıcaklıktaki saf K, L, M sıvılarından L sıvısının yüzey gerilimi, M sıvısının yüzey geriliminden küçük; K sıvısının yüzey geriliminden ise büyüktür. Buna göre aşağıdaki işlemlerden hangisinin",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q021",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "3a1ba41d2f0a4608e0e57aac6abdee3e799b06ca3bd9b818a859dcc3b7ba2a85",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. İki ucu açık cam boru, bir kaptaki sıvıya daldırıldığında şekildeki durum gözlemleniyor. Buna göre I. Kılcal borunun çapı küçültülürse sıvı boruda daha fazla alçalabilir. II. Kaptaki sıvının",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q022",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "e720a726ebb21638536d6c25a428ceeeb3d1569b8a224ed6bc2cc3ff8b682918",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Günlük hayatta karşılaştığımız kılcallık ve yüzey gerilimi ile ilgili bazı örnekler aşağıda verilmiştir. I. Yağmur damlasının küresel şekil alması II. Gaz lambasının fitilinde gazın yükselmesi III. Spor",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-e47b53b9b8fb84a6-Q023",
+      "categoryId": "excel.tyt.fizik.cf72fb119ec7f7d36953",
+      "imageSha256": "e8dd525c019c8dbbff6ebee32c2ef02b5bbc6f6a28c0e11fb1ed4f40c320f784",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. İki ucu açık, eşit kalınlıkta fakat farklı cins S ve T kılcal borularında sıvıların yükselme miktarları şekilde verilmiştir. S T Buna göre I. S ve T kılcal",
+      "rationale": "Kütle-hacim/özkütle, hacim ölçümü, dayanıklılık, adezyon-kohezyon, yüzey gerilimi ve kılcallık madde özellikleri olarak ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q001",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "eabe27beb2dc25d5505c9b5625ad6d7690543df6091c08a41ace2b5aeea6c749",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. I. Birim yük başına üretilen enerji, II. Bir iletkenin herhangi bir kesitinden birim zamanda geçen yük miktarı, III. Birim yükün iletken hat üzerinde herhangi iki nokta arasında",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q002",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "b9997bc6b9b47e3ff26c0a9f2355489ed5c21b7990a174d69e454d8ff052b8c5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. İç direnci önemsiz üreteç ve özdeş dirençlerle şekildeki devre kurulmuştur. V A + - Devredeki ideal voltmetre ve ampermetrenin yerlerinin değiştirilmesi durumunda gösterdikleri değerler nasıl değişir? Voltmetre",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q003",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "8ae5fcfb2003bbcb3f153341876336276410322a2ecdc846dcdfc07e46c2b884",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. K-L noktaları arasına 2 Ω ve 6 Ω’luk dirençler şekildeki gibi bağlanarak bir elektrik devresi kurulmuştur. 6 Ω 6 Ω 2 Ω 6 Ω K 6 Ω",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q004",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "cad63835bcf9420a59b4e51de21b962ea21ecb5aeae8ff16e5d86aa8c51d477b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. 2R ve 3R dirençleri ile ideal ampermetre ve voltmetre kullanılarak şekildeki elektrik devresi kuruluyor. Ayarlı üreteç 10 V gerilim oluşturduğunda ampermetre ve voltmetre aynı değeri göstermektedir. 2R",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q005",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "7140c0f4f605c0c01574c00b86228592088ecd9badc250143e6b238adbb6714a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Bir iletkenin uçları arasına uygulanan potansiyel farkın artması I. bu uçlar arasındaki direncin büyümesi, II. uçlar arasında birim zamanda harcanan enerjinin artması, III. birim zamanda bu iki",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q006",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "7899bf9b5bded01dec1e275a35c4c47ba03ce9b7a1ae4d9efe7d75786bac6b4a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. İç direnci önemsiz üreteç ve dirençleri ihmal edilebilecek kadar küçük telleri kullanarak Şekil I’de verilen basit elektrik devresini kuran Dide, ayarlı üretecin voltajını artırarak ideal ampermetre ve",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q007",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "16cad1a100cb332d0bf7fff9d2ae276703e2ae39bded1b43ed77910ef5f13153",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Şekilde sonsuz uzun düz bir telden geçen doğru akımın telin etrafında oluşturduğu manyetik alanın yönünün sağ el kuralı ile nasıl bulunduğu gösterilmiştir. Sağ el kuralına ve manyetik",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q008",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "cc0a57e820512b9d889cc92fb63144434e3e5a89816e560b01d37fef86579d4d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Özdeş K ve L lambaları ile iç direnci önemsiz V ve 2V potansiyel farka sahip üreteçler kullanılarak şekildeki gibi iki ayrı devre kuruluyor. K L V 2V",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q009",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "f7dc8a666708b23367d9d009dd43d9d455d97ec89b1aa2a90aa589995f745969",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Elektromıknatıslar günlük hayatta birçok alanda kullanılmaktadır. Hurda demir mıknatısı İndüksiyon ocağı Elektrik motoru Kulaklık Kapı zili Buna göre yukarıda verilen alanların kaçında elektromıknatıs kullanımı vardır? A) 1",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q010",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "3f67f902ff418f9562601a9c4c1c23d0da8b81d0e5bea0dd29ce8d0516abed2e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Yeterince uzun K telinden belirtilen yönde i akımı geçtiğinde A noktasında oluşturduğu manyetik alan şiddeti B olmaktadır. K i A Buna göre I. Ortamın manyetik geçirgenliği artırılırsa",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q011",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "bcf7a88bd7028782a71c1f44d51127798ee6226651623e03080b257b13d133a1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Plastikten imal edilmiş bir silindir üzerine dışı yalıtılmış iletken tel ile oluşturulmuş sarım sayısı N, sarım boyu L olan bir bobin, iç direnci önemsiz bir pil ve",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q012",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "7398ade418b2a35c35d28dd8caa49b69799d7a0adda1a9ef0a4c299e4b45928f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Bir elektrik motoruna verilen elektrik enerjisi I. kinetik enerji, II. ısı, III. ses türlerinden hangilerine dönüşebilir? A) Yalnız I B) Yalnız II C) I ve II D)",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q013",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "171f29802c6022f110a07df82cda3ae0f6639de97d44a9a9166e27415ccd4680",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Özdeş K, L ve M dirençleri ile iç direnci ihmal edilen üreteç kullanılarak şekildeki elektrik devresi oluşturuluyor. K M L V Buna göre aynı sürede I. K",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q014",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "e151291f97e3f497820c538208b8b402dfc9b2f4f6f3120618c6b4f3ab82871d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Özdeş K, L, M lambaları, reosta ve iç direnci ihmal edilen üreteç ile şekildeki elektrik devresi kuruluyor. ok K L M V Buna göre reosta sürgüsü ok",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q015",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "b034b680aa1c08826a45d51e40bb7d5aea3feb1d06f0ab56f6632c0f5dc5a0fe",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Direnç değerleri sırasıyla 3 6 ve 2 olan K, L ve M dirençleri ile potansiyel farkı 24 volt olan iç direnci ihmal edilmiş üreteç Ω, kullanılarak Ω",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q016",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "d0fb3282e7dac904b990432cb22f51d034ca108ff1ed2de4c55dc8289b66a265",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Evlerde elektrik güvenliğini sağlamak için I. eski yıpranmış elektrik kablolarını onarmak veya yenilemek, II. çocukların güvenliği için kapaklı prizler kullanmak, III. topraklama sistemini düzenli olarak kontrol etmek",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q017",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "a8c308c6e0849a1015105d1b5cea9f196bbb1ce78f84e3846bf9888503e16e65",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Tabloda bazı ev aletlerinin güçleri ve günlük çalışma süreleri verilmiştir Çalışma Elektrikli Ev Aleti Gücü (watt) Süresi (saat) Buz dolabı 200 24 Fırın 2400 2 Çamaşır makinesi",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q018",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "0f9c95dd6f5b15fdf2833f4940ac571c25444d17fd63fd8ac960aa22663eb7af",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Umut arkadaşlarıyla beraber doğa gezisine çıkıyor. Umut doğa gezisinde yönünü bulmak için yanında getirdiği pusulayı yatay bir yere koyduğunda pusula ibresi şekildeki gibi dengeye geliyor. d N",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q019",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "6003462c6e7ba4cd9be9d4f6a9e9a2a6f1d5c6d9fc33b48c81c1fe9ef9c30bee",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Bir öğrenci, ortası delik silindir şeklindeki özdeş üç mıknatısı, uçları sabitlenmiş ve sürtünmelerin ihmal edildiği ipe, şekilde gösterildiği gibi sırayla geçirir. Her bir mıknatıs denge konumuna geldikten",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q020",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "75e78ff009d816d0cdc12a46ecf9b1bcac0553ae9c974f7f9bfbac6400b8f1aa",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Özdeş çubuk mıknatıslar şekildeki gibi yan yana konuluyor ve manyetik alan çizgileri gözleniyor. Manyetik alan çizgilerinin 1 numaralı kutuptan çıktığı bilindiğine göre I. 2 numaralı kutup S",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q021",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "318e405f36d6e70ee13babcade1dddd0a435cc0b2efa84dd6973131cffb0e686",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Yatay düzlemde bulunan çubuk mıknatısın her iki tarafında, eşit uzaklıklarda, özdeş K ve L pusulaların ibreleri şekildeki gibi sabit tutulmaktadır. İbreler serbest bırakıldığında, şekilde gösterilen yönlerde dönmektedir.",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q022",
+      "categoryId": "excel.tyt.fizik.6237b95486e4029305bd",
+      "imageSha256": "300d54598186eafb71ffbb62b7a568d4c8a49aa26cb35acac1508da5816d7a88",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Dünya’nın çekirdeğindeki sıvı demir ve nikel, Dünya’nın kendi ekseni etrafındaki dönüşü nedeniyle sürekli hareket halindedir. Çekirdekteki elektrik yüklü sıvı haldeki demir ve nikelin bu hareketiyle oluşan elektrik",
+      "rationale": "Akımın manyetik alanı, elektromıknatıs, pusula, mıknatıs kutupları ve Dünyanın manyetik etkisi doğrudan TYT manyetizmadır; AYT indüksiyon konusu taşınmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q023",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "cbeb9e8231761719db7d07bbc70f4a0d4e694d3598785c54ce05a5588b4b6925",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Özdeş X ve Y lambaları, özdeş ve iç direnci önemsiz üreteçler ve ideal ampermetrelerle şekildeki elektrik devreleri kuruluyor. X Y A3 - + - + - +",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q024",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "34fb95794bec0e54ef4dadf4701276c86727fdae8102ac1aa6cf50df0343bc39",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Özdeş dirençler, ideal ampermetreler ve iç direnci önemsiz özdeş üreteçlerle kurulmuş şekildeki devrelerde A1 ampermetresinin gösterdiği değer 2 amperdir. R R A1 A2 + V - +",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q025",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "90935c50e5177a58a48b8a4c87fcd3ef787e84d10884c7ac314c089ab9dca476",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Bir öğrenci özdeş lambalar ve iç direnci önemsiz özdeş 1,5 V’luk üreteçler ile şekildeki devreleri kuruyor. Yaptığı deney sonucunda L lambasının K lambasından daha parlak yandığını ve",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q026",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "0ca7210292dfb92a4bf1a63a751b56c712e92b42e9465518183481ac09e067fc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Lamba, ideal voltmetre ve iç direnci önemsiz gerilimi 6 V ve 3 V olan üreteçlerle şekildeki elektrik devresi kuruluyor. Lamba V Voltmetre + - + - -",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q027",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "31f154407c2d0645aef8a7a8ba2d7b6ec69761c2e0c70d89644bf16880019d06",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Özdeş dirençler, ideal voltmetreler ve iç direnci önemsiz potansiyel farkları V, 2V olan üreteçlerle şekildeki elektrik devreleri kuruluyor. R R V1 V2 V + - 2V +",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-60a4fc8a050c0fe5-Q028",
+      "categoryId": "excel.tyt.fizik.fbf782fc37f385b10904",
+      "imageSha256": "dc45ae9a58200693dd9efbc0072f160df754fbba9d027ef182e6913d44041bd5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Özdeş X, Y, Z lambaları ve iç direnci önemsiz özdeş üreteçlerle şekildeki elektrik devreleri kuruluyor. X Y Z + - M + - + - + -",
+      "rationale": "Ohm/direnç, üreteç bağlanması, ampermetre-voltmetre ve elektrik enerjisi/gücü ile devre güvenliği doğrudan TYT elektrik devreleri kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q001",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "17b8e5d53e609aeacc5f072e055e56fc54614699a6d30dda8265622eb6ffc496",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Yatay bir masada, servis tabağının üzerinde içerisinde çorba bulunan bir kase bulunmaktadır. Başlangıçta elinde kaşık bulunan Ahmet, çorbadan bir miktar içtikten sonra kaşığı servis tabağının üzerine koyuyor.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q002",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "7318270aafefa666b630ad138d682d35d3c8ce5cccb02eb47c17d6fa5322f901",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Bir marangoz, küp şeklindeki tahta bloğu L yüzeyi üstte kalacak şekilde tezgahın üzerine bıraktığında, tahtanın tezgaha uyguladığı basınç P olmaktadır. Daha sonra marangoz, tahtanın L yüzeyinden başlayarak",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q003",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "60b9ed87b26cde5ee644f9e69f12a2c3c86ee48ee52e13714a4912c559cc5812",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Spor salonuna giden üç arkadaş, kendi aralarında türdeş ve yarıçapları ağırlıkları ile orantılı olan 25 kg, 10 kg ve 5 kg ağırlık plakalarını kullanarak spor yapmaktadır. Ağırlıklar",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q004",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "7558f16077ace1eaa4cac46c30b2296688982c4d20517b069455a39918be2fda",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Sabit makaralar, kuvvetten kazanç sağlamayan ancak kuvvetin yönünü değiştirerek iş kolaylığı sağlayan düzeneklerdir. Bir çocuk, sabit makara ve ağırlıksız ipten oluşan bir düzenek yardımıyla, bir yükü yukarıya",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q005",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "4d60975756e33530829aa57df48564b9d1a8770204bb3cc241688049461bbb60",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Düşey kesiti verilen aynı taban alanına sahip X ve Y kaplarında bulunan kendi içinde türdeş sıvıların kap tabanlarına yaptıkları sıvı basınçları eşittir. X Y Buna göre I.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q006",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "dbf5f59c50e9bc915dd87941640bcc255f2491c56b787b0e6475ca99f27c7a4e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Katı basıncının nelere bağlı olduğunu gözlemlemek isteyen üç öğrenci, zemini homojen olan kumsalda oluşturdukları iz derinliklerini gözlemleyerek deneyler gerçekleştirmek üzere farklı ikili kombinasyonlar oluşturarak gruplar halinde yürümeye",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q007",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "4b321f667877abfd6ce50087219a07f6eb6aac782860ccc1e91b8b5a4da08ebb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Düşey kesiti verilen kabın yarı yüksekliğini dolduran d özkütleli sıvının kap tabanına yaptığı sıvı basıncı P kadardır. Kabın kalanı bu sıvı ile karışmayan özkütlesi sıvınınkinden daha büyük",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q008",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "74b6f97bb0fb7290075d8847d293c7fe188e52409b3a0b3465d7e4a59104702f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Düşey kesiti verilen kaplarda, dolu olan K kabındaki sıvının tamamı boş olan L kabına taşmayacak şekilde aktarılıyor. K L Buna göre L kabına gelen sıvı için I.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q009",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "e0134d00b9256f9d737d63c2f05f27189a5a5f40c2f309298c45feac434bb9f1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. İçerisine bir bardak su konulan herhangi bir kaba aynı bardakla bir bardak daha su eklenirse I. Kap tabanındaki sıvı basıncı II. Kap tabanındaki sıvı basınç kuvveti III.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q010",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "567c2ecff75b0e75129635c5aa35085eda730654cff3a8b5983dcbf9964423fd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Sıvı basıncı ile ilgili olarak I. Durgun sıvılar, sıvı yüzeyinin altında değdikleri her yüzeye dik olacak şekilde basınç kuvveti uygular. II. Sıvılar sıkıştırılamaz kabul edilir ve akışkan",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q011",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "27aaf721097ae8af3110f6344bea82f4cb93f7d0cab564eea1d3e22f6b3e163a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Bir grup dağcı, deniz seviyesinden 3000 metre yüksekliğe tırmanmaktadır. Tırmanış sırasında, çantalarında bulunan yarı dolu plastik su şişelerinin hacimlerinde değişiklikler gözlemlerler. Deniz seviyesinde normal olan şişeler, yüksek",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q012",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "54757eacf303248fb8239cff8517df17bd40a46b565ab8fbb8ed5efcbffb960b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Bir grup lise öğrencisi, fizik dersinde basınç ölçüm aletleri üzerine bir proje hazırlamaktadır. Proje kapsamında, farklı meslek gruplarının hangi basınç ölçüm aletlerini, hangi amaçlarla kullandığını araştırmaları gerekmektedir.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q013",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "8c1ca792916e2564e629895abf8553d8c8b4e87ec88ac25dd3f73d49fa428f14",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Açık hava basıncını ölçmek için hazırlanmış bir Torricelli deneyi düzeneğinde cıva dolu cam tüp cıva dolu kaba batırılarak Şekil I'deki durumu aldığında, tüp içindeki civanın dik yüksekliği",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q014",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "08a42d85ee0f8510afe919e54309e4dd6fd146c0def036c371348acd183e75da",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Gazların oluşturdukları basınç ile ilgili I. Kapalı bir kaptaki gaz tanecikleri hareketinden dolayı kap yüzeylerine ve birbirlerine etkide bulunarak basınca sebep olurlar. II. Kapalı bir kaptaki gaz",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q015",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "84175e200afb623d5fc551766aca319e07bf5738d4ae601212bea9bf0acfc190",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Düşey kesiti şekildeki gibi olan sistemde sürtünmesiz ve sızdırmaz piston, sıvı ve gaz ile oluşturulan sistem dengedeyken kap tabanındaki toplam basınç P, gaz basıncı ise Pgaz’dır. F",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q016",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "f5565b4e7a3d9b9f1b0895e3ae1c410e67e295ab640252b5caaaaec3bae2241b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Bernoulli İlkesi'ne göre akışkanların sürati arttığında akışkanın temas ettiği yüzeye yaptığı basınç azalır. Buna göre I. fırtınalı havalarda çatıların uçması, II. sprey püskürtücülerin çalışma prensibi, III. uçağın",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q017",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "50b8341aaecda8b716221ed30ab73c43254a45a9b2fc671e4b842b4a113fff3c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. I. Kışın rüzgârlı günlerde II. Musluktan akan evlerin bacasından çıkan suyun aşağı doğru dumanların rüzgârsız indikçe incelmesi günlere göre bacadan daha hızlı yükselmesi III. Saça sürtülen bir",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q018",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "25c0321c35a75062e6d27906b2bc5f66b6dcee6de0a329474a7b7703abaa8b4f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Rüzgârlı bir günde şemsiye kullanılırken şemsiyenin ters dönmesi olayı ile sıklıkla karşılaşılır. Buna göre I. Şemsiyenin üst yüzeyi bombeli olduğundan üzerinden geçen havanın sürati arttığından, şemsiyenin üst",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q019",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "8bae794ab63c4cfd72b05988f671fe59c72210084b03a1c89a844014b065f5ec",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Düşey kesit alanları arasındaki ilişki K > M > L olan şekildeki borunun içinden akan sıvının K, L ve M bölgelerindeki sürati sırasıyla v1, v2 ve v3’tür.",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q020",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "59a7ba48d284b08e1a026f4b8bea7b02682c67563fa7062b0c7bd20a7f893cbd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Şekil I’de rüzgarlı havada çatının iç ve dış kısmındaki K ve L noktalarında hava basınçları PK ve PL’dir. Şekil II’de havalanan uçağın kanadının üst ve alt kısmındaki",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q021",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "eb714953495500b976bc1064c32f6d94b6b86b451d5f0848c6661a5113756b82",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Düşey kesiti şekildeki gibi olan, camdan yapılmış, içinde durgun hava bulunan borunun altına bağlı U borusundaki sıvı seviyeleri Şekil I’de eşittir. Borunun içindeki hava hareketlendirildiğinde sıvı seviyeleri",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q022",
+      "categoryId": "excel.tyt.fizik.78af8c8cb6243b514cb3",
+      "imageSha256": "ec38f29a2266b8192ceac6eb2959c24698eed4c7ee14711219cd3b31b4316e58",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Akışkanlarla ilgili günlük hayatta karşılaşılan birçok olay Bernoulli İlkesi ile açıklanmaktadır. Buna göre I. ağaçların kökleriyle aldıkları suyu yapraklarına iletmesi, II. yüksek süratli hareket eden araçların yan",
+      "rationale": "Katı/sıvı/gaz/açık hava basıncı, Torricelli, basınç ölçer ve Bernoulli-akışkan basıncı doğrudan ölçülür; aerodinamik kaldırma Archimedes sıvı kaldırmasıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q023",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "a938ccd5d5b9b9c939f2cae58aff57c87663773992cb4e59c462674f73fa9ea9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Yüksek noktadan havuza atlayan çocuğun tamamen suya battıktan bir süre sonra kendiliğinden su yüzeyine doğru yükseldiği gözlemlenmiştir. Buna göre çocuğun kendiliğinden su yüzeyine yükselmesinin nedeni aşağıdakilerden hangisidir?",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q024",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "e23e9e4f9db90221adbe88d4561705dfe357a6823bb43a7ac2bddae923e24a73",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Bir çocuk, üzerine demir bilyeler koyduğu oyuncak gemisini, oyuncak havuzunda yüzdürüyor. Gemi, üzerindeki bilyeler ile su üzerinde dengede iken, gemi ve bilyelerden oluşan sisteme etki eden kaldırma",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q025",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "26a604bb341910cec672fb462a0ad9a30c079acf1dbbc4eaf16d036b9daa2c17",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Bazı ülkelerde salların bambudan yapılmasının sebebi bambunun içi boş ve hafif malzeme olması, dolasıyla özkütlesinin sudan daha az olmasıdır. Bambu çubuklarının birbirine bağlanmasıyla oluşturulan sal, suya bırakıldığında",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q026",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "7dc86de7c8e4ce7d0f4d6c36fb91081156347e0c15f3f94c4f9c5bf4453d1d4e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Suda çözünmeyen X ve Y cisimleri, tamamı su dolu olan taşırma kaplarına ayrı ayrı bırakıldıklarında aşağıdaki durumlar gözlemleniyor. • X cismi ile Y cismi aynı hacimde su",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q027",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "ebbaee371a5d25a61c9bc0a137aff3641d29f8b26b3ce333e64e6ed341a92ef8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Birbiriyle karışmayan saf K ve L sıvılarına ait kütle-hacim grafiği verilmiştir. X cismi, K sıvısı içerisindeyken Şekil I’deki gibi dengede kalmaktadır. Kütle X cismi K L K",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q028",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "352b5460e6129a687ef78b88c9cdf1fb8167cb0db7ec04c0b9d037f4f73ee919",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Düşey kesiti verilen kapta, eşit hacim bölmeli, homojen X, Y ve Z katı cisimleri sıvı içerisinde şekildeki gibi dengededir. Z X Y Buna göre I. Y’nin özkütlesi",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-9054eed03af174e6-Q029",
+      "categoryId": "excel.tyt.fizik.60627fab0e22c302995a",
+      "imageSha256": "cd134fbb82adec0eb4ce8bdfc873dda798c4c897f647950a1a90f69814ebde43",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. Su dolu bir kaba tamamen daldırılan K cismi serbest bırakıldığında K cisminin yukarı doğru hareket ederek yüzeye çıktığı ve bir kısmının su dışında kalacak şekilde dengede kaldığı",
+      "rationale": "Sıvı içinde yüzme-batma/denge, taşan su ve kaldırma kuvvetinin ağırlık/batan hacimle ilişkisi Archimedes kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q002",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "223475c6b1da54855a9aa595e4b61ca15f7a01541924d02465c6d7c5c60f224b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Işık şiddeti I olan noktasal ışık kaynakları, yarıçapları sırasıyla r, 2r ve 3r olan K, L ve M yarım kürelerinin tam merkez noktalarına şekildeki gibi yerleştirilmiştir. I",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q003",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "bceb2058becb05b9d0eb09aacc4c9a5096a8216720e851cf43a470f9b60aab40",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Düşey düzlemdeki alanı A olan X levhasının önüne, levhanın orta noktasından d kadar uzağa ışık şiddeti I olan noktasal ışık kaynağı konuluyor. Levhanın diğer tarafına da levhanın",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q004",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "eb0a44d55e85978b76d7aac281964b7bbd9aadc146def0eb1f80550a87bdae91",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Karanlık bir ortamda saydam olmayan cisim, noktasal olmayan bir ışık kaynağının önüne konulup beyaz bir perde üzerine düşen gölge deseni incelendiğinde perde üzerinde tam gölge, yarı gölge",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q005",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "001833b7e39980c055bb97aaed8dc0f25634a698a2de69e60e13449873929bb8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Karanlık bir ortamda noktasal I ışık kaynağı ile yeterince uzun bir perde arasına küresel X ve küp şeklindeki Y opak cisimleri şekilde verilen konumlarında yerleştiriliyor. Perde I",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q006",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "2c94ac0fa16780cd46ccac499cbbe1d88b547eed4fd2879c2c022f526a8608db",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Eşit kare bölmeli düzlemde noktasal Y ve S ışık kaynakları ile saydam olmayan cisimler bir perde önüne şekilde verilen konumlarında yerleştiriliyor. K Y L M S N",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q007",
+      "categoryId": "excel.tyt.fizik.bb868e66e8da3148b8d6",
+      "imageSha256": "6efc739914e8d6ce833bf27b123f351a5a08b66bf63fd8999b1d42066ce433ef",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Güneş ve Dünya’ya göre anlık konumları Şekil I’de verilen Y, S ve N noktalarında uzay istasyonları bulunmaktadır. S Y N Şekil I Şekil II Şekil III Şekil",
+      "rationale": "Işık akısı/aydınlanma ve noktasal kaynakların opak cisimle oluşturduğu tam-yarı gölge/Tutulma ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q008",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "a7534d422c34a0560cf49bfeee2d81d81c7c77d2ebb97241d2e784c350026f2d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Eşit kare bölmelere ayrılmış şekildeki düzlemde noktasal bir cismin düzlem aynalarda oluşan görüntülerinden biri K noktasındadır. S R K N T U Buna göre aynı cismin S,",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q009",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "2973647e0e072e58e89aa11fd6cc3b35d0badb924f5a27d4e3ecd80157e29e66",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Eşit kare bölmelere ayrılmış düzleme S, R, K, N noktasal cisimleri ve düzlem aynalar şekildeki gibi yerleştirilmiştir. G K N S R Buna göre G noktasında bulunan",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q010",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "98003ca6be591b9ca0d2cf0ead64886cfd5ce7f0b553a6829d095ef57c125298",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Eşit kare bölmelere ayrılmış düzleme X noktasal ışık kaynağı ve düzlem aynalar şekildeki gibi yerleştirilmiştir. K N X R S Buna göre X noktasal ışık kaynağından çıkarak",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q011",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "d78cb5ab6132d5baf5c3d4a8c1eb90b7b1b803b1847ab4950655c4fa05aae80b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Eşit kare bölmelere ayrılmış düzleme S noktasal cismi ve düzlem ayna şekildeki gibi yerleştirilmiştir. G +y +x −x S 1 br −y Buna göre G noktasında bulunan",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q012",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "1efcbf379c7a44ecec6fc771cee044b1d86d56152627cac5a958d7991df8c3e7",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Bir öğrenci fizik dersinde A4 kağıdı üzerine düzlem aynada ışınların yansıması ile ilgili bir çizim yapmış ve düzlem aynaya gönderilen I ışınının aynadan yansımış halini çizmiştir. Fakat",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q013",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "eca0c97bb2e7502695526fa182cbdb2594a80abb5331427087fa03d8a2409ebf",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Odak noktası F, merkez noktası M olan tümsek aynanın asal eksenine paralel olacak şekilde Y ışını, M noktasına doğru X ışını gönderiliyor. X R S K H",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q014",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "3c4811ac52a75b9b99dc14be117b696465f5ba1a0129cf401d8c92fcdb2c0397",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Asal eksenleri çakışık olan şekildeki X ve Y çukur aynalarının odak uzunlukları sırasıyla fX ve fY’dir. Asal eksene paralel olacak şekilde X aynasına gönderilen S ışını Y",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q015",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "15faf8b1441028445907d0f2f50cdf61f9f037924d7cad6a3c317b6cdcb1ad4b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Asal eksenleri çakışık olan şekildeki X çukur ve Y tümsek aynalarının odak uzunlukları sırasıyla fX ve fY’dir. X aynasına şekildeki gibi gönderilen S ışını sürekli aynalarda kendi",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q016",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "a45cd6f3f891f4d10b68cdc52e14aeaaeb29009faeb1650613dab5cf71faaa49",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Bir tümsek aynaya şekildeki gibi S ışını gönderiliyor. S 1 2 3 Asal eksen a a Buna göre S ışını aynadan yansıdıktan sonra 1, 2, 3 ile",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q017",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "59a49f5290c0fc53ae9d5c4c68a4683458f0e6185468ac5193668295133b164c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. Eşit kare bölmelere ayrılmış düzleme X çukur ve Y düzlem aynaları yerleştirilip X aynasının asal eksenine paralel olacak şekilde S ışını gönderiliyor. T R K N P",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q018",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "565a86bb508bf64b614ff747e176504e943bdc77e4359a8d8729c7e1d47c8408",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Bir cisim çukur aynanın önüne konulduktan sonra görüntüsü elde ediliyor. Bu görüntünün özellikleri ile ilgili I. ters ve cisimden küçük, II. sanal ve cisimden küçük, III. düz",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q019",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "e8b9b2651c9607abe90abf5bbd2ae0186b8378bedff3356f9e031b9e9c15e0cc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Odak uzaklıkları f1, f2 ve f3 olan çukur aynalara gönderilen S, P ve R ışınları şekillerdeki yolları izliyor. Çukur ayna Çukur ayna S P Asal Asal d",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q020",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "5d539b28280493498db481ef6e6406e638c0d217580fce30ad2d58b71d3355ba",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. N noktasından geçerek düzlem aynaya gönderilen bir ışın, çukur aynada yansıdıktan sonra kendi üzerinden geri dönüyor. d d d d d N Düz ayna Çukur ayna Çukur",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q021",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "f0f4ea91b9e6deb87485117821d793f92b281b529773877df2f6c3fe19e5fcae",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "21. Çukur aynada aynanın odak uzaklığı I. aynanın eğrilik yarıçapı, II. ışığın rengi, III. içinde bulunduğu ortamın kırıcılık indisi niceliklerinden hangilerine bağlıdır? A) Yalnız I B) Yalnız II",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q022",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "f1764bce528287b572f041f911008d8102774348da96b3f507415aaa10e30a0f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "22. Noktasal kırmızı ve yeşil ışık kaynakları ile AB saydam olmayan levha şekildeki gibi KP beyaz perdesinin önüne yerleştirilmiştir. K L A M Kırmızı N B P Yeşil",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q023",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "a1f9c2f44584334acae4b2ec886a088b2e1f9b2387f2680f54880a134948f3d3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. Eşit karelere bölünmüş düzlemde gözlemci şekildeki gibi düzlem aynaya bakmaktadır. X A B Gözlemci X cisminin görüntüsünü görebilmesi için düzlem aynada I. A ucu sabit kalacak şekilde",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q024",
+      "categoryId": "excel.tyt.fizik.8ad6cb2f8e79ea7e1f4f",
+      "imageSha256": "3dcce61389eedb06f691ff32c2f3c5140f246c64c9e75b0167e816b09ab651f4",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Bir öğrenci, düşey bir duvara asılı düzlem aynanın karşısında durduğunda başının tepe noktasından ayaklarına kadar tüm vücudunu aynada görebilmektedir. Aynanın alt kısmından bir parça kesildiğinde öğrenci konumunu",
+      "rationale": "Düzlem aynada ışın yolu, yansıma açısı, görüş alanı ve görüntünün görülme koşulları doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q025",
+      "categoryId": "excel.tyt.fizik.3737818ae6bfefd20b1f",
+      "imageSha256": "9da0bbadf5372a96eb89242871df0aa88c97720b14053cbafccc909ff019267c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. Hava ortamında bulunan camdan yapılmış ince kenarlı merceğe L noktasına asal eksene dik olacak şekilde konulan ışıklı cismin görüntüsü P noktasında cismin boyuyla eşit boyda ters ve",
+      "rationale": "İnce/kalın kenarlı merceklerde ışın yolu, odak ve görüntü özellikleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q026",
+      "categoryId": "excel.tyt.fizik.d71ce97216c3881cf32c",
+      "imageSha256": "49eb149245ac48be71f538e7c141030562c5723ade0536d7d7bba577042436df",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. Bir öğrenci çukur aynanın asal ekseni üzerinde bulunan bir cismi, aynaya doğru hareket ettirirken üç farklı konumda görüntüyü gözlemliyor: K konumunda: Görüntü ters ve cisimden küçüktür. L",
+      "rationale": "Çukur/tümsek aynada odak/merkez, ışınlar ve görüntü özellikleri baskın konudur; bazı yardımcı düzlem aynalar küresel ayna sorusunu başka başlığa taşımaz.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q027",
+      "categoryId": "excel.tyt.fizik.3737818ae6bfefd20b1f",
+      "imageSha256": "3d3f957bfb3146b0295b32901df8fa25a7cf97812b36ba73d359f825d9c4ca8d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Hava ortamında bulunan camdan yapılmış kalın kenarlı bir merceğe asal eksenine dik olacak şekilde yerleştirilen ışıklı bir cisim sırasıyla K, L ve M noktalarına konuluyor. Işıklı cisim",
+      "rationale": "İnce/kalın kenarlı merceklerde ışın yolu, odak ve görüntü özellikleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q028",
+      "categoryId": "excel.tyt.fizik.aa3aa45093beac4342b9",
+      "imageSha256": "3923aac2723d589a6789be6ffd23883a3cb6c932f37d18e664873e508cb5dfcc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Kırıcılık indisleri nK, nL, nM olan şekildeki saydam ortamlarda bulunan K, M gözlemcileri L noktasındaki tek renkli cisme bakmaktadır. nK nL nM K L M K, L’yi",
+      "rationale": "Farklı kırıcılık indisli ortamlarda görünür konum, gelme/sapma açısı ve kırılma doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q029",
+      "categoryId": "excel.tyt.fizik.aa3aa45093beac4342b9",
+      "imageSha256": "4dd5ae8a5c9d9258a4e92606660b12f1b9cfd6488b000edf2ef333915153718f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. K saydam ortamından gelme açısı ile gelen yeşil renkli I ışını, L saydam ortamına, geliş doğrultusundan açısı α kadar saparak şekilde gösterildiği gibi giriyor. γ K α",
+      "rationale": "Farklı kırıcılık indisli ortamlarda görünür konum, gelme/sapma açısı ve kırılma doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q030",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "da384d4fe00516f53fa121c5747235ce7361334089dad62167e3d7bb72acf77f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "30. Beyaz bir kartona kırmızı boya ile M harfi, sarı boya ile E harfi, mavi boya ile B harfi ve yeşil boya ile İ harfi şekildeki gibi yazılıyor.",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q031",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "9eff08e7612977b9ece5381d7ad11c0579f277ca25190f375d8854fbdf64eb67",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "31. Hava ortamında bulunan camdan yapılmış prizmaya gelen beyaz ışık prizmadan geçerken renklerine ayrılır. Bu ışık spektrumu içinde bazı ışık ışınları şekilde verilmiştir. I II Beyaz ışık III",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q032",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "91c10fd98380cb187e1003e12adc0e73da4a99fb1d119e92f337c4d45d42ad57",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "32. Kırıcılık indisi havanın kırıcılık indisinden büyük olan prizmaya tek renkli I ışık ışını şekildeki gibi gönderiliyor. 50˚ 5 I 4 3 Normal 1 2 Prizma Prizma ile",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q033",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "53d1d7d237003317a874280df92b254cedb48372f4ede185d81f92f828d05c0e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "33. Aralarında paralel yüzlü Z saydam ortamı olacak şekilde X ve Y prizmaları şekildeki gibi yerleştirilmiştir. Z Y Prizması I X Prizması X prizmasına gönderilen I ışık ışınının",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q034",
+      "categoryId": "excel.tyt.fizik.758457adc9e8a5e13017",
+      "imageSha256": "96b7f87501f58af61a2c2ea36022b8461d2cb2a3b83ccf43ab77b84ee9c1f038",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "34. Hava ortamında bulunan, camdan yapılmış özdeş K, L ve M tam yansımalı prizmalara gönderilen I1, I2 ve I3 ışık ışınlarının izlediği yollar şekildeki gibi çizilmiştir. M Ɵ",
+      "rationale": "Renkli ışık/boyalarda görünme, beyaz ışığın ayrışması ve prizmada tam yansıma/kırılma yolları bu konu kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q035",
+      "categoryId": "excel.tyt.fizik.3737818ae6bfefd20b1f",
+      "imageSha256": "8f62139f082e829f0e7a9d9e2c528060ad867b1992f551dd1cc556dfa30e8988",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "35. Hava ortamında bulunan camdan yapılmış merceklere gönderilen ışık ışınlarının izlediği yollar Şekil I, Şekil II ve Şekil III gibi verilmiştir. Buna göre şekillerdeki ışınlardan hangilerinin izlediği yollar",
+      "rationale": "İnce/kalın kenarlı merceklerde ışın yolu, odak ve görüntü özellikleri ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-cbdd3d4569e5ee36-Q036",
+      "categoryId": "excel.tyt.fizik.aa3aa45093beac4342b9",
+      "imageSha256": "e3124dfad78f8ea17471f1348fd49753b480e35376efd2c589ea6d1deb9c5039",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "36. Hava ortamından kırıcılık indisi nK olan K saydam ortamında bulunan yeşil renkli cisme bakan gözlemci cismi cismin bulunduğu yerden h kadar uzakta görüyor. Buna göre I. cismin",
+      "rationale": "Farklı kırıcılık indisli ortamlarda görünür konum, gelme/sapma açısı ve kırılma doğrudan sorulur.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}

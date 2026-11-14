@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.779 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.959 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -174,7 +174,21 @@ tekrar0 INSERT, eski kimliklerin korunması, katalog ve canlı masaüstü/mobil
 PASS. Toplam10.779(5.627 TYT/5.152 AYT). Kanıt:
 `reviewed-native-physics-expansion/`,
 `scripts/mebi-pratik2-reviewed-native-physics-topics.json`,
-`verified-source-batch-069/bank-acceptance.json`.070 kabulü henüz ayrı kapıdır.
+`verified-source-batch-069/bank-acceptance.json`.070 kabulü aşağıda ayrıca doğrulandı.
+
+**070 — BITTI:** Son183 özgün Fizik metninden180 soru (114 TYT/66 AYT)
+vektör, bağıl hareket, Newton, ivmeli hareket/atışlar; madde, basınç,
+kaldırma kuvveti, elektrik/manyetizma ve optik konularına bağlandı.
+Üç kayıt kesin konu bağı kurulamadığı için ayrı incelemede. Bu tek-test
+Fizik283 grubunun tamamı okundu:276 kabul/7 gerekçeli inceleme; bu sayı bütün
+Fizik arşivinin kapanışı değildir. Yeni kırpım/model çağrısı0. INSERT_ONLY,
+tekrar0 INSERT, eski kimlikler, katalog, canlı masaüstü/mobil PASS.
+Toplam10.959(5.741 TYT/5.218 AYT). Kanıt:
+`reviewed-native-physics-2-expansion/`,
+`scripts/mebi-pratik2-reviewed-native-physics-2-topics.json`,
+`verified-source-batch-070/bank-acceptance.json`.
+Sıradaki iş henüz kırpılmamış cevaplı kaynak/sayfa kapsamıdır; mevcut kırpımlar
+ve PDF tekrar kararları korunur.
 
 
 ## Güncel kullanıcı talimatı ve açık kapsam

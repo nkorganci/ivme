@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.779 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.959 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -20,7 +20,7 @@ kapısı: `scripts/mebi-pratik2-pdf-policy.json`, `BASE/pdf-reuse-check/decision
 62 eş PDF atlandı; eski bankadaki aynı PDF tümüyle atlanır. Kısmi aktarımda
 soru soru eksik arama yok. Eski banka/öğrenci geçmişi korunur.
 
-**Son kabul069 PASS:**10.779(5.627 TYT/5.152 AYT).060–069 toplam745 yeni soru;
+**Son kabul070 PASS:**10.959(5.741 TYT/5.218 AYT).060–070 toplam925 yeni soru;
 her partide INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS. Geçmiş
 ayrıntı plan ve `verified-source-batch-*/bank-acceptance.json` makbuzlarında.
 Kaynak kabulü için basılı anahtar; öğrenci yayını öncesi gövde/iki cevap ve
@@ -35,12 +35,12 @@ tekrar okuma. Diğer kaynaklar/Tarih tam arşiv kabulü değildir.
 
 **068 BITTI:**66 Fizik;basılı tüm başlıklar doğru tek konuya bağlandı.
 `source-physics-heading-expansion/pass-result.json`,batch068 PASS.
-**069 BITTI; şimdi070:** `reviewed-native-physics-expansion` ilk100 metinde96 aday,
-4 inceleme; `reviewed-native-physics-2-expansion` son183 metinde180 aday,
-3 inceleme.283 metnin tamamı gerçekten okundu.069→070 bağımlı publisher'lar
-çalışıyor;069 PASS doğrulandı.070 bank-acceptance PASS olmadan BITTI deme/yeniden başlatma.
-Komutlar donmuş makbuzlarla arsiv_kabul.py `--first-batch 69|70 --publish`.
-Her parti kabulünden sonra ayrı commit, sıradaki işe geç.
+**069/070 BITTI:** 96 AYT+180(114 TYT/66 AYT) Fizik soru kabul;
+`verified-source-batch-069|070/bank-acceptance.json` PASS. Tek-test Fizik283
+grubunun tamamı gerçekten okundu:276 kabul/7 gerekçeli inceleme. Tekrar
+okuma; `next-topic-review.json` imleci283 olarak kapatıldı. Diğer kaynakları
+ve bütün Fizik arşivini tamamlanmış sayma. Sonraki iş mevcut kırpımı olmayan
+cevaplı kaynak/sayfaları ayırmak; mevcut PNG'leri yeniden üretme.
 
 **Fizik artımlı etiket geçişi BITTI:**497 kayıt2,7sn,8.074 eski kanıt korundu;
 dizinde432 bağlı kod. Kaynak/PNG/kategori tanımı değişirse artımlı geçiş durur.
