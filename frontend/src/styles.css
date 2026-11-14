@@ -28,6 +28,7 @@ button { cursor: pointer; }
 main:focus { outline: none; }
 .container { max-width: calc(50% + 550px); margin: 0 auto; padding: 16px 8px 40px; }
 .container.wide { max-width: calc(50% + 700px); padding: 8px 6px 0; }
+.container.full { max-width: none; padding: 12px 14px 40px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: #fff; padding: 8px 12px; border-radius: 8px; z-index: 200; }
 .skip-link:focus { left: 8px; }

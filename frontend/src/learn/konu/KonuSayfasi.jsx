@@ -81,10 +81,14 @@ function Durak({ paket, durak, sira, sorular, motor, ilerleme, yaz, git, adim, a
   return <section className="card kp-kart" key={durak.id}>
     <p className="kp-etiket">Durak {sira + 1} / {paket.duraklar.length} · {cevaplanan}/{toplam} soru cevaplandı</p>
     <h2 className="kp-durak-baslik" tabIndex={-1}>{durak.baslik}</h2>
-    <nav className="kp-adim-cubuk" aria-label="Durak adımları">{adimlar.map((a, i) => <button key={a.id} type="button" aria-current={i === simdi ? 'step' : undefined}
-      data-yapildi={i < simdi ? 'evet' : undefined} onClick={() => adimGit(i)} aria-label={`${i + 1}. adım: ${ADIM_ADI[a.tur]}`}>
-      <b>{i < simdi ? '✓' : i + 1}</b><span>{ADIM_ADI[a.tur]}</span></button>)}</nav>
-    {gezin(true)}
+    <div className="kp-adim-satir">
+      <button type="button" className="btn btn-secondary kp-ok" onClick={geri} aria-label="Geri">← Geri</button>
+      <nav className="kp-adim-cubuk" aria-label="Durak adımları">{adimlar.map((a, i) => <button key={a.id} type="button" aria-current={i === simdi ? 'step' : undefined}
+        data-yapildi={i < simdi ? 'evet' : undefined} onClick={() => adimGit(i)} aria-label={`${i + 1}. adım: ${ADIM_ADI[a.tur]}`}>
+        <b>{i < simdi ? '✓' : i + 1}</b><span>{ADIM_ADI[a.tur]}</span></button>)}</nav>
+      <span className="kp-adim-sayac" aria-live="polite">{simdi + 1}/{adimlar.length}</span>
+      <button type="button" className="btn btn-primary kp-ok" onClick={ileri} aria-label="İleri">İleri →</button>
+    </div>
     <div className="kp-adim">
       {adimlar.map((a, i) => {
         const gorunur = i === simdi;
@@ -175,10 +179,12 @@ export default function KonuSayfasi() {
   return <article className="kp-sayfa">
     <Link className="ph-back" to={`${BASE}/harita?ders=${paket.ders.toLocaleLowerCase('tr')}`}>← {paket.ders} konu haritası</Link>
     <header className="kp-ust">
-      <p className="kp-etiket">{paket.ders} · {paket.sinav.join(' + ')} · {paket.sinif}</p>
-      <h1>{paket.baslik}</h1><p className="kp-alt">{paket.altBaslik}</p>
+      <div className="kp-ust-sol">
+        <p className="kp-etiket">{paket.ders} · {paket.sinav.join(' + ')} · {paket.sinif}</p>
+        <h1>{paket.baslik}</h1><p className="kp-alt">{paket.altBaslik}</p>
+        <p className="kp-ust-not"><span className="kp-onay">Öğretmen kontrolü bekliyor</span><span>{paket.sure}</span></p>
+      </div>
       <div className="kp-giris"><Markdown text={paket.giris} /></div>
-      <p className="kp-ust-not"><span className="kp-onay">Öğretmen kontrolü bekliyor</span><span>{paket.sure}</span></p>
     </header>
     <div className="kp-duzen">
     <nav className="kp-yol" aria-label="Konu bölümleri">

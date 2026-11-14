@@ -35,6 +35,36 @@ function Invoke-Restart([string[]]$extraArguments, [string]$stdout, [string]$std
     return $process.ExitCode
 }
 
+# Yalnız ön yüz kaynağı değişti: jar derlenmez, uygulama yeniden başlamaz. Vite ayrı klasöre derler, başarılıysa dist'e eşitlenir
+# (derleme hatası çalışan sürümü bozmaz). Uygulama ön yüzü diskten sunar (yeniden-baslat.ps1: static-locations).
+function Publish-FrontendOnly {
+    $frontend = Join-Path $repo 'frontend'
+    $next = Join-Path $frontend 'dist-yeni'
+    $dist = Join-Path $frontend 'dist'
+    if (Test-Path -LiteralPath $next) { Remove-Item -LiteralPath $next -Recurse -Force }
+    $process = Start-Process -FilePath 'node.exe' -ArgumentList @('node_modules/vite/bin/vite.js', 'build', '--outDir', 'dist-yeni', '--emptyOutDir') `
+        -WorkingDirectory $frontend -WindowStyle Hidden -PassThru -RedirectStandardOutput $buildOut -RedirectStandardError $buildErr
+    $null = $process.Handle
+    $process.WaitForExit()
+    $process.Refresh()
+    if ($process.ExitCode -ne 0 -or -not (Test-Path -LiteralPath (Join-Path $next 'index.html'))) { return $false }
+    Set-Content -LiteralPath (Join-Path $next 'app-version.txt') -Value ([Guid]::NewGuid().ToString('N')) -NoNewline -Encoding ASCII
+    # index.html en son kopyalanır: eski index yeni dosyaları beklemeden yeni index yeni dosyasız kalmaz.
+    & robocopy.exe $next $dist /E /NFL /NDL /NJH /NJS /NP /XF index.html app-version.txt | Out-Null
+    if ($LASTEXITCODE -ge 8) { return $false }
+    Copy-Item -LiteralPath (Join-Path $next 'index.html') -Destination (Join-Path $dist 'index.html') -Force
+    Copy-Item -LiteralPath (Join-Path $next 'app-version.txt') -Destination (Join-Path $dist 'app-version.txt') -Force
+    Remove-Item -LiteralPath $next -Recurse -Force -ErrorAction SilentlyContinue
+    return $true
+}
+
+function Test-ServesFrontendFromDisk([int]$port) {
+    $listener = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+    if (-not $listener) { return $false }
+    $process = Get-CimInstance Win32_Process -Filter "ProcessId=$($listener.OwningProcess)"
+    return [bool]($process -and $process.CommandLine -match 'static-locations=file:')
+}
+
 function Start-LastPackage {
     return (Invoke-Restart @('-ReuseDeployed') $startOut $startErr) -eq 0
 }
@@ -44,6 +74,7 @@ try {
     # Let the launcher see the new process before the first full source hash completes.
     Set-Content -LiteralPath $statusFile -Value "$PID|$(Get-Date -Format o)" -Encoding ASCII
     $lastSeen = Get-YksSourceFingerprint
+    $deployedFullFile = Join-Path $stateDir 'live-deployed.full.fingerprint'
     $changedAt = Get-Date
     $retryAt = Get-Date
     while ($true) {
@@ -64,7 +95,22 @@ try {
                 # Unchanged sources after a reboot: reopen the last package instead of a 2-3 minute rebuild.
                 $published = $false
                 $triedLast = $false
-                if (-not $listener -and $current -eq $deployed) {
+                # Hızlı yol: uygulama açık, ön yüzü diskten sunuyor ve yalnız ön yüz kaynağı değişti.
+                if ($listener -and (Test-ServesFrontendFromDisk $settings.Port) -and (Test-Path -LiteralPath $deployedFullFile) -and
+                        ((Get-YksSourceFingerprint -Part Full) -eq (Get-Content -LiteralPath $deployedFullFile -Raw).Trim())) {
+                    Write-WatchLog 'Yalnız ön yüz değişti; jar derlenmeden hızlı yayımlanıyor.'
+                    if (Publish-FrontendOnly) {
+                        Set-Content -LiteralPath $deployedFile -Value $current -NoNewline -Encoding ASCII
+                        Write-WatchLog 'Ön yüz yayımlandı (yeniden başlatma yok).'
+                        $published = $true
+                        $retryAt = Get-Date
+                    } else {
+                        Write-WatchLog "Ön yüz derlenemedi; çalışan sürüm korunuyor. Ayrıntı: $buildErr"
+                        $retryAt = (Get-Date).AddSeconds(30)
+                        $published = $true
+                    }
+                }
+                if (-not $published -and -not $listener -and $current -eq $deployed) {
                     Write-WatchLog 'Uygulama kapalı algılandı; kaynak değişmediği için son paket açılıyor.'
                     $triedLast = $true
                     $published = Start-LastPackage

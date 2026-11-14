@@ -103,6 +103,7 @@ export default function Layout() {
   const reviewActive = pathname.startsWith(REVIEW_PATH);
   const [reviewOpen, setReviewOpen] = useState(reviewActive);
   const onQuestion = pathname.startsWith('/soru/');
+  const fullWidth = pathname.startsWith('/konuyu-ogrenelim/ogren/'); // konu paketi sayfası: kenar boşluğu en az
   const rail = onQuestion ? !questionOpen : pref;
   const name = displayName(user);
 
@@ -282,7 +283,7 @@ export default function Layout() {
             {APP_NAME}
           </Link>
         </header>
-        <main id="icerik" className={`container${onQuestion ? ' wide' : ''}`} tabIndex={-1}>
+        <main id="icerik" className={`container${onQuestion ? ' wide' : ''}${fullWidth ? ' full' : ''}`} tabIndex={-1}>
           <StudentAccountBanner />
           {preferenceError && <p className="field-error" role="alert">{preferenceError}</p>}
           {activityError && <p className="field-error" role="alert">{activityError}</p>}

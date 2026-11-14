@@ -1,4 +1,6 @@
-function Get-YksSourceFingerprint {
+﻿function Get-YksSourceFingerprint([ValidateSet('All', 'Full', 'Fast')][string]$Part = 'All') {
+    # Fast: yalnız ön yüz kaynağı (frontend\src, public, index.html) -> jar yeniden derlenmeden yayımlanır.
+    # Full: geri kalan her şey. All: ikisi birlikte (önceki tanımla aynı özet).
     $repo = $PSScriptRoot
     $directories = @(
         'frontend\src', 'frontend\public', 'backend\src\main\java', 'backend\src\main\resources\db'
@@ -28,6 +30,10 @@ function Get-YksSourceFingerprint {
             if (Test-Path -LiteralPath $path -PathType Leaf) { Get-Item -LiteralPath $path }
         }
     )
+    $fastRoots = @((Join-Path $repo 'frontend\src'), (Join-Path $repo 'frontend\public'), (Join-Path $repo 'frontend\index.html'))
+    $isFast = { param($f) foreach ($r in $fastRoots) { if ($f.FullName.StartsWith($r, [StringComparison]::OrdinalIgnoreCase)) { return $true } }; return $false }
+    if ($Part -eq 'Fast') { $files = @($files | Where-Object { & $isFast $_ }) }
+    elseif ($Part -eq 'Full') { $files = @($files | Where-Object { -not (& $isFast $_) }) }
     $fileDigest = [Security.Cryptography.SHA256]::Create()
     try {
         $lines = foreach ($file in ($files | Sort-Object FullName)) {

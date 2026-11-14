@@ -14,6 +14,7 @@ $images = $settings.Images.Replace('\', '/')
 $javaHome = 'C:\Tools\jdk-21'
 . (Join-Path $repo 'canli-kaynaklar.ps1')
 $sourceFingerprint = Get-YksSourceFingerprint
+$sourceFullFingerprint = Get-YksSourceFingerprint -Part Full
 $stateDir = Join-Path $backend 'target'
 New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
 try {
@@ -34,7 +35,9 @@ $env:Path = "$(Join-Path $javaHome 'bin');$env:Path"
 function Start-Program([string]$jarPath) {
     Start-Process -FilePath (Join-Path $javaHome 'bin\java.exe') -ArgumentList @(
         '-jar', ('"' + $jarPath + '"'), '--spring.profiles.active=dev', "--server.port=$port",
-        ('"--app.images.dir=' + $images + '"')
+        ('"--app.images.dir=' + $images + '"'),
+        # YALNIZ yerel geliştirme: ön yüz dosyaları diskten sunulur; yalnız ön yüz değişince jar derlenmez, uygulama yeniden başlamaz.
+        ('"--spring.web.resources.static-locations=file:' + ((Join-Path $frontend 'dist') -replace '\\', '/') + '/,classpath:/static/"')
     ) -WorkingDirectory $backend -WindowStyle Hidden -PassThru `
       -RedirectStandardOutput (Join-Path $stateDir 'application.stdout.log') `
       -RedirectStandardError (Join-Path $stateDir 'application.stderr.log')
@@ -198,6 +201,7 @@ if (-not $ready) {
 }
 
 Set-Content -LiteralPath (Join-Path $stateDir 'live-deployed.fingerprint') -Value $sourceFingerprint -NoNewline -Encoding ASCII
+Set-Content -LiteralPath (Join-Path $stateDir 'live-deployed.full.fingerprint') -Value $sourceFullFingerprint -NoNewline -Encoding ASCII
 Set-Content -LiteralPath $deployedJarFile -Value $newJar -NoNewline -Encoding UTF8
 if (-not $FromWatcher) {
     $watchScript = Join-Path $repo 'canli-izle.ps1'
