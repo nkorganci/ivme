@@ -188,3 +188,5 @@
 .kp-ust .kp-etiket { margin: 0; }
 .kp-giris { padding: 0 4px; border-left: 0; color: var(--ink); font-size: .98rem; line-height: 1.6; max-width: 110ch; }
 .kp-giris p { margin: 0; }
+
+@media (min-width: 900px) { .kp-giris { max-width: none; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .kp-giris p { display: inline; } }

@@ -18,7 +18,7 @@ export default {
   kazanimlar: ['9.3.1.1', '9.3.1.2', '9.3.1.3', '9.3.1.5', '9.3.1.6'],
   sure: 'Yaklaşık 90 dakika · 6 durak',
   onay: 'OGRETMEN_BEKLIYOR',
-  giris: 'Bu konuda formül ezberleyen değil, **iki şeyi birbirinden ayırabilen** kazanır: yol ile yer değiştirme, sürat ile hız, hız ile ivme. Her durakta önce tahmin edecek, sonra deneyecek, sonra aynı fikrin sınavda hangi kılıkla geldiğini göreceksin.',
+  giris: 'Formül ezberleyen değil, **ayırabilen** kazanır: yol ≠ yer değiştirme, sürat ≠ hız, hız ≠ ivme. Her durakta tahmin et, dene, sınavdaki kılığını gör.',
 
   kaynaklar: [
     { id: 'ogm-07', ad: 'OGM Materyal · Fizik 9 · Hareketle İlgili Temel Kavramlar', sayfa: 1, gorsel: `${KAYNAK}/kaynak-07-1.webp` },
