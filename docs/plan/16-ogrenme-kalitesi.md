@@ -1,6 +1,6 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
-Durum: plan onaylı, uygulama başlamadı; sıradaki görev 16.01. Kalıcı kurallar
+Durum: plan onaylı; 16.01 BITTI (belge düzeni uygulandı); sıradaki görev 16.02. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -212,7 +212,7 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 
 ## Görev sırası
 
-## 16.01 — Dondur ve belgeleri yeniden düzenle (Sonnet 5.5)
+## 16.01 — Dondur ve belgeleri yeniden düzenle (Sonnet 5.5) — BITTI
 - Pratik 2 süreçlerini düzgün kapat, imleci devir notuna yaz, bekleyen değişiklikleri commit et.
 - Belge düzenini uygula (yukarıdaki tablo): birleştir, yeniden adlandır, sil; `plan-check.py`, `ivme.py` ve `AGENTS.md` yollarını güncelle.
 - `AGENTS.md`'deki "Kaynaklar yalnız okunur" kuralını 16.03'ün silme kurallarıyla değiştir.

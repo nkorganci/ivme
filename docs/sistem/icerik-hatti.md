@@ -1,0 +1,57 @@
+# İçerik hattı: üretim, kanıt, onay ve denetim
+
+## Değişiklik akışı
+
+1. `git status` ile kullanıcı değişikliklerini koru; yalnız ilgili sözleşmeyi ve açık adımı oku. 2. Güncel kaynak/sözlük sürümü ve mevcut hash kanıtını kontrol et; aynı girdide pahalı çıkarımı tekrarlama. 3. Değişikliği [bakım kaynağında](veri.md) yap; kimlik, öğretmen onayı ve öğrenci geçmişine etkisini belirle; üretilmiş projeksiyonu elle değiştirme. 4. İlgili denetimi çalıştır (backend testi yalnız `ivme_test`; yayında şema, kaynak hash'i, sayfa/zaman sınırı). 5. Uygulama kodu değiştiyse sunulan sürümü doğrula ([tarif](../tarifler/calistirma-ve-yayin.md)). 6. Davranışı teknik belgede düzelt, yarım işi `devam.md`'ye yaz, kapanan plan maddesini kaldır.
+
+## Üretim ve yeniden başlama
+
+`scripts/content-label-refresh.py` kaynak envanteri, sözlük projeksiyonu, PDF çıkarımı, etiket üretimi, denetim ve isteğe bağlı yayını sırayla çalıştırır.
+
+| Seçenek | Davranış |
+|---|---|
+| `--dry-run` | Komut planını yazar; üretim/OCR/DB yayını yok |
+| `--check` | Yerel çıktıların girdilerle tutarlılığını denetler; denetim raporu yazabilir |
+| `--resume` | Girdi imzası ve çıktı hash'i aynı olan tamamlanmış aşamaları kullanır |
+| `--limit N` | Yeni PDF metin çıkarımını N fiziksel kaynakla sınırlar; yayınla birleşmez |
+| `--ocr-pages N` | İlk taramadan sonra en çok N yeni sayfada yerel OCR; `--check`/`--publish` ile birleşmez |
+| `--publish` | Tüm denetimlerden sonra etiket sürümünü atomik yayımlar (dağıtım/push değildir) |
+| `--database` | Yayın hedefi `ivme` veya `ivme_test` |
+
+`veri/content-labels/workflow.json` devam kaydıdır; başarısız aşamadan sonrasına geçilmez; dışarıdan değiştirilmiş aşama geçerli sayılmaz; etiket hatası önceki yayımlanmış sürümü silmez. `content-label-preview.py` adayı yayımlanmışla salt okunur karşılaştırır (`previews/`; doğruluk onayı değildir). PDF sayfa çıkarımı `scripts/pdf-topic-locations.py`: `pdf-page-cache/<hash>-<extractorVersion>.json`; sözlük/alias değişimi yeniden OCR yerine yeniden eşler; başlık sayfaları `HEADING_ANCHORS_ONLY` ve tahmini konumdur; `pagesNeedingOcr` görünür kalır; çıkarım yöntemi değişirse sürüm artar. `pdf-page-ocr.py --limit N --workers 2` yalnız yetersiz metin katmanlı sayfalarda yerel Türkçe OCR yapar (anahtar: PDF hash'i + sayfa + çıkarıcı sürümü + OCR model hash'i; sayfa hemen kaydedilir); OCR formül/şekil/tam konu aralığı doğrulaması değildir.
+
+Video envanteri `scripts/video-source-inventory.py`: `video-cache/` sağlayıcı kimliğine göre genel metadata saklar (ikinci ağ isteği yok); oynatma listesi tek video sayılmaz; HTTP 429 silinmiş video değildir (`RATE_LIMITED`); süre/açıklama bölümleri transkript değildir, bölüm zamanları tahminidir; sabit URL içeriğin değişmediğini kanıtlamaz; `--refresh` yeniden erişim içindir. Metin azlığı boş sayfa değildir: `pdf-readability-fallback.py` önce render pikselini denetler, dolu sayfada 300 DPI gri (gerekirse 360 DPI) OCR dener; sonuçlar kaynak/sayfa/model hash'iyle ayrı önbellekte, başarısız denemeyi her oturumda tekrarlama. Çözülemeyen kayıt `manualReview.status=NEEDS_MANUAL_REVIEW` + neden (`EMPTY_OR_UNREADABLE`, `LOCATION_REVIEW`, `LABEL_REVIEW`, `TIME_REVIEW`, `SOURCE_REPAIR`) taşır; üretimi durdurmaz ama doğruluk/onay sayılmaz. `video-content-probe.py` JSON3/SRV3/SRV1/ASR biçimlerini sınırlı dener (HTTP 200/sıfır bayt transkript değildir; başarısızlık önbelleğe alınır; zaman başlıktan uydurulmaz). Oynatma listesi HTML çıkarımı başarısızsa RSS `/feeds/videos.xml?playlist_id=` (`RSS_RECENT_ENTRIES_ONLY`, tam liste değil) kullanılır; girişler sağlayıcı kimliğiyle tekilleşir, eski veri hash'li geçmişe alınır.
+
+## Yeni kaynak kabulü
+
+`scripts/resource-intake.mjs` soru/PDF/video taslağını kontrollü sözlük, `enrichResource` ve `validateResource` ile üretir; bilinmeyen dar başlık geniş kapsama, branş da bilinmiyorsa başarıdan hariç sistem kapsamına gider; yeni bağımsız kategori üretilmez, özgün başlık/kaynak bilgisi korunur. `QuestionImportService` yalnız etiket metadatasını doğrulayıcıya tek parti gönderir (cevap/öğrenci verisi gitmez; doğrulama başarısızsa yazım başlamaz; Node ve `scripts/` gerekir; bu HTTP işleminde OCR/model/ağ çağrısı yok). Tanınmayan yerel PDF genel inceleme kimliği ve özgün dosya/hash'iyle envantere alınır; açılabilirlik ve kapsam ayrı denetlenir.
+
+## Kanıt, konum, güven ve onay
+
+- PDF envanteri `scripts/pdf-bank-audit.py` ile üretilir (PDF kimliği katalogdan, soru kökeni `source-inventory.json`'dan, banka bulunma ve damga `questions`'tan; soru bağı gösterilen PDF'lerin SHA-256'sı doğrulanır; `pdf-bank-audit.json.gz` ilk aktarım/geri izleme anlık kaydıdır; satırlar `learning_catalog.pdf_audit_rows`, zaman/damga `pdf_audit_state`; ilk aktarım `scripts/pdf-bank-audit-publish.py`). Envanter satırı görüntüleyicide açılır (`TopicPdfService` kataloğa yoksa `PdfReviewLabels`'tan tanımlar); açılamayan PDF nedenini gösterir (arşivde, `missing_file`, `changed_file`, `video_only`, envanterde yok).
+- V85 sonrası çalışma kaynağı `pdf_sources` tekil SHA-256'sıdır; `pdf_source_files` yolları, `pdf_source_catalog` eski katalog kimliklerini, `pdf_source_pages` sayfa kanıtını, `pdf_question_occurrences` konum ve banka kodunu, `question_source_registry` yalnız TYT/AYT banka sorusu kökenini, `question_content_fingerprints` tekrar kanıtını tutar; dosya, katalog kaydı, soru konumu ve tekil banka sorusu ayrı sayılır; eski anlık kaydın toplamı canlı banka sayısı olarak kullanılmaz; KPSS bu denetime katılmaz.
+- `Bütün sorular alındı: Evet` için kaynak soru dökümü, bağımsız sayfa kontrolü, tüm konumların banka bağı ve değişmemiş soru damgaları birlikte gerekir; aday/belirsiz görsel/okunamayan sayfa/açıklanmamış çıkarıcı sorunu varken, arşivde bulunmak veya metin/görsel benzerliği tek başına tamlık ya da otomatik birleştirme değildir. Çevrim içi OGM kartının okul PDF'siyle bağı yoksa PDF eksik/tamam sayılmaz. Notta çoktan seçmeli kanıt bulunursa içerik biçimi `KARMA` olur. V75 `pdf_work_queue` soru çıkarma/silme incelemesi seçimini tutar (soru eklemez, PDF silmez, sürüm değiştirmez); silme/çıkarım ancak kaynak ve cevap doğrulamasından sonra ayrı işlemdir.
+- Mini Deneme Test 04 yalnız kendi hash'iyle `scripts/pdf-question-candidates.py` (60 aday WebP/metin/iki cevap okuması, `veri/content-labels/pdf-extraction/mini-test-04`). `pdf_question_accept.py` kaynak/kırpım/iki cevap okuması/kontrollü konu/tekrar denetimini geçen paketi tek işlemde kabul eder; mevcut soruya yeni kod vermez; seçenek permütasyonu cevabı değiştirmeden korunur. V88 `question_source_issues` üç kontrolde boş doğrulanan gövdeyi pratikten ayırma nedenini tutar (soru ve geçmiş silinmez; PDF tam kabul edilmez).
+- Veri sözleşmesi [v2 şeması](../semalar/learning-resource-v2.schema.json) ve [örnekler](../semalar/learning-resource-v2.ornek.json); `scripts/learning-resource-contract.mjs` ve `learning-resource-check.mjs` denetler; V38 ilişki indeksi, V42 `current_relation_details` SQL görünümü.
+- İlişkide `sourceVersion`, `categoryFingerprint`, aday/kesin kapsam, gerekçeli `LOW/MEDIUM/HIGH`, kanıt, konum durumu ve ayrı inceleme vardır; `ITEM_ONLY` konuya özel kanıt/tam okuma sayılmaz; `NOT_MEASURED` OCR okunabilirliğinin ölçülmediğini belirtir; yüksek güven öğretmen onayı değildir; otomatik çıktı öğretmen adı/onayı üretmez.
+- PDF fiziksel sayfaları 1 tabanlı, iki uç dahil; video başlangıç dahil, bitiş hariç saniye, süre aşılmaz; konum `MISSING|NOT_APPLICABLE|ESTIMATED|VERIFIED` + neden. Notun destek sayfası (`SUPPORTING_LESSON_PAGE`), asıl örnek sorusu (`ORIGINAL_EXAMPLE_QUESTION`, tek `question:<code>`; cevap/çözüm genel metadataya kopyalanmaz) ve not bölümü (`NOTE`) birbirinin yerine kullanılmaz; not/mini soru URL'si `konu=<lessonId>`, gerekirse `kalip=<patternId>` ve bölüm çapası taşır. İçindekiler sayfası anlatım değildir; başlık sayfası bulunması konu aralığının tamam olduğu demek değildir. `system.kapsam-incelemesi` başarı hesabına girmez; ders biliniyor dar konu bilinmiyorsa genel kapsam düşük güvenle korunur; sayfa/dakika/zorluk uydurulmaz (zorluk `BELIRLENMEDI` kalabilir).
+- Soru çıkarımında fiziksel sayfa, basılı numara, görsel/kırpım referansı ve ham kayıt yolu korunur; kitap adı + sayfa numarası, doğrulanmış PDF yoksa PDF bağlantısı üretmez; "sanat/ahlak" geçmesi tek başına felsefe etiketi vermez; `content-source-analysis.py` önerileri metin/görsel hash'ine bağlıdır, karma kartta her kanıt yalnız desteklediği kategoriye bağlanır, önceki model etiketi bağımsız doğrulamaya kadar düşük güvenlidir. `question-label-check.py` CSV–statik JSON projeksiyonu, ortak soru kimlikleri, eski araştırma sürümü ve not örneklerini salt okunur karşılaştırır (`question-checks/<runKey>/`; kimlik/sürüm tutarlılığı anlamsal onay değildir). `question-source-repair-preview.py` kırpım onarımını doğrulanmış sayfa/koordinatlardan ayrı aday PDF/PNG olarak hazırlar (iki sütun okuma sırası, metin/formül yeniden üretilmez, manifest eski görsel ve PDF hash'ini saklar; aday hazırlamak bankayı değiştirmez).
+
+## Denetimler
+
+| Amaç | Komut / kanıt |
+|---|---|
+| JSON/DB/API ve fiziksel kaynak farkı | `scripts/content-label-reconcile.py --dev-login` (salt okunur; dev oturumu LOGIN olayı ekleyebilir) |
+| Tekil kaynak ve işleme farkları | `scripts/content-label-workset.py` (başarılı aynı sürüm uzlaştırması ister) |
+| Sözlük, eski kimlik, döngü, alias | `node scripts/content-taxonomy-check.mjs --check`; `testler/content-taxonomy.mjs` |
+| Kaynak/konum sözleşmesi | `node scripts/learning-resource-check.mjs`; `testler/learning-resource-contract.mjs` |
+| Kapsam, inceleme kuyruğu, örneklem | `scripts/content-label-audit.py` → `veri/content-labels/audit.json` |
+| Soru sürümleri, eski araştırma, not örnekleri | `scripts/question-label-check.py`; `testler/question-label-check-test.py` |
+| Görev/bağlantı/devam noktası | `scripts/plan-check.py`; `testler/plan-check-test.py` |
+| Kesinti, bozuk çıktı, önbellek | `testler/content-pipeline-test.py` |
+| API rolü, öğretmen etiketi, konum, sızıntı | `ContentReviewFlowTest`, `LearningResourcesFlowTest` (ayrı test DB) |
+| Tarayıcı, filtre, mobil | `testler/learning-resources-ui.mjs [<frontend-url>]` (`IVME_UI_BASE_URL`; `ui/acceptance.json` hash, masaüstü/390 px, sentetik 503/403), `npm run build` |
+
+Python komutlarında `..\.venv\Scripts\python.exe -X utf8 -B`. Büyük çıktı, sır, kaynak arşivi Git'e girmez; gerçek telefon, dış ağ, bağımsız fiziksel yedek ve gerçek öğretmen incelemesi sentetik testle tamamlanmış sayılmaz.
+
+**Yedek:** kullanıcı aynı diskte yerel yedeği seçmiştir; `D:\workspace\ivme-yedekleri` uygulama ve kaynak köklerinin dışındadır. `scripts/ivme-yedek-provasi.py --destination D:\workspace\ivme-yedekleri --allow-same-disk` `pg_dump` ile salt okunur anlık kayıt alır; geri yükleme yalnız yeni `ivme_restore_probe_*` DB'sine ve `restore-probe` klasörüne yapılır (gerçek/test DB geri yükleme hedefi değil). Tablo/görünüm sayıları, satır parmak izleri, arşiv ve geri yüklenen dosya SHA-256'sı doğrulanır; `manifest.json`, dosya listeleri, `verification.json` gerçek kanıttır; aynı disk bağımsız fiziksel yedek diye adlandırılmaz, ağ hedefinde disk bilinmiyorsa ayrı disk doğrulandı yazılmaz, UNC paylaşımı bağımsız hedef sayılmaz. Yedek DB'yi (öğrenci/öğretmen kayıtları), eski TYT/AYT görsellerini, `resimler-pilot` kökünü (OGM, kırpılmış, onarılmış), kaynak PDF'leri, etiket sürümlerini ve metadatayı kapsar; Git'e alınmaz. Sınırlı rol kurulumunda katalog/araştırma şemaları okunur, katalog şemasında uygulama yalnız `question_intake`'e yazar (katalog yayını ve Flyway yetkili çalışma ister).

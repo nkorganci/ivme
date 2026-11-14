@@ -916,7 +916,7 @@
         "Fizik öğretmeni incelemesi",
         "Öğrenciyle yardımsız ve gecikmeli aktarım gözlemi"
       ],
-      "nextAction": "docs/icerik/fizik-hareket-kuvvet-pilot.md kapsamındaki tek pilotu kullanıcıyla değerlendir; başka ders üretme."
+      "nextAction": "docs/plan/README.md (Fizik pilotu) kapsamındaki tek pilotu kullanıcıyla değerlendir; başka ders üretme."
     },
     "MAT-LAB-01": {
       "checks": [
@@ -927,7 +927,7 @@
         "Yerel sunulan kaynak/paket sürümü",
         "Öğretmen incelemesi ve gerçek öğrenciyle gecikmeli aktarım gözlemi"
       ],
-      "nextAction": "docs/icerik/matematik-laboratuvari.md içindeki pilot kabulünü izle."
+      "nextAction": "docs/urun/ogretim-standardi.md (laboratuvar standardı) içindeki pilot kabulünü izle."
     },
     "TAS-01": {
       "checks": [
@@ -947,7 +947,7 @@
       "remainingAcceptance": [
         "Dış makinede gerçek kesinti/iyileşme uyarısı"
       ],
-      "nextAction": "Dış ortam kabulü için docs/islemler/saglik-ve-izleme.md kullan."
+      "nextAction": "Dış ortam kabulü için docs/tarifler/izleme.md kullan."
     },
     "TAS-03": {
       "checks": [
@@ -1005,7 +1005,7 @@
         "Öğretmen kararı ve gerçek öğrenci aktarım gözlemi",
         "Masaüstü/mobil pilot UI"
       ],
-      "nextAction": "docs/icerik/tas08-pilot-kabul.md içindeki insan kabulünü tamamla."
+      "nextAction": "docs/urun/ogretim-standardi.md (Denetimler) içindeki insan kabulünü tamamla."
     },
     "TAS-09": {
       "checks": [
@@ -1027,7 +1027,7 @@
         "Masaüstü/mobil bildirim UI",
         "Doğrulanmış sağlayıcıyla gerçek alıcı kabulü"
       ],
-      "nextAction": "docs/islemler/kayit-bildirimleri.md içindeki gerçek gönderim kabulünü tamamla."
+      "nextAction": "docs/tarifler/izleme.md içindeki gerçek gönderim kabulünü tamamla."
     },
     "TAS-11": {
       "checks": [
@@ -1063,7 +1063,7 @@
         "Yerel sunulan kaynak/paket sürümü",
         "Öğretmen incelemesi ve gerçek öğrenciyle gecikmeli aktarım gözlemi"
       ],
-      "nextAction": "docs/icerik/matematik-konu-listesi.md lab tablosundaki ilk LAB YOK/KISMİ satırı."
+      "nextAction": "docs/urun/matematik-konu-listesi.md lab tablosundaki ilk LAB YOK/KISMİ satırı."
     },
     "YKS-00": {
       "title": "YKS birlestirme devam ve kontrol altyapisi",

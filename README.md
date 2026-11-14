@@ -1,25 +1,15 @@
 # İvme uygulaması
 
-React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL ile çalışan YKS/KPSS eğitim uygulaması. Öğrenci soru çözer, pratik ve deneme yapar; operatör içerik ve etiketleri inceler; yönetici kullanıcıları ve toplu kullanım verisini yönetir. Özellik ve uç noktaların ayrıntısı [API ve mimari sözleşmesinde](docs/sozlesmeler/api.md).
+React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL ile çalışan YKS/KPSS eğitim uygulaması: öğrenci soru çözer, pratik ve deneme yapar; operatör içerik ve etiketleri inceler; yönetici kullanıcıları yönetir. Ayrıntı [API sözleşmesinde](docs/sozlesmeler/api.md).
 
-## Yerel çalışma
+## Çalıştırma
 
-Gerekenler: Java 21, Maven, Node.js 22+, PostgreSQL ve veri hattı için Python. Çalışma alanının üstündeki `Ivme Baslat.bat` tek uygulamayı `http://localhost:1010` adresinde açar. Kaynak izleyicisi normal geliştirme akışında derleme ve yeniden başlatmayı yönetir. Ortam, log, yedek ve yayın komutları [uygulama işletim tarifindedir](docs/islemler/uygulama-calistirma-ve-yayin.md). Gerçek kullanıcı veritabanı `ivme`; test veritabanı geçici `ivme_test`.
+Java 21, Maven, Node.js 22+, PostgreSQL ve veri hattı için Python gerekir. Çalışma alanının üstündeki `Ivme Baslat.bat` uygulamayı `http://localhost:1010` adresinde açar; kaynak izleyicisi derleme ve yeniden başlatmayı yönetir ([tarif](docs/tarifler/calistirma-ve-yayin.md)). Gerçek DB `ivme`, test DB geçici `ivme_test`.
 
-Özgün PDF'ler `../Kaynaklar/`, veri üretimi `../veri-hatti/`, içe aktarma girdileri `../icerik/data/` altındadır. Üretilmiş çıktılar ve sırlar Git dışında tutulur.
+## Klasörler
 
-## Doğrulama
+`backend/` Spring Boot, `frontend/` React, `scripts/` araçlar (`python scripts/ivme.py`), `testler/`, `veri/` çalışma verisi (Git dışı), `docs/` belgeler. Kaynak PDF'ler `../Kaynaklar/`, veri hattı `../veri-hatti/`, içe aktarma girdileri `../icerik/data/` altındadır.
 
-```powershell
-python scripts/ivme.py durum --hizli
-python scripts/ivme.py plan
-python scripts/ivme.py test
-cd frontend
-npm run build
-```
+## Doğrulama ve belgeler
 
-Backend testi geçici DB kullanır; [bilinen test hataları](testler/bilinen-hatalar.md) ayrı listelenir. Değişiklikle ilgili en küçük denetimi seçmek için [doğrulama tarifi](docs/islemler/dogrulama.md) kullanılır.
-
-## Belgeler ve AI ile çalışma
-
-[Belge dizini](docs/README.md) teknik sözleşmeleri, planı, tasarımı ve tekrarlanan işlemleri ayırır. [Yol haritası](docs/plan/README.md) açık işleri, [devir notu](docs/devam.md) yarım işi tutar. Codex `AGENTS.md` dosyasını, Claude ise `CLAUDE.md` içindeki `@AGENTS.md` aktarımını kullanır. Tekrar eden işlemler `python scripts/ivme.py` alt komutlarıyla yürütülür.
+`python scripts/ivme.py durum --hizli`, `plan`, `test`, `kontrol`; ön yüz için `cd frontend && npm run build`. [Belge dizini](docs/README.md), [yol haritası](docs/plan/README.md), [devir notu](docs/devam.md). Codex `AGENTS.md`'yi, Claude `CLAUDE.md` içindeki `@AGENTS.md` aktarımını kullanır.

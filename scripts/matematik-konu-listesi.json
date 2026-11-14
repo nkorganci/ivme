@@ -1,6 +1,6 @@
 {
   "schema": "matematik-konu-listesi-v1",
-  "aciklama": "9–12. sınıf TYT/AYT matematik konularının tek takip listesi. Durum sütunları node scripts/konu-ogrenme-kapsam.mjs --liste ile ders dosyalarından ölçülür ve docs/icerik/matematik-konu-listesi.md içine yazılır. Elle doldurulan alan yalnız pdfOkundu ve not'tur; pdfOkundu yalnız sayfa görselleri/metni gerçekten okunmuş ders anlatım kaynaklarını listeler.",
+  "aciklama": "9–12. sınıf TYT/AYT matematik konularının tek takip listesi. Durum sütunları node scripts/konu-ogrenme-kapsam.mjs --liste ile ders dosyalarından ölçülür ve docs/urun/matematik-konu-listesi.md içine yazılır. Elle doldurulan alan yalnız pdfOkundu ve not'tur; pdfOkundu yalnız sayfa görselleri/metni gerçekten okunmuş ders anlatım kaynaklarını listeler.",
   "asama": "TYT",
   "kaynakKok": "../Kaynaklar/ogm-materyal/Matematik/",
   "oynatmaListeleri": {

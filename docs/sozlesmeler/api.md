@@ -286,7 +286,7 @@ istekleri `tutor_regeneration_requests` içindedir ve `ogretim yeniden-uretim` i
 
 Bu uçlar yalnız `USER` rolüne açıktır. Yanıtlarda yerel dosya yolu ve checksum yoktur. Dosya erişimi katalog kimliği, kaynak kökün gerçek yolu, PDF uzantısı, dosyanın gerçek yolunun kökte kalması ve SHA-256 eşleşmesiyle doğrulanır; eksik/değişmiş dosya açılmaz. PDF yanıtında `X-Frame-Options: SAMEORIGIN`, diğer yanıtlarda `DENY` kullanılır. Katalog JSON kayıtları uygulama başlarken okunur; katalog yeniden üretildiyse uygulama yeniden başlatılır. Masaüstünde özgün PDF sayfaya gömülür, dar ekranda aynı sitenin PDF yolu yeni sekmede açılır. Katalogdaki aday konu adı eşleşmesi doğrulanmış soru bağı değildir. `topic-pdf-links.json` içindeki onaylı bağlantıda PDF checksum'ı tekrar doğrulanır. `GET /api/questions/availability?topicPdfId=` ve pratik/sınav oluşturma isteklerindeki `topicPdfId` yalnız onaylı soru kodlarıyla sınırlandırılır; istemci kaynak/ders/konu göndererek havuzu genişletemez.
 
-İç not v1 biçimi [kayıtlı şemada](../semalar/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [ortak kaynak şeması](../semalar/learning-resource-v2.schema.json) ve [kanıt kuralları](../mimari/kanit-ve-onay.md) kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
+İç not v1 biçimi [kayıtlı şemada](../semalar/ic-not-v1.schema.json) tanımlıdır: kaynak katalog kimliği, PDF SHA-256, fiziksel sayfa, başlık zinciri, doğrulama durumu ve sürüm taşır. Kaynak aralığı, etiket ve adlandırma için [ortak kaynak şeması](../semalar/learning-resource-v2.schema.json) ve [kanıt kuralları](../sistem/icerik-hatti.md) kullanılır. Eski OCR/iç arama pilotları öğrenci PDF API'sine yeni metin eklemez; öğrenciye özgün PDF gösterilir.
 
 ## Operatör ve yönetici uçları
 
@@ -299,7 +299,7 @@ sınırlı hata kodu ve varsa sağlayıcı mesaj kimliği bulunur; API anahtarı
 Yeni herkese açık kayıt hesabı ve outbox işi aynı transaction'da commit olur;
 e-posta kayıt yanıtı içinde gönderilmez. Eski hesaplar için geriye dönük iş yoktur.
 Gönderici yapılandırması ve en az bir kez gönderim sınırı
-[bildirim tarifinde](../islemler/kayit-bildirimleri.md) açıklanır.
+[bildirim tarifinde](../tarifler/izleme.md) açıklanır.
 
 `GET /api/admin/accounts?role=&query=&page=0&size=25`, açık `SITE_MANAGER`
 yetkisiyle bütün hesap rollerini listeler. `/summary` her rol için sıfırları da
@@ -330,4 +330,4 @@ aittir; main'de sonradan açılan hesap geliştirme DB'sine otomatik kopyalanmaz
 
 ## Veritabanı ve henüz bağlanmamış alanlar
 
-Flyway göçleri PostgreSQL veritabanını yönetir; test DB `ivme_test`'tir. `study_sessions` ve `session_questions` pratikte kullanılır; taksonomi/önkoşul ve `activity_events` tablolarının diğer ürün işlevleri hâlâ açıktır. `V32`, kaldırılan Hedeflerim özelliğinin `goals` tablosunu siler. Ham `activity_events` ve kimliksiz `service_error_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Kalan rol/yedek/yayın kontrolleri [12. adımda](../plan/12-icerik-ve-yayin.md); ortak filtre ve geçmiş anlık kayıt sözleşmesi [sistem rehberinde](../mimari/README.md) tutulur.
+Flyway göçleri PostgreSQL veritabanını yönetir; test DB `ivme_test`'tir. `study_sessions` ve `session_questions` pratikte kullanılır; taksonomi/önkoşul ve `activity_events` tablolarının diğer ürün işlevleri hâlâ açıktır. `V32`, kaldırılan Hedeflerim özelliğinin `goals` tablosunu siler. Ham `activity_events` ve kimliksiz `service_error_events` için 90 günlük temizlik görevi çalışır. Görsel yedeği DB yedeğinden ayrıdır. Kalan rol/yedek/yayın kontrolleri [12. adımda](../plan/12-icerik-ve-yayin.md); ortak filtre ve geçmiş anlık kayıt sözleşmesi [sistem rehberinde](../README.md) tutulur.

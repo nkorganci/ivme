@@ -13,7 +13,7 @@ geçmiş puan değiştirilemez.
 bağlarını ve kanıtlı tamlık durumunu hash tabanlı DB kaydından gösterir.
 `scripts/pdf_source_reconcile.py` ve `veri/pdf-source-registry/report.json` güncel
 uzlaştırmadır; ilk `pdf-bank-audit.py` anlık kaydı tarihsel girdi olarak korunur.
-[İşlem sırası](../islemler/pdf-kapsam-uzlastirma.md) yalnız TYT/AYT kapsamındadır.
+[İşlem sırası](../tarifler/kaynak-kaydi.md) yalnız TYT/AYT kapsamındadır.
 
 - Ders notları dahil bütün kaynaklardaki soru bölgelerini, eksik metinli banka
   görsellerinin OCR'ı ile karşılaştır; mevcut soruya aynı dosya konumundan tekrar
@@ -72,7 +72,7 @@ veya belirsizlik nedeni ve etkilenen geçmiş olay sayısı.
 **PHYS-PILOT-01:** Kullanıcının tek konu denemesi: Fizik → Hareket ve Kuvvet.
 Yerel Ollama adayları, kaynak incelemesi ve teknik düzeltme ile hazırlanır;
 sekiz görsel deney durağı ve bağımsız alıştırmalar içerir. Kapsam ve kabul
-[pilot sözleşmesindedir](../icerik/fizik-hareket-kuvvet-pilot.md).
+[pilot sözleşmesindedir](../urun/ogretim-standardi.md).
 Bu deneme diğer fizik konularını veya toplu içerik üretimini başlatmaz.
 **PHYS-INTERACTIVE-02:** İlk çizimlerin kullanıcı tarafından yetersiz bulunması
 üzerine sekiz deney, İnteraktif Öğrenme'nin ortak hareket laboratuvarına taşındı.
@@ -82,8 +82,8 @@ ilişkisi aynı pilot sözleşmesinde tanımlıdır; görsel kaliteyi kullanıc�
 **MAT-LAB-01 / MAT-LAB-02:** Tek–çift pilotu ve ortak lab motoru hazırdır; ilk tam
 konu `temel-kavramlar` teknik kabulü geçti. Kullanıcı mevcut ve yeni bütün matematik
 konularına laboratuvar eklenmesini istedi.
-[Laboratuvar öğretim/kabul standardı](../icerik/matematik-laboratuvari.md) ve
-[tek konu/lab takip listesi](../icerik/matematik-konu-listesi.md) kullanılır.
+[Laboratuvar öğretim/kabul standardı](../urun/ogretim-standardi.md) ve
+[tek konu/lab takip listesi](../urun/matematik-konu-listesi.md) kullanılır.
 Pilotun kopyası zorunlu değildir; hedefe göre en uygun etkileşim seçilir. Mevcut
 keşifler değerlendirilerek geliştirilir; konu bazlı hedef, yanılgı, koşul/sınır,
 gerekçe, bağımsız aktarım ve doğrulanmış gerçek soru bağıyla kabul edilir.
@@ -92,7 +92,7 @@ Her konunun labı aynı konu paketi içindedir; ortak model farklı görevlerle 
 Lab kabul kayıtlarının otomatik ölçüme/ekrana bağlanması teknik açık iştir.
 
 **Konuyu Öğrenelim öğretim standardı:** Yeni dersler ve mevcut derslerin yeni bölümleri
-[ortak öğretim sözleşmesine](../icerik/konuyu-ogrenelim.md) uyar: günlük bağlam, temelden
+[ortak öğretim sözleşmesine](../urun/ogretim-standardi.md) uyar: günlük bağlam, temelden
 kavram açıklaması, etkileşimli model, gerekçeli örnek, örnekten sonra koşullu hızlı yol,
 öğrenci denemesi ve özgün gerçek soru. Mevcut 33 dersin keşif katmanını baştan üretme.
 Görseli incelenmiş sekiz gerçek örneği diğer derslere/alt soru tiplerine genişlet; otomatik
@@ -119,7 +119,7 @@ konuların tamlığı, keşif sayısını da lab kabulü sayma.
   uygulamaları. Kimlikler kapsam betiğindedir; yeni ders eklendikçe sayaç güncellenir.
 - Her derste özgün soru görseli, koşullu kısa yol, konuya uygun etkileşimli model,
   gerekçeli örnek ve bağımsız aktarım korunur. Soru eşlemesi veya test geçişi öğretmen
-  onayı olarak sunulmaz. Ayrıntılar [öğretim sözleşmesinde](../icerik/konuyu-ogrenelim.md).
+  onayı olarak sunulmaz. Ayrıntılar [öğretim sözleşmesinde](../urun/ogretim-standardi.md).
 - Lab matematiği bağımsız hesap, korunan ilişki ve sınır/koşullarla; etkileşim yanlış
   yol, ipucu, yeniden deneme, klavye ve mobil akışla sınanır. Öğrenme etkisi başlangıç
   düzeyi dikkate alınarak görülmemiş soruda yardımsız çözüm, gerekçe, ipucu ihtiyacı
@@ -130,7 +130,7 @@ Durum: `KISMI_KAYNAKLI_ICERIK`. Yayımlanmış rehberler `frontend/public/kaynak
 içindedir; hepsi öğretmen onayı bekler. Notu olmayan kontrollü konuların kimlik bazlı tek
 listesi `python scripts/note-coverage.py` çıktısındaki (`veri/content-labels/note-coverage.json`)
 `NO_NOTE` kayıtlarıdır; ikinci eksik listesi açılmaz. Kurallar
-[kaynaklı ders notlarında](../icerik/kaynakli-ders-notlari.md).
+[kaynaklı ders notlarında](../urun/ogretim-standardi.md).
 
 - `NO_NOTE` kimliklerinden çalış; geniş giriş notunu bütün dar alt konuların tamamlanması sayma. Edebiyatın dar alt konuları ve AYT sözel kapsamının eksik kaynak/örnek bağlarını tamamla.
 - Türkçe Sözel Mantık/Fiilde Çatı, tarih, coğrafya, felsefe, din ve TYT biyoloji/kimya taslaklarındaki örnek bağlarını alan uzmanıyla değerlendir; hazır konuları baştan yazma.
@@ -196,7 +196,7 @@ Kabul: ölçülen sorunların görev kimliği ve kabul ölçütü var; büyüme 
 **Gereken kişi/girdi:** davetli gerçek kullanıcılar, pilot sorumlusu, deneme tarihleri ve kullanılacak sürüm.
 **Tamamlanma kanıtı:** ölçüm dönemi, gerçek katılımcı sayısı, anonimleştirilmiş bulgular ve her yeni sorunun görev kimliği.
 
-İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/icerik/kaynakli-ders-notlari.md`, `docs/icerik/soru-analizi.md`, `README.md`.
+İlgili kaynaklar: `scripts/kur-uygulama-rolu.ps1`, `ivme-yedek-al.ps1`, `ipucu-guvenli-aktar.py`, `frontend/src/activeTime.js`, `docs/urun/ogretim-standardi.md`, `README.md`.
 
 ## 12.11 — TAS-07 sürümlü PDF kanıt hattı
 
@@ -206,7 +206,7 @@ saklar. Aynı kaynak ve sürüm tekrar işlendiğinde aşamalar kullanılır; bo
 hızlı atlanması engellenir. İnsan kararı yeniden üretilebilir paketten ayrıdır. Sabit
 matematik pilotu 10 kaynak/52 sayfada altı düzen türünü kapsadı; ikinci geçişte yeni
 düzen/kırpım/OCR ve model çağrısı yok, bütün paketler doğrulandı. Kanıt ve sınırlar
-[PDF kanıt hattında](../islemler/pdf-kanit-hatti.md). Konu için seçilmiş ana kaynak,
+[PDF kanıt hattında](../tarifler/kaynak-kaydi.md). Konu için seçilmiş ana kaynak,
 iddia → blok/sayfa bağı ve öğretim kabulü TAS-08 kapsamında hazırlanacak.
 Mevcut 16 paketin eski düzen sürümündeki 179 sayfası yeniden işlendi; 16/16 paket
 bütünlüğü geçti ve eski sürüm sayfası kalmadı. `7bf6c888b1ac-p0016`
@@ -221,7 +221,7 @@ ve tekrar tercihini (`student_question_preferences`) saklar; öğretmen zorluğu
 sorular otomatik pratik havuzundan, motor setlerinden ve önerilerin örnek sorusundan çıkar; “tekrar göster” sonraki
 otomatik seçimde öne alınır. Soru Çöz & Pratik'te Öğrenci zorluk etiketi ve Kişisel işaret süzgeçleri, sayılar oturumla
 aynı; toplu sıfırlama, hesap dışa aktarma/silme ve denetim izi. Cevap geçmişi ve denemeler değişmez. Ayrıntı ve kanıt
-[ortak sözleşmede](../mimari/ogrenci-ilerlemesi.md#kişisel-zorluk-ve-tekrar-tercihleri-tas-06) ve [görev tablosunda](../gorev-durumu.md).
+[ortak sözleşmede](../sistem/ilerleme.md#kişisel-zorluk-ve-tekrar-tercihleri-tas-06) ve [görev tablosunda](README.md).
 
 ## 12.09 — TAS-05 ortak PRATIK seti
 
@@ -231,8 +231,8 @@ karalama, çözüm ve Bitir akışı Soru Çöz & Pratik ile aynıdır. Gösteri
 aynıdır (12 = `min(12, tekil soru)`, çıkmış sorularda gizli 40 sınırı yok, 52/52). Aynı
 görseli farklı kodla taşıyan kitapçık kopyaları (Eşit Ağırlık/Sayısal) tanılandı; sunucu ve
 ders motoru görsel baytıyla tekilleştirir. Ortak ekrandaki cevaplar ders motoruna okunur
-(ikinci kez yazılmaz). Ayrıntı ve kanıt [ortak PRATIK seti](../mimari/ogrenci-ilerlemesi.md#ortak-pratik-seti-tas-05)
-ve [görev tablosunda](../gorev-durumu.md). Eski DB oturumları ve `sessionStorage` setleri
+(ikinci kez yazılmaz). Ayrıntı ve kanıt [ortak PRATIK seti](../sistem/ilerleme.md#ortak-pratik-seti-tas-05)
+ve [görev tablosunda](README.md). Eski DB oturumları ve `sessionStorage` setleri
 yeniden kurulmadı.
 
 ## 12.08 — TAS-04 ortak cevap ve konu sayımı
@@ -242,14 +242,14 @@ anahtarıyla puanlanır; cevap anındaki konu bağı saklanır. Konu takibi soru
 pratik, deneme, Konuyu Öğrenelim banka cevabı, açık pratik, ders alıştırması ve kart
 tekrarını tek sayım sözleşmesiyle ayrı sütunlarda gösterir; banka cevabı iki kez
 sayılmaz, rehberli cevap bağımsız ölçüm sayılmaz. Mevcut DB kayıtları yeniden
-puanlanmaz. Sözleşme ve kanıt [öğrenci ilerlemesinde](../mimari/ogrenci-ilerlemesi.md#ortak-cevap-ve-sayım-sözleşmesi-tas-04)
-ve [görev tablosunda](../gorev-durumu.md).
+puanlanmaz. Sözleşme ve kanıt [öğrenci ilerlemesinde](../sistem/ilerleme.md#ortak-cevap-ve-sayım-sözleşmesi-tas-04)
+ve [görev tablosunda](README.md).
 
 ## 12.07 — TAS-03 ortak katalog ve sınav kapsamı
 
 Durum: `TAMAMLANDI`. Konuyu Öğrenelim ad ve rozetleri ortak DB kataloğundan kimlikle
 gelir; bölüm düzeyi kontrollü sınav kapsamı ve doğrulaması eklendi. Ayrıntı ve kanıt
-[görev tablosunda](../gorev-durumu.md) ve [inceleme §5'te](../tasarim/ogrenme-icerik-ve-guvenilirlik-incelemesi.md#5-tas-03-tek-dersünitekonu-referansı-ve-sınav-kapsamı).
+[görev tablosunda](README.md) ve [inceleme §5'te](../sistem/veri.md).
 Kalan tek iş içeriktir: kaynak kanıtı olan bölümleri `@bolum … AYT/TYT` ile işaretlemek
 (TAS-08); kanıtsız kapsam otomatik yazılmaz.
 
@@ -264,7 +264,7 @@ bir kez alarm, iki başarılı kontrolde bir kez iyileşme bildirir.
 Kabul: DB kesintisi readiness'i DOWN yapar, liveness UP kalır; kayıt hatası
 öğrenciye görünür ve DB'den bağımsız metrik/logda iz bırakır; uygulama veya makine
 kapandığında dış makinedeki izleyici webhook uyarısı üretir. İşletim ve sınırlar
-[sağlık/izleme tarifindedir](../islemler/saglik-ve-izleme.md).
+[sağlık/izleme tarifindedir](../tarifler/izleme.md).
 
 Kalan ortam adımı: dış makinede HTTPS adresi, zamanlayıcı ve webhook ile betiği
 kurup uygulamayı kapatarak gerçek alarm ve iyileşme bildirimini gözlemek. Bu
@@ -278,7 +278,7 @@ derlemesini, testleri, insan inceleme durumunu ve yayın manifestini aşama hash
 üretir; değişmeyen aşama atlanır, kesintide yalnız eksik aşama çalışır. Taslak eksikse
 agent görev paketi yazılır; hat model çağırmaz ve onay yazmaz. Bölme pilotu aynı kanıtla
 hatta taşındı; EBOB–EKOK ikinci konu olarak aynı ölçütlerle hattan geçti (Node, kaba kuvvet
-hesap ve masaüstü/mobil UI kabulü). Tarif ve kanıt: [içerik hattı](../islemler/icerik-hatti.md).
+hesap ve masaüstü/mobil UI kabulü). Tarif ve kanıt: [içerik hattı](../tarifler/konu-paketi.md).
 İki konu da öğretmen incelemesini bekler; teknik geçiş pedagojik onay sayılmaz.
 
 ## 12.15 — TAS-11 video kanıt ve ipucu pilotu
@@ -287,7 +287,7 @@ Durum: `TEKNIK_PILOT_TAMAMLANDI`. Kullanıcının Mert Hoca listesindeki tek–�
 dersinin iki videosu işlendi; zamanlı metin, seçilmiş kare ve matematik kontrolü
 olan iki ipucu sürümlü ders değişiklik önerisine bağlandı. İkinci geçişte ağ,
 decode veya model çağrısı yok; ilgili 21 test geçti. Mevcut öğrenci verisine
-yazılmaz. Araç ve yeniden çalıştırma tarifi [video kanıt hattındadır](../islemler/video-kanit-hatti.md).
+yazılmaz. Araç ve yeniden çalıştırma tarifi [video kanıt hattındadır](../tarifler/konu-paketi.md).
 
 **UI ve ürün kararı (TAS-11.UI):** Kullanıcı iki ipucunun şimdi protip olarak
 kullanılmasını istedi. “Öğretmen kontrolü bekliyor” etiketiyle konu ve ilgili ders
@@ -316,7 +316,7 @@ Bu işler tüm playlistin işlendiği veya bütün ipuçlarının onaylandığı
 Durum: `KISMI_GERCEK_GONDERIM_BEKLIYOR`. Kayıtla aynı transaction'da outbox işi,
 Brevo HTTP göndericisi, kalıcı retry/lease ve yönetimde bildirim görünümü uygulandı.
 Eski hesaplara geriye dönük iş oluşturulmaz. Kurulum, hata giderme ve test komutu
-[bildirim tarifinde](../islemler/kayit-bildirimleri.md).
+[bildirim tarifinde](../tarifler/izleme.md).
 
 Kalan somut adım: Brevo hesabında göndereni doğrulayıp API anahtarını Git dışı yerel
 ayara gir; yeni normal kayıtla doğru alıcıya ulaşmayı ve yönetim bağlantısını doğrula.
@@ -334,4 +334,4 @@ açıklamalı ortak pratik kabulü geçti. Temel kavramlarda 12/52 regresyonu ge
 Kalan somut adım: öğretmenin sekiz bölüm ve dört soruya ilişkin inceleme kararını
 kaydetmesi; ardından çözümleri görmemiş gerçek öğrenciyle bağımsız aktarım gözlemi.
 Bu kanıtlar olmadan çoğaltma kabulü verilmez. Kayıt ölçütleri ve yeniden çalıştırma
-komutları [pilot kabulünde](../icerik/tas08-pilot-kabul.md).
+komutları [pilot kabulünde](../urun/ogretim-standardi.md).

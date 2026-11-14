@@ -1,5 +1,5 @@
 // Konuyu Öğrenelim motorunun varsayılanları (Learning Engine Spec). Bir değer değişirse
-// docs/icerik/konuyu-ogrenelim.md içindeki kural tablosu aynı işte güncellenir.
+// docs/urun/ogretim-standardi.md içindeki kural tablosu aynı işte güncellenir.
 export const ENGINE = Object.freeze({
   review: { ladderDays: [1, 3, 7, 14, 30, 60], setSize: 6, flashcardsMax: 5, goodPct: 80, okPct: 60 },
   mastery: { passPct: 80, minCorrectPerArchetype: 1, window: 10, halfLifeDays: 14, solvedAcc: 0.6 },

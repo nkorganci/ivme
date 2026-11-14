@@ -5,7 +5,7 @@ inceleme + sabit örneklem. Manuel işaretli kayıt teknik devamı durdurmaz.
 
 Bütün sorular ve PDF'ler en az bir Excel konusuna bağlıdır; kaynak başlığından veya
 yakın konudan türetilen bağlar `CANDIDATE` ve “öğretmen onayı gerekiyor” işaretlidir
-([kimlik ve sayım kuralları](../mimari/kimlikler-ve-sayim.md)). Eksik sayfa sınırları
+([kimlik ve sayım kuralları](../sistem/veri.md)). Eksik sayfa sınırları
 `LOCATION_REVIEW`, eksik video zamanları `TIME_REVIEW` ile görünür. Bu adımdaki açık iş
 insan/alan incelemesidir; tamamlanan çıkarım yeniden yapılmaz. Gerçek öğretmen kararı
 henüz yoktur (`content_reviews` boş).

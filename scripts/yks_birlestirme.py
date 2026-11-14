@@ -285,7 +285,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     store = Store(APP / 'veri/yks-birlestirme')
     if args.command == 'plan':
-        print(json.dumps({'plan': 'docs/plan/15-yks-kaynak-birlestirme.md',
+        print(json.dumps({'plan': 'docs/tarifler/kaynak-kaydi.md',
                           'stages': [{'id': s, 'implemented': s in IMPLEMENTATIONS} for s in STAGES]}, ensure_ascii=False))
         return 0
     if args.command == 'baslat':

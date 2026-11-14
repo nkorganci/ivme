@@ -1,4 +1,4 @@
-// Ders kaynak biçimi (.ders) → ders nesnesi. Biçim docs/icerik/konuyu-ogrenelim.md içinde anlatılır.
+// Ders kaynak biçimi (.ders) → ders nesnesi. Biçim docs/urun/ogretim-standardi.md içinde anlatılır.
 // Saf işlev: tarayıcı (Vite ?raw) ve Node doğrulama testi aynı ayrıştırıcıyı kullanır.
 
 const HEADER_KEYS = {

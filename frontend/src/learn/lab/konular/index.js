@@ -1,6 +1,6 @@
 // Konu laboratuvarı kayıtları. `<kimlik>.js` saf veri ve matematik modelidir (Node testleri doğrudan içe aktarır);
 // `../cizim/<kimlik>.jsx` aynı modelin çizimlerini `experiment.view` anahtarıyla verir. Yeni konu buraya eklenir ve
-// docs/icerik/matematik-konu-listesi.md lab tablosundaki satırı güncellenir.
+// docs/urun/matematik-konu-listesi.md lab tablosundaki satırı güncellenir.
 //
 // Hedef (goal) biçimi: id, label, short, objective (ölçülen beceri), misconception, story (günlük bağlam),
 // predict { question, options, insight[] }, experiment { prompt, view, controls, initial, compute, readout,

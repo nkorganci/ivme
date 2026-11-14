@@ -485,7 +485,7 @@ def draft_packet(ctx, problems):
     lines = [f'# Görev paketi: {ctx.concept} taslağı', '',
              f'Görev: `content:{ctx.concept}:{spec["contentVersion"]}` · şablon `{spec["templateVersion"]}` · aşama `taslak`.',
              f'Model önerisi: {json.dumps(spec.get("modelPlan", {}).get("draft", {}), ensure_ascii=False)}. Mevcut model farklıysa belirt.',
-             '', 'Kurallar: `AGENTS.md` “Konuyu Öğrenelim”, `docs/icerik/konuyu-ogrenelim.md`, inceleme belgesi §10.2–10.3.',
+             '', 'Kurallar: `AGENTS.md` “Öğretim beklentisi”, `docs/urun/ogretim-standardi.md`.',
              'Kanıtsız iddia yazma; kaynakta olmayan genişletmeyi bölüm notunda “özgün türetim” olarak belirt.',
              'Soru çözümünü özgün görseli görmeden yazma; sonucu bağımsız hesapla sına (konu testi dosyası).', '',
              '## Eksikler', '', *[f'- {p}' for p in problems], '', '## Bölümler ve kaynak iddiaları', '']

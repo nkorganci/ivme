@@ -1,5 +1,5 @@
 // Özgün soru kırpımları okunarak yazılan çözümler. Öğretmen onayı iddiası içermez.
-// Kaynak kodları değişmez; soru metni yeniden yazılmaz. Kanıt: docs/icerik/konuyu-ogrenelim.md.
+// Kaynak kodları değişmez; soru metni yeniden yazılmaz. Kanıt: docs/urun/ogretim-standardi.md.
 import { MATH_CONTINUATION_EXAMS } from './worked-math-continuation.js';
 import { DIVISION_TRANSFER_EXAMS } from './bolme-transfer-exams.js';
 import { EBOB_TRANSFER_EXAMS } from './ebob-transfer-exams.js';

@@ -2,7 +2,7 @@
 // bağlanması, o kategorinin bütün alt konularının tamamlandığı anlamına gelmez.
 // node scripts/konu-ogrenme-kapsam.mjs [--write]
 // node scripts/konu-ogrenme-kapsam.mjs --liste [--kontrol]: matematik konu listesini
-// (docs/icerik/matematik-konu-listesi.md) ölçülen durumla yazar; --kontrol yazmadan uyuşmazlıkta 1 döner.
+// (docs/urun/matematik-konu-listesi.md) ölçülen durumla yazar; --kontrol yazmadan uyuşmazlıkta 1 döner.
 import {mkdirSync,readFileSync,readdirSync,writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
@@ -38,7 +38,8 @@ const required=[
   ['belirli-integral','Belirli integral',12,'ad62942626b94927626a'],
   ['integral-uygulamalari','İntegralin alan ve diğer uygulamaları',12,'ad62942626b94927626a'],
 ];
-const categories=JSON.parse(readFileSync(join(root,'frontend/src/data/curriculumIdentities.json'),'utf8')).canonicalUnits.filter((u)=>u.subject==='Matematik');
+// YKS-11 sonrası canonicalUnits MEBİ kimliklidir; eski `excel.*` kimlikleri (ders dosyalarındaki `kategori:`) `titles` anahtarlarında korunur.
+const categories=Object.keys(JSON.parse(readFileSync(join(root,'frontend/src/data/curriculumIdentities.json'),'utf8')).titles).filter((id)=>/^excel\.(tyt|ayt)\.matematik\./.test(id)).map((id)=>({id}));
 for(const [id,,,suffix] of required) if(!categories.some((u)=>u.id.endsWith('.'+suffix))) throw Error(id+': yerel katalog kategorisi bulunamadı');
 const existing=lessons.map((l)=>{
   const bs=l.sections.flatMap((s)=>s.blocks);
@@ -63,7 +64,7 @@ console.log('Eksik dersler: '+missing.map((l)=>l.id).join(', '));
 function topicList() {
   const spec=JSON.parse(readFileSync(join(root,'scripts/matematik-konu-listesi.json'),'utf8'));
   const tips=JSON.parse(readFileSync(join(root,'frontend/src/learn/content/video-protips.json'),'utf8')).tips;
-  const docPath=join(root,'docs/icerik/matematik-konu-listesi.md');
+  const docPath=join(root,'docs/urun/matematik-konu-listesi.md');
   const byId=Object.fromEntries(existing.map((l)=>[l.id,l]));
   const known=new Set(spec.konular.map((k)=>k.id));
   const extra=existing.filter((l)=>!known.has(l.id)).map((l)=>l.id);

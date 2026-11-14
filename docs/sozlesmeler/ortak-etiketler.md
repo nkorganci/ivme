@@ -1,7 +1,7 @@
 # Ortak kaynak etiketleri
 
 Bu belge ortak etiket kataloğunun nasıl üretildiğini, yayımlandığını ve denetlendiğini
-anlatır. Sistemin genel kuralları [sistem rehberinde](../mimari/README.md) tutulur. Sayılar bu
+anlatır. Sistemin genel kuralları [sistem rehberinde](../README.md) tutulur. Sayılar bu
 belgeye yazılmaz; güncel değer her zaman DB'den, `python scripts/ivme.py durum` çıktısından
 veya üretim raporundan okunur.
 
@@ -22,7 +22,7 @@ aynı API metadatasından gelir; yerel yerleşim dosyası kayıtlı kimliği de�
 kategori tanımına uyan karar, öğrenci filtresinde otomatik önerinin önüne geçer.
 
 Ders/ünite/konu yapısı Excel'in ilk KONULAR sayfasından gelir
-([tek kaynak kuralları](../mimari/veri-kaynaklari.md)); KPSS sınavları aynı kataloğa kendi
+([tek kaynak kuralları](../sistem/veri.md)); KPSS sınavları aynı kataloğa kendi
 sınav kimlikleriyle eklenir ([14. adım](../plan/14-kpss.md)).
 
 ## Kontrollü sözlük
@@ -133,7 +133,7 @@ Tam denetimin sonucu `veri/content-labels/audit.json`, özet `report.json`, sür
 PDF/görseller ayrı yedeklenir.
 
 Üretim hattında `--dry-run`, `--check`, `--resume`, `--limit`, `--ocr-pages` ve yayın
-seçeneklerinin anlamı [üretim ve yeniden başlama](../mimari/icerik-uretimi.md)
+seçeneklerinin anlamı [üretim ve yeniden başlama](../sistem/icerik-hatti.md)
 bölümündedir. Önbellek bozulması ve girdi değişiminde devam davranışı
 `content-pipeline-test.py`, video kimliği/oynatma listesi/süre/HTTP 429 ayrımı
 `video-inventory-test.py` ile denetlenir.
