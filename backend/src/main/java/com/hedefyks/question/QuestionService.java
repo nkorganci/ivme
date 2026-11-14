@@ -55,9 +55,11 @@ public class QuestionService {
     }
 
     public List<FilterRow> filters(QuestionBank bank,List<QuestionSource> source) {
-        var current=sharedLabels.filterRows(bank,source);
-        var fallback=current!=null?current:source.isEmpty()?(bank == null ? questions.filterRows() : questions.filterRowsByBank(bank))
-                :source.stream().distinct().filter(s->bank==null || s.bank()==bank)
+        var canonicalBank = bank == null ? null : bank.canonical();
+        source = source.stream().map(QuestionSource::canonical).distinct().toList();
+        var current=sharedLabels.filterRows(canonicalBank,source);
+        var fallback=current!=null?current:source.isEmpty()?(canonicalBank == null ? questions.filterRows() : questions.filterRowsByBank(canonicalBank))
+                :source.stream().distinct().filter(s->canonicalBank==null || s.bank()==canonicalBank)
                     .flatMap(s->questions.filterRowsByBank(s.bank()).stream().filter(r->r.examType()==s.examType())).toList();
         return fallback.stream()
                 .sorted(Comparator.comparing(FilterRow::examType)

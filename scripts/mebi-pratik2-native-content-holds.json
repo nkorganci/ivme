@@ -64,6 +64,20 @@
       "reason": "SOURCE_CONTENT_PERIOD_LABEL_AMBIGUITY",
       "note": "Native gövdede XVI. yüzyıl/Prens eseri ile Aydınlanma Çağı adlandırması birlikte geçiyor. Dönem bağlamı içerik incelemesine ayrıldı; görsel kusur kesinliği veya öğretmen kararı üretilmedi, aynı metni tekrar okuma.",
       "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q007",
+      "imageSha256": "10983ef0ee2b55584407e099f782cdb68a4d68b2d0bb03d237aef34c32006a74",
+      "reason": "SOURCE_CONTENT_PRINTED_KEY_CHOICE_CONSISTENCY_REVIEW_REQUIRED",
+      "note": "A ve B seçeneklerinin ikisi de gaye-nizam dışı okunabilir; basılı B anahtarıyla tek doğru seçenek belirsizliği içerik incelemesinde.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q011",
+      "imageSha256": "b8b18d3618accdc5eac951270ccb046507a02b3b90e00ad0df38d17a0db21e18",
+      "reason": "SOURCE_CONTENT_PRINTED_KEY_CHOICE_CONSISTENCY_REVIEW_REQUIRED",
+      "note": "Özgün gövde ve tam anahtar gerçekten açıldı: amaç/düzenle ilişkilendirilemeyen C seçeneği varken basılı anahtar11.E; kaynak içerik tutarlılığı incelemesinde, cevap düzeltilmedi.",
+      "teacherApproved": false
     }
   ]
 }

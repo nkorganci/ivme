@@ -6,6 +6,8 @@ public enum QuestionBank {
     CIKMIS,
     /** "Soru Bankası": OGM Soru Bankası ve diğer tüm OGM kaynakları. */
     OGM,
-    /** Yalnız yerel MEBİ kaynaklarından kanıtlı ikinci pratik bankası. */
-    MEBI_PRACTICE_2
+    /** Eski bağlantı/oturum belirteci; mevcut sorular OGM ana bankasına taşındı. */
+    MEBI_PRACTICE_2;
+
+    public QuestionBank canonical() { return this == MEBI_PRACTICE_2 ? OGM : this; }
 }

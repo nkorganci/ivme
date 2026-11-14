@@ -21,7 +21,6 @@ const ITEMS = [
   ['/oneriler', 'Çalışma önerileri', 'clock'],
   ['/ogrenci-takip', 'Öğrenci Takip Portalı', 'clock'],
   ['/calisma/yeni', STUDY_LABEL, 'play'],
-  ['/pratik-2', 'Soru Çöz & Pratik 2', 'play'],
   ['/gecmis', STATISTICS_LABEL, 'clock'],
   ['/geri-bildirim', 'Geri Bildirim', 'message'],
 ];
@@ -153,7 +152,7 @@ export default function Layout() {
   const items = user.role === 'ADMIN' ? [['/yonetim', 'Yönetim', 'shield']]
     : user.role === 'OPERATOR' ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book'], ['/akilli-ogretmen-inceleme', 'Akıllı Öğretmen İnceleme', 'layers'], ['/icerik-bakimi', 'İçerik bakımı', 'shield']]
       : ['TEACHER', 'PARENT'].includes(user.role) ? [['/', 'Ana Sayfa', 'home']]
-        : [...ITEMS.filter(([path]) => path !== '/pratik-2' || !track || track.family === 'YKS'), ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
+        : [...ITEMS, ...(localReviewSwitch ? [[REVIEW_PATH, 'Öğretmen Doğrulaması', 'book']] : [])];
 
   const signOut = async () => {
     setSignOutError('');

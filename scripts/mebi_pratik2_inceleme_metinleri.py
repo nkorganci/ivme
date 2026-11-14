@@ -12,7 +12,7 @@ from pathlib import Path
 import pymupdf
 from mebi_pratik2_tam_pdf_tarama import APP, BASE, SOURCE
 from mebi_pratik2_incelenen_konu_paketi import verified_body
-from mebi_pratik2_tek_tarama_konu import source_subject
+from mebi_pratik2_tek_tarama_konu import source_subject_for_row
 from mebi_pratik2_pdf_tekrar_kapisi import current_decisions, skip_pdf
 from yks_birlestirme import write_json, process_lock
 
@@ -35,7 +35,7 @@ def run(package_name, subjects, output_name):
     for row in package['items']:
         if row['code'] in reserved or row['code'] in held or skip_pdf(row['sourceSha256'], policy):
             continue
-        subject = source_subject(row['relativePath'], categories, row['exam'])
+        subject = source_subject_for_row(row, categories)
         if subject not in subjects:
             continue
         receipt = folder / 'body-readings' / (row['code'] + '.json')

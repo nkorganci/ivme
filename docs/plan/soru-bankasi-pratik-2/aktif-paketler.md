@@ -1,6 +1,10 @@
-# Pratik 2 — canlı paket durumu
+# Pratik 2 — arşiv zinciri KAPALI
 
-Gözetmen bu tabloyu kabul makbuzlarından otomatik günceller. **BITTI yalnız
+**Son kullanıcı kararı:** yeni soru alımı iptal edildi. Gözetmen/aktarım kapalı;
+bu tablo tarihsel makbuzdur, yeniden başlatma talimatı değildir. Mevcut sorular
+ana bankaya taşınır; inceleme ve kaynak bağlantıları arşivde korunur.
+
+Önceki gözetmen bu tabloyu kabul makbuzlarından güncelliyordu. **BITTI yalnız
 ilgili paketin kabulüdür; bütün arşivin veya öğretmen incelemesinin kapanışı değildir.**
 
 [Ana plan](../15-soru-bankasi-pratik-2.md)
@@ -29,13 +33,13 @@ ilgili paketin kabulüdür; bütün arşivin veya öğretmen incelemesinin kapan
 | `reviewed-native-question-7-expansion` | **BITTI** | `reviewed-native-question-6-expansion` |
 | `reviewed-native-question-8-expansion` | **BITTI** | `reviewed-native-question-7-expansion` |
 | `all-source-evidence` | **BITTI** | `bold-number-expansion` |
-| `full-mock-pending-evidence` | **SURUYOR** | `bold-number-expansion` |
+| `full-mock-pending-evidence` | **BITTI** | `bold-number-expansion` |
 | `single-test-pending-evidence` | **BITTI** | `bold-number-expansion` |
 | `individual-tarama-pending-evidence` | **BITTI** | `bold-number-expansion` |
 | `individual-tarama-word-pending-evidence` | **BITTI** | `bold-number-expansion` |
 | `bold-number-pending-evidence` | **BITTI** | `bold-number-expansion` |
 | `scanned-literature-pending-evidence` | **BITTI** | `bold-number-expansion` |
 
-**Bilinen paket zinciri:** SURUYOR.
+**Bilinen paket zinciri:** BITTI.
 **Bütün arşiv soru kabulü: AÇIK.** Kaynak/cevap/gövde, ince konu ve canlı yayın
 kabulleri ayrıdır. İnceleme kayıtları tamamlanmış soru veya öğretmen onayı sayılmaz.

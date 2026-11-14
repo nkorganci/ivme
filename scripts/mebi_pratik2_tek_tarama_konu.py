@@ -5,6 +5,7 @@ keeps its fine-topic review status; file names never guess an individual topic.
 """
 import hashlib
 import json
+import re
 from pathlib import Path
 from mebi_pratik2_tam_pdf_tarama import APP,BASE
 from mebi_pratik2_konu_basligi import normalize
@@ -83,6 +84,28 @@ def source_subject(path,categories,exam):
     labels=[aliases.get(normalize(label),label) for label in labels]
     found={s for s in candidates for label in labels if normalize(s)==normalize(label)}
     return next(iter(found)) if len(found)==1 else None
+
+
+def printed_test_subject(lines,exam,test_number,categories):
+    headers=[normalize(line['text']) for line in lines if line['bbox'][1]<75]
+    if not any(re.search(r'\b'+exam.lower()+r' tarama testi\s+'+str(int(test_number))+r'\b',h) for h in headers):return None
+    aliases={'din kulturu ve ahlak bilgisi':'Din Kültürü (DKAB)','turk dili ve edebiyati':'Edebiyat'}
+    labels={aliases.get(h,h) for h in headers}
+    found={c['subject'] for c in categories if c.get('selectable') and c['id'].startswith('excel.')
+           and c.get('exam')==exam and any(normalize(c['subject'])==normalize(label) for label in labels)}
+    return next(iter(found)) if len(found)==1 else None
+
+
+def source_subject_for_row(row,categories):
+    subject=source_subject(row['relativePath'],categories,row['exam'])
+    if subject:return subject
+    if not row.get('testNumber') or not row.get('bodyPage'):return None
+    path=BASE/'full-pdf-native'/(row['sourceSha256']+'.json')
+    if not path.exists():return None
+    native=json.loads(path.read_text(encoding='utf8'))
+    if native.get('sourceSha256')!=row['sourceSha256'] or native.get('status')!='SCANNED':return None
+    page=next((p for p in native['pages'] if p['physicalPage']==row['bodyPage']),None)
+    return printed_test_subject(page['lines'],row['exam'],row['testNumber'],categories) if page else None
 
 
 def heading_category(headings,exam,subject,categories):

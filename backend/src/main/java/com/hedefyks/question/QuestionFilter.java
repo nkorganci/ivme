@@ -32,13 +32,14 @@ public record QuestionFilter(QuestionBank bank, ExamType examType, String subjec
     }
 
     public QuestionFilter {
+        bank = bank == null ? null : bank.canonical();
         subject = blankToNull(subject);
         topic = blankToNull(topic);
         categoryId=categoryId==null?java.util.List.of():categoryId.stream().filter(s->s!=null && !s.isBlank()).distinct().toList();
         categoryMatch=categoryMatch==null || categoryMatch.isBlank()?"ANY":categoryMatch;
         includeCandidates=includeCandidates==null?true:includeCandidates;
         questionTypeId=blankToNull(questionTypeId);teacherDifficulty=blankToNull(teacherDifficulty);
-        source=source==null?java.util.List.of():source.stream().filter(java.util.Objects::nonNull).distinct().toList();
+        source=source==null?java.util.List.of():source.stream().filter(java.util.Objects::nonNull).map(QuestionSource::canonical).distinct().toList();
         myDifficulty=myDifficulty==null || !DIFFICULTIES.contains(myDifficulty.trim()) ? null : myDifficulty.trim();
         mark=mark==null || !MARKS.contains(mark.trim()) ? null : mark.trim();
         skipHidden=skipHidden==null?false:skipHidden;

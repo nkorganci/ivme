@@ -1,0 +1,445 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q003",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "681e872ab98f338cf0f243f1a214f662303907f5203cbb75ccfd10d4222e395a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. İbadet, bir müminin Allah’a karşı sorumluluğunu yerine getirme çabasıdır. Bu çaba; O’nun emirlerine uymayı, yasaklarından sakınmayı ve tüm bunları Allah’ın hoşnutluğunu kazanma niyetiyle ",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q004",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "75edc18b28d34ac0e9590a5f65cc5ff147412a0e6001fd52b43965489d573efa",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Aşağıdakilerden hangisi ibadetlerin ahlaki gelişime katkılarından biri değildir? A) Kibir ve gurur gibi olumsuz duygulardan korur. B) Sabır ve irade eğitimine katkıda bulunur. C) Bencilli",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q005",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "a9bb0793c4818377a3813975c51e8920d4979a871181ed346d1c304d84b0babb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. İbadetlerin etkileriyle ilgili I. İnsana sorumluluk bilinci kazandırır. II. Ruhsal ve manevi gelişimi destekler. III. Olumsuz davranışları engelleyerek toplumsal huzura katkıda bulunur. i",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q006",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "84015b8bf68c85b005a838d38fb0deb5225b676efcb7655b82f5fc04b13a9f0a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. İbadetler kişiyi kötülüklerden alıkoyar, ahlaki olgunluğa ulaştırır ve onun güvenilir bir birey olmasını sağlar. Ayrıca ibadetler toplumun bir arada yaşama iradesini güçlendirir. Ortak de",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q007",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "8486f36389702422f02f69f87021fed232081b7a3b6bd14e45f55616d05e8297",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. İslam’ın ibadet anlayışına göre I. İbadetler insanı doğruluğa yöneltir. II. Nafile ibadetler kesin olarak yapılması emredilen ibadetlerdir. III. Allah’ın yasaklarından kaçınmak ibadet bil",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q008",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "5039247b219bef8c16901ad361aceaa2d730fce2451f4a8000d28be03ac0e377",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. İbadet bilinciyle yaşayan insan, Allah’ı unutmaz. Günde beş vakit kıldığı namaz, onu gün içinde işlediği hataları fark etmeye ve pişmanlık duymaya yöneltir. Oruç ise nefsin isteklerine di",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q009",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "1aa00d6fa36a960a14dbf564815392e7771fa26d7df7fb92b0d75971251df2c5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. İslam’da, akıl sahibi olan birey ergenlik çağına ulaşınca dinî hükümlerin muhatabı olur. Bu vasıflara sahip olan kişilere “mükellef” denir. Dolayısıyla çocuklar ve akıl hastaları dinen so",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q010",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "8ac0e118ba250604d4fd3c628030a6089e4feaf52bb1603b3575b5aba3e7acdc",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. I. Hz. Peygamber’in farz ve vacip dışında yaptığı veya yapılmasını tavsiye ettiği fiiller II. Yapılması farz seviyesinde olmayan fakat sünnetten daha kuvvetli olan fiiller III. Mükellefi",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q011",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "b5ccb2f0bca5d15e21e9bf831fedbbbdaf831c5c6b80e377fe583353832361c3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Farzıkifaye, toplumun bir kısmı tarafından yerine getirildiğinde diğerlerinin üzerinden sorumluluğun kalktığı, hiç kimse yerine getirmediğinde ise toplumun tamamının sorumlu olduğu farzd",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q016",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "01c20cd0ea83b18ead38cef245c1b650722ec6bb43217b220454c5133a0bb691",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "16. Aşağıdakilerden hangisi ibadetlerin bireye sağladığı faydalar arasında gösterilemez? A) Güven duygusu oluşturur. B) İnsanı kötülüklerden arındırır. C) Nefsine hâkim olma gücü verir. D) K",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q018",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "8b79939c7cff551eaacff25925b0d89682003ccbf70a1a373e16213edcdedf29",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. Kişi ibadetler sayesinde davranışlarını iyileştirir, daha erdemli bir insan hâline gelir. Örneğin günün belirli vakitlerinde yapılan ibadetler sayesinde sorumluluklarını yerine getirmeyi",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q019",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "db41944f0687276e5eca6a8e50b04a6a29eed8f9d036d03221b4b531afe70955",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. Belirli şekillerde ve şartlarda yapılan ibadetlerin bireysel ve toplumsal hayata yansıyan yönleri vardır. İbadetler; insanları ruhen olgunlaştırır, onları kötülüklerden alıkoyar ve ahlak",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q020",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "d62ea09d2829be6ed22defdaab512a70617819fc0c870768a5875f3ab90e314b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "20. Kurban, insanın Allah’a bağlılığını gösteren önemli bir ibadettir. Kurban ibadetinin asıl amacı Allah’ın emrine boyun eğmektir. İnsan bu ibadetle Allah’ın rızasına ulaşmaya çalışır. Buna",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q024",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "8cddb9e37281dafaa7a38ab44da61350a9175f2d57dd172cece587b76537a3ca",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. I. İyilik yaparken Allah’ın rızasını gözetmek II. Zorluklar karşısında sabır ve tevekkül göstermek III. Dua ile ibadetlerde içtenlik ve samimiyeti korumak IV. İbadetler aracılığıyla topl",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q025",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "9bb3ce5770b8121475b47479f4e5cccb4114e3ab92fb9f162eb4625ab74fe3e0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. İbadet, insanın Allah’a olan bağlılığını davranışlarıyla göstermesidir. Bu davranışların bir kısmı zaman, şekil ve miktar bakımından Allah tarafından belirlenmiştir. Örneğin namazın vakt",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q026",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "f12efd4b611e8dfb0d289ec20ddf66281ee04b039160e3c7e233e24dcd1fd371",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. İbadet; belli hareketlerin tekrarlanmasından ibaret olmayan, insanın iç dünyasında dönüşüm yaşamasını sağlayan bir davranıştır. Bu dönüşüm kişiyi olgunlaştırır, kötü alışkanlıklardan uza",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q027",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "7cae757edb225c84669e2d5e91e6a021473c6ab4e5c4f8d3ae205f9d3f7eee8a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Bir Müslüman; iş yerinde dürüst davranmayı “farz”, arkadaşına gülümsemeyi “ibadet”, çevreye zarar vermemeyi “sorumluluk” olarak görmektedir. Bu anlayış, davranışları efalimükellefin çerç",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q028",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "3ab3e7d4882f39da17399650b4380b79dff0ba4d36ee10851ba390db6e996bb8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. Bir grup genç, arkadaşlarıyla halı sahada hafta sonu maç yapmayı planlamıştır. Amaç eğlenmek ve spor yapmaktır. Ancak içlerinden biri, “Kaybeden takım kazananlara yemek ısmarlasın.” diye",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q029",
+      "categoryId": "excel.tyt.din.e0b8ee32aefdb189e122",
+      "imageSha256": "309a32f6e4970c9b363b4fcb0396095e62912171c2e58267dabe7e5275c5e9f1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "29. • Cenaze namazını toplumun bir kısmı yerine getirdiğinde diğerlerinin üzerinden sorumluluk kalkar. • Sabah namazının sünneti Hz. Peygamber tarafından sürekli uygulanmıştır. • Ramazan’da ",
+      "rationale": "İbadetin tanımı, davranış alanı, mükellefiyet veya ibadet türlerinin hüküm bakımından kapsamı ölçülür; salt amaç/fayda ya da ihlas ilkesi sorularıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q034",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "2527245641a900732ee7b6b117e8b6d2c6dee0366db8316993349c4e8f520bff",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "34. Cemaatle kılınan namaz, bireyleri aynı safta buluşturur. İnsanlar arasındaki sosyal farkları görünmez kılarak eşitlik ve kardeşlik duygusunu canlandırır. Zengin-fakir, amir-memur, genç-y",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T3-Q035",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "9bdc4117b55a848d706cfc03104147c5dcb458abf30e63740dda1633a8874fcf",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "35. I. İbadetlerin teşri hikmeti (emredilme nedeni) bireysel ve toplumsal faydaları da içeren ilahi bir takdirin sonucudur. II. İbadetler, insanın Allah’a yakınlaşmasını sağlarken aynı zaman",
+      "rationale": "İbadetin Allah rızası amacı veya bireysel/ahlaki/toplumsal sonuçları doğrudan ölçülür; ibadetin temel ilkeleri ile ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q005",
+      "categoryId": "excel.tyt.din.f84e46e1f4a2dd8f6f14",
+      "imageSha256": "3addbdcbddd9bcbc2615313ef4ac3507c3ab9e7c01270347f59c66cab825cd62",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Ekmel varlık delili, bazı Müslüman ve Batılı filozoflar tarafından kullanılan bir metafizik kanıttır. Bu delile göre insanda doğuştan gelen ve her şeyi yaratan, yöneten mükemmel bir varlı",
+      "rationale": "Ekmel varlık veya gaye-nizam kanıtı ve yaratılıştan Allah’ın varlığına çıkarım doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q006",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "b5a3770c87a6ab17deaff182bb6635117d4e6aad2ba46ee5744a6c8cf834f4da",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. İslam düşüncesinde varlık konusuyla ilgili fikir öne süren bazı düşünürlere göre âlemde iki tür varlık mevcuttur. Bunlardan biri zorunlu, diğeri de mümkün varlıktır. Zorunlu varlık, tüm y",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q008",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "d4c34d170b1974ea2a9cd4738490961b53614c4cbca577c0ffc30ffd9be42f74",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. • “Sizin ilahınız bir tek ilahtır. O’ndan başka ilah yoktur…” (Bakara suresi 163. ayet) • “Dönüşünüz yalnız Allah’a olacaktır, O her şeye kadirdir.” (Hud suresi 4. ayet) • “… Şu da muhakk",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q009",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "a3714d1c1179f873d37ccbafaef30400238b49e9e91f0a535db5cf8421ce1697",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıdaki ayetlerden hangisi Allah'ın ilim sıfatıyla doğrudan ilgili değildir? A) “Onların önlerindekini de arkalarındakini de (yaptıklarını da yapacaklarını da) bilir…” (Hac suresi 76. a",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q013",
+      "categoryId": "excel.tyt.din.606b1b2fed1d8d2678ef",
+      "imageSha256": "f7ee9b67d1e024e6ea971c2ab246317fe3045da9c735ea87689aebceeb844ca9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "13. Aşağıdakilerden hangisi “Allah’a niçin ibadet edilir?” sorusuna cevap olacak tutum ve davranışlardan biri değildir? A) Emrine itaat etmek B) Rızasına kavuşmak C) Sevgisini kazanmak D) To",
+      "rationale": "Allah’a niçin ibadet edildiği ve rıza/şükür amacı açıkça ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q014",
+      "categoryId": "excel.tyt.din.55850470abc345eb824b",
+      "imageSha256": "24a2cc67af8a7b0e73616ec8f6302b43be11361366dad6fa0cf3b557b7e27a32",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "14. Ahmet ve babası alışveriş merkezinin çıkışında bir yardım kumbarası gördü. Ahmet harçlığının bir kısmını kumbaraya attı. Arabalarına doğru yürürken Ahmet “Baba fark ettin mi? Alışveriş m",
+      "rationale": "Yardımdan dolayı kendini büyük görme ve başkalarını kınama, basılı seçeneklerde kibir/gurur üzerinden sorgulanır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q015",
+      "categoryId": "excel.tyt.din.e6eba32563af6eb676eb",
+      "imageSha256": "16779a2e8a3e0f98cd0a846f15a4065c53957c782e9ee5ef916ba07299588d5f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "15. Aşağıdakilerden hangisi insanın Allah ile doğrudan iletişim kurma yollarından biri değildir? A) Dua etmek B) Ahlaklı olmak C) İbadet etmek D) Kur’an okumak E) Tövbe istiğfarda bulunmak",
+      "rationale": "Dua, ibadet, tövbe/istiğfar ve Kur’an okuma yoluyla Allah ile irtibat doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q017",
+      "categoryId": "excel.tyt.din.5bdc4b3e140b4fc6aa62",
+      "imageSha256": "29cef81d37c30a8148621f2fc71364060a23d7ab1dbdbea8c30a560d06acbbe0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "17. • “O; ölüden diriyi, diriden de ölüyü çıkarıyor ve yeryüzünü ölümünün ardından canlandırıyor. İşte siz de böyle (diriltilip) çıkarılacaksınız.” (Rum suresi 19. ayet) • “O’nun kanıtlarınd",
+      "rationale": "Basılı sure ve ayet numarası Rum18–27 kapsamındadır; sorunun ölçtüğü anlam aynı kontrollü ayet aralığıyla bağlandı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q018",
+      "categoryId": "excel.tyt.din.e6eba32563af6eb676eb",
+      "imageSha256": "d474223bac585b0fea7e9c7703b302835443a9209447ab97ade5501886245847",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "18. İstiğfar kavramı “Kişinin, yaptığı eylemlerin çirkinliğini fark ettikten sonra Allah’tan bağışlanma dileğinde bulunması.” olarak ifade edilir. Bu parçada sözü edilen kavramla ilgili aşağ",
+      "rationale": "Dua, ibadet, tövbe/istiğfar ve Kur’an okuma yoluyla Allah ile irtibat doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q019",
+      "categoryId": "excel.tyt.din.5bdc4b3e140b4fc6aa62",
+      "imageSha256": "cc66931191896c9d11afc9f689879cb495298b71cdff68b29af3f88bb84fb3a5",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "19. “Yine O’nun kanıtlarındandır ki korku ve ümit vermek üzere size şimşeği gösteriyor, gökten su indirip ölümünün ardından yeryüzünü onunla canlandırıyor. Gerçekten bunda, aklını kullanan k",
+      "rationale": "Basılı sure ve ayet numarası Rum18–27 kapsamındadır; sorunun ölçtüğü anlam aynı kontrollü ayet aralığıyla bağlandı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q023",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "4841514763d39598388edc901e3ba5c64edd2c4b748bbb8b9fbb570bf6ab2144",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "23. İsim ve sıfatları bilmek, teorik bilgi edinmenin ötesinde bireyin ahlaki eğilimlerini de etkiler. Örneğin Allah’ın “Gaffar” ismini bilen bir kişi, bağışlamanın değerini idrak ederek başk",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q024",
+      "categoryId": "excel.tyt.din.f84e46e1f4a2dd8f6f14",
+      "imageSha256": "7ecfc329b70881831b1cadf1cd24e3b564967e10811f41e8e9908fd838ca997a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "24. Ekmel (mükemmel) varlık delili, Allah’ın varlığı ve birliğiyle ilgili delillerden biridir. Bu delile göre, yaratılmış varlıkların hiçbiri mükemmel değildir. Buna rağmen canlılarda kemale",
+      "rationale": "Ekmel varlık veya gaye-nizam kanıtı ve yaratılıştan Allah’ın varlığına çıkarım doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q025",
+      "categoryId": "excel.tyt.din.f84e46e1f4a2dd8f6f14",
+      "imageSha256": "5808c508186b9f3f02e61c6819de058c283014c136fc93b63442ff08090abe33",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "25. “Yeryüzünü enine boyuna uzatan, onda sabit dağlar ve ırmaklar meydana getiren, orada meyvelerin her birinden çifter çifter yaratan O’dur. Geceyi de gündüzün üzerine O bürüyüp örtüyor. Dü",
+      "rationale": "Ekmel varlık veya gaye-nizam kanıtı ve yaratılıştan Allah’ın varlığına çıkarım doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q026",
+      "categoryId": "excel.tyt.din.5bdc4b3e140b4fc6aa62",
+      "imageSha256": "2b56d53bd8d81df8ecd45147626ad8ca4b7207011544040b13a3f3841e6d03b8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "26. “O, ölüden diriyi, diriden de ölüyü çıkarıyor ve yeryüzünü ölümünün ardından canlandırıyor. İşte siz de böyle (diriltilip) çıkarılacaksınız. O’nun kanıtlarından biri, sizi topraktan yara",
+      "rationale": "Basılı sure ve ayet numarası Rum18–27 kapsamındadır; sorunun ölçtüğü anlam aynı kontrollü ayet aralığıyla bağlandı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q027",
+      "categoryId": "excel.tyt.din.f84e46e1f4a2dd8f6f14",
+      "imageSha256": "ab3bafc3e64a756e8a5fbfda7ad2bac7cae5e721ac028a41de38e2985d3929f3",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "27. Aşağıdakilerden hangisi gaye ve nizam deliliyle doğrudan ilişkilendirilemez? A) Evrendeki her varlık belli bir ölçü, uyum ve amaç doğrultusunda yaratılmıştır. B) Denizlerdeki biyolojik d",
+      "rationale": "Ekmel varlık veya gaye-nizam kanıtı ve yaratılıştan Allah’ın varlığına çıkarım doğrudan ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q028",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "f3696e8775f4484d062ef62f55b6b934f9476836ad061a5a54e19559d5d8e077",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "28. İslam inancına göre bir insanın Allah’a iman ettikten sonra yapması gereken en önemli şey, O’nu doğru şekilde tanımaktır. Bu, ancak Allah’ın isim ve sıfatlarını doğru öğrenmekle mümkündü",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q030",
+      "categoryId": "excel.tyt.din.414141300f90d501996e",
+      "imageSha256": "2d9466ee98df3ab462662f252a0178153fb18bbf40363ef15163855d1c27f42a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "30. Kur’an-ı Kerim; insanın kurtuluşa ermesi için iyiliği yaymayı, kötülüğü engellemeyi, zulümden uzak durmayı, iffeti korumayı, cömert olmayı ve boş işlerden yüz çevirmeyi tavsiye eder. Bu ",
+      "rationale": "Kur’an’ın önerdiği ahlaki davranışların bireysel ve toplumsal hayata etkisi sorulur; belirli bir ibadet usulü ölçülmez.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q031",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "5306129fe868e1631a836a4781244ddb3c5bbe4bfde1b23e0500d5d5913867ad",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "31. “O, kendisinden başka hiçbir ilah olmayan Allah’tır. Gaybı da görünen âlemi de bilendir…” (Haşr suresi 22. ayet) Bu ayet Allah’ın aşağıdaki sıfatlarından hangilerini bir arada vurgulamak",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q032",
+      "categoryId": "excel.tyt.din.e6eba32563af6eb676eb",
+      "imageSha256": "c35784a7ae964575213942b42d349cd336c35aa50d9fab3fca680ef47a5c5b8b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "32. “Ey iman edenler! Allah’tan korkun, O’na yaklaşmaya vesile arayın ve O’nun yolunda çaba harcayın ki kurtuluşa eresiniz.” (Maide suresi 35. ayet) Bu ayet insanın Allah ile irtibatını güçl",
+      "rationale": "Dua, ibadet, tövbe/istiğfar ve Kur’an okuma yoluyla Allah ile irtibat doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q033",
+      "categoryId": "excel.tyt.din.e6eba32563af6eb676eb",
+      "imageSha256": "f7aa43c8713cd42995136ffac1cce5115950af167b4a0397520b994d3af19609",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "33. Aşağıda insanın Allah’la irtibat kurma yollarına ilişkin bazı ifadeler verilmiştir: I. Dua insanın zor anlarında da başvurması gereken bir yoldur. II. İbadet, Allah’ın rızasını kazanmak ",
+      "rationale": "Dua, ibadet, tövbe/istiğfar ve Kur’an okuma yoluyla Allah ile irtibat doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q034",
+      "categoryId": "excel.tyt.din.8d853e658fb63db1692a",
+      "imageSha256": "871db9b70c79d2eeb58a39b198918fae2e1bbee0ee180cac586de2a41abd1654",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "34. İslam inancında Allah’ın “ilah” olması, yalnızca ibadet edilmeye layık tek varlık olduğunu; “Rab” olması ise tüm varlıkların yaratıcısı, rızık vereni ve hayatlarını düzenleyen olduğunu i",
+      "rationale": "Allah’ın isim/sıfatlarının anlamı, ayet karşılığı veya insanın tutumuna yansıması ölçülür; genel inanç etkisi soruları bu dar konuya zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q035",
+      "categoryId": "excel.tyt.din.5bdc4b3e140b4fc6aa62",
+      "imageSha256": "0a992152f9ae86cc45535d5b1e4a8a7e930356208fd364a1dade93f65a9e2ccd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "35. “O’nun kanıtlarından biri de gökleri ve yeri yaratması, dillerinizin ve renklerinizin farklı olmasıdır. Kuşkusuz bunda bilenler için ibretler vardır.” (Rum suresi 22. ayet) Bu ayetten çı",
+      "rationale": "Basılı sure ve ayet numarası Rum18–27 kapsamındadır; sorunun ölçtüğü anlam aynı kontrollü ayet aralığıyla bağlandı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3294337d6b62-T6-Q036",
+      "categoryId": "excel.tyt.din.5bdc4b3e140b4fc6aa62",
+      "imageSha256": "368908e8c9b6a8c2eb98bdfef60cfa159c562a6bf6c45056a5f600e60408c855",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "36. “Onlara ısınıp kaynaşasınız diye size kendi türünüzden eşler yaratıp aranıza sevgi ve şefkat duyguları yerleştirmesi de O’nun kanıtlarındandır. Doğrusu bunda iyi düşünen kimseler için de",
+      "rationale": "Basılı sure ve ayet numarası Rum18–27 kapsamındadır; sorunun ölçtüğü anlam aynı kontrollü ayet aralığıyla bağlandı.",
+      "teacherApproved": false
+    }
+  ]
+}

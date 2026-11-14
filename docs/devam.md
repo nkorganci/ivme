@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.959 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel sonuç:** Pratik2→ana banka geçişi BITTI;11.026 soru taşındı, yeni alım KAPALI.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -8,83 +8,26 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**Etkin iş: Pratik 2 tam arşiv SURUYOR.** Yeniden “devam et” bekleme.
-Her kabul edilen alt adımı BITTI güncelle, yalnız kendi değişikliğini yerel
-`main`e commit et ve sıradaki işe aynı çalışma içinde geç. Ana görevi erken
-BITTI yapma. Tam arşivin tekil soru sayısı/yüzdesi henüz bilinmiyor.
+**Pratik2 mevcut sorularının ana bankaya geçişi BITTI.** Yeni soru çıkarımı ve
+aktarımı kullanıcı tarafından iptal edildi; eski tam arşiv zincirini başlatma.
+`scripts/mebi-pratik2-lifecycle.json` kapalı; yazıcılar/gözetmen ve DB bank
+kısıtı yeni ayrı banka alımını engeller. Özgün kaynak/inceleme kanıtlarını silme.
 
-Kaynak `D:\workspace\mebi-yks` yalnız okunur. Kanıt kökü
-`veri/mebi-pratik-2/20261111-source-inventory` (BASE). Mevcut PNG varsa yeniden
-üretme/yazma. Soru bazında banka benzerlik karşılaştırması yapma. Önce PDF
-kapısı: `scripts/mebi-pratik2-pdf-policy.json`, `BASE/pdf-reuse-check/decisions.json`.
-62 eş PDF atlandı; eski bankadaki aynı PDF tümüyle atlanır. Kısmi aktarımda
-soru soru eksik arama yok. Eski banka/öğrenci geçmişi korunur.
+11.026 soru aynı kimlik/cevap/görsel/updated_at/kaynak/ana konu bağlarıyla OGM
+Soru Bankası'na taşındı. Eski katalog sürümleri ve öğrenci geçmişi korundu.
+Pratik2 menüsü/ikinci banka seçimi kaldırıldı; `/pratik-2` sorgu/hash'iyle ana
+bankaya yönlenir; eski banka/kaynak filtreleri uyumludur. Ana ekranın formatı
+korundu. OGM88.718 fiziksel/88.695 etkin-görünür soru;23 eski inaktif korunur.
 
-**Son kabul070 PASS:**10.959(5.741 TYT/5.218 AYT).060–070 toplam925 yeni soru;
-her partide INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS. Geçmiş
-ayrıntı plan ve `verified-source-batch-*/bank-acceptance.json` makbuzlarında.
-Kaynak kabulü için basılı anahtar; öğrenci yayını öncesi gövde/iki cevap ve
-mevcut ana tablonun doğru ders–ünite–konu kimliği zorunlu. Belirsizler
-`remaining-topic-review.json` dosyalarında; aynı başarısız okuma tekrarlanmaz.
-İçerik bekletme `scripts/mebi-pratik2-native-content-holds.json`:9 kod.
-
-**067 BITTI:** `reviewed-native-history-3-expansion`,63 AYT kabul;
-`verified-source-batch-067/bank-acceptance.json` PASS. Bu tek-test Tarih
-grubundaki261/261 metin okundu;169 kabul/92 gerekçeli inceleme. Aynı grubu
-tekrar okuma. Diğer kaynaklar/Tarih tam arşiv kabulü değildir.
-
-**068 BITTI:**66 Fizik;basılı tüm başlıklar doğru tek konuya bağlandı.
-`source-physics-heading-expansion/pass-result.json`,batch068 PASS.
-**069/070 BITTI:** 96 AYT+180(114 TYT/66 AYT) Fizik soru kabul;
-`verified-source-batch-069|070/bank-acceptance.json` PASS. Tek-test Fizik283
-grubunun tamamı gerçekten okundu:276 kabul/7 gerekçeli inceleme. Tekrar
-okuma; `next-topic-review.json` imleci283 olarak kapatıldı. Diğer kaynakları
-ve bütün Fizik arşivini tamamlanmış sayma. Sonraki iş mevcut kırpımı olmayan
-cevaplı kaynak/sayfaları ayırmak; mevcut PNG'leri yeniden üretme.
-
-**Kısmi Din test çıkarımı BITTI; konu kabulü açık:** `scripts/mebi_pratik2_kismi_test.py`.
-İki kitap/üç test101 basılı cevap:94 seçilen aday+7 numara incelemesi.
-92 yeni özgün gövde kırpımı(47 native/45 word);2 yerleşim incelemesi.
-`partial-test-complete-evidence` hızlı92/92:90 profil kanıtı/2 görsel istisna,
-28,6sn;3 tam anahtar doğrulandı. T6 OCR11.E→İLE, gerçekten açılmış36 hücrelik
-özgün anahtarla ayrı sürümlü görsel okuma; tahmin/öğretmen onayı yok.
-Eski başarısız makbuzlar korunur, yeni birleşik paketi kullan.
-**Şimdi:** `partial-test-native-topic-expansion/input-review.json`90 özgün
-metni oku, mevcut doğru ders–ünite–konuya bağla; sonraki yayın numarası071.
-Henüz bu gruptan canlı kabul yok.7 numara+2 yerleşim ayrı incelemededir.
-
-**Fizik artımlı etiket geçişi BITTI:**497 kayıt2,7sn,8.074 eski kanıt korundu;
-dizinde432 bağlı kod. Kaynak/PNG/kategori tanımı değişirse artımlı geçiş durur.
-16+11 sınır testi PASS. Ana konu eşlemesi yayın/öğretmen onayı değildir.
-Sıradaki iş mevcut kırpımı olmayan cevaplı kaynak/sayfa kapsamını belirlemek;
-1.573 PDFnin tamamını yeniden kırpma. Mevcut PNG konumlarını atla ve PDF
-tekrar kararını koru. Eski başarısız yerleşimleri aynı yöntemle döndürme.
-
-**Çalışan deneme zinciri:**metadata PID27912, `supervisor-v9.log/.err.log`.
-Gerçek durum `BASE/chain-supervisor/current.json`; yeni kayıtlar gözetmenin
-sonraki doğal açılışında okunur, metadata için worker durdurma. Aktif deneme
-PID39504, `full-mock-pending-evidence-profile-v2.log`; tamamlanmış kanıt
-makbuzları korunur. Gözetmen OS görevi değildir; sadece çalışan bilinen
-paketleri sürdürür, bütün kaynak/konu kabulünü kendi başına tamamlamaz.
-
-**Hızlı yol:** `fast-profile-transition/enabled.json` kod SHA kapısı. Eski
-Pratik1/PyMuPDF profili, gerçek PDF clipping, özgün2×/2,5× RAM piksel kontrolü;
-yeni kırpım yok. Tek-test1.886/1.886 cevap/gövde işi BITTI. Deneme hızlı
-geçişi5.482 tamam,4.845 kanıt/634 yeni görsel istisna+3 eski inceleme. Şimdi
-sadece istisna geçişi çalışır; imleç logdan izlenir.7.368 PNG SHA/mtime ve
-iki manifest değişmedi (`fast-profile-transition/crop-reuse-acceptance.json`).
-
-**Konu kaynakları:** MEBİ klasörü/katalog/basılı başlık adları ile ana tablo
-kimlikleri ayrı korunur. Kaynak dizini449 yol, soru etiketi366/8.571 kodda
-bağlı; bunlar yayın/tekil arşiv sayısı değildir. MEB2018 Biyoloji PDF'si sadece
-etiket kapsamı referansı, SHA bağlı iki kural; soru kaynağı değildir. Eski
-dizinler `history/<sha>.json` içinde korunur. Matematik klasöründen Geometriye
-geçiş sadece bütün basılı başlıklar aynı konuya uygunsa; karma test reddedilir.
-15 kaynak/kimlik/kırpım ve9 başlık-kapsam sınır testi PASS.
-
-**Boş paketleri tekrar çalıştırma:** `source-curriculum-scope-expansion` ve
-ilk `source-math-heading-expansion` aday0.065 ayrı v2 paketle tamamlandı.
-Yeni girdi/kanıt değişmedikçe hazır/bitmiş kaynak işini tekrar yapma.
+Kanıt:`veri/mebi-pratik-2/main-bank-transfer/`:uygulama+güncel katalog yedeği,
+`acceptance.json` bütün soru/etiket/24 ilişkili tablo hash PASS;3 geçici-DB testi
+PASS ve test DB temizlendi. `live-acceptance.json`:son yayımlanmış
+`/assets/index-DNCK2JQ_.js`,masaüstü/mobil,23 sınav–ders örneği/görsel,
+eski rota/filtre ve tek ana banka/deneme seçimi PASS;öğrenci/öğretmen yazımı0.
+`mebi_pratik2_guncel_kuyruk.py` transfer günlüğündeki kimlikleri tanır:
+11.026 yayımlı kaynak kodu/7.343 ayrı inceleme adayı; yeni alım yapılmaz.
+Bu işte kalan zorunlu adım yok. Kullanıcıya ait diğer YKS/taxonomy/16-plan
+çalışma ağacı değişiklikleri korunur; bu işin commitine eklenmez.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|

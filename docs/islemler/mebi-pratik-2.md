@@ -1,3 +1,34 @@
+# Güncel karar: Pratik 2 yeni alımı KAPALI
+
+Kullanıcı mevcut soruları yeterli gördü; aşağıdaki eski çıkarım/aktarım komutları
+artık çalıştırılmaz. `scripts/mebi-pratik2-lifecycle.json` ve yazıcı girişlerindeki
+koruma bunu kalıcı uygular. İnceleme adayları yeni soru olarak eklenmez.
+Mevcut sorular aynı kimliklerle `OGM` ana bankasına taşınır; özgün kaynaklar,
+soru/görsel/PDF bağlantıları, inceleme kanıtları ve geçmiş kataloglar korunur.
+
+Ana bankaya geçiş: `scripts/mebi_pratik2_ana_bankaya.py` yalnız yedek ve salt-okunur
+kabulü yapar. `veri/mebi-pratik-2/main-bank-transfer/before.json` dondurulmuş kapsam;
+uygulama tabloları `before-transfer.dump`, güncel katalog `current-catalog.jsonl.gz`
+(POSTGRES COPY TEXT içinde JSONB satırları, gzip; geri yüklemede COPY kaçışları çözülür).
+Eski katalog sürümleri yerinde saklanır; yarım geniş yedek `.partial-preserved`
+olarak ayrıca korunur, tam yedek diye sunulmaz. V102 Flyway göçü tek transactionla
+banka alanını ve yalnız güncel katalogdaki `data.bank` alanını sürümlü değiştirir.
+Soru insert/delete, cevap/PNG/kod/updated_at, ders–ünite–konu kimliği veya öğrenci
+geçmişi değişmez. Önce `python scripts/ivme.py test MebiMainBankTransferTest`,
+sonra yerel izleyicinin V102 sürümü ve `python scripts/mebi_pratik2_ana_bankaya.py --verify`.
+Canlı salt-okunur kabul `node testler/mebi-main-bank-live.mjs`; öncesindeki
+`--before` modu eski ana banka sayımını bir kez dondurur. Öğrenci cevabı/oturum
+veya öğretmen kararı üretmez. `/pratik-2` sorgu/hash'iyle `/soru-bankasi`na gider;
+eski banka/kaynak belirteçleri ana banka filtresine çözülür. Menü ve seçilebilir
+banka listesinden Pratik2 çıkarılır; ana QuestionCollection/çalışma ekranı korunur.
+Yeni ayrı bankaya INSERT, DB bank check'iyle de engellenir. Eski oturum kayıtları
+güncellenmez; enum/URL uyumu korunur. Geri alma gerekirse transfer günlüğündeki
+kimlikler ve önceki katalog sürümü kullanılır; öğrenci geçmişi geri sarılmaz.
+
+---
+
+Aşağıdaki tarifler **tarihsel arşivdir; yeniden alım yetkisi değildir.**
+
 # MEBİ Pratik 2: aktarım ve inceleme
 
 Öğrenci, yan menüde **Soru Çöz & Pratik 2** bölümünden sınav/ders/konu seçer.

@@ -24,4 +24,9 @@ public enum QuestionSource {
 
     public QuestionBank bank() { return bank; }
     public ExamType examType() { return examType; }
+
+    /** Eski kaynak çiftleri yeni ana banka seçimine açılır; kayıtlı geçmiş değişmez. */
+    public QuestionSource canonical() {
+        return this == MEBI2_AYT ? OGM_AYT : this == MEBI2_TYT ? OGM_TYT : this;
+    }
 }

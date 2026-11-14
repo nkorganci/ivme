@@ -40,7 +40,11 @@ def run():
         data=json.loads(path.read_text(encoding='utf8'))
         for row in data['accepted']:accepted[row['code']]=row
         admission_reviews.extend(data.get('reviewQueueAdditions',[]))
-    cmd,env,_=db_connection('ivme');published=set(json.loads(query((cmd,env,None),"SELECT coalesce(json_agg(code),'[]') FROM questions WHERE bank='MEBI_PRACTICE_2'")))
+    cmd,env,_=db_connection('ivme');connection=(cmd,env,None)
+    published_sql="SELECT coalesce(json_agg(code),'[]') FROM questions WHERE bank='MEBI_PRACTICE_2'"
+    if query(connection,"SELECT to_regclass('learning_catalog.question_bank_transfers') IS NOT NULL")=='t':
+        published_sql+=" OR (bank='OGM' AND id IN (SELECT unnest(question_ids) FROM learning_catalog.question_bank_transfers WHERE migration_key='mebi-main-bank-v1'))"
+    published=set(json.loads(query(connection,published_sql)))
     crops=json.loads((BASE/'single-test-crops/manifest.json').read_text(encoding='utf8'))['crops']
     reasons={r['code']:r['reasons'] for r in json.loads((BASE/'single-test-crops/technical-packages.json').read_text(encoding='utf8'))['reviewQueueAdditions']}
     decisions={}
@@ -64,7 +68,7 @@ def run():
             for row in data['reviewQueueAdditions']:
                 if row.get('code') and row['code'] not in decisions:
                     decisions[row['code']]={**row,'status':'REVIEW_REQUIRED','studentVisible':False}
-                elif not row.get('code'):group_reviews.append(row)
+                elif not row.get('code') and row.get('status')!='EXISTING_OR_UNRESOLVED_GROUP_NOT_RECAPTURED':group_reviews.append(row)
     mock=BASE/'full-mock-source-reuse/report.json'
     if mock.exists():
         for row in json.loads(mock.read_text(encoding='utf8'))['records']:

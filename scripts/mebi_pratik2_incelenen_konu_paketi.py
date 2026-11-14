@@ -11,7 +11,7 @@ import unicodedata
 from pathlib import Path
 import pymupdf
 from mebi_pratik2_tam_pdf_tarama import APP,BASE,SOURCE
-from mebi_pratik2_tek_tarama_konu import source_subject
+from mebi_pratik2_tek_tarama_konu import source_subject_for_row
 from mebi_pratik2_pdf_tekrar_kapisi import current_decisions,skip_pdf
 from yks_birlestirme import write_json,process_lock
 
@@ -85,7 +85,7 @@ def run():
                     if hashlib.file_digest(stream,'sha256').hexdigest()!=sha:raise ValueError('Reviewed original PDF changed')
                 opened[sha]=pymupdf.open(original)
             text=' '.join(w[4] for w in opened[sha][row['bodyPage']-1].get_text('words',clip=pymupdf.Rect(row['bodyClip']),sort=True))
-            category=by_category.get(decision['categoryId']);subject=source_subject(row['relativePath'],categories,row['exam'])
+            category=by_category.get(decision['categoryId']);subject=source_subject_for_row(row,categories)
             validate_review(decision,row,category,text,subject)
             proof={'basis':'REVIEWED_ORIGINAL_NATIVE_QUESTION_TOPIC','review':decision,
                 'sourceTextSha256':hashlib.sha256(text.encode('utf8')).hexdigest(),

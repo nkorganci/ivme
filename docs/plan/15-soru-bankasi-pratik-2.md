@@ -1,8 +1,23 @@
-# 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
+# 15. Adım — Mevcut MEBİ sorularının ana bankaya geçişi — BITTI
 
-**Güncel canlı kabul:** 10.959 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel kapsam — BITTI:** mevcut11.026 soru ana bankaya taşındı. Yeni çıkarım/aktarım kullanıcı talimatıyla kapalı; tam arşiv hedefi iptal edildi.
 
-**Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
+**Son kullanıcı kararı:** ana Soru Çöz & Pratik/Soru Bankası ekranının formatı değişmez. Yalnız mevcut eklenmiş sorular ders–ünite–konu bağlarıyla `OGM` bankasına alınır. Pratik2 menüsü kaldırılır; soru/kaynak bağlantıları, kimlikler ve geçmiş korunur. Eski `/pratik-2` adresi sorgusuyla ana bankaya yönlenir. İnceleme adayları aktarılmaz.
+
+**Ana bankaya geçiş — BITTI:**11.026 mevcut soru aynı kimliklerle OGM bankasına
+alındı; soru sayısı artmadı. V102 atomik/sürümlü göç, uygulama+güncel katalog yedeği,
+bütün soru içeriği/cevap/görsel/updated_at, bütün kategori/ilişki ve24 korunacak
+tablonun hash karşılaştırması PASS. Eski katalog ve kaynaklar korunur.3 gerçek
+geçici-DB testi PASS; son servis edilen `/assets/index-DNCK2JQ_.js` sürümünde
+masaüstü/mobil,23 sınav–ders temsilcisi ve özgün görseller, eski rota/filtre,
+tek ana banka seçeneği ve eski deneme bağlantısı PASS. Öğrenci/öğretmen yazımı0.
+Ana bankada88.718 fiziksel kayıt,88.695 etkin/görünür soru; aradaki23 önceden
+etkin olmayan eski kayıttır, hiçbir soru silinmedi. Aktarımda11.026 sorunun tamamı
+etkin/görünür kataloğa bağlıdır. Kanıt:`veri/mebi-pratik-2/main-bank-transfer/`
+altında `before.json`, `acceptance.json`, `live-acceptance.json` ve ekran görüntüleri.
+**Tam arşiv çıkarımı tamamlandı iddiası yok:** kullanıcı kalan çıkarımı iptal etti.
+
+**Kesintisiz yürütme kuralı (yalnız güncel kapsam):** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
 commit et ve sıradaki açık adıma geç. Tekrar “devam et” komutu bekleme.
 Adımlar tamamlanana veya mevcut bağlam/token/çalışma sınırına ulaşana kadar
@@ -210,7 +225,7 @@ test10lardaki çelişkili anahtarlar bu kurtarmaya alınmadı.
 
 
 
-## Güncel kullanıcı talimatı ve açık kapsam
+## Önceki arşiv kapsamı — kullanıcı kararıyla kapalı
 
 **Güncel PDF tekrar kuralı:** mevcut Soru Çöz & Pratik'te
 kullanılmış aynı PDF yeniden aktarılmaz. Önce dosya kimliği, farklı hashlerde
@@ -231,35 +246,18 @@ Yeni büyük deneme kitaplarının da mevcut banka PDF kayıtları eşleşti;
 önceki ham keşiflerinden yeni kırpım/aktarım başlatılmaz.
 
 
-**Kalıcı yürütme talimatı:** tekrar “devam et” bekleme. Kullanıcı bütün
-cevaplı arşivi Pratik2’ye aktarmayı istiyor; çalışma/context/token sınırına
-kadar sürdür. Bağlam yenilenince aynı kanıt/imleçten devam et. Alt parti,
-envanter veya incelemeye ayırma ana görevin kapanışı değildir. Gerçek
-çözülemeyen kusurları ayrı tut; diğer kaynak/soruların aktarımını bırakma.
-Sınır gelirse çalışan süreçler ve sonraki komut devirde kalır; BITTI yok.
+Eski bütün arşivi aktarma talimatı yeni kullanıcı kararıyla iptal edildi.
+Aşağıdaki kaynak/yerleşim/inceleme kayıtları tarihsel kanıttır; aktif çıkarım,
+OCR/model veya aktarım kuyruğunu yeniden başlatma talimatı değildir.
 
-
-Bütün arşivdeki cevaplı sorular işlenip aktarılmadan ana plan kapanmaz.
-Önceki BITTI kararı erken kapanıştı; yalnız ilk geçişin kanıtları korunur.
-İnceleme listesine konmak, bir soru veya kaynak düzeninin işlenmiş olduğu
-anlamına gelmez.17.508 konu/ders adayı,3.823 gövde ve22 kimlik/düzen adayı
-ile henüz soru sınırları çıkarılmamış kaynaklar aktif çalışma kapsamındadır.
-Gerçek çözülemeyen kusurlar gerekçeli ayrılır; cevap ve konu tahmini yapılmaz.
-
-Sıra: basılı kitap bölümlerini mevcut konu tablosuna bağla →henüz okunmamış
-anahtar/gövde kabulü →deneme alt ders/konu eşlemesi →kalan PDF düzenleri ve
-paket içerikleri →sıralı INSERT_ONLY/canlı kabul →tam arşiv kapsama kabulü.
-Eski kapanış makbuzu ilk geçiş tarihçesidir; tam kabul değildir.
-
-## Aktif tam arşiv işleri
+## Arşiv çalışmalarının tarihsel kanıtları
 
 -045 **BITTI**:140 sınav kapsamı kaydı INSERT/0 UPDATE; kaynak, tekrar0,
   katalog ve canlı masaüstü/mobil PASS. Toplam9111;46 ve sonrası canlı tabloda.
 
-[Canlı paket ve BITTI tablosu](soru-bankasi-pratik-2/aktif-paketler.md)
-gözetmen tarafından kabul makbuzlarıyla otomatik güncellenir. Kullanıcının
-tekrar “devam et” demesi beklenmez. Bilinen paket zincirinin kapanışı,
-ana arşiv/ince konu/öğretmen kabulünün kapanışı değildir.
+[Tarihsel paket ve BITTI tablosu](soru-bankasi-pratik-2/aktif-paketler.md)
+korunur. Gözetmen kapalıdır. Aşağıdaki eski dönemlerin SURUYOR/bekleme ifadeleri
+kapanıştan önceki durumdur; yeni alım yetkisi değildir.
 
 - Native-görsel sayfa ayrımı **BITTI (alt iş)**:421 sayfanın361'i eski-PDF
   nedeniyle yeniden işlenmez; kalan60 sayfanın54'ü özgün2x tam beyaz piksel ve
@@ -396,13 +394,10 @@ ilgili Python regresyon testi PASS.
 
 ## Genel yürütme kuralı
 
-Yetkilendirilmiş planın bir alt partisi bitince final yanıtla durup tekrar
-“devam et” isteme. Kabul kapıları geçtikçe sonraki adıma aynı çalışma içinde
-geç. Çalışan servisi/incelemeyi gereksiz yere durdurma. Ara ilerlemeyi beş
-dakikada veya her%10'da kanıt dosyasına yaz; gerçek ölçüm yoksa kesin süre
-veya genel ilerleme yüzdesi verme. Yalnız gerçek kullanıcı kararı gerektiren
-engelde dur. Ana BITTI için bütün cevaplı arşivin soru kapsamı ve
-aktarımı kabul edilmelidir; yalnız ilk geçiş veya inceleme teslimi yetmez.
+Güncel iş mevcut soruların ana bankaya geçişidir ve BITTI. Yeni soru çıkarımı,
+model/OCR veya yayın başlatılmaz. Kaynaklar, inceleme kuyruğu ve eski bağlantılar
+korunur. Tekrar alım için yeni açık kullanıcı talimatı gerekir; tam arşivin
+çıkarıldığı veya inceleme adaylarının öğretmen onayı aldığı iddia edilmez.
 
 ## Adımlar ve kabul kanıtları
 
@@ -411,7 +406,7 @@ aktarımı kabul edilmelidir; yalnız ilk geçiş veya inceleme teslimi yetmez.
 4.816 kaynak tam SHA-256 ile envantere alındı. Kaynak dışına çıkılmadı;
 özgün arşiv taşınmadı/silinmedi. `inventory.json`, `final-source-integrity.json`.
 
-### 15.02 — Sayfa ve cevap kapsama matrisi — SURUYOR (tam arşiv)
+### 15.02 — Sayfa ve cevap kapsama matrisi — KAPALI (kalan arşiv genişletmesi kullanıcı tarafından iptal)
 
 1.573 PDF/27.614 sayfa native metin/koordinat taraması;1.048 HTML/78 ZIP
 içerik keşfi tamamlandı. Her dosya/sayfa için sonuç veya inceleme nedeni var.
@@ -420,7 +415,7 @@ Yerel gövdesi bulunmayan quiz bağlantıları, görsel okuma sayfaları ve karm
 test/bölüm düzenleri kabul edilmeden ayrı kaydedildi.
 `full-pdf-coverage.json`, `package-content-report.json`, `archive-disposition/`.
 
-### 15.03 — Özgün soru ve cevap kırpımları — SURUYOR (tam arşiv)
+### 15.03 — Özgün soru ve cevap kırpımları — KAPALI (kalan arşiv genişletmesi kullanıcı tarafından iptal)
 
 Tek-test taramalarında3.305,3 Adım kitaplarında11.011, derleme taramada2.322
 gövde kırpımı hazırlandı;41 denemenin5.863 önceki gövde/anahtar kanıtı güncel
@@ -431,7 +426,7 @@ Her yeni aktarım öncesi özgün PDF'den yeniden piksel karşılaştırması ya
 `three-step-all-bodies-v2/`, `compiled-tarama-crops/`,
 `full-mock-source-reuse/report.json`, `verified-source-batch-*/final-source-acceptance.json`.
 
-### 15.04 — Konu kimliği ve paketleme — SURUYOR (tam arşiv)
+### 15.04 — Konu kimliği ve paketleme — KAPALI (kalan arşiv genişletmesi kullanıcı tarafından iptal)
 
 Yalnız ana tablodaki mevcut TYT/AYT-ders-ünite-konu kimlikleri kullanıldı.
 Basılı bölüm başlığı veya açık soru kökü kanıtı olmayan genel konu uydurulmadı.
@@ -441,14 +436,15 @@ Konu belirsizleri diğer nedenlerden ayrı tutuldu; sahte öğretmen onayı yok.
 ### 15.05 — Temsilî pilot ve arayüz — BITTI
 
 İlk21 soru pilotuydu. Ayrı banka/yan menü `/pratik-2`, mevcut soru/pratik
-bileşenleriyle çalışır. Geçici DB'de9 pilot/izolasyon testi ve son rota/facet
+bileşenleriyle çalışıyordu. Son kullanıcı kararıyla menü kaldırıldı ve eski
+adres ana bankaya yönlendirildi. Geçici DB'de9 pilot/izolasyon testi ve son rota/facet
 regresyonları geçti. Canlı masaüstü/mobil sayaçlar ve özgün görsel HTTP hash'leri
 parti bazında PASS; öğrenci liste API'sinde doğru cevap ifşa edilmedi.
 Altı gerçek eksik-seçenek negatif kontrolü PASS. Öğretmen onayı çıkarsanmadı.
 `pilot-ui-report.json`, `pilot-live-read-report.json`,
 `verified-source-batch-*/live-bank-read-report.json`.
 
-### 15.06 — Kademeli aktarım — SURUYOR (tam arşiv)
+### 15.06 — Kademeli aktarım — KAPALI (kalan arşiv genişletmesi kullanıcı tarafından iptal)
 
 Tam DB yedeği doğrulandı. En fazla100 satırlık atomik INSERT_ONLY partileri,
 ikinci ön izlemede0 INSERT/0 UPDATE, mevcut soru fingerprint'i ve sürümlü
@@ -457,7 +453,7 @@ katalog bütünlüğüyle kabul edildi. Sıra:ilk21 pilot,536 ek pilot dışı s
 ile sınırlı cevap kurtarma. Belirsizler
 bu aktarımın parçası değildir. `verified-source-batch-*/bank-acceptance.json`.
 
-### 15.07 — Kapanış ve inceleme teslimi — SURUYOR (tam arşiv)
+### 15.07 — Kapanış ve inceleme teslimi — BITTI (güncel kapsam)
 
 Her yerel dosya ve PDF sayfasının durumu kayıtlıdır. Kabul edilen bütün
 partilerin canlı kabulü geçti. Çözümlenmeyenler kaynaksız arka plan kaydı
@@ -483,3 +479,27 @@ Tekrar işlem ve öğretmen karar sınırları:[işletim tarifi](../islemler/meb
 Yerel model Qwen3.5:9b yalnız basılı anahtar/gövde incelemesi için kullanıldı;
 cevap üretmedi. Envanter/hash/numara/koordinat/piksel/aktarımı Python ve
 PostgreSQL yaptı. Model çıktısı tek başına yayın veya öğretmen onayı değildir.
+
+
+**071–072 önceki son alt partiler — BITTI:**23 AYT+44 TYT Din Kültürü sorusu
+kullanıcının yeni alımı durdurmasından önce eklenmişti; her iki bank-acceptance
+PASS. Son mevcut toplam11.026. Kısmi testlerin90 kanıtlı metni gerçekten okundu;
+67 konu kabulü/23 konu veya içerik incelemesi. Eski boş native ihracı0 sonucunu
+sakla; geçerli ihracın yolu `partial-test-native-topic-2-expansion/input-review.json`.
+Derleme kitaplarında ders klasörü olmadığında doğru TYT/AYT+basılı test numarası
+ve tam ders başlığı birlikte aranır; soru gövdesindeki kelimeyle ders tahmin edilmez.
+Kaynak soru11in basılı11.E anahtarı ile özgün seçenekler arasındaki uyuşmazlık
+ve soru7deki seçenek belirsizliği içerik kuyruğunda; cevaplar değiştirilmedi.
+Bu eski inceleme/çıkarım işi artık devam ettirilmez. Yeni kullanıcı kararı üstündür.
+
+
+### 15.08 — Mevcut soruları ana bankaya taşıma — BITTI
+
+11.026 soru yeniden INSERT edilmeden OGM ana bankasına alındı. Kod/kimlik,
+cevap, görsel, kaynak URL, ders–ünite–konu ve geçmiş katalog ilişkileri korundu.
+V102, güncel katalog için yeni sürüm ve kalıcı transfer günlüğü oluşturur.
+Pratik2 menüsü ve seçilebilir ikinci banka kaldırıldı; eski rota/sorgu/hash,
+banka ve kaynak çiftleri ana bankaya çözülür. Ana QuestionCollection ekranı
+ve pratik formatı değiştirilmedi. DB yedeği,3 geçici-DB testi, bütün-kayıt hash
+kabulü ve canlı masaüstü/mobil PASS. İnceleme ihracı ana bankaya taşınan11.026
+kimliği tanır;7.343 yayınlanmamış aday gerekçesiyle ayrı kalır. Yeni çıkarım yok.

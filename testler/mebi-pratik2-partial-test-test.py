@@ -7,6 +7,7 @@ import pymupdf
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from mebi_pratik2_kismi_test import select,validate_key_visual
 from mebi_pratik2_tarama_kitap_kirpim import preserve_png,key_questions
+from mebi_pratik2_tek_tarama_konu import printed_test_subject
 
 
 def fixture():
@@ -18,6 +19,15 @@ def fixture():
 
 
 class PartialTest(unittest.TestCase):
+    def test_compiled_course_requires_correct_exam_test_and_whole_header(self):
+        categories=[{'id':'excel.tyt.din.test','selectable':True,'exam':'TYT','subject':'Din Kültürü (DKAB)'}]
+        lines=[{'text':'TYT TARAMA TESTİ-6','bbox':[0,30,200,45]},
+               {'text':'DİN KÜLTÜRÜ VE AHLAK BİLGİSİ','bbox':[0,50,200,65]}]
+        self.assertEqual(printed_test_subject(lines,'TYT',6,categories),'Din Kültürü (DKAB)')
+        self.assertIsNone(printed_test_subject(lines,'TYT',5,categories))
+        self.assertIsNone(printed_test_subject(lines,'AYT',6,categories))
+        self.assertIsNone(printed_test_subject([lines[0],{**lines[1],'bbox':[0,180,200,195]}],'TYT',6,categories))
+
     def test_missing_body_does_not_remove_unambiguous_bodies_or_key(self):
         result=select(fixture(),set(),'a'*64)
         self.assertEqual([q['printedNumber'] for q in result['questions']],[1,2])

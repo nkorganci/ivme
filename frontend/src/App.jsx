@@ -48,6 +48,10 @@ function ResourceLibraryRedirect() {
   const location=useLocation();
   return <Navigate to={'/konular-ve-kaynaklar'+location.search+location.hash} replace/>;
 }
+function LegacyPracticeBankRedirect() {
+  const { search, hash } = useLocation();
+  return <Navigate to={'/soru-bankasi'+search+hash} replace/>;
+}
 function LegacyPdfLibraryRedirect() {
   const {search,hash}=useLocation();const params=new URLSearchParams(search);
   if(params.has('kind'))params.set('pdfKind',params.get('kind'));
@@ -109,7 +113,7 @@ export default function App() {
               <Route path="/dersler-ve-konular/pdf-envanteri" element={<Suspense fallback={<Loading text="PDF envanteri yükleniyor…" />}><PdfBankAudit /></Suspense>} />
               <Route path="/cikmis-sorular" element={<QuestionCollection key="CIKMIS" bank="CIKMIS" />} />
               <Route path="/soru-bankasi" element={<QuestionCollection key="OGM" bank="OGM" />} />
-              <Route path="/pratik-2" element={<QuestionCollection key="MEBI_PRACTICE_2" bank="MEBI_PRACTICE_2" />} />
+              <Route path="/pratik-2" element={<LegacyPracticeBankRedirect />} />
               <Route path="/calisma/yeni" element={<StudyNew />} />
               <Route path="/calisma/yarim-kalan" element={<UnfinishedStudies />} />
               <Route path="/gecmis" element={<History />} />

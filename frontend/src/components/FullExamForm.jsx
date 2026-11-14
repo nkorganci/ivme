@@ -4,7 +4,7 @@ import { api, qs } from '../api.js';
 import { useAsync } from '../hooks.js';
 import Segmented from './Segmented.jsx';
 import { Alert, ErrorBox, Loading } from './States.jsx';
-import { BANKS } from '../format.js';
+import { BANKS, canonicalBank } from '../format.js';
 import { Field } from './Field.jsx';
 import { useExamTrack } from '../examTrack.jsx';
 
@@ -25,7 +25,8 @@ export default function FullExamForm() {
     ? params.get('track') : 'SAYISAL';
   // KPSS'de yalnız ÖSYM çıkmış soruları vardır; soru bankası seçeneği gösterilmez.
   const banks = nonYks ? { CIKMIS: BANKS.CIKMIS } : BANKS;
-  const bank = nonYks ? 'CIKMIS' : Object.hasOwn(BANKS, params.get('bank')) ? params.get('bank') : '';
+  const requestedBank = canonicalBank(params.get('bank'));
+  const bank = nonYks ? 'CIKMIS' : Object.hasOwn(BANKS, requestedBank) ? requestedBank : '';
   const noBank = !nonYks && params.get('bank') === 'NONE';
   const includeSolved = params.get('includeSolved') !== 'false';
   const selectionMode = includeSolved ? 'MIXED' : 'NEW';
