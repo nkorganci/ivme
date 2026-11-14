@@ -35,6 +35,8 @@ def accepted_snapshot():
 
 
 def sync_docs(data):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     label=f"{data['acceptedPublishedQuestions']:,}".replace(',','.')
     line=f'**Güncel canlı kabul:** {label} soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.'
     for name in ['docs/plan/15-soru-bankasi-pratik-2.md','docs/devam.md']:
@@ -51,6 +53,8 @@ def sync_docs(data):
 
 
 def run(watch=False):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     previous=None;last=0
     while True:
         data=accepted_snapshot();now=time.monotonic()

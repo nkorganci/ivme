@@ -4,6 +4,8 @@ from mebi_pratik2_tam_pdf_tarama import APP,BASE
 
 
 def run():
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     result=json.loads((BASE/'archive-closeout.json').read_text(encoding='utf8'))
     if not result.get('allPrintedQuestionsExtracted'):
         raise ValueError('First-pass disposition cannot close the full-archive task; continue extraction and admission')

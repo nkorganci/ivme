@@ -14,10 +14,3 @@ Açık uygulama işlerinin ayrıntıları yalnız numaralı adım dosyalarında 
 15. adımda kullanıcının özel talimatı geçerlidir: tamamlanan adımın başlığı ve görev
 dosyası **BITTI** işaretiyle korunur; kapanan adımlar silinmez. Görev tablosu tek
 güncel durum kaydıdır; başlıklardaki BITTI aynı durumun görünümüdür.
-
-## 15. adımın kapanan ek işi
-
-- [15. Adım — Mevcut MEBİ sorularının ana bankaya geçişi](15-soru-bankasi-pratik-2.md):
-  **BITTI.**11.026 soru mevcut ders–ünite–konu bağlarıyla ana bankaya taşındı;
-  Pratik2 menüsü kaldırıldı, eski bağlantılar ve öğrenci geçmişi korundu.
-  Yeni soru alımı kullanıcı talimatıyla kapalı; kalan arşiv genişletmesi iptal.

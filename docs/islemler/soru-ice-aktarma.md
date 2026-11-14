@@ -1,11 +1,10 @@
 # Soru içe aktarma
 
-MEBİ'nin ayrı Pratik 2 bankası `MEBI_PRACTICE_2` kimliğini kullanır.
-Kaynak kodları `MEBI2_TYT`/`MEBI2_AYT`; öğrenci yolu `/pratik-2` olur.
-Bu banka varsayılan eski pratik havuzuna otomatik eklenmez. Yalnız kaynak,
-kırpım, basılı cevap ve kontrollü konu kabulü tamamlanan paketler INSERT_ONLY
-ile alınır; yerel inceleme kuyruğu öğrenciye aktarılmaz. Takip ve kabul
-[Pratik 2 planındadır](../plan/15-soru-bankasi-pratik-2.md).
+MEBİ'nin mevcut11.026 sorusu ana `OGM` bankasına taşındı; yeni soru arama/çıkarım
+ve aktarımı kapalıdır. Eski `MEBI_PRACTICE_2`, `MEBI2_TYT`/`MEBI2_AYT` ve
+`/pratik-2` bağlantıları ana bankayla uyumludur. Kaynak/PDF kimliği, kategori,
+inceleme ve kabul kayıtları [kalıcı işlem belgesindedir](mebi-pratik-2.md).
+Silinen eski planı veya aktarım kuyruğunu yeniden oluşturma.
 
 CSV/JSON kaydında `code`, `exam_type`, `subject`, `image`, `correct_answer` zorunludur. `topic`, `year`, `source`, `choice_count`, `solution_url`, `active`, `bank` (`CIKMIS`/`OGM`) ve `solution_image` isteğe bağlıdır. Dosya bütünüyle doğrulanır; hata varsa uygulanmaz. Operatör ekranı önce ön izleme yapar. `INSERT_ONLY` mevcut soruları korur; `UPSERT` kayıtları günceller.
 

@@ -99,6 +99,8 @@ def decide(done,active,dependency_ready,attempts):
 
 
 def write_step_status(data):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     target=APP/'docs/plan/soru-bankasi-pratik-2/aktif-paketler.md'
     target.parent.mkdir(parents=True,exist_ok=True)
     lines=['# Pratik 2 — canlı paket durumu','',

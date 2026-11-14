@@ -27,66 +27,15 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
-- **Pratik 2 son kullanıcı kararı — yeni çıkarım/aktarım durdu:** mevcut eklenmiş
-  sorular yeterlidir. `scripts/mebi-pratik2-lifecycle.json` yeni soru alımını kapatır;
-  eski tam arşiv/devam talimatı bu kararla sona erdi. Yalnız mevcut Pratik 2
-  sorularını aynı kimlik, cevap, görsel, kaynak bağlantısı, ders–ünite–konu ve
-  öğrenci geçmişiyle ana `OGM` Soru Bankası'na taşı. Ana ekran formatı değişmez;
-  ikinci menü kaldırılır, eski `/pratik-2` ve soru/kaynak bağlantıları korunur.
-  İnceleme adaylarını yeni soru olarak ekleme; özgün arşiv ve kanıtlar silinmez.
-
-- **Pratik 2 hızlı çıkarım ve etiket önceliği (son kullanıcı talimatı):** mevcut
-  soru kırpımı varsa yeniden üretme veya yeniden yazma. Yalnız henüz sorusu
-  çıkarılmamış kaynak/konumda yeni kırpım oluştur. Kaynak kabul listesine alma
-  koşulu basılı cevap anahtarının bulunmasıdır; gövde veya etiket belirsizliği
-  soruyu kaybettirmez, gerekçeli ayrı kuyruğa taşır. Soru–cevap numarası ve
-  doğru ders–ünite–konu kimliği öğrenci yayını öncesinde tamamlanır. Etiket için
-  önce MEBİ klasörü, `katalog.json`/`envanter.jsonl` içindeki tam hiyerarşi ve
-  basılı bölüm kullanılır; kaynak adlarıyla ana tablo kimlikleri ayrı korunur.
-  Karma denemeye tek konu etiketi basılmaz. Önce bütün mevcut kırpımlarda hızlı
-  metin/kitap profili geçişi, ardından yalnız kalan istisnalarda model çalışır.
-  Piksel doğrulaması bellekte yapılabilir; bu, kırpım dosyasını yeniden üretme
-  izni değildir. Etkinleştirme kanıtı `fast-profile-transition/enabled.json`;
-  PDF'nin gerçek clipping sınırları ve özgün render ölçeği hesaba katılır.
-
-- **Pratik 2 PDF tekrarı — güncel kullanıcı önceliği:** soru metni/görseli/
-  embedding'i üzerinden tek tek banka karşılaştırması yapma. Önce PDF'leri
-  karşılaştır: dosya kimliği hızlı ilk kapıdır; hash farklıysa sayfa sayısı ve
-  ilk üç sayfanın bilgisi/küçük önizlemesiyle kullanıcı tarafından istenen hızlı
-  eşdeğerliği denetle. Taranmış PDF'de native metin şartı koyma; ilk üç bütün
-  sayfanın küçük özgün raster önizlemesini karşılaştır. Boş sayfalar tek başına
-  eşdeğerlik oluşturmaz. Mevcut Soru Çöz & Pratik bankasına bağlı aynı PDF'nin
-  tamamını atla; kısmi aktarım notunu sakla, soru bazında eksik arama başlatma.
-  Kullanıcı YKS çıkmış sorularının zaten mevcut olduğunu belirtti; yeniden
-  aktarılmaz. Varsayılan kural `scripts/mebi-pratik2-pdf-policy.json`, kaynak
-  kararları `pdf-reuse-check/decisions.json`. Kararı olmayan PDF'den yeni iş
-  başlamaz. Bu talimat, önceki “Pratik 2'de eski bankayla tekrar olabilir”
-  izninin yeni işler için önüne geçer. Önceden eklenmiş kimlikler/öğrenci
-  kayıtları silinmez. Yeni PDF'nin soru/cevap/kırpım doğrulaması devam eder;
-  bu doğrulama banka ile soru tekrarı karşılaştırması değildir.
-
-- **Pratik 2 tam arşiv talimatı:** kullanıcı bütün arşivdeki cevaplı soruların
-  aktarılmasını istiyor. İlk geçiş, envanter veya inceleme kuyruğuna ayırma,
-  ana planın tamamlanması sayılmaz. Henüz uygulanmamış kaynak düzenlerini ve
-  çözülmemiş konu eşlemelerini işle; yalnız gerçek çözülemeyen kusurları ayrı
-  tut. Tam arşiv soru kapsamı kanıtlanmadan planın ana başlığını BITTI yapma.
-  Önceki dar kapsamlı kapanış tarihsel bir alt geçiştir, tam kabul değildir.
-  Kullanıcının tekrar hatırlatması beklenmez: mevcut çalışma/context/token
-  sınırına kadar yetkili işi sürdür; yalnız alt parti tamamlandı diye final
-  verip durma. Bağlam yenilenince bu aktif görevi devral ve aynı kanıt/imleçten
-  devam et. Sınır gelirse tamamlanmamış işi BITTI yapma; son imleci, çalışan
-  süreçleri ve sonraki bağımlılığı devirde koru. Arka plan işi yalnız gerçekten
-  uygulanmış ve çalışan bağımlılık zinciri ölçüsünde otomatik diye bildirilir.
-
-- **Pratik 2 cevap kurtarma (son kullanıcı talimatı):** ilk okumada cevap
-  bulunamaması tek başına vazgeçme nedeni değildir. Aynı basılı test/bölüm/adım
-  kimliğiyle başka anahtar konumunu ve mevcut kaynak kanıtını kontrol et;
-  gerekirse farklı bir yerel okuma yöntemiyle bir sınırlı kurtarma geçişi yap.
-  Aynı başarısız istemi döngüde tekrarlama. Gerçek uyuşmazlık/eksik gövde/konu
-  belirsizliği giderilemezse gerekçeli inceleme kategorisine ayır; cevap tahmini
-  ve sahte öğretmen onayı yoktur. Bu güncel talimat, Pratik2 için önceki ilk
-  başarısızlıkta EXCLUDE_NO_RETRY yaklaşımının önüne geçer; eski YKS projesinin
-  kapalı kararlarını veya öğrenci kayıtlarını değiştirmez.
+- **MEBİ/Pratik2 işi kapalı:**11.026 mevcut soru aynı kimlik, cevap, görsel,
+  kaynak ve ders–ünite–konu bağlarıyla ana OGM bankasına taşındı. İkinci menü
+  kaldırıldı; eski `/pratik-2` ve soru/kaynak bağlantıları korunur. Yeni soru
+  arama/çıkarım/OCR/model/aktarım başlatma; eski tam arşiv talimatı iptal edildi.
+  `scripts/mebi-pratik2-lifecycle.json` kapalı kalır. Eski plan ve paket panosu
+  kaldırıldı; yeniden oluşturma. PDF hash/sayfa/kaynak klasörü/kategori kayıtları
+  `learning_catalog.source_audits.inventory_audit.mebiPdfCloseout` içindedir.
+  Kaynaklar, kırpımlar, inceleme ve yedekler silinmez. Kalıcı kayıt ve metadata
+  doğrulaması [işlem belgesindedir](docs/islemler/mebi-pratik-2.md).
 
 - Kalıcı DB `ivme` içindeki öğrenci kayıtlarını ve içerik karar geçmişini koru. Testleri yalnız geçici `ivme_test` üzerinde `python scripts/ivme.py test` ile çalıştır. Özgün `../Kaynaklar/` arşivi yalnız okunur.
 - **YKS kaynak kabulünde kullanıcı önceliği:** yalnız doğrulanabilir soru, basılı cevap ve kaynakla destekli konularla ilerle. Hatalı, eksik, uyuşmayan, bulunamayan veya mevcut denemede doğrulanamayan adayları `EXCLUDE_NO_RETRY` ile çalışma/aktarım kümesinden çıkar; kaynak onarma, eksik anahtar/şekil arama, tekrar OCR/model veya yeniden inceleme yapma. Elenen aday öğrenci ekranına/yayına girmez; görevi bitirmek için bu istisnaların düzelmesi beklenmez. Sadece yeni ve açıkça incelenebilir kaynaklarda bir geçiş yap; yine doğrulanamıyorsa hemen sonrakine geç. Mevcut banka kimlikleri ve öğrenci geçmişi korunur. Kural: `scripts/yks-secim-politikasi.json`; 07 tam kabulü: `selected-yks07-acceptance/`; soru alımı için daha yeni `selected-yks08-comparison/` dışlamaları üstündür. `verified-source-selection/` önceki özet gözlemidir, üretim alımı değildir.

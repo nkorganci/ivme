@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel sonuç:** Pratik2→ana banka geçişi BITTI;11.026 soru taşındı, yeni alım KAPALI.
+**Güncel sonuç:** MEBİ/Pratik2 kapanışı BITTI; mevcut sorular ve PDF metadata kayıtları sistemde, eski plan kaldırıldı.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -8,26 +8,18 @@ olay/kuyruk/loglar yeniden oynatılmaz. Özgün kaynak arşivi yalnız okunur.
 
 ## Şimdi
 
-**Pratik2 mevcut sorularının ana bankaya geçişi BITTI.** Yeni soru çıkarımı ve
-aktarımı kullanıcı tarafından iptal edildi; eski tam arşiv zincirini başlatma.
-`scripts/mebi-pratik2-lifecycle.json` kapalı; yazıcılar/gözetmen ve DB bank
-kısıtı yeni ayrı banka alımını engeller. Özgün kaynak/inceleme kanıtlarını silme.
+MEBİ/Pratik2 işinden açık adım kalmadı.11.026 soru ana OGM bankasında; eski
+bağlantılar ve öğrenci geçmişi korunur. Yeni soru arama/çıkarım/OCR/model/alım
+kapalıdır. Eski plan ve aktif paket panosu kaldırıldı; yeniden oluşturma.
 
-11.026 soru aynı kimlik/cevap/görsel/updated_at/kaynak/ana konu bağlarıyla OGM
-Soru Bankası'na taşındı. Eski katalog sürümleri ve öğrenci geçmişi korundu.
-Pratik2 menüsü/ikinci banka seçimi kaldırıldı; `/pratik-2` sorgu/hash'iyle ana
-bankaya yönlenir; eski banka/kaynak filtreleri uyumludur. Ana ekranın formatı
-korundu. OGM88.718 fiziksel/88.695 etkin-görünür soru;23 eski inaktif korunur.
-
-Kanıt:`veri/mebi-pratik-2/main-bank-transfer/`:uygulama+güncel katalog yedeği,
-`acceptance.json` bütün soru/etiket/24 ilişkili tablo hash PASS;3 geçici-DB testi
-PASS ve test DB temizlendi. `live-acceptance.json`:son yayımlanmış
-`/assets/index-DNCK2JQ_.js`,masaüstü/mobil,23 sınav–ders örneği/görsel,
-eski rota/filtre ve tek ana banka/deneme seçimi PASS;öğrenci/öğretmen yazımı0.
-`mebi_pratik2_guncel_kuyruk.py` transfer günlüğündeki kimlikleri tanır:
-11.026 yayımlı kaynak kodu/7.343 ayrı inceleme adayı; yeni alım yapılmaz.
-Bu işte kalan zorunlu adım yok. Kullanıcıya ait diğer YKS/taxonomy/16-plan
-çalışma ağacı değişiklikleri korunur; bu işin commitine eklenmez.
+1.573 PDF yolu/1.473 tekil hash, dosya boyutu/sayfa sayısı ve kaynak kategorileri
+`learning_catalog.source_audits.inventory_audit.mebiPdfCloseout` içinde kayıtlı.
+449 mevcut ana konu bağı doğrulandı;1.124 dosyanın kaynak klasörü/kategorisi
+korunur, tek dar konu iddiası yok. Kabul:`veri/mebi-pratik-2/pdf-closeout/acceptance.json`.
+Soru/yayındaki katalog değişmedi. Kanıtlar, PDF/PNG, inceleme ve yedekler durur.
+Kalıcı açıklama [işlem belgesinde](islemler/mebi-pratik-2.md); yeni görev bu
+kapanmış soru/PDF işini tekrar başlatmaz. Diğer YKS/taxonomy/16-plan çalışma
+ağacı değişiklikleri korunur ve bu kapanış commitine alınmaz.
 
 | Görev | Durum ve sıradaki somut adım |
 |---|---|
