@@ -179,13 +179,11 @@ export default function KonuSayfasi() {
   return <article className="kp-sayfa">
     <Link className="ph-back" to={`${BASE}/harita?ders=${paket.ders.toLocaleLowerCase('tr')}`}>← {paket.ders} konu haritası</Link>
     <header className="kp-ust">
-      <div className="kp-ust-sol">
-        <p className="kp-etiket">{paket.ders} · {paket.sinav.join(' + ')} · {paket.sinif}</p>
-        <h1>{paket.baslik}</h1><p className="kp-alt">{paket.altBaslik}</p>
-        <p className="kp-ust-not"><span className="kp-onay">Öğretmen kontrolü bekliyor</span><span>{paket.sure}</span></p>
-      </div>
-      <div className="kp-giris"><Markdown text={paket.giris} /></div>
+      <h1>{paket.baslik}<span className="kp-alt">{paket.altBaslik}</span></h1>
+      <p className="kp-ust-not"><span className="kp-etiket">{paket.ders} · {paket.sinav.join(' + ')} · {paket.sinif}</span>
+        <span className="kp-onay">Öğretmen kontrolü bekliyor</span><span>{paket.sure}</span></p>
     </header>
+    <div className="kp-giris"><Markdown text={paket.giris} /></div>
     <div className="kp-duzen">
     <nav className="kp-yol" aria-label="Konu bölümleri">
       <button type="button" aria-current={bolum === 'giris' ? 'step' : undefined} onClick={() => git('giris')}><span>★</span>Sınavda nasıl gelir?</button>

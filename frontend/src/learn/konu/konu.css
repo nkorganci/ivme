@@ -179,3 +179,12 @@
 
 .kp-adim-satir .kp-adim-cubuk { scrollbar-width: none; }
 .kp-adim-satir .kp-adim-cubuk::-webkit-scrollbar { display: none; }
+
+/* Başlık: mavi şerit yalnız iki satır (başlık + künye); açıklama şeridin altında, düz metin */
+.kp-ust { display: block; padding: 10px clamp(14px, 2vw, 20px); }
+.kp-ust h1 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
+.kp-ust .kp-alt { margin: 0; font-size: .95rem; font-weight: 400; opacity: .9; }
+.kp-ust .kp-ust-not { margin: 4px 0 0; gap: 6px 14px; }
+.kp-ust .kp-etiket { margin: 0; }
+.kp-giris { padding: 0 4px; border-left: 0; color: var(--ink); font-size: .98rem; line-height: 1.6; max-width: 110ch; }
+.kp-giris p { margin: 0; }
