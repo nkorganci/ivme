@@ -4,9 +4,9 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04`: model konu `/konuyu-ogrenelim/ogren/fizik-hareket` kullanıcı değerlendirmesinde; onaydan önce ikinci konuya geçme ([standart](urun/ogretim-standardi.md)) |
-| Son kapanan | `16.01` belge düzeni, `16.02` ölçüm ve kaynak kaydı (12.140 dosya, 748 kararsız) |
-| Sıradaki komut | Kategori kuru listesi: `SELECT tur, karar, count(*), sum(boyut) FROM kaynak_kaydi.dosyalar GROUP BY 1,2` (`ivme.py kaynak` betikleri); silmeden önce DB dökümü |
+| Sıradaki görev | `16.04`: [fizik öğretim yöntemi](plan/16-ogrenme-kalitesi.md#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında; onaydan sonra Hareket konu haritası → araç kutusu → Hareket v2. Onaydan önce ikinci konuya geçme |
+| Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
+| Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
 ## Dondurulan iş: Pratik 2
 
@@ -15,7 +15,7 @@
 ## Açık kararlar (kullanıcı)
 
 - **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; 4'ten fazla kuralı kaldırıldı, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
-- **16.05 altın konular:** Fizik–Hareket ve Kuvvet ile Tarih–Millî Mücadele'yi kullanıcı dener ve onaylar.
+- **16.04 fizik yöntemi:** basamak merdiveni, problem çözme protokolü, araç kutusu, yanılgı kataloğu ve ölçüm onaylanınca Hareket v2 yazılır; 16.05 önce fizik dersi, sözel altın konu (Millî Mücadele) sonra.
 - **Yeni soru edinimi:** 100 bin yeni soru istenirse dışlanan adaylar açılmadan ayrı kaynak edinimi projesi tanımlanır ([kaynak kaydı](tarifler/kaynak-kaydi.md#yks-kaynak-birleştirme-kapalı)).
 
 ## Etkin ve bekleyen işler

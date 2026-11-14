@@ -1,6 +1,7 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
-Durum: plan onaylı; 16.01 BITTI (belge düzeni uygulandı); 16.02 BITTI (ölçüm ve kaynak kaydı); sıradaki görev 16.03 (kullanıcı onayıyla). Kalıcı kurallar
+Durum: plan onaylı; 16.01 ve 16.02 BITTI; 16.03 silme kısmı bitti (taşımalar ertelendi); 16.04 sürüyor: [fizik öğretim
+yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -13,7 +14,7 @@ sade gezinmeli bir ürün. Çalışma alanında yalnız kullanılan dosya ve yal
 1. Veritabanı PostgreSQL kalır.
 2. **Arşiv yok, gereksiz olan silinir.** Video ve ses dosyaları tutulmaz; uygulama videoyu bağlantıdan açar.
 3. **Aynı dosya iki yerde tutulmaz.** `D:\workspace\mebi-yks` içeriği `D:\workspace\ivme` içinde de varsa ivme'deki kopya silinir; tek kopya hedef düzene taşınır (`mebi-yks` dosyaları ivme'ye *taşınır*, kopyalanmaz) ve `mebi-yks` klasörü boşalınca kaldırılır.
-4. **Soruları sisteme alınmış PDF'in aslı tutulmaz**; ayrıca düzenlenmeden tek bir `soru-referansi/` klasörüne konur (yalnız soru bankası referansı). Konu anlatan PDF kalır; aynı konuda en iyi 4 belge tutulur, fazlası silinir.
+4. **Soruları sisteme alınmış PDF'in aslı tutulmaz**; ayrıca düzenlenmeden tek bir `soru-referansi/` klasörüne konur (yalnız soru bankası referansı). Konu anlatan PDF kalır (sayı sınırı yok); ders/ünite/konusu kayıtta bir kez tutulur.
 5. Kalan konu PDF'leri sınav → ders → ünite → konu klasör düzenine taşınır.
 6. Proje, klasör ve dosya adları gerektiğinde değiştirilir, birleştirilir veya silinir; amaç düzenli ve anlaşılır tek yapıdır.
 7. Belgeler bilgi kaybı olmadan en aza indirilir; kapanmış iş dosyaları silinir (geçmiş `git log`'dadır).
@@ -59,6 +60,9 @@ Eski adresler yönlendirilir; yönetim ekranları `/yonetim` altında toplanır;
 6. **Gerçek sorular.** Konu testi; her soruda açıklamalı çözüm ve ipucu.
 7. **Tekrar.** Ders sonu geri çağırma, sonra aralıklı tekrar.
 8. **Video.** Konunun videosu bağlantıdan açılır (MEBİ veya YouTube); yerel dosya yok.
+
+Bu akış fizikte [basamak merdiveniyle](#basamak-merdiveni-her-fizik-konusu) sıfırdan sınav düzeyine genişler; fizikte
+onaylanınca bütün derslerin akışı olur.
 
 ### Derse göre görsel dil
 
@@ -151,6 +155,102 @@ Silmeden önce güncel veritabanı dökümü alınır. Öğrenci kayıtları ve 
   püf noktasının koşulu, soru–kavram uyumu, dil. Eşik altı paket yayımlanmaz.
 - Öğretmen onayı olmayan içerik "Öğretmen kontrolü bekliyor" etiketiyle görünür.
 
+## Fizik öğretim yöntemi (16.04 pilot genişlemesi)
+
+**Kullanıcı değerlendirmesi (model konu Hareket):** sayfa soru tiplerinden başlıyor; konuyu hiç bilmeyen öğrenciyi
+sıfırdan alıp kavram, grafik, formül ve soru çözümüyle ileri düzeye taşıyan adım adım **konu eğitimi** eksik. PDF
+yalnız en sonda kaynak. Hedef: öğrenci PDF okumadan, her adımda bir şey yaparak kavramı, bakış açısını ve sorunun
+mantığını öğrenir. Yöntem önce bütün fizikte kurulur, sonra derse özgü katmanı değişerek öbür derslere geçer.
+
+### Dayanak: fizik eğitimi araştırması → ürün kuralı
+
+Genel ilkeler (geri çağırma, aralıklı tekrar, karışık pratik, ustalık) yukarıdaki tablodadır. Fiziğe özgü olanlar:
+
+| Bulgu | Kural |
+|---|---|
+| Etkileşimli derste kavram kazancı geleneksel derse göre yaklaşık iki kat (Hake: 62 ders, 6.000 öğrenci, normalize kazanç 0,48 ve 0,23); etkin öğrenme başarısızlığı azaltır (Freeman ve ark. meta-analizi) | Her ekran öğrenciye bir hamle yaptırır; okumak tek başına ilerletmez |
+| Yanılgı anlatımla değil, ortaya çıkar → yüzleştir → çöz döngüsüyle değişir (McDermott, *Tutorials in Introductory Physics*; tahmin–gözle–açıkla, White ve Gunstone) | Her kavram tahminle açılır; deney tahmini sınar; açıklama yüzleşmeden sonra gelir |
+| Uzman soruyu ilkesine, acemi yüzeyine göre gruplar (Chi, Feltovich ve Glaser) | Tip tanıma ayrı alıştırma: "Bu soru hangi ilkeyle çözülür?" (çözmeden); yüzeyi benzer, ilkesi farklı soru çiftleri |
+| Anlama, temsiller arası geçişte ölçülür (Hestenes, Modelleme Öğretimi; Beichner, kinematik grafik testi) | Her konu temsil zinciri taşır: olay → şekil/hareket haritası → tablo → grafik → denklem → sözel; her geçiş ayrı alıştırma |
+| Somuttan soyuta (Fyfe ve ark.) ve ön eğitim ilkesi (Mayer) | Önce olay ve deney, sonra sade çizim, en son sembol; terimler deneyden önce bir cümleyle tanıtılır |
+| Kavram sorusu ve tahmin oylaması (Mazur, Akran Öğretimi; Sokoloff ve Thornton) | Hesap gerektirmeyen kavram soruları; çeldiriciler bilinen yanılgılardan |
+| Yapılandırılmış problem çözme (Heller ve Heller; Polya) | Her çözümlü örnek aynı beş adım: **Anla → Çiz → İlke seç → Sembolle çöz → Kontrol et** |
+| Uzmanlık tersine etkisi (Kalyuga) | Bilen öğrenci basamağı kısa kontrolle atlar; ustalaştıkça çözümlü örnek kalkar |
+| Karşılaştırmalı vakalar (Gentner; Schwartz ve Bransford) | İki örnek yan yana: "Ne aynı, ne farklı, hangisi hangi ilke?" |
+| Simülasyon tasarımı (PhET: örtük iskele, bağlı temsiller) | Az kontrol, cisimle eş zamanlı grafik; serbest denemeden önce tek görev |
+
+### Örnek alınan siteler (yalnız yöntem; metin, görsel ve soru kopyalanmaz)
+
+| Site | Alınan kalıp |
+|---|---|
+| PhET (Colorado) | Cisim ile x–t, v–t, a–t grafiklerinin aynı anda değişmesi; az düğme, keşfe açık görev |
+| The Physics Classroom | Her alt bölüm sonunda "Anladın mı?" sorusu; *Concept Builder*: aynı fikir farklı yüzeyle, üst üste doğru gelince geçiş, yanlışta yardım ekranı |
+| Isaac Physics (Cambridge) | Düzeylere ayrılmış sorular; adım adım açılan ipucu; önce sembolik cevap |
+| Khan Academy | Ustalık düzeyleri, ipucu kullanımı ustalığı yavaşlatır, kısa video bağlantısı |
+| Brilliant | Önce soru, sonra açıklama; ekran başına tek fikir |
+| MEB/OGM ders notları, sistemdeki konu anlatımları | Müfredat kapsamı, kazanım, Türkçe terim ve sınav dili; içeriğin doğruluk kaynağı |
+
+Kavram envanterlerinin (FCI, TUG-K) maddeleri dağıtımı kısıtlı olduğu için kullanılmaz; aynı yanılgıları ölçen kendi
+maddelerimiz yazılır.
+
+### Basamak merdiveni (her fizik konusu)
+
+Konu = 4–8 durak (bir durak bir kavram). Basamak 1–4 her durakta, 5–7 konu düzeyindedir. Yerleştirme ön testi
+bilinen basamakları atlatır; atlanan basamak her an açılabilir.
+
+| Basamak | Amaç | Etkinlik | Geçiş ölçütü |
+|---|---|---|---|
+| 0 Ön koşul | Eksik aracı tamamla | 3–5 soruluk kontrol; eksikte araç kutusundan 2–4 dakikalık mikro ders | Kontrol doğru veya mikro ders bitti |
+| 1 Sezgi | Olayı fark et | Tahmin → deney → açıklama; formül yok | Yanılgı sorusu doğru ve gerekçe seçildi |
+| 2 Kavram dili | Tanım ve ayrım | Kavram çiftleri (yol/yer değiştirme), örnek–karşı örnek, sınıflama | Üst üste 3 doğru |
+| 3 Temsiller | Çeviri | Hareket haritası ↔ x–t ↔ v–t ↔ a–t ↔ sözel: eşleştir, çiz, hatayı bul | Her geçişten 1 doğru |
+| 4 Nicel ilişki | Formülün anlamı | Formül modelden türetilir (eğim, alan); birim ve geçerlilik koşulu; tam çözüm → eksik adım → bağımsız soru | 2 bağımsız doğru |
+| 5 Soru tipleri | Tanı ve ilk hamle | Çözmeden tip seçme, püf noktası + koşul + tuzak, ÖSYM çözümlü örnek | Her tipten 1 bağımsız doğru |
+| 6 Sınav düzeyi | Aktarım | Kolaydan zora düzeyli set, karışık tur, iki adımlı ve konu arası soru, süreli tur | %80 ve her tipten doğru |
+| 7 Kalıcılık | Unutmamak | Geri çağırma kartları, aralıklı tekrar, geçilemeyen tipin dönüşü (ustalık motoru, 16.06) | Motor |
+
+**Fizik problem çözme protokolü:** Anla (ne soruluyor, verilenler birimiyle) → Çiz (şekil, hareket haritası veya
+kuvvet diyagramı; pozitif yönü seç) → İlke seç (hangi yasa, geçerli mi) → Sembolle çöz, sonra sayı koy →
+Kontrol et (birim, işaret, uç durum, büyüklük tahmini). Bütün örnek ve ipuçları bu sırayla yazılır; öğrenci
+basamak 4'ten sonra adımları kendisi doldurur.
+
+**Fizik araç kutusu (ortak mikro dersler; bir kez yazılır, konular bağlanır):** birim ve çevirme (km/h ↔ m/s),
+oran–orantı ("iki katına çıkarsa"), vektör (yön, toplama, bileşen, 37°–53° üçgeni), grafik okuma (eğim, alan,
+kesişim), sembolik düzenleme, büyüklük tahmini, işaret ve referans yönü. Her mikro ders 3–5 ekran ve kendi kontrolü.
+
+**Yanılgı kataloğu (konu başına 5–10):** kaynakları fizik eğitimi literatürü, ders notlarındaki "dikkat" kutuları ve
+banka sorularının çeldiricileridir. Öğrencinin seçtiği yanlış şık istatistiği sonra eklenir; fizikte şimdilik 14
+deneme var, yetmez. Her yanılgının dört parçası olur: ortaya çıkaran soru, yüzleştiren deney, çözen açıklama ve
+karma turda veya tekrarda gecikmeli yeniden sınama. Hareket örnekleri: "ivme sıfırsa cisim durur", "hız sıfırsa ivme
+de sıfırdır", "x–t grafiği yoldur", "grafikte yukarıdaki daha hızlıdır", "ortalama hız, hızların ortalamasıdır".
+
+### Ölçüm (pedagojik kabul)
+
+Konu başına yanılgılara dayalı 8–10 maddelik kendi kavram testimiz ön ve son test olarak kullanılır. Normalize kazanç
+= (son − ön) / (100 − ön); hedef ≥ 0,4. Bir hafta sonra görülmemiş ÖSYM sorusu yardımsız çözülür. Ölçütler denemeden
+önce yazılır; tıklama, süre ve beğeni öğrenme kanıtı değildir.
+
+### Üretim yöntemi (konu başına; 16.07 hattının fizik biçimi)
+
+1. **Kanıt paketi** (betik + Ollama): MEB/OGM sayfaları (`pipeline` eşlemesi), kayıttaki konu anlatımları
+   (fizikte 215 belge), kazanımlar, bankadaki sorular (temas tabakası: `scripts/konu/soru_tabakasi.py`; fizikte
+   10.525 soru, 97 konu), ÖSYM soruları, ön koşul konular.
+2. **Konu haritası** (Fable/Opus): duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formüllerin türetimi ve
+   koşulu, soru tipleri ve sıklığı. Yazmaya geçmeden önce kullanıcıya tek tablo olarak gösterilir.
+3. **Paket taslağı** merdivene göre; mevcut parçalar yeniden kullanılır: `interactive/motion/` stüdyosu (bağlı
+   grafikler), Akıllı Öğretmen soru içeriği (ipucu, yanılgı, ikiz soru), matematik laboratuvarı kabul ölçütleri.
+4. **Betik denetimi**: şema, bağımsız hesap, ÖSYM anahtarı, her yanılgının dört parçası, her formülde birim ve koşul,
+   her basamakta geçiş ölçütü.
+5. **Bağımsız doğrulama** (farklı sağlayıcı, rubrik) → kullanıcı/öğretmen → öğrenci ölçümü.
+
+Şema `konu-paketi-v1` → v2: `onkosul`, `yanilgilar`, `temsiller`, blok başına `basamak`, araç kutusu bağı, `envanter`.
+
+### Derslere genelleme
+
+Aynı kalan: merdiven, problem çözme protokolü (adımların adı derse göre), yanılgı kataloğu, araç kutusu fikri, ölçüm.
+Derse göre değişen: temsil zinciri (kimya: makroskobik → tanecik → sembol; biyoloji: yapı → işlev → süreç; tarih:
+olay → neden → sonuç → zaman; Türkçe: metin → yapı → anlam), araç kutusunun içeriği ve deney türü.
+
 ## Proje ve belge düzeni
 
 Hedef: tek, sistematik yapı. Ad değiştirme, birleştirme ve silme serbesttir; her taşımada kod, betik, test ve belgelerdeki
@@ -203,7 +303,7 @@ tarihçe taşınmaz. Taşınan kuralların listesi commit mesajına yazılır. T
 | Ekran ve şekil denetimi | GPT-6.1 Terra veya Claude (ekran görüntüsüyle) |
 | Küçük düzenleme, etiket | Claude Haiku 5.5 veya GPT-6 Luna |
 | Gömme, benzerlik, kaynak–konu eşleme | Ollama `bge-m3` |
-| PDF sınıflama, en iyi 4 sıralaması, kanıt paketi taslağı | Ollama `qwen3.5:9b`; kararsız kalanlar `gpt-oss:20b` |
+| PDF sınıflama, konu eşleme, kanıt paketi taslağı | Ollama `qwen3.5:9b`; kararsız kalanlar `gpt-oss:20b` |
 | Görselden ön eleme | Ollama `gemma3:4b` (önce 20 sayfalık deneme) |
 | Hash, sayfa sayımı, bağlantı denetimi, silme listesi, test | Betik; model yok |
 
@@ -236,11 +336,19 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 
 ## 16.04 — Öğretim standardı ve tasarım sistemi (Fable 5.2)
 - Konu paketi şeması, bileşen kataloğu, rubrik, dört ana yerin ve konu sayfasının ekran tasarımı, kişisel plan kuralları.
-- Durum: kullanıcı kararıyla **tek model konu** üzerinden yürür (TYT Fizik – Hareket, `/konuyu-ogrenelim/ogren/fizik-hareket`). Yapıldı: şema, blok kataloğu, konu sayfası, rubrik ve üretim sırası ([standart](../urun/ogretim-standardi.md#konu-paketi-standardı-v1--1604)); 236 banka sorusunun görseli incelenerek 10 soru tipi çıkarıldı; `node --test testler/konu-paketi.test.mjs` 7/7; masaüstü ve mobil ekran denetimi temiz. Bekleyen: kullanıcı değerlendirmesi. Kalan: dört ana yerin ekran tasarımı ve kişisel plan kuralları (model konu onayından sonra); ustalık motoru bağı 16.06.
+- Durum: kullanıcı kararıyla **tek model konu** üzerinden yürür (TYT Fizik – Hareket, `/konuyu-ogrenelim/ogren/fizik-hareket`). Yapıldı: şema, blok kataloğu, konu sayfası, rubrik ve üretim sırası ([standart](../urun/ogretim-standardi.md#konu-paketi-standardı-v1--1604)); 236 banka sorusunun görseli incelenerek 10 soru tipi çıkarıldı; `node --test testler/konu-paketi.test.mjs` 7/7; masaüstü ve mobil ekran denetimi temiz. Kullanıcı değerlendirmesi: arayüz düzeltildi; içerik soru tipinden başlıyor, sıfırdan konu eğitimi eksik → [fizik öğretim yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi).
+- Sıra (her biri kullanıcı onayıyla):
+  1. Yöntem onayı (bu belge); onaylanınca yöntem [öğretim standardına](../urun/ogretim-standardi.md) taşınır, burada özet kalır.
+  2. Hareket konu haritası: duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formül türetimleri; tek tabloyla kullanıcıya gösterilir.
+  3. Araç kutusunun Hareket'in istediği mikro dersleri: birim çevirme, vektör ve yön, grafikte eğim ve alan.
+  4. Hareket v2: mevcut içerik basamaklara dağıtılır, eksik basamaklar (0 ön koşul, 3 temsiller, 6 düzeyli sınav seti) yazılır; deney `interactive/motion/` bağlı grafikleriyle; kavram ön/son testi; şema v2 ve testler.
+  5. Kabul: kullanıcı sıfırdan başlayan öğrenci gibi baştan sona dener; test, ekran ve rubrik geçer.
+- Kalan: dört ana yerin ekran tasarımı ve kişisel plan kuralları (model konu onayından sonra); ustalık motoru bağı 16.06.
 
-## 16.05 — İki altın konu (Fable 5.2 yazar, GPT-6 Astra denetler)
-- Sayısal: Fizik — Hareket ve Kuvvet. Sözel: Tarih — Millî Mücadele.
-- Kullanıcı ikisini dener ve onaylar; konu başına oturum/token maliyeti ölçülür.
+## 16.05 — Fizik dersi (yöntem v2; Fable 5.2 yazar, GPT-6 Astra denetler)
+- İkinci konu Newton'un hareket yasaları (Hareket ve Kuvvet'in kalanı): araç kutusu ve yöntemin yeniden kullanılabildiği burada sınanır; konu başına oturum/token maliyeti ölçülür.
+- Sonra TYT fiziğin kalan üniteleri ön koşul sırası ve sınav ağırlığıyla, ardından AYT. Her konu: konu haritası onayı → paket → denetim.
+- Sözel altın konu (Tarih — Millî Mücadele) fizik yöntemi oturduktan sonra genellemenin ilk sınavıdır (kullanıcı: "şimdilik yalnız fizik").
 
 ## 16.06 — Ürün kabuğu (Sonnet 5.5 / Sol; ekran denetimi Terra)
 - Dört ana yer ve yönlendirmeler, konu sayfası, blok bileşenleri, Mermaid, bağlantıdan video.
