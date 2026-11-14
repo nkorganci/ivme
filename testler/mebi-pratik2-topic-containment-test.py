@@ -21,6 +21,21 @@ def category(topic,exam='TYT',code='one'):
 
 
 class ContainmentTests(unittest.TestCase):
+    def test_physics_electric_headings_do_not_absorb_magnetism_or_another_exam(self):
+        electrostatic={**category('Elektrostatik'),'subject':'Fizik'}
+        magnet={**category('Mıknatıslar ve Manyetizma',code='magnet'),'subject':'Fizik'}
+        heads=[{'text':'> Elektrik Yüklerinin Özellikleri ve Elektrikle Yüklenme Çeşitleri'},
+               {'text':'> İletken ve Yalıtkanlarda Yük Dağılımı > Elektriksel Kuvvet ve Elektrik Alan'}]
+        self.assertEqual(heading_category(heads,'TYT','Fizik',[electrostatic,magnet]),electrostatic)
+        self.assertIsNone(heading_category(heads+[{'text':'> Mıknatıslar ve Manyetizma'}],'TYT','Fizik',[electrostatic,magnet]))
+        self.assertIsNone(heading_category(heads,'AYT','Fizik',[electrostatic,magnet]))
+
+    def test_ayt_electric_field_potential_heading_has_a_single_target(self):
+        category_row={**category('Elektrik Alan ve Potansiyel',exam='AYT'),'subject':'Fizik'}
+        heads=[{'text':'> Elektriksel Kuvvet > Elektriksel Potansiyel Enerji ve Elektriksel Potansiyel'},
+               {'text':'> Elektrik Alan > Elektriksel Potansiyel Farkı ve Elektriksel İş'}]
+        self.assertEqual(heading_category(heads,'AYT','Fizik',[category_row]),category_row)
+
     def test_math_folder_geometry_split_requires_every_heading_to_fit(self):
         geometry={**category('Katı Cisimler',exam='AYT'),'subject':'Geometri'}
         math=category('İkinci Dereceden Denklemler, Karmaşık Sayılar, Denklem ve Eşitsizlik Sistemleri',exam='AYT',code='equation')

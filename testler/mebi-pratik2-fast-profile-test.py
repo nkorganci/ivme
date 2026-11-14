@@ -15,9 +15,21 @@ from mebi_pratik2_native_govde import prove as native_prove
 from mebi_pratik2_klasor_etiketleri import resolve,path_key
 import mebi_pratik2_klasor_etiketleri as source_labels
 from mebi_pratik2_konu_bekleyen_kanit import reuse_evidence,NoModelCalls
+from mebi_pratik2_soru_kaynak_etiketleri import retained_records
 
 
 class FastProfileTests(unittest.TestCase):
+    def test_subject_only_label_update_keeps_other_receipts_and_rejects_stale_inputs(self):
+        category=self.category()
+        label={'categoryId':category['id'],**{'canonical'+k.title():category[k] for k in ['exam','subject','unit','topic']}}
+        row={'code':'saved','sourceSha256':'pdf','imageSha256':'image'}
+        previous={'records':{'saved':{**row,'sourceLabelEvidence':label}}}
+        current={'saved':(row,{})}
+        self.assertEqual(retained_records(previous,current,[category]),previous['records'])
+        with self.assertRaises(ValueError):retained_records(previous,{},[category])
+        with self.assertRaises(ValueError):retained_records(previous,{'saved':({**row,'imageSha256':'changed'}, {})},[category])
+        with self.assertRaises(ValueError):retained_records(previous,current,[{**category,'topic':'changed'}])
+
     def test_curriculum_scope_needs_unchanged_reference_pdf(self):
         with tempfile.TemporaryDirectory() as name:
             root=Path(name);(root/'scripts').mkdir();reference=root/'scope.pdf'

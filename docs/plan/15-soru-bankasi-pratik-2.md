@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.617 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.683 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -153,6 +153,17 @@ kapanışı değildir. TYT’ye AYT etiketi ve Türkiye’ye dünya/siyasi döne
 zorlanmadı. Yeni PNG/model/öğretmen onayı0. `reviewed-native-history-3-expansion/`,
 `verified-source-batch-067/bank-acceptance.json`. Sıradaki Fizik tek-konu
 başlıkları ve yalnız değişen dersin etiket geçişi çalışır.
+
+**068 — BITTI:** 43 AYT Elektrik Alan ve Potansiyel+23 TYT Elektrostatik
+=66 soru basılı tüm konu başlıklarıyla doğru ana kimliğe bağlandı.66 INSERT/
+0 UPDATE, tekrar0 INSERT, katalog/masaüstü/mobil PASS; toplam10.683
+(5.627 TYT/5.056 AYT). Yeni PNG/model/öğretmen onayı0. Yalnız değişen Fizik
+etiket geçişi497 kaydı2,7sn'de denetledi;8.074 diğer kanıtı kaynak/PNG/kategori
+bağlarıyla korudu. Dizinde432 bağlı kod var (yayın sayısı değildir).
+16 kaynak/kimlik ve11 konu-kapsam testi PASS. `source-physics-heading-expansion/`,
+`verified-source-batch-068/bank-acceptance.json`. Sonraki Fizik283 metnin
+100lük kısmında96 aday/4 inceleme,183lük kısmında180 aday/3 inceleme hazır;
+069/070 yayın sırası bağımlılıklarla sürer. Ana arşiv açık.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 

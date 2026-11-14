@@ -58,6 +58,12 @@ RULES={
                  'Belirsiz İntegral, Belirli İntegral ve Uygulamaları'),
  },
  'Fizik':{
+  **dict.fromkeys(['Elektriksel Kuvvet','Elektriksel Potansiyel Enerji ve Elektriksel Potansiyel',
+                  'Elektrik Alan','Elektriksel Potansiyel Farkı ve Elektriksel İş'],
+                 'Elektrik Alan ve Potansiyel'),
+  **dict.fromkeys(['Elektrik Yüklerinin Özellikleri ve Elektrikle Yüklenme Çeşitleri',
+                  'İletken ve Yalıtkanlarda Yük Dağılımı','Elektriksel Kuvvet ve Elektrik Alan'],
+                 'Elektrostatik'),
   **dict.fromkeys(['Düzgün Elektrik Alan','Sığa Kavramı ve Sığaçlar'],'Paralel Levhalar ve Sığa'),
   **dict.fromkeys(['Su Dalgalarında Kırınım ve Girişim','Işığın Çift Yarıkta Girişimi','Işığın Tek Yarıkta Kırınımı',
                   'Işığın Dalga Doğası ve Doppler Olayı','Elektromanyetik Dalgalar'],'Dalga Mekaniği ve Elektromanyetik Dalgalar'),

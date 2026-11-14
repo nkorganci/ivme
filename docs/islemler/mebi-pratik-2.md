@@ -483,3 +483,10 @@ karar/kabul imleci kaynak sıra aralığıyla ayrıca tutulur.
 067 Tarih son121:63 kabul/58 inceleme; tek-test grubunda261 metnin tamamı
 okundu,169 kabul ve92 açık inceleme kanıtlıdır. Başka sınav/dönem kimliği
 aktarılmadı; bu sınırlı grubun kapanışı tam arşiv kapanışı değildir.
+
+Etiket kuralı yalnız bir derste değiştiyse
+`python scripts/mebi_pratik2_soru_kaynak_etiketleri.py --subjects Fizik`.
+Kayıt kapsamı, her kaynak/PNG kimliği ve mevcut kategori tanımı aynı olmak
+zorundadır; değişiklikte tam geçiş istenir. Diğer derslerin makbuzları korunur,
+yeni dizin sürümünden önce eski dosya SHA historyye alınır.497 Fizik kaydı
+2,7sn,8.074 diğer kayıt korunmuş;16+11 sınır testi PASS.06866 soru yayını PASS.
