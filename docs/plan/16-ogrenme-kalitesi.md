@@ -105,7 +105,7 @@ Durağan şema ve akış için Mermaid (tembel yüklenir); etkileşim için `int
 
 ```
 Kaynaklar/
-  konu-anlatim/<Sınav>/<Ders>/<Ünite>/<Konu>/   konu başına en çok 4 PDF
+  konu-anlatim/<Sınav>/<Ders>/<Ünite>/<Konu>/   konu başına sayı sınırı yok; her PDF'in ders/ünite/konusu kayıtta
   soru-bekleyen/<Sınav>/<Ders>/                 sorusu henüz bankaya alınmamış veya kısmen alınmış PDF
   soru-referansi/<Sınav>/                       soruları sistemde olan asıllar; düzenlenmez, yalnız referans
   cikmis-sinavlar/                              resmî ÖSYM kitapçıkları (küçük; cevap itirazında referans)
@@ -130,7 +130,8 @@ YKS-13 sonuçları, `pipeline` (ogm_ders), `mebi-yks/envanter.jsonl`.
 | zip | İçindeki dosyalar kayıtta varsa silinir |
 | Aynı PDF (aynı hash; ya da aynı sayfa sayısı + ilk üç sayfa önizlemesi) | Bir kopya kalır; ivme ve mebi-yks'te ikisi de varsa ivme'dekini sil, mebi-yks'tekini hedef düzene taşı |
 | Soru PDF'i | Cevaplı bütün soruları bankada kırpım + cevapla duruyorsa `soru-referansi/`'ne taşınır (düzenlenmez); kısmi alınmışsa `soru-bekleyen/` |
-| Konu anlatımı | Konu başına en iyi 4 kalır. Sıralama: resmî MEB/OGM kaynağı, konu kapsamı, metin katmanı ve okunurluk, güncellik |
+| Konu anlatımı | Sayı sınırı yok (kullanıcı kararı). Yalnız sistemde aynısı varsa (aynı hash) silinir; yoksa kalır, konusu belirsizse belirsiz olarak kayıtlı kalır. Ders–ünite–konu bir kez eşlenir, işlem sırasında tekrar uğraşılmaz |
+| Genel ilke | Sistemde karşılığı olmayan dosya silinmez. Kullanılmayan, işe yaramayan, yedek ve tekrar dosya silinir; çalışan sistem (DB, uygulamanın okuduğu görsel/PDF klasörleri) bozulmaz. Referansı sürenler (`yks-birlestirme`, `mebi-pratik-2`, `pdf-accept` dökümleri) okuyan kod ve DB karşılığı doğrulanınca silinir |
 | `uygulama/veri` | Uygulamanın sunduğu kırpımlar ve küçük kabul makbuzları kalır; önbellek, geçici dosya, eski denetim görüntüsü, geri yükleme kopyası silinir |
 | `yedekler`, `pipeline/backups` | Yalnız son geçerli veritabanı dökümü kalır (öğrenci verisi koruması; arşiv değildir) |
 | Kaynak içindeki `.md` durum notları | Bilgisi kayda aktarılır, dosya silinir |
@@ -223,10 +224,10 @@ sayfası, görselleri, bağlı soruları) okur; bir oturum bir konu ya da bir i�
 - Kaynak kaydını doldur: hash, tür, konu eşleme (klasör ve `katalog.json` → `bge-m3` → `gpt-oss:20b`), bağlı soru sayısı.
 - Video bağlantı tablosu: `katalog.json` + YouTube; bağlantı denetimi; oturum isteyenler MEBİ sayfa adresiyle.
 - Kabul: her dosya kayıtta tek satır ve bir karar taşır; kararsız dosya sayısı raporlu.
-- Sonuç (`python scripts/ivme.py kaynak …`; rapor `veri/kaynak-kayit/`): görünen 386,7 GiB, gerçek disk 148,3 GiB (238 GiB sabit bağlantı tekrarı); Kaynaklar 87,9 GiB, mebi-yks 76,9 GiB (aynı dosyaların büyük kısmı ortak), `uygulama/veri` 49,7 GiB. Kayıt `kaynak_kaydi.dosyalar`: 12.140 fiziksel dosya = 12.140 satır, hepsinde SHA-256; karar: kalır 6.707 (9,2 GiB), silinir önerisi 4.685 (68,7 GiB: 2.094 video/ses, tekrar kopyalar, konuda 4'ten fazla anlatım), **kararsız (bekler) 748** (668 konusu belirlenemeyen konu anlatımı + 78 zip: içinde kayıtta olmayan üye + 2 adressiz zip). Konu eşleme: katalog/klasör 3.259, bge-m3 83, gpt-oss 110 (150 sınırı), belirsiz 2.940 (çoğu YKS dışı değil; eşik sıkı). Video tablosu `kaynak_kaydi.video_baglari`: MEBİ 2.094 adresin tamamı denetimden geçti (boyut eşit), YouTube 195 geçti / 184 ulaşılamadı (liste/oEmbed; 16.03'te elle bakılır). Silinen dosya yok; "silinir" yalnız öneridir.
+- Sonuç (`python scripts/ivme.py kaynak …`; rapor `veri/kaynak-kayit/`): görünen 386,7 GiB, gerçek disk 148,3 GiB (238 GiB sabit bağlantı tekrarı); Kaynaklar 87,9 GiB, mebi-yks 76,9 GiB (aynı dosyaların büyük kısmı ortak), `uygulama/veri` 49,7 GiB. Kayıt `kaynak_kaydi.dosyalar`: 12.140 fiziksel dosya = 12.140 satır, hepsinde SHA-256; karar: kalır 6.707 (9,2 GiB), silinir önerisi 4.685 (68,7 GiB: 2.094 video/ses, tekrar kopyalar; konuda 4'ten fazla anlatım önerisi sonradan kaldırıldı), **kararsız (bekler) 748** (668 konusu belirlenemeyen konu anlatımı + 78 zip: içinde kayıtta olmayan üye + 2 adressiz zip). Konu eşleme: katalog/klasör 3.259, bge-m3 83, gpt-oss 110 (150 sınırı), belirsiz 2.940 (çoğu YKS dışı değil; eşik sıkı). Video tablosu `kaynak_kaydi.video_baglari`: MEBİ 2.094 adresin tamamı denetimden geçti (boyut eşit), YouTube 195 geçti / 184 ulaşılamadı (liste/oEmbed; 16.03'te elle bakılır). Silinen dosya yok; "silinir" yalnız öneridir.
 
 ## 16.03 — Sil ve yeniden düzenle (betik; kullanıcı onayıyla)
-- Kategori kategori kuru liste → onay → silme: video/ses, zip, tekrar PDF, önbellekler, eski dökümler, 4'ten fazla konu anlatımı.
+- Kategori kategori kuru liste → onay → silme: video/ses, zip, tekrar PDF, önbellekler, eski dökümler (4'ten fazla anlatım kuralı kaldırıldı).
 - Soruları sistemde olan PDF'leri `soru-referansi/`'ne, kısmi olanları `soru-bekleyen/`'e, konu anlatımlarını hedef konu klasörlerine taşı.
 - `mebi-yks` dosyalarını `Kaynaklar/`'a taşı, ivme'deki tekrarları sil; `mebi-yks` ve `EskiYollar` kaldırılır.
 - Proje yapısını uygula (yukarıdaki tablo): `pipeline` + `veri-hatti` → `araclar`, `icerik/data` → `uygulama/veri`, betik alt klasörleri; yollar tek sabit dosyasında.

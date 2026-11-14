@@ -14,7 +14,7 @@
 
 ## Açık kararlar (kullanıcı)
 
-- **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm, 4'ten fazla konu anlatımı) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
+- **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; 4'ten fazla kuralı kaldırıldı, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
 - **16.05 altın konular:** Fizik–Hareket ve Kuvvet ile Tarih–Millî Mücadele'yi kullanıcı dener ve onaylar.
 - **Yeni soru edinimi:** 100 bin yeni soru istenirse dışlanan adaylar açılmadan ayrı kaynak edinimi projesi tanımlanır ([kaynak kaydı](tarifler/kaynak-kaydi.md#yks-kaynak-birleştirme-kapalı)).
 

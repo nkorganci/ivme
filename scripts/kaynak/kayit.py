@@ -355,20 +355,12 @@ def ana(args):
         elif tur == 'konu_anlatimi':
             s['puan'] = puan({**s, 'sayfa_sayisi': s['sayfa_sayisi']})
             if not s['konu_id'] or s['yontem'] == 'belirsiz':
-                s['karar'], s['gerekce'] = 'bekler', 'konusu belirlenemedi'
-    # konu başına en iyi 4 konu anlatımı
-    konu_grup = defaultdict(list)
+                s['karar'], s['gerekce'] = 'kalir', 'konusu belirlenemedi: kalır, konu klasörü sonra belirlenir'
+    # konu anlatımı: sayı sınırı yok (kullanıcı kararı); her PDF ders/ünite/konu hedefiyle kayıtlı kalır, silinmez
     for s in satirlar:
         if s['tur'] == 'konu_anlatimi' and s['karar'] == 'kalir' and s['konu_id']:
-            konu_grup[s['konu_id']].append(s)
-    for grup in konu_grup.values():
-        grup.sort(key=lambda x: -(x['puan'] or 0))
-        for sira, s in enumerate(grup):
             s['hedef'] = f"konu-anlatim/{s['sinav'] or 'YKS'}/{s['ders']}/{s['unite']}/{s['konu']}"
-            if sira < 4:
-                s['gerekce'] = f'konu başına en iyi 4 içinde ({sira + 1}/{len(grup)})'
-            else:
-                s['karar'], s['gerekce'] = 'silinir', f"konuda 4'ten fazla anlatım (sıra {sira + 1}/{len(grup)}, puan {s['puan']})"
+            s['gerekce'] = 'konu anlatımı: konusu kayıtlı, kalır'
     for s in satirlar:
         if s['tur'] in ('kitap',) and s['karar'] == 'kalir':
             s['gerekce'] = 'kitap / çalışma rehberi: konu veya soru kaydı yok, kalır'
