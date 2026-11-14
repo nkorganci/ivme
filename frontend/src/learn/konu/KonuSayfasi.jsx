@@ -155,6 +155,7 @@ export default function KonuSayfasi() {
       <div className="kp-giris"><Markdown text={paket.giris} /></div>
       <p className="kp-ust-not"><span className="kp-onay">Öğretmen kontrolü bekliyor</span><span>{paket.sure}</span></p>
     </header>
+    <div className="kp-duzen">
     <nav className="kp-yol" aria-label="Konu bölümleri">
       <button type="button" aria-current={bolum === 'giris' ? 'step' : undefined} onClick={() => git('giris')}><span>★</span>Sınavda nasıl gelir?</button>
       {paket.duraklar.map((d, i) => <button type="button" key={d.id} aria-current={bolum === d.id ? 'step' : undefined} onClick={() => git(d.id)}><span>{tamam(d) ? '✓' : i + 1}</span>{d.baslik}</button>)}
@@ -166,6 +167,7 @@ export default function KonuSayfasi() {
         : bolum === 'tekrar' ? <Tekrar paket={paket} />
         : sira >= 0 ? <Durak key={bolum} paket={paket} durak={paket.duraklar[sira]} sira={sira} sorular={sorular} motor={kayit.motor} ilerleme={ilerleme} yaz={yaz} git={git} />
         : <Sinavda paket={paket} sorular={sorular} git={git} />}
+    </div>
     </div>
   </article>;
 }
