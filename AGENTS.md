@@ -27,6 +27,14 @@ Bu dizin tek İvme uygulamasıdır: React/Vite, Spring Boot, PostgreSQL. Claude 
 
 ## Veri ve ürün sınırları
 
+- **Pratik 2 son kullanıcı kararı — yeni çıkarım/aktarım durdu:** mevcut eklenmiş
+  sorular yeterlidir. `scripts/mebi-pratik2-lifecycle.json` yeni soru alımını kapatır;
+  eski tam arşiv/devam talimatı bu kararla sona erdi. Yalnız mevcut Pratik 2
+  sorularını aynı kimlik, cevap, görsel, kaynak bağlantısı, ders–ünite–konu ve
+  öğrenci geçmişiyle ana `OGM` Soru Bankası'na taşı. Ana ekran formatı değişmez;
+  ikinci menü kaldırılır, eski `/pratik-2` ve soru/kaynak bağlantıları korunur.
+  İnceleme adaylarını yeni soru olarak ekleme; özgün arşiv ve kanıtlar silinmez.
+
 - **Pratik 2 hızlı çıkarım ve etiket önceliği (son kullanıcı talimatı):** mevcut
   soru kırpımı varsa yeniden üretme veya yeniden yazma. Yalnız henüz sorusu
   çıkarılmamış kaynak/konumda yeni kırpım oluştur. Kaynak kabul listesine alma

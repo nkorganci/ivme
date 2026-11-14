@@ -21,6 +21,9 @@ from yks_birlestirme import write_json
 
 
 def run(apply=False,repeat_check=False,batch=False,batch_dir=None):
+    if apply:
+        from mebi_pratik2_lifecycle import require_imports_enabled
+        require_imports_enabled()
     started=time.monotonic()
     if apply and repeat_check:raise ValueError('Repeat check is a read-only import preview')
     if batch_dir:

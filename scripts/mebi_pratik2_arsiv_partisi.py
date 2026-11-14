@@ -18,6 +18,8 @@ from yks_birlestirme import write_json,process_lock
 
 
 def run(acceptance,batch_dir,after_batch=None):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     proof=(BASE/acceptance).resolve()
     if not proof.is_relative_to(BASE.resolve()) or Path(batch_dir).name!=batch_dir or not batch_dir.startswith('verified-source-batch-'):
         raise ValueError('Unsafe evidence or batch directory')

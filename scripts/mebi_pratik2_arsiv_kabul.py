@@ -143,6 +143,8 @@ def body_read(row,pdf,module,allow_model=True,group=None):
 
 
 def run(chunk_size=200,publish=False,limit=None,first_batch=7):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     if not 1<=chunk_size<=500:raise ValueError('Bounded admission chunks required')
     package_path=OUT/'chapter-packages.json';package=json.loads(package_path.read_text(encoding='utf8'))
     calibration=json.loads((BASE/'expanded-chapter-evidence/negative-calibration-v2/report.json').read_text(encoding='utf8'))

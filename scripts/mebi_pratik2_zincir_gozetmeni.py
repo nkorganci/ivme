@@ -119,6 +119,8 @@ def write_step_status(data):
 
 
 def run(watch):
+    from mebi_pratik2_lifecycle import require_imports_enabled
+    require_imports_enabled()
     ROOT.mkdir(exist_ok=True);state_path=ROOT/'restart-state.json'
     persisted=json.loads(state_path.read_text(encoding='utf8')) if state_path.exists() else {}
     children={};logs={};last_log=0;previous=None

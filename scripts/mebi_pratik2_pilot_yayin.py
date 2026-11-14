@@ -18,6 +18,9 @@ def literal(value):return "'"+str(value).replace("'","''")+"'"
 
 
 def run(apply=False,batch=False,batch_dir=None):
+    if apply:
+        from mebi_pratik2_lifecycle import require_imports_enabled
+        require_imports_enabled()
     if batch_dir:
         if Path(batch_dir).name!=batch_dir or not batch_dir.startswith('verified-source-batch-'):raise ValueError('Unsafe batch directory')
         batch=True

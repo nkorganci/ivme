@@ -1,0 +1,7 @@
+{
+  "state": "MERGING_EXISTING_QUESTIONS_INTO_MAIN_BANK",
+  "newQuestionImportsEnabled": false,
+  "sourceBank": "MEBI_PRACTICE_2",
+  "targetBank": "OGM",
+  "reason": "User stopped archive expansion and requested moving only already imported questions into the existing main bank. Preserve IDs, history, images, source links and legacy URLs."
+}
