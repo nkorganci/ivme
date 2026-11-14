@@ -1,0 +1,537 @@
+{
+  "status": "INDIVIDUAL_ORIGINAL_NATIVE_TOPIC_REVIEW",
+  "decisions": [
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q008",
+      "categoryId": "excel.ayt.tarih.bbcd1fb91d912ab0949c",
+      "imageSha256": "71d7f88df8a5bb73b4656169333523a79c6de7b442d7d76eb21fbb5e23adc77e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. II. Mahmut'un âyanlarla Sened-i İttifak'ı imzalaması aşağıdakilerden hangisinin bir sonucu olarak kabul edilebilir? A) Bütçe açıklarının artmasının B) Islahatların başarıya ulaşmasının C) Avrupalıların yoğun baskılarının D) Devlet",
+      "rationale": "Sened-i İttifak ve Tanzimat/Islahat/Meşrutiyet/anayasa yoluyla demokratikleşme açıkça karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q012",
+      "categoryId": "excel.ayt.tarih.bbcd1fb91d912ab0949c",
+      "imageSha256": "bfc5ec562daecd92daa78484393db05d89e0742032b1aabec634cd4f5db0476a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Aşağıdakilerden hangisi Osmanlı Devleti’nin XIX. yüzyılda attığı adımlardan olup demokrasinin gelişimine katkı sağlamamıştır? A) Tanzimat Fermanı B) Islahat Fermanı C) I. Meşrutiyet D) Kanun-ı Esasi E) Muharrem",
+      "rationale": "Sened-i İttifak ve Tanzimat/Islahat/Meşrutiyet/anayasa yoluyla demokratikleşme açıkça karşılaştırılır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q009",
+      "categoryId": "excel.ayt.tarih.9a5a26b429269d89b745",
+      "imageSha256": "77a3a7b91a9b2a028d3bf8183959f30316e8947619a81cf893238034d4108f09",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Osmanlı Devleti’nin XIX. yüzyılda imzaladığı antlaşmalara ait özelliklerin verildiği aşağıdaki seçeneklerden hangisi doğrudur? A) Edirne Antlaşması (1829) - Yunanistan’a iç işlerinde serbestlik tanıyan muhtariyet hakkının verilmesi B)",
+      "rationale": "19.yüzyılda büyük devletler arasındaki denge politikası ve Edirne/Paris/Ayastefanos-Berlin antlaşmaları Osmanlıya yönelik baskılar bağlamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q010",
+      "categoryId": "excel.ayt.tarih.9a5a26b429269d89b745",
+      "imageSha256": "5e64ad89baaa7d0da55a6dface50f5b3cdc32648ecb1473db37a0b1c8fbc0522",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Osmanlı Devleti, Napoleon’un 1798 Mısır Seferi ile dış siyasette denge politikası takip etmiştir. Zayıflamaya başladığı XIX. yüzyıl boyunca sürdürdüğü denge politikasıyla Osmanlılar, Avrupa’nın büyük güçleri arasındaki çıkar",
+      "rationale": "19.yüzyılda büyük devletler arasındaki denge politikası ve Edirne/Paris/Ayastefanos-Berlin antlaşmaları Osmanlıya yönelik baskılar bağlamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-c998c1f9fe2dfcdf-Q011",
+      "categoryId": "excel.ayt.tarih.9a5a26b429269d89b745",
+      "imageSha256": "8465b2207995e1d82515728d94c4a052d16c7cd073ba188aeacabd6624776a84",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. 3 Mart 1878’de İstanbul’da Ayastefanos Antlaşması imzalanmıştır. Panslavizm’in bir zaferi sayılan bu antlaşmayla Rusya, bölgede çok avantajlı bir duruma gelmiştir. Ayastefanos Antlaşması ile Avrupa’daki dengenin Rusya lehine",
+      "rationale": "19.yüzyılda büyük devletler arasındaki denge politikası ve Edirne/Paris/Ayastefanos-Berlin antlaşmaları Osmanlıya yönelik baskılar bağlamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-626f9e9a93c7c775-Q001",
+      "categoryId": "excel.ayt.tarih.55d7ef25fbdcd3efe5c9",
+      "imageSha256": "068e98e7708ffd85a6f97573e1ef79e37dfafce5bf4ca6d33837a1e5a7211628",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. • Mevcut kapitülasyonlar devam edecek ve İngiltere’ye yeni imtiyazlar verilecektir. • İngilizler, Osmanlı ülkesindeki tarım ve sanayi ürünlerini serbestçe alıp satabilecektir. • Osmanlı Devleti, ihracat yasaklarını ve",
+      "rationale": "Baltalimanı ticaret şartları, sanayileşmenin engelleri ve Sanayi Devriminin Osmanlı üretim/altyapı/meslek örgütlerine etkileri ölçülür; 19.yüzyıl sosyal kurum soruları ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-626f9e9a93c7c775-Q003",
+      "categoryId": "excel.ayt.tarih.55d7ef25fbdcd3efe5c9",
+      "imageSha256": "7f6fc0699f32c53eb094b1e25129a4018f363c902fbc7e3068fe449de398a108",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Sanayi Devrimi’nden önce zengin bir coğrafyaya sahip Osmanlı Devleti’nin ekonomisi tarıma, ticarete ve küçük ölçekli atölyelerde yürütülen üretime dayanmaktadır. Zamanla merkezî otoritenin zayıflaması, tımar sisteminin bozulması, savaşlarda",
+      "rationale": "Baltalimanı ticaret şartları, sanayileşmenin engelleri ve Sanayi Devriminin Osmanlı üretim/altyapı/meslek örgütlerine etkileri ölçülür; 19.yüzyıl sosyal kurum soruları ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-626f9e9a93c7c775-Q012",
+      "categoryId": "excel.ayt.tarih.55d7ef25fbdcd3efe5c9",
+      "imageSha256": "4f34f3109a5179cff7eeab9ccd69d15f84d0c86a94f34e3dc6f4884051364d8e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Batıdaki Sanayi Devrimi, Osmanlı Devleti'ni aşağıdaki konulardan hangisinde etkilememiştir? A) Çalışma hayatı B) Meslek örgütleri C) Siyasi yapı D) Ham madde kaynakları E) Altyapı yatırımları 3",
+      "rationale": "Baltalimanı ticaret şartları, sanayileşmenin engelleri ve Sanayi Devriminin Osmanlı üretim/altyapı/meslek örgütlerine etkileri ölçülür; 19.yüzyıl sosyal kurum soruları ayrı bırakıldı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q001",
+      "categoryId": "excel.ayt.tarih.0dd548b503452b7ca81a",
+      "imageSha256": "cb2d867b5d283b8a850e0574af07b7e261c91a18ba776de6b963f39a47ff7bdb",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Aşağıdakilerden hangisi I. Dünya Savaşı’nın sonuçlarından biri değildir? A) Osmanlı Devleti, Almanya, Avusturya- Macaristan İmparatorluğu ve Çarlık Rusyası yıkıldı. B) Sömürgecilik manda ve himaye şeklinde devam ettirildi.",
+      "rationale": "Savaş sonu devletler ve barış antlaşmaları, Mondros, Wilson ilkeleri ve Paris Barış Konferansı sonuç bağlamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q002",
+      "categoryId": "excel.ayt.tarih.0dd548b503452b7ca81a",
+      "imageSha256": "edb8b602e47f4742a9382635c08dc6e03d2e6cf9ce6a03bcd19f30fff04b3bda",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. \"Anadolu'da Türklerin elinde kalan topraklar da elden çıkabilir.\" Mondros Ateşkes Antlaşması’nın aşağıdaki maddelerinden hangisi bu yargıyı doğrular niteliktedir? A) Tüm liman ve tersaneler İtilaf Devletleri'nin kontrolünde olacak",
+      "rationale": "Savaş sonu devletler ve barış antlaşmaları, Mondros, Wilson ilkeleri ve Paris Barış Konferansı sonuç bağlamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q003",
+      "categoryId": "excel.ayt.tarih.0dd548b503452b7ca81a",
+      "imageSha256": "90ddfc091f9eb3a9f9a98cef045e57a44dd7295ef3de269f297fd618c1dcb419",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Devlet Antlaşma I. Almanya Versailles (Versay) II. Bulgaristan Neuilly (Nöyyi) III. Avusturya Saint Germain (Sen Jermen) IV. Macaristan Triannon (Tiriyanon) V. Osmanlı Ouchy (Uşi) Yukarıdaki tabloda I.",
+      "rationale": "Savaş sonu devletler ve barış antlaşmaları, Mondros, Wilson ilkeleri ve Paris Barış Konferansı sonuç bağlamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q006",
+      "categoryId": "excel.ayt.tarih.0dd548b503452b7ca81a",
+      "imageSha256": "25b185fe5453acf7a18c933d2aaaf49e8f06773aae642c7ae295ae05e2d59e3e",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. ABD’nin savaşa girmesi ve yayınladığı Wilson İlkeleri ile oluşan olumlu atmosfer, İttifak devletlerinde savaştan çekilirken bu ilkelere göre antlaşmalar yapılacağı umudunu doğurmuştur. Buna göre Wilson İlkeleri’nin, I.",
+      "rationale": "Savaş sonu devletler ve barış antlaşmaları, Mondros, Wilson ilkeleri ve Paris Barış Konferansı sonuç bağlamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q011",
+      "categoryId": "excel.ayt.tarih.0dd548b503452b7ca81a",
+      "imageSha256": "ed272d2249552f6795c4d69f5c6fe86556d3440102ce9ab580e7b8589f2e4869",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Birinci Dünya Savaşı’nın sona ermesinden sonra 18 Ocak 1919 tarihinde başlayan Paris Barış Konferansı hakkında aşağıdakilerden hangisi söylenemez? A) Savaş sonrası kurulacak yeni dünya düzeninin temellerini atmak",
+      "rationale": "Savaş sonu devletler ve barış antlaşmaları, Mondros, Wilson ilkeleri ve Paris Barış Konferansı sonuç bağlamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q004",
+      "categoryId": "excel.ayt.tarih.03324af04583af7da7c4",
+      "imageSha256": "ff91422f8cbb9c90d4190871d303b02fa3e9f1ef7af01d6241190999eba0d5a6",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Aşağıdaki cephelerden hangisi müttefiklerinden yardım alamadığı için Rusya'da Bolşevik İhtilali'nin çıkmasına zemin oluşturmuştur? A) Kafkasya B) Makedonya C) Romanya D) Galiçya E) Çanakkale 1",
+      "rationale": "Osmanlı cephelerinin amaçları, zaferleri ve Çanakkalenin Rusyaya etkileri doğrudan savaş sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q005",
+      "categoryId": "excel.ayt.tarih.03324af04583af7da7c4",
+      "imageSha256": "5a3912c08a13a67818d6f84fd9f79061c172b7914fd2f8114f77c85e7eaaa883",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. I. Dünya Savaşı’nda yaşanan; I. Çanakkale Savaşları II. Kut’ül-Amâre Savaşı III. Medine Müdafaası olaylarından hangileri Osmanlı Devleti'nin zaferi ile sonuçlanmıştır? A) Yalnız I B) Yalnız II C)",
+      "rationale": "Osmanlı cephelerinin amaçları, zaferleri ve Çanakkalenin Rusyaya etkileri doğrudan savaş sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q007",
+      "categoryId": "excel.ayt.tarih.03324af04583af7da7c4",
+      "imageSha256": "8150b547347be3298c8c93390827850e506f326fddd2c500c1c982f193020a8c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. I. Dünya Savaşı'nda Osmanlı Devleti kutsal yerleri savunmak için aşağıdaki cephelerden hangisinde mücadele etmiştir? A) Kanal B) Hicaz-Yemen C) Suriye-Filistin D) Kafkas E) Irak",
+      "rationale": "Osmanlı cephelerinin amaçları, zaferleri ve Çanakkalenin Rusyaya etkileri doğrudan savaş sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q010",
+      "categoryId": "excel.ayt.tarih.03324af04583af7da7c4",
+      "imageSha256": "6a54fb907fc7aee7a1f4eedd496a342540a68ad38a48f122940a7e8f841daccd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. Birinci Dünya Savaşı’nda İngiltere’yi Orta Doğuda Osmanlı ile uğraştırarak Avrupa’daki etkisini azaltmak isteyen Almanya’nın telkinleriyle Osmanlı Devleti tarafından açılan cephe aşağıdakilerden hangisidir? A) Çanakkale B) Hicaz ve",
+      "rationale": "Osmanlı cephelerinin amaçları, zaferleri ve Çanakkalenin Rusyaya etkileri doğrudan savaş sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q012",
+      "categoryId": "excel.ayt.tarih.03324af04583af7da7c4",
+      "imageSha256": "fd4cad148011a2d95a35c8c650c708fdb04e1525520142d98a203f352ff55973",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Osmanlı Devleti I. Dünya Savaşı’nda taarruz, savunma ve yardım amaçlı bir çok cephede savaşmıştır. Buna göre haritada verilen cephelerden hangileri savunma amaçlıdır? A) Çanakkale, Suriye-Filistin, Irak, Hicaz,",
+      "rationale": "Osmanlı cephelerinin amaçları, zaferleri ve Çanakkalenin Rusyaya etkileri doğrudan savaş sürecidir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q008",
+      "categoryId": "excel.ayt.tarih.1f53bdc9690101a37cd4",
+      "imageSha256": "75e5557ce97cf17feffdec29e792c585e90cc10273fabd7b99d66e9cc716af5b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aşağıdaki fikir akımlarından hangisi yerel yönetimlerin güçlü olduğu idari sistemi savunmuştur? A) Osmanlıcılık B) Adem-i merkeziyetçilik C) Batıcılık D) Türkçülük E) İslamcılık",
+      "rationale": "Dönemin siyasi düşünceleri/ademimerkeziyet ve Balkan savaşları 20.yüzyıl başındaki Osmanlı gelişmeleridir; savaş sonrası barış antlaşmalarıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-fa508616ff5e545c-Q009",
+      "categoryId": "excel.ayt.tarih.1f53bdc9690101a37cd4",
+      "imageSha256": "30f52ea27ef1a960c04e90e6baf01c331f5f3f10296ea51abb50ba58757ea6b0",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. I. Balkan Savaşı’na katılan devletlerin tamamı II. Balkan Savaşı’nda da yer almıştır. Buna göre aşağıda verilen devletlerden hangisinin durumu bu açıklamaya uygun değildir? A) Romanya B) Bulgaristan",
+      "rationale": "Dönemin siyasi düşünceleri/ademimerkeziyet ve Balkan savaşları 20.yüzyıl başındaki Osmanlı gelişmeleridir; savaş sonrası barış antlaşmalarıyla karıştırılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q001",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "imageSha256": "9fc1ecaa001f03da2734bad03f9aef8398a2395e27a47809dd23b23fa036a98f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. \"Tarihçiler; deney ve gözlem tekniğini kullanan fen bilimciler gibi kesin ve değişmez bilgiler elde edemez.\" Aşağıdaki yargılardan hangisi bu açıklamayı destekler niteliktedir? A) Olayları değerlendirmede objektif olunmalıdır.",
+      "rationale": "Tarihsel bilginin değişebilirliği, belge/tarafsızlık ve tarih araştırma yöntemleri tarih biliminin temel kapsamıdır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q003",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "imageSha256": "32c363c1fb64d1c39d505da68d79b27de15b769ee0de1a8569ed16a41a1d1889",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Tarih öğretmeni tahtaya Atatürk’e ait bir söz yazarak öğrencilere Atatürk’ün bu sözüyle neyi vurguladığını sorar. Öğrencilerden; Gökçe: Tarih araştırmalarında belgelerin önemini, Gökhan: Tarih yazmanın önemini, Nergis: Yer",
+      "rationale": "Tarihsel bilginin değişebilirliği, belge/tarafsızlık ve tarih araştırma yöntemleri tarih biliminin temel kapsamıdır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q004",
+      "categoryId": "excel.ayt.tarih.35da509f90eb79525ab7",
+      "imageSha256": "bf995a489f468050c3427053a6bb1c0466f864cea18106a4733dd3206b1c3654",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Tarih biliminin yöntem basamaklarını gösteren tabloda hangilerinin yerleri değiştirilirse sıralama doğru olur? A) I ve II B) II ve III C) II ve IV D) III ve",
+      "rationale": "Tarihsel bilginin değişebilirliği, belge/tarafsızlık ve tarih araştırma yöntemleri tarih biliminin temel kapsamıdır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-8c0f11d14513ced7-Q006",
+      "categoryId": "excel.ayt.tarih.5adfedf842d3d72ec1f6",
+      "imageSha256": "0fa365e9a7e46bd97e302282d4662b60c9981cb283cef5b4ee6f720a091993a1",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıdakilerden hangisi Türklerin kullandığı takvimler arasında yer almaz? A) Celâli Takvimi B) Hicrî takvim C) Miladi takvim D) Maya Takvimi E) Rûmî Takvim",
+      "rationale": "Türklerin kullandığı takvimler doğrudan zamanın taksimi konusudur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q001",
+      "categoryId": "excel.ayt.tarih.630017e2f843f7d1d909",
+      "imageSha256": "593801bd8c306486d1f9747e9ce2bd27a150bbfb87afb6ab0227ee105153818d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. Aşağıdaki adımlardan hangisi Mustafa Kemal’in demokratikleşme hamlelerini tabana yayma amacına yönelik gelişmelerden biri değildir? A) Takrir-i Sükun Kanunu’nun çıkarılması B) Kadınlara seçme-seçilme hakkının verilmesi C) 1924 Anayasası’nın",
+      "rationale": "Atatürk döneminin demokratikleşme adımları ve hükümet bunalımını bitiren Cumhuriyetin ilanı siyasi düzenlemelerdir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q006",
+      "categoryId": "excel.ayt.tarih.630017e2f843f7d1d909",
+      "imageSha256": "e20f465600e1a8984c3e044431194cf51f3b2f72f2da35385f2d4c0bd8f22f5a",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. TBMM içinde “hükûmet buhranı” olarak adlandırılan siyasi kriz aşağıdaki inkılaplardan hangisi ile sona ermiştir? A) Saltanatın kaldırılması B) Ankara’nın başkent olması C) Cumhuriyet’in ilanı D) Halifeliğin kaldırılması",
+      "rationale": "Atatürk döneminin demokratikleşme adımları ve hükümet bunalımını bitiren Cumhuriyetin ilanı siyasi düzenlemelerdir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q002",
+      "categoryId": "excel.ayt.tarih.69492c8afa5f09cd31bf",
+      "imageSha256": "7f624544757113a4abd0c2ee111139a5396133dd300051a3212552b2bf5fca6c",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Atatürkçülüğün; • Körü körüne inanmayı ve taassubu reddetmesi, • Ulus egemenliğine dayanması, • Toplumda sınıf farklarını kabul etmemesi, • Dinamikliği ve ilericiliği savunması özellikleri dikkate alındığında, aşağıdaki",
+      "rationale": "Temel/bütünleyici ilkeler, laiklik/cumhuriyetçilik ve ilkelerin anayasaya girişi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q004",
+      "categoryId": "excel.ayt.tarih.69492c8afa5f09cd31bf",
+      "imageSha256": "70525018d968c478ea6c818b0868c9b8f5399a2e553956c19e3bb4c155956aa2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "4. Laiklik; din ve devlet işlerinin birbirinden ayrılması ve her vatandaşın din ve vicdan hürriyetine sahip olması demektir. Buna göre aşağıdakilerden hangisi laiklik ilkesi doğrultusunda yapılan inkılaplar arasında",
+      "rationale": "Temel/bütünleyici ilkeler, laiklik/cumhuriyetçilik ve ilkelerin anayasaya girişi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q008",
+      "categoryId": "excel.ayt.tarih.69492c8afa5f09cd31bf",
+      "imageSha256": "fc4e13ab5429ce4f3b6d460c644f077bef9ae54a5c73b05ef20991520bbd0259",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. I. Medeni Kanun’un kabulü II. Tevhid-i Tedrisat Kanunu III. Belediye seçimlerine katılma hakkı IV. Kılık kıyafete ilişkin düzenleme V. Milletvekili seçme ve seçilme hakkı Verilen gelişmelerden hangileri",
+      "rationale": "Temel/bütünleyici ilkeler, laiklik/cumhuriyetçilik ve ilkelerin anayasaya girişi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q010",
+      "categoryId": "excel.ayt.tarih.69492c8afa5f09cd31bf",
+      "imageSha256": "cc07d497f641d6939b396347dec4459ae5a00aab28f05bea488c021f551ec321",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. • Ulusal bağımsızlık • Ulusal egemenlik • Eşitlik ve Sosyal adalet • Akılcılık ve Bilimsellik Verilen bütünleyici ilkeler aşağıdaki temel ilkelerle eşleştirildiğinde hangisi dışarda kalır? A) Milliyetçilik",
+      "rationale": "Temel/bütünleyici ilkeler, laiklik/cumhuriyetçilik ve ilkelerin anayasaya girişi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q011",
+      "categoryId": "excel.ayt.tarih.69492c8afa5f09cd31bf",
+      "imageSha256": "869ce599f07297eb3e336f9e913f4263378bef7685c2f60c8b9c628a4eca3b47",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. “Türkiye; milliyetçi, halkçı, devletçi, laik ve inkılapçı bir cumhuriyettir.” şeklindeki düzenlemenin anayasaya giriş tarihi aşağıdakilerden hangisidir? A) 1931 B) 1933 C) 1935 D) 1936 E) 1937",
+      "rationale": "Temel/bütünleyici ilkeler, laiklik/cumhuriyetçilik ve ilkelerin anayasaya girişi doğrudan sorulur.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q003",
+      "categoryId": "excel.ayt.tarih.4aef23bcb79cd3b0539c",
+      "imageSha256": "e0e36f1bdbca852cefb73f9c3b277423d64e3804acac629af018048bbf47afcd",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. I. Kadınların siyasi haklarını alması II. Kadının miras ve boşanma hakkına sahip olması III. Kadınların mahkemelerde şahitlik konusunda erkeklerle eşit kabul edilmesi Yukarıdaki gelişmelerden hangileri 17 Şubat",
+      "rationale": "Medeni Kanunun miras, boşanma ve şahitlik haklarına etkisi hukuk alanındaki düzenlemedir.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q005",
+      "categoryId": "excel.ayt.tarih.f75b76c0323eb69f8984",
+      "imageSha256": "3dfb8b80a7744e04fc0d97df1ec2c2896d5cba36cb080d946e96cba31758b598",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Cumhuriyetin ilk yıllarında yürütülen aşağıdaki faaliyetlerden hangisi devletin ekonomideki payının kuvvetlendirilmek istendiğine kanıt oluşturmaz? A) Sümerbank ve Etibank’ın kurulması B) I. Beş Yıllık Sanayi Planı’nın uygulanması C)",
+      "rationale": "Sümerbank/Etibank, sanayi planı, vergi ve devletin ekonomideki payı ekonomi düzenlemeleri kapsamında ölçülür.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-23762699678dfe2b-Q012",
+      "categoryId": "excel.ayt.tarih.0d3b2270ff6dae7c6246",
+      "imageSha256": "3c95327f58c39a19e6e2704a6d0e0b248916f181d7db54213820bba53349c3c9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Aşağıdakilerden hangisinin Cumhuriyet Dönemi’nde, Batı ile olan ticari ilişkileri geliştirmek amacıyla 1928 yılında kabul edilen uluslararası rakamların kullanılmasıyla ilgili düzenlemenin tamamlayıcısı niteliğinde olduğu söylenebilir? A) Kabotaj Kanunu'nun",
+      "rationale": "Uluslararası rakam, saat ve ölçü birimlerine geçiş toplumsal standart düzenlemeleridir; ticari amaç ekonomi politikasına topluca etiket gerekçesi yapılmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q001",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "imageSha256": "f4ff3c5798fa3527976dcb82041ca325d10ff7d666648c1410c97c5cc6d555de",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. \"Millî sınırlarımız içinde her şeyden önce kendi gücümüze dayanarak varlığımızı koruyup, milletin ve yurdun gerçek mutluluğuna ve bayındırlığına çalışmak; gelişigüzel, ulaşılmayacak istekler peşinde milleti uğraştırmamak ve zarara",
+      "rationale": "Dönemin dış politika ilkeleri, Milletler Cemiyeti, Montrö ve Sadabat gibi diplomatik gelişmeler ölçülür; iki savaş arası genel dünya soruları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q005",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "imageSha256": "c3a8219aff7553db7e84264d240f26e42652fe46a08541df82d59f6bd0a9abf2",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Aşağıdakilerden hangisi Türk dış politikasının 1923-1938 arası döneminde meydana gelen gelişmeler arasında yer almaz? A) Montrö Boğazlar Sözleşmesi'nin imzalanması B) Hatay’ın ana vatana katılması C) Milletler Cemiyeti'ne",
+      "rationale": "Dönemin dış politika ilkeleri, Milletler Cemiyeti, Montrö ve Sadabat gibi diplomatik gelişmeler ölçülür; iki savaş arası genel dünya soruları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q008",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "imageSha256": "f7ddac0efdaad8e0326bcd7d3eb6966e264b056f13ec285faf9c2e165e5022ad",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Atatürk Dönemi'nde dünya barışına katkı sağlamak için yürütülen diplomasi çalışmalarına I. Birleşmiş Milletler, II. CENTO, III. Milletler Cemiyeti gibi uluslararası örgütlerden hangilerine üye olması örnek gösterilebilir? A)",
+      "rationale": "Dönemin dış politika ilkeleri, Milletler Cemiyeti, Montrö ve Sadabat gibi diplomatik gelişmeler ölçülür; iki savaş arası genel dünya soruları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q011",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "imageSha256": "012af23fcd11bad7a2489f2c6ec878206df0370940195426625b2af2f9c95b9f",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Aşağıdaki hükümlerden hangisi Lozan Antlaşması ve Montrö Boğazlar Sözleşmesi’nin ortak maddesidir? A) Komisyon kaldırılacak, boğazların yönetimi Türkiye'ye verilecek. B) Tüm ticaret gemileri barış zamanında boğazlardan serbestçe geçebilecek.",
+      "rationale": "Dönemin dış politika ilkeleri, Milletler Cemiyeti, Montrö ve Sadabat gibi diplomatik gelişmeler ölçülür; iki savaş arası genel dünya soruları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q012",
+      "categoryId": "excel.ayt.tarih.04cdaf5e72bda2b0e3d5",
+      "imageSha256": "ec2f2855e98a5563e9600a5c9cd42621c0eab2cba52791ef99806afc0323b87d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "12. Atatürk Dönemi’nde Türkiye’nin dış politikasına ilişkin aşağıdaki gelişmelerden hangisi, diğerlerinden farklı olarak Türkiye’nin bölgesel güvenlik iş birliği amacıyla oluşturduğu bir paktın sonucudur? A) Türkiye’nin Milletler Cemiyeti’ne üye",
+      "rationale": "Dönemin dış politika ilkeleri, Milletler Cemiyeti, Montrö ve Sadabat gibi diplomatik gelişmeler ölçülür; iki savaş arası genel dünya soruları ayrı tutuldu.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q007",
+      "categoryId": "excel.ayt.tarih.630017e2f843f7d1d909",
+      "imageSha256": "0f779863d3535f995ad34bfdd45cee9445f3d3be6691788d1dc4c7ada60e2884",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Atatürk Dönemi'nde kurulan Terakkiperver Cumhuriyet Fırkası ile Serbest Cumhuriyet Fırkası'nın ortak özellikleri arasında aşağıdakilerden hangisi yer almaz? A) Kuruluşlarından kısa bir süre sonra hükûmet kararıyla kapatılmaları B)",
+      "rationale": "Atatürk döneminde çok partili siyasi yaşam denemeleri ve Şeyh Sait sonrası siyasi-hukuki tedbirler ele alınır; dış politika etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-3ec3bfad2813f75c-Q009",
+      "categoryId": "excel.ayt.tarih.630017e2f843f7d1d909",
+      "imageSha256": "6302cd1c9e20197757ece2c7dcda9dba2f7202f781ab365dc589ab0534b5b544",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "9. Aşağıdakilerden hangisi Türkiye Cumhuriyeti Devleti’nin karşılaştığı ilk ciddi ve tehlikeli iç sorun olan Şeyh Sait Ayaklanmasıyla ilgili doğru bir bilgi değildir? A) Takrir-i Sükûn Kanunu’nun çıkarılması B)",
+      "rationale": "Atatürk döneminde çok partili siyasi yaşam denemeleri ve Şeyh Sait sonrası siyasi-hukuki tedbirler ele alınır; dış politika etiketi verilmedi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q001",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "imageSha256": "f3c51a50ab2c0844df63d4576d79e0ba13d1b22da9457506ebdceebaf97cfe2d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "1. I. Millî Korunma Kanunu'nun çıkarılması II. Toprak Mahsulleri Vergisi'nin alınması III. Türkiye İktisat Kongresi’nin toplanması IV. Varlık Vergisi’nin çıkarılması Yukarıdaki gelişmelerden hangileri II. Dünya Savaşı sırasında Türkiye’de",
+      "rationale": "Türkiye ekonomisindeki savaş tedbirleri, tarafsızlık/denge siyaseti, ihracat etkileri ve diplomatik ittifakları doğrudan savaş sürecinde Türkiye kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q006",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "imageSha256": "75acdf4bc840e5f830f308de6757f8632b2b66aacec799ee83c254b43d59aa57",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. Aşağıdaki devletlerden hangisinin 1941’de Yunanistan ve Oniki Ada’ya yerleşip Ege Denizi’ni mayınlaması, İstanbul ve İzmir limanlarının dış ticarete kapanmasına ve Türkiye’nin ihracatında büyük bir azalmaya yol açmıştır?",
+      "rationale": "Türkiye ekonomisindeki savaş tedbirleri, tarafsızlık/denge siyaseti, ihracat etkileri ve diplomatik ittifakları doğrudan savaş sürecinde Türkiye kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q008",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "imageSha256": "d6ba933715a54937907cd67d9b07d4d116e2c351a590fbfbd22f438e505a0b9b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. Aşağıdakilerden hangisi, II. Dünya Savaşı sırasında Türkiye'nin izlediği dış politika anlayışını en iyi şekilde yansıtır? A) Savaş boyunca Almanya ile ittifak hâlinde olmak B) Mihver Devletlere savaş",
+      "rationale": "Türkiye ekonomisindeki savaş tedbirleri, tarafsızlık/denge siyaseti, ihracat etkileri ve diplomatik ittifakları doğrudan savaş sürecinde Türkiye kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q010",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "imageSha256": "f2ce9e7ae830a1ba2b2b06ce8e1c4493bc5e52e2251f11ed2605545578983fc9",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. 23 Şubat 1945 tarihine kadar Türkiye tüm dış baskılara rağmen savaşa katılmamış tarafsızlığını korumuştur. Bu tarihten sonra Almanya ve Japonya’ya savaş ilen ederek müttefik bloğa dahil olmuştur.",
+      "rationale": "Türkiye ekonomisindeki savaş tedbirleri, tarafsızlık/denge siyaseti, ihracat etkileri ve diplomatik ittifakları doğrudan savaş sürecinde Türkiye kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q011",
+      "categoryId": "excel.ayt.tarih.efcf61d8455f3cbb5c32",
+      "imageSha256": "49bedb21c09224900a837d89abc412625f5731dcc1edda3ac5961b940f323c36",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "11. Türkiye, İngiltere ve Fransa arasında 19 Ekim 1939’da imzalanan; ülkelerin savunma gereksinimlerini karşılamayı ve Balkanların güvenliğini sağlamayı amaçlayan antlaşma aşağıdakilerden hangisidir? A) Akdeniz Paktı B) Balkan Antantı",
+      "rationale": "Türkiye ekonomisindeki savaş tedbirleri, tarafsızlık/denge siyaseti, ihracat etkileri ve diplomatik ittifakları doğrudan savaş sürecinde Türkiye kapsamındadır.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q002",
+      "categoryId": "excel.ayt.tarih.a7b0524db012d519b716",
+      "imageSha256": "55cc5429596b1412fa0a7d54b7baefd25e75a482ce6cb00f027387c20457b7ea",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "2. Müttefik Devletler 1945’te; I. Yalta II. San Francisco III. Potsdam IV. Londra V. Kahire konferanslarından hangilerini düzenleyerek barışı tesis etmeye çalışmışlardır? A) I ve II B) I,",
+      "rationale": "Mihver devletleri ve savaşın sonundaki konferanslar dünya savaşı kapsamındadır; Türkiye iç gelişmeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-70d1ee87cce3fc19-Q003",
+      "categoryId": "excel.ayt.tarih.a7b0524db012d519b716",
+      "imageSha256": "421940b3c879be3350699209def5828663ac3ba51dc05e722fc01dae81972085",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "3. Mihver Devletler aşağıdakilerden hangisinde doğru olarak verilmiştir? A) İngiltere - SSCB - Japonya B) Almanya - Japonya - SSCB C) Almanya - İtalya - Japonya D) ABD",
+      "rationale": "Mihver devletleri ve savaşın sonundaki konferanslar dünya savaşı kapsamındadır; Türkiye iç gelişmeleri ayrı etiketlendi.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q005",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "6cd81c9697eb6c8e637c84769dffb358194360486c26913edfb8f839a0b3142d",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "5. Aşağıdakilerden hangisi Türkiye’nin Batı Blokuna girmek için yerine getirdiği faaliyetlerden biri değildir? A) Marshall yardımını kabul etmesi B) Avrupa Konseyi’ne üye olması C) Kuzey Atlantik Antlaşması’nı onaylaması",
+      "rationale": "Soğuk Savaş güç blokları, Marshall yardımı, Süveyş krizi ve Türkiyenin NATO/Bağdat Paktı yönelimi yeni güç dengeleridir; iç seçim/parti ayrıntıları aynı başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q006",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "e767df960f34d7ab4752a5a4fdd47bd635ad2cb3c0c4df852144daed5002a581",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "6. 1947’de dönemin ABD Dışişleri Bakanı tarafından hazırlanan, Avrupa ülkelerinin yıkılan ekonomilerinin onarımına ve kalkınmalarının gerçekleştirilmesine katkıda bulunmak amacını kapsayan yardım programı aşağıdakilerden hangisidir? A) Monroe Doktrini B)",
+      "rationale": "Soğuk Savaş güç blokları, Marshall yardımı, Süveyş krizi ve Türkiyenin NATO/Bağdat Paktı yönelimi yeni güç dengeleridir; iç seçim/parti ayrıntıları aynı başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q007",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "9bfe08039562cdbe785b39d4155d7555ac8191ddac4789d5158f1409e9d60ad8",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "7. Mısır Lideri Nasr’ın Süveyş Kanalını millîleştirme girişimi üzerine İsrail’in 1956’da İngiltere ve Fransa ile ittifak kurarak Mısır ile yaptığı savaş Süveyş krizi olarak adlandırılır. İngiltere ve Fransa’nın",
+      "rationale": "Soğuk Savaş güç blokları, Marshall yardımı, Süveyş krizi ve Türkiyenin NATO/Bağdat Paktı yönelimi yeni güç dengeleridir; iç seçim/parti ayrıntıları aynı başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q008",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "aa6b916de4fb098a6635af49b86a435caafd68bb5732622956872f03d361829b",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "8. 24 Şubat 1955’te Sovyet Rusya’nın Orta Doğu’da yayılmasını önlemek amacıyla Türkiye öncülüğünde kurulan Bağdat Paktı’nda aşağıdakilerden hangisi yer almamıştır? A) İngiltere B) Irak C) Pakistan D) ABD",
+      "rationale": "Soğuk Savaş güç blokları, Marshall yardımı, Süveyş krizi ve Türkiyenin NATO/Bağdat Paktı yönelimi yeni güç dengeleridir; iç seçim/parti ayrıntıları aynı başlığa zorlanmadı.",
+      "teacherApproved": false
+    },
+    {
+      "code": "MEBI2-54715adbb6829b8a-Q010",
+      "categoryId": "excel.ayt.tarih.767967452eaa110b6797",
+      "imageSha256": "efa59450a887c9869664a4dc12d7fd926cb7fa8078ca15457dbbb51f6f4703ec",
+      "reviewer": "CURRENT_CODEX_ORIGINAL_NATIVE_TEXT_REVIEW",
+      "status": "REVIEWED_ACCEPT_TOPIC",
+      "quote": "10. 1950’li yıllar Türk dış politika gelişmeleri ile ilgili olarak I. Türkiye, NATO’ya üye olmuştur. II. Avrupa Konseyi kurucuları arasında yer almıştır. III. Türkiye, Varşova paktına gözlemci üye",
+      "rationale": "Soğuk Savaş güç blokları, Marshall yardımı, Süveyş krizi ve Türkiyenin NATO/Bağdat Paktı yönelimi yeni güç dengeleridir; iç seçim/parti ayrıntıları aynı başlığa zorlanmadı.",
+      "teacherApproved": false
+    }
+  ],
+  "teacherApprovalsCreated": 0,
+  "modelCalls": 0
+}

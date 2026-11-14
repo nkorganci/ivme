@@ -473,3 +473,9 @@ içinde ayrı tutulur; diğer derslere genelleştirilmez. Silindir/küre ve çem
 alt başlıkları ile ikinci derece eşitsizliklerin açık kapsam kuralları
 `mebi_pratik2_tek_tarama_konu.py` içinde. Karma veya bilinmeyen ek başlık
 reddedilir;9 sınır testi PASS.50 soru katalog/canlı kabulden geçti.
+
+066 Tarih ikinci70:53 kabul/17 inceleme; kaynak/INSERT_ONLY/katalog/canlı PASS.
+Aynı adlı ekonomik, eğitim, sağlık veya siyasi başlıklar farklı dönem/sınav
+kimliklerine taşınmaz. Donmuş eski metin listesi kullanılabilir; yeni PDF/PNG
+üretmek gerekmez. Tarih261 grubundaki son121 metnin okunması tamamlandı;
+karar/kabul imleci kaynak sıra aralığıyla ayrıca tutulur.

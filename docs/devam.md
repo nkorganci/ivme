@@ -1,6 +1,6 @@
 # İvme devir notu
 
-**Güncel canlı kabul:** 10.501 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.554 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 Önce `git status --short`, [AGENTS.md](../AGENTS.md) ve yalnız ilgili açık görev okunur.
 Referans günü 31 Ekim 2026: mevcut DB kayıtları korunur; geçmiş kaydedilmemiş
@@ -20,7 +20,7 @@ kapısı: `scripts/mebi-pratik2-pdf-policy.json`, `BASE/pdf-reuse-check/decision
 62 eş PDF atlandı; eski bankadaki aynı PDF tümüyle atlanır. Kısmi aktarımda
 soru soru eksik arama yok. Eski banka/öğrenci geçmişi korunur.
 
-**Son kabul065 PASS:**10.501(5.604 TYT/4.897 AYT).060–065 toplam467 yeni soru;
+**Son kabul066 PASS:**10.554(5.604 TYT/4.950 AYT).060–066 toplam520 yeni soru;
 her partide INSERT_ONLY/tekrar0 INSERT, katalog/masaüstü/mobil PASS. Geçmiş
 ayrıntı plan ve `verified-source-batch-*/bank-acceptance.json` makbuzlarında.
 Kaynak kabulü için basılı anahtar; öğrenci yayını öncesi gövde/iki cevap ve
@@ -28,19 +28,14 @@ mevcut ana tablonun doğru ders–ünite–konu kimliği zorunlu. Belirsizler
 `remaining-topic-review.json` dosyalarında; aynı başarısız okuma tekrarlanmaz.
 İçerik bekletme `scripts/mebi-pratik2-native-content-holds.json`:9 kod.
 
-**Şimdi066:** `reviewed-native-history-2-expansion`,53 AYT aday. İşçi yayında;
-`verified-source-batch-066/bank-acceptance.json` PASS olmadan BITTI deme.
-Devam komutu gerekirse `python -X utf8 -u scripts/mebi_pratik2_arsiv_kabul.py
---package-dir reviewed-native-history-2-expansion --first-batch 66 --chunk-size 200
---publish`; mevcut writer varsa ikinci kez başlatma. Kaynak metninden konu
-kararları `scripts/mebi-pratik2-reviewed-native-history-2-topics.json`.
-
-**Sonraki Tarih:**261 kayıtlık donmuş metin ihracının ilk70i064 ile kapandı.
-70:140 aralığı066da(53 aday/17 inceleme). Son121 kayıt
-`reviewed-native-history-2-expansion/next-topic-review.json`; bunların ilk35i
-okundu, karar dondurulmadı;86 henüz okunmadı. Kaynak sıra imlecini koru.
-Kronoloji/siyasi dönem veya ana konu karşılığı belirsizi zorlamadan ayır.
-Kimya tek-test grubunda rezerve edilmemiş kanıtlı aday0; aynı taramayı tekrarlama.
+**066 BITTI:** `reviewed-native-history-2-expansion`,53 AYT kabul;
+`verified-source-batch-066/bank-acceptance.json` PASS. İlk140 Tarih kaydında
+106 kabul/34 inceleme tamam. Son121 kaynak metni de gerçekten okundu;
+`reviewed-native-history-2-expansion/next-topic-review.json` karar bekler.
+067 için `reviewed-native-history-3-expansion` ve özgün metin alıntısıyla
+kararları dondur; uygun ana konu karşılığı olmayan dünya/siyasi dönem
+sorularına başka dönem etiketi verme. Tarih261 grubunun kapanışı bütün arşiv
+kapanışı değildir. Eski metinleri baştan okuma; aynı kaynak/PNG makbuzunu kullan.
 
 **Çalışan deneme zinciri:**metadata PID27912, `supervisor-v9.log/.err.log`.
 Gerçek durum `BASE/chain-supervisor/current.json`; yeni kayıtlar gözetmenin

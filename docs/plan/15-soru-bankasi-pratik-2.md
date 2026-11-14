@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.501 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.554 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -134,6 +134,15 @@ Kanıt `source-math-heading-2-expansion/`, `verified-source-batch-065/bank-accep
 İlk boş `source-math-heading-expansion` makbuzu korunur; yeni başlık eşleme
 girdisiyle ayrı v2 paket kullanıldı, tamamlanan sorular tekrar aktarılmadı.
 066 ikinci Tarih53 adayın yayın kapıları sürer; ana plan açık.
+
+**066 — BITTI (Tarih ikinci70 alt kapsamı):** 53 AYT kaynak sorusu doğru
+mevcut konuya bağlandı;17 kayıt ayrı incelemede.53 INSERT/0 UPDATE, tekrar0
+INSERT, katalog/masaüstü/mobil PASS; toplam10.554 (5.604 TYT/4.950 AYT).
+Osmanlı/Cumhuriyet ve I./II. Dünya Savaşı bağlamları ayrıldı; eğitim ve sağlık
+sorularına aynı sözcüklü başka dönem etiketi taşınmadı. Yeni PNG/model0.
+`reviewed-native-history-2-expansion/`, `verified-source-batch-066/bank-acceptance.json`.
+Son121 Tarih metni de gerçekten okundu; konu kararlarını dondurma/aktarım işi
+açık. Bütün arşiv kabulü değildir.
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 
