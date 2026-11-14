@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` / 2: [Hareket konu haritası](../frontend/src/learn/konu/paketler/fizik-hareket.harita.md) kullanıcı onayında. Onaydan sonra içerik (araç kutusu + Hareket v2) **Fable 5.2**, kod Sonnet 5.5, denetim Opus 5.5; modeli kullanıcı değiştirir, her model yalnız kendi kısmını yapıp durur |
+| Sıradaki görev | `16.04` Sonnet kod aşaması: [içerik devri](urun/hareket-v2-icerik-devri.md). Araç kutusu + Hareket v2 + ölçme taslağı hazır; şema, bileşen, deney bağı, ekran ve testler bekliyor. Bu oturum içerikte durdu; bağımsız denetim Opus ayrı oturumda. |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
@@ -15,7 +15,7 @@
 ## Açık kararlar (kullanıcı)
 
 - **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; konu anlatımında sayı sınırı yok, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
-- **16.04 fizik yöntemi:** basamak merdiveni, problem çözme protokolü, araç kutusu, yanılgı kataloğu ve ölçüm onaylanınca Hareket v2 yazılır; 16.05 önce fizik dersi, sözel altın konu (Millî Mücadele) sonra.
+- **16.04:** Kullanıcı içerikten devam edilmesini istedi; içerik taslağı tamamlandı. Teknik kabul, öğretmen onayı ve öğrenci ölçümü bekliyor.
 - **Yeni soru edinimi:** 100 bin yeni soru istenirse dışlanan adaylar açılmadan ayrı kaynak edinimi projesi tanımlanır ([kaynak kaydı](tarifler/kaynak-kaydi.md#yks-kaynak-birleştirme-kapalı)).
 
 ## Etkin ve bekleyen işler

@@ -1,7 +1,7 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
 Durum: plan onaylı; 16.01 ve 16.02 BITTI; 16.03 silme kısmı bitti (taşımalar ertelendi); 16.04 sürüyor: [fizik öğretim
-yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) kullanıcı onayında. Kalıcı kurallar
+yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; Sonnet kod aşaması bekliyor. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -359,10 +359,11 @@ seçilen uygun sayfalar, görselleri, bağlı soruları; çok büyükse Ollama'n
 - Durum: kullanıcı kararıyla **tek model konu** üzerinden yürür (TYT Fizik – Hareket, `/konuyu-ogrenelim/ogren/fizik-hareket`). Yapıldı: şema, blok kataloğu, konu sayfası, rubrik ve üretim sırası ([standart](../urun/ogretim-standardi.md#konu-paketi-standardı-v1--1604)); 236 banka sorusunun görseli incelenerek 10 soru tipi çıkarıldı; `node --test testler/konu-paketi.test.mjs` 7/7; masaüstü ve mobil ekran denetimi temiz. Kullanıcı değerlendirmesi: arayüz düzeltildi; içerik soru tipinden başlıyor, sıfırdan konu eğitimi eksik → [fizik öğretim yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi).
 - Sıra (her biri kullanıcı onayıyla):
   1. Yöntem onayı (bu belge); onaylanınca yöntem [öğretim standardına](../urun/ogretim-standardi.md) taşınır, burada özet kalır.
-  2. Hareket konu haritası: duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formül türetimleri; tek tabloyla kullanıcıya gösterilir. **Yazıldı, onay bekliyor:** [fizik-hareket.harita.md](../../frontend/src/learn/konu/paketler/fizik-hareket.harita.md) (8 durak, 7 ön koşul dersi, 13 yanılgı, 12 soru tipi; 5 ders sunusu ve 2 MEBİ özeti kaynaklara eklendi).
-  3. Araç kutusunun Hareket'in istediği mikro dersleri: birim çevirme, vektör ve yön, grafikte eğim ve alan.
+  2. Hareket konu haritası: duraklar, ön koşullar, yanılgı kataloğu, temsil zinciri, formül türetimleri; tek tabloyla kullanıcıya gösterilir. **Yazıldı; kullanıcı devam talimatıyla içerik aşamasına geçildi:** [fizik-hareket.harita.md](../../frontend/src/learn/konu/paketler/fizik-hareket.harita.md) (8 durak, 7 ön koşul dersi, 13 yanılgı, 12 soru tipi; 5 ders sunusu ve 2 MEBİ özeti kaynaklara eklendi).
+  3. **İçerik taslağı tamam:** `arac-kutusu-fizik.js` AK-1…AK-7; son Claude commitindeki içerik korundu.
   4. Hareket v2: mevcut içerik basamaklara dağıtılır, eksik basamaklar (0 ön koşul, 3 temsiller, 6 düzeyli sınav seti) yazılır; deney `interactive/motion/` bağlı grafikleriyle; kavram ön/son testi; şema v2 ve testler.
   5. Kabul: kullanıcı sıfırdan başlayan öğrenci gibi baştan sona dener; test, ekran ve rubrik geçer.
+- İçerik devri: `fizik-hareket.v2.js` + `fizik-hareket.v2.olcme.js`: 8 durak, 13 yanılgı döngüsü, 10+10 kavram sorusu, 12 tip tanıma/alıştırma, 10 karma soru, 13 tekrar kartı. Son devam GPT-6 Astra ile yapıldı (Fable çalıştırıldığı iddia edilmez). Uygulamaya bağlı değildir; öğretmen/Opus kabulü yoktur. Kod sınırları ve açık ölçüm koşulları [devir sözleşmesinde](../urun/hareket-v2-icerik-devri.md).
 - Kalan: dört ana yerin ekran tasarımı ve kişisel plan kuralları (model konu onayından sonra); ustalık motoru bağı 16.06.
 
 ## 16.05 — Fizik dersi (yöntem v2; modeller tablodaki gibi)
