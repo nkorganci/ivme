@@ -1,6 +1,6 @@
 # 15. Adım — MEBİ Soru Çöz & Pratik 2 — SURUYOR (tam arşiv)
 
-**Güncel canlı kabul:** 10.683 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
+**Güncel canlı kabul:** 10.779 soru; ana görev **SURUYOR**, bütün arşiv kabulü açık.
 
 **Kesintisiz yürütme kuralı:** her alt adımın kanıt ve kabulü tamamlanınca
 aynı çalışma içinde BITTI yaz, ilgili değişiklikleri yerel `main` dalına
@@ -164,6 +164,18 @@ bağlarıyla korudu. Dizinde432 bağlı kod var (yayın sayısı değildir).
 `verified-source-batch-068/bank-acceptance.json`. Sonraki Fizik283 metnin
 100lük kısmında96 aday/4 inceleme,183lük kısmında180 aday/3 inceleme hazır;
 069/070 yayın sırası bağımlılıklarla sürer. Ana arşiv açık.
+
+**069 — BITTI:** İlk100 özgün Fizik metninden96 AYT soru; manyetik kuvvet,
+indüksiyon, alternatif akım, çembersel/dönme hareketi, Kepler, atom/parçacık
+ve radyoaktivite ana konu kimliklerine gerekçeyle bağlandı. Dört kayıt
+konu/içerik incelemesinde kaldı; cevap tahmini yapılmadı. Mevcut kırpım ve
+iki basılı cevap kanıtı korundu; yeni kırpım/model çağrısı0. INSERT_ONLY,
+tekrar0 INSERT, eski kimliklerin korunması, katalog ve canlı masaüstü/mobil
+PASS. Toplam10.779(5.627 TYT/5.152 AYT). Kanıt:
+`reviewed-native-physics-expansion/`,
+`scripts/mebi-pratik2-reviewed-native-physics-topics.json`,
+`verified-source-batch-069/bank-acceptance.json`.070 kabulü henüz ayrı kapıdır.
+
 
 ## Güncel kullanıcı talimatı ve açık kapsam
 
