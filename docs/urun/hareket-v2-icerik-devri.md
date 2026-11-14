@@ -79,3 +79,23 @@ Masaüstü ve mobil taramada 105’er kontrol: boş ekran, yatay taşma, konsol 
 İlk kimlik sorgusunun giriş öncesi 401’i ve favicon 404’ü dışında içerik isteği hatası yok.
 Derleme, plan ve 17 dosyalık depo kontrolü geçti. Yerel izleyici v2 ön yüzünü yayımladı;
 1010 üzerinden `Başlamadan önce` ekranı doğrulandı. Uzak push/dağıtım yapılmadı.
+
+
+## Bağımsız denetim yöntemi
+
+Kullanıcı denetim modelini GPT-6.1 Sol extra high olarak değiştirdi. Yazan oturumun dışında,
+önce anahtarı görmeden kendi cevaplarını üreten ayrı denetçi kullanılır. Model adı raporda açık yazılır;
+Opus denetimi yapıldığı veya öğretmen onayı alındığı söylenmez.
+
+`node scripts/konu/denetim_paketi.mjs [çıktı-dizini]` mevcut içerikten iki dosya üretir:
+`01-kor-sorular.json` ve `02-karsilastirma.json`. İlk dosyada doğru seçenek bayrakları,
+cevabı ima eden seçenek kimlikleri, gerekçeler ve hatalı adım işaretleri yoktur; seçenek sırası değişir.
+Gerçek soru metni/görseli yoksa denetçi `SOURCE_REQUIRED` der; çözüm uydurmaz.
+`manifest.json` hedef commit, soru sayısı ve kör dosyanın SHA-256 değerini kaydeder.
+Çıktı varsayılan olarak işletim sisteminin geçici dizinindedir; kaynak dosyaları veya DB değiştirilmez.
+
+Birinci aşama: yalnız kör dosya → denetçinin cevapları kalıcı dosyaya yazılır.
+İkinci aşama: kendi cevapları → karşılaştırma anahtarı → içerik/kod → 14 ölçütlü rubrik ve
+geçiş/yenileme/yanlış cevap/masaüstü-mobil denetimi. Rapor kaynak commitini ve açık kusurları belirtir;
+24/28 altı veya herhangi bir ölçütte 0, yayın kabulü sayılmaz. Kapsama girmeyen kaynak/insan ölçümü
+ayrı kalır. Redaksiyon denetimi: `node --test testler/konu-denetim-paketi.test.mjs`.

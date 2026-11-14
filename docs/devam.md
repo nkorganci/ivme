@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` bağımsız Opus denetimi (ayrı oturum), sonra kullanıcı/öğretmen kabulü: [kod pilotu](urun/hareket-v2-icerik-devri.md#kod-pilotu). Kullanıcı tercihiyle GPT-6.1 Sol kodu uygulamaya bağladı. Ustalık motoru 16.06 kapsamındadır. |
+| Sıradaki görev | `16.04` bağımsız Sol extra high denetimi (kullanıcı tercihi, ayrı oturum), sonra kullanıcı/öğretmen kabulü: [kod pilotu](urun/hareket-v2-icerik-devri.md#kod-pilotu). Kullanıcı tercihiyle GPT-6.1 Sol kodu uygulamaya bağladı. Ustalık motoru 16.06 kapsamındadır. |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 

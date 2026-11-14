@@ -1,7 +1,7 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
 Durum: plan onaylı; 16.01 ve 16.02 BITTI; 16.03 silme kısmı bitti (taşımalar ertelendi); 16.04 sürüyor: [fizik öğretim
-yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; bağımsız denetim ve kullanıcı kabulü bekliyor. Kalıcı kurallar
+yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; kullanıcı tercihiyle Sol extra high bağımsız denetimi sürüyor; kullanıcı kabulü bekliyor. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -307,7 +307,7 @@ kalıba dönüşmüş iş daha hızlı modelde, ağır tarama hiç bulut modelin
 | 16.04 / 3 | Araç kutusu mikro derslerinin içeriği (birim, vektör, grafikte eğim/alan) | Fable 5.2 | yüksek |
 | 16.04 / 3–4 | Şema v2, blok bileşenleri, deney bağı, testler, ekran | Kullanıcı tercihi: GPT-6.1 Sol | yüksek |
 | 16.04 / 4 | Hareket v2 içeriği: basamak metinleri, sorular, çeldiriciler, çözümler | **Fable 5.2** | yüksek |
-| 16.04 / 5 | Bağımsız denetim: fizik doğruluğu, cevaplar, rubrik puanı (önce kendi çözümünü üretir) | Opus 5.5, ayrı oturum | yüksek |
+| 16.04 / 5 | Bağımsız denetim: fizik doğruluğu, cevaplar, rubrik puanı (önce kendi çözümünü üretir) | Kullanıcı tercihi: GPT-6.1 Sol, ayrı oturum | extra high |
 | 16.05 | Newton yasaları: konu haritası ve paket (yöntemin ikinci konuda sınanması) | Fable 5.2 | yüksek |
 | 16.05 | Kalan fizik konuları: konu haritası | Opus 5.5 (modern fizik, indüksiyon gibi zor konular Fable 5.2) | yüksek |
 | 16.05 | Kalan fizik konuları: paket taslağı onaylı haritadan | Sonnet 5.5 | yüksek |
