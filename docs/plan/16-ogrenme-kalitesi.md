@@ -1,7 +1,7 @@
 # 16. Adım — Öğrenme kalitesi, kaynak düzeni ve model kullanımı
 
 Durum: plan onaylı; 16.01 ve 16.02 BITTI; 16.03 silme kısmı bitti (taşımalar ertelendi); 16.04 sürüyor: [fizik öğretim
-yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; ilk Sol extra high denetimi 19/28 ile kaldı; ilk düzeltme 24/28, F04 kısmi; her durağa iki nicel soru eklendi, son denetim ve kullanıcı kabulü bekliyor. Kalıcı kurallar
+yöntemi](#fizik-öğretim-yöntemi-1604-pilot-genişlemesi) için içerik taslağı tamamlandı; GPT-6.1 Sol kod pilotu uygulamaya bağlı; ilk Sol extra high denetimi 19/28 ile kaldı; ilk düzeltme 24/28, F04 kısmi; Opus 5.5 yeniden denetimi 25/28 teknik PASS; B1 (ayrılan ÖSYM sorularının erken görünmesi), A8, öğretmen onayı ve kullanıcı kabulü bekliyor. Kalıcı kurallar
 [AGENTS.md](../../AGENTS.md), devam noktası [devir notunda](../devam.md).
 
 ## Hedef
@@ -363,7 +363,7 @@ seçilen uygun sayfalar, görselleri, bağlı soruları; çok büyükse Ollama'n
   3. **İçerik taslağı tamam:** `arac-kutusu-fizik.js` AK-1…AK-7; son Claude commitindeki içerik korundu.
   4. Hareket v2: mevcut içerik basamaklara dağıtılır, eksik basamaklar (0 ön koşul, 3 temsiller, 6 düzeyli sınav seti) yazılır; deney `interactive/motion/` bağlı grafikleriyle; kavram ön/son testi; şema v2 ve testler.
   5. Kabul: kullanıcı sıfırdan başlayan öğrenci gibi baştan sona dener; test, ekran ve rubrik geçer.
-- Denetim: ilk sürüm `468087f`, Sol extra high ayrı oturum: **19/28 FAIL**. Sekiz bulgu kullanıcı talimatıyla düzeltildi; [matris ve kanıtlar](../islemler/hareket-v2-denetim.md). Sonuç yeniden denetimle kapanacak; 16.04 BITTI değildir.
+- Denetim: ilk sürüm `468087f`, Sol extra high ayrı oturum: **19/28 FAIL**. Sekiz bulgu kullanıcı talimatıyla düzeltildi; [matris ve kanıtlar](../islemler/hareket-v2-denetim.md). Opus 5.5 `d99dcc7` 23/28 FAIL (A1–A8); düzeltme turundan sonra `95586e0` yeniden denetimi **25/28 PASS** (yalnız teknik kabul; B1–B6 bulguları). Öğretmen onayı, A8 ve öğrenci ölçümü açık; 16.04 BITTI değildir.
 - Kod pilotu: kullanıcı tercihiyle GPT-6.1 Sol. Katalog v2’ye bağlı; ön/son test, yedi mikro ders, yeni bloklar, kavram kapısı (3 ardışık doğru), aşama geçişleri, iki hareketli/üç grafik deneyleri ve kullanıcıya özel v2 yerel ilerleme eklendi. Teknik kabul [devir sözleşmesinde](../urun/hareket-v2-icerik-devri.md#kod-pilotu). Tamamlanmış öğretmen/öğrenci kabulü değildir.
 - İçerik devri: `fizik-hareket.v2.js` + `fizik-hareket.v2.olcme.js`: 8 durak, 13 yanılgı döngüsü, 10+10 kavram sorusu, 12 tip tanıma/alıştırma, 10 karma soru, 13 tekrar kartı. Son devam GPT-6 Astra ile yapıldı (Fable çalıştırıldığı iddia edilmez). Uygulamaya bağlı değildir; öğretmen/Opus kabulü yoktur. Kod sınırları ve açık ölçüm koşulları [devir sözleşmesinde](../urun/hareket-v2-icerik-devri.md).
 - Kalan: dört ana yerin ekran tasarımı ve kişisel plan kuralları (model konu onayından sonra); ustalık motoru bağı 16.06.

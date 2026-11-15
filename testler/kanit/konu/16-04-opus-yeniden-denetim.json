@@ -1,0 +1,49 @@
+{
+  "model": "claude-opus-5-5",
+  "reviewType": "Bağımsız yeniden denetim, düzeltme turu sonrası (yalnız denetim, düzeltme yok)",
+  "sourceCommit": "95586e0",
+  "previousAudit": "16-04-opus-denetim.json (d99dcc7, 23/28 FAIL)",
+  "independence": "Yeni oturum; denetçi düzeltme turunu (içerik Fable 5.2, kod Sonnet 5.5) yazmadı. Önceki Opus raporunun puan tablosunu gördü; değişen kod ve içerik baştan okundu, bütün yeni seçenekler elle yeniden çözüldü.",
+  "verification": {
+    "unitTests": "node --test testler/konu-paketi.test.mjs testler/konu-paketi-v2.test.mjs: 20/20",
+    "uiRegression": "konu-paketi-v2-regresyon-ui.mjs masaüstü ve --mobil: 12/12 PASS",
+    "screenScan": "konu-paketi-v2-ui.mjs --mobil: 113 kontrol, boş 0, taşma 0",
+    "liveLevel4": "?bolum=osym canlı sayfa (masaüstü): 3 soru, 3 görsel yüklendi, A–E şıkları, uyarı yok, taşma yok. Kalıcı DB'ye deneme yazmamak için cevap gönderilmedi; gönderim yolu koddan okundu (usePractice, AttemptService).",
+    "earlyExposureProbe": "Yalnız ön test + araç kutusu bitmiş durumda Düzey 4 kilitliyken ?bolum=gercek sayfası /soru/TYT-0910, 0912, 0913 bağlantılarını gösteriyor.",
+    "manualRecompute": "21 gerekçe sorusu (8 tahmin + 13 yanılgı), 118 ek çeldirici, 12 ikiz madde, 24 kavram kapısı maddesi, 16 nicel madde ve 5 v2 çözümlü örnek elle yeniden çözüldü: anahtarlar doğru; tek içerik hatası B4."
+  },
+  "previousFindings": {
+    "A1": "Kapandı: her gerekçe sorusunda bir doğru, iki gerçekten yanlış akıl yürütme; 21/21 elle doğrulandı.",
+    "A2": "Büyük ölçüde kapandı: ön/son test, karma, set 4 seçenek; ilk hamle, kavram kapısı, nicel 3 seçenek; birinci yeni turda ikizler. Artık B3.",
+    "A3": "Kapandı: durak ve set kayıtlarında tur; şık sırası tur tohumuyla karışır. Artık B6.",
+    "A4": "Kısmi: nicel 16 ve 9 tipin asıl/ikiz maddeleri bağımsız hesapla; yanılgı sayısal maddeleri, v2 örnekleri ve türetimler testte yok (B2).",
+    "A5": "Kapandı, açıkla: Düzey 4 sayfada ölçülüyor, son test kilidi çalışıyor; ayrılan sorular dersin başka yerinde açık (B1).",
+    "A6": "Kapandı: yanlışta seri 0.",
+    "A7": "Kapandı.",
+    "A8": "Açık: yon-degistirme ve at-grafik tiplerinde banka sorusu yok; mebi-hareket ve mebi-ivme gorsel: null."
+  },
+  "findings": [
+    {"id": "B1", "severity": "P2", "where": "frontend/src/learn/konu/KonuSayfasi.jsx:145 (Gercek), KonuV2.jsx:67,118", "summary": "Düzey 4'e ayrılan TYT-0910/0912/0913, araç kutusundan sonra açılan 'Gerçek sorular' listesinde ve durak tip kartlarının 'Bu tipten gerçek sorular' düğmesiyle Düzey 4'ten önce açılıp çözülebiliyor (cevap/çözüm de görülebilir). osym kaydı denemenin zamanını değil Date.now() yazar; 16.06 dersten önce görülen denemeyi ayıramaz.", "fix": "v2'de Gercek ve tip kartı listesinden AYRILAN_OSYM kodlarını Düzey 4 bitene kadar çıkar; kayda denemenin createdAt değerini ve Düzey 4 açılışından önce mi olduğunu yaz."},
+    {"id": "B2", "severity": "P2", "where": "testler/konu-paketi-v2.test.mjs", "summary": "A4 kısmi: Y3/Y5/Y9/Y12/Y13 tanı ve gecikmeli sayısal cevapları, v2 çözümlü örnekleri (bisiklet 5 m/s, K–L 30 m/s, tren −1 m/s² ve 200 m, a–t +6/+8, 1:3:5) ve türetimler bağımsız hesap testinde yok. Elle hesapta hepsi doğru.", "fix": "Bu maddeler için testte bağımsız hesap; ölçüt 1 bununla 2 olur."},
+    {"id": "B3", "severity": "P3", "where": "frontend/src/learn/konu/KonuV2.jsx:111", "summary": "Düzeyli setin 2. ve sonraki yeni turlarında aynı 12 ikiz yeniden gelir; birinci yeni turda cevapları görülen ikizler ezberle geçilir. ek-secenek.js yorumu 'yeni tur ezberle geçilemez' der. Kayıtta tur var, 16.06 ayırabilir; kapı yine açılır.", "fix": "Tur ≥ 2 için sayı değişen üretim ya da öğretmen/ek madde; yorumu düzelt."},
+    {"id": "B4", "severity": "P3", "where": "frontend/src/learn/konu/paketler/fizik-hareket.ek-secenek.js:16", "summary": "Y7-tani 'Süratleri.' şıkkının geri bildirimi 'eğimler farklı olduğundan süratler de farklıdır' fiziksel olarak yanlış: eğimler +v ve −v ise süratler eşittir. Şu an ekranda görünmüyor (Y7 tanı yalnız geri bildirimsiz ön testte).", "fix": "'Süratler eşit olabilir ama kesin eşit değildir; kesin eşit olan konumdur.' benzeri metin."},
+    {"id": "B5", "severity": "P3", "where": "frontend/src/learn/konu/paketler/fizik-hareket.kavram.js:4", "summary": "Kavram kapısının 24 temel maddesinde yanlış şık doğru şıkla aynı genel açıklamayı alır; birkaçı o yanlış düşünceye cevap vermez (ör. 'Cismin kütlesi' → alan açıklaması, 'İvmenin birimiyle' → ivme biriminden söz yok). A2 ile eklenen üçüncü şıklar özeldir.", "fix": "Temel yanlış şıklara ayrı neden yaz."},
+    {"id": "B6", "severity": "P3", "where": "frontend/src/learn/konu/v2Kurallari.js:3, KonuV2.jsx:78-85", "summary": "Hash sıralaması yeni turda farklı sırayı garanti etmez (3 seçenekte yaklaşık 1/6 aynı sıra); belgedeki 'aynı sıra tekrar etmez' cümlesi fazla güçlü. Düzey 4 süresi kaydedilmez, bölüm yeniden açılınca sıfırlanır (haritadaki 'süreli' yalnız gösterge).", "fix": "Önceki turla aynı sıra çıkarsa döndür; belgeyi yumuşat; süreyi kayda yaz ya da süreyi bilgi diye belgele."}
+  ],
+  "rubric": {
+    "1 Doğruluk": 1, "2 Kaynak bağı": 1, "3 Soru tipi kanıtı": 1, "4 Sıfırdan anlaşılırlık": 2, "5 Tahmin önce": 2,
+    "6 Görselin işlevi": 2, "7 Örnek kalitesi": 2, "8 Püf koşulu": 2, "9 İlk hamle": 2, "10 Yanlışa özel geri bildirim": 2,
+    "11 Çok yönlü sınama": 2, "12 Aktarım": 2, "13 Geri çağırma": 2, "14 Dil ve yük": 2
+  },
+  "rubricNotes": {
+    "1": "B2 ve B4 nedeniyle 1 kalır.",
+    "2-3": "A8 açık: MEBİ sayfa görseli ve yeni iki tipin banka kanıtı yok.",
+    "10": "A1 kapandı; artıklar B4/B5 (P3).",
+    "12": "A2/A5 kapandı; B1 öğrenci ölçümünden önce kapanmalı."
+  },
+  "total": 25,
+  "threshold": "≥24 ve hiçbir ölçüt 0 değil",
+  "verdict": "PASS (25/28, sıfır yok) — yalnız teknik kabul",
+  "notAcceptance": "Öğretmen onayı, resmî kaynak görseli, yeni iki tipin banka kanıtı ve gecikmeli öğrenci ölçümü açıktır; 16.04 BITTI değildir.",
+  "nextSteps": ["B1 (16.06 Düzey 4 verisini okumadan önce)", "B2 testleri", "A8", "öğretmen onayı"]
+}

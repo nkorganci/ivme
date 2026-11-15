@@ -80,3 +80,23 @@ Geçmek için en az A1 ve A2 (ölçüt 10 ve 12) gerekir; A4 ölçüt 1'i tamaml
 - **A6:** kavram kapısında yanlış yapılan soru seriyi sıfırda bırakır, bir sonraki soruya geçilir.
 - Regresyon senaryoları güncellendi (yeni turda ikizler, tur kaydı, Düzey 4 kilidi). Masaüstü/mobil 12/12, ekran taraması 113 kontrol, taşma yok.
 - **Açık:** A8 (yeni iki tipin banka sorusu, MEBİ kaynak görseli); öğretmen onayı; Düzey 4 sonucunun ustalık motoruna bağı 16.06. Sonraki adım Opus 5.5 ile yeni oturumda yeniden denetim.
+
+
+## Opus 5.5 yeniden denetimi (`95586e0`)
+
+Sonuç **25/28, PASS** (sıfır yok; yalnız teknik kabul). Yeni oturum; denetçi düzeltme turunu yazmadı, önceki puan tablosunu gördü.
+Testler 20/20, regresyon masaüstü/mobil 12/12, ekran taraması 113 kontrol, taşma yok; Düzey 4 canlı sayfada üç görsel ve
+A–E şıklarıyla açıldı (kalıcı DB'ye cevap gönderilmedi). 21 gerekçe sorusu, 118 ek çeldirici, 12 ikiz, 24 kavram ve 16 nicel
+madde ile v2 örnekleri elle yeniden çözüldü. A1, A3, A6, A7 kapandı; A2 ve A5 artıklı kapandı; A4 kısmi; A8 açık.
+Değişen puanlar: 10 ve 12 → 2; 1 (B2), 2 ve 3 (A8) 1'de kaldı. Kanıt `testler/kanit/konu/16-04-opus-yeniden-denetim.json`.
+
+| Bulgu | Sorun | Önerilen düzeltme |
+|---|---|---|
+| B1 P2 | Düzey 4'e ayrılan 0910/0912/0913, araç kutusundan sonra açılan Gerçek sorular listesinde ve tip kartı düğmesiyle önceden çözülebilir; `osym` kaydı deneme zamanını değil `Date.now()` yazar | Düzey 4 bitene kadar bu kodları listelerden çıkar; kayda denemenin `createdAt` değeri ve "önceden görüldü" bayrağı |
+| B2 P2 | A4 kısmi: yanılgı sayısal maddeleri (Y3, Y5, Y9, Y12, Y13), v2 örnekleri ve türetimler bağımsız hesap testinde yok (elle doğru) | Teste ekle; ölçüt 1 → 2 |
+| B3 P3 | Setin 2. ve sonraki yeni turlarında aynı ikizler gelir; ezberle geçilir | Tur ≥ 2 için yeni madde; `ek-secenek.js` yorumunu düzelt |
+| B4 P3 | Y7 tanı "Süratleri." geri bildirimi yanlış: +v/−v eğimde süratler eşittir (ekranda şimdilik görünmez) | Metni düzelt |
+| B5 P3 | Kavram kapısının 24 temel yanlış şıkkı doğru şıkla aynı genel açıklamayı alır | Ayrı neden yaz |
+| B6 P3 | Yeni turda farklı şık sırası garanti değil; Düzey 4 süresi kaydedilmez | Sıra çakışırsa döndür; süreyi kaydet ya da bilgi diye belgele |
+
+Öğretmen onayı, A8 ve gecikmeli öğrenci ölçümü açıktır; 16.04 BITTI değildir. B1, 16.06 Düzey 4 verisini okumadan önce kapanmalı.

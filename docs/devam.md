@@ -4,8 +4,8 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` düzeltme turu bitti (A1–A7; [ayrıntı](islemler/hareket-v2-denetim.md)). Sıradaki: bağımsız yeniden denetim **Opus 5.5**, yeni oturumda. Açık: A8 (yeni iki tipin banka sorusu, MEBİ görseli), öğretmen onayı |
-| Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
+| Sıradaki görev | `16.04` Opus 5.5 yeniden denetimi **25/28 PASS** (yalnız teknik kabul; [ayrıntı](islemler/hareket-v2-denetim.md#opus-55-yeniden-denetimi-95586e0)). Sıradaki: B1 P2 (ayrılan ÖSYM sorularını Düzey 4 bitene kadar listelerden çıkar, deneme zamanını kaydet) ve B2 testleri (Sonnet 5.5); B3–B6 P3. Açık: A8, öğretmen onayı, öğrenci ölçümü |
+| Son kapanan | `16.04` bağımsız yeniden denetim (`testler/kanit/konu/16-04-opus-yeniden-denetim.json`); `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
 ## Dondurulan iş: Pratik 2
@@ -15,7 +15,7 @@
 ## Açık kararlar (kullanıcı)
 
 - **16.03 silmeleri:** her kategori (video/ses, zip, tekrar PDF, önbellek, eski döküm; konu anlatımında sayı sınırı yok, sistemde karşılığı olmayan dosya silinmez) için kuru liste sunulur; kullanıcı onaylamadan hiçbir dosya silinmez. Önce güncel veritabanı dökümü alınır. Adresi olmayan video listelenir, karar kullanıcıya aittir.
-- **16.04:** Kullanıcı içerikten devam edilmesini istedi; içerik taslağı tamamlandı. Teknik kabul, öğretmen onayı ve öğrenci ölçümü bekliyor.
+- **16.04:** Kullanıcı içerikten devam edilmesini istedi; içerik taslağı tamamlandı. Teknik kabul geçti (25/28); öğretmen onayı ve öğrenci ölçümü bekliyor.
 - **Yeni soru edinimi:** 100 bin yeni soru istenirse dışlanan adaylar açılmadan ayrı kaynak edinimi projesi tanımlanır ([kaynak kaydı](tarifler/kaynak-kaydi.md#yks-kaynak-birleştirme-kapalı)).
 
 ## Etkin ve bekleyen işler
