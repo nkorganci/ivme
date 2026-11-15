@@ -53,6 +53,7 @@ V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
 
 - Menüde ön koşullar/araç kutusu en üsttedir; banner aynı sütun genişliğinde yalnız konu adı ve öğretmen kontrolü etiketini gösterir.
 - Ön test dahil bütün bölümler önceki bölümü tamamlama koşulu olmadan açılır; bölüm içi etkinlik ölçütleri korunur.
+- “İlerlemeyi sıfırla” onay penceresinden, yalnız geçerli kullanıcıya ait Hareket v2:r3 tarayıcı kaydını kaldırır ve ön teste döner. Soru/etkinlik bileşenleri yeniden kurulur; diğer kullanıcı/konu ve eski pilot kayıtları ile DB’deki gerçek soru geçmişi korunur. Depolama hatasında ilerleme korunup yeniden deneme sunulur.
 - Son test ön test yapılmadan tamamlanabilir; bu durumda normalize kazanç hesaplanmaz.
 - Ön testte tek soru gösterilir; soru numarası/toplam ve yanıtlanan sayı görünür. Geri/İleri ile seçimler korunur; bütün sorular yanıtlanınca Bitir açılır. Soru konumu yenilemede korunur.
 - Testlerin cevapları kullanıcı başına v2 yerel anahtarda saklanır; v1 kayıtları taşınmaz. Son test ayrı formdur.

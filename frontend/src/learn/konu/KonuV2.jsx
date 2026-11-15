@@ -8,6 +8,7 @@ import { dogrulaV2, kazanc, paketHazirla, testSonucu, sinavGecisi, AYRILAN_OSYM 
 import { usePractice } from '../../usePractice.js';
 import QuestionImage from '../../components/QuestionImage.jsx';
 import ChoiceButtons from '../../components/ChoiceButtons.jsx';
+import Modal from '../../components/Modal.jsx';
 import { Gercek, Tekrar } from './KonuSayfasi.jsx';
 import { KarmaOge } from './bloklar.jsx';
 import araclar from './paketler/arac-kutusu-fizik.js';
@@ -106,8 +107,20 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
   const [ak, setAk] = useState(0);
   const tur = durum._setTur || 0;
   const [uyari, setUyari] = useState('');
+  const [sifirlaAcik, setSifirlaAcik] = useState(false);
+  const [sifirlama, setSifirlama] = useState(0);
   const bolum = params.get('bolum') || 'on';
   const yaz = (id, value) => setDurum(s => { const next = { ...s, [id]: typeof value === 'function' ? value(s[id]) : value }; try { localStorage.setItem(key, JSON.stringify(next)); } catch { setUyari('İlerleme bu tarayıcıda kaydedilemiyor.'); } return next; });
+  const sifirla = () => {
+    try { localStorage.removeItem(key); }
+    catch { setUyari('İlerleme sıfırlanamadı. Tarayıcı depolama iznini kontrol edip yeniden dene.'); return; }
+    setDurum({});
+    setAk(0);
+    setUyari('');
+    setSifirlaAcik(false);
+    setSifirlama(v => v + 1);
+    setParams({ bolum: 'on' }, { replace: true });
+  };
   const seed = `${user?.id || 'anon'}:${paket.id}:v2:r3`;
   useEffect(() => { document.querySelector('.kp-v2-ana')?.scrollIntoView({ block: 'start' }); }, [bolum]);
   const tamam = d => d.bloklar.every((_, i) => durum[d.id]?.[i] !== undefined);
@@ -122,7 +135,10 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
   const git = id => setParams({ bolum: id });
   const d = paket.duraklar.find(d => d.id === bolum);
   const active = nav.some(([id]) => id === bolum) ? bolum : 'on';
-  return <SoruDeposu anindaCevap={paket.id === 'fizik-hareket'} degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link>{uyari && <p role="alert">{uyari}</p>}
+  return <SoruDeposu key={sifirlama} anindaCevap={paket.id === 'fizik-hareket'} degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><div className="kp-gezin"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link>{paket.id === 'fizik-hareket' && <button type="button" className="btn btn-secondary" onClick={() => setSifirlaAcik(true)}>İlerlemeyi sıfırla</button>}</div>{uyari && !sifirlaAcik && <p role="alert">{uyari}</p>}{sifirlama > 0 && <p role="status">Hareket ilerlemen sıfırlandı. Yeniden başlayabilirsin.</p>}
+    {sifirlaAcik && <Modal title="Hareket ilerlemesini sıfırla" onClose={() => setSifirlaAcik(false)} footer={<><button type="button" className="btn btn-secondary" onClick={() => setSifirlaAcik(false)}>Vazgeç</button><button type="button" className="btn btn-primary" onClick={sifirla}>Sıfırla ve yeniden başla</button></>}>
+      <p>Bu tarayıcıda hesabına ait Hareket cevapları, test sonuçları, etkinlik ve araç kutusu ilerlemesi sıfırlanacak.</p><p>Diğer konuların ilerlemesi ve bankadaki gerçek soru deneme geçmişin korunur.</p>{uyari && <p role="alert">{uyari}</p>}
+    </Modal>}
     <div className="kp-duzen"><aside className="kp-v2-yan"><header className="kp-ust kp-v2-banner"><h1>{paket.baslik}</h1><p className="kp-onay">Öğretmen kontrolü bekliyor</p></header><nav className="kp-yol" aria-label="Konu bölümleri">{nav.map(([id, ad]) => <button key={id} type="button" aria-current={active === id ? 'step' : undefined} onClick={() => git(id)}>{ad}{paket.duraklar.some(d => d.id === id && tamam(d)) ? ' ✓' : ''}</button>)}</nav></aside>
       <main className="card kp-kart kp-v2-ana" key={active}>
         {['on', 'son'].includes(active) ? <Test form={paket.kavramTesti[active]} id={active} durum={durum} yaz={yaz} tohum={seed} />
