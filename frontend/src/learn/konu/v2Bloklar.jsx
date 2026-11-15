@@ -87,8 +87,8 @@ export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
   const [done, setDone] = useSoruDurumu(`${tohum}:done`, {});
   const [origin, setOrigin] = useState(0);
   const [concept, setConcept] = useSoruDurumu(`${tohum}:concept`, { index: 0, seri: 0 });
-  if (b.tur === 'kavram-kontrol') return <section><h3>Kavram kontrolü</h3><p>Üst üste üç doğru: {concept.seri}/3</p>{concept.seri < 3 && <V2Soru key={concept.index} oge={b.sorular[concept.index % b.sorular.length]} tohum={`${tohum}:${concept.index}`} onAttempt={ok => { if (!ok) setConcept(c => ({ ...c, seri: 0 })); }} onDone={() => {
-    const seri = concept.seri + 1;
+  if (b.tur === 'kavram-kontrol') return <section><h3>Kavram kontrolü</h3><p>Üst üste üç doğru: {concept.seri}/3</p>{concept.seri < 3 && <V2Soru key={concept.index} oge={b.sorular[concept.index % b.sorular.length]} tohum={`${tohum}:${concept.index}`} onDone={ilk => {
+    const seri = ilk ? concept.seri + 1 : 0;
     setConcept({ index: concept.index + 1, seri }); if (seri >= 3) onDone(true);
   }} />}</section>;
   const y = paket.yanilgilar.find(y => y.kod === b.kod);

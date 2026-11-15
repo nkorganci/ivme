@@ -69,3 +69,48 @@ test('her durakta nicel kazanıma ayrılmış iki farklı madde zorunlu',()=>{
  assert.ok(d.bloklar.indexOf(n)<d.bloklar.findIndex(b=>b.tur==='tipler'));}
  const noGate={...p,duraklar:p.duraklar.map(d=>({...d,bloklar:d.bloklar.filter(b=>b.tur!=='nicel-kontrol')}))};assert.equal(dogrulaV2(noGate).filter(e=>e.startsWith('nicel:')).length,8);
 });
+
+// ── Denetim A4: v2 sayısal içeriği paketten bağımsız hesapla doğrulanır ──
+const sayilar=(metin)=>[...metin.replace(/−/g,'-').replace(/,/g,'.').matchAll(/-?\d+(?:\.\d+)?(?:\/\d+)?/g)].map(m=>{const[a,b]=m[0].split('/');return b?Number(a)/Number(b):Number(a)});
+const dogruSayilar=(q)=>sayilar(q.secenekler.find(s=>s.dogru).metin);
+const yakin=(dizi,beklenen)=>beklenen.every((e,i)=>Math.abs(dizi[i]-e)<1e-9);
+const bul=(liste,kimlik)=>{const q=liste.find(x=>x.id===kimlik);assert.ok(q,kimlik);return q};
+test('nicel kapı: on altı madde bağımsız hesapla',()=>{
+ const nicel=Object.values(raw.nicelKontrolleri).flat();
+ const beklenen={'NK-ref1':[9],'NK-ref2':[-4-2],'NK-yol1':[5+2,-5+2],'NK-yol2':[-2-7],'NK-hiz1':[2/6,10/6],'NK-hiz2':[24/(12/36+12/12)],'NK-xt1':[(10+6)/4],'NK-xt2':[-8/8,4],'NK-vt1':[5+3*8/2],'NK-vt2':[12+12,12-12],'NK-iki1':[140/(8+6)],'NK-iki2':[50/(12-7)],'NK-ivme1':[(3-9)/2],'NK-ivme2':[-1+(-2)*3],'NK-uc1':[-5+3*2],'NK-uc2':[7-1*3+2*2]};
+ assert.equal(nicel.length,16);
+ for(const[k,e]of Object.entries(beklenen)){const s=dogruSayilar(bul(nicel,k));assert.ok(yakin(s,e),`${k}: ${s} != ${e}`);}
+});
+test('düzeyli set: asıl ve ikiz maddeler bağımsız hesapla; ikiz asılla aynı değil',()=>{
+ const asil=Object.fromEntries(p.tipCalismalari.map(t=>[t.tip,t.bagimsiz])),ikiz=Object.fromEntries(p.tipCalismalari.map(t=>[t.tip,t.ikiz]));
+ const sinir=(f)=>f.dogru;void sinir;
+ const hesap={ // [tip]: [asıl beklenen, ikiz beklenen]
+  'yol-yer':[[6+8,Math.hypot(6,8)],[9+12,Math.hypot(9,12)]],
+  'ort-hiz-surat':[[(40-10)/10,(40+10)/10],[(60-20)/20,(60+20)/20]],
+  'xt-grafik':[[(-5-10)/5],[(8+4)/4]],
+  'vt-grafik':[[4*3+2*2,4*3-2*2],[3*4+3*1,3*4-3*1]],
+  'grafik-donusum':[[(10-4)/3],[(0-12)/4]],
+  'sabit-hiz':[[180/(36/3.6+18/3.6)],[200/(72/3.6-36/3.6)]],
+  'ivme':[[(-8+2)/2],[(-4-2)/3]],
+  'at-grafik':[[-2+2*3-1*2],[5-3*2+1*3]],
+  'referans':[[3-1],[3+1]],
+ };
+ for(const[tip,[a,i]]of Object.entries(hesap)){
+  const sa=dogruSayilar(asil[tip]),si=dogruSayilar(ikiz[tip]);
+  // sayılar sırasız olabilir (ör. +14 m ve 10 m); beklenen her değer doğru şıkta geçmeli
+  for(const e of a)assert.ok(sa.some(x=>Math.abs(x-e)<1e-9),`asıl ${tip}: ${sa} içinde ${e} yok`);
+  for(const e of i)assert.ok(si.some(x=>Math.abs(x-e)<1e-9),`ikiz ${tip}: ${si} içinde ${e} yok`);
+  assert.notEqual(asil[tip].soru,ikiz[tip].soru,`${tip}: ikiz farklı soru olmalı`);
+ }
+ // yön değiştirme: hız–zaman düğümlerinde işaret değişimi sayısı
+ const yon=(n)=>{let c=0,ö=Math.sign(n[0][1]);for(let i=1;i<n.length;i++){const a=n[i-1],b=n[i];if(a[1]*b[1]<0)c+=1;else if(a[1]===0&&Math.sign(b[1])*ö<0)c+=1;if(Math.sign(b[1]))ö=Math.sign(b[1]);}return c};
+ assert.equal(yon([[0,2],[2,0],[4,2],[6,-2]]),1);assert.equal(yon([[0,-3],[3,3],[5,0],[7,3]]),1);
+ assert.ok(/^Bir\./.test(asil['yon-degistirme'].secenekler.find(s=>s.dogru).metin)&&/^Bir\./.test(ikiz['yon-degistirme'].secenekler.find(s=>s.dogru).metin));
+ for(const t of p.tipCalismalari){assert.equal(t.ikiz.tip,t.tip);assert.equal(t.ikiz.secenekler.length,4);assert.equal(t.bagimsiz.secenekler.length,4);assert.equal(t.ikiz.secenekler.filter(s=>s.dogru).length,1);}
+});
+test('ölçme maddeleri üç–dört seçeneklidir, gerekçe soruları tek doğru içerir (A1, A2)',()=>{
+ for(const q of[...p.kavramTesti.on,...p.kavramTesti.son,...p.karma,...p.sinavSeti.duzeyler.flatMap(d=>d.sorular)])assert.ok(q.secenekler.length>=4,q.id);
+ for(const y of p.yanilgilar){assert.equal(y.ortayaCikar.gerekce.secenekler.filter(s=>s.dogru).length,1,y.kod);assert.ok(y.ortayaCikar.gerekce.secenekler.length>=3);}
+ for(const d of p.duraklar)for(const b of d.bloklar)if(b.tur==='neden'&&b.tahmin){assert.equal(b.tahmin.gerekce.secenekler.filter(s=>s.dogru).length,1,d.id);assert.ok(b.tahmin.gerekce.secenekler.length>=3);}
+ for(const d of p.duraklar){const k=d.bloklar.find(b=>b.tur==='kavram-kontrol');assert.ok(k.sorular.every(s=>s.secenekler.length>=3),d.id);}
+});

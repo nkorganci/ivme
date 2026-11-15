@@ -13,7 +13,7 @@ async function click(label){assert.equal(await b.evalJs(`(()=>{const x=[...docum
 async function choose(q,option){assert.equal(await b.evalJs(`(()=>{const e=[...document.querySelectorAll('.kp-v2-ana .kp-soru')].find(e=>e.querySelector('.kp-kok')?.textContent.trim()===${JSON.stringify(q)});const x=e&&[...e.querySelectorAll('button.kp-secenek')].find(x=>x.querySelector('span:last-child')?.textContent.trim()===${JSON.stringify(option)});if(!x||x.disabled)return false;x.click();return true})()`),true,q+' => '+option);await pause(80);}
 const stored=()=>b.evalJs(`JSON.parse(localStorage.getItem(${JSON.stringify(key)}))`);
 const base=()=>({on:{sonuc:{puan:50}},ak:Object.fromEntries(ak.map(a=>[a.id,true]))});
-const full=()=>({...base(),...Object.fromEntries(p.duraklar.map(d=>[d.id,Object.fromEntries(d.bloklar.map((_,i)=>[i,{ilk:true}]))])),tip:Object.fromEntries(p.tipCalismalari.map(t=>[t.tani.id,true])),karma:Object.fromEntries(p.karma.map(q=>[q.id,true])),gecikmeli:{Y2:true,Y11:true,Y13:true}});
+const full=()=>({...base(),...Object.fromEntries(p.duraklar.map(d=>[d.id,Object.fromEntries(d.bloklar.map((_,i)=>[i,{ilk:true}]))])),tip:Object.fromEntries(p.tipCalismalari.map(t=>[t.tani.id,true])),karma:Object.fromEntries(p.karma.map(q=>[q.id,true])),gecikmeli:{Y2:true,Y11:true,Y13:true},osym:Object.fromEntries(['TYT-0910','TYT-0912','TYT-0913'].map(k=>[k,{ilk:true}]))});
 const postDisabled=()=>b.evalJs(`[...document.querySelectorAll('.kp-yol button')].find(x=>x.textContent==='Son test').disabled`);
 async function yargi(oge){await b.evalJs(`(()=>{const li=[...document.querySelectorAll('.kp-yargilar>li')];${JSON.stringify(oge.yargilar.map(y=>y.dogru))}.forEach((v,i)=>[...li[i].querySelectorAll('button')].find(b=>b.textContent===(v?'Doğru':'Yanlış')).click())})()`);await click('Kontrol et');}
 try{
@@ -33,8 +33,9 @@ try{
  for(let i=1;i<sets.length;i++){if(i===1)await choose(sets[i].soru,sets[i].secenekler.find(s=>!s.dogru).metin);await choose(sets[i].soru,sets[i].secenekler.find(s=>s.dogru).metin);}
  assert.equal(await postDisabled(),true);checks.push('10/12 doğru, iki eksik tip → son test kilitli');
  await click('Gerekçeleri inceleyip yeni tur başlat');assert.equal((await stored())._setTur,1);assert.equal((await stored())._setGecmisi[0].cevaplar[q.id],false);await open('set');
- for(const q of sets)await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);
- assert.equal(await postDisabled(),false);assert.equal((await stored())._setTur,1);checks.push('Açık yeni tur yenilemede korunur; her tip doğruysa geçer');
+ const ikizler=[1,2,3].flatMap(d=>p.tipCalismalari.filter(t=>t.bagimsiz.duzey===d).map(t=>t.ikiz));for(const q of ikizler)await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);
+ assert.equal(await postDisabled(),false);assert.equal((await stored())._setTur,1);assert.ok((await stored())._kayit.some(k=>k.kapi==='set'&&k.tur===1&&k.ilk===true));assert.ok((await stored())._kayit.some(k=>k.kapi==='set'&&k.tur===0&&k.ilk===false));checks.push('Açık yeni tur yenilemede korunur; her tip doğruysa geçer');
+ await fixture({...full(),osym:{}},'set');assert.equal(await postDisabled(),true);checks.push('Düzey 4 ÖSYM tamamlanmadan son test kilitli; yeni turda ikiz maddeler ve tur kaydı');
  await fixture({...full(),karma:{}},'karma');assert.equal(await b.evalJs(`document.querySelectorAll('.kp-karma-oge .kp-soru').length`),0);
  const tip=p.tipler.find(t=>t.id===p.karma[0].tip);await click(tip.ad);assert.equal(await b.evalJs(`document.querySelectorAll('.kp-karma-oge .kp-soru').length`),1);checks.push('Karma: tip seçmeden çözüm açılmaz');
  const mapD=p.duraklar.find(d=>d.id==='xt'), mapI=mapD.bloklar.findIndex(q=>q.verilen?.tur==='harita');

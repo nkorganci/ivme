@@ -70,3 +70,13 @@ Geçmek için en az A1 ve A2 (ölçüt 10 ve 12) gerekir; A4 ölçüt 1'i tamaml
 - **A7 kapandı:** yazım hatası düzeltildi.
 - **Kalan kod işi (Sonnet 5.5):** yeni turda yanlış yapılan maddenin yerine `ikiz`'i göstermek (A2'nin kod yarısı), A3 tur kaydı ve şık sırası, A4 bağımsız hesap testi (yeni ikizler ve ek seçenekler dahil), A5 düzey 4, A6 seri sayacı.
 - Doğrulama: `node --test` 17/17; regresyon masaüstü/mobil 11/11; ekran taraması 113 kontrol, taşma yok. Regresyon testindeki gerekçe adımı yeni alanı okuyacak biçimde güncellendi (eski test hatalı davranışı bekliyordu).
+
+### Düzeltme turu: kod (Sonnet 5.5)
+
+- **A2 kod:** düzeyli setin yeni turu (`_setTur` > 0) asıl maddeler yerine ikizleri gösterir (`tipCalismalari[].ikiz`); geçiş ölçütü aynı.
+- **A3:** durak ve set kayıtlarına `tur` yazılır (`{ilk, tur, zaman}`; set için `_kayit` listesi); şık sırası tura göre karışır, yeni turda aynı sıra tekrar etmez.
+- **A4:** `testler/konu-paketi-v2.test.mjs` 3 test ekledi: 16 nicel madde, 9 tipin asıl ve ikiz maddeleri ile yön değiştirme sayımı paketten bağımsız hesapla; seçenek sayısı ve tek doğru denetimi. 20/20.
+- **A5:** yeni bölüm *Düzey 4 · ÖSYM*: ayrılan TYT-0910, 0912, 0913 gerçek soru görseli ve A–E şıklarıyla sorulur; cevap gerçek soru API'siyle (`usePractice`) sunucuda değerlendirilir, öğrenciye cevap anahtarı gönderilmez; ilk deneme `durum.osym` içine yazılır. Üçü tamamlanmadan son test açılmaz. Süre göstergesi yalnız bilgidir. Önceden bu soruyu çözmüş öğrencide sonuç görülmemiş aktarım sayılmaz.
+- **A6:** kavram kapısında yanlış yapılan soru seriyi sıfırda bırakır, bir sonraki soruya geçilir.
+- Regresyon senaryoları güncellendi (yeni turda ikizler, tur kaydı, Düzey 4 kilidi). Masaüstü/mobil 12/12, ekran taraması 113 kontrol, taşma yok.
+- **Açık:** A8 (yeni iki tipin banka sorusu, MEBİ kaynak görseli); öğretmen onayı; Düzey 4 sonucunun ustalık motoruna bağı 16.06. Sonraki adım Opus 5.5 ile yeni oturumda yeniden denetim.
