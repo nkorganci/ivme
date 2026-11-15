@@ -1,0 +1,31 @@
+{
+  "model": "claude-opus-5-5",
+  "reviewType": "Bağımsız yeniden denetim (yalnız denetim, düzeltme yok)",
+  "sourceCommit": "d99dcc7",
+  "independence": "Kısmi: aynı konuşmada Fable 5.2 haritayı, araç kutusunu ve v2 durak içeriğinin ilk taslağını yazdı; Sol'un kod ve ölçme düzeltmelerini yazan değil. Denetçi önceki Sol raporlarının yalnız özet tablosunu gördü, puanlarını okumadı.",
+  "verification": {
+    "unitTests": "node --test testler/konu-paketi.test.mjs testler/konu-paketi-v2.test.mjs: 17/17",
+    "uiRegression": "konu-paketi-v2-regresyon-ui.mjs masaüstü ve --mobil: 11/11 PASS",
+    "manualRecompute": "16 nicel madde, 12 tip seti maddesi, 13 gecikmeli yanılgı maddesi, 13 tanı maddesi, araç kutusu çıkışları elle yeniden hesaplandı: hepsi anahtarla uyumlu"
+  },
+  "findings": [
+    {"id": "A1", "severity": "P1", "where": "frontend/src/learn/konu/v2Bloklar.jsx:82", "summary": "Tahminden sonraki 'doğru açıklama hangisi?' sorusunun seçenekleri tahmin şıklarının neden metinleri; yanlış şıkların neden metinleri de doğru ifadeler. 8 tahmin + 7 yanılgı bloğunda birden çok doğru seçenek var, biri anahtarlı; doğru ifade seçen öğrenci 'Yeniden düşün' görür ve kayıt ilk-yanlış yazar.", "example": "Durak 1: 'Sabit hızla gitmek de harekettir; hareket için ivme gerekmez.' doğru bir cümle ama yanlış diye puanlanıyor."},
+    {"id": "A2", "severity": "P1", "where": "fizik-hareket.v2.olcme.js, fizik-hareket.kavram.js", "summary": "Ölçme maddelerinin çoğu iki seçenekli: ön test 10, son test 10, karma 10, düzeyli set 12, kavram kapısı 24, yanılgı tanı 13. Tahmin tabanı %50; normalize kazanç güvenilmez. Düzeyli sette yeni tur aynı maddelerle açıldığı için ilk turda yanlış yapılan madde ikinci turda elemeyle bilinir: basamak 6 geçişi bilgi ölçmez."},
+    {"id": "A3", "severity": "P2", "where": "frontend/src/learn/konu/KonuV2.jsx:42-44", "summary": "Durak sınaması ve nicel kapıda yeni tur aynı soruları aynı şık sırasıyla gösterir; yeni turdaki doğru {ilk:true} diye kaydedilir, tur numarası kayda girmez. 16.06 ustalık motoru bunu bağımsız ilk doğru okur."},
+    {"id": "A4", "severity": "P2", "where": "testler/konu-paketi-v2.test.mjs", "summary": "v2'de eklenen sayısal içerik (nicel 16, tip seti 12, yanılgı ölçme maddeleri, v2 örnek ve türetimleri) bağımsız hesap testinde yok; yalnız model kör çözümüyle doğrulanmış. Rubrik 1 'testte bağımsız hesap' ister."},
+    {"id": "A5", "severity": "P2", "where": "fizik-hareket.v2.olcme.js sinavSeti", "summary": "Onaylı harita §8 dört düzey istiyordu (4: ÖSYM, süreli). Uygulamada üç düzey var; ayrılan ÖSYM soruları (0910, 0912, 0913) yalnız 'Gerçek sorular' listesinde dış bağlantı; sonuç sayfada ölçülmez ve geçişe girmez."},
+    {"id": "A6", "severity": "P3", "where": "frontend/src/learn/konu/v2Bloklar.jsx:90-92", "summary": "Kavram kapısı 'üst üste üç doğru' diyor; yanlıştan sonra düzeltilen soru seriyi 0 değil 1 yapar. Üç madde döngüyle tekrar gelir."},
+    {"id": "A7", "severity": "P3", "where": "frontend/src/learn/konu/paketler/fizik-hareket.v2.js:178", "summary": "Yazım hatası ekranda: 'iki sürattten de küçük' (doğrusu 'iki süratten de küçük'); metin .replace ile bozulmuş. Fable taslağından gelme."},
+    {"id": "A8", "severity": "P3", "where": "fizik-hareket.v2.js YENI_TIPLER, kaynaklar", "summary": "Yeni iki tipin (yon-degistirme, at-grafik) bankada sorusu yok (sorular: []); MEBİ kaynaklarının sayfa görseli yok (gorsel: null)."}
+  ],
+  "rubric": {
+    "1 Doğruluk": 1, "2 Kaynak bağı": 1, "3 Soru tipi kanıtı": 1, "4 Sıfırdan anlaşılırlık": 2, "5 Tahmin önce": 2,
+    "6 Görselin işlevi": 2, "7 Örnek kalitesi": 2, "8 Püf koşulu": 2, "9 İlk hamle": 2, "10 Yanlışa özel geri bildirim": 1,
+    "11 Çok yönlü sınama": 2, "12 Aktarım": 1, "13 Geri çağırma": 2, "14 Dil ve yük": 2
+  },
+  "total": 23,
+  "threshold": "≥24 ve hiçbir ölçüt 0 değil",
+  "verdict": "FAIL (23/28, sıfır yok)",
+  "toPass": "A1 ve A2 düzelirse 10 ve 12 ölçütleri 2'ye çıkar (25+); A4 testi eklenirse 1. ölçüt 2 olur.",
+  "openHumanAcceptance": ["öğretmen onayı", "yeni iki tipin banka kanıtı", "gecikmeli öğrenci ölçümü"]
+}

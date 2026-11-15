@@ -42,3 +42,23 @@ Yeni16 madde anahtar gösterilmeden bağımsız çözdürülür. Kalıcı kabul 
 önceki `:v2` ve `:v2:r2` verileri silinmez. Son bağımsız denetim bu ek kapıları ayrıca inceler.
 
 Yeni16 nicel sorunun bağımsız kör kontrolü16/16 uyumlu; cevap ve karşılaştırma kanıtları aynı klasörde `16-04-sol-nicel-*.json`.
+
+
+## Opus 5.5 yeniden denetimi (`d99dcc7`)
+
+Sonuç **23/28, FAIL** (sıfır yok; eşik 24). Bağımsızlık kısmi: aynı konuşmada Fable 5.2 haritayı ve v2 durak
+taslağını yazmıştı; Sol düzeltmelerini yazan değil. Testler 17/17, masaüstü/mobil regresyon 11/11; yeni nicel,
+tip seti, yanılgı ve araç kutusu maddeleri elle yeniden hesaplandı, hepsi doğru. Kanıt `testler/kanit/konu/16-04-opus-denetim.json`.
+
+| Bulgu | Sorun | Önerilen düzeltme |
+|---|---|---|
+| A1 P1 | Tahmin sonrası "doğru açıklama" sorusunda yanlış şıkların gerekçeleri de doğru cümleler; 15 blokta birden çok doğru seçenek | Gerekçe sorusu için ayrı, gerçekten yanlış akıl yürütmeler yaz (içerik) ya da soruyu kaldır, açıklamayı göster |
+| A2 P1 | Ölçme maddelerinin çoğu iki seçenekli; düzeyli sette yeni tur aynı maddelerle, ikinci turda cevap elemeyle bilinir | Ön/son test, set ve karma için 3–4 seçenek; yeni turda eşdeğer yeni madde ya da sayı değişen ikiz |
+| A3 P2 | Yeni turdaki doğru `ilk:true` kaydedilir, tur numarası yok | Kayda `tur` yaz; yeni turda şık sırasını tura göre karıştır |
+| A4 P2 | v2 sayısal içeriği bağımsız hesap testinde yok | `konu-paketi-v2.test.mjs`'e bağımsız hesap |
+| A5 P2 | Haritadaki düzey 4 (ÖSYM, süreli) yok; ayrılan ÖSYM soruları yalnız dış bağlantı | Düzey 4'ü sayfada ölçülen ayrı adım yap |
+| A6 P3 | Kavram kapısında düzeltilen yanlış seriyi 1 başlatır | Yanlışta seri 0 kalmalı |
+| A7 P3 | "sürattten" yazım hatası (`fizik-hareket.v2.js:178`) | Metni düzelt |
+| A8 P3 | Yeni iki tipin banka sorusu ve MEBİ kaynak görselleri yok | Banka taraması, kaynak görseli |
+
+Geçmek için en az A1 ve A2 (ölçüt 10 ve 12) gerekir; A4 ölçüt 1'i tamamlar.

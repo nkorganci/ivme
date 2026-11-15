@@ -4,7 +4,7 @@
 
 | Alan | Değer |
 |---|---|
-| Sıradaki görev | `16.04` Sol extra high yeniden denetimi: [sekiz bulgu ve düzeltmeleri](islemler/hareket-v2-denetim.md). İlk sürüm 19/28 kaldı; kullanıcı talimatıyla F01–F08 düzeltildi. Sonra kullanıcı/öğretmen kabulü; ustalık motoru 16.06. |
+| Sıradaki görev | `16.04` Opus 5.5 yeniden denetimi **23/28 FAIL** ([bulgular A1–A8](islemler/hareket-v2-denetim.md#opus-55-yeniden-denetimi-d99dcc7)). Sıradaki: düzeltme turu. A1/A2 içerik (yeni gerekçe seçenekleri, 3–4 seçenekli ölçme maddeleri, eşdeğer yeni tur maddeleri) **Fable 5.2**; A3–A7 kod ve test **Sonnet 5.5**; sonra yeniden denetim **Opus 5.5** (yeni oturum) |
 | Son kapanan | `16.03` silme kısmı (video/ses, tekrar dosya, kapanmış YKS/Pratik 2 betikleri; taşımalar ertelendi); model konu arayüzü (`/konuyu-ogrenelim/ogren/fizik-hareket`) |
 | Sıradaki komut | `node --test testler/konu-paketi.test.mjs`; sayfa `python scripts/ivme.py sayfa "/konuyu-ogrenelim/ogren/fizik-hareket" --bekle Hareket --ekran` |
 
