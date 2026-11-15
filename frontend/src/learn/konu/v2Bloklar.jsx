@@ -79,7 +79,7 @@ function TahminDeney({ soru, tohum, deney, aciklama, onDone }) {
     {phase === 0 && <><V2Soru oge={soru} tohum={`${tohum}:tahmin`} gizli deger={prediction} onChange={setPrediction} /><button className="btn btn-primary" disabled={prediction === null} onClick={() => setPhase(1)}>Tahminimi kaydet ve deneyi aç</button></>}
     {phase >= 1 && <><p>Tahminin kaydedildi. Şimdi dene ve gözleminle karşılaştır.</p>{deney}</>}
     {phase === 1 && <button className="btn btn-primary" onClick={() => setPhase(2)}>Gözlemledim, açıklamayı aç</button>}
-    {phase === 2 && <><Markdown text={aciklama || ''} /><V2Soru oge={{ soru: 'Gözlemine göre doğru açıklama hangisi?', secenekler: soru.secenekler.map(s => ({ metin: s.neden, dogru: Boolean(s.dogru), neden: s.neden })) }} tohum={`${tohum}:gerekce`} onDone={onDone} /></>}
+    {phase === 2 && <><Markdown text={aciklama || ''} /><V2Soru oge={soru.gerekce || { soru: 'Gözlemine göre doğru açıklama hangisi?', secenekler: soru.secenekler.map(s => ({ metin: s.neden, dogru: Boolean(s.dogru), neden: s.neden })) }} tohum={`${tohum}:gerekce`} onDone={onDone} /></>}
   </section>;
 }
 

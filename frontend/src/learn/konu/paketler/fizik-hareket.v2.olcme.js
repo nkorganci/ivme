@@ -1,12 +1,16 @@
 // 16.04 içerik taslağı; GPT-6 Astra devamı. Öğretmen ve bağımsız denetçi onayı yoktur.
 // Kaynak çerçevesi: fizik-hareket.harita.md §4, §8, §9. Sorular özgündür; ÖSYM sorusu değildir.
 // Her soru bir doğru ve gerekçeli çeldiriciler içerir. Arayüz seçenekleri kimliğiyle karıştırmalı.
-const soru = (id, metin, dogru, gerekce, yanlislar) => ({
+import { EK_SECENEK, IKIZ } from './fizik-hareket.ek-secenek.js';
+import { yanilgiGerekceleri } from './fizik-hareket.gerekce.js';
+
+// EK_SECENEK: denetim bulgusu A2; iki seçenekli maddeler 3–4 seçeneğe çıkar.
+const soru = (id, metin, dogru, gerekce, temel) => { const yanlislar = [...temel, ...(EK_SECENEK[id] || [])]; return ({
   id, soru: metin, secenekler: [
     { id: `${id}-d`, metin: dogru, dogru: true, neden: gerekce },
     ...yanlislar.map(([metin, neden], i) => ({ id: `${id}-y${i}`, metin, neden })),
   ],
-});
+}); };
 
 // [kod, yanılgı, tanı sorusu, doğru, gerekçe, çeldirici, çeldirici geri bildirimi,
 //  deney yönergesi, gecikmeli soru, doğru, gerekçe, çeldirici, geri bildirim]
@@ -28,7 +32,7 @@ const donguler = [
 
 export const yanilgilar = donguler.map(([kod, yanilgi, q, d, g, y, yg, deney, sq, sd, sg, sy, syg]) => ({
   kod, yanilgi,
-  ortayaCikar: soru(`${kod}-tani`, q, d, g, [[y, yg]]),
+  ortayaCikar: { ...soru(`${kod}-tani`, q, d, g, [[y, yg]]), gerekce: yanilgiGerekceleri[kod] },
   yuzlestir: { yonerge: deney },
   aciklama: g,
   yenidenSina: { zaman: 'En az bir başka etkinlikten sonra; başarısızsa sonraki oturumda yeniden sor.', soru: soru(`${kod}-gecikmeli`, sq, sd, sg, [[sy, syg]]) },
@@ -77,6 +81,8 @@ export const tipCalismalari = [
   tip,
   tani: soru(`tip-${tip}`, `${q} Hesaplamadan ilk hamleni seç.`, ilk, g, [[tuzak, yg]]),
   bagimsiz: { ...soru(`set-${tip}`, q, d, g, [[y, yg]]), tip, duzey: i < 3 ? 1 : i < 8 ? 2 : 3 },
+  // Yeni turda bagimsiz yerine sorulur (A2): aynı ilke, farklı sayı ve yüzey.
+  ikiz: (([, iq, id, ig, iy]) => ({ ...soru(`ikiz-${tip}`, iq, id, ig, iy), tip, duzey: i < 3 ? 1 : i < 8 ? 2 : 3 }))(IKIZ.find(k => k[0] === tip)),
 }));
 
 export const sinavSeti = {

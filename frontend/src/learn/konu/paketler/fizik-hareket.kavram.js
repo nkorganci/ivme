@@ -1,6 +1,8 @@
 // Kavram kapıları: durak çıkışındaki bağımsız sorular buraya kopyalanmaz.
+import { KAVRAM_EK } from './fizik-hareket.ek-secenek.js';
+
 const q = (soru, metin, yanlis, neden) => ({ soru, secenekler: [{ metin, dogru: true, neden }, { metin: yanlis, neden }] });
-export default {
+const temel = {
   'kime-gore': [
     q('Bir cismin konumunu belirtirken neleri seçeriz?', 'Referans noktası, pozitif yön ve birim.', 'Yalnız gidilen yol.', 'Konum seçilen referansa göre yönlü uzaklıktır; yol hareket geçmişidir.'),
     q('Masanın üzerindeki kitap masaya göre dururken Dünya ile birlikte hareketli olabilir mi?', 'Evet; gözlemci değişince hareket tanımı değişebilir.', 'Hayır; duran bir cisim her gözlemciye göre durur.', 'Hareket konumun seçilen gözlemciye göre değişmesidir.'),
@@ -42,3 +44,5 @@ export default {
     q('Hız artı yönde artarken x–t grafiğinin eğimi nasıl değişir?', 'Artar.', 'Sıfıra iner.', 'x–t eğimi hızdır; artan pozitif hız daha büyük pozitif eğimdir.'),
   ],
 };
+// A2: her soruya kendi geri bildirimiyle üçüncü seçenek eklenir.
+export default Object.fromEntries(Object.entries(temel).map(([durak, sorular]) => [durak, sorular.map((s, i) => ({ ...s, secenekler: [...s.secenekler, { metin: KAVRAM_EK[durak][i][0], neden: KAVRAM_EK[durak][i][1] }] }))]));

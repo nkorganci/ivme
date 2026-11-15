@@ -1,0 +1,80 @@
+// Tahmin → deney → "doğru açıklama hangisi?" sorularının seçenekleri (denetim bulgusu A1).
+// Her soruda tam bir doğru açıklama ve gerçekten YANLIŞ iki akıl yürütme vardır; yanlışların geri bildirimi
+// öğrencinin deneyde gördüğü şeye dayanır. Önceki sürüm tahmin şıklarının geri bildirim metinlerini seçenek
+// yapıyordu; onlar doğru cümleler olduğu için birden çok doğru seçenek çıkıyordu.
+// Öğretmen onayı yoktur.
+const g = (dogru, ...yanlislar) => ({
+  soru: 'Gözlemine göre doğru açıklama hangisi?',
+  secenekler: [{ metin: dogru, dogru: true, neden: 'Deneyde gördüğün de buydu.' }, ...yanlislar.map(([metin, neden]) => ({ metin, neden }))],
+});
+
+// Durak kimliği → durağın açılış tahmininin gerekçe sorusu.
+export const tahminGerekceleri = {
+  'kime-gore': g('Hareket, konumun seçilen gözlemciye göre değişmesidir: aynı yolcu trene göre durgun, perona göre hareketlidir.',
+    ['Gerçekte hareket eden trendir; yolcu yalnız taşınır, bu yüzden hiçbir gözlemciye göre hareket etmez.', 'Perondan bakınca yolcunun konumu da değişti. "Gerçek hareket" diye ayrı bir şey yok; kime göre olduğunu söylersin.'],
+    ['Peron yere bağlı olduğu için yalnız perondaki gözlemcinin gördüğü doğrudur.', 'İki gözlem de geçerlidir. Gözlemciyi değiştirince yalnız anlatım değişti, olay değişmedi.']),
+  'yol-yer': g('Yol yürünen bütün uzunluktur (10 m); yer değiştirme baştan sona çizilen oktur (sağa 2 m).',
+    ['Geri yürünen 4 m, önce yürünen yolun 4 metresini siler; yol 2 m kalır.', 'Sayaç geri yürürken de arttı. Azalan şey yol değil, başlangıca olan uzaklıktı.'],
+    ['Yer değiştirme de sayaç gibi hep artar; geri yürümek onu büyütür.', 'Geri dönerken ok kısaldı. Yer değiştirme azalabilir, sıfır bile olabilir.']),
+  'hiz-surat': g('Ortalama hız yer değiştirmeyi (sıfır), ortalama sürat alınan yolu (bir tur) aynı süreye böler.',
+    ['Hız da sürat de alınan yolu süreye böler; bu yüzden ikisi her zaman eşittir.', 'Deneyde aynı süreye iki farklı pay böldün: yol ve yer değiştirme. Başlangıca dönünce paylardan biri sıfır oldu.'],
+    ['Başladığın yere dönünce yol da sıfırlanır; iki ortalama da sıfır olur.', 'Yol sayacı dönüşte azalmadı. Bir tur koşuldu ve o tur yola yazıldı.']),
+  xt: g('Aşağı inen düz çizgide konum eşit sürelerde eşit miktarda azalır: cisim eksi yönde sabit hızla gider.',
+    ['Çizgi aşağı indiği için cismin hızı da giderek azalır.', 'Azalan konumdur. Çizginin eğimi hiç değişmedi; hız sabit kaldı.'],
+    ['Çizginin biçimi yolun biçimidir; inen çizgi inen yol demektir.', 'Cisim dümdüz bir şeritte gitti ama çizgi eğikti. Düşey eksen yükseklik değil konumdur.']),
+  vt: g('Kesişme anında eşit olan hızlardır; kimin nerede olduğunu o ana kadarki alanlar belirler.',
+    ['Kesişen çizgiler aynı noktada buluştuğu için araçlar da aynı yerdedir.', 'Düşey eksen konum değil hız. Aynı yerde olmaları için alanların eşit olması gerekir.'],
+    ['Kesişme anında hız sıfırdır; araçlar o an durur.', 'Hız, çizgi zaman eksenine değdiğinde sıfır olur. Burada çizgiler ekseni değil birbirini kesiyor.']),
+  'iki-hareketli': g('İki kişi aynı aralığı iki ucundan kısaltır: ara saniyede 2 + 1 = 3 m kapanır.',
+    ['Arayı yalnız hızlı yürüyen kapatır; yavaş olan sonucu değiştirmez.', 'Sayaç saniyede 2 değil 3 m azaldı: yavaş yürüyen de yaklaşıyor.'],
+    ['Birbirlerine doğru yürüdükleri için hızlar birbirini götürür; ara saniyede 1 m kapanır.', 'Fark, ikisi aynı yöne yürürken alınır. Karşılıklı yürüyüşte katkılar toplanır.']),
+  ivme: g('Hız eksi, ivme artı: zıt yönlü oldukları için sürat 4, 2, 0 diye azalır.',
+    ['İvme artı olduğuna göre cisim artı yönde gidiyordur.', 'Gidiş yönünü ivmenin değil hızın işareti söyler; ilk anda hız −4 m/s.'],
+    ['İvme artıysa sürat her zaman artar.', 'Deneyde sürat önce azaldı. Sürat ancak hız ile ivme aynı yönlüyken artar.']),
+  'uc-grafik': g('İvme–zaman alanı hız değişimidir (6 m/s); her araba kendi ilk hızına 6 ekler.',
+    ['İvme–zaman grafikleri aynıysa hız–zaman grafikleri de aynıdır.', 'İlk hızı değiştirince hız–zaman çizgisi yukarı kaydı: eğimi aynı kaldı ama değerleri değişti.'],
+    ['Alan son hızı verir; ilk hızın sonuca etkisi olmaz.', 'İlk hızı 10 yapınca son hız 16 oldu. Alan yalnız değişimi verdi.']),
+};
+
+// Yanılgı kodu → o yanılgı döngüsünün gerekçe sorusu.
+export const yanilgiGerekceleri = {
+  Y1: g('Yolcunun perona göre konumu değişiyor; oturması yalnız koltuğa göre durduğunu gösterir.',
+    ['Hareket etmek için yürümek gerekir; oturan kişi hiçbir gözlemciye göre hareket etmez.', 'Perondan bakınca yolcu trenle birlikte ilerledi; kendi çabası gerekmedi.'],
+    ['Tren hareketli olduğu için perondaki kişi yolcuya göre durgundur.', 'Yolcudan bakınca peron geriye gidiyor: ikisi birbirine göre hareketli.']),
+  Y2: g('Konum yalnız cismin şu an nerede olduğunu söyler; oraya nasıl geldiğini söylemez.',
+    ['Konumun büyüklüğü, cismin sıfırdan oraya yürüdüğü yoldur.', 'Sıfırı kaydırınca konum değişti ama cisim kıpırdamadı; yol sıfır kaldı.'],
+    ['Eksi konum, cismin geri geri gittiğini gösterir.', 'Cisim yerinde dururken de konumu eksi olabildi. İşaret gidişi değil tarafı söyler.']),
+  Y3: g('Tam turda başlangıç ve bitiş aynı noktadır: ok yoktur. Yol ise bir çevre kadardır.',
+    ['Yer değiştirme yürünen uzunluktur; tur bitince pistin çevresine eşit olur.', 'Ok tur boyunca önce uzadı, sonra kısalıp sıfır oldu. Hep artan sayaçtı.'],
+    ['Tur bitince yol da sıfırlanır.', 'Sayaç hiç geri gitmedi; tur bitince bir çevre gösteriyordu.']),
+  Y4: g('Gösterge yalnız sürati verir; hız için yön de gerekir ve iki aracın yönü zıttır.',
+    ['Sayılar eşitse vektörler de eşittir.', 'Oklar aynı uzunlukta ama zıt yöne bakıyordu; eşit vektörler aynı yöne bakar.'],
+    ['Zıt yöne gidenin sürati eksidir; bu yüzden süratler de farklıdır.', 'Sürat eksi olmaz; iki gösterge de 60 gösteriyor. Eksi olabilen hızdır.']),
+  Y5: g('Yavaş parçada daha uzun süre geçtiği için ortalama yavaş sürate yakın çıkar: 30 km/h.',
+    ['İki yol eşit olduğu için iki sürat ortalamaya eşit ağırlıkla girer.', 'Sayaçlarda yavaş parça üç kat uzun sürdü. Ağırlığı belirleyen yol değil süredir.'],
+    ['Hızlı parça daha etkilidir; ortalama 60\'a yakın çıkar.', 'Hızlı parça çabuk bitti; toplam sürenin yalnız dörtte birini kapladı.']),
+  Y6: g('Düşey eksen konumdur; yükselen çizgi yalnız konumun arttığını söyler.',
+    ['Grafik, cismin gittiği yolun yandan görünüşüdür.', 'Cisim dümdüz rayda gitti, çizgi yine de yükseldi.'],
+    ['Yükselen çizgi cismin hızlandığını gösterir.', 'Çizgi düz: eğimi sabit, yani hız sabit. Hızlansaydı çizgi giderek dikleşirdi.']),
+  Y7: g('Kesişimde konumlar eşittir; hızlar eğimlerden okunur ve farklıdır.',
+    ['Aynı noktadan geçen çizgilerin eğimleri o noktada eşit olur.', 'Hız okları kesişim anında farklı uzunluktaydı. Eğim tek noktaya değil çizginin gidişine aittir.'],
+    ['Kesişimden sonra iki araç birlikte gider.', 'Hızlı olan öne geçti; çizgiler kesiştikten sonra birbirinden ayrıldı.']),
+  Y8: g('Hız artı kaldıkça cisim artı yönde gider; azalan yalnız sürattir.',
+    ['Çizginin aşağı inmesi cismin geriye gitmesidir.', 'Nokta ileri gitmeye devam etti; yalnız yavaşladı. Geri gitmesi için çizginin eksenin altına inmesi gerekir.'],
+    ['Hız azalırken konum da azalır.', 'Konum artmayı sürdürdü; yalnız daha yavaş arttı.']),
+  Y9: g('Yer değiştirmede alanlar işaretleriyle toplanır: +6 − 4 = +2 m.',
+    ['Alan bir büyüklüktür, eksi olamaz; yer değiştirme için de hepsi toplanır.', 'Eksenin altındaki alan geri gidiştir; o sırada ok kısaldı.'],
+    ['Geri gidiş hem yoldan hem yer değiştirmeden çıkarılır.', 'Yol sayacı geri giderken de arttı ve 10 m gösterdi.']),
+  Y10: g('İvme hızın değişimidir; hız değişmiyorsa ne kadar büyük olursa olsun ivme sıfırdır.',
+    ['Hız ne kadar büyükse ivme de o kadar büyüktür.', 'Yüksekteki yatay çizginin eğimi sıfırdı; alçaktaki eğik çizginin eğimi vardı.'],
+    ['İvme sıfırsa cisim duruyordur.', 'Cisim 100 m/s ile gitmeye devam etti. Sıfır ivme, hızın değişmemesidir.']),
+  Y11: g('İvme eğimdir; doğrunun eğimi hızın sıfır olduğu anda da aynıdır.',
+    ['Hız sıfırken değişecek bir şey kalmaz; ivme de sıfır olur.', 'Hız o andan hemen sonra eksiye geçti: değişmeye devam ediyordu.'],
+    ['İvme o anda işaret değiştirir.', 'İşaret değiştiren hızdır; eğim baştan sona −2 m/s² kaldı.']),
+  Y12: g('Hız ile ivme aynı yönlü olduğu için sürat artar; eksi ivme burada hızlandırır.',
+    ['Eksi ivme süratten her saniye bir miktar çıkarır.', 'İkisi de eksiyken sürat sayacı arttı. İvme sürate değil, işaretiyle hıza eklenir.'],
+    ['İki eksi birbirini götürür; sürat değişmez.', 'Hız ile ivme çarpılmaz. İvme hıza eklenir ve hız daha da eksi olur.']),
+  Y13: g('Alan hızın ne kadar değiştiğidir; son hız için ilk hıza eklenir.',
+    ['Alan doğrudan son hızdır; ilk hız sonucu etkilemez.', 'İlk hız değişince son hız da değişti; alan ise aynı kaldı.'],
+    ['İlk hız büyüdükçe alan da büyür.', 'Alan yalnız ivmeye ve süreye bağlı; ilk hız kaydırıcısı onu değiştirmedi.']),
+};

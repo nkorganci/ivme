@@ -62,3 +62,11 @@ tip seti, yanılgı ve araç kutusu maddeleri elle yeniden hesaplandı, hepsi do
 | A8 P3 | Yeni iki tipin banka sorusu ve MEBİ kaynak görselleri yok | Banka taraması, kaynak görseli |
 
 Geçmek için en az A1 ve A2 (ölçüt 10 ve 12) gerekir; A4 ölçüt 1'i tamamlar.
+
+### Düzeltme turu: içerik (Fable 5.2)
+
+- **A1 kapandı:** 8 açılış tahmini ve 13 yanılgı döngüsü için ayrı gerekçe soruları yazıldı (`paketler/fizik-hareket.gerekce.js`): bir doğru açıklama ve deney gözlemiyle çürütülen iki yanlış akıl yürütme. `TahminDeney` bu alanı okur.
+- **A2 içerik kısmı kapandı:** ön test, son test, karma tur ve düzeyli set 4 seçenek; ilk hamle ve kavram kapısı 3 seçenek (`paketler/fizik-hareket.ek-secenek.js`, 118 yeni çeldirici, her biri kendi geri bildirimiyle). Düzeyli setin 12 maddesine aynı ilkeyi farklı sayı ve yüzeyle soran ikiz yazıldı (`tipCalismalari[].ikiz`).
+- **A7 kapandı:** yazım hatası düzeltildi.
+- **Kalan kod işi (Sonnet 5.5):** yeni turda yanlış yapılan maddenin yerine `ikiz`'i göstermek (A2'nin kod yarısı), A3 tur kaydı ve şık sırası, A4 bağımsız hesap testi (yeni ikizler ve ek seçenekler dahil), A5 düzey 4, A6 seri sayacı.
+- Doğrulama: `node --test` 17/17; regresyon masaüstü/mobil 11/11; ekran taraması 113 kontrol, taşma yok. Regresyon testindeki gerekçe adımı yeni alanı okuyacak biçimde güncellendi (eski test hatalı davranışı bekliyordu).

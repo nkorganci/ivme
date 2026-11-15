@@ -26,7 +26,7 @@ try{
  assert.equal(await b.evalJs(`!!document.querySelector('.kp-v2-ana .kp-geri')`),false);
  await click('Tahminimi kaydet ve deneyi aç');assert.ok((await text()).includes('Gözlemledim, açıklamayı aç'));
  assert.equal(await b.evalJs(`!!document.querySelector('.kp-v2-ana .kp-geri')`),false);
- await click('Gözlemledim, açıklamayı aç');await choose('Gözlemine göre doğru açıklama hangisi?',pred.secenekler.find(s=>s.dogru).neden);checks.push('Yanlış tahmin → deney → açıklama/gerekçe');
+ await click('Gözlemledim, açıklamayı aç');await choose('Gözlemine göre doğru açıklama hangisi?',pred.gerekce.secenekler.find(s=>s.dogru).metin);checks.push('Yanlış tahmin → deney → açıklama/gerekçe');
  await fixture(full(),'set');const q=sets[0];await choose(q.soru,q.secenekler.find(s=>!s.dogru).metin);await open('set');
  assert.ok(Object.values((await stored())._sorular).includes(true));
  await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);assert.equal((await stored()).set[q.id],false);checks.push('Yenilemede ilk yanlış korunur');

@@ -26,6 +26,7 @@
 
 import v1 from './fizik-hareket.js';
 import kavramKontrolleri from './fizik-hareket.kavram.js';
+import { tahminGerekceleri } from './fizik-hareket.gerekce.js';
 import nicelKontrolleri from './fizik-hareket.nicel.js';
 import { yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari } from './fizik-hareket.v2.olcme.js';
 
@@ -52,7 +53,7 @@ const YENI_TIPLER = [
     sorular: [] }, // banka görselleri taranınca dolacak (şimdi ivme listesinin içinde)
 ];
 
-export default {
+const paket = {
   ...v1,
   surum: 2,
   yanilgilar, kavramTesti, karma, tekrar, sinavSeti, tipCalismalari, kavramKontrolleri, nicelKontrolleri,
@@ -175,7 +176,7 @@ export default {
           adimlar: [
             { ne: 'Yollar: AB = 10 × 5 = 50 m, BC = 7 × 50 = 350 m. Toplam yol 400 m.', neden: 'Her parçada sürat sabit olduğu için yol sürat ile sürenin çarpımıdır.' },
             { ne: 'Toplam süre = 5 + 25 + 50 = 80 s.', neden: 'Dinlenme süresi de harekete ayrılan toplam süreye girer; saat o sırada durmaz.' },
-            { ne: 'Ortalama sürat = 400 / 80 = 5 m/s.', neden: 'Toplam yolun toplam süreye oranı. Bekleme yüzünden iki sürattn de küçük çıktı.'.replace('sürattn', 'sürattten') },
+            { ne: 'Ortalama sürat = 400 / 80 = 5 m/s.', neden: 'Toplam yolun toplam süreye oranı. Bekleme yüzünden iki süratten de küçük çıktı.' },
             { ne: 'Yol doğrusal ve bisikletli hiç geri dönmedi: yer değiştirme de 400 m. Ortalama hızın büyüklüğü 5 m/s.', neden: 'Yol ile yer değiştirmenin eşit olduğu tek durum bu; iki ortalama eşit çıkar.' },
           ], gizli: 2, kontrol: 'Bekleme olmasaydı ortalama 400 / 55 ≈ 7,3 m/s olurdu; 7 ile 10 arasında. Bekleme ortalamayı düşürdü: 5 m/s anlamlı.' },
         { ...al('hiz-surat', 'puf'), basamak: 5, sinav: 'ÖSYM bu ayrımı 2019 ve 2025\'te sordu. İkisi de sınav setinde seni bekliyor; orada yardımsız çözeceksin.' },
@@ -494,4 +495,8 @@ export default {
   ],
 };
 
+// A1: her durağın açılış tahminine kendi gerekçe sorusu bağlanır (yanlış seçenekler gerçekten yanlış akıl yürütmelerdir).
+paket.duraklar = paket.duraklar.map((d) => ({ ...d, bloklar: d.bloklar.map((b) => (b.tur === 'neden' && b.tahmin ? { ...b, tahmin: { ...b.tahmin, gerekce: tahminGerekceleri[d.id] } } : b)) }));
+
+export default paket;
 export { tip };
