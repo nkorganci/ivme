@@ -17,10 +17,23 @@ const full=()=>({...base(),...Object.fromEntries(p.duraklar.map(d=>[d.id,Object.
 const postDisabled=()=>b.evalJs(`[...document.querySelectorAll('.kp-yol button')].find(x=>x.textContent==='Son test').disabled`);
 async function yargi(oge){await b.evalJs(`(()=>{const li=[...document.querySelectorAll('.kp-yargilar>li')];${JSON.stringify(oge.yargilar.map(y=>y.dogru))}.forEach((v,i)=>[...li[i].querySelectorAll('button')].find(b=>b.textContent===(v?'Doğru':'Yanlış')).click())})()`);await click('Kontrol et');}
 try{
- await b.goto('/');await b.login('student');await open('son');await b.wait(`document.body.innerText.includes('Başlamadan önce')`);
+ await b.goto('/');await b.login('student');await open('son');await b.wait(`document.body.innerText.includes('Son kavram testi')`);
  const u=await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();return r.user||r})()`);key=`ivme:konu-paketi:fizik-hareket:${u.id}:v2:r3`;
  const old=key.replace(':r3','');await b.evalJs(`localStorage.setItem(${JSON.stringify(old)},'{"onceki":"korunacak"}')`);
- assert.equal(await postDisabled(),true);checks.push('URL ile son test kilidi');
+ assert.equal(await postDisabled(),false);
+ const layout=await b.evalJs(`(()=>{const h=document.querySelector('.kp-v2-banner'),a=document.querySelector('.kp-yol button');return {width:Math.abs(h.getBoundingClientRect().width-a.getBoundingClientRect().width),first:a.textContent,banner:[...h.children].map(e=>e.textContent)}})()`);
+ assert.ok(layout.width<1);assert.match(layout.first,/Ön koşullar/);assert.deepEqual(layout.banner,['Hareket','Öğretmen kontrolü bekliyor']);
+ const count=await b.evalJs(`document.querySelectorAll('.kp-yol button').length`);
+ for(let i=0;i<count;i++){
+  await b.evalJs(`document.querySelectorAll('.kp-yol button')[${i}].click()`);await pause(100);
+  assert.equal(await b.evalJs(`document.querySelectorAll('.kp-yol button')[${i}].getAttribute('aria-current')`),'step');
+  assert.ok(await text());
+ }
+ await open('son');
+ for(const q of p.kavramTesti.son)await choose(q.soru,q.secenekler[0].metin);
+ await click('Testi bitir');assert.ok((await text()).includes('Ön test tamamlanmadığı için normalize kazanç hesaplanmaz'));
+ await open('son');assert.ok((await text()).includes('Test tamamlandı'));
+ checks.push('Banner araç kutusu genişliğinde; ön koşullar ilk; boş ilerlemeyle tüm bölümler ve ön testsiz son test açılır');
  await fixture(base(),'kime-gore');const pred=p.duraklar[0].bloklar[0].tahmin;
  await choose(pred.soru,pred.secenekler.find(s=>!s.dogru).metin);
  assert.equal(await b.evalJs(`!!document.querySelector('.kp-v2-ana .kp-geri')`),false);
@@ -31,11 +44,11 @@ try{
  assert.ok(Object.values((await stored())._sorular).includes(true));
  await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);assert.equal((await stored()).set[q.id],false);checks.push('Yenilemede ilk yanlış korunur');
  for(let i=1;i<sets.length;i++){if(i===1)await choose(sets[i].soru,sets[i].secenekler.find(s=>!s.dogru).metin);await choose(sets[i].soru,sets[i].secenekler.find(s=>s.dogru).metin);}
- assert.equal(await postDisabled(),true);checks.push('10/12 doğru, iki eksik tip → son test kilitli');
+ assert.equal(await postDisabled(),false);checks.push('10/12 doğru, iki eksik tip kaydı korunur; son test serbest');
  await click('Gerekçeleri inceleyip yeni tur başlat');assert.equal((await stored())._setTur,1);assert.equal((await stored())._setGecmisi[0].cevaplar[q.id],false);await open('set');
  const ikizler=[1,2,3].flatMap(d=>p.tipCalismalari.filter(t=>t.bagimsiz.duzey===d).map(t=>t.ikiz));for(const q of ikizler)await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);
  assert.equal(await postDisabled(),false);assert.equal((await stored())._setTur,1);assert.ok((await stored())._kayit.some(k=>k.kapi==='set'&&k.tur===1&&k.ilk===true));assert.ok((await stored())._kayit.some(k=>k.kapi==='set'&&k.tur===0&&k.ilk===false));checks.push('Açık yeni tur yenilemede korunur; her tip doğruysa geçer');
- await fixture({...full(),osym:{}},'set');assert.equal(await postDisabled(),true);checks.push('Düzey 4 ÖSYM tamamlanmadan son test kilitli; yeni turda ikiz maddeler ve tur kaydı');
+ await fixture({...full(),osym:{}},'set');assert.equal(await postDisabled(),false);checks.push('Düzey 4 ÖSYM tamamlanmadan son test açılır; tur kaydı korunur');
  await fixture({...full(),karma:{}},'karma');assert.equal(await b.evalJs(`document.querySelectorAll('.kp-karma-oge .kp-soru').length`),0);
  const tip=p.tipler.find(t=>t.id===p.karma[0].tip);await click(tip.ad);assert.equal(await b.evalJs(`document.querySelectorAll('.kp-karma-oge .kp-soru').length`),1);checks.push('Karma: tip seçmeden çözüm açılmaz');
  const mapD=p.duraklar.find(d=>d.id==='xt'), mapI=mapD.bloklar.findIndex(q=>q.verilen?.tur==='harita');

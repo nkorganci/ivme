@@ -11,6 +11,7 @@ import ChoiceButtons from '../../components/ChoiceButtons.jsx';
 import { Gercek, Tekrar } from './KonuSayfasi.jsx';
 import { KarmaOge } from './bloklar.jsx';
 import araclar from './paketler/arac-kutusu-fizik.js';
+import './KonuV2.css';
 
 function Test({ form, id, durum, yaz, tohum }) {
   const saved = durum[id] || {};
@@ -21,7 +22,7 @@ function Test({ form, id, durum, yaz, tohum }) {
     {form.map(q => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} gizli deger={answers[q.id]} onChange={v => { if (result) return; yaz(id, prev => ({ ...prev, cevaplar: { ...prev?.cevaplar, [q.id]: v } })); }} />)}
     {!result && <button className="btn btn-primary" disabled={!complete} onClick={() => yaz(id, { cevaplar: answers, sonuc: complete })}>Testi bitir</button>}
     {result && <p role="status">Test tamamlandı: {result.dogru}/{result.toplam}.</p>}
-    {id === 'son' && result && <><p>Ön: %{durum.on.sonuc.puan}, son: %{result.puan}. Normalize kazanç: {kazanc(durum.on.sonuc.puan, result.puan)?.toFixed(2) ?? 'Ön puan 100 olduğundan hesaplanmaz'}. Bu bir öğretmen kabulü değildir.</p>{form.map(q => <details key={q.id}><summary>{q.soru}</summary><p>{q.secenekler.find(s => s.dogru)?.neden}</p></details>)}</>}
+    {id === 'son' && result && <><p>{durum.on?.sonuc ? <>Ön: %{durum.on.sonuc.puan}, son: %{result.puan}. Normalize kazanç: {kazanc(durum.on.sonuc.puan, result.puan)?.toFixed(2) ?? 'Ön puan 100 olduğundan hesaplanmaz'}.</> : <>Son: %{result.puan}. Ön test tamamlanmadığı için normalize kazanç hesaplanmaz.</>} Bu bir öğretmen kabulü değildir.</p>{form.map(q => <details key={q.id}><summary>{q.soru}</summary><p>{q.secenekler.find(s => s.dogru)?.neden}</p></details>)}</>}
   </section>;
 }
 function Onkosul({ ders, tamam, onDone, tohum }) {
@@ -101,27 +102,20 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
   const yaz = (id, value) => setDurum(s => { const next = { ...s, [id]: typeof value === 'function' ? value(s[id]) : value }; try { localStorage.setItem(key, JSON.stringify(next)); } catch { setUyari('İlerleme bu tarayıcıda kaydedilemiyor.'); } return next; });
   const seed = `${user?.id || 'anon'}:${paket.id}:v2:r3`;
   useEffect(() => { document.querySelector('.kp-v2-ana')?.scrollIntoView({ block: 'start' }); }, [bolum]);
-  const on = Boolean(durum.on?.sonuc);
-  const akDone = araclar.every(a => durum.ak?.[a.id]);
   const tamam = d => d.bloklar.every((_, i) => durum[d.id]?.[i] !== undefined);
-  const durakDone = paket.duraklar.every(tamam);
-  const tipDone = paket.tipCalismalari.every(t => durum.tip?.[t.tani.id] !== undefined);
   const asilSet = paket.sinavSeti.duzeyler.flatMap(d => d.sorular);
   const ikizSet = paket.sinavSeti.duzeyler.flatMap(d => paket.tipCalismalari.filter(t => t.bagimsiz.duzey === d.duzey && t.ikiz).map(t => t.ikiz));
   const sets = tur > 0 && ikizSet.length === asilSet.length ? ikizSet : asilSet;
-  const osymDone = AYRILAN_OSYM.every(k => durum.osym?.[k] !== undefined);
   const setDone = sets.every(q => durum.set?.[q.id] !== undefined);
   const setPass = sinavGecisi(sets, durum.set || {}).gecti;
-  const karmaDone = paket.karma.every(q => durum.karma?.[q.id] !== undefined) && ['Y2', 'Y11', 'Y13'].every(k => durum.gecikmeli?.[k]);
   const error = dogrulaV2(paket);
   if (error.length) return <p role="alert">İçerik yüklenemedi: {error.join(', ')}</p>;
-  const izin = id => id === 'on' || on && (id === 'ak' || akDone && (paket.duraklar.some(d => d.id === id) || id === 'gercek' || id === 'tekrar' || durakDone && (['tip', 'karma'].includes(id) || tipDone && (id === 'set' || setPass && (id === 'osym' || karmaDone && osymDone && id === 'son')))));
-  const nav = [['on', 'Ön test'], ['ak', 'Araç kutusu'], ...paket.duraklar.map((d, i) => [d.id, `${i + 1}. ${d.baslik}`]), ['tip', 'İlk hamle'], ['set', 'Düzeyli alıştırma'], ['osym', 'Düzey 4 · ÖSYM'], ['karma', 'Karışık tur'], ['son', 'Son test'], ['gercek', 'Gerçek sorular'], ['tekrar', 'Tekrar ve kaynak']];
-  const git = id => { if (izin(id)) setParams({ bolum: id }); };
+  const nav = [['ak', 'Ön koşullar · Araç kutusu'], ['on', 'Ön test'], ...paket.duraklar.map((d, i) => [d.id, `${i + 1}. ${d.baslik}`]), ['tip', 'İlk hamle'], ['set', 'Düzeyli alıştırma'], ['osym', 'Düzey 4 · ÖSYM'], ['karma', 'Karışık tur'], ['son', 'Son test'], ['gercek', 'Gerçek sorular'], ['tekrar', 'Tekrar ve kaynak']];
+  const git = id => setParams({ bolum: id });
   const d = paket.duraklar.find(d => d.id === bolum);
-  const active = izin(bolum) ? bolum : !on ? 'on' : !akDone ? 'ak' : paket.duraklar.find(d => !tamam(d))?.id || 'tip';
-  return <SoruDeposu degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link><header className="kp-ust"><h1>{paket.baslik}</h1><p className="kp-onay">Öğretmen kontrolü bekliyor</p><p>Önce tahmin et, dene, sonra ilişkileri kur. İlerlemen bu tarayıcıda sana özel saklanır.</p><p className="small muted">Güncellenen ölçme akışında yeniden başlıyoruz. Önceki pilot kayıtları korunur; yeni kabulün yerine kullanılmaz.</p></header>{uyari && <p role="alert">{uyari}</p>}
-    <div className="kp-duzen"><nav className="kp-yol" aria-label="Konu bölümleri">{nav.map(([id, ad]) => <button key={id} type="button" aria-current={active === id ? 'step' : undefined} disabled={!izin(id)} onClick={() => git(id)}>{ad}{paket.duraklar.some(d => d.id === id && tamam(d)) ? ' ✓' : ''}</button>)}</nav>
+  const active = nav.some(([id]) => id === bolum) ? bolum : 'on';
+  return <SoruDeposu degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link>{uyari && <p role="alert">{uyari}</p>}
+    <div className="kp-duzen"><aside className="kp-v2-yan"><header className="kp-ust kp-v2-banner"><h1>{paket.baslik}</h1><p className="kp-onay">Öğretmen kontrolü bekliyor</p></header><nav className="kp-yol" aria-label="Konu bölümleri">{nav.map(([id, ad]) => <button key={id} type="button" aria-current={active === id ? 'step' : undefined} onClick={() => git(id)}>{ad}{paket.duraklar.some(d => d.id === id && tamam(d)) ? ' ✓' : ''}</button>)}</nav></aside>
       <main className="card kp-kart kp-v2-ana" key={active}>
         {['on', 'son'].includes(active) ? <Test form={paket.kavramTesti[active]} id={active} durum={durum} yaz={yaz} tohum={seed} />
         : active === 'ak' ? <><h2>Ön koşullar</h2><div className="kp-v2-kontroller">{araclar.map((a, i) => <button key={a.id} className="btn btn-secondary" onClick={() => setAk(i)}>{a.id}{durum.ak?.[a.id] ? ' ✓' : ''}</button>)}</div><Onkosul key={ak} ders={araclar[ak]} tamam={durum.ak?.[araclar[ak].id]} onDone={() => yaz('ak', { ...durum.ak, [araclar[ak].id]: true })} tohum={`${seed}:${ak}`} /></>
@@ -132,6 +126,6 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
         : active === 'gercek' ? <Gercek paket={paket} sorular={sorular} tip={params.get('tip')} />
         : active === 'tekrar' ? <Tekrar paket={{ ...paket, tekrar: paket.tekrar.map(k => ({ soru: k.on, cevap: k.arka })) }} />
         : <DurakV2 key={active} d={d || paket.duraklar.find(d => d.id === active)} paket={paket} sorular={sorular} motor={motor} durum={durum} yaz={yaz} tohum={seed} onGercek={tip => setParams({ bolum: 'gercek', tip })} />}
-        <footer className="kp-gezin"><span /><button type="button" className="btn btn-primary" disabled={!nav[nav.findIndex(([id]) => id === active) + 1] || !izin(nav[nav.findIndex(([id]) => id === active) + 1]?.[0])} onClick={() => git(nav[nav.findIndex(([id]) => id === active) + 1][0])}>Sonraki bölüm →</button></footer>
+        <footer className="kp-gezin"><span /><button type="button" className="btn btn-primary" disabled={!nav[nav.findIndex(([id]) => id === active) + 1]} onClick={() => git(nav[nav.findIndex(([id]) => id === active) + 1][0])}>Sonraki bölüm →</button></footer>
       </main></div></article></SoruDeposu>;
 }

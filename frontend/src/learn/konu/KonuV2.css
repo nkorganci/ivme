@@ -1,0 +1,9 @@
+.kp-v2-yan { display: grid; gap: 14px; min-width: 0; position: sticky; top: 8px; max-height: calc(100vh - 16px); overflow-y: auto; }
+.kp-v2-banner { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 16px; }
+.kp-v2-banner .kp-onay { margin: 0; justify-self: start; }
+.kp-v2-yan .kp-yol { position: static; max-height: none; padding: 0; }
+@media (max-width: 860px) {
+  .kp-v2-yan { position: static; max-height: none; overflow: visible; }
+  .kp-v2-banner { width: 230px; max-width: 100%; box-sizing: border-box; }
+  .kp-v2-yan .kp-yol button { flex: 0 0 230px; width: 230px; }
+}

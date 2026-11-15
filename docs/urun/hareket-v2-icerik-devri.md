@@ -17,7 +17,7 @@
 
 1. V2 henüz kataloğa bağlı değildir. V1'i silmeden şema v2 ve yeni alanların bileşenlerini ekle.
 2. Deney yönergelerini hareket stüdyosuna bağla; yönerge metni çalışan deney değildir.
-3. Her basamağın geçiş ölçütünü planın merdiveninden uygula. Şu an içerik verisi ilerleme kilidi sağlamaz.
+3. Bölümler serbestçe açılır; basamak içi ölçütler ve ölçüm kayıtları korunur.
 4. `secenekler` dizilerinde doğru seçenek başta yazılmıştır. Kalıcı seçenek kimliğiyle karıştır;
    cevap ve gerekçeyi seçimden önce gösterme. Test bütün cevaplar kaydedilmeden geri bildirim açmasın.
 5. Ön test tanı döngüleriyle ortaktır; son test ayrı yüzeylidir ve derste gösterilmez. İki seçenekli
@@ -51,7 +51,9 @@ Kullanıcının model tercihi GPT-6.1 Sol (yüksek): katalog artık `KonuV2` ekr
 bloklar `v2Bloklar.jsx`; yeni iki-cisim/üç-grafik deneyleri `HareketV2Deneyi.jsx`.
 V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
 
-- Akış: ön test → AK-1…7 → sekiz durak → ilk hamle → düzeyli alıştırma → karma/gecikmeli sınama → son test.
+- Menüde ön koşullar/araç kutusu en üsttedir; banner aynı sütun genişliğinde yalnız konu adı ve öğretmen kontrolü etiketini gösterir.
+- Ön test dahil bütün bölümler önceki bölümü tamamlama koşulu olmadan açılır; bölüm içi etkinlik ölçütleri korunur.
+- Son test ön test yapılmadan tamamlanabilir; bu durumda normalize kazanç hesaplanmaz.
 - Testlerin cevapları kullanıcı başına v2 yerel anahtarda saklanır; v1 kayıtları taşınmaz. Son test ayrı formdur.
 - Kavram kapısı mevcut içerik sorularından üç ardışık doğru ister; yanlışta seri sıfırlanır.
   Temsil soruları doğruya ulaşmadan, örnekler bütün adımlar açılmadan ileri geçmez.
@@ -75,7 +77,7 @@ kaynağın öğretmen kabulü, bütün basamak geçişlerinin pedagojik değerle
 
 Teknik sonuç: v1+v2 testleri 12/12; JSON Schema Draft 2020-12 doğrulaması geçti.
 Masaüstü ve mobil taramada 105’er kontrol: boş ekran, yatay taşma, konsol hatası yok;
-ön testte ilk 15 sonraki bölüm kilitli ve cevap sonrası geri bildirim gizli.
+ön testte cevap sonrası geri bildirim gizli; bölümler arası kilit kullanıcı talimatıyla kaldırıldı.
 İlk kimlik sorgusunun giriş öncesi 401’i ve favicon 404’ü dışında içerik isteği hatası yok.
 Derleme, plan ve 17 dosyalık depo kontrolü geçti. Yerel izleyici v2 ön yüzünü yayımladı;
 1010 üzerinden `Başlamadan önce` ekranı doğrulandı. Uzak push/dağıtım yapılmadı.
