@@ -2,21 +2,27 @@ import { useMemo, useState } from 'react';
 import { Markdown } from '../math.jsx';
 import DataGrid from '../../components/DataGrid.jsx';
 import { BLOKLAR, TipKarti } from './bloklar.jsx';
-import { useSoruDurumu } from './SoruDurumu.jsx';
+import { useSoruDurumu, useAnindaCevap } from './SoruDurumu.jsx';
 import HareketV2Deneyi, { EsitYolDeneyi } from './HareketV2Deneyi.jsx';
 import { secenekSirasi } from './v2Kurallari.js';
 
 export function V2Soru({ oge, tohum, onDone, onAttempt, gizli = false, deger, onChange, gerekce = true }) {
+  const aninda = useAnindaCevap();
   const opts = useMemo(() => secenekSirasi(oge.secenekler, tohum), [oge.secenekler, tohum]);
   const [secim, setSecim] = useSoruDurumu(`${tohum}:secim`, null);
   const [yanlis, setYanlis] = useSoruDurumu(`${tohum}:yanlis`, false);
   const secili = gizli ? deger : secim;
+  const cevap = opts.find(s => s.dogru);
+  const secilen = opts.find(s => s.id === secili);
   const bitti = !gizli && opts.find(s => s.id === secili)?.dogru;
   return <section className="kp-soru"><div className="kp-kok"><Markdown text={oge.soru} /></div>
-    <div className="kp-secenekler" role="group" aria-label="Seçenekler">{opts.map((s, i) => <button type="button" key={s.id} className="kp-secenek" disabled={bitti} aria-pressed={secili === s.id} onClick={() => {
+    <div className="kp-secenekler" role="group" aria-label="Seçenekler">{opts.map((s, i) => <button type="button" key={s.id} className="kp-secenek" disabled={bitti} aria-pressed={secili === s.id} data-durum={aninda && secilen ? (s.dogru ? 'dogru' : secili === s.id ? 'yanlis' : undefined) : undefined} onClick={() => {
       if (gizli) onChange(s.id); else { setSecim(s.id); onAttempt?.(Boolean(s.dogru)); if (!s.dogru) setYanlis(true); else onDone?.(!yanlis); }
     }}><span className="kp-harf">{'ABCDE'[i]}</span><span>{s.metin}{s.g && <Gorsel g={s.g} baglam={oge.soru} />}</span></button>)}</div>
-    {!gizli && secim && <p role="status" className="kp-geri">{bitti ? 'Doğru. ' : 'Yeniden düşün. '}{gerekce && opts.find(s => s.id === secim)?.neden}</p>}
+    {aninda && secilen ? <div role="status" className={`kp-geri ${secilen.dogru ? 'kp-dogru' : 'kp-yeniden'}`}>
+      <p>{secilen.dogru ? 'Doğru.' : 'Yanlış.'} <strong>Doğru cevap: {'ABCDE'[opts.indexOf(cevap)]}.</strong> {cevap.metin}</p>
+      {!secilen.dogru && <Markdown text={secilen.neden} />}<Markdown text={cevap.neden} />{cevap.g && <Gorsel g={cevap.g} baglam={oge.soru} />}
+    </div> : !gizli && secim && <p role="status" className="kp-geri">{bitti ? 'Doğru. ' : 'Yeniden düşün. '}{gerekce && opts.find(s => s.id === secim)?.neden}</p>}
   </section>;
 }
 
@@ -66,11 +72,12 @@ export function Gorsel({ g, baglam = '' }) {
 }
 
 function Sinifla({ b, onDone }) {
+  const aninda = useAnindaCevap();
   const [answers, setAnswers] = useSoruDurumu(`sinifla:${b.soru}:answers`, {});
   const [check, setCheck] = useSoruDurumu(`sinifla:${b.soru}:check`, false);
   const [ilk, setIlk] = useSoruDurumu(`sinifla:${b.soru}:ilk`, true);
   const correct = (v, o) => JSON.stringify([...(v || [])].sort()) === JSON.stringify([...o.kutular].sort());
-  return <section><Markdown text={b.soru} />{b.ogeler.map((o, i) => <fieldset key={i}><legend>{o.metin}</legend>{b.kutular.map(k => <label key={k}><input type="checkbox" checked={answers[i]?.includes(k) || false} onChange={e => { setCheck(false); setAnswers(a => ({ ...a, [i]: e.target.checked ? [...(a[i] || []), k] : a[i].filter(v => v !== k) })); }} />{k} </label>)}{check && <p>{correct(answers[i], o) ? 'Doğru. ' : 'Yeniden düşün. '}{o.neden}</p>}</fieldset>)}<button className="btn btn-primary" onClick={() => { setCheck(true); if (b.ogeler.every((o, i) => correct(answers[i], o))) onDone(ilk); else setIlk(false); }}>Kontrol et</button></section>;
+  return <section><Markdown text={b.soru} />{b.ogeler.map((o, i) => <fieldset key={i}><legend>{o.metin}</legend>{b.kutular.map(k => <label key={k}><input type="checkbox" checked={answers[i]?.includes(k) || false} onChange={e => { setCheck(false); setAnswers(a => ({ ...a, [i]: e.target.checked ? [...(a[i] || []), k] : a[i].filter(v => v !== k) })); }} />{k} </label>)}{(check || aninda && answers[i] !== undefined) && <p role="status">{correct(answers[i], o) ? 'Doğru. ' : 'Yeniden düşün. '}{aninda && <strong>Doğru cevap: {o.kutular.join(', ')}. </strong>}{o.neden}</p>}</fieldset>)}<button className="btn btn-primary" onClick={() => { setCheck(true); if (b.ogeler.every((o, i) => correct(answers[i], o))) onDone(ilk); else setIlk(false); }}>Kontrol et</button></section>;
 }
 function TahminDeney({ soru, tohum, deney, aciklama, onDone }) {
   const [phase, setPhase] = useSoruDurumu(`${tohum}:tahmin-phase`, 0);
@@ -84,13 +91,18 @@ function TahminDeney({ soru, tohum, deney, aciklama, onDone }) {
 }
 
 export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
+  const aninda = useAnindaCevap();
   const [done, setDone] = useSoruDurumu(`${tohum}:done`, {});
   const [origin, setOrigin] = useState(0);
   const [concept, setConcept] = useSoruDurumu(`${tohum}:concept`, { index: 0, seri: 0 });
   if (b.tur === 'kavram-kontrol') return <section><h3>Kavram kontrolü</h3><p>Üst üste üç doğru: {concept.seri}/3</p>{concept.seri < 3 && <V2Soru key={concept.index} oge={b.sorular[concept.index % b.sorular.length]} tohum={`${tohum}:${concept.index}`} onDone={ilk => {
+    if (aninda) { setConcept({ ...concept, ilk }); return; }
     const seri = ilk ? concept.seri + 1 : 0;
     setConcept({ index: concept.index + 1, seri }); if (seri >= 3) onDone(true);
-  }} />}</section>;
+  }} />}{aninda && concept.ilk !== undefined && <button type="button" className="btn btn-primary" onClick={() => {
+    const seri = concept.ilk ? concept.seri + 1 : 0;
+    setConcept({ index: concept.index + 1, seri }); if (seri >= 3) onDone(true);
+  }}>Sonraki soru →</button>}</section>;
   const y = paket.yanilgilar.find(y => y.kod === b.kod);
   const LegacyModel = BLOKLAR.model;
   const model = b.kod === 'Y4' ? <HareketV2Deneyi tur="esit-surat" /> : b.kod === 'Y5' ? <EsitYolDeneyi /> : b.kod === 'Y10' ? <HareketV2Deneyi tur="sabit-buyuk" /> : b.kod === 'Y2' ? <><label>Sıfır noktasını taşı: {origin} m<input type="range" min="-5" max="5" value={origin} onChange={e => setOrigin(Number(e.target.value))} /></label><p>Cisim yerinde; yeni konumu {3-origin} m, aldığı yol 0 m.</p><Gorsel g={{tur:'sayi-dogrusu',noktalar:[{x:-origin,ad:'Eski sıfır'},{x:0,ad:'Yeni sıfır'},{x:3-origin,ad:'Cisim'}]}} /></>

@@ -21,7 +21,7 @@ function Test({ form, id, durum, yaz, tohum }) {
   const pretest = id === 'on';
   const sira = Math.min(Math.max(0, saved.sira || 0), form.length - 1);
   const git = value => yaz(id, prev => ({ ...prev, sira: value }));
-  return <section><h2>{id === 'on' ? 'Başlamadan önce' : 'Son kavram testi'}</h2><p>Bütün soruları yanıtla. Son test bitene kadar cevap açıklaması açılmaz.</p>
+  return <section><h2>{id === 'on' ? 'Başlamadan önce' : 'Son kavram testi'}</h2>
     {pretest && <p className="kp-test-sayac" aria-live="polite">Soru {sira + 1} / {form.length} · {form.filter(q => answers[q.id] !== undefined).length} soru yanıtlandı</p>}
     {(pretest ? [form[sira]] : form).map(q => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} gizli deger={answers[q.id]} onChange={v => { if (result) return; yaz(id, prev => ({ ...prev, cevaplar: { ...prev?.cevaplar, [q.id]: v } })); }} />)}
     <div className="kp-gezin">
@@ -69,7 +69,7 @@ function Calisma({ sorular, id, durum, yaz, tohum, tani = false, tur = 0 }) {
 
 function OsymSoru({ kod, sorular, sira, yaz, kayit }) {
   const soru = sorular[kod];
-  const practice = usePractice(soru?.id);
+  const practice = usePractice(soru?.id, null, { anindaCevap: true });
   const st = practice.state;
   const ilkCevap = st?.attempts?.find(a => a.eventType === 'ANSWER');
   useEffect(() => { if (ilkCevap && kayit === undefined) yaz('osym', prev => ({ ...prev, [kod]: { ilk: ilkCevap.correct === true, zaman: Date.now() } })); }, [ilkCevap?.correct]);
@@ -77,9 +77,10 @@ function OsymSoru({ kod, sorular, sira, yaz, kayit }) {
   return <section className="kp-soru"><p className="kp-etiket">ÖSYM {soru.yil} · Soru {sira + 1}</p>
     <QuestionImage id={soru.id} alt={`ÖSYM ${soru.yil} TYT hareket sorusu`} />
     {practice.loading ? <p role="status">Deneme geçmişi yükleniyor…</p> : ilkCevap
-      ? <p role="status" className="kp-geri">{ilkCevap.correct ? 'Doğru.' : 'Yanlış.'} Bu soruda ilk denemen kaydedildi{ilkCevap.selectedAnswer ? ` (${ilkCevap.selectedAnswer})` : ''}. Çözümü soru sayfasında incelersin.</p>
+      ? <p role="status" className="kp-geri">{ilkCevap.correct ? 'Doğru.' : 'Yanlış.'} Bu soruda ilk denemen kaydedildi{ilkCevap.selectedAnswer ? ` (${ilkCevap.selectedAnswer})` : ''}. {st?.correctAnswer ? <strong>Doğru cevap: {st.correctAnswer}.</strong> : 'Cevap yükleniyor…'}</p>
       : <ChoiceButtons count={5} disabled={practice.busy || !st?.canAnswer} onSelect={l => practice.submit('ANSWER', l)} />}
-    {practice.error && <p role="alert">{practice.error}</p>}
+    {ilkCevap && st?.correctAnswer && soru.hasSolutionImage && <QuestionImage id={soru.id} solution alt="Sorunun kaynak çözümü" />}
+    {practice.error && <p role="alert">{practice.error}{ilkCevap && st?.canReveal && <button type="button" className="btn btn-secondary" disabled={practice.busy} onClick={() => practice.submit('REVEAL')}>Cevabı yeniden yükle</button>}</p>}
   </section>;
 }
 function Duzey4({ sorular, durum, yaz }) {
@@ -121,7 +122,7 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
   const git = id => setParams({ bolum: id });
   const d = paket.duraklar.find(d => d.id === bolum);
   const active = nav.some(([id]) => id === bolum) ? bolum : 'on';
-  return <SoruDeposu degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link>{uyari && <p role="alert">{uyari}</p>}
+  return <SoruDeposu anindaCevap={paket.id === 'fizik-hareket'} degerler={durum._sorular || {}} yaz={(id, update) => yaz('_sorular', prev => ({ ...prev, [id]: update(prev?.[id]) }))}><article className="kp-sayfa"><Link to="/konuyu-ogrenelim/harita">← Konu haritası</Link>{uyari && <p role="alert">{uyari}</p>}
     <div className="kp-duzen"><aside className="kp-v2-yan"><header className="kp-ust kp-v2-banner"><h1>{paket.baslik}</h1><p className="kp-onay">Öğretmen kontrolü bekliyor</p></header><nav className="kp-yol" aria-label="Konu bölümleri">{nav.map(([id, ad]) => <button key={id} type="button" aria-current={active === id ? 'step' : undefined} onClick={() => git(id)}>{ad}{paket.duraklar.some(d => d.id === id && tamam(d)) ? ' ✓' : ''}</button>)}</nav></aside>
       <main className="card kp-kart kp-v2-ana" key={active}>
         {['on', 'son'].includes(active) ? <Test form={paket.kavramTesti[active]} id={active} durum={durum} yaz={yaz} tohum={seed} />

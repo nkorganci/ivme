@@ -33,6 +33,7 @@ export default function QuestionDetail() {
   filters.questionTypeId=search.get('questionTypeId') || '';filters.teacherDifficulty=search.get('teacherDifficulty') || '';filters.categoryId=search.getAll('categoryId');filters.categoryMatch=search.get('categoryMatch') || 'ANY';
   filters.includeCandidates=search.get('includeCandidates')!=='false';
   const sessionId = search.get('sessionId');
+  if (search.get('ogrenme') === 'fizik-hareket') filters.ogrenme = 'fizik-hareket';
   const { data: session, loading: sessionLoading, error: sessionError } = useAsync(
     () => sessionId ? api.get(`/api/study-sessions/${encodeURIComponent(sessionId)}`) : Promise.resolve(null), [sessionId]);
   usePageTitle(q ? `Soru ${q.code}` : 'Soru');
@@ -94,7 +95,7 @@ function QuestionView({ q, filters, session, reload }) {
   const answering = useRef(false);
   const [search] = useSearchParams();
   const resumeNotice = search.get('devam') === '1' && sessionPosition >= 0;
-  const practice = usePractice(q.id, sessionId);
+  const practice = usePractice(q.id, sessionId, { anindaCevap: filters.ogrenme === 'fizik-hareket' });
   const state = practice.state;
   useEffect(() => {
     if (state?.attempts?.length) setReady(false);

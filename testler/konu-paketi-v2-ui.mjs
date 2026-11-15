@@ -1,3 +1,4 @@
+import { practiceFixture } from './lib/practice-fixture.mjs';
 // Yerel, yalıtılmış tarayıcı: ekran kapsamı için ilerleme fixture olarak eklenir; öğrenci kabul testi değildir.
 import assert from 'node:assert/strict';
 import { tarayiciAc } from './lib/tarayici.mjs';
@@ -6,7 +7,9 @@ import {paketHazirla} from '../frontend/src/learn/konu/v2Kurallari.js';
 import ak from '../frontend/src/learn/konu/paketler/arac-kutusu-fizik.js';
 const b=await tarayiciAc({mobile:process.argv.includes('--mobil')});
 try{
+ await practiceFixture(b);
  await b.goto('/');await b.login('student');await b.goto('/konuyu-ogrenelim/ogren/fizik-hareket');await b.wait('document.body.innerText.includes("Başlamadan önce")');
+ await b.wait('Array.isArray(window.__practiceEvents)');
  const checks=[];
  checks.push(await b.evalJs(`({locked:[...document.querySelectorAll('.kp-yol button')].filter(b=>b.disabled).length,feedback:!!document.querySelector('.kp-v2-ana .kp-geri')})`));
  const button = label => `[...document.querySelectorAll('.kp-v2-ana button')].find(b=>b.textContent===${JSON.stringify(label)})`;
@@ -17,6 +20,7 @@ try{
   assert.equal(await b.evalJs(`document.querySelectorAll('.kp-v2-ana .kp-soru').length`),1);
   await b.evalJs(`document.querySelector('.kp-v2-ana .kp-secenekler button').click()`);
   await b.wait(`document.querySelector('.kp-v2-ana .kp-secenek[aria-pressed=true]')`);
+  await b.wait(`document.querySelector('.kp-v2-ana .kp-geri')?.textContent.includes('Doğru cevap:')`);
   if(i===0){
    await b.evalJs(`${button('İleri')}.click()`);
    await b.wait(`document.querySelector('.kp-test-sayac').textContent.startsWith('Soru 2 /')`);
@@ -46,6 +50,7 @@ try{
   const clicked=await b.evalJs(`(()=>{const b=[...document.querySelectorAll('.kp-v2-ana .kp-gezin button')].find(b=>b.textContent==='Sonraki →');if(b&&!b.disabled){b.click();return true}return false})()`);if(!clicked)break;
  }
  }
+ assert.equal(checks[0].feedback,false);assert.equal(checks[1].feedback,true);
  if(checks.length !== 2 + paketHazirla(p).duraklar.reduce((n,d)=>n+d.bloklar.length,0) || checks.some(c=>c.empty||c.overflow)||b.errors.length)throw Error('Ekran denetimi başarısız');
  console.log(JSON.stringify({checks:checks.length,initial:checks.slice(0,2),empty:checks.filter(c=>c.empty).length,overflow:checks.filter(c=>c.overflow).length,errors:b.errors,failedRequests:b.failedRequests}));
 }finally{await b.close()}

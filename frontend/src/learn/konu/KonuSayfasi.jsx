@@ -12,6 +12,7 @@ import FigureZoom from '../lesson/FigureZoom.jsx';
 import { BLOKLAR, KarmaOge, TipKarti } from './bloklar.jsx';
 import { PAKETLER } from './paketler/index.js';
 import KonuV2 from './KonuV2.jsx';
+import { useAnindaCevap } from './SoruDurumu.jsx';
 import '../physics/physics.css';
 import '../lesson/learning-experience.css';
 import './konu.css';
@@ -132,6 +133,8 @@ function Karma({ paket, ilerleme, yaz, git }) {
 }
 
 export function Gercek({ paket, sorular, tip }) {
+  const aninda = useAnindaCevap();
+  const soruAdresi = kod => `/soru/${encodeURIComponent(kod)}${aninda ? '?ogrenme=fizik-hareket' : ''}`;
   const cozulmus = new Set(paket.duraklar.flatMap((d) => d.bloklar).filter((b) => b.tur === 'cikmis' || b.tur === 'tani').map((b) => b.kod));
   const gosterilen = tip ? paket.tipler.filter((t) => t.id === tip) : paket.tipler;
   return <section className="card kp-kart">
@@ -142,8 +145,8 @@ export function Gercek({ paket, sorular, tip }) {
     {gosterilen.map((t) => <div key={t.id} className="kp-gercek-tip">
       <h3>{t.ad}</h3><p className="kp-tip-hamle"><strong>İlk hamle:</strong> {t.ilkHamle}</p>
       <ul className="kp-kod-liste">
-        {t.osym.map((kod) => <li key={kod}><Link to={`/soru/${encodeURIComponent(kod)}`} target="_blank" rel="noreferrer">{sorular[kod]?.yil} {sorular[kod]?.sinav} · ÖSYM ↗</Link>{cozulmus.has(kod) && <span className="kp-rozet">derste incelendi</span>}</li>)}
-        {t.sorular.map((kod, i) => <li key={kod}><Link to={`/soru/${encodeURIComponent(kod)}`} target="_blank" rel="noreferrer">Soru {i + 1} ↗</Link><span className="small muted"> {sorular[kod]?.kaynak?.split(' · ')[0]}</span></li>)}
+        {t.osym.map((kod) => <li key={kod}><Link to={soruAdresi(kod)} target="_blank" rel="noreferrer">{sorular[kod]?.yil} {sorular[kod]?.sinav} · ÖSYM ↗</Link>{cozulmus.has(kod) && <span className="kp-rozet">derste incelendi</span>}</li>)}
+        {t.sorular.map((kod, i) => <li key={kod}><Link to={soruAdresi(kod)} target="_blank" rel="noreferrer">Soru {i + 1} ↗</Link><span className="small muted"> {sorular[kod]?.kaynak?.split(' · ')[0]}</span></li>)}
       </ul></div>)}
   </section>;
 }

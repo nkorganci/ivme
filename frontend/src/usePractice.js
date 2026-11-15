@@ -29,7 +29,8 @@ function useActiveSeconds(questionId) {
 }
 
 /** Kaybolan ağ yanıtında aynı olay kimliğini tekrar kullanır; sunucu çift kayıt açmaz. */
-export function usePractice(questionId, sessionId = null) {
+export function usePractice(questionId, sessionId = null, { anindaCevap = false } = {}) {
+  const autoReveal = useRef(null);
   const [state, setState] = useState(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -73,6 +74,15 @@ export function usePractice(questionId, sessionId = null) {
       setBusy(false);
     }
   };
+
+  useEffect(() => {
+    if (!anindaCevap || loading || busy || !state?.canReveal || state.correctAnswer
+      || !state.attempts?.some(a => a.eventType === 'ANSWER')) return;
+    const marker = `${questionId}:${state.round}:${state.attempts.length}`;
+    if (autoReveal.current === marker) return;
+    autoReveal.current = marker;
+    void submit('REVEAL');
+  }, [anindaCevap, questionId, state, loading, busy]);
 
   return { state, loading, busy, error, setError, load, submit,
     selectionChanged: () => { pending.current = null; } };

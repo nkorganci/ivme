@@ -19,11 +19,11 @@
 2. Deney yönergelerini hareket stüdyosuna bağla; yönerge metni çalışan deney değildir.
 3. Bölümler serbestçe açılır; basamak içi ölçütler ve ölçüm kayıtları korunur.
 4. `secenekler` dizilerinde doğru seçenek başta yazılmıştır. Kalıcı seçenek kimliğiyle karıştır;
-   cevap ve gerekçeyi seçimden önce gösterme. Test bütün cevaplar kaydedilmeden geri bildirim açmasın.
+   cevap ve gerekçeyi seçimden önce gösterme. Hareket içinde seçimden hemen sonra doğru cevap ve gerekçe gösterilir.
 5. Ön test tanı döngüleriyle ortaktır; son test ayrı yüzeylidir ve derste gösterilmez. İki seçenekli
    maddeler öğretmen denetiminde değerlendirilir; şans etkisi nedeniyle tek başına öğrenme kanıtı değildir.
 6. Tip tanıma ve düzeyli set aynı senaryoları kullanır: öğretim alıştırmasıdır, görülmemiş aktarım değildir.
-   Tip tanıma turunda sayısal cevabı veren gerekçeyi açma; set sonrası göster.
+   Tip tanıma dahil bütün Hareket sorularında seçim sonrası doğru cevap ve gerekçe açılır.
 7. TYT-0910/0912/0913, v1'den devralınan ipucu/çözümlerden ayrılmadan bağımsız ÖSYM ölçümü sayılamaz.
    Kaynak görseli ve basılı anahtarı yeniden doğrulanmadan yeni çözüm veya kabul üretme.
    Daha önce gören öğrenci için bir hafta sonraki görülmemiş soru koşulu ayrıca sağlanmalıdır.
@@ -61,7 +61,9 @@ V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
   Durak çıkışındaki sınama ilk turda tamamen doğru değilse yeni tur gerekir; başarısız denemeler saklanır.
 - Set için bütün tiplerin cevaplanması ve ilk denemede en az %80 gerekir; yeniden tur açıkça başlatılır.
   Bunlar öğretim alıştırmasıdır; aynı senaryonun yeniden çözümü görülmemiş aktarım sayılmaz.
-- Seçenek sırası kalıcı kimlikle karışır. Ön testte geri bildirim yoktur; son testte bütün yanıtlar kaydedilince açılır.
+- Seçenek sırası kalıcı kimlikle karışır. Ön/son test, tahmin, mikro ders, ilk hamle, alıştırma, yargı, sınıflama ve hatayı bul sorularında seçimden hemen sonra doğru cevap ve gerekçe görünür.
+- Kavram kontrolünde cevap okunabilsin diye sonraki soruya düğmeyle geçilir. ÖSYM ve Hareket’ten açılan gerçek sorularda cevap sunucunun REVEAL olayıyla gösterilir; hata halinde elle yeniden denenebilir.
+- Cevap gösterilen ön/son test puanı öğretim geri bildirimidir; bağımsız öğrenme veya görülmemiş aktarım kanıtı sayılmaz. İlk deneme/tur kayıtları korunur.
 - Çözümlü/tanıma ÖSYM 0910/0912/0913 blokları savunmalı olarak öğretim akışından ayrılır.
   Gerçek soru bağlantıları soru sayfasını açar; önce görmüş öğrenci için görülmemişlik garantisi yoktur.
 - Y1 vb. için mevcut fizik deneyleri, Y2 için sıfır noktası kaydırıcısı kullanılır. Yeni deneyler
@@ -78,7 +80,7 @@ kaynağın öğretmen kabulü, bütün basamak geçişlerinin pedagojik değerle
 
 Teknik sonuç: v1+v2 testleri 12/12; JSON Schema Draft 2020-12 doğrulaması geçti.
 Masaüstü ve mobil taramada 105’er kontrol: boş ekran, yatay taşma, konsol hatası yok;
-ön testte cevap sonrası geri bildirim gizli; bölümler arası kilit kullanıcı talimatıyla kaldırıldı.
+ön testte cevap sonrası geri bildirim açıktır; bölümler arası kilit kullanıcı talimatıyla kaldırıldı.
 İlk kimlik sorgusunun giriş öncesi 401’i ve favicon 404’ü dışında içerik isteği hatası yok.
 Derleme, plan ve 17 dosyalık depo kontrolü geçti. Yerel izleyici v2 ön yüzünü yayımladı;
 1010 üzerinden `Başlamadan önce` ekranı doğrulandı. Uzak push/dağıtım yapılmadı.
@@ -112,7 +114,7 @@ Denetçi 153 kör maddeden 143 kesin çözülebileni anahtarla uyumlu buldu; 8 k
 iki kaynak kırpımını ayrıca çözdü. Resmî anahtar/öğretmen kabulü kapanmadı.
 
 Kullanıcı talimatıyla düzeltmeler: her tipte ilk doğru, kalıcı soru/tur durumu,
-tahmin → deney → açıklama/gerekçe sırası, ayrı kavram/çıkış havuzları, hareket haritası ve çizgi adları,
+tahmin → deney → açıklama/gerekçe sırası (güncel Hareket ekranında cevap tahmin seçilince de görünür), ayrı kavram/çıkış havuzları, hareket haritası ve çizgi adları,
 tip kartları ve karma tip seçimi, eksik koşullu kökler, Y4/Y5/Y10’a özgü deneyler.
 Örneklerde beş aşamalı öğrenci notları alınır; bunlar anlamsal doğruluk olarak otomatik onaylanmaz.
 Durak çıkışındaki iki farklı sorunun ilk tur doğruları geçişi belirler; çözümü açmak tek başına yetmez.

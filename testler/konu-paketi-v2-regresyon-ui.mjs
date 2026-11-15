@@ -1,3 +1,4 @@
+import { practiceFixture } from './lib/practice-fixture.mjs';
 import assert from 'node:assert/strict';
 import { tarayiciAc, pause } from './lib/tarayici.mjs';
 import raw from '../frontend/src/learn/konu/paketler/fizik-hareket.v2.js';
@@ -17,7 +18,9 @@ const full=()=>({...base(),...Object.fromEntries(p.duraklar.map(d=>[d.id,Object.
 const postDisabled=()=>b.evalJs(`[...document.querySelectorAll('.kp-yol button')].find(x=>x.textContent==='Son test').disabled`);
 async function yargi(oge){await b.evalJs(`(()=>{const li=[...document.querySelectorAll('.kp-yargilar>li')];${JSON.stringify(oge.yargilar.map(y=>y.dogru))}.forEach((v,i)=>[...li[i].querySelectorAll('button')].find(b=>b.textContent===(v?'Doğru':'Yanlış')).click())})()`);await click('Kontrol et');}
 try{
+ await practiceFixture(b);
  await b.goto('/');await b.login('student');await open('son');await b.wait(`document.body.innerText.includes('Son kavram testi')`);
+ await b.wait('Array.isArray(window.__practiceEvents)');
  const u=await b.evalJs(`(async()=>{const r=await(await fetch('/api/auth/me')).json();return r.user||r})()`);key=`ivme:konu-paketi:fizik-hareket:${u.id}:v2:r3`;
  const old=key.replace(':r3','');await b.evalJs(`localStorage.setItem(${JSON.stringify(old)},'{"onceki":"korunacak"}')`);
  assert.equal(await postDisabled(),false);
@@ -30,16 +33,17 @@ try{
   assert.ok(await text());
  }
  await open('son');
- for(const q of p.kavramTesti.son)await choose(q.soru,q.secenekler[0].metin);
+ for(const q of p.kavramTesti.son){await choose(q.soru,q.secenekler[0].metin);assert.ok((await text()).includes(q.secenekler.find(s=>s.dogru).neden));}
  await click('Testi bitir');assert.ok((await text()).includes('Ön test tamamlanmadığı için normalize kazanç hesaplanmaz'));
  await open('son');assert.ok((await text()).includes('Test tamamlandı'));
  checks.push('Banner araç kutusu genişliğinde; ön koşullar ilk; boş ilerlemeyle tüm bölümler ve ön testsiz son test açılır');
  await fixture(base(),'kime-gore');const pred=p.duraklar[0].bloklar[0].tahmin;
  await choose(pred.soru,pred.secenekler.find(s=>!s.dogru).metin);
- assert.equal(await b.evalJs(`!!document.querySelector('.kp-v2-ana .kp-geri')`),false);
+ assert.ok((await text()).includes('Doğru cevap:'));
+ assert.ok((await text()).includes(pred.secenekler.find(s=>s.dogru).metin));
  await click('Tahminimi kaydet ve deneyi aç');assert.ok((await text()).includes('Gözlemledim, açıklamayı aç'));
  assert.equal(await b.evalJs(`!!document.querySelector('.kp-v2-ana .kp-geri')`),false);
- await click('Gözlemledim, açıklamayı aç');await choose('Gözlemine göre doğru açıklama hangisi?',pred.gerekce.secenekler.find(s=>s.dogru).metin);checks.push('Yanlış tahmin → deney → açıklama/gerekçe');
+ await click('Gözlemledim, açıklamayı aç');await choose('Gözlemine göre doğru açıklama hangisi?',pred.gerekce.secenekler.find(s=>s.dogru).metin);checks.push('Tahminden hemen sonra doğru cevap; deney ve gerekçe akışı korunur');
  await fixture(full(),'set');const q=sets[0];await choose(q.soru,q.secenekler.find(s=>!s.dogru).metin);await open('set');
  assert.ok(Object.values((await stored())._sorular).includes(true));
  await choose(q.soru,q.secenekler.find(s=>s.dogru).metin);assert.equal((await stored()).set[q.id],false);checks.push('Yenilemede ilk yanlış korunur');
@@ -65,6 +69,29 @@ try{
  await yargi(exit.ogeler[0]);const eq=exit.ogeler[1];await choose(eq.soru,eq.secenekler.find(s=>!s.dogru).metin);await open(first.id);await choose(eq.soru,eq.secenekler.find(s=>s.dogru).metin);
  assert.ok((await text()).includes('Yeni deneme'));await open(first.id);assert.ok((await text()).includes('Yeni deneme'));await click('Yeni deneme');await open(first.id);await yargi(exit.ogeler[0]);await choose(eq.soru,eq.secenekler.find(s=>s.dogru).metin);assert.equal((await stored())[first.id][exitI].ilk,true);assert.ok(Object.keys((await stored())[first.id+':hatalar']).length);checks.push('Durak çıkışı: örnekler yetmez, yanlış/yenileme/yeni tur ve iki doğru');
  for(const [kod,expected] of [['Y4','K hızı: +3'],['Y5','İlk parçanın sayacı'],['Y10','Büyük sabit hız']]){const d=p.duraklar.find(d=>d.bloklar.some(b=>b.tur==='yanilgi'&&b.kod===kod));const i=d.bloklar.findIndex(b=>b.tur==='yanilgi'&&b.kod===kod);await fixture({...base(),[d.id]:Object.fromEntries(d.bloklar.slice(0,i).map((_,j)=>[j,{ilk:true}]))},d.id);const q=p.yanilgilar.find(y=>y.kod===kod).ortayaCikar;await choose(q.soru,q.secenekler[0].metin);await click('Tahminimi kaydet ve deneyi aç');assert.ok((await text()).includes(expected));}checks.push('Y4/Y5/Y10 yönergeye uygun modeller');
+ // Her soru biçiminde seçim anındaki geri bildirimi doğrula.
+ await fixture({},'ak');const micro=ak[0].kontrol;
+ await choose(micro.soru,micro.secenekler.find(s=>!s.dogru).metin);
+ assert.ok((await text()).includes(micro.secenekler.find(s=>s.dogru).neden));
+ await fixture({},'tip');const tani=p.tipCalismalari[0].tani;
+ await choose(tani.soru,tani.secenekler.find(s=>!s.dogru).metin);
+ assert.ok((await text()).includes(tani.secenekler.find(s=>s.dogru).neden));
+ const sd=p.duraklar[0],si=sd.bloklar.findIndex(b=>b.tur==='sinifla');
+ await fixture({...base(),[sd.id]:Object.fromEntries(sd.bloklar.slice(0,si).map((_,i)=>[i,{ilk:true}]))},sd.id);
+ await b.evalJs(`document.querySelector('.kp-v2-ana input[type=checkbox]').click()`);
+ await b.wait(`document.querySelector('.kp-v2-ana fieldset [role=status]')`);
+ assert.ok((await text()).includes(sd.bloklar[si].ogeler[0].kutular.join(', ')));
+ const hd=p.duraklar.find(d=>d.bloklar.some(b=>b.ogeler?.some(o=>o.tur==='hata'))),hi=hd.bloklar.findIndex(b=>b.ogeler?.some(o=>o.tur==='hata'));
+ await fixture({...base(),[hd.id]:Object.fromEntries(hd.bloklar.slice(0,hi).map((_,i)=>[i,{ilk:true}]))},hd.id);
+ await b.evalJs(`document.querySelector('.kp-hata button').click();document.querySelector('.kp-yargilar button').click()`);
+ await b.wait(`document.querySelector('.kp-hata')?.parentElement.textContent.includes('Hatalı adım:')`);
+ assert.ok(await b.evalJs(`!!document.querySelector('.kp-yargi-neden')`));
+ const ci=sd.bloklar.findIndex(b=>b.tur==='kavram-kontrol');
+ await fixture({...base(),[sd.id]:Object.fromEntries(sd.bloklar.slice(0,ci).map((_,i)=>[i,{ilk:true}]))},sd.id);
+ const cq=sd.bloklar[ci].sorular[0];await choose(cq.soru,cq.secenekler.find(s=>s.dogru).metin);
+ assert.ok((await text()).includes(cq.secenekler.find(s=>s.dogru).neden));
+ await click('Sonraki soru →');assert.ok((await text()).includes('Üst üste üç doğru: 1/3'));
+ checks.push('Mikro ders, ilk hamle, sınıflama, yargı, hatalı adım ve kavram kontrolünde anında cevap');
  assert.equal(await b.evalJs(`localStorage.getItem(${JSON.stringify(old)})`),'{"onceki":"korunacak"}');assert.deepEqual(b.errors,[]);
  console.log(JSON.stringify({status:'PASS',checks,errors:b.errors}));
 }finally{await b.close()}

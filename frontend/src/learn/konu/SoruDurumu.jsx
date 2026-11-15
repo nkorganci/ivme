@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 
 const SoruBaglami = createContext(null);
-export function SoruDeposu({ degerler, yaz, children }) {
-  return <SoruBaglami.Provider value={{ degerler, yaz, alan: 'v2' }}>{children}</SoruBaglami.Provider>;
+export function SoruDeposu({ degerler, yaz, children, anindaCevap = false }) {
+  return <SoruBaglami.Provider value={{ degerler, yaz, alan: 'v2', anindaCevap }}>{children}</SoruBaglami.Provider>;
 }
 export function SoruAlani({ id, children }) {
   const parent = useContext(SoruBaglami);
@@ -20,4 +20,8 @@ export function useSoruDurumu(id, baslangic) {
     ctx.yaz(key, previous => typeof update === 'function' ? update(previous ?? initial()) : update);
   };
   return [value, set];
+}
+
+export function useAnindaCevap() {
+  return Boolean(useContext(SoruBaglami)?.anindaCevap);
 }
