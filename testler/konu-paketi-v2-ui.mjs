@@ -1,4 +1,5 @@
 // Yerel, yalıtılmış tarayıcı: ekran kapsamı için ilerleme fixture olarak eklenir; öğrenci kabul testi değildir.
+import assert from 'node:assert/strict';
 import { tarayiciAc } from './lib/tarayici.mjs';
 import p from '../frontend/src/learn/konu/paketler/fizik-hareket.v2.js';
 import {paketHazirla} from '../frontend/src/learn/konu/v2Kurallari.js';
@@ -8,9 +9,29 @@ try{
  await b.goto('/');await b.login('student');await b.goto('/konuyu-ogrenelim/ogren/fizik-hareket');await b.wait('document.body.innerText.includes("Başlamadan önce")');
  const checks=[];
  checks.push(await b.evalJs(`({locked:[...document.querySelectorAll('.kp-yol button')].filter(b=>b.disabled).length,feedback:!!document.querySelector('.kp-v2-ana .kp-geri')})`));
- await b.evalJs(`(async()=>{for(const g of document.querySelectorAll('.kp-v2-ana .kp-secenekler')){g.querySelector('button').click();await new Promise(r=>setTimeout(r,30))}})()`);
+ const button = label => `[...document.querySelectorAll('.kp-v2-ana button')].find(b=>b.textContent===${JSON.stringify(label)})`;
+ assert.equal(await b.evalJs(`${button('Geri')}.disabled`),true);
+ assert.equal(await b.evalJs(`${button('Bitir')}.disabled`),true);
+ for(let i=0;i<p.kavramTesti.on.length;i++){
+  await b.wait(`document.querySelector('.kp-test-sayac').textContent.startsWith('Soru ${i+1} / ${p.kavramTesti.on.length}')`);
+  assert.equal(await b.evalJs(`document.querySelectorAll('.kp-v2-ana .kp-soru').length`),1);
+  await b.evalJs(`document.querySelector('.kp-v2-ana .kp-secenekler button').click()`);
+  await b.wait(`document.querySelector('.kp-v2-ana .kp-secenek[aria-pressed=true]')`);
+  if(i===0){
+   await b.evalJs(`${button('İleri')}.click()`);
+   await b.wait(`document.querySelector('.kp-test-sayac').textContent.startsWith('Soru 2 /')`);
+   await b.evalJs(`${button('Geri')}.click()`);
+   await b.wait(`document.querySelector('.kp-v2-ana .kp-secenek[aria-pressed=true]')`);
+   await b.goto('/konuyu-ogrenelim/ogren/fizik-hareket');
+   await b.wait(`document.querySelector('.kp-v2-ana .kp-secenek[aria-pressed=true]')`);
+  }
+  if(i+1<p.kavramTesti.on.length)await b.evalJs(`${button('İleri')}.click()`);
+ }
+ assert.equal(await b.evalJs(`${button('İleri')}.disabled`),true);
+ assert.equal(await b.evalJs(`${button('Bitir')}.disabled`),false);
  checks.push(await b.evalJs(`({feedback:!!document.querySelector('.kp-v2-ana .kp-geri')})`));
- await b.evalJs(`[...document.querySelectorAll('button')].find(b=>b.textContent==='Testi bitir').click()`);
+ await b.evalJs(`${button('Bitir')}.click()`);
+ await b.wait(`document.querySelector('.kp-v2-ana').textContent.includes('Test tamamlandı')`);
 
  await b.wait(`!document.querySelectorAll('.kp-yol button')[1].disabled`);
  const state={on:{sonuc:{puan:50,dogru:5,toplam:10}},ak:Object.fromEntries(ak.map(a=>[a.id,true]))};

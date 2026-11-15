@@ -18,9 +18,16 @@ function Test({ form, id, durum, yaz, tohum }) {
   const answers = saved.cevaplar || {};
   const result = saved.sonuc;
   const complete = testSonucu(form, answers);
+  const pretest = id === 'on';
+  const sira = Math.min(Math.max(0, saved.sira || 0), form.length - 1);
+  const git = value => yaz(id, prev => ({ ...prev, sira: value }));
   return <section><h2>{id === 'on' ? 'Başlamadan önce' : 'Son kavram testi'}</h2><p>Bütün soruları yanıtla. Son test bitene kadar cevap açıklaması açılmaz.</p>
-    {form.map(q => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} gizli deger={answers[q.id]} onChange={v => { if (result) return; yaz(id, prev => ({ ...prev, cevaplar: { ...prev?.cevaplar, [q.id]: v } })); }} />)}
-    {!result && <button className="btn btn-primary" disabled={!complete} onClick={() => yaz(id, { cevaplar: answers, sonuc: complete })}>Testi bitir</button>}
+    {pretest && <p className="kp-test-sayac" aria-live="polite">Soru {sira + 1} / {form.length} · {form.filter(q => answers[q.id] !== undefined).length} soru yanıtlandı</p>}
+    {(pretest ? [form[sira]] : form).map(q => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} gizli deger={answers[q.id]} onChange={v => { if (result) return; yaz(id, prev => ({ ...prev, cevaplar: { ...prev?.cevaplar, [q.id]: v } })); }} />)}
+    <div className="kp-gezin">
+      {pretest && <><button type="button" className="btn btn-secondary" disabled={sira === 0} onClick={() => git(sira - 1)}>Geri</button><button type="button" className="btn btn-secondary" disabled={sira === form.length - 1} onClick={() => git(sira + 1)}>İleri</button></>}
+      {!result && <button type="button" className="btn btn-primary" disabled={!complete} onClick={() => yaz(id, prev => ({ ...prev, cevaplar: answers, sonuc: complete }))}>{pretest ? 'Bitir' : 'Testi bitir'}</button>}
+    </div>
     {result && <p role="status">Test tamamlandı: {result.dogru}/{result.toplam}.</p>}
     {id === 'son' && result && <><p>{durum.on?.sonuc ? <>Ön: %{durum.on.sonuc.puan}, son: %{result.puan}. Normalize kazanç: {kazanc(durum.on.sonuc.puan, result.puan)?.toFixed(2) ?? 'Ön puan 100 olduğundan hesaplanmaz'}.</> : <>Son: %{result.puan}. Ön test tamamlanmadığı için normalize kazanç hesaplanmaz.</>} Bu bir öğretmen kabulü değildir.</p>{form.map(q => <details key={q.id}><summary>{q.soru}</summary><p>{q.secenekler.find(s => s.dogru)?.neden}</p></details>)}</>}
   </section>;

@@ -54,6 +54,7 @@ V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
 - Menüde ön koşullar/araç kutusu en üsttedir; banner aynı sütun genişliğinde yalnız konu adı ve öğretmen kontrolü etiketini gösterir.
 - Ön test dahil bütün bölümler önceki bölümü tamamlama koşulu olmadan açılır; bölüm içi etkinlik ölçütleri korunur.
 - Son test ön test yapılmadan tamamlanabilir; bu durumda normalize kazanç hesaplanmaz.
+- Ön testte tek soru gösterilir; soru numarası/toplam ve yanıtlanan sayı görünür. Geri/İleri ile seçimler korunur; bütün sorular yanıtlanınca Bitir açılır. Soru konumu yenilemede korunur.
 - Testlerin cevapları kullanıcı başına v2 yerel anahtarda saklanır; v1 kayıtları taşınmaz. Son test ayrı formdur.
 - Kavram kapısı mevcut içerik sorularından üç ardışık doğru ister; yanlışta seri sıfırlanır.
   Temsil soruları doğruya ulaşmadan, örnekler bütün adımlar açılmadan ileri geçmez.
