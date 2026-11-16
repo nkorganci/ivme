@@ -51,6 +51,7 @@ Kullanıcının model tercihi GPT-6.1 Sol (yüksek): katalog artık `KonuV2` ekr
 bloklar `v2Bloklar.jsx`; yeni iki-cisim/üç-grafik deneyleri `HareketV2Deneyi.jsx`.
 V1 içerik modülü yeniden kullanım ve geriye dönük test için korunur.
 
+- Duraklarda adlandırılmış etkinlik rehberi toplamı, mevcut konumu, tamamlanan sayıyı ve sonraki etkinliği gösterir; açılır bölüm planı tüm etkinlikleri ve durumlarını listeler. Tahmin/deney/gerekçe aşamaları işaretlenir; “Şimdi” yönergesi seçime ve aşamaya göre güncellenir. Önceki/Sonraki etkinlik düğmeleri bölüm geçişinden ayrıdır; bölüm geçişi son etkinliğin sonunda görünür. Tamamlanan deney katlanır, gerekçe sorusu öne çıkar; tamamlanınca rehberden de sonraki etkinliğe geçilir. Etkinlik değişince rehber görünür konuma gelir. Etkinlik konumu yenilemede korunur; önceki ilerleme kayıtları değişmez.
 - Menüde ön koşullar/araç kutusu en üsttedir; banner aynı sütun genişliğinde yalnız konu adı ve öğretmen kontrolü etiketini gösterir.
 - Ön test dahil bütün bölümler önceki bölümü tamamlama koşulu olmadan açılır; bölüm içi etkinlik ölçütleri korunur.
 - “İlerlemeyi sıfırla” onay penceresinden, yalnız geçerli kullanıcıya ait Hareket v2:r3 tarayıcı kaydını kaldırır ve ön teste döner. Soru/etkinlik bileşenleri yeniden kurulur; diğer kullanıcı/konu ve eski pilot kayıtları ile DB’deki gerçek soru geçmişi korunur. Depolama hatasında ilerleme korunup yeniden deneme sunulur.

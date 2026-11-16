@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Markdown } from '../math.jsx';
 import DataGrid from '../../components/DataGrid.jsx';
 import { BLOKLAR, TipKarti } from './bloklar.jsx';
@@ -79,18 +79,21 @@ function Sinifla({ b, onDone }) {
   const correct = (v, o) => JSON.stringify([...(v || [])].sort()) === JSON.stringify([...o.kutular].sort());
   return <section><Markdown text={b.soru} />{b.ogeler.map((o, i) => <fieldset key={i}><legend>{o.metin}</legend>{b.kutular.map(k => <label key={k}><input type="checkbox" checked={answers[i]?.includes(k) || false} onChange={e => { setCheck(false); setAnswers(a => ({ ...a, [i]: e.target.checked ? [...(a[i] || []), k] : a[i].filter(v => v !== k) })); }} />{k} </label>)}{(check || aninda && answers[i] !== undefined) && <p role="status">{correct(answers[i], o) ? 'Doğru. ' : 'Yeniden düşün. '}{aninda && <strong>Doğru cevap: {o.kutular.join(', ')}. </strong>}{o.neden}</p>}</fieldset>)}<button className="btn btn-primary" onClick={() => { setCheck(true); if (b.ogeler.every((o, i) => correct(answers[i], o))) onDone(ilk); else setIlk(false); }}>Kontrol et</button></section>;
 }
-function TahminDeney({ soru, tohum, deney, aciklama, onDone }) {
+function TahminDeney({ soru, tohum, deney, aciklama, onDone, onYonerge }) {
   const [phase, setPhase] = useSoruDurumu(`${tohum}:tahmin-phase`, 0);
   const [prediction, setPrediction] = useSoruDurumu(`${tohum}:tahmin-secim`, null);
-  return <section><h3>Önce tahmin et</h3>
+  useEffect(() => {
+    onYonerge?.(phase === 0 ? prediction === null ? 'Tahmin sorusunda bir seçenek işaretle.' : 'Tahminini seçtin. “Tahminimi kaydet ve deneyi aç” düğmesine bas.' : phase === 1 ? 'Deneydeki kontrolleri değiştirip sonucu gözle. Sonra “Gözlemledim, açıklamayı aç” düğmesine bas.' : 'Açıklamayı oku ve alttaki gerekçe sorusunda doğru seçeneği bul.');
+  }, [phase, prediction, onYonerge]);
+  return <section><ol className="kp-tahmin-asamalari" aria-label="Bu etkinliğin adımları">{['Tahmin et', 'Deneyi yap', 'Gerekçeni seç'].map((ad, i) => <li key={ad} aria-current={phase === i ? 'step' : undefined}>{i < phase ? '✓' : i + 1}. {ad}{phase === i && <strong> · Buradasın</strong>}</li>)}</ol><h3>{phase === 0 ? 'Önce tahmin et' : phase === 1 ? 'Şimdi deneyi yap' : 'Gözlemini açıkla'}</h3>
     {phase === 0 && <><V2Soru oge={soru} tohum={`${tohum}:tahmin`} gizli deger={prediction} onChange={setPrediction} /><button className="btn btn-primary" disabled={prediction === null} onClick={() => setPhase(1)}>Tahminimi kaydet ve deneyi aç</button></>}
-    {phase >= 1 && <><p>Tahminin kaydedildi. Şimdi dene ve gözleminle karşılaştır.</p>{deney}</>}
+    {phase >= 1 && <><p>{phase === 1 ? 'Tahminin kaydedildi. Şimdi dene ve gözleminle karşılaştır.' : 'Deneyi inceledin. Şimdi gerekçe sorusunu yanıtla.'}</p><details className="kp-tamamlanan-deney" open={phase === 1}><summary>{phase === 1 ? 'Deney · şimdi bu adımı yap' : 'Tamamlanan deneyi yeniden incele'}</summary>{deney}</details></>}
     {phase === 1 && <button className="btn btn-primary" onClick={() => setPhase(2)}>Gözlemledim, açıklamayı aç</button>}
     {phase === 2 && <><Markdown text={aciklama || ''} /><V2Soru oge={soru.gerekce || { soru: 'Gözlemine göre doğru açıklama hangisi?', secenekler: soru.secenekler.map(s => ({ metin: s.neden, dogru: Boolean(s.dogru), neden: s.neden })) }} tohum={`${tohum}:gerekce`} onDone={onDone} /></>}
   </section>;
 }
 
-export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
+export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek, onYonerge }) {
   const aninda = useAnindaCevap();
   const [done, setDone] = useSoruDurumu(`${tohum}:done`, {});
   const [origin, setOrigin] = useState(0);
@@ -108,8 +111,8 @@ export function V2Blok({ b, paket, sorular, motor, tohum, onDone, onGercek }) {
   const model = b.kod === 'Y4' ? <HareketV2Deneyi tur="esit-surat" /> : b.kod === 'Y5' ? <EsitYolDeneyi /> : b.kod === 'Y10' ? <HareketV2Deneyi tur="sabit-buyuk" /> : b.kod === 'Y2' ? <><label>Sıfır noktasını taşı: {origin} m<input type="range" min="-5" max="5" value={origin} onChange={e => setOrigin(Number(e.target.value))} /></label><p>Cisim yerinde; yeni konumu {3-origin} m, aldığı yol 0 m.</p><Gorsel g={{tur:'sayi-dogrusu',noktalar:[{x:-origin,ad:'Eski sıfır'},{x:0,ad:'Yeni sıfır'},{x:3-origin,ad:'Cisim'}]}} /></>
     : ['Y1','Y3','Y4','Y5','Y6','Y8','Y9'].includes(b.kod) ? <LegacyModel blok={{deney:({Y1:'referans',Y3:'yol',Y4:'hiz',Y5:'hiz',Y6:'grafik',Y8:'ivme',Y9:'yol'})[b.kod],gorev:y?.yuzlestir.yonerge}} motor="hareket-lab" />
     : <HareketV2Deneyi tur={b.kod === 'Y7' ? 'karsilasma' : 'uc-grafik'} />;
-  if (b.tur === 'yanilgi') return <TahminDeney soru={y.ortayaCikar} tohum={tohum} deney={<><Markdown text={y.yuzlestir.yonerge} />{model}</>} aciklama={y.aciklama} onDone={onDone} />;
-  if (b.tur === 'neden' && b.tahmin) return <><Markdown text={b.metin} /><TahminDeney soru={b.tahmin} tohum={tohum} deney={b.deneyBlok && ['karsilasma', 'uc-grafik'].includes(b.deneyBlok.deney) ? <><p>{b.deneyBlok.gorev}</p><HareketV2Deneyi tur={b.deneyBlok.deney} /></> : <LegacyModel blok={b.deneyBlok} motor={motor} />} onDone={onDone} /></>;
+  if (b.tur === 'yanilgi') return <TahminDeney onYonerge={onYonerge} soru={y.ortayaCikar} tohum={tohum} deney={<><Markdown text={y.yuzlestir.yonerge} />{model}</>} aciklama={y.aciklama} onDone={onDone} />;
+  if (b.tur === 'neden' && b.tahmin) return <><Markdown text={b.metin} /><TahminDeney onYonerge={onYonerge} soru={b.tahmin} tohum={tohum} deney={b.deneyBlok && ['karsilasma', 'uc-grafik'].includes(b.deneyBlok.deney) ? <><p>{b.deneyBlok.gorev}</p><HareketV2Deneyi tur={b.deneyBlok.deney} /></> : <LegacyModel blok={b.deneyBlok} motor={motor} />} onDone={onDone} /></>;
   if (b.tur === 'nicel-kontrol') return <section><h3>İki bağımsız nicel soru</h3><p>Örnekleri inceledin. Burada iki farklı soruyu yardım almadan çöz; yanlışta gerekçeyi inceleyip açıkça yeni tur başlatabilirsin. Tekrar turu görülmemiş aktarım sayılmaz.</p>{b.ogeler.map((q,i) => <V2Soru key={q.id} oge={q} tohum={`${tohum}:${q.id}`} onDone={ilk => {const next={...done,[i]:ilk};setDone(next);if(b.ogeler.every((_,j)=>next[j]!==undefined))onDone(Object.values(next).every(Boolean));}} />)}</section>;
   if (b.tur === 'sinifla') return <Sinifla b={b} onDone={onDone} />;
   if (b.tur === 'ceviri') {

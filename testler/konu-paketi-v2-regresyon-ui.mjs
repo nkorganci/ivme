@@ -62,7 +62,7 @@ try{
  const tipI=mapD.bloklar.findIndex(q=>q.tur==='tipler');await fixture({...base(),xt:Object.fromEntries(mapD.bloklar.slice(0,tipI).map((_,i)=>[i,{ilk:true}]))},'xt');assert.ok((await text()).includes('KOŞUL'));assert.ok((await text()).includes('TUZAK'));checks.push('Tip kartı koşul/tuzak görünür');
  const numericD=p.duraklar[0], ni=numericD.bloklar.findIndex(q=>q.tur==='nicel-kontrol'), nq=numericD.bloklar[ni].ogeler;
  await fixture({...base(),[numericD.id]:Object.fromEntries(numericD.bloklar.slice(0,ni).map((_,i)=>[i,{ilk:true}]))},numericD.id);
- const numericLocked=()=>b.evalJs(`[...document.querySelectorAll('.kp-v2-ana button')].find(b=>b.textContent==='Sonraki →').disabled`);
+ const numericLocked=()=>b.evalJs(`[...document.querySelectorAll('.kp-v2-ana button')].find(b=>b.textContent==='Sonraki etkinlik →').disabled`);
  assert.equal(await numericLocked(),true);await choose(nq[0].soru,nq[0].secenekler.find(s=>s.dogru).metin);await open(numericD.id);assert.equal(await numericLocked(),true);await choose(nq[1].soru,nq[1].secenekler.find(s=>s.dogru).metin);assert.equal(await numericLocked(),false);assert.equal((await stored())[numericD.id][ni].ilk,true);checks.push('Nicel kapı: örnekler yetmez; iki ayrı ilk doğru yenilemeyle korunur');
  const first=p.duraklar[0], exitI=first.bloklar.findIndex(q=>q.tur==='sina'), exit=first.bloklar[exitI];
  await fixture({...base(),[first.id]:Object.fromEntries(first.bloklar.slice(0,exitI).map((_,i)=>[i,{ilk:true}]))},first.id);

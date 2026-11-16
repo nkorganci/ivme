@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../../auth.jsx';
 import { Markdown } from '../math.jsx';
@@ -13,6 +13,7 @@ import { Gercek, Tekrar } from './KonuSayfasi.jsx';
 import { KarmaOge } from './bloklar.jsx';
 import araclar from './paketler/arac-kutusu-fizik.js';
 import './KonuV2.css';
+import EtkinlikRehberi, { etkinlikAdi } from './EtkinlikRehberi.jsx';
 
 function Test({ form, id, durum, yaz, tohum }) {
   const saved = durum[id] || {};
@@ -44,23 +45,27 @@ function Onkosul({ ders, tamam, onDone, tohum }) {
     {mode === 'cikis' && ders.cikis.map((q, i) => <V2Soru key={i} oge={q} tohum={`${tohum}:cikis:${i}`} onDone={() => { const next = { ...exit, [i]: true }; setExit(next); if (ders.cikis.every((_, n) => next[n])) onDone(true); }} />)}
   </section>;
 }
-function DurakV2({ d, paket, sorular, motor, durum, yaz, tohum, onGercek }) {
+function DurakV2({ d, paket, sorular, motor, durum, yaz, tohum, onGercek, sonrakiBolum, onBolum }) {
   const saved = durum[d.id] || {};
-  const [step, setStep] = useState(() => Math.max(0, d.bloklar.findIndex((_, i) => saved[i] === undefined)));
+  const [step, setStep] = useState(() => { const kayit = durum._etkinlik?.[d.id]; return Number.isInteger(kayit) && kayit >= 0 && kayit < d.bloklar.length ? kayit : Math.max(0, d.bloklar.findIndex((_, i) => saved[i] === undefined)); });
+  useEffect(() => { document.querySelector('.kp-etkinlik-rehberi')?.scrollIntoView({ block: 'start' }); }, [step]);
+  const etkinligeGit = i => { setStep(i); yaz('_etkinlik', prev => ({ ...prev, [d.id]: i })); };
   const attempt = durum[`${d.id}:turlar`]?.[step] || 0;
   const retry = Boolean(durum[`${d.id}:hatalar`]?.[`${step}:${attempt}`]);
+  const [yonerge, setYonerge] = useState(null);
+  const rehberYaz = useCallback(metin => setYonerge({ step, attempt, metin }), [step, attempt]);
   const b = d.bloklar[step];
   const done = saved[step] !== undefined;
   const finish = first => {
     if (['sina','nicel-kontrol'].includes(b.tur) && !first) { yaz(`${d.id}:hatalar`, prev => ({ ...prev, [`${step}:${attempt}`]: true })); return; }
     yaz(d.id, prev => ({ ...prev, [step]: { ilk: first, tur: attempt, zaman: Date.now() } }));
   };
-  return <section><h2>{d.baslik}</h2><p>Etkinlik {step + 1}/{d.bloklar.length}{b.basamak !== undefined ? ` · Basamak ${b.basamak}` : ''}</p>
-    <SoruAlani id={`${tohum}:${d.id}:${step}:tur${attempt}`}><V2Blok key={`${step}:${attempt}`} b={b} paket={paket} sorular={sorular} motor={motor} tohum={`${tohum}:${d.id}:${step}${attempt ? `:t${attempt}` : ''}`} onDone={finish} onGercek={onGercek} /></SoruAlani>
-    {b.tur === 'tipler' && !done && <button className="btn btn-primary" onClick={() => finish(true)}>Devam →</button>}
+  return <section><h2>{d.baslik}</h2><EtkinlikRehberi bloklar={d.bloklar} step={step} saved={saved} done={done} onIleri={() => step + 1 < d.bloklar.length ? etkinligeGit(step + 1) : onBolum()} sonrakiBolum={sonrakiBolum} yonerge={yonerge?.step === step && yonerge?.attempt === attempt ? yonerge.metin : null} />
+    <SoruAlani id={`${tohum}:${d.id}:${step}:tur${attempt}`}><V2Blok key={`${step}:${attempt}`} b={b} paket={paket} sorular={sorular} motor={motor} tohum={`${tohum}:${d.id}:${step}${attempt ? `:t${attempt}` : ''}`} onDone={finish} onGercek={onGercek} onYonerge={rehberYaz} /></SoruAlani>
+    {b.tur === 'tipler' && !done && <button className="btn btn-primary" onClick={() => finish(true)}>İncelemeyi tamamla</button>}
     {retry && !done && <p role="status">Bağımsız doğru ölçütü henüz tamamlanmadı. Gerekçeleri incele, sonra yeniden dene. <button className="btn btn-secondary" onClick={() => { yaz(`${d.id}:turlar`, prev => ({ ...prev, [step]: attempt + 1 })); }}>Yeni deneme</button></p>}
     {done && <p role="status">{b.tur === 'ornek' ? 'Örnek incelendi; bağımsız doğru ölçümü durak çıkışında yapılır.' : 'Etkinlik tamamlandı.'}</p>}
-    <footer className="kp-gezin"><button className="btn btn-secondary" disabled={!step} onClick={() => setStep(s => s - 1)}>← Geri</button>{step < d.bloklar.length - 1 && <button className="btn btn-primary" disabled={!done} onClick={() => setStep(s => s + 1)}>Sonraki →</button>}</footer>
+    <footer className="kp-etkinlik-gezin"><p>{!step ? 'Bölümün ilk etkinliğindesin.' : `Önceki: ${etkinlikAdi(d.bloklar[step - 1])}`}{!done && ' İlerlemek için yukarıdaki “Şimdi” yönergesini tamamla.'}</p><div className="kp-gezin"><button type="button" className="btn btn-secondary" disabled={!step} onClick={() => etkinligeGit(step - 1)}>← Önceki etkinlik</button>{step < d.bloklar.length - 1 ? <button type="button" className="btn btn-primary kp-etkinlik-ileri" aria-describedby="kp-etkinlik-yonerge" disabled={!done} onClick={() => etkinligeGit(step + 1)}>Sonraki etkinlik →</button> : <button type="button" className="btn btn-primary" disabled={!done || !sonrakiBolum} onClick={onBolum}>Sonraki bölüme geç: {sonrakiBolum}</button>}</div></footer>
   </section>;
 }
 function Calisma({ sorular, id, durum, yaz, tohum, tani = false, tur = 0 }) {
@@ -149,7 +154,7 @@ export default function KonuV2({ paket: raw, sorular, motor }) {
         : active === 'karma' ? <><h2>Karışık tur</h2><SoruAlani id="karma">{paket.karma.map((q, i) => <SoruAlani key={q.id} id={q.id}><KarmaOge oge={q} sira={i} tipler={paket.tipler} onSonuc={ilk => yaz('karma', prev => ({ ...prev, [q.id]: prev?.[q.id] ?? ilk }))} /></SoruAlani>)}</SoruAlani>{paket.yanilgilar.filter(y => ['Y2', 'Y11', 'Y13'].includes(y.kod)).map(y => <V2Soru key={y.kod} oge={y.yenidenSina.soru} tohum={`${seed}:${y.kod}`} onDone={() => yaz('gecikmeli', prev => ({ ...prev, [y.kod]: true }))} />)}</>
         : active === 'gercek' ? <Gercek paket={paket} sorular={sorular} tip={params.get('tip')} />
         : active === 'tekrar' ? <Tekrar paket={{ ...paket, tekrar: paket.tekrar.map(k => ({ soru: k.on, cevap: k.arka })) }} />
-        : <DurakV2 key={active} d={d || paket.duraklar.find(d => d.id === active)} paket={paket} sorular={sorular} motor={motor} durum={durum} yaz={yaz} tohum={seed} onGercek={tip => setParams({ bolum: 'gercek', tip })} />}
-        <footer className="kp-gezin"><span /><button type="button" className="btn btn-primary" disabled={!nav[nav.findIndex(([id]) => id === active) + 1]} onClick={() => git(nav[nav.findIndex(([id]) => id === active) + 1][0])}>Sonraki bölüm →</button></footer>
+        : <DurakV2 key={active} d={d || paket.duraklar.find(d => d.id === active)} paket={paket} sorular={sorular} motor={motor} durum={durum} yaz={yaz} tohum={seed} onGercek={tip => setParams({ bolum: 'gercek', tip })} sonrakiBolum={nav[nav.findIndex(([id]) => id === active) + 1]?.[1]} onBolum={() => git(nav[nav.findIndex(([id]) => id === active) + 1][0])} />}
+        {!d && <footer className="kp-gezin"><span /><button type="button" className="btn btn-primary" disabled={!nav[nav.findIndex(([id]) => id === active) + 1]} onClick={() => git(nav[nav.findIndex(([id]) => id === active) + 1][0])}>Sonraki bölüm →</button></footer>}
       </main></div></article></SoruDeposu>;
 }

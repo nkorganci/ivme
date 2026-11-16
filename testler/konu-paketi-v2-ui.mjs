@@ -47,7 +47,7 @@ try{
  for(let i=0;i<d.bloklar.length;i++){
   await new Promise(r=>setTimeout(r,25));
   checks.push(await b.evalJs(`({text:document.querySelector('.kp-v2-ana')?.innerText.slice(0,80),empty:!document.querySelector('.kp-v2-ana')?.innerText.trim(),overflow:document.documentElement.scrollWidth>innerWidth+1})`));
-  const clicked=await b.evalJs(`(()=>{const b=[...document.querySelectorAll('.kp-v2-ana .kp-gezin button')].find(b=>b.textContent==='Sonraki →');if(b&&!b.disabled){b.click();return true}return false})()`);if(!clicked)break;
+  const clicked=await b.evalJs(`(()=>{const b=[...document.querySelectorAll('.kp-v2-ana .kp-gezin button')].find(b=>b.textContent==='Sonraki etkinlik →');if(b&&!b.disabled){b.click();return true}return false})()`);if(!clicked)break;
  }
  }
  assert.equal(checks[0].feedback,false);assert.equal(checks[1].feedback,true);
