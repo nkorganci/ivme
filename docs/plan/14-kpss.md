@@ -1,9 +1,9 @@
 # 14. Adım — KPSS sınavlarını aynı ekranlara bağla
 
 Bağımlılık: sınav seçimi altyapısı (V79 `exam_tracks`, `user_exam_tracks`,
-`GET/PUT /api/exam-tracks`, “Sınavım” seçicisi ve `ExamTrackGate`) çalışır. Altı KPSS
+`GET/PUT /api/exam-tracks`, “Sınavım” seçicisi ve `ExamTrackGate`) çalışır. Beş KPSS
 sınavı sırayla hazırlanır: Ortaöğretim (yayında), Ön Lisans, Lisans, A Grubu,
-Öğretmenlik/ÖABT, DHBT. Her sınav bitince test edilir, DB doğrulanır ve ayrı commit
+DHBT. Öğretmenlik AGS/ÖABT ayrı `OGRETMENLIK` ailesindedir. Her sınav bitince test edilir, DB doğrulanır ve ayrı commit
 atılır. 7/12 sırası ve YKS kayıtları korunur.
 
 Yayındaki sınavlar: **KPSS Ortaöğretim** — 6 ders, 23 ünite, 85 konu; 2006–2024 arasındaki
@@ -57,9 +57,17 @@ GY/GK (Lisans oturumu); tam kitapçıklar ve sonraki yılların %10 örnekleri.
 Lisans GY/GK ve alan bilgisi testleri (Hukuk, İktisat, İşletme, Maliye, Muhasebe,
 Çalışma Ekonomisi, İstatistik, Kamu Yönetimi, Uluslararası İlişkiler...).
 
-## 14.05 — KPSS Öğretmenlik / ÖABT
+## 14.05 — Öğretmenlik AGS / ÖABT (KPSS dışında)
 
-Lisans GY/GK, Eğitim Bilimleri ve 2013–2024 ÖABT branş testleri.
+Kaynak kökü `Kaynaklar/Ogretmenlik/ogretmen-AGS` ve `ogretmen-OABT`.
+AGS 2025'te başlar; 2006–2024 Eğitim Bilimleri tarihsel kaynak olarak ayrıdır.
+2013–2024 ÖABT eski sınav adını kaynak kanıtında korur; güncel ailesi öğretmenliktir.
+`KPSS_OABT` teknik kimliği eski yabancı anahtarlar için korunur; adı Öğretmen ÖABT,
+ailesi `OGRETMENLIK`; AGS kimliği `OGRETMEN_AGS`. İkisi de `PLANNED` kalır.
+Kaynaklar `exam_source_documents` ve `source_research.teacher_documents` içindedir;
+yol eşlemesi `source_research.teacher_source_moves`, resmî eksikler `teacher_expected_documents`.
+Kanıt ve tekrar komutu `veri-hatti/ogretmen-sinavlari/`; sorular bankaya aktarılmış sayılmaz.
+ÖSYM PDF erişim engeli ve cevap/tamlık açıkları kaynak kökündeki `ARSIV_DURUMU.md` içindedir.
 
 ## 14.06 — KPSS DHBT
 

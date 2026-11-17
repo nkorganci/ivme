@@ -15,7 +15,7 @@ export const TRACK_STATUS = {
   PLANNED: { label: 'Henüz hazır değil', badge: 'muted' },
 };
 
-export const FAMILY_LABELS = { YKS: 'YKS', KPSS: 'KPSS', YURT_DISI: 'Yurt Dışı' };
+export const FAMILY_LABELS = { YKS: 'YKS', KPSS: 'KPSS', YURT_DISI: 'Yurt Dışı', OGRETMENLIK: 'Öğretmenlik (AGS · ÖABT)' };
 
 export function ExamTrackProvider({ children }) {
   const { user } = useAuth();
