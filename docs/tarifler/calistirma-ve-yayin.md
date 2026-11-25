@@ -2,15 +2,17 @@
 
 ## Yerel uygulama
 
-Java 21, Maven, Node.js 22+ ve PostgreSQL gerekir. Üst dizindeki `Ivme Baslat.bat`, `yerel-baslat.ps1` üzerinden tek `main` uygulamasını `http://localhost:1010` adresinde açar; `yerel-ortam.ps1` yerel DB/port ayarını seçer, sırlar Git dışındaki `.codex/local-environment.json`'dadır. Görseller `veri/resimler-pilot`, PDF kataloğu `veri/ogm-konu-pdf-katalog/entries` altındadır.
+Java 21, Maven, Node.js 22+ ve PostgreSQL gerekir. Windows başlatıcısı yerel `test` dalını `http://localhost:1012` adresinde, `ivme_local` veritabanıyla açar. İlk açılış yerel veritabanını ve örnek görselleri hazırlar. Yerel bağlantı ayarları Git dışındaki `.codex/local-environment.json`'dadır.
 
 Başlatıcı PostgreSQL'in 5432'de dinlediğini denetler, izleyiciyi açar; uygulama zaten yanıt veriyorsa tarayıcıyı hemen açar, vermiyorsa izleyici günlüğünü gösterip hazır olunca açar; derleme hatasında ilgili satırları gösterip pencereyi açık bırakır (pencereyi kapatmak açılışı durdurmaz).
 
 `canli-izle.ps1` kaynak değişince paketi yeniler. Uygulama kapalıyken kaynak parmak izi son yayımlanan paketle aynıysa derlemeden o paketi açar (~20 sn; yol `backend/target/live-deployed.jar`); parmak izi `canli-kaynaklar.ps1`'dedir ve `static/` dışındaki tüm `backend/src/main/resources` dosyalarını kapsar. Kapalıyken başlayan derleme başarısız olursa önceki paket açılır. `yeniden-baslat.ps1` her zaman yeniden derler, dönüşümlü JAR yuvasıyla servisi yeniler, HTTP'den HTML/asset ve `app-version.txt` sürümünü doğrular; başarısızlıkta eski paket korunur. Günlükler: `backend/target/live-watch.log`, `live-build.stderr.log`, `live-start.stderr.log`, `application.stderr.log`.
 
-Türkçe metin içeren `.ps1` dosyaları BOM'lu UTF-8 kaydedilir (PowerShell 5.1 BOM'suz dosyayı ANSI okur). İsteğe bağlı Vite akışında önce paketli uygulama ve izleyiciyi durdur; `backend-baslat.bat` API'yi 8081'de, `frontend-baslat.bat` ön yüzü 1010'da açar.
+Türkçe metin içeren `.ps1` dosyaları BOM'lu UTF-8 kaydedilir (PowerShell 5.1 BOM'suz dosyayı ANSI okur). Vite akışında `backend-baslat.bat` API'yi 8081'de, `frontend-baslat.bat` ön yüzü 1011'de açar.
 
 ## Paylaşılan HTTPS erişimi
+
+Kalıcı Linux kurulumu için [VPS yayını](vps-yayini.md) tarifini kullan. Aşağıdaki Windows komutları eski tünel kurulumuna aittir.
 
 1. `uretim.ayarlar.ornek.bat`'ı Git dışı `uretim.ayarlar.bat` olarak kopyala: DB, görsel klasörü, `YKS_SITE_ADRESI=https://net.ivme.dev`, `YKS_COOKIE_SECURE=true`, `PORT=1010`. Üretimde geçici parolaları değiştir; sınırlı DB rolü ve göç sırası için [12.03](../plan/12-icerik-ve-yayin.md). `YKS_FLYWAY_ETKIN=false` yalnız yetkili göçten sonra.
 2. `uretim-derle.bat` paketi, `uretim-calistir.bat` tek Java sürecini başlatır (`127.0.0.1:1010`; Cloudflare tünel hedefi aynı adres, ek Vite tüneli yok).

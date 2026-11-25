@@ -52,6 +52,20 @@ class LocalImageStorageTest {
     }
 
     @Test
+    void readsLegacyUppercaseExamPathFromLowercaseFolders() throws Exception {
+        byte[] header = {'R', 'I', 'F', 'F', 0, 0, 0, 0, 'W', 'E', 'B', 'P'};
+        Path original = Files.createDirectories(root.resolve("tyt/turkce")).resolve("1.webp");
+        Path cropped = Files.createDirectories(root.resolve("kirpilmis/tyt/turkce")).resolve("1.webp");
+        Files.write(original, header);
+        Files.write(cropped, header);
+        var storage = new LocalImageStorage(new AppProperties(null,
+                new AppProperties.Images(root.toString()), null, null));
+
+        assertThat(storage.exists("TYT/turkce/1.webp")).isTrue();
+        assertThat(storage.load("TYT/turkce/1.webp").getFile().toPath()).isEqualTo(cropped);
+    }
+
+    @Test
     void altKlasordenDisariKacanDosyaBaglantisiReddedilir() throws Exception {
         Path privateImage = outside.resolve("private.webp");
         Files.write(privateImage, new byte[] {'R', 'I', 'F', 'F', 0, 0, 0, 0, 'W', 'E', 'B', 'P'});

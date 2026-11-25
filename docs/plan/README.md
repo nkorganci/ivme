@@ -15,7 +15,7 @@ Tek güncel durum kaydı bu dosyadır; ayrıntılı gereksinim yalnız açık ad
 
 | Kimlik | Durum | Kalan |
 |---|---|---|
-| 12.03 | KISMI_VPS_HAZIRLIGI | Göç sürümüne uygun paketi onayla ve VPS geri yükleme provasını tamamla |
+| 12.03 | KISMI_VPS_HAZIRLIGI | [Tek tıkla yayın](../tarifler/tek-tikla-yayin.md) ile V104 paketini doğrula ve VPS geri yükleme provasını tamamla |
 | MAT-TYT / 12.02 | SURUYOR (etkin) | Önce TYT konu içerikleri, lab en son; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur ([liste](../urun/matematik-konu-listesi.md); TYT 29/32) |
 | MAT-LAB-02 / 12.02 | BEKLEMEDE | TYT 16/32 lab TEKNİK HAZIR; TYT içerikleri bitince ilk eksik lab `hareket-problemleri` |
 | PHYS-PILOT-01, PHYS-INTERACTIVE-02 / 12.02 | Kullanıcı değerlendirmesi bekliyor | `/konuyu-ogrenelim/fizik/hareket-kuvvet` (8 bölüm, MotionLab); kabul `python scripts/ivme.py kalite calistir PHYS-PILOT-01`; kullanıcı onaylamadan başka konuya geçme |

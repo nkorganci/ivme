@@ -1,0 +1,11 @@
+**
+!Dockerfile
+!backend/pom.xml
+!backend/src/**
+!frontend/**
+!scripts/*.mjs
+backend/src/main/resources/static/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-yeni/
+**/.env*

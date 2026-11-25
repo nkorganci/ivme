@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.regex.Pattern;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Component;
 /** Görselleri app.images.dir klasöründen okur. Klasör dışına çıkan yollar (../) reddedilir. */
 @Component
 public class LocalImageStorage implements ImageStorage {
+
+    private static final Pattern LEGACY_EXAM_ROOT = Pattern.compile("^((?:onarilmis/|kirpilmis/)?)(TYT|AYT)(/.+)$");
 
     private final Path root;
     private final List<Path> allowedRealRoots;
@@ -89,7 +92,14 @@ public class LocalImageStorage implements ImageStorage {
         }
         try {
             Path p = root.resolve(relativePath).normalize();
-            if (!p.startsWith(root) || !Files.isRegularFile(p)) return Optional.empty();
+            if (!p.startsWith(root)) return Optional.empty();
+            if (!Files.isRegularFile(p)) {
+                // Existing database paths used uppercase exam roots on case-insensitive Windows.
+                var legacy = LEGACY_EXAM_ROOT.matcher(root.relativize(p).toString().replace('\\', '/'));
+                if (!legacy.matches()) return Optional.empty();
+                p = root.resolve(legacy.group(1) + legacy.group(2).toLowerCase(Locale.ROOT) + legacy.group(3));
+                if (!Files.isRegularFile(p)) return Optional.empty();
+            }
             Path real = p.toRealPath();
             if (!isImageName(real.getFileName().toString())) return Optional.empty();
             return allowedRealRoots.stream().anyMatch(real::startsWith) ? Optional.of(real) : Optional.empty();
