@@ -3,7 +3,7 @@
 AI'nın her oturumda aynı adımları yeniden kurması yerine bu alt komutlar çalıştırılır.
 Yalnız standart kütüphane kullanır; PDF/OCR gibi işleri depo `.venv` Python'u ile çağırır.
 
-  python scripts/ivme.py durum                 git, izleyici, 1010, katalog, Ollama ve devir özeti
+  python scripts/ivme.py durum                 git, izleyici, 1012, katalog, Ollama ve devir özeti
   python scripts/ivme.py bekle                 izleyicinin derleme döngüsü bitene kadar bekle
   python scripts/ivme.py test [A,B]            backend testleri (geçici ivme_test DB); bilinen hatalar ayrılır
   python scripts/ivme.py sayfa /yol [...]      sayfayı aç, JSON denetim (ekran görüntüsü yalnız sorunda)
@@ -40,7 +40,7 @@ STATUS = APP / "backend/target/live-watch.status"
 WATCH_LOG = APP / "backend/target/live-watch.log"
 KNOWN = APP / "testler/bilinen-hatalar.md"
 HANDOFF = APP / "docs/devam.md"
-URL = os.environ.get("IVME_URL", "http://127.0.0.1:1010")
+URL = os.environ.get("IVME_URL", "http://127.0.0.1:1012")
 MONTHS = "Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık"
 DATED_LINE = re.compile(rf"\b\d{{1,2}}(?:[–-]\d{{1,2}})? (?:{MONTHS})\b")
 DATED_DOCS_ALLOWED = {"docs/devam.md", "testler/bilinen-hatalar.md"}
@@ -110,7 +110,7 @@ def cmd_bekle(args):
 def db_query(sql):
     script = (". ./yerel-ortam.ps1; $s = Get-IvmeLocalEnvironment; $env:PGPASSWORD = $s.DbPassword; "
               "$env:PGCLIENTENCODING = 'UTF8'; [Console]::OutputEncoding = [Text.Encoding]::UTF8; "
-              f"& 'C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe' -X -h localhost -U $s.DbUser -d ivme -Atc \"{sql}\"")
+              f"& 'C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe' -X -h localhost -U $s.DbUser -d $s.Database -Atc \"{sql}\"")
     return out(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script])
 
 
