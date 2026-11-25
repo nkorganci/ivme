@@ -21,8 +21,8 @@ SSH_OPTIONS = ("-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=yes",
                "-o", "ConnectTimeout=10", "-o", "ServerAliveInterval=15")
 
 
-def run(*command, cwd=REPO, **kwargs):
-    return subprocess.run(command, cwd=cwd, check=True, **kwargs)
+def run(*command, **kwargs):
+    return subprocess.run(command, cwd=REPO, check=True, **kwargs)
 
 
 def read(*command):
@@ -143,7 +143,9 @@ def media(host, manifest):
     if json.loads((manifest / "missing-pdfs.json").read_text(encoding="utf-8")):
         raise ValueError("The media list has missing PDFs. Review the references and regenerate it.")
     target = ":sftp:/srv/ivme"
-    transport = ("--sftp-ssh", " ".join(("ssh", *SSH_OPTIONS, host)), "--sftp-disable-hashcheck")
+    # OpenSSH checks the host key when rclone delegates the connection.
+    transport = ("--sftp-ssh", " ".join(("ssh", *SSH_OPTIONS, host)),
+                 "--sftp-known-hosts-file", "none", "--sftp-disable-hashcheck")
     stamp = f"media-{time.time_ns()}"
     ssh(host, f"umask 077; mkdir /srv/ivme/incoming/{stamp}")
     run(rclone, "copy", str(REPO.parent), f"{target}/data", "--files-from0",
