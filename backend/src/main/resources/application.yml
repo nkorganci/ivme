@@ -66,6 +66,9 @@ app:
   topic-pdfs:
     catalog-dir: ${YKS_KONU_PDF_KATALOGU:}  # 13.04 çıktısındaki entries klasörü
     source-dir: ${YKS_OGM_PDF_KAYNAGI:}     # özgün OGM PDF kökü
+  yks-resources:
+    root: ${YKS_KAYNAK_KLASORU:}
+    location-manifest: ${YKS_KAYNAK_YOL_LISTESI:}
   admin:
     username: ${YKS_ADMIN_KULLANICI:admin}
     email: ${YKS_ADMIN_EPOSTA:admin@localhost}

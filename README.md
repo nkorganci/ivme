@@ -4,7 +4,7 @@ React/Vite ön yüzü, Spring Boot API'si ve PostgreSQL ile çalışan YKS/KPSS 
 
 ## Çalıştırma
 
-Java 21, Maven, Node.js 22+, PostgreSQL ve veri hattı için Python gerekir. Çalışma alanının üstündeki `Ivme Baslat.bat` uygulamayı `http://localhost:1010` adresinde açar; kaynak izleyicisi derleme ve yeniden başlatmayı yönetir ([tarif](docs/tarifler/calistirma-ve-yayin.md)). Gerçek DB `ivme`, test DB geçici `ivme_test`.
+Java 21, Maven, Node.js 22+, PostgreSQL ve veri hattı için Python gerekir. Windows'ta yerel `test` dalı `http://localhost:1012` adresinde `ivme_local` veritabanıyla çalışır. Geçici otomatik testler `ivme_test` kullanır. Linux kurulumu için [VPS yayını](docs/tarifler/vps-yayini.md) tarifine bak.
 
 ## Klasörler
 

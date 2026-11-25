@@ -147,7 +147,10 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum: `BEKLIYOR_ORTAM_YETKI`. Yerel yedek ve yalıtılmış geri yükleme
+Durum: `KISMI_VPS_HAZIRLIGI`. Linux imajı, PostgreSQL 18/pgvector, Flyway ve sınırlı
+uygulama rolü boş prova veritabanıyla doğrulandı. [VPS tarifi](../tarifler/vps-yayini.md)
+özel dosya aktarımını ve trafik geçişini tanımlar. Uzak makine ve uyumlu canlı
+dökümle geri yükleme ile dış cihaz kabulü bekliyor. Yerel yedek ve yalıtılmış geri yükleme
 `scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
 yedeğini seçmiştir.
 

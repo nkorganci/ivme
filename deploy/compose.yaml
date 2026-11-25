@@ -1,0 +1,88 @@
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg18-trixie
+    env_file: db.env
+    environment:
+      POSTGRES_DB: ivme
+      POSTGRES_USER: ivme_owner
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "ivme_owner", "-d", "ivme"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  migrate:
+    profiles: ["maintenance"]
+    image: flyway/flyway:11.20.3
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: db.env
+    environment:
+      FLYWAY_URL: jdbc:postgresql://db:5432/ivme
+      FLYWAY_USER: ivme_owner
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+    volumes:
+      - ../backend/src/main/resources/db/migration:/flyway/sql:ro
+    entrypoint:
+      - /bin/sh
+      - -ec
+      - |
+        export FLYWAY_PASSWORD="$$POSTGRES_PASSWORD"
+        exec /flyway/flyway -ignoreMigrationPatterns= "$$@"
+      - flyway
+    command: ["migrate"]
+
+  app:
+    image: ivme-app:${IVME_REVISION:?Set the release commit in deploy/.env}
+    build:
+      context: ..
+      args:
+        IVME_REVISION: ${IVME_REVISION}
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: app.env
+    environment:
+      PORT: "1010"
+      YKS_BIND_ADDRESS: 0.0.0.0
+      YKS_COOKIE_SECURE: "true"
+      YKS_DB_URL: jdbc:postgresql://db:5432/ivme
+      YKS_DB_KULLANICI: ivme_app
+      YKS_FLYWAY_ETKIN: "false"
+      YKS_RESIM_KLASORU: /app/veri/resimler-pilot
+      YKS_KONU_PDF_KATALOGU: /app/veri/ogm-konu-pdf-katalog/entries
+      YKS_OGM_PDF_KAYNAGI: /app/Kaynaklar/ogm-materyal
+      JAVA_TOOL_OPTIONS: ${IVME_JAVA_OPTS:--Xmx4g}
+    ports:
+      - "127.0.0.1:${IVME_HTTP_PORT:-1010}:1010"
+    volumes:
+      - type: bind
+        source: ${IVME_DATA_DIR:?Set the data directory in deploy/.env}/uygulama/veri
+        target: /app/veri
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${IVME_DATA_DIR}/Kaynaklar
+        target: /app/Kaynaklar
+        read_only: true
+        bind:
+          create_host_path: false
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:1010/actuator/health/readiness"]
+      interval: 15s
+      timeout: 5s
+      start_period: 90s
+      retries: 8
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+volumes:
+  pgdata:

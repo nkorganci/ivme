@@ -20,6 +20,7 @@
 
 ## Etkin ve bekleyen işler
 
+- **12.03 VPS:** [Yayın tarifindeki](tarifler/vps-yayini.md) dosya doğrulamasını ve uyumlu veritabanı geri yüklemesini VPS'de tamamla. HTTPS geçişi uzaktaki uygulama ve cihaz kabulünden sonra yapılır.
 - **MAT-TYT (etkin):** TYT 29/32; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur. 16. adım başlayana dek içerik üretimi bu sırayı korur; 16.04'ten sonra yeni konu paketi standardına geçilir.
 - **Kullanıcı/insan girdisi bekleyen:** TAS-08 ve TAS-09 öğretmen kararları, Fizik pilotu değerlendirmesi, TAS-10 Brevo göndereni ve API anahtarı, TAS-02 dış izleme kurulumu. Ayrıntı [yol haritasında](plan/README.md).
 - Başlangıçtaki `frontend/src/learn/derin/sayma-permutasyon*`, `derin/index.js`, `derin/cizimler.jsx` kullanıcı çalışmasıdır; ilgisiz commit'lere alınmaz.
