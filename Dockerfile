@@ -16,6 +16,9 @@ COPY --from=frontend /app/backend/src/main/resources/ src/main/resources/
 COPY --from=frontend /app/frontend/dist/ src/main/resources/static/
 RUN --mount=type=cache,target=/root/.m2 mvn -B -q package -DskipTests
 
+FROM backend AS release-check
+RUN --mount=type=cache,target=/root/.m2 mvn -B -Dtest=LocalImageStorageTest,SourceFileResolverTest,TopicPdfServiceTest test
+
 FROM eclipse-temurin:21-jre-noble
 RUN apt-get update && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/* \

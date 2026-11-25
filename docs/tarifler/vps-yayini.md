@@ -1,5 +1,7 @@
 # İvme VPS yayını
 
+[Tek tıkla yayın](tek-tikla-yayin.md) normal kurulum ve güncelleme akışıdır. Bu tarif ilk taşımanın el ile uygulanabilen adımlarını ve kurtarma işlemlerini içerir.
+
 Windows'ta `test` geliştirme dalı ile `ivme_local` ve geçici `ivme_test` veritabanları kullanılır. GitHub'daki `production` dalı VPS'ye kurulacak sürümü tutar. Yayın için doğrulanan commit seçilir ve sunucuda aynı SHA ile Docker imajı oluşturulur. GitHub deposu herkese açıktır. PostgreSQL dökümü, çalışma dosyaları, kaynak listeleri ve gerçek ortam dosyaları SSH üzerinden özel dizinlere taşınır.
 
 ## İlk taşıma

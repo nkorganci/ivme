@@ -5,6 +5,7 @@ from collections import Counter
 from hashlib import file_digest
 import json
 from pathlib import Path, PurePosixPath, PureWindowsPath
+import re
 
 
 def load_json(path):
@@ -36,7 +37,7 @@ def pdf_requirements(workspace, release):
             yield PurePosixPath(prefix) / relative_path(row["relativePath"]), row["sourceSha256"]
 
 
-def pdf_projection(workspace, release):
+def pdf_projection(workspace, release, archived=()):
     resources = workspace / "Kaynaklar"
     archive = resources / "YKS"
     local = load_json(archive / "Katalog/etkin-yollar.json")
@@ -53,6 +54,8 @@ def pdf_projection(workspace, release):
 
     files, missing = set(), []
     for path, sha in dict(pdf_requirements(workspace, release)).items():
+        if sha in archived:
+            continue
         match = original.get(path.as_posix().casefold())
         if match and match[1] == sha and (archive / match[0]).is_file():
             mapped[path] = (PurePosixPath("YKS") / match[0], sha)
@@ -76,7 +79,7 @@ def pdf_projection(workspace, release):
     return files, {"version": 1, "status": "ACTIVE", "locations": rows}, missing
 
 
-def assets(workspace, release):
+def assets(workspace, release, archived=()):
     roots = {
         "uygulama/veri/resimler-pilot": {".webp", ".png", ".jpg", ".jpeg", ".gif"},
         "uygulama/veri/ogm-konu-pdf-katalog/entries": {".json"},
@@ -84,7 +87,7 @@ def assets(workspace, release):
         "uygulama/veri/pdf-source-registry/slide-candidates": {".json", ".webp"},
         "Kaynaklar/yurt-disi": {".pdf"},
     }
-    files, projection, missing = pdf_projection(workspace, release)
+    files, projection, missing = pdf_projection(workspace, release, archived)
     for relative, extensions in roots.items():
         root = workspace / relative
         if not root.is_dir():
@@ -100,13 +103,19 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("workspace", type=Path)
     parser.add_argument("output", type=Path, help="New private directory outside the Git checkout")
+    parser.add_argument("--archived-pdf-shas", type=Path, help="One SHA-256 per line from learning_catalog.pdf_archive")
     args = parser.parse_args()
     workspace = args.workspace.resolve()
     release = Path(__file__).resolve().parents[1]
     output = args.output.resolve()
     if any(output.is_relative_to(checkout) for checkout in (release, workspace / "uygulama")):
         parser.error("Output must be outside both Git checkouts")
-    files, projection, missing = assets(workspace, release)
+    archived = set()
+    if args.archived_pdf_shas:
+        archived = set(args.archived_pdf_shas.read_text(encoding="utf-8-sig").split())
+        if any(not re.fullmatch(r"[0-9a-f]{64}", value) for value in archived):
+            parser.error("Archived PDF list must contain only lowercase SHA-256 values")
+    files, projection, missing = assets(workspace, release, archived)
     output.mkdir(mode=0o700)
     totals = Counter()
     with (output / "assets.files").open("wb") as names, (

@@ -32,7 +32,7 @@ services:
       - -ec
       - |
         export FLYWAY_PASSWORD="$$POSTGRES_PASSWORD"
-        exec /flyway/flyway -ignoreMigrationPatterns= "$$@"
+        exec /flyway/flyway "-ignoreMigrationPatterns=$${IVME_FLYWAY_IGNORE:-}" "$$@"
       - flyway
     command: ["migrate"]
 
