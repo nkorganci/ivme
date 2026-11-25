@@ -36,7 +36,11 @@ public class ExamTrackController {
     public Tracks list(@AuthenticationPrincipal AppUserDetails me) {
         List<Track> tracks = jdbc.query("""
                 SELECT id, family, name, audience, status, summary, note, sections::text, ready_features
-                FROM exam_tracks ORDER BY sort_order
+                FROM exam_tracks
+                WHERE NOT (id = 'OGRETMEN_AGS' AND status = 'PLANNED' AND EXISTS (
+                    SELECT 1 FROM exam_tracks combined WHERE combined.id = 'KPSS_OABT' AND combined.family = 'KPSS'
+                ))
+                ORDER BY sort_order
                 """, (rs, row) -> new Track(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
                 rs.getString(5), rs.getString(6), rs.getString(7), sections(rs.getString(8)),
                 List.of((String[]) rs.getArray(9).getArray())));

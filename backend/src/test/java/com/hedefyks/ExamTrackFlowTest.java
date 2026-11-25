@@ -45,6 +45,7 @@ class ExamTrackFlowTest extends TestBase {
                 Integer.class)).isEqualTo(1);
 
         send(first, put(PATH + "/current"), "{\"trackId\":\"KPSS_ONLISANS\"}").andExpect(status().isBadRequest());
+        send(first, put(PATH + "/current"), "{\"trackId\":\"OGRETMEN_AGS\"}").andExpect(status().isBadRequest());
         send(first, put(PATH + "/current"), "{\"trackId\":\"YOK\"}").andExpect(status().isBadRequest());
         send(first, put(PATH + "/current"), "{}").andExpect(status().isBadRequest());
         assertThat(read(send(first, get(PATH), null)).path("currentId").asText()).isEqualTo("KPSS_ORTAOGRETIM");
