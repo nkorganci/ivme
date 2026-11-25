@@ -147,7 +147,10 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum: `BEKLIYOR_ORTAM_YETKI`. Yerel yedek ve yalıtılmış geri yükleme
+Durum: `KISMI_VPS_HAZIRLIGI`. Yerel `test` dalı ve `ivme_local` çalışıyor.
+Linux yayını `production` dalındaki VPS tarifine göre hazırlanır. Kaynak DB'nin
+göç sürümü ile yayın kodunu eşleştir ve sınav seçimi testini geçir. Kalan ortam
+kabulü VPS'de geri yükleme ve HTTPS geçişidir. Yerel yedek ve yalıtılmış geri yükleme
 `scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
 yedeğini seçmiştir.
 
