@@ -67,6 +67,7 @@ case "$operation" in
         if [ ! -f "$root/restore.sha" ]; then
             dump=$root/incoming/$sha.dump
             printf '%s  %s\n' "$sha" "$dump" | sha256sum -c --quiet
+            chmod 600 "$dump"
             compose "$revision" up -d --wait db
             tables=$(compose "$revision" exec -T db psql -X -U ivme_owner -d ivme -Atqc \
                 "SELECT count(*) FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')")
@@ -75,6 +76,7 @@ case "$operation" in
                 --exit-on-error --single-transaction --no-owner --no-privileges < "$dump"
             printf '%s\n' "$sha" > "$root/restore.sha"
             mv "$dump" "$root/backup/initial-$sha.dump"
+            printf '%s  initial-%s.dump\n' "$sha" "$sha" > "$root/backup/initial-$sha.dump.sha256"
         fi
         [ "$(cat "$root/restore.sha")" = "$sha" ] || fail "A different dump was previously restored."
         compose "$revision" run -T --rm -e 'IVME_FLYWAY_IGNORE=*:pending' migrate validate

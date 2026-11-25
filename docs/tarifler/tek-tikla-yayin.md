@@ -16,7 +16,7 @@
 
 ## Sunucunun ilk kurulumu
 
-1. Contabo konsolundan SSH public key ekle. İlk girişte sağlayıcının konsolundan doğruladığın host parmak izini OpenSSH'ye kaydet. Bootstrap için sudo'lu bir hesap gerekir. Aşağıdaki örnekte hesabın adı `ivme-deploy`. Docker grubundaki bu hesap sunucuda yönetici düzeyinde yetkiye sahiptir, SSH anahtarını yalnız bu dağıtım için kullan. [Contabo SSH anahtarları ve cloud-init](https://contabo.com/en-us/cloud-init/)
+1. Contabo konsoluna `%USERPROFILE%\.ssh\ivme-vps.pub` açık anahtarını ekle. İlk bağlantıda sağlayıcının konsolundan doğruladığın host parmak izini OpenSSH'ye kaydet. İlk yönetici hesabı root ise `adduser --disabled-password --gecos '' ivme-deploy` ile dağıtım hesabını oluştur. `install -d -m 0700 -o ivme-deploy -g ivme-deploy /home/ivme-deploy/.ssh` ile SSH dizinini hazırla. İvme'nin açık anahtar dosyasını `install -m 0600 -o ivme-deploy -g ivme-deploy ivme-vps.pub /home/ivme-deploy/.ssh/authorized_keys` ile ekle. Docker grubundaki dağıtım hesabı sunucuda yönetici düzeyinde yetkiye sahiptir. [Contabo SSH anahtarları ve cloud-init](https://contabo.com/en-us/cloud-init/)
 2. Windows'ta `%USERPROFILE%\.ssh\config` içinde şu yapıyı kullan. Ardından `ssh ivme-vps` ile doğrula.
 
 ```sshconfig
@@ -27,13 +27,13 @@ Host ivme-vps
     IdentitiesOnly yes
 ```
 
-3. Yerel uygulama dizininden `scp deploy/bootstrap-ubuntu.sh ivme-vps:/tmp/ivme-bootstrap.sh` çalıştır. Sunucuda `sudo sh /tmp/ivme-bootstrap.sh ivme-deploy` çalıştır. Betik Docker Engine, Compose ve Git'i hazırlar, `/srv/ivme` dizinlerini ve iki ayrı veritabanı parolasını oluşturur. Yeni SSH oturumunda `docker compose version` ve `docker info` çalışmalıdır. [Docker'ın Ubuntu tarifi](https://docs.docker.com/engine/install/ubuntu/)
+3. Yerel uygulama dizininden `scp deploy/bootstrap-ubuntu.sh ivme-vps:/tmp/ivme-bootstrap.sh` çalıştır. Sunucunun yönetici oturumunda `sudo sh /tmp/ivme-bootstrap.sh ivme-deploy` çalıştır. Betik Docker Engine, Compose ve Git'i hazırlar, `/srv/ivme` dizinlerini ve iki ayrı veritabanı parolasını oluşturur. Yeni dağıtım oturumunda `docker compose version` ve `docker info` çalışmalıdır. [Docker'ın Ubuntu tarifi](https://docs.docker.com/engine/install/ubuntu/)
 4. Yerel `deploy/local.json.example` dosyasını `deploy/local.json` olarak kopyala ve SSH takma adını gir. Docker Desktop Linux konteyner modunda açık olmalı. Medya için Windows'ta `rclone` kullanılır. Betik Windows OpenSSH'nin aynı anahtarını ve doğrulanmış host kaydını kullanır. [Rclone Windows kurulumu](https://rclone.org/install/) · [Rclone SFTP](https://rclone.org/sftp/)
 5. Önce [medya listesini](vps-yayini.md) hazırla ve `Ivme Medya Gonder.bat` ile doğrulanmış klasörü aktar. V104 dökümünü yüklemek için V103 ve V104 dahil, DB geçmişiyle eşleşen kodu yerel `test` dalında gözden geçir. Sonraki bölümdeki ilk kurulum komutuyla veriyi yükle. Canlı geçiş için kaynak yazılarını durdurduktan sonra son dökümü al. İlk restore boş veritabanında, tek işlemde yapılır.
 
 ## Bir tıklama
 
-Yerel `test` dalında IDE'nin Git panelinden yayına girecek dosyaları stage et. Ardından **Ivme Yayinla.bat** dosyasına çift tıkla. Betik stage edilen değişiklikleri commit eder. Uygulama, dağıtım veya betik dizininde stage edilmemiş değişiklik varsa commit'ten önce durur. Commit hazırsa aynı düğme onunla devam eder. Örnek ön izleme ve ilk yayın.
+Yerel `test` dalında IDE'nin Git panelinden yayına girecek dosyaları stage et. Ardından **Ivme Yayinla.bat** dosyasına çift tıkla. Betik seçili değişiklikleri commit eder ve imajı bu commit'ten oluşturur. Stage edilmemiş dosyalar yerelde kalır. Çalışma alanı temizse düğme son commit ile devam eder. Taslaklar açıkken mevcut commit'i yayımlamak için `--committed` kullan.
 
 ```powershell
 python -X utf8 deploy/release.py --preview

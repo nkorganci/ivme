@@ -74,21 +74,20 @@ def check_public_paths(paths):
             raise ValueError(f"Private or generated path in public Git history: {path}")
 
 
-def candidate(remote, message, preview, use_local_production):
+def candidate(remote, message, preview, use_local_production, committed):
     if git("branch", "--show-current") != "test":
         raise ValueError("Start the release from the local test branch.")
-    runtime = ("backend", "frontend", "deploy", "Dockerfile", "scripts")
-    if not preview and (git("diff", "--name-only", "--", *runtime)
-                        or git("ls-files", "--others", "--exclude-standard", "--", *runtime)):
-        raise ValueError("The application checkout still has unstaged files. Stage the release files or finish them on test.")
-    staging = git("diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z")
-    if git("diff", "--cached", "--name-only") and not preview:
-        check_public_paths(staging)
+    staged = bool(git("diff", "--cached", "--name-only"))
+    dirty = bool(git("status", "--porcelain", "--untracked-files=normal"))
+    if not preview and not committed and not staged and dirty:
+        raise ValueError("Stage the release files, or use --committed to publish the current commit.")
+    if staged and not (preview or committed):
+        check_public_paths(git("diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"))
         print(git("diff", "--cached", "--stat"), flush=True)
         run("git", "diff", "--cached", "--check")
         run("git", "commit", "-m", message or time.strftime("Ivme release %Y-%m-%d %H:%M"))
-    if staging and preview:
-        print("Preview uses committed code. Staged files will be committed by the release button.", flush=True)
+    if git("status", "--porcelain", "--untracked-files=normal"):
+        print("Other working files stay in the local checkout. The image uses the Git commit only.", flush=True)
     if not use_local_production:
         run("git", "fetch", remote, f"{BRANCH}:refs/remotes/{remote}/production")
     production = git("rev-parse", "production" if use_local_production else f"{remote}/production")
@@ -165,6 +164,7 @@ def main():
     mode.add_argument("--preview", action="store_true", help="Build committed code without SSH or push.")
     mode.add_argument("--media", nargs="?", const="", help="Upload a verified media manifest separately.")
     parser.add_argument("--local-production", action="store_true", help="Use the local production ref for offline preview.")
+    parser.add_argument("--committed", action="store_true", help="Publish HEAD and leave all staged and unstaged files local.")
     parser.add_argument("--message", help="Message for the staged commit.")
     parser.add_argument("--restore", type=Path, help="First install only. Send and restore a verified PostgreSQL dump.")
     args = parser.parse_args()
@@ -183,7 +183,7 @@ def main():
                 media(host, Path(path).resolve())
                 return 0
         remote = remote_name()
-        revision = candidate(remote, args.message, args.preview, args.local_production)
+        revision = candidate(remote, args.message, args.preview, args.local_production, args.committed)
         restore = None
         if args.restore:
             dump = args.restore.resolve()
