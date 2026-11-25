@@ -11,6 +11,11 @@ def load_json(path):
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
+def sha256(path):
+    with path.open("rb") as stream:
+        return file_digest(stream, "sha256").hexdigest()
+
+
 def relative_path(value):
     path = PurePosixPath(value.replace("\\", "/"))
     if path.is_absolute() or not path.parts or ".." in path.parts or ":" in value:
@@ -50,12 +55,18 @@ def pdf_projection(workspace, release):
     for path, sha in dict(pdf_requirements(workspace, release)).items():
         match = original.get(path.as_posix().casefold())
         if match and match[1] == sha and (archive / match[0]).is_file():
-            mapped[path] = match
+            mapped[path] = (PurePosixPath("YKS") / match[0], sha)
             files.add(archive / match[0])
         elif (resources / path).is_file():
             files.add(resources / path)
         else:
-            missing.append(path.as_posix())
+            folder = (resources / path).parent
+            renamed = next((file for file in sorted(folder.glob("*.pdf")) if sha256(file) == sha), None)
+            if renamed is None:
+                missing.append(path.as_posix())
+            else:
+                mapped[path] = (PurePosixPath(renamed.relative_to(resources).as_posix()), sha)
+                files.add(renamed)
 
     rows = [
         {"originalPath": (PurePosixPath("/app/Kaynaklar") / path).as_posix(),
@@ -105,8 +116,7 @@ def main():
             relative = path.relative_to(workspace)
             if path.resolve() != path or "\n" in relative.as_posix():
                 raise ValueError(f"Asset must be a regular file inside the workspace: {relative}")
-            with path.open("rb") as stream:
-                sha = file_digest(stream, "sha256").hexdigest()
+            sha = sha256(path)
             names.write(relative.as_posix().encode("utf-8") + b"\0")
             checksums.write(f"{sha}  {relative.as_posix()}\n")
             totals[relative.parts[0]] += path.stat().st_size

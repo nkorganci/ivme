@@ -13,7 +13,8 @@ Windows'ta `test` geliştirme dalı ile `ivme_local` ve geçici `ivme_test` veri
 
 ```bash
 rsync -rt --from0 --files-from=PRIVATE_OUTPUT/assets.files --partial --info=progress2 ./ ivme-vps:/srv/ivme/data/
-rsync -t --partial --info=progress2 PRIVATE_OUTPUT/production-paths.json ivme-vps:/srv/ivme/data/Kaynaklar/YKS/Katalog/production-paths.json
+ssh ivme-vps mkdir -p /srv/ivme/data/Kaynaklar/Katalog
+rsync -t --partial --info=progress2 PRIVATE_OUTPUT/production-paths.json ivme-vps:/srv/ivme/data/Kaynaklar/Katalog/production-paths.json
 rsync -t --partial --info=progress2 PRIVATE_OUTPUT/assets.sha256 ivme-vps:/srv/ivme/backup/
 rsync -t --partial --info=progress2 ivme.dump ivme.dump.sha256 ivme-vps:/srv/ivme/backup/
 ```
