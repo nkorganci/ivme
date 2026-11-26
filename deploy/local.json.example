@@ -1,3 +1,4 @@
 {
-  "ssh_host": "ivme-vps"
+  "ssh_host": "ivme-vps",
+  "offsite_backup_dir": "D:/private/contabo-backups"
 }

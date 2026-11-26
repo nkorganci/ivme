@@ -29,7 +29,13 @@ Wrestling, Arapça ve PrepExpert ilk yerel açılışta bir öğrenci hesabı ku
 
 Her proje `/srv/<proje>` altında kendi ortam dosyalarını, kalıcı veritabanı volume’unu, sürümlerini ve yedeklerini tutar. Veri dosyaları ve ilk yedek özel SSH aktarımıyla gider. Rutin yayın mevcut PostgreSQL volume’unu kullanır. İlk taşıma için `--restore` ve doğrulanmış döküm gerekir.
 
-Wrestling, Arapça ve PrepExpert günlük PostgreSQL yedekleri `ivme-project-backup@<proje>.timer` ile alınır. İlk yedekler SHA-256 kontrolünden geçti. Dönen günlük dosyalar `/srv/<proje>/backup/daily` altındadır. İlk taşıma dökümleri o projenin `backup` dizininde ayrıca saklanır.
+Günlük PostgreSQL yedekleri İvme için `ivme-db-backup.timer` (01:30 UTC), diğer projeler için `ivme-project-backup@<proje>.timer` (02:15 UTC) ile alınır. Her döküm `pg_restore --list` ve SHA-256 ile doğrulanır. Haftanın günlerine göre dönen yedi dosya `/srv/<proje>/backup/daily` altındadır. Yayın öncesi ve göç öncesi dökümler ile ilk taşıma dökümleri o projenin `backup` dizininde ayrıca saklanır. Sunucu betikleri ve systemd birimleri `deploy/` altındadır. Yeni sunucuda `bootstrap-ubuntu.sh` sonrasında `sudo sh install-server.sh` ile kurulur.
+
+Her push hazırlığının sonunda `deploy/prune-server.sh` dağıtım hesabıyla çalışır. Çalışan sürüm, geri dönüş için en yeni dört imaj, bekleyen adaylar ve başarısız işaretleri korunur. Daha eski imaj etiketleri ve sürüm dizinleri silinir. Yayın öncesi dökümler yalnız 30 günden eskiyse ve en yeni 10 dökümün (İvme’de 3) dışındaysa silinir. İlk taşıma ve günlük yedekler bu temizliğe girmez. Temizlik hatası yayını durdurmaz. Silinecekleri görmek için `ssh ivme-vps "DRY_RUN=1 sh -s -- PROJE" < deploy/prune-server.sh` çalıştır.
+
+### VPS dışı yedek kopyası
+
+`Ivme-OffsiteBackup` Windows görevi girişten 10 dakika sonra ve altı saatte bir çalışır. Her projenin en yeni günlük dökümü bilgisayarda yoksa SSH ile indirilir, SHA-256 ve `pg_restore --list` ile doğrulanır. Wrestling, Arapça ve PrepExpert dökümleri ayrıca yerel test konteynerinde geçici bir veritabanına geri yüklenir ve tabloları sayılır. Kopyalar `deploy/local.json` içindeki `offsite_backup_dir` dizininde durur. Dizine yalnız Windows hesabı ve SYSTEM erişir. İvme için en yeni 3, diğer projeler için en yeni 14 kopya tutulur. Sonuçlar `%LOCALAPPDATA%\IvmeProductionMirror\offsite-backup.log` dosyasına eklenir. Görevi kurmak için İvme uygulama dizininde `powershell -ExecutionPolicy Bypass -File deploy/offsite-backup.ps1 -Install` çalıştır. VPS kaybında yeni sunucu ilk kurulum tarifine göre hazırlanır ve bu kopyalardan biri ilk taşımadaki restore adımıyla boş veritabanına yüklenir.
 
 ## 4. Veri kapsamı
 

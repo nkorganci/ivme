@@ -1,0 +1,13 @@
+[Unit]
+Description=Verified PostgreSQL backup for %i
+Requires=docker.service
+After=docker.service
+ConditionPathExists=/srv/%i/current.sha
+
+[Service]
+Type=oneshot
+User=ivme-deploy
+SupplementaryGroups=docker
+UMask=0077
+ExecStart=/usr/local/libexec/ivme-project-backup %i
+TimeoutStartSec=20min

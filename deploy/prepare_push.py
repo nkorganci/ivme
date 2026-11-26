@@ -67,6 +67,11 @@ def prepare(project, revision, previous):
             ssh(host, f"umask 077; mkdir -p {folder}")
             run("scp", *SSH_OPTIONS, str(source / "deploy/compose.yaml"), f"{host}:{folder}/compose.yaml")
         ssh(host, f"umask 077; mkdir -p {remote}/tested && touch {remote}/tested/{revision}")
+    # Cleanup is housekeeping: a failure must not block the tested release.
+    pruned = subprocess.run(["ssh", *SSH_OPTIONS, host, f"sh -s -- {project}"],
+                            input=(Path(__file__).with_name("prune-server.sh")).read_bytes())
+    if pruned.returncode:
+        print(f"Warning: release cleanup on the server failed for {project}.", file=sys.stderr)
 
 
 def main():
