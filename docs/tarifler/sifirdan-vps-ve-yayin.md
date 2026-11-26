@@ -26,14 +26,28 @@ Yerel ölçümü aynı birimde toplayınca aşağıdaki tablo çıkıyor. Sağla
 
 | Kalem | İvme için yaklaşık boyut |
 |---|---:|
-| Açılmış PostgreSQL veritabanı ve indeksleri | 38 GiB |
+| Açılmış PostgreSQL veritabanı ve indeksleri | 38,45 GiB |
 | Çalışma medyası, soru görselleri, gereken PDF’ler ve kataloglar | 15,73 GiB |
 | Bir sıkıştırılmış PostgreSQL prova dökümü | 2,73 GiB, yani 2,93 GB |
-| Canlı veri, medya ve bir döküm toplamı | 56,5 GiB, yani yaklaşık 61 GB |
+| Canlı veri, medya ve bir döküm toplamı | Yaklaşık 57 GiB, yani 61 GB |
 | Ubuntu, Docker çalışma dosyaları, imajlar ve günlükler için örnek bütçe | 8–15 GiB |
-| 100 GB diskte büyüme ve işlemler için tahmini kalan | 22–29 GiB, dosya sistemi payı düşülmeden |
+| 100 GB diskte büyüme ve işlemler için tahmini kalan | 21–28 GiB, dosya sistemi payı düşülmeden |
 
-Son iki satır tahmindir. İlk geri yüklemede PostgreSQL indeksleri oluşturur ve geçici yazma alanı kullanır. Dökümün 2,93 GB olması, açılmış veritabanının da o kadar yer tutacağı anlamına gelmez. İlk kurulumdan sonra `df -h /srv/ivme` ile gerçek boş alanı ölç. [PostgreSQL döküm biçimleri](https://www.postgresql.org/docs/18/app-pgdump.html) · [PostgreSQL işlem günlüğü ve disk](https://www.postgresql.org/docs/18/wal-internals.html)
+Disk bütçesinin son iki satırı tahmindir. İlk geri yüklemede PostgreSQL indeksleri oluşturur ve geçici yazma alanı kullanır. Sıkıştırılmış 2,93 GB döküm açıldığında veritabanı ve indeksler için ayrıca disk alanı gerekir. İlk kurulumdan sonra `df -h /srv/ivme` ile gerçek boş alanı ölç. [PostgreSQL döküm biçimleri](https://www.postgresql.org/docs/18/app-pgdump.html) · [PostgreSQL işlem günlüğü ve disk](https://www.postgresql.org/docs/18/wal-internals.html)
+
+#### 1.3.1. İvme veritabanı neden 38,45 GiB?
+
+Yerel `ivme` veritabanında ölçülen **alanın %94,7’si iki katalog tablosunda.** İvme, soru ve kaynakların otomatik etiketlerini, kanıtlarını ve ders–konu bağlantılarını katalog sürümleriyle saklıyor.
+
+| Tablo | Ne tutuyor? | Tüm sürümlerde satır | Güncel sürümde satır | Diskte |
+|---|---|---:|---:|---:|
+| `learning_catalog.items` | Sorular, PDF’ler ve diğer kaynaklar için etiket, kaynak kanıtı ve katalog ayrıntıları | 8.430.694 | 100.822 | 29,46 GiB |
+| `learning_catalog.assignments` | Her katalog öğesinin ders ve konularla bağlantıları | 12.424.111 | 141.132 | 6,95 GiB |
+| `public.questions` | Esas soru bankası | 97.061 | — | 35 MiB |
+
+Veritabanında **90 katalog çalıştırması** kayıtlı. Bir soru her yeni katalog sürümünde tekrar temsil edilebiliyor. Uygulamanın güncel katalog sorguları tek etkin sürümü seçiyor. Örneğin bir sorunun katalog kaydı ve konu bağlantısı, sonraki yayında korunurken önceki sürümdeki kayıt da veritabanında kalıyor. Bu yüzden yaklaşık 97 bin soruya karşılık milyonlarca katalog satırı oluşmuş. Hesap ve öğrenci geçmişinin de bulunduğu `public` şemasının tamamı yaklaşık **49 MiB**. [Katalog tabloları ve güncel sürüm görünümleri](../../backend/src/main/resources/db/migration/V38__shared_learning_resource_labels.sql) · [Sürüm kopyalayan göç örneği](../../backend/src/main/resources/db/migration/V102__mebi_main_question_bank.sql)
+
+`items` tablosundaki **23,11 GiB**, PostgreSQL’in büyük alanları ayrı sakladığı TOAST bölümünde. Bu tablo kaynak ve etiket ayrıntılarını JSON olarak saklıyor. `assignments` tablosunda **5,28 GiB** sorguları hızlandıran indekslere ait. Soru görselleri ve özgün PDF dosyaları üstteki **15,73 GiB medya** kaleminde ayrıca sayılıyor. PDF dosyalarını azaltmak medya alanını düşürür. Veritabanındaki tarihsel katalog satırlarının alanı ayrı bir konudur. [PostgreSQL’in büyük alanları saklama biçimi](https://www.postgresql.org/docs/18/storage-toast.html)
 
 ### 1.4. 100 GB hangi durumda dar gelir?
 
