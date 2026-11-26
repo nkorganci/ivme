@@ -6,7 +6,7 @@ import sys
 import tempfile
 import zipfile
 
-from release import SSH_OPTIONS, check_public_paths, host_alias, send_image, ssh
+from release import SSH_OPTIONS, check_public_paths, host_alias, ssh
 
 PROJECTS = {
     "ivme": ("ivme", {"ivme-app": None}),
@@ -52,7 +52,13 @@ def prepare(project, revision, previous):
             run(*build, *(["--target", target] if target else []), "-t", tag, str(source))
         for image in images:
             tag = f"{image}:{revision}"
-            send_image(host, tag)
+            with subprocess.Popen(["docker", "save", tag], stdout=subprocess.PIPE) as stream:
+                try:
+                    run("ssh", "-C", *SSH_OPTIONS, host, "docker image load", stdin=stream.stdout)
+                finally:
+                    stream.stdout.close()
+                if stream.wait():
+                    raise RuntimeError(f"Could not export {tag}")
         remote = f"/srv/{project}"
         if project != "ivme":
             folder = f"{remote}/releases/{revision}"
