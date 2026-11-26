@@ -25,6 +25,8 @@ Wrestling, Arapça ve PrepExpert ilk yerel açılışta bir öğrenci hesabı ku
 2. Docker Desktop açıkken proje kökündeki `Yayinla.bat` dosyasına çift tıkla. İvme’nin düğmesi `Ivme Yayinla.bat`. Diğer üç düğme bu çalışma alanındaki ortak `deploy/project_release.py` betiğini çağırır.
 3. Betik dosyaları commit eder, aynı commit’ten Linux imajı oluşturur, GitHub `production` dalını günceller ve imajı SSH üzerinden VPS’ye gönderir. Sunucu yeni konteynerlerin sağlık kontrolünü tamamladıktan sonra çalışan sürümü kaydeder. `--committed` yalnız son commit’i kullanır.
 
+Dört projenin normal çalışma dalı yerel `test`, yayın dalı GitHub’daki `production`. `git commit` değişikliği yerel tarihe kaydeder. `git push` komutu seçili uzak Git dalını günceller. Contabo güncellemesi için `Yayinla.bat` imajı da kurar. Git dalı, Docker imajı ve öğrenci veritabanı farklı işlevlere sahiptir.
+
 Her proje `/srv/<proje>` altında kendi ortam dosyalarını, kalıcı veritabanı volume’unu, sürümlerini ve yedeklerini tutar. Veri dosyaları ve ilk yedek özel SSH aktarımıyla gider. Rutin yayın mevcut PostgreSQL volume’unu kullanır. İlk taşıma için `--restore` ve doğrulanmış döküm gerekir.
 
 Wrestling, Arapça ve PrepExpert günlük PostgreSQL yedekleri `ivme-project-backup@<proje>.timer` ile alınır. İlk yedekler SHA-256 kontrolünden geçti. Dönen günlük dosyalar `/srv/<proje>/backup/daily` altındadır. İlk taşıma dökümleri o projenin `backup` dizininde ayrıca saklanır.
@@ -32,3 +34,25 @@ Wrestling, Arapça ve PrepExpert günlük PostgreSQL yedekleri `ivme-project-bac
 ## 4. Veri kapsamı
 
 Wrestling ve Arapça’nın hesapları ve çalışma kayıtları PostgreSQL ile taşındı. Kullanıcılar yeni sunucuda tekrar giriş yapar. PrepExpert’in uygulaması, hesapları ve yayımlanabilir içerik paketi taşındı. Dondurulmuş Bank 1, özel olarak işaretli Bank 2 ve onlarla ilişkili olabilecek kişisel çalışma geçmişi yerel kopyada durur. Wrestling’in aile kayıt e-postaları için üretim SMTP ayarları gerekir.
+
+## 5. Üretim hareketlerini Windows’ta izleme
+
+### 5.1. Otomatik güncelleme
+
+Windows’a girişte ve oturum açıkken iki saatte bir `Ivme-ProductionDataMirror` görevi çalışır. Görev Contabo’dan SSH üzerinden o andaki hareket kayıtlarını okur. Bir süre bağlantı kurulamazsa beşer dakika arayla üç kez yeniden dener. Bir projenin kopyası ancak o projeye ait tüm tablolar başarıyla geldikten sonra yenilenir.
+
+Yerel PostgreSQL 18’de `production_izleme` veritabanını aç. Bu veritabanı varsayılan olarak salt okunur. `ivme`, `wrestling`, `arapca`, `prepexpert` şemalarından tablo seçebilirsin. Şifreler, oturum belirteçleri, iletişim ve sağlık bilgileri ve soru arşivleri kopyaya alınmaz. Geliştirme uygulamaları kendi yerel veritabanlarını kullanır. Windows’taki değişiklikler Contabo’ya geri gönderilmez.
+
+### 5.2. Sorgulama ve elle yenileme
+
+pgAdmin’de `localhost:5432` bağlantısındaki `production_izleme` veritabanında şu sorguları çalıştırabilirsin.
+
+```sql
+SELECT * FROM ivme.ogrenci_cozumleri ORDER BY created_at DESC LIMIT 30;
+SELECT * FROM arapca.daily_activity ORDER BY day DESC LIMIT 30;
+SELECT * FROM wrestling.weekly_student_progress ORDER BY week_start DESC LIMIT 30;
+SELECT * FROM prepexpert.learner_records ORDER BY updated_at DESC LIMIT 30;
+SELECT * FROM ivme.sync_status;
+```
+
+Son yenileme saatini her şemanın `sync_status` tablosunda görürsün. PowerShell’de elle yenilemek için `Start-ScheduledTask -TaskName Ivme-ProductionDataMirror` çalıştır. Sonuç `%LOCALAPPDATA%\IvmeProductionMirror\last-sync.log` dosyasına yazılır. Görevi yeniden kurmak için İvme uygulama dizininde `powershell -ExecutionPolicy Bypass -File deploy/production-mirror.ps1 -Install` çalıştır.
