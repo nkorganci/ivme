@@ -2,7 +2,7 @@
 
 ## Contabo siparişi
 
-**Cloud VPS 8, 24 GB RAM ve 300 GB SSD** İvme ile aynı VPS'ye sonraki projeler için önerilen başlangıçtır. Yalnız İvme ve birkaç hafif servis için 150 GB NVMe seçeneği de yeterli bir başlangıçtır. İvme V104 kaynağı yaklaşık 38 GB PostgreSQL, 15,73 GiB çalışma medyası ve 2,93 GB sıkıştırılmış prova dökümü içerir. Linux, Docker imajları, büyüme ve geri yükleme için ayrı boşluk gerekir. Kullanıcıların çoğu Türkiye'deyse Avrupa bölgesini seç. [Contabo seçenekleri](https://contabo.com/en-us/pricing/) · [Desteklenen Linux sürümleri](https://contabo.com/en-us/linux-vps/)
+**Mevcut yaklaşık 10 kullanıcı için Cloud VPS 4, 8 GB RAM ve 100 GB SSD ile başla.** İkinci tam geri yüklemeyi ayrı bir ortamda yap ve yedekleri VPS dışında tut. Aynı VPS’ye başka bir proje veya ikinci tam veritabanı kopyası eklenecekse Cloud VPS 6’nın 200 GB SSD seçeneğini değerlendir. [Sunucu seçiminin hesabı ve sıfırdan yayın rehberi](sifirdan-vps-ve-yayin.md)
 
 | Sipariş alanı | Seçim |
 |---|---|
@@ -27,7 +27,7 @@ Host ivme-vps
     IdentitiesOnly yes
 ```
 
-3. Yerel uygulama dizininden `scp deploy/bootstrap-ubuntu.sh ivme-vps:/tmp/ivme-bootstrap.sh` çalıştır. Sunucunun yönetici oturumunda `sudo sh /tmp/ivme-bootstrap.sh ivme-deploy` çalıştır. Betik Docker Engine, Compose ve Git'i hazırlar, `/srv/ivme` dizinlerini ve iki ayrı veritabanı parolasını oluşturur. Yeni dağıtım oturumunda `docker compose version` ve `docker info` çalışmalıdır. [Docker'ın Ubuntu tarifi](https://docs.docker.com/engine/install/ubuntu/)
+3. Yerel uygulama dizininden `scp deploy/bootstrap-ubuntu.sh ivme-vps:/tmp/ivme-bootstrap.sh` çalıştır. Sunucunun yönetici oturumunda `sudo sh /tmp/ivme-bootstrap.sh ivme-deploy` çalıştır. Betik Docker Engine, Compose ve Git'i hazırlar, `/srv/ivme` dizinlerini ve iki ayrı veritabanı parolasını oluşturur. 8 GB planında ilk açılıştan önce `/srv/ivme/config/compose.env` içinde `IVME_JAVA_OPTS=-Xmx2g` ayarla. Yeni dağıtım oturumunda `docker compose version` ve `docker info` çalışmalıdır. [Docker'ın Ubuntu tarifi](https://docs.docker.com/engine/install/ubuntu/)
 4. Yerel `deploy/local.json.example` dosyasını `deploy/local.json` olarak kopyala ve SSH takma adını gir. Docker Desktop Linux konteyner modunda açık olmalı. Medya için Windows'ta `rclone` kullanılır. Betik Windows OpenSSH'nin aynı anahtarını ve doğrulanmış host kaydını kullanır. [Rclone Windows kurulumu](https://rclone.org/install/) · [Rclone SFTP](https://rclone.org/sftp/)
 5. Önce [medya listesini](vps-yayini.md) hazırla ve `Ivme Medya Gonder.bat` ile doğrulanmış klasörü aktar. V104 dökümünü yüklemek için V103 ve V104 dahil, DB geçmişiyle eşleşen kodu yerel `test` dalında gözden geçir. Sonraki bölümdeki ilk kurulum komutuyla veriyi yükle. Canlı geçiş için kaynak yazılarını durdurduktan sonra son dökümü al. İlk restore boş veritabanında, tek işlemde yapılır.
 
