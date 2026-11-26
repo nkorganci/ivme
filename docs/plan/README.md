@@ -15,7 +15,7 @@ Tek güncel durum kaydı bu dosyadır; ayrıntılı gereksinim yalnız açık ad
 
 | Kimlik | Durum | Kalan |
 |---|---|---|
-| 12.03 | VPS_VERITABANI_GERI_YUKLEME | 190.171 medya dosyası VPS'de doğrulandı. Tam PostgreSQL geri yüklemesinin, uygulama sağlığının ve HTTPS geçişinin doğrulanması sürüyor |
+| 12.03 | VPS_GOC_DOGRULAMA | Tam PostgreSQL dökümü geri yüklendi ve 190.171 medya dosyası doğrulandı. Uygulanmış V104 ile eşleşen kodu ve V105'i yayımla, ardından HTTPS geçişini doğrula |
 | MAT-TYT / 12.02 | SURUYOR (etkin) | Önce TYT konu içerikleri, lab en son; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur ([liste](../urun/matematik-konu-listesi.md); TYT 29/32) |
 | MAT-LAB-02 / 12.02 | BEKLEMEDE | TYT 16/32 lab TEKNİK HAZIR; TYT içerikleri bitince ilk eksik lab `hareket-problemleri` |
 | PHYS-PILOT-01, PHYS-INTERACTIVE-02 / 12.02 | Kullanıcı değerlendirmesi bekliyor | `/konuyu-ogrenelim/fizik/hareket-kuvvet` (8 bölüm, MotionLab); kabul `python scripts/ivme.py kalite calistir PHYS-PILOT-01`; kullanıcı onaylamadan başka konuya geçme |

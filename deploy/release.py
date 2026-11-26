@@ -2,6 +2,7 @@
 
 import argparse
 from hashlib import file_digest
+from io import BytesIO
 import json
 import os
 from pathlib import Path
@@ -12,6 +13,7 @@ import sys
 import tempfile
 import time
 import zipfile
+from zlib import crc32
 
 
 DEPLOY = Path(__file__).resolve().parent
@@ -218,12 +220,26 @@ def verify_dump(dump, revision):
         raise ValueError("The PostgreSQL dump does not match its SHA-256 file.")
     restore = shutil.which("pg_restore") or r"C:\Program Files\PostgreSQL\18\bin\pg_restore.exe"
     rows = read(restore, "--data-only", "--table=flyway_schema_history", "--file=-", str(dump))
-    applied = set(re.findall(r"(?m)^\d+\t([\d.]+)\t[^\r\n]*\tt$", rows))
-    paths = git("ls-tree", "-r", "--name-only", revision, "--", "backend/src/main/resources/db/migration")
-    supported = set(re.findall(r"/V([\d.]+)__", paths))
-    if not applied or applied - supported:
+    applied = dict(re.findall(r"(?m)^\d+\t([\d.]+)\t[^\t\n]*\tSQL\t[^\t\n]*\t(-?\d+)\t[^\n]*\tt$", rows))
+    directory = "backend/src/main/resources/db/migration"
+    archive = run("git", "archive", "--format=zip", revision, directory, stdout=subprocess.PIPE).stdout
+    with zipfile.ZipFile(BytesIO(archive)) as migrations:
+        supported = {}
+        for name in migrations.namelist():
+            match = re.fullmatch(r"V([\d.]+)__.+\.sql", Path(name).name)
+            if match:
+                checksum = 0
+                for line in re.split(r"\r\n|\r|\n", migrations.read(name).decode("utf-8-sig")):
+                    checksum = crc32(line.encode("utf-8"), checksum)
+                supported[match[1]] = str(checksum if checksum < 2**31 else checksum - 2**32)
+    missing = applied.keys() - supported.keys()
+    if not applied or missing:
         raise ValueError(f"The release does not contain the dump's Flyway history. Missing versions: "
-                         f"{', '.join(sorted(applied - supported)) or 'history unreadable'}.")
+                         f"{', '.join(sorted(missing)) or 'history unreadable'}.")
+    changed = [version for version, checksum in applied.items() if supported[version] != checksum]
+    if changed:
+        raise ValueError(f"Applied Flyway migrations have changed: {', '.join(changed)}. "
+                         "Restore the applied SQL and put later changes in a new migration.")
     return sha
 
 

@@ -20,7 +20,7 @@
 
 ## Etkin ve bekleyen işler
 
-- **12.03 VPS:** GitHub `production` ve VPS imajı `6016795`. `ivme-contabo` tüneli bağlı. 190.171 medya dosyası VPS'de doğrulandı. Geri yükleme bitince [ilk yayında](tarifler/tek-tikla-yayin.md) kayıt sayılarını karşılaştır, geçici operatör parolasını yenile ve hazır olma kontrolünden sonra `net.ivme.dev` adresini bu tünele bağla.
+- **12.03 VPS:** Tam döküm geri yüklendi ve 190.171 medya dosyası VPS'de doğrulandı. Uygulanmış V104 SQL dosyası geri getirildi, sonraki değişiklikler V105'e taşındı. [İlk yayında](tarifler/tek-tikla-yayin.md) düzeltilen kodu yayımla, yeni göçü uygula ve `net.ivme.dev` geçişini bitir.
 - **Öğretmenlik kaynakları:** 358 PDF `Kaynaklar/Ogretmenlik/ogretmen-AGS` ve `ogretmen-OABT` altında, DB envanteri yazıldı; 240 resmî bağlantının 36'sı yerelde yok ve ÖSYM PDF erişimi engelli (35'i 2025–2026 AGS/ÖABT). Kanıt `Kaynaklar/Ogretmenlik/ARSIV_DURUMU.md`; erişim açıldığında `python -X utf8 veri-hatti/ogretmen-sinavlari/duzenle.py --apply`, ardından `tamamla.py` (üst dizinden). Tam soru bankası aktarımı yapılmadı.
 - **MAT-TYT (etkin):** TYT 29/32; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur. 16. adım başlayana dek içerik üretimi bu sırayı korur; 16.04'ten sonra yeni konu paketi standardına geçilir.
 - **Kullanıcı/insan girdisi bekleyen:** TAS-08 ve TAS-09 öğretmen kararları, Fizik pilotu değerlendirmesi, TAS-10 Brevo göndereni ve API anahtarı, TAS-02 dış izleme kurulumu. Ayrıntı [yol haritasında](plan/README.md).

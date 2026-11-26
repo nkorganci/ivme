@@ -42,7 +42,7 @@ python -X utf8 deploy/release.py --preview
 python -X utf8 deploy/release.py --restore "D:\private\ivme.dump"
 ```
 
-`--preview` commit edilmiş kodla Linux imajını ve üretim testlerini çalıştırır. SSH ve push gerektirmez. İlk yükleme `ivme.dump.sha256` dosyasını aynı dizinde bekler ve kodda dökümdeki Flyway göçleri bulunuyorsa devam eder. Medyayı daha önce yükle. İlk tam yayından sonraki sürümlerde `--restore` kullanmadan düğmeye bas.
+`--preview` commit edilmiş kodla Linux imajını ve üretim testlerini çalıştırır. SSH ve push gerektirmez. İlk yükleme `ivme.dump.sha256` dosyasını aynı dizinde bekler. Dökümde uygulanmış Flyway SQL dosyalarının sürüm ve sağlama değerleri Git'teki dosyalarla eşleşmeli. Uygulanmış dosyayı değiştirirsen özgün halini geri getirip yeni düzenlemeyi sonraki sürüme ekle. Medyayı daha önce yükle. İlk tam yayından sonraki sürümlerde `--restore` kullanmadan düğmeye bas.
 
 Yayın GitHub `production` dalının ucunu alır ve yerel `test` ile birleştirilen sürümü derler. İmaj Linux amd64 olarak commit SHA'sıyla etiketlenir. Ön yüz derlemesi ile PDF, görsel ve kaynak çözümleme testleri yerelde Docker içinde çalışır. V104 prova imajı SSH aktarımında yaklaşık 220 MB ölçüldü. GitHub'a kod fast-forward olarak push edilir, aynı SHA ve imaj VPS'de doğrulanır. Ücretli registry veya CI gerekmez. GitHub herkese açık olduğu için öğrenci verisi, medya, dökümler ve ortam ayarları özel SSH aktarımında tutulur.
 

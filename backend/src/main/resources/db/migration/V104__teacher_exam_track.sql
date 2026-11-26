@@ -19,13 +19,15 @@ UPDATE user_exam_tracks SET track_id='KPSS_OABT' WHERE track_id='OGRETMEN_AGS';
 UPDATE exam_tracks SET family='KPSS', name='Öğretmenlik Sınavı', status='PREPARING', sort_order=60,
   audience='AGS, tarihsel Eğitim Bilimleri ve öğretmenlik alan sınavlarına hazırlanan adaylar',
   summary='AGS · Eğitim Bilimleri · ÖABT branşları',
-  note='Yalnız öğretmenlik sınavlarına ait Eğitim Bilimleri, MEB-AGS ve ÖABT içerikleri gösterilir. Kaynaklar izin ve içerik incelemesi tamamlandıkça eklenir.',
+  note='Öğretmenlik soru bankası aynı yıl/branş düzeninde hazırlanıyor. Şu an ortak KPSS Genel Yetenek ve Genel Kültür soruları kullanılabilir; AGS ve ÖABT içerikleri kaynak incelemesi tamamlandıkça eklenecek.',
   sections='[
+    {"examId":"KPSS_LS_GY","name":"Ortak Genel Yetenek","detail":"2006–2024 ortak KPSS kaynakları","minutes":75,"subjects":[]},
+    {"examId":"KPSS_LS_GK","name":"Ortak Genel Kültür","detail":"2006–2024 ortak KPSS kaynakları","minutes":75,"subjects":[]},
     {"examId":"OGRETMEN_EB","name":"Tarihsel Eğitim Bilimleri","detail":"2006–2024","minutes":75,"subjects":[]},
     {"examId":"OGRETMEN_AGS","name":"MEB-AGS","detail":"2025 ve sonrası","minutes":110,"subjects":[]},
     {"examId":"OGRETMEN_OABT","name":"ÖABT · Branş sınavları","detail":"Yıl ve öğretmenlik branşına göre","minutes":120,"subjects":[]}
   ]'::jsonb,
-  ready_features=ARRAY['past-questions','question-bank','study','pdf-inventory']
+  ready_features=ARRAY['past-questions','question-bank','study']
 WHERE id='KPSS_OABT';
 
 UPDATE exam_tracks SET status='PLANNED', note='Birleşik Öğretmenlik Sınavı seçeneğine taşındı.'

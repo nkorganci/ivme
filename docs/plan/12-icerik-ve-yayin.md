@@ -147,15 +147,17 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum `VPS_VERITABANI_GERI_YUKLEME`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
+Durum `VPS_GOC_DOGRULAMA`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
 SSH, ayrı dağıtım hesabı ve Docker Compose doğrulandı. V104 adayında deneme,
 oturum ve ilerleme akışlarındaki 32 test geçti. `6016795` imajı VPS'ye ulaştı
 ve aynı commit GitHub `production` dalında. Ayrı `ivme-contabo` tüneli bağlı.
 [Tek tıkla yayın](../tarifler/tek-tikla-yayin.md) boş Linux ortamında örnek DB'nin
 geri yüklenmesini, yedek alarak göç uygulamayı ve sürüm/sağlık denetimini geçti.
 Medya listesindeki 190.171 dosya hem yerelde hem VPS'de SHA-256 denetimini
-geçti. 4,61 GB'lık tam V104 dökümü VPS'ye ulaştı. PostgreSQL tek işlemde
-geri yükleme yapıyor. Sırada kayıt sayılarının karşılaştırılması, geçici operatör
+geçti. 4,61 GB'lık tam V104 dökümü PostgreSQL'e tek işlemde geri yüklendi.
+Flyway, V104 dosyasının uygulandıktan sonra değiştiğini bildirdi. Uygulanmış SQL
+dosyasının sağlama değeri eşleşen sürümü geri getirildi ve öğretmenlik kaynağı
+değişiklikleri V105'e taşındı. Sırada kayıt sayılarının karşılaştırılması, geçici operatör
 parolasının üretim kopyasında yenilenmesi ve hazır olma kontrolünden sonra
 `net.ivme.dev` geçişi var. Yerel yedek ve yalıtılmış geri yükleme
 `scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
