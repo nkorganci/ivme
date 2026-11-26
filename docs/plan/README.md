@@ -15,7 +15,7 @@ Tek güncel durum kaydı bu dosyadır; ayrıntılı gereksinim yalnız açık ad
 
 | Kimlik | Durum | Kalan |
 |---|---|---|
-| 12.03 | VPS_GOC_DOGRULAMA | Tam PostgreSQL dökümü geri yüklendi ve 190.171 medya dosyası doğrulandı. Uygulanmış V104 ile eşleşen kodu ve V105'i yayımla, ardından HTTPS geçişini doğrula |
+| 12.03 | VPS_YAYINDA_CIHAZ_DOGRULAMA_ACIK | Canlı HTTPS, V105, öğrenci kayıtları, medya ve günlük yedek doğrulandı. Gerçek telefonda öğrenci oturumu ve aktif süre kabulü açık |
 | MAT-TYT / 12.02 | SURUYOR (etkin) | Önce TYT konu içerikleri, lab en son; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur ([liste](../urun/matematik-konu-listesi.md); TYT 29/32) |
 | MAT-LAB-02 / 12.02 | BEKLEMEDE | TYT 16/32 lab TEKNİK HAZIR; TYT içerikleri bitince ilk eksik lab `hareket-problemleri` |
 | PHYS-PILOT-01, PHYS-INTERACTIVE-02 / 12.02 | Kullanıcı değerlendirmesi bekliyor | `/konuyu-ogrenelim/fizik/hareket-kuvvet` (8 bölüm, MotionLab); kabul `python scripts/ivme.py kalite calistir PHYS-PILOT-01`; kullanıcı onaylamadan başka konuya geçme |

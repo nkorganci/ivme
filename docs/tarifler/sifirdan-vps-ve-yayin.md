@@ -35,6 +35,8 @@ Yerel ölçümü aynı birimde toplayınca aşağıdaki tablo çıkıyor. Sağla
 | Ubuntu, Docker çalışma dosyaları, imajlar ve günlükler için örnek bütçe | 8–15 GiB |
 | 100 GB diskte büyüme ve işlemler için tahmini kalan | 21–28 GiB, dosya sistemi payı düşülmeden |
 
+Satın alınan 200 GB SSD'de ilk canlı kurulum ve ilk günlük yedek sonrasında `df -h` **67 GiB kullanılmış, 127 GiB kullanılabilir** gösterdi. Geri yükleme tamamlandığında PostgreSQL yaklaşık **38 GiB**, çalışma medyası disk üzerinde yaklaşık **17 GiB** kullandı. Bu ölçümde geçici aktarım arşivleri kaldırılmıştı.
+
 Disk bütçesinin son iki satırı tahmindir. İlk geri yüklemede PostgreSQL indeksleri oluşturur ve geçici yazma alanı kullanır. Sıkıştırılmış 2,93 GB döküm açıldığında veritabanı ve indeksler için ayrıca disk alanı gerekir. İlk kurulumdan sonra `df -h /srv/ivme` ile gerçek boş alanı ölç. [PostgreSQL döküm biçimleri](https://www.postgresql.org/docs/18/app-pgdump.html) · [PostgreSQL işlem günlüğü ve disk](https://www.postgresql.org/docs/18/wal-internals.html)
 
 #### 1.3.1. İvme veritabanı neden 38,45 GiB?

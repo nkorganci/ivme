@@ -147,39 +147,24 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum `VPS_GOC_DOGRULAMA`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
-SSH, ayrı dağıtım hesabı ve Docker Compose doğrulandı. V104 adayında deneme,
-oturum ve ilerleme akışlarındaki 32 test geçti. `6016795` imajı VPS'ye ulaştı
-ve aynı commit GitHub `production` dalında. Ayrı `ivme-contabo` tüneli bağlı.
-[Tek tıkla yayın](../tarifler/tek-tikla-yayin.md) boş Linux ortamında örnek DB'nin
-geri yüklenmesini, yedek alarak göç uygulamayı ve sürüm/sağlık denetimini geçti.
-Medya listesindeki 190.171 dosya hem yerelde hem VPS'de SHA-256 denetimini
-geçti. 4,61 GB'lık tam V104 dökümü PostgreSQL'e tek işlemde geri yüklendi.
-Flyway, V104 dosyasının uygulandıktan sonra değiştiğini bildirdi. Uygulanmış SQL
-dosyasının sağlama değeri eşleşen sürümü geri getirildi ve öğretmenlik kaynağı
-değişiklikleri V105'e taşındı. Sırada kayıt sayılarının karşılaştırılması, geçici operatör
-parolasının üretim kopyasında yenilenmesi ve hazır olma kontrolünden sonra
-`net.ivme.dev` geçişi var. Yerel yedek ve yalıtılmış geri yükleme
-`scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
-yedeğini seçmiştir.
+Durum `VPS_YAYINDA_CIHAZ_DOGRULAMA_ACIK`. İvme Contabo Ubuntu 24.04 üzerinde
+`net.ivme.dev` adresinde çalışıyor. HTTPS üzerinden sağlık, uygulama SHA'sı ve
+operatör giriş/çıkışı, güvenli çerezler ve soru görseli doğrulandı. [Tek tıkla
+yayın](../tarifler/tek-tikla-yayin.md) üretimde `95b3441` ile başarıyla çalıştı.
 
-- Uygulama rolü ayrımı: çalışma bağlantısı hâlâ `root` rolüyle yapılır; `ivme_app` rolü yok ve mevcut rolün `CREATEROLE` yetkisi bulunmuyor. Yönetici erişimiyle sınırlı rolü kur, çalışma/Flyway rolünü ayır; parolayı sohbete veya rapora yazma.
-- Kalıcı başlatma, yeniden başlama/uyku sonrası toparlanma ve hata durumunu doğrula. Gerçek telefon/dış ağda giriş, soru, PDF/video, QR, oturum ve güvenli çerez akışını dene.
+Tam PostgreSQL dökümü tek işlemde yüklendi. 14 hesap, 97.061 soru, 742 soru
+denemesi, 7 sınav, 760 sınav-soru satırı ve 33 çalışma oturumu dökümle eşleşti.
+190.171 medya dosyasının SHA-256 değeri, 2.692 PDF'nin taşındığı yol ve V105
+Flyway geçmişi doğrulandı. Docker ve Cloudflare servisleri açılışta etkin.
+İlk günlük sunucu yedeği doğrulandı. V104 dosyası özgün halinde tutulur, sonraki
+öğretmenlik ekranı ayarları V105'te uygulanır.
+
+- VPS uygulaması sınırlı `ivme_app` rolüyle çalışır. Flyway yalnız `ivme_owner` rolüyle uygulanır.
+- Gerçek telefonda öğrenci hesabıyla giriş, soru, PDF/video, QR ve oturuma geri dönüş doğrulaması açık. Planlı yeniden başlatma ve toparlanma testi işletim kabulünde açık.
 - Yaklaşık aktif süreyi gerçek telefonda ekran kilidi/arka plan/60 saniyeyi aşan boşta kalma/geri dönüş ve masaüstü pencere geçişleriyle ölç.
 - E-posta/telefon sahiplik doğrulaması gerektiren bir kullanım açılacaksa önce hizmeti ve doğrulamayı tamamla; biçim kontrolünü sahiplik onayı sayma.
 
 Kabul: yalnız gerçekten açık işletim koşulları kapatılıyor; yayına hazır denebilmesi için somut ortam/cihaz/yedek kanıtı var.
-
-**Gereken kişi/girdi — veritabanı rolü:** PostgreSQL rol oluşturma yetkisine sahip yerel
-yönetici kendi terminalinde çalıştırır ve parolayı gizli girişle yazar:
-
-```powershell
-pwsh -NoProfile -File scripts/kur-uygulama-rolu.ps1 -Database ivme
-```
-
-Oluşan `ivme_app` bilgileriyle çalışma bağlantısı ayarlanır; Flyway/katalog yayını ayrı
-yetkili bağlantıda kalır. **Kanıt:** `ivme_app` ile veri okuma/yazma başarılı; rol/DB/şema
-oluşturma ve Flyway geçmişine yazma reddedilir, uygulama sağlık kontrolü geçer.
 
 **Gereken kişi/girdi — telefon ve kalıcı ortam:** dış ağdan erişebilen gerçek telefon,
 normal kullanıcı hesabı ve kalıcı sunucu/alan adı. 390 px tarayıcı testi gerçek cihaz
