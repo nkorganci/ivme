@@ -45,11 +45,13 @@ def prepare(project, revision, previous):
                  "--label", f"org.opencontainers.image.revision={revision}"]
         if project == "ivme":
             build.extend(["--build-arg", f"IVME_REVISION={revision}"])
-        if project in ("ivme", "wrestling", "prepexpert"):
+        if project in ("ivme", "wrestling"):
             run(*build, "--target", "release-check", str(source))
         for image, target in images.items():
             tag = f"{image}:{revision}"
             run(*build, *(["--target", target] if target else []), "-t", tag, str(source))
+        if project == "prepexpert":
+            run(sys.executable, str(source / "deploy/check-image.py"), f"prepexpert-app:{revision}")
         for image in images:
             tag = f"{image}:{revision}"
             with subprocess.Popen(["docker", "save", tag], stdout=subprocess.PIPE) as stream:
