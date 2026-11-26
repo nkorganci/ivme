@@ -7,7 +7,7 @@ function Get-IvmeLocalEnvironment {
     $settings = [ordered]@{
         Branch = $branch
         Name = 'test'
-        Port = 1012
+        Port = 1010
         ApiPort = 8081
         Database = 'ivme_local'
         SessionCookie = 'IVME_LOCAL_SESSION'

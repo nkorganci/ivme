@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const localPort = 1011;
+const previewPort = 1110;
 
 const localApiTargetFile = fileURLToPath(new URL('../.codex/dev-api-target.txt', import.meta.url));
 function localApiTarget() {
@@ -52,12 +52,10 @@ export default defineConfig({
     // The same controlled vocabulary is consumed by the API and the teacher UI.
     fs: { allow: [fileURLToPath(new URL('.', import.meta.url)), fileURLToPath(new URL('../backend/src/main/resources/review-vocabulary.json', import.meta.url))] },
     host: '127.0.0.1',
-    port: localPort,
+    port: previewPort,
     strictPort: true,
 
     proxy: api,
-
-    allowedHosts: ['net.ivme.dev'],
 
     // Yerel geliştirmede açık sayfa kaynak değişince güncellensin.
     hmr: true,
@@ -65,7 +63,7 @@ export default defineConfig({
 
   preview: {
     host: '127.0.0.1',
-    port: localPort,
+    port: previewPort,
     strictPort: true,
     proxy: api,
     allowedHosts: ['net.ivme.dev'],
