@@ -77,6 +77,8 @@ def refresh(project):
             if source.wait() != 0:
                 raise RuntimeError("Production export failed")
         sql((HERE / "fixture-sequences.sql").read_text(), stage, role)
+        if project == "ivme":
+            sql((HERE / "fixture-ivme-demo.sql").read_text(), stage, role)
         if project == "prepexpert":
             sql(f"GRANT CONNECT ON DATABASE {stage} TO sat_qb2; "
                 "GRANT USAGE ON SCHEMA public TO sat_qb2; "
