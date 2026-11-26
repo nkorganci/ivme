@@ -89,8 +89,10 @@ public class SharedQuestionLabels {
         String request=selection(filter);
         if(request==null)return null;
         return jdbc.queryForObject("""
-            WITH allowed AS MATERIALIZED (SELECT q.id FROM learning_catalog.question_ids_for_labels(?) q
-                WHERE NOT EXISTS (SELECT 1 FROM student_question_preferences sp
+            WITH allowed AS MATERIALIZED (SELECT q.id FROM learning_catalog.question_ids_for_labels(?) selected
+                JOIN questions q ON q.id=selected.id
+                WHERE (CAST(? AS integer) IS NULL OR q.exam_year = ?)
+                  AND NOT EXISTS (SELECT 1 FROM student_question_preferences sp
                     WHERE sp.user_id = ? AND sp.question_id = q.id AND sp.repeat_preference = 'HIDE'))
             SELECT count(*) AS total,ARRAY(SELECT id FROM allowed ORDER BY id LIMIT ? OFFSET ?) AS ids
             FROM allowed
@@ -100,7 +102,7 @@ public class SharedQuestionLabels {
                     var ids=Arrays.stream((Object[])array.getArray()).map(id->((Number)id).longValue()).toList();
                     return new QuestionPage(ids,rs.getLong("total"));
                 } finally { array.free(); }
-            },request,userId,size,offset);
+            },request,filter.year(),filter.year(),userId,size,offset);
     }
     @SuppressWarnings("unchecked")
     public Map<Long,String> topicNames(Map<Long,String> snapshots) {
@@ -239,7 +241,8 @@ public class SharedQuestionLabels {
     /** Counts belong to the selected bank/exam/lesson, not to PDF/video-only categories. */
     public Map<String,Long> categoryCounts(QuestionFilter filter) {
         var unscoped=new QuestionFilter(filter.bank(),filter.examType(),filter.subject(),null,List.of(),"ANY",
-            filter.includeCandidates(),filter.questionTypeId(),filter.teacherDifficulty(),filter.source());
+            filter.includeCandidates(),filter.questionTypeId(),filter.teacherDifficulty(),filter.source(),
+            null,null,null,filter.year());
         String request=selection(unscoped);
         if(request==null)return Map.of();
         var result=new LinkedHashMap<String,Long>();

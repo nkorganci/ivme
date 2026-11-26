@@ -11,6 +11,7 @@ import { Empty, ErrorBox, Loading } from '../components/States.jsx';
 import { formatNumber } from '../format.js';
 import { countQuestionRows } from '../questionFilters.js';
 import { useExamTrack } from '../examTrack.jsx';
+import TeacherOfficialSources from '../components/TeacherOfficialSources.jsx';
 
 const contextFor = rows => Object.fromEntries(['examType','subject','topic']
   .filter(key => rows.length && rows.every(row => row[key] === rows[0][key]))
@@ -30,17 +31,21 @@ export default function QuestionCollection({ bank }) {
     examType: params.get('examType') || '',
     subject: branchIds[0] || params.get('subject') || '',
     topic: params.get('topic') || '',
+    year: params.get('year') || '',
   };
   const commonSelection={categoryId:params.getAll('categoryId'),categoryMatch:params.get('categoryMatch') || 'ANY',includeCandidates:params.get('includeCandidates')!=='false',questionTypeId:params.get('questionTypeId') || '',teacherDifficulty:params.get('teacherDifficulty') || ''};
   const commonKey=JSON.stringify(commonSelection);
   const hasFilter = Object.values(filter).some(Boolean) || (commonSelection.categoryId.length>0 || !!commonSelection.questionTypeId || !!commonSelection.teacherDifficulty);
   const detailQuery = qs({ bank, ...filter,...commonSelection, page: page || undefined });
   const filterRows = useAsync(() => api.get('/api/questions/filters' + qs({ bank })), [bank]);
+  const yearRows = useAsync(() => api.get('/api/questions/years' + qs({ bank, examType: filter.examType,
+    subject: filter.subject, topic: filter.topic, ...commonSelection })),
+    [bank, filter.examType, filter.subject, filter.topic, commonKey]);
   const rows = filterRows.data ?? [];
   const catalog = useAsync(loadSharedCatalog, []);
   const subjectLabel = catalog.data?.categories.find(c => c.selectable !== false && c.subjectId === filter.subject)?.subject || filter.subject;
   const context = [filter.examType ? examLabel(filter.examType) : 'Tüm sınavlar', subjectLabel || 'Tüm dersler',
-    filter.topic || 'Tüm konular'].join(' · ');
+    filter.topic || 'Tüm konular', filter.year || 'Tüm yıllar'].join(' · ');
   const [progress, setProgress] = useState(null);
   const [progressError, setProgressError] = useState('');
   const [sessionMode, setSessionMode] = useState('practice');
@@ -128,8 +133,15 @@ export default function QuestionCollection({ bank }) {
   return <div className="question-collection-page">
     <StudyNavigation bank={bank} filter={filter} />
     <div className="page-head">
-      <div><h2>{label}</h2><p className="muted">{bank === 'MEBI_PRACTICE_2' ? 'MEBİ kaynaklarından cevap anahtarı doğrulanmış sorular.' : bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.' : kpss ? `ÖSYM ${track.name} sınavlarında sorulmuş sorular.` : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
+      <div><h2>{label}</h2><p className="muted">{track?.id === 'KPSS_OABT' && bank === 'CIKMIS'
+        ? 'Yayın hakkı doğrulanmış öğretmenlik çıkmış soruları sınav, yıl, branş ve konuya göre listelenir. İzin ve içerik incelemesi tamamlanmadan PDF soruları burada yayımlanmaz.'
+        : track?.id === 'KPSS_OABT' && bank === 'OGM'
+          ? 'Öğretmenlik sınavları için izinli deneme, pratik ve soru bankası kaynakları.'
+          : bank === 'MEBI_PRACTICE_2' ? 'MEBİ kaynaklarından cevap anahtarı doğrulanmış sorular.'
+            : bank === 'OGM' ? 'OGM kaynaklarındaki alıştırma soruları.'
+              : kpss ? `ÖSYM ${track.name} sınavlarında sorulmuş sorular.` : 'Geçmiş TYT ve AYT sınavlarında sorulmuş sorular.'} Sınav, ders ve konuya göre göz at.</p></div>
     </div>
+    {track?.id === 'KPSS_OABT' && bank === 'CIKMIS' && <TeacherOfficialSources />}
       <section className="card"><SharedCategorySelect questionFilters branchFirst showDropdown={false} branchIds={branchIds} subject={filter.subject}
         questionScope={{ bank, examType:filter.examType, includeCandidates:commonSelection.includeCandidates, questionTypeId:commonSelection.questionTypeId, teacherDifficulty:commonSelection.teacherDifficulty }}
         value={commonSelection} examType={filter.examType} onChange={next=>{
@@ -154,6 +166,21 @@ export default function QuestionCollection({ bank }) {
               onClick={() => setFilter({ examType, subject: '', topic: '' })}>
               <span>{examType ? examLabel(examType) : 'Tümü'}</span>
               <small>{formatNumber(examType ? sum(rows.filter((row) => row.examType === examType)) : sum(rows))}</small>
+            </button>)}
+          </div>
+        </section>
+        <section className="question-collection-filter-group" aria-label="Yıl filtresi">
+          <h3>Yıl</h3>
+          <div className="question-collection-exams">
+            <button type="button" className={`question-collection-choice${!filter.year ? ' selected' : ''}`}
+              aria-pressed={!filter.year} onClick={() => { const p = new URLSearchParams(params); p.delete('year'); p.delete('page'); setParams(p); }}>
+              <span>Tüm yıllar</span>
+            </button>
+            {(yearRows.data || []).map(year => <button key={year} type="button"
+              className={`question-collection-choice${filter.year === String(year) ? ' selected' : ''}`}
+              aria-pressed={filter.year === String(year)}
+              onClick={() => { const p = new URLSearchParams(params); p.set('year', String(year)); p.delete('page'); setParams(p); }}>
+              <span>{year}</span>
             </button>)}
           </div>
         </section>

@@ -5,8 +5,8 @@ import { questionSourcesFor } from './questionSources.js';
 import { featureReady, trackExams } from './examTrackModel.js';
 import { bankLabel } from './format.js';
 
-// Seçilen sınav (YKS, KPSS türleri) hesapta PostgreSQL'de saklanır; menüler ortaktır,
-// içerik sayfaları etkin sınava göre gösterilir.
+// Seçilen sınav (YKS, KPSS ve öğretmenlik) hesapta PostgreSQL'de saklanır; menüler ortaktır,
+// içerik sayfaları sınavın hazır bölümlerine göre gösterilir.
 const ExamTrackContext = createContext(null);
 
 export const TRACK_STATUS = {
@@ -49,7 +49,6 @@ export function ExamTrackProvider({ children }) {
     const exams = trackExams(track);
     const names = new Map(exams.map(e => [e.id, e.name]));
     return { tracks: state.tracks, track, loading, saving, error, select, retry: () => setAttempt(n => n + 1),
-      // İçerik yalnız ACTIVE sınavda hazırdır; diğerlerinde sayfalar "hazırlanıyor" ekranı gösterir.
       contentReady: !track || track.status === 'ACTIVE',
       kpss: track?.family === 'KPSS', exams, questionSources: questionSourcesFor(track, exams),
       yurtDisi: track?.family === 'YURT_DISI', nonYks: Boolean(track && track.family !== 'YKS'),

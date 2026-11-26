@@ -16,6 +16,14 @@ public class QuestionAvailabilityService {
     public record PoolSummary(long total, long solved, long remaining, long everWrong, long correct,
                               Map<String,Long> sources) {}
 
+    public List<Integer> years(QuestionFilter filter) {
+        var sql = new StringBuilder("SELECT DISTINCT q.exam_year FROM questions q WHERE q.active = true AND q.exam_year IS NOT NULL");
+        var params = new HashMap<String,Object>();
+        addFilters(sql, params, filter, null);
+        sql.append(" ORDER BY q.exam_year DESC");
+        return jdbc.sql(sql.toString()).params(params).query(Integer.class).list();
+    }
+
     private static final String MINE = """
             WITH answers AS (
               SELECT question_id, is_correct, created_at AS occurred_at, 0 AS source_order, id AS source_id FROM completed_practice_attempts
@@ -378,7 +386,7 @@ public class QuestionAvailabilityService {
         topicPdfs.approvedQuestionCodes(topicPdfId);
         return new QuestionFilter(QuestionBank.OGM, ExamType.TYT, "Türkçe",
                 topicPdfs.detail(topicPdfId).verifiedTopic(),filter.categoryId(),filter.categoryMatch(),filter.includeCandidates(),filter.questionTypeId(),filter.teacherDifficulty(),
-                List.of(),filter.myDifficulty(),filter.mark(),filter.skipHidden());
+                List.of(),filter.myDifficulty(),filter.mark(),filter.skipHidden(),filter.year());
     }
 
     private void addFilters(StringBuilder sql, Map<String, Object> params,
@@ -406,6 +414,7 @@ public class QuestionAvailabilityService {
         if (catalogSelection==null && topicPdfId == null && filter.topic() != null) {
             sql.append(" AND q.topic = :topic"); params.put("topic", filter.topic());
         }
+        if (filter.year() != null) { sql.append(" AND q.exam_year = :year"); params.put("year", filter.year()); }
         if (topicPdfId != null) {
             sql.append(" AND q.code IN (:approvedCodes)");
             params.put("approvedCodes", topicPdfs.approvedQuestionCodes(topicPdfId));

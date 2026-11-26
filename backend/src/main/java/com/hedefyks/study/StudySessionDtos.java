@@ -31,7 +31,15 @@ public final class StudySessionDtos {
             List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,
             List<com.hedefyks.question.QuestionSource> source,
             List<@NotNull QuestionHistorySelection> history,
-            String myDifficulty, String mark) {
+            String myDifficulty, String mark, Integer year) {
+        public CreateRequest(QuestionBank bank, ExamType examType, String subject, String topic,
+                QuestionSelectionMode selectionMode, Integer questionCount, Integer durationMinutes, Integer topicPdfId,
+                UUID clientRequestId, List<String> categoryId, String categoryMatch, Boolean includeCandidates,
+                String questionTypeId, String teacherDifficulty, List<com.hedefyks.question.QuestionSource> source,
+                List<QuestionHistorySelection> history, String myDifficulty, String mark) {
+            this(bank,examType,subject,topic,selectionMode,questionCount,durationMinutes,topicPdfId,clientRequestId,categoryId,
+                    categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,history,myDifficulty,mark,null);
+        }
         public CreateRequest(QuestionBank bank,ExamType examType,String subject,String topic,QuestionSelectionMode selectionMode,
                 Integer questionCount,Integer durationMinutes,Integer topicPdfId,UUID clientRequestId,
                 List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty,

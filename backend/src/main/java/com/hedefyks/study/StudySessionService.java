@@ -50,7 +50,7 @@ public class StudySessionService {
 
         QuestionFilter filter = tracks.scope(availability.effectiveFilter(
                 new QuestionFilter(req.bank(), req.examType(), req.subject(), req.topic(),req.categoryId(),req.categoryMatch(),req.includeCandidates(),req.questionTypeId(),req.teacherDifficulty(),req.source(),
-                        req.myDifficulty(), req.mark(), true), req.topicPdfId()), userId);
+                        req.myDifficulty(), req.mark(), true, req.year()), req.topicPdfId()), userId);
         var history = req.history() == null ? List.<QuestionHistorySelection>of() : req.history().stream().distinct().toList();
         QuestionSelectionMode selection = !history.isEmpty() ? QuestionSelectionMode.REPEAT
                 : req.selectionMode() == null ? QuestionSelectionMode.MIXED : req.selectionMode();

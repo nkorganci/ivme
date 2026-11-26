@@ -81,7 +81,7 @@ public class ExamTrackService {
                 : allowed.stream().filter(s -> exam == null || s.examType() == exam).toList();
         return new QuestionFilter(filter.bank(), exam, filter.subject(), filter.topic(), filter.categoryId(),
                 filter.categoryMatch(), filter.includeCandidates(), filter.questionTypeId(), filter.teacherDifficulty(), sources,
-                filter.myDifficulty(), filter.mark(), filter.skipHidden());
+                filter.myDifficulty(), filter.mark(), filter.skipHidden(), filter.year());
     }
 
     public void requireExam(ExamType examType, Long userId) {

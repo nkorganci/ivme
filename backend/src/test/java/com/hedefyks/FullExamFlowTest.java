@@ -29,7 +29,8 @@ class FullExamFlowTest extends TestBase {
         var subjects = new HashSet<>(TYT.keySet());
         AYT.values().forEach(quotas -> subjects.addAll(quotas.keySet()));
         var rows = new ArrayList<Object[]>();
-        for (var bank : QuestionBank.values()) for (var exam : ExamType.values())
+        for (var bank : List.of(QuestionBank.OGM, QuestionBank.CIKMIS))
+            for (var exam : List.of(ExamType.TYT, ExamType.AYT))
             for (String subject : subjects) for (int i=0; i<48; i++) {
                 rows.add(new Object[]{bank+"-"+exam+"-"+subject+"-"+i, bank.name(), exam.name(), subject});
             }

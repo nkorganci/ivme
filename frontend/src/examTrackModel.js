@@ -13,10 +13,10 @@ export function trackExams(track) {
   return sections.map(s => ({ id: s.examId, name: s.name, detail: s.detail || '', minutes: s.minutes, subjects: s.subjects || [] }));
 }
 
-/** Sınav içinde hazır bölümler; ACTIVE sınavda boş liste "hepsi hazır" demektir. */
+/** Açıkça hazır işaretlenen bölümler PREPARING durumunda da kullanılabilir. */
 export function featureReady(track, feature) {
   if (!track) return true;
-  if (track.status !== 'ACTIVE') return false;
   const ready = track.readyFeatures || [];
-  return !feature || !ready.length || ready.includes(feature);
+  if (ready.length) return !feature || ready.includes(feature);
+  return track.status === 'ACTIVE';
 }

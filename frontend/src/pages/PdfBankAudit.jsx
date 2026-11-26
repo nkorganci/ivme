@@ -7,6 +7,7 @@ import { ErrorBox, Loading } from '../components/States.jsx';
 import './PdfBankAudit.css';
 import { useExamTrack } from '../examTrack.jsx';
 import ExamPdfInventory from '../components/ExamPdfInventory.jsx';
+import TeacherPdfInventory from '../components/TeacherPdfInventory.jsx';
 
 const number = value => Number(value || 0).toLocaleString('tr-TR');
 const describeRow = row => {
@@ -43,7 +44,8 @@ const codeGridOptions = { rowHeight: 34, getRowId: ({ data }) => `${data.code}:$
   onGridSizeChanged: auditGridOptions.onGridSizeChanged };
 
 export default function PdfBankAudit() {
-  const { yurtDisi } = useExamTrack();
+  const { yurtDisi, track } = useExamTrack();
+  if (track?.id === 'KPSS_OABT') return <TeacherPdfInventory />;
   return yurtDisi ? <ExamPdfInventory /> : <YksPdfBankAudit />;
 }
 

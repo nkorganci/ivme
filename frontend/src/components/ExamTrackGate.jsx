@@ -29,6 +29,11 @@ export default function ExamTrackGate({ children }) {
   const { pathname } = useLocation();
   const { loading, track, featureReady } = useExamTrack();
   if (loading) return <Loading text="Sınav seçimi yükleniyor…" />;
+  // The teacher PDF inventory is a local metadata catalog and can be shown
+  // independently of the track's content publication status.
+  if (pathname === '/dersler-ve-konular/pdf-envanteri' && track?.id === 'KPSS_OABT') {
+    return <Fragment key={track.id}>{children ?? <Outlet />}</Fragment>;
+  }
   // Sınav değişince sayfa yeniden kurulur; önceki sınavın süzgeçleri ve verisi taşınmaz.
   if (featureReady(pageFor(pathname)[2])) return <Fragment key={track?.id || 'none'}>{children ?? <Outlet />}</Fragment>;
   return <TrackPreparing />;

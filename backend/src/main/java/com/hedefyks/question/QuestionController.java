@@ -83,6 +83,11 @@ public class QuestionController {
         return availability.count(me.id(), practice ? scoped.forPractice() : scoped, topicPdfId, history);
     }
 
+    @GetMapping("/years")
+    public List<Integer> years(QuestionFilter filter, @AuthenticationPrincipal AppUserDetails me) {
+        return availability.years(tracks.scope(filter, me.id()));
+    }
+
     @GetMapping("/category-counts")
     public java.util.Map<String,Long> categoryCounts(QuestionFilter filter, @AuthenticationPrincipal AppUserDetails me) {
         return service.categoryCounts(tracks.scope(filter, me.id()));

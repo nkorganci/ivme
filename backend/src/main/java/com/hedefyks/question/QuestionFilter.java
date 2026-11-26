@@ -9,14 +9,22 @@ public record QuestionFilter(QuestionBank bank, ExamType examType, String subjec
         /** Kişisel işaret (TAS-06): AGAIN / HIDE / UNMARKED; boş = süzme yok. */
         String mark,
         /** Yalnız otomatik pratik havuzunda: HIDE ile gizlenen sorular çıkarılır, bekleyen AGAIN öne alınır. */
-        Boolean skipHidden) {
+        Boolean skipHidden,
+        /** Sınav/yıl taraması için takvim yılı. */
+        Integer year) {
 
     private static final java.util.Set<String> DIFFICULTIES = java.util.Set.of("KOLAY", "ORTA", "ZOR", "NONE");
     private static final java.util.Set<String> MARKS = java.util.Set.of("AGAIN", "HIDE", "UNMARKED");
 
     public QuestionFilter(QuestionBank bank, ExamType examType, String subject, String topic, java.util.List<String> categoryId, String categoryMatch,
             Boolean includeCandidates, String questionTypeId, String teacherDifficulty, java.util.List<QuestionSource> source) {
-        this(bank,examType,subject,topic,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,null,null,null);
+        this(bank,examType,subject,topic,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,null,null,null,null);
+    }
+
+    public QuestionFilter(QuestionBank bank, ExamType examType, String subject, String topic, java.util.List<String> categoryId, String categoryMatch,
+            Boolean includeCandidates, String questionTypeId, String teacherDifficulty, java.util.List<QuestionSource> source,
+            String myDifficulty, String mark, Boolean skipHidden) {
+        this(bank,examType,subject,topic,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,myDifficulty,mark,skipHidden,null);
     }
 
     public QuestionFilter(QuestionBank bank,ExamType examType,String subject,String topic,java.util.List<String> categoryId,String categoryMatch,Boolean includeCandidates,String questionTypeId,String teacherDifficulty) {
@@ -47,7 +55,7 @@ public record QuestionFilter(QuestionBank bank, ExamType examType, String subjec
 
     /** Aynı süzgeç, otomatik pratik havuzu için: gizlenen sorular çıkar, bekleyen "tekrar göster" soruları öne alınır. */
     public QuestionFilter forPractice() {
-        return new QuestionFilter(bank,examType,subject,topic,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,myDifficulty,mark,true);
+        return new QuestionFilter(bank,examType,subject,topic,categoryId,categoryMatch,includeCandidates,questionTypeId,teacherDifficulty,source,myDifficulty,mark,true,year);
     }
 
     /** Kişisel süzgeç var mı (kullanıcıya özgü SQL gerekir)? */

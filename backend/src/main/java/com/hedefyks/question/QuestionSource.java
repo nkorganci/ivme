@@ -10,6 +10,12 @@ public enum QuestionSource {
     CIKMIS_KPSS_OO_GK(QuestionBank.CIKMIS, ExamType.KPSS_OO_GK),
     CIKMIS_KPSS_LS_GY(QuestionBank.CIKMIS, ExamType.KPSS_LS_GY),
     CIKMIS_KPSS_LS_GK(QuestionBank.CIKMIS, ExamType.KPSS_LS_GK),
+    CIKMIS_OGRETMEN_AGS(QuestionBank.CIKMIS, ExamType.OGRETMEN_AGS),
+    CIKMIS_OGRETMEN_EB(QuestionBank.CIKMIS, ExamType.OGRETMEN_EB),
+    CIKMIS_OGRETMEN_OABT(QuestionBank.CIKMIS, ExamType.OGRETMEN_OABT),
+    OGM_OGRETMEN_AGS(QuestionBank.OGM, ExamType.OGRETMEN_AGS),
+    OGM_OGRETMEN_EB(QuestionBank.OGM, ExamType.OGRETMEN_EB),
+    OGM_OGRETMEN_OABT(QuestionBank.OGM, ExamType.OGRETMEN_OABT),
     CIKMIS_YURT_DISI_MY(QuestionBank.CIKMIS, ExamType.YURT_DISI_MY),
     MEBI2_AYT(QuestionBank.MEBI_PRACTICE_2, ExamType.AYT),
     MEBI2_TYT(QuestionBank.MEBI_PRACTICE_2, ExamType.TYT);

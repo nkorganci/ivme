@@ -8,6 +8,9 @@ public enum ExamType {
     KPSS_OO_GK("KPSS Ortaöğretim Genel Kültür"),
     KPSS_LS_GY("KPSS Lisans Genel Yetenek"),
     KPSS_LS_GK("KPSS Lisans Genel Kültür"),
+    OGRETMEN_AGS("MEB-AGS"),
+    OGRETMEN_EB("Tarihsel Eğitim Bilimleri"),
+    OGRETMEN_OABT("ÖABT"),
     YURT_DISI_MY("Yurt Dışı Mesleki Yeterlilik");
 
     private final String label;

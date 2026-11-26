@@ -6,11 +6,16 @@ export const QUESTION_SOURCES = [
   { id: 'OGM_TYT', field: 'bankTyt', headerName: 'Soru Bankası-TYT', label: 'TYT Soru Bankası', bank: 'OGM', examType: 'TYT' },
 ];
 
-/** Seçili sınavın kaynakları: YKS'de dört kaynak; KPSS'de her testin çıkmış soruları (soru bankası henüz yok). */
+/** Seçili sınav kaynakları: öğretmenlikte AGS/ÖABT için çıkmış ve OGM soru bankası ayrımı vardır. */
 export function questionSourcesFor(track, exams = []) {
   if (!track || track.family === 'YKS') return QUESTION_SOURCES;
-  return exams.map(exam => ({ id: `CIKMIS_${exam.id}`, field: exam.id.toLowerCase(), headerName: exam.name,
-    label: `${exam.name} Çıkmış Sorular`, bank: 'CIKMIS', examType: exam.id }));
+  return exams.flatMap(exam => {
+    const past = { id: `CIKMIS_${exam.id}`, field: exam.id.toLowerCase(), headerName: exam.name,
+      label: `${exam.name} Çıkmış Sorular`, bank: 'CIKMIS', examType: exam.id };
+    const teacherSource = track.id === 'KPSS_OABT' && exam.id.startsWith('OGRETMEN_');
+    return teacherSource ? [past, { ...past, id: `OGM_${exam.id}`, field: `bank${exam.id.toLowerCase()}`,
+      label: `${exam.name} Deneme ve Soru Bankaları`, bank: 'OGM' }] : [past];
+  });
 }
 
 export const QUESTION_HISTORY_SOURCES = [

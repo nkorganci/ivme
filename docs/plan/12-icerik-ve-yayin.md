@@ -147,14 +147,15 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum: `VPS_SSH_ERISIMI_BEKLENIYOR`. Contabo VPS SSH’ye yanıt veriyor. İlk
-bağlantı için dağıtım açık anahtarının VPS’ye eklenmesi ve sunucu parmak izinin
-konsoldan doğrulanması gerekiyor. Mevcut V104 uygulama paketi yerelde derlendi.
+Durum `VPS_ILK_YAYIN_HAZIRLIGI`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
+SSH, ayrı dağıtım hesabı ve Docker Compose doğrulandı. V104 adayında deneme,
+oturum ve ilerleme akışlarındaki 32 test geçti.
 [Tek tıkla yayın](../tarifler/tek-tikla-yayin.md) boş Linux ortamında örnek DB'nin
 geri yüklenmesini, yedek alarak göç uygulamayı ve sürüm/sağlık denetimini geçti.
-V104 döküm geçmişi yerel adayla eşleşti. VPS erişiminden sonra tam geri yükleme,
+V104 döküm geçmişi yerel adayla eşleşti. Medya listesindeki 190.171 dosyanın
+yerel SHA-256 denetimi geçti. Sırada güncel döküme dayalı tam geri yükleme,
 geçici parolalı operatör hesabını üretim kopyasında güvenli hale getirme ve HTTPS
-geçişi yapılır. Yerel yedek ve yalıtılmış geri yükleme
+geçişi var. Yerel yedek ve yalıtılmış geri yükleme
 `scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
 yedeğini seçmiştir.
 

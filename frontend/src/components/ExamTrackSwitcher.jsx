@@ -12,11 +12,19 @@ export default function ExamTrackSwitcher() {
   if (!track && !loading) return null;
 
   const choose = async id => {
-    if (id === track?.id) { setOpen(false); return; }
+    if (id === track?.id) {
+      setOpen(false);
+      if (id === 'KPSS_OABT') navigate('/cikmis-sorular', { replace: true });
+      return;
+    }
     // Önceki sınavın süzgeçleri (ör. examType=TYT, konu kimlikleri) yeni sınavda geçersizdir.
-    if (await select(id)) { setOpen(false); navigate(pathname, { replace: true }); }
+    if (await select(id)) {
+      setOpen(false);
+      navigate(id === 'KPSS_OABT' ? '/cikmis-sorular' : pathname, { replace: true });
+    }
   };
-  const families = [...new Set(tracks.map(t => t.family))];
+  const visibleTracks = tracks.filter(t => t.id !== 'OGRETMEN_AGS');
+  const families = [...new Set(visibleTracks.map(t => t.family))];
   const name = track?.name || 'Yükleniyor…';
 
   return (
@@ -35,7 +43,7 @@ export default function ExamTrackSwitcher() {
           güncellenir. Seçimin hesabına kaydedilir; istediğin zaman buradan değiştirebilirsin.</p>
         {error && <p className="field-error" role="alert">{error}</p>}
         {families.map(family => {
-          const group = tracks.filter(t => t.family === family);
+          const group = visibleTracks.filter(t => t.family === family);
           const plannedNotes = [...new Set(group.filter(t => t.status === 'PLANNED').map(t => t.note).filter(Boolean))];
           return <section className="track-group" key={family} aria-labelledby={`track-group-${family}`}>
             <h3 id={`track-group-${family}`}>{FAMILY_LABELS[family] || family}</h3>

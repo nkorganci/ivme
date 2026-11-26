@@ -26,6 +26,7 @@ public final class QuestionSpecs {
             List<Predicate> p = new ArrayList<>();
             if (active != null) p.add(cb.equal(root.get("active"), active));
             if (f.bank() != null) p.add(cb.equal(root.get("bank"), f.bank()));
+            if (f.year() != null) p.add(cb.equal(root.get("year"), f.year()));
             if(catalogSelection!=null) {
                 var allowed=cb.<Long>in(root.get("id"));
                 // Numeric literals avoid one JDBC parameter per question; a broad
