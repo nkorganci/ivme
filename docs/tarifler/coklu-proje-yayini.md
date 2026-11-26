@@ -21,11 +21,11 @@ Wrestling, Arapça ve PrepExpert ilk yerel açılışta bir öğrenci hesabı ku
 
 ## 3. Değişikliği yayımlama
 
-1. Projeyi yerel `test` dalında test et ve yayına girecek dosyaları VS Code’da Stage et.
-2. Docker Desktop açıkken proje kökündeki `Yayinla.bat` dosyasına çift tıkla. İvme’nin düğmesi `Ivme Yayinla.bat`. Diğer üç düğme bu çalışma alanındaki ortak `deploy/project_release.py` betiğini çağırır.
-3. Betik dosyaları commit eder, aynı commit’ten Linux imajı oluşturur, GitHub `production` dalını günceller ve imajı SSH üzerinden VPS’ye gönderir. Sunucu yeni konteynerlerin sağlık kontrolünü tamamladıktan sonra çalışan sürümü kaydeder. `--committed` yalnız son commit’i kullanır.
-
-Dört projenin normal çalışma dalı yerel `test`, yayın dalı GitHub’daki `production`. `git commit` değişikliği yerel tarihe kaydeder. `git push` komutu seçili uzak Git dalını günceller. Contabo güncellemesi için `Yayinla.bat` imajı da kurar. Git dalı, Docker imajı ve öğrenci veritabanı farklı işlevlere sahiptir.
+1. Yerel `test` dalında kodu değiştir ve uygulamayı dene. Yayınlanacak dosyaları seçip commit et. Commit bilgisayarda kalır.
+2. Docker Desktop açıkken proje dizininde `git push` çalıştır. Bu bilgisayarda her projenin Git ayarı yerel `test` dalını GitHub’daki `production` dalına gönderir. VS Code Stage işleminden sonra yayın düğmesi de aynı işlemi yapar.
+3. Git’in `.githooks/pre-push` denetimi yalnız commit içeriğinden Linux imajlarını derler. İvme depolama testlerini, Wrestling iki Java birim test sınıfını, Arapça müfredat kontrolü ve npm testlerini, PrepExpert npm testlerini çalıştırır. Bir test hata verirse GitHub güncellenmez. Geçen imajlar SHA etiketiyle SSH üzerinden VPS’ye hazırlanır.
+4. Contabo’daki `tested-release@PROJE.timer` yaklaşık 45 saniyede bir hazırlanmış bir aday var mı diye bakar. GitHub production ucuyla eşleşirse kalıcı PostgreSQL volume’unu kullanarak o sürümü çalıştırır. Sağlık kontrolünden sonra /srv/PROJE/current.sha güncellenir. Push tamamlandıktan sonra bilgisayar kapatılabilir. Hazırlanmamış bir commit (ör. GitHub web arayüzünden yapılan değişiklik) dağıtılmaz. Yayını doğrulamak için `ssh ivme-vps cat /srv/PROJE/current.sha` ile `git rev-parse HEAD` sonuçlarını karşılaştır.
+5. Yeni Windows klonunda aynı çalışma alanı dizinlerini kullan. Dört depoda `git config core.hooksPath .githooks` ve `git config remote.origin.push refs/heads/test:refs/heads/production` çalıştır (İvme için origin yerine ivme). SSH anahtarı ve sunucu parmak izi bu bilgisayarda ayrıca tanımlanır. Dağıtım, yedek ve Docker işlemleri VPS’deki servis hesabına aittir. Üç özel GitHub deposunun VPS anahtarları yalnız okuma yetkilidir.
 
 Her proje `/srv/<proje>` altında kendi ortam dosyalarını, kalıcı veritabanı volume’unu, sürümlerini ve yedeklerini tutar. Veri dosyaları ve ilk yedek özel SSH aktarımıyla gider. Rutin yayın mevcut PostgreSQL volume’unu kullanır. İlk taşıma için `--restore` ve doğrulanmış döküm gerekir.
 
@@ -56,3 +56,11 @@ SELECT * FROM ivme.sync_status;
 ```
 
 Son yenileme saatini her şemanın `sync_status` tablosunda görürsün. PowerShell’de elle yenilemek için `Start-ScheduledTask -TaskName Ivme-ProductionDataMirror` çalıştır. Sonuç `%LOCALAPPDATA%\IvmeProductionMirror\last-sync.log` dosyasına yazılır. Görevi yeniden kurmak için İvme uygulama dizininde `powershell -ExecutionPolicy Bypass -File deploy/production-mirror.ps1 -Install` çalıştır.
+
+## 6. Gerçek verilerle yerel uygulama testi
+
+1. Windows girişinde yenilenen salt okunur etkinlik görünümü için 5. bölümü kullan. Yerel uygulamanın yazılabilir çalışma kopyası ayrı bir PostgreSQL 18 konteynerindedir. Docker Desktop açıkken proje başlatıcısını kullan. PostgreSQL portu yalnız bilgisayarın kendisinden erişilebilir (`127.0.0.1:55432`). Proje başına ayrı veritabanı ve giriş rolü bulunur. Yerel bağlantı parolaları Windows hesabının DPAPI anahtarıyla korunur.
+2. İlk kopya veya güncelleme için ilgili uygulamanın yerel sunucusunu kapatıp `Refresh local test data.bat` çalıştır. Betik Contabo’dan tutarlı bir PostgreSQL anlık görüntüsü alır, şemayı ve seçilmiş verileri yeni yerel veritabanına yükler ve tüm ilişkileri kurar. Yenileme başarısızsa veya eski kopyada açık bağlantı varsa mevcut kopya korunur. Başarılı değişimde önceki kopya aynı konteynerde `saved_PROJE_ZAMAN` adıyla kalır. Bu kopyalar zamanla disk tüketir.
+3. İvme’de sorular, denemeler, oturumlar ve cevaplar; Wrestling’de üyeler, gruplar, antrenman ve yoklama; Arapça’da müfredat, oturumlar, soru çözümü ve ders ilerlemesi; PrepExpert’te maskeli hesaplar ve yayın şeması kullanılır. Özel SAT içeriği, serbest biçimli öğrenci kayıtları, eski oturum belirteçleri ve gerçek giriş parolaları kopyalanmaz. Üretim hesaplarının yerel adları yapaydır. Geliştirici rol düğmeleri ayrı test kullanıcıları açar. İvme’de büyük araştırma tablolarının satırları yerel test kopyasına alınmaz.
+4. Uygulamayı olağan başlangıç dosyasıyla tekrar aç. Yerel bir deneme, kullanıcı veya ilerleme kaydı yalnız test kopyasına yazılır. Orijinal Windows PostgreSQL ve özel SAT çalışma bankası 5432 portunda korunur. Yazılabilir test kopyasının hangi anda yenileneceğini sen seçersin. Son canlı etkinlikleri elle yenilemeden görmek için 5. bölümdeki otomatik görünümü kullan.
+5. Şema değişikliği gerekiyorsa projeye yeni bir migration ekle, yerelde dene ve kodla birlikte commit et. Üretimde mevcut veriyi koruyan eklemeli değişiklikler kullan. Eski kolon veya tabloyu kaldırmak ayrı bir geçiş gerektirir. Bir uygulama sürümünün geri alınması veritabanı migration’ını kendiliğinden geri almaz.

@@ -1,0 +1,10 @@
+[Unit]
+Description=Check tested releases for %i
+
+[Timer]
+OnBootSec=30s
+OnUnitInactiveSec=45s
+AccuracySec=5s
+
+[Install]
+WantedBy=timers.target

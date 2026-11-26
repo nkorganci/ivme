@@ -1,0 +1,9 @@
+[Unit]
+Description=Deploy locally tested GitHub production commit for %i
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+User=ivme-deploy
+ExecStart=/bin/sh /opt/ivme-release/reconcile-release.sh %i
+TimeoutStartSec=20min

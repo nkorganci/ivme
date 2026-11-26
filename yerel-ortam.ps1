@@ -48,12 +48,20 @@ SELECT 'CREATE DATABASE ivme_local' WHERE NOT EXISTS (
 
 function Set-IvmeLocalEnvironment {
     param([Parameter(Mandatory)]$Settings)
-    Initialize-IvmeLocalDatabase $Settings
+    . (Join-Path $PSScriptRoot 'deploy/fixture-environment.ps1')
+    $fixture = Get-LocalFixture 'ivme'
+    $dbPort = 5432
+    if ($fixture) {
+        $dbPort = 55432
+        $Settings.DbUser = $fixture.User
+        $Settings.DbPassword = $fixture.Password
+        $Settings.Images = Join-Path $PSScriptRoot 'veri/resimler-pilot'
+    } else { Initialize-IvmeLocalDatabase $Settings }
     if (-not (Test-Path -LiteralPath $Settings.Images)) {
         New-Item -ItemType Directory -Path $Settings.Images -Force | Out-Null
         Copy-Item -Path (Join-Path $PSScriptRoot 'ornek-veri\resimler\*') -Destination $Settings.Images -Recurse
     }
-    $env:YKS_DB_URL = "jdbc:postgresql://127.0.0.1:5432/$($Settings.Database)"
+    $env:YKS_DB_URL = "jdbc:postgresql://127.0.0.1:${dbPort}/$($Settings.Database)"
     $env:YKS_DB_KULLANICI = $Settings.DbUser
     $env:YKS_DB_SIFRE = $Settings.DbPassword
     $env:PORT = [string]$Settings.Port
