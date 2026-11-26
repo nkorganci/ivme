@@ -4,8 +4,11 @@ The VPS writes one verified dump per project and weekday. This script downloads 
 newest one when it is not already here, checks its SHA-256 and archive listing,
 test-restores the small databases into the local fixture cluster, and keeps the
 newest copies per project. The destination is `offsite_backup_dir` in local.json.
+`--inspect PROJECT [--file NAME]` loads one copy into inceleme_PROJECT in the same
+cluster so old or deleted records can be read; production is never touched.
 """
 
+import argparse
 import hashlib
 import json
 import os
@@ -14,6 +17,8 @@ import re
 import shutil
 import subprocess
 import sys
+import tarfile
+import tempfile
 from datetime import datetime, timezone
 
 from release import DEPLOY, SSH_OPTIONS, host_alias
@@ -21,6 +26,8 @@ from release import DEPLOY, SSH_OPTIONS, host_alias
 # Local copies kept per project. Ivme dumps are about 2 GB each.
 KEEP = {"ivme": 3, "wrestling": 14, "arapca": 14, "prepexpert": 14}
 RESTORE_CHECK = {"wrestling", "arapca", "prepexpert"}
+# Files users upload in production exist only on the server, outside the database dumps.
+UPLOADS = {"wrestling": "/srv/wrestling/data/uploads"}
 FIXTURE = "ivme-development-postgres"
 PG_RESTORE = Path("C:/Program Files/PostgreSQL/18/bin/pg_restore.exe")
 NEWEST = """set -eu
@@ -75,32 +82,65 @@ def download(host, project, name, size, expected, target):
         partial.unlink(missing_ok=True)
 
 
-def restore_check(project, dump):
+def fixture_running():
     running = subprocess.run(["docker", "inspect", "-f", "{{.State.Running}}", FIXTURE],
                              stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
-    if running.stdout.strip() != "true":
+    return running.stdout.strip() == "true"
+
+
+def psql(statement, database="postgres"):
+    return subprocess.run(["docker", "exec", "-i", "-e", "PGOPTIONS=-c client_min_messages=warning",
+                           FIXTURE, "psql", "-XAtq", "-v", "ON_ERROR_STOP=1",
+                           "-U", "postgres", "-d", database, "-c", statement],
+                          check=True, stdout=subprocess.PIPE, text=True).stdout.strip()
+
+
+def restore(dump, database):
+    """Load a dump into a new database of the local fixture cluster and count its tables."""
+    psql(f"DROP DATABASE IF EXISTS {database}")
+    psql(f"CREATE DATABASE {database}")
+    with dump.open("rb") as archive:
+        subprocess.run(["docker", "exec", "-i", FIXTURE, "pg_restore", "--exit-on-error",
+                        "--single-transaction", "--no-owner", "--no-privileges",
+                        "-U", "postgres", "-d", database], stdin=archive, check=True)
+    return int(psql("SELECT count(*) FROM pg_tables WHERE schemaname='public'", database))
+
+
+def restore_check(project, dump):
+    if not fixture_running():
         return "restore check skipped (local fixture container is not running)"
     scratch = f"restorecheck_{project}"
-
-    def psql(statement, database="postgres"):
-        return subprocess.run(["docker", "exec", "-i", "-e", "PGOPTIONS=-c client_min_messages=warning",
-                               FIXTURE, "psql", "-XAtq", "-v", "ON_ERROR_STOP=1",
-                               "-U", "postgres", "-d", database, "-c", statement],
-                              check=True, stdout=subprocess.PIPE, text=True).stdout.strip()
-
-    psql(f"DROP DATABASE IF EXISTS {scratch}")
-    psql(f"CREATE DATABASE {scratch}")
     try:
-        with dump.open("rb") as archive:
-            subprocess.run(["docker", "exec", "-i", FIXTURE, "pg_restore", "--exit-on-error",
-                            "--single-transaction", "--no-owner", "--no-privileges",
-                            "-U", "postgres", "-d", scratch], stdin=archive, check=True)
-        tables = int(psql("SELECT count(*) FROM pg_tables WHERE schemaname='public'", scratch))
+        tables = restore(dump, scratch)
         if tables == 0:
             raise RuntimeError(f"Restored {project} backup has no tables")
         return f"restored {tables} tables"
     finally:
         psql(f"DROP DATABASE IF EXISTS {scratch}")
+
+
+def inspect(project, name):
+    """Open one local copy as inceleme_<project> to look up old or deleted records."""
+    folder = destination() / project
+    copies = sorted(folder.glob(f"{project}-*.dump"))
+    dump = folder / name if name else (copies[-1] if copies else None)
+    if dump is None or dump not in copies:
+        raise ValueError(f"No such copy in {folder}: " + ", ".join(c.name for c in copies))
+    if not fixture_running():
+        raise RuntimeError("Start Docker Desktop; the local test database container is not running.")
+    expected = (dump.parent / f"{dump.name}.sha256").read_text(encoding="ascii").split()[0]
+    digest = hashlib.sha256()
+    with dump.open("rb") as archive:
+        while chunk := archive.read(1 << 20):
+            digest.update(chunk)
+    if digest.hexdigest() != expected:
+        raise RuntimeError(f"SHA-256 mismatch for {dump.name}; use another copy")
+    database = f"inceleme_{project}"
+    tables = restore(dump, database)
+    print(f"{dump.name} -> {database} ({tables} tables). This is the full, unmasked production data.")
+    print(f"Open it:   docker exec -it {FIXTURE} psql -U postgres -d {database}")
+    print(f"Remove it: docker exec {FIXTURE} dropdb -U postgres {database}")
+    return 0
 
 
 def sync(host, root, project):
@@ -125,13 +165,36 @@ def sync(host, root, project):
     return f"{project}: copied {target.name} ({size / 2**20:.1f} MiB), {note}"
 
 
+def sync_files(host, root, project, remote):
+    """Add the server's uploaded files to the local copy. Files deleted on the server stay here."""
+    listing = subprocess.run(["ssh", *SSH_OPTIONS, host, f"cd {remote} && find . -type f -printf '%P %s %T@\\n' | sort"],
+                             check=True, stdout=subprocess.PIPE).stdout
+    if not listing.strip():
+        return f"{project}: no uploaded files on the server"
+    marker = root / project / "uploads.listing"
+    if marker.exists() and marker.read_bytes() == listing:
+        return f"{project}: uploaded files unchanged"
+    size = sum(int(line.rsplit(b" ", 2)[1]) for line in listing.splitlines())
+    if shutil.disk_usage(root).free < size * 2 + 2**30:
+        raise RuntimeError("Not enough free disk for the uploaded files")
+    with tempfile.TemporaryFile() as archive:
+        subprocess.run(["ssh", *SSH_OPTIONS, host, f"tar -C {remote} -cf - ."], stdout=archive, check=True)
+        archive.seek(0)
+        with tarfile.open(fileobj=archive) as files:
+            files.extractall(root / project / "uploads", filter="data")
+    marker.write_bytes(listing)
+    return f"{project}: {len(listing.splitlines())} uploaded files copied ({size / 2**20:.1f} MiB)"
+
+
 def main():
     host = host_alias()
     root = destination()
     failed = False
-    for project in KEEP:
+    jobs = [(project, sync) for project in KEEP]
+    jobs += [(project, lambda h, r, p, path=path: sync_files(h, r, p, path)) for project, path in UPLOADS.items()]
+    for project, job in jobs:
         try:
-            print(datetime.now(timezone.utc).isoformat(timespec="seconds"), sync(host, root, project), flush=True)
+            print(datetime.now(timezone.utc).isoformat(timespec="seconds"), job(host, root, project), flush=True)
         except Exception as error:
             failed = True
             print(datetime.now(timezone.utc).isoformat(timespec="seconds"), f"{project}: FAILED {error}", flush=True)
@@ -139,4 +202,16 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--inspect", choices=KEEP, metavar="PROJECT",
+                        help="Load a local copy into the database inceleme_PROJECT instead of syncing.")
+    parser.add_argument("--file", help="Copy to load with --inspect (default: the newest).")
+    options = parser.parse_args()
+    if options.file and not options.inspect:
+        parser.error("--file needs --inspect")
+    if not options.inspect:
+        sys.exit(main())
+    try:
+        sys.exit(inspect(options.inspect, options.file))
+    except (ValueError, RuntimeError, subprocess.CalledProcessError) as error:
+        sys.exit(f"Inspect failed: {error}")

@@ -12,6 +12,8 @@ from release import SSH_OPTIONS, host_alias
 CONTAINER = "ivme-development-postgres"
 IMAGE = "pgvector/pgvector:0.8.7-pg18-trixie"
 HERE = Path(__file__).resolve().parent
+# Local servers that keep the copy open; the swap needs it closed.
+APP_PORTS = {"ivme": "1010 and 8081", "wrestling": "8085", "arapca": "1012 and 1112", "prepexpert": "1013"}
 
 
 def run(*args, **kwargs):
@@ -57,6 +59,11 @@ def refresh(project):
     role = "dev_" + project
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S%f")
     stage = "loading_" + project + "_" + stamp
+    # Fail before the download: an open copy cannot be swapped.
+    busy = int(sql(f"select count(*) from pg_stat_activity where datname='{database}';") or 0)
+    if busy:
+        raise SystemExit(f"{database} is open in {busy} connection(s). Stop the local {project} app "
+                         f"(port {APP_PORTS[project]}) and run this again. Nothing was changed.")
     directory = Path(os.environ["LOCALAPPDATA"]) / "IvmeProductionMirror"
     directory.mkdir(exist_ok=True)
     ensure_role(role, project, directory)

@@ -179,12 +179,9 @@ $ivmeSha = (Get-FileHash -Algorithm SHA256 -LiteralPath $ivmeDump).Hash.ToLowerI
 
 ### 4.1. Uygulama kodu değiştiğinde
 
-1. Yerel `test` dalında çalış ve `localhost:1012` üzerinden dene. IDE’de yalnız yayıma girecek değişiklikleri stage et.
-2. **Ivme Yayinla.bat** dosyasına çift tıkla. Seçilen dosyalar commit edilir. Hazır commit varsa araç o SHA’yı kullanır. Yerel `test` ile GitHub `production` arasında çakışma varsa araç durur, çakışmayı çözmek gerekir.
-3. Araç Linux imajını derler ve yayına ait testleri çalıştırır. İmajı SSH ile VPS’ye iletir ve aynı kod sürümünü GitHub `production` dalına push eder. VPS doğru SHA ile konteyneri başlatır.
-4. VPS hem sağlık kontrolünü hem `app-version.txt` değerini denetler. Başlatma başarısızsa ve şema uyumluysa önceki sağlıklı uygulama sürümü denenir. GitHub’daki son commit ile VPS’de çalışan SHA bu durumda farklı olabilir.
+Adımlar [dört proje rehberinin 3. bölümündedir](coklu-proje-yayini.md#3-her-değişiklikte-izlenecek-adımlar-dört-projede-aynı). Kısaca: yerel `test` dalında `localhost:1010` üzerinden dene, commit et ve `git push` çalıştır. Push kontrolü Linux imajını derler, testleri çalıştırır ve imajı sunucuya hazırlar. Sunucu sürümü bir dakika içinde başlatır, sağlık kontrolünü ve `app-version.txt` değerini denetler. Başlatma başarısızsa ve şema uyumluysa önceki sağlıklı sürüm geri gelir. Bu durumda GitHub'daki son commit ile VPS'de çalışan SHA farklı olur.
 
-Otomasyon **düğmeye basınca** başlar. Her yerel kaydetme, VPS’ye kendi başına yayın başlatmaz. Günlük yayında medya veya yeni veritabanı dökümü taşıman gerekmez. [Yayın betiği](../../deploy/release.py) · [VPS yayın ve geri dönüş betiği](../../deploy/vps.sh)
+Yerel kaydetme veya commit yayın başlatmaz, yayını yalnız push başlatır. Günlük yayında medya veya yeni veritabanı dökümü taşıman gerekmez. [Push kontrolü](../../deploy/prepare_push.py) · [VPS yayın ve geri dönüş betiği](../../deploy/vps.sh)
 
 ### 4.2. Veritabanı yapısı değiştiğinde
 
@@ -204,7 +201,7 @@ Bir sorunun kırpılmış görseli ve cevabı bankada bulunuyorsa bu soru için 
 
 1. `df -h /srv/ivme` ile toplam boş alanı, `docker system df` ile Docker’ın disk kullanımını kontrol et. Bir sonraki göç veya geri yükleme için alanı önceden hesapla.
 2. `free -h` ve `docker stats --no-stream` ile birden çok kullanıcı aynı anda çalışırken RAM’i gözle. Bellek baskısı, sürekli swap kullanımı veya yavaşlayan sorgu görürsen önce ölçümleri ve Java ayarını incele.
-3. Bir göçten önce dağıtım aracı yerel sunucu yedeği alır. Öğrenciler günlük yazdığı için düzenli yedekleri ayrıca planla, VPS dışına şifreli kopyala ve geri yükleme provası yap. Yedek alındı mesajı, geri yükleme provasının yerini tutmaz. [PostgreSQL yedekleme tarifi](https://www.postgresql.org/docs/18/backup-dump.html)
+3. Bir göçten önce dağıtım aracı sunucuda yedek alır. Günlük yedekler ve bilgisayardaki doğrulanmış kopyalar [rehberin 6. bölümündedir](coklu-proje-yayini.md#6-yedekler-ve-veriyi-geri-alma). Yedek alındı mesajı geri yükleme provasının yerini tutmaz. [PostgreSQL yedekleme tarifi](https://www.postgresql.org/docs/18/backup-dump.html)
 
 ### 5.2. Başka projeleri ekleme
 

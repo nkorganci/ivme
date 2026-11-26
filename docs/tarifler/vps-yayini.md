@@ -1,6 +1,6 @@
 # İvme VPS yayını
 
-[Tek tıkla yayın](tek-tikla-yayin.md) normal kurulum ve güncelleme akışıdır. Bu tarif ilk taşımanın el ile uygulanabilen adımlarını ve kurtarma işlemlerini içerir.
+Günlük yayın, yedek ve sorun giderme [dört proje rehberindedir](coklu-proje-yayini.md). Normal ilk kurulum [İvme VPS kurulumu](tek-tikla-yayin.md) tarifindedir. Bu tarif ilk taşımanın el ile uygulanabilen adımlarını ve kurtarma işlemlerini içerir.
 
 Windows'ta `test` geliştirme dalı ile `ivme_local` ve geçici `ivme_test` veritabanları kullanılır. GitHub'daki `production` dalı VPS'ye kurulacak sürümü tutar. Yayın için doğrulanan commit seçilir ve sunucuda aynı SHA ile Docker imajı oluşturulur. GitHub deposu herkese açıktır. PostgreSQL dökümü, çalışma dosyaları, kaynak listeleri ve gerçek ortam dosyaları SSH üzerinden özel dizinlere taşınır.
 
@@ -42,6 +42,6 @@ curl -fsS http://127.0.0.1:1010/app-version.txt
 ## Trafik geçişi ve sonraki yayınlar
 
 - Prova için ayrı tünel/hostname seç. Mevcut hostname'i yeni makineye ancak hazır olma, sürüm, giriş/çıkış, normal kullanıcıyla soru ve görsel, taşınan kaynak PDF, QR ve öğrenci geçmişi doğrulanınca yönlendir. Gerekiyorsa Brevo ve öğretmen modeli için `app.env` ayarlarını tamamla ve canlı doğrulama yap. Örnek ayarda bu iki entegrasyon kapalıdır. [Cloudflare Tunnel kurulumu](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/)
-- Sonraki yayında önce önceki SHA'yı ve yedek konumunu kaydet. İmajı commit SHA'sıyla önceden derle. Şema gerekiyorsa bakım penceresinde göçü ve rol izinlerini uygula. `sh start.sh` şemayı doğrular, paketi açar ve çalışan sürümü commit SHA'sıyla karşılaştırır.
-- Eski imajı sakla ve şema uyumluysa önceki SHA'ya dön. Uyumsuz şema değişikliğinde yeni öğrenci yazıları başladıysa dönüş veri uzlaştırması ister. Geri yükleme yeni bir hacimde denenir.
-- PostgreSQL dökümünü otomatik al ve şifreli olarak VPS dışına kopyala. Medya ve yol listesini sürümlü yedekle. Geri yükleme provasında öğrenci geçmişi ve dosya karma değerlerini denetle.
+- Sonraki yayınlar `git push` ile otomatik yapılır. Sunucu yedek alır, göçü uygular, sağlığı denetler ve gerekirse önceki sürüme döner ([dört proje rehberi](coklu-proje-yayini.md)).
+- Uyumsuz şema değişikliğinden sonra yeni öğrenci yazıları başladıysa eski sürüme dönüş veri uzlaştırması ister. Geri yükleme yeni bir hacimde denenir.
+- Günlük dökümler otomatik alınır ve doğrulanarak bilgisayara kopyalanır ([rehberin 6. bölümü](coklu-proje-yayini.md#6-yedekler-ve-veriyi-geri-alma)). Medyanın asıl kopyası Windows çalışma alanındadır. Geri yükleme provasında öğrenci geçmişi ve dosya karma değerlerini denetle.

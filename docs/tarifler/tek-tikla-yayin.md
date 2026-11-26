@@ -1,4 +1,4 @@
-# İvme tek tıkla yayın ve VPS kurulumu
+# İvme VPS kurulumu, ilk yükleme ve medya
 
 ## Contabo siparişi
 
@@ -33,22 +33,20 @@ Host ivme-vps
 4. Yerel `deploy/local.json.example` dosyasını `deploy/local.json` olarak kopyala ve SSH takma adını gir. Docker Desktop Linux konteyner modunda açık olmalı. Medya için Windows'ta `rclone` kullanılır. Betik Windows OpenSSH'nin aynı anahtarını ve doğrulanmış host kaydını kullanır. [Rclone Windows kurulumu](https://rclone.org/install/) · [Rclone SFTP](https://rclone.org/sftp/)
 5. Önce [medya listesini](vps-yayini.md) hazırla ve `Ivme Medya Gonder.bat` ile doğrulanmış klasörü aktar. V104 dökümünü yüklemek için V103 ve V104 dahil, DB geçmişiyle eşleşen kodu yerel `test` dalında gözden geçir. Sonraki bölümdeki ilk kurulum komutuyla veriyi yükle. Canlı geçiş için kaynak yazılarını durdurduktan sonra son dökümü al. İlk restore boş veritabanında, tek işlemde yapılır.
 
-## Bir tıklama
+## Günlük yayın ve ilk yükleme
 
-Yerel `test` dalında IDE'nin Git panelinden yayına girecek dosyaları stage et. Ardından **Ivme Yayinla.bat** dosyasına çift tıkla. Betik seçili değişiklikleri commit eder ve imajı bu commit'ten oluşturur. Stage edilmemiş dosyalar yerelde kalır. Çalışma alanı temizse düğme son commit ile devam eder. Taslaklar açıkken mevcut commit'i yayımlamak için `--committed` kullan.
+Günlük yayın dört projede aynıdır ve [dört proje rehberinde](coklu-proje-yayini.md) anlatılır. **Ivme Yayinla.bat** stage edilmiş dosyaları commit eder ve `git push` çalıştırır. Push kontrolü imajı derler, test eder ve sunucuya hazırlar. Sunucu sürümü bir dakika içinde başlatır.
+
+`deploy/release.py` yalnız ilk kurulum ve önizleme için kalır:
 
 ```powershell
 python -X utf8 deploy/release.py --preview
 python -X utf8 deploy/release.py --restore "D:\private\ivme.dump"
 ```
 
-`--preview` commit edilmiş kodla Linux imajını ve üretim testlerini çalıştırır. SSH ve push gerektirmez. İlk yükleme `ivme.dump.sha256` dosyasını aynı dizinde bekler. Dökümde uygulanmış Flyway SQL dosyalarının sürüm ve sağlama değerleri Git'teki dosyalarla eşleşmeli. Uygulanmış dosyayı değiştirirsen özgün halini geri getirip yeni düzenlemeyi sonraki sürüme ekle. Medyayı daha önce yükle. İlk tam yayından sonraki sürümlerde `--restore` kullanmadan düğmeye bas.
+`--preview` commit edilmiş kodla Linux imajını ve üretim testlerini çalıştırır. SSH ve push gerektirmez. `--restore` yalnız boş bir sunucudaki ilk yüklemede kullanılır ve `ivme.dump.sha256` dosyasını aynı dizinde bekler. Dökümde uygulanmış Flyway SQL dosyalarının sürüm ve sağlama değerleri Git'teki dosyalarla eşleşmeli. Uygulanmış dosyayı değiştirirsen özgün halini geri getirip yeni düzenlemeyi sonraki sürüme ekle. Medyayı ilk yüklemeden önce gönder.
 
-Yayın GitHub `production` dalının ucunu alır ve yerel `test` ile birleştirilen sürümü derler. İmaj Linux amd64 olarak commit SHA'sıyla etiketlenir. Ön yüz derlemesi ile PDF, görsel ve kaynak çözümleme testleri yerelde Docker içinde çalışır. V104 prova imajı SSH aktarımında yaklaşık 220 MB ölçüldü. GitHub'a kod fast-forward olarak push edilir, aynı SHA ve imaj VPS'de doğrulanır. Ücretli registry veya CI gerekmez. GitHub herkese açık olduğu için öğrenci verisi, medya, dökümler ve ortam ayarları özel SSH aktarımında tutulur.
-
-VPS eşzamanlı yayınları kilitler. Göç varsa uygulama durur ve PostgreSQL yedeği doğrulandıktan sonra Flyway uygulanır. Yeni konteynerin sağlık durumu ve `app-version.txt` dosyası doğrulanır. Başlatma başarısızsa veritabanıyla uyumlu önceki imaj denenir. Şema değişmişse önceki şemaya dönüş elle planlanır ve öğrenci kayıtları korunur. İmaj aktarıldıktan veya kod push edildikten sonra bağlantı koptuysa aynı düğme tekrar kullanılabilir.
-
-Canlı öğrenci veritabanı VPS'deki `ivme`, yerel geliştirme veritabanı `ivme_local` ve otomatik testlerin oluşturup kaldırdığı veritabanı `ivme_test`. Sonraki yayınlarda VPS'deki uygulama aynı kalıcı PostgreSQL volume'unu kullanır. Uygulama imajı değiştiğinde kısa bir yeniden başlatma olabilir. Şema göçünde erişim arası, yedek alma ve göç süresi kadar uzayabilir. Yeni Flyway SQL'i varsa yoğun olmayan bir zamanda yayımla.
+Canlı öğrenci veritabanı VPS'deki `ivme`, yerel geliştirme veritabanı `ivme_local` ve otomatik testlerin oluşturup kaldırdığı veritabanı `ivme_test`. Yeni Flyway SQL'i olan yayında sunucu uygulamayı durdurur, doğrulanmış yedek alır ve göçü uygular. Bu süre boyunca site kapalıdır, bu yüzden böyle bir yayını yoğun olmayan bir zamanda yap.
 
 ## Medya, Cloudflare ve sonraki projeler
 
@@ -59,7 +57,6 @@ Canlı öğrenci veritabanı VPS'deki `ivme`, yerel geliştirme veritabanı `ivm
 - Cloudflare panelinde tünele yayımlanmış uygulama rotası eklemek, mevcut DNS kaydının hedefini değiştirmeyebilir. `ivme.dev → DNS → Records` altında yalnız `net` kaydının içeriğini `ivme-contabo` tünelinin CNAME hedefine al ve **Proxied** durumunu koru. Dış ağdan sağlık ve sürüm yanıtını kontrol et.
 - Diğer projeler için ayrı Compose proje adı, `/srv/<proje>` dizini, veritabanı/volume, ortam dosyası ve loopback portu kullan. Aynı Cloudflare tünelinde her projeye ayrı alt alan adı ver. İvme örneği localhost 1010, ikinci site 1020 olabilir. Sunucu doluluğunu `df -h`, konteyner disk kullanımını `docker system df` ile izle.
 
-## Günlük veritabanı yedeği
+## Veritabanı yedekleri
 
-- VPS'de `ivme-db-backup.timer` her gün **01.30 UTC**'de çalışır. Döküm önce geçici dosyaya alınır, PostgreSQL arşiv kataloğu ve SHA-256 kontrol edilir. Yedi günlük kopya VPS'deki `/srv/ivme/backup/daily` klasöründe döner. İlk taşıma dökümü `/srv/ivme/backup` altında saklanır.
-- Son çalışmayı `systemctl list-timers ivme-db-backup.timer` ve yönetici oturumunda `journalctl -u ivme-db-backup.service -n 20` ile kontrol et. VPS dışına alınan bir kopyanın `.sha256` dosyasını ve PostgreSQL arşivini doğrula. Kurtarma provası için ayrı, boş hedef seç. [PostgreSQL yedekleme](https://www.postgresql.org/docs/18/backup-dump.html)
+Günlük yedekler, bilgisayardaki kopyalar ve geri yükleme [dört proje rehberinin 6. bölümündedir](coklu-proje-yayini.md#6-yedekler-ve-veriyi-geri-alma).
