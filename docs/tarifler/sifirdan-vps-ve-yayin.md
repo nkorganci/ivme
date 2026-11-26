@@ -6,6 +6,8 @@
 
 **Yaklaşık 10 kullanıcı, tek İvme sitesi ve ölçülen yaklaşık 60 GB veri için Cloud VPS 4 ile başlardım.** Sipariş ekranında **4 vCPU, 8 GB RAM, 100 GB SSD ve Ubuntu 24.04 LTS (x86_64)** seç. Bu seçimde ikinci tam geri yüklemeyi başka bir makinede yap, yedekleri VPS dışına kopyala ve uygulamanın Java heap sınırını başlangıçta `-Xmx2g` yap. Gerçek veriyi yükledikten sonra disk ve RAM’i ölç. Türkiye ağırlıklı kullanımda Avrupa bölgesini seç. [Contabo VPS özellikleri](https://contabo.com/en-us/pricing/) · [Ubuntu seçenekleri](https://contabo.com/en-us/linux-vps/)
 
+İlk yayında yalnız YKS soru bankasını, denemeyi ve öğrenci takibini açacaksan **25–35 GiB** disk bütçesi planla. Bu ayrı bir taşıma kapsamı. [YKS soru bankası ve öğrenci takibi](#132-yks-soru-bankası-ve-öğrenci-takibiyle-başlarsak)
+
 ### 1.2. VPS 4, VPS 6 ve VPS 8 ne demek?
 
 **VPS**, bir sağlayıcının fiziksel makinesi üzerinde sana ayrılan sanal sunucudur. Sana kendi işletim sistemi, disk alanı ve IP adresi verilir. **Cloud VPS 8** Contabo’nun paket adı. Bu seride rakam paketteki vCPU sayısıyla örtüşüyor. Aynı tabloda RAM ve disk ayrıca yazıyor. vCPU, sanal işlemci çekirdeği anlamına gelir. Core serisi işlemci kapasitesini fiziksel sunucu üzerindeki diğer VPS’lerle paylaşır. [Contabo VPS dokümantasyonu](https://docs.contabo.com/docs/servers-hosting/vps/)
@@ -48,6 +50,33 @@ Yerel `ivme` veritabanında ölçülen **alanın %94,7’si iki katalog tablosun
 Veritabanında **90 katalog çalıştırması** kayıtlı. Bir soru her yeni katalog sürümünde tekrar temsil edilebiliyor. Uygulamanın güncel katalog sorguları tek etkin sürümü seçiyor. Örneğin bir sorunun katalog kaydı ve konu bağlantısı, sonraki yayında korunurken önceki sürümdeki kayıt da veritabanında kalıyor. Bu yüzden yaklaşık 97 bin soruya karşılık milyonlarca katalog satırı oluşmuş. Hesap ve öğrenci geçmişinin de bulunduğu `public` şemasının tamamı yaklaşık **49 MiB**. [Katalog tabloları ve güncel sürüm görünümleri](../../backend/src/main/resources/db/migration/V38__shared_learning_resource_labels.sql) · [Sürüm kopyalayan göç örneği](../../backend/src/main/resources/db/migration/V102__mebi_main_question_bank.sql)
 
 `items` tablosundaki **23,11 GiB**, PostgreSQL’in büyük alanları ayrı sakladığı TOAST bölümünde. Bu tablo kaynak ve etiket ayrıntılarını JSON olarak saklıyor. `assignments` tablosunda **5,28 GiB** sorguları hızlandıran indekslere ait. Soru görselleri ve özgün PDF dosyaları üstteki **15,73 GiB medya** kaleminde ayrıca sayılıyor. PDF dosyalarını azaltmak medya alanını düşürür. Veritabanındaki tarihsel katalog satırlarının alanı ayrı bir konudur. [PostgreSQL’in büyük alanları saklama biçimi](https://www.postgresql.org/docs/18/storage-toast.html)
+
+#### 1.3.2. YKS soru bankası ve öğrenci takibiyle başlarsak
+
+Öğrenci için ilk kapsam **TYT/AYT OGM soru bankası, ders ve konu seçimi, soru çözme, bankadan deneme oluşturma, sonuç geçmişi ve konu bazında ilerleme** olabilir. Yıla ait resmî tam denemeleri de açarsak `CIKMIS` bankası ve ilgili kitapçık eşlemeleri eklenir. [Deneme seçim akışı](../../backend/src/main/java/com/hedefyks/exam/ExamService.java)
+
+**35 MiB, tek başına soru tablosunun ölçümü.** Çözüm geçmişi, hesaplar ve deneme sonuçları da gerekir. Mevcut uygulamanın ders ve konu filtreleri güncel öğrenme kataloğunu kullanıyor. Özgün PDF’leri yerelde bırakıp soru kaydındaki kaynak adı, yılı ve gerekli referans kimliklerini taşıyabiliriz. Soru ekranı ise soru kırpımlarını ayrı görsel dosyalarından okuyor. [Ders ve konu filtreleri](../../backend/src/main/java/com/hedefyks/review/SharedQuestionLabels.java) · [Soru görseli ve çözüm uçları](../../backend/src/main/java/com/hedefyks/question/QuestionController.java)
+
+| Taşınacak parça | Ölçüm veya bütçe |
+|---|---:|
+| Mevcut hesapların ve öğrenci geçmişinin de bulunduğu bütün `public` şeması | Ölçülen **49 MiB** |
+| Güncel YKS soru kataloğu | 91.256 kaydın JSON verisi **244,6 MiB**. OGM sorularına bağlı **123.589** ders ve konu ilişkisi var. |
+| PostgreSQL toplamı, güncel katalog, ilişkiler ve indeksler dahil | İlk planlama tahmini **0,5–1 GiB**. Ayrı bir geri yüklemeyle ölçülecek. |
+| OGM, 88.695 etkin TYT/AYT sorusu, kırpımlar ve çözüm görselleri | Ölçülen **6,72 GiB** |
+| OGM ve çıkmış sorular birlikte, 91.256 etkin soru | Ölçülen **7,13 GiB** |
+| Ubuntu, Docker, uygulama imajları ve günlükler | **8–15 GiB** örnek bütçe |
+| Yedek, büyüme ve işlemler dahil önerilen toplam disk bütçesi | **25–35 GiB** |
+
+OGM medyasının 6,72 GiB’ı, **2,93 GiB** soru görseli, **3,62 GiB** kırpılmış veya onarılmış sürüm ve yaklaşık **0,17 GiB** çözüm görselinden oluşuyor. Ölçüm, yerelde bulunan ve etkin soruların işaret ettiği dosyalara ait. Öğrenci geçmişini göstermek için ayrıca gereken eski görseller, ilk taşıma provasında kontrol edilir. İstenirse PDF başlığı ve kimlik eşlemeleri de eklenebilir. Bu amaçla kullanılabilecek `pdf_sources`, `pdf_source_files` ve `pdf_source_catalog` tabloları birlikte yaklaşık **12 MiB**. Sayfa araştırması, OCR ve tam PDF dosyaları bu küçük referans paketinden ayrı.
+
+Uygulama sırası:
+
+1. Yerel `ivme` veritabanını kaynak olarak koru. VPS için ayrı bir kopyaya PostgreSQL şemasını, mevcut kullanıcı ve öğrenci kayıtlarını, soru kimliklerini ve **tek güncel katalog sürümünün** gerekli satırlarını aktar. Eski çalıştırmaların milyonlarca katalog satırı yerelde kalır. Eski oturumların veya denemelerin referans verdiği soru kayıtlarını da koru. Yerel veride etkin OGM kapsamı dışında kalan sorulara bağlı **112 çözüm kaydı ve 528 deneme soru kaydı** var.
+2. Öğrenciye açık yeni soru seçimini TYT/AYT OGM ile sınırla. Giriş, soru bankası, deneme ve ilerleme ekranlarını açık tut. PDF ve diğer kaynak sayfalarını ilk yayının menüsünde ve sunucu ayarlarında kapat. Medya listesine soru görsellerini, karşılık gelen kırpımları ve çözüm görsellerini ekle. Mevcut tam medya betiği bu dar kapsam için ayrıca uyarlanmalı. [Mevcut tam medya betiği](../../deploy/assets.py)
+3. İlk dağıtımdan önce ayrı PostgreSQL’de geri yükle. Bir öğrencinin eski sonuçlarını açabildiğini, yeni bir TYT/AYT sorusunda ders ve konu filtresinin çalıştığını, görselin açıldığını, cevabın kaydedildiğini ve deneme sonucunun ilerlemeye yansıdığını doğrula. Sonra fiziksel DB boyutunu ölç.
+4. İlk kurulumdan sonra öğrenci kayıtlarının ana kaynağı VPS’dir. Kod güncellemesinde uygulama imajını, içerik güncellemesinde yeni soru, güncel kategori ve ilgili görselleri taşı. İlerlemeyi korumak için içerik güncellemesini canlı veritabanının üstüne tam döküm yüklemek yerine mevcut kayıtlara uygula.
+
+Bu kapsamda **Cloud VPS 4’ün 100 GB SSD’si geniş pay bırakır**. Tahmini 25–35 GiB sistem bütçesi ölçülmüş medya boyutuna dayanıyor. Nihai veritabanı boyutu dar kapsamlı geri yükleme provasından sonra kesinleşir. [Contabo Core planları](https://contabo.com/en-us/pricing/)
 
 ### 1.4. 100 GB hangi durumda dar gelir?
 
