@@ -11,7 +11,7 @@
 
 Cloudflare’ın `ivme-contabo` tüneli HTTPS isteklerini tablodaki VPS portlarına taşır. Tarayıcı HTTPS adresini kullanır. PostgreSQL konteynerleri kendi Compose ağlarında çalışır. İvme’nin isteğe bağlı Vite ön yüzü `1110`, Wrestling’in iç geliştirme API’si `8085`, Arapça’nın Vite geliştirme API’si `1112` kullanır.
 
-Dört uygulama birlikte çalışırken ilk VPS ölçümü 70 GiB kullanılmış disk, 124 GiB kullanılabilir disk ve 9,4 GiB kullanılabilir bellek gösterdi.
+Dört uygulama ve ilk güncelleme sonrasında VPS ölçümü 71 GiB kullanılmış disk, 123 GiB kullanılabilir disk ve 9,4 GiB kullanılabilir bellek gösterdi.
 
 ## 2. Yerelde açma ve hesap değiştirme
 
