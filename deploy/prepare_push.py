@@ -4,6 +4,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 import zipfile
 
 from release import SSH_OPTIONS, check_public_paths, host_alias, ssh
@@ -18,6 +19,28 @@ PROJECTS = {
 
 def run(*args, **kwargs):
     return subprocess.run(args, check=True, **kwargs)
+
+
+def retried(step):
+    """Repeat an idempotent server step after a dropped SSH connection."""
+    for attempt in range(3):
+        try:
+            return step()
+        except (subprocess.CalledProcessError, RuntimeError):
+            if attempt == 2:
+                raise
+            print("SSH step failed; retrying.", file=sys.stderr, flush=True)
+            time.sleep(10 * (attempt + 1))
+
+
+def load_image(tag, host):
+    with subprocess.Popen(["docker", "save", tag], stdout=subprocess.PIPE) as stream:
+        try:
+            run("ssh", "-C", *SSH_OPTIONS, host, "docker image load", stdin=stream.stdout)
+        finally:
+            stream.stdout.close()
+        if stream.wait():
+            raise RuntimeError(f"Could not export {tag}")
 
 
 def prepare(project, revision, previous):
@@ -53,20 +76,14 @@ def prepare(project, revision, previous):
         if project == "prepexpert":
             run(sys.executable, str(source / "deploy/check-image.py"), f"prepexpert-app:{revision}")
         for image in images:
-            tag = f"{image}:{revision}"
-            with subprocess.Popen(["docker", "save", tag], stdout=subprocess.PIPE) as stream:
-                try:
-                    run("ssh", "-C", *SSH_OPTIONS, host, "docker image load", stdin=stream.stdout)
-                finally:
-                    stream.stdout.close()
-                if stream.wait():
-                    raise RuntimeError(f"Could not export {tag}")
+            retried(lambda tag=f"{image}:{revision}": load_image(tag, host))
         remote = f"/srv/{project}"
         if project != "ivme":
             folder = f"{remote}/releases/{revision}"
-            ssh(host, f"umask 077; mkdir -p {folder}")
-            run("scp", *SSH_OPTIONS, str(source / "deploy/compose.yaml"), f"{host}:{folder}/compose.yaml")
-        ssh(host, f"umask 077; mkdir -p {remote}/tested && touch {remote}/tested/{revision}")
+            retried(lambda: ssh(host, f"umask 077; mkdir -p {folder}"))
+            retried(lambda: run("scp", *SSH_OPTIONS, str(source / "deploy/compose.yaml"),
+                                f"{host}:{folder}/compose.yaml"))
+        retried(lambda: ssh(host, f"umask 077; mkdir -p {remote}/tested && touch {remote}/tested/{revision}"))
     # Cleanup is housekeeping: a failure must not block the tested release.
     pruned = subprocess.run(["ssh", *SSH_OPTIONS, host, f"sh -s -- {project}"],
                             input=(Path(__file__).with_name("prune-server.sh")).read_bytes())
