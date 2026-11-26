@@ -20,7 +20,7 @@
 
 ## Etkin ve bekleyen işler
 
-- **12.03 VPS:** [Tek tıkla yayın](tarifler/tek-tikla-yayin.md) yerel `test` dalında. V104 Linux imajı, yedekli göç, sürüm geri dönüşü ve SFTP prova dosyası doğrulandı. VPS erişimi açılınca gerçek veriyle geri yükleme ve HTTPS geçişini doğrula.
+- **12.03 VPS:** Contabo anahtarlı SSH erişimi ve konsol parmak izi bekleniyor. V104 Linux imajı hazır. Erişimden sonra [ilk yayında](tarifler/tek-tikla-yayin.md) gerçek veriyi geri yükle, operatörün geçici parolasını üretim kopyasında yenile ve HTTPS geçişini doğrula.
 - **Öğretmenlik kaynakları:** 358 PDF `Kaynaklar/Ogretmenlik/ogretmen-AGS` ve `ogretmen-OABT` altında, DB envanteri yazıldı; 240 resmî bağlantının 36'sı yerelde yok ve ÖSYM PDF erişimi engelli (35'i 2025–2026 AGS/ÖABT). Kanıt `Kaynaklar/Ogretmenlik/ARSIV_DURUMU.md`; erişim açıldığında `python -X utf8 veri-hatti/ogretmen-sinavlari/duzenle.py --apply`, ardından `tamamla.py` (üst dizinden). Tam soru bankası aktarımı yapılmadı.
 - **MAT-TYT (etkin):** TYT 29/32; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur. 16. adım başlayana dek içerik üretimi bu sırayı korur; 16.04'ten sonra yeni konu paketi standardına geçilir.
 - **Kullanıcı/insan girdisi bekleyen:** TAS-08 ve TAS-09 öğretmen kararları, Fizik pilotu değerlendirmesi, TAS-10 Brevo göndereni ve API anahtarı, TAS-02 dış izleme kurulumu. Ayrıntı [yol haritasında](plan/README.md).
