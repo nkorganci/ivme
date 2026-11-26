@@ -20,7 +20,7 @@
 
 ## Etkin ve bekleyen işler
 
-- **12.03 VPS:** Contabo'da anahtarlı SSH ve Docker doğrulandı. Güncel V104 dökümü ve doğrulanmış medya paketiyle [ilk yayını](tarifler/tek-tikla-yayin.md) tamamla, operatörün geçici parolasını üretim kopyasında yenile ve HTTPS geçişini doğrula.
+- **12.03 VPS:** GitHub `production` ve VPS imajı `6016795`. `ivme-contabo` tüneli bağlı. [İlk yayında](tarifler/tek-tikla-yayin.md) DB ve medya denetimini tamamla, üretim kopyasında operatör parolasını yenile ve hazır olma kontrolünden sonra `net.ivme.dev` adresini bu tünele bağla.
 - **Öğretmenlik kaynakları:** 358 PDF `Kaynaklar/Ogretmenlik/ogretmen-AGS` ve `ogretmen-OABT` altında, DB envanteri yazıldı; 240 resmî bağlantının 36'sı yerelde yok ve ÖSYM PDF erişimi engelli (35'i 2025–2026 AGS/ÖABT). Kanıt `Kaynaklar/Ogretmenlik/ARSIV_DURUMU.md`; erişim açıldığında `python -X utf8 veri-hatti/ogretmen-sinavlari/duzenle.py --apply`, ardından `tamamla.py` (üst dizinden). Tam soru bankası aktarımı yapılmadı.
 - **MAT-TYT (etkin):** TYT 29/32; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur. 16. adım başlayana dek içerik üretimi bu sırayı korur; 16.04'ten sonra yeni konu paketi standardına geçilir.
 - **Kullanıcı/insan girdisi bekleyen:** TAS-08 ve TAS-09 öğretmen kararları, Fizik pilotu değerlendirmesi, TAS-10 Brevo göndereni ve API anahtarı, TAS-02 dış izleme kurulumu. Ayrıntı [yol haritasında](plan/README.md).

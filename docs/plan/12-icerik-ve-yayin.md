@@ -147,15 +147,16 @@ ve içerik pilotundan faydalı/hatalı geri bildirimi.
 
 ## 12.03 — Kalıcı yayın öncesi açık işletim koşullarını doğrula
 
-Durum `VPS_ILK_YAYIN_HAZIRLIGI`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
+Durum `VPS_VERI_AKTARIMI`. Contabo VPS üzerinde Ubuntu 24.04, anahtarlı
 SSH, ayrı dağıtım hesabı ve Docker Compose doğrulandı. V104 adayında deneme,
-oturum ve ilerleme akışlarındaki 32 test geçti.
+oturum ve ilerleme akışlarındaki 32 test geçti. `6016795` imajı VPS'ye ulaştı
+ve aynı commit GitHub `production` dalında. Ayrı `ivme-contabo` tüneli bağlı.
 [Tek tıkla yayın](../tarifler/tek-tikla-yayin.md) boş Linux ortamında örnek DB'nin
 geri yüklenmesini, yedek alarak göç uygulamayı ve sürüm/sağlık denetimini geçti.
 V104 döküm geçmişi yerel adayla eşleşti. Medya listesindeki 190.171 dosyanın
-yerel SHA-256 denetimi geçti. Sırada güncel döküme dayalı tam geri yükleme,
-geçici parolalı operatör hesabını üretim kopyasında güvenli hale getirme ve HTTPS
-geçişi var. Yerel yedek ve yalıtılmış geri yükleme
+yerel SHA-256 denetimi geçti ve tam paket aktarımda. Sırada güncel döküme dayalı
+geri yükleme, geçici operatör parolasının üretim kopyasında yenilenmesi ve VPS
+üzerinde hazır olma kontrolünden sonra `net.ivme.dev` geçişi var. Yerel yedek ve yalıtılmış geri yükleme
 `scripts/ivme-yedek-al.ps1` / `ivme-yedek-provasi.py` ile yapılır; kullanıcı aynı disk
 yedeğini seçmiştir.
 

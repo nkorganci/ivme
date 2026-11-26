@@ -15,7 +15,7 @@ Tek güncel durum kaydı bu dosyadır; ayrıntılı gereksinim yalnız açık ad
 
 | Kimlik | Durum | Kalan |
 |---|---|---|
-| 12.03 | VPS_ILK_YAYIN_HAZIRLIGI | SSH ve Docker doğrulandı. [İlk yayında](../tarifler/tek-tikla-yayin.md) tam DB ve medyayı doğrula, ardından HTTPS geçişini yap |
+| 12.03 | VPS_VERI_AKTARIMI | V104 imajı VPS'de, yeni Cloudflare tüneli bağlı. [İlk yayında](../tarifler/tek-tikla-yayin.md) tam DB ve medyayı doğrula, ardından HTTPS geçişini yap |
 | MAT-TYT / 12.02 | SURUYOR (etkin) | Önce TYT konu içerikleri, lab en son; sıradaki konu `node scripts/konu-ogrenme-kapsam.mjs --liste --kontrol` ile bulunur ([liste](../urun/matematik-konu-listesi.md); TYT 29/32) |
 | MAT-LAB-02 / 12.02 | BEKLEMEDE | TYT 16/32 lab TEKNİK HAZIR; TYT içerikleri bitince ilk eksik lab `hareket-problemleri` |
 | PHYS-PILOT-01, PHYS-INTERACTIVE-02 / 12.02 | Kullanıcı değerlendirmesi bekliyor | `/konuyu-ogrenelim/fizik/hareket-kuvvet` (8 bölüm, MotionLab); kabul `python scripts/ivme.py kalite calistir PHYS-PILOT-01`; kullanıcı onaylamadan başka konuya geçme |
