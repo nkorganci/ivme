@@ -24,10 +24,12 @@ case "$revision" in ''|*[!0-9a-f]*) exit 2 ;; esac
 [ "${#revision}" = 40 ]
 [ -f "$root/tested/$revision" ] || exit 0
 if [ "$(cat "$root/current.sha")" != "$revision" ]; then
+    # A failed migration requires inspection before another attempt.
+    if [ -f "$root/tested/$revision.failed" ]; then exit 0; fi
     if [ "$project" = ivme ]; then
-        sh /opt/ivme-release/vps.sh release "$revision"
+        sh /opt/ivme-release/vps.sh release "$revision" || { touch "$root/tested/$revision.failed"; exit 1; }
     else
-        sh /opt/ivme-release/project-server.sh "$project" "$revision" release
+        sh /opt/ivme-release/project-server.sh "$project" "$revision" release || { touch "$root/tested/$revision.failed"; exit 1; }
     fi
 fi
 rm -f "$root/tested/$revision"
