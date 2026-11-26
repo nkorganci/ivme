@@ -70,7 +70,8 @@ def publish(project, committed, restore, preview, workspace):
             tag = f"{image}:{revision}"
             run("docker", "build", "--platform", "linux/amd64", *target_flags,
                 "--label", f"org.opencontainers.image.revision={revision}", "-t", tag, str(source))
-            if not preview:
+            if not preview and subprocess.run(("ssh", *SSH_OPTIONS, host,
+                                               f"docker image inspect {tag} >/dev/null 2>&1")).returncode != 0:
                 send_image(host, tag)
         if preview:
             return

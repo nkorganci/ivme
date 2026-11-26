@@ -11,6 +11,8 @@
 
 Cloudflare’ın `ivme-contabo` tüneli HTTPS isteklerini tablodaki VPS portlarına taşır. Tarayıcı HTTPS adresini kullanır. PostgreSQL konteynerleri kendi Compose ağlarında çalışır. İvme’nin isteğe bağlı Vite ön yüzü `1110`, Wrestling’in iç geliştirme API’si `8085`, Arapça’nın Vite geliştirme API’si `1112` kullanır.
 
+Dört uygulama birlikte çalışırken ilk VPS ölçümü 70 GiB kullanılmış disk, 124 GiB kullanılabilir disk ve 9,4 GiB kullanılabilir bellek gösterdi.
+
 ## 2. Yerelde açma ve hesap değiştirme
 
 İvme için `Ivme Baslat.bat`, Wrestling için `start.ps1`, Arapça için `Arapca Baslat.bat`, PrepExpert için `start-sat.bat` kullan. Yerel uygulamalar sırasıyla `ivme_local`, `wrestling_club_local`, `arapca_local` ve `sat_local` veritabanlarına yazar. Portlar yalnız bu bilgisayardan erişilir.
@@ -25,6 +27,8 @@ Wrestling, Arapça ve PrepExpert ilk yerel açılışta bir öğrenci hesabı ku
 
 Her proje `/srv/<proje>` altında kendi ortam dosyalarını, kalıcı veritabanı volume’unu, sürümlerini ve yedeklerini tutar. Veri dosyaları ve ilk yedek özel SSH aktarımıyla gider. Rutin yayın mevcut PostgreSQL volume’unu kullanır. İlk taşıma için `--restore` ve doğrulanmış döküm gerekir.
 
+Wrestling, Arapça ve PrepExpert günlük PostgreSQL yedekleri `ivme-project-backup@<proje>.timer` ile alınır. İlk yedekler SHA-256 kontrolünden geçti. Dönen günlük dosyalar `/srv/<proje>/backup/daily` altındadır. İlk taşıma dökümleri o projenin `backup` dizininde ayrıca saklanır.
+
 ## 4. Veri kapsamı
 
-Wrestling ve Arapça’nın hesapları ve çalışma kayıtları PostgreSQL ile taşınır. Kullanıcılar yeni sunucuda tekrar giriş yapar. PrepExpert’in uygulaması, hesapları ve yayımlanabilir içerik paketi taşınır. Dondurulmuş Bank 1 ve kişisel haklarla sınırlı aktarımlar yerel kalır. Wrestling’in aile kayıt e-postaları için üretim SMTP ayarları gerekir.
+Wrestling ve Arapça’nın hesapları ve çalışma kayıtları PostgreSQL ile taşındı. Kullanıcılar yeni sunucuda tekrar giriş yapar. PrepExpert’in uygulaması, hesapları ve yayımlanabilir içerik paketi taşındı. Dondurulmuş Bank 1, özel olarak işaretli Bank 2 ve onlarla ilişkili olabilecek kişisel çalışma geçmişi yerel kopyada durur. Wrestling’in aile kayıt e-postaları için üretim SMTP ayarları gerekir.

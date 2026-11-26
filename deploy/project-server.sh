@@ -53,6 +53,12 @@ if [ "$operation" = restore ]; then
         mv "$dump" "$archived_dump"
         (cd "$root/backup"; sha256sum "$(basename "$archived_dump")" > "$(basename "$archived_dump").sha256")
     fi
+    if [ "$project" = wrestling ] && [ ! -e "$root/backup/flyway-development-demo-history.csv" ]; then
+        # Keep the demo import record with the original dump. Production resolves only production migrations.
+        query -q -c "COPY (SELECT * FROM flyway_schema_history WHERE version IS NULL AND script='R__demo_content.sql' AND success) TO STDOUT WITH CSV HEADER" > "$root/backup/flyway-development-demo-history.csv.new"
+        query -q -c "DELETE FROM flyway_schema_history WHERE version IS NULL AND script='R__demo_content.sql' AND success;"
+        mv "$root/backup/flyway-development-demo-history.csv.new" "$root/backup/flyway-development-demo-history.csv"
+    fi
     if [ "$project" = wrestling ] && [ ! -e "$root/rotation-complete" ]; then
         known=$(query -Atq -c "SELECT count(*) FROM users WHERE lower(email)='admin@club.local'")
         if [ "$known" = 1 ]; then
