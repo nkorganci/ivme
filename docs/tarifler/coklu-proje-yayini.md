@@ -35,27 +35,17 @@ Her şeyin durumunu tek komutla görürsün: `D:\workspace\ivme\uygulama\Yayin D
    - **İstemiyorum:** Sağ tık, **Discard Changes**. Bu işlem geri alınamaz.
 3. **Dikkat:** `Yayinla.bat` **Staged Changes** listesindeki her dosyayı commit eder. Yayımlamak istemediğin bir dosya bu listede durmasın.
 
-### 1.3. Wrestling: aile kaydı e-postasını aç (isteğe bağlı)
+### 1.3. Wrestling: aile kaydı e-postasını aç
 
-Aileler siteden kendileri kayıt olurken e-postalarına 30 dakika geçerli bir bağlantı gelir. Sunucuda e-posta (SMTP) ayarı yoksa kayıt sayfası "unavailable" hatası verir. `ssh ivme-vps grep -c SPRING_MAIL_HOST /srv/wrestling/config/app.env` sonucu `0` ise ayar yoktur. Yöneticinin panelden yaptığı işler bundan etkilenmez. Bu adımı yalnız ailelerin kendi kendine kayıt olmasını istiyorsan yap.
+Bir aile siteden kayıt olurken herhangi bir e-posta adresini (Gmail, Outlook, okul adresi vb.) yazabilir. Site o adrese 30 dakika geçerli bir onay bağlantısı gönderir. Gönderen, kulübün Gmail hesabıdır. Sunucuda bu hesabın uygulama parolası yoksa kayıt sayfası "unavailable" hatası verir. Durumu `curl -s https://wrestling.ivme.dev/api/v1/auth/family-signup` gösterir: `"available":true` ise e-posta gönderimi açıktır.
 
-1. Bir e-posta gönderim hizmeti seç. Hizmet sana bir SMTP sunucusu, port, kullanıcı adı ve anahtar verir.
-2. `ssh ivme-vps` ile sunucuya bağlan ve `nano /srv/wrestling/config/app.env` ile ayar dosyasını aç.
-3. Dosyanın sonuna hizmetin verdiği değerlerle şu satırları ekle ve kaydet (Ctrl+O, Enter, Ctrl+X):
+1. Google hesabında **2 Adımlı Doğrulama** açık olmalı. Uygulama parolası ancak o zaman oluşturulabilir.
+2. `https://myaccount.google.com/apppasswords` adresinde "Wrestling" adıyla bir uygulama parolası oluştur. Google 16 harflik bir parola gösterir. Bu, normal Gmail parolan değildir.
+3. VS Code terminalinde `cd D:\workspace\wrestling` ve `python deploy/configure-production-gmail.py` çalıştır. Parolayı yapıştır ve Enter'a bas. Yazdığın görünmez, bu normaldir.
+4. Betik ayarı sunucuya yazar ve Wrestling'in API'sini yeniden başlatır. Yukarıdaki `curl` komutu artık `"available":true` göstermeli.
+5. Kayıt sayfasında kendi e-postanla dene. Bağlantı gelmeli.
 
-   ```
-   SPRING_MAIL_HOST=smtp.saglayici.com
-   SPRING_MAIL_PORT=587
-   SPRING_MAIL_USERNAME=kullanici
-   SPRING_MAIL_PASSWORD=anahtar
-   SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE=true
-   FAMILY_SIGNUP_FROM=gonderen@alanadin.com
-   ```
-
-4. Uygulamayı yeni ayarla yeniden başlat (5.6'daki komut).
-5. Bir deneme e-postasıyla kayıt ol. Bağlantı gelmeli.
-
-**Neden:** Bu değerler gizlidir. GitHub'a girmezler, yalnız sunucudaki ayar dosyasında dururlar. Aynı değerleri bir parola yöneticisinde de sakla, çünkü sunucu ayar dosyaları yedeklenmez.
+**Neden:** Uygulama parolası gizlidir. Betik onu yalnız şifreli SSH bağlantısıyla sunucudaki ayar dosyasına yazar, bilgisayara veya GitHub'a kaydetmez. Sunucu ayar dosyaları yedeklenmediği için parolayı bir parola yöneticisinde de sakla. Parola çalınırsa Google hesabından silip yenisini oluştur ve 3. adımı tekrarla. Kötüye kullanıma karşı aynı IP'den 30 dakikada en çok 8, aynı adrese saatte en çok 3 e-posta gönderilir. Kişisel Gmail hesapları günde birkaç yüz e-posta gönderebilir, bu da bir kulüp için yeterlidir.
 
 ### 1.4. Wrestling: canlı yönetici girişini kontrol et
 
