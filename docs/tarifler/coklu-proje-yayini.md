@@ -39,11 +39,12 @@ Her şeyin durumunu tek komutla görürsün: `D:\workspace\ivme\uygulama\Yayin D
 
 Bir aile siteden kayıt olurken herhangi bir e-posta adresini (Gmail, Outlook, okul adresi vb.) yazabilir. Site o adrese 30 dakika geçerli bir onay bağlantısı gönderir. Gönderen, kulübün Gmail hesabıdır. Sunucuda bu hesabın uygulama parolası yoksa kayıt sayfası "unavailable" hatası verir. Durumu `curl -s https://wrestling.ivme.dev/api/v1/auth/family-signup` gösterir: `"available":true` ise e-posta gönderimi açıktır.
 
-1. Google hesabında **2 Adımlı Doğrulama** açık olmalı. Uygulama parolası ancak o zaman oluşturulabilir.
-2. `https://myaccount.google.com/apppasswords` adresinde "Wrestling" adıyla bir uygulama parolası oluştur. Google 16 harflik bir parola gösterir. Bu, normal Gmail parolan değildir.
-3. VS Code terminalinde `cd D:\workspace\wrestling` ve `python deploy/configure-production-gmail.py` çalıştır. Parolayı yapıştır ve Enter'a bas. Yazdığın görünmez, bu normaldir.
-4. Betik ayarı sunucuya yazar ve Wrestling'in API'sini yeniden başlatır. Yukarıdaki `curl` komutu artık `"available":true` göstermeli.
-5. Kayıt sayfasında kendi e-postanla dene. Bağlantı gelmeli.
+1. Kulüp için yeni, ücretsiz bir Gmail hesabı aç (kişisel hesabını kullanma). Aileler e-postada gönderen olarak "Wylie Lions Wrestling Club" adını görür.
+2. Bu hesapta **2 Adımlı Doğrulama**yı aç. Uygulama parolası ancak o zaman oluşturulabilir.
+3. Aynı hesapla `https://myaccount.google.com/apppasswords` adresinde "Wrestling" adıyla bir uygulama parolası oluştur. Google 16 harflik bir parola gösterir. Bu, hesabın normal parolası değildir.
+4. VS Code terminalinde `cd D:\workspace\wrestling` ve `python deploy/configure-production-gmail.py` çalıştır. Önce kulüp Gmail adresini yaz. Sonra 16 harfi yapıştır ve Enter'a bas. Parola yazarken görünmez, bu normaldir.
+5. Betik ayarı sunucuya yazar, Wrestling'in API'sini yeniden başlatır ve sonunda "Done" yazar. Yukarıdaki `curl` komutu artık `"available":true` göstermeli.
+6. Kayıt sayfasında kendi e-postanla dene. Bağlantı gelmeli. Gelmezse spam klasörüne bak.
 
 **Neden:** Uygulama parolası gizlidir. Betik onu yalnız şifreli SSH bağlantısıyla sunucudaki ayar dosyasına yazar, bilgisayara veya GitHub'a kaydetmez. Sunucu ayar dosyaları yedeklenmediği için parolayı bir parola yöneticisinde de sakla. Parola çalınırsa Google hesabından silip yenisini oluştur ve 3. adımı tekrarla. Kötüye kullanıma karşı aynı IP'den 30 dakikada en çok 8, aynı adrese saatte en çok 3 e-posta gönderilir. Kişisel Gmail hesapları günde birkaç yüz e-posta gönderebilir, bu da bir kulüp için yeterlidir.
 
